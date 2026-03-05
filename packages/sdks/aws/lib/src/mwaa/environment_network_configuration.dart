@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentNetworkConfiguration {
   /// Security groups IDs for the environment. At least one of the security group needs to allow MWAA resources to talk to each other, otherwise MWAA cannot be provisioned.
   final pulumi.Input<List<String>> securityGroupIds;
-
   /// The private subnet IDs in which the environment should be created. MWAA requires two subnets.
   final pulumi.Input<List<String>> subnetIds;
 
@@ -26,12 +25,9 @@ class EnvironmentNetworkConfiguration {
 
   factory EnvironmentNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return EnvironmentNetworkConfiguration(
-      securityGroupIds: pulumi.Input.fromValue(
-        (map['securityGroupIds'] as List).cast<String>(),
-      ),
-      subnetIds: pulumi.Input.fromValue(
-        (map['subnetIds'] as List).cast<String>(),
-      ),
+      securityGroupIds: pulumi.Input.fromValue((map['securityGroupIds'] as List).cast<String>()),
+      subnetIds: pulumi.Input.fromValue((map['subnetIds'] as List).cast<String>()),
     );
   }
 }
+

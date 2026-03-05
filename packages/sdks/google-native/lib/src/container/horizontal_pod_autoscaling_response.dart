@@ -9,10 +9,14 @@ class HorizontalPodAutoscalingResponse {
 
   /// Creates a new [HorizontalPodAutoscalingResponse].
   /// [disabled] Whether the Horizontal Pod Autoscaling feature is enabled in the cluster. When enabled, it ensures that metrics are collected into Stackdriver Monitoring.
-  HorizontalPodAutoscalingResponse({required this.disabled});
+  HorizontalPodAutoscalingResponse({
+    required this.disabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disabled': disabled};
+    return <String, dynamic>{
+      'disabled': disabled,
+    };
   }
 
   factory HorizontalPodAutoscalingResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class HorizontalPodAutoscalingResponse {
     );
   }
 }
+

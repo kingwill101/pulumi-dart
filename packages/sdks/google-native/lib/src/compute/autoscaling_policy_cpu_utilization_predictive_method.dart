@@ -8,16 +8,13 @@ enum AutoscalingPolicyCpuUtilizationPredictiveMethod {
   const AutoscalingPolicyCpuUtilizationPredictiveMethod(this.wireValue);
   final String wireValue;
 
-  static AutoscalingPolicyCpuUtilizationPredictiveMethod fromValue(
-    String value,
-  ) {
+  static AutoscalingPolicyCpuUtilizationPredictiveMethod fromValue(String value) {
     for (final item in AutoscalingPolicyCpuUtilizationPredictiveMethod.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AutoscalingPolicyCpuUtilizationPredictiveMethod value: $value',
-    );
+    throw ArgumentError('Unknown AutoscalingPolicyCpuUtilizationPredictiveMethod value: $value');
   }
 }
+

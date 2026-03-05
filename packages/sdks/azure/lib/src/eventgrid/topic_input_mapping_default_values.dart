@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicInputMappingDefaultValues {
   /// Specifies the default data version of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
   final pulumi.Input<String>? dataVersion;
-
   /// Specifies the default event type of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
   final pulumi.Input<String>? eventType;
-
   /// Specifies the default subject of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
   final pulumi.Input<String>? subject;
 
@@ -32,21 +30,10 @@ class TopicInputMappingDefaultValues {
 
   factory TopicInputMappingDefaultValues.fromMap(Map<String, dynamic> map) {
     return TopicInputMappingDefaultValues(
-      dataVersion: (() {
-        final guardedValue = map['dataVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventType: (() {
-        final guardedValue = map['eventType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subject: (() {
-        final guardedValue = map['subject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataVersion: (() { final guardedValue = map['dataVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventType: (() { final guardedValue = map['eventType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subject: (() { final guardedValue = map['subject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

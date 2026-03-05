@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SelectedCertificateInput {
   /// Name of certificate to be exported.
   final pulumi.Input<String> certificateName;
-
   /// Password to use for encrypting the exported certificate.
   final pulumi.Input<String> password;
 
@@ -32,3 +31,4 @@ class SelectedCertificateInput {
     );
   }
 }
+

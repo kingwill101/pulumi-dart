@@ -264,29 +264,20 @@ import 'domain_association_state.dart';
 class DomainAssociation extends pulumi.CustomResource {
   /// Unique ID for an Amplify app.
   late final pulumi.Output<String> appId;
-
   /// ARN for the domain association.
   late final pulumi.Output<String> arn;
-
   /// The type of SSL/TLS certificate to use for your custom domain. If you don't specify a certificate type, Amplify uses the default certificate that it provisions and manages for you.
-  late final pulumi.Output<DomainAssociationCertificateSettings>
-  certificateSettings;
-
+  late final pulumi.Output<DomainAssociationCertificateSettings> certificateSettings;
   /// DNS records for certificate verification in a space-delimited format (`&lt;record&gt; CNAME &lt;target&gt;`).
   late final pulumi.Output<String> certificateVerificationDnsRecord;
-
   /// Domain name for the domain association.
   late final pulumi.Output<String> domainName;
-
   /// Enables the automated creation of subdomains for branches.
   late final pulumi.Output<bool?> enableAutoSubDomain;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Setting for the subdomain. Documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> subDomains;
-
   /// If enabled, the resource will wait for the domain association status to change to `PENDING_DEPLOYMENT` or `AVAILABLE`. Setting this to `false` will skip the process. Default: `true`.
   late final pulumi.Output<bool?> waitForVerification;
 
@@ -299,26 +290,15 @@ class DomainAssociation extends pulumi.CustomResource {
     DomainAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:amplify/domainAssociation:DomainAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:amplify/domainAssociation:DomainAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     arn = registerOutput<String>('arn');
-    certificateSettings = registerOutput<DomainAssociationCertificateSettings>(
-      'certificateSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainAssociationCertificateSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    certificateVerificationDnsRecord = registerOutput<String>(
-      'certificateVerificationDnsRecord',
-    );
+    certificateSettings = registerOutput<DomainAssociationCertificateSettings>('certificateSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAssociationCertificateSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificateVerificationDnsRecord = registerOutput<String>('certificateVerificationDnsRecord');
     domainName = registerOutput<String>('domainName');
     enableAutoSubDomain = registerOutput<bool?>('enableAutoSubDomain');
     region = registerOutput<String>('region');
@@ -344,26 +324,15 @@ class DomainAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:amplify/domainAssociation:DomainAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:amplify/domainAssociation:DomainAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     arn = registerOutput<String>('arn');
-    certificateSettings = registerOutput<DomainAssociationCertificateSettings>(
-      'certificateSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainAssociationCertificateSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    certificateVerificationDnsRecord = registerOutput<String>(
-      'certificateVerificationDnsRecord',
-    );
+    certificateSettings = registerOutput<DomainAssociationCertificateSettings>('certificateSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAssociationCertificateSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificateVerificationDnsRecord = registerOutput<String>('certificateVerificationDnsRecord');
     domainName = registerOutput<String>('domainName');
     enableAutoSubDomain = registerOutput<bool?>('enableAutoSubDomain');
     region = registerOutput<String>('region');

@@ -399,30 +399,24 @@ import 'cx_intent_state.dart';
 class CxIntent extends pulumi.CustomResource {
   /// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
   late final pulumi.Output<String?> description;
-
   /// The human-readable name of the intent, unique within the agent.
   late final pulumi.Output<String> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
   /// The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
   ///
   /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
   late final pulumi.Output<bool?> isDefaultNegativeIntent;
-
   /// Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
   /// The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
   ///
   /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
   late final pulumi.Output<bool?> isDefaultWelcomeIntent;
-
   /// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
   /// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
   /// To manage the fallback intent, set `is_default_negative_intent = true`
   late final pulumi.Output<bool?> isFallback;
-
   /// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
   /// Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -430,33 +424,26 @@ class CxIntent extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The language of the following fields in intent:
   /// Intent.training_phrases.parts.text
   /// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
   late final pulumi.Output<String?> languageCode;
-
   /// The unique identifier of the intent.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
   late final pulumi.Output<String> name;
-
   /// The collection of parameters associated with the intent.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
-
   /// The agent to create an intent for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   late final pulumi.Output<String?> parent;
-
   /// The priority of this intent. Higher numbers represent higher priorities.
   /// If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the Normal priority in the console.
   /// If the supplied value is negative, the intent is ignored in runtime detect intent requests.
   late final pulumi.Output<int?> priority;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The collection of training phrases the agent is trained on to identify the intent.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> trainingPhrases;
@@ -470,11 +457,11 @@ class CxIntent extends pulumi.CustomResource {
     CxIntentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxIntent:CxIntent',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:diagflow/cxIntent:CxIntent',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -488,9 +475,7 @@ class CxIntent extends pulumi.CustomResource {
     parent = registerOutput<String?>('parent');
     priority = registerOutput<int?>('priority');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    trainingPhrases = registerOutput<List<Map<String, dynamic>>?>(
-      'trainingPhrases',
-    );
+    trainingPhrases = registerOutput<List<Map<String, dynamic>>?>('trainingPhrases');
   }
 
   /// Gets an existing [CxIntent] resource's state with the given [name] and [id].
@@ -511,11 +496,11 @@ class CxIntent extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxIntent:CxIntent',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:diagflow/cxIntent:CxIntent',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -529,8 +514,6 @@ class CxIntent extends pulumi.CustomResource {
     parent = registerOutput<String?>('parent');
     priority = registerOutput<int?>('priority');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    trainingPhrases = registerOutput<List<Map<String, dynamic>>?>(
-      'trainingPhrases',
-    );
+    trainingPhrases = registerOutput<List<Map<String, dynamic>>?>('trainingPhrases');
   }
 }

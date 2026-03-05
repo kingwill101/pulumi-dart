@@ -11,17 +11,20 @@ class GetClusterAnonymousAuthenticationConfig {
 
   /// Creates a new [GetClusterAnonymousAuthenticationConfig].
   /// [mode] Setting this to LIMITED will restrict authentication of anonymous users to health check endpoints only.
-  GetClusterAnonymousAuthenticationConfig({required this.mode});
+  GetClusterAnonymousAuthenticationConfig({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
-  factory GetClusterAnonymousAuthenticationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterAnonymousAuthenticationConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAnonymousAuthenticationConfig(
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
+

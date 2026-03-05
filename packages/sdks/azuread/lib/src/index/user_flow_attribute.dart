@@ -126,13 +126,10 @@ import 'user_flow_attribute_state.dart';
 class UserFlowAttribute extends pulumi.CustomResource {
   /// The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
   late final pulumi.Output<String> attributeType;
-
   /// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> dataType;
-
   /// The description of the user flow attribute that is shown to the user at the time of sign-up.
   late final pulumi.Output<String> description;
-
   /// The display name of the user flow attribute. Changing this forces a new resource to be created.
   late final pulumi.Output<String> displayName;
 
@@ -145,11 +142,11 @@ class UserFlowAttribute extends pulumi.CustomResource {
     UserFlowAttributeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/userFlowAttribute:UserFlowAttribute',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/userFlowAttribute:UserFlowAttribute',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributeType = registerOutput<String>('attributeType');
     dataType = registerOutput<String>('dataType');
     description = registerOutput<String>('description');
@@ -174,11 +171,11 @@ class UserFlowAttribute extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/userFlowAttribute:UserFlowAttribute',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/userFlowAttribute:UserFlowAttribute',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributeType = registerOutput<String>('attributeType');
     dataType = registerOutput<String>('dataType');
     description = registerOutput<String>('description');

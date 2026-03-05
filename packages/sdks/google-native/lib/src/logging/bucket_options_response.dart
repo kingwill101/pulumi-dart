@@ -9,10 +9,8 @@ import 'linear_response.dart';
 class BucketOptionsResponse {
   /// The explicit buckets.
   final pulumi.Input<ExplicitResponse> explicitBuckets;
-
   /// The exponential buckets.
   final pulumi.Input<ExponentialResponse> exponentialBuckets;
-
   /// The linear bucket.
   final pulumi.Input<LinearResponse> linearBuckets;
 
@@ -28,41 +26,18 @@ class BucketOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'explicitBuckets':
-          pulumi.Input.mapInputValue<ExplicitResponse, Map<String, dynamic>>(
-            explicitBuckets,
-            (value) => value.toMap(),
-          ),
-      'exponentialBuckets':
-          pulumi.Input.mapInputValue<ExponentialResponse, Map<String, dynamic>>(
-            exponentialBuckets,
-            (value) => value.toMap(),
-          ),
-      'linearBuckets':
-          pulumi.Input.mapInputValue<LinearResponse, Map<String, dynamic>>(
-            linearBuckets,
-            (value) => value.toMap(),
-          ),
+      'explicitBuckets': pulumi.Input.mapInputValue<ExplicitResponse, Map<String, dynamic>>(explicitBuckets, (value) => value.toMap()),
+      'exponentialBuckets': pulumi.Input.mapInputValue<ExponentialResponse, Map<String, dynamic>>(exponentialBuckets, (value) => value.toMap()),
+      'linearBuckets': pulumi.Input.mapInputValue<LinearResponse, Map<String, dynamic>>(linearBuckets, (value) => value.toMap()),
     };
   }
 
   factory BucketOptionsResponse.fromMap(Map<String, dynamic> map) {
     return BucketOptionsResponse(
-      explicitBuckets: pulumi.Input.fromValue(
-        ExplicitResponse.fromMap(
-          (map['explicitBuckets']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      exponentialBuckets: pulumi.Input.fromValue(
-        ExponentialResponse.fromMap(
-          (map['exponentialBuckets']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      linearBuckets: pulumi.Input.fromValue(
-        LinearResponse.fromMap(
-          (map['linearBuckets']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      explicitBuckets: pulumi.Input.fromValue(ExplicitResponse.fromMap((map['explicitBuckets']! as Map).cast<String, dynamic>())),
+      exponentialBuckets: pulumi.Input.fromValue(ExponentialResponse.fromMap((map['exponentialBuckets']! as Map).cast<String, dynamic>())),
+      linearBuckets: pulumi.Input.fromValue(LinearResponse.fromMap((map['linearBuckets']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

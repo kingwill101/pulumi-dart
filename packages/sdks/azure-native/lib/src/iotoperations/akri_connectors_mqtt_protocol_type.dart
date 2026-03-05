@@ -14,3 +14,4 @@ enum AkriConnectorsMqttProtocolType {
     throw ArgumentError('Unknown AkriConnectorsMqttProtocolType value: $value');
   }
 }
+

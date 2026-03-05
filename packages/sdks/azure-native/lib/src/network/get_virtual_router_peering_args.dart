@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualRouterPeeringArgs {
   /// The name of the Virtual Router Peering.
   final pulumi.Input<String> peeringName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Virtual Router.
   final pulumi.Input<String> virtualRouterName;
 
@@ -37,12 +35,9 @@ class GetVirtualRouterPeeringArgs {
   factory GetVirtualRouterPeeringArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualRouterPeeringArgs(
       peeringName: pulumi.Input.fromValue(map['peeringName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualRouterName: pulumi.Input.fromValue(
-        map['virtualRouterName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualRouterName: pulumi.Input.fromValue(map['virtualRouterName'] as String),
     );
   }
 }
+

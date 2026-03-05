@@ -49,11 +49,7 @@ class GetPublicIpAddressPoolsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'pools':
-          pulumi.Input.encodeList<
-            GetPublicIpAddressPoolsPool,
-            Map<String, dynamic>
-          >(pools, (value) => value.toMap()),
+      'pools': pulumi.Input.encodeList<GetPublicIpAddressPoolsPool, Map<String, dynamic>>(pools, (value) => value.toMap()),
       'publicIpAddressPoolIds': ?publicIpAddressPoolIds,
       'publicIpAddressPoolName': ?publicIpAddressPoolName,
       'status': ?status,
@@ -64,43 +60,15 @@ class GetPublicIpAddressPoolsResult {
     return GetPublicIpAddressPoolsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      isp: (() {
-        final guardedValue = map['isp'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      isp: (() { final guardedValue = map['isp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pools: pulumi.Input.decodeList<GetPublicIpAddressPoolsPool>(
-        map['pools']!,
-        (value) => GetPublicIpAddressPoolsPool.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      publicIpAddressPoolIds: (() {
-        final guardedValue = map['publicIpAddressPoolIds'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      publicIpAddressPoolName: (() {
-        final guardedValue = map['publicIpAddressPoolName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pools: pulumi.Input.decodeList<GetPublicIpAddressPoolsPool>(map['pools']!, (value) => GetPublicIpAddressPoolsPool.fromMap((value as Map).cast<String, dynamic>())),
+      publicIpAddressPoolIds: (() { final guardedValue = map['publicIpAddressPoolIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      publicIpAddressPoolName: (() { final guardedValue = map['publicIpAddressPoolName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -9,38 +9,26 @@ import 'virtual_hub_id_response.dart';
 class GetExpressRouteGatewayResult {
   /// Configures this gateway to accept traffic from non Virtual WAN networks.
   final bool? allowNonVirtualWanTraffic;
-
   /// Configuration for auto scaling.
-  final ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration?
-  autoScaleConfiguration;
-
+  final ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration? autoScaleConfiguration;
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
-
   /// List of ExpressRoute connections to the ExpressRoute gateway.
   final List<ExpressRouteConnectionResponse>? expressRouteConnections;
-
   /// Resource ID.
   final String? id;
-
   /// Resource location.
   final String? location;
-
   /// Resource name.
   final String name;
-
   /// The provisioning state of the express route gateway resource.
   final String provisioningState;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Resource type.
   final String type;
-
   /// The Virtual Hub where the ExpressRoute gateway is or will be deployed.
   final VirtualHubIdResponse virtualHub;
 
@@ -78,14 +66,7 @@ class GetExpressRouteGatewayResult {
       'autoScaleConfiguration': ?autoScaleConfiguration?.toMap(),
       'azureApiVersion': azureApiVersion,
       'etag': etag,
-      'expressRouteConnections': ?(() {
-        final guardedValue = expressRouteConnections;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          ExpressRouteConnectionResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'expressRouteConnections': ?(() { final guardedValue = expressRouteConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<ExpressRouteConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': ?id,
       'location': ?location,
       'name': name,
@@ -98,51 +79,19 @@ class GetExpressRouteGatewayResult {
 
   factory GetExpressRouteGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteGatewayResult(
-      allowNonVirtualWanTraffic: (() {
-        final guardedValue = map['allowNonVirtualWanTraffic'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      autoScaleConfiguration: (() {
-        final guardedValue = map['autoScaleConfiguration'];
-        if (guardedValue == null) return null;
-        return ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      allowNonVirtualWanTraffic: (() { final guardedValue = map['allowNonVirtualWanTraffic']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      autoScaleConfiguration: (() { final guardedValue = map['autoScaleConfiguration']; if (guardedValue == null) return null; return ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      expressRouteConnections: (() {
-        final guardedValue = map['expressRouteConnections'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<ExpressRouteConnectionResponse>(
-          guardedValue,
-          (value) => ExpressRouteConnectionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      expressRouteConnections: (() { final guardedValue = map['expressRouteConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteConnectionResponse>(guardedValue, (value) => ExpressRouteConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      virtualHub: VirtualHubIdResponse.fromMap(
-        (map['virtualHub']! as Map).cast<String, dynamic>(),
-      ),
+      virtualHub: VirtualHubIdResponse.fromMap((map['virtualHub']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

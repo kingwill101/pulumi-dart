@@ -32,12 +32,9 @@ class GetUrlListArgs {
   factory GetUrlListArgs.fromMap(Map<String, dynamic> map) {
     return GetUrlListArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       urlListId: pulumi.Input.fromValue(map['urlListId'] as String),
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceWindowsEventState {
   /// Specifies the name of the Windows Event Log to collect events from.
   final pulumi.Input<String>? eventLogName;
-
   /// Specifies an array of event types applied to the specified event log. Possible values include `Error`, `Warning` and `Information`.
   final pulumi.Input<List<String>>? eventTypes;
-
   /// The name which should be used for this Log Analytics Windows Event DataSource. Changing this forces a new Log Analytics Windows Event DataSource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the Resource Group where the Log Analytics Windows Event DataSource should exist. Changing this forces a new Log Analytics Windows Event DataSource to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// The name of the Log Analytics Workspace where the Log Analytics Windows Event DataSource should exist. Changing this forces a new Log Analytics Windows Event DataSource to be created.
   final pulumi.Input<String>? workspaceName;
 
@@ -45,31 +41,12 @@ class DataSourceWindowsEventState {
 
   factory DataSourceWindowsEventState.fromMap(Map<String, dynamic> map) {
     return DataSourceWindowsEventState(
-      eventLogName: (() {
-        final guardedValue = map['eventLogName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventTypes: (() {
-        final guardedValue = map['eventTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workspaceName: (() {
-        final guardedValue = map['workspaceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eventLogName: (() { final guardedValue = map['eventLogName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventTypes: (() { final guardedValue = map['eventTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workspaceName: (() { final guardedValue = map['workspaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

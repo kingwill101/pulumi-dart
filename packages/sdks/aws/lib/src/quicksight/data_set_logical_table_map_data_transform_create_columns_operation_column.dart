@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn {
   /// A unique ID to identify a calculated column. During a dataset update, if the column ID of a calculated column matches that of an existing calculated column, Amazon QuickSight preserves the existing calculated column.
   final pulumi.Input<String> columnId;
-
   /// Column name.
   final pulumi.Input<String> columnName;
-
   /// An expression that defines the calculated column.
   final pulumi.Input<String> expression;
 
@@ -30,9 +28,7 @@ class DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn {
     };
   }
 
-  factory DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn(
       columnId: pulumi.Input.fromValue(map['columnId'] as String),
       columnName: pulumi.Input.fromValue(map['columnName'] as String),
@@ -40,3 +36,4 @@ class DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn {
     );
   }
 }
+

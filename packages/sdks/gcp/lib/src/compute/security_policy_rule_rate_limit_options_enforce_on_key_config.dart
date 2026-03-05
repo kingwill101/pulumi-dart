@@ -7,7 +7,6 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
   /// HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
   /// HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
   final pulumi.Input<String>? enforceOnKeyName;
-
   /// Determines the key to enforce the rateLimitThreshold on. Possible values are:
   /// * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
   /// * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
@@ -38,20 +37,11 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
     };
   }
 
-  factory SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(
-      enforceOnKeyName: (() {
-        final guardedValue = map['enforceOnKeyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enforceOnKeyType: (() {
-        final guardedValue = map['enforceOnKeyType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enforceOnKeyName: (() { final guardedValue = map['enforceOnKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enforceOnKeyType: (() { final guardedValue = map['enforceOnKeyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -23,3 +23,4 @@ enum FeatureStoreFeatureValueType {
     throw ArgumentError('Unknown FeatureStoreFeatureValueType value: $value');
   }
 }
+

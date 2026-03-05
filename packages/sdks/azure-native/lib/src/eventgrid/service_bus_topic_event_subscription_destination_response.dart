@@ -6,13 +6,10 @@ import 'dynamic_delivery_attribute_mapping_response.dart';
 /// Information about the service bus topic destination for an event subscription.
 class ServiceBusTopicEventSubscriptionDestinationResponse {
   /// Delivery attribute details.
-  final pulumi.Input<List<DynamicDeliveryAttributeMappingResponse>>?
-  deliveryAttributeMappings;
-
+  final pulumi.Input<List<DynamicDeliveryAttributeMappingResponse>>? deliveryAttributeMappings;
   /// Type of the endpoint for the event subscription destination.
   /// Expected value is 'ServiceBusTopic'.
   final pulumi.Input<String> endpointType;
-
   /// The Azure Resource Id that represents the endpoint of the Service Bus Topic destination of an event subscription.
   final pulumi.Input<String>? resourceId;
 
@@ -28,45 +25,18 @@ class ServiceBusTopicEventSubscriptionDestinationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deliveryAttributeMappings':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DynamicDeliveryAttributeMappingResponse>,
-            List<Map<String, dynamic>>
-          >(
-            deliveryAttributeMappings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DynamicDeliveryAttributeMappingResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'deliveryAttributeMappings': ?pulumi.Input.mapOptionalInputValue<List<DynamicDeliveryAttributeMappingResponse>, List<Map<String, dynamic>>>(deliveryAttributeMappings, (value) => pulumi.Input.encodeList<DynamicDeliveryAttributeMappingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'endpointType': endpointType,
       'resourceId': ?resourceId,
     };
   }
 
-  factory ServiceBusTopicEventSubscriptionDestinationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceBusTopicEventSubscriptionDestinationResponse.fromMap(Map<String, dynamic> map) {
     return ServiceBusTopicEventSubscriptionDestinationResponse(
-      deliveryAttributeMappings: (() {
-        final guardedValue = map['deliveryAttributeMappings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(
-            guardedValue,
-            (value) => DynamicDeliveryAttributeMappingResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      deliveryAttributeMappings: (() { final guardedValue = map['deliveryAttributeMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(guardedValue, (value) => DynamicDeliveryAttributeMappingResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -10,32 +10,23 @@ import 'google_cloud_apigee_v1_attribute.dart';
 class DeveloperAppArgs {
   /// List of API products associated with the developer app.
   final pulumi.Input<List<String>>? apiProducts;
-
   /// Developer app family.
   final pulumi.Input<String>? appFamily;
-
   /// ID of the developer app.
   final pulumi.Input<String>? appId;
-
   /// List of attributes for the developer app.
   final pulumi.Input<List<GoogleCloudApigeeV1Attribute>>? attributes;
-
   /// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
   final pulumi.Input<String>? callbackUrl;
-
   /// ID of the developer.
   final pulumi.Input<String> developerId;
-
   /// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
   final pulumi.Input<String>? keyExpiresIn;
-
   /// Name of the developer app.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
-
   /// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
   final pulumi.Input<List<String>>? scopes;
-
   /// Status of the credential. Valid values include `approved` or `revoked`.
   final pulumi.Input<String>? status;
 
@@ -70,18 +61,7 @@ class DeveloperAppArgs {
       'apiProducts': ?apiProducts,
       'appFamily': ?appFamily,
       'appId': ?appId,
-      'attributes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudApigeeV1Attribute>,
-            List<Map<String, dynamic>>
-          >(
-            attributes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudApigeeV1Attribute,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'attributes': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudApigeeV1Attribute>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1Attribute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'callbackUrl': ?callbackUrl,
       'developerId': developerId,
       'keyExpiresIn': ?keyExpiresIn,
@@ -94,60 +74,18 @@ class DeveloperAppArgs {
 
   factory DeveloperAppArgs.fromMap(Map<String, dynamic> map) {
     return DeveloperAppArgs(
-      apiProducts: (() {
-        final guardedValue = map['apiProducts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      appFamily: (() {
-        final guardedValue = map['appFamily'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      appId: (() {
-        final guardedValue = map['appId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      attributes: (() {
-        final guardedValue = map['attributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(
-            guardedValue,
-            (value) => GoogleCloudApigeeV1Attribute.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      callbackUrl: (() {
-        final guardedValue = map['callbackUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiProducts: (() { final guardedValue = map['apiProducts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      appFamily: (() { final guardedValue = map['appFamily']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      appId: (() { final guardedValue = map['appId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(guardedValue, (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      callbackUrl: (() { final guardedValue = map['callbackUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       developerId: pulumi.Input.fromValue(map['developerId'] as String),
-      keyExpiresIn: (() {
-        final guardedValue = map['keyExpiresIn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyExpiresIn: (() { final guardedValue = map['keyExpiresIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
-      scopes: (() {
-        final guardedValue = map['scopes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      scopes: (() { final guardedValue = map['scopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

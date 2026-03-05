@@ -356,55 +356,38 @@ import 'endpoint_state.dart';
 class Endpoint extends pulumi.CustomResource {
   /// The DNS name for users to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
   late final pulumi.Output<String?> applicationDomain;
-
   /// The type of attachment. Currently, only `vpc` is supported.
   late final pulumi.Output<String> attachmentType;
-
   /// The CIDR block details. This parameter is required if the endpoint type is `cidr`.
   late final pulumi.Output<EndpointCidrOptions?> cidrOptions;
-
   /// A description for the Verified Access endpoint.
   late final pulumi.Output<String?> description;
-
   /// Returned if endpoint has a device trust provider attached.
   late final pulumi.Output<String> deviceValidationDomain;
-
   /// The ARN of the public TLS/SSL certificate in AWS Certificate Manager to associate with the endpoint. The CN in the certificate must match the DNS name your end users will use to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
   late final pulumi.Output<String?> domainCertificateArn;
-
   /// A DNS name that is generated for the endpoint.
   late final pulumi.Output<String> endpointDomain;
-
   /// A custom identifier that is prepended to the DNS name that is generated for the endpoint.
   late final pulumi.Output<String?> endpointDomainPrefix;
-
   /// The type of Verified Access endpoint to create. Currently `load-balancer` or `network-interface` are supported.
   late final pulumi.Output<String> endpointType;
-
   /// The load balancer details. This parameter is required if the endpoint type is `load-balancer`.
   late final pulumi.Output<EndpointLoadBalancerOptions?> loadBalancerOptions;
-
   /// The network interface details. This parameter is required if the endpoint type is `network-interface`.
-  late final pulumi.Output<EndpointNetworkInterfaceOptions?>
-  networkInterfaceOptions;
-
+  late final pulumi.Output<EndpointNetworkInterfaceOptions?> networkInterfaceOptions;
   /// The policy document that is associated with this resource.
   late final pulumi.Output<String?> policyDocument;
   late final pulumi.Output<EndpointRdsOptions?> rdsOptions;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// List of the the security groups IDs to associate with the Verified Access endpoint.
   late final pulumi.Output<List<String>?> securityGroupIds;
-
   /// The options in use for server side encryption.
   late final pulumi.Output<EndpointSseSpecification> sseSpecification;
-
   /// Key-value tags for the Verified Access Endpoint. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The ID of the Verified Access group to associate the endpoint with.
   ///
   /// The following arguments are optional:
@@ -420,78 +403,31 @@ class Endpoint extends pulumi.CustomResource {
     EndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:verifiedaccess/endpoint:Endpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:verifiedaccess/endpoint:Endpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationDomain = registerOutput<String?>('applicationDomain');
     attachmentType = registerOutput<String>('attachmentType');
-    cidrOptions = registerOutput<EndpointCidrOptions?>(
-      'cidrOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointCidrOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cidrOptions = registerOutput<EndpointCidrOptions?>('cidrOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointCidrOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     deviceValidationDomain = registerOutput<String>('deviceValidationDomain');
     domainCertificateArn = registerOutput<String?>('domainCertificateArn');
     endpointDomain = registerOutput<String>('endpointDomain');
     endpointDomainPrefix = registerOutput<String?>('endpointDomainPrefix');
     endpointType = registerOutput<String>('endpointType');
-    loadBalancerOptions = registerOutput<EndpointLoadBalancerOptions?>(
-      'loadBalancerOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointLoadBalancerOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    networkInterfaceOptions = registerOutput<EndpointNetworkInterfaceOptions?>(
-      'networkInterfaceOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointNetworkInterfaceOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loadBalancerOptions = registerOutput<EndpointLoadBalancerOptions?>('loadBalancerOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointLoadBalancerOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkInterfaceOptions = registerOutput<EndpointNetworkInterfaceOptions?>('networkInterfaceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointNetworkInterfaceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyDocument = registerOutput<String?>('policyDocument');
-    rdsOptions = registerOutput<EndpointRdsOptions?>(
-      'rdsOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointRdsOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rdsOptions = registerOutput<EndpointRdsOptions?>('rdsOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointRdsOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
-    sseSpecification = registerOutput<EndpointSseSpecification>(
-      'sseSpecification',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointSseSpecification.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sseSpecification = registerOutput<EndpointSseSpecification>('sseSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointSseSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     verifiedAccessGroupId = registerOutput<String>('verifiedAccessGroupId');
-    verifiedAccessInstanceId = registerOutput<String>(
-      'verifiedAccessInstanceId',
-    );
+    verifiedAccessInstanceId = registerOutput<String>('verifiedAccessInstanceId');
   }
 
   /// Gets an existing [Endpoint] resource's state with the given [name] and [id].
@@ -512,77 +448,30 @@ class Endpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:verifiedaccess/endpoint:Endpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:verifiedaccess/endpoint:Endpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationDomain = registerOutput<String?>('applicationDomain');
     attachmentType = registerOutput<String>('attachmentType');
-    cidrOptions = registerOutput<EndpointCidrOptions?>(
-      'cidrOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointCidrOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cidrOptions = registerOutput<EndpointCidrOptions?>('cidrOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointCidrOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     deviceValidationDomain = registerOutput<String>('deviceValidationDomain');
     domainCertificateArn = registerOutput<String?>('domainCertificateArn');
     endpointDomain = registerOutput<String>('endpointDomain');
     endpointDomainPrefix = registerOutput<String?>('endpointDomainPrefix');
     endpointType = registerOutput<String>('endpointType');
-    loadBalancerOptions = registerOutput<EndpointLoadBalancerOptions?>(
-      'loadBalancerOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointLoadBalancerOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    networkInterfaceOptions = registerOutput<EndpointNetworkInterfaceOptions?>(
-      'networkInterfaceOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointNetworkInterfaceOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loadBalancerOptions = registerOutput<EndpointLoadBalancerOptions?>('loadBalancerOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointLoadBalancerOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkInterfaceOptions = registerOutput<EndpointNetworkInterfaceOptions?>('networkInterfaceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointNetworkInterfaceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyDocument = registerOutput<String?>('policyDocument');
-    rdsOptions = registerOutput<EndpointRdsOptions?>(
-      'rdsOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointRdsOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rdsOptions = registerOutput<EndpointRdsOptions?>('rdsOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointRdsOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
-    sseSpecification = registerOutput<EndpointSseSpecification>(
-      'sseSpecification',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointSseSpecification.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sseSpecification = registerOutput<EndpointSseSpecification>('sseSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointSseSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     verifiedAccessGroupId = registerOutput<String>('verifiedAccessGroupId');
-    verifiedAccessInstanceId = registerOutput<String>(
-      'verifiedAccessInstanceId',
-    );
+    verifiedAccessInstanceId = registerOutput<String>('verifiedAccessInstanceId');
   }
 }

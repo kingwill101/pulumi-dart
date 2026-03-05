@@ -14,14 +14,15 @@ class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sqlExpression': sqlExpression};
+    return <String, dynamic>{
+      'sqlExpression': sqlExpression,
+    };
   }
 
-  factory GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse(
       sqlExpression: pulumi.Input.fromValue(map['sqlExpression'] as String),
     );
   }
 }
+

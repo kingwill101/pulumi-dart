@@ -264,50 +264,34 @@ import 'system_data_response.dart';
 class OperatorApiConnection extends pulumi.CustomResource {
   /// Type of the account the user has with the Operator's Network API infrastructure. AzureManaged | UserManaged.
   late final pulumi.Output<String> accountType;
-
   /// Application ID of the App Developer that is registered with the Operator in a specific country/region.
   late final pulumi.Output<String?> appId;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The Network API for the current operator in the country/region provided in the linked Operator API Plan.
   late final pulumi.Output<String> camaraApiName;
-
   /// Details about the Application that would use the Operator's Network APIs.
-  late final pulumi.Output<ApplicationPropertiesResponse?>
-  configuredApplication;
-
+  late final pulumi.Output<ApplicationPropertiesResponse?> configuredApplication;
   /// Reference to the APC Gateway resource ID.
   late final pulumi.Output<String> gatewayId;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Reference to the Operator API Plan Resource ID.
   late final pulumi.Output<String> operatorApiPlanId;
-
   /// Name of the Operator in the linked Operator API Plan belongs to.
   late final pulumi.Output<String> operatorName;
-
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
-
   /// Details about the SaaS offer purchased from the marketplace.
   late final pulumi.Output<SaasPropertiesResponse?> saasProperties;
-
   /// The status of the OperatorApiConnection resource.
   late final pulumi.Output<StatusResponse> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -320,61 +304,25 @@ class OperatorApiConnection extends pulumi.CustomResource {
     OperatorApiConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:programmableconnectivity:OperatorApiConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:programmableconnectivity:OperatorApiConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountType = registerOutput<String>('accountType');
     appId = registerOutput<String?>('appId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     camaraApiName = registerOutput<String>('camaraApiName');
-    configuredApplication = registerOutput<ApplicationPropertiesResponse?>(
-      'configuredApplication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    configuredApplication = registerOutput<ApplicationPropertiesResponse?>('configuredApplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gatewayId = registerOutput<String>('gatewayId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     operatorApiPlanId = registerOutput<String>('operatorApiPlanId');
     operatorName = registerOutput<String>('operatorName');
     provisioningState = registerOutput<String>('provisioningState');
-    saasProperties = registerOutput<SaasPropertiesResponse?>(
-      'saasProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SaasPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<StatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    saasProperties = registerOutput<SaasPropertiesResponse?>('saasProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SaasPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<StatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

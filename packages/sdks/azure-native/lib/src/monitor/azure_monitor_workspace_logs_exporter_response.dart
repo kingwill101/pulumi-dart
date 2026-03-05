@@ -9,10 +9,8 @@ import 'concurrency_configuration_response.dart';
 class AzureMonitorWorkspaceLogsExporterResponse {
   /// API configurations for Azure Monitor workspace exporter.
   final pulumi.Input<AzureMonitorWorkspaceLogsApiConfigResponse> api;
-
   /// Cache configurations.
   final pulumi.Input<CacheConfigurationResponse>? cache;
-
   /// Concurrency configuration for the exporter.
   final pulumi.Input<ConcurrencyConfigurationResponse>? concurrency;
 
@@ -28,51 +26,18 @@ class AzureMonitorWorkspaceLogsExporterResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'api':
-          pulumi.Input.mapInputValue<
-            AzureMonitorWorkspaceLogsApiConfigResponse,
-            Map<String, dynamic>
-          >(api, (value) => value.toMap()),
-      'cache':
-          ?pulumi.Input.mapOptionalInputValue<
-            CacheConfigurationResponse,
-            Map<String, dynamic>
-          >(cache, (value) => value.toMap()),
-      'concurrency':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConcurrencyConfigurationResponse,
-            Map<String, dynamic>
-          >(concurrency, (value) => value.toMap()),
+      'api': pulumi.Input.mapInputValue<AzureMonitorWorkspaceLogsApiConfigResponse, Map<String, dynamic>>(api, (value) => value.toMap()),
+      'cache': ?pulumi.Input.mapOptionalInputValue<CacheConfigurationResponse, Map<String, dynamic>>(cache, (value) => value.toMap()),
+      'concurrency': ?pulumi.Input.mapOptionalInputValue<ConcurrencyConfigurationResponse, Map<String, dynamic>>(concurrency, (value) => value.toMap()),
     };
   }
 
-  factory AzureMonitorWorkspaceLogsExporterResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureMonitorWorkspaceLogsExporterResponse.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspaceLogsExporterResponse(
-      api: pulumi.Input.fromValue(
-        AzureMonitorWorkspaceLogsApiConfigResponse.fromMap(
-          (map['api']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      cache: (() {
-        final guardedValue = map['cache'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CacheConfigurationResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      concurrency: (() {
-        final guardedValue = map['concurrency'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConcurrencyConfigurationResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      api: pulumi.Input.fromValue(AzureMonitorWorkspaceLogsApiConfigResponse.fromMap((map['api']! as Map).cast<String, dynamic>())),
+      cache: (() { final guardedValue = map['cache']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      concurrency: (() { final guardedValue = map['concurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConcurrencyConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

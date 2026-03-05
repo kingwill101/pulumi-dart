@@ -316,20 +316,15 @@ import 'flexible_server_active_directory_administratory_state.dart';
 /// ```sh
 /// $ pulumi import azure:mysql/flexibleServerActiveDirectoryAdministratory:FlexibleServerActiveDirectoryAdministratory example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1/providers/Microsoft.DBforMySQL/flexibleServers/server1/administrators/ActiveDirectory
 /// ```
-class FlexibleServerActiveDirectoryAdministratory
-    extends pulumi.CustomResource {
+class FlexibleServerActiveDirectoryAdministratory extends pulumi.CustomResource {
   /// The resource ID of the identity used for AAD Authentication.
   late final pulumi.Output<String> identityId;
-
   /// The login name of the principal to set as the server administrator
   late final pulumi.Output<String> login;
-
   /// The ID of the principal to set as the server administrator. For a managed identity this should be the Client ID of the identity.
   late final pulumi.Output<String> objectId;
-
   /// The resource ID of the MySQL Flexible Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
-
   /// The Azure Tenant ID.
   late final pulumi.Output<String> tenantId;
 
@@ -342,11 +337,11 @@ class FlexibleServerActiveDirectoryAdministratory
     FlexibleServerActiveDirectoryAdministratoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mysql/flexibleServerActiveDirectoryAdministratory:FlexibleServerActiveDirectoryAdministratory',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mysql/flexibleServerActiveDirectoryAdministratory:FlexibleServerActiveDirectoryAdministratory',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     identityId = registerOutput<String>('identityId');
     login = registerOutput<String>('login');
     objectId = registerOutput<String>('objectId');
@@ -372,11 +367,11 @@ class FlexibleServerActiveDirectoryAdministratory
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mysql/flexibleServerActiveDirectoryAdministratory:FlexibleServerActiveDirectoryAdministratory',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mysql/flexibleServerActiveDirectoryAdministratory:FlexibleServerActiveDirectoryAdministratory',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     identityId = registerOutput<String>('identityId');
     login = registerOutput<String>('login');
     objectId = registerOutput<String>('objectId');

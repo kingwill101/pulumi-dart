@@ -253,29 +253,20 @@ import 'linked_service_odbc_state.dart';
 class LinkedServiceOdbc extends pulumi.CustomResource {
   /// A map of additional properties to associate with the Data Factory Linked Service ODBC.
   late final pulumi.Output<Map<String, String>?> additionalProperties;
-
   /// List of tags that can be used for describing the Data Factory Linked Service ODBC.
   late final pulumi.Output<List<String>?> annotations;
-
   /// A `basic_authentication` block as defined below.
-  late final pulumi.Output<LinkedServiceOdbcBasicAuthentication?>
-  basicAuthentication;
-
+  late final pulumi.Output<LinkedServiceOdbcBasicAuthentication?> basicAuthentication;
   /// The connection string in which to authenticate with ODBC.
   late final pulumi.Output<String> connectionString;
-
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
-
   /// The description for the Data Factory Linked Service ODBC.
   late final pulumi.Output<String?> description;
-
   /// The integration runtime reference to associate with the Data Factory Linked Service ODBC.
   late final pulumi.Output<String?> integrationRuntimeName;
-
   /// Specifies the name of the Data Factory Linked Service ODBC. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
-
   /// A map of parameters to associate with the Data Factory Linked Service ODBC.
   late final pulumi.Output<Map<String, String>?> parameters;
 
@@ -288,25 +279,14 @@ class LinkedServiceOdbc extends pulumi.CustomResource {
     LinkedServiceOdbcArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/linkedServiceOdbc:LinkedServiceOdbc',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+          'azure:datafactory/linkedServiceOdbc:LinkedServiceOdbc',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
-    basicAuthentication = registerOutput<LinkedServiceOdbcBasicAuthentication?>(
-      'basicAuthentication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinkedServiceOdbcBasicAuthentication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    basicAuthentication = registerOutput<LinkedServiceOdbcBasicAuthentication?>('basicAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceOdbcBasicAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionString = registerOutput<String>('connectionString');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
@@ -333,25 +313,14 @@ class LinkedServiceOdbc extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/linkedServiceOdbc:LinkedServiceOdbc',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+          'azure:datafactory/linkedServiceOdbc:LinkedServiceOdbc',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
-    basicAuthentication = registerOutput<LinkedServiceOdbcBasicAuthentication?>(
-      'basicAuthentication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinkedServiceOdbcBasicAuthentication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    basicAuthentication = registerOutput<LinkedServiceOdbcBasicAuthentication?>('basicAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceOdbcBasicAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionString = registerOutput<String>('connectionString');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');

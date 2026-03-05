@@ -9,31 +9,20 @@ class GetAppSpecServiceAutoscalingMetrics {
 
   /// Creates a new [GetAppSpecServiceAutoscalingMetrics].
   /// [cpu] Settings for scaling the component based on CPU utilization.
-  GetAppSpecServiceAutoscalingMetrics({this.cpu});
+  GetAppSpecServiceAutoscalingMetrics({
+    this.cpu,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cpu':
-          ?pulumi.Input.mapOptionalInputValue<
-            GetAppSpecServiceAutoscalingMetricsCpu,
-            Map<String, dynamic>
-          >(cpu, (value) => value.toMap()),
+      'cpu': ?pulumi.Input.mapOptionalInputValue<GetAppSpecServiceAutoscalingMetricsCpu, Map<String, dynamic>>(cpu, (value) => value.toMap()),
     };
   }
 
-  factory GetAppSpecServiceAutoscalingMetrics.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAppSpecServiceAutoscalingMetrics.fromMap(Map<String, dynamic> map) {
     return GetAppSpecServiceAutoscalingMetrics(
-      cpu: (() {
-        final guardedValue = map['cpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GetAppSpecServiceAutoscalingMetricsCpu.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetAppSpecServiceAutoscalingMetricsCpu.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

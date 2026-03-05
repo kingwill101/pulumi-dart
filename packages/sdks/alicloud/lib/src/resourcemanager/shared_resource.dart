@@ -319,26 +319,20 @@ import 'shared_resource_state.dart';
 class SharedResource extends pulumi.CustomResource {
   /// The time when the shared resource was associated with the resource share.
   late final pulumi.Output<String> createTime;
-
   /// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> permissionName;
-
   /// Associated resource ARN.
   ///
   /// &gt; **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
   late final pulumi.Output<String> resourceArn;
-
   /// The ID of the shared resource.
   late final pulumi.Output<String> resourceId;
-
   /// The ID of the resource share.
   late final pulumi.Output<String> resourceShareId;
-
   /// The type of the shared resource.
   late final pulumi.Output<String> resourceType;
-
   /// The association status.
   late final pulumi.Output<String> status;
 
@@ -351,11 +345,11 @@ class SharedResource extends pulumi.CustomResource {
     SharedResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/sharedResource:SharedResource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/sharedResource:SharedResource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     permissionName = registerOutput<String?>('permissionName');
     resourceArn = registerOutput<String>('resourceArn');
@@ -383,11 +377,11 @@ class SharedResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/sharedResource:SharedResource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/sharedResource:SharedResource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     permissionName = registerOutput<String?>('permissionName');
     resourceArn = registerOutput<String>('resourceArn');

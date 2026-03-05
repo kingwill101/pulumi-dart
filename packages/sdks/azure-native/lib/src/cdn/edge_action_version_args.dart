@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdgeActionVersionArgs {
   /// The deployment type
   final pulumi.Input<String> deploymentType;
-
   /// The name of the Edge Action
   final pulumi.Input<String> edgeActionName;
-
   /// The active state
   final pulumi.Input<String> isDefaultVersion;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The name of the Edge Action version
   final pulumi.Input<String>? version;
 
@@ -62,29 +56,12 @@ class EdgeActionVersionArgs {
     return EdgeActionVersionArgs(
       deploymentType: pulumi.Input.fromValue(map['deploymentType'] as String),
       edgeActionName: pulumi.Input.fromValue(map['edgeActionName'] as String),
-      isDefaultVersion: pulumi.Input.fromValue(
-        map['isDefaultVersion'] as String,
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      isDefaultVersion: pulumi.Input.fromValue(map['isDefaultVersion'] as String),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

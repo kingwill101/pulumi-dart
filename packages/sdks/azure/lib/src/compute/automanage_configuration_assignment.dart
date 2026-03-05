@@ -506,7 +506,6 @@ import 'automanage_configuration_assignment_state.dart';
 class AutomanageConfigurationAssignment extends pulumi.CustomResource {
   /// The ARM resource ID of the Automanage Configuration to assign to the Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<String> configurationId;
-
   /// The ARM resource ID of the Virtual Machine to assign the Automanage Configuration to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineId;
 
@@ -519,11 +518,11 @@ class AutomanageConfigurationAssignment extends pulumi.CustomResource {
     AutomanageConfigurationAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/automanageConfigurationAssignment:AutomanageConfigurationAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/automanageConfigurationAssignment:AutomanageConfigurationAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configurationId = registerOutput<String>('configurationId');
     virtualMachineId = registerOutput<String>('virtualMachineId');
   }
@@ -546,11 +545,11 @@ class AutomanageConfigurationAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/automanageConfigurationAssignment:AutomanageConfigurationAssignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/automanageConfigurationAssignment:AutomanageConfigurationAssignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configurationId = registerOutput<String>('configurationId');
     virtualMachineId = registerOutput<String>('virtualMachineId');
   }

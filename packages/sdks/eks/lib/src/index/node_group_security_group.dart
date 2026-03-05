@@ -6,7 +6,6 @@ import 'package:pulumi_aws/ec2.dart' as pulumi_aws_ec2;
 class NodeGroupSecurityGroup extends pulumi.ComponentResource {
   /// The security group for node groups with the default ingress & egress rules required to connect and work with the EKS cluster security group.
   late final pulumi.Output<pulumi_aws_ec2.SecurityGroup?> securityGroup;
-
   /// The EKS cluster ingress rule.
   late final pulumi.Output<pulumi_aws_ec2.SecurityGroupRule?> securityGroupRule;
 
@@ -19,17 +18,13 @@ class NodeGroupSecurityGroup extends pulumi.ComponentResource {
     NodeGroupSecurityGroupArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'eks:index:NodeGroupSecurityGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       ) {
-    securityGroup = registerOutput<pulumi_aws_ec2.SecurityGroup?>(
-      'securityGroup',
-    );
-    securityGroupRule = registerOutput<pulumi_aws_ec2.SecurityGroupRule?>(
-      'securityGroupRule',
-    );
+          'eks:index:NodeGroupSecurityGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        ) {
+    securityGroup = registerOutput<pulumi_aws_ec2.SecurityGroup?>('securityGroup');
+    securityGroupRule = registerOutput<pulumi_aws_ec2.SecurityGroupRule?>('securityGroupRule');
   }
 }

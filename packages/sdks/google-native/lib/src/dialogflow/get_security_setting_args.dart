@@ -32,14 +32,9 @@ class GetSecuritySettingArgs {
   factory GetSecuritySettingArgs.fromMap(Map<String, dynamic> map) {
     return GetSecuritySettingArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securitySettingId: pulumi.Input.fromValue(
-        map['securitySettingId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securitySettingId: pulumi.Input.fromValue(map['securitySettingId'] as String),
     );
   }
 }
+

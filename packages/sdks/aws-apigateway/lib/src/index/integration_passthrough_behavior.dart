@@ -15,3 +15,4 @@ enum IntegrationPassthroughBehavior {
     throw ArgumentError('Unknown IntegrationPassthroughBehavior value: $value');
   }
 }
+

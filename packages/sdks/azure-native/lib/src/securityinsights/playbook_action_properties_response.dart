@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlaybookActionPropertiesResponse {
   /// The resource id of the playbook resource.
   final pulumi.Input<String> logicAppResourceId;
-
   /// The tenant id of the playbook resource.
   final pulumi.Input<String>? tenantId;
 
@@ -26,14 +25,9 @@ class PlaybookActionPropertiesResponse {
 
   factory PlaybookActionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PlaybookActionPropertiesResponse(
-      logicAppResourceId: pulumi.Input.fromValue(
-        map['logicAppResourceId'] as String,
-      ),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      logicAppResourceId: pulumi.Input.fromValue(map['logicAppResourceId'] as String),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

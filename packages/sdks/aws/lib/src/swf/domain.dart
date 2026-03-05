@@ -118,25 +118,18 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN)
   late final pulumi.Output<String> arn;
-
   /// The domain description.
   late final pulumi.Output<String?> description;
-
   /// The name of the domain. If omitted, this provider will assign a random, unique name.
   late final pulumi.Output<String> name;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Length of time that SWF will continue to retain information about the workflow execution after the workflow execution is complete, must be between 0 and 90 days.
   late final pulumi.Output<String> workflowExecutionRetentionPeriodInDays;
 
@@ -144,13 +137,16 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_swf_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:swf/domain:Domain',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Domain(
+    String name, {
+    DomainArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:swf/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -158,9 +154,7 @@ class Domain extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    workflowExecutionRetentionPeriodInDays = registerOutput<String>(
-      'workflowExecutionRetentionPeriodInDays',
-    );
+    workflowExecutionRetentionPeriodInDays = registerOutput<String>('workflowExecutionRetentionPeriodInDays');
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -181,11 +175,11 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:swf/domain:Domain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:swf/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -193,8 +187,6 @@ class Domain extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    workflowExecutionRetentionPeriodInDays = registerOutput<String>(
-      'workflowExecutionRetentionPeriodInDays',
-    );
+    workflowExecutionRetentionPeriodInDays = registerOutput<String>('workflowExecutionRetentionPeriodInDays');
   }
 }

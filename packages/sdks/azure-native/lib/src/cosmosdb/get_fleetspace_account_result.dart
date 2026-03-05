@@ -7,23 +7,16 @@ import 'system_data_response.dart';
 class GetFleetspaceAccountResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Configuration for fleetspace Account in the fleetspace.
-  final FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties?
-  globalDatabaseAccountProperties;
-
+  final FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties? globalDatabaseAccountProperties;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// A provisioning state of the Fleetspace Account.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -48,8 +41,7 @@ class GetFleetspaceAccountResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'globalDatabaseAccountProperties': ?globalDatabaseAccountProperties
-          ?.toMap(),
+      'globalDatabaseAccountProperties': ?globalDatabaseAccountProperties?.toMap(),
       'id': id,
       'name': name,
       'provisioningState': provisioningState,
@@ -61,20 +53,13 @@ class GetFleetspaceAccountResult {
   factory GetFleetspaceAccountResult.fromMap(Map<String, dynamic> map) {
     return GetFleetspaceAccountResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      globalDatabaseAccountProperties: (() {
-        final guardedValue = map['globalDatabaseAccountProperties'];
-        if (guardedValue == null) return null;
-        return FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      globalDatabaseAccountProperties: (() { final guardedValue = map['globalDatabaseAccountProperties']; if (guardedValue == null) return null; return FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListVirtualNetworkGatewayRadiusSecretsArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the virtual network gateway.
   final pulumi.Input<String> virtualNetworkGatewayName;
 
@@ -28,16 +27,11 @@ class ListVirtualNetworkGatewayRadiusSecretsArgs {
     };
   }
 
-  factory ListVirtualNetworkGatewayRadiusSecretsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListVirtualNetworkGatewayRadiusSecretsArgs.fromMap(Map<String, dynamic> map) {
     return ListVirtualNetworkGatewayRadiusSecretsArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualNetworkGatewayName: pulumi.Input.fromValue(
-        map['virtualNetworkGatewayName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualNetworkGatewayName: pulumi.Input.fromValue(map['virtualNetworkGatewayName'] as String),
     );
   }
 }
+

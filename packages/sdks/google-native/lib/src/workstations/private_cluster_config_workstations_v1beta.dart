@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateClusterConfigWorkstationsV1beta {
   /// Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
   final pulumi.Input<List<String>>? allowedProjects;
-
   /// Immutable. Whether Workstations endpoint is private.
   final pulumi.Input<bool>? enablePrivateEndpoint;
 
@@ -25,20 +24,11 @@ class PrivateClusterConfigWorkstationsV1beta {
     };
   }
 
-  factory PrivateClusterConfigWorkstationsV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrivateClusterConfigWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return PrivateClusterConfigWorkstationsV1beta(
-      allowedProjects: (() {
-        final guardedValue = map['allowedProjects'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      enablePrivateEndpoint: (() {
-        final guardedValue = map['enablePrivateEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      allowedProjects: (() { final guardedValue = map['allowedProjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      enablePrivateEndpoint: (() { final guardedValue = map['enablePrivateEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

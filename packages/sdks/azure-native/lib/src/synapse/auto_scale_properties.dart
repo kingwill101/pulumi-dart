@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoScaleProperties {
   /// Whether automatic scaling is enabled for the Big Data pool.
   final pulumi.Input<bool>? enabled;
-
   /// The maximum number of nodes the Big Data pool can support.
   final pulumi.Input<int>? maxNodeCount;
-
   /// The minimum number of nodes the Big Data pool can support.
   final pulumi.Input<int>? minNodeCount;
 
@@ -17,7 +15,11 @@ class AutoScaleProperties {
   /// [enabled] Whether automatic scaling is enabled for the Big Data pool.
   /// [maxNodeCount] The maximum number of nodes the Big Data pool can support.
   /// [minNodeCount] The minimum number of nodes the Big Data pool can support.
-  AutoScaleProperties({this.enabled, this.maxNodeCount, this.minNodeCount});
+  AutoScaleProperties({
+    this.enabled,
+    this.maxNodeCount,
+    this.minNodeCount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class AutoScaleProperties {
 
   factory AutoScaleProperties.fromMap(Map<String, dynamic> map) {
     return AutoScaleProperties(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      maxNodeCount: (() {
-        final guardedValue = map['maxNodeCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minNodeCount: (() {
-        final guardedValue = map['minNodeCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      maxNodeCount: (() { final guardedValue = map['maxNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minNodeCount: (() { final guardedValue = map['minNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

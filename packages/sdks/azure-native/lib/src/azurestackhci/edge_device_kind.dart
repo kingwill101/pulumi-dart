@@ -14,3 +14,4 @@ enum EdgeDeviceKind {
     throw ArgumentError('Unknown EdgeDeviceKind value: $value');
   }
 }
+

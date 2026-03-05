@@ -6,46 +6,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FetchOpts {
   /// Verify certificates of HTTPS-enabled servers using this CA bundle.
   final pulumi.Input<String>? caFile;
-
   /// Identify HTTPS client using this SSL certificate file.
   final pulumi.Input<String>? certFile;
-
   /// Location to write the chart. If this and tardir are specified, tardir is appended to this (default ".").
   final pulumi.Input<String>? destination;
-
   /// Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If –version is set, this is ignored.
   final pulumi.Input<bool>? devel;
-
   /// Location of your Helm config. Overrides $HELM_HOME (default "/Users/abc/.helm").
   final pulumi.Input<String>? home;
-
   /// Identify HTTPS client using this SSL key file.
   final pulumi.Input<String>? keyFile;
-
   /// Keyring containing public keys (default “/Users/abc/.gnupg/pubring.gpg”).
   final pulumi.Input<String>? keyring;
-
   /// Chart repository password.
   final pulumi.Input<String>? password;
-
   /// Fetch the provenance file, but don’t perform verification.
   final pulumi.Input<String>? prov;
-
   /// Chart repository url where to locate the requested chart.
   final pulumi.Input<String>? repo;
-
   /// If set to false, will leave the chart as a tarball after downloading.
   final pulumi.Input<bool>? untar;
-
   /// If untar is specified, this flag specifies the name of the directory into which the chart is expanded (default ".").
   final pulumi.Input<String>? untardir;
-
   /// Chart repository username.
   final pulumi.Input<String>? username;
-
   /// Verify the package against its signature.
   final pulumi.Input<bool>? verify;
-
   /// Specific version of a chart. Without this, the latest version is fetched.
   final pulumi.Input<String>? version;
 
@@ -105,81 +91,22 @@ class FetchOpts {
 
   factory FetchOpts.fromMap(Map<String, dynamic> map) {
     return FetchOpts(
-      caFile: (() {
-        final guardedValue = map['caFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certFile: (() {
-        final guardedValue = map['certFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destination: (() {
-        final guardedValue = map['destination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      devel: (() {
-        final guardedValue = map['devel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      home: (() {
-        final guardedValue = map['home'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyFile: (() {
-        final guardedValue = map['keyFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyring: (() {
-        final guardedValue = map['keyring'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prov: (() {
-        final guardedValue = map['prov'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      repo: (() {
-        final guardedValue = map['repo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      untar: (() {
-        final guardedValue = map['untar'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      untardir: (() {
-        final guardedValue = map['untardir'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      verify: (() {
-        final guardedValue = map['verify'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      caFile: (() { final guardedValue = map['caFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certFile: (() { final guardedValue = map['certFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      devel: (() { final guardedValue = map['devel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      home: (() { final guardedValue = map['home']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyFile: (() { final guardedValue = map['keyFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyring: (() { final guardedValue = map['keyring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prov: (() { final guardedValue = map['prov']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      repo: (() { final guardedValue = map['repo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      untar: (() { final guardedValue = map['untar']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      untardir: (() { final guardedValue = map['untardir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      verify: (() { final guardedValue = map['verify']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

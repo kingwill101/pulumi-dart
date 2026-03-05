@@ -396,46 +396,32 @@ import 'role_assignment_args.dart';
 class RoleAssignment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
   late final pulumi.Output<String?> condition;
-
   /// Version of the condition. Currently the only accepted value is '2.0'
   late final pulumi.Output<String?> conditionVersion;
-
   /// Id of the user who created the assignment
   late final pulumi.Output<String> createdBy;
-
   /// Time it was created
   late final pulumi.Output<String> createdOn;
-
   /// Id of the delegated managed identity resource
   late final pulumi.Output<String?> delegatedManagedIdentityResourceId;
-
   /// Description of role assignment
   late final pulumi.Output<String?> description;
-
   /// The role assignment name.
   late final pulumi.Output<String> name;
-
   /// The principal ID.
   late final pulumi.Output<String> principalId;
-
   /// The principal type of the assigned principal ID.
   late final pulumi.Output<String?> principalType;
-
   /// The role definition ID.
   late final pulumi.Output<String> roleDefinitionId;
-
   /// The role assignment scope.
   late final pulumi.Output<String> scope;
-
   /// The role assignment type.
   late final pulumi.Output<String> type;
-
   /// Id of the user who updated the assignment
   late final pulumi.Output<String> updatedBy;
-
   /// Time it was updated
   late final pulumi.Output<String> updatedOn;
 
@@ -448,19 +434,17 @@ class RoleAssignment extends pulumi.CustomResource {
     RoleAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:authorization:RoleAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:authorization:RoleAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     condition = registerOutput<String?>('condition');
     conditionVersion = registerOutput<String?>('conditionVersion');
     createdBy = registerOutput<String>('createdBy');
     createdOn = registerOutput<String>('createdOn');
-    delegatedManagedIdentityResourceId = registerOutput<String?>(
-      'delegatedManagedIdentityResourceId',
-    );
+    delegatedManagedIdentityResourceId = registerOutput<String?>('delegatedManagedIdentityResourceId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');

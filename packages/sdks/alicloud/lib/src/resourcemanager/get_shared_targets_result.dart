@@ -9,13 +9,10 @@ class GetSharedTargetsResult {
   final String id;
   final List<String> ids;
   final String? outputFile;
-
   /// The resource shared ID of resource manager.
   final String? resourceShareId;
-
   /// The status of shared target.
   final String? status;
-
   /// A list of Resource Manager Shared Targets. Each element contains the following attributes:
   final List<GetSharedTargetsTarget> targets;
 
@@ -42,11 +39,7 @@ class GetSharedTargetsResult {
       'outputFile': ?outputFile,
       'resourceShareId': ?resourceShareId,
       'status': ?status,
-      'targets':
-          pulumi.Input.encodeList<GetSharedTargetsTarget, Map<String, dynamic>>(
-            targets,
-            (value) => value.toMap(),
-          ),
+      'targets': pulumi.Input.encodeList<GetSharedTargetsTarget, Map<String, dynamic>>(targets, (value) => value.toMap()),
     };
   }
 
@@ -54,27 +47,11 @@ class GetSharedTargetsResult {
     return GetSharedTargetsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceShareId: (() {
-        final guardedValue = map['resourceShareId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      targets: pulumi.Input.decodeList<GetSharedTargetsTarget>(
-        map['targets']!,
-        (value) => GetSharedTargetsTarget.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceShareId: (() { final guardedValue = map['resourceShareId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      targets: pulumi.Input.decodeList<GetSharedTargetsTarget>(map['targets']!, (value) => GetSharedTargetsTarget.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

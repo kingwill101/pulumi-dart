@@ -5,14 +5,9 @@ import 'get_backup_plan_association_rules_config_info_last_backup_error.dart';
 
 class GetBackupPlanAssociationRulesConfigInfo {
   /// google.rpc.Status object to store the last backup error
-  final pulumi.Input<
-    List<GetBackupPlanAssociationRulesConfigInfoLastBackupError>
-  >
-  lastBackupErrors;
-
+  final pulumi.Input<List<GetBackupPlanAssociationRulesConfigInfoLastBackupError>> lastBackupErrors;
   /// State of last backup taken.
   final pulumi.Input<String> lastBackupState;
-
   /// Backup Rule id fetched from backup plan.
   final pulumi.Input<String> ruleId;
 
@@ -28,40 +23,18 @@ class GetBackupPlanAssociationRulesConfigInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lastBackupErrors':
-          pulumi.Input.mapInputValue<
-            List<GetBackupPlanAssociationRulesConfigInfoLastBackupError>,
-            List<Map<String, dynamic>>
-          >(
-            lastBackupErrors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetBackupPlanAssociationRulesConfigInfoLastBackupError,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'lastBackupErrors': pulumi.Input.mapInputValue<List<GetBackupPlanAssociationRulesConfigInfoLastBackupError>, List<Map<String, dynamic>>>(lastBackupErrors, (value) => pulumi.Input.encodeList<GetBackupPlanAssociationRulesConfigInfoLastBackupError, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastBackupState': lastBackupState,
       'ruleId': ruleId,
     };
   }
 
-  factory GetBackupPlanAssociationRulesConfigInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBackupPlanAssociationRulesConfigInfo.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanAssociationRulesConfigInfo(
-      lastBackupErrors: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetBackupPlanAssociationRulesConfigInfoLastBackupError
-        >(
-          map['lastBackupErrors']!,
-          (value) =>
-              GetBackupPlanAssociationRulesConfigInfoLastBackupError.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      lastBackupErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBackupPlanAssociationRulesConfigInfoLastBackupError>(map['lastBackupErrors']!, (value) => GetBackupPlanAssociationRulesConfigInfoLastBackupError.fromMap((value as Map).cast<String, dynamic>()))),
       lastBackupState: pulumi.Input.fromValue(map['lastBackupState'] as String),
       ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
     );
   }
 }
+

@@ -406,13 +406,10 @@ import 'vpc_peering_state.dart';
 class VpcPeering extends pulumi.CustomResource {
   /// The date and time of when the VPC Peering was created.
   late final pulumi.Output<String> createdAt;
-
   /// A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
   late final pulumi.Output<String> name;
-
   /// The status of the VPC Peering.
   late final pulumi.Output<String> status;
-
   /// A set of two VPC IDs to be peered.
   late final pulumi.Output<List<String>> vpcIds;
 
@@ -425,11 +422,11 @@ class VpcPeering extends pulumi.CustomResource {
     VpcPeeringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/vpcPeering:VpcPeering',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/vpcPeering:VpcPeering',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');
@@ -454,11 +451,11 @@ class VpcPeering extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/vpcPeering:VpcPeering',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/vpcPeering:VpcPeering',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');

@@ -201,47 +201,33 @@ import 'sku_response.dart';
 class Gen1Environment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The time the resource was created.
   late final pulumi.Output<String> creationTime;
-
   /// The fully qualified domain name used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
   late final pulumi.Output<String> dataAccessFqdn;
-
   /// An id used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
   late final pulumi.Output<String> dataAccessId;
-
   /// ISO8601 timespan specifying the minimum number of days the environment's events will be available for query.
   late final pulumi.Output<String> dataRetentionTime;
-
   /// The kind of the environment.
   /// Expected value is 'Gen1'.
   late final pulumi.Output<String> kind;
-
   /// Resource location
   late final pulumi.Output<String> location;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// The list of event properties which will be used to partition data in the environment. Currently, only a single partition key property is supported.
   late final pulumi.Output<List<Map<String, dynamic>>?> partitionKeyProperties;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
   late final pulumi.Output<SkuResponse> sku;
-
   /// An object that represents the status of the environment, and its internal state in the Time Series Insights service.
   late final pulumi.Output<EnvironmentStatusResponse> status;
-
   /// The behavior the Time Series Insights service should take when the environment's capacity has been exceeded. If "PauseIngress" is specified, new events will not be read from the event source. If "PurgeOldData" is specified, new events will continue to be read and old events will be deleted from the environment. The default behavior is PurgeOldData.
   late final pulumi.Output<String?> storageLimitExceededBehavior;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -254,11 +240,11 @@ class Gen1Environment extends pulumi.CustomResource {
     Gen1EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:timeseriesinsights:Gen1Environment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:timeseriesinsights:Gen1Environment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String>('creationTime');
     dataAccessFqdn = registerOutput<String>('dataAccessFqdn');
@@ -267,33 +253,11 @@ class Gen1Environment extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    partitionKeyProperties = registerOutput<List<Map<String, dynamic>>?>(
-      'partitionKeyProperties',
-    );
+    partitionKeyProperties = registerOutput<List<Map<String, dynamic>>?>('partitionKeyProperties');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<SkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<EnvironmentStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnvironmentStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storageLimitExceededBehavior = registerOutput<String?>(
-      'storageLimitExceededBehavior',
-    );
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<EnvironmentStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageLimitExceededBehavior = registerOutput<String?>('storageLimitExceededBehavior');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

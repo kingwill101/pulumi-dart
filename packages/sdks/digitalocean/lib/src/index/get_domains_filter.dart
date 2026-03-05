@@ -7,15 +7,12 @@ class GetDomainsFilter {
   /// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
   /// that all of the `values` are present in the list or set.
   final pulumi.Input<bool>? all;
-
   /// Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
   final pulumi.Input<String> key;
-
   /// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
   /// substrings to find within the string field.
   final pulumi.Input<String>? matchBy;
-
   /// A list of values to match against the `key` field. Only retrieves domains
   /// where the `key` field takes on one or more of the values provided here.
   final pulumi.Input<List<String>> values;
@@ -43,18 +40,11 @@ class GetDomainsFilter {
 
   factory GetDomainsFilter.fromMap(Map<String, dynamic> map) {
     return GetDomainsFilter(
-      all: (() {
-        final guardedValue = map['all'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      all: (() { final guardedValue = map['all']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       key: pulumi.Input.fromValue(map['key'] as String),
-      matchBy: (() {
-        final guardedValue = map['matchBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      matchBy: (() { final guardedValue = map['matchBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

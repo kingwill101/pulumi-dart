@@ -25,9 +25,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork {
     };
   }
 
-  factory GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork(
       expirationTime: pulumi.Input.fromValue(map['expirationTime'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -35,3 +33,4 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIPv6FirewallRuleArgs {
   /// The name of the firewall rule.
   final pulumi.Input<String> firewallRuleName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -36,13 +34,10 @@ class GetIPv6FirewallRuleArgs {
 
   factory GetIPv6FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetIPv6FirewallRuleArgs(
-      firewallRuleName: pulumi.Input.fromValue(
-        map['firewallRuleName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      firewallRuleName: pulumi.Input.fromValue(map['firewallRuleName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
+

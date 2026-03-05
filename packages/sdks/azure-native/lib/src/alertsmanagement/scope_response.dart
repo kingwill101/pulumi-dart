@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScopeResponse {
   /// type of target scope
   final pulumi.Input<String>? scopeType;
-
   /// list of ARM IDs of the given scope type which will be the target of the given action rule.
   final pulumi.Input<List<String>>? values;
 
   /// Creates a new [ScopeResponse].
   /// [scopeType] type of target scope
   /// [values] list of ARM IDs of the given scope type which will be the target of the given action rule.
-  ScopeResponse({this.scopeType, this.values});
+  ScopeResponse({
+    this.scopeType,
+    this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scopeType': ?scopeType, 'values': ?values};
+    return <String, dynamic>{
+      'scopeType': ?scopeType,
+      'values': ?values,
+    };
   }
 
   factory ScopeResponse.fromMap(Map<String, dynamic> map) {
     return ScopeResponse(
-      scopeType: (() {
-        final guardedValue = map['scopeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      scopeType: (() { final guardedValue = map['scopeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

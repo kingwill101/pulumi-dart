@@ -37,12 +37,9 @@ class GetRegistryGroupIamPolicyArgs {
     return GetRegistryGroupIamPolicyArgs(
       groupId: pulumi.Input.fromValue(map['groupId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registryId: pulumi.Input.fromValue(map['registryId'] as String),
     );
   }
 }
+

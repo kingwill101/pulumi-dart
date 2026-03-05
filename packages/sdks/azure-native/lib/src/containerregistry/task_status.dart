@@ -15,3 +15,4 @@ enum TaskStatus {
     throw ArgumentError('Unknown TaskStatus value: $value');
   }
 }
+

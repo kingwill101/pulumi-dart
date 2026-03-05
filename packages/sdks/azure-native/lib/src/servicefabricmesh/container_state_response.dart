@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerStateResponse {
   /// Human-readable status of this state.
   final pulumi.Input<String>? detailStatus;
-
   /// The container exit code.
   final pulumi.Input<String>? exitCode;
-
   /// Date/time when the container state finished.
   final pulumi.Input<String>? finishTime;
-
   /// Date/time when the container state started.
   final pulumi.Input<String>? startTime;
-
   /// The state of this container
   final pulumi.Input<String>? state;
 
@@ -45,31 +41,12 @@ class ContainerStateResponse {
 
   factory ContainerStateResponse.fromMap(Map<String, dynamic> map) {
     return ContainerStateResponse(
-      detailStatus: (() {
-        final guardedValue = map['detailStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      exitCode: (() {
-        final guardedValue = map['exitCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      finishTime: (() {
-        final guardedValue = map['finishTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      detailStatus: (() { final guardedValue = map['detailStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      exitCode: (() { final guardedValue = map['exitCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      finishTime: (() { final guardedValue = map['finishTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

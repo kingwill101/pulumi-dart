@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallPolicyCertificateAuthorityResponse {
   /// Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
   final pulumi.Input<String>? keyVaultSecretId;
-
   /// Name of the CA certificate.
   final pulumi.Input<String>? name;
 
@@ -25,20 +24,11 @@ class FirewallPolicyCertificateAuthorityResponse {
     };
   }
 
-  factory FirewallPolicyCertificateAuthorityResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirewallPolicyCertificateAuthorityResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyCertificateAuthorityResponse(
-      keyVaultSecretId: (() {
-        final guardedValue = map['keyVaultSecretId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyVaultSecretId: (() { final guardedValue = map['keyVaultSecretId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

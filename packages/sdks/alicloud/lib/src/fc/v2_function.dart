@@ -24,67 +24,44 @@ import 'v2_function_state.dart';
 class V2Function extends pulumi.CustomResource {
   /// The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
   late final pulumi.Output<int> caPort;
-
   /// Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
   late final pulumi.Output<V2FunctionCode?> code;
-
   /// crc64 of function code.
   late final pulumi.Output<String> codeChecksum;
-
   /// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
   late final pulumi.Output<double?> cpu;
-
   /// create time of function.
   late final pulumi.Output<String> createTime;
-
   /// Custom-container runtime related function configuration. See `custom_container_config` below.
-  late final pulumi.Output<V2FunctionCustomContainerConfig?>
-  customContainerConfig;
-
+  late final pulumi.Output<V2FunctionCustomContainerConfig?> customContainerConfig;
   /// Function custom DNS configuration. See `custom_dns` below.
   late final pulumi.Output<V2FunctionCustomDns?> customDns;
-
   /// Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
-  late final pulumi.Output<V2FunctionCustomHealthCheckConfig?>
-  customHealthCheckConfig;
-
+  late final pulumi.Output<V2FunctionCustomHealthCheckConfig?> customHealthCheckConfig;
   /// Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
   late final pulumi.Output<V2FunctionCustomRuntimeConfig?> customRuntimeConfig;
-
   /// description of function.
   late final pulumi.Output<String?> description;
-
   /// The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
   late final pulumi.Output<int?> diskSize;
-
   /// The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
   late final pulumi.Output<Map<String, String>?> environmentVariables;
-
   /// The Function Compute service function arn. It formats as `acs:fc:&lt;region&gt;:&lt;uid&gt;:services/&lt;serviceName&gt;.LATEST/functions/&lt;functionName&gt;`.
   late final pulumi.Output<String> functionArn;
-
   /// function name.
   late final pulumi.Output<String> functionName;
-
   /// The GPU memory specification of the function, in MB, is a multiple of 1024MB.
   late final pulumi.Output<int?> gpuMemorySize;
-
   /// entry point of function.
   late final pulumi.Output<String> handler;
-
   /// max running time of initializer.
   late final pulumi.Output<int> initializationTimeout;
-
   /// initializer entry point of function.
   late final pulumi.Output<String?> initializer;
-
   /// The maximum concurrency allowed for a single function instance.
   late final pulumi.Output<int> instanceConcurrency;
-
   /// Instance lifecycle configuration. See `instance_lifecycle_config` below.
-  late final pulumi.Output<V2FunctionInstanceLifecycleConfig?>
-  instanceLifecycleConfig;
-
+  late final pulumi.Output<V2FunctionInstanceLifecycleConfig?> instanceLifecycleConfig;
   /// The instance type of the function. Valid values:
   /// - **e1**: Elastic instance.
   /// - **c1**: performance instance.
@@ -92,20 +69,15 @@ class V2Function extends pulumi.CustomResource {
   /// - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
   /// - **g1**: Same as **fc.gpu.tesla.1**.
   late final pulumi.Output<String> instanceType;
-
   /// List of layers.
   /// &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
   late final pulumi.Output<List<String>?> layers;
-
   /// memory size needed by function.
   late final pulumi.Output<int> memorySize;
-
   /// runtime of function code.
   late final pulumi.Output<String> runtime;
-
   /// The name of the function Service.
   late final pulumi.Output<String> serviceName;
-
   /// max running time of function.
   late final pulumi.Output<int> timeout;
 
@@ -118,71 +90,23 @@ class V2Function extends pulumi.CustomResource {
     V2FunctionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/v2Function:V2Function',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/v2Function:V2Function',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     caPort = registerOutput<int>('caPort');
-    code = registerOutput<V2FunctionCode?>(
-      'code',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2FunctionCode.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    code = registerOutput<V2FunctionCode?>('code', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2FunctionCode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     codeChecksum = registerOutput<String>('codeChecksum');
     cpu = registerOutput<double?>('cpu');
     createTime = registerOutput<String>('createTime');
-    customContainerConfig = registerOutput<V2FunctionCustomContainerConfig?>(
-      'customContainerConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2FunctionCustomContainerConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    customDns = registerOutput<V2FunctionCustomDns?>(
-      'customDns',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2FunctionCustomDns.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    customHealthCheckConfig =
-        registerOutput<V2FunctionCustomHealthCheckConfig?>(
-          'customHealthCheckConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2FunctionCustomHealthCheckConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    customRuntimeConfig = registerOutput<V2FunctionCustomRuntimeConfig?>(
-      'customRuntimeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2FunctionCustomRuntimeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customContainerConfig = registerOutput<V2FunctionCustomContainerConfig?>('customContainerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2FunctionCustomContainerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customDns = registerOutput<V2FunctionCustomDns?>('customDns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2FunctionCustomDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customHealthCheckConfig = registerOutput<V2FunctionCustomHealthCheckConfig?>('customHealthCheckConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2FunctionCustomHealthCheckConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customRuntimeConfig = registerOutput<V2FunctionCustomRuntimeConfig?>('customRuntimeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2FunctionCustomRuntimeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     diskSize = registerOutput<int?>('diskSize');
-    environmentVariables = registerOutput<Map<String, String>?>(
-      'environmentVariables',
-    );
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
     gpuMemorySize = registerOutput<int?>('gpuMemorySize');
@@ -190,17 +114,7 @@ class V2Function extends pulumi.CustomResource {
     initializationTimeout = registerOutput<int>('initializationTimeout');
     initializer = registerOutput<String?>('initializer');
     instanceConcurrency = registerOutput<int>('instanceConcurrency');
-    instanceLifecycleConfig =
-        registerOutput<V2FunctionInstanceLifecycleConfig?>(
-          'instanceLifecycleConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2FunctionInstanceLifecycleConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    instanceLifecycleConfig = registerOutput<V2FunctionInstanceLifecycleConfig?>('instanceLifecycleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2FunctionInstanceLifecycleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceType = registerOutput<String>('instanceType');
     layers = registerOutput<List<String>?>('layers');
     memorySize = registerOutput<int>('memorySize');
@@ -227,71 +141,23 @@ class V2Function extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/v2Function:V2Function',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/v2Function:V2Function',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     caPort = registerOutput<int>('caPort');
-    code = registerOutput<V2FunctionCode?>(
-      'code',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2FunctionCode.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    code = registerOutput<V2FunctionCode?>('code', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2FunctionCode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     codeChecksum = registerOutput<String>('codeChecksum');
     cpu = registerOutput<double?>('cpu');
     createTime = registerOutput<String>('createTime');
-    customContainerConfig = registerOutput<V2FunctionCustomContainerConfig?>(
-      'customContainerConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2FunctionCustomContainerConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    customDns = registerOutput<V2FunctionCustomDns?>(
-      'customDns',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2FunctionCustomDns.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    customHealthCheckConfig =
-        registerOutput<V2FunctionCustomHealthCheckConfig?>(
-          'customHealthCheckConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2FunctionCustomHealthCheckConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    customRuntimeConfig = registerOutput<V2FunctionCustomRuntimeConfig?>(
-      'customRuntimeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2FunctionCustomRuntimeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customContainerConfig = registerOutput<V2FunctionCustomContainerConfig?>('customContainerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2FunctionCustomContainerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customDns = registerOutput<V2FunctionCustomDns?>('customDns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2FunctionCustomDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customHealthCheckConfig = registerOutput<V2FunctionCustomHealthCheckConfig?>('customHealthCheckConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2FunctionCustomHealthCheckConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customRuntimeConfig = registerOutput<V2FunctionCustomRuntimeConfig?>('customRuntimeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2FunctionCustomRuntimeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     diskSize = registerOutput<int?>('diskSize');
-    environmentVariables = registerOutput<Map<String, String>?>(
-      'environmentVariables',
-    );
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
     gpuMemorySize = registerOutput<int?>('gpuMemorySize');
@@ -299,17 +165,7 @@ class V2Function extends pulumi.CustomResource {
     initializationTimeout = registerOutput<int>('initializationTimeout');
     initializer = registerOutput<String?>('initializer');
     instanceConcurrency = registerOutput<int>('instanceConcurrency');
-    instanceLifecycleConfig =
-        registerOutput<V2FunctionInstanceLifecycleConfig?>(
-          'instanceLifecycleConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2FunctionInstanceLifecycleConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    instanceLifecycleConfig = registerOutput<V2FunctionInstanceLifecycleConfig?>('instanceLifecycleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2FunctionInstanceLifecycleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceType = registerOutput<String>('instanceType');
     layers = registerOutput<List<String>?>('layers');
     memorySize = registerOutput<int>('memorySize');

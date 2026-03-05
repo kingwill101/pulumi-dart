@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationRecoveryPlanArgs {
   /// Name of the recovery plan.
   final pulumi.Input<String> recoveryPlanName;
-
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
 
@@ -36,13 +34,10 @@ class GetReplicationRecoveryPlanArgs {
 
   factory GetReplicationRecoveryPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationRecoveryPlanArgs(
-      recoveryPlanName: pulumi.Input.fromValue(
-        map['recoveryPlanName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      recoveryPlanName: pulumi.Input.fromValue(map['recoveryPlanName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

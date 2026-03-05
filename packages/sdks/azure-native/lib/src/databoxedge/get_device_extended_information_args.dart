@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeviceExtendedInformationArgs {
   /// The device name.
   final pulumi.Input<String> deviceName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetDeviceExtendedInformationArgs {
   factory GetDeviceExtendedInformationArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceExtendedInformationArgs(
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

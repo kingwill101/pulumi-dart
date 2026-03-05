@@ -5,14 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVariablesInt {
   /// The description of the Automation Variable.
   final pulumi.Input<String> description;
-
   /// Specifies if the Automation Variable is encrypted.
   final pulumi.Input<bool> encrypted;
   final pulumi.Input<String> id;
-
   /// The name of the Automation Variable.
   final pulumi.Input<String> name;
-
   /// The value of the Automation Variable.
   final pulumi.Input<int> value;
 
@@ -50,3 +47,4 @@ class GetVariablesInt {
     );
   }
 }
+

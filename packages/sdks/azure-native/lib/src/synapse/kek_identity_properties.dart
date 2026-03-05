@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KekIdentityProperties {
   /// Boolean specifying whether to use system assigned identity or not
   final pulumi.Input<dynamic>? useSystemAssignedIdentity;
-
   /// User assigned identity resource Id
   final pulumi.Input<String>? userAssignedIdentity;
 
@@ -27,16 +26,9 @@ class KekIdentityProperties {
 
   factory KekIdentityProperties.fromMap(Map<String, dynamic> map) {
     return KekIdentityProperties(
-      useSystemAssignedIdentity: (() {
-        final guardedValue = map['useSystemAssignedIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      userAssignedIdentity: (() {
-        final guardedValue = map['userAssignedIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      useSystemAssignedIdentity: (() { final guardedValue = map['useSystemAssignedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      userAssignedIdentity: (() { final guardedValue = map['userAssignedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

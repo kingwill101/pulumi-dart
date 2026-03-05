@@ -9,11 +9,9 @@ class URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule {
   /// - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
   /// Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
   final pulumi.Input<List<String>>? matchResponseCodes;
-
   /// The HTTP status code returned with the response containing the custom error content.
   /// If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
   final pulumi.Input<int>? overrideResponseCode;
-
   /// The full path to a file within backendBucket. For example: /errors/defaultError.html
   /// path must start with a leading slash. path cannot have trailing slashes.
   /// If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
@@ -38,25 +36,12 @@ class URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule {
     };
   }
 
-  factory URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule(
-      matchResponseCodes: (() {
-        final guardedValue = map['matchResponseCodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      overrideResponseCode: (() {
-        final guardedValue = map['overrideResponseCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      matchResponseCodes: (() { final guardedValue = map['matchResponseCodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      overrideResponseCode: (() { final guardedValue = map['overrideResponseCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

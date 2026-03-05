@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionAutoscalerAutoscalingPolicyScalingSchedule {
   /// A description of a scaling schedule.
   final pulumi.Input<String>? description;
-
   /// A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
   final pulumi.Input<bool>? disabled;
-
   /// The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
   final pulumi.Input<int> durationSec;
-
   /// Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
   final pulumi.Input<int> minRequiredReplicas;
-
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> name;
-
   /// The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
   final pulumi.Input<String> schedule;
-
   /// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
   final pulumi.Input<String>? timeZone;
 
@@ -54,31 +48,16 @@ class RegionAutoscalerAutoscalingPolicyScalingSchedule {
     };
   }
 
-  factory RegionAutoscalerAutoscalingPolicyScalingSchedule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionAutoscalerAutoscalingPolicyScalingSchedule.fromMap(Map<String, dynamic> map) {
     return RegionAutoscalerAutoscalingPolicyScalingSchedule(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       durationSec: pulumi.Input.fromValue(map['durationSec'] as int),
-      minRequiredReplicas: pulumi.Input.fromValue(
-        map['minRequiredReplicas'] as int,
-      ),
+      minRequiredReplicas: pulumi.Input.fromValue(map['minRequiredReplicas'] as int),
       name: pulumi.Input.fromValue(map['name'] as String),
       schedule: pulumi.Input.fromValue(map['schedule'] as String),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

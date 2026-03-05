@@ -240,55 +240,41 @@ import 'ai_instance_state.dart';
 class AiInstance extends pulumi.CustomResource {
   /// The name of the new AI application.
   late final pulumi.Output<String> appName;
-
   /// Application type. Currently, only `supabase` is supported.
   late final pulumi.Output<String> appType;
-
   /// Authentication information list. See `auth_config_list` below.
   late final pulumi.Output<List<Map<String, dynamic>>> authConfigLists;
-
   /// The type of the certificate. Currently, only `custom` is supported. A custom certificate is used.
   ///
   /// &gt; **NOTE:**  When `ssl_enabled` is set to `1`, this parameter must be configured.
   late final pulumi.Output<String?> caType;
-
   /// Supabase Dashboard password.
   /// The password must be 8 to 32 characters in length and contain three or more characters: uppercase letters, lowercase letters, numbers, and underscores (_).
   late final pulumi.Output<String?> dashboardPassword;
-
   /// The RDS Database access password.
   /// The password must be 8 to 32 characters in length and contain three or more characters: uppercase letters, lowercase letters, numbers, and underscores (_).
   late final pulumi.Output<String?> databasePassword;
-
   /// The ID of the RDS PostgreSQL database instance accessed by the AI application.
   /// supports only **newly purchased empty RDS PostgreSQL instances**. The major version is `17`, and the minor version is **20250630 or later**.&gt;
   late final pulumi.Output<String?> dbInstanceName;
-
   /// Whether to recover from existing PG data. Valid values:
   late final pulumi.Output<bool?> initializeWithExistingData;
-
   /// Whether to enable the public network connection address. Valid values:
   late final pulumi.Output<bool?> publicEndpointEnabled;
-
   /// Whether to enable the public network NAT gateway. Valid values:
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// Customize the certificate content.
   ///
   /// &gt; **NOTE:**  When `ca_type` is set to `custom`, this parameter must be configured.
   late final pulumi.Output<String?> serverCert;
-
   /// The certificate private key.
   ///
   /// &gt; **NOTE:**  When `ca_type` is set to `custom`, this parameter must be configured.
   late final pulumi.Output<String?> serverKey;
-
   /// Enable or disable SSL. Valid values:
   late final pulumi.Output<int?> sslEnabled;
-
   /// The status of the instance. Valid values: `Running`, `Stopped`.
   late final pulumi.Output<String> status;
-
   /// A list of storage configurations. See `storage_config_list` below.
   late final pulumi.Output<List<Map<String, dynamic>>> storageConfigLists;
 
@@ -301,34 +287,26 @@ class AiInstance extends pulumi.CustomResource {
     AiInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/aiInstance:AiInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/aiInstance:AiInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appName = registerOutput<String>('appName');
     appType = registerOutput<String>('appType');
-    authConfigLists = registerOutput<List<Map<String, dynamic>>>(
-      'authConfigLists',
-    );
+    authConfigLists = registerOutput<List<Map<String, dynamic>>>('authConfigLists');
     caType = registerOutput<String?>('caType');
     dashboardPassword = registerOutput<String?>('dashboardPassword');
     databasePassword = registerOutput<String?>('databasePassword');
     dbInstanceName = registerOutput<String?>('dbInstanceName');
-    initializeWithExistingData = registerOutput<bool?>(
-      'initializeWithExistingData',
-    );
+    initializeWithExistingData = registerOutput<bool?>('initializeWithExistingData');
     publicEndpointEnabled = registerOutput<bool?>('publicEndpointEnabled');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     serverCert = registerOutput<String?>('serverCert');
     serverKey = registerOutput<String?>('serverKey');
     sslEnabled = registerOutput<int?>('sslEnabled');
     status = registerOutput<String>('status');
-    storageConfigLists = registerOutput<List<Map<String, dynamic>>>(
-      'storageConfigLists',
-    );
+    storageConfigLists = registerOutput<List<Map<String, dynamic>>>('storageConfigLists');
   }
 
   /// Gets an existing [AiInstance] resource's state with the given [name] and [id].
@@ -349,33 +327,25 @@ class AiInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/aiInstance:AiInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/aiInstance:AiInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appName = registerOutput<String>('appName');
     appType = registerOutput<String>('appType');
-    authConfigLists = registerOutput<List<Map<String, dynamic>>>(
-      'authConfigLists',
-    );
+    authConfigLists = registerOutput<List<Map<String, dynamic>>>('authConfigLists');
     caType = registerOutput<String?>('caType');
     dashboardPassword = registerOutput<String?>('dashboardPassword');
     databasePassword = registerOutput<String?>('databasePassword');
     dbInstanceName = registerOutput<String?>('dbInstanceName');
-    initializeWithExistingData = registerOutput<bool?>(
-      'initializeWithExistingData',
-    );
+    initializeWithExistingData = registerOutput<bool?>('initializeWithExistingData');
     publicEndpointEnabled = registerOutput<bool?>('publicEndpointEnabled');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     serverCert = registerOutput<String?>('serverCert');
     serverKey = registerOutput<String?>('serverKey');
     sslEnabled = registerOutput<int?>('sslEnabled');
     status = registerOutput<String>('status');
-    storageConfigLists = registerOutput<List<Map<String, dynamic>>>(
-      'storageConfigLists',
-    );
+    storageConfigLists = registerOutput<List<Map<String, dynamic>>>('storageConfigLists');
   }
 }

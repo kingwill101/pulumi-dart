@@ -6,21 +6,15 @@ import 'enterprise_crm_eventbus_proto_combined_condition.dart';
 /// The task that is next in line to be executed, if the condition specified evaluated to true.
 class EnterpriseCrmEventbusProtoNextTask {
   /// Combined condition for this task to become an eligible next task. Each of these combined_conditions are joined with logical OR. DEPRECATED: use `condition`
-  final pulumi.Input<List<EnterpriseCrmEventbusProtoCombinedCondition>>?
-  combinedConditions;
-
+  final pulumi.Input<List<EnterpriseCrmEventbusProtoCombinedCondition>>? combinedConditions;
   /// Standard filter expression for this task to become an eligible next task.
   final pulumi.Input<String>? condition;
-
   /// User-provided description intended to give more business context about the next task edge or condition.
   final pulumi.Input<String>? description;
-
   /// User-provided label that is attached to this edge in the UI.
   final pulumi.Input<String>? label;
-
   /// ID of the next task.
   final pulumi.Input<String>? taskConfigId;
-
   /// Task number of the next task.
   final pulumi.Input<String>? taskNumber;
 
@@ -42,18 +36,7 @@ class EnterpriseCrmEventbusProtoNextTask {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'combinedConditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EnterpriseCrmEventbusProtoCombinedCondition>,
-            List<Map<String, dynamic>>
-          >(
-            combinedConditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EnterpriseCrmEventbusProtoCombinedCondition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'combinedConditions': ?pulumi.Input.mapOptionalInputValue<List<EnterpriseCrmEventbusProtoCombinedCondition>, List<Map<String, dynamic>>>(combinedConditions, (value) => pulumi.Input.encodeList<EnterpriseCrmEventbusProtoCombinedCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'condition': ?condition,
       'description': ?description,
       'label': ?label,
@@ -64,43 +47,13 @@ class EnterpriseCrmEventbusProtoNextTask {
 
   factory EnterpriseCrmEventbusProtoNextTask.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoNextTask(
-      combinedConditions: (() {
-        final guardedValue = map['combinedConditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EnterpriseCrmEventbusProtoCombinedCondition>(
-            guardedValue,
-            (value) => EnterpriseCrmEventbusProtoCombinedCondition.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      taskConfigId: (() {
-        final guardedValue = map['taskConfigId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      taskNumber: (() {
-        final guardedValue = map['taskNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      combinedConditions: (() { final guardedValue = map['combinedConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EnterpriseCrmEventbusProtoCombinedCondition>(guardedValue, (value) => EnterpriseCrmEventbusProtoCombinedCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      taskConfigId: (() { final guardedValue = map['taskConfigId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      taskNumber: (() { final guardedValue = map['taskNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

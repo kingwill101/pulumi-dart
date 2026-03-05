@@ -6,7 +6,6 @@ import 'get_access_strategies_strategy.dart';
 /// Result data returned by getAccessStrategies.
 class GetAccessStrategiesResult {
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -52,48 +51,24 @@ class GetAccessStrategiesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'strategies':
-          pulumi.Input.encodeList<
-            GetAccessStrategiesStrategy,
-            Map<String, dynamic>
-          >(strategies, (value) => value.toMap()),
+      'strategies': pulumi.Input.encodeList<GetAccessStrategiesStrategy, Map<String, dynamic>>(strategies, (value) => value.toMap()),
       'strategyMode': strategyMode,
     };
   }
 
   factory GetAccessStrategiesResult.fromMap(Map<String, dynamic> map) {
     return GetAccessStrategiesResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      lang: (() {
-        final guardedValue = map['lang'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      lang: (() { final guardedValue = map['lang']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      strategies: pulumi.Input.decodeList<GetAccessStrategiesStrategy>(
-        map['strategies']!,
-        (value) => GetAccessStrategiesStrategy.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      strategies: pulumi.Input.decodeList<GetAccessStrategiesStrategy>(map['strategies']!, (value) => GetAccessStrategiesStrategy.fromMap((value as Map).cast<String, dynamic>())),
       strategyMode: map['strategyMode'] as String,
     );
   }
 }
+

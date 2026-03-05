@@ -15,3 +15,4 @@ enum DataResidencyType {
     throw ArgumentError('Unknown DataResidencyType value: $value');
   }
 }
+

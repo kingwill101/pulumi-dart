@@ -184,31 +184,22 @@ import 'system_data_response.dart';
 class PublicCloudConnector extends pulumi.CustomResource {
   /// Cloud profile for AWS.
   late final pulumi.Output<AwsCloudProfileResponse> awsCloudProfile;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Connector primary identifier.
   late final pulumi.Output<String> connectorPrimaryIdentifier;
-
   /// Host cloud the public cloud connector.
   late final pulumi.Output<String> hostType;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The resource provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -221,39 +212,19 @@ class PublicCloudConnector extends pulumi.CustomResource {
     PublicCloudConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:hybridconnectivity:PublicCloudConnector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    awsCloudProfile = registerOutput<AwsCloudProfileResponse>(
-      'awsCloudProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AwsCloudProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:hybridconnectivity:PublicCloudConnector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    awsCloudProfile = registerOutput<AwsCloudProfileResponse>('awsCloudProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsCloudProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    connectorPrimaryIdentifier = registerOutput<String>(
-      'connectorPrimaryIdentifier',
-    );
+    connectorPrimaryIdentifier = registerOutput<String>('connectorPrimaryIdentifier');
     hostType = registerOutput<String>('hostType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

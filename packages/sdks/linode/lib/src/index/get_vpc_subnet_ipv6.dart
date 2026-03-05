@@ -8,10 +8,14 @@ class GetVpcSubnetIpv6 {
 
   /// Creates a new [GetVpcSubnetIpv6].
   /// [range] An IPv6 range allocated to this subnet.
-  GetVpcSubnetIpv6({required this.range});
+  GetVpcSubnetIpv6({
+    required this.range,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'range': range};
+    return <String, dynamic>{
+      'range': range,
+    };
   }
 
   factory GetVpcSubnetIpv6.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetVpcSubnetIpv6 {
     );
   }
 }
+

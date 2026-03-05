@@ -8,19 +8,20 @@ class AwsNodePoolConfigInstancePlacement {
 
   /// Creates a new [AwsNodePoolConfigInstancePlacement].
   /// [tenancy] The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
-  AwsNodePoolConfigInstancePlacement({this.tenancy});
+  AwsNodePoolConfigInstancePlacement({
+    this.tenancy,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tenancy': ?tenancy};
+    return <String, dynamic>{
+      'tenancy': ?tenancy,
+    };
   }
 
   factory AwsNodePoolConfigInstancePlacement.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolConfigInstancePlacement(
-      tenancy: (() {
-        final guardedValue = map['tenancy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tenancy: (() { final guardedValue = map['tenancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,19 +7,14 @@ import 'table_signed_identifier_response.dart';
 class GetTableResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// List of stored access policies specified on the table.
   final List<TableSignedIdentifierResponse>? signedIdentifiers;
-
   /// Table name under the specified account
   final String tableName;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -44,14 +39,7 @@ class GetTableResult {
       'azureApiVersion': azureApiVersion,
       'id': id,
       'name': name,
-      'signedIdentifiers': ?(() {
-        final guardedValue = signedIdentifiers;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          TableSignedIdentifierResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'signedIdentifiers': ?(() { final guardedValue = signedIdentifiers; if (guardedValue == null) return null; return pulumi.Input.encodeList<TableSignedIdentifierResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'tableName': tableName,
       'type': type,
     };
@@ -62,18 +50,10 @@ class GetTableResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      signedIdentifiers: (() {
-        final guardedValue = map['signedIdentifiers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<TableSignedIdentifierResponse>(
-          guardedValue,
-          (value) => TableSignedIdentifierResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      signedIdentifiers: (() { final guardedValue = map['signedIdentifiers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableSignedIdentifierResponse>(guardedValue, (value) => TableSignedIdentifierResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       tableName: map['tableName'] as String,
       type: map['type'] as String,
     );
   }
 }
+

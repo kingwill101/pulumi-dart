@@ -8,7 +8,6 @@ import 'expr.dart';
 class GoogleCloudHealthcareV1ConsentPolicy {
   /// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
   final pulumi.Input<Expr> authorizationRule;
-
   /// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
   final pulumi.Input<List<Attribute>>? resourceAttributes;
 
@@ -22,45 +21,16 @@ class GoogleCloudHealthcareV1ConsentPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizationRule':
-          pulumi.Input.mapInputValue<Expr, Map<String, dynamic>>(
-            authorizationRule,
-            (value) => value.toMap(),
-          ),
-      'resourceAttributes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Attribute>,
-            List<Map<String, dynamic>>
-          >(
-            resourceAttributes,
-            (value) => pulumi.Input.encodeList<Attribute, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'authorizationRule': pulumi.Input.mapInputValue<Expr, Map<String, dynamic>>(authorizationRule, (value) => value.toMap()),
+      'resourceAttributes': ?pulumi.Input.mapOptionalInputValue<List<Attribute>, List<Map<String, dynamic>>>(resourceAttributes, (value) => pulumi.Input.encodeList<Attribute, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GoogleCloudHealthcareV1ConsentPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudHealthcareV1ConsentPolicy.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1ConsentPolicy(
-      authorizationRule: pulumi.Input.fromValue(
-        Expr.fromMap(
-          (map['authorizationRule']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceAttributes: (() {
-        final guardedValue = map['resourceAttributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Attribute>(
-            guardedValue,
-            (value) =>
-                Attribute.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      authorizationRule: pulumi.Input.fromValue(Expr.fromMap((map['authorizationRule']! as Map).cast<String, dynamic>())),
+      resourceAttributes: (() { final guardedValue = map['resourceAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Attribute>(guardedValue, (value) => Attribute.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

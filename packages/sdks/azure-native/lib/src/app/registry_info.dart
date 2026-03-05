@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryInfo {
   /// registry secret.
   final pulumi.Input<String>? registryPassword;
-
   /// registry server Url.
   final pulumi.Input<String>? registryUrl;
-
   /// registry username.
   final pulumi.Input<String>? registryUserName;
 
@@ -33,21 +31,10 @@ class RegistryInfo {
 
   factory RegistryInfo.fromMap(Map<String, dynamic> map) {
     return RegistryInfo(
-      registryPassword: (() {
-        final guardedValue = map['registryPassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      registryUrl: (() {
-        final guardedValue = map['registryUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      registryUserName: (() {
-        final guardedValue = map['registryUserName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      registryPassword: (() { final guardedValue = map['registryPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      registryUrl: (() { final guardedValue = map['registryUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      registryUserName: (() { final guardedValue = map['registryUserName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

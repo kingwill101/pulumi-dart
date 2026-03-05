@@ -16,3 +16,4 @@ enum VpnLinkConnectionMode {
     throw ArgumentError('Unknown VpnLinkConnectionMode value: $value');
   }
 }
+

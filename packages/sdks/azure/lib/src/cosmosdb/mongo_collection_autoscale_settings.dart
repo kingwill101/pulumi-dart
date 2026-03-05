@@ -8,19 +8,20 @@ class MongoCollectionAutoscaleSettings {
 
   /// Creates a new [MongoCollectionAutoscaleSettings].
   /// [maxThroughput] The maximum throughput of the MongoDB collection (RU/s). Must be between `1,000` and `1,000,000`. Must be set in increments of `1,000`. Conflicts with `throughput`.
-  MongoCollectionAutoscaleSettings({this.maxThroughput});
+  MongoCollectionAutoscaleSettings({
+    this.maxThroughput,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maxThroughput': ?maxThroughput};
+    return <String, dynamic>{
+      'maxThroughput': ?maxThroughput,
+    };
   }
 
   factory MongoCollectionAutoscaleSettings.fromMap(Map<String, dynamic> map) {
     return MongoCollectionAutoscaleSettings(
-      maxThroughput: (() {
-        final guardedValue = map['maxThroughput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxThroughput: (() { final guardedValue = map['maxThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

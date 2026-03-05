@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LbCertificateArgs {
   /// Domain name (e.g., example.com) for your SSL/TLS certificate.
   final pulumi.Input<String>? domainName;
-
   /// Load balancer name where you want to create the SSL/TLS certificate.
   final pulumi.Input<String> lbName;
-
   /// SSL/TLS certificate name.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Set of domains that should be SANs in the issued certificate. `domain_name` attribute is automatically added as a Subject Alternative Name.
   final pulumi.Input<List<String>>? subjectAlternativeNames;
 
@@ -50,27 +46,12 @@ class LbCertificateArgs {
 
   factory LbCertificateArgs.fromMap(Map<String, dynamic> map) {
     return LbCertificateArgs(
-      domainName: (() {
-        final guardedValue = map['domainName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lbName: pulumi.Input.fromValue(map['lbName'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subjectAlternativeNames: (() {
-        final guardedValue = map['subjectAlternativeNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subjectAlternativeNames: (() { final guardedValue = map['subjectAlternativeNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

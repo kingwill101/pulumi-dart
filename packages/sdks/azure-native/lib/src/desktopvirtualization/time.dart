@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Time {
   /// The hour.
   final pulumi.Input<int> hour;
-
   /// The minute.
   final pulumi.Input<int> minute;
 
   /// Creates a new [Time].
   /// [hour] The hour.
   /// [minute] The minute.
-  Time({required this.hour, required this.minute});
+  Time({
+    required this.hour,
+    required this.minute,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hour': hour, 'minute': minute};
+    return <String, dynamic>{
+      'hour': hour,
+      'minute': minute,
+    };
   }
 
   factory Time.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class Time {
     );
   }
 }
+

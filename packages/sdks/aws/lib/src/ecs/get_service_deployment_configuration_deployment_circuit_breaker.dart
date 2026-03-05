@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceDeploymentConfigurationDeploymentCircuitBreaker {
   /// Whether circuit breaker is enabled
   final pulumi.Input<bool> enable;
-
   /// Whether to rollback on failure
   final pulumi.Input<bool> rollback;
 
@@ -18,15 +17,17 @@ class GetServiceDeploymentConfigurationDeploymentCircuitBreaker {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enable': enable, 'rollback': rollback};
+    return <String, dynamic>{
+      'enable': enable,
+      'rollback': rollback,
+    };
   }
 
-  factory GetServiceDeploymentConfigurationDeploymentCircuitBreaker.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceDeploymentConfigurationDeploymentCircuitBreaker.fromMap(Map<String, dynamic> map) {
     return GetServiceDeploymentConfigurationDeploymentCircuitBreaker(
       enable: pulumi.Input.fromValue(map['enable'] as bool),
       rollback: pulumi.Input.fromValue(map['rollback'] as bool),
     );
   }
 }
+

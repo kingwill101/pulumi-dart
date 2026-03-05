@@ -7,10 +7,8 @@ import 'opportunistic_maintenance_strategy_response.dart';
 class HostMaintenancePolicyResponse {
   /// Specifies the frequency of planned maintenance events.
   final pulumi.Input<String> maintenanceInterval;
-
   /// Strategy that will trigger maintenance on behalf of the customer.
-  final pulumi.Input<OpportunisticMaintenanceStrategyResponse>
-  opportunisticMaintenanceStrategy;
+  final pulumi.Input<OpportunisticMaintenanceStrategyResponse> opportunisticMaintenanceStrategy;
 
   /// Creates a new [HostMaintenancePolicyResponse].
   /// [maintenanceInterval] Specifies the frequency of planned maintenance events.
@@ -23,25 +21,15 @@ class HostMaintenancePolicyResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'maintenanceInterval': maintenanceInterval,
-      'opportunisticMaintenanceStrategy':
-          pulumi.Input.mapInputValue<
-            OpportunisticMaintenanceStrategyResponse,
-            Map<String, dynamic>
-          >(opportunisticMaintenanceStrategy, (value) => value.toMap()),
+      'opportunisticMaintenanceStrategy': pulumi.Input.mapInputValue<OpportunisticMaintenanceStrategyResponse, Map<String, dynamic>>(opportunisticMaintenanceStrategy, (value) => value.toMap()),
     };
   }
 
   factory HostMaintenancePolicyResponse.fromMap(Map<String, dynamic> map) {
     return HostMaintenancePolicyResponse(
-      maintenanceInterval: pulumi.Input.fromValue(
-        map['maintenanceInterval'] as String,
-      ),
-      opportunisticMaintenanceStrategy: pulumi.Input.fromValue(
-        OpportunisticMaintenanceStrategyResponse.fromMap(
-          (map['opportunisticMaintenanceStrategy']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
+      maintenanceInterval: pulumi.Input.fromValue(map['maintenanceInterval'] as String),
+      opportunisticMaintenanceStrategy: pulumi.Input.fromValue(OpportunisticMaintenanceStrategyResponse.fromMap((map['opportunisticMaintenanceStrategy']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

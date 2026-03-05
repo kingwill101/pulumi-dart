@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ZoneAssociationArgs {
   /// The VPC to associate with the private hosted zone.
   final pulumi.Input<String> vpcId;
-
   /// The VPC's region. Defaults to the region of the AWS provider.
   final pulumi.Input<String>? vpcRegion;
-
   /// The private hosted zone to associate.
   final pulumi.Input<String> zoneId;
 
@@ -37,12 +35,9 @@ class ZoneAssociationArgs {
   factory ZoneAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ZoneAssociationArgs(
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
-      vpcRegion: (() {
-        final guardedValue = map['vpcRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      vpcRegion: (() { final guardedValue = map['vpcRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
+

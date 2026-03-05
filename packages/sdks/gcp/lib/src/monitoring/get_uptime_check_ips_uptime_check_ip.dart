@@ -8,11 +8,9 @@ class GetUptimeCheckIPsUptimeCheckIp {
   /// rely on the IP addresses being in IPv4 format indefinitely, and should support interpreting this field in either
   /// IPv4 or IPv6 format.
   final pulumi.Input<String> ipAddress;
-
   /// A more specific location within the region that typically encodes a particular city/town/metro
   /// (and its containing state/province or country) within the broader umbrella region category.
   final pulumi.Input<String> location;
-
   /// A broad region category in which the IP address is located.
   final pulumi.Input<String> region;
 
@@ -42,3 +40,4 @@ class GetUptimeCheckIPsUptimeCheckIp {
     );
   }
 }
+

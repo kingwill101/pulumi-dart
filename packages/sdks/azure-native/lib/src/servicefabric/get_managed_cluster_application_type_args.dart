@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedClusterApplicationTypeArgs {
   /// The name of the application type name resource.
   final pulumi.Input<String> applicationTypeName;
-
   /// The name of the cluster resource.
   final pulumi.Input<String> clusterName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,17 +32,12 @@ class GetManagedClusterApplicationTypeArgs {
     };
   }
 
-  factory GetManagedClusterApplicationTypeArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedClusterApplicationTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedClusterApplicationTypeArgs(
-      applicationTypeName: pulumi.Input.fromValue(
-        map['applicationTypeName'] as String,
-      ),
+      applicationTypeName: pulumi.Input.fromValue(map['applicationTypeName'] as String),
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

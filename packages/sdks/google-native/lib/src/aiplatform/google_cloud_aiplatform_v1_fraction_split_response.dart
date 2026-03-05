@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1FractionSplitResponse {
   /// The fraction of the input data that is to be used to evaluate the Model.
   final pulumi.Input<double> testFraction;
-
   /// The fraction of the input data that is to be used to train the Model.
   final pulumi.Input<double> trainingFraction;
-
   /// The fraction of the input data that is to be used to validate the Model.
   final pulumi.Input<double> validationFraction;
 
@@ -31,17 +29,12 @@ class GoogleCloudAiplatformV1FractionSplitResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1FractionSplitResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1FractionSplitResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FractionSplitResponse(
       testFraction: pulumi.Input.fromValue(map['testFraction'] as double),
-      trainingFraction: pulumi.Input.fromValue(
-        map['trainingFraction'] as double,
-      ),
-      validationFraction: pulumi.Input.fromValue(
-        map['validationFraction'] as double,
-      ),
+      trainingFraction: pulumi.Input.fromValue(map['trainingFraction'] as double),
+      validationFraction: pulumi.Input.fromValue(map['validationFraction'] as double),
     );
   }
 }
+

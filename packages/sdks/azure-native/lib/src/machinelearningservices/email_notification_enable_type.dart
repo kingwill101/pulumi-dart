@@ -16,3 +16,4 @@ enum EmailNotificationEnableType {
     throw ArgumentError('Unknown EmailNotificationEnableType value: $value');
   }
 }
+

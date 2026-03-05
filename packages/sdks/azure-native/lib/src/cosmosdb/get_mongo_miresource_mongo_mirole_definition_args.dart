@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMongoMIResourceMongoMIRoleDefinitionArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The GUID for the Role Definition.
   final pulumi.Input<String> roleDefinitionId;
 
@@ -34,17 +32,12 @@ class GetMongoMIResourceMongoMIRoleDefinitionArgs {
     };
   }
 
-  factory GetMongoMIResourceMongoMIRoleDefinitionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMongoMIResourceMongoMIRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetMongoMIResourceMongoMIRoleDefinitionArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      roleDefinitionId: pulumi.Input.fromValue(
-        map['roleDefinitionId'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      roleDefinitionId: pulumi.Input.fromValue(map['roleDefinitionId'] as String),
     );
   }
 }
+

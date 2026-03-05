@@ -16,33 +16,14 @@ class ExperimentExecutionDetailsPropertiesResponseRunInformation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'steps':
-          pulumi.Input.mapInputValue<
-            List<StepStatusResponse>,
-            List<Map<String, dynamic>>
-          >(
-            steps,
-            (value) =>
-                pulumi.Input.encodeList<
-                  StepStatusResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'steps': pulumi.Input.mapInputValue<List<StepStatusResponse>, List<Map<String, dynamic>>>(steps, (value) => pulumi.Input.encodeList<StepStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ExperimentExecutionDetailsPropertiesResponseRunInformation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExperimentExecutionDetailsPropertiesResponseRunInformation.fromMap(Map<String, dynamic> map) {
     return ExperimentExecutionDetailsPropertiesResponseRunInformation(
-      steps: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<StepStatusResponse>(
-          map['steps']!,
-          (value) => StepStatusResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      steps: pulumi.Input.fromValue(pulumi.Input.decodeList<StepStatusResponse>(map['steps']!, (value) => StepStatusResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

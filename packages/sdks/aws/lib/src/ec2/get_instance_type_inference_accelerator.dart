@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTypeInferenceAccelerator {
   final pulumi.Input<int> count;
   final pulumi.Input<String> manufacturer;
-
   /// Size of the instance memory, in MiB.
   final pulumi.Input<int> memorySize;
   final pulumi.Input<String> name;
@@ -31,9 +30,7 @@ class GetInstanceTypeInferenceAccelerator {
     };
   }
 
-  factory GetInstanceTypeInferenceAccelerator.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceTypeInferenceAccelerator.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeInferenceAccelerator(
       count: pulumi.Input.fromValue(map['count'] as int),
       manufacturer: pulumi.Input.fromValue(map['manufacturer'] as String),
@@ -42,3 +39,4 @@ class GetInstanceTypeInferenceAccelerator {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QuantityBasedExpiryResponse {
   /// The backup's position among its backups with the same source cluster and type, by descending chronological order create time(i.e. newest first).
   final pulumi.Input<int> retentionCount;
-
   /// The length of the quantity-based queue, specified by the backup's retention policy.
   final pulumi.Input<int> totalRetentionCount;
 
@@ -28,9 +27,8 @@ class QuantityBasedExpiryResponse {
   factory QuantityBasedExpiryResponse.fromMap(Map<String, dynamic> map) {
     return QuantityBasedExpiryResponse(
       retentionCount: pulumi.Input.fromValue(map['retentionCount'] as int),
-      totalRetentionCount: pulumi.Input.fromValue(
-        map['totalRetentionCount'] as int,
-      ),
+      totalRetentionCount: pulumi.Input.fromValue(map['totalRetentionCount'] as int),
     );
   }
 }
+

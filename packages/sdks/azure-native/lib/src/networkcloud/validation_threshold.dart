@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ValidationThreshold {
   /// Selection of how the type evaluation is applied to the cluster calculation.
   final pulumi.Input<String> grouping;
-
   /// Selection of how the threshold should be evaluated.
   final pulumi.Input<String> type;
-
   /// The numeric threshold value.
   final pulumi.Input<double> value;
 
@@ -38,3 +36,4 @@ class ValidationThreshold {
     );
   }
 }
+

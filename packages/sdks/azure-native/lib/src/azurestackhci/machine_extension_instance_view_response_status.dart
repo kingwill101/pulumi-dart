@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MachineExtensionInstanceViewResponseStatus {
   /// The status code.
   final pulumi.Input<String> code;
-
   /// The short localizable label for the status.
   final pulumi.Input<String> displayStatus;
-
   /// The level code.
   final pulumi.Input<String> level;
-
   /// The detailed status message, including for alerts and error messages.
   final pulumi.Input<String> message;
-
   /// The time of the status.
   final pulumi.Input<String> time;
 
@@ -43,9 +39,7 @@ class MachineExtensionInstanceViewResponseStatus {
     };
   }
 
-  factory MachineExtensionInstanceViewResponseStatus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MachineExtensionInstanceViewResponseStatus.fromMap(Map<String, dynamic> map) {
     return MachineExtensionInstanceViewResponseStatus(
       code: pulumi.Input.fromValue(map['code'] as String),
       displayStatus: pulumi.Input.fromValue(map['displayStatus'] as String),
@@ -55,3 +49,4 @@ class MachineExtensionInstanceViewResponseStatus {
     );
   }
 }
+

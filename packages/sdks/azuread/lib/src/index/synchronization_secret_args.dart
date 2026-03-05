@@ -10,7 +10,6 @@ import 'synchronization_secret_credential.dart';
 class SynchronizationSecretArgs {
   /// One or more `credential` blocks as documented below.
   final pulumi.Input<List<SynchronizationSecretCredential>>? credentials;
-
   /// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
   final pulumi.Input<String> servicePrincipalId;
 
@@ -24,39 +23,16 @@ class SynchronizationSecretArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credentials':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SynchronizationSecretCredential>,
-            List<Map<String, dynamic>>
-          >(
-            credentials,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SynchronizationSecretCredential,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'credentials': ?pulumi.Input.mapOptionalInputValue<List<SynchronizationSecretCredential>, List<Map<String, dynamic>>>(credentials, (value) => pulumi.Input.encodeList<SynchronizationSecretCredential, Map<String, dynamic>>(value, (value) => value.toMap())),
       'servicePrincipalId': servicePrincipalId,
     };
   }
 
   factory SynchronizationSecretArgs.fromMap(Map<String, dynamic> map) {
     return SynchronizationSecretArgs(
-      credentials: (() {
-        final guardedValue = map['credentials'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SynchronizationSecretCredential>(
-            guardedValue,
-            (value) => SynchronizationSecretCredential.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      servicePrincipalId: pulumi.Input.fromValue(
-        map['servicePrincipalId'] as String,
-      ),
+      credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SynchronizationSecretCredential>(guardedValue, (value) => SynchronizationSecretCredential.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      servicePrincipalId: pulumi.Input.fromValue(map['servicePrincipalId'] as String),
     );
   }
 }
+

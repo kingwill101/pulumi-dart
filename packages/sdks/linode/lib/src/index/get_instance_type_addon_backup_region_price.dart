@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypeAddonBackupRegionPrice {
   final pulumi.Input<double> hourly;
-
   /// Label used to identify instance type
   final pulumi.Input<String> id;
   final pulumi.Input<double> monthly;
@@ -20,12 +19,14 @@ class GetInstanceTypeAddonBackupRegionPrice {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hourly': hourly, 'id': id, 'monthly': monthly};
+    return <String, dynamic>{
+      'hourly': hourly,
+      'id': id,
+      'monthly': monthly,
+    };
   }
 
-  factory GetInstanceTypeAddonBackupRegionPrice.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceTypeAddonBackupRegionPrice.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeAddonBackupRegionPrice(
       hourly: pulumi.Input.fromValue(map['hourly'] as double),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -33,3 +34,4 @@ class GetInstanceTypeAddonBackupRegionPrice {
     );
   }
 }
+

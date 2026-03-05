@@ -14,19 +14,20 @@ class NamedResourcesFilterPatch {
 
   /// Creates a new [NamedResourcesFilterPatch].
   /// [selector] Selector is a CEL expression which must evaluate to true if a resource instance is suitable. The language is as defined in https://kubernetes.io/docs/reference/using-api/cel/
-  NamedResourcesFilterPatch({this.selector});
+  NamedResourcesFilterPatch({
+    this.selector,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'selector': ?selector};
+    return <String, dynamic>{
+      'selector': ?selector,
+    };
   }
 
   factory NamedResourcesFilterPatch.fromMap(Map<String, dynamic> map) {
     return NamedResourcesFilterPatch(
-      selector: (() {
-        final guardedValue = map['selector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

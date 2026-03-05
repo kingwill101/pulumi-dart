@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getProject.
 class GetProjectResult {
   final bool autoCreateNetwork;
@@ -7,12 +8,10 @@ class GetProjectResult {
   final String deletionPolicy;
   final Map<String, String> effectiveLabels;
   final String folderId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
   final String name;
-
   /// The numeric identifier of the project.
   final String number;
   final String orgId;
@@ -80,13 +79,10 @@ class GetProjectResult {
       name: map['name'] as String,
       number: map['number'] as String,
       orgId: map['orgId'] as String,
-      projectId: (() {
-        final guardedValue = map['projectId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

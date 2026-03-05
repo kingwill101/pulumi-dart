@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesNodePoolsNodepoolTaint {
   /// The scheduling policy.
   final pulumi.Input<String> effect;
-
   /// The key of a taint.
   final pulumi.Input<String> key;
-
   /// The value of a taint.
   final pulumi.Input<String> value;
 
@@ -23,12 +21,14 @@ class GetKubernetesNodePoolsNodepoolTaint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'effect': effect, 'key': key, 'value': value};
+    return <String, dynamic>{
+      'effect': effect,
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory GetKubernetesNodePoolsNodepoolTaint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetKubernetesNodePoolsNodepoolTaint.fromMap(Map<String, dynamic> map) {
     return GetKubernetesNodePoolsNodepoolTaint(
       effect: pulumi.Input.fromValue(map['effect'] as String),
       key: pulumi.Input.fromValue(map['key'] as String),
@@ -36,3 +36,4 @@ class GetKubernetesNodePoolsNodepoolTaint {
     );
   }
 }
+

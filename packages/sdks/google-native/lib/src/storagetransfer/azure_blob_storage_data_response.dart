@@ -7,16 +7,12 @@ import 'azure_credentials_response.dart';
 class AzureBlobStorageDataResponse {
   /// Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
   final pulumi.Input<AzureCredentialsResponse> azureCredentials;
-
   /// The container to transfer from the Azure Storage account.
   final pulumi.Input<String> container;
-
   /// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
   final pulumi.Input<String> credentialsSecret;
-
   /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
   final pulumi.Input<String> path;
-
   /// The name of the Azure Storage account.
   final pulumi.Input<String> storageAccount;
 
@@ -36,11 +32,7 @@ class AzureBlobStorageDataResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureCredentials':
-          pulumi.Input.mapInputValue<
-            AzureCredentialsResponse,
-            Map<String, dynamic>
-          >(azureCredentials, (value) => value.toMap()),
+      'azureCredentials': pulumi.Input.mapInputValue<AzureCredentialsResponse, Map<String, dynamic>>(azureCredentials, (value) => value.toMap()),
       'container': container,
       'credentialsSecret': credentialsSecret,
       'path': path,
@@ -50,17 +42,12 @@ class AzureBlobStorageDataResponse {
 
   factory AzureBlobStorageDataResponse.fromMap(Map<String, dynamic> map) {
     return AzureBlobStorageDataResponse(
-      azureCredentials: pulumi.Input.fromValue(
-        AzureCredentialsResponse.fromMap(
-          (map['azureCredentials']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      azureCredentials: pulumi.Input.fromValue(AzureCredentialsResponse.fromMap((map['azureCredentials']! as Map).cast<String, dynamic>())),
       container: pulumi.Input.fromValue(map['container'] as String),
-      credentialsSecret: pulumi.Input.fromValue(
-        map['credentialsSecret'] as String,
-      ),
+      credentialsSecret: pulumi.Input.fromValue(map['credentialsSecret'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
       storageAccount: pulumi.Input.fromValue(map['storageAccount'] as String),
     );
   }
 }
+

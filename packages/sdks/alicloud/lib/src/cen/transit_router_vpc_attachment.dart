@@ -440,69 +440,48 @@ class TransitRouterVpcAttachment extends pulumi.CustomResource {
   /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
   /// - **false:** (default)
   late final pulumi.Output<bool?> autoPublishRouteEnabled;
-
   /// The ID of the Cloud Enterprise Network (CEN) instance.
   late final pulumi.Output<String?> cenId;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
   late final pulumi.Output<bool?> dryRun;
-
   /// Whether to forcibly delete the VPC connection. The value is:
   late final pulumi.Output<bool?> forceDelete;
-
   /// The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
   late final pulumi.Output<String> paymentType;
-
   /// (Available since v1.260.0).The ID of the region where the VPC is deployed.
   late final pulumi.Output<String> regionId;
-
   /// The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
   late final pulumi.Output<String> resourceType;
-
   /// Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
   late final pulumi.Output<bool?> routeTableAssociationEnabled;
-
   /// Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
   late final pulumi.Output<bool?> routeTablePropagationEnabled;
-
   /// Status
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The description of the VPC connection.
   ///
   /// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> transitRouterAttachmentDescription;
-
   /// The ID of the VPC connection.
   late final pulumi.Output<String> transitRouterAttachmentId;
-
   /// Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
   late final pulumi.Output<String> transitRouterAttachmentName;
-
   /// The ID of the Enterprise Edition transit router.
   late final pulumi.Output<String> transitRouterId;
-
   /// The name of the VPC connection.
   ///
   /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
   late final pulumi.Output<String> transitRouterVpcAttachmentName;
-
   /// TransitRouterVpcAttachmentOptions
-  late final pulumi.Output<Map<String, String>>
-  transitRouterVpcAttachmentOptions;
-
+  late final pulumi.Output<Map<String, String>> transitRouterVpcAttachmentOptions;
   /// The VPC ID.
   late final pulumi.Output<String> vpcId;
-
   /// VpcOwnerId
   late final pulumi.Output<String> vpcOwnerId;
-
   /// ZoneMappingss See `zone_mappings` below.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -517,11 +496,11 @@ class TransitRouterVpcAttachment extends pulumi.CustomResource {
     TransitRouterVpcAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPublishRouteEnabled = registerOutput<bool?>('autoPublishRouteEnabled');
     cenId = registerOutput<String?>('cenId');
     createTime = registerOutput<String>('createTime');
@@ -530,30 +509,16 @@ class TransitRouterVpcAttachment extends pulumi.CustomResource {
     paymentType = registerOutput<String>('paymentType');
     regionId = registerOutput<String>('regionId');
     resourceType = registerOutput<String>('resourceType');
-    routeTableAssociationEnabled = registerOutput<bool?>(
-      'routeTableAssociationEnabled',
-    );
-    routeTablePropagationEnabled = registerOutput<bool?>(
-      'routeTablePropagationEnabled',
-    );
+    routeTableAssociationEnabled = registerOutput<bool?>('routeTableAssociationEnabled');
+    routeTablePropagationEnabled = registerOutput<bool?>('routeTablePropagationEnabled');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    transitRouterAttachmentDescription = registerOutput<String?>(
-      'transitRouterAttachmentDescription',
-    );
-    transitRouterAttachmentId = registerOutput<String>(
-      'transitRouterAttachmentId',
-    );
-    transitRouterAttachmentName = registerOutput<String>(
-      'transitRouterAttachmentName',
-    );
+    transitRouterAttachmentDescription = registerOutput<String?>('transitRouterAttachmentDescription');
+    transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
+    transitRouterAttachmentName = registerOutput<String>('transitRouterAttachmentName');
     transitRouterId = registerOutput<String>('transitRouterId');
-    transitRouterVpcAttachmentName = registerOutput<String>(
-      'transitRouterVpcAttachmentName',
-    );
-    transitRouterVpcAttachmentOptions = registerOutput<Map<String, String>>(
-      'transitRouterVpcAttachmentOptions',
-    );
+    transitRouterVpcAttachmentName = registerOutput<String>('transitRouterVpcAttachmentName');
+    transitRouterVpcAttachmentOptions = registerOutput<Map<String, String>>('transitRouterVpcAttachmentOptions');
     vpcId = registerOutput<String>('vpcId');
     vpcOwnerId = registerOutput<String>('vpcOwnerId');
     zoneMappings = registerOutput<List<Map<String, dynamic>>>('zoneMappings');
@@ -577,11 +542,11 @@ class TransitRouterVpcAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPublishRouteEnabled = registerOutput<bool?>('autoPublishRouteEnabled');
     cenId = registerOutput<String?>('cenId');
     createTime = registerOutput<String>('createTime');
@@ -590,30 +555,16 @@ class TransitRouterVpcAttachment extends pulumi.CustomResource {
     paymentType = registerOutput<String>('paymentType');
     regionId = registerOutput<String>('regionId');
     resourceType = registerOutput<String>('resourceType');
-    routeTableAssociationEnabled = registerOutput<bool?>(
-      'routeTableAssociationEnabled',
-    );
-    routeTablePropagationEnabled = registerOutput<bool?>(
-      'routeTablePropagationEnabled',
-    );
+    routeTableAssociationEnabled = registerOutput<bool?>('routeTableAssociationEnabled');
+    routeTablePropagationEnabled = registerOutput<bool?>('routeTablePropagationEnabled');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    transitRouterAttachmentDescription = registerOutput<String?>(
-      'transitRouterAttachmentDescription',
-    );
-    transitRouterAttachmentId = registerOutput<String>(
-      'transitRouterAttachmentId',
-    );
-    transitRouterAttachmentName = registerOutput<String>(
-      'transitRouterAttachmentName',
-    );
+    transitRouterAttachmentDescription = registerOutput<String?>('transitRouterAttachmentDescription');
+    transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
+    transitRouterAttachmentName = registerOutput<String>('transitRouterAttachmentName');
     transitRouterId = registerOutput<String>('transitRouterId');
-    transitRouterVpcAttachmentName = registerOutput<String>(
-      'transitRouterVpcAttachmentName',
-    );
-    transitRouterVpcAttachmentOptions = registerOutput<Map<String, String>>(
-      'transitRouterVpcAttachmentOptions',
-    );
+    transitRouterVpcAttachmentName = registerOutput<String>('transitRouterVpcAttachmentName');
+    transitRouterVpcAttachmentOptions = registerOutput<Map<String, String>>('transitRouterVpcAttachmentOptions');
     vpcId = registerOutput<String>('vpcId');
     vpcOwnerId = registerOutput<String>('vpcOwnerId');
     zoneMappings = registerOutput<List<Map<String, dynamic>>>('zoneMappings');

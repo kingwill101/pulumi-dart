@@ -7,31 +7,22 @@ import 'bgp_session_response.dart';
 class DirectConnectionResponse {
   /// The bandwidth of the connection.
   final pulumi.Input<int>? bandwidthInMbps;
-
   /// The BGP session associated with the connection.
   final pulumi.Input<BgpSessionResponse>? bgpSession;
-
   /// The unique identifier (GUID) for the connection.
   final pulumi.Input<String>? connectionIdentifier;
-
   /// The state of the connection.
   final pulumi.Input<String> connectionState;
-
   /// The error message related to the connection state, if any.
   final pulumi.Input<String> errorMessage;
-
   /// The ID used within Microsoft's peering provisioning system to track the connection
   final pulumi.Input<String> microsoftTrackingId;
-
   /// The PeeringDB.com ID of the facility at which the connection has to be set up.
   final pulumi.Input<int>? peeringDBFacilityId;
-
   /// The bandwidth that is actually provisioned.
   final pulumi.Input<int> provisionedBandwidthInMbps;
-
   /// The field indicating if Microsoft provides session ip addresses.
   final pulumi.Input<String>? sessionAddressProvider;
-
   /// The flag that indicates whether or not the connection is used for peering service.
   final pulumi.Input<bool>? useForPeeringService;
 
@@ -62,11 +53,7 @@ class DirectConnectionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bandwidthInMbps': ?bandwidthInMbps,
-      'bgpSession':
-          ?pulumi.Input.mapOptionalInputValue<
-            BgpSessionResponse,
-            Map<String, dynamic>
-          >(bgpSession, (value) => value.toMap()),
+      'bgpSession': ?pulumi.Input.mapOptionalInputValue<BgpSessionResponse, Map<String, dynamic>>(bgpSession, (value) => value.toMap()),
       'connectionIdentifier': ?connectionIdentifier,
       'connectionState': connectionState,
       'errorMessage': errorMessage,
@@ -80,48 +67,17 @@ class DirectConnectionResponse {
 
   factory DirectConnectionResponse.fromMap(Map<String, dynamic> map) {
     return DirectConnectionResponse(
-      bandwidthInMbps: (() {
-        final guardedValue = map['bandwidthInMbps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      bgpSession: (() {
-        final guardedValue = map['bgpSession'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BgpSessionResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      connectionIdentifier: (() {
-        final guardedValue = map['connectionIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bandwidthInMbps: (() { final guardedValue = map['bandwidthInMbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bgpSession: (() { final guardedValue = map['bgpSession']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BgpSessionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      connectionIdentifier: (() { final guardedValue = map['connectionIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       connectionState: pulumi.Input.fromValue(map['connectionState'] as String),
       errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
-      microsoftTrackingId: pulumi.Input.fromValue(
-        map['microsoftTrackingId'] as String,
-      ),
-      peeringDBFacilityId: (() {
-        final guardedValue = map['peeringDBFacilityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      provisionedBandwidthInMbps: pulumi.Input.fromValue(
-        map['provisionedBandwidthInMbps'] as int,
-      ),
-      sessionAddressProvider: (() {
-        final guardedValue = map['sessionAddressProvider'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      useForPeeringService: (() {
-        final guardedValue = map['useForPeeringService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      microsoftTrackingId: pulumi.Input.fromValue(map['microsoftTrackingId'] as String),
+      peeringDBFacilityId: (() { final guardedValue = map['peeringDBFacilityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      provisionedBandwidthInMbps: pulumi.Input.fromValue(map['provisionedBandwidthInMbps'] as int),
+      sessionAddressProvider: (() { final guardedValue = map['sessionAddressProvider']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      useForPeeringService: (() { final guardedValue = map['useForPeeringService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

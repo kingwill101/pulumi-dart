@@ -5,9 +5,7 @@ import 'get_instance_reservation_affinity_specific_reservation.dart';
 
 class GetInstanceReservationAffinity {
   /// Specifies the label selector for the reservation to use.
-  final pulumi.Input<List<GetInstanceReservationAffinitySpecificReservation>>
-  specificReservations;
-
+  final pulumi.Input<List<GetInstanceReservationAffinitySpecificReservation>> specificReservations;
   /// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
   final pulumi.Input<String> type;
 
@@ -21,35 +19,16 @@ class GetInstanceReservationAffinity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'specificReservations':
-          pulumi.Input.mapInputValue<
-            List<GetInstanceReservationAffinitySpecificReservation>,
-            List<Map<String, dynamic>>
-          >(
-            specificReservations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetInstanceReservationAffinitySpecificReservation,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'specificReservations': pulumi.Input.mapInputValue<List<GetInstanceReservationAffinitySpecificReservation>, List<Map<String, dynamic>>>(specificReservations, (value) => pulumi.Input.encodeList<GetInstanceReservationAffinitySpecificReservation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory GetInstanceReservationAffinity.fromMap(Map<String, dynamic> map) {
     return GetInstanceReservationAffinity(
-      specificReservations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetInstanceReservationAffinitySpecificReservation
-        >(
-          map['specificReservations']!,
-          (value) => GetInstanceReservationAffinitySpecificReservation.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      specificReservations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceReservationAffinitySpecificReservation>(map['specificReservations']!, (value) => GetInstanceReservationAffinitySpecificReservation.fromMap((value as Map).cast<String, dynamic>()))),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

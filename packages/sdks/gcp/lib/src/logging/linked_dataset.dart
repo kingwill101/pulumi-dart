@@ -356,31 +356,23 @@ class LinkedDataset extends pulumi.CustomResource {
   /// Views corresponding to the LogViews in the bucket.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> bigqueryDatasets;
-
   /// The bucket to which the linked dataset is attached.
   late final pulumi.Output<String> bucket;
-
   /// Output only. The creation timestamp of the link. A timestamp in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
   /// and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
-
   /// Describes this link. The maximum length of the description is 8000 characters.
   late final pulumi.Output<String?> description;
-
   /// Output only. The linked dataset lifecycle state.
   late final pulumi.Output<String> lifecycleState;
-
   /// The id of the linked dataset.
   late final pulumi.Output<String> linkId;
-
   /// The location of the linked dataset.
   late final pulumi.Output<String> location;
-
   /// The resource name of the linked dataset. The name can have up to 100 characters. A valid link id
   /// (at the end of the link name) must only have alphanumeric characters and underscores within it.
   late final pulumi.Output<String> name;
-
   /// The parent of the linked dataset.
   late final pulumi.Output<String> parent;
 
@@ -393,14 +385,12 @@ class LinkedDataset extends pulumi.CustomResource {
     LinkedDatasetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:logging/linkedDataset:LinkedDataset',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bigqueryDatasets = registerOutput<List<Map<String, dynamic>>>(
-      'bigqueryDatasets',
-    );
+          'gcp:logging/linkedDataset:LinkedDataset',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bigqueryDatasets = registerOutput<List<Map<String, dynamic>>>('bigqueryDatasets');
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -429,14 +419,12 @@ class LinkedDataset extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:logging/linkedDataset:LinkedDataset',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bigqueryDatasets = registerOutput<List<Map<String, dynamic>>>(
-      'bigqueryDatasets',
-    );
+          'gcp:logging/linkedDataset:LinkedDataset',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bigqueryDatasets = registerOutput<List<Map<String, dynamic>>>('bigqueryDatasets');
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GalleryImageIdentifier {
   /// The name of the gallery image definition offer.
   final pulumi.Input<String> offer;
-
   /// The name of the gallery image definition publisher.
   final pulumi.Input<String> publisher;
-
   /// The name of the gallery image definition SKU.
   final pulumi.Input<String> sku;
 
@@ -39,3 +37,4 @@ class GalleryImageIdentifier {
     );
   }
 }
+

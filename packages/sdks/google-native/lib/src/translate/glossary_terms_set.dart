@@ -10,38 +10,20 @@ class GlossaryTermsSet {
 
   /// Creates a new [GlossaryTermsSet].
   /// [terms] Each term in the set represents a term that can be replaced by the other terms.
-  GlossaryTermsSet({this.terms});
+  GlossaryTermsSet({
+    this.terms,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'terms':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GlossaryTerm>,
-            List<Map<String, dynamic>>
-          >(
-            terms,
-            (value) =>
-                pulumi.Input.encodeList<GlossaryTerm, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'terms': ?pulumi.Input.mapOptionalInputValue<List<GlossaryTerm>, List<Map<String, dynamic>>>(terms, (value) => pulumi.Input.encodeList<GlossaryTerm, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GlossaryTermsSet.fromMap(Map<String, dynamic> map) {
     return GlossaryTermsSet(
-      terms: (() {
-        final guardedValue = map['terms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GlossaryTerm>(
-            guardedValue,
-            (value) =>
-                GlossaryTerm.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      terms: (() { final guardedValue = map['terms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GlossaryTerm>(guardedValue, (value) => GlossaryTerm.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

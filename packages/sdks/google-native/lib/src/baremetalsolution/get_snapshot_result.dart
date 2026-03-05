@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSnapshot.
 class GetSnapshotResult {
   /// The creation time of the snapshot.
   final String createTime;
-
   /// The description of the snapshot.
   final String description;
-
   /// The name of the snapshot.
   final String name;
-
   /// The name of the volume which this snapshot belongs to.
   final String storageVolume;
-
   /// The type of the snapshot which indicates whether it was scheduled or manual/ad-hoc.
   final String type;
 
@@ -51,3 +48,4 @@ class GetSnapshotResult {
     );
   }
 }
+

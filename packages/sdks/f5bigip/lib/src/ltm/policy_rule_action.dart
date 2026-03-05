@@ -14,7 +14,6 @@ class PolicyRuleAction {
   final pulumi.Input<String>? clonePool;
   final pulumi.Input<int>? code;
   final pulumi.Input<bool>? compress;
-
   /// This action is set to `true` by default, it needs to be explicitly set to `false` for actions it conflicts with.
   final pulumi.Input<bool>? connection;
   final pulumi.Input<String>? content;
@@ -33,7 +32,6 @@ class PolicyRuleAction {
   final pulumi.Input<String>? expression;
   final pulumi.Input<String>? extension;
   final pulumi.Input<String>? facility;
-
   /// This action will affect forwarding.
   final pulumi.Input<bool>? forward;
   final pulumi.Input<String>? fromProfile;
@@ -69,7 +67,6 @@ class PolicyRuleAction {
   final pulumi.Input<bool>? persist;
   final pulumi.Input<bool>? pin;
   final pulumi.Input<String>? policy;
-
   /// This action will direct the stream to this pool.
   final pulumi.Input<String>? pool;
   final pulumi.Input<int>? port;
@@ -437,526 +434,111 @@ class PolicyRuleAction {
 
   factory PolicyRuleAction.fromMap(Map<String, dynamic> map) {
     return PolicyRuleAction(
-      appService: (() {
-        final guardedValue = map['appService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      application: (() {
-        final guardedValue = map['application'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      asm: (() {
-        final guardedValue = map['asm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      avr: (() {
-        final guardedValue = map['avr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      cache: (() {
-        final guardedValue = map['cache'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      carp: (() {
-        final guardedValue = map['carp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      category: (() {
-        final guardedValue = map['category'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      classify: (() {
-        final guardedValue = map['classify'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      clonePool: (() {
-        final guardedValue = map['clonePool'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      code: (() {
-        final guardedValue = map['code'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      compress: (() {
-        final guardedValue = map['compress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      connection: (() {
-        final guardedValue = map['connection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cookieHash: (() {
-        final guardedValue = map['cookieHash'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      cookieInsert: (() {
-        final guardedValue = map['cookieInsert'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      cookiePassive: (() {
-        final guardedValue = map['cookiePassive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      cookieRewrite: (() {
-        final guardedValue = map['cookieRewrite'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      decompress: (() {
-        final guardedValue = map['decompress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      defer: (() {
-        final guardedValue = map['defer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      destinationAddress: (() {
-        final guardedValue = map['destinationAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      disable: (() {
-        final guardedValue = map['disable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      domain: (() {
-        final guardedValue = map['domain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      expiry: (() {
-        final guardedValue = map['expiry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expirySecs: (() {
-        final guardedValue = map['expirySecs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      expression: (() {
-        final guardedValue = map['expression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      extension: (() {
-        final guardedValue = map['extension'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      facility: (() {
-        final guardedValue = map['facility'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      forward: (() {
-        final guardedValue = map['forward'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      fromProfile: (() {
-        final guardedValue = map['fromProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hash: (() {
-        final guardedValue = map['hash'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      http: (() {
-        final guardedValue = map['http'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      httpBasicAuth: (() {
-        final guardedValue = map['httpBasicAuth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      httpCookie: (() {
-        final guardedValue = map['httpCookie'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      httpHeader: (() {
-        final guardedValue = map['httpHeader'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      httpHost: (() {
-        final guardedValue = map['httpHost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      httpReferer: (() {
-        final guardedValue = map['httpReferer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      httpReply: (() {
-        final guardedValue = map['httpReply'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      httpSetCookie: (() {
-        final guardedValue = map['httpSetCookie'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      httpUri: (() {
-        final guardedValue = map['httpUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ifile: (() {
-        final guardedValue = map['ifile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      insert: (() {
-        final guardedValue = map['insert'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      internalVirtual: (() {
-        final guardedValue = map['internalVirtual'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipAddress: (() {
-        final guardedValue = map['ipAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      l7dos: (() {
-        final guardedValue = map['l7dos'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      length: (() {
-        final guardedValue = map['length'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      log: (() {
-        final guardedValue = map['log'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ltmPolicy: (() {
-        final guardedValue = map['ltmPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      member: (() {
-        final guardedValue = map['member'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      netmask: (() {
-        final guardedValue = map['netmask'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nexthop: (() {
-        final guardedValue = map['nexthop'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      node: (() {
-        final guardedValue = map['node'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      offset: (() {
-        final guardedValue = map['offset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pem: (() {
-        final guardedValue = map['pem'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      persist: (() {
-        final guardedValue = map['persist'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      pin: (() {
-        final guardedValue = map['pin'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pool: (() {
-        final guardedValue = map['pool'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      profile: (() {
-        final guardedValue = map['profile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      queryString: (() {
-        final guardedValue = map['queryString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rateclass: (() {
-        final guardedValue = map['rateclass'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      redirect: (() {
-        final guardedValue = map['redirect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      remove: (() {
-        final guardedValue = map['remove'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      replace: (() {
-        final guardedValue = map['replace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      request: (() {
-        final guardedValue = map['request'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      requestAdapt: (() {
-        final guardedValue = map['requestAdapt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      reset: (() {
-        final guardedValue = map['reset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      response: (() {
-        final guardedValue = map['response'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      responseAdapt: (() {
-        final guardedValue = map['responseAdapt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      scheme: (() {
-        final guardedValue = map['scheme'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      script: (() {
-        final guardedValue = map['script'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      select: (() {
-        final guardedValue = map['select'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      serverSsl: (() {
-        final guardedValue = map['serverSsl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      setVariable: (() {
-        final guardedValue = map['setVariable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      shutdown: (() {
-        final guardedValue = map['shutdown'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      snat: (() {
-        final guardedValue = map['snat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      snatpool: (() {
-        final guardedValue = map['snatpool'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceAddress: (() {
-        final guardedValue = map['sourceAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sslClientHello: (() {
-        final guardedValue = map['sslClientHello'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sslServerHandshake: (() {
-        final guardedValue = map['sslServerHandshake'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sslServerHello: (() {
-        final guardedValue = map['sslServerHello'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sslSessionId: (() {
-        final guardedValue = map['sslSessionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      tcl: (() {
-        final guardedValue = map['tcl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      tcpNagle: (() {
-        final guardedValue = map['tcpNagle'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      text: (() {
-        final guardedValue = map['text'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeout: (() {
-        final guardedValue = map['timeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      tmName: (() {
-        final guardedValue = map['tmName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uie: (() {
-        final guardedValue = map['uie'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      universal: (() {
-        final guardedValue = map['universal'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtual: (() {
-        final guardedValue = map['virtual'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vlan: (() {
-        final guardedValue = map['vlan'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vlanId: (() {
-        final guardedValue = map['vlanId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      wam: (() {
-        final guardedValue = map['wam'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      write: (() {
-        final guardedValue = map['write'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      appService: (() { final guardedValue = map['appService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      application: (() { final guardedValue = map['application']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      asm: (() { final guardedValue = map['asm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      avr: (() { final guardedValue = map['avr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      cache: (() { final guardedValue = map['cache']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      carp: (() { final guardedValue = map['carp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      classify: (() { final guardedValue = map['classify']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      clonePool: (() { final guardedValue = map['clonePool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      compress: (() { final guardedValue = map['compress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      connection: (() { final guardedValue = map['connection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cookieHash: (() { final guardedValue = map['cookieHash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      cookieInsert: (() { final guardedValue = map['cookieInsert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      cookiePassive: (() { final guardedValue = map['cookiePassive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      cookieRewrite: (() { final guardedValue = map['cookieRewrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      decompress: (() { final guardedValue = map['decompress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      defer: (() { final guardedValue = map['defer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      destinationAddress: (() { final guardedValue = map['destinationAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      disable: (() { final guardedValue = map['disable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      expiry: (() { final guardedValue = map['expiry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expirySecs: (() { final guardedValue = map['expirySecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      expression: (() { final guardedValue = map['expression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      extension: (() { final guardedValue = map['extension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      facility: (() { final guardedValue = map['facility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      forward: (() { final guardedValue = map['forward']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      fromProfile: (() { final guardedValue = map['fromProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hash: (() { final guardedValue = map['hash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      http: (() { final guardedValue = map['http']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      httpBasicAuth: (() { final guardedValue = map['httpBasicAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      httpCookie: (() { final guardedValue = map['httpCookie']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      httpHeader: (() { final guardedValue = map['httpHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      httpHost: (() { final guardedValue = map['httpHost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      httpReferer: (() { final guardedValue = map['httpReferer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      httpReply: (() { final guardedValue = map['httpReply']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      httpSetCookie: (() { final guardedValue = map['httpSetCookie']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      httpUri: (() { final guardedValue = map['httpUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ifile: (() { final guardedValue = map['ifile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      insert: (() { final guardedValue = map['insert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      internalVirtual: (() { final guardedValue = map['internalVirtual']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      l7dos: (() { final guardedValue = map['l7dos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      length: (() { final guardedValue = map['length']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      log: (() { final guardedValue = map['log']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ltmPolicy: (() { final guardedValue = map['ltmPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      member: (() { final guardedValue = map['member']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      netmask: (() { final guardedValue = map['netmask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nexthop: (() { final guardedValue = map['nexthop']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      node: (() { final guardedValue = map['node']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      offset: (() { final guardedValue = map['offset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pem: (() { final guardedValue = map['pem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      persist: (() { final guardedValue = map['persist']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      pin: (() { final guardedValue = map['pin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pool: (() { final guardedValue = map['pool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      queryString: (() { final guardedValue = map['queryString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rateclass: (() { final guardedValue = map['rateclass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redirect: (() { final guardedValue = map['redirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      remove: (() { final guardedValue = map['remove']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      replace: (() { final guardedValue = map['replace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      request: (() { final guardedValue = map['request']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      requestAdapt: (() { final guardedValue = map['requestAdapt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      reset: (() { final guardedValue = map['reset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      response: (() { final guardedValue = map['response']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      responseAdapt: (() { final guardedValue = map['responseAdapt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      scheme: (() { final guardedValue = map['scheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      script: (() { final guardedValue = map['script']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      select: (() { final guardedValue = map['select']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      serverSsl: (() { final guardedValue = map['serverSsl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      setVariable: (() { final guardedValue = map['setVariable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      shutdown: (() { final guardedValue = map['shutdown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      snat: (() { final guardedValue = map['snat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      snatpool: (() { final guardedValue = map['snatpool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceAddress: (() { final guardedValue = map['sourceAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sslClientHello: (() { final guardedValue = map['sslClientHello']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sslServerHandshake: (() { final guardedValue = map['sslServerHandshake']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sslServerHello: (() { final guardedValue = map['sslServerHello']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sslSessionId: (() { final guardedValue = map['sslSessionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tcl: (() { final guardedValue = map['tcl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tcpNagle: (() { final guardedValue = map['tcpNagle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tmName: (() { final guardedValue = map['tmName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uie: (() { final guardedValue = map['uie']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      universal: (() { final guardedValue = map['universal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtual: (() { final guardedValue = map['virtual']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      wam: (() { final guardedValue = map['wam']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      write: (() { final guardedValue = map['write']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

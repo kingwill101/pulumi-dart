@@ -13,8 +13,7 @@ enum AzureFirewallApplicationRuleProtocolType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AzureFirewallApplicationRuleProtocolType value: $value',
-    );
+    throw ArgumentError('Unknown AzureFirewallApplicationRuleProtocolType value: $value');
   }
 }
+

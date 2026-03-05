@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlaybackKeyPairArgs {
   /// Playback Key Pair name.
   final pulumi.Input<String>? name;
-
   /// Public portion of a customer-generated key pair. Must be an ECDSA public key in PEM format.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> publicKey;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,24 +41,11 @@ class PlaybackKeyPairArgs {
 
   factory PlaybackKeyPairArgs.fromMap(Map<String, dynamic> map) {
     return PlaybackKeyPairArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicKey: pulumi.Input.fromValue(map['publicKey'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

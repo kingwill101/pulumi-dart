@@ -183,30 +183,21 @@ import 'system_data_response.dart';
 /// ```
 class ApiSource extends pulumi.CustomResource {
   /// API source configuration for Azure API Management.
-  late final pulumi.Output<AzureApiManagementSourceResponse?>
-  azureApiManagementSource;
-
+  late final pulumi.Output<AzureApiManagementSourceResponse?> azureApiManagementSource;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Indicates if the specification should be imported along with metadata.
   late final pulumi.Output<String?> importSpecification;
-
   /// The state of the API source link
   late final pulumi.Output<LinkStateResponse> linkState;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The target environment resource ID.
   late final pulumi.Output<String?> targetEnvironmentId;
-
   /// The target lifecycle stage.
   late final pulumi.Output<String?> targetLifecycleStage;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -219,45 +210,17 @@ class ApiSource extends pulumi.CustomResource {
     ApiSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apicenter:ApiSource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    azureApiManagementSource =
-        registerOutput<AzureApiManagementSourceResponse?>(
-          'azureApiManagementSource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AzureApiManagementSourceResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure-native:apicenter:ApiSource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    azureApiManagementSource = registerOutput<AzureApiManagementSourceResponse?>('azureApiManagementSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureApiManagementSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     importSpecification = registerOutput<String?>('importSpecification');
-    linkState = registerOutput<LinkStateResponse>(
-      'linkState',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinkStateResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    linkState = registerOutput<LinkStateResponse>('linkState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetEnvironmentId = registerOutput<String?>('targetEnvironmentId');
     targetLifecycleStage = registerOutput<String?>('targetLifecycleStage');
     type = registerOutput<String>('type');

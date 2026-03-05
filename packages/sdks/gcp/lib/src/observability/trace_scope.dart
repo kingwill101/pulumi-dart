@@ -244,31 +244,24 @@ import 'trace_scope_state.dart';
 class TraceScope extends pulumi.CustomResource {
   /// The creation timestamp of the trace scope.
   late final pulumi.Output<String> createTime;
-
   /// Describes this trace scope.
   /// The maximum length of the description is 8000 characters.
   late final pulumi.Output<String?> description;
-
   /// GCP region the TraceScope is stored in. Only `global` is supported.
   late final pulumi.Output<String> location;
-
   /// Identifier. The resource name of the trace scope.
   /// For example:
   /// projects/my-project/locations/global/traceScopes/my-trace-scope
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Names of the projects that are included in this trace scope.
   /// *  `projects/[PROJECT_ID]`
   /// A trace scope can include a maximum of 20 projects.
   late final pulumi.Output<List<String>> resourceNames;
-
   /// A client-assigned identifier for the trace scope.
   late final pulumi.Output<String> traceScopeId;
-
   /// The last update timestamp of the trace scope.
   late final pulumi.Output<String> updateTime;
 
@@ -281,11 +274,11 @@ class TraceScope extends pulumi.CustomResource {
     TraceScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:observability/traceScope:TraceScope',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:observability/traceScope:TraceScope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
@@ -314,11 +307,11 @@ class TraceScope extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:observability/traceScope:TraceScope',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:observability/traceScope:TraceScope',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');

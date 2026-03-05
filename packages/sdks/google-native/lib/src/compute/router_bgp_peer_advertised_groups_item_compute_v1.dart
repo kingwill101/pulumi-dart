@@ -10,8 +10,7 @@ enum RouterBgpPeerAdvertisedGroupsItemComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RouterBgpPeerAdvertisedGroupsItemComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown RouterBgpPeerAdvertisedGroupsItemComputeV1 value: $value');
   }
 }
+

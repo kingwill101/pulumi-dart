@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateEndpointConnectionArgs {
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
-
   /// The PrivateEndpointConnection name
   final pulumi.Input<String> privateEndpointConnectionName;
-
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetPrivateEndpointConnectionArgs {
   factory GetPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionArgs(
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      privateEndpointConnectionName: pulumi.Input.fromValue(
-        map['privateEndpointConnectionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      privateEndpointConnectionName: pulumi.Input.fromValue(map['privateEndpointConnectionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

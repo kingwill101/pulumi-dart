@@ -4,10 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResolutionLinesLine {
   final pulumi.Input<String> lineCode;
-
   /// Line display name.
   final pulumi.Input<String> lineDisplayName;
-
   /// Line name.
   final pulumi.Input<String> lineName;
 
@@ -37,3 +35,4 @@ class GetResolutionLinesLine {
     );
   }
 }
+

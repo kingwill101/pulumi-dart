@@ -62,19 +62,20 @@ class JSONPatchPatch {
 
   /// Creates a new [JSONPatchPatch].
   /// [expression] expression will be evaluated by CEL to create a [JSON patch](https://jsonpatch.com/). ref: https://github.com/google/cel-spec
-  JSONPatchPatch({this.expression});
+  JSONPatchPatch({
+    this.expression,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'expression': ?expression};
+    return <String, dynamic>{
+      'expression': ?expression,
+    };
   }
 
   factory JSONPatchPatch.fromMap(Map<String, dynamic> map) {
     return JSONPatchPatch(
-      expression: (() {
-        final guardedValue = map['expression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expression: (() { final guardedValue = map['expression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -13,14 +13,15 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchic
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maxTokens': maxTokens};
+    return <String, dynamic>{
+      'maxTokens': maxTokens,
+    };
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration(
       maxTokens: pulumi.Input.fromValue(map['maxTokens'] as int),
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SentinelOnboardingStateArgs {
   /// Flag that indicates the status of the CMK setting
   final pulumi.Input<bool>? customerManagedKey;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The Sentinel onboarding state name. Supports - default
   final pulumi.Input<String>? sentinelOnboardingStateName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -42,20 +39,11 @@ class SentinelOnboardingStateArgs {
 
   factory SentinelOnboardingStateArgs.fromMap(Map<String, dynamic> map) {
     return SentinelOnboardingStateArgs(
-      customerManagedKey: (() {
-        final guardedValue = map['customerManagedKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sentinelOnboardingStateName: (() {
-        final guardedValue = map['sentinelOnboardingStateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customerManagedKey: (() { final guardedValue = map['customerManagedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sentinelOnboardingStateName: (() { final guardedValue = map['sentinelOnboardingStateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

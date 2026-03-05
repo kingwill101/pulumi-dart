@@ -17,3 +17,4 @@ enum VMSwitchType {
     throw ArgumentError('Unknown VMSwitchType value: $value');
   }
 }
+

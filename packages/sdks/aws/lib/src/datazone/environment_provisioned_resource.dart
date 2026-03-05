@@ -7,7 +7,6 @@ class EnvironmentProvisionedResource {
   final pulumi.Input<String> name;
   final pulumi.Input<String> provider;
   final pulumi.Input<String> type;
-
   /// The value of an environment profile parameter.
   final pulumi.Input<String> value;
 
@@ -41,3 +40,4 @@ class EnvironmentProvisionedResource {
     );
   }
 }
+

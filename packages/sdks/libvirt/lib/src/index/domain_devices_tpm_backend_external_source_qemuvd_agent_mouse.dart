@@ -8,17 +8,20 @@ class DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse {
 
   /// Creates a new [DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse].
   /// [mode] Sets the mode for the mouse interaction through the QEMU guest agent.
-  DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse({required this.mode});
+  DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
-  factory DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse(
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
+

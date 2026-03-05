@@ -446,32 +446,24 @@ import 'datastore_blobstorage_state.dart';
 class DatastoreBlobstorage extends pulumi.CustomResource {
   /// The access key of the Storage Account. Conflicts with `shared_access_signature`.
   late final pulumi.Output<String?> accountKey;
-
   /// Text used to describe the asset. Changing this forces a new Machine Learning DataStore to be created.
   late final pulumi.Output<String?> description;
-
   /// Specifies whether this Machines Learning DataStore is the default for the Workspace. Defaults to `false`.
   ///
   /// &gt; **Note:** `is_default` can only be set to `true` on update.
   late final pulumi.Output<bool?> isDefault;
-
   /// The name of the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies which identity to use when retrieving data from the specified source. Defaults to `None`. Possible values are `None`, `WorkspaceSystemAssignedIdentity` and `WorkspaceUserAssignedIdentity`.
   late final pulumi.Output<String?> serviceDataAuthIdentity;
-
   /// The Shared Access Signature of the Storage Account. Conflicts with `account_key`.
   ///
   /// &gt; **Note:** If `service_data_auth_identity` is set to `None` or omitted, one of `account_key` or `shared_access_signature` must be specified.
   late final pulumi.Output<String?> sharedAccessSignature;
-
   /// The ID of the Storage Account Container. Changing this forces a new Machine Learning DataStore to be created.
   late final pulumi.Output<String> storageContainerId;
-
   /// A mapping of tags which should be assigned to the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning DataStore to be created.
   late final pulumi.Output<String> workspaceId;
 
@@ -484,18 +476,16 @@ class DatastoreBlobstorage extends pulumi.CustomResource {
     DatastoreBlobstorageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:machinelearning/datastoreBlobstorage:DatastoreBlobstorage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:machinelearning/datastoreBlobstorage:DatastoreBlobstorage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountKey = registerOutput<String?>('accountKey');
     description = registerOutput<String?>('description');
     isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String>('name');
-    serviceDataAuthIdentity = registerOutput<String?>(
-      'serviceDataAuthIdentity',
-    );
+    serviceDataAuthIdentity = registerOutput<String?>('serviceDataAuthIdentity');
     sharedAccessSignature = registerOutput<String?>('sharedAccessSignature');
     storageContainerId = registerOutput<String>('storageContainerId');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -520,18 +510,16 @@ class DatastoreBlobstorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:machinelearning/datastoreBlobstorage:DatastoreBlobstorage',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:machinelearning/datastoreBlobstorage:DatastoreBlobstorage',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountKey = registerOutput<String?>('accountKey');
     description = registerOutput<String?>('description');
     isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String>('name');
-    serviceDataAuthIdentity = registerOutput<String?>(
-      'serviceDataAuthIdentity',
-    );
+    serviceDataAuthIdentity = registerOutput<String?>('serviceDataAuthIdentity');
     sharedAccessSignature = registerOutput<String?>('sharedAccessSignature');
     storageContainerId = registerOutput<String>('storageContainerId');
     tags = registerOutput<Map<String, String>?>('tags');

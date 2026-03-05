@@ -6,14 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IPTrafficResponse {
   /// List of destination IP addresses of the traffic..
   final pulumi.Input<List<String>> destinationIps;
-
   /// The destination ports of the traffic.
   final pulumi.Input<List<String>> destinationPorts;
   final pulumi.Input<List<String>> protocols;
-
   /// List of source IP addresses of the traffic..
   final pulumi.Input<List<String>> sourceIps;
-
   /// The source ports of the traffic.
   final pulumi.Input<List<String>> sourcePorts;
 
@@ -43,21 +40,12 @@ class IPTrafficResponse {
 
   factory IPTrafficResponse.fromMap(Map<String, dynamic> map) {
     return IPTrafficResponse(
-      destinationIps: pulumi.Input.fromValue(
-        (map['destinationIps'] as List).cast<String>(),
-      ),
-      destinationPorts: pulumi.Input.fromValue(
-        (map['destinationPorts'] as List).cast<String>(),
-      ),
-      protocols: pulumi.Input.fromValue(
-        (map['protocols'] as List).cast<String>(),
-      ),
-      sourceIps: pulumi.Input.fromValue(
-        (map['sourceIps'] as List).cast<String>(),
-      ),
-      sourcePorts: pulumi.Input.fromValue(
-        (map['sourcePorts'] as List).cast<String>(),
-      ),
+      destinationIps: pulumi.Input.fromValue((map['destinationIps'] as List).cast<String>()),
+      destinationPorts: pulumi.Input.fromValue((map['destinationPorts'] as List).cast<String>()),
+      protocols: pulumi.Input.fromValue((map['protocols'] as List).cast<String>()),
+      sourceIps: pulumi.Input.fromValue((map['sourceIps'] as List).cast<String>()),
+      sourcePorts: pulumi.Input.fromValue((map['sourcePorts'] as List).cast<String>()),
     );
   }
 }
+

@@ -6,12 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionRecursionConfigState {
   /// Name of the Lambda function.
   final pulumi.Input<String>? functionName;
-
   /// Lambda function recursion configuration. Valid values are `Allow` or `Terminate`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? recursiveLoop;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -35,21 +33,10 @@ class FunctionRecursionConfigState {
 
   factory FunctionRecursionConfigState.fromMap(Map<String, dynamic> map) {
     return FunctionRecursionConfigState(
-      functionName: (() {
-        final guardedValue = map['functionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recursiveLoop: (() {
-        final guardedValue = map['recursiveLoop'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      functionName: (() { final guardedValue = map['functionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recursiveLoop: (() { final guardedValue = map['recursiveLoop']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,14 +6,11 @@ class IndexFirestoreV1beta1 extends pulumi.CustomResource {
   /// The collection ID to which this index applies. Required.
   late final pulumi.Output<String> collectionId;
   late final pulumi.Output<String> databaseId;
-
   /// The fields to index.
   late final pulumi.Output<List<Map<String, dynamic>>> fields;
-
   /// The resource name of the index. Output only.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// The state of the index. Output only.
   late final pulumi.Output<String> state;
 
@@ -26,11 +23,11 @@ class IndexFirestoreV1beta1 extends pulumi.CustomResource {
     IndexFirestoreV1beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:firestore/v1beta1:Index',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:firestore/v1beta1:Index',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     collectionId = registerOutput<String>('collectionId');
     databaseId = registerOutput<String>('databaseId');
     fields = registerOutput<List<Map<String, dynamic>>>('fields');

@@ -5,53 +5,35 @@ import 'get_application_gateway_http_listener_custom_error_configuration.dart';
 
 class GetApplicationGatewayHttpListener {
   /// One or more `custom_error_configuration` blocks as defined below.
-  final pulumi.Input<
-    List<GetApplicationGatewayHttpListenerCustomErrorConfiguration>
-  >
-  customErrorConfigurations;
-
+  final pulumi.Input<List<GetApplicationGatewayHttpListenerCustomErrorConfiguration>> customErrorConfigurations;
   /// The ID of the Web Application Firewall Policy which is used as an HTTP Listener for this Path Rule.
   final pulumi.Input<String> firewallPolicyId;
-
   /// The ID of the associated Frontend Configuration.
   final pulumi.Input<String> frontendIpConfigurationId;
-
   /// The Name of the Frontend IP Configuration used for this HTTP Listener.
   final pulumi.Input<String> frontendIpConfigurationName;
-
   /// The ID of the associated Frontend Port.
   final pulumi.Input<String> frontendPortId;
-
   /// The Name of the Frontend Port used for this HTTP Listener.
   final pulumi.Input<String> frontendPortName;
-
   /// The Hostname which is used for this HTTP Listener.
   final pulumi.Input<String> hostName;
-
   /// A list of Hostname(s) used for this HTTP Listener. It allows special wildcard characters.
   final pulumi.Input<List<String>> hostNames;
-
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String> id;
-
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
-
   /// The Protocol used for this Probe.
   final pulumi.Input<String> protocol;
-
   /// Is Server Name Indication required?
   final pulumi.Input<bool> requireSni;
-
   /// The ID of the associated SSL Certificate.
   final pulumi.Input<String> sslCertificateId;
-
   /// The name of the associated SSL Certificate which is used for this HTTP Listener.
   final pulumi.Input<String> sslCertificateName;
-
   /// The ID of the associated SSL Profile.
   final pulumi.Input<String> sslProfileId;
-
   /// The name of the associated SSL Profile which is used for this HTTP Listener.
   final pulumi.Input<String> sslProfileName;
 
@@ -93,18 +75,7 @@ class GetApplicationGatewayHttpListener {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customErrorConfigurations':
-          pulumi.Input.mapInputValue<
-            List<GetApplicationGatewayHttpListenerCustomErrorConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            customErrorConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetApplicationGatewayHttpListenerCustomErrorConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'customErrorConfigurations': pulumi.Input.mapInputValue<List<GetApplicationGatewayHttpListenerCustomErrorConfiguration>, List<Map<String, dynamic>>>(customErrorConfigurations, (value) => pulumi.Input.encodeList<GetApplicationGatewayHttpListenerCustomErrorConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'firewallPolicyId': firewallPolicyId,
       'frontendIpConfigurationId': frontendIpConfigurationId,
       'frontendIpConfigurationName': frontendIpConfigurationName,
@@ -125,46 +96,23 @@ class GetApplicationGatewayHttpListener {
 
   factory GetApplicationGatewayHttpListener.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayHttpListener(
-      customErrorConfigurations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetApplicationGatewayHttpListenerCustomErrorConfiguration
-        >(
-          map['customErrorConfigurations']!,
-          (value) =>
-              GetApplicationGatewayHttpListenerCustomErrorConfiguration.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      firewallPolicyId: pulumi.Input.fromValue(
-        map['firewallPolicyId'] as String,
-      ),
-      frontendIpConfigurationId: pulumi.Input.fromValue(
-        map['frontendIpConfigurationId'] as String,
-      ),
-      frontendIpConfigurationName: pulumi.Input.fromValue(
-        map['frontendIpConfigurationName'] as String,
-      ),
+      customErrorConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetApplicationGatewayHttpListenerCustomErrorConfiguration>(map['customErrorConfigurations']!, (value) => GetApplicationGatewayHttpListenerCustomErrorConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
+      firewallPolicyId: pulumi.Input.fromValue(map['firewallPolicyId'] as String),
+      frontendIpConfigurationId: pulumi.Input.fromValue(map['frontendIpConfigurationId'] as String),
+      frontendIpConfigurationName: pulumi.Input.fromValue(map['frontendIpConfigurationName'] as String),
       frontendPortId: pulumi.Input.fromValue(map['frontendPortId'] as String),
-      frontendPortName: pulumi.Input.fromValue(
-        map['frontendPortName'] as String,
-      ),
+      frontendPortName: pulumi.Input.fromValue(map['frontendPortName'] as String),
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
-      hostNames: pulumi.Input.fromValue(
-        (map['hostNames'] as List).cast<String>(),
-      ),
+      hostNames: pulumi.Input.fromValue((map['hostNames'] as List).cast<String>()),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       requireSni: pulumi.Input.fromValue(map['requireSni'] as bool),
-      sslCertificateId: pulumi.Input.fromValue(
-        map['sslCertificateId'] as String,
-      ),
-      sslCertificateName: pulumi.Input.fromValue(
-        map['sslCertificateName'] as String,
-      ),
+      sslCertificateId: pulumi.Input.fromValue(map['sslCertificateId'] as String),
+      sslCertificateName: pulumi.Input.fromValue(map['sslCertificateName'] as String),
       sslProfileId: pulumi.Input.fromValue(map['sslProfileId'] as String),
       sslProfileName: pulumi.Input.fromValue(map['sslProfileName'] as String),
     );
   }
 }
+

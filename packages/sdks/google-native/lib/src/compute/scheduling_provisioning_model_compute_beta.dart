@@ -12,8 +12,7 @@ enum SchedulingProvisioningModelComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SchedulingProvisioningModelComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown SchedulingProvisioningModelComputeBeta value: $value');
   }
 }
+

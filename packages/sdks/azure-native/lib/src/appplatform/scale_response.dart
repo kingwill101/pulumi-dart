@@ -7,10 +7,8 @@ import 'scale_rule_response.dart';
 class ScaleResponse {
   /// Optional. Maximum number of container replicas. Defaults to 10 if not set.
   final pulumi.Input<int>? maxReplicas;
-
   /// Optional. Minimum number of container replicas.
   final pulumi.Input<int>? minReplicas;
-
   /// Scaling rules.
   final pulumi.Input<List<ScaleRuleResponse>>? rules;
 
@@ -18,51 +16,26 @@ class ScaleResponse {
   /// [maxReplicas] Optional. Maximum number of container replicas. Defaults to 10 if not set.
   /// [minReplicas] Optional. Minimum number of container replicas.
   /// [rules] Scaling rules.
-  ScaleResponse({this.maxReplicas, this.minReplicas, this.rules});
+  ScaleResponse({
+    this.maxReplicas,
+    this.minReplicas,
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'maxReplicas': ?maxReplicas,
       'minReplicas': ?minReplicas,
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ScaleRuleResponse>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ScaleRuleResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<ScaleRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ScaleRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ScaleResponse.fromMap(Map<String, dynamic> map) {
     return ScaleResponse(
-      maxReplicas: (() {
-        final guardedValue = map['maxReplicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minReplicas: (() {
-        final guardedValue = map['minReplicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ScaleRuleResponse>(
-            guardedValue,
-            (value) => ScaleRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScaleRuleResponse>(guardedValue, (value) => ScaleRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

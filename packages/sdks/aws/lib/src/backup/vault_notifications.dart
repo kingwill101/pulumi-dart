@@ -307,16 +307,12 @@ import 'vault_notifications_state.dart';
 class VaultNotifications extends pulumi.CustomResource {
   /// The ARN of the vault.
   late final pulumi.Output<String> backupVaultArn;
-
   /// An array of events that indicate the status of jobs to back up resources to the backup vault.
   late final pulumi.Output<List<String>> backupVaultEvents;
-
   /// Name of the backup vault to add notifications for.
   late final pulumi.Output<String> backupVaultName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) that specifies the topic for a backup vault’s events
   late final pulumi.Output<String> snsTopicArn;
 
@@ -329,11 +325,11 @@ class VaultNotifications extends pulumi.CustomResource {
     VaultNotificationsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:backup/vaultNotifications:VaultNotifications',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:backup/vaultNotifications:VaultNotifications',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupVaultArn = registerOutput<String>('backupVaultArn');
     backupVaultEvents = registerOutput<List<String>>('backupVaultEvents');
     backupVaultName = registerOutput<String>('backupVaultName');
@@ -359,11 +355,11 @@ class VaultNotifications extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:backup/vaultNotifications:VaultNotifications',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:backup/vaultNotifications:VaultNotifications',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupVaultArn = registerOutput<String>('backupVaultArn');
     backupVaultEvents = registerOutput<List<String>>('backupVaultEvents');
     backupVaultName = registerOutput<String>('backupVaultName');

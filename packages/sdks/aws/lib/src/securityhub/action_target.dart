@@ -147,16 +147,12 @@ import 'action_target_state.dart';
 class ActionTarget extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the Security Hub custom action target.
   late final pulumi.Output<String> arn;
-
   /// The name of the custom action target.
   late final pulumi.Output<String> description;
-
   /// The ID for the custom action target.
   late final pulumi.Output<String> identifier;
-
   /// The description for the custom action target.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -169,11 +165,11 @@ class ActionTarget extends pulumi.CustomResource {
     ActionTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securityhub/actionTarget:ActionTarget',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securityhub/actionTarget:ActionTarget',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     identifier = registerOutput<String>('identifier');
@@ -199,11 +195,11 @@ class ActionTarget extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securityhub/actionTarget:ActionTarget',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securityhub/actionTarget:ActionTarget',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     identifier = registerOutput<String>('identifier');

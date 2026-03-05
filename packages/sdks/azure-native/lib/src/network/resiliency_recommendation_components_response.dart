@@ -7,16 +7,12 @@ import 'gateway_resiliency_recommendation_response.dart';
 class ResiliencyRecommendationComponentsResponse {
   /// Current Score of the gateway
   final pulumi.Input<String>? currentScore;
-
   /// Max score that the gateway can achieve if the specified recommendation is applied
   final pulumi.Input<String>? maxScore;
-
   /// Name of the Resiliency based Recommendation Component
   final pulumi.Input<String>? name;
-
   /// List of Gateway Resiliency based Recommendations
-  final pulumi.Input<List<GatewayResiliencyRecommendationResponse>>?
-  recommendations;
+  final pulumi.Input<List<GatewayResiliencyRecommendationResponse>>? recommendations;
 
   /// Creates a new [ResiliencyRecommendationComponentsResponse].
   /// [currentScore] Current Score of the gateway
@@ -35,52 +31,17 @@ class ResiliencyRecommendationComponentsResponse {
       'currentScore': ?currentScore,
       'maxScore': ?maxScore,
       'name': ?name,
-      'recommendations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GatewayResiliencyRecommendationResponse>,
-            List<Map<String, dynamic>>
-          >(
-            recommendations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GatewayResiliencyRecommendationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'recommendations': ?pulumi.Input.mapOptionalInputValue<List<GatewayResiliencyRecommendationResponse>, List<Map<String, dynamic>>>(recommendations, (value) => pulumi.Input.encodeList<GatewayResiliencyRecommendationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ResiliencyRecommendationComponentsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResiliencyRecommendationComponentsResponse.fromMap(Map<String, dynamic> map) {
     return ResiliencyRecommendationComponentsResponse(
-      currentScore: (() {
-        final guardedValue = map['currentScore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxScore: (() {
-        final guardedValue = map['maxScore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recommendations: (() {
-        final guardedValue = map['recommendations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GatewayResiliencyRecommendationResponse>(
-            guardedValue,
-            (value) => GatewayResiliencyRecommendationResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      currentScore: (() { final guardedValue = map['currentScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxScore: (() { final guardedValue = map['maxScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recommendations: (() { final guardedValue = map['recommendations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GatewayResiliencyRecommendationResponse>(guardedValue, (value) => GatewayResiliencyRecommendationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

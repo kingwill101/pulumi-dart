@@ -9,17 +9,20 @@ class GridSamplingAlgorithm {
 
   /// Creates a new [GridSamplingAlgorithm].
   /// [samplingAlgorithmType] Expected value is 'Grid'.
-  GridSamplingAlgorithm({required this.samplingAlgorithmType});
+  GridSamplingAlgorithm({
+    required this.samplingAlgorithmType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'samplingAlgorithmType': samplingAlgorithmType};
+    return <String, dynamic>{
+      'samplingAlgorithmType': samplingAlgorithmType,
+    };
   }
 
   factory GridSamplingAlgorithm.fromMap(Map<String, dynamic> map) {
     return GridSamplingAlgorithm(
-      samplingAlgorithmType: pulumi.Input.fromValue(
-        map['samplingAlgorithmType'] as String,
-      ),
+      samplingAlgorithmType: pulumi.Input.fromValue(map['samplingAlgorithmType'] as String),
     );
   }
 }
+

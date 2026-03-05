@@ -41,13 +41,10 @@ class GetTestCaseArgs {
     return GetTestCaseArgs(
       integrationId: pulumi.Input.fromValue(map['integrationId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       testCaseId: pulumi.Input.fromValue(map['testCaseId'] as String),
       versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );
   }
 }
+

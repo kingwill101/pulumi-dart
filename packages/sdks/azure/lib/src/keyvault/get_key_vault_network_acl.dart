@@ -34,9 +34,8 @@ class GetKeyVaultNetworkAcl {
       bypass: pulumi.Input.fromValue(map['bypass'] as String),
       defaultAction: pulumi.Input.fromValue(map['defaultAction'] as String),
       ipRules: pulumi.Input.fromValue((map['ipRules'] as List).cast<String>()),
-      virtualNetworkSubnetIds: pulumi.Input.fromValue(
-        (map['virtualNetworkSubnetIds'] as List).cast<String>(),
-      ),
+      virtualNetworkSubnetIds: pulumi.Input.fromValue((map['virtualNetworkSubnetIds'] as List).cast<String>()),
     );
   }
 }
+

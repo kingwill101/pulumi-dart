@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountPrivilegeArgs {
   /// A specified account name.
   final pulumi.Input<String> accountName;
-
   /// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
   final pulumi.Input<String>? accountPrivilege;
-
   /// The Id of cluster in which account belongs.
   final pulumi.Input<String> dbClusterId;
-
   /// List of specified database name.
   final pulumi.Input<List<String>> dbNames;
 
@@ -43,13 +40,10 @@ class AccountPrivilegeArgs {
   factory AccountPrivilegeArgs.fromMap(Map<String, dynamic> map) {
     return AccountPrivilegeArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      accountPrivilege: (() {
-        final guardedValue = map['accountPrivilege'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountPrivilege: (() { final guardedValue = map['accountPrivilege']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbClusterId: pulumi.Input.fromValue(map['dbClusterId'] as String),
       dbNames: pulumi.Input.fromValue((map['dbNames'] as List).cast<String>()),
     );
   }
 }
+

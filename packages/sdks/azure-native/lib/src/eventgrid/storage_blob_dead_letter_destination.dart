@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageBlobDeadLetterDestination {
   /// The name of the Storage blob container that is the destination of the deadletter events
   final pulumi.Input<String>? blobContainerName;
-
   /// Type of the endpoint for the dead letter destination
   /// Expected value is 'StorageBlob'.
   final pulumi.Input<String> endpointType;
-
   /// The Azure Resource ID of the storage account that is the destination of the deadletter events
   final pulumi.Input<String>? resourceId;
 
@@ -34,17 +32,10 @@ class StorageBlobDeadLetterDestination {
 
   factory StorageBlobDeadLetterDestination.fromMap(Map<String, dynamic> map) {
     return StorageBlobDeadLetterDestination(
-      blobContainerName: (() {
-        final guardedValue = map['blobContainerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      blobContainerName: (() { final guardedValue = map['blobContainerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareDataplaneV2ConfigResponse {
   /// Enable advanced networking which requires dataplane_v2_enabled to be set true.
   final pulumi.Input<bool> advancedNetworking;
-
   /// Enables Dataplane V2.
   final pulumi.Input<bool> dataplaneV2Enabled;
-
   /// Enable Dataplane V2 for clusters with Windows nodes.
   final pulumi.Input<bool> windowsDataplaneV2Enabled;
 
@@ -33,15 +31,10 @@ class VmwareDataplaneV2ConfigResponse {
 
   factory VmwareDataplaneV2ConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareDataplaneV2ConfigResponse(
-      advancedNetworking: pulumi.Input.fromValue(
-        map['advancedNetworking'] as bool,
-      ),
-      dataplaneV2Enabled: pulumi.Input.fromValue(
-        map['dataplaneV2Enabled'] as bool,
-      ),
-      windowsDataplaneV2Enabled: pulumi.Input.fromValue(
-        map['windowsDataplaneV2Enabled'] as bool,
-      ),
+      advancedNetworking: pulumi.Input.fromValue(map['advancedNetworking'] as bool),
+      dataplaneV2Enabled: pulumi.Input.fromValue(map['dataplaneV2Enabled'] as bool),
+      windowsDataplaneV2Enabled: pulumi.Input.fromValue(map['windowsDataplaneV2Enabled'] as bool),
     );
   }
 }
+

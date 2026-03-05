@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefinitionAuthorization {
   /// The set of role definition ids which define all the permissions that the principal id can assign.
   final pulumi.Input<List<String>>? delegatedRoleDefinitionIds;
-
   /// The display name of the security group/service principal/user that would be assigned permissions to the projected subscription.
   final pulumi.Input<String>? principalDisplayName;
-
   /// Principal ID of the security group/service principal/user that would be assigned permissions to the projected subscription.
   final pulumi.Input<String> principalId;
-
   /// The role definition identifier. This role will define the permissions that are granted to the principal. This cannot be an `Owner` role.
   final pulumi.Input<String> roleDefinitionId;
 
@@ -38,20 +35,11 @@ class DefinitionAuthorization {
 
   factory DefinitionAuthorization.fromMap(Map<String, dynamic> map) {
     return DefinitionAuthorization(
-      delegatedRoleDefinitionIds: (() {
-        final guardedValue = map['delegatedRoleDefinitionIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      principalDisplayName: (() {
-        final guardedValue = map['principalDisplayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      delegatedRoleDefinitionIds: (() { final guardedValue = map['delegatedRoleDefinitionIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      principalDisplayName: (() { final guardedValue = map['principalDisplayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
-      roleDefinitionId: pulumi.Input.fromValue(
-        map['roleDefinitionId'] as String,
-      ),
+      roleDefinitionId: pulumi.Input.fromValue(map['roleDefinitionId'] as String),
     );
   }
 }
+

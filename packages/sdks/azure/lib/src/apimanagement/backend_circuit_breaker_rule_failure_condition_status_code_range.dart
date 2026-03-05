@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendCircuitBreakerRuleFailureConditionStatusCodeRange {
   /// Specifies the maximum HTTP status code to consider as a failure. Possible values are between `200` and `599`.
   final pulumi.Input<int> max;
-
   /// Specifies the minimum HTTP status code to consider as a failure. Possible values are between `200` and `599`.
   final pulumi.Input<int> min;
 
@@ -18,15 +17,17 @@ class BackendCircuitBreakerRuleFailureConditionStatusCodeRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': max, 'min': min};
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory BackendCircuitBreakerRuleFailureConditionStatusCodeRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackendCircuitBreakerRuleFailureConditionStatusCodeRange.fromMap(Map<String, dynamic> map) {
     return BackendCircuitBreakerRuleFailureConditionStatusCodeRange(
       max: pulumi.Input.fromValue(map['max'] as int),
       min: pulumi.Input.fromValue(map['min'] as int),
     );
   }
 }
+

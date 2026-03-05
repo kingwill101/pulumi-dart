@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlexibleRuntimeSettingsResponseAppengineV1beta {
   /// The operating system of the application runtime.
   final pulumi.Input<String> operatingSystem;
-
   /// The runtime version of an App Engine flexible application.
   final pulumi.Input<String> runtimeVersion;
 
@@ -25,12 +24,11 @@ class FlexibleRuntimeSettingsResponseAppengineV1beta {
     };
   }
 
-  factory FlexibleRuntimeSettingsResponseAppengineV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlexibleRuntimeSettingsResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return FlexibleRuntimeSettingsResponseAppengineV1beta(
       operatingSystem: pulumi.Input.fromValue(map['operatingSystem'] as String),
       runtimeVersion: pulumi.Input.fromValue(map['runtimeVersion'] as String),
     );
   }
 }
+

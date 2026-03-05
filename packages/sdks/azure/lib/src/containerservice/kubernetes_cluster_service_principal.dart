@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterServicePrincipal {
   /// The Client ID for the Service Principal.
   final pulumi.Input<String> clientId;
-
   /// The Client Secret for the Service Principal.
   final pulumi.Input<String> clientSecret;
 
@@ -31,3 +30,4 @@ class KubernetesClusterServicePrincipal {
     );
   }
 }
+

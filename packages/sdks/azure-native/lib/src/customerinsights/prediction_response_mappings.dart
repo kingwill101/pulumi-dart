@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PredictionResponseMappings {
   /// The grade of the link mapping.
   final pulumi.Input<String> grade;
-
   /// The reason of the link mapping.
   final pulumi.Input<String> reason;
-
   /// The score of the link mapping.
   final pulumi.Input<String> score;
 
@@ -24,7 +22,11 @@ class PredictionResponseMappings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'grade': grade, 'reason': reason, 'score': score};
+    return <String, dynamic>{
+      'grade': grade,
+      'reason': reason,
+      'score': score,
+    };
   }
 
   factory PredictionResponseMappings.fromMap(Map<String, dynamic> map) {
@@ -35,3 +37,4 @@ class PredictionResponseMappings {
     );
   }
 }
+

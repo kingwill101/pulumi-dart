@@ -362,21 +362,15 @@ import 'profile_state.dart';
 /// ```
 class Profile extends pulumi.CustomResource {
   /// A `container_network_interface` block as documented below.
-  late final pulumi.Output<ProfileContainerNetworkInterface>
-  containerNetworkInterface;
-
+  late final pulumi.Output<ProfileContainerNetworkInterface> containerNetworkInterface;
   /// A list of Container Network Interface IDs.
   late final pulumi.Output<List<String>> containerNetworkInterfaceIds;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Network Profile. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags assigned to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -389,25 +383,13 @@ class Profile extends pulumi.CustomResource {
     ProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/profile:Profile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    containerNetworkInterface =
-        registerOutput<ProfileContainerNetworkInterface>(
-          'containerNetworkInterface',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ProfileContainerNetworkInterface.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    containerNetworkInterfaceIds = registerOutput<List<String>>(
-      'containerNetworkInterfaceIds',
-    );
+          'azure:network/profile:Profile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    containerNetworkInterface = registerOutput<ProfileContainerNetworkInterface>('containerNetworkInterface', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileContainerNetworkInterface.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    containerNetworkInterfaceIds = registerOutput<List<String>>('containerNetworkInterfaceIds');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -432,25 +414,13 @@ class Profile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/profile:Profile',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    containerNetworkInterface =
-        registerOutput<ProfileContainerNetworkInterface>(
-          'containerNetworkInterface',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ProfileContainerNetworkInterface.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    containerNetworkInterfaceIds = registerOutput<List<String>>(
-      'containerNetworkInterfaceIds',
-    );
+          'azure:network/profile:Profile',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    containerNetworkInterface = registerOutput<ProfileContainerNetworkInterface>('containerNetworkInterface', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileContainerNetworkInterface.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    containerNetworkInterfaceIds = registerOutput<List<String>>('containerNetworkInterfaceIds');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

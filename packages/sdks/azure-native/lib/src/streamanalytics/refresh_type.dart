@@ -16,3 +16,4 @@ enum RefreshType {
     throw ArgumentError('Unknown RefreshType value: $value');
   }
 }
+

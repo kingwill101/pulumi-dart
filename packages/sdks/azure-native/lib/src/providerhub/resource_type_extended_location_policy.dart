@@ -11,8 +11,7 @@ enum ResourceTypeExtendedLocationPolicy {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ResourceTypeExtendedLocationPolicy value: $value',
-    );
+    throw ArgumentError('Unknown ResourceTypeExtendedLocationPolicy value: $value');
   }
 }
+

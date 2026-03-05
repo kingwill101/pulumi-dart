@@ -414,64 +414,45 @@ import 'fast_http_app_waf_security_policy.dart';
 class FastHttpApp extends pulumi.CustomResource {
   /// Name of the FAST HTTPS application.
   late final pulumi.Output<String> application;
-
   /// List of LTM Policies to be applied FAST HTTP Application.
   late final pulumi.Output<List<String>?> endpointLtmPolicies;
-
   /// Name of an existing BIG-IP HTTPS pool monitor. Monitors are used to determine the health of the application on each server.
   late final pulumi.Output<String?> existingMonitor;
-
   /// Select an existing BIG-IP Pool
   late final pulumi.Output<String?> existingPool;
-
   /// Name of an existing BIG-IP SNAT pool.
   late final pulumi.Output<String?> existingSnatPool;
-
   /// Name of an existing WAF Security policy.
   late final pulumi.Output<String?> existingWafSecurityPolicy;
-
   /// Type of fallback persistence record to be created for each new client connection.
   late final pulumi.Output<String?> fallbackPersistence;
-
   /// Json payload for FAST HTTP application.
   late final pulumi.Output<String> fastHttpJson;
-
   /// A `load balancing method` is an algorithm that the BIG-IP system uses to select a pool member for processing a request. F5 recommends the Least Connections load balancing method
   late final pulumi.Output<String?> loadBalancingMode;
-
   /// `monitor` block takes input for FAST-Generated Pool Monitor.
   /// See Pool Monitor below for more details.
   late final pulumi.Output<FastHttpAppMonitor?> monitor;
-
   /// Name of an existing BIG-IP persistence profile to be used.
   late final pulumi.Output<String?> persistenceProfile;
-
   /// Type of persistence profile to be created. Using this option will enable use of FAST generated persistence profiles.
   late final pulumi.Output<String?> persistenceType;
-
   /// `pool_members` block takes input for FAST-Generated Pool.
   /// See Pool Members below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>> poolMembers;
-
   /// List of security log profiles to be used for FAST application
   late final pulumi.Output<List<String>?> securityLogProfiles;
-
   /// List of different cloud service discovery config provided as string, provided `service_discovery` block to Automatically Discover Pool Members with Service Discovery on different clouds.
   late final pulumi.Output<List<String>?> serviceDiscoveries;
-
   /// Slow ramp temporarily throttles the number of connections to a new pool member. The recommended value is 300 seconds
   late final pulumi.Output<int?> slowRampTime;
-
   /// List of address to be used for FAST-Generated SNAT Pool.
   late final pulumi.Output<List<String>?> snatPoolAddresses;
-
   /// Name of the FAST HTTPS application tenant.
   late final pulumi.Output<String> tenant;
-
   /// `virtual_server` block will provide `ip` and `port` options to be used for virtual server.
   /// See virtual server below for more details.
   late final pulumi.Output<FastHttpAppVirtualServer?> virtualServer;
-
   /// `waf_security_policy` block takes input for FAST-Generated WAF Security Policy.
   /// See WAF Security Policy below for more details.
   late final pulumi.Output<FastHttpAppWafSecurityPolicy?> wafSecurityPolicy;
@@ -485,32 +466,21 @@ class FastHttpApp extends pulumi.CustomResource {
     FastHttpAppArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/fastHttpApp:FastHttpApp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/fastHttpApp:FastHttpApp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     application = registerOutput<String>('application');
     endpointLtmPolicies = registerOutput<List<String>?>('endpointLtmPolicies');
     existingMonitor = registerOutput<String?>('existingMonitor');
     existingPool = registerOutput<String?>('existingPool');
     existingSnatPool = registerOutput<String?>('existingSnatPool');
-    existingWafSecurityPolicy = registerOutput<String?>(
-      'existingWafSecurityPolicy',
-    );
+    existingWafSecurityPolicy = registerOutput<String?>('existingWafSecurityPolicy');
     fallbackPersistence = registerOutput<String?>('fallbackPersistence');
     fastHttpJson = registerOutput<String>('fastHttpJson');
     loadBalancingMode = registerOutput<String?>('loadBalancingMode');
-    monitor = registerOutput<FastHttpAppMonitor?>(
-      'monitor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FastHttpAppMonitor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monitor = registerOutput<FastHttpAppMonitor?>('monitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FastHttpAppMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     persistenceProfile = registerOutput<String?>('persistenceProfile');
     persistenceType = registerOutput<String?>('persistenceType');
     poolMembers = registerOutput<List<Map<String, dynamic>>>('poolMembers');
@@ -519,26 +489,8 @@ class FastHttpApp extends pulumi.CustomResource {
     slowRampTime = registerOutput<int?>('slowRampTime');
     snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
     tenant = registerOutput<String>('tenant');
-    virtualServer = registerOutput<FastHttpAppVirtualServer?>(
-      'virtualServer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FastHttpAppVirtualServer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    wafSecurityPolicy = registerOutput<FastHttpAppWafSecurityPolicy?>(
-      'wafSecurityPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FastHttpAppWafSecurityPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualServer = registerOutput<FastHttpAppVirtualServer?>('virtualServer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FastHttpAppVirtualServer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    wafSecurityPolicy = registerOutput<FastHttpAppWafSecurityPolicy?>('wafSecurityPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FastHttpAppWafSecurityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [FastHttpApp] resource's state with the given [name] and [id].
@@ -559,32 +511,21 @@ class FastHttpApp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/fastHttpApp:FastHttpApp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/fastHttpApp:FastHttpApp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     application = registerOutput<String>('application');
     endpointLtmPolicies = registerOutput<List<String>?>('endpointLtmPolicies');
     existingMonitor = registerOutput<String?>('existingMonitor');
     existingPool = registerOutput<String?>('existingPool');
     existingSnatPool = registerOutput<String?>('existingSnatPool');
-    existingWafSecurityPolicy = registerOutput<String?>(
-      'existingWafSecurityPolicy',
-    );
+    existingWafSecurityPolicy = registerOutput<String?>('existingWafSecurityPolicy');
     fallbackPersistence = registerOutput<String?>('fallbackPersistence');
     fastHttpJson = registerOutput<String>('fastHttpJson');
     loadBalancingMode = registerOutput<String?>('loadBalancingMode');
-    monitor = registerOutput<FastHttpAppMonitor?>(
-      'monitor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FastHttpAppMonitor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monitor = registerOutput<FastHttpAppMonitor?>('monitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FastHttpAppMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     persistenceProfile = registerOutput<String?>('persistenceProfile');
     persistenceType = registerOutput<String?>('persistenceType');
     poolMembers = registerOutput<List<Map<String, dynamic>>>('poolMembers');
@@ -593,25 +534,7 @@ class FastHttpApp extends pulumi.CustomResource {
     slowRampTime = registerOutput<int?>('slowRampTime');
     snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
     tenant = registerOutput<String>('tenant');
-    virtualServer = registerOutput<FastHttpAppVirtualServer?>(
-      'virtualServer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FastHttpAppVirtualServer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    wafSecurityPolicy = registerOutput<FastHttpAppWafSecurityPolicy?>(
-      'wafSecurityPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FastHttpAppWafSecurityPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualServer = registerOutput<FastHttpAppVirtualServer?>('virtualServer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FastHttpAppVirtualServer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    wafSecurityPolicy = registerOutput<FastHttpAppWafSecurityPolicy?>('wafSecurityPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FastHttpAppWafSecurityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

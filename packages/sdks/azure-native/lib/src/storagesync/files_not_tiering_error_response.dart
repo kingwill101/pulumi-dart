@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilesNotTieringErrorResponse {
   /// Error code (HResult)
   final pulumi.Input<int> errorCode;
-
   /// Count of files with this error
   final pulumi.Input<double> fileCount;
 
@@ -19,7 +18,10 @@ class FilesNotTieringErrorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'errorCode': errorCode, 'fileCount': fileCount};
+    return <String, dynamic>{
+      'errorCode': errorCode,
+      'fileCount': fileCount,
+    };
   }
 
   factory FilesNotTieringErrorResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class FilesNotTieringErrorResponse {
     );
   }
 }
+

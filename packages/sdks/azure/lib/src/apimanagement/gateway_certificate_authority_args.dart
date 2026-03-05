@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayCertificateAuthorityArgs {
   /// The ID of the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementId;
-
   /// The name of the API Management Certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String> certificateName;
-
   /// The name of the API Management Gateway. Changing this forces a new resource to be created.
   final pulumi.Input<String> gatewayName;
-
   /// Whether the API Management Gateway Certificate Authority is trusted.
   final pulumi.Input<bool>? isTrusted;
 
@@ -45,11 +42,8 @@ class GatewayCertificateAuthorityArgs {
       apiManagementId: pulumi.Input.fromValue(map['apiManagementId'] as String),
       certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
       gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
-      isTrusted: (() {
-        final guardedValue = map['isTrusted'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      isTrusted: (() { final guardedValue = map['isTrusted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

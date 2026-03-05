@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Sku {
   /// The capacity of the SKU
   final pulumi.Input<String>? capacity;
-
   /// dedicatedCloudNode example: 8 x Ten-Core Intel® Xeon® Processor E5-2640 v4 2.40GHz 25MB Cache (90W); 12 x 64GB PC4-19200 2400MHz DDR4 ECC Registered DIMM, ...
   final pulumi.Input<String>? description;
-
   /// If the service has different generations of hardware, for the same SKU, then that can be captured here
   final pulumi.Input<String>? family;
-
   /// The name of the SKU for VMWare CloudSimple Node
   final pulumi.Input<String> name;
-
   /// The tier of the SKU
   final pulumi.Input<String>? tier;
 
@@ -45,27 +41,12 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      capacity: (() {
-        final guardedValue = map['capacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      family: (() {
-        final guardedValue = map['family'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      tier: (() {
-        final guardedValue = map['tier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

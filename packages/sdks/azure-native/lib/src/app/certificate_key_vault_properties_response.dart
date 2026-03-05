@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateKeyVaultPropertiesResponse {
   /// Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
   final pulumi.Input<String>? identity;
-
   /// URL pointing to the Azure Key Vault secret that holds the certificate.
   final pulumi.Input<String>? keyVaultUrl;
 
   /// Creates a new [CertificateKeyVaultPropertiesResponse].
   /// [identity] Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
   /// [keyVaultUrl] URL pointing to the Azure Key Vault secret that holds the certificate.
-  CertificateKeyVaultPropertiesResponse({this.identity, this.keyVaultUrl});
+  CertificateKeyVaultPropertiesResponse({
+    this.identity,
+    this.keyVaultUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,20 +24,11 @@ class CertificateKeyVaultPropertiesResponse {
     };
   }
 
-  factory CertificateKeyVaultPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CertificateKeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CertificateKeyVaultPropertiesResponse(
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultUrl: (() {
-        final guardedValue = map['keyVaultUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultUrl: (() { final guardedValue = map['keyVaultUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

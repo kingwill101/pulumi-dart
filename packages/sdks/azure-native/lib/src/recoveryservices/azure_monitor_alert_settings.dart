@@ -28,21 +28,10 @@ class AzureMonitorAlertSettings {
 
   factory AzureMonitorAlertSettings.fromMap(Map<String, dynamic> map) {
     return AzureMonitorAlertSettings(
-      alertsForAllFailoverIssues: (() {
-        final guardedValue = map['alertsForAllFailoverIssues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      alertsForAllJobFailures: (() {
-        final guardedValue = map['alertsForAllJobFailures'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      alertsForAllReplicationIssues: (() {
-        final guardedValue = map['alertsForAllReplicationIssues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      alertsForAllFailoverIssues: (() { final guardedValue = map['alertsForAllFailoverIssues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      alertsForAllJobFailures: (() { final guardedValue = map['alertsForAllJobFailures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      alertsForAllReplicationIssues: (() { final guardedValue = map['alertsForAllReplicationIssues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

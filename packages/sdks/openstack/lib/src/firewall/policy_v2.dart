@@ -246,39 +246,32 @@ class PolicyV2 extends pulumi.CustomResource {
   /// rules are changed. Changing this updates the `audited` status of an existing
   /// firewall policy.
   late final pulumi.Output<bool?> audited;
-
   /// A description for the firewall policy. Changing
   /// this updates the `description` of an existing firewall policy.
   late final pulumi.Output<String?> description;
-
   /// A name for the firewall policy. Changing this
   /// updates the `name` of an existing firewall policy.
   late final pulumi.Output<String> name;
-
   /// This argument conflicts and is interchangeable
   /// with `tenant_id`. The owner of the firewall policy. Required if admin wants
   /// to create a firewall policy for another project. Changing this creates a new
   /// firewall policy.
   late final pulumi.Output<String> projectId;
-
   /// The region in which to obtain the v2 networking client.
   /// A networking client is needed to create a firewall policy. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// firewall policy.
   late final pulumi.Output<String> region;
-
   /// An array of one or more firewall rules that comprise
   /// the policy. Changing this results in adding/removing rules from the
   /// existing firewall policy.
   late final pulumi.Output<List<String>?> rules;
-
   /// Sharing status of the firewall policy (must be "true"
   /// or "false" if provided). If this is "true" the policy is visible to, and
   /// can be used in, firewalls in other tenants. Changing this updates the
   /// `shared` status of an existing firewall policy. Only administrative users
   /// can specify if the policy should be shared.
   late final pulumi.Output<bool?> shared;
-
   /// This argument conflicts and is interchangeable
   /// with `project_id`. The owner of the firewall policy. Required if admin wants
   /// to create a firewall policy for another tenant. Changing this creates a new
@@ -294,11 +287,11 @@ class PolicyV2 extends pulumi.CustomResource {
     PolicyV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:firewall/policyV2:PolicyV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:firewall/policyV2:PolicyV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     audited = registerOutput<bool?>('audited');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -327,11 +320,11 @@ class PolicyV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:firewall/policyV2:PolicyV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:firewall/policyV2:PolicyV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     audited = registerOutput<bool?>('audited');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

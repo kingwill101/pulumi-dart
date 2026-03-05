@@ -9,10 +9,8 @@ class GetSharedImageVersionTargetRegion {
   ///
   /// &gt; **Note:** In 3.0, `latest` may return an image version with `exclude_from_latest` set to `true`. Starting from 4.0 onwards `latest` will not return image versions with `exlude_from_latest` set to `true`.
   final pulumi.Input<String> name;
-
   /// The number of replicas of the Image Version to be created per region.
   final pulumi.Input<int> regionalReplicaCount;
-
   /// The storage account type for the image version.
   final pulumi.Input<String> storageAccountType;
 
@@ -37,12 +35,9 @@ class GetSharedImageVersionTargetRegion {
   factory GetSharedImageVersionTargetRegion.fromMap(Map<String, dynamic> map) {
     return GetSharedImageVersionTargetRegion(
       name: pulumi.Input.fromValue(map['name'] as String),
-      regionalReplicaCount: pulumi.Input.fromValue(
-        map['regionalReplicaCount'] as int,
-      ),
-      storageAccountType: pulumi.Input.fromValue(
-        map['storageAccountType'] as String,
-      ),
+      regionalReplicaCount: pulumi.Input.fromValue(map['regionalReplicaCount'] as int),
+      storageAccountType: pulumi.Input.fromValue(map['storageAccountType'] as String),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayWafConfigurationExclusion {
   /// Match variable of the exclusion rule to exclude header, cookie or GET arguments. Possible values are `RequestArgKeys`, `RequestArgNames`, `RequestArgValues`, `RequestCookieKeys`, `RequestCookieNames`, `RequestCookieValues`, `RequestHeaderKeys`, `RequestHeaderNames` and `RequestHeaderValues`
   final pulumi.Input<String> matchVariable;
-
   /// String value which will be used for the filter operation. If empty will exclude all traffic on this `match_variable`
   final pulumi.Input<String>? selector;
-
   /// Operator which will be used to search in the variable content. Possible values are `Contains`, `EndsWith`, `Equals`, `EqualsAny` and `StartsWith`. If empty will exclude all traffic on this `match_variable`
   final pulumi.Input<String>? selectorMatchOperator;
 
@@ -30,21 +28,12 @@ class ApplicationGatewayWafConfigurationExclusion {
     };
   }
 
-  factory ApplicationGatewayWafConfigurationExclusion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationGatewayWafConfigurationExclusion.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayWafConfigurationExclusion(
       matchVariable: pulumi.Input.fromValue(map['matchVariable'] as String),
-      selector: (() {
-        final guardedValue = map['selector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      selectorMatchOperator: (() {
-        final guardedValue = map['selectorMatchOperator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      selectorMatchOperator: (() { final guardedValue = map['selectorMatchOperator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

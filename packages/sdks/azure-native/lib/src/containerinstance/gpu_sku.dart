@@ -16,3 +16,4 @@ enum GpuSku {
     throw ArgumentError('Unknown GpuSku value: $value');
   }
 }
+

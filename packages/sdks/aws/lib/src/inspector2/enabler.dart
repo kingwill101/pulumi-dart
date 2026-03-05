@@ -265,10 +265,8 @@ class Enabler extends pulumi.CustomResource {
   /// Set of account IDs.
   /// Can contain one of: the Organization's Administrator Account, or one or more Member Accounts.
   late final pulumi.Output<List<String>> accountIds;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Type of resources to scan.
   /// Valid values are `EC2`, `ECR`, `LAMBDA`, `LAMBDA_CODE` and `CODE_REPOSITORY`.
   /// At least one item is required.
@@ -283,11 +281,11 @@ class Enabler extends pulumi.CustomResource {
     EnablerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:inspector2/enabler:Enabler',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:inspector2/enabler:Enabler',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountIds = registerOutput<List<String>>('accountIds');
     region = registerOutput<String>('region');
     resourceTypes = registerOutput<List<String>>('resourceTypes');
@@ -311,11 +309,11 @@ class Enabler extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:inspector2/enabler:Enabler',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:inspector2/enabler:Enabler',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountIds = registerOutput<List<String>>('accountIds');
     region = registerOutput<String>('region');
     resourceTypes = registerOutput<List<String>>('resourceTypes');

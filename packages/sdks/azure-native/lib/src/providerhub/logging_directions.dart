@@ -16,3 +16,4 @@ enum LoggingDirections {
     throw ArgumentError('Unknown LoggingDirections value: $value');
   }
 }
+

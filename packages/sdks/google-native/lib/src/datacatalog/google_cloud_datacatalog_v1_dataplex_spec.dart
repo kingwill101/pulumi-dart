@@ -7,13 +7,10 @@ import 'google_cloud_datacatalog_v1_physical_schema.dart';
 class GoogleCloudDatacatalogV1DataplexSpec {
   /// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
   final pulumi.Input<String>? asset;
-
   /// Compression format of the data, e.g., zip, gzip etc.
   final pulumi.Input<String>? compressionFormat;
-
   /// Format of the data.
   final pulumi.Input<GoogleCloudDatacatalogV1PhysicalSchema>? dataFormat;
-
   /// Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
   final pulumi.Input<String>? project;
 
@@ -33,43 +30,18 @@ class GoogleCloudDatacatalogV1DataplexSpec {
     return <String, dynamic>{
       'asset': ?asset,
       'compressionFormat': ?compressionFormat,
-      'dataFormat':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDatacatalogV1PhysicalSchema,
-            Map<String, dynamic>
-          >(dataFormat, (value) => value.toMap()),
+      'dataFormat': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDatacatalogV1PhysicalSchema, Map<String, dynamic>>(dataFormat, (value) => value.toMap()),
       'project': ?project,
     };
   }
 
-  factory GoogleCloudDatacatalogV1DataplexSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogV1DataplexSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DataplexSpec(
-      asset: (() {
-        final guardedValue = map['asset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      compressionFormat: (() {
-        final guardedValue = map['compressionFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataFormat: (() {
-        final guardedValue = map['dataFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDatacatalogV1PhysicalSchema.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      asset: (() { final guardedValue = map['asset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      compressionFormat: (() { final guardedValue = map['compressionFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataFormat: (() { final guardedValue = map['dataFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDatacatalogV1PhysicalSchema.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

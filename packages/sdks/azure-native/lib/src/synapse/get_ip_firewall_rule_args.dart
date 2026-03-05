@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpFirewallRuleArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The IP firewall rule name
   final pulumi.Input<String> ruleName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -36,11 +34,10 @@ class GetIpFirewallRuleArgs {
 
   factory GetIpFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetIpFirewallRuleArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

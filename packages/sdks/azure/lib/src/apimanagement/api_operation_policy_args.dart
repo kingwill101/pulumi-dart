@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiOperationPolicyArgs {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
-
   /// The name of the API within the API Management Service where the Operation exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiName;
-
   /// The operation identifier within an API. Must be unique in the current API Management service instance. Changing this forces a new resource to be created.
   final pulumi.Input<String> operationId;
-
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The XML Content for this Policy.
   final pulumi.Input<String>? xmlContent;
-
   /// A link to a Policy XML Document, which must be publicly available.
   final pulumi.Input<String>? xmlLink;
 
@@ -54,24 +49,13 @@ class ApiOperationPolicyArgs {
 
   factory ApiOperationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ApiOperationPolicyArgs(
-      apiManagementName: pulumi.Input.fromValue(
-        map['apiManagementName'] as String,
-      ),
+      apiManagementName: pulumi.Input.fromValue(map['apiManagementName'] as String),
       apiName: pulumi.Input.fromValue(map['apiName'] as String),
       operationId: pulumi.Input.fromValue(map['operationId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      xmlContent: (() {
-        final guardedValue = map['xmlContent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      xmlLink: (() {
-        final guardedValue = map['xmlLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      xmlContent: (() { final guardedValue = map['xmlContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      xmlLink: (() { final guardedValue = map['xmlLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

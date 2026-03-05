@@ -513,35 +513,25 @@ import 'resize_request_state.dart';
 class ResizeRequest extends pulumi.CustomResource {
   /// The creation timestamp for this resize request in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// An optional description of this resize-request.
   late final pulumi.Output<String?> description;
-
   /// The reference of the instance group manager this ResizeRequest is a part of.
   late final pulumi.Output<String> instanceGroupManager;
-
   /// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
   /// Structure is documented below.
-  late final pulumi.Output<ResizeRequestRequestedRunDuration?>
-  requestedRunDuration;
-
+  late final pulumi.Output<ResizeRequestRequestedRunDuration?> requestedRunDuration;
   /// The number of instances to be created by this resize request. The group's target size will be increased by this number.
   late final pulumi.Output<int> resizeBy;
-
   /// Current state of the request.
   late final pulumi.Output<String> state;
-
   /// Status of the request.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> statuses;
-
   /// The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
   late final pulumi.Output<String> zone;
 
@@ -554,26 +544,17 @@ class ResizeRequest extends pulumi.CustomResource {
     ResizeRequestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/resizeRequest:ResizeRequest',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/resizeRequest:ResizeRequest',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
     instanceGroupManager = registerOutput<String>('instanceGroupManager');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    requestedRunDuration = registerOutput<ResizeRequestRequestedRunDuration?>(
-      'requestedRunDuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResizeRequestRequestedRunDuration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    requestedRunDuration = registerOutput<ResizeRequestRequestedRunDuration?>('requestedRunDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResizeRequestRequestedRunDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resizeBy = registerOutput<int>('resizeBy');
     state = registerOutput<String>('state');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
@@ -598,26 +579,17 @@ class ResizeRequest extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/resizeRequest:ResizeRequest',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/resizeRequest:ResizeRequest',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
     instanceGroupManager = registerOutput<String>('instanceGroupManager');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    requestedRunDuration = registerOutput<ResizeRequestRequestedRunDuration?>(
-      'requestedRunDuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResizeRequestRequestedRunDuration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    requestedRunDuration = registerOutput<ResizeRequestRequestedRunDuration?>('requestedRunDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResizeRequestRequestedRunDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resizeBy = registerOutput<int>('resizeBy');
     this.state = registerOutput<String>('state');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');

@@ -7,7 +7,6 @@ import 'get_dedicated_host_accounts_account.dart';
 class GetDedicatedHostAccountsResult {
   final List<GetDedicatedHostAccountsAccount> accounts;
   final String? dedicatedHostId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -41,11 +40,7 @@ class GetDedicatedHostAccountsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accounts':
-          pulumi.Input.encodeList<
-            GetDedicatedHostAccountsAccount,
-            Map<String, dynamic>
-          >(accounts, (value) => value.toMap()),
+      'accounts': pulumi.Input.encodeList<GetDedicatedHostAccountsAccount, Map<String, dynamic>>(accounts, (value) => value.toMap()),
       'dedicatedHostId': ?dedicatedHostId,
       'id': id,
       'ids': ids,
@@ -59,40 +54,16 @@ class GetDedicatedHostAccountsResult {
 
   factory GetDedicatedHostAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostAccountsResult(
-      accounts: pulumi.Input.decodeList<GetDedicatedHostAccountsAccount>(
-        map['accounts']!,
-        (value) => GetDedicatedHostAccountsAccount.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      dedicatedHostId: (() {
-        final guardedValue = map['dedicatedHostId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      accounts: pulumi.Input.decodeList<GetDedicatedHostAccountsAccount>(map['accounts']!, (value) => GetDedicatedHostAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
+      dedicatedHostId: (() { final guardedValue = map['dedicatedHostId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
     );
   }
 }
+

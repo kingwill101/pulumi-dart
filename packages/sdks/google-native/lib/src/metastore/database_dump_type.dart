@@ -16,3 +16,4 @@ enum DatabaseDumpType {
     throw ArgumentError('Unknown DatabaseDumpType value: $value');
   }
 }
+

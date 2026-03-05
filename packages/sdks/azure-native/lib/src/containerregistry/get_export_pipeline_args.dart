@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExportPipelineArgs {
   /// The name of the export pipeline.
   final pulumi.Input<String> exportPipelineName;
-
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetExportPipelineArgs {
 
   factory GetExportPipelineArgs.fromMap(Map<String, dynamic> map) {
     return GetExportPipelineArgs(
-      exportPipelineName: pulumi.Input.fromValue(
-        map['exportPipelineName'] as String,
-      ),
+      exportPipelineName: pulumi.Input.fromValue(map['exportPipelineName'] as String),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

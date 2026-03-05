@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetL2IsolationDomainArgs {
   /// Name of the L2 Isolation Domain.
   final pulumi.Input<String> l2IsolationDomainName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetL2IsolationDomainArgs {
 
   factory GetL2IsolationDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetL2IsolationDomainArgs(
-      l2IsolationDomainName: pulumi.Input.fromValue(
-        map['l2IsolationDomainName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      l2IsolationDomainName: pulumi.Input.fromValue(map['l2IsolationDomainName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

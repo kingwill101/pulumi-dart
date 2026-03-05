@@ -36,22 +36,16 @@ import 'zone_rrset_state.dart';
 class ZoneRrset extends pulumi.CustomResource {
   /// Whether change protection is enabled.
   late final pulumi.Output<bool> changeProtection;
-
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   late final pulumi.Output<Map<String, String>> labels;
-
   /// Name of the Zone RRSet.
   late final pulumi.Output<String> name;
-
   /// Records of the Zone RRSet.
   late final pulumi.Output<List<Map<String, dynamic>>> records;
-
   /// Time To Live (TTL) of the Zone RRSet.
   late final pulumi.Output<int?> ttl;
-
   /// Type of the Zone RRSet.
   late final pulumi.Output<String> type;
-
   /// ID or Name of the parent Zone.
   late final pulumi.Output<String> zone;
 
@@ -64,11 +58,11 @@ class ZoneRrset extends pulumi.CustomResource {
     ZoneRrsetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/zoneRrset:ZoneRrset',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/zoneRrset:ZoneRrset',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     changeProtection = registerOutput<bool>('changeProtection');
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
@@ -96,11 +90,11 @@ class ZoneRrset extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/zoneRrset:ZoneRrset',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/zoneRrset:ZoneRrset',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     changeProtection = registerOutput<bool>('changeProtection');
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');

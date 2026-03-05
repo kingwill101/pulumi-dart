@@ -52,10 +52,8 @@ class _IndexModuleNamespace {
 
 class _ProvidersModuleNamespace {
   _ProvidersModuleNamespace();
-  final ProviderTerraformConfigResult =
-      module_providers.ProviderTerraformConfigResult.new;
-  final ProviderTerraformConfigResultArgs =
-      module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResult = module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResultArgs = module_providers.ProviderTerraformConfigResult.new;
   final Random = module_providers.ProviderProvider.new;
   final TerraformConfigArgs = module_providers.TerraformConfigArgs.new;
   final TerraformConfigResult = module_providers.TerraformConfigResult.new;

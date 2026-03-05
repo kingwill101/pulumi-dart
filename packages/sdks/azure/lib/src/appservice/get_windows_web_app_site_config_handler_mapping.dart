@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsWebAppSiteConfigHandlerMapping {
   /// The command-line arguments to be passed to the script processor.
   final pulumi.Input<String> arguments;
-
   /// The extension to be handled by the specified FastCGI application.
   final pulumi.Input<String> extension;
-
   /// The absolute path to the FastCGI application.
   final pulumi.Input<String> scriptProcessorPath;
 
@@ -30,15 +28,12 @@ class GetWindowsWebAppSiteConfigHandlerMapping {
     };
   }
 
-  factory GetWindowsWebAppSiteConfigHandlerMapping.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWindowsWebAppSiteConfigHandlerMapping.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteConfigHandlerMapping(
       arguments: pulumi.Input.fromValue(map['arguments'] as String),
       extension: pulumi.Input.fromValue(map['extension'] as String),
-      scriptProcessorPath: pulumi.Input.fromValue(
-        map['scriptProcessorPath'] as String,
-      ),
+      scriptProcessorPath: pulumi.Input.fromValue(map['scriptProcessorPath'] as String),
     );
   }
 }
+

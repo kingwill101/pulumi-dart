@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BatchProcessor {
   /// Size of the batch.
   final pulumi.Input<int>? batchSize;
-
   /// Timeout in milliseconds.
   final pulumi.Input<int>? timeout;
 
   /// Creates a new [BatchProcessor].
   /// [batchSize] Size of the batch.
   /// [timeout] Timeout in milliseconds.
-  BatchProcessor({this.batchSize, this.timeout});
+  BatchProcessor({
+    this.batchSize,
+    this.timeout,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'batchSize': ?batchSize, 'timeout': ?timeout};
+    return <String, dynamic>{
+      'batchSize': ?batchSize,
+      'timeout': ?timeout,
+    };
   }
 
   factory BatchProcessor.fromMap(Map<String, dynamic> map) {
     return BatchProcessor(
-      batchSize: (() {
-        final guardedValue = map['batchSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timeout: (() {
-        final guardedValue = map['timeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

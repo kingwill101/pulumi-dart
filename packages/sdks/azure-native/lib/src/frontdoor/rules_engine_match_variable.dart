@@ -25,3 +25,4 @@ enum RulesEngineMatchVariable {
     throw ArgumentError('Unknown RulesEngineMatchVariable value: $value');
   }
 }
+

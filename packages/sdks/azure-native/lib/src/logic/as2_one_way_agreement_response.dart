@@ -8,10 +8,8 @@ import 'business_identity_response.dart';
 class AS2OneWayAgreementResponse {
   /// The AS2 protocol settings.
   final pulumi.Input<AS2ProtocolSettingsResponse> protocolSettings;
-
   /// The receiver business identity
   final pulumi.Input<BusinessIdentityResponse> receiverBusinessIdentity;
-
   /// The sender business identity
   final pulumi.Input<BusinessIdentityResponse> senderBusinessIdentity;
 
@@ -27,41 +25,18 @@ class AS2OneWayAgreementResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'protocolSettings':
-          pulumi.Input.mapInputValue<
-            AS2ProtocolSettingsResponse,
-            Map<String, dynamic>
-          >(protocolSettings, (value) => value.toMap()),
-      'receiverBusinessIdentity':
-          pulumi.Input.mapInputValue<
-            BusinessIdentityResponse,
-            Map<String, dynamic>
-          >(receiverBusinessIdentity, (value) => value.toMap()),
-      'senderBusinessIdentity':
-          pulumi.Input.mapInputValue<
-            BusinessIdentityResponse,
-            Map<String, dynamic>
-          >(senderBusinessIdentity, (value) => value.toMap()),
+      'protocolSettings': pulumi.Input.mapInputValue<AS2ProtocolSettingsResponse, Map<String, dynamic>>(protocolSettings, (value) => value.toMap()),
+      'receiverBusinessIdentity': pulumi.Input.mapInputValue<BusinessIdentityResponse, Map<String, dynamic>>(receiverBusinessIdentity, (value) => value.toMap()),
+      'senderBusinessIdentity': pulumi.Input.mapInputValue<BusinessIdentityResponse, Map<String, dynamic>>(senderBusinessIdentity, (value) => value.toMap()),
     };
   }
 
   factory AS2OneWayAgreementResponse.fromMap(Map<String, dynamic> map) {
     return AS2OneWayAgreementResponse(
-      protocolSettings: pulumi.Input.fromValue(
-        AS2ProtocolSettingsResponse.fromMap(
-          (map['protocolSettings']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      receiverBusinessIdentity: pulumi.Input.fromValue(
-        BusinessIdentityResponse.fromMap(
-          (map['receiverBusinessIdentity']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      senderBusinessIdentity: pulumi.Input.fromValue(
-        BusinessIdentityResponse.fromMap(
-          (map['senderBusinessIdentity']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      protocolSettings: pulumi.Input.fromValue(AS2ProtocolSettingsResponse.fromMap((map['protocolSettings']! as Map).cast<String, dynamic>())),
+      receiverBusinessIdentity: pulumi.Input.fromValue(BusinessIdentityResponse.fromMap((map['receiverBusinessIdentity']! as Map).cast<String, dynamic>())),
+      senderBusinessIdentity: pulumi.Input.fromValue(BusinessIdentityResponse.fromMap((map['senderBusinessIdentity']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

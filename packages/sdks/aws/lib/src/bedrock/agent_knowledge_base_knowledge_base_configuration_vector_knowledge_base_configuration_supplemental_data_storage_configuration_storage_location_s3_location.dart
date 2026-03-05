@@ -13,14 +13,15 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': uri};
+    return <String, dynamic>{
+      'uri': uri,
+    };
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocationS3Location.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocationS3Location.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocationS3Location(
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

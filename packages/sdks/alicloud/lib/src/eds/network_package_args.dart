@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkPackageArgs {
   /// The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
   final pulumi.Input<int> bandwidth;
-
   /// The ID of office site.
   final pulumi.Input<String> officeSiteId;
 
   /// Creates a new [NetworkPackageArgs].
   /// [bandwidth] The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
   /// [officeSiteId] The ID of office site.
-  NetworkPackageArgs({required this.bandwidth, required this.officeSiteId});
+  NetworkPackageArgs({
+    required this.bandwidth,
+    required this.officeSiteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,3 +34,4 @@ class NetworkPackageArgs {
     );
   }
 }
+

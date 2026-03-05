@@ -13,8 +13,7 @@ enum ConversationStateDiscoveryengineV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ConversationStateDiscoveryengineV1beta value: $value',
-    );
+    throw ArgumentError('Unknown ConversationStateDiscoveryengineV1beta value: $value');
   }
 }
+

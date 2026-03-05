@@ -211,7 +211,6 @@ import 'bucket_public_access_block_state.dart';
 class BucketPublicAccessBlock extends pulumi.CustomResource {
   /// Whether AlibabaCloud OSS should block public bucket policies and ACL for this bucket.
   late final pulumi.Output<bool> blockPublicAccess;
-
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
 
@@ -224,11 +223,11 @@ class BucketPublicAccessBlock extends pulumi.CustomResource {
     BucketPublicAccessBlockArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blockPublicAccess = registerOutput<bool>('blockPublicAccess');
     bucket = registerOutput<String>('bucket');
   }
@@ -251,11 +250,11 @@ class BucketPublicAccessBlock extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blockPublicAccess = registerOutput<bool>('blockPublicAccess');
     bucket = registerOutput<String>('bucket');
   }

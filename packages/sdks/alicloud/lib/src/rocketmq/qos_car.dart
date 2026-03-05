@@ -201,31 +201,22 @@ import 'qos_car_state.dart';
 class QosCar extends pulumi.CustomResource {
   /// The description of the QoS speed limiting rule.
   late final pulumi.Output<String?> description;
-
   /// The speed limiting method. Valid values: `Absolute`, `Percent`.
   late final pulumi.Output<String> limitType;
-
   /// The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
   late final pulumi.Output<int?> maxBandwidthAbs;
-
   /// The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
   late final pulumi.Output<int?> maxBandwidthPercent;
-
   /// The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
   late final pulumi.Output<int?> minBandwidthAbs;
-
   /// The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
   late final pulumi.Output<int?> minBandwidthPercent;
-
   /// The name of the QoS speed limiting rule..
   late final pulumi.Output<String> name;
-
   /// The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
   late final pulumi.Output<String?> percentSourceType;
-
   /// The priority of the specified stream.
   late final pulumi.Output<int> priority;
-
   /// The instance ID of the QoS.
   late final pulumi.Output<String> qosId;
 
@@ -233,13 +224,16 @@ class QosCar extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [QosCar]. {@macro pulumi_rocketmq_qos_car_qos_car_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  QosCar(String name, {QosCarArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:rocketmq/qosCar:QosCar',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  QosCar(
+    String name, {
+    QosCarArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:rocketmq/qosCar:QosCar',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     limitType = registerOutput<String>('limitType');
     maxBandwidthAbs = registerOutput<int?>('maxBandwidthAbs');
@@ -270,11 +264,11 @@ class QosCar extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rocketmq/qosCar:QosCar',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rocketmq/qosCar:QosCar',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     limitType = registerOutput<String>('limitType');
     maxBandwidthAbs = registerOutput<int?>('maxBandwidthAbs');

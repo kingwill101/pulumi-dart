@@ -12,39 +12,20 @@ class GetFirewallTemplatesArgs {
 
   /// Creates a new [GetFirewallTemplatesArgs].
   /// [filters] Optional.
-  GetFirewallTemplatesArgs({this.filters});
+  GetFirewallTemplatesArgs({
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetFirewallTemplatesFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetFirewallTemplatesFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetFirewallTemplatesFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetFirewallTemplatesFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetFirewallTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallTemplatesArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetFirewallTemplatesFilter>(
-            guardedValue,
-            (value) => GetFirewallTemplatesFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallTemplatesFilter>(guardedValue, (value) => GetFirewallTemplatesFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

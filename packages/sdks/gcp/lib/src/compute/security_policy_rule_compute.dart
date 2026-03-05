@@ -828,46 +828,34 @@ class SecurityPolicyRuleCompute extends pulumi.CustomResource {
   /// * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
   late final pulumi.Output<String> action;
-
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
-
   /// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// Structure is documented below.
   late final pulumi.Output<SecurityPolicyRuleHeaderAction?> headerAction;
-
   /// A match condition that incoming traffic is evaluated against.
   /// If it evaluates to true, the corresponding 'action' is enforced.
   /// Structure is documented below.
   late final pulumi.Output<SecurityPolicyRuleMatch?> match;
-
   /// Preconfigured WAF configuration to be applied for the rule.
   /// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
   /// Structure is documented below.
-  late final pulumi.Output<SecurityPolicyRulePreconfiguredWafConfig?>
-  preconfiguredWafConfig;
-
+  late final pulumi.Output<SecurityPolicyRulePreconfiguredWafConfig?> preconfiguredWafConfig;
   /// If set to true, the specified action is not enforced.
   late final pulumi.Output<bool?> preview;
-
   /// An integer indicating the priority of a rule in the list.
   /// The priority must be a positive value between 0 and 2147483647.
   /// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
   late final pulumi.Output<int> priority;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
   /// Structure is documented below.
-  late final pulumi.Output<SecurityPolicyRuleRateLimitOptions?>
-  rateLimitOptions;
-
+  late final pulumi.Output<SecurityPolicyRuleRateLimitOptions?> rateLimitOptions;
   /// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// Structure is documented below.
   late final pulumi.Output<SecurityPolicyRuleRedirectOptions?> redirectOptions;
-
   /// The name of the security policy this rule belongs to.
   late final pulumi.Output<String> securityPolicy;
 
@@ -880,67 +868,21 @@ class SecurityPolicyRuleCompute extends pulumi.CustomResource {
     SecurityPolicyRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/securityPolicyRule:SecurityPolicyRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/securityPolicyRule:SecurityPolicyRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     description = registerOutput<String?>('description');
-    headerAction = registerOutput<SecurityPolicyRuleHeaderAction?>(
-      'headerAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityPolicyRuleHeaderAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    match = registerOutput<SecurityPolicyRuleMatch?>(
-      'match',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityPolicyRuleMatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    preconfiguredWafConfig =
-        registerOutput<SecurityPolicyRulePreconfiguredWafConfig?>(
-          'preconfiguredWafConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecurityPolicyRulePreconfiguredWafConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    headerAction = registerOutput<SecurityPolicyRuleHeaderAction?>('headerAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRuleHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    match = registerOutput<SecurityPolicyRuleMatch?>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    preconfiguredWafConfig = registerOutput<SecurityPolicyRulePreconfiguredWafConfig?>('preconfiguredWafConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRulePreconfiguredWafConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preview = registerOutput<bool?>('preview');
     priority = registerOutput<int>('priority');
     project = registerOutput<String>('project');
-    rateLimitOptions = registerOutput<SecurityPolicyRuleRateLimitOptions?>(
-      'rateLimitOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityPolicyRuleRateLimitOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    redirectOptions = registerOutput<SecurityPolicyRuleRedirectOptions?>(
-      'redirectOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityPolicyRuleRedirectOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rateLimitOptions = registerOutput<SecurityPolicyRuleRateLimitOptions?>('rateLimitOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRuleRateLimitOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redirectOptions = registerOutput<SecurityPolicyRuleRedirectOptions?>('redirectOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRuleRedirectOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityPolicy = registerOutput<String>('securityPolicy');
   }
 
@@ -962,67 +904,21 @@ class SecurityPolicyRuleCompute extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/securityPolicyRule:SecurityPolicyRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/securityPolicyRule:SecurityPolicyRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     description = registerOutput<String?>('description');
-    headerAction = registerOutput<SecurityPolicyRuleHeaderAction?>(
-      'headerAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityPolicyRuleHeaderAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    match = registerOutput<SecurityPolicyRuleMatch?>(
-      'match',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityPolicyRuleMatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    preconfiguredWafConfig =
-        registerOutput<SecurityPolicyRulePreconfiguredWafConfig?>(
-          'preconfiguredWafConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecurityPolicyRulePreconfiguredWafConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    headerAction = registerOutput<SecurityPolicyRuleHeaderAction?>('headerAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRuleHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    match = registerOutput<SecurityPolicyRuleMatch?>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    preconfiguredWafConfig = registerOutput<SecurityPolicyRulePreconfiguredWafConfig?>('preconfiguredWafConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRulePreconfiguredWafConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preview = registerOutput<bool?>('preview');
     priority = registerOutput<int>('priority');
     project = registerOutput<String>('project');
-    rateLimitOptions = registerOutput<SecurityPolicyRuleRateLimitOptions?>(
-      'rateLimitOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityPolicyRuleRateLimitOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    redirectOptions = registerOutput<SecurityPolicyRuleRedirectOptions?>(
-      'redirectOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityPolicyRuleRedirectOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rateLimitOptions = registerOutput<SecurityPolicyRuleRateLimitOptions?>('rateLimitOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRuleRateLimitOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redirectOptions = registerOutput<SecurityPolicyRuleRedirectOptions?>('redirectOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRuleRedirectOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityPolicy = registerOutput<String>('securityPolicy');
   }
 }

@@ -8,19 +8,20 @@ class InstantSnapshotResourceStatusResponse {
 
   /// Creates a new [InstantSnapshotResourceStatusResponse].
   /// [storageSizeBytes] The storage size of this instant snapshot.
-  InstantSnapshotResourceStatusResponse({required this.storageSizeBytes});
+  InstantSnapshotResourceStatusResponse({
+    required this.storageSizeBytes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'storageSizeBytes': storageSizeBytes};
+    return <String, dynamic>{
+      'storageSizeBytes': storageSizeBytes,
+    };
   }
 
-  factory InstantSnapshotResourceStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstantSnapshotResourceStatusResponse.fromMap(Map<String, dynamic> map) {
     return InstantSnapshotResourceStatusResponse(
-      storageSizeBytes: pulumi.Input.fromValue(
-        map['storageSizeBytes'] as String,
-      ),
+      storageSizeBytes: pulumi.Input.fromValue(map['storageSizeBytes'] as String),
     );
   }
 }
+

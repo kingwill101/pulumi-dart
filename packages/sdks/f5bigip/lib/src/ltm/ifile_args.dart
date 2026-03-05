@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IfileArgs {
   /// The system iFile name to reference (e.g., `/Common/my-sys-ifile`). This should reference an existing system iFile created with `f5bigip.sys.Ifile`.
   final pulumi.Input<String> fileName;
-
   /// Name of the LTM iFile to be created on BIG-IP.
   final pulumi.Input<String> name;
-
   /// Partition where the LTM iFile will be created. Defaults to `Common`.
   final pulumi.Input<String>? partition;
-
   /// Subdirectory within the partition for organizing iFiles.
   final pulumi.Input<String>? subPath;
 
@@ -44,16 +41,9 @@ class IfileArgs {
     return IfileArgs(
       fileName: pulumi.Input.fromValue(map['fileName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      partition: (() {
-        final guardedValue = map['partition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subPath: (() {
-        final guardedValue = map['subPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      partition: (() { final guardedValue = map['partition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subPath: (() { final guardedValue = map['subPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

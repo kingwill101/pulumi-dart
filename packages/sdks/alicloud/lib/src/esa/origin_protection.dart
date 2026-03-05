@@ -217,7 +217,6 @@ class OriginProtection extends pulumi.CustomResource {
   /// - on
   /// - off
   late final pulumi.Output<String?> originConverge;
-
   /// Site Id
   late final pulumi.Output<String> siteId;
 
@@ -230,11 +229,11 @@ class OriginProtection extends pulumi.CustomResource {
     OriginProtectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/originProtection:OriginProtection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/originProtection:OriginProtection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     originConverge = registerOutput<String?>('originConverge');
     siteId = registerOutput<String>('siteId');
   }
@@ -257,11 +256,11 @@ class OriginProtection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/originProtection:OriginProtection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/originProtection:OriginProtection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     originConverge = registerOutput<String?>('originConverge');
     siteId = registerOutput<String>('siteId');
   }

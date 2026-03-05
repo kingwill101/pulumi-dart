@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DhcpOptionsSetAttachmentArgs {
   /// The ID of the DHCP options set.
   final pulumi.Input<String> dhcpOptionsSetId;
-
   /// Specifies whether to precheck this request only. Default values: `false`. Valid values:
   final pulumi.Input<bool>? dryRun;
-
   /// The ID of the VPC network that is to be associated with the DHCP options set..
   final pulumi.Input<String> vpcId;
 
@@ -36,15 +34,10 @@ class DhcpOptionsSetAttachmentArgs {
 
   factory DhcpOptionsSetAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return DhcpOptionsSetAttachmentArgs(
-      dhcpOptionsSetId: pulumi.Input.fromValue(
-        map['dhcpOptionsSetId'] as String,
-      ),
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dhcpOptionsSetId: pulumi.Input.fromValue(map['dhcpOptionsSetId'] as String),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
+

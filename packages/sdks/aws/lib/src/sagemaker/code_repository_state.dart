@@ -7,19 +7,14 @@ import 'code_repository_git_config.dart';
 class CodeRepositoryState {
   /// The Amazon Resource Name (ARN) assigned by AWS to this Code Repository.
   final pulumi.Input<String>? arn;
-
   /// The name of the Code Repository (must be unique).
   final pulumi.Input<String>? codeRepositoryName;
-
   /// Specifies details about the repository. see Git Config details below.
   final pulumi.Input<CodeRepositoryGitConfig>? gitConfig;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -43,11 +38,7 @@ class CodeRepositoryState {
     return <String, dynamic>{
       'arn': ?arn,
       'codeRepositoryName': ?codeRepositoryName,
-      'gitConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            CodeRepositoryGitConfig,
-            Map<String, dynamic>
-          >(gitConfig, (value) => value.toMap()),
+      'gitConfig': ?pulumi.Input.mapOptionalInputValue<CodeRepositoryGitConfig, Map<String, dynamic>>(gitConfig, (value) => value.toMap()),
       'region': ?region,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
@@ -56,44 +47,13 @@ class CodeRepositoryState {
 
   factory CodeRepositoryState.fromMap(Map<String, dynamic> map) {
     return CodeRepositoryState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      codeRepositoryName: (() {
-        final guardedValue = map['codeRepositoryName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      gitConfig: (() {
-        final guardedValue = map['gitConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CodeRepositoryGitConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      codeRepositoryName: (() { final guardedValue = map['codeRepositoryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gitConfig: (() { final guardedValue = map['gitConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CodeRepositoryGitConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

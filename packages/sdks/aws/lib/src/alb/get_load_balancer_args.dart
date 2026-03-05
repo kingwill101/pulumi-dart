@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLoadBalancerArgs {
   /// Full ARN of the load balancer.
   final pulumi.Input<String>? arn;
-
   /// Unique name of the load balancer.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Mapping of tags, each pair of which must exactly match a pair on the desired load balancer.
   ///
   /// &gt; **NOTE:** When both `arn` and `name` are specified, `arn` takes precedence. `tags` has lowest precedence.
@@ -26,7 +23,12 @@ class GetLoadBalancerArgs {
   /// [name] Unique name of the load balancer.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Mapping of tags, each pair of which must exactly match a pair on the desired load balancer.
-  GetLoadBalancerArgs({this.arn, this.name, this.region, this.tags});
+  GetLoadBalancerArgs({
+    this.arn,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,28 +41,11 @@ class GetLoadBalancerArgs {
 
   factory GetLoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerArgs(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

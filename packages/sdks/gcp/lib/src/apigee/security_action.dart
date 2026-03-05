@@ -548,58 +548,45 @@ import 'security_action_state.dart';
 class SecurityAction extends pulumi.CustomResource {
   /// Allow a request through if it matches this SecurityAction.
   late final pulumi.Output<Map<String, dynamic>?> allow;
-
   /// If unset, this would apply to all proxies in the environment.
   /// If set, this action is enforced only if at least one proxy in the repeated
   /// list is deployed at the time of enforcement. If set, several restrictions are enforced on SecurityActions.
   /// There can be at most 100 enabled actions with proxies set in an env.
   /// Several other restrictions apply on conditions and are detailed later.
   late final pulumi.Output<List<String>?> apiProxies;
-
   /// A valid SecurityAction must contain at least one condition.
   /// Structure is documented below.
   late final pulumi.Output<SecurityActionConditionConfig> conditionConfig;
-
   /// The create time for this SecurityAction.
   /// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
   /// Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
   late final pulumi.Output<String> createTime;
-
   /// Deny a request through if it matches this SecurityAction.
   /// Structure is documented below.
   late final pulumi.Output<SecurityActionDeny?> deny;
-
   /// An optional user provided description of the SecurityAction.
   late final pulumi.Output<String?> description;
-
   /// The Apigee environment that this security action applies to.
   late final pulumi.Output<String> envId;
-
   /// The expiration for this SecurityAction.
   /// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9
   /// fractional digits. Offsets other than "Z" are also accepted.
   /// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
   late final pulumi.Output<String?> expireTime;
-
   /// Flag a request through if it matches this SecurityAction.
   /// Structure is documented below.
   late final pulumi.Output<SecurityActionFlag?> flag;
-
   /// The organization that this security action applies to.
   late final pulumi.Output<String> orgId;
-
   /// The ID to use for the SecurityAction, which will become the final component of the action's resource name.
   /// This value should be 0-61 characters, and valid format is (^a-z?$).
   late final pulumi.Output<String> securityActionId;
-
   /// Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
   /// Possible values are: `ENABLED`, `DISABLED`.
   late final pulumi.Output<String> state;
-
   /// The TTL for this SecurityAction.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
   late final pulumi.Output<String?> ttl;
-
   /// The update time for this SecurityAction. This reflects when this SecurityAction changed states.
   /// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
   /// Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
@@ -614,47 +601,20 @@ class SecurityAction extends pulumi.CustomResource {
     SecurityActionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/securityAction:SecurityAction',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/securityAction:SecurityAction',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allow = registerOutput<Map<String, dynamic>?>('allow');
     apiProxies = registerOutput<List<String>?>('apiProxies');
-    conditionConfig = registerOutput<SecurityActionConditionConfig>(
-      'conditionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityActionConditionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    conditionConfig = registerOutput<SecurityActionConditionConfig>('conditionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityActionConditionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    deny = registerOutput<SecurityActionDeny?>(
-      'deny',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityActionDeny.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deny = registerOutput<SecurityActionDeny?>('deny', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityActionDeny.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     envId = registerOutput<String>('envId');
     expireTime = registerOutput<String?>('expireTime');
-    flag = registerOutput<SecurityActionFlag?>(
-      'flag',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityActionFlag.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    flag = registerOutput<SecurityActionFlag?>('flag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityActionFlag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     orgId = registerOutput<String>('orgId');
     securityActionId = registerOutput<String>('securityActionId');
     state = registerOutput<String>('state');
@@ -680,47 +640,20 @@ class SecurityAction extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/securityAction:SecurityAction',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/securityAction:SecurityAction',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allow = registerOutput<Map<String, dynamic>?>('allow');
     apiProxies = registerOutput<List<String>?>('apiProxies');
-    conditionConfig = registerOutput<SecurityActionConditionConfig>(
-      'conditionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityActionConditionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    conditionConfig = registerOutput<SecurityActionConditionConfig>('conditionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityActionConditionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    deny = registerOutput<SecurityActionDeny?>(
-      'deny',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityActionDeny.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deny = registerOutput<SecurityActionDeny?>('deny', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityActionDeny.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     envId = registerOutput<String>('envId');
     expireTime = registerOutput<String?>('expireTime');
-    flag = registerOutput<SecurityActionFlag?>(
-      'flag',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityActionFlag.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    flag = registerOutput<SecurityActionFlag?>('flag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityActionFlag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     orgId = registerOutput<String>('orgId');
     securityActionId = registerOutput<String>('securityActionId');
     this.state = registerOutput<String>('state');

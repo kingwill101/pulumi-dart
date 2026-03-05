@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppServicePlanArgs {
   /// The name of the App Service Plan.
   final pulumi.Input<String> name;
-
   /// The Name of the Resource Group where the App Service Plan exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetAppServicePlanArgs].
   /// [name] The name of the App Service Plan.
   /// [resourceGroupName] The Name of the Resource Group where the App Service Plan exists.
-  GetAppServicePlanArgs({required this.name, required this.resourceGroupName});
+  GetAppServicePlanArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetAppServicePlanArgs {
   factory GetAppServicePlanArgs.fromMap(Map<String, dynamic> map) {
     return GetAppServicePlanArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

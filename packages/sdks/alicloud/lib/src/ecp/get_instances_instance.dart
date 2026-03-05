@@ -5,40 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// Instance Description.
   final pulumi.Input<String> description;
-
   /// The ID of the Instance.
   final pulumi.Input<String> id;
-
   /// The ID Of The Image.
   final pulumi.Input<String> imageId;
-
   /// InstanceId.
   final pulumi.Input<String> instanceId;
-
   /// Instance Name.
   final pulumi.Input<String> instanceName;
-
   /// Instance Type.
   final pulumi.Input<String> instanceType;
-
   /// The Key Name.
   final pulumi.Input<String> keyPairName;
-
   /// The payment type.Valid values: `PayAsYouGo`,`Subscription`
   final pulumi.Input<String> paymentType;
-
   /// Resolution.
   final pulumi.Input<String> resolution;
-
   /// Security Group ID.
   final pulumi.Input<String> securityGroupId;
-
   /// Instance Status.
   final pulumi.Input<String> status;
-
   /// VNC login address.
   final pulumi.Input<String> vncUrl;
-
   /// The vswitch id.
   final pulumi.Input<String> vswitchId;
   final pulumi.Input<String> zoneId;
@@ -113,3 +101,4 @@ class GetInstancesInstance {
     );
   }
 }
+

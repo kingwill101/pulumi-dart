@@ -9,10 +9,14 @@ class ReplicationSyncResponse {
 
   /// Creates a new [ReplicationSyncResponse].
   /// [lastSyncTime] The most updated snapshot created time in the source that finished replication.
-  ReplicationSyncResponse({required this.lastSyncTime});
+  ReplicationSyncResponse({
+    required this.lastSyncTime,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'lastSyncTime': lastSyncTime};
+    return <String, dynamic>{
+      'lastSyncTime': lastSyncTime,
+    };
   }
 
   factory ReplicationSyncResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ReplicationSyncResponse {
     );
   }
 }
+

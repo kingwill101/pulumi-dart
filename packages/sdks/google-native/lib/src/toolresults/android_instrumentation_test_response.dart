@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AndroidInstrumentationTestResponse {
   /// The java package for the test to be executed. Required
   final pulumi.Input<String> testPackageId;
-
   /// The InstrumentationTestRunner class. Required
   final pulumi.Input<String> testRunnerClass;
-
   /// Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run.
   final pulumi.Input<List<String>> testTargets;
-
   /// The flag indicates whether Android Test Orchestrator will be used to run test or not.
   final pulumi.Input<bool> useOrchestrator;
 
@@ -41,10 +38,9 @@ class AndroidInstrumentationTestResponse {
     return AndroidInstrumentationTestResponse(
       testPackageId: pulumi.Input.fromValue(map['testPackageId'] as String),
       testRunnerClass: pulumi.Input.fromValue(map['testRunnerClass'] as String),
-      testTargets: pulumi.Input.fromValue(
-        (map['testTargets'] as List).cast<String>(),
-      ),
+      testTargets: pulumi.Input.fromValue((map['testTargets'] as List).cast<String>()),
       useOrchestrator: pulumi.Input.fromValue(map['useOrchestrator'] as bool),
     );
   }
 }
+

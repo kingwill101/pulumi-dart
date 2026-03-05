@@ -9,10 +9,14 @@ class DailyScheduleResponse {
 
   /// Creates a new [DailyScheduleResponse].
   /// [intervalDays] Specifies the number of days between each set of occurrences.
-  DailyScheduleResponse({required this.intervalDays});
+  DailyScheduleResponse({
+    required this.intervalDays,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'intervalDays': intervalDays};
+    return <String, dynamic>{
+      'intervalDays': intervalDays,
+    };
   }
 
   factory DailyScheduleResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class DailyScheduleResponse {
     );
   }
 }
+

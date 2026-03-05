@@ -10,29 +10,20 @@ class ConfigServerSettingsResponse {
 
   /// Creates a new [ConfigServerSettingsResponse].
   /// [gitProperty] Property of git environment.
-  ConfigServerSettingsResponse({this.gitProperty});
+  ConfigServerSettingsResponse({
+    this.gitProperty,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gitProperty':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigServerGitPropertyResponse,
-            Map<String, dynamic>
-          >(gitProperty, (value) => value.toMap()),
+      'gitProperty': ?pulumi.Input.mapOptionalInputValue<ConfigServerGitPropertyResponse, Map<String, dynamic>>(gitProperty, (value) => value.toMap()),
     };
   }
 
   factory ConfigServerSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ConfigServerSettingsResponse(
-      gitProperty: (() {
-        final guardedValue = map['gitProperty'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigServerGitPropertyResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      gitProperty: (() { final guardedValue = map['gitProperty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigServerGitPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

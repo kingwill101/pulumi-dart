@@ -14,18 +14,15 @@ class ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvision
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'minimumApiVersion': ?minimumApiVersion};
+    return <String, dynamic>{
+      'minimumApiVersion': ?minimumApiVersion,
+    };
   }
 
-  factory ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupportResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupportResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupportResponse(
-      minimumApiVersion: (() {
-        final guardedValue = map['minimumApiVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      minimumApiVersion: (() { final guardedValue = map['minimumApiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

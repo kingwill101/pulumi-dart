@@ -146,28 +146,20 @@ import 'cluster_snapshot_state.dart';
 class ClusterSnapshot extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the snapshot.
   late final pulumi.Output<String> arn;
-
   /// The cluster identifier for which you want a snapshot.
   late final pulumi.Output<String> clusterIdentifier;
-
   /// The Key Management Service (KMS) key ID of the encryption key that was used to encrypt data in the cluster from which the snapshot was taken.
   late final pulumi.Output<String> kmsKeyId;
-
   /// The number of days that a manual snapshot is retained. If the value is `-1`, the manual snapshot is retained indefinitely. Valid values are -1 and between `1` and `3653`.
   late final pulumi.Output<int?> manualSnapshotRetentionPeriod;
-
   /// For manual snapshots, the Amazon Web Services account used to create or copy the snapshot. For automatic snapshots, the owner of the cluster. The owner can perform all snapshot actions, such as sharing a manual snapshot.
   late final pulumi.Output<String> ownerAccount;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A unique identifier for the snapshot that you are requesting. This identifier must be unique for all snapshots within the Amazon Web Services account.
   late final pulumi.Output<String> snapshotIdentifier;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -180,17 +172,15 @@ class ClusterSnapshot extends pulumi.CustomResource {
     ClusterSnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshift/clusterSnapshot:ClusterSnapshot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:redshift/clusterSnapshot:ClusterSnapshot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    manualSnapshotRetentionPeriod = registerOutput<int?>(
-      'manualSnapshotRetentionPeriod',
-    );
+    manualSnapshotRetentionPeriod = registerOutput<int?>('manualSnapshotRetentionPeriod');
     ownerAccount = registerOutput<String>('ownerAccount');
     region = registerOutput<String>('region');
     snapshotIdentifier = registerOutput<String>('snapshotIdentifier');
@@ -216,17 +206,15 @@ class ClusterSnapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshift/clusterSnapshot:ClusterSnapshot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:redshift/clusterSnapshot:ClusterSnapshot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    manualSnapshotRetentionPeriod = registerOutput<int?>(
-      'manualSnapshotRetentionPeriod',
-    );
+    manualSnapshotRetentionPeriod = registerOutput<int?>('manualSnapshotRetentionPeriod');
     ownerAccount = registerOutput<String>('ownerAccount');
     region = registerOutput<String>('region');
     snapshotIdentifier = registerOutput<String>('snapshotIdentifier');

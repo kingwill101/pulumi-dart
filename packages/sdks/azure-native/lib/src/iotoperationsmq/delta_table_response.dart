@@ -7,10 +7,8 @@ import 'delta_table_schema_response.dart';
 class DeltaTableResponse {
   /// Schema list supported.
   final pulumi.Input<List<DeltaTableSchemaResponse>> schema;
-
   /// Delta table name.
   final pulumi.Input<String> tableName;
-
   /// Delta table path.
   final pulumi.Input<String>? tablePath;
 
@@ -26,18 +24,7 @@ class DeltaTableResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schema':
-          pulumi.Input.mapInputValue<
-            List<DeltaTableSchemaResponse>,
-            List<Map<String, dynamic>>
-          >(
-            schema,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DeltaTableSchemaResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'schema': pulumi.Input.mapInputValue<List<DeltaTableSchemaResponse>, List<Map<String, dynamic>>>(schema, (value) => pulumi.Input.encodeList<DeltaTableSchemaResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tableName': tableName,
       'tablePath': ?tablePath,
     };
@@ -45,20 +32,10 @@ class DeltaTableResponse {
 
   factory DeltaTableResponse.fromMap(Map<String, dynamic> map) {
     return DeltaTableResponse(
-      schema: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<DeltaTableSchemaResponse>(
-          map['schema']!,
-          (value) => DeltaTableSchemaResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      schema: pulumi.Input.fromValue(pulumi.Input.decodeList<DeltaTableSchemaResponse>(map['schema']!, (value) => DeltaTableSchemaResponse.fromMap((value as Map).cast<String, dynamic>()))),
       tableName: pulumi.Input.fromValue(map['tableName'] as String),
-      tablePath: (() {
-        final guardedValue = map['tablePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tablePath: (() { final guardedValue = map['tablePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

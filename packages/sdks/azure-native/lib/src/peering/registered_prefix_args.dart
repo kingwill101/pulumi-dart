@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegisteredPrefixArgs {
   /// The name of the peering.
   final pulumi.Input<String> peeringName;
-
   /// The customer's prefix from which traffic originates.
   final pulumi.Input<String>? prefix;
-
   /// The name of the registered prefix.
   final pulumi.Input<String>? registeredPrefixName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -43,19 +40,10 @@ class RegisteredPrefixArgs {
   factory RegisteredPrefixArgs.fromMap(Map<String, dynamic> map) {
     return RegisteredPrefixArgs(
       peeringName: pulumi.Input.fromValue(map['peeringName'] as String),
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      registeredPrefixName: (() {
-        final guardedValue = map['registeredPrefixName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      registeredPrefixName: (() { final guardedValue = map['registeredPrefixName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

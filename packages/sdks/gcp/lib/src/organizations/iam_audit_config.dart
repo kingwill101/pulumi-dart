@@ -146,13 +146,10 @@ import 'iam_audit_config_state.dart';
 class IamAuditConfig extends pulumi.CustomResource {
   /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> auditLogConfigs;
-
   /// The etag of iam policy
   late final pulumi.Output<String> etag;
-
   /// The numeric ID of the organization in which you want to manage the audit logging config.
   late final pulumi.Output<String> orgId;
-
   /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
   late final pulumi.Output<String> service;
 
@@ -165,14 +162,12 @@ class IamAuditConfig extends pulumi.CustomResource {
     IamAuditConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:organizations/iamAuditConfig:IamAuditConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    auditLogConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'auditLogConfigs',
-    );
+          'gcp:organizations/iamAuditConfig:IamAuditConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    auditLogConfigs = registerOutput<List<Map<String, dynamic>>>('auditLogConfigs');
     etag = registerOutput<String>('etag');
     orgId = registerOutput<String>('orgId');
     service = registerOutput<String>('service');
@@ -196,14 +191,12 @@ class IamAuditConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:organizations/iamAuditConfig:IamAuditConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    auditLogConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'auditLogConfigs',
-    );
+          'gcp:organizations/iamAuditConfig:IamAuditConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    auditLogConfigs = registerOutput<List<Map<String, dynamic>>>('auditLogConfigs');
     etag = registerOutput<String>('etag');
     orgId = registerOutput<String>('orgId');
     service = registerOutput<String>('service');

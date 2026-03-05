@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpecResponse {
   /// The hyper-parameter name used in the tuning job that stands for learning rate. Leave it blank if learning rate is not in a parameter in tuning. The learning_rate is used to estimate the objective value of the ongoing trial.
   final pulumi.Input<String> learningRateParameterName;
-
   /// Steps used in predicting the final objective for early stopped trials. In general, it's set to be the same as the defined steps in training / tuning. If not defined, it will learn it from the completed trials. When use_steps is false, this field is set to the maximum elapsed seconds.
   final pulumi.Input<String> maxStepCount;
-
   /// The minimal number of measurements in a Trial. Early-stopping checks will not trigger if less than min_measurement_count+1 completed trials or pending trials with less than min_measurement_count measurements. If not defined, the default value is 5.
   final pulumi.Input<String> minMeasurementCount;
-
   /// Minimum number of steps for a trial to complete. Trials which do not have a measurement with step_count &gt; min_step_count won't be considered for early stopping. It's ok to set it to 0, and a trial can be early stopped at any stage. By default, min_step_count is set to be one-tenth of the max_step_count. When use_elapsed_duration is true, this field is set to the minimum elapsed seconds.
   final pulumi.Input<String> minStepCount;
-
   /// ConvexAutomatedStoppingSpec by default only updates the trials that needs to be early stopped using a newly trained auto-regressive model. When this flag is set to True, all stopped trials from the beginning are potentially updated in terms of their `final_measurement`. Also, note that the training logic of autoregressive models is different in this case. Enabling this option has shown better results and this may be the default option in the future.
   final pulumi.Input<bool> updateAllStoppedTrials;
-
   /// This bool determines whether or not the rule is applied based on elapsed_secs or steps. If use_elapsed_duration==false, the early stopping decision is made according to the predicted objective values according to the target steps. If use_elapsed_duration==true, elapsed_secs is used instead of steps. Also, in this case, the parameters max_num_steps and min_num_steps are overloaded to contain max_elapsed_seconds and min_elapsed_seconds.
   final pulumi.Input<bool> useElapsedDuration;
 
@@ -49,24 +44,15 @@ class GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpecResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpecResponse(
-      learningRateParameterName: pulumi.Input.fromValue(
-        map['learningRateParameterName'] as String,
-      ),
+      learningRateParameterName: pulumi.Input.fromValue(map['learningRateParameterName'] as String),
       maxStepCount: pulumi.Input.fromValue(map['maxStepCount'] as String),
-      minMeasurementCount: pulumi.Input.fromValue(
-        map['minMeasurementCount'] as String,
-      ),
+      minMeasurementCount: pulumi.Input.fromValue(map['minMeasurementCount'] as String),
       minStepCount: pulumi.Input.fromValue(map['minStepCount'] as String),
-      updateAllStoppedTrials: pulumi.Input.fromValue(
-        map['updateAllStoppedTrials'] as bool,
-      ),
-      useElapsedDuration: pulumi.Input.fromValue(
-        map['useElapsedDuration'] as bool,
-      ),
+      updateAllStoppedTrials: pulumi.Input.fromValue(map['updateAllStoppedTrials'] as bool),
+      useElapsedDuration: pulumi.Input.fromValue(map['useElapsedDuration'] as bool),
     );
   }
 }
+

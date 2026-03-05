@@ -8,22 +8,16 @@ import 'system_data_response.dart';
 class GetMetadataSchemaResult {
   /// The assignees
   final List<MetadataAssignmentResponse>? assignedTo;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The schema defining the type.
   final String schema;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -47,14 +41,7 @@ class GetMetadataSchemaResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assignedTo': ?(() {
-        final guardedValue = assignedTo;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          MetadataAssignmentResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'assignedTo': ?(() { final guardedValue = assignedTo; if (guardedValue == null) return null; return pulumi.Input.encodeList<MetadataAssignmentResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'azureApiVersion': azureApiVersion,
       'id': id,
       'name': name,
@@ -66,24 +53,14 @@ class GetMetadataSchemaResult {
 
   factory GetMetadataSchemaResult.fromMap(Map<String, dynamic> map) {
     return GetMetadataSchemaResult(
-      assignedTo: (() {
-        final guardedValue = map['assignedTo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<MetadataAssignmentResponse>(
-          guardedValue,
-          (value) => MetadataAssignmentResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      assignedTo: (() { final guardedValue = map['assignedTo']; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetadataAssignmentResponse>(guardedValue, (value) => MetadataAssignmentResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       schema: map['schema'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

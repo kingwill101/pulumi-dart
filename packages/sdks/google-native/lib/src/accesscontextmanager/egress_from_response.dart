@@ -7,13 +7,10 @@ import 'egress_source_response.dart';
 class EgressFromResponse {
   /// A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
   final pulumi.Input<List<String>> identities;
-
   /// Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
   final pulumi.Input<String> identityType;
-
   /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
   final pulumi.Input<String> sourceRestriction;
-
   /// Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
   final pulumi.Input<List<EgressSourceResponse>> sources;
 
@@ -34,38 +31,17 @@ class EgressFromResponse {
       'identities': identities,
       'identityType': identityType,
       'sourceRestriction': sourceRestriction,
-      'sources':
-          pulumi.Input.mapInputValue<
-            List<EgressSourceResponse>,
-            List<Map<String, dynamic>>
-          >(
-            sources,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EgressSourceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'sources': pulumi.Input.mapInputValue<List<EgressSourceResponse>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<EgressSourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EgressFromResponse.fromMap(Map<String, dynamic> map) {
     return EgressFromResponse(
-      identities: pulumi.Input.fromValue(
-        (map['identities'] as List).cast<String>(),
-      ),
+      identities: pulumi.Input.fromValue((map['identities'] as List).cast<String>()),
       identityType: pulumi.Input.fromValue(map['identityType'] as String),
-      sourceRestriction: pulumi.Input.fromValue(
-        map['sourceRestriction'] as String,
-      ),
-      sources: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<EgressSourceResponse>(
-          map['sources']!,
-          (value) => EgressSourceResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      sourceRestriction: pulumi.Input.fromValue(map['sourceRestriction'] as String),
+      sources: pulumi.Input.fromValue(pulumi.Input.decodeList<EgressSourceResponse>(map['sources']!, (value) => EgressSourceResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum GraphQLApiIntrospectionConfig {
     throw ArgumentError('Unknown GraphQLApiIntrospectionConfig value: $value');
   }
 }
+

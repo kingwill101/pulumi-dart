@@ -9,10 +9,14 @@ class JavaComponentIngressResponse {
 
   /// Creates a new [JavaComponentIngressResponse].
   /// [fqdn] Hostname of the Java Component endpoint
-  JavaComponentIngressResponse({required this.fqdn});
+  JavaComponentIngressResponse({
+    required this.fqdn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fqdn': fqdn};
+    return <String, dynamic>{
+      'fqdn': fqdn,
+    };
   }
 
   factory JavaComponentIngressResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class JavaComponentIngressResponse {
     );
   }
 }
+

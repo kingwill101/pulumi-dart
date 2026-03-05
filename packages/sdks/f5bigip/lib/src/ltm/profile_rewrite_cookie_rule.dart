@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProfileRewriteCookieRule {
   final pulumi.Input<String> clientDomain;
   final pulumi.Input<String> clientPath;
-
   /// Name of the cookie rewrite rule.
   final pulumi.Input<String> ruleName;
   final pulumi.Input<String> serverDomain;
@@ -45,3 +44,4 @@ class ProfileRewriteCookieRule {
     );
   }
 }
+

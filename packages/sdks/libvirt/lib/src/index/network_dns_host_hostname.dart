@@ -8,10 +8,14 @@ class NetworkDnsHostHostname {
 
   /// Creates a new [NetworkDnsHostHostname].
   /// [hostname] Sets the value of each hostname in the DNS configuration, allowing for individual identification.
-  NetworkDnsHostHostname({required this.hostname});
+  NetworkDnsHostHostname({
+    required this.hostname,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hostname': hostname};
+    return <String, dynamic>{
+      'hostname': hostname,
+    };
   }
 
   factory NetworkDnsHostHostname.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class NetworkDnsHostHostname {
     );
   }
 }
+

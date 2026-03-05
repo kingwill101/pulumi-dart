@@ -7,19 +7,14 @@ import 'google_type_date_response_policysimulator_v1beta1.dart';
 class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse {
   /// The number of replayed log entries with a difference between baseline and simulated policies.
   final pulumi.Input<int> differenceCount;
-
   /// The number of log entries that could not be replayed.
   final pulumi.Input<int> errorCount;
-
   /// The total number of log entries replayed.
   final pulumi.Input<int> logCount;
-
   /// The date of the newest log entry replayed.
   final pulumi.Input<GoogleTypeDateResponsePolicysimulatorV1beta1> newestDate;
-
   /// The date of the oldest log entry replayed.
   final pulumi.Input<GoogleTypeDateResponsePolicysimulatorV1beta1> oldestDate;
-
   /// The number of replayed log entries with no difference between baseline and simulated policies.
   final pulumi.Input<int> unchangedCount;
 
@@ -44,38 +39,21 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse {
       'differenceCount': differenceCount,
       'errorCount': errorCount,
       'logCount': logCount,
-      'newestDate':
-          pulumi.Input.mapInputValue<
-            GoogleTypeDateResponsePolicysimulatorV1beta1,
-            Map<String, dynamic>
-          >(newestDate, (value) => value.toMap()),
-      'oldestDate':
-          pulumi.Input.mapInputValue<
-            GoogleTypeDateResponsePolicysimulatorV1beta1,
-            Map<String, dynamic>
-          >(oldestDate, (value) => value.toMap()),
+      'newestDate': pulumi.Input.mapInputValue<GoogleTypeDateResponsePolicysimulatorV1beta1, Map<String, dynamic>>(newestDate, (value) => value.toMap()),
+      'oldestDate': pulumi.Input.mapInputValue<GoogleTypeDateResponsePolicysimulatorV1beta1, Map<String, dynamic>>(oldestDate, (value) => value.toMap()),
       'unchangedCount': unchangedCount,
     };
   }
 
-  factory GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse(
       differenceCount: pulumi.Input.fromValue(map['differenceCount'] as int),
       errorCount: pulumi.Input.fromValue(map['errorCount'] as int),
       logCount: pulumi.Input.fromValue(map['logCount'] as int),
-      newestDate: pulumi.Input.fromValue(
-        GoogleTypeDateResponsePolicysimulatorV1beta1.fromMap(
-          (map['newestDate']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      oldestDate: pulumi.Input.fromValue(
-        GoogleTypeDateResponsePolicysimulatorV1beta1.fromMap(
-          (map['oldestDate']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      newestDate: pulumi.Input.fromValue(GoogleTypeDateResponsePolicysimulatorV1beta1.fromMap((map['newestDate']! as Map).cast<String, dynamic>())),
+      oldestDate: pulumi.Input.fromValue(GoogleTypeDateResponsePolicysimulatorV1beta1.fromMap((map['oldestDate']! as Map).cast<String, dynamic>())),
       unchangedCount: pulumi.Input.fromValue(map['unchangedCount'] as int),
     );
   }
 }
+

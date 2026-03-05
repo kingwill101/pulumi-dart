@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudTieringCachePerformanceResponse {
   /// Count of bytes that were served from the local server
   final pulumi.Input<double> cacheHitBytes;
-
   /// Percentage of total bytes (hit + miss) that were served from the local server
   final pulumi.Input<int> cacheHitBytesPercent;
-
   /// Count of bytes that were served from the cloud
   final pulumi.Input<double> cacheMissBytes;
-
   /// Last updated timestamp
   final pulumi.Input<String> lastUpdatedTimestamp;
 
@@ -37,18 +34,13 @@ class CloudTieringCachePerformanceResponse {
     };
   }
 
-  factory CloudTieringCachePerformanceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudTieringCachePerformanceResponse.fromMap(Map<String, dynamic> map) {
     return CloudTieringCachePerformanceResponse(
       cacheHitBytes: pulumi.Input.fromValue(map['cacheHitBytes'] as double),
-      cacheHitBytesPercent: pulumi.Input.fromValue(
-        map['cacheHitBytesPercent'] as int,
-      ),
+      cacheHitBytesPercent: pulumi.Input.fromValue(map['cacheHitBytesPercent'] as int),
       cacheMissBytes: pulumi.Input.fromValue(map['cacheMissBytes'] as double),
-      lastUpdatedTimestamp: pulumi.Input.fromValue(
-        map['lastUpdatedTimestamp'] as String,
-      ),
+      lastUpdatedTimestamp: pulumi.Input.fromValue(map['lastUpdatedTimestamp'] as String),
     );
   }
 }
+

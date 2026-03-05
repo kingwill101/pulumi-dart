@@ -12,19 +12,20 @@ class PipelineDestinationNetworkConfig {
 
   /// Creates a new [PipelineDestinationNetworkConfig].
   /// [networkAttachment] Name of the NetworkAttachment that allows access to the consumer VPC.
-  PipelineDestinationNetworkConfig({this.networkAttachment});
+  PipelineDestinationNetworkConfig({
+    this.networkAttachment,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'networkAttachment': ?networkAttachment};
+    return <String, dynamic>{
+      'networkAttachment': ?networkAttachment,
+    };
   }
 
   factory PipelineDestinationNetworkConfig.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationNetworkConfig(
-      networkAttachment: (() {
-        final guardedValue = map['networkAttachment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      networkAttachment: (() { final guardedValue = map['networkAttachment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

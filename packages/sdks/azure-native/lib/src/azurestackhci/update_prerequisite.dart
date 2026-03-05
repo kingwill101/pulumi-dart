@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UpdatePrerequisite {
   /// Friendly name of the prerequisite.
   final pulumi.Input<String>? packageName;
-
   /// Updatable component type.
   final pulumi.Input<String>? updateType;
-
   /// Version of the prerequisite.
   final pulumi.Input<String>? version;
 
@@ -17,7 +15,11 @@ class UpdatePrerequisite {
   /// [packageName] Friendly name of the prerequisite.
   /// [updateType] Updatable component type.
   /// [version] Version of the prerequisite.
-  UpdatePrerequisite({this.packageName, this.updateType, this.version});
+  UpdatePrerequisite({
+    this.packageName,
+    this.updateType,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class UpdatePrerequisite {
 
   factory UpdatePrerequisite.fromMap(Map<String, dynamic> map) {
     return UpdatePrerequisite(
-      packageName: (() {
-        final guardedValue = map['packageName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateType: (() {
-        final guardedValue = map['updateType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      packageName: (() { final guardedValue = map['packageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateType: (() { final guardedValue = map['updateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

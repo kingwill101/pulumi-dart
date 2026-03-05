@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDocumentationArgs {
   /// Documentation identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> documentationId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -37,10 +35,9 @@ class GetDocumentationArgs {
   factory GetDocumentationArgs.fromMap(Map<String, dynamic> map) {
     return GetDocumentationArgs(
       documentationId: pulumi.Input.fromValue(map['documentationId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

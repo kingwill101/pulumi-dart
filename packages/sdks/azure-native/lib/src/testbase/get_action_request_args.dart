@@ -8,10 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_testbase_get_action_request_args_doc}
 class GetActionRequestArgs {
   final pulumi.Input<String> actionRequestName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
 
@@ -35,15 +33,10 @@ class GetActionRequestArgs {
 
   factory GetActionRequestArgs.fromMap(Map<String, dynamic> map) {
     return GetActionRequestArgs(
-      actionRequestName: pulumi.Input.fromValue(
-        map['actionRequestName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      testBaseAccountName: pulumi.Input.fromValue(
-        map['testBaseAccountName'] as String,
-      ),
+      actionRequestName: pulumi.Input.fromValue(map['actionRequestName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      testBaseAccountName: pulumi.Input.fromValue(map['testBaseAccountName'] as String),
     );
   }
 }
+

@@ -7,46 +7,32 @@ import 'vsphere_scan_response.dart';
 class GetCollectorResult {
   /// Store cloud storage bucket name (which is a guid) created with this Collector.
   final String bucket;
-
   /// Client version.
   final String clientVersion;
-
   /// How many days to collect data.
   final int collectionDays;
-
   /// Create time stamp.
   final String createTime;
-
   /// User specified description of the Collector.
   final String description;
-
   /// User specified name of the Collector.
   final String displayName;
-
   /// Uri for EULA (End User License Agreement) from customer.
   final String eulaUri;
-
   /// User specified expected asset count.
   final String expectedAssetCount;
-
   /// Reference to MC Source Guest Os Scan.
   final GuestOsScanResponse guestOsScan;
-
   /// Labels as key value pairs.
   final Map<String, String> labels;
-
   /// name of resource.
   final String name;
-
   /// Service Account email used to ingest data to this Collector.
   final String serviceAccount;
-
   /// State of the Collector.
   final String state;
-
   /// Update time stamp.
   final String updateTime;
-
   /// Reference to MC Source vsphere_scan.
   final VSphereScanResponse vsphereScan;
 
@@ -114,17 +100,14 @@ class GetCollectorResult {
       displayName: map['displayName'] as String,
       eulaUri: map['eulaUri'] as String,
       expectedAssetCount: map['expectedAssetCount'] as String,
-      guestOsScan: GuestOsScanResponse.fromMap(
-        (map['guestOsScan']! as Map).cast<String, dynamic>(),
-      ),
+      guestOsScan: GuestOsScanResponse.fromMap((map['guestOsScan']! as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       serviceAccount: map['serviceAccount'] as String,
       state: map['state'] as String,
       updateTime: map['updateTime'] as String,
-      vsphereScan: VSphereScanResponse.fromMap(
-        (map['vsphereScan']! as Map).cast<String, dynamic>(),
-      ),
+      vsphereScan: VSphereScanResponse.fromMap((map['vsphereScan']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

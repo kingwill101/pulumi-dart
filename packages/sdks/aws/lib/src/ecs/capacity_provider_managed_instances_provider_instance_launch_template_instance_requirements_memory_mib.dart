@@ -15,19 +15,17 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': ?max, 'min': min};
+    return <String, dynamic>{
+      'max': ?max,
+      'min': min,
+    };
   }
 
-  factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsMemoryMib.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsMemoryMib.fromMap(Map<String, dynamic> map) {
     return CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsMemoryMib(
-      max: (() {
-        final guardedValue = map['max'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       min: pulumi.Input.fromValue(map['min'] as int),
     );
   }
 }
+

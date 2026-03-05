@@ -9,17 +9,20 @@ class SignInBehaviorResponse {
 
   /// Creates a new [SignInBehaviorResponse].
   /// [redirectCondition] When to redirect sign-ins to the IdP.
-  SignInBehaviorResponse({required this.redirectCondition});
+  SignInBehaviorResponse({
+    required this.redirectCondition,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'redirectCondition': redirectCondition};
+    return <String, dynamic>{
+      'redirectCondition': redirectCondition,
+    };
   }
 
   factory SignInBehaviorResponse.fromMap(Map<String, dynamic> map) {
     return SignInBehaviorResponse(
-      redirectCondition: pulumi.Input.fromValue(
-        map['redirectCondition'] as String,
-      ),
+      redirectCondition: pulumi.Input.fromValue(map['redirectCondition'] as String),
     );
   }
 }
+

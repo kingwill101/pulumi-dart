@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountArgs {
   /// The status of the account. Valid values: `DISABLE`, `ENABLE`.
   final pulumi.Input<String>? accountStatus;
-
   /// The instance ID.
   final pulumi.Input<String> instanceId;
-
   /// The password of the account.
   final pulumi.Input<String> password;
-
   /// The username of the account.
   final pulumi.Input<String> username;
 
@@ -42,14 +39,11 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountStatus: (() {
-        final guardedValue = map['accountStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountStatus: (() { final guardedValue = map['accountStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

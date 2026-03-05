@@ -6,26 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActivityTimelineItemResponse {
   /// The grouping bucket end time.
   final pulumi.Input<String> bucketEndTimeUTC;
-
   /// The grouping bucket start time.
   final pulumi.Input<String> bucketStartTimeUTC;
-
   /// The activity timeline content.
   final pulumi.Input<String> content;
-
   /// The time of the first activity in the grouping bucket.
   final pulumi.Input<String> firstActivityTimeUTC;
-
   /// The entity query kind
   /// Expected value is 'Activity'.
   final pulumi.Input<String> kind;
-
   /// The time of the last activity in the grouping bucket.
   final pulumi.Input<String> lastActivityTimeUTC;
-
   /// The activity query id.
   final pulumi.Input<String> queryId;
-
   /// The activity timeline title.
   final pulumi.Input<String> title;
 
@@ -64,22 +57,15 @@ class ActivityTimelineItemResponse {
 
   factory ActivityTimelineItemResponse.fromMap(Map<String, dynamic> map) {
     return ActivityTimelineItemResponse(
-      bucketEndTimeUTC: pulumi.Input.fromValue(
-        map['bucketEndTimeUTC'] as String,
-      ),
-      bucketStartTimeUTC: pulumi.Input.fromValue(
-        map['bucketStartTimeUTC'] as String,
-      ),
+      bucketEndTimeUTC: pulumi.Input.fromValue(map['bucketEndTimeUTC'] as String),
+      bucketStartTimeUTC: pulumi.Input.fromValue(map['bucketStartTimeUTC'] as String),
       content: pulumi.Input.fromValue(map['content'] as String),
-      firstActivityTimeUTC: pulumi.Input.fromValue(
-        map['firstActivityTimeUTC'] as String,
-      ),
+      firstActivityTimeUTC: pulumi.Input.fromValue(map['firstActivityTimeUTC'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      lastActivityTimeUTC: pulumi.Input.fromValue(
-        map['lastActivityTimeUTC'] as String,
-      ),
+      lastActivityTimeUTC: pulumi.Input.fromValue(map['lastActivityTimeUTC'] as String),
       queryId: pulumi.Input.fromValue(map['queryId'] as String),
       title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
+

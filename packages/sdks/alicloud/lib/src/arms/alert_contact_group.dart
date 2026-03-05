@@ -170,7 +170,6 @@ import 'alert_contact_group_state.dart';
 class AlertContactGroup extends pulumi.CustomResource {
   /// The name of the resource.
   late final pulumi.Output<String> alertContactGroupName;
-
   /// The list id of alert contact.
   late final pulumi.Output<List<String>?> contactIds;
 
@@ -183,11 +182,11 @@ class AlertContactGroup extends pulumi.CustomResource {
     AlertContactGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/alertContactGroup:AlertContactGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/alertContactGroup:AlertContactGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertContactGroupName = registerOutput<String>('alertContactGroupName');
     contactIds = registerOutput<List<String>?>('contactIds');
   }
@@ -210,11 +209,11 @@ class AlertContactGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/alertContactGroup:AlertContactGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/alertContactGroup:AlertContactGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertContactGroupName = registerOutput<String>('alertContactGroupName');
     contactIds = registerOutput<List<String>?>('contactIds');
   }

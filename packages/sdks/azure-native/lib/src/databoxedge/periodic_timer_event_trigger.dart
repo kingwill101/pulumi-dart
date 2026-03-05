@@ -135,26 +135,19 @@ import 'system_data_response.dart';
 class PeriodicTimerEventTrigger extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.
   late final pulumi.Output<String?> customContextTag;
-
   /// Trigger Kind.
   /// Expected value is 'PeriodicTimerEvent'.
   late final pulumi.Output<String> kind;
-
   /// The object name.
   late final pulumi.Output<String> name;
-
   /// Role Sink information.
   late final pulumi.Output<RoleSinkInfoResponse> sinkInfo;
-
   /// Periodic timer details.
   late final pulumi.Output<PeriodicTimerSourceInfoResponse> sourceInfo;
-
   /// Metadata pertaining to creation and last modification of Trigger
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -167,45 +160,18 @@ class PeriodicTimerEventTrigger extends pulumi.CustomResource {
     PeriodicTimerEventTriggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:databoxedge:PeriodicTimerEventTrigger',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:databoxedge:PeriodicTimerEventTrigger',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     customContextTag = registerOutput<String?>('customContextTag');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    sinkInfo = registerOutput<RoleSinkInfoResponse>(
-      'sinkInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RoleSinkInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sourceInfo = registerOutput<PeriodicTimerSourceInfoResponse>(
-      'sourceInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PeriodicTimerSourceInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sinkInfo = registerOutput<RoleSinkInfoResponse>('sinkInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleSinkInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceInfo = registerOutput<PeriodicTimerSourceInfoResponse>('sourceInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeriodicTimerSourceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

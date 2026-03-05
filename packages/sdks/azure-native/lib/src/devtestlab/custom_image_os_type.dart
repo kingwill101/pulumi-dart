@@ -16,3 +16,4 @@ enum CustomImageOsType {
     throw ArgumentError('Unknown CustomImageOsType value: $value');
   }
 }
+

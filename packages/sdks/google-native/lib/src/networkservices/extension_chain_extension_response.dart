@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtensionChainExtensionResponse {
   /// The `:authority` header in the gRPC request sent from Envoy to the extension service.
   final pulumi.Input<String> authority;
-
   /// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
   final pulumi.Input<bool> failOpen;
-
   /// Optional. List of the HTTP headers to forward to the extension (from the client or backend). If omitted, all headers are sent. Each element is a string indicating the header name.
   final pulumi.Input<List<String>> forwardHeaders;
-
   /// The name for this extension. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
   final pulumi.Input<String> name;
-
   /// The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
   final pulumi.Input<String> service;
-
   /// Optional. A set of events during request or response processing for which this extension is called. This field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension` resource.
   final pulumi.Input<List<String>> supportedEvents;
-
   /// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
   final pulumi.Input<String> timeout;
 
@@ -59,15 +53,12 @@ class ExtensionChainExtensionResponse {
     return ExtensionChainExtensionResponse(
       authority: pulumi.Input.fromValue(map['authority'] as String),
       failOpen: pulumi.Input.fromValue(map['failOpen'] as bool),
-      forwardHeaders: pulumi.Input.fromValue(
-        (map['forwardHeaders'] as List).cast<String>(),
-      ),
+      forwardHeaders: pulumi.Input.fromValue((map['forwardHeaders'] as List).cast<String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       service: pulumi.Input.fromValue(map['service'] as String),
-      supportedEvents: pulumi.Input.fromValue(
-        (map['supportedEvents'] as List).cast<String>(),
-      ),
+      supportedEvents: pulumi.Input.fromValue((map['supportedEvents'] as List).cast<String>()),
       timeout: pulumi.Input.fromValue(map['timeout'] as String),
     );
   }
 }
+

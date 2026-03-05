@@ -203,19 +203,14 @@ import 'client_key_state.dart';
 class ClientKey extends pulumi.CustomResource {
   /// ClientKey's parent Application Access Point name.
   late final pulumi.Output<String> aapName;
-
   /// Create timestamp, e.g. "2022-08-10T08:03:30Z".
   late final pulumi.Output<String> createTime;
-
   /// The ClientKey expiration time. Example: "2027-08-10 T08:03:30Z".
   late final pulumi.Output<String?> notAfter;
-
   /// The valid start time of the ClientKey. Example: "2022-08-10 T08:03:30Z".
   late final pulumi.Output<String?> notBefore;
-
   /// To enhance security, set a password for the downloaded Client Key,When an application accesses KMS, you must use the ClientKey content and this password to initialize the SDK client.
   late final pulumi.Output<String> password;
-
   /// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
   late final pulumi.Output<String?> privateKeyDataFile;
 
@@ -228,11 +223,11 @@ class ClientKey extends pulumi.CustomResource {
     ClientKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kms/clientKey:ClientKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kms/clientKey:ClientKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aapName = registerOutput<String>('aapName');
     createTime = registerOutput<String>('createTime');
     notAfter = registerOutput<String?>('notAfter');
@@ -259,11 +254,11 @@ class ClientKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kms/clientKey:ClientKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kms/clientKey:ClientKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aapName = registerOutput<String>('aapName');
     createTime = registerOutput<String>('createTime');
     notAfter = registerOutput<String?>('notAfter');

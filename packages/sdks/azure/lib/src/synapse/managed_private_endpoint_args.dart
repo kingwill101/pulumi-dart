@@ -9,17 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedPrivateEndpointArgs {
   /// Specifies the name which should be used for this Managed Private Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the sub resource name which the Synapse Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Possible values are listed in [documentation](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration).
   final pulumi.Input<String> subresourceName;
-
   /// The ID of the Synapse Workspace on which to create the Managed Private Endpoint. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** A Synapse firewall rule including local IP is needed for managing current resource.
   final pulumi.Input<String> synapseWorkspaceId;
-
   /// The ID of the Private Link Enabled Remote Resource which this Synapse Private Endpoint should be connected to. Changing this forces a new resource to be created.
   final pulumi.Input<String> targetResourceId;
 
@@ -46,18 +43,11 @@ class ManagedPrivateEndpointArgs {
 
   factory ManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subresourceName: pulumi.Input.fromValue(map['subresourceName'] as String),
-      synapseWorkspaceId: pulumi.Input.fromValue(
-        map['synapseWorkspaceId'] as String,
-      ),
-      targetResourceId: pulumi.Input.fromValue(
-        map['targetResourceId'] as String,
-      ),
+      synapseWorkspaceId: pulumi.Input.fromValue(map['synapseWorkspaceId'] as String),
+      targetResourceId: pulumi.Input.fromValue(map['targetResourceId'] as String),
     );
   }
 }
+

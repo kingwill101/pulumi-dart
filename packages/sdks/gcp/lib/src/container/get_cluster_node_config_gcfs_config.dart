@@ -8,10 +8,14 @@ class GetClusterNodeConfigGcfsConfig {
 
   /// Creates a new [GetClusterNodeConfigGcfsConfig].
   /// [enabled] Whether or not GCFS is enabled
-  GetClusterNodeConfigGcfsConfig({required this.enabled});
+  GetClusterNodeConfigGcfsConfig({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory GetClusterNodeConfigGcfsConfig.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetClusterNodeConfigGcfsConfig {
     );
   }
 }
+

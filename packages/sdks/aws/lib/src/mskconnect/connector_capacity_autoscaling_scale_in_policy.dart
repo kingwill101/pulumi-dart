@@ -8,7 +8,9 @@ class ConnectorCapacityAutoscalingScaleInPolicy {
 
   /// Creates a new [ConnectorCapacityAutoscalingScaleInPolicy].
   /// [cpuUtilizationPercentage] Specifies the CPU utilization percentage threshold at which you want connector scale in to be triggered.
-  ConnectorCapacityAutoscalingScaleInPolicy({this.cpuUtilizationPercentage});
+  ConnectorCapacityAutoscalingScaleInPolicy({
+    this.cpuUtilizationPercentage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -16,15 +18,10 @@ class ConnectorCapacityAutoscalingScaleInPolicy {
     };
   }
 
-  factory ConnectorCapacityAutoscalingScaleInPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorCapacityAutoscalingScaleInPolicy.fromMap(Map<String, dynamic> map) {
     return ConnectorCapacityAutoscalingScaleInPolicy(
-      cpuUtilizationPercentage: (() {
-        final guardedValue = map['cpuUtilizationPercentage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      cpuUtilizationPercentage: (() { final guardedValue = map['cpuUtilizationPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

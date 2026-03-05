@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRuleAnomalyBuiltInSingleSelectObservation {
   /// The description of the threshold observation.
   final pulumi.Input<String>? description;
-
   /// The Name of the built-in Anomaly Alert Rule.
   final pulumi.Input<String>? name;
-
   /// A list of supported values of the single select observation.
   final pulumi.Input<List<String>>? supportedValues;
-
   /// The value of the threshold observation.
   final pulumi.Input<String>? value;
 
@@ -36,30 +33,13 @@ class AlertRuleAnomalyBuiltInSingleSelectObservation {
     };
   }
 
-  factory AlertRuleAnomalyBuiltInSingleSelectObservation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertRuleAnomalyBuiltInSingleSelectObservation.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyBuiltInSingleSelectObservation(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      supportedValues: (() {
-        final guardedValue = map['supportedValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      supportedValues: (() { final guardedValue = map['supportedValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

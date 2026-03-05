@@ -206,49 +206,34 @@ import 'receipt_rule_state.dart';
 class ReceiptRule extends pulumi.CustomResource {
   /// A list of Add Header Action blocks. Documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> addHeaderActions;
-
   /// The name of the rule to place this rule after
   late final pulumi.Output<String?> after;
-
   /// The SES receipt rule ARN.
   late final pulumi.Output<String> arn;
-
   /// A list of Bounce Action blocks. Documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> bounceActions;
-
   /// If true, the rule will be enabled
   late final pulumi.Output<bool?> enabled;
-
   /// A list of Lambda Action blocks. Documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> lambdaActions;
-
   /// The name of the rule
   late final pulumi.Output<String> name;
-
   /// A list of email addresses
   late final pulumi.Output<List<String>?> recipients;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The name of the rule set
   late final pulumi.Output<String> ruleSetName;
-
   /// A list of S3 Action blocks. Documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> s3Actions;
-
   /// If true, incoming emails will be scanned for spam and viruses
   late final pulumi.Output<bool?> scanEnabled;
-
   /// A list of SNS Action blocks. Documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> snsActions;
-
   /// A list of Stop Action blocks. Documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> stopActions;
-
   /// `Require` or `Optional`
   late final pulumi.Output<String> tlsPolicy;
-
   /// A list of WorkMail Action blocks. Documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> workmailActions;
 
@@ -261,23 +246,17 @@ class ReceiptRule extends pulumi.CustomResource {
     ReceiptRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ses/receiptRule:ReceiptRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    addHeaderActions = registerOutput<List<Map<String, dynamic>>?>(
-      'addHeaderActions',
-    );
+          'aws:ses/receiptRule:ReceiptRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    addHeaderActions = registerOutput<List<Map<String, dynamic>>?>('addHeaderActions');
     after = registerOutput<String?>('after');
     arn = registerOutput<String>('arn');
-    bounceActions = registerOutput<List<Map<String, dynamic>>?>(
-      'bounceActions',
-    );
+    bounceActions = registerOutput<List<Map<String, dynamic>>?>('bounceActions');
     enabled = registerOutput<bool?>('enabled');
-    lambdaActions = registerOutput<List<Map<String, dynamic>>?>(
-      'lambdaActions',
-    );
+    lambdaActions = registerOutput<List<Map<String, dynamic>>?>('lambdaActions');
     this.name = registerOutput<String>('name');
     recipients = registerOutput<List<String>?>('recipients');
     region = registerOutput<String>('region');
@@ -287,9 +266,7 @@ class ReceiptRule extends pulumi.CustomResource {
     snsActions = registerOutput<List<Map<String, dynamic>>?>('snsActions');
     stopActions = registerOutput<List<Map<String, dynamic>>?>('stopActions');
     tlsPolicy = registerOutput<String>('tlsPolicy');
-    workmailActions = registerOutput<List<Map<String, dynamic>>?>(
-      'workmailActions',
-    );
+    workmailActions = registerOutput<List<Map<String, dynamic>>?>('workmailActions');
   }
 
   /// Gets an existing [ReceiptRule] resource's state with the given [name] and [id].
@@ -310,23 +287,17 @@ class ReceiptRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ses/receiptRule:ReceiptRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    addHeaderActions = registerOutput<List<Map<String, dynamic>>?>(
-      'addHeaderActions',
-    );
+          'aws:ses/receiptRule:ReceiptRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    addHeaderActions = registerOutput<List<Map<String, dynamic>>?>('addHeaderActions');
     after = registerOutput<String?>('after');
     arn = registerOutput<String>('arn');
-    bounceActions = registerOutput<List<Map<String, dynamic>>?>(
-      'bounceActions',
-    );
+    bounceActions = registerOutput<List<Map<String, dynamic>>?>('bounceActions');
     enabled = registerOutput<bool?>('enabled');
-    lambdaActions = registerOutput<List<Map<String, dynamic>>?>(
-      'lambdaActions',
-    );
+    lambdaActions = registerOutput<List<Map<String, dynamic>>?>('lambdaActions');
     this.name = registerOutput<String>('name');
     recipients = registerOutput<List<String>?>('recipients');
     region = registerOutput<String>('region');
@@ -336,8 +307,6 @@ class ReceiptRule extends pulumi.CustomResource {
     snsActions = registerOutput<List<Map<String, dynamic>>?>('snsActions');
     stopActions = registerOutput<List<Map<String, dynamic>>?>('stopActions');
     tlsPolicy = registerOutput<String>('tlsPolicy');
-    workmailActions = registerOutput<List<Map<String, dynamic>>?>(
-      'workmailActions',
-    );
+    workmailActions = registerOutput<List<Map<String, dynamic>>?>('workmailActions');
   }
 }

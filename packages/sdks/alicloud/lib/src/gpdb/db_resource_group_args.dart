@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DbResourceGroupArgs {
   /// The instance ID.&gt; You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
   final pulumi.Input<String> dbInstanceId;
-
   /// Resource group configuration.
   final pulumi.Input<String> resourceGroupConfig;
-
   /// Resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// Role List
   final pulumi.Input<List<String>>? roleLists;
 
@@ -43,17 +40,10 @@ class DbResourceGroupArgs {
   factory DbResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return DbResourceGroupArgs(
       dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
-      resourceGroupConfig: pulumi.Input.fromValue(
-        map['resourceGroupConfig'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      roleLists: (() {
-        final guardedValue = map['roleLists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      resourceGroupConfig: pulumi.Input.fromValue(map['resourceGroupConfig'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      roleLists: (() { final guardedValue = map['roleLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -8,10 +8,14 @@ class ControlRedirectAction {
 
   /// Creates a new [ControlRedirectAction].
   /// [redirectUri] The URI to redirect to.
-  ControlRedirectAction({required this.redirectUri});
+  ControlRedirectAction({
+    required this.redirectUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'redirectUri': redirectUri};
+    return <String, dynamic>{
+      'redirectUri': redirectUri,
+    };
   }
 
   factory ControlRedirectAction.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class ControlRedirectAction {
     );
   }
 }
+

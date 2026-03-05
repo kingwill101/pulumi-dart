@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Error {
   /// The error code.
   final pulumi.Input<String>? code;
-
   /// The error ID.
   final pulumi.Input<String>? id;
-
   /// The detailed error message.
   final pulumi.Input<String>? message;
-
   /// The error possible cause.
   final pulumi.Input<String>? possibleCause;
-
   /// Gets description of the checkpoint.
   final pulumi.Input<String>? recommendedAction;
-
   /// The account ID used to login.
   final pulumi.Input<String>? runAsAccountId;
-
   /// Gets description of the severity.
   final pulumi.Input<String>? severity;
-
   /// The summarized error message.
   final pulumi.Input<String>? summaryMessage;
-
   /// Time when this error was last updated.
   final pulumi.Input<String>? updatedTimeStamp;
 
@@ -69,51 +61,16 @@ class Error {
 
   factory Error.fromMap(Map<String, dynamic> map) {
     return Error(
-      code: (() {
-        final guardedValue = map['code'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      possibleCause: (() {
-        final guardedValue = map['possibleCause'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recommendedAction: (() {
-        final guardedValue = map['recommendedAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      runAsAccountId: (() {
-        final guardedValue = map['runAsAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      severity: (() {
-        final guardedValue = map['severity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      summaryMessage: (() {
-        final guardedValue = map['summaryMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updatedTimeStamp: (() {
-        final guardedValue = map['updatedTimeStamp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      possibleCause: (() { final guardedValue = map['possibleCause']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recommendedAction: (() { final guardedValue = map['recommendedAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      runAsAccountId: (() { final guardedValue = map['runAsAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      summaryMessage: (() { final guardedValue = map['summaryMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updatedTimeStamp: (() { final guardedValue = map['updatedTimeStamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

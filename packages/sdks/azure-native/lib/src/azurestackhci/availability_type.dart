@@ -16,3 +16,4 @@ enum AvailabilityType {
     throw ArgumentError('Unknown AvailabilityType value: $value');
   }
 }
+

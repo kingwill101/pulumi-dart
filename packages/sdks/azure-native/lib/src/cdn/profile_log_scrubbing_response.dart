@@ -7,52 +7,29 @@ import 'profile_scrubbing_rules_response.dart';
 class ProfileLogScrubbingResponse {
   /// List of log scrubbing rules applied to the Azure Front Door profile logs.
   final pulumi.Input<List<ProfileScrubbingRulesResponse>>? scrubbingRules;
-
   /// State of the log scrubbing config. Default value is Enabled.
   final pulumi.Input<String>? state;
 
   /// Creates a new [ProfileLogScrubbingResponse].
   /// [scrubbingRules] List of log scrubbing rules applied to the Azure Front Door profile logs.
   /// [state] State of the log scrubbing config. Default value is Enabled.
-  ProfileLogScrubbingResponse({this.scrubbingRules, this.state});
+  ProfileLogScrubbingResponse({
+    this.scrubbingRules,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'scrubbingRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ProfileScrubbingRulesResponse>,
-            List<Map<String, dynamic>>
-          >(
-            scrubbingRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ProfileScrubbingRulesResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'scrubbingRules': ?pulumi.Input.mapOptionalInputValue<List<ProfileScrubbingRulesResponse>, List<Map<String, dynamic>>>(scrubbingRules, (value) => pulumi.Input.encodeList<ProfileScrubbingRulesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': ?state,
     };
   }
 
   factory ProfileLogScrubbingResponse.fromMap(Map<String, dynamic> map) {
     return ProfileLogScrubbingResponse(
-      scrubbingRules: (() {
-        final guardedValue = map['scrubbingRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ProfileScrubbingRulesResponse>(
-            guardedValue,
-            (value) => ProfileScrubbingRulesResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      scrubbingRules: (() { final guardedValue = map['scrubbingRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ProfileScrubbingRulesResponse>(guardedValue, (value) => ProfileScrubbingRulesResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

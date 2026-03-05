@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceServiceRegistry {
   /// Name of the container to associate with the load balancer.
   final pulumi.Input<String> containerName;
-
   /// Port on the container to associate with the load balancer.
   final pulumi.Input<int> containerPort;
-
   /// Port value for service discovery
   final pulumi.Input<int> port;
-
   /// ARN of the service registry
   final pulumi.Input<String> registryArn;
 
@@ -45,3 +42,4 @@ class GetServiceServiceRegistry {
     );
   }
 }
+

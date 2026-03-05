@@ -11,8 +11,7 @@ enum AfdCustomizedCipherSuiteForTls13 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AfdCustomizedCipherSuiteForTls13 value: $value',
-    );
+    throw ArgumentError('Unknown AfdCustomizedCipherSuiteForTls13 value: $value');
   }
 }
+

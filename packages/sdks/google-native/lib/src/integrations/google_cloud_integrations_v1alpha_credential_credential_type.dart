@@ -16,17 +16,13 @@ enum GoogleCloudIntegrationsV1alphaCredentialCredentialType {
   const GoogleCloudIntegrationsV1alphaCredentialCredentialType(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudIntegrationsV1alphaCredentialCredentialType fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudIntegrationsV1alphaCredentialCredentialType.values) {
+  static GoogleCloudIntegrationsV1alphaCredentialCredentialType fromValue(String value) {
+    for (final item in GoogleCloudIntegrationsV1alphaCredentialCredentialType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudIntegrationsV1alphaCredentialCredentialType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaCredentialCredentialType value: $value');
   }
 }
+

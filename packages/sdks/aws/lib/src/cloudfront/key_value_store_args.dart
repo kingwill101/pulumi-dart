@@ -10,7 +10,6 @@ import 'key_value_store_timeouts.dart';
 class KeyValueStoreArgs {
   /// Comment.
   final pulumi.Input<String>? comment;
-
   /// Unique name for your CloudFront KeyValueStore.
   ///
   /// The following arguments are optional:
@@ -21,41 +20,26 @@ class KeyValueStoreArgs {
   /// [comment] Comment.
   /// [name] Unique name for your CloudFront KeyValueStore.
   /// [timeouts] Optional.
-  KeyValueStoreArgs({this.comment, this.name, this.timeouts});
+  KeyValueStoreArgs({
+    this.comment,
+    this.name,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'comment': ?comment,
       'name': ?name,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            KeyValueStoreTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<KeyValueStoreTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory KeyValueStoreArgs.fromMap(Map<String, dynamic> map) {
     return KeyValueStoreArgs(
-      comment: (() {
-        final guardedValue = map['comment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KeyValueStoreTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyValueStoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

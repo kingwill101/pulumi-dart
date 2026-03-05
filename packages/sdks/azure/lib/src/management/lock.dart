@@ -488,13 +488,10 @@ class Lock extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** `CanNotDelete` means authorized users are able to read and modify the resources, but not delete. `ReadOnly` means authorized users can only read from a resource, but they can't modify or delete it.
   late final pulumi.Output<String> lockLevel;
-
   /// Specifies the name of the Management Lock. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies some notes about the lock. Maximum of 512 characters. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> notes;
-
   /// Specifies the scope at which the Management Lock should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scope;
 
@@ -502,13 +499,16 @@ class Lock extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Lock]. {@macro pulumi_management_lock_lock_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Lock(String name, {LockArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:management/lock:Lock',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Lock(
+    String name, {
+    LockArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:management/lock:Lock',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     lockLevel = registerOutput<String>('lockLevel');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');
@@ -516,7 +516,11 @@ class Lock extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Lock] resource's state with the given [name] and [id].
-  static Lock get(String name, pulumi.Input<String> id, {LockState? state}) {
+  static Lock get(
+    String name,
+    pulumi.Input<String> id, {
+    LockState? state,
+  }) {
     return Lock._get(
       name,
       state: state?.toMap(),
@@ -529,11 +533,11 @@ class Lock extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:management/lock:Lock',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:management/lock:Lock',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     lockLevel = registerOutput<String>('lockLevel');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');

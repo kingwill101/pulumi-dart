@@ -9,7 +9,9 @@ class DataflowEndpointLocalStorage {
 
   /// Creates a new [DataflowEndpointLocalStorage].
   /// [persistentVolumeClaimRef] Persistent volume claim name.
-  DataflowEndpointLocalStorage({required this.persistentVolumeClaimRef});
+  DataflowEndpointLocalStorage({
+    required this.persistentVolumeClaimRef,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,9 +21,8 @@ class DataflowEndpointLocalStorage {
 
   factory DataflowEndpointLocalStorage.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointLocalStorage(
-      persistentVolumeClaimRef: pulumi.Input.fromValue(
-        map['persistentVolumeClaimRef'] as String,
-      ),
+      persistentVolumeClaimRef: pulumi.Input.fromValue(map['persistentVolumeClaimRef'] as String),
     );
   }
 }
+

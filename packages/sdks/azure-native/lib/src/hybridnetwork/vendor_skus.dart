@@ -590,38 +590,26 @@ import 'vendor_skus_args.dart';
 class VendorSkus extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The sku deployment mode.
   late final pulumi.Output<String?> deploymentMode;
-
   /// The parameters for the managed application to be supplied by the vendor.
   late final pulumi.Output<dynamic> managedApplicationParameters;
-
   /// The template for the managed application deployment.
   late final pulumi.Output<dynamic> managedApplicationTemplate;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The template definition of the network function.
-  late final pulumi.Output<NetworkFunctionTemplateResponse?>
-  networkFunctionTemplate;
-
+  late final pulumi.Output<NetworkFunctionTemplateResponse?> networkFunctionTemplate;
   /// The network function type.
   late final pulumi.Output<String?> networkFunctionType;
-
   /// Indicates if the vendor sku is in preview mode.
   late final pulumi.Output<bool?> preview;
-
   /// The provisioning state of the vendor sku sub resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The sku type.
   late final pulumi.Output<String?> skuType;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -634,44 +622,22 @@ class VendorSkus extends pulumi.CustomResource {
     VendorSkusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:hybridnetwork:VendorSkus',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:hybridnetwork:VendorSkus',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     deploymentMode = registerOutput<String?>('deploymentMode');
-    managedApplicationParameters = registerOutput<dynamic>(
-      'managedApplicationParameters',
-    );
-    managedApplicationTemplate = registerOutput<dynamic>(
-      'managedApplicationTemplate',
-    );
+    managedApplicationParameters = registerOutput<dynamic>('managedApplicationParameters');
+    managedApplicationTemplate = registerOutput<dynamic>('managedApplicationTemplate');
     this.name = registerOutput<String>('name');
-    networkFunctionTemplate = registerOutput<NetworkFunctionTemplateResponse?>(
-      'networkFunctionTemplate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkFunctionTemplateResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkFunctionTemplate = registerOutput<NetworkFunctionTemplateResponse?>('networkFunctionTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkFunctionTemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     networkFunctionType = registerOutput<String?>('networkFunctionType');
     preview = registerOutput<bool?>('preview');
     provisioningState = registerOutput<String>('provisioningState');
     skuType = registerOutput<String?>('skuType');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -6,18 +6,12 @@ import 'object_lambda_access_point_configuration_transformation_configuration.da
 class ObjectLambdaAccessPointConfiguration {
   /// Allowed features. Valid values: `GetObject-Range`, `GetObject-PartNumber`.
   final pulumi.Input<List<String>>? allowedFeatures;
-
   /// Whether or not the CloudWatch metrics configuration is enabled.
   final pulumi.Input<bool>? cloudWatchMetricsEnabled;
-
   /// Standard access point associated with the Object Lambda Access Point.
   final pulumi.Input<String> supportingAccessPoint;
-
   /// List of transformation configurations for the Object Lambda Access Point. See Transformation Configuration below for more details.
-  final pulumi.Input<
-    List<ObjectLambdaAccessPointConfigurationTransformationConfiguration>
-  >
-  transformationConfigurations;
+  final pulumi.Input<List<ObjectLambdaAccessPointConfigurationTransformationConfiguration>> transformationConfigurations;
 
   /// Creates a new [ObjectLambdaAccessPointConfiguration].
   /// [allowedFeatures] Allowed features. Valid values: `GetObject-Range`, `GetObject-PartNumber`.
@@ -36,51 +30,17 @@ class ObjectLambdaAccessPointConfiguration {
       'allowedFeatures': ?allowedFeatures,
       'cloudWatchMetricsEnabled': ?cloudWatchMetricsEnabled,
       'supportingAccessPoint': supportingAccessPoint,
-      'transformationConfigurations':
-          pulumi.Input.mapInputValue<
-            List<
-              ObjectLambdaAccessPointConfigurationTransformationConfiguration
-            >,
-            List<Map<String, dynamic>>
-          >(
-            transformationConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ObjectLambdaAccessPointConfigurationTransformationConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'transformationConfigurations': pulumi.Input.mapInputValue<List<ObjectLambdaAccessPointConfigurationTransformationConfiguration>, List<Map<String, dynamic>>>(transformationConfigurations, (value) => pulumi.Input.encodeList<ObjectLambdaAccessPointConfigurationTransformationConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ObjectLambdaAccessPointConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ObjectLambdaAccessPointConfiguration.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointConfiguration(
-      allowedFeatures: (() {
-        final guardedValue = map['allowedFeatures'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      cloudWatchMetricsEnabled: (() {
-        final guardedValue = map['cloudWatchMetricsEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      supportingAccessPoint: pulumi.Input.fromValue(
-        map['supportingAccessPoint'] as String,
-      ),
-      transformationConfigurations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          ObjectLambdaAccessPointConfigurationTransformationConfiguration
-        >(
-          map['transformationConfigurations']!,
-          (value) =>
-              ObjectLambdaAccessPointConfigurationTransformationConfiguration.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      allowedFeatures: (() { final guardedValue = map['allowedFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      cloudWatchMetricsEnabled: (() { final guardedValue = map['cloudWatchMetricsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      supportingAccessPoint: pulumi.Input.fromValue(map['supportingAccessPoint'] as String),
+      transformationConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<ObjectLambdaAccessPointConfigurationTransformationConfiguration>(map['transformationConfigurations']!, (value) => ObjectLambdaAccessPointConfigurationTransformationConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

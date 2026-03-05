@@ -9,28 +9,13 @@ import 'google_cloud_aiplatform_v1beta1_model_monitoring_objective_config_traini
 /// The objective configuration for model monitoring, including the information needed to detect anomalies for one particular model.
 class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse {
   /// The config for integrating with Vertex Explainable AI.
-  final pulumi.Input<
-    GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponse
-  >
-  explanationConfig;
-
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponse> explanationConfig;
   /// The config for drift of prediction data.
-  final pulumi.Input<
-    GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse
-  >
-  predictionDriftDetectionConfig;
-
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse> predictionDriftDetectionConfig;
   /// Training dataset for models. This field has to be set only if TrainingPredictionSkewDetectionConfig is specified.
-  final pulumi.Input<
-    GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse
-  >
-  trainingDataset;
-
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse> trainingDataset;
   /// The config for skew between training data and prediction data.
-  final pulumi.Input<
-    GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse
-  >
-  trainingPredictionSkewDetectionConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse> trainingPredictionSkewDetectionConfig;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse].
   /// [explanationConfig] The config for integrating with Vertex Explainable AI.
@@ -46,55 +31,20 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'explanationConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponse,
-            Map<String, dynamic>
-          >(explanationConfig, (value) => value.toMap()),
-      'predictionDriftDetectionConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse,
-            Map<String, dynamic>
-          >(predictionDriftDetectionConfig, (value) => value.toMap()),
-      'trainingDataset':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse,
-            Map<String, dynamic>
-          >(trainingDataset, (value) => value.toMap()),
-      'trainingPredictionSkewDetectionConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse,
-            Map<String, dynamic>
-          >(trainingPredictionSkewDetectionConfig, (value) => value.toMap()),
+      'explanationConfig': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponse, Map<String, dynamic>>(explanationConfig, (value) => value.toMap()),
+      'predictionDriftDetectionConfig': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse, Map<String, dynamic>>(predictionDriftDetectionConfig, (value) => value.toMap()),
+      'trainingDataset': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse, Map<String, dynamic>>(trainingDataset, (value) => value.toMap()),
+      'trainingPredictionSkewDetectionConfig': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse, Map<String, dynamic>>(trainingPredictionSkewDetectionConfig, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse(
-      explanationConfig: pulumi.Input.fromValue(
-        GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponse.fromMap(
-          (map['explanationConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      predictionDriftDetectionConfig: pulumi.Input.fromValue(
-        GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse.fromMap(
-          (map['predictionDriftDetectionConfig']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
-      trainingDataset: pulumi.Input.fromValue(
-        GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse.fromMap(
-          (map['trainingDataset']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      trainingPredictionSkewDetectionConfig: pulumi.Input.fromValue(
-        GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse.fromMap(
-          (map['trainingPredictionSkewDetectionConfig']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
+      explanationConfig: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponse.fromMap((map['explanationConfig']! as Map).cast<String, dynamic>())),
+      predictionDriftDetectionConfig: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse.fromMap((map['predictionDriftDetectionConfig']! as Map).cast<String, dynamic>())),
+      trainingDataset: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse.fromMap((map['trainingDataset']! as Map).cast<String, dynamic>())),
+      trainingPredictionSkewDetectionConfig: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse.fromMap((map['trainingPredictionSkewDetectionConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

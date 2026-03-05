@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ValidationCheckResultResponse {
   /// The category of the validation.
   final pulumi.Input<String> category;
-
   /// The description of the validation check.
   final pulumi.Input<String> description;
-
   /// Detailed failure information, which might be unformatted.
   final pulumi.Input<String> details;
-
   /// A human-readable message of the check failure.
   final pulumi.Input<String> reason;
-
   /// The validation check state.
   final pulumi.Input<String> state;
 
@@ -53,3 +49,4 @@ class ValidationCheckResultResponse {
     );
   }
 }
+

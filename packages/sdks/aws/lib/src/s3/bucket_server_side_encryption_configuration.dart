@@ -9,27 +9,20 @@ class BucketServerSideEncryptionConfiguration {
 
   /// Creates a new [BucketServerSideEncryptionConfiguration].
   /// [rule] Single object for server-side encryption by default configuration. (documented below)
-  BucketServerSideEncryptionConfiguration({required this.rule});
+  BucketServerSideEncryptionConfiguration({
+    required this.rule,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rule':
-          pulumi.Input.mapInputValue<
-            BucketServerSideEncryptionConfigurationRule,
-            Map<String, dynamic>
-          >(rule, (value) => value.toMap()),
+      'rule': pulumi.Input.mapInputValue<BucketServerSideEncryptionConfigurationRule, Map<String, dynamic>>(rule, (value) => value.toMap()),
     };
   }
 
-  factory BucketServerSideEncryptionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketServerSideEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketServerSideEncryptionConfiguration(
-      rule: pulumi.Input.fromValue(
-        BucketServerSideEncryptionConfigurationRule.fromMap(
-          (map['rule']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      rule: pulumi.Input.fromValue(BucketServerSideEncryptionConfigurationRule.fromMap((map['rule']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

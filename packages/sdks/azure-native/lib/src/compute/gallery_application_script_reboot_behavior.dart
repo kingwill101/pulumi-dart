@@ -12,8 +12,7 @@ enum GalleryApplicationScriptRebootBehavior {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GalleryApplicationScriptRebootBehavior value: $value',
-    );
+    throw ArgumentError('Unknown GalleryApplicationScriptRebootBehavior value: $value');
   }
 }
+

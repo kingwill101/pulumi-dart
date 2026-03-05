@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTriggerGithubPush {
   /// Regex of branches to match.  Specify only one of branch or tag.
   final pulumi.Input<String> branch;
-
   /// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
   final pulumi.Input<bool> invertRegex;
-
   /// Regex of tags to match.  Specify only one of branch or tag.
   final pulumi.Input<String> tag;
 
@@ -38,3 +36,4 @@ class GetTriggerGithubPush {
     );
   }
 }
+

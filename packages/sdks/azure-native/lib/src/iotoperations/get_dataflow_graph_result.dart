@@ -8,22 +8,16 @@ import 'system_data_response.dart';
 class GetDataflowGraphResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Edge location of the resource.
   final ExtendedLocationResponse? extendedLocation;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The resource-specific properties for this resource.
   final DataflowGraphPropertiesResponse properties;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -60,22 +54,13 @@ class GetDataflowGraphResult {
   factory GetDataflowGraphResult.fromMap(Map<String, dynamic> map) {
     return GetDataflowGraphResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: DataflowGraphPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      properties: DataflowGraphPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

@@ -164,28 +164,20 @@ import 'certificate_args.dart';
 class Certificate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets the creation time.
   late final pulumi.Output<String> creationTime;
-
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
-
   /// Gets the expiry time of the certificate.
   late final pulumi.Output<String> expiryTime;
-
   /// Gets the is exportable flag of the certificate.
   late final pulumi.Output<bool> isExportable;
-
   /// Gets the last modified time.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Gets the thumbprint of the certificate.
   late final pulumi.Output<String> thumbprint;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -198,11 +190,11 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:automation:Certificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:automation:Certificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String>('creationTime');
     description = registerOutput<String?>('description');

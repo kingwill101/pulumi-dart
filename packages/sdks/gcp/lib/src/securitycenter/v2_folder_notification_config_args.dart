@@ -10,20 +10,15 @@ import 'v2_folder_notification_config_streaming_config.dart';
 class V2FolderNotificationConfigArgs {
   /// This must be unique within the organization.
   final pulumi.Input<String> configId;
-
   /// The description of the notification config (max of 1024 characters).
   final pulumi.Input<String>? description;
-
   /// Numerical ID of the parent folder.
   final pulumi.Input<String> folder;
-
   /// Location ID of the parent organization. If not provided, 'global' will be used as the default location.
   final pulumi.Input<String>? location;
-
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[project_id]/topics/[topic]".
   final pulumi.Input<String> pubsubTopic;
-
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
   final pulumi.Input<V2FolderNotificationConfigStreamingConfig> streamingConfig;
@@ -51,34 +46,19 @@ class V2FolderNotificationConfigArgs {
       'folder': folder,
       'location': ?location,
       'pubsubTopic': pubsubTopic,
-      'streamingConfig':
-          pulumi.Input.mapInputValue<
-            V2FolderNotificationConfigStreamingConfig,
-            Map<String, dynamic>
-          >(streamingConfig, (value) => value.toMap()),
+      'streamingConfig': pulumi.Input.mapInputValue<V2FolderNotificationConfigStreamingConfig, Map<String, dynamic>>(streamingConfig, (value) => value.toMap()),
     };
   }
 
   factory V2FolderNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2FolderNotificationConfigArgs(
       configId: pulumi.Input.fromValue(map['configId'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       folder: pulumi.Input.fromValue(map['folder'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pubsubTopic: pulumi.Input.fromValue(map['pubsubTopic'] as String),
-      streamingConfig: pulumi.Input.fromValue(
-        V2FolderNotificationConfigStreamingConfig.fromMap(
-          (map['streamingConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      streamingConfig: pulumi.Input.fromValue(V2FolderNotificationConfigStreamingConfig.fromMap((map['streamingConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

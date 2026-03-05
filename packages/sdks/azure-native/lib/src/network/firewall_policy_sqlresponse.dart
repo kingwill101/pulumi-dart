@@ -9,19 +9,20 @@ class FirewallPolicySQLResponse {
 
   /// Creates a new [FirewallPolicySQLResponse].
   /// [allowSqlRedirect] A flag to indicate if SQL Redirect traffic filtering is enabled. Turning on the flag requires no rule using port 11000-11999.
-  FirewallPolicySQLResponse({this.allowSqlRedirect});
+  FirewallPolicySQLResponse({
+    this.allowSqlRedirect,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowSqlRedirect': ?allowSqlRedirect};
+    return <String, dynamic>{
+      'allowSqlRedirect': ?allowSqlRedirect,
+    };
   }
 
   factory FirewallPolicySQLResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicySQLResponse(
-      allowSqlRedirect: (() {
-        final guardedValue = map['allowSqlRedirect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      allowSqlRedirect: (() { final guardedValue = map['allowSqlRedirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

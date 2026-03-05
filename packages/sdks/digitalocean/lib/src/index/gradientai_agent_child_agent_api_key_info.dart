@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GradientaiAgentChildAgentApiKeyInfo {
   /// API Key value
   final pulumi.Input<String>? createdAt;
-
   /// Created By user ID for the API Key
   final pulumi.Input<String>? createdBy;
-
   /// Deleted At timestamp for the API Key
   final pulumi.Input<String>? deletedAt;
-
   /// Name of the API Key
   final pulumi.Input<String>? name;
-
   /// Updated At timestamp for the API Key
   final pulumi.Input<String>? secretKey;
-
   /// API Key value
   final pulumi.Input<String>? uuid;
 
@@ -48,40 +43,15 @@ class GradientaiAgentChildAgentApiKeyInfo {
     };
   }
 
-  factory GradientaiAgentChildAgentApiKeyInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GradientaiAgentChildAgentApiKeyInfo.fromMap(Map<String, dynamic> map) {
     return GradientaiAgentChildAgentApiKeyInfo(
-      createdAt: (() {
-        final guardedValue = map['createdAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createdBy: (() {
-        final guardedValue = map['createdBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deletedAt: (() {
-        final guardedValue = map['deletedAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretKey: (() {
-        final guardedValue = map['secretKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uuid: (() {
-        final guardedValue = map['uuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletedAt: (() { final guardedValue = map['deletedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretKey: (() { final guardedValue = map['secretKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

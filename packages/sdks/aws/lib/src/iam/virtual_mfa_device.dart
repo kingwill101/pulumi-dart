@@ -108,31 +108,22 @@ import 'virtual_mfa_device_state.dart';
 class VirtualMfaDevice extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN), which is also the serial number, of the virtual MFA device.
   late final pulumi.Output<String> arn;
-
   /// Base32 seed defined as specified in [RFC3548](https://tools.ietf.org/html/rfc3548.txt). The `base_32_string_seed` is base64-encoded.
   late final pulumi.Output<String> base32StringSeed;
-
   /// Date and time when the virtual MFA device was enabled.
   late final pulumi.Output<String> enableDate;
-
   /// Path for the virtual MFA device.
   late final pulumi.Output<String?> path;
-
   /// QR code PNG image that encodes `otpauth://totp/$virtualMFADeviceName@$AccountName?secret=$Base32String` where `$virtualMFADeviceName` is one of the create call arguments. `AccountName` is the user name if set (otherwise, the account ID), and `Base32String` is the seed in base32 format.
   late final pulumi.Output<String> qrCodePng;
-
   /// Serial number associated with the virtual MFA device.
   late final pulumi.Output<String> serialNumber;
-
   /// Map of resource tags for the virtual mfa device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Name of the IAM user associated with this virtual MFA device.
   late final pulumi.Output<String> userName;
-
   /// Name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
   late final pulumi.Output<String> virtualMfaDeviceName;
 
@@ -145,11 +136,11 @@ class VirtualMfaDevice extends pulumi.CustomResource {
     VirtualMfaDeviceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/virtualMfaDevice:VirtualMfaDevice',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/virtualMfaDevice:VirtualMfaDevice',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     base32StringSeed = registerOutput<String>('base32StringSeed');
     enableDate = registerOutput<String>('enableDate');
@@ -180,11 +171,11 @@ class VirtualMfaDevice extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/virtualMfaDevice:VirtualMfaDevice',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/virtualMfaDevice:VirtualMfaDevice',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     base32StringSeed = registerOutput<String>('base32StringSeed');
     enableDate = registerOutput<String>('enableDate');

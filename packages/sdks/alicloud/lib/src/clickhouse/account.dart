@@ -358,37 +358,26 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
   late final pulumi.Output<String?> accountDescription;
-
   /// Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
   late final pulumi.Output<String> accountName;
-
   /// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
   late final pulumi.Output<String> accountPassword;
-
   /// The list of databases to which you want to grant permissions. Separate databases with commas (,).
   late final pulumi.Output<String> allowDatabases;
-
   /// The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
   late final pulumi.Output<String> allowDictionaries;
-
   /// The db cluster id.
   late final pulumi.Output<String> dbClusterId;
-
   /// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
   late final pulumi.Output<bool> ddlAuthority;
-
   /// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
   late final pulumi.Output<String> dmlAuthority;
-
   /// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
   late final pulumi.Output<String> status;
-
   /// The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
   late final pulumi.Output<String> totalDatabases;
-
   /// The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
   late final pulumi.Output<String> totalDictionaries;
-
   /// The type of the database account. Valid values: `Normal` or `Super`.
   late final pulumi.Output<String?> type;
 
@@ -401,11 +390,11 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:clickhouse/account:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:clickhouse/account:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountDescription = registerOutput<String?>('accountDescription');
     accountName = registerOutput<String>('accountName');
     accountPassword = registerOutput<String>('accountPassword');
@@ -438,11 +427,11 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:clickhouse/account:Account',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:clickhouse/account:Account',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountDescription = registerOutput<String?>('accountDescription');
     accountName = registerOutput<String>('accountName');
     accountPassword = registerOutput<String>('accountPassword');

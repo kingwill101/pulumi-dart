@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IRuleArgs {
   /// Body of the iRule
   final pulumi.Input<String> irule;
-
   /// Name of the iRule
   final pulumi.Input<String> name;
 
   /// Creates a new [IRuleArgs].
   /// [irule] Body of the iRule
   /// [name] Name of the iRule
-  IRuleArgs({required this.irule, required this.name});
+  IRuleArgs({
+    required this.irule,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'irule': irule, 'name': name};
+    return <String, dynamic>{
+      'irule': irule,
+      'name': name,
+    };
   }
 
   factory IRuleArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class IRuleArgs {
     );
   }
 }
+

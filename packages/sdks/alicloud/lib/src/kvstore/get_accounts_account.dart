@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountsAccount {
   /// The name of the account.
   final pulumi.Input<String> accountName;
-
   /// The privilege of account access database.
   final pulumi.Input<String> accountPrivilege;
-
   /// Privilege type of account.
   final pulumi.Input<String> accountType;
-
   /// The description of account.
   final pulumi.Input<String> description;
-
   /// The ID of the Account.
   final pulumi.Input<String> id;
-
   /// The Id of instance in which account belongs.
   final pulumi.Input<String> instanceId;
-
   /// The status of account.
   final pulumi.Input<String> status;
 
@@ -57,9 +51,7 @@ class GetAccountsAccount {
   factory GetAccountsAccount.fromMap(Map<String, dynamic> map) {
     return GetAccountsAccount(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      accountPrivilege: pulumi.Input.fromValue(
-        map['accountPrivilege'] as String,
-      ),
+      accountPrivilege: pulumi.Input.fromValue(map['accountPrivilege'] as String),
       accountType: pulumi.Input.fromValue(map['accountType'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -68,3 +60,4 @@ class GetAccountsAccount {
     );
   }
 }
+

@@ -9,12 +9,10 @@ import 'claim_source_patch.dart';
 class PodResourceClaimPatch {
   /// Name uniquely identifies this resource claim inside the pod. This must be a DNS_LABEL.
   final pulumi.Input<String>? name;
-
   /// ResourceClaimName is the name of a ResourceClaim object in the same namespace as this pod.
   ///
   /// Exactly one of ResourceClaimName and ResourceClaimTemplateName must be set.
   final pulumi.Input<String>? resourceClaimName;
-
   /// ResourceClaimTemplateName is the name of a ResourceClaimTemplate object in the same namespace as this pod.
   ///
   /// The template will be used to create a new ResourceClaim, which will be bound to this pod. When this pod is deleted, the ResourceClaim will also be deleted. The pod name and resource name, along with a generated component, will be used to form a unique name for the ResourceClaim, which will be recorded in pod.status.resourceClaimStatuses.
@@ -23,7 +21,6 @@ class PodResourceClaimPatch {
   ///
   /// Exactly one of ResourceClaimName and ResourceClaimTemplateName must be set.
   final pulumi.Input<String>? resourceClaimTemplateName;
-
   /// Source describes where to find the ResourceClaim.
   final pulumi.Input<ClaimSourcePatch>? source;
 
@@ -44,40 +41,17 @@ class PodResourceClaimPatch {
       'name': ?name,
       'resourceClaimName': ?resourceClaimName,
       'resourceClaimTemplateName': ?resourceClaimTemplateName,
-      'source':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClaimSourcePatch,
-            Map<String, dynamic>
-          >(source, (value) => value.toMap()),
+      'source': ?pulumi.Input.mapOptionalInputValue<ClaimSourcePatch, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
   factory PodResourceClaimPatch.fromMap(Map<String, dynamic> map) {
     return PodResourceClaimPatch(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceClaimName: (() {
-        final guardedValue = map['resourceClaimName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceClaimTemplateName: (() {
-        final guardedValue = map['resourceClaimTemplateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClaimSourcePatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceClaimName: (() { final guardedValue = map['resourceClaimName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceClaimTemplateName: (() { final guardedValue = map['resourceClaimTemplateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClaimSourcePatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDirectoryRoleTemplatesRoleTemplate {
   /// The description of the directory role template.
   final pulumi.Input<String> description;
-
   /// The display name of the directory role template.
   final pulumi.Input<String> displayName;
-
   /// The object ID of the directory role template.
   final pulumi.Input<String> objectId;
 
@@ -30,9 +28,7 @@ class GetDirectoryRoleTemplatesRoleTemplate {
     };
   }
 
-  factory GetDirectoryRoleTemplatesRoleTemplate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDirectoryRoleTemplatesRoleTemplate.fromMap(Map<String, dynamic> map) {
     return GetDirectoryRoleTemplatesRoleTemplate(
       description: pulumi.Input.fromValue(map['description'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
@@ -40,3 +36,4 @@ class GetDirectoryRoleTemplatesRoleTemplate {
     );
   }
 }
+

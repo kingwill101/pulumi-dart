@@ -8,13 +8,10 @@ class SkypeChannel {
   /// The channel name
   /// Expected value is 'SkypeChannel'.
   final pulumi.Input<String> channelName;
-
   /// Entity Tag of the resource
   final pulumi.Input<String>? etag;
-
   /// Specifies the location of the resource.
   final pulumi.Input<String>? location;
-
   /// The set of properties specific to Skype channel resource
   final pulumi.Input<SkypeChannelProperties>? properties;
 
@@ -35,36 +32,17 @@ class SkypeChannel {
       'channelName': channelName,
       'etag': ?etag,
       'location': ?location,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            SkypeChannelProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<SkypeChannelProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory SkypeChannel.fromMap(Map<String, dynamic> map) {
     return SkypeChannel(
       channelName: pulumi.Input.fromValue(map['channelName'] as String),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SkypeChannelProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SkypeChannelProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

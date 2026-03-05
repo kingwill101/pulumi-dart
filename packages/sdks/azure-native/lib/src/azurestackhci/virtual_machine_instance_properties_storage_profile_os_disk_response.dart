@@ -7,11 +7,8 @@ import 'virtual_machine_instance_managed_disk_parameters_response.dart';
 class VirtualMachineInstancePropertiesStorageProfileOsDiskResponse {
   /// The Azure Resource ID for a Virtual Hard Disk.
   final pulumi.Input<String>? id;
-
   /// The managed disk parameters.
-  final pulumi.Input<VirtualMachineInstanceManagedDiskParametersResponse>?
-  managedDisk;
-
+  final pulumi.Input<VirtualMachineInstanceManagedDiskParametersResponse>? managedDisk;
   /// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: Windows, Linux.
   final pulumi.Input<String>? osType;
 
@@ -28,38 +25,17 @@ class VirtualMachineInstancePropertiesStorageProfileOsDiskResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'managedDisk':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualMachineInstanceManagedDiskParametersResponse,
-            Map<String, dynamic>
-          >(managedDisk, (value) => value.toMap()),
+      'managedDisk': ?pulumi.Input.mapOptionalInputValue<VirtualMachineInstanceManagedDiskParametersResponse, Map<String, dynamic>>(managedDisk, (value) => value.toMap()),
       'osType': ?osType,
     };
   }
 
-  factory VirtualMachineInstancePropertiesStorageProfileOsDiskResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachineInstancePropertiesStorageProfileOsDiskResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesStorageProfileOsDiskResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedDisk: (() {
-        final guardedValue = map['managedDisk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualMachineInstanceManagedDiskParametersResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      osType: (() {
-        final guardedValue = map['osType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedDisk: (() { final guardedValue = map['managedDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineInstanceManagedDiskParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

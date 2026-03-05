@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CatalogTableStorageDescriptorSchemaReferenceSchemaId {
   /// Name of the schema registry that contains the schema. Must be provided when `schema_name` is specified and conflicts with `schema_arn`.
   final pulumi.Input<String>? registryName;
-
   /// ARN of the schema. One of `schema_arn` or `schema_name` has to be provided.
   final pulumi.Input<String>? schemaArn;
-
   /// Name of the schema. One of `schema_arn` or `schema_name` has to be provided.
   final pulumi.Input<String>? schemaName;
 
@@ -30,25 +28,12 @@ class CatalogTableStorageDescriptorSchemaReferenceSchemaId {
     };
   }
 
-  factory CatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap(Map<String, dynamic> map) {
     return CatalogTableStorageDescriptorSchemaReferenceSchemaId(
-      registryName: (() {
-        final guardedValue = map['registryName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schemaArn: (() {
-        final guardedValue = map['schemaArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schemaName: (() {
-        final guardedValue = map['schemaName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      registryName: (() { final guardedValue = map['registryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemaArn: (() { final guardedValue = map['schemaArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemaName: (() { final guardedValue = map['schemaName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

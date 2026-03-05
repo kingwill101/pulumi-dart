@@ -9,10 +9,14 @@ class NetworkProfileResponse {
 
   /// Creates a new [NetworkProfileResponse].
   /// [subnetId] The subnet id on which to put all machines created in the pool.
-  NetworkProfileResponse({required this.subnetId});
+  NetworkProfileResponse({
+    required this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'subnetId': subnetId};
+    return <String, dynamic>{
+      'subnetId': subnetId,
+    };
   }
 
   factory NetworkProfileResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class NetworkProfileResponse {
     );
   }
 }
+

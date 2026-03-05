@@ -6,17 +6,22 @@ class FolderBucketConfigIndexConfig {
   /// The LogEntry field path to index.
   /// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
   final pulumi.Input<String> fieldPath;
-
   /// The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
   final pulumi.Input<String> type;
 
   /// Creates a new [FolderBucketConfigIndexConfig].
   /// [fieldPath] The LogEntry field path to index.
   /// [type] The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
-  FolderBucketConfigIndexConfig({required this.fieldPath, required this.type});
+  FolderBucketConfigIndexConfig({
+    required this.fieldPath,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fieldPath': fieldPath, 'type': type};
+    return <String, dynamic>{
+      'fieldPath': fieldPath,
+      'type': type,
+    };
   }
 
   factory FolderBucketConfigIndexConfig.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class FolderBucketConfigIndexConfig {
     );
   }
 }
+

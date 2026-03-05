@@ -9,10 +9,14 @@ class StorageDestinationConfiguration {
 
   /// Creates a new [StorageDestinationConfiguration].
   /// [path] The storage destination path.
-  StorageDestinationConfiguration({required this.path});
+  StorageDestinationConfiguration({
+    required this.path,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path};
+    return <String, dynamic>{
+      'path': path,
+    };
   }
 
   factory StorageDestinationConfiguration.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class StorageDestinationConfiguration {
     );
   }
 }
+

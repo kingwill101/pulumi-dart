@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefenderForContainersDockerHubOfferingResponse {
   /// The offering description.
   final pulumi.Input<String> description;
-
   /// The type of the security offering.
   /// Expected value is 'DefenderForContainersDockerHub'.
   final pulumi.Input<String> offeringType;
@@ -26,12 +25,11 @@ class DefenderForContainersDockerHubOfferingResponse {
     };
   }
 
-  factory DefenderForContainersDockerHubOfferingResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefenderForContainersDockerHubOfferingResponse.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersDockerHubOfferingResponse(
       description: pulumi.Input.fromValue(map['description'] as String),
       offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
     );
   }
 }
+

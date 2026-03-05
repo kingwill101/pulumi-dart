@@ -2525,26 +2525,18 @@ import 'system_data_response.dart';
 class ProviderInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Defines the provider instance errors.
   late final pulumi.Output<ErrorDetailResponse> errors;
-
   /// Resource health details
   late final pulumi.Output<HealthResponse> health;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Defines the provider specific properties.
-  late final pulumi.Output<Db2ProviderInstancePropertiesResponse?>
-  providerSettings;
-
+  late final pulumi.Output<Db2ProviderInstancePropertiesResponse?> providerSettings;
   /// State of provisioning of the provider instance
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -2557,54 +2549,18 @@ class ProviderInstance extends pulumi.CustomResource {
     ProviderInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:workloads:ProviderInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:workloads:ProviderInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    errors = registerOutput<ErrorDetailResponse>(
-      'errors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ErrorDetailResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    health = registerOutput<HealthResponse>(
-      'health',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HealthResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    errors = registerOutput<ErrorDetailResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    health = registerOutput<HealthResponse>('health', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HealthResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    providerSettings = registerOutput<Db2ProviderInstancePropertiesResponse?>(
-      'providerSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return Db2ProviderInstancePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    providerSettings = registerOutput<Db2ProviderInstancePropertiesResponse?>('providerSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Db2ProviderInstancePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -12,10 +12,14 @@ class GetDeploymentSafeguardArgs {
 
   /// Creates a new [GetDeploymentSafeguardArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetDeploymentSafeguardArgs({required this.resourceUri});
+  GetDeploymentSafeguardArgs({
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceUri': resourceUri};
+    return <String, dynamic>{
+      'resourceUri': resourceUri,
+    };
   }
 
   factory GetDeploymentSafeguardArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetDeploymentSafeguardArgs {
     );
   }
 }
+

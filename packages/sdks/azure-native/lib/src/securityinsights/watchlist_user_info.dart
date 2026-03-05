@@ -9,19 +9,20 @@ class WatchlistUserInfo {
 
   /// Creates a new [WatchlistUserInfo].
   /// [objectId] The object id of the user.
-  WatchlistUserInfo({this.objectId});
+  WatchlistUserInfo({
+    this.objectId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectId': ?objectId};
+    return <String, dynamic>{
+      'objectId': ?objectId,
+    };
   }
 
   factory WatchlistUserInfo.fromMap(Map<String, dynamic> map) {
     return WatchlistUserInfo(
-      objectId: (() {
-        final guardedValue = map['objectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

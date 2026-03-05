@@ -8,10 +8,14 @@ class VolumeCreateContent {
 
   /// Creates a new [VolumeCreateContent].
   /// [url] URL to download content from
-  VolumeCreateContent({required this.url});
+  VolumeCreateContent({
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'url': url};
+    return <String, dynamic>{
+      'url': url,
+    };
   }
 
   factory VolumeCreateContent.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class VolumeCreateContent {
     );
   }
 }
+

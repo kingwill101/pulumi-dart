@@ -26,18 +26,7 @@ class GetRouteSpecGrpcRouteMatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadatas':
-          pulumi.Input.mapInputValue<
-            List<GetRouteSpecGrpcRouteMatchMetadata>,
-            List<Map<String, dynamic>>
-          >(
-            metadatas,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRouteSpecGrpcRouteMatchMetadata,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'metadatas': pulumi.Input.mapInputValue<List<GetRouteSpecGrpcRouteMatchMetadata>, List<Map<String, dynamic>>>(metadatas, (value) => pulumi.Input.encodeList<GetRouteSpecGrpcRouteMatchMetadata, Map<String, dynamic>>(value, (value) => value.toMap())),
       'methodName': methodName,
       'port': port,
       'prefix': prefix,
@@ -47,14 +36,7 @@ class GetRouteSpecGrpcRouteMatch {
 
   factory GetRouteSpecGrpcRouteMatch.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRouteMatch(
-      metadatas: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetRouteSpecGrpcRouteMatchMetadata>(
-          map['metadatas']!,
-          (value) => GetRouteSpecGrpcRouteMatchMetadata.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      metadatas: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouteSpecGrpcRouteMatchMetadata>(map['metadatas']!, (value) => GetRouteSpecGrpcRouteMatchMetadata.fromMap((value as Map).cast<String, dynamic>()))),
       methodName: pulumi.Input.fromValue(map['methodName'] as String),
       port: pulumi.Input.fromValue(map['port'] as int),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
@@ -62,3 +44,4 @@ class GetRouteSpecGrpcRouteMatch {
     );
   }
 }
+

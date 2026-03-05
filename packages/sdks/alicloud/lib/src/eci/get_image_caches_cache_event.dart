@@ -5,17 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageCachesCacheEvent {
   /// Number of events.
   final pulumi.Input<int> count;
-
   /// Start time.
   final pulumi.Input<String> firstTimestamp;
-
   /// End time.
   final pulumi.Input<String> lastTimestamp;
   final pulumi.Input<String> message;
-
   /// The name of event.
   final pulumi.Input<String> name;
-
   /// The type of event.
   final pulumi.Input<String> type;
 
@@ -57,3 +53,4 @@ class GetImageCachesCacheEvent {
     );
   }
 }
+

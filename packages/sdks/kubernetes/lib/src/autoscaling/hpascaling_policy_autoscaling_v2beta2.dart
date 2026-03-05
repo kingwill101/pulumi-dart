@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HPAScalingPolicyAutoscalingV2beta2 {
   /// PeriodSeconds specifies the window of time for which the policy should hold true. PeriodSeconds must be greater than zero and less than or equal to 1800 (30 min).
   final pulumi.Input<int> periodSeconds;
-
   /// Type is used to specify the scaling policy.
   final pulumi.Input<String> type;
-
   /// Value contains the amount of change which is permitted by the policy. It must be greater than zero
   final pulumi.Input<int> value;
 
@@ -39,3 +37,4 @@ class HPAScalingPolicyAutoscalingV2beta2 {
     );
   }
 }
+

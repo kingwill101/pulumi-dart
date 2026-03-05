@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicationSubnetGroupArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Description for the subnet group.
   final pulumi.Input<String> replicationSubnetGroupDescription;
-
   /// Name for the replication subnet group. This value is stored as a lowercase string. It must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens and cannot be `default`.
   final pulumi.Input<String> replicationSubnetGroupId;
-
   /// List of at least 2 EC2 subnet IDs for the subnet group. The subnets must cover at least 2 availability zones.
   final pulumi.Input<List<String>> subnetIds;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -48,27 +44,12 @@ class ReplicationSubnetGroupArgs {
 
   factory ReplicationSubnetGroupArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationSubnetGroupArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      replicationSubnetGroupDescription: pulumi.Input.fromValue(
-        map['replicationSubnetGroupDescription'] as String,
-      ),
-      replicationSubnetGroupId: pulumi.Input.fromValue(
-        map['replicationSubnetGroupId'] as String,
-      ),
-      subnetIds: pulumi.Input.fromValue(
-        (map['subnetIds'] as List).cast<String>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replicationSubnetGroupDescription: pulumi.Input.fromValue(map['replicationSubnetGroupDescription'] as String),
+      replicationSubnetGroupId: pulumi.Input.fromValue(map['replicationSubnetGroupId'] as String),
+      subnetIds: pulumi.Input.fromValue((map['subnetIds'] as List).cast<String>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

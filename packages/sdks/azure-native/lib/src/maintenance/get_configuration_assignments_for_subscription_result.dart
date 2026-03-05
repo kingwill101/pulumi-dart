@@ -7,28 +7,20 @@ import 'system_data_response.dart';
 class GetConfigurationAssignmentsForSubscriptionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Properties of the configuration assignment
   final ConfigurationAssignmentFilterPropertiesResponse? filter;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Location of the resource
   final String? location;
-
   /// The maintenance configuration Id
   final String? maintenanceConfigurationId;
-
   /// The name of the resource
   final String name;
-
   /// The unique resourceId
   final String? resourceId;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -68,39 +60,18 @@ class GetConfigurationAssignmentsForSubscriptionResult {
     };
   }
 
-  factory GetConfigurationAssignmentsForSubscriptionResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetConfigurationAssignmentsForSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetConfigurationAssignmentsForSubscriptionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return ConfigurationAssignmentFilterPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return ConfigurationAssignmentFilterPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      maintenanceConfigurationId: (() {
-        final guardedValue = map['maintenanceConfigurationId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maintenanceConfigurationId: (() { final guardedValue = map['maintenanceConfigurationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

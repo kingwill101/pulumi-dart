@@ -12,8 +12,7 @@ enum NfsDirectoryActionOnVolumeDeletion {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown NfsDirectoryActionOnVolumeDeletion value: $value',
-    );
+    throw ArgumentError('Unknown NfsDirectoryActionOnVolumeDeletion value: $value');
   }
 }
+

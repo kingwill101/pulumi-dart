@@ -161,23 +161,16 @@ import 'private_link_service_connection_state_property_response.dart';
 class PrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Group id of the private endpoint.
   late final pulumi.Output<String?> groupId;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Private endpoint which the connection belongs to.
   late final pulumi.Output<PrivateEndpointPropertyResponse?> privateEndpoint;
-
   /// Connection State of the Private Endpoint Connection.
-  late final pulumi.Output<PrivateLinkServiceConnectionStatePropertyResponse?>
-  privateLinkServiceConnectionState;
-
+  late final pulumi.Output<PrivateLinkServiceConnectionStatePropertyResponse?> privateLinkServiceConnectionState;
   /// Provisioning state of the private endpoint.
   late final pulumi.Output<String?> provisioningState;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -190,35 +183,16 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cosmosdb:PrivateEndpointConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cosmosdb:PrivateEndpointConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     groupId = registerOutput<String?>('groupId');
     this.name = registerOutput<String>('name');
-    privateEndpoint = registerOutput<PrivateEndpointPropertyResponse?>(
-      'privateEndpoint',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PrivateEndpointPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateLinkServiceConnectionState =
-        registerOutput<PrivateLinkServiceConnectionStatePropertyResponse?>(
-          'privateLinkServiceConnectionState',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return PrivateLinkServiceConnectionStatePropertyResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    privateEndpoint = registerOutput<PrivateEndpointPropertyResponse?>('privateEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateEndpointPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateLinkServiceConnectionState = registerOutput<PrivateLinkServiceConnectionStatePropertyResponse?>('privateLinkServiceConnectionState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateLinkServiceConnectionStatePropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String?>('provisioningState');
     type = registerOutput<String>('type');
   }

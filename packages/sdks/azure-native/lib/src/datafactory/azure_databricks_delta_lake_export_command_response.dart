@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureDatabricksDeltaLakeExportCommandResponse {
   /// Specify the date format for the csv in Azure Databricks Delta Lake Copy. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? dateFormat;
-
   /// Specify the timestamp format for the csv in Azure Databricks Delta Lake Copy. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? timestampFormat;
-
   /// The export setting type.
   /// Expected value is 'AzureDatabricksDeltaLakeExportCommand'.
   final pulumi.Input<String> type;
@@ -32,21 +30,12 @@ class AzureDatabricksDeltaLakeExportCommandResponse {
     };
   }
 
-  factory AzureDatabricksDeltaLakeExportCommandResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureDatabricksDeltaLakeExportCommandResponse.fromMap(Map<String, dynamic> map) {
     return AzureDatabricksDeltaLakeExportCommandResponse(
-      dateFormat: (() {
-        final guardedValue = map['dateFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      timestampFormat: (() {
-        final guardedValue = map['timestampFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      dateFormat: (() { final guardedValue = map['dateFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      timestampFormat: (() { final guardedValue = map['timestampFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

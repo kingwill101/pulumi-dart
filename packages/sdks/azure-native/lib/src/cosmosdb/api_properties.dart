@@ -8,19 +8,20 @@ class ApiProperties {
 
   /// Creates a new [ApiProperties].
   /// [serverVersion] Describes the version of the MongoDB account.
-  ApiProperties({this.serverVersion});
+  ApiProperties({
+    this.serverVersion,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serverVersion': ?serverVersion};
+    return <String, dynamic>{
+      'serverVersion': ?serverVersion,
+    };
   }
 
   factory ApiProperties.fromMap(Map<String, dynamic> map) {
     return ApiProperties(
-      serverVersion: (() {
-        final guardedValue = map['serverVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serverVersion: (() { final guardedValue = map['serverVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

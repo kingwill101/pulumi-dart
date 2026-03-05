@@ -29,9 +29,7 @@ class GetFirewallSettingsDefaultFirewallIds {
     };
   }
 
-  factory GetFirewallSettingsDefaultFirewallIds.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFirewallSettingsDefaultFirewallIds.fromMap(Map<String, dynamic> map) {
     return GetFirewallSettingsDefaultFirewallIds(
       linode: pulumi.Input.fromValue(map['linode'] as int),
       nodebalancer: pulumi.Input.fromValue(map['nodebalancer'] as int),
@@ -40,3 +38,4 @@ class GetFirewallSettingsDefaultFirewallIds {
     );
   }
 }
+

@@ -9,19 +9,20 @@ class GkeBackupAgentConfig {
 
   /// Creates a new [GkeBackupAgentConfig].
   /// [enabled] Whether the Backup for GKE agent is enabled for this cluster.
-  GkeBackupAgentConfig({this.enabled});
+  GkeBackupAgentConfig({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory GkeBackupAgentConfig.fromMap(Map<String, dynamic> map) {
     return GkeBackupAgentConfig(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

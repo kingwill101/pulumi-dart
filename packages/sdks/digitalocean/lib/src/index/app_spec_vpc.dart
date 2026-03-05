@@ -8,13 +8,20 @@ class AppSpecVpc {
 
   /// Creates a new [AppSpecVpc].
   /// [id] The ID of the VPC.
-  AppSpecVpc({required this.id});
+  AppSpecVpc({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory AppSpecVpc.fromMap(Map<String, dynamic> map) {
-    return AppSpecVpc(id: pulumi.Input.fromValue(map['id'] as String));
+    return AppSpecVpc(
+      id: pulumi.Input.fromValue(map['id'] as String),
+    );
   }
 }
+

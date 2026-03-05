@@ -9,21 +9,20 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes {
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes].
   /// [types] A set of BiqQuery table types
-  PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes({this.types});
+  PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes({
+    this.types,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'types': ?types};
+    return <String, dynamic>{
+      'types': ?types,
+    };
   }
 
-  factory PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes(
-      types: (() {
-        final guardedValue = map['types'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      types: (() { final guardedValue = map['types']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

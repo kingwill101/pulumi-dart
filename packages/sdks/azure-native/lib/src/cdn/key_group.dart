@@ -199,19 +199,14 @@ class KeyGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String> deploymentStatus;
-
   /// Names of UrlSigningKey type secret objects
   late final pulumi.Output<List<Map<String, dynamic>>?> keyReferences;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
-
   /// Read only system data
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -224,28 +219,17 @@ class KeyGroup extends pulumi.CustomResource {
     KeyGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cdn:KeyGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cdn:KeyGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     deploymentStatus = registerOutput<String>('deploymentStatus');
-    keyReferences = registerOutput<List<Map<String, dynamic>>?>(
-      'keyReferences',
-    );
+    keyReferences = registerOutput<List<Map<String, dynamic>>?>('keyReferences');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

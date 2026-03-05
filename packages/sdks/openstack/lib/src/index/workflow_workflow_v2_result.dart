@@ -1,34 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by workflowWorkflowV2.
 class WorkflowWorkflowV2Result {
   /// The date the workflow was created.
   final String createdAt;
-
   /// The workflow definition in Mistral v2 DSL.
   final String definition;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A set of input parameters required for workflow execution.
   final String input;
-
   /// See Argument Reference above.
   final String name;
-
   /// See Argument Reference above.
   final String namespace;
-
   /// See Argument Reference above.
   final String projectId;
-
   /// See Argument Reference above.
   final String region;
-
   /// Scope (private or public).
   final String scope;
-
   /// A set of string tags for the workflow.
   final List<String> tags;
 
@@ -86,3 +78,4 @@ class WorkflowWorkflowV2Result {
     );
   }
 }
+

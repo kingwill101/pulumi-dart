@@ -15,3 +15,4 @@ enum FtpAuthenticationType {
     throw ArgumentError('Unknown FtpAuthenticationType value: $value');
   }
 }
+

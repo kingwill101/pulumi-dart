@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VendorParameters {
   /// DriverName is the name used by the DRA driver kubelet plugin.
   final pulumi.Input<String>? driverName;
-
   /// Parameters can be arbitrary setup parameters. They are ignored while allocating a claim.
   final pulumi.Input<dynamic>? parameters;
 
   /// Creates a new [VendorParameters].
   /// [driverName] DriverName is the name used by the DRA driver kubelet plugin.
   /// [parameters] Parameters can be arbitrary setup parameters. They are ignored while allocating a claim.
-  VendorParameters({this.driverName, this.parameters});
+  VendorParameters({
+    this.driverName,
+    this.parameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class VendorParameters {
 
   factory VendorParameters.fromMap(Map<String, dynamic> map) {
     return VendorParameters(
-      driverName: (() {
-        final guardedValue = map['driverName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      driverName: (() { final guardedValue = map['driverName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

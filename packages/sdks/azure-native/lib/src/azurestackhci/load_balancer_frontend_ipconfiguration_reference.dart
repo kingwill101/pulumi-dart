@@ -9,17 +9,20 @@ class LoadBalancerFrontendIPConfigurationReference {
 
   /// Creates a new [LoadBalancerFrontendIPConfigurationReference].
   /// [name] name of the frontnedIPConfiguration
-  LoadBalancerFrontendIPConfigurationReference({required this.name});
+  LoadBalancerFrontendIPConfigurationReference({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory LoadBalancerFrontendIPConfigurationReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoadBalancerFrontendIPConfigurationReference.fromMap(Map<String, dynamic> map) {
     return LoadBalancerFrontendIPConfigurationReference(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

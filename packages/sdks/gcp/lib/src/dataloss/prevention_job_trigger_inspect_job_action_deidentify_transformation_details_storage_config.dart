@@ -6,10 +6,7 @@ import 'prevention_job_trigger_inspect_job_action_deidentify_transformation_deta
 class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig {
   /// The BigQuery table in which to store the output.
   /// Structure is documented below.
-  final pulumi.Input<
-    PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable
-  >
-  table;
+  final pulumi.Input<PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable> table;
 
   /// Creates a new [PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig].
   /// [table] The BigQuery table in which to store the output.
@@ -19,23 +16,14 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorage
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'table':
-          pulumi.Input.mapInputValue<
-            PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable,
-            Map<String, dynamic>
-          >(table, (value) => value.toMap()),
+      'table': pulumi.Input.mapInputValue<PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable, Map<String, dynamic>>(table, (value) => value.toMap()),
     };
   }
 
-  factory PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig(
-      table: pulumi.Input.fromValue(
-        PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable.fromMap(
-          (map['table']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      table: pulumi.Input.fromValue(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable.fromMap((map['table']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

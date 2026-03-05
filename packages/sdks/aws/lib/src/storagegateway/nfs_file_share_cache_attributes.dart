@@ -10,7 +10,9 @@ class NfsFileShareCacheAttributes {
 
   /// Creates a new [NfsFileShareCacheAttributes].
   /// [cacheStaleTimeoutInSeconds] Refreshes a file share's cache by using Time To Live (TTL).
-  NfsFileShareCacheAttributes({this.cacheStaleTimeoutInSeconds});
+  NfsFileShareCacheAttributes({
+    this.cacheStaleTimeoutInSeconds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,11 +22,8 @@ class NfsFileShareCacheAttributes {
 
   factory NfsFileShareCacheAttributes.fromMap(Map<String, dynamic> map) {
     return NfsFileShareCacheAttributes(
-      cacheStaleTimeoutInSeconds: (() {
-        final guardedValue = map['cacheStaleTimeoutInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      cacheStaleTimeoutInSeconds: (() { final guardedValue = map['cacheStaleTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

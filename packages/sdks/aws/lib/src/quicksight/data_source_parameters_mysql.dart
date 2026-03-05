@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceParametersMysql {
   /// The database to which to connect.
   final pulumi.Input<String> database;
-
   /// The host to which to connect.
   final pulumi.Input<String> host;
-
   /// The port to which to connect.
   final pulumi.Input<int> port;
 
@@ -23,7 +21,11 @@ class DataSourceParametersMysql {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'database': database, 'host': host, 'port': port};
+    return <String, dynamic>{
+      'database': database,
+      'host': host,
+      'port': port,
+    };
   }
 
   factory DataSourceParametersMysql.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class DataSourceParametersMysql {
     );
   }
 }
+

@@ -6,24 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointAttachmentState {
   /// State of the endpoint attachment connection to the service attachment.
   final pulumi.Input<String>? connectionState;
-
   /// ID of the endpoint attachment.
   final pulumi.Input<String>? endpointAttachmentId;
-
   /// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
   final pulumi.Input<String>? host;
-
   /// Location of the endpoint attachment.
   final pulumi.Input<String>? location;
-
   /// Name of the Endpoint Attachment in the following format:
   /// organizations/{organization}/endpointAttachments/{endpointAttachment}.
   final pulumi.Input<String>? name;
-
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
   final pulumi.Input<String>? orgId;
-
   /// Format: projects/*/regions/*/serviceAttachments/*
   final pulumi.Input<String>? serviceAttachment;
 
@@ -59,41 +53,14 @@ class EndpointAttachmentState {
 
   factory EndpointAttachmentState.fromMap(Map<String, dynamic> map) {
     return EndpointAttachmentState(
-      connectionState: (() {
-        final guardedValue = map['connectionState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpointAttachmentId: (() {
-        final guardedValue = map['endpointAttachmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      orgId: (() {
-        final guardedValue = map['orgId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceAttachment: (() {
-        final guardedValue = map['serviceAttachment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectionState: (() { final guardedValue = map['connectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointAttachmentId: (() { final guardedValue = map['endpointAttachmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orgId: (() { final guardedValue = map['orgId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceAttachment: (() { final guardedValue = map['serviceAttachment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

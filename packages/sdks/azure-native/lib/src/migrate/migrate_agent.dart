@@ -339,17 +339,13 @@ import 'migrate_agent_model_response_system_data.dart';
 class MigrateAgent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the name of the resource.
   late final pulumi.Output<String> name;
-
   /// MigrateAgent model properties.
   late final pulumi.Output<MigrateAgentModelPropertiesResponse> properties;
   late final pulumi.Output<MigrateAgentModelResponseSystemData> systemData;
-
   /// Gets or sets the resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -362,33 +358,15 @@ class MigrateAgent extends pulumi.CustomResource {
     MigrateAgentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:migrate:MigrateAgent',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:migrate:MigrateAgent',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<MigrateAgentModelPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MigrateAgentModelPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<MigrateAgentModelResponseSystemData>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MigrateAgentModelResponseSystemData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<MigrateAgentModelPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrateAgentModelPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<MigrateAgentModelResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrateAgentModelResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

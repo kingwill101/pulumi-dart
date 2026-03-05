@@ -17,3 +17,4 @@ enum MinimalRiskLevel {
     throw ArgumentError('Unknown MinimalRiskLevel value: $value');
   }
 }
+

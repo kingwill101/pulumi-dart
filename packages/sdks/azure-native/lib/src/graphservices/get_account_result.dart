@@ -7,25 +7,18 @@ import 'account_resource_response_system_data.dart';
 class GetAccountResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Azure resource ID.
   final String id;
-
   /// Location of the resource.
   final String? location;
-
   /// Azure resource name.
   final String name;
-
   /// Property bag from billing account
   final AccountResourceResponseProperties properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final AccountResourceResponseSystemData systemData;
-
   /// resource tags.
   final Map<String, String>? tags;
-
   /// Azure resource type.
   final String type;
 
@@ -66,24 +59,13 @@ class GetAccountResult {
     return GetAccountResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: AccountResourceResponseProperties.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: AccountResourceResponseSystemData.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: AccountResourceResponseProperties.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: AccountResourceResponseSystemData.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

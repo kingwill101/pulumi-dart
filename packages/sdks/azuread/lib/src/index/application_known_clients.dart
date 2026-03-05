@@ -173,7 +173,6 @@ import 'application_known_clients_state.dart';
 class ApplicationKnownClients extends pulumi.CustomResource {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
-
   /// A set of client IDs for the known applications.
   late final pulumi.Output<List<String>> knownClientIds;
 
@@ -186,11 +185,11 @@ class ApplicationKnownClients extends pulumi.CustomResource {
     ApplicationKnownClientsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationKnownClients:ApplicationKnownClients',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationKnownClients:ApplicationKnownClients',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     knownClientIds = registerOutput<List<String>>('knownClientIds');
   }
@@ -213,11 +212,11 @@ class ApplicationKnownClients extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationKnownClients:ApplicationKnownClients',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationKnownClients:ApplicationKnownClients',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     knownClientIds = registerOutput<List<String>>('knownClientIds');
   }

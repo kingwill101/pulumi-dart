@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEndpointAttachment.
 class GetEndpointAttachmentResult {
   /// Created time.
   final String createTime;
-
   /// Optional. Description of the resource.
   final String description;
-
   /// The Private Service Connect connection endpoint ip
   final String endpointIp;
-
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
   final Map<String, String> labels;
-
   /// Resource name of the Endpoint Attachment. Format: projects/{project}/locations/{location}/endpointAttachments/{endpoint_attachment}
   final String name;
-
   /// The path of the service attachment
   final String serviceAttachment;
-
   /// Updated time.
   final String updateTime;
 
@@ -65,3 +60,4 @@ class GetEndpointAttachmentResult {
     );
   }
 }
+

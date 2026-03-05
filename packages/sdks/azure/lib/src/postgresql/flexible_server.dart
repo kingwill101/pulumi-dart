@@ -530,100 +530,72 @@ class FlexibleServer extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** To create with `administrator_login` specified or update with it first specified , `authentication.password_auth_enabled` must be set to `true`.
   late final pulumi.Output<String> administratorLogin;
-
   /// The Password associated with the `administrator_login` for the PostgreSQL Flexible Server.
   late final pulumi.Output<String?> administratorPassword;
-
   /// An integer value used to trigger an update for `administrator_password_wo`. This property should be incremented when updating `administrator_password_wo`.
   late final pulumi.Output<int?> administratorPasswordWoVersion;
-
   /// An `authentication` block as defined below.
   late final pulumi.Output<FlexibleServerAuthentication> authentication;
-
   /// Is the storage auto grow for PostgreSQL Flexible Server enabled? Defaults to `false`.
   late final pulumi.Output<bool?> autoGrowEnabled;
-
   /// The backup retention days for the PostgreSQL Flexible Server. Possible values are between `7` and `35` days.
   late final pulumi.Output<int> backupRetentionDays;
-
   /// A `cluster` block as defined below.
   late final pulumi.Output<FlexibleServerCluster?> cluster;
-
   /// The creation mode which can be used to restore or replicate existing servers. Possible values are `Default`, `GeoRestore`, `PointInTimeRestore`, `Replica`, `ReviveDropped` and `Update`.
   late final pulumi.Output<String?> createMode;
-
   /// A `customer_managed_key` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<FlexibleServerCustomerManagedKey?>
-  customerManagedKey;
-
+  late final pulumi.Output<FlexibleServerCustomerManagedKey?> customerManagedKey;
   /// The ID of the virtual network subnet to create the PostgreSQL Flexible Server. The provided subnet should not have any other resource deployed in it and this subnet will be delegated to the PostgreSQL Flexible Server, if not already delegated. Changing this forces a new PostgreSQL Flexible Server to be created.
   late final pulumi.Output<String?> delegatedSubnetId;
-
   /// The FQDN of the PostgreSQL Flexible Server.
   late final pulumi.Output<String> fqdn;
-
   /// Is Geo-Redundant backup enabled on the PostgreSQL Flexible Server. Defaults to `false`. Changing this forces a new PostgreSQL Flexible Server to be created.
   late final pulumi.Output<bool?> geoRedundantBackupEnabled;
-
   /// A `high_availability` block as defined below.
   late final pulumi.Output<FlexibleServerHighAvailability?> highAvailability;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<FlexibleServerIdentity?> identity;
-
   /// The Azure Region where the PostgreSQL Flexible Server should exist. Changing this forces a new PostgreSQL Flexible Server to be created.
   late final pulumi.Output<String> location;
-
   /// A `maintenance_window` block as defined below.
   late final pulumi.Output<FlexibleServerMaintenanceWindow?> maintenanceWindow;
-
   /// The name which should be used for this PostgreSQL Flexible Server. Changing this forces a new PostgreSQL Flexible Server to be created.
   ///
   /// &gt; **Note:** This must be unique across the entire Azure service, not just within the resource group.
   late final pulumi.Output<String> name;
-
   /// The point in time to restore from `source_server_id` when `create_mode` is `GeoRestore`, `PointInTimeRestore`. Changing this forces a new PostgreSQL Flexible Server to be created.
   late final pulumi.Output<String?> pointInTimeRestoreTimeInUtc;
-
   /// The ID of the private DNS zone to create the PostgreSQL Flexible Server.
   ///
   /// &gt; **Note:** There will be a breaking change from upstream service at 15th July 2021, the `private_dns_zone_id` will be required when setting a `delegated_subnet_id`. For existing flexible servers who don't want to be recreated, you need to provide the `private_dns_zone_id` to the service team to manually migrate to the specified private DNS zone. The `azure.privatedns.Zone` should end with suffix `.postgres.database.azure.com`.
   late final pulumi.Output<String> privateDnsZoneId;
-
   /// Specifies whether this PostgreSQL Flexible Server is publicly accessible. Defaults to `true`.
   ///
   /// &gt; **Note:** `public_network_access_enabled` must be set to `false` when `delegated_subnet_id` and `private_dns_zone_id` have a value.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// The replication role for the PostgreSQL Flexible Server. Possible value is `None`.
   ///
   /// &gt; **Note:** The `replication_role` cannot be set while creating and only can be updated to `None` for replica server.
   late final pulumi.Output<String?> replicationRole;
-
   /// The name of the Resource Group where the PostgreSQL Flexible Server should exist. Changing this forces a new PostgreSQL Flexible Server to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The SKU Name for the PostgreSQL Flexible Server. The name of the SKU, follows the `tier` + `name` pattern (e.g. `B_Standard_B1ms`, `GP_Standard_D2s_v3`, `MO_Standard_E4s_v3`).
   late final pulumi.Output<String> skuName;
-
   /// The resource ID of the source PostgreSQL Flexible Server to be restored. Required when `create_mode` is `GeoRestore`, `PointInTimeRestore` or `Replica`. Changing this forces a new PostgreSQL Flexible Server to be created.
   late final pulumi.Output<String?> sourceServerId;
-
   /// The max storage allowed for the PostgreSQL Flexible Server. Possible values are `32768`, `65536`, `131072`, `262144`, `524288`, `1048576`, `2097152`, `4193280`, `4194304`, `8388608`, `16777216` and `33553408`.
   ///
   /// &gt; **Note:** If the `storage_mb` field is undefined on the initial deployment of the PostgreSQL Flexible Server resource it will default to `32768`. If the `storage_mb` field has been defined and then removed, the `storage_mb` field will retain the previously defined value.
   ///
   /// &gt; **Note:** The `storage_mb` can only be scaled up, for example, you can scale the `storage_mb` from `32768` to `65536`, but not from `65536` to `32768`. Scaling down `storage_mb` forces a new PostgreSQL Flexible Server to be created.
   late final pulumi.Output<int> storageMb;
-
   /// The name of storage performance tier for IOPS of the PostgreSQL Flexible Server. Possible values are `P4`, `P6`, `P10`, `P15`,`P20`, `P30`,`P40`, `P50`,`P60`, `P70` or `P80`. Default value is dependent on the `storage_mb` value. Please see the `storage_tier` defaults based on `storage_mb` table below.
   ///
   /// &gt; **Note:** The `storage_tier` can be scaled once every 12 hours, this restriction is in place to ensure stability and performance after any changes to your PostgreSQL Flexible Server's configuration.
   late final pulumi.Output<String> storageTier;
-
   /// A mapping of tags which should be assigned to the PostgreSQL Flexible Server.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The version of PostgreSQL Flexible Server to use. Possible values are `11`,`12`, `13`, `14`, `15`, `16`, `17`, and `18`. Required when `create_mode` is `Default`.
   ///
   /// &gt; **Note:** Downgrading `version` isn't supported and will force a new PostgreSQL Flexible Server to be created.
@@ -632,7 +604,6 @@ class FlexibleServer extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Major version upgrades are not supported when `cluster` is specified.
   late final pulumi.Output<String> version;
-
   /// Specifies the Availability Zone in which the PostgreSQL Flexible Server should be located.
   ///
   /// &gt; **Note:** Azure will automatically assign an Availability Zone if one is not specified. If the PostgreSQL Flexible Server fails-over to the Standby Availability Zone, the `zone` will be updated to reflect the current Primary Availability Zone. You can use Terraform's `ignore_changes` functionality to ignore changes to the `zone` and `high_availability[0].standby_availability_zone` fields should you wish for Terraform to not migrate the PostgreSQL Flexible Server back to it's primary Availability Zone after a fail-over.
@@ -649,93 +620,31 @@ class FlexibleServer extends pulumi.CustomResource {
     FlexibleServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:postgresql/flexibleServer:FlexibleServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:postgresql/flexibleServer:FlexibleServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administratorLogin = registerOutput<String>('administratorLogin');
     administratorPassword = registerOutput<String?>('administratorPassword');
-    administratorPasswordWoVersion = registerOutput<int?>(
-      'administratorPasswordWoVersion',
-    );
-    authentication = registerOutput<FlexibleServerAuthentication>(
-      'authentication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerAuthentication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    administratorPasswordWoVersion = registerOutput<int?>('administratorPasswordWoVersion');
+    authentication = registerOutput<FlexibleServerAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoGrowEnabled = registerOutput<bool?>('autoGrowEnabled');
     backupRetentionDays = registerOutput<int>('backupRetentionDays');
-    cluster = registerOutput<FlexibleServerCluster?>(
-      'cluster',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerCluster.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cluster = registerOutput<FlexibleServerCluster?>('cluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createMode = registerOutput<String?>('createMode');
-    customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>(
-      'customerManagedKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerCustomerManagedKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     delegatedSubnetId = registerOutput<String?>('delegatedSubnetId');
     fqdn = registerOutput<String>('fqdn');
-    geoRedundantBackupEnabled = registerOutput<bool?>(
-      'geoRedundantBackupEnabled',
-    );
-    highAvailability = registerOutput<FlexibleServerHighAvailability?>(
-      'highAvailability',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerHighAvailability.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<FlexibleServerIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    geoRedundantBackupEnabled = registerOutput<bool?>('geoRedundantBackupEnabled');
+    highAvailability = registerOutput<FlexibleServerHighAvailability?>('highAvailability', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerHighAvailability.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<FlexibleServerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>(
-      'maintenanceWindow',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerMaintenanceWindow.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    pointInTimeRestoreTimeInUtc = registerOutput<String?>(
-      'pointInTimeRestoreTimeInUtc',
-    );
+    pointInTimeRestoreTimeInUtc = registerOutput<String?>('pointInTimeRestoreTimeInUtc');
     privateDnsZoneId = registerOutput<String>('privateDnsZoneId');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     replicationRole = registerOutput<String?>('replicationRole');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
@@ -765,93 +674,31 @@ class FlexibleServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:postgresql/flexibleServer:FlexibleServer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:postgresql/flexibleServer:FlexibleServer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administratorLogin = registerOutput<String>('administratorLogin');
     administratorPassword = registerOutput<String?>('administratorPassword');
-    administratorPasswordWoVersion = registerOutput<int?>(
-      'administratorPasswordWoVersion',
-    );
-    authentication = registerOutput<FlexibleServerAuthentication>(
-      'authentication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerAuthentication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    administratorPasswordWoVersion = registerOutput<int?>('administratorPasswordWoVersion');
+    authentication = registerOutput<FlexibleServerAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoGrowEnabled = registerOutput<bool?>('autoGrowEnabled');
     backupRetentionDays = registerOutput<int>('backupRetentionDays');
-    cluster = registerOutput<FlexibleServerCluster?>(
-      'cluster',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerCluster.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cluster = registerOutput<FlexibleServerCluster?>('cluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createMode = registerOutput<String?>('createMode');
-    customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>(
-      'customerManagedKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerCustomerManagedKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     delegatedSubnetId = registerOutput<String?>('delegatedSubnetId');
     fqdn = registerOutput<String>('fqdn');
-    geoRedundantBackupEnabled = registerOutput<bool?>(
-      'geoRedundantBackupEnabled',
-    );
-    highAvailability = registerOutput<FlexibleServerHighAvailability?>(
-      'highAvailability',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerHighAvailability.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<FlexibleServerIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    geoRedundantBackupEnabled = registerOutput<bool?>('geoRedundantBackupEnabled');
+    highAvailability = registerOutput<FlexibleServerHighAvailability?>('highAvailability', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerHighAvailability.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<FlexibleServerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>(
-      'maintenanceWindow',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerMaintenanceWindow.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    pointInTimeRestoreTimeInUtc = registerOutput<String?>(
-      'pointInTimeRestoreTimeInUtc',
-    );
+    pointInTimeRestoreTimeInUtc = registerOutput<String?>('pointInTimeRestoreTimeInUtc');
     privateDnsZoneId = registerOutput<String>('privateDnsZoneId');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     replicationRole = registerOutput<String?>('replicationRole');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');

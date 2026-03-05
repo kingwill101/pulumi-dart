@@ -7,16 +7,12 @@ import 'address_pool_address.dart';
 class AddressPoolState {
   /// The name of the address pool.
   final pulumi.Input<String>? addressPoolName;
-
   /// The address lists of the Address Pool. See `address` below for details.
   final pulumi.Input<List<AddressPoolAddress>>? addresses;
-
   /// The ID of the instance.
   final pulumi.Input<String>? instanceId;
-
   /// The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
   final pulumi.Input<String>? lbaStrategy;
-
   /// The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
   final pulumi.Input<String>? type;
 
@@ -37,18 +33,7 @@ class AddressPoolState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addressPoolName': ?addressPoolName,
-      'addresses':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AddressPoolAddress>,
-            List<Map<String, dynamic>>
-          >(
-            addresses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AddressPoolAddress,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'addresses': ?pulumi.Input.mapOptionalInputValue<List<AddressPoolAddress>, List<Map<String, dynamic>>>(addresses, (value) => pulumi.Input.encodeList<AddressPoolAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'instanceId': ?instanceId,
       'lbaStrategy': ?lbaStrategy,
       'type': ?type,
@@ -57,38 +42,12 @@ class AddressPoolState {
 
   factory AddressPoolState.fromMap(Map<String, dynamic> map) {
     return AddressPoolState(
-      addressPoolName: (() {
-        final guardedValue = map['addressPoolName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      addresses: (() {
-        final guardedValue = map['addresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AddressPoolAddress>(
-            guardedValue,
-            (value) => AddressPoolAddress.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lbaStrategy: (() {
-        final guardedValue = map['lbaStrategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addressPoolName: (() { final guardedValue = map['addressPoolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      addresses: (() { final guardedValue = map['addresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AddressPoolAddress>(guardedValue, (value) => AddressPoolAddress.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lbaStrategy: (() { final guardedValue = map['lbaStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

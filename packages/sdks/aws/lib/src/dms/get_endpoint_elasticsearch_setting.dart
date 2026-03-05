@@ -32,15 +32,10 @@ class GetEndpointElasticsearchSetting {
   factory GetEndpointElasticsearchSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointElasticsearchSetting(
       endpointUri: pulumi.Input.fromValue(map['endpointUri'] as String),
-      errorRetryDuration: pulumi.Input.fromValue(
-        map['errorRetryDuration'] as int,
-      ),
-      fullLoadErrorPercentage: pulumi.Input.fromValue(
-        map['fullLoadErrorPercentage'] as int,
-      ),
-      serviceAccessRoleArn: pulumi.Input.fromValue(
-        map['serviceAccessRoleArn'] as String,
-      ),
+      errorRetryDuration: pulumi.Input.fromValue(map['errorRetryDuration'] as int),
+      fullLoadErrorPercentage: pulumi.Input.fromValue(map['fullLoadErrorPercentage'] as int),
+      serviceAccessRoleArn: pulumi.Input.fromValue(map['serviceAccessRoleArn'] as String),
     );
   }
 }
+

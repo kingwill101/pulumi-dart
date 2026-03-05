@@ -11,17 +11,20 @@ class GetRepositoryRemoteRepositoryConfigCommonRepository {
 
   /// Creates a new [GetRepositoryRemoteRepositoryConfigCommonRepository].
   /// [uri] One of:
-  GetRepositoryRemoteRepositoryConfigCommonRepository({required this.uri});
+  GetRepositoryRemoteRepositoryConfigCommonRepository({
+    required this.uri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': uri};
+    return <String, dynamic>{
+      'uri': uri,
+    };
   }
 
-  factory GetRepositoryRemoteRepositoryConfigCommonRepository.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRepositoryRemoteRepositoryConfigCommonRepository.fromMap(Map<String, dynamic> map) {
     return GetRepositoryRemoteRepositoryConfigCommonRepository(
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

@@ -8,34 +8,24 @@ import 'system_data_response.dart';
 class GetRoutingRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// A description for this rule.
   final String? description;
-
   /// Indicates the destination for this particular rule.
   final RoutingRuleRouteDestinationResponse destination;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
-
   /// Resource ID.
   final String id;
-
   /// Resource name.
   final String name;
-
   /// Indicates the next hop for this particular rule.
   final RoutingRuleNextHopResponse nextHop;
-
   /// The provisioning state of the resource.
   final String provisioningState;
-
   /// Unique identifier for this resource.
   final String resourceGuid;
-
   /// The system metadata related to this resource.
   final SystemDataResponse systemData;
-
   /// Resource type.
   final String type;
 
@@ -84,26 +74,17 @@ class GetRoutingRuleResult {
   factory GetRoutingRuleResult.fromMap(Map<String, dynamic> map) {
     return GetRoutingRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      destination: RoutingRuleRouteDestinationResponse.fromMap(
-        (map['destination']! as Map).cast<String, dynamic>(),
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      destination: RoutingRuleRouteDestinationResponse.fromMap((map['destination']! as Map).cast<String, dynamic>()),
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      nextHop: RoutingRuleNextHopResponse.fromMap(
-        (map['nextHop']! as Map).cast<String, dynamic>(),
-      ),
+      nextHop: RoutingRuleNextHopResponse.fromMap((map['nextHop']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

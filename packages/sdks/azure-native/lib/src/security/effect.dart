@@ -16,3 +16,4 @@ enum Effect {
     throw ArgumentError('Unknown Effect value: $value');
   }
 }
+

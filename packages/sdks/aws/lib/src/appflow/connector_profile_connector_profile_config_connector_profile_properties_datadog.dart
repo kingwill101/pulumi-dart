@@ -12,14 +12,15 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instanceUrl': instanceUrl};
+    return <String, dynamic>{
+      'instanceUrl': instanceUrl,
+    };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog(
       instanceUrl: pulumi.Input.fromValue(map['instanceUrl'] as String),
     );
   }
 }
+

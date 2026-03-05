@@ -524,28 +524,20 @@ import 'workbook_template_state.dart';
 class WorkbookTemplate extends pulumi.CustomResource {
   /// Information about the author of the workbook template.
   late final pulumi.Output<String?> author;
-
   /// A `galleries` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> galleries;
-
   /// Key value pairs of localized gallery. Each key is the locale code of languages supported by the Azure portal.
   late final pulumi.Output<String?> localized;
-
   /// Specifies the Azure Region where the Application Insights Workbook Template should exist. Changing this forces a new Application Insights Workbook Template to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name which should be used for this Application Insights Workbook Template. Changing this forces a new Application Insights Workbook Template to be created.
   late final pulumi.Output<String> name;
-
   /// Priority of the template. Determines which template to open when a workbook gallery is opened in viewer mode. Defaults to `0`.
   late final pulumi.Output<int?> priority;
-
   /// Specifies the name of the Resource Group where the Application Insights Workbook Template should exist. Changing this forces a new Application Insights Workbook Template to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Application Insights Workbook Template.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Valid JSON object containing workbook template payload.
   late final pulumi.Output<String> templateData;
 
@@ -558,11 +550,11 @@ class WorkbookTemplate extends pulumi.CustomResource {
     WorkbookTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appinsights/workbookTemplate:WorkbookTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appinsights/workbookTemplate:WorkbookTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     author = registerOutput<String?>('author');
     galleries = registerOutput<List<Map<String, dynamic>>>('galleries');
     localized = registerOutput<String?>('localized');
@@ -592,11 +584,11 @@ class WorkbookTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appinsights/workbookTemplate:WorkbookTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appinsights/workbookTemplate:WorkbookTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     author = registerOutput<String?>('author');
     galleries = registerOutput<List<Map<String, dynamic>>>('galleries');
     localized = registerOutput<String?>('localized');

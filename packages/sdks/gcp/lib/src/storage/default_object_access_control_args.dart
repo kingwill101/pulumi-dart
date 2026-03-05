@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultObjectAccessControlArgs {
   /// The name of the bucket.
   final pulumi.Input<String> bucket;
-
   /// The entity holding the permission, in one of the following forms:
   /// * user-{{userId}}
   /// * user-{{email}} (such as "user-liz@example.com")
@@ -20,10 +19,8 @@ class DefaultObjectAccessControlArgs {
   /// * allUsers
   /// * allAuthenticatedUsers
   final pulumi.Input<String> entity;
-
   /// The name of the object, if applied to an object.
   final pulumi.Input<String>? object_;
-
   /// The access permission for the entity.
   /// Possible values are: `OWNER`, `READER`.
   final pulumi.Input<String> role;
@@ -53,12 +50,9 @@ class DefaultObjectAccessControlArgs {
     return DefaultObjectAccessControlArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       entity: pulumi.Input.fromValue(map['entity'] as String),
-      object_: (() {
-        final guardedValue = map['object'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      object_: (() { final guardedValue = map['object']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
+

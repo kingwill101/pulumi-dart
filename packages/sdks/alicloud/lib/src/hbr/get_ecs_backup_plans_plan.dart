@@ -6,54 +6,38 @@ class GetEcsBackupPlansPlan {
   /// Backup type. Valid values: `COMPLETE`.
   final pulumi.Input<String> backupType;
   final pulumi.Input<String> createTime;
-
   /// The creation time of the backup plan. UNIX time in seconds.
   final pulumi.Input<String> createdTime;
   final pulumi.Input<String> detail;
-
   /// Whether to be suspended. Valid values: `true`, `false`.
   final pulumi.Input<bool> disabled;
-
   /// The ID of ecs backup plan.
   final pulumi.Input<String> ecsBackupPlanId;
-
   /// The name of the backup plan.
   final pulumi.Input<String> ecsBackupPlanName;
-
   /// Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
   final pulumi.Input<String> exclude;
-
   /// The ID of ecs backup plan.
   final pulumi.Input<String> id;
-
   /// Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
   final pulumi.Input<String> include;
-
   /// The ID of ECS instance.
   final pulumi.Input<String> instanceId;
-
   /// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
   final pulumi.Input<String> options;
-
   /// Backup path. e.g. `["/home", "/var"]`
   final pulumi.Input<List<String>> paths;
-
   /// Backup retention days, the minimum is 1.
   final pulumi.Input<String> retention;
-
   /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
   /// * `startTime` Backup start time, UNIX time seconds.
   final pulumi.Input<String> schedule;
-
   /// The type of backup source.
   final pulumi.Input<String> sourceType;
-
   /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
   final pulumi.Input<String> speedLimit;
-
   /// The update time of the backup plan. UNIX time in seconds.
   final pulumi.Input<String> updatedTime;
-
   /// The ID of Backup vault.
   final pulumi.Input<String> vaultId;
 
@@ -131,9 +115,7 @@ class GetEcsBackupPlansPlan {
       detail: pulumi.Input.fromValue(map['detail'] as String),
       disabled: pulumi.Input.fromValue(map['disabled'] as bool),
       ecsBackupPlanId: pulumi.Input.fromValue(map['ecsBackupPlanId'] as String),
-      ecsBackupPlanName: pulumi.Input.fromValue(
-        map['ecsBackupPlanName'] as String,
-      ),
+      ecsBackupPlanName: pulumi.Input.fromValue(map['ecsBackupPlanName'] as String),
       exclude: pulumi.Input.fromValue(map['exclude'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       include: pulumi.Input.fromValue(map['include'] as String),
@@ -149,3 +131,4 @@ class GetEcsBackupPlansPlan {
     );
   }
 }
+

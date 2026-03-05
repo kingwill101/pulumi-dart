@@ -484,36 +484,26 @@ class Topic extends pulumi.CustomResource {
   /// - false: The delete cleanup policy is used.
   /// - true: The compact cleanup policy is used.
   late final pulumi.Output<bool?> compactTopic;
-
   /// The advanced configurations.
   late final pulumi.Output<String> configs;
-
   /// (Available since v1.262.1) The time when the topic was created.
   late final pulumi.Output<int> createTime;
-
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
-
   /// The storage engine of the topic. Valid values:
   /// - false: Cloud storage.
   /// - true: Local storage.
   late final pulumi.Output<bool?> localTopic;
-
   /// The number of partitions in the topic.
   late final pulumi.Output<int> partitionNum;
-
   /// (Available since v1.262.1) The ID of the region where the instance resides.
   late final pulumi.Output<String> regionId;
-
   /// The description of the topic.
   late final pulumi.Output<String> remark;
-
   /// (Available since v1.262.1) The status of the service.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The topic name.
   late final pulumi.Output<String> topic;
 
@@ -521,13 +511,16 @@ class Topic extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Topic]. {@macro pulumi_alikafka_topic_topic_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Topic(String name, {TopicArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:alikafka/topic:Topic',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Topic(
+    String name, {
+    TopicArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:alikafka/topic:Topic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     compactTopic = registerOutput<bool?>('compactTopic');
     configs = registerOutput<String>('configs');
     createTime = registerOutput<int>('createTime');
@@ -542,7 +535,11 @@ class Topic extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Topic] resource's state with the given [name] and [id].
-  static Topic get(String name, pulumi.Input<String> id, {TopicState? state}) {
+  static Topic get(
+    String name,
+    pulumi.Input<String> id, {
+    TopicState? state,
+  }) {
     return Topic._get(
       name,
       state: state?.toMap(),
@@ -555,11 +552,11 @@ class Topic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alikafka/topic:Topic',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alikafka/topic:Topic',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     compactTopic = registerOutput<bool?>('compactTopic');
     configs = registerOutput<String>('configs');
     createTime = registerOutput<int>('createTime');

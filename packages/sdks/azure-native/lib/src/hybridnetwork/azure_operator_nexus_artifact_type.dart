@@ -16,3 +16,4 @@ enum AzureOperatorNexusArtifactType {
     throw ArgumentError('Unknown AzureOperatorNexusArtifactType value: $value');
   }
 }
+

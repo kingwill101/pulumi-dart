@@ -14,10 +14,14 @@ class ClusterReleaseChannel {
 
   /// Creates a new [ClusterReleaseChannel].
   /// [channel] The selected release channel.
-  ClusterReleaseChannel({required this.channel});
+  ClusterReleaseChannel({
+    required this.channel,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'channel': channel};
+    return <String, dynamic>{
+      'channel': channel,
+    };
   }
 
   factory ClusterReleaseChannel.fromMap(Map<String, dynamic> map) {
@@ -26,3 +30,4 @@ class ClusterReleaseChannel {
     );
   }
 }
+

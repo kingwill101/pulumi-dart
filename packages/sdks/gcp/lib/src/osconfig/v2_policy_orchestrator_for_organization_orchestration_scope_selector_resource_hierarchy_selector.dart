@@ -6,7 +6,6 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHiera
   /// Optional. Names of the folders in scope.
   /// Format: `folders/{folder_id}`
   final pulumi.Input<List<String>>? includedFolders;
-
   /// Optional. Names of the projects in scope.
   /// Format: `projects/{project_number}`
   final pulumi.Input<List<String>>? includedProjects;
@@ -26,20 +25,11 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHiera
     };
   }
 
-  factory V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelector.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelector.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelector(
-      includedFolders: (() {
-        final guardedValue = map['includedFolders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      includedProjects: (() {
-        final guardedValue = map['includedProjects'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      includedFolders: (() { final guardedValue = map['includedFolders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      includedProjects: (() { final guardedValue = map['includedProjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

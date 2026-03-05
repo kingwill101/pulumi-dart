@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyValuePairResponse {
   /// The name of the setting for the action.
   final pulumi.Input<String> key;
-
   /// The value of the setting for the action.
   final pulumi.Input<String> value;
 
   /// Creates a new [KeyValuePairResponse].
   /// [key] The name of the setting for the action.
   /// [value] The value of the setting for the action.
-  KeyValuePairResponse({required this.key, required this.value});
+  KeyValuePairResponse({
+    required this.key,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory KeyValuePairResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class KeyValuePairResponse {
     );
   }
 }
+

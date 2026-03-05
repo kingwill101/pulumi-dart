@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationFallbackPublicClientArgs {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   final pulumi.Input<String> applicationId;
-
   /// Whether to enable the application as a fallback public client.
   ///
   /// &gt; Some configurations may require the Fallback Public Client setting to be `null`, for this case simply destroy this resource (or don't use it)
@@ -30,16 +29,11 @@ class ApplicationFallbackPublicClientArgs {
     };
   }
 
-  factory ApplicationFallbackPublicClientArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationFallbackPublicClientArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationFallbackPublicClientArgs(
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

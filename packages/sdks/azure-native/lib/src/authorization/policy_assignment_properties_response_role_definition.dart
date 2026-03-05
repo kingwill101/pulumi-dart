@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyAssignmentPropertiesResponseRoleDefinition {
   /// Display name of the role definition
   final pulumi.Input<String>? displayName;
-
   /// Id of the role definition
   final pulumi.Input<String>? id;
-
   /// Type of the role definition
   final pulumi.Input<String>? type;
 
@@ -31,25 +29,12 @@ class PolicyAssignmentPropertiesResponseRoleDefinition {
     };
   }
 
-  factory PolicyAssignmentPropertiesResponseRoleDefinition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PolicyAssignmentPropertiesResponseRoleDefinition.fromMap(Map<String, dynamic> map) {
     return PolicyAssignmentPropertiesResponseRoleDefinition(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

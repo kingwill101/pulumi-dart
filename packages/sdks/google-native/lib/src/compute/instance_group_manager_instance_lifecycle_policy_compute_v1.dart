@@ -5,10 +5,7 @@ import 'instance_group_manager_instance_lifecycle_policy_force_update_on_repair_
 
 class InstanceGroupManagerInstanceLifecyclePolicyComputeV1 {
   /// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair.
-  final pulumi.Input<
-    InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairComputeV1
-  >?
-  forceUpdateOnRepair;
+  final pulumi.Input<InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairComputeV1>? forceUpdateOnRepair;
 
   /// Creates a new [InstanceGroupManagerInstanceLifecyclePolicyComputeV1].
   /// [forceUpdateOnRepair] A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair.
@@ -18,27 +15,14 @@ class InstanceGroupManagerInstanceLifecyclePolicyComputeV1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'forceUpdateOnRepair':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairComputeV1,
-            String
-          >(forceUpdateOnRepair, (value) => value.wireValue),
+      'forceUpdateOnRepair': ?pulumi.Input.mapOptionalInputValue<InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairComputeV1, String>(forceUpdateOnRepair, (value) => value.wireValue),
     };
   }
 
-  factory InstanceGroupManagerInstanceLifecyclePolicyComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceGroupManagerInstanceLifecyclePolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerInstanceLifecyclePolicyComputeV1(
-      forceUpdateOnRepair: (() {
-        final guardedValue = map['forceUpdateOnRepair'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairComputeV1.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      forceUpdateOnRepair: (() { final guardedValue = map['forceUpdateOnRepair']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairComputeV1.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

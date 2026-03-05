@@ -146,22 +146,16 @@ import 'managed_instance_key_args.dart';
 class ManagedInstanceKey extends pulumi.CustomResource {
   /// Key auto rotation opt-in flag. Either true or false.
   late final pulumi.Output<bool> autoRotationEnabled;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The key creation date.
   late final pulumi.Output<String> creationDate;
-
   /// Kind of encryption protector. This is metadata used for the Azure portal experience.
   late final pulumi.Output<String> kind;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Thumbprint of the key.
   late final pulumi.Output<String> thumbprint;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -174,11 +168,11 @@ class ManagedInstanceKey extends pulumi.CustomResource {
     ManagedInstanceKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:ManagedInstanceKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:ManagedInstanceKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRotationEnabled = registerOutput<bool>('autoRotationEnabled');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationDate = registerOutput<String>('creationDate');

@@ -8,10 +8,14 @@ class ResourceGroupCostManagementViewKpi {
 
   /// Creates a new [ResourceGroupCostManagementViewKpi].
   /// [type] KPI type. Possible values are `Budget` and `Forecast`.
-  ResourceGroupCostManagementViewKpi({required this.type});
+  ResourceGroupCostManagementViewKpi({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory ResourceGroupCostManagementViewKpi.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class ResourceGroupCostManagementViewKpi {
     );
   }
 }
+

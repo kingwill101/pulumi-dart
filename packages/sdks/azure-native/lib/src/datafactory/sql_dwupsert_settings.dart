@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlDWUpsertSettings {
   /// Schema name for interim table. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? interimSchemaName;
-
   /// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
   final pulumi.Input<dynamic>? keys;
 
   /// Creates a new [SqlDWUpsertSettings].
   /// [interimSchemaName] Schema name for interim table. Type: string (or Expression with resultType string).
   /// [keys] Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
-  SqlDWUpsertSettings({this.interimSchemaName, this.keys});
+  SqlDWUpsertSettings({
+    this.interimSchemaName,
+    this.keys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class SqlDWUpsertSettings {
 
   factory SqlDWUpsertSettings.fromMap(Map<String, dynamic> map) {
     return SqlDWUpsertSettings(
-      interimSchemaName: (() {
-        final guardedValue = map['interimSchemaName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      keys: (() {
-        final guardedValue = map['keys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      interimSchemaName: (() { final guardedValue = map['interimSchemaName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      keys: (() { final guardedValue = map['keys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

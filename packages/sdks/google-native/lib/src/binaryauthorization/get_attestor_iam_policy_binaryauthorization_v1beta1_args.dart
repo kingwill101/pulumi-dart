@@ -29,21 +29,12 @@ class GetAttestorIamPolicyBinaryauthorizationV1beta1Args {
     };
   }
 
-  factory GetAttestorIamPolicyBinaryauthorizationV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAttestorIamPolicyBinaryauthorizationV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetAttestorIamPolicyBinaryauthorizationV1beta1Args(
       attestorId: pulumi.Input.fromValue(map['attestorId'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6459,56 +6459,42 @@ class FunctionType extends pulumi.CustomResource {
   /// from the given source.
   /// Structure is documented below.
   late final pulumi.Output<FunctionBuildConfig?> buildConfig;
-
   /// User-provided description of a function.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The environment the function is hosted on.
   late final pulumi.Output<String> environment;
-
   /// An Eventarc trigger managed by Google Cloud Functions that fires events in
   /// response to a condition in another service.
   /// Structure is documented below.
   late final pulumi.Output<FunctionEventTrigger?> eventTrigger;
-
   /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
   /// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
   late final pulumi.Output<String?> kmsKeyName;
-
   /// A set of key/value label pairs associated with this Cloud Function.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location of this cloud function.
   late final pulumi.Output<String> location;
-
   /// A user-defined name of the function. Function names must
   /// be unique globally and match pattern `projects/*/locations/*/functions/*`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Describes the Service being deployed.
   /// Structure is documented below.
   late final pulumi.Output<FunctionServiceConfig?> serviceConfig;
-
   /// Describes the current state of the function.
   late final pulumi.Output<String> state;
-
   /// The last update timestamp of a Cloud Function.
   late final pulumi.Output<String> updateTime;
-
   /// Output only. The deployed url for the function.
   late final pulumi.Output<String> url;
 
@@ -6521,50 +6507,23 @@ class FunctionType extends pulumi.CustomResource {
     FunctionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:cloudfunctionsv2/function:Function',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    buildConfig = registerOutput<FunctionBuildConfig?>(
-      'buildConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionBuildConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:cloudfunctionsv2/function:Function',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    buildConfig = registerOutput<FunctionBuildConfig?>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     environment = registerOutput<String>('environment');
-    eventTrigger = registerOutput<FunctionEventTrigger?>(
-      'eventTrigger',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionEventTrigger.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eventTrigger = registerOutput<FunctionEventTrigger?>('eventTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEventTrigger.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    serviceConfig = registerOutput<FunctionServiceConfig?>(
-      'serviceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionServiceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serviceConfig = registerOutput<FunctionServiceConfig?>('serviceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionServiceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
     url = registerOutput<String>('url');
@@ -6588,50 +6547,23 @@ class FunctionType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:cloudfunctionsv2/function:Function',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    buildConfig = registerOutput<FunctionBuildConfig?>(
-      'buildConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionBuildConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:cloudfunctionsv2/function:Function',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    buildConfig = registerOutput<FunctionBuildConfig?>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     environment = registerOutput<String>('environment');
-    eventTrigger = registerOutput<FunctionEventTrigger?>(
-      'eventTrigger',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionEventTrigger.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eventTrigger = registerOutput<FunctionEventTrigger?>('eventTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEventTrigger.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    serviceConfig = registerOutput<FunctionServiceConfig?>(
-      'serviceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionServiceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serviceConfig = registerOutput<FunctionServiceConfig?>('serviceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionServiceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
     url = registerOutput<String>('url');

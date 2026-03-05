@@ -7,15 +7,12 @@ import 'get_access_connector_identity.dart';
 class GetAccessConnectorResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A `identity` block as defined below.
   final List<GetAccessConnectorIdentity> identities;
-
   /// The Azure Region where the Databricks Access Connector exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the Databricks Access Connector.
   final Map<String, String> tags;
 
@@ -38,11 +35,7 @@ class GetAccessConnectorResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<
-            GetAccessConnectorIdentity,
-            Map<String, dynamic>
-          >(identities, (value) => value.toMap()),
+      'identities': pulumi.Input.encodeList<GetAccessConnectorIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
@@ -53,12 +46,7 @@ class GetAccessConnectorResult {
   factory GetAccessConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetAccessConnectorResult(
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetAccessConnectorIdentity>(
-        map['identities']!,
-        (value) => GetAccessConnectorIdentity.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      identities: pulumi.Input.decodeList<GetAccessConnectorIdentity>(map['identities']!, (value) => GetAccessConnectorIdentity.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
@@ -66,3 +54,4 @@ class GetAccessConnectorResult {
     );
   }
 }
+

@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering WorkspaceCustomerManagedKey resources.
 class WorkspaceCustomerManagedKeyState {
   final pulumi.Input<String>? keyVaultKeyId;
-
   /// The unique identifier of the databricks workspace in Databricks control plane.
   final pulumi.Input<String>? workspaceId;
 
   /// Creates a new [WorkspaceCustomerManagedKeyState].
   /// [keyVaultKeyId] Optional.
   /// [workspaceId] The unique identifier of the databricks workspace in Databricks control plane.
-  WorkspaceCustomerManagedKeyState({this.keyVaultKeyId, this.workspaceId});
+  WorkspaceCustomerManagedKeyState({
+    this.keyVaultKeyId,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,16 +25,9 @@ class WorkspaceCustomerManagedKeyState {
 
   factory WorkspaceCustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return WorkspaceCustomerManagedKeyState(
-      keyVaultKeyId: (() {
-        final guardedValue = map['keyVaultKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workspaceId: (() {
-        final guardedValue = map['workspaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyVaultKeyId: (() { final guardedValue = map['keyVaultKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

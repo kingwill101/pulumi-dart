@@ -29,19 +29,12 @@ class GetModelDeploymentMonitoringJobArgs {
     };
   }
 
-  factory GetModelDeploymentMonitoringJobArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetModelDeploymentMonitoringJobArgs.fromMap(Map<String, dynamic> map) {
     return GetModelDeploymentMonitoringJobArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      modelDeploymentMonitoringJobId: pulumi.Input.fromValue(
-        map['modelDeploymentMonitoringJobId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      modelDeploymentMonitoringJobId: pulumi.Input.fromValue(map['modelDeploymentMonitoringJobId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

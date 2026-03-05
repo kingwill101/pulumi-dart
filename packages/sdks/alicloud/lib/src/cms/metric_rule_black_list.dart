@@ -471,43 +471,30 @@ import 'metric_rule_black_list_state.dart';
 class MetricRuleBlackList extends pulumi.CustomResource {
   /// Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
   late final pulumi.Output<String> category;
-
   /// The timestamp for creating an alert blacklist policy.Unit: milliseconds.
   late final pulumi.Output<String> createTime;
-
   /// The effective time range of the alert blacklist policy.
   late final pulumi.Output<String?> effectiveTime;
-
   /// The start timestamp of the alert blacklist policy.Unit: milliseconds.
   late final pulumi.Output<String?> enableEndTime;
-
   /// The end timestamp of the alert blacklist policy.Unit: milliseconds.
   late final pulumi.Output<String?> enableStartTime;
-
   /// The list of instances of cloud services specified in the alert blacklist policy.
   late final pulumi.Output<List<String>> instances;
-
   /// The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
   late final pulumi.Output<bool> isEnable;
-
   /// The ID of the blacklist policy.
   late final pulumi.Output<String> metricRuleBlackListId;
-
   /// The name of the alert blacklist policy.
   late final pulumi.Output<String> metricRuleBlackListName;
-
   /// Monitoring metrics in the instance. See `metrics` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> metrics;
-
   /// The data namespace of the cloud service.
   late final pulumi.Output<String> namespace;
-
   /// The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
   late final pulumi.Output<String> scopeType;
-
   /// Application Group ID list. The format is JSON Array.&gt; This parameter is displayed only when 'ScopeType' is 'GROUP.
   late final pulumi.Output<List<String>?> scopeValues;
-
   /// Modify the timestamp of the alert blacklist policy.Unit: milliseconds.
   late final pulumi.Output<String> updateTime;
 
@@ -520,11 +507,11 @@ class MetricRuleBlackList extends pulumi.CustomResource {
     MetricRuleBlackListArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/metricRuleBlackList:MetricRuleBlackList',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/metricRuleBlackList:MetricRuleBlackList',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     category = registerOutput<String>('category');
     createTime = registerOutput<String>('createTime');
     effectiveTime = registerOutput<String?>('effectiveTime');
@@ -559,11 +546,11 @@ class MetricRuleBlackList extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/metricRuleBlackList:MetricRuleBlackList',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/metricRuleBlackList:MetricRuleBlackList',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     category = registerOutput<String>('category');
     createTime = registerOutput<String>('createTime');
     effectiveTime = registerOutput<String?>('effectiveTime');

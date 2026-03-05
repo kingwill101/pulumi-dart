@@ -157,16 +157,12 @@ import 'resource_guard_state.dart';
 class ResourceGuard extends pulumi.CustomResource {
   /// The Azure Region where the Resource Guard should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the Resource Guard. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Resource Guard should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Resource Guard.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A list of the critical operations which are not protected by this Resource Guard.
   late final pulumi.Output<List<String>?> vaultCriticalOperationExclusionLists;
 
@@ -179,18 +175,16 @@ class ResourceGuard extends pulumi.CustomResource {
     ResourceGuardArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/resourceGuard:ResourceGuard',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:dataprotection/resourceGuard:ResourceGuard',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
-    vaultCriticalOperationExclusionLists = registerOutput<List<String>?>(
-      'vaultCriticalOperationExclusionLists',
-    );
+    vaultCriticalOperationExclusionLists = registerOutput<List<String>?>('vaultCriticalOperationExclusionLists');
   }
 
   /// Gets an existing [ResourceGuard] resource's state with the given [name] and [id].
@@ -211,17 +205,15 @@ class ResourceGuard extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/resourceGuard:ResourceGuard',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:dataprotection/resourceGuard:ResourceGuard',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
-    vaultCriticalOperationExclusionLists = registerOutput<List<String>?>(
-      'vaultCriticalOperationExclusionLists',
-    );
+    vaultCriticalOperationExclusionLists = registerOutput<List<String>?>('vaultCriticalOperationExclusionLists');
   }
 }

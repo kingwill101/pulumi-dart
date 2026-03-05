@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UpgradeDistributionContaineranalysisV1alpha1 {
   /// The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed.
   final pulumi.Input<String>? classification;
-
   /// Required - The specific operating system this metadata applies to. See https://cpe.mitre.org/specification/.
   final pulumi.Input<String>? cpeUri;
-
   /// The cve that would be resolved by this upgrade.
   final pulumi.Input<List<String>>? cve;
-
   /// The severity as specified by the upstream operating system.
   final pulumi.Input<String>? severity;
 
@@ -37,30 +34,13 @@ class UpgradeDistributionContaineranalysisV1alpha1 {
     };
   }
 
-  factory UpgradeDistributionContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UpgradeDistributionContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return UpgradeDistributionContaineranalysisV1alpha1(
-      classification: (() {
-        final guardedValue = map['classification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cpeUri: (() {
-        final guardedValue = map['cpeUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cve: (() {
-        final guardedValue = map['cve'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      severity: (() {
-        final guardedValue = map['severity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      classification: (() { final guardedValue = map['classification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cpeUri: (() { final guardedValue = map['cpeUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cve: (() { final guardedValue = map['cve']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,10 +7,8 @@ import 'metric_target_autoscaling_v2beta2.dart';
 class ContainerResourceMetricSourceAutoscalingV2beta2 {
   /// container is the name of the container in the pods of the scaling target
   final pulumi.Input<String> container;
-
   /// name is the name of the resource in question.
   final pulumi.Input<String> name;
-
   /// target specifies the target value for the given metric
   final pulumi.Input<MetricTargetAutoscalingV2beta2> target;
 
@@ -28,25 +26,16 @@ class ContainerResourceMetricSourceAutoscalingV2beta2 {
     return <String, dynamic>{
       'container': container,
       'name': name,
-      'target':
-          pulumi.Input.mapInputValue<
-            MetricTargetAutoscalingV2beta2,
-            Map<String, dynamic>
-          >(target, (value) => value.toMap()),
+      'target': pulumi.Input.mapInputValue<MetricTargetAutoscalingV2beta2, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
-  factory ContainerResourceMetricSourceAutoscalingV2beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContainerResourceMetricSourceAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return ContainerResourceMetricSourceAutoscalingV2beta2(
       container: pulumi.Input.fromValue(map['container'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      target: pulumi.Input.fromValue(
-        MetricTargetAutoscalingV2beta2.fromMap(
-          (map['target']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      target: pulumi.Input.fromValue(MetricTargetAutoscalingV2beta2.fromMap((map['target']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

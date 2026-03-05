@@ -13,8 +13,7 @@ enum SessionEntityTypeEntityOverrideMode {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SessionEntityTypeEntityOverrideMode value: $value',
-    );
+    throw ArgumentError('Unknown SessionEntityTypeEntityOverrideMode value: $value');
   }
 }
+

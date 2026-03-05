@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPartnerRegistrationArgs {
   /// The name of the EventGrid Partner Registration resource.
   final pulumi.Input<String> name;
-
   /// The name of the resource group in which the EventGrid Partner Registration exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetPartnerRegistrationArgs {
   factory GetPartnerRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerRegistrationArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

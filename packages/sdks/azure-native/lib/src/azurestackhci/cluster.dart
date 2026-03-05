@@ -166,102 +166,66 @@ import 'user_assigned_identity_response.dart';
 class Cluster extends pulumi.CustomResource {
   /// Object id of cluster AAD identity.
   late final pulumi.Output<String?> aadApplicationObjectId;
-
   /// App id of cluster AAD identity.
   late final pulumi.Output<String?> aadClientId;
-
   /// Id of cluster identity service principal.
   late final pulumi.Output<String?> aadServicePrincipalObjectId;
-
   /// Tenant id of cluster AAD identity.
   late final pulumi.Output<String?> aadTenantId;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Type of billing applied to the resource.
   late final pulumi.Output<String> billingModel;
-
   /// Unique, immutable resource id.
   late final pulumi.Output<String> cloudId;
-
   /// Endpoint configured for management from the Azure portal.
   late final pulumi.Output<String?> cloudManagementEndpoint;
-
   /// Overall connectivity status for the cluster resource.
   late final pulumi.Output<String> connectivityStatus;
-
   /// Desired properties of the cluster.
   late final pulumi.Output<ClusterDesiredPropertiesResponse?> desiredProperties;
-
   /// Attestation configurations for isolated VM (e.g. TVM, CVM) of the cluster.
-  late final pulumi.Output<IsolatedVmAttestationConfigurationResponse>
-  isolatedVmAttestationConfiguration;
-
+  late final pulumi.Output<IsolatedVmAttestationConfigurationResponse> isolatedVmAttestationConfiguration;
   /// Most recent billing meter timestamp.
   late final pulumi.Output<String> lastBillingTimestamp;
-
   /// Most recent cluster sync timestamp.
   late final pulumi.Output<String> lastSyncTimestamp;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Log Collection properties of the cluster.
-  late final pulumi.Output<LogCollectionPropertiesResponse?>
-  logCollectionProperties;
-
+  late final pulumi.Output<LogCollectionPropertiesResponse?> logCollectionProperties;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
   late final pulumi.Output<String> principalId;
-
   /// Provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// First cluster sync timestamp.
   late final pulumi.Output<String> registrationTimestamp;
-
   /// RemoteSupport properties of the cluster.
-  late final pulumi.Output<RemoteSupportPropertiesResponse?>
-  remoteSupportProperties;
-
+  late final pulumi.Output<RemoteSupportPropertiesResponse?> remoteSupportProperties;
   /// Properties reported by cluster agent.
-  late final pulumi.Output<ClusterReportedPropertiesResponse>
-  reportedProperties;
-
+  late final pulumi.Output<ClusterReportedPropertiesResponse> reportedProperties;
   /// Object id of RP Service Principal
   late final pulumi.Output<String> resourceProviderObjectId;
-
   /// Region specific DataPath Endpoint of the cluster.
   late final pulumi.Output<String> serviceEndpoint;
-
   /// Software Assurance properties of the cluster.
-  late final pulumi.Output<SoftwareAssurancePropertiesResponse?>
-  softwareAssuranceProperties;
-
+  late final pulumi.Output<SoftwareAssurancePropertiesResponse?> softwareAssuranceProperties;
   /// Status of the cluster agent.
   late final pulumi.Output<String> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
   late final pulumi.Output<String> tenantId;
-
   /// Number of days remaining in the trial period.
   late final pulumi.Output<double> trialDaysRemaining;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-  late final pulumi.Output<Map<String, UserAssignedIdentityResponse>?>
-  userAssignedIdentities;
+  late final pulumi.Output<Map<String, UserAssignedIdentityResponse>?> userAssignedIdentities;
 
   /// Creates a new [Cluster].
   /// [name] The Pulumi resource name.
@@ -272,125 +236,41 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azurestackhci:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azurestackhci:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aadApplicationObjectId = registerOutput<String?>('aadApplicationObjectId');
     aadClientId = registerOutput<String?>('aadClientId');
-    aadServicePrincipalObjectId = registerOutput<String?>(
-      'aadServicePrincipalObjectId',
-    );
+    aadServicePrincipalObjectId = registerOutput<String?>('aadServicePrincipalObjectId');
     aadTenantId = registerOutput<String?>('aadTenantId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     billingModel = registerOutput<String>('billingModel');
     cloudId = registerOutput<String>('cloudId');
-    cloudManagementEndpoint = registerOutput<String?>(
-      'cloudManagementEndpoint',
-    );
+    cloudManagementEndpoint = registerOutput<String?>('cloudManagementEndpoint');
     connectivityStatus = registerOutput<String>('connectivityStatus');
-    desiredProperties = registerOutput<ClusterDesiredPropertiesResponse?>(
-      'desiredProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterDesiredPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    isolatedVmAttestationConfiguration =
-        registerOutput<IsolatedVmAttestationConfigurationResponse>(
-          'isolatedVmAttestationConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return IsolatedVmAttestationConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    desiredProperties = registerOutput<ClusterDesiredPropertiesResponse?>('desiredProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDesiredPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isolatedVmAttestationConfiguration = registerOutput<IsolatedVmAttestationConfigurationResponse>('isolatedVmAttestationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IsolatedVmAttestationConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastBillingTimestamp = registerOutput<String>('lastBillingTimestamp');
     lastSyncTimestamp = registerOutput<String>('lastSyncTimestamp');
     location = registerOutput<String>('location');
-    logCollectionProperties = registerOutput<LogCollectionPropertiesResponse?>(
-      'logCollectionProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LogCollectionPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logCollectionProperties = registerOutput<LogCollectionPropertiesResponse?>('logCollectionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogCollectionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');
     provisioningState = registerOutput<String>('provisioningState');
     registrationTimestamp = registerOutput<String>('registrationTimestamp');
-    remoteSupportProperties = registerOutput<RemoteSupportPropertiesResponse?>(
-      'remoteSupportProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RemoteSupportPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    reportedProperties = registerOutput<ClusterReportedPropertiesResponse>(
-      'reportedProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterReportedPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    resourceProviderObjectId = registerOutput<String>(
-      'resourceProviderObjectId',
-    );
+    remoteSupportProperties = registerOutput<RemoteSupportPropertiesResponse?>('remoteSupportProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemoteSupportPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reportedProperties = registerOutput<ClusterReportedPropertiesResponse>('reportedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterReportedPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceProviderObjectId = registerOutput<String>('resourceProviderObjectId');
     serviceEndpoint = registerOutput<String>('serviceEndpoint');
-    softwareAssuranceProperties =
-        registerOutput<SoftwareAssurancePropertiesResponse?>(
-          'softwareAssuranceProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SoftwareAssurancePropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    softwareAssuranceProperties = registerOutput<SoftwareAssurancePropertiesResponse?>('softwareAssuranceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareAssurancePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tenantId = registerOutput<String>('tenantId');
     trialDaysRemaining = registerOutput<double>('trialDaysRemaining');
     type = registerOutput<String>('type');
-    userAssignedIdentities =
-        registerOutput<Map<String, UserAssignedIdentityResponse>?>(
-          'userAssignedIdentities',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(
-              guardedValue,
-              (value) => UserAssignedIdentityResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            );
-          },
-        );
+    userAssignedIdentities = registerOutput<Map<String, UserAssignedIdentityResponse>?>('userAssignedIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(guardedValue, (value) => UserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

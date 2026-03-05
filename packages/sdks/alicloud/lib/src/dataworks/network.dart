@@ -474,16 +474,12 @@ import 'network_state.dart';
 class Network extends pulumi.CustomResource {
   /// Time when the network resource was created
   late final pulumi.Output<int> createTime;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> dwResourceGroupId;
-
   /// Network Resource Status
   late final pulumi.Output<String> status;
-
   /// Virtual Private Cloud ID of network resources
   late final pulumi.Output<String> vpcId;
-
   /// The vSwitch ID of the network resource.
   late final pulumi.Output<String> vswitchId;
 
@@ -496,11 +492,11 @@ class Network extends pulumi.CustomResource {
     NetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dataworks/network:Network',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dataworks/network:Network',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
     dwResourceGroupId = registerOutput<String>('dwResourceGroupId');
     status = registerOutput<String>('status');
@@ -526,11 +522,11 @@ class Network extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dataworks/network:Network',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dataworks/network:Network',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
     dwResourceGroupId = registerOutput<String>('dwResourceGroupId');
     status = registerOutput<String>('status');

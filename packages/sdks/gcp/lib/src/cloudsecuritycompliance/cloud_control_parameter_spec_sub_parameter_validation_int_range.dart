@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudControlParameterSpecSubParameterValidationIntRange {
   /// Maximum allowed value for the numeric parameter (inclusive).
   final pulumi.Input<String> max;
-
   /// Minimum allowed value for the numeric parameter (inclusive).
   final pulumi.Input<String> min;
 
@@ -18,15 +17,17 @@ class CloudControlParameterSpecSubParameterValidationIntRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': max, 'min': min};
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory CloudControlParameterSpecSubParameterValidationIntRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudControlParameterSpecSubParameterValidationIntRange.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecSubParameterValidationIntRange(
       max: pulumi.Input.fromValue(map['max'] as String),
       min: pulumi.Input.fromValue(map['min'] as String),
     );
   }
 }
+

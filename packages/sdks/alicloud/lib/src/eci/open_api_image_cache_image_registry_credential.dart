@@ -25,25 +25,12 @@ class OpenApiImageCacheImageRegistryCredential {
     };
   }
 
-  factory OpenApiImageCacheImageRegistryCredential.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OpenApiImageCacheImageRegistryCredential.fromMap(Map<String, dynamic> map) {
     return OpenApiImageCacheImageRegistryCredential(
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      server: (() {
-        final guardedValue = map['server'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      server: (() { final guardedValue = map['server']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

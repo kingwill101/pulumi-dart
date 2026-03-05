@@ -10,13 +10,10 @@ import 'global_parameter_specification.dart';
 class GlobalParameterArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
-
   /// The global parameter name.
   final pulumi.Input<String>? globalParameterName;
-
   /// Properties of the global parameter.
   final pulumi.Input<Map<String, GlobalParameterSpecification>> properties;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,18 +33,7 @@ class GlobalParameterArgs {
     return <String, dynamic>{
       'factoryName': factoryName,
       'globalParameterName': ?globalParameterName,
-      'properties':
-          pulumi.Input.mapInputValue<
-            Map<String, GlobalParameterSpecification>,
-            Map<String, Map<String, dynamic>>
-          >(
-            properties,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  GlobalParameterSpecification,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'properties': pulumi.Input.mapInputValue<Map<String, GlobalParameterSpecification>, Map<String, Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeMapValues<GlobalParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -55,22 +41,10 @@ class GlobalParameterArgs {
   factory GlobalParameterArgs.fromMap(Map<String, dynamic> map) {
     return GlobalParameterArgs(
       factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
-      globalParameterName: (() {
-        final guardedValue = map['globalParameterName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: pulumi.Input.fromValue(
-        pulumi.Input.decodeMapValues<GlobalParameterSpecification>(
-          map['properties']!,
-          (value) => GlobalParameterSpecification.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      globalParameterName: (() { final guardedValue = map['globalParameterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<GlobalParameterSpecification>(map['properties']!, (value) => GlobalParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnthosObservabilityMembershipSpecResponseGkehubV1beta {
   /// Use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
   final pulumi.Input<bool> doNotOptimizeMetrics;
-
   /// Enable collecting and reporting metrics and logs from user apps.
   final pulumi.Input<bool> enableStackdriverOnApplications;
-
   /// the version of stackdriver operator used by this feature
   final pulumi.Input<String> version;
 
@@ -31,17 +29,12 @@ class AnthosObservabilityMembershipSpecResponseGkehubV1beta {
     };
   }
 
-  factory AnthosObservabilityMembershipSpecResponseGkehubV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnthosObservabilityMembershipSpecResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return AnthosObservabilityMembershipSpecResponseGkehubV1beta(
-      doNotOptimizeMetrics: pulumi.Input.fromValue(
-        map['doNotOptimizeMetrics'] as bool,
-      ),
-      enableStackdriverOnApplications: pulumi.Input.fromValue(
-        map['enableStackdriverOnApplications'] as bool,
-      ),
+      doNotOptimizeMetrics: pulumi.Input.fromValue(map['doNotOptimizeMetrics'] as bool),
+      enableStackdriverOnApplications: pulumi.Input.fromValue(map['enableStackdriverOnApplications'] as bool),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

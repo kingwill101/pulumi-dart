@@ -7,24 +7,18 @@ import 'get_local_network_gateway_bgp_setting.dart';
 class GetLocalNetworkGatewayResult {
   /// The list of string CIDRs representing the address spaces the gateway exposes.
   final List<String> addressSpaces;
-
   /// A `bgp_settings` block as defined below containing the Local Network Gateway's BGP speaker settings.
   final List<GetLocalNetworkGatewayBgpSetting> bgpSettings;
-
   /// The gateway IP address the Local Network Gateway uses.
   final String gatewayAddress;
-
   /// The gateway FQDN the Local Network Gateway uses.
   final String gatewayFqdn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region where the Local Network Gateway exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the Local Network Gateway.
   final Map<String, String> tags;
 
@@ -53,11 +47,7 @@ class GetLocalNetworkGatewayResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addressSpaces': addressSpaces,
-      'bgpSettings':
-          pulumi.Input.encodeList<
-            GetLocalNetworkGatewayBgpSetting,
-            Map<String, dynamic>
-          >(bgpSettings, (value) => value.toMap()),
+      'bgpSettings': pulumi.Input.encodeList<GetLocalNetworkGatewayBgpSetting, Map<String, dynamic>>(bgpSettings, (value) => value.toMap()),
       'gatewayAddress': gatewayAddress,
       'gatewayFqdn': gatewayFqdn,
       'id': id,
@@ -71,12 +61,7 @@ class GetLocalNetworkGatewayResult {
   factory GetLocalNetworkGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetLocalNetworkGatewayResult(
       addressSpaces: (map['addressSpaces'] as List).cast<String>(),
-      bgpSettings: pulumi.Input.decodeList<GetLocalNetworkGatewayBgpSetting>(
-        map['bgpSettings']!,
-        (value) => GetLocalNetworkGatewayBgpSetting.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      bgpSettings: pulumi.Input.decodeList<GetLocalNetworkGatewayBgpSetting>(map['bgpSettings']!, (value) => GetLocalNetworkGatewayBgpSetting.fromMap((value as Map).cast<String, dynamic>())),
       gatewayAddress: map['gatewayAddress'] as String,
       gatewayFqdn: map['gatewayFqdn'] as String,
       id: map['id'] as String,
@@ -87,3 +72,4 @@ class GetLocalNetworkGatewayResult {
     );
   }
 }
+

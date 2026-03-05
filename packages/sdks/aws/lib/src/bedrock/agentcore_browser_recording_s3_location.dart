@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreBrowserRecordingS3Location {
   /// Name of the S3 bucket where recordings are stored.
   final pulumi.Input<String> bucket;
-
   /// S3 key prefix for recording files.
   final pulumi.Input<String> prefix;
 
@@ -18,15 +17,17 @@ class AgentcoreBrowserRecordingS3Location {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucket': bucket, 'prefix': prefix};
+    return <String, dynamic>{
+      'bucket': bucket,
+      'prefix': prefix,
+    };
   }
 
-  factory AgentcoreBrowserRecordingS3Location.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreBrowserRecordingS3Location.fromMap(Map<String, dynamic> map) {
     return AgentcoreBrowserRecordingS3Location(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
     );
   }
 }
+

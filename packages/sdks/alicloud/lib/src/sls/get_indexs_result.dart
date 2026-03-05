@@ -7,10 +7,8 @@ import 'get_indexs_index.dart';
 class GetIndexsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Index IDs.
   final List<String> ids;
-
   /// A list of Index Entries. Each element contains the following attributes:
   final List<GetIndexsIndex> indexs;
   final String logstoreName;
@@ -37,10 +35,7 @@ class GetIndexsResult {
     return <String, dynamic>{
       'id': id,
       'ids': ids,
-      'indexs': pulumi.Input.encodeList<GetIndexsIndex, Map<String, dynamic>>(
-        indexs,
-        (value) => value.toMap(),
-      ),
+      'indexs': pulumi.Input.encodeList<GetIndexsIndex, Map<String, dynamic>>(indexs, (value) => value.toMap()),
       'logstoreName': logstoreName,
       'outputFile': ?outputFile,
       'projectName': projectName,
@@ -51,18 +46,11 @@ class GetIndexsResult {
     return GetIndexsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      indexs: pulumi.Input.decodeList<GetIndexsIndex>(
-        map['indexs']!,
-        (value) =>
-            GetIndexsIndex.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      indexs: pulumi.Input.decodeList<GetIndexsIndex>(map['indexs']!, (value) => GetIndexsIndex.fromMap((value as Map).cast<String, dynamic>())),
       logstoreName: map['logstoreName'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       projectName: map['projectName'] as String,
     );
   }
 }
+

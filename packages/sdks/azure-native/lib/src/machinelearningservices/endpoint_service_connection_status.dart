@@ -14,8 +14,7 @@ enum EndpointServiceConnectionStatus {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EndpointServiceConnectionStatus value: $value',
-    );
+    throw ArgumentError('Unknown EndpointServiceConnectionStatus value: $value');
   }
 }
+

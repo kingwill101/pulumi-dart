@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getClientApplicationProductLink.
 class GetClientApplicationProductLinkResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The unique resource identifier of the Product.
   final String productId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -41,9 +38,7 @@ class GetClientApplicationProductLinkResult {
     };
   }
 
-  factory GetClientApplicationProductLinkResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClientApplicationProductLinkResult.fromMap(Map<String, dynamic> map) {
     return GetClientApplicationProductLinkResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
@@ -53,3 +48,4 @@ class GetClientApplicationProductLinkResult {
     );
   }
 }
+

@@ -10,29 +10,20 @@ class AuthenticationResponse {
 
   /// Creates a new [AuthenticationResponse].
   /// [symmetricKey] Symmetric key for authentication.
-  AuthenticationResponse({this.symmetricKey});
+  AuthenticationResponse({
+    this.symmetricKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'symmetricKey':
-          ?pulumi.Input.mapOptionalInputValue<
-            SymmetricKeyResponse,
-            Map<String, dynamic>
-          >(symmetricKey, (value) => value.toMap()),
+      'symmetricKey': ?pulumi.Input.mapOptionalInputValue<SymmetricKeyResponse, Map<String, dynamic>>(symmetricKey, (value) => value.toMap()),
     };
   }
 
   factory AuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationResponse(
-      symmetricKey: (() {
-        final guardedValue = map['symmetricKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SymmetricKeyResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      symmetricKey: (() { final guardedValue = map['symmetricKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SymmetricKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

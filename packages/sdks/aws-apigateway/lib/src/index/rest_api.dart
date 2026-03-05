@@ -9,16 +9,12 @@ import 'package:pulumi_aws/apigateway.dart' as pulumi_aws_apigateway;
 class RestAPI extends pulumi.ComponentResource {
   /// The underlying RestAPI resource.
   late final pulumi.Output<pulumi_aws_apigateway.RestApi?> api;
-
   /// The underlying RestAPIPolicy resource.
   late final pulumi.Output<pulumi_aws_apigateway.RestApiPolicy?> apiPolicy;
-
   /// The underlying Deployment resource.
   late final pulumi.Output<pulumi_aws_apigateway.DeploymentType?> deployment;
-
   /// The underlying Stage resource.
   late final pulumi.Output<pulumi_aws_apigateway.Stage?> stage;
-
   /// The URL where the Rest API is exposed.
   late final pulumi.Output<String?> url;
 
@@ -31,19 +27,15 @@ class RestAPI extends pulumi.ComponentResource {
     RestAPIArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'aws-apigateway:index:RestAPI',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       ) {
+          'aws-apigateway:index:RestAPI',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        ) {
     api = registerOutput<pulumi_aws_apigateway.RestApi?>('api');
-    apiPolicy = registerOutput<pulumi_aws_apigateway.RestApiPolicy?>(
-      'apiPolicy',
-    );
-    deployment = registerOutput<pulumi_aws_apigateway.DeploymentType?>(
-      'deployment',
-    );
+    apiPolicy = registerOutput<pulumi_aws_apigateway.RestApiPolicy?>('apiPolicy');
+    deployment = registerOutput<pulumi_aws_apigateway.DeploymentType?>('deployment');
     stage = registerOutput<pulumi_aws_apigateway.Stage?>('stage');
     url = registerOutput<String?>('url');
   }

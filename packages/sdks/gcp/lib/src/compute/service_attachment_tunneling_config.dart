@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceAttachmentTunnelingConfig {
   /// The encapsulation profile for tunneling traffic.
   final pulumi.Input<String>? encapsulationProfile;
-
   /// The routing mode for tunneling traffic.
   final pulumi.Input<String>? routingMode;
 
@@ -26,16 +25,9 @@ class ServiceAttachmentTunnelingConfig {
 
   factory ServiceAttachmentTunnelingConfig.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentTunnelingConfig(
-      encapsulationProfile: (() {
-        final guardedValue = map['encapsulationProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routingMode: (() {
-        final guardedValue = map['routingMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      encapsulationProfile: (() { final guardedValue = map['encapsulationProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routingMode: (() { final guardedValue = map['routingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -20,3 +20,4 @@ enum JobInputType {
     throw ArgumentError('Unknown JobInputType value: $value');
   }
 }
+

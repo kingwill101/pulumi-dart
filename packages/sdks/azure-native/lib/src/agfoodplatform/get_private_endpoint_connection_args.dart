@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateEndpointConnectionArgs {
   /// DataManagerForAgriculture resource name.
   final pulumi.Input<String> dataManagerForAgricultureResourceName;
-
   /// Private endpoint connection name.
   final pulumi.Input<String> privateEndpointConnectionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -28,8 +26,7 @@ class GetPrivateEndpointConnectionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataManagerForAgricultureResourceName':
-          dataManagerForAgricultureResourceName,
+      'dataManagerForAgricultureResourceName': dataManagerForAgricultureResourceName,
       'privateEndpointConnectionName': privateEndpointConnectionName,
       'resourceGroupName': resourceGroupName,
     };
@@ -37,15 +34,10 @@ class GetPrivateEndpointConnectionArgs {
 
   factory GetPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionArgs(
-      dataManagerForAgricultureResourceName: pulumi.Input.fromValue(
-        map['dataManagerForAgricultureResourceName'] as String,
-      ),
-      privateEndpointConnectionName: pulumi.Input.fromValue(
-        map['privateEndpointConnectionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      dataManagerForAgricultureResourceName: pulumi.Input.fromValue(map['dataManagerForAgricultureResourceName'] as String),
+      privateEndpointConnectionName: pulumi.Input.fromValue(map['privateEndpointConnectionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

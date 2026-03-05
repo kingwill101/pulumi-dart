@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomRecommendationArgs {
   /// Name of the Custom Recommendation.
   final pulumi.Input<String> customRecommendationName;
-
   /// The scope of the custom recommendation. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   final pulumi.Input<String> scope;
 
@@ -30,10 +29,9 @@ class GetCustomRecommendationArgs {
 
   factory GetCustomRecommendationArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomRecommendationArgs(
-      customRecommendationName: pulumi.Input.fromValue(
-        map['customRecommendationName'] as String,
-      ),
+      customRecommendationName: pulumi.Input.fromValue(map['customRecommendationName'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

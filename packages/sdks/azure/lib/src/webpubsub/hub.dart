@@ -542,20 +542,16 @@ class Hub extends pulumi.CustomResource {
   /// Is anonymous connections are allowed for this hub? Defaults to `false`.
   /// Possible values are `true`, `false`.
   late final pulumi.Output<bool?> anonymousConnectionsEnabled;
-
   /// An `event_handler` block as defined below.
   ///
   /// &gt; **Note:** User can change the order of `event_handler` to change the priority accordingly.
   late final pulumi.Output<List<Map<String, dynamic>>?> eventHandlers;
-
   /// An `event_listener` block as defined below.
   ///
   /// &gt; **Note:** The managed identity of Web PubSub service must be enabled and the identity must have the "Azure Event Hubs Data sender" role to access the Event Hub.
   late final pulumi.Output<List<Map<String, dynamic>>?> eventListeners;
-
   /// The name of the Web Pubsub hub service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the id of the Web Pubsub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> webPubsubId;
 
@@ -563,28 +559,29 @@ class Hub extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Hub]. {@macro pulumi_webpubsub_hub_hub_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Hub(String name, {HubArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:webpubsub/hub:Hub',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    anonymousConnectionsEnabled = registerOutput<bool?>(
-      'anonymousConnectionsEnabled',
-    );
-    eventHandlers = registerOutput<List<Map<String, dynamic>>?>(
-      'eventHandlers',
-    );
-    eventListeners = registerOutput<List<Map<String, dynamic>>?>(
-      'eventListeners',
-    );
+  Hub(
+    String name, {
+    HubArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:webpubsub/hub:Hub',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    anonymousConnectionsEnabled = registerOutput<bool?>('anonymousConnectionsEnabled');
+    eventHandlers = registerOutput<List<Map<String, dynamic>>?>('eventHandlers');
+    eventListeners = registerOutput<List<Map<String, dynamic>>?>('eventListeners');
     this.name = registerOutput<String>('name');
     webPubsubId = registerOutput<String>('webPubsubId');
   }
 
   /// Gets an existing [Hub] resource's state with the given [name] and [id].
-  static Hub get(String name, pulumi.Input<String> id, {HubState? state}) {
+  static Hub get(
+    String name,
+    pulumi.Input<String> id, {
+    HubState? state,
+  }) {
     return Hub._get(
       name,
       state: state?.toMap(),
@@ -597,20 +594,14 @@ class Hub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:webpubsub/hub:Hub',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    anonymousConnectionsEnabled = registerOutput<bool?>(
-      'anonymousConnectionsEnabled',
-    );
-    eventHandlers = registerOutput<List<Map<String, dynamic>>?>(
-      'eventHandlers',
-    );
-    eventListeners = registerOutput<List<Map<String, dynamic>>?>(
-      'eventListeners',
-    );
+          'azure:webpubsub/hub:Hub',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    anonymousConnectionsEnabled = registerOutput<bool?>('anonymousConnectionsEnabled');
+    eventHandlers = registerOutput<List<Map<String, dynamic>>?>('eventHandlers');
+    eventListeners = registerOutput<List<Map<String, dynamic>>?>('eventListeners');
     this.name = registerOutput<String>('name');
     webPubsubId = registerOutput<String>('webPubsubId');
   }

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AS2EnvelopeSettings {
   /// The value indicating whether to auto generate file name.
   final pulumi.Input<bool> autogenerateFileName;
-
   /// The template for file name.
   final pulumi.Input<String> fileNameTemplate;
-
   /// The message content type.
   final pulumi.Input<String> messageContentType;
-
   /// The value indicating whether to suspend message on file name generation error.
   final pulumi.Input<bool> suspendMessageOnFileNameGenerationError;
-
   /// The value indicating whether to transmit file name in mime header.
   final pulumi.Input<bool> transmitFileNameInMimeHeader;
 
@@ -38,29 +34,19 @@ class AS2EnvelopeSettings {
       'autogenerateFileName': autogenerateFileName,
       'fileNameTemplate': fileNameTemplate,
       'messageContentType': messageContentType,
-      'suspendMessageOnFileNameGenerationError':
-          suspendMessageOnFileNameGenerationError,
+      'suspendMessageOnFileNameGenerationError': suspendMessageOnFileNameGenerationError,
       'transmitFileNameInMimeHeader': transmitFileNameInMimeHeader,
     };
   }
 
   factory AS2EnvelopeSettings.fromMap(Map<String, dynamic> map) {
     return AS2EnvelopeSettings(
-      autogenerateFileName: pulumi.Input.fromValue(
-        map['autogenerateFileName'] as bool,
-      ),
-      fileNameTemplate: pulumi.Input.fromValue(
-        map['fileNameTemplate'] as String,
-      ),
-      messageContentType: pulumi.Input.fromValue(
-        map['messageContentType'] as String,
-      ),
-      suspendMessageOnFileNameGenerationError: pulumi.Input.fromValue(
-        map['suspendMessageOnFileNameGenerationError'] as bool,
-      ),
-      transmitFileNameInMimeHeader: pulumi.Input.fromValue(
-        map['transmitFileNameInMimeHeader'] as bool,
-      ),
+      autogenerateFileName: pulumi.Input.fromValue(map['autogenerateFileName'] as bool),
+      fileNameTemplate: pulumi.Input.fromValue(map['fileNameTemplate'] as String),
+      messageContentType: pulumi.Input.fromValue(map['messageContentType'] as String),
+      suspendMessageOnFileNameGenerationError: pulumi.Input.fromValue(map['suspendMessageOnFileNameGenerationError'] as bool),
+      transmitFileNameInMimeHeader: pulumi.Input.fromValue(map['transmitFileNameInMimeHeader'] as bool),
     );
   }
 }
+

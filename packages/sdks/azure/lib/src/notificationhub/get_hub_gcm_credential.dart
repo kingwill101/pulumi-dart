@@ -8,10 +8,14 @@ class GetHubGcmCredential {
 
   /// Creates a new [GetHubGcmCredential].
   /// [apiKey] The API Key associated with the Google Cloud Messaging service.
-  GetHubGcmCredential({required this.apiKey});
+  GetHubGcmCredential({
+    required this.apiKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'apiKey': apiKey};
+    return <String, dynamic>{
+      'apiKey': apiKey,
+    };
   }
 
   factory GetHubGcmCredential.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetHubGcmCredential {
     );
   }
 }
+

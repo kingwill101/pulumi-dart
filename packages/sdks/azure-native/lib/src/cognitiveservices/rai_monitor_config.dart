@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RaiMonitorConfig {
   /// The storage resource Id.
   final pulumi.Input<String>? adxStorageResourceId;
-
   /// The identity client Id to access the storage.
   final pulumi.Input<String>? identityClientId;
 
   /// Creates a new [RaiMonitorConfig].
   /// [adxStorageResourceId] The storage resource Id.
   /// [identityClientId] The identity client Id to access the storage.
-  RaiMonitorConfig({this.adxStorageResourceId, this.identityClientId});
+  RaiMonitorConfig({
+    this.adxStorageResourceId,
+    this.identityClientId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class RaiMonitorConfig {
 
   factory RaiMonitorConfig.fromMap(Map<String, dynamic> map) {
     return RaiMonitorConfig(
-      adxStorageResourceId: (() {
-        final guardedValue = map['adxStorageResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identityClientId: (() {
-        final guardedValue = map['identityClientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      adxStorageResourceId: (() { final guardedValue = map['adxStorageResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identityClientId: (() { final guardedValue = map['identityClientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

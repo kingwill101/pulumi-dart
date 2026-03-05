@@ -155,31 +155,22 @@ import 'static_site_state.dart';
 class StaticSite extends pulumi.CustomResource {
   /// The API key of this Static Web App, which is used for later interacting with this Static Web App from other clients, e.g. GitHub Action.
   late final pulumi.Output<String> apiKey;
-
   /// A key-value pair of App Settings.
   late final pulumi.Output<Map<String, String>?> appSettings;
-
   /// The default host name of the Static Web App.
   late final pulumi.Output<String> defaultHostName;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<StaticSiteIdentity?> identity;
-
   /// The Azure Region where the Static Web App should exist. Changing this forces a new Static Web App to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Static Web App. Changing this forces a new Static Web App to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Static Web App should exist. Changing this forces a new Static Web App to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Specifies the SKU size of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
   late final pulumi.Output<String?> skuSize;
-
   /// Specifies the SKU tier of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
   late final pulumi.Output<String?> skuTier;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -192,24 +183,15 @@ class StaticSite extends pulumi.CustomResource {
     StaticSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/staticSite:StaticSite',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/staticSite:StaticSite',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiKey = registerOutput<String>('apiKey');
     appSettings = registerOutput<Map<String, String>?>('appSettings');
     defaultHostName = registerOutput<String>('defaultHostName');
-    identity = registerOutput<StaticSiteIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StaticSiteIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<StaticSiteIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticSiteIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -236,24 +218,15 @@ class StaticSite extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/staticSite:StaticSite',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/staticSite:StaticSite',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiKey = registerOutput<String>('apiKey');
     appSettings = registerOutput<Map<String, String>?>('appSettings');
     defaultHostName = registerOutput<String>('defaultHostName');
-    identity = registerOutput<StaticSiteIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StaticSiteIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<StaticSiteIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticSiteIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

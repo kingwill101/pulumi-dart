@@ -9,13 +9,20 @@ class SleepAction {
 
   /// Creates a new [SleepAction].
   /// [seconds] Seconds is the number of seconds to sleep.
-  SleepAction({required this.seconds});
+  SleepAction({
+    required this.seconds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'seconds': seconds};
+    return <String, dynamic>{
+      'seconds': seconds,
+    };
   }
 
   factory SleepAction.fromMap(Map<String, dynamic> map) {
-    return SleepAction(seconds: pulumi.Input.fromValue(map['seconds'] as int));
+    return SleepAction(
+      seconds: pulumi.Input.fromValue(map['seconds'] as int),
+    );
   }
 }
+

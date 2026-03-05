@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomModelVpcConfig {
   /// VPC configuration security group IDs.
   final pulumi.Input<List<String>> securityGroupIds;
-
   /// VPC configuration subnets.
   final pulumi.Input<List<String>> subnetIds;
 
@@ -26,12 +25,9 @@ class CustomModelVpcConfig {
 
   factory CustomModelVpcConfig.fromMap(Map<String, dynamic> map) {
     return CustomModelVpcConfig(
-      securityGroupIds: pulumi.Input.fromValue(
-        (map['securityGroupIds'] as List).cast<String>(),
-      ),
-      subnetIds: pulumi.Input.fromValue(
-        (map['subnetIds'] as List).cast<String>(),
-      ),
+      securityGroupIds: pulumi.Input.fromValue((map['securityGroupIds'] as List).cast<String>()),
+      subnetIds: pulumi.Input.fromValue((map['subnetIds'] as List).cast<String>()),
     );
   }
 }
+

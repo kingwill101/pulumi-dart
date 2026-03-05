@@ -7,14 +7,11 @@ class Override extends pulumi.CustomResource {
   /// ID of the API proxy that will have its trace configuration overridden.
   late final pulumi.Output<String> apiProxy;
   late final pulumi.Output<String> environmentId;
-
   /// ID of the trace configuration override specified as a system-generated UUID.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
-
   /// Trace configuration to override.
-  late final pulumi.Output<GoogleCloudApigeeV1TraceSamplingConfigResponse>
-  samplingConfig;
+  late final pulumi.Output<GoogleCloudApigeeV1TraceSamplingConfigResponse> samplingConfig;
 
   /// Creates a new [Override].
   /// [name] The Pulumi resource name.
@@ -25,25 +22,15 @@ class Override extends pulumi.CustomResource {
     OverrideArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:apigee/v1:Override',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:apigee/v1:Override',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiProxy = registerOutput<String>('apiProxy');
     environmentId = registerOutput<String>('environmentId');
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
-    samplingConfig =
-        registerOutput<GoogleCloudApigeeV1TraceSamplingConfigResponse>(
-          'samplingConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GoogleCloudApigeeV1TraceSamplingConfigResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    samplingConfig = registerOutput<GoogleCloudApigeeV1TraceSamplingConfigResponse>('samplingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1TraceSamplingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

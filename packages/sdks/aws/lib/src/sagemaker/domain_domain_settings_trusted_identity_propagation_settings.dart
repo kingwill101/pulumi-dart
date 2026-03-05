@@ -13,14 +13,15 @@ class DomainDomainSettingsTrustedIdentityPropagationSettings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': status};
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
-  factory DomainDomainSettingsTrustedIdentityPropagationSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDomainSettingsTrustedIdentityPropagationSettings.fromMap(Map<String, dynamic> map) {
     return DomainDomainSettingsTrustedIdentityPropagationSettings(
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

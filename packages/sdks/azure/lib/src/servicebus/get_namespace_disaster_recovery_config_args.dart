@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamespaceDisasterRecoveryConfigArgs {
   /// The Shared access policies used to access the connection string for the alias.
   final pulumi.Input<String>? aliasAuthorizationRuleId;
-
   /// The name of this Service Bus Disaster Recovery Config.
   final pulumi.Input<String> name;
-
   /// The ID of the Service Bus Namespace.
   final pulumi.Input<String>? namespaceId;
   final pulumi.Input<String>? namespaceName;
@@ -42,31 +40,14 @@ class GetNamespaceDisasterRecoveryConfigArgs {
     };
   }
 
-  factory GetNamespaceDisasterRecoveryConfigArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNamespaceDisasterRecoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceDisasterRecoveryConfigArgs(
-      aliasAuthorizationRuleId: (() {
-        final guardedValue = map['aliasAuthorizationRuleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      aliasAuthorizationRuleId: (() { final guardedValue = map['aliasAuthorizationRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      namespaceId: (() {
-        final guardedValue = map['namespaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespaceName: (() {
-        final guardedValue = map['namespaceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      namespaceId: (() { final guardedValue = map['namespaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespaceName: (() { final guardedValue = map['namespaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

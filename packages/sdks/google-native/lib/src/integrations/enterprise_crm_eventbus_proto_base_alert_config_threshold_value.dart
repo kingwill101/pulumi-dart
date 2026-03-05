@@ -16,23 +16,17 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'absolute': ?absolute, 'percentage': ?percentage};
+    return <String, dynamic>{
+      'absolute': ?absolute,
+      'percentage': ?percentage,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue(
-      absolute: (() {
-        final guardedValue = map['absolute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      percentage: (() {
-        final guardedValue = map['percentage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      absolute: (() { final guardedValue = map['absolute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      percentage: (() { final guardedValue = map['percentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

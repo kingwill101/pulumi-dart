@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceEvent {
   /// Time when task set was created (RFC3339 format)
   final pulumi.Input<String> createdAt;
-
   /// Task set ID
   final pulumi.Input<String> id;
-
   /// Event message
   final pulumi.Input<String> message;
 
@@ -38,3 +36,4 @@ class GetServiceEvent {
     );
   }
 }
+

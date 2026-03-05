@@ -2182,38 +2182,26 @@ import 'rule_group_state.dart';
 class RuleGroup extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) that identifies the rule group.
   late final pulumi.Output<String> arn;
-
   /// The maximum number of operating resources that this rule group can use. For a stateless rule group, the capacity required is the sum of the capacity requirements of the individual rules. For a stateful rule group, the minimum capacity required is the number of individual rules.
   late final pulumi.Output<int> capacity;
-
   /// A friendly description of the rule group.
   late final pulumi.Output<String?> description;
-
   /// KMS encryption configuration settings. See Encryption Configuration below for details.
-  late final pulumi.Output<RuleGroupEncryptionConfiguration?>
-  encryptionConfiguration;
-
+  late final pulumi.Output<RuleGroupEncryptionConfiguration?> encryptionConfiguration;
   /// A friendly name of the rule group.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A configuration block that defines the rule group rules. Required unless `rules` is specified. See Rule Group below for details.
   late final pulumi.Output<RuleGroupRuleGroup> ruleGroup;
-
   /// The stateful rule group rules specifications in Suricata file format, with one rule per line. Use this to import your existing Suricata compatible rule groups. Required unless `rule_group` is specified.
   late final pulumi.Output<String?> rules;
-
   /// A map of key:value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Whether the rule group is stateless (containing stateless rules) or stateful (containing stateful rules). Valid values include: `STATEFUL` or `STATELESS`.
   late final pulumi.Output<String> type;
-
   /// A string token used when updating the rule group.
   late final pulumi.Output<String> updateToken;
 
@@ -2226,36 +2214,18 @@ class RuleGroup extends pulumi.CustomResource {
     RuleGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkfirewall/ruleGroup:RuleGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkfirewall/ruleGroup:RuleGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     capacity = registerOutput<int>('capacity');
     description = registerOutput<String?>('description');
-    encryptionConfiguration = registerOutput<RuleGroupEncryptionConfiguration?>(
-      'encryptionConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuleGroupEncryptionConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionConfiguration = registerOutput<RuleGroupEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleGroupEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    ruleGroup = registerOutput<RuleGroupRuleGroup>(
-      'ruleGroup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuleGroupRuleGroup.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ruleGroup = registerOutput<RuleGroupRuleGroup>('ruleGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleGroupRuleGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rules = registerOutput<String?>('rules');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -2281,36 +2251,18 @@ class RuleGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkfirewall/ruleGroup:RuleGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkfirewall/ruleGroup:RuleGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     capacity = registerOutput<int>('capacity');
     description = registerOutput<String?>('description');
-    encryptionConfiguration = registerOutput<RuleGroupEncryptionConfiguration?>(
-      'encryptionConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuleGroupEncryptionConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionConfiguration = registerOutput<RuleGroupEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleGroupEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    ruleGroup = registerOutput<RuleGroupRuleGroup>(
-      'ruleGroup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuleGroupRuleGroup.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ruleGroup = registerOutput<RuleGroupRuleGroup>('ruleGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleGroupRuleGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rules = registerOutput<String?>('rules');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

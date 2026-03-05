@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConsumerGroupsGroup {
   /// The name of the consumer group.
   final pulumi.Input<String> consumerId;
-
   /// The ID of the consumer group, It is formatted to `&lt;instance_id&gt;:&lt;consumer_id&gt;`.
   final pulumi.Input<String> id;
-
   /// ID of the ALIKAFKA Instance that owns the consumer groups.
   final pulumi.Input<String> instanceId;
-
   /// The remark of the consumer group.
   final pulumi.Input<String> remark;
-
   /// A mapping of tags to assign to the consumer group.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -48,13 +44,8 @@ class GetConsumerGroupsGroup {
       id: pulumi.Input.fromValue(map['id'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       remark: pulumi.Input.fromValue(map['remark'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

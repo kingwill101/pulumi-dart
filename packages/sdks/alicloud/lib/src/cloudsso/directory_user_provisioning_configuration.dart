@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DirectoryUserProvisioningConfiguration {
   /// The duration of the Session after the user logs in.
   final pulumi.Input<String>? defaultLandingPage;
-
   /// The duration of the Session after the user logs in.
   final pulumi.Input<String>? sessionDuration;
 
@@ -24,20 +23,11 @@ class DirectoryUserProvisioningConfiguration {
     };
   }
 
-  factory DirectoryUserProvisioningConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DirectoryUserProvisioningConfiguration.fromMap(Map<String, dynamic> map) {
     return DirectoryUserProvisioningConfiguration(
-      defaultLandingPage: (() {
-        final guardedValue = map['defaultLandingPage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sessionDuration: (() {
-        final guardedValue = map['sessionDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      defaultLandingPage: (() { final guardedValue = map['defaultLandingPage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sessionDuration: (() { final guardedValue = map['sessionDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

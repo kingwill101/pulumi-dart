@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseInstanceLatestRecoveryTimeArgs {
   /// The name of the instance.
   final pulumi.Input<String> instance;
-
   /// The ID of the project in which the resource belongs.
   final pulumi.Input<String>? project;
   final pulumi.Input<String>? sourceInstanceDeletionTime;
@@ -32,21 +31,12 @@ class GetDatabaseInstanceLatestRecoveryTimeArgs {
     };
   }
 
-  factory GetDatabaseInstanceLatestRecoveryTimeArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstanceLatestRecoveryTimeArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceLatestRecoveryTimeArgs(
       instance: pulumi.Input.fromValue(map['instance'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceInstanceDeletionTime: (() {
-        final guardedValue = map['sourceInstanceDeletionTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceInstanceDeletionTime: (() { final guardedValue = map['sourceInstanceDeletionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

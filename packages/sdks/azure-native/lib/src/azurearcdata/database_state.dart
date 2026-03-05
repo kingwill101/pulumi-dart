@@ -22,3 +22,4 @@ enum DatabaseState {
     throw ArgumentError('Unknown DatabaseState value: $value');
   }
 }
+

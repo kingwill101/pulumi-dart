@@ -238,22 +238,16 @@ import 'route_state.dart';
 class Route extends pulumi.CustomResource {
   /// The ID of the Client VPN endpoint.
   late final pulumi.Output<String> clientVpnEndpointId;
-
   /// A brief description of the route.
   late final pulumi.Output<String?> description;
-
   /// The IPv4 or IPv6 address range, in CIDR notation, of the route destination.
   late final pulumi.Output<String> destinationCidrBlock;
-
   /// Indicates how the Client VPN route was added. Will be `add-route` for routes created by this resource.
   late final pulumi.Output<String> origin;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN.
   late final pulumi.Output<String> targetVpcSubnetId;
-
   /// The type of the route.
   late final pulumi.Output<String> type;
 
@@ -261,13 +255,16 @@ class Route extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Route]. {@macro pulumi_ec2clientvpn_route_route_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Route(String name, {RouteArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:ec2clientvpn/route:Route',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Route(
+    String name, {
+    RouteArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:ec2clientvpn/route:Route',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');
     description = registerOutput<String?>('description');
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
@@ -278,7 +275,11 @@ class Route extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Route] resource's state with the given [name] and [id].
-  static Route get(String name, pulumi.Input<String> id, {RouteState? state}) {
+  static Route get(
+    String name,
+    pulumi.Input<String> id, {
+    RouteState? state,
+  }) {
     return Route._get(
       name,
       state: state?.toMap(),
@@ -291,11 +292,11 @@ class Route extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2clientvpn/route:Route',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2clientvpn/route:Route',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');
     description = registerOutput<String?>('description');
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');

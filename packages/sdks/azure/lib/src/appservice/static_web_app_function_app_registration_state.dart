@@ -10,7 +10,6 @@ class StaticWebAppFunctionAppRegistrationState {
   ///
   /// &gt; **Note:** Connecting a Function App resource to a Static Web App resource updates the Function App to use AuthV2 and configures the `azure_static_web_app_v2` which may need to be accounted for by the use of `ignore_changes` depending on the existing `auth_settings_v2` configuration of the target Function App.
   final pulumi.Input<String>? functionAppId;
-
   /// The ID of the Static Web App to register the Function App to as a backend. Changing this forces a new resource to be created.
   final pulumi.Input<String>? staticWebAppId;
 
@@ -29,20 +28,11 @@ class StaticWebAppFunctionAppRegistrationState {
     };
   }
 
-  factory StaticWebAppFunctionAppRegistrationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StaticWebAppFunctionAppRegistrationState.fromMap(Map<String, dynamic> map) {
     return StaticWebAppFunctionAppRegistrationState(
-      functionAppId: (() {
-        final guardedValue = map['functionAppId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      staticWebAppId: (() {
-        final guardedValue = map['staticWebAppId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      functionAppId: (() { final guardedValue = map['functionAppId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      staticWebAppId: (() { final guardedValue = map['staticWebAppId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

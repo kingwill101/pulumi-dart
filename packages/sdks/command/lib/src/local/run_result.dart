@@ -8,10 +8,8 @@ class RunResult {
   /// injected into the environment of the next run as PULUMI_COMMAND_STDOUT and PULUMI_COMMAND_STDERR.
   /// Defaults to true.
   final bool? addPreviousOutputInEnv;
-
   /// An archive asset containing files found after running the command.
   final dynamic archive;
-
   /// A list of path globs to return as a single archive asset after the command completes.
   ///
   /// When specifying glob patterns the following rules apply:
@@ -51,7 +49,6 @@ class RunResult {
   /// - src/index.js
   /// ```
   final List<String>? archivePaths;
-
   /// A list of path globs to read after the command completes.
   ///
   /// When specifying glob patterns the following rules apply:
@@ -91,36 +88,27 @@ class RunResult {
   /// - src/index.js
   /// ```
   final List<String>? assetPaths;
-
   /// A map of assets found after running the command.
   /// The key is the relative path from the command dir
   final Map<String, dynamic>? assets;
-
   /// The command to run.
   final String command;
-
   /// The directory from which to run the command from. If `dir` does not exist, then
   /// `Command` will fail.
   final String? dir;
-
   /// Additional environment variables available to the command's process.
   final Map<String, String>? environment;
-
   /// The program and arguments to run the command.
   /// On Linux and macOS, defaults to: `["/bin/sh", "-c"]`. On Windows, defaults to: `["cmd", "/C"]`
   final List<String>? interpreter;
-
   /// If the command's stdout and stderr should be logged. This doesn't affect the capturing of
   /// stdout and stderr as outputs. If there might be secrets in the output, you can disable logging here and mark the
   /// outputs as secret via 'additionalSecretOutputs'. Defaults to logging both stdout and stderr.
   final Logging? logging;
-
   /// The standard error of the command's process
   final String stderr;
-
   /// Pass a string to the command's process as standard in
   final String? stdin;
-
   /// The standard output of the command's process
   final String stdout;
 
@@ -174,59 +162,20 @@ class RunResult {
 
   factory RunResult.fromMap(Map<String, dynamic> map) {
     return RunResult(
-      addPreviousOutputInEnv: (() {
-        final guardedValue = map['addPreviousOutputInEnv'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      archive: (() {
-        final guardedValue = map['archive'];
-        if (guardedValue == null) return null;
-        return guardedValue;
-      })(),
-      archivePaths: (() {
-        final guardedValue = map['archivePaths'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      assetPaths: (() {
-        final guardedValue = map['assetPaths'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      assets: (() {
-        final guardedValue = map['assets'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, dynamic>();
-      })(),
+      addPreviousOutputInEnv: (() { final guardedValue = map['addPreviousOutputInEnv']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      archive: (() { final guardedValue = map['archive']; if (guardedValue == null) return null; return guardedValue; })(),
+      archivePaths: (() { final guardedValue = map['archivePaths']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      assetPaths: (() { final guardedValue = map['assetPaths']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      assets: (() { final guardedValue = map['assets']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); })(),
       command: map['command'] as String,
-      dir: (() {
-        final guardedValue = map['dir'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      environment: (() {
-        final guardedValue = map['environment'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      interpreter: (() {
-        final guardedValue = map['interpreter'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      logging: (() {
-        final guardedValue = map['logging'];
-        if (guardedValue == null) return null;
-        return Logging.fromValue(guardedValue as String);
-      })(),
+      dir: (() { final guardedValue = map['dir']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      interpreter: (() { final guardedValue = map['interpreter']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      logging: (() { final guardedValue = map['logging']; if (guardedValue == null) return null; return Logging.fromValue(guardedValue as String); })(),
       stderr: map['stderr'] as String,
-      stdin: (() {
-        final guardedValue = map['stdin'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      stdin: (() { final guardedValue = map['stdin']; if (guardedValue == null) return null; return guardedValue as String; })(),
       stdout: map['stdout'] as String,
     );
   }
 }
+

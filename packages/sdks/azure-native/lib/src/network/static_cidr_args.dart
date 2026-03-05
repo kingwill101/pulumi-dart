@@ -10,16 +10,12 @@ import 'static_cidr_properties.dart';
 class StaticCidrArgs {
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
-
   /// IP Address Manager Pool resource name.
   final pulumi.Input<String> poolName;
-
   /// Properties of static CIDR resource.
   final pulumi.Input<StaticCidrProperties>? properties;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// Static Cidr allocation name.
   final pulumi.Input<String>? staticCidrName;
 
@@ -41,11 +37,7 @@ class StaticCidrArgs {
     return <String, dynamic>{
       'networkManagerName': networkManagerName,
       'poolName': poolName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            StaticCidrProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<StaticCidrProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'staticCidrName': ?staticCidrName,
     };
@@ -53,27 +45,12 @@ class StaticCidrArgs {
 
   factory StaticCidrArgs.fromMap(Map<String, dynamic> map) {
     return StaticCidrArgs(
-      networkManagerName: pulumi.Input.fromValue(
-        map['networkManagerName'] as String,
-      ),
+      networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
       poolName: pulumi.Input.fromValue(map['poolName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StaticCidrProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      staticCidrName: (() {
-        final guardedValue = map['staticCidrName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StaticCidrProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      staticCidrName: (() { final guardedValue = map['staticCidrName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

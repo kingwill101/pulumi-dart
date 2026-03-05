@@ -12,29 +12,21 @@ import 'volume_target.dart';
 class VolumeArgs {
   /// Specifies the units for the allocated space in the storage volume.
   final pulumi.Input<String>? allocationUnit;
-
   /// Backing store configuration for copy-on-write volumes
   final pulumi.Input<VolumeBackingStore>? backingStore;
-
   /// Volume capacity in bytes (required unless using create.content)
   final pulumi.Input<double>? capacity;
-
   /// Specifies the units for the total capacity in the storage volume.
   final pulumi.Input<String>? capacityUnit;
-
   /// Volume creation options for initializing volume content from external sources
   final pulumi.Input<VolumeCreate>? create;
-
   /// Sets the name for the storage volume, which must be unique within the pool.
   final pulumi.Input<String>? name;
-
   /// Specifies the units for the physical size in the storage volume.
   final pulumi.Input<String>? physicalUnit;
-
   /// Name of the storage pool where the volume will be created
   final pulumi.Input<String> pool;
   final pulumi.Input<VolumeTarget>? target;
-
   /// Specifies the type of the storage volume, allowing for distinction of different volume types.
   final pulumi.Input<String>? type;
 
@@ -65,86 +57,31 @@ class VolumeArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocationUnit': ?allocationUnit,
-      'backingStore':
-          ?pulumi.Input.mapOptionalInputValue<
-            VolumeBackingStore,
-            Map<String, dynamic>
-          >(backingStore, (value) => value.toMap()),
+      'backingStore': ?pulumi.Input.mapOptionalInputValue<VolumeBackingStore, Map<String, dynamic>>(backingStore, (value) => value.toMap()),
       'capacity': ?capacity,
       'capacityUnit': ?capacityUnit,
-      'create':
-          ?pulumi.Input.mapOptionalInputValue<
-            VolumeCreate,
-            Map<String, dynamic>
-          >(create, (value) => value.toMap()),
+      'create': ?pulumi.Input.mapOptionalInputValue<VolumeCreate, Map<String, dynamic>>(create, (value) => value.toMap()),
       'name': ?name,
       'physicalUnit': ?physicalUnit,
       'pool': pool,
-      'target':
-          ?pulumi.Input.mapOptionalInputValue<
-            VolumeTarget,
-            Map<String, dynamic>
-          >(target, (value) => value.toMap()),
+      'target': ?pulumi.Input.mapOptionalInputValue<VolumeTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
       'type': ?type,
     };
   }
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      allocationUnit: (() {
-        final guardedValue = map['allocationUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      backingStore: (() {
-        final guardedValue = map['backingStore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VolumeBackingStore.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      capacity: (() {
-        final guardedValue = map['capacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      capacityUnit: (() {
-        final guardedValue = map['capacityUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      create: (() {
-        final guardedValue = map['create'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VolumeCreate.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      physicalUnit: (() {
-        final guardedValue = map['physicalUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allocationUnit: (() { final guardedValue = map['allocationUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backingStore: (() { final guardedValue = map['backingStore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeBackingStore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      capacityUnit: (() { final guardedValue = map['capacityUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      create: (() { final guardedValue = map['create']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeCreate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      physicalUnit: (() { final guardedValue = map['physicalUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pool: pulumi.Input.fromValue(map['pool'] as String),
-      target: (() {
-        final guardedValue = map['target'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VolumeTarget.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeTarget.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -10,16 +10,12 @@ import 'dashboard_properties_with_provisioning_state.dart';
 class DashboardArgs {
   /// The name of the dashboard.
   final pulumi.Input<String>? dashboardName;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<DashboardPropertiesWithProvisioningState>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,11 +37,7 @@ class DashboardArgs {
     return <String, dynamic>{
       'dashboardName': ?dashboardName,
       'location': ?location,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            DashboardPropertiesWithProvisioningState,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<DashboardPropertiesWithProvisioningState, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -53,35 +45,12 @@ class DashboardArgs {
 
   factory DashboardArgs.fromMap(Map<String, dynamic> map) {
     return DashboardArgs(
-      dashboardName: (() {
-        final guardedValue = map['dashboardName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DashboardPropertiesWithProvisioningState.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      dashboardName: (() { final guardedValue = map['dashboardName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DashboardPropertiesWithProvisioningState.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

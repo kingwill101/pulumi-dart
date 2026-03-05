@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeviceArgs {
   /// Name of catalog
   final pulumi.Input<String> catalogName;
-
   /// Name of device group.
   final pulumi.Input<String> deviceGroupName;
-
   /// Device ID
   final pulumi.Input<String>? deviceId;
-
   /// Device name
   final pulumi.Input<String>? deviceName;
-
   /// Name of product.
   final pulumi.Input<String> productName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -56,20 +51,11 @@ class DeviceArgs {
     return DeviceArgs(
       catalogName: pulumi.Input.fromValue(map['catalogName'] as String),
       deviceGroupName: pulumi.Input.fromValue(map['deviceGroupName'] as String),
-      deviceId: (() {
-        final guardedValue = map['deviceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deviceName: (() {
-        final guardedValue = map['deviceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deviceId: (() { final guardedValue = map['deviceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deviceName: (() { final guardedValue = map['deviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       productName: pulumi.Input.fromValue(map['productName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -1,45 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSensitivityLabel.
 class GetSensitivityLabelResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
   final String? clientClassificationSource;
-
   /// The column name.
   final String columnName;
-
   /// Resource ID.
   final String id;
-
   /// The information type.
   final String? informationType;
-
   /// The information type ID.
   final String? informationTypeId;
-
   /// Is sensitivity recommendation disabled. Applicable for recommended sensitivity label only. Specifies whether the sensitivity recommendation on this column is disabled (dismissed) or not.
   final bool isDisabled;
-
   /// The label ID.
   final String? labelId;
-
   /// The label name.
   final String? labelName;
-
   /// Resource that manages the sensitivity label.
   final String managedBy;
-
   /// Resource name.
   final String name;
   final String? rank;
-
   /// The schema name.
   final String schemaName;
-
   /// The table name.
   final String tableName;
-
   /// Resource type.
   final String type;
 
@@ -100,44 +89,21 @@ class GetSensitivityLabelResult {
   factory GetSensitivityLabelResult.fromMap(Map<String, dynamic> map) {
     return GetSensitivityLabelResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      clientClassificationSource: (() {
-        final guardedValue = map['clientClassificationSource'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      clientClassificationSource: (() { final guardedValue = map['clientClassificationSource']; if (guardedValue == null) return null; return guardedValue as String; })(),
       columnName: map['columnName'] as String,
       id: map['id'] as String,
-      informationType: (() {
-        final guardedValue = map['informationType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      informationTypeId: (() {
-        final guardedValue = map['informationTypeId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      informationType: (() { final guardedValue = map['informationType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      informationTypeId: (() { final guardedValue = map['informationTypeId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isDisabled: map['isDisabled'] as bool,
-      labelId: (() {
-        final guardedValue = map['labelId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      labelName: (() {
-        final guardedValue = map['labelName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      labelId: (() { final guardedValue = map['labelId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labelName: (() { final guardedValue = map['labelName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       managedBy: map['managedBy'] as String,
       name: map['name'] as String,
-      rank: (() {
-        final guardedValue = map['rank'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      rank: (() { final guardedValue = map['rank']; if (guardedValue == null) return null; return guardedValue as String; })(),
       schemaName: map['schemaName'] as String,
       tableName: map['tableName'] as String,
       type: map['type'] as String,
     );
   }
 }
+

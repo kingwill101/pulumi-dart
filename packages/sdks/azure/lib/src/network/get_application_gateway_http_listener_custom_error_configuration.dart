@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayHttpListenerCustomErrorConfiguration {
   /// Error page URL of the application gateway custom error.
   final pulumi.Input<String> customErrorPageUrl;
-
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String> id;
-
   /// Status code of the application gateway custom error.
   final pulumi.Input<String> statusCode;
 
@@ -30,15 +28,12 @@ class GetApplicationGatewayHttpListenerCustomErrorConfiguration {
     };
   }
 
-  factory GetApplicationGatewayHttpListenerCustomErrorConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationGatewayHttpListenerCustomErrorConfiguration.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayHttpListenerCustomErrorConfiguration(
-      customErrorPageUrl: pulumi.Input.fromValue(
-        map['customErrorPageUrl'] as String,
-      ),
+      customErrorPageUrl: pulumi.Input.fromValue(map['customErrorPageUrl'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       statusCode: pulumi.Input.fromValue(map['statusCode'] as String),
     );
   }
 }
+

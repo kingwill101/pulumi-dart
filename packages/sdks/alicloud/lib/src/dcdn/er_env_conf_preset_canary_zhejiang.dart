@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ErEnvConfPresetCanaryZhejiang {
   /// Allowed DCDN domain names.
   final pulumi.Input<List<String>>? allowedHosts;
-
   /// The version number of the code.
   final pulumi.Input<String>? codeRev;
-
   /// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
   final pulumi.Input<String>? specName;
 
@@ -32,21 +30,10 @@ class ErEnvConfPresetCanaryZhejiang {
 
   factory ErEnvConfPresetCanaryZhejiang.fromMap(Map<String, dynamic> map) {
     return ErEnvConfPresetCanaryZhejiang(
-      allowedHosts: (() {
-        final guardedValue = map['allowedHosts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      codeRev: (() {
-        final guardedValue = map['codeRev'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      specName: (() {
-        final guardedValue = map['specName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowedHosts: (() { final guardedValue = map['allowedHosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      codeRev: (() { final guardedValue = map['codeRev']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      specName: (() { final guardedValue = map['specName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

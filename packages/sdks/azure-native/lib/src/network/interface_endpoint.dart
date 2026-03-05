@@ -174,37 +174,26 @@ import 'subnet_response.dart';
 class InterfaceEndpoint extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A reference to the service being brought into the virtual network.
   late final pulumi.Output<EndpointServiceResponse?> endpointService;
-
   /// Gets a unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String?> etag;
-
   /// A first-party service's FQDN that is mapped to the private IP allocated via this interface endpoint.
   late final pulumi.Output<String?> fqdn;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Gets an array of references to the network interfaces created for this interface endpoint.
   late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
-
   /// A read-only property that identifies who created this interface endpoint.
   late final pulumi.Output<String> owner;
-
   /// The provisioning state of the interface endpoint. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   late final pulumi.Output<String> provisioningState;
-
   /// The ID of the subnet from which the private IP will be allocated.
   late final pulumi.Output<SubnetResponse?> subnet;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -217,41 +206,21 @@ class InterfaceEndpoint extends pulumi.CustomResource {
     InterfaceEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:InterfaceEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:InterfaceEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    endpointService = registerOutput<EndpointServiceResponse?>(
-      'endpointService',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointServiceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    endpointService = registerOutput<EndpointServiceResponse?>('endpointService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String?>('etag');
     fqdn = registerOutput<String?>('fqdn');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
-      'networkInterfaces',
-    );
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
     owner = registerOutput<String>('owner');
     provisioningState = registerOutput<String>('provisioningState');
-    subnet = registerOutput<SubnetResponse?>(
-      'subnet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubnetResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    subnet = registerOutput<SubnetResponse?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

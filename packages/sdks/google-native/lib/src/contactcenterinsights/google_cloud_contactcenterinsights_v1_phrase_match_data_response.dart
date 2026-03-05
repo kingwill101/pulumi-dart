@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse {
   /// The human-readable name of the phrase matcher.
   final pulumi.Input<String> displayName;
-
   /// The unique identifier (the resource name) of the phrase matcher.
   final pulumi.Input<String> phraseMatcher;
 
@@ -25,12 +24,11 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       phraseMatcher: pulumi.Input.fromValue(map['phraseMatcher'] as String),
     );
   }
 }
+

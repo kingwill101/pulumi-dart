@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdapterPropertyOverridesResponse {
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
   final pulumi.Input<String> jumboPacket;
-
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
   final pulumi.Input<String> networkDirect;
-
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
   final pulumi.Input<String> networkDirectTechnology;
 
@@ -35,9 +33,8 @@ class AdapterPropertyOverridesResponse {
     return AdapterPropertyOverridesResponse(
       jumboPacket: pulumi.Input.fromValue(map['jumboPacket'] as String),
       networkDirect: pulumi.Input.fromValue(map['networkDirect'] as String),
-      networkDirectTechnology: pulumi.Input.fromValue(
-        map['networkDirectTechnology'] as String,
-      ),
+      networkDirectTechnology: pulumi.Input.fromValue(map['networkDirectTechnology'] as String),
     );
   }
 }
+

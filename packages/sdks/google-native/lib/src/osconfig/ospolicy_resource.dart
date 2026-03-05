@@ -10,16 +10,12 @@ import 'ospolicy_resource_repository_resource.dart';
 class OSPolicyResource {
   /// Exec resource
   final pulumi.Input<OSPolicyResourceExecResource>? exec;
-
   /// File resource
   final pulumi.Input<OSPolicyResourceFileResource>? file;
-
   /// The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
   final pulumi.Input<String> id;
-
   /// Package resource
   final pulumi.Input<OSPolicyResourcePackageResource>? pkg;
-
   /// Package repository resource
   final pulumi.Input<OSPolicyResourceRepositoryResource>? repository;
 
@@ -39,69 +35,22 @@ class OSPolicyResource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exec':
-          ?pulumi.Input.mapOptionalInputValue<
-            OSPolicyResourceExecResource,
-            Map<String, dynamic>
-          >(exec, (value) => value.toMap()),
-      'file':
-          ?pulumi.Input.mapOptionalInputValue<
-            OSPolicyResourceFileResource,
-            Map<String, dynamic>
-          >(file, (value) => value.toMap()),
+      'exec': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourceExecResource, Map<String, dynamic>>(exec, (value) => value.toMap()),
+      'file': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourceFileResource, Map<String, dynamic>>(file, (value) => value.toMap()),
       'id': id,
-      'pkg':
-          ?pulumi.Input.mapOptionalInputValue<
-            OSPolicyResourcePackageResource,
-            Map<String, dynamic>
-          >(pkg, (value) => value.toMap()),
-      'repository':
-          ?pulumi.Input.mapOptionalInputValue<
-            OSPolicyResourceRepositoryResource,
-            Map<String, dynamic>
-          >(repository, (value) => value.toMap()),
+      'pkg': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourcePackageResource, Map<String, dynamic>>(pkg, (value) => value.toMap()),
+      'repository': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourceRepositoryResource, Map<String, dynamic>>(repository, (value) => value.toMap()),
     };
   }
 
   factory OSPolicyResource.fromMap(Map<String, dynamic> map) {
     return OSPolicyResource(
-      exec: (() {
-        final guardedValue = map['exec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OSPolicyResourceExecResource.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      file: (() {
-        final guardedValue = map['file'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OSPolicyResourceFileResource.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      exec: (() { final guardedValue = map['exec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OSPolicyResourceExecResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      file: (() { final guardedValue = map['file']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OSPolicyResourceFileResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
-      pkg: (() {
-        final guardedValue = map['pkg'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OSPolicyResourcePackageResource.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      repository: (() {
-        final guardedValue = map['repository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OSPolicyResourceRepositoryResource.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      pkg: (() { final guardedValue = map['pkg']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OSPolicyResourcePackageResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      repository: (() { final guardedValue = map['repository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OSPolicyResourceRepositoryResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

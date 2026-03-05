@@ -9,21 +9,20 @@ class OpenAIIntegrationStatusResponsePropertiesResponse {
 
   /// Creates a new [OpenAIIntegrationStatusResponsePropertiesResponse].
   /// [status] Status of the OpenAI Integration
-  OpenAIIntegrationStatusResponsePropertiesResponse({this.status});
+  OpenAIIntegrationStatusResponsePropertiesResponse({
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': ?status};
+    return <String, dynamic>{
+      'status': ?status,
+    };
   }
 
-  factory OpenAIIntegrationStatusResponsePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OpenAIIntegrationStatusResponsePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return OpenAIIntegrationStatusResponsePropertiesResponse(
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

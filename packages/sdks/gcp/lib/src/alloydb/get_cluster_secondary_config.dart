@@ -9,17 +9,20 @@ class GetClusterSecondaryConfig {
 
   /// Creates a new [GetClusterSecondaryConfig].
   /// [primaryClusterName] Name of the primary cluster must be in the format
-  GetClusterSecondaryConfig({required this.primaryClusterName});
+  GetClusterSecondaryConfig({
+    required this.primaryClusterName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'primaryClusterName': primaryClusterName};
+    return <String, dynamic>{
+      'primaryClusterName': primaryClusterName,
+    };
   }
 
   factory GetClusterSecondaryConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterSecondaryConfig(
-      primaryClusterName: pulumi.Input.fromValue(
-        map['primaryClusterName'] as String,
-      ),
+      primaryClusterName: pulumi.Input.fromValue(map['primaryClusterName'] as String),
     );
   }
 }
+

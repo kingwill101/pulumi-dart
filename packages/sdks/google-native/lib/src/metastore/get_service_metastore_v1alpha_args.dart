@@ -32,12 +32,9 @@ class GetServiceMetastoreV1alphaArgs {
   factory GetServiceMetastoreV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceMetastoreV1alphaArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
     );
   }
 }
+

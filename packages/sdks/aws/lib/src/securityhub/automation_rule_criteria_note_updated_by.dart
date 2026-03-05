@@ -15,15 +15,17 @@ class AutomationRuleCriteriaNoteUpdatedBy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comparison': comparison, 'value': value};
+    return <String, dynamic>{
+      'comparison': comparison,
+      'value': value,
+    };
   }
 
-  factory AutomationRuleCriteriaNoteUpdatedBy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutomationRuleCriteriaNoteUpdatedBy.fromMap(Map<String, dynamic> map) {
     return AutomationRuleCriteriaNoteUpdatedBy(
       comparison: pulumi.Input.fromValue(map['comparison'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

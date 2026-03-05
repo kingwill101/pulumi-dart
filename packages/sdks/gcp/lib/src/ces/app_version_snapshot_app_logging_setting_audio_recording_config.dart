@@ -10,7 +10,6 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfig {
   /// you should grant `storage.objects.create` permission to the CES service
   /// agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
   final pulumi.Input<String>? gcsBucket;
-
   /// (Output)
   /// The Cloud Storage path prefix for audio recordings.
   /// This prefix can include the following placeholders, which will be
@@ -39,20 +38,11 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfig {
     };
   }
 
-  factory AppVersionSnapshotAppLoggingSettingAudioRecordingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotAppLoggingSettingAudioRecordingConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppLoggingSettingAudioRecordingConfig(
-      gcsBucket: (() {
-        final guardedValue = map['gcsBucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      gcsPathPrefix: (() {
-        final guardedValue = map['gcsPathPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gcsBucket: (() { final guardedValue = map['gcsBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gcsPathPrefix: (() { final guardedValue = map['gcsPathPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

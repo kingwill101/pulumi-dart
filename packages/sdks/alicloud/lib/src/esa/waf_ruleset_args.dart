@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WafRulesetArgs {
   /// The ruleset name.
   final pulumi.Input<String>? name;
-
   /// The WAF phase
   final pulumi.Input<String> phase;
-
   /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
   final pulumi.Input<String> siteId;
   final pulumi.Input<int>? siteVersion;
-
   /// Rule Set Status
   final pulumi.Input<String>? status;
 
@@ -46,23 +43,12 @@ class WafRulesetArgs {
 
   factory WafRulesetArgs.fromMap(Map<String, dynamic> map) {
     return WafRulesetArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       phase: pulumi.Input.fromValue(map['phase'] as String),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
-      siteVersion: (() {
-        final guardedValue = map['siteVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      siteVersion: (() { final guardedValue = map['siteVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

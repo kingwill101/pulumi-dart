@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountSASServices {
   /// Should permission be granted to `blob` services within this storage account?
   final pulumi.Input<bool> blob;
-
   /// Should permission be granted to `file` services within this storage account?
   final pulumi.Input<bool> file;
-
   /// Should permission be granted to `queue` services within this storage account?
   final pulumi.Input<bool> queue;
-
   /// Should permission be granted to `table` services within this storage account?
   final pulumi.Input<bool> table;
 
@@ -45,3 +42,4 @@ class GetAccountSASServices {
     );
   }
 }
+

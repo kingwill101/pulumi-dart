@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpandedPropertiesResponsePrincipal {
   /// Display name of the principal
   final pulumi.Input<String>? displayName;
-
   /// Email id of the principal
   final pulumi.Input<String>? email;
-
   /// Id of the principal
   final pulumi.Input<String>? id;
-
   /// Type of the principal
   final pulumi.Input<String>? type;
 
@@ -37,30 +34,13 @@ class ExpandedPropertiesResponsePrincipal {
     };
   }
 
-  factory ExpandedPropertiesResponsePrincipal.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExpandedPropertiesResponsePrincipal.fromMap(Map<String, dynamic> map) {
     return ExpandedPropertiesResponsePrincipal(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

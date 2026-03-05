@@ -6,13 +6,10 @@ import 'shared_key_properties_response.dart';
 class ListVpnLinkConnectionDefaultSharedKeyResult {
   /// Resource ID.
   final String? id;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final String? name;
-
   /// Properties of the shared key.
   final SharedKeyPropertiesResponse properties;
-
   /// Resource type.
   final String type;
 
@@ -37,24 +34,13 @@ class ListVpnLinkConnectionDefaultSharedKeyResult {
     };
   }
 
-  factory ListVpnLinkConnectionDefaultSharedKeyResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListVpnLinkConnectionDefaultSharedKeyResult.fromMap(Map<String, dynamic> map) {
     return ListVpnLinkConnectionDefaultSharedKeyResult(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      properties: SharedKeyPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: SharedKeyPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAzureLargeStorageInstanceArgs {
   /// Name of the AzureLargeStorageInstance.
   final pulumi.Input<String> azureLargeStorageInstanceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetAzureLargeStorageInstanceArgs {
 
   factory GetAzureLargeStorageInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureLargeStorageInstanceArgs(
-      azureLargeStorageInstanceName: pulumi.Input.fromValue(
-        map['azureLargeStorageInstanceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      azureLargeStorageInstanceName: pulumi.Input.fromValue(map['azureLargeStorageInstanceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

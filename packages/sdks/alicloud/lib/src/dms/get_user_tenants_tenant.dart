@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserTenantsTenant {
   /// The user tenant id.
   final pulumi.Input<String> id;
-
   /// The status of the user tenant.
   final pulumi.Input<String> status;
-
   /// The name of the user tenant.
   final pulumi.Input<String> tenantName;
-
   /// The user tenant id. Same as id.
   final pulumi.Input<String> tid;
 
@@ -45,3 +42,4 @@ class GetUserTenantsTenant {
     );
   }
 }
+

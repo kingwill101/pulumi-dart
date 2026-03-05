@@ -10,19 +10,16 @@ class DataConnectorEntity {
   /// When the connector is initialized by the DataConnectorService.SetUpDataConnector
   /// method, a DataStore is automatically created for each source entity.
   final pulumi.Input<String>? dataStore;
-
   /// The name of the entity. Supported values by data source:
   /// * Salesforce: `Lead`, `Opportunity`, `Contact`, `Account`, `Case`, `Contract`, `Campaign`
   /// * Jira: project, issue, attachment, comment, worklog
   /// * Confluence: `Content`, `Space`
   final pulumi.Input<String>? entityName;
-
   /// Attributes for indexing.
   /// Key: Field name.
   /// Value: The key property to map a field to, such as `title`, and
   /// `description`. Supported key properties:
   final pulumi.Input<Map<String, String>>? keyPropertyMappings;
-
   /// The parameters for the entity to facilitate data ingestion.
   final pulumi.Input<String>? params;
 
@@ -49,28 +46,11 @@ class DataConnectorEntity {
 
   factory DataConnectorEntity.fromMap(Map<String, dynamic> map) {
     return DataConnectorEntity(
-      dataStore: (() {
-        final guardedValue = map['dataStore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      entityName: (() {
-        final guardedValue = map['entityName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyPropertyMappings: (() {
-        final guardedValue = map['keyPropertyMappings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      params: (() {
-        final guardedValue = map['params'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataStore: (() { final guardedValue = map['dataStore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      entityName: (() { final guardedValue = map['entityName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyPropertyMappings: (() { final guardedValue = map['keyPropertyMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

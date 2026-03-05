@@ -9,29 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCatalogEncryptionSettingsArgs {
   /// ID of the Data Catalog. This is typically the AWS account ID.
   final pulumi.Input<String> catalogId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetDataCatalogEncryptionSettingsArgs].
   /// [catalogId] ID of the Data Catalog. This is typically the AWS account ID.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetDataCatalogEncryptionSettingsArgs({required this.catalogId, this.region});
+  GetDataCatalogEncryptionSettingsArgs({
+    required this.catalogId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'catalogId': catalogId, 'region': ?region};
+    return <String, dynamic>{
+      'catalogId': catalogId,
+      'region': ?region,
+    };
   }
 
-  factory GetDataCatalogEncryptionSettingsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataCatalogEncryptionSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetDataCatalogEncryptionSettingsArgs(
       catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -12,8 +12,7 @@ enum InterconnectAttachmentStackType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InterconnectAttachmentStackType value: $value',
-    );
+    throw ArgumentError('Unknown InterconnectAttachmentStackType value: $value');
   }
 }
+

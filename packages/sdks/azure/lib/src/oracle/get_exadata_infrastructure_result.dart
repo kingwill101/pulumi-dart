@@ -9,119 +9,80 @@ import 'get_exadata_infrastructure_maintenance_window.dart';
 class GetExadataInfrastructureResult {
   /// The requested number of additional storage servers activated for the Cloud Exadata Infrastructure.
   final int activatedStorageCount;
-
   /// The requested number of additional storage servers for the Cloud Exadata Infrastructure.
   final int additionalStorageCount;
-
   /// The available storage can be allocated to the Cloud Exadata Infrastructure resource, in gigabytes (GB).
   final int availableStorageSizeInGbs;
-
   /// The number of compute servers for the Cloud Exadata Infrastructure.
   final int computeCount;
-
   /// The compute model of the Exadata Infrastructure.
   final String computeModel;
-
   /// The total number of CPU cores allocated.
   final int cpuCount;
-
   /// A `customer_contacts` block as defined below.
   final List<String> customerContacts;
-
   /// The data storage size in terabytes of the DATA disk group.
   final double dataStorageSizeInTbs;
-
   /// The database server model type of the cloud Exadata infrastructure resource.
   final String databaseServerType;
-
   /// The local node storage allocated in GBs.
   final int dbNodeStorageSizeInGbs;
-
   /// The software version of the database servers (dom0) in the Cloud Exadata Infrastructure.
   final String dbServerVersion;
-
   /// A `defined_file_system_configuration` block as defined below.
-  final List<GetExadataInfrastructureDefinedFileSystemConfiguration>
-  definedFileSystemConfigurations;
-
+  final List<GetExadataInfrastructureDefinedFileSystemConfiguration> definedFileSystemConfigurations;
   /// The user-friendly name for the Cloud Exadata Infrastructure resource. The name does not need to be unique.
   final String displayName;
-
   /// A `estimated_patching_time` block as defined below.
-  final List<GetExadataInfrastructureEstimatedPatchingTime>
-  estimatedPatchingTimes;
-
+  final List<GetExadataInfrastructureEstimatedPatchingTime> estimatedPatchingTimes;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the last maintenance run.
   final String lastMaintenanceRunId;
-
   /// Additional information about the current lifecycle state.
   final String lifecycleDetails;
-
   /// Cloud Exadata Infrastructure lifecycle state.
   final String lifecycleState;
-
   /// The Azure Region where the Cloud Exadata Infrastructure exists.
   final String location;
-
   /// A `maintenance_window` block as defined below.
   final List<GetExadataInfrastructureMaintenanceWindow> maintenanceWindows;
-
   /// The total number of CPU cores available.
   final int maxCpuCount;
-
   /// The total available DATA disk group size.
   final double maxDataStorageInTbs;
-
   /// The total local node storage available in GBs.
   final int maxDbNodeStorageSizeInGbs;
-
   /// The total memory available in GBs.
   final int maxMemoryInGbs;
-
   /// The memory allocated in GBs.
   final int memorySizeInGbs;
-
   /// The monthly software version of the database servers (dom0) in the Cloud Exadata Infrastructure.
   final String monthlyDbServerVersion;
-
   /// The monthly software version of the storage servers (cells) in the Cloud Exadata Infrastructure.
   final String monthlyStorageServerVersion;
   final String name;
-
   /// The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the next maintenance run.
   final String nextMaintenanceRunId;
-
   /// The URL of the resource in the OCI console.
   final String ociUrl;
-
   /// The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the Cloud Exadata Infrastructure.
   final String ocid;
   final String resourceGroupName;
-
   /// The model name of the Cloud Exadata Infrastructure resource.
   final String shape;
-
   /// The number of storage servers for the Cloud Exadata Infrastructure.
   final int storageCount;
-
   /// The storage server model type of the cloud Exadata infrastructure resource.
   final String storageServerType;
-
   /// The software version of the storage servers (cells) in the Cloud Exadata Infrastructure.
   final String storageServerVersion;
-
   /// A mapping of tags assigned to the Cloud Exadata Infrastructure.
   final Map<String, String> tags;
-
   /// The date and time the Cloud Exadata Infrastructure resource was created.
   final String timeCreated;
-
   /// The total storage allocated to the Cloud Exadata Infrastructure resource, in gigabytes (GB).
   final int totalStorageSizeInGbs;
-
   /// The Cloud Exadata Infrastructure Azure zones.
   final List<String> zones;
 
@@ -222,27 +183,15 @@ class GetExadataInfrastructureResult {
       'databaseServerType': databaseServerType,
       'dbNodeStorageSizeInGbs': dbNodeStorageSizeInGbs,
       'dbServerVersion': dbServerVersion,
-      'definedFileSystemConfigurations':
-          pulumi.Input.encodeList<
-            GetExadataInfrastructureDefinedFileSystemConfiguration,
-            Map<String, dynamic>
-          >(definedFileSystemConfigurations, (value) => value.toMap()),
+      'definedFileSystemConfigurations': pulumi.Input.encodeList<GetExadataInfrastructureDefinedFileSystemConfiguration, Map<String, dynamic>>(definedFileSystemConfigurations, (value) => value.toMap()),
       'displayName': displayName,
-      'estimatedPatchingTimes':
-          pulumi.Input.encodeList<
-            GetExadataInfrastructureEstimatedPatchingTime,
-            Map<String, dynamic>
-          >(estimatedPatchingTimes, (value) => value.toMap()),
+      'estimatedPatchingTimes': pulumi.Input.encodeList<GetExadataInfrastructureEstimatedPatchingTime, Map<String, dynamic>>(estimatedPatchingTimes, (value) => value.toMap()),
       'id': id,
       'lastMaintenanceRunId': lastMaintenanceRunId,
       'lifecycleDetails': lifecycleDetails,
       'lifecycleState': lifecycleState,
       'location': location,
-      'maintenanceWindows':
-          pulumi.Input.encodeList<
-            GetExadataInfrastructureMaintenanceWindow,
-            Map<String, dynamic>
-          >(maintenanceWindows, (value) => value.toMap()),
+      'maintenanceWindows': pulumi.Input.encodeList<GetExadataInfrastructureMaintenanceWindow, Map<String, dynamic>>(maintenanceWindows, (value) => value.toMap()),
       'maxCpuCount': maxCpuCount,
       'maxDataStorageInTbs': maxDataStorageInTbs,
       'maxDbNodeStorageSizeInGbs': maxDbNodeStorageSizeInGbs,
@@ -279,37 +228,15 @@ class GetExadataInfrastructureResult {
       databaseServerType: map['databaseServerType'] as String,
       dbNodeStorageSizeInGbs: map['dbNodeStorageSizeInGbs'] as int,
       dbServerVersion: map['dbServerVersion'] as String,
-      definedFileSystemConfigurations:
-          pulumi.Input.decodeList<
-            GetExadataInfrastructureDefinedFileSystemConfiguration
-          >(
-            map['definedFileSystemConfigurations']!,
-            (value) =>
-                GetExadataInfrastructureDefinedFileSystemConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      definedFileSystemConfigurations: pulumi.Input.decodeList<GetExadataInfrastructureDefinedFileSystemConfiguration>(map['definedFileSystemConfigurations']!, (value) => GetExadataInfrastructureDefinedFileSystemConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       displayName: map['displayName'] as String,
-      estimatedPatchingTimes:
-          pulumi
-              .Input.decodeList<GetExadataInfrastructureEstimatedPatchingTime>(
-            map['estimatedPatchingTimes']!,
-            (value) => GetExadataInfrastructureEstimatedPatchingTime.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      estimatedPatchingTimes: pulumi.Input.decodeList<GetExadataInfrastructureEstimatedPatchingTime>(map['estimatedPatchingTimes']!, (value) => GetExadataInfrastructureEstimatedPatchingTime.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       lastMaintenanceRunId: map['lastMaintenanceRunId'] as String,
       lifecycleDetails: map['lifecycleDetails'] as String,
       lifecycleState: map['lifecycleState'] as String,
       location: map['location'] as String,
-      maintenanceWindows:
-          pulumi.Input.decodeList<GetExadataInfrastructureMaintenanceWindow>(
-            map['maintenanceWindows']!,
-            (value) => GetExadataInfrastructureMaintenanceWindow.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      maintenanceWindows: pulumi.Input.decodeList<GetExadataInfrastructureMaintenanceWindow>(map['maintenanceWindows']!, (value) => GetExadataInfrastructureMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())),
       maxCpuCount: map['maxCpuCount'] as int,
       maxDataStorageInTbs: map['maxDataStorageInTbs'] as double,
       maxDbNodeStorageSizeInGbs: map['maxDbNodeStorageSizeInGbs'] as int,
@@ -333,3 +260,4 @@ class GetExadataInfrastructureResult {
     );
   }
 }
+

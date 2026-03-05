@@ -6,51 +6,24 @@ import 'virtual_machine_properties_response_public_keys_public_keys.dart';
 /// SSH Configuration
 class VirtualMachinePropertiesResponseSshSsh {
   /// PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-  final pulumi.Input<
-    List<VirtualMachinePropertiesResponsePublicKeysPublicKeys>
-  >?
-  publicKeys;
+  final pulumi.Input<List<VirtualMachinePropertiesResponsePublicKeysPublicKeys>>? publicKeys;
 
   /// Creates a new [VirtualMachinePropertiesResponseSshSsh].
   /// [publicKeys] PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-  VirtualMachinePropertiesResponseSshSsh({this.publicKeys});
+  VirtualMachinePropertiesResponseSshSsh({
+    this.publicKeys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicKeys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VirtualMachinePropertiesResponsePublicKeysPublicKeys>,
-            List<Map<String, dynamic>>
-          >(
-            publicKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VirtualMachinePropertiesResponsePublicKeysPublicKeys,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'publicKeys': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachinePropertiesResponsePublicKeysPublicKeys>, List<Map<String, dynamic>>>(publicKeys, (value) => pulumi.Input.encodeList<VirtualMachinePropertiesResponsePublicKeysPublicKeys, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory VirtualMachinePropertiesResponseSshSsh.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachinePropertiesResponseSshSsh.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesResponseSshSsh(
-      publicKeys: (() {
-        final guardedValue = map['publicKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            VirtualMachinePropertiesResponsePublicKeysPublicKeys
-          >(
-            guardedValue,
-            (value) =>
-                VirtualMachinePropertiesResponsePublicKeysPublicKeys.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      publicKeys: (() { final guardedValue = map['publicKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualMachinePropertiesResponsePublicKeysPublicKeys>(guardedValue, (value) => VirtualMachinePropertiesResponsePublicKeysPublicKeys.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

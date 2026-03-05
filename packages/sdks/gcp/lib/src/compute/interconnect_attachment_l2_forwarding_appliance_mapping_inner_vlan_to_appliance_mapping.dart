@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping {
   /// The inner appliance IP address.
   final pulumi.Input<String>? innerApplianceIpAddress;
-
   /// List of inner VLAN tags.
   final pulumi.Input<List<String>>? innerVlanTags;
 
@@ -24,20 +23,11 @@ class InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapp
     };
   }
 
-  factory InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping(
-      innerApplianceIpAddress: (() {
-        final guardedValue = map['innerApplianceIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      innerVlanTags: (() {
-        final guardedValue = map['innerVlanTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      innerApplianceIpAddress: (() { final guardedValue = map['innerApplianceIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      innerVlanTags: (() { final guardedValue = map['innerVlanTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

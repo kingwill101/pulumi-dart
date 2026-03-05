@@ -10,16 +10,12 @@ import 'asymmetric_encrypted_secret.dart';
 class UserArgs {
   /// The device name.
   final pulumi.Input<String> deviceName;
-
   /// The password details.
   final pulumi.Input<AsymmetricEncryptedSecret>? encryptedPassword;
-
   /// The user name.
   final pulumi.Input<String>? name;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// Type of the user.
   final pulumi.Input<String> userType;
 
@@ -40,11 +36,7 @@ class UserArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deviceName': deviceName,
-      'encryptedPassword':
-          ?pulumi.Input.mapOptionalInputValue<
-            AsymmetricEncryptedSecret,
-            Map<String, dynamic>
-          >(encryptedPassword, (value) => value.toMap()),
+      'encryptedPassword': ?pulumi.Input.mapOptionalInputValue<AsymmetricEncryptedSecret, Map<String, dynamic>>(encryptedPassword, (value) => value.toMap()),
       'name': ?name,
       'resourceGroupName': resourceGroupName,
       'userType': userType,
@@ -54,24 +46,11 @@ class UserArgs {
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
-      encryptedPassword: (() {
-        final guardedValue = map['encryptedPassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AsymmetricEncryptedSecret.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      encryptedPassword: (() { final guardedValue = map['encryptedPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AsymmetricEncryptedSecret.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       userType: pulumi.Input.fromValue(map['userType'] as String),
     );
   }
 }
+

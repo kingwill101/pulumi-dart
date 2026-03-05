@@ -15,100 +15,68 @@ import 'system_data_response.dart';
 class GetSnapshotResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Percentage complete for the background copy when a resource is created via the CopyStart operation.
   final double? completionPercent;
-
   /// Indicates the error details if the background copy of a resource created via the CopyStart operation fails.
   final CopyCompletionErrorResponse? copyCompletionError;
-
   /// Disk source information. CreationData information cannot be changed after the disk has been created.
   final CreationDataResponse creationData;
-
   /// Additional authentication requirements when exporting or uploading to a disk or snapshot.
   final String? dataAccessAuthMode;
-
   /// ARM id of the DiskAccess resource for using private endpoints on disks.
   final String? diskAccessId;
-
   /// The size of the disk in bytes. This field is read only.
   final double diskSizeBytes;
-
   /// If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
   final int? diskSizeGB;
-
   /// The state of the snapshot.
   final String diskState;
-
   /// Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys.
   final EncryptionResponse? encryption;
-
   /// Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot.
   final EncryptionSettingsCollectionResponse? encryptionSettingsCollection;
-
   /// The extended location where the snapshot will be created. Extended location cannot be changed.
   final ExtendedLocationResponse? extendedLocation;
-
   /// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
   final String? hyperVGeneration;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// Whether a snapshot is incremental. Incremental snapshots on the same disk occupy less space than full snapshots and can be diffed.
   final bool? incremental;
-
   /// Incremental snapshots for a disk share an incremental snapshot family id. The Get Page Range Diff API can only be called on incremental snapshots with the same family id.
   final String incrementalSnapshotFamilyId;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// Unused. Always Null.
   final String managedBy;
-
   /// The name of the resource
   final String name;
-
   /// Policy for accessing the disk via network.
   final String? networkAccessPolicy;
-
   /// The Operating System type.
   final String? osType;
-
   /// The disk provisioning state.
   final String provisioningState;
-
   /// Policy for controlling export on the disk.
   final String? publicNetworkAccess;
-
   /// Purchase plan information for the image from which the source disk for the snapshot was originally created.
   final DiskPurchasePlanResponse? purchasePlan;
-
   /// Contains the security related information for the resource.
   final DiskSecurityProfileResponse? securityProfile;
-
   /// The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot
   final SnapshotSkuResponse? sku;
-
   /// List of supported capabilities for the image from which the source disk from the snapshot was originally created.
   final SupportedCapabilitiesResponse? supportedCapabilities;
-
   /// Indicates the OS on a snapshot supports hibernation.
   final bool? supportsHibernation;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The time when the snapshot was created.
   final String timeCreated;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Unique Guid identifying the resource.
   final String uniqueId;
 
@@ -223,134 +191,39 @@ class GetSnapshotResult {
   factory GetSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      completionPercent: (() {
-        final guardedValue = map['completionPercent'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
-      copyCompletionError: (() {
-        final guardedValue = map['copyCompletionError'];
-        if (guardedValue == null) return null;
-        return CopyCompletionErrorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      creationData: CreationDataResponse.fromMap(
-        (map['creationData']! as Map).cast<String, dynamic>(),
-      ),
-      dataAccessAuthMode: (() {
-        final guardedValue = map['dataAccessAuthMode'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      diskAccessId: (() {
-        final guardedValue = map['diskAccessId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      completionPercent: (() { final guardedValue = map['completionPercent']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      copyCompletionError: (() { final guardedValue = map['copyCompletionError']; if (guardedValue == null) return null; return CopyCompletionErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      creationData: CreationDataResponse.fromMap((map['creationData']! as Map).cast<String, dynamic>()),
+      dataAccessAuthMode: (() { final guardedValue = map['dataAccessAuthMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      diskAccessId: (() { final guardedValue = map['diskAccessId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       diskSizeBytes: map['diskSizeBytes'] as double,
-      diskSizeGB: (() {
-        final guardedValue = map['diskSizeGB'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return guardedValue as int; })(),
       diskState: map['diskState'] as String,
-      encryption: (() {
-        final guardedValue = map['encryption'];
-        if (guardedValue == null) return null;
-        return EncryptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      encryptionSettingsCollection: (() {
-        final guardedValue = map['encryptionSettingsCollection'];
-        if (guardedValue == null) return null;
-        return EncryptionSettingsCollectionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      hyperVGeneration: (() {
-        final guardedValue = map['hyperVGeneration'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return EncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      encryptionSettingsCollection: (() { final guardedValue = map['encryptionSettingsCollection']; if (guardedValue == null) return null; return EncryptionSettingsCollectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      hyperVGeneration: (() { final guardedValue = map['hyperVGeneration']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      incremental: (() {
-        final guardedValue = map['incremental'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      incremental: (() { final guardedValue = map['incremental']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       incrementalSnapshotFamilyId: map['incrementalSnapshotFamilyId'] as String,
       location: map['location'] as String,
       managedBy: map['managedBy'] as String,
       name: map['name'] as String,
-      networkAccessPolicy: (() {
-        final guardedValue = map['networkAccessPolicy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      osType: (() {
-        final guardedValue = map['osType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      networkAccessPolicy: (() { final guardedValue = map['networkAccessPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      purchasePlan: (() {
-        final guardedValue = map['purchasePlan'];
-        if (guardedValue == null) return null;
-        return DiskPurchasePlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      securityProfile: (() {
-        final guardedValue = map['securityProfile'];
-        if (guardedValue == null) return null;
-        return DiskSecurityProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return SnapshotSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      supportedCapabilities: (() {
-        final guardedValue = map['supportedCapabilities'];
-        if (guardedValue == null) return null;
-        return SupportedCapabilitiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      supportsHibernation: (() {
-        final guardedValue = map['supportsHibernation'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      purchasePlan: (() { final guardedValue = map['purchasePlan']; if (guardedValue == null) return null; return DiskPurchasePlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      securityProfile: (() { final guardedValue = map['securityProfile']; if (guardedValue == null) return null; return DiskSecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SnapshotSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      supportedCapabilities: (() { final guardedValue = map['supportedCapabilities']; if (guardedValue == null) return null; return SupportedCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      supportsHibernation: (() { final guardedValue = map['supportsHibernation']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       timeCreated: map['timeCreated'] as String,
       type: map['type'] as String,
       uniqueId: map['uniqueId'] as String,
     );
   }
 }
+

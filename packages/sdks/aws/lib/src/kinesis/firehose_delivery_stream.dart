@@ -4655,72 +4655,41 @@ import 'firehose_delivery_stream_state.dart';
 class FirehoseDeliveryStream extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) specifying the Stream
   late final pulumi.Output<String> arn;
-
   /// This is the destination to where the data is delivered. The only options are `s3` (Deprecated, use `extended_s3` instead), `extended_s3`, `redshift`, `elasticsearch`, `splunk`, `http_endpoint`, `opensearch`, `opensearchserverless` and `snowflake`.
   late final pulumi.Output<String> destination;
   late final pulumi.Output<String> destinationId;
-
   /// Configuration options when `destination` is `elasticsearch`. See `elasticsearch_configuration` block below for details.
-  late final pulumi.Output<FirehoseDeliveryStreamElasticsearchConfiguration?>
-  elasticsearchConfiguration;
-
+  late final pulumi.Output<FirehoseDeliveryStreamElasticsearchConfiguration?> elasticsearchConfiguration;
   /// Enhanced configuration options for the s3 destination. See `extended_s3_configuration` block below for details.
-  late final pulumi.Output<FirehoseDeliveryStreamExtendedS3Configuration?>
-  extendedS3Configuration;
-
+  late final pulumi.Output<FirehoseDeliveryStreamExtendedS3Configuration?> extendedS3Configuration;
   /// Configuration options when `destination` is `http_endpoint`. Requires the user to also specify an `s3_configuration` block.  See `http_endpoint_configuration` block below for details.
-  late final pulumi.Output<FirehoseDeliveryStreamHttpEndpointConfiguration?>
-  httpEndpointConfiguration;
-
+  late final pulumi.Output<FirehoseDeliveryStreamHttpEndpointConfiguration?> httpEndpointConfiguration;
   /// Configuration options when `destination` is `iceberg`. See `iceberg_configuration` block below for details.
-  late final pulumi.Output<FirehoseDeliveryStreamIcebergConfiguration?>
-  icebergConfiguration;
-
+  late final pulumi.Output<FirehoseDeliveryStreamIcebergConfiguration?> icebergConfiguration;
   /// The stream and role Amazon Resource Names (ARNs) for a Kinesis data stream used as the source for a delivery stream. See `kinesis_source_configuration` block below for details.
-  late final pulumi.Output<FirehoseDeliveryStreamKinesisSourceConfiguration?>
-  kinesisSourceConfiguration;
-
+  late final pulumi.Output<FirehoseDeliveryStreamKinesisSourceConfiguration?> kinesisSourceConfiguration;
   /// The configuration for the Amazon MSK cluster to be used as the source for a delivery stream. See `msk_source_configuration` block below for details.
-  late final pulumi.Output<FirehoseDeliveryStreamMskSourceConfiguration?>
-  mskSourceConfiguration;
-
+  late final pulumi.Output<FirehoseDeliveryStreamMskSourceConfiguration?> mskSourceConfiguration;
   /// A name to identify the stream. This is unique to the AWS account and region the Stream is created in. When using for WAF logging, name must be prefixed with `aws-waf-logs-`. See [AWS Documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-policies.html#waf-policies-logging-config) for more details.
   late final pulumi.Output<String> name;
-
   /// Configuration options when `destination` is `opensearch`. See `opensearch_configuration` block below for details.
-  late final pulumi.Output<FirehoseDeliveryStreamOpensearchConfiguration?>
-  opensearchConfiguration;
-
+  late final pulumi.Output<FirehoseDeliveryStreamOpensearchConfiguration?> opensearchConfiguration;
   /// Configuration options when `destination` is `opensearchserverless`. See `opensearchserverless_configuration` block below for details.
-  late final pulumi.Output<
-    FirehoseDeliveryStreamOpensearchserverlessConfiguration?
-  >
-  opensearchserverlessConfiguration;
-
+  late final pulumi.Output<FirehoseDeliveryStreamOpensearchserverlessConfiguration?> opensearchserverlessConfiguration;
   /// Configuration options when `destination` is `redshift`. Requires the user to also specify an `s3_configuration` block. See `redshift_configuration` block below for details.
-  late final pulumi.Output<FirehoseDeliveryStreamRedshiftConfiguration?>
-  redshiftConfiguration;
-
+  late final pulumi.Output<FirehoseDeliveryStreamRedshiftConfiguration?> redshiftConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Encrypt at rest options. See `server_side_encryption` block below for details.
-  late final pulumi.Output<FirehoseDeliveryStreamServerSideEncryption?>
-  serverSideEncryption;
-
+  late final pulumi.Output<FirehoseDeliveryStreamServerSideEncryption?> serverSideEncryption;
   /// Configuration options when `destination` is `snowflake`. See `snowflake_configuration` block below for details.
-  late final pulumi.Output<FirehoseDeliveryStreamSnowflakeConfiguration?>
-  snowflakeConfiguration;
-
+  late final pulumi.Output<FirehoseDeliveryStreamSnowflakeConfiguration?> snowflakeConfiguration;
   /// Configuration options when `destination` is `splunk`. See `splunk_configuration` block below for details.
   ///
   /// **NOTE:** Server-side encryption should not be enabled when a kinesis stream is configured as the source of the firehose delivery stream.
-  late final pulumi.Output<FirehoseDeliveryStreamSplunkConfiguration?>
-  splunkConfiguration;
-
+  late final pulumi.Output<FirehoseDeliveryStreamSplunkConfiguration?> splunkConfiguration;
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> versionId;
@@ -4734,150 +4703,28 @@ class FirehoseDeliveryStream extends pulumi.CustomResource {
     FirehoseDeliveryStreamArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     destination = registerOutput<String>('destination');
     destinationId = registerOutput<String>('destinationId');
-    elasticsearchConfiguration =
-        registerOutput<FirehoseDeliveryStreamElasticsearchConfiguration?>(
-          'elasticsearchConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamElasticsearchConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    extendedS3Configuration =
-        registerOutput<FirehoseDeliveryStreamExtendedS3Configuration?>(
-          'extendedS3Configuration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamExtendedS3Configuration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    httpEndpointConfiguration =
-        registerOutput<FirehoseDeliveryStreamHttpEndpointConfiguration?>(
-          'httpEndpointConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamHttpEndpointConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    icebergConfiguration =
-        registerOutput<FirehoseDeliveryStreamIcebergConfiguration?>(
-          'icebergConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamIcebergConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    kinesisSourceConfiguration =
-        registerOutput<FirehoseDeliveryStreamKinesisSourceConfiguration?>(
-          'kinesisSourceConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamKinesisSourceConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    mskSourceConfiguration =
-        registerOutput<FirehoseDeliveryStreamMskSourceConfiguration?>(
-          'mskSourceConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamMskSourceConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    elasticsearchConfiguration = registerOutput<FirehoseDeliveryStreamElasticsearchConfiguration?>('elasticsearchConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamElasticsearchConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedS3Configuration = registerOutput<FirehoseDeliveryStreamExtendedS3Configuration?>('extendedS3Configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamExtendedS3Configuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpEndpointConfiguration = registerOutput<FirehoseDeliveryStreamHttpEndpointConfiguration?>('httpEndpointConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamHttpEndpointConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    icebergConfiguration = registerOutput<FirehoseDeliveryStreamIcebergConfiguration?>('icebergConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamIcebergConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kinesisSourceConfiguration = registerOutput<FirehoseDeliveryStreamKinesisSourceConfiguration?>('kinesisSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamKinesisSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mskSourceConfiguration = registerOutput<FirehoseDeliveryStreamMskSourceConfiguration?>('mskSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamMskSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    opensearchConfiguration =
-        registerOutput<FirehoseDeliveryStreamOpensearchConfiguration?>(
-          'opensearchConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamOpensearchConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    opensearchserverlessConfiguration =
-        registerOutput<
-          FirehoseDeliveryStreamOpensearchserverlessConfiguration?
-        >(
-          'opensearchserverlessConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamOpensearchserverlessConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    redshiftConfiguration =
-        registerOutput<FirehoseDeliveryStreamRedshiftConfiguration?>(
-          'redshiftConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamRedshiftConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    opensearchConfiguration = registerOutput<FirehoseDeliveryStreamOpensearchConfiguration?>('opensearchConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamOpensearchConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    opensearchserverlessConfiguration = registerOutput<FirehoseDeliveryStreamOpensearchserverlessConfiguration?>('opensearchserverlessConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamOpensearchserverlessConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redshiftConfiguration = registerOutput<FirehoseDeliveryStreamRedshiftConfiguration?>('redshiftConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamRedshiftConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    serverSideEncryption =
-        registerOutput<FirehoseDeliveryStreamServerSideEncryption?>(
-          'serverSideEncryption',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamServerSideEncryption.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    snowflakeConfiguration =
-        registerOutput<FirehoseDeliveryStreamSnowflakeConfiguration?>(
-          'snowflakeConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamSnowflakeConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    splunkConfiguration =
-        registerOutput<FirehoseDeliveryStreamSplunkConfiguration?>(
-          'splunkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamSplunkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    serverSideEncryption = registerOutput<FirehoseDeliveryStreamServerSideEncryption?>('serverSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    snowflakeConfiguration = registerOutput<FirehoseDeliveryStreamSnowflakeConfiguration?>('snowflakeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamSnowflakeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    splunkConfiguration = registerOutput<FirehoseDeliveryStreamSplunkConfiguration?>('splunkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamSplunkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     versionId = registerOutput<String>('versionId');
@@ -4901,150 +4748,28 @@ class FirehoseDeliveryStream extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     destination = registerOutput<String>('destination');
     destinationId = registerOutput<String>('destinationId');
-    elasticsearchConfiguration =
-        registerOutput<FirehoseDeliveryStreamElasticsearchConfiguration?>(
-          'elasticsearchConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamElasticsearchConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    extendedS3Configuration =
-        registerOutput<FirehoseDeliveryStreamExtendedS3Configuration?>(
-          'extendedS3Configuration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamExtendedS3Configuration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    httpEndpointConfiguration =
-        registerOutput<FirehoseDeliveryStreamHttpEndpointConfiguration?>(
-          'httpEndpointConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamHttpEndpointConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    icebergConfiguration =
-        registerOutput<FirehoseDeliveryStreamIcebergConfiguration?>(
-          'icebergConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamIcebergConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    kinesisSourceConfiguration =
-        registerOutput<FirehoseDeliveryStreamKinesisSourceConfiguration?>(
-          'kinesisSourceConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamKinesisSourceConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    mskSourceConfiguration =
-        registerOutput<FirehoseDeliveryStreamMskSourceConfiguration?>(
-          'mskSourceConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamMskSourceConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    elasticsearchConfiguration = registerOutput<FirehoseDeliveryStreamElasticsearchConfiguration?>('elasticsearchConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamElasticsearchConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedS3Configuration = registerOutput<FirehoseDeliveryStreamExtendedS3Configuration?>('extendedS3Configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamExtendedS3Configuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpEndpointConfiguration = registerOutput<FirehoseDeliveryStreamHttpEndpointConfiguration?>('httpEndpointConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamHttpEndpointConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    icebergConfiguration = registerOutput<FirehoseDeliveryStreamIcebergConfiguration?>('icebergConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamIcebergConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kinesisSourceConfiguration = registerOutput<FirehoseDeliveryStreamKinesisSourceConfiguration?>('kinesisSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamKinesisSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mskSourceConfiguration = registerOutput<FirehoseDeliveryStreamMskSourceConfiguration?>('mskSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamMskSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    opensearchConfiguration =
-        registerOutput<FirehoseDeliveryStreamOpensearchConfiguration?>(
-          'opensearchConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamOpensearchConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    opensearchserverlessConfiguration =
-        registerOutput<
-          FirehoseDeliveryStreamOpensearchserverlessConfiguration?
-        >(
-          'opensearchserverlessConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamOpensearchserverlessConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    redshiftConfiguration =
-        registerOutput<FirehoseDeliveryStreamRedshiftConfiguration?>(
-          'redshiftConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamRedshiftConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    opensearchConfiguration = registerOutput<FirehoseDeliveryStreamOpensearchConfiguration?>('opensearchConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamOpensearchConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    opensearchserverlessConfiguration = registerOutput<FirehoseDeliveryStreamOpensearchserverlessConfiguration?>('opensearchserverlessConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamOpensearchserverlessConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redshiftConfiguration = registerOutput<FirehoseDeliveryStreamRedshiftConfiguration?>('redshiftConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamRedshiftConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    serverSideEncryption =
-        registerOutput<FirehoseDeliveryStreamServerSideEncryption?>(
-          'serverSideEncryption',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamServerSideEncryption.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    snowflakeConfiguration =
-        registerOutput<FirehoseDeliveryStreamSnowflakeConfiguration?>(
-          'snowflakeConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamSnowflakeConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    splunkConfiguration =
-        registerOutput<FirehoseDeliveryStreamSplunkConfiguration?>(
-          'splunkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirehoseDeliveryStreamSplunkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    serverSideEncryption = registerOutput<FirehoseDeliveryStreamServerSideEncryption?>('serverSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    snowflakeConfiguration = registerOutput<FirehoseDeliveryStreamSnowflakeConfiguration?>('snowflakeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamSnowflakeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    splunkConfiguration = registerOutput<FirehoseDeliveryStreamSplunkConfiguration?>('splunkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamSplunkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     versionId = registerOutput<String>('versionId');

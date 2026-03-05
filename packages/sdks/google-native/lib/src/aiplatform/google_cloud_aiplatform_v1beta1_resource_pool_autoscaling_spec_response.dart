@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse {
   /// Optional. max replicas in the node pool, must be ≥ replica_count and &gt; min_replica_count or will throw error
   final pulumi.Input<String> maxReplicaCount;
-
   /// Optional. min replicas in the node pool, must be ≤ replica_count and &lt; max_replica_count or will throw error
   final pulumi.Input<String> minReplicaCount;
 
@@ -25,12 +24,11 @@ class GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse(
       maxReplicaCount: pulumi.Input.fromValue(map['maxReplicaCount'] as String),
       minReplicaCount: pulumi.Input.fromValue(map['minReplicaCount'] as String),
     );
   }
 }
+

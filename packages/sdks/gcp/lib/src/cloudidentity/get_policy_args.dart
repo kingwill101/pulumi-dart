@@ -12,13 +12,20 @@ class GetPolicyArgs {
 
   /// Creates a new [GetPolicyArgs].
   /// [name] The resource name of the policy to retrieve. Format: `policies/{policy_id}`.
-  GetPolicyArgs({required this.name});
+  GetPolicyArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
-    return GetPolicyArgs(name: pulumi.Input.fromValue(map['name'] as String));
+    return GetPolicyArgs(
+      name: pulumi.Input.fromValue(map['name'] as String),
+    );
   }
 }
+

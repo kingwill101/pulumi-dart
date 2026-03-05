@@ -33,17 +33,14 @@ class GetLoadBalancersBalancerListenerPortsAndProtocol {
     };
   }
 
-  factory GetLoadBalancersBalancerListenerPortsAndProtocol.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLoadBalancersBalancerListenerPortsAndProtocol.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancerListenerPortsAndProtocol(
       description: pulumi.Input.fromValue(map['description'] as String),
       forwardPort: pulumi.Input.fromValue(map['forwardPort'] as int),
       listenerForward: pulumi.Input.fromValue(map['listenerForward'] as String),
       listenerPort: pulumi.Input.fromValue(map['listenerPort'] as int),
-      listenerProtocol: pulumi.Input.fromValue(
-        map['listenerProtocol'] as String,
-      ),
+      listenerProtocol: pulumi.Input.fromValue(map['listenerProtocol'] as String),
     );
   }
 }
+

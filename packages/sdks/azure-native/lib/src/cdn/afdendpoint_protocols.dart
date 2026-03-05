@@ -15,3 +15,4 @@ enum AFDEndpointProtocols {
     throw ArgumentError('Unknown AFDEndpointProtocols value: $value');
   }
 }
+

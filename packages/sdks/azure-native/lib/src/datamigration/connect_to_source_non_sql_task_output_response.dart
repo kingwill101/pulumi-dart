@@ -8,16 +8,12 @@ import 'server_properties_response.dart';
 class ConnectToSourceNonSqlTaskOutputResponse {
   /// List of databases on the server
   final pulumi.Input<List<String>> databases;
-
   /// Result identifier
   final pulumi.Input<String> id;
-
   /// Server properties
   final pulumi.Input<ServerPropertiesResponse> serverProperties;
-
   /// Server brand version
   final pulumi.Input<String> sourceServerBrandVersion;
-
   /// Validation errors associated with the task
   final pulumi.Input<List<ReportableExceptionResponse>> validationErrors;
 
@@ -39,51 +35,20 @@ class ConnectToSourceNonSqlTaskOutputResponse {
     return <String, dynamic>{
       'databases': databases,
       'id': id,
-      'serverProperties':
-          pulumi.Input.mapInputValue<
-            ServerPropertiesResponse,
-            Map<String, dynamic>
-          >(serverProperties, (value) => value.toMap()),
+      'serverProperties': pulumi.Input.mapInputValue<ServerPropertiesResponse, Map<String, dynamic>>(serverProperties, (value) => value.toMap()),
       'sourceServerBrandVersion': sourceServerBrandVersion,
-      'validationErrors':
-          pulumi.Input.mapInputValue<
-            List<ReportableExceptionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            validationErrors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReportableExceptionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'validationErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ConnectToSourceNonSqlTaskOutputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectToSourceNonSqlTaskOutputResponse.fromMap(Map<String, dynamic> map) {
     return ConnectToSourceNonSqlTaskOutputResponse(
-      databases: pulumi.Input.fromValue(
-        (map['databases'] as List).cast<String>(),
-      ),
+      databases: pulumi.Input.fromValue((map['databases'] as List).cast<String>()),
       id: pulumi.Input.fromValue(map['id'] as String),
-      serverProperties: pulumi.Input.fromValue(
-        ServerPropertiesResponse.fromMap(
-          (map['serverProperties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sourceServerBrandVersion: pulumi.Input.fromValue(
-        map['sourceServerBrandVersion'] as String,
-      ),
-      validationErrors: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ReportableExceptionResponse>(
-          map['validationErrors']!,
-          (value) => ReportableExceptionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      serverProperties: pulumi.Input.fromValue(ServerPropertiesResponse.fromMap((map['serverProperties']! as Map).cast<String, dynamic>())),
+      sourceServerBrandVersion: pulumi.Input.fromValue(map['sourceServerBrandVersion'] as String),
+      validationErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors']!, (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

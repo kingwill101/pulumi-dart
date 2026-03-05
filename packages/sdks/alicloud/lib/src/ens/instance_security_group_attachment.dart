@@ -280,7 +280,6 @@ import 'instance_security_group_attachment_state.dart';
 class InstanceSecurityGroupAttachment extends pulumi.CustomResource {
   /// Instance ID.
   late final pulumi.Output<String> instanceId;
-
   /// Security group ID.
   late final pulumi.Output<String> securityGroupId;
 
@@ -293,11 +292,11 @@ class InstanceSecurityGroupAttachment extends pulumi.CustomResource {
     InstanceSecurityGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     securityGroupId = registerOutput<String>('securityGroupId');
   }
@@ -320,11 +319,11 @@ class InstanceSecurityGroupAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     securityGroupId = registerOutput<String>('securityGroupId');
   }

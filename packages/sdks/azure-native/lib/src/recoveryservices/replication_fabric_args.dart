@@ -10,13 +10,10 @@ import 'fabric_creation_input_properties.dart';
 class ReplicationFabricArgs {
   /// Name of the ASR fabric.
   final pulumi.Input<String>? fabricName;
-
   /// Fabric creation input.
   final pulumi.Input<FabricCreationInputProperties>? properties;
-
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
 
@@ -35,11 +32,7 @@ class ReplicationFabricArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fabricName': ?fabricName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            FabricCreationInputProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<FabricCreationInputProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
     };
@@ -47,24 +40,11 @@ class ReplicationFabricArgs {
 
   factory ReplicationFabricArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationFabricArgs(
-      fabricName: (() {
-        final guardedValue = map['fabricName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FabricCreationInputProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      fabricName: (() { final guardedValue = map['fabricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FabricCreationInputProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

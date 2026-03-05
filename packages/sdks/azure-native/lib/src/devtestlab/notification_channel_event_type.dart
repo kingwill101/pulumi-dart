@@ -15,3 +15,4 @@ enum NotificationChannelEventType {
     throw ArgumentError('Unknown NotificationChannelEventType value: $value');
   }
 }
+

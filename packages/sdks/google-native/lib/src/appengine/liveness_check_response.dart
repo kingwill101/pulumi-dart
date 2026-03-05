@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LivenessCheckResponse {
   /// Interval between health checks.
   final pulumi.Input<String> checkInterval;
-
   /// Number of consecutive failed checks required before considering the VM unhealthy.
   final pulumi.Input<int> failureThreshold;
-
   /// Host header to send when performing a HTTP Liveness check. Example: "myapp.appspot.com"
   final pulumi.Input<String> host;
-
   /// The initial delay before starting to execute the checks.
   final pulumi.Input<String> initialDelay;
-
   /// The request path.
   final pulumi.Input<String> path;
-
   /// Number of consecutive successful checks required before considering the VM healthy.
   final pulumi.Input<int> successThreshold;
-
   /// Time before the check is considered failed.
   final pulumi.Input<String> timeout;
 
@@ -67,3 +61,4 @@ class LivenessCheckResponse {
     );
   }
 }
+

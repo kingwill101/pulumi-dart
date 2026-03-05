@@ -134,25 +134,18 @@ import 'ddos_custom_policy_args.dart';
 class DdosCustomPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the DDoS custom policy resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The resource GUID property of the DDoS custom policy resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
   late final pulumi.Output<String> resourceGuid;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -165,11 +158,11 @@ class DdosCustomPolicy extends pulumi.CustomResource {
     DdosCustomPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:DdosCustomPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:DdosCustomPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     location = registerOutput<String?>('location');

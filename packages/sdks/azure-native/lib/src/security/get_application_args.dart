@@ -12,10 +12,14 @@ class GetApplicationArgs {
 
   /// Creates a new [GetApplicationArgs].
   /// [applicationId] The security Application key - unique key for the standard application
-  GetApplicationArgs({required this.applicationId});
+  GetApplicationArgs({
+    required this.applicationId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'applicationId': applicationId};
+    return <String, dynamic>{
+      'applicationId': applicationId,
+    };
   }
 
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetApplicationArgs {
     );
   }
 }
+

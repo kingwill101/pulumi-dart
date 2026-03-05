@@ -15,23 +15,17 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryG
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': ?max, 'min': ?min};
+    return <String, dynamic>{
+      'max': ?max,
+      'min': ?min,
+    };
   }
 
-  factory GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryGibPerVcpu.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryGibPerVcpu.fromMap(Map<String, dynamic> map) {
     return GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryGibPerVcpu(
-      max: (() {
-        final guardedValue = map['max'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      min: (() {
-        final guardedValue = map['min'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

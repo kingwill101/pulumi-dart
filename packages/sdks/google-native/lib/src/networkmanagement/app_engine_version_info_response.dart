@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppEngineVersionInfoResponse {
   /// Name of an App Engine version.
   final pulumi.Input<String> displayName;
-
   /// App Engine execution environment for a version.
   final pulumi.Input<String> environment;
-
   /// Runtime of the App Engine version.
   final pulumi.Input<String> runtime;
-
   /// URI of an App Engine version.
   final pulumi.Input<String> uri;
 
@@ -46,3 +43,4 @@ class AppEngineVersionInfoResponse {
     );
   }
 }
+

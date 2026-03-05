@@ -13,14 +13,15 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceArn': resourceArn};
+    return <String, dynamic>{
+      'resourceArn': resourceArn,
+    };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput(
       resourceArn: pulumi.Input.fromValue(map['resourceArn'] as String),
     );
   }
 }
+

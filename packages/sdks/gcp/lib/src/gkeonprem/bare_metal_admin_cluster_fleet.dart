@@ -11,19 +11,20 @@ class BareMetalAdminClusterFleet {
 
   /// Creates a new [BareMetalAdminClusterFleet].
   /// [membership] (Output)
-  BareMetalAdminClusterFleet({this.membership});
+  BareMetalAdminClusterFleet({
+    this.membership,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'membership': ?membership};
+    return <String, dynamic>{
+      'membership': ?membership,
+    };
   }
 
   factory BareMetalAdminClusterFleet.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterFleet(
-      membership: (() {
-        final guardedValue = map['membership'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      membership: (() { final guardedValue = map['membership']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

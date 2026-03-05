@@ -319,32 +319,22 @@ import 'system_data_response.dart';
 class RestorePointCollection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the restore point collection.
   late final pulumi.Output<String> provisioningState;
-
   /// The unique id of the restore point collection.
   late final pulumi.Output<String> restorePointCollectionId;
-
   /// A list containing all restore points created under this restore point collection.
   late final pulumi.Output<List<Map<String, dynamic>>> restorePoints;
-
   /// The properties of the source resource that this restore point collection is created from.
-  late final pulumi.Output<RestorePointCollectionSourcePropertiesResponse?>
-  source;
-
+  late final pulumi.Output<RestorePointCollectionSourcePropertiesResponse?> source;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -357,39 +347,19 @@ class RestorePointCollection extends pulumi.CustomResource {
     RestorePointCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:compute:RestorePointCollection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:compute:RestorePointCollection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    restorePointCollectionId = registerOutput<String>(
-      'restorePointCollectionId',
-    );
+    restorePointCollectionId = registerOutput<String>('restorePointCollectionId');
     restorePoints = registerOutput<List<Map<String, dynamic>>>('restorePoints');
-    source = registerOutput<RestorePointCollectionSourcePropertiesResponse?>(
-      'source',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RestorePointCollectionSourcePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    source = registerOutput<RestorePointCollectionSourcePropertiesResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestorePointCollectionSourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

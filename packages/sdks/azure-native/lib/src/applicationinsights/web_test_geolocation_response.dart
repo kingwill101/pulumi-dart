@@ -9,19 +9,20 @@ class WebTestGeolocationResponse {
 
   /// Creates a new [WebTestGeolocationResponse].
   /// [location] Location ID for the WebTest to run from.
-  WebTestGeolocationResponse({this.location});
+  WebTestGeolocationResponse({
+    this.location,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': ?location};
+    return <String, dynamic>{
+      'location': ?location,
+    };
   }
 
   factory WebTestGeolocationResponse.fromMap(Map<String, dynamic> map) {
     return WebTestGeolocationResponse(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

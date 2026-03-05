@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoutineRelatedRecordArgs {
   /// The routine name.
   final pulumi.Input<String>? name;
-
   /// The record name.
   final pulumi.Input<String> recordName;
-
   /// The website ID.
   final pulumi.Input<String> siteId;
 
@@ -36,13 +34,10 @@ class RoutineRelatedRecordArgs {
 
   factory RoutineRelatedRecordArgs.fromMap(Map<String, dynamic> map) {
     return RoutineRelatedRecordArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recordName: pulumi.Input.fromValue(map['recordName'] as String),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
     );
   }
 }
+

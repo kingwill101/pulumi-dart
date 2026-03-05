@@ -419,51 +419,37 @@ import 'endpoint_policy_traffic_port_selector.dart';
 class EndpointPolicy extends pulumi.CustomResource {
   /// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
   late final pulumi.Output<String?> authorizationPolicy;
-
   /// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
   late final pulumi.Output<String?> clientTlsPolicy;
-
   /// Time the TcpRoute was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Required. A matcher that selects endpoints to which the policies should be applied.
   /// Structure is documented below.
   late final pulumi.Output<EndpointPolicyEndpointMatcher> endpointMatcher;
-
   /// Set of label tags associated with the TcpRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Name of the EndpointPolicy resource.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
   late final pulumi.Output<String?> serverTlsPolicy;
-
   /// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
   /// Structure is documented below.
-  late final pulumi.Output<EndpointPolicyTrafficPortSelector?>
-  trafficPortSelector;
-
+  late final pulumi.Output<EndpointPolicyTrafficPortSelector?> trafficPortSelector;
   /// The type of endpoint policy. This is primarily used to validate the configuration.
   /// Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.
   late final pulumi.Output<String> type;
-
   /// Time the TcpRoute was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -476,41 +462,23 @@ class EndpointPolicy extends pulumi.CustomResource {
     EndpointPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networkservices/endpointPolicy:EndpointPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networkservices/endpointPolicy:EndpointPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizationPolicy = registerOutput<String?>('authorizationPolicy');
     clientTlsPolicy = registerOutput<String?>('clientTlsPolicy');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    endpointMatcher = registerOutput<EndpointPolicyEndpointMatcher>(
-      'endpointMatcher',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointPolicyEndpointMatcher.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    endpointMatcher = registerOutput<EndpointPolicyEndpointMatcher>('endpointMatcher', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPolicyEndpointMatcher.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
-    trafficPortSelector = registerOutput<EndpointPolicyTrafficPortSelector?>(
-      'trafficPortSelector',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointPolicyTrafficPortSelector.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    trafficPortSelector = registerOutput<EndpointPolicyTrafficPortSelector?>('trafficPortSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPolicyTrafficPortSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -533,41 +501,23 @@ class EndpointPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networkservices/endpointPolicy:EndpointPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networkservices/endpointPolicy:EndpointPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizationPolicy = registerOutput<String?>('authorizationPolicy');
     clientTlsPolicy = registerOutput<String?>('clientTlsPolicy');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    endpointMatcher = registerOutput<EndpointPolicyEndpointMatcher>(
-      'endpointMatcher',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointPolicyEndpointMatcher.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    endpointMatcher = registerOutput<EndpointPolicyEndpointMatcher>('endpointMatcher', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPolicyEndpointMatcher.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
-    trafficPortSelector = registerOutput<EndpointPolicyTrafficPortSelector?>(
-      'trafficPortSelector',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointPolicyTrafficPortSelector.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    trafficPortSelector = registerOutput<EndpointPolicyTrafficPortSelector?>('trafficPortSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPolicyTrafficPortSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');
   }

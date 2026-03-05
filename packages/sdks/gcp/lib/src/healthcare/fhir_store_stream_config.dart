@@ -10,9 +10,7 @@ class FhirStoreStreamConfig {
   /// resource type, the server attempts to create one.
   /// See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.
   /// Structure is documented below.
-  final pulumi.Input<FhirStoreStreamConfigBigqueryDestination>
-  bigqueryDestination;
-
+  final pulumi.Input<FhirStoreStreamConfigBigqueryDestination> bigqueryDestination;
   /// Supply a FHIR resource type (such as "Patient" or "Observation"). See
   /// https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
   /// an empty list as an intent to stream all the supported resource types in this FHIR store.
@@ -28,27 +26,16 @@ class FhirStoreStreamConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigqueryDestination':
-          pulumi.Input.mapInputValue<
-            FhirStoreStreamConfigBigqueryDestination,
-            Map<String, dynamic>
-          >(bigqueryDestination, (value) => value.toMap()),
+      'bigqueryDestination': pulumi.Input.mapInputValue<FhirStoreStreamConfigBigqueryDestination, Map<String, dynamic>>(bigqueryDestination, (value) => value.toMap()),
       'resourceTypes': ?resourceTypes,
     };
   }
 
   factory FhirStoreStreamConfig.fromMap(Map<String, dynamic> map) {
     return FhirStoreStreamConfig(
-      bigqueryDestination: pulumi.Input.fromValue(
-        FhirStoreStreamConfigBigqueryDestination.fromMap(
-          (map['bigqueryDestination']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceTypes: (() {
-        final guardedValue = map['resourceTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      bigqueryDestination: pulumi.Input.fromValue(FhirStoreStreamConfigBigqueryDestination.fromMap((map['bigqueryDestination']! as Map).cast<String, dynamic>())),
+      resourceTypes: (() { final guardedValue = map['resourceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationAccount {
   /// ARN of the root.
   final pulumi.Input<String>? arn;
-
   /// Email of the account.
   final pulumi.Input<String>? email;
-
   /// Identifier of the root.
   final pulumi.Input<String>? id;
-
   /// Method by which the account joined the organization.
   final pulumi.Input<String>? joinedMethod;
-
   /// Date the account became a part of the organization.
   final pulumi.Input<String>? joinedTimestamp;
-
   /// Name of the policy type.
   final pulumi.Input<String>? name;
-
   /// State of the account.
   final pulumi.Input<String>? state;
-
   /// Status of the policy type as it relates to the associated root.
   final pulumi.Input<String>? status;
 
@@ -62,46 +55,15 @@ class OrganizationAccount {
 
   factory OrganizationAccount.fromMap(Map<String, dynamic> map) {
     return OrganizationAccount(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      joinedMethod: (() {
-        final guardedValue = map['joinedMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      joinedTimestamp: (() {
-        final guardedValue = map['joinedTimestamp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      joinedMethod: (() { final guardedValue = map['joinedMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      joinedTimestamp: (() { final guardedValue = map['joinedTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

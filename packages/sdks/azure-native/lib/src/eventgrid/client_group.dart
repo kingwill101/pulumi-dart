@@ -147,23 +147,17 @@ import 'system_data_response.dart';
 class ClientGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Description for the Client Group resource.
   late final pulumi.Output<String?> description;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the ClientGroup resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The grouping query for the clients.
   /// Example : attributes.keyName IN ['a', 'b', 'c'].
   late final pulumi.Output<String?> query;
-
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -176,26 +170,17 @@ class ClientGroup extends pulumi.CustomResource {
     ClientGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventgrid:ClientGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventgrid:ClientGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     query = registerOutput<String?>('query');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -302,10 +302,8 @@ import 'api_release_state.dart';
 class ApiRelease extends pulumi.CustomResource {
   /// The ID of the API Management API. Changing this forces a new API Management API Release to be created.
   late final pulumi.Output<String> apiId;
-
   /// The name which should be used for this API Management API Release. Changing this forces a new API Management API Release to be created.
   late final pulumi.Output<String> name;
-
   /// The Release Notes.
   late final pulumi.Output<String?> notes;
 
@@ -318,11 +316,11 @@ class ApiRelease extends pulumi.CustomResource {
     ApiReleaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiRelease:ApiRelease',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiRelease:ApiRelease',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');
@@ -346,11 +344,11 @@ class ApiRelease extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiRelease:ApiRelease',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiRelease:ApiRelease',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');

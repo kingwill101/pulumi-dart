@@ -5,46 +5,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
   final pulumi.Input<String> clusterType;
-
   /// The create time of the instance.
   final pulumi.Input<String> createTime;
-
   /// The description of the instance.
   final pulumi.Input<String> description;
-
   /// (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
   final pulumi.Input<int> entityQuota;
-
   /// ID of the instance.
   final pulumi.Input<String> id;
-
   /// Instance name.
   final pulumi.Input<String> name;
-
   /// (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
   final pulumi.Input<String> network;
-
   /// (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
   final pulumi.Input<List<String>> networkSourceAcls;
-
   /// (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
   final pulumi.Input<List<String>> networkTypeAcls;
-
   /// (Available since v1.221.0) instance policy, json string.
   final pulumi.Input<String> policy;
-
   /// (Available since v1.221.0) instance policy version.
   final pulumi.Input<int> policyVersion;
-
   /// (Available since v1.221.0) The resource group the instance belongs to.
   final pulumi.Input<String> resourceGroupId;
-
   /// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
   final pulumi.Input<String> status;
-
   /// (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
   final pulumi.Input<int> tableQuota;
-
   /// A map of tags assigned to the instance. It must be in the format:
   ///
   /// ```typescript
@@ -151,7 +137,6 @@ class GetInstancesInstance {
   ///           tagKey2: tagValue2
   /// ```
   final pulumi.Input<Map<String, String>> tags;
-
   /// The user id of the instance.
   final pulumi.Input<String> userId;
 
@@ -221,12 +206,8 @@ class GetInstancesInstance {
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       network: pulumi.Input.fromValue(map['network'] as String),
-      networkSourceAcls: pulumi.Input.fromValue(
-        (map['networkSourceAcls'] as List).cast<String>(),
-      ),
-      networkTypeAcls: pulumi.Input.fromValue(
-        (map['networkTypeAcls'] as List).cast<String>(),
-      ),
+      networkSourceAcls: pulumi.Input.fromValue((map['networkSourceAcls'] as List).cast<String>()),
+      networkTypeAcls: pulumi.Input.fromValue((map['networkTypeAcls'] as List).cast<String>()),
       policy: pulumi.Input.fromValue(map['policy'] as String),
       policyVersion: pulumi.Input.fromValue(map['policyVersion'] as int),
       resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
@@ -237,3 +218,4 @@ class GetInstancesInstance {
     );
   }
 }
+

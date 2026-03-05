@@ -29,17 +29,12 @@ class GetRegionHealthCheckComputeBetaArgs {
     };
   }
 
-  factory GetRegionHealthCheckComputeBetaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionHealthCheckComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionHealthCheckComputeBetaArgs(
       healthCheck: pulumi.Input.fromValue(map['healthCheck'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

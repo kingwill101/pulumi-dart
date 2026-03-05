@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudChannelV1ValueResponse {
   /// Represents a boolean value.
   final pulumi.Input<bool> boolValue;
-
   /// Represents a double value.
   final pulumi.Input<double> doubleValue;
-
   /// Represents an int64 value.
   final pulumi.Input<String> int64Value;
-
   /// Represents an 'Any' proto value.
   final pulumi.Input<Map<String, String>> protoValue;
-
   /// Represents a string value.
   final pulumi.Input<String> stringValue;
 
@@ -48,10 +44,9 @@ class GoogleCloudChannelV1ValueResponse {
       boolValue: pulumi.Input.fromValue(map['boolValue'] as bool),
       doubleValue: pulumi.Input.fromValue(map['doubleValue'] as double),
       int64Value: pulumi.Input.fromValue(map['int64Value'] as String),
-      protoValue: pulumi.Input.fromValue(
-        (map['protoValue'] as Map).cast<String, String>(),
-      ),
+      protoValue: pulumi.Input.fromValue((map['protoValue'] as Map).cast<String, String>()),
       stringValue: pulumi.Input.fromValue(map['stringValue'] as String),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse {
   /// Collection of cryptographic digests for the contents of the artifact specified by invocation.configSource.uri.
   final pulumi.Input<Map<String, String>> digest;
-
   /// String identifying the entry point into the build.
   final pulumi.Input<String> entryPoint;
-
   /// URI indicating the identity of the source of the config.
   final pulumi.Input<String> uri;
 
@@ -31,15 +29,12 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSour
     };
   }
 
-  factory GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse(
-      digest: pulumi.Input.fromValue(
-        (map['digest'] as Map).cast<String, String>(),
-      ),
+      digest: pulumi.Input.fromValue((map['digest'] as Map).cast<String, String>()),
       entryPoint: pulumi.Input.fromValue(map['entryPoint'] as String),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

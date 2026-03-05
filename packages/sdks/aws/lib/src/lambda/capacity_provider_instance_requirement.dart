@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapacityProviderInstanceRequirement {
   /// List of allowed instance types (e.g., `["m5.xlarge"]`).
   final pulumi.Input<List<String>> allowedInstanceTypes;
-
   /// List of CPU architectures. Valid values are `["x86_64"]` and `["arm64"]`.
   final pulumi.Input<List<String>> architectures;
-
   /// List of excluded instance types. You can specify only one of `allowed_instance_types` or `excluded_instance_types`.
   final pulumi.Input<List<String>> excludedInstanceTypes;
 
@@ -30,19 +28,12 @@ class CapacityProviderInstanceRequirement {
     };
   }
 
-  factory CapacityProviderInstanceRequirement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CapacityProviderInstanceRequirement.fromMap(Map<String, dynamic> map) {
     return CapacityProviderInstanceRequirement(
-      allowedInstanceTypes: pulumi.Input.fromValue(
-        (map['allowedInstanceTypes'] as List).cast<String>(),
-      ),
-      architectures: pulumi.Input.fromValue(
-        (map['architectures'] as List).cast<String>(),
-      ),
-      excludedInstanceTypes: pulumi.Input.fromValue(
-        (map['excludedInstanceTypes'] as List).cast<String>(),
-      ),
+      allowedInstanceTypes: pulumi.Input.fromValue((map['allowedInstanceTypes'] as List).cast<String>()),
+      architectures: pulumi.Input.fromValue((map['architectures'] as List).cast<String>()),
+      excludedInstanceTypes: pulumi.Input.fromValue((map['excludedInstanceTypes'] as List).cast<String>()),
     );
   }
 }
+

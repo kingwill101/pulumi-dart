@@ -9,18 +9,23 @@ class GetRoutersRouterMd5AuthenticationKey {
   /// Creates a new [GetRoutersRouterMd5AuthenticationKey].
   /// [key] Required.
   /// [name] Required.
-  GetRoutersRouterMd5AuthenticationKey({required this.key, required this.name});
+  GetRoutersRouterMd5AuthenticationKey({
+    required this.key,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'name': name};
+    return <String, dynamic>{
+      'key': key,
+      'name': name,
+    };
   }
 
-  factory GetRoutersRouterMd5AuthenticationKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRoutersRouterMd5AuthenticationKey.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterMd5AuthenticationKey(
       key: pulumi.Input.fromValue(map['key'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

@@ -10,13 +10,10 @@ import 'download_os_job_properties.dart';
 class EdgeMachineJobArgs {
   /// Name of Device
   final pulumi.Input<String> edgeMachineName;
-
   /// Name of EdgeMachineJob
   final pulumi.Input<String>? jobsName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<DownloadOsJobProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,11 +33,7 @@ class EdgeMachineJobArgs {
     return <String, dynamic>{
       'edgeMachineName': edgeMachineName,
       'jobsName': ?jobsName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            DownloadOsJobProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<DownloadOsJobProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -48,23 +41,10 @@ class EdgeMachineJobArgs {
   factory EdgeMachineJobArgs.fromMap(Map<String, dynamic> map) {
     return EdgeMachineJobArgs(
       edgeMachineName: pulumi.Input.fromValue(map['edgeMachineName'] as String),
-      jobsName: (() {
-        final guardedValue = map['jobsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DownloadOsJobProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      jobsName: (() { final guardedValue = map['jobsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DownloadOsJobProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

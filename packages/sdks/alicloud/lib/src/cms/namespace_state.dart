@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceState {
   /// The description of the namespace.
   final pulumi.Input<String>? description;
-
   /// The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
   final pulumi.Input<String>? namespace;
-
   /// The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
   /// - `cms.s1.large`: Data storage duration is 15 days.
   /// - `cms.s1.xlarge`: Data storage duration is 32 days.
@@ -23,7 +21,11 @@ class NamespaceState {
   /// [description] The description of the namespace.
   /// [namespace] The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
   /// [specification] The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
-  NamespaceState({this.description, this.namespace, this.specification});
+  NamespaceState({
+    this.description,
+    this.namespace,
+    this.specification,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,21 +37,10 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      specification: (() {
-        final guardedValue = map['specification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      specification: (() { final guardedValue = map['specification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

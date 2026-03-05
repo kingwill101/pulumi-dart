@@ -12,8 +12,7 @@ enum PolicyControllerMonitoringConfigBackendsItem {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PolicyControllerMonitoringConfigBackendsItem value: $value',
-    );
+    throw ArgumentError('Unknown PolicyControllerMonitoringConfigBackendsItem value: $value');
   }
 }
+

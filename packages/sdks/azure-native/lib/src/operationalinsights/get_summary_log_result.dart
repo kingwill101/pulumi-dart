@@ -7,37 +7,26 @@ import 'system_data_response.dart';
 class GetSummaryLogResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The description of the Summary rule.
   final String? description;
-
   /// The display name of the Summary rule.
   final String? displayName;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Indicates if Summary rule is active. If not, Summary rule execution stops.
   final bool isActive;
-
   /// The name of the resource
   final String name;
-
   /// Summary rule is in provisioning state. If set to 'updating' or 'deleting', indicates a resource lock due to an ongoing operation, preventing any update to the Summary rule until the operation is complete.
   final String provisioningState;
-
   /// Rule definition parameters.
   final RuleDefinitionResponse? ruleDefinition;
-
   /// SummaryRules rule type: User.
   final String? ruleType;
-
   /// Indicates the reason for rule deactivation.
   final String statusCode;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -89,37 +78,18 @@ class GetSummaryLogResult {
   factory GetSummaryLogResult.fromMap(Map<String, dynamic> map) {
     return GetSummaryLogResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       isActive: map['isActive'] as bool,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      ruleDefinition: (() {
-        final guardedValue = map['ruleDefinition'];
-        if (guardedValue == null) return null;
-        return RuleDefinitionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      ruleType: (() {
-        final guardedValue = map['ruleType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      ruleDefinition: (() { final guardedValue = map['ruleDefinition']; if (guardedValue == null) return null; return RuleDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      ruleType: (() { final guardedValue = map['ruleType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       statusCode: map['statusCode'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

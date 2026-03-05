@@ -24,12 +24,9 @@ class ViewDataFilterExpressionTimeRange {
 
   factory ViewDataFilterExpressionTimeRange.fromMap(Map<String, dynamic> map) {
     return ViewDataFilterExpressionTimeRange(
-      beginDateInclusive: pulumi.Input.fromValue(
-        map['beginDateInclusive'] as String,
-      ),
-      endDateInclusive: pulumi.Input.fromValue(
-        map['endDateInclusive'] as String,
-      ),
+      beginDateInclusive: pulumi.Input.fromValue(map['beginDateInclusive'] as String),
+      endDateInclusive: pulumi.Input.fromValue(map['endDateInclusive'] as String),
     );
   }
 }
+

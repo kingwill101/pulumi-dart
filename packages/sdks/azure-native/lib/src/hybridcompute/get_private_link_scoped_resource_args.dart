@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateLinkScopedResourceArgs {
   /// The name of the scoped resource object.
   final pulumi.Input<String> name;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Azure Arc PrivateLinkScope resource.
   final pulumi.Input<String> scopeName;
 
@@ -37,10 +35,9 @@ class GetPrivateLinkScopedResourceArgs {
   factory GetPrivateLinkScopedResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkScopedResourceArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       scopeName: pulumi.Input.fromValue(map['scopeName'] as String),
     );
   }
 }
+

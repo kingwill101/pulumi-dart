@@ -10,16 +10,12 @@ import 'language_model_input_data_config.dart';
 class LanguageModelArgs {
   /// Name of reference base model.
   final pulumi.Input<String> baseModelName;
-
   /// The input data config for the LanguageModel. See Input Data Config for more details.
   final pulumi.Input<LanguageModelInputDataConfig> inputDataConfig;
-
   /// The language code you selected for your language model. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
   final pulumi.Input<String> languageCode;
-
   /// The model name.
   final pulumi.Input<String> modelName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<Map<String, String>>? tags;
@@ -43,11 +39,7 @@ class LanguageModelArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'baseModelName': baseModelName,
-      'inputDataConfig':
-          pulumi.Input.mapInputValue<
-            LanguageModelInputDataConfig,
-            Map<String, dynamic>
-          >(inputDataConfig, (value) => value.toMap()),
+      'inputDataConfig': pulumi.Input.mapInputValue<LanguageModelInputDataConfig, Map<String, dynamic>>(inputDataConfig, (value) => value.toMap()),
       'languageCode': languageCode,
       'modelName': modelName,
       'region': ?region,
@@ -58,25 +50,12 @@ class LanguageModelArgs {
   factory LanguageModelArgs.fromMap(Map<String, dynamic> map) {
     return LanguageModelArgs(
       baseModelName: pulumi.Input.fromValue(map['baseModelName'] as String),
-      inputDataConfig: pulumi.Input.fromValue(
-        LanguageModelInputDataConfig.fromMap(
-          (map['inputDataConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      inputDataConfig: pulumi.Input.fromValue(LanguageModelInputDataConfig.fromMap((map['inputDataConfig']! as Map).cast<String, dynamic>())),
       languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
       modelName: pulumi.Input.fromValue(map['modelName'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

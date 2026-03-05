@@ -7,19 +7,20 @@ class ConnectionSharedAccessSignature {
 
   /// Creates a new [ConnectionSharedAccessSignature].
   /// [sas] Optional.
-  ConnectionSharedAccessSignature({this.sas});
+  ConnectionSharedAccessSignature({
+    this.sas,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sas': ?sas};
+    return <String, dynamic>{
+      'sas': ?sas,
+    };
   }
 
   factory ConnectionSharedAccessSignature.fromMap(Map<String, dynamic> map) {
     return ConnectionSharedAccessSignature(
-      sas: (() {
-        final guardedValue = map['sas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sas: (() { final guardedValue = map['sas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

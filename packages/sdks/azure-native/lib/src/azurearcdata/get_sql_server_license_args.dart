@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlServerLicenseArgs {
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of SQL Server License
   final pulumi.Input<String> sqlServerLicenseName;
 
@@ -30,12 +29,9 @@ class GetSqlServerLicenseArgs {
 
   factory GetSqlServerLicenseArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerLicenseArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sqlServerLicenseName: pulumi.Input.fromValue(
-        map['sqlServerLicenseName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sqlServerLicenseName: pulumi.Input.fromValue(map['sqlServerLicenseName'] as String),
     );
   }
 }
+

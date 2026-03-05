@@ -241,13 +241,10 @@ import 'basic_accelerate_ip_state.dart';
 class BasicAccelerateIp extends pulumi.CustomResource {
   /// The address of the Basic Accelerate IP.
   late final pulumi.Output<String> accelerateIpAddress;
-
   /// The ID of the Basic GA instance.
   late final pulumi.Output<String> acceleratorId;
-
   /// The ID of the Basic Ip Set.
   late final pulumi.Output<String> ipSetId;
-
   /// The status of the Basic Accelerate IP instance.
   late final pulumi.Output<String> status;
 
@@ -260,11 +257,11 @@ class BasicAccelerateIp extends pulumi.CustomResource {
     BasicAccelerateIpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/basicAccelerateIp:BasicAccelerateIp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/basicAccelerateIp:BasicAccelerateIp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accelerateIpAddress = registerOutput<String>('accelerateIpAddress');
     acceleratorId = registerOutput<String>('acceleratorId');
     ipSetId = registerOutput<String>('ipSetId');
@@ -289,11 +286,11 @@ class BasicAccelerateIp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/basicAccelerateIp:BasicAccelerateIp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/basicAccelerateIp:BasicAccelerateIp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accelerateIpAddress = registerOutput<String>('accelerateIpAddress');
     acceleratorId = registerOutput<String>('acceleratorId');
     ipSetId = registerOutput<String>('ipSetId');

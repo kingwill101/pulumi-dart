@@ -261,6 +261,9 @@ class Output<T> implements Input<T> {
   }
 
   /// Combines two outputs into a tuple output.
+  ///
+  /// This is a convenient alternative to nesting [apply] calls when multiple
+  /// outputs must be resolved together.
   static Output<(T1, T2)> tuple<T1, T2>(Output<T1> item1, Output<T2> item2) {
     return Output(
       _combineOutputs([item1, item2]),

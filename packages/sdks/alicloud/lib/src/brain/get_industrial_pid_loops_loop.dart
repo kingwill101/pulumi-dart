@@ -6,26 +6,19 @@ class GetIndustrialPidLoopsLoop {
   /// The ID of the Pid Loop.
   final pulumi.Input<String> id;
   final pulumi.Input<String> pidLoopConfiguration;
-
   /// The dcs type of Pid Loop.
   final pulumi.Input<String> pidLoopDcsType;
   final pulumi.Input<String> pidLoopDesc;
-
   /// The ID of the Pid Loop.
   final pulumi.Input<String> pidLoopId;
-
   /// Whether is crucial Pid Loop.
   final pulumi.Input<bool> pidLoopIsCrucial;
-
   /// The name of Pid Loop.
   final pulumi.Input<String> pidLoopName;
-
   /// The type of Pid Loop.
   final pulumi.Input<String> pidLoopType;
-
   /// The pid project id.
   final pulumi.Input<String> pidProjectId;
-
   /// The status of Pid Loop.
   final pulumi.Input<String> status;
 
@@ -71,9 +64,7 @@ class GetIndustrialPidLoopsLoop {
   factory GetIndustrialPidLoopsLoop.fromMap(Map<String, dynamic> map) {
     return GetIndustrialPidLoopsLoop(
       id: pulumi.Input.fromValue(map['id'] as String),
-      pidLoopConfiguration: pulumi.Input.fromValue(
-        map['pidLoopConfiguration'] as String,
-      ),
+      pidLoopConfiguration: pulumi.Input.fromValue(map['pidLoopConfiguration'] as String),
       pidLoopDcsType: pulumi.Input.fromValue(map['pidLoopDcsType'] as String),
       pidLoopDesc: pulumi.Input.fromValue(map['pidLoopDesc'] as String),
       pidLoopId: pulumi.Input.fromValue(map['pidLoopId'] as String),
@@ -85,3 +76,4 @@ class GetIndustrialPidLoopsLoop {
     );
   }
 }
+

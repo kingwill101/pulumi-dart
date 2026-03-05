@@ -9,17 +9,20 @@ class GoogleCloudDataplexV1LakeMetastoreResponse {
 
   /// Creates a new [GoogleCloudDataplexV1LakeMetastoreResponse].
   /// [service] Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: projects/{project_id}/locations/{location_id}/services/{service_id}
-  GoogleCloudDataplexV1LakeMetastoreResponse({required this.service});
+  GoogleCloudDataplexV1LakeMetastoreResponse({
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'service': service};
+    return <String, dynamic>{
+      'service': service,
+    };
   }
 
-  factory GoogleCloudDataplexV1LakeMetastoreResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1LakeMetastoreResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1LakeMetastoreResponse(
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
+

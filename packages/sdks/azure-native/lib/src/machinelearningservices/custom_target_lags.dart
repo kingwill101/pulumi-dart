@@ -6,17 +6,22 @@ class CustomTargetLags {
   /// Target lags selection modes.
   /// Expected value is 'Custom'.
   final pulumi.Input<String> mode;
-
   /// [Required] Set target lags values.
   final pulumi.Input<List<int>> values;
 
   /// Creates a new [CustomTargetLags].
   /// [mode] Target lags selection modes.
   /// [values] [Required] Set target lags values.
-  CustomTargetLags({required this.mode, required this.values});
+  CustomTargetLags({
+    required this.mode,
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode, 'values': values};
+    return <String, dynamic>{
+      'mode': mode,
+      'values': values,
+    };
   }
 
   factory CustomTargetLags.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class CustomTargetLags {
     );
   }
 }
+

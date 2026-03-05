@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SoftDeletePolicy {
   /// The number of days after which a soft-deleted item is permanently deleted.
   final pulumi.Input<int>? retentionDays;
-
   /// The value that indicates whether the policy is enabled or not.
   final pulumi.Input<String>? status;
 
   /// Creates a new [SoftDeletePolicy].
   /// [retentionDays] The number of days after which a soft-deleted item is permanently deleted.
   /// [status] The value that indicates whether the policy is enabled or not.
-  SoftDeletePolicy({this.retentionDays, this.status});
+  SoftDeletePolicy({
+    this.retentionDays,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class SoftDeletePolicy {
 
   factory SoftDeletePolicy.fromMap(Map<String, dynamic> map) {
     return SoftDeletePolicy(
-      retentionDays: (() {
-        final guardedValue = map['retentionDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

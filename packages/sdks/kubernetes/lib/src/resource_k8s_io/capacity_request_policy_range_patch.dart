@@ -15,12 +15,10 @@ class CapacityRequestPolicyRangePatch {
   ///
   /// Max must be less than or equal to the capacity value. Min and requestPolicy.default must be less than or equal to the maximum.
   final pulumi.Input<String>? max;
-
   /// Min specifies the minimum capacity allowed for a consumption request.
   ///
   /// Min must be greater than or equal to zero, and less than or equal to the capacity value. requestPolicy.default must be more than or equal to the minimum.
   final pulumi.Input<String>? min;
-
   /// Step defines the step size between valid capacity amounts within the range.
   ///
   /// Max (if set) and requestPolicy.default must be a multiple of Step. Min + Step must be less than or equal to the capacity value.
@@ -30,29 +28,26 @@ class CapacityRequestPolicyRangePatch {
   /// [max] Max defines the upper limit for capacity that can be requested.
   /// [min] Min specifies the minimum capacity allowed for a consumption request.
   /// [step] Step defines the step size between valid capacity amounts within the range.
-  CapacityRequestPolicyRangePatch({this.max, this.min, this.step});
+  CapacityRequestPolicyRangePatch({
+    this.max,
+    this.min,
+    this.step,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': ?max, 'min': ?min, 'step': ?step};
+    return <String, dynamic>{
+      'max': ?max,
+      'min': ?min,
+      'step': ?step,
+    };
   }
 
   factory CapacityRequestPolicyRangePatch.fromMap(Map<String, dynamic> map) {
     return CapacityRequestPolicyRangePatch(
-      max: (() {
-        final guardedValue = map['max'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      min: (() {
-        final guardedValue = map['min'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      step: (() {
-        final guardedValue = map['step'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      step: (() { final guardedValue = map['step']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterIpAllocationPolicyAdditionalIpRangesConfig {
   /// List of secondary ranges names within this subnetwork that can be used for pod IPs.
   final pulumi.Input<List<String>>? podIpv4RangeNames;
-
   /// Name of the subnetwork. This can be the full path of the subnetwork or just the name.
   final pulumi.Input<String> subnetwork;
 
@@ -24,16 +23,11 @@ class ClusterIpAllocationPolicyAdditionalIpRangesConfig {
     };
   }
 
-  factory ClusterIpAllocationPolicyAdditionalIpRangesConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterIpAllocationPolicyAdditionalIpRangesConfig.fromMap(Map<String, dynamic> map) {
     return ClusterIpAllocationPolicyAdditionalIpRangesConfig(
-      podIpv4RangeNames: (() {
-        final guardedValue = map['podIpv4RangeNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      podIpv4RangeNames: (() { final guardedValue = map['podIpv4RangeNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
     );
   }
 }
+

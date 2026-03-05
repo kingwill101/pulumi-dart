@@ -129,28 +129,21 @@ import 'account_v1_state.dart';
 class AccountV1 extends pulumi.CustomResource {
   /// The number of bytes used by the account.
   late final pulumi.Output<int> bytesUsed;
-
   /// The number of containers in the account.
   late final pulumi.Output<int> containerCount;
-
   /// A map of headers returned for the account.
   late final pulumi.Output<Map<String, String>> headers;
-
   /// A map of custom key/value pairs to associate with the
   /// account metadata. Changing the `Quota-Bytes` key value is allowed to be
   /// updated only by the cloud administrator.
   late final pulumi.Output<Map<String, String>?> metadata;
-
   /// The number of objects in the account.
   late final pulumi.Output<int> objectCount;
-
   /// The project ID of the corresponding account. If
   /// omitted, the token's project ID is used. Changing this creates a new account.
   late final pulumi.Output<String> projectId;
-
   /// The number of bytes allowed for the account.
   late final pulumi.Output<int> quotaBytes;
-
   /// The region in which to create the account. If omitted,
   /// the `region` argument of the provider is used. Changing this creates a new
   /// account.
@@ -165,11 +158,11 @@ class AccountV1 extends pulumi.CustomResource {
     AccountV1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:objectstorage/accountV1:AccountV1',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:objectstorage/accountV1:AccountV1',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bytesUsed = registerOutput<int>('bytesUsed');
     containerCount = registerOutput<int>('containerCount');
     headers = registerOutput<Map<String, String>>('headers');
@@ -198,11 +191,11 @@ class AccountV1 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:objectstorage/accountV1:AccountV1',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:objectstorage/accountV1:AccountV1',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bytesUsed = registerOutput<int>('bytesUsed');
     containerCount = registerOutput<int>('containerCount');
     headers = registerOutput<Map<String, String>>('headers');

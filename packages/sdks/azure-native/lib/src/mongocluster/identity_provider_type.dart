@@ -14,3 +14,4 @@ enum IdentityProviderType {
     throw ArgumentError('Unknown IdentityProviderType value: $value');
   }
 }
+

@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayRouteResponse {
   /// The route's AS path sequence.
   final pulumi.Input<String> asPath;
-
   /// The gateway's local address.
   final pulumi.Input<String> localAddress;
-
   /// The route's network prefix.
   final pulumi.Input<String> network;
-
   /// The route's next hop.
   final pulumi.Input<String> nextHop;
-
   /// The source this route was learned from.
   final pulumi.Input<String> origin;
-
   /// The peer this route was learned from.
   final pulumi.Input<String> sourcePeer;
-
   /// The route's weight.
   final pulumi.Input<int> weight;
 
@@ -67,3 +61,4 @@ class GatewayRouteResponse {
     );
   }
 }
+

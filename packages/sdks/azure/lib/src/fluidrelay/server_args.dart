@@ -11,22 +11,16 @@ import 'server_identity.dart';
 class ServerArgs {
   /// A `customer_managed_key` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ServerCustomerManagedKey>? customerManagedKey;
-
   /// An `identity` block as defined below.
   final pulumi.Input<ServerIdentity>? identity;
-
   /// The Azure Region where the Fluid Relay Server should exist. Changing this forces a new Fluid Relay Server to be created.
   final pulumi.Input<String>? location;
-
   /// The name which should be used for this Fluid Relay Server. Changing this forces a new Fluid Relay Server to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the Resource Group where the Fluid Relay Server should exist. Changing this forces a new Fluid Relay Server to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// Sku of the storage associated with the resource, Possible values are `standard` and `basic`. Changing this forces a new Fluid Relay Server to be created.
   final pulumi.Input<String>? storageSku;
-
   /// A mapping of tags which should be assigned to the Fluid Relay Server.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -50,16 +44,8 @@ class ServerArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customerManagedKey':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServerCustomerManagedKey,
-            Map<String, dynamic>
-          >(customerManagedKey, (value) => value.toMap()),
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServerIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'customerManagedKey': ?pulumi.Input.mapOptionalInputValue<ServerCustomerManagedKey, Map<String, dynamic>>(customerManagedKey, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ServerIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'resourceGroupName': resourceGroupName,
@@ -70,47 +56,14 @@ class ServerArgs {
 
   factory ServerArgs.fromMap(Map<String, dynamic> map) {
     return ServerArgs(
-      customerManagedKey: (() {
-        final guardedValue = map['customerManagedKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServerCustomerManagedKey.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      storageSku: (() {
-        final guardedValue = map['storageSku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      customerManagedKey: (() { final guardedValue = map['customerManagedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServerCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      storageSku: (() { final guardedValue = map['storageSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

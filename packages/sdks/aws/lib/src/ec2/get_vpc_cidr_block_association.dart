@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcCidrBlockAssociation {
   /// Association ID for the IPv4 CIDR block.
   final pulumi.Input<String> associationId;
-
   /// Cidr block of the desired VPC.
   final pulumi.Input<String> cidrBlock;
-
   /// Current state of the desired VPC.
   /// Can be either `"pending"` or `"available"`.
   final pulumi.Input<String> state;
@@ -39,3 +37,4 @@ class GetVpcCidrBlockAssociation {
     );
   }
 }
+

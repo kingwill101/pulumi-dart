@@ -1408,50 +1408,35 @@ import 'certificate_template_state.dart';
 class CertificateTemplate extends pulumi.CustomResource {
   /// Output only. The time at which this CertificateTemplate was created.
   late final pulumi.Output<String> createTime;
-
   /// Optional. A human-readable description of scenarios this template is intended for.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
   /// Structure is documented below.
-  late final pulumi.Output<CertificateTemplateIdentityConstraints?>
-  identityConstraints;
-
+  late final pulumi.Output<CertificateTemplateIdentityConstraints?> identityConstraints;
   /// Optional. Labels with user-defined metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location for the resource
   late final pulumi.Output<String> location;
-
   /// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
   late final pulumi.Output<String?> maximumLifetime;
-
   /// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
   late final pulumi.Output<String> name;
-
   /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
   /// Structure is documented below.
-  late final pulumi.Output<CertificateTemplatePassthroughExtensions?>
-  passthroughExtensions;
-
+  late final pulumi.Output<CertificateTemplatePassthroughExtensions?> passthroughExtensions;
   /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
   /// Structure is documented below.
-  late final pulumi.Output<CertificateTemplatePredefinedValues?>
-  predefinedValues;
-
+  late final pulumi.Output<CertificateTemplatePredefinedValues?> predefinedValues;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Output only. The time at which this CertificateTemplate was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -1464,50 +1449,21 @@ class CertificateTemplate extends pulumi.CustomResource {
     CertificateTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:certificateauthority/certificateTemplate:CertificateTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:certificateauthority/certificateTemplate:CertificateTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    identityConstraints =
-        registerOutput<CertificateTemplateIdentityConstraints?>(
-          'identityConstraints',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CertificateTemplateIdentityConstraints.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    identityConstraints = registerOutput<CertificateTemplateIdentityConstraints?>('identityConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplateIdentityConstraints.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     maximumLifetime = registerOutput<String?>('maximumLifetime');
     this.name = registerOutput<String>('name');
-    passthroughExtensions =
-        registerOutput<CertificateTemplatePassthroughExtensions?>(
-          'passthroughExtensions',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CertificateTemplatePassthroughExtensions.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    predefinedValues = registerOutput<CertificateTemplatePredefinedValues?>(
-      'predefinedValues',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CertificateTemplatePredefinedValues.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    passthroughExtensions = registerOutput<CertificateTemplatePassthroughExtensions?>('passthroughExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplatePassthroughExtensions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    predefinedValues = registerOutput<CertificateTemplatePredefinedValues?>('predefinedValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplatePredefinedValues.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     updateTime = registerOutput<String>('updateTime');
@@ -1531,50 +1487,21 @@ class CertificateTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:certificateauthority/certificateTemplate:CertificateTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:certificateauthority/certificateTemplate:CertificateTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    identityConstraints =
-        registerOutput<CertificateTemplateIdentityConstraints?>(
-          'identityConstraints',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CertificateTemplateIdentityConstraints.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    identityConstraints = registerOutput<CertificateTemplateIdentityConstraints?>('identityConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplateIdentityConstraints.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     maximumLifetime = registerOutput<String?>('maximumLifetime');
     this.name = registerOutput<String>('name');
-    passthroughExtensions =
-        registerOutput<CertificateTemplatePassthroughExtensions?>(
-          'passthroughExtensions',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CertificateTemplatePassthroughExtensions.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    predefinedValues = registerOutput<CertificateTemplatePredefinedValues?>(
-      'predefinedValues',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CertificateTemplatePredefinedValues.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    passthroughExtensions = registerOutput<CertificateTemplatePassthroughExtensions?>('passthroughExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplatePassthroughExtensions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    predefinedValues = registerOutput<CertificateTemplatePredefinedValues?>('predefinedValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplatePredefinedValues.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     updateTime = registerOutput<String>('updateTime');

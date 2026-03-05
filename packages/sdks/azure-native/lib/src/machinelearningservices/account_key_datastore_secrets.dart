@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountKeyDatastoreSecrets {
   /// Storage account key.
   final pulumi.Input<String>? key;
-
   /// Enum to determine the datastore secrets type.
   /// Expected value is 'AccountKey'.
   final pulumi.Input<String> secretsType;
@@ -14,20 +13,23 @@ class AccountKeyDatastoreSecrets {
   /// Creates a new [AccountKeyDatastoreSecrets].
   /// [key] Storage account key.
   /// [secretsType] Enum to determine the datastore secrets type.
-  AccountKeyDatastoreSecrets({this.key, required this.secretsType});
+  AccountKeyDatastoreSecrets({
+    this.key,
+    required this.secretsType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key, 'secretsType': secretsType};
+    return <String, dynamic>{
+      'key': ?key,
+      'secretsType': secretsType,
+    };
   }
 
   factory AccountKeyDatastoreSecrets.fromMap(Map<String, dynamic> map) {
     return AccountKeyDatastoreSecrets(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretsType: pulumi.Input.fromValue(map['secretsType'] as String),
     );
   }
 }
+

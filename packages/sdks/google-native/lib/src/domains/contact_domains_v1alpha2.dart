@@ -7,13 +7,10 @@ import 'postal_address_domains_v1alpha2.dart';
 class ContactDomainsV1alpha2 {
   /// Email address of the contact.
   final pulumi.Input<String> email;
-
   /// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
   final pulumi.Input<String>? faxNumber;
-
   /// Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
   final pulumi.Input<String> phoneNumber;
-
   /// Postal address of the contact.
   final pulumi.Input<PostalAddressDomainsV1alpha2> postalAddress;
 
@@ -34,28 +31,17 @@ class ContactDomainsV1alpha2 {
       'email': email,
       'faxNumber': ?faxNumber,
       'phoneNumber': phoneNumber,
-      'postalAddress':
-          pulumi.Input.mapInputValue<
-            PostalAddressDomainsV1alpha2,
-            Map<String, dynamic>
-          >(postalAddress, (value) => value.toMap()),
+      'postalAddress': pulumi.Input.mapInputValue<PostalAddressDomainsV1alpha2, Map<String, dynamic>>(postalAddress, (value) => value.toMap()),
     };
   }
 
   factory ContactDomainsV1alpha2.fromMap(Map<String, dynamic> map) {
     return ContactDomainsV1alpha2(
       email: pulumi.Input.fromValue(map['email'] as String),
-      faxNumber: (() {
-        final guardedValue = map['faxNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      faxNumber: (() { final guardedValue = map['faxNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       phoneNumber: pulumi.Input.fromValue(map['phoneNumber'] as String),
-      postalAddress: pulumi.Input.fromValue(
-        PostalAddressDomainsV1alpha2.fromMap(
-          (map['postalAddress']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      postalAddress: pulumi.Input.fromValue(PostalAddressDomainsV1alpha2.fromMap((map['postalAddress']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

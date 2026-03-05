@@ -16,3 +16,4 @@ enum ExecutionTemplateJobType {
     throw ArgumentError('Unknown ExecutionTemplateJobType value: $value');
   }
 }
+

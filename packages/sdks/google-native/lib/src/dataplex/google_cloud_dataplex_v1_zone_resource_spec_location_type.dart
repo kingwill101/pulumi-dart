@@ -7,17 +7,13 @@ enum GoogleCloudDataplexV1ZoneResourceSpecLocationType {
   const GoogleCloudDataplexV1ZoneResourceSpecLocationType(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudDataplexV1ZoneResourceSpecLocationType fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudDataplexV1ZoneResourceSpecLocationType.values) {
+  static GoogleCloudDataplexV1ZoneResourceSpecLocationType fromValue(String value) {
+    for (final item in GoogleCloudDataplexV1ZoneResourceSpecLocationType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudDataplexV1ZoneResourceSpecLocationType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudDataplexV1ZoneResourceSpecLocationType value: $value');
   }
 }
+

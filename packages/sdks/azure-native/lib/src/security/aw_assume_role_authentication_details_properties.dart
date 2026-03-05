@@ -7,10 +7,8 @@ class AwAssumeRoleAuthenticationDetailsProperties {
   /// Connect to your cloud account, for AWS use either account credentials or role-based authentication. For GCP use account organization credentials.
   /// Expected value is 'awsAssumeRole'.
   final pulumi.Input<String> authenticationType;
-
   /// Assumed role ID is an identifier that you can use to create temporary security credentials.
   final pulumi.Input<String> awsAssumeRoleArn;
-
   /// A unique identifier that is required when you assume a role in another account.
   final pulumi.Input<String> awsExternalId;
 
@@ -32,17 +30,12 @@ class AwAssumeRoleAuthenticationDetailsProperties {
     };
   }
 
-  factory AwAssumeRoleAuthenticationDetailsProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AwAssumeRoleAuthenticationDetailsProperties.fromMap(Map<String, dynamic> map) {
     return AwAssumeRoleAuthenticationDetailsProperties(
-      authenticationType: pulumi.Input.fromValue(
-        map['authenticationType'] as String,
-      ),
-      awsAssumeRoleArn: pulumi.Input.fromValue(
-        map['awsAssumeRoleArn'] as String,
-      ),
+      authenticationType: pulumi.Input.fromValue(map['authenticationType'] as String),
+      awsAssumeRoleArn: pulumi.Input.fromValue(map['awsAssumeRoleArn'] as String),
       awsExternalId: pulumi.Input.fromValue(map['awsExternalId'] as String),
     );
   }
 }
+

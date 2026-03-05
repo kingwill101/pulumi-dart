@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationConformancePackInputParameter {
   /// The input key.
   final pulumi.Input<String> parameterName;
-
   /// The input value.
   final pulumi.Input<String> parameterValue;
 
@@ -24,12 +23,11 @@ class OrganizationConformancePackInputParameter {
     };
   }
 
-  factory OrganizationConformancePackInputParameter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OrganizationConformancePackInputParameter.fromMap(Map<String, dynamic> map) {
     return OrganizationConformancePackInputParameter(
       parameterName: pulumi.Input.fromValue(map['parameterName'] as String),
       parameterValue: pulumi.Input.fromValue(map['parameterValue'] as String),
     );
   }
 }
+

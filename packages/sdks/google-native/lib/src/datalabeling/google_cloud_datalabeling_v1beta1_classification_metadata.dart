@@ -9,21 +9,20 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetadata {
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1ClassificationMetadata].
   /// [isMultiLabel] Whether the classification task is multi-label or not.
-  GoogleCloudDatalabelingV1beta1ClassificationMetadata({this.isMultiLabel});
+  GoogleCloudDatalabelingV1beta1ClassificationMetadata({
+    this.isMultiLabel,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'isMultiLabel': ?isMultiLabel};
+    return <String, dynamic>{
+      'isMultiLabel': ?isMultiLabel,
+    };
   }
 
-  factory GoogleCloudDatalabelingV1beta1ClassificationMetadata.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatalabelingV1beta1ClassificationMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1ClassificationMetadata(
-      isMultiLabel: (() {
-        final guardedValue = map['isMultiLabel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      isMultiLabel: (() { final guardedValue = map['isMultiLabel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

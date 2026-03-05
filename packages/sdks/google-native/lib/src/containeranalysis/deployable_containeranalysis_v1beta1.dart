@@ -9,17 +9,20 @@ class DeployableContaineranalysisV1beta1 {
 
   /// Creates a new [DeployableContaineranalysisV1beta1].
   /// [resourceUri] Resource URI for the artifact being deployed.
-  DeployableContaineranalysisV1beta1({required this.resourceUri});
+  DeployableContaineranalysisV1beta1({
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceUri': resourceUri};
+    return <String, dynamic>{
+      'resourceUri': resourceUri,
+    };
   }
 
   factory DeployableContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return DeployableContaineranalysisV1beta1(
-      resourceUri: pulumi.Input.fromValue(
-        (map['resourceUri'] as List).cast<String>(),
-      ),
+      resourceUri: pulumi.Input.fromValue((map['resourceUri'] as List).cast<String>()),
     );
   }
 }
+

@@ -7,16 +7,12 @@ import 'spaces_key_grant.dart';
 class SpacesKeyState {
   /// The access key ID of the key
   final pulumi.Input<String>? accessKey;
-
   /// The creation time of the key
   final pulumi.Input<String>? createdAt;
-
   /// A grant for the key (documented below).
   final pulumi.Input<List<SpacesKeyGrant>>? grants;
-
   /// The name of the key
   final pulumi.Input<String>? name;
-
   /// The access key secret of the key
   final pulumi.Input<String>? secretKey;
 
@@ -38,18 +34,7 @@ class SpacesKeyState {
     return <String, dynamic>{
       'accessKey': ?accessKey,
       'createdAt': ?createdAt,
-      'grants':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SpacesKeyGrant>,
-            List<Map<String, dynamic>>
-          >(
-            grants,
-            (value) =>
-                pulumi.Input.encodeList<SpacesKeyGrant, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'grants': ?pulumi.Input.mapOptionalInputValue<List<SpacesKeyGrant>, List<Map<String, dynamic>>>(grants, (value) => pulumi.Input.encodeList<SpacesKeyGrant, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'secretKey': ?secretKey,
     };
@@ -57,37 +42,12 @@ class SpacesKeyState {
 
   factory SpacesKeyState.fromMap(Map<String, dynamic> map) {
     return SpacesKeyState(
-      accessKey: (() {
-        final guardedValue = map['accessKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createdAt: (() {
-        final guardedValue = map['createdAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      grants: (() {
-        final guardedValue = map['grants'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SpacesKeyGrant>(
-            guardedValue,
-            (value) =>
-                SpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretKey: (() {
-        final guardedValue = map['secretKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessKey: (() { final guardedValue = map['accessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      grants: (() { final guardedValue = map['grants']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SpacesKeyGrant>(guardedValue, (value) => SpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretKey: (() { final guardedValue = map['secretKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

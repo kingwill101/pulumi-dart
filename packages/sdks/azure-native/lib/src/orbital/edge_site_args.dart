@@ -10,17 +10,12 @@ import 'edge_sites_properties_global_communications_site.dart';
 class EdgeSiteArgs {
   /// Edge site name.
   final pulumi.Input<String>? edgeSiteName;
-
   /// A reference to global communications site.
-  final pulumi.Input<EdgeSitesPropertiesGlobalCommunicationsSite>
-  globalCommunicationsSite;
-
+  final pulumi.Input<EdgeSitesPropertiesGlobalCommunicationsSite> globalCommunicationsSite;
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,11 +36,7 @@ class EdgeSiteArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'edgeSiteName': ?edgeSiteName,
-      'globalCommunicationsSite':
-          pulumi.Input.mapInputValue<
-            EdgeSitesPropertiesGlobalCommunicationsSite,
-            Map<String, dynamic>
-          >(globalCommunicationsSite, (value) => value.toMap()),
+      'globalCommunicationsSite': pulumi.Input.mapInputValue<EdgeSitesPropertiesGlobalCommunicationsSite, Map<String, dynamic>>(globalCommunicationsSite, (value) => value.toMap()),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -54,31 +45,12 @@ class EdgeSiteArgs {
 
   factory EdgeSiteArgs.fromMap(Map<String, dynamic> map) {
     return EdgeSiteArgs(
-      edgeSiteName: (() {
-        final guardedValue = map['edgeSiteName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      globalCommunicationsSite: pulumi.Input.fromValue(
-        EdgeSitesPropertiesGlobalCommunicationsSite.fromMap(
-          (map['globalCommunicationsSite']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      edgeSiteName: (() { final guardedValue = map['edgeSiteName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      globalCommunicationsSite: pulumi.Input.fromValue(EdgeSitesPropertiesGlobalCommunicationsSite.fromMap((map['globalCommunicationsSite']! as Map).cast<String, dynamic>())),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

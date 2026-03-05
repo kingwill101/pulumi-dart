@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfluentListMetadataResponse {
   /// First page of the list
   final pulumi.Input<String>? first;
-
   /// Last page of the list
   final pulumi.Input<String>? last;
-
   /// Next page of the list
   final pulumi.Input<String>? next;
-
   /// Previous page of the list
   final pulumi.Input<String>? prev;
-
   /// Total size of the list
   final pulumi.Input<int>? totalSize;
 
@@ -45,31 +41,12 @@ class ConfluentListMetadataResponse {
 
   factory ConfluentListMetadataResponse.fromMap(Map<String, dynamic> map) {
     return ConfluentListMetadataResponse(
-      first: (() {
-        final guardedValue = map['first'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      last: (() {
-        final guardedValue = map['last'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      next: (() {
-        final guardedValue = map['next'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prev: (() {
-        final guardedValue = map['prev'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      totalSize: (() {
-        final guardedValue = map['totalSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      first: (() { final guardedValue = map['first']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      last: (() { final guardedValue = map['last']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      next: (() { final guardedValue = map['next']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prev: (() { final guardedValue = map['prev']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      totalSize: (() { final guardedValue = map['totalSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

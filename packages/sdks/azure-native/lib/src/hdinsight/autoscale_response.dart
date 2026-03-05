@@ -8,50 +8,29 @@ import 'autoscale_recurrence_response.dart';
 class AutoscaleResponse {
   /// Parameters for load-based autoscale
   final pulumi.Input<AutoscaleCapacityResponse>? capacity;
-
   /// Parameters for schedule-based autoscale
   final pulumi.Input<AutoscaleRecurrenceResponse>? recurrence;
 
   /// Creates a new [AutoscaleResponse].
   /// [capacity] Parameters for load-based autoscale
   /// [recurrence] Parameters for schedule-based autoscale
-  AutoscaleResponse({this.capacity, this.recurrence});
+  AutoscaleResponse({
+    this.capacity,
+    this.recurrence,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capacity':
-          ?pulumi.Input.mapOptionalInputValue<
-            AutoscaleCapacityResponse,
-            Map<String, dynamic>
-          >(capacity, (value) => value.toMap()),
-      'recurrence':
-          ?pulumi.Input.mapOptionalInputValue<
-            AutoscaleRecurrenceResponse,
-            Map<String, dynamic>
-          >(recurrence, (value) => value.toMap()),
+      'capacity': ?pulumi.Input.mapOptionalInputValue<AutoscaleCapacityResponse, Map<String, dynamic>>(capacity, (value) => value.toMap()),
+      'recurrence': ?pulumi.Input.mapOptionalInputValue<AutoscaleRecurrenceResponse, Map<String, dynamic>>(recurrence, (value) => value.toMap()),
     };
   }
 
   factory AutoscaleResponse.fromMap(Map<String, dynamic> map) {
     return AutoscaleResponse(
-      capacity: (() {
-        final guardedValue = map['capacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AutoscaleCapacityResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      recurrence: (() {
-        final guardedValue = map['recurrence'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AutoscaleRecurrenceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscaleCapacityResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      recurrence: (() { final guardedValue = map['recurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscaleRecurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

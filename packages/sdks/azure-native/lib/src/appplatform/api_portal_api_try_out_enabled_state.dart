@@ -15,3 +15,4 @@ enum ApiPortalApiTryOutEnabledState {
     throw ArgumentError('Unknown ApiPortalApiTryOutEnabledState value: $value');
   }
 }
+

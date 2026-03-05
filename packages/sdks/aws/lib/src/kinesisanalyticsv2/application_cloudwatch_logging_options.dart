@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationCloudwatchLoggingOptions {
   final pulumi.Input<String>? cloudwatchLoggingOptionId;
-
   /// The ARN of the CloudWatch log stream to receive application messages.
   final pulumi.Input<String> logStreamArn;
 
@@ -23,16 +22,11 @@ class ApplicationCloudwatchLoggingOptions {
     };
   }
 
-  factory ApplicationCloudwatchLoggingOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationCloudwatchLoggingOptions.fromMap(Map<String, dynamic> map) {
     return ApplicationCloudwatchLoggingOptions(
-      cloudwatchLoggingOptionId: (() {
-        final guardedValue = map['cloudwatchLoggingOptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cloudwatchLoggingOptionId: (() { final guardedValue = map['cloudwatchLoggingOptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logStreamArn: pulumi.Input.fromValue(map['logStreamArn'] as String),
     );
   }
 }
+

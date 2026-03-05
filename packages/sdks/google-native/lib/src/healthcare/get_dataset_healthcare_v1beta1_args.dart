@@ -33,11 +33,8 @@ class GetDatasetHealthcareV1beta1Args {
     return GetDatasetHealthcareV1beta1Args(
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

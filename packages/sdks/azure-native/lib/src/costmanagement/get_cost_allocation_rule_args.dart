@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCostAllocationRuleArgs {
   /// BillingAccount ID
   final pulumi.Input<String> billingAccountId;
-
   /// Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters.
   final pulumi.Input<String> ruleName;
 
@@ -30,10 +29,9 @@ class GetCostAllocationRuleArgs {
 
   factory GetCostAllocationRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetCostAllocationRuleArgs(
-      billingAccountId: pulumi.Input.fromValue(
-        map['billingAccountId'] as String,
-      ),
+      billingAccountId: pulumi.Input.fromValue(map['billingAccountId'] as String),
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
     );
   }
 }
+

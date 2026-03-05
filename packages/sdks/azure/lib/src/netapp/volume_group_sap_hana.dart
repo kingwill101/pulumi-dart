@@ -2853,22 +2853,16 @@ import 'volume_group_sap_hana_state.dart';
 class VolumeGroupSapHana extends pulumi.CustomResource {
   /// Name of the account where the application volume group belong to. Changing this forces a new Application Volume Group to be created and data will be lost.
   late final pulumi.Output<String> accountName;
-
   /// The SAP System ID, maximum 3 characters, e.g. `SH9`. Changing this forces a new Application Volume Group to be created and data will be lost.
   late final pulumi.Output<String> applicationIdentifier;
-
   /// Volume group description. Changing this forces a new Application Volume Group to be created and data will be lost.
   late final pulumi.Output<String> groupDescription;
-
   /// The Azure Region where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Application Volume Group. Changing this forces a new Application Volume Group to be created and data will be lost.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
   late final pulumi.Output<String> resourceGroupName;
-
   /// One or more `volume` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> volumes;
 
@@ -2881,11 +2875,11 @@ class VolumeGroupSapHana extends pulumi.CustomResource {
     VolumeGroupSapHanaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:netapp/volumeGroupSapHana:VolumeGroupSapHana',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:netapp/volumeGroupSapHana:VolumeGroupSapHana',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     applicationIdentifier = registerOutput<String>('applicationIdentifier');
     groupDescription = registerOutput<String>('groupDescription');
@@ -2913,11 +2907,11 @@ class VolumeGroupSapHana extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:netapp/volumeGroupSapHana:VolumeGroupSapHana',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:netapp/volumeGroupSapHana:VolumeGroupSapHana',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     applicationIdentifier = registerOutput<String>('applicationIdentifier');
     groupDescription = registerOutput<String>('groupDescription');

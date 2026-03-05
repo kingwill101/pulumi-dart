@@ -203,13 +203,10 @@ import 'network_package_state.dart';
 class NetworkPackage extends pulumi.CustomResource {
   /// The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
   late final pulumi.Output<int> bandwidth;
-
   /// The internet charge type  of  package.
   late final pulumi.Output<String> internetChargeType;
-
   /// The ID of office site.
   late final pulumi.Output<String> officeSiteId;
-
   /// The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
   late final pulumi.Output<String> status;
 
@@ -222,11 +219,11 @@ class NetworkPackage extends pulumi.CustomResource {
     NetworkPackageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eds/networkPackage:NetworkPackage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eds/networkPackage:NetworkPackage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidth = registerOutput<int>('bandwidth');
     internetChargeType = registerOutput<String>('internetChargeType');
     officeSiteId = registerOutput<String>('officeSiteId');
@@ -251,11 +248,11 @@ class NetworkPackage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eds/networkPackage:NetworkPackage',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eds/networkPackage:NetworkPackage',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidth = registerOutput<int>('bandwidth');
     internetChargeType = registerOutput<String>('internetChargeType');
     officeSiteId = registerOutput<String>('officeSiteId');

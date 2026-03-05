@@ -166,15 +166,12 @@ import 'namespace_state.dart';
 class Namespace extends pulumi.CustomResource {
   /// Specifies whether to enable remote debugging.
   late final pulumi.Output<bool> debugEnable;
-
   /// The description of the namespace, The description can be up to `128` characters in length.
   late final pulumi.Output<String?> description;
-
   /// The ID of the namespace.
   /// - The ID of a custom namespace is in the `region ID:namespace identifier` format. An example is `cn-beijing:tdy218`.
   /// - The ID of the default namespace is in the `region ID` format. An example is cn-beijing.
   late final pulumi.Output<String> namespaceLogicalId;
-
   /// The name of the namespace, The name can be up to `63` characters in length.
   late final pulumi.Output<String> namespaceName;
 
@@ -187,11 +184,11 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:edas/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:edas/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     debugEnable = registerOutput<bool>('debugEnable');
     description = registerOutput<String?>('description');
     namespaceLogicalId = registerOutput<String>('namespaceLogicalId');
@@ -216,11 +213,11 @@ class Namespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:edas/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:edas/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     debugEnable = registerOutput<bool>('debugEnable');
     description = registerOutput<String?>('description');
     namespaceLogicalId = registerOutput<String>('namespaceLogicalId');

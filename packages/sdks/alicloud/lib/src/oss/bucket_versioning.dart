@@ -8,10 +8,14 @@ class BucketVersioning {
 
   /// Creates a new [BucketVersioning].
   /// [status] Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-  BucketVersioning({required this.status});
+  BucketVersioning({
+    required this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': status};
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
   factory BucketVersioning.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class BucketVersioning {
     );
   }
 }
+

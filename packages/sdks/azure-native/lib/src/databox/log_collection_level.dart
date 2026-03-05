@@ -15,3 +15,4 @@ enum LogCollectionLevel {
     throw ArgumentError('Unknown LogCollectionLevel value: $value');
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PositionResponse {
   /// The source code column position (of the line) the current instruction was generated from.
   final pulumi.Input<String> column;
-
   /// The number of bytes of source code making up this stack trace element.
   final pulumi.Input<String> length;
-
   /// The source code line number the current instruction was generated from.
   final pulumi.Input<String> line;
 
@@ -24,7 +22,11 @@ class PositionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'column': column, 'length': length, 'line': line};
+    return <String, dynamic>{
+      'column': column,
+      'length': length,
+      'line': line,
+    };
   }
 
   factory PositionResponse.fromMap(Map<String, dynamic> map) {
@@ -35,3 +37,4 @@ class PositionResponse {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerTrustCertificateArgs {
   /// Name of of the certificate to get.
   final pulumi.Input<String> certificateName;
-
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetServerTrustCertificateArgs {
   factory GetServerTrustCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetServerTrustCertificateArgs(
       certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
-      managedInstanceName: pulumi.Input.fromValue(
-        map['managedInstanceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      managedInstanceName: pulumi.Input.fromValue(map['managedInstanceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

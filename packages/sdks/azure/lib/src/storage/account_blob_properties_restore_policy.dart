@@ -8,10 +8,14 @@ class AccountBlobPropertiesRestorePolicy {
 
   /// Creates a new [AccountBlobPropertiesRestorePolicy].
   /// [days] Specifies the number of days that the blob can be restored, between `1` and `365` days. This must be less than the `days` specified for `delete_retention_policy`.
-  AccountBlobPropertiesRestorePolicy({required this.days});
+  AccountBlobPropertiesRestorePolicy({
+    required this.days,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'days': days};
+    return <String, dynamic>{
+      'days': days,
+    };
   }
 
   factory AccountBlobPropertiesRestorePolicy.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class AccountBlobPropertiesRestorePolicy {
     );
   }
 }
+

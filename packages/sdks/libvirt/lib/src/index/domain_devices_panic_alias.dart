@@ -8,10 +8,14 @@ class DomainDevicesPanicAlias {
 
   /// Creates a new [DomainDevicesPanicAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesPanicAlias({required this.name});
+  DomainDevicesPanicAlias({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory DomainDevicesPanicAlias.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesPanicAlias {
     );
   }
 }
+

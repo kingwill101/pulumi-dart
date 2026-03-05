@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSharedResourcesResource {
   /// The ID of the Shared Resource. It formats as `&lt;resource_id&gt;:&lt;resource_type&gt;`.
   final pulumi.Input<String> id;
-
   /// The ID of the shared resource.
   final pulumi.Input<String> resourceId;
-
   /// The resource share ID of resource manager.
   final pulumi.Input<String> resourceShareId;
-
   /// The type of shared resource.
   final pulumi.Input<String> resourceType;
-
   /// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
   final pulumi.Input<String> status;
 
@@ -52,3 +48,4 @@ class GetSharedResourcesResource {
     );
   }
 }
+

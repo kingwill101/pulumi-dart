@@ -5,46 +5,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetParametersParameter {
   /// The constraints of the common parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> constraints;
-
   /// The time when the common parameter was created.
   final pulumi.Input<String> createTime;
-
   /// The user who created the common parameter.
   final pulumi.Input<String> createdBy;
-
   /// The description of the common parameter.
   final pulumi.Input<String> description;
-
   /// The ID of the Parameter. Its value is same as `parameter_name`.
   final pulumi.Input<String> id;
-
   /// The ID of the common parameter.
   final pulumi.Input<String> parameterId;
-
   /// The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
   final pulumi.Input<String> parameterName;
-
   /// The version number of the common parameter.
   final pulumi.Input<int> parameterVersion;
-
   /// The ID of the Resource Group.
   final pulumi.Input<String> resourceGroupId;
-
   /// The share type of the common parameter.
   final pulumi.Input<String> shareType;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// The data type of the common parameter. Valid values: `String`, `StringList`.
   final pulumi.Input<String> type;
-
   /// The user who updated the common parameter.
   final pulumi.Input<String> updatedBy;
-
   /// The time when the common parameter was updated.
   final pulumi.Input<String> updatedDate;
-
   /// (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> value;
 
@@ -122,3 +108,4 @@ class GetParametersParameter {
     );
   }
 }
+

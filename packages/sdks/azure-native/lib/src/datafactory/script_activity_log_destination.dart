@@ -15,3 +15,4 @@ enum ScriptActivityLogDestination {
     throw ArgumentError('Unknown ScriptActivityLogDestination value: $value');
   }
 }
+

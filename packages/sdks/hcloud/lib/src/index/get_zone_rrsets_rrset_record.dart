@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZoneRrsetsRrsetRecord {
   /// Comment of the record.
   final pulumi.Input<String> comment;
-
   /// Value of the record.
   final pulumi.Input<String> value;
 
   /// Creates a new [GetZoneRrsetsRrsetRecord].
   /// [comment] Comment of the record.
   /// [value] Value of the record.
-  GetZoneRrsetsRrsetRecord({required this.comment, required this.value});
+  GetZoneRrsetsRrsetRecord({
+    required this.comment,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comment': comment, 'value': value};
+    return <String, dynamic>{
+      'comment': comment,
+      'value': value,
+    };
   }
 
   factory GetZoneRrsetsRrsetRecord.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class GetZoneRrsetsRrsetRecord {
     );
   }
 }
+

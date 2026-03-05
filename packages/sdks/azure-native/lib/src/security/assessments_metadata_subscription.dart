@@ -203,39 +203,28 @@ import 'assessments_metadata_subscription_args.dart';
 class AssessmentsMetadataSubscription extends pulumi.CustomResource {
   /// BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
   late final pulumi.Output<String> assessmentType;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<List<String>?> categories;
-
   /// Human readable description of the assessment
   late final pulumi.Output<String?> description;
-
   /// User friendly display name of the assessment
   late final pulumi.Output<String> displayName;
-
   /// The implementation effort required to remediate this assessment
   late final pulumi.Output<String?> implementationEffort;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Azure resource ID of the policy definition that turns this assessment calculation on
   late final pulumi.Output<String> policyDefinitionId;
-
   /// True if this assessment is in preview release status
   late final pulumi.Output<bool?> preview;
-
   /// Human readable description of what you should do to mitigate this security issue
   late final pulumi.Output<String?> remediationDescription;
-
   /// The severity level of the assessment
   late final pulumi.Output<String> severity;
   late final pulumi.Output<List<String>?> threats;
-
   /// Resource type
   late final pulumi.Output<String> type;
-
   /// The user impact of the assessment
   late final pulumi.Output<String?> userImpact;
 
@@ -248,11 +237,11 @@ class AssessmentsMetadataSubscription extends pulumi.CustomResource {
     AssessmentsMetadataSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:AssessmentsMetadataSubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:security:AssessmentsMetadataSubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assessmentType = registerOutput<String>('assessmentType');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     categories = registerOutput<List<String>?>('categories');

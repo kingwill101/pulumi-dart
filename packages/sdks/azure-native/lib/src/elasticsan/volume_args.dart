@@ -11,22 +11,16 @@ import 'source_creation_data.dart';
 class VolumeArgs {
   /// State of the operation on the resource.
   final pulumi.Input<SourceCreationData>? creationData;
-
   /// The name of the ElasticSan.
   final pulumi.Input<String> elasticSanName;
-
   /// Parent resource information.
   final pulumi.Input<ManagedByInfo>? managedBy;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Volume size.
   final pulumi.Input<double> sizeGiB;
-
   /// The name of the VolumeGroup.
   final pulumi.Input<String> volumeGroupName;
-
   /// The name of the Volume.
   final pulumi.Input<String>? volumeName;
 
@@ -50,17 +44,9 @@ class VolumeArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'creationData':
-          ?pulumi.Input.mapOptionalInputValue<
-            SourceCreationData,
-            Map<String, dynamic>
-          >(creationData, (value) => value.toMap()),
+      'creationData': ?pulumi.Input.mapOptionalInputValue<SourceCreationData, Map<String, dynamic>>(creationData, (value) => value.toMap()),
       'elasticSanName': elasticSanName,
-      'managedBy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedByInfo,
-            Map<String, dynamic>
-          >(managedBy, (value) => value.toMap()),
+      'managedBy': ?pulumi.Input.mapOptionalInputValue<ManagedByInfo, Map<String, dynamic>>(managedBy, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'sizeGiB': sizeGiB,
       'volumeGroupName': volumeGroupName,
@@ -70,33 +56,14 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      creationData: (() {
-        final guardedValue = map['creationData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SourceCreationData.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      creationData: (() { final guardedValue = map['creationData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SourceCreationData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       elasticSanName: pulumi.Input.fromValue(map['elasticSanName'] as String),
-      managedBy: (() {
-        final guardedValue = map['managedBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedByInfo.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      managedBy: (() { final guardedValue = map['managedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedByInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sizeGiB: pulumi.Input.fromValue(map['sizeGiB'] as double),
       volumeGroupName: pulumi.Input.fromValue(map['volumeGroupName'] as String),
-      volumeName: (() {
-        final guardedValue = map['volumeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      volumeName: (() { final guardedValue = map['volumeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

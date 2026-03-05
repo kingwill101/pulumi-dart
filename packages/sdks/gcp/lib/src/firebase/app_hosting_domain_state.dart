@@ -8,49 +8,36 @@ import 'app_hosting_domain_serve.dart';
 class AppHostingDomainState {
   /// The ID of the Backend that this Domain is associated with
   final pulumi.Input<String>? backend;
-
   /// Time at which the domain was created.
   final pulumi.Input<String>? createTime;
-
   /// The status of a custom domain's linkage to the Backend.
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingDomainCustomDomainStatus>>?
-  customDomainStatuses;
-
+  final pulumi.Input<List<AppHostingDomainCustomDomainStatus>>? customDomainStatuses;
   /// Time at which the domain was deleted.
   final pulumi.Input<String>? deleteTime;
-
   /// Id of the domain to create.
   /// Must be a valid domain name, such as "foo.com"
   final pulumi.Input<String>? domainId;
-
   /// Server-computed checksum based on other values; may be sent
   /// on update or delete to ensure operation is done on expected resource.
   final pulumi.Input<String>? etag;
-
   /// The location of the Backend that this Domain is associated with
   final pulumi.Input<String>? location;
-
   /// Identifier. The resource name of the domain, e.g.
   /// `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Time at which a soft-deleted domain will be purged, rendering in
   /// permanently deleted.
   final pulumi.Input<String>? purgeTime;
-
   /// The serving behavior of the domain. If specified, the domain will
   /// serve content other than its Backend's live content.
   /// Structure is documented below.
   final pulumi.Input<AppHostingDomainServe>? serve;
-
   /// System-assigned, unique identifier.
   final pulumi.Input<String>? uid;
-
   /// Time at which the domain was last updated.
   final pulumi.Input<String>? updateTime;
 
@@ -88,18 +75,7 @@ class AppHostingDomainState {
     return <String, dynamic>{
       'backend': ?backend,
       'createTime': ?createTime,
-      'customDomainStatuses':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AppHostingDomainCustomDomainStatus>,
-            List<Map<String, dynamic>>
-          >(
-            customDomainStatuses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AppHostingDomainCustomDomainStatus,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'customDomainStatuses': ?pulumi.Input.mapOptionalInputValue<List<AppHostingDomainCustomDomainStatus>, List<Map<String, dynamic>>>(customDomainStatuses, (value) => pulumi.Input.encodeList<AppHostingDomainCustomDomainStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'deleteTime': ?deleteTime,
       'domainId': ?domainId,
       'etag': ?etag,
@@ -107,11 +83,7 @@ class AppHostingDomainState {
       'name': ?name,
       'project': ?project,
       'purgeTime': ?purgeTime,
-      'serve':
-          ?pulumi.Input.mapOptionalInputValue<
-            AppHostingDomainServe,
-            Map<String, dynamic>
-          >(serve, (value) => value.toMap()),
+      'serve': ?pulumi.Input.mapOptionalInputValue<AppHostingDomainServe, Map<String, dynamic>>(serve, (value) => value.toMap()),
       'uid': ?uid,
       'updateTime': ?updateTime,
     };
@@ -119,82 +91,20 @@ class AppHostingDomainState {
 
   factory AppHostingDomainState.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainState(
-      backend: (() {
-        final guardedValue = map['backend'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customDomainStatuses: (() {
-        final guardedValue = map['customDomainStatuses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AppHostingDomainCustomDomainStatus>(
-            guardedValue,
-            (value) => AppHostingDomainCustomDomainStatus.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      deleteTime: (() {
-        final guardedValue = map['deleteTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      domainId: (() {
-        final guardedValue = map['domainId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      purgeTime: (() {
-        final guardedValue = map['purgeTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serve: (() {
-        final guardedValue = map['serve'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AppHostingDomainServe.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      uid: (() {
-        final guardedValue = map['uid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backend: (() { final guardedValue = map['backend']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customDomainStatuses: (() { final guardedValue = map['customDomainStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppHostingDomainCustomDomainStatus>(guardedValue, (value) => AppHostingDomainCustomDomainStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      domainId: (() { final guardedValue = map['domainId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      purgeTime: (() { final guardedValue = map['purgeTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serve: (() { final guardedValue = map['serve']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppHostingDomainServe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

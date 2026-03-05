@@ -22,42 +22,18 @@ class GetObjectStorageQuotasResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetObjectStorageQuotasFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetObjectStorageQuotasFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
-      'quotas':
-          pulumi.Input.encodeList<
-            GetObjectStorageQuotasQuota,
-            Map<String, dynamic>
-          >(quotas, (value) => value.toMap()),
+      'quotas': pulumi.Input.encodeList<GetObjectStorageQuotasQuota, Map<String, dynamic>>(quotas, (value) => value.toMap()),
     };
   }
 
   factory GetObjectStorageQuotasResult.fromMap(Map<String, dynamic> map) {
     return GetObjectStorageQuotasResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetObjectStorageQuotasFilter>(
-          guardedValue,
-          (value) => GetObjectStorageQuotasFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetObjectStorageQuotasFilter>(guardedValue, (value) => GetObjectStorageQuotasFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      quotas: pulumi.Input.decodeList<GetObjectStorageQuotasQuota>(
-        map['quotas']!,
-        (value) => GetObjectStorageQuotasQuota.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      quotas: pulumi.Input.decodeList<GetObjectStorageQuotasQuota>(map['quotas']!, (value) => GetObjectStorageQuotasQuota.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

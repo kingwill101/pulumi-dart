@@ -7,16 +7,13 @@ enum ConversationConversationStageDialogflowV2beta1 {
   const ConversationConversationStageDialogflowV2beta1(this.wireValue);
   final String wireValue;
 
-  static ConversationConversationStageDialogflowV2beta1 fromValue(
-    String value,
-  ) {
+  static ConversationConversationStageDialogflowV2beta1 fromValue(String value) {
     for (final item in ConversationConversationStageDialogflowV2beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ConversationConversationStageDialogflowV2beta1 value: $value',
-    );
+    throw ArgumentError('Unknown ConversationConversationStageDialogflowV2beta1 value: $value');
   }
 }
+

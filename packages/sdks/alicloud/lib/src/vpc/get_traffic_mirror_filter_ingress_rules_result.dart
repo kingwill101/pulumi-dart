@@ -34,39 +34,21 @@ class GetTrafficMirrorFilterIngressRulesResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'rules':
-          pulumi.Input.encodeList<
-            GetTrafficMirrorFilterIngressRulesRule,
-            Map<String, dynamic>
-          >(rules, (value) => value.toMap()),
+      'rules': pulumi.Input.encodeList<GetTrafficMirrorFilterIngressRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
       'status': ?status,
       'trafficMirrorFilterId': trafficMirrorFilterId,
     };
   }
 
-  factory GetTrafficMirrorFilterIngressRulesResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTrafficMirrorFilterIngressRulesResult.fromMap(Map<String, dynamic> map) {
     return GetTrafficMirrorFilterIngressRulesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      rules: pulumi.Input.decodeList<GetTrafficMirrorFilterIngressRulesRule>(
-        map['rules']!,
-        (value) => GetTrafficMirrorFilterIngressRulesRule.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rules: pulumi.Input.decodeList<GetTrafficMirrorFilterIngressRulesRule>(map['rules']!, (value) => GetTrafficMirrorFilterIngressRulesRule.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       trafficMirrorFilterId: map['trafficMirrorFilterId'] as String,
     );
   }
 }
+

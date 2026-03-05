@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalIslandModeCidrConfigResponse {
   /// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
   final pulumi.Input<List<String>> podAddressCidrBlocks;
-
   /// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field is mutable after creation starting with version 1.15.
   final pulumi.Input<List<String>> serviceAddressCidrBlocks;
 
@@ -25,16 +24,11 @@ class BareMetalIslandModeCidrConfigResponse {
     };
   }
 
-  factory BareMetalIslandModeCidrConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalIslandModeCidrConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalIslandModeCidrConfigResponse(
-      podAddressCidrBlocks: pulumi.Input.fromValue(
-        (map['podAddressCidrBlocks'] as List).cast<String>(),
-      ),
-      serviceAddressCidrBlocks: pulumi.Input.fromValue(
-        (map['serviceAddressCidrBlocks'] as List).cast<String>(),
-      ),
+      podAddressCidrBlocks: pulumi.Input.fromValue((map['podAddressCidrBlocks'] as List).cast<String>()),
+      serviceAddressCidrBlocks: pulumi.Input.fromValue((map['serviceAddressCidrBlocks'] as List).cast<String>()),
     );
   }
 }
+

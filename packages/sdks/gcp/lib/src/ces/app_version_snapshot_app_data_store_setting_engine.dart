@@ -8,7 +8,6 @@ class AppVersionSnapshotAppDataStoreSettingEngine {
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
   final pulumi.Input<String>? name;
-
   /// (Output)
   /// The type of the data store. This field is readonly and populated by the
   /// server.
@@ -22,26 +21,23 @@ class AppVersionSnapshotAppDataStoreSettingEngine {
   /// Creates a new [AppVersionSnapshotAppDataStoreSettingEngine].
   /// [name] (Output)
   /// [type] (Output)
-  AppVersionSnapshotAppDataStoreSettingEngine({this.name, this.type});
+  AppVersionSnapshotAppDataStoreSettingEngine({
+    this.name,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'type': ?type};
+    return <String, dynamic>{
+      'name': ?name,
+      'type': ?type,
+    };
   }
 
-  factory AppVersionSnapshotAppDataStoreSettingEngine.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotAppDataStoreSettingEngine.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppDataStoreSettingEngine(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

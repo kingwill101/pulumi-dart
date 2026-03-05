@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLoadBalancerDomain {
   /// certificate ID for TLS handshaking
   final pulumi.Input<String> certificateId;
-
   /// name of certificate required for TLS handshaking
   final pulumi.Input<String> certificateName;
-
   /// flag indicating if domain is managed by DigitalOcean
   final pulumi.Input<bool> isManaged;
-
   /// The name of load balancer.
   final pulumi.Input<String> name;
-
   /// list of domain SSL validation errors
   final pulumi.Input<List<String>> sslValidationErrorReasons;
-
   /// list of domain verification errors
   final pulumi.Input<List<String>> verificationErrorReasons;
 
@@ -54,12 +49,9 @@ class GetLoadBalancerDomain {
       certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
       isManaged: pulumi.Input.fromValue(map['isManaged'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
-      sslValidationErrorReasons: pulumi.Input.fromValue(
-        (map['sslValidationErrorReasons'] as List).cast<String>(),
-      ),
-      verificationErrorReasons: pulumi.Input.fromValue(
-        (map['verificationErrorReasons'] as List).cast<String>(),
-      ),
+      sslValidationErrorReasons: pulumi.Input.fromValue((map['sslValidationErrorReasons'] as List).cast<String>()),
+      verificationErrorReasons: pulumi.Input.fromValue((map['verificationErrorReasons'] as List).cast<String>()),
     );
   }
 }
+

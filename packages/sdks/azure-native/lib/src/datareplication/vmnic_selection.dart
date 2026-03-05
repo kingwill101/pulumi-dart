@@ -17,3 +17,4 @@ enum VMNicSelection {
     throw ArgumentError('Unknown VMNicSelection value: $value');
   }
 }
+

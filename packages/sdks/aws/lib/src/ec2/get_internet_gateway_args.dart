@@ -13,13 +13,10 @@ class GetInternetGatewayArgs {
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
   final pulumi.Input<List<GetInternetGatewayFilter>>? filters;
-
   /// ID of the specific Internet Gateway to retrieve.
   final pulumi.Input<String>? internetGatewayId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired Internet Gateway.
   final pulumi.Input<Map<String, String>>? tags;
@@ -38,18 +35,7 @@ class GetInternetGatewayArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetInternetGatewayFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetInternetGatewayFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetInternetGatewayFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetInternetGatewayFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'internetGatewayId': ?internetGatewayId,
       'region': ?region,
       'tags': ?tags,
@@ -58,35 +44,11 @@ class GetInternetGatewayArgs {
 
   factory GetInternetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetInternetGatewayArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetInternetGatewayFilter>(
-            guardedValue,
-            (value) => GetInternetGatewayFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      internetGatewayId: (() {
-        final guardedValue = map['internetGatewayId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetInternetGatewayFilter>(guardedValue, (value) => GetInternetGatewayFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      internetGatewayId: (() { final guardedValue = map['internetGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

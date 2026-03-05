@@ -7,10 +7,8 @@ import 'max_pods_constraint_response.dart';
 class AdditionalPodNetworkConfigResponse {
   /// The maximum number of pods per node which use this pod network
   final pulumi.Input<MaxPodsConstraintResponse> maxPodsPerNode;
-
   /// The name of the secondary range on the subnet which provides IP address for this pod range
   final pulumi.Input<String> secondaryPodRange;
-
   /// Name of the subnetwork where the additional pod network belongs
   final pulumi.Input<String> subnetwork;
 
@@ -26,11 +24,7 @@ class AdditionalPodNetworkConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxPodsPerNode':
-          pulumi.Input.mapInputValue<
-            MaxPodsConstraintResponse,
-            Map<String, dynamic>
-          >(maxPodsPerNode, (value) => value.toMap()),
+      'maxPodsPerNode': pulumi.Input.mapInputValue<MaxPodsConstraintResponse, Map<String, dynamic>>(maxPodsPerNode, (value) => value.toMap()),
       'secondaryPodRange': secondaryPodRange,
       'subnetwork': subnetwork,
     };
@@ -38,15 +32,10 @@ class AdditionalPodNetworkConfigResponse {
 
   factory AdditionalPodNetworkConfigResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalPodNetworkConfigResponse(
-      maxPodsPerNode: pulumi.Input.fromValue(
-        MaxPodsConstraintResponse.fromMap(
-          (map['maxPodsPerNode']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      secondaryPodRange: pulumi.Input.fromValue(
-        map['secondaryPodRange'] as String,
-      ),
+      maxPodsPerNode: pulumi.Input.fromValue(MaxPodsConstraintResponse.fromMap((map['maxPodsPerNode']! as Map).cast<String, dynamic>())),
+      secondaryPodRange: pulumi.Input.fromValue(map['secondaryPodRange'] as String),
       subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
     );
   }
 }
+

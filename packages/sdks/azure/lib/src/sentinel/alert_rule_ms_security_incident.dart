@@ -245,31 +245,22 @@ import 'alert_rule_ms_security_incident_state.dart';
 class AlertRuleMsSecurityIncident extends pulumi.CustomResource {
   /// The GUID of the alert rule template which is used to create this Sentinel Scheduled Alert Rule. Changing this forces a new Sentinel MS Security Incident Alert Rule to be created.
   late final pulumi.Output<String?> alertRuleTemplateGuid;
-
   /// The description of this Sentinel MS Security Incident Alert Rule.
   late final pulumi.Output<String?> description;
-
   /// The friendly name of this Sentinel MS Security Incident Alert Rule.
   late final pulumi.Output<String> displayName;
-
   /// Only create incidents when the alert display name doesn't contain text from this list.
   late final pulumi.Output<List<String>?> displayNameExcludeFilters;
-
   /// Only create incidents when the alert display name contain text from this list, leave empty to apply no filter.
   late final pulumi.Output<List<String>?> displayNameFilters;
-
   /// Should this Sentinel MS Security Incident Alert Rule be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// The ID of the Log Analytics Workspace this Sentinel MS Security Incident Alert Rule belongs to. Changing this forces a new Sentinel MS Security Incident Alert Rule to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
-
   /// The name which should be used for this Sentinel MS Security Incident Alert Rule. Changing this forces a new Sentinel MS Security Incident Alert Rule to be created.
   late final pulumi.Output<String> name;
-
   /// The Microsoft Security Service from where the alert will be generated. Possible values are `Azure Active Directory Identity Protection`, `Azure Advanced Threat Protection`, `Azure Security Center`, `Azure Security Center for IoT`, `Microsoft Cloud App Security`, `Microsoft Defender Advanced Threat Protection` and `Office 365 Advanced Threat Protection`.
   late final pulumi.Output<String> productFilter;
-
   /// Only create incidents from alerts when alert severity level is contained in this list. Possible values are `High`, `Medium`, `Low` and `Informational`.
   ///
   /// &gt; **Note:** At least one of the severity filters need to be set.
@@ -284,17 +275,15 @@ class AlertRuleMsSecurityIncident extends pulumi.CustomResource {
     AlertRuleMsSecurityIncidentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/alertRuleMsSecurityIncident:AlertRuleMsSecurityIncident',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/alertRuleMsSecurityIncident:AlertRuleMsSecurityIncident',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    displayNameExcludeFilters = registerOutput<List<String>?>(
-      'displayNameExcludeFilters',
-    );
+    displayNameExcludeFilters = registerOutput<List<String>?>('displayNameExcludeFilters');
     displayNameFilters = registerOutput<List<String>?>('displayNameFilters');
     enabled = registerOutput<bool?>('enabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
@@ -321,17 +310,15 @@ class AlertRuleMsSecurityIncident extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/alertRuleMsSecurityIncident:AlertRuleMsSecurityIncident',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/alertRuleMsSecurityIncident:AlertRuleMsSecurityIncident',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    displayNameExcludeFilters = registerOutput<List<String>?>(
-      'displayNameExcludeFilters',
-    );
+    displayNameExcludeFilters = registerOutput<List<String>?>('displayNameExcludeFilters');
     displayNameFilters = registerOutput<List<String>?>('displayNameFilters');
     enabled = registerOutput<bool?>('enabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');

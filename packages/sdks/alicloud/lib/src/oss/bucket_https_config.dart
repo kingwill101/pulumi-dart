@@ -13,13 +13,10 @@ import 'bucket_https_config_state.dart';
 class BucketHttpsConfig extends pulumi.CustomResource {
   /// The name of the bucket
   late final pulumi.Output<String> bucket;
-
   /// TLS encryption algorithm suite configuration See `cipher_suit` below.
   late final pulumi.Output<BucketHttpsConfigCipherSuit> cipherSuit;
-
   /// Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
   late final pulumi.Output<bool> enable;
-
   /// Specifies the TLS versions allowed to access this buckets.
   late final pulumi.Output<List<String>?> tlsVersions;
 
@@ -32,22 +29,13 @@ class BucketHttpsConfig extends pulumi.CustomResource {
     BucketHttpsConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketHttpsConfig:BucketHttpsConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketHttpsConfig:BucketHttpsConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
-    cipherSuit = registerOutput<BucketHttpsConfigCipherSuit>(
-      'cipherSuit',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketHttpsConfigCipherSuit.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cipherSuit = registerOutput<BucketHttpsConfigCipherSuit>('cipherSuit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketHttpsConfigCipherSuit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enable = registerOutput<bool>('enable');
     tlsVersions = registerOutput<List<String>?>('tlsVersions');
   }
@@ -70,22 +58,13 @@ class BucketHttpsConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketHttpsConfig:BucketHttpsConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketHttpsConfig:BucketHttpsConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
-    cipherSuit = registerOutput<BucketHttpsConfigCipherSuit>(
-      'cipherSuit',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketHttpsConfigCipherSuit.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cipherSuit = registerOutput<BucketHttpsConfigCipherSuit>('cipherSuit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketHttpsConfigCipherSuit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enable = registerOutput<bool>('enable');
     tlsVersions = registerOutput<List<String>?>('tlsVersions');
   }

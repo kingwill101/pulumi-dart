@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DelegatedAdminAccountArgs {
   /// Account to enable as delegated admin account.
   final pulumi.Input<String> accountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [DelegatedAdminAccountArgs].
   /// [accountId] Account to enable as delegated admin account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DelegatedAdminAccountArgs({required this.accountId, this.region});
+  DelegatedAdminAccountArgs({
+    required this.accountId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accountId': accountId, 'region': ?region};
+    return <String, dynamic>{
+      'accountId': accountId,
+      'region': ?region,
+    };
   }
 
   factory DelegatedAdminAccountArgs.fromMap(Map<String, dynamic> map) {
     return DelegatedAdminAccountArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

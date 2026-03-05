@@ -16,3 +16,4 @@ enum ManagedClusterSKUTier {
     throw ArgumentError('Unknown ManagedClusterSKUTier value: $value');
   }
 }
+

@@ -145,46 +145,32 @@ import 'system_data_response.dart';
 class LinkedSubscription extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The status of the remote management connection of the Azure Stack device.
   late final pulumi.Output<String> deviceConnectionStatus;
-
   /// The identifier of the Azure Stack device for remote management.
   late final pulumi.Output<String> deviceId;
-
   /// The connection state of the Azure Stack device.
   late final pulumi.Output<String> deviceLinkState;
-
   /// The object identifier associated with the Azure Stack device connecting to Azure.
   late final pulumi.Output<String> deviceObjectId;
-
   /// The entity tag used for optimistic concurrency when modifying the resource.
   late final pulumi.Output<String?> etag;
-
   /// The kind of the resource.
   late final pulumi.Output<String> kind;
-
   /// The last remote management connection time for the Azure Stack device connected to the linked subscription resource.
   late final pulumi.Output<String> lastConnectedTime;
-
   /// The identifier associated with the device subscription.
   late final pulumi.Output<String?> linkedSubscriptionId;
-
   /// Location of the resource.
   late final pulumi.Output<String> location;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// The identifier associated with the device registration.
   late final pulumi.Output<String?> registrationResourceId;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Custom tags for the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Type of Resource.
   late final pulumi.Output<String> type;
 
@@ -197,11 +183,11 @@ class LinkedSubscription extends pulumi.CustomResource {
     LinkedSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azurestack:LinkedSubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azurestack:LinkedSubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     deviceConnectionStatus = registerOutput<String>('deviceConnectionStatus');
     deviceId = registerOutput<String>('deviceId');
@@ -214,16 +200,7 @@ class LinkedSubscription extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     registrationResourceId = registerOutput<String?>('registrationResourceId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

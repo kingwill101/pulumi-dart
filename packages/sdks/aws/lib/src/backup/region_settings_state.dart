@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionSettingsState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of service names to their full management preferences for the Region. For more information, see the AWS Documentation on [what full management is](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#full-management) and [which services support full management](https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html#features-by-resource).
   final pulumi.Input<Map<String, bool>>? resourceTypeManagementPreference;
-
   /// A map of service names to their opt-in preferences for the Region. See [AWS Documentation on which services support backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html).
   final pulumi.Input<Map<String, bool>>? resourceTypeOptInPreference;
 
@@ -33,25 +31,10 @@ class RegionSettingsState {
 
   factory RegionSettingsState.fromMap(Map<String, dynamic> map) {
     return RegionSettingsState(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceTypeManagementPreference: (() {
-        final guardedValue = map['resourceTypeManagementPreference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, bool>(),
-        );
-      })(),
-      resourceTypeOptInPreference: (() {
-        final guardedValue = map['resourceTypeOptInPreference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, bool>(),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceTypeManagementPreference: (() { final guardedValue = map['resourceTypeManagementPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, bool>()); })(),
+      resourceTypeOptInPreference: (() { final guardedValue = map['resourceTypeOptInPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, bool>()); })(),
     );
   }
 }
+

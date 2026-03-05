@@ -32,12 +32,9 @@ class GetRegionBackendServiceArgs {
   factory GetRegionBackendServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceArgs(
       backendService: pulumi.Input.fromValue(map['backendService'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

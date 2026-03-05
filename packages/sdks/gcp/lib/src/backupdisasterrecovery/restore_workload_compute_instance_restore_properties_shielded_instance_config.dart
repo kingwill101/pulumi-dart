@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig {
   /// (Optional)
   final pulumi.Input<bool>? enableIntegrityMonitoring;
-
   /// (Optional)
   final pulumi.Input<bool>? enableSecureBoot;
-
   /// (Optional)
   final pulumi.Input<bool>? enableVtpm;
 
@@ -30,25 +28,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig(
-      enableIntegrityMonitoring: (() {
-        final guardedValue = map['enableIntegrityMonitoring'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableSecureBoot: (() {
-        final guardedValue = map['enableSecureBoot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableVtpm: (() {
-        final guardedValue = map['enableVtpm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableIntegrityMonitoring: (() { final guardedValue = map['enableIntegrityMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableSecureBoot: (() { final guardedValue = map['enableSecureBoot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableVtpm: (() { final guardedValue = map['enableVtpm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

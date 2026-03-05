@@ -8,19 +8,20 @@ class EventTargetKinesisTarget {
 
   /// Creates a new [EventTargetKinesisTarget].
   /// [partitionKeyPath] The JSON path to be extracted from the event and used as the partition key.
-  EventTargetKinesisTarget({this.partitionKeyPath});
+  EventTargetKinesisTarget({
+    this.partitionKeyPath,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'partitionKeyPath': ?partitionKeyPath};
+    return <String, dynamic>{
+      'partitionKeyPath': ?partitionKeyPath,
+    };
   }
 
   factory EventTargetKinesisTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetKinesisTarget(
-      partitionKeyPath: (() {
-        final guardedValue = map['partitionKeyPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      partitionKeyPath: (() { final guardedValue = map['partitionKeyPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

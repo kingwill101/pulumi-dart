@@ -7,21 +7,16 @@ import 'get_disk_encryption_set_identity.dart';
 class GetDiskEncryptionSetResult {
   /// Is the Azure Disk Encryption Set Key automatically rotated to latest version?
   final bool autoKeyRotationEnabled;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// An `identity` block as defined below.
   final List<GetDiskEncryptionSetIdentity> identities;
-
   /// The URL for the Key Vault Key or Key Vault Secret that is currently being used by the service.
   final String keyVaultKeyUrl;
-
   /// The location where the Disk Encryption Set exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the Disk Encryption Set.
   final Map<String, String> tags;
 
@@ -49,11 +44,7 @@ class GetDiskEncryptionSetResult {
     return <String, dynamic>{
       'autoKeyRotationEnabled': autoKeyRotationEnabled,
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<
-            GetDiskEncryptionSetIdentity,
-            Map<String, dynamic>
-          >(identities, (value) => value.toMap()),
+      'identities': pulumi.Input.encodeList<GetDiskEncryptionSetIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'keyVaultKeyUrl': keyVaultKeyUrl,
       'location': location,
       'name': name,
@@ -66,12 +57,7 @@ class GetDiskEncryptionSetResult {
     return GetDiskEncryptionSetResult(
       autoKeyRotationEnabled: map['autoKeyRotationEnabled'] as bool,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetDiskEncryptionSetIdentity>(
-        map['identities']!,
-        (value) => GetDiskEncryptionSetIdentity.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      identities: pulumi.Input.decodeList<GetDiskEncryptionSetIdentity>(map['identities']!, (value) => GetDiskEncryptionSetIdentity.fromMap((value as Map).cast<String, dynamic>())),
       keyVaultKeyUrl: map['keyVaultKeyUrl'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
@@ -80,3 +66,4 @@ class GetDiskEncryptionSetResult {
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceArgs {
   /// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
   final pulumi.Input<String>? instanceName;
-
   /// Replaced by `instance_name` after version 1.97.0.
   final pulumi.Input<String>? name;
-
   /// This attribute is a concise description of instance. The length cannot exceed 128.
   final pulumi.Input<String>? remark;
-
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -26,7 +23,12 @@ class InstanceArgs {
   /// [name] Replaced by `instance_name` after version 1.97.0.
   /// [remark] This attribute is a concise description of instance. The length cannot exceed 128.
   /// [tags] A mapping of tags to assign to the resource.
-  InstanceArgs({this.instanceName, this.name, this.remark, this.tags});
+  InstanceArgs({
+    this.instanceName,
+    this.name,
+    this.remark,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,28 +41,11 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      instanceName: (() {
-        final guardedValue = map['instanceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remark: (() {
-        final guardedValue = map['remark'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      instanceName: (() { final guardedValue = map['instanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remark: (() { final guardedValue = map['remark']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -6,30 +6,22 @@ import 'processor_args.dart';
 class Processor extends pulumi.CustomResource {
   /// The time the processor was created.
   late final pulumi.Output<String> createTime;
-
   /// The default processor version.
   late final pulumi.Output<String> defaultProcessorVersion;
-
   /// The display name of the processor.
   late final pulumi.Output<String> displayName;
-
   /// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
   late final pulumi.Output<String> kmsKeyName;
   late final pulumi.Output<String> location;
-
   /// Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
   late final pulumi.Output<String> name;
-
   /// Immutable. The http endpoint that can be called to invoke processing.
   late final pulumi.Output<String> processEndpoint;
-
   /// The processor version aliases.
   late final pulumi.Output<List<Map<String, dynamic>>> processorVersionAliases;
   late final pulumi.Output<String> project;
-
   /// The state of the processor.
   late final pulumi.Output<String> state;
-
   /// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
   late final pulumi.Output<String> type;
 
@@ -42,11 +34,11 @@ class Processor extends pulumi.CustomResource {
     ProcessorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:documentai/v1:Processor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:documentai/v1:Processor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     defaultProcessorVersion = registerOutput<String>('defaultProcessorVersion');
     displayName = registerOutput<String>('displayName');
@@ -54,9 +46,7 @@ class Processor extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     processEndpoint = registerOutput<String>('processEndpoint');
-    processorVersionAliases = registerOutput<List<Map<String, dynamic>>>(
-      'processorVersionAliases',
-    );
+    processorVersionAliases = registerOutput<List<Map<String, dynamic>>>('processorVersionAliases');
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
     type = registerOutput<String>('type');

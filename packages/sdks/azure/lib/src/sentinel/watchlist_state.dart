@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WatchlistState {
   /// The default duration in ISO8601 duration form of this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
   final pulumi.Input<String>? defaultDuration;
-
   /// The description of this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
   final pulumi.Input<String>? description;
-
   /// The display name of this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
   final pulumi.Input<String>? displayName;
-
   /// The key used to optimize query performance when using Watchlist for joins with other data. Changing this forces a new Sentinel Watchlist to be created.
   final pulumi.Input<String>? itemSearchKey;
-
   /// Specifies a list of labels related to this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
   final pulumi.Input<List<String>>? labels;
-
   /// The ID of the Log Analytics Workspace where this Sentinel Watchlist resides in. Changing this forces a new Sentinel Watchlist to be created.
   final pulumi.Input<String>? logAnalyticsWorkspaceId;
-
   /// The name which should be used for this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
   final pulumi.Input<String>? name;
 
@@ -57,41 +51,14 @@ class WatchlistState {
 
   factory WatchlistState.fromMap(Map<String, dynamic> map) {
     return WatchlistState(
-      defaultDuration: (() {
-        final guardedValue = map['defaultDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      itemSearchKey: (() {
-        final guardedValue = map['itemSearchKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      logAnalyticsWorkspaceId: (() {
-        final guardedValue = map['logAnalyticsWorkspaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      defaultDuration: (() { final guardedValue = map['defaultDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      itemSearchKey: (() { final guardedValue = map['itemSearchKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      logAnalyticsWorkspaceId: (() { final guardedValue = map['logAnalyticsWorkspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

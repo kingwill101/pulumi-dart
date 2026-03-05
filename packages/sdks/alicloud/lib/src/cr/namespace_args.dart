@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceArgs {
   /// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
   final pulumi.Input<bool> autoCreate;
-
   /// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
   final pulumi.Input<String> defaultVisibility;
-
   /// Name of Container Registry namespace.
   final pulumi.Input<String>? name;
 
@@ -37,14 +35,9 @@ class NamespaceArgs {
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
       autoCreate: pulumi.Input.fromValue(map['autoCreate'] as bool),
-      defaultVisibility: pulumi.Input.fromValue(
-        map['defaultVisibility'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      defaultVisibility: pulumi.Input.fromValue(map['defaultVisibility'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

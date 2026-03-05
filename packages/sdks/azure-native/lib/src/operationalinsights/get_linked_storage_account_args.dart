@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinkedStorageAccountArgs {
   /// Linked storage accounts type.
   final pulumi.Input<String> dataSourceType;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -37,10 +35,9 @@ class GetLinkedStorageAccountArgs {
   factory GetLinkedStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetLinkedStorageAccountArgs(
       dataSourceType: pulumi.Input.fromValue(map['dataSourceType'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

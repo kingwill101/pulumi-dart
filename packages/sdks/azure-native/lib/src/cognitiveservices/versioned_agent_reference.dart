@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VersionedAgentReference {
   /// Gets the agent's unique identifier within the organization (subscription).
   final pulumi.Input<String>? agentId;
-
   /// Gets the agent's name (unique within the project/app).
   final pulumi.Input<String>? agentName;
-
   /// Gets the agent's version (unique for each agent lineage).
   final pulumi.Input<String>? agentVersion;
 
@@ -17,7 +15,11 @@ class VersionedAgentReference {
   /// [agentId] Gets the agent's unique identifier within the organization (subscription).
   /// [agentName] Gets the agent's name (unique within the project/app).
   /// [agentVersion] Gets the agent's version (unique for each agent lineage).
-  VersionedAgentReference({this.agentId, this.agentName, this.agentVersion});
+  VersionedAgentReference({
+    this.agentId,
+    this.agentName,
+    this.agentVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class VersionedAgentReference {
 
   factory VersionedAgentReference.fromMap(Map<String, dynamic> map) {
     return VersionedAgentReference(
-      agentId: (() {
-        final guardedValue = map['agentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      agentName: (() {
-        final guardedValue = map['agentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      agentVersion: (() {
-        final guardedValue = map['agentVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      agentId: (() { final guardedValue = map['agentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      agentName: (() { final guardedValue = map['agentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      agentVersion: (() { final guardedValue = map['agentVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

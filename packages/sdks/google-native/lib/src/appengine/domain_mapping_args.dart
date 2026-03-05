@@ -9,13 +9,10 @@ import 'ssl_settings.dart';
 /// {@macro pulumi_appengine_v1_domain_mapping_args_doc}
 class DomainMappingArgs {
   final pulumi.Input<String> appId;
-
   /// Relative name of the domain serving the application. Example: example.com.
   final pulumi.Input<String>? id;
-
   /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
   final pulumi.Input<String>? overrideStrategy;
-
   /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
   final pulumi.Input<SslSettings>? sslSettings;
 
@@ -36,34 +33,17 @@ class DomainMappingArgs {
       'appId': appId,
       'id': ?id,
       'overrideStrategy': ?overrideStrategy,
-      'sslSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            SslSettings,
-            Map<String, dynamic>
-          >(sslSettings, (value) => value.toMap()),
+      'sslSettings': ?pulumi.Input.mapOptionalInputValue<SslSettings, Map<String, dynamic>>(sslSettings, (value) => value.toMap()),
     };
   }
 
   factory DomainMappingArgs.fromMap(Map<String, dynamic> map) {
     return DomainMappingArgs(
       appId: pulumi.Input.fromValue(map['appId'] as String),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      overrideStrategy: (() {
-        final guardedValue = map['overrideStrategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sslSettings: (() {
-        final guardedValue = map['sslSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SslSettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      overrideStrategy: (() { final guardedValue = map['overrideStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslSettings: (() { final guardedValue = map['sslSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SslSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

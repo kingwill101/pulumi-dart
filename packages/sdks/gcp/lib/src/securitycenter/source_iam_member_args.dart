@@ -10,7 +10,6 @@ import 'source_iam_member_condition.dart';
 class SourceIamMemberArgs {
   final pulumi.Input<SourceIamMemberCondition>? condition;
   final pulumi.Input<String> member;
-
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
   final pulumi.Input<String> organization;
@@ -33,11 +32,7 @@ class SourceIamMemberArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            SourceIamMemberCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<SourceIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'member': member,
       'organization': organization,
       'role': role,
@@ -47,15 +42,7 @@ class SourceIamMemberArgs {
 
   factory SourceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return SourceIamMemberArgs(
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SourceIamMemberCondition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SourceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       member: pulumi.Input.fromValue(map['member'] as String),
       organization: pulumi.Input.fromValue(map['organization'] as String),
       role: pulumi.Input.fromValue(map['role'] as String),
@@ -63,3 +50,4 @@ class SourceIamMemberArgs {
     );
   }
 }
+

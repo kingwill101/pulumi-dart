@@ -7,17 +7,10 @@ import 'instance_autoscaling_config_asymmetric_autoscaling_option_replica_select
 class InstanceAutoscalingConfigAsymmetricAutoscalingOption {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<
-    InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides
-  >
-  overrides;
-
+  final pulumi.Input<InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides> overrides;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<
-    InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection
-  >
-  replicaSelection;
+  final pulumi.Input<InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection> replicaSelection;
 
   /// Creates a new [InstanceAutoscalingConfigAsymmetricAutoscalingOption].
   /// [overrides] A nested object resource.
@@ -29,33 +22,16 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'overrides':
-          pulumi.Input.mapInputValue<
-            InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides,
-            Map<String, dynamic>
-          >(overrides, (value) => value.toMap()),
-      'replicaSelection':
-          pulumi.Input.mapInputValue<
-            InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection,
-            Map<String, dynamic>
-          >(replicaSelection, (value) => value.toMap()),
+      'overrides': pulumi.Input.mapInputValue<InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides, Map<String, dynamic>>(overrides, (value) => value.toMap()),
+      'replicaSelection': pulumi.Input.mapInputValue<InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection, Map<String, dynamic>>(replicaSelection, (value) => value.toMap()),
     };
   }
 
-  factory InstanceAutoscalingConfigAsymmetricAutoscalingOption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceAutoscalingConfigAsymmetricAutoscalingOption.fromMap(Map<String, dynamic> map) {
     return InstanceAutoscalingConfigAsymmetricAutoscalingOption(
-      overrides: pulumi.Input.fromValue(
-        InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides.fromMap(
-          (map['overrides']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      replicaSelection: pulumi.Input.fromValue(
-        InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection.fromMap(
-          (map['replicaSelection']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      overrides: pulumi.Input.fromValue(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides.fromMap((map['overrides']! as Map).cast<String, dynamic>())),
+      replicaSelection: pulumi.Input.fromValue(InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection.fromMap((map['replicaSelection']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

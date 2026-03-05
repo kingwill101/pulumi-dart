@@ -15,62 +15,33 @@ import 'domain_devices_disk_mirror_backing_store_source_vhost_user_unix.dart';
 
 class DomainDevicesDiskMirrorBackingStoreSourceVhostUser {
   /// Configures the DBus source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserDbus>?
-  dbus;
-
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserDbus>? dbus;
   /// Defines the device path for the source of the EGD backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserDev>?
-  dev;
-
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserDev>? dev;
   /// Defines a file source for the RNG EGD backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserFile>?
-  file;
-
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserFile>? file;
   /// Configures the NMDM (null modem) device source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm>?
-  nmdm;
-
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm>? nmdm;
   /// Configures a null device type in the VHostUser source configuration for the mirrored disk.
   final pulumi.Input<bool>? null_;
-
   /// Defines a pipe source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe>?
-  pipe;
-
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe>? pipe;
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty>?
-  pty;
-
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty>? pty;
   /// Configures the QEMU guest agent for the random number generator backend.
-  final pulumi.Input<
-    DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent
-  >?
-  qemuvdAgent;
-
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent>? qemuvdAgent;
   /// Configures the SPICE port settings for the random number generator backend.
-  final pulumi.Input<
-    DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort
-  >?
-  spicePort;
-
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort>? spicePort;
   /// Configures the Spice VMC settings in the VHostUser source configuration for the mirrored disk.
   final pulumi.Input<bool>? spiceVmc;
-
   /// Configures standard I/O settings for the VHostUser interface associated with the mirrored disk.
   final pulumi.Input<bool>? stdIo;
-
   /// Configures TCP settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcp>?
-  tcp;
-
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcp>? tcp;
   /// Configures UDP settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp>?
-  udp;
-
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp>? udp;
   /// Configures UNIX domain socket settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnix>?
-  unix;
-
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnix>? unix;
   /// Configures the VHostUser virtual channel settings for the source backing store.
   final pulumi.Input<bool>? vc;
 
@@ -110,191 +81,42 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUser {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dbus':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskMirrorBackingStoreSourceVhostUserDbus,
-            Map<String, dynamic>
-          >(dbus, (value) => value.toMap()),
-      'dev':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskMirrorBackingStoreSourceVhostUserDev,
-            Map<String, dynamic>
-          >(dev, (value) => value.toMap()),
-      'file':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskMirrorBackingStoreSourceVhostUserFile,
-            Map<String, dynamic>
-          >(file, (value) => value.toMap()),
-      'nmdm':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm,
-            Map<String, dynamic>
-          >(nmdm, (value) => value.toMap()),
+      'dbus': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserDbus, Map<String, dynamic>>(dbus, (value) => value.toMap()),
+      'dev': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserDev, Map<String, dynamic>>(dev, (value) => value.toMap()),
+      'file': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserFile, Map<String, dynamic>>(file, (value) => value.toMap()),
+      'nmdm': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm, Map<String, dynamic>>(nmdm, (value) => value.toMap()),
       'null': ?null_,
-      'pipe':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe,
-            Map<String, dynamic>
-          >(pipe, (value) => value.toMap()),
-      'pty':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty,
-            Map<String, dynamic>
-          >(pty, (value) => value.toMap()),
-      'qemuvdAgent':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent,
-            Map<String, dynamic>
-          >(qemuvdAgent, (value) => value.toMap()),
-      'spicePort':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort,
-            Map<String, dynamic>
-          >(spicePort, (value) => value.toMap()),
+      'pipe': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe, Map<String, dynamic>>(pipe, (value) => value.toMap()),
+      'pty': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty, Map<String, dynamic>>(pty, (value) => value.toMap()),
+      'qemuvdAgent': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent, Map<String, dynamic>>(qemuvdAgent, (value) => value.toMap()),
+      'spicePort': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort, Map<String, dynamic>>(spicePort, (value) => value.toMap()),
       'spiceVmc': ?spiceVmc,
       'stdIo': ?stdIo,
-      'tcp':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcp,
-            Map<String, dynamic>
-          >(tcp, (value) => value.toMap()),
-      'udp':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp,
-            Map<String, dynamic>
-          >(udp, (value) => value.toMap()),
-      'unix':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnix,
-            Map<String, dynamic>
-          >(unix, (value) => value.toMap()),
+      'tcp': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcp, Map<String, dynamic>>(tcp, (value) => value.toMap()),
+      'udp': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp, Map<String, dynamic>>(udp, (value) => value.toMap()),
+      'unix': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnix, Map<String, dynamic>>(unix, (value) => value.toMap()),
       'vc': ?vc,
     };
   }
 
-  factory DomainDevicesDiskMirrorBackingStoreSourceVhostUser.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskMirrorBackingStoreSourceVhostUser.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceVhostUser(
-      dbus: (() {
-        final guardedValue = map['dbus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskMirrorBackingStoreSourceVhostUserDbus.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      dev: (() {
-        final guardedValue = map['dev'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskMirrorBackingStoreSourceVhostUserDev.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      file: (() {
-        final guardedValue = map['file'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskMirrorBackingStoreSourceVhostUserFile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      nmdm: (() {
-        final guardedValue = map['nmdm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      null_: (() {
-        final guardedValue = map['null'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      pipe: (() {
-        final guardedValue = map['pipe'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      pty: (() {
-        final guardedValue = map['pty'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      qemuvdAgent: (() {
-        final guardedValue = map['qemuvdAgent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      spicePort: (() {
-        final guardedValue = map['spicePort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      spiceVmc: (() {
-        final guardedValue = map['spiceVmc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      stdIo: (() {
-        final guardedValue = map['stdIo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      tcp: (() {
-        final guardedValue = map['tcp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcp.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      udp: (() {
-        final guardedValue = map['udp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      unix: (() {
-        final guardedValue = map['unix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnix.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      vc: (() {
-        final guardedValue = map['vc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dbus: (() { final guardedValue = map['dbus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserDbus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dev: (() { final guardedValue = map['dev']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserDev.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      file: (() { final guardedValue = map['file']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserFile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      nmdm: (() { final guardedValue = map['nmdm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      null_: (() { final guardedValue = map['null']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      pipe: (() { final guardedValue = map['pipe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      pty: (() { final guardedValue = map['pty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      qemuvdAgent: (() { final guardedValue = map['qemuvdAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spicePort: (() { final guardedValue = map['spicePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spiceVmc: (() { final guardedValue = map['spiceVmc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      stdIo: (() { final guardedValue = map['stdIo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tcp: (() { final guardedValue = map['tcp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      udp: (() { final guardedValue = map['udp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      unix: (() { final guardedValue = map['unix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnix.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      vc: (() { final guardedValue = map['vc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

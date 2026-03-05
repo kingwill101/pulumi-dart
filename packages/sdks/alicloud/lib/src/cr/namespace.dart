@@ -183,10 +183,8 @@ import 'namespace_state.dart';
 class Namespace extends pulumi.CustomResource {
   /// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
   late final pulumi.Output<bool> autoCreate;
-
   /// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
   late final pulumi.Output<String> defaultVisibility;
-
   /// Name of Container Registry namespace.
   late final pulumi.Output<String> name;
 
@@ -199,11 +197,11 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cr/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cr/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoCreate = registerOutput<bool>('autoCreate');
     defaultVisibility = registerOutput<String>('defaultVisibility');
     this.name = registerOutput<String>('name');
@@ -227,11 +225,11 @@ class Namespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cr/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cr/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoCreate = registerOutput<bool>('autoCreate');
     defaultVisibility = registerOutput<String>('defaultVisibility');
     this.name = registerOutput<String>('name');

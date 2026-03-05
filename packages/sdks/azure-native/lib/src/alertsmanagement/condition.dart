@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Condition {
   /// Field for a given condition.
   final pulumi.Input<String>? field;
-
   /// Operator for a given condition.
   final pulumi.Input<String>? operator;
-
   /// List of values to match for a given condition.
   final pulumi.Input<List<String>>? values;
 
@@ -17,7 +15,11 @@ class Condition {
   /// [field] Field for a given condition.
   /// [operator] Operator for a given condition.
   /// [values] List of values to match for a given condition.
-  Condition({this.field, this.operator, this.values});
+  Condition({
+    this.field,
+    this.operator,
+    this.values,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class Condition {
 
   factory Condition.fromMap(Map<String, dynamic> map) {
     return Condition(
-      field: (() {
-        final guardedValue = map['field'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operator: (() {
-        final guardedValue = map['operator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      field: (() { final guardedValue = map['field']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operator: (() { final guardedValue = map['operator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

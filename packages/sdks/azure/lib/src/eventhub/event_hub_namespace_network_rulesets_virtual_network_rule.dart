@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventHubNamespaceNetworkRulesetsVirtualNetworkRule {
   /// Are missing virtual network service endpoints ignored?
   final pulumi.Input<bool>? ignoreMissingVirtualNetworkServiceEndpoint;
-
   /// The id of the subnet to match on.
   final pulumi.Input<String> subnetId;
 
@@ -19,22 +18,16 @@ class EventHubNamespaceNetworkRulesetsVirtualNetworkRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ignoreMissingVirtualNetworkServiceEndpoint':
-          ?ignoreMissingVirtualNetworkServiceEndpoint,
+      'ignoreMissingVirtualNetworkServiceEndpoint': ?ignoreMissingVirtualNetworkServiceEndpoint,
       'subnetId': subnetId,
     };
   }
 
-  factory EventHubNamespaceNetworkRulesetsVirtualNetworkRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventHubNamespaceNetworkRulesetsVirtualNetworkRule.fromMap(Map<String, dynamic> map) {
     return EventHubNamespaceNetworkRulesetsVirtualNetworkRule(
-      ignoreMissingVirtualNetworkServiceEndpoint: (() {
-        final guardedValue = map['ignoreMissingVirtualNetworkServiceEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      ignoreMissingVirtualNetworkServiceEndpoint: (() { final guardedValue = map['ignoreMissingVirtualNetworkServiceEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
+

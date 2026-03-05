@@ -5,46 +5,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProductsProduct {
   /// The Category ID of products.
   final pulumi.Input<int> categoryId;
-
   /// The code of the product.
   final pulumi.Input<String> code;
-
   /// The delivery date of the product.
   final pulumi.Input<String> deliveryDate;
-
   /// The delivery way of the product.
   final pulumi.Input<String> deliveryWay;
-
   /// The image URL of the product.
   final pulumi.Input<String> imageUrl;
-
   /// The name of the product.
   final pulumi.Input<String> name;
-
   /// The operation system of the product.
   final pulumi.Input<String> operationSystem;
-
   /// The rating information of the product.
   final pulumi.Input<String> score;
-
   /// The short description of the product.
   final pulumi.Input<String> shortDescription;
-
   /// The suggested price of the product.
   final pulumi.Input<String> suggestedPrice;
-
   /// The supplier id of the product.
   final pulumi.Input<int> supplierId;
-
   /// The supplier name of the product.
   final pulumi.Input<String> supplierName;
-
   /// The tags of the product.
   final pulumi.Input<String> tags;
-
   /// The detail page URL of the product.
   final pulumi.Input<String> targetUrl;
-
   /// The warranty date of the product.
   final pulumi.Input<String> warrantyDate;
 
@@ -112,9 +98,7 @@ class GetProductsProduct {
       name: pulumi.Input.fromValue(map['name'] as String),
       operationSystem: pulumi.Input.fromValue(map['operationSystem'] as String),
       score: pulumi.Input.fromValue(map['score'] as String),
-      shortDescription: pulumi.Input.fromValue(
-        map['shortDescription'] as String,
-      ),
+      shortDescription: pulumi.Input.fromValue(map['shortDescription'] as String),
       suggestedPrice: pulumi.Input.fromValue(map['suggestedPrice'] as String),
       supplierId: pulumi.Input.fromValue(map['supplierId'] as int),
       supplierName: pulumi.Input.fromValue(map['supplierName'] as String),
@@ -124,3 +108,4 @@ class GetProductsProduct {
     );
   }
 }
+

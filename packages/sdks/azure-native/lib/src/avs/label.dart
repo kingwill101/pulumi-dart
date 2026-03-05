@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Label {
   /// The key of the label.
   final pulumi.Input<String> key;
-
   /// The value of the label.
   final pulumi.Input<String> value;
 
   /// Creates a new [Label].
   /// [key] The key of the label.
   /// [value] The value of the label.
-  Label({required this.key, required this.value});
+  Label({
+    required this.key,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory Label.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class Label {
     );
   }
 }
+

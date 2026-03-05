@@ -21,21 +21,12 @@ class InstanceIamBinding extends pulumi.CustomResource {
     InstanceIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    condition = registerOutput<InstanceIamBindingCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceIamBindingCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    condition = registerOutput<InstanceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     instanceId = registerOutput<String>('instanceId');
     location = registerOutput<String>('location');
@@ -62,21 +53,12 @@ class InstanceIamBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    condition = registerOutput<InstanceIamBindingCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceIamBindingCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    condition = registerOutput<InstanceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     instanceId = registerOutput<String>('instanceId');
     location = registerOutput<String>('location');

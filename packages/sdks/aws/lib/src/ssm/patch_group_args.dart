@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PatchGroupArgs {
   /// The ID of the patch baseline to register the patch group with.
   final pulumi.Input<String> baselineId;
-
   /// The name of the patch group that should be registered with the patch baseline.
   final pulumi.Input<String> patchGroup;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -38,11 +36,8 @@ class PatchGroupArgs {
     return PatchGroupArgs(
       baselineId: pulumi.Input.fromValue(map['baselineId'] as String),
       patchGroup: pulumi.Input.fromValue(map['patchGroup'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

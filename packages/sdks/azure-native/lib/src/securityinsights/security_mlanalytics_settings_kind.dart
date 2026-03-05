@@ -11,8 +11,7 @@ enum SecurityMLAnalyticsSettingsKind {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SecurityMLAnalyticsSettingsKind value: $value',
-    );
+    throw ArgumentError('Unknown SecurityMLAnalyticsSettingsKind value: $value');
   }
 }
+

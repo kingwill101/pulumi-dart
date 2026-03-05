@@ -6,44 +6,31 @@ import 'system_data_response.dart';
 class GetADLSGen2FolderDataSetMappingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The id of the source data set.
   final String dataSetId;
-
   /// Gets the status of the data set mapping.
   final String dataSetMappingStatus;
-
   /// File system to which the folder belongs.
   final String fileSystem;
-
   /// Folder path within the file system.
   final String folderPath;
-
   /// The resource id of the azure resource
   final String id;
-
   /// Kind of data set mapping.
   /// Expected value is 'AdlsGen2Folder'.
   final String kind;
-
   /// Name of the azure resource
   final String name;
-
   /// Provisioning state of the data set mapping.
   final String provisioningState;
-
   /// Resource group of storage account.
   final String resourceGroup;
-
   /// Storage account name of the source data set.
   final String storageAccountName;
-
   /// Subscription id of storage account.
   final String subscriptionId;
-
   /// System Data of the Azure resource.
   final SystemDataResponse systemData;
-
   /// Type of the azure resource
   final String type;
 
@@ -98,9 +85,7 @@ class GetADLSGen2FolderDataSetMappingResult {
     };
   }
 
-  factory GetADLSGen2FolderDataSetMappingResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetADLSGen2FolderDataSetMappingResult.fromMap(Map<String, dynamic> map) {
     return GetADLSGen2FolderDataSetMappingResult(
       azureApiVersion: map['azureApiVersion'] as String,
       dataSetId: map['dataSetId'] as String,
@@ -114,10 +99,9 @@ class GetADLSGen2FolderDataSetMappingResult {
       resourceGroup: map['resourceGroup'] as String,
       storageAccountName: map['storageAccountName'] as String,
       subscriptionId: map['subscriptionId'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsLaunchTemplatesTemplateDataDisk {
   /// The category of the system disk.
   final pulumi.Input<String> category;
-
   /// Specifies whether to release the system disk when the instance is released.
   final pulumi.Input<bool> deleteWithInstance;
-
   /// System disk description.
   final pulumi.Input<String> description;
-
   /// Encrypted the data in this disk.
   final pulumi.Input<bool> encrypted;
-
   /// System disk name.
   final pulumi.Input<String> name;
-
   /// The performance level of the ESSD used as the system disk.
   final pulumi.Input<String> performanceLevel;
-
   /// Size of the system disk, measured in GB.
   final pulumi.Input<int> size;
-
   /// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
   final pulumi.Input<String> snapshotId;
 
@@ -60,22 +53,17 @@ class GetEcsLaunchTemplatesTemplateDataDisk {
     };
   }
 
-  factory GetEcsLaunchTemplatesTemplateDataDisk.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEcsLaunchTemplatesTemplateDataDisk.fromMap(Map<String, dynamic> map) {
     return GetEcsLaunchTemplatesTemplateDataDisk(
       category: pulumi.Input.fromValue(map['category'] as String),
-      deleteWithInstance: pulumi.Input.fromValue(
-        map['deleteWithInstance'] as bool,
-      ),
+      deleteWithInstance: pulumi.Input.fromValue(map['deleteWithInstance'] as bool),
       description: pulumi.Input.fromValue(map['description'] as String),
       encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
-      performanceLevel: pulumi.Input.fromValue(
-        map['performanceLevel'] as String,
-      ),
+      performanceLevel: pulumi.Input.fromValue(map['performanceLevel'] as String),
       size: pulumi.Input.fromValue(map['size'] as int),
       snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
     );
   }
 }
+

@@ -745,43 +745,30 @@ import 'pricing_args.dart';
 class Pricing extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Optional. True if the plan is deprecated. If there are replacing plans they will appear in `replacedBy` property
   late final pulumi.Output<bool> deprecated;
-
   /// Optional. If `pricingTier` is `Standard` then this property holds the date of the last time the `pricingTier` was set to `Standard`, when available (e.g 2023-03-01T12:42:42.1921106Z).
   late final pulumi.Output<String> enablementTime;
-
   /// If set to "False", it allows the descendants of this scope to override the pricing configuration set on this scope (allows setting inherited="False"). If set to "True", it prevents overrides and forces this pricing configuration on all the descendants of this scope. This field is only available for subscription-level pricing.
   late final pulumi.Output<String?> enforce;
-
   /// Optional. List of extensions offered under a plan.
   late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
-
   /// The duration left for the subscriptions free trial period - in ISO 8601 format (e.g. P3Y6M4DT12H30M5S).
   late final pulumi.Output<String> freeTrialRemainingTime;
-
   /// "inherited" = "True" indicates that the current scope inherits its pricing configuration from its parent. The ID of the parent scope that provides the inherited configuration is displayed in the "inheritedFrom" field. On the other hand, "inherited" = "False" indicates that the current scope has its own pricing configuration explicitly set, and does not inherit from its parent. This field is read only and available only for resource-level pricing.
   late final pulumi.Output<String> inherited;
-
   /// The id of the scope inherited from. "Null" if not inherited. This field is only available for resource-level pricing.
   late final pulumi.Output<String> inheritedFrom;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Indicates whether the Defender plan is enabled on the selected scope. Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
   late final pulumi.Output<String> pricingTier;
-
   /// Optional. List of plans that replace this plan. This property exists only if this plan is deprecated.
   late final pulumi.Output<List<String>> replacedBy;
-
   /// This field is available for subscription-level only, and reflects the coverage status of the resources under the subscription. Please note: The "pricingTier" field reflects the plan status of the subscription. However, since the plan status can also be defined at the resource level, there might be misalignment between the subscription's plan status and the resource status. This field helps indicate the coverage status of the resources.
   late final pulumi.Output<String> resourcesCoverageStatus;
-
   /// The sub-plan selected for a Standard pricing configuration, when more than one sub-plan is available. Each sub-plan enables a set of security features. When not specified, full plan is applied. For VirtualMachines plan, available sub plans are 'P1' & 'P2', where for resource level only 'P1' sub plan is supported.
   late final pulumi.Output<String?> subPlan;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -794,11 +781,11 @@ class Pricing extends pulumi.CustomResource {
     PricingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:Pricing',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:security:Pricing',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     deprecated = registerOutput<bool>('deprecated');
     enablementTime = registerOutput<String>('enablementTime');

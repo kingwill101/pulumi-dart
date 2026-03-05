@@ -7,17 +7,13 @@ import 'replication_extension_model_response_system_data.dart';
 class GetReplicationExtensionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets or sets the Id of the resource.
   final String id;
-
   /// Gets or sets the name of the resource.
   final String name;
-
   /// Replication extension model properties.
   final ReplicationExtensionModelPropertiesResponse properties;
   final ReplicationExtensionModelResponseSystemData systemData;
-
   /// Gets or sets the type of the resource.
   final String type;
 
@@ -53,13 +49,10 @@ class GetReplicationExtensionResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: ReplicationExtensionModelPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: ReplicationExtensionModelResponseSystemData.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      properties: ReplicationExtensionModelPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: ReplicationExtensionModelResponseSystemData.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAttachmentsArgs {
   /// List of attached ECS instance IDs.
   final pulumi.Input<List<String>>? instanceIds;
-
   /// ID of the SLB with attachments.
   final pulumi.Input<String> loadBalancerId;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -36,17 +34,10 @@ class GetAttachmentsArgs {
 
   factory GetAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetAttachmentsArgs(
-      instanceIds: (() {
-        final guardedValue = map['instanceIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      instanceIds: (() { final guardedValue = map['instanceIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

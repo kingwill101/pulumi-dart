@@ -9,19 +9,20 @@ class ExpiryDetail {
 
   /// Creates a new [ExpiryDetail].
   /// [expireTime] The time at which the `MembershipRole` will expire.
-  ExpiryDetail({this.expireTime});
+  ExpiryDetail({
+    this.expireTime,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'expireTime': ?expireTime};
+    return <String, dynamic>{
+      'expireTime': ?expireTime,
+    };
   }
 
   factory ExpiryDetail.fromMap(Map<String, dynamic> map) {
     return ExpiryDetail(
-      expireTime: (() {
-        final guardedValue = map['expireTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

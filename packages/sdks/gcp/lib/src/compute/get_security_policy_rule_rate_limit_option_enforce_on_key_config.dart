@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
   /// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
   final pulumi.Input<String> enforceOnKeyName;
-
   /// Determines the key to enforce the rate_limit_threshold on
   final pulumi.Input<String> enforceOnKeyType;
 
@@ -24,16 +23,11 @@ class GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
     };
   }
 
-  factory GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig(
-      enforceOnKeyName: pulumi.Input.fromValue(
-        map['enforceOnKeyName'] as String,
-      ),
-      enforceOnKeyType: pulumi.Input.fromValue(
-        map['enforceOnKeyType'] as String,
-      ),
+      enforceOnKeyName: pulumi.Input.fromValue(map['enforceOnKeyName'] as String),
+      enforceOnKeyType: pulumi.Input.fromValue(map['enforceOnKeyType'] as String),
     );
   }
 }
+

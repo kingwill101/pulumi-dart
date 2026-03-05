@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImagesImageDiskDeviceMapping {
   /// The device information of the created disk: such as /dev/xvdb.
   final pulumi.Input<String> device;
-
   /// The size of the created disk.
   final pulumi.Input<String> size;
-
   /// The ID of the snapshot used to create the custom image.
   final pulumi.Input<String> snapshotId;
 
@@ -38,3 +36,4 @@ class GetImagesImageDiskDeviceMapping {
     );
   }
 }
+

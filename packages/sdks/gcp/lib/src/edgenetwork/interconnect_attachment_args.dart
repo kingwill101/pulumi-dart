@@ -9,36 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InterconnectAttachmentArgs {
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
-
   /// The ID of the underlying interconnect that this attachment's traffic will traverse through.
   final pulumi.Input<String> interconnect;
-
   /// A unique ID that identifies this interconnect attachment.
   final pulumi.Input<String> interconnectAttachmentId;
-
   /// Labels associated with this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
   final pulumi.Input<String> location;
-
   /// IP (L3) MTU value of the virtual edge cloud. Default value is `1500`. Possible values are: `1500`, `9000`.
   final pulumi.Input<int>? mtu;
-
   /// The ID of the network to which this interconnect attachment belongs.
   /// Must be of the form: `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
   final pulumi.Input<String> network;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// VLAN ID provided by user. Must be site-wise unique.
   final pulumi.Input<int> vlanId;
-
   /// The name of the target Distributed Cloud Edge zone.
   final pulumi.Input<String> zone;
 
@@ -83,36 +74,17 @@ class InterconnectAttachmentArgs {
 
   factory InterconnectAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       interconnect: pulumi.Input.fromValue(map['interconnect'] as String),
-      interconnectAttachmentId: pulumi.Input.fromValue(
-        map['interconnectAttachmentId'] as String,
-      ),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      interconnectAttachmentId: pulumi.Input.fromValue(map['interconnectAttachmentId'] as String),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      mtu: (() {
-        final guardedValue = map['mtu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       network: pulumi.Input.fromValue(map['network'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vlanId: pulumi.Input.fromValue(map['vlanId'] as int),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
+

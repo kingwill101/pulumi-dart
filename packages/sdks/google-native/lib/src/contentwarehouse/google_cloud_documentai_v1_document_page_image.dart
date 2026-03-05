@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1DocumentPageImage {
   /// Raw byte content of the image.
   final pulumi.Input<String>? content;
-
   /// Height of the image in pixels.
   final pulumi.Input<int>? height;
-
   /// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
   final pulumi.Input<String>? mimeType;
-
   /// Width of the image in pixels.
   final pulumi.Input<int>? width;
 
@@ -37,30 +34,13 @@ class GoogleCloudDocumentaiV1DocumentPageImage {
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageImage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1DocumentPageImage.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageImage(
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      height: (() {
-        final guardedValue = map['height'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      mimeType: (() {
-        final guardedValue = map['mimeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      width: (() {
-        final guardedValue = map['width'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      height: (() { final guardedValue = map['height']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mimeType: (() { final guardedValue = map['mimeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      width: (() { final guardedValue = map['width']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

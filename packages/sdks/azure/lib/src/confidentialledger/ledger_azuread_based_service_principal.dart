@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LedgerAzureadBasedServicePrincipal {
   /// Specifies the Ledger Role to grant this AzureAD Service Principal. Possible values are `Administrator`, `Contributor` and `Reader`.
   final pulumi.Input<String> ledgerRoleName;
-
   /// Specifies the Principal ID of the AzureAD Service Principal.
   final pulumi.Input<String> principalId;
-
   /// Specifies the Tenant ID for this AzureAD Service Principal.
   final pulumi.Input<String> tenantId;
 
@@ -38,3 +36,4 @@ class LedgerAzureadBasedServicePrincipal {
     );
   }
 }
+

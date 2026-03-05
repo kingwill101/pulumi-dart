@@ -7,10 +7,8 @@ import 'get_connections_connection.dart';
 class GetConnectionsResult {
   /// Public network details of the specified resource. contains the following attributes:
   final List<GetConnectionsConnection> connections;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids.
   final String ids;
   final String? outputFile;
@@ -29,11 +27,7 @@ class GetConnectionsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connections':
-          pulumi.Input.encodeList<
-            GetConnectionsConnection,
-            Map<String, dynamic>
-          >(connections, (value) => value.toMap()),
+      'connections': pulumi.Input.encodeList<GetConnectionsConnection, Map<String, dynamic>>(connections, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
@@ -42,19 +36,11 @@ class GetConnectionsResult {
 
   factory GetConnectionsResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionsResult(
-      connections: pulumi.Input.decodeList<GetConnectionsConnection>(
-        map['connections']!,
-        (value) => GetConnectionsConnection.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      connections: pulumi.Input.decodeList<GetConnectionsConnection>(map['connections']!, (value) => GetConnectionsConnection.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: map['ids'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

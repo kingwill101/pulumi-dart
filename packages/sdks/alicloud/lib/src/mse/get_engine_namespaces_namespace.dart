@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEngineNamespacesNamespace {
   /// The Number of Configuration of the Namespace.
   final pulumi.Input<int> configCount;
-
   /// The ID of the Engine Namespace. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;`.
   final pulumi.Input<String> id;
-
   /// The description of the Namespace.
   final pulumi.Input<String> namespaceDesc;
-
   /// The id of Namespace.
   final pulumi.Input<String> namespaceId;
-
   /// The name of the Namespace.
   final pulumi.Input<String> namespaceShowName;
-
   /// The Quota of the Namespace.
   final pulumi.Input<int> quota;
-
   /// The number of active services.
   final pulumi.Input<String> serviceCount;
-
   /// The type of the Namespace, the value is as follows:
   /// - '0': Global Configuration.
   /// - '1': default namespace.
@@ -69,12 +62,11 @@ class GetEngineNamespacesNamespace {
       id: pulumi.Input.fromValue(map['id'] as String),
       namespaceDesc: pulumi.Input.fromValue(map['namespaceDesc'] as String),
       namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
-      namespaceShowName: pulumi.Input.fromValue(
-        map['namespaceShowName'] as String,
-      ),
+      namespaceShowName: pulumi.Input.fromValue(map['namespaceShowName'] as String),
       quota: pulumi.Input.fromValue(map['quota'] as int),
       serviceCount: pulumi.Input.fromValue(map['serviceCount'] as String),
       type: pulumi.Input.fromValue(map['type'] as int),
     );
   }
 }
+

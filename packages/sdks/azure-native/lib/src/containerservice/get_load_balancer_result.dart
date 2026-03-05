@@ -7,34 +7,24 @@ import 'system_data_response.dart';
 class GetLoadBalancerResult {
   /// Whether to automatically place services on the load balancer. If not supplied, the default value is true. If set to false manually, both of the external and the internal load balancer will not be selected for services unless they explicitly target it.
   final bool? allowServicePlacement;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Nodes that match this selector will be possible members of this load balancer.
   final LabelSelectorResponse? nodeSelector;
-
   /// Required field. A string value that must specify the ID of an existing agent pool. All nodes in the given pool will always be added to this load balancer. This agent pool must have at least one node and minCount&gt;=1 for autoscaling operations. An agent pool can only be the primary pool for a single load balancer.
   final String primaryAgentPoolName;
-
   /// The current provisioning state.
   final String provisioningState;
-
   /// Only services that must match this selector can be placed on this load balancer.
   final LabelSelectorResponse? serviceLabelSelector;
-
   /// Services created in namespaces that match the selector can be placed on this load balancer.
   final LabelSelectorResponse? serviceNamespaceSelector;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -82,41 +72,18 @@ class GetLoadBalancerResult {
 
   factory GetLoadBalancerResult.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerResult(
-      allowServicePlacement: (() {
-        final guardedValue = map['allowServicePlacement'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      allowServicePlacement: (() { final guardedValue = map['allowServicePlacement']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      nodeSelector: (() {
-        final guardedValue = map['nodeSelector'];
-        if (guardedValue == null) return null;
-        return LabelSelectorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      nodeSelector: (() { final guardedValue = map['nodeSelector']; if (guardedValue == null) return null; return LabelSelectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       primaryAgentPoolName: map['primaryAgentPoolName'] as String,
       provisioningState: map['provisioningState'] as String,
-      serviceLabelSelector: (() {
-        final guardedValue = map['serviceLabelSelector'];
-        if (guardedValue == null) return null;
-        return LabelSelectorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      serviceNamespaceSelector: (() {
-        final guardedValue = map['serviceNamespaceSelector'];
-        if (guardedValue == null) return null;
-        return LabelSelectorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      serviceLabelSelector: (() { final guardedValue = map['serviceLabelSelector']; if (guardedValue == null) return null; return LabelSelectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      serviceNamespaceSelector: (() { final guardedValue = map['serviceNamespaceSelector']; if (guardedValue == null) return null; return LabelSelectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

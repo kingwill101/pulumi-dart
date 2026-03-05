@@ -7,7 +7,6 @@ import 'dynamic_metric_criteria.dart';
 class MetricAlertMultipleResourceMultipleMetricCriteria {
   /// the list of multiple metric criteria for this 'all of' operation.
   final pulumi.Input<List<DynamicMetricCriteria>>? allOf;
-
   /// specifies the type of the alert criteria.
   /// Expected value is 'Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria'.
   final pulumi.Input<String> odataType;
@@ -22,39 +21,16 @@ class MetricAlertMultipleResourceMultipleMetricCriteria {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allOf':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DynamicMetricCriteria>,
-            List<Map<String, dynamic>>
-          >(
-            allOf,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DynamicMetricCriteria,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'allOf': ?pulumi.Input.mapOptionalInputValue<List<DynamicMetricCriteria>, List<Map<String, dynamic>>>(allOf, (value) => pulumi.Input.encodeList<DynamicMetricCriteria, Map<String, dynamic>>(value, (value) => value.toMap())),
       'odataType': odataType,
     };
   }
 
-  factory MetricAlertMultipleResourceMultipleMetricCriteria.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MetricAlertMultipleResourceMultipleMetricCriteria.fromMap(Map<String, dynamic> map) {
     return MetricAlertMultipleResourceMultipleMetricCriteria(
-      allOf: (() {
-        final guardedValue = map['allOf'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DynamicMetricCriteria>(
-            guardedValue,
-            (value) => DynamicMetricCriteria.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      allOf: (() { final guardedValue = map['allOf']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DynamicMetricCriteria>(guardedValue, (value) => DynamicMetricCriteria.fromMap((value as Map).cast<String, dynamic>()))); })(),
       odataType: pulumi.Input.fromValue(map['odataType'] as String),
     );
   }
 }
+

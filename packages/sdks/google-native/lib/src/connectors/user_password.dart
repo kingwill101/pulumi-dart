@@ -7,40 +7,29 @@ import 'secret.dart';
 class UserPassword {
   /// Secret version reference containing the password.
   final pulumi.Input<Secret>? password;
-
   /// Username.
   final pulumi.Input<String>? username;
 
   /// Creates a new [UserPassword].
   /// [password] Secret version reference containing the password.
   /// [username] Username.
-  UserPassword({this.password, this.username});
+  UserPassword({
+    this.password,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'password':
-          ?pulumi.Input.mapOptionalInputValue<Secret, Map<String, dynamic>>(
-            password,
-            (value) => value.toMap(),
-          ),
+      'password': ?pulumi.Input.mapOptionalInputValue<Secret, Map<String, dynamic>>(password, (value) => value.toMap()),
       'username': ?username,
     };
   }
 
   factory UserPassword.fromMap(Map<String, dynamic> map) {
     return UserPassword(
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Secret.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Secret.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -10,39 +10,20 @@ class VirtualHubRouteTableResponse {
 
   /// Creates a new [VirtualHubRouteTableResponse].
   /// [routes] List of all routes.
-  VirtualHubRouteTableResponse({this.routes});
+  VirtualHubRouteTableResponse({
+    this.routes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'routes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VirtualHubRouteResponse>,
-            List<Map<String, dynamic>>
-          >(
-            routes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VirtualHubRouteResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'routes': ?pulumi.Input.mapOptionalInputValue<List<VirtualHubRouteResponse>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<VirtualHubRouteResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VirtualHubRouteTableResponse.fromMap(Map<String, dynamic> map) {
     return VirtualHubRouteTableResponse(
-      routes: (() {
-        final guardedValue = map['routes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VirtualHubRouteResponse>(
-            guardedValue,
-            (value) => VirtualHubRouteResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      routes: (() { final guardedValue = map['routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualHubRouteResponse>(guardedValue, (value) => VirtualHubRouteResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -11,27 +11,22 @@ class GlobalAddressArgs {
   /// resource. This can be supplied as an input to reserve a specific
   /// address or omitted to allow GCP to choose a valid one for you.
   final pulumi.Input<String>? address;
-
   /// The type of the address to reserve.
   /// * EXTERNAL indicates public/external single IP address.
   /// * INTERNAL indicates internal IP ranges belonging to some network.
   /// Default value is `EXTERNAL`.
   /// Possible values are: `EXTERNAL`, `INTERNAL`.
   final pulumi.Input<String>? addressType;
-
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
-
   /// The IP Version that will be used by this address. The default value is `IPV4`.
   /// Possible values are: `IPV4`, `IPV6`.
   final pulumi.Input<String>? ipVersion;
-
   /// Labels to apply to this address.  A list of key-&gt;value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -40,23 +35,19 @@ class GlobalAddressArgs {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   final pulumi.Input<String>? name;
-
   /// The URL of the network in which to reserve the IP range. The IP range
   /// must be in RFC1918 space. The network cannot be deleted if there are
   /// any reserved IP ranges referring to it.
   /// This should only be set when using an Internal address.
   final pulumi.Input<String>? network;
-
   /// The prefix length of the IP range. If not present, it means the
   /// address field is a single IP address.
   /// This field is not applicable to addresses with addressType=INTERNAL
   /// when purpose=PRIVATE_SERVICE_CONNECT
   final pulumi.Input<int>? prefixLength;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The purpose of the resource. Possible values include:
   /// * VPC_PEERING - for peer networks
   /// * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
@@ -103,58 +94,17 @@ class GlobalAddressArgs {
 
   factory GlobalAddressArgs.fromMap(Map<String, dynamic> map) {
     return GlobalAddressArgs(
-      address: (() {
-        final guardedValue = map['address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      addressType: (() {
-        final guardedValue = map['addressType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipVersion: (() {
-        final guardedValue = map['ipVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prefixLength: (() {
-        final guardedValue = map['prefixLength'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      purpose: (() {
-        final guardedValue = map['purpose'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      addressType: (() { final guardedValue = map['addressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipVersion: (() { final guardedValue = map['ipVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefixLength: (() { final guardedValue = map['prefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      purpose: (() { final guardedValue = map['purpose']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

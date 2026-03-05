@@ -1304,96 +1304,64 @@ import 'system_data_response.dart';
 class Redis extends pulumi.CustomResource {
   /// The keys of the Redis cache - not set if this object is not the response to Create or Update redis cache
   late final pulumi.Output<RedisAccessKeysResponse> accessKeys;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Authentication to Redis through access keys is disabled when set as true. Default value is false.
   late final pulumi.Output<bool?> disableAccessKeyAuthentication;
-
   /// Specifies whether the non-ssl Redis server port (6379) is enabled.
   late final pulumi.Output<bool?> enableNonSslPort;
-
   /// Redis host name.
   late final pulumi.Output<String> hostName;
-
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// List of the Redis instances associated with the cache
   late final pulumi.Output<List<Map<String, dynamic>>> instances;
-
   /// List of the linked servers associated with the cache
   late final pulumi.Output<List<Map<String, dynamic>>> linkedServers;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Optional: requires clients to use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1', '1.2')
   late final pulumi.Output<String?> minimumTlsVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Redis non-SSL port.
   late final pulumi.Output<int> port;
-
   /// List of private endpoint connection associated with the specified redis cache
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Redis instance provisioning status.
   late final pulumi.Output<String> provisioningState;
-
   /// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
-  late final pulumi.Output<RedisCommonPropertiesRedisConfigurationResponse?>
-  redisConfiguration;
-
+  late final pulumi.Output<RedisCommonPropertiesRedisConfigurationResponse?> redisConfiguration;
   /// Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'.
   late final pulumi.Output<String?> redisVersion;
-
   /// The number of replicas to be created per primary.
   late final pulumi.Output<int?> replicasPerMaster;
-
   /// The number of replicas to be created per primary.
   late final pulumi.Output<int?> replicasPerPrimary;
-
   /// The number of shards to be created on a Premium Cluster Cache.
   late final pulumi.Output<int?> shardCount;
-
   /// The SKU of the Redis cache to deploy.
   late final pulumi.Output<SkuResponse> sku;
-
   /// Redis SSL port.
   late final pulumi.Output<int> sslPort;
-
   /// Static IP address. Optionally, may be specified when deploying a Redis cache inside an existing Azure Virtual Network; auto assigned by default.
   late final pulumi.Output<String?> staticIP;
-
   /// The full resource ID of a subnet in a virtual network to deploy the Redis cache in. Example format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
   late final pulumi.Output<String?> subnetId;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A dictionary of tenant settings
   late final pulumi.Output<Map<String, String>?> tenantSettings;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Optional: Specifies the update channel for the monthly Redis updates your Redis Cache will receive. Caches using 'Preview' update channel get latest Redis updates at least 4 weeks ahead of 'Stable' channel caches. Default value is 'Stable'.
   late final pulumi.Output<String?> updateChannel;
-
   /// Optional: Specifies how availability zones are allocated to the Redis cache. 'Automatic' enables zone redundancy and Azure will automatically select zones based on regional availability and capacity. 'UserDefined' will select availability zones passed in by you using the 'zones' parameter. 'NoZones' will produce a non-zonal cache. If 'zonalAllocationPolicy' is not passed, it will be set to 'UserDefined' when zones are passed in, otherwise, it will be set to 'Automatic' in regions where zones are supported and 'NoZones' in regions where zones are not supported.
   late final pulumi.Output<String?> zonalAllocationPolicy;
-
   /// The availability zones.
   late final pulumi.Output<List<String>?> zones;
 
@@ -1401,88 +1369,41 @@ class Redis extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Redis]. {@macro pulumi_redis_redis_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Redis(String name, {RedisArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:redis:Redis',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    accessKeys = registerOutput<RedisAccessKeysResponse>(
-      'accessKeys',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RedisAccessKeysResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Redis(
+    String name, {
+    RedisArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:redis:Redis',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessKeys = registerOutput<RedisAccessKeysResponse>('accessKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RedisAccessKeysResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    disableAccessKeyAuthentication = registerOutput<bool?>(
-      'disableAccessKeyAuthentication',
-    );
+    disableAccessKeyAuthentication = registerOutput<bool?>('disableAccessKeyAuthentication');
     enableNonSslPort = registerOutput<bool?>('enableNonSslPort');
     hostName = registerOutput<String>('hostName');
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instances = registerOutput<List<Map<String, dynamic>>>('instances');
     linkedServers = registerOutput<List<Map<String, dynamic>>>('linkedServers');
     location = registerOutput<String>('location');
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
     port = registerOutput<int>('port');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    redisConfiguration =
-        registerOutput<RedisCommonPropertiesRedisConfigurationResponse?>(
-          'redisConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RedisCommonPropertiesRedisConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    redisConfiguration = registerOutput<RedisCommonPropertiesRedisConfigurationResponse?>('redisConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RedisCommonPropertiesRedisConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     redisVersion = registerOutput<String?>('redisVersion');
     replicasPerMaster = registerOutput<int?>('replicasPerMaster');
     replicasPerPrimary = registerOutput<int?>('replicasPerPrimary');
     shardCount = registerOutput<int?>('shardCount');
-    sku = registerOutput<SkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sslPort = registerOutput<int>('sslPort');
     staticIP = registerOutput<String?>('staticIP');
     subnetId = registerOutput<String?>('subnetId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tenantSettings = registerOutput<Map<String, String>?>('tenantSettings');
     type = registerOutput<String>('type');

@@ -6,24 +6,18 @@ import 'get_namespace_sku.dart';
 class GetNamespaceResult {
   /// Is this Notification Hub Namespace enabled?
   final bool enabled;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region in which this Notification Hub Namespace exists.
   final String location;
-
   /// The name of the SKU to use for this Notification Hub Namespace. Possible values are `Free`, `Basic` or `Standard.`
   final String name;
-
   /// The Type of Namespace, such as `Messaging` or `NotificationHub`.
   final String namespaceType;
   final String resourceGroupName;
   final String servicebusEndpoint;
-
   /// A `sku` block as defined below.
   final GetNamespaceSku sku;
-
   /// A mapping of tags to assign to the resource.
   final Map<String, String> tags;
 
@@ -72,10 +66,9 @@ class GetNamespaceResult {
       namespaceType: map['namespaceType'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
       servicebusEndpoint: map['servicebusEndpoint'] as String,
-      sku: GetNamespaceSku.fromMap(
-        (map['sku']! as Map).cast<String, dynamic>(),
-      ),
+      sku: GetNamespaceSku.fromMap((map['sku']! as Map).cast<String, dynamic>()),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

@@ -6,68 +6,46 @@ import 'get_instances_instance_disk_device_mapping.dart';
 class GetInstancesInstance {
   /// Availability zone where instances are located.
   final pulumi.Input<String> availabilityZone;
-
   /// Instance creation time.
   final pulumi.Input<String> creationTime;
-
   /// Instance description.
   final pulumi.Input<String> description;
-
   /// Description of the attached disks.
-  final pulumi.Input<List<GetInstancesInstanceDiskDeviceMapping>>
-  diskDeviceMappings;
-
+  final pulumi.Input<List<GetInstancesInstanceDiskDeviceMapping>> diskDeviceMappings;
   /// EIP address the VPC instance is using.
   final pulumi.Input<String> eip;
-
   /// ID of the instance.
   final pulumi.Input<String> id;
-
   /// The image ID of some ECS instance used.
   final pulumi.Input<String> imageId;
-
   /// Instance charge type.
   final pulumi.Input<String> instanceChargeType;
-
   /// Instance type.
   final pulumi.Input<String> instanceType;
-
   /// Instance network charge type.
   final pulumi.Input<String> internetChargeType;
-
   /// Max output bandwidth for internet.
   final pulumi.Input<int> internetMaxBandwidthOut;
-
   /// Key pair the instance is using.
   final pulumi.Input<String> keyName;
-
   /// Instance name.
   final pulumi.Input<String> name;
-
   /// Instance private IP address.
   final pulumi.Input<String> privateIp;
-
   /// Instance public IP address.
   final pulumi.Input<String> publicIp;
-
   /// The RAM role name which the instance attaches.
   final pulumi.Input<String> ramRoleName;
-
   /// Region ID the instance belongs to.
   final pulumi.Input<String> regionId;
-
   /// The ID of resource group which the instance belongs.
   final pulumi.Input<String> resourceGroupId;
-
   /// List of security group IDs the instance belongs to.
   final pulumi.Input<List<String>> securityGroups;
-
   /// Spot strategy the instance is using.
   final pulumi.Input<String> spotStrategy;
-
   /// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
   final pulumi.Input<String> status;
-
   /// A map of tags assigned to the ECS instances. It must be in the format:
   ///
   /// ```typescript
@@ -174,10 +152,8 @@ class GetInstancesInstance {
   ///           tagKey2: tagValue2
   /// ```
   final pulumi.Input<Map<String, String>> tags;
-
   /// ID of the VPC linked to the instances.
   final pulumi.Input<String> vpcId;
-
   /// ID of the vSwitch linked to the instances.
   final pulumi.Input<String> vswitchId;
 
@@ -238,18 +214,7 @@ class GetInstancesInstance {
       'availabilityZone': availabilityZone,
       'creationTime': creationTime,
       'description': description,
-      'diskDeviceMappings':
-          pulumi.Input.mapInputValue<
-            List<GetInstancesInstanceDiskDeviceMapping>,
-            List<Map<String, dynamic>>
-          >(
-            diskDeviceMappings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetInstancesInstanceDiskDeviceMapping,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'diskDeviceMappings': pulumi.Input.mapInputValue<List<GetInstancesInstanceDiskDeviceMapping>, List<Map<String, dynamic>>>(diskDeviceMappings, (value) => pulumi.Input.encodeList<GetInstancesInstanceDiskDeviceMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
       'eip': eip,
       'id': id,
       'imageId': imageId,
@@ -275,32 +240,17 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      availabilityZone: pulumi.Input.fromValue(
-        map['availabilityZone'] as String,
-      ),
+      availabilityZone: pulumi.Input.fromValue(map['availabilityZone'] as String),
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      diskDeviceMappings: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetInstancesInstanceDiskDeviceMapping>(
-          map['diskDeviceMappings']!,
-          (value) => GetInstancesInstanceDiskDeviceMapping.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      diskDeviceMappings: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstancesInstanceDiskDeviceMapping>(map['diskDeviceMappings']!, (value) => GetInstancesInstanceDiskDeviceMapping.fromMap((value as Map).cast<String, dynamic>()))),
       eip: pulumi.Input.fromValue(map['eip'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       imageId: pulumi.Input.fromValue(map['imageId'] as String),
-      instanceChargeType: pulumi.Input.fromValue(
-        map['instanceChargeType'] as String,
-      ),
+      instanceChargeType: pulumi.Input.fromValue(map['instanceChargeType'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      internetChargeType: pulumi.Input.fromValue(
-        map['internetChargeType'] as String,
-      ),
-      internetMaxBandwidthOut: pulumi.Input.fromValue(
-        map['internetMaxBandwidthOut'] as int,
-      ),
+      internetChargeType: pulumi.Input.fromValue(map['internetChargeType'] as String),
+      internetMaxBandwidthOut: pulumi.Input.fromValue(map['internetMaxBandwidthOut'] as int),
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       privateIp: pulumi.Input.fromValue(map['privateIp'] as String),
@@ -308,9 +258,7 @@ class GetInstancesInstance {
       ramRoleName: pulumi.Input.fromValue(map['ramRoleName'] as String),
       regionId: pulumi.Input.fromValue(map['regionId'] as String),
       resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
-      securityGroups: pulumi.Input.fromValue(
-        (map['securityGroups'] as List).cast<String>(),
-      ),
+      securityGroups: pulumi.Input.fromValue((map['securityGroups'] as List).cast<String>()),
       spotStrategy: pulumi.Input.fromValue(map['spotStrategy'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
@@ -319,3 +267,4 @@ class GetInstancesInstance {
     );
   }
 }
+

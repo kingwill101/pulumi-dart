@@ -9,25 +9,20 @@ class InventoryDestination {
 
   /// Creates a new [InventoryDestination].
   /// [bucket] S3 bucket configuration where inventory results are published (documented below).
-  InventoryDestination({required this.bucket});
+  InventoryDestination({
+    required this.bucket,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bucket':
-          pulumi.Input.mapInputValue<
-            InventoryDestinationBucket,
-            Map<String, dynamic>
-          >(bucket, (value) => value.toMap()),
+      'bucket': pulumi.Input.mapInputValue<InventoryDestinationBucket, Map<String, dynamic>>(bucket, (value) => value.toMap()),
     };
   }
 
   factory InventoryDestination.fromMap(Map<String, dynamic> map) {
     return InventoryDestination(
-      bucket: pulumi.Input.fromValue(
-        InventoryDestinationBucket.fromMap(
-          (map['bucket']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      bucket: pulumi.Input.fromValue(InventoryDestinationBucket.fromMap((map['bucket']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

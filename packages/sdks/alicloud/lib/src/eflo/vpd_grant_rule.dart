@@ -231,16 +231,12 @@ import 'vpd_grant_rule_state.dart';
 class VpdGrantRule extends pulumi.CustomResource {
   /// The Creation time.
   late final pulumi.Output<String> createTime;
-
   /// The ID of the ER instance under the cross-account tenant.
   late final pulumi.Output<String> erId;
-
   /// Cross-account authorized tenant ID.
   late final pulumi.Output<String> grantTenantId;
-
   /// Instance ID of VPD.
   late final pulumi.Output<String> instanceId;
-
   /// The Region ID.
   late final pulumi.Output<String> regionId;
 
@@ -253,11 +249,11 @@ class VpdGrantRule extends pulumi.CustomResource {
     VpdGrantRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/vpdGrantRule:VpdGrantRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/vpdGrantRule:VpdGrantRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     erId = registerOutput<String>('erId');
     grantTenantId = registerOutput<String>('grantTenantId');
@@ -283,11 +279,11 @@ class VpdGrantRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/vpdGrantRule:VpdGrantRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/vpdGrantRule:VpdGrantRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     erId = registerOutput<String>('erId');
     grantTenantId = registerOutput<String>('grantTenantId');

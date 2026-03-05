@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdmChannelState {
   /// The application ID.
   final pulumi.Input<String>? applicationId;
-
   /// Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
   final pulumi.Input<String>? clientId;
-
   /// Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
   final pulumi.Input<String>? clientSecret;
-
   /// Specifies whether to enable the channel. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -45,31 +41,12 @@ class AdmChannelState {
 
   factory AdmChannelState.fromMap(Map<String, dynamic> map) {
     return AdmChannelState(
-      applicationId: (() {
-        final guardedValue = map['applicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientSecret: (() {
-        final guardedValue = map['clientSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

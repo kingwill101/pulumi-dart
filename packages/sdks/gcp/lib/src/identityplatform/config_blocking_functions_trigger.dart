@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigBlockingFunctionsTrigger {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> eventType;
-
   /// HTTP URI trigger for the Cloud Function.
   final pulumi.Input<String> functionUri;
-
   /// (Output)
   /// When the trigger was changed.
   final pulumi.Input<String>? updateTime;
@@ -35,11 +33,8 @@ class ConfigBlockingFunctionsTrigger {
     return ConfigBlockingFunctionsTrigger(
       eventType: pulumi.Input.fromValue(map['eventType'] as String),
       functionUri: pulumi.Input.fromValue(map['functionUri'] as String),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

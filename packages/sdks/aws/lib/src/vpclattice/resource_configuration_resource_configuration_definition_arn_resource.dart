@@ -13,14 +13,15 @@ class ResourceConfigurationResourceConfigurationDefinitionArnResource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': arn};
+    return <String, dynamic>{
+      'arn': arn,
+    };
   }
 
-  factory ResourceConfigurationResourceConfigurationDefinitionArnResource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceConfigurationResourceConfigurationDefinitionArnResource.fromMap(Map<String, dynamic> map) {
     return ResourceConfigurationResourceConfigurationDefinitionArnResource(
       arn: pulumi.Input.fromValue(map['arn'] as String),
     );
   }
 }
+

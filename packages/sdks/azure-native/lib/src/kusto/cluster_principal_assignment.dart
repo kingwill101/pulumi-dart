@@ -158,34 +158,24 @@ import 'cluster_principal_assignment_args.dart';
 class ClusterPrincipalAssignment extends pulumi.CustomResource {
   /// The service principal object id in AAD (Azure active directory)
   late final pulumi.Output<String> aadObjectId;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The principal ID assigned to the cluster principal. It can be a user email, application ID, or security group name.
   late final pulumi.Output<String> principalId;
-
   /// The principal name
   late final pulumi.Output<String> principalName;
-
   /// Principal type.
   late final pulumi.Output<String> principalType;
-
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Cluster principal role.
   late final pulumi.Output<String> role;
-
   /// The tenant id of the principal
   late final pulumi.Output<String?> tenantId;
-
   /// The tenant name of the principal
   late final pulumi.Output<String> tenantName;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -198,11 +188,11 @@ class ClusterPrincipalAssignment extends pulumi.CustomResource {
     ClusterPrincipalAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:kusto:ClusterPrincipalAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:kusto:ClusterPrincipalAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aadObjectId = registerOutput<String>('aadObjectId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');

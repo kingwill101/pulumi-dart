@@ -8,11 +8,9 @@ import 'shipping_address_response.dart';
 class ReverseShippingDetailsResponse {
   /// Contact Info.
   final pulumi.Input<ContactInfoResponse>? contactDetails;
-
   /// A flag to indicate whether Reverse Shipping details are updated or not after device has been prepared.
   /// Read only field
   final pulumi.Input<bool> isUpdated;
-
   /// Shipping address where customer wishes to receive the device.
   final pulumi.Input<ShippingAddressResponse>? shippingAddress;
 
@@ -28,41 +26,18 @@ class ReverseShippingDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'contactDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            ContactInfoResponse,
-            Map<String, dynamic>
-          >(contactDetails, (value) => value.toMap()),
+      'contactDetails': ?pulumi.Input.mapOptionalInputValue<ContactInfoResponse, Map<String, dynamic>>(contactDetails, (value) => value.toMap()),
       'isUpdated': isUpdated,
-      'shippingAddress':
-          ?pulumi.Input.mapOptionalInputValue<
-            ShippingAddressResponse,
-            Map<String, dynamic>
-          >(shippingAddress, (value) => value.toMap()),
+      'shippingAddress': ?pulumi.Input.mapOptionalInputValue<ShippingAddressResponse, Map<String, dynamic>>(shippingAddress, (value) => value.toMap()),
     };
   }
 
   factory ReverseShippingDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ReverseShippingDetailsResponse(
-      contactDetails: (() {
-        final guardedValue = map['contactDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ContactInfoResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      contactDetails: (() { final guardedValue = map['contactDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContactInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       isUpdated: pulumi.Input.fromValue(map['isUpdated'] as bool),
-      shippingAddress: (() {
-        final guardedValue = map['shippingAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ShippingAddressResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      shippingAddress: (() { final guardedValue = map['shippingAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ShippingAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

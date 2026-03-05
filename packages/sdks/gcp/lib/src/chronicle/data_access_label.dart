@@ -154,43 +154,32 @@ import 'data_access_label_state.dart';
 class DataAccessLabel extends pulumi.CustomResource {
   /// Output only. The user who created the data access label.
   late final pulumi.Output<String> author;
-
   /// Output only. The time at which the data access label was created.
   late final pulumi.Output<String> createTime;
-
   /// Required. The ID to use for the data access label, which will become the label's
   /// display name and the final component of the label's resource name. The
   /// maximum number of characters should be 63. Regex pattern is as per AIP:
   /// https://google.aip.dev/122#resource-id-segments
   late final pulumi.Output<String> dataAccessLabelId;
-
   /// Optional. A description of the data access label for a human reader.
   late final pulumi.Output<String?> description;
-
   /// Output only. The short name displayed for the label as it appears on event data. This is same as data access label id.
   late final pulumi.Output<String> displayName;
-
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   late final pulumi.Output<String> instance;
-
   /// Output only. The user who last updated the data access label.
   late final pulumi.Output<String> lastEditor;
-
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   late final pulumi.Output<String> location;
-
   /// The unique resource name of the data access label. This unique identifier is generated using values provided for the URL parameters.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/dataAccessLabels/{data_access_label_id}
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// A UDM query over event data.
   late final pulumi.Output<String> udmQuery;
-
   /// Output only. The time at which the data access label was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -203,11 +192,11 @@ class DataAccessLabel extends pulumi.CustomResource {
     DataAccessLabelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:chronicle/dataAccessLabel:DataAccessLabel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:chronicle/dataAccessLabel:DataAccessLabel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     author = registerOutput<String>('author');
     createTime = registerOutput<String>('createTime');
     dataAccessLabelId = registerOutput<String>('dataAccessLabelId');
@@ -240,11 +229,11 @@ class DataAccessLabel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:chronicle/dataAccessLabel:DataAccessLabel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:chronicle/dataAccessLabel:DataAccessLabel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     author = registerOutput<String>('author');
     createTime = registerOutput<String>('createTime');
     dataAccessLabelId = registerOutput<String>('dataAccessLabelId');

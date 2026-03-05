@@ -15,3 +15,4 @@ enum Edition {
     throw ArgumentError('Unknown Edition value: $value');
   }
 }
+

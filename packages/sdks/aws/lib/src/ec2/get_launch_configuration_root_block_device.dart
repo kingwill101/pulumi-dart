@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLaunchConfigurationRootBlockDevice {
   /// Whether the EBS Volume will be deleted on instance termination.
   final pulumi.Input<bool> deleteOnTermination;
-
   /// Whether the volume is Encrypted.
   final pulumi.Input<bool> encrypted;
-
   /// Provisioned IOPs of the volume.
   final pulumi.Input<int> iops;
-
   /// Throughput of the volume.
   final pulumi.Input<int> throughput;
-
   /// Size of the volume.
   final pulumi.Input<int> volumeSize;
-
   /// Type of the volume.
   final pulumi.Input<String> volumeType;
 
@@ -48,13 +43,9 @@ class GetLaunchConfigurationRootBlockDevice {
     };
   }
 
-  factory GetLaunchConfigurationRootBlockDevice.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLaunchConfigurationRootBlockDevice.fromMap(Map<String, dynamic> map) {
     return GetLaunchConfigurationRootBlockDevice(
-      deleteOnTermination: pulumi.Input.fromValue(
-        map['deleteOnTermination'] as bool,
-      ),
+      deleteOnTermination: pulumi.Input.fromValue(map['deleteOnTermination'] as bool),
       encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
       iops: pulumi.Input.fromValue(map['iops'] as int),
       throughput: pulumi.Input.fromValue(map['throughput'] as int),
@@ -63,3 +54,4 @@ class GetLaunchConfigurationRootBlockDevice {
     );
   }
 }
+

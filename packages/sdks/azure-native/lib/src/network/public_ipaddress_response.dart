@@ -14,76 +14,52 @@ import 'sub_resource_response.dart';
 class PublicIPAddressResponse {
   /// The DDoS protection custom policy associated with the public IP address.
   final pulumi.Input<DdosSettingsResponse>? ddosSettings;
-
   /// Specify what happens to the public IP address when the VM using it is deleted
   final pulumi.Input<String>? deleteOption;
-
   /// The FQDN of the DNS record associated with the public IP address.
   final pulumi.Input<PublicIPAddressDnsSettingsResponse>? dnsSettings;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
-
   /// The extended location of the public ip address.
   final pulumi.Input<ExtendedLocationResponse>? extendedLocation;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// The idle timeout of the public IP address.
   final pulumi.Input<int>? idleTimeoutInMinutes;
-
   /// The IP address associated with the public IP address resource.
   final pulumi.Input<String>? ipAddress;
-
   /// The IP configuration associated with the public IP address.
   final pulumi.Input<IPConfigurationResponse> ipConfiguration;
-
   /// The list of tags associated with the public IP address.
   final pulumi.Input<List<IpTagResponse>>? ipTags;
-
   /// The linked public IP address of the public IP address resource.
   final pulumi.Input<PublicIPAddressResponse>? linkedPublicIPAddress;
-
   /// Resource location.
   final pulumi.Input<String>? location;
-
   /// Migration phase of Public IP Address.
   final pulumi.Input<String>? migrationPhase;
-
   /// Resource name.
   final pulumi.Input<String> name;
-
   /// The NatGateway for the Public IP address.
   final pulumi.Input<NatGatewayResponse>? natGateway;
-
   /// The provisioning state of the public IP address resource.
   final pulumi.Input<String> provisioningState;
-
   /// The public IP address version.
   final pulumi.Input<String>? publicIPAddressVersion;
-
   /// The public IP address allocation method.
   final pulumi.Input<String>? publicIPAllocationMethod;
-
   /// The Public IP Prefix this Public IP Address should be allocated from.
   final pulumi.Input<SubResourceResponse>? publicIPPrefix;
-
   /// The resource GUID property of the public IP address resource.
   final pulumi.Input<String> resourceGuid;
-
   /// The service public IP address of the public IP address resource.
   final pulumi.Input<PublicIPAddressResponse>? servicePublicIPAddress;
-
   /// The public IP address SKU.
   final pulumi.Input<PublicIPAddressSkuResponse>? sku;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Resource type.
   final pulumi.Input<String> type;
-
   /// A list of availability zones denoting the IP allocated for the resource needs to come from.
   final pulumi.Input<List<String>>? zones;
 
@@ -143,75 +119,28 @@ class PublicIPAddressResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ddosSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            DdosSettingsResponse,
-            Map<String, dynamic>
-          >(ddosSettings, (value) => value.toMap()),
+      'ddosSettings': ?pulumi.Input.mapOptionalInputValue<DdosSettingsResponse, Map<String, dynamic>>(ddosSettings, (value) => value.toMap()),
       'deleteOption': ?deleteOption,
-      'dnsSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            PublicIPAddressDnsSettingsResponse,
-            Map<String, dynamic>
-          >(dnsSettings, (value) => value.toMap()),
+      'dnsSettings': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressDnsSettingsResponse, Map<String, dynamic>>(dnsSettings, (value) => value.toMap()),
       'etag': etag,
-      'extendedLocation':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExtendedLocationResponse,
-            Map<String, dynamic>
-          >(extendedLocation, (value) => value.toMap()),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'id': ?id,
       'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
       'ipAddress': ?ipAddress,
-      'ipConfiguration':
-          pulumi.Input.mapInputValue<
-            IPConfigurationResponse,
-            Map<String, dynamic>
-          >(ipConfiguration, (value) => value.toMap()),
-      'ipTags':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<IpTagResponse>,
-            List<Map<String, dynamic>>
-          >(
-            ipTags,
-            (value) =>
-                pulumi.Input.encodeList<IpTagResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'linkedPublicIPAddress':
-          ?pulumi.Input.mapOptionalInputValue<
-            PublicIPAddressResponse,
-            Map<String, dynamic>
-          >(linkedPublicIPAddress, (value) => value.toMap()),
+      'ipConfiguration': pulumi.Input.mapInputValue<IPConfigurationResponse, Map<String, dynamic>>(ipConfiguration, (value) => value.toMap()),
+      'ipTags': ?pulumi.Input.mapOptionalInputValue<List<IpTagResponse>, List<Map<String, dynamic>>>(ipTags, (value) => pulumi.Input.encodeList<IpTagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'linkedPublicIPAddress': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressResponse, Map<String, dynamic>>(linkedPublicIPAddress, (value) => value.toMap()),
       'location': ?location,
       'migrationPhase': ?migrationPhase,
       'name': name,
-      'natGateway':
-          ?pulumi.Input.mapOptionalInputValue<
-            NatGatewayResponse,
-            Map<String, dynamic>
-          >(natGateway, (value) => value.toMap()),
+      'natGateway': ?pulumi.Input.mapOptionalInputValue<NatGatewayResponse, Map<String, dynamic>>(natGateway, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'publicIPAddressVersion': ?publicIPAddressVersion,
       'publicIPAllocationMethod': ?publicIPAllocationMethod,
-      'publicIPPrefix':
-          ?pulumi.Input.mapOptionalInputValue<
-            SubResourceResponse,
-            Map<String, dynamic>
-          >(publicIPPrefix, (value) => value.toMap()),
+      'publicIPPrefix': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(publicIPPrefix, (value) => value.toMap()),
       'resourceGuid': resourceGuid,
-      'servicePublicIPAddress':
-          ?pulumi.Input.mapOptionalInputValue<
-            PublicIPAddressResponse,
-            Map<String, dynamic>
-          >(servicePublicIPAddress, (value) => value.toMap()),
-      'sku':
-          ?pulumi.Input.mapOptionalInputValue<
-            PublicIPAddressSkuResponse,
-            Map<String, dynamic>
-          >(sku, (value) => value.toMap()),
+      'servicePublicIPAddress': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressResponse, Map<String, dynamic>>(servicePublicIPAddress, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressSkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'tags': ?tags,
       'type': type,
       'zones': ?zones,
@@ -220,153 +149,32 @@ class PublicIPAddressResponse {
 
   factory PublicIPAddressResponse.fromMap(Map<String, dynamic> map) {
     return PublicIPAddressResponse(
-      ddosSettings: (() {
-        final guardedValue = map['ddosSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DdosSettingsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      deleteOption: (() {
-        final guardedValue = map['deleteOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dnsSettings: (() {
-        final guardedValue = map['dnsSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PublicIPAddressDnsSettingsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      ddosSettings: (() { final guardedValue = map['ddosSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DdosSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dnsSettings: (() { final guardedValue = map['dnsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PublicIPAddressDnsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       etag: pulumi.Input.fromValue(map['etag'] as String),
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExtendedLocationResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      idleTimeoutInMinutes: (() {
-        final guardedValue = map['idleTimeoutInMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ipAddress: (() {
-        final guardedValue = map['ipAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipConfiguration: pulumi.Input.fromValue(
-        IPConfigurationResponse.fromMap(
-          (map['ipConfiguration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      ipTags: (() {
-        final guardedValue = map['ipTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<IpTagResponse>(
-            guardedValue,
-            (value) =>
-                IpTagResponse.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      linkedPublicIPAddress: (() {
-        final guardedValue = map['linkedPublicIPAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PublicIPAddressResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      migrationPhase: (() {
-        final guardedValue = map['migrationPhase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipConfiguration: pulumi.Input.fromValue(IPConfigurationResponse.fromMap((map['ipConfiguration']! as Map).cast<String, dynamic>())),
+      ipTags: (() { final guardedValue = map['ipTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpTagResponse>(guardedValue, (value) => IpTagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      linkedPublicIPAddress: (() { final guardedValue = map['linkedPublicIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PublicIPAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      migrationPhase: (() { final guardedValue = map['migrationPhase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      natGateway: (() {
-        final guardedValue = map['natGateway'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NatGatewayResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      publicIPAddressVersion: (() {
-        final guardedValue = map['publicIPAddressVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicIPAllocationMethod: (() {
-        final guardedValue = map['publicIPAllocationMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicIPPrefix: (() {
-        final guardedValue = map['publicIPPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SubResourceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      natGateway: (() { final guardedValue = map['natGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NatGatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      publicIPAddressVersion: (() { final guardedValue = map['publicIPAddressVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicIPAllocationMethod: (() { final guardedValue = map['publicIPAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicIPPrefix: (() { final guardedValue = map['publicIPPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGuid: pulumi.Input.fromValue(map['resourceGuid'] as String),
-      servicePublicIPAddress: (() {
-        final guardedValue = map['servicePublicIPAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PublicIPAddressResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PublicIPAddressSkuResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      servicePublicIPAddress: (() { final guardedValue = map['servicePublicIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PublicIPAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PublicIPAddressSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      zones: (() {
-        final guardedValue = map['zones'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

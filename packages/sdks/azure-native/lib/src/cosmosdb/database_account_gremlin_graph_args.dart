@@ -10,19 +10,14 @@ import 'gremlin_graph_resource.dart';
 class DatabaseAccountGremlinGraphArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
-
   /// Cosmos DB database name.
   final pulumi.Input<String> databaseName;
-
   /// Cosmos DB graph name.
   final pulumi.Input<String>? graphName;
-
   /// A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request.
   final pulumi.Input<Map<String, String>> options;
-
   /// The standard JSON format of a Gremlin graph
   final pulumi.Input<GremlinGraphResource> resource;
-
   /// Name of an Azure resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -48,11 +43,7 @@ class DatabaseAccountGremlinGraphArgs {
       'databaseName': databaseName,
       'graphName': ?graphName,
       'options': options,
-      'resource':
-          pulumi.Input.mapInputValue<
-            GremlinGraphResource,
-            Map<String, dynamic>
-          >(resource, (value) => value.toMap()),
+      'resource': pulumi.Input.mapInputValue<GremlinGraphResource, Map<String, dynamic>>(resource, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -61,22 +52,11 @@ class DatabaseAccountGremlinGraphArgs {
     return DatabaseAccountGremlinGraphArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      graphName: (() {
-        final guardedValue = map['graphName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      options: pulumi.Input.fromValue(
-        (map['options'] as Map).cast<String, String>(),
-      ),
-      resource: pulumi.Input.fromValue(
-        GremlinGraphResource.fromMap(
-          (map['resource']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      graphName: (() { final guardedValue = map['graphName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      options: pulumi.Input.fromValue((map['options'] as Map).cast<String, String>()),
+      resource: pulumi.Input.fromValue(GremlinGraphResource.fromMap((map['resource']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

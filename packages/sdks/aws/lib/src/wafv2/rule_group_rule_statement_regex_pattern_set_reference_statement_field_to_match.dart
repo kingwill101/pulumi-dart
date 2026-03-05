@@ -15,77 +15,30 @@ import 'rule_group_rule_statement_regex_pattern_set_reference_statement_field_to
 class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch {
   /// Inspect all query arguments.
   final pulumi.Input<Map<String, dynamic>>? allQueryArguments;
-
   /// Inspect the request body, which immediately follows the request headers.
-  final pulumi.Input<
-    RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody
-  >?
-  body;
-
+  final pulumi.Input<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody>? body;
   /// Inspect the cookies in the web request. See Cookies below for details.
-  final pulumi.Input<
-    RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookies
-  >?
-  cookies;
-
+  final pulumi.Input<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookies>? cookies;
   /// Inspect the request headers. See Header Order below for details.
-  final pulumi.Input<
-    List<
-      RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderOrder
-    >
-  >?
-  headerOrders;
-
+  final pulumi.Input<List<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderOrder>>? headerOrders;
   /// Inspect the request headers. See Headers below for details.
-  final pulumi.Input<
-    List<
-      RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader
-    >
-  >?
-  headers;
-
+  final pulumi.Input<List<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader>>? headers;
   /// Inspect the JA3 fingerprint. See `ja3_fingerprint` below for details.
-  final pulumi.Input<
-    RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa3Fingerprint
-  >?
-  ja3Fingerprint;
-
+  final pulumi.Input<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa3Fingerprint>? ja3Fingerprint;
   /// Inspect the JA4 fingerprint. See `ja4_fingerprint` below for details.
-  final pulumi.Input<
-    RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa4Fingerprint
-  >?
-  ja4Fingerprint;
-
+  final pulumi.Input<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa4Fingerprint>? ja4Fingerprint;
   /// Inspect the request body as JSON. See JSON Body for details.
-  final pulumi.Input<
-    RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBody
-  >?
-  jsonBody;
-
+  final pulumi.Input<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBody>? jsonBody;
   /// Inspect the HTTP method. The method indicates the type of operation that the request is asking the origin to perform.
   final pulumi.Input<Map<String, dynamic>>? method;
-
   /// Inspect the query string. This is the part of a URL that appears after a `?` character, if any.
   final pulumi.Input<Map<String, dynamic>>? queryString;
-
   /// Inspect a single header. See Single Header below for details.
-  final pulumi.Input<
-    RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader
-  >?
-  singleHeader;
-
+  final pulumi.Input<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader>? singleHeader;
   /// Inspect a single query argument. See Single Query Argument below for details.
-  final pulumi.Input<
-    RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument
-  >?
-  singleQueryArgument;
-
+  final pulumi.Input<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument>? singleQueryArgument;
   /// Inspect the part of a URL that follows the "#" symbol, providing additional information about the resource. See URI Fragment below for details.
-  final pulumi.Input<
-    RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchUriFragment
-  >?
-  uriFragment;
-
+  final pulumi.Input<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchUriFragment>? uriFragment;
   /// Inspect the request URI path. This is the part of a web request that identifies a resource, for example, `/images/daily-ad.jpg`.
   final pulumi.Input<Map<String, dynamic>>? uriPath;
 
@@ -124,214 +77,39 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allQueryArguments': ?allQueryArguments,
-      'body':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody,
-            Map<String, dynamic>
-          >(body, (value) => value.toMap()),
-      'cookies':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookies,
-            Map<String, dynamic>
-          >(cookies, (value) => value.toMap()),
-      'headerOrders':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderOrder
-            >,
-            List<Map<String, dynamic>>
-          >(
-            headerOrders,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderOrder,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'headers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader
-            >,
-            List<Map<String, dynamic>>
-          >(
-            headers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'ja3Fingerprint':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa3Fingerprint,
-            Map<String, dynamic>
-          >(ja3Fingerprint, (value) => value.toMap()),
-      'ja4Fingerprint':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa4Fingerprint,
-            Map<String, dynamic>
-          >(ja4Fingerprint, (value) => value.toMap()),
-      'jsonBody':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBody,
-            Map<String, dynamic>
-          >(jsonBody, (value) => value.toMap()),
+      'body': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody, Map<String, dynamic>>(body, (value) => value.toMap()),
+      'cookies': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookies, Map<String, dynamic>>(cookies, (value) => value.toMap()),
+      'headerOrders': ?pulumi.Input.mapOptionalInputValue<List<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderOrder>, List<Map<String, dynamic>>>(headerOrders, (value) => pulumi.Input.encodeList<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderOrder, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'headers': ?pulumi.Input.mapOptionalInputValue<List<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ja3Fingerprint': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa3Fingerprint, Map<String, dynamic>>(ja3Fingerprint, (value) => value.toMap()),
+      'ja4Fingerprint': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa4Fingerprint, Map<String, dynamic>>(ja4Fingerprint, (value) => value.toMap()),
+      'jsonBody': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBody, Map<String, dynamic>>(jsonBody, (value) => value.toMap()),
       'method': ?method,
       'queryString': ?queryString,
-      'singleHeader':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader,
-            Map<String, dynamic>
-          >(singleHeader, (value) => value.toMap()),
-      'singleQueryArgument':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument,
-            Map<String, dynamic>
-          >(singleQueryArgument, (value) => value.toMap()),
-      'uriFragment':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchUriFragment,
-            Map<String, dynamic>
-          >(uriFragment, (value) => value.toMap()),
+      'singleHeader': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader, Map<String, dynamic>>(singleHeader, (value) => value.toMap()),
+      'singleQueryArgument': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument, Map<String, dynamic>>(singleQueryArgument, (value) => value.toMap()),
+      'uriFragment': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchUriFragment, Map<String, dynamic>>(uriFragment, (value) => value.toMap()),
       'uriPath': ?uriPath,
     };
   }
 
-  factory RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch(
-      allQueryArguments: (() {
-        final guardedValue = map['allQueryArguments'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      body: (() {
-        final guardedValue = map['body'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      cookies: (() {
-        final guardedValue = map['cookies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookies.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      headerOrders: (() {
-        final guardedValue = map['headerOrders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderOrder
-          >(
-            guardedValue,
-            (value) =>
-                RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderOrder.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      headers: (() {
-        final guardedValue = map['headers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader
-          >(
-            guardedValue,
-            (value) =>
-                RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      ja3Fingerprint: (() {
-        final guardedValue = map['ja3Fingerprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa3Fingerprint.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      ja4Fingerprint: (() {
-        final guardedValue = map['ja4Fingerprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa4Fingerprint.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      jsonBody: (() {
-        final guardedValue = map['jsonBody'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBody.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      method: (() {
-        final guardedValue = map['method'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      queryString: (() {
-        final guardedValue = map['queryString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      singleHeader: (() {
-        final guardedValue = map['singleHeader'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      singleQueryArgument: (() {
-        final guardedValue = map['singleQueryArgument'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      uriFragment: (() {
-        final guardedValue = map['uriFragment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchUriFragment.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      uriPath: (() {
-        final guardedValue = map['uriPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      allQueryArguments: (() { final guardedValue = map['allQueryArguments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      body: (() { final guardedValue = map['body']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      cookies: (() { final guardedValue = map['cookies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      headerOrders: (() { final guardedValue = map['headerOrders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderOrder>(guardedValue, (value) => RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderOrder.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader>(guardedValue, (value) => RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ja3Fingerprint: (() { final guardedValue = map['ja3Fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa3Fingerprint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ja4Fingerprint: (() { final guardedValue = map['ja4Fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa4Fingerprint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      jsonBody: (() { final guardedValue = map['jsonBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBody.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      method: (() { final guardedValue = map['method']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      queryString: (() { final guardedValue = map['queryString']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      singleHeader: (() { final guardedValue = map['singleHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      singleQueryArgument: (() { final guardedValue = map['singleQueryArgument']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      uriFragment: (() { final guardedValue = map['uriFragment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchUriFragment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      uriPath: (() { final guardedValue = map['uriPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

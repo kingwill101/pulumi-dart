@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallPolicyRuleConditionApplicationProtocolResponse {
   /// Port number for the protocol, cannot be greater than 64000.
   final pulumi.Input<int>? port;
-
   /// Protocol type.
   final pulumi.Input<String>? protocolType;
 
@@ -19,23 +18,17 @@ class FirewallPolicyRuleConditionApplicationProtocolResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': ?port, 'protocolType': ?protocolType};
+    return <String, dynamic>{
+      'port': ?port,
+      'protocolType': ?protocolType,
+    };
   }
 
-  factory FirewallPolicyRuleConditionApplicationProtocolResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirewallPolicyRuleConditionApplicationProtocolResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleConditionApplicationProtocolResponse(
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      protocolType: (() {
-        final guardedValue = map['protocolType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      protocolType: (() { final guardedValue = map['protocolType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContactChannelArgs {
   /// Amazon Resource Name (ARN) of the contact channel.
   final pulumi.Input<String> arn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetContactChannelArgs].
   /// [arn] Amazon Resource Name (ARN) of the contact channel.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetContactChannelArgs({required this.arn, this.region});
+  GetContactChannelArgs({
+    required this.arn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': arn, 'region': ?region};
+    return <String, dynamic>{
+      'arn': arn,
+      'region': ?region,
+    };
   }
 
   factory GetContactChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetContactChannelArgs(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

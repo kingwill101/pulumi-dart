@@ -153,29 +153,21 @@ import 'system_data_response.dart';
 class CacheRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The creation date of the cache rule.
   late final pulumi.Output<String> creationDate;
-
   /// The ARM resource ID of the credential store which is associated with the cache rule.
   late final pulumi.Output<String?> credentialSetResourceId;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Source repository pulled from upstream.
   late final pulumi.Output<String?> sourceRepository;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Target repository specified in docker pull command.
   /// Eg: docker pull myregistry.azurecr.io/{targetRepository}:{tag}
   late final pulumi.Output<String?> targetRepository;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -188,29 +180,18 @@ class CacheRule extends pulumi.CustomResource {
     CacheRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerregistry:CacheRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:containerregistry:CacheRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationDate = registerOutput<String>('creationDate');
-    credentialSetResourceId = registerOutput<String?>(
-      'credentialSetResourceId',
-    );
+    credentialSetResourceId = registerOutput<String?>('credentialSetResourceId');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     sourceRepository = registerOutput<String?>('sourceRepository');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetRepository = registerOutput<String?>('targetRepository');
     type = registerOutput<String>('type');
   }

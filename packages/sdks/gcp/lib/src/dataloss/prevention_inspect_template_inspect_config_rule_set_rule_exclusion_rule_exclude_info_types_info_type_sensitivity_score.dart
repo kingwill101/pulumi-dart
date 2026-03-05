@@ -14,14 +14,15 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'score': score};
+    return <String, dynamic>{
+      'score': score,
+    };
   }
 
-  factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore(
       score: pulumi.Input.fromValue(map['score'] as String),
     );
   }
 }
+

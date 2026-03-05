@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PadResponse {
   /// The number of pixels to add to the bottom. The default is 0.
   final pulumi.Input<int> bottomPixels;
-
   /// The number of pixels to add to the left. The default is 0.
   final pulumi.Input<int> leftPixels;
-
   /// The number of pixels to add to the right. The default is 0.
   final pulumi.Input<int> rightPixels;
-
   /// The number of pixels to add to the top. The default is 0.
   final pulumi.Input<int> topPixels;
 
@@ -46,3 +43,4 @@ class PadResponse {
     );
   }
 }
+

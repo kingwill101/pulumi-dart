@@ -15,3 +15,4 @@ enum UnmaskedIpLoggingStatus {
     throw ArgumentError('Unknown UnmaskedIpLoggingStatus value: $value');
   }
 }
+

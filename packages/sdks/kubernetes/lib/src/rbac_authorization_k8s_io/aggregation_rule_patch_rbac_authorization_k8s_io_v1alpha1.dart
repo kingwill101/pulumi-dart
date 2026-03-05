@@ -16,37 +16,14 @@ class AggregationRulePatchRbacAuthorizationK8sIoV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterRoleSelectors':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LabelSelectorPatch>,
-            List<Map<String, dynamic>>
-          >(
-            clusterRoleSelectors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LabelSelectorPatch,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'clusterRoleSelectors': ?pulumi.Input.mapOptionalInputValue<List<LabelSelectorPatch>, List<Map<String, dynamic>>>(clusterRoleSelectors, (value) => pulumi.Input.encodeList<LabelSelectorPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory AggregationRulePatchRbacAuthorizationK8sIoV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AggregationRulePatchRbacAuthorizationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return AggregationRulePatchRbacAuthorizationK8sIoV1alpha1(
-      clusterRoleSelectors: (() {
-        final guardedValue = map['clusterRoleSelectors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LabelSelectorPatch>(
-            guardedValue,
-            (value) => LabelSelectorPatch.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      clusterRoleSelectors: (() { final guardedValue = map['clusterRoleSelectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LabelSelectorPatch>(guardedValue, (value) => LabelSelectorPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

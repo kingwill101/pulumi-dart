@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGovernanceAssignmentArgs {
   /// The Assessment Key - A unique key for the assessment type
   final pulumi.Input<String> assessmentName;
-
   /// The governance assignment key - the assessment key of the required governance assignment
   final pulumi.Input<String> assignmentKey;
-
   /// The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   final pulumi.Input<String> scope;
 
@@ -42,3 +40,4 @@ class GetGovernanceAssignmentArgs {
     );
   }
 }
+

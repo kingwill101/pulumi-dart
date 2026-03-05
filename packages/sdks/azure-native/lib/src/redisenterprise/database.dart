@@ -617,50 +617,34 @@ import 'system_data_response.dart';
 class Database extends pulumi.CustomResource {
   /// This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created.
   late final pulumi.Output<String?> accessKeysAuthentication;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted.
   late final pulumi.Output<String?> clientProtocol;
-
   /// Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database.
   late final pulumi.Output<String?> clusteringPolicy;
-
   /// Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade
   late final pulumi.Output<String?> deferUpgrade;
-
   /// Redis eviction policy - default is VolatileLRU
   late final pulumi.Output<String?> evictionPolicy;
-
   /// Optional set of properties to configure geo replication for this database.
-  late final pulumi.Output<DatabasePropertiesResponseGeoReplication?>
-  geoReplication;
-
+  late final pulumi.Output<DatabasePropertiesResponseGeoReplication?> geoReplication;
   /// Optional set of redis modules to enable in this database - modules can only be added at creation time.
   late final pulumi.Output<List<Map<String, dynamic>>?> modules;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Persistence settings
   late final pulumi.Output<PersistenceResponse?> persistence;
-
   /// TCP port of the database endpoint. Specified at create time. Defaults to an available port.
   late final pulumi.Output<int?> port;
-
   /// Current provisioning status of the database
   late final pulumi.Output<String> provisioningState;
-
   /// Version of Redis the database is running on, e.g. '6.0'
   late final pulumi.Output<String> redisVersion;
-
   /// Current resource status of the database
   late final pulumi.Output<String> resourceState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -673,55 +657,26 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:redisenterprise:Database',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessKeysAuthentication = registerOutput<String?>(
-      'accessKeysAuthentication',
-    );
+          'azure-native:redisenterprise:Database',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessKeysAuthentication = registerOutput<String?>('accessKeysAuthentication');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientProtocol = registerOutput<String?>('clientProtocol');
     clusteringPolicy = registerOutput<String?>('clusteringPolicy');
     deferUpgrade = registerOutput<String?>('deferUpgrade');
     evictionPolicy = registerOutput<String?>('evictionPolicy');
-    geoReplication = registerOutput<DatabasePropertiesResponseGeoReplication?>(
-      'geoReplication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabasePropertiesResponseGeoReplication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    geoReplication = registerOutput<DatabasePropertiesResponseGeoReplication?>('geoReplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabasePropertiesResponseGeoReplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     modules = registerOutput<List<Map<String, dynamic>>?>('modules');
     this.name = registerOutput<String>('name');
-    persistence = registerOutput<PersistenceResponse?>(
-      'persistence',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PersistenceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    persistence = registerOutput<PersistenceResponse?>('persistence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PersistenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     port = registerOutput<int?>('port');
     provisioningState = registerOutput<String>('provisioningState');
     redisVersion = registerOutput<String>('redisVersion');
     resourceState = registerOutput<String>('resourceState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

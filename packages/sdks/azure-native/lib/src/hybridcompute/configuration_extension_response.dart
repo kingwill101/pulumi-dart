@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationExtensionResponse {
   /// Publisher of the extension.
   final pulumi.Input<String> publisher;
-
   /// Type of the extension.
   final pulumi.Input<String> type;
 
   /// Creates a new [ConfigurationExtensionResponse].
   /// [publisher] Publisher of the extension.
   /// [type] Type of the extension.
-  ConfigurationExtensionResponse({required this.publisher, required this.type});
+  ConfigurationExtensionResponse({
+    required this.publisher,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'publisher': publisher, 'type': type};
+    return <String, dynamic>{
+      'publisher': publisher,
+      'type': type,
+    };
   }
 
   factory ConfigurationExtensionResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ConfigurationExtensionResponse {
     );
   }
 }
+

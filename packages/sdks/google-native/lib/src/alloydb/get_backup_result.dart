@@ -8,64 +8,44 @@ import 'quantity_based_expiry_response.dart';
 class GetBackupResult {
   /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
   final Map<String, String> annotations;
-
   /// The full resource name of the backup source cluster (e.g., projects/{project}/locations/{region}/clusters/{cluster_id}).
   final String clusterName;
-
   /// The system-generated UID of the cluster which was used to create this resource.
   final String clusterUid;
-
   /// Create time stamp
   final String createTime;
-
   /// The database engine major version of the cluster this backup was created from. Any restored cluster created from this backup will have the same database version.
   final String databaseVersion;
-
   /// Delete time stamp
   final String deleteTime;
-
   /// User-provided description of the backup.
   final String description;
-
   /// User-settable and human-readable display name for the Backup.
   final String displayName;
-
   /// Optional. The encryption config can be specified to encrypt the backup with a customer-managed encryption key (CMEK). When this field is not specified, the backup will then use default encryption scheme to protect the user data.
   final EncryptionConfigResponse encryptionConfig;
-
   /// The encryption information for the backup.
   final EncryptionInfoResponse encryptionInfo;
-
   /// For Resource freshness validation (https://google.aip.dev/154)
   final String etag;
-
   /// The QuantityBasedExpiry of the backup, specified by the backup's retention policy. Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
   final QuantityBasedExpiryResponse expiryQuantity;
-
   /// The time at which after the backup is eligible to be garbage collected. It is the duration specified by the backup's retention policy, added to the backup's create_time.
   final String expiryTime;
-
   /// Labels as key value pairs
   final Map<String, String> labels;
-
   /// The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backup_id} where the cluster and backup ID segments should satisfy the regex expression `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`, e.g. 1-63 characters of lowercase letters, numbers, and dashes, starting with a letter, and ending with a letter or number. For more details see https://google.aip.dev/122. The prefix of the backup resource name is the name of the parent resource: * projects/{project}/locations/{region}
   final String name;
-
   /// Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
   final bool reconciling;
-
   /// The size of the backup in bytes.
   final String sizeBytes;
-
   /// The current state of the backup.
   final String state;
-
   /// The backup type, which suggests the trigger for the backup.
   final String type;
-
   /// The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
   final String uid;
-
   /// Update time stamp
   final String updateTime;
 
@@ -151,16 +131,10 @@ class GetBackupResult {
       deleteTime: map['deleteTime'] as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      encryptionConfig: EncryptionConfigResponse.fromMap(
-        (map['encryptionConfig']! as Map).cast<String, dynamic>(),
-      ),
-      encryptionInfo: EncryptionInfoResponse.fromMap(
-        (map['encryptionInfo']! as Map).cast<String, dynamic>(),
-      ),
+      encryptionConfig: EncryptionConfigResponse.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>()),
+      encryptionInfo: EncryptionInfoResponse.fromMap((map['encryptionInfo']! as Map).cast<String, dynamic>()),
       etag: map['etag'] as String,
-      expiryQuantity: QuantityBasedExpiryResponse.fromMap(
-        (map['expiryQuantity']! as Map).cast<String, dynamic>(),
-      ),
+      expiryQuantity: QuantityBasedExpiryResponse.fromMap((map['expiryQuantity']! as Map).cast<String, dynamic>()),
       expiryTime: map['expiryTime'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
@@ -173,3 +147,4 @@ class GetBackupResult {
     );
   }
 }
+

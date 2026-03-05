@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1IndexStatsResponse {
   /// The number of shards in the Index.
   final pulumi.Input<int> shardsCount;
-
   /// The number of vectors in the Index.
   final pulumi.Input<String> vectorsCount;
 
@@ -25,12 +24,11 @@ class GoogleCloudAiplatformV1IndexStatsResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1IndexStatsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1IndexStatsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1IndexStatsResponse(
       shardsCount: pulumi.Input.fromValue(map['shardsCount'] as int),
       vectorsCount: pulumi.Input.fromValue(map['vectorsCount'] as String),
     );
   }
 }
+

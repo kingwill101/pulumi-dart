@@ -70,13 +70,10 @@ class DatabaseBlobAuditingPolicyArgs {
   ///
   /// For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
   final pulumi.Input<List<String>>? auditActionsAndGroups;
-
   /// The name of the blob auditing policy.
   final pulumi.Input<String>? blobAuditingPolicyName;
-
   /// The name of the database.
   final pulumi.Input<String> databaseName;
-
   /// Specifies whether audit events are sent to Azure Monitor.
   /// In order to send the events to Azure Monitor, specify 'State' as 'Enabled' and 'IsAzureMonitorTargetEnabled' as true.
   ///
@@ -89,29 +86,21 @@ class DatabaseBlobAuditingPolicyArgs {
   /// For more information, see [Diagnostic Settings REST API](https://go.microsoft.com/fwlink/?linkid=2033207)
   /// or [Diagnostic Settings PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
   final pulumi.Input<bool>? isAzureMonitorTargetEnabled;
-
   /// Specifies whether Managed Identity is used to access blob storage
   final pulumi.Input<bool>? isManagedIdentityInUse;
-
   /// Specifies whether storageAccountAccessKey value is the storage's secondary key.
   final pulumi.Input<bool>? isStorageSecondaryKeyInUse;
-
   /// Specifies the amount of time in milliseconds that can elapse before audit actions are forced to be processed.
   /// The default minimum value is 1000 (1 second). The maximum is 2,147,483,647.
   final pulumi.Input<int>? queueDelayMs;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// Specifies the number of days to keep in the audit logs in the storage account.
   final pulumi.Input<int>? retentionDays;
-
   /// The name of the server.
   final pulumi.Input<String> serverName;
-
   /// Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
   final pulumi.Input<BlobAuditingPolicyState> state;
-
   /// Specifies the identifier key of the auditing storage account.
   /// If state is Enabled and storageEndpoint is specified, not specifying the storageAccountAccessKey will use SQL server system-assigned managed identity to access the storage.
   /// Prerequisites for using managed identity authentication:
@@ -119,10 +108,8 @@ class DatabaseBlobAuditingPolicyArgs {
   /// 2. Grant SQL Server identity access to the storage account by adding 'Storage Blob Data Contributor' RBAC role to the server identity.
   /// For more information, see [Auditing to storage using Managed Identity authentication](https://go.microsoft.com/fwlink/?linkid=2114355)
   final pulumi.Input<String>? storageAccountAccessKey;
-
   /// Specifies the blob storage subscription Id.
   final pulumi.Input<String>? storageAccountSubscriptionId;
-
   /// Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required.
   final pulumi.Input<String>? storageEndpoint;
 
@@ -170,10 +157,7 @@ class DatabaseBlobAuditingPolicyArgs {
       'resourceGroupName': resourceGroupName,
       'retentionDays': ?retentionDays,
       'serverName': serverName,
-      'state': pulumi.Input.mapInputValue<BlobAuditingPolicyState, String>(
-        state,
-        (value) => value.wireValue,
-      ),
+      'state': pulumi.Input.mapInputValue<BlobAuditingPolicyState, String>(state, (value) => value.wireValue),
       'storageAccountAccessKey': ?storageAccountAccessKey,
       'storageAccountSubscriptionId': ?storageAccountSubscriptionId,
       'storageEndpoint': ?storageEndpoint,
@@ -182,64 +166,21 @@ class DatabaseBlobAuditingPolicyArgs {
 
   factory DatabaseBlobAuditingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseBlobAuditingPolicyArgs(
-      auditActionsAndGroups: (() {
-        final guardedValue = map['auditActionsAndGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      blobAuditingPolicyName: (() {
-        final guardedValue = map['blobAuditingPolicyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      auditActionsAndGroups: (() { final guardedValue = map['auditActionsAndGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      blobAuditingPolicyName: (() { final guardedValue = map['blobAuditingPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      isAzureMonitorTargetEnabled: (() {
-        final guardedValue = map['isAzureMonitorTargetEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      isManagedIdentityInUse: (() {
-        final guardedValue = map['isManagedIdentityInUse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      isStorageSecondaryKeyInUse: (() {
-        final guardedValue = map['isStorageSecondaryKeyInUse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      queueDelayMs: (() {
-        final guardedValue = map['queueDelayMs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      retentionDays: (() {
-        final guardedValue = map['retentionDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      isAzureMonitorTargetEnabled: (() { final guardedValue = map['isAzureMonitorTargetEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      isManagedIdentityInUse: (() { final guardedValue = map['isManagedIdentityInUse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      isStorageSecondaryKeyInUse: (() { final guardedValue = map['isStorageSecondaryKeyInUse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      queueDelayMs: (() { final guardedValue = map['queueDelayMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
-      state: pulumi.Input.fromValue(
-        BlobAuditingPolicyState.fromValue(map['state']! as String),
-      ),
-      storageAccountAccessKey: (() {
-        final guardedValue = map['storageAccountAccessKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountSubscriptionId: (() {
-        final guardedValue = map['storageAccountSubscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageEndpoint: (() {
-        final guardedValue = map['storageEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: pulumi.Input.fromValue(BlobAuditingPolicyState.fromValue(map['state']! as String)),
+      storageAccountAccessKey: (() { final guardedValue = map['storageAccountAccessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountSubscriptionId: (() { final guardedValue = map['storageAccountSubscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageEndpoint: (() { final guardedValue = map['storageEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcEndpointServiceUsersArgs {
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The Id of Vpc Endpoint Service.
   final pulumi.Input<String> serviceId;
-
   /// The Id of Ram User.
   final pulumi.Input<String>? userId;
 
@@ -36,17 +34,10 @@ class GetVpcEndpointServiceUsersArgs {
 
   factory GetVpcEndpointServiceUsersArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServiceUsersArgs(
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
-      userId: (() {
-        final guardedValue = map['userId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

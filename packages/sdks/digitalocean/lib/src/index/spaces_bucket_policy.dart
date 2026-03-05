@@ -373,10 +373,8 @@ import 'spaces_bucket_policy_state.dart';
 class SpacesBucketPolicy extends pulumi.CustomResource {
   /// The name of the bucket to which to apply the policy.
   late final pulumi.Output<String> bucket;
-
   /// The text of the policy.
   late final pulumi.Output<String> policy;
-
   /// The region where the bucket resides.
   late final pulumi.Output<String> region;
 
@@ -389,11 +387,11 @@ class SpacesBucketPolicy extends pulumi.CustomResource {
     SpacesBucketPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
@@ -417,11 +415,11 @@ class SpacesBucketPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

@@ -9,21 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerGroupRoleArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// A type definition that refers the id to an Azure Resource Manager resource.
   final pulumi.Input<String> objectId;
-
   /// The password of the cluster role. If an identity is used, password will not be required.
   final pulumi.Input<String>? password;
   final pulumi.Input<String> principalType;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the cluster role.
   final pulumi.Input<String>? roleName;
   final pulumi.Input<String>? roleType;
-
   /// A type definition that refers the id to an Azure Resource Manager resource.
   final pulumi.Input<String>? tenantId;
 
@@ -64,30 +59,13 @@ class ServerGroupRoleArgs {
     return ServerGroupRoleArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       objectId: pulumi.Input.fromValue(map['objectId'] as String),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       principalType: pulumi.Input.fromValue(map['principalType'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      roleName: (() {
-        final guardedValue = map['roleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleType: (() {
-        final guardedValue = map['roleType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      roleName: (() { final guardedValue = map['roleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleType: (() { final guardedValue = map['roleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -26,3 +26,4 @@ enum JobRequestedState {
     throw ArgumentError('Unknown JobRequestedState value: $value');
   }
 }
+

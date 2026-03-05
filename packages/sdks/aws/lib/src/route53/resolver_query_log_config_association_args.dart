@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResolverQueryLogConfigAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the Route 53 Resolver query logging configuration that you want to associate a VPC with.
   final pulumi.Input<String> resolverQueryLogConfigId;
-
   /// The ID of a VPC that you want this query logging configuration to log queries for.
   final pulumi.Input<String> resourceId;
 
@@ -34,19 +32,12 @@ class ResolverQueryLogConfigAssociationArgs {
     };
   }
 
-  factory ResolverQueryLogConfigAssociationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResolverQueryLogConfigAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ResolverQueryLogConfigAssociationArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resolverQueryLogConfigId: pulumi.Input.fromValue(
-        map['resolverQueryLogConfigId'] as String,
-      ),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resolverQueryLogConfigId: pulumi.Input.fromValue(map['resolverQueryLogConfigId'] as String),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
+

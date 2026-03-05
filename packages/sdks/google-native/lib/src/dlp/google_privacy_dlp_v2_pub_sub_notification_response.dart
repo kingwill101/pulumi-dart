@@ -7,14 +7,10 @@ import 'google_privacy_dlp_v2_data_profile_pub_sub_condition_response.dart';
 class GooglePrivacyDlpV2PubSubNotificationResponse {
   /// How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
   final pulumi.Input<String> detailOfMessage;
-
   /// The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
   final pulumi.Input<String> event;
-
   /// Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub.
-  final pulumi.Input<GooglePrivacyDlpV2DataProfilePubSubConditionResponse>
-  pubsubCondition;
-
+  final pulumi.Input<GooglePrivacyDlpV2DataProfilePubSubConditionResponse> pubsubCondition;
   /// Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
   final pulumi.Input<String> topic;
 
@@ -34,27 +30,18 @@ class GooglePrivacyDlpV2PubSubNotificationResponse {
     return <String, dynamic>{
       'detailOfMessage': detailOfMessage,
       'event': event,
-      'pubsubCondition':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2DataProfilePubSubConditionResponse,
-            Map<String, dynamic>
-          >(pubsubCondition, (value) => value.toMap()),
+      'pubsubCondition': pulumi.Input.mapInputValue<GooglePrivacyDlpV2DataProfilePubSubConditionResponse, Map<String, dynamic>>(pubsubCondition, (value) => value.toMap()),
       'topic': topic,
     };
   }
 
-  factory GooglePrivacyDlpV2PubSubNotificationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2PubSubNotificationResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PubSubNotificationResponse(
       detailOfMessage: pulumi.Input.fromValue(map['detailOfMessage'] as String),
       event: pulumi.Input.fromValue(map['event'] as String),
-      pubsubCondition: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2DataProfilePubSubConditionResponse.fromMap(
-          (map['pubsubCondition']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      pubsubCondition: pulumi.Input.fromValue(GooglePrivacyDlpV2DataProfilePubSubConditionResponse.fromMap((map['pubsubCondition']! as Map).cast<String, dynamic>())),
       topic: pulumi.Input.fromValue(map['topic'] as String),
     );
   }
 }
+

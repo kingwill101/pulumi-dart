@@ -6,25 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitoredResource {
   /// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
   final pulumi.Input<Map<String, String>> labels;
-
   /// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
   final pulumi.Input<String> type;
 
   /// Creates a new [MonitoredResource].
   /// [labels] Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
   /// [type] The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
-  MonitoredResource({required this.labels, required this.type});
+  MonitoredResource({
+    required this.labels,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labels': labels, 'type': type};
+    return <String, dynamic>{
+      'labels': labels,
+      'type': type,
+    };
   }
 
   factory MonitoredResource.fromMap(Map<String, dynamic> map) {
     return MonitoredResource(
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

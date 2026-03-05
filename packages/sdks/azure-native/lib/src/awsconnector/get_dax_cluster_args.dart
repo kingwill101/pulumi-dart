@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDaxClusterArgs {
   /// Name of DaxCluster
   final pulumi.Input<String> name;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetDaxClusterArgs].
   /// [name] Name of DaxCluster
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDaxClusterArgs({required this.name, required this.resourceGroupName});
+  GetDaxClusterArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetDaxClusterArgs {
   factory GetDaxClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetDaxClusterArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

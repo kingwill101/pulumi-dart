@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class K8sSlbAttachmentSlbConfigPortMappingServicePort {
   /// The port of k8s service, values should be within range [1, 65535].
   final pulumi.Input<int> port;
-
   /// The protocol of k8s service, values can be 'TCP' or 'UDP'.
   final pulumi.Input<String> protocol;
-
   /// The port of k8s pod, values should be within range [1, 65535].
   final pulumi.Input<int> targetPort;
 
@@ -30,9 +28,7 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePort {
     };
   }
 
-  factory K8sSlbAttachmentSlbConfigPortMappingServicePort.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory K8sSlbAttachmentSlbConfigPortMappingServicePort.fromMap(Map<String, dynamic> map) {
     return K8sSlbAttachmentSlbConfigPortMappingServicePort(
       port: pulumi.Input.fromValue(map['port'] as int),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
@@ -40,3 +36,4 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePort {
     );
   }
 }
+

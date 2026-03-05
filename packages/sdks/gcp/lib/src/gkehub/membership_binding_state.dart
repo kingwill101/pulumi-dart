@@ -9,19 +9,20 @@ class MembershipBindingState {
 
   /// Creates a new [MembershipBindingState].
   /// [code] (Output)
-  MembershipBindingState({this.code});
+  MembershipBindingState({
+    this.code,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': ?code};
+    return <String, dynamic>{
+      'code': ?code,
+    };
   }
 
   factory MembershipBindingState.fromMap(Map<String, dynamic> map) {
     return MembershipBindingState(
-      code: (() {
-        final guardedValue = map['code'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

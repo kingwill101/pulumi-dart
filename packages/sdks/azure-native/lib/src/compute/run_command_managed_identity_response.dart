@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RunCommandManagedIdentityResponse {
   /// Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
   final pulumi.Input<String>? clientId;
-
   /// Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
   final pulumi.Input<String>? objectId;
 
   /// Creates a new [RunCommandManagedIdentityResponse].
   /// [clientId] Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
   /// [objectId] Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
-  RunCommandManagedIdentityResponse({this.clientId, this.objectId});
+  RunCommandManagedIdentityResponse({
+    this.clientId,
+    this.objectId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'clientId': ?clientId, 'objectId': ?objectId};
+    return <String, dynamic>{
+      'clientId': ?clientId,
+      'objectId': ?objectId,
+    };
   }
 
   factory RunCommandManagedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return RunCommandManagedIdentityResponse(
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      objectId: (() {
-        final guardedValue = map['objectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

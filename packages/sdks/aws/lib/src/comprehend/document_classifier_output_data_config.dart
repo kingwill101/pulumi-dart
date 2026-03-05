@@ -6,10 +6,8 @@ class DocumentClassifierOutputDataConfig {
   /// KMS Key used to encrypt the output documents.
   /// Can be a KMS Key ID, a KMS Key ARN, a KMS Alias name, or a KMS Alias ARN.
   final pulumi.Input<String>? kmsKeyId;
-
   /// Full path for the output documents.
   final pulumi.Input<String>? outputS3Uri;
-
   /// Destination path for the output documents.
   /// The full path to the output file will be returned in `output_s3_uri`.
   final pulumi.Input<String> s3Uri;
@@ -34,17 +32,10 @@ class DocumentClassifierOutputDataConfig {
 
   factory DocumentClassifierOutputDataConfig.fromMap(Map<String, dynamic> map) {
     return DocumentClassifierOutputDataConfig(
-      kmsKeyId: (() {
-        final guardedValue = map['kmsKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputS3Uri: (() {
-        final guardedValue = map['outputS3Uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputS3Uri: (() { final guardedValue = map['outputS3Uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3Uri: pulumi.Input.fromValue(map['s3Uri'] as String),
     );
   }
 }
+

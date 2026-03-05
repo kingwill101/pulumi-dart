@@ -8,43 +8,30 @@ import 'system_data_response.dart';
 class GetPackageResult {
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse allOf;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets or sets the contentLink of the Package.
   final ContentLinkResponse? contentLink;
-
   /// Gets or sets the isGlobal flag of the package.
   final bool? default_;
-
   /// Gets or sets the error info of the Package.
   final PackageErrorInfoResponse? error;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// Gets or sets the provisioning state of the Package.
   final String provisioningState;
-
   /// Gets or sets the size in bytes of the Package.
   final double? sizeInBytes;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Gets or sets the version of the Package.
   final String? version;
 
@@ -101,52 +88,21 @@ class GetPackageResult {
 
   factory GetPackageResult.fromMap(Map<String, dynamic> map) {
     return GetPackageResult(
-      allOf: SystemDataResponse.fromMap(
-        (map['allOf']! as Map).cast<String, dynamic>(),
-      ),
+      allOf: SystemDataResponse.fromMap((map['allOf']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      contentLink: (() {
-        final guardedValue = map['contentLink'];
-        if (guardedValue == null) return null;
-        return ContentLinkResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      default_: (() {
-        final guardedValue = map['default'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      error: (() {
-        final guardedValue = map['error'];
-        if (guardedValue == null) return null;
-        return PackageErrorInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      contentLink: (() { final guardedValue = map['contentLink']; if (guardedValue == null) return null; return ContentLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return PackageErrorInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sizeInBytes: (() {
-        final guardedValue = map['sizeInBytes'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      sizeInBytes: (() { final guardedValue = map['sizeInBytes']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

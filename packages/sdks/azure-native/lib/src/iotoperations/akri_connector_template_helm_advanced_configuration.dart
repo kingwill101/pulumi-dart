@@ -9,10 +9,8 @@ import 'akri_connector_template_helm_upgrade_configuration.dart';
 class AkriConnectorTemplateHelmAdvancedConfiguration {
   /// Delete operation configuration for the Helm chart.
   final pulumi.Input<AkriConnectorTemplateHelmDeleteConfiguration>? delete;
-
   /// Install operation configuration for the Helm chart.
   final pulumi.Input<AkriConnectorTemplateHelmInstallConfiguration>? install;
-
   /// Upgrade operation configuration for the Helm chart.
   final pulumi.Input<AkriConnectorTemplateHelmUpgradeConfiguration>? upgrade;
 
@@ -28,55 +26,18 @@ class AkriConnectorTemplateHelmAdvancedConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'delete':
-          ?pulumi.Input.mapOptionalInputValue<
-            AkriConnectorTemplateHelmDeleteConfiguration,
-            Map<String, dynamic>
-          >(delete, (value) => value.toMap()),
-      'install':
-          ?pulumi.Input.mapOptionalInputValue<
-            AkriConnectorTemplateHelmInstallConfiguration,
-            Map<String, dynamic>
-          >(install, (value) => value.toMap()),
-      'upgrade':
-          ?pulumi.Input.mapOptionalInputValue<
-            AkriConnectorTemplateHelmUpgradeConfiguration,
-            Map<String, dynamic>
-          >(upgrade, (value) => value.toMap()),
+      'delete': ?pulumi.Input.mapOptionalInputValue<AkriConnectorTemplateHelmDeleteConfiguration, Map<String, dynamic>>(delete, (value) => value.toMap()),
+      'install': ?pulumi.Input.mapOptionalInputValue<AkriConnectorTemplateHelmInstallConfiguration, Map<String, dynamic>>(install, (value) => value.toMap()),
+      'upgrade': ?pulumi.Input.mapOptionalInputValue<AkriConnectorTemplateHelmUpgradeConfiguration, Map<String, dynamic>>(upgrade, (value) => value.toMap()),
     };
   }
 
-  factory AkriConnectorTemplateHelmAdvancedConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AkriConnectorTemplateHelmAdvancedConfiguration.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateHelmAdvancedConfiguration(
-      delete: (() {
-        final guardedValue = map['delete'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AkriConnectorTemplateHelmDeleteConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      install: (() {
-        final guardedValue = map['install'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AkriConnectorTemplateHelmInstallConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      upgrade: (() {
-        final guardedValue = map['upgrade'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AkriConnectorTemplateHelmUpgradeConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      delete: (() { final guardedValue = map['delete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AkriConnectorTemplateHelmDeleteConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      install: (() { final guardedValue = map['install']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AkriConnectorTemplateHelmInstallConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      upgrade: (() { final guardedValue = map['upgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AkriConnectorTemplateHelmUpgradeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

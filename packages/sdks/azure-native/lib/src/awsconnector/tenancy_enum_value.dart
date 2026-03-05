@@ -9,19 +9,20 @@ class TenancyEnumValue {
 
   /// Creates a new [TenancyEnumValue].
   /// [value] Property value
-  TenancyEnumValue({this.value});
+  TenancyEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory TenancyEnumValue.fromMap(Map<String, dynamic> map) {
     return TenancyEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

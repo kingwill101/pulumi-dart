@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AkriConnectorsRegistryEndpointRef {
   /// The name of the registry endpoint.
   final pulumi.Input<String> registryEndpointRef;
-
   /// AkriConnectorsRegistrySettings properties.
   /// Expected value is 'RegistryEndpointRef'.
   final pulumi.Input<String> registrySettingsType;
@@ -28,12 +27,9 @@ class AkriConnectorsRegistryEndpointRef {
 
   factory AkriConnectorsRegistryEndpointRef.fromMap(Map<String, dynamic> map) {
     return AkriConnectorsRegistryEndpointRef(
-      registryEndpointRef: pulumi.Input.fromValue(
-        map['registryEndpointRef'] as String,
-      ),
-      registrySettingsType: pulumi.Input.fromValue(
-        map['registrySettingsType'] as String,
-      ),
+      registryEndpointRef: pulumi.Input.fromValue(map['registryEndpointRef'] as String),
+      registrySettingsType: pulumi.Input.fromValue(map['registrySettingsType'] as String),
     );
   }
 }
+

@@ -8,17 +8,13 @@ enum LinuxVMGuestPatchAutomaticByPlatformRebootSetting {
   const LinuxVMGuestPatchAutomaticByPlatformRebootSetting(this.wireValue);
   final String wireValue;
 
-  static LinuxVMGuestPatchAutomaticByPlatformRebootSetting fromValue(
-    String value,
-  ) {
-    for (final item
-        in LinuxVMGuestPatchAutomaticByPlatformRebootSetting.values) {
+  static LinuxVMGuestPatchAutomaticByPlatformRebootSetting fromValue(String value) {
+    for (final item in LinuxVMGuestPatchAutomaticByPlatformRebootSetting.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown LinuxVMGuestPatchAutomaticByPlatformRebootSetting value: $value',
-    );
+    throw ArgumentError('Unknown LinuxVMGuestPatchAutomaticByPlatformRebootSetting value: $value');
   }
 }
+

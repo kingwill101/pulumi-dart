@@ -7,11 +7,9 @@ import 'custom_container_response.dart';
 class CustomContainerUserSourceInfoResponse {
   /// Custom container payload
   final pulumi.Input<CustomContainerResponse>? customContainer;
-
   /// Type of the source uploaded
   /// Expected value is 'Container'.
   final pulumi.Input<String> type;
-
   /// Version of the source
   final pulumi.Input<String>? version;
 
@@ -27,35 +25,18 @@ class CustomContainerUserSourceInfoResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customContainer':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomContainerResponse,
-            Map<String, dynamic>
-          >(customContainer, (value) => value.toMap()),
+      'customContainer': ?pulumi.Input.mapOptionalInputValue<CustomContainerResponse, Map<String, dynamic>>(customContainer, (value) => value.toMap()),
       'type': type,
       'version': ?version,
     };
   }
 
-  factory CustomContainerUserSourceInfoResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomContainerUserSourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return CustomContainerUserSourceInfoResponse(
-      customContainer: (() {
-        final guardedValue = map['customContainer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomContainerResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      customContainer: (() { final guardedValue = map['customContainer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomContainerResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

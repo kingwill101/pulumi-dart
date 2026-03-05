@@ -9,19 +9,20 @@ class HttpLoadBalancing {
 
   /// Creates a new [HttpLoadBalancing].
   /// [disabled] Whether the HTTP Load Balancing controller is enabled in the cluster. When enabled, it runs a small pod in the cluster that manages the load balancers.
-  HttpLoadBalancing({this.disabled});
+  HttpLoadBalancing({
+    this.disabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disabled': ?disabled};
+    return <String, dynamic>{
+      'disabled': ?disabled,
+    };
   }
 
   factory HttpLoadBalancing.fromMap(Map<String, dynamic> map) {
     return HttpLoadBalancing(
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

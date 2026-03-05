@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduleItem {
   /// Start day.
   final pulumi.Input<String> startDay;
-
   /// Start time.
   final pulumi.Input<String> startTime;
-
   /// Stop day.
   final pulumi.Input<String> stopDay;
-
   /// Stop time.
   final pulumi.Input<String> stopTime;
 
@@ -46,3 +43,4 @@ class ScheduleItem {
     );
   }
 }
+

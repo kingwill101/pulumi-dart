@@ -6,7 +6,6 @@ import 'get_bindings_binding.dart';
 /// Result data returned by getBindings.
 class GetBindingsResult {
   final List<GetBindingsBinding> bindings;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -32,11 +31,7 @@ class GetBindingsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bindings':
-          pulumi.Input.encodeList<GetBindingsBinding, Map<String, dynamic>>(
-            bindings,
-            (value) => value.toMap(),
-          ),
+      'bindings': pulumi.Input.encodeList<GetBindingsBinding, Map<String, dynamic>>(bindings, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'instanceId': instanceId,
@@ -47,20 +42,13 @@ class GetBindingsResult {
 
   factory GetBindingsResult.fromMap(Map<String, dynamic> map) {
     return GetBindingsResult(
-      bindings: pulumi.Input.decodeList<GetBindingsBinding>(
-        map['bindings']!,
-        (value) =>
-            GetBindingsBinding.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      bindings: pulumi.Input.decodeList<GetBindingsBinding>(map['bindings']!, (value) => GetBindingsBinding.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       virtualHostName: map['virtualHostName'] as String,
     );
   }
 }
+

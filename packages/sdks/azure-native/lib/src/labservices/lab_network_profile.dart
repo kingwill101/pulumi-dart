@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LabNetworkProfile {
   /// The external load balancer resource id
   final pulumi.Input<String>? loadBalancerId;
-
   /// The external public IP resource id
   final pulumi.Input<String>? publicIpId;
-
   /// The external subnet resource id
   final pulumi.Input<String>? subnetId;
 
@@ -17,7 +15,11 @@ class LabNetworkProfile {
   /// [loadBalancerId] The external load balancer resource id
   /// [publicIpId] The external public IP resource id
   /// [subnetId] The external subnet resource id
-  LabNetworkProfile({this.loadBalancerId, this.publicIpId, this.subnetId});
+  LabNetworkProfile({
+    this.loadBalancerId,
+    this.publicIpId,
+    this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class LabNetworkProfile {
 
   factory LabNetworkProfile.fromMap(Map<String, dynamic> map) {
     return LabNetworkProfile(
-      loadBalancerId: (() {
-        final guardedValue = map['loadBalancerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicIpId: (() {
-        final guardedValue = map['publicIpId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetId: (() {
-        final guardedValue = map['subnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      loadBalancerId: (() { final guardedValue = map['loadBalancerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicIpId: (() { final guardedValue = map['publicIpId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

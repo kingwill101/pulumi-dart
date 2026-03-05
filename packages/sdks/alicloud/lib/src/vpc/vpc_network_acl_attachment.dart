@@ -283,13 +283,10 @@ import 'vpc_network_acl_attachment_state.dart';
 class VpcNetworkAclAttachment extends pulumi.CustomResource {
   /// The ID of the network ACL instance.
   late final pulumi.Output<String> networkAclId;
-
   /// The ID of the associated  vswitch instance.
   late final pulumi.Output<String> resourceId;
-
   /// The type of the associated resource. Valid values: `VSwitch`.
   late final pulumi.Output<String> resourceType;
-
   /// The status of the Network Acl Attachment.
   late final pulumi.Output<String> status;
 
@@ -302,11 +299,11 @@ class VpcNetworkAclAttachment extends pulumi.CustomResource {
     VpcNetworkAclAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     networkAclId = registerOutput<String>('networkAclId');
     resourceId = registerOutput<String>('resourceId');
     resourceType = registerOutput<String>('resourceType');
@@ -331,11 +328,11 @@ class VpcNetworkAclAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     networkAclId = registerOutput<String>('networkAclId');
     resourceId = registerOutput<String>('resourceId');
     resourceType = registerOutput<String>('resourceType');

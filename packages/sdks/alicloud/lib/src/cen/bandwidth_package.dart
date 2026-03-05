@@ -16,41 +16,29 @@ class BandwidthPackage extends pulumi.CustomResource {
   ///
   /// -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
   late final pulumi.Output<bool?> autoRenew;
-
   /// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
   late final pulumi.Output<int> bandwidth;
-
   /// The name of the bandwidth package. Defaults to null.
   late final pulumi.Output<String> cenBandwidthPackageName;
-
   /// Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
   late final pulumi.Output<String> chargeType;
-
   /// The description of the bandwidth package. Default to null.
   late final pulumi.Output<String?> description;
-
   /// The time of the bandwidth package to expire.
   late final pulumi.Output<String> expiredTime;
-
   /// The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
   late final pulumi.Output<String> geographicRegionAId;
-
   /// The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
   late final pulumi.Output<String> geographicRegionBId;
-
   /// Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
   late final pulumi.Output<List<String>> geographicRegionIds;
-
   /// Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
   late final pulumi.Output<String> name;
-
   /// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
   late final pulumi.Output<String> paymentType;
-
   /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
   /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
   late final pulumi.Output<int?> period;
-
   /// The association status of the bandwidth package.
   late final pulumi.Output<String> status;
 
@@ -63,11 +51,11 @@ class BandwidthPackage extends pulumi.CustomResource {
     BandwidthPackageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/bandwidthPackage:BandwidthPackage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/bandwidthPackage:BandwidthPackage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenew = registerOutput<bool?>('autoRenew');
     bandwidth = registerOutput<int>('bandwidth');
     cenBandwidthPackageName = registerOutput<String>('cenBandwidthPackageName');
@@ -101,11 +89,11 @@ class BandwidthPackage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/bandwidthPackage:BandwidthPackage',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/bandwidthPackage:BandwidthPackage',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenew = registerOutput<bool?>('autoRenew');
     bandwidth = registerOutput<int>('bandwidth');
     cenBandwidthPackageName = registerOutput<String>('cenBandwidthPackageName');

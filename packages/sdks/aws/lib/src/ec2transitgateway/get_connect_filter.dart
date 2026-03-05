@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectFilter {
   /// Name of the filter.
   final pulumi.Input<String> name;
-
   /// List of one or more values for the filter.
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetConnectFilter].
   /// [name] Name of the filter.
   /// [values] List of one or more values for the filter.
-  GetConnectFilter({required this.name, required this.values});
+  GetConnectFilter({
+    required this.name,
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'values': values};
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetConnectFilter.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class GetConnectFilter {
     );
   }
 }
+

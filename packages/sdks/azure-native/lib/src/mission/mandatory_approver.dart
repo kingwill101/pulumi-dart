@@ -9,10 +9,14 @@ class MandatoryApprover {
 
   /// Creates a new [MandatoryApprover].
   /// [approverEntraId] EntraId of the approver
-  MandatoryApprover({required this.approverEntraId});
+  MandatoryApprover({
+    required this.approverEntraId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'approverEntraId': approverEntraId};
+    return <String, dynamic>{
+      'approverEntraId': approverEntraId,
+    };
   }
 
   factory MandatoryApprover.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class MandatoryApprover {
     );
   }
 }
+

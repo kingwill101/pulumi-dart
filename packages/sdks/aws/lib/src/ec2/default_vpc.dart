@@ -123,7 +123,6 @@ import 'default_vpc_state.dart';
 class DefaultVpc extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   late final pulumi.Output<bool?> assignGeneratedIpv6CidrBlock;
-
   /// The primary IPv4 CIDR block for the VPC
   late final pulumi.Output<String> cidrBlock;
   late final pulumi.Output<String> defaultNetworkAclId;
@@ -134,10 +133,8 @@ class DefaultVpc extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enableDnsSupport;
   late final pulumi.Output<bool> enableNetworkAddressUsageMetrics;
   late final pulumi.Output<bool> existingDefaultVpc;
-
   /// Whether destroying the resource deletes the default VPC. Default: `false`
   late final pulumi.Output<bool?> forceDestroy;
-
   /// The allowed tenancy of instances launched into the VPC
   late final pulumi.Output<String> instanceTenancy;
   late final pulumi.Output<String> ipv6AssociationId;
@@ -147,7 +144,6 @@ class DefaultVpc extends pulumi.CustomResource {
   late final pulumi.Output<int?> ipv6NetmaskLength;
   late final pulumi.Output<String> mainRouteTableId;
   late final pulumi.Output<String> ownerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
   late final pulumi.Output<String> region;
   late final pulumi.Output<Map<String, String>?> tags;
@@ -162,15 +158,13 @@ class DefaultVpc extends pulumi.CustomResource {
     DefaultVpcArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/defaultVpc:DefaultVpc',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/defaultVpc:DefaultVpc',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    assignGeneratedIpv6CidrBlock = registerOutput<bool?>(
-      'assignGeneratedIpv6CidrBlock',
-    );
+    assignGeneratedIpv6CidrBlock = registerOutput<bool?>('assignGeneratedIpv6CidrBlock');
     cidrBlock = registerOutput<String>('cidrBlock');
     defaultNetworkAclId = registerOutput<String>('defaultNetworkAclId');
     defaultRouteTableId = registerOutput<String>('defaultRouteTableId');
@@ -178,17 +172,13 @@ class DefaultVpc extends pulumi.CustomResource {
     dhcpOptionsId = registerOutput<String>('dhcpOptionsId');
     enableDnsHostnames = registerOutput<bool?>('enableDnsHostnames');
     enableDnsSupport = registerOutput<bool?>('enableDnsSupport');
-    enableNetworkAddressUsageMetrics = registerOutput<bool>(
-      'enableNetworkAddressUsageMetrics',
-    );
+    enableNetworkAddressUsageMetrics = registerOutput<bool>('enableNetworkAddressUsageMetrics');
     existingDefaultVpc = registerOutput<bool>('existingDefaultVpc');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     instanceTenancy = registerOutput<String>('instanceTenancy');
     ipv6AssociationId = registerOutput<String>('ipv6AssociationId');
     ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
-    ipv6CidrBlockNetworkBorderGroup = registerOutput<String>(
-      'ipv6CidrBlockNetworkBorderGroup',
-    );
+    ipv6CidrBlockNetworkBorderGroup = registerOutput<String>('ipv6CidrBlockNetworkBorderGroup');
     ipv6IpamPoolId = registerOutput<String?>('ipv6IpamPoolId');
     ipv6NetmaskLength = registerOutput<int?>('ipv6NetmaskLength');
     mainRouteTableId = registerOutput<String>('mainRouteTableId');
@@ -216,15 +206,13 @@ class DefaultVpc extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/defaultVpc:DefaultVpc',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/defaultVpc:DefaultVpc',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    assignGeneratedIpv6CidrBlock = registerOutput<bool?>(
-      'assignGeneratedIpv6CidrBlock',
-    );
+    assignGeneratedIpv6CidrBlock = registerOutput<bool?>('assignGeneratedIpv6CidrBlock');
     cidrBlock = registerOutput<String>('cidrBlock');
     defaultNetworkAclId = registerOutput<String>('defaultNetworkAclId');
     defaultRouteTableId = registerOutput<String>('defaultRouteTableId');
@@ -232,17 +220,13 @@ class DefaultVpc extends pulumi.CustomResource {
     dhcpOptionsId = registerOutput<String>('dhcpOptionsId');
     enableDnsHostnames = registerOutput<bool?>('enableDnsHostnames');
     enableDnsSupport = registerOutput<bool?>('enableDnsSupport');
-    enableNetworkAddressUsageMetrics = registerOutput<bool>(
-      'enableNetworkAddressUsageMetrics',
-    );
+    enableNetworkAddressUsageMetrics = registerOutput<bool>('enableNetworkAddressUsageMetrics');
     existingDefaultVpc = registerOutput<bool>('existingDefaultVpc');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     instanceTenancy = registerOutput<String>('instanceTenancy');
     ipv6AssociationId = registerOutput<String>('ipv6AssociationId');
     ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
-    ipv6CidrBlockNetworkBorderGroup = registerOutput<String>(
-      'ipv6CidrBlockNetworkBorderGroup',
-    );
+    ipv6CidrBlockNetworkBorderGroup = registerOutput<String>('ipv6CidrBlockNetworkBorderGroup');
     ipv6IpamPoolId = registerOutput<String?>('ipv6IpamPoolId');
     ipv6NetmaskLength = registerOutput<int?>('ipv6NetmaskLength');
     mainRouteTableId = registerOutput<String>('mainRouteTableId');

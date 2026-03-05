@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationScalingRulesArgs {
   /// The ID of the Application.
   final pulumi.Input<String> appId;
-
   /// A list of Application Scaling Rule IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -37,16 +35,9 @@ class GetApplicationScalingRulesArgs {
   factory GetApplicationScalingRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationScalingRulesArgs(
       appId: pulumi.Input.fromValue(map['appId'] as String),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

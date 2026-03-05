@@ -326,10 +326,8 @@ import 'oss_shipper_state.dart';
 class OssShipper extends pulumi.CustomResource {
   /// How often is it delivered every interval.
   late final pulumi.Output<int> bufferInterval;
-
   /// Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
   late final pulumi.Output<int> bufferSize;
-
   /// OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
   late final pulumi.Output<String?> compressType;
   late final pulumi.Output<List<String>?> csvConfigColumns;
@@ -338,7 +336,6 @@ class OssShipper extends pulumi.CustomResource {
   late final pulumi.Output<String?> csvConfigLinefeed;
   late final pulumi.Output<String?> csvConfigNullidentifier;
   late final pulumi.Output<String?> csvConfigQuote;
-
   /// Storage format, only supports three types: `json`, `parquet`, `csv`.
   /// **According to the different format, please select the following parameters**
   /// - format = `json`
@@ -356,26 +353,19 @@ class OssShipper extends pulumi.CustomResource {
   /// `type` - (Required) Type of configuration name.
   late final pulumi.Output<String> format;
   late final pulumi.Output<bool?> jsonEnableTag;
-
   /// The name of the log logstore.
   late final pulumi.Output<String> logstoreName;
-
   /// The name of the oss bucket.
   late final pulumi.Output<String> ossBucket;
-
   /// The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
   late final pulumi.Output<String?> ossPrefix;
   late final pulumi.Output<List<Map<String, dynamic>>?> parquetConfigs;
-
   /// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
   late final pulumi.Output<String> pathFormat;
-
   /// The name of the log project. It is the only in one Alicloud account.
   late final pulumi.Output<String> projectName;
-
   /// Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
   late final pulumi.Output<String?> roleArn;
-
   /// Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
   late final pulumi.Output<String> shipperName;
 
@@ -388,11 +378,11 @@ class OssShipper extends pulumi.CustomResource {
     OssShipperArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:log/ossShipper:OssShipper',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:log/ossShipper:OssShipper',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bufferInterval = registerOutput<int>('bufferInterval');
     bufferSize = registerOutput<int>('bufferSize');
     compressType = registerOutput<String?>('compressType');
@@ -400,18 +390,14 @@ class OssShipper extends pulumi.CustomResource {
     csvConfigDelimiter = registerOutput<String?>('csvConfigDelimiter');
     csvConfigHeader = registerOutput<bool?>('csvConfigHeader');
     csvConfigLinefeed = registerOutput<String?>('csvConfigLinefeed');
-    csvConfigNullidentifier = registerOutput<String?>(
-      'csvConfigNullidentifier',
-    );
+    csvConfigNullidentifier = registerOutput<String?>('csvConfigNullidentifier');
     csvConfigQuote = registerOutput<String?>('csvConfigQuote');
     format = registerOutput<String>('format');
     jsonEnableTag = registerOutput<bool?>('jsonEnableTag');
     logstoreName = registerOutput<String>('logstoreName');
     ossBucket = registerOutput<String>('ossBucket');
     ossPrefix = registerOutput<String?>('ossPrefix');
-    parquetConfigs = registerOutput<List<Map<String, dynamic>>?>(
-      'parquetConfigs',
-    );
+    parquetConfigs = registerOutput<List<Map<String, dynamic>>?>('parquetConfigs');
     pathFormat = registerOutput<String>('pathFormat');
     projectName = registerOutput<String>('projectName');
     roleArn = registerOutput<String?>('roleArn');
@@ -436,11 +422,11 @@ class OssShipper extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:log/ossShipper:OssShipper',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:log/ossShipper:OssShipper',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bufferInterval = registerOutput<int>('bufferInterval');
     bufferSize = registerOutput<int>('bufferSize');
     compressType = registerOutput<String?>('compressType');
@@ -448,18 +434,14 @@ class OssShipper extends pulumi.CustomResource {
     csvConfigDelimiter = registerOutput<String?>('csvConfigDelimiter');
     csvConfigHeader = registerOutput<bool?>('csvConfigHeader');
     csvConfigLinefeed = registerOutput<String?>('csvConfigLinefeed');
-    csvConfigNullidentifier = registerOutput<String?>(
-      'csvConfigNullidentifier',
-    );
+    csvConfigNullidentifier = registerOutput<String?>('csvConfigNullidentifier');
     csvConfigQuote = registerOutput<String?>('csvConfigQuote');
     format = registerOutput<String>('format');
     jsonEnableTag = registerOutput<bool?>('jsonEnableTag');
     logstoreName = registerOutput<String>('logstoreName');
     ossBucket = registerOutput<String>('ossBucket');
     ossPrefix = registerOutput<String?>('ossPrefix');
-    parquetConfigs = registerOutput<List<Map<String, dynamic>>?>(
-      'parquetConfigs',
-    );
+    parquetConfigs = registerOutput<List<Map<String, dynamic>>?>('parquetConfigs');
     pathFormat = registerOutput<String>('pathFormat');
     projectName = registerOutput<String>('projectName');
     roleArn = registerOutput<String?>('roleArn');

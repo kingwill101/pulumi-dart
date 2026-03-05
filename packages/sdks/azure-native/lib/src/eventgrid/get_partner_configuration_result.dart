@@ -7,28 +7,20 @@ import 'system_data_response.dart';
 class GetPartnerConfigurationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified identifier of the resource.
   final String id;
-
   /// Location of the resource.
   final String? location;
-
   /// Name of the resource.
   final String name;
-
   /// The details of authorized partners.
   final PartnerAuthorizationResponse? partnerAuthorization;
-
   /// Provisioning state of the partner configuration.
   final String? provisioningState;
-
   /// The system metadata relating to the Event Grid resource.
   final SystemDataResponse systemData;
-
   /// Tags of the resource.
   final Map<String, String>? tags;
-
   /// Type of the resource.
   final String type;
 
@@ -72,33 +64,14 @@ class GetPartnerConfigurationResult {
     return GetPartnerConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      partnerAuthorization: (() {
-        final guardedValue = map['partnerAuthorization'];
-        if (guardedValue == null) return null;
-        return PartnerAuthorizationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      provisioningState: (() {
-        final guardedValue = map['provisioningState'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      partnerAuthorization: (() { final guardedValue = map['partnerAuthorization']; if (guardedValue == null) return null; return PartnerAuthorizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

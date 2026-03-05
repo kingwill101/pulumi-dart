@@ -3425,31 +3425,24 @@ class CxFlow extends pulumi.CustomResource {
   /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
   /// Structure is documented below.
   late final pulumi.Output<CxFlowAdvancedSettings?> advancedSettings;
-
   /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
   late final pulumi.Output<String?> description;
-
   /// The human-readable name of the flow.
   late final pulumi.Output<String> displayName;
-
   /// A flow's event handlers serve two purposes:
   /// They are responsible for handling events (e.g. no match, webhook errors) in the flow.
   /// They are inherited by every page's [event handlers][Page.event_handlers], which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow.
   /// Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> eventHandlers;
-
   /// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
   /// The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
   ///
   /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
   late final pulumi.Output<bool?> isDefaultStartFlow;
-
   /// Knowledge connector configuration.
   /// Structure is documented below.
-  late final pulumi.Output<CxFlowKnowledgeConnectorSettings?>
-  knowledgeConnectorSettings;
-
+  late final pulumi.Output<CxFlowKnowledgeConnectorSettings?> knowledgeConnectorSettings;
   /// The language of the following fields in flow:
   /// Flow.event_handlers.trigger_fulfillment.messages
   /// Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -3457,25 +3450,20 @@ class CxFlow extends pulumi.CustomResource {
   /// Flow.transition_routes.trigger_fulfillment.conditional_cases
   /// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
   late final pulumi.Output<String?> languageCode;
-
   /// The unique identifier of the flow.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
   late final pulumi.Output<String> name;
-
   /// NLU related settings of the flow.
   /// Structure is documented below.
   late final pulumi.Output<CxFlowNluSettings?> nluSettings;
-
   /// The agent to create a flow for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   late final pulumi.Output<String?> parent;
-
   /// A flow's transition route group serve two purposes:
   /// They are responsible for matching the user's first utterances in the flow.
   /// They are inherited by every page's [transition route groups][Page.transition_route_groups]. Transition route groups defined in the page have higher priority than those defined in the flow.
   /// Format:projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/transitionRouteGroups/&lt;TransitionRouteGroup ID&gt;.
   late final pulumi.Output<List<String>?> transitionRouteGroups;
-
   /// A flow's transition routes serve two purposes:
   /// They are responsible for matching the user's first utterances in the flow.
   /// They are inherited by every page's [transition routes][Page.transition_routes] and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow.
@@ -3490,57 +3478,28 @@ class CxFlow extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [CxFlow]. {@macro pulumi_diagflow_cx_flow_cx_flow_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  CxFlow(String name, {CxFlowArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:diagflow/cxFlow:CxFlow',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    advancedSettings = registerOutput<CxFlowAdvancedSettings?>(
-      'advancedSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxFlowAdvancedSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  CxFlow(
+    String name, {
+    CxFlowArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:diagflow/cxFlow:CxFlow',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    advancedSettings = registerOutput<CxFlowAdvancedSettings?>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxFlowAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     eventHandlers = registerOutput<List<Map<String, dynamic>>>('eventHandlers');
     isDefaultStartFlow = registerOutput<bool?>('isDefaultStartFlow');
-    knowledgeConnectorSettings =
-        registerOutput<CxFlowKnowledgeConnectorSettings?>(
-          'knowledgeConnectorSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CxFlowKnowledgeConnectorSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    knowledgeConnectorSettings = registerOutput<CxFlowKnowledgeConnectorSettings?>('knowledgeConnectorSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxFlowKnowledgeConnectorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     languageCode = registerOutput<String?>('languageCode');
     this.name = registerOutput<String>('name');
-    nluSettings = registerOutput<CxFlowNluSettings?>(
-      'nluSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxFlowNluSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nluSettings = registerOutput<CxFlowNluSettings?>('nluSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxFlowNluSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     parent = registerOutput<String?>('parent');
-    transitionRouteGroups = registerOutput<List<String>?>(
-      'transitionRouteGroups',
-    );
-    transitionRoutes = registerOutput<List<Map<String, dynamic>>?>(
-      'transitionRoutes',
-    );
+    transitionRouteGroups = registerOutput<List<String>?>('transitionRouteGroups');
+    transitionRoutes = registerOutput<List<Map<String, dynamic>>?>('transitionRoutes');
   }
 
   /// Gets an existing [CxFlow] resource's state with the given [name] and [id].
@@ -3561,54 +3520,22 @@ class CxFlow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxFlow:CxFlow',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    advancedSettings = registerOutput<CxFlowAdvancedSettings?>(
-      'advancedSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxFlowAdvancedSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:diagflow/cxFlow:CxFlow',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    advancedSettings = registerOutput<CxFlowAdvancedSettings?>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxFlowAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     eventHandlers = registerOutput<List<Map<String, dynamic>>>('eventHandlers');
     isDefaultStartFlow = registerOutput<bool?>('isDefaultStartFlow');
-    knowledgeConnectorSettings =
-        registerOutput<CxFlowKnowledgeConnectorSettings?>(
-          'knowledgeConnectorSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CxFlowKnowledgeConnectorSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    knowledgeConnectorSettings = registerOutput<CxFlowKnowledgeConnectorSettings?>('knowledgeConnectorSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxFlowKnowledgeConnectorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     languageCode = registerOutput<String?>('languageCode');
     this.name = registerOutput<String>('name');
-    nluSettings = registerOutput<CxFlowNluSettings?>(
-      'nluSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxFlowNluSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nluSettings = registerOutput<CxFlowNluSettings?>('nluSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxFlowNluSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     parent = registerOutput<String?>('parent');
-    transitionRouteGroups = registerOutput<List<String>?>(
-      'transitionRouteGroups',
-    );
-    transitionRoutes = registerOutput<List<Map<String, dynamic>>?>(
-      'transitionRoutes',
-    );
+    transitionRouteGroups = registerOutput<List<String>?>('transitionRouteGroups');
+    transitionRoutes = registerOutput<List<Map<String, dynamic>>?>('transitionRoutes');
   }
 }

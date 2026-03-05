@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTestResultDownloadURL.
 class GetTestResultDownloadURLResult {
   /// The download URL.
   final String downloadUrl;
-
   /// Expiry date of the download URL.
   final String expirationTime;
 
@@ -30,3 +30,4 @@ class GetTestResultDownloadURLResult {
     );
   }
 }
+

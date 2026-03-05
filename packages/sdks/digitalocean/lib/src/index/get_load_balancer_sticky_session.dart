@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLoadBalancerStickySession {
   /// the name of the cookie sent to the client
   final pulumi.Input<String> cookieName;
-
   /// the number of seconds until the cookie set by the Load Balancer expires
   final pulumi.Input<int> cookieTtlSeconds;
-
   /// how and if requests from a client will be persistently served by the same backend droplet
   final pulumi.Input<String> type;
 
@@ -38,3 +36,4 @@ class GetLoadBalancerStickySession {
     );
   }
 }
+

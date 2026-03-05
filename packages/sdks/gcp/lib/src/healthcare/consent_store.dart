@@ -522,17 +522,13 @@ class ConsentStore extends pulumi.CustomResource {
   /// Identifies the dataset addressed by this request. Must be in the format
   /// 'projects/{project}/locations/{location}/datasets/{dataset}'
   late final pulumi.Output<String> dataset;
-
   /// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   late final pulumi.Output<String?> defaultConsentTtl;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
   late final pulumi.Output<bool?> enableConsentCreateOnUpdate;
-
   /// User-supplied key-value pairs used to organize Consent stores.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
   /// conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}`
@@ -545,11 +541,9 @@ class ConsentStore extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The name of this ConsentStore, for example:
   /// "consent1"
   late final pulumi.Output<String> name;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
@@ -563,17 +557,15 @@ class ConsentStore extends pulumi.CustomResource {
     ConsentStoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:healthcare/consentStore:ConsentStore',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:healthcare/consentStore:ConsentStore',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataset = registerOutput<String>('dataset');
     defaultConsentTtl = registerOutput<String?>('defaultConsentTtl');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    enableConsentCreateOnUpdate = registerOutput<bool?>(
-      'enableConsentCreateOnUpdate',
-    );
+    enableConsentCreateOnUpdate = registerOutput<bool?>('enableConsentCreateOnUpdate');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
@@ -597,17 +589,15 @@ class ConsentStore extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:healthcare/consentStore:ConsentStore',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:healthcare/consentStore:ConsentStore',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataset = registerOutput<String>('dataset');
     defaultConsentTtl = registerOutput<String?>('defaultConsentTtl');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    enableConsentCreateOnUpdate = registerOutput<bool?>(
-      'enableConsentCreateOnUpdate',
-    );
+    enableConsentCreateOnUpdate = registerOutput<bool?>('enableConsentCreateOnUpdate');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');

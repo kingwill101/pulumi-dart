@@ -13,27 +13,21 @@ class QueueState {
   /// to App Engine tasks in this queue
   /// Structure is documented below.
   final pulumi.Input<QueueAppEngineRoutingOverride>? appEngineRoutingOverride;
-
   /// The desired state of the queue. Use this to pause and resume the queue.
   ///
   /// * RUNNING: The queue is running. Tasks can be dispatched.
   /// * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
   final pulumi.Input<String>? desiredState;
-
   /// Modifies HTTP target for HTTP tasks.
   /// Structure is documented below.
   final pulumi.Input<QueueHttpTarget>? httpTarget;
-
   /// The location of the queue
   final pulumi.Input<String>? location;
-
   /// The queue name.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Rate limits for task dispatches.
   /// The queue's actual dispatch rate is the result of:
   /// * Number of tasks in the queue
@@ -43,15 +37,12 @@ class QueueState {
   /// smooth sudden large traffic spikes.
   /// Structure is documented below.
   final pulumi.Input<QueueRateLimits>? rateLimits;
-
   /// Settings that determine the retry behavior.
   /// Structure is documented below.
   final pulumi.Input<QueueRetryConfig>? retryConfig;
-
   /// Configuration options for writing logs to Stackdriver Logging.
   /// Structure is documented below.
   final pulumi.Input<QueueStackdriverLoggingConfig>? stackdriverLoggingConfig;
-
   /// The current state of the queue.
   final pulumi.Input<String>? state;
 
@@ -81,111 +72,32 @@ class QueueState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appEngineRoutingOverride':
-          ?pulumi.Input.mapOptionalInputValue<
-            QueueAppEngineRoutingOverride,
-            Map<String, dynamic>
-          >(appEngineRoutingOverride, (value) => value.toMap()),
+      'appEngineRoutingOverride': ?pulumi.Input.mapOptionalInputValue<QueueAppEngineRoutingOverride, Map<String, dynamic>>(appEngineRoutingOverride, (value) => value.toMap()),
       'desiredState': ?desiredState,
-      'httpTarget':
-          ?pulumi.Input.mapOptionalInputValue<
-            QueueHttpTarget,
-            Map<String, dynamic>
-          >(httpTarget, (value) => value.toMap()),
+      'httpTarget': ?pulumi.Input.mapOptionalInputValue<QueueHttpTarget, Map<String, dynamic>>(httpTarget, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'project': ?project,
-      'rateLimits':
-          ?pulumi.Input.mapOptionalInputValue<
-            QueueRateLimits,
-            Map<String, dynamic>
-          >(rateLimits, (value) => value.toMap()),
-      'retryConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            QueueRetryConfig,
-            Map<String, dynamic>
-          >(retryConfig, (value) => value.toMap()),
-      'stackdriverLoggingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            QueueStackdriverLoggingConfig,
-            Map<String, dynamic>
-          >(stackdriverLoggingConfig, (value) => value.toMap()),
+      'rateLimits': ?pulumi.Input.mapOptionalInputValue<QueueRateLimits, Map<String, dynamic>>(rateLimits, (value) => value.toMap()),
+      'retryConfig': ?pulumi.Input.mapOptionalInputValue<QueueRetryConfig, Map<String, dynamic>>(retryConfig, (value) => value.toMap()),
+      'stackdriverLoggingConfig': ?pulumi.Input.mapOptionalInputValue<QueueStackdriverLoggingConfig, Map<String, dynamic>>(stackdriverLoggingConfig, (value) => value.toMap()),
       'state': ?state,
     };
   }
 
   factory QueueState.fromMap(Map<String, dynamic> map) {
     return QueueState(
-      appEngineRoutingOverride: (() {
-        final guardedValue = map['appEngineRoutingOverride'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          QueueAppEngineRoutingOverride.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      desiredState: (() {
-        final guardedValue = map['desiredState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      httpTarget: (() {
-        final guardedValue = map['httpTarget'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          QueueHttpTarget.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rateLimits: (() {
-        final guardedValue = map['rateLimits'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          QueueRateLimits.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      retryConfig: (() {
-        final guardedValue = map['retryConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          QueueRetryConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      stackdriverLoggingConfig: (() {
-        final guardedValue = map['stackdriverLoggingConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          QueueStackdriverLoggingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appEngineRoutingOverride: (() { final guardedValue = map['appEngineRoutingOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QueueAppEngineRoutingOverride.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      desiredState: (() { final guardedValue = map['desiredState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      httpTarget: (() { final guardedValue = map['httpTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QueueHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rateLimits: (() { final guardedValue = map['rateLimits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QueueRateLimits.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      retryConfig: (() { final guardedValue = map['retryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QueueRetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      stackdriverLoggingConfig: (() { final guardedValue = map['stackdriverLoggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QueueStackdriverLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

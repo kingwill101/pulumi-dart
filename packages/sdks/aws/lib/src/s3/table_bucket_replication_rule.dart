@@ -9,35 +9,20 @@ class TableBucketReplicationRule {
 
   /// Creates a new [TableBucketReplicationRule].
   /// [destinations] Replication destination. See Destination below for more details.
-  TableBucketReplicationRule({required this.destinations});
+  TableBucketReplicationRule({
+    required this.destinations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinations':
-          pulumi.Input.mapInputValue<
-            List<TableBucketReplicationRuleDestination>,
-            List<Map<String, dynamic>>
-          >(
-            destinations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TableBucketReplicationRuleDestination,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'destinations': pulumi.Input.mapInputValue<List<TableBucketReplicationRuleDestination>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<TableBucketReplicationRuleDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TableBucketReplicationRule.fromMap(Map<String, dynamic> map) {
     return TableBucketReplicationRule(
-      destinations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<TableBucketReplicationRuleDestination>(
-          map['destinations']!,
-          (value) => TableBucketReplicationRuleDestination.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      destinations: pulumi.Input.fromValue(pulumi.Input.decodeList<TableBucketReplicationRuleDestination>(map['destinations']!, (value) => TableBucketReplicationRuleDestination.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

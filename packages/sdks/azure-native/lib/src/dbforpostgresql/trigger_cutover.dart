@@ -15,3 +15,4 @@ enum TriggerCutover {
     throw ArgumentError('Unknown TriggerCutover value: $value');
   }
 }
+

@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RedisInstanceDetailsResponse {
   /// Specifies whether the instance is a primary node.
   final pulumi.Input<bool> isMaster;
-
   /// Specifies whether the instance is a primary node.
   final pulumi.Input<bool> isPrimary;
-
   /// If enableNonSslPort is true, provides Redis instance Non-SSL port.
   final pulumi.Input<int> nonSslPort;
-
   /// If clustering is enabled, the Shard ID of Redis Instance
   final pulumi.Input<int> shardId;
-
   /// Redis instance SSL port.
   final pulumi.Input<int> sslPort;
-
   /// If the Cache uses availability zones, specifies availability zone where this instance is located.
   final pulumi.Input<String> zone;
 
@@ -60,3 +55,4 @@ class RedisInstanceDetailsResponse {
     );
   }
 }
+

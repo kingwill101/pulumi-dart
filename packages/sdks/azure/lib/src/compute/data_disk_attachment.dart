@@ -614,19 +614,14 @@ import 'data_disk_attachment_state.dart';
 class DataDiskAttachment extends pulumi.CustomResource {
   /// Specifies the caching requirements for this Data Disk. Possible values include `None`, `ReadOnly` and `ReadWrite`.
   late final pulumi.Output<String> caching;
-
   /// The Create Option of the Data Disk, such as `Empty` or `Attach`. Defaults to `Attach`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> createOption;
-
   /// The Logical Unit Number of the Data Disk, which needs to be unique within the Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<int> lun;
-
   /// The ID of an existing Managed Disk which should be attached. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedDiskId;
-
   /// The ID of the Virtual Machine to which the Data Disk should be attached. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineId;
-
   /// Specifies if Write Accelerator is enabled on the disk. This can only be enabled on `Premium_LRS` managed disks with no caching and [M-Series VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/how-to-enable-write-accelerator). Defaults to `false`.
   late final pulumi.Output<bool?> writeAcceleratorEnabled;
 
@@ -639,11 +634,11 @@ class DataDiskAttachment extends pulumi.CustomResource {
     DataDiskAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/dataDiskAttachment:DataDiskAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/dataDiskAttachment:DataDiskAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     caching = registerOutput<String>('caching');
     createOption = registerOutput<String?>('createOption');
     lun = registerOutput<int>('lun');
@@ -670,11 +665,11 @@ class DataDiskAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/dataDiskAttachment:DataDiskAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/dataDiskAttachment:DataDiskAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     caching = registerOutput<String>('caching');
     createOption = registerOutput<String?>('createOption');
     lun = registerOutput<int>('lun');

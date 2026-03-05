@@ -237,22 +237,16 @@ import 'connection_classic_certificate_state.dart';
 class ConnectionClassicCertificate extends pulumi.CustomResource {
   /// The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
-
   /// The name of the certificate asset.
   late final pulumi.Output<String> certificateAssetName;
-
   /// A description for this Connection.
   late final pulumi.Output<String?> description;
-
   /// Specifies the name of the Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The id of subscription.
   late final pulumi.Output<String> subscriptionId;
-
   /// The name of subscription.
   late final pulumi.Output<String> subscriptionName;
 
@@ -265,11 +259,11 @@ class ConnectionClassicCertificate extends pulumi.CustomResource {
     ConnectionClassicCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/connectionClassicCertificate:ConnectionClassicCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/connectionClassicCertificate:ConnectionClassicCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     certificateAssetName = registerOutput<String>('certificateAssetName');
     description = registerOutput<String?>('description');
@@ -297,11 +291,11 @@ class ConnectionClassicCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/connectionClassicCertificate:ConnectionClassicCertificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/connectionClassicCertificate:ConnectionClassicCertificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     certificateAssetName = registerOutput<String>('certificateAssetName');
     description = registerOutput<String?>('description');

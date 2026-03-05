@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleAccountResponseWebsecurityscannerV1beta {
   /// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
   final pulumi.Input<String> password;
-
   /// The user name of the Google account.
   final pulumi.Input<String> username;
 
@@ -19,15 +18,17 @@ class GoogleAccountResponseWebsecurityscannerV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': password, 'username': username};
+    return <String, dynamic>{
+      'password': password,
+      'username': username,
+    };
   }
 
-  factory GoogleAccountResponseWebsecurityscannerV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleAccountResponseWebsecurityscannerV1beta.fromMap(Map<String, dynamic> map) {
     return GoogleAccountResponseWebsecurityscannerV1beta(
       password: pulumi.Input.fromValue(map['password'] as String),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

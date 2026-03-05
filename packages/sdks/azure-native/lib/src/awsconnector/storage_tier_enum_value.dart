@@ -9,19 +9,20 @@ class StorageTierEnumValue {
 
   /// Creates a new [StorageTierEnumValue].
   /// [value] Property value
-  StorageTierEnumValue({this.value});
+  StorageTierEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory StorageTierEnumValue.fromMap(Map<String, dynamic> map) {
     return StorageTierEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -14,11 +14,11 @@ class ServiceService extends pulumi.CustomResource {
     Map<String, dynamic>? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:message/serviceService:ServiceService',
-         name,
-         pulumi.Input.mapToInputs(args ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:message/serviceService:ServiceService',
+          name,
+          pulumi.Input.mapToInputs(args ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     status = registerOutput<String>('status');
   }
 
@@ -40,11 +40,11 @@ class ServiceService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:message/serviceService:ServiceService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:message/serviceService:ServiceService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     status = registerOutput<String>('status');
   }
 }

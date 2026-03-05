@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionArgs {
   /// The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> automationAccountName;
-
   /// A description for this Connection.
   final pulumi.Input<String>? description;
-
   /// Specifies the name of the Connection. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The type of the Connection - can be either builtin type such as `Azure`, `AzureClassicCertificate`, and `AzureServicePrincipal`, or a user defined types. Changing this forces a new resource to be created.
   final pulumi.Input<String> type;
-
   /// A mapping of key value pairs passed to the connection. Different `type` needs different parameters in the `values`. Builtin types have required field values as below:
   ///
   /// * `Azure`: parameters `AutomationCertificateName` and `SubscriptionID`.
@@ -60,26 +55,13 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
-      values: pulumi.Input.fromValue(
-        (map['values'] as Map).cast<String, String>(),
-      ),
+      values: pulumi.Input.fromValue((map['values'] as Map).cast<String, String>()),
     );
   }
 }
+

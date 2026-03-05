@@ -10,31 +10,22 @@ import 'progress_properties_response.dart';
 class PipelineRunResponseResponse {
   /// The digest of the tar used to transfer the artifacts.
   final pulumi.Input<String>? catalogDigest;
-
   /// The time the pipeline run finished.
   final pulumi.Input<String>? finishTime;
-
   /// The artifacts imported in the pipeline run.
   final pulumi.Input<List<String>>? importedArtifacts;
-
   /// The detailed error message for the pipeline run in the case of failure.
   final pulumi.Input<String>? pipelineRunErrorMessage;
-
   /// The current progress of the copy operation.
   final pulumi.Input<ProgressPropertiesResponse>? progress;
-
   /// The source of the pipeline run.
   final pulumi.Input<ImportPipelineSourcePropertiesResponse>? source;
-
   /// The time the pipeline run started.
   final pulumi.Input<String>? startTime;
-
   /// The current status of the pipeline run.
   final pulumi.Input<String>? status;
-
   /// The target of the pipeline run.
   final pulumi.Input<ExportPipelineTargetPropertiesResponse>? target;
-
   /// The trigger that caused the pipeline run.
   final pulumi.Input<PipelineTriggerDescriptorResponse>? trigger;
 
@@ -68,99 +59,28 @@ class PipelineRunResponseResponse {
       'finishTime': ?finishTime,
       'importedArtifacts': ?importedArtifacts,
       'pipelineRunErrorMessage': ?pipelineRunErrorMessage,
-      'progress':
-          ?pulumi.Input.mapOptionalInputValue<
-            ProgressPropertiesResponse,
-            Map<String, dynamic>
-          >(progress, (value) => value.toMap()),
-      'source':
-          ?pulumi.Input.mapOptionalInputValue<
-            ImportPipelineSourcePropertiesResponse,
-            Map<String, dynamic>
-          >(source, (value) => value.toMap()),
+      'progress': ?pulumi.Input.mapOptionalInputValue<ProgressPropertiesResponse, Map<String, dynamic>>(progress, (value) => value.toMap()),
+      'source': ?pulumi.Input.mapOptionalInputValue<ImportPipelineSourcePropertiesResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
       'startTime': ?startTime,
       'status': ?status,
-      'target':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExportPipelineTargetPropertiesResponse,
-            Map<String, dynamic>
-          >(target, (value) => value.toMap()),
-      'trigger':
-          ?pulumi.Input.mapOptionalInputValue<
-            PipelineTriggerDescriptorResponse,
-            Map<String, dynamic>
-          >(trigger, (value) => value.toMap()),
+      'target': ?pulumi.Input.mapOptionalInputValue<ExportPipelineTargetPropertiesResponse, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'trigger': ?pulumi.Input.mapOptionalInputValue<PipelineTriggerDescriptorResponse, Map<String, dynamic>>(trigger, (value) => value.toMap()),
     };
   }
 
   factory PipelineRunResponseResponse.fromMap(Map<String, dynamic> map) {
     return PipelineRunResponseResponse(
-      catalogDigest: (() {
-        final guardedValue = map['catalogDigest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      finishTime: (() {
-        final guardedValue = map['finishTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      importedArtifacts: (() {
-        final guardedValue = map['importedArtifacts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      pipelineRunErrorMessage: (() {
-        final guardedValue = map['pipelineRunErrorMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      progress: (() {
-        final guardedValue = map['progress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ProgressPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ImportPipelineSourcePropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      target: (() {
-        final guardedValue = map['target'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExportPipelineTargetPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      trigger: (() {
-        final guardedValue = map['trigger'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PipelineTriggerDescriptorResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      catalogDigest: (() { final guardedValue = map['catalogDigest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      finishTime: (() { final guardedValue = map['finishTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      importedArtifacts: (() { final guardedValue = map['importedArtifacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      pipelineRunErrorMessage: (() { final guardedValue = map['pipelineRunErrorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      progress: (() { final guardedValue = map['progress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProgressPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImportPipelineSourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExportPipelineTargetPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      trigger: (() { final guardedValue = map['trigger']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineTriggerDescriptorResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

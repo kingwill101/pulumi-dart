@@ -122,18 +122,14 @@ import 'sink_state.dart';
 class Sink extends pulumi.CustomResource {
   /// ARN of the Sink.
   late final pulumi.Output<String> arn;
-
   /// Name for the sink.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID string that AWS generated as part of the sink ARN.
   late final pulumi.Output<String> sinkId;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -142,13 +138,16 @@ class Sink extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Sink]. {@macro pulumi_oam_sink_sink_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Sink(String name, {SinkArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:oam/sink:Sink',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Sink(
+    String name, {
+    SinkArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:oam/sink:Sink',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -158,7 +157,11 @@ class Sink extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Sink] resource's state with the given [name] and [id].
-  static Sink get(String name, pulumi.Input<String> id, {SinkState? state}) {
+  static Sink get(
+    String name,
+    pulumi.Input<String> id, {
+    SinkState? state,
+  }) {
     return Sink._get(
       name,
       state: state?.toMap(),
@@ -171,11 +174,11 @@ class Sink extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:oam/sink:Sink',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:oam/sink:Sink',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

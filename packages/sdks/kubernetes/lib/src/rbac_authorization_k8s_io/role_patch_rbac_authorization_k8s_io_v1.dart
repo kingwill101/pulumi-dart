@@ -12,13 +12,10 @@ import 'role_patch_args.dart';
 class RolePatchRbacAuthorizationK8sIoV1 extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
-
   /// Standard object's metadata.
   late final pulumi.Output<ObjectMetaPatch?> metadata;
-
   /// Rules holds all the PolicyRules for this Role
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
 
@@ -31,23 +28,14 @@ class RolePatchRbacAuthorizationK8sIoV1 extends pulumi.CustomResource {
     RolePatchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'kubernetes:rbac.authorization.k8s.io/v1:RolePatch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'kubernetes:rbac.authorization.k8s.io/v1:RolePatch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMetaPatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
   }
 }

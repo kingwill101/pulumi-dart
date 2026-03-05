@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V3AliasState {
   /// Grayscale version
   final pulumi.Input<Map<String, double>>? additionalVersionWeight;
-
   /// Function Alias
   final pulumi.Input<String>? aliasName;
-
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
-
   /// Description
   final pulumi.Input<String>? description;
-
   /// Function Name
   final pulumi.Input<String>? functionName;
-
   /// (Available since v1.234.0) Last modification time
   final pulumi.Input<String>? lastModifiedTime;
-
   /// The version that the alias points
   final pulumi.Input<String>? versionId;
 
@@ -57,43 +51,14 @@ class V3AliasState {
 
   factory V3AliasState.fromMap(Map<String, dynamic> map) {
     return V3AliasState(
-      additionalVersionWeight: (() {
-        final guardedValue = map['additionalVersionWeight'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, double>(),
-        );
-      })(),
-      aliasName: (() {
-        final guardedValue = map['aliasName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      functionName: (() {
-        final guardedValue = map['functionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastModifiedTime: (() {
-        final guardedValue = map['lastModifiedTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      versionId: (() {
-        final guardedValue = map['versionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalVersionWeight: (() { final guardedValue = map['additionalVersionWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, double>()); })(),
+      aliasName: (() { final guardedValue = map['aliasName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      functionName: (() { final guardedValue = map['functionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      versionId: (() { final guardedValue = map['versionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

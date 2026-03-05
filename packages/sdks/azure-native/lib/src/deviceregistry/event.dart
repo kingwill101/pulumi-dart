@@ -7,16 +7,12 @@ import 'topic.dart';
 class Event {
   /// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
   final pulumi.Input<String>? eventConfiguration;
-
   /// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
   final pulumi.Input<String> eventNotifier;
-
   /// The name of the event.
   final pulumi.Input<String> name;
-
   /// An indication of how the event should be mapped to OpenTelemetry.
   final pulumi.Input<String>? observabilityMode;
-
   /// Object that describes the topic information for the specific event.
   final pulumi.Input<Topic>? topic;
 
@@ -40,34 +36,18 @@ class Event {
       'eventNotifier': eventNotifier,
       'name': name,
       'observabilityMode': ?observabilityMode,
-      'topic': ?pulumi.Input.mapOptionalInputValue<Topic, Map<String, dynamic>>(
-        topic,
-        (value) => value.toMap(),
-      ),
+      'topic': ?pulumi.Input.mapOptionalInputValue<Topic, Map<String, dynamic>>(topic, (value) => value.toMap()),
     };
   }
 
   factory Event.fromMap(Map<String, dynamic> map) {
     return Event(
-      eventConfiguration: (() {
-        final guardedValue = map['eventConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eventConfiguration: (() { final guardedValue = map['eventConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       eventNotifier: pulumi.Input.fromValue(map['eventNotifier'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      observabilityMode: (() {
-        final guardedValue = map['observabilityMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      topic: (() {
-        final guardedValue = map['topic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Topic.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      observabilityMode: (() { final guardedValue = map['observabilityMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      topic: (() { final guardedValue = map['topic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Topic.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

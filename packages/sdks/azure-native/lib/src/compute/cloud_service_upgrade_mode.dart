@@ -18,3 +18,4 @@ enum CloudServiceUpgradeMode {
     throw ArgumentError('Unknown CloudServiceUpgradeMode value: $value');
   }
 }
+

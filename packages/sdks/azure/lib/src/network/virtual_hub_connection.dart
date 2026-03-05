@@ -299,16 +299,12 @@ import 'virtual_hub_connection_state.dart';
 class VirtualHubConnection extends pulumi.CustomResource {
   /// Should Internet Security be enabled to secure internet traffic? Defaults to `false`.
   late final pulumi.Output<bool?> internetSecurityEnabled;
-
   /// The Name which should be used for this Connection, which must be unique within the Virtual Hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Virtual Network which the Virtual Hub should be connected to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> remoteVirtualNetworkId;
-
   /// A `routing` block as defined below.
   late final pulumi.Output<VirtualHubConnectionRouting> routing;
-
   /// The ID of the Virtual Hub within which this connection should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualHubId;
 
@@ -321,24 +317,15 @@ class VirtualHubConnection extends pulumi.CustomResource {
     VirtualHubConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualHubConnection:VirtualHubConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/virtualHubConnection:VirtualHubConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');
     remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
-    routing = registerOutput<VirtualHubConnectionRouting>(
-      'routing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualHubConnectionRouting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routing = registerOutput<VirtualHubConnectionRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualHubConnectionRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     virtualHubId = registerOutput<String>('virtualHubId');
   }
 
@@ -360,24 +347,15 @@ class VirtualHubConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualHubConnection:VirtualHubConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/virtualHubConnection:VirtualHubConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');
     remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
-    routing = registerOutput<VirtualHubConnectionRouting>(
-      'routing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualHubConnectionRouting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routing = registerOutput<VirtualHubConnectionRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualHubConnectionRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     virtualHubId = registerOutput<String>('virtualHubId');
   }
 }

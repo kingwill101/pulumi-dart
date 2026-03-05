@@ -6,38 +6,29 @@ import 'report_group_export_config_s3_destination.dart';
 class ReportGroupExportConfig {
   /// contains information about the S3 bucket where the run of a report is exported. see S3 Destination documented below.
   final pulumi.Input<ReportGroupExportConfigS3Destination>? s3Destination;
-
   /// The export configuration type. Valid values are `S3` and `NO_EXPORT`.
   final pulumi.Input<String> type;
 
   /// Creates a new [ReportGroupExportConfig].
   /// [s3Destination] contains information about the S3 bucket where the run of a report is exported. see S3 Destination documented below.
   /// [type] The export configuration type. Valid values are `S3` and `NO_EXPORT`.
-  ReportGroupExportConfig({this.s3Destination, required this.type});
+  ReportGroupExportConfig({
+    this.s3Destination,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3Destination':
-          ?pulumi.Input.mapOptionalInputValue<
-            ReportGroupExportConfigS3Destination,
-            Map<String, dynamic>
-          >(s3Destination, (value) => value.toMap()),
+      's3Destination': ?pulumi.Input.mapOptionalInputValue<ReportGroupExportConfigS3Destination, Map<String, dynamic>>(s3Destination, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory ReportGroupExportConfig.fromMap(Map<String, dynamic> map) {
     return ReportGroupExportConfig(
-      s3Destination: (() {
-        final guardedValue = map['s3Destination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ReportGroupExportConfigS3Destination.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      s3Destination: (() { final guardedValue = map['s3Destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReportGroupExportConfigS3Destination.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

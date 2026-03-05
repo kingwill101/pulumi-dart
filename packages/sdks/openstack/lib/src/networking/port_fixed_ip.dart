@@ -9,7 +9,6 @@ class PortFixedIp {
   /// is left blank or omitted. To retrieve the assigned IP address, use the
   /// `all_fixed_ips` attribute.
   final pulumi.Input<String>? ipAddress;
-
   /// Subnet in which to allocate IP address for
   /// this port.
   final pulumi.Input<String>? subnetId;
@@ -17,24 +16,23 @@ class PortFixedIp {
   /// Creates a new [PortFixedIp].
   /// [ipAddress] IP address desired in the subnet for this port. If
   /// [subnetId] Subnet in which to allocate IP address for
-  PortFixedIp({this.ipAddress, this.subnetId});
+  PortFixedIp({
+    this.ipAddress,
+    this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipAddress': ?ipAddress, 'subnetId': ?subnetId};
+    return <String, dynamic>{
+      'ipAddress': ?ipAddress,
+      'subnetId': ?subnetId,
+    };
   }
 
   factory PortFixedIp.fromMap(Map<String, dynamic> map) {
     return PortFixedIp(
-      ipAddress: (() {
-        final guardedValue = map['ipAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetId: (() {
-        final guardedValue = map['subnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

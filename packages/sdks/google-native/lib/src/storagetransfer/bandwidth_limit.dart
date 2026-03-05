@@ -9,19 +9,20 @@ class BandwidthLimit {
 
   /// Creates a new [BandwidthLimit].
   /// [limitMbps] Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
-  BandwidthLimit({this.limitMbps});
+  BandwidthLimit({
+    this.limitMbps,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'limitMbps': ?limitMbps};
+    return <String, dynamic>{
+      'limitMbps': ?limitMbps,
+    };
   }
 
   factory BandwidthLimit.fromMap(Map<String, dynamic> map) {
     return BandwidthLimit(
-      limitMbps: (() {
-        final guardedValue = map['limitMbps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      limitMbps: (() { final guardedValue = map['limitMbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

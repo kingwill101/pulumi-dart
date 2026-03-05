@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MongoMigrationCollection {
   /// Source collection name.
   final pulumi.Input<String>? sourceCollection;
-
   /// Source database name.
   final pulumi.Input<String>? sourceDatabase;
-
   /// Target collection name.
   final pulumi.Input<String>? targetCollection;
-
   /// Target database name.
   final pulumi.Input<String>? targetDatabase;
 
@@ -39,26 +36,11 @@ class MongoMigrationCollection {
 
   factory MongoMigrationCollection.fromMap(Map<String, dynamic> map) {
     return MongoMigrationCollection(
-      sourceCollection: (() {
-        final guardedValue = map['sourceCollection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceDatabase: (() {
-        final guardedValue = map['sourceDatabase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetCollection: (() {
-        final guardedValue = map['targetCollection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetDatabase: (() {
-        final guardedValue = map['targetDatabase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sourceCollection: (() { final guardedValue = map['sourceCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceDatabase: (() { final guardedValue = map['sourceDatabase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetCollection: (() { final guardedValue = map['targetCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetDatabase: (() { final guardedValue = map['targetDatabase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

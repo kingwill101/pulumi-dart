@@ -8,7 +8,6 @@ class AdhocBasedTriggerContextResponse {
   /// Type of the specific object - used for deserializing
   /// Expected value is 'AdhocBasedTriggerContext'.
   final pulumi.Input<String> objectType;
-
   /// Tagging Criteria containing retention tag for adhoc backup.
   final pulumi.Input<AdhocBasedTaggingCriteriaResponse> taggingCriteria;
 
@@ -23,22 +22,15 @@ class AdhocBasedTriggerContextResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'objectType': objectType,
-      'taggingCriteria':
-          pulumi.Input.mapInputValue<
-            AdhocBasedTaggingCriteriaResponse,
-            Map<String, dynamic>
-          >(taggingCriteria, (value) => value.toMap()),
+      'taggingCriteria': pulumi.Input.mapInputValue<AdhocBasedTaggingCriteriaResponse, Map<String, dynamic>>(taggingCriteria, (value) => value.toMap()),
     };
   }
 
   factory AdhocBasedTriggerContextResponse.fromMap(Map<String, dynamic> map) {
     return AdhocBasedTriggerContextResponse(
       objectType: pulumi.Input.fromValue(map['objectType'] as String),
-      taggingCriteria: pulumi.Input.fromValue(
-        AdhocBasedTaggingCriteriaResponse.fromMap(
-          (map['taggingCriteria']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      taggingCriteria: pulumi.Input.fromValue(AdhocBasedTaggingCriteriaResponse.fromMap((map['taggingCriteria']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

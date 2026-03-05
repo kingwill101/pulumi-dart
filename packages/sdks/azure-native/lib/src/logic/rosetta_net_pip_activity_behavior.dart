@@ -9,26 +9,18 @@ import 'rosetta_net_response_type.dart';
 class RosettaNetPipActivityBehavior {
   /// The value indicating whether the RosettaNet PIP is used for a single action.
   final pulumi.Input<RosettaNetActionType> actionType;
-
   /// The value indicating whether authorization is required.
   final pulumi.Input<bool> isAuthorizationRequired;
-
   /// The value indicating whether secured transport is required.
   final pulumi.Input<bool> isSecuredTransportRequired;
-
   /// The value indicating whether non-repudiation is for origin and content.
   final pulumi.Input<bool> nonRepudiationOfOriginAndContent;
-
   /// The persistent confidentiality encryption scope.
-  final pulumi.Input<RosettaNetPipConfidentialityScope>
-  persistentConfidentialityScope;
-
+  final pulumi.Input<RosettaNetPipConfidentialityScope> persistentConfidentialityScope;
   /// The value indicating whether the RosettaNet PIP communication is synchronous.
   final pulumi.Input<RosettaNetResponseType> responseType;
-
   /// The value indicating retry count.
   final pulumi.Input<int> retryCount;
-
   /// The time to perform in seconds.
   final pulumi.Input<int> timeToPerformInSeconds;
 
@@ -54,23 +46,12 @@ class RosettaNetPipActivityBehavior {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionType': pulumi.Input.mapInputValue<RosettaNetActionType, String>(
-        actionType,
-        (value) => value.wireValue,
-      ),
+      'actionType': pulumi.Input.mapInputValue<RosettaNetActionType, String>(actionType, (value) => value.wireValue),
       'isAuthorizationRequired': isAuthorizationRequired,
       'isSecuredTransportRequired': isSecuredTransportRequired,
       'nonRepudiationOfOriginAndContent': nonRepudiationOfOriginAndContent,
-      'persistentConfidentialityScope':
-          pulumi.Input.mapInputValue<RosettaNetPipConfidentialityScope, String>(
-            persistentConfidentialityScope,
-            (value) => value.wireValue,
-          ),
-      'responseType':
-          pulumi.Input.mapInputValue<RosettaNetResponseType, String>(
-            responseType,
-            (value) => value.wireValue,
-          ),
+      'persistentConfidentialityScope': pulumi.Input.mapInputValue<RosettaNetPipConfidentialityScope, String>(persistentConfidentialityScope, (value) => value.wireValue),
+      'responseType': pulumi.Input.mapInputValue<RosettaNetResponseType, String>(responseType, (value) => value.wireValue),
       'retryCount': retryCount,
       'timeToPerformInSeconds': timeToPerformInSeconds,
     };
@@ -78,30 +59,15 @@ class RosettaNetPipActivityBehavior {
 
   factory RosettaNetPipActivityBehavior.fromMap(Map<String, dynamic> map) {
     return RosettaNetPipActivityBehavior(
-      actionType: pulumi.Input.fromValue(
-        RosettaNetActionType.fromValue(map['actionType']! as String),
-      ),
-      isAuthorizationRequired: pulumi.Input.fromValue(
-        map['isAuthorizationRequired'] as bool,
-      ),
-      isSecuredTransportRequired: pulumi.Input.fromValue(
-        map['isSecuredTransportRequired'] as bool,
-      ),
-      nonRepudiationOfOriginAndContent: pulumi.Input.fromValue(
-        map['nonRepudiationOfOriginAndContent'] as bool,
-      ),
-      persistentConfidentialityScope: pulumi.Input.fromValue(
-        RosettaNetPipConfidentialityScope.fromValue(
-          map['persistentConfidentialityScope']! as String,
-        ),
-      ),
-      responseType: pulumi.Input.fromValue(
-        RosettaNetResponseType.fromValue(map['responseType']! as String),
-      ),
+      actionType: pulumi.Input.fromValue(RosettaNetActionType.fromValue(map['actionType']! as String)),
+      isAuthorizationRequired: pulumi.Input.fromValue(map['isAuthorizationRequired'] as bool),
+      isSecuredTransportRequired: pulumi.Input.fromValue(map['isSecuredTransportRequired'] as bool),
+      nonRepudiationOfOriginAndContent: pulumi.Input.fromValue(map['nonRepudiationOfOriginAndContent'] as bool),
+      persistentConfidentialityScope: pulumi.Input.fromValue(RosettaNetPipConfidentialityScope.fromValue(map['persistentConfidentialityScope']! as String)),
+      responseType: pulumi.Input.fromValue(RosettaNetResponseType.fromValue(map['responseType']! as String)),
       retryCount: pulumi.Input.fromValue(map['retryCount'] as int),
-      timeToPerformInSeconds: pulumi.Input.fromValue(
-        map['timeToPerformInSeconds'] as int,
-      ),
+      timeToPerformInSeconds: pulumi.Input.fromValue(map['timeToPerformInSeconds'] as int),
     );
   }
 }
+

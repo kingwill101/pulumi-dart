@@ -23,9 +23,8 @@ class BareMetalClusterMaintenanceConfig {
 
   factory BareMetalClusterMaintenanceConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterMaintenanceConfig(
-      maintenanceAddressCidrBlocks: pulumi.Input.fromValue(
-        (map['maintenanceAddressCidrBlocks'] as List).cast<String>(),
-      ),
+      maintenanceAddressCidrBlocks: pulumi.Input.fromValue((map['maintenanceAddressCidrBlocks'] as List).cast<String>()),
     );
   }
 }
+

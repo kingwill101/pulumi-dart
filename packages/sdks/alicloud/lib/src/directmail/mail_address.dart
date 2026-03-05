@@ -228,16 +228,12 @@ import 'mail_address_state.dart';
 class MailAddress extends pulumi.CustomResource {
   /// The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
   late final pulumi.Output<String> accountName;
-
   /// Account password. The password must be length 10-20 string, contains numbers, uppercase letters, lowercase letters at the same time.
   late final pulumi.Output<String?> password;
-
   /// Return address.
   late final pulumi.Output<String?> replyAddress;
-
   /// Account type. Valid values: `batch`, `trigger`.
   late final pulumi.Output<String> sendtype;
-
   /// Account Status freeze: 1, normal: 0.
   late final pulumi.Output<String> status;
 
@@ -250,11 +246,11 @@ class MailAddress extends pulumi.CustomResource {
     MailAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:directmail/mailAddress:MailAddress',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:directmail/mailAddress:MailAddress',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     password = registerOutput<String?>('password');
     replyAddress = registerOutput<String?>('replyAddress');
@@ -280,11 +276,11 @@ class MailAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:directmail/mailAddress:MailAddress',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:directmail/mailAddress:MailAddress',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     password = registerOutput<String?>('password');
     replyAddress = registerOutput<String?>('replyAddress');

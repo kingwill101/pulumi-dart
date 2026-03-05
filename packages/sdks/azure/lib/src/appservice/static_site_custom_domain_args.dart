@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticSiteCustomDomainArgs {
   /// The Domain Name which should be associated with this Static Site. Changing this forces a new Static Site Custom Domain to be created.
   final pulumi.Input<String> domainName;
-
   /// The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
   final pulumi.Input<String> staticSiteId;
-
   /// One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
   final pulumi.Input<String>? validationType;
 
@@ -38,11 +36,8 @@ class StaticSiteCustomDomainArgs {
     return StaticSiteCustomDomainArgs(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
       staticSiteId: pulumi.Input.fromValue(map['staticSiteId'] as String),
-      validationType: (() {
-        final guardedValue = map['validationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      validationType: (() { final guardedValue = map['validationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTransitRouterVbrAttachmentsArgs {
   /// ID of the CEN instance.
   final pulumi.Input<String> cenId;
-
   /// A list of resource id. The element value is same as `transit_router_id`.
   final pulumi.Input<List<String>>? ids;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
   final pulumi.Input<String>? status;
-
   /// ID of the transit router.
   final pulumi.Input<String>? transitRouterId;
 
@@ -49,26 +45,11 @@ class GetTransitRouterVbrAttachmentsArgs {
   factory GetTransitRouterVbrAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterVbrAttachmentsArgs(
       cenId: pulumi.Input.fromValue(map['cenId'] as String),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouterId: (() {
-        final guardedValue = map['transitRouterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouterId: (() { final guardedValue = map['transitRouterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

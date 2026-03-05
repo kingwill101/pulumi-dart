@@ -426,24 +426,19 @@ import 'edge_cache_keyset_state.dart';
 class EdgeCacheKeyset extends pulumi.CustomResource {
   /// A human-readable description of the resource.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Set of label tags associated with the EdgeCache resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
   /// and all following characters must be a dash, underscore, letter or digit.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// An ordered list of Ed25519 public keys to use for validating signed requests.
   /// You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
   /// You may specify no more than one Google-managed public key.
@@ -452,11 +447,9 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
   /// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> publicKeys;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// An ordered list of shared keys to use for validating signed requests.
   /// Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
   /// You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
@@ -473,11 +466,11 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
     EdgeCacheKeysetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -485,9 +478,7 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     publicKeys = registerOutput<List<Map<String, dynamic>>?>('publicKeys');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    validationSharedKeys = registerOutput<List<Map<String, dynamic>>?>(
-      'validationSharedKeys',
-    );
+    validationSharedKeys = registerOutput<List<Map<String, dynamic>>?>('validationSharedKeys');
   }
 
   /// Gets an existing [EdgeCacheKeyset] resource's state with the given [name] and [id].
@@ -508,11 +499,11 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -520,8 +511,6 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     publicKeys = registerOutput<List<Map<String, dynamic>>?>('publicKeys');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    validationSharedKeys = registerOutput<List<Map<String, dynamic>>?>(
-      'validationSharedKeys',
-    );
+    validationSharedKeys = registerOutput<List<Map<String, dynamic>>?>('validationSharedKeys');
   }
 }

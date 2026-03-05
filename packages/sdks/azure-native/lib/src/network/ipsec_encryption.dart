@@ -22,3 +22,4 @@ enum IpsecEncryption {
     throw ArgumentError('Unknown IpsecEncryption value: $value');
   }
 }
+

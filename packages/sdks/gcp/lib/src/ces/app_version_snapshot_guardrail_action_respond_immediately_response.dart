@@ -6,7 +6,6 @@ class AppVersionSnapshotGuardrailActionRespondImmediatelyResponse {
   /// (Output)
   /// Whether summarization is disabled.
   final pulumi.Input<bool>? disabled;
-
   /// (Output)
   /// Text for the agent to respond with.
   final pulumi.Input<String>? text;
@@ -20,23 +19,17 @@ class AppVersionSnapshotGuardrailActionRespondImmediatelyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disabled': ?disabled, 'text': ?text};
+    return <String, dynamic>{
+      'disabled': ?disabled,
+      'text': ?text,
+    };
   }
 
-  factory AppVersionSnapshotGuardrailActionRespondImmediatelyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotGuardrailActionRespondImmediatelyResponse.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailActionRespondImmediatelyResponse(
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      text: (() {
-        final guardedValue = map['text'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

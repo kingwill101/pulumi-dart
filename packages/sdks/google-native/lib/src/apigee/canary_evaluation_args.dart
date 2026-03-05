@@ -10,19 +10,14 @@ import 'google_cloud_apigee_v1_canary_evaluation_metric_labels.dart';
 class CanaryEvaluationArgs {
   /// The stable version that is serving requests.
   final pulumi.Input<String> control;
-
   /// End time for the evaluation's analysis.
   final pulumi.Input<String> endTime;
   final pulumi.Input<String> instanceId;
-
   /// Labels used to filter the metrics used for a canary evaluation.
-  final pulumi.Input<GoogleCloudApigeeV1CanaryEvaluationMetricLabels>
-  metricLabels;
+  final pulumi.Input<GoogleCloudApigeeV1CanaryEvaluationMetricLabels> metricLabels;
   final pulumi.Input<String> organizationId;
-
   /// Start time for the canary evaluation's analysis.
   final pulumi.Input<String> startTime;
-
   /// The newer version that is serving requests.
   final pulumi.Input<String> treatment;
 
@@ -49,11 +44,7 @@ class CanaryEvaluationArgs {
       'control': control,
       'endTime': endTime,
       'instanceId': instanceId,
-      'metricLabels':
-          pulumi.Input.mapInputValue<
-            GoogleCloudApigeeV1CanaryEvaluationMetricLabels,
-            Map<String, dynamic>
-          >(metricLabels, (value) => value.toMap()),
+      'metricLabels': pulumi.Input.mapInputValue<GoogleCloudApigeeV1CanaryEvaluationMetricLabels, Map<String, dynamic>>(metricLabels, (value) => value.toMap()),
       'organizationId': organizationId,
       'startTime': startTime,
       'treatment': treatment,
@@ -65,14 +56,11 @@ class CanaryEvaluationArgs {
       control: pulumi.Input.fromValue(map['control'] as String),
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      metricLabels: pulumi.Input.fromValue(
-        GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromMap(
-          (map['metricLabels']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      metricLabels: pulumi.Input.fromValue(GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromMap((map['metricLabels']! as Map).cast<String, dynamic>())),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       treatment: pulumi.Input.fromValue(map['treatment'] as String),
     );
   }
 }
+

@@ -6,19 +6,14 @@ import 'private_endpoint_connection_properties_response.dart';
 class GetPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// For optimistic concurrency control.
   final String? eTag;
-
   /// Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
   final String id;
-
   /// Name of the private endpoint endpoint connection.
   final String name;
-
   /// Properties of the private endpoint endpoint connection.
   final PrivateEndpointConnectionPropertiesResponse properties;
-
   /// Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
   final String type;
 
@@ -52,17 +47,12 @@ class GetPrivateEndpointConnectionResult {
   factory GetPrivateEndpointConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eTag: (() {
-        final guardedValue = map['eTag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: PrivateEndpointConnectionPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

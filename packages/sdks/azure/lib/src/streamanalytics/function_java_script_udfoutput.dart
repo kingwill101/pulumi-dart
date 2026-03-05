@@ -8,10 +8,14 @@ class FunctionJavaScriptUDFOutput {
 
   /// Creates a new [FunctionJavaScriptUDFOutput].
   /// [type] The Data Type output from this JavaScript Function. Possible values include `array`, `any`, `bigint`, `datetime`, `float`, `nvarchar(max)` and `record`.
-  FunctionJavaScriptUDFOutput({required this.type});
+  FunctionJavaScriptUDFOutput({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory FunctionJavaScriptUDFOutput.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class FunctionJavaScriptUDFOutput {
     );
   }
 }
+

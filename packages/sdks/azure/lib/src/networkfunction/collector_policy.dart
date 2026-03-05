@@ -497,19 +497,14 @@ import 'collector_policy_state.dart';
 class CollectorPolicy extends pulumi.CustomResource {
   /// An `ipfx_emission` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
   late final pulumi.Output<CollectorPolicyIpfxEmission> ipfxEmission;
-
   /// An `ipfx_ingestion` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
   late final pulumi.Output<CollectorPolicyIpfxIngestion> ipfxIngestion;
-
   /// Specifies the Azure Region where the Network Function Collector Policy should exist. Changing this forces a new Network Function Collector Policy to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name which should be used for this Network Function Collector Policy. Changing this forces a new Network Function Collector Policy to be created.
   late final pulumi.Output<String> name;
-
   /// A mapping of tags which should be assigned to the Network Function Collector Policy.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the Azure Traffic Collector ID of the Network Function Collector Policy. Changing this forces a new Network Function Collector Policy to be created.
   late final pulumi.Output<String> trafficCollectorId;
 
@@ -522,31 +517,13 @@ class CollectorPolicy extends pulumi.CustomResource {
     CollectorPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:networkfunction/collectorPolicy:CollectorPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>(
-      'ipfxEmission',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CollectorPolicyIpfxEmission.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ipfxIngestion = registerOutput<CollectorPolicyIpfxIngestion>(
-      'ipfxIngestion',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CollectorPolicyIpfxIngestion.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:networkfunction/collectorPolicy:CollectorPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>('ipfxEmission', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectorPolicyIpfxEmission.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipfxIngestion = registerOutput<CollectorPolicyIpfxIngestion>('ipfxIngestion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectorPolicyIpfxIngestion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -571,31 +548,13 @@ class CollectorPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:networkfunction/collectorPolicy:CollectorPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>(
-      'ipfxEmission',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CollectorPolicyIpfxEmission.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ipfxIngestion = registerOutput<CollectorPolicyIpfxIngestion>(
-      'ipfxIngestion',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CollectorPolicyIpfxIngestion.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:networkfunction/collectorPolicy:CollectorPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>('ipfxEmission', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectorPolicyIpfxEmission.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipfxIngestion = registerOutput<CollectorPolicyIpfxIngestion>('ipfxIngestion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectorPolicyIpfxIngestion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');

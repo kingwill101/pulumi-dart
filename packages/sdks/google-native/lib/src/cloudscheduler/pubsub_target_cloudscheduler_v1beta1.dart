@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PubsubTargetCloudschedulerV1beta1 {
   /// Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
   final pulumi.Input<Map<String, String>>? attributes;
-
   /// The message payload for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
   final pulumi.Input<String>? data;
-
   /// The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by Pub/Sub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
   final pulumi.Input<String> topicName;
 
@@ -33,19 +31,10 @@ class PubsubTargetCloudschedulerV1beta1 {
 
   factory PubsubTargetCloudschedulerV1beta1.fromMap(Map<String, dynamic> map) {
     return PubsubTargetCloudschedulerV1beta1(
-      attributes: (() {
-        final guardedValue = map['attributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      data: (() {
-        final guardedValue = map['data'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       topicName: pulumi.Input.fromValue(map['topicName'] as String),
     );
   }
 }
+

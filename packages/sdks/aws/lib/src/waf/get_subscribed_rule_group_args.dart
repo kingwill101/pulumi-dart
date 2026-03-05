@@ -11,31 +11,29 @@ class GetSubscribedRuleGroupArgs {
   ///
   /// At least one of `name` or `metric_name` must be configured.
   final pulumi.Input<String>? metricName;
-
   /// Name of the WAF rule group.
   final pulumi.Input<String>? name;
 
   /// Creates a new [GetSubscribedRuleGroupArgs].
   /// [metricName] Name of the WAF rule group.
   /// [name] Name of the WAF rule group.
-  GetSubscribedRuleGroupArgs({this.metricName, this.name});
+  GetSubscribedRuleGroupArgs({
+    this.metricName,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metricName': ?metricName, 'name': ?name};
+    return <String, dynamic>{
+      'metricName': ?metricName,
+      'name': ?name,
+    };
   }
 
   factory GetSubscribedRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscribedRuleGroupArgs(
-      metricName: (() {
-        final guardedValue = map['metricName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      metricName: (() { final guardedValue = map['metricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

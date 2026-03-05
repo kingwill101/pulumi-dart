@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallPolicyAssociationResponse {
   /// The target that the firewall policy is attached to.
   final pulumi.Input<String> attachmentTarget;
-
   /// Deprecated, please use short name instead. The display name of the firewall policy of the association.
   final pulumi.Input<String> displayName;
-
   /// The firewall policy ID of the association.
   final pulumi.Input<String> firewallPolicyId;
-
   /// The name for an association.
   final pulumi.Input<String> name;
-
   /// An integer indicating the priority of an association. The priority must be a positive value between 1 and 2147483647. Firewall Policies are evaluated from highest to lowest priority where 1 is the highest priority and 2147483647 is the lowest priority. The default value is `1000`. If two associations have the same priority then lexicographical order on association names is applied.
   final pulumi.Input<int> priority;
-
   /// The short name of the firewall policy of the association.
   final pulumi.Input<String> shortName;
 
@@ -50,16 +45,13 @@ class FirewallPolicyAssociationResponse {
 
   factory FirewallPolicyAssociationResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyAssociationResponse(
-      attachmentTarget: pulumi.Input.fromValue(
-        map['attachmentTarget'] as String,
-      ),
+      attachmentTarget: pulumi.Input.fromValue(map['attachmentTarget'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      firewallPolicyId: pulumi.Input.fromValue(
-        map['firewallPolicyId'] as String,
-      ),
+      firewallPolicyId: pulumi.Input.fromValue(map['firewallPolicyId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       priority: pulumi.Input.fromValue(map['priority'] as int),
       shortName: pulumi.Input.fromValue(map['shortName'] as String),
     );
   }
 }
+

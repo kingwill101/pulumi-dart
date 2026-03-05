@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPool.
 class GetPoolResult {
   /// Full path to the pool.
   final String fullPath;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -40,3 +40,4 @@ class GetPoolResult {
     );
   }
 }
+

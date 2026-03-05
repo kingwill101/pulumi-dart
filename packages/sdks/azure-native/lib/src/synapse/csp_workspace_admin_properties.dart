@@ -9,7 +9,9 @@ class CspWorkspaceAdminProperties {
 
   /// Creates a new [CspWorkspaceAdminProperties].
   /// [initialWorkspaceAdminObjectId] AAD object ID of initial workspace admin
-  CspWorkspaceAdminProperties({this.initialWorkspaceAdminObjectId});
+  CspWorkspaceAdminProperties({
+    this.initialWorkspaceAdminObjectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class CspWorkspaceAdminProperties {
 
   factory CspWorkspaceAdminProperties.fromMap(Map<String, dynamic> map) {
     return CspWorkspaceAdminProperties(
-      initialWorkspaceAdminObjectId: (() {
-        final guardedValue = map['initialWorkspaceAdminObjectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      initialWorkspaceAdminObjectId: (() { final guardedValue = map['initialWorkspaceAdminObjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

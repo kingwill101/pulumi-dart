@@ -12,19 +12,20 @@ class PhysicalReplicationSlotArgs {
 
   /// Creates a new [PhysicalReplicationSlotArgs].
   /// [name] The name of the replication slot.
-  PhysicalReplicationSlotArgs({this.name});
+  PhysicalReplicationSlotArgs({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory PhysicalReplicationSlotArgs.fromMap(Map<String, dynamic> map) {
     return PhysicalReplicationSlotArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

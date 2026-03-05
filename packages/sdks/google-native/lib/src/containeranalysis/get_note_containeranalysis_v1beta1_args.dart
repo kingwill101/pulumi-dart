@@ -13,22 +13,23 @@ class GetNoteContaineranalysisV1beta1Args {
   /// Creates a new [GetNoteContaineranalysisV1beta1Args].
   /// [noteId] Required.
   /// [project] Optional.
-  GetNoteContaineranalysisV1beta1Args({required this.noteId, this.project});
+  GetNoteContaineranalysisV1beta1Args({
+    required this.noteId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'noteId': noteId, 'project': ?project};
+    return <String, dynamic>{
+      'noteId': noteId,
+      'project': ?project,
+    };
   }
 
-  factory GetNoteContaineranalysisV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNoteContaineranalysisV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetNoteContaineranalysisV1beta1Args(
       noteId: pulumi.Input.fromValue(map['noteId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

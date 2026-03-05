@@ -14,18 +14,15 @@ class ApplicationInsightsComponentAnalyticsItemPropertiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'functionAlias': ?functionAlias};
+    return <String, dynamic>{
+      'functionAlias': ?functionAlias,
+    };
   }
 
-  factory ApplicationInsightsComponentAnalyticsItemPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationInsightsComponentAnalyticsItemPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationInsightsComponentAnalyticsItemPropertiesResponse(
-      functionAlias: (() {
-        final guardedValue = map['functionAlias'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      functionAlias: (() { final guardedValue = map['functionAlias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

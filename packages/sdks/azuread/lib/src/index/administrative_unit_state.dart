@@ -6,23 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdministrativeUnitState {
   /// The description of the administrative unit.
   final pulumi.Input<String>? description;
-
   /// The display name of the administrative unit.
   final pulumi.Input<String>? displayName;
-
   /// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
   final pulumi.Input<bool>? hiddenMembershipEnabled;
-
   /// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
   ///
   /// &gt; **Caution** When using the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
   ///
   /// !&gt; **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
   final pulumi.Input<List<String>>? members;
-
   /// The object ID of the administrative unit.
   final pulumi.Input<String>? objectId;
-
   /// If `true`, will return an error if an existing administrative unit is found with the same name
   final pulumi.Input<bool>? preventDuplicateNames;
 
@@ -55,36 +50,13 @@ class AdministrativeUnitState {
 
   factory AdministrativeUnitState.fromMap(Map<String, dynamic> map) {
     return AdministrativeUnitState(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hiddenMembershipEnabled: (() {
-        final guardedValue = map['hiddenMembershipEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      members: (() {
-        final guardedValue = map['members'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      objectId: (() {
-        final guardedValue = map['objectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      preventDuplicateNames: (() {
-        final guardedValue = map['preventDuplicateNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hiddenMembershipEnabled: (() { final guardedValue = map['hiddenMembershipEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      preventDuplicateNames: (() { final guardedValue = map['preventDuplicateNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -12,8 +12,7 @@ enum RegionInstanceGroupManagerTargetSizeUnit {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RegionInstanceGroupManagerTargetSizeUnit value: $value',
-    );
+    throw ArgumentError('Unknown RegionInstanceGroupManagerTargetSizeUnit value: $value');
   }
 }
+

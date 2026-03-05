@@ -7,7 +7,6 @@ import 'get_grant_rule_to_cens_cen.dart';
 class GetGrantRuleToCensResult {
   /// A list of Express Connect Grant Rule To Cens. Each element contains the following attributes:
   final List<GetGrantRuleToCensCen> cens;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -36,11 +35,7 @@ class GetGrantRuleToCensResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cens':
-          pulumi.Input.encodeList<GetGrantRuleToCensCen, Map<String, dynamic>>(
-            cens,
-            (value) => value.toMap(),
-          ),
+      'cens': pulumi.Input.encodeList<GetGrantRuleToCensCen, Map<String, dynamic>>(cens, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'instanceId': instanceId,
@@ -52,30 +47,14 @@ class GetGrantRuleToCensResult {
 
   factory GetGrantRuleToCensResult.fromMap(Map<String, dynamic> map) {
     return GetGrantRuleToCensResult(
-      cens: pulumi.Input.decodeList<GetGrantRuleToCensCen>(
-        map['cens']!,
-        (value) => GetGrantRuleToCensCen.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      cens: pulumi.Input.decodeList<GetGrantRuleToCensCen>(map['cens']!, (value) => GetGrantRuleToCensCen.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
     );
   }
 }
+

@@ -189,25 +189,18 @@ import 'linked_service_mysql_state.dart';
 class LinkedServiceMysql extends pulumi.CustomResource {
   /// A map of additional properties to associate with the Data Factory Linked Service MySQL.
   late final pulumi.Output<Map<String, String>?> additionalProperties;
-
   /// List of tags that can be used for describing the Data Factory Linked Service MySQL.
   late final pulumi.Output<List<String>?> annotations;
-
   /// The connection string in which to authenticate with MySQL.
   late final pulumi.Output<String> connectionString;
-
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
-
   /// The description for the Data Factory Linked Service MySQL.
   late final pulumi.Output<String?> description;
-
   /// The integration runtime reference to associate with the Data Factory Linked Service MySQL.
   late final pulumi.Output<String?> integrationRuntimeName;
-
   /// Specifies the name of the Data Factory Linked Service MySQL. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
-
   /// A map of parameters to associate with the Data Factory Linked Service MySQL.
   late final pulumi.Output<Map<String, String>?> parameters;
 
@@ -220,14 +213,12 @@ class LinkedServiceMysql extends pulumi.CustomResource {
     LinkedServiceMysqlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/linkedServiceMysql:LinkedServiceMysql',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+          'azure:datafactory/linkedServiceMysql:LinkedServiceMysql',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     connectionString = registerOutput<String>('connectionString');
     dataFactoryId = registerOutput<String>('dataFactoryId');
@@ -255,14 +246,12 @@ class LinkedServiceMysql extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/linkedServiceMysql:LinkedServiceMysql',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+          'azure:datafactory/linkedServiceMysql:LinkedServiceMysql',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     connectionString = registerOutput<String>('connectionString');
     dataFactoryId = registerOutput<String>('dataFactoryId');

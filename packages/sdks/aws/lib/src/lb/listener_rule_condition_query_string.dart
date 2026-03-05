@@ -5,27 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListenerRuleConditionQueryString {
   /// Query string key pattern to match.
   final pulumi.Input<String>? key;
-
   /// Query string value pattern to match.
   final pulumi.Input<String> value;
 
   /// Creates a new [ListenerRuleConditionQueryString].
   /// [key] Query string key pattern to match.
   /// [value] Query string value pattern to match.
-  ListenerRuleConditionQueryString({this.key, required this.value});
+  ListenerRuleConditionQueryString({
+    this.key,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key, 'value': value};
+    return <String, dynamic>{
+      'key': ?key,
+      'value': value,
+    };
   }
 
   factory ListenerRuleConditionQueryString.fromMap(Map<String, dynamic> map) {
     return ListenerRuleConditionQueryString(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

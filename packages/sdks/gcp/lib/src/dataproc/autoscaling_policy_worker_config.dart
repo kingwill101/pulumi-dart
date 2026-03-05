@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoscalingPolicyWorkerConfig {
   /// Maximum number of instances for this group.
   final pulumi.Input<int> maxInstances;
-
   /// Minimum number of instances for this group. Bounds: [2, maxInstances]. Defaults to 2.
   final pulumi.Input<int>? minInstances;
-
   /// Weight for the instance group, which is used to determine the fraction of total workers
   /// in the cluster from this instance group. For example, if primary workers have weight 2,
   /// and secondary workers have weight 1, the cluster will have approximately 2 primary workers
@@ -44,16 +42,9 @@ class AutoscalingPolicyWorkerConfig {
   factory AutoscalingPolicyWorkerConfig.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyWorkerConfig(
       maxInstances: pulumi.Input.fromValue(map['maxInstances'] as int),
-      minInstances: (() {
-        final guardedValue = map['minInstances'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      weight: (() {
-        final guardedValue = map['weight'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

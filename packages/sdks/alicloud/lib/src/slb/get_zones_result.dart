@@ -8,20 +8,15 @@ class GetZonesResult {
   final String? availableSlbAddressIpVersion;
   final String? availableSlbAddressType;
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of primary zone IDs.
   final List<String> ids;
-
   /// (Available in 1.157.0+) The primary zone.
   final String? masterZoneId;
   final String? outputFile;
-
   /// (Available in 1.157.0+) The secondary zone.
   final String? slaveZoneId;
-
   /// A list of availability zones. Each element contains the following attributes:
   final List<GetZonesZone> zones;
 
@@ -57,51 +52,22 @@ class GetZonesResult {
       'masterZoneId': ?masterZoneId,
       'outputFile': ?outputFile,
       'slaveZoneId': ?slaveZoneId,
-      'zones': pulumi.Input.encodeList<GetZonesZone, Map<String, dynamic>>(
-        zones,
-        (value) => value.toMap(),
-      ),
+      'zones': pulumi.Input.encodeList<GetZonesZone, Map<String, dynamic>>(zones, (value) => value.toMap()),
     };
   }
 
   factory GetZonesResult.fromMap(Map<String, dynamic> map) {
     return GetZonesResult(
-      availableSlbAddressIpVersion: (() {
-        final guardedValue = map['availableSlbAddressIpVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      availableSlbAddressType: (() {
-        final guardedValue = map['availableSlbAddressType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      availableSlbAddressIpVersion: (() { final guardedValue = map['availableSlbAddressIpVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      availableSlbAddressType: (() { final guardedValue = map['availableSlbAddressType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      masterZoneId: (() {
-        final guardedValue = map['masterZoneId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      slaveZoneId: (() {
-        final guardedValue = map['slaveZoneId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      zones: pulumi.Input.decodeList<GetZonesZone>(
-        map['zones']!,
-        (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      masterZoneId: (() { final guardedValue = map['masterZoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      slaveZoneId: (() { final guardedValue = map['slaveZoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zones: pulumi.Input.decodeList<GetZonesZone>(map['zones']!, (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

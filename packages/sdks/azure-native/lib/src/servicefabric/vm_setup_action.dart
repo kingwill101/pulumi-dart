@@ -15,3 +15,4 @@ enum VmSetupAction {
     throw ArgumentError('Unknown VmSetupAction value: $value');
   }
 }
+

@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAttachedNetwork.
 class GetAttachedNetworkResult {
   final String devCenterId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// The ID of the attached Dev Center Network Connection.
   final String networkConnectionId;
 
@@ -41,3 +40,4 @@ class GetAttachedNetworkResult {
     );
   }
 }
+

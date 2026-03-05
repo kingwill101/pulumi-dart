@@ -15,3 +15,4 @@ enum SchemaStatus {
     throw ArgumentError('Unknown SchemaStatus value: $value');
   }
 }
+

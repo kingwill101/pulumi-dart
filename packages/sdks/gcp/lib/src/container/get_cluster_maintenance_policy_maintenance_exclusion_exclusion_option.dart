@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption {
   /// The behavior of the exclusion end time.
   final pulumi.Input<String> endTimeBehavior;
-
   /// The scope of automatic upgrades to restrict in the exclusion window.
   final pulumi.Input<String> scope;
 
@@ -24,12 +23,11 @@ class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption {
     };
   }
 
-  factory GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption.fromMap(Map<String, dynamic> map) {
     return GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption(
       endTimeBehavior: pulumi.Input.fromValue(map['endTimeBehavior'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

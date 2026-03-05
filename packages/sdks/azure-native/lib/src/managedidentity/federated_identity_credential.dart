@@ -159,22 +159,16 @@ import 'system_data_response.dart';
 class FederatedIdentityCredential extends pulumi.CustomResource {
   /// The list of audiences that can appear in the issued token.
   late final pulumi.Output<List<String>> audiences;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The URL of the issuer to be trusted.
   late final pulumi.Output<String> issuer;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The identifier of the external identity.
   late final pulumi.Output<String> subject;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -187,26 +181,17 @@ class FederatedIdentityCredential extends pulumi.CustomResource {
     FederatedIdentityCredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:managedidentity:FederatedIdentityCredential',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:managedidentity:FederatedIdentityCredential',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     audiences = registerOutput<List<String>>('audiences');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     issuer = registerOutput<String>('issuer');
     this.name = registerOutput<String>('name');
     subject = registerOutput<String>('subject');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

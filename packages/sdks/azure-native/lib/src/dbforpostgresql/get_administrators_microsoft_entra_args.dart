@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAdministratorsMicrosoftEntraArgs {
   /// Object identifier of the Microsoft Entra principal.
   final pulumi.Input<String> objectId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -34,15 +32,12 @@ class GetAdministratorsMicrosoftEntraArgs {
     };
   }
 
-  factory GetAdministratorsMicrosoftEntraArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAdministratorsMicrosoftEntraArgs.fromMap(Map<String, dynamic> map) {
     return GetAdministratorsMicrosoftEntraArgs(
       objectId: pulumi.Input.fromValue(map['objectId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
+

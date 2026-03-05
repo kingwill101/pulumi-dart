@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFrontdoorCustomDomainArgs {
   /// The name of the Front Door Custom Domain.
   final pulumi.Input<String> name;
-
   /// The name of the Front Door Profile which the Front Door Custom Domain is bound to.
   final pulumi.Input<String> profileName;
-
   /// The name of the Resource Group where the Front Door Profile exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetFrontdoorCustomDomainArgs {
     return GetFrontdoorCustomDomainArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
       profileName: pulumi.Input.fromValue(map['profileName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceIdentity {
   /// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
   final pulumi.Input<String>? type;
-
   /// The resource ids of the user assigned identities to use
   final pulumi.Input<List<String>>? userAssignedIdentities;
 
   /// Creates a new [ResourceIdentity].
   /// [type] The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
   /// [userAssignedIdentities] The resource ids of the user assigned identities to use
-  ResourceIdentity({this.type, this.userAssignedIdentities});
+  ResourceIdentity({
+    this.type,
+    this.userAssignedIdentities,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class ResourceIdentity {
 
   factory ResourceIdentity.fromMap(Map<String, dynamic> map) {
     return ResourceIdentity(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentities: (() {
-        final guardedValue = map['userAssignedIdentities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -9,24 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointArgs {
   /// An optional description of the endpoint.
   final pulumi.Input<String>? description;
-
   /// The location for the endpoint.
   final pulumi.Input<String> location;
-
   /// Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
   final pulumi.Input<String>? name;
-
   /// Name of the VPC network that is connected to the IDS endpoint. This can either contain the VPC network name itself (like "src-net") or the full URL to the network (like "projects/{project_id}/global/networks/src-net").
   final pulumi.Input<String> network;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The minimum alert severity level that is reported by the endpoint.
   /// Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
   final pulumi.Input<String> severity;
-
   /// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
   final pulumi.Input<List<String>>? threatExceptions;
 
@@ -62,29 +56,14 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: pulumi.Input.fromValue(map['network'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       severity: pulumi.Input.fromValue(map['severity'] as String),
-      threatExceptions: (() {
-        final guardedValue = map['threatExceptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      threatExceptions: (() { final guardedValue = map['threatExceptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

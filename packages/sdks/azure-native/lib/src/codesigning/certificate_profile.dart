@@ -159,43 +159,30 @@ import 'system_data_response.dart';
 class CertificateProfile extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// List of renewed certificates.
   late final pulumi.Output<List<Map<String, dynamic>>> certificates;
-
   /// Identity validation id used for the certificate subject name.
   late final pulumi.Output<String> identityValidationId;
-
   /// Whether to include L in the certificate subject name. Applicable only for private trust, private trust ci profile types
   late final pulumi.Output<bool?> includeCity;
-
   /// Whether to include C in the certificate subject name. Applicable only for private trust, private trust ci profile types
   late final pulumi.Output<bool?> includeCountry;
-
   /// Whether to include PC in the certificate subject name.
   late final pulumi.Output<bool?> includePostalCode;
-
   /// Whether to include S in the certificate subject name. Applicable only for private trust, private trust ci profile types
   late final pulumi.Output<bool?> includeState;
-
   /// Whether to include STREET in the certificate subject name.
   late final pulumi.Output<bool?> includeStreetAddress;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Profile type of the certificate.
   late final pulumi.Output<String> profileType;
-
   /// Status of the current operation on certificate profile.
   late final pulumi.Output<String> provisioningState;
-
   /// Status of the certificate profile.
   late final pulumi.Output<String> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -208,11 +195,11 @@ class CertificateProfile extends pulumi.CustomResource {
     CertificateProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:codesigning:CertificateProfile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:codesigning:CertificateProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     certificates = registerOutput<List<Map<String, dynamic>>>('certificates');
     identityValidationId = registerOutput<String>('identityValidationId');
@@ -225,16 +212,7 @@ class CertificateProfile extends pulumi.CustomResource {
     profileType = registerOutput<String>('profileType');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

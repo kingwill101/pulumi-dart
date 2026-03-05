@@ -428,52 +428,34 @@ import 'system_data_response.dart';
 class LocalRulestack extends pulumi.CustomResource {
   /// subscription scope of global rulestack
   late final pulumi.Output<List<String>?> associatedSubscriptions;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Mode for default rules creation
   late final pulumi.Output<String?> defaultMode;
-
   /// rulestack description
   late final pulumi.Output<String?> description;
-
   /// The managed service identities assigned to this resource.
-  late final pulumi.Output<
-    AzureResourceManagerManagedIdentityPropertiesResponse?
-  >
-  identity;
-
+  late final pulumi.Output<AzureResourceManagerManagedIdentityPropertiesResponse?> identity;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// minimum version
   late final pulumi.Output<String?> minAppIdVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// PanEtag info
   late final pulumi.Output<String?> panEtag;
-
   /// Rulestack Location, Required for GlobalRulestacks, Not for LocalRulestacks
   late final pulumi.Output<String?> panLocation;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Rulestack Type
   late final pulumi.Output<String?> scope;
-
   /// Security Profile
   late final pulumi.Output<SecurityServicesResponse?> securityServices;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -486,28 +468,16 @@ class LocalRulestack extends pulumi.CustomResource {
     LocalRulestackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cloudngfw:LocalRulestack',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    associatedSubscriptions = registerOutput<List<String>?>(
-      'associatedSubscriptions',
-    );
+          'azure-native:cloudngfw:LocalRulestack',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    associatedSubscriptions = registerOutput<List<String>?>('associatedSubscriptions');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     defaultMode = registerOutput<String?>('defaultMode');
     description = registerOutput<String?>('description');
-    identity =
-        registerOutput<AzureResourceManagerManagedIdentityPropertiesResponse?>(
-          'identity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AzureResourceManagerManagedIdentityPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    identity = registerOutput<AzureResourceManagerManagedIdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureResourceManagerManagedIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     minAppIdVersion = registerOutput<String?>('minAppIdVersion');
     this.name = registerOutput<String>('name');
@@ -515,26 +485,8 @@ class LocalRulestack extends pulumi.CustomResource {
     panLocation = registerOutput<String?>('panLocation');
     provisioningState = registerOutput<String>('provisioningState');
     scope = registerOutput<String?>('scope');
-    securityServices = registerOutput<SecurityServicesResponse?>(
-      'securityServices',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityServicesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    securityServices = registerOutput<SecurityServicesResponse?>('securityServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityServicesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

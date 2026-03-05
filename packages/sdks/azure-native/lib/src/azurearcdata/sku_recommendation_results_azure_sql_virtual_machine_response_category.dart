@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory {
   /// Available VM SKUs for the Azure SQL Virtual Machine.
   final pulumi.Input<List<String>>? availableVmSkus;
-
   /// The virtual machine family of the target SKU.
   final pulumi.Input<String>? virtualMachineFamily;
 
@@ -24,20 +23,11 @@ class SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory {
     };
   }
 
-  factory SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory(
-      availableVmSkus: (() {
-        final guardedValue = map['availableVmSkus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      virtualMachineFamily: (() {
-        final guardedValue = map['virtualMachineFamily'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      availableVmSkus: (() { final guardedValue = map['availableVmSkus']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      virtualMachineFamily: (() { final guardedValue = map['virtualMachineFamily']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

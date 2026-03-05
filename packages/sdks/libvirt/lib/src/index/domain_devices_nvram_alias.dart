@@ -8,10 +8,14 @@ class DomainDevicesNvramAlias {
 
   /// Creates a new [DomainDevicesNvramAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesNvramAlias({required this.name});
+  DomainDevicesNvramAlias({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory DomainDevicesNvramAlias.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesNvramAlias {
     );
   }
 }
+

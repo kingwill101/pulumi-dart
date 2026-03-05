@@ -8,19 +8,20 @@ class TablePointInTimeRecovery {
 
   /// Creates a new [TablePointInTimeRecovery].
   /// [status] Valid values: `ENABLED`, `DISABLED`. The default value is `DISABLED`.
-  TablePointInTimeRecovery({this.status});
+  TablePointInTimeRecovery({
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': ?status};
+    return <String, dynamic>{
+      'status': ?status,
+    };
   }
 
   factory TablePointInTimeRecovery.fromMap(Map<String, dynamic> map) {
     return TablePointInTimeRecovery(
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

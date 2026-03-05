@@ -8,20 +8,15 @@ class GetVpcEndpointLinkedVpcsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
-
   /// The ID of the instance.
   final String instanceId;
-
   /// The name of the module that you want to access.
   final String moduleName;
   final String? outputFile;
-
   /// The status of the Vpc Endpoint Linked Vpc.
   final String? status;
-
   /// A list of CR Vpc Endpoint Linked Vpcs. Each element contains the following attributes:
-  final List<GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc>
-  vpcEndpointLinkedVpcs;
+  final List<GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc> vpcEndpointLinkedVpcs;
 
   /// Creates a new [GetVpcEndpointLinkedVpcsResult].
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -49,11 +44,7 @@ class GetVpcEndpointLinkedVpcsResult {
       'moduleName': moduleName,
       'outputFile': ?outputFile,
       'status': ?status,
-      'vpcEndpointLinkedVpcs':
-          pulumi.Input.encodeList<
-            GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc,
-            Map<String, dynamic>
-          >(vpcEndpointLinkedVpcs, (value) => value.toMap()),
+      'vpcEndpointLinkedVpcs': pulumi.Input.encodeList<GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc, Map<String, dynamic>>(vpcEndpointLinkedVpcs, (value) => value.toMap()),
     };
   }
 
@@ -63,23 +54,10 @@ class GetVpcEndpointLinkedVpcsResult {
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
       moduleName: map['moduleName'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vpcEndpointLinkedVpcs:
-          pulumi.Input.decodeList<GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc>(
-            map['vpcEndpointLinkedVpcs']!,
-            (value) => GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpcEndpointLinkedVpcs: pulumi.Input.decodeList<GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc>(map['vpcEndpointLinkedVpcs']!, (value) => GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

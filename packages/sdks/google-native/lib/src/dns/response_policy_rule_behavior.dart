@@ -15,3 +15,4 @@ enum ResponsePolicyRuleBehavior {
     throw ArgumentError('Unknown ResponsePolicyRuleBehavior value: $value');
   }
 }
+

@@ -10,35 +10,20 @@ class AutomationSelector {
 
   /// Creates a new [AutomationSelector].
   /// [targets] Contains attributes about a target.
-  AutomationSelector({required this.targets});
+  AutomationSelector({
+    required this.targets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'targets':
-          pulumi.Input.mapInputValue<
-            List<AutomationSelectorTarget>,
-            List<Map<String, dynamic>>
-          >(
-            targets,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AutomationSelectorTarget,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'targets': pulumi.Input.mapInputValue<List<AutomationSelectorTarget>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<AutomationSelectorTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AutomationSelector.fromMap(Map<String, dynamic> map) {
     return AutomationSelector(
-      targets: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<AutomationSelectorTarget>(
-          map['targets']!,
-          (value) => AutomationSelectorTarget.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      targets: pulumi.Input.fromValue(pulumi.Input.decodeList<AutomationSelectorTarget>(map['targets']!, (value) => AutomationSelectorTarget.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

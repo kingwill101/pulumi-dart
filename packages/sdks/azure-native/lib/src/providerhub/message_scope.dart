@@ -15,3 +15,4 @@ enum MessageScope {
     throw ArgumentError('Unknown MessageScope value: $value');
   }
 }
+

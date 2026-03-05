@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureNodePoolAutoscaling {
   /// Maximum number of nodes in the node pool. Must be &gt;= min_node_count.
   final pulumi.Input<int> maxNodeCount;
-
   /// Minimum number of nodes in the node pool. Must be &gt;= 1 and &lt;= max_node_count.
   final pulumi.Input<int> minNodeCount;
 
@@ -31,3 +30,4 @@ class AzureNodePoolAutoscaling {
     );
   }
 }
+

@@ -7,10 +7,8 @@ import 'report_summary_vmware_node_response_2.dart';
 class ReportSummaryVmwareNodeAllocationResponse {
   /// Count of assets allocated to these nodes
   final pulumi.Input<String> allocatedAssetCount;
-
   /// Count of this node type to be provisioned
   final pulumi.Input<String> nodeCount;
-
   /// VMWare node type, e.g. "ve1-standard-72"
   final pulumi.Input<ReportSummaryVmwareNodeResponse> vmwareNode;
 
@@ -28,27 +26,16 @@ class ReportSummaryVmwareNodeAllocationResponse {
     return <String, dynamic>{
       'allocatedAssetCount': allocatedAssetCount,
       'nodeCount': nodeCount,
-      'vmwareNode':
-          pulumi.Input.mapInputValue<
-            ReportSummaryVmwareNodeResponse,
-            Map<String, dynamic>
-          >(vmwareNode, (value) => value.toMap()),
+      'vmwareNode': pulumi.Input.mapInputValue<ReportSummaryVmwareNodeResponse, Map<String, dynamic>>(vmwareNode, (value) => value.toMap()),
     };
   }
 
-  factory ReportSummaryVmwareNodeAllocationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReportSummaryVmwareNodeAllocationResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryVmwareNodeAllocationResponse(
-      allocatedAssetCount: pulumi.Input.fromValue(
-        map['allocatedAssetCount'] as String,
-      ),
+      allocatedAssetCount: pulumi.Input.fromValue(map['allocatedAssetCount'] as String),
       nodeCount: pulumi.Input.fromValue(map['nodeCount'] as String),
-      vmwareNode: pulumi.Input.fromValue(
-        ReportSummaryVmwareNodeResponse.fromMap(
-          (map['vmwareNode']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      vmwareNode: pulumi.Input.fromValue(ReportSummaryVmwareNodeResponse.fromMap((map['vmwareNode']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

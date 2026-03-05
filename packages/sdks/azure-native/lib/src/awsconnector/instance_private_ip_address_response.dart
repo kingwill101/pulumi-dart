@@ -7,13 +7,10 @@ import 'instance_network_interface_association_response.dart';
 class InstancePrivateIpAddressResponse {
   /// &lt;p&gt;The association information for an Elastic IP address for the network interface.&lt;/p&gt;
   final pulumi.Input<InstanceNetworkInterfaceAssociationResponse>? association;
-
   /// &lt;p&gt;Indicates whether this IPv4 address is the primary private IP address of the network interface.&lt;/p&gt;
   final pulumi.Input<bool>? primary;
-
   /// &lt;p&gt;The private IPv4 DNS name.&lt;/p&gt;
   final pulumi.Input<String>? privateDnsName;
-
   /// &lt;p&gt;The private IPv4 address of the network interface.&lt;/p&gt;
   final pulumi.Input<String>? privateIpAddress;
 
@@ -31,11 +28,7 @@ class InstancePrivateIpAddressResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'association':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstanceNetworkInterfaceAssociationResponse,
-            Map<String, dynamic>
-          >(association, (value) => value.toMap()),
+      'association': ?pulumi.Input.mapOptionalInputValue<InstanceNetworkInterfaceAssociationResponse, Map<String, dynamic>>(association, (value) => value.toMap()),
       'primary': ?primary,
       'privateDnsName': ?privateDnsName,
       'privateIpAddress': ?privateIpAddress,
@@ -44,30 +37,11 @@ class InstancePrivateIpAddressResponse {
 
   factory InstancePrivateIpAddressResponse.fromMap(Map<String, dynamic> map) {
     return InstancePrivateIpAddressResponse(
-      association: (() {
-        final guardedValue = map['association'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstanceNetworkInterfaceAssociationResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      primary: (() {
-        final guardedValue = map['primary'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      privateDnsName: (() {
-        final guardedValue = map['privateDnsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateIpAddress: (() {
-        final guardedValue = map['privateIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      association: (() { final guardedValue = map['association']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceNetworkInterfaceAssociationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      primary: (() { final guardedValue = map['primary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      privateDnsName: (() { final guardedValue = map['privateDnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

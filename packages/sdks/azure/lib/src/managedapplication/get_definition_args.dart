@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDefinitionArgs {
   /// Specifies the name of the Managed Application Definition.
   final pulumi.Input<String> name;
-
   /// Specifies the name of the Resource Group where this Managed Application Definition exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetDefinitionArgs].
   /// [name] Specifies the name of the Managed Application Definition.
   /// [resourceGroupName] Specifies the name of the Resource Group where this Managed Application Definition exists.
-  GetDefinitionArgs({required this.name, required this.resourceGroupName});
+  GetDefinitionArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetDefinitionArgs {
   factory GetDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetDefinitionArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

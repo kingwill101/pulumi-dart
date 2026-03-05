@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentSettingsGithub {
   /// Trigger a deployment running `pulumi up` on commit.
   final pulumi.Input<bool>? deployCommits;
-
   /// The paths within the repo that deployments should be filtered to.
   final pulumi.Input<List<String>>? paths;
-
   /// Trigger a deployment running `pulumi preview` when a PR is opened.
   final pulumi.Input<bool>? previewPullRequests;
-
   /// Use this stack as a template for pull request review stacks.
   final pulumi.Input<bool>? pullRequestTemplate;
-
   /// The GitHub repository in the format org/repo.
   final pulumi.Input<String>? repository;
 
@@ -45,31 +41,12 @@ class DeploymentSettingsGithub {
 
   factory DeploymentSettingsGithub.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsGithub(
-      deployCommits: (() {
-        final guardedValue = map['deployCommits'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      paths: (() {
-        final guardedValue = map['paths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      previewPullRequests: (() {
-        final guardedValue = map['previewPullRequests'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      pullRequestTemplate: (() {
-        final guardedValue = map['pullRequestTemplate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      repository: (() {
-        final guardedValue = map['repository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deployCommits: (() { final guardedValue = map['deployCommits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      paths: (() { final guardedValue = map['paths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      previewPullRequests: (() { final guardedValue = map['previewPullRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      pullRequestTemplate: (() { final guardedValue = map['pullRequestTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      repository: (() { final guardedValue = map['repository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

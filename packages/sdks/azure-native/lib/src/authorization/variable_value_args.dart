@@ -10,10 +10,8 @@ import 'policy_variable_value_column_value.dart';
 class VariableValueArgs {
   /// Variable value column value array.
   final pulumi.Input<List<PolicyVariableValueColumnValue>> values;
-
   /// The name of the variable to operate on.
   final pulumi.Input<String> variableName;
-
   /// The name of the variable value to operate on.
   final pulumi.Input<String>? variableValueName;
 
@@ -29,18 +27,7 @@ class VariableValueArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'values':
-          pulumi.Input.mapInputValue<
-            List<PolicyVariableValueColumnValue>,
-            List<Map<String, dynamic>>
-          >(
-            values,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PolicyVariableValueColumnValue,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'values': pulumi.Input.mapInputValue<List<PolicyVariableValueColumnValue>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<PolicyVariableValueColumnValue, Map<String, dynamic>>(value, (value) => value.toMap())),
       'variableName': variableName,
       'variableValueName': ?variableValueName,
     };
@@ -48,20 +35,10 @@ class VariableValueArgs {
 
   factory VariableValueArgs.fromMap(Map<String, dynamic> map) {
     return VariableValueArgs(
-      values: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<PolicyVariableValueColumnValue>(
-          map['values']!,
-          (value) => PolicyVariableValueColumnValue.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      values: pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyVariableValueColumnValue>(map['values']!, (value) => PolicyVariableValueColumnValue.fromMap((value as Map).cast<String, dynamic>()))),
       variableName: pulumi.Input.fromValue(map['variableName'] as String),
-      variableValueName: (() {
-        final guardedValue = map['variableValueName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      variableValueName: (() { final guardedValue = map['variableValueName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

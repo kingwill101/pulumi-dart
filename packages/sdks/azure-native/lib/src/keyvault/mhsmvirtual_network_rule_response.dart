@@ -9,10 +9,14 @@ class MHSMVirtualNetworkRuleResponse {
 
   /// Creates a new [MHSMVirtualNetworkRuleResponse].
   /// [id] Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
-  MHSMVirtualNetworkRuleResponse({required this.id});
+  MHSMVirtualNetworkRuleResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory MHSMVirtualNetworkRuleResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class MHSMVirtualNetworkRuleResponse {
     );
   }
 }
+

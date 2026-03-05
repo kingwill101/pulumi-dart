@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiscoveredEntityLightSummary {
   /// Gets or sets the number of machines.
   final pulumi.Input<int> numberOfMachines;
-
   /// Gets or sets the number of servers.
   final pulumi.Input<int> numberOfServers;
-
   /// Gets or sets the number of web apps.
   final pulumi.Input<int> numberOfWebApps;
 
@@ -39,3 +37,4 @@ class DiscoveredEntityLightSummary {
     );
   }
 }
+

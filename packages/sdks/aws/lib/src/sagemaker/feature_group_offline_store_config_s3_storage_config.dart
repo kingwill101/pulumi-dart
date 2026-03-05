@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureGroupOfflineStoreConfigS3StorageConfig {
   /// The AWS Key Management Service (KMS) key ID of the key used to encrypt any objects written into the OfflineStore S3 location.
   final pulumi.Input<String>? kmsKeyId;
-
   /// The S3 path where offline records are written.
   final pulumi.Input<String>? resolvedOutputS3Uri;
-
   /// The S3 URI, or location in Amazon S3, of OfflineStore.
   final pulumi.Input<String> s3Uri;
 
@@ -30,21 +28,12 @@ class FeatureGroupOfflineStoreConfigS3StorageConfig {
     };
   }
 
-  factory FeatureGroupOfflineStoreConfigS3StorageConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FeatureGroupOfflineStoreConfigS3StorageConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupOfflineStoreConfigS3StorageConfig(
-      kmsKeyId: (() {
-        final guardedValue = map['kmsKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resolvedOutputS3Uri: (() {
-        final guardedValue = map['resolvedOutputS3Uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resolvedOutputS3Uri: (() { final guardedValue = map['resolvedOutputS3Uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3Uri: pulumi.Input.fromValue(map['s3Uri'] as String),
     );
   }
 }
+

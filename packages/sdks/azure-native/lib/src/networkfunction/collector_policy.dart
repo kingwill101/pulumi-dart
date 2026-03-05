@@ -235,32 +235,22 @@ import 'tracked_resource_response_system_data.dart';
 class CollectorPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Emission policies.
   late final pulumi.Output<List<Map<String, dynamic>>?> emissionPolicies;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Ingestion policies.
-  late final pulumi.Output<IngestionPolicyPropertiesFormatResponse?>
-  ingestionPolicy;
-
+  late final pulumi.Output<IngestionPolicyPropertiesFormatResponse?> ingestionPolicy;
   /// Resource location.
   late final pulumi.Output<String> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<TrackedResourceResponseSystemData> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -273,39 +263,19 @@ class CollectorPolicy extends pulumi.CustomResource {
     CollectorPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:networkfunction:CollectorPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:networkfunction:CollectorPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    emissionPolicies = registerOutput<List<Map<String, dynamic>>?>(
-      'emissionPolicies',
-    );
+    emissionPolicies = registerOutput<List<Map<String, dynamic>>?>('emissionPolicies');
     etag = registerOutput<String>('etag');
-    ingestionPolicy = registerOutput<IngestionPolicyPropertiesFormatResponse?>(
-      'ingestionPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IngestionPolicyPropertiesFormatResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ingestionPolicy = registerOutput<IngestionPolicyPropertiesFormatResponse?>('ingestionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngestionPolicyPropertiesFormatResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<TrackedResourceResponseSystemData>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TrackedResourceResponseSystemData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<TrackedResourceResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrackedResourceResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

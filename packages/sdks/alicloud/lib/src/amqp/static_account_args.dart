@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticAccountArgs {
   /// Access key.
   final pulumi.Input<String> accessKey;
-
   /// Amqp instance ID.
   final pulumi.Input<String> instanceId;
-
   /// Secret key.
   final pulumi.Input<String> secretKey;
 
@@ -42,3 +40,4 @@ class StaticAccountArgs {
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImportDiskDetails {
   /// BitLocker key used to encrypt the disk.
   final pulumi.Input<String> bitLockerKey;
-
   /// The relative path of the manifest file on the disk.
   final pulumi.Input<String> manifestFile;
-
   /// The Base16-encoded MD5 hash of the manifest file on the disk.
   final pulumi.Input<String> manifestHash;
 
@@ -39,3 +37,4 @@ class ImportDiskDetails {
     );
   }
 }
+

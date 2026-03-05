@@ -399,15 +399,12 @@ import 'mail_from_state.dart';
 class MailFrom extends pulumi.CustomResource {
   /// The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. Defaults to `UseDefaultValue`. See the [SES API documentation](https://docs.aws.amazon.com/ses/latest/APIReference/API_SetIdentityMailFromDomain.html) for more information.
   late final pulumi.Output<String?> behaviorOnMxFailure;
-
   /// Verified domain name or email identity to generate DKIM tokens for.
   late final pulumi.Output<String> domain;
-
   /// Subdomain (of above domain) which is to be used as MAIL FROM address (Required for DMARC validation)
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> mailFromDomain;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -420,11 +417,11 @@ class MailFrom extends pulumi.CustomResource {
     MailFromArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ses/mailFrom:MailFrom',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ses/mailFrom:MailFrom',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     behaviorOnMxFailure = registerOutput<String?>('behaviorOnMxFailure');
     domain = registerOutput<String>('domain');
     mailFromDomain = registerOutput<String>('mailFromDomain');
@@ -449,11 +446,11 @@ class MailFrom extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ses/mailFrom:MailFrom',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ses/mailFrom:MailFrom',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     behaviorOnMxFailure = registerOutput<String?>('behaviorOnMxFailure');
     domain = registerOutput<String>('domain');
     mailFromDomain = registerOutput<String>('mailFromDomain');

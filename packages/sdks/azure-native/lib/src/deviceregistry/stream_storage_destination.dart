@@ -7,7 +7,6 @@ import 'storage_destination_configuration.dart';
 class StreamStorageDestination {
   /// The storage destination configuration.
   final pulumi.Input<StorageDestinationConfiguration> configuration;
-
   /// The set of supported stream destinations for an asset.
   /// Expected value is 'Storage'.
   final pulumi.Input<String> target;
@@ -15,27 +14,23 @@ class StreamStorageDestination {
   /// Creates a new [StreamStorageDestination].
   /// [configuration] The storage destination configuration.
   /// [target] The set of supported stream destinations for an asset.
-  StreamStorageDestination({required this.configuration, required this.target});
+  StreamStorageDestination({
+    required this.configuration,
+    required this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration':
-          pulumi.Input.mapInputValue<
-            StorageDestinationConfiguration,
-            Map<String, dynamic>
-          >(configuration, (value) => value.toMap()),
+      'configuration': pulumi.Input.mapInputValue<StorageDestinationConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'target': target,
     };
   }
 
   factory StreamStorageDestination.fromMap(Map<String, dynamic> map) {
     return StreamStorageDestination(
-      configuration: pulumi.Input.fromValue(
-        StorageDestinationConfiguration.fromMap(
-          (map['configuration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      configuration: pulumi.Input.fromValue(StorageDestinationConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())),
       target: pulumi.Input.fromValue(map['target'] as String),
     );
   }
 }
+

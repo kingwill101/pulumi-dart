@@ -5,33 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiProductGrpcOperationGroupOperationConfigAttribute {
   /// Key of the attribute.
   final pulumi.Input<String>? name;
-
   /// Value of the attribute.
   final pulumi.Input<String>? value;
 
   /// Creates a new [ApiProductGrpcOperationGroupOperationConfigAttribute].
   /// [name] Key of the attribute.
   /// [value] Value of the attribute.
-  ApiProductGrpcOperationGroupOperationConfigAttribute({this.name, this.value});
+  ApiProductGrpcOperationGroupOperationConfigAttribute({
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'value': ?value};
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
-  factory ApiProductGrpcOperationGroupOperationConfigAttribute.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApiProductGrpcOperationGroupOperationConfigAttribute.fromMap(Map<String, dynamic> map) {
     return ApiProductGrpcOperationGroupOperationConfigAttribute(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

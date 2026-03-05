@@ -7,44 +7,29 @@ import 'client_group_info.dart';
 class KafkaRestProperties {
   /// The information of AAD security group.
   final pulumi.Input<ClientGroupInfo>? clientGroupInfo;
-
   /// The configurations that need to be overriden.
   final pulumi.Input<Map<String, String>>? configurationOverride;
 
   /// Creates a new [KafkaRestProperties].
   /// [clientGroupInfo] The information of AAD security group.
   /// [configurationOverride] The configurations that need to be overriden.
-  KafkaRestProperties({this.clientGroupInfo, this.configurationOverride});
+  KafkaRestProperties({
+    this.clientGroupInfo,
+    this.configurationOverride,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clientGroupInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClientGroupInfo,
-            Map<String, dynamic>
-          >(clientGroupInfo, (value) => value.toMap()),
+      'clientGroupInfo': ?pulumi.Input.mapOptionalInputValue<ClientGroupInfo, Map<String, dynamic>>(clientGroupInfo, (value) => value.toMap()),
       'configurationOverride': ?configurationOverride,
     };
   }
 
   factory KafkaRestProperties.fromMap(Map<String, dynamic> map) {
     return KafkaRestProperties(
-      clientGroupInfo: (() {
-        final guardedValue = map['clientGroupInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClientGroupInfo.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      configurationOverride: (() {
-        final guardedValue = map['configurationOverride'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      clientGroupInfo: (() { final guardedValue = map['clientGroupInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClientGroupInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      configurationOverride: (() { final guardedValue = map['configurationOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -151,13 +151,10 @@ import 'partner_registration_state.dart';
 class PartnerRegistration extends pulumi.CustomResource {
   /// The name which should be used for this EventGrid Partner Registration. Changing this forces a new EventGrid Partner Registration to be created.
   late final pulumi.Output<String> name;
-
   /// The immutable id of the corresponding partner registration.
   late final pulumi.Output<String> partnerRegistrationId;
-
   /// The name of the Resource Group where the EventGrid Partner Registration should exist. Changing this forces a new EventGrid Partner Registration to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the EventGrid Partner Registration.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -170,11 +167,11 @@ class PartnerRegistration extends pulumi.CustomResource {
     PartnerRegistrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventgrid/partnerRegistration:PartnerRegistration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:eventgrid/partnerRegistration:PartnerRegistration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     partnerRegistrationId = registerOutput<String>('partnerRegistrationId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -199,11 +196,11 @@ class PartnerRegistration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventgrid/partnerRegistration:PartnerRegistration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:eventgrid/partnerRegistration:PartnerRegistration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     partnerRegistrationId = registerOutput<String>('partnerRegistrationId');
     resourceGroupName = registerOutput<String>('resourceGroupName');

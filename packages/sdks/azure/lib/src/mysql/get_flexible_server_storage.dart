@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFlexibleServerStorage {
   /// Is Storage Auto Grow enabled?
   final pulumi.Input<bool> autoGrowEnabled;
-
   /// Should IOPS be scaled automatically?
   final pulumi.Input<bool> ioScalingEnabled;
-
   /// The storage IOPS of the MySQL Flexible Server.
   final pulumi.Input<int> iops;
-
   /// The max storage allowed for the MySQL Flexible Server.
   final pulumi.Input<int> sizeGb;
 
@@ -45,3 +42,4 @@ class GetFlexibleServerStorage {
     );
   }
 }
+

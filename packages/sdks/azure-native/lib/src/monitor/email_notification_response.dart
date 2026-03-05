@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmailNotificationResponse {
   /// the custom e-mails list. This value can be null or empty, in which case this attribute will be ignored.
   final pulumi.Input<List<String>>? customEmails;
-
   /// a value indicating whether to send email to subscription administrator.
   final pulumi.Input<bool>? sendToSubscriptionAdministrator;
-
   /// a value indicating whether to send email to subscription co-administrators.
   final pulumi.Input<bool>? sendToSubscriptionCoAdministrators;
 
@@ -33,21 +31,10 @@ class EmailNotificationResponse {
 
   factory EmailNotificationResponse.fromMap(Map<String, dynamic> map) {
     return EmailNotificationResponse(
-      customEmails: (() {
-        final guardedValue = map['customEmails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      sendToSubscriptionAdministrator: (() {
-        final guardedValue = map['sendToSubscriptionAdministrator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sendToSubscriptionCoAdministrators: (() {
-        final guardedValue = map['sendToSubscriptionCoAdministrators'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      customEmails: (() { final guardedValue = map['customEmails']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      sendToSubscriptionAdministrator: (() { final guardedValue = map['sendToSubscriptionAdministrator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sendToSubscriptionCoAdministrators: (() { final guardedValue = map['sendToSubscriptionCoAdministrators']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

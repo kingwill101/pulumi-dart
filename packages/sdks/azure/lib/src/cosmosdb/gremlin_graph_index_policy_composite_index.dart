@@ -9,37 +9,20 @@ class GremlinGraphIndexPolicyCompositeIndex {
 
   /// Creates a new [GremlinGraphIndexPolicyCompositeIndex].
   /// [indices] One or more `index` blocks as defined below.
-  GremlinGraphIndexPolicyCompositeIndex({required this.indices});
+  GremlinGraphIndexPolicyCompositeIndex({
+    required this.indices,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'indices':
-          pulumi.Input.mapInputValue<
-            List<GremlinGraphIndexPolicyCompositeIndexIndex>,
-            List<Map<String, dynamic>>
-          >(
-            indices,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GremlinGraphIndexPolicyCompositeIndexIndex,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'indices': pulumi.Input.mapInputValue<List<GremlinGraphIndexPolicyCompositeIndexIndex>, List<Map<String, dynamic>>>(indices, (value) => pulumi.Input.encodeList<GremlinGraphIndexPolicyCompositeIndexIndex, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GremlinGraphIndexPolicyCompositeIndex.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GremlinGraphIndexPolicyCompositeIndex.fromMap(Map<String, dynamic> map) {
     return GremlinGraphIndexPolicyCompositeIndex(
-      indices: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GremlinGraphIndexPolicyCompositeIndexIndex>(
-          map['indices']!,
-          (value) => GremlinGraphIndexPolicyCompositeIndexIndex.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      indices: pulumi.Input.fromValue(pulumi.Input.decodeList<GremlinGraphIndexPolicyCompositeIndexIndex>(map['indices']!, (value) => GremlinGraphIndexPolicyCompositeIndexIndex.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateCloudNsx {
   /// Fully qualified domain name of the appliance.
   final pulumi.Input<String> fqdn;
-
   /// Internal IP address of the appliance.
   final pulumi.Input<String> internalIp;
-
   /// State of the appliance. Possible values: ["ACTIVE", "CREATING"]
   final pulumi.Input<String> state;
-
   /// Version of the appliance.
   final pulumi.Input<String> version;
 
@@ -45,3 +42,4 @@ class GetPrivateCloudNsx {
     );
   }
 }
+

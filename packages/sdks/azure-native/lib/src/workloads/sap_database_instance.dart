@@ -274,46 +274,32 @@ import 'system_data_response.dart';
 class SapDatabaseInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Database SID name.
   late final pulumi.Output<String> databaseSid;
-
   /// Database type, that is if the DB is HANA, DB2, Oracle, SAP ASE, Max DB or MS SQL Server.
   late final pulumi.Output<String> databaseType;
-
   /// Defines the errors related to Database resource.
   late final pulumi.Output<SAPVirtualInstanceErrorResponse> errors;
-
   /// Database IP Address.
   late final pulumi.Output<String> ipAddress;
-
   /// The Load Balancer details such as LoadBalancer ID attached to Database Virtual Machines
   late final pulumi.Output<LoadBalancerDetailsResponse> loadBalancerDetails;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Defines the provisioning states.
   late final pulumi.Output<String> provisioningState;
-
   /// Defines the SAP Instance status.
   late final pulumi.Output<String> status;
-
   /// Database subnet.
   late final pulumi.Output<String> subnet;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The list of virtual machines corresponding to the Database resource.
   late final pulumi.Output<List<Map<String, dynamic>>> vmDetails;
 
@@ -326,50 +312,23 @@ class SapDatabaseInstance extends pulumi.CustomResource {
     SapDatabaseInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:workloads:SapDatabaseInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:workloads:SapDatabaseInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     databaseSid = registerOutput<String>('databaseSid');
     databaseType = registerOutput<String>('databaseType');
-    errors = registerOutput<SAPVirtualInstanceErrorResponse>(
-      'errors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SAPVirtualInstanceErrorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    errors = registerOutput<SAPVirtualInstanceErrorResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SAPVirtualInstanceErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddress = registerOutput<String>('ipAddress');
-    loadBalancerDetails = registerOutput<LoadBalancerDetailsResponse>(
-      'loadBalancerDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loadBalancerDetails = registerOutput<LoadBalancerDetailsResponse>('loadBalancerDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
     subnet = registerOutput<String>('subnet');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     vmDetails = registerOutput<List<Map<String, dynamic>>>('vmDetails');

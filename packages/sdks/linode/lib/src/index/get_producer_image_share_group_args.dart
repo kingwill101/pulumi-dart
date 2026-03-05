@@ -12,10 +12,14 @@ class GetProducerImageShareGroupArgs {
 
   /// Creates a new [GetProducerImageShareGroupArgs].
   /// [id] The ID of the Image Share Group.
-  GetProducerImageShareGroupArgs({required this.id});
+  GetProducerImageShareGroupArgs({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetProducerImageShareGroupArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetProducerImageShareGroupArgs {
     );
   }
 }
+

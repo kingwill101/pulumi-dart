@@ -8,21 +8,20 @@ class AddonsConfigAddonsConfigIntegrationConfig {
 
   /// Creates a new [AddonsConfigAddonsConfigIntegrationConfig].
   /// [enabled] Flag that specifies whether the Integration add-on is enabled.
-  AddonsConfigAddonsConfigIntegrationConfig({this.enabled});
+  AddonsConfigAddonsConfigIntegrationConfig({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory AddonsConfigAddonsConfigIntegrationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AddonsConfigAddonsConfigIntegrationConfig.fromMap(Map<String, dynamic> map) {
     return AddonsConfigAddonsConfigIntegrationConfig(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

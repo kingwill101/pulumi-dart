@@ -7,21 +7,17 @@ import 'get_enterprise_users_user.dart';
 class GetEnterpriseUsersResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of DMS Enterprise User IDs (UID).
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of DMS Enterprise User names.
   final List<String> names;
   final String? outputFile;
   final String? role;
   final String? searchKey;
-
   /// The status of the user.
   final String? status;
   final int? tid;
-
   /// A list of DMS Enterprise Users. Each element contains the following attributes:
   final List<GetEnterpriseUsersUser> users;
 
@@ -60,11 +56,7 @@ class GetEnterpriseUsersResult {
       'searchKey': ?searchKey,
       'status': ?status,
       'tid': ?tid,
-      'users':
-          pulumi.Input.encodeList<GetEnterpriseUsersUser, Map<String, dynamic>>(
-            users,
-            (value) => value.toMap(),
-          ),
+      'users': pulumi.Input.encodeList<GetEnterpriseUsersUser, Map<String, dynamic>>(users, (value) => value.toMap()),
     };
   }
 
@@ -72,43 +64,15 @@ class GetEnterpriseUsersResult {
     return GetEnterpriseUsersResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      role: (() {
-        final guardedValue = map['role'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      searchKey: (() {
-        final guardedValue = map['searchKey'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tid: (() {
-        final guardedValue = map['tid'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      users: pulumi.Input.decodeList<GetEnterpriseUsersUser>(
-        map['users']!,
-        (value) => GetEnterpriseUsersUser.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      searchKey: (() { final guardedValue = map['searchKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tid: (() { final guardedValue = map['tid']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      users: pulumi.Input.decodeList<GetEnterpriseUsersUser>(map['users']!, (value) => GetEnterpriseUsersUser.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

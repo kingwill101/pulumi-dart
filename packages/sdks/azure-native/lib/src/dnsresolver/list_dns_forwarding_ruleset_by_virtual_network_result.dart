@@ -7,7 +7,6 @@ import 'virtual_network_dns_forwarding_ruleset_response.dart';
 class ListDnsForwardingRulesetByVirtualNetworkResult {
   /// The continuation token for the next page of results.
   final String nextLink;
-
   /// Enumeration of the Virtual Network DNS Forwarding Ruleset.
   final List<VirtualNetworkDnsForwardingRulesetResponse>? value;
 
@@ -22,33 +21,15 @@ class ListDnsForwardingRulesetByVirtualNetworkResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': nextLink,
-      'value': ?(() {
-        final guardedValue = value;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          VirtualNetworkDnsForwardingRulesetResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<VirtualNetworkDnsForwardingRulesetResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
-  factory ListDnsForwardingRulesetByVirtualNetworkResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListDnsForwardingRulesetByVirtualNetworkResult.fromMap(Map<String, dynamic> map) {
     return ListDnsForwardingRulesetByVirtualNetworkResult(
       nextLink: map['nextLink'] as String,
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi
-            .Input.decodeList<VirtualNetworkDnsForwardingRulesetResponse>(
-          guardedValue,
-          (value) => VirtualNetworkDnsForwardingRulesetResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkDnsForwardingRulesetResponse>(guardedValue, (value) => VirtualNetworkDnsForwardingRulesetResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -13,18 +13,15 @@ class DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfig
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'targetResourceCount': ?targetResourceCount};
+    return <String, dynamic>{
+      'targetResourceCount': ?targetResourceCount,
+    };
   }
 
-  factory DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration(
-      targetResourceCount: (() {
-        final guardedValue = map['targetResourceCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      targetResourceCount: (() { final guardedValue = map['targetResourceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

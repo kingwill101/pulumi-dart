@@ -163,15 +163,12 @@ import 'email_template_state.dart';
 class EmailTemplate extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the message template.
   late final pulumi.Output<String> arn;
-
   /// Specifies the content and settings for a message template that can be used in messages that are sent through the email channel. See Email Template
   late final pulumi.Output<List<Map<String, dynamic>>?> emailTemplates;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
   late final pulumi.Output<String> templateName;
 
@@ -184,15 +181,13 @@ class EmailTemplate extends pulumi.CustomResource {
     EmailTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:pinpoint/emailTemplate:EmailTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:pinpoint/emailTemplate:EmailTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    emailTemplates = registerOutput<List<Map<String, dynamic>>?>(
-      'emailTemplates',
-    );
+    emailTemplates = registerOutput<List<Map<String, dynamic>>?>('emailTemplates');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -217,15 +212,13 @@ class EmailTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:pinpoint/emailTemplate:EmailTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:pinpoint/emailTemplate:EmailTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    emailTemplates = registerOutput<List<Map<String, dynamic>>?>(
-      'emailTemplates',
-    );
+    emailTemplates = registerOutput<List<Map<String, dynamic>>?>('emailTemplates');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

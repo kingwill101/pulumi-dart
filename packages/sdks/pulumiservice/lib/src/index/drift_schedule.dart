@@ -5,19 +5,14 @@ import 'drift_schedule_args.dart';
 class DriftSchedule extends pulumi.CustomResource {
   /// Whether any drift detected should be remediated after a drift run.
   late final pulumi.Output<bool?> autoRemediate;
-
   /// Organization name.
   late final pulumi.Output<String> organization;
-
   /// Project name.
   late final pulumi.Output<String> project;
-
   /// Cron expression for when to run drift detection.
   late final pulumi.Output<String> scheduleCron;
-
   /// Schedule ID of the created schedule, assigned by Pulumi Cloud.
   late final pulumi.Output<String> scheduleId;
-
   /// Stack name.
   late final pulumi.Output<String> stack;
 
@@ -30,11 +25,11 @@ class DriftSchedule extends pulumi.CustomResource {
     DriftScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'pulumiservice:index:DriftSchedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'pulumiservice:index:DriftSchedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRemediate = registerOutput<bool?>('autoRemediate');
     organization = registerOutput<String>('organization');
     project = registerOutput<String>('project');

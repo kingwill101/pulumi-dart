@@ -6,11 +6,9 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
   /// (Output)
   /// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
   final pulumi.Input<bool>? allowPlaybackInterruption;
-
   /// The SSML text to be synthesized. For more information, see SSML.
   /// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
   final pulumi.Input<String>? ssml;
-
   /// The raw text to be synthesized.
   /// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
   final pulumi.Input<String>? text;
@@ -33,25 +31,12 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     };
   }
 
-  factory CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText(
-      allowPlaybackInterruption: (() {
-        final guardedValue = map['allowPlaybackInterruption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ssml: (() {
-        final guardedValue = map['ssml'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      text: (() {
-        final guardedValue = map['text'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowPlaybackInterruption: (() { final guardedValue = map['allowPlaybackInterruption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ssml: (() { final guardedValue = map['ssml']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

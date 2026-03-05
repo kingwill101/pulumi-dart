@@ -10,25 +10,20 @@ class BareMetalMaintenanceStatusResponse {
 
   /// Creates a new [BareMetalMaintenanceStatusResponse].
   /// [machineDrainStatus] The maintenance status of node machines.
-  BareMetalMaintenanceStatusResponse({required this.machineDrainStatus});
+  BareMetalMaintenanceStatusResponse({
+    required this.machineDrainStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'machineDrainStatus':
-          pulumi.Input.mapInputValue<
-            BareMetalMachineDrainStatusResponse,
-            Map<String, dynamic>
-          >(machineDrainStatus, (value) => value.toMap()),
+      'machineDrainStatus': pulumi.Input.mapInputValue<BareMetalMachineDrainStatusResponse, Map<String, dynamic>>(machineDrainStatus, (value) => value.toMap()),
     };
   }
 
   factory BareMetalMaintenanceStatusResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalMaintenanceStatusResponse(
-      machineDrainStatus: pulumi.Input.fromValue(
-        BareMetalMachineDrainStatusResponse.fromMap(
-          (map['machineDrainStatus']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      machineDrainStatus: pulumi.Input.fromValue(BareMetalMachineDrainStatusResponse.fromMap((map['machineDrainStatus']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

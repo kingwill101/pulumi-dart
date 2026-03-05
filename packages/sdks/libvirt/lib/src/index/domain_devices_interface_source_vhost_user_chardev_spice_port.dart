@@ -13,14 +13,15 @@ class DomainDevicesInterfaceSourceVhostUserChardevSpicePort {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'channel': channel};
+    return <String, dynamic>{
+      'channel': channel,
+    };
   }
 
-  factory DomainDevicesInterfaceSourceVhostUserChardevSpicePort.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesInterfaceSourceVhostUserChardevSpicePort.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceVhostUserChardevSpicePort(
       channel: pulumi.Input.fromValue(map['channel'] as String),
     );
   }
 }
+

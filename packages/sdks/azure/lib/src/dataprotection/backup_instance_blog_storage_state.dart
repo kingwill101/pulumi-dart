@@ -6,24 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupInstanceBlogStorageState {
   /// The ID of the Backup Policy.
   final pulumi.Input<String>? backupPolicyId;
-
   /// The location of the source Storage Account. Changing this forces a new Backup Instance Blob Storage to be created.
   final pulumi.Input<String>? location;
-
   /// The name which should be used for this Backup Instance Blob Storage. Changing this forces a new Backup Instance Blob Storage to be created.
   final pulumi.Input<String>? name;
-
   /// The protection state of the Backup Instance Blob Storage.
   final pulumi.Input<String>? protectionState;
-
   /// The list of the container names of the source Storage Account.
   ///
   /// &gt; **Note:** The `storage_account_container_names` should be specified in the vaulted backup policy/operational and vaulted hybrid backup policy. Removing the `storage_account_container_names` will force a new resource to be created since it can't be removed once specified.
   final pulumi.Input<List<String>>? storageAccountContainerNames;
-
   /// The ID of the source Storage Account. Changing this forces a new Backup Instance Blob Storage to be created.
   final pulumi.Input<String>? storageAccountId;
-
   /// The ID of the Backup Vault within which the Backup Instance Blob Storage should exist. Changing this forces a new Backup Instance Blob Storage to be created.
   final pulumi.Input<String>? vaultId;
 
@@ -59,41 +53,14 @@ class BackupInstanceBlogStorageState {
 
   factory BackupInstanceBlogStorageState.fromMap(Map<String, dynamic> map) {
     return BackupInstanceBlogStorageState(
-      backupPolicyId: (() {
-        final guardedValue = map['backupPolicyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protectionState: (() {
-        final guardedValue = map['protectionState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountContainerNames: (() {
-        final guardedValue = map['storageAccountContainerNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      storageAccountId: (() {
-        final guardedValue = map['storageAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vaultId: (() {
-        final guardedValue = map['vaultId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backupPolicyId: (() { final guardedValue = map['backupPolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protectionState: (() { final guardedValue = map['protectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountContainerNames: (() { final guardedValue = map['storageAccountContainerNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vaultId: (() { final guardedValue = map['vaultId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

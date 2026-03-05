@@ -14,14 +14,15 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pemCertificate': pemCertificate};
+    return <String, dynamic>{
+      'pemCertificate': pemCertificate,
+    };
   }
 
-  factory WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor(
       pemCertificate: pulumi.Input.fromValue(map['pemCertificate'] as String),
     );
   }
 }
+

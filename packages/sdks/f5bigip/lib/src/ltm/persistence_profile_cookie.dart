@@ -215,52 +215,36 @@ class PersistenceProfileCookie extends pulumi.CustomResource {
   /// To enable _ disable always sending cookies
   late final pulumi.Output<String> alwaysSend;
   late final pulumi.Output<String> appService;
-
   /// To required, preferred, or disabled policy for cookie encryption
   late final pulumi.Output<String> cookieEncryption;
-
   /// Passphrase for encrypted cookies
   late final pulumi.Output<String> cookieEncryptionPassphrase;
-
   /// Name of the cookie to track persistence
   late final pulumi.Output<String> cookieName;
-
   /// Inherit defaults from parent profile
   late final pulumi.Output<String> defaultsFrom;
-
   /// Expiration TTL for cookie specified in D:H:M:S or in seconds
   late final pulumi.Output<String> expiration;
-
   /// Length of hash to apply to cookie
   late final pulumi.Output<int> hashLength;
-
   /// Number of characters to skip in the cookie for the hash
   late final pulumi.Output<int> hashOffset;
-
   /// To enable _ disable sending only over http
   late final pulumi.Output<String> httponly;
-
   /// To enable _ disable match across pools with given persistence record
   late final pulumi.Output<String> matchAcrossPools;
-
   /// To enable _ disable match across services with given persistence record
   late final pulumi.Output<String> matchAcrossServices;
-
   /// To enable _ disable match across virtual servers with given persistence record
   late final pulumi.Output<String> matchAcrossVirtuals;
-
   /// Specifies the type of cookie processing that the system uses
   late final pulumi.Output<String> method;
-
   /// To enable _ disable
   late final pulumi.Output<String> mirror;
-
   /// Name of the persistence profile
   late final pulumi.Output<String> name;
-
   /// To enable _ disable that pool member connection limits are overridden for persisted clients. Per-virtual connection limits remain hard limits and are not overridden.
   late final pulumi.Output<String> overrideConnLimit;
-
   /// Timeout for persistence of the session
   late final pulumi.Output<int> timeout;
 
@@ -273,17 +257,15 @@ class PersistenceProfileCookie extends pulumi.CustomResource {
     PersistenceProfileCookieArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/persistenceProfileCookie:PersistenceProfileCookie',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/persistenceProfileCookie:PersistenceProfileCookie',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alwaysSend = registerOutput<String>('alwaysSend');
     appService = registerOutput<String>('appService');
     cookieEncryption = registerOutput<String>('cookieEncryption');
-    cookieEncryptionPassphrase = registerOutput<String>(
-      'cookieEncryptionPassphrase',
-    );
+    cookieEncryptionPassphrase = registerOutput<String>('cookieEncryptionPassphrase');
     cookieName = registerOutput<String>('cookieName');
     defaultsFrom = registerOutput<String>('defaultsFrom');
     expiration = registerOutput<String>('expiration');
@@ -318,17 +300,15 @@ class PersistenceProfileCookie extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/persistenceProfileCookie:PersistenceProfileCookie',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/persistenceProfileCookie:PersistenceProfileCookie',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alwaysSend = registerOutput<String>('alwaysSend');
     appService = registerOutput<String>('appService');
     cookieEncryption = registerOutput<String>('cookieEncryption');
-    cookieEncryptionPassphrase = registerOutput<String>(
-      'cookieEncryptionPassphrase',
-    );
+    cookieEncryptionPassphrase = registerOutput<String>('cookieEncryptionPassphrase');
     cookieName = registerOutput<String>('cookieName');
     defaultsFrom = registerOutput<String>('defaultsFrom');
     expiration = registerOutput<String>('expiration');

@@ -15,7 +15,11 @@ class GetBackupArgs {
   /// [backupId] Required.
   /// [domainId] Required.
   /// [project] Optional.
-  GetBackupArgs({required this.backupId, required this.domainId, this.project});
+  GetBackupArgs({
+    required this.backupId,
+    required this.domainId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,11 +33,8 @@ class GetBackupArgs {
     return GetBackupArgs(
       backupId: pulumi.Input.fromValue(map['backupId'] as String),
       domainId: pulumi.Input.fromValue(map['domainId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

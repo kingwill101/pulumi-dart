@@ -1222,88 +1222,59 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
   /// The authorization key associated with the Express Route Circuit. This field is required only if the type is an ExpressRoute connection.
   late final pulumi.Output<String?> authorizationKey;
-
   /// Connection mode to use. Possible values are `Default`, `InitiatorOnly` and `ResponderOnly`. Defaults to `Default`. Changing this value will force a resource to be created.
   late final pulumi.Output<String?> connectionMode;
-
   /// The IKE protocol version to use. Possible values are `IKEv1` and `IKEv2`, values are `IKEv1` and `IKEv2`. Defaults to `IKEv2`. Changing this forces a new resource to be created.
   /// &gt; **Note:** Only valid for `IPSec` connections on virtual network gateways with SKU `VpnGw1`, `VpnGw2`, `VpnGw3`, `VpnGw1AZ`, `VpnGw2AZ` or `VpnGw3AZ`.
   late final pulumi.Output<String> connectionProtocol;
-
   /// A `custom_bgp_addresses` block which is documented below.
   /// The block can only be used on `IPSec` / `activeactive` connections,
   /// For details about see [the relevant section in the Azure documentation](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-aws-bgp).
-  late final pulumi.Output<VirtualNetworkGatewayConnectionCustomBgpAddresses?>
-  customBgpAddresses;
-
+  late final pulumi.Output<VirtualNetworkGatewayConnectionCustomBgpAddresses?> customBgpAddresses;
   /// The dead peer detection timeout of this connection in seconds. Changing this forces a new resource to be created.
   late final pulumi.Output<int?> dpdTimeoutSeconds;
-
   /// A list of the egress NAT Rule Ids.
   late final pulumi.Output<List<String>?> egressNatRuleIds;
-
   /// If `true`, BGP (Border Gateway Protocol) is enabled for this connection. Defaults to `false`.
   late final pulumi.Output<bool> enableBgp;
-
   /// The ID of the Express Route Circuit when creating an ExpressRoute connection (i.e. when `type` is `ExpressRoute`). The Express Route Circuit can be in the same or in a different subscription. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> expressRouteCircuitId;
-
   /// If `true`, data packets will bypass ExpressRoute Gateway for data forwarding This is only valid for ExpressRoute connections.
   late final pulumi.Output<bool> expressRouteGatewayBypass;
-
   /// A list of the ingress NAT Rule Ids.
   late final pulumi.Output<List<String>?> ingressNatRuleIds;
-
   /// A `ipsec_policy` block which is documented below.
   /// Only a single policy can be defined for a connection. For details on
   /// custom policies refer to [the relevant section in the Azure documentation](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell).
-  late final pulumi.Output<VirtualNetworkGatewayConnectionIpsecPolicy?>
-  ipsecPolicy;
-
+  late final pulumi.Output<VirtualNetworkGatewayConnectionIpsecPolicy?> ipsecPolicy;
   /// Use private local Azure IP for the connection. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> localAzureIpAddressEnabled;
-
   /// The ID of the local network gateway when creating Site-to-Site connection (i.e. when `type` is `IPsec`).
   late final pulumi.Output<String?> localNetworkGatewayId;
-
   /// The location/region where the connection is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the connection. Changing the name forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the peer virtual network gateway when creating a VNet-to-VNet connection (i.e. when `type` is `Vnet2Vnet`). The peer Virtual Network Gateway can be in the same or in a different subscription. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> peerVirtualNetworkGatewayId;
-
   /// Bypass the Express Route gateway when accessing private-links. When enabled `express_route_gateway_bypass` must be set to `true`. Defaults to `false`.
   late final pulumi.Output<bool?> privateLinkFastPathEnabled;
-
   /// The name of the resource group in which to create the connection Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The routing weight. Defaults to `10`.
   late final pulumi.Output<int> routingWeight;
-
   /// The shared IPSec key. A key could be provided if a Site-to-Site, VNet-to-VNet or ExpressRoute connection is created.
   late final pulumi.Output<String> sharedKey;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// One or more `traffic_selector_policy` blocks which are documented below.
   /// A `traffic_selector_policy` allows to specify a traffic selector policy proposal to be used in a virtual network gateway connection.
   /// For details about traffic selectors refer to [the relevant section in the Azure documentation](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps).
-  late final pulumi.Output<
-    VirtualNetworkGatewayConnectionTrafficSelectorPolicy?
-  >
-  trafficSelectorPolicy;
-
+  late final pulumi.Output<VirtualNetworkGatewayConnectionTrafficSelectorPolicy?> trafficSelectorPolicy;
   /// The type of connection. Valid options are `IPsec` (Site-to-Site), `ExpressRoute` (ExpressRoute), and `Vnet2Vnet` (VNet-to-VNet). Each connection type requires different mandatory arguments (refer to the examples above). Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
-
   /// If `true`, policy-based traffic selectors are enabled for this connection. Enabling policy-based traffic selectors requires an `ipsec_policy` block. Defaults to `false`.
   late final pulumi.Output<bool> usePolicyBasedTrafficSelectors;
-
   /// The ID of the Virtual Network Gateway in which the connection will be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualNetworkGatewayId;
 
@@ -1316,74 +1287,35 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     VirtualNetworkGatewayConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualNetworkGatewayConnection:VirtualNetworkGatewayConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/virtualNetworkGatewayConnection:VirtualNetworkGatewayConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizationKey = registerOutput<String?>('authorizationKey');
     connectionMode = registerOutput<String?>('connectionMode');
     connectionProtocol = registerOutput<String>('connectionProtocol');
-    customBgpAddresses =
-        registerOutput<VirtualNetworkGatewayConnectionCustomBgpAddresses?>(
-          'customBgpAddresses',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualNetworkGatewayConnectionCustomBgpAddresses.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    customBgpAddresses = registerOutput<VirtualNetworkGatewayConnectionCustomBgpAddresses?>('customBgpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionCustomBgpAddresses.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dpdTimeoutSeconds = registerOutput<int?>('dpdTimeoutSeconds');
     egressNatRuleIds = registerOutput<List<String>?>('egressNatRuleIds');
     enableBgp = registerOutput<bool>('enableBgp');
     expressRouteCircuitId = registerOutput<String?>('expressRouteCircuitId');
-    expressRouteGatewayBypass = registerOutput<bool>(
-      'expressRouteGatewayBypass',
-    );
+    expressRouteGatewayBypass = registerOutput<bool>('expressRouteGatewayBypass');
     ingressNatRuleIds = registerOutput<List<String>?>('ingressNatRuleIds');
-    ipsecPolicy = registerOutput<VirtualNetworkGatewayConnectionIpsecPolicy?>(
-      'ipsecPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualNetworkGatewayConnectionIpsecPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localAzureIpAddressEnabled = registerOutput<bool?>(
-      'localAzureIpAddressEnabled',
-    );
+    ipsecPolicy = registerOutput<VirtualNetworkGatewayConnectionIpsecPolicy?>('ipsecPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionIpsecPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAzureIpAddressEnabled = registerOutput<bool?>('localAzureIpAddressEnabled');
     localNetworkGatewayId = registerOutput<String?>('localNetworkGatewayId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    peerVirtualNetworkGatewayId = registerOutput<String?>(
-      'peerVirtualNetworkGatewayId',
-    );
-    privateLinkFastPathEnabled = registerOutput<bool?>(
-      'privateLinkFastPathEnabled',
-    );
+    peerVirtualNetworkGatewayId = registerOutput<String?>('peerVirtualNetworkGatewayId');
+    privateLinkFastPathEnabled = registerOutput<bool?>('privateLinkFastPathEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     routingWeight = registerOutput<int>('routingWeight');
     sharedKey = registerOutput<String>('sharedKey');
     tags = registerOutput<Map<String, String>?>('tags');
-    trafficSelectorPolicy =
-        registerOutput<VirtualNetworkGatewayConnectionTrafficSelectorPolicy?>(
-          'trafficSelectorPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualNetworkGatewayConnectionTrafficSelectorPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    trafficSelectorPolicy = registerOutput<VirtualNetworkGatewayConnectionTrafficSelectorPolicy?>('trafficSelectorPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionTrafficSelectorPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    usePolicyBasedTrafficSelectors = registerOutput<bool>(
-      'usePolicyBasedTrafficSelectors',
-    );
+    usePolicyBasedTrafficSelectors = registerOutput<bool>('usePolicyBasedTrafficSelectors');
     virtualNetworkGatewayId = registerOutput<String>('virtualNetworkGatewayId');
   }
 
@@ -1405,74 +1337,35 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualNetworkGatewayConnection:VirtualNetworkGatewayConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/virtualNetworkGatewayConnection:VirtualNetworkGatewayConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizationKey = registerOutput<String?>('authorizationKey');
     connectionMode = registerOutput<String?>('connectionMode');
     connectionProtocol = registerOutput<String>('connectionProtocol');
-    customBgpAddresses =
-        registerOutput<VirtualNetworkGatewayConnectionCustomBgpAddresses?>(
-          'customBgpAddresses',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualNetworkGatewayConnectionCustomBgpAddresses.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    customBgpAddresses = registerOutput<VirtualNetworkGatewayConnectionCustomBgpAddresses?>('customBgpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionCustomBgpAddresses.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dpdTimeoutSeconds = registerOutput<int?>('dpdTimeoutSeconds');
     egressNatRuleIds = registerOutput<List<String>?>('egressNatRuleIds');
     enableBgp = registerOutput<bool>('enableBgp');
     expressRouteCircuitId = registerOutput<String?>('expressRouteCircuitId');
-    expressRouteGatewayBypass = registerOutput<bool>(
-      'expressRouteGatewayBypass',
-    );
+    expressRouteGatewayBypass = registerOutput<bool>('expressRouteGatewayBypass');
     ingressNatRuleIds = registerOutput<List<String>?>('ingressNatRuleIds');
-    ipsecPolicy = registerOutput<VirtualNetworkGatewayConnectionIpsecPolicy?>(
-      'ipsecPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualNetworkGatewayConnectionIpsecPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localAzureIpAddressEnabled = registerOutput<bool?>(
-      'localAzureIpAddressEnabled',
-    );
+    ipsecPolicy = registerOutput<VirtualNetworkGatewayConnectionIpsecPolicy?>('ipsecPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionIpsecPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAzureIpAddressEnabled = registerOutput<bool?>('localAzureIpAddressEnabled');
     localNetworkGatewayId = registerOutput<String?>('localNetworkGatewayId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    peerVirtualNetworkGatewayId = registerOutput<String?>(
-      'peerVirtualNetworkGatewayId',
-    );
-    privateLinkFastPathEnabled = registerOutput<bool?>(
-      'privateLinkFastPathEnabled',
-    );
+    peerVirtualNetworkGatewayId = registerOutput<String?>('peerVirtualNetworkGatewayId');
+    privateLinkFastPathEnabled = registerOutput<bool?>('privateLinkFastPathEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     routingWeight = registerOutput<int>('routingWeight');
     sharedKey = registerOutput<String>('sharedKey');
     tags = registerOutput<Map<String, String>?>('tags');
-    trafficSelectorPolicy =
-        registerOutput<VirtualNetworkGatewayConnectionTrafficSelectorPolicy?>(
-          'trafficSelectorPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualNetworkGatewayConnectionTrafficSelectorPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    trafficSelectorPolicy = registerOutput<VirtualNetworkGatewayConnectionTrafficSelectorPolicy?>('trafficSelectorPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionTrafficSelectorPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    usePolicyBasedTrafficSelectors = registerOutput<bool>(
-      'usePolicyBasedTrafficSelectors',
-    );
+    usePolicyBasedTrafficSelectors = registerOutput<bool>('usePolicyBasedTrafficSelectors');
     virtualNetworkGatewayId = registerOutput<String>('virtualNetworkGatewayId');
   }
 }

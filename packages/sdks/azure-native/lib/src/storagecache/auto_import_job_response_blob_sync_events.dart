@@ -6,40 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoImportJobResponseBlobSyncEvents {
   /// Number of deletions during auto import.
   final pulumi.Input<double> deletions;
-
   /// Number of directories imported during auto import.
   final pulumi.Input<double> importedDirectories;
-
   /// Number of files imported during auto import.
   final pulumi.Input<double> importedFiles;
-
   /// Number of symlinks imported during auto import.
   final pulumi.Input<double> importedSymlinks;
-
   /// Date and time of the last Change Feed event consumed.
   final pulumi.Input<String> lastChangeFeedEventConsumedTime;
-
   /// Date and time when last fully synchronized.
   final pulumi.Input<String> lastTimeFullySynchronized;
-
   /// Number of preexisting directories during auto import.
   final pulumi.Input<double> preexistingDirectories;
-
   /// Number of preexisting files during auto import.
   final pulumi.Input<double> preexistingFiles;
-
   /// Number of preexisting symlinks during auto import.
   final pulumi.Input<double> preexistingSymlinks;
-
   /// Rate of blob import per second during auto import.
   final pulumi.Input<double> rateOfBlobImport;
-
   /// Total number of blobs imported during auto import.
   final pulumi.Input<double> totalBlobsImported;
-
   /// Total conflicts encountered during auto import.
   final pulumi.Input<double> totalConflicts;
-
   /// Total errors encountered during auto import.
   final pulumi.Input<double> totalErrors;
 
@@ -91,41 +79,22 @@ class AutoImportJobResponseBlobSyncEvents {
     };
   }
 
-  factory AutoImportJobResponseBlobSyncEvents.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutoImportJobResponseBlobSyncEvents.fromMap(Map<String, dynamic> map) {
     return AutoImportJobResponseBlobSyncEvents(
       deletions: pulumi.Input.fromValue(map['deletions'] as double),
-      importedDirectories: pulumi.Input.fromValue(
-        map['importedDirectories'] as double,
-      ),
+      importedDirectories: pulumi.Input.fromValue(map['importedDirectories'] as double),
       importedFiles: pulumi.Input.fromValue(map['importedFiles'] as double),
-      importedSymlinks: pulumi.Input.fromValue(
-        map['importedSymlinks'] as double,
-      ),
-      lastChangeFeedEventConsumedTime: pulumi.Input.fromValue(
-        map['lastChangeFeedEventConsumedTime'] as String,
-      ),
-      lastTimeFullySynchronized: pulumi.Input.fromValue(
-        map['lastTimeFullySynchronized'] as String,
-      ),
-      preexistingDirectories: pulumi.Input.fromValue(
-        map['preexistingDirectories'] as double,
-      ),
-      preexistingFiles: pulumi.Input.fromValue(
-        map['preexistingFiles'] as double,
-      ),
-      preexistingSymlinks: pulumi.Input.fromValue(
-        map['preexistingSymlinks'] as double,
-      ),
-      rateOfBlobImport: pulumi.Input.fromValue(
-        map['rateOfBlobImport'] as double,
-      ),
-      totalBlobsImported: pulumi.Input.fromValue(
-        map['totalBlobsImported'] as double,
-      ),
+      importedSymlinks: pulumi.Input.fromValue(map['importedSymlinks'] as double),
+      lastChangeFeedEventConsumedTime: pulumi.Input.fromValue(map['lastChangeFeedEventConsumedTime'] as String),
+      lastTimeFullySynchronized: pulumi.Input.fromValue(map['lastTimeFullySynchronized'] as String),
+      preexistingDirectories: pulumi.Input.fromValue(map['preexistingDirectories'] as double),
+      preexistingFiles: pulumi.Input.fromValue(map['preexistingFiles'] as double),
+      preexistingSymlinks: pulumi.Input.fromValue(map['preexistingSymlinks'] as double),
+      rateOfBlobImport: pulumi.Input.fromValue(map['rateOfBlobImport'] as double),
+      totalBlobsImported: pulumi.Input.fromValue(map['totalBlobsImported'] as double),
       totalConflicts: pulumi.Input.fromValue(map['totalConflicts'] as double),
       totalErrors: pulumi.Input.fromValue(map['totalErrors'] as double),
     );
   }
 }
+

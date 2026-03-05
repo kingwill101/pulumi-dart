@@ -298,13 +298,10 @@ import 'tags_response.dart';
 class TagAtScope extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the tags wrapper resource.
   late final pulumi.Output<String> name;
-
   /// The set of tags.
   late final pulumi.Output<TagsResponse> properties;
-
   /// The type of the tags wrapper resource.
   late final pulumi.Output<String> type;
 
@@ -317,23 +314,14 @@ class TagAtScope extends pulumi.CustomResource {
     TagAtScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:resources:TagAtScope',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:resources:TagAtScope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<TagsResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TagsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<TagsResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

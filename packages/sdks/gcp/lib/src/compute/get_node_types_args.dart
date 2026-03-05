@@ -11,7 +11,6 @@ class GetNodeTypesArgs {
   /// Should match the project the nodes of this type will be deployed to.
   /// Defaults to the project that the provider is authenticated with.
   final pulumi.Input<String>? project;
-
   /// The zone to list node types for. Should be in zone of intended node groups and region of referencing node template. If `zone` is not specified, the provider-level zone must be set and is used
   /// instead.
   final pulumi.Input<String>? zone;
@@ -19,24 +18,23 @@ class GetNodeTypesArgs {
   /// Creates a new [GetNodeTypesArgs].
   /// [project] ID of the project to list available node types for.
   /// [zone] The zone to list node types for. Should be in zone of intended node groups and region of referencing node template. If `zone` is not specified, the provider-level zone must be set and is used
-  GetNodeTypesArgs({this.project, this.zone});
+  GetNodeTypesArgs({
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'zone': ?zone};
+    return <String, dynamic>{
+      'project': ?project,
+      'zone': ?zone,
+    };
   }
 
   factory GetNodeTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeTypesArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

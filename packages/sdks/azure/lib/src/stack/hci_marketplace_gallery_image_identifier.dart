@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HciMarketplaceGalleryImageIdentifier {
   /// The offer of the Azure Stack HCI Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
   final pulumi.Input<String> offer;
-
   /// The publisher of the Azure Stack HCI Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
   final pulumi.Input<String> publisher;
-
   /// The sku of the Azure Stack HCI Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
   final pulumi.Input<String> sku;
 
@@ -30,9 +28,7 @@ class HciMarketplaceGalleryImageIdentifier {
     };
   }
 
-  factory HciMarketplaceGalleryImageIdentifier.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HciMarketplaceGalleryImageIdentifier.fromMap(Map<String, dynamic> map) {
     return HciMarketplaceGalleryImageIdentifier(
       offer: pulumi.Input.fromValue(map['offer'] as String),
       publisher: pulumi.Input.fromValue(map['publisher'] as String),
@@ -40,3 +36,4 @@ class HciMarketplaceGalleryImageIdentifier {
     );
   }
 }
+

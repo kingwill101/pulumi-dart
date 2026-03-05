@@ -7,7 +7,6 @@ class RouterApplianceInstanceResponseNetworkconnectivityV1alpha1 {
   /// The IP address of the network interface to use for peering.
   final pulumi.Input<String> ipAddress;
   final pulumi.Input<String> networkInterface;
-
   /// The URI of the virtual machine resource
   final pulumi.Input<String> virtualMachine;
 
@@ -29,15 +28,12 @@ class RouterApplianceInstanceResponseNetworkconnectivityV1alpha1 {
     };
   }
 
-  factory RouterApplianceInstanceResponseNetworkconnectivityV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RouterApplianceInstanceResponseNetworkconnectivityV1alpha1.fromMap(Map<String, dynamic> map) {
     return RouterApplianceInstanceResponseNetworkconnectivityV1alpha1(
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
-      networkInterface: pulumi.Input.fromValue(
-        map['networkInterface'] as String,
-      ),
+      networkInterface: pulumi.Input.fromValue(map['networkInterface'] as String),
       virtualMachine: pulumi.Input.fromValue(map['virtualMachine'] as String),
     );
   }
 }
+

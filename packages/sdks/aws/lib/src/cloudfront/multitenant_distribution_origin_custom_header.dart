@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MultitenantDistributionOriginCustomHeader {
   /// Name of the header.
   final pulumi.Input<String> headerName;
-
   /// Value for the header.
   final pulumi.Input<String> headerValue;
 
@@ -24,12 +23,11 @@ class MultitenantDistributionOriginCustomHeader {
     };
   }
 
-  factory MultitenantDistributionOriginCustomHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MultitenantDistributionOriginCustomHeader.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOriginCustomHeader(
       headerName: pulumi.Input.fromValue(map['headerName'] as String),
       headerValue: pulumi.Input.fromValue(map['headerValue'] as String),
     );
   }
 }
+

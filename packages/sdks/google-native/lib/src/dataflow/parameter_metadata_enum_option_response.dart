@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParameterMetadataEnumOptionResponse {
   /// Optional. The description to display for the enum option.
   final pulumi.Input<String> description;
-
   /// Optional. The label to display for the enum option.
   final pulumi.Input<String> label;
-
   /// The value of the enum option.
   final pulumi.Input<String> value;
 
@@ -31,9 +29,7 @@ class ParameterMetadataEnumOptionResponse {
     };
   }
 
-  factory ParameterMetadataEnumOptionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ParameterMetadataEnumOptionResponse.fromMap(Map<String, dynamic> map) {
     return ParameterMetadataEnumOptionResponse(
       description: pulumi.Input.fromValue(map['description'] as String),
       label: pulumi.Input.fromValue(map['label'] as String),
@@ -41,3 +37,4 @@ class ParameterMetadataEnumOptionResponse {
     );
   }
 }
+

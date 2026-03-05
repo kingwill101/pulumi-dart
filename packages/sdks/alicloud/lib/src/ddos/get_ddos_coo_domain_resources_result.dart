@@ -8,12 +8,10 @@ class GetDdosCooDomainResourcesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
-
   /// A list ID of instance that you want to associate.
   final List<String>? instanceIds;
   final String? outputFile;
   final String? queryDomainPattern;
-
   /// A list of Ddoscoo Domain Resources. Each element contains the following attributes:
   final List<GetDdosCooDomainResourcesResource> resources;
 
@@ -40,11 +38,7 @@ class GetDdosCooDomainResourcesResult {
       'instanceIds': ?instanceIds,
       'outputFile': ?outputFile,
       'queryDomainPattern': ?queryDomainPattern,
-      'resources':
-          pulumi.Input.encodeList<
-            GetDdosCooDomainResourcesResource,
-            Map<String, dynamic>
-          >(resources, (value) => value.toMap()),
+      'resources': pulumi.Input.encodeList<GetDdosCooDomainResourcesResource, Map<String, dynamic>>(resources, (value) => value.toMap()),
     };
   }
 
@@ -52,27 +46,11 @@ class GetDdosCooDomainResourcesResult {
     return GetDdosCooDomainResourcesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceIds: (() {
-        final guardedValue = map['instanceIds'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      queryDomainPattern: (() {
-        final guardedValue = map['queryDomainPattern'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resources: pulumi.Input.decodeList<GetDdosCooDomainResourcesResource>(
-        map['resources']!,
-        (value) => GetDdosCooDomainResourcesResource.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      instanceIds: (() { final guardedValue = map['instanceIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      queryDomainPattern: (() { final guardedValue = map['queryDomainPattern']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resources: pulumi.Input.decodeList<GetDdosCooDomainResourcesResource>(map['resources']!, (value) => GetDdosCooDomainResourcesResource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -9,29 +9,20 @@ class AwsNodePoolUpdateSettings {
 
   /// Creates a new [AwsNodePoolUpdateSettings].
   /// [surgeSettings] Optional. Settings for surge update.
-  AwsNodePoolUpdateSettings({this.surgeSettings});
+  AwsNodePoolUpdateSettings({
+    this.surgeSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'surgeSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            AwsNodePoolUpdateSettingsSurgeSettings,
-            Map<String, dynamic>
-          >(surgeSettings, (value) => value.toMap()),
+      'surgeSettings': ?pulumi.Input.mapOptionalInputValue<AwsNodePoolUpdateSettingsSurgeSettings, Map<String, dynamic>>(surgeSettings, (value) => value.toMap()),
     };
   }
 
   factory AwsNodePoolUpdateSettings.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolUpdateSettings(
-      surgeSettings: (() {
-        final guardedValue = map['surgeSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AwsNodePoolUpdateSettingsSurgeSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      surgeSettings: (() { final guardedValue = map['surgeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsNodePoolUpdateSettingsSurgeSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

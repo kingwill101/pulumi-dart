@@ -6,27 +6,20 @@ import 'dns_resource_record_response.dart';
 class DnsAuthorization extends pulumi.CustomResource {
   /// The creation timestamp of a DnsAuthorization.
   late final pulumi.Output<String> createTime;
-
   /// One or more paragraphs of text description of a DnsAuthorization.
   late final pulumi.Output<String> description;
-
   /// Required. A user-provided name of the dns authorization.
   late final pulumi.Output<String> dnsAuthorizationId;
-
   /// DNS Resource Record that needs to be added to DNS configuration.
   late final pulumi.Output<DnsResourceRecordResponse> dnsResourceRecord;
-
   /// Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
   late final pulumi.Output<String> domain;
-
   /// Set of labels associated with a DnsAuthorization.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
-
   /// A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// The last update timestamp of a DnsAuthorization.
   late final pulumi.Output<String> updateTime;
 
@@ -39,24 +32,15 @@ class DnsAuthorization extends pulumi.CustomResource {
     DnsAuthorizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:certificatemanager/v1:DnsAuthorization',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:certificatemanager/v1:DnsAuthorization',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     dnsAuthorizationId = registerOutput<String>('dnsAuthorizationId');
-    dnsResourceRecord = registerOutput<DnsResourceRecordResponse>(
-      'dnsResourceRecord',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DnsResourceRecordResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dnsResourceRecord = registerOutput<DnsResourceRecordResponse>('dnsResourceRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsResourceRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domain = registerOutput<String>('domain');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');

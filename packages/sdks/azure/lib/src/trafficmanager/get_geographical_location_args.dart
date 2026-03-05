@@ -12,10 +12,14 @@ class GetGeographicalLocationArgs {
 
   /// Creates a new [GetGeographicalLocationArgs].
   /// [name] Specifies the name of the Location, for example `World`, `Europe` or `Germany`.
-  GetGeographicalLocationArgs({required this.name});
+  GetGeographicalLocationArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetGeographicalLocationArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetGeographicalLocationArgs {
     );
   }
 }
+

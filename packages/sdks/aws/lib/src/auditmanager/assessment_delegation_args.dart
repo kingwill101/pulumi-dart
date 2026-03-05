@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssessmentDelegationArgs {
   /// Identifier for the assessment.
   final pulumi.Input<String> assessmentId;
-
   /// Comment describing the delegation request.
   final pulumi.Input<String>? comment;
-
   /// Assessment control set name. This value is the control set name used during assessment creation (not the AWS-generated ID). The `_id` suffix on this attribute has been preserved to be consistent with the underlying AWS API.
   final pulumi.Input<String> controlSetId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Amazon Resource Name (ARN) of the IAM role.
   final pulumi.Input<String> roleArn;
-
   /// Type of customer persona. For assessment delegation, type must always be `RESOURCE_OWNER`.
   ///
   /// The following arguments are optional:
@@ -57,19 +52,12 @@ class AssessmentDelegationArgs {
   factory AssessmentDelegationArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentDelegationArgs(
       assessmentId: pulumi.Input.fromValue(map['assessmentId'] as String),
-      comment: (() {
-        final guardedValue = map['comment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       controlSetId: pulumi.Input.fromValue(map['controlSetId'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
       roleType: pulumi.Input.fromValue(map['roleType'] as String),
     );
   }
 }
+

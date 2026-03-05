@@ -9,19 +9,20 @@ class IPSetResponse {
 
   /// Creates a new [IPSetResponse].
   /// [definition] Property definition
-  IPSetResponse({this.definition});
+  IPSetResponse({
+    this.definition,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'definition': ?definition};
+    return <String, dynamic>{
+      'definition': ?definition,
+    };
   }
 
   factory IPSetResponse.fromMap(Map<String, dynamic> map) {
     return IPSetResponse(
-      definition: (() {
-        final guardedValue = map['definition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      definition: (() { final guardedValue = map['definition']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

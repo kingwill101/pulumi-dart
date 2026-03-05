@@ -458,22 +458,16 @@ import 'vpn_gateway_connection_state.dart';
 class VpnGatewayConnection extends pulumi.CustomResource {
   /// Whether Internet Security is enabled for this VPN Connection. Defaults to `false`.
   late final pulumi.Output<bool?> internetSecurityEnabled;
-
   /// The name which should be used for this VPN Gateway Connection. Changing this forces a new VPN Gateway Connection to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the remote VPN Site, which will connect to the VPN Gateway. Changing this forces a new VPN Gateway Connection to be created.
   late final pulumi.Output<String> remoteVpnSiteId;
-
   /// A `routing` block as defined below. If this is not specified, there will be a default route table created implicitly.
   late final pulumi.Output<VpnGatewayConnectionRouting> routing;
-
   /// One or more `traffic_selector_policy` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> trafficSelectorPolicies;
-
   /// The ID of the VPN Gateway that this VPN Gateway Connection belongs to. Changing this forces a new VPN Gateway Connection to be created.
   late final pulumi.Output<String> vpnGatewayId;
-
   /// One or more `vpn_link` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> vpnLinks;
 
@@ -486,27 +480,16 @@ class VpnGatewayConnection extends pulumi.CustomResource {
     VpnGatewayConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/vpnGatewayConnection:VpnGatewayConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/vpnGatewayConnection:VpnGatewayConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');
     remoteVpnSiteId = registerOutput<String>('remoteVpnSiteId');
-    routing = registerOutput<VpnGatewayConnectionRouting>(
-      'routing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpnGatewayConnectionRouting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    trafficSelectorPolicies = registerOutput<List<Map<String, dynamic>>?>(
-      'trafficSelectorPolicies',
-    );
+    routing = registerOutput<VpnGatewayConnectionRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnGatewayConnectionRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trafficSelectorPolicies = registerOutput<List<Map<String, dynamic>>?>('trafficSelectorPolicies');
     vpnGatewayId = registerOutput<String>('vpnGatewayId');
     vpnLinks = registerOutput<List<Map<String, dynamic>>>('vpnLinks');
   }
@@ -529,27 +512,16 @@ class VpnGatewayConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/vpnGatewayConnection:VpnGatewayConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/vpnGatewayConnection:VpnGatewayConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');
     remoteVpnSiteId = registerOutput<String>('remoteVpnSiteId');
-    routing = registerOutput<VpnGatewayConnectionRouting>(
-      'routing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpnGatewayConnectionRouting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    trafficSelectorPolicies = registerOutput<List<Map<String, dynamic>>?>(
-      'trafficSelectorPolicies',
-    );
+    routing = registerOutput<VpnGatewayConnectionRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnGatewayConnectionRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trafficSelectorPolicies = registerOutput<List<Map<String, dynamic>>?>('trafficSelectorPolicies');
     vpnGatewayId = registerOutput<String>('vpnGatewayId');
     vpnLinks = registerOutput<List<Map<String, dynamic>>>('vpnLinks');
   }

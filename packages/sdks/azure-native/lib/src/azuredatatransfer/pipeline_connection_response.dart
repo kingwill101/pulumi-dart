@@ -8,22 +8,16 @@ import 'system_data_response.dart';
 class PipelineConnectionResponse {
   /// Connection etag inside pipeline
   final pulumi.Input<String> etag;
-
   /// Connection id inside pipeline
   final pulumi.Input<String> id;
-
   /// Connection location inside pipeline
   final pulumi.Input<String> location;
-
   /// Connection name inside pipeline
   final pulumi.Input<String> name;
-
   /// Connection properties inside pipeline
   final pulumi.Input<PipelineConnectionResponseProperties>? properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final pulumi.Input<SystemDataResponse> systemData;
-
   /// Connection type inside pipeline
   final pulumi.Input<String> type;
 
@@ -51,16 +45,8 @@ class PipelineConnectionResponse {
       'id': id,
       'location': location,
       'name': name,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            PipelineConnectionResponseProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
-      'systemData':
-          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
-            systemData,
-            (value) => value.toMap(),
-          ),
+      'properties': ?pulumi.Input.mapOptionalInputValue<PipelineConnectionResponseProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
@@ -71,21 +57,10 @@ class PipelineConnectionResponse {
       id: pulumi.Input.fromValue(map['id'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PipelineConnectionResponseProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      systemData: pulumi.Input.fromValue(
-        SystemDataResponse.fromMap(
-          (map['systemData']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineConnectionResponseProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      systemData: pulumi.Input.fromValue(SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

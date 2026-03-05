@@ -311,34 +311,26 @@ class WorkforcePool extends pulumi.CustomResource {
   /// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
   /// Structure is documented below.
   late final pulumi.Output<WorkforcePoolAccessRestrictions?> accessRestrictions;
-
   /// A user-specified description of the pool. Cannot exceed 256 characters.
   late final pulumi.Output<String?> description;
-
   /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
   /// or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
   late final pulumi.Output<bool?> disabled;
-
   /// A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
   late final pulumi.Output<String?> displayName;
-
   /// The location for the resource.
   late final pulumi.Output<String> location;
-
   /// Output only. The resource name of the pool.
   /// Format: `locations/{location}/workforcePools/{workforcePoolId}`
   late final pulumi.Output<String> name;
-
   /// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
   late final pulumi.Output<String> parent;
-
   /// Duration that the Google Cloud access tokens, console sign-in sessions,
   /// and `gcloud` sign-in sessions from this pool are valid.
   /// Must be greater than 15 minutes (900s) and less than 12 hours (43200s).
   /// If `sessionDuration` is not configured, minted credentials have a default duration of one hour (3600s).
   /// A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: "`3.5s`".
   late final pulumi.Output<String?> sessionDuration;
-
   /// Output only. The state of the pool.
   /// * STATE_UNSPECIFIED: State unspecified.
   /// * ACTIVE: The pool is active, and may be used in Google Cloud policies.
@@ -350,7 +342,6 @@ class WorkforcePool extends pulumi.CustomResource {
   /// existing tokens to access resources. If the pool is undeleted, existing
   /// tokens grant access again.
   late final pulumi.Output<String> state;
-
   /// The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
   /// digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen.
   /// The prefix `gcp-` is reserved for use by Google, and may not be specified.
@@ -365,21 +356,12 @@ class WorkforcePool extends pulumi.CustomResource {
     WorkforcePoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/workforcePool:WorkforcePool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessRestrictions = registerOutput<WorkforcePoolAccessRestrictions?>(
-      'accessRestrictions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkforcePoolAccessRestrictions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:iam/workforcePool:WorkforcePool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessRestrictions = registerOutput<WorkforcePoolAccessRestrictions?>('accessRestrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolAccessRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
@@ -409,21 +391,12 @@ class WorkforcePool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/workforcePool:WorkforcePool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessRestrictions = registerOutput<WorkforcePoolAccessRestrictions?>(
-      'accessRestrictions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkforcePoolAccessRestrictions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:iam/workforcePool:WorkforcePool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessRestrictions = registerOutput<WorkforcePoolAccessRestrictions?>('accessRestrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolAccessRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');

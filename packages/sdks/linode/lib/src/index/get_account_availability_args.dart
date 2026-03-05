@@ -12,10 +12,14 @@ class GetAccountAvailabilityArgs {
 
   /// Creates a new [GetAccountAvailabilityArgs].
   /// [region] The region ID.
-  GetAccountAvailabilityArgs({required this.region});
+  GetAccountAvailabilityArgs({
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'region': region};
+    return <String, dynamic>{
+      'region': region,
+    };
   }
 
   factory GetAccountAvailabilityArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetAccountAvailabilityArgs {
     );
   }
 }
+

@@ -7,10 +7,14 @@ class GetDisksDiskOperationLock {
 
   /// Creates a new [GetDisksDiskOperationLock].
   /// [lockReason] Required.
-  GetDisksDiskOperationLock({required this.lockReason});
+  GetDisksDiskOperationLock({
+    required this.lockReason,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'lockReason': lockReason};
+    return <String, dynamic>{
+      'lockReason': lockReason,
+    };
   }
 
   factory GetDisksDiskOperationLock.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class GetDisksDiskOperationLock {
     );
   }
 }
+

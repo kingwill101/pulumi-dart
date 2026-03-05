@@ -116,13 +116,10 @@ import 'private_link_hub_state.dart';
 class PrivateLinkHub extends pulumi.CustomResource {
   /// Specifies the Azure location where the Synapse Private Link Hub exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Synapse Private Link Hub. Changing this forces a new Synapse Private Link Hub to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the Synapse Private Link Hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Synapse Private Link Hub.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -135,11 +132,11 @@ class PrivateLinkHub extends pulumi.CustomResource {
     PrivateLinkHubArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/privateLinkHub:PrivateLinkHub',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:synapse/privateLinkHub:PrivateLinkHub',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -164,11 +161,11 @@ class PrivateLinkHub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/privateLinkHub:PrivateLinkHub',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:synapse/privateLinkHub:PrivateLinkHub',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

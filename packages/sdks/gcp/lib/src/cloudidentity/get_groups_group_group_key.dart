@@ -8,7 +8,6 @@ class GetGroupsGroupGroupKey {
   /// For external-identity-mapped entities, the id is a string conforming
   /// to the Identity Source's requirements.
   final pulumi.Input<String> id;
-
   /// The namespace in which the entity exists.
   /// If not populated, the EntityKey represents a Google-managed entity
   /// such as a Google user or a Google Group.
@@ -20,10 +19,16 @@ class GetGroupsGroupGroupKey {
   /// Creates a new [GetGroupsGroupGroupKey].
   /// [id] The ID of the entity.
   /// [namespace] The namespace in which the entity exists.
-  GetGroupsGroupGroupKey({required this.id, required this.namespace});
+  GetGroupsGroupGroupKey({
+    required this.id,
+    required this.namespace,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'namespace': namespace};
+    return <String, dynamic>{
+      'id': id,
+      'namespace': namespace,
+    };
   }
 
   factory GetGroupsGroupGroupKey.fromMap(Map<String, dynamic> map) {
@@ -33,3 +38,4 @@ class GetGroupsGroupGroupKey {
     );
   }
 }
+

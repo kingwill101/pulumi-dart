@@ -15,3 +15,4 @@ enum LogsConfigStatusType {
     throw ArgumentError('Unknown LogsConfigStatusType value: $value');
   }
 }
+

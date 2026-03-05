@@ -6,10 +6,8 @@ class HourlySchedule {
   /// Interval at which backup needs to be triggered. For hourly the value
   /// can be 4/6/8/12
   final pulumi.Input<int>? interval;
-
   /// To specify duration of the backup window
   final pulumi.Input<int>? scheduleWindowDuration;
-
   /// To specify start time of the backup window
   final pulumi.Input<String>? scheduleWindowStartTime;
 
@@ -33,21 +31,10 @@ class HourlySchedule {
 
   factory HourlySchedule.fromMap(Map<String, dynamic> map) {
     return HourlySchedule(
-      interval: (() {
-        final guardedValue = map['interval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      scheduleWindowDuration: (() {
-        final guardedValue = map['scheduleWindowDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      scheduleWindowStartTime: (() {
-        final guardedValue = map['scheduleWindowStartTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scheduleWindowDuration: (() { final guardedValue = map['scheduleWindowDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scheduleWindowStartTime: (() { final guardedValue = map['scheduleWindowStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

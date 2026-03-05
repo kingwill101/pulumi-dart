@@ -7,52 +7,29 @@ import 'ip_address_response.dart';
 class NetworkProfileResponse {
   /// Specifies the circuit id for connecting to express route.
   final pulumi.Input<String>? circuitId;
-
   /// Specifies the network interfaces for the Azure Large Instance.
   final pulumi.Input<List<IpAddressResponse>>? networkInterfaces;
 
   /// Creates a new [NetworkProfileResponse].
   /// [circuitId] Specifies the circuit id for connecting to express route.
   /// [networkInterfaces] Specifies the network interfaces for the Azure Large Instance.
-  NetworkProfileResponse({this.circuitId, this.networkInterfaces});
+  NetworkProfileResponse({
+    this.circuitId,
+    this.networkInterfaces,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'circuitId': ?circuitId,
-      'networkInterfaces':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<IpAddressResponse>,
-            List<Map<String, dynamic>>
-          >(
-            networkInterfaces,
-            (value) =>
-                pulumi.Input.encodeList<
-                  IpAddressResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<IpAddressResponse>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<IpAddressResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return NetworkProfileResponse(
-      circuitId: (() {
-        final guardedValue = map['circuitId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkInterfaces: (() {
-        final guardedValue = map['networkInterfaces'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<IpAddressResponse>(
-            guardedValue,
-            (value) => IpAddressResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      circuitId: (() { final guardedValue = map['circuitId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkInterfaces: (() { final guardedValue = map['networkInterfaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpAddressResponse>(guardedValue, (value) => IpAddressResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

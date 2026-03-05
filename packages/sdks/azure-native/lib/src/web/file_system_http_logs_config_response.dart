@@ -6,12 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FileSystemHttpLogsConfigResponse {
   /// True if configuration is enabled, false if it is disabled and null if configuration is not set.
   final pulumi.Input<bool>? enabled;
-
   /// Retention in days.
   /// Remove files older than X days.
   /// 0 or lower means no retention.
   final pulumi.Input<int>? retentionInDays;
-
   /// Maximum size in megabytes that http log files can use.
   /// When reached old log files will be removed to make space for new ones.
   /// Value can range between 25 and 100.
@@ -37,21 +35,10 @@ class FileSystemHttpLogsConfigResponse {
 
   factory FileSystemHttpLogsConfigResponse.fromMap(Map<String, dynamic> map) {
     return FileSystemHttpLogsConfigResponse(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      retentionInDays: (() {
-        final guardedValue = map['retentionInDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      retentionInMb: (() {
-        final guardedValue = map['retentionInMb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      retentionInDays: (() { final guardedValue = map['retentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionInMb: (() { final guardedValue = map['retentionInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

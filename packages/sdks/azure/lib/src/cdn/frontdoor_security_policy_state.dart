@@ -7,10 +7,8 @@ import 'frontdoor_security_policy_security_policies.dart';
 class FrontdoorSecurityPolicyState {
   /// The Front Door Profile Resource Id that is linked to this Front Door Security Policy. Changing this forces a new Front Door Security Policy to be created.
   final pulumi.Input<String>? cdnFrontdoorProfileId;
-
   /// The name which should be used for this Front Door Security Policy. Possible values must not be an empty string. Changing this forces a new Front Door Security Policy to be created.
   final pulumi.Input<String>? name;
-
   /// An `security_policies` block as defined below.
   final pulumi.Input<FrontdoorSecurityPolicySecurityPolicies>? securityPolicies;
 
@@ -28,35 +26,16 @@ class FrontdoorSecurityPolicyState {
     return <String, dynamic>{
       'cdnFrontdoorProfileId': ?cdnFrontdoorProfileId,
       'name': ?name,
-      'securityPolicies':
-          ?pulumi.Input.mapOptionalInputValue<
-            FrontdoorSecurityPolicySecurityPolicies,
-            Map<String, dynamic>
-          >(securityPolicies, (value) => value.toMap()),
+      'securityPolicies': ?pulumi.Input.mapOptionalInputValue<FrontdoorSecurityPolicySecurityPolicies, Map<String, dynamic>>(securityPolicies, (value) => value.toMap()),
     };
   }
 
   factory FrontdoorSecurityPolicyState.fromMap(Map<String, dynamic> map) {
     return FrontdoorSecurityPolicyState(
-      cdnFrontdoorProfileId: (() {
-        final guardedValue = map['cdnFrontdoorProfileId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securityPolicies: (() {
-        final guardedValue = map['securityPolicies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FrontdoorSecurityPolicySecurityPolicies.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      cdnFrontdoorProfileId: (() { final guardedValue = map['cdnFrontdoorProfileId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityPolicies: (() { final guardedValue = map['securityPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrontdoorSecurityPolicySecurityPolicies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

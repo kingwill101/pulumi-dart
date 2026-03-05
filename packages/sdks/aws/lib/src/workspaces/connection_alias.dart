@@ -104,19 +104,14 @@ import 'connection_alias_timeouts.dart';
 class ConnectionAlias extends pulumi.CustomResource {
   /// The connection string specified for the connection alias. The connection string must be in the form of a fully qualified domain name (FQDN), such as www.example.com.
   late final pulumi.Output<String> connectionString;
-
   /// The identifier of the Amazon Web Services account that owns the connection alias.
   late final pulumi.Output<String> ownerAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The current state of the connection alias.
   late final pulumi.Output<String> state;
-
   /// A map of tags assigned to the WorkSpaces Connection Alias. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ConnectionAliasTimeouts?> timeouts;
@@ -130,27 +125,18 @@ class ConnectionAlias extends pulumi.CustomResource {
     ConnectionAliasArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspaces/connectionAlias:ConnectionAlias',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspaces/connectionAlias:ConnectionAlias',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionString = registerOutput<String>('connectionString');
     ownerAccountId = registerOutput<String>('ownerAccountId');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ConnectionAliasTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionAliasTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ConnectionAliasTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAliasTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [ConnectionAlias] resource's state with the given [name] and [id].
@@ -171,26 +157,17 @@ class ConnectionAlias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspaces/connectionAlias:ConnectionAlias',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspaces/connectionAlias:ConnectionAlias',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionString = registerOutput<String>('connectionString');
     ownerAccountId = registerOutput<String>('ownerAccountId');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ConnectionAliasTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionAliasTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ConnectionAliasTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAliasTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

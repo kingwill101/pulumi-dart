@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureClusterControlPlaneReplicaPlacement {
   /// For a given replica, the Azure availability zone where to provision the control plane VM and the ETCD disk.
   final pulumi.Input<String> azureAvailabilityZone;
-
   /// For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
   final pulumi.Input<String> subnetId;
 
@@ -24,14 +23,11 @@ class AzureClusterControlPlaneReplicaPlacement {
     };
   }
 
-  factory AzureClusterControlPlaneReplicaPlacement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureClusterControlPlaneReplicaPlacement.fromMap(Map<String, dynamic> map) {
     return AzureClusterControlPlaneReplicaPlacement(
-      azureAvailabilityZone: pulumi.Input.fromValue(
-        map['azureAvailabilityZone'] as String,
-      ),
+      azureAvailabilityZone: pulumi.Input.fromValue(map['azureAvailabilityZone'] as String),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
+

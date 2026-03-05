@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationPropertiesResponse {
   /// Locale of the email.
   final pulumi.Input<String>? language;
-
   /// Optional message to be added in the email. Length is limited to 250 characters.
   final pulumi.Input<String>? message;
-
   /// Regional format used for formatting date/time and currency values in the email.
   final pulumi.Input<String>? regionalFormat;
-
   /// Subject of the email. Length is limited to 70 characters.
   final pulumi.Input<String> subject;
-
   /// Array of email addresses.
   final pulumi.Input<List<String>> to;
 
@@ -45,23 +41,12 @@ class NotificationPropertiesResponse {
 
   factory NotificationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NotificationPropertiesResponse(
-      language: (() {
-        final guardedValue = map['language'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regionalFormat: (() {
-        final guardedValue = map['regionalFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      language: (() { final guardedValue = map['language']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionalFormat: (() { final guardedValue = map['regionalFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subject: pulumi.Input.fromValue(map['subject'] as String),
       to: pulumi.Input.fromValue((map['to'] as List).cast<String>()),
     );
   }
 }
+

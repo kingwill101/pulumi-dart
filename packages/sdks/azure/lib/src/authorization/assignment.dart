@@ -1245,42 +1245,32 @@ import 'assignment_state.dart';
 class Assignment extends pulumi.CustomResource {
   /// The condition that limits the resources that the role can be assigned to. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> condition;
-
   /// The version of the condition. Possible values are `1.0` or `2.0`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `condition` is required when `condition_version` is set.
   late final pulumi.Output<String> conditionVersion;
-
   /// The delegated Azure Resource Id which contains a Managed Identity. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This field is only used in cross tenant scenarios.
   late final pulumi.Output<String?> delegatedManagedIdentityResourceId;
-
   /// The description for this Role Assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> description;
-
   /// A unique UUID/GUID for this Role Assignment - one will be generated if not specified. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Principal (User, Group or Service Principal) to assign the Role Definition to. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The Principal ID is also known as the Object ID (i.e. not the "Application ID" for applications).
   late final pulumi.Output<String> principalId;
-
   /// The type of the `principal_id`. Possible values are `User`, `Group` and `ServicePrincipal`. Changing this forces a new resource to be created. It is necessary to explicitly set this attribute when creating role assignments if the principal creating the assignment is constrained by ABAC rules that filters on the PrincipalType attribute.
   late final pulumi.Output<String> principalType;
-
   /// The Scoped-ID of the Role Definition. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleDefinitionId;
-
   /// The name of a built-in Role. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Either `role_definition_id` or `role_definition_name` must be set.
   late final pulumi.Output<String> roleDefinitionName;
-
   /// The scope at which the Role Assignment applies to, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`, or `/providers/Microsoft.Management/managementGroups/myMG`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scope;
-
   /// If the `principal_id` is a newly provisioned `Service Principal` set this value to `true` to skip the `Azure Active Directory` check which may fail due to replication lag. This argument is only valid if the `principal_id` is a `Service Principal` identity. Defaults to `false`.
   ///
   /// &gt; **Note:** If it is not a `Service Principal` identity it will cause the role assignment to fail.
@@ -1295,16 +1285,14 @@ class Assignment extends pulumi.CustomResource {
     AssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:authorization/assignment:Assignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:authorization/assignment:Assignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     condition = registerOutput<String?>('condition');
     conditionVersion = registerOutput<String>('conditionVersion');
-    delegatedManagedIdentityResourceId = registerOutput<String?>(
-      'delegatedManagedIdentityResourceId',
-    );
+    delegatedManagedIdentityResourceId = registerOutput<String?>('delegatedManagedIdentityResourceId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');
@@ -1312,9 +1300,7 @@ class Assignment extends pulumi.CustomResource {
     roleDefinitionId = registerOutput<String>('roleDefinitionId');
     roleDefinitionName = registerOutput<String>('roleDefinitionName');
     scope = registerOutput<String>('scope');
-    skipServicePrincipalAadCheck = registerOutput<bool>(
-      'skipServicePrincipalAadCheck',
-    );
+    skipServicePrincipalAadCheck = registerOutput<bool>('skipServicePrincipalAadCheck');
   }
 
   /// Gets an existing [Assignment] resource's state with the given [name] and [id].
@@ -1335,16 +1321,14 @@ class Assignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:authorization/assignment:Assignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:authorization/assignment:Assignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     condition = registerOutput<String?>('condition');
     conditionVersion = registerOutput<String>('conditionVersion');
-    delegatedManagedIdentityResourceId = registerOutput<String?>(
-      'delegatedManagedIdentityResourceId',
-    );
+    delegatedManagedIdentityResourceId = registerOutput<String?>('delegatedManagedIdentityResourceId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');
@@ -1352,8 +1336,6 @@ class Assignment extends pulumi.CustomResource {
     roleDefinitionId = registerOutput<String>('roleDefinitionId');
     roleDefinitionName = registerOutput<String>('roleDefinitionName');
     scope = registerOutput<String>('scope');
-    skipServicePrincipalAadCheck = registerOutput<bool>(
-      'skipServicePrincipalAadCheck',
-    );
+    skipServicePrincipalAadCheck = registerOutput<bool>('skipServicePrincipalAadCheck');
   }
 }

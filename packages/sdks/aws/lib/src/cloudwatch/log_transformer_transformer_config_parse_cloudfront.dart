@@ -8,21 +8,20 @@ class LogTransformerTransformerConfigParseCloudfront {
 
   /// Creates a new [LogTransformerTransformerConfigParseCloudfront].
   /// [source] Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
-  LogTransformerTransformerConfigParseCloudfront({this.source});
+  LogTransformerTransformerConfigParseCloudfront({
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'source': ?source};
+    return <String, dynamic>{
+      'source': ?source,
+    };
   }
 
-  factory LogTransformerTransformerConfigParseCloudfront.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogTransformerTransformerConfigParseCloudfront.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigParseCloudfront(
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

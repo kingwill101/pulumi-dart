@@ -15,3 +15,4 @@ enum EncryptionState {
     throw ArgumentError('Unknown EncryptionState value: $value');
   }
 }
+

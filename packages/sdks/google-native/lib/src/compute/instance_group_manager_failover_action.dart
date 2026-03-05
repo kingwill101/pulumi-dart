@@ -12,8 +12,7 @@ enum InstanceGroupManagerFailoverAction {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InstanceGroupManagerFailoverAction value: $value',
-    );
+    throw ArgumentError('Unknown InstanceGroupManagerFailoverAction value: $value');
   }
 }
+

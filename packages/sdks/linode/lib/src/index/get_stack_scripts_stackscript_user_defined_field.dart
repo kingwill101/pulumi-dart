@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStackScriptsStackscriptUserDefinedField {
   /// The default value. If not specified, this value will be used.
   final pulumi.Input<String> default_;
-
   /// An example value for the field.
   final pulumi.Input<String> example;
-
   /// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
   final pulumi.Input<String> label;
-
   /// A list of acceptable values for the field in any quantity, combination or order.
   final pulumi.Input<String> manyOf;
-
   /// The name of the field.
   final pulumi.Input<String> name;
-
   /// A list of acceptable single values for the field.
   final pulumi.Input<String> oneOf;
 
@@ -48,9 +43,7 @@ class GetStackScriptsStackscriptUserDefinedField {
     };
   }
 
-  factory GetStackScriptsStackscriptUserDefinedField.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetStackScriptsStackscriptUserDefinedField.fromMap(Map<String, dynamic> map) {
     return GetStackScriptsStackscriptUserDefinedField(
       default_: pulumi.Input.fromValue(map['default'] as String),
       example: pulumi.Input.fromValue(map['example'] as String),
@@ -61,3 +54,4 @@ class GetStackScriptsStackscriptUserDefinedField {
     );
   }
 }
+

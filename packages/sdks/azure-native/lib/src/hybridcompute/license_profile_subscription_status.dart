@@ -16,8 +16,7 @@ enum LicenseProfileSubscriptionStatus {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown LicenseProfileSubscriptionStatus value: $value',
-    );
+    throw ArgumentError('Unknown LicenseProfileSubscriptionStatus value: $value');
   }
 }
+

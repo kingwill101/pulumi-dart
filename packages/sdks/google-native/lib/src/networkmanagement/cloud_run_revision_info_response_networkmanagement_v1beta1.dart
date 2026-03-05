@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudRunRevisionInfoResponseNetworkmanagementV1beta1 {
   /// Name of a Cloud Run revision.
   final pulumi.Input<String> displayName;
-
   /// Location in which this revision is deployed.
   final pulumi.Input<String> location;
-
   /// ID of Cloud Run Service this revision belongs to.
   final pulumi.Input<String> serviceName;
-
   /// URI of Cloud Run service this revision belongs to.
   final pulumi.Input<String> serviceUri;
-
   /// URI of a Cloud Run revision.
   final pulumi.Input<String> uri;
 
@@ -43,9 +39,7 @@ class CloudRunRevisionInfoResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory CloudRunRevisionInfoResponseNetworkmanagementV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudRunRevisionInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudRunRevisionInfoResponseNetworkmanagementV1beta1(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -55,3 +49,4 @@ class CloudRunRevisionInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
+

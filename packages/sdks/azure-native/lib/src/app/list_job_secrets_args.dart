@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListJobSecretsArgs {
   /// Job Name
   final pulumi.Input<String> jobName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [ListJobSecretsArgs].
   /// [jobName] Job Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListJobSecretsArgs({required this.jobName, required this.resourceGroupName});
+  ListJobSecretsArgs({
+    required this.jobName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class ListJobSecretsArgs {
   factory ListJobSecretsArgs.fromMap(Map<String, dynamic> map) {
     return ListJobSecretsArgs(
       jobName: pulumi.Input.fromValue(map['jobName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

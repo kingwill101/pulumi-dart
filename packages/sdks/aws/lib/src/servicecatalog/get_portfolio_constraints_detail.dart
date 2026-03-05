@@ -5,19 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPortfolioConstraintsDetail {
   /// Identifier of the constraint.
   final pulumi.Input<String> constraintId;
-
   /// Description of the constraint.
   final pulumi.Input<String> description;
   final pulumi.Input<String> owner;
-
   /// Portfolio identifier.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> portfolioId;
-
   /// Product identifier.
   final pulumi.Input<String> productId;
-
   /// Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `STACKSET`, and `TEMPLATE`.
   final pulumi.Input<String> type;
 
@@ -59,3 +55,4 @@ class GetPortfolioConstraintsDetail {
     );
   }
 }
+

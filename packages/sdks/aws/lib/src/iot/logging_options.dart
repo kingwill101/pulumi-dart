@@ -101,13 +101,10 @@ import 'logging_options_state.dart';
 class LoggingOptions extends pulumi.CustomResource {
   /// The default logging level. Valid Values: `"DEBUG"`, `"INFO"`, `"ERROR"`, `"WARN"`, `"DISABLED"`.
   late final pulumi.Output<String> defaultLogLevel;
-
   /// If `true` all logs are disabled. The default is `false`.
   late final pulumi.Output<bool?> disableAllLogs;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ARN of the role that allows IoT to write to Cloudwatch logs.
   late final pulumi.Output<String> roleArn;
 
@@ -120,11 +117,11 @@ class LoggingOptions extends pulumi.CustomResource {
     LoggingOptionsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iot/loggingOptions:LoggingOptions',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iot/loggingOptions:LoggingOptions',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defaultLogLevel = registerOutput<String>('defaultLogLevel');
     disableAllLogs = registerOutput<bool?>('disableAllLogs');
     region = registerOutput<String>('region');
@@ -149,11 +146,11 @@ class LoggingOptions extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iot/loggingOptions:LoggingOptions',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iot/loggingOptions:LoggingOptions',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defaultLogLevel = registerOutput<String>('defaultLogLevel');
     disableAllLogs = registerOutput<bool?>('disableAllLogs');
     region = registerOutput<String>('region');

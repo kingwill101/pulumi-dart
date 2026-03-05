@@ -9,19 +9,20 @@ class BlobShare {
 
   /// Creates a new [BlobShare].
   /// [sasUri] SAS URI of Azure Storage Account Container.
-  BlobShare({this.sasUri});
+  BlobShare({
+    this.sasUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sasUri': ?sasUri};
+    return <String, dynamic>{
+      'sasUri': ?sasUri,
+    };
   }
 
   factory BlobShare.fromMap(Map<String, dynamic> map) {
     return BlobShare(
-      sasUri: (() {
-        final guardedValue = map['sasUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sasUri: (() { final guardedValue = map['sasUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

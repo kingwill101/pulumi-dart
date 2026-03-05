@@ -6,32 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionNetworkEndpointState {
   /// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
   final pulumi.Input<int>? clientDestinationPort;
-
   /// Fully qualified domain name of network endpoint.
   /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
   final pulumi.Input<String>? fqdn;
-
   /// The name for a specific VM instance that the IP address belongs to.
   /// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
   final pulumi.Input<String>? instance;
-
   /// IPv4 address external endpoint.
   /// This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
   final pulumi.Input<String>? ipAddress;
-
   /// The unique identifier number for the resource. This identifier is defined by the server.
   final pulumi.Input<int>? networkEndpointId;
-
   /// Port number of network endpoint.
   final pulumi.Input<int>? port;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Region where the containing network endpoint group is located.
   final pulumi.Input<String>? region;
-
   /// The network endpoint group this endpoint is part of.
   final pulumi.Input<String>? regionNetworkEndpointGroup;
 
@@ -73,51 +65,16 @@ class RegionNetworkEndpointState {
 
   factory RegionNetworkEndpointState.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointState(
-      clientDestinationPort: (() {
-        final guardedValue = map['clientDestinationPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      fqdn: (() {
-        final guardedValue = map['fqdn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instance: (() {
-        final guardedValue = map['instance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipAddress: (() {
-        final guardedValue = map['ipAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkEndpointId: (() {
-        final guardedValue = map['networkEndpointId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regionNetworkEndpointGroup: (() {
-        final guardedValue = map['regionNetworkEndpointGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientDestinationPort: (() { final guardedValue = map['clientDestinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkEndpointId: (() { final guardedValue = map['networkEndpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionNetworkEndpointGroup: (() { final guardedValue = map['regionNetworkEndpointGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

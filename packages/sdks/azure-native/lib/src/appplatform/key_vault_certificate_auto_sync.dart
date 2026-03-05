@@ -15,3 +15,4 @@ enum KeyVaultCertificateAutoSync {
     throw ArgumentError('Unknown KeyVaultCertificateAutoSync value: $value');
   }
 }
+

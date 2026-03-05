@@ -27,14 +27,9 @@ class GetBillingAccountIamPolicyArgs {
 
   factory GetBillingAccountIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountIamPolicyArgs(
-      billingAccountId: pulumi.Input.fromValue(
-        map['billingAccountId'] as String,
-      ),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      billingAccountId: pulumi.Input.fromValue(map['billingAccountId'] as String),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

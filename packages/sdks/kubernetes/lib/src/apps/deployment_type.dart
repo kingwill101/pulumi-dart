@@ -31,16 +31,12 @@ import 'deployment_status.dart';
 class DeploymentType {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
-
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMeta>? metadata;
-
   /// Specification of the desired behavior of the Deployment.
   final pulumi.Input<DeploymentSpec>? spec;
-
   /// Most recently observed status of the Deployment.
   final pulumi.Input<DeploymentStatus>? status;
 
@@ -62,59 +58,20 @@ class DeploymentType {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata':
-          ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(
-            metadata,
-            (value) => value.toMap(),
-          ),
-      'spec':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeploymentSpec,
-            Map<String, dynamic>
-          >(spec, (value) => value.toMap()),
-      'status':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeploymentStatus,
-            Map<String, dynamic>
-          >(status, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<DeploymentSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<DeploymentStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory DeploymentType.fromMap(Map<String, dynamic> map) {
     return DeploymentType(
-      apiVersion: (() {
-        final guardedValue = map['apiVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      spec: (() {
-        final guardedValue = map['spec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeploymentSpec.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeploymentStatus.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendAddressPoolTunnelInterface {
   /// The unique identifier of this Gateway Load Balancer Tunnel Interface.
   final pulumi.Input<int> identifier;
-
   /// The port number that this Gateway Load Balancer Tunnel Interface listens to.
   final pulumi.Input<int> port;
-
   /// The protocol used for this Gateway Load Balancer Tunnel Interface. Possible values are `None`, `Native` and `VXLAN`.
   final pulumi.Input<String> protocol;
-
   /// The traffic type of this Gateway Load Balancer Tunnel Interface. Possible values are `None`, `Internal` and `External`.
   final pulumi.Input<String> type;
 
@@ -45,3 +42,4 @@ class BackendAddressPoolTunnelInterface {
     );
   }
 }
+

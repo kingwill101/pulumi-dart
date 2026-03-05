@@ -5,25 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceGroupsGroup {
   /// Creation time.
   final pulumi.Input<String> createTime;
-
   /// DBClusterId
   final pulumi.Input<String> dbClusterId;
-
   /// The name of the resource pool, which cannot exceed 64 bytes in length.
   final pulumi.Input<String> groupName;
-
   /// Query type, value description:
   /// * **etl**: Batch query mode.
   /// * **interactive**: interactive Query mode
   /// * **default_type**: the default query mode.
   final pulumi.Input<String> groupType;
-
   /// The `key` of the resource supplied above.The value is formulated as `&lt;db_cluster_id&gt;:&lt;group_name&gt;`.
   final pulumi.Input<String> id;
-
   /// The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
   final pulumi.Input<int> nodeNum;
-
   /// Binding User.
   final pulumi.Input<String> user;
 
@@ -69,3 +63,4 @@ class GetResourceGroupsGroup {
     );
   }
 }
+

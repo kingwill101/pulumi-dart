@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetL2NetworkArgs {
   /// The name of the L2 network.
   final pulumi.Input<String> l2NetworkName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetL2NetworkArgs {
   factory GetL2NetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetL2NetworkArgs(
       l2NetworkName: pulumi.Input.fromValue(map['l2NetworkName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

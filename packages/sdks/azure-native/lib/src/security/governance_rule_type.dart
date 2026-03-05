@@ -15,3 +15,4 @@ enum GovernanceRuleType {
     throw ArgumentError('Unknown GovernanceRuleType value: $value');
   }
 }
+

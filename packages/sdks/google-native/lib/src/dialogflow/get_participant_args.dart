@@ -38,11 +38,8 @@ class GetParticipantArgs {
       conversationId: pulumi.Input.fromValue(map['conversationId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       participantId: pulumi.Input.fromValue(map['participantId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

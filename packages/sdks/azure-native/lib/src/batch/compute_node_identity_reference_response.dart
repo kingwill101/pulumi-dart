@@ -9,21 +9,20 @@ class ComputeNodeIdentityReferenceResponse {
 
   /// Creates a new [ComputeNodeIdentityReferenceResponse].
   /// [resourceId] The ARM resource id of the user assigned identity.
-  ComputeNodeIdentityReferenceResponse({this.resourceId});
+  ComputeNodeIdentityReferenceResponse({
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceId': ?resourceId};
+    return <String, dynamic>{
+      'resourceId': ?resourceId,
+    };
   }
 
-  factory ComputeNodeIdentityReferenceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ComputeNodeIdentityReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ComputeNodeIdentityReferenceResponse(
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

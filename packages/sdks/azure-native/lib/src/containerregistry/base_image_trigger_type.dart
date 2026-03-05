@@ -15,3 +15,4 @@ enum BaseImageTriggerType {
     throw ArgumentError('Unknown BaseImageTriggerType value: $value');
   }
 }
+

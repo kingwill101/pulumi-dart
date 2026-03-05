@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnclaveAddressSpacesModelResponse {
   /// Enclave Address Space
   final pulumi.Input<String>? enclaveAddressSpace;
-
   /// Managed Address Space
   final pulumi.Input<String>? managedAddressSpace;
 
@@ -27,16 +26,9 @@ class EnclaveAddressSpacesModelResponse {
 
   factory EnclaveAddressSpacesModelResponse.fromMap(Map<String, dynamic> map) {
     return EnclaveAddressSpacesModelResponse(
-      enclaveAddressSpace: (() {
-        final guardedValue = map['enclaveAddressSpace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedAddressSpace: (() {
-        final guardedValue = map['managedAddressSpace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enclaveAddressSpace: (() { final guardedValue = map['enclaveAddressSpace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedAddressSpace: (() { final guardedValue = map['managedAddressSpace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -147,25 +147,18 @@ import 'workload_network_public_ipargs.dart';
 class WorkloadNetworkPublicIP extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Display name of the Public IP Block.
   late final pulumi.Output<String?> displayName;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Number of Public IPs requested.
   late final pulumi.Output<double?> numberOfPublicIPs;
-
   /// The provisioning state
   late final pulumi.Output<String> provisioningState;
-
   /// CIDR Block of the Public IP Block.
   late final pulumi.Output<String> publicIPBlock;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -178,27 +171,18 @@ class WorkloadNetworkPublicIP extends pulumi.CustomResource {
     WorkloadNetworkPublicIPArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:avs:WorkloadNetworkPublicIP',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:avs:WorkloadNetworkPublicIP',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     numberOfPublicIPs = registerOutput<double?>('numberOfPublicIPs');
     provisioningState = registerOutput<String>('provisioningState');
     publicIPBlock = registerOutput<String>('publicIPBlock');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

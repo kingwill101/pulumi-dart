@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppServiceSourceControl {
   /// The branch of the remote repository in use.
   final pulumi.Input<String> branch;
-
   /// Limits to manual integration.
   final pulumi.Input<bool> manualIntegration;
-
   /// The URL of the source code repository.
   final pulumi.Input<String> repoUrl;
-
   /// Is roll-back enabled for the repository.
   final pulumi.Input<bool> rollbackEnabled;
-
   /// Uses Mercurial if `true`, otherwise uses Git.
   final pulumi.Input<bool> useMercurial;
 
@@ -45,12 +41,11 @@ class GetAppServiceSourceControl {
   factory GetAppServiceSourceControl.fromMap(Map<String, dynamic> map) {
     return GetAppServiceSourceControl(
       branch: pulumi.Input.fromValue(map['branch'] as String),
-      manualIntegration: pulumi.Input.fromValue(
-        map['manualIntegration'] as bool,
-      ),
+      manualIntegration: pulumi.Input.fromValue(map['manualIntegration'] as bool),
       repoUrl: pulumi.Input.fromValue(map['repoUrl'] as String),
       rollbackEnabled: pulumi.Input.fromValue(map['rollbackEnabled'] as bool),
       useMercurial: pulumi.Input.fromValue(map['useMercurial'] as bool),
     );
   }
 }
+

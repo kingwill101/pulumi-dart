@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceConfigurationResourceConfigurationDefinitionDnsResource {
   /// The hostname of the Resource for this configuration.
   final pulumi.Input<String> domainName;
-
   /// The IP Address type either `IPV4` or `IPV6`
   final pulumi.Input<String> ipAddressType;
 
@@ -24,12 +23,11 @@ class ResourceConfigurationResourceConfigurationDefinitionDnsResource {
     };
   }
 
-  factory ResourceConfigurationResourceConfigurationDefinitionDnsResource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceConfigurationResourceConfigurationDefinitionDnsResource.fromMap(Map<String, dynamic> map) {
     return ResourceConfigurationResourceConfigurationDefinitionDnsResource(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
       ipAddressType: pulumi.Input.fromValue(map['ipAddressType'] as String),
     );
   }
 }
+

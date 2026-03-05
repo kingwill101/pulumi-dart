@@ -10,17 +10,20 @@ class VirtualMachineAdditionalCapabilities {
 
   /// Creates a new [VirtualMachineAdditionalCapabilities].
   /// [ultraSsdEnabled] Should Ultra SSD disk be enabled for this Virtual Machine? Changing this forces a new resource to be created.
-  VirtualMachineAdditionalCapabilities({required this.ultraSsdEnabled});
+  VirtualMachineAdditionalCapabilities({
+    required this.ultraSsdEnabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ultraSsdEnabled': ultraSsdEnabled};
+    return <String, dynamic>{
+      'ultraSsdEnabled': ultraSsdEnabled,
+    };
   }
 
-  factory VirtualMachineAdditionalCapabilities.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachineAdditionalCapabilities.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAdditionalCapabilities(
       ultraSsdEnabled: pulumi.Input.fromValue(map['ultraSsdEnabled'] as bool),
     );
   }
 }
+

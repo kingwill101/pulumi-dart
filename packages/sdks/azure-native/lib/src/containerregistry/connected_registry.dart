@@ -256,53 +256,36 @@ import 'system_data_response.dart';
 class ConnectedRegistry extends pulumi.CustomResource {
   /// The activation properties of the connected registry.
   late final pulumi.Output<ActivationPropertiesResponse> activation;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The list of the ACR token resource IDs used to authenticate clients to the connected registry.
   late final pulumi.Output<List<String>?> clientTokenIds;
-
   /// The current connection state of the connected registry.
   late final pulumi.Output<String> connectionState;
-
   /// The garbage collection properties of the connected registry.
-  late final pulumi.Output<GarbageCollectionPropertiesResponse?>
-  garbageCollection;
-
+  late final pulumi.Output<GarbageCollectionPropertiesResponse?> garbageCollection;
   /// The last activity time of the connected registry.
   late final pulumi.Output<String> lastActivityTime;
-
   /// The logging properties of the connected registry.
   late final pulumi.Output<LoggingPropertiesResponse?> logging;
-
   /// The login server properties of the connected registry.
   late final pulumi.Output<LoginServerPropertiesResponse?> loginServer;
-
   /// The mode of the connected registry resource that indicates the permissions of the registry.
   late final pulumi.Output<String> mode;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The list of notifications subscription information for the connected registry.
   late final pulumi.Output<List<String>?> notificationsList;
-
   /// The parent of the connected registry.
   late final pulumi.Output<ParentPropertiesResponse> parent;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The list of current statuses of the connected registry.
   late final pulumi.Output<List<Map<String, dynamic>>> statusDetails;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// The current version of ACR runtime on the connected registry.
   late final pulumi.Output<String> version;
 
@@ -315,80 +298,26 @@ class ConnectedRegistry extends pulumi.CustomResource {
     ConnectedRegistryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerregistry:ConnectedRegistry',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    activation = registerOutput<ActivationPropertiesResponse>(
-      'activation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ActivationPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:containerregistry:ConnectedRegistry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    activation = registerOutput<ActivationPropertiesResponse>('activation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActivationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientTokenIds = registerOutput<List<String>?>('clientTokenIds');
     connectionState = registerOutput<String>('connectionState');
-    garbageCollection = registerOutput<GarbageCollectionPropertiesResponse?>(
-      'garbageCollection',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GarbageCollectionPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    garbageCollection = registerOutput<GarbageCollectionPropertiesResponse?>('garbageCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GarbageCollectionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastActivityTime = registerOutput<String>('lastActivityTime');
-    logging = registerOutput<LoggingPropertiesResponse?>(
-      'logging',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoggingPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    loginServer = registerOutput<LoginServerPropertiesResponse?>(
-      'loginServer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoginServerPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logging = registerOutput<LoggingPropertiesResponse?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loginServer = registerOutput<LoginServerPropertiesResponse?>('loginServer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoginServerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     notificationsList = registerOutput<List<String>?>('notificationsList');
-    parent = registerOutput<ParentPropertiesResponse>(
-      'parent',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ParentPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    parent = registerOutput<ParentPropertiesResponse>('parent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ParentPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     statusDetails = registerOutput<List<Map<String, dynamic>>>('statusDetails');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
   }

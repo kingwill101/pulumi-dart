@@ -11,40 +11,28 @@ import 'system_data_response.dart';
 class GetNetworkSecurityGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   final String eTag;
-
   /// The extendedLocation of the resource.
   final ExtendedLocationResponse? extendedLocation;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// A collection of references to network interfaces that are currently using this NSG.
   final List<NetworkInterfaceArmReferenceResponse> networkInterfaces;
-
   /// The provisioning state of the network security group resource.
   final String provisioningState;
-
   /// The observed state of Network Security Group
   final NetworkSecurityGroupStatusResponse status;
-
   /// A collection of references to logical networks that are currently using this NSG
   final List<LogicalNetworkArmReferenceResponse> subnets;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -86,18 +74,10 @@ class GetNetworkSecurityGroupResult {
       'id': id,
       'location': location,
       'name': name,
-      'networkInterfaces':
-          pulumi.Input.encodeList<
-            NetworkInterfaceArmReferenceResponse,
-            Map<String, dynamic>
-          >(networkInterfaces, (value) => value.toMap()),
+      'networkInterfaces': pulumi.Input.encodeList<NetworkInterfaceArmReferenceResponse, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'status': status.toMap(),
-      'subnets':
-          pulumi.Input.encodeList<
-            LogicalNetworkArmReferenceResponse,
-            Map<String, dynamic>
-          >(subnets, (value) => value.toMap()),
+      'subnets': pulumi.Input.encodeList<LogicalNetworkArmReferenceResponse, Map<String, dynamic>>(subnets, (value) => value.toMap()),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -108,42 +88,18 @@ class GetNetworkSecurityGroupResult {
     return GetNetworkSecurityGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
       eTag: map['eTag'] as String,
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      networkInterfaces:
-          pulumi.Input.decodeList<NetworkInterfaceArmReferenceResponse>(
-            map['networkInterfaces']!,
-            (value) => NetworkInterfaceArmReferenceResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceArmReferenceResponse>(map['networkInterfaces']!, (value) => NetworkInterfaceArmReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      status: NetworkSecurityGroupStatusResponse.fromMap(
-        (map['status']! as Map).cast<String, dynamic>(),
-      ),
-      subnets: pulumi.Input.decodeList<LogicalNetworkArmReferenceResponse>(
-        map['subnets']!,
-        (value) => LogicalNetworkArmReferenceResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      status: NetworkSecurityGroupStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
+      subnets: pulumi.Input.decodeList<LogicalNetworkArmReferenceResponse>(map['subnets']!, (value) => LogicalNetworkArmReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

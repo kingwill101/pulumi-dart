@@ -464,17 +464,13 @@ import 'load_balancer_common_bandwidth_package_attachment_state.dart';
 /// ```sh
 /// $ pulumi import alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment example <load_balancer_id>:<bandwidth_package_id>
 /// ```
-class LoadBalancerCommonBandwidthPackageAttachment
-    extends pulumi.CustomResource {
+class LoadBalancerCommonBandwidthPackageAttachment extends pulumi.CustomResource {
   /// The ID of the bound shared bandwidth package.
   late final pulumi.Output<String> bandwidthPackageId;
-
   /// Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind the shared bandwidth package to the load balancing instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
   late final pulumi.Output<bool?> dryRun;
-
   /// The ID of the applied server load balancer instance.
   late final pulumi.Output<String> loadBalancerId;
-
   /// The status of the Application Load balancing instance. Value:-**Inactive**: Stopped, indicating that the instance listener will no longer forward traffic.-**Active**: running.-**Provisioning**: The project is being created.-**Configuring**: The configuration is being changed.-**CreateFailed**: The instance cannot be deleted without any charge.
   late final pulumi.Output<String> status;
 
@@ -487,11 +483,11 @@ class LoadBalancerCommonBandwidthPackageAttachment
     LoadBalancerCommonBandwidthPackageAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
     dryRun = registerOutput<bool?>('dryRun');
     loadBalancerId = registerOutput<String>('loadBalancerId');
@@ -516,11 +512,11 @@ class LoadBalancerCommonBandwidthPackageAttachment
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
     dryRun = registerOutput<bool?>('dryRun');
     loadBalancerId = registerOutput<String>('loadBalancerId');

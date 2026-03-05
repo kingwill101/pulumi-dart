@@ -9,13 +9,11 @@ class ExternalVpnGatewayInterface {
   /// * `0, 1 - TWO_IPS_REDUNDANCY`
   /// * `0, 1, 2, 3 - FOUR_IPS_REDUNDANCY`
   final pulumi.Input<int>? id;
-
   /// IP address of the interface in the external VPN gateway.
   /// Only IPv4 is supported. This IP address can be either from
   /// your on-premise gateway or another Cloud provider's VPN gateway,
   /// it cannot be an IP address from Google Compute Engine.
   final pulumi.Input<String>? ipAddress;
-
   /// IPv6 address of the interface in the external VPN gateway. This IPv6
   /// address can be either from your on-premise gateway or another Cloud
   /// provider's VPN gateway, it cannot be an IP address from Google Compute
@@ -28,7 +26,11 @@ class ExternalVpnGatewayInterface {
   /// [id] The numeric ID for this interface. Allowed values are based on the redundancy type
   /// [ipAddress] IP address of the interface in the external VPN gateway.
   /// [ipv6Address] IPv6 address of the interface in the external VPN gateway. This IPv6
-  ExternalVpnGatewayInterface({this.id, this.ipAddress, this.ipv6Address});
+  ExternalVpnGatewayInterface({
+    this.id,
+    this.ipAddress,
+    this.ipv6Address,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,21 +42,10 @@ class ExternalVpnGatewayInterface {
 
   factory ExternalVpnGatewayInterface.fromMap(Map<String, dynamic> map) {
     return ExternalVpnGatewayInterface(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ipAddress: (() {
-        final guardedValue = map['ipAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipv6Address: (() {
-        final guardedValue = map['ipv6Address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipv6Address: (() { final guardedValue = map['ipv6Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

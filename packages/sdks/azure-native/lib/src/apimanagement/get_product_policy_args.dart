@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProductPolicyArgs {
   /// Policy Export Format.
   final pulumi.Input<String>? format;
-
   /// The identifier of the Policy.
   final pulumi.Input<String> policyId;
-
   /// Product identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> productId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -48,17 +44,12 @@ class GetProductPolicyArgs {
 
   factory GetProductPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetProductPolicyArgs(
-      format: (() {
-        final guardedValue = map['format'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyId: pulumi.Input.fromValue(map['policyId'] as String),
       productId: pulumi.Input.fromValue(map['productId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

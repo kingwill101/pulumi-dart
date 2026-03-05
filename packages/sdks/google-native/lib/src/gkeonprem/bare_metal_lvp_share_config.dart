@@ -7,38 +7,29 @@ import 'bare_metal_lvp_config.dart';
 class BareMetalLvpShareConfig {
   /// Defines the machine path and storage class for the LVP Share.
   final pulumi.Input<BareMetalLvpConfig> lvpConfig;
-
   /// The number of subdirectories to create under path.
   final pulumi.Input<int>? sharedPathPvCount;
 
   /// Creates a new [BareMetalLvpShareConfig].
   /// [lvpConfig] Defines the machine path and storage class for the LVP Share.
   /// [sharedPathPvCount] The number of subdirectories to create under path.
-  BareMetalLvpShareConfig({required this.lvpConfig, this.sharedPathPvCount});
+  BareMetalLvpShareConfig({
+    required this.lvpConfig,
+    this.sharedPathPvCount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lvpConfig':
-          pulumi.Input.mapInputValue<BareMetalLvpConfig, Map<String, dynamic>>(
-            lvpConfig,
-            (value) => value.toMap(),
-          ),
+      'lvpConfig': pulumi.Input.mapInputValue<BareMetalLvpConfig, Map<String, dynamic>>(lvpConfig, (value) => value.toMap()),
       'sharedPathPvCount': ?sharedPathPvCount,
     };
   }
 
   factory BareMetalLvpShareConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalLvpShareConfig(
-      lvpConfig: pulumi.Input.fromValue(
-        BareMetalLvpConfig.fromMap(
-          (map['lvpConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sharedPathPvCount: (() {
-        final guardedValue = map['sharedPathPvCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      lvpConfig: pulumi.Input.fromValue(BareMetalLvpConfig.fromMap((map['lvpConfig']! as Map).cast<String, dynamic>())),
+      sharedPathPvCount: (() { final guardedValue = map['sharedPathPvCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -7,25 +7,18 @@ import 'system_data_response.dart';
 class GetApiDefinitionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// API definition description.
   final String? description;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// API specification details.
   final ApiDefinitionPropertiesSpecificationResponse specification;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// API definition title.
   final String title;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -65,21 +58,14 @@ class GetApiDefinitionResult {
   factory GetApiDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetApiDefinitionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      specification: ApiDefinitionPropertiesSpecificationResponse.fromMap(
-        (map['specification']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      specification: ApiDefinitionPropertiesSpecificationResponse.fromMap((map['specification']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       title: map['title'] as String,
       type: map['type'] as String,
     );
   }
 }
+

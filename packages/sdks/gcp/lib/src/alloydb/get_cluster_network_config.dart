@@ -6,7 +6,6 @@ class GetClusterNetworkConfig {
   /// The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
   /// If set, the instance IPs for this cluster will be created in the allocated range.
   final pulumi.Input<String> allocatedIpRange;
-
   /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
   /// It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
   final pulumi.Input<String> network;
@@ -28,10 +27,9 @@ class GetClusterNetworkConfig {
 
   factory GetClusterNetworkConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNetworkConfig(
-      allocatedIpRange: pulumi.Input.fromValue(
-        map['allocatedIpRange'] as String,
-      ),
+      allocatedIpRange: pulumi.Input.fromValue(map['allocatedIpRange'] as String),
       network: pulumi.Input.fromValue(map['network'] as String),
     );
   }
 }
+

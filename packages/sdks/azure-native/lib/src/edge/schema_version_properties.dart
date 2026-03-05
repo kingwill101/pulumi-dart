@@ -9,10 +9,14 @@ class SchemaVersionProperties {
 
   /// Creates a new [SchemaVersionProperties].
   /// [value] Value of schema version
-  SchemaVersionProperties({required this.value});
+  SchemaVersionProperties({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory SchemaVersionProperties.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class SchemaVersionProperties {
     );
   }
 }
+

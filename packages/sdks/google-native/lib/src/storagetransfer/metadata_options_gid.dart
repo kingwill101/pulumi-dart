@@ -16,3 +16,4 @@ enum MetadataOptionsGid {
     throw ArgumentError('Unknown MetadataOptionsGid value: $value');
   }
 }
+

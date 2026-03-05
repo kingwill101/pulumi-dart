@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConsumerChannelArgs {
   /// The name of the consumer group.
   final pulumi.Input<String> consumerGroupName;
-
   /// The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
   final pulumi.Input<String> consumerGroupPassword;
-
   /// The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
   final pulumi.Input<String> consumerGroupUserName;
-
   /// The ID of the subscription instance.
   final pulumi.Input<String> dtsInstanceId;
 
@@ -42,16 +39,11 @@ class ConsumerChannelArgs {
 
   factory ConsumerChannelArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerChannelArgs(
-      consumerGroupName: pulumi.Input.fromValue(
-        map['consumerGroupName'] as String,
-      ),
-      consumerGroupPassword: pulumi.Input.fromValue(
-        map['consumerGroupPassword'] as String,
-      ),
-      consumerGroupUserName: pulumi.Input.fromValue(
-        map['consumerGroupUserName'] as String,
-      ),
+      consumerGroupName: pulumi.Input.fromValue(map['consumerGroupName'] as String),
+      consumerGroupPassword: pulumi.Input.fromValue(map['consumerGroupPassword'] as String),
+      consumerGroupUserName: pulumi.Input.fromValue(map['consumerGroupUserName'] as String),
       dtsInstanceId: pulumi.Input.fromValue(map['dtsInstanceId'] as String),
     );
   }
 }
+

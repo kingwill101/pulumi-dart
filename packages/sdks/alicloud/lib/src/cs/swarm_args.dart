@@ -76,59 +76,20 @@ class SwarmArgs {
   factory SwarmArgs.fromMap(Map<String, dynamic> map) {
     return SwarmArgs(
       cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
-      diskCategory: (() {
-        final guardedValue = map['diskCategory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      diskSize: (() {
-        final guardedValue = map['diskSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      imageId: (() {
-        final guardedValue = map['imageId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      diskCategory: (() { final guardedValue = map['diskCategory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskSize: (() { final guardedValue = map['diskSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      imageId: (() { final guardedValue = map['imageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      isOutdated: (() {
-        final guardedValue = map['isOutdated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namePrefix: (() {
-        final guardedValue = map['namePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      needSlb: (() {
-        final guardedValue = map['needSlb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      nodeNumber: (() {
-        final guardedValue = map['nodeNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      isOutdated: (() { final guardedValue = map['isOutdated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      needSlb: (() { final guardedValue = map['needSlb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      nodeNumber: (() { final guardedValue = map['nodeNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       password: pulumi.Input.fromValue(map['password'] as String),
-      releaseEip: (() {
-        final guardedValue = map['releaseEip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      size: (() {
-        final guardedValue = map['size'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      releaseEip: (() { final guardedValue = map['releaseEip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
+

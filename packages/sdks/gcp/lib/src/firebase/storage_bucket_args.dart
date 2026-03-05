@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageBucketArgs {
   /// Required. Immutable. The ID of the underlying Google Cloud Storage bucket
   final pulumi.Input<String>? bucketId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -17,24 +16,23 @@ class StorageBucketArgs {
   /// Creates a new [StorageBucketArgs].
   /// [bucketId] Required. Immutable. The ID of the underlying Google Cloud Storage bucket
   /// [project] The ID of the project in which the resource belongs.
-  StorageBucketArgs({this.bucketId, this.project});
+  StorageBucketArgs({
+    this.bucketId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucketId': ?bucketId, 'project': ?project};
+    return <String, dynamic>{
+      'bucketId': ?bucketId,
+      'project': ?project,
+    };
   }
 
   factory StorageBucketArgs.fromMap(Map<String, dynamic> map) {
     return StorageBucketArgs(
-      bucketId: (() {
-        final guardedValue = map['bucketId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucketId: (() { final guardedValue = map['bucketId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,29 +6,21 @@ import 'sql_server_database_details_response_sqladmin_v1beta4.dart';
 class GetDatabaseSqladminV1beta4Result {
   /// The Cloud SQL charset value.
   final String charset;
-
   /// The Cloud SQL collation value.
   final String collation;
-
   /// This field is deprecated and will be removed from a future version of the API.
   final String etag;
-
   /// The name of the Cloud SQL instance. This does not include the project ID.
   final String instance;
-
   /// This is always `sql#database`.
   final String kind;
-
   /// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
   final String name;
-
   /// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
   final String project;
-
   /// The URI of this resource.
   final String selfLink;
-  final SqlServerDatabaseDetailsResponseSqladminV1beta4
-  sqlserverDatabaseDetails;
+  final SqlServerDatabaseDetailsResponseSqladminV1beta4 sqlserverDatabaseDetails;
 
   /// Creates a new [GetDatabaseSqladminV1beta4Result].
   /// [charset] The Cloud SQL charset value.
@@ -76,10 +68,8 @@ class GetDatabaseSqladminV1beta4Result {
       name: map['name'] as String,
       project: map['project'] as String,
       selfLink: map['selfLink'] as String,
-      sqlserverDatabaseDetails:
-          SqlServerDatabaseDetailsResponseSqladminV1beta4.fromMap(
-            (map['sqlserverDatabaseDetails']! as Map).cast<String, dynamic>(),
-          ),
+      sqlserverDatabaseDetails: SqlServerDatabaseDetailsResponseSqladminV1beta4.fromMap((map['sqlserverDatabaseDetails']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

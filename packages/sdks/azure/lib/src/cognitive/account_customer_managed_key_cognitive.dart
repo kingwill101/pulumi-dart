@@ -841,10 +841,8 @@ import 'account_customer_managed_key_state.dart';
 class AccountCustomerManagedKeyCognitive extends pulumi.CustomResource {
   /// The ID of the Cognitive Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cognitiveAccountId;
-
   /// The Client ID of the User Assigned Identity that has access to the key. This property only needs to be specified when there're multiple identities attached to the Cognitive Account.
   late final pulumi.Output<String?> identityClientId;
-
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Cognitive Account.
   late final pulumi.Output<String> keyVaultKeyId;
 
@@ -857,11 +855,11 @@ class AccountCustomerManagedKeyCognitive extends pulumi.CustomResource {
     AccountCustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cognitive/accountCustomerManagedKey:AccountCustomerManagedKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cognitive/accountCustomerManagedKey:AccountCustomerManagedKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     identityClientId = registerOutput<String?>('identityClientId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
@@ -885,11 +883,11 @@ class AccountCustomerManagedKeyCognitive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cognitive/accountCustomerManagedKey:AccountCustomerManagedKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cognitive/accountCustomerManagedKey:AccountCustomerManagedKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     identityClientId = registerOutput<String?>('identityClientId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');

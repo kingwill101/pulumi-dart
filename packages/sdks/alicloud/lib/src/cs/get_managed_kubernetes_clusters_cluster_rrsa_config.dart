@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedKubernetesClustersClusterRrsaConfig {
   /// Whether the RRSA feature has been enabled.
   final pulumi.Input<bool> enabled;
-
   /// The arn of OIDC provider that was registered in RAM.
   final pulumi.Input<String> ramOidcProviderArn;
-
   /// The name of OIDC Provider that was registered in RAM.
   final pulumi.Input<String> ramOidcProviderName;
-
   /// The issuer URL of RRSA OIDC Token.
   final pulumi.Input<String> rrsaOidcIssuerUrl;
 
@@ -36,20 +33,13 @@ class GetManagedKubernetesClustersClusterRrsaConfig {
     };
   }
 
-  factory GetManagedKubernetesClustersClusterRrsaConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedKubernetesClustersClusterRrsaConfig.fromMap(Map<String, dynamic> map) {
     return GetManagedKubernetesClustersClusterRrsaConfig(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      ramOidcProviderArn: pulumi.Input.fromValue(
-        map['ramOidcProviderArn'] as String,
-      ),
-      ramOidcProviderName: pulumi.Input.fromValue(
-        map['ramOidcProviderName'] as String,
-      ),
-      rrsaOidcIssuerUrl: pulumi.Input.fromValue(
-        map['rrsaOidcIssuerUrl'] as String,
-      ),
+      ramOidcProviderArn: pulumi.Input.fromValue(map['ramOidcProviderArn'] as String),
+      ramOidcProviderName: pulumi.Input.fromValue(map['ramOidcProviderName'] as String),
+      rrsaOidcIssuerUrl: pulumi.Input.fromValue(map['rrsaOidcIssuerUrl'] as String),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsDiskDetailsResponse {
   /// The ordinal number of the disk.
   final pulumi.Input<int> diskNumber;
-
   /// Size in GB.
   final pulumi.Input<String> sizeGb;
-
   /// AWS volume ID.
   final pulumi.Input<String> volumeId;
 
@@ -39,3 +37,4 @@ class AwsDiskDetailsResponse {
     );
   }
 }
+

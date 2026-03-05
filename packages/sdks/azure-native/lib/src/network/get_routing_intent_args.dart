@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoutingIntentArgs {
   /// The resource group name of the RoutingIntent.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the RoutingIntent.
   final pulumi.Input<String> routingIntentName;
-
   /// The name of the VirtualHub.
   final pulumi.Input<String> virtualHubName;
 
@@ -36,13 +34,10 @@ class GetRoutingIntentArgs {
 
   factory GetRoutingIntentArgs.fromMap(Map<String, dynamic> map) {
     return GetRoutingIntentArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      routingIntentName: pulumi.Input.fromValue(
-        map['routingIntentName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      routingIntentName: pulumi.Input.fromValue(map['routingIntentName'] as String),
       virtualHubName: pulumi.Input.fromValue(map['virtualHubName'] as String),
     );
   }
 }
+

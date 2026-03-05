@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyExemptionArgs {
   /// The name of the policy exemption to delete.
   final pulumi.Input<String> policyExemptionName;
-
   /// The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
   final pulumi.Input<String> scope;
 
@@ -30,10 +29,9 @@ class GetPolicyExemptionArgs {
 
   factory GetPolicyExemptionArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyExemptionArgs(
-      policyExemptionName: pulumi.Input.fromValue(
-        map['policyExemptionName'] as String,
-      ),
+      policyExemptionName: pulumi.Input.fromValue(map['policyExemptionName'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

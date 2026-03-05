@@ -4,22 +4,16 @@ enum InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure {
   doNothing("DO_NOTHING"),
   repair("REPAIR");
 
-  const InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure(
-    this.wireValue,
-  );
+  const InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure(this.wireValue);
   final String wireValue;
 
-  static InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure
-  fromValue(String value) {
-    for (final item
-        in InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure
-            .values) {
+  static InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure fromValue(String value) {
+    for (final item in InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure value: $value',
-    );
+    throw ArgumentError('Unknown InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure value: $value');
   }
 }
+

@@ -8,17 +8,20 @@ class LoadBalancerLoadBalancerBillingConfig {
 
   /// Creates a new [LoadBalancerLoadBalancerBillingConfig].
   /// [payType] Pay Type
-  LoadBalancerLoadBalancerBillingConfig({required this.payType});
+  LoadBalancerLoadBalancerBillingConfig({
+    required this.payType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'payType': payType};
+    return <String, dynamic>{
+      'payType': payType,
+    };
   }
 
-  factory LoadBalancerLoadBalancerBillingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoadBalancerLoadBalancerBillingConfig.fromMap(Map<String, dynamic> map) {
     return LoadBalancerLoadBalancerBillingConfig(
       payType: pulumi.Input.fromValue(map['payType'] as String),
     );
   }
 }
+

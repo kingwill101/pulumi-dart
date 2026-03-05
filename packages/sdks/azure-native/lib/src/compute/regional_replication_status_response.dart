@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionalReplicationStatusResponse {
   /// The details of the replication status.
   final pulumi.Input<String> details;
-
   /// It indicates progress of the replication job.
   final pulumi.Input<int> progress;
-
   /// The region to which the gallery image version is being replicated to.
   final pulumi.Input<String> region;
-
   /// This is the regional replication state.
   final pulumi.Input<String> state;
 
@@ -46,3 +43,4 @@ class RegionalReplicationStatusResponse {
     );
   }
 }
+

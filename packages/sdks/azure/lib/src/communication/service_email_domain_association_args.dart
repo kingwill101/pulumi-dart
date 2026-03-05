@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceEmailDomainAssociationArgs {
   /// The ID of the Communication Service. Changing this forces a new communication service email domain association to be created.
   final pulumi.Input<String> communicationServiceId;
-
   /// The ID of the EMail Service Domain. Changing this forces a new communication service email domain association to be created.
   final pulumi.Input<String> emailServiceDomainId;
 
@@ -30,12 +29,9 @@ class ServiceEmailDomainAssociationArgs {
 
   factory ServiceEmailDomainAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ServiceEmailDomainAssociationArgs(
-      communicationServiceId: pulumi.Input.fromValue(
-        map['communicationServiceId'] as String,
-      ),
-      emailServiceDomainId: pulumi.Input.fromValue(
-        map['emailServiceDomainId'] as String,
-      ),
+      communicationServiceId: pulumi.Input.fromValue(map['communicationServiceId'] as String),
+      emailServiceDomainId: pulumi.Input.fromValue(map['emailServiceDomainId'] as String),
     );
   }
 }
+

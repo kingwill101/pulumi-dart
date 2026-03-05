@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AxisResponse {
   /// The label of the axis.
   final pulumi.Input<String> label;
-
   /// The axis scale. By default, a linear scale is used.
   final pulumi.Input<String> scale;
 
   /// Creates a new [AxisResponse].
   /// [label] The label of the axis.
   /// [scale] The axis scale. By default, a linear scale is used.
-  AxisResponse({required this.label, required this.scale});
+  AxisResponse({
+    required this.label,
+    required this.scale,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'label': label, 'scale': scale};
+    return <String, dynamic>{
+      'label': label,
+      'scale': scale,
+    };
   }
 
   factory AxisResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class AxisResponse {
     );
   }
 }
+

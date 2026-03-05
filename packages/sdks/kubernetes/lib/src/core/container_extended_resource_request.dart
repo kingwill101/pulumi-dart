@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerExtendedResourceRequest {
   /// The name of the container requesting resources.
   final pulumi.Input<String> containerName;
-
   /// The name of the request in the special ResourceClaim which corresponds to the extended resource.
   final pulumi.Input<String> requestName;
-
   /// The name of the extended resource in that container which gets backed by DRA.
   final pulumi.Input<String> resourceName;
 
@@ -39,3 +37,4 @@ class ContainerExtendedResourceRequest {
     );
   }
 }
+

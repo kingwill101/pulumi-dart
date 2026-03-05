@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostedConfigurationVersionArgs {
   /// Application ID.
   final pulumi.Input<String> applicationId;
-
   /// Configuration profile ID.
   final pulumi.Input<String> configurationProfileId;
-
   /// Content of the configuration or the configuration data.
   final pulumi.Input<String> content;
-
   /// Standard MIME type describing the format of the configuration content. For more information, see [Content-Type](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17).
   final pulumi.Input<String> contentType;
-
   /// Description of the configuration.
   final pulumi.Input<String>? description;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -55,21 +50,12 @@ class HostedConfigurationVersionArgs {
   factory HostedConfigurationVersionArgs.fromMap(Map<String, dynamic> map) {
     return HostedConfigurationVersionArgs(
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
-      configurationProfileId: pulumi.Input.fromValue(
-        map['configurationProfileId'] as String,
-      ),
+      configurationProfileId: pulumi.Input.fromValue(map['configurationProfileId'] as String),
       content: pulumi.Input.fromValue(map['content'] as String),
       contentType: pulumi.Input.fromValue(map['contentType'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

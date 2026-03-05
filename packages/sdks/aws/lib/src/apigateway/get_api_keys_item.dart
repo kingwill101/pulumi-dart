@@ -5,29 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApiKeysItem {
   /// Date and time when the API Key was created.
   final pulumi.Input<String> createdDate;
-
   /// Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.
   final pulumi.Input<String> customerId;
-
   /// Description of the API Key.
   final pulumi.Input<String> description;
-
   /// Whether the API Key is enabled.
   final pulumi.Input<bool> enabled;
-
   /// ID of the API Key.
   final pulumi.Input<String> id;
-
   /// Date and time when the API Key was last updated.
   final pulumi.Input<String> lastUpdatedDate;
-
   /// Name of the API Key.
   final pulumi.Input<String> name;
   final pulumi.Input<List<String>> stageKeys;
-
   /// Map of tags for the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// Value of the API Key.
   final pulumi.Input<String> value;
 
@@ -79,11 +71,10 @@ class GetApiKeysItem {
       id: pulumi.Input.fromValue(map['id'] as String),
       lastUpdatedDate: pulumi.Input.fromValue(map['lastUpdatedDate'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      stageKeys: pulumi.Input.fromValue(
-        (map['stageKeys'] as List).cast<String>(),
-      ),
+      stageKeys: pulumi.Input.fromValue((map['stageKeys'] as List).cast<String>()),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

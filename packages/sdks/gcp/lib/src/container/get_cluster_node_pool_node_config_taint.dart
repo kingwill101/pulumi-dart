@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterNodePoolNodeConfigTaint {
   /// Effect for taint.
   final pulumi.Input<String> effect;
-
   /// Key for taint.
   final pulumi.Input<String> key;
-
   /// Value for taint.
   final pulumi.Input<String> value;
 
@@ -23,7 +21,11 @@ class GetClusterNodePoolNodeConfigTaint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'effect': effect, 'key': key, 'value': value};
+    return <String, dynamic>{
+      'effect': effect,
+      'key': key,
+      'value': value,
+    };
   }
 
   factory GetClusterNodePoolNodeConfigTaint.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class GetClusterNodePoolNodeConfigTaint {
     );
   }
 }
+

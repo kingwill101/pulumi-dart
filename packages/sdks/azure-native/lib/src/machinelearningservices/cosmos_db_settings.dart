@@ -8,19 +8,20 @@ class CosmosDbSettings {
 
   /// Creates a new [CosmosDbSettings].
   /// [collectionsThroughput] The throughput of the collections in cosmosdb database
-  CosmosDbSettings({this.collectionsThroughput});
+  CosmosDbSettings({
+    this.collectionsThroughput,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'collectionsThroughput': ?collectionsThroughput};
+    return <String, dynamic>{
+      'collectionsThroughput': ?collectionsThroughput,
+    };
   }
 
   factory CosmosDbSettings.fromMap(Map<String, dynamic> map) {
     return CosmosDbSettings(
-      collectionsThroughput: (() {
-        final guardedValue = map['collectionsThroughput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      collectionsThroughput: (() { final guardedValue = map['collectionsThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

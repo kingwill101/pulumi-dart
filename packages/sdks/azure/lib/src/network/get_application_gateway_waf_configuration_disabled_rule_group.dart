@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayWafConfigurationDisabledRuleGroup {
   /// The rule group where specific rules are disabled.
   final pulumi.Input<String> ruleGroupName;
-
   /// A list of rules which will be disabled in that group.
   final pulumi.Input<List<int>> rules;
 
@@ -18,15 +17,17 @@ class GetApplicationGatewayWafConfigurationDisabledRuleGroup {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ruleGroupName': ruleGroupName, 'rules': rules};
+    return <String, dynamic>{
+      'ruleGroupName': ruleGroupName,
+      'rules': rules,
+    };
   }
 
-  factory GetApplicationGatewayWafConfigurationDisabledRuleGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationGatewayWafConfigurationDisabledRuleGroup.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayWafConfigurationDisabledRuleGroup(
       ruleGroupName: pulumi.Input.fromValue(map['ruleGroupName'] as String),
       rules: pulumi.Input.fromValue((map['rules'] as List).cast<int>()),
     );
   }
 }
+

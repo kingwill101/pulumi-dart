@@ -234,13 +234,10 @@ import 'trigger_custom_state.dart';
 class TriggerCustom extends pulumi.CustomResource {
   /// Specifies the JSON Blob defining the Body of this Custom Trigger.
   late final pulumi.Output<String> body;
-
   /// The URL of the Trigger within the Logic App Workflow. For use with certain resources like monitor_action_group and security_center_automation.
   late final pulumi.Output<String> callbackUrl;
-
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   late final pulumi.Output<String> logicAppId;
-
   /// Specifies the name of the HTTP Trigger to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** This name must be unique across all Triggers within the Logic App Workflow.
@@ -255,11 +252,11 @@ class TriggerCustom extends pulumi.CustomResource {
     TriggerCustomArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/triggerCustom:TriggerCustom',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/triggerCustom:TriggerCustom',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     body = registerOutput<String>('body');
     callbackUrl = registerOutput<String>('callbackUrl');
     logicAppId = registerOutput<String>('logicAppId');
@@ -284,11 +281,11 @@ class TriggerCustom extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/triggerCustom:TriggerCustom',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/triggerCustom:TriggerCustom',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     body = registerOutput<String>('body');
     callbackUrl = registerOutput<String>('callbackUrl');
     logicAppId = registerOutput<String>('logicAppId');

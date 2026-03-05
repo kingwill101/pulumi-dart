@@ -10,29 +10,20 @@ import 'azure_resource_manager_common_types_extended_location.dart';
 class AzureKeyVaultSecretProviderClassArgs {
   /// The name of the AzureKeyVaultSecretProviderClass
   final pulumi.Input<String>? azureKeyVaultSecretProviderClassName;
-
   /// The user assigned managed identity client ID that should be used to access the Azure Key Vault.
   final pulumi.Input<String> clientId;
-
   /// The complex type of the extended location.
-  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>?
-  extendedLocation;
-
+  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation;
   /// The name of the Azure Key Vault to sync secrets from.
   final pulumi.Input<String> keyvaultName;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// Objects defines the desired state of synced K8s secret objects
   final pulumi.Input<String>? objects;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The Azure Active Directory tenant ID that should be used for authenticating requests to the Azure Key Vault.
   final pulumi.Input<String> tenantId;
 
@@ -60,14 +51,9 @@ class AzureKeyVaultSecretProviderClassArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureKeyVaultSecretProviderClassName':
-          ?azureKeyVaultSecretProviderClassName,
+      'azureKeyVaultSecretProviderClassName': ?azureKeyVaultSecretProviderClassName,
       'clientId': clientId,
-      'extendedLocation':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureResourceManagerCommonTypesExtendedLocation,
-            Map<String, dynamic>
-          >(extendedLocation, (value) => value.toMap()),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<AzureResourceManagerCommonTypesExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'keyvaultName': keyvaultName,
       'location': ?location,
       'objects': ?objects,
@@ -77,47 +63,18 @@ class AzureKeyVaultSecretProviderClassArgs {
     };
   }
 
-  factory AzureKeyVaultSecretProviderClassArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureKeyVaultSecretProviderClassArgs.fromMap(Map<String, dynamic> map) {
     return AzureKeyVaultSecretProviderClassArgs(
-      azureKeyVaultSecretProviderClassName: (() {
-        final guardedValue = map['azureKeyVaultSecretProviderClassName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      azureKeyVaultSecretProviderClassName: (() { final guardedValue = map['azureKeyVaultSecretProviderClassName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureResourceManagerCommonTypesExtendedLocation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureResourceManagerCommonTypesExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyvaultName: pulumi.Input.fromValue(map['keyvaultName'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      objects: (() {
-        final guardedValue = map['objects'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      objects: (() { final guardedValue = map['objects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
+

@@ -6,29 +6,29 @@ class ImageShieldedInstanceInitialStateKek {
   /// The raw content in the secure keys file.
   /// A base64-encoded string.
   final pulumi.Input<String> content;
-
   /// The file type of source file.
   final pulumi.Input<String>? fileType;
 
   /// Creates a new [ImageShieldedInstanceInitialStateKek].
   /// [content] The raw content in the secure keys file.
   /// [fileType] The file type of source file.
-  ImageShieldedInstanceInitialStateKek({required this.content, this.fileType});
+  ImageShieldedInstanceInitialStateKek({
+    required this.content,
+    this.fileType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'content': content, 'fileType': ?fileType};
+    return <String, dynamic>{
+      'content': content,
+      'fileType': ?fileType,
+    };
   }
 
-  factory ImageShieldedInstanceInitialStateKek.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ImageShieldedInstanceInitialStateKek.fromMap(Map<String, dynamic> map) {
     return ImageShieldedInstanceInitialStateKek(
       content: pulumi.Input.fromValue(map['content'] as String),
-      fileType: (() {
-        final guardedValue = map['fileType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fileType: (() { final guardedValue = map['fileType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

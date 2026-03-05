@@ -15,3 +15,4 @@ enum RouterNatNatIpAllocateOption {
     throw ArgumentError('Unknown RouterNatNatIpAllocateOption value: $value');
   }
 }
+

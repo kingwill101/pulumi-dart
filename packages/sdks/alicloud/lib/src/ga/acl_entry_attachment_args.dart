@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AclEntryAttachmentArgs {
   /// The ID of the Acl.
   final pulumi.Input<String> aclId;
-
   /// The entry (IP address or CIDR block) that you want to add.
   final pulumi.Input<String> entry;
-
   /// The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
   final pulumi.Input<String>? entryDescription;
 
@@ -38,11 +36,8 @@ class AclEntryAttachmentArgs {
     return AclEntryAttachmentArgs(
       aclId: pulumi.Input.fromValue(map['aclId'] as String),
       entry: pulumi.Input.fromValue(map['entry'] as String),
-      entryDescription: (() {
-        final guardedValue = map['entryDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      entryDescription: (() { final guardedValue = map['entryDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

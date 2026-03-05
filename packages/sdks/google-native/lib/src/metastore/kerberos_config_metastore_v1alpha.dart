@@ -7,10 +7,8 @@ import 'secret_metastore_v1alpha.dart';
 class KerberosConfigMetastoreV1alpha {
   /// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
   final pulumi.Input<SecretMetastoreV1alpha>? keytab;
-
   /// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
   final pulumi.Input<String>? krb5ConfigGcsUri;
-
   /// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format.
   final pulumi.Input<String>? principal;
 
@@ -26,11 +24,7 @@ class KerberosConfigMetastoreV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keytab':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecretMetastoreV1alpha,
-            Map<String, dynamic>
-          >(keytab, (value) => value.toMap()),
+      'keytab': ?pulumi.Input.mapOptionalInputValue<SecretMetastoreV1alpha, Map<String, dynamic>>(keytab, (value) => value.toMap()),
       'krb5ConfigGcsUri': ?krb5ConfigGcsUri,
       'principal': ?principal,
     };
@@ -38,25 +32,10 @@ class KerberosConfigMetastoreV1alpha {
 
   factory KerberosConfigMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return KerberosConfigMetastoreV1alpha(
-      keytab: (() {
-        final guardedValue = map['keytab'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecretMetastoreV1alpha.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      krb5ConfigGcsUri: (() {
-        final guardedValue = map['krb5ConfigGcsUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      principal: (() {
-        final guardedValue = map['principal'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keytab: (() { final guardedValue = map['keytab']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecretMetastoreV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      krb5ConfigGcsUri: (() { final guardedValue = map['krb5ConfigGcsUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principal: (() { final guardedValue = map['principal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

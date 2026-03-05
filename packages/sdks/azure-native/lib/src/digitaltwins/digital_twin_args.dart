@@ -11,24 +11,17 @@ import 'private_endpoint_connection_digitaltwins.dart';
 class DigitalTwinArgs {
   /// The managed identity for the DigitalTwinsInstance.
   final pulumi.Input<DigitalTwinsIdentity>? identity;
-
   /// The resource location.
   final pulumi.Input<String>? location;
-
   /// The private endpoint connections.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final pulumi.Input<List<PrivateEndpointConnectionDigitaltwins>>?
-  privateEndpointConnections;
-
+  final pulumi.Input<List<PrivateEndpointConnectionDigitaltwins>>? privateEndpointConnections;
   /// Public network access for the DigitalTwinsInstance.
   final pulumi.Input<String>? publicNetworkAccess;
-
   /// The name of the resource group that contains the DigitalTwinsInstance.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the DigitalTwinsInstance.
   final pulumi.Input<String>? resourceName;
-
   /// The resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -52,11 +45,7 @@ class DigitalTwinArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            DigitalTwinsIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<DigitalTwinsIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
       'privateEndpointConnections': ?privateEndpointConnections,
       'publicNetworkAccess': ?publicNetworkAccess,
@@ -68,47 +57,14 @@ class DigitalTwinArgs {
 
   factory DigitalTwinArgs.fromMap(Map<String, dynamic> map) {
     return DigitalTwinArgs(
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DigitalTwinsIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateEndpointConnections: (() {
-        final guardedValue = map['privateEndpointConnections'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as List).cast<PrivateEndpointConnectionDigitaltwins>(),
-        );
-      })(),
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      resourceName: (() {
-        final guardedValue = map['resourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DigitalTwinsIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<PrivateEndpointConnectionDigitaltwins>()); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

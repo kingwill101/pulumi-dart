@@ -293,25 +293,18 @@ import 'route_map_args.dart';
 class RouteMap extends pulumi.CustomResource {
   /// List of connections which have this RoutMap associated for inbound traffic.
   late final pulumi.Output<List<String>?> associatedInboundConnections;
-
   /// List of connections which have this RoutMap associated for outbound traffic.
   late final pulumi.Output<List<String>?> associatedOutboundConnections;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the RouteMap resource.
   late final pulumi.Output<String> provisioningState;
-
   /// List of RouteMap rules to be applied.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -324,17 +317,13 @@ class RouteMap extends pulumi.CustomResource {
     RouteMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:RouteMap',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    associatedInboundConnections = registerOutput<List<String>?>(
-      'associatedInboundConnections',
-    );
-    associatedOutboundConnections = registerOutput<List<String>?>(
-      'associatedOutboundConnections',
-    );
+          'azure-native:network:RouteMap',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    associatedInboundConnections = registerOutput<List<String>?>('associatedInboundConnections');
+    associatedOutboundConnections = registerOutput<List<String>?>('associatedOutboundConnections');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');

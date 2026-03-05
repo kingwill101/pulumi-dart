@@ -9,19 +9,20 @@ class Autoscale {
 
   /// Creates a new [Autoscale].
   /// [maxSlots] Number of slots to be scaled when needed.
-  Autoscale({this.maxSlots});
+  Autoscale({
+    this.maxSlots,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maxSlots': ?maxSlots};
+    return <String, dynamic>{
+      'maxSlots': ?maxSlots,
+    };
   }
 
   factory Autoscale.fromMap(Map<String, dynamic> map) {
     return Autoscale(
-      maxSlots: (() {
-        final guardedValue = map['maxSlots'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      maxSlots: (() { final guardedValue = map['maxSlots']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

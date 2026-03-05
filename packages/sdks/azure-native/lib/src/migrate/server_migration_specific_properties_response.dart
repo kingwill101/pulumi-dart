@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerMigrationSpecificPropertiesResponse {
   /// A type definition that refers the id to an Azure Resource Manager resource.
   final pulumi.Input<String>? currentJobId;
-
   /// A type definition that refers the id to an Azure Resource Manager resource.
   final pulumi.Input<String>? drApplianceInventoryId;
-
   /// Migration Specific Properties Instance Types.
   /// Expected value is 'ServerMigration'.
   final pulumi.Input<String> instanceType;
@@ -32,21 +30,12 @@ class ServerMigrationSpecificPropertiesResponse {
     };
   }
 
-  factory ServerMigrationSpecificPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServerMigrationSpecificPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ServerMigrationSpecificPropertiesResponse(
-      currentJobId: (() {
-        final guardedValue = map['currentJobId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      drApplianceInventoryId: (() {
-        final guardedValue = map['drApplianceInventoryId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      currentJobId: (() { final guardedValue = map['currentJobId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      drApplianceInventoryId: (() { final guardedValue = map['drApplianceInventoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );
   }
 }
+

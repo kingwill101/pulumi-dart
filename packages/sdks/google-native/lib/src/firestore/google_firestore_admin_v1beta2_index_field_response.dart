@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleFirestoreAdminV1beta2IndexFieldResponse {
   /// Indicates that this field supports operations on `array_value`s.
   final pulumi.Input<String> arrayConfig;
-
   /// Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
   final pulumi.Input<String> fieldPath;
-
   /// Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
   final pulumi.Input<String> order;
 
@@ -31,9 +29,7 @@ class GoogleFirestoreAdminV1beta2IndexFieldResponse {
     };
   }
 
-  factory GoogleFirestoreAdminV1beta2IndexFieldResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleFirestoreAdminV1beta2IndexFieldResponse.fromMap(Map<String, dynamic> map) {
     return GoogleFirestoreAdminV1beta2IndexFieldResponse(
       arrayConfig: pulumi.Input.fromValue(map['arrayConfig'] as String),
       fieldPath: pulumi.Input.fromValue(map['fieldPath'] as String),
@@ -41,3 +37,4 @@ class GoogleFirestoreAdminV1beta2IndexFieldResponse {
     );
   }
 }
+

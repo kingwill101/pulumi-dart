@@ -10,16 +10,12 @@ import 'agentcore_oauth2_credential_provider_oauth2_provider_config.dart';
 class AgentcoreOauth2CredentialProviderArgs {
   /// Vendor of the OAuth2 credential provider. Valid values: `CustomOauth2`, `GithubOauth2`, `GoogleOauth2`, `Microsoft`, `SalesforceOauth2`, `SlackOauth2`.
   final pulumi.Input<String> credentialProviderVendor;
-
   /// Name of the OAuth2 credential provider.
   final pulumi.Input<String>? name;
-
   /// OAuth2 provider configuration. Must contain exactly one provider type. See `oauth2_provider_config` below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>?
-  oauth2ProviderConfig;
-
+  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>? oauth2ProviderConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -39,41 +35,18 @@ class AgentcoreOauth2CredentialProviderArgs {
     return <String, dynamic>{
       'credentialProviderVendor': credentialProviderVendor,
       'name': ?name,
-      'oauth2ProviderConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentcoreOauth2CredentialProviderOauth2ProviderConfig,
-            Map<String, dynamic>
-          >(oauth2ProviderConfig, (value) => value.toMap()),
+      'oauth2ProviderConfig': ?pulumi.Input.mapOptionalInputValue<AgentcoreOauth2CredentialProviderOauth2ProviderConfig, Map<String, dynamic>>(oauth2ProviderConfig, (value) => value.toMap()),
       'region': ?region,
     };
   }
 
-  factory AgentcoreOauth2CredentialProviderArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreOauth2CredentialProviderArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderArgs(
-      credentialProviderVendor: pulumi.Input.fromValue(
-        map['credentialProviderVendor'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oauth2ProviderConfig: (() {
-        final guardedValue = map['oauth2ProviderConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      credentialProviderVendor: pulumi.Input.fromValue(map['credentialProviderVendor'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oauth2ProviderConfig: (() { final guardedValue = map['oauth2ProviderConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

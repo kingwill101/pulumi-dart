@@ -168,42 +168,32 @@ import 'disk_state.dart';
 /// ```
 class Disk extends pulumi.CustomResource {
   late final pulumi.Output<String?> advancedFeatures;
-
   /// The Zone to create the disk in.
   late final pulumi.Output<String> availabilityZone;
   late final pulumi.Output<bool?> burstingEnabled;
-
   /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
   late final pulumi.Output<String?> category;
   late final pulumi.Output<String> createTime;
-
   /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
   late final pulumi.Output<bool?> deleteAutoSnapshot;
-
   /// Indicates whether the disk is released together with the instance: Default value: false.
   late final pulumi.Output<bool> deleteWithInstance;
-
   /// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
   late final pulumi.Output<String?> description;
   late final pulumi.Output<String> diskName;
   late final pulumi.Output<bool?> dryRun;
-
   /// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
   late final pulumi.Output<bool> enableAutoSnapshot;
   late final pulumi.Output<String?> encryptAlgorithm;
-
   /// If true, the disk will be encrypted, conflict with `snapshot_id`.
   late final pulumi.Output<bool> encrypted;
   late final pulumi.Output<String> instanceId;
-
   /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
   late final pulumi.Output<String> kmsKeyId;
   late final pulumi.Output<String> multiAttach;
-
   /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> paymentType;
-
   /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
   /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
   /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
@@ -211,22 +201,17 @@ class Disk extends pulumi.CustomResource {
   late final pulumi.Output<String> performanceLevel;
   late final pulumi.Output<int?> provisionedIops;
   late final pulumi.Output<String> regionId;
-
   /// The Id of resource group which the disk belongs.
   /// &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
   late final pulumi.Output<int> size;
-
   /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
   late final pulumi.Output<String> snapshotId;
-
   /// The disk status.
   late final pulumi.Output<String> status;
   late final pulumi.Output<String?> storageSetId;
   late final pulumi.Output<int?> storageSetPartitionNumber;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<String?> type;
@@ -236,13 +221,16 @@ class Disk extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Disk]. {@macro pulumi_ecs_disk_disk_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Disk(String name, {DiskArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:ecs/disk:Disk',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Disk(
+    String name, {
+    DiskArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:ecs/disk:Disk',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     advancedFeatures = registerOutput<String?>('advancedFeatures');
     availabilityZone = registerOutput<String>('availabilityZone');
     burstingEnabled = registerOutput<bool?>('burstingEnabled');
@@ -269,16 +257,18 @@ class Disk extends pulumi.CustomResource {
     snapshotId = registerOutput<String>('snapshotId');
     status = registerOutput<String>('status');
     storageSetId = registerOutput<String?>('storageSetId');
-    storageSetPartitionNumber = registerOutput<int?>(
-      'storageSetPartitionNumber',
-    );
+    storageSetPartitionNumber = registerOutput<int?>('storageSetPartitionNumber');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String?>('type');
     zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [Disk] resource's state with the given [name] and [id].
-  static Disk get(String name, pulumi.Input<String> id, {DiskState? state}) {
+  static Disk get(
+    String name,
+    pulumi.Input<String> id, {
+    DiskState? state,
+  }) {
     return Disk._get(
       name,
       state: state?.toMap(),
@@ -291,11 +281,11 @@ class Disk extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/disk:Disk',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/disk:Disk',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     advancedFeatures = registerOutput<String?>('advancedFeatures');
     availabilityZone = registerOutput<String>('availabilityZone');
     burstingEnabled = registerOutput<bool?>('burstingEnabled');
@@ -322,9 +312,7 @@ class Disk extends pulumi.CustomResource {
     snapshotId = registerOutput<String>('snapshotId');
     status = registerOutput<String>('status');
     storageSetId = registerOutput<String?>('storageSetId');
-    storageSetPartitionNumber = registerOutput<int?>(
-      'storageSetPartitionNumber',
-    );
+    storageSetPartitionNumber = registerOutput<int?>('storageSetPartitionNumber');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String?>('type');
     zoneId = registerOutput<String>('zoneId');

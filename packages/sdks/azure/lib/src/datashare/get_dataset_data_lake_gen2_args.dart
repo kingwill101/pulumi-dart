@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatasetDataLakeGen2Args {
   /// The name of this Data Share Data Lake Gen2 Dataset.
   final pulumi.Input<String> name;
-
   /// The resource ID of the Data Share where this Data Share Data Lake Gen2 Dataset should be created.
   final pulumi.Input<String> shareId;
 
   /// Creates a new [GetDatasetDataLakeGen2Args].
   /// [name] The name of this Data Share Data Lake Gen2 Dataset.
   /// [shareId] The resource ID of the Data Share where this Data Share Data Lake Gen2 Dataset should be created.
-  GetDatasetDataLakeGen2Args({required this.name, required this.shareId});
+  GetDatasetDataLakeGen2Args({
+    required this.name,
+    required this.shareId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'shareId': shareId};
+    return <String, dynamic>{
+      'name': name,
+      'shareId': shareId,
+    };
   }
 
   factory GetDatasetDataLakeGen2Args.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetDatasetDataLakeGen2Args {
     );
   }
 }
+

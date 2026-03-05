@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBrokerAuthenticationArgs {
   /// Name of MQ broker/authentication resource
   final pulumi.Input<String> authenticationName;
-
   /// Name of MQ broker resource
   final pulumi.Input<String> brokerName;
-
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,14 +39,11 @@ class GetBrokerAuthenticationArgs {
 
   factory GetBrokerAuthenticationArgs.fromMap(Map<String, dynamic> map) {
     return GetBrokerAuthenticationArgs(
-      authenticationName: pulumi.Input.fromValue(
-        map['authenticationName'] as String,
-      ),
+      authenticationName: pulumi.Input.fromValue(map['authenticationName'] as String),
       brokerName: pulumi.Input.fromValue(map['brokerName'] as String),
       mqName: pulumi.Input.fromValue(map['mqName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

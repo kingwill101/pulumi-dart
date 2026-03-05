@@ -23,32 +23,26 @@ class DeviceSubRequestPatch {
   ///
   /// More modes may get added in the future. Clients must refuse to handle requests with unknown modes.
   final pulumi.Input<String>? allocationMode;
-
   /// Capacity define resource requirements against each capacity.
   ///
   /// If this field is unset and the device supports multiple allocations, the default value will be applied to each capacity according to requestPolicy. For the capacity that has no requestPolicy, default is the full capacity value.
   ///
   /// Applies to each device allocation. If Count &gt; 1, the request fails if there aren't enough devices that meet the requirements. If AllocationMode is set to All, the request fails if there are devices that otherwise match the request, and have this capacity, with a value &gt;= the requested amount, but which cannot be allocated to this request.
   final pulumi.Input<CapacityRequirementsPatch>? capacity;
-
   /// Count is used only when the count mode is "ExactCount". Must be greater than zero. If AllocationMode is ExactCount and this field is not specified, the default is one.
   final pulumi.Input<int>? count;
-
   /// DeviceClassName references a specific DeviceClass, which can define additional configuration and selectors to be inherited by this subrequest.
   ///
   /// A class is required. Which classes are available depends on the cluster.
   ///
   /// Administrators may use this to restrict which devices may get requested by only installing classes with selectors for permitted devices. If users are free to request anything without restrictions, then administrators can create an empty DeviceClass for users to reference.
   final pulumi.Input<String>? deviceClassName;
-
   /// Name can be used to reference this subrequest in the list of constraints or the list of configurations for the claim. References must use the format &lt;main request&gt;/&lt;subrequest&gt;.
   ///
   /// Must be a DNS label.
   final pulumi.Input<String>? name;
-
   /// Selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this subrequest. All selectors must be satisfied for a device to be considered.
   final pulumi.Input<List<DeviceSelectorPatch>>? selectors;
-
   /// If specified, the request's tolerations.
   ///
   /// Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute.
@@ -81,96 +75,25 @@ class DeviceSubRequestPatch {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocationMode': ?allocationMode,
-      'capacity':
-          ?pulumi.Input.mapOptionalInputValue<
-            CapacityRequirementsPatch,
-            Map<String, dynamic>
-          >(capacity, (value) => value.toMap()),
+      'capacity': ?pulumi.Input.mapOptionalInputValue<CapacityRequirementsPatch, Map<String, dynamic>>(capacity, (value) => value.toMap()),
       'count': ?count,
       'deviceClassName': ?deviceClassName,
       'name': ?name,
-      'selectors':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DeviceSelectorPatch>,
-            List<Map<String, dynamic>>
-          >(
-            selectors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DeviceSelectorPatch,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'tolerations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DeviceTolerationPatch>,
-            List<Map<String, dynamic>>
-          >(
-            tolerations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DeviceTolerationPatch,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'selectors': ?pulumi.Input.mapOptionalInputValue<List<DeviceSelectorPatch>, List<Map<String, dynamic>>>(selectors, (value) => pulumi.Input.encodeList<DeviceSelectorPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tolerations': ?pulumi.Input.mapOptionalInputValue<List<DeviceTolerationPatch>, List<Map<String, dynamic>>>(tolerations, (value) => pulumi.Input.encodeList<DeviceTolerationPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DeviceSubRequestPatch.fromMap(Map<String, dynamic> map) {
     return DeviceSubRequestPatch(
-      allocationMode: (() {
-        final guardedValue = map['allocationMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      capacity: (() {
-        final guardedValue = map['capacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CapacityRequirementsPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      deviceClassName: (() {
-        final guardedValue = map['deviceClassName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      selectors: (() {
-        final guardedValue = map['selectors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DeviceSelectorPatch>(
-            guardedValue,
-            (value) => DeviceSelectorPatch.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      tolerations: (() {
-        final guardedValue = map['tolerations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DeviceTolerationPatch>(
-            guardedValue,
-            (value) => DeviceTolerationPatch.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      allocationMode: (() { final guardedValue = map['allocationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CapacityRequirementsPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deviceClassName: (() { final guardedValue = map['deviceClassName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      selectors: (() { final guardedValue = map['selectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeviceSelectorPatch>(guardedValue, (value) => DeviceSelectorPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      tolerations: (() { final guardedValue = map['tolerations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeviceTolerationPatch>(guardedValue, (value) => DeviceTolerationPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -8,10 +8,8 @@ import 'package_manager.dart';
 class Package {
   /// The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
   final pulumi.Input<PackageDesiredState>? desiredState;
-
   /// Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
   final pulumi.Input<PackageManager>? manager;
-
   /// The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
   final pulumi.Input<String> name;
 
@@ -19,40 +17,26 @@ class Package {
   /// [desiredState] The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
   /// [manager] Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
   /// [name] The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
-  Package({this.desiredState, this.manager, required this.name});
+  Package({
+    this.desiredState,
+    this.manager,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'desiredState':
-          ?pulumi.Input.mapOptionalInputValue<PackageDesiredState, String>(
-            desiredState,
-            (value) => value.wireValue,
-          ),
-      'manager': ?pulumi.Input.mapOptionalInputValue<PackageManager, String>(
-        manager,
-        (value) => value.wireValue,
-      ),
+      'desiredState': ?pulumi.Input.mapOptionalInputValue<PackageDesiredState, String>(desiredState, (value) => value.wireValue),
+      'manager': ?pulumi.Input.mapOptionalInputValue<PackageManager, String>(manager, (value) => value.wireValue),
       'name': name,
     };
   }
 
   factory Package.fromMap(Map<String, dynamic> map) {
     return Package(
-      desiredState: (() {
-        final guardedValue = map['desiredState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PackageDesiredState.fromValue(guardedValue as String),
-        );
-      })(),
-      manager: (() {
-        final guardedValue = map['manager'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PackageManager.fromValue(guardedValue as String),
-        );
-      })(),
+      desiredState: (() { final guardedValue = map['desiredState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PackageDesiredState.fromValue(guardedValue as String)); })(),
+      manager: (() { final guardedValue = map['manager']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PackageManager.fromValue(guardedValue as String)); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

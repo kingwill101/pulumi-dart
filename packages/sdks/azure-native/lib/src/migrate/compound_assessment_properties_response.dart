@@ -8,13 +8,10 @@ import 'target_assessment_arm_ids_response.dart';
 class CompoundAssessmentPropertiesResponse {
   /// Details of the compound assessment.
   final pulumi.Input<CompoundAssessmentDetailsResponse> details;
-
   /// Fallback machine assessment ARM ID.
   final pulumi.Input<String>? fallbackMachineAssessmentArmId;
-
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
-
   /// ARM IDs of the target assessments.
   final pulumi.Input<TargetAssessmentArmIdsResponse> targetAssessmentArmIds;
 
@@ -32,43 +29,20 @@ class CompoundAssessmentPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'details':
-          pulumi.Input.mapInputValue<
-            CompoundAssessmentDetailsResponse,
-            Map<String, dynamic>
-          >(details, (value) => value.toMap()),
+      'details': pulumi.Input.mapInputValue<CompoundAssessmentDetailsResponse, Map<String, dynamic>>(details, (value) => value.toMap()),
       'fallbackMachineAssessmentArmId': ?fallbackMachineAssessmentArmId,
       'provisioningState': provisioningState,
-      'targetAssessmentArmIds':
-          pulumi.Input.mapInputValue<
-            TargetAssessmentArmIdsResponse,
-            Map<String, dynamic>
-          >(targetAssessmentArmIds, (value) => value.toMap()),
+      'targetAssessmentArmIds': pulumi.Input.mapInputValue<TargetAssessmentArmIdsResponse, Map<String, dynamic>>(targetAssessmentArmIds, (value) => value.toMap()),
     };
   }
 
-  factory CompoundAssessmentPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CompoundAssessmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CompoundAssessmentPropertiesResponse(
-      details: pulumi.Input.fromValue(
-        CompoundAssessmentDetailsResponse.fromMap(
-          (map['details']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      fallbackMachineAssessmentArmId: (() {
-        final guardedValue = map['fallbackMachineAssessmentArmId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      targetAssessmentArmIds: pulumi.Input.fromValue(
-        TargetAssessmentArmIdsResponse.fromMap(
-          (map['targetAssessmentArmIds']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      details: pulumi.Input.fromValue(CompoundAssessmentDetailsResponse.fromMap((map['details']! as Map).cast<String, dynamic>())),
+      fallbackMachineAssessmentArmId: (() { final guardedValue = map['fallbackMachineAssessmentArmId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      targetAssessmentArmIds: pulumi.Input.fromValue(TargetAssessmentArmIdsResponse.fromMap((map['targetAssessmentArmIds']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

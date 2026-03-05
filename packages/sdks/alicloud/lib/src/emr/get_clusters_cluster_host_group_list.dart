@@ -6,46 +6,32 @@ import 'get_clusters_cluster_host_group_list_node.dart';
 class GetClustersClusterHostGroupList {
   /// Bandwidth.
   final pulumi.Input<String> bandWidth;
-
   /// Payment Type.
   final pulumi.Input<String> chargeType;
-
   /// The number of CPU cores.
   final pulumi.Input<int> cpuCore;
-
   /// Data disk capacity.
   final pulumi.Input<int> diskCapacity;
-
   /// The number of data disks.
   final pulumi.Input<int> diskCount;
-
   /// System disk type:
   final pulumi.Input<String> diskType;
-
   /// The current operation type of the machine Group:
   final pulumi.Input<String> hostGroupChangeType;
-
   /// The ID of the machine group.
   final pulumi.Input<String> hostGroupId;
-
   /// The name of the machine group.
   final pulumi.Input<String> hostGroupName;
-
   /// Role of host in cluster:
   final pulumi.Input<String> hostGroupType;
-
   /// Machine Group instance.
   final pulumi.Input<String> instanceType;
-
   /// Memory size.
   final pulumi.Input<int> memoryCapacity;
-
   /// The number of machine group nodes.
   final pulumi.Input<int> nodeCount;
-
   /// Machine node.
   final pulumi.Input<List<GetClustersClusterHostGroupListNode>> nodes;
-
   /// Package year and month time (days).
   final pulumi.Input<String> period;
 
@@ -98,18 +84,7 @@ class GetClustersClusterHostGroupList {
       'instanceType': instanceType,
       'memoryCapacity': memoryCapacity,
       'nodeCount': nodeCount,
-      'nodes':
-          pulumi.Input.mapInputValue<
-            List<GetClustersClusterHostGroupListNode>,
-            List<Map<String, dynamic>>
-          >(
-            nodes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetClustersClusterHostGroupListNode,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'nodes': pulumi.Input.mapInputValue<List<GetClustersClusterHostGroupListNode>, List<Map<String, dynamic>>>(nodes, (value) => pulumi.Input.encodeList<GetClustersClusterHostGroupListNode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'period': period,
     };
   }
@@ -122,24 +97,16 @@ class GetClustersClusterHostGroupList {
       diskCapacity: pulumi.Input.fromValue(map['diskCapacity'] as int),
       diskCount: pulumi.Input.fromValue(map['diskCount'] as int),
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
-      hostGroupChangeType: pulumi.Input.fromValue(
-        map['hostGroupChangeType'] as String,
-      ),
+      hostGroupChangeType: pulumi.Input.fromValue(map['hostGroupChangeType'] as String),
       hostGroupId: pulumi.Input.fromValue(map['hostGroupId'] as String),
       hostGroupName: pulumi.Input.fromValue(map['hostGroupName'] as String),
       hostGroupType: pulumi.Input.fromValue(map['hostGroupType'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       memoryCapacity: pulumi.Input.fromValue(map['memoryCapacity'] as int),
       nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
-      nodes: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetClustersClusterHostGroupListNode>(
-          map['nodes']!,
-          (value) => GetClustersClusterHostGroupListNode.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      nodes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClustersClusterHostGroupListNode>(map['nodes']!, (value) => GetClustersClusterHostGroupListNode.fromMap((value as Map).cast<String, dynamic>()))),
       period: pulumi.Input.fromValue(map['period'] as String),
     );
   }
 }
+

@@ -299,25 +299,18 @@ import 'volume_snapshot_args.dart';
 class VolumeSnapshot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Data used when creating a volume snapshot.
   late final pulumi.Output<SnapshotCreationDataResponse> creationData;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// State of the operation on the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Size of Source Volume
   late final pulumi.Output<double> sourceVolumeSizeGiB;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Source Volume Name of a snapshot
   late final pulumi.Output<String> volumeName;
 
@@ -330,35 +323,17 @@ class VolumeSnapshot extends pulumi.CustomResource {
     VolumeSnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:elasticsan:VolumeSnapshot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:elasticsan:VolumeSnapshot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    creationData = registerOutput<SnapshotCreationDataResponse>(
-      'creationData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SnapshotCreationDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    creationData = registerOutput<SnapshotCreationDataResponse>('creationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotCreationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     sourceVolumeSizeGiB = registerOutput<double>('sourceVolumeSizeGiB');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     volumeName = registerOutput<String>('volumeName');
   }

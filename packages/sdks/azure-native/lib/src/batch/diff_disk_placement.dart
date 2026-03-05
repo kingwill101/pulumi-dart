@@ -14,3 +14,4 @@ enum DiffDiskPlacement {
     throw ArgumentError('Unknown DiffDiskPlacement value: $value');
   }
 }
+

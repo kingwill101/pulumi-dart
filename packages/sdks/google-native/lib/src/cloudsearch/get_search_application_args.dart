@@ -27,14 +27,9 @@ class GetSearchApplicationArgs {
 
   factory GetSearchApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetSearchApplicationArgs(
-      debugOptionsEnableDebugging: (() {
-        final guardedValue = map['debugOptionsEnableDebugging'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      searchapplicationId: pulumi.Input.fromValue(
-        map['searchapplicationId'] as String,
-      ),
+      debugOptionsEnableDebugging: (() { final guardedValue = map['debugOptionsEnableDebugging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      searchapplicationId: pulumi.Input.fromValue(map['searchapplicationId'] as String),
     );
   }
 }
+

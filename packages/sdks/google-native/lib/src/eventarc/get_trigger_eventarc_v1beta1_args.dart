@@ -32,12 +32,9 @@ class GetTriggerEventarcV1beta1Args {
   factory GetTriggerEventarcV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetTriggerEventarcV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       triggerId: pulumi.Input.fromValue(map['triggerId'] as String),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDedicatedHostsHostNetworkAttribute {
   /// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
   final pulumi.Input<int> slbUdpTimeout;
-
   /// (Available since v1.123.1) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
   final pulumi.Input<int> udpTimeout;
 
@@ -24,12 +23,11 @@ class GetDedicatedHostsHostNetworkAttribute {
     };
   }
 
-  factory GetDedicatedHostsHostNetworkAttribute.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDedicatedHostsHostNetworkAttribute.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsHostNetworkAttribute(
       slbUdpTimeout: pulumi.Input.fromValue(map['slbUdpTimeout'] as int),
       udpTimeout: pulumi.Input.fromValue(map['udpTimeout'] as int),
     );
   }
 }
+

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RamDirectoryArgs {
   /// The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
   final pulumi.Input<String>? desktopAccessType;
-
   /// Whether to enable public network access.
   final pulumi.Input<bool>? enableAdminAccess;
-
   /// Whether to grant local administrator rights to users who use cloud desktops.
   final pulumi.Input<bool>? enableInternetAccess;
-
   /// The name of the directory. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
   final pulumi.Input<String> ramDirectoryName;
-
   /// List of VSwitch IDs in the directory.
   final pulumi.Input<List<String>> vswitchIds;
 
@@ -48,27 +44,12 @@ class RamDirectoryArgs {
 
   factory RamDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return RamDirectoryArgs(
-      desktopAccessType: (() {
-        final guardedValue = map['desktopAccessType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enableAdminAccess: (() {
-        final guardedValue = map['enableAdminAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableInternetAccess: (() {
-        final guardedValue = map['enableInternetAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ramDirectoryName: pulumi.Input.fromValue(
-        map['ramDirectoryName'] as String,
-      ),
-      vswitchIds: pulumi.Input.fromValue(
-        (map['vswitchIds'] as List).cast<String>(),
-      ),
+      desktopAccessType: (() { final guardedValue = map['desktopAccessType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enableAdminAccess: (() { final guardedValue = map['enableAdminAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableInternetAccess: (() { final guardedValue = map['enableInternetAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ramDirectoryName: pulumi.Input.fromValue(map['ramDirectoryName'] as String),
+      vswitchIds: pulumi.Input.fromValue((map['vswitchIds'] as List).cast<String>()),
     );
   }
 }
+

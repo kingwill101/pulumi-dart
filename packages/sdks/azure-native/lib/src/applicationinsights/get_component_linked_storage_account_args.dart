@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetComponentLinkedStorageAccountArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Application Insights component resource.
   final pulumi.Input<String> resourceName;
-
   /// The type of the Application Insights component data source for the linked storage account.
   final pulumi.Input<String> storageType;
 
@@ -34,15 +32,12 @@ class GetComponentLinkedStorageAccountArgs {
     };
   }
 
-  factory GetComponentLinkedStorageAccountArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetComponentLinkedStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetComponentLinkedStorageAccountArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
       storageType: pulumi.Input.fromValue(map['storageType'] as String),
     );
   }
 }
+

@@ -18,3 +18,4 @@ enum EnterprisePolicyKind {
     throw ArgumentError('Unknown EnterprisePolicyKind value: $value');
   }
 }
+

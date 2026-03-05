@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserHomeDirectoryMapping {
   /// Represents an entry and a target.
   final pulumi.Input<String> entry;
-
   /// Represents the map target.
   ///
   /// The `Restricted` option is achieved using the following mapping:
@@ -21,10 +20,16 @@ class UserHomeDirectoryMapping {
   /// Creates a new [UserHomeDirectoryMapping].
   /// [entry] Represents an entry and a target.
   /// [target] Represents the map target.
-  UserHomeDirectoryMapping({required this.entry, required this.target});
+  UserHomeDirectoryMapping({
+    required this.entry,
+    required this.target,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'entry': entry, 'target': target};
+    return <String, dynamic>{
+      'entry': entry,
+      'target': target,
+    };
   }
 
   factory UserHomeDirectoryMapping.fromMap(Map<String, dynamic> map) {
@@ -34,3 +39,4 @@ class UserHomeDirectoryMapping {
     );
   }
 }
+

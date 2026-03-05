@@ -176,18 +176,14 @@ import 'table_resource_table_args.dart';
 class TableResourceTable extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The location of the resource group to which the resource belongs.
   late final pulumi.Output<String?> location;
-
   /// The name of the ARM resource.
   late final pulumi.Output<String> name;
   late final pulumi.Output<TableGetPropertiesResponseOptions?> options;
   late final pulumi.Output<TableGetPropertiesResponseResource?> resource;
-
   /// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -200,34 +196,16 @@ class TableResourceTable extends pulumi.CustomResource {
     TableResourceTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cosmosdb:TableResourceTable',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cosmosdb:TableResourceTable',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.options = registerOutput<TableGetPropertiesResponseOptions?>(
-      'options',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableGetPropertiesResponseOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    resource = registerOutput<TableGetPropertiesResponseResource?>(
-      'resource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableGetPropertiesResponseResource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    this.options = registerOutput<TableGetPropertiesResponseOptions?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableGetPropertiesResponseOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resource = registerOutput<TableGetPropertiesResponseResource?>('resource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableGetPropertiesResponseResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

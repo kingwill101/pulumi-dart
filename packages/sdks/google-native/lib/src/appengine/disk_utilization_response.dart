@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskUtilizationResponse {
   /// Target bytes read per second.
   final pulumi.Input<int> targetReadBytesPerSecond;
-
   /// Target ops read per seconds.
   final pulumi.Input<int> targetReadOpsPerSecond;
-
   /// Target bytes written per second.
   final pulumi.Input<int> targetWriteBytesPerSecond;
-
   /// Target ops written per second.
   final pulumi.Input<int> targetWriteOpsPerSecond;
 
@@ -39,18 +36,11 @@ class DiskUtilizationResponse {
 
   factory DiskUtilizationResponse.fromMap(Map<String, dynamic> map) {
     return DiskUtilizationResponse(
-      targetReadBytesPerSecond: pulumi.Input.fromValue(
-        map['targetReadBytesPerSecond'] as int,
-      ),
-      targetReadOpsPerSecond: pulumi.Input.fromValue(
-        map['targetReadOpsPerSecond'] as int,
-      ),
-      targetWriteBytesPerSecond: pulumi.Input.fromValue(
-        map['targetWriteBytesPerSecond'] as int,
-      ),
-      targetWriteOpsPerSecond: pulumi.Input.fromValue(
-        map['targetWriteOpsPerSecond'] as int,
-      ),
+      targetReadBytesPerSecond: pulumi.Input.fromValue(map['targetReadBytesPerSecond'] as int),
+      targetReadOpsPerSecond: pulumi.Input.fromValue(map['targetReadOpsPerSecond'] as int),
+      targetWriteBytesPerSecond: pulumi.Input.fromValue(map['targetWriteBytesPerSecond'] as int),
+      targetWriteOpsPerSecond: pulumi.Input.fromValue(map['targetWriteOpsPerSecond'] as int),
     );
   }
 }
+

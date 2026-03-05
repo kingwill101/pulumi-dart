@@ -19,3 +19,4 @@ enum RefreshInterval {
     throw ArgumentError('Unknown RefreshInterval value: $value');
   }
 }
+

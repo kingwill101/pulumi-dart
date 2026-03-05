@@ -10,11 +10,9 @@ class ProxyProtocolPolicyArgs {
   /// List of instance ports to which the policy
   /// should be applied. This can be specified if the protocol is SSL or TCP.
   final pulumi.Input<List<String>> instancePorts;
-
   /// The load balancer to which the policy
   /// should be attached.
   final pulumi.Input<String> loadBalancer;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -38,15 +36,10 @@ class ProxyProtocolPolicyArgs {
 
   factory ProxyProtocolPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ProxyProtocolPolicyArgs(
-      instancePorts: pulumi.Input.fromValue(
-        (map['instancePorts'] as List).cast<String>(),
-      ),
+      instancePorts: pulumi.Input.fromValue((map['instancePorts'] as List).cast<String>()),
       loadBalancer: pulumi.Input.fromValue(map['loadBalancer'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

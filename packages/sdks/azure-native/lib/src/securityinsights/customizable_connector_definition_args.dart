@@ -11,26 +11,19 @@ import 'customizable_connector_ui_config.dart';
 class CustomizableConnectorDefinitionArgs {
   /// The UiConfig for 'Customizable' connector definition kind.
   final pulumi.Input<CustomizableConnectionsConfig>? connectionsConfig;
-
   /// The UiConfig for 'Customizable' connector definition kind.
   final pulumi.Input<CustomizableConnectorUiConfig> connectorUiConfig;
-
   /// Gets or sets the connector definition created date in UTC format.
   final pulumi.Input<String>? createdTimeUtc;
-
   /// The data connector definition name.
   final pulumi.Input<String>? dataConnectorDefinitionName;
-
   /// The kind of the data connector definitions
   /// Expected value is 'Customizable'.
   final pulumi.Input<String> kind;
-
   /// Gets or sets the connector definition last modified date in UTC format.
   final pulumi.Input<String>? lastModifiedUtc;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -56,16 +49,8 @@ class CustomizableConnectorDefinitionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionsConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomizableConnectionsConfig,
-            Map<String, dynamic>
-          >(connectionsConfig, (value) => value.toMap()),
-      'connectorUiConfig':
-          pulumi.Input.mapInputValue<
-            CustomizableConnectorUiConfig,
-            Map<String, dynamic>
-          >(connectorUiConfig, (value) => value.toMap()),
+      'connectionsConfig': ?pulumi.Input.mapOptionalInputValue<CustomizableConnectionsConfig, Map<String, dynamic>>(connectionsConfig, (value) => value.toMap()),
+      'connectorUiConfig': pulumi.Input.mapInputValue<CustomizableConnectorUiConfig, Map<String, dynamic>>(connectorUiConfig, (value) => value.toMap()),
       'createdTimeUtc': ?createdTimeUtc,
       'dataConnectorDefinitionName': ?dataConnectorDefinitionName,
       'kind': kind,
@@ -75,44 +60,17 @@ class CustomizableConnectorDefinitionArgs {
     };
   }
 
-  factory CustomizableConnectorDefinitionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomizableConnectorDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return CustomizableConnectorDefinitionArgs(
-      connectionsConfig: (() {
-        final guardedValue = map['connectionsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomizableConnectionsConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      connectorUiConfig: pulumi.Input.fromValue(
-        CustomizableConnectorUiConfig.fromMap(
-          (map['connectorUiConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      createdTimeUtc: (() {
-        final guardedValue = map['createdTimeUtc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataConnectorDefinitionName: (() {
-        final guardedValue = map['dataConnectorDefinitionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectionsConfig: (() { final guardedValue = map['connectionsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomizableConnectionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      connectorUiConfig: pulumi.Input.fromValue(CustomizableConnectorUiConfig.fromMap((map['connectorUiConfig']! as Map).cast<String, dynamic>())),
+      createdTimeUtc: (() { final guardedValue = map['createdTimeUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataConnectorDefinitionName: (() { final guardedValue = map['dataConnectorDefinitionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      lastModifiedUtc: (() {
-        final guardedValue = map['lastModifiedUtc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      lastModifiedUtc: (() { final guardedValue = map['lastModifiedUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

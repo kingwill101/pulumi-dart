@@ -17,3 +17,4 @@ enum Polarization {
     throw ArgumentError('Unknown Polarization value: $value');
   }
 }
+

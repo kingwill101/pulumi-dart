@@ -187,26 +187,18 @@ import 'system_data_response.dart';
 class PrivateEndpointConnectionServicebus extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The Private Endpoint resource for this Connection.
   late final pulumi.Output<PrivateEndpointResponse?> privateEndpoint;
-
   /// Details about the state of the connection.
-  late final pulumi.Output<ConnectionStateResponse?>
-  privateLinkServiceConnectionState;
-
+  late final pulumi.Output<ConnectionStateResponse?> privateLinkServiceConnectionState;
   /// Provisioning state of the Private Endpoint Connection.
   late final pulumi.Output<String?> provisioningState;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   late final pulumi.Output<String> type;
 
@@ -219,46 +211,18 @@ class PrivateEndpointConnectionServicebus extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:servicebus:PrivateEndpointConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:servicebus:PrivateEndpointConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpoint = registerOutput<PrivateEndpointResponse?>(
-      'privateEndpoint',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PrivateEndpointResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateLinkServiceConnectionState =
-        registerOutput<ConnectionStateResponse?>(
-          'privateLinkServiceConnectionState',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ConnectionStateResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    privateEndpoint = registerOutput<PrivateEndpointResponse?>('privateEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateLinkServiceConnectionState = registerOutput<ConnectionStateResponse?>('privateLinkServiceConnectionState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String?>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

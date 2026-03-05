@@ -10,19 +10,15 @@ import 'custom_service_telemetry.dart';
 class CustomServiceArgs {
   /// Name used for UI elements listing this Service.
   final pulumi.Input<String>? displayName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// An optional service ID to use. If not given, the server will generate a
   /// service ID.
   final pulumi.Input<String>? serviceId;
-
   /// Configuration for how to query telemetry on a Service.
   /// Structure is documented below.
   final pulumi.Input<CustomServiceTelemetry>? telemetry;
-
   /// Labels which have been used to annotate the service. Label keys must start
   /// with a letter. Label keys and values may contain lowercase letters,
   /// numbers, underscores, and dashes. Label keys and values have a maximum
@@ -50,48 +46,19 @@ class CustomServiceArgs {
       'displayName': ?displayName,
       'project': ?project,
       'serviceId': ?serviceId,
-      'telemetry':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomServiceTelemetry,
-            Map<String, dynamic>
-          >(telemetry, (value) => value.toMap()),
+      'telemetry': ?pulumi.Input.mapOptionalInputValue<CustomServiceTelemetry, Map<String, dynamic>>(telemetry, (value) => value.toMap()),
       'userLabels': ?userLabels,
     };
   }
 
   factory CustomServiceArgs.fromMap(Map<String, dynamic> map) {
     return CustomServiceArgs(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceId: (() {
-        final guardedValue = map['serviceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      telemetry: (() {
-        final guardedValue = map['telemetry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomServiceTelemetry.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      userLabels: (() {
-        final guardedValue = map['userLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      telemetry: (() { final guardedValue = map['telemetry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomServiceTelemetry.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      userLabels: (() { final guardedValue = map['userLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

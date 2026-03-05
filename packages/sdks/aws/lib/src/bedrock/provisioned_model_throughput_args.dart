@@ -10,19 +10,14 @@ import 'provisioned_model_throughput_timeouts.dart';
 class ProvisionedModelThroughputArgs {
   /// Commitment duration requested for the Provisioned Throughput. For custom models, you can purchase on-demand Provisioned Throughput by omitting this argument. Valid values: `OneMonth`, `SixMonths`.
   final pulumi.Input<String>? commitmentDuration;
-
   /// ARN of the model to associate with this Provisioned Throughput.
   final pulumi.Input<String> modelArn;
-
   /// Number of model units to allocate. A model unit delivers a specific throughput level for the specified model.
   final pulumi.Input<int> modelUnits;
-
   /// Unique name for this Provisioned Throughput.
   final pulumi.Input<String> provisionedModelName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ProvisionedModelThroughputTimeouts>? timeouts;
@@ -53,47 +48,20 @@ class ProvisionedModelThroughputArgs {
       'provisionedModelName': provisionedModelName,
       'region': ?region,
       'tags': ?tags,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            ProvisionedModelThroughputTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<ProvisionedModelThroughputTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory ProvisionedModelThroughputArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionedModelThroughputArgs(
-      commitmentDuration: (() {
-        final guardedValue = map['commitmentDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      commitmentDuration: (() { final guardedValue = map['commitmentDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modelArn: pulumi.Input.fromValue(map['modelArn'] as String),
       modelUnits: pulumi.Input.fromValue(map['modelUnits'] as int),
-      provisionedModelName: pulumi.Input.fromValue(
-        map['provisionedModelName'] as String,
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ProvisionedModelThroughputTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      provisionedModelName: pulumi.Input.fromValue(map['provisionedModelName'] as String),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProvisionedModelThroughputTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

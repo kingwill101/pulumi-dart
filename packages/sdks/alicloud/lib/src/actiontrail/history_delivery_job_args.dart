@@ -12,10 +12,14 @@ class HistoryDeliveryJobArgs {
 
   /// Creates a new [HistoryDeliveryJobArgs].
   /// [trailName] The Track Name.
-  HistoryDeliveryJobArgs({required this.trailName});
+  HistoryDeliveryJobArgs({
+    required this.trailName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'trailName': trailName};
+    return <String, dynamic>{
+      'trailName': trailName,
+    };
   }
 
   factory HistoryDeliveryJobArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class HistoryDeliveryJobArgs {
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConditionResponseComputeV1 {
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<String> iam;
-
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<String> op;
-
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<String> svc;
-
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<String> sys;
-
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<List<String>> values;
 
@@ -53,3 +49,4 @@ class ConditionResponseComputeV1 {
     );
   }
 }
+

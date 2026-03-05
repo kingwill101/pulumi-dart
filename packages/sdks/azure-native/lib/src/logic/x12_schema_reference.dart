@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class X12SchemaReference {
   /// The message id.
   final pulumi.Input<String> messageId;
-
   /// The schema name.
   final pulumi.Input<String> schemaName;
-
   /// The schema version.
   final pulumi.Input<String> schemaVersion;
-
   /// The sender application id.
   final pulumi.Input<String>? senderApplicationId;
 
@@ -42,11 +39,8 @@ class X12SchemaReference {
       messageId: pulumi.Input.fromValue(map['messageId'] as String),
       schemaName: pulumi.Input.fromValue(map['schemaName'] as String),
       schemaVersion: pulumi.Input.fromValue(map['schemaVersion'] as String),
-      senderApplicationId: (() {
-        final guardedValue = map['senderApplicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      senderApplicationId: (() { final guardedValue = map['senderApplicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

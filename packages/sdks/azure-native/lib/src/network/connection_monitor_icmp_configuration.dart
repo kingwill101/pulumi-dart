@@ -9,19 +9,20 @@ class ConnectionMonitorIcmpConfiguration {
 
   /// Creates a new [ConnectionMonitorIcmpConfiguration].
   /// [disableTraceRoute] Value indicating whether path evaluation with trace route should be disabled.
-  ConnectionMonitorIcmpConfiguration({this.disableTraceRoute});
+  ConnectionMonitorIcmpConfiguration({
+    this.disableTraceRoute,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disableTraceRoute': ?disableTraceRoute};
+    return <String, dynamic>{
+      'disableTraceRoute': ?disableTraceRoute,
+    };
   }
 
   factory ConnectionMonitorIcmpConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorIcmpConfiguration(
-      disableTraceRoute: (() {
-        final guardedValue = map['disableTraceRoute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disableTraceRoute: (() { final guardedValue = map['disableTraceRoute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

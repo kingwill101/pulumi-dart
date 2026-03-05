@@ -8,10 +8,14 @@ class DomainDevicesSerialAlias {
 
   /// Creates a new [DomainDevicesSerialAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesSerialAlias({required this.name});
+  DomainDevicesSerialAlias({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory DomainDevicesSerialAlias.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesSerialAlias {
     );
   }
 }
+

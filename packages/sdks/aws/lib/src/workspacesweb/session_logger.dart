@@ -1066,33 +1066,24 @@ import 'session_logger_state.dart';
 class SessionLogger extends pulumi.CustomResource {
   /// Map of additional encryption context key-value pairs.
   late final pulumi.Output<Map<String, String>?> additionalEncryptionContext;
-
   /// List of ARNs of the web portals associated with the session logger.
   late final pulumi.Output<List<String>> associatedPortalArns;
-
   /// ARN of the customer managed KMS key used to encrypt sensitive information.
   late final pulumi.Output<String?> customerManagedKey;
-
   /// Human-readable display name for the session logger resource. Forces replacement if changed.
   late final pulumi.Output<String?> displayName;
-
   /// Event filter that determines which events are logged. See Event Filter below.
   late final pulumi.Output<SessionLoggerEventFilter> eventFilter;
-
   /// Configuration block for specifying where logs are delivered. See Log Configuration below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<SessionLoggerLogConfiguration> logConfiguration;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the session logger.
   late final pulumi.Output<String> sessionLoggerArn;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -1105,37 +1096,17 @@ class SessionLogger extends pulumi.CustomResource {
     SessionLoggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspacesweb/sessionLogger:SessionLogger',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalEncryptionContext = registerOutput<Map<String, String>?>(
-      'additionalEncryptionContext',
-    );
+          'aws:workspacesweb/sessionLogger:SessionLogger',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
     customerManagedKey = registerOutput<String?>('customerManagedKey');
     displayName = registerOutput<String?>('displayName');
-    eventFilter = registerOutput<SessionLoggerEventFilter>(
-      'eventFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SessionLoggerEventFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    logConfiguration = registerOutput<SessionLoggerLogConfiguration>(
-      'logConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SessionLoggerLogConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eventFilter = registerOutput<SessionLoggerEventFilter>('eventFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionLoggerEventFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logConfiguration = registerOutput<SessionLoggerLogConfiguration>('logConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionLoggerLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1160,37 +1131,17 @@ class SessionLogger extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspacesweb/sessionLogger:SessionLogger',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalEncryptionContext = registerOutput<Map<String, String>?>(
-      'additionalEncryptionContext',
-    );
+          'aws:workspacesweb/sessionLogger:SessionLogger',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
     customerManagedKey = registerOutput<String?>('customerManagedKey');
     displayName = registerOutput<String?>('displayName');
-    eventFilter = registerOutput<SessionLoggerEventFilter>(
-      'eventFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SessionLoggerEventFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    logConfiguration = registerOutput<SessionLoggerLogConfiguration>(
-      'logConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SessionLoggerLogConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eventFilter = registerOutput<SessionLoggerEventFilter>('eventFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionLoggerEventFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logConfiguration = registerOutput<SessionLoggerLogConfiguration>('logConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionLoggerLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
     tags = registerOutput<Map<String, String>?>('tags');

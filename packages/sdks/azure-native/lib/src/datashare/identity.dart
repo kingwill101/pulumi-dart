@@ -9,19 +9,20 @@ class Identity {
 
   /// Creates a new [Identity].
   /// [type] Identity Type
-  Identity({this.type});
+  Identity({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
   factory Identity.fromMap(Map<String, dynamic> map) {
     return Identity(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

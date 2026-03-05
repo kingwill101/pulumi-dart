@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DocumentProcessorProperties {
   /// The ID (GUID) of an SharePoint Online (SPO) tenant associated with this document processor resource
   final pulumi.Input<String> spoTenantId;
-
   /// The URL of an SharePoint Online (SPO) tenant associated with this document processor resource
   final pulumi.Input<String> spoTenantUrl;
 
@@ -32,3 +31,4 @@ class DocumentProcessorProperties {
     );
   }
 }
+

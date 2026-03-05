@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyRuleActionVersion {
   /// The age in days after creation to tier blob version to archive storage.
   final pulumi.Input<int> changeTierToArchiveAfterDaysSinceCreation;
-
   /// The age in days after creation to tier blob version to cool storage.
   final pulumi.Input<int> changeTierToCoolAfterDaysSinceCreation;
-
   /// The age in days after creation to delete the blob version.
   final pulumi.Input<int> deleteAfterDaysSinceCreation;
-
   /// The age in days after last tier change to the blobs to skip to be archived.
   final pulumi.Input<int> tierToArchiveAfterDaysSinceLastTierChangeGreaterThan;
-
   /// Optional The age in days after creation to cold storage. Supports blob currently at Hot tier.
   final pulumi.Input<int> tierToColdAfterDaysSinceCreationGreaterThan;
 
@@ -34,36 +30,22 @@ class GetPolicyRuleActionVersion {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'changeTierToArchiveAfterDaysSinceCreation':
-          changeTierToArchiveAfterDaysSinceCreation,
-      'changeTierToCoolAfterDaysSinceCreation':
-          changeTierToCoolAfterDaysSinceCreation,
+      'changeTierToArchiveAfterDaysSinceCreation': changeTierToArchiveAfterDaysSinceCreation,
+      'changeTierToCoolAfterDaysSinceCreation': changeTierToCoolAfterDaysSinceCreation,
       'deleteAfterDaysSinceCreation': deleteAfterDaysSinceCreation,
-      'tierToArchiveAfterDaysSinceLastTierChangeGreaterThan':
-          tierToArchiveAfterDaysSinceLastTierChangeGreaterThan,
-      'tierToColdAfterDaysSinceCreationGreaterThan':
-          tierToColdAfterDaysSinceCreationGreaterThan,
+      'tierToArchiveAfterDaysSinceLastTierChangeGreaterThan': tierToArchiveAfterDaysSinceLastTierChangeGreaterThan,
+      'tierToColdAfterDaysSinceCreationGreaterThan': tierToColdAfterDaysSinceCreationGreaterThan,
     };
   }
 
   factory GetPolicyRuleActionVersion.fromMap(Map<String, dynamic> map) {
     return GetPolicyRuleActionVersion(
-      changeTierToArchiveAfterDaysSinceCreation: pulumi.Input.fromValue(
-        map['changeTierToArchiveAfterDaysSinceCreation'] as int,
-      ),
-      changeTierToCoolAfterDaysSinceCreation: pulumi.Input.fromValue(
-        map['changeTierToCoolAfterDaysSinceCreation'] as int,
-      ),
-      deleteAfterDaysSinceCreation: pulumi.Input.fromValue(
-        map['deleteAfterDaysSinceCreation'] as int,
-      ),
-      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan:
-          pulumi.Input.fromValue(
-            map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] as int,
-          ),
-      tierToColdAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue(
-        map['tierToColdAfterDaysSinceCreationGreaterThan'] as int,
-      ),
+      changeTierToArchiveAfterDaysSinceCreation: pulumi.Input.fromValue(map['changeTierToArchiveAfterDaysSinceCreation'] as int),
+      changeTierToCoolAfterDaysSinceCreation: pulumi.Input.fromValue(map['changeTierToCoolAfterDaysSinceCreation'] as int),
+      deleteAfterDaysSinceCreation: pulumi.Input.fromValue(map['deleteAfterDaysSinceCreation'] as int),
+      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: pulumi.Input.fromValue(map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] as int),
+      tierToColdAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue(map['tierToColdAfterDaysSinceCreationGreaterThan'] as int),
     );
   }
 }
+

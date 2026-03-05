@@ -10,20 +10,14 @@ import 'network_function_definition_group_properties_format.dart';
 class NetworkFunctionDefinitionGroupArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The name of the network function definition group.
   final pulumi.Input<String>? networkFunctionDefinitionGroupName;
-
   /// Network function definition group properties.
-  final pulumi.Input<NetworkFunctionDefinitionGroupPropertiesFormat>?
-  properties;
-
+  final pulumi.Input<NetworkFunctionDefinitionGroupPropertiesFormat>? properties;
   /// The name of the publisher.
   final pulumi.Input<String> publisherName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -47,11 +41,7 @@ class NetworkFunctionDefinitionGroupArgs {
     return <String, dynamic>{
       'location': ?location,
       'networkFunctionDefinitionGroupName': ?networkFunctionDefinitionGroupName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkFunctionDefinitionGroupPropertiesFormat,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<NetworkFunctionDefinitionGroupPropertiesFormat, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'publisherName': publisherName,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -60,36 +50,13 @@ class NetworkFunctionDefinitionGroupArgs {
 
   factory NetworkFunctionDefinitionGroupArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFunctionDefinitionGroupArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkFunctionDefinitionGroupName: (() {
-        final guardedValue = map['networkFunctionDefinitionGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkFunctionDefinitionGroupPropertiesFormat.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkFunctionDefinitionGroupName: (() { final guardedValue = map['networkFunctionDefinitionGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkFunctionDefinitionGroupPropertiesFormat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       publisherName: pulumi.Input.fromValue(map['publisherName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

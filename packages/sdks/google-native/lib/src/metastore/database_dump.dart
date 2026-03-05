@@ -8,13 +8,10 @@ import 'database_dump_type.dart';
 class DatabaseDump {
   /// The type of the database.
   final pulumi.Input<DatabaseDumpDatabaseType>? databaseType;
-
   /// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
   final pulumi.Input<String>? gcsUri;
-
   /// The name of the source database.
   final pulumi.Input<String>? sourceDatabase;
-
   /// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
   final pulumi.Input<DatabaseDumpType>? type;
 
@@ -32,46 +29,20 @@ class DatabaseDump {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databaseType':
-          ?pulumi.Input.mapOptionalInputValue<DatabaseDumpDatabaseType, String>(
-            databaseType,
-            (value) => value.wireValue,
-          ),
+      'databaseType': ?pulumi.Input.mapOptionalInputValue<DatabaseDumpDatabaseType, String>(databaseType, (value) => value.wireValue),
       'gcsUri': ?gcsUri,
       'sourceDatabase': ?sourceDatabase,
-      'type': ?pulumi.Input.mapOptionalInputValue<DatabaseDumpType, String>(
-        type,
-        (value) => value.wireValue,
-      ),
+      'type': ?pulumi.Input.mapOptionalInputValue<DatabaseDumpType, String>(type, (value) => value.wireValue),
     };
   }
 
   factory DatabaseDump.fromMap(Map<String, dynamic> map) {
     return DatabaseDump(
-      databaseType: (() {
-        final guardedValue = map['databaseType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DatabaseDumpDatabaseType.fromValue(guardedValue as String),
-        );
-      })(),
-      gcsUri: (() {
-        final guardedValue = map['gcsUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceDatabase: (() {
-        final guardedValue = map['sourceDatabase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DatabaseDumpType.fromValue(guardedValue as String),
-        );
-      })(),
+      databaseType: (() { final guardedValue = map['databaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseDumpDatabaseType.fromValue(guardedValue as String)); })(),
+      gcsUri: (() { final guardedValue = map['gcsUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceDatabase: (() { final guardedValue = map['sourceDatabase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseDumpType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

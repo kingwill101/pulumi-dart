@@ -9,22 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CodeRepositoryIndexArgs {
   /// Required. Id of the Code Repository Index.
   final pulumi.Input<String> codeRepositoryIndexId;
-
   /// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
   final pulumi.Input<bool>? forceDestroy;
-
   /// Optional. Immutable. Customer-managed encryption key name, in the format
   /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
   final pulumi.Input<String>? kmsKey;
-
   /// Optional. Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location of the Code Repository Index, for example `us-central1`.
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -58,32 +53,13 @@ class CodeRepositoryIndexArgs {
 
   factory CodeRepositoryIndexArgs.fromMap(Map<String, dynamic> map) {
     return CodeRepositoryIndexArgs(
-      codeRepositoryIndexId: pulumi.Input.fromValue(
-        map['codeRepositoryIndexId'] as String,
-      ),
-      forceDestroy: (() {
-        final guardedValue = map['forceDestroy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      kmsKey: (() {
-        final guardedValue = map['kmsKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      codeRepositoryIndexId: pulumi.Input.fromValue(map['codeRepositoryIndexId'] as String),
+      forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageSourceManifestResponse {
   /// Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   final pulumi.Input<String> bucket;
-
   /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
   final pulumi.Input<String> generation;
-
   /// Cloud Storage object containing the source manifest. This object must be a JSON file.
   final pulumi.Input<String> object_;
 
@@ -39,3 +37,4 @@ class StorageSourceManifestResponse {
     );
   }
 }
+

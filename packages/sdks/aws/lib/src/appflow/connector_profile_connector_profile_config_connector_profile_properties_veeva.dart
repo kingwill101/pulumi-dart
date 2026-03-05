@@ -12,14 +12,15 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instanceUrl': instanceUrl};
+    return <String, dynamic>{
+      'instanceUrl': instanceUrl,
+    };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva(
       instanceUrl: pulumi.Input.fromValue(map['instanceUrl'] as String),
     );
   }
 }
+

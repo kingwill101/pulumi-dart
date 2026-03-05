@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobConfigurationResponseScheduleTriggerConfig {
   /// Cron formatted repeating schedule ("* * * * *") of a Cron Job.
   final pulumi.Input<String> cronExpression;
-
   /// Number of parallel replicas of a job that can run at a given time.
   final pulumi.Input<int>? parallelism;
-
   /// Minimum number of successful replica completions before overall job completion.
   final pulumi.Input<int>? replicaCompletionCount;
 
@@ -31,21 +29,12 @@ class JobConfigurationResponseScheduleTriggerConfig {
     };
   }
 
-  factory JobConfigurationResponseScheduleTriggerConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobConfigurationResponseScheduleTriggerConfig.fromMap(Map<String, dynamic> map) {
     return JobConfigurationResponseScheduleTriggerConfig(
       cronExpression: pulumi.Input.fromValue(map['cronExpression'] as String),
-      parallelism: (() {
-        final guardedValue = map['parallelism'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      replicaCompletionCount: (() {
-        final guardedValue = map['replicaCompletionCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      parallelism: (() { final guardedValue = map['parallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicaCompletionCount: (() { final guardedValue = map['replicaCompletionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

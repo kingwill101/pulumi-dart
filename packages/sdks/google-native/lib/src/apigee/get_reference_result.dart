@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getReference.
 class GetReferenceResult {
   /// Optional. A human-readable description of this reference.
   final String description;
-
   /// The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
   final String name;
-
   /// The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
   final String refers;
-
   /// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
   final String resourceType;
 
@@ -44,3 +42,4 @@ class GetReferenceResult {
     );
   }
 }
+

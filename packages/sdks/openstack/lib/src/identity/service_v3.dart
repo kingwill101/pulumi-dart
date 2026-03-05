@@ -113,17 +113,13 @@ import 'service_v3_state.dart';
 class ServiceV3 extends pulumi.CustomResource {
   /// The service description.
   late final pulumi.Output<String?> description;
-
   /// The service status. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// The service name.
   late final pulumi.Output<String> name;
-
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used.
   late final pulumi.Output<String> region;
-
   /// The service type.
   late final pulumi.Output<String> type;
 
@@ -136,11 +132,11 @@ class ServiceV3 extends pulumi.CustomResource {
     ServiceV3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:identity/serviceV3:ServiceV3',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:identity/serviceV3:ServiceV3',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
@@ -166,11 +162,11 @@ class ServiceV3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:identity/serviceV3:ServiceV3',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:identity/serviceV3:ServiceV3',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');

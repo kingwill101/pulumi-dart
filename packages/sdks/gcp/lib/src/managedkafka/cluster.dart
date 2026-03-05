@@ -809,54 +809,40 @@ class Cluster extends pulumi.CustomResource {
   /// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
   /// Structure is documented below.
   late final pulumi.Output<ClusterBrokerCapacityConfig?> brokerCapacityConfig;
-
   /// A capacity configuration of a Kafka cluster.
   /// Structure is documented below.
   late final pulumi.Output<ClusterCapacityConfig> capacityConfig;
-
   /// The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
   late final pulumi.Output<String> clusterId;
-
   /// The time when the cluster was created.
   late final pulumi.Output<String> createTime;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
   /// Structure is documented below.
   late final pulumi.Output<ClusterGcpConfig> gcpConfig;
-
   /// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   late final pulumi.Output<String> location;
-
   /// The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Defines rebalancing behavior of a Kafka cluster.
   /// Structure is documented below.
   late final pulumi.Output<ClusterRebalanceConfig?> rebalanceConfig;
-
   /// The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
   late final pulumi.Output<String> state;
-
   /// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
   /// Structure is documented below.
   late final pulumi.Output<ClusterTlsConfig> tlsConfig;
-
   /// The time when the cluster was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -869,70 +855,25 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:managedkafka/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    brokerCapacityConfig = registerOutput<ClusterBrokerCapacityConfig?>(
-      'brokerCapacityConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterBrokerCapacityConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    capacityConfig = registerOutput<ClusterCapacityConfig>(
-      'capacityConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterCapacityConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:managedkafka/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    brokerCapacityConfig = registerOutput<ClusterBrokerCapacityConfig?>('brokerCapacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterBrokerCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    capacityConfig = registerOutput<ClusterCapacityConfig>('capacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gcpConfig = registerOutput<ClusterGcpConfig>(
-      'gcpConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterGcpConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gcpConfig = registerOutput<ClusterGcpConfig>('gcpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGcpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    rebalanceConfig = registerOutput<ClusterRebalanceConfig?>(
-      'rebalanceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterRebalanceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rebalanceConfig = registerOutput<ClusterRebalanceConfig?>('rebalanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRebalanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    tlsConfig = registerOutput<ClusterTlsConfig>(
-      'tlsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterTlsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tlsConfig = registerOutput<ClusterTlsConfig>('tlsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -954,70 +895,25 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:managedkafka/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    brokerCapacityConfig = registerOutput<ClusterBrokerCapacityConfig?>(
-      'brokerCapacityConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterBrokerCapacityConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    capacityConfig = registerOutput<ClusterCapacityConfig>(
-      'capacityConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterCapacityConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:managedkafka/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    brokerCapacityConfig = registerOutput<ClusterBrokerCapacityConfig?>('brokerCapacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterBrokerCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    capacityConfig = registerOutput<ClusterCapacityConfig>('capacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gcpConfig = registerOutput<ClusterGcpConfig>(
-      'gcpConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterGcpConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gcpConfig = registerOutput<ClusterGcpConfig>('gcpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGcpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    rebalanceConfig = registerOutput<ClusterRebalanceConfig?>(
-      'rebalanceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterRebalanceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rebalanceConfig = registerOutput<ClusterRebalanceConfig?>('rebalanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRebalanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
-    tlsConfig = registerOutput<ClusterTlsConfig>(
-      'tlsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterTlsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tlsConfig = registerOutput<ClusterTlsConfig>('tlsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

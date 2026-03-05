@@ -5,20 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApisApi {
   /// The ID of the API.
   final pulumi.Input<String> apiId;
-
   /// The description of the API.
   final pulumi.Input<String> description;
-
   /// The ID of the API group.
   final pulumi.Input<String> groupId;
-
   /// The name of the API group.
   final pulumi.Input<String> groupName;
   final pulumi.Input<String> id;
-
   /// The name of the API.
   final pulumi.Input<String> name;
-
   /// The region ID of the API.
   final pulumi.Input<String> regionId;
 
@@ -64,3 +59,4 @@ class GetApisApi {
     );
   }
 }
+

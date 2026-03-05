@@ -7,10 +7,8 @@ import 'genai_knowledge_base_data_source_web_crawler_data_source.dart';
 class GenaiKnowledgeBaseDataSource extends pulumi.CustomResource {
   /// UUID of the Knowledge Base
   late final pulumi.Output<String> knowledgeBaseUuid;
-  late final pulumi.Output<GenaiKnowledgeBaseDataSourceSpacesDataSource?>
-  spacesDataSource;
-  late final pulumi.Output<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource?>
-  webCrawlerDataSource;
+  late final pulumi.Output<GenaiKnowledgeBaseDataSourceSpacesDataSource?> spacesDataSource;
+  late final pulumi.Output<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource?> webCrawlerDataSource;
 
   /// Creates a new [GenaiKnowledgeBaseDataSource].
   /// [name] The Pulumi resource name.
@@ -21,34 +19,14 @@ class GenaiKnowledgeBaseDataSource extends pulumi.CustomResource {
     GenaiKnowledgeBaseDataSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
-    spacesDataSource =
-        registerOutput<GenaiKnowledgeBaseDataSourceSpacesDataSource?>(
-          'spacesDataSource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GenaiKnowledgeBaseDataSourceSpacesDataSource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    webCrawlerDataSource =
-        registerOutput<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource?>(
-          'webCrawlerDataSource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    spacesDataSource = registerOutput<GenaiKnowledgeBaseDataSourceSpacesDataSource?>('spacesDataSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GenaiKnowledgeBaseDataSourceSpacesDataSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webCrawlerDataSource = registerOutput<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource?>('webCrawlerDataSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [GenaiKnowledgeBaseDataSource] resource's state with the given [name] and [id].
@@ -69,33 +47,13 @@ class GenaiKnowledgeBaseDataSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
-    spacesDataSource =
-        registerOutput<GenaiKnowledgeBaseDataSourceSpacesDataSource?>(
-          'spacesDataSource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GenaiKnowledgeBaseDataSourceSpacesDataSource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    webCrawlerDataSource =
-        registerOutput<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource?>(
-          'webCrawlerDataSource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    spacesDataSource = registerOutput<GenaiKnowledgeBaseDataSourceSpacesDataSource?>('spacesDataSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GenaiKnowledgeBaseDataSourceSpacesDataSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webCrawlerDataSource = registerOutput<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource?>('webCrawlerDataSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

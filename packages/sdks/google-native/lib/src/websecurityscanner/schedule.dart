@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Schedule {
   /// The duration of time between executions in days.
   final pulumi.Input<int> intervalDurationDays;
-
   /// A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
   final pulumi.Input<String>? scheduleTime;
 
   /// Creates a new [Schedule].
   /// [intervalDurationDays] The duration of time between executions in days.
   /// [scheduleTime] A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
-  Schedule({required this.intervalDurationDays, this.scheduleTime});
+  Schedule({
+    required this.intervalDurationDays,
+    this.scheduleTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,14 +26,9 @@ class Schedule {
 
   factory Schedule.fromMap(Map<String, dynamic> map) {
     return Schedule(
-      intervalDurationDays: pulumi.Input.fromValue(
-        map['intervalDurationDays'] as int,
-      ),
-      scheduleTime: (() {
-        final guardedValue = map['scheduleTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      intervalDurationDays: pulumi.Input.fromValue(map['intervalDurationDays'] as int),
+      scheduleTime: (() { final guardedValue = map['scheduleTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

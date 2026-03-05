@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDefenderForStorageArgs {
   /// The identifier of the resource.
   final pulumi.Input<String> resourceId;
-
   /// Defender for Storage setting name.
   final pulumi.Input<String> settingName;
 
@@ -35,3 +34,4 @@ class GetDefenderForStorageArgs {
     );
   }
 }
+

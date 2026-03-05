@@ -10,12 +10,9 @@ import 'web_region_forwarding_rule_service_iam_member_condition.dart';
 class WebRegionForwardingRuleServiceIamMemberArgs {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  final pulumi.Input<WebRegionForwardingRuleServiceIamMemberCondition>?
-  condition;
-
+  final pulumi.Input<WebRegionForwardingRuleServiceIamMemberCondition>? condition;
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> forwardingRuleRegionServiceName;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -29,16 +26,13 @@ class WebRegionForwardingRuleServiceIamMemberArgs {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   final pulumi.Input<String> member;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
   /// region is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The role that should be applied. Only one
   /// `gcp.iap.WebRegionForwardingRuleServiceIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -62,11 +56,7 @@ class WebRegionForwardingRuleServiceIamMemberArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            WebRegionForwardingRuleServiceIamMemberCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<WebRegionForwardingRuleServiceIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'forwardingRuleRegionServiceName': forwardingRuleRegionServiceName,
       'member': member,
       'project': ?project,
@@ -75,34 +65,15 @@ class WebRegionForwardingRuleServiceIamMemberArgs {
     };
   }
 
-  factory WebRegionForwardingRuleServiceIamMemberArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebRegionForwardingRuleServiceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return WebRegionForwardingRuleServiceIamMemberArgs(
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WebRegionForwardingRuleServiceIamMemberCondition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      forwardingRuleRegionServiceName: pulumi.Input.fromValue(
-        map['forwardingRuleRegionServiceName'] as String,
-      ),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebRegionForwardingRuleServiceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      forwardingRuleRegionServiceName: pulumi.Input.fromValue(map['forwardingRuleRegionServiceName'] as String),
       member: pulumi.Input.fromValue(map['member'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
+

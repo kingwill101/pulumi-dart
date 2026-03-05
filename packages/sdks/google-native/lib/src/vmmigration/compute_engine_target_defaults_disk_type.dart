@@ -14,8 +14,7 @@ enum ComputeEngineTargetDefaultsDiskType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ComputeEngineTargetDefaultsDiskType value: $value',
-    );
+    throw ArgumentError('Unknown ComputeEngineTargetDefaultsDiskType value: $value');
   }
 }
+

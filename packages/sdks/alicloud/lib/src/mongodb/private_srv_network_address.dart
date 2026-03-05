@@ -303,7 +303,6 @@ import 'private_srv_network_address_state.dart';
 class PrivateSrvNetworkAddress extends pulumi.CustomResource {
   /// The instance ID.
   late final pulumi.Output<String> dbInstanceId;
-
   /// Private network SRV highly available connection address
   late final pulumi.Output<String> privateSrvConnectionStringUri;
 
@@ -316,15 +315,13 @@ class PrivateSrvNetworkAddress extends pulumi.CustomResource {
     PrivateSrvNetworkAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbInstanceId = registerOutput<String>('dbInstanceId');
-    privateSrvConnectionStringUri = registerOutput<String>(
-      'privateSrvConnectionStringUri',
-    );
+    privateSrvConnectionStringUri = registerOutput<String>('privateSrvConnectionStringUri');
   }
 
   /// Gets an existing [PrivateSrvNetworkAddress] resource's state with the given [name] and [id].
@@ -345,14 +342,12 @@ class PrivateSrvNetworkAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbInstanceId = registerOutput<String>('dbInstanceId');
-    privateSrvConnectionStringUri = registerOutput<String>(
-      'privateSrvConnectionStringUri',
-    );
+    privateSrvConnectionStringUri = registerOutput<String>('privateSrvConnectionStringUri');
   }
 }

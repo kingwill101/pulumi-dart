@@ -9,19 +9,20 @@ class PyPiRepositoryConfig {
 
   /// Creates a new [PyPiRepositoryConfig].
   /// [pypiRepository] Optional. PyPi repository address
-  PyPiRepositoryConfig({this.pypiRepository});
+  PyPiRepositoryConfig({
+    this.pypiRepository,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pypiRepository': ?pypiRepository};
+    return <String, dynamic>{
+      'pypiRepository': ?pypiRepository,
+    };
   }
 
   factory PyPiRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return PyPiRepositoryConfig(
-      pypiRepository: (() {
-        final guardedValue = map['pypiRepository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pypiRepository: (() { final guardedValue = map['pypiRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

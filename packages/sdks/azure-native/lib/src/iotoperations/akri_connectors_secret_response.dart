@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AkriConnectorsSecretResponse {
   /// The application-defined alias for the secret.
   final pulumi.Input<String> secretAlias;
-
   /// The key in the secret to be mounted.
   final pulumi.Input<String> secretKey;
-
   /// The name of the secret to be mounted.
   final pulumi.Input<String> secretRef;
 
@@ -39,3 +37,4 @@ class AkriConnectorsSecretResponse {
     );
   }
 }
+

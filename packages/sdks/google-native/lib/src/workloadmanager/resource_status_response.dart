@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceStatusResponse {
   /// Historical: Used before 2023-05-22 the new version of rule id if exists
   final pulumi.Input<List<String>> rulesNewerVersions;
-
   /// State of the resource
   final pulumi.Input<String> state;
 
@@ -27,10 +26,9 @@ class ResourceStatusResponse {
 
   factory ResourceStatusResponse.fromMap(Map<String, dynamic> map) {
     return ResourceStatusResponse(
-      rulesNewerVersions: pulumi.Input.fromValue(
-        (map['rulesNewerVersions'] as List).cast<String>(),
-      ),
+      rulesNewerVersions: pulumi.Input.fromValue((map['rulesNewerVersions'] as List).cast<String>()),
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

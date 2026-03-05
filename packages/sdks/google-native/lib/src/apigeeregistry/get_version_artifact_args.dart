@@ -42,12 +42,9 @@ class GetVersionArtifactArgs {
       apiId: pulumi.Input.fromValue(map['apiId'] as String),
       artifactId: pulumi.Input.fromValue(map['artifactId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );
   }
 }
+

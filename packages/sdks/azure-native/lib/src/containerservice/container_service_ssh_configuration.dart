@@ -10,35 +10,20 @@ class ContainerServiceSshConfiguration {
 
   /// Creates a new [ContainerServiceSshConfiguration].
   /// [publicKeys] The list of SSH public keys used to authenticate with Linux-based VMs. A maximum of 1 key may be specified.
-  ContainerServiceSshConfiguration({required this.publicKeys});
+  ContainerServiceSshConfiguration({
+    required this.publicKeys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicKeys':
-          pulumi.Input.mapInputValue<
-            List<ContainerServiceSshPublicKey>,
-            List<Map<String, dynamic>>
-          >(
-            publicKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ContainerServiceSshPublicKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'publicKeys': pulumi.Input.mapInputValue<List<ContainerServiceSshPublicKey>, List<Map<String, dynamic>>>(publicKeys, (value) => pulumi.Input.encodeList<ContainerServiceSshPublicKey, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ContainerServiceSshConfiguration.fromMap(Map<String, dynamic> map) {
     return ContainerServiceSshConfiguration(
-      publicKeys: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ContainerServiceSshPublicKey>(
-          map['publicKeys']!,
-          (value) => ContainerServiceSshPublicKey.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      publicKeys: pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerServiceSshPublicKey>(map['publicKeys']!, (value) => ContainerServiceSshPublicKey.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

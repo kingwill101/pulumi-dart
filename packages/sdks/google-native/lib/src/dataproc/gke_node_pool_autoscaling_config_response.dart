@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GkeNodePoolAutoscalingConfigResponse {
   /// The maximum number of nodes in the node pool. Must be &gt;= min_node_count, and must be &gt; 0. Note: Quota must be sufficient to scale up the cluster.
   final pulumi.Input<int> maxNodeCount;
-
   /// The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= max_node_count.
   final pulumi.Input<int> minNodeCount;
 
@@ -25,12 +24,11 @@ class GkeNodePoolAutoscalingConfigResponse {
     };
   }
 
-  factory GkeNodePoolAutoscalingConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GkeNodePoolAutoscalingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GkeNodePoolAutoscalingConfigResponse(
       maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
       minNodeCount: pulumi.Input.fromValue(map['minNodeCount'] as int),
     );
   }
 }
+

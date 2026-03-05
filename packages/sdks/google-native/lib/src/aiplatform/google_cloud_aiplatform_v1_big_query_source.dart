@@ -9,17 +9,20 @@ class GoogleCloudAiplatformV1BigQuerySource {
 
   /// Creates a new [GoogleCloudAiplatformV1BigQuerySource].
   /// [inputUri] BigQuery URI to a table, up to 2000 characters long. Accepted forms: * BigQuery path. For example: `bq://projectId.bqDatasetId.bqTableId`.
-  GoogleCloudAiplatformV1BigQuerySource({required this.inputUri});
+  GoogleCloudAiplatformV1BigQuerySource({
+    required this.inputUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'inputUri': inputUri};
+    return <String, dynamic>{
+      'inputUri': inputUri,
+    };
   }
 
-  factory GoogleCloudAiplatformV1BigQuerySource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1BigQuerySource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1BigQuerySource(
       inputUri: pulumi.Input.fromValue(map['inputUri'] as String),
     );
   }
 }
+

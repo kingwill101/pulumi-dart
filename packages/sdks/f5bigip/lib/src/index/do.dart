@@ -6,27 +6,20 @@ class Do extends pulumi.CustomResource {
   /// IP Address of BIGIP Host to be used for this resource,this is optional parameter.
   /// whenever we specify this parameter it gets overwrite provider configuration
   late final pulumi.Output<String?> bigipAddress;
-
   /// Password of  BIGIP host to be used for this resource
   late final pulumi.Output<String?> bigipPassword;
-
   /// Port number of BIGIP host to be used for this resource,this is optional parameter.
   /// whenever we specify this parameter it gets overwrite provider configuration
   late final pulumi.Output<String?> bigipPort;
-
   /// Enable to use an external authentication source (LDAP, TACACS, etc)
   late final pulumi.Output<bool?> bigipTokenAuth;
-
   /// UserName of BIGIP host to be used for this resource,this is optional parameter.
   /// whenever we specify this parameter it gets overwrite provider configuration
   late final pulumi.Output<String?> bigipUser;
-
   /// Name of the of the Declarative DO JSON file
   late final pulumi.Output<String> doJson;
-
   /// unique identifier for DO resource
   late final pulumi.Output<String?> tenantName;
-
   /// DO json
   late final pulumi.Output<int?> timeout;
 
@@ -34,13 +27,16 @@ class Do extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Do]. {@macro pulumi_index_do_do_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Do(String name, {DoArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'f5bigip:index/do:Do',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Do(
+    String name, {
+    DoArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'f5bigip:index/do:Do',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bigipAddress = registerOutput<String?>('bigipAddress');
     bigipPassword = registerOutput<String?>('bigipPassword');
     bigipPort = registerOutput<String?>('bigipPort');
@@ -52,7 +48,11 @@ class Do extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Do] resource's state with the given [name] and [id].
-  static Do get(String name, pulumi.Input<String> id, {DoState? state}) {
+  static Do get(
+    String name,
+    pulumi.Input<String> id, {
+    DoState? state,
+  }) {
     return Do._get(
       name,
       state: state?.toMap(),
@@ -65,11 +65,11 @@ class Do extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/do:Do',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/do:Do',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bigipAddress = registerOutput<String?>('bigipAddress');
     bigipPassword = registerOutput<String?>('bigipPassword');
     bigipPort = registerOutput<String?>('bigipPort');

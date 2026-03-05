@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCollectionRuleArgs {
   /// Specifies the name of the Data Collection Rule.
   final pulumi.Input<String> name;
-
   /// Specifies the name of the resource group the Data Collection Rule is located in.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetDataCollectionRuleArgs {
   factory GetDataCollectionRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

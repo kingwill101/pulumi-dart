@@ -11,10 +11,14 @@ class GetOrganizationArgs {
 
   /// Creates a new [GetOrganizationArgs].
   /// [organizationId] Required.
-  GetOrganizationArgs({required this.organizationId});
+  GetOrganizationArgs({
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'organizationId': organizationId};
+    return <String, dynamic>{
+      'organizationId': organizationId,
+    };
   }
 
   factory GetOrganizationArgs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetOrganizationArgs {
     );
   }
 }
+

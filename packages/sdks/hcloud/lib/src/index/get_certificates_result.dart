@@ -7,7 +7,6 @@ import 'get_certificates_certificate.dart';
 class GetCertificatesResult {
   /// (list) List of all matching certificates. See `data.hcloud_certificate` for schema.
   final List<GetCertificatesCertificate> certificates;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? withSelector;
@@ -24,11 +23,7 @@ class GetCertificatesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificates':
-          pulumi.Input.encodeList<
-            GetCertificatesCertificate,
-            Map<String, dynamic>
-          >(certificates, (value) => value.toMap()),
+      'certificates': pulumi.Input.encodeList<GetCertificatesCertificate, Map<String, dynamic>>(certificates, (value) => value.toMap()),
       'id': id,
       'withSelector': ?withSelector,
     };
@@ -36,18 +31,10 @@ class GetCertificatesResult {
 
   factory GetCertificatesResult.fromMap(Map<String, dynamic> map) {
     return GetCertificatesResult(
-      certificates: pulumi.Input.decodeList<GetCertificatesCertificate>(
-        map['certificates']!,
-        (value) => GetCertificatesCertificate.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      certificates: pulumi.Input.decodeList<GetCertificatesCertificate>(map['certificates']!, (value) => GetCertificatesCertificate.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      withSelector: (() {
-        final guardedValue = map['withSelector'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

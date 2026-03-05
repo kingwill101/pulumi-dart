@@ -31,15 +31,10 @@ class GetDefaultSupportedIdpConfigArgs {
 
   factory GetDefaultSupportedIdpConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetDefaultSupportedIdpConfigArgs(
-      defaultSupportedIdpConfigId: pulumi.Input.fromValue(
-        map['defaultSupportedIdpConfigId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      defaultSupportedIdpConfigId: pulumi.Input.fromValue(map['defaultSupportedIdpConfigId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
+

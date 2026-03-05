@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallIpConfiguration {
   /// Specifies the name of the IP Configuration.
   final pulumi.Input<String> name;
-
   /// The private IP address associated with the Firewall.
   final pulumi.Input<String>? privateIpAddress;
-
   /// The ID of the Public IP Address associated with the firewall.
   ///
   /// &gt; **Note:** A public ip address is required unless a `management_ip_configuration` block is specified.
@@ -17,7 +15,6 @@ class FirewallIpConfiguration {
   ///
   /// &gt; **Note:** The Public IP must have a `Static` allocation and `Standard` SKU.
   final pulumi.Input<String>? publicIpAddressId;
-
   /// Reference to the subnet associated with the IP Configuration. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The Subnet used for the Firewall must have the name `AzureFirewallSubnet` and the subnet mask must be at least a `/26`.
@@ -49,21 +46,10 @@ class FirewallIpConfiguration {
   factory FirewallIpConfiguration.fromMap(Map<String, dynamic> map) {
     return FirewallIpConfiguration(
       name: pulumi.Input.fromValue(map['name'] as String),
-      privateIpAddress: (() {
-        final guardedValue = map['privateIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicIpAddressId: (() {
-        final guardedValue = map['publicIpAddressId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetId: (() {
-        final guardedValue = map['subnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicIpAddressId: (() { final guardedValue = map['publicIpAddressId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

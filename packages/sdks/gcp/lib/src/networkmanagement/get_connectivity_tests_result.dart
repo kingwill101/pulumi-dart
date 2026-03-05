@@ -8,10 +8,8 @@ class GetConnectivityTestsResult {
   /// A list of connectivity tests in the selected project matching the filter. Structure is defined below.
   final List<GetConnectivityTestsConnectivityTest> connectivityTests;
   final String? filter;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The ID of the project in which the resource belongs.
   final String project;
 
@@ -29,11 +27,7 @@ class GetConnectivityTestsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectivityTests':
-          pulumi.Input.encodeList<
-            GetConnectivityTestsConnectivityTest,
-            Map<String, dynamic>
-          >(connectivityTests, (value) => value.toMap()),
+      'connectivityTests': pulumi.Input.encodeList<GetConnectivityTestsConnectivityTest, Map<String, dynamic>>(connectivityTests, (value) => value.toMap()),
       'filter': ?filter,
       'id': id,
       'project': project,
@@ -42,20 +36,11 @@ class GetConnectivityTestsResult {
 
   factory GetConnectivityTestsResult.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestsResult(
-      connectivityTests:
-          pulumi.Input.decodeList<GetConnectivityTestsConnectivityTest>(
-            map['connectivityTests']!,
-            (value) => GetConnectivityTestsConnectivityTest.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      connectivityTests: pulumi.Input.decodeList<GetConnectivityTestsConnectivityTest>(map['connectivityTests']!, (value) => GetConnectivityTestsConnectivityTest.fromMap((value as Map).cast<String, dynamic>())),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       project: map['project'] as String,
     );
   }
 }
+

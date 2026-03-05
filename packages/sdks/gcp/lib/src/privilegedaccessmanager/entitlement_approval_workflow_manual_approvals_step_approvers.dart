@@ -13,16 +13,15 @@ class EntitlementApprovalWorkflowManualApprovalsStepApprovers {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'principals': principals};
+    return <String, dynamic>{
+      'principals': principals,
+    };
   }
 
-  factory EntitlementApprovalWorkflowManualApprovalsStepApprovers.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EntitlementApprovalWorkflowManualApprovalsStepApprovers.fromMap(Map<String, dynamic> map) {
     return EntitlementApprovalWorkflowManualApprovalsStepApprovers(
-      principals: pulumi.Input.fromValue(
-        (map['principals'] as List).cast<String>(),
-      ),
+      principals: pulumi.Input.fromValue((map['principals'] as List).cast<String>()),
     );
   }
 }
+

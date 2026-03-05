@@ -23,11 +23,11 @@ class TemplateService extends pulumi.CustomResource {
     TemplateServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:quotas/templateService:TemplateService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:quotas/templateService:TemplateService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     serviceStatus = registerOutput<int>('serviceStatus');
   }
 
@@ -49,11 +49,11 @@ class TemplateService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:quotas/templateService:TemplateService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:quotas/templateService:TemplateService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     serviceStatus = registerOutput<int>('serviceStatus');
   }
 }

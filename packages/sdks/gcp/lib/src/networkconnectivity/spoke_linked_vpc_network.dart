@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpokeLinkedVpcNetwork {
   /// IP ranges encompassing the subnets to be excluded from peering.
   final pulumi.Input<List<String>>? excludeExportRanges;
-
   /// IP ranges allowed to be included from peering.
   final pulumi.Input<List<String>>? includeExportRanges;
-
   /// The URI of the VPC network resource.
   final pulumi.Input<String> uri;
 
@@ -32,17 +30,10 @@ class SpokeLinkedVpcNetwork {
 
   factory SpokeLinkedVpcNetwork.fromMap(Map<String, dynamic> map) {
     return SpokeLinkedVpcNetwork(
-      excludeExportRanges: (() {
-        final guardedValue = map['excludeExportRanges'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      includeExportRanges: (() {
-        final guardedValue = map['includeExportRanges'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      excludeExportRanges: (() { final guardedValue = map['excludeExportRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      includeExportRanges: (() { final guardedValue = map['includeExportRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

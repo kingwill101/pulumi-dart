@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParamKindPatch {
   /// APIVersion is the API group version the resources belong to. In format of "group/version". Required.
   final pulumi.Input<String>? apiVersion;
-
   /// Kind is the API kind the resources belong to. Required.
   final pulumi.Input<String>? kind;
 
   /// Creates a new [ParamKindPatch].
   /// [apiVersion] APIVersion is the API group version the resources belong to. In format of "group/version". Required.
   /// [kind] Kind is the API kind the resources belong to. Required.
-  ParamKindPatch({this.apiVersion, this.kind});
+  ParamKindPatch({
+    this.apiVersion,
+    this.kind,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'apiVersion': ?apiVersion, 'kind': ?kind};
+    return <String, dynamic>{
+      'apiVersion': ?apiVersion,
+      'kind': ?kind,
+    };
   }
 
   factory ParamKindPatch.fromMap(Map<String, dynamic> map) {
     return ParamKindPatch(
-      apiVersion: (() {
-        final guardedValue = map['apiVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

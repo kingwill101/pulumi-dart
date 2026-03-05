@@ -9,61 +9,38 @@ import 'get_genai_agent_versions_agent_version_attached_knowledge_base.dart';
 class GetGenaiAgentVersionsAgentVersion {
   /// ID of the Agent to retrieve versions for
   final pulumi.Input<String> agentUuid;
-
   /// List of child agents attached to this version
-  final pulumi.Input<List<GetGenaiAgentVersionsAgentVersionAttachedChildAgent>>
-  attachedChildAgents;
-
+  final pulumi.Input<List<GetGenaiAgentVersionsAgentVersionAttachedChildAgent>> attachedChildAgents;
   /// List of functions attached to this version
-  final pulumi.Input<List<GetGenaiAgentVersionsAgentVersionAttachedFunction>>
-  attachedFunctions;
-
+  final pulumi.Input<List<GetGenaiAgentVersionsAgentVersionAttachedFunction>> attachedFunctions;
   /// List of guardrails attached to this version
-  final pulumi.Input<List<GetGenaiAgentVersionsAgentVersionAttachedGuardrail>>
-  attachedGuardrails;
-
+  final pulumi.Input<List<GetGenaiAgentVersionsAgentVersionAttachedGuardrail>> attachedGuardrails;
   /// List of Knowledge Bases agent versions
-  final pulumi.Input<
-    List<GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase>
-  >
-  attachedKnowledgeBases;
-
+  final pulumi.Input<List<GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase>> attachedKnowledgeBases;
   /// Indicates if the version can be rolled back
   final pulumi.Input<bool> canRollback;
-
   /// Timestamp when the Agent Version was created
   final pulumi.Input<String> createdAt;
-
   /// Email of the user who created this version
   final pulumi.Input<String> createdByEmail;
-
   /// Indicates if this version is currently applied configuration
   final pulumi.Input<bool> currentlyApplied;
-
   /// Description of the Agent Version
   final pulumi.Input<String> description;
-
   /// Id of the Agent Version
   final pulumi.Input<String> id;
-
   /// Instruction for the Agent Version
   final pulumi.Input<String> instruction;
-
   /// K value for the Agent Version
   final pulumi.Input<int> k;
-
   /// Maximum tokens allowed for the Agent
   final pulumi.Input<int> maxTokens;
-
   /// Name of model associated to the agent version
   final pulumi.Input<String> modelName;
-
   /// Name of the Agent
   final pulumi.Input<String> name;
-
   /// Indicates if the should provide in-response citations
   final pulumi.Input<bool> provideCitations;
-
   /// Retrieval method used.
   /// - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
   /// - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
@@ -71,19 +48,14 @@ class GetGenaiAgentVersionsAgentVersion {
   /// - RETRIEVAL_METHOD_SUB_QUERIES: The retrieval method is sub queries
   /// - RETRIEVAL_METHOD_NONE: The retrieval method is none.
   final pulumi.Input<String> retrievalMethod;
-
   /// List of Tags
   final pulumi.Input<List<String>> tags;
-
   /// Temperature setting for the Agent Version
   final pulumi.Input<double> temperature;
-
   /// Top P sampling parameter for the Agent Version
   final pulumi.Input<double> topP;
-
   /// Trigger action for the Agent Version
   final pulumi.Input<String> triggerAction;
-
   /// Hash of the Agent Version
   final pulumi.Input<String> versionHash;
 
@@ -140,54 +112,10 @@ class GetGenaiAgentVersionsAgentVersion {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agentUuid': agentUuid,
-      'attachedChildAgents':
-          pulumi.Input.mapInputValue<
-            List<GetGenaiAgentVersionsAgentVersionAttachedChildAgent>,
-            List<Map<String, dynamic>>
-          >(
-            attachedChildAgents,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetGenaiAgentVersionsAgentVersionAttachedChildAgent,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'attachedFunctions':
-          pulumi.Input.mapInputValue<
-            List<GetGenaiAgentVersionsAgentVersionAttachedFunction>,
-            List<Map<String, dynamic>>
-          >(
-            attachedFunctions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetGenaiAgentVersionsAgentVersionAttachedFunction,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'attachedGuardrails':
-          pulumi.Input.mapInputValue<
-            List<GetGenaiAgentVersionsAgentVersionAttachedGuardrail>,
-            List<Map<String, dynamic>>
-          >(
-            attachedGuardrails,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetGenaiAgentVersionsAgentVersionAttachedGuardrail,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'attachedKnowledgeBases':
-          pulumi.Input.mapInputValue<
-            List<GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase>,
-            List<Map<String, dynamic>>
-          >(
-            attachedKnowledgeBases,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'attachedChildAgents': pulumi.Input.mapInputValue<List<GetGenaiAgentVersionsAgentVersionAttachedChildAgent>, List<Map<String, dynamic>>>(attachedChildAgents, (value) => pulumi.Input.encodeList<GetGenaiAgentVersionsAgentVersionAttachedChildAgent, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attachedFunctions': pulumi.Input.mapInputValue<List<GetGenaiAgentVersionsAgentVersionAttachedFunction>, List<Map<String, dynamic>>>(attachedFunctions, (value) => pulumi.Input.encodeList<GetGenaiAgentVersionsAgentVersionAttachedFunction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attachedGuardrails': pulumi.Input.mapInputValue<List<GetGenaiAgentVersionsAgentVersionAttachedGuardrail>, List<Map<String, dynamic>>>(attachedGuardrails, (value) => pulumi.Input.encodeList<GetGenaiAgentVersionsAgentVersionAttachedGuardrail, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attachedKnowledgeBases': pulumi.Input.mapInputValue<List<GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase>, List<Map<String, dynamic>>>(attachedKnowledgeBases, (value) => pulumi.Input.encodeList<GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase, Map<String, dynamic>>(value, (value) => value.toMap())),
       'canRollback': canRollback,
       'createdAt': createdAt,
       'createdByEmail': createdByEmail,
@@ -212,48 +140,10 @@ class GetGenaiAgentVersionsAgentVersion {
   factory GetGenaiAgentVersionsAgentVersion.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentVersionsAgentVersion(
       agentUuid: pulumi.Input.fromValue(map['agentUuid'] as String),
-      attachedChildAgents: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetGenaiAgentVersionsAgentVersionAttachedChildAgent
-        >(
-          map['attachedChildAgents']!,
-          (value) =>
-              GetGenaiAgentVersionsAgentVersionAttachedChildAgent.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      attachedFunctions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetGenaiAgentVersionsAgentVersionAttachedFunction
-        >(
-          map['attachedFunctions']!,
-          (value) => GetGenaiAgentVersionsAgentVersionAttachedFunction.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      attachedGuardrails: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetGenaiAgentVersionsAgentVersionAttachedGuardrail
-        >(
-          map['attachedGuardrails']!,
-          (value) => GetGenaiAgentVersionsAgentVersionAttachedGuardrail.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      attachedKnowledgeBases: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase
-        >(
-          map['attachedKnowledgeBases']!,
-          (value) =>
-              GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      attachedChildAgents: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGenaiAgentVersionsAgentVersionAttachedChildAgent>(map['attachedChildAgents']!, (value) => GetGenaiAgentVersionsAgentVersionAttachedChildAgent.fromMap((value as Map).cast<String, dynamic>()))),
+      attachedFunctions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGenaiAgentVersionsAgentVersionAttachedFunction>(map['attachedFunctions']!, (value) => GetGenaiAgentVersionsAgentVersionAttachedFunction.fromMap((value as Map).cast<String, dynamic>()))),
+      attachedGuardrails: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGenaiAgentVersionsAgentVersionAttachedGuardrail>(map['attachedGuardrails']!, (value) => GetGenaiAgentVersionsAgentVersionAttachedGuardrail.fromMap((value as Map).cast<String, dynamic>()))),
+      attachedKnowledgeBases: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase>(map['attachedKnowledgeBases']!, (value) => GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase.fromMap((value as Map).cast<String, dynamic>()))),
       canRollback: pulumi.Input.fromValue(map['canRollback'] as bool),
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
       createdByEmail: pulumi.Input.fromValue(map['createdByEmail'] as String),
@@ -275,3 +165,4 @@ class GetGenaiAgentVersionsAgentVersion {
     );
   }
 }
+

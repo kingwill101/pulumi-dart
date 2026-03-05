@@ -218,23 +218,16 @@ import 'system_data_response.dart';
 class ConfigurationProfile extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The identity block returned by ARM resource that supports managed identity.
   late final pulumi.Output<ResourceIdentityResponse?> identity;
-
   /// The location where the resource is to be deployed.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The properties of a configuration profile.
-  late final pulumi.Output<ConfigurationProfileResourcePropertiesResponse>
-  properties;
-
+  late final pulumi.Output<ConfigurationProfileResourcePropertiesResponse> properties;
   /// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
   late final pulumi.Output<SystemDataResponse?> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -247,44 +240,17 @@ class ConfigurationProfile extends pulumi.CustomResource {
     ConfigurationProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:changeanalysis:ConfigurationProfile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:changeanalysis:ConfigurationProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    identity = registerOutput<ResourceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ConfigurationProfileResourcePropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConfigurationProfileResourcePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse?>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ConfigurationProfileResourcePropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationProfileResourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse?>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LabNetworkProfileResponse {
   /// The external load balancer resource id
   final pulumi.Input<String>? loadBalancerId;
-
   /// The external public IP resource id
   final pulumi.Input<String>? publicIpId;
-
   /// The external subnet resource id
   final pulumi.Input<String>? subnetId;
 
@@ -33,21 +31,10 @@ class LabNetworkProfileResponse {
 
   factory LabNetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return LabNetworkProfileResponse(
-      loadBalancerId: (() {
-        final guardedValue = map['loadBalancerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicIpId: (() {
-        final guardedValue = map['publicIpId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetId: (() {
-        final guardedValue = map['subnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      loadBalancerId: (() { final guardedValue = map['loadBalancerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicIpId: (() { final guardedValue = map['publicIpId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

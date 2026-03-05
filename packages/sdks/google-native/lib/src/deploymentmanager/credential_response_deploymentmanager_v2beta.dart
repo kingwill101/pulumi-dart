@@ -8,11 +8,8 @@ import 'service_account_response_deploymentmanager_v2beta.dart';
 class CredentialResponseDeploymentmanagerV2beta {
   /// Basic Auth Credential, only used by TypeProvider.
   final pulumi.Input<BasicAuthResponseDeploymentmanagerV2beta> basicAuth;
-
   /// Service Account Credential, only used by Deployment.
-  final pulumi.Input<ServiceAccountResponseDeploymentmanagerV2beta>
-  serviceAccount;
-
+  final pulumi.Input<ServiceAccountResponseDeploymentmanagerV2beta> serviceAccount;
   /// Specify to use the project default credential, only supported by Deployment.
   final pulumi.Input<bool> useProjectDefault;
 
@@ -28,37 +25,18 @@ class CredentialResponseDeploymentmanagerV2beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicAuth':
-          pulumi.Input.mapInputValue<
-            BasicAuthResponseDeploymentmanagerV2beta,
-            Map<String, dynamic>
-          >(basicAuth, (value) => value.toMap()),
-      'serviceAccount':
-          pulumi.Input.mapInputValue<
-            ServiceAccountResponseDeploymentmanagerV2beta,
-            Map<String, dynamic>
-          >(serviceAccount, (value) => value.toMap()),
+      'basicAuth': pulumi.Input.mapInputValue<BasicAuthResponseDeploymentmanagerV2beta, Map<String, dynamic>>(basicAuth, (value) => value.toMap()),
+      'serviceAccount': pulumi.Input.mapInputValue<ServiceAccountResponseDeploymentmanagerV2beta, Map<String, dynamic>>(serviceAccount, (value) => value.toMap()),
       'useProjectDefault': useProjectDefault,
     };
   }
 
-  factory CredentialResponseDeploymentmanagerV2beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CredentialResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return CredentialResponseDeploymentmanagerV2beta(
-      basicAuth: pulumi.Input.fromValue(
-        BasicAuthResponseDeploymentmanagerV2beta.fromMap(
-          (map['basicAuth']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      serviceAccount: pulumi.Input.fromValue(
-        ServiceAccountResponseDeploymentmanagerV2beta.fromMap(
-          (map['serviceAccount']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      useProjectDefault: pulumi.Input.fromValue(
-        map['useProjectDefault'] as bool,
-      ),
+      basicAuth: pulumi.Input.fromValue(BasicAuthResponseDeploymentmanagerV2beta.fromMap((map['basicAuth']! as Map).cast<String, dynamic>())),
+      serviceAccount: pulumi.Input.fromValue(ServiceAccountResponseDeploymentmanagerV2beta.fromMap((map['serviceAccount']! as Map).cast<String, dynamic>())),
+      useProjectDefault: pulumi.Input.fromValue(map['useProjectDefault'] as bool),
     );
   }
 }
+

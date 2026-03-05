@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OtherManagementCostsSettingsResponse {
   /// Data Protection Cost Per Server Per Year.
   final pulumi.Input<double> dataProtectionCostPerServerPerYear;
-
   /// Monitoring Cost Per Server Per Year.
   final pulumi.Input<double> monitoringCostPerServerPerYear;
-
   /// Patching Cost Per Server Per Year.
   final pulumi.Input<double> patchingCostPerServerPerYear;
 
@@ -31,19 +29,12 @@ class OtherManagementCostsSettingsResponse {
     };
   }
 
-  factory OtherManagementCostsSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OtherManagementCostsSettingsResponse.fromMap(Map<String, dynamic> map) {
     return OtherManagementCostsSettingsResponse(
-      dataProtectionCostPerServerPerYear: pulumi.Input.fromValue(
-        map['dataProtectionCostPerServerPerYear'] as double,
-      ),
-      monitoringCostPerServerPerYear: pulumi.Input.fromValue(
-        map['monitoringCostPerServerPerYear'] as double,
-      ),
-      patchingCostPerServerPerYear: pulumi.Input.fromValue(
-        map['patchingCostPerServerPerYear'] as double,
-      ),
+      dataProtectionCostPerServerPerYear: pulumi.Input.fromValue(map['dataProtectionCostPerServerPerYear'] as double),
+      monitoringCostPerServerPerYear: pulumi.Input.fromValue(map['monitoringCostPerServerPerYear'] as double),
+      patchingCostPerServerPerYear: pulumi.Input.fromValue(map['patchingCostPerServerPerYear'] as double),
     );
   }
 }
+

@@ -14,14 +14,15 @@ class GcePersistentDiskCsiDriverConfigResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GcePersistentDiskCsiDriverConfigResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GcePersistentDiskCsiDriverConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return GcePersistentDiskCsiDriverConfigResponseContainerV1beta1(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

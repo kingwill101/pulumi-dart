@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProductPortfolioAssociationArgs {
   /// Product Portfolio ID
   final pulumi.Input<String> portfolioId;
-
   /// Product ID
   final pulumi.Input<String> productId;
 
@@ -35,3 +34,4 @@ class ProductPortfolioAssociationArgs {
     );
   }
 }
+

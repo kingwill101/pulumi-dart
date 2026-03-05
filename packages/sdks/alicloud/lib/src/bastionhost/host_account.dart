@@ -413,25 +413,18 @@ import 'host_account_state.dart';
 class HostAccount extends pulumi.CustomResource {
   /// Hosting account ID.
   late final pulumi.Output<String> hostAccountId;
-
   /// The name of the host account. The name can be up to 128 characters in length.
   late final pulumi.Output<String> hostAccountName;
-
   /// The ID of the host for which you want to create an account.
   late final pulumi.Output<String> hostId;
-
   /// The ID of the Bastionhost instance where you want to create an account for the host.
   late final pulumi.Output<String> instanceId;
-
   /// The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
   late final pulumi.Output<String?> passPhrase;
-
   /// The password of the host account.
   late final pulumi.Output<String?> password;
-
   /// The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
   late final pulumi.Output<String?> privateKey;
-
   /// The protocol used by the host account. Valid values: SSH,RDP
   late final pulumi.Output<String> protocolName;
 
@@ -444,11 +437,11 @@ class HostAccount extends pulumi.CustomResource {
     HostAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:bastionhost/hostAccount:HostAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:bastionhost/hostAccount:HostAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hostAccountId = registerOutput<String>('hostAccountId');
     hostAccountName = registerOutput<String>('hostAccountName');
     hostId = registerOutput<String>('hostId');
@@ -477,11 +470,11 @@ class HostAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:bastionhost/hostAccount:HostAccount',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:bastionhost/hostAccount:HostAccount',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hostAccountId = registerOutput<String>('hostAccountId');
     hostAccountName = registerOutput<String>('hostAccountName');
     hostId = registerOutput<String>('hostId');

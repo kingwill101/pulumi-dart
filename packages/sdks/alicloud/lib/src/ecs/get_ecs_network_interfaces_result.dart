@@ -8,49 +8,35 @@ class GetEcsNetworkInterfacesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
-
   /// The instance id.
   final String? instanceId;
-
   /// A list of Ecs Network Interfaces. Each element contains the following attributes:
   final List<GetEcsNetworkInterfacesInterface> interfaces;
-
   /// The network interface name.
   final String? name;
   final String? nameRegex;
-
   /// A list of Network Interface names.
   final List<String> names;
-
   /// The network interface name.
   final String? networkInterfaceName;
   final String? outputFile;
-
   /// The primary private IP address of the ENI.
   final String? primaryIpAddress;
-
   /// The primary private IP address of the ENI.
   final String? privateIp;
-
   /// The resource group id.
   final String? resourceGroupId;
   final String? securityGroupId;
-
   /// Whether the user of the elastic network card is a cloud product or a virtual vendor.
   final bool? serviceManaged;
-
   /// The status of the ENI.
   final String? status;
-
   /// The tags.
   final Map<String, String>? tags;
-
   /// The type of the ENI.
   final String? type;
-
   /// The Vpc Id.
   final String? vpcId;
-
   /// The vswitch id.
   final String? vswitchId;
 
@@ -101,11 +87,7 @@ class GetEcsNetworkInterfacesResult {
       'id': id,
       'ids': ids,
       'instanceId': ?instanceId,
-      'interfaces':
-          pulumi.Input.encodeList<
-            GetEcsNetworkInterfacesInterface,
-            Map<String, dynamic>
-          >(interfaces, (value) => value.toMap()),
+      'interfaces': pulumi.Input.encodeList<GetEcsNetworkInterfacesInterface, Map<String, dynamic>>(interfaces, (value) => value.toMap()),
       'name': ?name,
       'nameRegex': ?nameRegex,
       'names': names,
@@ -128,88 +110,24 @@ class GetEcsNetworkInterfacesResult {
     return GetEcsNetworkInterfacesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      interfaces: pulumi.Input.decodeList<GetEcsNetworkInterfacesInterface>(
-        map['interfaces']!,
-        (value) => GetEcsNetworkInterfacesInterface.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      interfaces: pulumi.Input.decodeList<GetEcsNetworkInterfacesInterface>(map['interfaces']!, (value) => GetEcsNetworkInterfacesInterface.fromMap((value as Map).cast<String, dynamic>())),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      networkInterfaceName: (() {
-        final guardedValue = map['networkInterfaceName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      primaryIpAddress: (() {
-        final guardedValue = map['primaryIpAddress'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      privateIp: (() {
-        final guardedValue = map['privateIp'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      securityGroupId: (() {
-        final guardedValue = map['securityGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      serviceManaged: (() {
-        final guardedValue = map['serviceManaged'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vswitchId: (() {
-        final guardedValue = map['vswitchId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      networkInterfaceName: (() { final guardedValue = map['networkInterfaceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      primaryIpAddress: (() { final guardedValue = map['primaryIpAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateIp: (() { final guardedValue = map['privateIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      securityGroupId: (() { final guardedValue = map['securityGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceManaged: (() { final guardedValue = map['serviceManaged']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vswitchId: (() { final guardedValue = map['vswitchId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

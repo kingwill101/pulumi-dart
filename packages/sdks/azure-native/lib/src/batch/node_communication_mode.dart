@@ -16,3 +16,4 @@ enum NodeCommunicationMode {
     throw ArgumentError('Unknown NodeCommunicationMode value: $value');
   }
 }
+

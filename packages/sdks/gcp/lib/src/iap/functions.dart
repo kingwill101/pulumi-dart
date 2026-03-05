@@ -1081,8 +1081,7 @@ Future<GetWebCloudRunServiceIamPolicyResult> getWebCloudRunServiceIamPolicy(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_iap_get_web_forwarding_rule_service_iam_policy_get_web_forwarding_rule_service_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebForwardingRuleServiceIamPolicyResult>
-getWebForwardingRuleServiceIamPolicy(
+Future<GetWebForwardingRuleServiceIamPolicyResult> getWebForwardingRuleServiceIamPolicy(
   GetWebForwardingRuleServiceIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1306,8 +1305,7 @@ Future<GetWebIamPolicyResult> getWebIamPolicy(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_iap_get_web_region_backend_service_iam_policy_get_web_region_backend_service_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebRegionBackendServiceIamPolicyResult>
-getWebRegionBackendServiceIamPolicy(
+Future<GetWebRegionBackendServiceIamPolicyResult> getWebRegionBackendServiceIamPolicy(
   GetWebRegionBackendServiceIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1425,8 +1423,7 @@ getWebRegionBackendServiceIamPolicy(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_iap_get_web_region_forwarding_rule_service_iam_policy_get_web_region_forwarding_rule_service_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebRegionForwardingRuleServiceIamPolicyResult>
-getWebRegionForwardingRuleServiceIamPolicy(
+Future<GetWebRegionForwardingRuleServiceIamPolicyResult> getWebRegionForwardingRuleServiceIamPolicy(
   GetWebRegionForwardingRuleServiceIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

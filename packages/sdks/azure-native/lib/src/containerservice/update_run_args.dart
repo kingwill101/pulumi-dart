@@ -11,21 +11,16 @@ import 'update_run_strategy.dart';
 class UpdateRunArgs {
   /// The name of the Fleet resource.
   final pulumi.Input<String> fleetName;
-
   /// The update to be applied to all clusters in the UpdateRun. The managedClusterUpdate can be modified until the run is started.
   final pulumi.Input<ManagedClusterUpdate> managedClusterUpdate;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The strategy defines the order in which the clusters will be updated.
   /// If not set, all members will be updated sequentially. The UpdateRun status will show a single UpdateStage and a single UpdateGroup targeting all members.
   /// The strategy of the UpdateRun can be modified until the run is started.
   final pulumi.Input<UpdateRunStrategy>? strategy;
-
   /// The name of the UpdateRun resource.
   final pulumi.Input<String>? updateRunName;
-
   /// The resource id of the FleetUpdateStrategy resource to reference.
   ///
   /// When creating a new run, there are three ways to define a strategy for the run:
@@ -59,17 +54,9 @@ class UpdateRunArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fleetName': fleetName,
-      'managedClusterUpdate':
-          pulumi.Input.mapInputValue<
-            ManagedClusterUpdate,
-            Map<String, dynamic>
-          >(managedClusterUpdate, (value) => value.toMap()),
+      'managedClusterUpdate': pulumi.Input.mapInputValue<ManagedClusterUpdate, Map<String, dynamic>>(managedClusterUpdate, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
-      'strategy':
-          ?pulumi.Input.mapOptionalInputValue<
-            UpdateRunStrategy,
-            Map<String, dynamic>
-          >(strategy, (value) => value.toMap()),
+      'strategy': ?pulumi.Input.mapOptionalInputValue<UpdateRunStrategy, Map<String, dynamic>>(strategy, (value) => value.toMap()),
       'updateRunName': ?updateRunName,
       'updateStrategyId': ?updateStrategyId,
     };
@@ -78,33 +65,12 @@ class UpdateRunArgs {
   factory UpdateRunArgs.fromMap(Map<String, dynamic> map) {
     return UpdateRunArgs(
       fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
-      managedClusterUpdate: pulumi.Input.fromValue(
-        ManagedClusterUpdate.fromMap(
-          (map['managedClusterUpdate']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      strategy: (() {
-        final guardedValue = map['strategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UpdateRunStrategy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      updateRunName: (() {
-        final guardedValue = map['updateRunName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateStrategyId: (() {
-        final guardedValue = map['updateStrategyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      managedClusterUpdate: pulumi.Input.fromValue(ManagedClusterUpdate.fromMap((map['managedClusterUpdate']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      strategy: (() { final guardedValue = map['strategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UpdateRunStrategy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      updateRunName: (() { final guardedValue = map['updateRunName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateStrategyId: (() { final guardedValue = map['updateStrategyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

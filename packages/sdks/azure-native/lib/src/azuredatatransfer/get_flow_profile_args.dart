@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFlowProfileArgs {
   /// The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   final pulumi.Input<String> flowProfileName;
-
   /// The name of the pipeline on which to operate.
   final pulumi.Input<String> pipelineName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetFlowProfileArgs {
     return GetFlowProfileArgs(
       flowProfileName: pulumi.Input.fromValue(map['flowProfileName'] as String),
       pipelineName: pulumi.Input.fromValue(map['pipelineName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

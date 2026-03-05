@@ -13,20 +13,23 @@ class GetDeviceCloudidentityV1beta1Args {
   /// Creates a new [GetDeviceCloudidentityV1beta1Args].
   /// [customer] Optional.
   /// [deviceId] Required.
-  GetDeviceCloudidentityV1beta1Args({this.customer, required this.deviceId});
+  GetDeviceCloudidentityV1beta1Args({
+    this.customer,
+    required this.deviceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'customer': ?customer, 'deviceId': deviceId};
+    return <String, dynamic>{
+      'customer': ?customer,
+      'deviceId': deviceId,
+    };
   }
 
   factory GetDeviceCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetDeviceCloudidentityV1beta1Args(
-      customer: (() {
-        final guardedValue = map['customer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customer: (() { final guardedValue = map['customer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deviceId: pulumi.Input.fromValue(map['deviceId'] as String),
     );
   }
 }
+

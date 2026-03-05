@@ -497,13 +497,10 @@ import 'transit_router_route_table_association_state.dart';
 class TransitRouterRouteTableAssociation extends pulumi.CustomResource {
   /// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
   late final pulumi.Output<bool?> dryRun;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// TransitRouterAttachmentId
   late final pulumi.Output<String> transitRouterAttachmentId;
-
   /// TransitRouterRouteTableId
   late final pulumi.Output<String> transitRouterRouteTableId;
 
@@ -516,19 +513,15 @@ class TransitRouterRouteTableAssociation extends pulumi.CustomResource {
     TransitRouterRouteTableAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     status = registerOutput<String>('status');
-    transitRouterAttachmentId = registerOutput<String>(
-      'transitRouterAttachmentId',
-    );
-    transitRouterRouteTableId = registerOutput<String>(
-      'transitRouterRouteTableId',
-    );
+    transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
+    transitRouterRouteTableId = registerOutput<String>('transitRouterRouteTableId');
   }
 
   /// Gets an existing [TransitRouterRouteTableAssociation] resource's state with the given [name] and [id].
@@ -549,18 +542,14 @@ class TransitRouterRouteTableAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     status = registerOutput<String>('status');
-    transitRouterAttachmentId = registerOutput<String>(
-      'transitRouterAttachmentId',
-    );
-    transitRouterRouteTableId = registerOutput<String>(
-      'transitRouterRouteTableId',
-    );
+    transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
+    transitRouterRouteTableId = registerOutput<String>('transitRouterRouteTableId');
   }
 }

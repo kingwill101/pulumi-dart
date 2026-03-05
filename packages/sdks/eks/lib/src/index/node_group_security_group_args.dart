@@ -11,13 +11,10 @@ import 'package:pulumi_aws/eks.dart' as pulumi_aws_eks;
 class NodeGroupSecurityGroupArgs {
   /// The security group associated with the EKS cluster.
   final pulumi.Input<pulumi_aws_ec2.SecurityGroup> clusterSecurityGroup;
-
   /// The EKS cluster associated with the worker node group
   final pulumi.Input<pulumi_aws_eks.Cluster> eksCluster;
-
   /// Key-value mapping of tags to apply to this security group.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The VPC in which to create the worker node group.
   final pulumi.Input<String> vpcId;
 
@@ -44,20 +41,11 @@ class NodeGroupSecurityGroupArgs {
 
   factory NodeGroupSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupSecurityGroupArgs(
-      clusterSecurityGroup: pulumi.Input.fromValue(
-        map['clusterSecurityGroup'] as pulumi_aws_ec2.SecurityGroup,
-      ),
-      eksCluster: pulumi.Input.fromValue(
-        map['eksCluster'] as pulumi_aws_eks.Cluster,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      clusterSecurityGroup: pulumi.Input.fromValue(map['clusterSecurityGroup'] as pulumi_aws_ec2.SecurityGroup),
+      eksCluster: pulumi.Input.fromValue(map['eksCluster'] as pulumi_aws_eks.Cluster),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
+

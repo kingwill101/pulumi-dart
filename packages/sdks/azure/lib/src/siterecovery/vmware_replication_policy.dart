@@ -221,13 +221,10 @@ import 'vmware_replication_policy_state.dart';
 class VMWareReplicationPolicy extends pulumi.CustomResource {
   /// Specifies the frequency at which to create application consistent recovery points. Must between `0` to `720`.
   late final pulumi.Output<int> applicationConsistentSnapshotFrequencyInMinutes;
-
   /// The name which should be used for this Classic Replication Policy. Changing this forces a new Replication Policy to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the period up to which the recovery points will be retained. Must between `0` to `21600`.
   late final pulumi.Output<int> recoveryPointRetentionInMinutes;
-
   /// ID of the Recovery Services Vault. Changing this forces a new Replication Policy to be created.
   late final pulumi.Output<String> recoveryVaultId;
 
@@ -240,18 +237,14 @@ class VMWareReplicationPolicy extends pulumi.CustomResource {
     VMWareReplicationPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/vMWareReplicationPolicy:VMWareReplicationPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationConsistentSnapshotFrequencyInMinutes = registerOutput<int>(
-      'applicationConsistentSnapshotFrequencyInMinutes',
-    );
+          'azure:siterecovery/vMWareReplicationPolicy:VMWareReplicationPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationConsistentSnapshotFrequencyInMinutes = registerOutput<int>('applicationConsistentSnapshotFrequencyInMinutes');
     this.name = registerOutput<String>('name');
-    recoveryPointRetentionInMinutes = registerOutput<int>(
-      'recoveryPointRetentionInMinutes',
-    );
+    recoveryPointRetentionInMinutes = registerOutput<int>('recoveryPointRetentionInMinutes');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');
   }
 
@@ -273,18 +266,14 @@ class VMWareReplicationPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/vMWareReplicationPolicy:VMWareReplicationPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationConsistentSnapshotFrequencyInMinutes = registerOutput<int>(
-      'applicationConsistentSnapshotFrequencyInMinutes',
-    );
+          'azure:siterecovery/vMWareReplicationPolicy:VMWareReplicationPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationConsistentSnapshotFrequencyInMinutes = registerOutput<int>('applicationConsistentSnapshotFrequencyInMinutes');
     this.name = registerOutput<String>('name');
-    recoveryPointRetentionInMinutes = registerOutput<int>(
-      'recoveryPointRetentionInMinutes',
-    );
+    recoveryPointRetentionInMinutes = registerOutput<int>('recoveryPointRetentionInMinutes');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');
   }
 }

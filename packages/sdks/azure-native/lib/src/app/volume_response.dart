@@ -7,16 +7,12 @@ import 'secret_volume_item_response.dart';
 class VolumeResponse {
   /// Mount options used while mounting the Azure file share or NFS Azure file share. Must be a comma-separated string.
   final pulumi.Input<String>? mountOptions;
-
   /// Volume name.
   final pulumi.Input<String>? name;
-
   /// List of secrets to be added in volume. If no secrets are provided, all secrets in collection will be added to volume.
   final pulumi.Input<List<SecretVolumeItemResponse>>? secrets;
-
   /// Name of storage resource. No need to provide for EmptyDir and Secret.
   final pulumi.Input<String>? storageName;
-
   /// Storage type for the volume. If not provided, use EmptyDir.
   final pulumi.Input<String>? storageType;
 
@@ -38,18 +34,7 @@ class VolumeResponse {
     return <String, dynamic>{
       'mountOptions': ?mountOptions,
       'name': ?name,
-      'secrets':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SecretVolumeItemResponse>,
-            List<Map<String, dynamic>>
-          >(
-            secrets,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SecretVolumeItemResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'secrets': ?pulumi.Input.mapOptionalInputValue<List<SecretVolumeItemResponse>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<SecretVolumeItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'storageName': ?storageName,
       'storageType': ?storageType,
     };
@@ -57,38 +42,12 @@ class VolumeResponse {
 
   factory VolumeResponse.fromMap(Map<String, dynamic> map) {
     return VolumeResponse(
-      mountOptions: (() {
-        final guardedValue = map['mountOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secrets: (() {
-        final guardedValue = map['secrets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SecretVolumeItemResponse>(
-            guardedValue,
-            (value) => SecretVolumeItemResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      storageName: (() {
-        final guardedValue = map['storageName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageType: (() {
-        final guardedValue = map['storageType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mountOptions: (() { final guardedValue = map['mountOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SecretVolumeItemResponse>(guardedValue, (value) => SecretVolumeItemResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      storageName: (() { final guardedValue = map['storageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

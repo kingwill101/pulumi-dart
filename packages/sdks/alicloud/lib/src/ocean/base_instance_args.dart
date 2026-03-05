@@ -13,12 +13,10 @@ class BaseInstanceArgs {
   /// - true: automatic renewal.
   /// - false (default): no automatic renewal.
   final pulumi.Input<bool>? autoRenew;
-
   /// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
   /// - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
   /// - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
   final pulumi.Input<int>? autoRenewPeriod;
-
   /// The backup retention policy after the cluster is deleted. The values are as follows:
   /// - receive_all: Keep all backup sets;
   /// - delete_all: delete all backup sets;
@@ -26,10 +24,8 @@ class BaseInstanceArgs {
   ///
   /// &gt; **NOTE:**   The default value is delete_all.
   final pulumi.Input<String>? backupRetainMode;
-
   /// Cpu architecture, x86, arm. If no, the default value is x86
   final pulumi.Input<String>? cpuArch;
-
   /// The size of the storage space, in GB.
   ///
   /// The limits of storage space vary according to the cluster specifications, as follows:
@@ -40,14 +36,12 @@ class BaseInstanceArgs {
   ///
   /// The default value of each package is its minimum value.
   final pulumi.Input<int> diskSize;
-
   /// The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
   ///
   /// Two types are currently supported:
   /// - cloud_essd_pl1: cloud disk ESSD pl1.
   /// - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
   final pulumi.Input<String>? diskType;
-
   /// Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
   ///
   /// The x86 cluster architecture currently supports the following packages:
@@ -74,52 +68,40 @@ class BaseInstanceArgs {
   /// - 16C70G:16 core 70GB
   /// - 32C180G:32 core 180GB
   final pulumi.Input<String> instanceClass;
-
   /// OceanBase cluster name.
   ///
   /// The length is 1 to 20 English or Chinese characters.
   ///
   /// If this parameter is not specified, the default value is the InstanceId of the cluster.
   final pulumi.Input<String>? instanceName;
-
   /// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
   final pulumi.Input<String>? nodeNum;
-
   /// The OceanBase Server version number.
   final pulumi.Input<String>? obVersion;
-
   /// The payment method of the instance. Value range:
   /// - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
   /// - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
   final pulumi.Input<String> paymentType;
-
   /// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
   final pulumi.Input<int>? period;
-
   /// The duration of the purchase of resources.
   ///
   /// Package year and Month value range: Month.
   ///
   /// Default value: Month of the package, which is billed by volume. The default period is Hour.
   final pulumi.Input<String>? periodUnit;
-
   /// The ID of the primary instance.
   final pulumi.Input<String>? primaryInstance;
-
   /// The primary instance Region.
   final pulumi.Input<String>? primaryRegion;
-
   /// The ID of the enterprise resource group to which the instance resides.
   final pulumi.Input<String>? resourceGroupId;
-
   /// Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
   final pulumi.Input<String> series;
-
   /// Valid values:
   /// - false: migration and configuration change.
   /// - true: in-situ matching
   final pulumi.Input<bool>? upgradeSpecNative;
-
   /// Information about the zone where the cluster is deployed.
   final pulumi.Input<List<String>> zones;
 
@@ -191,81 +173,26 @@ class BaseInstanceArgs {
 
   factory BaseInstanceArgs.fromMap(Map<String, dynamic> map) {
     return BaseInstanceArgs(
-      autoRenew: (() {
-        final guardedValue = map['autoRenew'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      autoRenewPeriod: (() {
-        final guardedValue = map['autoRenewPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      backupRetainMode: (() {
-        final guardedValue = map['backupRetainMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cpuArch: (() {
-        final guardedValue = map['cpuArch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autoRenew: (() { final guardedValue = map['autoRenew']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      autoRenewPeriod: (() { final guardedValue = map['autoRenewPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      backupRetainMode: (() { final guardedValue = map['backupRetainMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cpuArch: (() { final guardedValue = map['cpuArch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskSize: pulumi.Input.fromValue(map['diskSize'] as int),
-      diskType: (() {
-        final guardedValue = map['diskType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceClass: pulumi.Input.fromValue(map['instanceClass'] as String),
-      instanceName: (() {
-        final guardedValue = map['instanceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeNum: (() {
-        final guardedValue = map['nodeNum'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      obVersion: (() {
-        final guardedValue = map['obVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceName: (() { final guardedValue = map['instanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeNum: (() { final guardedValue = map['nodeNum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      obVersion: (() { final guardedValue = map['obVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
-      period: (() {
-        final guardedValue = map['period'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      periodUnit: (() {
-        final guardedValue = map['periodUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      primaryInstance: (() {
-        final guardedValue = map['primaryInstance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      primaryRegion: (() {
-        final guardedValue = map['primaryRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      periodUnit: (() { final guardedValue = map['periodUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      primaryInstance: (() { final guardedValue = map['primaryInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      primaryRegion: (() { final guardedValue = map['primaryRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       series: pulumi.Input.fromValue(map['series'] as String),
-      upgradeSpecNative: (() {
-        final guardedValue = map['upgradeSpecNative'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      upgradeSpecNative: (() { final guardedValue = map['upgradeSpecNative']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       zones: pulumi.Input.fromValue((map['zones'] as List).cast<String>()),
     );
   }
 }
+

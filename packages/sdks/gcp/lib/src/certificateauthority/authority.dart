@@ -2001,44 +2001,35 @@ class Authority extends pulumi.CustomResource {
   /// URLs for accessing content published by this CA, such as the CA certificate and CRLs.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> accessUrls;
-
   /// The user provided Resource ID for this Certificate Authority.
   late final pulumi.Output<String> certificateAuthorityId;
-
   /// The config used to create a self-signed X.509 certificate or CSR.
   /// Structure is documented below.
   late final pulumi.Output<AuthorityConfig> config;
-
   /// The time at which this CertificateAuthority was created.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<bool?> deletionProtection;
-
   /// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
   /// Possible values: ENABLED, DISABLED, STAGED.
   late final pulumi.Output<String?> desiredState;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
   /// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
   /// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
   /// my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
   /// created.
   late final pulumi.Output<String?> gcsBucket;
-
   /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
   /// Use with care. Defaults to `false`.
   late final pulumi.Output<bool?> ignoreActiveCertificatesOnDeletion;
-
   /// Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
   /// is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
   /// certificate. Otherwise, it is used to sign a CSR.
   /// Structure is documented below.
   late final pulumi.Output<AuthorityKeySpec> keySpec;
-
   /// Labels with user-defined metadata.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
   /// "1.3kg", "count": "3" }.
@@ -2046,71 +2037,56 @@ class Authority extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
   /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
   /// fractional digits, terminated by 's'. Example: "3.5s".
   late final pulumi.Output<String?> lifetime;
-
   /// Location of the CertificateAuthority. A full list of valid locations can be found by
   /// running `gcloud privateca locations list`.
   late final pulumi.Output<String> location;
-
   /// The resource name for this CertificateAuthority in the format
   /// projects/*/locations/*/certificateAuthorities/*.
   late final pulumi.Output<String> name;
-
   /// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
   late final pulumi.Output<String?> pemCaCertificate;
-
   /// This CertificateAuthority's certificate chain, including the current
   /// CertificateAuthority's certificate. Ordered such that the root issuer is the final
   /// element (consistent with RFC 5246). For a self-signed CA, this will only list the current
   /// CertificateAuthority's certificate.
   late final pulumi.Output<List<String>> pemCaCertificates;
-
   /// The name of the CaPool this Certificate Authority belongs to.
   late final pulumi.Output<String> pool;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// If this flag is set, the Certificate Authority will be deleted as soon as
   /// possible without a 30-day grace period where undeletion would have been
   /// allowed. If you proceed, there will be no way to recover this CA.
   /// Use with care. Defaults to `false`.
   late final pulumi.Output<bool?> skipGracePeriod;
-
   /// The State for this CertificateAuthority.
   late final pulumi.Output<String> state;
-
   /// If this is a subordinate CertificateAuthority, this field will be set
   /// with the subordinate configuration, which describes its issuers.
   /// Structure is documented below.
   late final pulumi.Output<AuthoritySubordinateConfig?> subordinateConfig;
-
   /// The Type of this CertificateAuthority.
   /// &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
   /// be activated before they can issue certificates.
   /// Default value is `SELF_SIGNED`.
   /// Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
   late final pulumi.Output<String?> type;
-
   /// The time at which this CertificateAuthority was updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> updateTime;
-
   /// Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
   /// that can be specified by users.
   /// Structure is documented below.
-  late final pulumi.Output<AuthorityUserDefinedAccessUrls?>
-  userDefinedAccessUrls;
+  late final pulumi.Output<AuthorityUserDefinedAccessUrls?> userDefinedAccessUrls;
 
   /// Creates a new [Authority].
   /// [name] The Pulumi resource name.
@@ -2121,41 +2097,21 @@ class Authority extends pulumi.CustomResource {
     AuthorityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:certificateauthority/authority:Authority',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:certificateauthority/authority:Authority',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessUrls = registerOutput<List<Map<String, dynamic>>>('accessUrls');
     certificateAuthorityId = registerOutput<String>('certificateAuthorityId');
-    config = registerOutput<AuthorityConfig>(
-      'config',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AuthorityConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    config = registerOutput<AuthorityConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     desiredState = registerOutput<String?>('desiredState');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gcsBucket = registerOutput<String?>('gcsBucket');
-    ignoreActiveCertificatesOnDeletion = registerOutput<bool?>(
-      'ignoreActiveCertificatesOnDeletion',
-    );
-    keySpec = registerOutput<AuthorityKeySpec>(
-      'keySpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AuthorityKeySpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ignoreActiveCertificatesOnDeletion = registerOutput<bool?>('ignoreActiveCertificatesOnDeletion');
+    keySpec = registerOutput<AuthorityKeySpec>('keySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityKeySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     lifetime = registerOutput<String?>('lifetime');
     location = registerOutput<String>('location');
@@ -2167,28 +2123,10 @@ class Authority extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     skipGracePeriod = registerOutput<bool?>('skipGracePeriod');
     state = registerOutput<String>('state');
-    subordinateConfig = registerOutput<AuthoritySubordinateConfig?>(
-      'subordinateConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AuthoritySubordinateConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    subordinateConfig = registerOutput<AuthoritySubordinateConfig?>('subordinateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthoritySubordinateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String?>('type');
     updateTime = registerOutput<String>('updateTime');
-    userDefinedAccessUrls = registerOutput<AuthorityUserDefinedAccessUrls?>(
-      'userDefinedAccessUrls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AuthorityUserDefinedAccessUrls.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    userDefinedAccessUrls = registerOutput<AuthorityUserDefinedAccessUrls?>('userDefinedAccessUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityUserDefinedAccessUrls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Authority] resource's state with the given [name] and [id].
@@ -2209,41 +2147,21 @@ class Authority extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:certificateauthority/authority:Authority',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:certificateauthority/authority:Authority',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessUrls = registerOutput<List<Map<String, dynamic>>>('accessUrls');
     certificateAuthorityId = registerOutput<String>('certificateAuthorityId');
-    config = registerOutput<AuthorityConfig>(
-      'config',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AuthorityConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    config = registerOutput<AuthorityConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     desiredState = registerOutput<String?>('desiredState');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gcsBucket = registerOutput<String?>('gcsBucket');
-    ignoreActiveCertificatesOnDeletion = registerOutput<bool?>(
-      'ignoreActiveCertificatesOnDeletion',
-    );
-    keySpec = registerOutput<AuthorityKeySpec>(
-      'keySpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AuthorityKeySpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ignoreActiveCertificatesOnDeletion = registerOutput<bool?>('ignoreActiveCertificatesOnDeletion');
+    keySpec = registerOutput<AuthorityKeySpec>('keySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityKeySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     lifetime = registerOutput<String?>('lifetime');
     location = registerOutput<String>('location');
@@ -2255,27 +2173,9 @@ class Authority extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     skipGracePeriod = registerOutput<bool?>('skipGracePeriod');
     this.state = registerOutput<String>('state');
-    subordinateConfig = registerOutput<AuthoritySubordinateConfig?>(
-      'subordinateConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AuthoritySubordinateConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    subordinateConfig = registerOutput<AuthoritySubordinateConfig?>('subordinateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthoritySubordinateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String?>('type');
     updateTime = registerOutput<String>('updateTime');
-    userDefinedAccessUrls = registerOutput<AuthorityUserDefinedAccessUrls?>(
-      'userDefinedAccessUrls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AuthorityUserDefinedAccessUrls.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    userDefinedAccessUrls = registerOutput<AuthorityUserDefinedAccessUrls?>('userDefinedAccessUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityUserDefinedAccessUrls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -19,3 +19,4 @@ enum OutcomeSummary {
     throw ArgumentError('Unknown OutcomeSummary value: $value');
   }
 }
+

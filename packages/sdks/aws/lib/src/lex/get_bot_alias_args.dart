@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBotAliasArgs {
   /// Name of the bot.
   final pulumi.Input<String> botName;
-
   /// Name of the bot alias. The name is case sensitive.
   final pulumi.Input<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -20,7 +18,11 @@ class GetBotAliasArgs {
   /// [botName] Name of the bot.
   /// [name] Name of the bot alias. The name is case sensitive.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetBotAliasArgs({required this.botName, required this.name, this.region});
+  GetBotAliasArgs({
+    required this.botName,
+    required this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,11 +36,8 @@ class GetBotAliasArgs {
     return GetBotAliasArgs(
       botName: pulumi.Input.fromValue(map['botName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

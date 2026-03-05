@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainTopicEventSubscriptionArgs {
   /// Name of the top level domain.
   final pulumi.Input<String> domainName;
-
   /// Name of the event subscription to be found.
   final pulumi.Input<String> eventSubscriptionName;
-
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the domain topic.
   final pulumi.Input<String> topicName;
 
@@ -40,18 +37,13 @@ class GetDomainTopicEventSubscriptionArgs {
     };
   }
 
-  factory GetDomainTopicEventSubscriptionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDomainTopicEventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainTopicEventSubscriptionArgs(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      eventSubscriptionName: pulumi.Input.fromValue(
-        map['eventSubscriptionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      eventSubscriptionName: pulumi.Input.fromValue(map['eventSubscriptionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       topicName: pulumi.Input.fromValue(map['topicName'] as String),
     );
   }
 }
+

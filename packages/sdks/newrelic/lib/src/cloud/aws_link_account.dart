@@ -126,13 +126,10 @@ import 'aws_link_account_state.dart';
 class AwsLinkAccount extends pulumi.CustomResource {
   /// The New Relic account ID to operate on.  This allows the user to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   late final pulumi.Output<String> accountId;
-
   /// The Amazon Resource Name (ARN) of the IAM role.
   late final pulumi.Output<String> arn;
-
   /// How metrics will be collected. Use `PUSH` for a metric stream or `PULL` to integrate with individual services.
   late final pulumi.Output<String?> metricCollectionMode;
-
   /// The linked account name
   ///
   /// &gt; **WARNING:** Starting with v3.27.2 of the New Relic Terraform Provider, updating any of the aforementioned attributes (except `name`) of a `newrelic.cloud.AwsLinkAccount` resource that has been applied would **force a replacement** of the resource (destruction of the resource, followed by the creation of a new resource). Please carefully review the output of `pulumi preview`, which would clearly indicate a replacement of this resource, before performing a `pulumi up`.
@@ -147,11 +144,11 @@ class AwsLinkAccount extends pulumi.CustomResource {
     AwsLinkAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:cloud/awsLinkAccount:AwsLinkAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:cloud/awsLinkAccount:AwsLinkAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
     metricCollectionMode = registerOutput<String?>('metricCollectionMode');
@@ -176,11 +173,11 @@ class AwsLinkAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:cloud/awsLinkAccount:AwsLinkAccount',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:cloud/awsLinkAccount:AwsLinkAccount',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
     metricCollectionMode = registerOutput<String?>('metricCollectionMode');

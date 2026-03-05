@@ -15,3 +15,4 @@ enum AddressPrefixType {
     throw ArgumentError('Unknown AddressPrefixType value: $value');
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsFunctionAppSiteCredential {
   /// The name of this Windows Function App.
   final pulumi.Input<String> name;
-
   /// The Site Credentials Password used for publishing.
   final pulumi.Input<String> password;
 
@@ -18,15 +17,17 @@ class GetWindowsFunctionAppSiteCredential {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'password': password};
+    return <String, dynamic>{
+      'name': name,
+      'password': password,
+    };
   }
 
-  factory GetWindowsFunctionAppSiteCredential.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWindowsFunctionAppSiteCredential.fromMap(Map<String, dynamic> map) {
     return GetWindowsFunctionAppSiteCredential(
       name: pulumi.Input.fromValue(map['name'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
     );
   }
 }
+

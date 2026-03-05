@@ -239,22 +239,16 @@ import 'database_state.dart';
 class Database extends pulumi.CustomResource {
   /// Specifies the name of the Kusto Cluster this database will be added to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterName;
-
   /// The time the data that should be kept in cache for fast queries as ISO 8601 timespan. Default is unlimited. For more information see: [ISO 8601 Timespan](https://en.wikipedia.org/wiki/ISO_8601#Durations)
   late final pulumi.Output<String?> hotCachePeriod;
-
   /// The location where the Kusto Database should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the Kusto Database to create. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the Resource Group where the Kusto Database should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The size of the database in bytes.
   late final pulumi.Output<double> size;
-
   /// The time the data should be kept before it stops being accessible to queries as ISO 8601 timespan. Default is unlimited. For more information see: [ISO 8601 Timespan](https://en.wikipedia.org/wiki/ISO_8601#Durations)
   late final pulumi.Output<String?> softDeletePeriod;
 
@@ -267,11 +261,11 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/database:Database',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:kusto/database:Database',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterName = registerOutput<String>('clusterName');
     hotCachePeriod = registerOutput<String?>('hotCachePeriod');
     location = registerOutput<String>('location');
@@ -299,11 +293,11 @@ class Database extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/database:Database',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:kusto/database:Database',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterName = registerOutput<String>('clusterName');
     hotCachePeriod = registerOutput<String?>('hotCachePeriod');
     location = registerOutput<String>('location');

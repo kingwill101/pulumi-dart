@@ -170,13 +170,10 @@ import 'folder_state.dart';
 class Folder extends pulumi.CustomResource {
   /// (Available since v1.259.0) The time when the folder was created.
   late final pulumi.Output<String> createTime;
-
   /// The name of the folder.
   late final pulumi.Output<String> folderName;
-
   /// The ID of the parent folder.
   late final pulumi.Output<String> parentFolderId;
-
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -184,13 +181,16 @@ class Folder extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Folder]. {@macro pulumi_resourcemanager_folder_folder_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Folder(String name, {FolderArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:resourcemanager/folder:Folder',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Folder(
+    String name, {
+    FolderArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:resourcemanager/folder:Folder',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     folderName = registerOutput<String>('folderName');
     parentFolderId = registerOutput<String>('parentFolderId');
@@ -215,11 +215,11 @@ class Folder extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/folder:Folder',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/folder:Folder',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     folderName = registerOutput<String>('folderName');
     parentFolderId = registerOutput<String>('parentFolderId');

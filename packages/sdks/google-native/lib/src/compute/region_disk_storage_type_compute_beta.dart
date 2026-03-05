@@ -12,8 +12,7 @@ enum RegionDiskStorageTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RegionDiskStorageTypeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown RegionDiskStorageTypeComputeBeta value: $value');
   }
 }
+

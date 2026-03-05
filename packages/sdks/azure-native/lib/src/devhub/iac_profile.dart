@@ -289,57 +289,40 @@ import 'system_data_response.dart';
 class IacProfile extends pulumi.CustomResource {
   /// Determines the authorization status of requests.
   late final pulumi.Output<String> authStatus;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Repository Branch Name
   late final pulumi.Output<String?> branchName;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the Pull Request submitted against the users repository.
   late final pulumi.Output<String> prStatus;
-
   /// The number associated with the submitted pull request.
   late final pulumi.Output<int> pullNumber;
-
   /// Repository Main Branch
   late final pulumi.Output<String?> repositoryMainBranch;
-
   /// Repository Name
   late final pulumi.Output<String?> repositoryName;
-
   /// Repository Owner
   late final pulumi.Output<String?> repositoryOwner;
   late final pulumi.Output<List<Map<String, dynamic>>?> stages;
-
   /// Terraform Storage Account Name
   late final pulumi.Output<String?> storageAccountName;
-
   /// Terraform Storage Account Resource Group
   late final pulumi.Output<String?> storageAccountResourceGroup;
-
   /// Terraform Storage Account Subscription
   late final pulumi.Output<String?> storageAccountSubscription;
-
   /// Terraform Container Name
   late final pulumi.Output<String?> storageContainerName;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<List<Map<String, dynamic>>?> templates;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -352,11 +335,11 @@ class IacProfile extends pulumi.CustomResource {
     IacProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devhub:IacProfile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:devhub:IacProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authStatus = registerOutput<String>('authStatus');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     branchName = registerOutput<String?>('branchName');
@@ -370,23 +353,10 @@ class IacProfile extends pulumi.CustomResource {
     repositoryOwner = registerOutput<String?>('repositoryOwner');
     stages = registerOutput<List<Map<String, dynamic>>?>('stages');
     storageAccountName = registerOutput<String?>('storageAccountName');
-    storageAccountResourceGroup = registerOutput<String?>(
-      'storageAccountResourceGroup',
-    );
-    storageAccountSubscription = registerOutput<String?>(
-      'storageAccountSubscription',
-    );
+    storageAccountResourceGroup = registerOutput<String?>('storageAccountResourceGroup');
+    storageAccountSubscription = registerOutput<String?>('storageAccountSubscription');
     storageContainerName = registerOutput<String?>('storageContainerName');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     templates = registerOutput<List<Map<String, dynamic>>?>('templates');
     type = registerOutput<String>('type');

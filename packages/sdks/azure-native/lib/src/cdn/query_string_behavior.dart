@@ -17,3 +17,4 @@ enum QueryStringBehavior {
     throw ArgumentError('Unknown QueryStringBehavior value: $value');
   }
 }
+

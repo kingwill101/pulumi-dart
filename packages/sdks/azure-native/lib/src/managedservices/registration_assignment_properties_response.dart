@@ -7,13 +7,8 @@ import 'registration_assignment_properties_response_registration_definition.dart
 class RegistrationAssignmentPropertiesResponse {
   /// The current provisioning state of the registration assignment.
   final pulumi.Input<String> provisioningState;
-
   /// The registration definition associated with the registration assignment.
-  final pulumi.Input<
-    RegistrationAssignmentPropertiesResponseRegistrationDefinition
-  >
-  registrationDefinition;
-
+  final pulumi.Input<RegistrationAssignmentPropertiesResponseRegistrationDefinition> registrationDefinition;
   /// The fully qualified path of the registration definition.
   final pulumi.Input<String> registrationDefinitionId;
 
@@ -30,30 +25,17 @@ class RegistrationAssignmentPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'provisioningState': provisioningState,
-      'registrationDefinition':
-          pulumi.Input.mapInputValue<
-            RegistrationAssignmentPropertiesResponseRegistrationDefinition,
-            Map<String, dynamic>
-          >(registrationDefinition, (value) => value.toMap()),
+      'registrationDefinition': pulumi.Input.mapInputValue<RegistrationAssignmentPropertiesResponseRegistrationDefinition, Map<String, dynamic>>(registrationDefinition, (value) => value.toMap()),
       'registrationDefinitionId': registrationDefinitionId,
     };
   }
 
-  factory RegistrationAssignmentPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegistrationAssignmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RegistrationAssignmentPropertiesResponse(
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      registrationDefinition: pulumi.Input.fromValue(
-        RegistrationAssignmentPropertiesResponseRegistrationDefinition.fromMap(
-          (map['registrationDefinition']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      registrationDefinitionId: pulumi.Input.fromValue(
-        map['registrationDefinitionId'] as String,
-      ),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      registrationDefinition: pulumi.Input.fromValue(RegistrationAssignmentPropertiesResponseRegistrationDefinition.fromMap((map['registrationDefinition']! as Map).cast<String, dynamic>())),
+      registrationDefinitionId: pulumi.Input.fromValue(map['registrationDefinitionId'] as String),
     );
   }
 }
+

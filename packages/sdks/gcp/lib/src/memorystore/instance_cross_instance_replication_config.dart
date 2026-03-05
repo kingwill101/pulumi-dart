@@ -13,25 +13,16 @@ class InstanceCrossInstanceReplicationConfig {
   /// 4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
   /// Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
   final pulumi.Input<String>? instanceRole;
-
   /// (Output)
   /// An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceCrossInstanceReplicationConfigMembership>>?
-  memberships;
-
+  final pulumi.Input<List<InstanceCrossInstanceReplicationConfigMembership>>? memberships;
   /// This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
   /// Structure is documented below.
-  final pulumi.Input<InstanceCrossInstanceReplicationConfigPrimaryInstance>?
-  primaryInstance;
-
+  final pulumi.Input<InstanceCrossInstanceReplicationConfigPrimaryInstance>? primaryInstance;
   /// List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<InstanceCrossInstanceReplicationConfigSecondaryInstance>
-  >?
-  secondaryInstances;
-
+  final pulumi.Input<List<InstanceCrossInstanceReplicationConfigSecondaryInstance>>? secondaryInstances;
   /// (Output)
   /// The last time cross instance replication config was updated.
   final pulumi.Input<String>? updateTime;
@@ -53,91 +44,21 @@ class InstanceCrossInstanceReplicationConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'instanceRole': ?instanceRole,
-      'memberships':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InstanceCrossInstanceReplicationConfigMembership>,
-            List<Map<String, dynamic>>
-          >(
-            memberships,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InstanceCrossInstanceReplicationConfigMembership,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'primaryInstance':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstanceCrossInstanceReplicationConfigPrimaryInstance,
-            Map<String, dynamic>
-          >(primaryInstance, (value) => value.toMap()),
-      'secondaryInstances':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InstanceCrossInstanceReplicationConfigSecondaryInstance>,
-            List<Map<String, dynamic>>
-          >(
-            secondaryInstances,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InstanceCrossInstanceReplicationConfigSecondaryInstance,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'memberships': ?pulumi.Input.mapOptionalInputValue<List<InstanceCrossInstanceReplicationConfigMembership>, List<Map<String, dynamic>>>(memberships, (value) => pulumi.Input.encodeList<InstanceCrossInstanceReplicationConfigMembership, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'primaryInstance': ?pulumi.Input.mapOptionalInputValue<InstanceCrossInstanceReplicationConfigPrimaryInstance, Map<String, dynamic>>(primaryInstance, (value) => value.toMap()),
+      'secondaryInstances': ?pulumi.Input.mapOptionalInputValue<List<InstanceCrossInstanceReplicationConfigSecondaryInstance>, List<Map<String, dynamic>>>(secondaryInstances, (value) => pulumi.Input.encodeList<InstanceCrossInstanceReplicationConfigSecondaryInstance, Map<String, dynamic>>(value, (value) => value.toMap())),
       'updateTime': ?updateTime,
     };
   }
 
-  factory InstanceCrossInstanceReplicationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceCrossInstanceReplicationConfig.fromMap(Map<String, dynamic> map) {
     return InstanceCrossInstanceReplicationConfig(
-      instanceRole: (() {
-        final guardedValue = map['instanceRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      memberships: (() {
-        final guardedValue = map['memberships'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            InstanceCrossInstanceReplicationConfigMembership
-          >(
-            guardedValue,
-            (value) => InstanceCrossInstanceReplicationConfigMembership.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      primaryInstance: (() {
-        final guardedValue = map['primaryInstance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstanceCrossInstanceReplicationConfigPrimaryInstance.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      secondaryInstances: (() {
-        final guardedValue = map['secondaryInstances'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            InstanceCrossInstanceReplicationConfigSecondaryInstance
-          >(
-            guardedValue,
-            (value) =>
-                InstanceCrossInstanceReplicationConfigSecondaryInstance.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceRole: (() { final guardedValue = map['instanceRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memberships: (() { final guardedValue = map['memberships']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceCrossInstanceReplicationConfigMembership>(guardedValue, (value) => InstanceCrossInstanceReplicationConfigMembership.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      primaryInstance: (() { final guardedValue = map['primaryInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceCrossInstanceReplicationConfigPrimaryInstance.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      secondaryInstances: (() { final guardedValue = map['secondaryInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceCrossInstanceReplicationConfigSecondaryInstance>(guardedValue, (value) => InstanceCrossInstanceReplicationConfigSecondaryInstance.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

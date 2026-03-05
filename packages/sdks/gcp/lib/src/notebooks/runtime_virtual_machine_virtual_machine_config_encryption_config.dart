@@ -12,21 +12,20 @@ class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
 
   /// Creates a new [RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig].
   /// [kmsKey] The Cloud KMS resource identifier of the customer-managed
-  RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig({this.kmsKey});
+  RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig({
+    this.kmsKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKey': ?kmsKey};
+    return <String, dynamic>{
+      'kmsKey': ?kmsKey,
+    };
   }
 
-  factory RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig(
-      kmsKey: (() {
-        final guardedValue = map['kmsKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

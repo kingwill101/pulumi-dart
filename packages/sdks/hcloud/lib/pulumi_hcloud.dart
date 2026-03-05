@@ -29,26 +29,22 @@ class _IndexModuleNamespace {
   final FloatingIpAssignment = module_index.FloatingIpAssignment.new;
   final FloatingIpAssignmentArgs = module_index.FloatingIpAssignmentArgs.new;
   final FloatingIpAssignmentState = module_index.FloatingIpAssignmentState.new;
-  final FloatingIpAssignmentStateArgs =
-      module_index.FloatingIpAssignmentState.new;
+  final FloatingIpAssignmentStateArgs = module_index.FloatingIpAssignmentState.new;
   final FloatingIpState = module_index.FloatingIpState.new;
   final FloatingIpStateArgs = module_index.FloatingIpState.new;
   final GetCertificateArgs = module_index.GetCertificateArgs.new;
   final GetCertificateResult = module_index.GetCertificateResult.new;
   final GetCertificateResultArgs = module_index.GetCertificateResult.new;
   final GetCertificatesArgs = module_index.GetCertificatesArgs.new;
-  final GetCertificatesCertificate =
-      module_index.GetCertificatesCertificate.new;
-  final GetCertificatesCertificateArgs =
-      module_index.GetCertificatesCertificate.new;
+  final GetCertificatesCertificate = module_index.GetCertificatesCertificate.new;
+  final GetCertificatesCertificateArgs = module_index.GetCertificatesCertificate.new;
   final GetCertificatesResult = module_index.GetCertificatesResult.new;
   final GetCertificatesResultArgs = module_index.GetCertificatesResult.new;
   final GetDatacenterArgs = module_index.GetDatacenterArgs.new;
   final GetDatacenterResult = module_index.GetDatacenterResult.new;
   final GetDatacenterResultArgs = module_index.GetDatacenterResult.new;
   final GetDatacentersDatacenter = module_index.GetDatacentersDatacenter.new;
-  final GetDatacentersDatacenterArgs =
-      module_index.GetDatacentersDatacenter.new;
+  final GetDatacentersDatacenterArgs = module_index.GetDatacentersDatacenter.new;
   final GetDatacentersResult = module_index.GetDatacentersResult.new;
   final GetDatacentersResultArgs = module_index.GetDatacentersResult.new;
   final GetFirewallApplyTo = module_index.GetFirewallApplyTo.new;
@@ -60,14 +56,11 @@ class _IndexModuleNamespace {
   final GetFirewallRuleArgs = module_index.GetFirewallRule.new;
   final GetFirewallsArgs = module_index.GetFirewallsArgs.new;
   final GetFirewallsFirewall = module_index.GetFirewallsFirewall.new;
-  final GetFirewallsFirewallApplyTo =
-      module_index.GetFirewallsFirewallApplyTo.new;
-  final GetFirewallsFirewallApplyToArgs =
-      module_index.GetFirewallsFirewallApplyTo.new;
+  final GetFirewallsFirewallApplyTo = module_index.GetFirewallsFirewallApplyTo.new;
+  final GetFirewallsFirewallApplyToArgs = module_index.GetFirewallsFirewallApplyTo.new;
   final GetFirewallsFirewallArgs = module_index.GetFirewallsFirewall.new;
   final GetFirewallsFirewallRule = module_index.GetFirewallsFirewallRule.new;
-  final GetFirewallsFirewallRuleArgs =
-      module_index.GetFirewallsFirewallRule.new;
+  final GetFirewallsFirewallRuleArgs = module_index.GetFirewallsFirewallRule.new;
   final GetFirewallsResult = module_index.GetFirewallsResult.new;
   final GetFirewallsResultArgs = module_index.GetFirewallsResult.new;
   final GetFloatingIpArgs = module_index.GetFloatingIpArgs.new;
@@ -75,8 +68,7 @@ class _IndexModuleNamespace {
   final GetFloatingIpResultArgs = module_index.GetFloatingIpResult.new;
   final GetFloatingIpsArgs = module_index.GetFloatingIpsArgs.new;
   final GetFloatingIpsFloatingIp = module_index.GetFloatingIpsFloatingIp.new;
-  final GetFloatingIpsFloatingIpArgs =
-      module_index.GetFloatingIpsFloatingIp.new;
+  final GetFloatingIpsFloatingIpArgs = module_index.GetFloatingIpsFloatingIp.new;
   final GetFloatingIpsResult = module_index.GetFloatingIpsResult.new;
   final GetFloatingIpsResultArgs = module_index.GetFloatingIpsResult.new;
   final GetImageArgs = module_index.GetImageArgs.new;
@@ -88,68 +80,42 @@ class _IndexModuleNamespace {
   final GetImagesResult = module_index.GetImagesResult.new;
   final GetImagesResultArgs = module_index.GetImagesResult.new;
   final GetLoadBalancerAlgorithm = module_index.GetLoadBalancerAlgorithm.new;
-  final GetLoadBalancerAlgorithmArgs =
-      module_index.GetLoadBalancerAlgorithm.new;
+  final GetLoadBalancerAlgorithmArgs = module_index.GetLoadBalancerAlgorithm.new;
   final GetLoadBalancerArgs = module_index.GetLoadBalancerArgs.new;
   final GetLoadBalancerResult = module_index.GetLoadBalancerResult.new;
   final GetLoadBalancerResultArgs = module_index.GetLoadBalancerResult.new;
   final GetLoadBalancerService = module_index.GetLoadBalancerService.new;
   final GetLoadBalancerServiceArgs = module_index.GetLoadBalancerService.new;
-  final GetLoadBalancerServiceHealthCheck =
-      module_index.GetLoadBalancerServiceHealthCheck.new;
-  final GetLoadBalancerServiceHealthCheckArgs =
-      module_index.GetLoadBalancerServiceHealthCheck.new;
-  final GetLoadBalancerServiceHealthCheckHttp =
-      module_index.GetLoadBalancerServiceHealthCheckHttp.new;
-  final GetLoadBalancerServiceHealthCheckHttpArgs =
-      module_index.GetLoadBalancerServiceHealthCheckHttp.new;
-  final GetLoadBalancerServiceHttp =
-      module_index.GetLoadBalancerServiceHttp.new;
-  final GetLoadBalancerServiceHttpArgs =
-      module_index.GetLoadBalancerServiceHttp.new;
+  final GetLoadBalancerServiceHealthCheck = module_index.GetLoadBalancerServiceHealthCheck.new;
+  final GetLoadBalancerServiceHealthCheckArgs = module_index.GetLoadBalancerServiceHealthCheck.new;
+  final GetLoadBalancerServiceHealthCheckHttp = module_index.GetLoadBalancerServiceHealthCheckHttp.new;
+  final GetLoadBalancerServiceHealthCheckHttpArgs = module_index.GetLoadBalancerServiceHealthCheckHttp.new;
+  final GetLoadBalancerServiceHttp = module_index.GetLoadBalancerServiceHttp.new;
+  final GetLoadBalancerServiceHttpArgs = module_index.GetLoadBalancerServiceHttp.new;
   final GetLoadBalancerTarget = module_index.GetLoadBalancerTarget.new;
   final GetLoadBalancerTargetArgs = module_index.GetLoadBalancerTarget.new;
   final GetLoadBalancerTypeArgs = module_index.GetLoadBalancerTypeArgs.new;
   final GetLoadBalancerTypeResult = module_index.GetLoadBalancerTypeResult.new;
-  final GetLoadBalancerTypeResultArgs =
-      module_index.GetLoadBalancerTypeResult.new;
-  final GetLoadBalancerTypesLoadBalancerType =
-      module_index.GetLoadBalancerTypesLoadBalancerType.new;
-  final GetLoadBalancerTypesLoadBalancerTypeArgs =
-      module_index.GetLoadBalancerTypesLoadBalancerType.new;
-  final GetLoadBalancerTypesResult =
-      module_index.GetLoadBalancerTypesResult.new;
-  final GetLoadBalancerTypesResultArgs =
-      module_index.GetLoadBalancerTypesResult.new;
+  final GetLoadBalancerTypeResultArgs = module_index.GetLoadBalancerTypeResult.new;
+  final GetLoadBalancerTypesLoadBalancerType = module_index.GetLoadBalancerTypesLoadBalancerType.new;
+  final GetLoadBalancerTypesLoadBalancerTypeArgs = module_index.GetLoadBalancerTypesLoadBalancerType.new;
+  final GetLoadBalancerTypesResult = module_index.GetLoadBalancerTypesResult.new;
+  final GetLoadBalancerTypesResultArgs = module_index.GetLoadBalancerTypesResult.new;
   final GetLoadBalancersArgs = module_index.GetLoadBalancersArgs.new;
-  final GetLoadBalancersLoadBalancer =
-      module_index.GetLoadBalancersLoadBalancer.new;
-  final GetLoadBalancersLoadBalancerAlgorithm =
-      module_index.GetLoadBalancersLoadBalancerAlgorithm.new;
-  final GetLoadBalancersLoadBalancerAlgorithmArgs =
-      module_index.GetLoadBalancersLoadBalancerAlgorithm.new;
-  final GetLoadBalancersLoadBalancerArgs =
-      module_index.GetLoadBalancersLoadBalancer.new;
-  final GetLoadBalancersLoadBalancerService =
-      module_index.GetLoadBalancersLoadBalancerService.new;
-  final GetLoadBalancersLoadBalancerServiceArgs =
-      module_index.GetLoadBalancersLoadBalancerService.new;
-  final GetLoadBalancersLoadBalancerServiceHealthCheck =
-      module_index.GetLoadBalancersLoadBalancerServiceHealthCheck.new;
-  final GetLoadBalancersLoadBalancerServiceHealthCheckArgs =
-      module_index.GetLoadBalancersLoadBalancerServiceHealthCheck.new;
-  final GetLoadBalancersLoadBalancerServiceHealthCheckHttp =
-      module_index.GetLoadBalancersLoadBalancerServiceHealthCheckHttp.new;
-  final GetLoadBalancersLoadBalancerServiceHealthCheckHttpArgs =
-      module_index.GetLoadBalancersLoadBalancerServiceHealthCheckHttp.new;
-  final GetLoadBalancersLoadBalancerServiceHttp =
-      module_index.GetLoadBalancersLoadBalancerServiceHttp.new;
-  final GetLoadBalancersLoadBalancerServiceHttpArgs =
-      module_index.GetLoadBalancersLoadBalancerServiceHttp.new;
-  final GetLoadBalancersLoadBalancerTarget =
-      module_index.GetLoadBalancersLoadBalancerTarget.new;
-  final GetLoadBalancersLoadBalancerTargetArgs =
-      module_index.GetLoadBalancersLoadBalancerTarget.new;
+  final GetLoadBalancersLoadBalancer = module_index.GetLoadBalancersLoadBalancer.new;
+  final GetLoadBalancersLoadBalancerAlgorithm = module_index.GetLoadBalancersLoadBalancerAlgorithm.new;
+  final GetLoadBalancersLoadBalancerAlgorithmArgs = module_index.GetLoadBalancersLoadBalancerAlgorithm.new;
+  final GetLoadBalancersLoadBalancerArgs = module_index.GetLoadBalancersLoadBalancer.new;
+  final GetLoadBalancersLoadBalancerService = module_index.GetLoadBalancersLoadBalancerService.new;
+  final GetLoadBalancersLoadBalancerServiceArgs = module_index.GetLoadBalancersLoadBalancerService.new;
+  final GetLoadBalancersLoadBalancerServiceHealthCheck = module_index.GetLoadBalancersLoadBalancerServiceHealthCheck.new;
+  final GetLoadBalancersLoadBalancerServiceHealthCheckArgs = module_index.GetLoadBalancersLoadBalancerServiceHealthCheck.new;
+  final GetLoadBalancersLoadBalancerServiceHealthCheckHttp = module_index.GetLoadBalancersLoadBalancerServiceHealthCheckHttp.new;
+  final GetLoadBalancersLoadBalancerServiceHealthCheckHttpArgs = module_index.GetLoadBalancersLoadBalancerServiceHealthCheckHttp.new;
+  final GetLoadBalancersLoadBalancerServiceHttp = module_index.GetLoadBalancersLoadBalancerServiceHttp.new;
+  final GetLoadBalancersLoadBalancerServiceHttpArgs = module_index.GetLoadBalancersLoadBalancerServiceHttp.new;
+  final GetLoadBalancersLoadBalancerTarget = module_index.GetLoadBalancersLoadBalancerTarget.new;
+  final GetLoadBalancersLoadBalancerTargetArgs = module_index.GetLoadBalancersLoadBalancerTarget.new;
   final GetLoadBalancersResult = module_index.GetLoadBalancersResult.new;
   final GetLoadBalancersResultArgs = module_index.GetLoadBalancersResult.new;
   final GetLocationArgs = module_index.GetLocationArgs.new;
@@ -171,13 +137,10 @@ class _IndexModuleNamespace {
   final GetPlacementGroupResult = module_index.GetPlacementGroupResult.new;
   final GetPlacementGroupResultArgs = module_index.GetPlacementGroupResult.new;
   final GetPlacementGroupsArgs = module_index.GetPlacementGroupsArgs.new;
-  final GetPlacementGroupsPlacementGroup =
-      module_index.GetPlacementGroupsPlacementGroup.new;
-  final GetPlacementGroupsPlacementGroupArgs =
-      module_index.GetPlacementGroupsPlacementGroup.new;
+  final GetPlacementGroupsPlacementGroup = module_index.GetPlacementGroupsPlacementGroup.new;
+  final GetPlacementGroupsPlacementGroupArgs = module_index.GetPlacementGroupsPlacementGroup.new;
   final GetPlacementGroupsResult = module_index.GetPlacementGroupsResult.new;
-  final GetPlacementGroupsResultArgs =
-      module_index.GetPlacementGroupsResult.new;
+  final GetPlacementGroupsResultArgs = module_index.GetPlacementGroupsResult.new;
   final GetPrimaryIpArgs = module_index.GetPrimaryIpArgs.new;
   final GetPrimaryIpResult = module_index.GetPrimaryIpResult.new;
   final GetPrimaryIpResultArgs = module_index.GetPrimaryIpResult.new;
@@ -199,12 +162,9 @@ class _IndexModuleNamespace {
   final GetServerTypesResult = module_index.GetServerTypesResult.new;
   final GetServerTypesResultArgs = module_index.GetServerTypesResult.new;
   final GetServerTypesServerType = module_index.GetServerTypesServerType.new;
-  final GetServerTypesServerTypeArgs =
-      module_index.GetServerTypesServerType.new;
-  final GetServerTypesServerTypeLocation =
-      module_index.GetServerTypesServerTypeLocation.new;
-  final GetServerTypesServerTypeLocationArgs =
-      module_index.GetServerTypesServerTypeLocation.new;
+  final GetServerTypesServerTypeArgs = module_index.GetServerTypesServerType.new;
+  final GetServerTypesServerTypeLocation = module_index.GetServerTypesServerTypeLocation.new;
+  final GetServerTypesServerTypeLocationArgs = module_index.GetServerTypesServerTypeLocation.new;
   final GetServersArgs = module_index.GetServersArgs.new;
   final GetServersResult = module_index.GetServersResult.new;
   final GetServersResultArgs = module_index.GetServersResult.new;
@@ -220,87 +180,53 @@ class _IndexModuleNamespace {
   final GetSshKeysResultArgs = module_index.GetSshKeysResult.new;
   final GetSshKeysSshKey = module_index.GetSshKeysSshKey.new;
   final GetSshKeysSshKeyArgs = module_index.GetSshKeysSshKey.new;
-  final GetStorageBoxAccessSettings =
-      module_index.GetStorageBoxAccessSettings.new;
-  final GetStorageBoxAccessSettingsArgs =
-      module_index.GetStorageBoxAccessSettings.new;
+  final GetStorageBoxAccessSettings = module_index.GetStorageBoxAccessSettings.new;
+  final GetStorageBoxAccessSettingsArgs = module_index.GetStorageBoxAccessSettings.new;
   final GetStorageBoxArgs = module_index.GetStorageBoxArgs.new;
   final GetStorageBoxResult = module_index.GetStorageBoxResult.new;
   final GetStorageBoxResultArgs = module_index.GetStorageBoxResult.new;
   final GetStorageBoxSnapshotArgs = module_index.GetStorageBoxSnapshotArgs.new;
   final GetStorageBoxSnapshotPlan = module_index.GetStorageBoxSnapshotPlan.new;
-  final GetStorageBoxSnapshotPlanArgs =
-      module_index.GetStorageBoxSnapshotPlan.new;
-  final GetStorageBoxSnapshotResult =
-      module_index.GetStorageBoxSnapshotResult.new;
-  final GetStorageBoxSnapshotResultArgs =
-      module_index.GetStorageBoxSnapshotResult.new;
-  final GetStorageBoxSnapshotStats =
-      module_index.GetStorageBoxSnapshotStats.new;
-  final GetStorageBoxSnapshotStatsArgs =
-      module_index.GetStorageBoxSnapshotStats.new;
-  final GetStorageBoxSnapshotsArgs =
-      module_index.GetStorageBoxSnapshotsArgs.new;
-  final GetStorageBoxSnapshotsResult =
-      module_index.GetStorageBoxSnapshotsResult.new;
-  final GetStorageBoxSnapshotsResultArgs =
-      module_index.GetStorageBoxSnapshotsResult.new;
-  final GetStorageBoxSnapshotsSnapshot =
-      module_index.GetStorageBoxSnapshotsSnapshot.new;
-  final GetStorageBoxSnapshotsSnapshotArgs =
-      module_index.GetStorageBoxSnapshotsSnapshot.new;
-  final GetStorageBoxSnapshotsSnapshotStats =
-      module_index.GetStorageBoxSnapshotsSnapshotStats.new;
-  final GetStorageBoxSnapshotsSnapshotStatsArgs =
-      module_index.GetStorageBoxSnapshotsSnapshotStats.new;
-  final GetStorageBoxSubaccountAccessSettings =
-      module_index.GetStorageBoxSubaccountAccessSettings.new;
-  final GetStorageBoxSubaccountAccessSettingsArgs =
-      module_index.GetStorageBoxSubaccountAccessSettings.new;
-  final GetStorageBoxSubaccountArgs =
-      module_index.GetStorageBoxSubaccountArgs.new;
-  final GetStorageBoxSubaccountResult =
-      module_index.GetStorageBoxSubaccountResult.new;
-  final GetStorageBoxSubaccountResultArgs =
-      module_index.GetStorageBoxSubaccountResult.new;
-  final GetStorageBoxSubaccountsArgs =
-      module_index.GetStorageBoxSubaccountsArgs.new;
-  final GetStorageBoxSubaccountsResult =
-      module_index.GetStorageBoxSubaccountsResult.new;
-  final GetStorageBoxSubaccountsResultArgs =
-      module_index.GetStorageBoxSubaccountsResult.new;
-  final GetStorageBoxSubaccountsSubaccount =
-      module_index.GetStorageBoxSubaccountsSubaccount.new;
-  final GetStorageBoxSubaccountsSubaccountAccessSettings =
-      module_index.GetStorageBoxSubaccountsSubaccountAccessSettings.new;
-  final GetStorageBoxSubaccountsSubaccountAccessSettingsArgs =
-      module_index.GetStorageBoxSubaccountsSubaccountAccessSettings.new;
-  final GetStorageBoxSubaccountsSubaccountArgs =
-      module_index.GetStorageBoxSubaccountsSubaccount.new;
+  final GetStorageBoxSnapshotPlanArgs = module_index.GetStorageBoxSnapshotPlan.new;
+  final GetStorageBoxSnapshotResult = module_index.GetStorageBoxSnapshotResult.new;
+  final GetStorageBoxSnapshotResultArgs = module_index.GetStorageBoxSnapshotResult.new;
+  final GetStorageBoxSnapshotStats = module_index.GetStorageBoxSnapshotStats.new;
+  final GetStorageBoxSnapshotStatsArgs = module_index.GetStorageBoxSnapshotStats.new;
+  final GetStorageBoxSnapshotsArgs = module_index.GetStorageBoxSnapshotsArgs.new;
+  final GetStorageBoxSnapshotsResult = module_index.GetStorageBoxSnapshotsResult.new;
+  final GetStorageBoxSnapshotsResultArgs = module_index.GetStorageBoxSnapshotsResult.new;
+  final GetStorageBoxSnapshotsSnapshot = module_index.GetStorageBoxSnapshotsSnapshot.new;
+  final GetStorageBoxSnapshotsSnapshotArgs = module_index.GetStorageBoxSnapshotsSnapshot.new;
+  final GetStorageBoxSnapshotsSnapshotStats = module_index.GetStorageBoxSnapshotsSnapshotStats.new;
+  final GetStorageBoxSnapshotsSnapshotStatsArgs = module_index.GetStorageBoxSnapshotsSnapshotStats.new;
+  final GetStorageBoxSubaccountAccessSettings = module_index.GetStorageBoxSubaccountAccessSettings.new;
+  final GetStorageBoxSubaccountAccessSettingsArgs = module_index.GetStorageBoxSubaccountAccessSettings.new;
+  final GetStorageBoxSubaccountArgs = module_index.GetStorageBoxSubaccountArgs.new;
+  final GetStorageBoxSubaccountResult = module_index.GetStorageBoxSubaccountResult.new;
+  final GetStorageBoxSubaccountResultArgs = module_index.GetStorageBoxSubaccountResult.new;
+  final GetStorageBoxSubaccountsArgs = module_index.GetStorageBoxSubaccountsArgs.new;
+  final GetStorageBoxSubaccountsResult = module_index.GetStorageBoxSubaccountsResult.new;
+  final GetStorageBoxSubaccountsResultArgs = module_index.GetStorageBoxSubaccountsResult.new;
+  final GetStorageBoxSubaccountsSubaccount = module_index.GetStorageBoxSubaccountsSubaccount.new;
+  final GetStorageBoxSubaccountsSubaccountAccessSettings = module_index.GetStorageBoxSubaccountsSubaccountAccessSettings.new;
+  final GetStorageBoxSubaccountsSubaccountAccessSettingsArgs = module_index.GetStorageBoxSubaccountsSubaccountAccessSettings.new;
+  final GetStorageBoxSubaccountsSubaccountArgs = module_index.GetStorageBoxSubaccountsSubaccount.new;
   final GetStorageBoxTypeArgs = module_index.GetStorageBoxTypeArgs.new;
   final GetStorageBoxTypeResult = module_index.GetStorageBoxTypeResult.new;
   final GetStorageBoxTypeResultArgs = module_index.GetStorageBoxTypeResult.new;
   final GetStorageBoxTypesResult = module_index.GetStorageBoxTypesResult.new;
-  final GetStorageBoxTypesResultArgs =
-      module_index.GetStorageBoxTypesResult.new;
-  final GetStorageBoxTypesStorageBoxType =
-      module_index.GetStorageBoxTypesStorageBoxType.new;
-  final GetStorageBoxTypesStorageBoxTypeArgs =
-      module_index.GetStorageBoxTypesStorageBoxType.new;
+  final GetStorageBoxTypesResultArgs = module_index.GetStorageBoxTypesResult.new;
+  final GetStorageBoxTypesStorageBoxType = module_index.GetStorageBoxTypesStorageBoxType.new;
+  final GetStorageBoxTypesStorageBoxTypeArgs = module_index.GetStorageBoxTypesStorageBoxType.new;
   final GetStorageBoxesArgs = module_index.GetStorageBoxesArgs.new;
   final GetStorageBoxesResult = module_index.GetStorageBoxesResult.new;
   final GetStorageBoxesResultArgs = module_index.GetStorageBoxesResult.new;
   final GetStorageBoxesStorageBox = module_index.GetStorageBoxesStorageBox.new;
-  final GetStorageBoxesStorageBoxAccessSettings =
-      module_index.GetStorageBoxesStorageBoxAccessSettings.new;
-  final GetStorageBoxesStorageBoxAccessSettingsArgs =
-      module_index.GetStorageBoxesStorageBoxAccessSettings.new;
-  final GetStorageBoxesStorageBoxArgs =
-      module_index.GetStorageBoxesStorageBox.new;
-  final GetStorageBoxesStorageBoxSnapshotPlan =
-      module_index.GetStorageBoxesStorageBoxSnapshotPlan.new;
-  final GetStorageBoxesStorageBoxSnapshotPlanArgs =
-      module_index.GetStorageBoxesStorageBoxSnapshotPlan.new;
+  final GetStorageBoxesStorageBoxAccessSettings = module_index.GetStorageBoxesStorageBoxAccessSettings.new;
+  final GetStorageBoxesStorageBoxAccessSettingsArgs = module_index.GetStorageBoxesStorageBoxAccessSettings.new;
+  final GetStorageBoxesStorageBoxArgs = module_index.GetStorageBoxesStorageBox.new;
+  final GetStorageBoxesStorageBoxSnapshotPlan = module_index.GetStorageBoxesStorageBoxSnapshotPlan.new;
+  final GetStorageBoxesStorageBoxSnapshotPlanArgs = module_index.GetStorageBoxesStorageBoxSnapshotPlan.new;
   final GetVolumeArgs = module_index.GetVolumeArgs.new;
   final GetVolumeResult = module_index.GetVolumeResult.new;
   final GetVolumeResultArgs = module_index.GetVolumeResult.new;
@@ -310,13 +236,10 @@ class _IndexModuleNamespace {
   final GetVolumesVolume = module_index.GetVolumesVolume.new;
   final GetVolumesVolumeArgs = module_index.GetVolumesVolume.new;
   final GetZoneArgs = module_index.GetZoneArgs.new;
-  final GetZoneAuthoritativeNameservers =
-      module_index.GetZoneAuthoritativeNameservers.new;
-  final GetZoneAuthoritativeNameserversArgs =
-      module_index.GetZoneAuthoritativeNameservers.new;
+  final GetZoneAuthoritativeNameservers = module_index.GetZoneAuthoritativeNameservers.new;
+  final GetZoneAuthoritativeNameserversArgs = module_index.GetZoneAuthoritativeNameservers.new;
   final GetZonePrimaryNameserver = module_index.GetZonePrimaryNameserver.new;
-  final GetZonePrimaryNameserverArgs =
-      module_index.GetZonePrimaryNameserver.new;
+  final GetZonePrimaryNameserverArgs = module_index.GetZonePrimaryNameserver.new;
   final GetZoneResult = module_index.GetZoneResult.new;
   final GetZoneResultArgs = module_index.GetZoneResult.new;
   final GetZoneRrsetArgs = module_index.GetZoneRrsetArgs.new;
@@ -330,21 +253,16 @@ class _IndexModuleNamespace {
   final GetZoneRrsetsRrset = module_index.GetZoneRrsetsRrset.new;
   final GetZoneRrsetsRrsetArgs = module_index.GetZoneRrsetsRrset.new;
   final GetZoneRrsetsRrsetRecord = module_index.GetZoneRrsetsRrsetRecord.new;
-  final GetZoneRrsetsRrsetRecordArgs =
-      module_index.GetZoneRrsetsRrsetRecord.new;
+  final GetZoneRrsetsRrsetRecordArgs = module_index.GetZoneRrsetsRrsetRecord.new;
   final GetZonesArgs = module_index.GetZonesArgs.new;
   final GetZonesResult = module_index.GetZonesResult.new;
   final GetZonesResultArgs = module_index.GetZonesResult.new;
   final GetZonesZone = module_index.GetZonesZone.new;
   final GetZonesZoneArgs = module_index.GetZonesZone.new;
-  final GetZonesZoneAuthoritativeNameservers =
-      module_index.GetZonesZoneAuthoritativeNameservers.new;
-  final GetZonesZoneAuthoritativeNameserversArgs =
-      module_index.GetZonesZoneAuthoritativeNameservers.new;
-  final GetZonesZonePrimaryNameserver =
-      module_index.GetZonesZonePrimaryNameserver.new;
-  final GetZonesZonePrimaryNameserverArgs =
-      module_index.GetZonesZonePrimaryNameserver.new;
+  final GetZonesZoneAuthoritativeNameservers = module_index.GetZonesZoneAuthoritativeNameservers.new;
+  final GetZonesZoneAuthoritativeNameserversArgs = module_index.GetZonesZoneAuthoritativeNameservers.new;
+  final GetZonesZonePrimaryNameserver = module_index.GetZonesZonePrimaryNameserver.new;
+  final GetZonesZonePrimaryNameserverArgs = module_index.GetZonesZonePrimaryNameserver.new;
   final LoadBalancer = module_index.LoadBalancer.new;
   final LoadBalancerAlgorithm = module_index.LoadBalancerAlgorithm.new;
   final LoadBalancerAlgorithmArgs = module_index.LoadBalancerAlgorithm.new;
@@ -352,23 +270,17 @@ class _IndexModuleNamespace {
   final LoadBalancerNetwork = module_index.LoadBalancerNetwork.new;
   final LoadBalancerNetworkArgs = module_index.LoadBalancerNetworkArgs.new;
   final LoadBalancerNetworkState = module_index.LoadBalancerNetworkState.new;
-  final LoadBalancerNetworkStateArgs =
-      module_index.LoadBalancerNetworkState.new;
+  final LoadBalancerNetworkStateArgs = module_index.LoadBalancerNetworkState.new;
   final LoadBalancerService = module_index.LoadBalancerService.new;
   final LoadBalancerServiceArgs = module_index.LoadBalancerServiceArgs.new;
-  final LoadBalancerServiceHealthCheck =
-      module_index.LoadBalancerServiceHealthCheck.new;
-  final LoadBalancerServiceHealthCheckArgs =
-      module_index.LoadBalancerServiceHealthCheck.new;
-  final LoadBalancerServiceHealthCheckHttp =
-      module_index.LoadBalancerServiceHealthCheckHttp.new;
-  final LoadBalancerServiceHealthCheckHttpArgs =
-      module_index.LoadBalancerServiceHealthCheckHttp.new;
+  final LoadBalancerServiceHealthCheck = module_index.LoadBalancerServiceHealthCheck.new;
+  final LoadBalancerServiceHealthCheckArgs = module_index.LoadBalancerServiceHealthCheck.new;
+  final LoadBalancerServiceHealthCheckHttp = module_index.LoadBalancerServiceHealthCheckHttp.new;
+  final LoadBalancerServiceHealthCheckHttpArgs = module_index.LoadBalancerServiceHealthCheckHttp.new;
   final LoadBalancerServiceHttp = module_index.LoadBalancerServiceHttp.new;
   final LoadBalancerServiceHttpArgs = module_index.LoadBalancerServiceHttp.new;
   final LoadBalancerServiceState = module_index.LoadBalancerServiceState.new;
-  final LoadBalancerServiceStateArgs =
-      module_index.LoadBalancerServiceState.new;
+  final LoadBalancerServiceStateArgs = module_index.LoadBalancerServiceState.new;
   final LoadBalancerState = module_index.LoadBalancerState.new;
   final LoadBalancerStateArgs = module_index.LoadBalancerState.new;
   final LoadBalancerTarget = module_index.LoadBalancerTarget.new;
@@ -423,8 +335,7 @@ class _IndexModuleNamespace {
   final SshKeyStateArgs = module_index.SshKeyState.new;
   final StorageBox = module_index.StorageBox.new;
   final StorageBoxAccessSettings = module_index.StorageBoxAccessSettings.new;
-  final StorageBoxAccessSettingsArgs =
-      module_index.StorageBoxAccessSettings.new;
+  final StorageBoxAccessSettingsArgs = module_index.StorageBoxAccessSettings.new;
   final StorageBoxArgs = module_index.StorageBoxArgs.new;
   final StorageBoxSnapshot = module_index.StorageBoxSnapshot.new;
   final StorageBoxSnapshotArgs = module_index.StorageBoxSnapshotArgs.new;
@@ -435,19 +346,15 @@ class _IndexModuleNamespace {
   final StorageBoxState = module_index.StorageBoxState.new;
   final StorageBoxStateArgs = module_index.StorageBoxState.new;
   final StorageBoxSubaccount = module_index.StorageBoxSubaccount.new;
-  final StorageBoxSubaccountAccessSettings =
-      module_index.StorageBoxSubaccountAccessSettings.new;
-  final StorageBoxSubaccountAccessSettingsArgs =
-      module_index.StorageBoxSubaccountAccessSettings.new;
+  final StorageBoxSubaccountAccessSettings = module_index.StorageBoxSubaccountAccessSettings.new;
+  final StorageBoxSubaccountAccessSettingsArgs = module_index.StorageBoxSubaccountAccessSettings.new;
   final StorageBoxSubaccountArgs = module_index.StorageBoxSubaccountArgs.new;
   final StorageBoxSubaccountState = module_index.StorageBoxSubaccountState.new;
-  final StorageBoxSubaccountStateArgs =
-      module_index.StorageBoxSubaccountState.new;
+  final StorageBoxSubaccountStateArgs = module_index.StorageBoxSubaccountState.new;
   final UploadedCertificate = module_index.UploadedCertificate.new;
   final UploadedCertificateArgs = module_index.UploadedCertificateArgs.new;
   final UploadedCertificateState = module_index.UploadedCertificateState.new;
-  final UploadedCertificateStateArgs =
-      module_index.UploadedCertificateState.new;
+  final UploadedCertificateStateArgs = module_index.UploadedCertificateState.new;
   final Volume = module_index.Volume.new;
   final VolumeArgs = module_index.VolumeArgs.new;
   final VolumeAttachment = module_index.VolumeAttachment.new;
@@ -458,10 +365,8 @@ class _IndexModuleNamespace {
   final VolumeStateArgs = module_index.VolumeState.new;
   final Zone = module_index.Zone.new;
   final ZoneArgs = module_index.ZoneArgs.new;
-  final ZoneAuthoritativeNameservers =
-      module_index.ZoneAuthoritativeNameservers.new;
-  final ZoneAuthoritativeNameserversArgs =
-      module_index.ZoneAuthoritativeNameservers.new;
+  final ZoneAuthoritativeNameservers = module_index.ZoneAuthoritativeNameservers.new;
+  final ZoneAuthoritativeNameserversArgs = module_index.ZoneAuthoritativeNameservers.new;
   final ZonePrimaryNameserver = module_index.ZonePrimaryNameserver.new;
   final ZonePrimaryNameserverArgs = module_index.ZonePrimaryNameserver.new;
   final ZoneRecord = module_index.ZoneRecord.new;
@@ -525,10 +430,8 @@ class _ProvidersModuleNamespace {
   final Hcloud = module_providers.ProviderProvider.new;
   final HcloudArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
-  final ProviderTerraformConfigResult =
-      module_providers.ProviderTerraformConfigResult.new;
-  final ProviderTerraformConfigResultArgs =
-      module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResult = module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResultArgs = module_providers.ProviderTerraformConfigResult.new;
   final TerraformConfigArgs = module_providers.TerraformConfigArgs.new;
   final TerraformConfigResult = module_providers.TerraformConfigResult.new;
   final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;

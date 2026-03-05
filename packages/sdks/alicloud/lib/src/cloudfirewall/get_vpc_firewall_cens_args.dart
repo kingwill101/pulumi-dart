@@ -9,30 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcFirewallCensArgs {
   /// The ID of the CEN instance.
   final pulumi.Input<String>? cenId;
-
   /// A list of Vpc Firewall Cen IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
   final pulumi.Input<String>? lang;
-
   /// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
   final pulumi.Input<String>? memberUid;
-
   /// The ID of the VPC instance that created the VPC firewall.
   final pulumi.Input<String>? networkInstanceId;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
   final pulumi.Input<int>? pageNumber;
   final pulumi.Input<int>? pageSize;
-
   /// Firewall switch status
   final pulumi.Input<String>? status;
-
   /// VPC firewall ID
   final pulumi.Input<String>? vpcFirewallId;
-
   /// The name of the VPC firewall instance.
   final pulumi.Input<String>? vpcFirewallName;
 
@@ -80,61 +72,18 @@ class GetVpcFirewallCensArgs {
 
   factory GetVpcFirewallCensArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallCensArgs(
-      cenId: (() {
-        final guardedValue = map['cenId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      lang: (() {
-        final guardedValue = map['lang'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      memberUid: (() {
-        final guardedValue = map['memberUid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkInstanceId: (() {
-        final guardedValue = map['networkInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vpcFirewallId: (() {
-        final guardedValue = map['vpcFirewallId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vpcFirewallName: (() {
-        final guardedValue = map['vpcFirewallName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cenId: (() { final guardedValue = map['cenId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      lang: (() { final guardedValue = map['lang']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memberUid: (() { final guardedValue = map['memberUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkInstanceId: (() { final guardedValue = map['networkInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vpcFirewallId: (() { final guardedValue = map['vpcFirewallId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vpcFirewallName: (() { final guardedValue = map['vpcFirewallName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

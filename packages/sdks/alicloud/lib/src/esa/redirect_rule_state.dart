@@ -6,33 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RedirectRuleState {
   /// Config Id
   final pulumi.Input<int>? configId;
-
   /// Indicates whether the feature of retaining the query string is enabled. Valid values:
   ///
   /// - on
   /// - off
   final pulumi.Input<String>? reserveQueryString;
-
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// ● Match all incoming requests: value set to true
   /// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
   final pulumi.Input<String>? rule;
-
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   final pulumi.Input<String>? ruleEnable;
-
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   final pulumi.Input<String>? ruleName;
-
   /// Order of rule execution. The smaller the value, the higher the priority for execution.
   final pulumi.Input<int>? sequence;
-
   /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
   final pulumi.Input<String>? siteId;
-
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   final pulumi.Input<int>? siteVersion;
-
   /// The response code that you want to use to indicate URL redirection. Valid values:
   ///
   /// - 301
@@ -41,10 +33,8 @@ class RedirectRuleState {
   /// - 307
   /// - 308
   final pulumi.Input<String>? statusCode;
-
   /// The destination URL to which requests are redirected.
   final pulumi.Input<String>? targetUrl;
-
   /// The redirection type. Value range:
   /// - static: static mode.
   /// - dynamic: dynamic mode.
@@ -94,61 +84,18 @@ class RedirectRuleState {
 
   factory RedirectRuleState.fromMap(Map<String, dynamic> map) {
     return RedirectRuleState(
-      configId: (() {
-        final guardedValue = map['configId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      reserveQueryString: (() {
-        final guardedValue = map['reserveQueryString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rule: (() {
-        final guardedValue = map['rule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ruleEnable: (() {
-        final guardedValue = map['ruleEnable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ruleName: (() {
-        final guardedValue = map['ruleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sequence: (() {
-        final guardedValue = map['sequence'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      siteId: (() {
-        final guardedValue = map['siteId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      siteVersion: (() {
-        final guardedValue = map['siteVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      statusCode: (() {
-        final guardedValue = map['statusCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetUrl: (() {
-        final guardedValue = map['targetUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      configId: (() { final guardedValue = map['configId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      reserveQueryString: (() { final guardedValue = map['reserveQueryString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rule: (() { final guardedValue = map['rule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleEnable: (() { final guardedValue = map['ruleEnable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sequence: (() { final guardedValue = map['sequence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      siteVersion: (() { final guardedValue = map['siteVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetUrl: (() { final guardedValue = map['targetUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

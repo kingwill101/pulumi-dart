@@ -181,17 +181,13 @@ import 'waf_ruleset_state.dart';
 class WafRuleset extends pulumi.CustomResource {
   /// The ruleset name.
   late final pulumi.Output<String> name;
-
   /// The WAF phase
   late final pulumi.Output<String> phase;
-
   /// waf rule set id
   late final pulumi.Output<int> rulesetId;
-
   /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
   late final pulumi.Output<String> siteId;
   late final pulumi.Output<int?> siteVersion;
-
   /// Rule Set Status
   late final pulumi.Output<String> status;
 
@@ -204,11 +200,11 @@ class WafRuleset extends pulumi.CustomResource {
     WafRulesetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/wafRuleset:WafRuleset',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/wafRuleset:WafRuleset',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     phase = registerOutput<String>('phase');
     rulesetId = registerOutput<int>('rulesetId');
@@ -235,11 +231,11 @@ class WafRuleset extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/wafRuleset:WafRuleset',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/wafRuleset:WafRuleset',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     phase = registerOutput<String>('phase');
     rulesetId = registerOutput<int>('rulesetId');

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessGrantGrantee {
   /// Grantee identifier.
   final pulumi.Input<String> granteeIdentifier;
-
   /// Grantee types. Valid values: `DIRECTORY_USER`, `DIRECTORY_GROUP`, `IAM`.
   final pulumi.Input<String> granteeType;
 
@@ -26,10 +25,9 @@ class AccessGrantGrantee {
 
   factory AccessGrantGrantee.fromMap(Map<String, dynamic> map) {
     return AccessGrantGrantee(
-      granteeIdentifier: pulumi.Input.fromValue(
-        map['granteeIdentifier'] as String,
-      ),
+      granteeIdentifier: pulumi.Input.fromValue(map['granteeIdentifier'] as String),
       granteeType: pulumi.Input.fromValue(map['granteeType'] as String),
     );
   }
 }
+

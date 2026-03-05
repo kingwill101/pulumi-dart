@@ -10,10 +10,14 @@ class GroupInitContainerSecurity {
 
   /// Creates a new [GroupInitContainerSecurity].
   /// [privilegeEnabled] Whether the container's permission is elevated to privileged? Changing this forces a new resource to be created.
-  GroupInitContainerSecurity({required this.privilegeEnabled});
+  GroupInitContainerSecurity({
+    required this.privilegeEnabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'privilegeEnabled': privilegeEnabled};
+    return <String, dynamic>{
+      'privilegeEnabled': privilegeEnabled,
+    };
   }
 
   factory GroupInitContainerSecurity.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class GroupInitContainerSecurity {
     );
   }
 }
+

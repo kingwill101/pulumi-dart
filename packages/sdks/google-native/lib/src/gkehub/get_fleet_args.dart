@@ -15,7 +15,11 @@ class GetFleetArgs {
   /// [fleetId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFleetArgs({required this.fleetId, required this.location, this.project});
+  GetFleetArgs({
+    required this.fleetId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,11 +33,8 @@ class GetFleetArgs {
     return GetFleetArgs(
       fleetId: pulumi.Input.fromValue(map['fleetId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

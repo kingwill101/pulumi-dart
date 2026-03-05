@@ -242,45 +242,31 @@ import 'system_data_response.dart';
 class AFDCustomDomain extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource reference to the Azure DNS zone
   late final pulumi.Output<ResourceReferenceResponse?> azureDnsZone;
   late final pulumi.Output<String> deploymentStatus;
-
   /// Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. DCV stands for DomainControlValidation.
   late final pulumi.Output<String> domainValidationState;
-
   /// Key-Value pair representing migration properties for domains.
   late final pulumi.Output<Map<String, String>?> extendedProperties;
-
   /// The host name of the domain. Must be a domain name.
   late final pulumi.Output<String> hostName;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Resource reference to the Azure resource where custom domain ownership was prevalidated
-  late final pulumi.Output<ResourceReferenceResponse?>
-  preValidatedCustomDomainResourceId;
-
+  late final pulumi.Output<ResourceReferenceResponse?> preValidatedCustomDomainResourceId;
   /// The name of the profile which holds the domain.
   late final pulumi.Output<String> profileName;
-
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
   late final pulumi.Output<AFDDomainHttpsParametersResponse?> tlsSettings;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Values the customer needs to validate domain ownership
-  late final pulumi.Output<DomainValidationPropertiesResponse>
-  validationProperties;
+  late final pulumi.Output<DomainValidationPropertiesResponse> validationProperties;
 
   /// Creates a new [AFDCustomDomain].
   /// [name] The Pulumi resource name.
@@ -291,72 +277,24 @@ class AFDCustomDomain extends pulumi.CustomResource {
     AFDCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cdn:AFDCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cdn:AFDCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    azureDnsZone = registerOutput<ResourceReferenceResponse?>(
-      'azureDnsZone',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceReferenceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    azureDnsZone = registerOutput<ResourceReferenceResponse?>('azureDnsZone', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deploymentStatus = registerOutput<String>('deploymentStatus');
     domainValidationState = registerOutput<String>('domainValidationState');
-    extendedProperties = registerOutput<Map<String, String>?>(
-      'extendedProperties',
-    );
+    extendedProperties = registerOutput<Map<String, String>?>('extendedProperties');
     hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    preValidatedCustomDomainResourceId =
-        registerOutput<ResourceReferenceResponse?>(
-          'preValidatedCustomDomainResourceId',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ResourceReferenceResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    preValidatedCustomDomainResourceId = registerOutput<ResourceReferenceResponse?>('preValidatedCustomDomainResourceId', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     profileName = registerOutput<String>('profileName');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    tlsSettings = registerOutput<AFDDomainHttpsParametersResponse?>(
-      'tlsSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AFDDomainHttpsParametersResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tlsSettings = registerOutput<AFDDomainHttpsParametersResponse?>('tlsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AFDDomainHttpsParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    validationProperties = registerOutput<DomainValidationPropertiesResponse>(
-      'validationProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainValidationPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    validationProperties = registerOutput<DomainValidationPropertiesResponse>('validationProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainValidationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

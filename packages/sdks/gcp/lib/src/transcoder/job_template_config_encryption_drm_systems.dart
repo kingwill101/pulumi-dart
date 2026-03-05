@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobTemplateConfigEncryptionDrmSystems {
   /// Clearkey configuration.
   final pulumi.Input<Map<String, dynamic>>? clearkey;
-
   /// Fairplay configuration.
   final pulumi.Input<Map<String, dynamic>>? fairplay;
-
   /// Playready configuration.
   final pulumi.Input<Map<String, dynamic>>? playready;
-
   /// Widevine configuration.
   final pulumi.Input<Map<String, dynamic>>? widevine;
 
@@ -36,38 +33,13 @@ class JobTemplateConfigEncryptionDrmSystems {
     };
   }
 
-  factory JobTemplateConfigEncryptionDrmSystems.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobTemplateConfigEncryptionDrmSystems.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigEncryptionDrmSystems(
-      clearkey: (() {
-        final guardedValue = map['clearkey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      fairplay: (() {
-        final guardedValue = map['fairplay'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      playready: (() {
-        final guardedValue = map['playready'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      widevine: (() {
-        final guardedValue = map['widevine'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      clearkey: (() { final guardedValue = map['clearkey']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      fairplay: (() { final guardedValue = map['fairplay']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      playready: (() { final guardedValue = map['playready']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      widevine: (() { final guardedValue = map['widevine']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

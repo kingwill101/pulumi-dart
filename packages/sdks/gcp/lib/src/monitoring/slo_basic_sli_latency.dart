@@ -10,10 +10,14 @@ class SloBasicSliLatency {
 
   /// Creates a new [SloBasicSliLatency].
   /// [threshold] A duration string, e.g. 10s.
-  SloBasicSliLatency({required this.threshold});
+  SloBasicSliLatency({
+    required this.threshold,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'threshold': threshold};
+    return <String, dynamic>{
+      'threshold': threshold,
+    };
   }
 
   factory SloBasicSliLatency.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class SloBasicSliLatency {
     );
   }
 }
+

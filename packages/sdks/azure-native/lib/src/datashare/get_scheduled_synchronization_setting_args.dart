@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScheduledSynchronizationSettingArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the share.
   final pulumi.Input<String> shareName;
-
   /// The name of the synchronizationSetting.
   final pulumi.Input<String> synchronizationSettingName;
 
@@ -40,18 +37,13 @@ class GetScheduledSynchronizationSettingArgs {
     };
   }
 
-  factory GetScheduledSynchronizationSettingArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetScheduledSynchronizationSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduledSynchronizationSettingArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       shareName: pulumi.Input.fromValue(map['shareName'] as String),
-      synchronizationSettingName: pulumi.Input.fromValue(
-        map['synchronizationSettingName'] as String,
-      ),
+      synchronizationSettingName: pulumi.Input.fromValue(map['synchronizationSettingName'] as String),
     );
   }
 }
+

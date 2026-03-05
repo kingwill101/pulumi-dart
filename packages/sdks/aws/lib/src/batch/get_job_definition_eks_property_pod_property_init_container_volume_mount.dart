@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobDefinitionEksPropertyPodPropertyInitContainerVolumeMount {
   /// The path on the container where the volume is mounted.
   final pulumi.Input<String> mountPath;
-
   /// The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   final pulumi.Input<String> name;
-
   /// If this value is true, the container has read-only access to the volume.
   final pulumi.Input<bool> readOnly;
 
@@ -30,9 +28,7 @@ class GetJobDefinitionEksPropertyPodPropertyInitContainerVolumeMount {
     };
   }
 
-  factory GetJobDefinitionEksPropertyPodPropertyInitContainerVolumeMount.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetJobDefinitionEksPropertyPodPropertyInitContainerVolumeMount.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionEksPropertyPodPropertyInitContainerVolumeMount(
       mountPath: pulumi.Input.fromValue(map['mountPath'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -40,3 +36,4 @@ class GetJobDefinitionEksPropertyPodPropertyInitContainerVolumeMount {
     );
   }
 }
+

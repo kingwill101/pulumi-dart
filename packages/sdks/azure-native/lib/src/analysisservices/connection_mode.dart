@@ -15,3 +15,4 @@ enum ConnectionMode {
     throw ArgumentError('Unknown ConnectionMode value: $value');
   }
 }
+

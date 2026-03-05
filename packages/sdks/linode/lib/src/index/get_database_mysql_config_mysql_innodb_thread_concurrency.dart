@@ -37,9 +37,7 @@ class GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency(
       description: pulumi.Input.fromValue(map['description'] as String),
       example: pulumi.Input.fromValue(map['example'] as int),
@@ -50,3 +48,4 @@ class GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency {
     );
   }
 }
+

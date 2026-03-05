@@ -131,8 +131,7 @@ Future<GetTriggerEventarcV1beta1Result> getTriggerEventarcV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventarc_v1beta1_get_trigger_iam_policy_eventarc_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTriggerIamPolicyEventarcV1beta1Result>
-getTriggerIamPolicyEventarcV1beta1(
+Future<GetTriggerIamPolicyEventarcV1beta1Result> getTriggerIamPolicyEventarcV1beta1(
   GetTriggerIamPolicyEventarcV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

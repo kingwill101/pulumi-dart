@@ -14,19 +14,12 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec {
   /// Setting to 0.0 means no boost applied. The boosting condition is
   /// ignored.
   final pulumi.Input<double>? boost;
-
   /// (Output)
   /// Specification for custom ranking based on customer specified attribute
   /// value. It provides more controls for customized ranking than the simple
   /// (condition, boost) combination above.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<
-      AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec
-    >
-  >?
-  boostControlSpecs;
-
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec>>? boostControlSpecs;
   /// (Output)
   /// An expression which specifies a boost condition. The syntax is the same
   /// as filter expression syntax. Currently, the only supported condition is
@@ -48,53 +41,17 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'boost': ?boost,
-      'boostControlSpecs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec
-            >,
-            List<Map<String, dynamic>>
-          >(
-            boostControlSpecs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'boostControlSpecs': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec>, List<Map<String, dynamic>>>(boostControlSpecs, (value) => pulumi.Input.encodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
       'condition': ?condition,
     };
   }
 
-  factory AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec(
-      boost: (() {
-        final guardedValue = map['boost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      boostControlSpecs: (() {
-        final guardedValue = map['boostControlSpecs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec
-          >(
-            guardedValue,
-            (value) =>
-                AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      boost: (() { final guardedValue = map['boost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      boostControlSpecs: (() { final guardedValue = map['boostControlSpecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec>(guardedValue, (value) => AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

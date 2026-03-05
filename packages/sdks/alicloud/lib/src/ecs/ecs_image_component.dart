@@ -197,29 +197,22 @@ class EcsImageComponent extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
   late final pulumi.Output<String> componentType;
-
   /// The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
   ///
   /// Default value:(x +1).0.0, where x is the maximum major version of the current component.
   late final pulumi.Output<String> componentVersion;
-
   /// Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
   late final pulumi.Output<String> content;
-
   /// Component creation time.
   late final pulumi.Output<String> createTime;
-
   /// Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
   late final pulumi.Output<String?> description;
-
   /// The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
   ///
   /// &gt; **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
   late final pulumi.Output<String> imageComponentName;
-
   /// The ID of the enterprise resource group to which the created image component belongs.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The operating system supported by the component.
   ///
   /// Value range:
@@ -228,7 +221,6 @@ class EcsImageComponent extends pulumi.CustomResource {
   ///
   /// Default value: Linux.
   late final pulumi.Output<String> systemType;
-
   /// List of label key-value pairs.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -241,11 +233,11 @@ class EcsImageComponent extends pulumi.CustomResource {
     EcsImageComponentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsImageComponent:EcsImageComponent',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsImageComponent:EcsImageComponent',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     componentType = registerOutput<String>('componentType');
     componentVersion = registerOutput<String>('componentVersion');
     content = registerOutput<String>('content');
@@ -275,11 +267,11 @@ class EcsImageComponent extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsImageComponent:EcsImageComponent',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsImageComponent:EcsImageComponent',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     componentType = registerOutput<String>('componentType');
     componentVersion = registerOutput<String>('componentVersion');
     content = registerOutput<String>('content');

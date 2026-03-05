@@ -36,15 +36,10 @@ class GetMetadataSchemaArgs {
   factory GetMetadataSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetMetadataSchemaArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      metadataSchemaId: pulumi.Input.fromValue(
-        map['metadataSchemaId'] as String,
-      ),
+      metadataSchemaId: pulumi.Input.fromValue(map['metadataSchemaId'] as String),
       metadataStoreId: pulumi.Input.fromValue(map['metadataStoreId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

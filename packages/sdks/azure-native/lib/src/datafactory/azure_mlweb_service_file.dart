@@ -7,7 +7,6 @@ import 'linked_service_reference.dart';
 class AzureMLWebServiceFile {
   /// The relative file path, including container name, in the Azure Blob Storage specified by the LinkedService. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> filePath;
-
   /// Reference to an Azure Storage LinkedService, where Azure ML WebService Input/Output file located.
   final pulumi.Input<LinkedServiceReference> linkedServiceName;
 
@@ -22,22 +21,15 @@ class AzureMLWebServiceFile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filePath': filePath,
-      'linkedServiceName':
-          pulumi.Input.mapInputValue<
-            LinkedServiceReference,
-            Map<String, dynamic>
-          >(linkedServiceName, (value) => value.toMap()),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
     };
   }
 
   factory AzureMLWebServiceFile.fromMap(Map<String, dynamic> map) {
     return AzureMLWebServiceFile(
       filePath: pulumi.Input.fromValue(map['filePath']),
-      linkedServiceName: pulumi.Input.fromValue(
-        LinkedServiceReference.fromMap(
-          (map['linkedServiceName']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      linkedServiceName: pulumi.Input.fromValue(LinkedServiceReference.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -668,48 +668,34 @@ import 'kx_environment_transit_gateway_configuration.dart';
 class KxEnvironment extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) identifier of the KX environment.
   late final pulumi.Output<String> arn;
-
   /// AWS Availability Zone IDs that this environment is available in. Important when selecting VPC subnets to use in cluster creation.
   late final pulumi.Output<List<String>> availabilityZones;
-
   /// Timestamp at which the environment is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   late final pulumi.Output<String> createdTimestamp;
-
   /// List of DNS server name and server IP. This is used to set up Route-53 outbound resolvers. Defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> customDnsConfigurations;
-
   /// Description for the KX environment.
   late final pulumi.Output<String?> description;
-
   /// Unique identifier for the AWS environment infrastructure account.
   late final pulumi.Output<String> infrastructureAccountId;
-
   /// KMS key ID to encrypt your data in the FinSpace environment.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> kmsKeyId;
-
   /// Last timestamp at which the environment was updated in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   late final pulumi.Output<String> lastModifiedTimestamp;
-
   /// Name of the KX environment that you want to create.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Status of environment creation
   late final pulumi.Output<String> status;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Transit gateway and network configuration that is used to connect the KX environment to an internal network. Defined below.
-  late final pulumi.Output<KxEnvironmentTransitGatewayConfiguration?>
-  transitGatewayConfiguration;
+  late final pulumi.Output<KxEnvironmentTransitGatewayConfiguration?> transitGatewayConfiguration;
 
   /// Creates a new [KxEnvironment].
   /// [name] The Pulumi resource name.
@@ -720,17 +706,15 @@ class KxEnvironment extends pulumi.CustomResource {
     KxEnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:finspace/kxEnvironment:KxEnvironment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:finspace/kxEnvironment:KxEnvironment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     availabilityZones = registerOutput<List<String>>('availabilityZones');
     createdTimestamp = registerOutput<String>('createdTimestamp');
-    customDnsConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'customDnsConfigurations',
-    );
+    customDnsConfigurations = registerOutput<List<Map<String, dynamic>>?>('customDnsConfigurations');
     description = registerOutput<String?>('description');
     infrastructureAccountId = registerOutput<String>('infrastructureAccountId');
     kmsKeyId = registerOutput<String>('kmsKeyId');
@@ -740,17 +724,7 @@ class KxEnvironment extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    transitGatewayConfiguration =
-        registerOutput<KxEnvironmentTransitGatewayConfiguration?>(
-          'transitGatewayConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return KxEnvironmentTransitGatewayConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    transitGatewayConfiguration = registerOutput<KxEnvironmentTransitGatewayConfiguration?>('transitGatewayConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxEnvironmentTransitGatewayConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [KxEnvironment] resource's state with the given [name] and [id].
@@ -771,17 +745,15 @@ class KxEnvironment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:finspace/kxEnvironment:KxEnvironment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:finspace/kxEnvironment:KxEnvironment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     availabilityZones = registerOutput<List<String>>('availabilityZones');
     createdTimestamp = registerOutput<String>('createdTimestamp');
-    customDnsConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'customDnsConfigurations',
-    );
+    customDnsConfigurations = registerOutput<List<Map<String, dynamic>>?>('customDnsConfigurations');
     description = registerOutput<String?>('description');
     infrastructureAccountId = registerOutput<String>('infrastructureAccountId');
     kmsKeyId = registerOutput<String>('kmsKeyId');
@@ -791,16 +763,6 @@ class KxEnvironment extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    transitGatewayConfiguration =
-        registerOutput<KxEnvironmentTransitGatewayConfiguration?>(
-          'transitGatewayConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return KxEnvironmentTransitGatewayConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    transitGatewayConfiguration = registerOutput<KxEnvironmentTransitGatewayConfiguration?>('transitGatewayConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxEnvironmentTransitGatewayConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

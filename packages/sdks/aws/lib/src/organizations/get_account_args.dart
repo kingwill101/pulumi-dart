@@ -9,29 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountArgs {
   /// Account ID number of a delegated administrator account in the organization.
   final pulumi.Input<String> accountId;
-
   /// Map of tags for the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetAccountArgs].
   /// [accountId] Account ID number of a delegated administrator account in the organization.
   /// [tags] Map of tags for the resource.
-  GetAccountArgs({required this.accountId, this.tags});
+  GetAccountArgs({
+    required this.accountId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accountId': accountId, 'tags': ?tags};
+    return <String, dynamic>{
+      'accountId': accountId,
+      'tags': ?tags,
+    };
   }
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

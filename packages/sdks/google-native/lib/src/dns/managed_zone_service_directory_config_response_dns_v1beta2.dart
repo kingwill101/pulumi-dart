@@ -6,12 +6,8 @@ import 'managed_zone_service_directory_config_namespace_response_dns_v1beta2.dar
 /// Contains information about Service Directory-backed zones.
 class ManagedZoneServiceDirectoryConfigResponseDnsV1beta2 {
   final pulumi.Input<String> kind;
-
   /// Contains information about the namespace associated with the zone.
-  final pulumi.Input<
-    ManagedZoneServiceDirectoryConfigNamespaceResponseDnsV1beta2
-  >
-  namespace;
+  final pulumi.Input<ManagedZoneServiceDirectoryConfigNamespaceResponseDnsV1beta2> namespace;
 
   /// Creates a new [ManagedZoneServiceDirectoryConfigResponseDnsV1beta2].
   /// [kind] Required.
@@ -24,24 +20,15 @@ class ManagedZoneServiceDirectoryConfigResponseDnsV1beta2 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kind': kind,
-      'namespace':
-          pulumi.Input.mapInputValue<
-            ManagedZoneServiceDirectoryConfigNamespaceResponseDnsV1beta2,
-            Map<String, dynamic>
-          >(namespace, (value) => value.toMap()),
+      'namespace': pulumi.Input.mapInputValue<ManagedZoneServiceDirectoryConfigNamespaceResponseDnsV1beta2, Map<String, dynamic>>(namespace, (value) => value.toMap()),
     };
   }
 
-  factory ManagedZoneServiceDirectoryConfigResponseDnsV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedZoneServiceDirectoryConfigResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZoneServiceDirectoryConfigResponseDnsV1beta2(
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      namespace: pulumi.Input.fromValue(
-        ManagedZoneServiceDirectoryConfigNamespaceResponseDnsV1beta2.fromMap(
-          (map['namespace']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      namespace: pulumi.Input.fromValue(ManagedZoneServiceDirectoryConfigNamespaceResponseDnsV1beta2.fromMap((map['namespace']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

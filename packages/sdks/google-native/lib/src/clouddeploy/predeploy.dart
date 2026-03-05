@@ -9,19 +9,20 @@ class Predeploy {
 
   /// Creates a new [Predeploy].
   /// [actions] Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
-  Predeploy({this.actions});
+  Predeploy({
+    this.actions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'actions': ?actions};
+    return <String, dynamic>{
+      'actions': ?actions,
+    };
   }
 
   factory Predeploy.fromMap(Map<String, dynamic> map) {
     return Predeploy(
-      actions: (() {
-        final guardedValue = map['actions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

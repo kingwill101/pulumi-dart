@@ -15,3 +15,4 @@ enum StorageAccountStrategy {
     throw ArgumentError('Unknown StorageAccountStrategy value: $value');
   }
 }
+

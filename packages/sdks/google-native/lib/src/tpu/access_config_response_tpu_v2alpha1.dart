@@ -9,10 +9,14 @@ class AccessConfigResponseTpuV2alpha1 {
 
   /// Creates a new [AccessConfigResponseTpuV2alpha1].
   /// [externalIp] An external IP address associated with the TPU worker.
-  AccessConfigResponseTpuV2alpha1({required this.externalIp});
+  AccessConfigResponseTpuV2alpha1({
+    required this.externalIp,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'externalIp': externalIp};
+    return <String, dynamic>{
+      'externalIp': externalIp,
+    };
   }
 
   factory AccessConfigResponseTpuV2alpha1.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class AccessConfigResponseTpuV2alpha1 {
     );
   }
 }
+

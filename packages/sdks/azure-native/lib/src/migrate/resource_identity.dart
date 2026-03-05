@@ -26,50 +26,17 @@ class ResourceIdentity {
       'principalId': ?principalId,
       'tenantId': ?tenantId,
       'type': ?type,
-      'userAssignedIdentities':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, UserAssignedIdentity>,
-            Map<String, Map<String, dynamic>>
-          >(
-            userAssignedIdentities,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  UserAssignedIdentity,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'userAssignedIdentities': ?pulumi.Input.mapOptionalInputValue<Map<String, UserAssignedIdentity>, Map<String, Map<String, dynamic>>>(userAssignedIdentities, (value) => pulumi.Input.encodeMapValues<UserAssignedIdentity, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ResourceIdentity.fromMap(Map<String, dynamic> map) {
     return ResourceIdentity(
-      principalId: (() {
-        final guardedValue = map['principalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentities: (() {
-        final guardedValue = map['userAssignedIdentities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<UserAssignedIdentity>(
-            guardedValue,
-            (value) => UserAssignedIdentity.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<UserAssignedIdentity>(guardedValue, (value) => UserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

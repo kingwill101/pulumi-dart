@@ -179,25 +179,18 @@ import 'system_data_response.dart';
 class Archife extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The package source of the archive.
-  late final pulumi.Output<ArchivePackageSourcePropertiesResponse?>
-  packageSource;
-
+  late final pulumi.Output<ArchivePackageSourcePropertiesResponse?> packageSource;
   /// The provisioning state of the archive at the time the operation was called.
   late final pulumi.Output<String> provisioningState;
-
   /// The published version of the archive.
   late final pulumi.Output<String?> publishedVersion;
   late final pulumi.Output<String> repositoryEndpoint;
   late final pulumi.Output<String?> repositoryEndpointPrefix;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -210,39 +203,19 @@ class Archife extends pulumi.CustomResource {
     ArchifeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerregistry:Archife',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:containerregistry:Archife',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    packageSource = registerOutput<ArchivePackageSourcePropertiesResponse?>(
-      'packageSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ArchivePackageSourcePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    packageSource = registerOutput<ArchivePackageSourcePropertiesResponse?>('packageSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArchivePackageSourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     publishedVersion = registerOutput<String?>('publishedVersion');
     repositoryEndpoint = registerOutput<String>('repositoryEndpoint');
-    repositoryEndpointPrefix = registerOutput<String?>(
-      'repositoryEndpointPrefix',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    repositoryEndpointPrefix = registerOutput<String?>('repositoryEndpointPrefix');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

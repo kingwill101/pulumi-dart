@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsDeploymentSetsArgs {
   /// The name of the deployment set.
   final pulumi.Input<String>? deploymentSetName;
-
   /// A list of Deployment Set IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// A regex string to filter results by Deployment Set name.
   final pulumi.Input<String>? nameRegex;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The deployment strategy. Valid values: `Availability`.
   final pulumi.Input<String>? strategy;
 
@@ -48,31 +44,12 @@ class GetEcsDeploymentSetsArgs {
 
   factory GetEcsDeploymentSetsArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsDeploymentSetsArgs(
-      deploymentSetName: (() {
-        final guardedValue = map['deploymentSetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      strategy: (() {
-        final guardedValue = map['strategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deploymentSetName: (() { final guardedValue = map['deploymentSetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      strategy: (() { final guardedValue = map['strategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

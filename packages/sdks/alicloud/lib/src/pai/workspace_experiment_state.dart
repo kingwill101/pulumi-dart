@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceExperimentState {
   /// Experimental Visibility
   final pulumi.Input<String>? accessibility;
-
   /// ArtifactUri is default OSS storage path of the output of trials in the experiment
   final pulumi.Input<String>? artifactUri;
-
   /// GmtCreateTime is time when this entity is created.
   final pulumi.Input<String>? createTime;
-
   /// Name is the name of the experiment, unique in a namespace
   final pulumi.Input<String>? experimentName;
-
   /// WorkspaceId is the workspace id which contains the experiment
   final pulumi.Input<String>? workspaceId;
 
@@ -45,31 +41,12 @@ class WorkspaceExperimentState {
 
   factory WorkspaceExperimentState.fromMap(Map<String, dynamic> map) {
     return WorkspaceExperimentState(
-      accessibility: (() {
-        final guardedValue = map['accessibility'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      artifactUri: (() {
-        final guardedValue = map['artifactUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      experimentName: (() {
-        final guardedValue = map['experimentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workspaceId: (() {
-        final guardedValue = map['workspaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessibility: (() { final guardedValue = map['accessibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      artifactUri: (() { final guardedValue = map['artifactUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      experimentName: (() { final guardedValue = map['experimentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

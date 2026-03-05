@@ -2629,25 +2629,18 @@ import 'feature_membership_state.dart';
 class FeatureMembership extends pulumi.CustomResource {
   /// Config Management-specific spec. Structure is documented below.
   late final pulumi.Output<FeatureMembershipConfigmanagement?> configmanagement;
-
   /// The name of the feature
   late final pulumi.Output<String> feature;
-
   /// The location of the feature
   late final pulumi.Output<String> location;
-
   /// The name of the membership
   late final pulumi.Output<String> membership;
-
   /// The location of the membership, for example, "us-central1". Default is "global".
   late final pulumi.Output<String?> membershipLocation;
-
   /// Service mesh specific spec. Structure is documented below.
   late final pulumi.Output<FeatureMembershipMesh?> mesh;
-
   /// Policy Controller-specific spec. Structure is documented below.
   late final pulumi.Output<FeatureMembershipPolicycontroller?> policycontroller;
-
   /// The project of the feature
   late final pulumi.Output<String> project;
 
@@ -2660,45 +2653,18 @@ class FeatureMembership extends pulumi.CustomResource {
     FeatureMembershipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gkehub/featureMembership:FeatureMembership',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configmanagement = registerOutput<FeatureMembershipConfigmanagement?>(
-      'configmanagement',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FeatureMembershipConfigmanagement.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:gkehub/featureMembership:FeatureMembership',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configmanagement = registerOutput<FeatureMembershipConfigmanagement?>('configmanagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureMembershipConfigmanagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     feature = registerOutput<String>('feature');
     location = registerOutput<String>('location');
     membership = registerOutput<String>('membership');
     membershipLocation = registerOutput<String?>('membershipLocation');
-    mesh = registerOutput<FeatureMembershipMesh?>(
-      'mesh',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FeatureMembershipMesh.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    policycontroller = registerOutput<FeatureMembershipPolicycontroller?>(
-      'policycontroller',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FeatureMembershipPolicycontroller.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    mesh = registerOutput<FeatureMembershipMesh?>('mesh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureMembershipMesh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    policycontroller = registerOutput<FeatureMembershipPolicycontroller?>('policycontroller', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureMembershipPolicycontroller.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
   }
 
@@ -2720,45 +2686,18 @@ class FeatureMembership extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gkehub/featureMembership:FeatureMembership',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configmanagement = registerOutput<FeatureMembershipConfigmanagement?>(
-      'configmanagement',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FeatureMembershipConfigmanagement.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:gkehub/featureMembership:FeatureMembership',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configmanagement = registerOutput<FeatureMembershipConfigmanagement?>('configmanagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureMembershipConfigmanagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     feature = registerOutput<String>('feature');
     location = registerOutput<String>('location');
     membership = registerOutput<String>('membership');
     membershipLocation = registerOutput<String?>('membershipLocation');
-    mesh = registerOutput<FeatureMembershipMesh?>(
-      'mesh',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FeatureMembershipMesh.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    policycontroller = registerOutput<FeatureMembershipPolicycontroller?>(
-      'policycontroller',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FeatureMembershipPolicycontroller.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    mesh = registerOutput<FeatureMembershipMesh?>('mesh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureMembershipMesh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    policycontroller = registerOutput<FeatureMembershipPolicycontroller?>('policycontroller', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureMembershipPolicycontroller.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
   }
 }

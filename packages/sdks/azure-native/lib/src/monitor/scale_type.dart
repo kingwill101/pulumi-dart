@@ -17,3 +17,4 @@ enum ScaleType {
     throw ArgumentError('Unknown ScaleType value: $value');
   }
 }
+

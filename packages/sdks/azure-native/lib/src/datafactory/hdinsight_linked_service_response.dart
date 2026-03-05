@@ -11,50 +11,35 @@ import 'parameter_specification_response.dart';
 class HDInsightLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
   final pulumi.Input<List<dynamic>>? annotations;
-
   /// HDInsight cluster authentication type.
   final pulumi.Input<String>? clusterAuthType;
-
   /// HDInsight cluster URI. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> clusterUri;
-
   /// The integration runtime reference.
   final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
-
   /// The credential reference containing MI authentication information for the HDInsight cluster.
   final pulumi.Input<CredentialReferenceResponse>? credential;
-
   /// Linked service description.
   final pulumi.Input<String>? description;
-
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
   final pulumi.Input<String>? encryptedCredential;
-
   /// Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileSystem;
-
   /// A reference to the Azure SQL linked service that points to the HCatalog database.
   final pulumi.Input<LinkedServiceReferenceResponse>? hcatalogLinkedServiceName;
-
   /// Specify if the HDInsight is created with ESP (Enterprise Security Package). Type: Boolean.
   final pulumi.Input<dynamic>? isEspEnabled;
-
   /// The Azure Storage linked service reference.
   final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
-
   /// Parameters for linked service.
   final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
-
   /// HDInsight cluster password.
   final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
-
   /// Type of linked service.
   /// Expected value is 'HDInsight'.
   final pulumi.Input<String> type;
-
   /// HDInsight cluster user name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? userName;
-
   /// Version of the linked service.
   final pulumi.Input<String>? version;
 
@@ -99,47 +84,16 @@ class HDInsightLinkedServiceResponse {
       'annotations': ?annotations,
       'clusterAuthType': ?clusterAuthType,
       'clusterUri': clusterUri,
-      'connectVia':
-          ?pulumi.Input.mapOptionalInputValue<
-            IntegrationRuntimeReferenceResponse,
-            Map<String, dynamic>
-          >(connectVia, (value) => value.toMap()),
-      'credential':
-          ?pulumi.Input.mapOptionalInputValue<
-            CredentialReferenceResponse,
-            Map<String, dynamic>
-          >(credential, (value) => value.toMap()),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
+      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReferenceResponse, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'fileSystem': ?fileSystem,
-      'hcatalogLinkedServiceName':
-          ?pulumi.Input.mapOptionalInputValue<
-            LinkedServiceReferenceResponse,
-            Map<String, dynamic>
-          >(hcatalogLinkedServiceName, (value) => value.toMap()),
+      'hcatalogLinkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(hcatalogLinkedServiceName, (value) => value.toMap()),
       'isEspEnabled': ?isEspEnabled,
-      'linkedServiceName':
-          ?pulumi.Input.mapOptionalInputValue<
-            LinkedServiceReferenceResponse,
-            Map<String, dynamic>
-          >(linkedServiceName, (value) => value.toMap()),
-      'parameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, ParameterSpecificationResponse>,
-            Map<String, Map<String, dynamic>>
-          >(
-            parameters,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  ParameterSpecificationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'password':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureKeyVaultSecretReferenceResponse,
-            Map<String, dynamic>
-          >(password, (value) => value.toMap()),
+      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
       'type': type,
       'userName': ?userName,
       'version': ?version,
@@ -148,105 +102,23 @@ class HDInsightLinkedServiceResponse {
 
   factory HDInsightLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return HDInsightLinkedServiceResponse(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
-      clusterAuthType: (() {
-        final guardedValue = map['clusterAuthType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      clusterAuthType: (() { final guardedValue = map['clusterAuthType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterUri: pulumi.Input.fromValue(map['clusterUri']),
-      connectVia: (() {
-        final guardedValue = map['connectVia'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IntegrationRuntimeReferenceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      credential: (() {
-        final guardedValue = map['credential'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CredentialReferenceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encryptedCredential: (() {
-        final guardedValue = map['encryptedCredential'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fileSystem: (() {
-        final guardedValue = map['fileSystem'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      hcatalogLinkedServiceName: (() {
-        final guardedValue = map['hcatalogLinkedServiceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LinkedServiceReferenceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      isEspEnabled: (() {
-        final guardedValue = map['isEspEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      linkedServiceName: (() {
-        final guardedValue = map['linkedServiceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LinkedServiceReferenceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(
-            guardedValue,
-            (value) => ParameterSpecificationResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureKeyVaultSecretReferenceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      connectVia: (() { final guardedValue = map['connectVia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      credential: (() { final guardedValue = map['credential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CredentialReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fileSystem: (() { final guardedValue = map['fileSystem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      hcatalogLinkedServiceName: (() { final guardedValue = map['hcatalogLinkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      isEspEnabled: (() { final guardedValue = map['isEspEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(guardedValue, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

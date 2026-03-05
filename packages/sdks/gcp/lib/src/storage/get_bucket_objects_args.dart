@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketObjectsArgs {
   /// The name of the containing bucket.
   final pulumi.Input<String> bucket;
-
   /// A glob pattern used to filter results (for example, `foo*bar`).
   final pulumi.Input<String>? matchGlob;
-
   /// Filter results to include only objects whose names begin with this prefix.
   final pulumi.Input<String>? prefix;
 
@@ -20,7 +18,11 @@ class GetBucketObjectsArgs {
   /// [bucket] The name of the containing bucket.
   /// [matchGlob] A glob pattern used to filter results (for example, `foo*bar`).
   /// [prefix] Filter results to include only objects whose names begin with this prefix.
-  GetBucketObjectsArgs({required this.bucket, this.matchGlob, this.prefix});
+  GetBucketObjectsArgs({
+    required this.bucket,
+    this.matchGlob,
+    this.prefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,16 +35,9 @@ class GetBucketObjectsArgs {
   factory GetBucketObjectsArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectsArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      matchGlob: (() {
-        final guardedValue = map['matchGlob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      matchGlob: (() { final guardedValue = map['matchGlob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

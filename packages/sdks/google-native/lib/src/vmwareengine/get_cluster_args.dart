@@ -38,11 +38,8 @@ class GetClusterArgs {
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       privateCloudId: pulumi.Input.fromValue(map['privateCloudId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode {
   /// The number of occurrences of the defined `status_code` in the specified `interval` on which to trigger this rule.
   final pulumi.Input<int> count;
-
   /// The time interval in the form `hh:mm:ss`.
   final pulumi.Input<String> interval;
-
   /// The path to which this rule status code applies.
   final pulumi.Input<String> path;
-
   /// The status code or range for this rule.
   final pulumi.Input<String> statusCodeRange;
-
   /// The Request Sub Status of the Status Code.
   final pulumi.Input<int> subStatus;
-
   /// The Win32 Status Code of the Request.
   final pulumi.Input<int> win32StatusCode;
 
@@ -48,9 +43,7 @@ class GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode {
     };
   }
 
-  factory GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode(
       count: pulumi.Input.fromValue(map['count'] as int),
       interval: pulumi.Input.fromValue(map['interval'] as String),
@@ -61,3 +54,4 @@ class GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode {
     );
   }
 }
+

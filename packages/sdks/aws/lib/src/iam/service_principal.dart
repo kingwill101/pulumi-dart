@@ -9,10 +9,14 @@ class ServicePrincipal {
 
   /// Creates a new [ServicePrincipal].
   /// [service] The service principal identifier.
-  ServicePrincipal({required this.service});
+  ServicePrincipal({
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'Service': service};
+    return <String, dynamic>{
+      'Service': service,
+    };
   }
 
   factory ServicePrincipal.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ServicePrincipal {
     );
   }
 }
+

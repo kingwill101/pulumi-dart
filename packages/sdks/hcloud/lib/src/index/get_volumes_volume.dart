@@ -49,22 +49,13 @@ class GetVolumesVolume {
     return GetVolumesVolume(
       deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
       id: pulumi.Input.fromValue(map['id'] as int),
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       linuxDevice: pulumi.Input.fromValue(map['linuxDevice'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      serverId: (() {
-        final guardedValue = map['serverId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       size: pulumi.Input.fromValue(map['size'] as int),
     );
   }
 }
+

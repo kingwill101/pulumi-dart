@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImportPipelineSourceProperties {
   /// They key vault secret uri to obtain the source storage SAS token.
   final pulumi.Input<String> keyVaultUri;
-
   /// The type of source for the import pipeline.
   final pulumi.Input<String>? type;
-
   /// The source uri of the import pipeline.
   /// When 'AzureStorageBlob': "https://accountName.blob.core.windows.net/containerName/blobName"
   /// When 'AzureStorageBlobContainer': "https://accountName.blob.core.windows.net/containerName"
@@ -36,16 +34,9 @@ class ImportPipelineSourceProperties {
   factory ImportPipelineSourceProperties.fromMap(Map<String, dynamic> map) {
     return ImportPipelineSourceProperties(
       keyVaultUri: pulumi.Input.fromValue(map['keyVaultUri'] as String),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

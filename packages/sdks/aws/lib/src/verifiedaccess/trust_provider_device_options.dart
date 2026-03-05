@@ -7,19 +7,20 @@ class TrustProviderDeviceOptions {
 
   /// Creates a new [TrustProviderDeviceOptions].
   /// [tenantId] Optional.
-  TrustProviderDeviceOptions({this.tenantId});
+  TrustProviderDeviceOptions({
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tenantId': ?tenantId};
+    return <String, dynamic>{
+      'tenantId': ?tenantId,
+    };
   }
 
   factory TrustProviderDeviceOptions.fromMap(Map<String, dynamic> map) {
     return TrustProviderDeviceOptions(
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

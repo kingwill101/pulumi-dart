@@ -243,10 +243,8 @@ import 'fleet_update_strategy_state.dart';
 class FleetUpdateStrategy extends pulumi.CustomResource {
   /// The ID of the Fleet Manager. Changing this forces a new Kubernetes Fleet Update Strategy to be created.
   late final pulumi.Output<String> kubernetesFleetManagerId;
-
   /// The name which should be used for this Kubernetes Fleet Update Strategy. Changing this forces a new Kubernetes Fleet Update Strategy to be created.
   late final pulumi.Output<String> name;
-
   /// One or more `stage` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> stages;
 
@@ -259,14 +257,12 @@ class FleetUpdateStrategy extends pulumi.CustomResource {
     FleetUpdateStrategyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/fleetUpdateStrategy:FleetUpdateStrategy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    kubernetesFleetManagerId = registerOutput<String>(
-      'kubernetesFleetManagerId',
-    );
+          'azure:containerservice/fleetUpdateStrategy:FleetUpdateStrategy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    kubernetesFleetManagerId = registerOutput<String>('kubernetesFleetManagerId');
     this.name = registerOutput<String>('name');
     stages = registerOutput<List<Map<String, dynamic>>>('stages');
   }
@@ -289,14 +285,12 @@ class FleetUpdateStrategy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/fleetUpdateStrategy:FleetUpdateStrategy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    kubernetesFleetManagerId = registerOutput<String>(
-      'kubernetesFleetManagerId',
-    );
+          'azure:containerservice/fleetUpdateStrategy:FleetUpdateStrategy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    kubernetesFleetManagerId = registerOutput<String>('kubernetesFleetManagerId');
     this.name = registerOutput<String>('name');
     stages = registerOutput<List<Map<String, dynamic>>>('stages');
   }

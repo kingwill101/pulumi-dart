@@ -9,39 +9,20 @@ class RuleRuleConditionQueryStringConfig {
 
   /// Creates a new [RuleRuleConditionQueryStringConfig].
   /// [values] Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-  RuleRuleConditionQueryStringConfig({this.values});
+  RuleRuleConditionQueryStringConfig({
+    this.values,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'values':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<RuleRuleConditionQueryStringConfigValue>,
-            List<Map<String, dynamic>>
-          >(
-            values,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RuleRuleConditionQueryStringConfigValue,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'values': ?pulumi.Input.mapOptionalInputValue<List<RuleRuleConditionQueryStringConfigValue>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<RuleRuleConditionQueryStringConfigValue, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RuleRuleConditionQueryStringConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleConditionQueryStringConfig(
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<RuleRuleConditionQueryStringConfigValue>(
-            guardedValue,
-            (value) => RuleRuleConditionQueryStringConfigValue.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RuleRuleConditionQueryStringConfigValue>(guardedValue, (value) => RuleRuleConditionQueryStringConfigValue.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

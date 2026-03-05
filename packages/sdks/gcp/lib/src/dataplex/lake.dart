@@ -163,56 +163,41 @@ import 'lake_state.dart';
 class Lake extends pulumi.CustomResource {
   /// Output only. Aggregated status of the underlying assets of the lake.
   late final pulumi.Output<List<Map<String, dynamic>>> assetStatuses;
-
   /// Output only. The time when the lake was created.
   late final pulumi.Output<String> createTime;
-
   /// Optional. Description of the lake.
   late final pulumi.Output<String?> description;
-
   /// Optional. User friendly display name.
   late final pulumi.Output<String?> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Optional. User-defined labels for the lake.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location for the resource
   late final pulumi.Output<String> location;
-
   /// Optional. Settings to manage lake and Dataproc Metastore service instance association.
   late final pulumi.Output<LakeMetastore?> metastore;
-
   /// Output only. Metastore status of the lake.
   late final pulumi.Output<List<Map<String, dynamic>>> metastoreStatuses;
-
   /// The name of the lake.
   ///
   ///
   ///
   /// - - -
   late final pulumi.Output<String> name;
-
   /// The project for the resource
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
   late final pulumi.Output<String> serviceAccount;
-
   /// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
   late final pulumi.Output<String> state;
-
   /// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
   late final pulumi.Output<String> uid;
-
   /// Output only. The time when the lake was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -220,13 +205,16 @@ class Lake extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Lake]. {@macro pulumi_dataplex_lake_lake_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Lake(String name, {LakeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:dataplex/lake:Lake',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Lake(
+    String name, {
+    LakeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:dataplex/lake:Lake',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assetStatuses = registerOutput<List<Map<String, dynamic>>>('assetStatuses');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -234,19 +222,8 @@ class Lake extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    metastore = registerOutput<LakeMetastore?>(
-      'metastore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LakeMetastore.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    metastoreStatuses = registerOutput<List<Map<String, dynamic>>>(
-      'metastoreStatuses',
-    );
+    metastore = registerOutput<LakeMetastore?>('metastore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LakeMetastore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metastoreStatuses = registerOutput<List<Map<String, dynamic>>>('metastoreStatuses');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
@@ -257,7 +234,11 @@ class Lake extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Lake] resource's state with the given [name] and [id].
-  static Lake get(String name, pulumi.Input<String> id, {LakeState? state}) {
+  static Lake get(
+    String name,
+    pulumi.Input<String> id, {
+    LakeState? state,
+  }) {
     return Lake._get(
       name,
       state: state?.toMap(),
@@ -270,11 +251,11 @@ class Lake extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataplex/lake:Lake',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataplex/lake:Lake',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assetStatuses = registerOutput<List<Map<String, dynamic>>>('assetStatuses');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -282,19 +263,8 @@ class Lake extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    metastore = registerOutput<LakeMetastore?>(
-      'metastore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LakeMetastore.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    metastoreStatuses = registerOutput<List<Map<String, dynamic>>>(
-      'metastoreStatuses',
-    );
+    metastore = registerOutput<LakeMetastore?>('metastore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LakeMetastore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metastoreStatuses = registerOutput<List<Map<String, dynamic>>>('metastoreStatuses');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');

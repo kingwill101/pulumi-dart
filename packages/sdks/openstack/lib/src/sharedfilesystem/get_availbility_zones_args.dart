@@ -13,19 +13,20 @@ class GetAvailbilityZonesArgs {
 
   /// Creates a new [GetAvailbilityZonesArgs].
   /// [region] The region in which to obtain the V2 Shared File System
-  GetAvailbilityZonesArgs({this.region});
+  GetAvailbilityZonesArgs({
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'region': ?region};
+    return <String, dynamic>{
+      'region': ?region,
+    };
   }
 
   factory GetAvailbilityZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetAvailbilityZonesArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

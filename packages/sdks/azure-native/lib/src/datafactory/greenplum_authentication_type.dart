@@ -14,3 +14,4 @@ enum GreenplumAuthenticationType {
     throw ArgumentError('Unknown GreenplumAuthenticationType value: $value');
   }
 }
+

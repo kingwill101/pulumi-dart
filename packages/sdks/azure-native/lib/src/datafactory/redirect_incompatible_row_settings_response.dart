@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RedirectIncompatibleRowSettingsResponse {
   /// Name of the Azure Storage, Storage SAS, or Azure Data Lake Store linked service used for redirecting incompatible row. Must be specified if redirectIncompatibleRowSettings is specified. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> linkedServiceName;
-
   /// The path for storing the redirect incompatible row data. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? path;
 
@@ -25,16 +24,11 @@ class RedirectIncompatibleRowSettingsResponse {
     };
   }
 
-  factory RedirectIncompatibleRowSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RedirectIncompatibleRowSettingsResponse.fromMap(Map<String, dynamic> map) {
     return RedirectIncompatibleRowSettingsResponse(
       linkedServiceName: pulumi.Input.fromValue(map['linkedServiceName']),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

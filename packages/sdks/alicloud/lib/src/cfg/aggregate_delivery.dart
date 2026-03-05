@@ -415,17 +415,14 @@ import 'aggregate_delivery_state.dart';
 class AggregateDelivery extends pulumi.CustomResource {
   /// Aggregator ID.
   late final pulumi.Output<String> aggregatorId;
-
   /// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
   /// - true: The specified destination receives resource change logs.
   /// - false: The specified destination does not receive resource change logs.
   late final pulumi.Output<bool?> configurationItemChangeNotification;
-
   /// Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
   /// - true: The specified destination receives scheduled resource snapshots.
   /// - false: The specified destination does not receive scheduled resource snapshots.
   late final pulumi.Output<bool?> configurationSnapshot;
-
   /// The rule that is attached to the delivery channel.
   ///
   /// This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
@@ -438,36 +435,28 @@ class AggregateDelivery extends pulumi.CustomResource {
   ///
   /// Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
   late final pulumi.Output<String?> deliveryChannelCondition;
-
   /// The ID of the delivery method. This parameter is required when you modify a delivery method.
   late final pulumi.Output<String> deliveryChannelId;
-
   /// The name of the delivery channel.
   late final pulumi.Output<String?> deliveryChannelName;
-
   /// The ARN of the delivery destination.
   /// - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
   /// - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
   /// - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
   late final pulumi.Output<String> deliveryChannelTargetArn;
-
   /// The type of the delivery channel. Valid values:
   /// - OSS: Object Storage Service (OSS)
   /// - MNS: Message Service (MNS)
   /// - SLS: Log Service
   late final pulumi.Output<String> deliveryChannelType;
-
   /// The description of the delivery method.
   late final pulumi.Output<String?> description;
-
   /// Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
   /// - true: The specified destination receives resource non-compliance events.
   /// - false: The specified destination does not receive resource non-compliance events.
   late final pulumi.Output<bool?> nonCompliantNotification;
-
   /// The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
   late final pulumi.Output<String?> oversizedDataOssTargetArn;
-
   /// The status of the delivery method. Valid values:
   /// - 0: The delivery method is disabled.
   /// - 1: The delivery destination is enabled. This is the default value.
@@ -482,32 +471,22 @@ class AggregateDelivery extends pulumi.CustomResource {
     AggregateDeliveryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/aggregateDelivery:AggregateDelivery',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cfg/aggregateDelivery:AggregateDelivery',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aggregatorId = registerOutput<String>('aggregatorId');
-    configurationItemChangeNotification = registerOutput<bool?>(
-      'configurationItemChangeNotification',
-    );
+    configurationItemChangeNotification = registerOutput<bool?>('configurationItemChangeNotification');
     configurationSnapshot = registerOutput<bool?>('configurationSnapshot');
-    deliveryChannelCondition = registerOutput<String?>(
-      'deliveryChannelCondition',
-    );
+    deliveryChannelCondition = registerOutput<String?>('deliveryChannelCondition');
     deliveryChannelId = registerOutput<String>('deliveryChannelId');
     deliveryChannelName = registerOutput<String?>('deliveryChannelName');
-    deliveryChannelTargetArn = registerOutput<String>(
-      'deliveryChannelTargetArn',
-    );
+    deliveryChannelTargetArn = registerOutput<String>('deliveryChannelTargetArn');
     deliveryChannelType = registerOutput<String>('deliveryChannelType');
     description = registerOutput<String?>('description');
-    nonCompliantNotification = registerOutput<bool?>(
-      'nonCompliantNotification',
-    );
-    oversizedDataOssTargetArn = registerOutput<String?>(
-      'oversizedDataOssTargetArn',
-    );
+    nonCompliantNotification = registerOutput<bool?>('nonCompliantNotification');
+    oversizedDataOssTargetArn = registerOutput<String?>('oversizedDataOssTargetArn');
     status = registerOutput<int>('status');
   }
 
@@ -529,32 +508,22 @@ class AggregateDelivery extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/aggregateDelivery:AggregateDelivery',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cfg/aggregateDelivery:AggregateDelivery',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aggregatorId = registerOutput<String>('aggregatorId');
-    configurationItemChangeNotification = registerOutput<bool?>(
-      'configurationItemChangeNotification',
-    );
+    configurationItemChangeNotification = registerOutput<bool?>('configurationItemChangeNotification');
     configurationSnapshot = registerOutput<bool?>('configurationSnapshot');
-    deliveryChannelCondition = registerOutput<String?>(
-      'deliveryChannelCondition',
-    );
+    deliveryChannelCondition = registerOutput<String?>('deliveryChannelCondition');
     deliveryChannelId = registerOutput<String>('deliveryChannelId');
     deliveryChannelName = registerOutput<String?>('deliveryChannelName');
-    deliveryChannelTargetArn = registerOutput<String>(
-      'deliveryChannelTargetArn',
-    );
+    deliveryChannelTargetArn = registerOutput<String>('deliveryChannelTargetArn');
     deliveryChannelType = registerOutput<String>('deliveryChannelType');
     description = registerOutput<String?>('description');
-    nonCompliantNotification = registerOutput<bool?>(
-      'nonCompliantNotification',
-    );
-    oversizedDataOssTargetArn = registerOutput<String?>(
-      'oversizedDataOssTargetArn',
-    );
+    nonCompliantNotification = registerOutput<bool?>('nonCompliantNotification');
+    oversizedDataOssTargetArn = registerOutput<String?>('oversizedDataOssTargetArn');
     status = registerOutput<int>('status');
   }
 }

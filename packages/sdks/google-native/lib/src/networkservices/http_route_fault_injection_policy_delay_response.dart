@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpRouteFaultInjectionPolicyDelayResponse {
   /// Specify a fixed delay before forwarding the request.
   final pulumi.Input<String> fixedDelay;
-
   /// The percentage of traffic on which delay will be injected. The value must be between [0, 100]
   final pulumi.Input<int> percentage;
 
@@ -25,12 +24,11 @@ class HttpRouteFaultInjectionPolicyDelayResponse {
     };
   }
 
-  factory HttpRouteFaultInjectionPolicyDelayResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HttpRouteFaultInjectionPolicyDelayResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteFaultInjectionPolicyDelayResponse(
       fixedDelay: pulumi.Input.fromValue(map['fixedDelay'] as String),
       percentage: pulumi.Input.fromValue(map['percentage'] as int),
     );
   }
 }
+

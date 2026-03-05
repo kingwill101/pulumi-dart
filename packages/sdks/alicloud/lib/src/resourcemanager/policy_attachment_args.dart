@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyAttachmentArgs {
   /// The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
   final pulumi.Input<String> policyName;
-
   /// The type of the policy. Valid values: `Custom`, `System`.
   final pulumi.Input<String> policyType;
-
   /// The name of the object to which you want to attach the policy.
   final pulumi.Input<String> principalName;
-
   /// The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
   final pulumi.Input<String> principalType;
-
   /// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
   final pulumi.Input<String> resourceGroupId;
 
@@ -56,3 +52,4 @@ class PolicyAttachmentArgs {
     );
   }
 }
+

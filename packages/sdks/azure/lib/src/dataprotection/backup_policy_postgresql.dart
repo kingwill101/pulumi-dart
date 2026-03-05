@@ -447,22 +447,16 @@ import 'backup_policy_postgresql_state.dart';
 class BackupPolicyPostgresql extends pulumi.CustomResource {
   /// Specifies a list of repeating time interval. It supports weekly back. It should follow `ISO 8601` repeating time interval. Changing this forces a new Backup Policy PostgreSQL to be created.
   late final pulumi.Output<List<String>> backupRepeatingTimeIntervals;
-
   /// The duration of default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy PostgreSQL to be created.
   late final pulumi.Output<String> defaultRetentionDuration;
-
   /// The name which should be used for this Backup Policy PostgreSQL. Changing this forces a new Backup Policy PostgreSQL to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Backup Policy PostgreSQL should exist. Changing this forces a new Backup Policy PostgreSQL to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// One or more `retention_rule` blocks as defined below. Changing this forces a new Backup Policy PostgreSQL to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> retentionRules;
-
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy PostgreSQL to be created.
   late final pulumi.Output<String?> timeZone;
-
   /// The name of the Backup Vault where the Backup Policy PostgreSQL should exist. Changing this forces a new Backup Policy PostgreSQL to be created.
   late final pulumi.Output<String> vaultName;
 
@@ -475,22 +469,16 @@ class BackupPolicyPostgresql extends pulumi.CustomResource {
     BackupPolicyPostgresqlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupPolicyPostgresql:BackupPolicyPostgresql',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backupRepeatingTimeIntervals = registerOutput<List<String>>(
-      'backupRepeatingTimeIntervals',
-    );
-    defaultRetentionDuration = registerOutput<String>(
-      'defaultRetentionDuration',
-    );
+          'azure:dataprotection/backupPolicyPostgresql:BackupPolicyPostgresql',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backupRepeatingTimeIntervals = registerOutput<List<String>>('backupRepeatingTimeIntervals');
+    defaultRetentionDuration = registerOutput<String>('defaultRetentionDuration');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retentionRules = registerOutput<List<Map<String, dynamic>>?>(
-      'retentionRules',
-    );
+    retentionRules = registerOutput<List<Map<String, dynamic>>?>('retentionRules');
     timeZone = registerOutput<String?>('timeZone');
     vaultName = registerOutput<String>('vaultName');
   }
@@ -513,22 +501,16 @@ class BackupPolicyPostgresql extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupPolicyPostgresql:BackupPolicyPostgresql',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backupRepeatingTimeIntervals = registerOutput<List<String>>(
-      'backupRepeatingTimeIntervals',
-    );
-    defaultRetentionDuration = registerOutput<String>(
-      'defaultRetentionDuration',
-    );
+          'azure:dataprotection/backupPolicyPostgresql:BackupPolicyPostgresql',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backupRepeatingTimeIntervals = registerOutput<List<String>>('backupRepeatingTimeIntervals');
+    defaultRetentionDuration = registerOutput<String>('defaultRetentionDuration');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retentionRules = registerOutput<List<Map<String, dynamic>>?>(
-      'retentionRules',
-    );
+    retentionRules = registerOutput<List<Map<String, dynamic>>?>('retentionRules');
     timeZone = registerOutput<String?>('timeZone');
     vaultName = registerOutput<String>('vaultName');
   }

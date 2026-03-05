@@ -10,10 +10,8 @@ import 'subscriber_notification_configuration.dart';
 class SubscriberNotificationArgs {
   /// Specify the configuration using which you want to create the subscriber notification..
   final pulumi.Input<SubscriberNotificationConfiguration> configuration;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The subscriber ID for the notification subscription.
   final pulumi.Input<String> subscriberId;
 
@@ -29,11 +27,7 @@ class SubscriberNotificationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration':
-          pulumi.Input.mapInputValue<
-            SubscriberNotificationConfiguration,
-            Map<String, dynamic>
-          >(configuration, (value) => value.toMap()),
+      'configuration': pulumi.Input.mapInputValue<SubscriberNotificationConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'region': ?region,
       'subscriberId': subscriberId,
     };
@@ -41,17 +35,10 @@ class SubscriberNotificationArgs {
 
   factory SubscriberNotificationArgs.fromMap(Map<String, dynamic> map) {
     return SubscriberNotificationArgs(
-      configuration: pulumi.Input.fromValue(
-        SubscriberNotificationConfiguration.fromMap(
-          (map['configuration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      configuration: pulumi.Input.fromValue(SubscriberNotificationConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subscriberId: pulumi.Input.fromValue(map['subscriberId'] as String),
     );
   }
 }
+

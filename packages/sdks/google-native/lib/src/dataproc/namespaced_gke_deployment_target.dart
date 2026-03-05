@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespacedGkeDeploymentTarget {
   /// Optional. A namespace within the GKE cluster to deploy into.
   final pulumi.Input<String>? clusterNamespace;
-
   /// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
   final pulumi.Input<String>? targetGkeCluster;
 
   /// Creates a new [NamespacedGkeDeploymentTarget].
   /// [clusterNamespace] Optional. A namespace within the GKE cluster to deploy into.
   /// [targetGkeCluster] Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-  NamespacedGkeDeploymentTarget({this.clusterNamespace, this.targetGkeCluster});
+  NamespacedGkeDeploymentTarget({
+    this.clusterNamespace,
+    this.targetGkeCluster,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class NamespacedGkeDeploymentTarget {
 
   factory NamespacedGkeDeploymentTarget.fromMap(Map<String, dynamic> map) {
     return NamespacedGkeDeploymentTarget(
-      clusterNamespace: (() {
-        final guardedValue = map['clusterNamespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetGkeCluster: (() {
-        final guardedValue = map['targetGkeCluster'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clusterNamespace: (() { final guardedValue = map['clusterNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetGkeCluster: (() { final guardedValue = map['targetGkeCluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

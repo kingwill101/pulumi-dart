@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listPaloAltoNetworksCloudngfwOperationCloudManagerTenants.
 class ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult {
   /// List of Cloud Manager Tenants
@@ -12,14 +13,15 @@ class ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
-  factory ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult.fromMap(Map<String, dynamic> map) {
     return ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult(
       value: (map['value'] as List).cast<String>(),
     );
   }
 }
+

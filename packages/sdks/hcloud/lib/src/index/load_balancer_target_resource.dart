@@ -205,23 +205,18 @@ class LoadBalancerTargetResource extends pulumi.CustomResource {
   /// IP address for an IP Target. Required if
   /// `type` is `ip`.
   late final pulumi.Output<String?> ip;
-
   /// Label Selector selecting targets
   /// for this Load Balancer. Required if `type` is `label_selector`.
   late final pulumi.Output<String?> labelSelector;
-
   /// ID of the Load Balancer to which
   /// the target gets attached.
   late final pulumi.Output<int> loadBalancerId;
-
   /// ID of the server which should be a
   /// target for this Load Balancer. Required if `type` is `server`
   late final pulumi.Output<int?> serverId;
-
   /// Type of the target. Possible values
   /// `server`, `label_selector`, `ip`.
   late final pulumi.Output<String> type;
-
   /// use the private IP to connect to
   /// Load Balancer targets. Only allowed if type is `server` or
   /// `label_selector`.
@@ -236,11 +231,11 @@ class LoadBalancerTargetResource extends pulumi.CustomResource {
     LoadBalancerTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/loadBalancerTarget:LoadBalancerTarget',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/loadBalancerTarget:LoadBalancerTarget',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ip = registerOutput<String?>('ip');
     labelSelector = registerOutput<String?>('labelSelector');
     loadBalancerId = registerOutput<int>('loadBalancerId');
@@ -267,11 +262,11 @@ class LoadBalancerTargetResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/loadBalancerTarget:LoadBalancerTarget',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/loadBalancerTarget:LoadBalancerTarget',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ip = registerOutput<String?>('ip');
     labelSelector = registerOutput<String?>('labelSelector');
     loadBalancerId = registerOutput<int>('loadBalancerId');

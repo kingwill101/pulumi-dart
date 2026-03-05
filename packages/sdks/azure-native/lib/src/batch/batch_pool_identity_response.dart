@@ -7,49 +7,29 @@ import 'user_assigned_identities_response.dart';
 class BatchPoolIdentityResponse {
   /// The type of identity used for the Batch Pool.
   final pulumi.Input<String> type;
-
   /// The list of user identities associated with the Batch pool.
-  final pulumi.Input<Map<String, UserAssignedIdentitiesResponse>>?
-  userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentitiesResponse>>? userAssignedIdentities;
 
   /// Creates a new [BatchPoolIdentityResponse].
   /// [type] The type of identity used for the Batch Pool.
   /// [userAssignedIdentities] The list of user identities associated with the Batch pool.
-  BatchPoolIdentityResponse({required this.type, this.userAssignedIdentities});
+  BatchPoolIdentityResponse({
+    required this.type,
+    this.userAssignedIdentities,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'type': type,
-      'userAssignedIdentities':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, UserAssignedIdentitiesResponse>,
-            Map<String, Map<String, dynamic>>
-          >(
-            userAssignedIdentities,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  UserAssignedIdentitiesResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'userAssignedIdentities': ?pulumi.Input.mapOptionalInputValue<Map<String, UserAssignedIdentitiesResponse>, Map<String, Map<String, dynamic>>>(userAssignedIdentities, (value) => pulumi.Input.encodeMapValues<UserAssignedIdentitiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BatchPoolIdentityResponse.fromMap(Map<String, dynamic> map) {
     return BatchPoolIdentityResponse(
       type: pulumi.Input.fromValue(map['type'] as String),
-      userAssignedIdentities: (() {
-        final guardedValue = map['userAssignedIdentities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<UserAssignedIdentitiesResponse>(
-            guardedValue,
-            (value) => UserAssignedIdentitiesResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<UserAssignedIdentitiesResponse>(guardedValue, (value) => UserAssignedIdentitiesResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

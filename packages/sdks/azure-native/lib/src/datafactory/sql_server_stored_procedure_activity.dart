@@ -10,35 +10,25 @@ import 'user_property.dart';
 class SqlServerStoredProcedureActivity {
   /// Activity depends on condition.
   final pulumi.Input<List<ActivityDependency>>? dependsOn;
-
   /// Activity description.
   final pulumi.Input<String>? description;
-
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReference> linkedServiceName;
-
   /// Activity name.
   final pulumi.Input<String> name;
-
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
   final pulumi.Input<String>? onInactiveMarkAs;
-
   /// Activity policy.
   final pulumi.Input<ActivityPolicy>? policy;
-
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
   final pulumi.Input<String>? state;
-
   /// Stored procedure name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> storedProcedureName;
-
   /// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
   final pulumi.Input<dynamic>? storedProcedureParameters;
-
   /// Type of activity.
   /// Expected value is 'SqlServerStoredProcedure'.
   final pulumi.Input<String> type;
-
   /// Activity user properties.
   final pulumi.Input<List<UserProperty>>? userProperties;
 
@@ -70,110 +60,34 @@ class SqlServerStoredProcedureActivity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dependsOn':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ActivityDependency>,
-            List<Map<String, dynamic>>
-          >(
-            dependsOn,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ActivityDependency,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependency>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
-      'linkedServiceName':
-          pulumi.Input.mapInputValue<
-            LinkedServiceReference,
-            Map<String, dynamic>
-          >(linkedServiceName, (value) => value.toMap()),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
-      'policy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ActivityPolicy,
-            Map<String, dynamic>
-          >(policy, (value) => value.toMap()),
+      'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
       'state': ?state,
       'storedProcedureName': storedProcedureName,
       'storedProcedureParameters': ?storedProcedureParameters,
       'type': type,
-      'userProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<UserProperty>,
-            List<Map<String, dynamic>>
-          >(
-            userProperties,
-            (value) =>
-                pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserProperty>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SqlServerStoredProcedureActivity.fromMap(Map<String, dynamic> map) {
     return SqlServerStoredProcedureActivity(
-      dependsOn: (() {
-        final guardedValue = map['dependsOn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ActivityDependency>(
-            guardedValue,
-            (value) => ActivityDependency.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      linkedServiceName: pulumi.Input.fromValue(
-        LinkedServiceReference.fromMap(
-          (map['linkedServiceName']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependency>(guardedValue, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      linkedServiceName: pulumi.Input.fromValue(LinkedServiceReference.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
-      onInactiveMarkAs: (() {
-        final guardedValue = map['onInactiveMarkAs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ActivityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActivityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storedProcedureName: pulumi.Input.fromValue(map['storedProcedureName']),
-      storedProcedureParameters: (() {
-        final guardedValue = map['storedProcedureParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      storedProcedureParameters: (() { final guardedValue = map['storedProcedureParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      userProperties: (() {
-        final guardedValue = map['userProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<UserProperty>(
-            guardedValue,
-            (value) =>
-                UserProperty.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      userProperties: (() { final guardedValue = map['userProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserProperty>(guardedValue, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TypeProviderLabelEntryDeploymentmanagerV2beta {
   /// Key of the label
   final pulumi.Input<String>? key;
-
   /// Value of the label
   final pulumi.Input<String>? value;
 
   /// Creates a new [TypeProviderLabelEntryDeploymentmanagerV2beta].
   /// [key] Key of the label
   /// [value] Value of the label
-  TypeProviderLabelEntryDeploymentmanagerV2beta({this.key, this.value});
+  TypeProviderLabelEntryDeploymentmanagerV2beta({
+    this.key,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key, 'value': ?value};
+    return <String, dynamic>{
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
-  factory TypeProviderLabelEntryDeploymentmanagerV2beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TypeProviderLabelEntryDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return TypeProviderLabelEntryDeploymentmanagerV2beta(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

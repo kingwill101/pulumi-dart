@@ -271,16 +271,12 @@ import 'firewall_rule_args.dart';
 class FirewallRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress. Use value '0.0.0.0' for all Azure-internal IP addresses.
   late final pulumi.Output<String?> endIpAddress;
-
   /// Resource name.
   late final pulumi.Output<String?> name;
-
   /// The start IP address of the firewall rule. Must be IPv4 format. Use value '0.0.0.0' for all Azure-internal IP addresses.
   late final pulumi.Output<String?> startIpAddress;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -293,11 +289,11 @@ class FirewallRule extends pulumi.CustomResource {
     FirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:FirewallRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:FirewallRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     endIpAddress = registerOutput<String?>('endIpAddress');
     this.name = registerOutput<String?>('name');

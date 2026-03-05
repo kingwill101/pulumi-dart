@@ -138,36 +138,25 @@ import 'application_timeouts.dart';
 class Application extends pulumi.CustomResource {
   /// ARN of the Q Business application.
   late final pulumi.Output<String> arn;
-
   /// Information about whether file upload functionality is activated or deactivated for your end user. See `attachments_configuration` below.
-  late final pulumi.Output<ApplicationAttachmentsConfiguration>
-  attachmentsConfiguration;
-
+  late final pulumi.Output<ApplicationAttachmentsConfiguration> attachmentsConfiguration;
   /// Description of the Amazon Q application.
   late final pulumi.Output<String?> description;
-
   /// Name of the Amazon Q application.
   late final pulumi.Output<String> displayName;
-
   /// Information about encryption configuration. See `encryption_configuration` below.
-  late final pulumi.Output<ApplicationEncryptionConfiguration?>
-  encryptionConfiguration;
-
+  late final pulumi.Output<ApplicationEncryptionConfiguration?> encryptionConfiguration;
   /// ARN of an IAM role with permissions to access your Amazon CloudWatch logs and metrics.
   late final pulumi.Output<String> iamServiceRoleArn;
-
   /// ARN of the AWS IAM Identity Center application attached to your Amazon Q Business application.
   late final pulumi.Output<String> identityCenterApplicationArn;
-
   /// ARN of the IAM Identity Center instance you are either creating for — or connecting to — your Amazon Q Business application.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> identityCenterInstanceArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ApplicationTimeouts?> timeouts;
@@ -181,56 +170,23 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:qbusiness/application:Application',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:qbusiness/application:Application',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    attachmentsConfiguration =
-        registerOutput<ApplicationAttachmentsConfiguration>(
-          'attachmentsConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ApplicationAttachmentsConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    attachmentsConfiguration = registerOutput<ApplicationAttachmentsConfiguration>('attachmentsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationAttachmentsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    encryptionConfiguration =
-        registerOutput<ApplicationEncryptionConfiguration?>(
-          'encryptionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ApplicationEncryptionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    encryptionConfiguration = registerOutput<ApplicationEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     iamServiceRoleArn = registerOutput<String>('iamServiceRoleArn');
-    identityCenterApplicationArn = registerOutput<String>(
-      'identityCenterApplicationArn',
-    );
-    identityCenterInstanceArn = registerOutput<String>(
-      'identityCenterInstanceArn',
-    );
+    identityCenterApplicationArn = registerOutput<String>('identityCenterApplicationArn');
+    identityCenterInstanceArn = registerOutput<String>('identityCenterInstanceArn');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ApplicationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ApplicationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -251,55 +207,22 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:qbusiness/application:Application',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:qbusiness/application:Application',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    attachmentsConfiguration =
-        registerOutput<ApplicationAttachmentsConfiguration>(
-          'attachmentsConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ApplicationAttachmentsConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    attachmentsConfiguration = registerOutput<ApplicationAttachmentsConfiguration>('attachmentsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationAttachmentsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    encryptionConfiguration =
-        registerOutput<ApplicationEncryptionConfiguration?>(
-          'encryptionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ApplicationEncryptionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    encryptionConfiguration = registerOutput<ApplicationEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     iamServiceRoleArn = registerOutput<String>('iamServiceRoleArn');
-    identityCenterApplicationArn = registerOutput<String>(
-      'identityCenterApplicationArn',
-    );
-    identityCenterInstanceArn = registerOutput<String>(
-      'identityCenterInstanceArn',
-    );
+    identityCenterApplicationArn = registerOutput<String>('identityCenterApplicationArn');
+    identityCenterInstanceArn = registerOutput<String>('identityCenterInstanceArn');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ApplicationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ApplicationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

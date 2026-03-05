@@ -278,10 +278,8 @@ import 'workspace_policy_state.dart';
 class WorkspacePolicy extends pulumi.CustomResource {
   /// Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementWorkspaceId;
-
   /// Specifies the API Management Workspace Policy as an XML string.
   late final pulumi.Output<String> xmlContent;
-
   /// Specifies a publicly accessible URL to a policy XML document.
   ///
   /// &gt; **Note:** Exactly one of `xml_content` or `xml_link` must be specified.
@@ -296,14 +294,12 @@ class WorkspacePolicy extends pulumi.CustomResource {
     WorkspacePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/workspacePolicy:WorkspacePolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    apiManagementWorkspaceId = registerOutput<String>(
-      'apiManagementWorkspaceId',
-    );
+          'azure:apimanagement/workspacePolicy:WorkspacePolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
     xmlContent = registerOutput<String>('xmlContent');
     xmlLink = registerOutput<String?>('xmlLink');
   }
@@ -326,14 +322,12 @@ class WorkspacePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/workspacePolicy:WorkspacePolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    apiManagementWorkspaceId = registerOutput<String>(
-      'apiManagementWorkspaceId',
-    );
+          'azure:apimanagement/workspacePolicy:WorkspacePolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
     xmlContent = registerOutput<String>('xmlContent');
     xmlLink = registerOutput<String?>('xmlLink');
   }

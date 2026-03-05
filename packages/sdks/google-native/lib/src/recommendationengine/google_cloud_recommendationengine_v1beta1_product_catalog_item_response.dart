@@ -9,32 +9,18 @@ import 'google_cloud_recommendationengine_v1beta1_product_catalog_item_price_ran
 class GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse {
   /// Optional. The available quantity of the item.
   final pulumi.Input<String> availableQuantity;
-
   /// Optional. Canonical URL directly linking to the item detail page with a length limit of 5 KiB..
   final pulumi.Input<String> canonicalProductUri;
-
   /// Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
   final pulumi.Input<Map<String, String>> costs;
-
   /// Optional. Only required if the price is set. Currency code for price/costs. Use three-character ISO-4217 code.
   final pulumi.Input<String> currencyCode;
-
   /// Optional. The exact product price.
-  final pulumi.Input<
-    GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse
-  >
-  exactPrice;
-
+  final pulumi.Input<GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse> exactPrice;
   /// Optional. Product images for the catalog item.
-  final pulumi.Input<List<GoogleCloudRecommendationengineV1beta1ImageResponse>>
-  images;
-
+  final pulumi.Input<List<GoogleCloudRecommendationengineV1beta1ImageResponse>> images;
   /// Optional. The product price range.
-  final pulumi.Input<
-    GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse
-  >
-  priceRange;
-
+  final pulumi.Input<GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse> priceRange;
   /// Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
   final pulumi.Input<String> stockState;
 
@@ -64,68 +50,24 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse {
       'canonicalProductUri': canonicalProductUri,
       'costs': costs,
       'currencyCode': currencyCode,
-      'exactPrice':
-          pulumi.Input.mapInputValue<
-            GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse,
-            Map<String, dynamic>
-          >(exactPrice, (value) => value.toMap()),
-      'images':
-          pulumi.Input.mapInputValue<
-            List<GoogleCloudRecommendationengineV1beta1ImageResponse>,
-            List<Map<String, dynamic>>
-          >(
-            images,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudRecommendationengineV1beta1ImageResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'priceRange':
-          pulumi.Input.mapInputValue<
-            GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse,
-            Map<String, dynamic>
-          >(priceRange, (value) => value.toMap()),
+      'exactPrice': pulumi.Input.mapInputValue<GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse, Map<String, dynamic>>(exactPrice, (value) => value.toMap()),
+      'images': pulumi.Input.mapInputValue<List<GoogleCloudRecommendationengineV1beta1ImageResponse>, List<Map<String, dynamic>>>(images, (value) => pulumi.Input.encodeList<GoogleCloudRecommendationengineV1beta1ImageResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'priceRange': pulumi.Input.mapInputValue<GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse, Map<String, dynamic>>(priceRange, (value) => value.toMap()),
       'stockState': stockState,
     };
   }
 
-  factory GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse(
-      availableQuantity: pulumi.Input.fromValue(
-        map['availableQuantity'] as String,
-      ),
-      canonicalProductUri: pulumi.Input.fromValue(
-        map['canonicalProductUri'] as String,
-      ),
-      costs: pulumi.Input.fromValue(
-        (map['costs'] as Map).cast<String, String>(),
-      ),
+      availableQuantity: pulumi.Input.fromValue(map['availableQuantity'] as String),
+      canonicalProductUri: pulumi.Input.fromValue(map['canonicalProductUri'] as String),
+      costs: pulumi.Input.fromValue((map['costs'] as Map).cast<String, String>()),
       currencyCode: pulumi.Input.fromValue(map['currencyCode'] as String),
-      exactPrice: pulumi.Input.fromValue(
-        GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse.fromMap(
-          (map['exactPrice']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      images: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GoogleCloudRecommendationengineV1beta1ImageResponse
-        >(
-          map['images']!,
-          (value) =>
-              GoogleCloudRecommendationengineV1beta1ImageResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      priceRange: pulumi.Input.fromValue(
-        GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse.fromMap(
-          (map['priceRange']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      exactPrice: pulumi.Input.fromValue(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse.fromMap((map['exactPrice']! as Map).cast<String, dynamic>())),
+      images: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudRecommendationengineV1beta1ImageResponse>(map['images']!, (value) => GoogleCloudRecommendationengineV1beta1ImageResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      priceRange: pulumi.Input.fromValue(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse.fromMap((map['priceRange']! as Map).cast<String, dynamic>())),
       stockState: pulumi.Input.fromValue(map['stockState'] as String),
     );
   }
 }
+

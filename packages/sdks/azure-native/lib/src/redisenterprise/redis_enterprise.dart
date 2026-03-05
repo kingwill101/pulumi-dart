@@ -19,56 +19,38 @@ import 'sku_response.dart';
 class RedisEnterprise extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Encryption-at-rest configuration for the cluster.
   late final pulumi.Output<ClusterPropertiesResponseEncryption?> encryption;
-
   /// Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss.
   late final pulumi.Output<String?> highAvailability;
-
   /// DNS name of the cluster endpoint
   late final pulumi.Output<String> hostName;
-
   /// The identity of the resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// Distinguishes the kind of cluster. Read-only.
   late final pulumi.Output<String> kind;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
   late final pulumi.Output<String?> minimumTlsVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// List of private endpoint connections associated with the specified Redis Enterprise cluster
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Current provisioning status of the cluster
   late final pulumi.Output<String> provisioningState;
-
   /// Version of redis the cluster supports, e.g. '6'
   late final pulumi.Output<String> redisVersion;
-
   /// Explains the current redundancy strategy of the cluster, which affects the expected SLA.
   late final pulumi.Output<String> redundancyMode;
-
   /// Current resource status of the cluster
   late final pulumi.Output<String> resourceState;
-
   /// The SKU to create, which affects price, performance, and features.
   late final pulumi.Output<SkuResponse> sku;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The Availability Zones where this cluster will be deployed.
   late final pulumi.Output<List<String>?> zones;
 
@@ -81,55 +63,26 @@ class RedisEnterprise extends pulumi.CustomResource {
     RedisEnterpriseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:redisenterprise:RedisEnterprise',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:redisenterprise:RedisEnterprise',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    encryption = registerOutput<ClusterPropertiesResponseEncryption?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterPropertiesResponseEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<ClusterPropertiesResponseEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPropertiesResponseEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     highAvailability = registerOutput<String?>('highAvailability');
     hostName = registerOutput<String>('hostName');
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     redisVersion = registerOutput<String>('redisVersion');
     redundancyMode = registerOutput<String>('redundancyMode');
     resourceState = registerOutput<String>('resourceState');
-    sku = registerOutput<SkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     zones = registerOutput<List<String>?>('zones');

@@ -10,23 +10,18 @@ class GetListenerRuleResult {
   /// List of actions associated with the rule, sorted by `order`.
   /// Detailed below.
   final List<GetListenerRuleAction>? actions;
-
   /// ARN of the target group.
   final String arn;
-
   /// Set of conditions associated with the rule.
   /// Detailed below.
   final List<GetListenerRuleCondition>? conditions;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String listenerArn;
   final int priority;
   final String region;
-
   /// Tags assigned to the Listener Rule.
   final Map<String, String> tags;
-
   /// Block for transform to apply to requests that match this rule. Detailed below.
   final List<GetListenerRuleTransform>? transforms;
 
@@ -54,77 +49,30 @@ class GetListenerRuleResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?(() {
-        final guardedValue = actions;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetListenerRuleAction,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'actions': ?(() { final guardedValue = actions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetListenerRuleAction, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'arn': arn,
-      'conditions': ?(() {
-        final guardedValue = conditions;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetListenerRuleCondition,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'conditions': ?(() { final guardedValue = conditions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetListenerRuleCondition, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'listenerArn': listenerArn,
       'priority': priority,
       'region': region,
       'tags': tags,
-      'transforms': ?(() {
-        final guardedValue = transforms;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetListenerRuleTransform,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'transforms': ?(() { final guardedValue = transforms; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetListenerRuleTransform, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetListenerRuleResult.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleResult(
-      actions: (() {
-        final guardedValue = map['actions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetListenerRuleAction>(
-          guardedValue,
-          (value) => GetListenerRuleAction.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetListenerRuleAction>(guardedValue, (value) => GetListenerRuleAction.fromMap((value as Map).cast<String, dynamic>())); })(),
       arn: map['arn'] as String,
-      conditions: (() {
-        final guardedValue = map['conditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetListenerRuleCondition>(
-          guardedValue,
-          (value) => GetListenerRuleCondition.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetListenerRuleCondition>(guardedValue, (value) => GetListenerRuleCondition.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       listenerArn: map['listenerArn'] as String,
       priority: map['priority'] as int,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      transforms: (() {
-        final guardedValue = map['transforms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetListenerRuleTransform>(
-          guardedValue,
-          (value) => GetListenerRuleTransform.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      transforms: (() { final guardedValue = map['transforms']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetListenerRuleTransform>(guardedValue, (value) => GetListenerRuleTransform.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

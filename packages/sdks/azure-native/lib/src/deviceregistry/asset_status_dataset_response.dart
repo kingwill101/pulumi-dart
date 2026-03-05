@@ -7,7 +7,6 @@ import 'message_schema_reference_response.dart';
 class AssetStatusDatasetResponse {
   /// The message schema reference object.
   final pulumi.Input<MessageSchemaReferenceResponse> messageSchemaReference;
-
   /// The name of the dataset. Must be unique within the status.datasets array. This name is used to correlate between the spec and status dataset information.
   final pulumi.Input<String> name;
 
@@ -21,23 +20,16 @@ class AssetStatusDatasetResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'messageSchemaReference':
-          pulumi.Input.mapInputValue<
-            MessageSchemaReferenceResponse,
-            Map<String, dynamic>
-          >(messageSchemaReference, (value) => value.toMap()),
+      'messageSchemaReference': pulumi.Input.mapInputValue<MessageSchemaReferenceResponse, Map<String, dynamic>>(messageSchemaReference, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory AssetStatusDatasetResponse.fromMap(Map<String, dynamic> map) {
     return AssetStatusDatasetResponse(
-      messageSchemaReference: pulumi.Input.fromValue(
-        MessageSchemaReferenceResponse.fromMap(
-          (map['messageSchemaReference']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      messageSchemaReference: pulumi.Input.fromValue(MessageSchemaReferenceResponse.fromMap((map['messageSchemaReference']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

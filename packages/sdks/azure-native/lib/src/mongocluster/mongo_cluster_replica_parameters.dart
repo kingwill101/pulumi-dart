@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MongoClusterReplicaParameters {
   /// The location of the source cluster
   final pulumi.Input<String> sourceLocation;
-
   /// The id of the replication source cluster.
   final pulumi.Input<String> sourceResourceId;
 
@@ -28,9 +27,8 @@ class MongoClusterReplicaParameters {
   factory MongoClusterReplicaParameters.fromMap(Map<String, dynamic> map) {
     return MongoClusterReplicaParameters(
       sourceLocation: pulumi.Input.fromValue(map['sourceLocation'] as String),
-      sourceResourceId: pulumi.Input.fromValue(
-        map['sourceResourceId'] as String,
-      ),
+      sourceResourceId: pulumi.Input.fromValue(map['sourceResourceId'] as String),
     );
   }
 }
+

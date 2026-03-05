@@ -33,11 +33,8 @@ class GetInstanceDatabaseIamPolicyArgs {
     return GetInstanceDatabaseIamPolicyArgs(
       databaseId: pulumi.Input.fromValue(map['databaseId'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

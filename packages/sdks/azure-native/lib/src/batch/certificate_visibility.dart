@@ -15,3 +15,4 @@ enum CertificateVisibility {
     throw ArgumentError('Unknown CertificateVisibility value: $value');
   }
 }
+

@@ -10,29 +10,20 @@ class VirtualMachineAdditionalCapabilities {
 
   /// Creates a new [VirtualMachineAdditionalCapabilities].
   /// [installGpuDrivers] Flag to pre-install dedicated GPU drivers.
-  VirtualMachineAdditionalCapabilities({this.installGpuDrivers});
+  VirtualMachineAdditionalCapabilities({
+    this.installGpuDrivers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'installGpuDrivers':
-          ?pulumi.Input.mapOptionalInputValue<EnableState, String>(
-            installGpuDrivers,
-            (value) => value.wireValue,
-          ),
+      'installGpuDrivers': ?pulumi.Input.mapOptionalInputValue<EnableState, String>(installGpuDrivers, (value) => value.wireValue),
     };
   }
 
-  factory VirtualMachineAdditionalCapabilities.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachineAdditionalCapabilities.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAdditionalCapabilities(
-      installGpuDrivers: (() {
-        final guardedValue = map['installGpuDrivers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EnableState.fromValue(guardedValue as String),
-        );
-      })(),
+      installGpuDrivers: (() { final guardedValue = map['installGpuDrivers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnableState.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum IdentityConfigurationType {
     throw ArgumentError('Unknown IdentityConfigurationType value: $value');
   }
 }
+

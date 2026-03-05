@@ -6,13 +6,10 @@ import 'workflow_issues_filter_predicate.dart';
 class WorkflowIssuesFilter {
   /// filter id.
   final pulumi.Input<String>? filterId;
-
   /// The name of the filter. The name only serves a cosmetic purpose and can only be seen through Terraform and GraphQL API. It can't be empty.
   final pulumi.Input<String> name;
-
   /// A condition an issue event should satisfy to be processed by the workflow
   final pulumi.Input<List<WorkflowIssuesFilterPredicate>>? predicates;
-
   /// Type of the filter. Please just set this field to `FILTER`. The field is likely to be deprecated/removed in the near future.
   final pulumi.Input<String> type;
 
@@ -32,43 +29,18 @@ class WorkflowIssuesFilter {
     return <String, dynamic>{
       'filterId': ?filterId,
       'name': name,
-      'predicates':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<WorkflowIssuesFilterPredicate>,
-            List<Map<String, dynamic>>
-          >(
-            predicates,
-            (value) =>
-                pulumi.Input.encodeList<
-                  WorkflowIssuesFilterPredicate,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'predicates': ?pulumi.Input.mapOptionalInputValue<List<WorkflowIssuesFilterPredicate>, List<Map<String, dynamic>>>(predicates, (value) => pulumi.Input.encodeList<WorkflowIssuesFilterPredicate, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory WorkflowIssuesFilter.fromMap(Map<String, dynamic> map) {
     return WorkflowIssuesFilter(
-      filterId: (() {
-        final guardedValue = map['filterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filterId: (() { final guardedValue = map['filterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      predicates: (() {
-        final guardedValue = map['predicates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<WorkflowIssuesFilterPredicate>(
-            guardedValue,
-            (value) => WorkflowIssuesFilterPredicate.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      predicates: (() { final guardedValue = map['predicates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkflowIssuesFilterPredicate>(guardedValue, (value) => WorkflowIssuesFilterPredicate.fromMap((value as Map).cast<String, dynamic>()))); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

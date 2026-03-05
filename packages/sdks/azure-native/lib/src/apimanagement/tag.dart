@@ -140,13 +140,10 @@ import 'tag_args.dart';
 class Tag extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Tag name.
   late final pulumi.Output<String> displayName;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -154,13 +151,16 @@ class Tag extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Tag]. {@macro pulumi_apimanagement_tag_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Tag(String name, {TagArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:apimanagement:Tag',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Tag(
+    String name, {
+    TagArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:apimanagement:Tag',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

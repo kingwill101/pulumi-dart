@@ -7,10 +7,8 @@ import 'metric_value_status_patch_autoscaling_v2beta2.dart';
 class ContainerResourceMetricStatusPatchAutoscalingV2beta2 {
   /// Container is the name of the container in the pods of the scaling target
   final pulumi.Input<String>? container;
-
   /// current contains the current value for the given metric
   final pulumi.Input<MetricValueStatusPatchAutoscalingV2beta2>? current;
-
   /// Name is the name of the resource in question.
   final pulumi.Input<String>? name;
 
@@ -27,38 +25,17 @@ class ContainerResourceMetricStatusPatchAutoscalingV2beta2 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'container': ?container,
-      'current':
-          ?pulumi.Input.mapOptionalInputValue<
-            MetricValueStatusPatchAutoscalingV2beta2,
-            Map<String, dynamic>
-          >(current, (value) => value.toMap()),
+      'current': ?pulumi.Input.mapOptionalInputValue<MetricValueStatusPatchAutoscalingV2beta2, Map<String, dynamic>>(current, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
-  factory ContainerResourceMetricStatusPatchAutoscalingV2beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContainerResourceMetricStatusPatchAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return ContainerResourceMetricStatusPatchAutoscalingV2beta2(
-      container: (() {
-        final guardedValue = map['container'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      current: (() {
-        final guardedValue = map['current'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MetricValueStatusPatchAutoscalingV2beta2.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      container: (() { final guardedValue = map['container']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      current: (() { final guardedValue = map['current']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetricValueStatusPatchAutoscalingV2beta2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

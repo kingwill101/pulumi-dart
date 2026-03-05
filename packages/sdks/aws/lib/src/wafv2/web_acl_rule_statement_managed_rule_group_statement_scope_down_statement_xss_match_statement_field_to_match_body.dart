@@ -13,18 +13,15 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStat
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'oversizeHandling': ?oversizeHandling};
+    return <String, dynamic>{
+      'oversizeHandling': ?oversizeHandling,
+    };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchBody.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchBody(
-      oversizeHandling: (() {
-        final guardedValue = map['oversizeHandling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      oversizeHandling: (() { final guardedValue = map['oversizeHandling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,10 +7,8 @@ import 'gke_node_pool_config_response.dart';
 class GkeNodePoolTargetResponse {
   /// The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
   final pulumi.Input<String> nodePool;
-
   /// Input only. The configuration for the GKE node pool.If specified, Dataproc attempts to create a node pool with the specified shape. If one with the same name already exists, it is verified against all specified fields. If a field differs, the virtual cluster creation will fail.If omitted, any node pool with the specified name is used. If a node pool with the specified name does not exist, Dataproc create a node pool with default values.This is an input only field. It will not be returned by the API.
   final pulumi.Input<GkeNodePoolConfigResponse> nodePoolConfig;
-
   /// The roles associated with the GKE node pool.
   final pulumi.Input<List<String>> roles;
 
@@ -27,11 +25,7 @@ class GkeNodePoolTargetResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nodePool': nodePool,
-      'nodePoolConfig':
-          pulumi.Input.mapInputValue<
-            GkeNodePoolConfigResponse,
-            Map<String, dynamic>
-          >(nodePoolConfig, (value) => value.toMap()),
+      'nodePoolConfig': pulumi.Input.mapInputValue<GkeNodePoolConfigResponse, Map<String, dynamic>>(nodePoolConfig, (value) => value.toMap()),
       'roles': roles,
     };
   }
@@ -39,12 +33,9 @@ class GkeNodePoolTargetResponse {
   factory GkeNodePoolTargetResponse.fromMap(Map<String, dynamic> map) {
     return GkeNodePoolTargetResponse(
       nodePool: pulumi.Input.fromValue(map['nodePool'] as String),
-      nodePoolConfig: pulumi.Input.fromValue(
-        GkeNodePoolConfigResponse.fromMap(
-          (map['nodePoolConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      nodePoolConfig: pulumi.Input.fromValue(GkeNodePoolConfigResponse.fromMap((map['nodePoolConfig']! as Map).cast<String, dynamic>())),
       roles: pulumi.Input.fromValue((map['roles'] as List).cast<String>()),
     );
   }
 }
+

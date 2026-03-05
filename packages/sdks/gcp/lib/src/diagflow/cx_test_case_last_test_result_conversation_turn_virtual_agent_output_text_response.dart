@@ -13,18 +13,15 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'texts': ?texts};
+    return <String, dynamic>{
+      'texts': ?texts,
+    };
   }
 
-  factory CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse(
-      texts: (() {
-        final guardedValue = map['texts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      texts: (() { final guardedValue = map['texts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

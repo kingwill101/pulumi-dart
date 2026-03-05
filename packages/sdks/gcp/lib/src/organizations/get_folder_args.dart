@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFolderArgs {
   /// The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
   final pulumi.Input<String> folder;
-
   /// `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
   final pulumi.Input<bool>? lookupOrganization;
 
   /// Creates a new [GetFolderArgs].
   /// [folder] The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
   /// [lookupOrganization] `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
-  GetFolderArgs({required this.folder, this.lookupOrganization});
+  GetFolderArgs({
+    required this.folder,
+    this.lookupOrganization,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,11 +30,8 @@ class GetFolderArgs {
   factory GetFolderArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderArgs(
       folder: pulumi.Input.fromValue(map['folder'] as String),
-      lookupOrganization: (() {
-        final guardedValue = map['lookupOrganization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      lookupOrganization: (() { final guardedValue = map['lookupOrganization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

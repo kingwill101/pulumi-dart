@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudLinkArgs {
   /// Name of the cloud link.
   final pulumi.Input<String>? cloudLinkName;
-
   /// Identifier of the other private cloud participating in the link.
   final pulumi.Input<String>? linkedCloud;
-
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,22 +39,11 @@ class CloudLinkArgs {
 
   factory CloudLinkArgs.fromMap(Map<String, dynamic> map) {
     return CloudLinkArgs(
-      cloudLinkName: (() {
-        final guardedValue = map['cloudLinkName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      linkedCloud: (() {
-        final guardedValue = map['linkedCloud'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateCloudName: pulumi.Input.fromValue(
-        map['privateCloudName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      cloudLinkName: (() { final guardedValue = map['cloudLinkName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      linkedCloud: (() { final guardedValue = map['linkedCloud']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateCloudName: pulumi.Input.fromValue(map['privateCloudName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

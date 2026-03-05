@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClustersClusterHostGroupListNodeDiskInfo {
   /// The disk name.
   final pulumi.Input<String> device;
-
   /// The ID of the disk.
   final pulumi.Input<String> diskId;
-
   /// The disk name.
   final pulumi.Input<String> diskName;
-
   /// Disk capacity.
   final pulumi.Input<int> size;
-
   /// Disk type.
   final pulumi.Input<String> type;
 
@@ -42,9 +38,7 @@ class GetClustersClusterHostGroupListNodeDiskInfo {
     };
   }
 
-  factory GetClustersClusterHostGroupListNodeDiskInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClustersClusterHostGroupListNodeDiskInfo.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterHostGroupListNodeDiskInfo(
       device: pulumi.Input.fromValue(map['device'] as String),
       diskId: pulumi.Input.fromValue(map['diskId'] as String),
@@ -54,3 +48,4 @@ class GetClustersClusterHostGroupListNodeDiskInfo {
     );
   }
 }
+

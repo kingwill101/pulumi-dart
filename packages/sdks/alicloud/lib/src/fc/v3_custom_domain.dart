@@ -1097,40 +1097,28 @@ import 'v3_custom_domain_waf_config.dart';
 class V3CustomDomain extends pulumi.CustomResource {
   /// The ID of your Alibaba Cloud account (primary account).
   late final pulumi.Output<String> accountId;
-
   /// API version of Function Compute.
   late final pulumi.Output<String> apiVersion;
-
   /// Permission authentication configuration See `auth_config` below.
   late final pulumi.Output<V3CustomDomainAuthConfig?> authConfig;
-
   /// HTTPS certificate information See `cert_config` below.
   late final pulumi.Output<V3CustomDomainCertConfig> certConfig;
-
   /// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
   late final pulumi.Output<V3CustomDomainCorsConfig?> corsConfig;
-
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// The name of the resource
   late final pulumi.Output<String> customDomainName;
-
   /// The last time the custom domain name was Updated.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
   late final pulumi.Output<String?> protocol;
-
   /// Route matching rule configuration See `route_config` below.
   late final pulumi.Output<V3CustomDomainRouteConfig?> routeConfig;
-
   /// Number of subdomains.
   late final pulumi.Output<String> subdomainCount;
-
   /// TLS configuration information See `tls_config` below.
   late final pulumi.Output<V3CustomDomainTlsConfig> tlsConfig;
-
   /// Web application firewall configuration information See `waf_config` below.
   late final pulumi.Output<V3CustomDomainWafConfig?> wafConfig;
 
@@ -1143,78 +1131,24 @@ class V3CustomDomain extends pulumi.CustomResource {
     V3CustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/v3CustomDomain:V3CustomDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/v3CustomDomain:V3CustomDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     apiVersion = registerOutput<String>('apiVersion');
-    authConfig = registerOutput<V3CustomDomainAuthConfig?>(
-      'authConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V3CustomDomainAuthConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    certConfig = registerOutput<V3CustomDomainCertConfig>(
-      'certConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V3CustomDomainCertConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    corsConfig = registerOutput<V3CustomDomainCorsConfig?>(
-      'corsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V3CustomDomainCorsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authConfig = registerOutput<V3CustomDomainAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V3CustomDomainAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certConfig = registerOutput<V3CustomDomainCertConfig>('certConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V3CustomDomainCertConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    corsConfig = registerOutput<V3CustomDomainCorsConfig?>('corsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V3CustomDomainCorsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     customDomainName = registerOutput<String>('customDomainName');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     protocol = registerOutput<String?>('protocol');
-    routeConfig = registerOutput<V3CustomDomainRouteConfig?>(
-      'routeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V3CustomDomainRouteConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routeConfig = registerOutput<V3CustomDomainRouteConfig?>('routeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V3CustomDomainRouteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subdomainCount = registerOutput<String>('subdomainCount');
-    tlsConfig = registerOutput<V3CustomDomainTlsConfig>(
-      'tlsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V3CustomDomainTlsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    wafConfig = registerOutput<V3CustomDomainWafConfig?>(
-      'wafConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V3CustomDomainWafConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tlsConfig = registerOutput<V3CustomDomainTlsConfig>('tlsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V3CustomDomainTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    wafConfig = registerOutput<V3CustomDomainWafConfig?>('wafConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V3CustomDomainWafConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [V3CustomDomain] resource's state with the given [name] and [id].
@@ -1235,77 +1169,23 @@ class V3CustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/v3CustomDomain:V3CustomDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/v3CustomDomain:V3CustomDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     apiVersion = registerOutput<String>('apiVersion');
-    authConfig = registerOutput<V3CustomDomainAuthConfig?>(
-      'authConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V3CustomDomainAuthConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    certConfig = registerOutput<V3CustomDomainCertConfig>(
-      'certConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V3CustomDomainCertConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    corsConfig = registerOutput<V3CustomDomainCorsConfig?>(
-      'corsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V3CustomDomainCorsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authConfig = registerOutput<V3CustomDomainAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V3CustomDomainAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certConfig = registerOutput<V3CustomDomainCertConfig>('certConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V3CustomDomainCertConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    corsConfig = registerOutput<V3CustomDomainCorsConfig?>('corsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V3CustomDomainCorsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     customDomainName = registerOutput<String>('customDomainName');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     protocol = registerOutput<String?>('protocol');
-    routeConfig = registerOutput<V3CustomDomainRouteConfig?>(
-      'routeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V3CustomDomainRouteConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routeConfig = registerOutput<V3CustomDomainRouteConfig?>('routeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V3CustomDomainRouteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subdomainCount = registerOutput<String>('subdomainCount');
-    tlsConfig = registerOutput<V3CustomDomainTlsConfig>(
-      'tlsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V3CustomDomainTlsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    wafConfig = registerOutput<V3CustomDomainWafConfig?>(
-      'wafConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V3CustomDomainWafConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tlsConfig = registerOutput<V3CustomDomainTlsConfig>('tlsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V3CustomDomainTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    wafConfig = registerOutput<V3CustomDomainWafConfig?>('wafConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V3CustomDomainWafConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

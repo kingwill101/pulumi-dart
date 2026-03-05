@@ -8,7 +8,6 @@ import 'nfs_azure_file_properties_response.dart';
 class ManagedEnvironmentStorageResponseProperties {
   /// Azure file properties
   final pulumi.Input<AzureFilePropertiesResponse>? azureFile;
-
   /// NFS Azure file properties
   final pulumi.Input<NfsAzureFilePropertiesResponse>? nfsAzureFile;
 
@@ -22,41 +21,16 @@ class ManagedEnvironmentStorageResponseProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureFile':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureFilePropertiesResponse,
-            Map<String, dynamic>
-          >(azureFile, (value) => value.toMap()),
-      'nfsAzureFile':
-          ?pulumi.Input.mapOptionalInputValue<
-            NfsAzureFilePropertiesResponse,
-            Map<String, dynamic>
-          >(nfsAzureFile, (value) => value.toMap()),
+      'azureFile': ?pulumi.Input.mapOptionalInputValue<AzureFilePropertiesResponse, Map<String, dynamic>>(azureFile, (value) => value.toMap()),
+      'nfsAzureFile': ?pulumi.Input.mapOptionalInputValue<NfsAzureFilePropertiesResponse, Map<String, dynamic>>(nfsAzureFile, (value) => value.toMap()),
     };
   }
 
-  factory ManagedEnvironmentStorageResponseProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedEnvironmentStorageResponseProperties.fromMap(Map<String, dynamic> map) {
     return ManagedEnvironmentStorageResponseProperties(
-      azureFile: (() {
-        final guardedValue = map['azureFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureFilePropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      nfsAzureFile: (() {
-        final guardedValue = map['nfsAzureFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NfsAzureFilePropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      azureFile: (() { final guardedValue = map['azureFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureFilePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      nfsAzureFile: (() { final guardedValue = map['nfsAzureFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NfsAzureFilePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

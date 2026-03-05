@@ -185,19 +185,14 @@ import 'hci_storage_path_state.dart';
 class HciStoragePath extends pulumi.CustomResource {
   /// The ID of Custom Location where the Azure Stack HCI Storage Path should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> customLocationId;
-
   /// The Azure Region where the Azure Stack HCI Storage Path should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Azure Stack HCI Storage Path. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The file path on the disk to create the Storage Path. Changing this forces a new resource to be created.
   late final pulumi.Output<String> path;
-
   /// The name of the Resource Group where the Azure Stack HCI Storage Path should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Azure Stack HCI Storage Path.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -210,11 +205,11 @@ class HciStoragePath extends pulumi.CustomResource {
     HciStoragePathArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:stack/hciStoragePath:HciStoragePath',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:stack/hciStoragePath:HciStoragePath',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customLocationId = registerOutput<String>('customLocationId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -241,11 +236,11 @@ class HciStoragePath extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:stack/hciStoragePath:HciStoragePath',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:stack/hciStoragePath:HciStoragePath',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customLocationId = registerOutput<String>('customLocationId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

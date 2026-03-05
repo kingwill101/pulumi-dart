@@ -7,38 +7,27 @@ import 'metadata_item.dart';
 class BlobSink {
   /// Blob writer add header. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? blobWriterAddHeader;
-
   /// Blob writer date time format. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? blobWriterDateTimeFormat;
-
   /// Blob writer overwrite files. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? blobWriterOverwriteFiles;
-
   /// The type of copy behavior for copy sink.
   final pulumi.Input<dynamic>? copyBehavior;
-
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
-
   /// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
-
   /// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
   final pulumi.Input<List<MetadataItem>>? metadata;
-
   /// Sink retry count. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? sinkRetryCount;
-
   /// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? sinkRetryWait;
-
   /// Copy sink type.
   /// Expected value is 'BlobSink'.
   final pulumi.Input<String> type;
-
   /// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic>? writeBatchSize;
-
   /// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? writeBatchTimeout;
 
@@ -78,18 +67,7 @@ class BlobSink {
       'copyBehavior': ?copyBehavior,
       'disableMetricsCollection': ?disableMetricsCollection,
       'maxConcurrentConnections': ?maxConcurrentConnections,
-      'metadata':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<MetadataItem>,
-            List<Map<String, dynamic>>
-          >(
-            metadata,
-            (value) =>
-                pulumi.Input.encodeList<MetadataItem, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<List<MetadataItem>, List<Map<String, dynamic>>>(metadata, (value) => pulumi.Input.encodeList<MetadataItem, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sinkRetryCount': ?sinkRetryCount,
       'sinkRetryWait': ?sinkRetryWait,
       'type': type,
@@ -100,68 +78,19 @@ class BlobSink {
 
   factory BlobSink.fromMap(Map<String, dynamic> map) {
     return BlobSink(
-      blobWriterAddHeader: (() {
-        final guardedValue = map['blobWriterAddHeader'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      blobWriterDateTimeFormat: (() {
-        final guardedValue = map['blobWriterDateTimeFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      blobWriterOverwriteFiles: (() {
-        final guardedValue = map['blobWriterOverwriteFiles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      copyBehavior: (() {
-        final guardedValue = map['copyBehavior'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      disableMetricsCollection: (() {
-        final guardedValue = map['disableMetricsCollection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      maxConcurrentConnections: (() {
-        final guardedValue = map['maxConcurrentConnections'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<MetadataItem>(
-            guardedValue,
-            (value) =>
-                MetadataItem.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      sinkRetryCount: (() {
-        final guardedValue = map['sinkRetryCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      sinkRetryWait: (() {
-        final guardedValue = map['sinkRetryWait'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      blobWriterAddHeader: (() { final guardedValue = map['blobWriterAddHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      blobWriterDateTimeFormat: (() { final guardedValue = map['blobWriterDateTimeFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      blobWriterOverwriteFiles: (() { final guardedValue = map['blobWriterOverwriteFiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      copyBehavior: (() { final guardedValue = map['copyBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      disableMetricsCollection: (() { final guardedValue = map['disableMetricsCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      maxConcurrentConnections: (() { final guardedValue = map['maxConcurrentConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetadataItem>(guardedValue, (value) => MetadataItem.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      sinkRetryCount: (() { final guardedValue = map['sinkRetryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sinkRetryWait: (() { final guardedValue = map['sinkRetryWait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      writeBatchSize: (() {
-        final guardedValue = map['writeBatchSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      writeBatchTimeout: (() {
-        final guardedValue = map['writeBatchTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      writeBatchSize: (() { final guardedValue = map['writeBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      writeBatchTimeout: (() { final guardedValue = map['writeBatchTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

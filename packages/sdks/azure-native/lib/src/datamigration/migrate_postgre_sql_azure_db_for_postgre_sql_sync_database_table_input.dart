@@ -9,21 +9,20 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput {
 
   /// Creates a new [MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput].
   /// [name] Name of the table to migrate
-  MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput({this.name});
+  MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput.fromMap(Map<String, dynamic> map) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

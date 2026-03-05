@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InMageAzureV2ManagedDiskDetailsResponse {
   /// The DiskEncryptionSet ARM ID.
   final pulumi.Input<String>? diskEncryptionSetId;
-
   /// The disk id.
   final pulumi.Input<String>? diskId;
-
   /// The replica disk type.
   final pulumi.Input<String>? replicaDiskType;
-
   /// Seed managed disk Id.
   final pulumi.Input<String>? seedManagedDiskId;
-
   /// The target disk name.
   final pulumi.Input<String>? targetDiskName;
 
@@ -43,35 +39,14 @@ class InMageAzureV2ManagedDiskDetailsResponse {
     };
   }
 
-  factory InMageAzureV2ManagedDiskDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InMageAzureV2ManagedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageAzureV2ManagedDiskDetailsResponse(
-      diskEncryptionSetId: (() {
-        final guardedValue = map['diskEncryptionSetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      diskId: (() {
-        final guardedValue = map['diskId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      replicaDiskType: (() {
-        final guardedValue = map['replicaDiskType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      seedManagedDiskId: (() {
-        final guardedValue = map['seedManagedDiskId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetDiskName: (() {
-        final guardedValue = map['targetDiskName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      diskEncryptionSetId: (() { final guardedValue = map['diskEncryptionSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskId: (() { final guardedValue = map['diskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replicaDiskType: (() { final guardedValue = map['replicaDiskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      seedManagedDiskId: (() { final guardedValue = map['seedManagedDiskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetDiskName: (() { final guardedValue = map['targetDiskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

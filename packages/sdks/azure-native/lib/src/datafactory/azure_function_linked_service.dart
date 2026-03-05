@@ -10,38 +10,27 @@ import 'parameter_specification.dart';
 class AzureFunctionLinkedService {
   /// List of tags that can be used for describing the linked service.
   final pulumi.Input<List<dynamic>>? annotations;
-
   /// Type of authentication (Required to specify MSI) used to connect to AzureFunction. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? authentication;
-
   /// The integration runtime reference.
   final pulumi.Input<IntegrationRuntimeReference>? connectVia;
-
   /// The credential reference containing authentication information.
   final pulumi.Input<CredentialReference>? credential;
-
   /// Linked service description.
   final pulumi.Input<String>? description;
-
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
   final pulumi.Input<String>? encryptedCredential;
-
   /// The endpoint of the Azure Function App. URL will be in the format https://&lt;accountName&gt;.azurewebsites.net. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> functionAppUrl;
-
   /// Function or Host key for Azure Function App.
   final pulumi.Input<AzureKeyVaultSecretReference>? functionKey;
-
   /// Parameters for linked service.
   final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
-
   /// Allowed token audiences for azure function. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? resourceId;
-
   /// Type of linked service.
   /// Expected value is 'AzureFunction'.
   final pulumi.Input<String> type;
-
   /// Version of the linked service.
   final pulumi.Input<String>? version;
 
@@ -77,36 +66,13 @@ class AzureFunctionLinkedService {
     return <String, dynamic>{
       'annotations': ?annotations,
       'authentication': ?authentication,
-      'connectVia':
-          ?pulumi.Input.mapOptionalInputValue<
-            IntegrationRuntimeReference,
-            Map<String, dynamic>
-          >(connectVia, (value) => value.toMap()),
-      'credential':
-          ?pulumi.Input.mapOptionalInputValue<
-            CredentialReference,
-            Map<String, dynamic>
-          >(credential, (value) => value.toMap()),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
+      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReference, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'functionAppUrl': functionAppUrl,
-      'functionKey':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureKeyVaultSecretReference,
-            Map<String, dynamic>
-          >(functionKey, (value) => value.toMap()),
-      'parameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, ParameterSpecification>,
-            Map<String, Map<String, dynamic>>
-          >(
-            parameters,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  ParameterSpecification,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'functionKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(functionKey, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceId': ?resourceId,
       'type': type,
       'version': ?version,
@@ -115,77 +81,19 @@ class AzureFunctionLinkedService {
 
   factory AzureFunctionLinkedService.fromMap(Map<String, dynamic> map) {
     return AzureFunctionLinkedService(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
-      authentication: (() {
-        final guardedValue = map['authentication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      connectVia: (() {
-        final guardedValue = map['connectVia'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IntegrationRuntimeReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      credential: (() {
-        final guardedValue = map['credential'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CredentialReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encryptedCredential: (() {
-        final guardedValue = map['encryptedCredential'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      connectVia: (() { final guardedValue = map['connectVia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      credential: (() { final guardedValue = map['credential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CredentialReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       functionAppUrl: pulumi.Input.fromValue(map['functionAppUrl']),
-      functionKey: (() {
-        final guardedValue = map['functionKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureKeyVaultSecretReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<ParameterSpecification>(
-            guardedValue,
-            (value) => ParameterSpecification.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      functionKey: (() { final guardedValue = map['functionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -18,17 +18,13 @@ enum GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType {
   const GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType.values) {
+  static GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType fromValue(String value) {
+    for (final item in GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType value: $value');
   }
 }
+

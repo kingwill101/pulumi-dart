@@ -25,3 +25,4 @@ enum WebApplicationFirewallOperator {
     throw ArgumentError('Unknown WebApplicationFirewallOperator value: $value');
   }
 }
+

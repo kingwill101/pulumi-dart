@@ -6,35 +6,26 @@ import 'get_node_fqdn.dart';
 class GetNodeResult {
   /// The address of the node.
   final String? address;
-
   /// Node connection limit.
   final int connectionLimit;
-
   /// User defined description of the node.
   final String? description;
-
   /// The dynamic ratio number for the node.
   final int dynamicRatio;
   final GetNodeFqdn fqdn;
-
   /// Full path of the node (partition and name)
   final String? fullPath;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Specifies the health monitors the system currently uses to monitor this node.
   final String monitor;
   final String name;
   final String partition;
-
   /// Node rate limit.
   final String rateLimit;
-
   /// Node ratio weight.
   final int ratio;
   final String session;
-
   /// The current state of the node.
   final String state;
 
@@ -91,24 +82,12 @@ class GetNodeResult {
 
   factory GetNodeResult.fromMap(Map<String, dynamic> map) {
     return GetNodeResult(
-      address: (() {
-        final guardedValue = map['address'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return guardedValue as String; })(),
       connectionLimit: map['connectionLimit'] as int,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dynamicRatio: map['dynamicRatio'] as int,
       fqdn: GetNodeFqdn.fromMap((map['fqdn']! as Map).cast<String, dynamic>()),
-      fullPath: (() {
-        final guardedValue = map['fullPath'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      fullPath: (() { final guardedValue = map['fullPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       monitor: map['monitor'] as String,
       name: map['name'] as String,
@@ -120,3 +99,4 @@ class GetNodeResult {
     );
   }
 }
+

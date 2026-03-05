@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RevocationDetailsResponse {
   /// Indicates why a Certificate was revoked.
   final pulumi.Input<String> revocationState;
-
   /// The time at which this Certificate was revoked.
   final pulumi.Input<String> revocationTime;
 
@@ -32,3 +31,4 @@ class RevocationDetailsResponse {
     );
   }
 }
+

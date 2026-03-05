@@ -8,37 +8,26 @@ import 'google_cloud_apigee_v1_credential_response.dart';
 class GetAppGroupAppResult {
   /// List of API products associated with the AppGroup app.
   final List<String> apiProducts;
-
   /// Immutable. Name of the parent AppGroup whose resource name format is of syntax (organizations/*/appgroups/*).
   final String appGroup;
-
   /// Immutable. ID of the AppGroup app.
   final String appId;
-
   /// List of attributes for the AppGroup app.
   final List<GoogleCloudApigeeV1AttributeResponse> attributes;
-
   /// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to AppGroup apps.
   final String callbackUrl;
-
   /// Time the AppGroup app was created in milliseconds since epoch.
   final String createdAt;
-
   /// Set of credentials for the AppGroup app consisting of the consumer key/secret pairs associated with the API products.
   final List<GoogleCloudApigeeV1CredentialResponse> credentials;
-
   /// Immutable. Expiration time, in seconds, for the consumer key that is generated for the AppGroup app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
   final String keyExpiresIn;
-
   /// Time the AppGroup app was modified in milliseconds since epoch.
   final String lastModifiedAt;
-
   /// Immutable. Name of the AppGroup app whose resource name format is of syntax (organizations/*/appgroups/*/apps/*).
   final String name;
-
   /// Scopes to apply to the AppGroup app. The specified scopes must already exist for the API product that you associate with the AppGroup app.
   final List<String> scopes;
-
   /// Status of the App. Valid values include `approved` or `revoked`.
   final String status;
 
@@ -75,18 +64,10 @@ class GetAppGroupAppResult {
       'apiProducts': apiProducts,
       'appGroup': appGroup,
       'appId': appId,
-      'attributes':
-          pulumi.Input.encodeList<
-            GoogleCloudApigeeV1AttributeResponse,
-            Map<String, dynamic>
-          >(attributes, (value) => value.toMap()),
+      'attributes': pulumi.Input.encodeList<GoogleCloudApigeeV1AttributeResponse, Map<String, dynamic>>(attributes, (value) => value.toMap()),
       'callbackUrl': callbackUrl,
       'createdAt': createdAt,
-      'credentials':
-          pulumi.Input.encodeList<
-            GoogleCloudApigeeV1CredentialResponse,
-            Map<String, dynamic>
-          >(credentials, (value) => value.toMap()),
+      'credentials': pulumi.Input.encodeList<GoogleCloudApigeeV1CredentialResponse, Map<String, dynamic>>(credentials, (value) => value.toMap()),
       'keyExpiresIn': keyExpiresIn,
       'lastModifiedAt': lastModifiedAt,
       'name': name,
@@ -100,21 +81,10 @@ class GetAppGroupAppResult {
       apiProducts: (map['apiProducts'] as List).cast<String>(),
       appGroup: map['appGroup'] as String,
       appId: map['appId'] as String,
-      attributes: pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
-        map['attributes']!,
-        (value) => GoogleCloudApigeeV1AttributeResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      attributes: pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(map['attributes']!, (value) => GoogleCloudApigeeV1AttributeResponse.fromMap((value as Map).cast<String, dynamic>())),
       callbackUrl: map['callbackUrl'] as String,
       createdAt: map['createdAt'] as String,
-      credentials:
-          pulumi.Input.decodeList<GoogleCloudApigeeV1CredentialResponse>(
-            map['credentials']!,
-            (value) => GoogleCloudApigeeV1CredentialResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      credentials: pulumi.Input.decodeList<GoogleCloudApigeeV1CredentialResponse>(map['credentials']!, (value) => GoogleCloudApigeeV1CredentialResponse.fromMap((value as Map).cast<String, dynamic>())),
       keyExpiresIn: map['keyExpiresIn'] as String,
       lastModifiedAt: map['lastModifiedAt'] as String,
       name: map['name'] as String,
@@ -123,3 +93,4 @@ class GetAppGroupAppResult {
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1DocumentShardInfoResponse {
   /// Total number of shards.
   final pulumi.Input<String> shardCount;
-
   /// The 0-based index of this shard.
   final pulumi.Input<String> shardIndex;
-
   /// The index of the first character in Document.text in the overall document global text.
   final pulumi.Input<String> textOffset;
 
@@ -31,9 +29,7 @@ class GoogleCloudDocumentaiV1DocumentShardInfoResponse {
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentShardInfoResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1DocumentShardInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentShardInfoResponse(
       shardCount: pulumi.Input.fromValue(map['shardCount'] as String),
       shardIndex: pulumi.Input.fromValue(map['shardIndex'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudDocumentaiV1DocumentShardInfoResponse {
     );
   }
 }
+

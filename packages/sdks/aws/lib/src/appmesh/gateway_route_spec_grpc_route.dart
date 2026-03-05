@@ -7,42 +7,29 @@ import 'gateway_route_spec_grpc_route_match.dart';
 class GatewayRouteSpecGrpcRoute {
   /// Action to take if a match is determined.
   final pulumi.Input<GatewayRouteSpecGrpcRouteAction> action;
-
   /// Criteria for determining a request match.
   final pulumi.Input<GatewayRouteSpecGrpcRouteMatch> match;
 
   /// Creates a new [GatewayRouteSpecGrpcRoute].
   /// [action] Action to take if a match is determined.
   /// [match] Criteria for determining a request match.
-  GatewayRouteSpecGrpcRoute({required this.action, required this.match});
+  GatewayRouteSpecGrpcRoute({
+    required this.action,
+    required this.match,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action':
-          pulumi.Input.mapInputValue<
-            GatewayRouteSpecGrpcRouteAction,
-            Map<String, dynamic>
-          >(action, (value) => value.toMap()),
-      'match':
-          pulumi.Input.mapInputValue<
-            GatewayRouteSpecGrpcRouteMatch,
-            Map<String, dynamic>
-          >(match, (value) => value.toMap()),
+      'action': pulumi.Input.mapInputValue<GatewayRouteSpecGrpcRouteAction, Map<String, dynamic>>(action, (value) => value.toMap()),
+      'match': pulumi.Input.mapInputValue<GatewayRouteSpecGrpcRouteMatch, Map<String, dynamic>>(match, (value) => value.toMap()),
     };
   }
 
   factory GatewayRouteSpecGrpcRoute.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecGrpcRoute(
-      action: pulumi.Input.fromValue(
-        GatewayRouteSpecGrpcRouteAction.fromMap(
-          (map['action']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      match: pulumi.Input.fromValue(
-        GatewayRouteSpecGrpcRouteMatch.fromMap(
-          (map['match']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      action: pulumi.Input.fromValue(GatewayRouteSpecGrpcRouteAction.fromMap((map['action']! as Map).cast<String, dynamic>())),
+      match: pulumi.Input.fromValue(GatewayRouteSpecGrpcRouteMatch.fromMap((map['match']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

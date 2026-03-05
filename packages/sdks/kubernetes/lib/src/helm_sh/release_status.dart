@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReleaseStatus {
   /// The version number of the application being deployed.
   final pulumi.Input<String>? appVersion;
-
   /// The name of the chart.
   final pulumi.Input<String>? chart;
-
   /// Name is the name of the release.
   final pulumi.Input<String>? name;
-
   /// Namespace is the kubernetes namespace of the release.
   final pulumi.Input<String>? namespace;
-
   /// Version is an int32 which represents the version of the release.
   final pulumi.Input<int>? revision;
-
   /// Status of the release.
   final pulumi.Input<String> status;
-
   /// A SemVer 2 conformant version string of the chart.
   final pulumi.Input<String>? version;
 
@@ -56,37 +50,14 @@ class ReleaseStatus {
 
   factory ReleaseStatus.fromMap(Map<String, dynamic> map) {
     return ReleaseStatus(
-      appVersion: (() {
-        final guardedValue = map['appVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      chart: (() {
-        final guardedValue = map['chart'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      revision: (() {
-        final guardedValue = map['revision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      appVersion: (() { final guardedValue = map['appVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      chart: (() { final guardedValue = map['chart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

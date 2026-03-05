@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPublicCloudConnectorArgs {
   /// Represent public cloud connectors resource.
   final pulumi.Input<String> publicCloudConnector;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetPublicCloudConnectorArgs {
 
   factory GetPublicCloudConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicCloudConnectorArgs(
-      publicCloudConnector: pulumi.Input.fromValue(
-        map['publicCloudConnector'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      publicCloudConnector: pulumi.Input.fromValue(map['publicCloudConnector'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

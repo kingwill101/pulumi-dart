@@ -20,3 +20,4 @@ enum StorageTaskOperationName {
     throw ArgumentError('Unknown StorageTaskOperationName value: $value');
   }
 }
+

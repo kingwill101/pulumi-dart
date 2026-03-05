@@ -151,45 +151,32 @@ import 'system_data_response.dart';
 class Invitation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The expiration date for the invitation and share subscription.
   late final pulumi.Output<String?> expirationDate;
-
   /// unique invitation id
   late final pulumi.Output<String> invitationId;
-
   /// The status of the invitation.
   late final pulumi.Output<String> invitationStatus;
-
   /// Name of the azure resource
   late final pulumi.Output<String> name;
-
   /// The time the recipient responded to the invitation.
   late final pulumi.Output<String> respondedAt;
-
   /// Gets the time at which the invitation was sent.
   late final pulumi.Output<String> sentAt;
-
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The target Azure AD Id. Can't be combined with email.
   late final pulumi.Output<String?> targetActiveDirectoryId;
-
   /// The email the invitation is directed to.
   late final pulumi.Output<String?> targetEmail;
-
   /// The target user or application Id that invitation is being sent to.
   /// Must be specified along TargetActiveDirectoryId. This enables sending
   /// invitations to specific users or applications in an AD tenant.
   late final pulumi.Output<String?> targetObjectId;
-
   /// Type of the azure resource
   late final pulumi.Output<String> type;
-
   /// Email of the user who created the resource
   late final pulumi.Output<String> userEmail;
-
   /// Name of the user who created the resource
   late final pulumi.Output<String> userName;
 
@@ -202,11 +189,11 @@ class Invitation extends pulumi.CustomResource {
     InvitationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datashare:Invitation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datashare:Invitation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     expirationDate = registerOutput<String?>('expirationDate');
     invitationId = registerOutput<String>('invitationId');
@@ -214,19 +201,8 @@ class Invitation extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     respondedAt = registerOutput<String>('respondedAt');
     sentAt = registerOutput<String>('sentAt');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    targetActiveDirectoryId = registerOutput<String?>(
-      'targetActiveDirectoryId',
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetActiveDirectoryId = registerOutput<String?>('targetActiveDirectoryId');
     targetEmail = registerOutput<String?>('targetEmail');
     targetObjectId = registerOutput<String?>('targetObjectId');
     type = registerOutput<String>('type');

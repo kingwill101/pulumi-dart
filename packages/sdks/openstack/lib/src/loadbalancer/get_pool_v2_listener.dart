@@ -7,13 +7,20 @@ class GetPoolV2Listener {
 
   /// Creates a new [GetPoolV2Listener].
   /// [id] Required.
-  GetPoolV2Listener({required this.id});
+  GetPoolV2Listener({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetPoolV2Listener.fromMap(Map<String, dynamic> map) {
-    return GetPoolV2Listener(id: pulumi.Input.fromValue(map['id'] as String));
+    return GetPoolV2Listener(
+      id: pulumi.Input.fromValue(map['id'] as String),
+    );
   }
 }
+

@@ -32,12 +32,9 @@ class GetVersionArgs {
   factory GetVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionArgs(
       modelId: pulumi.Input.fromValue(map['modelId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );
   }
 }
+

@@ -10,39 +10,20 @@ class SourceInstanceParamsComputeV1 {
 
   /// Creates a new [SourceInstanceParamsComputeV1].
   /// [diskConfigs] Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
-  SourceInstanceParamsComputeV1({this.diskConfigs});
+  SourceInstanceParamsComputeV1({
+    this.diskConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diskConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DiskInstantiationConfigComputeV1>,
-            List<Map<String, dynamic>>
-          >(
-            diskConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DiskInstantiationConfigComputeV1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'diskConfigs': ?pulumi.Input.mapOptionalInputValue<List<DiskInstantiationConfigComputeV1>, List<Map<String, dynamic>>>(diskConfigs, (value) => pulumi.Input.encodeList<DiskInstantiationConfigComputeV1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SourceInstanceParamsComputeV1.fromMap(Map<String, dynamic> map) {
     return SourceInstanceParamsComputeV1(
-      diskConfigs: (() {
-        final guardedValue = map['diskConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DiskInstantiationConfigComputeV1>(
-            guardedValue,
-            (value) => DiskInstantiationConfigComputeV1.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      diskConfigs: (() { final guardedValue = map['diskConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DiskInstantiationConfigComputeV1>(guardedValue, (value) => DiskInstantiationConfigComputeV1.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

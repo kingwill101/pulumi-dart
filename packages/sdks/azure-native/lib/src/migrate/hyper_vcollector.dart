@@ -226,24 +226,15 @@ class HyperVCollector extends pulumi.CustomResource {
     HyperVCollectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:migrate:HyperVCollector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:migrate:HyperVCollector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eTag = registerOutput<String?>('eTag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<CollectorPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CollectorPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<CollectorPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectorPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

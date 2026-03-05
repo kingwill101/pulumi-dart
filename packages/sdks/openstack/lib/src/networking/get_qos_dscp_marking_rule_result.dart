@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getQosDscpMarkingRule.
 class GetQosDscpMarkingRuleResult {
   /// See Argument Reference above.
   final int dscpMark;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// See Argument Reference above.
   final String qosPolicyId;
-
   /// See Argument Reference above.
   final String region;
 
@@ -44,3 +42,4 @@ class GetQosDscpMarkingRuleResult {
     );
   }
 }
+

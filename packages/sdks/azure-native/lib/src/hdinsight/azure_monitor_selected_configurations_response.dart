@@ -7,10 +7,8 @@ import 'azure_monitor_table_configuration_response.dart';
 class AzureMonitorSelectedConfigurationsResponse {
   /// The configuration version.
   final pulumi.Input<String>? configurationVersion;
-
   /// The global configurations of selected configurations.
   final pulumi.Input<Map<String, String>>? globalConfigurations;
-
   /// The table list.
   final pulumi.Input<List<AzureMonitorTableConfigurationResponse>>? tableList;
 
@@ -28,49 +26,16 @@ class AzureMonitorSelectedConfigurationsResponse {
     return <String, dynamic>{
       'configurationVersion': ?configurationVersion,
       'globalConfigurations': ?globalConfigurations,
-      'tableList':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AzureMonitorTableConfigurationResponse>,
-            List<Map<String, dynamic>>
-          >(
-            tableList,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AzureMonitorTableConfigurationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'tableList': ?pulumi.Input.mapOptionalInputValue<List<AzureMonitorTableConfigurationResponse>, List<Map<String, dynamic>>>(tableList, (value) => pulumi.Input.encodeList<AzureMonitorTableConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory AzureMonitorSelectedConfigurationsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureMonitorSelectedConfigurationsResponse.fromMap(Map<String, dynamic> map) {
     return AzureMonitorSelectedConfigurationsResponse(
-      configurationVersion: (() {
-        final guardedValue = map['configurationVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      globalConfigurations: (() {
-        final guardedValue = map['globalConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tableList: (() {
-        final guardedValue = map['tableList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AzureMonitorTableConfigurationResponse>(
-            guardedValue,
-            (value) => AzureMonitorTableConfigurationResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      configurationVersion: (() { final guardedValue = map['configurationVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      globalConfigurations: (() { final guardedValue = map['globalConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tableList: (() { final guardedValue = map['tableList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AzureMonitorTableConfigurationResponse>(guardedValue, (value) => AzureMonitorTableConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

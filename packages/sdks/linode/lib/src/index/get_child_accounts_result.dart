@@ -22,42 +22,18 @@ class GetChildAccountsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'childAccounts':
-          pulumi.Input.encodeList<
-            GetChildAccountsChildAccount,
-            Map<String, dynamic>
-          >(childAccounts, (value) => value.toMap()),
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetChildAccountsFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'childAccounts': pulumi.Input.encodeList<GetChildAccountsChildAccount, Map<String, dynamic>>(childAccounts, (value) => value.toMap()),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetChildAccountsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
     };
   }
 
   factory GetChildAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetChildAccountsResult(
-      childAccounts: pulumi.Input.decodeList<GetChildAccountsChildAccount>(
-        map['childAccounts']!,
-        (value) => GetChildAccountsChildAccount.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetChildAccountsFilter>(
-          guardedValue,
-          (value) => GetChildAccountsFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      childAccounts: pulumi.Input.decodeList<GetChildAccountsChildAccount>(map['childAccounts']!, (value) => GetChildAccountsChildAccount.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetChildAccountsFilter>(guardedValue, (value) => GetChildAccountsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
     );
   }
 }
+

@@ -7,42 +7,29 @@ import 'resource_reference.dart';
 class OriginGroupOverride {
   /// Protocol this rule will use when forwarding traffic to backends.
   final pulumi.Input<String>? forwardingProtocol;
-
   /// defines the OriginGroup that would override the DefaultOriginGroup on route.
   final pulumi.Input<ResourceReference>? originGroup;
 
   /// Creates a new [OriginGroupOverride].
   /// [forwardingProtocol] Protocol this rule will use when forwarding traffic to backends.
   /// [originGroup] defines the OriginGroup that would override the DefaultOriginGroup on route.
-  OriginGroupOverride({this.forwardingProtocol, this.originGroup});
+  OriginGroupOverride({
+    this.forwardingProtocol,
+    this.originGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'forwardingProtocol': ?forwardingProtocol,
-      'originGroup':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceReference,
-            Map<String, dynamic>
-          >(originGroup, (value) => value.toMap()),
+      'originGroup': ?pulumi.Input.mapOptionalInputValue<ResourceReference, Map<String, dynamic>>(originGroup, (value) => value.toMap()),
     };
   }
 
   factory OriginGroupOverride.fromMap(Map<String, dynamic> map) {
     return OriginGroupOverride(
-      forwardingProtocol: (() {
-        final guardedValue = map['forwardingProtocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      originGroup: (() {
-        final guardedValue = map['originGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      forwardingProtocol: (() { final guardedValue = map['forwardingProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      originGroup: (() { final guardedValue = map['originGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

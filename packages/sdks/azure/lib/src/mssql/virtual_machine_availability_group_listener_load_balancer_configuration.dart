@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration {
   /// The ID of the Load Balancer. Changing this forces a new resource to be created.
   final pulumi.Input<String> loadBalancerId;
-
   /// The private IP Address of the listener. Changing this forces a new resource to be created.
   final pulumi.Input<String> privateIpAddress;
-
   /// The probe port of the listener. Changing this forces a new resource to be created.
   final pulumi.Input<int> probePort;
-
   /// Specifies a list of SQL Virtual Machine IDs. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>> sqlVirtualMachineIds;
-
   /// The ID of the Subnet to create the listener. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `sql_virtual_machine_ids` should match with the SQL Virtual Machines specified in `replica`.
@@ -44,19 +40,14 @@ class VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration {
     };
   }
 
-  factory VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration(
       loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
-      privateIpAddress: pulumi.Input.fromValue(
-        map['privateIpAddress'] as String,
-      ),
+      privateIpAddress: pulumi.Input.fromValue(map['privateIpAddress'] as String),
       probePort: pulumi.Input.fromValue(map['probePort'] as int),
-      sqlVirtualMachineIds: pulumi.Input.fromValue(
-        (map['sqlVirtualMachineIds'] as List).cast<String>(),
-      ),
+      sqlVirtualMachineIds: pulumi.Input.fromValue((map['sqlVirtualMachineIds'] as List).cast<String>()),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
+

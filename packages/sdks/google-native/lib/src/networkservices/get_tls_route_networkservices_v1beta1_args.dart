@@ -29,17 +29,12 @@ class GetTlsRouteNetworkservicesV1beta1Args {
     };
   }
 
-  factory GetTlsRouteNetworkservicesV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTlsRouteNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetTlsRouteNetworkservicesV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tlsRouteId: pulumi.Input.fromValue(map['tlsRouteId'] as String),
     );
   }
 }
+

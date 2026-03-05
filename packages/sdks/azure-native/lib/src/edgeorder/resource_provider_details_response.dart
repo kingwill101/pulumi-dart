@@ -9,7 +9,9 @@ class ResourceProviderDetailsResponse {
 
   /// Creates a new [ResourceProviderDetailsResponse].
   /// [resourceProviderNamespace] Resource provider namespace.
-  ResourceProviderDetailsResponse({required this.resourceProviderNamespace});
+  ResourceProviderDetailsResponse({
+    required this.resourceProviderNamespace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,9 +21,8 @@ class ResourceProviderDetailsResponse {
 
   factory ResourceProviderDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceProviderDetailsResponse(
-      resourceProviderNamespace: pulumi.Input.fromValue(
-        map['resourceProviderNamespace'] as String,
-      ),
+      resourceProviderNamespace: pulumi.Input.fromValue(map['resourceProviderNamespace'] as String),
     );
   }
 }
+

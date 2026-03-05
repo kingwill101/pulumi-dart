@@ -9,23 +9,17 @@ import 'get_budget_resource_group_time_period.dart';
 class GetBudgetResourceGroupResult {
   /// The total amount of cost to track with the budget.
   final double amount;
-
   /// A `filter` block as defined below.
   final List<GetBudgetResourceGroupFilter> filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The name of the tag used for the filter.
   final String name;
-
   /// A `notification` block as defined below.
   final List<GetBudgetResourceGroupNotification> notifications;
   final String resourceGroupId;
-
   /// The time covered by a budget.
   final String timeGrain;
-
   /// A `time_period` block as defined below.
   final List<GetBudgetResourceGroupTimePeriod> timePeriods;
 
@@ -52,54 +46,27 @@ class GetBudgetResourceGroupResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'amount': amount,
-      'filters':
-          pulumi.Input.encodeList<
-            GetBudgetResourceGroupFilter,
-            Map<String, dynamic>
-          >(filters, (value) => value.toMap()),
+      'filters': pulumi.Input.encodeList<GetBudgetResourceGroupFilter, Map<String, dynamic>>(filters, (value) => value.toMap()),
       'id': id,
       'name': name,
-      'notifications':
-          pulumi.Input.encodeList<
-            GetBudgetResourceGroupNotification,
-            Map<String, dynamic>
-          >(notifications, (value) => value.toMap()),
+      'notifications': pulumi.Input.encodeList<GetBudgetResourceGroupNotification, Map<String, dynamic>>(notifications, (value) => value.toMap()),
       'resourceGroupId': resourceGroupId,
       'timeGrain': timeGrain,
-      'timePeriods':
-          pulumi.Input.encodeList<
-            GetBudgetResourceGroupTimePeriod,
-            Map<String, dynamic>
-          >(timePeriods, (value) => value.toMap()),
+      'timePeriods': pulumi.Input.encodeList<GetBudgetResourceGroupTimePeriod, Map<String, dynamic>>(timePeriods, (value) => value.toMap()),
     };
   }
 
   factory GetBudgetResourceGroupResult.fromMap(Map<String, dynamic> map) {
     return GetBudgetResourceGroupResult(
       amount: map['amount'] as double,
-      filters: pulumi.Input.decodeList<GetBudgetResourceGroupFilter>(
-        map['filters']!,
-        (value) => GetBudgetResourceGroupFilter.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      filters: pulumi.Input.decodeList<GetBudgetResourceGroupFilter>(map['filters']!, (value) => GetBudgetResourceGroupFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
-      notifications:
-          pulumi.Input.decodeList<GetBudgetResourceGroupNotification>(
-            map['notifications']!,
-            (value) => GetBudgetResourceGroupNotification.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      notifications: pulumi.Input.decodeList<GetBudgetResourceGroupNotification>(map['notifications']!, (value) => GetBudgetResourceGroupNotification.fromMap((value as Map).cast<String, dynamic>())),
       resourceGroupId: map['resourceGroupId'] as String,
       timeGrain: map['timeGrain'] as String,
-      timePeriods: pulumi.Input.decodeList<GetBudgetResourceGroupTimePeriod>(
-        map['timePeriods']!,
-        (value) => GetBudgetResourceGroupTimePeriod.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      timePeriods: pulumi.Input.decodeList<GetBudgetResourceGroupTimePeriod>(map['timePeriods']!, (value) => GetBudgetResourceGroupTimePeriod.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

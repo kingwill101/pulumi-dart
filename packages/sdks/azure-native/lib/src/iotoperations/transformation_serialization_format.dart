@@ -13,8 +13,7 @@ enum TransformationSerializationFormat {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown TransformationSerializationFormat value: $value',
-    );
+    throw ArgumentError('Unknown TransformationSerializationFormat value: $value');
   }
 }
+

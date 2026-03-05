@@ -894,16 +894,12 @@ import 'job_monitor_rule_state.dart';
 class JobMonitorRule extends pulumi.CustomResource {
   /// Trigger delay alarm threshold, which is measured in seconds.
   late final pulumi.Output<String> delayRuleTime;
-
   /// Migration, synchronization or subscription task ID can be by calling the [DescribeDtsJobs] get.
   late final pulumi.Output<String> dtsJobId;
-
   /// The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
   late final pulumi.Output<String?> phone;
-
   /// Whether to enable monitoring rules, valid values: `Y`, `N`.
   late final pulumi.Output<String> state;
-
   /// Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
   late final pulumi.Output<String> type;
 
@@ -916,11 +912,11 @@ class JobMonitorRule extends pulumi.CustomResource {
     JobMonitorRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dts/jobMonitorRule:JobMonitorRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dts/jobMonitorRule:JobMonitorRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     delayRuleTime = registerOutput<String>('delayRuleTime');
     dtsJobId = registerOutput<String>('dtsJobId');
     phone = registerOutput<String?>('phone');
@@ -946,11 +942,11 @@ class JobMonitorRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dts/jobMonitorRule:JobMonitorRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dts/jobMonitorRule:JobMonitorRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     delayRuleTime = registerOutput<String>('delayRuleTime');
     dtsJobId = registerOutput<String>('dtsJobId');
     phone = registerOutput<String?>('phone');

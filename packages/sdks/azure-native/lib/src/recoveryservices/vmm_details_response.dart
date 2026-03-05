@@ -10,10 +10,14 @@ class VmmDetailsResponse {
 
   /// Creates a new [VmmDetailsResponse].
   /// [instanceType] Gets the class type. Overridden in derived classes.
-  VmmDetailsResponse({required this.instanceType});
+  VmmDetailsResponse({
+    required this.instanceType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instanceType': instanceType};
+    return <String, dynamic>{
+      'instanceType': instanceType,
+    };
   }
 
   factory VmmDetailsResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class VmmDetailsResponse {
     );
   }
 }
+

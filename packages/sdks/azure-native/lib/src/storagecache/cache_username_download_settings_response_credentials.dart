@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheUsernameDownloadSettingsResponseCredentials {
   /// The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
   final pulumi.Input<String>? bindDn;
-
   /// The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
   final pulumi.Input<String>? bindPassword;
 
@@ -19,23 +18,17 @@ class CacheUsernameDownloadSettingsResponseCredentials {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bindDn': ?bindDn, 'bindPassword': ?bindPassword};
+    return <String, dynamic>{
+      'bindDn': ?bindDn,
+      'bindPassword': ?bindPassword,
+    };
   }
 
-  factory CacheUsernameDownloadSettingsResponseCredentials.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CacheUsernameDownloadSettingsResponseCredentials.fromMap(Map<String, dynamic> map) {
     return CacheUsernameDownloadSettingsResponseCredentials(
-      bindDn: (() {
-        final guardedValue = map['bindDn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bindPassword: (() {
-        final guardedValue = map['bindPassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bindDn: (() { final guardedValue = map['bindDn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bindPassword: (() { final guardedValue = map['bindPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

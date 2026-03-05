@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity {
   /// The Client ID of the user-defined Managed Identity assigned to the Kubelets.
   final pulumi.Input<String> clientId;
-
   /// The Object ID of the user-defined Managed Identity assigned to the Kubelets.
   final pulumi.Input<String> objectId;
-
   /// The ID of the User Assigned Identity assigned to the Kubelets.
   final pulumi.Input<String> userAssignedIdentityId;
 
@@ -30,15 +28,12 @@ class GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity {
     };
   }
 
-  factory GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       objectId: pulumi.Input.fromValue(map['objectId'] as String),
-      userAssignedIdentityId: pulumi.Input.fromValue(
-        map['userAssignedIdentityId'] as String,
-      ),
+      userAssignedIdentityId: pulumi.Input.fromValue(map['userAssignedIdentityId'] as String),
     );
   }
 }
+

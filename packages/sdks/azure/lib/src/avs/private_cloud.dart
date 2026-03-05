@@ -209,60 +209,42 @@ import 'private_cloud_state.dart';
 class PrivateCloud extends pulumi.CustomResource {
   /// A `circuit` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> circuits;
-
   /// The endpoint for the VMware HCX Cloud Manager.
   late final pulumi.Output<String> hcxCloudManagerEndpoint;
-
   /// Is the Azure VMware Solution Private Cloud connected to the internet? This field can not be updated with `management_cluster[0].size` together.
   /// &gt; **Note:** `internet_connection_enabled` and `management_cluster[0].size` cannot be updated at the same time.
   late final pulumi.Output<bool?> internetConnectionEnabled;
-
   /// The Azure Region where the Azure VMware Solution Private Cloud should exist. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   late final pulumi.Output<String> location;
-
   /// A `management_cluster` block as defined below.
   /// &gt; **Note:** `internet_connection_enabled` and `management_cluster[0].size` cannot be updated at the same time.
   late final pulumi.Output<PrivateCloudManagementCluster> managementCluster;
-
   /// The network used to access VMware vCenter Server and NSX Manager.
   late final pulumi.Output<String> managementSubnetCidr;
-
   /// The name which should be used for this Azure VMware Solution Private Cloud. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   late final pulumi.Output<String> name;
-
   /// The subnet which should be unique across virtual network in your subscription as well as on-premise. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   late final pulumi.Output<String> networkSubnetCidr;
-
   /// The thumbprint of the VMware NSX Manager SSL certificate.
   late final pulumi.Output<String> nsxtCertificateThumbprint;
-
   /// The endpoint for the VMware NSX Manager.
   late final pulumi.Output<String> nsxtManagerEndpoint;
-
   /// The password of the VMware NSX Manager cloudadmin. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   late final pulumi.Output<String?> nsxtPassword;
-
   /// The network which is used for virtual machine cold migration, cloning, and snapshot migration.
   late final pulumi.Output<String> provisioningSubnetCidr;
-
   /// The name of the Resource Group where the Azure VMware Solution Private Cloud should exist. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The Name of the SKU used for this Azure VMware Solution Private Cloud. Possible values are `av20`, `av36`, `av36t`, `av36p`, `av36pt`, `av48`, `av48t`, `av52`, `av52t`, and `av64`. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   late final pulumi.Output<String> skuName;
-
   /// A mapping of tags which should be assigned to the Azure VMware Solution Private Cloud.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The thumbprint of the VMware vCenter Server SSL certificate.
   late final pulumi.Output<String> vcenterCertificateThumbprint;
-
   /// The password of the VMware vCenter Server cloudadmin. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   late final pulumi.Output<String?> vcenterPassword;
-
   /// The endpoint for VMware vCenter Server Appliance.
   late final pulumi.Output<String> vcsaEndpoint;
-
   /// The network which is used for live migration of virtual machines.
   late final pulumi.Output<String> vmotionSubnetCidr;
 
@@ -275,42 +257,27 @@ class PrivateCloud extends pulumi.CustomResource {
     PrivateCloudArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:avs/privateCloud:PrivateCloud',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:avs/privateCloud:PrivateCloud',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     circuits = registerOutput<List<Map<String, dynamic>>>('circuits');
     hcxCloudManagerEndpoint = registerOutput<String>('hcxCloudManagerEndpoint');
-    internetConnectionEnabled = registerOutput<bool?>(
-      'internetConnectionEnabled',
-    );
+    internetConnectionEnabled = registerOutput<bool?>('internetConnectionEnabled');
     location = registerOutput<String>('location');
-    managementCluster = registerOutput<PrivateCloudManagementCluster>(
-      'managementCluster',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PrivateCloudManagementCluster.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managementCluster = registerOutput<PrivateCloudManagementCluster>('managementCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateCloudManagementCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     managementSubnetCidr = registerOutput<String>('managementSubnetCidr');
     this.name = registerOutput<String>('name');
     networkSubnetCidr = registerOutput<String>('networkSubnetCidr');
-    nsxtCertificateThumbprint = registerOutput<String>(
-      'nsxtCertificateThumbprint',
-    );
+    nsxtCertificateThumbprint = registerOutput<String>('nsxtCertificateThumbprint');
     nsxtManagerEndpoint = registerOutput<String>('nsxtManagerEndpoint');
     nsxtPassword = registerOutput<String?>('nsxtPassword');
     provisioningSubnetCidr = registerOutput<String>('provisioningSubnetCidr');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     tags = registerOutput<Map<String, String>?>('tags');
-    vcenterCertificateThumbprint = registerOutput<String>(
-      'vcenterCertificateThumbprint',
-    );
+    vcenterCertificateThumbprint = registerOutput<String>('vcenterCertificateThumbprint');
     vcenterPassword = registerOutput<String?>('vcenterPassword');
     vcsaEndpoint = registerOutput<String>('vcsaEndpoint');
     vmotionSubnetCidr = registerOutput<String>('vmotionSubnetCidr');
@@ -334,42 +301,27 @@ class PrivateCloud extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:avs/privateCloud:PrivateCloud',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:avs/privateCloud:PrivateCloud',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     circuits = registerOutput<List<Map<String, dynamic>>>('circuits');
     hcxCloudManagerEndpoint = registerOutput<String>('hcxCloudManagerEndpoint');
-    internetConnectionEnabled = registerOutput<bool?>(
-      'internetConnectionEnabled',
-    );
+    internetConnectionEnabled = registerOutput<bool?>('internetConnectionEnabled');
     location = registerOutput<String>('location');
-    managementCluster = registerOutput<PrivateCloudManagementCluster>(
-      'managementCluster',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PrivateCloudManagementCluster.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managementCluster = registerOutput<PrivateCloudManagementCluster>('managementCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateCloudManagementCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     managementSubnetCidr = registerOutput<String>('managementSubnetCidr');
     this.name = registerOutput<String>('name');
     networkSubnetCidr = registerOutput<String>('networkSubnetCidr');
-    nsxtCertificateThumbprint = registerOutput<String>(
-      'nsxtCertificateThumbprint',
-    );
+    nsxtCertificateThumbprint = registerOutput<String>('nsxtCertificateThumbprint');
     nsxtManagerEndpoint = registerOutput<String>('nsxtManagerEndpoint');
     nsxtPassword = registerOutput<String?>('nsxtPassword');
     provisioningSubnetCidr = registerOutput<String>('provisioningSubnetCidr');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     tags = registerOutput<Map<String, String>?>('tags');
-    vcenterCertificateThumbprint = registerOutput<String>(
-      'vcenterCertificateThumbprint',
-    );
+    vcenterCertificateThumbprint = registerOutput<String>('vcenterCertificateThumbprint');
     vcenterPassword = registerOutput<String?>('vcenterPassword');
     vcsaEndpoint = registerOutput<String>('vcsaEndpoint');
     vmotionSubnetCidr = registerOutput<String>('vmotionSubnetCidr');

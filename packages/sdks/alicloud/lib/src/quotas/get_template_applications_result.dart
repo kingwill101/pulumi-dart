@@ -7,23 +7,17 @@ import 'get_template_applications_application.dart';
 class GetTemplateApplicationsResult {
   /// A list of Template Applications Entries. Each element contains the following attributes:
   final List<GetTemplateApplicationsApplication> applications;
-
   /// The ID of the quota application batch.
   final String? batchQuotaApplicationId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Template Applications IDs.
   final List<String> ids;
   final String? outputFile;
-
   /// Cloud service name abbreviation.&gt; For more information about cloud services that support quota centers, see Cloud services that support quota centers.
   final String? productCode;
-
   /// The quota ID.
   final String? quotaActionCode;
-
   /// The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
   final String? quotaCategory;
 
@@ -49,11 +43,7 @@ class GetTemplateApplicationsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applications':
-          pulumi.Input.encodeList<
-            GetTemplateApplicationsApplication,
-            Map<String, dynamic>
-          >(applications, (value) => value.toMap()),
+      'applications': pulumi.Input.encodeList<GetTemplateApplicationsApplication, Map<String, dynamic>>(applications, (value) => value.toMap()),
       'batchQuotaApplicationId': ?batchQuotaApplicationId,
       'id': id,
       'ids': ids,
@@ -66,39 +56,15 @@ class GetTemplateApplicationsResult {
 
   factory GetTemplateApplicationsResult.fromMap(Map<String, dynamic> map) {
     return GetTemplateApplicationsResult(
-      applications: pulumi.Input.decodeList<GetTemplateApplicationsApplication>(
-        map['applications']!,
-        (value) => GetTemplateApplicationsApplication.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      batchQuotaApplicationId: (() {
-        final guardedValue = map['batchQuotaApplicationId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      applications: pulumi.Input.decodeList<GetTemplateApplicationsApplication>(map['applications']!, (value) => GetTemplateApplicationsApplication.fromMap((value as Map).cast<String, dynamic>())),
+      batchQuotaApplicationId: (() { final guardedValue = map['batchQuotaApplicationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      productCode: (() {
-        final guardedValue = map['productCode'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      quotaActionCode: (() {
-        final guardedValue = map['quotaActionCode'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      quotaCategory: (() {
-        final guardedValue = map['quotaCategory'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      productCode: (() { final guardedValue = map['productCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      quotaActionCode: (() { final guardedValue = map['quotaActionCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      quotaCategory: (() { final guardedValue = map['quotaCategory']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

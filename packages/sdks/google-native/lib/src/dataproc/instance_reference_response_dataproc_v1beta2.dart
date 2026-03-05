@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceReferenceResponseDataprocV1beta2 {
   /// The unique identifier of the Compute Engine instance.
   final pulumi.Input<String> instanceId;
-
   /// The user-friendly name of the Compute Engine instance.
   final pulumi.Input<String> instanceName;
-
   /// The public key used for sharing data with this instance.
   final pulumi.Input<String> publicKey;
 
@@ -31,9 +29,7 @@ class InstanceReferenceResponseDataprocV1beta2 {
     };
   }
 
-  factory InstanceReferenceResponseDataprocV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceReferenceResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return InstanceReferenceResponseDataprocV1beta2(
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
@@ -41,3 +37,4 @@ class InstanceReferenceResponseDataprocV1beta2 {
     );
   }
 }
+

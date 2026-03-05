@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1DocumentPageDimensionResponse {
   /// Page height.
   final pulumi.Input<double> height;
-
   /// Dimension unit.
   final pulumi.Input<String> unit;
-
   /// Page width.
   final pulumi.Input<double> width;
 
@@ -24,12 +22,14 @@ class GoogleCloudDocumentaiV1DocumentPageDimensionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'height': height, 'unit': unit, 'width': width};
+    return <String, dynamic>{
+      'height': height,
+      'unit': unit,
+      'width': width,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageDimensionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1DocumentPageDimensionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageDimensionResponse(
       height: pulumi.Input.fromValue(map['height'] as double),
       unit: pulumi.Input.fromValue(map['unit'] as String),
@@ -37,3 +37,4 @@ class GoogleCloudDocumentaiV1DocumentPageDimensionResponse {
     );
   }
 }
+

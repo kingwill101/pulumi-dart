@@ -8,11 +8,8 @@ import 'virtual_networks_properties_response_vmware.dart';
 class VirtualNetworksPropertiesResponseInfraVnetProfile {
   /// Infra network profile for HCI platform
   final pulumi.Input<VirtualNetworksPropertiesResponseHci>? hci;
-
   /// Infra network profile for the NetworkCloud platform
-  final pulumi.Input<VirtualNetworksPropertiesResponseNetworkCloud>?
-  networkCloud;
-
+  final pulumi.Input<VirtualNetworksPropertiesResponseNetworkCloud>? networkCloud;
   /// Infra network profile for VMware platform
   final pulumi.Input<VirtualNetworksPropertiesResponseVmware>? vmware;
 
@@ -28,55 +25,18 @@ class VirtualNetworksPropertiesResponseInfraVnetProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hci':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualNetworksPropertiesResponseHci,
-            Map<String, dynamic>
-          >(hci, (value) => value.toMap()),
-      'networkCloud':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualNetworksPropertiesResponseNetworkCloud,
-            Map<String, dynamic>
-          >(networkCloud, (value) => value.toMap()),
-      'vmware':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualNetworksPropertiesResponseVmware,
-            Map<String, dynamic>
-          >(vmware, (value) => value.toMap()),
+      'hci': ?pulumi.Input.mapOptionalInputValue<VirtualNetworksPropertiesResponseHci, Map<String, dynamic>>(hci, (value) => value.toMap()),
+      'networkCloud': ?pulumi.Input.mapOptionalInputValue<VirtualNetworksPropertiesResponseNetworkCloud, Map<String, dynamic>>(networkCloud, (value) => value.toMap()),
+      'vmware': ?pulumi.Input.mapOptionalInputValue<VirtualNetworksPropertiesResponseVmware, Map<String, dynamic>>(vmware, (value) => value.toMap()),
     };
   }
 
-  factory VirtualNetworksPropertiesResponseInfraVnetProfile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNetworksPropertiesResponseInfraVnetProfile.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksPropertiesResponseInfraVnetProfile(
-      hci: (() {
-        final guardedValue = map['hci'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualNetworksPropertiesResponseHci.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      networkCloud: (() {
-        final guardedValue = map['networkCloud'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualNetworksPropertiesResponseNetworkCloud.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      vmware: (() {
-        final guardedValue = map['vmware'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualNetworksPropertiesResponseVmware.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      hci: (() { final guardedValue = map['hci']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworksPropertiesResponseHci.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      networkCloud: (() { final guardedValue = map['networkCloud']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworksPropertiesResponseNetworkCloud.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      vmware: (() { final guardedValue = map['vmware']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworksPropertiesResponseVmware.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum ServiceKind {
     throw ArgumentError('Unknown ServiceKind value: $value');
   }
 }
+

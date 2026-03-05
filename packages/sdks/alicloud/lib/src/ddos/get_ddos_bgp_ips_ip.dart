@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDdosBgpIpsIp {
   /// The ID of the Ip. The value formats as `&lt;instance_id&gt;:&lt;ip&gt;`.
   final pulumi.Input<String> id;
-
   /// The ID of the native protection enterprise instance to be operated.
   final pulumi.Input<String> instanceId;
-
   /// The IP address.
   final pulumi.Input<String> ip;
-
   /// The type of cloud asset to which the IP address belongs.
   final pulumi.Input<String> product;
-
   /// The current state of the IP address.
   final pulumi.Input<String> status;
 
@@ -52,3 +48,4 @@ class GetDdosBgpIpsIp {
     );
   }
 }
+

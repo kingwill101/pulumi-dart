@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWebAppSwiftVirtualNetworkConnection.
 class GetWebAppSwiftVirtualNetworkConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource Id.
   final String id;
-
   /// Kind of resource.
   final String? kind;
-
   /// Resource Name.
   final String name;
-
   /// The Virtual Network subnet's resource ID. This is the subnet that this Web App will join. This subnet must have a delegation to Microsoft.Web/serverFarms defined first.
   final String? subnetResourceId;
-
   /// A flag that specifies if the scale unit this Web App is on supports Swift integration.
   final bool? swiftSupported;
-
   /// Resource type.
   final String type;
 
@@ -53,29 +48,16 @@ class GetWebAppSwiftVirtualNetworkConnectionResult {
     };
   }
 
-  factory GetWebAppSwiftVirtualNetworkConnectionResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWebAppSwiftVirtualNetworkConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppSwiftVirtualNetworkConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      subnetResourceId: (() {
-        final guardedValue = map['subnetResourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      swiftSupported: (() {
-        final guardedValue = map['swiftSupported'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      subnetResourceId: (() { final guardedValue = map['subnetResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      swiftSupported: (() { final guardedValue = map['swiftSupported']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       type: map['type'] as String,
     );
   }
 }
+

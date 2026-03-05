@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespacedNameResource {
   /// Name of the resource
   final pulumi.Input<String>? name;
-
   /// Namespace in which the resource exists
   final pulumi.Input<String>? namespace;
 
   /// Creates a new [NamespacedNameResource].
   /// [name] Name of the resource
   /// [namespace] Namespace in which the resource exists
-  NamespacedNameResource({this.name, this.namespace});
+  NamespacedNameResource({
+    this.name,
+    this.namespace,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'namespace': ?namespace};
+    return <String, dynamic>{
+      'name': ?name,
+      'namespace': ?namespace,
+    };
   }
 
   factory NamespacedNameResource.fromMap(Map<String, dynamic> map) {
     return NamespacedNameResource(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

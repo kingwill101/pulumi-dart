@@ -153,25 +153,18 @@ import 'system_data_response.dart';
 class ManagedClusterApplicationTypeVersion extends pulumi.CustomResource {
   /// The URL to the application package
   late final pulumi.Output<String> appPackageUrl;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource location depends on the parent resource.
   late final pulumi.Output<String?> location;
-
   /// Azure resource name.
   late final pulumi.Output<String> name;
-
   /// The current deployment or provisioning state, which only appears in the response
   late final pulumi.Output<String> provisioningState;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Azure resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Azure resource type.
   late final pulumi.Output<String> type;
 
@@ -184,26 +177,17 @@ class ManagedClusterApplicationTypeVersion extends pulumi.CustomResource {
     ManagedClusterApplicationTypeVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:servicefabric:ManagedClusterApplicationTypeVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:servicefabric:ManagedClusterApplicationTypeVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appPackageUrl = registerOutput<String>('appPackageUrl');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

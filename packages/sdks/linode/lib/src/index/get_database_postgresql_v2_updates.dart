@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabasePostgresqlV2Updates {
   /// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
   final pulumi.Input<int> dayOfWeek;
-
   /// The maximum maintenance window time in hours.
   final pulumi.Input<int> duration;
-
   /// How frequently maintenance occurs. Currently can only be weekly.
   final pulumi.Input<String> frequency;
-
   /// How frequently maintenance occurs. Currently can only be weekly.
   final pulumi.Input<int> hourOfDay;
 
@@ -45,3 +42,4 @@ class GetDatabasePostgresqlV2Updates {
     );
   }
 }
+

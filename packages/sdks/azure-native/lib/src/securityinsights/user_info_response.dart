@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserInfoResponse {
   /// The email of the user.
   final pulumi.Input<String> email;
-
   /// The name of the user.
   final pulumi.Input<String> name;
-
   /// The object id of the user.
   final pulumi.Input<String>? objectId;
 
@@ -17,7 +15,11 @@ class UserInfoResponse {
   /// [email] The email of the user.
   /// [name] The name of the user.
   /// [objectId] The object id of the user.
-  UserInfoResponse({required this.email, required this.name, this.objectId});
+  UserInfoResponse({
+    required this.email,
+    required this.name,
+    this.objectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,11 +33,8 @@ class UserInfoResponse {
     return UserInfoResponse(
       email: pulumi.Input.fromValue(map['email'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      objectId: (() {
-        final guardedValue = map['objectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

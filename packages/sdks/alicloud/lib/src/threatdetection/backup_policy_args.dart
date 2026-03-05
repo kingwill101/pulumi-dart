@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPolicyArgs {
   /// Protection of the Name of the Policy.
   final pulumi.Input<String> backupPolicyName;
-
   /// The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
   final pulumi.Input<String> policy;
-
   /// The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
   final pulumi.Input<String>? policyRegionId;
-
   /// Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
   final pulumi.Input<String> policyVersion;
-
   /// Specify the Protection of Server UUID List.
   final pulumi.Input<List<String>> uuidLists;
 
@@ -48,19 +44,12 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      backupPolicyName: pulumi.Input.fromValue(
-        map['backupPolicyName'] as String,
-      ),
+      backupPolicyName: pulumi.Input.fromValue(map['backupPolicyName'] as String),
       policy: pulumi.Input.fromValue(map['policy'] as String),
-      policyRegionId: (() {
-        final guardedValue = map['policyRegionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      policyRegionId: (() { final guardedValue = map['policyRegionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyVersion: pulumi.Input.fromValue(map['policyVersion'] as String),
-      uuidLists: pulumi.Input.fromValue(
-        (map['uuidLists'] as List).cast<String>(),
-      ),
+      uuidLists: pulumi.Input.fromValue((map['uuidLists'] as List).cast<String>()),
     );
   }
 }
+

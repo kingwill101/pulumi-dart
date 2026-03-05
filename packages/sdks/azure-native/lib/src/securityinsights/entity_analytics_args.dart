@@ -9,17 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EntityAnalyticsArgs {
   /// The relevant entity providers that are synced
   final pulumi.Input<List<String>>? entityProviders;
-
   /// The kind of the setting
   /// Expected value is 'EntityAnalytics'.
   final pulumi.Input<String> kind;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
   final pulumi.Input<String>? settingsName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -49,21 +45,12 @@ class EntityAnalyticsArgs {
 
   factory EntityAnalyticsArgs.fromMap(Map<String, dynamic> map) {
     return EntityAnalyticsArgs(
-      entityProviders: (() {
-        final guardedValue = map['entityProviders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      entityProviders: (() { final guardedValue = map['entityProviders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      settingsName: (() {
-        final guardedValue = map['settingsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      settingsName: (() { final guardedValue = map['settingsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

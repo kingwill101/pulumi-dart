@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainTopicArgs {
   /// The name of the EventGrid Domain Topic domain.
   final pulumi.Input<String> domainName;
-
   /// The name of the EventGrid Domain Topic resource.
   final pulumi.Input<String> name;
-
   /// The name of the resource group in which the EventGrid Domain Topic exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetDomainTopicArgs {
     return GetDomainTopicArgs(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

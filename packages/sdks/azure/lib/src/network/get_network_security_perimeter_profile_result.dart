@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNetworkSecurityPerimeterProfile.
 class GetNetworkSecurityPerimeterProfileResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -25,9 +26,7 @@ class GetNetworkSecurityPerimeterProfileResult {
     };
   }
 
-  factory GetNetworkSecurityPerimeterProfileResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkSecurityPerimeterProfileResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityPerimeterProfileResult(
       id: map['id'] as String,
       name: map['name'] as String,
@@ -35,3 +34,4 @@ class GetNetworkSecurityPerimeterProfileResult {
     );
   }
 }
+

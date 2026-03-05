@@ -10,38 +10,20 @@ class VmwareStaticIpConfig {
 
   /// Creates a new [VmwareStaticIpConfig].
   /// [ipBlocks] Represents the configuration values for static IP allocation to nodes.
-  VmwareStaticIpConfig({this.ipBlocks});
+  VmwareStaticIpConfig({
+    this.ipBlocks,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipBlocks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VmwareIpBlock>,
-            List<Map<String, dynamic>>
-          >(
-            ipBlocks,
-            (value) =>
-                pulumi.Input.encodeList<VmwareIpBlock, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'ipBlocks': ?pulumi.Input.mapOptionalInputValue<List<VmwareIpBlock>, List<Map<String, dynamic>>>(ipBlocks, (value) => pulumi.Input.encodeList<VmwareIpBlock, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VmwareStaticIpConfig.fromMap(Map<String, dynamic> map) {
     return VmwareStaticIpConfig(
-      ipBlocks: (() {
-        final guardedValue = map['ipBlocks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VmwareIpBlock>(
-            guardedValue,
-            (value) =>
-                VmwareIpBlock.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      ipBlocks: (() { final guardedValue = map['ipBlocks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VmwareIpBlock>(guardedValue, (value) => VmwareIpBlock.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

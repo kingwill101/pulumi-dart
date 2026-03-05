@@ -118,64 +118,44 @@ import 'package:pulumi_aws/providers.dart' as pulumi_aws_providers;
 class Cluster extends pulumi.ComponentResource {
   /// The name of the IAM role created for nodes managed by EKS Auto Mode. Defaults to an empty string.
   late final pulumi.Output<String?> autoModeNodeRoleName;
-
   /// The AWS resource provider.
   late final pulumi.Output<pulumi_aws_providers.ProviderProvider?> awsProvider;
-
   /// The ID of the security group rule that gives node group access to the cluster API server. Defaults to an empty string if `skipDefaultSecurityGroups` is set to true.
   late final pulumi.Output<String?> clusterIngressRuleId;
-
   /// The security group for the EKS cluster.
   late final pulumi.Output<pulumi_aws_ec2.SecurityGroup?> clusterSecurityGroup;
-
   /// The cluster security group ID of the EKS cluster. Returns the EKS created security group if `skipDefaultSecurityGroups` is set to true.
   late final pulumi.Output<String?> clusterSecurityGroupId;
-
   /// The EKS cluster and its dependencies.
   late final pulumi.Output<CoreData?> core;
-
   /// The default Node Group configuration, or undefined if `skipDefaultNodeGroup` was specified.
   late final pulumi.Output<NodeGroupData?> defaultNodeGroup;
-
   /// The name of the default node group's AutoScaling Group. Defaults to an empty string if `skipDefaultNodeGroup` is set to true.
   late final pulumi.Output<String?> defaultNodeGroupAsgName;
-
   /// The EKS cluster.
   late final pulumi.Output<pulumi_aws_eks.Cluster?> eksCluster;
-
   /// The ingress rule that gives node group access to cluster API server.
-  late final pulumi.Output<pulumi_aws_ec2.SecurityGroupRule?>
-  eksClusterIngressRule;
-
+  late final pulumi.Output<pulumi_aws_ec2.SecurityGroupRule?> eksClusterIngressRule;
   /// The ID of the Fargate Profile. Defaults to an empty string if no Fargate profile is configured.
   late final pulumi.Output<String?> fargateProfileId;
-
   /// The status of the Fargate Profile. Defaults to an empty string if no Fargate profile is configured.
   late final pulumi.Output<String?> fargateProfileStatus;
-
   /// The service roles used by the EKS cluster. Only supported with authentication mode `CONFIG_MAP` or `API_AND_CONFIG_MAP`.
   late final pulumi.Output<List<Map<String, dynamic>>?> instanceRoles;
-
   /// A kubeconfig that can be used to connect to the EKS cluster.
   late final pulumi.Output<dynamic> kubeconfig;
-
   /// A kubeconfig that can be used to connect to the EKS cluster as a JSON string.
   late final pulumi.Output<String?> kubeconfigJson;
-
   /// The security group for the cluster's nodes.
   late final pulumi.Output<pulumi_aws_ec2.SecurityGroup?> nodeSecurityGroup;
-
   /// The node security group ID of the EKS cluster. Returns the EKS created security group if `skipDefaultSecurityGroups` is set to true.
   late final pulumi.Output<String?> nodeSecurityGroupId;
-
   /// The OIDC Issuer of the EKS cluster (OIDC Provider URL without leading `https://`).
   ///
   /// This value can be used to associate kubernetes service accounts with IAM roles. For more information, see https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html.
   late final pulumi.Output<String?> oidcIssuer;
-
   /// The ARN of the IAM OpenID Connect Provider for the EKS cluster. Defaults to an empty string if no OIDC provider is configured.
   late final pulumi.Output<String?> oidcProviderArn;
-
   /// Issuer URL for the OpenID Connect identity provider of the EKS cluster.
   late final pulumi.Output<String?> oidcProviderUrl;
 
@@ -188,56 +168,28 @@ class Cluster extends pulumi.ComponentResource {
     ClusterArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'eks:index:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       ) {
+          'eks:index:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        ) {
     autoModeNodeRoleName = registerOutput<String?>('autoModeNodeRoleName');
-    awsProvider = registerOutput<pulumi_aws_providers.ProviderProvider?>(
-      'awsProvider',
-    );
+    awsProvider = registerOutput<pulumi_aws_providers.ProviderProvider?>('awsProvider');
     clusterIngressRuleId = registerOutput<String?>('clusterIngressRuleId');
-    clusterSecurityGroup = registerOutput<pulumi_aws_ec2.SecurityGroup?>(
-      'clusterSecurityGroup',
-    );
+    clusterSecurityGroup = registerOutput<pulumi_aws_ec2.SecurityGroup?>('clusterSecurityGroup');
     clusterSecurityGroupId = registerOutput<String?>('clusterSecurityGroupId');
-    core = registerOutput<CoreData?>(
-      'core',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CoreData.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
-    defaultNodeGroup = registerOutput<NodeGroupData?>(
-      'defaultNodeGroup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeGroupData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    defaultNodeGroupAsgName = registerOutput<String?>(
-      'defaultNodeGroupAsgName',
-    );
+    core = registerOutput<CoreData?>('core', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CoreData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultNodeGroup = registerOutput<NodeGroupData?>('defaultNodeGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultNodeGroupAsgName = registerOutput<String?>('defaultNodeGroupAsgName');
     eksCluster = registerOutput<pulumi_aws_eks.Cluster?>('eksCluster');
-    eksClusterIngressRule = registerOutput<pulumi_aws_ec2.SecurityGroupRule?>(
-      'eksClusterIngressRule',
-    );
+    eksClusterIngressRule = registerOutput<pulumi_aws_ec2.SecurityGroupRule?>('eksClusterIngressRule');
     fargateProfileId = registerOutput<String?>('fargateProfileId');
     fargateProfileStatus = registerOutput<String?>('fargateProfileStatus');
-    instanceRoles = registerOutput<List<Map<String, dynamic>>?>(
-      'instanceRoles',
-    );
+    instanceRoles = registerOutput<List<Map<String, dynamic>>?>('instanceRoles');
     kubeconfig = registerOutput<dynamic>('kubeconfig');
     kubeconfigJson = registerOutput<String?>('kubeconfigJson');
-    nodeSecurityGroup = registerOutput<pulumi_aws_ec2.SecurityGroup?>(
-      'nodeSecurityGroup',
-    );
+    nodeSecurityGroup = registerOutput<pulumi_aws_ec2.SecurityGroup?>('nodeSecurityGroup');
     nodeSecurityGroupId = registerOutput<String?>('nodeSecurityGroupId');
     oidcIssuer = registerOutput<String?>('oidcIssuer');
     oidcProviderArn = registerOutput<String?>('oidcProviderArn');

@@ -11,28 +11,22 @@ class SecGroupArgs {
   /// egress security rules. This is `false` by default. See the below note
   /// for more information.
   final pulumi.Input<bool>? deleteDefaultRules;
-
   /// A unique name for the security group.
   final pulumi.Input<String>? description;
-
   /// A unique name for the security group.
   final pulumi.Input<String>? name;
-
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to create a port. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// security group.
   final pulumi.Input<String>? region;
-
   /// Indicates if the security group is stateful or
   /// stateless. Update of the stateful argument is allowed when there is no port
   /// associated with the security group. Available only in OpenStack environments
   /// with the `stateful-security-group` extension. Defaults to true.
   final pulumi.Input<bool>? stateful;
-
   /// A set of string tags for the security group.
   final pulumi.Input<List<String>>? tags;
-
   /// The owner of the security group. Required if admin
   /// wants to create a port for another tenant. Changing this creates a new
   /// security group.
@@ -70,41 +64,14 @@ class SecGroupArgs {
 
   factory SecGroupArgs.fromMap(Map<String, dynamic> map) {
     return SecGroupArgs(
-      deleteDefaultRules: (() {
-        final guardedValue = map['deleteDefaultRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stateful: (() {
-        final guardedValue = map['stateful'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deleteDefaultRules: (() { final guardedValue = map['deleteDefaultRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stateful: (() { final guardedValue = map['stateful']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

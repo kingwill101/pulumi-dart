@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPeeringServiceArgs {
   /// The name of the peering.
   final pulumi.Input<String> peeringServiceName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetPeeringServiceArgs {
 
   factory GetPeeringServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetPeeringServiceArgs(
-      peeringServiceName: pulumi.Input.fromValue(
-        map['peeringServiceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      peeringServiceName: pulumi.Input.fromValue(map['peeringServiceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemoteFunctionOptionsResponse {
   /// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. Format: ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"```
   final pulumi.Input<String> connection;
-
   /// Endpoint of the user-provided remote service, e.g. ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
   final pulumi.Input<String> endpoint;
-
   /// Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides the number of rows in a batch.
   final pulumi.Input<String> maxBatchingRows;
-
   /// User-defined context as a set of key/value pairs, which will be sent as function invocation context together with batched arguments in the requests to the remote service. The total number of bytes of keys and values must be less than 8KB.
   final pulumi.Input<Map<String, String>> userDefinedContext;
 
@@ -42,9 +39,8 @@ class RemoteFunctionOptionsResponse {
       connection: pulumi.Input.fromValue(map['connection'] as String),
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
       maxBatchingRows: pulumi.Input.fromValue(map['maxBatchingRows'] as String),
-      userDefinedContext: pulumi.Input.fromValue(
-        (map['userDefinedContext'] as Map).cast<String, String>(),
-      ),
+      userDefinedContext: pulumi.Input.fromValue((map['userDefinedContext'] as Map).cast<String, String>()),
     );
   }
 }
+

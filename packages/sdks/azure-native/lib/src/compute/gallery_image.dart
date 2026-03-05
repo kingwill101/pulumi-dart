@@ -194,68 +194,46 @@ import 'system_data_response.dart';
 class GalleryImage extends pulumi.CustomResource {
   /// Optional. Must be set to true if the gallery image features are being updated.
   late final pulumi.Output<bool?> allowUpdateImage;
-
   /// The architecture of the image. Applicable to OS disks only.
   late final pulumi.Output<String?> architecture;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The description of this gallery image definition resource. This property is updatable.
   late final pulumi.Output<String?> description;
-
   /// Describes the disallowed disk types.
   late final pulumi.Output<DisallowedResponse?> disallowed;
-
   /// The end of life date of the gallery image definition. This property can be used for decommissioning purposes. This property is updatable.
   late final pulumi.Output<String?> endOfLifeDate;
-
   /// The Eula agreement for the gallery image definition.
   late final pulumi.Output<String?> eula;
-
   /// A list of gallery image features.
   late final pulumi.Output<List<Map<String, dynamic>>?> features;
-
   /// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
   late final pulumi.Output<String?> hyperVGeneration;
-
   /// This is the gallery image definition identifier.
   late final pulumi.Output<GalleryImageIdentifierResponse> identifier;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// This property allows the user to specify whether the virtual machines created under this image are 'Generalized' or 'Specialized'.
   late final pulumi.Output<String> osState;
-
   /// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. Possible values are: **Windows,** **Linux.**
   late final pulumi.Output<String> osType;
-
   /// The privacy statement uri.
   late final pulumi.Output<String?> privacyStatementUri;
-
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
-
   /// Describes the gallery image definition purchase plan. This is used by marketplace images.
   late final pulumi.Output<ImagePurchasePlanResponse?> purchasePlan;
-
   /// The properties describe the recommended machine configuration for this Image Definition. These properties are updatable.
-  late final pulumi.Output<RecommendedMachineConfigurationResponse?>
-  recommended;
-
+  late final pulumi.Output<RecommendedMachineConfigurationResponse?> recommended;
   /// The release note uri.
   late final pulumi.Output<String?> releaseNoteUri;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -268,76 +246,31 @@ class GalleryImage extends pulumi.CustomResource {
     GalleryImageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:compute:GalleryImage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:compute:GalleryImage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowUpdateImage = registerOutput<bool?>('allowUpdateImage');
     architecture = registerOutput<String?>('architecture');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
-    disallowed = registerOutput<DisallowedResponse?>(
-      'disallowed',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DisallowedResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    disallowed = registerOutput<DisallowedResponse?>('disallowed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DisallowedResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endOfLifeDate = registerOutput<String?>('endOfLifeDate');
     eula = registerOutput<String?>('eula');
     features = registerOutput<List<Map<String, dynamic>>?>('features');
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
-    identifier = registerOutput<GalleryImageIdentifierResponse>(
-      'identifier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GalleryImageIdentifierResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identifier = registerOutput<GalleryImageIdentifierResponse>('identifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageIdentifierResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     osState = registerOutput<String>('osState');
     osType = registerOutput<String>('osType');
     privacyStatementUri = registerOutput<String?>('privacyStatementUri');
     provisioningState = registerOutput<String>('provisioningState');
-    purchasePlan = registerOutput<ImagePurchasePlanResponse?>(
-      'purchasePlan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ImagePurchasePlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    recommended = registerOutput<RecommendedMachineConfigurationResponse?>(
-      'recommended',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RecommendedMachineConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    purchasePlan = registerOutput<ImagePurchasePlanResponse?>('purchasePlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImagePurchasePlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    recommended = registerOutput<RecommendedMachineConfigurationResponse?>('recommended', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendedMachineConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     releaseNoteUri = registerOutput<String?>('releaseNoteUri');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -9,26 +9,23 @@ class SnapshotPolicyCopyEncryptionConfiguration {
   /// Creates a new [SnapshotPolicyCopyEncryptionConfiguration].
   /// [encrypted] Optional.
   /// [kmsKeyId] Optional.
-  SnapshotPolicyCopyEncryptionConfiguration({this.encrypted, this.kmsKeyId});
+  SnapshotPolicyCopyEncryptionConfiguration({
+    this.encrypted,
+    this.kmsKeyId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'encrypted': ?encrypted, 'kmsKeyId': ?kmsKeyId};
+    return <String, dynamic>{
+      'encrypted': ?encrypted,
+      'kmsKeyId': ?kmsKeyId,
+    };
   }
 
-  factory SnapshotPolicyCopyEncryptionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SnapshotPolicyCopyEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return SnapshotPolicyCopyEncryptionConfiguration(
-      encrypted: (() {
-        final guardedValue = map['encrypted'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      kmsKeyId: (() {
-        final guardedValue = map['kmsKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      encrypted: (() { final guardedValue = map['encrypted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

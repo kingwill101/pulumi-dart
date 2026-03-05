@@ -12,8 +12,7 @@ enum SecurityAlertPolicyUseServerDefault {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SecurityAlertPolicyUseServerDefault value: $value',
-    );
+    throw ArgumentError('Unknown SecurityAlertPolicyUseServerDefault value: $value');
   }
 }
+

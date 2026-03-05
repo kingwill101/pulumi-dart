@@ -12,7 +12,6 @@ class RunArgs {
   /// injected into the environment of the next run as PULUMI_COMMAND_STDOUT and PULUMI_COMMAND_STDERR.
   /// Defaults to true.
   final pulumi.Input<bool>? addPreviousOutputInEnv;
-
   /// A list of path globs to return as a single archive asset after the command completes.
   ///
   /// When specifying glob patterns the following rules apply:
@@ -52,7 +51,6 @@ class RunArgs {
   /// - src/index.js
   /// ```
   final pulumi.Input<List<String>>? archivePaths;
-
   /// A list of path globs to read after the command completes.
   ///
   /// When specifying glob patterns the following rules apply:
@@ -92,26 +90,20 @@ class RunArgs {
   /// - src/index.js
   /// ```
   final pulumi.Input<List<String>>? assetPaths;
-
   /// The command to run.
   final pulumi.Input<String> command;
-
   /// The directory from which to run the command from. If `dir` does not exist, then
   /// `Command` will fail.
   final pulumi.Input<String>? dir;
-
   /// Additional environment variables available to the command's process.
   final pulumi.Input<Map<String, String>>? environment;
-
   /// The program and arguments to run the command.
   /// On Linux and macOS, defaults to: `["/bin/sh", "-c"]`. On Windows, defaults to: `["cmd", "/C"]`
   final pulumi.Input<List<String>>? interpreter;
-
   /// If the command's stdout and stderr should be logged. This doesn't affect the capturing of
   /// stdout and stderr as outputs. If there might be secrets in the output, you can disable logging here and mark the
   /// outputs as secret via 'additionalSecretOutputs'. Defaults to logging both stdout and stderr.
   final pulumi.Input<Logging>? logging;
-
   /// Pass a string to the command's process as standard in
   final pulumi.Input<String>? stdin;
 
@@ -146,61 +138,23 @@ class RunArgs {
       'dir': ?dir,
       'environment': ?environment,
       'interpreter': ?interpreter,
-      'logging': ?pulumi.Input.mapOptionalInputValue<Logging, String>(
-        logging,
-        (value) => value.wireValue,
-      ),
+      'logging': ?pulumi.Input.mapOptionalInputValue<Logging, String>(logging, (value) => value.wireValue),
       'stdin': ?stdin,
     };
   }
 
   factory RunArgs.fromMap(Map<String, dynamic> map) {
     return RunArgs(
-      addPreviousOutputInEnv: (() {
-        final guardedValue = map['addPreviousOutputInEnv'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      archivePaths: (() {
-        final guardedValue = map['archivePaths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      assetPaths: (() {
-        final guardedValue = map['assetPaths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      addPreviousOutputInEnv: (() { final guardedValue = map['addPreviousOutputInEnv']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      archivePaths: (() { final guardedValue = map['archivePaths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      assetPaths: (() { final guardedValue = map['assetPaths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       command: pulumi.Input.fromValue(map['command'] as String),
-      dir: (() {
-        final guardedValue = map['dir'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      environment: (() {
-        final guardedValue = map['environment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      interpreter: (() {
-        final guardedValue = map['interpreter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      logging: (() {
-        final guardedValue = map['logging'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Logging.fromValue(guardedValue as String),
-        );
-      })(),
-      stdin: (() {
-        final guardedValue = map['stdin'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dir: (() { final guardedValue = map['dir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      interpreter: (() { final guardedValue = map['interpreter']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      logging: (() { final guardedValue = map['logging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Logging.fromValue(guardedValue as String)); })(),
+      stdin: (() { final guardedValue = map['stdin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

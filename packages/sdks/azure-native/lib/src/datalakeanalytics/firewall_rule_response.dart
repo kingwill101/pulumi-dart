@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallRuleResponse {
   /// The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
   final pulumi.Input<String> endIpAddress;
-
   /// The resource identifier.
   final pulumi.Input<String> id;
-
   /// The resource name.
   final pulumi.Input<String> name;
-
   /// The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
   final pulumi.Input<String> startIpAddress;
-
   /// The resource type.
   final pulumi.Input<String> type;
 
@@ -53,3 +49,4 @@ class FirewallRuleResponse {
     );
   }
 }
+

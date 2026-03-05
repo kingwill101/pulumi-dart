@@ -9,31 +9,22 @@ import 'spaces_bucket_versioning.dart';
 class SpacesBucketState {
   /// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
   final pulumi.Input<String>? acl;
-
   /// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
   final pulumi.Input<String>? bucketDomainName;
-
   /// The uniform resource name for the bucket
   final pulumi.Input<String>? bucketUrn;
-
   /// A rule of Cross-Origin Resource Sharing (documented below).
   final pulumi.Input<List<SpacesBucketCorsRule>>? corsRules;
-
   /// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
   final pulumi.Input<String>? endpoint;
-
   /// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
   final pulumi.Input<bool>? forceDestroy;
-
   /// A configuration of object lifecycle management (documented below).
   final pulumi.Input<List<SpacesBucketLifecycleRule>>? lifecycleRules;
-
   /// The name of the bucket
   final pulumi.Input<String>? name;
-
   /// The region where the bucket resides (Defaults to `nyc3`)
   final pulumi.Input<String>? region;
-
   /// A state of versioning (documented below)
   final pulumi.Input<SpacesBucketVersioning>? versioning;
 
@@ -66,112 +57,29 @@ class SpacesBucketState {
       'acl': ?acl,
       'bucketDomainName': ?bucketDomainName,
       'bucketUrn': ?bucketUrn,
-      'corsRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SpacesBucketCorsRule>,
-            List<Map<String, dynamic>>
-          >(
-            corsRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SpacesBucketCorsRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'corsRules': ?pulumi.Input.mapOptionalInputValue<List<SpacesBucketCorsRule>, List<Map<String, dynamic>>>(corsRules, (value) => pulumi.Input.encodeList<SpacesBucketCorsRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'endpoint': ?endpoint,
       'forceDestroy': ?forceDestroy,
-      'lifecycleRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SpacesBucketLifecycleRule>,
-            List<Map<String, dynamic>>
-          >(
-            lifecycleRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SpacesBucketLifecycleRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'lifecycleRules': ?pulumi.Input.mapOptionalInputValue<List<SpacesBucketLifecycleRule>, List<Map<String, dynamic>>>(lifecycleRules, (value) => pulumi.Input.encodeList<SpacesBucketLifecycleRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'region': ?region,
-      'versioning':
-          ?pulumi.Input.mapOptionalInputValue<
-            SpacesBucketVersioning,
-            Map<String, dynamic>
-          >(versioning, (value) => value.toMap()),
+      'versioning': ?pulumi.Input.mapOptionalInputValue<SpacesBucketVersioning, Map<String, dynamic>>(versioning, (value) => value.toMap()),
     };
   }
 
   factory SpacesBucketState.fromMap(Map<String, dynamic> map) {
     return SpacesBucketState(
-      acl: (() {
-        final guardedValue = map['acl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bucketDomainName: (() {
-        final guardedValue = map['bucketDomainName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bucketUrn: (() {
-        final guardedValue = map['bucketUrn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      corsRules: (() {
-        final guardedValue = map['corsRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SpacesBucketCorsRule>(
-            guardedValue,
-            (value) => SpacesBucketCorsRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      endpoint: (() {
-        final guardedValue = map['endpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      forceDestroy: (() {
-        final guardedValue = map['forceDestroy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      lifecycleRules: (() {
-        final guardedValue = map['lifecycleRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SpacesBucketLifecycleRule>(
-            guardedValue,
-            (value) => SpacesBucketLifecycleRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      versioning: (() {
-        final guardedValue = map['versioning'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SpacesBucketVersioning.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      acl: (() { final guardedValue = map['acl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bucketDomainName: (() { final guardedValue = map['bucketDomainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bucketUrn: (() { final guardedValue = map['bucketUrn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      corsRules: (() { final guardedValue = map['corsRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SpacesBucketCorsRule>(guardedValue, (value) => SpacesBucketCorsRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      lifecycleRules: (() { final guardedValue = map['lifecycleRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SpacesBucketLifecycleRule>(guardedValue, (value) => SpacesBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      versioning: (() { final guardedValue = map['versioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpacesBucketVersioning.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

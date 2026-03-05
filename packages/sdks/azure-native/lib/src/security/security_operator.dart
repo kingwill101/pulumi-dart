@@ -127,13 +127,10 @@ import 'security_operator_args.dart';
 class SecurityOperator extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Identity for the resource.
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -146,22 +143,13 @@ class SecurityOperator extends pulumi.CustomResource {
     SecurityOperatorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:SecurityOperator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:security:SecurityOperator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }

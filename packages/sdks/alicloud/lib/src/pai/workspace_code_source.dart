@@ -235,34 +235,24 @@ class WorkspaceCodeSource extends pulumi.CustomResource {
   /// - PRIVATE: In this workspace, it is only visible to you and the administrator.
   /// - PUBLIC: In this workspace, it is visible to everyone.
   late final pulumi.Output<String> accessibility;
-
   /// Code repository branch.
   late final pulumi.Output<String?> codeBranch;
-
   /// The code CommitId.
   late final pulumi.Output<String?> codeCommit;
-
   /// Code repository address.
   late final pulumi.Output<String> codeRepo;
-
   /// The Token used to access the code repository.
   late final pulumi.Output<String?> codeRepoAccessToken;
-
   /// The user name of the code repository.
   late final pulumi.Output<String?> codeRepoUserName;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// A detailed description of the code configuration.
   late final pulumi.Output<String?> description;
-
   /// Code source configuration name.
   late final pulumi.Output<String> displayName;
-
   /// The local Mount Directory of the code.
   late final pulumi.Output<String> mountPath;
-
   /// The ID of the workspace.
   late final pulumi.Output<String> workspaceId;
 
@@ -275,11 +265,11 @@ class WorkspaceCodeSource extends pulumi.CustomResource {
     WorkspaceCodeSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/workspaceCodeSource:WorkspaceCodeSource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/workspaceCodeSource:WorkspaceCodeSource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessibility = registerOutput<String>('accessibility');
     codeBranch = registerOutput<String?>('codeBranch');
     codeCommit = registerOutput<String?>('codeCommit');
@@ -311,11 +301,11 @@ class WorkspaceCodeSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/workspaceCodeSource:WorkspaceCodeSource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/workspaceCodeSource:WorkspaceCodeSource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessibility = registerOutput<String>('accessibility');
     codeBranch = registerOutput<String?>('codeBranch');
     codeCommit = registerOutput<String?>('codeCommit');

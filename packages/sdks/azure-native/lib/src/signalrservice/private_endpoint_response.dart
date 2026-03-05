@@ -9,19 +9,20 @@ class PrivateEndpointResponse {
 
   /// Creates a new [PrivateEndpointResponse].
   /// [id] Full qualified Id of the private endpoint
-  PrivateEndpointResponse({this.id});
+  PrivateEndpointResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory PrivateEndpointResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

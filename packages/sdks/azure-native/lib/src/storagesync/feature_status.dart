@@ -15,3 +15,4 @@ enum FeatureStatus {
     throw ArgumentError('Unknown FeatureStatus value: $value');
   }
 }
+

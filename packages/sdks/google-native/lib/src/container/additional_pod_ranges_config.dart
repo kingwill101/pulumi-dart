@@ -9,19 +9,20 @@ class AdditionalPodRangesConfig {
 
   /// Creates a new [AdditionalPodRangesConfig].
   /// [podRangeNames] Name for pod secondary ipv4 range which has the actual range defined ahead.
-  AdditionalPodRangesConfig({this.podRangeNames});
+  AdditionalPodRangesConfig({
+    this.podRangeNames,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'podRangeNames': ?podRangeNames};
+    return <String, dynamic>{
+      'podRangeNames': ?podRangeNames,
+    };
   }
 
   factory AdditionalPodRangesConfig.fromMap(Map<String, dynamic> map) {
     return AdditionalPodRangesConfig(
-      podRangeNames: (() {
-        final guardedValue = map['podRangeNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      podRangeNames: (() { final guardedValue = map['podRangeNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

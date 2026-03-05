@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepositoryAssociationRepositoryGithubEnterpriseServer {
   /// The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection.
   final pulumi.Input<String> connectionArn;
-
   /// The name of the third party source repository.
   final pulumi.Input<String> name;
-
   /// The username for the account that owns the repository.
   final pulumi.Input<String> owner;
 
@@ -30,9 +28,7 @@ class RepositoryAssociationRepositoryGithubEnterpriseServer {
     };
   }
 
-  factory RepositoryAssociationRepositoryGithubEnterpriseServer.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RepositoryAssociationRepositoryGithubEnterpriseServer.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationRepositoryGithubEnterpriseServer(
       connectionArn: pulumi.Input.fromValue(map['connectionArn'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -40,3 +36,4 @@ class RepositoryAssociationRepositoryGithubEnterpriseServer {
     );
   }
 }
+

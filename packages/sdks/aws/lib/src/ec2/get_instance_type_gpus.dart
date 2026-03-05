@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTypeGpus {
   final pulumi.Input<int> count;
   final pulumi.Input<String> manufacturer;
-
   /// Size of the instance memory, in MiB.
   final pulumi.Input<int> memorySize;
   final pulumi.Input<String> name;
@@ -40,3 +39,4 @@ class GetInstanceTypeGpus {
     );
   }
 }
+

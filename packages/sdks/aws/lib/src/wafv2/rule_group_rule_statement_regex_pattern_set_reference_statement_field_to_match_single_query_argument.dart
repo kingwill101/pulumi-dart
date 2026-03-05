@@ -13,14 +13,15 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleQ
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

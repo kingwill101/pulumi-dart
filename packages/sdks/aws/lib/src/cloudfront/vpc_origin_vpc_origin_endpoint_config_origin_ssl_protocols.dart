@@ -15,15 +15,17 @@ class VpcOriginVpcOriginEndpointConfigOriginSslProtocols {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'items': items, 'quantity': quantity};
+    return <String, dynamic>{
+      'items': items,
+      'quantity': quantity,
+    };
   }
 
-  factory VpcOriginVpcOriginEndpointConfigOriginSslProtocols.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VpcOriginVpcOriginEndpointConfigOriginSslProtocols.fromMap(Map<String, dynamic> map) {
     return VpcOriginVpcOriginEndpointConfigOriginSslProtocols(
       items: pulumi.Input.fromValue((map['items'] as List).cast<String>()),
       quantity: pulumi.Input.fromValue(map['quantity'] as int),
     );
   }
 }
+

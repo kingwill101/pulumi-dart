@@ -165,41 +165,29 @@ import 'system_data_response.dart';
 class PartnerDestination extends pulumi.CustomResource {
   /// Activation state of the partner destination.
   late final pulumi.Output<String?> activationState;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Endpoint Base URL of the partner destination
   late final pulumi.Output<String?> endpointBaseUrl;
-
   /// Endpoint context associated with this partner destination.
   late final pulumi.Output<String?> endpointServiceContext;
-
   /// Expiration time of the partner destination. If this timer expires and the partner destination was never activated,
   /// the partner destination and corresponding channel are deleted.
   late final pulumi.Output<String?> expirationTimeIfNotActivatedUtc;
-
   /// Location of the resource.
   late final pulumi.Output<String> location;
-
   /// Context or helpful message that can be used during the approval process.
   late final pulumi.Output<String?> messageForActivation;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// The immutable Id of the corresponding partner registration.
   late final pulumi.Output<String?> partnerRegistrationImmutableId;
-
   /// Provisioning state of the partner destination.
   late final pulumi.Output<String> provisioningState;
-
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -212,35 +200,22 @@ class PartnerDestination extends pulumi.CustomResource {
     PartnerDestinationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventgrid:PartnerDestination',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventgrid:PartnerDestination',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activationState = registerOutput<String?>('activationState');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     endpointBaseUrl = registerOutput<String?>('endpointBaseUrl');
     endpointServiceContext = registerOutput<String?>('endpointServiceContext');
-    expirationTimeIfNotActivatedUtc = registerOutput<String?>(
-      'expirationTimeIfNotActivatedUtc',
-    );
+    expirationTimeIfNotActivatedUtc = registerOutput<String?>('expirationTimeIfNotActivatedUtc');
     location = registerOutput<String>('location');
     messageForActivation = registerOutput<String?>('messageForActivation');
     this.name = registerOutput<String>('name');
-    partnerRegistrationImmutableId = registerOutput<String?>(
-      'partnerRegistrationImmutableId',
-    );
+    partnerRegistrationImmutableId = registerOutput<String?>('partnerRegistrationImmutableId');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

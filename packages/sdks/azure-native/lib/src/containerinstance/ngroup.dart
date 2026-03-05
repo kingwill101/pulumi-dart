@@ -21,40 +21,28 @@ import 'update_profile_response.dart';
 class NGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The Container Group Profiles that could be used in the NGroups resource.
   late final pulumi.Output<List<Map<String, dynamic>>?> containerGroupProfiles;
-
   /// The elastic profile.
   late final pulumi.Output<ElasticProfileResponse?> elasticProfile;
-
   /// The identity of the NGroup, if configured.
   late final pulumi.Output<NGroupIdentityResponse?> identity;
-
   /// The resource location.
   late final pulumi.Output<String?> location;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
   late final pulumi.Output<PlacementProfileResponse?> placementProfile;
-
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The resource type.
   late final pulumi.Output<String> type;
-
   /// Used by the customer to specify the way to update the Container Groups in NGroup.
   late final pulumi.Output<UpdateProfileResponse?> updateProfile;
-
   /// The zones for the container group.
   late final pulumi.Output<List<String>?> zones;
 
@@ -62,72 +50,28 @@ class NGroup extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [NGroup]. {@macro pulumi_containerinstance_ngroup_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  NGroup(String name, {NGroupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:containerinstance:NGroup',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  NGroup(
+    String name, {
+    NGroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:containerinstance:NGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    containerGroupProfiles = registerOutput<List<Map<String, dynamic>>?>(
-      'containerGroupProfiles',
-    );
-    elasticProfile = registerOutput<ElasticProfileResponse?>(
-      'elasticProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ElasticProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<NGroupIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NGroupIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    containerGroupProfiles = registerOutput<List<Map<String, dynamic>>?>('containerGroupProfiles');
+    elasticProfile = registerOutput<ElasticProfileResponse?>('elasticProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<NGroupIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NGroupIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    placementProfile = registerOutput<PlacementProfileResponse?>(
-      'placementProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlacementProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    placementProfile = registerOutput<PlacementProfileResponse?>('placementProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlacementProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    updateProfile = registerOutput<UpdateProfileResponse?>(
-      'updateProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UpdateProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updateProfile = registerOutput<UpdateProfileResponse?>('updateProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpdateProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zones = registerOutput<List<String>?>('zones');
   }
 }

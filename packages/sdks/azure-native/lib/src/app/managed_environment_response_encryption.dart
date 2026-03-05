@@ -9,21 +9,20 @@ class ManagedEnvironmentResponseEncryption {
 
   /// Creates a new [ManagedEnvironmentResponseEncryption].
   /// [enabled] Boolean indicating whether the peer traffic encryption is enabled
-  ManagedEnvironmentResponseEncryption({this.enabled});
+  ManagedEnvironmentResponseEncryption({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory ManagedEnvironmentResponseEncryption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedEnvironmentResponseEncryption.fromMap(Map<String, dynamic> map) {
     return ManagedEnvironmentResponseEncryption(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

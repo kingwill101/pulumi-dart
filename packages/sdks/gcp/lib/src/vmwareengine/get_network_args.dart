@@ -11,10 +11,8 @@ class GetNetworkArgs {
   ///
   /// - - -
   final pulumi.Input<String> location;
-
   /// Name of the resource.
   final pulumi.Input<String> name;
-
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
 
@@ -22,7 +20,11 @@ class GetNetworkArgs {
   /// [location] Location of the resource.
   /// [name] Name of the resource.
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  GetNetworkArgs({required this.location, required this.name, this.project});
+  GetNetworkArgs({
+    required this.location,
+    required this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +38,8 @@ class GetNetworkArgs {
     return GetNetworkArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

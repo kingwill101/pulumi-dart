@@ -17,3 +17,4 @@ enum LinuxUpdateClasses {
     throw ArgumentError('Unknown LinuxUpdateClasses value: $value');
   }
 }
+

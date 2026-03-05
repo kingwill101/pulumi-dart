@@ -14,3 +14,4 @@ enum BudgetOperatorType {
     throw ArgumentError('Unknown BudgetOperatorType value: $value');
   }
 }
+

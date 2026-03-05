@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterNodeConfigSoleTenantConfigNodeAffinity {
   /// .
   final pulumi.Input<String> key;
-
   /// .
   final pulumi.Input<String> operator;
-
   /// .
   final pulumi.Input<List<String>> values;
 
@@ -30,9 +28,7 @@ class GetClusterNodeConfigSoleTenantConfigNodeAffinity {
     };
   }
 
-  factory GetClusterNodeConfigSoleTenantConfigNodeAffinity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodeConfigSoleTenantConfigNodeAffinity.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigSoleTenantConfigNodeAffinity(
       key: pulumi.Input.fromValue(map['key'] as String),
       operator: pulumi.Input.fromValue(map['operator'] as String),
@@ -40,3 +36,4 @@ class GetClusterNodeConfigSoleTenantConfigNodeAffinity {
     );
   }
 }
+

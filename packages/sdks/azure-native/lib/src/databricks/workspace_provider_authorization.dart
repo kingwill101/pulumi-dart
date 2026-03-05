@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceProviderAuthorization {
   /// The provider's principal identifier. This is the identity that the provider will use to call ARM to manage the workspace resources.
   final pulumi.Input<String> principalId;
-
   /// The provider's role definition identifier. This role will define all the permissions that the provider must have on the workspace's container resource group. This role definition cannot have permission to delete the resource group.
   final pulumi.Input<String> roleDefinitionId;
 
@@ -28,9 +27,8 @@ class WorkspaceProviderAuthorization {
   factory WorkspaceProviderAuthorization.fromMap(Map<String, dynamic> map) {
     return WorkspaceProviderAuthorization(
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
-      roleDefinitionId: pulumi.Input.fromValue(
-        map['roleDefinitionId'] as String,
-      ),
+      roleDefinitionId: pulumi.Input.fromValue(map['roleDefinitionId'] as String),
     );
   }
 }
+

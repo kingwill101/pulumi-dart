@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseSnapshotPolicyRetainRule {
   /// Retention based on counting method.
   final pulumi.Input<int>? number;
-
   /// Time unit.
   final pulumi.Input<int>? timeInterval;
-
   /// Time-based retention.
   final pulumi.Input<String>? timeUnit;
 
@@ -32,21 +30,10 @@ class EnterpriseSnapshotPolicyRetainRule {
 
   factory EnterpriseSnapshotPolicyRetainRule.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyRetainRule(
-      number: (() {
-        final guardedValue = map['number'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timeInterval: (() {
-        final guardedValue = map['timeInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timeUnit: (() {
-        final guardedValue = map['timeUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeInterval: (() { final guardedValue = map['timeInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeUnit: (() { final guardedValue = map['timeUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

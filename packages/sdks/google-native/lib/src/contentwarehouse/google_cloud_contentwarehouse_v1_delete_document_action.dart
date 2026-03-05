@@ -9,21 +9,20 @@ class GoogleCloudContentwarehouseV1DeleteDocumentAction {
 
   /// Creates a new [GoogleCloudContentwarehouseV1DeleteDocumentAction].
   /// [enableHardDelete] Boolean field to select between hard vs soft delete options. Set 'true' for 'hard delete' and 'false' for 'soft delete'.
-  GoogleCloudContentwarehouseV1DeleteDocumentAction({this.enableHardDelete});
+  GoogleCloudContentwarehouseV1DeleteDocumentAction({
+    this.enableHardDelete,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableHardDelete': ?enableHardDelete};
+    return <String, dynamic>{
+      'enableHardDelete': ?enableHardDelete,
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1DeleteDocumentAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1DeleteDocumentAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1DeleteDocumentAction(
-      enableHardDelete: (() {
-        final guardedValue = map['enableHardDelete'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableHardDelete: (() { final guardedValue = map['enableHardDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

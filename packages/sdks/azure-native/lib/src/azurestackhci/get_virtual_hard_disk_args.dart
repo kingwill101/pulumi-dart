@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualHardDiskArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the virtual hard disk
   final pulumi.Input<String> virtualHardDiskName;
 
@@ -30,12 +29,9 @@ class GetVirtualHardDiskArgs {
 
   factory GetVirtualHardDiskArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualHardDiskArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualHardDiskName: pulumi.Input.fromValue(
-        map['virtualHardDiskName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualHardDiskName: pulumi.Input.fromValue(map['virtualHardDiskName'] as String),
     );
   }
 }
+

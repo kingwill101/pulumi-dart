@@ -554,22 +554,16 @@ import 'solution_instance_state.dart';
 class SolutionInstance extends pulumi.CustomResource {
   /// Solution Instance Creation Time.
   late final pulumi.Output<String> createTime;
-
   /// Solution Instance Description.
   late final pulumi.Output<String?> description;
-
   /// Solution Instance Creation Parameters. See `parameters` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// Solution ID.
   late final pulumi.Output<String> solutionId;
-
   /// Solution Instance Name.
   late final pulumi.Output<String> solutionInstanceName;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -582,11 +576,11 @@ class SolutionInstance extends pulumi.CustomResource {
     SolutionInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ebs/solutionInstance:SolutionInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ebs/solutionInstance:SolutionInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
@@ -614,11 +608,11 @@ class SolutionInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ebs/solutionInstance:SolutionInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ebs/solutionInstance:SolutionInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');

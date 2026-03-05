@@ -7,17 +7,20 @@ class ManagedZoneReverseLookupConfigResponseDnsV1beta2 {
 
   /// Creates a new [ManagedZoneReverseLookupConfigResponseDnsV1beta2].
   /// [kind] Required.
-  ManagedZoneReverseLookupConfigResponseDnsV1beta2({required this.kind});
+  ManagedZoneReverseLookupConfigResponseDnsV1beta2({
+    required this.kind,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kind': kind};
+    return <String, dynamic>{
+      'kind': kind,
+    };
   }
 
-  factory ManagedZoneReverseLookupConfigResponseDnsV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedZoneReverseLookupConfigResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZoneReverseLookupConfigResponseDnsV1beta2(
       kind: pulumi.Input.fromValue(map['kind'] as String),
     );
   }
 }
+

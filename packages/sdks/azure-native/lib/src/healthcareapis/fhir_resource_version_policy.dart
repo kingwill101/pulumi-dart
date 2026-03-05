@@ -16,3 +16,4 @@ enum FhirResourceVersionPolicy {
     throw ArgumentError('Unknown FhirResourceVersionPolicy value: $value');
   }
 }
+

@@ -173,8 +173,7 @@ Future<GetPrivateConnectionIamPolicyResult> getPrivateConnectionIamPolicy(
 /// Gets details of a single connection profile.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datamigration_v1beta1_get_connection_profile_datamigration_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConnectionProfileDatamigrationV1beta1Result>
-getConnectionProfileDatamigrationV1beta1(
+Future<GetConnectionProfileDatamigrationV1beta1Result> getConnectionProfileDatamigrationV1beta1(
   GetConnectionProfileDatamigrationV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -190,8 +189,7 @@ getConnectionProfileDatamigrationV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datamigration_v1beta1_get_connection_profile_iam_policy_datamigration_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConnectionProfileIamPolicyDatamigrationV1beta1Result>
-getConnectionProfileIamPolicyDatamigrationV1beta1(
+Future<GetConnectionProfileIamPolicyDatamigrationV1beta1Result> getConnectionProfileIamPolicyDatamigrationV1beta1(
   GetConnectionProfileIamPolicyDatamigrationV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -201,16 +199,13 @@ getConnectionProfileIamPolicyDatamigrationV1beta1(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetConnectionProfileIamPolicyDatamigrationV1beta1Result.fromMap(
-    result,
-  );
+  return GetConnectionProfileIamPolicyDatamigrationV1beta1Result.fromMap(result);
 }
 
 /// Gets details of a single migration job.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datamigration_v1beta1_get_migration_job_datamigration_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMigrationJobDatamigrationV1beta1Result>
-getMigrationJobDatamigrationV1beta1(
+Future<GetMigrationJobDatamigrationV1beta1Result> getMigrationJobDatamigrationV1beta1(
   GetMigrationJobDatamigrationV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -226,8 +221,7 @@ getMigrationJobDatamigrationV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datamigration_v1beta1_get_migration_job_iam_policy_datamigration_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMigrationJobIamPolicyDatamigrationV1beta1Result>
-getMigrationJobIamPolicyDatamigrationV1beta1(
+Future<GetMigrationJobIamPolicyDatamigrationV1beta1Result> getMigrationJobIamPolicyDatamigrationV1beta1(
   GetMigrationJobIamPolicyDatamigrationV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

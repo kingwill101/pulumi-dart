@@ -8,17 +8,20 @@ class DomainDevicesFilesystemBinarySandbox {
 
   /// Creates a new [DomainDevicesFilesystemBinarySandbox].
   /// [mode] Sets the mode for the sandbox environment of the binary filesystem.
-  DomainDevicesFilesystemBinarySandbox({required this.mode});
+  DomainDevicesFilesystemBinarySandbox({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
-  factory DomainDevicesFilesystemBinarySandbox.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesFilesystemBinarySandbox.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemBinarySandbox(
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSharedPrivateLinkResourceArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The Shared Private Link resource name.
   final pulumi.Input<String> sharedPrivateLinkResourceName;
-
   /// The database watcher name.
   final pulumi.Input<String> watcherName;
 
@@ -36,13 +34,10 @@ class GetSharedPrivateLinkResourceArgs {
 
   factory GetSharedPrivateLinkResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetSharedPrivateLinkResourceArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sharedPrivateLinkResourceName: pulumi.Input.fromValue(
-        map['sharedPrivateLinkResourceName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sharedPrivateLinkResourceName: pulumi.Input.fromValue(map['sharedPrivateLinkResourceName'] as String),
       watcherName: pulumi.Input.fromValue(map['watcherName'] as String),
     );
   }
 }
+

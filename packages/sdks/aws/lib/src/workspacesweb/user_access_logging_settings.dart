@@ -285,21 +285,16 @@ import 'user_access_logging_settings_state.dart';
 class UserAccessLoggingSettings extends pulumi.CustomResource {
   /// List of web portal ARNs that this user access logging settings resource is associated with.
   late final pulumi.Output<List<String>> associatedPortalArns;
-
   /// ARN of the Kinesis stream.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> kinesisStreamArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// ARN of the user access logging settings resource.
   late final pulumi.Output<String> userAccessLoggingSettingsArn;
 
@@ -312,19 +307,17 @@ class UserAccessLoggingSettings extends pulumi.CustomResource {
     UserAccessLoggingSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspacesweb/userAccessLoggingSettings:UserAccessLoggingSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspacesweb/userAccessLoggingSettings:UserAccessLoggingSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
     kinesisStreamArn = registerOutput<String>('kinesisStreamArn');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    userAccessLoggingSettingsArn = registerOutput<String>(
-      'userAccessLoggingSettingsArn',
-    );
+    userAccessLoggingSettingsArn = registerOutput<String>('userAccessLoggingSettingsArn');
   }
 
   /// Gets an existing [UserAccessLoggingSettings] resource's state with the given [name] and [id].
@@ -345,18 +338,16 @@ class UserAccessLoggingSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspacesweb/userAccessLoggingSettings:UserAccessLoggingSettings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspacesweb/userAccessLoggingSettings:UserAccessLoggingSettings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
     kinesisStreamArn = registerOutput<String>('kinesisStreamArn');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    userAccessLoggingSettingsArn = registerOutput<String>(
-      'userAccessLoggingSettingsArn',
-    );
+    userAccessLoggingSettingsArn = registerOutput<String>('userAccessLoggingSettingsArn');
   }
 }

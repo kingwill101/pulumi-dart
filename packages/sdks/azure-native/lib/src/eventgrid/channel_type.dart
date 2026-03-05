@@ -14,3 +14,4 @@ enum ChannelType {
     throw ArgumentError('Unknown ChannelType value: $value');
   }
 }
+

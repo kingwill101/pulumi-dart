@@ -7,13 +7,10 @@ import 'table_replication_rule.dart';
 class TableReplicationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ARN referencing the IAM role assumed by S3 when replicating tables.
   final pulumi.Input<String>? role;
-
   /// Replication rules. See Rule below for more details.
   final pulumi.Input<TableReplicationRule>? rule;
-
   /// ARN referencing the Table that owns this replication configuration.
   final pulumi.Input<String>? tableArn;
   final pulumi.Input<String>? versionToken;
@@ -36,11 +33,7 @@ class TableReplicationState {
     return <String, dynamic>{
       'region': ?region,
       'role': ?role,
-      'rule':
-          ?pulumi.Input.mapOptionalInputValue<
-            TableReplicationRule,
-            Map<String, dynamic>
-          >(rule, (value) => value.toMap()),
+      'rule': ?pulumi.Input.mapOptionalInputValue<TableReplicationRule, Map<String, dynamic>>(rule, (value) => value.toMap()),
       'tableArn': ?tableArn,
       'versionToken': ?versionToken,
     };
@@ -48,35 +41,12 @@ class TableReplicationState {
 
   factory TableReplicationState.fromMap(Map<String, dynamic> map) {
     return TableReplicationState(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      role: (() {
-        final guardedValue = map['role'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rule: (() {
-        final guardedValue = map['rule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TableReplicationRule.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tableArn: (() {
-        final guardedValue = map['tableArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      versionToken: (() {
-        final guardedValue = map['versionToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rule: (() { final guardedValue = map['rule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableReplicationRule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tableArn: (() { final guardedValue = map['tableArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      versionToken: (() { final guardedValue = map['versionToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

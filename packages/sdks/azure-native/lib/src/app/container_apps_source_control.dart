@@ -310,28 +310,20 @@ import 'system_data_response.dart';
 class ContainerAppsSourceControl extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The branch which will trigger the auto deployment
   late final pulumi.Output<String?> branch;
-
   /// Container App Revision Template with all possible settings and the
   /// defaults if user did not provide them. The defaults are populated
   /// as they were at the creation time
-  late final pulumi.Output<GithubActionConfigurationResponse?>
-  githubActionConfiguration;
-
+  late final pulumi.Output<GithubActionConfigurationResponse?> githubActionConfiguration;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Current provisioning State of the operation
   late final pulumi.Output<String> operationState;
-
   /// The repo url which will be integrated to ContainerApp.
   late final pulumi.Output<String?> repoUrl;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -344,37 +336,18 @@ class ContainerAppsSourceControl extends pulumi.CustomResource {
     ContainerAppsSourceControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:app:ContainerAppsSourceControl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:app:ContainerAppsSourceControl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     branch = registerOutput<String?>('branch');
-    githubActionConfiguration =
-        registerOutput<GithubActionConfigurationResponse?>(
-          'githubActionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GithubActionConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    githubActionConfiguration = registerOutput<GithubActionConfigurationResponse?>('githubActionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GithubActionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     operationState = registerOutput<String>('operationState');
     repoUrl = registerOutput<String?>('repoUrl');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

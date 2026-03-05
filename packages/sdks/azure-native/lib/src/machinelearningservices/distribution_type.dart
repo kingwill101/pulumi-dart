@@ -16,3 +16,4 @@ enum DistributionType {
     throw ArgumentError('Unknown DistributionType value: $value');
   }
 }
+

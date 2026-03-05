@@ -7,50 +7,35 @@ import 'sql_upsert_settings_response.dart';
 class SqlMISinkResponse {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
-
   /// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
-
   /// SQL pre-copy script. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? preCopyScript;
-
   /// Sink retry count. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? sinkRetryCount;
-
   /// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? sinkRetryWait;
-
   /// SQL writer stored procedure name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? sqlWriterStoredProcedureName;
-
   /// SQL writer table type. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? sqlWriterTableType;
-
   /// Whether to use table lock during bulk copy. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? sqlWriterUseTableLock;
-
   /// SQL stored procedure parameters.
   final pulumi.Input<dynamic>? storedProcedureParameters;
-
   /// The stored procedure parameter name of the table type. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? storedProcedureTableTypeParameterName;
-
   /// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? tableOption;
-
   /// Copy sink type.
   /// Expected value is 'SqlMISink'.
   final pulumi.Input<String> type;
-
   /// SQL upsert settings.
   final pulumi.Input<SqlUpsertSettingsResponse>? upsertSettings;
-
   /// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic>? writeBatchSize;
-
   /// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? writeBatchTimeout;
-
   /// White behavior when copying data into azure SQL MI. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? writeBehavior;
 
@@ -101,15 +86,10 @@ class SqlMISinkResponse {
       'sqlWriterTableType': ?sqlWriterTableType,
       'sqlWriterUseTableLock': ?sqlWriterUseTableLock,
       'storedProcedureParameters': ?storedProcedureParameters,
-      'storedProcedureTableTypeParameterName':
-          ?storedProcedureTableTypeParameterName,
+      'storedProcedureTableTypeParameterName': ?storedProcedureTableTypeParameterName,
       'tableOption': ?tableOption,
       'type': type,
-      'upsertSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            SqlUpsertSettingsResponse,
-            Map<String, dynamic>
-          >(upsertSettings, (value) => value.toMap()),
+      'upsertSettings': ?pulumi.Input.mapOptionalInputValue<SqlUpsertSettingsResponse, Map<String, dynamic>>(upsertSettings, (value) => value.toMap()),
       'writeBatchSize': ?writeBatchSize,
       'writeBatchTimeout': ?writeBatchTimeout,
       'writeBehavior': ?writeBehavior,
@@ -118,86 +98,23 @@ class SqlMISinkResponse {
 
   factory SqlMISinkResponse.fromMap(Map<String, dynamic> map) {
     return SqlMISinkResponse(
-      disableMetricsCollection: (() {
-        final guardedValue = map['disableMetricsCollection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      maxConcurrentConnections: (() {
-        final guardedValue = map['maxConcurrentConnections'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      preCopyScript: (() {
-        final guardedValue = map['preCopyScript'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      sinkRetryCount: (() {
-        final guardedValue = map['sinkRetryCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      sinkRetryWait: (() {
-        final guardedValue = map['sinkRetryWait'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      sqlWriterStoredProcedureName: (() {
-        final guardedValue = map['sqlWriterStoredProcedureName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      sqlWriterTableType: (() {
-        final guardedValue = map['sqlWriterTableType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      sqlWriterUseTableLock: (() {
-        final guardedValue = map['sqlWriterUseTableLock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      storedProcedureParameters: (() {
-        final guardedValue = map['storedProcedureParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      storedProcedureTableTypeParameterName: (() {
-        final guardedValue = map['storedProcedureTableTypeParameterName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      tableOption: (() {
-        final guardedValue = map['tableOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      disableMetricsCollection: (() { final guardedValue = map['disableMetricsCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      maxConcurrentConnections: (() { final guardedValue = map['maxConcurrentConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      preCopyScript: (() { final guardedValue = map['preCopyScript']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sinkRetryCount: (() { final guardedValue = map['sinkRetryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sinkRetryWait: (() { final guardedValue = map['sinkRetryWait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sqlWriterStoredProcedureName: (() { final guardedValue = map['sqlWriterStoredProcedureName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sqlWriterTableType: (() { final guardedValue = map['sqlWriterTableType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sqlWriterUseTableLock: (() { final guardedValue = map['sqlWriterUseTableLock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      storedProcedureParameters: (() { final guardedValue = map['storedProcedureParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      storedProcedureTableTypeParameterName: (() { final guardedValue = map['storedProcedureTableTypeParameterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      tableOption: (() { final guardedValue = map['tableOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      upsertSettings: (() {
-        final guardedValue = map['upsertSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SqlUpsertSettingsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      writeBatchSize: (() {
-        final guardedValue = map['writeBatchSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      writeBatchTimeout: (() {
-        final guardedValue = map['writeBatchTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      writeBehavior: (() {
-        final guardedValue = map['writeBehavior'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      upsertSettings: (() { final guardedValue = map['upsertSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SqlUpsertSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      writeBatchSize: (() { final guardedValue = map['writeBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      writeBatchTimeout: (() { final guardedValue = map['writeBatchTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      writeBehavior: (() { final guardedValue = map['writeBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

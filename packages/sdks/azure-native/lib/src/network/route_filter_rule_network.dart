@@ -169,25 +169,18 @@ import 'route_filter_rule_args.dart';
 class RouteFilterRuleNetwork extends pulumi.CustomResource {
   /// The access type of the rule.
   late final pulumi.Output<String> access;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020'].
   late final pulumi.Output<List<String>> communities;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
-
   /// The provisioning state of the route filter rule resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The rule type of the rule.
   late final pulumi.Output<String> routeFilterRuleType;
 
@@ -200,11 +193,11 @@ class RouteFilterRuleNetwork extends pulumi.CustomResource {
     RouteFilterRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:RouteFilterRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:RouteFilterRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     access = registerOutput<String>('access');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     communities = registerOutput<List<String>>('communities');

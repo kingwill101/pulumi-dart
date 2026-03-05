@@ -208,10 +208,8 @@ import 'account_rai_blocklist_state.dart';
 class AccountRaiBlocklist extends pulumi.CustomResource {
   /// The ID of the Cognitive Services Account. Changing this forces a new Cognitive Account Rai Blocklist to be created.
   late final pulumi.Output<String> cognitiveAccountId;
-
   /// A short description for the Cognitive Account Rai Blocklist.
   late final pulumi.Output<String?> description;
-
   /// The name of the Cognitive Account Rai Blocklist. Changing this forces a new Cognitive Account Rai Blocklist to be created.
   late final pulumi.Output<String> name;
 
@@ -224,11 +222,11 @@ class AccountRaiBlocklist extends pulumi.CustomResource {
     AccountRaiBlocklistArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cognitive/accountRaiBlocklist:AccountRaiBlocklist',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cognitive/accountRaiBlocklist:AccountRaiBlocklist',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -252,11 +250,11 @@ class AccountRaiBlocklist extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cognitive/accountRaiBlocklist:AccountRaiBlocklist',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cognitive/accountRaiBlocklist:AccountRaiBlocklist',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

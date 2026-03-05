@@ -173,14 +173,10 @@ import 'private_endpoint_connection_properties_response.dart';
 class PrivateEndpointConnectionIothub extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// The properties of a private endpoint connection
-  late final pulumi.Output<PrivateEndpointConnectionPropertiesResponse>
-  properties;
-
+  late final pulumi.Output<PrivateEndpointConnectionPropertiesResponse> properties;
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -193,23 +189,14 @@ class PrivateEndpointConnectionIothub extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:iothub:PrivateEndpointConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:iothub:PrivateEndpointConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<PrivateEndpointConnectionPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PrivateEndpointConnectionPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<PrivateEndpointConnectionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateEndpointConnectionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2ProximityResponse {
   /// Number of characters after the finding to consider.
   final pulumi.Input<int> windowAfter;
-
   /// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
   final pulumi.Input<int> windowBefore;
 
@@ -25,12 +24,11 @@ class GooglePrivacyDlpV2ProximityResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2ProximityResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2ProximityResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ProximityResponse(
       windowAfter: pulumi.Input.fromValue(map['windowAfter'] as int),
       windowBefore: pulumi.Input.fromValue(map['windowBefore'] as int),
     );
   }
 }
+

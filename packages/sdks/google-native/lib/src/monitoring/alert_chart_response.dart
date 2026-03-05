@@ -9,10 +9,14 @@ class AlertChartResponse {
 
   /// Creates a new [AlertChartResponse].
   /// [name] The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
-  AlertChartResponse({required this.name});
+  AlertChartResponse({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory AlertChartResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class AlertChartResponse {
     );
   }
 }
+

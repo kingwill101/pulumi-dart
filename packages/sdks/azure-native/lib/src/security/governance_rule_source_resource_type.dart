@@ -11,8 +11,7 @@ enum GovernanceRuleSourceResourceType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GovernanceRuleSourceResourceType value: $value',
-    );
+    throw ArgumentError('Unknown GovernanceRuleSourceResourceType value: $value');
   }
 }
+

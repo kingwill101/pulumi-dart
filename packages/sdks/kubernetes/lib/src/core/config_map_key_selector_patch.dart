@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigMapKeySelectorPatch {
   /// The key to select.
   final pulumi.Input<String>? key;
-
   /// Name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   final pulumi.Input<String>? name;
-
   /// Specify whether the ConfigMap or its key must be defined
   final pulumi.Input<bool>? optional;
 
@@ -17,29 +15,26 @@ class ConfigMapKeySelectorPatch {
   /// [key] The key to select.
   /// [name] Name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   /// [optional] Specify whether the ConfigMap or its key must be defined
-  ConfigMapKeySelectorPatch({this.key, this.name, this.optional});
+  ConfigMapKeySelectorPatch({
+    this.key,
+    this.name,
+    this.optional,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key, 'name': ?name, 'optional': ?optional};
+    return <String, dynamic>{
+      'key': ?key,
+      'name': ?name,
+      'optional': ?optional,
+    };
   }
 
   factory ConfigMapKeySelectorPatch.fromMap(Map<String, dynamic> map) {
     return ConfigMapKeySelectorPatch(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      optional: (() {
-        final guardedValue = map['optional'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      optional: (() { final guardedValue = map['optional']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

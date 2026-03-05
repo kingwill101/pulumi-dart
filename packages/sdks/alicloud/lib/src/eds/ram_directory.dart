@@ -256,19 +256,14 @@ import 'ram_directory_state.dart';
 class RamDirectory extends pulumi.CustomResource {
   /// The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
   late final pulumi.Output<String> desktopAccessType;
-
   /// Whether to enable public network access.
   late final pulumi.Output<bool> enableAdminAccess;
-
   /// Whether to grant local administrator rights to users who use cloud desktops.
   late final pulumi.Output<bool> enableInternetAccess;
-
   /// The name of the directory. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
   late final pulumi.Output<String> ramDirectoryName;
-
   /// The status of directory.
   late final pulumi.Output<String> status;
-
   /// List of VSwitch IDs in the directory.
   late final pulumi.Output<List<String>> vswitchIds;
 
@@ -281,11 +276,11 @@ class RamDirectory extends pulumi.CustomResource {
     RamDirectoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eds/ramDirectory:RamDirectory',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eds/ramDirectory:RamDirectory',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     desktopAccessType = registerOutput<String>('desktopAccessType');
     enableAdminAccess = registerOutput<bool>('enableAdminAccess');
     enableInternetAccess = registerOutput<bool>('enableInternetAccess');
@@ -312,11 +307,11 @@ class RamDirectory extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eds/ramDirectory:RamDirectory',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eds/ramDirectory:RamDirectory',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     desktopAccessType = registerOutput<String>('desktopAccessType');
     enableAdminAccess = registerOutput<bool>('enableAdminAccess');
     enableInternetAccess = registerOutput<bool>('enableInternetAccess');

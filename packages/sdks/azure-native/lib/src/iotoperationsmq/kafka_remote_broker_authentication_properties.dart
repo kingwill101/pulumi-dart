@@ -7,7 +7,6 @@ import 'kafka_remote_broker_authentication_types.dart';
 class KafkaRemoteBrokerAuthenticationProperties {
   /// The type of authentication to use for Kafka remote broker.
   final pulumi.Input<KafkaRemoteBrokerAuthenticationTypes>? authType;
-
   /// If authentication is enabled for Kafka remote broker.
   final pulumi.Input<bool> enabled;
 
@@ -21,29 +20,16 @@ class KafkaRemoteBrokerAuthenticationProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authType':
-          ?pulumi.Input.mapOptionalInputValue<
-            KafkaRemoteBrokerAuthenticationTypes,
-            Map<String, dynamic>
-          >(authType, (value) => value.toMap()),
+      'authType': ?pulumi.Input.mapOptionalInputValue<KafkaRemoteBrokerAuthenticationTypes, Map<String, dynamic>>(authType, (value) => value.toMap()),
       'enabled': enabled,
     };
   }
 
-  factory KafkaRemoteBrokerAuthenticationProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KafkaRemoteBrokerAuthenticationProperties.fromMap(Map<String, dynamic> map) {
     return KafkaRemoteBrokerAuthenticationProperties(
-      authType: (() {
-        final guardedValue = map['authType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KafkaRemoteBrokerAuthenticationTypes.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      authType: (() { final guardedValue = map['authType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KafkaRemoteBrokerAuthenticationTypes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

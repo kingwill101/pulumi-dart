@@ -18,9 +18,7 @@ enum ProtectableContainerType {
   valueSQLAGWorkLoadContainer("SQLAGWorkLoadContainer"),
   valueStorageContainer("StorageContainer"),
   valueGenericContainer("GenericContainer"),
-  valueMicrosoftClassicComputeVirtualMachines(
-    "Microsoft.ClassicCompute/virtualMachines",
-  ),
+  valueMicrosoftClassicComputeVirtualMachines("Microsoft.ClassicCompute/virtualMachines"),
   valueMicrosoftComputeVirtualMachines("Microsoft.Compute/virtualMachines"),
   valueAzureWorkloadContainer("AzureWorkloadContainer");
 
@@ -36,3 +34,4 @@ enum ProtectableContainerType {
     throw ArgumentError('Unknown ProtectableContainerType value: $value');
   }
 }
+

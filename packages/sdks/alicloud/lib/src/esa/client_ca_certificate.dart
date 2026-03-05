@@ -168,19 +168,14 @@ import 'client_ca_certificate_state.dart';
 class ClientCaCertificate extends pulumi.CustomResource {
   /// Certificate content.
   late final pulumi.Output<String> certificate;
-
   /// ClientCaCertificate Id
   late final pulumi.Output<String> clientCaCertId;
-
   /// The certificate name.
   late final pulumi.Output<String?> clientCaCertName;
-
   /// Creation time.
   late final pulumi.Output<String> createTime;
-
   /// Site Id
   late final pulumi.Output<String> siteId;
-
   /// Certificate status.
   late final pulumi.Output<String> status;
 
@@ -193,11 +188,11 @@ class ClientCaCertificate extends pulumi.CustomResource {
     ClientCaCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/clientCaCertificate:ClientCaCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/clientCaCertificate:ClientCaCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificate = registerOutput<String>('certificate');
     clientCaCertId = registerOutput<String>('clientCaCertId');
     clientCaCertName = registerOutput<String?>('clientCaCertName');
@@ -224,11 +219,11 @@ class ClientCaCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/clientCaCertificate:ClientCaCertificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/clientCaCertificate:ClientCaCertificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificate = registerOutput<String>('certificate');
     clientCaCertId = registerOutput<String>('clientCaCertId');
     clientCaCertName = registerOutput<String?>('clientCaCertName');

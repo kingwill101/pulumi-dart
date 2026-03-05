@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OsProfileResponse {
   /// Gets or sets computer name.
   final pulumi.Input<String>? computerName;
-
   /// Gets or sets os name.
   final pulumi.Input<String> osName;
-
   /// Gets or sets the type of the os.
   final pulumi.Input<String> osType;
 
@@ -33,13 +31,10 @@ class OsProfileResponse {
 
   factory OsProfileResponse.fromMap(Map<String, dynamic> map) {
     return OsProfileResponse(
-      computerName: (() {
-        final guardedValue = map['computerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      computerName: (() { final guardedValue = map['computerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       osName: pulumi.Input.fromValue(map['osName'] as String),
       osType: pulumi.Input.fromValue(map['osType'] as String),
     );
   }
 }
+

@@ -9,11 +9,8 @@ import 'google_cloud_channel_v1_repricing_condition.dart';
 class GoogleCloudChannelV1ConditionalOverride {
   /// Information about the applied override's adjustment.
   final pulumi.Input<GoogleCloudChannelV1RepricingAdjustment> adjustment;
-
   /// The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
-  final pulumi.Input<GoogleCloudChannelV1ConditionalOverrideRebillingBasis>
-  rebillingBasis;
-
+  final pulumi.Input<GoogleCloudChannelV1ConditionalOverrideRebillingBasis> rebillingBasis;
   /// Specifies the condition which, if met, will apply the override.
   final pulumi.Input<GoogleCloudChannelV1RepricingCondition> repricingCondition;
 
@@ -29,43 +26,18 @@ class GoogleCloudChannelV1ConditionalOverride {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adjustment':
-          pulumi.Input.mapInputValue<
-            GoogleCloudChannelV1RepricingAdjustment,
-            Map<String, dynamic>
-          >(adjustment, (value) => value.toMap()),
-      'rebillingBasis':
-          pulumi.Input.mapInputValue<
-            GoogleCloudChannelV1ConditionalOverrideRebillingBasis,
-            String
-          >(rebillingBasis, (value) => value.wireValue),
-      'repricingCondition':
-          pulumi.Input.mapInputValue<
-            GoogleCloudChannelV1RepricingCondition,
-            Map<String, dynamic>
-          >(repricingCondition, (value) => value.toMap()),
+      'adjustment': pulumi.Input.mapInputValue<GoogleCloudChannelV1RepricingAdjustment, Map<String, dynamic>>(adjustment, (value) => value.toMap()),
+      'rebillingBasis': pulumi.Input.mapInputValue<GoogleCloudChannelV1ConditionalOverrideRebillingBasis, String>(rebillingBasis, (value) => value.wireValue),
+      'repricingCondition': pulumi.Input.mapInputValue<GoogleCloudChannelV1RepricingCondition, Map<String, dynamic>>(repricingCondition, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudChannelV1ConditionalOverride.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudChannelV1ConditionalOverride.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1ConditionalOverride(
-      adjustment: pulumi.Input.fromValue(
-        GoogleCloudChannelV1RepricingAdjustment.fromMap(
-          (map['adjustment']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      rebillingBasis: pulumi.Input.fromValue(
-        GoogleCloudChannelV1ConditionalOverrideRebillingBasis.fromValue(
-          map['rebillingBasis']! as String,
-        ),
-      ),
-      repricingCondition: pulumi.Input.fromValue(
-        GoogleCloudChannelV1RepricingCondition.fromMap(
-          (map['repricingCondition']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      adjustment: pulumi.Input.fromValue(GoogleCloudChannelV1RepricingAdjustment.fromMap((map['adjustment']! as Map).cast<String, dynamic>())),
+      rebillingBasis: pulumi.Input.fromValue(GoogleCloudChannelV1ConditionalOverrideRebillingBasis.fromValue(map['rebillingBasis']! as String)),
+      repricingCondition: pulumi.Input.fromValue(GoogleCloudChannelV1RepricingCondition.fromMap((map['repricingCondition']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

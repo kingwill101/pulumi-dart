@@ -24,3 +24,4 @@ enum ContentFormat {
     throw ArgumentError('Unknown ContentFormat value: $value');
   }
 }
+

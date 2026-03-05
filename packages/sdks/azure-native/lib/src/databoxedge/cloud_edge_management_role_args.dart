@@ -9,17 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudEdgeManagementRoleArgs {
   /// The device name.
   final pulumi.Input<String> deviceName;
-
   /// Role type.
   /// Expected value is 'CloudEdgeManagement'.
   final pulumi.Input<String> kind;
-
   /// The role name.
   final pulumi.Input<String>? name;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// Role status.
   final pulumi.Input<String> roleStatus;
 
@@ -51,15 +47,10 @@ class CloudEdgeManagementRoleArgs {
     return CloudEdgeManagementRoleArgs(
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       roleStatus: pulumi.Input.fromValue(map['roleStatus'] as String),
     );
   }
 }
+

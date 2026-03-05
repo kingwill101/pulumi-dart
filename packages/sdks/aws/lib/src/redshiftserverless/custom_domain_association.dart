@@ -198,16 +198,12 @@ import 'custom_domain_association_state.dart';
 class CustomDomainAssociation extends pulumi.CustomResource {
   /// ARN of the certificate for the custom domain association.
   late final pulumi.Output<String> customDomainCertificateArn;
-
   /// Expiration time for the certificate.
   late final pulumi.Output<String> customDomainCertificateExpiryTime;
-
   /// Custom domain to associate with the workgroup.
   late final pulumi.Output<String> customDomainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Name of the workgroup.
   late final pulumi.Output<String> workgroupName;
 
@@ -220,17 +216,13 @@ class CustomDomainAssociation extends pulumi.CustomResource {
     CustomDomainAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshiftserverless/customDomainAssociation:CustomDomainAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customDomainCertificateArn = registerOutput<String>(
-      'customDomainCertificateArn',
-    );
-    customDomainCertificateExpiryTime = registerOutput<String>(
-      'customDomainCertificateExpiryTime',
-    );
+          'aws:redshiftserverless/customDomainAssociation:CustomDomainAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customDomainCertificateArn = registerOutput<String>('customDomainCertificateArn');
+    customDomainCertificateExpiryTime = registerOutput<String>('customDomainCertificateExpiryTime');
     customDomainName = registerOutput<String>('customDomainName');
     region = registerOutput<String>('region');
     workgroupName = registerOutput<String>('workgroupName');
@@ -254,17 +246,13 @@ class CustomDomainAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshiftserverless/customDomainAssociation:CustomDomainAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customDomainCertificateArn = registerOutput<String>(
-      'customDomainCertificateArn',
-    );
-    customDomainCertificateExpiryTime = registerOutput<String>(
-      'customDomainCertificateExpiryTime',
-    );
+          'aws:redshiftserverless/customDomainAssociation:CustomDomainAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customDomainCertificateArn = registerOutput<String>('customDomainCertificateArn');
+    customDomainCertificateExpiryTime = registerOutput<String>('customDomainCertificateExpiryTime');
     customDomainName = registerOutput<String>('customDomainName');
     region = registerOutput<String>('region');
     workgroupName = registerOutput<String>('workgroupName');

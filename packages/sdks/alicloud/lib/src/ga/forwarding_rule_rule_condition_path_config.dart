@@ -8,21 +8,20 @@ class ForwardingRuleRuleConditionPathConfig {
 
   /// Creates a new [ForwardingRuleRuleConditionPathConfig].
   /// [values] The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
-  ForwardingRuleRuleConditionPathConfig({this.values});
+  ForwardingRuleRuleConditionPathConfig({
+    this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': ?values};
+    return <String, dynamic>{
+      'values': ?values,
+    };
   }
 
-  factory ForwardingRuleRuleConditionPathConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ForwardingRuleRuleConditionPathConfig.fromMap(Map<String, dynamic> map) {
     return ForwardingRuleRuleConditionPathConfig(
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

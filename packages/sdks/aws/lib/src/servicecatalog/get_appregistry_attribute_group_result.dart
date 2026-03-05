@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAppregistryAttributeGroup.
 class GetAppregistryAttributeGroupResult {
   final String arn;
-
   /// A JSON string of nested key-value pairs that represents the attributes of the group.
   final String attributes;
-
   /// Description of the Attribute Group.
   final String description;
   final String id;
   final String name;
   final String region;
-
   /// A map of tags assigned to the Attribute Group. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Map<String, String> tags;
 
@@ -58,3 +56,4 @@ class GetAppregistryAttributeGroupResult {
     );
   }
 }
+

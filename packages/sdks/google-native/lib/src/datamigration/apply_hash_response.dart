@@ -9,17 +9,20 @@ class ApplyHashResponse {
 
   /// Creates a new [ApplyHashResponse].
   /// [uuidFromBytes] Optional. Generate UUID from the data's byte array
-  ApplyHashResponse({required this.uuidFromBytes});
+  ApplyHashResponse({
+    required this.uuidFromBytes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uuidFromBytes': uuidFromBytes};
+    return <String, dynamic>{
+      'uuidFromBytes': uuidFromBytes,
+    };
   }
 
   factory ApplyHashResponse.fromMap(Map<String, dynamic> map) {
     return ApplyHashResponse(
-      uuidFromBytes: pulumi.Input.fromValue(
-        (map['uuidFromBytes']! as Map).cast<String, dynamic>(),
-      ),
+      uuidFromBytes: pulumi.Input.fromValue((map['uuidFromBytes']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

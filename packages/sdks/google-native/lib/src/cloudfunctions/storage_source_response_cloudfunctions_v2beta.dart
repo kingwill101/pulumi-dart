@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageSourceResponseCloudfunctionsV2beta {
   /// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   final pulumi.Input<String> bucket;
-
   /// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
   final pulumi.Input<String> generation;
-
   /// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
   final pulumi.Input<String> object_;
 
@@ -31,9 +29,7 @@ class StorageSourceResponseCloudfunctionsV2beta {
     };
   }
 
-  factory StorageSourceResponseCloudfunctionsV2beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageSourceResponseCloudfunctionsV2beta.fromMap(Map<String, dynamic> map) {
     return StorageSourceResponseCloudfunctionsV2beta(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       generation: pulumi.Input.fromValue(map['generation'] as String),
@@ -41,3 +37,4 @@ class StorageSourceResponseCloudfunctionsV2beta {
     );
   }
 }
+

@@ -328,37 +328,26 @@ import 'identity_provider_aadb2c_state.dart';
 class IdentityProviderAadb2c extends pulumi.CustomResource {
   /// The allowed AAD tenant, usually your B2C tenant domain.
   late final pulumi.Output<String> allowedTenant;
-
   /// The Name of the API Management Service where this AAD Identity Provider should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// OpenID Connect discovery endpoint hostname, usually your b2clogin.com domain.
   late final pulumi.Output<String> authority;
-
   /// Client ID of the Application in your B2C tenant.
   late final pulumi.Output<String> clientId;
-
   /// The client library to be used in the Azure AD B2C Identity Provider.
   late final pulumi.Output<String?> clientLibrary;
-
   /// Client secret of the Application in your B2C tenant.
   late final pulumi.Output<String> clientSecret;
-
   /// Password reset Policy Name.
   late final pulumi.Output<String?> passwordResetPolicy;
-
   /// Profile editing Policy Name.
   late final pulumi.Output<String?> profileEditingPolicy;
-
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Signin Policy Name.
   late final pulumi.Output<String> signinPolicy;
-
   /// The tenant to use instead of Common when logging into Active Directory, usually your B2C tenant domain.
   late final pulumi.Output<String> signinTenant;
-
   /// Signup Policy Name.
   late final pulumi.Output<String> signupPolicy;
 
@@ -371,11 +360,11 @@ class IdentityProviderAadb2c extends pulumi.CustomResource {
     IdentityProviderAadb2cArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/identityProviderAadb2c:IdentityProviderAadb2c',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/identityProviderAadb2c:IdentityProviderAadb2c',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedTenant = registerOutput<String>('allowedTenant');
     apiManagementName = registerOutput<String>('apiManagementName');
     authority = registerOutput<String>('authority');
@@ -408,11 +397,11 @@ class IdentityProviderAadb2c extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/identityProviderAadb2c:IdentityProviderAadb2c',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/identityProviderAadb2c:IdentityProviderAadb2c',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedTenant = registerOutput<String>('allowedTenant');
     apiManagementName = registerOutput<String>('apiManagementName');
     authority = registerOutput<String>('authority');

@@ -15,3 +15,4 @@ enum GranularityType {
     throw ArgumentError('Unknown GranularityType value: $value');
   }
 }
+

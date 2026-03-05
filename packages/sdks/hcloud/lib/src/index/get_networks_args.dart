@@ -12,19 +12,20 @@ class GetNetworksArgs {
 
   /// Creates a new [GetNetworksArgs].
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetNetworksArgs({this.withSelector});
+  GetNetworksArgs({
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'withSelector': ?withSelector};
+    return <String, dynamic>{
+      'withSelector': ?withSelector,
+    };
   }
 
   factory GetNetworksArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworksArgs(
-      withSelector: (() {
-        final guardedValue = map['withSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

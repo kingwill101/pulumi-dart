@@ -378,16 +378,12 @@ import 'dataset_kusto_cluster_state.dart';
 class DatasetKustoCluster extends pulumi.CustomResource {
   /// The name of the Data Share Dataset.
   late final pulumi.Output<String> displayName;
-
   /// The resource ID of the Kusto Cluster to be shared with the receiver. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
   late final pulumi.Output<String> kustoClusterId;
-
   /// The location of the Kusto Cluster.
   late final pulumi.Output<String> kustoClusterLocation;
-
   /// The name which should be used for this Data Share Kusto Cluster Dataset. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
   late final pulumi.Output<String> name;
-
   /// The resource ID of the Data Share where this Data Share Kusto Cluster Dataset should be created. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
   late final pulumi.Output<String> shareId;
 
@@ -400,11 +396,11 @@ class DatasetKustoCluster extends pulumi.CustomResource {
     DatasetKustoClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datashare/datasetKustoCluster:DatasetKustoCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datashare/datasetKustoCluster:DatasetKustoCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     kustoClusterId = registerOutput<String>('kustoClusterId');
     kustoClusterLocation = registerOutput<String>('kustoClusterLocation');
@@ -430,11 +426,11 @@ class DatasetKustoCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datashare/datasetKustoCluster:DatasetKustoCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datashare/datasetKustoCluster:DatasetKustoCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     kustoClusterId = registerOutput<String>('kustoClusterId');
     kustoClusterLocation = registerOutput<String>('kustoClusterLocation');

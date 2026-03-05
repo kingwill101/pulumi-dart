@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getServerTrustCertificate.
 class GetServerTrustCertificateResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The certificate name
   final String certificateName;
-
   /// Resource ID.
   final String id;
-
   /// Resource name.
   final String name;
-
   /// The certificate public blob
   final String? publicBlob;
-
   /// The certificate thumbprint
   final String thumbprint;
-
   /// Resource type.
   final String type;
 
@@ -59,13 +54,10 @@ class GetServerTrustCertificateResult {
       certificateName: map['certificateName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      publicBlob: (() {
-        final guardedValue = map['publicBlob'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      publicBlob: (() { final guardedValue = map['publicBlob']; if (guardedValue == null) return null; return guardedValue as String; })(),
       thumbprint: map['thumbprint'] as String,
       type: map['type'] as String,
     );
   }
 }
+

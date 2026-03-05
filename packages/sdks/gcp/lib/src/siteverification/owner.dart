@@ -371,7 +371,6 @@ class Owner extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> email;
-
   /// The id of of the web resource to which the owner will be added, in the form `webResource/&lt;resource_id&gt;`,
   /// such as `webResource/https://www.example.com/`
   late final pulumi.Output<String> webResourceId;
@@ -380,19 +379,26 @@ class Owner extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Owner]. {@macro pulumi_siteverification_owner_owner_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Owner(String name, {OwnerArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:siteverification/owner:Owner',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Owner(
+    String name, {
+    OwnerArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:siteverification/owner:Owner',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     email = registerOutput<String>('email');
     webResourceId = registerOutput<String>('webResourceId');
   }
 
   /// Gets an existing [Owner] resource's state with the given [name] and [id].
-  static Owner get(String name, pulumi.Input<String> id, {OwnerState? state}) {
+  static Owner get(
+    String name,
+    pulumi.Input<String> id, {
+    OwnerState? state,
+  }) {
     return Owner._get(
       name,
       state: state?.toMap(),
@@ -405,11 +411,11 @@ class Owner extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:siteverification/owner:Owner',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:siteverification/owner:Owner',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     email = registerOutput<String>('email');
     webResourceId = registerOutput<String>('webResourceId');
   }

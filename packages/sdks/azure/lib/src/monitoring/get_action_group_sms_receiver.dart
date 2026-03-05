@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActionGroupSmsReceiver {
   /// The country code of the voice receiver.
   final pulumi.Input<String> countryCode;
-
   /// Specifies the name of the Action Group.
   final pulumi.Input<String> name;
-
   /// The phone number of the voice receiver.
   final pulumi.Input<String> phoneNumber;
 
@@ -38,3 +36,4 @@ class GetActionGroupSmsReceiver {
     );
   }
 }
+

@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatasetParquetHttpServerLocation {
   /// Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
   final pulumi.Input<bool>? dynamicFilenameEnabled;
-
   /// Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
   final pulumi.Input<bool>? dynamicPathEnabled;
-
   /// The filename of the file on the web server.
   final pulumi.Input<String> filename;
-
   /// The folder path to the file on the web server.
   final pulumi.Input<String>? path;
-
   /// The base URL to the web server hosting the file.
   final pulumi.Input<String> relativeUrl;
 
@@ -44,23 +40,12 @@ class DatasetParquetHttpServerLocation {
 
   factory DatasetParquetHttpServerLocation.fromMap(Map<String, dynamic> map) {
     return DatasetParquetHttpServerLocation(
-      dynamicFilenameEnabled: (() {
-        final guardedValue = map['dynamicFilenameEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      dynamicPathEnabled: (() {
-        final guardedValue = map['dynamicPathEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dynamicFilenameEnabled: (() { final guardedValue = map['dynamicFilenameEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      dynamicPathEnabled: (() { final guardedValue = map['dynamicPathEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       filename: pulumi.Input.fromValue(map['filename'] as String),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       relativeUrl: pulumi.Input.fromValue(map['relativeUrl'] as String),
     );
   }
 }
+

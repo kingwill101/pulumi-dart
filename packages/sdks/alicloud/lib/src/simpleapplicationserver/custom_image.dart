@@ -306,18 +306,14 @@ import 'custom_image_state.dart';
 class CustomImage extends pulumi.CustomResource {
   /// The name of the resource. The name must be `2` to `128` characters in length. It must start with a letter or a number. It can contain letters, digits, colons (:), underscores (_) and hyphens (-).
   late final pulumi.Output<String> customImageName;
-
   /// The description of the Custom Image.
   late final pulumi.Output<String?> description;
-
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
-
   /// The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
   ///
   /// **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
   late final pulumi.Output<String?> status;
-
   /// The ID of the system snapshot.
   late final pulumi.Output<String> systemSnapshotId;
 
@@ -330,11 +326,11 @@ class CustomImage extends pulumi.CustomResource {
     CustomImageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:simpleapplicationserver/customImage:CustomImage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:simpleapplicationserver/customImage:CustomImage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customImageName = registerOutput<String>('customImageName');
     description = registerOutput<String?>('description');
     instanceId = registerOutput<String>('instanceId');
@@ -360,11 +356,11 @@ class CustomImage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:simpleapplicationserver/customImage:CustomImage',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:simpleapplicationserver/customImage:CustomImage',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customImageName = registerOutput<String>('customImageName');
     description = registerOutput<String?>('description');
     instanceId = registerOutput<String>('instanceId');

@@ -135,43 +135,30 @@ import 'system_data_response.dart';
 class ArcSetting extends pulumi.CustomResource {
   /// Aggregate state of Arc agent across the nodes in this HCI cluster.
   late final pulumi.Output<String> aggregateState;
-
   /// App id of arc AAD identity.
   late final pulumi.Output<String?> arcApplicationClientId;
-
   /// Object id of arc AAD identity.
   late final pulumi.Output<String?> arcApplicationObjectId;
-
   /// Tenant id of arc AAD identity.
   late final pulumi.Output<String?> arcApplicationTenantId;
-
   /// The resource group that hosts the Arc agents, ie. Hybrid Compute Machine resources.
   late final pulumi.Output<String?> arcInstanceResourceGroup;
-
   /// Object id of arc AAD service principal.
   late final pulumi.Output<String?> arcServicePrincipalObjectId;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// contains connectivity related configuration for ARC resources
   late final pulumi.Output<List<Map<String, dynamic>>?> connectivityProperties;
-
   /// Properties for each of the default extensions category
   late final pulumi.Output<List<Map<String, dynamic>>> defaultExtensions;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// State of Arc agent in each of the nodes.
   late final pulumi.Output<List<Map<String, dynamic>>> perNodeDetails;
-
   /// Provisioning state of the ArcSetting proxy resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -184,43 +171,24 @@ class ArcSetting extends pulumi.CustomResource {
     ArcSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azurestackhci:ArcSetting',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azurestackhci:ArcSetting',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aggregateState = registerOutput<String>('aggregateState');
     arcApplicationClientId = registerOutput<String?>('arcApplicationClientId');
     arcApplicationObjectId = registerOutput<String?>('arcApplicationObjectId');
     arcApplicationTenantId = registerOutput<String?>('arcApplicationTenantId');
-    arcInstanceResourceGroup = registerOutput<String?>(
-      'arcInstanceResourceGroup',
-    );
-    arcServicePrincipalObjectId = registerOutput<String?>(
-      'arcServicePrincipalObjectId',
-    );
+    arcInstanceResourceGroup = registerOutput<String?>('arcInstanceResourceGroup');
+    arcServicePrincipalObjectId = registerOutput<String?>('arcServicePrincipalObjectId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    connectivityProperties = registerOutput<List<Map<String, dynamic>>?>(
-      'connectivityProperties',
-    );
-    defaultExtensions = registerOutput<List<Map<String, dynamic>>>(
-      'defaultExtensions',
-    );
+    connectivityProperties = registerOutput<List<Map<String, dynamic>>?>('connectivityProperties');
+    defaultExtensions = registerOutput<List<Map<String, dynamic>>>('defaultExtensions');
     this.name = registerOutput<String>('name');
-    perNodeDetails = registerOutput<List<Map<String, dynamic>>>(
-      'perNodeDetails',
-    );
+    perNodeDetails = registerOutput<List<Map<String, dynamic>>>('perNodeDetails');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

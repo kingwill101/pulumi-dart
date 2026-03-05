@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SessionProbeResponseHttpHeaders {
   /// The header field name
   final pulumi.Input<String> name;
-
   /// The header field value
   final pulumi.Input<String> value;
 
   /// Creates a new [SessionProbeResponseHttpHeaders].
   /// [name] The header field name
   /// [value] The header field value
-  SessionProbeResponseHttpHeaders({required this.name, required this.value});
+  SessionProbeResponseHttpHeaders({
+    required this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory SessionProbeResponseHttpHeaders.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class SessionProbeResponseHttpHeaders {
     );
   }
 }
+

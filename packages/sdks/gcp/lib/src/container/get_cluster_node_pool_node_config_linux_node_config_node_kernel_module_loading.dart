@@ -13,14 +13,15 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policy': policy};
+    return <String, dynamic>{
+      'policy': policy,
+    };
   }
 
-  factory GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading(
       policy: pulumi.Input.fromValue(map['policy'] as String),
     );
   }
 }
+

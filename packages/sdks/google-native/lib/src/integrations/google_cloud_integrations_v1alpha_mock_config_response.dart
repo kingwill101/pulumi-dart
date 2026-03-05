@@ -7,13 +7,10 @@ import 'google_cloud_integrations_v1alpha_event_parameter_response.dart';
 class GoogleCloudIntegrationsV1alphaMockConfigResponse {
   /// Optional. Number of times the given task should fail for failure mock strategy
   final pulumi.Input<String> failedExecutions;
-
   /// Mockstrategy defines how the particular task should be mocked during test execution
   final pulumi.Input<String> mockStrategy;
-
   /// Optional. List of key-value pairs for specific mock strategy
-  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaEventParameterResponse>>
-  parameters;
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaEventParameterResponse>> parameters;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaMockConfigResponse].
   /// [failedExecutions] Optional. Number of times the given task should fail for failure mock strategy
@@ -29,40 +26,16 @@ class GoogleCloudIntegrationsV1alphaMockConfigResponse {
     return <String, dynamic>{
       'failedExecutions': failedExecutions,
       'mockStrategy': mockStrategy,
-      'parameters':
-          pulumi.Input.mapInputValue<
-            List<GoogleCloudIntegrationsV1alphaEventParameterResponse>,
-            List<Map<String, dynamic>>
-          >(
-            parameters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudIntegrationsV1alphaEventParameterResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'parameters': pulumi.Input.mapInputValue<List<GoogleCloudIntegrationsV1alphaEventParameterResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<GoogleCloudIntegrationsV1alphaEventParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaMockConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIntegrationsV1alphaMockConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaMockConfigResponse(
-      failedExecutions: pulumi.Input.fromValue(
-        map['failedExecutions'] as String,
-      ),
+      failedExecutions: pulumi.Input.fromValue(map['failedExecutions'] as String),
       mockStrategy: pulumi.Input.fromValue(map['mockStrategy'] as String),
-      parameters: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GoogleCloudIntegrationsV1alphaEventParameterResponse
-        >(
-          map['parameters']!,
-          (value) =>
-              GoogleCloudIntegrationsV1alphaEventParameterResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      parameters: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaEventParameterResponse>(map['parameters']!, (value) => GoogleCloudIntegrationsV1alphaEventParameterResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

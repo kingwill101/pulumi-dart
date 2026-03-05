@@ -156,41 +156,29 @@ import 'rotation_policy_response.dart';
 class Key extends pulumi.CustomResource {
   /// The attributes of the key.
   late final pulumi.Output<KeyAttributesResponse?> attributes;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256
   late final pulumi.Output<String?> curveName;
   late final pulumi.Output<List<String>?> keyOps;
-
   /// The key size in bits. For example: 2048, 3072, or 4096 for RSA. Default for RSA and RSA-HSM keys is 2048. Exception made for bring your own key (BYOK), key exchange keys default to 4096.
   late final pulumi.Output<int?> keySize;
-
   /// The URI to retrieve the current version of the key.
   late final pulumi.Output<String> keyUri;
-
   /// The URI to retrieve the specific version of the key.
   late final pulumi.Output<String> keyUriWithVersion;
-
   /// The type of the key. For valid values, see JsonWebKeyType.
   late final pulumi.Output<String?> kty;
-
   /// Azure location of the key vault resource.
   late final pulumi.Output<String> location;
-
   /// Name of the key vault resource.
   late final pulumi.Output<String> name;
-
   /// Key release policy in response. It will be used for both output and input. Omitted if empty
   late final pulumi.Output<KeyReleasePolicyResponse?> releasePolicy;
-
   /// Key rotation policy in response. It will be used for both output and input. Omitted if empty
   late final pulumi.Output<RotationPolicyResponse?> rotationPolicy;
-
   /// Tags assigned to the key vault resource.
   late final pulumi.Output<Map<String, String>> tags;
-
   /// Resource type of the key vault resource.
   late final pulumi.Output<String> type;
 
@@ -198,23 +186,17 @@ class Key extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Key]. {@macro pulumi_keyvault_key_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Key(String name, {KeyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:keyvault:Key',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    attributes = registerOutput<KeyAttributesResponse?>(
-      'attributes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KeyAttributesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Key(
+    String name, {
+    KeyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:keyvault:Key',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    attributes = registerOutput<KeyAttributesResponse?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyAttributesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     curveName = registerOutput<String?>('curveName');
     keyOps = registerOutput<List<String>?>('keyOps');
@@ -224,26 +206,8 @@ class Key extends pulumi.CustomResource {
     kty = registerOutput<String?>('kty');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    releasePolicy = registerOutput<KeyReleasePolicyResponse?>(
-      'releasePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KeyReleasePolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    rotationPolicy = registerOutput<RotationPolicyResponse?>(
-      'rotationPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RotationPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    releasePolicy = registerOutput<KeyReleasePolicyResponse?>('releasePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyReleasePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rotationPolicy = registerOutput<RotationPolicyResponse?>('rotationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RotationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>>('tags');
     type = registerOutput<String>('type');
   }

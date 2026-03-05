@@ -15,3 +15,4 @@ enum DataMaskingState {
     throw ArgumentError('Unknown DataMaskingState value: $value');
   }
 }
+

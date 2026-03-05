@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRuleAnomalyDuplicatePrioritizedExcludeObservation {
   /// The description of the prioritized exclude observation.
   final pulumi.Input<String>? description;
-
   /// The excluded value per `description`.
   final pulumi.Input<String>? exclude;
-
   /// The name of the prioritized exclude observation.
   final pulumi.Input<String> name;
-
   /// The prioritized value per `description`.
   final pulumi.Input<String>? prioritize;
 
@@ -36,26 +33,13 @@ class AlertRuleAnomalyDuplicatePrioritizedExcludeObservation {
     };
   }
 
-  factory AlertRuleAnomalyDuplicatePrioritizedExcludeObservation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertRuleAnomalyDuplicatePrioritizedExcludeObservation.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyDuplicatePrioritizedExcludeObservation(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      exclude: (() {
-        final guardedValue = map['exclude'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      exclude: (() { final guardedValue = map['exclude']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      prioritize: (() {
-        final guardedValue = map['prioritize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      prioritize: (() { final guardedValue = map['prioritize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

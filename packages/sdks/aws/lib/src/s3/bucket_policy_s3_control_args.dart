@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketPolicyS3ControlArgs {
   /// Amazon Resource Name (ARN) of the bucket.
   final pulumi.Input<String> bucket;
-
   /// JSON string of the resource policy.
   final pulumi.Input<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -38,11 +36,8 @@ class BucketPolicyS3ControlArgs {
     return BucketPolicyS3ControlArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       policy: pulumi.Input.fromValue(map['policy'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

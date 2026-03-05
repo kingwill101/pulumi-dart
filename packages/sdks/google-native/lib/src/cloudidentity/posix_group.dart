@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PosixGroup {
   /// GID of the POSIX group.
   final pulumi.Input<String>? gid;
-
   /// Name of the POSIX group.
   final pulumi.Input<String>? name;
-
   /// System identifier for which group name and gid apply to. If not specified it will default to empty value.
   final pulumi.Input<String>? systemId;
 
@@ -17,29 +15,26 @@ class PosixGroup {
   /// [gid] GID of the POSIX group.
   /// [name] Name of the POSIX group.
   /// [systemId] System identifier for which group name and gid apply to. If not specified it will default to empty value.
-  PosixGroup({this.gid, this.name, this.systemId});
+  PosixGroup({
+    this.gid,
+    this.name,
+    this.systemId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'gid': ?gid, 'name': ?name, 'systemId': ?systemId};
+    return <String, dynamic>{
+      'gid': ?gid,
+      'name': ?name,
+      'systemId': ?systemId,
+    };
   }
 
   factory PosixGroup.fromMap(Map<String, dynamic> map) {
     return PosixGroup(
-      gid: (() {
-        final guardedValue = map['gid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      systemId: (() {
-        final guardedValue = map['systemId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gid: (() { final guardedValue = map['gid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      systemId: (() { final guardedValue = map['systemId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -11,38 +11,29 @@ class HostingVersionArgs {
   /// The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
   /// Structure is documented below.
   final pulumi.Input<HostingVersionConfig>? config;
-
   /// Required. The ID of the site in which to create this Version.
   final pulumi.Input<String> siteId;
 
   /// Creates a new [HostingVersionArgs].
   /// [config] The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
   /// [siteId] Required. The ID of the site in which to create this Version.
-  HostingVersionArgs({this.config, required this.siteId});
+  HostingVersionArgs({
+    this.config,
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config':
-          ?pulumi.Input.mapOptionalInputValue<
-            HostingVersionConfig,
-            Map<String, dynamic>
-          >(config, (value) => value.toMap()),
+      'config': ?pulumi.Input.mapOptionalInputValue<HostingVersionConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'siteId': siteId,
     };
   }
 
   factory HostingVersionArgs.fromMap(Map<String, dynamic> map) {
     return HostingVersionArgs(
-      config: (() {
-        final guardedValue = map['config'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HostingVersionConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HostingVersionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
     );
   }
 }
+

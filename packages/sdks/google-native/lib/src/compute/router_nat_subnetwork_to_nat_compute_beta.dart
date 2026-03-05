@@ -7,15 +7,10 @@ import 'router_nat_subnetwork_to_nat_source_ip_ranges_to_nat_item_compute_beta.d
 class RouterNatSubnetworkToNatComputeBeta {
   /// URL for the subnetwork resource that will use NAT.
   final pulumi.Input<String>? name;
-
   /// A list of the secondary ranges of the Subnetwork that are allowed to use NAT. This can be populated only if "LIST_OF_SECONDARY_IP_RANGES" is one of the values in source_ip_ranges_to_nat.
   final pulumi.Input<List<String>>? secondaryIpRangeNames;
-
   /// Specify the options for NAT ranges in the Subnetwork. All options of a single value are valid except NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid option with multiple values is: ["PRIMARY_IP_RANGE", "LIST_OF_SECONDARY_IP_RANGES"] Default: [ALL_IP_RANGES]
-  final pulumi.Input<
-    List<RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta>
-  >?
-  sourceIpRangesToNat;
+  final pulumi.Input<List<RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta>>? sourceIpRangesToNat;
 
   /// Creates a new [RouterNatSubnetworkToNatComputeBeta].
   /// [name] URL for the subnetwork resource that will use NAT.
@@ -31,50 +26,16 @@ class RouterNatSubnetworkToNatComputeBeta {
     return <String, dynamic>{
       'name': ?name,
       'secondaryIpRangeNames': ?secondaryIpRangeNames,
-      'sourceIpRangesToNat':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta>,
-            List<String>
-          >(
-            sourceIpRangesToNat,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta,
-                  String
-                >(value, (value) => value.wireValue),
-          ),
+      'sourceIpRangesToNat': ?pulumi.Input.mapOptionalInputValue<List<RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta>, List<String>>(sourceIpRangesToNat, (value) => pulumi.Input.encodeList<RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta, String>(value, (value) => value.wireValue)),
     };
   }
 
-  factory RouterNatSubnetworkToNatComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RouterNatSubnetworkToNatComputeBeta.fromMap(Map<String, dynamic> map) {
     return RouterNatSubnetworkToNatComputeBeta(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryIpRangeNames: (() {
-        final guardedValue = map['secondaryIpRangeNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      sourceIpRangesToNat: (() {
-        final guardedValue = map['sourceIpRangesToNat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta
-          >(
-            guardedValue,
-            (value) =>
-                RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta.fromValue(
-                  value as String,
-                ),
-          ),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryIpRangeNames: (() { final guardedValue = map['secondaryIpRangeNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      sourceIpRangesToNat: (() { final guardedValue = map['sourceIpRangesToNat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta>(guardedValue, (value) => RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta.fromValue(value as String))); })(),
     );
   }
 }
+

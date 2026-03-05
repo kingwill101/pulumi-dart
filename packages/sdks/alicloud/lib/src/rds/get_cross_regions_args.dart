@@ -11,19 +11,20 @@ class GetCrossRegionsArgs {
 
   /// Creates a new [GetCrossRegionsArgs].
   /// [outputFile] Optional.
-  GetCrossRegionsArgs({this.outputFile});
+  GetCrossRegionsArgs({
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'outputFile': ?outputFile};
+    return <String, dynamic>{
+      'outputFile': ?outputFile,
+    };
   }
 
   factory GetCrossRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetCrossRegionsArgs(
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

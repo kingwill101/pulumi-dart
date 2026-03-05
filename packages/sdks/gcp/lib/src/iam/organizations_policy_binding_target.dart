@@ -13,19 +13,20 @@ class OrganizationsPolicyBindingTarget {
 
   /// Creates a new [OrganizationsPolicyBindingTarget].
   /// [principalSet] Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
-  OrganizationsPolicyBindingTarget({this.principalSet});
+  OrganizationsPolicyBindingTarget({
+    this.principalSet,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'principalSet': ?principalSet};
+    return <String, dynamic>{
+      'principalSet': ?principalSet,
+    };
   }
 
   factory OrganizationsPolicyBindingTarget.fromMap(Map<String, dynamic> map) {
     return OrganizationsPolicyBindingTarget(
-      principalSet: (() {
-        final guardedValue = map['principalSet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      principalSet: (() { final guardedValue = map['principalSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

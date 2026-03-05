@@ -227,13 +227,10 @@ import 'alert_rule_machine_learning_behavior_analytics_state.dart';
 class AlertRuleMachineLearningBehaviorAnalytics extends pulumi.CustomResource {
   /// The GUID of the alert rule template which is used for this Sentinel Machine Learning Behavior Analytics Alert Rule. Changing this forces a new Sentinel Machine Learning Behavior Analytics Alert Rule to be created.
   late final pulumi.Output<String> alertRuleTemplateGuid;
-
   /// Should this Sentinel Machine Learning Behavior Analytics Alert Rule be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// The ID of the Log Analytics Workspace this SentinelMachine Learning Behavior Analytics Alert Rule belongs to. Changing this forces a new Sentinel Machine Learning Behavior Analytics Alert Rule to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
-
   /// The name which should be used for this SentinelMachine Learning Behavior Analytics Alert Rule. Changing this forces a new Sentinel Machine Learning Behavior Analytics Alert Rule to be created.
   late final pulumi.Output<String> name;
 
@@ -246,11 +243,11 @@ class AlertRuleMachineLearningBehaviorAnalytics extends pulumi.CustomResource {
     AlertRuleMachineLearningBehaviorAnalyticsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/alertRuleMachineLearningBehaviorAnalytics:AlertRuleMachineLearningBehaviorAnalytics',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/alertRuleMachineLearningBehaviorAnalytics:AlertRuleMachineLearningBehaviorAnalytics',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
     enabled = registerOutput<bool?>('enabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
@@ -275,11 +272,11 @@ class AlertRuleMachineLearningBehaviorAnalytics extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/alertRuleMachineLearningBehaviorAnalytics:AlertRuleMachineLearningBehaviorAnalytics',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/alertRuleMachineLearningBehaviorAnalytics:AlertRuleMachineLearningBehaviorAnalytics',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
     enabled = registerOutput<bool?>('enabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');

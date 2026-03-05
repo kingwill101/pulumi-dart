@@ -9,10 +9,14 @@ class AccountResourceProperties {
 
   /// Creates a new [AccountResourceProperties].
   /// [appId] Customer owned application ID
-  AccountResourceProperties({required this.appId});
+  AccountResourceProperties({
+    required this.appId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'appId': appId};
+    return <String, dynamic>{
+      'appId': appId,
+    };
   }
 
   factory AccountResourceProperties.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class AccountResourceProperties {
     );
   }
 }
+

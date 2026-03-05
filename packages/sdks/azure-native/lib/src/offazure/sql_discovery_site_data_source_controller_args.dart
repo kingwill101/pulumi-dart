@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlDiscoverySiteDataSourceControllerArgs {
   /// SQL Discovery site data source name.
   final pulumi.Input<String>? discoverySiteDataSourceName;
-
   /// Gets or sets the discovery site Id.
   final pulumi.Input<String>? discoverySiteId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Site name
   final pulumi.Input<String> siteName;
-
   /// SQL site name.
   final pulumi.Input<String> sqlSiteName;
 
@@ -46,25 +42,14 @@ class SqlDiscoverySiteDataSourceControllerArgs {
     };
   }
 
-  factory SqlDiscoverySiteDataSourceControllerArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SqlDiscoverySiteDataSourceControllerArgs.fromMap(Map<String, dynamic> map) {
     return SqlDiscoverySiteDataSourceControllerArgs(
-      discoverySiteDataSourceName: (() {
-        final guardedValue = map['discoverySiteDataSourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      discoverySiteId: (() {
-        final guardedValue = map['discoverySiteId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      discoverySiteDataSourceName: (() { final guardedValue = map['discoverySiteDataSourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      discoverySiteId: (() { final guardedValue = map['discoverySiteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       siteName: pulumi.Input.fromValue(map['siteName'] as String),
       sqlSiteName: pulumi.Input.fromValue(map['sqlSiteName'] as String),
     );
   }
 }
+

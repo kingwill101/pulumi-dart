@@ -11,10 +11,14 @@ class GetGenaiAgentsByOpenaiApiKeyArgs {
 
   /// Creates a new [GetGenaiAgentsByOpenaiApiKeyArgs].
   /// [uuid] Required.
-  GetGenaiAgentsByOpenaiApiKeyArgs({required this.uuid});
+  GetGenaiAgentsByOpenaiApiKeyArgs({
+    required this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uuid': uuid};
+    return <String, dynamic>{
+      'uuid': uuid,
+    };
   }
 
   factory GetGenaiAgentsByOpenaiApiKeyArgs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetGenaiAgentsByOpenaiApiKeyArgs {
     );
   }
 }
+

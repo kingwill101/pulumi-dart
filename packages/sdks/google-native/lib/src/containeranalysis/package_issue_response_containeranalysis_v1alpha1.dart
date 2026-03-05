@@ -7,13 +7,10 @@ import 'vulnerability_location_response.dart';
 class PackageIssueResponseContaineranalysisV1alpha1 {
   /// The location of the vulnerability.
   final pulumi.Input<VulnerabilityLocationResponse> affectedLocation;
-
   /// The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when distro or language system has not yet assigned a severity for this vulnerability.
   final pulumi.Input<String> effectiveSeverity;
-
   /// The location of the available fix for vulnerability.
   final pulumi.Input<VulnerabilityLocationResponse> fixedLocation;
-
   /// The type of package (e.g. OS, MAVEN, GO).
   final pulumi.Input<String> packageType;
   final pulumi.Input<String> severityName;
@@ -34,41 +31,22 @@ class PackageIssueResponseContaineranalysisV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'affectedLocation':
-          pulumi.Input.mapInputValue<
-            VulnerabilityLocationResponse,
-            Map<String, dynamic>
-          >(affectedLocation, (value) => value.toMap()),
+      'affectedLocation': pulumi.Input.mapInputValue<VulnerabilityLocationResponse, Map<String, dynamic>>(affectedLocation, (value) => value.toMap()),
       'effectiveSeverity': effectiveSeverity,
-      'fixedLocation':
-          pulumi.Input.mapInputValue<
-            VulnerabilityLocationResponse,
-            Map<String, dynamic>
-          >(fixedLocation, (value) => value.toMap()),
+      'fixedLocation': pulumi.Input.mapInputValue<VulnerabilityLocationResponse, Map<String, dynamic>>(fixedLocation, (value) => value.toMap()),
       'packageType': packageType,
       'severityName': severityName,
     };
   }
 
-  factory PackageIssueResponseContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PackageIssueResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return PackageIssueResponseContaineranalysisV1alpha1(
-      affectedLocation: pulumi.Input.fromValue(
-        VulnerabilityLocationResponse.fromMap(
-          (map['affectedLocation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      effectiveSeverity: pulumi.Input.fromValue(
-        map['effectiveSeverity'] as String,
-      ),
-      fixedLocation: pulumi.Input.fromValue(
-        VulnerabilityLocationResponse.fromMap(
-          (map['fixedLocation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      affectedLocation: pulumi.Input.fromValue(VulnerabilityLocationResponse.fromMap((map['affectedLocation']! as Map).cast<String, dynamic>())),
+      effectiveSeverity: pulumi.Input.fromValue(map['effectiveSeverity'] as String),
+      fixedLocation: pulumi.Input.fromValue(VulnerabilityLocationResponse.fromMap((map['fixedLocation']! as Map).cast<String, dynamic>())),
       packageType: pulumi.Input.fromValue(map['packageType'] as String),
       severityName: pulumi.Input.fromValue(map['severityName'] as String),
     );
   }
 }
+

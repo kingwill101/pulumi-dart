@@ -16,3 +16,4 @@ enum RecorderStatus {
     throw ArgumentError('Unknown RecorderStatus value: $value');
   }
 }
+

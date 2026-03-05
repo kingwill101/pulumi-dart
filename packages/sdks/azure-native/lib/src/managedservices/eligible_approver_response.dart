@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EligibleApproverResponse {
   /// The identifier of the Azure Active Directory principal.
   final pulumi.Input<String> principalId;
-
   /// The display name of the Azure Active Directory principal.
   final pulumi.Input<String>? principalIdDisplayName;
 
@@ -28,11 +27,8 @@ class EligibleApproverResponse {
   factory EligibleApproverResponse.fromMap(Map<String, dynamic> map) {
     return EligibleApproverResponse(
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
-      principalIdDisplayName: (() {
-        final guardedValue = map['principalIdDisplayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      principalIdDisplayName: (() { final guardedValue = map['principalIdDisplayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

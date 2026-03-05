@@ -19,3 +19,4 @@ enum LogVerbosity {
     throw ArgumentError('Unknown LogVerbosity value: $value');
   }
 }
+

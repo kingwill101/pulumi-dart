@@ -200,10 +200,8 @@ import 'group_membership_state.dart';
 class GroupMembership extends pulumi.CustomResource {
   /// The IAM Group name to attach the list of `users` to
   late final pulumi.Output<String> group;
-
   /// The name to identify the Group Membership
   late final pulumi.Output<String> name;
-
   /// A list of IAM User names to associate with the Group
   late final pulumi.Output<List<String>> users;
 
@@ -216,11 +214,11 @@ class GroupMembership extends pulumi.CustomResource {
     GroupMembershipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/groupMembership:GroupMembership',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/groupMembership:GroupMembership',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
     users = registerOutput<List<String>>('users');
@@ -244,11 +242,11 @@ class GroupMembership extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/groupMembership:GroupMembership',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/groupMembership:GroupMembership',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
     users = registerOutput<List<String>>('users');

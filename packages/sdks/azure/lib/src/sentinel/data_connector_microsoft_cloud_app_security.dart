@@ -216,18 +216,14 @@ import 'data_connector_microsoft_cloud_app_security_state.dart';
 class DataConnectorMicrosoftCloudAppSecurity extends pulumi.CustomResource {
   /// Should the alerts be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> alertsEnabled;
-
   /// Should the Discovery Logs be enabled? Defaults to `true`.
   ///
   /// &gt; **Note:** One of either `alerts_enabled` or `discovery_logs_enabled` has to be specified.
   late final pulumi.Output<bool?> discoveryLogsEnabled;
-
   /// The ID of the Log Analytics Workspace that this Microsoft Cloud App Security Data Connector resides in. Changing this forces a new Microsoft Cloud App Security Data Connector to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
-
   /// The name which should be used for this Microsoft Cloud App Security Data Connector. Changing this forces a new Microsoft Cloud App Security Data Connector to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Tenant that this Microsoft Cloud App Security Data Connector connects to.
   ///
   /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
@@ -242,11 +238,11 @@ class DataConnectorMicrosoftCloudAppSecurity extends pulumi.CustomResource {
     DataConnectorMicrosoftCloudAppSecurityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/dataConnectorMicrosoftCloudAppSecurity:DataConnectorMicrosoftCloudAppSecurity',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/dataConnectorMicrosoftCloudAppSecurity:DataConnectorMicrosoftCloudAppSecurity',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertsEnabled = registerOutput<bool?>('alertsEnabled');
     discoveryLogsEnabled = registerOutput<bool?>('discoveryLogsEnabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
@@ -272,11 +268,11 @@ class DataConnectorMicrosoftCloudAppSecurity extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/dataConnectorMicrosoftCloudAppSecurity:DataConnectorMicrosoftCloudAppSecurity',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/dataConnectorMicrosoftCloudAppSecurity:DataConnectorMicrosoftCloudAppSecurity',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertsEnabled = registerOutput<bool?>('alertsEnabled');
     discoveryLogsEnabled = registerOutput<bool?>('discoveryLogsEnabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');

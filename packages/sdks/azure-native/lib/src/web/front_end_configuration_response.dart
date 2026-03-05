@@ -7,19 +7,20 @@ class FrontEndConfigurationResponse {
 
   /// Creates a new [FrontEndConfigurationResponse].
   /// [kind] Optional.
-  FrontEndConfigurationResponse({this.kind});
+  FrontEndConfigurationResponse({
+    this.kind,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kind': ?kind};
+    return <String, dynamic>{
+      'kind': ?kind,
+    };
   }
 
   factory FrontEndConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FrontEndConfigurationResponse(
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

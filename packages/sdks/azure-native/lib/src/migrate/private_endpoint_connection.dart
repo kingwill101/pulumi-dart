@@ -177,17 +177,12 @@ import 'private_endpoint_connection_properties_response.dart';
 class PrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// For optimistic concurrency control.
   late final pulumi.Output<String?> eTag;
-
   /// Name of the private endpoint endpoint connection.
   late final pulumi.Output<String> name;
-
   /// Properties of the private endpoint endpoint connection.
-  late final pulumi.Output<PrivateEndpointConnectionPropertiesResponse>
-  properties;
-
+  late final pulumi.Output<PrivateEndpointConnectionPropertiesResponse> properties;
   /// Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
   late final pulumi.Output<String> type;
 
@@ -200,24 +195,15 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:migrate:PrivateEndpointConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:migrate:PrivateEndpointConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eTag = registerOutput<String?>('eTag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<PrivateEndpointConnectionPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PrivateEndpointConnectionPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<PrivateEndpointConnectionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateEndpointConnectionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

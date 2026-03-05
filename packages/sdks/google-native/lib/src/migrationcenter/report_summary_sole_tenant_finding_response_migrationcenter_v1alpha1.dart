@@ -7,15 +7,10 @@ import 'report_summary_sole_tenant_node_allocation_response_migrationcenter_v1al
 class ReportSummarySoleTenantFindingResponseMigrationcenterV1alpha1 {
   /// Count of assets which are allocated
   final pulumi.Input<String> allocatedAssetCount;
-
   /// Set of regions in which the assets are allocated
   final pulumi.Input<List<String>> allocatedRegions;
-
   /// Set of per-nodetype allocation records
-  final pulumi.Input<
-    List<ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1>
-  >
-  nodeAllocations;
+  final pulumi.Input<List<ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1>> nodeAllocations;
 
   /// Creates a new [ReportSummarySoleTenantFindingResponseMigrationcenterV1alpha1].
   /// [allocatedAssetCount] Count of assets which are allocated
@@ -31,44 +26,16 @@ class ReportSummarySoleTenantFindingResponseMigrationcenterV1alpha1 {
     return <String, dynamic>{
       'allocatedAssetCount': allocatedAssetCount,
       'allocatedRegions': allocatedRegions,
-      'nodeAllocations':
-          pulumi.Input.mapInputValue<
-            List<
-              ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1
-            >,
-            List<Map<String, dynamic>>
-          >(
-            nodeAllocations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'nodeAllocations': pulumi.Input.mapInputValue<List<ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1>, List<Map<String, dynamic>>>(nodeAllocations, (value) => pulumi.Input.encodeList<ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ReportSummarySoleTenantFindingResponseMigrationcenterV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReportSummarySoleTenantFindingResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ReportSummarySoleTenantFindingResponseMigrationcenterV1alpha1(
-      allocatedAssetCount: pulumi.Input.fromValue(
-        map['allocatedAssetCount'] as String,
-      ),
-      allocatedRegions: pulumi.Input.fromValue(
-        (map['allocatedRegions'] as List).cast<String>(),
-      ),
-      nodeAllocations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1
-        >(
-          map['nodeAllocations']!,
-          (value) =>
-              ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      allocatedAssetCount: pulumi.Input.fromValue(map['allocatedAssetCount'] as String),
+      allocatedRegions: pulumi.Input.fromValue((map['allocatedRegions'] as List).cast<String>()),
+      nodeAllocations: pulumi.Input.fromValue(pulumi.Input.decodeList<ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1>(map['nodeAllocations']!, (value) => ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

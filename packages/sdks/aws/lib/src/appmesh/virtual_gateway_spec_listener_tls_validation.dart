@@ -6,11 +6,7 @@ import 'virtual_gateway_spec_listener_tls_validation_trust.dart';
 
 class VirtualGatewaySpecListenerTlsValidation {
   /// SANs for a virtual gateway's listener's Transport Layer Security (TLS) validation context.
-  final pulumi.Input<
-    VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames
-  >?
-  subjectAlternativeNames;
-
+  final pulumi.Input<VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames>? subjectAlternativeNames;
   /// TLS validation context trust.
   final pulumi.Input<VirtualGatewaySpecListenerTlsValidationTrust> trust;
 
@@ -24,37 +20,16 @@ class VirtualGatewaySpecListenerTlsValidation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subjectAlternativeNames':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames,
-            Map<String, dynamic>
-          >(subjectAlternativeNames, (value) => value.toMap()),
-      'trust':
-          pulumi.Input.mapInputValue<
-            VirtualGatewaySpecListenerTlsValidationTrust,
-            Map<String, dynamic>
-          >(trust, (value) => value.toMap()),
+      'subjectAlternativeNames': ?pulumi.Input.mapOptionalInputValue<VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames, Map<String, dynamic>>(subjectAlternativeNames, (value) => value.toMap()),
+      'trust': pulumi.Input.mapInputValue<VirtualGatewaySpecListenerTlsValidationTrust, Map<String, dynamic>>(trust, (value) => value.toMap()),
     };
   }
 
-  factory VirtualGatewaySpecListenerTlsValidation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualGatewaySpecListenerTlsValidation.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerTlsValidation(
-      subjectAlternativeNames: (() {
-        final guardedValue = map['subjectAlternativeNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      trust: pulumi.Input.fromValue(
-        VirtualGatewaySpecListenerTlsValidationTrust.fromMap(
-          (map['trust']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      subjectAlternativeNames: (() { final guardedValue = map['subjectAlternativeNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      trust: pulumi.Input.fromValue(VirtualGatewaySpecListenerTlsValidationTrust.fromMap((map['trust']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -14,14 +14,15 @@ class HttpRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cookieTtl': cookieTtl};
+    return <String, dynamic>{
+      'cookieTtl': cookieTtl,
+    };
   }
 
-  factory HttpRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HttpRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1(
       cookieTtl: pulumi.Input.fromValue(map['cookieTtl'] as String),
     );
   }
 }
+

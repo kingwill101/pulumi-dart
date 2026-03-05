@@ -132,16 +132,12 @@ import 'apicollection_args.dart';
 class APICollection extends pulumi.CustomResource {
   /// Additional data regarding the API collection.
   late final pulumi.Output<Map<String, String>?> additionalData;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The display name of the Azure API Management API.
   late final pulumi.Output<String?> displayName;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -154,11 +150,11 @@ class APICollection extends pulumi.CustomResource {
     APICollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:APICollection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:security:APICollection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     additionalData = registerOutput<Map<String, String>?>('additionalData');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String?>('displayName');

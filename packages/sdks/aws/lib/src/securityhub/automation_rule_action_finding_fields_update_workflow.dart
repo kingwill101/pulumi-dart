@@ -8,21 +8,20 @@ class AutomationRuleActionFindingFieldsUpdateWorkflow {
 
   /// Creates a new [AutomationRuleActionFindingFieldsUpdateWorkflow].
   /// [status] The status of the investigation into the finding. The allowed values are the following `NEW`, `NOTIFIED`, `RESOLVED` and `SUPPRESSED`.
-  AutomationRuleActionFindingFieldsUpdateWorkflow({this.status});
+  AutomationRuleActionFindingFieldsUpdateWorkflow({
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': ?status};
+    return <String, dynamic>{
+      'status': ?status,
+    };
   }
 
-  factory AutomationRuleActionFindingFieldsUpdateWorkflow.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutomationRuleActionFindingFieldsUpdateWorkflow.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionFindingFieldsUpdateWorkflow(
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

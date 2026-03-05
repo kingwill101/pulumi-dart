@@ -158,25 +158,18 @@ import 'integration_account_session_args.dart';
 class IntegrationAccountSession extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The changed time.
   late final pulumi.Output<String> changedTime;
-
   /// The session content.
   late final pulumi.Output<dynamic> content;
-
   /// The created time.
   late final pulumi.Output<String> createdTime;
-
   /// The resource location.
   late final pulumi.Output<String?> location;
-
   /// Gets the resource name.
   late final pulumi.Output<String> name;
-
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -189,11 +182,11 @@ class IntegrationAccountSession extends pulumi.CustomResource {
     IntegrationAccountSessionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:logic:IntegrationAccountSession',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:logic:IntegrationAccountSession',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     changedTime = registerOutput<String>('changedTime');
     content = registerOutput<dynamic>('content');

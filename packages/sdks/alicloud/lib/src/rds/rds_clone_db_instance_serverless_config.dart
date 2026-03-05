@@ -8,19 +8,16 @@ class RdsCloneDbInstanceServerlessConfig {
   /// - false: disables the feature. This is the default value.
   /// &gt; - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
   final pulumi.Input<bool>? autoPause;
-
   /// The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
   /// - MySQL: 1~8
   /// - SQLServer: 2~8
   /// - PostgreSQL: 1~12
   final pulumi.Input<double> maxCapacity;
-
   /// The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
   /// - MySQL: 0.5~8
   /// - SQLServer: 2~8 \(Supports integers only\).
   /// - PostgreSQL: 0.5~12
   final pulumi.Input<double> minCapacity;
-
   /// Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
   /// - true: enables the feature.
   /// - false: disables the feature. This is the default value.
@@ -51,18 +48,11 @@ class RdsCloneDbInstanceServerlessConfig {
 
   factory RdsCloneDbInstanceServerlessConfig.fromMap(Map<String, dynamic> map) {
     return RdsCloneDbInstanceServerlessConfig(
-      autoPause: (() {
-        final guardedValue = map['autoPause'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      autoPause: (() { final guardedValue = map['autoPause']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       maxCapacity: pulumi.Input.fromValue(map['maxCapacity'] as double),
       minCapacity: pulumi.Input.fromValue(map['minCapacity'] as double),
-      switchForce: (() {
-        final guardedValue = map['switchForce'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      switchForce: (() { final guardedValue = map['switchForce']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

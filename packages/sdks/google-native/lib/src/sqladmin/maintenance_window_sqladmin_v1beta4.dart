@@ -7,13 +7,10 @@ import 'maintenance_window_update_track_sqladmin_v1beta4.dart';
 class MaintenanceWindowSqladminV1beta4 {
   /// day of week (1-7), starting on Monday.
   final pulumi.Input<int>? day;
-
   /// hour of day - 0 to 23.
   final pulumi.Input<int>? hour;
-
   /// This is always `sql#maintenanceWindow`.
   final pulumi.Input<String>? kind;
-
   /// Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
   final pulumi.Input<MaintenanceWindowUpdateTrackSqladminV1beta4>? updateTrack;
 
@@ -34,40 +31,17 @@ class MaintenanceWindowSqladminV1beta4 {
       'day': ?day,
       'hour': ?hour,
       'kind': ?kind,
-      'updateTrack':
-          ?pulumi.Input.mapOptionalInputValue<
-            MaintenanceWindowUpdateTrackSqladminV1beta4,
-            String
-          >(updateTrack, (value) => value.wireValue),
+      'updateTrack': ?pulumi.Input.mapOptionalInputValue<MaintenanceWindowUpdateTrackSqladminV1beta4, String>(updateTrack, (value) => value.wireValue),
     };
   }
 
   factory MaintenanceWindowSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowSqladminV1beta4(
-      day: (() {
-        final guardedValue = map['day'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      hour: (() {
-        final guardedValue = map['hour'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTrack: (() {
-        final guardedValue = map['updateTrack'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MaintenanceWindowUpdateTrackSqladminV1beta4.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      day: (() { final guardedValue = map['day']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hour: (() { final guardedValue = map['hour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTrack: (() { final guardedValue = map['updateTrack']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MaintenanceWindowUpdateTrackSqladminV1beta4.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

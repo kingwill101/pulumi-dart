@@ -18,20 +18,16 @@ class GetInstanceClassInfosArgs {
   /// * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
   /// * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
   final pulumi.Input<String> commodityCode;
-
   /// The ID of the primary instance.
   final pulumi.Input<String>? dbInstanceId;
-
   /// A list of Rds available resource. Each element contains the following attributes:
   final pulumi.Input<List<GetInstanceClassInfosInfo>>? infos;
-
   /// FThe type of order that you want to query. Valid values:
   /// * **BUY**: specifies the query orders that are used to purchase instances.
   /// * **UPGRADE**: specifies the query orders that are used to change the specifications of instances.
   /// * **RENEW**: specifies the query orders that are used to renew instances.
   /// * **CONVERT**: specifies the query orders that are used to change the billing methods of instances.
   final pulumi.Input<String> orderType;
-
   /// File name where to save data source results (after running `pulumi up`).
   ///
   /// &gt; **NOTE**: If you use the CommodityCode parameter to query the instance types that are available to read-only instances, you must specify the DBInstanceId parameter.
@@ -55,18 +51,7 @@ class GetInstanceClassInfosArgs {
     return <String, dynamic>{
       'commodityCode': commodityCode,
       'dbInstanceId': ?dbInstanceId,
-      'infos':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetInstanceClassInfosInfo>,
-            List<Map<String, dynamic>>
-          >(
-            infos,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetInstanceClassInfosInfo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'infos': ?pulumi.Input.mapOptionalInputValue<List<GetInstanceClassInfosInfo>, List<Map<String, dynamic>>>(infos, (value) => pulumi.Input.encodeList<GetInstanceClassInfosInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'orderType': orderType,
       'outputFile': ?outputFile,
     };
@@ -75,29 +60,11 @@ class GetInstanceClassInfosArgs {
   factory GetInstanceClassInfosArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceClassInfosArgs(
       commodityCode: pulumi.Input.fromValue(map['commodityCode'] as String),
-      dbInstanceId: (() {
-        final guardedValue = map['dbInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      infos: (() {
-        final guardedValue = map['infos'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetInstanceClassInfosInfo>(
-            guardedValue,
-            (value) => GetInstanceClassInfosInfo.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      dbInstanceId: (() { final guardedValue = map['dbInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      infos: (() { final guardedValue = map['infos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceClassInfosInfo>(guardedValue, (value) => GetInstanceClassInfosInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
       orderType: pulumi.Input.fromValue(map['orderType'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

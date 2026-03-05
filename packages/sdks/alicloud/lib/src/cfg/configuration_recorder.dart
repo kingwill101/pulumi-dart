@@ -126,18 +126,14 @@ import 'configuration_recorder_state.dart';
 class ConfigurationRecorder extends pulumi.CustomResource {
   /// Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
   late final pulumi.Output<bool> enterpriseEdition;
-
   /// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
   late final pulumi.Output<String> organizationEnableStatus;
-
   /// The ID of the Enterprise management account.
   late final pulumi.Output<int> organizationMasterId;
-
   /// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
   /// * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
   /// * If you use an enterprise account, the `resource_types` does not support updating.
   late final pulumi.Output<List<String>> resourceTypes;
-
   /// Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
   late final pulumi.Output<String> status;
 
@@ -150,15 +146,13 @@ class ConfigurationRecorder extends pulumi.CustomResource {
     ConfigurationRecorderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/configurationRecorder:ConfigurationRecorder',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cfg/configurationRecorder:ConfigurationRecorder',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enterpriseEdition = registerOutput<bool>('enterpriseEdition');
-    organizationEnableStatus = registerOutput<String>(
-      'organizationEnableStatus',
-    );
+    organizationEnableStatus = registerOutput<String>('organizationEnableStatus');
     organizationMasterId = registerOutput<int>('organizationMasterId');
     resourceTypes = registerOutput<List<String>>('resourceTypes');
     status = registerOutput<String>('status');
@@ -182,15 +176,13 @@ class ConfigurationRecorder extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/configurationRecorder:ConfigurationRecorder',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cfg/configurationRecorder:ConfigurationRecorder',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enterpriseEdition = registerOutput<bool>('enterpriseEdition');
-    organizationEnableStatus = registerOutput<String>(
-      'organizationEnableStatus',
-    );
+    organizationEnableStatus = registerOutput<String>('organizationEnableStatus');
     organizationMasterId = registerOutput<int>('organizationMasterId');
     resourceTypes = registerOutput<List<String>>('resourceTypes');
     status = registerOutput<String>('status');

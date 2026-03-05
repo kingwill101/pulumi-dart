@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OpenAIIntegrationPropertiesResponse {
   /// Value of API key for Open AI resource
   final pulumi.Input<String>? key;
-
   /// Last Update Timestamp for key updation
   final pulumi.Input<String> lastRefreshAt;
-
   /// The API endpoint for Open AI resource
   final pulumi.Input<String>? openAIResourceEndpoint;
-
   /// The resource name of Open AI resource
   final pulumi.Input<String>? openAIResourceId;
 
@@ -37,26 +34,13 @@ class OpenAIIntegrationPropertiesResponse {
     };
   }
 
-  factory OpenAIIntegrationPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OpenAIIntegrationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return OpenAIIntegrationPropertiesResponse(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastRefreshAt: pulumi.Input.fromValue(map['lastRefreshAt'] as String),
-      openAIResourceEndpoint: (() {
-        final guardedValue = map['openAIResourceEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      openAIResourceId: (() {
-        final guardedValue = map['openAIResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      openAIResourceEndpoint: (() { final guardedValue = map['openAIResourceEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      openAIResourceId: (() { final guardedValue = map['openAIResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

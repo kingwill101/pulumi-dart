@@ -32,14 +32,9 @@ class GetVmwareEngineNetworkArgs {
   factory GetVmwareEngineNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetVmwareEngineNetworkArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vmwareEngineNetworkId: pulumi.Input.fromValue(
-        map['vmwareEngineNetworkId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vmwareEngineNetworkId: pulumi.Input.fromValue(map['vmwareEngineNetworkId'] as String),
     );
   }
 }
+

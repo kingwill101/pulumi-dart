@@ -8,16 +8,12 @@ class FirewallRuleState {
   ///
   /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
   final pulumi.Input<String>? endIpAddress;
-
   /// Specifies the name of the PostgreSQL Firewall Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the resource group in which the PostgreSQL Server exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created.
   final pulumi.Input<String>? serverName;
-
   /// Specifies the Start IP Address associated with this Firewall Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? startIpAddress;
 
@@ -47,31 +43,12 @@ class FirewallRuleState {
 
   factory FirewallRuleState.fromMap(Map<String, dynamic> map) {
     return FirewallRuleState(
-      endIpAddress: (() {
-        final guardedValue = map['endIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverName: (() {
-        final guardedValue = map['serverName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startIpAddress: (() {
-        final guardedValue = map['startIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endIpAddress: (() { final guardedValue = map['endIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverName: (() { final guardedValue = map['serverName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startIpAddress: (() { final guardedValue = map['startIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

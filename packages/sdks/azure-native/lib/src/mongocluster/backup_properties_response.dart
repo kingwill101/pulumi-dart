@@ -9,17 +9,20 @@ class BackupPropertiesResponse {
 
   /// Creates a new [BackupPropertiesResponse].
   /// [earliestRestoreTime] Earliest restore timestamp in UTC ISO8601 format.
-  BackupPropertiesResponse({required this.earliestRestoreTime});
+  BackupPropertiesResponse({
+    required this.earliestRestoreTime,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'earliestRestoreTime': earliestRestoreTime};
+    return <String, dynamic>{
+      'earliestRestoreTime': earliestRestoreTime,
+    };
   }
 
   factory BackupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BackupPropertiesResponse(
-      earliestRestoreTime: pulumi.Input.fromValue(
-        map['earliestRestoreTime'] as String,
-      ),
+      earliestRestoreTime: pulumi.Input.fromValue(map['earliestRestoreTime'] as String),
     );
   }
 }
+

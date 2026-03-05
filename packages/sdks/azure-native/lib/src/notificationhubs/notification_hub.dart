@@ -151,56 +151,39 @@ import 'xiaomi_credential_response.dart';
 class NotificationHub extends pulumi.CustomResource {
   /// Description of a NotificationHub AdmCredential.
   late final pulumi.Output<AdmCredentialResponse?> admCredential;
-
   /// Description of a NotificationHub ApnsCredential.
   late final pulumi.Output<ApnsCredentialResponse?> apnsCredential;
-
   /// Gets or sets the AuthorizationRules of the created NotificationHub
   late final pulumi.Output<List<Map<String, dynamic>>> authorizationRules;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Description of a NotificationHub BaiduCredential.
   late final pulumi.Output<BaiduCredentialResponse?> baiduCredential;
-
   /// Description of a NotificationHub BrowserCredential.
   late final pulumi.Output<BrowserCredentialResponse?> browserCredential;
   late final pulumi.Output<double> dailyMaxActiveDevices;
-
   /// Description of a NotificationHub FcmV1Credential.
   late final pulumi.Output<FcmV1CredentialResponse?> fcmV1Credential;
-
   /// Description of a NotificationHub GcmCredential.
   late final pulumi.Output<GcmCredentialResponse?> gcmCredential;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Description of a NotificationHub MpnsCredential.
   late final pulumi.Output<MpnsCredentialResponse?> mpnsCredential;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Gets or sets the RegistrationTtl of the created NotificationHub
   late final pulumi.Output<String?> registrationTtl;
-
   /// The Sku description for a namespace
   late final pulumi.Output<SkuResponse?> sku;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Description of a NotificationHub WnsCredential.
   late final pulumi.Output<WnsCredentialResponse?> wnsCredential;
-
   /// Description of a NotificationHub XiaomiCredential.
   late final pulumi.Output<XiaomiCredentialResponse?> xiaomiCredential;
 
@@ -213,130 +196,29 @@ class NotificationHub extends pulumi.CustomResource {
     NotificationHubArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:notificationhubs:NotificationHub',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    admCredential = registerOutput<AdmCredentialResponse?>(
-      'admCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AdmCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    apnsCredential = registerOutput<ApnsCredentialResponse?>(
-      'apnsCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApnsCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    authorizationRules = registerOutput<List<Map<String, dynamic>>>(
-      'authorizationRules',
-    );
+          'azure-native:notificationhubs:NotificationHub',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    admCredential = registerOutput<AdmCredentialResponse?>('admCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdmCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    apnsCredential = registerOutput<ApnsCredentialResponse?>('apnsCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApnsCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authorizationRules = registerOutput<List<Map<String, dynamic>>>('authorizationRules');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    baiduCredential = registerOutput<BaiduCredentialResponse?>(
-      'baiduCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BaiduCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    browserCredential = registerOutput<BrowserCredentialResponse?>(
-      'browserCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BrowserCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    baiduCredential = registerOutput<BaiduCredentialResponse?>('baiduCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BaiduCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    browserCredential = registerOutput<BrowserCredentialResponse?>('browserCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BrowserCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dailyMaxActiveDevices = registerOutput<double>('dailyMaxActiveDevices');
-    fcmV1Credential = registerOutput<FcmV1CredentialResponse?>(
-      'fcmV1Credential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FcmV1CredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    gcmCredential = registerOutput<GcmCredentialResponse?>(
-      'gcmCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcmCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    fcmV1Credential = registerOutput<FcmV1CredentialResponse?>('fcmV1Credential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FcmV1CredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gcmCredential = registerOutput<GcmCredentialResponse?>('gcmCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcmCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    mpnsCredential = registerOutput<MpnsCredentialResponse?>(
-      'mpnsCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MpnsCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    mpnsCredential = registerOutput<MpnsCredentialResponse?>('mpnsCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MpnsCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     registrationTtl = registerOutput<String?>('registrationTtl');
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    wnsCredential = registerOutput<WnsCredentialResponse?>(
-      'wnsCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WnsCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    xiaomiCredential = registerOutput<XiaomiCredentialResponse?>(
-      'xiaomiCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return XiaomiCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    wnsCredential = registerOutput<WnsCredentialResponse?>('wnsCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WnsCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    xiaomiCredential = registerOutput<XiaomiCredentialResponse?>('xiaomiCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return XiaomiCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainConfigurationAuthorizerConfig {
   /// A Boolean that specifies whether the domain configuration's authorization service can be overridden.
   final pulumi.Input<bool>? allowAuthorizerOverride;
-
   /// The name of the authorization service for a domain configuration.
   final pulumi.Input<String>? defaultAuthorizerName;
 
@@ -24,20 +23,11 @@ class DomainConfigurationAuthorizerConfig {
     };
   }
 
-  factory DomainConfigurationAuthorizerConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainConfigurationAuthorizerConfig.fromMap(Map<String, dynamic> map) {
     return DomainConfigurationAuthorizerConfig(
-      allowAuthorizerOverride: (() {
-        final guardedValue = map['allowAuthorizerOverride'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      defaultAuthorizerName: (() {
-        final guardedValue = map['defaultAuthorizerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowAuthorizerOverride: (() { final guardedValue = map['allowAuthorizerOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      defaultAuthorizerName: (() { final guardedValue = map['defaultAuthorizerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

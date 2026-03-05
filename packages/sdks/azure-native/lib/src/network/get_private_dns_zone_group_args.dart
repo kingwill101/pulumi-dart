@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateDnsZoneGroupArgs {
   /// The name of the private dns zone group.
   final pulumi.Input<String> privateDnsZoneGroupName;
-
   /// The name of the private endpoint.
   final pulumi.Input<String> privateEndpointName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,15 +34,10 @@ class GetPrivateDnsZoneGroupArgs {
 
   factory GetPrivateDnsZoneGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateDnsZoneGroupArgs(
-      privateDnsZoneGroupName: pulumi.Input.fromValue(
-        map['privateDnsZoneGroupName'] as String,
-      ),
-      privateEndpointName: pulumi.Input.fromValue(
-        map['privateEndpointName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      privateDnsZoneGroupName: pulumi.Input.fromValue(map['privateDnsZoneGroupName'] as String),
+      privateEndpointName: pulumi.Input.fromValue(map['privateEndpointName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

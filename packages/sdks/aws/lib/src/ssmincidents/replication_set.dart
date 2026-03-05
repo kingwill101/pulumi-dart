@@ -523,26 +523,19 @@ import 'replication_set_state.dart';
 class ReplicationSet extends pulumi.CustomResource {
   /// The ARN of the replication set.
   late final pulumi.Output<String> arn;
-
   /// The ARN of the user who created the replication set.
   late final pulumi.Output<String> createdBy;
-
   /// If `true`, the last region in a replication set cannot be deleted.
   late final pulumi.Output<bool> deletionProtected;
-
   /// A timestamp showing when the replication set was last modified.
   late final pulumi.Output<String> lastModifiedBy;
-
   /// The replication set's Regions. Use `regions` instead.
   late final pulumi.Output<List<Map<String, dynamic>>> region;
-
   /// The replication set's Regions.
   late final pulumi.Output<List<Map<String, dynamic>>> regions;
-
   /// The current status of the Region.
   /// * Valid Values: `ACTIVE` | `CREATING` | `UPDATING` | `DELETING` | `FAILED`
   late final pulumi.Output<String> status;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For information about the maximum allowed number of Regions and tag value constraints, see [CreateReplicationSet in the *AWS Systems Manager Incident Manager API Reference*](https://docs.aws.amazon.com/incident-manager/latest/APIReference/API_CreateReplicationSet.html).
@@ -557,7 +550,6 @@ class ReplicationSet extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** If possible, create all the customer managed keys you need (using the deploy command) before you create the replication set, or create the keys and replication set in the same deploy command. Otherwise, to delete a replication set, you must run one deploy command to delete the replication set and another to delete the AWS KMS keys used by the replication set. Deleting the AWS KMS keys before deleting the replication set results in an error. In that case, you must manually reenable the deleted key using the AWS Management Console before you can delete the replication set.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -570,11 +562,11 @@ class ReplicationSet extends pulumi.CustomResource {
     ReplicationSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssmincidents/replicationSet:ReplicationSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssmincidents/replicationSet:ReplicationSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     createdBy = registerOutput<String>('createdBy');
     deletionProtected = registerOutput<bool>('deletionProtected');
@@ -604,11 +596,11 @@ class ReplicationSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssmincidents/replicationSet:ReplicationSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssmincidents/replicationSet:ReplicationSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     createdBy = registerOutput<String>('createdBy');
     deletionProtected = registerOutput<bool>('deletionProtected');

@@ -335,7 +335,6 @@ import 'spring_cloud_active_deployment_state.dart';
 class SpringCloudActiveDeployment extends pulumi.CustomResource {
   /// Specifies the name of Spring Cloud Deployment which is going to be active.
   late final pulumi.Output<String> deploymentName;
-
   /// Specifies the id of the Spring Cloud Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudAppId;
 
@@ -348,11 +347,11 @@ class SpringCloudActiveDeployment extends pulumi.CustomResource {
     SpringCloudActiveDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudActiveDeployment:SpringCloudActiveDeployment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudActiveDeployment:SpringCloudActiveDeployment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deploymentName = registerOutput<String>('deploymentName');
     springCloudAppId = registerOutput<String>('springCloudAppId');
   }
@@ -375,11 +374,11 @@ class SpringCloudActiveDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudActiveDeployment:SpringCloudActiveDeployment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudActiveDeployment:SpringCloudActiveDeployment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deploymentName = registerOutput<String>('deploymentName');
     springCloudAppId = registerOutput<String>('springCloudAppId');
   }

@@ -9,10 +9,14 @@ class MaxPodsConstraintResponse {
 
   /// Creates a new [MaxPodsConstraintResponse].
   /// [maxPodsPerNode] Constraint enforced on the max num of pods per node.
-  MaxPodsConstraintResponse({required this.maxPodsPerNode});
+  MaxPodsConstraintResponse({
+    required this.maxPodsPerNode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maxPodsPerNode': maxPodsPerNode};
+    return <String, dynamic>{
+      'maxPodsPerNode': maxPodsPerNode,
+    };
   }
 
   factory MaxPodsConstraintResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class MaxPodsConstraintResponse {
     );
   }
 }
+

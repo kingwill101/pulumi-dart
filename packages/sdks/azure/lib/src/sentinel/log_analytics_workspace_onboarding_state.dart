@@ -10,7 +10,6 @@ class LogAnalyticsWorkspaceOnboardingState {
   ///
   /// &gt; **Note:** Once a workspace is onboarded to Microsoft Sentinel with `customer_managed_key_enabled` set to true, it will not be able to be onboarded again with `customer_managed_key_enabled` set to false.
   final pulumi.Input<bool>? customerManagedKeyEnabled;
-
   /// Specifies the Workspace Id. Changing this forces the Log Analytics Workspace off the board and onboard again. Changing this forces a new resource to be created.
   final pulumi.Input<String>? workspaceId;
 
@@ -29,20 +28,11 @@ class LogAnalyticsWorkspaceOnboardingState {
     };
   }
 
-  factory LogAnalyticsWorkspaceOnboardingState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogAnalyticsWorkspaceOnboardingState.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsWorkspaceOnboardingState(
-      customerManagedKeyEnabled: (() {
-        final guardedValue = map['customerManagedKeyEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      workspaceId: (() {
-        final guardedValue = map['workspaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customerManagedKeyEnabled: (() { final guardedValue = map['customerManagedKeyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

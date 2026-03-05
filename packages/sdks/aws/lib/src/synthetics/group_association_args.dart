@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupAssociationArgs {
   /// ARN of the canary.
   final pulumi.Input<String> canaryArn;
-
   /// Name of the group that the canary will be associated with.
   final pulumi.Input<String> groupName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -38,11 +36,8 @@ class GroupAssociationArgs {
     return GroupAssociationArgs(
       canaryArn: pulumi.Input.fromValue(map['canaryArn'] as String),
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

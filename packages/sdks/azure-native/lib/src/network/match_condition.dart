@@ -7,16 +7,12 @@ import 'match_variable.dart';
 class MatchCondition {
   /// Match value.
   final pulumi.Input<List<String>> matchValues;
-
   /// List of match variables.
   final pulumi.Input<List<MatchVariable>> matchVariables;
-
   /// Whether this is negate condition or not.
   final pulumi.Input<bool>? negationConditon;
-
   /// The operator to be matched.
   final pulumi.Input<String> operator;
-
   /// List of transforms.
   final pulumi.Input<List<String>>? transforms;
 
@@ -37,18 +33,7 @@ class MatchCondition {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'matchValues': matchValues,
-      'matchVariables':
-          pulumi.Input.mapInputValue<
-            List<MatchVariable>,
-            List<Map<String, dynamic>>
-          >(
-            matchVariables,
-            (value) =>
-                pulumi.Input.encodeList<MatchVariable, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'matchVariables': pulumi.Input.mapInputValue<List<MatchVariable>, List<Map<String, dynamic>>>(matchVariables, (value) => pulumi.Input.encodeList<MatchVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'negationConditon': ?negationConditon,
       'operator': operator,
       'transforms': ?transforms,
@@ -57,27 +42,12 @@ class MatchCondition {
 
   factory MatchCondition.fromMap(Map<String, dynamic> map) {
     return MatchCondition(
-      matchValues: pulumi.Input.fromValue(
-        (map['matchValues'] as List).cast<String>(),
-      ),
-      matchVariables: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<MatchVariable>(
-          map['matchVariables']!,
-          (value) =>
-              MatchVariable.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      negationConditon: (() {
-        final guardedValue = map['negationConditon'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      matchValues: pulumi.Input.fromValue((map['matchValues'] as List).cast<String>()),
+      matchVariables: pulumi.Input.fromValue(pulumi.Input.decodeList<MatchVariable>(map['matchVariables']!, (value) => MatchVariable.fromMap((value as Map).cast<String, dynamic>()))),
+      negationConditon: (() { final guardedValue = map['negationConditon']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       operator: pulumi.Input.fromValue(map['operator'] as String),
-      transforms: (() {
-        final guardedValue = map['transforms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      transforms: (() { final guardedValue = map['transforms']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

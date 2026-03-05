@@ -7,10 +7,8 @@ import 'position_response_workflowexecutions_v1beta.dart';
 class StackTraceElementResponseWorkflowexecutionsV1beta {
   /// The source position information of the stack trace element.
   final pulumi.Input<PositionResponseWorkflowexecutionsV1beta> position;
-
   /// The routine where the error occurred.
   final pulumi.Input<String> routine;
-
   /// The step the error occurred at.
   final pulumi.Input<String> step;
 
@@ -26,27 +24,18 @@ class StackTraceElementResponseWorkflowexecutionsV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'position':
-          pulumi.Input.mapInputValue<
-            PositionResponseWorkflowexecutionsV1beta,
-            Map<String, dynamic>
-          >(position, (value) => value.toMap()),
+      'position': pulumi.Input.mapInputValue<PositionResponseWorkflowexecutionsV1beta, Map<String, dynamic>>(position, (value) => value.toMap()),
       'routine': routine,
       'step': step,
     };
   }
 
-  factory StackTraceElementResponseWorkflowexecutionsV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StackTraceElementResponseWorkflowexecutionsV1beta.fromMap(Map<String, dynamic> map) {
     return StackTraceElementResponseWorkflowexecutionsV1beta(
-      position: pulumi.Input.fromValue(
-        PositionResponseWorkflowexecutionsV1beta.fromMap(
-          (map['position']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      position: pulumi.Input.fromValue(PositionResponseWorkflowexecutionsV1beta.fromMap((map['position']! as Map).cast<String, dynamic>())),
       routine: pulumi.Input.fromValue(map['routine'] as String),
       step: pulumi.Input.fromValue(map['step'] as String),
     );
   }
 }
+

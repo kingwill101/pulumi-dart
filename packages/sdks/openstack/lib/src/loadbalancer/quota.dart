@@ -182,37 +182,29 @@ class Quota extends pulumi.CustomResource {
   /// Quota value for health_monitors. Changing
   /// this updates the existing quota. Omitting it sets it to 0.
   late final pulumi.Output<int> healthMonitor;
-
   /// Quota value for l7_policies. Changing this
   /// updates the existing quota. Omitting it sets it to 0. Available in
   /// **Octavia minor version 2.19**.
   late final pulumi.Output<int> l7Policy;
-
   /// Quota value for l7_rules. Changing this
   /// updates the existing quota. Omitting it sets it to 0. Available in
   /// **Octavia minor version 2.19**.
   late final pulumi.Output<int> l7Rule;
-
   /// Quota value for listeners. Changing this updates
   /// the existing quota. Omitting it sets it to 0.
   late final pulumi.Output<int> listener;
-
   /// Quota value for loadbalancers. Changing this
   /// updates the existing quota. Omitting it sets it to 0.
   late final pulumi.Output<int> loadbalancer;
-
   /// Quota value for members. Changing this updates
   /// the existing quota. Omitting it sets it to 0.
   late final pulumi.Output<int> member;
-
   /// Quota value for pools. Changing this updates the
   /// the existing quota. Omitting it sets it to 0.
   late final pulumi.Output<int> pool;
-
   /// ID of the project to manage quotas. Changing this
   /// creates a new quota.
   late final pulumi.Output<String> projectId;
-
   /// Region in which to manage quotas. Changing this
   /// creates a new quota. If ommited, the region of the credentials is used.
   late final pulumi.Output<String> region;
@@ -221,13 +213,16 @@ class Quota extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Quota]. {@macro pulumi_loadbalancer_quota_quota_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Quota(String name, {QuotaArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'openstack:loadbalancer/quota:Quota',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Quota(
+    String name, {
+    QuotaArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'openstack:loadbalancer/quota:Quota',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     healthMonitor = registerOutput<int>('healthMonitor');
     l7Policy = registerOutput<int>('l7Policy');
     l7Rule = registerOutput<int>('l7Rule');
@@ -240,7 +235,11 @@ class Quota extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Quota] resource's state with the given [name] and [id].
-  static Quota get(String name, pulumi.Input<String> id, {QuotaState? state}) {
+  static Quota get(
+    String name,
+    pulumi.Input<String> id, {
+    QuotaState? state,
+  }) {
     return Quota._get(
       name,
       state: state?.toMap(),
@@ -253,11 +252,11 @@ class Quota extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:loadbalancer/quota:Quota',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:loadbalancer/quota:Quota',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     healthMonitor = registerOutput<int>('healthMonitor');
     l7Policy = registerOutput<int>('l7Policy');
     l7Rule = registerOutput<int>('l7Rule');

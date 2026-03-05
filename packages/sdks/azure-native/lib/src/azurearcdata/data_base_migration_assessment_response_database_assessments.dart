@@ -29,30 +29,13 @@ class DataBaseMigrationAssessmentResponseDatabaseAssessments {
     };
   }
 
-  factory DataBaseMigrationAssessmentResponseDatabaseAssessments.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataBaseMigrationAssessmentResponseDatabaseAssessments.fromMap(Map<String, dynamic> map) {
     return DataBaseMigrationAssessmentResponseDatabaseAssessments(
-      appliesToMigrationTargetPlatform: (() {
-        final guardedValue = map['appliesToMigrationTargetPlatform'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      featureId: (() {
-        final guardedValue = map['featureId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      issueCategory: (() {
-        final guardedValue = map['issueCategory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      moreInformation: (() {
-        final guardedValue = map['moreInformation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appliesToMigrationTargetPlatform: (() { final guardedValue = map['appliesToMigrationTargetPlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      featureId: (() { final guardedValue = map['featureId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      issueCategory: (() { final guardedValue = map['issueCategory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      moreInformation: (() { final guardedValue = map['moreInformation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

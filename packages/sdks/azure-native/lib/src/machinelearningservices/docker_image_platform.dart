@@ -8,19 +8,20 @@ class DockerImagePlatform {
 
   /// Creates a new [DockerImagePlatform].
   /// [operatingSystemType] The OS type the Environment.
-  DockerImagePlatform({this.operatingSystemType});
+  DockerImagePlatform({
+    this.operatingSystemType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'operatingSystemType': ?operatingSystemType};
+    return <String, dynamic>{
+      'operatingSystemType': ?operatingSystemType,
+    };
   }
 
   factory DockerImagePlatform.fromMap(Map<String, dynamic> map) {
     return DockerImagePlatform(
-      operatingSystemType: (() {
-        final guardedValue = map['operatingSystemType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      operatingSystemType: (() { final guardedValue = map['operatingSystemType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

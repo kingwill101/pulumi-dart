@@ -841,61 +841,40 @@ import 'system_data_response.dart';
 class ContainerAppsSessionPool extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The container type of the sessions.
   late final pulumi.Output<String?> containerType;
-
   /// The custom container configuration if the containerType is CustomContainer.
-  late final pulumi.Output<CustomContainerTemplateResponse?>
-  customContainerTemplate;
-
+  late final pulumi.Output<CustomContainerTemplateResponse?> customContainerTemplate;
   /// The pool configuration if the poolManagementType is dynamic.
-  late final pulumi.Output<DynamicPoolConfigurationResponse?>
-  dynamicPoolConfiguration;
-
+  late final pulumi.Output<DynamicPoolConfigurationResponse?> dynamicPoolConfiguration;
   /// Resource ID of the session pool's environment.
   late final pulumi.Output<String?> environmentId;
-
   /// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Optional settings for a Managed Identity that is assigned to the Session pool.
   late final pulumi.Output<List<Map<String, dynamic>>?> managedIdentitySettings;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The number of nodes the session pool is using.
   late final pulumi.Output<int> nodeCount;
-
   /// The endpoint to manage the pool.
   late final pulumi.Output<String> poolManagementEndpoint;
-
   /// The pool management type of the session pool.
   late final pulumi.Output<String?> poolManagementType;
-
   /// Provisioning state of the session pool.
   late final pulumi.Output<String> provisioningState;
-
   /// The scale configuration of the session pool.
   late final pulumi.Output<ScaleConfigurationResponse?> scaleConfiguration;
-
   /// The secrets of the session pool.
   late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
-
   /// The network configuration of the sessions in the session pool.
-  late final pulumi.Output<SessionNetworkConfigurationResponse?>
-  sessionNetworkConfiguration;
-
+  late final pulumi.Output<SessionNetworkConfigurationResponse?> sessionNetworkConfiguration;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -908,86 +887,28 @@ class ContainerAppsSessionPool extends pulumi.CustomResource {
     ContainerAppsSessionPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:app:ContainerAppsSessionPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:app:ContainerAppsSessionPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     containerType = registerOutput<String?>('containerType');
-    customContainerTemplate = registerOutput<CustomContainerTemplateResponse?>(
-      'customContainerTemplate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomContainerTemplateResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dynamicPoolConfiguration =
-        registerOutput<DynamicPoolConfigurationResponse?>(
-          'dynamicPoolConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DynamicPoolConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    customContainerTemplate = registerOutput<CustomContainerTemplateResponse?>('customContainerTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomContainerTemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dynamicPoolConfiguration = registerOutput<DynamicPoolConfigurationResponse?>('dynamicPoolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DynamicPoolConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     environmentId = registerOutput<String?>('environmentId');
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    managedIdentitySettings = registerOutput<List<Map<String, dynamic>>?>(
-      'managedIdentitySettings',
-    );
+    managedIdentitySettings = registerOutput<List<Map<String, dynamic>>?>('managedIdentitySettings');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
     poolManagementEndpoint = registerOutput<String>('poolManagementEndpoint');
     poolManagementType = registerOutput<String?>('poolManagementType');
     provisioningState = registerOutput<String>('provisioningState');
-    scaleConfiguration = registerOutput<ScaleConfigurationResponse?>(
-      'scaleConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScaleConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scaleConfiguration = registerOutput<ScaleConfigurationResponse?>('scaleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
-    sessionNetworkConfiguration =
-        registerOutput<SessionNetworkConfigurationResponse?>(
-          'sessionNetworkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SessionNetworkConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sessionNetworkConfiguration = registerOutput<SessionNetworkConfigurationResponse?>('sessionNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionNetworkConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

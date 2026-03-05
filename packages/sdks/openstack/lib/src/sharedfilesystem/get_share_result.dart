@@ -7,48 +7,34 @@ import 'get_share_export_location.dart';
 class GetShareResult {
   /// The share availability zone.
   final String availabilityZone;
-
   /// See Argument Reference above.
   final String description;
-
   /// See Argument Reference above.
   final String? exportLocationPath;
-
   /// A list of export locations. For example, when a share
   /// server has more than one network interface, it can have multiple export
   /// locations.
   final List<GetShareExportLocation> exportLocations;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// See Argument Reference above.
   final bool isPublic;
-
   /// See Argument Reference above.
   final Map<String, String> metadata;
-
   /// See Argument Reference above.
   final String name;
-
   /// See Argument Reference above.
   final String projectId;
-
   /// See Argument Reference above.
   final String region;
-
   /// See Argument Reference above.
   final String shareNetworkId;
-
   /// The share protocol.
   final String shareProto;
-
   /// The share size, in GBs.
   final int size;
-
   /// See Argument Reference above.
   final String snapshotId;
-
   /// See Argument Reference above.
   final String status;
 
@@ -91,11 +77,7 @@ class GetShareResult {
       'availabilityZone': availabilityZone,
       'description': description,
       'exportLocationPath': ?exportLocationPath,
-      'exportLocations':
-          pulumi.Input.encodeList<GetShareExportLocation, Map<String, dynamic>>(
-            exportLocations,
-            (value) => value.toMap(),
-          ),
+      'exportLocations': pulumi.Input.encodeList<GetShareExportLocation, Map<String, dynamic>>(exportLocations, (value) => value.toMap()),
       'id': id,
       'isPublic': isPublic,
       'metadata': metadata,
@@ -114,17 +96,8 @@ class GetShareResult {
     return GetShareResult(
       availabilityZone: map['availabilityZone'] as String,
       description: map['description'] as String,
-      exportLocationPath: (() {
-        final guardedValue = map['exportLocationPath'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      exportLocations: pulumi.Input.decodeList<GetShareExportLocation>(
-        map['exportLocations']!,
-        (value) => GetShareExportLocation.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      exportLocationPath: (() { final guardedValue = map['exportLocationPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      exportLocations: pulumi.Input.decodeList<GetShareExportLocation>(map['exportLocations']!, (value) => GetShareExportLocation.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       isPublic: map['isPublic'] as bool,
       metadata: (map['metadata'] as Map).cast<String, String>(),
@@ -139,3 +112,4 @@ class GetShareResult {
     );
   }
 }
+

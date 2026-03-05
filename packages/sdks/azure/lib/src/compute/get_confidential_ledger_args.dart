@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfidentialLedgerArgs {
   /// Specifies the name of this Confidential Ledger.
   final pulumi.Input<String> name;
-
   /// Specifies the name of the Resource Group where this Confidential Ledger exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetConfidentialLedgerArgs {
   factory GetConfidentialLedgerArgs.fromMap(Map<String, dynamic> map) {
     return GetConfidentialLedgerArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

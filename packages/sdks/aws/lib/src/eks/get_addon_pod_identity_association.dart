@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAddonPodIdentityAssociation {
   /// ARN of the IAM role associated with the EKS add-on.
   final pulumi.Input<String> roleArn;
-
   /// Service account associated with the EKS add-on.
   final pulumi.Input<String> serviceAccount;
 
@@ -31,3 +30,4 @@ class GetAddonPodIdentityAssociation {
     );
   }
 }
+

@@ -5,22 +5,16 @@ enum GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState {
   enabled("ENABLED"),
   mandatory("MANDATORY");
 
-  const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState(
-    this.wireValue,
-  );
+  const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState.values) {
+  static GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState fromValue(String value) {
+    for (final item in GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState value: $value');
   }
 }
+

@@ -49,55 +49,18 @@ class GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig {
     };
   }
 
-  factory GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig.fromMap(Map<String, dynamic> map) {
     return GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig(
-      ikeAuthAlg: (() {
-        final guardedValue = map['ikeAuthAlg'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ikeEncAlg: (() {
-        final guardedValue = map['ikeEncAlg'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ikeLifetime: (() {
-        final guardedValue = map['ikeLifetime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ikeMode: (() {
-        final guardedValue = map['ikeMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ikePfs: (() {
-        final guardedValue = map['ikePfs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ikeVersion: (() {
-        final guardedValue = map['ikeVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      localId: (() {
-        final guardedValue = map['localId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      psk: (() {
-        final guardedValue = map['psk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remoteId: (() {
-        final guardedValue = map['remoteId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ikeAuthAlg: (() { final guardedValue = map['ikeAuthAlg']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ikeEncAlg: (() { final guardedValue = map['ikeEncAlg']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ikeLifetime: (() { final guardedValue = map['ikeLifetime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ikeMode: (() { final guardedValue = map['ikeMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ikePfs: (() { final guardedValue = map['ikePfs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ikeVersion: (() { final guardedValue = map['ikeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localId: (() { final guardedValue = map['localId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      psk: (() { final guardedValue = map['psk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remoteId: (() { final guardedValue = map['remoteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

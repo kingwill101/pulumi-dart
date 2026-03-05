@@ -231,15 +231,12 @@ import 'backend_bucket_signed_url_key_state.dart';
 class BackendBucketSignedUrlKey extends pulumi.CustomResource {
   /// The backend bucket this signed URL key belongs.
   late final pulumi.Output<String> backendBucket;
-
   /// 128-bit key value used for signing the URL. The key value must be a
   /// valid RFC 4648 Section 5 base64url encoded string.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> keyValue;
-
   /// Name of the signed URL key.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -253,11 +250,11 @@ class BackendBucketSignedUrlKey extends pulumi.CustomResource {
     BackendBucketSignedUrlKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backendBucket = registerOutput<String>('backendBucket');
     keyValue = registerOutput<String>('keyValue');
     this.name = registerOutput<String>('name');
@@ -282,11 +279,11 @@ class BackendBucketSignedUrlKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backendBucket = registerOutput<String>('backendBucket');
     keyValue = registerOutput<String>('keyValue');
     this.name = registerOutput<String>('name');

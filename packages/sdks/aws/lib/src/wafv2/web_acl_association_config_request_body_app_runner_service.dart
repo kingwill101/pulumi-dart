@@ -18,13 +18,10 @@ class WebAclAssociationConfigRequestBodyAppRunnerService {
     };
   }
 
-  factory WebAclAssociationConfigRequestBodyAppRunnerService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclAssociationConfigRequestBodyAppRunnerService.fromMap(Map<String, dynamic> map) {
     return WebAclAssociationConfigRequestBodyAppRunnerService(
-      defaultSizeInspectionLimit: pulumi.Input.fromValue(
-        map['defaultSizeInspectionLimit'] as String,
-      ),
+      defaultSizeInspectionLimit: pulumi.Input.fromValue(map['defaultSizeInspectionLimit'] as String),
     );
   }
 }
+

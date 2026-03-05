@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainsDomainSource {
   /// The Back-to-Source Address.
   final pulumi.Input<String> content;
-
   /// State.
   final pulumi.Input<String> enabled;
-
   /// Port.
   final pulumi.Input<int> port;
-
   /// Priority.
   final pulumi.Input<String> priority;
-
   /// the Origin Server Type. Valid Values: Ipaddr: IP Source Station Domain: the Domain Name, See Extra Domain Quota OSS: OSS Bucket as a Source Station.
   final pulumi.Input<String> type;
 
@@ -52,3 +48,4 @@ class GetDomainsDomainSource {
     );
   }
 }
+

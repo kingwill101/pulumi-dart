@@ -6,29 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureClientState {
   /// The Azure Active Directory Application ID.
   final pulumi.Input<String>? applicationId;
-
   /// Output only. The PEM encoded x509 certificate.
   final pulumi.Input<String>? certificate;
-
   /// Output only. The time at which this resource was created.
   final pulumi.Input<String>? createTime;
-
   /// The location for the resource
   final pulumi.Input<String>? location;
-
   /// The name of this resource.
   final pulumi.Input<String>? name;
-
   /// The project for the resource
   final pulumi.Input<String>? project;
-
   /// The Azure Active Directory Tenant ID.
   ///
   ///
   ///
   /// - - -
   final pulumi.Input<String>? tenantId;
-
   /// Output only. A globally unique identifier for the client.
   final pulumi.Input<String>? uid;
 
@@ -67,46 +60,15 @@ class AzureClientState {
 
   factory AzureClientState.fromMap(Map<String, dynamic> map) {
     return AzureClientState(
-      applicationId: (() {
-        final guardedValue = map['applicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certificate: (() {
-        final guardedValue = map['certificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uid: (() {
-        final guardedValue = map['uid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificate: (() { final guardedValue = map['certificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

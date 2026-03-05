@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionStatePropertiesResponse {
   /// The actions required on the managed private endpoint
   final pulumi.Input<String> actionsRequired;
-
   /// The managed private endpoint description
   final pulumi.Input<String> description;
-
   /// The approval status
   final pulumi.Input<String> status;
 
@@ -39,3 +37,4 @@ class ConnectionStatePropertiesResponse {
     );
   }
 }
+

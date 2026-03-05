@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalVipConfigResponse {
   /// The VIP which you previously set aside for the Kubernetes API of this bare metal user cluster.
   final pulumi.Input<String> controlPlaneVip;
-
   /// The VIP which you previously set aside for ingress traffic into this bare metal user cluster.
   final pulumi.Input<String> ingressVip;
 
@@ -32,3 +31,4 @@ class BareMetalVipConfigResponse {
     );
   }
 }
+

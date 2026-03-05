@@ -320,22 +320,17 @@ class ServerGroupServerAttachment extends pulumi.CustomResource {
   /// The description of the servers.
   /// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
   late final pulumi.Output<String?> description;
-
   /// The port that is used by the backend server. Valid values: `1` to `65535`.
   late final pulumi.Output<int> port;
-
   /// The ID of the server group.
   late final pulumi.Output<String> serverGroupId;
-
   /// The ID of the server.
   ///
   /// - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
   /// - If the server group type is `Ip`, set the ServerId parameter to an IP address.
   late final pulumi.Output<String> serverId;
-
   /// The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
   late final pulumi.Output<String> serverIp;
-
   /// The type of the backend server. Valid values:
   ///
   /// - `Ecs`: ECS instance
@@ -343,13 +338,10 @@ class ServerGroupServerAttachment extends pulumi.CustomResource {
   /// - `Eci`: an elastic container instance
   /// - `Ip`: an IP address
   late final pulumi.Output<String> serverType;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
   late final pulumi.Output<int> weight;
-
   /// The zone ID of the server.
   late final pulumi.Output<String> zoneId;
 
@@ -362,11 +354,11 @@ class ServerGroupServerAttachment extends pulumi.CustomResource {
     ServerGroupServerAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     port = registerOutput<int>('port');
     serverGroupId = registerOutput<String>('serverGroupId');
@@ -396,11 +388,11 @@ class ServerGroupServerAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     port = registerOutput<int>('port');
     serverGroupId = registerOutput<String>('serverGroupId');

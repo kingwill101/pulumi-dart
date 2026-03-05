@@ -17,3 +17,4 @@ enum BuiltInAuthorizationScheme {
     throw ArgumentError('Unknown BuiltInAuthorizationScheme value: $value');
   }
 }
+

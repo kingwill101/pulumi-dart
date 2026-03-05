@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGraphQLApiResolverArgs {
   /// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
   final pulumi.Input<String> apiId;
-
   /// Resolver identifier within a GraphQL API. Must be unique in the current API Management service instance.
   final pulumi.Input<String> resolverId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -44,10 +41,9 @@ class GetGraphQLApiResolverArgs {
     return GetGraphQLApiResolverArgs(
       apiId: pulumi.Input.fromValue(map['apiId'] as String),
       resolverId: pulumi.Input.fromValue(map['resolverId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

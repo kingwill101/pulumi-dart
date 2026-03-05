@@ -9,19 +9,20 @@ class DisplayDeviceComputeBeta {
 
   /// Creates a new [DisplayDeviceComputeBeta].
   /// [enableDisplay] Defines whether the instance has Display enabled.
-  DisplayDeviceComputeBeta({this.enableDisplay});
+  DisplayDeviceComputeBeta({
+    this.enableDisplay,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableDisplay': ?enableDisplay};
+    return <String, dynamic>{
+      'enableDisplay': ?enableDisplay,
+    };
   }
 
   factory DisplayDeviceComputeBeta.fromMap(Map<String, dynamic> map) {
     return DisplayDeviceComputeBeta(
-      enableDisplay: (() {
-        final guardedValue = map['enableDisplay'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableDisplay: (() { final guardedValue = map['enableDisplay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

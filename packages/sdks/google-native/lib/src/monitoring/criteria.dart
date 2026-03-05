@@ -9,19 +9,20 @@ class Criteria {
 
   /// Creates a new [Criteria].
   /// [policies] The specific AlertPolicy names for the alert that should be snoozed. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is a limit of 16 policies per snooze. This limit is checked during snooze creation.
-  Criteria({this.policies});
+  Criteria({
+    this.policies,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policies': ?policies};
+    return <String, dynamic>{
+      'policies': ?policies,
+    };
   }
 
   factory Criteria.fromMap(Map<String, dynamic> map) {
     return Criteria(
-      policies: (() {
-        final guardedValue = map['policies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      policies: (() { final guardedValue = map['policies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

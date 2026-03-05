@@ -11,37 +11,26 @@ import 'classification_job_schedule_frequency.dart';
 class ClassificationJobArgs {
   /// The custom data identifiers to use for data analysis and classification.
   final pulumi.Input<List<String>>? customDataIdentifierIds;
-
   /// A custom description of the job. The description can contain as many as 200 characters.
   final pulumi.Input<String>? description;
-
   /// Specifies whether to analyze all existing, eligible objects immediately after the job is created.
   final pulumi.Input<bool>? initialRun;
-
   /// The status for the job. Valid values are: `CANCELLED`, `RUNNING` and `USER_PAUSED`
   final pulumi.Input<String>? jobStatus;
-
   /// The schedule for running the job. Valid values are: `ONE_TIME` - Run the job only once. If you specify this value, don't specify a value for the `schedule_frequency` property. `SCHEDULED` - Run the job on a daily, weekly, or monthly basis. If you specify this value, use the `schedule_frequency` property to define the recurrence pattern for the job.
   final pulumi.Input<String> jobType;
-
   /// A custom name for the job. The name can contain as many as 500 characters. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final pulumi.Input<String>? name;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The S3 buckets that contain the objects to analyze, and the scope of that analysis. (documented below)
   final pulumi.Input<ClassificationJobS3JobDefinition> s3JobDefinition;
-
   /// The sampling depth, as a percentage, to apply when processing objects. This value determines the percentage of eligible objects that the job analyzes. If this value is less than 100, Amazon Macie selects the objects to analyze at random, up to the specified percentage, and analyzes all the data in those objects.
   final pulumi.Input<int>? samplingPercentage;
-
   /// The recurrence pattern for running the job. To run the job only once, don't specify a value for this property and set the value for the `job_type` property to `ONE_TIME`. (documented below)
   final pulumi.Input<ClassificationJobScheduleFrequency>? scheduleFrequency;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -83,85 +72,28 @@ class ClassificationJobArgs {
       'name': ?name,
       'namePrefix': ?namePrefix,
       'region': ?region,
-      's3JobDefinition':
-          pulumi.Input.mapInputValue<
-            ClassificationJobS3JobDefinition,
-            Map<String, dynamic>
-          >(s3JobDefinition, (value) => value.toMap()),
+      's3JobDefinition': pulumi.Input.mapInputValue<ClassificationJobS3JobDefinition, Map<String, dynamic>>(s3JobDefinition, (value) => value.toMap()),
       'samplingPercentage': ?samplingPercentage,
-      'scheduleFrequency':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClassificationJobScheduleFrequency,
-            Map<String, dynamic>
-          >(scheduleFrequency, (value) => value.toMap()),
+      'scheduleFrequency': ?pulumi.Input.mapOptionalInputValue<ClassificationJobScheduleFrequency, Map<String, dynamic>>(scheduleFrequency, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory ClassificationJobArgs.fromMap(Map<String, dynamic> map) {
     return ClassificationJobArgs(
-      customDataIdentifierIds: (() {
-        final guardedValue = map['customDataIdentifierIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      initialRun: (() {
-        final guardedValue = map['initialRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      jobStatus: (() {
-        final guardedValue = map['jobStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customDataIdentifierIds: (() { final guardedValue = map['customDataIdentifierIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      initialRun: (() { final guardedValue = map['initialRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      jobStatus: (() { final guardedValue = map['jobStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jobType: pulumi.Input.fromValue(map['jobType'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namePrefix: (() {
-        final guardedValue = map['namePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      s3JobDefinition: pulumi.Input.fromValue(
-        ClassificationJobS3JobDefinition.fromMap(
-          (map['s3JobDefinition']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      samplingPercentage: (() {
-        final guardedValue = map['samplingPercentage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      scheduleFrequency: (() {
-        final guardedValue = map['scheduleFrequency'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClassificationJobScheduleFrequency.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s3JobDefinition: pulumi.Input.fromValue(ClassificationJobS3JobDefinition.fromMap((map['s3JobDefinition']! as Map).cast<String, dynamic>())),
+      samplingPercentage: (() { final guardedValue = map['samplingPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scheduleFrequency: (() { final guardedValue = map['scheduleFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClassificationJobScheduleFrequency.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

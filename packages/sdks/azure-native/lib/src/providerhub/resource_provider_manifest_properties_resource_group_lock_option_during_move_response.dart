@@ -14,18 +14,15 @@ class ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveRespons
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'blockActionVerb': ?blockActionVerb};
+    return <String, dynamic>{
+      'blockActionVerb': ?blockActionVerb,
+    };
   }
 
-  factory ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse(
-      blockActionVerb: (() {
-        final guardedValue = map['blockActionVerb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      blockActionVerb: (() { final guardedValue = map['blockActionVerb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

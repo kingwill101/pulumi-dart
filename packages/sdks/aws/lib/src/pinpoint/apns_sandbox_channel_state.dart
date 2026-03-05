@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApnsSandboxChannelState {
   /// The application ID.
   final pulumi.Input<String>? applicationId;
-
   /// The ID assigned to your iOS app. To find this value, choose Certificates, IDs & Profiles, choose App IDs in the Identifiers section, and choose your app.
   final pulumi.Input<String>? bundleId;
-
   /// The pem encoded TLS Certificate from Apple.
   final pulumi.Input<String>? certificate;
-
   /// The default authentication method used for APNs Sandbox.
   /// __NOTE__: Amazon Pinpoint uses this default for every APNs push notification that you send using the console.
   /// You can override the default when you send a message programmatically using the Amazon Pinpoint API, the AWS CLI, or an AWS SDK.
@@ -22,24 +19,18 @@ class ApnsSandboxChannelState {
   ///
   /// If you choose to use __Certificate credentials__ you will have to provide:
   final pulumi.Input<String>? defaultAuthenticationMethod;
-
   /// Whether the channel is enabled or disabled. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-
   /// The Certificate Private Key file (ie. `.key` file).
   ///
   /// If you choose to use __Key credentials__ you will have to provide:
   final pulumi.Input<String>? privateKey;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID assigned to your Apple developer account team. This value is provided on the Membership page.
   final pulumi.Input<String>? teamId;
-
   /// The `.p8` file that you download from your Apple developer account when you create an authentication key.
   final pulumi.Input<String>? tokenKey;
-
   /// The ID assigned to your signing key. To find this value, choose Certificates, IDs & Profiles, and choose your key in the Keys section.
   final pulumi.Input<String>? tokenKeyId;
 
@@ -84,56 +75,17 @@ class ApnsSandboxChannelState {
 
   factory ApnsSandboxChannelState.fromMap(Map<String, dynamic> map) {
     return ApnsSandboxChannelState(
-      applicationId: (() {
-        final guardedValue = map['applicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bundleId: (() {
-        final guardedValue = map['bundleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certificate: (() {
-        final guardedValue = map['certificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      defaultAuthenticationMethod: (() {
-        final guardedValue = map['defaultAuthenticationMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      privateKey: (() {
-        final guardedValue = map['privateKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      teamId: (() {
-        final guardedValue = map['teamId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tokenKey: (() {
-        final guardedValue = map['tokenKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tokenKeyId: (() {
-        final guardedValue = map['tokenKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bundleId: (() { final guardedValue = map['bundleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificate: (() { final guardedValue = map['certificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultAuthenticationMethod: (() { final guardedValue = map['defaultAuthenticationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      teamId: (() { final guardedValue = map['teamId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tokenKey: (() { final guardedValue = map['tokenKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tokenKeyId: (() { final guardedValue = map['tokenKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

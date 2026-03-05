@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReadOnlyInstanceParameter {
   /// The parameter name.
   final pulumi.Input<String> name;
-
   /// The parameter value.
   final pulumi.Input<String> value;
 
   /// Creates a new [ReadOnlyInstanceParameter].
   /// [name] The parameter name.
   /// [value] The parameter value.
-  ReadOnlyInstanceParameter({required this.name, required this.value});
+  ReadOnlyInstanceParameter({
+    required this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory ReadOnlyInstanceParameter.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class ReadOnlyInstanceParameter {
     );
   }
 }
+

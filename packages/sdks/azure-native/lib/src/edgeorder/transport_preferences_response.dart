@@ -9,17 +9,20 @@ class TransportPreferencesResponse {
 
   /// Creates a new [TransportPreferencesResponse].
   /// [preferredShipmentType] Indicates Shipment Logistics type that the customer preferred.
-  TransportPreferencesResponse({required this.preferredShipmentType});
+  TransportPreferencesResponse({
+    required this.preferredShipmentType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'preferredShipmentType': preferredShipmentType};
+    return <String, dynamic>{
+      'preferredShipmentType': preferredShipmentType,
+    };
   }
 
   factory TransportPreferencesResponse.fromMap(Map<String, dynamic> map) {
     return TransportPreferencesResponse(
-      preferredShipmentType: pulumi.Input.fromValue(
-        map['preferredShipmentType'] as String,
-      ),
+      preferredShipmentType: pulumi.Input.fromValue(map['preferredShipmentType'] as String),
     );
   }
 }
+

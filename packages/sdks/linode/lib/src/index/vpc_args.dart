@@ -12,13 +12,10 @@ class VpcArgs {
   ///
   /// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
   final pulumi.Input<String>? description;
-
   /// The IPv6 configuration of this VPC.
   final pulumi.Input<List<VpcIpv6>>? ipv6s;
-
   /// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
   final pulumi.Input<String> label;
-
   /// The region of the VPC.
   final pulumi.Input<String> region;
 
@@ -37,17 +34,7 @@ class VpcArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'ipv6s':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VpcIpv6>,
-            List<Map<String, dynamic>>
-          >(
-            ipv6s,
-            (value) => pulumi.Input.encodeList<VpcIpv6, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'ipv6s': ?pulumi.Input.mapOptionalInputValue<List<VpcIpv6>, List<Map<String, dynamic>>>(ipv6s, (value) => pulumi.Input.encodeList<VpcIpv6, Map<String, dynamic>>(value, (value) => value.toMap())),
       'label': label,
       'region': region,
     };
@@ -55,23 +42,11 @@ class VpcArgs {
 
   factory VpcArgs.fromMap(Map<String, dynamic> map) {
     return VpcArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipv6s: (() {
-        final guardedValue = map['ipv6s'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VpcIpv6>(
-            guardedValue,
-            (value) => VpcIpv6.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipv6s: (() { final guardedValue = map['ipv6s']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VpcIpv6>(guardedValue, (value) => VpcIpv6.fromMap((value as Map).cast<String, dynamic>()))); })(),
       label: pulumi.Input.fromValue(map['label'] as String),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

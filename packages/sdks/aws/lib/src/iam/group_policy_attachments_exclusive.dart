@@ -222,7 +222,6 @@ import 'group_policy_attachments_exclusive_state.dart';
 class GroupPolicyAttachmentsExclusive extends pulumi.CustomResource {
   /// IAM group name.
   late final pulumi.Output<String> groupName;
-
   /// A list of managed IAM policy ARNs to be attached to the group. Policies attached to this group but not configured in this argument will be removed.
   late final pulumi.Output<List<String>> policyArns;
 
@@ -235,11 +234,11 @@ class GroupPolicyAttachmentsExclusive extends pulumi.CustomResource {
     GroupPolicyAttachmentsExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/groupPolicyAttachmentsExclusive:GroupPolicyAttachmentsExclusive',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/groupPolicyAttachmentsExclusive:GroupPolicyAttachmentsExclusive',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupName = registerOutput<String>('groupName');
     policyArns = registerOutput<List<String>>('policyArns');
   }
@@ -262,11 +261,11 @@ class GroupPolicyAttachmentsExclusive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/groupPolicyAttachmentsExclusive:GroupPolicyAttachmentsExclusive',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/groupPolicyAttachmentsExclusive:GroupPolicyAttachmentsExclusive',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupName = registerOutput<String>('groupName');
     policyArns = registerOutput<List<String>>('policyArns');
   }

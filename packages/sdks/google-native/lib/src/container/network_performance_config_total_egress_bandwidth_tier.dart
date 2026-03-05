@@ -6,17 +6,13 @@ enum NetworkPerformanceConfigTotalEgressBandwidthTier {
   const NetworkPerformanceConfigTotalEgressBandwidthTier(this.wireValue);
   final String wireValue;
 
-  static NetworkPerformanceConfigTotalEgressBandwidthTier fromValue(
-    String value,
-  ) {
-    for (final item
-        in NetworkPerformanceConfigTotalEgressBandwidthTier.values) {
+  static NetworkPerformanceConfigTotalEgressBandwidthTier fromValue(String value) {
+    for (final item in NetworkPerformanceConfigTotalEgressBandwidthTier.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown NetworkPerformanceConfigTotalEgressBandwidthTier value: $value',
-    );
+    throw ArgumentError('Unknown NetworkPerformanceConfigTotalEgressBandwidthTier value: $value');
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
   /// The number of hours between snapshots.
   final pulumi.Input<int> hoursInCycle;
-
   /// Time within the window to start the operations.
   /// It must be in an hourly format "HH:MM",
   /// where HH : [00-23] and MM : [00] GMT. eg: 21:00
@@ -26,12 +25,11 @@ class ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
     };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule(
       hoursInCycle: pulumi.Input.fromValue(map['hoursInCycle'] as int),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
+

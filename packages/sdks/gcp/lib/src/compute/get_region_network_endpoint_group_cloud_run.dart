@@ -7,13 +7,11 @@ class GetRegionNetworkEndpointGroupCloudRun {
   /// The service must be 1-63 characters long, and comply with RFC1035.
   /// Example value: "run-service".
   final pulumi.Input<String> service;
-
   /// Cloud Run tag represents the "named-revision" to provide
   /// additional fine-grained traffic routing information.
   /// The tag must be 1-63 characters long, and comply with RFC1035.
   /// Example value: "revision-0010".
   final pulumi.Input<String> tag;
-
   /// A template to parse service and tag fields from a request URL.
   /// URL mask allows for routing to multiple Run services without having
   /// to create multiple network endpoint groups and backend services.
@@ -42,9 +40,7 @@ class GetRegionNetworkEndpointGroupCloudRun {
     };
   }
 
-  factory GetRegionNetworkEndpointGroupCloudRun.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionNetworkEndpointGroupCloudRun.fromMap(Map<String, dynamic> map) {
     return GetRegionNetworkEndpointGroupCloudRun(
       service: pulumi.Input.fromValue(map['service'] as String),
       tag: pulumi.Input.fromValue(map['tag'] as String),
@@ -52,3 +48,4 @@ class GetRegionNetworkEndpointGroupCloudRun {
     );
   }
 }
+

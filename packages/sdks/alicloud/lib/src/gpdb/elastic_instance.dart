@@ -276,68 +276,48 @@ import 'elastic_instance_state.dart';
 class ElasticInstance extends pulumi.CustomResource {
   /// ADB PG instance connection string.
   late final pulumi.Output<String> connectionString;
-
   /// The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
   late final pulumi.Output<String> dbInstanceCategory;
-
   /// The description of ADB PG instance. It is a string of 2 to 256 characters.
   late final pulumi.Output<String?> dbInstanceDescription;
-
   /// The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
   late final pulumi.Output<String?> encryptionKey;
-
   /// The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
   late final pulumi.Output<String?> encryptionType;
-
   /// Database engine: `gpdb`.
   late final pulumi.Output<String> engine;
-
   /// Database version. Valid value is `6.0`.
   late final pulumi.Output<String> engineVersion;
-
   /// The network type of ADB PG instance. Only `VPC` supported now.
   late final pulumi.Output<String?> instanceNetworkType;
-
   /// The specification of segment nodes.
   /// * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
   /// * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
   late final pulumi.Output<String> instanceSpec;
-
   /// The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.
   /// **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
   late final pulumi.Output<int?> paymentDuration;
-
   /// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.
   /// **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
   late final pulumi.Output<String?> paymentDurationUnit;
-
   /// Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
   late final pulumi.Output<String?> paymentType;
-
   /// (Available since v1.196.0) The connection port of the instance.
   late final pulumi.Output<String> port;
-
   /// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
   late final pulumi.Output<List<String>> securityIpLists;
-
   /// The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
   late final pulumi.Output<int> segNodeNum;
-
   /// The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
   late final pulumi.Output<String> segStorageType;
-
   /// Instance status.
   late final pulumi.Output<String> status;
-
   /// The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
   late final pulumi.Output<int> storageSize;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The virtual switch ID to launch ADB PG instances in one VPC.
   late final pulumi.Output<String> vswitchId;
-
   /// The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
   late final pulumi.Output<String> zoneId;
 
@@ -350,11 +330,11 @@ class ElasticInstance extends pulumi.CustomResource {
     ElasticInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/elasticInstance:ElasticInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/elasticInstance:ElasticInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionString = registerOutput<String>('connectionString');
     dbInstanceCategory = registerOutput<String>('dbInstanceCategory');
     dbInstanceDescription = registerOutput<String?>('dbInstanceDescription');
@@ -396,11 +376,11 @@ class ElasticInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/elasticInstance:ElasticInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/elasticInstance:ElasticInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionString = registerOutput<String>('connectionString');
     dbInstanceCategory = registerOutput<String>('dbInstanceCategory');
     dbInstanceDescription = registerOutput<String?>('dbInstanceDescription');

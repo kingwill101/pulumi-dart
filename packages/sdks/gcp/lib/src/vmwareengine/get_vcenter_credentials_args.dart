@@ -12,10 +12,14 @@ class GetVcenterCredentialsArgs {
 
   /// Creates a new [GetVcenterCredentialsArgs].
   /// [parent] The resource name of the private cloud which contains the Vcenter.
-  GetVcenterCredentialsArgs({required this.parent});
+  GetVcenterCredentialsArgs({
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'parent': parent};
+    return <String, dynamic>{
+      'parent': parent,
+    };
   }
 
   factory GetVcenterCredentialsArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetVcenterCredentialsArgs {
     );
   }
 }
+

@@ -13,46 +13,34 @@ class GetAppResult {
   /// The ID of the Container App Environment this Container App is linked to.
   final String containerAppEnvironmentId;
   final String customDomainVerificationId;
-
   /// A `dapr` block as detailed below.
   final List<GetAppDapr> daprs;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Resource ID for the User Assigned Managed identity to use when pulling from the Container Registry.
   final List<GetAppIdentity> identities;
-
   /// An `ingress` block as detailed below.
   final List<GetAppIngress> ingresses;
   final String latestRevisionFqdn;
   final String latestRevisionName;
   final String location;
-
   /// The max inactive revisions for this Container App.
   final int maxInactiveRevisions;
-
   /// Name for the IP restriction rule.
   final String name;
   final List<String> outboundIpAddresses;
   final bool? readSecrets;
-
   /// A `registry` block as detailed below.
   final List<GetAppRegistry> registries;
   final String resourceGroupName;
-
   /// The revision mode of the Container App.
   final String revisionMode;
-
   /// One or more `secret` block as detailed below.
   final List<GetAppSecret> secrets;
-
   /// A mapping of tags to assign to the Container App.
   final Map<String, String> tags;
-
   /// A `template` block as detailed below.
   final List<GetAppTemplate> templates;
-
   /// The name of the Workload Profile in the Container App Environment in which this Container App is running.
   final String workloadProfileName;
 
@@ -104,20 +92,10 @@ class GetAppResult {
     return <String, dynamic>{
       'containerAppEnvironmentId': containerAppEnvironmentId,
       'customDomainVerificationId': customDomainVerificationId,
-      'daprs': pulumi.Input.encodeList<GetAppDapr, Map<String, dynamic>>(
-        daprs,
-        (value) => value.toMap(),
-      ),
+      'daprs': pulumi.Input.encodeList<GetAppDapr, Map<String, dynamic>>(daprs, (value) => value.toMap()),
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetAppIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
-      'ingresses': pulumi.Input.encodeList<GetAppIngress, Map<String, dynamic>>(
-        ingresses,
-        (value) => value.toMap(),
-      ),
+      'identities': pulumi.Input.encodeList<GetAppIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
+      'ingresses': pulumi.Input.encodeList<GetAppIngress, Map<String, dynamic>>(ingresses, (value) => value.toMap()),
       'latestRevisionFqdn': latestRevisionFqdn,
       'latestRevisionName': latestRevisionName,
       'location': location,
@@ -125,23 +103,12 @@ class GetAppResult {
       'name': name,
       'outboundIpAddresses': outboundIpAddresses,
       'readSecrets': ?readSecrets,
-      'registries':
-          pulumi.Input.encodeList<GetAppRegistry, Map<String, dynamic>>(
-            registries,
-            (value) => value.toMap(),
-          ),
+      'registries': pulumi.Input.encodeList<GetAppRegistry, Map<String, dynamic>>(registries, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'revisionMode': revisionMode,
-      'secrets': pulumi.Input.encodeList<GetAppSecret, Map<String, dynamic>>(
-        secrets,
-        (value) => value.toMap(),
-      ),
+      'secrets': pulumi.Input.encodeList<GetAppSecret, Map<String, dynamic>>(secrets, (value) => value.toMap()),
       'tags': tags,
-      'templates':
-          pulumi.Input.encodeList<GetAppTemplate, Map<String, dynamic>>(
-            templates,
-            (value) => value.toMap(),
-          ),
+      'templates': pulumi.Input.encodeList<GetAppTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
       'workloadProfileName': workloadProfileName,
     };
   }
@@ -150,50 +117,25 @@ class GetAppResult {
     return GetAppResult(
       containerAppEnvironmentId: map['containerAppEnvironmentId'] as String,
       customDomainVerificationId: map['customDomainVerificationId'] as String,
-      daprs: pulumi.Input.decodeList<GetAppDapr>(
-        map['daprs']!,
-        (value) => GetAppDapr.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      daprs: pulumi.Input.decodeList<GetAppDapr>(map['daprs']!, (value) => GetAppDapr.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetAppIdentity>(
-        map['identities']!,
-        (value) =>
-            GetAppIdentity.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      ingresses: pulumi.Input.decodeList<GetAppIngress>(
-        map['ingresses']!,
-        (value) =>
-            GetAppIngress.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      identities: pulumi.Input.decodeList<GetAppIdentity>(map['identities']!, (value) => GetAppIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      ingresses: pulumi.Input.decodeList<GetAppIngress>(map['ingresses']!, (value) => GetAppIngress.fromMap((value as Map).cast<String, dynamic>())),
       latestRevisionFqdn: map['latestRevisionFqdn'] as String,
       latestRevisionName: map['latestRevisionName'] as String,
       location: map['location'] as String,
       maxInactiveRevisions: map['maxInactiveRevisions'] as int,
       name: map['name'] as String,
       outboundIpAddresses: (map['outboundIpAddresses'] as List).cast<String>(),
-      readSecrets: (() {
-        final guardedValue = map['readSecrets'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      registries: pulumi.Input.decodeList<GetAppRegistry>(
-        map['registries']!,
-        (value) =>
-            GetAppRegistry.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      readSecrets: (() { final guardedValue = map['readSecrets']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      registries: pulumi.Input.decodeList<GetAppRegistry>(map['registries']!, (value) => GetAppRegistry.fromMap((value as Map).cast<String, dynamic>())),
       resourceGroupName: map['resourceGroupName'] as String,
       revisionMode: map['revisionMode'] as String,
-      secrets: pulumi.Input.decodeList<GetAppSecret>(
-        map['secrets']!,
-        (value) => GetAppSecret.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      secrets: pulumi.Input.decodeList<GetAppSecret>(map['secrets']!, (value) => GetAppSecret.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
-      templates: pulumi.Input.decodeList<GetAppTemplate>(
-        map['templates']!,
-        (value) =>
-            GetAppTemplate.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      templates: pulumi.Input.decodeList<GetAppTemplate>(map['templates']!, (value) => GetAppTemplate.fromMap((value as Map).cast<String, dynamic>())),
       workloadProfileName: map['workloadProfileName'] as String,
     );
   }
 }
+

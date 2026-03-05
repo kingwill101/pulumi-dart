@@ -13,14 +13,15 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSe
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pid': pid};
+    return <String, dynamic>{
+      'pid': pid,
+    };
   }
 
-  factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection(
       pid: pulumi.Input.fromValue(map['pid'] as int),
     );
   }
 }
+

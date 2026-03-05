@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceMeshNetwork {
   /// Security group ID
   final pulumi.Input<String>? securityGroupId;
-
   /// VPC ID
   final pulumi.Input<String> vpcId;
-
   /// Virtual Switch ID
   final pulumi.Input<String> vswitcheList;
 
@@ -32,13 +30,10 @@ class ServiceMeshNetwork {
 
   factory ServiceMeshNetwork.fromMap(Map<String, dynamic> map) {
     return ServiceMeshNetwork(
-      securityGroupId: (() {
-        final guardedValue = map['securityGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      securityGroupId: (() { final guardedValue = map['securityGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
       vswitcheList: pulumi.Input.fromValue(map['vswitcheList'] as String),
     );
   }
 }
+

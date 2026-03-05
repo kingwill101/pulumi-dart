@@ -6,17 +6,22 @@ class CustomSeasonality {
   /// Forecasting seasonality mode.
   /// Expected value is 'Custom'.
   final pulumi.Input<String> mode;
-
   /// [Required] Seasonality value.
   final pulumi.Input<int> value;
 
   /// Creates a new [CustomSeasonality].
   /// [mode] Forecasting seasonality mode.
   /// [value] [Required] Seasonality value.
-  CustomSeasonality({required this.mode, required this.value});
+  CustomSeasonality({
+    required this.mode,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode, 'value': value};
+    return <String, dynamic>{
+      'mode': mode,
+      'value': value,
+    };
   }
 
   factory CustomSeasonality.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class CustomSeasonality {
     );
   }
 }
+

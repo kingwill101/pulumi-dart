@@ -8,14 +8,10 @@ import 'log_collection_job_session_response.dart';
 class EdgeMachineCollectLogJobReportedPropertiesResponse {
   /// Deployment status of job.
   final pulumi.Input<EceActionStatusResponse> deploymentStatus;
-
   /// Details of the log collection session.
-  final pulumi.Input<List<LogCollectionJobSessionResponse>>
-  logCollectionSessionDetails;
-
+  final pulumi.Input<List<LogCollectionJobSessionResponse>> logCollectionSessionDetails;
   /// The percentage of the job that is complete.
   final pulumi.Input<int> percentComplete;
-
   /// Validation status of job.
   final pulumi.Input<EceActionStatusResponse> validationStatus;
 
@@ -33,55 +29,20 @@ class EdgeMachineCollectLogJobReportedPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deploymentStatus':
-          pulumi.Input.mapInputValue<
-            EceActionStatusResponse,
-            Map<String, dynamic>
-          >(deploymentStatus, (value) => value.toMap()),
-      'logCollectionSessionDetails':
-          pulumi.Input.mapInputValue<
-            List<LogCollectionJobSessionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            logCollectionSessionDetails,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LogCollectionJobSessionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'deploymentStatus': pulumi.Input.mapInputValue<EceActionStatusResponse, Map<String, dynamic>>(deploymentStatus, (value) => value.toMap()),
+      'logCollectionSessionDetails': pulumi.Input.mapInputValue<List<LogCollectionJobSessionResponse>, List<Map<String, dynamic>>>(logCollectionSessionDetails, (value) => pulumi.Input.encodeList<LogCollectionJobSessionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'percentComplete': percentComplete,
-      'validationStatus':
-          pulumi.Input.mapInputValue<
-            EceActionStatusResponse,
-            Map<String, dynamic>
-          >(validationStatus, (value) => value.toMap()),
+      'validationStatus': pulumi.Input.mapInputValue<EceActionStatusResponse, Map<String, dynamic>>(validationStatus, (value) => value.toMap()),
     };
   }
 
-  factory EdgeMachineCollectLogJobReportedPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EdgeMachineCollectLogJobReportedPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EdgeMachineCollectLogJobReportedPropertiesResponse(
-      deploymentStatus: pulumi.Input.fromValue(
-        EceActionStatusResponse.fromMap(
-          (map['deploymentStatus']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      logCollectionSessionDetails: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<LogCollectionJobSessionResponse>(
-          map['logCollectionSessionDetails']!,
-          (value) => LogCollectionJobSessionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      deploymentStatus: pulumi.Input.fromValue(EceActionStatusResponse.fromMap((map['deploymentStatus']! as Map).cast<String, dynamic>())),
+      logCollectionSessionDetails: pulumi.Input.fromValue(pulumi.Input.decodeList<LogCollectionJobSessionResponse>(map['logCollectionSessionDetails']!, (value) => LogCollectionJobSessionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       percentComplete: pulumi.Input.fromValue(map['percentComplete'] as int),
-      validationStatus: pulumi.Input.fromValue(
-        EceActionStatusResponse.fromMap(
-          (map['validationStatus']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      validationStatus: pulumi.Input.fromValue(EceActionStatusResponse.fromMap((map['validationStatus']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

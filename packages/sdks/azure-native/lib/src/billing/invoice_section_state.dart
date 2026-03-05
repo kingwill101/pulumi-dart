@@ -20,3 +20,4 @@ enum InvoiceSectionState {
     throw ArgumentError('Unknown InvoiceSectionState value: $value');
   }
 }
+

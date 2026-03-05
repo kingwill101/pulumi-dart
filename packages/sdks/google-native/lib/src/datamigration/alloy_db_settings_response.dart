@@ -9,17 +9,13 @@ import 'user_password_response.dart';
 class AlloyDbSettingsResponse {
   /// Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
   final pulumi.Input<String> databaseVersion;
-
   /// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
   final pulumi.Input<EncryptionConfigResponse> encryptionConfig;
-
   /// Input only. Initial user to setup during cluster creation. Required.
   final pulumi.Input<UserPasswordResponse> initialUser;
-
   /// Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
   final pulumi.Input<Map<String, String>> labels;
   final pulumi.Input<PrimaryInstanceSettingsResponse> primaryInstanceSettings;
-
   /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
   final pulumi.Input<String> vpcNetwork;
 
@@ -42,22 +38,10 @@ class AlloyDbSettingsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'databaseVersion': databaseVersion,
-      'encryptionConfig':
-          pulumi.Input.mapInputValue<
-            EncryptionConfigResponse,
-            Map<String, dynamic>
-          >(encryptionConfig, (value) => value.toMap()),
-      'initialUser':
-          pulumi.Input.mapInputValue<
-            UserPasswordResponse,
-            Map<String, dynamic>
-          >(initialUser, (value) => value.toMap()),
+      'encryptionConfig': pulumi.Input.mapInputValue<EncryptionConfigResponse, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
+      'initialUser': pulumi.Input.mapInputValue<UserPasswordResponse, Map<String, dynamic>>(initialUser, (value) => value.toMap()),
       'labels': labels,
-      'primaryInstanceSettings':
-          pulumi.Input.mapInputValue<
-            PrimaryInstanceSettingsResponse,
-            Map<String, dynamic>
-          >(primaryInstanceSettings, (value) => value.toMap()),
+      'primaryInstanceSettings': pulumi.Input.mapInputValue<PrimaryInstanceSettingsResponse, Map<String, dynamic>>(primaryInstanceSettings, (value) => value.toMap()),
       'vpcNetwork': vpcNetwork,
     };
   }
@@ -65,25 +49,12 @@ class AlloyDbSettingsResponse {
   factory AlloyDbSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AlloyDbSettingsResponse(
       databaseVersion: pulumi.Input.fromValue(map['databaseVersion'] as String),
-      encryptionConfig: pulumi.Input.fromValue(
-        EncryptionConfigResponse.fromMap(
-          (map['encryptionConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      initialUser: pulumi.Input.fromValue(
-        UserPasswordResponse.fromMap(
-          (map['initialUser']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
-      primaryInstanceSettings: pulumi.Input.fromValue(
-        PrimaryInstanceSettingsResponse.fromMap(
-          (map['primaryInstanceSettings']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      encryptionConfig: pulumi.Input.fromValue(EncryptionConfigResponse.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())),
+      initialUser: pulumi.Input.fromValue(UserPasswordResponse.fromMap((map['initialUser']! as Map).cast<String, dynamic>())),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
+      primaryInstanceSettings: pulumi.Input.fromValue(PrimaryInstanceSettingsResponse.fromMap((map['primaryInstanceSettings']! as Map).cast<String, dynamic>())),
       vpcNetwork: pulumi.Input.fromValue(map['vpcNetwork'] as String),
     );
   }
 }
+

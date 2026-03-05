@@ -18,8 +18,7 @@ enum BackendServiceSessionAffinityComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown BackendServiceSessionAffinityComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown BackendServiceSessionAffinityComputeV1 value: $value');
   }
 }
+

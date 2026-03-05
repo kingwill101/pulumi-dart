@@ -7,16 +7,13 @@ enum EnterpriseCrmEventbusProtoLogSettingsSeedScope {
   const EnterpriseCrmEventbusProtoLogSettingsSeedScope(this.wireValue);
   final String wireValue;
 
-  static EnterpriseCrmEventbusProtoLogSettingsSeedScope fromValue(
-    String value,
-  ) {
+  static EnterpriseCrmEventbusProtoLogSettingsSeedScope fromValue(String value) {
     for (final item in EnterpriseCrmEventbusProtoLogSettingsSeedScope.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EnterpriseCrmEventbusProtoLogSettingsSeedScope value: $value',
-    );
+    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoLogSettingsSeedScope value: $value');
   }
 }
+

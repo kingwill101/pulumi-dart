@@ -7,50 +7,37 @@ import 'get_network_segment.dart';
 class GetNetworkResult {
   /// The administrative state of the network.
   final String adminStateUp;
-
   /// The set of string tags applied on the network.
   final List<String> allTags;
-
   /// The availability zone candidates for the network.
   final List<String> availabilityZoneHints;
-
   /// See Argument Reference above.
   final String? description;
-
   /// The network DNS domain. Available, when Neutron DNS extension
   /// is enabled
   final String dnsDomain;
-
   /// See Argument Reference above.
   final bool? external;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? matchingSubnetCidr;
-
   /// See Argument Reference above.
   final int? mtu;
-
   /// See Argument Reference above.
   final String? name;
   final String? networkId;
-
   /// See Argument Reference above.
   final String region;
-
   /// An array of one or more provider segment objects.
   final List<GetNetworkSegment> segments;
-
   /// Specifies whether the network resource can be accessed by any
   /// tenant or not.
   final String shared;
   final String? status;
-
   /// A list of subnet IDs belonging to the network.
   final List<String> subnets;
   final List<String>? tags;
   final String? tenantId;
-
   /// See Argument Reference above.
   final bool? transparentVlan;
 
@@ -110,11 +97,7 @@ class GetNetworkResult {
       'name': ?name,
       'networkId': ?networkId,
       'region': region,
-      'segments':
-          pulumi.Input.encodeList<GetNetworkSegment, Map<String, dynamic>>(
-            segments,
-            (value) => value.toMap(),
-          ),
+      'segments': pulumi.Input.encodeList<GetNetworkSegment, Map<String, dynamic>>(segments, (value) => value.toMap()),
       'shared': shared,
       'status': ?status,
       'subnets': subnets,
@@ -128,68 +111,24 @@ class GetNetworkResult {
     return GetNetworkResult(
       adminStateUp: map['adminStateUp'] as String,
       allTags: (map['allTags'] as List).cast<String>(),
-      availabilityZoneHints: (map['availabilityZoneHints'] as List)
-          .cast<String>(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      availabilityZoneHints: (map['availabilityZoneHints'] as List).cast<String>(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dnsDomain: map['dnsDomain'] as String,
-      external: (() {
-        final guardedValue = map['external'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      external: (() { final guardedValue = map['external']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
-      matchingSubnetCidr: (() {
-        final guardedValue = map['matchingSubnetCidr'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      mtu: (() {
-        final guardedValue = map['mtu'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      networkId: (() {
-        final guardedValue = map['networkId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      matchingSubnetCidr: (() { final guardedValue = map['matchingSubnetCidr']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: map['region'] as String,
-      segments: pulumi.Input.decodeList<GetNetworkSegment>(
-        map['segments']!,
-        (value) =>
-            GetNetworkSegment.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      segments: pulumi.Input.decodeList<GetNetworkSegment>(map['segments']!, (value) => GetNetworkSegment.fromMap((value as Map).cast<String, dynamic>())),
       shared: map['shared'] as String,
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       subnets: (map['subnets'] as List).cast<String>(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      transparentVlan: (() {
-        final guardedValue = map['transparentVlan'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      transparentVlan: (() { final guardedValue = map['transparentVlan']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }
+

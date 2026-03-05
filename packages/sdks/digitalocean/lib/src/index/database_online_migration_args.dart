@@ -10,13 +10,10 @@ import 'database_online_migration_source.dart';
 class DatabaseOnlineMigrationArgs {
   /// The ID of the target MySQL cluster.
   final pulumi.Input<String> clusterId;
-
   /// When set to true, enables SSL encryption when connecting to the source database.
   final pulumi.Input<bool>? disableSsl;
-
   /// A list of databases that should be ignored during migration.
   final pulumi.Input<List<String>>? ignoreDbs;
-
   /// Configuration for migration
   final pulumi.Input<DatabaseOnlineMigrationSource> source;
 
@@ -37,32 +34,17 @@ class DatabaseOnlineMigrationArgs {
       'clusterId': clusterId,
       'disableSsl': ?disableSsl,
       'ignoreDbs': ?ignoreDbs,
-      'source':
-          pulumi.Input.mapInputValue<
-            DatabaseOnlineMigrationSource,
-            Map<String, dynamic>
-          >(source, (value) => value.toMap()),
+      'source': pulumi.Input.mapInputValue<DatabaseOnlineMigrationSource, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
   factory DatabaseOnlineMigrationArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseOnlineMigrationArgs(
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
-      disableSsl: (() {
-        final guardedValue = map['disableSsl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ignoreDbs: (() {
-        final guardedValue = map['ignoreDbs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      source: pulumi.Input.fromValue(
-        DatabaseOnlineMigrationSource.fromMap(
-          (map['source']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      disableSsl: (() { final guardedValue = map['disableSsl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ignoreDbs: (() { final guardedValue = map['ignoreDbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      source: pulumi.Input.fromValue(DatabaseOnlineMigrationSource.fromMap((map['source']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

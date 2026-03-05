@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelConnectionArgs {
   /// Input only. Activation token for the channel. The token will be used during the creation of ChannelConnection to bind the channel with the provider project. This field will not be stored in the provider resource.
   final pulumi.Input<String>? activationToken;
-
   /// The name of the connected subscriber Channel. This is a weak reference to avoid cross project and cross accounts references. This must be in `projects/{project}/location/{location}/channels/{channel_id}` format.
   final pulumi.Input<String> channel;
-
   /// Required. The user-provided ID to be assigned to the channel connection.
   final pulumi.Input<String> channelConnectionId;
   final pulumi.Input<String>? location;
-
   /// The name of the connection.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -50,30 +47,13 @@ class ChannelConnectionArgs {
 
   factory ChannelConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ChannelConnectionArgs(
-      activationToken: (() {
-        final guardedValue = map['activationToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      activationToken: (() { final guardedValue = map['activationToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       channel: pulumi.Input.fromValue(map['channel'] as String),
-      channelConnectionId: pulumi.Input.fromValue(
-        map['channelConnectionId'] as String,
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      channelConnectionId: pulumi.Input.fromValue(map['channelConnectionId'] as String),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

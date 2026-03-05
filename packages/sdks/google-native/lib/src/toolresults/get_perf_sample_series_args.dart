@@ -41,13 +41,10 @@ class GetPerfSampleSeriesArgs {
     return GetPerfSampleSeriesArgs(
       executionId: pulumi.Input.fromValue(map['executionId'] as String),
       historyId: pulumi.Input.fromValue(map['historyId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sampleSeriesId: pulumi.Input.fromValue(map['sampleSeriesId'] as String),
       stepId: pulumi.Input.fromValue(map['stepId'] as String),
     );
   }
 }
+

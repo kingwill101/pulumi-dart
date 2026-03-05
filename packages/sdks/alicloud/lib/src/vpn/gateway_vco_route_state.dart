@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayVcoRouteState {
   /// The next hop of the destination route.
   final pulumi.Input<String>? nextHop;
-
   /// The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
   final pulumi.Input<String>? overlayMode;
-
   /// The destination network segment of the destination route.
   final pulumi.Input<String>? routeDest;
-
   /// The status of the vpn route entry.
   final pulumi.Input<String>? status;
-
   /// The id of the vpn attachment.
   final pulumi.Input<String>? vpnConnectionId;
-
   /// The weight value of the destination route. Valid values: `0`, `100`.
   final pulumi.Input<int>? weight;
 
@@ -51,36 +46,13 @@ class GatewayVcoRouteState {
 
   factory GatewayVcoRouteState.fromMap(Map<String, dynamic> map) {
     return GatewayVcoRouteState(
-      nextHop: (() {
-        final guardedValue = map['nextHop'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      overlayMode: (() {
-        final guardedValue = map['overlayMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routeDest: (() {
-        final guardedValue = map['routeDest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vpnConnectionId: (() {
-        final guardedValue = map['vpnConnectionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      weight: (() {
-        final guardedValue = map['weight'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      nextHop: (() { final guardedValue = map['nextHop']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      overlayMode: (() { final guardedValue = map['overlayMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routeDest: (() { final guardedValue = map['routeDest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vpnConnectionId: (() { final guardedValue = map['vpnConnectionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

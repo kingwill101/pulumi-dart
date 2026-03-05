@@ -8,21 +8,20 @@ class CxPageEntryFulfillmentMessageLiveAgentHandoff {
 
   /// Creates a new [CxPageEntryFulfillmentMessageLiveAgentHandoff].
   /// [metadata] Custom metadata. Dialogflow doesn't impose any structure on this.
-  CxPageEntryFulfillmentMessageLiveAgentHandoff({this.metadata});
+  CxPageEntryFulfillmentMessageLiveAgentHandoff({
+    this.metadata,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metadata': ?metadata};
+    return <String, dynamic>{
+      'metadata': ?metadata,
+    };
   }
 
-  factory CxPageEntryFulfillmentMessageLiveAgentHandoff.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxPageEntryFulfillmentMessageLiveAgentHandoff.fromMap(Map<String, dynamic> map) {
     return CxPageEntryFulfillmentMessageLiveAgentHandoff(
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

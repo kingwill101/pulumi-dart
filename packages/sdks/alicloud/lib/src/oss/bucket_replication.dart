@@ -669,39 +669,26 @@ import 'bucket_replication_state.dart';
 class BucketReplication extends pulumi.CustomResource {
   /// The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
   late final pulumi.Output<String?> action;
-
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// Specifies the destination for the rule. See `destination` below.
   late final pulumi.Output<BucketReplicationDestination> destination;
-
   /// Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
-  late final pulumi.Output<BucketReplicationEncryptionConfiguration?>
-  encryptionConfiguration;
-
+  late final pulumi.Output<BucketReplicationEncryptionConfiguration?> encryptionConfiguration;
   /// Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
   late final pulumi.Output<String?> historicalObjectReplication;
-
   /// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
   late final pulumi.Output<BucketReplicationPrefixSet?> prefixSet;
-
   /// Specifies the progress for querying the progress of a data replication task of a bucket.
   late final pulumi.Output<BucketReplicationProgress> progress;
-
   /// Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
   late final pulumi.Output<BucketReplicationRtc> rtc;
-
   /// The ID of the data replication rule.
   late final pulumi.Output<String> ruleId;
-
   /// Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
-  late final pulumi.Output<BucketReplicationSourceSelectionCriteria?>
-  sourceSelectionCriteria;
-
+  late final pulumi.Output<BucketReplicationSourceSelectionCriteria?> sourceSelectionCriteria;
   /// The status of the data replication task. Can be starting, doing and closing.
   late final pulumi.Output<String> status;
-
   /// Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
   late final pulumi.Output<String?> syncRole;
 
@@ -714,79 +701,21 @@ class BucketReplication extends pulumi.CustomResource {
     BucketReplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketReplication:BucketReplication',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketReplication:BucketReplication',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String?>('action');
     bucket = registerOutput<String>('bucket');
-    destination = registerOutput<BucketReplicationDestination>(
-      'destination',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketReplicationDestination.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptionConfiguration =
-        registerOutput<BucketReplicationEncryptionConfiguration?>(
-          'encryptionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return BucketReplicationEncryptionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    historicalObjectReplication = registerOutput<String?>(
-      'historicalObjectReplication',
-    );
-    prefixSet = registerOutput<BucketReplicationPrefixSet?>(
-      'prefixSet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketReplicationPrefixSet.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    progress = registerOutput<BucketReplicationProgress>(
-      'progress',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketReplicationProgress.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    rtc = registerOutput<BucketReplicationRtc>(
-      'rtc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketReplicationRtc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    destination = registerOutput<BucketReplicationDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionConfiguration = registerOutput<BucketReplicationEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    historicalObjectReplication = registerOutput<String?>('historicalObjectReplication');
+    prefixSet = registerOutput<BucketReplicationPrefixSet?>('prefixSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationPrefixSet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    progress = registerOutput<BucketReplicationProgress>('progress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationProgress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rtc = registerOutput<BucketReplicationRtc>('rtc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationRtc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ruleId = registerOutput<String>('ruleId');
-    sourceSelectionCriteria =
-        registerOutput<BucketReplicationSourceSelectionCriteria?>(
-          'sourceSelectionCriteria',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return BucketReplicationSourceSelectionCriteria.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    sourceSelectionCriteria = registerOutput<BucketReplicationSourceSelectionCriteria?>('sourceSelectionCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationSourceSelectionCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     syncRole = registerOutput<String?>('syncRole');
   }
@@ -809,79 +738,21 @@ class BucketReplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketReplication:BucketReplication',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketReplication:BucketReplication',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String?>('action');
     bucket = registerOutput<String>('bucket');
-    destination = registerOutput<BucketReplicationDestination>(
-      'destination',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketReplicationDestination.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptionConfiguration =
-        registerOutput<BucketReplicationEncryptionConfiguration?>(
-          'encryptionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return BucketReplicationEncryptionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    historicalObjectReplication = registerOutput<String?>(
-      'historicalObjectReplication',
-    );
-    prefixSet = registerOutput<BucketReplicationPrefixSet?>(
-      'prefixSet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketReplicationPrefixSet.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    progress = registerOutput<BucketReplicationProgress>(
-      'progress',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketReplicationProgress.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    rtc = registerOutput<BucketReplicationRtc>(
-      'rtc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketReplicationRtc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    destination = registerOutput<BucketReplicationDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionConfiguration = registerOutput<BucketReplicationEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    historicalObjectReplication = registerOutput<String?>('historicalObjectReplication');
+    prefixSet = registerOutput<BucketReplicationPrefixSet?>('prefixSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationPrefixSet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    progress = registerOutput<BucketReplicationProgress>('progress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationProgress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rtc = registerOutput<BucketReplicationRtc>('rtc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationRtc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ruleId = registerOutput<String>('ruleId');
-    sourceSelectionCriteria =
-        registerOutput<BucketReplicationSourceSelectionCriteria?>(
-          'sourceSelectionCriteria',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return BucketReplicationSourceSelectionCriteria.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    sourceSelectionCriteria = registerOutput<BucketReplicationSourceSelectionCriteria?>('sourceSelectionCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketReplicationSourceSelectionCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     syncRole = registerOutput<String?>('syncRole');
   }

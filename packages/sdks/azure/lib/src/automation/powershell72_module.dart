@@ -216,13 +216,10 @@ import 'powershell72_module_state.dart';
 class Powershell72Module extends pulumi.CustomResource {
   /// The ID of Automation Account to manage this Watcher. Changing this forces a new Watcher to be created.
   late final pulumi.Output<String> automationAccountId;
-
   /// A `module_link` block as defined below.
   late final pulumi.Output<Powershell72ModuleModuleLink> moduleLink;
-
   /// Specifies the name of the Module. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -235,22 +232,13 @@ class Powershell72Module extends pulumi.CustomResource {
     Powershell72ModuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/powershell72Module:Powershell72Module',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/powershell72Module:Powershell72Module',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountId = registerOutput<String>('automationAccountId');
-    moduleLink = registerOutput<Powershell72ModuleModuleLink>(
-      'moduleLink',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return Powershell72ModuleModuleLink.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    moduleLink = registerOutput<Powershell72ModuleModuleLink>('moduleLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Powershell72ModuleModuleLink.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -273,22 +261,13 @@ class Powershell72Module extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/powershell72Module:Powershell72Module',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/powershell72Module:Powershell72Module',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountId = registerOutput<String>('automationAccountId');
-    moduleLink = registerOutput<Powershell72ModuleModuleLink>(
-      'moduleLink',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return Powershell72ModuleModuleLink.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    moduleLink = registerOutput<Powershell72ModuleModuleLink>('moduleLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Powershell72ModuleModuleLink.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
   }

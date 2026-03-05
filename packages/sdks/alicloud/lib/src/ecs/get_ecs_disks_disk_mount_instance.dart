@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsDisksDiskMountInstance {
   /// A mount of time.
   final pulumi.Input<String> attachedTime;
-
   /// The mount point of the disk.
   final pulumi.Input<String> device;
-
   /// Filter the results by the specified ECS instance ID.
   final pulumi.Input<String> instanceId;
 
@@ -38,3 +36,4 @@ class GetEcsDisksDiskMountInstance {
     );
   }
 }
+

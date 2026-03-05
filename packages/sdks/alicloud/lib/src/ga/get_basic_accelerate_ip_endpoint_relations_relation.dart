@@ -5,37 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBasicAccelerateIpEndpointRelationsRelation {
   /// The ID of the Basic Accelerate IP.
   final pulumi.Input<String> accelerateIpId;
-
   /// The ID of the Global Accelerator Basic Accelerator instance.
   final pulumi.Input<String> acceleratorId;
-
   /// The name of the Basic Endpoint.
   final pulumi.Input<String> basicEndpointName;
-
   /// The address of the Basic Endpoint.
   final pulumi.Input<String> endpointAddress;
-
   /// The ID of the Basic Endpoint.
   final pulumi.Input<String> endpointId;
-
   /// The sub address of the Basic Endpoint.
   final pulumi.Input<String> endpointSubAddress;
-
   /// The sub address type of the Basic Endpoint.
   final pulumi.Input<String> endpointSubAddressType;
-
   /// The type of the Basic Endpoint.
   final pulumi.Input<String> endpointType;
-
   /// The zone id of the Basic Endpoint.
   final pulumi.Input<String> endpointZoneId;
-
   /// The id of the Global Accelerator Basic Accelerate Ip Endpoint Relation. It formats as `&lt;accelerator_id&gt;:&lt;accelerate_ip_id&gt;:&lt;endpoint_id&gt;`.
   final pulumi.Input<String> id;
-
   /// The address of the Basic Accelerate IP.
   final pulumi.Input<String> ipAddress;
-
   /// The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
   final pulumi.Input<String> status;
 
@@ -84,23 +73,15 @@ class GetBasicAccelerateIpEndpointRelationsRelation {
     };
   }
 
-  factory GetBasicAccelerateIpEndpointRelationsRelation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBasicAccelerateIpEndpointRelationsRelation.fromMap(Map<String, dynamic> map) {
     return GetBasicAccelerateIpEndpointRelationsRelation(
       accelerateIpId: pulumi.Input.fromValue(map['accelerateIpId'] as String),
       acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
-      basicEndpointName: pulumi.Input.fromValue(
-        map['basicEndpointName'] as String,
-      ),
+      basicEndpointName: pulumi.Input.fromValue(map['basicEndpointName'] as String),
       endpointAddress: pulumi.Input.fromValue(map['endpointAddress'] as String),
       endpointId: pulumi.Input.fromValue(map['endpointId'] as String),
-      endpointSubAddress: pulumi.Input.fromValue(
-        map['endpointSubAddress'] as String,
-      ),
-      endpointSubAddressType: pulumi.Input.fromValue(
-        map['endpointSubAddressType'] as String,
-      ),
+      endpointSubAddress: pulumi.Input.fromValue(map['endpointSubAddress'] as String),
+      endpointSubAddressType: pulumi.Input.fromValue(map['endpointSubAddressType'] as String),
       endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
       endpointZoneId: pulumi.Input.fromValue(map['endpointZoneId'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -109,3 +90,4 @@ class GetBasicAccelerateIpEndpointRelationsRelation {
     );
   }
 }
+

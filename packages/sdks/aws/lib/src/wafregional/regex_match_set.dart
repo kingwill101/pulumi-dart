@@ -209,10 +209,8 @@ import 'regex_match_set_state.dart';
 class RegexMatchSet extends pulumi.CustomResource {
   /// The name or description of the Regex Match Set.
   late final pulumi.Output<String> name;
-
   /// The regular expression pattern that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> regexMatchTuples;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -225,15 +223,13 @@ class RegexMatchSet extends pulumi.CustomResource {
     RegexMatchSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:wafregional/regexMatchSet:RegexMatchSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:wafregional/regexMatchSet:RegexMatchSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
-    regexMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
-      'regexMatchTuples',
-    );
+    regexMatchTuples = registerOutput<List<Map<String, dynamic>>?>('regexMatchTuples');
     region = registerOutput<String>('region');
   }
 
@@ -255,15 +251,13 @@ class RegexMatchSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:wafregional/regexMatchSet:RegexMatchSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:wafregional/regexMatchSet:RegexMatchSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
-    regexMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
-      'regexMatchTuples',
-    );
+    regexMatchTuples = registerOutput<List<Map<String, dynamic>>?>('regexMatchTuples');
     region = registerOutput<String>('region');
   }
 }

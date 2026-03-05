@@ -8,16 +8,12 @@ import 'azure_firewall_nat_rule.dart';
 class AzureFirewallNatRuleCollection {
   /// The action type of a NAT rule collection.
   final pulumi.Input<AzureFirewallNatRCAction>? action;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// The name of the resource that is unique within the Azure firewall. This name can be used to access the resource.
   final pulumi.Input<String>? name;
-
   /// Priority of the NAT rule collection resource.
   final pulumi.Input<int>? priority;
-
   /// Collection of rules used by a NAT rule collection.
   final pulumi.Input<List<AzureFirewallNatRule>>? rules;
 
@@ -37,67 +33,22 @@ class AzureFirewallNatRuleCollection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureFirewallNatRCAction,
-            Map<String, dynamic>
-          >(action, (value) => value.toMap()),
+      'action': ?pulumi.Input.mapOptionalInputValue<AzureFirewallNatRCAction, Map<String, dynamic>>(action, (value) => value.toMap()),
       'id': ?id,
       'name': ?name,
       'priority': ?priority,
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AzureFirewallNatRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AzureFirewallNatRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<AzureFirewallNatRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<AzureFirewallNatRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AzureFirewallNatRuleCollection.fromMap(Map<String, dynamic> map) {
     return AzureFirewallNatRuleCollection(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureFirewallNatRCAction.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AzureFirewallNatRule>(
-            guardedValue,
-            (value) => AzureFirewallNatRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureFirewallNatRCAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AzureFirewallNatRule>(guardedValue, (value) => AzureFirewallNatRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

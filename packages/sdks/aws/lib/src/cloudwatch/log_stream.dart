@@ -133,13 +133,10 @@ import 'log_stream_state.dart';
 class LogStream extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) specifying the log stream.
   late final pulumi.Output<String> arn;
-
   /// The name of the log group under which the log stream is to be created.
   late final pulumi.Output<String> logGroupName;
-
   /// The name of the log stream. Must not be longer than 512 characters and must not contain `:`
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -152,11 +149,11 @@ class LogStream extends pulumi.CustomResource {
     LogStreamArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/logStream:LogStream',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/logStream:LogStream',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     logGroupName = registerOutput<String>('logGroupName');
     this.name = registerOutput<String>('name');
@@ -181,11 +178,11 @@ class LogStream extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/logStream:LogStream',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/logStream:LogStream',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     logGroupName = registerOutput<String>('logGroupName');
     this.name = registerOutput<String>('name');

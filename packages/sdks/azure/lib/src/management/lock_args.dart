@@ -11,13 +11,10 @@ class LockArgs {
   ///
   /// &gt; **Note:** `CanNotDelete` means authorized users are able to read and modify the resources, but not delete. `ReadOnly` means authorized users can only read from a resource, but they can't modify or delete it.
   final pulumi.Input<String> lockLevel;
-
   /// Specifies the name of the Management Lock. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies some notes about the lock. Maximum of 512 characters. Changing this forces a new resource to be created.
   final pulumi.Input<String>? notes;
-
   /// Specifies the scope at which the Management Lock should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> scope;
 
@@ -45,17 +42,10 @@ class LockArgs {
   factory LockArgs.fromMap(Map<String, dynamic> map) {
     return LockArgs(
       lockLevel: pulumi.Input.fromValue(map['lockLevel'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      notes: (() {
-        final guardedValue = map['notes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

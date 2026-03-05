@@ -9,10 +9,14 @@ class WorkloadConfigResponse {
 
   /// Creates a new [WorkloadConfigResponse].
   /// [auditMode] Sets which mode of auditing should be used for the cluster's workloads.
-  WorkloadConfigResponse({required this.auditMode});
+  WorkloadConfigResponse({
+    required this.auditMode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'auditMode': auditMode};
+    return <String, dynamic>{
+      'auditMode': auditMode,
+    };
   }
 
   factory WorkloadConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class WorkloadConfigResponse {
     );
   }
 }
+

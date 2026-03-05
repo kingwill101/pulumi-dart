@@ -8,21 +8,20 @@ class ResourceSetResourceDnsTargetResourceTargetResourceNlbResource {
 
   /// Creates a new [ResourceSetResourceDnsTargetResourceTargetResourceNlbResource].
   /// [arn] NLB resource ARN.
-  ResourceSetResourceDnsTargetResourceTargetResourceNlbResource({this.arn});
+  ResourceSetResourceDnsTargetResourceTargetResourceNlbResource({
+    this.arn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': ?arn};
+    return <String, dynamic>{
+      'arn': ?arn,
+    };
   }
 
-  factory ResourceSetResourceDnsTargetResourceTargetResourceNlbResource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceSetResourceDnsTargetResourceTargetResourceNlbResource.fromMap(Map<String, dynamic> map) {
     return ResourceSetResourceDnsTargetResourceTargetResourceNlbResource(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

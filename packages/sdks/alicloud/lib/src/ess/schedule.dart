@@ -27,11 +27,11 @@ class Schedule extends pulumi.CustomResource {
     ScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/schedule:Schedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/schedule:Schedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String>('description');
     desiredCapacity = registerOutput<int?>('desiredCapacity');
     launchExpirationTime = registerOutput<int?>('launchExpirationTime');
@@ -65,11 +65,11 @@ class Schedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/schedule:Schedule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/schedule:Schedule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String>('description');
     desiredCapacity = registerOutput<int?>('desiredCapacity');
     launchExpirationTime = registerOutput<int?>('launchExpirationTime');

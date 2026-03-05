@@ -12,25 +12,20 @@ class AccessLevelsAccessLevelCustom {
 
   /// Creates a new [AccessLevelsAccessLevelCustom].
   /// [expr] Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-  AccessLevelsAccessLevelCustom({required this.expr});
+  AccessLevelsAccessLevelCustom({
+    required this.expr,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expr':
-          pulumi.Input.mapInputValue<
-            AccessLevelsAccessLevelCustomExpr,
-            Map<String, dynamic>
-          >(expr, (value) => value.toMap()),
+      'expr': pulumi.Input.mapInputValue<AccessLevelsAccessLevelCustomExpr, Map<String, dynamic>>(expr, (value) => value.toMap()),
     };
   }
 
   factory AccessLevelsAccessLevelCustom.fromMap(Map<String, dynamic> map) {
     return AccessLevelsAccessLevelCustom(
-      expr: pulumi.Input.fromValue(
-        AccessLevelsAccessLevelCustomExpr.fromMap(
-          (map['expr']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      expr: pulumi.Input.fromValue(AccessLevelsAccessLevelCustomExpr.fromMap((map['expr']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

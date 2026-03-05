@@ -8,21 +8,20 @@ class GetGradientaiAgentsAgentChildAgentApiKey {
 
   /// Creates a new [GetGradientaiAgentsAgentChildAgentApiKey].
   /// [apiKey] API Key value
-  GetGradientaiAgentsAgentChildAgentApiKey({this.apiKey});
+  GetGradientaiAgentsAgentChildAgentApiKey({
+    this.apiKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'apiKey': ?apiKey};
+    return <String, dynamic>{
+      'apiKey': ?apiKey,
+    };
   }
 
-  factory GetGradientaiAgentsAgentChildAgentApiKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGradientaiAgentsAgentChildAgentApiKey.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsAgentChildAgentApiKey(
-      apiKey: (() {
-        final guardedValue = map['apiKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiKey: (() { final guardedValue = map['apiKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

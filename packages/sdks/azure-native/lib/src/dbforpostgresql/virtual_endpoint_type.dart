@@ -14,3 +14,4 @@ enum VirtualEndpointType {
     throw ArgumentError('Unknown VirtualEndpointType value: $value');
   }
 }
+

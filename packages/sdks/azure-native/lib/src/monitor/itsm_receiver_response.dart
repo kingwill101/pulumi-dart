@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ItsmReceiverResponse {
   /// Unique identification of ITSM connection among multiple defined in above workspace.
   final pulumi.Input<String> connectionId;
-
   /// The name of the Itsm receiver. Names must be unique across all receivers within an action group.
   final pulumi.Input<String> name;
-
   /// Region in which workspace resides. Supported values:'centralindia','japaneast','southeastasia','australiasoutheast','uksouth','westcentralus','canadacentral','eastus','westeurope'
   final pulumi.Input<String> region;
-
   /// JSON blob for the configurations of the ITSM action. CreateMultipleWorkItems option will be part of this blob as well.
   final pulumi.Input<String> ticketConfiguration;
-
   /// OMS LA instance identifier.
   final pulumi.Input<String> workspaceId;
 
@@ -48,10 +44,9 @@ class ItsmReceiverResponse {
       connectionId: pulumi.Input.fromValue(map['connectionId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       region: pulumi.Input.fromValue(map['region'] as String),
-      ticketConfiguration: pulumi.Input.fromValue(
-        map['ticketConfiguration'] as String,
-      ),
+      ticketConfiguration: pulumi.Input.fromValue(map['ticketConfiguration'] as String),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
+

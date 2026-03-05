@@ -29,19 +29,12 @@ class GetModelDeploymentMonitoringJobAiplatformV1beta1Args {
     };
   }
 
-  factory GetModelDeploymentMonitoringJobAiplatformV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetModelDeploymentMonitoringJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetModelDeploymentMonitoringJobAiplatformV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      modelDeploymentMonitoringJobId: pulumi.Input.fromValue(
-        map['modelDeploymentMonitoringJobId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      modelDeploymentMonitoringJobId: pulumi.Input.fromValue(map['modelDeploymentMonitoringJobId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum GraphQLApiVisibility {
     throw ArgumentError('Unknown GraphQLApiVisibility value: $value');
   }
 }
+

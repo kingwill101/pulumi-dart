@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPackageArgs {
   /// The ID of the Catalog this access package will be created in.
   final pulumi.Input<String> catalogId;
-
   /// The description of the access package.
   final pulumi.Input<String> description;
-
   /// The display name of the access package.
   final pulumi.Input<String> displayName;
-
   /// Whether the access package is hidden from the requestor.
   final pulumi.Input<bool>? hidden;
 
@@ -45,11 +42,8 @@ class AccessPackageArgs {
       catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      hidden: (() {
-        final guardedValue = map['hidden'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      hidden: (() { final guardedValue = map['hidden']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

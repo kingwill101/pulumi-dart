@@ -9,19 +9,20 @@ class AssessmentScopeParametersResponse {
 
   /// Creates a new [AssessmentScopeParametersResponse].
   /// [serverGroupId] Gets or sets the server group id.
-  AssessmentScopeParametersResponse({this.serverGroupId});
+  AssessmentScopeParametersResponse({
+    this.serverGroupId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serverGroupId': ?serverGroupId};
+    return <String, dynamic>{
+      'serverGroupId': ?serverGroupId,
+    };
   }
 
   factory AssessmentScopeParametersResponse.fromMap(Map<String, dynamic> map) {
     return AssessmentScopeParametersResponse(
-      serverGroupId: (() {
-        final guardedValue = map['serverGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serverGroupId: (() { final guardedValue = map['serverGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

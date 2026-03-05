@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeAffinityResponse {
   /// Key for NodeAffinity.
   final pulumi.Input<String> key;
-
   /// Operator for NodeAffinity.
   final pulumi.Input<String> operator;
-
   /// Values for NodeAffinity.
   final pulumi.Input<List<String>> values;
 
@@ -39,3 +37,4 @@ class NodeAffinityResponse {
     );
   }
 }
+

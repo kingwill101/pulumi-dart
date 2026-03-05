@@ -15,3 +15,4 @@ enum TokenType {
     throw ArgumentError('Unknown TokenType value: $value');
   }
 }
+

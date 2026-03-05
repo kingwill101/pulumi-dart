@@ -113,10 +113,8 @@ import 'account_management_state.dart';
 class AccountManagement extends pulumi.CustomResource {
   /// The name of the Account.
   late final pulumi.Output<String> name;
-
   /// The region code of the account.  One of: `us01`, `eu01`.
   late final pulumi.Output<String> region;
-
   /// Status of the account - active or canceled
   late final pulumi.Output<String> status;
 
@@ -129,11 +127,11 @@ class AccountManagement extends pulumi.CustomResource {
     AccountManagementArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/accountManagement:AccountManagement',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/accountManagement:AccountManagement',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
@@ -157,11 +155,11 @@ class AccountManagement extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/accountManagement:AccountManagement',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/accountManagement:AccountManagement',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');

@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SslVpnClientCertArgs {
   /// The name of the client certificate.
   final pulumi.Input<String>? name;
-
   /// The ID of the SSL-VPN server.
   final pulumi.Input<String> sslVpnServerId;
 
   /// Creates a new [SslVpnClientCertArgs].
   /// [name] The name of the client certificate.
   /// [sslVpnServerId] The ID of the SSL-VPN server.
-  SslVpnClientCertArgs({this.name, required this.sslVpnServerId});
+  SslVpnClientCertArgs({
+    this.name,
+    required this.sslVpnServerId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'sslVpnServerId': sslVpnServerId};
+    return <String, dynamic>{
+      'name': ?name,
+      'sslVpnServerId': sslVpnServerId,
+    };
   }
 
   factory SslVpnClientCertArgs.fromMap(Map<String, dynamic> map) {
     return SslVpnClientCertArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslVpnServerId: pulumi.Input.fromValue(map['sslVpnServerId'] as String),
     );
   }
 }
+

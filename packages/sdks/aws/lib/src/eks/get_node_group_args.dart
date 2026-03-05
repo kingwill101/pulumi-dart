@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNodeGroupArgs {
   /// Name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// Name of the node group.
   final pulumi.Input<String> nodeGroupName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value map of resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,18 +41,9 @@ class GetNodeGroupArgs {
     return GetNodeGroupArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       nodeGroupName: pulumi.Input.fromValue(map['nodeGroupName'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

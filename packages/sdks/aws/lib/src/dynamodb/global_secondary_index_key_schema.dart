@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlobalSecondaryIndexKeySchema {
   /// Name of the attribute.
   final pulumi.Input<String> attributeName;
-
   /// Type of the attribute in the index.
   /// Valid values are `S` (string), `N` (number), or `B` (binary).
   final pulumi.Input<String> attributeType;
-
   /// Key type.
   /// Valid values are `HASH` or `RANGE`.
   final pulumi.Input<String> keyType;
@@ -40,3 +38,4 @@ class GlobalSecondaryIndexKeySchema {
     );
   }
 }
+

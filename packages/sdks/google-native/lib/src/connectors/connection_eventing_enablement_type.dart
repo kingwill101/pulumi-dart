@@ -13,8 +13,7 @@ enum ConnectionEventingEnablementType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ConnectionEventingEnablementType value: $value',
-    );
+    throw ArgumentError('Unknown ConnectionEventingEnablementType value: $value');
   }
 }
+

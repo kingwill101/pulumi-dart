@@ -6,17 +6,13 @@ enum SecurityPolicyRuleRedirectOptionsTypeComputeBeta {
   const SecurityPolicyRuleRedirectOptionsTypeComputeBeta(this.wireValue);
   final String wireValue;
 
-  static SecurityPolicyRuleRedirectOptionsTypeComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in SecurityPolicyRuleRedirectOptionsTypeComputeBeta.values) {
+  static SecurityPolicyRuleRedirectOptionsTypeComputeBeta fromValue(String value) {
+    for (final item in SecurityPolicyRuleRedirectOptionsTypeComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SecurityPolicyRuleRedirectOptionsTypeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown SecurityPolicyRuleRedirectOptionsTypeComputeBeta value: $value');
   }
 }
+

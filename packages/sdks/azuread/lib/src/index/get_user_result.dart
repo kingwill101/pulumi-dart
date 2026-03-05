@@ -1,139 +1,96 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getUser.
 class GetUserResult {
   /// Whether or not the account is enabled.
   final bool accountEnabled;
-
   /// The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`.
   final String ageGroup;
-
   /// A list of telephone numbers for the user.
   final List<String> businessPhones;
-
   /// The city in which the user is located.
   final String city;
-
   /// The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
   final String companyName;
-
   /// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`.
   final String consentProvidedForMinor;
-
   /// The cost center associated with the user.
   final String costCenter;
-
   /// The country/region in which the user is located, e.g. `US` or `UK`.
   final String country;
-
   /// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
   final String creationType;
-
   /// The name for the department in which the user works.
   final String department;
-
   /// The display name of the user.
   final String displayName;
-
   /// The name of the division in which the user works.
   final String division;
-
   /// The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
   final String employeeHireDate;
-
   /// The employee identifier assigned to the user by the organisation.
   final String employeeId;
-
   /// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
   final String employeeType;
-
   /// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
   final String externalUserState;
-
   /// The fax number of the user.
   final String faxNumber;
-
   /// The given name (first name) of the user.
   final String givenName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user.
   final List<String> imAddresses;
-
   /// The user’s job title.
   final String jobTitle;
-
   /// The SMTP address for the user.
   final String mail;
-
   /// The email alias of the user.
   final String mailNickname;
-
   /// The object ID of the user's manager.
   final String managerId;
-
   /// The primary cellular telephone number for the user.
   final String mobilePhone;
-
   /// The object ID of the user.
   final String objectId;
-
   /// The office location in the user's place of business.
   final String officeLocation;
-
   /// The on-premises distinguished name (DN) of the user, synchronised from the on-premises directory when Azure AD Connect is used.
   final String onpremisesDistinguishedName;
-
   /// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
   final String onpremisesDomainName;
-
   /// The value used to associate an on-premise Active Directory user account with their Azure AD user object.
   final String onpremisesImmutableId;
-
   /// The on-premise SAM account name of the user.
   final String onpremisesSamAccountName;
-
   /// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
   final String onpremisesSecurityIdentifier;
-
   /// Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
   final bool onpremisesSyncEnabled;
-
   /// The on-premise user principal name of the user.
   final String onpremisesUserPrincipalName;
-
   /// A list of additional email addresses for the user.
   final List<String> otherMails;
-
   /// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
   final String postalCode;
-
   /// The user's preferred language, in ISO 639-1 notation.
   final String preferredLanguage;
-
   /// List of email addresses for the user that direct to the same mailbox.
   final List<String> proxyAddresses;
-
   /// Whether or not the Outlook global address list should include this user.
   final bool showInAddressList;
-
   /// The state or province in the user's address.
   final String state;
-
   /// The street address of the user's place of business.
   final String streetAddress;
-
   /// The user's surname (family name or last name).
   final String surname;
-
   /// The usage location of the user.
   final String usageLocation;
-
   /// The user principal name (UPN) of the user.
   final String userPrincipalName;
-
   /// The user type in the directory. Possible values are `Guest` or `Member`.
   final String userType;
 
@@ -314,8 +271,7 @@ class GetUserResult {
       onpremisesDomainName: map['onpremisesDomainName'] as String,
       onpremisesImmutableId: map['onpremisesImmutableId'] as String,
       onpremisesSamAccountName: map['onpremisesSamAccountName'] as String,
-      onpremisesSecurityIdentifier:
-          map['onpremisesSecurityIdentifier'] as String,
+      onpremisesSecurityIdentifier: map['onpremisesSecurityIdentifier'] as String,
       onpremisesSyncEnabled: map['onpremisesSyncEnabled'] as bool,
       onpremisesUserPrincipalName: map['onpremisesUserPrincipalName'] as String,
       otherMails: (map['otherMails'] as List).cast<String>(),
@@ -332,3 +288,4 @@ class GetUserResult {
     );
   }
 }
+

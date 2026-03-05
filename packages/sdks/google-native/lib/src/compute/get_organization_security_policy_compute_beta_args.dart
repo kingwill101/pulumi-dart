@@ -11,17 +11,20 @@ class GetOrganizationSecurityPolicyComputeBetaArgs {
 
   /// Creates a new [GetOrganizationSecurityPolicyComputeBetaArgs].
   /// [securityPolicy] Required.
-  GetOrganizationSecurityPolicyComputeBetaArgs({required this.securityPolicy});
+  GetOrganizationSecurityPolicyComputeBetaArgs({
+    required this.securityPolicy,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'securityPolicy': securityPolicy};
+    return <String, dynamic>{
+      'securityPolicy': securityPolicy,
+    };
   }
 
-  factory GetOrganizationSecurityPolicyComputeBetaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOrganizationSecurityPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationSecurityPolicyComputeBetaArgs(
       securityPolicy: pulumi.Input.fromValue(map['securityPolicy'] as String),
     );
   }
 }
+

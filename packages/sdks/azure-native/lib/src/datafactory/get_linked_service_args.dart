@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinkedServiceArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
-
   /// The linked service name.
   final pulumi.Input<String> linkedServiceName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetLinkedServiceArgs {
   factory GetLinkedServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetLinkedServiceArgs(
       factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
-      linkedServiceName: pulumi.Input.fromValue(
-        map['linkedServiceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      linkedServiceName: pulumi.Input.fromValue(map['linkedServiceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

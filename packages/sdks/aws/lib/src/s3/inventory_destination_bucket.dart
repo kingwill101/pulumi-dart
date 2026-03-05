@@ -6,16 +6,12 @@ import 'inventory_destination_bucket_encryption.dart';
 class InventoryDestinationBucket {
   /// ID of the account that owns the destination bucket. Recommended to be set to prevent problems if the destination bucket ownership changes.
   final pulumi.Input<String>? accountId;
-
   /// Amazon S3 bucket ARN of the destination.
   final pulumi.Input<String> bucketArn;
-
   /// Contains the type of server-side encryption to use to encrypt the inventory (documented below).
   final pulumi.Input<InventoryDestinationBucketEncryption>? encryption;
-
   /// Specifies the output format of the inventory results. Can be `CSV`, [`ORC`](https://orc.apache.org/) or [`Parquet`](https://parquet.apache.org/).
   final pulumi.Input<String> format;
-
   /// Prefix that is prepended to all inventory results.
   final pulumi.Input<String>? prefix;
 
@@ -37,11 +33,7 @@ class InventoryDestinationBucket {
     return <String, dynamic>{
       'accountId': ?accountId,
       'bucketArn': bucketArn,
-      'encryption':
-          ?pulumi.Input.mapOptionalInputValue<
-            InventoryDestinationBucketEncryption,
-            Map<String, dynamic>
-          >(encryption, (value) => value.toMap()),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<InventoryDestinationBucketEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'format': format,
       'prefix': ?prefix,
     };
@@ -49,27 +41,12 @@ class InventoryDestinationBucket {
 
   factory InventoryDestinationBucket.fromMap(Map<String, dynamic> map) {
     return InventoryDestinationBucket(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bucketArn: pulumi.Input.fromValue(map['bucketArn'] as String),
-      encryption: (() {
-        final guardedValue = map['encryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InventoryDestinationBucketEncryption.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InventoryDestinationBucketEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       format: pulumi.Input.fromValue(map['format'] as String),
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

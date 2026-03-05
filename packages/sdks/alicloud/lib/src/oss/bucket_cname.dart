@@ -276,22 +276,16 @@ import 'bucket_cname_state.dart';
 class BucketCname extends pulumi.CustomResource {
   /// The bucket to which the custom domain name belongs
   late final pulumi.Output<String> bucket;
-
   /// The container for the certificate configuration. See `certificate` below.
   late final pulumi.Output<BucketCnameCertificate?> certificate;
-
   /// Whether to delete the certificate.
   late final pulumi.Output<bool?> deleteCertificate;
-
   /// User-defined domain name
   late final pulumi.Output<String> domain;
-
   /// Whether to force overwrite certificate.
   late final pulumi.Output<bool?> force;
-
   /// The current certificate ID. If the Force value is not true, the OSS Server checks whether the value matches the current certificate ID. If the value does not match, an error is reported.
   late final pulumi.Output<String?> previousCertId;
-
   /// Cname status
   late final pulumi.Output<String> status;
 
@@ -304,22 +298,13 @@ class BucketCname extends pulumi.CustomResource {
     BucketCnameArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketCname:BucketCname',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketCname:BucketCname',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
-    certificate = registerOutput<BucketCnameCertificate?>(
-      'certificate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketCnameCertificate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    certificate = registerOutput<BucketCnameCertificate?>('certificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketCnameCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteCertificate = registerOutput<bool?>('deleteCertificate');
     domain = registerOutput<String>('domain');
     force = registerOutput<bool?>('force');
@@ -345,22 +330,13 @@ class BucketCname extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketCname:BucketCname',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketCname:BucketCname',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
-    certificate = registerOutput<BucketCnameCertificate?>(
-      'certificate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketCnameCertificate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    certificate = registerOutput<BucketCnameCertificate?>('certificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketCnameCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteCertificate = registerOutput<bool?>('deleteCertificate');
     domain = registerOutput<String>('domain');
     force = registerOutput<bool?>('force');

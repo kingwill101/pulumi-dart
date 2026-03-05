@@ -9,19 +9,20 @@ class MachineConfig {
 
   /// Creates a new [MachineConfig].
   /// [cpuCount] The number of CPU's in the VM instance.
-  MachineConfig({this.cpuCount});
+  MachineConfig({
+    this.cpuCount,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpuCount': ?cpuCount};
+    return <String, dynamic>{
+      'cpuCount': ?cpuCount,
+    };
   }
 
   factory MachineConfig.fromMap(Map<String, dynamic> map) {
     return MachineConfig(
-      cpuCount: (() {
-        final guardedValue = map['cpuCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      cpuCount: (() { final guardedValue = map['cpuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOrganizationNonMasterAccount {
   /// ARN of the root.
   final pulumi.Input<String> arn;
-
   /// Email of the account.
   final pulumi.Input<String> email;
-
   /// Identifier of the root.
   final pulumi.Input<String> id;
-
   /// Method by which the account joined the organization.
   final pulumi.Input<String> joinedMethod;
-
   /// Date the account became a part of the organization.
   final pulumi.Input<String> joinedTimestamp;
-
   /// Name of the policy type.
   final pulumi.Input<String> name;
-
   /// State of the account.
   final pulumi.Input<String> state;
-
   /// Status of the policy type as it relates to the associated root.
   final pulumi.Input<String> status;
 
@@ -73,3 +66,4 @@ class GetOrganizationNonMasterAccount {
     );
   }
 }
+

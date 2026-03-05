@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainersContainer {
   /// The data plane ID of the Storage Container.
   final pulumi.Input<String> dataPlaneId;
-
   /// The name of this Storage Container.
   final pulumi.Input<String> name;
-
   /// The resource manager ID of the Storage Container.
   final pulumi.Input<String> resourceManagerId;
 
@@ -34,9 +32,8 @@ class GetContainersContainer {
     return GetContainersContainer(
       dataPlaneId: pulumi.Input.fromValue(map['dataPlaneId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceManagerId: pulumi.Input.fromValue(
-        map['resourceManagerId'] as String,
-      ),
+      resourceManagerId: pulumi.Input.fromValue(map['resourceManagerId'] as String),
     );
   }
 }
+

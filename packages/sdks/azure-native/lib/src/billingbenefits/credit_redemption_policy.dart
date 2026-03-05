@@ -16,3 +16,4 @@ enum CreditRedemptionPolicy {
     throw ArgumentError('Unknown CreditRedemptionPolicy value: $value');
   }
 }
+

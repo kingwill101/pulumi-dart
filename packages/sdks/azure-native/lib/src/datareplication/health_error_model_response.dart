@@ -9,43 +9,30 @@ class HealthErrorModelResponse {
   /// uniquely identify the count of items affected by a specific category and severity
   /// as well as count of item affected by an specific issue.
   final pulumi.Input<List<String>>? affectedResourceCorrelationIds;
-
   /// Gets or sets the type of affected resource type.
   final pulumi.Input<String>? affectedResourceType;
-
   /// Gets or sets the error category.
   final pulumi.Input<String> category;
-
   /// Gets or sets possible causes of the error.
   final pulumi.Input<String> causes;
-
   /// Gets or sets a list of child health errors associated with this error.
   final pulumi.Input<List<InnerHealthErrorModelResponse>>? childErrors;
-
   /// Gets or sets the error code.
   final pulumi.Input<String> code;
-
   /// Gets or sets the error creation time.
   final pulumi.Input<String> creationTime;
-
   /// Gets or sets the health category.
   final pulumi.Input<String> healthCategory;
-
   /// Gets or sets a value indicating whether the error is customer resolvable.
   final pulumi.Input<bool> isCustomerResolvable;
-
   /// Gets or sets the error message.
   final pulumi.Input<String> message;
-
   /// Gets or sets recommended action to resolve the error.
   final pulumi.Input<String> recommendation;
-
   /// Gets or sets the error severity.
   final pulumi.Input<String> severity;
-
   /// Gets or sets the error source.
   final pulumi.Input<String> source;
-
   /// Gets or sets the error summary.
   final pulumi.Input<String> summary;
 
@@ -87,18 +74,7 @@ class HealthErrorModelResponse {
       'affectedResourceType': ?affectedResourceType,
       'category': category,
       'causes': causes,
-      'childErrors':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InnerHealthErrorModelResponse>,
-            List<Map<String, dynamic>>
-          >(
-            childErrors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InnerHealthErrorModelResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'childErrors': ?pulumi.Input.mapOptionalInputValue<List<InnerHealthErrorModelResponse>, List<Map<String, dynamic>>>(childErrors, (value) => pulumi.Input.encodeList<InnerHealthErrorModelResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'code': code,
       'creationTime': creationTime,
       'healthCategory': healthCategory,
@@ -113,36 +89,15 @@ class HealthErrorModelResponse {
 
   factory HealthErrorModelResponse.fromMap(Map<String, dynamic> map) {
     return HealthErrorModelResponse(
-      affectedResourceCorrelationIds: (() {
-        final guardedValue = map['affectedResourceCorrelationIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      affectedResourceType: (() {
-        final guardedValue = map['affectedResourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      affectedResourceCorrelationIds: (() { final guardedValue = map['affectedResourceCorrelationIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      affectedResourceType: (() { final guardedValue = map['affectedResourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       category: pulumi.Input.fromValue(map['category'] as String),
       causes: pulumi.Input.fromValue(map['causes'] as String),
-      childErrors: (() {
-        final guardedValue = map['childErrors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<InnerHealthErrorModelResponse>(
-            guardedValue,
-            (value) => InnerHealthErrorModelResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      childErrors: (() { final guardedValue = map['childErrors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InnerHealthErrorModelResponse>(guardedValue, (value) => InnerHealthErrorModelResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       code: pulumi.Input.fromValue(map['code'] as String),
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
       healthCategory: pulumi.Input.fromValue(map['healthCategory'] as String),
-      isCustomerResolvable: pulumi.Input.fromValue(
-        map['isCustomerResolvable'] as bool,
-      ),
+      isCustomerResolvable: pulumi.Input.fromValue(map['isCustomerResolvable'] as bool),
       message: pulumi.Input.fromValue(map['message'] as String),
       recommendation: pulumi.Input.fromValue(map['recommendation'] as String),
       severity: pulumi.Input.fromValue(map['severity'] as String),
@@ -151,3 +106,4 @@ class HealthErrorModelResponse {
     );
   }
 }
+

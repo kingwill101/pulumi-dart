@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getIdentityAwareProxyClient.
 class GetIdentityAwareProxyClientResult {
   /// Human-friendly name given to the OAuth client.
   final String displayName;
-
   /// Unique identifier of the OAuth client.
   final String name;
-
   /// Client secret of the OAuth client.
   final String secret;
 
@@ -37,3 +36,4 @@ class GetIdentityAwareProxyClientResult {
     );
   }
 }
+

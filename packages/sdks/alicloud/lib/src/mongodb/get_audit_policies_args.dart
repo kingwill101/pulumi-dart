@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAuditPoliciesArgs {
   /// The id of the db instance.
   final pulumi.Input<String> dbInstanceId;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
   /// Creates a new [GetAuditPoliciesArgs].
   /// [dbInstanceId] The id of the db instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAuditPoliciesArgs({required this.dbInstanceId, this.outputFile});
+  GetAuditPoliciesArgs({
+    required this.dbInstanceId,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,11 +30,8 @@ class GetAuditPoliciesArgs {
   factory GetAuditPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetAuditPoliciesArgs(
       dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

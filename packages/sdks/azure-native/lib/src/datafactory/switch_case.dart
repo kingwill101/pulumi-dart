@@ -7,52 +7,29 @@ import 'append_variable_activity.dart';
 class SwitchCase {
   /// List of activities to execute for satisfied case condition.
   final pulumi.Input<List<AppendVariableActivity>>? activities;
-
   /// Expected value that satisfies the expression result of the 'on' property.
   final pulumi.Input<String>? value;
 
   /// Creates a new [SwitchCase].
   /// [activities] List of activities to execute for satisfied case condition.
   /// [value] Expected value that satisfies the expression result of the 'on' property.
-  SwitchCase({this.activities, this.value});
+  SwitchCase({
+    this.activities,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activities':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AppendVariableActivity>,
-            List<Map<String, dynamic>>
-          >(
-            activities,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AppendVariableActivity,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'activities': ?pulumi.Input.mapOptionalInputValue<List<AppendVariableActivity>, List<Map<String, dynamic>>>(activities, (value) => pulumi.Input.encodeList<AppendVariableActivity, Map<String, dynamic>>(value, (value) => value.toMap())),
       'value': ?value,
     };
   }
 
   factory SwitchCase.fromMap(Map<String, dynamic> map) {
     return SwitchCase(
-      activities: (() {
-        final guardedValue = map['activities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AppendVariableActivity>(
-            guardedValue,
-            (value) => AppendVariableActivity.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      activities: (() { final guardedValue = map['activities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppendVariableActivity>(guardedValue, (value) => AppendVariableActivity.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,19 +8,20 @@ class DomainDevicesGraphicAudio {
 
   /// Creates a new [DomainDevicesGraphicAudio].
   /// [id] Defines a unique identifier for the audio configuration of the graphics device.
-  DomainDevicesGraphicAudio({this.id});
+  DomainDevicesGraphicAudio({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory DomainDevicesGraphicAudio.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicAudio(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

@@ -29,17 +29,12 @@ class GetEnvironmentDialogflowV2beta1Args {
     };
   }
 
-  factory GetEnvironmentDialogflowV2beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEnvironmentDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentDialogflowV2beta1Args(
       environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

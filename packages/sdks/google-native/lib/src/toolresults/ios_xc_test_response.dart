@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IosXcTestResponse {
   /// Bundle ID of the app.
   final pulumi.Input<String> bundleId;
-
   /// Xcode version that the test was run with.
   final pulumi.Input<String> xcodeVersion;
 
   /// Creates a new [IosXcTestResponse].
   /// [bundleId] Bundle ID of the app.
   /// [xcodeVersion] Xcode version that the test was run with.
-  IosXcTestResponse({required this.bundleId, required this.xcodeVersion});
+  IosXcTestResponse({
+    required this.bundleId,
+    required this.xcodeVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +31,4 @@ class IosXcTestResponse {
     );
   }
 }
+

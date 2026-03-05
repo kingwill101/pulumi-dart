@@ -25,8 +25,7 @@ enum InventoryConfigurationOptionalFields {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InventoryConfigurationOptionalFields value: $value',
-    );
+    throw ArgumentError('Unknown InventoryConfigurationOptionalFields value: $value');
   }
 }
+

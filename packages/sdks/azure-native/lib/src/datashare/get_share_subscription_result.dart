@@ -6,61 +6,42 @@ import 'system_data_response.dart';
 class GetShareSubscriptionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Time at which the share subscription was created.
   final String createdAt;
-
   /// The expiration date of the share subscription.
   final String? expirationDate;
-
   /// The resource id of the azure resource
   final String id;
-
   /// The invitation id.
   final String invitationId;
-
   /// Name of the azure resource
   final String name;
-
   /// Email of the provider who created the resource
   final String providerEmail;
-
   /// Name of the provider who created the resource
   final String providerName;
-
   /// Tenant name of the provider who created the resource
   final String providerTenantName;
-
   /// Provisioning state of the share subscription
   final String provisioningState;
-
   /// Description of share
   final String shareDescription;
-
   /// Kind of share
   final String shareKind;
-
   /// Name of the share
   final String shareName;
-
   /// Gets the current status of share subscription.
   final String shareSubscriptionStatus;
-
   /// Terms of a share
   final String shareTerms;
-
   /// Source share location.
   final String sourceShareLocation;
-
   /// System Data of the Azure resource.
   final SystemDataResponse systemData;
-
   /// Type of the azure resource
   final String type;
-
   /// Email of the user who created the resource
   final String userEmail;
-
   /// Name of the user who created the resource
   final String userName;
 
@@ -137,11 +118,7 @@ class GetShareSubscriptionResult {
     return GetShareSubscriptionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       createdAt: map['createdAt'] as String,
-      expirationDate: (() {
-        final guardedValue = map['expirationDate'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      expirationDate: (() { final guardedValue = map['expirationDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       invitationId: map['invitationId'] as String,
       name: map['name'] as String,
@@ -155,12 +132,11 @@ class GetShareSubscriptionResult {
       shareSubscriptionStatus: map['shareSubscriptionStatus'] as String,
       shareTerms: map['shareTerms'] as String,
       sourceShareLocation: map['sourceShareLocation'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       userEmail: map['userEmail'] as String,
       userName: map['userName'] as String,
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoggingRuleHiddenPropertyPathsResponse {
   /// The hidden paths on request.
   final pulumi.Input<List<String>>? hiddenPathsOnRequest;
-
   /// The hidden paths on response.
   final pulumi.Input<List<String>>? hiddenPathsOnResponse;
 
@@ -25,20 +24,11 @@ class LoggingRuleHiddenPropertyPathsResponse {
     };
   }
 
-  factory LoggingRuleHiddenPropertyPathsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoggingRuleHiddenPropertyPathsResponse.fromMap(Map<String, dynamic> map) {
     return LoggingRuleHiddenPropertyPathsResponse(
-      hiddenPathsOnRequest: (() {
-        final guardedValue = map['hiddenPathsOnRequest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      hiddenPathsOnResponse: (() {
-        final guardedValue = map['hiddenPathsOnResponse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      hiddenPathsOnRequest: (() { final guardedValue = map['hiddenPathsOnRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      hiddenPathsOnResponse: (() { final guardedValue = map['hiddenPathsOnResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

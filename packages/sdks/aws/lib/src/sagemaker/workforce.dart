@@ -383,25 +383,18 @@ import 'workforce_workforce_vpc_config.dart';
 class Workforce extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) assigned by AWS to this Workforce.
   late final pulumi.Output<String> arn;
-
   /// Use this parameter to configure an Amazon Cognito private workforce. A single Cognito workforce is created using and corresponds to a single Amazon Cognito user pool. Conflicts with `oidc_config`. see Cognito Config details below.
   late final pulumi.Output<WorkforceCognitoConfig?> cognitoConfig;
-
   /// Use this parameter to configure a private workforce using your own OIDC Identity Provider. Conflicts with `cognito_config`. see OIDC Config details below.
   late final pulumi.Output<WorkforceOidcConfig?> oidcConfig;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A list of IP address ranges Used to create an allow list of IP addresses for a private workforce. By default, a workforce isn't restricted to specific IP addresses. see Source Ip Config details below.
   late final pulumi.Output<WorkforceSourceIpConfig> sourceIpConfig;
-
   /// The subdomain for your OIDC Identity Provider.
   late final pulumi.Output<String> subdomain;
-
   /// The name of the Workforce (must be unique).
   late final pulumi.Output<String> workforceName;
-
   /// configure a workforce using VPC. see Workforce VPC Config details below.
   late final pulumi.Output<WorkforceWorkforceVpcConfig?> workforceVpcConfig;
 
@@ -414,55 +407,19 @@ class Workforce extends pulumi.CustomResource {
     WorkforceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/workforce:Workforce',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/workforce:Workforce',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    cognitoConfig = registerOutput<WorkforceCognitoConfig?>(
-      'cognitoConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkforceCognitoConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    oidcConfig = registerOutput<WorkforceOidcConfig?>(
-      'oidcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkforceOidcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cognitoConfig = registerOutput<WorkforceCognitoConfig?>('cognitoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceCognitoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    oidcConfig = registerOutput<WorkforceOidcConfig?>('oidcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceOidcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    sourceIpConfig = registerOutput<WorkforceSourceIpConfig>(
-      'sourceIpConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkforceSourceIpConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sourceIpConfig = registerOutput<WorkforceSourceIpConfig>('sourceIpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceSourceIpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subdomain = registerOutput<String>('subdomain');
     workforceName = registerOutput<String>('workforceName');
-    workforceVpcConfig = registerOutput<WorkforceWorkforceVpcConfig?>(
-      'workforceVpcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkforceWorkforceVpcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    workforceVpcConfig = registerOutput<WorkforceWorkforceVpcConfig?>('workforceVpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceWorkforceVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Workforce] resource's state with the given [name] and [id].
@@ -483,54 +440,18 @@ class Workforce extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/workforce:Workforce',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/workforce:Workforce',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    cognitoConfig = registerOutput<WorkforceCognitoConfig?>(
-      'cognitoConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkforceCognitoConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    oidcConfig = registerOutput<WorkforceOidcConfig?>(
-      'oidcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkforceOidcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cognitoConfig = registerOutput<WorkforceCognitoConfig?>('cognitoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceCognitoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    oidcConfig = registerOutput<WorkforceOidcConfig?>('oidcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceOidcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    sourceIpConfig = registerOutput<WorkforceSourceIpConfig>(
-      'sourceIpConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkforceSourceIpConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sourceIpConfig = registerOutput<WorkforceSourceIpConfig>('sourceIpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceSourceIpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subdomain = registerOutput<String>('subdomain');
     workforceName = registerOutput<String>('workforceName');
-    workforceVpcConfig = registerOutput<WorkforceWorkforceVpcConfig?>(
-      'workforceVpcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkforceWorkforceVpcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    workforceVpcConfig = registerOutput<WorkforceWorkforceVpcConfig?>('workforceVpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceWorkforceVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

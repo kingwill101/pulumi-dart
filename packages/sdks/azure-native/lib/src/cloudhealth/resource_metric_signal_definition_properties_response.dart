@@ -7,44 +7,31 @@ import 'evaluation_rule_response.dart';
 class ResourceMetricSignalDefinitionPropertiesResponse {
   /// Type of aggregation to apply to the metric
   final pulumi.Input<String> aggregationType;
-
   /// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
   final pulumi.Input<String>? dataUnit;
-
   /// Date when the signal definition was (soft-)deleted
   final pulumi.Input<String> deletionDate;
-
   /// Optional: Dimension to split by
   final pulumi.Input<String>? dimension;
-
   /// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
   final pulumi.Input<String>? dimensionFilter;
-
   /// Display name
   final pulumi.Input<String>? displayName;
-
   /// Evaluation rules for the signal definition
   final pulumi.Input<EvaluationRuleResponse> evaluationRules;
-
   /// Optional set of labels (key-value pairs)
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Name of the metric
   final pulumi.Input<String> metricName;
-
   /// Metric namespace
   final pulumi.Input<String> metricNamespace;
-
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
-
   /// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
   final pulumi.Input<String>? refreshInterval;
-
   /// Supported signal kinds as discriminator
   /// Expected value is 'AzureResourceMetric'.
   final pulumi.Input<String> signalKind;
-
   /// Time range of signal. ISO duration format like PT10M.
   final pulumi.Input<String> timeGrain;
 
@@ -88,11 +75,7 @@ class ResourceMetricSignalDefinitionPropertiesResponse {
       'dimension': ?dimension,
       'dimensionFilter': ?dimensionFilter,
       'displayName': ?displayName,
-      'evaluationRules':
-          pulumi.Input.mapInputValue<
-            EvaluationRuleResponse,
-            Map<String, dynamic>
-          >(evaluationRules, (value) => value.toMap()),
+      'evaluationRules': pulumi.Input.mapInputValue<EvaluationRuleResponse, Map<String, dynamic>>(evaluationRules, (value) => value.toMap()),
       'labels': ?labels,
       'metricName': metricName,
       'metricNamespace': metricNamespace,
@@ -103,56 +86,23 @@ class ResourceMetricSignalDefinitionPropertiesResponse {
     };
   }
 
-  factory ResourceMetricSignalDefinitionPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceMetricSignalDefinitionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ResourceMetricSignalDefinitionPropertiesResponse(
       aggregationType: pulumi.Input.fromValue(map['aggregationType'] as String),
-      dataUnit: (() {
-        final guardedValue = map['dataUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataUnit: (() { final guardedValue = map['dataUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionDate: pulumi.Input.fromValue(map['deletionDate'] as String),
-      dimension: (() {
-        final guardedValue = map['dimension'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dimensionFilter: (() {
-        final guardedValue = map['dimensionFilter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      evaluationRules: pulumi.Input.fromValue(
-        EvaluationRuleResponse.fromMap(
-          (map['evaluationRules']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      dimension: (() { final guardedValue = map['dimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dimensionFilter: (() { final guardedValue = map['dimensionFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      evaluationRules: pulumi.Input.fromValue(EvaluationRuleResponse.fromMap((map['evaluationRules']! as Map).cast<String, dynamic>())),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       metricName: pulumi.Input.fromValue(map['metricName'] as String),
       metricNamespace: pulumi.Input.fromValue(map['metricNamespace'] as String),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      refreshInterval: (() {
-        final guardedValue = map['refreshInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      refreshInterval: (() { final guardedValue = map['refreshInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       signalKind: pulumi.Input.fromValue(map['signalKind'] as String),
       timeGrain: pulumi.Input.fromValue(map['timeGrain'] as String),
     );
   }
 }
+

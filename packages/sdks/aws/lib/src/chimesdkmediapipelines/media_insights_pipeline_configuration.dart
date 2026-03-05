@@ -1843,25 +1843,16 @@ import 'media_insights_pipeline_configuration_state.dart';
 class MediaInsightsPipelineConfiguration extends pulumi.CustomResource {
   /// ARN of the Media Insights Pipeline Configuration.
   late final pulumi.Output<String> arn;
-
   /// Collection of processors and sinks to transform media and deliver data.
   late final pulumi.Output<List<Map<String, dynamic>>> elements;
-
   /// Configuration name.
   late final pulumi.Output<String> name;
-
   /// Configuration for real-time alert rules to send EventBridge notifications when certain conditions are met.
-  late final pulumi.Output<
-    MediaInsightsPipelineConfigurationRealTimeAlertConfiguration?
-  >
-  realTimeAlertConfiguration;
-
+  late final pulumi.Output<MediaInsightsPipelineConfigurationRealTimeAlertConfiguration?> realTimeAlertConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of IAM Role used by service to invoke processors and sinks specified by configuration elements.
   late final pulumi.Output<String> resourceAccessRoleArn;
-
   /// Key-value map of tags for the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -1875,27 +1866,15 @@ class MediaInsightsPipelineConfiguration extends pulumi.CustomResource {
     MediaInsightsPipelineConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:chimesdkmediapipelines/mediaInsightsPipelineConfiguration:MediaInsightsPipelineConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:chimesdkmediapipelines/mediaInsightsPipelineConfiguration:MediaInsightsPipelineConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     elements = registerOutput<List<Map<String, dynamic>>>('elements');
     this.name = registerOutput<String>('name');
-    realTimeAlertConfiguration =
-        registerOutput<
-          MediaInsightsPipelineConfigurationRealTimeAlertConfiguration?
-        >(
-          'realTimeAlertConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MediaInsightsPipelineConfigurationRealTimeAlertConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    realTimeAlertConfiguration = registerOutput<MediaInsightsPipelineConfigurationRealTimeAlertConfiguration?>('realTimeAlertConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MediaInsightsPipelineConfigurationRealTimeAlertConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     resourceAccessRoleArn = registerOutput<String>('resourceAccessRoleArn');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1920,27 +1899,15 @@ class MediaInsightsPipelineConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:chimesdkmediapipelines/mediaInsightsPipelineConfiguration:MediaInsightsPipelineConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:chimesdkmediapipelines/mediaInsightsPipelineConfiguration:MediaInsightsPipelineConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     elements = registerOutput<List<Map<String, dynamic>>>('elements');
     this.name = registerOutput<String>('name');
-    realTimeAlertConfiguration =
-        registerOutput<
-          MediaInsightsPipelineConfigurationRealTimeAlertConfiguration?
-        >(
-          'realTimeAlertConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MediaInsightsPipelineConfigurationRealTimeAlertConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    realTimeAlertConfiguration = registerOutput<MediaInsightsPipelineConfigurationRealTimeAlertConfiguration?>('realTimeAlertConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MediaInsightsPipelineConfigurationRealTimeAlertConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     resourceAccessRoleArn = registerOutput<String>('resourceAccessRoleArn');
     tags = registerOutput<Map<String, String>?>('tags');

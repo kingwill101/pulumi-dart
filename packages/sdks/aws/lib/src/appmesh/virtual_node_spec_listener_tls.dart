@@ -7,10 +7,8 @@ import 'virtual_node_spec_listener_tls_validation.dart';
 class VirtualNodeSpecListenerTls {
   /// Listener's TLS certificate.
   final pulumi.Input<VirtualNodeSpecListenerTlsCertificate> certificate;
-
   /// Listener's TLS mode. Valid values: `DISABLED`, `PERMISSIVE`, `STRICT`.
   final pulumi.Input<String> mode;
-
   /// Listener's Transport Layer Security (TLS) validation context.
   final pulumi.Input<VirtualNodeSpecListenerTlsValidation>? validation;
 
@@ -26,37 +24,18 @@ class VirtualNodeSpecListenerTls {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificate':
-          pulumi.Input.mapInputValue<
-            VirtualNodeSpecListenerTlsCertificate,
-            Map<String, dynamic>
-          >(certificate, (value) => value.toMap()),
+      'certificate': pulumi.Input.mapInputValue<VirtualNodeSpecListenerTlsCertificate, Map<String, dynamic>>(certificate, (value) => value.toMap()),
       'mode': mode,
-      'validation':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualNodeSpecListenerTlsValidation,
-            Map<String, dynamic>
-          >(validation, (value) => value.toMap()),
+      'validation': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecListenerTlsValidation, Map<String, dynamic>>(validation, (value) => value.toMap()),
     };
   }
 
   factory VirtualNodeSpecListenerTls.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTls(
-      certificate: pulumi.Input.fromValue(
-        VirtualNodeSpecListenerTlsCertificate.fromMap(
-          (map['certificate']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      certificate: pulumi.Input.fromValue(VirtualNodeSpecListenerTlsCertificate.fromMap((map['certificate']! as Map).cast<String, dynamic>())),
       mode: pulumi.Input.fromValue(map['mode'] as String),
-      validation: (() {
-        final guardedValue = map['validation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualNodeSpecListenerTlsValidation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      validation: (() { final guardedValue = map['validation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNodeSpecListenerTlsValidation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

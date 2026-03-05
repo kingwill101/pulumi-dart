@@ -18,11 +18,11 @@ class DeliveryPipelineIamPolicy extends pulumi.CustomResource {
     DeliveryPipelineIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -48,11 +48,11 @@ class DeliveryPipelineIamPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

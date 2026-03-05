@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CidrBlockResponseComposerV1beta1 {
   /// CIDR block that must be specified in CIDR notation.
   final pulumi.Input<String> cidrBlock;
-
   /// User-defined name that identifies the CIDR block.
   final pulumi.Input<String> displayName;
 
@@ -32,3 +31,4 @@ class CidrBlockResponseComposerV1beta1 {
     );
   }
 }
+

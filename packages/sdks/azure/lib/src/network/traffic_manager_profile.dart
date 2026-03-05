@@ -295,30 +295,22 @@ import 'traffic_manager_profile_state.dart';
 class TrafficManagerProfile extends pulumi.CustomResource {
   /// This block specifies the DNS configuration of the Profile. One `dns_config` block as defined below.
   late final pulumi.Output<TrafficManagerProfileDnsConfig> dnsConfig;
-
   /// The FQDN of the created Profile.
   late final pulumi.Output<String> fqdn;
-
   /// The amount of endpoints to return for DNS queries to this Profile. Possible values range from `1` to `8`.
   ///
   /// &gt; **Note:** `max_return` must be set when the `traffic_routing_method` is `MultiValue`.
   late final pulumi.Output<int?> maxReturn;
-
   /// This block specifies the Endpoint monitoring configuration for the Profile. One `monitor_config` block as defined below.
   late final pulumi.Output<TrafficManagerProfileMonitorConfig> monitorConfig;
-
   /// The name of the Traffic Manager profile. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The status of the profile, can be set to either `Enabled` or `Disabled`. Defaults to `Enabled`.
   late final pulumi.Output<String?> profileStatus;
-
   /// The name of the resource group in which to create the Traffic Manager profile. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the algorithm used to route traffic. Possible values are `Geographic`, `Weighted`, `Performance`, `Priority`, `Subnet` and `MultiValue`.
   /// * `Geographic` - Traffic is routed based on Geographic regions specified in the Endpoint.
   /// * `MultiValue` - All healthy Endpoints are returned.  MultiValue routing method works only if all the endpoints of type `External` and are specified as IPv4 or IPv6 addresses.
@@ -327,7 +319,6 @@ class TrafficManagerProfile extends pulumi.CustomResource {
   /// * `Subnet` - Traffic is routed based on a mapping of sets of end-user IP address ranges to a specific Endpoint within a Traffic Manager profile.
   /// * `Weighted` - Traffic is spread across Endpoints proportional to their `weight` value.
   late final pulumi.Output<String> trafficRoutingMethod;
-
   /// Indicates whether Traffic View is enabled for the Traffic Manager profile.
   late final pulumi.Output<bool?> trafficViewEnabled;
 
@@ -340,33 +331,15 @@ class TrafficManagerProfile extends pulumi.CustomResource {
     TrafficManagerProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/trafficManagerProfile:TrafficManagerProfile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    dnsConfig = registerOutput<TrafficManagerProfileDnsConfig>(
-      'dnsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TrafficManagerProfileDnsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:network/trafficManagerProfile:TrafficManagerProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    dnsConfig = registerOutput<TrafficManagerProfileDnsConfig>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficManagerProfileDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fqdn = registerOutput<String>('fqdn');
     maxReturn = registerOutput<int?>('maxReturn');
-    monitorConfig = registerOutput<TrafficManagerProfileMonitorConfig>(
-      'monitorConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TrafficManagerProfileMonitorConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monitorConfig = registerOutput<TrafficManagerProfileMonitorConfig>('monitorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficManagerProfileMonitorConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     profileStatus = registerOutput<String?>('profileStatus');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -393,33 +366,15 @@ class TrafficManagerProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/trafficManagerProfile:TrafficManagerProfile',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    dnsConfig = registerOutput<TrafficManagerProfileDnsConfig>(
-      'dnsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TrafficManagerProfileDnsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:network/trafficManagerProfile:TrafficManagerProfile',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    dnsConfig = registerOutput<TrafficManagerProfileDnsConfig>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficManagerProfileDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fqdn = registerOutput<String>('fqdn');
     maxReturn = registerOutput<int?>('maxReturn');
-    monitorConfig = registerOutput<TrafficManagerProfileMonitorConfig>(
-      'monitorConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TrafficManagerProfileMonitorConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monitorConfig = registerOutput<TrafficManagerProfileMonitorConfig>('monitorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficManagerProfileMonitorConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     profileStatus = registerOutput<String?>('profileStatus');
     resourceGroupName = registerOutput<String>('resourceGroupName');

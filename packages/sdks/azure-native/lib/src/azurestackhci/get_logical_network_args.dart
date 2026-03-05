@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLogicalNetworkArgs {
   /// Name of the logical network
   final pulumi.Input<String> logicalNetworkName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetLogicalNetworkArgs {
 
   factory GetLogicalNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetLogicalNetworkArgs(
-      logicalNetworkName: pulumi.Input.fromValue(
-        map['logicalNetworkName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      logicalNetworkName: pulumi.Input.fromValue(map['logicalNetworkName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

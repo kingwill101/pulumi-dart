@@ -9,21 +9,20 @@ class GoogleCloudContentwarehouseV1TextArray {
 
   /// Creates a new [GoogleCloudContentwarehouseV1TextArray].
   /// [values] List of text values.
-  GoogleCloudContentwarehouseV1TextArray({this.values});
+  GoogleCloudContentwarehouseV1TextArray({
+    this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': ?values};
+    return <String, dynamic>{
+      'values': ?values,
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1TextArray.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1TextArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1TextArray(
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

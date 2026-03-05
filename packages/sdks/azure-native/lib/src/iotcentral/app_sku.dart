@@ -16,3 +16,4 @@ enum AppSku {
     throw ArgumentError('Unknown AppSku value: $value');
   }
 }
+

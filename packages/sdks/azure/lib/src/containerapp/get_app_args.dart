@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppArgs {
   /// The name of the Container App.
   final pulumi.Input<String> name;
-
   /// Should the data source read the secrets from the Container App? Defaults to `true`.
   final pulumi.Input<bool>? readSecrets;
-
   /// The name of the Resource Group where this Container App exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,14 +35,9 @@ class GetAppArgs {
   factory GetAppArgs.fromMap(Map<String, dynamic> map) {
     return GetAppArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      readSecrets: (() {
-        final guardedValue = map['readSecrets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      readSecrets: (() { final guardedValue = map['readSecrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

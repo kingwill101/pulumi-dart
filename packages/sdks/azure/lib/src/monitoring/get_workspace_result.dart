@@ -1,27 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkspace.
 class GetWorkspaceResult {
   /// The ID of the managed default Data Collection Endpoint created with the Azure Monitor Workspace.
   final String defaultDataCollectionEndpointId;
-
   /// The ID of the managed default Data Collection Rule created with the Azure Monitor Workspace.
   final String defaultDataCollectionRuleId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region where the Workspace is located.
   final String location;
   final String name;
-
   /// Whether network access from public internet to the Workspace are allowed.
   final bool publicNetworkAccessEnabled;
-
   /// The query endpoint for the Azure Monitor Workspace.
   final String queryEndpoint;
   final String resourceGroupName;
-
   /// A mapping of tags that are assigned to the Workspace.
   final Map<String, String> tags;
 
@@ -63,8 +58,7 @@ class GetWorkspaceResult {
 
   factory GetWorkspaceResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceResult(
-      defaultDataCollectionEndpointId:
-          map['defaultDataCollectionEndpointId'] as String,
+      defaultDataCollectionEndpointId: map['defaultDataCollectionEndpointId'] as String,
       defaultDataCollectionRuleId: map['defaultDataCollectionRuleId'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
@@ -76,3 +70,4 @@ class GetWorkspaceResult {
     );
   }
 }
+

@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodePoolNodeConfigKubeletConfigEvictionSoft {
   /// Defines percentage of soft eviction threshold for imagefs.available.
   final pulumi.Input<String>? imagefsAvailable;
-
   /// Defines percentage of soft eviction threshold for imagefs.inodesFree.
   final pulumi.Input<String>? imagefsInodesFree;
-
   /// Defines quantity of soft eviction threshold for memory.available.
   final pulumi.Input<String>? memoryAvailable;
-
   /// Defines percentage of soft eviction threshold for nodefs.available.
   final pulumi.Input<String>? nodefsAvailable;
-
   /// Defines percentage of soft eviction threshold for nodefs.inodesFree.
   final pulumi.Input<String>? nodefsInodesFree;
-
   /// Defines percentage of soft eviction threshold for pid.available.
   final pulumi.Input<String>? pidAvailable;
 
@@ -48,40 +43,15 @@ class NodePoolNodeConfigKubeletConfigEvictionSoft {
     };
   }
 
-  factory NodePoolNodeConfigKubeletConfigEvictionSoft.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NodePoolNodeConfigKubeletConfigEvictionSoft.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigKubeletConfigEvictionSoft(
-      imagefsAvailable: (() {
-        final guardedValue = map['imagefsAvailable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      imagefsInodesFree: (() {
-        final guardedValue = map['imagefsInodesFree'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      memoryAvailable: (() {
-        final guardedValue = map['memoryAvailable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodefsAvailable: (() {
-        final guardedValue = map['nodefsAvailable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodefsInodesFree: (() {
-        final guardedValue = map['nodefsInodesFree'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pidAvailable: (() {
-        final guardedValue = map['pidAvailable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      imagefsAvailable: (() { final guardedValue = map['imagefsAvailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      imagefsInodesFree: (() { final guardedValue = map['imagefsInodesFree']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memoryAvailable: (() { final guardedValue = map['memoryAvailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodefsAvailable: (() { final guardedValue = map['nodefsAvailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodefsInodesFree: (() { final guardedValue = map['nodefsInodesFree']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pidAvailable: (() { final guardedValue = map['pidAvailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

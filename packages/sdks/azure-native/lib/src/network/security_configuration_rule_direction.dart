@@ -12,8 +12,7 @@ enum SecurityConfigurationRuleDirection {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SecurityConfigurationRuleDirection value: $value',
-    );
+    throw ArgumentError('Unknown SecurityConfigurationRuleDirection value: $value');
   }
 }
+

@@ -13,14 +13,15 @@ class GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': uri};
+    return <String, dynamic>{
+      'uri': uri,
+    };
   }
 
-  factory GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository.fromMap(Map<String, dynamic> map) {
     return GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository(
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

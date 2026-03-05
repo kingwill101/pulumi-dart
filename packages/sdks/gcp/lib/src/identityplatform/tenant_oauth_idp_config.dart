@@ -189,26 +189,19 @@ import 'tenant_oauth_idp_config_state.dart';
 class TenantOauthIdpConfig extends pulumi.CustomResource {
   /// The client id of an OAuth client.
   late final pulumi.Output<String> clientId;
-
   /// The client secret of the OAuth client, to enable OIDC code flow.
   late final pulumi.Output<String?> clientSecret;
-
   /// Human friendly display name.
   late final pulumi.Output<String> displayName;
-
   /// If this config allows users to sign in with the provider.
   late final pulumi.Output<bool?> enabled;
-
   /// For OIDC Idps, the issuer identifier.
   late final pulumi.Output<String> issuer;
-
   /// The name of the OauthIdpConfig. Must start with `oidc.`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The name of the tenant where this OIDC IDP configuration resource exists
   late final pulumi.Output<String> tenant;
 
@@ -221,11 +214,11 @@ class TenantOauthIdpConfig extends pulumi.CustomResource {
     TenantOauthIdpConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String?>('clientSecret');
     displayName = registerOutput<String>('displayName');
@@ -254,11 +247,11 @@ class TenantOauthIdpConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String?>('clientSecret');
     displayName = registerOutput<String>('displayName');

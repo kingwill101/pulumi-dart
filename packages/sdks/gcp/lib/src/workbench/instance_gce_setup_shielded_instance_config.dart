@@ -9,13 +9,11 @@ class InstanceGceSetupShieldedInstanceConfig {
   /// This baseline is initially derived from the implicitly trusted boot image
   /// when the VM instance is created. Enabled by default.
   final pulumi.Input<bool>? enableIntegrityMonitoring;
-
   /// Optional. Defines whether the VM instance has Secure Boot enabled.
   /// Secure Boot helps ensure that the system only runs authentic software by verifying
   /// the digital signature of all boot components, and halting the boot process
   /// if signature verification fails. Disabled by default.
   final pulumi.Input<bool>? enableSecureBoot;
-
   /// Optional. Defines whether the VM instance has the vTPM enabled.
   /// Enabled by default.
   final pulumi.Input<bool>? enableVtpm;
@@ -38,25 +36,12 @@ class InstanceGceSetupShieldedInstanceConfig {
     };
   }
 
-  factory InstanceGceSetupShieldedInstanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceGceSetupShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupShieldedInstanceConfig(
-      enableIntegrityMonitoring: (() {
-        final guardedValue = map['enableIntegrityMonitoring'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableSecureBoot: (() {
-        final guardedValue = map['enableSecureBoot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableVtpm: (() {
-        final guardedValue = map['enableVtpm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableIntegrityMonitoring: (() { final guardedValue = map['enableIntegrityMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableSecureBoot: (() { final guardedValue = map['enableSecureBoot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableVtpm: (() { final guardedValue = map['enableVtpm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum AsyncCommitModeIntent {
     throw ArgumentError('Unknown AsyncCommitModeIntent value: $value');
   }
 }
+

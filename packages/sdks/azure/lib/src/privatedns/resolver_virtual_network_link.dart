@@ -504,13 +504,10 @@ import 'resolver_virtual_network_link_state.dart';
 class ResolverVirtualNetworkLink extends pulumi.CustomResource {
   /// Specifies the ID of the Private DNS Resolver DNS Forwarding Ruleset. Changing this forces a new Private DNS Resolver Virtual Network Link to be created.
   late final pulumi.Output<String> dnsForwardingRulesetId;
-
   /// Metadata attached to the Private DNS Resolver Virtual Network Link.
   late final pulumi.Output<Map<String, String>?> metadata;
-
   /// Specifies the name which should be used for this Private DNS Resolver Virtual Network Link. Changing this forces a new Private DNS Resolver Virtual Network Link to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Virtual Network that is linked to the Private DNS Resolver Virtual Network Link. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualNetworkId;
 
@@ -523,11 +520,11 @@ class ResolverVirtualNetworkLink extends pulumi.CustomResource {
     ResolverVirtualNetworkLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/resolverVirtualNetworkLink:ResolverVirtualNetworkLink',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/resolverVirtualNetworkLink:ResolverVirtualNetworkLink',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dnsForwardingRulesetId = registerOutput<String>('dnsForwardingRulesetId');
     metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
@@ -552,11 +549,11 @@ class ResolverVirtualNetworkLink extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/resolverVirtualNetworkLink:ResolverVirtualNetworkLink',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/resolverVirtualNetworkLink:ResolverVirtualNetworkLink',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dnsForwardingRulesetId = registerOutput<String>('dnsForwardingRulesetId');
     metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');

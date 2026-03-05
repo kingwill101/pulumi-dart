@@ -20,37 +20,26 @@ import 'sku_response.dart';
 class ResourceType extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// The identity of the resource.
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// The kind of the resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource location
   late final pulumi.Output<String?> location;
-
   /// ID of the resource that manages this resource.
   late final pulumi.Output<String?> managedBy;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// The plan of the resource.
   late final pulumi.Output<PlanResponse?> plan;
-
   /// The resource properties.
   late final pulumi.Output<dynamic> properties;
-
   /// The SKU of the resource.
   late final pulumi.Output<SkuResponse?> sku;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -63,57 +52,21 @@ class ResourceType extends pulumi.CustomResource {
     ResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:resources:Resource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:resources:Resource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     location = registerOutput<String?>('location');
     managedBy = registerOutput<String?>('managedBy');
     this.name = registerOutput<String>('name');
-    plan = registerOutput<PlanResponse?>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     properties = registerOutput<dynamic>('properties');
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachinePropertiesResponseDynamicMemoryConfig {
   final pulumi.Input<double>? maximumMemoryMB;
   final pulumi.Input<double>? minimumMemoryMB;
-
   /// Defines the amount of extra memory that should be reserved for a virtual machine at runtime, as a percentage of the total memory that the virtual machine is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000.
   final pulumi.Input<int>? targetMemoryBuffer;
 
@@ -27,25 +26,12 @@ class VirtualMachinePropertiesResponseDynamicMemoryConfig {
     };
   }
 
-  factory VirtualMachinePropertiesResponseDynamicMemoryConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachinePropertiesResponseDynamicMemoryConfig.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesResponseDynamicMemoryConfig(
-      maximumMemoryMB: (() {
-        final guardedValue = map['maximumMemoryMB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      minimumMemoryMB: (() {
-        final guardedValue = map['minimumMemoryMB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      targetMemoryBuffer: (() {
-        final guardedValue = map['targetMemoryBuffer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maximumMemoryMB: (() { final guardedValue = map['maximumMemoryMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      minimumMemoryMB: (() { final guardedValue = map['minimumMemoryMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      targetMemoryBuffer: (() { final guardedValue = map['targetMemoryBuffer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

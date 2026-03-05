@@ -6,16 +6,13 @@ enum CVSSv3AttackComplexityContaineranalysisV1beta1 {
   const CVSSv3AttackComplexityContaineranalysisV1beta1(this.wireValue);
   final String wireValue;
 
-  static CVSSv3AttackComplexityContaineranalysisV1beta1 fromValue(
-    String value,
-  ) {
+  static CVSSv3AttackComplexityContaineranalysisV1beta1 fromValue(String value) {
     for (final item in CVSSv3AttackComplexityContaineranalysisV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown CVSSv3AttackComplexityContaineranalysisV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown CVSSv3AttackComplexityContaineranalysisV1beta1 value: $value');
   }
 }
+

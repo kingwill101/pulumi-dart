@@ -8,21 +8,20 @@ class InterconnectAttachmentL2ForwardingGeneveHeader {
 
   /// Creates a new [InterconnectAttachmentL2ForwardingGeneveHeader].
   /// [vni] VNI is a 24-bit unique virtual network identifier.
-  InterconnectAttachmentL2ForwardingGeneveHeader({this.vni});
+  InterconnectAttachmentL2ForwardingGeneveHeader({
+    this.vni,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vni': ?vni};
+    return <String, dynamic>{
+      'vni': ?vni,
+    };
   }
 
-  factory InterconnectAttachmentL2ForwardingGeneveHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InterconnectAttachmentL2ForwardingGeneveHeader.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentL2ForwardingGeneveHeader(
-      vni: (() {
-        final guardedValue = map['vni'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      vni: (() { final guardedValue = map['vni']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

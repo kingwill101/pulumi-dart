@@ -404,24 +404,18 @@ class CassandraTable extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** throughput has a maximum value of `1000000` unless a higher limit is requested via Azure Support
   late final pulumi.Output<int?> analyticalStorageTtl;
-
   /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   late final pulumi.Output<CassandraTableAutoscaleSettings?> autoscaleSettings;
-
   /// The ID of the Cosmos DB Cassandra Keyspace to create the table within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cassandraKeyspaceId;
-
   /// Time to live of the Cosmos DB Cassandra table. Possible values are at least `-1`. `-1` means the Cassandra table never expires.
   late final pulumi.Output<int?> defaultTtl;
-
   /// Specifies the name of the Cosmos DB Cassandra Table. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A `schema` block as defined below.
   late final pulumi.Output<CassandraTableSchema> schema;
-
   /// The throughput of Cassandra KeySpace (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
   late final pulumi.Output<int> throughput;
 
@@ -434,35 +428,17 @@ class CassandraTable extends pulumi.CustomResource {
     CassandraTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/cassandraTable:CassandraTable',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/cassandraTable:CassandraTable',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
-    autoscaleSettings = registerOutput<CassandraTableAutoscaleSettings?>(
-      'autoscaleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CassandraTableAutoscaleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    autoscaleSettings = registerOutput<CassandraTableAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraTableAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cassandraKeyspaceId = registerOutput<String>('cassandraKeyspaceId');
     defaultTtl = registerOutput<int?>('defaultTtl');
     this.name = registerOutput<String>('name');
-    schema = registerOutput<CassandraTableSchema>(
-      'schema',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CassandraTableSchema.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schema = registerOutput<CassandraTableSchema>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraTableSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     throughput = registerOutput<int>('throughput');
   }
 
@@ -484,35 +460,17 @@ class CassandraTable extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/cassandraTable:CassandraTable',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/cassandraTable:CassandraTable',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
-    autoscaleSettings = registerOutput<CassandraTableAutoscaleSettings?>(
-      'autoscaleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CassandraTableAutoscaleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    autoscaleSettings = registerOutput<CassandraTableAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraTableAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cassandraKeyspaceId = registerOutput<String>('cassandraKeyspaceId');
     defaultTtl = registerOutput<int?>('defaultTtl');
     this.name = registerOutput<String>('name');
-    schema = registerOutput<CassandraTableSchema>(
-      'schema',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CassandraTableSchema.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schema = registerOutput<CassandraTableSchema>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraTableSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     throughput = registerOutput<int>('throughput');
   }
 }

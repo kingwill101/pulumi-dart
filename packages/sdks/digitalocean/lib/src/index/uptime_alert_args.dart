@@ -10,22 +10,16 @@ import 'uptime_alert_notification.dart';
 class UptimeAlertArgs {
   /// A unique identifier for a check
   final pulumi.Input<String> checkId;
-
   /// The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
   final pulumi.Input<String>? comparison;
-
   /// A human-friendly display name.
   final pulumi.Input<String>? name;
-
   /// The notification settings for a trigger alert.
   final pulumi.Input<List<UptimeAlertNotification>> notifications;
-
   /// Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
   final pulumi.Input<String>? period;
-
   /// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
   final pulumi.Input<int>? threshold;
-
   /// The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
   final pulumi.Input<String> type;
 
@@ -52,18 +46,7 @@ class UptimeAlertArgs {
       'checkId': checkId,
       'comparison': ?comparison,
       'name': ?name,
-      'notifications':
-          pulumi.Input.mapInputValue<
-            List<UptimeAlertNotification>,
-            List<Map<String, dynamic>>
-          >(
-            notifications,
-            (value) =>
-                pulumi.Input.encodeList<
-                  UptimeAlertNotification,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'notifications': pulumi.Input.mapInputValue<List<UptimeAlertNotification>, List<Map<String, dynamic>>>(notifications, (value) => pulumi.Input.encodeList<UptimeAlertNotification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'period': ?period,
       'threshold': ?threshold,
       'type': type,
@@ -73,35 +56,13 @@ class UptimeAlertArgs {
   factory UptimeAlertArgs.fromMap(Map<String, dynamic> map) {
     return UptimeAlertArgs(
       checkId: pulumi.Input.fromValue(map['checkId'] as String),
-      comparison: (() {
-        final guardedValue = map['comparison'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      notifications: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<UptimeAlertNotification>(
-          map['notifications']!,
-          (value) => UptimeAlertNotification.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      period: (() {
-        final guardedValue = map['period'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      threshold: (() {
-        final guardedValue = map['threshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      comparison: (() { final guardedValue = map['comparison']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notifications: pulumi.Input.fromValue(pulumi.Input.decodeList<UptimeAlertNotification>(map['notifications']!, (value) => UptimeAlertNotification.fromMap((value as Map).cast<String, dynamic>()))),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

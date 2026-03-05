@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayVcoRouteArgs {
   /// The next hop of the destination route.
   final pulumi.Input<String> nextHop;
-
   /// The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
   final pulumi.Input<String>? overlayMode;
-
   /// The destination network segment of the destination route.
   final pulumi.Input<String> routeDest;
-
   /// The id of the vpn attachment.
   final pulumi.Input<String> vpnConnectionId;
-
   /// The weight value of the destination route. Valid values: `0`, `100`.
   final pulumi.Input<int> weight;
 
@@ -49,14 +45,11 @@ class GatewayVcoRouteArgs {
   factory GatewayVcoRouteArgs.fromMap(Map<String, dynamic> map) {
     return GatewayVcoRouteArgs(
       nextHop: pulumi.Input.fromValue(map['nextHop'] as String),
-      overlayMode: (() {
-        final guardedValue = map['overlayMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      overlayMode: (() { final guardedValue = map['overlayMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routeDest: pulumi.Input.fromValue(map['routeDest'] as String),
       vpnConnectionId: pulumi.Input.fromValue(map['vpnConnectionId'] as String),
       weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
+

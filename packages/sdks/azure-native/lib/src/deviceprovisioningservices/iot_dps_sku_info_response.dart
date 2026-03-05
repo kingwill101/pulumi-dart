@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IotDpsSkuInfoResponse {
   /// The number of units to provision
   final pulumi.Input<double>? capacity;
-
   /// Sku name.
   final pulumi.Input<String>? name;
-
   /// Pricing tier name of the provisioning service.
   final pulumi.Input<String> tier;
 
@@ -17,7 +15,11 @@ class IotDpsSkuInfoResponse {
   /// [capacity] The number of units to provision
   /// [name] Sku name.
   /// [tier] Pricing tier name of the provisioning service.
-  IotDpsSkuInfoResponse({this.capacity, this.name, required this.tier});
+  IotDpsSkuInfoResponse({
+    this.capacity,
+    this.name,
+    required this.tier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,17 +31,10 @@ class IotDpsSkuInfoResponse {
 
   factory IotDpsSkuInfoResponse.fromMap(Map<String, dynamic> map) {
     return IotDpsSkuInfoResponse(
-      capacity: (() {
-        final guardedValue = map['capacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tier: pulumi.Input.fromValue(map['tier'] as String),
     );
   }
 }
+

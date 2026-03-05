@@ -13,3 +13,4 @@ enum TargetActionType {
     throw ArgumentError('Unknown TargetActionType value: $value');
   }
 }
+

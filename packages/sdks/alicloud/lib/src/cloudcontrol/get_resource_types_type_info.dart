@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceTypesTypeInfo {
   /// Payment formpaid (paid)(free).
   final pulumi.Input<String> chargeType;
-
   /// Delivery Levelcenter (centralized deployment level)region (regional deployment level)zone (Availability zone deployment level).
   final pulumi.Input<String> deliveryScope;
-
   /// Resource type description.
   final pulumi.Input<String> description;
-
   /// The resource type name.
   final pulumi.Input<String> title;
 
@@ -45,3 +42,4 @@ class GetResourceTypesTypeInfo {
     );
   }
 }
+

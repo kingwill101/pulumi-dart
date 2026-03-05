@@ -8,10 +8,14 @@ class DomainDevicesDiskSourceTimeout {
 
   /// Creates a new [DomainDevicesDiskSourceTimeout].
   /// [seconds] Specifies the duration in seconds for the timeout configuration in disk mirroring.
-  DomainDevicesDiskSourceTimeout({required this.seconds});
+  DomainDevicesDiskSourceTimeout({
+    required this.seconds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'seconds': seconds};
+    return <String, dynamic>{
+      'seconds': seconds,
+    };
   }
 
   factory DomainDevicesDiskSourceTimeout.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesDiskSourceTimeout {
     );
   }
 }
+

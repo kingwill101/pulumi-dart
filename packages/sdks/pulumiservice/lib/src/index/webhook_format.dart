@@ -16,3 +16,4 @@ enum WebhookFormat {
     throw ArgumentError('Unknown WebhookFormat value: $value');
   }
 }
+

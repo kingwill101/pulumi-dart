@@ -301,22 +301,16 @@ import 'alert_muting_rule_state.dart';
 class AlertMutingRule extends pulumi.CustomResource {
   /// The account id of the MutingRule.
   late final pulumi.Output<String> accountId;
-
   /// The action when the muting rule window is ended or disabled. Valid values are `CLOSE_ISSUES_ON_INACTIVE`, `DO_NOTHING`.
   late final pulumi.Output<String> actionOnMutingRuleWindowEnded;
-
   /// The condition that defines which incidents to target. See Nested condition blocks below for details.
   late final pulumi.Output<AlertMutingRuleCondition> condition;
-
   /// The description of the MutingRule.
   late final pulumi.Output<String?> description;
-
   /// Whether the MutingRule is enabled.
   late final pulumi.Output<bool> enabled;
-
   /// The name of the MutingRule.
   late final pulumi.Output<String> name;
-
   /// Specify a schedule for enabling the MutingRule. See Schedule below for details
   late final pulumi.Output<AlertMutingRuleSchedule?> schedule;
 
@@ -329,38 +323,18 @@ class AlertMutingRule extends pulumi.CustomResource {
     AlertMutingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/alertMutingRule:AlertMutingRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/alertMutingRule:AlertMutingRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
-    actionOnMutingRuleWindowEnded = registerOutput<String>(
-      'actionOnMutingRuleWindowEnded',
-    );
-    condition = registerOutput<AlertMutingRuleCondition>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertMutingRuleCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    actionOnMutingRuleWindowEnded = registerOutput<String>('actionOnMutingRuleWindowEnded');
+    condition = registerOutput<AlertMutingRuleCondition>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertMutingRuleCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool>('enabled');
     this.name = registerOutput<String>('name');
-    schedule = registerOutput<AlertMutingRuleSchedule?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertMutingRuleSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<AlertMutingRuleSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertMutingRuleSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AlertMutingRule] resource's state with the given [name] and [id].
@@ -381,37 +355,17 @@ class AlertMutingRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/alertMutingRule:AlertMutingRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/alertMutingRule:AlertMutingRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
-    actionOnMutingRuleWindowEnded = registerOutput<String>(
-      'actionOnMutingRuleWindowEnded',
-    );
-    condition = registerOutput<AlertMutingRuleCondition>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertMutingRuleCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    actionOnMutingRuleWindowEnded = registerOutput<String>('actionOnMutingRuleWindowEnded');
+    condition = registerOutput<AlertMutingRuleCondition>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertMutingRuleCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool>('enabled');
     this.name = registerOutput<String>('name');
-    schedule = registerOutput<AlertMutingRuleSchedule?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertMutingRuleSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<AlertMutingRuleSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertMutingRuleSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

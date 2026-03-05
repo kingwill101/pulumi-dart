@@ -12,10 +12,14 @@ class GetSettingArgs {
 
   /// Creates a new [GetSettingArgs].
   /// [settingName] Name of the setting. Allowed values: myscope
-  GetSettingArgs({required this.settingName});
+  GetSettingArgs({
+    required this.settingName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'settingName': settingName};
+    return <String, dynamic>{
+      'settingName': settingName,
+    };
   }
 
   factory GetSettingArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetSettingArgs {
     );
   }
 }
+

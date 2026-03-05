@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SoaRecordResponse {
   /// The email contact for this SOA record.
   final pulumi.Input<String>? email;
-
   /// The expire time for this SOA record.
   final pulumi.Input<double>? expireTime;
-
   /// The domain name of the authoritative name server for this SOA record.
   final pulumi.Input<String>? host;
-
   /// The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
   final pulumi.Input<double>? minimumTtl;
-
   /// The refresh value for this SOA record.
   final pulumi.Input<double>? refreshTime;
-
   /// The retry time for this SOA record.
   final pulumi.Input<double>? retryTime;
-
   /// The serial number for this SOA record.
   final pulumi.Input<double>? serialNumber;
 
@@ -57,41 +51,14 @@ class SoaRecordResponse {
 
   factory SoaRecordResponse.fromMap(Map<String, dynamic> map) {
     return SoaRecordResponse(
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expireTime: (() {
-        final guardedValue = map['expireTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      minimumTtl: (() {
-        final guardedValue = map['minimumTtl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      refreshTime: (() {
-        final guardedValue = map['refreshTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      retryTime: (() {
-        final guardedValue = map['retryTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      serialNumber: (() {
-        final guardedValue = map['serialNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minimumTtl: (() { final guardedValue = map['minimumTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      refreshTime: (() { final guardedValue = map['refreshTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      retryTime: (() { final guardedValue = map['retryTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      serialNumber: (() { final guardedValue = map['serialNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

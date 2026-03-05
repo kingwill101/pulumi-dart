@@ -8,17 +8,20 @@ class GetDataQualityRulesRuleSetExpectation {
 
   /// Creates a new [GetDataQualityRulesRuleSetExpectation].
   /// [values] Expected values for the column value.
-  GetDataQualityRulesRuleSetExpectation({required this.values});
+  GetDataQualityRulesRuleSetExpectation({
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': values};
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
-  factory GetDataQualityRulesRuleSetExpectation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataQualityRulesRuleSetExpectation.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesRuleSetExpectation(
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

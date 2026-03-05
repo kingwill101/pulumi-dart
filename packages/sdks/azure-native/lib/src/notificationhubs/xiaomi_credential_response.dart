@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class XiaomiCredentialResponse {
   /// Gets or sets app secret.
   final pulumi.Input<String>? appSecret;
-
   /// Gets or sets xiaomi service endpoint.
   final pulumi.Input<String>? endpoint;
 
   /// Creates a new [XiaomiCredentialResponse].
   /// [appSecret] Gets or sets app secret.
   /// [endpoint] Gets or sets xiaomi service endpoint.
-  XiaomiCredentialResponse({this.appSecret, this.endpoint});
+  XiaomiCredentialResponse({
+    this.appSecret,
+    this.endpoint,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'appSecret': ?appSecret, 'endpoint': ?endpoint};
+    return <String, dynamic>{
+      'appSecret': ?appSecret,
+      'endpoint': ?endpoint,
+    };
   }
 
   factory XiaomiCredentialResponse.fromMap(Map<String, dynamic> map) {
     return XiaomiCredentialResponse(
-      appSecret: (() {
-        final guardedValue = map['appSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpoint: (() {
-        final guardedValue = map['endpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appSecret: (() { final guardedValue = map['appSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

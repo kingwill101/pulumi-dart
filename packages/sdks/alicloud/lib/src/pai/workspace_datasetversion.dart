@@ -439,43 +439,32 @@ import 'workspace_datasetversion_state.dart';
 class WorkspaceDatasetversion extends pulumi.CustomResource {
   /// Update time.
   late final pulumi.Output<String> createTime;
-
   /// Data count.
   late final pulumi.Output<int?> dataCount;
-
   /// Data size.
   late final pulumi.Output<int?> dataSize;
-
   /// The data source type. The following values are supported:
   /// - OSS: Alibaba Cloud Object Storage (OSS).
   /// - NAS: Alibaba cloud file storage (NAS).
   late final pulumi.Output<String> dataSourceType;
-
   /// The first ID of the resource
   late final pulumi.Output<String> datasetId;
-
   /// Description of dataset version.
   late final pulumi.Output<String?> description;
-
   /// The tag of the resource See `labels` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> labels;
-
   /// The extended field, which is of the JsonString type.
   ///
   /// When DLC uses a dataset, you can specify the default Mount path for the dataset by configuring the mountPath field.
   late final pulumi.Output<String?> options;
-
   /// The properties of the dataset. The following values are supported:
   /// - FILE: FILE.
   /// - DIRECTORY: folder.
   late final pulumi.Output<String> property;
-
   /// The data source ID.
   late final pulumi.Output<String?> sourceId;
-
   /// The data source type. The default value is USER.
   late final pulumi.Output<String?> sourceType;
-
   /// The Uri configuration sample is as follows:
   /// - The data source type is OSS:'oss:// bucket.endpoint/object'
   /// - The data source type is NAS:
@@ -488,7 +477,6 @@ class WorkspaceDatasetversion extends pulumi.CustomResource {
   ///
   /// CPFS1.0 and CPFS2.0 are distinguished by the format of fsid: CPFS1.0 is cpfs-;CPFS2.0 is cpfs-.
   late final pulumi.Output<String> uri;
-
   /// The name of the resource
   late final pulumi.Output<String> versionName;
 
@@ -501,11 +489,11 @@ class WorkspaceDatasetversion extends pulumi.CustomResource {
     WorkspaceDatasetversionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dataCount = registerOutput<int?>('dataCount');
     dataSize = registerOutput<int?>('dataSize');
@@ -539,11 +527,11 @@ class WorkspaceDatasetversion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dataCount = registerOutput<int?>('dataCount');
     dataSize = registerOutput<int?>('dataSize');

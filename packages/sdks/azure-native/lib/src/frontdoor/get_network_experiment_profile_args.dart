@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkExperimentProfileArgs {
   /// The Profile identifier associated with the Tenant and Partner
   final pulumi.Input<String> profileName;
-
   /// Name of the Resource group within the Azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetNetworkExperimentProfileArgs {
   factory GetNetworkExperimentProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkExperimentProfileArgs(
       profileName: pulumi.Input.fromValue(map['profileName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

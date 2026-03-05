@@ -17,3 +17,4 @@ enum AllowedEndpointRecordType {
     throw ArgumentError('Unknown AllowedEndpointRecordType value: $value');
   }
 }
+

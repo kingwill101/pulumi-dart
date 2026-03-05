@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricRuleTemplateAlertTemplateEscalationsCritical {
   /// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
   final pulumi.Input<String>? comparisonOperator;
-
   /// The statistical aggregation method for warn-level alerts.
   final pulumi.Input<String>? statistics;
-
   /// The threshold for warn-level alerts.
   final pulumi.Input<String>? threshold;
-
   /// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
   final pulumi.Input<String>? times;
 
@@ -36,30 +33,13 @@ class MetricRuleTemplateAlertTemplateEscalationsCritical {
     };
   }
 
-  factory MetricRuleTemplateAlertTemplateEscalationsCritical.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MetricRuleTemplateAlertTemplateEscalationsCritical.fromMap(Map<String, dynamic> map) {
     return MetricRuleTemplateAlertTemplateEscalationsCritical(
-      comparisonOperator: (() {
-        final guardedValue = map['comparisonOperator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      statistics: (() {
-        final guardedValue = map['statistics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      threshold: (() {
-        final guardedValue = map['threshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      times: (() {
-        final guardedValue = map['times'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      comparisonOperator: (() { final guardedValue = map['comparisonOperator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statistics: (() { final guardedValue = map['statistics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      times: (() { final guardedValue = map['times']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

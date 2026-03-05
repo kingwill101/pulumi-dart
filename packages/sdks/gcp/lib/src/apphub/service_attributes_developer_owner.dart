@@ -5,27 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceAttributesDeveloperOwner {
   /// Contact's name.
   final pulumi.Input<String>? displayName;
-
   /// Required. Email address of the contacts.
   final pulumi.Input<String> email;
 
   /// Creates a new [ServiceAttributesDeveloperOwner].
   /// [displayName] Contact's name.
   /// [email] Required. Email address of the contacts.
-  ServiceAttributesDeveloperOwner({this.displayName, required this.email});
+  ServiceAttributesDeveloperOwner({
+    this.displayName,
+    required this.email,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'displayName': ?displayName, 'email': email};
+    return <String, dynamic>{
+      'displayName': ?displayName,
+      'email': email,
+    };
   }
 
   factory ServiceAttributesDeveloperOwner.fromMap(Map<String, dynamic> map) {
     return ServiceAttributesDeveloperOwner(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       email: pulumi.Input.fromValue(map['email'] as String),
     );
   }
 }
+

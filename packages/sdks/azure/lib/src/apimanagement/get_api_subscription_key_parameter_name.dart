@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApiSubscriptionKeyParameterName {
   /// The name of the HTTP Header which should be used for the Subscription Key.
   final pulumi.Input<String> header;
-
   /// The name of the QueryString parameter which should be used for the Subscription Key.
   final pulumi.Input<String> query;
 
@@ -18,7 +17,10 @@ class GetApiSubscriptionKeyParameterName {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'header': header, 'query': query};
+    return <String, dynamic>{
+      'header': header,
+      'query': query,
+    };
   }
 
   factory GetApiSubscriptionKeyParameterName.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class GetApiSubscriptionKeyParameterName {
     );
   }
 }
+

@@ -9,21 +9,20 @@ class PriorityLevelConfigurationReferencePatch {
 
   /// Creates a new [PriorityLevelConfigurationReferencePatch].
   /// [name] `name` is the name of the priority level configuration being referenced Required.
-  PriorityLevelConfigurationReferencePatch({this.name});
+  PriorityLevelConfigurationReferencePatch({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory PriorityLevelConfigurationReferencePatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PriorityLevelConfigurationReferencePatch.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationReferencePatch(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

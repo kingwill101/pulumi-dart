@@ -9,26 +9,23 @@ class EciScalingConfigurationContainerPort {
   /// Creates a new [EciScalingConfigurationContainerPort].
   /// [port] Optional.
   /// [protocol] Optional.
-  EciScalingConfigurationContainerPort({this.port, this.protocol});
+  EciScalingConfigurationContainerPort({
+    this.port,
+    this.protocol,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': ?port, 'protocol': ?protocol};
+    return <String, dynamic>{
+      'port': ?port,
+      'protocol': ?protocol,
+    };
   }
 
-  factory EciScalingConfigurationContainerPort.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EciScalingConfigurationContainerPort.fromMap(Map<String, dynamic> map) {
     return EciScalingConfigurationContainerPort(
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

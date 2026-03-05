@@ -9,10 +9,14 @@ class ServiceArtifactReference {
 
   /// Creates a new [ServiceArtifactReference].
   /// [id] The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
-  ServiceArtifactReference({required this.id});
+  ServiceArtifactReference({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory ServiceArtifactReference.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ServiceArtifactReference {
     );
   }
 }
+

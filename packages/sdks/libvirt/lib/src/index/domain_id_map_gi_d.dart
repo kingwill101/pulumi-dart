@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainIdMapGiD {
   /// Sets the count of group ID mappings specified for the domain's identity management.
   final pulumi.Input<double> count;
-
   /// Configures the starting GID for the group ID mapping in the domain.
   final pulumi.Input<double> start;
-
   /// Sets the target GID for the group ID mapping in the domain.
   final pulumi.Input<double> target;
 
@@ -23,7 +21,11 @@ class DomainIdMapGiD {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'count': count, 'start': start, 'target': target};
+    return <String, dynamic>{
+      'count': count,
+      'start': start,
+      'target': target,
+    };
   }
 
   factory DomainIdMapGiD.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class DomainIdMapGiD {
     );
   }
 }
+

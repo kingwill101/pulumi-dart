@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestApiPolicyArgs {
   /// JSON formatted policy document that controls access to the API Gateway.
   final pulumi.Input<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID of the REST API.
   final pulumi.Input<String> restApiId;
 
@@ -37,12 +35,9 @@ class RestApiPolicyArgs {
   factory RestApiPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RestApiPolicyArgs(
       policy: pulumi.Input.fromValue(map['policy'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       restApiId: pulumi.Input.fromValue(map['restApiId'] as String),
     );
   }
 }
+

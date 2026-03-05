@@ -7,52 +7,29 @@ import 'audit_log_config_analyticshub_v1beta1.dart';
 class AuditConfigAnalyticshubV1beta1 {
   /// The configuration for logging of each type of permission.
   final pulumi.Input<List<AuditLogConfigAnalyticshubV1beta1>>? auditLogConfigs;
-
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final pulumi.Input<String>? service;
 
   /// Creates a new [AuditConfigAnalyticshubV1beta1].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfigAnalyticshubV1beta1({this.auditLogConfigs, this.service});
+  AuditConfigAnalyticshubV1beta1({
+    this.auditLogConfigs,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AuditLogConfigAnalyticshubV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            auditLogConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AuditLogConfigAnalyticshubV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'auditLogConfigs': ?pulumi.Input.mapOptionalInputValue<List<AuditLogConfigAnalyticshubV1beta1>, List<Map<String, dynamic>>>(auditLogConfigs, (value) => pulumi.Input.encodeList<AuditLogConfigAnalyticshubV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'service': ?service,
     };
   }
 
   factory AuditConfigAnalyticshubV1beta1.fromMap(Map<String, dynamic> map) {
     return AuditConfigAnalyticshubV1beta1(
-      auditLogConfigs: (() {
-        final guardedValue = map['auditLogConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AuditLogConfigAnalyticshubV1beta1>(
-            guardedValue,
-            (value) => AuditLogConfigAnalyticshubV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      service: (() {
-        final guardedValue = map['service'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      auditLogConfigs: (() { final guardedValue = map['auditLogConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AuditLogConfigAnalyticshubV1beta1>(guardedValue, (value) => AuditLogConfigAnalyticshubV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

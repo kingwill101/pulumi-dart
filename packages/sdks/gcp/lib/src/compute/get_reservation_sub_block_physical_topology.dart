@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReservationSubBlockPhysicalTopology {
   /// The hash of the capacity block within the cluster.
   final pulumi.Input<String> block;
-
   /// The cluster name of the reservation sub-block.
   final pulumi.Input<String> cluster;
-
   /// The hash of the capacity sub-block within the capacity block.
   final pulumi.Input<String> subBlock;
 
@@ -30,9 +28,7 @@ class GetReservationSubBlockPhysicalTopology {
     };
   }
 
-  factory GetReservationSubBlockPhysicalTopology.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetReservationSubBlockPhysicalTopology.fromMap(Map<String, dynamic> map) {
     return GetReservationSubBlockPhysicalTopology(
       block: pulumi.Input.fromValue(map['block'] as String),
       cluster: pulumi.Input.fromValue(map['cluster'] as String),
@@ -40,3 +36,4 @@ class GetReservationSubBlockPhysicalTopology {
     );
   }
 }
+

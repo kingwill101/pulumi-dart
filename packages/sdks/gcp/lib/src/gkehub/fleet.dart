@@ -163,31 +163,24 @@ import 'fleet_gkehub_state.dart';
 class Fleet extends pulumi.CustomResource {
   /// The time the fleet was created, in RFC3339 text format.
   late final pulumi.Output<String> createTime;
-
   /// The default cluster configurations to apply across the fleet.
   /// Structure is documented below.
   late final pulumi.Output<FleetDefaultClusterConfig?> defaultClusterConfig;
-
   /// The time the fleet was deleted, in RFC3339 text format.
   late final pulumi.Output<String> deleteTime;
-
   /// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
   /// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
   late final pulumi.Output<String?> displayName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The state of the fleet resource.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> states;
-
   /// Google-generated UUID for this resource. This is unique across all
   /// Fleet resources. If a Fleet resource is deleted and another
   /// resource with the same name is created, it gets a different uid.
   late final pulumi.Output<String> uid;
-
   /// The time the fleet was last updated, in RFC3339 text format.
   late final pulumi.Output<String> updateTime;
 
@@ -195,24 +188,18 @@ class Fleet extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Fleet]. {@macro pulumi_gkehub_fleet_fleet_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Fleet(String name, {FleetArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:gkehub/fleet:Fleet',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Fleet(
+    String name, {
+    FleetArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:gkehub/fleet:Fleet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    defaultClusterConfig = registerOutput<FleetDefaultClusterConfig?>(
-      'defaultClusterConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FleetDefaultClusterConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    defaultClusterConfig = registerOutput<FleetDefaultClusterConfig?>('defaultClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetDefaultClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String?>('displayName');
     project = registerOutput<String>('project');
@@ -239,22 +226,13 @@ class Fleet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gkehub/fleet:Fleet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:gkehub/fleet:Fleet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    defaultClusterConfig = registerOutput<FleetDefaultClusterConfig?>(
-      'defaultClusterConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FleetDefaultClusterConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    defaultClusterConfig = registerOutput<FleetDefaultClusterConfig?>('defaultClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetDefaultClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String?>('displayName');
     project = registerOutput<String>('project');

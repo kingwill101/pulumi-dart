@@ -16,3 +16,4 @@ enum ImmutabilityState {
     throw ArgumentError('Unknown ImmutabilityState value: $value');
   }
 }
+

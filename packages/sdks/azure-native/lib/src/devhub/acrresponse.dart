@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ACRResponse {
   /// ACR registry
   final pulumi.Input<String>? acrRegistryName;
-
   /// ACR repository
   final pulumi.Input<String>? acrRepositoryName;
-
   /// ACR resource group
   final pulumi.Input<String>? acrResourceGroup;
-
   /// ACR subscription id
   final pulumi.Input<String>? acrSubscriptionId;
 
@@ -39,26 +36,11 @@ class ACRResponse {
 
   factory ACRResponse.fromMap(Map<String, dynamic> map) {
     return ACRResponse(
-      acrRegistryName: (() {
-        final guardedValue = map['acrRegistryName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      acrRepositoryName: (() {
-        final guardedValue = map['acrRepositoryName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      acrResourceGroup: (() {
-        final guardedValue = map['acrResourceGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      acrSubscriptionId: (() {
-        final guardedValue = map['acrSubscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      acrRegistryName: (() { final guardedValue = map['acrRegistryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      acrRepositoryName: (() { final guardedValue = map['acrRepositoryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      acrResourceGroup: (() { final guardedValue = map['acrResourceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      acrSubscriptionId: (() { final guardedValue = map['acrSubscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

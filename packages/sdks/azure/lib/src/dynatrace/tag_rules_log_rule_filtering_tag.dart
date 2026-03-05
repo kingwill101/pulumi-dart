@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagRulesLogRuleFilteringTag {
   /// Action of the filtering tag. Possible values are `Include` and `Exclude`.
   final pulumi.Input<String> action;
-
   /// Name of the filtering tag.
   final pulumi.Input<String> name;
-
   /// Value of the filtering tag.
   final pulumi.Input<String> value;
 
@@ -23,7 +21,11 @@ class TagRulesLogRuleFilteringTag {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'action': action, 'name': name, 'value': value};
+    return <String, dynamic>{
+      'action': action,
+      'name': name,
+      'value': value,
+    };
   }
 
   factory TagRulesLogRuleFilteringTag.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class TagRulesLogRuleFilteringTag {
     );
   }
 }
+

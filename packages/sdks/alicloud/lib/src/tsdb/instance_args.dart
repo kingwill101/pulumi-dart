@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceArgs {
   /// The app key.
   final pulumi.Input<String>? appKey;
-
   /// The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
   final pulumi.Input<String>? diskCategory;
-
   /// The duration.
   final pulumi.Input<String>? duration;
-
   /// The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
   final pulumi.Input<String>? engineType;
-
   /// The alias of the instance.
   final pulumi.Input<String>? instanceAlias;
-
   /// The specification of the instance.
   /// - Following enumerative value for TSDB for InfluxDB️ standart edition:
   /// - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
@@ -46,16 +41,12 @@ class InstanceArgs {
   /// - `tsdb.48x.large` refers to ultimate edition I;
   /// - `tsdb.96x.large` refers to ultimate edition II.
   final pulumi.Input<String> instanceClass;
-
   /// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
   final pulumi.Input<String> instanceStorage;
-
   /// The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
   final pulumi.Input<String> paymentType;
-
   /// The vswitch id.
   final pulumi.Input<String> vswitchId;
-
   /// The zone ID of the instance.
   final pulumi.Input<String>? zoneId;
 
@@ -100,40 +91,17 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      appKey: (() {
-        final guardedValue = map['appKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      diskCategory: (() {
-        final guardedValue = map['diskCategory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      duration: (() {
-        final guardedValue = map['duration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      engineType: (() {
-        final guardedValue = map['engineType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceAlias: (() {
-        final guardedValue = map['instanceAlias'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appKey: (() { final guardedValue = map['appKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskCategory: (() { final guardedValue = map['diskCategory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      engineType: (() { final guardedValue = map['engineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceAlias: (() { final guardedValue = map['instanceAlias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceClass: pulumi.Input.fromValue(map['instanceClass'] as String),
       instanceStorage: pulumi.Input.fromValue(map['instanceStorage'] as String),
       paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
       vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
-      zoneId: (() {
-        final guardedValue = map['zoneId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

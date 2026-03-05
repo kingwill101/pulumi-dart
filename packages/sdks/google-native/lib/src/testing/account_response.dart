@@ -9,17 +9,20 @@ class AccountResponse {
 
   /// Creates a new [AccountResponse].
   /// [googleAuto] An automatic google login account.
-  AccountResponse({required this.googleAuto});
+  AccountResponse({
+    required this.googleAuto,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'googleAuto': googleAuto};
+    return <String, dynamic>{
+      'googleAuto': googleAuto,
+    };
   }
 
   factory AccountResponse.fromMap(Map<String, dynamic> map) {
     return AccountResponse(
-      googleAuto: pulumi.Input.fromValue(
-        (map['googleAuto']! as Map).cast<String, dynamic>(),
-      ),
+      googleAuto: pulumi.Input.fromValue((map['googleAuto']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

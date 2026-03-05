@@ -8,19 +8,20 @@ class GetVirtualNetworkGatewayCustomRoute {
 
   /// Creates a new [GetVirtualNetworkGatewayCustomRoute].
   /// [addressPrefixes] A list of address blocks reserved for this virtual network in CIDR notation.
-  GetVirtualNetworkGatewayCustomRoute({required this.addressPrefixes});
+  GetVirtualNetworkGatewayCustomRoute({
+    required this.addressPrefixes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'addressPrefixes': addressPrefixes};
+    return <String, dynamic>{
+      'addressPrefixes': addressPrefixes,
+    };
   }
 
-  factory GetVirtualNetworkGatewayCustomRoute.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualNetworkGatewayCustomRoute.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayCustomRoute(
-      addressPrefixes: pulumi.Input.fromValue(
-        (map['addressPrefixes'] as List).cast<String>(),
-      ),
+      addressPrefixes: pulumi.Input.fromValue((map['addressPrefixes'] as List).cast<String>()),
     );
   }
 }
+

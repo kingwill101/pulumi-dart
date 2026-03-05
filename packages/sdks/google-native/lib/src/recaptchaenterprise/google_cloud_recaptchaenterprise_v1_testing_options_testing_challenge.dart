@@ -4,22 +4,16 @@ enum GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge {
   nocaptcha("NOCAPTCHA"),
   unsolvableChallenge("UNSOLVABLE_CHALLENGE");
 
-  const GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge(
-    this.wireValue,
-  );
+  const GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge
-  fromValue(String value) {
-    for (final item
-        in GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge
-            .values) {
+  static GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge fromValue(String value) {
+    for (final item in GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge value: $value');
   }
 }
+

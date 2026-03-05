@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceHealthDetailsResponse {
   /// Health Code
   final pulumi.Input<int> code;
-
   /// Health Message
   final pulumi.Input<String> message;
-
   /// Health Recommended Actions
   final pulumi.Input<List<String>> recommendations;
-
   /// Health Title
   final pulumi.Input<String> title;
 
@@ -41,10 +38,9 @@ class ResourceHealthDetailsResponse {
     return ResourceHealthDetailsResponse(
       code: pulumi.Input.fromValue(map['code'] as int),
       message: pulumi.Input.fromValue(map['message'] as String),
-      recommendations: pulumi.Input.fromValue(
-        (map['recommendations'] as List).cast<String>(),
-      ),
+      recommendations: pulumi.Input.fromValue((map['recommendations'] as List).cast<String>()),
       title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
+

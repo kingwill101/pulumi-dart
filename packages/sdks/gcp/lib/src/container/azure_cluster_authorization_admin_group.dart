@@ -8,17 +8,20 @@ class AzureClusterAuthorizationAdminGroup {
 
   /// Creates a new [AzureClusterAuthorizationAdminGroup].
   /// [group] The name of the group, e.g. `my-group@domain.com`.
-  AzureClusterAuthorizationAdminGroup({required this.group});
+  AzureClusterAuthorizationAdminGroup({
+    required this.group,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'group': group};
+    return <String, dynamic>{
+      'group': group,
+    };
   }
 
-  factory AzureClusterAuthorizationAdminGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureClusterAuthorizationAdminGroup.fromMap(Map<String, dynamic> map) {
     return AzureClusterAuthorizationAdminGroup(
       group: pulumi.Input.fromValue(map['group'] as String),
     );
   }
 }
+

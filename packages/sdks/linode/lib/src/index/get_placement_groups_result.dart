@@ -28,55 +28,22 @@ class GetPlacementGroupsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetPlacementGroupsFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPlacementGroupsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'order': ?order,
       'orderBy': ?orderBy,
-      'placementGroups':
-          pulumi.Input.encodeList<
-            GetPlacementGroupsPlacementGroup,
-            Map<String, dynamic>
-          >(placementGroups, (value) => value.toMap()),
+      'placementGroups': pulumi.Input.encodeList<GetPlacementGroupsPlacementGroup, Map<String, dynamic>>(placementGroups, (value) => value.toMap()),
     };
   }
 
   factory GetPlacementGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupsResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetPlacementGroupsFilter>(
-          guardedValue,
-          (value) => GetPlacementGroupsFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPlacementGroupsFilter>(guardedValue, (value) => GetPlacementGroupsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      order: (() {
-        final guardedValue = map['order'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      orderBy: (() {
-        final guardedValue = map['orderBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      placementGroups:
-          pulumi.Input.decodeList<GetPlacementGroupsPlacementGroup>(
-            map['placementGroups']!,
-            (value) => GetPlacementGroupsPlacementGroup.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      placementGroups: pulumi.Input.decodeList<GetPlacementGroupsPlacementGroup>(map['placementGroups']!, (value) => GetPlacementGroupsPlacementGroup.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

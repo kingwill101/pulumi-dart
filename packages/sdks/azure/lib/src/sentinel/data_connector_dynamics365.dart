@@ -214,10 +214,8 @@ import 'data_connector_dynamics365_state.dart';
 class DataConnectorDynamics365 extends pulumi.CustomResource {
   /// The ID of the Log Analytics Workspace that this Dynamics 365 Data Connector resides in. Changing this forces a new Dynamics 365 Data Connector to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
-
   /// The name which should be used for this Dynamics 365 Data Connector. Changing this forces a new Dynamics 365 Data Connector to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the tenant that this Dynamics 365 Data Connector connects to. Changing this forces a new Dynamics 365 Data Connector to be created.
   ///
   /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
@@ -232,11 +230,11 @@ class DataConnectorDynamics365 extends pulumi.CustomResource {
     DataConnectorDynamics365Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/dataConnectorDynamics365:DataConnectorDynamics365',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/dataConnectorDynamics365:DataConnectorDynamics365',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     tenantId = registerOutput<String>('tenantId');
@@ -260,11 +258,11 @@ class DataConnectorDynamics365 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/dataConnectorDynamics365:DataConnectorDynamics365',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/dataConnectorDynamics365:DataConnectorDynamics365',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     tenantId = registerOutput<String>('tenantId');

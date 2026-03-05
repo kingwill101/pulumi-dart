@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping {
   final pulumi.Input<int> captionChannel;
   final pulumi.Input<String> languageCode;
-
   /// Human readable information to indicate captions available for players (eg. English, or Spanish).
   final pulumi.Input<String> languageDescription;
 
@@ -27,15 +26,12 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptio
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping(
       captionChannel: pulumi.Input.fromValue(map['captionChannel'] as int),
       languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
-      languageDescription: pulumi.Input.fromValue(
-        map['languageDescription'] as String,
-      ),
+      languageDescription: pulumi.Input.fromValue(map['languageDescription'] as String),
     );
   }
 }
+

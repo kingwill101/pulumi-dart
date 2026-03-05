@@ -6,7 +6,6 @@ class BackupEncryptionInfo {
   /// (Output)
   /// Output only. Type of encryption.
   final pulumi.Input<String>? encryptionType;
-
   /// (Output)
   /// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
   final pulumi.Input<List<String>>? kmsKeyVersions;
@@ -14,7 +13,10 @@ class BackupEncryptionInfo {
   /// Creates a new [BackupEncryptionInfo].
   /// [encryptionType] (Output)
   /// [kmsKeyVersions] (Output)
-  BackupEncryptionInfo({this.encryptionType, this.kmsKeyVersions});
+  BackupEncryptionInfo({
+    this.encryptionType,
+    this.kmsKeyVersions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,16 +27,9 @@ class BackupEncryptionInfo {
 
   factory BackupEncryptionInfo.fromMap(Map<String, dynamic> map) {
     return BackupEncryptionInfo(
-      encryptionType: (() {
-        final guardedValue = map['encryptionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsKeyVersions: (() {
-        final guardedValue = map['kmsKeyVersions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      encryptionType: (() { final guardedValue = map['encryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsKeyVersions: (() { final guardedValue = map['kmsKeyVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

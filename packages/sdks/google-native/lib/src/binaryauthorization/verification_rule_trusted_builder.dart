@@ -15,3 +15,4 @@ enum VerificationRuleTrustedBuilder {
     throw ArgumentError('Unknown VerificationRuleTrustedBuilder value: $value');
   }
 }
+

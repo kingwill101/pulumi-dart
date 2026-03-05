@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GuestPoliciesRecipeUpdateStepArchiveExtraction {
   /// The id of the relevant artifact in the recipe.
   final pulumi.Input<String> artifactId;
-
   /// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
   final pulumi.Input<String>? destination;
-
   /// The type of the archive to extract.
   /// Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
   final pulumi.Input<String> type;
@@ -31,17 +29,12 @@ class GuestPoliciesRecipeUpdateStepArchiveExtraction {
     };
   }
 
-  factory GuestPoliciesRecipeUpdateStepArchiveExtraction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GuestPoliciesRecipeUpdateStepArchiveExtraction.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeUpdateStepArchiveExtraction(
       artifactId: pulumi.Input.fromValue(map['artifactId'] as String),
-      destination: (() {
-        final guardedValue = map['destination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

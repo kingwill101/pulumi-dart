@@ -381,24 +381,18 @@ import 'object_storage_key_state.dart';
 class ObjectStorageKey extends pulumi.CustomResource {
   /// This keypair's access key. This is not secret.
   late final pulumi.Output<String> accessKey;
-
   /// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
   late final pulumi.Output<List<Map<String, dynamic>>?> bucketAccesses;
-
   /// The label given to this key. For display purposes only.
   late final pulumi.Output<String> label;
-
   /// Whether or not this key is a limited access key.
   late final pulumi.Output<bool> limited;
-
   /// A set of regions where the key will grant access to create buckets.
   ///
   /// - - -
   late final pulumi.Output<List<String>> regions;
-
   /// A set of objects containing the detailed info of the regions where this key can access.
   late final pulumi.Output<List<Map<String, dynamic>>> regionsDetails;
-
   /// This keypair's secret key.
   late final pulumi.Output<String> secretKey;
 
@@ -411,21 +405,17 @@ class ObjectStorageKey extends pulumi.CustomResource {
     ObjectStorageKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/objectStorageKey:ObjectStorageKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/objectStorageKey:ObjectStorageKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessKey = registerOutput<String>('accessKey');
-    bucketAccesses = registerOutput<List<Map<String, dynamic>>?>(
-      'bucketAccesses',
-    );
+    bucketAccesses = registerOutput<List<Map<String, dynamic>>?>('bucketAccesses');
     label = registerOutput<String>('label');
     limited = registerOutput<bool>('limited');
     regions = registerOutput<List<String>>('regions');
-    regionsDetails = registerOutput<List<Map<String, dynamic>>>(
-      'regionsDetails',
-    );
+    regionsDetails = registerOutput<List<Map<String, dynamic>>>('regionsDetails');
     secretKey = registerOutput<String>('secretKey');
   }
 
@@ -447,21 +437,17 @@ class ObjectStorageKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/objectStorageKey:ObjectStorageKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/objectStorageKey:ObjectStorageKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessKey = registerOutput<String>('accessKey');
-    bucketAccesses = registerOutput<List<Map<String, dynamic>>?>(
-      'bucketAccesses',
-    );
+    bucketAccesses = registerOutput<List<Map<String, dynamic>>?>('bucketAccesses');
     label = registerOutput<String>('label');
     limited = registerOutput<bool>('limited');
     regions = registerOutput<List<String>>('regions');
-    regionsDetails = registerOutput<List<Map<String, dynamic>>>(
-      'regionsDetails',
-    );
+    regionsDetails = registerOutput<List<Map<String, dynamic>>>('regionsDetails');
     secretKey = registerOutput<String>('secretKey');
   }
 }

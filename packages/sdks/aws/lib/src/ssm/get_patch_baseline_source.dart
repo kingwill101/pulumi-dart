@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPatchBaselineSource {
   /// Value of the yum repo configuration.
   final pulumi.Input<String> configuration;
-
   /// Name specified to identify the patch source.
   final pulumi.Input<String> name;
-
   /// Specific operating system versions a patch repository applies to.
   final pulumi.Input<List<String>> products;
 
@@ -34,9 +32,8 @@ class GetPatchBaselineSource {
     return GetPatchBaselineSource(
       configuration: pulumi.Input.fromValue(map['configuration'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      products: pulumi.Input.fromValue(
-        (map['products'] as List).cast<String>(),
-      ),
+      products: pulumi.Input.fromValue((map['products'] as List).cast<String>()),
     );
   }
 }
+

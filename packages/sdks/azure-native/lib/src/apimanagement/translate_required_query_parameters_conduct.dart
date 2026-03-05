@@ -12,8 +12,7 @@ enum TranslateRequiredQueryParametersConduct {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown TranslateRequiredQueryParametersConduct value: $value',
-    );
+    throw ArgumentError('Unknown TranslateRequiredQueryParametersConduct value: $value');
   }
 }
+

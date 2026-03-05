@@ -9,10 +9,16 @@ class EnvelopeSignatureResponse {
   /// Creates a new [EnvelopeSignatureResponse].
   /// [keyid] Required.
   /// [sig] Required.
-  EnvelopeSignatureResponse({required this.keyid, required this.sig});
+  EnvelopeSignatureResponse({
+    required this.keyid,
+    required this.sig,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyid': keyid, 'sig': sig};
+    return <String, dynamic>{
+      'keyid': keyid,
+      'sig': sig,
+    };
   }
 
   factory EnvelopeSignatureResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class EnvelopeSignatureResponse {
     );
   }
 }
+

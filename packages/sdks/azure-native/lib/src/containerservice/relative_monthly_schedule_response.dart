@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RelativeMonthlyScheduleResponse {
   /// Specifies on which day of the week the maintenance occurs.
   final pulumi.Input<String> dayOfWeek;
-
   /// Specifies the number of months between each set of occurrences.
   final pulumi.Input<int> intervalMonths;
-
   /// The week index. Specifies on which week of the month the dayOfWeek applies.
   final pulumi.Input<String> weekIndex;
 
@@ -39,3 +37,4 @@ class RelativeMonthlyScheduleResponse {
     );
   }
 }
+

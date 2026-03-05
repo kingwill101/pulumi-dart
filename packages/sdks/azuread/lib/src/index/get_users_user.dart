@@ -5,34 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUsersUser {
   /// Whether the account is enabled.
   final pulumi.Input<bool> accountEnabled;
-
   /// The display name of the user.
   final pulumi.Input<String> displayName;
-
   /// The employee identifier assigned to the user by the organisation.
   final pulumi.Input<String> employeeId;
-
   /// The SMTP email address of the user.
   final pulumi.Input<String> mail;
-
   /// The email alias of the user.
   final pulumi.Input<String> mailNickname;
-
   /// The object ID of the user.
   final pulumi.Input<String> objectId;
-
   /// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
   final pulumi.Input<String> onpremisesImmutableId;
-
   /// The on-premise SAM account name of the user.
   final pulumi.Input<String> onpremisesSamAccountName;
-
   /// The on-premise user principal name of the user.
   final pulumi.Input<String> onpremisesUserPrincipalName;
-
   /// The usage location of the user.
   final pulumi.Input<String> usageLocation;
-
   /// The user principal name (UPN) of the user.
   final pulumi.Input<String> userPrincipalName;
 
@@ -86,19 +76,12 @@ class GetUsersUser {
       mail: pulumi.Input.fromValue(map['mail'] as String),
       mailNickname: pulumi.Input.fromValue(map['mailNickname'] as String),
       objectId: pulumi.Input.fromValue(map['objectId'] as String),
-      onpremisesImmutableId: pulumi.Input.fromValue(
-        map['onpremisesImmutableId'] as String,
-      ),
-      onpremisesSamAccountName: pulumi.Input.fromValue(
-        map['onpremisesSamAccountName'] as String,
-      ),
-      onpremisesUserPrincipalName: pulumi.Input.fromValue(
-        map['onpremisesUserPrincipalName'] as String,
-      ),
+      onpremisesImmutableId: pulumi.Input.fromValue(map['onpremisesImmutableId'] as String),
+      onpremisesSamAccountName: pulumi.Input.fromValue(map['onpremisesSamAccountName'] as String),
+      onpremisesUserPrincipalName: pulumi.Input.fromValue(map['onpremisesUserPrincipalName'] as String),
       usageLocation: pulumi.Input.fromValue(map['usageLocation'] as String),
-      userPrincipalName: pulumi.Input.fromValue(
-        map['userPrincipalName'] as String,
-      ),
+      userPrincipalName: pulumi.Input.fromValue(map['userPrincipalName'] as String),
     );
   }
 }
+

@@ -240,7 +240,8 @@ Future<GetConsumerGroupsResult> getConsumerGroups(
 ///   alicloudActiontrailGlobalEventsStorageRegion1: ${default.storageRegion}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegion({
+Future<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegion(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;

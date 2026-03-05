@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
   /// The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
   final pulumi.Input<String> gpuSharingStrategy;
-
   /// The maximum number of containers that can share a GPU.
   final pulumi.Input<int> maxSharedClientsPerGpu;
 
@@ -24,16 +23,11 @@ class NodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
     };
   }
 
-  factory NodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigGuestAcceleratorGpuSharingConfig(
-      gpuSharingStrategy: pulumi.Input.fromValue(
-        map['gpuSharingStrategy'] as String,
-      ),
-      maxSharedClientsPerGpu: pulumi.Input.fromValue(
-        map['maxSharedClientsPerGpu'] as int,
-      ),
+      gpuSharingStrategy: pulumi.Input.fromValue(map['gpuSharingStrategy'] as String),
+      maxSharedClientsPerGpu: pulumi.Input.fromValue(map['maxSharedClientsPerGpu'] as int),
     );
   }
 }
+

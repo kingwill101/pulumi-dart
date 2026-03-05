@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeV1 {
   /// Chain name that the snapshot is created in.
   final pulumi.Input<String>? chainName;
-
   /// Indication to perform a 'guest aware' snapshot.
   final pulumi.Input<bool>? guestFlush;
-
   /// Labels to apply to scheduled snapshots. These can be later modified by the setLabels method. Label values may be empty.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Cloud Storage bucket storage location of the auto snapshot (regional or multi-regional).
   final pulumi.Input<List<String>>? storageLocations;
 
@@ -37,32 +34,13 @@ class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeV1 {
     };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeV1(
-      chainName: (() {
-        final guardedValue = map['chainName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      guestFlush: (() {
-        final guardedValue = map['guestFlush'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      storageLocations: (() {
-        final guardedValue = map['storageLocations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      chainName: (() { final guardedValue = map['chainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      guestFlush: (() { final guardedValue = map['guestFlush']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      storageLocations: (() { final guardedValue = map['storageLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

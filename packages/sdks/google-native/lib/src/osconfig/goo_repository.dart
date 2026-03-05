@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooRepository {
   /// The name of the repository.
   final pulumi.Input<String> name;
-
   /// The url of the repository.
   final pulumi.Input<String> url;
 
   /// Creates a new [GooRepository].
   /// [name] The name of the repository.
   /// [url] The url of the repository.
-  GooRepository({required this.name, required this.url});
+  GooRepository({
+    required this.name,
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'url': url};
+    return <String, dynamic>{
+      'name': name,
+      'url': url,
+    };
   }
 
   factory GooRepository.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class GooRepository {
     );
   }
 }
+

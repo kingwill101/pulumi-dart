@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudApplicationLiveViewArgs {
   /// The name which should be used for this Spring Cloud Application Live View. Changing this forces a new Spring Cloud Application Live View to be created. The only possible value is `default`.
   final pulumi.Input<String>? name;
-
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Application Live View to be created.
   final pulumi.Input<String> springCloudServiceId;
 
@@ -30,14 +29,9 @@ class SpringCloudApplicationLiveViewArgs {
 
   factory SpringCloudApplicationLiveViewArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudApplicationLiveViewArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      springCloudServiceId: pulumi.Input.fromValue(
-        map['springCloudServiceId'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      springCloudServiceId: pulumi.Input.fromValue(map['springCloudServiceId'] as String),
     );
   }
 }
+

@@ -145,37 +145,26 @@ import 'patch_baseline_state.dart';
 class PatchBaseline extends pulumi.CustomResource {
   /// Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
   late final pulumi.Output<String> approvalRules;
-
   /// Approved Patch.
   late final pulumi.Output<List<String>?> approvedPatches;
-
   /// ApprovedPatchesEnableNonSecurity.
   late final pulumi.Output<bool?> approvedPatchesEnableNonSecurity;
-
   /// Creation time.
   late final pulumi.Output<String> createTime;
-
   /// Patches baseline description information.
   late final pulumi.Output<String?> description;
-
   /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
   late final pulumi.Output<String> operationSystem;
-
   /// The name of the patch baseline.
   late final pulumi.Output<String> patchBaselineName;
-
   /// Reject patches.
   late final pulumi.Output<List<String>?> rejectedPatches;
-
   /// Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
   late final pulumi.Output<String> rejectedPatchesAction;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// Source.
   late final pulumi.Output<List<String>?> sources;
-
   /// Label.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -188,16 +177,14 @@ class PatchBaseline extends pulumi.CustomResource {
     PatchBaselineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oos/patchBaseline:PatchBaseline',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oos/patchBaseline:PatchBaseline',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     approvalRules = registerOutput<String>('approvalRules');
     approvedPatches = registerOutput<List<String>?>('approvedPatches');
-    approvedPatchesEnableNonSecurity = registerOutput<bool?>(
-      'approvedPatchesEnableNonSecurity',
-    );
+    approvedPatchesEnableNonSecurity = registerOutput<bool?>('approvedPatchesEnableNonSecurity');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     operationSystem = registerOutput<String>('operationSystem');
@@ -227,16 +214,14 @@ class PatchBaseline extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oos/patchBaseline:PatchBaseline',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oos/patchBaseline:PatchBaseline',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     approvalRules = registerOutput<String>('approvalRules');
     approvedPatches = registerOutput<List<String>?>('approvedPatches');
-    approvedPatchesEnableNonSecurity = registerOutput<bool?>(
-      'approvedPatchesEnableNonSecurity',
-    );
+    approvedPatchesEnableNonSecurity = registerOutput<bool?>('approvedPatchesEnableNonSecurity');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     operationSystem = registerOutput<String>('operationSystem');

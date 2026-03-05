@@ -10,35 +10,20 @@ class ListKustoPoolFollowerDatabasesResult {
 
   /// Creates a new [ListKustoPoolFollowerDatabasesResult].
   /// [value] The list of follower database result.
-  ListKustoPoolFollowerDatabasesResult({this.value});
+  ListKustoPoolFollowerDatabasesResult({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': ?(() {
-        final guardedValue = value;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          FollowerDatabaseDefinitionResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<FollowerDatabaseDefinitionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
-  factory ListKustoPoolFollowerDatabasesResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListKustoPoolFollowerDatabasesResult.fromMap(Map<String, dynamic> map) {
     return ListKustoPoolFollowerDatabasesResult(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<FollowerDatabaseDefinitionResponse>(
-          guardedValue,
-          (value) => FollowerDatabaseDefinitionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<FollowerDatabaseDefinitionResponse>(guardedValue, (value) => FollowerDatabaseDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

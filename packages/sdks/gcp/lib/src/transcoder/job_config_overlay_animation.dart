@@ -10,29 +10,20 @@ class JobConfigOverlayAnimation {
 
   /// Creates a new [JobConfigOverlayAnimation].
   /// [animationFade] Display overlay object with fade animation.
-  JobConfigOverlayAnimation({this.animationFade});
+  JobConfigOverlayAnimation({
+    this.animationFade,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'animationFade':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobConfigOverlayAnimationAnimationFade,
-            Map<String, dynamic>
-          >(animationFade, (value) => value.toMap()),
+      'animationFade': ?pulumi.Input.mapOptionalInputValue<JobConfigOverlayAnimationAnimationFade, Map<String, dynamic>>(animationFade, (value) => value.toMap()),
     };
   }
 
   factory JobConfigOverlayAnimation.fromMap(Map<String, dynamic> map) {
     return JobConfigOverlayAnimation(
-      animationFade: (() {
-        final guardedValue = map['animationFade'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobConfigOverlayAnimationAnimationFade.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      animationFade: (() { final guardedValue = map['animationFade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobConfigOverlayAnimationAnimationFade.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

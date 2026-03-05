@@ -8,17 +8,20 @@ class TransferJobTransferSpecPosixDataSink {
 
   /// Creates a new [TransferJobTransferSpecPosixDataSink].
   /// [rootDirectory] Root directory path to the filesystem.
-  TransferJobTransferSpecPosixDataSink({required this.rootDirectory});
+  TransferJobTransferSpecPosixDataSink({
+    required this.rootDirectory,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'rootDirectory': rootDirectory};
+    return <String, dynamic>{
+      'rootDirectory': rootDirectory,
+    };
   }
 
-  factory TransferJobTransferSpecPosixDataSink.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TransferJobTransferSpecPosixDataSink.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecPosixDataSink(
       rootDirectory: pulumi.Input.fromValue(map['rootDirectory'] as String),
     );
   }
 }
+

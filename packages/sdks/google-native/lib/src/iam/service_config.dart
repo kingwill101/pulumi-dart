@@ -9,19 +9,20 @@ class ServiceConfig {
 
   /// Creates a new [ServiceConfig].
   /// [domain] Optional. Domain name of the service. Example: console.cloud.google
-  ServiceConfig({this.domain});
+  ServiceConfig({
+    this.domain,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domain': ?domain};
+    return <String, dynamic>{
+      'domain': ?domain,
+    };
   }
 
   factory ServiceConfig.fromMap(Map<String, dynamic> map) {
     return ServiceConfig(
-      domain: (() {
-        final guardedValue = map['domain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

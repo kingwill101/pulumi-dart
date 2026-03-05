@@ -9,29 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMonitorGroupsArgs {
   /// The ID of the tag rule.
   final pulumi.Input<String>? dynamicTagRuleId;
-
   /// A list of Monitor Group IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// The include template history.
   final pulumi.Input<bool>? includeTemplateHistory;
-
   /// The keyword to be matched.
   final pulumi.Input<String>? keyword;
-
   /// The name of the application group.
   final pulumi.Input<String>? monitorGroupName;
-
   /// A regex string to filter results by Monitor Group name.
   final pulumi.Input<String>? nameRegex;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The select contact groups.
   final pulumi.Input<bool>? selectContactGroups;
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
   final pulumi.Input<String>? type;
 
@@ -76,58 +68,17 @@ class GetMonitorGroupsArgs {
 
   factory GetMonitorGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetMonitorGroupsArgs(
-      dynamicTagRuleId: (() {
-        final guardedValue = map['dynamicTagRuleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      includeTemplateHistory: (() {
-        final guardedValue = map['includeTemplateHistory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      keyword: (() {
-        final guardedValue = map['keyword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      monitorGroupName: (() {
-        final guardedValue = map['monitorGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      selectContactGroups: (() {
-        final guardedValue = map['selectContactGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dynamicTagRuleId: (() { final guardedValue = map['dynamicTagRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      includeTemplateHistory: (() { final guardedValue = map['includeTemplateHistory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      keyword: (() { final guardedValue = map['keyword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      monitorGroupName: (() { final guardedValue = map['monitorGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      selectContactGroups: (() { final guardedValue = map['selectContactGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

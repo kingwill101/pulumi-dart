@@ -185,7 +185,6 @@ import 'group_member_state.dart';
 class GroupMember extends pulumi.CustomResource {
   /// The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> groupObjectId;
-
   /// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   late final pulumi.Output<String> memberObjectId;
 
@@ -198,11 +197,11 @@ class GroupMember extends pulumi.CustomResource {
     GroupMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/groupMember:GroupMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/groupMember:GroupMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupObjectId = registerOutput<String>('groupObjectId');
     memberObjectId = registerOutput<String>('memberObjectId');
   }
@@ -225,11 +224,11 @@ class GroupMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/groupMember:GroupMember',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/groupMember:GroupMember',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupObjectId = registerOutput<String>('groupObjectId');
     memberObjectId = registerOutput<String>('memberObjectId');
   }

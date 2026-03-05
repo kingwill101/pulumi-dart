@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamespaceTopicEventSubscriptionFullUrlArgs {
   /// Name of the event subscription.
   final pulumi.Input<String> eventSubscriptionName;
-
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
-
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the namespace topic.
   final pulumi.Input<String> topicName;
 
@@ -40,18 +37,13 @@ class GetNamespaceTopicEventSubscriptionFullUrlArgs {
     };
   }
 
-  factory GetNamespaceTopicEventSubscriptionFullUrlArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNamespaceTopicEventSubscriptionFullUrlArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceTopicEventSubscriptionFullUrlArgs(
-      eventSubscriptionName: pulumi.Input.fromValue(
-        map['eventSubscriptionName'] as String,
-      ),
+      eventSubscriptionName: pulumi.Input.fromValue(map['eventSubscriptionName'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       topicName: pulumi.Input.fromValue(map['topicName'] as String),
     );
   }
 }
+

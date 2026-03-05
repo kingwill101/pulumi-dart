@@ -130,7 +130,6 @@ import 'group_state.dart';
 class Group extends pulumi.CustomResource {
   /// GroupId.
   late final pulumi.Output<String> groupId;
-
   /// GroupName.
   late final pulumi.Output<String?> groupName;
 
@@ -138,19 +137,26 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_securitycenter_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:securitycenter/group:Group',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Group(
+    String name, {
+    GroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:securitycenter/group:Group',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupId = registerOutput<String>('groupId');
     groupName = registerOutput<String?>('groupName');
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
+  static Group get(
+    String name,
+    pulumi.Input<String> id, {
+    GroupState? state,
+  }) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -163,11 +169,11 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:securitycenter/group:Group',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:securitycenter/group:Group',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupId = registerOutput<String>('groupId');
     groupName = registerOutput<String?>('groupName');
   }

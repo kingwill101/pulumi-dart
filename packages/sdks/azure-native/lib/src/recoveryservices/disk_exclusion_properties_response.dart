@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskExclusionPropertiesResponse {
   /// List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.
   final pulumi.Input<List<int>>? diskLunList;
-
   /// Flag to indicate whether DiskLunList is to be included/ excluded from backup.
   final pulumi.Input<bool>? isInclusionList;
 
   /// Creates a new [DiskExclusionPropertiesResponse].
   /// [diskLunList] List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.
   /// [isInclusionList] Flag to indicate whether DiskLunList is to be included/ excluded from backup.
-  DiskExclusionPropertiesResponse({this.diskLunList, this.isInclusionList});
+  DiskExclusionPropertiesResponse({
+    this.diskLunList,
+    this.isInclusionList,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,16 +25,9 @@ class DiskExclusionPropertiesResponse {
 
   factory DiskExclusionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DiskExclusionPropertiesResponse(
-      diskLunList: (() {
-        final guardedValue = map['diskLunList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
-      isInclusionList: (() {
-        final guardedValue = map['isInclusionList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      diskLunList: (() { final guardedValue = map['diskLunList']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
+      isInclusionList: (() { final guardedValue = map['isInclusionList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

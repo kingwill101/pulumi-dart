@@ -17,3 +17,4 @@ enum JobAgentIdentityType {
     throw ArgumentError('Unknown JobAgentIdentityType value: $value');
   }
 }
+

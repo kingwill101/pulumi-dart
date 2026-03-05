@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayRouteConfigArgs {
   /// The name of Spring Cloud Gateway.
   final pulumi.Input<String> gatewayName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Spring Cloud Gateway route config.
   final pulumi.Input<String> routeConfigName;
-
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -43,11 +40,10 @@ class GetGatewayRouteConfigArgs {
   factory GetGatewayRouteConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteConfigArgs(
       gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       routeConfigName: pulumi.Input.fromValue(map['routeConfigName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

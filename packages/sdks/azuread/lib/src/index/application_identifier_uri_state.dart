@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationIdentifierUriState {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   final pulumi.Input<String>? applicationId;
-
   /// The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
   final pulumi.Input<String>? identifierUri;
 
   /// Creates a new [ApplicationIdentifierUriState].
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [identifierUri] The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
-  ApplicationIdentifierUriState({this.applicationId, this.identifierUri});
+  ApplicationIdentifierUriState({
+    this.applicationId,
+    this.identifierUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class ApplicationIdentifierUriState {
 
   factory ApplicationIdentifierUriState.fromMap(Map<String, dynamic> map) {
     return ApplicationIdentifierUriState(
-      applicationId: (() {
-        final guardedValue = map['applicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identifierUri: (() {
-        final guardedValue = map['identifierUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identifierUri: (() { final guardedValue = map['identifierUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

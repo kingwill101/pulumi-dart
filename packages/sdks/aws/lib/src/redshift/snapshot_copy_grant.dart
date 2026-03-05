@@ -150,19 +150,14 @@ import 'snapshot_copy_grant_state.dart';
 class SnapshotCopyGrant extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of snapshot copy grant
   late final pulumi.Output<String> arn;
-
   /// The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN. If not specified, the default key is used.
   late final pulumi.Output<String> kmsKeyId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A friendly name for identifying the grant.
   late final pulumi.Output<String> snapshotCopyGrantName;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -175,11 +170,11 @@ class SnapshotCopyGrant extends pulumi.CustomResource {
     SnapshotCopyGrantArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshift/snapshotCopyGrant:SnapshotCopyGrant',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:redshift/snapshotCopyGrant:SnapshotCopyGrant',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     kmsKeyId = registerOutput<String>('kmsKeyId');
     region = registerOutput<String>('region');
@@ -206,11 +201,11 @@ class SnapshotCopyGrant extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshift/snapshotCopyGrant:SnapshotCopyGrant',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:redshift/snapshotCopyGrant:SnapshotCopyGrant',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     kmsKeyId = registerOutput<String>('kmsKeyId');
     region = registerOutput<String>('region');

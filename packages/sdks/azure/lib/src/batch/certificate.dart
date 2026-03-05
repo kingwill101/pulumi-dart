@@ -328,28 +328,20 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// Specifies the name of the Batch account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-
   /// The base64-encoded contents of the certificate.
   late final pulumi.Output<String> certificate;
-
   /// The format of the certificate. Possible values are `Cer` or `Pfx`.
   late final pulumi.Output<String> format;
-
   /// The generated name of the certificate.
   late final pulumi.Output<String> name;
-
   /// The password to access the certificate's private key. This can only be specified when `format` is `Pfx`.
   late final pulumi.Output<String?> password;
-
   /// The public key of the certificate.
   late final pulumi.Output<String> publicData;
-
   /// The name of the resource group in which to create the Batch account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The thumbprint of the certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> thumbprint;
-
   /// The algorithm of the certificate thumbprint. At this time the only supported value is `SHA1`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> thumbprintAlgorithm;
 
@@ -362,11 +354,11 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:batch/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:batch/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     certificate = registerOutput<String>('certificate');
     format = registerOutput<String>('format');
@@ -396,11 +388,11 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:batch/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:batch/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     certificate = registerOutput<String>('certificate');
     format = registerOutput<String>('format');

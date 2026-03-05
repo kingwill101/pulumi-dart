@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JsonFieldWithDefault {
   /// The default value to be used for mapping when a SourceField is not provided or if there's no property with the specified name in the published JSON event payload.
   final pulumi.Input<String>? defaultValue;
-
   /// Name of a field in the input event schema that's to be used as the source of a mapping.
   final pulumi.Input<String>? sourceField;
 
   /// Creates a new [JsonFieldWithDefault].
   /// [defaultValue] The default value to be used for mapping when a SourceField is not provided or if there's no property with the specified name in the published JSON event payload.
   /// [sourceField] Name of a field in the input event schema that's to be used as the source of a mapping.
-  JsonFieldWithDefault({this.defaultValue, this.sourceField});
+  JsonFieldWithDefault({
+    this.defaultValue,
+    this.sourceField,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,16 +29,9 @@ class JsonFieldWithDefault {
 
   factory JsonFieldWithDefault.fromMap(Map<String, dynamic> map) {
     return JsonFieldWithDefault(
-      defaultValue: (() {
-        final guardedValue = map['defaultValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceField: (() {
-        final guardedValue = map['sourceField'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      defaultValue: (() { final guardedValue = map['defaultValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceField: (() { final guardedValue = map['sourceField']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

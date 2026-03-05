@@ -9,19 +9,20 @@ class CassandraPartitionKeyResponse {
 
   /// Creates a new [CassandraPartitionKeyResponse].
   /// [name] Name of the Cosmos DB Cassandra table partition key
-  CassandraPartitionKeyResponse({this.name});
+  CassandraPartitionKeyResponse({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory CassandraPartitionKeyResponse.fromMap(Map<String, dynamic> map) {
     return CassandraPartitionKeyResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

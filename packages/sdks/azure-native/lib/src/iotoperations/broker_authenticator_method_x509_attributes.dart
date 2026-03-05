@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BrokerAuthenticatorMethodX509Attributes {
   /// Attributes object.
   final pulumi.Input<Map<String, String>> attributes;
-
   /// Subject of the X509 attribute.
   final pulumi.Input<String> subject;
 
@@ -19,17 +18,17 @@ class BrokerAuthenticatorMethodX509Attributes {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'attributes': attributes, 'subject': subject};
+    return <String, dynamic>{
+      'attributes': attributes,
+      'subject': subject,
+    };
   }
 
-  factory BrokerAuthenticatorMethodX509Attributes.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BrokerAuthenticatorMethodX509Attributes.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodX509Attributes(
-      attributes: pulumi.Input.fromValue(
-        (map['attributes'] as Map).cast<String, String>(),
-      ),
+      attributes: pulumi.Input.fromValue((map['attributes'] as Map).cast<String, String>()),
       subject: pulumi.Input.fromValue(map['subject'] as String),
     );
   }
 }
+

@@ -14,8 +14,7 @@ enum EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy value: $value',
-    );
+    throw ArgumentError('Unknown EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy value: $value');
   }
 }
+

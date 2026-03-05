@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AkriConnectorsTagResponse {
   /// The tag of the image.
   final pulumi.Input<String> tag;
-
   /// AkriConnectorsTagDigestType values.
   /// Expected value is 'Tag'.
   final pulumi.Input<String> tagDigestType;
@@ -14,10 +13,16 @@ class AkriConnectorsTagResponse {
   /// Creates a new [AkriConnectorsTagResponse].
   /// [tag] The tag of the image.
   /// [tagDigestType] AkriConnectorsTagDigestType values.
-  AkriConnectorsTagResponse({required this.tag, required this.tagDigestType});
+  AkriConnectorsTagResponse({
+    required this.tag,
+    required this.tagDigestType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tag': tag, 'tagDigestType': tagDigestType};
+    return <String, dynamic>{
+      'tag': tag,
+      'tagDigestType': tagDigestType,
+    };
   }
 
   factory AkriConnectorsTagResponse.fromMap(Map<String, dynamic> map) {
@@ -27,3 +32,4 @@ class AkriConnectorsTagResponse {
     );
   }
 }
+

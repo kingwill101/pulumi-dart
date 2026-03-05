@@ -30,30 +30,13 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
     };
   }
 
-  factory SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig(
-      confidenceThreshold: (() {
-        final guardedValue = map['confidenceThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      expirationSec: (() {
-        final guardedValue = map['expirationSec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      impactedBaselineThreshold: (() {
-        final guardedValue = map['impactedBaselineThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      loadThreshold: (() {
-        final guardedValue = map['loadThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      confidenceThreshold: (() { final guardedValue = map['confidenceThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      expirationSec: (() { final guardedValue = map['expirationSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      impactedBaselineThreshold: (() { final guardedValue = map['impactedBaselineThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      loadThreshold: (() { final guardedValue = map['loadThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

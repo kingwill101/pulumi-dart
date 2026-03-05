@@ -899,52 +899,36 @@ import 'endpoint_args.dart';
 class EndpointTrafficmanager extends pulumi.CustomResource {
   /// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
   late final pulumi.Output<String?> alwaysServe;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// List of custom headers.
   late final pulumi.Output<List<Map<String, dynamic>>?> customHeaders;
-
   /// Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
   late final pulumi.Output<String?> endpointLocation;
-
   /// The monitoring status of the endpoint.
   late final pulumi.Output<String?> endpointMonitorStatus;
-
   /// The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method.
   late final pulumi.Output<String?> endpointStatus;
-
   /// The list of countries/regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager Geographic documentation for a full list of accepted values.
   late final pulumi.Output<List<String>?> geoMapping;
-
   /// The minimum number of endpoints that must be available in the child profile in order for the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.
   late final pulumi.Output<double?> minChildEndpoints;
-
   /// The minimum number of IPv4 (DNS record type A) endpoints that must be available in the child profile in order for the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.
   late final pulumi.Output<double?> minChildEndpointsIPv4;
-
   /// The minimum number of IPv6 (DNS record type AAAA) endpoints that must be available in the child profile in order for the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.
   late final pulumi.Output<double?> minChildEndpointsIPv6;
-
   /// The name of the resource
   late final pulumi.Output<String?> name;
-
   /// The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.
   late final pulumi.Output<double?> priority;
-
   /// The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
   late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
-
   /// The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
   late final pulumi.Output<String?> target;
-
   /// The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
   late final pulumi.Output<String?> targetResourceId;
-
   /// The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
   late final pulumi.Output<String?> type;
-
   /// The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
   late final pulumi.Output<double?> weight;
 
@@ -957,16 +941,14 @@ class EndpointTrafficmanager extends pulumi.CustomResource {
     EndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:trafficmanager:Endpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:trafficmanager:Endpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alwaysServe = registerOutput<String?>('alwaysServe');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    customHeaders = registerOutput<List<Map<String, dynamic>>?>(
-      'customHeaders',
-    );
+    customHeaders = registerOutput<List<Map<String, dynamic>>?>('customHeaders');
     endpointLocation = registerOutput<String?>('endpointLocation');
     endpointMonitorStatus = registerOutput<String?>('endpointMonitorStatus');
     endpointStatus = registerOutput<String?>('endpointStatus');

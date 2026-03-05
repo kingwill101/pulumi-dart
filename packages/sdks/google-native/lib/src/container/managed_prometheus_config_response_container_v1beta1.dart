@@ -9,17 +9,20 @@ class ManagedPrometheusConfigResponseContainerV1beta1 {
 
   /// Creates a new [ManagedPrometheusConfigResponseContainerV1beta1].
   /// [enabled] Enable Managed Collection.
-  ManagedPrometheusConfigResponseContainerV1beta1({required this.enabled});
+  ManagedPrometheusConfigResponseContainerV1beta1({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory ManagedPrometheusConfigResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedPrometheusConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ManagedPrometheusConfigResponseContainerV1beta1(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

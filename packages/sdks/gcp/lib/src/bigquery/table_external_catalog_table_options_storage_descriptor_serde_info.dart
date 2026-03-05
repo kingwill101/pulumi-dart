@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
   /// Name of the SerDe. The maximum length is 256 characters.
   final pulumi.Input<String>? name;
-
   /// Key-value pairs that define the initialization
   /// parameters for the serialization library. Maximum size 10 Kib.
   final pulumi.Input<Map<String, String>>? parameters;
-
   /// Specifies a fully-qualified class name of
   /// the serialization library that is responsible for the translation of data
   /// between table representation and the underlying low-level input and output
@@ -34,25 +32,12 @@ class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
     };
   }
 
-  factory TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo.fromMap(Map<String, dynamic> map) {
     return TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      serializationLibrary: pulumi.Input.fromValue(
-        map['serializationLibrary'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      serializationLibrary: pulumi.Input.fromValue(map['serializationLibrary'] as String),
     );
   }
 }
+

@@ -11,10 +11,8 @@ class TransitRouterRouteTablePropagationArgs {
   ///
   /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
   final pulumi.Input<bool>? dryRun;
-
   /// The ID the transit router attachment.
   final pulumi.Input<String> transitRouterAttachmentId;
-
   /// The ID of the transit router route table.
   final pulumi.Input<String> transitRouterRouteTableId;
 
@@ -36,21 +34,12 @@ class TransitRouterRouteTablePropagationArgs {
     };
   }
 
-  factory TransitRouterRouteTablePropagationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TransitRouterRouteTablePropagationArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterRouteTablePropagationArgs(
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      transitRouterAttachmentId: pulumi.Input.fromValue(
-        map['transitRouterAttachmentId'] as String,
-      ),
-      transitRouterRouteTableId: pulumi.Input.fromValue(
-        map['transitRouterRouteTableId'] as String,
-      ),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      transitRouterAttachmentId: pulumi.Input.fromValue(map['transitRouterAttachmentId'] as String),
+      transitRouterRouteTableId: pulumi.Input.fromValue(map['transitRouterRouteTableId'] as String),
     );
   }
 }
+

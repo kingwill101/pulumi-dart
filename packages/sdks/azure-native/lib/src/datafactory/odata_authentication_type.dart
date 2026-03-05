@@ -18,3 +18,4 @@ enum ODataAuthenticationType {
     throw ArgumentError('Unknown ODataAuthenticationType value: $value');
   }
 }
+

@@ -178,22 +178,17 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 class VpcOrigin extends pulumi.CustomResource {
   /// The VPC origin ARN.
   late final pulumi.Output<String> arn;
-
   /// The current version of the origin.
   late final pulumi.Output<String> etag;
-
   /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<VpcOriginTimeouts?> timeouts;
-
   /// The VPC origin endpoint configuration.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<VpcOriginVpcOriginEndpointConfig>
-  vpcOriginEndpointConfig;
+  late final pulumi.Output<VpcOriginVpcOriginEndpointConfig> vpcOriginEndpointConfig;
 
   /// Creates a new [VpcOrigin].
   /// [name] The Pulumi resource name.
@@ -204,35 +199,17 @@ class VpcOrigin extends pulumi.CustomResource {
     VpcOriginArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/vpcOrigin:VpcOrigin',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/vpcOrigin:VpcOrigin',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     etag = registerOutput<String>('etag');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<VpcOriginTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpcOriginTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpcOriginEndpointConfig = registerOutput<VpcOriginVpcOriginEndpointConfig>(
-      'vpcOriginEndpointConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpcOriginVpcOriginEndpointConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<VpcOriginTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcOriginTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcOriginEndpointConfig = registerOutput<VpcOriginVpcOriginEndpointConfig>('vpcOriginEndpointConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcOriginVpcOriginEndpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [VpcOrigin] resource's state with the given [name] and [id].
@@ -253,34 +230,16 @@ class VpcOrigin extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/vpcOrigin:VpcOrigin',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/vpcOrigin:VpcOrigin',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     etag = registerOutput<String>('etag');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<VpcOriginTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpcOriginTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpcOriginEndpointConfig = registerOutput<VpcOriginVpcOriginEndpointConfig>(
-      'vpcOriginEndpointConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpcOriginVpcOriginEndpointConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<VpcOriginTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcOriginTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcOriginEndpointConfig = registerOutput<VpcOriginVpcOriginEndpointConfig>('vpcOriginEndpointConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcOriginVpcOriginEndpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

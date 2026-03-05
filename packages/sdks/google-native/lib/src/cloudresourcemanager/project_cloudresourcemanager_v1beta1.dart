@@ -6,26 +6,18 @@ import 'resource_id_response_cloudresourcemanager_v1beta1.dart';
 class ProjectCloudresourcemanagerV1beta1 extends pulumi.CustomResource {
   /// Creation time. Read-only.
   late final pulumi.Output<String> createTime;
-
   /// The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63 characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"environment" : "dev"` Read-write.
   late final pulumi.Output<Map<String, String>> labels;
-
   /// The Project lifecycle state. Read-only.
   late final pulumi.Output<String> lifecycleState;
-
   /// The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write.
   late final pulumi.Output<String> name;
-
   /// An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
-  late final pulumi.Output<ResourceIdResponseCloudresourcemanagerV1beta1>
-  parent;
-
+  late final pulumi.Output<ResourceIdResponseCloudresourcemanagerV1beta1> parent;
   /// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
   late final pulumi.Output<String> projectId;
-
   /// The number uniquely identifying the project. Example: `415104041262` Read-only.
   late final pulumi.Output<String> projectNumber;
-
   /// A now unused experiment opt-out option.
   late final pulumi.Output<bool?> useLegacyStack;
 
@@ -38,25 +30,16 @@ class ProjectCloudresourcemanagerV1beta1 extends pulumi.CustomResource {
     ProjectCloudresourcemanagerV1beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:cloudresourcemanager/v1beta1:Project',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:cloudresourcemanager/v1beta1:Project',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     labels = registerOutput<Map<String, String>>('labels');
     lifecycleState = registerOutput<String>('lifecycleState');
     this.name = registerOutput<String>('name');
-    parent = registerOutput<ResourceIdResponseCloudresourcemanagerV1beta1>(
-      'parent',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceIdResponseCloudresourcemanagerV1beta1.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    parent = registerOutput<ResourceIdResponseCloudresourcemanagerV1beta1>('parent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdResponseCloudresourcemanagerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     projectId = registerOutput<String>('projectId');
     projectNumber = registerOutput<String>('projectNumber');
     useLegacyStack = registerOutput<bool?>('useLegacyStack');

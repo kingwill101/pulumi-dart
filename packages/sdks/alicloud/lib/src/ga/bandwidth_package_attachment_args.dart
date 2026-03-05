@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BandwidthPackageAttachmentArgs {
   /// The ID of the Global Accelerator instance.
   final pulumi.Input<String> acceleratorId;
-
   /// The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
   final pulumi.Input<String> bandwidthPackageId;
 
@@ -31,9 +30,8 @@ class BandwidthPackageAttachmentArgs {
   factory BandwidthPackageAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return BandwidthPackageAttachmentArgs(
       acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
-      bandwidthPackageId: pulumi.Input.fromValue(
-        map['bandwidthPackageId'] as String,
-      ),
+      bandwidthPackageId: pulumi.Input.fromValue(map['bandwidthPackageId'] as String),
     );
   }
 }
+

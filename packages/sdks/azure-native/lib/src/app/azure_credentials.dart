@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureCredentials {
   /// Client Id.
   final pulumi.Input<String>? clientId;
-
   /// Client Secret.
   final pulumi.Input<String>? clientSecret;
-
   /// Kind of auth github does for deploying the template
   final pulumi.Input<String>? kind;
-
   /// Subscription Id.
   final pulumi.Input<String>? subscriptionId;
-
   /// Tenant Id.
   final pulumi.Input<String>? tenantId;
 
@@ -45,31 +41,12 @@ class AzureCredentials {
 
   factory AzureCredentials.fromMap(Map<String, dynamic> map) {
     return AzureCredentials(
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientSecret: (() {
-        final guardedValue = map['clientSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

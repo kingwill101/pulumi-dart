@@ -10,25 +10,20 @@ class ContainerRegistryProperties {
 
   /// Creates a new [ContainerRegistryProperties].
   /// [credentials] The credentials of the container registry resource.
-  ContainerRegistryProperties({required this.credentials});
+  ContainerRegistryProperties({
+    required this.credentials,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credentials':
-          pulumi.Input.mapInputValue<
-            ContainerRegistryBasicCredentials,
-            Map<String, dynamic>
-          >(credentials, (value) => value.toMap()),
+      'credentials': pulumi.Input.mapInputValue<ContainerRegistryBasicCredentials, Map<String, dynamic>>(credentials, (value) => value.toMap()),
     };
   }
 
   factory ContainerRegistryProperties.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryProperties(
-      credentials: pulumi.Input.fromValue(
-        ContainerRegistryBasicCredentials.fromMap(
-          (map['credentials']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      credentials: pulumi.Input.fromValue(ContainerRegistryBasicCredentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

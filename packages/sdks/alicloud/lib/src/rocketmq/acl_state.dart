@@ -8,22 +8,16 @@ class AclState {
   /// - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
   /// - If `resource_type` is set to `Group`. Valid values: `Sub`.
   final pulumi.Input<List<String>>? actions;
-
   /// The decision result of the authorization. Valid values: `Deny`, `Allow`.
   final pulumi.Input<String>? decision;
-
   /// The instance ID.
   final pulumi.Input<String>? instanceId;
-
   /// The IP address whitelists.
   final pulumi.Input<List<String>>? ipWhitelists;
-
   /// The name of the resource on which you want to grant permissions.
   final pulumi.Input<String>? resourceName;
-
   /// The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
   final pulumi.Input<String>? resourceType;
-
   /// The username of the account.
   final pulumi.Input<String>? username;
 
@@ -59,41 +53,14 @@ class AclState {
 
   factory AclState.fromMap(Map<String, dynamic> map) {
     return AclState(
-      actions: (() {
-        final guardedValue = map['actions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      decision: (() {
-        final guardedValue = map['decision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipWhitelists: (() {
-        final guardedValue = map['ipWhitelists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      resourceName: (() {
-        final guardedValue = map['resourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceType: (() {
-        final guardedValue = map['resourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      decision: (() { final guardedValue = map['decision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipWhitelists: (() { final guardedValue = map['ipWhitelists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

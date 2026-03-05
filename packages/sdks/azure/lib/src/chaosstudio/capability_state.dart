@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapabilityState {
   /// The capability that should be applied to the Chaos Studio Target. For supported values please see this Chaos Studio [Fault Library](https://learn.microsoft.com/azure/chaos-studio/chaos-studio-fault-library). Changing this forces a new Chaos Studio Capability to be created.
   final pulumi.Input<String>? capabilityType;
-
   /// The Unique Resource Name of the Capability.
   final pulumi.Input<String>? capabilityUrn;
-
   /// The Chaos Studio Target that the capability should be applied to. Changing this forces a new Chaos Studio Capability to be created.
   final pulumi.Input<String>? chaosStudioTargetId;
 
@@ -33,21 +31,10 @@ class CapabilityState {
 
   factory CapabilityState.fromMap(Map<String, dynamic> map) {
     return CapabilityState(
-      capabilityType: (() {
-        final guardedValue = map['capabilityType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      capabilityUrn: (() {
-        final guardedValue = map['capabilityUrn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      chaosStudioTargetId: (() {
-        final guardedValue = map['chaosStudioTargetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      capabilityType: (() { final guardedValue = map['capabilityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      capabilityUrn: (() { final guardedValue = map['capabilityUrn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      chaosStudioTargetId: (() { final guardedValue = map['chaosStudioTargetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

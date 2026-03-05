@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OSUpgradeSupportedVersionsResponse {
   /// The source OS version name.
   final pulumi.Input<String> supportedSourceOsVersion;
-
   /// The target OS version names.
   final pulumi.Input<List<String>> supportedTargetOsVersions;
 
@@ -27,12 +26,9 @@ class OSUpgradeSupportedVersionsResponse {
 
   factory OSUpgradeSupportedVersionsResponse.fromMap(Map<String, dynamic> map) {
     return OSUpgradeSupportedVersionsResponse(
-      supportedSourceOsVersion: pulumi.Input.fromValue(
-        map['supportedSourceOsVersion'] as String,
-      ),
-      supportedTargetOsVersions: pulumi.Input.fromValue(
-        (map['supportedTargetOsVersions'] as List).cast<String>(),
-      ),
+      supportedSourceOsVersion: pulumi.Input.fromValue(map['supportedSourceOsVersion'] as String),
+      supportedTargetOsVersions: pulumi.Input.fromValue((map['supportedTargetOsVersions'] as List).cast<String>()),
     );
   }
 }
+

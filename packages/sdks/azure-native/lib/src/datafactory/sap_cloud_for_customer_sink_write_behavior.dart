@@ -12,8 +12,7 @@ enum SapCloudForCustomerSinkWriteBehavior {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SapCloudForCustomerSinkWriteBehavior value: $value',
-    );
+    throw ArgumentError('Unknown SapCloudForCustomerSinkWriteBehavior value: $value');
   }
 }
+

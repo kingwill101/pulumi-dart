@@ -31,17 +31,10 @@ class GetSubscriptionIamPolicyArgs {
 
   factory GetSubscriptionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionIamPolicyArgs(
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
+

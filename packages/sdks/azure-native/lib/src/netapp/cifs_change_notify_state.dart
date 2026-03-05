@@ -15,3 +15,4 @@ enum CifsChangeNotifyState {
     throw ArgumentError('Unknown CifsChangeNotifyState value: $value');
   }
 }
+

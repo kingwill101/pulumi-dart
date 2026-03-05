@@ -379,31 +379,22 @@ import 'agentcore_code_interpreter_timeouts.dart';
 class AgentcoreCodeInterpreter extends pulumi.CustomResource {
   /// ARN of the Code Interpreter.
   late final pulumi.Output<String> codeInterpreterArn;
-
   /// Unique identifier of the Code Interpreter.
   late final pulumi.Output<String> codeInterpreterId;
-
   /// Description of the code interpreter.
   late final pulumi.Output<String?> description;
-
   /// ARN of the IAM role that the code interpreter assumes for execution. Required when using `SANDBOX` network mode.
   late final pulumi.Output<String?> executionRoleArn;
-
   /// Name of the code interpreter.
   late final pulumi.Output<String> name;
-
   /// Network configuration for the code interpreter. See `network_configuration` below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<AgentcoreCodeInterpreterNetworkConfiguration>
-  networkConfiguration;
-
+  late final pulumi.Output<AgentcoreCodeInterpreterNetworkConfiguration> networkConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreCodeInterpreterTimeouts?> timeouts;
@@ -417,40 +408,21 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
     AgentcoreCodeInterpreterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentcoreCodeInterpreter:AgentcoreCodeInterpreter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:bedrock/agentcoreCodeInterpreter:AgentcoreCodeInterpreter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     codeInterpreterArn = registerOutput<String>('codeInterpreterArn');
     codeInterpreterId = registerOutput<String>('codeInterpreterId');
     description = registerOutput<String?>('description');
     executionRoleArn = registerOutput<String?>('executionRoleArn');
     this.name = registerOutput<String>('name');
-    networkConfiguration =
-        registerOutput<AgentcoreCodeInterpreterNetworkConfiguration>(
-          'networkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreCodeInterpreterNetworkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    networkConfiguration = registerOutput<AgentcoreCodeInterpreterNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreCodeInterpreterNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentcoreCodeInterpreterTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentcoreCodeInterpreterTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<AgentcoreCodeInterpreterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreCodeInterpreterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AgentcoreCodeInterpreter] resource's state with the given [name] and [id].
@@ -471,39 +443,20 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentcoreCodeInterpreter:AgentcoreCodeInterpreter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:bedrock/agentcoreCodeInterpreter:AgentcoreCodeInterpreter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     codeInterpreterArn = registerOutput<String>('codeInterpreterArn');
     codeInterpreterId = registerOutput<String>('codeInterpreterId');
     description = registerOutput<String?>('description');
     executionRoleArn = registerOutput<String?>('executionRoleArn');
     this.name = registerOutput<String>('name');
-    networkConfiguration =
-        registerOutput<AgentcoreCodeInterpreterNetworkConfiguration>(
-          'networkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreCodeInterpreterNetworkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    networkConfiguration = registerOutput<AgentcoreCodeInterpreterNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreCodeInterpreterNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentcoreCodeInterpreterTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentcoreCodeInterpreterTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<AgentcoreCodeInterpreterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreCodeInterpreterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

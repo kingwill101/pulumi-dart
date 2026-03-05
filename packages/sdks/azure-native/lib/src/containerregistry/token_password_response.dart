@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TokenPasswordResponse {
   /// The creation datetime of the password.
   final pulumi.Input<String>? creationTime;
-
   /// The expiry datetime of the password.
   final pulumi.Input<String>? expiry;
-
   /// The password name "password1" or "password2"
   final pulumi.Input<String>? name;
-
   /// The password value.
   final pulumi.Input<String> value;
 
@@ -39,22 +36,11 @@ class TokenPasswordResponse {
 
   factory TokenPasswordResponse.fromMap(Map<String, dynamic> map) {
     return TokenPasswordResponse(
-      creationTime: (() {
-        final guardedValue = map['creationTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expiry: (() {
-        final guardedValue = map['expiry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expiry: (() { final guardedValue = map['expiry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

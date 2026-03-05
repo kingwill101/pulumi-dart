@@ -6,25 +6,18 @@ import 'system_data_response.dart';
 class GetInfrastructureResourceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The status of the last operation.
   final String provisioningState;
-
   /// The id of the infrastructure resource.
   final String resourceId;
-
   /// The type of the infrastructure resource.
   final String resourceType;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -69,10 +62,9 @@ class GetInfrastructureResourceResult {
       provisioningState: map['provisioningState'] as String,
       resourceId: map['resourceId'] as String,
       resourceType: map['resourceType'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

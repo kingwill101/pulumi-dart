@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRunV2ExecutionReferenceResponse {
   /// Creation timestamp of the execution.
   final pulumi.Input<String> completionTime;
-
   /// Creation timestamp of the execution.
   final pulumi.Input<String> createTime;
-
   /// Name of the execution.
   final pulumi.Input<String> name;
 
@@ -31,9 +29,7 @@ class GoogleCloudRunV2ExecutionReferenceResponse {
     };
   }
 
-  factory GoogleCloudRunV2ExecutionReferenceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRunV2ExecutionReferenceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2ExecutionReferenceResponse(
       completionTime: pulumi.Input.fromValue(map['completionTime'] as String),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudRunV2ExecutionReferenceResponse {
     );
   }
 }
+

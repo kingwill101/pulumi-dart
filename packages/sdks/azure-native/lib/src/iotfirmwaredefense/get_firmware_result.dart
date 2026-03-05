@@ -8,43 +8,30 @@ import 'system_data_response.dart';
 class GetFirmwareResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// User-specified description of the firmware.
   final String? description;
-
   /// File name for a firmware that user uploaded.
   final String? fileName;
-
   /// File size of the uploaded firmware image.
   final double? fileSize;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Firmware model.
   final String? model;
-
   /// The name of the resource
   final String name;
-
   /// Provisioning state of the resource.
   final String provisioningState;
-
   /// The status of firmware scan.
   final String? status;
-
   /// A list of errors or other messages generated during firmware analysis
   final List<StatusMessageResponse>? statusMessages;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Firmware vendor.
   final String? vendor;
-
   /// Firmware version.
   final String? version;
 
@@ -91,14 +78,7 @@ class GetFirmwareResult {
       'name': name,
       'provisioningState': provisioningState,
       'status': ?status,
-      'statusMessages': ?(() {
-        final guardedValue = statusMessages;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          StatusMessageResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'statusMessages': ?(() { final guardedValue = statusMessages; if (guardedValue == null) return null; return pulumi.Input.encodeList<StatusMessageResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'systemData': systemData.toMap(),
       'type': type,
       'vendor': ?vendor,
@@ -109,58 +89,20 @@ class GetFirmwareResult {
   factory GetFirmwareResult.fromMap(Map<String, dynamic> map) {
     return GetFirmwareResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      fileName: (() {
-        final guardedValue = map['fileName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      fileSize: (() {
-        final guardedValue = map['fileSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fileName: (() { final guardedValue = map['fileName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fileSize: (() { final guardedValue = map['fileSize']; if (guardedValue == null) return null; return guardedValue as double; })(),
       id: map['id'] as String,
-      model: (() {
-        final guardedValue = map['model'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      statusMessages: (() {
-        final guardedValue = map['statusMessages'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<StatusMessageResponse>(
-          guardedValue,
-          (value) => StatusMessageResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statusMessages: (() { final guardedValue = map['statusMessages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusMessageResponse>(guardedValue, (value) => StatusMessageResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      vendor: (() {
-        final guardedValue = map['vendor'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      vendor: (() { final guardedValue = map['vendor']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

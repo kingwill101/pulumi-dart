@@ -193,55 +193,38 @@ import 'system_data_response.dart';
 class KustoPool extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The Kusto Pool data ingestion URI.
   late final pulumi.Output<String> dataIngestionUri;
-
   /// A boolean value that indicates if the purge operations are enabled.
   late final pulumi.Output<bool?> enablePurge;
-
   /// A boolean value that indicates if the streaming ingest is enabled.
   late final pulumi.Output<bool?> enableStreamingIngest;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// List of the Kusto Pool's language extensions.
   late final pulumi.Output<LanguageExtensionsListResponse> languageExtensions;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Optimized auto scale definition.
   late final pulumi.Output<OptimizedAutoscaleResponse?> optimizedAutoscale;
-
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The SKU of the kusto pool.
   late final pulumi.Output<AzureSkuResponse> sku;
-
   /// The state of the resource.
   late final pulumi.Output<String> state;
-
   /// The reason for the Kusto Pool's current state.
   late final pulumi.Output<String> stateReason;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The Kusto Pool URI.
   late final pulumi.Output<String> uri;
-
   /// The workspace unique identifier.
   late final pulumi.Output<String?> workspaceUID;
 
@@ -254,61 +237,25 @@ class KustoPool extends pulumi.CustomResource {
     KustoPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:synapse:KustoPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:synapse:KustoPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dataIngestionUri = registerOutput<String>('dataIngestionUri');
     enablePurge = registerOutput<bool?>('enablePurge');
     enableStreamingIngest = registerOutput<bool?>('enableStreamingIngest');
     etag = registerOutput<String>('etag');
-    languageExtensions = registerOutput<LanguageExtensionsListResponse>(
-      'languageExtensions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LanguageExtensionsListResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    languageExtensions = registerOutput<LanguageExtensionsListResponse>('languageExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LanguageExtensionsListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    optimizedAutoscale = registerOutput<OptimizedAutoscaleResponse?>(
-      'optimizedAutoscale',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OptimizedAutoscaleResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    optimizedAutoscale = registerOutput<OptimizedAutoscaleResponse?>('optimizedAutoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OptimizedAutoscaleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<AzureSkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<AzureSkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uri = registerOutput<String>('uri');

@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration {
   /// ASN of CE devices for CE/PE connectivity.
   final pulumi.Input<double> fabricASN;
-
   /// ASN of PE devices for CE/PE connectivity.Example : 28
   final pulumi.Input<double> peerASN;
-
   /// IPv4 Address Prefix.
   final pulumi.Input<String>? primaryIpv4Prefix;
-
   /// IPv6 Address Prefix.
   final pulumi.Input<String>? primaryIpv6Prefix;
-
   /// Secondary IPv4 Address Prefix.
   final pulumi.Input<String>? secondaryIpv4Prefix;
-
   /// Secondary IPv6 Address Prefix.
   final pulumi.Input<String>? secondaryIpv6Prefix;
-
   /// VLAN for CE/PE Layer 3 connectivity.Example : 501
   final pulumi.Input<int> vlanId;
 
@@ -55,33 +49,16 @@ class NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration {
     };
   }
 
-  factory NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration.fromMap(Map<String, dynamic> map) {
     return NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration(
       fabricASN: pulumi.Input.fromValue(map['fabricASN'] as double),
       peerASN: pulumi.Input.fromValue(map['peerASN'] as double),
-      primaryIpv4Prefix: (() {
-        final guardedValue = map['primaryIpv4Prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      primaryIpv6Prefix: (() {
-        final guardedValue = map['primaryIpv6Prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryIpv4Prefix: (() {
-        final guardedValue = map['secondaryIpv4Prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryIpv6Prefix: (() {
-        final guardedValue = map['secondaryIpv6Prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      primaryIpv4Prefix: (() { final guardedValue = map['primaryIpv4Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      primaryIpv6Prefix: (() { final guardedValue = map['primaryIpv6Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryIpv4Prefix: (() { final guardedValue = map['secondaryIpv4Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryIpv6Prefix: (() { final guardedValue = map['secondaryIpv6Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vlanId: pulumi.Input.fromValue(map['vlanId'] as int),
     );
   }
 }
+

@@ -8,10 +8,14 @@ class InferenceProfileModel {
 
   /// Creates a new [InferenceProfileModel].
   /// [modelArn] The Amazon Resource Name (ARN) of the model.
-  InferenceProfileModel({required this.modelArn});
+  InferenceProfileModel({
+    required this.modelArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'modelArn': modelArn};
+    return <String, dynamic>{
+      'modelArn': modelArn,
+    };
   }
 
   factory InferenceProfileModel.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class InferenceProfileModel {
     );
   }
 }
+

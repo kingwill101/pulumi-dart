@@ -9,17 +9,20 @@ class ManagedClusterWorkloadAutoScalerProfileKeda {
 
   /// Creates a new [ManagedClusterWorkloadAutoScalerProfileKeda].
   /// [enabled] Whether to enable KEDA.
-  ManagedClusterWorkloadAutoScalerProfileKeda({required this.enabled});
+  ManagedClusterWorkloadAutoScalerProfileKeda({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory ManagedClusterWorkloadAutoScalerProfileKeda.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedClusterWorkloadAutoScalerProfileKeda.fromMap(Map<String, dynamic> map) {
     return ManagedClusterWorkloadAutoScalerProfileKeda(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

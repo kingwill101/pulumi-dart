@@ -282,40 +282,28 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// (Available since v1.262.1) The time when the user was created.
   late final pulumi.Output<String> createTime;
-
   /// The description of the user. The description can be up to 1,024 characters in length.
   late final pulumi.Output<String?> description;
-
   /// The ID of the directory.
   late final pulumi.Output<String> directoryId;
-
   /// The display name of the user. The display name can be up to 256 characters in length.
   late final pulumi.Output<String?> displayName;
-
   /// The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
   late final pulumi.Output<String?> email;
-
   /// The first name of the user. The first name can be up to 64 characters in length.
   late final pulumi.Output<String?> firstName;
-
   /// The last name of the user. The last name can be up to 64 characters in length.
   late final pulumi.Output<String?> lastName;
-
   /// Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
   late final pulumi.Output<String> mfaAuthenticationSettings;
-
   /// The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
   late final pulumi.Output<String?> password;
-
   /// The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
   late final pulumi.Output<String> status;
-
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the user.
   late final pulumi.Output<String> userId;
-
   /// The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
   late final pulumi.Output<String> userName;
 
@@ -323,13 +311,16 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_cloudsso_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:cloudsso/user:User',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  User(
+    String name, {
+    UserArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:cloudsso/user:User',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     directoryId = registerOutput<String>('directoryId');
@@ -337,9 +328,7 @@ class User extends pulumi.CustomResource {
     email = registerOutput<String?>('email');
     firstName = registerOutput<String?>('firstName');
     lastName = registerOutput<String?>('lastName');
-    mfaAuthenticationSettings = registerOutput<String>(
-      'mfaAuthenticationSettings',
-    );
+    mfaAuthenticationSettings = registerOutput<String>('mfaAuthenticationSettings');
     password = registerOutput<String?>('password');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -348,7 +337,11 @@ class User extends pulumi.CustomResource {
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
+  static User get(
+    String name,
+    pulumi.Input<String> id, {
+    UserState? state,
+  }) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -361,11 +354,11 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/user:User',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/user:User',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     directoryId = registerOutput<String>('directoryId');
@@ -373,9 +366,7 @@ class User extends pulumi.CustomResource {
     email = registerOutput<String?>('email');
     firstName = registerOutput<String?>('firstName');
     lastName = registerOutput<String?>('lastName');
-    mfaAuthenticationSettings = registerOutput<String>(
-      'mfaAuthenticationSettings',
-    );
+    mfaAuthenticationSettings = registerOutput<String>('mfaAuthenticationSettings');
     password = registerOutput<String?>('password');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');

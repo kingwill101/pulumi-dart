@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class P2SVpnServerConfigRadiusServerRootCertificateResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String>? etag;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final pulumi.Input<String>? name;
-
   /// The provisioning state of the radius server root certificate resource.
   final pulumi.Input<String> provisioningState;
-
   /// The certificate public data.
   final pulumi.Input<String> publicCertData;
 
@@ -43,29 +39,14 @@ class P2SVpnServerConfigRadiusServerRootCertificateResponse {
     };
   }
 
-  factory P2SVpnServerConfigRadiusServerRootCertificateResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory P2SVpnServerConfigRadiusServerRootCertificateResponse.fromMap(Map<String, dynamic> map) {
     return P2SVpnServerConfigRadiusServerRootCertificateResponse(
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       publicCertData: pulumi.Input.fromValue(map['publicCertData'] as String),
     );
   }
 }
+

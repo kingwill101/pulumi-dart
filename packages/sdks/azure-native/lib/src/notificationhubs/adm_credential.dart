@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdmCredential {
   /// Gets or sets the URL of the authorization token.
   final pulumi.Input<String> authTokenUrl;
-
   /// Gets or sets the client identifier.
   final pulumi.Input<String> clientId;
-
   /// Gets or sets the credential secret access key.
   final pulumi.Input<String> clientSecret;
 
@@ -39,3 +37,4 @@ class AdmCredential {
     );
   }
 }
+

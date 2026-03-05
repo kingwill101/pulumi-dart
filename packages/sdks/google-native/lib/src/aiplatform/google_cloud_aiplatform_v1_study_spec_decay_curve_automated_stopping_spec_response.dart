@@ -14,16 +14,15 @@ class GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'useElapsedDuration': useElapsedDuration};
+    return <String, dynamic>{
+      'useElapsedDuration': useElapsedDuration,
+    };
   }
 
-  factory GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpecResponse(
-      useElapsedDuration: pulumi.Input.fromValue(
-        map['useElapsedDuration'] as bool,
-      ),
+      useElapsedDuration: pulumi.Input.fromValue(map['useElapsedDuration'] as bool),
     );
   }
 }
+

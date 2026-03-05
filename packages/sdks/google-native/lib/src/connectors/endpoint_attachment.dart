@@ -6,27 +6,20 @@ import 'endpoint_attachment_args.dart';
 class EndpointAttachment extends pulumi.CustomResource {
   /// Created time.
   late final pulumi.Output<String> createTime;
-
   /// Optional. Description of the resource.
   late final pulumi.Output<String> description;
-
   /// Required. Identifier to assign to the EndpointAttachment. Must be unique within scope of the parent resource.
   late final pulumi.Output<String> endpointAttachmentId;
-
   /// The Private Service Connect connection endpoint ip
   late final pulumi.Output<String> endpointIp;
-
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
-
   /// Resource name of the Endpoint Attachment. Format: projects/{project}/locations/{location}/endpointAttachments/{endpoint_attachment}
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// The path of the service attachment
   late final pulumi.Output<String> serviceAttachment;
-
   /// Updated time.
   late final pulumi.Output<String> updateTime;
 
@@ -39,11 +32,11 @@ class EndpointAttachment extends pulumi.CustomResource {
     EndpointAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:connectors/v1:EndpointAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:connectors/v1:EndpointAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     endpointAttachmentId = registerOutput<String>('endpointAttachmentId');

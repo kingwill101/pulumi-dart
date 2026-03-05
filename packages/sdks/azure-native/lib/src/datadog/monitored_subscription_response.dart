@@ -7,13 +7,10 @@ import 'monitoring_tag_rules_properties_response.dart';
 class MonitoredSubscriptionResponse {
   /// The reason of not monitoring the subscription.
   final pulumi.Input<String>? error;
-
   /// The state of monitoring.
   final pulumi.Input<String>? status;
-
   /// The subscriptionId to be monitored.
   final pulumi.Input<String>? subscriptionId;
-
   /// Definition of the properties for a TagRules resource.
   final pulumi.Input<MonitoringTagRulesPropertiesResponse>? tagRules;
 
@@ -34,40 +31,17 @@ class MonitoredSubscriptionResponse {
       'error': ?error,
       'status': ?status,
       'subscriptionId': ?subscriptionId,
-      'tagRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            MonitoringTagRulesPropertiesResponse,
-            Map<String, dynamic>
-          >(tagRules, (value) => value.toMap()),
+      'tagRules': ?pulumi.Input.mapOptionalInputValue<MonitoringTagRulesPropertiesResponse, Map<String, dynamic>>(tagRules, (value) => value.toMap()),
     };
   }
 
   factory MonitoredSubscriptionResponse.fromMap(Map<String, dynamic> map) {
     return MonitoredSubscriptionResponse(
-      error: (() {
-        final guardedValue = map['error'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tagRules: (() {
-        final guardedValue = map['tagRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MonitoringTagRulesPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tagRules: (() { final guardedValue = map['tagRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MonitoringTagRulesPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

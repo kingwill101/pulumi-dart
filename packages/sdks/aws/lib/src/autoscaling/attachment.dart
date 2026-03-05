@@ -209,13 +209,10 @@ import 'attachment_state.dart';
 class Attachment extends pulumi.CustomResource {
   /// Name of ASG to associate with the ELB.
   late final pulumi.Output<String> autoscalingGroupName;
-
   /// Name of the ELB.
   late final pulumi.Output<String?> elb;
-
   /// ARN of a load balancer target group.
   late final pulumi.Output<String?> lbTargetGroupArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -228,11 +225,11 @@ class Attachment extends pulumi.CustomResource {
     AttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:autoscaling/attachment:Attachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:autoscaling/attachment:Attachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     elb = registerOutput<String?>('elb');
     lbTargetGroupArn = registerOutput<String?>('lbTargetGroupArn');
@@ -257,11 +254,11 @@ class Attachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:autoscaling/attachment:Attachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:autoscaling/attachment:Attachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     elb = registerOutput<String?>('elb');
     lbTargetGroupArn = registerOutput<String?>('lbTargetGroupArn');

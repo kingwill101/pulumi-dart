@@ -9,21 +9,20 @@ class AnalysisCompletedContaineranalysisV1alpha1 {
 
   /// Creates a new [AnalysisCompletedContaineranalysisV1alpha1].
   /// [analysisType] type of analysis that were completed on a resource.
-  AnalysisCompletedContaineranalysisV1alpha1({this.analysisType});
+  AnalysisCompletedContaineranalysisV1alpha1({
+    this.analysisType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'analysisType': ?analysisType};
+    return <String, dynamic>{
+      'analysisType': ?analysisType,
+    };
   }
 
-  factory AnalysisCompletedContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalysisCompletedContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return AnalysisCompletedContaineranalysisV1alpha1(
-      analysisType: (() {
-        final guardedValue = map['analysisType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      analysisType: (() { final guardedValue = map['analysisType']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

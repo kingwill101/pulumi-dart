@@ -32,14 +32,9 @@ class GetSpecialistPoolArgs {
   factory GetSpecialistPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetSpecialistPoolArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      specialistPoolId: pulumi.Input.fromValue(
-        map['specialistPoolId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      specialistPoolId: pulumi.Input.fromValue(map['specialistPoolId'] as String),
     );
   }
 }
+

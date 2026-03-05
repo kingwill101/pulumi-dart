@@ -229,27 +229,20 @@ class EventThreatDetectionCustomModule extends pulumi.CustomResource {
   /// Config for the module. For the resident module, its config value is defined at this level.
   /// For the inherited module, its config value is inherited from the ancestor module.
   late final pulumi.Output<String> config;
-
   /// The human readable name to be displayed for the module.
   late final pulumi.Output<String?> displayName;
-
   /// The state of enablement for the module at the given level of the hierarchy.
   /// Possible values are: `ENABLED`, `DISABLED`.
   late final pulumi.Output<String> enablementState;
-
   /// The editor that last updated the custom module
   late final pulumi.Output<String> lastEditor;
-
   /// The resource name of the Event Threat Detection custom module.
   /// Its format is "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
   late final pulumi.Output<String> name;
-
   /// Numerical ID of the parent organization.
   late final pulumi.Output<String> organization;
-
   /// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
   late final pulumi.Output<String> type;
-
   /// The time at which the custom module was last updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -264,11 +257,11 @@ class EventThreatDetectionCustomModule extends pulumi.CustomResource {
     EventThreatDetectionCustomModuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     config = registerOutput<String>('config');
     displayName = registerOutput<String?>('displayName');
     enablementState = registerOutput<String>('enablementState');
@@ -297,11 +290,11 @@ class EventThreatDetectionCustomModule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     config = registerOutput<String>('config');
     displayName = registerOutput<String?>('displayName');
     enablementState = registerOutput<String>('enablementState');

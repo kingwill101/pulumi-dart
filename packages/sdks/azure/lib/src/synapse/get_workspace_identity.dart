@@ -4,13 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWorkspaceIdentity {
   final pulumi.Input<List<String>> identityIds;
-
   /// The Principal ID for the Service Principal associated with the Managed Service Identity of this Synapse Workspace.
   final pulumi.Input<String> principalId;
-
   /// The Tenant ID for the Service Principal associated with the Managed Service Identity of this Synapse Workspace.
   final pulumi.Input<String> tenantId;
-
   /// The Identity Type for the Service Principal associated with the Managed Service Identity of this Synapse Workspace.
   final pulumi.Input<String> type;
 
@@ -37,12 +34,11 @@ class GetWorkspaceIdentity {
 
   factory GetWorkspaceIdentity.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceIdentity(
-      identityIds: pulumi.Input.fromValue(
-        (map['identityIds'] as List).cast<String>(),
-      ),
+      identityIds: pulumi.Input.fromValue((map['identityIds'] as List).cast<String>()),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

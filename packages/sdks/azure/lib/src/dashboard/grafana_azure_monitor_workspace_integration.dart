@@ -8,17 +8,20 @@ class GrafanaAzureMonitorWorkspaceIntegration {
 
   /// Creates a new [GrafanaAzureMonitorWorkspaceIntegration].
   /// [resourceId] Specifies the resource ID of the connected Azure Monitor Workspace.
-  GrafanaAzureMonitorWorkspaceIntegration({required this.resourceId});
+  GrafanaAzureMonitorWorkspaceIntegration({
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceId': resourceId};
+    return <String, dynamic>{
+      'resourceId': resourceId,
+    };
   }
 
-  factory GrafanaAzureMonitorWorkspaceIntegration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GrafanaAzureMonitorWorkspaceIntegration.fromMap(Map<String, dynamic> map) {
     return GrafanaAzureMonitorWorkspaceIntegration(
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
+

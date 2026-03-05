@@ -29,17 +29,12 @@ class GetDataExchangeAnalyticshubV1beta1Args {
     };
   }
 
-  factory GetDataExchangeAnalyticshubV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataExchangeAnalyticshubV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetDataExchangeAnalyticshubV1beta1Args(
       dataExchangeId: pulumi.Input.fromValue(map['dataExchangeId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

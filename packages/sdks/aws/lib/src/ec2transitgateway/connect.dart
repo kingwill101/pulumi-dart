@@ -154,25 +154,18 @@ import 'connect_state.dart';
 class Connect extends pulumi.CustomResource {
   /// The tunnel protocol. Valid values: `gre`. Default is `gre`.
   late final pulumi.Output<String?> protocol;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value tags for the EC2 Transit Gateway Connect. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Boolean whether the Connect should be associated with the EC2 Transit Gateway association default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`.
   late final pulumi.Output<bool?> transitGatewayDefaultRouteTableAssociation;
-
   /// Boolean whether the Connect should propagate routes with the EC2 Transit Gateway propagation default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`.
   late final pulumi.Output<bool?> transitGatewayDefaultRouteTablePropagation;
-
   /// Identifier of EC2 Transit Gateway.
   late final pulumi.Output<String> transitGatewayId;
-
   /// The underlaying VPC attachment
   late final pulumi.Output<String> transportAttachmentId;
 
@@ -185,21 +178,17 @@ class Connect extends pulumi.CustomResource {
     ConnectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2transitgateway/connect:Connect',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2transitgateway/connect:Connect',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     protocol = registerOutput<String?>('protocol');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    transitGatewayDefaultRouteTableAssociation = registerOutput<bool?>(
-      'transitGatewayDefaultRouteTableAssociation',
-    );
-    transitGatewayDefaultRouteTablePropagation = registerOutput<bool?>(
-      'transitGatewayDefaultRouteTablePropagation',
-    );
+    transitGatewayDefaultRouteTableAssociation = registerOutput<bool?>('transitGatewayDefaultRouteTableAssociation');
+    transitGatewayDefaultRouteTablePropagation = registerOutput<bool?>('transitGatewayDefaultRouteTablePropagation');
     transitGatewayId = registerOutput<String>('transitGatewayId');
     transportAttachmentId = registerOutput<String>('transportAttachmentId');
   }
@@ -222,21 +211,17 @@ class Connect extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2transitgateway/connect:Connect',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2transitgateway/connect:Connect',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     protocol = registerOutput<String?>('protocol');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    transitGatewayDefaultRouteTableAssociation = registerOutput<bool?>(
-      'transitGatewayDefaultRouteTableAssociation',
-    );
-    transitGatewayDefaultRouteTablePropagation = registerOutput<bool?>(
-      'transitGatewayDefaultRouteTablePropagation',
-    );
+    transitGatewayDefaultRouteTableAssociation = registerOutput<bool?>('transitGatewayDefaultRouteTableAssociation');
+    transitGatewayDefaultRouteTablePropagation = registerOutput<bool?>('transitGatewayDefaultRouteTablePropagation');
     transitGatewayId = registerOutput<String>('transitGatewayId');
     transportAttachmentId = registerOutput<String>('transportAttachmentId');
   }

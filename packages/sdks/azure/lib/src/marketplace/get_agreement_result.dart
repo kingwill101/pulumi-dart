@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAgreement.
 class GetAgreementResult {
   /// Whether the Marketplace Agreement has been accepted.
   final bool accepted;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String licenseTextLink;
@@ -55,3 +55,4 @@ class GetAgreementResult {
     );
   }
 }
+

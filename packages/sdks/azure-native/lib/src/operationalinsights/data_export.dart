@@ -152,31 +152,22 @@ import 'data_export_args.dart';
 class DataExport extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The latest data export rule modification time.
   late final pulumi.Output<String?> createdDate;
-
   /// The data export rule ID.
   late final pulumi.Output<String?> dataExportId;
-
   /// Active when enabled.
   late final pulumi.Output<bool?> enable;
-
   /// Optional. Allows to define an Event Hub name. Not applicable when destination is Storage Account.
   late final pulumi.Output<String?> eventHubName;
-
   /// Date and time when the export was last modified.
   late final pulumi.Output<String?> lastModifiedDate;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure.
   late final pulumi.Output<String> resourceId;
-
   /// An array of tables to export, for example: [“Heartbeat, SecurityEvent”].
   late final pulumi.Output<List<String>> tableNames;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -189,11 +180,11 @@ class DataExport extends pulumi.CustomResource {
     DataExportArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:operationalinsights:DataExport',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:operationalinsights:DataExport',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdDate = registerOutput<String?>('createdDate');
     dataExportId = registerOutput<String?>('dataExportId');

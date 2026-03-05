@@ -10,27 +10,19 @@ import 'access_grant_grantee.dart';
 /// {@macro pulumi_s3_control_access_grant_access_grant_args_doc}
 class AccessGrantArgs {
   /// See Location Configuration below for more details.
-  final pulumi.Input<AccessGrantAccessGrantsLocationConfiguration>?
-  accessGrantsLocationConfiguration;
-
+  final pulumi.Input<AccessGrantAccessGrantsLocationConfiguration>? accessGrantsLocationConfiguration;
   /// The ID of the S3 Access Grants location to with the access grant is giving access.
   final pulumi.Input<String> accessGrantsLocationId;
-
   /// The AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? accountId;
-
   /// See Grantee below for more details.
   final pulumi.Input<AccessGrantGrantee> grantee;
-
   /// The access grant's level of access. Valid values: `READ`, `WRITE`, `READWRITE`.
   final pulumi.Input<String> permission;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// If you are creating an access grant that grants access to only one object, set this to `Object`. Valid values: `Object`.
   final pulumi.Input<String>? s3PrefixType;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -56,18 +48,10 @@ class AccessGrantArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessGrantsLocationConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            AccessGrantAccessGrantsLocationConfiguration,
-            Map<String, dynamic>
-          >(accessGrantsLocationConfiguration, (value) => value.toMap()),
+      'accessGrantsLocationConfiguration': ?pulumi.Input.mapOptionalInputValue<AccessGrantAccessGrantsLocationConfiguration, Map<String, dynamic>>(accessGrantsLocationConfiguration, (value) => value.toMap()),
       'accessGrantsLocationId': accessGrantsLocationId,
       'accountId': ?accountId,
-      'grantee':
-          pulumi.Input.mapInputValue<AccessGrantGrantee, Map<String, dynamic>>(
-            grantee,
-            (value) => value.toMap(),
-          ),
+      'grantee': pulumi.Input.mapInputValue<AccessGrantGrantee, Map<String, dynamic>>(grantee, (value) => value.toMap()),
       'permission': permission,
       'region': ?region,
       's3PrefixType': ?s3PrefixType,
@@ -77,46 +61,15 @@ class AccessGrantArgs {
 
   factory AccessGrantArgs.fromMap(Map<String, dynamic> map) {
     return AccessGrantArgs(
-      accessGrantsLocationConfiguration: (() {
-        final guardedValue = map['accessGrantsLocationConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AccessGrantAccessGrantsLocationConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      accessGrantsLocationId: pulumi.Input.fromValue(
-        map['accessGrantsLocationId'] as String,
-      ),
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      grantee: pulumi.Input.fromValue(
-        AccessGrantGrantee.fromMap(
-          (map['grantee']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      accessGrantsLocationConfiguration: (() { final guardedValue = map['accessGrantsLocationConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessGrantAccessGrantsLocationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      accessGrantsLocationId: pulumi.Input.fromValue(map['accessGrantsLocationId'] as String),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      grantee: pulumi.Input.fromValue(AccessGrantGrantee.fromMap((map['grantee']! as Map).cast<String, dynamic>())),
       permission: pulumi.Input.fromValue(map['permission'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      s3PrefixType: (() {
-        final guardedValue = map['s3PrefixType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s3PrefixType: (() { final guardedValue = map['s3PrefixType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

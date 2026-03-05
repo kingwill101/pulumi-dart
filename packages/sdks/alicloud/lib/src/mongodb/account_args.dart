@@ -12,16 +12,12 @@ class AccountArgs {
   /// - Start with Chinese and English letters.
   /// - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
   final pulumi.Input<String>? accountDescription;
-
   /// Account Name
   final pulumi.Input<String> accountName;
-
   /// Account Password
   final pulumi.Input<String> accountPassword;
-
   /// The account Comment Information type. Value:
   final pulumi.Input<String>? characterType;
-
   /// Instance Id
   final pulumi.Input<String> instanceId;
 
@@ -51,19 +47,12 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountDescription: (() {
-        final guardedValue = map['accountDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountDescription: (() { final guardedValue = map['accountDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       accountPassword: pulumi.Input.fromValue(map['accountPassword'] as String),
-      characterType: (() {
-        final guardedValue = map['characterType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      characterType: (() { final guardedValue = map['characterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
+

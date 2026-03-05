@@ -10,39 +10,20 @@ class NamedResourcesResourcesPatch {
 
   /// Creates a new [NamedResourcesResourcesPatch].
   /// [instances] The list of all individual resources instances currently available.
-  NamedResourcesResourcesPatch({this.instances});
+  NamedResourcesResourcesPatch({
+    this.instances,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'instances':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NamedResourcesInstancePatch>,
-            List<Map<String, dynamic>>
-          >(
-            instances,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NamedResourcesInstancePatch,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'instances': ?pulumi.Input.mapOptionalInputValue<List<NamedResourcesInstancePatch>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<NamedResourcesInstancePatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NamedResourcesResourcesPatch.fromMap(Map<String, dynamic> map) {
     return NamedResourcesResourcesPatch(
-      instances: (() {
-        final guardedValue = map['instances'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NamedResourcesInstancePatch>(
-            guardedValue,
-            (value) => NamedResourcesInstancePatch.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NamedResourcesInstancePatch>(guardedValue, (value) => NamedResourcesInstancePatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

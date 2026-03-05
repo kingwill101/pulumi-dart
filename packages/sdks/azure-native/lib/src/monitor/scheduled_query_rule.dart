@@ -1970,86 +1970,58 @@ import 'system_data_response.dart';
 class ScheduledQueryRule extends pulumi.CustomResource {
   /// Actions to invoke when the alert fires.
   late final pulumi.Output<ActionsResponse?> actions;
-
   /// The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
   late final pulumi.Output<bool?> autoMitigate;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The flag which indicates whether this scheduled query rule should be stored in the customer's storage. The default is false. Relevant only for rules of the kind LogAlert.
   late final pulumi.Output<bool?> checkWorkspaceAlertsStorageConfigured;
-
   /// The api-version used when creating this alert rule
   late final pulumi.Output<String> createdWithApiVersion;
-
   /// The rule criteria that defines the conditions of the scheduled query rule.
   late final pulumi.Output<ScheduledQueryRuleCriteriaResponse> criteria;
-
   /// The description of the scheduled query rule.
   late final pulumi.Output<String?> description;
-
   /// The display name of the alert rule
   late final pulumi.Output<String?> displayName;
-
   /// The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
   late final pulumi.Output<bool> enabled;
-
   /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> etag;
-
   /// How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert.
   late final pulumi.Output<String?> evaluationFrequency;
-
   /// The identity of the resource.
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// True if alert rule is legacy Log Analytic rule
   late final pulumi.Output<bool> isLegacyLogAnalyticsRule;
-
   /// The flag which indicates whether this scheduled query rule has been configured to be stored in the customer's storage. The default is false.
   late final pulumi.Output<bool> isWorkspaceAlertsStorageConfigured;
-
   /// Indicates the type of scheduled query rule. The default is LogAlert.
   late final pulumi.Output<String?> kind;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Mute actions for the chosen period of time (in ISO 8601 duration format) after the alert is fired. Relevant only for rules of the kind LogAlert.
   late final pulumi.Output<String?> muteActionsDuration;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// If specified then overrides the query time range (default is WindowSize*NumberOfEvaluationPeriods). Relevant only for rules of the kind LogAlert.
   late final pulumi.Output<String?> overrideQueryTimeRange;
-
   /// Defines the configuration for resolving fired alerts. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
-  late final pulumi.Output<RuleResolveConfigurationResponse?>
-  resolveConfiguration;
-
+  late final pulumi.Output<RuleResolveConfigurationResponse?> resolveConfiguration;
   /// The list of resource id's that this scheduled query rule is scoped to.
   late final pulumi.Output<List<String>> scopes;
-
   /// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
   late final pulumi.Output<double?> severity;
-
   /// The flag which indicates whether the provided query should be validated or not. The default is false. Relevant only for rules of the kind LogAlert.
   late final pulumi.Output<bool?> skipQueryValidation;
-
   /// SystemData of ScheduledQueryRule.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert
   late final pulumi.Output<List<String>?> targetResourceTypes;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The period of time (in ISO 8601 duration format) on which the Alert query will be executed (bin size). Relevant and required only for rules of the kind LogAlert.
   late final pulumi.Output<String?> windowSize;
 
@@ -2062,84 +2034,35 @@ class ScheduledQueryRule extends pulumi.CustomResource {
     ScheduledQueryRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:monitor:ScheduledQueryRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    actions = registerOutput<ActionsResponse?>(
-      'actions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ActionsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:monitor:ScheduledQueryRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    actions = registerOutput<ActionsResponse?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoMitigate = registerOutput<bool?>('autoMitigate');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    checkWorkspaceAlertsStorageConfigured = registerOutput<bool?>(
-      'checkWorkspaceAlertsStorageConfigured',
-    );
+    checkWorkspaceAlertsStorageConfigured = registerOutput<bool?>('checkWorkspaceAlertsStorageConfigured');
     createdWithApiVersion = registerOutput<String>('createdWithApiVersion');
-    criteria = registerOutput<ScheduledQueryRuleCriteriaResponse>(
-      'criteria',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduledQueryRuleCriteriaResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    criteria = registerOutput<ScheduledQueryRuleCriteriaResponse>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRuleCriteriaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     enabled = registerOutput<bool>('enabled');
     etag = registerOutput<String>('etag');
     evaluationFrequency = registerOutput<String?>('evaluationFrequency');
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isLegacyLogAnalyticsRule = registerOutput<bool>('isLegacyLogAnalyticsRule');
-    isWorkspaceAlertsStorageConfigured = registerOutput<bool>(
-      'isWorkspaceAlertsStorageConfigured',
-    );
+    isWorkspaceAlertsStorageConfigured = registerOutput<bool>('isWorkspaceAlertsStorageConfigured');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     muteActionsDuration = registerOutput<String?>('muteActionsDuration');
     this.name = registerOutput<String>('name');
     overrideQueryTimeRange = registerOutput<String?>('overrideQueryTimeRange');
-    resolveConfiguration = registerOutput<RuleResolveConfigurationResponse?>(
-      'resolveConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuleResolveConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resolveConfiguration = registerOutput<RuleResolveConfigurationResponse?>('resolveConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleResolveConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scopes = registerOutput<List<String>>('scopes');
     severity = registerOutput<double?>('severity');
     skipQueryValidation = registerOutput<bool?>('skipQueryValidation');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     targetResourceTypes = registerOutput<List<String>?>('targetResourceTypes');
     type = registerOutput<String>('type');

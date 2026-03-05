@@ -6,11 +6,9 @@ class InsightsConfigRuntimeConfigAppHubWorkload {
   /// (Output)
   /// The criticality of the App Hub Workload.
   final pulumi.Input<String>? criticality;
-
   /// (Output)
   /// The environment of the App Hub Workload.
   final pulumi.Input<String>? environment;
-
   /// (Output)
   /// Output only. The name of the App Hub Workload.
   /// Format:
@@ -35,25 +33,12 @@ class InsightsConfigRuntimeConfigAppHubWorkload {
     };
   }
 
-  factory InsightsConfigRuntimeConfigAppHubWorkload.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InsightsConfigRuntimeConfigAppHubWorkload.fromMap(Map<String, dynamic> map) {
     return InsightsConfigRuntimeConfigAppHubWorkload(
-      criticality: (() {
-        final guardedValue = map['criticality'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      environment: (() {
-        final guardedValue = map['environment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workload: (() {
-        final guardedValue = map['workload'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      criticality: (() { final guardedValue = map['criticality']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workload: (() { final guardedValue = map['workload']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

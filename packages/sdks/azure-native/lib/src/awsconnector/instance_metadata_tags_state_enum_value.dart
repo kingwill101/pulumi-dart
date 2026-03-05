@@ -9,19 +9,20 @@ class InstanceMetadataTagsStateEnumValue {
 
   /// Creates a new [InstanceMetadataTagsStateEnumValue].
   /// [value] Property value
-  InstanceMetadataTagsStateEnumValue({this.value});
+  InstanceMetadataTagsStateEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory InstanceMetadataTagsStateEnumValue.fromMap(Map<String, dynamic> map) {
     return InstanceMetadataTagsStateEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

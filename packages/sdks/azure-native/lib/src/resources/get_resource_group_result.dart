@@ -6,25 +6,18 @@ import 'resource_group_properties_response.dart';
 class GetResourceGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The ID of the resource group.
   final String id;
-
   /// The location of the resource group. It cannot be changed after the resource group has been created. It must be one of the supported Azure locations.
   final String location;
-
   /// The ID of the resource that manages this resource group.
   final String? managedBy;
-
   /// The name of the resource group.
   final String name;
-
   /// The resource group properties.
   final ResourceGroupPropertiesResponse properties;
-
   /// The tags attached to the resource group.
   final Map<String, String>? tags;
-
   /// The type of the resource group.
   final String type;
 
@@ -66,21 +59,12 @@ class GetResourceGroupResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      managedBy: (() {
-        final guardedValue = map['managedBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      managedBy: (() { final guardedValue = map['managedBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: ResourceGroupPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: ResourceGroupPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

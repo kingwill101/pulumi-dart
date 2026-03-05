@@ -7,7 +7,6 @@ class AwsOrganizationalDataMemberResponse {
   /// The multi cloud account's membership type in the organization
   /// Expected value is 'Member'.
   final pulumi.Input<String> organizationMembershipType;
-
   /// If the multi cloud account is not of membership type organization, this will be the ID of the account's parent
   final pulumi.Input<String>? parentHierarchyId;
 
@@ -26,18 +25,11 @@ class AwsOrganizationalDataMemberResponse {
     };
   }
 
-  factory AwsOrganizationalDataMemberResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AwsOrganizationalDataMemberResponse.fromMap(Map<String, dynamic> map) {
     return AwsOrganizationalDataMemberResponse(
-      organizationMembershipType: pulumi.Input.fromValue(
-        map['organizationMembershipType'] as String,
-      ),
-      parentHierarchyId: (() {
-        final guardedValue = map['parentHierarchyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      organizationMembershipType: pulumi.Input.fromValue(map['organizationMembershipType'] as String),
+      parentHierarchyId: (() { final guardedValue = map['parentHierarchyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

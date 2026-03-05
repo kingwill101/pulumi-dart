@@ -9,67 +9,47 @@ import 'fast_udp_app_virtual_server.dart';
 class FastUdpAppState {
   /// Name of the FAST UDP application.
   final pulumi.Input<String>? application;
-
   /// Enables use of FastL4 profiles.
   final pulumi.Input<bool>? enableFastl4;
-
   /// Name of an existing BIG-IP UDP pool monitor. Monitors are used to determine the health of the application on each server.
   final pulumi.Input<String>? existingMonitor;
-
   /// Name of an existing BIG-IP pool.
   final pulumi.Input<String>? existingPool;
-
   /// Name of an existing BIG-IP FastL4 or UDP profile.
   final pulumi.Input<String>? existingProfile;
-
   /// Name of an existing BIG-IP SNAT pool.
   final pulumi.Input<String>? existingSnatPool;
-
   /// Type of fallback persistence record to be created for each new client connection.
   final pulumi.Input<String>? fallbackPersistence;
-
   /// Json payload for FAST UDP application.
   final pulumi.Input<String>? fastUdpJson;
-
   /// Irules to attach to Virtual Server.
   final pulumi.Input<List<String>>? irules;
-
   /// A `load balancing method` is an algorithm that the BIG-IP system uses to select a pool member for processing a request. F5 recommends the Least Connections load balancing method
   final pulumi.Input<String>? loadBalancingMode;
-
   /// `monitor` block takes input for FAST-Generated Pool Monitor.
   /// See Pool Monitor below for more details.
   final pulumi.Input<FastUdpAppMonitor>? monitor;
-
   /// Name of an existing BIG-IP persistence profile to be used.
   final pulumi.Input<String>? persistenceProfile;
-
   /// Type of persistence profile to be created. Using this option will enable use of FAST generated persistence profiles.
   final pulumi.Input<String>? persistenceType;
-
   /// `pool_members` block takes input for FAST-Generated Pool.
   /// See Pool Members below for more details.
   final pulumi.Input<List<FastUdpAppPoolMember>>? poolMembers;
-
   /// Existing security log profiles to enable.
   final pulumi.Input<List<String>>? securityLogProfiles;
-
   /// Slow ramp temporarily throttles the number of connections to a new pool member. The recommended value is 300 seconds
   final pulumi.Input<int>? slowRampTime;
-
   /// List of address to be used for FAST-Generated SNAT Pool.
   final pulumi.Input<List<String>>? snatPoolAddresses;
-
   /// Name of the FAST UDP application tenant.
   final pulumi.Input<String>? tenant;
-
   /// `virtual_server` block will provide `ip` and `port` options to be used for virtual server.
   /// See virtual server below for more details.
   final pulumi.Input<FastUdpAppVirtualServer>? virtualServer;
-
   /// Names of existing VLANs to allow.
   final pulumi.Input<List<String>>? vlansAlloweds;
-
   /// Names of existing VLANs to reject.
   final pulumi.Input<List<String>>? vlansRejecteds;
 
@@ -131,34 +111,15 @@ class FastUdpAppState {
       'fastUdpJson': ?fastUdpJson,
       'irules': ?irules,
       'loadBalancingMode': ?loadBalancingMode,
-      'monitor':
-          ?pulumi.Input.mapOptionalInputValue<
-            FastUdpAppMonitor,
-            Map<String, dynamic>
-          >(monitor, (value) => value.toMap()),
+      'monitor': ?pulumi.Input.mapOptionalInputValue<FastUdpAppMonitor, Map<String, dynamic>>(monitor, (value) => value.toMap()),
       'persistenceProfile': ?persistenceProfile,
       'persistenceType': ?persistenceType,
-      'poolMembers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<FastUdpAppPoolMember>,
-            List<Map<String, dynamic>>
-          >(
-            poolMembers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  FastUdpAppPoolMember,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'poolMembers': ?pulumi.Input.mapOptionalInputValue<List<FastUdpAppPoolMember>, List<Map<String, dynamic>>>(poolMembers, (value) => pulumi.Input.encodeList<FastUdpAppPoolMember, Map<String, dynamic>>(value, (value) => value.toMap())),
       'securityLogProfiles': ?securityLogProfiles,
       'slowRampTime': ?slowRampTime,
       'snatPoolAddresses': ?snatPoolAddresses,
       'tenant': ?tenant,
-      'virtualServer':
-          ?pulumi.Input.mapOptionalInputValue<
-            FastUdpAppVirtualServer,
-            Map<String, dynamic>
-          >(virtualServer, (value) => value.toMap()),
+      'virtualServer': ?pulumi.Input.mapOptionalInputValue<FastUdpAppVirtualServer, Map<String, dynamic>>(virtualServer, (value) => value.toMap()),
       'vlansAlloweds': ?vlansAlloweds,
       'vlansRejecteds': ?vlansRejecteds,
     };
@@ -166,126 +127,28 @@ class FastUdpAppState {
 
   factory FastUdpAppState.fromMap(Map<String, dynamic> map) {
     return FastUdpAppState(
-      application: (() {
-        final guardedValue = map['application'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enableFastl4: (() {
-        final guardedValue = map['enableFastl4'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      existingMonitor: (() {
-        final guardedValue = map['existingMonitor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      existingPool: (() {
-        final guardedValue = map['existingPool'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      existingProfile: (() {
-        final guardedValue = map['existingProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      existingSnatPool: (() {
-        final guardedValue = map['existingSnatPool'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fallbackPersistence: (() {
-        final guardedValue = map['fallbackPersistence'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fastUdpJson: (() {
-        final guardedValue = map['fastUdpJson'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      irules: (() {
-        final guardedValue = map['irules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      loadBalancingMode: (() {
-        final guardedValue = map['loadBalancingMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      monitor: (() {
-        final guardedValue = map['monitor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FastUdpAppMonitor.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      persistenceProfile: (() {
-        final guardedValue = map['persistenceProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      persistenceType: (() {
-        final guardedValue = map['persistenceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      poolMembers: (() {
-        final guardedValue = map['poolMembers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<FastUdpAppPoolMember>(
-            guardedValue,
-            (value) => FastUdpAppPoolMember.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      securityLogProfiles: (() {
-        final guardedValue = map['securityLogProfiles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      slowRampTime: (() {
-        final guardedValue = map['slowRampTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      snatPoolAddresses: (() {
-        final guardedValue = map['snatPoolAddresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      tenant: (() {
-        final guardedValue = map['tenant'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualServer: (() {
-        final guardedValue = map['virtualServer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FastUdpAppVirtualServer.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      vlansAlloweds: (() {
-        final guardedValue = map['vlansAlloweds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      vlansRejecteds: (() {
-        final guardedValue = map['vlansRejecteds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      application: (() { final guardedValue = map['application']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enableFastl4: (() { final guardedValue = map['enableFastl4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      existingMonitor: (() { final guardedValue = map['existingMonitor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      existingPool: (() { final guardedValue = map['existingPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      existingProfile: (() { final guardedValue = map['existingProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      existingSnatPool: (() { final guardedValue = map['existingSnatPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fallbackPersistence: (() { final guardedValue = map['fallbackPersistence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fastUdpJson: (() { final guardedValue = map['fastUdpJson']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      irules: (() { final guardedValue = map['irules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      loadBalancingMode: (() { final guardedValue = map['loadBalancingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      monitor: (() { final guardedValue = map['monitor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FastUdpAppMonitor.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      persistenceProfile: (() { final guardedValue = map['persistenceProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      persistenceType: (() { final guardedValue = map['persistenceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      poolMembers: (() { final guardedValue = map['poolMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FastUdpAppPoolMember>(guardedValue, (value) => FastUdpAppPoolMember.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      securityLogProfiles: (() { final guardedValue = map['securityLogProfiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      slowRampTime: (() { final guardedValue = map['slowRampTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      snatPoolAddresses: (() { final guardedValue = map['snatPoolAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tenant: (() { final guardedValue = map['tenant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualServer: (() { final guardedValue = map['virtualServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FastUdpAppVirtualServer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      vlansAlloweds: (() { final guardedValue = map['vlansAlloweds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      vlansRejecteds: (() { final guardedValue = map['vlansRejecteds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

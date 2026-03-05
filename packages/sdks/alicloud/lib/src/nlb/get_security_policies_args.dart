@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityPoliciesArgs {
   /// A list of Security Policy IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// A regex string to filter results by Security Policy name.
   final pulumi.Input<String>? nameRegex;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
-
   /// The names of the TLS security policies.
   final pulumi.Input<List<String>>? securityPolicyNames;
-
   /// The status of the resource. Valid values: `Available`, `Configuring`.
   final pulumi.Input<String>? status;
   final pulumi.Input<Map<String, String>>? tags;
@@ -58,43 +53,14 @@ class GetSecurityPoliciesArgs {
 
   factory GetSecurityPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityPoliciesArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securityPolicyNames: (() {
-        final guardedValue = map['securityPolicyNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityPolicyNames: (() { final guardedValue = map['securityPolicyNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

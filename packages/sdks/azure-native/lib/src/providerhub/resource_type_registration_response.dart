@@ -8,17 +8,13 @@ import 'system_data_response.dart';
 class ResourceTypeRegistrationResponse {
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
-
   /// Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
   final pulumi.Input<String>? kind;
-
   /// The name of the resource
   final pulumi.Input<String> name;
   final pulumi.Input<ResourceTypeRegistrationPropertiesResponse>? properties;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
@@ -43,16 +39,8 @@ class ResourceTypeRegistrationResponse {
       'id': id,
       'kind': ?kind,
       'name': name,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceTypeRegistrationPropertiesResponse,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
-      'systemData':
-          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
-            systemData,
-            (value) => value.toMap(),
-          ),
+      'properties': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
@@ -60,27 +48,12 @@ class ResourceTypeRegistrationResponse {
   factory ResourceTypeRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceTypeRegistrationPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      systemData: pulumi.Input.fromValue(
-        SystemDataResponse.fromMap(
-          (map['systemData']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      systemData: pulumi.Input.fromValue(SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

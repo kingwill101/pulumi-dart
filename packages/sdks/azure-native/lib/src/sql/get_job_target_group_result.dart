@@ -7,16 +7,12 @@ import 'job_target_response.dart';
 class GetJobTargetGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String id;
-
   /// Members of the target group.
   final List<JobTargetResponse> members;
-
   /// Resource name.
   final String name;
-
   /// Resource type.
   final String type;
 
@@ -38,11 +34,7 @@ class GetJobTargetGroupResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'id': id,
-      'members':
-          pulumi.Input.encodeList<JobTargetResponse, Map<String, dynamic>>(
-            members,
-            (value) => value.toMap(),
-          ),
+      'members': pulumi.Input.encodeList<JobTargetResponse, Map<String, dynamic>>(members, (value) => value.toMap()),
       'name': name,
       'type': type,
     };
@@ -52,13 +44,10 @@ class GetJobTargetGroupResult {
     return GetJobTargetGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      members: pulumi.Input.decodeList<JobTargetResponse>(
-        map['members']!,
-        (value) =>
-            JobTargetResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      members: pulumi.Input.decodeList<JobTargetResponse>(map['members']!, (value) => JobTargetResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
+

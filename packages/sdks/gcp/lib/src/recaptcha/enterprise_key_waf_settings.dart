@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseKeyWafSettings {
   /// Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
   final pulumi.Input<String> wafFeature;
-
   /// The WAF service that uses this key. Possible values: CA, FASTLY
   final pulumi.Input<String> wafService;
 
@@ -31,3 +30,4 @@ class EnterpriseKeyWafSettings {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getLocalDisk.
 class GetLocalDiskResult {
   /// Disk identifierE.g., `pci-0000:03:00.0-scsi-0:0:0:0`
@@ -7,7 +8,6 @@ class GetLocalDiskResult {
   final String diskNode;
   final String diskPath;
   final String gatewayArn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -50,3 +50,4 @@ class GetLocalDiskResult {
     );
   }
 }
+

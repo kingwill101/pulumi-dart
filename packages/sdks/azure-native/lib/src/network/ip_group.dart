@@ -179,31 +179,22 @@ import 'ip_group_args.dart';
 class IpGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// List of references to Firewall Policies resources that this IpGroups is associated with.
   late final pulumi.Output<List<Map<String, dynamic>>> firewallPolicies;
-
   /// List of references to Firewall resources that this IpGroups is associated with.
   late final pulumi.Output<List<Map<String, dynamic>>> firewalls;
-
   /// IpAddresses/IpAddressPrefixes in the IpGroups resource.
   late final pulumi.Output<List<String>?> ipAddresses;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the IpGroups resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -216,16 +207,14 @@ class IpGroup extends pulumi.CustomResource {
     IpGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:IpGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:IpGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
-    firewallPolicies = registerOutput<List<Map<String, dynamic>>>(
-      'firewallPolicies',
-    );
+    firewallPolicies = registerOutput<List<Map<String, dynamic>>>('firewallPolicies');
     firewalls = registerOutput<List<Map<String, dynamic>>>('firewalls');
     ipAddresses = registerOutput<List<String>?>('ipAddresses');
     location = registerOutput<String?>('location');

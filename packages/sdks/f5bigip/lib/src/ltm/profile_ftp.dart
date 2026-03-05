@@ -271,49 +271,34 @@ import 'profile_ftp_state.dart';
 class ProfileFtp extends pulumi.CustomResource {
   /// Specifies, when selected (enabled), that the system allows FTP Active Transfer mode. The default value is enabled.
   late final pulumi.Output<String?> allowActiveMode;
-
   /// Allows explicit FTPS negotiation
   late final pulumi.Output<String?> allowFtps;
-
   /// The application service to which the object belongs.
   late final pulumi.Output<String?> appService;
-
   /// Specifies the profile that you want to use as the parent profile. Your new profile inherits all settings and values from the parent profile specified.
   late final pulumi.Output<String> defaultsFrom;
-
   /// User defined description
   late final pulumi.Output<String?> description;
-
   /// Specifies, when selected (enabled), that the system enforces the data connection to reuse a TLS session. The default value is unchecked (disabled).
   late final pulumi.Output<String?> enforceTlssessionReuse;
-
   /// Allows explicit FTPS negotiation
   late final pulumi.Output<String?> ftpsMode;
-
   /// Enables the FTP data channel to inherit the TCP profile used by the control channel.If disabled,the data channel uses FastL4 only.
   late final pulumi.Output<String?> inheritParentProfile;
-
   /// inherent vlan list
   late final pulumi.Output<String?> inheritVlanList;
-
   /// Configures the ALG log profile that controls logging
   late final pulumi.Output<String> logProfile;
-
   /// Configures the log publisher that handles events logging for this profile
   late final pulumi.Output<String> logPublisher;
-
   /// Name of the profile_ftp
   late final pulumi.Output<String> name;
-
   /// Displays the administrative partition within which this profile resides
   late final pulumi.Output<String> partition;
-
   /// Specifies a service for the data channel port used for this FTP profile. The default port is ftp-data.
   late final pulumi.Output<int?> port;
-
   /// Enables secure FTP traffic for the BIG-IP Application Security Manager. You can set the security option only if the system is licensed for the BIG-IP Application Security Manager. The default value is disabled.
   late final pulumi.Output<String> security;
-
   /// This setting is enabled by default, and thus, automatically translates RFC 2428 extended requests EPSV and EPRT to PASV and PORT when communicating with IPv4 servers.
   late final pulumi.Output<String?> translateExtended;
 
@@ -326,11 +311,11 @@ class ProfileFtp extends pulumi.CustomResource {
     ProfileFtpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileFtp:ProfileFtp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileFtp:ProfileFtp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowActiveMode = registerOutput<String?>('allowActiveMode');
     allowFtps = registerOutput<String?>('allowFtps');
     appService = registerOutput<String?>('appService');
@@ -367,11 +352,11 @@ class ProfileFtp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileFtp:ProfileFtp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileFtp:ProfileFtp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowActiveMode = registerOutput<String?>('allowActiveMode');
     allowFtps = registerOutput<String?>('allowFtps');
     appService = registerOutput<String?>('appService');

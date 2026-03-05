@@ -7,27 +7,21 @@ import 'get_custom_routing_endpoint_groups_group.dart';
 class GetCustomRoutingEndpointGroupsResult {
   /// The ID of the GA instance.
   final String acceleratorId;
-
   /// The ID of the Custom Routing Endpoint Group.
   final String? endpointGroupId;
-
   /// A list of Custom Routing Endpoint Groups. Each element contains the following attributes:
   final List<GetCustomRoutingEndpointGroupsGroup> groups;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
-
   /// The ID of the custom routing listener.
   final String? listenerId;
   final String? nameRegex;
-
   /// A list of Custom Routing Endpoint Group names.
   final List<String> names;
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
-
   /// The status of the endpoint group.
   final String? status;
 
@@ -63,11 +57,7 @@ class GetCustomRoutingEndpointGroupsResult {
     return <String, dynamic>{
       'acceleratorId': acceleratorId,
       'endpointGroupId': ?endpointGroupId,
-      'groups':
-          pulumi.Input.encodeList<
-            GetCustomRoutingEndpointGroupsGroup,
-            Map<String, dynamic>
-          >(groups, (value) => value.toMap()),
+      'groups': pulumi.Input.encodeList<GetCustomRoutingEndpointGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'listenerId': ?listenerId,
@@ -80,55 +70,21 @@ class GetCustomRoutingEndpointGroupsResult {
     };
   }
 
-  factory GetCustomRoutingEndpointGroupsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCustomRoutingEndpointGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingEndpointGroupsResult(
       acceleratorId: map['acceleratorId'] as String,
-      endpointGroupId: (() {
-        final guardedValue = map['endpointGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      groups: pulumi.Input.decodeList<GetCustomRoutingEndpointGroupsGroup>(
-        map['groups']!,
-        (value) => GetCustomRoutingEndpointGroupsGroup.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      endpointGroupId: (() { final guardedValue = map['endpointGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      groups: pulumi.Input.decodeList<GetCustomRoutingEndpointGroupsGroup>(map['groups']!, (value) => GetCustomRoutingEndpointGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      listenerId: (() {
-        final guardedValue = map['listenerId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      listenerId: (() { final guardedValue = map['listenerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

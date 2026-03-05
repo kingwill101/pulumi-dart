@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAppApplicationSettingsSlotArgs {
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-
   /// Name of the app.
   final pulumi.Input<String> name;
-
   /// Settings.
   final pulumi.Input<Map<String, String>>? properties;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the deployment slot. If a slot is not specified, the API will update the application settings for the production slot.
   final pulumi.Input<String> slot;
 
@@ -48,23 +44,12 @@ class WebAppApplicationSettingsSlotArgs {
 
   factory WebAppApplicationSettingsSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppApplicationSettingsSlotArgs(
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
+

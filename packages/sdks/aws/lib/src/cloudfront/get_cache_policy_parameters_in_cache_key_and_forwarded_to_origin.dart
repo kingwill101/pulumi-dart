@@ -7,30 +7,15 @@ import 'get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_query_s
 
 class GetCachePolicyParametersInCacheKeyAndForwardedToOrigin {
   /// Object that determines whether any cookies in viewer requests (and if so, which cookies) are included in the cache key and automatically included in requests that CloudFront sends to the origin. See Cookies Config for more information.
-  final pulumi.Input<
-    List<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig>
-  >
-  cookiesConfigs;
-
+  final pulumi.Input<List<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig>> cookiesConfigs;
   /// A flag that can affect whether the Accept-Encoding HTTP header is included in the cache key and included in requests that CloudFront sends to the origin.
   final pulumi.Input<bool> enableAcceptEncodingBrotli;
-
   /// A flag that can affect whether the Accept-Encoding HTTP header is included in the cache key and included in requests that CloudFront sends to the origin.
   final pulumi.Input<bool> enableAcceptEncodingGzip;
-
   /// Object that determines whether any HTTP headers (and if so, which headers) are included in the cache key and automatically included in requests that CloudFront sends to the origin. See Headers Config for more information.
-  final pulumi.Input<
-    List<GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig>
-  >
-  headersConfigs;
-
+  final pulumi.Input<List<GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig>> headersConfigs;
   /// Object that determines whether any URL query strings in viewer requests (and if so, which query strings) are included in the cache key and automatically included in requests that CloudFront sends to the origin. See Query String Config for more information.
-  final pulumi.Input<
-    List<
-      GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig
-    >
-  >
-  queryStringsConfigs;
+  final pulumi.Input<List<GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig>> queryStringsConfigs;
 
   /// Creates a new [GetCachePolicyParametersInCacheKeyAndForwardedToOrigin].
   /// [cookiesConfigs] Object that determines whether any cookies in viewer requests (and if so, which cookies) are included in the cache key and automatically included in requests that CloudFront sends to the origin. See Cookies Config for more information.
@@ -48,96 +33,22 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOrigin {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cookiesConfigs':
-          pulumi.Input.mapInputValue<
-            List<
-              GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig
-            >,
-            List<Map<String, dynamic>>
-          >(
-            cookiesConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'cookiesConfigs': pulumi.Input.mapInputValue<List<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig>, List<Map<String, dynamic>>>(cookiesConfigs, (value) => pulumi.Input.encodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableAcceptEncodingBrotli': enableAcceptEncodingBrotli,
       'enableAcceptEncodingGzip': enableAcceptEncodingGzip,
-      'headersConfigs':
-          pulumi.Input.mapInputValue<
-            List<
-              GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig
-            >,
-            List<Map<String, dynamic>>
-          >(
-            headersConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'queryStringsConfigs':
-          pulumi.Input.mapInputValue<
-            List<
-              GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig
-            >,
-            List<Map<String, dynamic>>
-          >(
-            queryStringsConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'headersConfigs': pulumi.Input.mapInputValue<List<GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig>, List<Map<String, dynamic>>>(headersConfigs, (value) => pulumi.Input.encodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'queryStringsConfigs': pulumi.Input.mapInputValue<List<GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig>, List<Map<String, dynamic>>>(queryStringsConfigs, (value) => pulumi.Input.encodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetCachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap(Map<String, dynamic> map) {
     return GetCachePolicyParametersInCacheKeyAndForwardedToOrigin(
-      cookiesConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig
-        >(
-          map['cookiesConfigs']!,
-          (value) =>
-              GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      enableAcceptEncodingBrotli: pulumi.Input.fromValue(
-        map['enableAcceptEncodingBrotli'] as bool,
-      ),
-      enableAcceptEncodingGzip: pulumi.Input.fromValue(
-        map['enableAcceptEncodingGzip'] as bool,
-      ),
-      headersConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig
-        >(
-          map['headersConfigs']!,
-          (value) =>
-              GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      queryStringsConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig
-        >(
-          map['queryStringsConfigs']!,
-          (value) =>
-              GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      cookiesConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig>(map['cookiesConfigs']!, (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      enableAcceptEncodingBrotli: pulumi.Input.fromValue(map['enableAcceptEncodingBrotli'] as bool),
+      enableAcceptEncodingGzip: pulumi.Input.fromValue(map['enableAcceptEncodingGzip'] as bool),
+      headersConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig>(map['headersConfigs']!, (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      queryStringsConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig>(map['queryStringsConfigs']!, (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

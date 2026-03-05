@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSiteNetworkServiceArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the site network service.
   final pulumi.Input<String> siteNetworkServiceName;
 
@@ -30,12 +29,9 @@ class GetSiteNetworkServiceArgs {
 
   factory GetSiteNetworkServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteNetworkServiceArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      siteNetworkServiceName: pulumi.Input.fromValue(
-        map['siteNetworkServiceName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      siteNetworkServiceName: pulumi.Input.fromValue(map['siteNetworkServiceName'] as String),
     );
   }
 }
+

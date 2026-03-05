@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapacityProviderCapacityProviderScalingConfigScalingPolicy {
   /// The predefined metric type for the scaling policy. Valid values are `"LambdaCapacityProviderAverageCPUUtilization"`.
   final pulumi.Input<String> predefinedMetricType;
-
   /// The target value for the scaling policy.
   final pulumi.Input<double> targetValue;
 
@@ -24,14 +23,11 @@ class CapacityProviderCapacityProviderScalingConfigScalingPolicy {
     };
   }
 
-  factory CapacityProviderCapacityProviderScalingConfigScalingPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CapacityProviderCapacityProviderScalingConfigScalingPolicy.fromMap(Map<String, dynamic> map) {
     return CapacityProviderCapacityProviderScalingConfigScalingPolicy(
-      predefinedMetricType: pulumi.Input.fromValue(
-        map['predefinedMetricType'] as String,
-      ),
+      predefinedMetricType: pulumi.Input.fromValue(map['predefinedMetricType'] as String),
       targetValue: pulumi.Input.fromValue(map['targetValue'] as double),
     );
   }
 }
+

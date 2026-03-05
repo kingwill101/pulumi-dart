@@ -14,7 +14,6 @@ class GetBackendBucketResult {
   final String description;
   final String edgeSecurityPolicy;
   final bool enableCdn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String loadBalancingScheme;
@@ -58,11 +57,7 @@ class GetBackendBucketResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucketName': bucketName,
-      'cdnPolicies':
-          pulumi.Input.encodeList<
-            GetBackendBucketCdnPolicy,
-            Map<String, dynamic>
-          >(cdnPolicies, (value) => value.toMap()),
+      'cdnPolicies': pulumi.Input.encodeList<GetBackendBucketCdnPolicy, Map<String, dynamic>>(cdnPolicies, (value) => value.toMap()),
       'compressionMode': compressionMode,
       'creationTimestamp': creationTimestamp,
       'customResponseHeaders': customResponseHeaders,
@@ -72,11 +67,7 @@ class GetBackendBucketResult {
       'id': id,
       'loadBalancingScheme': loadBalancingScheme,
       'name': name,
-      'params':
-          pulumi.Input.encodeList<GetBackendBucketParam, Map<String, dynamic>>(
-            params,
-            (value) => value.toMap(),
-          ),
+      'params': pulumi.Input.encodeList<GetBackendBucketParam, Map<String, dynamic>>(params, (value) => value.toMap()),
       'project': ?project,
       'selfLink': selfLink,
     };
@@ -85,34 +76,20 @@ class GetBackendBucketResult {
   factory GetBackendBucketResult.fromMap(Map<String, dynamic> map) {
     return GetBackendBucketResult(
       bucketName: map['bucketName'] as String,
-      cdnPolicies: pulumi.Input.decodeList<GetBackendBucketCdnPolicy>(
-        map['cdnPolicies']!,
-        (value) => GetBackendBucketCdnPolicy.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      cdnPolicies: pulumi.Input.decodeList<GetBackendBucketCdnPolicy>(map['cdnPolicies']!, (value) => GetBackendBucketCdnPolicy.fromMap((value as Map).cast<String, dynamic>())),
       compressionMode: map['compressionMode'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
-      customResponseHeaders: (map['customResponseHeaders'] as List)
-          .cast<String>(),
+      customResponseHeaders: (map['customResponseHeaders'] as List).cast<String>(),
       description: map['description'] as String,
       edgeSecurityPolicy: map['edgeSecurityPolicy'] as String,
       enableCdn: map['enableCdn'] as bool,
       id: map['id'] as String,
       loadBalancingScheme: map['loadBalancingScheme'] as String,
       name: map['name'] as String,
-      params: pulumi.Input.decodeList<GetBackendBucketParam>(
-        map['params']!,
-        (value) => GetBackendBucketParam.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      params: pulumi.Input.decodeList<GetBackendBucketParam>(map['params']!, (value) => GetBackendBucketParam.fromMap((value as Map).cast<String, dynamic>())),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       selfLink: map['selfLink'] as String,
     );
   }
 }
+

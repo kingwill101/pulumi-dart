@@ -163,13 +163,10 @@ import 'application_state.dart';
 class Application extends pulumi.CustomResource {
   /// Identifier of the app, usually `{PROJECT_ID}`
   late final pulumi.Output<String> appId;
-
   /// The domain to authenticate users with when using App Engine's User API.
   late final pulumi.Output<String> authDomain;
-
   /// The GCS bucket code is being stored in for this app.
   late final pulumi.Output<String> codeBucket;
-
   /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
   /// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
   /// instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
@@ -177,40 +174,29 @@ class Application extends pulumi.CustomResource {
   /// `gcp.firestore.Database`
   /// resource instead.
   late final pulumi.Output<String> databaseType;
-
   /// The GCS bucket content is being stored in for this app.
   late final pulumi.Output<String> defaultBucket;
-
   /// The default hostname for this app.
   late final pulumi.Output<String> defaultHostname;
-
   /// A block of optional settings to configure specific App Engine features:
   late final pulumi.Output<ApplicationFeatureSettings> featureSettings;
-
   /// The GCR domain used for storing managed Docker images for this app.
   late final pulumi.Output<String> gcrDomain;
-
   /// Settings for enabling Cloud Identity Aware Proxy
   late final pulumi.Output<ApplicationIap> iap;
-
   /// The [location](https://cloud.google.com/appengine/docs/locations)
   /// to serve the app from.
   late final pulumi.Output<String> locationId;
-
   /// Unique name of the app, usually `apps/{PROJECT_ID}`
   late final pulumi.Output<String> name;
-
   /// The project ID to create the application under.
   /// ~&gt;**NOTE:** GCP only accepts project ID, not project number. If you are using number,
   /// you may get a "Permission denied" error.
   late final pulumi.Output<String> project;
-
   /// The serving status of the app.
   late final pulumi.Output<String> servingStatus;
-
   /// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
   late final pulumi.Output<String> sslPolicy;
-
   /// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
   late final pulumi.Output<List<Map<String, dynamic>>> urlDispatchRules;
 
@@ -223,46 +209,26 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:appengine/application:Application',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:appengine/application:Application',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     authDomain = registerOutput<String>('authDomain');
     codeBucket = registerOutput<String>('codeBucket');
     databaseType = registerOutput<String>('databaseType');
     defaultBucket = registerOutput<String>('defaultBucket');
     defaultHostname = registerOutput<String>('defaultHostname');
-    featureSettings = registerOutput<ApplicationFeatureSettings>(
-      'featureSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationFeatureSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    featureSettings = registerOutput<ApplicationFeatureSettings>('featureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationFeatureSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gcrDomain = registerOutput<String>('gcrDomain');
-    iap = registerOutput<ApplicationIap>(
-      'iap',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationIap.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    iap = registerOutput<ApplicationIap>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     locationId = registerOutput<String>('locationId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     servingStatus = registerOutput<String>('servingStatus');
     sslPolicy = registerOutput<String>('sslPolicy');
-    urlDispatchRules = registerOutput<List<Map<String, dynamic>>>(
-      'urlDispatchRules',
-    );
+    urlDispatchRules = registerOutput<List<Map<String, dynamic>>>('urlDispatchRules');
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -283,45 +249,25 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:appengine/application:Application',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:appengine/application:Application',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     authDomain = registerOutput<String>('authDomain');
     codeBucket = registerOutput<String>('codeBucket');
     databaseType = registerOutput<String>('databaseType');
     defaultBucket = registerOutput<String>('defaultBucket');
     defaultHostname = registerOutput<String>('defaultHostname');
-    featureSettings = registerOutput<ApplicationFeatureSettings>(
-      'featureSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationFeatureSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    featureSettings = registerOutput<ApplicationFeatureSettings>('featureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationFeatureSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gcrDomain = registerOutput<String>('gcrDomain');
-    iap = registerOutput<ApplicationIap>(
-      'iap',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationIap.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    iap = registerOutput<ApplicationIap>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     locationId = registerOutput<String>('locationId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     servingStatus = registerOutput<String>('servingStatus');
     sslPolicy = registerOutput<String>('sslPolicy');
-    urlDispatchRules = registerOutput<List<Map<String, dynamic>>>(
-      'urlDispatchRules',
-    );
+    urlDispatchRules = registerOutput<List<Map<String, dynamic>>>('urlDispatchRules');
   }
 }

@@ -10,7 +10,6 @@ class InstancePerformanceConfig {
   /// capacity.
   /// Structure is documented below.
   final pulumi.Input<InstancePerformanceConfigFixedIops>? fixedIops;
-
   /// The instance provisioned IOPS will change dynamically
   /// based on the capacity of the instance.
   /// Structure is documented below.
@@ -19,43 +18,23 @@ class InstancePerformanceConfig {
   /// Creates a new [InstancePerformanceConfig].
   /// [fixedIops] The instance will have a fixed provisioned IOPS value,
   /// [iopsPerTb] The instance provisioned IOPS will change dynamically
-  InstancePerformanceConfig({this.fixedIops, this.iopsPerTb});
+  InstancePerformanceConfig({
+    this.fixedIops,
+    this.iopsPerTb,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fixedIops':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstancePerformanceConfigFixedIops,
-            Map<String, dynamic>
-          >(fixedIops, (value) => value.toMap()),
-      'iopsPerTb':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstancePerformanceConfigIopsPerTb,
-            Map<String, dynamic>
-          >(iopsPerTb, (value) => value.toMap()),
+      'fixedIops': ?pulumi.Input.mapOptionalInputValue<InstancePerformanceConfigFixedIops, Map<String, dynamic>>(fixedIops, (value) => value.toMap()),
+      'iopsPerTb': ?pulumi.Input.mapOptionalInputValue<InstancePerformanceConfigIopsPerTb, Map<String, dynamic>>(iopsPerTb, (value) => value.toMap()),
     };
   }
 
   factory InstancePerformanceConfig.fromMap(Map<String, dynamic> map) {
     return InstancePerformanceConfig(
-      fixedIops: (() {
-        final guardedValue = map['fixedIops'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstancePerformanceConfigFixedIops.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      iopsPerTb: (() {
-        final guardedValue = map['iopsPerTb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstancePerformanceConfigIopsPerTb.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      fixedIops: (() { final guardedValue = map['fixedIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstancePerformanceConfigFixedIops.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      iopsPerTb: (() { final guardedValue = map['iopsPerTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstancePerformanceConfigIopsPerTb.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -199,32 +199,23 @@ import 'traffic_marking_policy_state.dart';
 class TrafficMarkingPolicy extends pulumi.CustomResource {
   /// TrafficMarkingPolicyDescription
   late final pulumi.Output<String?> description;
-
   /// Whether to PreCheck only this request. Value:
   late final pulumi.Output<bool?> dryRun;
-
   /// Whether to forcibly delete the traffic marker policy. Valid values:
   late final pulumi.Output<bool?> force;
-
   /// MarkingDscp
   late final pulumi.Output<int> markingDscp;
-
   /// Priority
   late final pulumi.Output<int> priority;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The first ID of the resource
   late final pulumi.Output<String> trafficMarkingPolicyId;
-
   /// TrafficMarkingPolicyName
   late final pulumi.Output<String?> trafficMarkingPolicyName;
-
   /// List of stream classification rules.
   /// You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> trafficMatchRules;
-
   /// TransitRouterId
   late final pulumi.Output<String> transitRouterId;
 
@@ -237,11 +228,11 @@ class TrafficMarkingPolicy extends pulumi.CustomResource {
     TrafficMarkingPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     dryRun = registerOutput<bool?>('dryRun');
     force = registerOutput<bool?>('force');
@@ -249,12 +240,8 @@ class TrafficMarkingPolicy extends pulumi.CustomResource {
     priority = registerOutput<int>('priority');
     status = registerOutput<String>('status');
     trafficMarkingPolicyId = registerOutput<String>('trafficMarkingPolicyId');
-    trafficMarkingPolicyName = registerOutput<String?>(
-      'trafficMarkingPolicyName',
-    );
-    trafficMatchRules = registerOutput<List<Map<String, dynamic>>?>(
-      'trafficMatchRules',
-    );
+    trafficMarkingPolicyName = registerOutput<String?>('trafficMarkingPolicyName');
+    trafficMatchRules = registerOutput<List<Map<String, dynamic>>?>('trafficMatchRules');
     transitRouterId = registerOutput<String>('transitRouterId');
   }
 
@@ -276,11 +263,11 @@ class TrafficMarkingPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     dryRun = registerOutput<bool?>('dryRun');
     force = registerOutput<bool?>('force');
@@ -288,12 +275,8 @@ class TrafficMarkingPolicy extends pulumi.CustomResource {
     priority = registerOutput<int>('priority');
     status = registerOutput<String>('status');
     trafficMarkingPolicyId = registerOutput<String>('trafficMarkingPolicyId');
-    trafficMarkingPolicyName = registerOutput<String?>(
-      'trafficMarkingPolicyName',
-    );
-    trafficMatchRules = registerOutput<List<Map<String, dynamic>>?>(
-      'trafficMatchRules',
-    );
+    trafficMarkingPolicyName = registerOutput<String?>('trafficMarkingPolicyName');
+    trafficMatchRules = registerOutput<List<Map<String, dynamic>>?>('trafficMatchRules');
     transitRouterId = registerOutput<String>('transitRouterId');
   }
 }

@@ -16,3 +16,4 @@ enum FactoryIdentityType {
     throw ArgumentError('Unknown FactoryIdentityType value: $value');
   }
 }
+

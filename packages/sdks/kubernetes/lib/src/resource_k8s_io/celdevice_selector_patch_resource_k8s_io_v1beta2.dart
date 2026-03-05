@@ -39,21 +39,20 @@ class CELDeviceSelectorPatchResourceK8sIoV1beta2 {
 
   /// Creates a new [CELDeviceSelectorPatchResourceK8sIoV1beta2].
   /// [expression] Expression is a CEL expression which evaluates a single device. It must evaluate to true when the device under consideration satisfies the desired criteria, and false when it does not. Any other result is an error and causes allocation of devices to abort.
-  CELDeviceSelectorPatchResourceK8sIoV1beta2({this.expression});
+  CELDeviceSelectorPatchResourceK8sIoV1beta2({
+    this.expression,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'expression': ?expression};
+    return <String, dynamic>{
+      'expression': ?expression,
+    };
   }
 
-  factory CELDeviceSelectorPatchResourceK8sIoV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CELDeviceSelectorPatchResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return CELDeviceSelectorPatchResourceK8sIoV1beta2(
-      expression: (() {
-        final guardedValue = map['expression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expression: (() { final guardedValue = map['expression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainLaunchSecuritySevsnp {
   /// Configures the author key for the SEV-SNP feature in the domain.
   final pulumi.Input<String>? authorKey;
-
   /// Sets the circular bit position for the SEV-SNP configuration in the domain.
   final pulumi.Input<double>? cbitPos;
-
   /// Configures guest visible workarounds for SEV-SNP to enhance compatibility and performance.
   final pulumi.Input<String>? guestVisibleWorkarounds;
-
   /// Sets the host-specific data for the SEV-SNP configuration.
   final pulumi.Input<String>? hostData;
-
   /// Configures identifier authorization settings for SEV-SNP.
   final pulumi.Input<String>? idAuth;
-
   /// Configures ID block settings for SEV-SNP in the domain.
   final pulumi.Input<String>? idBlock;
-
   /// Configures kernel hashes for SEV-SNP to ensure integrity verification.
   final pulumi.Input<String>? kernelHashes;
-
   /// Sets the security policy for SEV-SNP operations within the domain.
   final pulumi.Input<double>? policy;
-
   /// Configures the reduced physical bits setting for SEV-SNP to assign smaller address spaces.
   final pulumi.Input<double>? reducedPhysBits;
-
   /// Configures the VCEK (Virtual Machine Key) for the SEV-SNP feature.
   final pulumi.Input<String>? vcek;
 
@@ -74,56 +65,17 @@ class DomainLaunchSecuritySevsnp {
 
   factory DomainLaunchSecuritySevsnp.fromMap(Map<String, dynamic> map) {
     return DomainLaunchSecuritySevsnp(
-      authorKey: (() {
-        final guardedValue = map['authorKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cbitPos: (() {
-        final guardedValue = map['cbitPos'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      guestVisibleWorkarounds: (() {
-        final guardedValue = map['guestVisibleWorkarounds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostData: (() {
-        final guardedValue = map['hostData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      idAuth: (() {
-        final guardedValue = map['idAuth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      idBlock: (() {
-        final guardedValue = map['idBlock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kernelHashes: (() {
-        final guardedValue = map['kernelHashes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      reducedPhysBits: (() {
-        final guardedValue = map['reducedPhysBits'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      vcek: (() {
-        final guardedValue = map['vcek'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authorKey: (() { final guardedValue = map['authorKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cbitPos: (() { final guardedValue = map['cbitPos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      guestVisibleWorkarounds: (() { final guardedValue = map['guestVisibleWorkarounds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostData: (() { final guardedValue = map['hostData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      idAuth: (() { final guardedValue = map['idAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      idBlock: (() { final guardedValue = map['idBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kernelHashes: (() { final guardedValue = map['kernelHashes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      reducedPhysBits: (() { final guardedValue = map['reducedPhysBits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      vcek: (() { final guardedValue = map['vcek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,14 +7,11 @@ import 'bucket_iambinding_condition.dart';
 class BucketIAMBindingState {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String>? bucket;
-
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   final pulumi.Input<BucketIAMBindingCondition>? condition;
-
   /// (Computed) The etag of the IAM policy.
   final pulumi.Input<String>? etag;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -27,7 +24,6 @@ class BucketIAMBindingState {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   final pulumi.Input<List<String>>? members;
-
   /// The role that should be applied. Only one
   /// `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -50,11 +46,7 @@ class BucketIAMBindingState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': ?bucket,
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            BucketIAMBindingCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<BucketIAMBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'etag': ?etag,
       'members': ?members,
       'role': ?role,
@@ -63,35 +55,12 @@ class BucketIAMBindingState {
 
   factory BucketIAMBindingState.fromMap(Map<String, dynamic> map) {
     return BucketIAMBindingState(
-      bucket: (() {
-        final guardedValue = map['bucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BucketIAMBindingCondition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      members: (() {
-        final guardedValue = map['members'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      role: (() {
-        final guardedValue = map['role'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BucketIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

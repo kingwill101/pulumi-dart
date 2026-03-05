@@ -16,3 +16,4 @@ enum AutoDiscovery {
     throw ArgumentError('Unknown AutoDiscovery value: $value');
   }
 }
+

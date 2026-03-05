@@ -6,9 +6,7 @@ import 'iisaksworkload_deployment.dart';
 /// IIS workload instance model custom properties.
 class IISAKSWorkloadDeploymentModelCustomProperties {
   /// IIS AKS workload deployment.
-  final pulumi.Input<IISAKSWorkloadDeployment>?
-  iisAksWorkloadDeploymentProperties;
-
+  final pulumi.Input<IISAKSWorkloadDeployment>? iisAksWorkloadDeploymentProperties;
   /// Gets or sets the instance type.
   /// Expected value is 'IISAKSWorkloadDeploymentModelCustomProperties'.
   final pulumi.Input<String> instanceType;
@@ -23,29 +21,16 @@ class IISAKSWorkloadDeploymentModelCustomProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iisAksWorkloadDeploymentProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            IISAKSWorkloadDeployment,
-            Map<String, dynamic>
-          >(iisAksWorkloadDeploymentProperties, (value) => value.toMap()),
+      'iisAksWorkloadDeploymentProperties': ?pulumi.Input.mapOptionalInputValue<IISAKSWorkloadDeployment, Map<String, dynamic>>(iisAksWorkloadDeploymentProperties, (value) => value.toMap()),
       'instanceType': instanceType,
     };
   }
 
-  factory IISAKSWorkloadDeploymentModelCustomProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IISAKSWorkloadDeploymentModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return IISAKSWorkloadDeploymentModelCustomProperties(
-      iisAksWorkloadDeploymentProperties: (() {
-        final guardedValue = map['iisAksWorkloadDeploymentProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IISAKSWorkloadDeployment.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      iisAksWorkloadDeploymentProperties: (() { final guardedValue = map['iisAksWorkloadDeploymentProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IISAKSWorkloadDeployment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );
   }
 }
+

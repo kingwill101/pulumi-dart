@@ -15,3 +15,4 @@ enum ZendeskAuthenticationType {
     throw ArgumentError('Unknown ZendeskAuthenticationType value: $value');
   }
 }
+

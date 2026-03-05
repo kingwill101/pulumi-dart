@@ -367,10 +367,8 @@ import 'job_target_group_state.dart';
 class JobTargetGroup extends pulumi.CustomResource {
   /// The ID of the Elastic Job Agent. Changing this forces a new Job Target Group to be created.
   late final pulumi.Output<String> jobAgentId;
-
   /// One or more `job_target` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> jobTargets;
-
   /// The name which should be used for this Job Target Group. Changing this forces a new Job Target Group to be created.
   late final pulumi.Output<String> name;
 
@@ -383,11 +381,11 @@ class JobTargetGroup extends pulumi.CustomResource {
     JobTargetGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/jobTargetGroup:JobTargetGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/jobTargetGroup:JobTargetGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     jobAgentId = registerOutput<String>('jobAgentId');
     jobTargets = registerOutput<List<Map<String, dynamic>>?>('jobTargets');
     this.name = registerOutput<String>('name');
@@ -411,11 +409,11 @@ class JobTargetGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/jobTargetGroup:JobTargetGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/jobTargetGroup:JobTargetGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     jobAgentId = registerOutput<String>('jobAgentId');
     jobTargets = registerOutput<List<Map<String, dynamic>>?>('jobTargets');
     this.name = registerOutput<String>('name');

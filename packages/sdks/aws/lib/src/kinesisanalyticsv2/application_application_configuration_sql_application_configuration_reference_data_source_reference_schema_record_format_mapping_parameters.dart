@@ -6,16 +6,9 @@ import 'application_application_configuration_sql_application_configuration_refe
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters {
   /// Provides additional mapping information when the record format uses delimiters (for example, CSV).
-  final pulumi.Input<
-    ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters
-  >?
-  csvMappingParameters;
-
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters>? csvMappingParameters;
   /// Provides additional mapping information when JSON is the record format on the streaming source.
-  final pulumi.Input<
-    ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters
-  >?
-  jsonMappingParameters;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters>? jsonMappingParameters;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters].
   /// [csvMappingParameters] Provides additional mapping information when the record format uses delimiters (for example, CSV).
@@ -27,41 +20,16 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'csvMappingParameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters,
-            Map<String, dynamic>
-          >(csvMappingParameters, (value) => value.toMap()),
-      'jsonMappingParameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters,
-            Map<String, dynamic>
-          >(jsonMappingParameters, (value) => value.toMap()),
+      'csvMappingParameters': ?pulumi.Input.mapOptionalInputValue<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters, Map<String, dynamic>>(csvMappingParameters, (value) => value.toMap()),
+      'jsonMappingParameters': ?pulumi.Input.mapOptionalInputValue<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters, Map<String, dynamic>>(jsonMappingParameters, (value) => value.toMap()),
     };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters(
-      csvMappingParameters: (() {
-        final guardedValue = map['csvMappingParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      jsonMappingParameters: (() {
-        final guardedValue = map['jsonMappingParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      csvMappingParameters: (() { final guardedValue = map['csvMappingParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      jsonMappingParameters: (() { final guardedValue = map['jsonMappingParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

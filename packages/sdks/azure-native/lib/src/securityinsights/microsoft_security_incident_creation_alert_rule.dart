@@ -383,47 +383,33 @@ import 'system_data_response.dart';
 class MicrosoftSecurityIncidentCreationAlertRule extends pulumi.CustomResource {
   /// The Name of the alert rule template used to create this rule.
   late final pulumi.Output<String?> alertRuleTemplateName;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The description of the alert rule.
   late final pulumi.Output<String?> description;
-
   /// The display name for alerts created by this alert rule.
   late final pulumi.Output<String> displayName;
-
   /// the alerts' displayNames on which the cases will not be generated
   late final pulumi.Output<List<String>?> displayNamesExcludeFilter;
-
   /// the alerts' displayNames on which the cases will be generated
   late final pulumi.Output<List<String>?> displayNamesFilter;
-
   /// Determines whether this alert rule is enabled or disabled.
   late final pulumi.Output<bool> enabled;
-
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// The kind of the alert rule
   /// Expected value is 'MicrosoftSecurityIncidentCreation'.
   late final pulumi.Output<String> kind;
-
   /// The last time that this alert has been modified.
   late final pulumi.Output<String> lastModifiedUtc;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The alerts' productName on which the cases will be generated
   late final pulumi.Output<String> productFilter;
-
   /// the alerts' severities on which the cases will be generated
   late final pulumi.Output<List<String>?> severitiesFilter;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -436,18 +422,16 @@ class MicrosoftSecurityIncidentCreationAlertRule extends pulumi.CustomResource {
     MicrosoftSecurityIncidentCreationAlertRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:MicrosoftSecurityIncidentCreationAlertRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:securityinsights:MicrosoftSecurityIncidentCreationAlertRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertRuleTemplateName = registerOutput<String?>('alertRuleTemplateName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    displayNamesExcludeFilter = registerOutput<List<String>?>(
-      'displayNamesExcludeFilter',
-    );
+    displayNamesExcludeFilter = registerOutput<List<String>?>('displayNamesExcludeFilter');
     displayNamesFilter = registerOutput<List<String>?>('displayNamesFilter');
     enabled = registerOutput<bool>('enabled');
     etag = registerOutput<String?>('etag');
@@ -456,16 +440,7 @@ class MicrosoftSecurityIncidentCreationAlertRule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     productFilter = registerOutput<String>('productFilter');
     severitiesFilter = registerOutput<List<String>?>('severitiesFilter');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

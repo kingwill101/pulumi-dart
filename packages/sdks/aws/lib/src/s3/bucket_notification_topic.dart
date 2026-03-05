@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketNotificationTopic {
   /// [Event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
   final pulumi.Input<List<String>> events;
-
   /// Object key name prefix.
   final pulumi.Input<String>? filterPrefix;
-
   /// Object key name suffix.
   final pulumi.Input<String>? filterSuffix;
-
   /// Unique identifier for each of the notification configurations.
   final pulumi.Input<String>? id;
-
   /// SNS topic ARN.
   final pulumi.Input<String> topicArn;
 
@@ -45,22 +41,11 @@ class BucketNotificationTopic {
   factory BucketNotificationTopic.fromMap(Map<String, dynamic> map) {
     return BucketNotificationTopic(
       events: pulumi.Input.fromValue((map['events'] as List).cast<String>()),
-      filterPrefix: (() {
-        final guardedValue = map['filterPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filterSuffix: (() {
-        final guardedValue = map['filterSuffix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filterPrefix: (() { final guardedValue = map['filterPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filterSuffix: (() { final guardedValue = map['filterSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       topicArn: pulumi.Input.fromValue(map['topicArn'] as String),
     );
   }
 }
+

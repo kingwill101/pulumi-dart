@@ -10,7 +10,6 @@ class OpaqueDeviceConfigurationPatchResourceK8sIoV1beta2 {
   ///
   /// Must be a DNS subdomain and should end with a DNS domain owned by the vendor of the driver. It should use only lower case characters.
   final pulumi.Input<String>? driver;
-
   /// Parameters can contain arbitrary data. It is the responsibility of the driver developer to handle validation and versioning. Typically this includes self-identification and a version ("kind" + "apiVersion" for Kubernetes types), with conversion between different versions.
   ///
   /// The length of the raw data must be smaller or equal to 10 Ki.
@@ -25,23 +24,17 @@ class OpaqueDeviceConfigurationPatchResourceK8sIoV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'driver': ?driver, 'parameters': ?parameters};
+    return <String, dynamic>{
+      'driver': ?driver,
+      'parameters': ?parameters,
+    };
   }
 
-  factory OpaqueDeviceConfigurationPatchResourceK8sIoV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OpaqueDeviceConfigurationPatchResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return OpaqueDeviceConfigurationPatchResourceK8sIoV1beta2(
-      driver: (() {
-        final guardedValue = map['driver'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      driver: (() { final guardedValue = map['driver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

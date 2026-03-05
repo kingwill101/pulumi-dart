@@ -7,52 +7,36 @@ import 'database_backup_setting_response.dart';
 class BackupItemResponse {
   /// Id of the backup.
   final pulumi.Input<int> backupId;
-
   /// Name of the blob which contains data for this backup.
   final pulumi.Input<String> blobName;
-
   /// Unique correlation identifier. Please use this along with the timestamp while communicating with Azure support.
   final pulumi.Input<String> correlationId;
-
   /// Timestamp of the backup creation.
   final pulumi.Input<String> created;
-
   /// List of databases included in the backup.
   final pulumi.Input<List<DatabaseBackupSettingResponse>> databases;
-
   /// Timestamp when this backup finished.
   final pulumi.Input<String> finishedTimeStamp;
-
   /// Resource Id.
   final pulumi.Input<String> id;
-
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-
   /// Timestamp of a last restore operation which used this backup.
   final pulumi.Input<String> lastRestoreTimeStamp;
-
   /// Details regarding this backup. Might contain an error message.
   final pulumi.Input<String> log;
-
   /// Resource Name.
   final pulumi.Input<String> name;
-
   /// True if this backup has been created due to a schedule being triggered.
   final pulumi.Input<bool> scheduled;
-
   /// Size of the backup in bytes.
   final pulumi.Input<double> sizeInBytes;
-
   /// Backup status.
   final pulumi.Input<String> status;
-
   /// SAS URL for the storage account container which contains this backup.
   final pulumi.Input<String> storageAccountUrl;
-
   /// Resource type.
   final pulumi.Input<String> type;
-
   /// Size of the original web app which has been backed up.
   final pulumi.Input<double> websiteSizeInBytes;
 
@@ -100,18 +84,7 @@ class BackupItemResponse {
       'blobName': blobName,
       'correlationId': correlationId,
       'created': created,
-      'databases':
-          pulumi.Input.mapInputValue<
-            List<DatabaseBackupSettingResponse>,
-            List<Map<String, dynamic>>
-          >(
-            databases,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DatabaseBackupSettingResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'databases': pulumi.Input.mapInputValue<List<DatabaseBackupSettingResponse>, List<Map<String, dynamic>>>(databases, (value) => pulumi.Input.encodeList<DatabaseBackupSettingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'finishedTimeStamp': finishedTimeStamp,
       'id': id,
       'kind': ?kind,
@@ -133,38 +106,20 @@ class BackupItemResponse {
       blobName: pulumi.Input.fromValue(map['blobName'] as String),
       correlationId: pulumi.Input.fromValue(map['correlationId'] as String),
       created: pulumi.Input.fromValue(map['created'] as String),
-      databases: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<DatabaseBackupSettingResponse>(
-          map['databases']!,
-          (value) => DatabaseBackupSettingResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      finishedTimeStamp: pulumi.Input.fromValue(
-        map['finishedTimeStamp'] as String,
-      ),
+      databases: pulumi.Input.fromValue(pulumi.Input.decodeList<DatabaseBackupSettingResponse>(map['databases']!, (value) => DatabaseBackupSettingResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      finishedTimeStamp: pulumi.Input.fromValue(map['finishedTimeStamp'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastRestoreTimeStamp: pulumi.Input.fromValue(
-        map['lastRestoreTimeStamp'] as String,
-      ),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastRestoreTimeStamp: pulumi.Input.fromValue(map['lastRestoreTimeStamp'] as String),
       log: pulumi.Input.fromValue(map['log'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       scheduled: pulumi.Input.fromValue(map['scheduled'] as bool),
       sizeInBytes: pulumi.Input.fromValue(map['sizeInBytes'] as double),
       status: pulumi.Input.fromValue(map['status'] as String),
-      storageAccountUrl: pulumi.Input.fromValue(
-        map['storageAccountUrl'] as String,
-      ),
+      storageAccountUrl: pulumi.Input.fromValue(map['storageAccountUrl'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
-      websiteSizeInBytes: pulumi.Input.fromValue(
-        map['websiteSizeInBytes'] as double,
-      ),
+      websiteSizeInBytes: pulumi.Input.fromValue(map['websiteSizeInBytes'] as double),
     );
   }
 }
+

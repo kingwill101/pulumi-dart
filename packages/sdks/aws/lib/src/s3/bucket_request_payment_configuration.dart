@@ -125,13 +125,10 @@ import 'bucket_request_payment_configuration_state.dart';
 class BucketRequestPaymentConfiguration extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-
   /// Specifies who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
   late final pulumi.Output<String> payer;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -144,11 +141,11 @@ class BucketRequestPaymentConfiguration extends pulumi.CustomResource {
     BucketRequestPaymentConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketRequestPaymentConfiguration:BucketRequestPaymentConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketRequestPaymentConfiguration:BucketRequestPaymentConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     payer = registerOutput<String>('payer');
@@ -173,11 +170,11 @@ class BucketRequestPaymentConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketRequestPaymentConfiguration:BucketRequestPaymentConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketRequestPaymentConfiguration:BucketRequestPaymentConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     payer = registerOutput<String>('payer');

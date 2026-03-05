@@ -7,10 +7,8 @@ import 'enterprise_crm_eventbus_proto_value_type_response.dart';
 class EnterpriseCrmEventbusProtoConditionResponse {
   /// Key that's evaluated against the `value`. Please note the data type of the runtime value associated with the key should match the data type of `value`, else an IllegalArgumentException is thrown.
   final pulumi.Input<String> eventPropertyKey;
-
   /// Operator used to evaluate the condition. Please note that an operator with an inappropriate key/value operand will result in IllegalArgumentException, e.g. CONTAINS with boolean key/value pair.
   final pulumi.Input<String> operator;
-
   /// Value that's checked for the key.
   final pulumi.Input<EnterpriseCrmEventbusProtoValueTypeResponse> value;
 
@@ -28,27 +26,16 @@ class EnterpriseCrmEventbusProtoConditionResponse {
     return <String, dynamic>{
       'eventPropertyKey': eventPropertyKey,
       'operator': operator,
-      'value':
-          pulumi.Input.mapInputValue<
-            EnterpriseCrmEventbusProtoValueTypeResponse,
-            Map<String, dynamic>
-          >(value, (value) => value.toMap()),
+      'value': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoValueTypeResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
-  factory EnterpriseCrmEventbusProtoConditionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoConditionResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoConditionResponse(
-      eventPropertyKey: pulumi.Input.fromValue(
-        map['eventPropertyKey'] as String,
-      ),
+      eventPropertyKey: pulumi.Input.fromValue(map['eventPropertyKey'] as String),
       operator: pulumi.Input.fromValue(map['operator'] as String),
-      value: pulumi.Input.fromValue(
-        EnterpriseCrmEventbusProtoValueTypeResponse.fromMap(
-          (map['value']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      value: pulumi.Input.fromValue(EnterpriseCrmEventbusProtoValueTypeResponse.fromMap((map['value']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -9,21 +9,20 @@ class WorkforcePoolAccessRestrictionsAllowedService {
 
   /// Creates a new [WorkforcePoolAccessRestrictionsAllowedService].
   /// [domain] Domain name of the service.
-  WorkforcePoolAccessRestrictionsAllowedService({this.domain});
+  WorkforcePoolAccessRestrictionsAllowedService({
+    this.domain,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domain': ?domain};
+    return <String, dynamic>{
+      'domain': ?domain,
+    };
   }
 
-  factory WorkforcePoolAccessRestrictionsAllowedService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkforcePoolAccessRestrictionsAllowedService.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolAccessRestrictionsAllowedService(
-      domain: (() {
-        final guardedValue = map['domain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1NormalizedVertexResponse {
   /// X coordinate.
   final pulumi.Input<double> x;
-
   /// Y coordinate (starts from the top of the image).
   final pulumi.Input<double> y;
 
@@ -19,15 +18,17 @@ class GoogleCloudDocumentaiV1NormalizedVertexResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'x': x, 'y': y};
+    return <String, dynamic>{
+      'x': x,
+      'y': y,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1NormalizedVertexResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1NormalizedVertexResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1NormalizedVertexResponse(
       x: pulumi.Input.fromValue(map['x'] as double),
       y: pulumi.Input.fromValue(map['y'] as double),
     );
   }
 }
+

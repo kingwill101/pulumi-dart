@@ -6,80 +6,56 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualBorderRouterState {
   /// Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
   final pulumi.Input<String>? associatedPhysicalConnections;
-
   /// The bandwidth of the VBR instance. Unit: Mbps. Valid values:
   /// - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
   /// - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
   final pulumi.Input<int>? bandwidth;
-
   /// The circuit code provided by the operator for the physical connection.
   final pulumi.Input<String>? circuitCode;
-
   /// (Available since v1.263.0) The creation time of the VBR.
   final pulumi.Input<String>? createTime;
-
   /// The description information of the VBR.
   final pulumi.Input<String>? description;
-
   /// Multiple of detection time.
   /// That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
   /// Valid values: `3` to `10`.
   final pulumi.Input<int>? detectMultiplier;
-
   /// Whether IPv6 is enabled.
   final pulumi.Input<bool>? enableIpv6;
-
   /// The IPv4 address on the Alibaba Cloud side of the VBR instance.
   final pulumi.Input<String>? localGatewayIp;
-
   /// The IPv6 address on the Alibaba Cloud side of the VBR instance.
   final pulumi.Input<String>? localIpv6GatewayIp;
-
   /// Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
   final pulumi.Input<int>? minRxInterval;
-
   /// Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
   final pulumi.Input<int>? minTxInterval;
-
   /// Maximum transmission unit.
   final pulumi.Input<int>? mtu;
-
   /// The IPv4 address of the client side of the VBR instance.
   final pulumi.Input<String>? peerGatewayIp;
-
   /// The IPv6 address of the client side of the VBR instance.
   final pulumi.Input<String>? peerIpv6GatewayIp;
-
   /// The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
   final pulumi.Input<String>? peeringIpv6SubnetMask;
-
   /// The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
   final pulumi.Input<String>? peeringSubnetMask;
-
   /// The ID of the physical connection to which the VBR belongs.
   final pulumi.Input<String>? physicalConnectionId;
-
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
-
   /// (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
   final pulumi.Input<String>? routeTableId;
-
   /// Whether to allow inter-IDC communication. Valid values: `true`, `false`.
   final pulumi.Input<bool>? sitelinkEnable;
-
   /// The status of the VBR. Valid values: `active`, `terminated`.
   final pulumi.Input<String>? status;
-
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
   final pulumi.Input<String>? vbrOwnerId;
-
   /// The name of the VBR instance.
   final pulumi.Input<String>? virtualBorderRouterName;
-
   /// The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
   final pulumi.Input<int>? vlanId;
 
@@ -169,133 +145,32 @@ class VirtualBorderRouterState {
 
   factory VirtualBorderRouterState.fromMap(Map<String, dynamic> map) {
     return VirtualBorderRouterState(
-      associatedPhysicalConnections: (() {
-        final guardedValue = map['associatedPhysicalConnections'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bandwidth: (() {
-        final guardedValue = map['bandwidth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      circuitCode: (() {
-        final guardedValue = map['circuitCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      detectMultiplier: (() {
-        final guardedValue = map['detectMultiplier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      enableIpv6: (() {
-        final guardedValue = map['enableIpv6'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      localGatewayIp: (() {
-        final guardedValue = map['localGatewayIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      localIpv6GatewayIp: (() {
-        final guardedValue = map['localIpv6GatewayIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      minRxInterval: (() {
-        final guardedValue = map['minRxInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minTxInterval: (() {
-        final guardedValue = map['minTxInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      mtu: (() {
-        final guardedValue = map['mtu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      peerGatewayIp: (() {
-        final guardedValue = map['peerGatewayIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peerIpv6GatewayIp: (() {
-        final guardedValue = map['peerIpv6GatewayIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peeringIpv6SubnetMask: (() {
-        final guardedValue = map['peeringIpv6SubnetMask'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peeringSubnetMask: (() {
-        final guardedValue = map['peeringSubnetMask'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      physicalConnectionId: (() {
-        final guardedValue = map['physicalConnectionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routeTableId: (() {
-        final guardedValue = map['routeTableId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sitelinkEnable: (() {
-        final guardedValue = map['sitelinkEnable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      vbrOwnerId: (() {
-        final guardedValue = map['vbrOwnerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualBorderRouterName: (() {
-        final guardedValue = map['virtualBorderRouterName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vlanId: (() {
-        final guardedValue = map['vlanId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      associatedPhysicalConnections: (() { final guardedValue = map['associatedPhysicalConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bandwidth: (() { final guardedValue = map['bandwidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      circuitCode: (() { final guardedValue = map['circuitCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      detectMultiplier: (() { final guardedValue = map['detectMultiplier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      enableIpv6: (() { final guardedValue = map['enableIpv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      localGatewayIp: (() { final guardedValue = map['localGatewayIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localIpv6GatewayIp: (() { final guardedValue = map['localIpv6GatewayIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minRxInterval: (() { final guardedValue = map['minRxInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minTxInterval: (() { final guardedValue = map['minTxInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      peerGatewayIp: (() { final guardedValue = map['peerGatewayIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerIpv6GatewayIp: (() { final guardedValue = map['peerIpv6GatewayIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peeringIpv6SubnetMask: (() { final guardedValue = map['peeringIpv6SubnetMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peeringSubnetMask: (() { final guardedValue = map['peeringSubnetMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      physicalConnectionId: (() { final guardedValue = map['physicalConnectionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routeTableId: (() { final guardedValue = map['routeTableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sitelinkEnable: (() { final guardedValue = map['sitelinkEnable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      vbrOwnerId: (() { final guardedValue = map['vbrOwnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualBorderRouterName: (() { final guardedValue = map['virtualBorderRouterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

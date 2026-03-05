@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GovernanceAssignmentAdditionalDataResponse {
   /// Ticket link associated with this governance assignment - for example: https://snow.com
   final pulumi.Input<String>? ticketLink;
-
   /// Ticket number associated with this governance assignment
   final pulumi.Input<int>? ticketNumber;
-
   /// The ticket status associated with this governance assignment - for example: Active
   final pulumi.Input<String>? ticketStatus;
 
@@ -31,25 +29,12 @@ class GovernanceAssignmentAdditionalDataResponse {
     };
   }
 
-  factory GovernanceAssignmentAdditionalDataResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GovernanceAssignmentAdditionalDataResponse.fromMap(Map<String, dynamic> map) {
     return GovernanceAssignmentAdditionalDataResponse(
-      ticketLink: (() {
-        final guardedValue = map['ticketLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ticketNumber: (() {
-        final guardedValue = map['ticketNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ticketStatus: (() {
-        final guardedValue = map['ticketStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ticketLink: (() { final guardedValue = map['ticketLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ticketNumber: (() { final guardedValue = map['ticketNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ticketStatus: (() { final guardedValue = map['ticketStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

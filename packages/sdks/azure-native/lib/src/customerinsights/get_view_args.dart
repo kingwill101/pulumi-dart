@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetViewArgs {
   /// The name of the hub.
   final pulumi.Input<String> hubName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The user ID. Use * to retrieve hub level view.
   final pulumi.Input<String> userId;
-
   /// The name of the view.
   final pulumi.Input<String> viewName;
 
@@ -43,11 +40,10 @@ class GetViewArgs {
   factory GetViewArgs.fromMap(Map<String, dynamic> map) {
     return GetViewArgs(
       hubName: pulumi.Input.fromValue(map['hubName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       userId: pulumi.Input.fromValue(map['userId'] as String),
       viewName: pulumi.Input.fromValue(map['viewName'] as String),
     );
   }
 }
+

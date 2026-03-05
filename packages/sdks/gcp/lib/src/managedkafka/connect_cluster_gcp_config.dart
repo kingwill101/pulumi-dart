@@ -10,25 +10,20 @@ class ConnectClusterGcpConfig {
 
   /// Creates a new [ConnectClusterGcpConfig].
   /// [accessConfig] The configuration of access to the Kafka Connect cluster.
-  ConnectClusterGcpConfig({required this.accessConfig});
+  ConnectClusterGcpConfig({
+    required this.accessConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessConfig':
-          pulumi.Input.mapInputValue<
-            ConnectClusterGcpConfigAccessConfig,
-            Map<String, dynamic>
-          >(accessConfig, (value) => value.toMap()),
+      'accessConfig': pulumi.Input.mapInputValue<ConnectClusterGcpConfigAccessConfig, Map<String, dynamic>>(accessConfig, (value) => value.toMap()),
     };
   }
 
   factory ConnectClusterGcpConfig.fromMap(Map<String, dynamic> map) {
     return ConnectClusterGcpConfig(
-      accessConfig: pulumi.Input.fromValue(
-        ConnectClusterGcpConfigAccessConfig.fromMap(
-          (map['accessConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      accessConfig: pulumi.Input.fromValue(ConnectClusterGcpConfigAccessConfig.fromMap((map['accessConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

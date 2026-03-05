@@ -15,3 +15,4 @@ enum BlobAuditingPolicyState {
     throw ArgumentError('Unknown BlobAuditingPolicyState value: $value');
   }
 }
+

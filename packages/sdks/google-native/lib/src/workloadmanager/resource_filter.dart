@@ -7,13 +7,10 @@ import 'gce_instance_filter.dart';
 class ResourceFilter {
   /// Filter compute engine resource
   final pulumi.Input<GceInstanceFilter>? gceInstanceFilter;
-
   /// The label used for filter resource
   final pulumi.Input<Map<String, String>>? inclusionLabels;
-
   /// The id pattern for filter resource
   final pulumi.Input<List<String>>? resourceIdPatterns;
-
   /// The scopes of evaluation resource
   final pulumi.Input<List<String>>? scopes;
 
@@ -31,11 +28,7 @@ class ResourceFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gceInstanceFilter':
-          ?pulumi.Input.mapOptionalInputValue<
-            GceInstanceFilter,
-            Map<String, dynamic>
-          >(gceInstanceFilter, (value) => value.toMap()),
+      'gceInstanceFilter': ?pulumi.Input.mapOptionalInputValue<GceInstanceFilter, Map<String, dynamic>>(gceInstanceFilter, (value) => value.toMap()),
       'inclusionLabels': ?inclusionLabels,
       'resourceIdPatterns': ?resourceIdPatterns,
       'scopes': ?scopes,
@@ -44,32 +37,11 @@ class ResourceFilter {
 
   factory ResourceFilter.fromMap(Map<String, dynamic> map) {
     return ResourceFilter(
-      gceInstanceFilter: (() {
-        final guardedValue = map['gceInstanceFilter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GceInstanceFilter.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      inclusionLabels: (() {
-        final guardedValue = map['inclusionLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      resourceIdPatterns: (() {
-        final guardedValue = map['resourceIdPatterns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      scopes: (() {
-        final guardedValue = map['scopes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      gceInstanceFilter: (() { final guardedValue = map['gceInstanceFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GceInstanceFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      inclusionLabels: (() { final guardedValue = map['inclusionLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      resourceIdPatterns: (() { final guardedValue = map['resourceIdPatterns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      scopes: (() { final guardedValue = map['scopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'get_ipv6_gateways_gateway.dart';
 /// Result data returned by getIpv6Gateways.
 class GetIpv6GatewaysResult {
   final List<GetIpv6GatewaysGateway> gateways;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -41,11 +40,7 @@ class GetIpv6GatewaysResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gateways':
-          pulumi.Input.encodeList<GetIpv6GatewaysGateway, Map<String, dynamic>>(
-            gateways,
-            (value) => value.toMap(),
-          ),
+      'gateways': pulumi.Input.encodeList<GetIpv6GatewaysGateway, Map<String, dynamic>>(gateways, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'ipv6GatewayName': ?ipv6GatewayName,
@@ -59,40 +54,16 @@ class GetIpv6GatewaysResult {
 
   factory GetIpv6GatewaysResult.fromMap(Map<String, dynamic> map) {
     return GetIpv6GatewaysResult(
-      gateways: pulumi.Input.decodeList<GetIpv6GatewaysGateway>(
-        map['gateways']!,
-        (value) => GetIpv6GatewaysGateway.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      gateways: pulumi.Input.decodeList<GetIpv6GatewaysGateway>(map['gateways']!, (value) => GetIpv6GatewaysGateway.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      ipv6GatewayName: (() {
-        final guardedValue = map['ipv6GatewayName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      ipv6GatewayName: (() { final guardedValue = map['ipv6GatewayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

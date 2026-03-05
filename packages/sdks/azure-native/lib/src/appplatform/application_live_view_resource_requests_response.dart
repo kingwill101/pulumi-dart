@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationLiveViewResourceRequestsResponse {
   /// Cpu quantity allocated to each Application Live View component instance. 1 core can be represented by 1 or 1000m.
   final pulumi.Input<String> cpu;
-
   /// Desired instance count of Application Live View component instance.
   final pulumi.Input<int> instanceCount;
-
   /// Memory quantity allocated to each Application Live View component instance. 1 GB can be represented by 1Gi or 1024Mi.
   final pulumi.Input<String> memory;
 
@@ -31,9 +29,7 @@ class ApplicationLiveViewResourceRequestsResponse {
     };
   }
 
-  factory ApplicationLiveViewResourceRequestsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationLiveViewResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationLiveViewResourceRequestsResponse(
       cpu: pulumi.Input.fromValue(map['cpu'] as String),
       instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
@@ -41,3 +37,4 @@ class ApplicationLiveViewResourceRequestsResponse {
     );
   }
 }
+

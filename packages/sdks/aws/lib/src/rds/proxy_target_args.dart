@@ -11,16 +11,12 @@ class ProxyTargetArgs {
   ///
   /// **NOTE:** Either `db_instance_identifier` or `db_cluster_identifier` should be specified and both should not be specified together
   final pulumi.Input<String>? dbClusterIdentifier;
-
   /// DB instance identifier.
   final pulumi.Input<String>? dbInstanceIdentifier;
-
   /// The name of the DB proxy.
   final pulumi.Input<String> dbProxyName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The name of the target group.
   final pulumi.Input<String> targetGroupName;
 
@@ -50,23 +46,12 @@ class ProxyTargetArgs {
 
   factory ProxyTargetArgs.fromMap(Map<String, dynamic> map) {
     return ProxyTargetArgs(
-      dbClusterIdentifier: (() {
-        final guardedValue = map['dbClusterIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dbInstanceIdentifier: (() {
-        final guardedValue = map['dbInstanceIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dbClusterIdentifier: (() { final guardedValue = map['dbClusterIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dbInstanceIdentifier: (() { final guardedValue = map['dbInstanceIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbProxyName: pulumi.Input.fromValue(map['dbProxyName'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetGroupName: pulumi.Input.fromValue(map['targetGroupName'] as String),
     );
   }
 }
+

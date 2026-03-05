@@ -5,9 +5,7 @@ import 'application_required_resource_access_resource_access.dart';
 
 class ApplicationRequiredResourceAccess {
   /// A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
-  final pulumi.Input<List<ApplicationRequiredResourceAccessResourceAccess>>
-  resourceAccesses;
-
+  final pulumi.Input<List<ApplicationRequiredResourceAccessResourceAccess>> resourceAccesses;
   /// The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
   ///
   /// &gt; **Note:** Documentation on `resource_app_id` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
@@ -23,34 +21,16 @@ class ApplicationRequiredResourceAccess {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'resourceAccesses':
-          pulumi.Input.mapInputValue<
-            List<ApplicationRequiredResourceAccessResourceAccess>,
-            List<Map<String, dynamic>>
-          >(
-            resourceAccesses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ApplicationRequiredResourceAccessResourceAccess,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'resourceAccesses': pulumi.Input.mapInputValue<List<ApplicationRequiredResourceAccessResourceAccess>, List<Map<String, dynamic>>>(resourceAccesses, (value) => pulumi.Input.encodeList<ApplicationRequiredResourceAccessResourceAccess, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceAppId': resourceAppId,
     };
   }
 
   factory ApplicationRequiredResourceAccess.fromMap(Map<String, dynamic> map) {
     return ApplicationRequiredResourceAccess(
-      resourceAccesses: pulumi.Input.fromValue(
-        pulumi
-            .Input.decodeList<ApplicationRequiredResourceAccessResourceAccess>(
-          map['resourceAccesses']!,
-          (value) => ApplicationRequiredResourceAccessResourceAccess.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      resourceAccesses: pulumi.Input.fromValue(pulumi.Input.decodeList<ApplicationRequiredResourceAccessResourceAccess>(map['resourceAccesses']!, (value) => ApplicationRequiredResourceAccessResourceAccess.fromMap((value as Map).cast<String, dynamic>()))),
       resourceAppId: pulumi.Input.fromValue(map['resourceAppId'] as String),
     );
   }
 }
+

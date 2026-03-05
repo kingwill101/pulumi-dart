@@ -29,30 +29,13 @@ class ConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
     };
   }
 
-  factory ConnectionTunnelOptionsSpecificationTunnelIpsecConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionTunnelOptionsSpecificationTunnelIpsecConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionTunnelOptionsSpecificationTunnelIpsecConfig(
-      ipsecAuthAlg: (() {
-        final guardedValue = map['ipsecAuthAlg'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipsecEncAlg: (() {
-        final guardedValue = map['ipsecEncAlg'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipsecLifetime: (() {
-        final guardedValue = map['ipsecLifetime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ipsecPfs: (() {
-        final guardedValue = map['ipsecPfs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipsecAuthAlg: (() { final guardedValue = map['ipsecAuthAlg']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipsecEncAlg: (() { final guardedValue = map['ipsecEncAlg']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipsecLifetime: (() { final guardedValue = map['ipsecLifetime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ipsecPfs: (() { final guardedValue = map['ipsecPfs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectorArgs {
   /// Connector Name.
   final pulumi.Input<String> connectorName;
-
   /// Azure Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetConnectorArgs {
   factory GetConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectorArgs(
       connectorName: pulumi.Input.fromValue(map['connectorName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -375,28 +375,20 @@ import 'flux_configuration_state.dart';
 class FluxConfiguration extends pulumi.CustomResource {
   /// An `blob_storage` block as defined below.
   late final pulumi.Output<FluxConfigurationBlobStorage?> blobStorage;
-
   /// A `bucket` block as defined below.
   late final pulumi.Output<FluxConfigurationBucket?> bucket;
-
   /// Specifies the Cluster ID. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> clusterId;
-
   /// Whether the configuration will keep its reconciliation of its kustomizations and sources with the repository. Defaults to `true`.
   late final pulumi.Output<bool?> continuousReconciliationEnabled;
-
   /// A `git_repository` block as defined below.
   late final pulumi.Output<FluxConfigurationGitRepository?> gitRepository;
-
   /// A `kustomizations` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> kustomizations;
-
   /// Specifies the name which should be used for this Arc Kubernetes Flux Configuration. Changing this forces a new Arc Kubernetes Flux Configuration to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the namespace to which this configuration is installed to. Changing this forces a new Arc Kubernetes Flux Configuration to be created.
   late final pulumi.Output<String> namespace;
-
   /// Specifies the scope at which the operator will be installed. Possible values are `cluster` and `namespace`. Defaults to `namespace`. Changing this forces a new Arc Kubernetes Flux Configuration to be created.
   late final pulumi.Output<String?> scope;
 
@@ -409,48 +401,17 @@ class FluxConfiguration extends pulumi.CustomResource {
     FluxConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:arckubernetes/fluxConfiguration:FluxConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    blobStorage = registerOutput<FluxConfigurationBlobStorage?>(
-      'blobStorage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FluxConfigurationBlobStorage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    bucket = registerOutput<FluxConfigurationBucket?>(
-      'bucket',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FluxConfigurationBucket.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:arckubernetes/fluxConfiguration:FluxConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    blobStorage = registerOutput<FluxConfigurationBlobStorage?>('blobStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationBlobStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bucket = registerOutput<FluxConfigurationBucket?>('bucket', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationBucket.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
-    continuousReconciliationEnabled = registerOutput<bool?>(
-      'continuousReconciliationEnabled',
-    );
-    gitRepository = registerOutput<FluxConfigurationGitRepository?>(
-      'gitRepository',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FluxConfigurationGitRepository.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    kustomizations = registerOutput<List<Map<String, dynamic>>>(
-      'kustomizations',
-    );
+    continuousReconciliationEnabled = registerOutput<bool?>('continuousReconciliationEnabled');
+    gitRepository = registerOutput<FluxConfigurationGitRepository?>('gitRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationGitRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kustomizations = registerOutput<List<Map<String, dynamic>>>('kustomizations');
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');
     scope = registerOutput<String?>('scope');
@@ -474,48 +435,17 @@ class FluxConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:arckubernetes/fluxConfiguration:FluxConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    blobStorage = registerOutput<FluxConfigurationBlobStorage?>(
-      'blobStorage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FluxConfigurationBlobStorage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    bucket = registerOutput<FluxConfigurationBucket?>(
-      'bucket',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FluxConfigurationBucket.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:arckubernetes/fluxConfiguration:FluxConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    blobStorage = registerOutput<FluxConfigurationBlobStorage?>('blobStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationBlobStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bucket = registerOutput<FluxConfigurationBucket?>('bucket', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationBucket.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
-    continuousReconciliationEnabled = registerOutput<bool?>(
-      'continuousReconciliationEnabled',
-    );
-    gitRepository = registerOutput<FluxConfigurationGitRepository?>(
-      'gitRepository',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FluxConfigurationGitRepository.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    kustomizations = registerOutput<List<Map<String, dynamic>>>(
-      'kustomizations',
-    );
+    continuousReconciliationEnabled = registerOutput<bool?>('continuousReconciliationEnabled');
+    gitRepository = registerOutput<FluxConfigurationGitRepository?>('gitRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationGitRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kustomizations = registerOutput<List<Map<String, dynamic>>>('kustomizations');
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');
     scope = registerOutput<String?>('scope');

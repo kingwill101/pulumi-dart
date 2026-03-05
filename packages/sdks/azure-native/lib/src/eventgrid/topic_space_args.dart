@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicSpaceArgs {
   /// Description for the Topic Space resource.
   final pulumi.Input<String>? description;
-
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
-
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
-
   /// The topic space name.
   final pulumi.Input<String>? topicSpaceName;
-
   /// The topic filters in the topic space.
   /// Example: "topicTemplates": [
   /// "devices/foo/bar",
@@ -52,25 +48,12 @@ class TopicSpaceArgs {
 
   factory TopicSpaceArgs.fromMap(Map<String, dynamic> map) {
     return TopicSpaceArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      topicSpaceName: (() {
-        final guardedValue = map['topicSpaceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      topicTemplates: (() {
-        final guardedValue = map['topicTemplates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      topicSpaceName: (() { final guardedValue = map['topicSpaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      topicTemplates: (() { final guardedValue = map['topicTemplates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

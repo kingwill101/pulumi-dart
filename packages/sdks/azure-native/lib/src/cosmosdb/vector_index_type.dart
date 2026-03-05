@@ -16,3 +16,4 @@ enum VectorIndexType {
     throw ArgumentError('Unknown VectorIndexType value: $value');
   }
 }
+

@@ -15,3 +15,4 @@ enum VirtualMachineState {
     throw ArgumentError('Unknown VirtualMachineState value: $value');
   }
 }
+

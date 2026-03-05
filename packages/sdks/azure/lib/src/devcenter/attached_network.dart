@@ -369,10 +369,8 @@ import 'attached_network_state.dart';
 class AttachedNetwork extends pulumi.CustomResource {
   /// The ID of the associated Dev Center. Changing this forces a new resource to be created.
   late final pulumi.Output<String> devCenterId;
-
   /// Specifies the name of this Dev Center Attached Network. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Dev Center Network Connection you want to attach. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkConnectionId;
 
@@ -385,11 +383,11 @@ class AttachedNetwork extends pulumi.CustomResource {
     AttachedNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devcenter/attachedNetwork:AttachedNetwork',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:devcenter/attachedNetwork:AttachedNetwork',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
     networkConnectionId = registerOutput<String>('networkConnectionId');
@@ -413,11 +411,11 @@ class AttachedNetwork extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devcenter/attachedNetwork:AttachedNetwork',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:devcenter/attachedNetwork:AttachedNetwork',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
     networkConnectionId = registerOutput<String>('networkConnectionId');

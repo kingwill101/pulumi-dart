@@ -2,7 +2,7 @@ name: pulumi_azuread
 description: A Pulumi package for creating and managing Azure Active Directory (Azure AD) cloud resources.
 version: 6.8.1
 license: Apache-2.0
-homepage: https://pulumi.io
+homepage: https://www.pulumi.com
 repository: https://github.com/pulumi/pulumi-azuread
 topics:
     - pulumi

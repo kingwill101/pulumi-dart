@@ -255,44 +255,31 @@ import 'collaboration_state.dart';
 class Collaboration extends pulumi.CustomResource {
   /// Analytics engine used by the collaboration. Valid values are `CLEAN_ROOMS_SQL` (deprecated) and `SPARK`.
   late final pulumi.Output<String?> analyticsEngine;
-
   /// ARN of the collaboration.
   late final pulumi.Output<String> arn;
-
   /// Date and time the collaboration was created.
   late final pulumi.Output<String> createTime;
-
   /// Name for the member record for the collaboration creator.
   late final pulumi.Output<String> creatorDisplayName;
-
   /// List of member abilities for the creator of the collaboration. Valid values [may be found here](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateCollaboration.html#API-CreateCollaboration-request-creatorMemberAbilities).
   late final pulumi.Output<List<String>> creatorMemberAbilities;
-
   /// Collection of settings which determine how the [c3r client](https://docs.aws.amazon.com/clean-rooms/latest/userguide/crypto-computing.html) will encrypt data for use within this collaboration. See below.
-  late final pulumi.Output<CollaborationDataEncryptionMetadata?>
-  dataEncryptionMetadata;
-
+  late final pulumi.Output<CollaborationDataEncryptionMetadata?> dataEncryptionMetadata;
   /// Description for a collaboration.
   late final pulumi.Output<String> description;
-
   /// Additional members of the collaboration which will be invited to join the collaboration. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> members;
-
   /// Name of the collaboration.  Collaboration names do not need to be unique.
   late final pulumi.Output<String> name;
-
   /// Whether members of the collaboration can enable query logs within their own memberships. Valid values [may be found here](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateCollaboration.html#API-CreateCollaboration-request-queryLogStatus).
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> queryLogStatus;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key value pairs which tag the collaboration.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Date and time the collaboration was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -305,29 +292,17 @@ class Collaboration extends pulumi.CustomResource {
     CollaborationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cleanrooms/collaboration:Collaboration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cleanrooms/collaboration:Collaboration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     analyticsEngine = registerOutput<String?>('analyticsEngine');
     arn = registerOutput<String>('arn');
     createTime = registerOutput<String>('createTime');
     creatorDisplayName = registerOutput<String>('creatorDisplayName');
-    creatorMemberAbilities = registerOutput<List<String>>(
-      'creatorMemberAbilities',
-    );
-    dataEncryptionMetadata =
-        registerOutput<CollaborationDataEncryptionMetadata?>(
-          'dataEncryptionMetadata',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CollaborationDataEncryptionMetadata.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    creatorMemberAbilities = registerOutput<List<String>>('creatorMemberAbilities');
+    dataEncryptionMetadata = registerOutput<CollaborationDataEncryptionMetadata?>('dataEncryptionMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollaborationDataEncryptionMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     members = registerOutput<List<Map<String, dynamic>>?>('members');
     this.name = registerOutput<String>('name');
@@ -356,29 +331,17 @@ class Collaboration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cleanrooms/collaboration:Collaboration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cleanrooms/collaboration:Collaboration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     analyticsEngine = registerOutput<String?>('analyticsEngine');
     arn = registerOutput<String>('arn');
     createTime = registerOutput<String>('createTime');
     creatorDisplayName = registerOutput<String>('creatorDisplayName');
-    creatorMemberAbilities = registerOutput<List<String>>(
-      'creatorMemberAbilities',
-    );
-    dataEncryptionMetadata =
-        registerOutput<CollaborationDataEncryptionMetadata?>(
-          'dataEncryptionMetadata',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CollaborationDataEncryptionMetadata.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    creatorMemberAbilities = registerOutput<List<String>>('creatorMemberAbilities');
+    dataEncryptionMetadata = registerOutput<CollaborationDataEncryptionMetadata?>('dataEncryptionMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollaborationDataEncryptionMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     members = registerOutput<List<Map<String, dynamic>>?>('members');
     this.name = registerOutput<String>('name');

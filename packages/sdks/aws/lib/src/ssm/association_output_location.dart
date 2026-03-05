@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssociationOutputLocation {
   /// The S3 bucket name.
   final pulumi.Input<String> s3BucketName;
-
   /// The S3 bucket prefix. Results stored in the root if not configured.
   final pulumi.Input<String>? s3KeyPrefix;
-
   /// The S3 bucket region.
   ///
   /// Targets specify what instance IDs or tags to apply the document to and has these keys:
@@ -35,16 +33,9 @@ class AssociationOutputLocation {
   factory AssociationOutputLocation.fromMap(Map<String, dynamic> map) {
     return AssociationOutputLocation(
       s3BucketName: pulumi.Input.fromValue(map['s3BucketName'] as String),
-      s3KeyPrefix: (() {
-        final guardedValue = map['s3KeyPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      s3Region: (() {
-        final guardedValue = map['s3Region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      s3KeyPrefix: (() { final guardedValue = map['s3KeyPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s3Region: (() { final guardedValue = map['s3Region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

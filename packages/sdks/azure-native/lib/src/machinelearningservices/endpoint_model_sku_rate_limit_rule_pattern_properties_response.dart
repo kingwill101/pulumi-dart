@@ -15,23 +15,17 @@ class EndpointModelSkuRateLimitRulePatternPropertiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'method': ?method, 'path': ?path};
+    return <String, dynamic>{
+      'method': ?method,
+      'path': ?path,
+    };
   }
 
-  factory EndpointModelSkuRateLimitRulePatternPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointModelSkuRateLimitRulePatternPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointModelSkuRateLimitRulePatternPropertiesResponse(
-      method: (() {
-        final guardedValue = map['method'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      method: (() { final guardedValue = map['method']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

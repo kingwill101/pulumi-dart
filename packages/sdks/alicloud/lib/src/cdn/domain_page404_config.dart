@@ -11,7 +11,11 @@ class DomainPage404Config {
   /// [customPageUrl] Optional.
   /// [errorCode] Optional.
   /// [pageType] Optional.
-  DomainPage404Config({this.customPageUrl, this.errorCode, this.pageType});
+  DomainPage404Config({
+    this.customPageUrl,
+    this.errorCode,
+    this.pageType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,21 +27,10 @@ class DomainPage404Config {
 
   factory DomainPage404Config.fromMap(Map<String, dynamic> map) {
     return DomainPage404Config(
-      customPageUrl: (() {
-        final guardedValue = map['customPageUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      errorCode: (() {
-        final guardedValue = map['errorCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pageType: (() {
-        final guardedValue = map['pageType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customPageUrl: (() { final guardedValue = map['customPageUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      errorCode: (() { final guardedValue = map['errorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pageType: (() { final guardedValue = map['pageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

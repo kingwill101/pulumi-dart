@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKeyPairsPair {
   /// The creation time of the key pair. The date format is in accordance with ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
   final pulumi.Input<String> createTime;
-
   /// The ID of the Key Pair.
   final pulumi.Input<String> id;
-
   /// Fingerprint of the key pair.
   final pulumi.Input<String> keyPairFingerPrint;
-
   /// The name of the key pair.
   final pulumi.Input<String> keyPairName;
-
   /// The version number.
   final pulumi.Input<String> version;
 
@@ -46,11 +42,10 @@ class GetKeyPairsPair {
     return GetKeyPairsPair(
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      keyPairFingerPrint: pulumi.Input.fromValue(
-        map['keyPairFingerPrint'] as String,
-      ),
+      keyPairFingerPrint: pulumi.Input.fromValue(map['keyPairFingerPrint'] as String),
       keyPairName: pulumi.Input.fromValue(map['keyPairName'] as String),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProductProductSkusImage {
   /// The Ecs image id.
   final pulumi.Input<String> imageId;
-
   /// The Ecs image display name.
   final pulumi.Input<String> imageName;
-
   /// The Ecs image region.
   final pulumi.Input<String> regionId;
 
@@ -38,3 +36,4 @@ class GetProductProductSkusImage {
     );
   }
 }
+

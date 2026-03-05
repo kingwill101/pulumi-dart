@@ -161,26 +161,19 @@ import 'nfs_state.dart';
 class Nfs extends pulumi.CustomResource {
   /// The host IP of the NFS server accessible from the associated VPC.
   late final pulumi.Output<String> host;
-
   /// The mount path for accessing the NFS share.
   late final pulumi.Output<String> mountPath;
-
   /// A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
   late final pulumi.Output<String> name;
-
   /// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
   late final pulumi.Output<String?> performanceTier;
-
   /// The region where the NFS share will be created.
   late final pulumi.Output<String> region;
-
   /// The size of the NFS share in GiB. Minimum size is 50 GiB.
   late final pulumi.Output<int> size;
-
   /// The current status of the NFS share.
   late final pulumi.Output<String> status;
   late final pulumi.Output<List<String>?> tags;
-
   /// The ID of the VPC where the NFS share will be created.
   late final pulumi.Output<String> vpcId;
   late final pulumi.Output<List<String>> vpcIds;
@@ -189,13 +182,16 @@ class Nfs extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Nfs]. {@macro pulumi_index_nfs_nfs_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Nfs(String name, {NfsArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'digitalocean:index/nfs:Nfs',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Nfs(
+    String name, {
+    NfsArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'digitalocean:index/nfs:Nfs',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     host = registerOutput<String>('host');
     mountPath = registerOutput<String>('mountPath');
     this.name = registerOutput<String>('name');
@@ -209,7 +205,11 @@ class Nfs extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Nfs] resource's state with the given [name] and [id].
-  static Nfs get(String name, pulumi.Input<String> id, {NfsState? state}) {
+  static Nfs get(
+    String name,
+    pulumi.Input<String> id, {
+    NfsState? state,
+  }) {
     return Nfs._get(
       name,
       state: state?.toMap(),
@@ -222,11 +222,11 @@ class Nfs extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/nfs:Nfs',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/nfs:Nfs',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     host = registerOutput<String>('host');
     mountPath = registerOutput<String>('mountPath');
     this.name = registerOutput<String>('name');

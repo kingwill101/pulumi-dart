@@ -7,15 +7,12 @@ import 'get_spot_price_filter.dart';
 class GetSpotPriceResult {
   final String? availabilityZone;
   final List<GetSpotPriceFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? instanceType;
   final String region;
-
   /// Most recent Spot Price value for the given instance type and AZ.
   final String spotPrice;
-
   /// The timestamp at which the Spot Price value was published.
   final String spotPriceTimestamp;
 
@@ -40,14 +37,7 @@ class GetSpotPriceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilityZone': ?availabilityZone,
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetSpotPriceFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSpotPriceFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'instanceType': ?instanceType,
       'region': region,
@@ -58,30 +48,14 @@ class GetSpotPriceResult {
 
   factory GetSpotPriceResult.fromMap(Map<String, dynamic> map) {
     return GetSpotPriceResult(
-      availabilityZone: (() {
-        final guardedValue = map['availabilityZone'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetSpotPriceFilter>(
-          guardedValue,
-          (value) => GetSpotPriceFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSpotPriceFilter>(guardedValue, (value) => GetSpotPriceFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: map['region'] as String,
       spotPrice: map['spotPrice'] as String,
       spotPriceTimestamp: map['spotPriceTimestamp'] as String,
     );
   }
 }
+

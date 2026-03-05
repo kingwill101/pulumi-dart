@@ -169,73 +169,50 @@ import 'system_data_response.dart';
 class AutoExportJob extends pulumi.CustomResource {
   /// The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'.
   late final pulumi.Output<String?> adminStatus;
-
   /// An array of blob paths/prefixes that get auto exported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths for now is 1.
   late final pulumi.Output<List<String>?> autoExportPrefixes;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Files discovered for export in current iteration. It may increase while more export items are found.
   late final pulumi.Output<double> currentIterationFilesDiscovered;
-
   /// Files that have been exported in current iteration.
   late final pulumi.Output<double> currentIterationFilesExported;
-
   /// Files failed to export in current iteration.
   late final pulumi.Output<double> currentIterationFilesFailed;
-
   /// Data (in MiB) discovered for export in current iteration. It may increase while more export items are found.
   late final pulumi.Output<double> currentIterationMiBDiscovered;
-
   /// Data (in MiB) that have been exported in current iteration.
   late final pulumi.Output<double> currentIterationMiBExported;
-
   /// Number of iterations completed since the start of the export.
   late final pulumi.Output<int> exportIterationCount;
-
   /// The time (in UTC) of the last completed auto export job.
   late final pulumi.Output<String> lastCompletionTimeUTC;
-
   /// The time (in UTC) the latest auto export job started.
   late final pulumi.Output<String> lastStartedTimeUTC;
-
   /// Time (in UTC) of the last successfully completed export iteration. Look at logging container for details.
   late final pulumi.Output<String> lastSuccessfulIterationCompletionTimeUTC;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// ARM provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// The operational state of auto export. InProgress indicates the export is running.  Disabling indicates the user has requested to disable the export but the disabling is still in progress. Disabled indicates auto export has been disabled.  DisableFailed indicates the disabling has failed.  Failed means the export was unable to continue, due to a fatal error.
   late final pulumi.Output<String?> state;
-
   /// Server-defined status code for auto export job.
   late final pulumi.Output<String> statusCode;
-
   /// Server-defined status message for auto export job.
   late final pulumi.Output<String> statusMessage;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Total files exported since the start of the export. This is accumulative, some files may be counted repeatedly.
   late final pulumi.Output<double> totalFilesExported;
-
   /// Total files failed to be export since the last successfully completed iteration. This is accumulative, some files may be counted repeatedly.
   late final pulumi.Output<double> totalFilesFailed;
-
   /// Total data (in MiB) exported since the start of the export. This is accumulative, some files may be counted repeatedly.
   late final pulumi.Output<double> totalMiBExported;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -248,51 +225,30 @@ class AutoExportJob extends pulumi.CustomResource {
     AutoExportJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:storagecache:AutoExportJob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:storagecache:AutoExportJob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminStatus = registerOutput<String?>('adminStatus');
     autoExportPrefixes = registerOutput<List<String>?>('autoExportPrefixes');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    currentIterationFilesDiscovered = registerOutput<double>(
-      'currentIterationFilesDiscovered',
-    );
-    currentIterationFilesExported = registerOutput<double>(
-      'currentIterationFilesExported',
-    );
-    currentIterationFilesFailed = registerOutput<double>(
-      'currentIterationFilesFailed',
-    );
-    currentIterationMiBDiscovered = registerOutput<double>(
-      'currentIterationMiBDiscovered',
-    );
-    currentIterationMiBExported = registerOutput<double>(
-      'currentIterationMiBExported',
-    );
+    currentIterationFilesDiscovered = registerOutput<double>('currentIterationFilesDiscovered');
+    currentIterationFilesExported = registerOutput<double>('currentIterationFilesExported');
+    currentIterationFilesFailed = registerOutput<double>('currentIterationFilesFailed');
+    currentIterationMiBDiscovered = registerOutput<double>('currentIterationMiBDiscovered');
+    currentIterationMiBExported = registerOutput<double>('currentIterationMiBExported');
     exportIterationCount = registerOutput<int>('exportIterationCount');
     lastCompletionTimeUTC = registerOutput<String>('lastCompletionTimeUTC');
     lastStartedTimeUTC = registerOutput<String>('lastStartedTimeUTC');
-    lastSuccessfulIterationCompletionTimeUTC = registerOutput<String>(
-      'lastSuccessfulIterationCompletionTimeUTC',
-    );
+    lastSuccessfulIterationCompletionTimeUTC = registerOutput<String>('lastSuccessfulIterationCompletionTimeUTC');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     state = registerOutput<String?>('state');
     statusCode = registerOutput<String>('statusCode');
     statusMessage = registerOutput<String>('statusMessage');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     totalFilesExported = registerOutput<double>('totalFilesExported');
     totalFilesFailed = registerOutput<double>('totalFilesFailed');

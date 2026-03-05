@@ -13,8 +13,7 @@ enum HDInsightActivityDebugInfoOption {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown HDInsightActivityDebugInfoOption value: $value',
-    );
+    throw ArgumentError('Unknown HDInsightActivityDebugInfoOption value: $value');
   }
 }
+

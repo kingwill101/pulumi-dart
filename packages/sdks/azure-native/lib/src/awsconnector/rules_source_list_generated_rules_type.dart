@@ -12,8 +12,7 @@ enum RulesSourceListGeneratedRulesType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RulesSourceListGeneratedRulesType value: $value',
-    );
+    throw ArgumentError('Unknown RulesSourceListGeneratedRulesType value: $value');
   }
 }
+

@@ -7,52 +7,29 @@ import 'consumer_metastore_v1beta.dart';
 class NetworkConfigMetastoreV1beta {
   /// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
   final pulumi.Input<List<ConsumerMetastoreV1beta>>? consumers;
-
   /// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
   final pulumi.Input<bool>? customRoutesEnabled;
 
   /// Creates a new [NetworkConfigMetastoreV1beta].
   /// [consumers] Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
   /// [customRoutesEnabled] Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
-  NetworkConfigMetastoreV1beta({this.consumers, this.customRoutesEnabled});
+  NetworkConfigMetastoreV1beta({
+    this.consumers,
+    this.customRoutesEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'consumers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConsumerMetastoreV1beta>,
-            List<Map<String, dynamic>>
-          >(
-            consumers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConsumerMetastoreV1beta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'consumers': ?pulumi.Input.mapOptionalInputValue<List<ConsumerMetastoreV1beta>, List<Map<String, dynamic>>>(consumers, (value) => pulumi.Input.encodeList<ConsumerMetastoreV1beta, Map<String, dynamic>>(value, (value) => value.toMap())),
       'customRoutesEnabled': ?customRoutesEnabled,
     };
   }
 
   factory NetworkConfigMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return NetworkConfigMetastoreV1beta(
-      consumers: (() {
-        final guardedValue = map['consumers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ConsumerMetastoreV1beta>(
-            guardedValue,
-            (value) => ConsumerMetastoreV1beta.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      customRoutesEnabled: (() {
-        final guardedValue = map['customRoutesEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      consumers: (() { final guardedValue = map['consumers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConsumerMetastoreV1beta>(guardedValue, (value) => ConsumerMetastoreV1beta.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      customRoutesEnabled: (() { final guardedValue = map['customRoutesEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

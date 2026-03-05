@@ -16,3 +16,4 @@ enum DeploymentFetchStatus {
     throw ArgumentError('Unknown DeploymentFetchStatus value: $value');
   }
 }
+

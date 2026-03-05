@@ -15,3 +15,4 @@ enum DeferUpgradeSetting {
     throw ArgumentError('Unknown DeferUpgradeSetting value: $value');
   }
 }
+

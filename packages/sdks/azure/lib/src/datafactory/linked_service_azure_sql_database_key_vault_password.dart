@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedServiceAzureSqlDatabaseKeyVaultPassword {
   /// Specifies the name of an existing Key Vault Data Factory Linked Service.
   final pulumi.Input<String> linkedServiceName;
-
   /// Specifies the secret name in Azure Key Vault that stores SQL Server password.
   final pulumi.Input<String> secretName;
 
@@ -24,14 +23,11 @@ class LinkedServiceAzureSqlDatabaseKeyVaultPassword {
     };
   }
 
-  factory LinkedServiceAzureSqlDatabaseKeyVaultPassword.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LinkedServiceAzureSqlDatabaseKeyVaultPassword.fromMap(Map<String, dynamic> map) {
     return LinkedServiceAzureSqlDatabaseKeyVaultPassword(
-      linkedServiceName: pulumi.Input.fromValue(
-        map['linkedServiceName'] as String,
-      ),
+      linkedServiceName: pulumi.Input.fromValue(map['linkedServiceName'] as String),
       secretName: pulumi.Input.fromValue(map['secretName'] as String),
     );
   }
 }
+

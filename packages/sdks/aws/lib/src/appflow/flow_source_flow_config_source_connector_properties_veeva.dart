@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlowSourceFlowConfigSourceConnectorPropertiesVeeva {
   /// Document type specified in the Veeva document extract flow.
   final pulumi.Input<String>? documentType;
-
   /// Boolean value to include All Versions of files in Veeva document extract flow.
   final pulumi.Input<bool>? includeAllVersions;
-
   /// Boolean value to include file renditions in Veeva document extract flow.
   final pulumi.Input<bool>? includeRenditions;
-
   /// Boolean value to include source files in Veeva document extract flow.
   final pulumi.Input<bool>? includeSourceFiles;
   final pulumi.Input<String> object_;
@@ -40,31 +37,14 @@ class FlowSourceFlowConfigSourceConnectorPropertiesVeeva {
     };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesVeeva.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesVeeva.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesVeeva(
-      documentType: (() {
-        final guardedValue = map['documentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      includeAllVersions: (() {
-        final guardedValue = map['includeAllVersions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      includeRenditions: (() {
-        final guardedValue = map['includeRenditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      includeSourceFiles: (() {
-        final guardedValue = map['includeSourceFiles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      documentType: (() { final guardedValue = map['documentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      includeAllVersions: (() { final guardedValue = map['includeAllVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includeRenditions: (() { final guardedValue = map['includeRenditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includeSourceFiles: (() { final guardedValue = map['includeSourceFiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
+

@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationGroupArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Identifier for the replication group.
   final pulumi.Input<String> replicationGroupId;
 
   /// Creates a new [GetReplicationGroupArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replicationGroupId] Identifier for the replication group.
-  GetReplicationGroupArgs({this.region, required this.replicationGroupId});
+  GetReplicationGroupArgs({
+    this.region,
+    required this.replicationGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,14 +29,9 @@ class GetReplicationGroupArgs {
 
   factory GetReplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationGroupArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      replicationGroupId: pulumi.Input.fromValue(
-        map['replicationGroupId'] as String,
-      ),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replicationGroupId: pulumi.Input.fromValue(map['replicationGroupId'] as String),
     );
   }
 }
+

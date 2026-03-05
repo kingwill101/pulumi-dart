@@ -16,3 +16,4 @@ enum MinimalSeverity {
     throw ArgumentError('Unknown MinimalSeverity value: $value');
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalParallelUpgradeConfig {
   /// The maximum number of nodes that can be upgraded at once.
   final pulumi.Input<int>? concurrentNodes;
-
   /// The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.
   final pulumi.Input<int>? minimumAvailableNodes;
 
@@ -27,16 +26,9 @@ class BareMetalParallelUpgradeConfig {
 
   factory BareMetalParallelUpgradeConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalParallelUpgradeConfig(
-      concurrentNodes: (() {
-        final guardedValue = map['concurrentNodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minimumAvailableNodes: (() {
-        final guardedValue = map['minimumAvailableNodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      concurrentNodes: (() { final guardedValue = map['concurrentNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minimumAvailableNodes: (() { final guardedValue = map['minimumAvailableNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

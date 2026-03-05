@@ -8,55 +8,38 @@ import 'get_environment_v3_inbound_network_dependency.dart';
 class GetEnvironmentV3Result {
   /// Are new Private Endpoint Connections allowed.
   final bool allowNewPrivateEndpointConnections;
-
   /// A `cluster_setting` block as defined below.
   final List<GetEnvironmentV3ClusterSetting> clusterSettings;
-
   /// The number of Dedicated Hosts used by this ASEv3.
   final int dedicatedHostCount;
-
   /// the DNS suffix for this App Service Environment V3.
   final String dnsSuffix;
-
   /// The external inbound IP addresses of the App Service Environment V3.
   final List<String> externalInboundIpAddresses;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// An Inbound Network Dependencies block as defined below.
-  final List<GetEnvironmentV3InboundNetworkDependency>
-  inboundNetworkDependencies;
-
+  final List<GetEnvironmentV3InboundNetworkDependency> inboundNetworkDependencies;
   /// The internal inbound IP addresses of the App Service Environment V3.
   final List<String> internalInboundIpAddresses;
-
   /// The Internal Load Balancing Mode of this ASEv3.
   final String internalLoadBalancingMode;
-
   /// The number of IP SSL addresses reserved for the App Service Environment V3.
   final int ipSslAddressCount;
-
   /// The list of Outbound IP Addresses of Linux based Apps in this App Service Environment V3.
   final List<String> linuxOutboundIpAddresses;
-
   /// The location where the App Service Environment exists.
   final String location;
-
   /// The name of the Cluster Setting.
   final String name;
-
   /// Pricing tier for the front end instances.
   final String pricingTier;
   final bool remoteDebuggingEnabled;
   final String resourceGroupName;
-
   /// The ID of the v3 App Service Environment Subnet.
   final String subnetId;
-
   /// A mapping of tags assigned to the v3 App Service Environment.
   final Map<String, String> tags;
-
   /// Outbound addresses of Windows based Apps in this App Service Environment V3.
   final List<String> windowsOutboundIpAddresses;
   final bool zoneRedundant;
@@ -108,20 +91,12 @@ class GetEnvironmentV3Result {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowNewPrivateEndpointConnections': allowNewPrivateEndpointConnections,
-      'clusterSettings':
-          pulumi.Input.encodeList<
-            GetEnvironmentV3ClusterSetting,
-            Map<String, dynamic>
-          >(clusterSettings, (value) => value.toMap()),
+      'clusterSettings': pulumi.Input.encodeList<GetEnvironmentV3ClusterSetting, Map<String, dynamic>>(clusterSettings, (value) => value.toMap()),
       'dedicatedHostCount': dedicatedHostCount,
       'dnsSuffix': dnsSuffix,
       'externalInboundIpAddresses': externalInboundIpAddresses,
       'id': id,
-      'inboundNetworkDependencies':
-          pulumi.Input.encodeList<
-            GetEnvironmentV3InboundNetworkDependency,
-            Map<String, dynamic>
-          >(inboundNetworkDependencies, (value) => value.toMap()),
+      'inboundNetworkDependencies': pulumi.Input.encodeList<GetEnvironmentV3InboundNetworkDependency, Map<String, dynamic>>(inboundNetworkDependencies, (value) => value.toMap()),
       'internalInboundIpAddresses': internalInboundIpAddresses,
       'internalLoadBalancingMode': internalLoadBalancingMode,
       'ipSslAddressCount': ipSslAddressCount,
@@ -140,32 +115,17 @@ class GetEnvironmentV3Result {
 
   factory GetEnvironmentV3Result.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentV3Result(
-      allowNewPrivateEndpointConnections:
-          map['allowNewPrivateEndpointConnections'] as bool,
-      clusterSettings: pulumi.Input.decodeList<GetEnvironmentV3ClusterSetting>(
-        map['clusterSettings']!,
-        (value) => GetEnvironmentV3ClusterSetting.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      allowNewPrivateEndpointConnections: map['allowNewPrivateEndpointConnections'] as bool,
+      clusterSettings: pulumi.Input.decodeList<GetEnvironmentV3ClusterSetting>(map['clusterSettings']!, (value) => GetEnvironmentV3ClusterSetting.fromMap((value as Map).cast<String, dynamic>())),
       dedicatedHostCount: map['dedicatedHostCount'] as int,
       dnsSuffix: map['dnsSuffix'] as String,
-      externalInboundIpAddresses: (map['externalInboundIpAddresses'] as List)
-          .cast<String>(),
+      externalInboundIpAddresses: (map['externalInboundIpAddresses'] as List).cast<String>(),
       id: map['id'] as String,
-      inboundNetworkDependencies:
-          pulumi.Input.decodeList<GetEnvironmentV3InboundNetworkDependency>(
-            map['inboundNetworkDependencies']!,
-            (value) => GetEnvironmentV3InboundNetworkDependency.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      internalInboundIpAddresses: (map['internalInboundIpAddresses'] as List)
-          .cast<String>(),
+      inboundNetworkDependencies: pulumi.Input.decodeList<GetEnvironmentV3InboundNetworkDependency>(map['inboundNetworkDependencies']!, (value) => GetEnvironmentV3InboundNetworkDependency.fromMap((value as Map).cast<String, dynamic>())),
+      internalInboundIpAddresses: (map['internalInboundIpAddresses'] as List).cast<String>(),
       internalLoadBalancingMode: map['internalLoadBalancingMode'] as String,
       ipSslAddressCount: map['ipSslAddressCount'] as int,
-      linuxOutboundIpAddresses: (map['linuxOutboundIpAddresses'] as List)
-          .cast<String>(),
+      linuxOutboundIpAddresses: (map['linuxOutboundIpAddresses'] as List).cast<String>(),
       location: map['location'] as String,
       name: map['name'] as String,
       pricingTier: map['pricingTier'] as String,
@@ -173,9 +133,9 @@ class GetEnvironmentV3Result {
       resourceGroupName: map['resourceGroupName'] as String,
       subnetId: map['subnetId'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      windowsOutboundIpAddresses: (map['windowsOutboundIpAddresses'] as List)
-          .cast<String>(),
+      windowsOutboundIpAddresses: (map['windowsOutboundIpAddresses'] as List).cast<String>(),
       zoneRedundant: map['zoneRedundant'] as bool,
     );
   }
 }
+

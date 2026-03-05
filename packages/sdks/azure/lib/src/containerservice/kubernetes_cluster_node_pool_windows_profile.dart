@@ -10,21 +10,20 @@ class KubernetesClusterNodePoolWindowsProfile {
 
   /// Creates a new [KubernetesClusterNodePoolWindowsProfile].
   /// [outboundNatEnabled] Should the Windows nodes in this Node Pool have outbound NAT enabled? Defaults to `true`. Changing this forces a new resource to be created.
-  KubernetesClusterNodePoolWindowsProfile({this.outboundNatEnabled});
+  KubernetesClusterNodePoolWindowsProfile({
+    this.outboundNatEnabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'outboundNatEnabled': ?outboundNatEnabled};
+    return <String, dynamic>{
+      'outboundNatEnabled': ?outboundNatEnabled,
+    };
   }
 
-  factory KubernetesClusterNodePoolWindowsProfile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KubernetesClusterNodePoolWindowsProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNodePoolWindowsProfile(
-      outboundNatEnabled: (() {
-        final guardedValue = map['outboundNatEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      outboundNatEnabled: (() { final guardedValue = map['outboundNatEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

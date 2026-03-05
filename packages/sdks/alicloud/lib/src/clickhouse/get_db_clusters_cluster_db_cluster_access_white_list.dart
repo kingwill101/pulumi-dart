@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbClustersClusterDbClusterAccessWhiteList {
   /// Field `db_cluster_ip_array_attribute` has been removed from provider.
   final pulumi.Input<String> dbClusterIpArrayAttribute;
-
   /// Whitelist group name.
   final pulumi.Input<String> dbClusterIpArrayName;
-
   /// The IP address list under the whitelist group.
   final pulumi.Input<String> securityIpList;
 
@@ -30,17 +28,12 @@ class GetDbClustersClusterDbClusterAccessWhiteList {
     };
   }
 
-  factory GetDbClustersClusterDbClusterAccessWhiteList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDbClustersClusterDbClusterAccessWhiteList.fromMap(Map<String, dynamic> map) {
     return GetDbClustersClusterDbClusterAccessWhiteList(
-      dbClusterIpArrayAttribute: pulumi.Input.fromValue(
-        map['dbClusterIpArrayAttribute'] as String,
-      ),
-      dbClusterIpArrayName: pulumi.Input.fromValue(
-        map['dbClusterIpArrayName'] as String,
-      ),
+      dbClusterIpArrayAttribute: pulumi.Input.fromValue(map['dbClusterIpArrayAttribute'] as String),
+      dbClusterIpArrayName: pulumi.Input.fromValue(map['dbClusterIpArrayName'] as String),
       securityIpList: pulumi.Input.fromValue(map['securityIpList'] as String),
     );
   }
 }
+

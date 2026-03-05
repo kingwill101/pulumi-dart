@@ -14,18 +14,15 @@ class GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sampleRate': ?sampleRate};
+    return <String, dynamic>{
+      'sampleRate': ?sampleRate,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig(
-      sampleRate: (() {
-        final guardedValue = map['sampleRate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      sampleRate: (() { final guardedValue = map['sampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

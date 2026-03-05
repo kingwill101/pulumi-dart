@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDigitalTwinsEndpointArgs {
   /// Name of Endpoint Resource.
   final pulumi.Input<String> endpointName;
-
   /// The name of the resource group that contains the DigitalTwinsInstance.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the DigitalTwinsInstance.
   final pulumi.Input<String> resourceName;
 
@@ -37,10 +35,9 @@ class GetDigitalTwinsEndpointArgs {
   factory GetDigitalTwinsEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetDigitalTwinsEndpointArgs(
       endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

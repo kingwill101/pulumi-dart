@@ -29,8 +29,7 @@ import 'get_private_link_services_for_sccpowershell_result.dart';
 /// Uses Azure REST API version 2021-03-25-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_m365securityandcompliance_get_private_endpoint_connections_adt_apiargs_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateEndpointConnectionsAdtAPIResult>
-getPrivateEndpointConnectionsAdtAPI(
+Future<GetPrivateEndpointConnectionsAdtAPIResult> getPrivateEndpointConnectionsAdtAPI(
   GetPrivateEndpointConnectionsAdtAPIArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -48,8 +47,7 @@ getPrivateEndpointConnectionsAdtAPI(
 /// Uses Azure REST API version 2021-03-25-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_m365securityandcompliance_get_private_endpoint_connections_comp_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateEndpointConnectionsCompResult>
-getPrivateEndpointConnectionsComp(
+Future<GetPrivateEndpointConnectionsCompResult> getPrivateEndpointConnectionsComp(
   GetPrivateEndpointConnectionsCompArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -67,8 +65,7 @@ getPrivateEndpointConnectionsComp(
 /// Uses Azure REST API version 2021-03-25-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_m365securityandcompliance_get_private_endpoint_connections_for_edmargs_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateEndpointConnectionsForEDMResult>
-getPrivateEndpointConnectionsForEDM(
+Future<GetPrivateEndpointConnectionsForEDMResult> getPrivateEndpointConnectionsForEDM(
   GetPrivateEndpointConnectionsForEDMArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -86,8 +83,7 @@ getPrivateEndpointConnectionsForEDM(
 /// Uses Azure REST API version 2021-03-25-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_m365securityandcompliance_get_private_endpoint_connections_for_mippolicy_sync_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateEndpointConnectionsForMIPPolicySyncResult>
-getPrivateEndpointConnectionsForMIPPolicySync(
+Future<GetPrivateEndpointConnectionsForMIPPolicySyncResult> getPrivateEndpointConnectionsForMIPPolicySync(
   GetPrivateEndpointConnectionsForMIPPolicySyncArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -105,8 +101,7 @@ getPrivateEndpointConnectionsForMIPPolicySync(
 /// Uses Azure REST API version 2021-03-25-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_m365securityandcompliance_get_private_endpoint_connections_for_sccpowershell_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateEndpointConnectionsForSCCPowershellResult>
-getPrivateEndpointConnectionsForSCCPowershell(
+Future<GetPrivateEndpointConnectionsForSCCPowershellResult> getPrivateEndpointConnectionsForSCCPowershell(
   GetPrivateEndpointConnectionsForSCCPowershellArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -142,8 +137,7 @@ Future<GetPrivateEndpointConnectionsSecResult> getPrivateEndpointConnectionsSec(
 /// Uses Azure REST API version 2021-03-25-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_m365securityandcompliance_get_private_link_services_for_edmupload_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateLinkServicesForEDMUploadResult>
-getPrivateLinkServicesForEDMUpload(
+Future<GetPrivateLinkServicesForEDMUploadResult> getPrivateLinkServicesForEDMUpload(
   GetPrivateLinkServicesForEDMUploadArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -161,8 +155,7 @@ getPrivateLinkServicesForEDMUpload(
 /// Uses Azure REST API version 2021-03-25-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_m365securityandcompliance_get_private_link_services_for_m365_compliance_center_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateLinkServicesForM365ComplianceCenterResult>
-getPrivateLinkServicesForM365ComplianceCenter(
+Future<GetPrivateLinkServicesForM365ComplianceCenterResult> getPrivateLinkServicesForM365ComplianceCenter(
   GetPrivateLinkServicesForM365ComplianceCenterArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -180,8 +173,7 @@ getPrivateLinkServicesForM365ComplianceCenter(
 /// Uses Azure REST API version 2021-03-25-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_m365securityandcompliance_get_private_link_services_for_m365_security_center_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateLinkServicesForM365SecurityCenterResult>
-getPrivateLinkServicesForM365SecurityCenter(
+Future<GetPrivateLinkServicesForM365SecurityCenterResult> getPrivateLinkServicesForM365SecurityCenter(
   GetPrivateLinkServicesForM365SecurityCenterArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -199,8 +191,7 @@ getPrivateLinkServicesForM365SecurityCenter(
 /// Uses Azure REST API version 2021-03-25-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_m365securityandcompliance_get_private_link_services_for_mippolicy_sync_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateLinkServicesForMIPPolicySyncResult>
-getPrivateLinkServicesForMIPPolicySync(
+Future<GetPrivateLinkServicesForMIPPolicySyncResult> getPrivateLinkServicesForMIPPolicySync(
   GetPrivateLinkServicesForMIPPolicySyncArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -218,8 +209,7 @@ getPrivateLinkServicesForMIPPolicySync(
 /// Uses Azure REST API version 2021-03-25-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_m365securityandcompliance_get_private_link_services_for_o365_management_activity_apiargs_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateLinkServicesForO365ManagementActivityAPIResult>
-getPrivateLinkServicesForO365ManagementActivityAPI(
+Future<GetPrivateLinkServicesForO365ManagementActivityAPIResult> getPrivateLinkServicesForO365ManagementActivityAPI(
   GetPrivateLinkServicesForO365ManagementActivityAPIArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -229,9 +219,7 @@ getPrivateLinkServicesForO365ManagementActivityAPI(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetPrivateLinkServicesForO365ManagementActivityAPIResult.fromMap(
-    result,
-  );
+  return GetPrivateLinkServicesForO365ManagementActivityAPIResult.fromMap(result);
 }
 
 /// Get the metadata of a privateLinkServicesForSCCPowershell resource.
@@ -239,8 +227,7 @@ getPrivateLinkServicesForO365ManagementActivityAPI(
 /// Uses Azure REST API version 2021-03-25-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_m365securityandcompliance_get_private_link_services_for_sccpowershell_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateLinkServicesForSCCPowershellResult>
-getPrivateLinkServicesForSCCPowershell(
+Future<GetPrivateLinkServicesForSCCPowershellResult> getPrivateLinkServicesForSCCPowershell(
   GetPrivateLinkServicesForSCCPowershellArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

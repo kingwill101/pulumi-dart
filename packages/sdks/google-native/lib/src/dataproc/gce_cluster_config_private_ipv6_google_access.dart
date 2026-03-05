@@ -14,8 +14,7 @@ enum GceClusterConfigPrivateIpv6GoogleAccess {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GceClusterConfigPrivateIpv6GoogleAccess value: $value',
-    );
+    throw ArgumentError('Unknown GceClusterConfigPrivateIpv6GoogleAccess value: $value');
   }
 }
+

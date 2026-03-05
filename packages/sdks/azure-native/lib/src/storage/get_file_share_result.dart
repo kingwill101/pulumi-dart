@@ -8,94 +8,64 @@ import 'signed_identifier_response.dart';
 class GetFileShareResult {
   /// Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium.
   final String? accessTier;
-
   /// Indicates the last modification time for share access tier.
   final String accessTierChangeTime;
-
   /// Indicates if there is a pending transition for access tier.
   final String accessTierStatus;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Indicates whether the share was deleted.
   final bool deleted;
-
   /// The deleted time if the share was deleted.
   final String deletedTime;
-
   /// The authentication protocol that is used for the file share. Can only be specified when creating a share.
   final String? enabledProtocols;
-
   /// Resource Etag.
   final String etag;
-
   /// File Share Paid Bursting properties.
   final FileSharePropertiesResponseFileSharePaidBursting? fileSharePaidBursting;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The calculated burst IOPS of the share. This property is only for file shares created under Files Provisioned v2 account type.
   final int includedBurstIops;
-
   /// Returns the date and time the share was last modified.
   final String lastModifiedTime;
-
   /// Specifies whether the lease on a share is of infinite or fixed duration, only when the share is leased.
   final String leaseDuration;
-
   /// Lease state of the share.
   final String leaseState;
-
   /// The lease status of the share.
   final String leaseStatus;
-
   /// The calculated maximum burst credits for the share. This property is only for file shares created under Files Provisioned v2 account type.
   final double maxBurstCreditsForIops;
-
   /// A name-value pair to associate with the share as metadata.
   final Map<String, String>? metadata;
-
   /// The name of the resource
   final String name;
-
   /// Returns the next allowed provisioned bandwidth downgrade time for the share. This property is only for file shares created under Files Provisioned v2 account type.
   final String nextAllowedProvisionedBandwidthDowngradeTime;
-
   /// Returns the next allowed provisioned IOPS downgrade time for the share. This property is only for file shares created under Files Provisioned v2 account type.
   final String nextAllowedProvisionedIopsDowngradeTime;
-
   /// Returns the next allowed provisioned storage size downgrade time for the share. This property is only for file shares created under Files Provisioned v1 SSD and Files Provisioned v2 account type
   final String nextAllowedQuotaDowngradeTime;
-
   /// The provisioned bandwidth of the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v2 account type. Please refer to the GetFileServiceUsage API response for the minimum and maximum allowed value for provisioned bandwidth.
   final int? provisionedBandwidthMibps;
-
   /// The provisioned IOPS of the share. This property is only for file shares created under Files Provisioned v2 account type. Please refer to the GetFileServiceUsage API response for the minimum and maximum allowed value for provisioned IOPS.
   final int? provisionedIops;
-
   /// Remaining retention days for share that was soft deleted.
   final int remainingRetentionDays;
-
   /// The property is for NFS share only. The default is NoRootSquash.
   final String? rootSquash;
-
   /// The provisioned size of the share, in gibibytes. Must be greater than 0, and less than or equal to 5TB (5120). For Large File Shares, the maximum size is 102400. For file shares created under Files Provisioned v2 account type, please refer to the GetFileServiceUsage API response for the minimum and maximum allowed provisioned storage size.
   final int? shareQuota;
-
   /// The approximate size of the data stored on the share. Note that this value may not include all recently created or recently resized files.
   final double shareUsageBytes;
-
   /// List of stored access policies specified on the share.
   final List<SignedIdentifierResponse>? signedIdentifiers;
-
   /// Creation time of share snapshot returned in the response of list shares with expand param "snapshots".
   final String snapshotTime;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// The version of the share.
   final String version;
 
@@ -185,10 +155,8 @@ class GetFileShareResult {
       'maxBurstCreditsForIops': maxBurstCreditsForIops,
       'metadata': ?metadata,
       'name': name,
-      'nextAllowedProvisionedBandwidthDowngradeTime':
-          nextAllowedProvisionedBandwidthDowngradeTime,
-      'nextAllowedProvisionedIopsDowngradeTime':
-          nextAllowedProvisionedIopsDowngradeTime,
+      'nextAllowedProvisionedBandwidthDowngradeTime': nextAllowedProvisionedBandwidthDowngradeTime,
+      'nextAllowedProvisionedIopsDowngradeTime': nextAllowedProvisionedIopsDowngradeTime,
       'nextAllowedQuotaDowngradeTime': nextAllowedQuotaDowngradeTime,
       'provisionedBandwidthMibps': ?provisionedBandwidthMibps,
       'provisionedIops': ?provisionedIops,
@@ -196,14 +164,7 @@ class GetFileShareResult {
       'rootSquash': ?rootSquash,
       'shareQuota': ?shareQuota,
       'shareUsageBytes': shareUsageBytes,
-      'signedIdentifiers': ?(() {
-        final guardedValue = signedIdentifiers;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          SignedIdentifierResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'signedIdentifiers': ?(() { final guardedValue = signedIdentifiers; if (guardedValue == null) return null; return pulumi.Input.encodeList<SignedIdentifierResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'snapshotTime': snapshotTime,
       'type': type,
       'version': version,
@@ -212,29 +173,15 @@ class GetFileShareResult {
 
   factory GetFileShareResult.fromMap(Map<String, dynamic> map) {
     return GetFileShareResult(
-      accessTier: (() {
-        final guardedValue = map['accessTier'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      accessTier: (() { final guardedValue = map['accessTier']; if (guardedValue == null) return null; return guardedValue as String; })(),
       accessTierChangeTime: map['accessTierChangeTime'] as String,
       accessTierStatus: map['accessTierStatus'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       deleted: map['deleted'] as bool,
       deletedTime: map['deletedTime'] as String,
-      enabledProtocols: (() {
-        final guardedValue = map['enabledProtocols'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      enabledProtocols: (() { final guardedValue = map['enabledProtocols']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: map['etag'] as String,
-      fileSharePaidBursting: (() {
-        final guardedValue = map['fileSharePaidBursting'];
-        if (guardedValue == null) return null;
-        return FileSharePropertiesResponseFileSharePaidBursting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      fileSharePaidBursting: (() { final guardedValue = map['fileSharePaidBursting']; if (guardedValue == null) return null; return FileSharePropertiesResponseFileSharePaidBursting.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       includedBurstIops: map['includedBurstIops'] as int,
       lastModifiedTime: map['lastModifiedTime'] as String,
@@ -242,53 +189,22 @@ class GetFileShareResult {
       leaseState: map['leaseState'] as String,
       leaseStatus: map['leaseStatus'] as String,
       maxBurstCreditsForIops: map['maxBurstCreditsForIops'] as double,
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       name: map['name'] as String,
-      nextAllowedProvisionedBandwidthDowngradeTime:
-          map['nextAllowedProvisionedBandwidthDowngradeTime'] as String,
-      nextAllowedProvisionedIopsDowngradeTime:
-          map['nextAllowedProvisionedIopsDowngradeTime'] as String,
-      nextAllowedQuotaDowngradeTime:
-          map['nextAllowedQuotaDowngradeTime'] as String,
-      provisionedBandwidthMibps: (() {
-        final guardedValue = map['provisionedBandwidthMibps'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      provisionedIops: (() {
-        final guardedValue = map['provisionedIops'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      nextAllowedProvisionedBandwidthDowngradeTime: map['nextAllowedProvisionedBandwidthDowngradeTime'] as String,
+      nextAllowedProvisionedIopsDowngradeTime: map['nextAllowedProvisionedIopsDowngradeTime'] as String,
+      nextAllowedQuotaDowngradeTime: map['nextAllowedQuotaDowngradeTime'] as String,
+      provisionedBandwidthMibps: (() { final guardedValue = map['provisionedBandwidthMibps']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      provisionedIops: (() { final guardedValue = map['provisionedIops']; if (guardedValue == null) return null; return guardedValue as int; })(),
       remainingRetentionDays: map['remainingRetentionDays'] as int,
-      rootSquash: (() {
-        final guardedValue = map['rootSquash'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      shareQuota: (() {
-        final guardedValue = map['shareQuota'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      rootSquash: (() { final guardedValue = map['rootSquash']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      shareQuota: (() { final guardedValue = map['shareQuota']; if (guardedValue == null) return null; return guardedValue as int; })(),
       shareUsageBytes: map['shareUsageBytes'] as double,
-      signedIdentifiers: (() {
-        final guardedValue = map['signedIdentifiers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<SignedIdentifierResponse>(
-          guardedValue,
-          (value) => SignedIdentifierResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      signedIdentifiers: (() { final guardedValue = map['signedIdentifiers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SignedIdentifierResponse>(guardedValue, (value) => SignedIdentifierResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       snapshotTime: map['snapshotTime'] as String,
       type: map['type'] as String,
       version: map['version'] as String,
     );
   }
 }
+

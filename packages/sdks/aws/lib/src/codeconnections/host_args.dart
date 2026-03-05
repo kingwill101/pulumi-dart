@@ -11,18 +11,14 @@ import 'host_vpc_configuration.dart';
 class HostArgs {
   /// The name of the host to be created. The name must be unique in the calling AWS account.
   final pulumi.Input<String>? name;
-
   /// The endpoint of the infrastructure to be represented by the host after it is created.
   final pulumi.Input<String> providerEndpoint;
-
   /// The name of the external provider where your third-party code repository is configured.
   final pulumi.Input<String> providerType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<HostTimeouts>? timeouts;
-
   /// The VPC configuration to be provisioned for the host. A VPC must be configured, and the infrastructure to be represented by the host must already be connected to the VPC.
   final pulumi.Input<HostVpcConfiguration>? vpcConfiguration;
 
@@ -51,58 +47,21 @@ class HostArgs {
       'providerType': providerType,
       'region': ?region,
       'tags': ?tags,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            HostTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
-      'vpcConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            HostVpcConfiguration,
-            Map<String, dynamic>
-          >(vpcConfiguration, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<HostTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'vpcConfiguration': ?pulumi.Input.mapOptionalInputValue<HostVpcConfiguration, Map<String, dynamic>>(vpcConfiguration, (value) => value.toMap()),
     };
   }
 
   factory HostArgs.fromMap(Map<String, dynamic> map) {
     return HostArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      providerEndpoint: pulumi.Input.fromValue(
-        map['providerEndpoint'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      providerEndpoint: pulumi.Input.fromValue(map['providerEndpoint'] as String),
       providerType: pulumi.Input.fromValue(map['providerType'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HostTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      vpcConfiguration: (() {
-        final guardedValue = map['vpcConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HostVpcConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HostTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      vpcConfiguration: (() { final guardedValue = map['vpcConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HostVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

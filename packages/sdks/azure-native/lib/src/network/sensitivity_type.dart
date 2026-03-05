@@ -17,3 +17,4 @@ enum SensitivityType {
     throw ArgumentError('Unknown SensitivityType value: $value');
   }
 }
+

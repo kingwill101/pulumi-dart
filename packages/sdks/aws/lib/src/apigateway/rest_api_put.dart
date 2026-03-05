@@ -307,22 +307,17 @@ import 'rest_api_put_timeouts.dart';
 class RestApiPut extends pulumi.CustomResource {
   /// PUT request body containing external API definitions. Currently, only OpenAPI definition JSON/YAML files are supported. The maximum size of the API definition file is 6MB.
   late final pulumi.Output<String> body;
-
   /// Whether to rollback the API update when a warning is encountered. The default value is `false`.
   late final pulumi.Output<bool> failOnWarnings;
-
   /// Map of customizations for importing the specification in the `body` argument. For example, to exclude DocumentationParts from an imported API, use `ignore = "documentation"`. Additional documentation, including other parameters such as `basepath`, can be found in the [API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-import-api.html).
   late final pulumi.Output<Map<String, String>?> parameters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Identifier of the associated REST API.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> restApiId;
   late final pulumi.Output<RestApiPutTimeouts?> timeouts;
-
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment. To force a redeployment without changing these keys/values, use the `-replace` option with `pulumi preview` or `pulumi up`.
   late final pulumi.Output<Map<String, String>?> triggers;
 
@@ -335,26 +330,17 @@ class RestApiPut extends pulumi.CustomResource {
     RestApiPutArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigateway/restApiPut:RestApiPut',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigateway/restApiPut:RestApiPut',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     body = registerOutput<String>('body');
     failOnWarnings = registerOutput<bool>('failOnWarnings');
     parameters = registerOutput<Map<String, String>?>('parameters');
     region = registerOutput<String>('region');
     restApiId = registerOutput<String>('restApiId');
-    timeouts = registerOutput<RestApiPutTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RestApiPutTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<RestApiPutTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestApiPutTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     triggers = registerOutput<Map<String, String>?>('triggers');
   }
 
@@ -376,26 +362,17 @@ class RestApiPut extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigateway/restApiPut:RestApiPut',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigateway/restApiPut:RestApiPut',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     body = registerOutput<String>('body');
     failOnWarnings = registerOutput<bool>('failOnWarnings');
     parameters = registerOutput<Map<String, String>?>('parameters');
     region = registerOutput<String>('region');
     restApiId = registerOutput<String>('restApiId');
-    timeouts = registerOutput<RestApiPutTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RestApiPutTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<RestApiPutTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestApiPutTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     triggers = registerOutput<Map<String, String>?>('triggers');
   }
 }

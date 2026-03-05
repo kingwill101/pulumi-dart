@@ -147,22 +147,16 @@ import 'system_data_response.dart';
 class ServerGroupFirewallRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The end IP address of the cluster firewall rule. Must be IPv4 format.
   late final pulumi.Output<String> endIpAddress;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the firewall rule.
   late final pulumi.Output<String> provisioningState;
-
   /// The start IP address of the cluster firewall rule. Must be IPv4 format.
   late final pulumi.Output<String> startIpAddress;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -175,26 +169,17 @@ class ServerGroupFirewallRule extends pulumi.CustomResource {
     ServerGroupFirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:dbforpostgresql:ServerGroupFirewallRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:dbforpostgresql:ServerGroupFirewallRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     startIpAddress = registerOutput<String>('startIpAddress');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

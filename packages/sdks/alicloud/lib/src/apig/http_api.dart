@@ -211,19 +211,14 @@ import 'http_api_state.dart';
 class HttpApi extends pulumi.CustomResource {
   /// API path
   late final pulumi.Output<String?> basePath;
-
   /// Description of API
   late final pulumi.Output<String?> description;
-
   /// The name of the resource
   late final pulumi.Output<String> httpApiName;
-
   /// API protocol
   late final pulumi.Output<List<String>> protocols;
-
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
-
   /// API type
   late final pulumi.Output<String?> type;
 
@@ -236,11 +231,11 @@ class HttpApi extends pulumi.CustomResource {
     HttpApiArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apig/httpApi:HttpApi',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apig/httpApi:HttpApi',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     basePath = registerOutput<String?>('basePath');
     description = registerOutput<String?>('description');
     httpApiName = registerOutput<String>('httpApiName');
@@ -267,11 +262,11 @@ class HttpApi extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apig/httpApi:HttpApi',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apig/httpApi:HttpApi',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     basePath = registerOutput<String?>('basePath');
     description = registerOutput<String?>('description');
     httpApiName = registerOutput<String>('httpApiName');

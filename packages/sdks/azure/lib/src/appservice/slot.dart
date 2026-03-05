@@ -835,58 +835,40 @@ import 'slot_state.dart';
 class Slot extends pulumi.CustomResource {
   /// The name of the App Service within which to create the App Service Slot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServiceName;
-
   /// The ID of the App Service Plan within which to create this App Service Slot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServicePlanId;
-
   /// A key-value pair of App Settings.
   late final pulumi.Output<Map<String, String>> appSettings;
-
   /// A `auth_settings` block as defined below.
   late final pulumi.Output<SlotAuthSettings> authSettings;
-
   /// Should the App Service Slot send session affinity cookies, which route client requests in the same session to the same instance?
   late final pulumi.Output<bool> clientAffinityEnabled;
-
   /// An `connection_string` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
-
   /// The Default Hostname associated with the App Service Slot - such as `mysite.azurewebsites.net`
   late final pulumi.Output<String> defaultSiteHostname;
-
   /// Is the App Service Slot Enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// Can the App Service Slot only be accessed via HTTPS? Defaults to `false`.
   late final pulumi.Output<bool?> httpsOnly;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<SlotIdentity?> identity;
-
   /// The User Assigned Identity Id used for looking up KeyVault secrets. The identity must be assigned to the application. See [Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity) for more information.
   late final pulumi.Output<String> keyVaultReferenceIdentityId;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// A `logs` block as defined below.
   late final pulumi.Output<SlotLogs> logs;
-
   /// Specifies the name of the App Service Slot component. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the App Service Slot component. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `site_config` object as defined below.
   late final pulumi.Output<SlotSiteConfig> siteConfig;
-
   /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service slot.
   late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
-
   /// One or more `storage_account` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> storageAccounts;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -894,78 +876,43 @@ class Slot extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Slot]. {@macro pulumi_appservice_slot_slot_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Slot(String name, {SlotArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:appservice/slot:Slot',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Slot(
+    String name, {
+    SlotArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:appservice/slot:Slot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceName = registerOutput<String>('appServiceName');
     appServicePlanId = registerOutput<String>('appServicePlanId');
     appSettings = registerOutput<Map<String, String>>('appSettings');
-    authSettings = registerOutput<SlotAuthSettings>(
-      'authSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SlotAuthSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authSettings = registerOutput<SlotAuthSettings>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientAffinityEnabled = registerOutput<bool>('clientAffinityEnabled');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>>(
-      'connectionStrings',
-    );
+    connectionStrings = registerOutput<List<Map<String, dynamic>>>('connectionStrings');
     defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
     enabled = registerOutput<bool?>('enabled');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<SlotIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SlotIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    keyVaultReferenceIdentityId = registerOutput<String>(
-      'keyVaultReferenceIdentityId',
-    );
+    identity = registerOutput<SlotIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
     location = registerOutput<String>('location');
-    logs = registerOutput<SlotLogs>(
-      'logs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SlotLogs.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    logs = registerOutput<SlotLogs>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    siteConfig = registerOutput<SlotSiteConfig>(
-      'siteConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SlotSiteConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>(
-      'siteCredentials',
-    );
-    storageAccounts = registerOutput<List<Map<String, dynamic>>>(
-      'storageAccounts',
-    );
+    siteConfig = registerOutput<SlotSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
+    storageAccounts = registerOutput<List<Map<String, dynamic>>>('storageAccounts');
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Slot] resource's state with the given [name] and [id].
-  static Slot get(String name, pulumi.Input<String> id, {SlotState? state}) {
+  static Slot get(
+    String name,
+    pulumi.Input<String> id, {
+    SlotState? state,
+  }) {
     return Slot._get(
       name,
       state: state?.toMap(),
@@ -978,71 +925,29 @@ class Slot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/slot:Slot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/slot:Slot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceName = registerOutput<String>('appServiceName');
     appServicePlanId = registerOutput<String>('appServicePlanId');
     appSettings = registerOutput<Map<String, String>>('appSettings');
-    authSettings = registerOutput<SlotAuthSettings>(
-      'authSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SlotAuthSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authSettings = registerOutput<SlotAuthSettings>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientAffinityEnabled = registerOutput<bool>('clientAffinityEnabled');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>>(
-      'connectionStrings',
-    );
+    connectionStrings = registerOutput<List<Map<String, dynamic>>>('connectionStrings');
     defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
     enabled = registerOutput<bool?>('enabled');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<SlotIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SlotIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    keyVaultReferenceIdentityId = registerOutput<String>(
-      'keyVaultReferenceIdentityId',
-    );
+    identity = registerOutput<SlotIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
     location = registerOutput<String>('location');
-    logs = registerOutput<SlotLogs>(
-      'logs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SlotLogs.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    logs = registerOutput<SlotLogs>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    siteConfig = registerOutput<SlotSiteConfig>(
-      'siteConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SlotSiteConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>(
-      'siteCredentials',
-    );
-    storageAccounts = registerOutput<List<Map<String, dynamic>>>(
-      'storageAccounts',
-    );
+    siteConfig = registerOutput<SlotSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
+    storageAccounts = registerOutput<List<Map<String, dynamic>>>('storageAccounts');
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

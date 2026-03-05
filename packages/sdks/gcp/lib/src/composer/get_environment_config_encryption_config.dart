@@ -8,17 +8,20 @@ class GetEnvironmentConfigEncryptionConfig {
 
   /// Creates a new [GetEnvironmentConfigEncryptionConfig].
   /// [kmsKeyName] Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
-  GetEnvironmentConfigEncryptionConfig({required this.kmsKeyName});
+  GetEnvironmentConfigEncryptionConfig({
+    required this.kmsKeyName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyName': kmsKeyName};
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+    };
   }
 
-  factory GetEnvironmentConfigEncryptionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEnvironmentConfigEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigEncryptionConfig(
       kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
     );
   }
 }
+

@@ -10,10 +10,14 @@ class DefaultResourcePropertiesResponse {
 
   /// Creates a new [DefaultResourcePropertiesResponse].
   /// [objectType] Type of the specific object - used for deserializing
-  DefaultResourcePropertiesResponse({required this.objectType});
+  DefaultResourcePropertiesResponse({
+    required this.objectType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectType': objectType};
+    return <String, dynamic>{
+      'objectType': objectType,
+    };
   }
 
   factory DefaultResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class DefaultResourcePropertiesResponse {
     );
   }
 }
+

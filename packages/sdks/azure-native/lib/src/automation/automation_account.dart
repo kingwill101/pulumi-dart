@@ -163,59 +163,40 @@ import 'system_data_response.dart';
 class AutomationAccount extends pulumi.CustomResource {
   /// URL of automation hybrid service which is used for hybrid worker on-boarding.
   late final pulumi.Output<String?> automationHybridServiceUrl;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets the creation time.
   late final pulumi.Output<String> creationTime;
-
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
-
   /// Indicates whether requests using non-AAD authentication are blocked
   late final pulumi.Output<bool?> disableLocalAuth;
-
   /// Encryption properties for the automation account
   late final pulumi.Output<EncryptionPropertiesResponse?> encryption;
-
   /// Gets or sets the etag of the resource.
   late final pulumi.Output<String?> etag;
-
   /// Identity for the resource.
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// Gets or sets the last modified by.
   late final pulumi.Output<String?> lastModifiedBy;
-
   /// Gets the last modified time.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// The Azure Region where the resource lives
   late final pulumi.Output<String?> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// List of Automation operations supported by the Automation resource provider.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> privateEndpointConnections;
   /// Indicates whether traffic on the non-ARM endpoint (Webhook/Agent) is allowed from the public internet
   late final pulumi.Output<bool?> publicNetworkAccess;
-
   /// Gets or sets the SKU of account.
   late final pulumi.Output<SkuResponse?> sku;
-
   /// Gets status of account.
   late final pulumi.Output<String> state;
-
   /// Resource system metadata.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -228,68 +209,28 @@ class AutomationAccount extends pulumi.CustomResource {
     AutomationAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:automation:AutomationAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    automationHybridServiceUrl = registerOutput<String?>(
-      'automationHybridServiceUrl',
-    );
+          'azure-native:automation:AutomationAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    automationHybridServiceUrl = registerOutput<String?>('automationHybridServiceUrl');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String>('creationTime');
     description = registerOutput<String?>('description');
     disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
-    encryption = registerOutput<EncryptionPropertiesResponse?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<EncryptionPropertiesResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String?>('etag');
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifiedBy = registerOutput<String?>('lastModifiedBy');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>('privateEndpointConnections');
     publicNetworkAccess = registerOutput<bool?>('publicNetworkAccess');
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

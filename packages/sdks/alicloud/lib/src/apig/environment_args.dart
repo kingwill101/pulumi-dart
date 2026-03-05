@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentArgs {
   /// Description
   final pulumi.Input<String>? description;
-
   /// The name of the resource
   final pulumi.Input<String> environmentName;
-
   /// Gateway id
   final pulumi.Input<String> gatewayId;
-
   /// The ID of the resource group
   final pulumi.Input<String>? resourceGroupId;
 
@@ -42,18 +39,11 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
       gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

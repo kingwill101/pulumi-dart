@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityConnectorApplicationArgs {
   /// The security Application key - unique key for the standard application
   final pulumi.Input<String> applicationId;
-
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The security connector name.
   final pulumi.Input<String> securityConnectorName;
 
@@ -34,17 +32,12 @@ class GetSecurityConnectorApplicationArgs {
     };
   }
 
-  factory GetSecurityConnectorApplicationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSecurityConnectorApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityConnectorApplicationArgs(
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      securityConnectorName: pulumi.Input.fromValue(
-        map['securityConnectorName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      securityConnectorName: pulumi.Input.fromValue(map['securityConnectorName'] as String),
     );
   }
 }
+

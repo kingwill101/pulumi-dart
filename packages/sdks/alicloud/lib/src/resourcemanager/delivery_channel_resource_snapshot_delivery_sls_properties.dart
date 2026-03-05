@@ -17,15 +17,10 @@ class DeliveryChannelResourceSnapshotDeliverySlsProperties {
     };
   }
 
-  factory DeliveryChannelResourceSnapshotDeliverySlsProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DeliveryChannelResourceSnapshotDeliverySlsProperties.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelResourceSnapshotDeliverySlsProperties(
-      oversizedDataOssTargetArn: (() {
-        final guardedValue = map['oversizedDataOssTargetArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      oversizedDataOssTargetArn: (() { final guardedValue = map['oversizedDataOssTargetArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

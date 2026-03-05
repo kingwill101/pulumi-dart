@@ -622,10 +622,8 @@ import 'customer_managed_key_state.dart';
 class CustomerManagedKey extends pulumi.CustomResource {
   /// The ID the of the Customer Managed Key to associate with the Data Factory.
   late final pulumi.Output<String> customerManagedKeyId;
-
   /// The ID of the Data Factory Resource the Customer Managed Key will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> dataFactoryId;
-
   /// The User Assigned Identity ID that will be used to access Key Vaults that contain the encryption keys.
   late final pulumi.Output<String?> userAssignedIdentityId;
 
@@ -638,11 +636,11 @@ class CustomerManagedKey extends pulumi.CustomResource {
     CustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/customerManagedKey:CustomerManagedKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datafactory/customerManagedKey:CustomerManagedKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customerManagedKeyId = registerOutput<String>('customerManagedKeyId');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
@@ -666,11 +664,11 @@ class CustomerManagedKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/customerManagedKey:CustomerManagedKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datafactory/customerManagedKey:CustomerManagedKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customerManagedKeyId = registerOutput<String>('customerManagedKeyId');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');

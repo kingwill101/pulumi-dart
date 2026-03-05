@@ -349,7 +349,6 @@ import 'waf_policy_domain_attachment_state.dart';
 class WafPolicyDomainAttachment extends pulumi.CustomResource {
   /// Access the accelerated domain name of the specified protection policy.
   late final pulumi.Output<String> domainName;
-
   /// The protection policy ID. Only one input is supported.
   late final pulumi.Output<String> policyId;
 
@@ -362,11 +361,11 @@ class WafPolicyDomainAttachment extends pulumi.CustomResource {
     WafPolicyDomainAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     policyId = registerOutput<String>('policyId');
   }
@@ -389,11 +388,11 @@ class WafPolicyDomainAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     policyId = registerOutput<String>('policyId');
   }

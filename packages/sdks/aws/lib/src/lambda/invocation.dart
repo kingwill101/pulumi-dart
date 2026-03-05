@@ -701,28 +701,21 @@ import 'invocation_state.dart';
 class Invocation extends pulumi.CustomResource {
   /// Name of the Lambda function.
   late final pulumi.Output<String> functionName;
-
   /// JSON payload to the Lambda function.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> input;
-
   /// Lifecycle scope of the resource to manage. Valid values are `CREATE_ONLY` and `CRUD`. Defaults to `CREATE_ONLY`. `CREATE_ONLY` will invoke the function only on creation or replacement. `CRUD` will invoke the function on each lifecycle event, and augment the input JSON payload with additional lifecycle information.
   late final pulumi.Output<String?> lifecycleScope;
-
   /// Qualifier (i.e., version) of the Lambda function. Defaults to `$LATEST`.
   late final pulumi.Output<String?> qualifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// String result of the Lambda function invocation.
   late final pulumi.Output<String> result;
-
   /// Tenant Id to serve invocations from specified tenant.
   late final pulumi.Output<String?> tenantId;
   late final pulumi.Output<String?> terraformKey;
-
   /// Map of arbitrary keys and values that, when changed, will trigger a re-invocation.
   late final pulumi.Output<Map<String, String>?> triggers;
 
@@ -735,11 +728,11 @@ class Invocation extends pulumi.CustomResource {
     InvocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lambda/invocation:Invocation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lambda/invocation:Invocation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     functionName = registerOutput<String>('functionName');
     input = registerOutput<String>('input');
     lifecycleScope = registerOutput<String?>('lifecycleScope');
@@ -769,11 +762,11 @@ class Invocation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lambda/invocation:Invocation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lambda/invocation:Invocation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     functionName = registerOutput<String>('functionName');
     input = registerOutput<String>('input');
     lifecycleScope = registerOutput<String?>('lifecycleScope');

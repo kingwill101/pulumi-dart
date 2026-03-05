@@ -977,22 +977,16 @@ import 'system_data_response.dart';
 class AutoscaleSetting extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource location
   late final pulumi.Output<String> location;
-
   /// Azure resource name
   late final pulumi.Output<String> name;
-
   /// The autoscale setting of the resource.
   late final pulumi.Output<AutoscaleSettingResponse> properties;
-
   /// The system metadata related to the response.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Azure resource type
   late final pulumi.Output<String> type;
 
@@ -1005,34 +999,16 @@ class AutoscaleSetting extends pulumi.CustomResource {
     AutoscaleSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:monitor:AutoscaleSetting',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:monitor:AutoscaleSetting',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AutoscaleSettingResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutoscaleSettingResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<AutoscaleSettingResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscaleSettingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

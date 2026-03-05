@@ -9,29 +9,20 @@ class ObjectCopyOverrideProvider {
 
   /// Creates a new [ObjectCopyOverrideProvider].
   /// [defaultTags] Override the provider `default_tags` configuration block.
-  ObjectCopyOverrideProvider({this.defaultTags});
+  ObjectCopyOverrideProvider({
+    this.defaultTags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultTags':
-          ?pulumi.Input.mapOptionalInputValue<
-            ObjectCopyOverrideProviderDefaultTags,
-            Map<String, dynamic>
-          >(defaultTags, (value) => value.toMap()),
+      'defaultTags': ?pulumi.Input.mapOptionalInputValue<ObjectCopyOverrideProviderDefaultTags, Map<String, dynamic>>(defaultTags, (value) => value.toMap()),
     };
   }
 
   factory ObjectCopyOverrideProvider.fromMap(Map<String, dynamic> map) {
     return ObjectCopyOverrideProvider(
-      defaultTags: (() {
-        final guardedValue = map['defaultTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ObjectCopyOverrideProviderDefaultTags.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      defaultTags: (() { final guardedValue = map['defaultTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectCopyOverrideProviderDefaultTags.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

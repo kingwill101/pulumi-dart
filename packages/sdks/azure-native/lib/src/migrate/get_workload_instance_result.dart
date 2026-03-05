@@ -7,20 +7,15 @@ import 'workload_instance_model_response_system_data.dart';
 class GetWorkloadInstanceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets or sets the Id of the resource.
   final String id;
-
   /// Gets or sets the name of the resource.
   final String name;
-
   /// Workload instance model properties.
   final WorkloadInstanceModelPropertiesResponse properties;
   final WorkloadInstanceModelResponseSystemData systemData;
-
   /// Gets or sets the resource tags.
   final Map<String, String>? tags;
-
   /// Gets or sets the type of the resource.
   final String type;
 
@@ -59,18 +54,11 @@ class GetWorkloadInstanceResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: WorkloadInstanceModelPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: WorkloadInstanceModelResponseSystemData.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: WorkloadInstanceModelPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: WorkloadInstanceModelResponseSystemData.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

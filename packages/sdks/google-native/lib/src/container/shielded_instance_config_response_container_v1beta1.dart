@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShieldedInstanceConfigResponseContainerV1beta1 {
   /// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.
   final pulumi.Input<bool> enableIntegrityMonitoring;
-
   /// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.
   final pulumi.Input<bool> enableSecureBoot;
 
@@ -25,14 +24,11 @@ class ShieldedInstanceConfigResponseContainerV1beta1 {
     };
   }
 
-  factory ShieldedInstanceConfigResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ShieldedInstanceConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ShieldedInstanceConfigResponseContainerV1beta1(
-      enableIntegrityMonitoring: pulumi.Input.fromValue(
-        map['enableIntegrityMonitoring'] as bool,
-      ),
+      enableIntegrityMonitoring: pulumi.Input.fromValue(map['enableIntegrityMonitoring'] as bool),
       enableSecureBoot: pulumi.Input.fromValue(map['enableSecureBoot'] as bool),
     );
   }
 }
+

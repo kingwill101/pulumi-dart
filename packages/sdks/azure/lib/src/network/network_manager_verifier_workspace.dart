@@ -281,16 +281,12 @@ import 'network_manager_verifier_workspace_state.dart';
 class NetworkManagerVerifierWorkspace extends pulumi.CustomResource {
   /// The Description of the Network Manager Verifier Workspace.
   late final pulumi.Output<String?> description;
-
   /// The Azure Region where the Network Manager Verifier Workspace should exist. Changing this forces a new Network Manager Verifier Workspace to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Network Manager Verifier Workspace. Changing this forces a new Network Manager Verifier Workspace to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Network Manager. Changing this forces a new Network Manager Verifier Workspace to be created.
   late final pulumi.Output<String> networkManagerId;
-
   /// A mapping of tags which should be assigned to the Network Manager Verifier Workspace.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -303,11 +299,11 @@ class NetworkManagerVerifierWorkspace extends pulumi.CustomResource {
     NetworkManagerVerifierWorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerVerifierWorkspace:NetworkManagerVerifierWorkspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerVerifierWorkspace:NetworkManagerVerifierWorkspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -333,11 +329,11 @@ class NetworkManagerVerifierWorkspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerVerifierWorkspace:NetworkManagerVerifierWorkspace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerVerifierWorkspace:NetworkManagerVerifierWorkspace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

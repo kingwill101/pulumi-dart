@@ -139,7 +139,6 @@ import 'source_iam_policy_state.dart';
 /// ```
 class SourceIamPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> etag;
-
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
   late final pulumi.Output<String> organization;
@@ -155,11 +154,11 @@ class SourceIamPolicy extends pulumi.CustomResource {
     SourceIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/sourceIamPolicy:SourceIamPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/sourceIamPolicy:SourceIamPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     etag = registerOutput<String>('etag');
     organization = registerOutput<String>('organization');
     policyData = registerOutput<String>('policyData');
@@ -184,11 +183,11 @@ class SourceIamPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/sourceIamPolicy:SourceIamPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/sourceIamPolicy:SourceIamPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     etag = registerOutput<String>('etag');
     organization = registerOutput<String>('organization');
     policyData = registerOutput<String>('policyData');

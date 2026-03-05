@@ -15,3 +15,4 @@ enum AzureFirewallRCActionType {
     throw ArgumentError('Unknown AzureFirewallRCActionType value: $value');
   }
 }
+

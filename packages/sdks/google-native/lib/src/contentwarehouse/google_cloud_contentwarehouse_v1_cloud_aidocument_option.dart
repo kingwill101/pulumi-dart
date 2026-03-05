@@ -5,9 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Request Option for processing Cloud AI Document in CW Document.
 class GoogleCloudContentwarehouseV1CloudAIDocumentOption {
   /// If set, only selected entities will be converted to properties.
-  final pulumi.Input<Map<String, String>>?
-  customizedEntitiesPropertiesConversions;
-
+  final pulumi.Input<Map<String, String>>? customizedEntitiesPropertiesConversions;
   /// Whether to convert all the entities to properties.
   final pulumi.Input<bool>? enableEntitiesConversions;
 
@@ -21,28 +19,16 @@ class GoogleCloudContentwarehouseV1CloudAIDocumentOption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customizedEntitiesPropertiesConversions':
-          ?customizedEntitiesPropertiesConversions,
+      'customizedEntitiesPropertiesConversions': ?customizedEntitiesPropertiesConversions,
       'enableEntitiesConversions': ?enableEntitiesConversions,
     };
   }
 
-  factory GoogleCloudContentwarehouseV1CloudAIDocumentOption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1CloudAIDocumentOption.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1CloudAIDocumentOption(
-      customizedEntitiesPropertiesConversions: (() {
-        final guardedValue = map['customizedEntitiesPropertiesConversions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      enableEntitiesConversions: (() {
-        final guardedValue = map['enableEntitiesConversions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      customizedEntitiesPropertiesConversions: (() { final guardedValue = map['customizedEntitiesPropertiesConversions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      enableEntitiesConversions: (() { final guardedValue = map['enableEntitiesConversions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

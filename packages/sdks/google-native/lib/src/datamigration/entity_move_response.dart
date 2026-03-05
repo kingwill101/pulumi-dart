@@ -9,10 +9,14 @@ class EntityMoveResponse {
 
   /// Creates a new [EntityMoveResponse].
   /// [newSchema] The new schema
-  EntityMoveResponse({required this.newSchema});
+  EntityMoveResponse({
+    required this.newSchema,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'newSchema': newSchema};
+    return <String, dynamic>{
+      'newSchema': newSchema,
+    };
   }
 
   factory EntityMoveResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class EntityMoveResponse {
     );
   }
 }
+

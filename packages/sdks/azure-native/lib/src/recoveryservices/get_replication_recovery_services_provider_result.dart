@@ -6,19 +6,14 @@ import 'recovery_services_provider_properties_response.dart';
 class GetReplicationRecoveryServicesProviderResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource Id
   final String id;
-
   /// Resource Location
   final String? location;
-
   /// Resource Name
   final String name;
-
   /// Provider properties.
   final RecoveryServicesProviderPropertiesResponse properties;
-
   /// Resource Type
   final String type;
 
@@ -49,22 +44,15 @@ class GetReplicationRecoveryServicesProviderResult {
     };
   }
 
-  factory GetReplicationRecoveryServicesProviderResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetReplicationRecoveryServicesProviderResult.fromMap(Map<String, dynamic> map) {
     return GetReplicationRecoveryServicesProviderResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: RecoveryServicesProviderPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: RecoveryServicesProviderPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

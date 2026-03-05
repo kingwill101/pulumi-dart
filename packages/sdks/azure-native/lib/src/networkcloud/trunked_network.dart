@@ -235,58 +235,40 @@ import 'trunked_network_args.dart';
 class TrunkedNetwork extends pulumi.CustomResource {
   /// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
   late final pulumi.Output<List<String>> associatedResourceIds;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The resource ID of the Network Cloud cluster this trunked network is associated with.
   late final pulumi.Output<String> clusterId;
-
   /// The more detailed status of the trunked network.
   late final pulumi.Output<String> detailedStatus;
-
   /// The descriptive message about the current detailed status.
   late final pulumi.Output<String> detailedStatusMessage;
-
   /// Resource ETag.
   late final pulumi.Output<String> etag;
-
   /// The extended location of the cluster associated with the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
-
   /// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this trunked network.
   late final pulumi.Output<List<String>> hybridAksClustersAssociatedIds;
-
   /// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
   late final pulumi.Output<String?> hybridAksPluginType;
-
   /// The default interface name for this trunked network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
   late final pulumi.Output<String?> interfaceName;
-
   /// The list of resource IDs representing the Network Fabric isolation domains. It can be any combination of l2IsolationDomain and l3IsolationDomain resources.
   late final pulumi.Output<List<String>> isolationDomainIds;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the trunked network.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this trunked network.
   late final pulumi.Output<List<String>> virtualMachinesAssociatedIds;
-
   /// The list of vlans that are selected from the isolation domains for trunking.
   late final pulumi.Output<List<double>> vlans;
 
@@ -299,53 +281,29 @@ class TrunkedNetwork extends pulumi.CustomResource {
     TrunkedNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:networkcloud:TrunkedNetwork',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    associatedResourceIds = registerOutput<List<String>>(
-      'associatedResourceIds',
-    );
+          'azure-native:networkcloud:TrunkedNetwork',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    associatedResourceIds = registerOutput<List<String>>('associatedResourceIds');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clusterId = registerOutput<String>('clusterId');
     detailedStatus = registerOutput<String>('detailedStatus');
     detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
     etag = registerOutput<String>('etag');
-    extendedLocation = registerOutput<ExtendedLocationResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    hybridAksClustersAssociatedIds = registerOutput<List<String>>(
-      'hybridAksClustersAssociatedIds',
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hybridAksClustersAssociatedIds = registerOutput<List<String>>('hybridAksClustersAssociatedIds');
     hybridAksPluginType = registerOutput<String?>('hybridAksPluginType');
     interfaceName = registerOutput<String?>('interfaceName');
     isolationDomainIds = registerOutput<List<String>>('isolationDomainIds');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualMachinesAssociatedIds = registerOutput<List<String>>(
-      'virtualMachinesAssociatedIds',
-    );
+    virtualMachinesAssociatedIds = registerOutput<List<String>>('virtualMachinesAssociatedIds');
     vlans = registerOutput<List<double>>('vlans');
   }
 }

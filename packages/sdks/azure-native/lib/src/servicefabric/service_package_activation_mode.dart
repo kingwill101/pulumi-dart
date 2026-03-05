@@ -15,3 +15,4 @@ enum ServicePackageActivationMode {
     throw ArgumentError('Unknown ServicePackageActivationMode value: $value');
   }
 }
+

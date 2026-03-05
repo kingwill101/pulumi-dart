@@ -7,23 +7,16 @@ import 'managed_instance_private_link_service_connection_state_property_response
 class GetManagedInstancePrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String id;
-
   /// Resource name.
   final String name;
-
   /// Private endpoint which the connection belongs to.
   final ManagedInstancePrivateEndpointPropertyResponse? privateEndpoint;
-
   /// Connection State of the Private Endpoint Connection.
-  final ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse?
-  privateLinkServiceConnectionState;
-
+  final ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse? privateLinkServiceConnectionState;
   /// State of the Private Endpoint Connection.
   final String provisioningState;
-
   /// Resource type.
   final String type;
 
@@ -51,36 +44,22 @@ class GetManagedInstancePrivateEndpointConnectionResult {
       'id': id,
       'name': name,
       'privateEndpoint': ?privateEndpoint?.toMap(),
-      'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState
-          ?.toMap(),
+      'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState?.toMap(),
       'provisioningState': provisioningState,
       'type': type,
     };
   }
 
-  factory GetManagedInstancePrivateEndpointConnectionResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedInstancePrivateEndpointConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetManagedInstancePrivateEndpointConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      privateEndpoint: (() {
-        final guardedValue = map['privateEndpoint'];
-        if (guardedValue == null) return null;
-        return ManagedInstancePrivateEndpointPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      privateLinkServiceConnectionState: (() {
-        final guardedValue = map['privateLinkServiceConnectionState'];
-        if (guardedValue == null) return null;
-        return ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      privateEndpoint: (() { final guardedValue = map['privateEndpoint']; if (guardedValue == null) return null; return ManagedInstancePrivateEndpointPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      privateLinkServiceConnectionState: (() { final guardedValue = map['privateLinkServiceConnectionState']; if (guardedValue == null) return null; return ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
     );
   }
 }
+

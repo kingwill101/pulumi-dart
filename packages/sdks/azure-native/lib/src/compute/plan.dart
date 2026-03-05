@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Plan {
   /// The plan ID.
   final pulumi.Input<String>? name;
-
   /// Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
   final pulumi.Input<String>? product;
-
   /// The promotion code.
   final pulumi.Input<String>? promotionCode;
-
   /// The publisher ID.
   final pulumi.Input<String>? publisher;
 
@@ -21,7 +18,12 @@ class Plan {
   /// [product] Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
   /// [promotionCode] The promotion code.
   /// [publisher] The publisher ID.
-  Plan({this.name, this.product, this.promotionCode, this.publisher});
+  Plan({
+    this.name,
+    this.product,
+    this.promotionCode,
+    this.publisher,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,26 +36,11 @@ class Plan {
 
   factory Plan.fromMap(Map<String, dynamic> map) {
     return Plan(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      product: (() {
-        final guardedValue = map['product'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      promotionCode: (() {
-        final guardedValue = map['promotionCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publisher: (() {
-        final guardedValue = map['publisher'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      product: (() { final guardedValue = map['product']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      promotionCode: (() { final guardedValue = map['promotionCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publisher: (() { final guardedValue = map['publisher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

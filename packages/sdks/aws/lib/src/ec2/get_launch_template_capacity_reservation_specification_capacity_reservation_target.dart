@@ -17,21 +17,15 @@ class GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capacityReservationId': capacityReservationId,
-      'capacityReservationResourceGroupArn':
-          capacityReservationResourceGroupArn,
+      'capacityReservationResourceGroupArn': capacityReservationResourceGroupArn,
     };
   }
 
-  factory GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget(
-      capacityReservationId: pulumi.Input.fromValue(
-        map['capacityReservationId'] as String,
-      ),
-      capacityReservationResourceGroupArn: pulumi.Input.fromValue(
-        map['capacityReservationResourceGroupArn'] as String,
-      ),
+      capacityReservationId: pulumi.Input.fromValue(map['capacityReservationId'] as String),
+      capacityReservationResourceGroupArn: pulumi.Input.fromValue(map['capacityReservationResourceGroupArn'] as String),
     );
   }
 }
+

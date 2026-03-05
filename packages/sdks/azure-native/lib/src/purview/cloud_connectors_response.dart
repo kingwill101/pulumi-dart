@@ -10,10 +10,14 @@ class CloudConnectorsResponse {
 
   /// Creates a new [CloudConnectorsResponse].
   /// [awsExternalId] AWS external identifier.
-  CloudConnectorsResponse({required this.awsExternalId});
+  CloudConnectorsResponse({
+    required this.awsExternalId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'awsExternalId': awsExternalId};
+    return <String, dynamic>{
+      'awsExternalId': awsExternalId,
+    };
   }
 
   factory CloudConnectorsResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class CloudConnectorsResponse {
     );
   }
 }
+

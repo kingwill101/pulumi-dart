@@ -210,35 +210,24 @@ import 'sub_resource_response.dart';
 class ExpressRouteCircuitConnectionNetwork extends pulumi.CustomResource {
   /// /29 IP address space to carve out Customer addresses for tunnels.
   late final pulumi.Output<String?> addressPrefix;
-
   /// The authorization key.
   late final pulumi.Output<String?> authorizationKey;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Express Route Circuit connection state.
   late final pulumi.Output<String> circuitConnectionStatus;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
   late final pulumi.Output<SubResourceResponse?> expressRouteCircuitPeering;
-
   /// IPv6 Address PrefixProperties of the express route circuit connection.
-  late final pulumi.Output<Ipv6CircuitConnectionConfigResponse?>
-  ipv6CircuitConnectionConfig;
-
+  late final pulumi.Output<Ipv6CircuitConnectionConfigResponse?> ipv6CircuitConnectionConfig;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
-
   /// Reference to Express Route Circuit Private Peering Resource of the peered circuit.
   late final pulumi.Output<SubResourceResponse?> peerExpressRouteCircuitPeering;
-
   /// The provisioning state of the express route circuit connection resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -251,48 +240,20 @@ class ExpressRouteCircuitConnectionNetwork extends pulumi.CustomResource {
     ExpressRouteCircuitConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:ExpressRouteCircuitConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:ExpressRouteCircuitConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressPrefix = registerOutput<String?>('addressPrefix');
     authorizationKey = registerOutput<String?>('authorizationKey');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     circuitConnectionStatus = registerOutput<String>('circuitConnectionStatus');
     etag = registerOutput<String>('etag');
-    expressRouteCircuitPeering = registerOutput<SubResourceResponse?>(
-      'expressRouteCircuitPeering',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ipv6CircuitConnectionConfig =
-        registerOutput<Ipv6CircuitConnectionConfigResponse?>(
-          'ipv6CircuitConnectionConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return Ipv6CircuitConnectionConfigResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    expressRouteCircuitPeering = registerOutput<SubResourceResponse?>('expressRouteCircuitPeering', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipv6CircuitConnectionConfig = registerOutput<Ipv6CircuitConnectionConfigResponse?>('ipv6CircuitConnectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Ipv6CircuitConnectionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String?>('name');
-    peerExpressRouteCircuitPeering = registerOutput<SubResourceResponse?>(
-      'peerExpressRouteCircuitPeering',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    peerExpressRouteCircuitPeering = registerOutput<SubResourceResponse?>('peerExpressRouteCircuitPeering', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
   }

@@ -9,21 +9,20 @@ class AppVersionSnapshotGuardrailActionGenerativeAnswer {
 
   /// Creates a new [AppVersionSnapshotGuardrailActionGenerativeAnswer].
   /// [prompt] (Output)
-  AppVersionSnapshotGuardrailActionGenerativeAnswer({this.prompt});
+  AppVersionSnapshotGuardrailActionGenerativeAnswer({
+    this.prompt,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'prompt': ?prompt};
+    return <String, dynamic>{
+      'prompt': ?prompt,
+    };
   }
 
-  factory AppVersionSnapshotGuardrailActionGenerativeAnswer.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotGuardrailActionGenerativeAnswer.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailActionGenerativeAnswer(
-      prompt: (() {
-        final guardedValue = map['prompt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      prompt: (() { final guardedValue = map['prompt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

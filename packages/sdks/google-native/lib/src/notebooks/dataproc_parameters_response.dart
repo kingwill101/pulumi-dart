@@ -9,10 +9,14 @@ class DataprocParametersResponse {
 
   /// Creates a new [DataprocParametersResponse].
   /// [cluster] URI for cluster used to run Dataproc execution. Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
-  DataprocParametersResponse({required this.cluster});
+  DataprocParametersResponse({
+    required this.cluster,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cluster': cluster};
+    return <String, dynamic>{
+      'cluster': cluster,
+    };
   }
 
   factory DataprocParametersResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class DataprocParametersResponse {
     );
   }
 }
+

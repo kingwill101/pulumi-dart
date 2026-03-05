@@ -273,27 +273,20 @@ import 'router_vbr_child_instance_state.dart';
 class RouterVbrChildInstance extends pulumi.CustomResource {
   /// The ID of the leased line gateway subinstance.
   late final pulumi.Output<String> childInstanceId;
-
   /// The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
   ///
   /// &gt; **NOTE:**  This parameter is required if you want to load a cross-account network instance.
   late final pulumi.Output<String> childInstanceOwnerId;
-
   /// Region of the leased line gateway sub-instance
   late final pulumi.Output<String> childInstanceRegionId;
-
   /// The type of the network instance. Value: `VBR`: VBR instance.
   late final pulumi.Output<String> childInstanceType;
-
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// Resource attribute fields that represent descriptive information
   late final pulumi.Output<String?> description;
-
   /// ID of the representative leased line gateway instance.
   late final pulumi.Output<String> ecrId;
-
   /// Binding relationship status of leased line gateway subinstances.
   late final pulumi.Output<String> status;
 
@@ -306,11 +299,11 @@ class RouterVbrChildInstance extends pulumi.CustomResource {
     RouterVbrChildInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     childInstanceId = registerOutput<String>('childInstanceId');
     childInstanceOwnerId = registerOutput<String>('childInstanceOwnerId');
     childInstanceRegionId = registerOutput<String>('childInstanceRegionId');
@@ -339,11 +332,11 @@ class RouterVbrChildInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     childInstanceId = registerOutput<String>('childInstanceId');
     childInstanceOwnerId = registerOutput<String>('childInstanceOwnerId');
     childInstanceRegionId = registerOutput<String>('childInstanceRegionId');

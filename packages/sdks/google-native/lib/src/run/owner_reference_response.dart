@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OwnerReferenceResponse {
   /// This is not supported or used by Cloud Run.
   final pulumi.Input<String> apiVersion;
-
   /// This is not supported or used by Cloud Run.
   final pulumi.Input<bool> blockOwnerDeletion;
-
   /// This is not supported or used by Cloud Run.
   final pulumi.Input<bool> controller;
-
   /// This is not supported or used by Cloud Run.
   final pulumi.Input<String> kind;
-
   /// This is not supported or used by Cloud Run.
   final pulumi.Input<String> name;
-
   /// This is not supported or used by Cloud Run.
   final pulumi.Input<String> uid;
 
@@ -52,9 +47,7 @@ class OwnerReferenceResponse {
   factory OwnerReferenceResponse.fromMap(Map<String, dynamic> map) {
     return OwnerReferenceResponse(
       apiVersion: pulumi.Input.fromValue(map['apiVersion'] as String),
-      blockOwnerDeletion: pulumi.Input.fromValue(
-        map['blockOwnerDeletion'] as bool,
-      ),
+      blockOwnerDeletion: pulumi.Input.fromValue(map['blockOwnerDeletion'] as bool),
       controller: pulumi.Input.fromValue(map['controller'] as bool),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -62,3 +55,4 @@ class OwnerReferenceResponse {
     );
   }
 }
+

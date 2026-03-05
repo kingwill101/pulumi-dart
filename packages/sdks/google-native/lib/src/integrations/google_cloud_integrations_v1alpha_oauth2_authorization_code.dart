@@ -9,37 +9,24 @@ import 'google_cloud_integrations_v1alpha_parameter_map.dart';
 class GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode {
   /// The access token received from the token endpoint.
   final pulumi.Input<GoogleCloudIntegrationsV1alphaAccessToken>? accessToken;
-
   /// Indicates if the user has opted in Google Reauth Policy. If opted in, the refresh token will be valid for 20 hours, after which time users must re-authenticate in order to obtain a new one.
   final pulumi.Input<bool>? applyReauthPolicy;
-
   /// The Auth Code that is used to initially retrieve the access token.
   final pulumi.Input<String>? authCode;
-
   /// The auth url endpoint to send the auth code request to.
   final pulumi.Input<String>? authEndpoint;
-
   /// The auth parameters sent along with the auth code request.
   final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMap>? authParams;
-
   /// The client's id.
   final pulumi.Input<String>? clientId;
-
   /// The client's secret.
   final pulumi.Input<String>? clientSecret;
-
   /// Represent how to pass parameters to fetch access token
-  final pulumi.Input<
-    GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType
-  >?
-  requestType;
-
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType>? requestType;
   /// A space-delimited list of requested scope permissions.
   final pulumi.Input<String>? scope;
-
   /// The token url endpoint to send the token request to.
   final pulumi.Input<String>? tokenEndpoint;
-
   /// The token parameters sent along with the token request.
   final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMap>? tokenParams;
 
@@ -71,111 +58,34 @@ class GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessToken':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudIntegrationsV1alphaAccessToken,
-            Map<String, dynamic>
-          >(accessToken, (value) => value.toMap()),
+      'accessToken': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIntegrationsV1alphaAccessToken, Map<String, dynamic>>(accessToken, (value) => value.toMap()),
       'applyReauthPolicy': ?applyReauthPolicy,
       'authCode': ?authCode,
       'authEndpoint': ?authEndpoint,
-      'authParams':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudIntegrationsV1alphaParameterMap,
-            Map<String, dynamic>
-          >(authParams, (value) => value.toMap()),
+      'authParams': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIntegrationsV1alphaParameterMap, Map<String, dynamic>>(authParams, (value) => value.toMap()),
       'clientId': ?clientId,
       'clientSecret': ?clientSecret,
-      'requestType':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType,
-            String
-          >(requestType, (value) => value.wireValue),
+      'requestType': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType, String>(requestType, (value) => value.wireValue),
       'scope': ?scope,
       'tokenEndpoint': ?tokenEndpoint,
-      'tokenParams':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudIntegrationsV1alphaParameterMap,
-            Map<String, dynamic>
-          >(tokenParams, (value) => value.toMap()),
+      'tokenParams': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIntegrationsV1alphaParameterMap, Map<String, dynamic>>(tokenParams, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode(
-      accessToken: (() {
-        final guardedValue = map['accessToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudIntegrationsV1alphaAccessToken.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      applyReauthPolicy: (() {
-        final guardedValue = map['applyReauthPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      authCode: (() {
-        final guardedValue = map['authCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      authEndpoint: (() {
-        final guardedValue = map['authEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      authParams: (() {
-        final guardedValue = map['authParams'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudIntegrationsV1alphaParameterMap.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientSecret: (() {
-        final guardedValue = map['clientSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestType: (() {
-        final guardedValue = map['requestType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tokenEndpoint: (() {
-        final guardedValue = map['tokenEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tokenParams: (() {
-        final guardedValue = map['tokenParams'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudIntegrationsV1alphaParameterMap.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      accessToken: (() { final guardedValue = map['accessToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudIntegrationsV1alphaAccessToken.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      applyReauthPolicy: (() { final guardedValue = map['applyReauthPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      authCode: (() { final guardedValue = map['authCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authEndpoint: (() { final guardedValue = map['authEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authParams: (() { final guardedValue = map['authParams']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudIntegrationsV1alphaParameterMap.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestType: (() { final guardedValue = map['requestType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType.fromValue(guardedValue as String)); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tokenEndpoint: (() { final guardedValue = map['tokenEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tokenParams: (() { final guardedValue = map['tokenParams']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudIntegrationsV1alphaParameterMap.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

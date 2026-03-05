@@ -231,36 +231,26 @@ import 'project_timeouts.dart';
 class Project extends pulumi.CustomResource {
   /// Timestamp of when the project was made.
   late final pulumi.Output<String> createdAt;
-
   /// Creator of the project.
   late final pulumi.Output<String> createdBy;
-
   /// Description of project.
   late final pulumi.Output<String?> description;
-
   /// Identifier of domain which the project is part of. Must follow the regex of `^dzd[-_][a-zA-Z0-9_-]{1,36}$`.
   late final pulumi.Output<String> domainIdentifier;
-
   /// List of error messages if operation cannot be completed.
   late final pulumi.Output<List<Map<String, dynamic>>> failureReasons;
-
   /// List of glossary terms that can be used in the project. The list cannot be empty or include over 20 values. Each value must follow the regex of `[a-zA-Z0-9_-]{1,36}$`.
   late final pulumi.Output<List<String>?> glossaryTerms;
-
   /// Timestamp of when the project was last updated.
   late final pulumi.Output<String> lastUpdatedAt;
-
   /// Name of the project. Must follow the regex of `^[\w -]+$`. and have a length of at most 64.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Enum that conveys state of project. Can be `ACTIVE`, `DELETING`, or `DELETE_FAILED`.
   late final pulumi.Output<String> projectStatus;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Optional flag to delete all child entities within the project.
   late final pulumi.Output<bool?> skipDeletionCheck;
   late final pulumi.Output<ProjectTimeouts?> timeouts;
@@ -274,34 +264,23 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:datazone/project:Project',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:datazone/project:Project',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');
-    failureReasons = registerOutput<List<Map<String, dynamic>>>(
-      'failureReasons',
-    );
+    failureReasons = registerOutput<List<Map<String, dynamic>>>('failureReasons');
     glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
     lastUpdatedAt = registerOutput<String>('lastUpdatedAt');
     this.name = registerOutput<String>('name');
     projectStatus = registerOutput<String>('projectStatus');
     region = registerOutput<String>('region');
     skipDeletionCheck = registerOutput<bool?>('skipDeletionCheck');
-    timeouts = registerOutput<ProjectTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ProjectTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -322,33 +301,22 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:datazone/project:Project',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:datazone/project:Project',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');
-    failureReasons = registerOutput<List<Map<String, dynamic>>>(
-      'failureReasons',
-    );
+    failureReasons = registerOutput<List<Map<String, dynamic>>>('failureReasons');
     glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
     lastUpdatedAt = registerOutput<String>('lastUpdatedAt');
     this.name = registerOutput<String>('name');
     projectStatus = registerOutput<String>('projectStatus');
     region = registerOutput<String>('region');
     skipDeletionCheck = registerOutput<bool?>('skipDeletionCheck');
-    timeouts = registerOutput<ProjectTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ProjectTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

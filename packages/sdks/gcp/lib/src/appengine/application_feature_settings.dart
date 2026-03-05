@@ -9,17 +9,20 @@ class ApplicationFeatureSettings {
 
   /// Creates a new [ApplicationFeatureSettings].
   /// [splitHealthChecks] Set to false to use the legacy health check instead of the readiness
-  ApplicationFeatureSettings({required this.splitHealthChecks});
+  ApplicationFeatureSettings({
+    required this.splitHealthChecks,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'splitHealthChecks': splitHealthChecks};
+    return <String, dynamic>{
+      'splitHealthChecks': splitHealthChecks,
+    };
   }
 
   factory ApplicationFeatureSettings.fromMap(Map<String, dynamic> map) {
     return ApplicationFeatureSettings(
-      splitHealthChecks: pulumi.Input.fromValue(
-        map['splitHealthChecks'] as bool,
-      ),
+      splitHealthChecks: pulumi.Input.fromValue(map['splitHealthChecks'] as bool),
     );
   }
 }
+

@@ -25,12 +25,11 @@ class GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs {
     };
   }
 
-  factory GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs(
       customModuleId: pulumi.Input.fromValue(map['customModuleId'] as String),
       folderId: pulumi.Input.fromValue(map['folderId'] as String),
     );
   }
 }
+

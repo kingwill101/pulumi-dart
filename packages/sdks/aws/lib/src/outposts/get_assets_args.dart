@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAssetsArgs {
   /// Outpost ARN.
   final pulumi.Input<String> arn;
-
   /// Filters by list of Host IDs of a Dedicated Host.
   final pulumi.Input<List<String>>? hostIdFilters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Filters by list of state status. Valid values: "ACTIVE", "RETIRING".
   final pulumi.Input<List<String>>? statusIdFilters;
 
@@ -43,21 +40,10 @@ class GetAssetsArgs {
   factory GetAssetsArgs.fromMap(Map<String, dynamic> map) {
     return GetAssetsArgs(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      hostIdFilters: (() {
-        final guardedValue = map['hostIdFilters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      statusIdFilters: (() {
-        final guardedValue = map['statusIdFilters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      hostIdFilters: (() { final guardedValue = map['hostIdFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statusIdFilters: (() { final guardedValue = map['statusIdFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

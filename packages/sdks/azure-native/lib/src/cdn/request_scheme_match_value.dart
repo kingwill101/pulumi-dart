@@ -14,3 +14,4 @@ enum RequestSchemeMatchValue {
     throw ArgumentError('Unknown RequestSchemeMatchValue value: $value');
   }
 }
+

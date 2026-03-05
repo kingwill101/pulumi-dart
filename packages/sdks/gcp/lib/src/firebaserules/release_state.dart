@@ -6,23 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReleaseState {
   /// Output only. Time the release was created.
   final pulumi.Input<String>? createTime;
-
   /// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
   final pulumi.Input<bool>? disabled;
-
   /// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
   final pulumi.Input<String>? name;
-
   /// The project for the resource
   final pulumi.Input<String>? project;
-
   /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
   ///
   ///
   ///
   /// - - -
   final pulumi.Input<String>? rulesetName;
-
   /// Output only. Time the release was updated.
   final pulumi.Input<String>? updateTime;
 
@@ -55,36 +50,13 @@ class ReleaseState {
 
   factory ReleaseState.fromMap(Map<String, dynamic> map) {
     return ReleaseState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rulesetName: (() {
-        final guardedValue = map['rulesetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rulesetName: (() { final guardedValue = map['rulesetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

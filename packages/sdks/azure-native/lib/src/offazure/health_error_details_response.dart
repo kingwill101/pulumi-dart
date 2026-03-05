@@ -6,40 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HealthErrorDetailsResponse {
   /// Gets the appliance name.
   final pulumi.Input<String> applianceName;
-
   /// Gets the error name.
   final pulumi.Input<String> code;
-
   /// Gets discovery scope for which             error is encountered.
   final pulumi.Input<String> discoveryScope;
-
   /// Gets the error ID.
   final pulumi.Input<double> id;
-
   /// Gets the error message.
   final pulumi.Input<String> message;
-
   /// Gets the message parameters.
   final pulumi.Input<Map<String, String>> messageParameters;
-
   /// Gets the possible causes of error.
   final pulumi.Input<String> possibleCauses;
-
   /// Gets the recommended action to resolve error.
   final pulumi.Input<String> recommendedAction;
-
   /// Gets run as account id used while performing discovery             of entity.
   final pulumi.Input<String> runAsAccountId;
-
   /// Gets the error severity.
   final pulumi.Input<String> severity;
-
   /// Gets the error source.
   final pulumi.Input<String> source;
-
   /// Gets the error summary message.
   final pulumi.Input<String> summaryMessage;
-
   /// Gets the time stamp when the error was updated.
   final pulumi.Input<String> updatedTimeStamp;
 
@@ -98,20 +86,15 @@ class HealthErrorDetailsResponse {
       discoveryScope: pulumi.Input.fromValue(map['discoveryScope'] as String),
       id: pulumi.Input.fromValue(map['id'] as double),
       message: pulumi.Input.fromValue(map['message'] as String),
-      messageParameters: pulumi.Input.fromValue(
-        (map['messageParameters'] as Map).cast<String, String>(),
-      ),
+      messageParameters: pulumi.Input.fromValue((map['messageParameters'] as Map).cast<String, String>()),
       possibleCauses: pulumi.Input.fromValue(map['possibleCauses'] as String),
-      recommendedAction: pulumi.Input.fromValue(
-        map['recommendedAction'] as String,
-      ),
+      recommendedAction: pulumi.Input.fromValue(map['recommendedAction'] as String),
       runAsAccountId: pulumi.Input.fromValue(map['runAsAccountId'] as String),
       severity: pulumi.Input.fromValue(map['severity'] as String),
       source: pulumi.Input.fromValue(map['source'] as String),
       summaryMessage: pulumi.Input.fromValue(map['summaryMessage'] as String),
-      updatedTimeStamp: pulumi.Input.fromValue(
-        map['updatedTimeStamp'] as String,
-      ),
+      updatedTimeStamp: pulumi.Input.fromValue(map['updatedTimeStamp'] as String),
     );
   }
 }
+

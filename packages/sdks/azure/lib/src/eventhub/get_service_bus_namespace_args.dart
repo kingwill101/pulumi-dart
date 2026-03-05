@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceBusNamespaceArgs {
   /// Specifies the name of the ServiceBus Namespace.
   final pulumi.Input<String> name;
-
   /// Specifies the name of the Resource Group where the ServiceBus Namespace exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetServiceBusNamespaceArgs {
   factory GetServiceBusNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceBusNamespaceArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

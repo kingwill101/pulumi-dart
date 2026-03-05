@@ -7,10 +7,8 @@ class PrivateLinkAssociationPropertiesExpandedResponse {
   /// The rmpl Resource ID.
   final pulumi.Input<String>? privateLink;
   final pulumi.Input<String>? publicNetworkAccess;
-
   /// The scope of the private link association.
   final pulumi.Input<String>? scope;
-
   /// The TenantID.
   final pulumi.Input<String>? tenantID;
 
@@ -35,30 +33,13 @@ class PrivateLinkAssociationPropertiesExpandedResponse {
     };
   }
 
-  factory PrivateLinkAssociationPropertiesExpandedResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrivateLinkAssociationPropertiesExpandedResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkAssociationPropertiesExpandedResponse(
-      privateLink: (() {
-        final guardedValue = map['privateLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantID: (() {
-        final guardedValue = map['tenantID'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      privateLink: (() { final guardedValue = map['privateLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantID: (() { final guardedValue = map['tenantID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

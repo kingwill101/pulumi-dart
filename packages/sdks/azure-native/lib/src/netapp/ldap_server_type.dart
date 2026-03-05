@@ -15,3 +15,4 @@ enum LdapServerType {
     throw ArgumentError('Unknown LdapServerType value: $value');
   }
 }
+

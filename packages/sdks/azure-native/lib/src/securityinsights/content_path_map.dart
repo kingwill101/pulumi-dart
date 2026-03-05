@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContentPathMap {
   /// Content type.
   final pulumi.Input<String>? contentType;
-
   /// The path to the content.
   final pulumi.Input<String>? path;
 
   /// Creates a new [ContentPathMap].
   /// [contentType] Content type.
   /// [path] The path to the content.
-  ContentPathMap({this.contentType, this.path});
+  ContentPathMap({
+    this.contentType,
+    this.path,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'contentType': ?contentType, 'path': ?path};
+    return <String, dynamic>{
+      'contentType': ?contentType,
+      'path': ?path,
+    };
   }
 
   factory ContentPathMap.fromMap(Map<String, dynamic> map) {
     return ContentPathMap(
-      contentType: (() {
-        final guardedValue = map['contentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

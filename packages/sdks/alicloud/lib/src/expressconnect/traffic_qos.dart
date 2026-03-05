@@ -142,17 +142,13 @@ class TrafficQos extends pulumi.CustomResource {
   /// The description of the QoS policy.
   /// The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
   late final pulumi.Output<String?> qosDescription;
-
   /// The name of the QoS policy.
   /// The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
   late final pulumi.Output<String?> qosName;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The status of the QoS policy.
   late final pulumi.Output<String> status;
-
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -165,11 +161,11 @@ class TrafficQos extends pulumi.CustomResource {
     TrafficQosArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/trafficQos:TrafficQos',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/trafficQos:TrafficQos',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     qosDescription = registerOutput<String?>('qosDescription');
     qosName = registerOutput<String?>('qosName');
     resourceGroupId = registerOutput<String>('resourceGroupId');
@@ -195,11 +191,11 @@ class TrafficQos extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/trafficQos:TrafficQos',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/trafficQos:TrafficQos',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     qosDescription = registerOutput<String?>('qosDescription');
     qosName = registerOutput<String?>('qosName');
     resourceGroupId = registerOutput<String>('resourceGroupId');

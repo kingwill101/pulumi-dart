@@ -1,23 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getServerlessSecurityPolicy.
 class GetServerlessSecurityPolicyResult {
   /// The date the security policy was created.
   final String createdDate;
-
   /// Description of the security policy.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The date the security policy was last modified.
   final String lastModifiedDate;
   final String name;
-
   /// The JSON policy document without any whitespaces.
   final String policy;
-
   /// Version of the policy.
   final String policyVersion;
   final String region;
@@ -73,3 +69,4 @@ class GetServerlessSecurityPolicyResult {
     );
   }
 }
+

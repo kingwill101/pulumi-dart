@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DashboardPartMetadataResponse {
   /// Inputs to dashboard part.
   final pulumi.Input<List<dynamic>>? inputs;
-
   /// Settings of dashboard part.
   final pulumi.Input<Map<String, dynamic>>? settings;
-
   /// The type of dashboard part.
   final pulumi.Input<String> type;
 
@@ -33,19 +31,10 @@ class DashboardPartMetadataResponse {
 
   factory DashboardPartMetadataResponse.fromMap(Map<String, dynamic> map) {
     return DashboardPartMetadataResponse(
-      inputs: (() {
-        final guardedValue = map['inputs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
-      settings: (() {
-        final guardedValue = map['settings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      inputs: (() { final guardedValue = map['inputs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

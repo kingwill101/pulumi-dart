@@ -10,19 +10,20 @@ class AuthorityConfigSubjectKeyId {
 
   /// Creates a new [AuthorityConfigSubjectKeyId].
   /// [keyId] The value of the KeyId in lowercase hexadecimal.
-  AuthorityConfigSubjectKeyId({this.keyId});
+  AuthorityConfigSubjectKeyId({
+    this.keyId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyId': ?keyId};
+    return <String, dynamic>{
+      'keyId': ?keyId,
+    };
   }
 
   factory AuthorityConfigSubjectKeyId.fromMap(Map<String, dynamic> map) {
     return AuthorityConfigSubjectKeyId(
-      keyId: (() {
-        final guardedValue = map['keyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyId: (() { final guardedValue = map['keyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

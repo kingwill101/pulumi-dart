@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagementClusterResponse {
   /// The identity
   final pulumi.Input<int> clusterId;
-
   /// The cluster size
   final pulumi.Input<int>? clusterSize;
-
   /// The hosts
   final pulumi.Input<List<String>>? hosts;
-
   /// The state of the cluster provisioning
   final pulumi.Input<String> provisioningState;
-
   /// Name of the vsan datastore associated with the cluster
   final pulumi.Input<String>? vsanDatastoreName;
 
@@ -46,24 +42,11 @@ class ManagementClusterResponse {
   factory ManagementClusterResponse.fromMap(Map<String, dynamic> map) {
     return ManagementClusterResponse(
       clusterId: pulumi.Input.fromValue(map['clusterId'] as int),
-      clusterSize: (() {
-        final guardedValue = map['clusterSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      hosts: (() {
-        final guardedValue = map['hosts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      vsanDatastoreName: (() {
-        final guardedValue = map['vsanDatastoreName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clusterSize: (() { final guardedValue = map['clusterSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hosts: (() { final guardedValue = map['hosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      vsanDatastoreName: (() { final guardedValue = map['vsanDatastoreName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

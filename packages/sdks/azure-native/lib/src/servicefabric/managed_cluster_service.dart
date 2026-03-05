@@ -603,22 +603,16 @@ import 'system_data_response.dart';
 class ManagedClusterService extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource location depends on the parent resource.
   late final pulumi.Output<String?> location;
-
   /// Azure resource name.
   late final pulumi.Output<String> name;
-
   /// The service resource properties.
   late final pulumi.Output<StatefulServicePropertiesResponse> properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Azure resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Azure resource type.
   late final pulumi.Output<String> type;
 
@@ -631,34 +625,16 @@ class ManagedClusterService extends pulumi.CustomResource {
     ManagedClusterServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:servicefabric:ManagedClusterService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:servicefabric:ManagedClusterService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<StatefulServicePropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StatefulServicePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<StatefulServicePropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatefulServicePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

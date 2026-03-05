@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdditionalReplicaSetResponse {
   /// The number of direct drive replicas of the Image Version to be created.This Property is updatable
   final pulumi.Input<int>? regionalReplicaCount;
-
   /// Specifies the storage account type to be used to create the direct drive replicas
   final pulumi.Input<String>? storageAccountType;
 
@@ -27,16 +26,9 @@ class AdditionalReplicaSetResponse {
 
   factory AdditionalReplicaSetResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalReplicaSetResponse(
-      regionalReplicaCount: (() {
-        final guardedValue = map['regionalReplicaCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      storageAccountType: (() {
-        final guardedValue = map['storageAccountType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      regionalReplicaCount: (() { final guardedValue = map['regionalReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

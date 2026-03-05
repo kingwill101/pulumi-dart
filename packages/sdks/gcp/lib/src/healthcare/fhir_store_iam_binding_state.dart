@@ -6,16 +6,13 @@ import 'fhir_store_iam_binding_condition.dart';
 /// Input properties used for looking up and filtering FhirStoreIamBinding resources.
 class FhirStoreIamBindingState {
   final pulumi.Input<FhirStoreIamBindingCondition>? condition;
-
   /// (Computed) The etag of the FHIR store's IAM policy.
   final pulumi.Input<String>? etag;
-
   /// The FHIR store ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
   /// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
   final pulumi.Input<String>? fhirStoreId;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -25,7 +22,6 @@ class FhirStoreIamBindingState {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<List<String>>? members;
-
   /// The role that should be applied. Only one
   /// `gcp.healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -47,11 +43,7 @@ class FhirStoreIamBindingState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            FhirStoreIamBindingCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<FhirStoreIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'etag': ?etag,
       'fhirStoreId': ?fhirStoreId,
       'members': ?members,
@@ -61,35 +53,12 @@ class FhirStoreIamBindingState {
 
   factory FhirStoreIamBindingState.fromMap(Map<String, dynamic> map) {
     return FhirStoreIamBindingState(
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FhirStoreIamBindingCondition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fhirStoreId: (() {
-        final guardedValue = map['fhirStoreId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      members: (() {
-        final guardedValue = map['members'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      role: (() {
-        final guardedValue = map['role'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FhirStoreIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fhirStoreId: (() { final guardedValue = map['fhirStoreId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -13,8 +13,7 @@ enum RegionDiskArchitectureComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RegionDiskArchitectureComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown RegionDiskArchitectureComputeBeta value: $value');
   }
 }
+

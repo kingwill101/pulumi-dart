@@ -8,10 +8,14 @@ class GetDomainNodeToNodeEncryption {
 
   /// Creates a new [GetDomainNodeToNodeEncryption].
   /// [enabled] Whether node to node encryption is enabled.
-  GetDomainNodeToNodeEncryption({required this.enabled});
+  GetDomainNodeToNodeEncryption({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory GetDomainNodeToNodeEncryption.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetDomainNodeToNodeEncryption {
     );
   }
 }
+

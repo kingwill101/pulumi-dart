@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPlanMemberArgs {
   /// The name of a devcenter plan member.
   final pulumi.Input<String> memberName;
-
   /// The name of the devcenter plan.
   final pulumi.Input<String> planName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetPlanMemberArgs {
     return GetPlanMemberArgs(
       memberName: pulumi.Input.fromValue(map['memberName'] as String),
       planName: pulumi.Input.fromValue(map['planName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

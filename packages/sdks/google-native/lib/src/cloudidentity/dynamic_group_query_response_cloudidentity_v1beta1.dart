@@ -17,15 +17,17 @@ class DynamicGroupQueryResponseCloudidentityV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'query': query, 'resourceType': resourceType};
+    return <String, dynamic>{
+      'query': query,
+      'resourceType': resourceType,
+    };
   }
 
-  factory DynamicGroupQueryResponseCloudidentityV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DynamicGroupQueryResponseCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return DynamicGroupQueryResponseCloudidentityV1beta1(
       query: pulumi.Input.fromValue(map['query'] as String),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
+

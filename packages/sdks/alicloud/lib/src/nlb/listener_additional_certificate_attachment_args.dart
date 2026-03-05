@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListenerAdditionalCertificateAttachmentArgs {
   /// The ID of additional certificates.
   final pulumi.Input<String> certificateId;
-
   /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
   final pulumi.Input<bool>? dryRun;
-
   /// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
   final pulumi.Input<String> listenerId;
 
@@ -34,17 +32,12 @@ class ListenerAdditionalCertificateAttachmentArgs {
     };
   }
 
-  factory ListenerAdditionalCertificateAttachmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListenerAdditionalCertificateAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ListenerAdditionalCertificateAttachmentArgs(
       certificateId: pulumi.Input.fromValue(map['certificateId'] as String),
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       listenerId: pulumi.Input.fromValue(map['listenerId'] as String),
     );
   }
 }
+

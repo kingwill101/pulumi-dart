@@ -21,20 +21,11 @@ class ChannelInputAttachmentInputSettingsVideoSelector {
     };
   }
 
-  factory ChannelInputAttachmentInputSettingsVideoSelector.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelInputAttachmentInputSettingsVideoSelector.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsVideoSelector(
-      colorSpace: (() {
-        final guardedValue = map['colorSpace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      colorSpaceUsage: (() {
-        final guardedValue = map['colorSpaceUsage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      colorSpace: (() { final guardedValue = map['colorSpace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      colorSpaceUsage: (() { final guardedValue = map['colorSpaceUsage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobDelayDetailsResponse {
   /// Description of the delay.
   final pulumi.Input<String> description;
-
   /// Delay Error code
   final pulumi.Input<String> errorCode;
-
   /// Timestamp when the delay notification was resolved.
   final pulumi.Input<String> resolutionTime;
-
   /// Timestamp when the delay notification was created.
   final pulumi.Input<String> startTime;
-
   /// Status of notification
   final pulumi.Input<String> status;
 
@@ -53,3 +49,4 @@ class JobDelayDetailsResponse {
     );
   }
 }
+

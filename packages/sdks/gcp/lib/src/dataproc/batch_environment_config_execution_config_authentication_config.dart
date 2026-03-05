@@ -19,15 +19,10 @@ class BatchEnvironmentConfigExecutionConfigAuthenticationConfig {
     };
   }
 
-  factory BatchEnvironmentConfigExecutionConfigAuthenticationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BatchEnvironmentConfigExecutionConfigAuthenticationConfig.fromMap(Map<String, dynamic> map) {
     return BatchEnvironmentConfigExecutionConfigAuthenticationConfig(
-      userWorkloadAuthenticationType: (() {
-        final guardedValue = map['userWorkloadAuthenticationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userWorkloadAuthenticationType: (() { final guardedValue = map['userWorkloadAuthenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

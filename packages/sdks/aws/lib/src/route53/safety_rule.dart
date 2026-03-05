@@ -315,34 +315,24 @@ import 'safety_rule_state.dart';
 class SafetyRule extends pulumi.CustomResource {
   /// ARN of the safety rule.
   late final pulumi.Output<String> arn;
-
   /// Routing controls that are part of transactions that are evaluated to determine if a request to change a routing control state is allowed.
   late final pulumi.Output<List<String>?> assertedControls;
-
   /// ARN of the control panel in which this safety rule will reside.
   late final pulumi.Output<String> controlPanelArn;
-
   /// Gating controls for the new gating rule. That is, routing controls that are evaluated by the rule configuration that you specify.
   late final pulumi.Output<List<String>?> gatingControls;
-
   /// Name describing the safety rule.
   late final pulumi.Output<String> name;
-
   /// Configuration block for safety rule criteria. See below.
   late final pulumi.Output<SafetyRuleRuleConfig> ruleConfig;
-
   /// Status of the safety rule. `PENDING` when it is being created/updated, `PENDING_DELETION` when it is being deleted, and `DEPLOYED` otherwise.
   late final pulumi.Output<String> status;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Routing controls that can only be set or unset if the specified `rule_config` evaluates to true for the specified `gating_controls`.
   late final pulumi.Output<List<String>?> targetControls;
-
   /// Evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail.
   ///
   /// The following arguments are optional:
@@ -357,26 +347,17 @@ class SafetyRule extends pulumi.CustomResource {
     SafetyRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53recoverycontrol/safetyRule:SafetyRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53recoverycontrol/safetyRule:SafetyRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     assertedControls = registerOutput<List<String>?>('assertedControls');
     controlPanelArn = registerOutput<String>('controlPanelArn');
     gatingControls = registerOutput<List<String>?>('gatingControls');
     this.name = registerOutput<String>('name');
-    ruleConfig = registerOutput<SafetyRuleRuleConfig>(
-      'ruleConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SafetyRuleRuleConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ruleConfig = registerOutput<SafetyRuleRuleConfig>('ruleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SafetyRuleRuleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -402,26 +383,17 @@ class SafetyRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53recoverycontrol/safetyRule:SafetyRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53recoverycontrol/safetyRule:SafetyRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     assertedControls = registerOutput<List<String>?>('assertedControls');
     controlPanelArn = registerOutput<String>('controlPanelArn');
     gatingControls = registerOutput<List<String>?>('gatingControls');
     this.name = registerOutput<String>('name');
-    ruleConfig = registerOutput<SafetyRuleRuleConfig>(
-      'ruleConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SafetyRuleRuleConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ruleConfig = registerOutput<SafetyRuleRuleConfig>('ruleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SafetyRuleRuleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

@@ -177,13 +177,10 @@ import 'managed_prefix_list_entry_state.dart';
 class ManagedPrefixListEntryEc2 extends pulumi.CustomResource {
   /// CIDR block of this entry.
   late final pulumi.Output<String> cidr;
-
   /// Description of this entry. Please note that due to API limitations, updating only the description of an entry will require recreating the entry.
   late final pulumi.Output<String?> description;
-
   /// The ID of the prefix list.
   late final pulumi.Output<String> prefixListId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -196,11 +193,11 @@ class ManagedPrefixListEntryEc2 extends pulumi.CustomResource {
     ManagedPrefixListEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/managedPrefixListEntry:ManagedPrefixListEntry',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/managedPrefixListEntry:ManagedPrefixListEntry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidr = registerOutput<String>('cidr');
     description = registerOutput<String?>('description');
     prefixListId = registerOutput<String>('prefixListId');
@@ -225,11 +222,11 @@ class ManagedPrefixListEntryEc2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/managedPrefixListEntry:ManagedPrefixListEntry',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/managedPrefixListEntry:ManagedPrefixListEntry',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidr = registerOutput<String>('cidr');
     description = registerOutput<String?>('description');
     prefixListId = registerOutput<String>('prefixListId');

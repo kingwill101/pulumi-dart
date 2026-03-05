@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GitHubActionCodeConfigurationResponse {
   /// Runtime stack is used to determine the workflow file content for code base apps.
   final pulumi.Input<String>? runtimeStack;
-
   /// Runtime version is used to determine what build version to set in the workflow file.
   final pulumi.Input<String>? runtimeVersion;
 
@@ -25,20 +24,11 @@ class GitHubActionCodeConfigurationResponse {
     };
   }
 
-  factory GitHubActionCodeConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GitHubActionCodeConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return GitHubActionCodeConfigurationResponse(
-      runtimeStack: (() {
-        final guardedValue = map['runtimeStack'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      runtimeVersion: (() {
-        final guardedValue = map['runtimeVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      runtimeStack: (() { final guardedValue = map['runtimeStack']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      runtimeVersion: (() { final guardedValue = map['runtimeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

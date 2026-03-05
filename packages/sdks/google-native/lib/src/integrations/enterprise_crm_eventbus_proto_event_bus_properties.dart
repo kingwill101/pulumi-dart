@@ -10,41 +10,20 @@ class EnterpriseCrmEventbusProtoEventBusProperties {
 
   /// Creates a new [EnterpriseCrmEventbusProtoEventBusProperties].
   /// [properties] An unordered list of property entries.
-  EnterpriseCrmEventbusProtoEventBusProperties({this.properties});
+  EnterpriseCrmEventbusProtoEventBusProperties({
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EnterpriseCrmEventbusProtoPropertyEntry>,
-            List<Map<String, dynamic>>
-          >(
-            properties,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EnterpriseCrmEventbusProtoPropertyEntry,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'properties': ?pulumi.Input.mapOptionalInputValue<List<EnterpriseCrmEventbusProtoPropertyEntry>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<EnterpriseCrmEventbusProtoPropertyEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory EnterpriseCrmEventbusProtoEventBusProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoEventBusProperties.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoEventBusProperties(
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EnterpriseCrmEventbusProtoPropertyEntry>(
-            guardedValue,
-            (value) => EnterpriseCrmEventbusProtoPropertyEntry.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EnterpriseCrmEventbusProtoPropertyEntry>(guardedValue, (value) => EnterpriseCrmEventbusProtoPropertyEntry.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

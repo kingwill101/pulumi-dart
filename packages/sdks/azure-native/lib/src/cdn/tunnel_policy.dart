@@ -232,25 +232,18 @@ class TunnelPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String> deploymentStatus;
-
   /// Domains referenced by this tunnel policy.
   late final pulumi.Output<List<Map<String, dynamic>>> domains;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
-
   /// Read only system data
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Target Groups referenced by this tunnel policy.
   late final pulumi.Output<List<Map<String, dynamic>>?> targetGroups;
-
   /// Protocol this tunnel will use for allowing traffic to backends.
   late final pulumi.Output<String?> tunnelType;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -263,26 +256,17 @@ class TunnelPolicy extends pulumi.CustomResource {
     TunnelPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cdn:TunnelPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cdn:TunnelPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     deploymentStatus = registerOutput<String>('deploymentStatus');
     domains = registerOutput<List<Map<String, dynamic>>>('domains');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetGroups = registerOutput<List<Map<String, dynamic>>?>('targetGroups');
     tunnelType = registerOutput<String?>('tunnelType');
     type = registerOutput<String>('type');

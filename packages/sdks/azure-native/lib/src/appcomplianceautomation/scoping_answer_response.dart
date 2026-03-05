@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScopingAnswerResponse {
   /// Question answer value list.
   final pulumi.Input<List<String>> answers;
-
   /// Question id.
   final pulumi.Input<String> questionId;
 
   /// Creates a new [ScopingAnswerResponse].
   /// [answers] Question answer value list.
   /// [questionId] Question id.
-  ScopingAnswerResponse({required this.answers, required this.questionId});
+  ScopingAnswerResponse({
+    required this.answers,
+    required this.questionId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'answers': answers, 'questionId': questionId};
+    return <String, dynamic>{
+      'answers': answers,
+      'questionId': questionId,
+    };
   }
 
   factory ScopingAnswerResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ScopingAnswerResponse {
     );
   }
 }
+

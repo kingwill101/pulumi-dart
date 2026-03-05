@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadedCertificateResponse {
   /// Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
   final pulumi.Input<bool>? loadTrustStore;
-
   /// Resource Id of loaded certificate
   final pulumi.Input<String> resourceId;
 
   /// Creates a new [LoadedCertificateResponse].
   /// [loadTrustStore] Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
   /// [resourceId] Resource Id of loaded certificate
-  LoadedCertificateResponse({this.loadTrustStore, required this.resourceId});
+  LoadedCertificateResponse({
+    this.loadTrustStore,
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,12 +26,9 @@ class LoadedCertificateResponse {
 
   factory LoadedCertificateResponse.fromMap(Map<String, dynamic> map) {
     return LoadedCertificateResponse(
-      loadTrustStore: (() {
-        final guardedValue = map['loadTrustStore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      loadTrustStore: (() { final guardedValue = map['loadTrustStore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
+

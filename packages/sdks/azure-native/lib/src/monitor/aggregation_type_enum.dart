@@ -18,3 +18,4 @@ enum AggregationTypeEnum {
     throw ArgumentError('Unknown AggregationTypeEnum value: $value');
   }
 }
+

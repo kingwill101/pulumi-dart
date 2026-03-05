@@ -293,31 +293,22 @@ class LinkedServiceAzureSearch extends pulumi.CustomResource {
   ///
   /// The following supported arguments are specific to Azure Search Linked Service:
   late final pulumi.Output<Map<String, String>?> additionalProperties;
-
   /// List of tags that can be used for describing the Data Factory Linked Service.
   late final pulumi.Output<List<String>?> annotations;
-
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
-
   /// The description for the Data Factory Linked Service.
   late final pulumi.Output<String?> description;
-
   /// The encrypted credential to connect to Azure Search Service.
   late final pulumi.Output<String> encryptedCredential;
-
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   late final pulumi.Output<String?> integrationRuntimeName;
-
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
-
   /// A map of parameters to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> parameters;
-
   /// The key of the Azure Search Service.
   late final pulumi.Output<String> searchServiceKey;
-
   /// The URL of the Search Service endpoint (e.g. &lt;https://{searchServiceName}.search.windows.net&gt;).
   late final pulumi.Output<String> url;
 
@@ -330,14 +321,12 @@ class LinkedServiceAzureSearch extends pulumi.CustomResource {
     LinkedServiceAzureSearchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/linkedServiceAzureSearch:LinkedServiceAzureSearch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+          'azure:datafactory/linkedServiceAzureSearch:LinkedServiceAzureSearch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
@@ -367,14 +356,12 @@ class LinkedServiceAzureSearch extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/linkedServiceAzureSearch:LinkedServiceAzureSearch',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+          'azure:datafactory/linkedServiceAzureSearch:LinkedServiceAzureSearch',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');

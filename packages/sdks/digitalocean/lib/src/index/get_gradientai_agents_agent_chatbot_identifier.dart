@@ -8,21 +8,20 @@ class GetGradientaiAgentsAgentChatbotIdentifier {
 
   /// Creates a new [GetGradientaiAgentsAgentChatbotIdentifier].
   /// [chatbotId] Chatbot ID
-  GetGradientaiAgentsAgentChatbotIdentifier({this.chatbotId});
+  GetGradientaiAgentsAgentChatbotIdentifier({
+    this.chatbotId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'chatbotId': ?chatbotId};
+    return <String, dynamic>{
+      'chatbotId': ?chatbotId,
+    };
   }
 
-  factory GetGradientaiAgentsAgentChatbotIdentifier.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGradientaiAgentsAgentChatbotIdentifier.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsAgentChatbotIdentifier(
-      chatbotId: (() {
-        final guardedValue = map['chatbotId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      chatbotId: (() { final guardedValue = map['chatbotId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

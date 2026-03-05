@@ -12,10 +12,14 @@ class GetBucketIamPolicyArgs {
 
   /// Creates a new [GetBucketIamPolicyArgs].
   /// [bucket] Used to find the parent resource to bind the IAM policy to
-  GetBucketIamPolicyArgs({required this.bucket});
+  GetBucketIamPolicyArgs({
+    required this.bucket,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucket': bucket};
+    return <String, dynamic>{
+      'bucket': bucket,
+    };
   }
 
   factory GetBucketIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetBucketIamPolicyArgs {
     );
   }
 }
+

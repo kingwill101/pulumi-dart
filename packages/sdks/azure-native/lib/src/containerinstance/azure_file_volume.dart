@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureFileVolume {
   /// The flag indicating whether the Azure File shared mounted as a volume is read-only.
   final pulumi.Input<bool>? readOnly;
-
   /// The name of the Azure File share to be mounted as a volume.
   final pulumi.Input<String> shareName;
-
   /// The storage account access key used to access the Azure File share.
   final pulumi.Input<String>? storageAccountKey;
-
   /// The reference to the storage account access key used to access the Azure File share.
   final pulumi.Input<String>? storageAccountKeyReference;
-
   /// The name of the storage account that contains the Azure File share.
   final pulumi.Input<String> storageAccountName;
 
@@ -45,25 +41,12 @@ class AzureFileVolume {
 
   factory AzureFileVolume.fromMap(Map<String, dynamic> map) {
     return AzureFileVolume(
-      readOnly: (() {
-        final guardedValue = map['readOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       shareName: pulumi.Input.fromValue(map['shareName'] as String),
-      storageAccountKey: (() {
-        final guardedValue = map['storageAccountKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountKeyReference: (() {
-        final guardedValue = map['storageAccountKeyReference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountName: pulumi.Input.fromValue(
-        map['storageAccountName'] as String,
-      ),
+      storageAccountKey: (() { final guardedValue = map['storageAccountKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountKeyReference: (() { final guardedValue = map['storageAccountKeyReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountName: pulumi.Input.fromValue(map['storageAccountName'] as String),
     );
   }
 }
+

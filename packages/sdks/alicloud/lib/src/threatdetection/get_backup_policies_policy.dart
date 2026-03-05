@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackupPoliciesPolicy {
   /// The ID of the anti-ransomware policy.
   final pulumi.Input<int> backupPolicyId;
-
   /// The name of the anti-ransomware policy.
   final pulumi.Input<String> backupPolicyName;
-
   /// The ID of the anti-ransomware policy.
   final pulumi.Input<int> id;
-
   /// The configurations of the anti-ransomware policy.
   final pulumi.Input<String> policy;
-
   /// The ID of the region that you specified for data backup when you installed the anti-ransomware agent for the server not deployed on Alibaba Cloud.
   final pulumi.Input<String> policyRegionId;
-
   /// The version of the anti-ransomware policy.
   final pulumi.Input<String> policyVersion;
-
   /// The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.
   final pulumi.Input<String> status;
-
   /// The UUIDs of the servers to which the anti-ransomware policy is applied.
   final pulumi.Input<List<String>> uuidLists;
 
@@ -63,17 +56,14 @@ class GetBackupPoliciesPolicy {
   factory GetBackupPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetBackupPoliciesPolicy(
       backupPolicyId: pulumi.Input.fromValue(map['backupPolicyId'] as int),
-      backupPolicyName: pulumi.Input.fromValue(
-        map['backupPolicyName'] as String,
-      ),
+      backupPolicyName: pulumi.Input.fromValue(map['backupPolicyName'] as String),
       id: pulumi.Input.fromValue(map['id'] as int),
       policy: pulumi.Input.fromValue(map['policy'] as String),
       policyRegionId: pulumi.Input.fromValue(map['policyRegionId'] as String),
       policyVersion: pulumi.Input.fromValue(map['policyVersion'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      uuidLists: pulumi.Input.fromValue(
-        (map['uuidLists'] as List).cast<String>(),
-      ),
+      uuidLists: pulumi.Input.fromValue((map['uuidLists'] as List).cast<String>()),
     );
   }
 }
+

@@ -10,27 +10,20 @@ class NodePlacementConfiguration {
 
   /// Creates a new [NodePlacementConfiguration].
   /// [policy] Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy.
-  NodePlacementConfiguration({this.policy});
+  NodePlacementConfiguration({
+    this.policy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policy':
-          ?pulumi.Input.mapOptionalInputValue<NodePlacementPolicyType, String>(
-            policy,
-            (value) => value.wireValue,
-          ),
+      'policy': ?pulumi.Input.mapOptionalInputValue<NodePlacementPolicyType, String>(policy, (value) => value.wireValue),
     };
   }
 
   factory NodePlacementConfiguration.fromMap(Map<String, dynamic> map) {
     return NodePlacementConfiguration(
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodePlacementPolicyType.fromValue(guardedValue as String),
-        );
-      })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePlacementPolicyType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

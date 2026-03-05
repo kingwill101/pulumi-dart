@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv {
   /// The Column Delimiter.
   final pulumi.Input<String> recordColumnDelimiter;
-
   /// The Row Delimiter.
   final pulumi.Input<String> recordRowDelimiter;
 
@@ -24,16 +23,11 @@ class AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv {
     };
   }
 
-  factory AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv(
-      recordColumnDelimiter: pulumi.Input.fromValue(
-        map['recordColumnDelimiter'] as String,
-      ),
-      recordRowDelimiter: pulumi.Input.fromValue(
-        map['recordRowDelimiter'] as String,
-      ),
+      recordColumnDelimiter: pulumi.Input.fromValue(map['recordColumnDelimiter'] as String),
+      recordRowDelimiter: pulumi.Input.fromValue(map['recordRowDelimiter'] as String),
     );
   }
 }
+

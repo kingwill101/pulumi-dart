@@ -366,42 +366,32 @@ import 'mesh_state.dart';
 class Mesh extends pulumi.CustomResource {
   /// Time the Mesh was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the
   /// specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to
   /// be redirected to this port regardless of its actual ip:port destination. If unset, a port
   /// '15001' is used as the interception port. This will is applicable only for sidecar proxy
   /// deployments.
   late final pulumi.Output<int?> interceptionPort;
-
   /// Set of label tags associated with the Mesh resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
   late final pulumi.Output<String?> location;
-
   /// Short name of the Mesh resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Server-defined URL of this resource.
   late final pulumi.Output<String> selfLink;
-
   /// Time the Mesh was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -409,13 +399,16 @@ class Mesh extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Mesh]. {@macro pulumi_networkservices_mesh_mesh_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Mesh(String name, {MeshArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:networkservices/mesh:Mesh',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Mesh(
+    String name, {
+    MeshArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:networkservices/mesh:Mesh',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -430,7 +423,11 @@ class Mesh extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Mesh] resource's state with the given [name] and [id].
-  static Mesh get(String name, pulumi.Input<String> id, {MeshState? state}) {
+  static Mesh get(
+    String name,
+    pulumi.Input<String> id, {
+    MeshState? state,
+  }) {
     return Mesh._get(
       name,
       state: state?.toMap(),
@@ -443,11 +440,11 @@ class Mesh extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networkservices/mesh:Mesh',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networkservices/mesh:Mesh',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

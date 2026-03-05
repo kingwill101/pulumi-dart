@@ -16,3 +16,4 @@ enum Variant {
     throw ArgumentError('Unknown Variant value: $value');
   }
 }
+

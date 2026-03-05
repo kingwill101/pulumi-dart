@@ -250,19 +250,14 @@ import 'global_schema_state.dart';
 class GlobalSchema extends pulumi.CustomResource {
   /// The Name of the API Management Service where the API exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// The description of the schema.
   late final pulumi.Output<String?> description;
-
   /// The Name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A unique identifier for this Schema. Changing this forces a new resource to be created.
   late final pulumi.Output<String> schemaId;
-
   /// The content type of the Schema. Possible values are `xml` and `json`.
   late final pulumi.Output<String> type;
-
   /// The string defining the document representing the Schema.
   late final pulumi.Output<String> value;
 
@@ -275,11 +270,11 @@ class GlobalSchema extends pulumi.CustomResource {
     GlobalSchemaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/globalSchema:GlobalSchema',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/globalSchema:GlobalSchema',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     description = registerOutput<String?>('description');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -306,11 +301,11 @@ class GlobalSchema extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/globalSchema:GlobalSchema',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/globalSchema:GlobalSchema',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     description = registerOutput<String?>('description');
     resourceGroupName = registerOutput<String>('resourceGroupName');

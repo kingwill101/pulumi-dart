@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FolderCloudresourcemanagerV3Args {
   /// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
   final pulumi.Input<String>? displayName;
-
   /// The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
   final pulumi.Input<String> parent;
 
   /// Creates a new [FolderCloudresourcemanagerV3Args].
   /// [displayName] The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
   /// [parent] The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
-  FolderCloudresourcemanagerV3Args({this.displayName, required this.parent});
+  FolderCloudresourcemanagerV3Args({
+    this.displayName,
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'displayName': ?displayName, 'parent': parent};
+    return <String, dynamic>{
+      'displayName': ?displayName,
+      'parent': parent,
+    };
   }
 
   factory FolderCloudresourcemanagerV3Args.fromMap(Map<String, dynamic> map) {
     return FolderCloudresourcemanagerV3Args(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parent: pulumi.Input.fromValue(map['parent'] as String),
     );
   }
 }
+

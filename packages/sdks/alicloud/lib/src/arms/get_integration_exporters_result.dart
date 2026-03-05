@@ -7,14 +7,11 @@ import 'get_integration_exporters_integration_exporter.dart';
 class GetIntegrationExportersResult {
   /// The ID of the Prometheus instance.
   final String clusterId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
-
   /// A list of Integration Exporters. Each element contains the following attributes:
   final List<GetIntegrationExportersIntegrationExporter> integrationExporters;
-
   /// The type of prometheus integration.
   final String integrationType;
   final String? outputFile;
@@ -40,11 +37,7 @@ class GetIntegrationExportersResult {
       'clusterId': clusterId,
       'id': id,
       'ids': ids,
-      'integrationExporters':
-          pulumi.Input.encodeList<
-            GetIntegrationExportersIntegrationExporter,
-            Map<String, dynamic>
-          >(integrationExporters, (value) => value.toMap()),
+      'integrationExporters': pulumi.Input.encodeList<GetIntegrationExportersIntegrationExporter, Map<String, dynamic>>(integrationExporters, (value) => value.toMap()),
       'integrationType': integrationType,
       'outputFile': ?outputFile,
     };
@@ -55,19 +48,10 @@ class GetIntegrationExportersResult {
       clusterId: map['clusterId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      integrationExporters:
-          pulumi.Input.decodeList<GetIntegrationExportersIntegrationExporter>(
-            map['integrationExporters']!,
-            (value) => GetIntegrationExportersIntegrationExporter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      integrationExporters: pulumi.Input.decodeList<GetIntegrationExportersIntegrationExporter>(map['integrationExporters']!, (value) => GetIntegrationExportersIntegrationExporter.fromMap((value as Map).cast<String, dynamic>())),
       integrationType: map['integrationType'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -9,40 +9,28 @@ import 'system_data_response.dart';
 class GetDevCenterResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The URI of the Dev Center.
   final String devCenterUri;
-
   /// The display name of the devcenter.
   final String? displayName;
-
   /// Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations).
   final EncryptionResponse? encryption;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Managed identity properties
   final ManagedServiceIdentityResponse? identity;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// Dev Center settings to be used when associating a project with a catalog.
   final DevCenterProjectCatalogSettingsResponse? projectCatalogSettings;
-
   /// The provisioning state of the resource.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -98,45 +86,18 @@ class GetDevCenterResult {
     return GetDevCenterResult(
       azureApiVersion: map['azureApiVersion'] as String,
       devCenterUri: map['devCenterUri'] as String,
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      encryption: (() {
-        final guardedValue = map['encryption'];
-        if (guardedValue == null) return null;
-        return EncryptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return EncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      projectCatalogSettings: (() {
-        final guardedValue = map['projectCatalogSettings'];
-        if (guardedValue == null) return null;
-        return DevCenterProjectCatalogSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      projectCatalogSettings: (() { final guardedValue = map['projectCatalogSettings']; if (guardedValue == null) return null; return DevCenterProjectCatalogSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

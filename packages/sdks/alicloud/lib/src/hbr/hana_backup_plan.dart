@@ -333,34 +333,25 @@ import 'hana_backup_plan_state.dart';
 class HanaBackupPlan extends pulumi.CustomResource {
   /// The backup prefix.
   late final pulumi.Output<String?> backupPrefix;
-
   /// The backup type. Valid values:
   /// - `COMPLETE`: full backup.
   /// - `INCREMENTAL`: incremental backup.
   /// - `DIFFERENTIAL`: differential backup.
   late final pulumi.Output<String> backupType;
-
   /// The ID of the SAP HANA instance.
   late final pulumi.Output<String> clusterId;
-
   /// The name of the database.
   late final pulumi.Output<String> databaseName;
-
   /// The id of the plan.
   late final pulumi.Output<String> planId;
-
   /// The name of the backup plan.
   late final pulumi.Output<String> planName;
-
   /// The resource attribute field that represents the resource group ID.
   late final pulumi.Output<String?> resourceGroupId;
-
   /// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, I|1631685600|P1D specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
   late final pulumi.Output<String> schedule;
-
   /// The status of the resource. Valid values: `Enabled`, `Disabled`.
   late final pulumi.Output<String> status;
-
   /// The ID of the backup vault.
   late final pulumi.Output<String> vaultId;
 
@@ -373,11 +364,11 @@ class HanaBackupPlan extends pulumi.CustomResource {
     HanaBackupPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/hanaBackupPlan:HanaBackupPlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/hanaBackupPlan:HanaBackupPlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupPrefix = registerOutput<String?>('backupPrefix');
     backupType = registerOutput<String>('backupType');
     clusterId = registerOutput<String>('clusterId');
@@ -408,11 +399,11 @@ class HanaBackupPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/hanaBackupPlan:HanaBackupPlan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/hanaBackupPlan:HanaBackupPlan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupPrefix = registerOutput<String?>('backupPrefix');
     backupType = registerOutput<String>('backupType');
     clusterId = registerOutput<String>('clusterId');

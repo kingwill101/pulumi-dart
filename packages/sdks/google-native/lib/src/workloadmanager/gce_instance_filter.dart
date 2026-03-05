@@ -9,19 +9,20 @@ class GceInstanceFilter {
 
   /// Creates a new [GceInstanceFilter].
   /// [serviceAccounts] Service account of compute engine
-  GceInstanceFilter({this.serviceAccounts});
+  GceInstanceFilter({
+    this.serviceAccounts,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serviceAccounts': ?serviceAccounts};
+    return <String, dynamic>{
+      'serviceAccounts': ?serviceAccounts,
+    };
   }
 
   factory GceInstanceFilter.fromMap(Map<String, dynamic> map) {
     return GceInstanceFilter(
-      serviceAccounts: (() {
-        final guardedValue = map['serviceAccounts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      serviceAccounts: (() { final guardedValue = map['serviceAccounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

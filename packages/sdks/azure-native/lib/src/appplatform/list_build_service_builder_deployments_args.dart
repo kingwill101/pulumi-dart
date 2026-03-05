@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListBuildServiceBuilderDeploymentsArgs {
   /// The name of the build service resource.
   final pulumi.Input<String> buildServiceName;
-
   /// The name of the builder resource.
   final pulumi.Input<String> builderName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -40,18 +37,13 @@ class ListBuildServiceBuilderDeploymentsArgs {
     };
   }
 
-  factory ListBuildServiceBuilderDeploymentsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListBuildServiceBuilderDeploymentsArgs.fromMap(Map<String, dynamic> map) {
     return ListBuildServiceBuilderDeploymentsArgs(
-      buildServiceName: pulumi.Input.fromValue(
-        map['buildServiceName'] as String,
-      ),
+      buildServiceName: pulumi.Input.fromValue(map['buildServiceName'] as String),
       builderName: pulumi.Input.fromValue(map['builderName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

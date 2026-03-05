@@ -6,27 +6,20 @@ import 'system_data_response.dart';
 class GetServerGroupRoleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// A type definition that refers the id to an Azure Resource Manager resource.
   final String objectId;
   final String principalType;
-
   /// Provisioning state of the role
   final String provisioningState;
   final String? roleType;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// A type definition that refers the id to an Azure Resource Manager resource.
   final String? tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -77,20 +70,11 @@ class GetServerGroupRoleResult {
       objectId: map['objectId'] as String,
       principalType: map['principalType'] as String,
       provisioningState: map['provisioningState'] as String,
-      roleType: (() {
-        final guardedValue = map['roleType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      roleType: (() { final guardedValue = map['roleType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

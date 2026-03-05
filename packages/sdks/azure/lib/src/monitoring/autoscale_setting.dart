@@ -2576,28 +2576,20 @@ import 'autoscale_setting_state.dart';
 class AutoscaleSetting extends pulumi.CustomResource {
   /// Specifies whether automatic scaling is enabled for the target resource. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// Specifies the supported Azure location where the AutoScale Setting should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the AutoScale Setting. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies a `notification` block as defined below.
   late final pulumi.Output<AutoscaleSettingNotification?> notification;
-
   /// A `predictive` block as defined below.
   late final pulumi.Output<AutoscaleSettingPredictive?> predictive;
-
   /// Specifies one or more (up to 20) `profile` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> profiles;
-
   /// The name of the Resource Group in the AutoScale Setting should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the resource ID of the resource that the autoscale setting should be added to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetResourceId;
 
@@ -2610,34 +2602,16 @@ class AutoscaleSetting extends pulumi.CustomResource {
     AutoscaleSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/autoscaleSetting:AutoscaleSetting',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:monitoring/autoscaleSetting:AutoscaleSetting',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notification = registerOutput<AutoscaleSettingNotification?>(
-      'notification',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutoscaleSettingNotification.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    predictive = registerOutput<AutoscaleSettingPredictive?>(
-      'predictive',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutoscaleSettingPredictive.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notification = registerOutput<AutoscaleSettingNotification?>('notification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscaleSettingNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    predictive = registerOutput<AutoscaleSettingPredictive?>('predictive', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscaleSettingPredictive.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     profiles = registerOutput<List<Map<String, dynamic>>>('profiles');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -2662,34 +2636,16 @@ class AutoscaleSetting extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/autoscaleSetting:AutoscaleSetting',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:monitoring/autoscaleSetting:AutoscaleSetting',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notification = registerOutput<AutoscaleSettingNotification?>(
-      'notification',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutoscaleSettingNotification.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    predictive = registerOutput<AutoscaleSettingPredictive?>(
-      'predictive',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutoscaleSettingPredictive.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notification = registerOutput<AutoscaleSettingNotification?>('notification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscaleSettingNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    predictive = registerOutput<AutoscaleSettingPredictive?>('predictive', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscaleSettingPredictive.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     profiles = registerOutput<List<Map<String, dynamic>>>('profiles');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');

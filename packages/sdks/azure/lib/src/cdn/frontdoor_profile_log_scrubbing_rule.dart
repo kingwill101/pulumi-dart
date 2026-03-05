@@ -10,10 +10,14 @@ class FrontdoorProfileLogScrubbingRule {
 
   /// Creates a new [FrontdoorProfileLogScrubbingRule].
   /// [matchVariable] The variable to be scrubbed from the logs. Possible values are `QueryStringArgNames`, `RequestIPAddress`, and `RequestUri`.
-  FrontdoorProfileLogScrubbingRule({required this.matchVariable});
+  FrontdoorProfileLogScrubbingRule({
+    required this.matchVariable,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'matchVariable': matchVariable};
+    return <String, dynamic>{
+      'matchVariable': matchVariable,
+    };
   }
 
   factory FrontdoorProfileLogScrubbingRule.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class FrontdoorProfileLogScrubbingRule {
     );
   }
 }
+

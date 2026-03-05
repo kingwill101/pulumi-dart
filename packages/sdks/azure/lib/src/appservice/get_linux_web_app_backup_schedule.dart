@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinuxWebAppBackupSchedule {
   /// How often the backup will be executed.
   final pulumi.Input<int> frequencyInterval;
-
   /// The unit of time for how often the backup should take place.
   final pulumi.Input<String> frequencyUnit;
-
   /// Will the service keep at least one backup, regardless of age of backup.
   final pulumi.Input<bool> keepAtLeastOneBackup;
-
   /// The time of the last backup attempt.
   final pulumi.Input<String> lastExecutionTime;
-
   /// After how many days backups should be deleted.
   final pulumi.Input<int> retentionPeriodDays;
-
   /// When the schedule should start in RFC-3339 format.
   final pulumi.Input<String> startTime;
 
@@ -50,20 +45,13 @@ class GetLinuxWebAppBackupSchedule {
 
   factory GetLinuxWebAppBackupSchedule.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppBackupSchedule(
-      frequencyInterval: pulumi.Input.fromValue(
-        map['frequencyInterval'] as int,
-      ),
+      frequencyInterval: pulumi.Input.fromValue(map['frequencyInterval'] as int),
       frequencyUnit: pulumi.Input.fromValue(map['frequencyUnit'] as String),
-      keepAtLeastOneBackup: pulumi.Input.fromValue(
-        map['keepAtLeastOneBackup'] as bool,
-      ),
-      lastExecutionTime: pulumi.Input.fromValue(
-        map['lastExecutionTime'] as String,
-      ),
-      retentionPeriodDays: pulumi.Input.fromValue(
-        map['retentionPeriodDays'] as int,
-      ),
+      keepAtLeastOneBackup: pulumi.Input.fromValue(map['keepAtLeastOneBackup'] as bool),
+      lastExecutionTime: pulumi.Input.fromValue(map['lastExecutionTime'] as String),
+      retentionPeriodDays: pulumi.Input.fromValue(map['retentionPeriodDays'] as int),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
+

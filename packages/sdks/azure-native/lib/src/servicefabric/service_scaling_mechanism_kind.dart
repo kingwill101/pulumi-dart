@@ -15,3 +15,4 @@ enum ServiceScalingMechanismKind {
     throw ArgumentError('Unknown ServiceScalingMechanismKind value: $value');
   }
 }
+

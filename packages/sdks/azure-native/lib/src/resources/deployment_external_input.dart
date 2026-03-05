@@ -9,13 +9,20 @@ class DeploymentExternalInput {
 
   /// Creates a new [DeploymentExternalInput].
   /// [value] External input value.
-  DeploymentExternalInput({required this.value});
+  DeploymentExternalInput({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory DeploymentExternalInput.fromMap(Map<String, dynamic> map) {
-    return DeploymentExternalInput(value: pulumi.Input.fromValue(map['value']));
+    return DeploymentExternalInput(
+      value: pulumi.Input.fromValue(map['value']),
+    );
   }
 }
+

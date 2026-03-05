@@ -9,21 +9,20 @@ class GooglePrivacyDlpV2CloudStorageFileSet {
 
   /// Creates a new [GooglePrivacyDlpV2CloudStorageFileSet].
   /// [url] The url, in the format `gs:///`. Trailing wildcard in the path is allowed.
-  GooglePrivacyDlpV2CloudStorageFileSet({this.url});
+  GooglePrivacyDlpV2CloudStorageFileSet({
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'url': ?url};
+    return <String, dynamic>{
+      'url': ?url,
+    };
   }
 
-  factory GooglePrivacyDlpV2CloudStorageFileSet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2CloudStorageFileSet.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CloudStorageFileSet(
-      url: (() {
-        final guardedValue = map['url'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum OutputErrorPolicy {
     throw ArgumentError('Unknown OutputErrorPolicy value: $value');
   }
 }
+

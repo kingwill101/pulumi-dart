@@ -274,22 +274,16 @@ import 'system_data_response.dart';
 class MaintenanceConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Maintenance window for the maintenance configuration.
   late final pulumi.Output<MaintenanceWindowResponse?> maintenanceWindow;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String> name;
-
   /// Time slots on which upgrade is not allowed.
   late final pulumi.Output<List<Map<String, dynamic>>?> notAllowedTime;
-
   /// The system metadata relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
   late final pulumi.Output<List<Map<String, dynamic>>?> timeInWeek;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -302,36 +296,16 @@ class MaintenanceConfiguration extends pulumi.CustomResource {
     MaintenanceConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerservice:MaintenanceConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:containerservice:MaintenanceConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    maintenanceWindow = registerOutput<MaintenanceWindowResponse?>(
-      'maintenanceWindow',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MaintenanceWindowResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    maintenanceWindow = registerOutput<MaintenanceWindowResponse?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceWindowResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    notAllowedTime = registerOutput<List<Map<String, dynamic>>?>(
-      'notAllowedTime',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notAllowedTime = registerOutput<List<Map<String, dynamic>>?>('notAllowedTime');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeInWeek = registerOutput<List<Map<String, dynamic>>?>('timeInWeek');
     type = registerOutput<String>('type');
   }

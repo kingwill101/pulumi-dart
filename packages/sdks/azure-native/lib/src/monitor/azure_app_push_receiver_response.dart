@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureAppPushReceiverResponse {
   /// The email address registered for the Azure mobile app.
   final pulumi.Input<String> emailAddress;
-
   /// The name of the Azure mobile app push receiver. Names must be unique across all receivers within a tenant action group.
   final pulumi.Input<String> name;
 
@@ -19,7 +18,10 @@ class AzureAppPushReceiverResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'emailAddress': emailAddress, 'name': name};
+    return <String, dynamic>{
+      'emailAddress': emailAddress,
+      'name': name,
+    };
   }
 
   factory AzureAppPushReceiverResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class AzureAppPushReceiverResponse {
     );
   }
 }
+

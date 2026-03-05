@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProtectedItemArgs {
   /// The protected item name.
   final pulumi.Input<String> protectedItemName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The vault name.
   final pulumi.Input<String> vaultName;
 
@@ -36,13 +34,10 @@ class GetProtectedItemArgs {
 
   factory GetProtectedItemArgs.fromMap(Map<String, dynamic> map) {
     return GetProtectedItemArgs(
-      protectedItemName: pulumi.Input.fromValue(
-        map['protectedItemName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      protectedItemName: pulumi.Input.fromValue(map['protectedItemName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContactProfileThirdPartyConfiguration {
   /// Name of string referencing the configuration describing contact set-up for a particular mission. Expected values are those which have been created in collaboration with the partner network.
   final pulumi.Input<String> missionConfiguration;
-
   /// Name of the third-party provider.
   final pulumi.Input<String> providerName;
 
@@ -25,14 +24,11 @@ class ContactProfileThirdPartyConfiguration {
     };
   }
 
-  factory ContactProfileThirdPartyConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContactProfileThirdPartyConfiguration.fromMap(Map<String, dynamic> map) {
     return ContactProfileThirdPartyConfiguration(
-      missionConfiguration: pulumi.Input.fromValue(
-        map['missionConfiguration'] as String,
-      ),
+      missionConfiguration: pulumi.Input.fromValue(map['missionConfiguration'] as String),
       providerName: pulumi.Input.fromValue(map['providerName'] as String),
     );
   }
 }
+

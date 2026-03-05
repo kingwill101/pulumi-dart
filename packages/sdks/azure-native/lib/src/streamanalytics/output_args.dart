@@ -11,25 +11,18 @@ import 'azure_data_lake_store_output_data_source.dart';
 class OutputArgs {
   /// Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
   final pulumi.Input<AzureDataLakeStoreOutputDataSource>? datasource;
-
   /// The name of the streaming job.
   final pulumi.Input<String> jobName;
-
   /// Resource name
   final pulumi.Input<String>? name;
-
   /// The name of the output.
   final pulumi.Input<String>? outputName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
   final pulumi.Input<AvroSerialization>? serialization;
-
   /// The size window to constrain a Stream Analytics output to.
   final pulumi.Input<int>? sizeWindow;
-
   /// The time frame for filtering Stream Analytics job outputs.
   final pulumi.Input<String>? timeWindow;
 
@@ -55,20 +48,12 @@ class OutputArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datasource':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureDataLakeStoreOutputDataSource,
-            Map<String, dynamic>
-          >(datasource, (value) => value.toMap()),
+      'datasource': ?pulumi.Input.mapOptionalInputValue<AzureDataLakeStoreOutputDataSource, Map<String, dynamic>>(datasource, (value) => value.toMap()),
       'jobName': jobName,
       'name': ?name,
       'outputName': ?outputName,
       'resourceGroupName': resourceGroupName,
-      'serialization':
-          ?pulumi.Input.mapOptionalInputValue<
-            AvroSerialization,
-            Map<String, dynamic>
-          >(serialization, (value) => value.toMap()),
+      'serialization': ?pulumi.Input.mapOptionalInputValue<AvroSerialization, Map<String, dynamic>>(serialization, (value) => value.toMap()),
       'sizeWindow': ?sizeWindow,
       'timeWindow': ?timeWindow,
     };
@@ -76,48 +61,15 @@ class OutputArgs {
 
   factory OutputArgs.fromMap(Map<String, dynamic> map) {
     return OutputArgs(
-      datasource: (() {
-        final guardedValue = map['datasource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureDataLakeStoreOutputDataSource.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      datasource: (() { final guardedValue = map['datasource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureDataLakeStoreOutputDataSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       jobName: pulumi.Input.fromValue(map['jobName'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputName: (() {
-        final guardedValue = map['outputName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      serialization: (() {
-        final guardedValue = map['serialization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AvroSerialization.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sizeWindow: (() {
-        final guardedValue = map['sizeWindow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timeWindow: (() {
-        final guardedValue = map['timeWindow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputName: (() { final guardedValue = map['outputName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      serialization: (() { final guardedValue = map['serialization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AvroSerialization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sizeWindow: (() { final guardedValue = map['sizeWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeWindow: (() { final guardedValue = map['timeWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

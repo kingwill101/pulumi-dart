@@ -11,45 +11,23 @@ class UptimeAlertNotification {
   /// Creates a new [UptimeAlertNotification].
   /// [emails] List of email addresses to sent notifications to.
   /// [slacks] Optional.
-  UptimeAlertNotification({this.emails, this.slacks});
+  UptimeAlertNotification({
+    this.emails,
+    this.slacks,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'emails': ?emails,
-      'slacks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<UptimeAlertNotificationSlack>,
-            List<Map<String, dynamic>>
-          >(
-            slacks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  UptimeAlertNotificationSlack,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'slacks': ?pulumi.Input.mapOptionalInputValue<List<UptimeAlertNotificationSlack>, List<Map<String, dynamic>>>(slacks, (value) => pulumi.Input.encodeList<UptimeAlertNotificationSlack, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory UptimeAlertNotification.fromMap(Map<String, dynamic> map) {
     return UptimeAlertNotification(
-      emails: (() {
-        final guardedValue = map['emails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      slacks: (() {
-        final guardedValue = map['slacks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<UptimeAlertNotificationSlack>(
-            guardedValue,
-            (value) => UptimeAlertNotificationSlack.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      emails: (() { final guardedValue = map['emails']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      slacks: (() { final guardedValue = map['slacks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UptimeAlertNotificationSlack>(guardedValue, (value) => UptimeAlertNotificationSlack.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

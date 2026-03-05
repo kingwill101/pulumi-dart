@@ -7,52 +7,29 @@ import 'google_iam_v1_audit_log_config.dart';
 class GoogleIamV1AuditConfig {
   /// The configuration for logging of each type of permission.
   final pulumi.Input<List<GoogleIamV1AuditLogConfig>>? auditLogConfigs;
-
   /// Specifies a service that will be enabled for audit logging. For example, storage.googleapis.com, cloudsql.googleapis.com. allServices is a special value that covers all services.
   final pulumi.Input<String>? service;
 
   /// Creates a new [GoogleIamV1AuditConfig].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, storage.googleapis.com, cloudsql.googleapis.com. allServices is a special value that covers all services.
-  GoogleIamV1AuditConfig({this.auditLogConfigs, this.service});
+  GoogleIamV1AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleIamV1AuditLogConfig>,
-            List<Map<String, dynamic>>
-          >(
-            auditLogConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleIamV1AuditLogConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'auditLogConfigs': ?pulumi.Input.mapOptionalInputValue<List<GoogleIamV1AuditLogConfig>, List<Map<String, dynamic>>>(auditLogConfigs, (value) => pulumi.Input.encodeList<GoogleIamV1AuditLogConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'service': ?service,
     };
   }
 
   factory GoogleIamV1AuditConfig.fromMap(Map<String, dynamic> map) {
     return GoogleIamV1AuditConfig(
-      auditLogConfigs: (() {
-        final guardedValue = map['auditLogConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GoogleIamV1AuditLogConfig>(
-            guardedValue,
-            (value) => GoogleIamV1AuditLogConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      service: (() {
-        final guardedValue = map['service'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      auditLogConfigs: (() { final guardedValue = map['auditLogConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleIamV1AuditLogConfig>(guardedValue, (value) => GoogleIamV1AuditLogConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

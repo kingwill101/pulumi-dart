@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePerimeterDryRunResourceArgs {
   /// The name of the Service Perimeter to add this resource to.
   final pulumi.Input<String> perimeterName;
-
   /// A GCP resource that is inside of the service perimeter.
   /// Currently only projects are allowed.
   /// Format: projects/{project_number}
@@ -37,3 +36,4 @@ class ServicePerimeterDryRunResourceArgs {
     );
   }
 }
+

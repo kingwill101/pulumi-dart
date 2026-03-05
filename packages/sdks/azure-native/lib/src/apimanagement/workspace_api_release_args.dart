@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceApiReleaseArgs {
   /// Identifier of the API the release belongs to.
   final pulumi.Input<String> apiId;
-
   /// Release Notes
   final pulumi.Input<String>? notes;
-
   /// Release identifier within an API. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? releaseId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
-
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 
@@ -55,21 +50,12 @@ class WorkspaceApiReleaseArgs {
   factory WorkspaceApiReleaseArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceApiReleaseArgs(
       apiId: pulumi.Input.fromValue(map['apiId'] as String),
-      notes: (() {
-        final guardedValue = map['notes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      releaseId: (() {
-        final guardedValue = map['releaseId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      releaseId: (() { final guardedValue = map['releaseId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
+

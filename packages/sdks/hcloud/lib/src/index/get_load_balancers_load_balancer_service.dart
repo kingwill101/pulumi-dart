@@ -6,8 +6,7 @@ import 'get_load_balancers_load_balancer_service_http.dart';
 
 class GetLoadBalancersLoadBalancerService {
   final pulumi.Input<int> destinationPort;
-  final pulumi.Input<List<GetLoadBalancersLoadBalancerServiceHealthCheck>>
-  healthChecks;
+  final pulumi.Input<List<GetLoadBalancersLoadBalancerServiceHealthCheck>> healthChecks;
   final pulumi.Input<List<GetLoadBalancersLoadBalancerServiceHttp>> https;
   final pulumi.Input<int> listenPort;
   final pulumi.Input<String> protocol;
@@ -32,60 +31,23 @@ class GetLoadBalancersLoadBalancerService {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destinationPort': destinationPort,
-      'healthChecks':
-          pulumi.Input.mapInputValue<
-            List<GetLoadBalancersLoadBalancerServiceHealthCheck>,
-            List<Map<String, dynamic>>
-          >(
-            healthChecks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLoadBalancersLoadBalancerServiceHealthCheck,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'https':
-          pulumi.Input.mapInputValue<
-            List<GetLoadBalancersLoadBalancerServiceHttp>,
-            List<Map<String, dynamic>>
-          >(
-            https,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLoadBalancersLoadBalancerServiceHttp,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'healthChecks': pulumi.Input.mapInputValue<List<GetLoadBalancersLoadBalancerServiceHealthCheck>, List<Map<String, dynamic>>>(healthChecks, (value) => pulumi.Input.encodeList<GetLoadBalancersLoadBalancerServiceHealthCheck, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'https': pulumi.Input.mapInputValue<List<GetLoadBalancersLoadBalancerServiceHttp>, List<Map<String, dynamic>>>(https, (value) => pulumi.Input.encodeList<GetLoadBalancersLoadBalancerServiceHttp, Map<String, dynamic>>(value, (value) => value.toMap())),
       'listenPort': listenPort,
       'protocol': protocol,
       'proxyprotocol': proxyprotocol,
     };
   }
 
-  factory GetLoadBalancersLoadBalancerService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLoadBalancersLoadBalancerService.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersLoadBalancerService(
       destinationPort: pulumi.Input.fromValue(map['destinationPort'] as int),
-      healthChecks: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLoadBalancersLoadBalancerServiceHealthCheck>(
-          map['healthChecks']!,
-          (value) => GetLoadBalancersLoadBalancerServiceHealthCheck.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      https: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLoadBalancersLoadBalancerServiceHttp>(
-          map['https']!,
-          (value) => GetLoadBalancersLoadBalancerServiceHttp.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      healthChecks: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLoadBalancersLoadBalancerServiceHealthCheck>(map['healthChecks']!, (value) => GetLoadBalancersLoadBalancerServiceHealthCheck.fromMap((value as Map).cast<String, dynamic>()))),
+      https: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLoadBalancersLoadBalancerServiceHttp>(map['https']!, (value) => GetLoadBalancersLoadBalancerServiceHttp.fromMap((value as Map).cast<String, dynamic>()))),
       listenPort: pulumi.Input.fromValue(map['listenPort'] as int),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       proxyprotocol: pulumi.Input.fromValue(map['proxyprotocol'] as bool),
     );
   }
 }
+

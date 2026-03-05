@@ -9,24 +9,23 @@ class RequestMatchPatternResponse {
   /// Creates a new [RequestMatchPatternResponse].
   /// [method] Optional.
   /// [path] Optional.
-  RequestMatchPatternResponse({this.method, this.path});
+  RequestMatchPatternResponse({
+    this.method,
+    this.path,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'method': ?method, 'path': ?path};
+    return <String, dynamic>{
+      'method': ?method,
+      'path': ?path,
+    };
   }
 
   factory RequestMatchPatternResponse.fromMap(Map<String, dynamic> map) {
     return RequestMatchPatternResponse(
-      method: (() {
-        final guardedValue = map['method'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      method: (() { final guardedValue = map['method']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

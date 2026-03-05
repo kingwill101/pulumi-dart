@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKMSSecretAsymmetricArgs {
   /// The ciphertext to be decrypted, encoded in base64
   final pulumi.Input<String> ciphertext;
-
   /// The crc32 checksum of the `ciphertext` in hexadecimal notation. If not specified, it will be computed.
   final pulumi.Input<String>? crc32;
-
   /// The id of the CryptoKey version that will be used to
   /// decrypt the provided ciphertext. This is represented by the format
   /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`.
@@ -39,14 +37,9 @@ class GetKMSSecretAsymmetricArgs {
   factory GetKMSSecretAsymmetricArgs.fromMap(Map<String, dynamic> map) {
     return GetKMSSecretAsymmetricArgs(
       ciphertext: pulumi.Input.fromValue(map['ciphertext'] as String),
-      crc32: (() {
-        final guardedValue = map['crc32'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cryptoKeyVersion: pulumi.Input.fromValue(
-        map['cryptoKeyVersion'] as String,
-      ),
+      crc32: (() { final guardedValue = map['crc32']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cryptoKeyVersion: pulumi.Input.fromValue(map['cryptoKeyVersion'] as String),
     );
   }
 }
+

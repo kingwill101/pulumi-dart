@@ -29,3 +29,4 @@ enum IotHubDataFormat {
     throw ArgumentError('Unknown IotHubDataFormat value: $value');
   }
 }
+

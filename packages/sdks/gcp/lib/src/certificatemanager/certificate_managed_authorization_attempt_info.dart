@@ -7,13 +7,10 @@ class CertificateManagedAuthorizationAttemptInfo {
   /// address the configuration issues.
   /// Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
   final pulumi.Input<String>? details;
-
   /// Domain name of the authorization attempt.
   final pulumi.Input<String>? domain;
-
   /// Reason for failure of the authorization attempt for the domain.
   final pulumi.Input<String>? failureReason;
-
   /// State of the domain for managed certificate issuance.
   final pulumi.Input<String>? state;
 
@@ -38,30 +35,13 @@ class CertificateManagedAuthorizationAttemptInfo {
     };
   }
 
-  factory CertificateManagedAuthorizationAttemptInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CertificateManagedAuthorizationAttemptInfo.fromMap(Map<String, dynamic> map) {
     return CertificateManagedAuthorizationAttemptInfo(
-      details: (() {
-        final guardedValue = map['details'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      domain: (() {
-        final guardedValue = map['domain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      failureReason: (() {
-        final guardedValue = map['failureReason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      failureReason: (() { final guardedValue = map['failureReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageBlobDestinationResponse {
   /// The container name of the Storage Blob.
   final pulumi.Input<String>? containerName;
-
   /// A friendly name for the destination.
   /// This name should be unique across all destinations (regardless of type) within the data collection rule.
   final pulumi.Input<String>? name;
-
   /// The resource ID of the storage account.
   final pulumi.Input<String>? storageAccountResourceId;
 
@@ -33,21 +31,10 @@ class StorageBlobDestinationResponse {
 
   factory StorageBlobDestinationResponse.fromMap(Map<String, dynamic> map) {
     return StorageBlobDestinationResponse(
-      containerName: (() {
-        final guardedValue = map['containerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountResourceId: (() {
-        final guardedValue = map['storageAccountResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      containerName: (() { final guardedValue = map['containerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountResourceId: (() { final guardedValue = map['storageAccountResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

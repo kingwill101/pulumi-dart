@@ -9,10 +9,14 @@ class ConsoleProfileResponse {
 
   /// Creates a new [ConsoleProfileResponse].
   /// [url] The URL to access the cluster console.
-  ConsoleProfileResponse({required this.url});
+  ConsoleProfileResponse({
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'url': url};
+    return <String, dynamic>{
+      'url': url,
+    };
   }
 
   factory ConsoleProfileResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ConsoleProfileResponse {
     );
   }
 }
+

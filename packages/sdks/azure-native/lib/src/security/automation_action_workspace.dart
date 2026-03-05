@@ -7,7 +7,6 @@ class AutomationActionWorkspace {
   /// The type of the action that will be triggered by the Automation
   /// Expected value is 'Workspace'.
   final pulumi.Input<String> actionType;
-
   /// The fully qualified Log Analytics Workspace Azure Resource ID.
   final pulumi.Input<String>? workspaceResourceId;
 
@@ -29,11 +28,8 @@ class AutomationActionWorkspace {
   factory AutomationActionWorkspace.fromMap(Map<String, dynamic> map) {
     return AutomationActionWorkspace(
       actionType: pulumi.Input.fromValue(map['actionType'] as String),
-      workspaceResourceId: (() {
-        final guardedValue = map['workspaceResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      workspaceResourceId: (() { final guardedValue = map['workspaceResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

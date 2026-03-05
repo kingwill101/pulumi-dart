@@ -7,10 +7,8 @@ import 'cert_manager_private_key.dart';
 class CertManagerCertOptions {
   /// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
   final pulumi.Input<String> duration;
-
   /// Configuration of certificate private key.
   final pulumi.Input<CertManagerPrivateKey> privateKey;
-
   /// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
   final pulumi.Input<String> renewBefore;
 
@@ -27,11 +25,7 @@ class CertManagerCertOptions {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'duration': duration,
-      'privateKey':
-          pulumi.Input.mapInputValue<
-            CertManagerPrivateKey,
-            Map<String, dynamic>
-          >(privateKey, (value) => value.toMap()),
+      'privateKey': pulumi.Input.mapInputValue<CertManagerPrivateKey, Map<String, dynamic>>(privateKey, (value) => value.toMap()),
       'renewBefore': renewBefore,
     };
   }
@@ -39,12 +33,9 @@ class CertManagerCertOptions {
   factory CertManagerCertOptions.fromMap(Map<String, dynamic> map) {
     return CertManagerCertOptions(
       duration: pulumi.Input.fromValue(map['duration'] as String),
-      privateKey: pulumi.Input.fromValue(
-        CertManagerPrivateKey.fromMap(
-          (map['privateKey']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      privateKey: pulumi.Input.fromValue(CertManagerPrivateKey.fromMap((map['privateKey']! as Map).cast<String, dynamic>())),
       renewBefore: pulumi.Input.fromValue(map['renewBefore'] as String),
     );
   }
 }
+

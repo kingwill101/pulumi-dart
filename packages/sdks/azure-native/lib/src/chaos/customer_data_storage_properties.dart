@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomerDataStorageProperties {
   /// Name of the Azure Blob Storage container to use or create.
   final pulumi.Input<String>? blobContainerName;
-
   /// ARM Resource ID of the Storage account to use for Customer Data storage.
   final pulumi.Input<String>? storageAccountResourceId;
 
@@ -27,16 +26,9 @@ class CustomerDataStorageProperties {
 
   factory CustomerDataStorageProperties.fromMap(Map<String, dynamic> map) {
     return CustomerDataStorageProperties(
-      blobContainerName: (() {
-        final guardedValue = map['blobContainerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountResourceId: (() {
-        final guardedValue = map['storageAccountResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      blobContainerName: (() { final guardedValue = map['blobContainerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountResourceId: (() { final guardedValue = map['storageAccountResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

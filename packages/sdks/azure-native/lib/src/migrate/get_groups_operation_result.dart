@@ -6,43 +6,30 @@ import 'system_data_response.dart';
 class GetGroupsOperationResult {
   /// If the assessments are in running state.
   final bool areAssessmentsRunning;
-
   /// List of References to Assessments created on this group.
   final List<String> assessments;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Time when this group was created. Date-Time represented in ISO-8601 format.
   final String createdTimestamp;
-
   /// Whether the group has been created and is valid.
   final String groupStatus;
-
   /// The type of group.
   final String? groupType;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Number of machines part of this group.
   final int machineCount;
-
   /// The name of the resource
   final String name;
-
   /// The status of the last operation.
   final String? provisioningState;
-
   /// List of assessment types supported on this group.
   final List<String>? supportedAssessmentTypes;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Time when this group was last updated. Date-Time represented in ISO-8601 format.
   final String updatedTimestamp;
 
@@ -104,29 +91,16 @@ class GetGroupsOperationResult {
       azureApiVersion: map['azureApiVersion'] as String,
       createdTimestamp: map['createdTimestamp'] as String,
       groupStatus: map['groupStatus'] as String,
-      groupType: (() {
-        final guardedValue = map['groupType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      groupType: (() { final guardedValue = map['groupType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       machineCount: map['machineCount'] as int,
       name: map['name'] as String,
-      provisioningState: (() {
-        final guardedValue = map['provisioningState'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      supportedAssessmentTypes: (() {
-        final guardedValue = map['supportedAssessmentTypes'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      supportedAssessmentTypes: (() { final guardedValue = map['supportedAssessmentTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       updatedTimestamp: map['updatedTimestamp'] as String,
     );
   }
 }
+

@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseBackupInfoResponse {
   /// The list of backup files for the current database.
   final pulumi.Input<List<String>> backupFiles;
-
   /// Date and time when the backup operation finished.
   final pulumi.Input<String> backupFinishDate;
-
   /// Backup Type.
   final pulumi.Input<String> backupType;
-
   /// Database name.
   final pulumi.Input<String> databaseName;
-
   /// Number of files in the backup set.
   final pulumi.Input<int> familyCount;
-
   /// Whether the backup set is compressed
   final pulumi.Input<bool> isCompressed;
-
   /// Database was damaged when backed up, but the backup operation was requested to continue despite errors.
   final pulumi.Input<bool> isDamaged;
-
   /// Position of current database backup in the file.
   final pulumi.Input<int> position;
 
@@ -63,12 +56,8 @@ class DatabaseBackupInfoResponse {
 
   factory DatabaseBackupInfoResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseBackupInfoResponse(
-      backupFiles: pulumi.Input.fromValue(
-        (map['backupFiles'] as List).cast<String>(),
-      ),
-      backupFinishDate: pulumi.Input.fromValue(
-        map['backupFinishDate'] as String,
-      ),
+      backupFiles: pulumi.Input.fromValue((map['backupFiles'] as List).cast<String>()),
+      backupFinishDate: pulumi.Input.fromValue(map['backupFinishDate'] as String),
       backupType: pulumi.Input.fromValue(map['backupType'] as String),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
       familyCount: pulumi.Input.fromValue(map['familyCount'] as int),
@@ -78,3 +67,4 @@ class DatabaseBackupInfoResponse {
     );
   }
 }
+

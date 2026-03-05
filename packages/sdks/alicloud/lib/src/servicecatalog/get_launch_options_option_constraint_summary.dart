@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLaunchOptionsOptionConstraintSummary {
   /// Constraint type.The value is Launch, which indicates that the constraint is started.
   final pulumi.Input<String> constraintType;
-
   /// Constraint description.
   final pulumi.Input<String> description;
 
@@ -24,12 +23,11 @@ class GetLaunchOptionsOptionConstraintSummary {
     };
   }
 
-  factory GetLaunchOptionsOptionConstraintSummary.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLaunchOptionsOptionConstraintSummary.fromMap(Map<String, dynamic> map) {
     return GetLaunchOptionsOptionConstraintSummary(
       constraintType: pulumi.Input.fromValue(map['constraintType'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
     );
   }
 }
+

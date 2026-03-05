@@ -8,13 +8,10 @@ import 'core_network_segment.dart';
 class CoreNetworkState {
   /// Core Network ARN.
   final pulumi.Input<String>? arn;
-
   /// Sets the base policy document for the core network. Refer to the [Core network policies documentation](https://docs.aws.amazon.com/network-manager/latest/cloudwan/cloudwan-policy-change-sets.html) for more information.
   final pulumi.Input<String>? basePolicyDocument;
-
   /// List of regions to add to the base policy. The base policy created by setting the `create_base_policy` argument to `true` requires one or more regions to be set in the `edge-locations`, `location` key. If `base_policy_regions` is not specified, the region used in the base policy defaults to the region specified in the `provider` block.
   final pulumi.Input<List<String>>? basePolicyRegions;
-
   /// Whether to create a base policy when a core network is created or updated. A base policy is created and set to `LIVE` to allow attachments to the core network (e.g. VPC Attachments) before applying a policy document provided using the `aws.networkmanager.CoreNetworkPolicyAttachment` resource. This base policy is needed if your core network does not have any `LIVE` policies and your policy document has static routes pointing to VPC attachments and you want to attach your VPCs to the core network before applying the desired policy document. Valid values are `true` or `false`. An example of this Pulumi snippet can be found above for VPC Attachment in a single region and for VPC Attachment multi-region. An example base policy is shown below. This base policy is overridden with the policy that you specify in the `aws.networkmanager.CoreNetworkPolicyAttachment` resource.
   ///
   /// ```json
@@ -42,30 +39,22 @@ class CoreNetworkState {
   /// }
   /// ```
   final pulumi.Input<bool>? createBasePolicy;
-
   /// Timestamp when a core network was created.
   final pulumi.Input<String>? createdAt;
-
   /// Description of the Core Network.
   final pulumi.Input<String>? description;
-
   /// One or more blocks detailing the edges within a core network. Detailed below.
   final pulumi.Input<List<CoreNetworkEdge>>? edges;
-
   /// ID of the global network that a core network will be a part of.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? globalNetworkId;
-
   /// One or more blocks detailing the segments within a core network. Detailed below.
   final pulumi.Input<List<CoreNetworkSegment>>? segments;
-
   /// Current state of a core network.
   final pulumi.Input<String>? state;
-
   /// Key-value tags for the Core Network. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -105,31 +94,9 @@ class CoreNetworkState {
       'createBasePolicy': ?createBasePolicy,
       'createdAt': ?createdAt,
       'description': ?description,
-      'edges':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CoreNetworkEdge>,
-            List<Map<String, dynamic>>
-          >(
-            edges,
-            (value) =>
-                pulumi.Input.encodeList<CoreNetworkEdge, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'edges': ?pulumi.Input.mapOptionalInputValue<List<CoreNetworkEdge>, List<Map<String, dynamic>>>(edges, (value) => pulumi.Input.encodeList<CoreNetworkEdge, Map<String, dynamic>>(value, (value) => value.toMap())),
       'globalNetworkId': ?globalNetworkId,
-      'segments':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CoreNetworkSegment>,
-            List<Map<String, dynamic>>
-          >(
-            segments,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CoreNetworkSegment,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'segments': ?pulumi.Input.mapOptionalInputValue<List<CoreNetworkSegment>, List<Map<String, dynamic>>>(segments, (value) => pulumi.Input.encodeList<CoreNetworkSegment, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': ?state,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
@@ -138,83 +105,19 @@ class CoreNetworkState {
 
   factory CoreNetworkState.fromMap(Map<String, dynamic> map) {
     return CoreNetworkState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      basePolicyDocument: (() {
-        final guardedValue = map['basePolicyDocument'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      basePolicyRegions: (() {
-        final guardedValue = map['basePolicyRegions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      createBasePolicy: (() {
-        final guardedValue = map['createBasePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      createdAt: (() {
-        final guardedValue = map['createdAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      edges: (() {
-        final guardedValue = map['edges'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CoreNetworkEdge>(
-            guardedValue,
-            (value) =>
-                CoreNetworkEdge.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      globalNetworkId: (() {
-        final guardedValue = map['globalNetworkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      segments: (() {
-        final guardedValue = map['segments'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CoreNetworkSegment>(
-            guardedValue,
-            (value) => CoreNetworkSegment.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      basePolicyDocument: (() { final guardedValue = map['basePolicyDocument']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      basePolicyRegions: (() { final guardedValue = map['basePolicyRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      createBasePolicy: (() { final guardedValue = map['createBasePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      edges: (() { final guardedValue = map['edges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CoreNetworkEdge>(guardedValue, (value) => CoreNetworkEdge.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      globalNetworkId: (() { final guardedValue = map['globalNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      segments: (() { final guardedValue = map['segments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CoreNetworkSegment>(guardedValue, (value) => CoreNetworkSegment.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -12,7 +12,6 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfig {
   /// e.g.
   /// `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
   final pulumi.Input<String>? deidentifyTemplate;
-
   /// Sensitive Data Protection inspect template resource name
   /// If only inspect template is provided (de-identify template not provided),
   /// then Sensitive Data Protection InspectContent action is performed during
@@ -37,20 +36,11 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfig {
     };
   }
 
-  factory FloorsettingFilterConfigSdpSettingsAdvancedConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FloorsettingFilterConfigSdpSettingsAdvancedConfig.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigSdpSettingsAdvancedConfig(
-      deidentifyTemplate: (() {
-        final guardedValue = map['deidentifyTemplate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      inspectTemplate: (() {
-        final guardedValue = map['inspectTemplate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deidentifyTemplate: (() { final guardedValue = map['deidentifyTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      inspectTemplate: (() { final guardedValue = map['inspectTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

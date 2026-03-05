@@ -520,22 +520,16 @@ import 'read_write_splitting_connection_state.dart';
 class ReadWriteSplittingConnection extends pulumi.CustomResource {
   /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + 'rw'.
   late final pulumi.Output<String?> connectionPrefix;
-
   /// Connection instance string.
   late final pulumi.Output<String> connectionString;
-
   /// Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
   late final pulumi.Output<String> distributionType;
-
   /// The Id of instance that can run database.
   late final pulumi.Output<String> instanceId;
-
   /// Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
   late final pulumi.Output<int> maxDelayTime;
-
   /// Intranet connection port. Valid value: [3001-3999]. Default to 3306.
   late final pulumi.Output<int> port;
-
   /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
   late final pulumi.Output<Map<String, String>?> weight;
 
@@ -548,11 +542,11 @@ class ReadWriteSplittingConnection extends pulumi.CustomResource {
     ReadWriteSplittingConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionPrefix = registerOutput<String?>('connectionPrefix');
     connectionString = registerOutput<String>('connectionString');
     distributionType = registerOutput<String>('distributionType');
@@ -580,11 +574,11 @@ class ReadWriteSplittingConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionPrefix = registerOutput<String?>('connectionPrefix');
     connectionString = registerOutput<String>('connectionString');
     distributionType = registerOutput<String>('distributionType');

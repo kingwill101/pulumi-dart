@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHciClusterIdentity {
   /// The Principal ID associated with this Managed Service Identity.
   final pulumi.Input<String> principalId;
-
   /// The Tenant ID associated with this Managed Service Identity.
   final pulumi.Input<String> tenantId;
-
   /// (Required) The type of Managed Service Identity configured on the Azure Stack HCI Cluster.
   final pulumi.Input<String> type;
 
@@ -38,3 +36,4 @@ class GetHciClusterIdentity {
     );
   }
 }
+

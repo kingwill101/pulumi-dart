@@ -481,19 +481,14 @@ import 'language_model_state.dart';
 class LanguageModel extends pulumi.CustomResource {
   /// ARN of the LanguageModel.
   late final pulumi.Output<String> arn;
-
   /// Name of reference base model.
   late final pulumi.Output<String> baseModelName;
-
   /// The input data config for the LanguageModel. See Input Data Config for more details.
   late final pulumi.Output<LanguageModelInputDataConfig> inputDataConfig;
-
   /// The language code you selected for your language model. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
   late final pulumi.Output<String> languageCode;
-
   /// The model name.
   late final pulumi.Output<String> modelName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<Map<String, String>?> tags;
@@ -508,23 +503,14 @@ class LanguageModel extends pulumi.CustomResource {
     LanguageModelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:transcribe/languageModel:LanguageModel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:transcribe/languageModel:LanguageModel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     baseModelName = registerOutput<String>('baseModelName');
-    inputDataConfig = registerOutput<LanguageModelInputDataConfig>(
-      'inputDataConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LanguageModelInputDataConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    inputDataConfig = registerOutput<LanguageModelInputDataConfig>('inputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LanguageModelInputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     languageCode = registerOutput<String>('languageCode');
     modelName = registerOutput<String>('modelName');
     region = registerOutput<String>('region');
@@ -550,23 +536,14 @@ class LanguageModel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:transcribe/languageModel:LanguageModel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:transcribe/languageModel:LanguageModel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     baseModelName = registerOutput<String>('baseModelName');
-    inputDataConfig = registerOutput<LanguageModelInputDataConfig>(
-      'inputDataConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LanguageModelInputDataConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    inputDataConfig = registerOutput<LanguageModelInputDataConfig>('inputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LanguageModelInputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     languageCode = registerOutput<String>('languageCode');
     modelName = registerOutput<String>('modelName');
     region = registerOutput<String>('region');

@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProducerImageShareGroupMembersMember {
   /// When the member was created.
   final pulumi.Input<String> created;
-
   /// When the member will expire.
   final pulumi.Input<String> expiry;
-
   /// The label of the member.
   final pulumi.Input<String> label;
-
   /// The ID of the Image Share Group for which to list members.
   final pulumi.Input<int> sharegroupId;
-
   /// The status of the member.
   final pulumi.Input<String> status;
-
   /// The UUID of member's token.
   final pulumi.Input<String> tokenUuid;
-
   /// When the member was last updated.
   final pulumi.Input<String> updated;
 
@@ -54,9 +48,7 @@ class GetProducerImageShareGroupMembersMember {
     };
   }
 
-  factory GetProducerImageShareGroupMembersMember.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetProducerImageShareGroupMembersMember.fromMap(Map<String, dynamic> map) {
     return GetProducerImageShareGroupMembersMember(
       created: pulumi.Input.fromValue(map['created'] as String),
       expiry: pulumi.Input.fromValue(map['expiry'] as String),
@@ -68,3 +60,4 @@ class GetProducerImageShareGroupMembersMember {
     );
   }
 }
+

@@ -243,38 +243,28 @@ import 'subscription_state.dart';
 class Subscription extends pulumi.CustomResource {
   /// Determines whether tracing can be enabled. Defaults to `true`.
   late final pulumi.Output<bool?> allowTracing;
-
   /// The ID of the API which should be assigned to this Subscription. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Only one of `product_id` and `api_id` can be set. If both are missing `/apis` scope is used for the subscription and all apis are accessible.
   late final pulumi.Output<String?> apiId;
-
   /// The name of the API Management Service where this Subscription should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// The display name of this Subscription.
   late final pulumi.Output<String> displayName;
-
   /// The primary subscription key to use for the subscription.
   late final pulumi.Output<String> primaryKey;
-
   /// The ID of the Product which should be assigned to this Subscription. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Only one of `product_id` and `api_id` can be set. If both are missing `all_apis` scope is used for the subscription.
   late final pulumi.Output<String?> productId;
-
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The secondary subscription key to use for the subscription.
   late final pulumi.Output<String> secondaryKey;
-
   /// The state of this Subscription. Possible values are `active`, `cancelled`, `expired`, `rejected`, `submitted` and `suspended`. Defaults to `submitted`.
   late final pulumi.Output<String?> state;
-
   /// An Identifier which should used as the ID of this Subscription. If not specified a new Subscription ID will be generated. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subscriptionId;
-
   /// The ID of the User which should be assigned to this Subscription. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> userId;
 
@@ -287,11 +277,11 @@ class Subscription extends pulumi.CustomResource {
     SubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/subscription:Subscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/subscription:Subscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowTracing = registerOutput<bool?>('allowTracing');
     apiId = registerOutput<String?>('apiId');
     apiManagementName = registerOutput<String>('apiManagementName');
@@ -323,11 +313,11 @@ class Subscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/subscription:Subscription',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/subscription:Subscription',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowTracing = registerOutput<bool?>('allowTracing');
     apiId = registerOutput<String?>('apiId');
     apiManagementName = registerOutput<String>('apiManagementName');

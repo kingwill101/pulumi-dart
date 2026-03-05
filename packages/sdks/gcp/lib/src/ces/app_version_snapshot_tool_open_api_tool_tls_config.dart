@@ -8,48 +8,24 @@ class AppVersionSnapshotToolOpenApiToolTlsConfig {
   /// Specifies a list of allowed custom CA certificates for HTTPS
   /// verification.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolTlsConfigCaCert>>?
-  caCerts;
+  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolTlsConfigCaCert>>? caCerts;
 
   /// Creates a new [AppVersionSnapshotToolOpenApiToolTlsConfig].
   /// [caCerts] (Output)
-  AppVersionSnapshotToolOpenApiToolTlsConfig({this.caCerts});
+  AppVersionSnapshotToolOpenApiToolTlsConfig({
+    this.caCerts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caCerts':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AppVersionSnapshotToolOpenApiToolTlsConfigCaCert>,
-            List<Map<String, dynamic>>
-          >(
-            caCerts,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AppVersionSnapshotToolOpenApiToolTlsConfigCaCert,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'caCerts': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotToolOpenApiToolTlsConfigCaCert>, List<Map<String, dynamic>>>(caCerts, (value) => pulumi.Input.encodeList<AppVersionSnapshotToolOpenApiToolTlsConfigCaCert, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory AppVersionSnapshotToolOpenApiToolTlsConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolOpenApiToolTlsConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolTlsConfig(
-      caCerts: (() {
-        final guardedValue = map['caCerts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            AppVersionSnapshotToolOpenApiToolTlsConfigCaCert
-          >(
-            guardedValue,
-            (value) => AppVersionSnapshotToolOpenApiToolTlsConfigCaCert.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      caCerts: (() { final guardedValue = map['caCerts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiToolTlsConfigCaCert>(guardedValue, (value) => AppVersionSnapshotToolOpenApiToolTlsConfigCaCert.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

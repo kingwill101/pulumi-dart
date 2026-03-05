@@ -7,29 +7,20 @@ import 'pipe_source_parameters_self_managed_kafka_parameters_vpc.dart';
 class PipeSourceParametersSelfManagedKafkaParameters {
   /// An array of server URLs. Maximum number of 2 items, each of maximum length 300.
   final pulumi.Input<List<String>>? additionalBootstrapServers;
-
   /// The maximum number of records to include in each batch. Maximum value of 10000.
   final pulumi.Input<int>? batchSize;
-
   /// The name of the destination queue to consume. Maximum value of 200.
   final pulumi.Input<String>? consumerGroupId;
-
   /// The credentials needed to access the resource. Detailed below.
-  final pulumi.Input<PipeSourceParametersSelfManagedKafkaParametersCredentials>?
-  credentials;
-
+  final pulumi.Input<PipeSourceParametersSelfManagedKafkaParametersCredentials>? credentials;
   /// The maximum length of a time to wait for events. Maximum value of 300.
   final pulumi.Input<int>? maximumBatchingWindowInSeconds;
-
   /// The ARN of the Secrets Manager secret used for certification.
   final pulumi.Input<String>? serverRootCaCertificate;
-
   /// The position in a stream from which to start reading. Valid values: TRIM_HORIZON, LATEST.
   final pulumi.Input<String>? startingPosition;
-
   /// The name of the topic that the pipe will read from. Maximum length of 249.
   final pulumi.Input<String> topicName;
-
   /// This structure specifies the VPC subnets and security groups for the stream, and whether a public IP address is to be used. Detailed below.
   final pulumi.Input<PipeSourceParametersSelfManagedKafkaParametersVpc>? vpc;
 
@@ -60,76 +51,27 @@ class PipeSourceParametersSelfManagedKafkaParameters {
       'additionalBootstrapServers': ?additionalBootstrapServers,
       'batchSize': ?batchSize,
       'consumerGroupId': ?consumerGroupId,
-      'credentials':
-          ?pulumi.Input.mapOptionalInputValue<
-            PipeSourceParametersSelfManagedKafkaParametersCredentials,
-            Map<String, dynamic>
-          >(credentials, (value) => value.toMap()),
+      'credentials': ?pulumi.Input.mapOptionalInputValue<PipeSourceParametersSelfManagedKafkaParametersCredentials, Map<String, dynamic>>(credentials, (value) => value.toMap()),
       'maximumBatchingWindowInSeconds': ?maximumBatchingWindowInSeconds,
       'serverRootCaCertificate': ?serverRootCaCertificate,
       'startingPosition': ?startingPosition,
       'topicName': topicName,
-      'vpc':
-          ?pulumi.Input.mapOptionalInputValue<
-            PipeSourceParametersSelfManagedKafkaParametersVpc,
-            Map<String, dynamic>
-          >(vpc, (value) => value.toMap()),
+      'vpc': ?pulumi.Input.mapOptionalInputValue<PipeSourceParametersSelfManagedKafkaParametersVpc, Map<String, dynamic>>(vpc, (value) => value.toMap()),
     };
   }
 
-  factory PipeSourceParametersSelfManagedKafkaParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeSourceParametersSelfManagedKafkaParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersSelfManagedKafkaParameters(
-      additionalBootstrapServers: (() {
-        final guardedValue = map['additionalBootstrapServers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      batchSize: (() {
-        final guardedValue = map['batchSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      consumerGroupId: (() {
-        final guardedValue = map['consumerGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      credentials: (() {
-        final guardedValue = map['credentials'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PipeSourceParametersSelfManagedKafkaParametersCredentials.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      maximumBatchingWindowInSeconds: (() {
-        final guardedValue = map['maximumBatchingWindowInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      serverRootCaCertificate: (() {
-        final guardedValue = map['serverRootCaCertificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startingPosition: (() {
-        final guardedValue = map['startingPosition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalBootstrapServers: (() { final guardedValue = map['additionalBootstrapServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      consumerGroupId: (() { final guardedValue = map['consumerGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipeSourceParametersSelfManagedKafkaParametersCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      maximumBatchingWindowInSeconds: (() { final guardedValue = map['maximumBatchingWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      serverRootCaCertificate: (() { final guardedValue = map['serverRootCaCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startingPosition: (() { final guardedValue = map['startingPosition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       topicName: pulumi.Input.fromValue(map['topicName'] as String),
-      vpc: (() {
-        final guardedValue = map['vpc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PipeSourceParametersSelfManagedKafkaParametersVpc.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      vpc: (() { final guardedValue = map['vpc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipeSourceParametersSelfManagedKafkaParametersVpc.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

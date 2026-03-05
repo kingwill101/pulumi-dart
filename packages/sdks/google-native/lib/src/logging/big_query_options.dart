@@ -9,19 +9,20 @@ class BigQueryOptions {
 
   /// Creates a new [BigQueryOptions].
   /// [usePartitionedTables] Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Cloud Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
-  BigQueryOptions({this.usePartitionedTables});
+  BigQueryOptions({
+    this.usePartitionedTables,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'usePartitionedTables': ?usePartitionedTables};
+    return <String, dynamic>{
+      'usePartitionedTables': ?usePartitionedTables,
+    };
   }
 
   factory BigQueryOptions.fromMap(Map<String, dynamic> map) {
     return BigQueryOptions(
-      usePartitionedTables: (() {
-        final guardedValue = map['usePartitionedTables'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      usePartitionedTables: (() { final guardedValue = map['usePartitionedTables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

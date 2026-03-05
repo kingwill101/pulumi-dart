@@ -1,7 +1,5 @@
 enum CertificateExtensionConstraintsKnownExtensionsItem {
-  knownCertificateExtensionUnspecified(
-    "KNOWN_CERTIFICATE_EXTENSION_UNSPECIFIED",
-  ),
+  knownCertificateExtensionUnspecified("KNOWN_CERTIFICATE_EXTENSION_UNSPECIFIED"),
   baseKeyUsage("BASE_KEY_USAGE"),
   extendedKeyUsage("EXTENDED_KEY_USAGE"),
   caOptions("CA_OPTIONS"),
@@ -12,17 +10,13 @@ enum CertificateExtensionConstraintsKnownExtensionsItem {
   const CertificateExtensionConstraintsKnownExtensionsItem(this.wireValue);
   final String wireValue;
 
-  static CertificateExtensionConstraintsKnownExtensionsItem fromValue(
-    String value,
-  ) {
-    for (final item
-        in CertificateExtensionConstraintsKnownExtensionsItem.values) {
+  static CertificateExtensionConstraintsKnownExtensionsItem fromValue(String value) {
+    for (final item in CertificateExtensionConstraintsKnownExtensionsItem.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown CertificateExtensionConstraintsKnownExtensionsItem value: $value',
-    );
+    throw ArgumentError('Unknown CertificateExtensionConstraintsKnownExtensionsItem value: $value');
   }
 }
+

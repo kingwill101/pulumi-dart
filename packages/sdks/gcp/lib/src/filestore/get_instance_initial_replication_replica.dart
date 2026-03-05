@@ -8,17 +8,20 @@ class GetInstanceInitialReplicationReplica {
 
   /// Creates a new [GetInstanceInitialReplicationReplica].
   /// [peerInstance] The peer instance.
-  GetInstanceInitialReplicationReplica({required this.peerInstance});
+  GetInstanceInitialReplicationReplica({
+    required this.peerInstance,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'peerInstance': peerInstance};
+    return <String, dynamic>{
+      'peerInstance': peerInstance,
+    };
   }
 
-  factory GetInstanceInitialReplicationReplica.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceInitialReplicationReplica.fromMap(Map<String, dynamic> map) {
     return GetInstanceInitialReplicationReplica(
       peerInstance: pulumi.Input.fromValue(map['peerInstance'] as String),
     );
   }
 }
+

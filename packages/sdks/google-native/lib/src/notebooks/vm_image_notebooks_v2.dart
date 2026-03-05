@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmImageNotebooksV2 {
   /// Optional. Use this VM image family to find the image; the newest image in this family will be used.
   final pulumi.Input<String>? family;
-
   /// Optional. Use VM image name to find the image.
   final pulumi.Input<String>? name;
-
   /// The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
   final pulumi.Input<String> project;
 
@@ -17,7 +15,11 @@ class VmImageNotebooksV2 {
   /// [family] Optional. Use this VM image family to find the image; the newest image in this family will be used.
   /// [name] Optional. Use VM image name to find the image.
   /// [project] The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
-  VmImageNotebooksV2({this.family, this.name, required this.project});
+  VmImageNotebooksV2({
+    this.family,
+    this.name,
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,17 +31,10 @@ class VmImageNotebooksV2 {
 
   factory VmImageNotebooksV2.fromMap(Map<String, dynamic> map) {
     return VmImageNotebooksV2(
-      family: (() {
-        final guardedValue = map['family'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
+

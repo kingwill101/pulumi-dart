@@ -9,16 +9,12 @@ import 'priority_level_configuration_status_patch.dart';
 class PriorityLevelConfigurationPatch {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
-
   /// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMetaPatch>? metadata;
-
   /// `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   final pulumi.Input<PriorityLevelConfigurationSpecPatch>? spec;
-
   /// `status` is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   final pulumi.Input<PriorityLevelConfigurationStatusPatch>? status;
 
@@ -40,63 +36,20 @@ class PriorityLevelConfigurationPatch {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata':
-          ?pulumi.Input.mapOptionalInputValue<
-            ObjectMetaPatch,
-            Map<String, dynamic>
-          >(metadata, (value) => value.toMap()),
-      'spec':
-          ?pulumi.Input.mapOptionalInputValue<
-            PriorityLevelConfigurationSpecPatch,
-            Map<String, dynamic>
-          >(spec, (value) => value.toMap()),
-      'status':
-          ?pulumi.Input.mapOptionalInputValue<
-            PriorityLevelConfigurationStatusPatch,
-            Map<String, dynamic>
-          >(status, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<PriorityLevelConfigurationSpecPatch, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<PriorityLevelConfigurationStatusPatch, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory PriorityLevelConfigurationPatch.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationPatch(
-      apiVersion: (() {
-        final guardedValue = map['apiVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ObjectMetaPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      spec: (() {
-        final guardedValue = map['spec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PriorityLevelConfigurationSpecPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PriorityLevelConfigurationStatusPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PriorityLevelConfigurationSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PriorityLevelConfigurationStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

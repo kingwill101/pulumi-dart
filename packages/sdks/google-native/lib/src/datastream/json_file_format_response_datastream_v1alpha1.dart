@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JsonFileFormatResponseDatastreamV1alpha1 {
   /// Compression of the loaded JSON file.
   final pulumi.Input<String> compression;
-
   /// The schema file format along JSON data files.
   final pulumi.Input<String> schemaFileFormat;
 
@@ -25,14 +24,11 @@ class JsonFileFormatResponseDatastreamV1alpha1 {
     };
   }
 
-  factory JsonFileFormatResponseDatastreamV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JsonFileFormatResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return JsonFileFormatResponseDatastreamV1alpha1(
       compression: pulumi.Input.fromValue(map['compression'] as String),
-      schemaFileFormat: pulumi.Input.fromValue(
-        map['schemaFileFormat'] as String,
-      ),
+      schemaFileFormat: pulumi.Input.fromValue(map['schemaFileFormat'] as String),
     );
   }
 }
+

@@ -11,10 +11,8 @@ class BoundaryArgs {
   /// boundary.
   /// Format: `projects/{project-number}`
   final pulumi.Input<String>? crmNode;
-
   /// The location for the Boundary resource. Must be global.
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -23,7 +21,11 @@ class BoundaryArgs {
   /// [crmNode] Optional. The resource name of the CRM node being attached to the
   /// [location] The location for the Boundary resource. Must be global.
   /// [project] The ID of the project in which the resource belongs.
-  BoundaryArgs({this.crmNode, required this.location, this.project});
+  BoundaryArgs({
+    this.crmNode,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,17 +37,10 @@ class BoundaryArgs {
 
   factory BoundaryArgs.fromMap(Map<String, dynamic> map) {
     return BoundaryArgs(
-      crmNode: (() {
-        final guardedValue = map['crmNode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      crmNode: (() { final guardedValue = map['crmNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

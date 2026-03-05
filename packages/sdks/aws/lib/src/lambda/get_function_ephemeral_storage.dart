@@ -8,10 +8,14 @@ class GetFunctionEphemeralStorage {
 
   /// Creates a new [GetFunctionEphemeralStorage].
   /// [size] Size of the Lambda function ephemeral storage (`/tmp`) in MB.
-  GetFunctionEphemeralStorage({required this.size});
+  GetFunctionEphemeralStorage({
+    required this.size,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'size': size};
+    return <String, dynamic>{
+      'size': size,
+    };
   }
 
   factory GetFunctionEphemeralStorage.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetFunctionEphemeralStorage {
     );
   }
 }
+

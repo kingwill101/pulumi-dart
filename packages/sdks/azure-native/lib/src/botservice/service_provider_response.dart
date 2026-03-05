@@ -10,29 +10,20 @@ class ServiceProviderResponse {
 
   /// Creates a new [ServiceProviderResponse].
   /// [properties] The Properties of a Service Provider Object
-  ServiceProviderResponse({this.properties});
+  ServiceProviderResponse({
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServiceProviderPropertiesResponse,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<ServiceProviderPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory ServiceProviderResponse.fromMap(Map<String, dynamic> map) {
     return ServiceProviderResponse(
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceProviderPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceProviderPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

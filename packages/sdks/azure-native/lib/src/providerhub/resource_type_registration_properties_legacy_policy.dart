@@ -18,43 +18,16 @@ class ResourceTypeRegistrationPropertiesLegacyPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disallowedConditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LegacyDisallowedCondition>,
-            List<Map<String, dynamic>>
-          >(
-            disallowedConditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LegacyDisallowedCondition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'disallowedConditions': ?pulumi.Input.mapOptionalInputValue<List<LegacyDisallowedCondition>, List<Map<String, dynamic>>>(disallowedConditions, (value) => pulumi.Input.encodeList<LegacyDisallowedCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'disallowedLegacyOperations': ?disallowedLegacyOperations,
     };
   }
 
-  factory ResourceTypeRegistrationPropertiesLegacyPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceTypeRegistrationPropertiesLegacyPolicy.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesLegacyPolicy(
-      disallowedConditions: (() {
-        final guardedValue = map['disallowedConditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LegacyDisallowedCondition>(
-            guardedValue,
-            (value) => LegacyDisallowedCondition.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      disallowedLegacyOperations: (() {
-        final guardedValue = map['disallowedLegacyOperations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      disallowedConditions: (() { final guardedValue = map['disallowedConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LegacyDisallowedCondition>(guardedValue, (value) => LegacyDisallowedCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      disallowedLegacyOperations: (() { final guardedValue = map['disallowedLegacyOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

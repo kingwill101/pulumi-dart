@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageAccountInformationResponse {
   /// The resource identifier.
   final pulumi.Input<String> id;
-
   /// The resource name.
   final pulumi.Input<String> name;
-
   /// The optional suffix for the storage account.
   final pulumi.Input<String> suffix;
-
   /// The resource type.
   final pulumi.Input<String> type;
 
@@ -46,3 +43,4 @@ class StorageAccountInformationResponse {
     );
   }
 }
+

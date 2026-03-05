@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskEncryptionConfigurationSqladminV1beta4 {
   /// This is always `sql#diskEncryptionConfiguration`.
   final pulumi.Input<String>? kind;
-
   /// Resource name of KMS key for disk encryption
   final pulumi.Input<String>? kmsKeyName;
 
   /// Creates a new [DiskEncryptionConfigurationSqladminV1beta4].
   /// [kind] This is always `sql#diskEncryptionConfiguration`.
   /// [kmsKeyName] Resource name of KMS key for disk encryption
-  DiskEncryptionConfigurationSqladminV1beta4({this.kind, this.kmsKeyName});
+  DiskEncryptionConfigurationSqladminV1beta4({
+    this.kind,
+    this.kmsKeyName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kind': ?kind, 'kmsKeyName': ?kmsKeyName};
+    return <String, dynamic>{
+      'kind': ?kind,
+      'kmsKeyName': ?kmsKeyName,
+    };
   }
 
-  factory DiskEncryptionConfigurationSqladminV1beta4.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiskEncryptionConfigurationSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionConfigurationSqladminV1beta4(
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsKeyName: (() {
-        final guardedValue = map['kmsKeyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

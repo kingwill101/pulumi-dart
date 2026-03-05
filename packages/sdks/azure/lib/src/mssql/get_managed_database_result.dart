@@ -8,22 +8,16 @@ import 'get_managed_database_point_in_time_restore.dart';
 class GetManagedDatabaseResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A `long_term_retention_policy` block as defined below.
-  final List<GetManagedDatabaseLongTermRetentionPolicy>
-  longTermRetentionPolicies;
+  final List<GetManagedDatabaseLongTermRetentionPolicy> longTermRetentionPolicies;
   final String managedInstanceId;
-
   /// The name of the Managed Instance.
   final String managedInstanceName;
   final String name;
-
   /// A `point_in_time_restore` block as defined below.
   final List<GetManagedDatabasePointInTimeRestore> pointInTimeRestores;
-
   /// The name of the Resource Group where the Azure SQL Azure Managed Instance exists.
   final String resourceGroupName;
-
   /// The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   final int shortTermRetentionDays;
 
@@ -50,19 +44,11 @@ class GetManagedDatabaseResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'longTermRetentionPolicies':
-          pulumi.Input.encodeList<
-            GetManagedDatabaseLongTermRetentionPolicy,
-            Map<String, dynamic>
-          >(longTermRetentionPolicies, (value) => value.toMap()),
+      'longTermRetentionPolicies': pulumi.Input.encodeList<GetManagedDatabaseLongTermRetentionPolicy, Map<String, dynamic>>(longTermRetentionPolicies, (value) => value.toMap()),
       'managedInstanceId': managedInstanceId,
       'managedInstanceName': managedInstanceName,
       'name': name,
-      'pointInTimeRestores':
-          pulumi.Input.encodeList<
-            GetManagedDatabasePointInTimeRestore,
-            Map<String, dynamic>
-          >(pointInTimeRestores, (value) => value.toMap()),
+      'pointInTimeRestores': pulumi.Input.encodeList<GetManagedDatabasePointInTimeRestore, Map<String, dynamic>>(pointInTimeRestores, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'shortTermRetentionDays': shortTermRetentionDays,
     };
@@ -71,25 +57,14 @@ class GetManagedDatabaseResult {
   factory GetManagedDatabaseResult.fromMap(Map<String, dynamic> map) {
     return GetManagedDatabaseResult(
       id: map['id'] as String,
-      longTermRetentionPolicies:
-          pulumi.Input.decodeList<GetManagedDatabaseLongTermRetentionPolicy>(
-            map['longTermRetentionPolicies']!,
-            (value) => GetManagedDatabaseLongTermRetentionPolicy.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      longTermRetentionPolicies: pulumi.Input.decodeList<GetManagedDatabaseLongTermRetentionPolicy>(map['longTermRetentionPolicies']!, (value) => GetManagedDatabaseLongTermRetentionPolicy.fromMap((value as Map).cast<String, dynamic>())),
       managedInstanceId: map['managedInstanceId'] as String,
       managedInstanceName: map['managedInstanceName'] as String,
       name: map['name'] as String,
-      pointInTimeRestores:
-          pulumi.Input.decodeList<GetManagedDatabasePointInTimeRestore>(
-            map['pointInTimeRestores']!,
-            (value) => GetManagedDatabasePointInTimeRestore.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      pointInTimeRestores: pulumi.Input.decodeList<GetManagedDatabasePointInTimeRestore>(map['pointInTimeRestores']!, (value) => GetManagedDatabasePointInTimeRestore.fromMap((value as Map).cast<String, dynamic>())),
       resourceGroupName: map['resourceGroupName'] as String,
       shortTermRetentionDays: map['shortTermRetentionDays'] as int,
     );
   }
 }
+

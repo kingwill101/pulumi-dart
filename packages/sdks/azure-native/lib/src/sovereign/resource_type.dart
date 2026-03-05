@@ -23,3 +23,4 @@ enum ResourceType {
     throw ArgumentError('Unknown ResourceType value: $value');
   }
 }
+

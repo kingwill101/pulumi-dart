@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocalizedMessageResponseComputeBeta {
   /// The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
   final pulumi.Input<String> locale;
-
   /// The localized error message in the above locale.
   final pulumi.Input<String> message;
 
@@ -19,15 +18,17 @@ class LocalizedMessageResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'locale': locale, 'message': message};
+    return <String, dynamic>{
+      'locale': locale,
+      'message': message,
+    };
   }
 
-  factory LocalizedMessageResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LocalizedMessageResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return LocalizedMessageResponseComputeBeta(
       locale: pulumi.Input.fromValue(map['locale'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
+

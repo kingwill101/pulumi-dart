@@ -192,37 +192,26 @@ import 'database_connection_pool_state.dart';
 class DatabaseConnectionPool extends pulumi.CustomResource {
   /// The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
   late final pulumi.Output<String> clusterId;
-
   /// The database for use with the connection pool.
   late final pulumi.Output<String> dbName;
-
   /// The hostname used to connect to the database connection pool.
   late final pulumi.Output<String> host;
-
   /// The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
   late final pulumi.Output<String> mode;
-
   /// The name for the database connection pool.
   late final pulumi.Output<String> name;
-
   /// Password for the connection pool's user.
   late final pulumi.Output<String> password;
-
   /// Network port that the database connection pool is listening on.
   late final pulumi.Output<int> port;
-
   /// Same as `host`, but only accessible from resources within the account and in the same region.
   late final pulumi.Output<String> privateHost;
-
   /// Same as `uri`, but only accessible from resources within the account and in the same region.
   late final pulumi.Output<String> privateUri;
-
   /// The desired size of the PGBouncer connection pool.
   late final pulumi.Output<int> size;
-
   /// The full URI for connecting to the database connection pool.
   late final pulumi.Output<String> uri;
-
   /// The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
   late final pulumi.Output<String?> user;
 
@@ -235,11 +224,11 @@ class DatabaseConnectionPool extends pulumi.CustomResource {
     DatabaseConnectionPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseConnectionPool:DatabaseConnectionPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseConnectionPool:DatabaseConnectionPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     dbName = registerOutput<String>('dbName');
     host = registerOutput<String>('host');
@@ -272,11 +261,11 @@ class DatabaseConnectionPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseConnectionPool:DatabaseConnectionPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseConnectionPool:DatabaseConnectionPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     dbName = registerOutput<String>('dbName');
     host = registerOutput<String>('host');

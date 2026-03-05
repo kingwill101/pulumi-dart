@@ -33,6 +33,21 @@ class CustomTimeouts {
 /// aliases for rename/reparent operations, replacement/deletion behavior, and
 /// plugin/version selection.
 ///
+/// Most user code will only set a small subset:
+/// - [parent]
+/// - [dependsOn]
+/// - [provider]
+/// - [protect]
+/// - [ignoreChanges]
+/// - [deleteBeforeReplace]
+///
+/// Component authors and advanced library code may also use:
+/// - [providers]
+/// - [aliases]
+/// - [resourceTransformations]
+/// - [resourceTransforms]
+/// - [hooks]
+///
 /// ## Precedence
 /// When options are merged, scalar values use "last non-null wins" and
 /// collection values are concatenated.
@@ -215,6 +230,9 @@ class ResourceOptions {
 }
 
 /// Merges two hook bindings by phase.
+///
+/// Hook lists are concatenated in order so inherited hooks run before more
+/// specific hooks added later in the resource tree.
 ResourceHookBinding? mergeHooks(
   ResourceHookBinding? binding1,
   ResourceHookBinding? binding2,
@@ -252,6 +270,8 @@ List<ProviderResource> mergeProviders(
 }
 
 /// Merges environment variable mappings, with later values overriding earlier ones.
+///
+/// Returns `null` only when both inputs are `null`.
 Map<String, String>? mergeEnvVarMappings(
   Map<String, String>? mappings1,
   Map<String, String>? mappings2,
@@ -270,6 +290,9 @@ Map<String, String>? mergeEnvVarMappings(
 }
 
 /// Creates a defensive copy of [options].
+///
+/// This is primarily used internally while merging options so callers do not
+/// observe unexpected mutation of collection fields.
 ResourceOptions createComponentResourceOptionsCopy(ResourceOptions options) {
   return ResourceOptions(
     id: options.id,

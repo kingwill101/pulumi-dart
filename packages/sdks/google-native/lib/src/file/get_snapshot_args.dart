@@ -37,12 +37,9 @@ class GetSnapshotArgs {
     return GetSnapshotArgs(
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
     );
   }
 }
+

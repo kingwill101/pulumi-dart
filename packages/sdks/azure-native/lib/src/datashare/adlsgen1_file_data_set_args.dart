@@ -9,29 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ADLSGen1FileDataSetArgs {
   /// The ADLS account name.
   final pulumi.Input<String> accountName;
-
   /// The name of the dataSet.
   final pulumi.Input<String>? dataSetName;
-
   /// The file name in the ADLS account.
   final pulumi.Input<String> fileName;
-
   /// The folder path within the ADLS account.
   final pulumi.Input<String> folderPath;
-
   /// Kind of data set.
   /// Expected value is 'AdlsGen1File'.
   final pulumi.Input<String> kind;
-
   /// Resource group of ADLS account.
   final pulumi.Input<String> resourceGroup;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the share to add the data set to.
   final pulumi.Input<String> shareName;
-
   /// Subscription id of ADLS account.
   final pulumi.Input<String> subscriptionId;
 
@@ -74,20 +66,15 @@ class ADLSGen1FileDataSetArgs {
   factory ADLSGen1FileDataSetArgs.fromMap(Map<String, dynamic> map) {
     return ADLSGen1FileDataSetArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      dataSetName: (() {
-        final guardedValue = map['dataSetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataSetName: (() { final guardedValue = map['dataSetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fileName: pulumi.Input.fromValue(map['fileName'] as String),
       folderPath: pulumi.Input.fromValue(map['folderPath'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       shareName: pulumi.Input.fromValue(map['shareName'] as String),
       subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
+

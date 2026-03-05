@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageServicesForPutRequestResponse {
   /// The storage services resource id
   final pulumi.Input<String>? resourceId;
-
   /// The user assigned identity to be used to grant permissions
   final pulumi.Input<String>? userAssignedIdentity;
 
@@ -25,20 +24,11 @@ class StorageServicesForPutRequestResponse {
     };
   }
 
-  factory StorageServicesForPutRequestResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageServicesForPutRequestResponse.fromMap(Map<String, dynamic> map) {
     return StorageServicesForPutRequestResponse(
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentity: (() {
-        final guardedValue = map['userAssignedIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentity: (() { final guardedValue = map['userAssignedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

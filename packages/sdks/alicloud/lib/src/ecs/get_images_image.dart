@@ -6,57 +6,41 @@ import 'get_images_image_disk_device_mapping.dart';
 class GetImagesImage {
   /// The image architecture. Valid values: `i386`, `x86_64`, `arm64`.
   final pulumi.Input<String> architecture;
-
   /// The creation time.
   final pulumi.Input<String> creationTime;
-
   /// The description of the image.
   final pulumi.Input<String> description;
-
   /// A `disk_device_mappings` block as defined below. Description of the system with disks and snapshots under the image.
   final pulumi.Input<List<GetImagesImageDiskDeviceMapping>> diskDeviceMappings;
-
   /// The ID of the image.
   final pulumi.Input<String> id;
-
   /// The ID of the image.
   final pulumi.Input<String> imageId;
-
   /// The alias of the image owner.
   final pulumi.Input<String> imageOwnerAlias;
-
   /// Version of the image.
   final pulumi.Input<String> imageVersion;
   final pulumi.Input<bool> isCopied;
   final pulumi.Input<String> isSelfShared;
-
   /// Whether the user has subscribed to the terms of service for the image product corresponding to the ProductCode.
   final pulumi.Input<bool> isSubscribed;
-
   /// Specifies whether the image can be used on I/O optimized instances.
   final pulumi.Input<bool> isSupportIoOptimized;
   final pulumi.Input<String> name;
-
   /// The display Chinese name of the OS.
   final pulumi.Input<String> osName;
-
   /// The english name of the OS.
   final pulumi.Input<String> osNameEn;
-
   /// The operating system type of the image. Valid values: `windows` and `linux`.
   final pulumi.Input<String> osType;
   final pulumi.Input<String> platform;
-
   /// The product code of the image on the image market.
   final pulumi.Input<String> productCode;
-
   /// Progress of image creation, presented in percentages.
   final pulumi.Input<String> progress;
-
   /// The size of the created disk.
   final pulumi.Input<int> size;
   final pulumi.Input<String> state;
-
   /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
   /// - `Creating`: The image is being created.
   /// - `Waiting`: The image is waiting to be processed.
@@ -65,10 +49,8 @@ class GetImagesImage {
   /// - `CreateFailed`: The image failed to be created.
   /// - `Deprecated`: The image is discontinued.
   final pulumi.Input<String> status;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Specifies whether to check the validity of the request without actually making the request. Valid values:
   final pulumi.Input<String> usage;
 
@@ -129,18 +111,7 @@ class GetImagesImage {
       'architecture': architecture,
       'creationTime': creationTime,
       'description': description,
-      'diskDeviceMappings':
-          pulumi.Input.mapInputValue<
-            List<GetImagesImageDiskDeviceMapping>,
-            List<Map<String, dynamic>>
-          >(
-            diskDeviceMappings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetImagesImageDiskDeviceMapping,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'diskDeviceMappings': pulumi.Input.mapInputValue<List<GetImagesImageDiskDeviceMapping>, List<Map<String, dynamic>>>(diskDeviceMappings, (value) => pulumi.Input.encodeList<GetImagesImageDiskDeviceMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'imageId': imageId,
       'imageOwnerAlias': imageOwnerAlias,
@@ -169,14 +140,7 @@ class GetImagesImage {
       architecture: pulumi.Input.fromValue(map['architecture'] as String),
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      diskDeviceMappings: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetImagesImageDiskDeviceMapping>(
-          map['diskDeviceMappings']!,
-          (value) => GetImagesImageDiskDeviceMapping.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      diskDeviceMappings: pulumi.Input.fromValue(pulumi.Input.decodeList<GetImagesImageDiskDeviceMapping>(map['diskDeviceMappings']!, (value) => GetImagesImageDiskDeviceMapping.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),
       imageId: pulumi.Input.fromValue(map['imageId'] as String),
       imageOwnerAlias: pulumi.Input.fromValue(map['imageOwnerAlias'] as String),
@@ -184,9 +148,7 @@ class GetImagesImage {
       isCopied: pulumi.Input.fromValue(map['isCopied'] as bool),
       isSelfShared: pulumi.Input.fromValue(map['isSelfShared'] as String),
       isSubscribed: pulumi.Input.fromValue(map['isSubscribed'] as bool),
-      isSupportIoOptimized: pulumi.Input.fromValue(
-        map['isSupportIoOptimized'] as bool,
-      ),
+      isSupportIoOptimized: pulumi.Input.fromValue(map['isSupportIoOptimized'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
       osName: pulumi.Input.fromValue(map['osName'] as String),
       osNameEn: pulumi.Input.fromValue(map['osNameEn'] as String),
@@ -197,14 +159,9 @@ class GetImagesImage {
       size: pulumi.Input.fromValue(map['size'] as int),
       state: pulumi.Input.fromValue(map['state'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       usage: pulumi.Input.fromValue(map['usage'] as String),
     );
   }
 }
+

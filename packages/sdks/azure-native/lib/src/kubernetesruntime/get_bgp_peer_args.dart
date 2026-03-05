@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBgpPeerArgs {
   /// The name of the BgpPeer
   final pulumi.Input<String> bgpPeerName;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
   /// Creates a new [GetBgpPeerArgs].
   /// [bgpPeerName] The name of the BgpPeer
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetBgpPeerArgs({required this.bgpPeerName, required this.resourceUri});
+  GetBgpPeerArgs({
+    required this.bgpPeerName,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,3 +34,4 @@ class GetBgpPeerArgs {
     );
   }
 }
+

@@ -816,16 +816,12 @@ import 'bucket_acl_state.dart';
 class BucketAcl extends pulumi.CustomResource {
   /// Configuration block that sets the ACL permissions for an object per grantee. See below.
   late final pulumi.Output<BucketAclAccessControlPolicy> accessControlPolicy;
-
   /// Specifies the Canned ACL to apply to the bucket. Valid values: `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, `bucket-owner-read`, `bucket-owner-full-control`, `log-delivery-write`. Full details are available on the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
   late final pulumi.Output<String?> acl;
-
   /// Bucket to which to apply the ACL.
   late final pulumi.Output<String> bucket;
-
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -838,21 +834,12 @@ class BucketAcl extends pulumi.CustomResource {
     BucketAclArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketAcl:BucketAcl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessControlPolicy = registerOutput<BucketAclAccessControlPolicy>(
-      'accessControlPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketAclAccessControlPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:s3/bucketAcl:BucketAcl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessControlPolicy = registerOutput<BucketAclAccessControlPolicy>('accessControlPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAclAccessControlPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     acl = registerOutput<String?>('acl');
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
@@ -877,21 +864,12 @@ class BucketAcl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketAcl:BucketAcl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessControlPolicy = registerOutput<BucketAclAccessControlPolicy>(
-      'accessControlPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketAclAccessControlPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:s3/bucketAcl:BucketAcl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessControlPolicy = registerOutput<BucketAclAccessControlPolicy>('accessControlPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAclAccessControlPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     acl = registerOutput<String?>('acl');
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');

@@ -8,21 +8,20 @@ class EnterpriseSnapshotPolicyStorageRule {
 
   /// Creates a new [EnterpriseSnapshotPolicyStorageRule].
   /// [enableImmediateAccess] Snapshot speed available.
-  EnterpriseSnapshotPolicyStorageRule({this.enableImmediateAccess});
+  EnterpriseSnapshotPolicyStorageRule({
+    this.enableImmediateAccess,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableImmediateAccess': ?enableImmediateAccess};
+    return <String, dynamic>{
+      'enableImmediateAccess': ?enableImmediateAccess,
+    };
   }
 
-  factory EnterpriseSnapshotPolicyStorageRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseSnapshotPolicyStorageRule.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyStorageRule(
-      enableImmediateAccess: (() {
-        final guardedValue = map['enableImmediateAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableImmediateAccess: (() { final guardedValue = map['enableImmediateAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

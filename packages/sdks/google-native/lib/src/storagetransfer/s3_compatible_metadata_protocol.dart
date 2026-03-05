@@ -16,3 +16,4 @@ enum S3CompatibleMetadataProtocol {
     throw ArgumentError('Unknown S3CompatibleMetadataProtocol value: $value');
   }
 }
+

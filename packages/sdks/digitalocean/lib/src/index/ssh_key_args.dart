@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SshKeyArgs {
   /// The name of the SSH key for identification
   final pulumi.Input<String>? name;
-
   /// The public key. If this is a file, it
   /// can be read using the file interpolation function
   final pulumi.Input<String> publicKey;
@@ -17,20 +16,23 @@ class SshKeyArgs {
   /// Creates a new [SshKeyArgs].
   /// [name] The name of the SSH key for identification
   /// [publicKey] The public key. If this is a file, it
-  SshKeyArgs({this.name, required this.publicKey});
+  SshKeyArgs({
+    this.name,
+    required this.publicKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'publicKey': publicKey};
+    return <String, dynamic>{
+      'name': ?name,
+      'publicKey': publicKey,
+    };
   }
 
   factory SshKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshKeyArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicKey: pulumi.Input.fromValue(map['publicKey'] as String),
     );
   }
 }
+

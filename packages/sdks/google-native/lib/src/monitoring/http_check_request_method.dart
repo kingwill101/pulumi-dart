@@ -16,3 +16,4 @@ enum HttpCheckRequestMethod {
     throw ArgumentError('Unknown HttpCheckRequestMethod value: $value');
   }
 }
+

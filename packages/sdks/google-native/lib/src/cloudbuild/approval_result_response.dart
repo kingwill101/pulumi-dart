@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApprovalResultResponse {
   /// The time when the approval decision was made.
   final pulumi.Input<String> approvalTime;
-
   /// Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called.
   final pulumi.Input<String> approverAccount;
-
   /// Optional. An optional comment for this manual approval result.
   final pulumi.Input<String> comment;
-
   /// The decision of this manual approval.
   final pulumi.Input<String> decision;
-
   /// Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build.
   final pulumi.Input<String> url;
 
@@ -53,3 +49,4 @@ class ApprovalResultResponse {
     );
   }
 }
+

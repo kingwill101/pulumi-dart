@@ -171,64 +171,43 @@ import 'system_data_response.dart';
 /// ```
 class Contact extends pulumi.CustomResource {
   /// The configuration associated with the allocated antenna.
-  late final pulumi.Output<ContactsPropertiesResponseAntennaConfiguration>
-  antennaConfiguration;
-
+  late final pulumi.Output<ContactsPropertiesResponseAntennaConfiguration> antennaConfiguration;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The reference to the contact profile resource.
-  late final pulumi.Output<ContactsPropertiesResponseContactProfile>
-  contactProfile;
-
+  late final pulumi.Output<ContactsPropertiesResponseContactProfile> contactProfile;
   /// Azimuth of the antenna at the end of the contact in decimal degrees.
   late final pulumi.Output<double> endAzimuthDegrees;
-
   /// Spacecraft elevation above the horizon at contact end.
   late final pulumi.Output<double> endElevationDegrees;
-
   /// Any error message while scheduling a contact.
   late final pulumi.Output<String> errorMessage;
-
   /// Azure Ground Station name.
   late final pulumi.Output<String> groundStationName;
-
   /// Maximum elevation of the antenna during the contact in decimal degrees.
   late final pulumi.Output<double> maximumElevationDegrees;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Reservation end time of a contact (ISO 8601 UTC standard).
   late final pulumi.Output<String> reservationEndTime;
-
   /// Reservation start time of a contact (ISO 8601 UTC standard).
   late final pulumi.Output<String> reservationStartTime;
-
   /// Receive end time of a contact (ISO 8601 UTC standard).
   late final pulumi.Output<String> rxEndTime;
-
   /// Receive start time of a contact (ISO 8601 UTC standard).
   late final pulumi.Output<String> rxStartTime;
-
   /// Azimuth of the antenna at the start of the contact in decimal degrees.
   late final pulumi.Output<double> startAzimuthDegrees;
-
   /// Spacecraft elevation above the horizon at contact start.
   late final pulumi.Output<double> startElevationDegrees;
-
   /// Status of a contact.
   late final pulumi.Output<String> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Transmit end time of a contact (ISO 8601 UTC standard).
   late final pulumi.Output<String> txEndTime;
-
   /// Transmit start time of a contact (ISO 8601 UTC standard).
   late final pulumi.Output<String> txStartTime;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -241,33 +220,14 @@ class Contact extends pulumi.CustomResource {
     ContactArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:orbital:Contact',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    antennaConfiguration =
-        registerOutput<ContactsPropertiesResponseAntennaConfiguration>(
-          'antennaConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ContactsPropertiesResponseAntennaConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure-native:orbital:Contact',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    antennaConfiguration = registerOutput<ContactsPropertiesResponseAntennaConfiguration>('antennaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactsPropertiesResponseAntennaConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    contactProfile = registerOutput<ContactsPropertiesResponseContactProfile>(
-      'contactProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContactsPropertiesResponseContactProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    contactProfile = registerOutput<ContactsPropertiesResponseContactProfile>('contactProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactsPropertiesResponseContactProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endAzimuthDegrees = registerOutput<double>('endAzimuthDegrees');
     endElevationDegrees = registerOutput<double>('endElevationDegrees');
     errorMessage = registerOutput<String>('errorMessage');
@@ -281,16 +241,7 @@ class Contact extends pulumi.CustomResource {
     startAzimuthDegrees = registerOutput<double>('startAzimuthDegrees');
     startElevationDegrees = registerOutput<double>('startElevationDegrees');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     txEndTime = registerOutput<String>('txEndTime');
     txStartTime = registerOutput<String>('txStartTime');
     type = registerOutput<String>('type');

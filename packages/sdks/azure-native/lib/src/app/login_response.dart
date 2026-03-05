@@ -12,19 +12,14 @@ class LoginResponse {
   /// This is an advanced setting typically only needed by Windows Store application backends.
   /// Note that URLs within the current domain are always implicitly allowed.
   final pulumi.Input<List<String>>? allowedExternalRedirectUrls;
-
   /// The configuration settings of the session cookie's expiration.
   final pulumi.Input<CookieExpirationResponse>? cookieExpiration;
-
   /// The configuration settings of the nonce used in the login flow.
   final pulumi.Input<NonceResponse>? nonce;
-
   /// &lt;code&gt;true&lt;/code&gt; if the fragments from the request are preserved after the login request is made; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final pulumi.Input<bool>? preserveUrlFragmentsForLogins;
-
   /// The routes that specify the endpoints used for login and logout requests.
   final pulumi.Input<LoginRoutesResponse>? routes;
-
   /// The configuration settings of the token store.
   final pulumi.Input<TokenStoreResponse>? tokenStore;
 
@@ -47,76 +42,23 @@ class LoginResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedExternalRedirectUrls': ?allowedExternalRedirectUrls,
-      'cookieExpiration':
-          ?pulumi.Input.mapOptionalInputValue<
-            CookieExpirationResponse,
-            Map<String, dynamic>
-          >(cookieExpiration, (value) => value.toMap()),
-      'nonce':
-          ?pulumi.Input.mapOptionalInputValue<
-            NonceResponse,
-            Map<String, dynamic>
-          >(nonce, (value) => value.toMap()),
+      'cookieExpiration': ?pulumi.Input.mapOptionalInputValue<CookieExpirationResponse, Map<String, dynamic>>(cookieExpiration, (value) => value.toMap()),
+      'nonce': ?pulumi.Input.mapOptionalInputValue<NonceResponse, Map<String, dynamic>>(nonce, (value) => value.toMap()),
       'preserveUrlFragmentsForLogins': ?preserveUrlFragmentsForLogins,
-      'routes':
-          ?pulumi.Input.mapOptionalInputValue<
-            LoginRoutesResponse,
-            Map<String, dynamic>
-          >(routes, (value) => value.toMap()),
-      'tokenStore':
-          ?pulumi.Input.mapOptionalInputValue<
-            TokenStoreResponse,
-            Map<String, dynamic>
-          >(tokenStore, (value) => value.toMap()),
+      'routes': ?pulumi.Input.mapOptionalInputValue<LoginRoutesResponse, Map<String, dynamic>>(routes, (value) => value.toMap()),
+      'tokenStore': ?pulumi.Input.mapOptionalInputValue<TokenStoreResponse, Map<String, dynamic>>(tokenStore, (value) => value.toMap()),
     };
   }
 
   factory LoginResponse.fromMap(Map<String, dynamic> map) {
     return LoginResponse(
-      allowedExternalRedirectUrls: (() {
-        final guardedValue = map['allowedExternalRedirectUrls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      cookieExpiration: (() {
-        final guardedValue = map['cookieExpiration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CookieExpirationResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      nonce: (() {
-        final guardedValue = map['nonce'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NonceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      preserveUrlFragmentsForLogins: (() {
-        final guardedValue = map['preserveUrlFragmentsForLogins'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      routes: (() {
-        final guardedValue = map['routes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LoginRoutesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tokenStore: (() {
-        final guardedValue = map['tokenStore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TokenStoreResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      allowedExternalRedirectUrls: (() { final guardedValue = map['allowedExternalRedirectUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      cookieExpiration: (() { final guardedValue = map['cookieExpiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CookieExpirationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      nonce: (() { final guardedValue = map['nonce']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NonceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      preserveUrlFragmentsForLogins: (() { final guardedValue = map['preserveUrlFragmentsForLogins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      routes: (() { final guardedValue = map['routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoginRoutesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tokenStore: (() { final guardedValue = map['tokenStore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TokenStoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

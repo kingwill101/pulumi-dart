@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListVpnLinkConnectionDefaultSharedKeyArgs {
   /// The name of the vpn connection.
   final pulumi.Input<String> connectionName;
-
   /// The name of the gateway.
   final pulumi.Input<String> gatewayName;
-
   /// The name of the vpn link connection.
   final pulumi.Input<String> linkConnectionName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -40,18 +37,13 @@ class ListVpnLinkConnectionDefaultSharedKeyArgs {
     };
   }
 
-  factory ListVpnLinkConnectionDefaultSharedKeyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListVpnLinkConnectionDefaultSharedKeyArgs.fromMap(Map<String, dynamic> map) {
     return ListVpnLinkConnectionDefaultSharedKeyArgs(
       connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
       gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
-      linkConnectionName: pulumi.Input.fromValue(
-        map['linkConnectionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      linkConnectionName: pulumi.Input.fromValue(map['linkConnectionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

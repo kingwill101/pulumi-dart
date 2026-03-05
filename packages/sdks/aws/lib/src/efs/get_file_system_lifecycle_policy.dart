@@ -27,13 +27,10 @@ class GetFileSystemLifecyclePolicy {
 
   factory GetFileSystemLifecyclePolicy.fromMap(Map<String, dynamic> map) {
     return GetFileSystemLifecyclePolicy(
-      transitionToArchive: pulumi.Input.fromValue(
-        map['transitionToArchive'] as String,
-      ),
+      transitionToArchive: pulumi.Input.fromValue(map['transitionToArchive'] as String),
       transitionToIa: pulumi.Input.fromValue(map['transitionToIa'] as String),
-      transitionToPrimaryStorageClass: pulumi.Input.fromValue(
-        map['transitionToPrimaryStorageClass'] as String,
-      ),
+      transitionToPrimaryStorageClass: pulumi.Input.fromValue(map['transitionToPrimaryStorageClass'] as String),
     );
   }
 }
+

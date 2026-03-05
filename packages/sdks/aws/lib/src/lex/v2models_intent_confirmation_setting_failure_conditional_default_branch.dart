@@ -6,16 +6,9 @@ import 'v2models_intent_confirmation_setting_failure_conditional_default_branch_
 
 class V2modelsIntentConfirmationSettingFailureConditionalDefaultBranch {
   /// Configuration block for the next step in the conversation. See `next_step`.
-  final pulumi.Input<
-    V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchNextStep
-  >?
-  nextStep;
-
+  final pulumi.Input<V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchNextStep>? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final pulumi.Input<
-    V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponse
-  >?
-  response;
+  final pulumi.Input<V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponse>? response;
 
   /// Creates a new [V2modelsIntentConfirmationSettingFailureConditionalDefaultBranch].
   /// [nextStep] Configuration block for the next step in the conversation. See `next_step`.
@@ -27,41 +20,16 @@ class V2modelsIntentConfirmationSettingFailureConditionalDefaultBranch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nextStep':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchNextStep,
-            Map<String, dynamic>
-          >(nextStep, (value) => value.toMap()),
-      'response':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponse,
-            Map<String, dynamic>
-          >(response, (value) => value.toMap()),
+      'nextStep': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchNextStep, Map<String, dynamic>>(nextStep, (value) => value.toMap()),
+      'response': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponse, Map<String, dynamic>>(response, (value) => value.toMap()),
     };
   }
 
-  factory V2modelsIntentConfirmationSettingFailureConditionalDefaultBranch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingFailureConditionalDefaultBranch.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingFailureConditionalDefaultBranch(
-      nextStep: (() {
-        final guardedValue = map['nextStep'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchNextStep.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      response: (() {
-        final guardedValue = map['response'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      nextStep: (() { final guardedValue = map['nextStep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchNextStep.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      response: (() { final guardedValue = map['response']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

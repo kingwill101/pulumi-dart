@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowOnExceptionStepDeleteStepDetails {
   /// The name of the step, used as an identifier.
   final pulumi.Input<String>? name;
-
   /// Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file for the workflow. Enter ${previous.file} to use the previous file as the input. In this case, this workflow step uses the output file from the previous workflow step as input. This is the default value. Enter ${original.file} to use the originally-uploaded file location as input for this step.
   final pulumi.Input<String>? sourceFileLocation;
 
@@ -24,20 +23,11 @@ class WorkflowOnExceptionStepDeleteStepDetails {
     };
   }
 
-  factory WorkflowOnExceptionStepDeleteStepDetails.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowOnExceptionStepDeleteStepDetails.fromMap(Map<String, dynamic> map) {
     return WorkflowOnExceptionStepDeleteStepDetails(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceFileLocation: (() {
-        final guardedValue = map['sourceFileLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceFileLocation: (() { final guardedValue = map['sourceFileLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

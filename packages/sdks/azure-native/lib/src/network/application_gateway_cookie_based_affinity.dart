@@ -12,8 +12,7 @@ enum ApplicationGatewayCookieBasedAffinity {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ApplicationGatewayCookieBasedAffinity value: $value',
-    );
+    throw ArgumentError('Unknown ApplicationGatewayCookieBasedAffinity value: $value');
   }
 }
+

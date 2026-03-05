@@ -16,17 +16,17 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'digest': digest, 'uri': uri};
+    return <String, dynamic>{
+      'digest': digest,
+      'uri': uri,
+    };
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse(
-      digest: pulumi.Input.fromValue(
-        (map['digest'] as Map).cast<String, String>(),
-      ),
+      digest: pulumi.Input.fromValue((map['digest'] as Map).cast<String, String>()),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

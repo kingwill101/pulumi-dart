@@ -148,7 +148,6 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// Domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
   late final pulumi.Output<String> domainName;
-
   /// The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
   late final pulumi.Output<String> status;
 
@@ -156,13 +155,16 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_directmail_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:directmail/domain:Domain',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Domain(
+    String name, {
+    DomainArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:directmail/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     status = registerOutput<String>('status');
   }
@@ -185,11 +187,11 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:directmail/domain:Domain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:directmail/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     status = registerOutput<String>('status');
   }

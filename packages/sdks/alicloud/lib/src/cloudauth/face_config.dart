@@ -243,10 +243,8 @@ import 'face_config_state.dart';
 class FaceConfig extends pulumi.CustomResource {
   /// Scene name.
   late final pulumi.Output<String> bizName;
-
   /// Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
   late final pulumi.Output<String> bizType;
-
   /// Last Modified Date.
   late final pulumi.Output<String> gmtModified;
 
@@ -259,11 +257,11 @@ class FaceConfig extends pulumi.CustomResource {
     FaceConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudauth/faceConfig:FaceConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudauth/faceConfig:FaceConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bizName = registerOutput<String>('bizName');
     bizType = registerOutput<String>('bizType');
     gmtModified = registerOutput<String>('gmtModified');
@@ -287,11 +285,11 @@ class FaceConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudauth/faceConfig:FaceConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudauth/faceConfig:FaceConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bizName = registerOutput<String>('bizName');
     bizType = registerOutput<String>('bizType');
     gmtModified = registerOutput<String>('gmtModified');

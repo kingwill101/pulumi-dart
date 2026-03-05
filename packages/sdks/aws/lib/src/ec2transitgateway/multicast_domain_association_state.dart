@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MulticastDomainAssociationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the subnet to associate with the transit gateway multicast domain.
   final pulumi.Input<String>? subnetId;
-
   /// The ID of the transit gateway attachment.
   final pulumi.Input<String>? transitGatewayAttachmentId;
-
   /// The ID of the transit gateway multicast domain.
   final pulumi.Input<String>? transitGatewayMulticastDomainId;
 
@@ -39,26 +36,11 @@ class MulticastDomainAssociationState {
 
   factory MulticastDomainAssociationState.fromMap(Map<String, dynamic> map) {
     return MulticastDomainAssociationState(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetId: (() {
-        final guardedValue = map['subnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitGatewayAttachmentId: (() {
-        final guardedValue = map['transitGatewayAttachmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitGatewayMulticastDomainId: (() {
-        final guardedValue = map['transitGatewayMulticastDomainId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitGatewayAttachmentId: (() { final guardedValue = map['transitGatewayAttachmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitGatewayMulticastDomainId: (() { final guardedValue = map['transitGatewayMulticastDomainId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

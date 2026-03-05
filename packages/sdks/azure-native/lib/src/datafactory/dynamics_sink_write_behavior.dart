@@ -14,3 +14,4 @@ enum DynamicsSinkWriteBehavior {
     throw ArgumentError('Unknown DynamicsSinkWriteBehavior value: $value');
   }
 }
+

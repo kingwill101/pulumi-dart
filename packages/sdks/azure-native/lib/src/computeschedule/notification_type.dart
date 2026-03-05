@@ -14,3 +14,4 @@ enum NotificationType {
     throw ArgumentError('Unknown NotificationType value: $value');
   }
 }
+

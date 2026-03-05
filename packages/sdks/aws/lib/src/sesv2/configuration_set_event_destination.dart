@@ -906,14 +906,10 @@ import 'configuration_set_event_destination_state.dart';
 class ConfigurationSetEventDestination extends pulumi.CustomResource {
   /// The name of the configuration set.
   late final pulumi.Output<String> configurationSetName;
-
   /// A name that identifies the event destination within the configuration set.
-  late final pulumi.Output<ConfigurationSetEventDestinationEventDestination>
-  eventDestination;
-
+  late final pulumi.Output<ConfigurationSetEventDestinationEventDestination> eventDestination;
   /// An object that defines the event destination. See `event_destination` Block for details.
   late final pulumi.Output<String> eventDestinationName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -926,23 +922,13 @@ class ConfigurationSetEventDestination extends pulumi.CustomResource {
     ConfigurationSetEventDestinationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sesv2/configurationSetEventDestination:ConfigurationSetEventDestination',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sesv2/configurationSetEventDestination:ConfigurationSetEventDestination',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configurationSetName = registerOutput<String>('configurationSetName');
-    eventDestination =
-        registerOutput<ConfigurationSetEventDestinationEventDestination>(
-          'eventDestination',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ConfigurationSetEventDestinationEventDestination.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    eventDestination = registerOutput<ConfigurationSetEventDestinationEventDestination>('eventDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetEventDestinationEventDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventDestinationName = registerOutput<String>('eventDestinationName');
     region = registerOutput<String>('region');
   }
@@ -965,23 +951,13 @@ class ConfigurationSetEventDestination extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sesv2/configurationSetEventDestination:ConfigurationSetEventDestination',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sesv2/configurationSetEventDestination:ConfigurationSetEventDestination',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configurationSetName = registerOutput<String>('configurationSetName');
-    eventDestination =
-        registerOutput<ConfigurationSetEventDestinationEventDestination>(
-          'eventDestination',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ConfigurationSetEventDestinationEventDestination.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    eventDestination = registerOutput<ConfigurationSetEventDestinationEventDestination>('eventDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetEventDestinationEventDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventDestinationName = registerOutput<String>('eventDestinationName');
     region = registerOutput<String>('region');
   }

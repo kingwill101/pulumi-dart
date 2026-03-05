@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceMeshTypeResponse {
   /// A 7 character code matching `^IST[0-9]{4}$` or `^ASM[0-9]{4}$`, intended to uniquely identify the message type. (e.g. "IST0001" is mapped to the "InternalError" message type.)
   final pulumi.Input<String> code;
-
   /// A human-readable name for the message type. e.g. "InternalError", "PodMissingProxy". This should be the same for all messages of the same type. (This corresponds to the `name` field in open-source Istio.)
   final pulumi.Input<String> displayName;
 
   /// Creates a new [ServiceMeshTypeResponse].
   /// [code] A 7 character code matching `^IST[0-9]{4}$` or `^ASM[0-9]{4}$`, intended to uniquely identify the message type. (e.g. "IST0001" is mapped to the "InternalError" message type.)
   /// [displayName] A human-readable name for the message type. e.g. "InternalError", "PodMissingProxy". This should be the same for all messages of the same type. (This corresponds to the `name` field in open-source Istio.)
-  ServiceMeshTypeResponse({required this.code, required this.displayName});
+  ServiceMeshTypeResponse({
+    required this.code,
+    required this.displayName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code, 'displayName': displayName};
+    return <String, dynamic>{
+      'code': code,
+      'displayName': displayName,
+    };
   }
 
   factory ServiceMeshTypeResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ServiceMeshTypeResponse {
     );
   }
 }
+

@@ -9,19 +9,20 @@ class KeytabInformation {
 
   /// Creates a new [KeytabInformation].
   /// [keytab] A base64-encoded keytab.
-  KeytabInformation({this.keytab});
+  KeytabInformation({
+    this.keytab,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keytab': ?keytab};
+    return <String, dynamic>{
+      'keytab': ?keytab,
+    };
   }
 
   factory KeytabInformation.fromMap(Map<String, dynamic> map) {
     return KeytabInformation(
-      keytab: (() {
-        final guardedValue = map['keytab'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keytab: (() { final guardedValue = map['keytab']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,16 +7,12 @@ import 'key_value_pair.dart';
 class ContinuousAction {
   /// ISO8601 formatted string that represents a duration.
   final pulumi.Input<String> duration;
-
   /// String that represents a Capability URN.
   final pulumi.Input<String> name;
-
   /// List of key value pairs.
   final pulumi.Input<List<KeyValuePair>> parameters;
-
   /// String that represents a selector.
   final pulumi.Input<String> selectorId;
-
   /// Enum that discriminates between action models.
   /// Expected value is 'continuous'.
   final pulumi.Input<String> type;
@@ -39,18 +35,7 @@ class ContinuousAction {
     return <String, dynamic>{
       'duration': duration,
       'name': name,
-      'parameters':
-          pulumi.Input.mapInputValue<
-            List<KeyValuePair>,
-            List<Map<String, dynamic>>
-          >(
-            parameters,
-            (value) =>
-                pulumi.Input.encodeList<KeyValuePair, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'parameters': pulumi.Input.mapInputValue<List<KeyValuePair>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<KeyValuePair, Map<String, dynamic>>(value, (value) => value.toMap())),
       'selectorId': selectorId,
       'type': type,
     };
@@ -60,15 +45,10 @@ class ContinuousAction {
     return ContinuousAction(
       duration: pulumi.Input.fromValue(map['duration'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      parameters: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<KeyValuePair>(
-          map['parameters']!,
-          (value) =>
-              KeyValuePair.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      parameters: pulumi.Input.fromValue(pulumi.Input.decodeList<KeyValuePair>(map['parameters']!, (value) => KeyValuePair.fromMap((value as Map).cast<String, dynamic>()))),
       selectorId: pulumi.Input.fromValue(map['selectorId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

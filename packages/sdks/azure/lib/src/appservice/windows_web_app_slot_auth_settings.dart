@@ -10,52 +10,37 @@ import 'windows_web_app_slot_auth_settings_twitter.dart';
 
 class WindowsWebAppSlotAuthSettings {
   /// An `active_directory` block as defined above.
-  final pulumi.Input<WindowsWebAppSlotAuthSettingsActiveDirectory>?
-  activeDirectory;
-
+  final pulumi.Input<WindowsWebAppSlotAuthSettingsActiveDirectory>? activeDirectory;
   /// Specifies a map of login Parameters to send to the OpenID Connect authorization endpoint when a user logs in.
   final pulumi.Input<Map<String, String>>? additionalLoginParameters;
-
   /// Specifies a list of External URLs that can be redirected to as part of logging in or logging out of the Windows Web App Slot.
   final pulumi.Input<List<String>>? allowedExternalRedirectUrls;
-
   /// The default authentication provider to use when multiple providers are configured. Possible values include: `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount`, `Twitter`, `Github`.
   ///
   /// &gt; **Note:** This setting is only needed if multiple providers are configured, and the `unauthenticated_client_action` is set to "RedirectToLoginPage".
   final pulumi.Input<String>? defaultProvider;
-
   /// Should the Authentication / Authorization feature be enabled for the Windows Web App?
   final pulumi.Input<bool> enabled;
-
   /// A `facebook` block as defined below.
   final pulumi.Input<WindowsWebAppSlotAuthSettingsFacebook>? facebook;
-
   /// A `github` block as defined below.
   final pulumi.Input<WindowsWebAppSlotAuthSettingsGithub>? github;
-
   /// A `google` block as defined below.
   final pulumi.Input<WindowsWebAppSlotAuthSettingsGoogle>? google;
-
   /// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this Windows Web App Slot.
   ///
   /// &gt; **Note:** When using Azure Active Directory, this value is the URI of the directory tenant, e.g. &lt;https://sts.windows.net/{tenant-guid}/&gt;.
   final pulumi.Input<String>? issuer;
-
   /// A `microsoft` block as defined below.
   final pulumi.Input<WindowsWebAppSlotAuthSettingsMicrosoft>? microsoft;
-
   /// The RuntimeVersion of the Authentication / Authorization feature in use for the Windows Web App Slot.
   final pulumi.Input<String>? runtimeVersion;
-
   /// The number of hours after session token expiration that a session token can be used to call the token refresh API. Defaults to `72` hours.
   final pulumi.Input<double>? tokenRefreshExtensionHours;
-
   /// Should the Windows Web App Slot durably store platform-specific security tokens that are obtained during login flows? Defaults to `false`.
   final pulumi.Input<bool>? tokenStoreEnabled;
-
   /// A `twitter` block as defined below.
   final pulumi.Input<WindowsWebAppSlotAuthSettingsTwitter>? twitter;
-
   /// The action to take when an unauthenticated client attempts to access the app. Possible values include: `RedirectToLoginPage`, `AllowAnonymous`.
   final pulumi.Input<String>? unauthenticatedClientAction;
 
@@ -95,147 +80,42 @@ class WindowsWebAppSlotAuthSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeDirectory':
-          ?pulumi.Input.mapOptionalInputValue<
-            WindowsWebAppSlotAuthSettingsActiveDirectory,
-            Map<String, dynamic>
-          >(activeDirectory, (value) => value.toMap()),
+      'activeDirectory': ?pulumi.Input.mapOptionalInputValue<WindowsWebAppSlotAuthSettingsActiveDirectory, Map<String, dynamic>>(activeDirectory, (value) => value.toMap()),
       'additionalLoginParameters': ?additionalLoginParameters,
       'allowedExternalRedirectUrls': ?allowedExternalRedirectUrls,
       'defaultProvider': ?defaultProvider,
       'enabled': enabled,
-      'facebook':
-          ?pulumi.Input.mapOptionalInputValue<
-            WindowsWebAppSlotAuthSettingsFacebook,
-            Map<String, dynamic>
-          >(facebook, (value) => value.toMap()),
-      'github':
-          ?pulumi.Input.mapOptionalInputValue<
-            WindowsWebAppSlotAuthSettingsGithub,
-            Map<String, dynamic>
-          >(github, (value) => value.toMap()),
-      'google':
-          ?pulumi.Input.mapOptionalInputValue<
-            WindowsWebAppSlotAuthSettingsGoogle,
-            Map<String, dynamic>
-          >(google, (value) => value.toMap()),
+      'facebook': ?pulumi.Input.mapOptionalInputValue<WindowsWebAppSlotAuthSettingsFacebook, Map<String, dynamic>>(facebook, (value) => value.toMap()),
+      'github': ?pulumi.Input.mapOptionalInputValue<WindowsWebAppSlotAuthSettingsGithub, Map<String, dynamic>>(github, (value) => value.toMap()),
+      'google': ?pulumi.Input.mapOptionalInputValue<WindowsWebAppSlotAuthSettingsGoogle, Map<String, dynamic>>(google, (value) => value.toMap()),
       'issuer': ?issuer,
-      'microsoft':
-          ?pulumi.Input.mapOptionalInputValue<
-            WindowsWebAppSlotAuthSettingsMicrosoft,
-            Map<String, dynamic>
-          >(microsoft, (value) => value.toMap()),
+      'microsoft': ?pulumi.Input.mapOptionalInputValue<WindowsWebAppSlotAuthSettingsMicrosoft, Map<String, dynamic>>(microsoft, (value) => value.toMap()),
       'runtimeVersion': ?runtimeVersion,
       'tokenRefreshExtensionHours': ?tokenRefreshExtensionHours,
       'tokenStoreEnabled': ?tokenStoreEnabled,
-      'twitter':
-          ?pulumi.Input.mapOptionalInputValue<
-            WindowsWebAppSlotAuthSettingsTwitter,
-            Map<String, dynamic>
-          >(twitter, (value) => value.toMap()),
+      'twitter': ?pulumi.Input.mapOptionalInputValue<WindowsWebAppSlotAuthSettingsTwitter, Map<String, dynamic>>(twitter, (value) => value.toMap()),
       'unauthenticatedClientAction': ?unauthenticatedClientAction,
     };
   }
 
   factory WindowsWebAppSlotAuthSettings.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotAuthSettings(
-      activeDirectory: (() {
-        final guardedValue = map['activeDirectory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WindowsWebAppSlotAuthSettingsActiveDirectory.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      additionalLoginParameters: (() {
-        final guardedValue = map['additionalLoginParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      allowedExternalRedirectUrls: (() {
-        final guardedValue = map['allowedExternalRedirectUrls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      defaultProvider: (() {
-        final guardedValue = map['defaultProvider'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      activeDirectory: (() { final guardedValue = map['activeDirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsWebAppSlotAuthSettingsActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      additionalLoginParameters: (() { final guardedValue = map['additionalLoginParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      allowedExternalRedirectUrls: (() { final guardedValue = map['allowedExternalRedirectUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      defaultProvider: (() { final guardedValue = map['defaultProvider']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      facebook: (() {
-        final guardedValue = map['facebook'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WindowsWebAppSlotAuthSettingsFacebook.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      github: (() {
-        final guardedValue = map['github'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WindowsWebAppSlotAuthSettingsGithub.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      google: (() {
-        final guardedValue = map['google'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WindowsWebAppSlotAuthSettingsGoogle.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      issuer: (() {
-        final guardedValue = map['issuer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      microsoft: (() {
-        final guardedValue = map['microsoft'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WindowsWebAppSlotAuthSettingsMicrosoft.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      runtimeVersion: (() {
-        final guardedValue = map['runtimeVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tokenRefreshExtensionHours: (() {
-        final guardedValue = map['tokenRefreshExtensionHours'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      tokenStoreEnabled: (() {
-        final guardedValue = map['tokenStoreEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      twitter: (() {
-        final guardedValue = map['twitter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WindowsWebAppSlotAuthSettingsTwitter.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      unauthenticatedClientAction: (() {
-        final guardedValue = map['unauthenticatedClientAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      facebook: (() { final guardedValue = map['facebook']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsWebAppSlotAuthSettingsFacebook.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      github: (() { final guardedValue = map['github']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsWebAppSlotAuthSettingsGithub.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      google: (() { final guardedValue = map['google']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsWebAppSlotAuthSettingsGoogle.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      issuer: (() { final guardedValue = map['issuer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      microsoft: (() { final guardedValue = map['microsoft']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsWebAppSlotAuthSettingsMicrosoft.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      runtimeVersion: (() { final guardedValue = map['runtimeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tokenRefreshExtensionHours: (() { final guardedValue = map['tokenRefreshExtensionHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      tokenStoreEnabled: (() { final guardedValue = map['tokenStoreEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      twitter: (() { final guardedValue = map['twitter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsWebAppSlotAuthSettingsTwitter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      unauthenticatedClientAction: (() { final guardedValue = map['unauthenticatedClientAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

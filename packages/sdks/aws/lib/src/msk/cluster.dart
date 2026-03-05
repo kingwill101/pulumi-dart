@@ -1152,91 +1152,62 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the MSK cluster.
   late final pulumi.Output<String> arn;
-
   /// Comma separated list of one or more hostname:port pairs of kafka brokers suitable to bootstrap connectivity to the kafka cluster. Contains a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `PLAINTEXT` or `TLS_PLAINTEXT`. The resource sorts values alphabetically. AWS may not always return all endpoints so this value is not guaranteed to be stable across applies.
   late final pulumi.Output<String> bootstrapBrokers;
-
   /// One or more DNS names (or IP addresses) and SASL IAM port pairs. For example, `b-1-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9198,b-2-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9198,b-3-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9198`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.iam` is set to `true` and `broker_node_group_info.0.connectivity_info.0.public_access.0.type` is set to `SERVICE_PROVIDED_EIPS` and the cluster fulfill all other requirements for public access. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersPublicSaslIam;
-
   /// One or more DNS names (or IP addresses) and SASL SCRAM port pairs. For example, `b-1-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9196,b-2-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9196,b-3-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9196`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.scram` is set to `true` and `broker_node_group_info.0.connectivity_info.0.public_access.0.type` is set to `SERVICE_PROVIDED_EIPS` and the cluster fulfill all other requirements for public access. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersPublicSaslScram;
-
   /// One or more DNS names (or IP addresses) and TLS port pairs. For example, `b-1-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9194,b-2-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9194,b-3-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9194`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `broker_node_group_info.0.connectivity_info.0.public_access.0.type` is set to `SERVICE_PROVIDED_EIPS` and the cluster fulfill all other requirements for public access. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersPublicTls;
-
   /// One or more DNS names (or IP addresses) and SASL IAM port pairs. For example, `b-1.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9098,b-2.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9098,b-3.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9098`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.iam` is set to `true`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersSaslIam;
-
   /// One or more DNS names (or IP addresses) and SASL SCRAM port pairs. For example, `b-1.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9096,b-2.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9096,b-3.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9096`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.scram` is set to `true`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersSaslScram;
-
   /// One or more DNS names (or IP addresses) and TLS port pairs. For example, `b-1.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9094,b-2.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9094,b-3.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9094`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersTls;
-
   /// A string containing one or more DNS names (or IP addresses) and SASL IAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersVpcConnectivitySaslIam;
-
   /// A string containing one or more DNS names (or IP addresses) and SASL SCRAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersVpcConnectivitySaslScram;
-
   /// A string containing one or more DNS names (or IP addresses) and TLS port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersVpcConnectivityTls;
-
   /// Configuration block for the broker nodes of the Kafka cluster. See broker_node_group_info Argument Reference below.
   late final pulumi.Output<ClusterBrokerNodeGroupInfo> brokerNodeGroupInfo;
-
   /// Configuration block for specifying a client authentication. See client_authentication Argument Reference below.
   late final pulumi.Output<ClusterClientAuthentication?> clientAuthentication;
-
   /// Name of the MSK cluster.
   late final pulumi.Output<String> clusterName;
-
   /// UUID of the MSK cluster, for use in IAM policies.
   late final pulumi.Output<String> clusterUuid;
-
   /// Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See configuration_info Argument Reference below.
   late final pulumi.Output<ClusterConfigurationInfo?> configurationInfo;
-
   /// Current version of the MSK Cluster used for updates, e.g., `K13V1IB3VIYZZH`
   late final pulumi.Output<String> currentVersion;
-
   /// Configuration block for specifying encryption. See encryption_info Argument Reference below.
   late final pulumi.Output<ClusterEncryptionInfo?> encryptionInfo;
-
   /// Specify the desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
   late final pulumi.Output<String?> enhancedMonitoring;
-
   /// Specify the desired Kafka software version.
   late final pulumi.Output<String> kafkaVersion;
-
   /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See logging_info Argument Reference below.
   late final pulumi.Output<ClusterLoggingInfo?> loggingInfo;
-
   /// The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
   late final pulumi.Output<int> numberOfBrokerNodes;
-
   /// Configuration block for JMX and Node monitoring for the MSK cluster. See open_monitoring Argument Reference below.
   late final pulumi.Output<ClusterOpenMonitoring?> openMonitoring;
-
   /// Configuration block for intelligent rebalancing. See rebalancing Argument Reference below. Only applicable to MSK Provisioned clusters with Express brokers.
   late final pulumi.Output<ClusterRebalancing> rebalancing;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Controls storage mode for supported storage tiers. Valid values are: `LOCAL` or `TIERED`.
   late final pulumi.Output<String> storageMode;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   late final pulumi.Output<String> zookeeperConnectString;
-
   /// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster via TLS. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   late final pulumi.Output<String> zookeeperConnectStringTls;
 
@@ -1249,120 +1220,41 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:msk/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:msk/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     bootstrapBrokers = registerOutput<String>('bootstrapBrokers');
-    bootstrapBrokersPublicSaslIam = registerOutput<String>(
-      'bootstrapBrokersPublicSaslIam',
-    );
-    bootstrapBrokersPublicSaslScram = registerOutput<String>(
-      'bootstrapBrokersPublicSaslScram',
-    );
-    bootstrapBrokersPublicTls = registerOutput<String>(
-      'bootstrapBrokersPublicTls',
-    );
+    bootstrapBrokersPublicSaslIam = registerOutput<String>('bootstrapBrokersPublicSaslIam');
+    bootstrapBrokersPublicSaslScram = registerOutput<String>('bootstrapBrokersPublicSaslScram');
+    bootstrapBrokersPublicTls = registerOutput<String>('bootstrapBrokersPublicTls');
     bootstrapBrokersSaslIam = registerOutput<String>('bootstrapBrokersSaslIam');
-    bootstrapBrokersSaslScram = registerOutput<String>(
-      'bootstrapBrokersSaslScram',
-    );
+    bootstrapBrokersSaslScram = registerOutput<String>('bootstrapBrokersSaslScram');
     bootstrapBrokersTls = registerOutput<String>('bootstrapBrokersTls');
-    bootstrapBrokersVpcConnectivitySaslIam = registerOutput<String>(
-      'bootstrapBrokersVpcConnectivitySaslIam',
-    );
-    bootstrapBrokersVpcConnectivitySaslScram = registerOutput<String>(
-      'bootstrapBrokersVpcConnectivitySaslScram',
-    );
-    bootstrapBrokersVpcConnectivityTls = registerOutput<String>(
-      'bootstrapBrokersVpcConnectivityTls',
-    );
-    brokerNodeGroupInfo = registerOutput<ClusterBrokerNodeGroupInfo>(
-      'brokerNodeGroupInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterBrokerNodeGroupInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    clientAuthentication = registerOutput<ClusterClientAuthentication?>(
-      'clientAuthentication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterClientAuthentication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    bootstrapBrokersVpcConnectivitySaslIam = registerOutput<String>('bootstrapBrokersVpcConnectivitySaslIam');
+    bootstrapBrokersVpcConnectivitySaslScram = registerOutput<String>('bootstrapBrokersVpcConnectivitySaslScram');
+    bootstrapBrokersVpcConnectivityTls = registerOutput<String>('bootstrapBrokersVpcConnectivityTls');
+    brokerNodeGroupInfo = registerOutput<ClusterBrokerNodeGroupInfo>('brokerNodeGroupInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterBrokerNodeGroupInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientAuthentication = registerOutput<ClusterClientAuthentication?>('clientAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClientAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterName = registerOutput<String>('clusterName');
     clusterUuid = registerOutput<String>('clusterUuid');
-    configurationInfo = registerOutput<ClusterConfigurationInfo?>(
-      'configurationInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterConfigurationInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    configurationInfo = registerOutput<ClusterConfigurationInfo?>('configurationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfigurationInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     currentVersion = registerOutput<String>('currentVersion');
-    encryptionInfo = registerOutput<ClusterEncryptionInfo?>(
-      'encryptionInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterEncryptionInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionInfo = registerOutput<ClusterEncryptionInfo?>('encryptionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEncryptionInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enhancedMonitoring = registerOutput<String?>('enhancedMonitoring');
     kafkaVersion = registerOutput<String>('kafkaVersion');
-    loggingInfo = registerOutput<ClusterLoggingInfo?>(
-      'loggingInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterLoggingInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loggingInfo = registerOutput<ClusterLoggingInfo?>('loggingInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterLoggingInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     numberOfBrokerNodes = registerOutput<int>('numberOfBrokerNodes');
-    openMonitoring = registerOutput<ClusterOpenMonitoring?>(
-      'openMonitoring',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterOpenMonitoring.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    rebalancing = registerOutput<ClusterRebalancing>(
-      'rebalancing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterRebalancing.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    openMonitoring = registerOutput<ClusterOpenMonitoring?>('openMonitoring', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterOpenMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rebalancing = registerOutput<ClusterRebalancing>('rebalancing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRebalancing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     storageMode = registerOutput<String>('storageMode');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     zookeeperConnectString = registerOutput<String>('zookeeperConnectString');
-    zookeeperConnectStringTls = registerOutput<String>(
-      'zookeeperConnectStringTls',
-    );
+    zookeeperConnectStringTls = registerOutput<String>('zookeeperConnectStringTls');
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -1383,119 +1275,40 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:msk/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:msk/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     bootstrapBrokers = registerOutput<String>('bootstrapBrokers');
-    bootstrapBrokersPublicSaslIam = registerOutput<String>(
-      'bootstrapBrokersPublicSaslIam',
-    );
-    bootstrapBrokersPublicSaslScram = registerOutput<String>(
-      'bootstrapBrokersPublicSaslScram',
-    );
-    bootstrapBrokersPublicTls = registerOutput<String>(
-      'bootstrapBrokersPublicTls',
-    );
+    bootstrapBrokersPublicSaslIam = registerOutput<String>('bootstrapBrokersPublicSaslIam');
+    bootstrapBrokersPublicSaslScram = registerOutput<String>('bootstrapBrokersPublicSaslScram');
+    bootstrapBrokersPublicTls = registerOutput<String>('bootstrapBrokersPublicTls');
     bootstrapBrokersSaslIam = registerOutput<String>('bootstrapBrokersSaslIam');
-    bootstrapBrokersSaslScram = registerOutput<String>(
-      'bootstrapBrokersSaslScram',
-    );
+    bootstrapBrokersSaslScram = registerOutput<String>('bootstrapBrokersSaslScram');
     bootstrapBrokersTls = registerOutput<String>('bootstrapBrokersTls');
-    bootstrapBrokersVpcConnectivitySaslIam = registerOutput<String>(
-      'bootstrapBrokersVpcConnectivitySaslIam',
-    );
-    bootstrapBrokersVpcConnectivitySaslScram = registerOutput<String>(
-      'bootstrapBrokersVpcConnectivitySaslScram',
-    );
-    bootstrapBrokersVpcConnectivityTls = registerOutput<String>(
-      'bootstrapBrokersVpcConnectivityTls',
-    );
-    brokerNodeGroupInfo = registerOutput<ClusterBrokerNodeGroupInfo>(
-      'brokerNodeGroupInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterBrokerNodeGroupInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    clientAuthentication = registerOutput<ClusterClientAuthentication?>(
-      'clientAuthentication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterClientAuthentication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    bootstrapBrokersVpcConnectivitySaslIam = registerOutput<String>('bootstrapBrokersVpcConnectivitySaslIam');
+    bootstrapBrokersVpcConnectivitySaslScram = registerOutput<String>('bootstrapBrokersVpcConnectivitySaslScram');
+    bootstrapBrokersVpcConnectivityTls = registerOutput<String>('bootstrapBrokersVpcConnectivityTls');
+    brokerNodeGroupInfo = registerOutput<ClusterBrokerNodeGroupInfo>('brokerNodeGroupInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterBrokerNodeGroupInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientAuthentication = registerOutput<ClusterClientAuthentication?>('clientAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClientAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterName = registerOutput<String>('clusterName');
     clusterUuid = registerOutput<String>('clusterUuid');
-    configurationInfo = registerOutput<ClusterConfigurationInfo?>(
-      'configurationInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterConfigurationInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    configurationInfo = registerOutput<ClusterConfigurationInfo?>('configurationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfigurationInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     currentVersion = registerOutput<String>('currentVersion');
-    encryptionInfo = registerOutput<ClusterEncryptionInfo?>(
-      'encryptionInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterEncryptionInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionInfo = registerOutput<ClusterEncryptionInfo?>('encryptionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEncryptionInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enhancedMonitoring = registerOutput<String?>('enhancedMonitoring');
     kafkaVersion = registerOutput<String>('kafkaVersion');
-    loggingInfo = registerOutput<ClusterLoggingInfo?>(
-      'loggingInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterLoggingInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loggingInfo = registerOutput<ClusterLoggingInfo?>('loggingInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterLoggingInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     numberOfBrokerNodes = registerOutput<int>('numberOfBrokerNodes');
-    openMonitoring = registerOutput<ClusterOpenMonitoring?>(
-      'openMonitoring',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterOpenMonitoring.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    rebalancing = registerOutput<ClusterRebalancing>(
-      'rebalancing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterRebalancing.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    openMonitoring = registerOutput<ClusterOpenMonitoring?>('openMonitoring', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterOpenMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rebalancing = registerOutput<ClusterRebalancing>('rebalancing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRebalancing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     storageMode = registerOutput<String>('storageMode');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     zookeeperConnectString = registerOutput<String>('zookeeperConnectString');
-    zookeeperConnectStringTls = registerOutput<String>(
-      'zookeeperConnectStringTls',
-    );
+    zookeeperConnectStringTls = registerOutput<String>('zookeeperConnectStringTls');
   }
 }

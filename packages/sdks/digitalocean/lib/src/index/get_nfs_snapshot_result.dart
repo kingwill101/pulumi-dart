@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNfsSnapshot.
 class GetNfsSnapshotResult {
   final String createdAt;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? name;
@@ -54,21 +54,9 @@ class GetNfsSnapshotResult {
     return GetNfsSnapshotResult(
       createdAt: map['createdAt'] as String,
       id: map['id'] as String,
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       shareId: map['shareId'] as String,
       size: map['size'] as int,
       status: map['status'] as int,
@@ -76,3 +64,4 @@ class GetNfsSnapshotResult {
     );
   }
 }
+

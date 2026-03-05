@@ -6,7 +6,6 @@ class AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool {
   /// (Output)
   /// The tool ID to filter the tools to retrieve the schema for.
   final pulumi.Input<String>? toolId;
-
   /// (Output)
   /// The resource name of the Toolset from which this tool is derived.
   /// Format:
@@ -22,23 +21,17 @@ class AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'toolId': ?toolId, 'toolset': ?toolset};
+    return <String, dynamic>{
+      'toolId': ?toolId,
+      'toolset': ?toolset,
+    };
   }
 
-  factory AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool(
-      toolId: (() {
-        final guardedValue = map['toolId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      toolset: (() {
-        final guardedValue = map['toolset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      toolId: (() { final guardedValue = map['toolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      toolset: (() { final guardedValue = map['toolset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -291,43 +291,30 @@ import 'system_data_response.dart';
 class EventHub extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Properties of capture description
   late final pulumi.Output<CaptureDescriptionResponse?> captureDescription;
-
   /// Exact time the Event Hub was created.
   late final pulumi.Output<String> createdAt;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Number of days to retain the events for this Event Hub, value should be 1 to 7 days
   late final pulumi.Output<double?> messageRetentionInDays;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.
   late final pulumi.Output<double?> partitionCount;
-
   /// Current number of shards on the Event Hub.
   late final pulumi.Output<List<String>> partitionIds;
-
   /// Event Hub retention settings
   late final pulumi.Output<RetentionDescriptionResponse?> retentionDescription;
-
   /// Enumerates the possible values for the status of the Event Hub.
   late final pulumi.Output<String?> status;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   late final pulumi.Output<String> type;
-
   /// The exact time the message was updated.
   late final pulumi.Output<String> updatedAt;
-
   /// Gets and Sets Metadata of User.
   late final pulumi.Output<String?> userMetadata;
 
@@ -340,49 +327,22 @@ class EventHub extends pulumi.CustomResource {
     EventHubArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventhub:EventHub',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventhub:EventHub',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    captureDescription = registerOutput<CaptureDescriptionResponse?>(
-      'captureDescription',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CaptureDescriptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    captureDescription = registerOutput<CaptureDescriptionResponse?>('captureDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaptureDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
     location = registerOutput<String>('location');
     messageRetentionInDays = registerOutput<double?>('messageRetentionInDays');
     this.name = registerOutput<String>('name');
     partitionCount = registerOutput<double?>('partitionCount');
     partitionIds = registerOutput<List<String>>('partitionIds');
-    retentionDescription = registerOutput<RetentionDescriptionResponse?>(
-      'retentionDescription',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RetentionDescriptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionDescription = registerOutput<RetentionDescriptionResponse?>('retentionDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RetentionDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
     userMetadata = registerOutput<String?>('userMetadata');

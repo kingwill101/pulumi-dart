@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiKeyResponse {
   /// A connection string that can be used by supporting clients for authentication.
   final pulumi.Input<String> connectionString;
-
   /// The key ID.
   final pulumi.Input<String> id;
-
   /// The last time any of the key's properties were modified.
   final pulumi.Input<String> lastModified;
-
   /// A name for the key describing its usage.
   final pulumi.Input<String> name;
-
   /// Whether this key can only be used for read operations.
   final pulumi.Input<bool> readOnly;
-
   /// The value of the key that is used for authentication purposes.
   final pulumi.Input<String> value;
 
@@ -51,9 +46,7 @@ class ApiKeyResponse {
 
   factory ApiKeyResponse.fromMap(Map<String, dynamic> map) {
     return ApiKeyResponse(
-      connectionString: pulumi.Input.fromValue(
-        map['connectionString'] as String,
-      ),
+      connectionString: pulumi.Input.fromValue(map['connectionString'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       lastModified: pulumi.Input.fromValue(map['lastModified'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -62,3 +55,4 @@ class ApiKeyResponse {
     );
   }
 }
+

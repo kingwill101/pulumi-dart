@@ -7,19 +7,14 @@ import 'system_data_response.dart';
 class GetTagRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The id of the rule set.
   final String id;
-
   /// Name of the rule set.
   final String name;
-
   /// Properties of the monitoring tag rules.
   final MonitoringTagRulesPropertiesResponse properties;
-
   /// The system metadata relating to this resource
   final SystemDataResponse systemData;
-
   /// The type of the rule set.
   final String type;
 
@@ -55,13 +50,10 @@ class GetTagRuleResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: MonitoringTagRulesPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      properties: MonitoringTagRulesPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

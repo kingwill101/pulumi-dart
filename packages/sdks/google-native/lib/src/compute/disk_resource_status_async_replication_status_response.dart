@@ -7,17 +7,20 @@ class DiskResourceStatusAsyncReplicationStatusResponse {
 
   /// Creates a new [DiskResourceStatusAsyncReplicationStatusResponse].
   /// [state] Required.
-  DiskResourceStatusAsyncReplicationStatusResponse({required this.state});
+  DiskResourceStatusAsyncReplicationStatusResponse({
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': state};
+    return <String, dynamic>{
+      'state': state,
+    };
   }
 
-  factory DiskResourceStatusAsyncReplicationStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiskResourceStatusAsyncReplicationStatusResponse.fromMap(Map<String, dynamic> map) {
     return DiskResourceStatusAsyncReplicationStatusResponse(
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

@@ -18,13 +18,10 @@ class GetCodeSigningConfigAllowedPublisher {
     };
   }
 
-  factory GetCodeSigningConfigAllowedPublisher.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCodeSigningConfigAllowedPublisher.fromMap(Map<String, dynamic> map) {
     return GetCodeSigningConfigAllowedPublisher(
-      signingProfileVersionArns: pulumi.Input.fromValue(
-        (map['signingProfileVersionArns'] as List).cast<String>(),
-      ),
+      signingProfileVersionArns: pulumi.Input.fromValue((map['signingProfileVersionArns'] as List).cast<String>()),
     );
   }
 }
+

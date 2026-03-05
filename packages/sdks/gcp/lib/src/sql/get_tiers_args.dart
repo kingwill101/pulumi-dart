@@ -12,19 +12,20 @@ class GetTiersArgs {
 
   /// Creates a new [GetTiersArgs].
   /// [project] The Project ID for which to list tiers. If `project` is not provided, the project defined within the default provider configuration is used.
-  GetTiersArgs({this.project});
+  GetTiersArgs({
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project};
+    return <String, dynamic>{
+      'project': ?project,
+    };
   }
 
   factory GetTiersArgs.fromMap(Map<String, dynamic> map) {
     return GetTiersArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

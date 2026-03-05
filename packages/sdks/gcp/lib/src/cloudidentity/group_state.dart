@@ -9,21 +9,16 @@ class GroupState {
   /// Additional group keys associated with the Group
   /// Structure is documented below.
   final pulumi.Input<List<GroupAdditionalGroupKey>>? additionalGroupKeys;
-
   /// The time when the Group was created.
   final pulumi.Input<String>? createTime;
-
   /// An extended description to help users determine the purpose of a Group.
   /// Must not be longer than 4,096 characters.
   final pulumi.Input<String>? description;
-
   /// The display name of the Group.
   final pulumi.Input<String>? displayName;
-
   /// EntityKey of the Group.
   /// Structure is documented below.
   final pulumi.Input<GroupGroupKey>? groupKey;
-
   /// The initial configuration options for creating a Group.
   /// See the
   /// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
@@ -31,24 +26,20 @@ class GroupState {
   /// Default value is `EMPTY`.
   /// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
   final pulumi.Input<String>? initialGroupConfig;
-
   /// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
   /// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
   /// Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
   /// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
   /// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Resource name of the Group in the format: groups/{group_id}, where group_id
   /// is the unique ID assigned to the Group.
   final pulumi.Input<String>? name;
-
   /// The resource name of the entity under which this Group resides in the
   /// Cloud Identity resource hierarchy.
   /// Must be of the form identitysources/{identity_source_id} for external-identity-mapped
   /// groups or customers/{customer_id} for Google Groups.
   final pulumi.Input<String>? parent;
-
   /// The time when the Group was last updated.
   final pulumi.Input<String>? updateTime;
 
@@ -78,26 +69,11 @@ class GroupState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalGroupKeys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GroupAdditionalGroupKey>,
-            List<Map<String, dynamic>>
-          >(
-            additionalGroupKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GroupAdditionalGroupKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'additionalGroupKeys': ?pulumi.Input.mapOptionalInputValue<List<GroupAdditionalGroupKey>, List<Map<String, dynamic>>>(additionalGroupKeys, (value) => pulumi.Input.encodeList<GroupAdditionalGroupKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': ?createTime,
       'description': ?description,
       'displayName': ?displayName,
-      'groupKey':
-          ?pulumi.Input.mapOptionalInputValue<
-            GroupGroupKey,
-            Map<String, dynamic>
-          >(groupKey, (value) => value.toMap()),
+      'groupKey': ?pulumi.Input.mapOptionalInputValue<GroupGroupKey, Map<String, dynamic>>(groupKey, (value) => value.toMap()),
       'initialGroupConfig': ?initialGroupConfig,
       'labels': ?labels,
       'name': ?name,
@@ -108,67 +84,17 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      additionalGroupKeys: (() {
-        final guardedValue = map['additionalGroupKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GroupAdditionalGroupKey>(
-            guardedValue,
-            (value) => GroupAdditionalGroupKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      groupKey: (() {
-        final guardedValue = map['groupKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GroupGroupKey.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      initialGroupConfig: (() {
-        final guardedValue = map['initialGroupConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parent: (() {
-        final guardedValue = map['parent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalGroupKeys: (() { final guardedValue = map['additionalGroupKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GroupAdditionalGroupKey>(guardedValue, (value) => GroupAdditionalGroupKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      groupKey: (() { final guardedValue = map['groupKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GroupGroupKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      initialGroupConfig: (() { final guardedValue = map['initialGroupConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

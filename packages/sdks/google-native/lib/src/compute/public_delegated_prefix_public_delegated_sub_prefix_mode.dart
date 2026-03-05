@@ -6,17 +6,13 @@ enum PublicDelegatedPrefixPublicDelegatedSubPrefixMode {
   const PublicDelegatedPrefixPublicDelegatedSubPrefixMode(this.wireValue);
   final String wireValue;
 
-  static PublicDelegatedPrefixPublicDelegatedSubPrefixMode fromValue(
-    String value,
-  ) {
-    for (final item
-        in PublicDelegatedPrefixPublicDelegatedSubPrefixMode.values) {
+  static PublicDelegatedPrefixPublicDelegatedSubPrefixMode fromValue(String value) {
+    for (final item in PublicDelegatedPrefixPublicDelegatedSubPrefixMode.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PublicDelegatedPrefixPublicDelegatedSubPrefixMode value: $value',
-    );
+    throw ArgumentError('Unknown PublicDelegatedPrefixPublicDelegatedSubPrefixMode value: $value');
   }
 }
+

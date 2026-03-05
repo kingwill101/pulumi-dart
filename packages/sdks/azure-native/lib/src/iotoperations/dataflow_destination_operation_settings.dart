@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataflowDestinationOperationSettings {
   /// Destination location, can be a topic or table name. Supports dynamic values with $topic, $systemProperties, $userProperties, $payload, $context, and $subscription.
   final pulumi.Input<String> dataDestination;
-
   /// Reference to the Endpoint CR. Can be of Broker, Kafka, Fabric, ADLS, ADX type.
   final pulumi.Input<String> endpointRef;
 
@@ -25,12 +24,11 @@ class DataflowDestinationOperationSettings {
     };
   }
 
-  factory DataflowDestinationOperationSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataflowDestinationOperationSettings.fromMap(Map<String, dynamic> map) {
     return DataflowDestinationOperationSettings(
       dataDestination: pulumi.Input.fromValue(map['dataDestination'] as String),
       endpointRef: pulumi.Input.fromValue(map['endpointRef'] as String),
     );
   }
 }
+

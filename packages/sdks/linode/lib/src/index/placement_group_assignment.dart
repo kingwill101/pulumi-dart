@@ -279,10 +279,8 @@ import 'placement_group_assignment_state.dart';
 /// ```
 class PlacementGroupAssignment extends pulumi.CustomResource {
   late final pulumi.Output<bool?> compliantOnly;
-
   /// The unique ID of the Linode to assign.
   late final pulumi.Output<int> linodeId;
-
   /// The unique ID of the target Placement Group.
   late final pulumi.Output<int> placementGroupId;
 
@@ -295,11 +293,11 @@ class PlacementGroupAssignment extends pulumi.CustomResource {
     PlacementGroupAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/placementGroupAssignment:PlacementGroupAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/placementGroupAssignment:PlacementGroupAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     compliantOnly = registerOutput<bool?>('compliantOnly');
     linodeId = registerOutput<int>('linodeId');
     placementGroupId = registerOutput<int>('placementGroupId');
@@ -323,11 +321,11 @@ class PlacementGroupAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/placementGroupAssignment:PlacementGroupAssignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/placementGroupAssignment:PlacementGroupAssignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     compliantOnly = registerOutput<bool?>('compliantOnly');
     linodeId = registerOutput<int>('linodeId');
     placementGroupId = registerOutput<int>('placementGroupId');

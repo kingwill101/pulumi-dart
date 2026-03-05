@@ -6,7 +6,6 @@ class PartitionIndexPartitionIndex {
   /// Name of the partition index.
   final pulumi.Input<String>? indexName;
   final pulumi.Input<String>? indexStatus;
-
   /// Keys for the partition index.
   final pulumi.Input<List<String>>? keys;
 
@@ -14,7 +13,11 @@ class PartitionIndexPartitionIndex {
   /// [indexName] Name of the partition index.
   /// [indexStatus] Optional.
   /// [keys] Keys for the partition index.
-  PartitionIndexPartitionIndex({this.indexName, this.indexStatus, this.keys});
+  PartitionIndexPartitionIndex({
+    this.indexName,
+    this.indexStatus,
+    this.keys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,21 +29,10 @@ class PartitionIndexPartitionIndex {
 
   factory PartitionIndexPartitionIndex.fromMap(Map<String, dynamic> map) {
     return PartitionIndexPartitionIndex(
-      indexName: (() {
-        final guardedValue = map['indexName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      indexStatus: (() {
-        final guardedValue = map['indexStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keys: (() {
-        final guardedValue = map['keys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      indexName: (() { final guardedValue = map['indexName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      indexStatus: (() { final guardedValue = map['indexStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keys: (() { final guardedValue = map['keys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

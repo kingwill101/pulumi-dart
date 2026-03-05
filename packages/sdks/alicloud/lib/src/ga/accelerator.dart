@@ -125,58 +125,43 @@ import 'accelerator_state.dart';
 class Accelerator extends pulumi.CustomResource {
   /// The Name of the GA instance.
   late final pulumi.Output<String?> acceleratorName;
-
   /// Auto renewal period of an instance, in the unit of month. The value range is 1-12.
   late final pulumi.Output<int> autoRenewDuration;
-
   /// Use coupons to pay bills automatically. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> autoUseCoupon;
-
   /// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
   /// - `BandwidthPackage`: billed based on bandwidth plans.
   /// - `CDT`: billed based on data transfer.
   late final pulumi.Output<String> bandwidthBillingType;
-
   /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
   late final pulumi.Output<String> crossBorderMode;
-
   /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> crossBorderStatus;
-
   /// Descriptive information of the global acceleration instance.
   late final pulumi.Output<String?> description;
-
   /// The subscription duration.
   /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
   /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
   late final pulumi.Output<int?> duration;
-
   /// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
   late final pulumi.Output<String> paymentType;
-
   /// The billing cycle of the GA instance. Default value: `Month`. Valid values:
   /// - `Month`: billed on a monthly basis.
   /// - `Year`: billed on an annual basis.
   late final pulumi.Output<String?> pricingCycle;
-
   /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
   late final pulumi.Output<String?> promotionOptionNo;
-
   /// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
   /// - `AutoRenewal`: Enable auto renewal.
   /// - `Normal`: Disable auto renewal.
   /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
   late final pulumi.Output<String> renewalStatus;
-
   /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
   late final pulumi.Output<String?> spec;
-
   /// The status of the GA instance.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -189,11 +174,11 @@ class Accelerator extends pulumi.CustomResource {
     AcceleratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/accelerator:Accelerator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/accelerator:Accelerator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorName = registerOutput<String?>('acceleratorName');
     autoRenewDuration = registerOutput<int>('autoRenewDuration');
     autoUseCoupon = registerOutput<bool?>('autoUseCoupon');
@@ -230,11 +215,11 @@ class Accelerator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/accelerator:Accelerator',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/accelerator:Accelerator',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorName = registerOutput<String?>('acceleratorName');
     autoRenewDuration = registerOutput<int>('autoRenewDuration');
     autoUseCoupon = registerOutput<bool?>('autoUseCoupon');

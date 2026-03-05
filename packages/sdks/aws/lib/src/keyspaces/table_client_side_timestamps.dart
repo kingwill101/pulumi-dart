@@ -8,10 +8,14 @@ class TableClientSideTimestamps {
 
   /// Creates a new [TableClientSideTimestamps].
   /// [status] Shows how to enable client-side timestamps settings for the specified table. Valid values: `ENABLED`.
-  TableClientSideTimestamps({required this.status});
+  TableClientSideTimestamps({
+    required this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': status};
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
   factory TableClientSideTimestamps.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class TableClientSideTimestamps {
     );
   }
 }
+

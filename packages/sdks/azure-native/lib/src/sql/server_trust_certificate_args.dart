@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerTrustCertificateArgs {
   /// Name of of the certificate to upload.
   final pulumi.Input<String>? certificateName;
-
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
-
   /// The certificate public blob
   final pulumi.Input<String>? publicBlob;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,22 +39,11 @@ class ServerTrustCertificateArgs {
 
   factory ServerTrustCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ServerTrustCertificateArgs(
-      certificateName: (() {
-        final guardedValue = map['certificateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedInstanceName: pulumi.Input.fromValue(
-        map['managedInstanceName'] as String,
-      ),
-      publicBlob: (() {
-        final guardedValue = map['publicBlob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      certificateName: (() { final guardedValue = map['certificateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedInstanceName: pulumi.Input.fromValue(map['managedInstanceName'] as String),
+      publicBlob: (() { final guardedValue = map['publicBlob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -298,31 +298,22 @@ import 'firewall_vpc_firewall_state.dart';
 class FirewallVpcFirewall extends pulumi.CustomResource {
   /// Bandwidth specifications for high-speed channels. Unit: Mbps.
   late final pulumi.Output<int> bandwidth;
-
   /// The communication type of the VPC firewall.
   late final pulumi.Output<String> connectType;
-
   /// The language type of the requested and received messages. Valid values:
   late final pulumi.Output<String?> lang;
-
   /// The details of the local VPC. See `local_vpc` below.
   late final pulumi.Output<FirewallVpcFirewallLocalVpc> localVpc;
-
   /// The UID of the Alibaba Cloud member account.
   late final pulumi.Output<String?> memberUid;
-
   /// The details of the peer VPC. See `peer_vpc` below.
   late final pulumi.Output<FirewallVpcFirewallPeerVpc> peerVpc;
-
   /// The region is open.
   late final pulumi.Output<String> regionStatus;
-
   /// The status of the resource. Valid values:
   late final pulumi.Output<String> status;
-
   /// The ID of the VPC firewall instance.
   late final pulumi.Output<String> vpcFirewallId;
-
   /// The name of the VPC firewall instance.
   late final pulumi.Output<String> vpcFirewallName;
 
@@ -335,35 +326,17 @@ class FirewallVpcFirewall extends pulumi.CustomResource {
     FirewallVpcFirewallArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidth = registerOutput<int>('bandwidth');
     connectType = registerOutput<String>('connectType');
     lang = registerOutput<String?>('lang');
-    localVpc = registerOutput<FirewallVpcFirewallLocalVpc>(
-      'localVpc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FirewallVpcFirewallLocalVpc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    localVpc = registerOutput<FirewallVpcFirewallLocalVpc>('localVpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallVpcFirewallLocalVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memberUid = registerOutput<String?>('memberUid');
-    peerVpc = registerOutput<FirewallVpcFirewallPeerVpc>(
-      'peerVpc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FirewallVpcFirewallPeerVpc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    peerVpc = registerOutput<FirewallVpcFirewallPeerVpc>('peerVpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallVpcFirewallPeerVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     regionStatus = registerOutput<String>('regionStatus');
     status = registerOutput<String>('status');
     vpcFirewallId = registerOutput<String>('vpcFirewallId');
@@ -388,35 +361,17 @@ class FirewallVpcFirewall extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidth = registerOutput<int>('bandwidth');
     connectType = registerOutput<String>('connectType');
     lang = registerOutput<String?>('lang');
-    localVpc = registerOutput<FirewallVpcFirewallLocalVpc>(
-      'localVpc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FirewallVpcFirewallLocalVpc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    localVpc = registerOutput<FirewallVpcFirewallLocalVpc>('localVpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallVpcFirewallLocalVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memberUid = registerOutput<String?>('memberUid');
-    peerVpc = registerOutput<FirewallVpcFirewallPeerVpc>(
-      'peerVpc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FirewallVpcFirewallPeerVpc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    peerVpc = registerOutput<FirewallVpcFirewallPeerVpc>('peerVpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallVpcFirewallPeerVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     regionStatus = registerOutput<String>('regionStatus');
     status = registerOutput<String>('status');
     vpcFirewallId = registerOutput<String>('vpcFirewallId');

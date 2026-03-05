@@ -15,3 +15,4 @@ enum SearchBypass {
     throw ArgumentError('Unknown SearchBypass value: $value');
   }
 }
+

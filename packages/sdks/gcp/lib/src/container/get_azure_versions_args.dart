@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAzureVersionsArgs {
   /// The location to list versions for.
   final pulumi.Input<String>? location;
-
   /// ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
   /// Defaults to the project that the provider is authenticated with.
   final pulumi.Input<String>? project;
@@ -17,24 +16,23 @@ class GetAzureVersionsArgs {
   /// Creates a new [GetAzureVersionsArgs].
   /// [location] The location to list versions for.
   /// [project] ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
-  GetAzureVersionsArgs({this.location, this.project});
+  GetAzureVersionsArgs({
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': ?location, 'project': ?project};
+    return <String, dynamic>{
+      'location': ?location,
+      'project': ?project,
+    };
   }
 
   factory GetAzureVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureVersionsArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -196,54 +196,36 @@ import 'system_data_response.dart';
 class DomainEventSubscription extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
   /// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
-  late final pulumi.Output<StorageBlobDeadLetterDestinationResponse?>
-  deadLetterDestination;
-
+  late final pulumi.Output<StorageBlobDeadLetterDestinationResponse?> deadLetterDestination;
   /// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
   /// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
-  late final pulumi.Output<DeadLetterWithResourceIdentityResponse?>
-  deadLetterWithResourceIdentity;
-
+  late final pulumi.Output<DeadLetterWithResourceIdentityResponse?> deadLetterWithResourceIdentity;
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
-  late final pulumi.Output<DeliveryWithResourceIdentityResponse?>
-  deliveryWithResourceIdentity;
-
+  late final pulumi.Output<DeliveryWithResourceIdentityResponse?> deliveryWithResourceIdentity;
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
-  late final pulumi.Output<AzureFunctionEventSubscriptionDestinationResponse?>
-  destination;
-
+  late final pulumi.Output<AzureFunctionEventSubscriptionDestinationResponse?> destination;
   /// The event delivery schema for the event subscription.
   late final pulumi.Output<String?> eventDeliverySchema;
-
   /// Expiration time of the event subscription.
   late final pulumi.Output<String?> expirationTimeUtc;
-
   /// Information about the filter for the event subscription.
   late final pulumi.Output<EventSubscriptionFilterResponse?> filter;
-
   /// List of user defined labels.
   late final pulumi.Output<List<String>?> labels;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the event subscription.
   late final pulumi.Output<String> provisioningState;
-
   /// The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
   late final pulumi.Output<RetryPolicyResponse?> retryPolicy;
-
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Name of the topic of the event subscription.
   late final pulumi.Output<String> topic;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -256,91 +238,24 @@ class DomainEventSubscription extends pulumi.CustomResource {
     DomainEventSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventgrid:DomainEventSubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventgrid:DomainEventSubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    deadLetterDestination =
-        registerOutput<StorageBlobDeadLetterDestinationResponse?>(
-          'deadLetterDestination',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return StorageBlobDeadLetterDestinationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deadLetterWithResourceIdentity =
-        registerOutput<DeadLetterWithResourceIdentityResponse?>(
-          'deadLetterWithResourceIdentity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DeadLetterWithResourceIdentityResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deliveryWithResourceIdentity =
-        registerOutput<DeliveryWithResourceIdentityResponse?>(
-          'deliveryWithResourceIdentity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DeliveryWithResourceIdentityResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    destination =
-        registerOutput<AzureFunctionEventSubscriptionDestinationResponse?>(
-          'destination',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AzureFunctionEventSubscriptionDestinationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    deadLetterDestination = registerOutput<StorageBlobDeadLetterDestinationResponse?>('deadLetterDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageBlobDeadLetterDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deadLetterWithResourceIdentity = registerOutput<DeadLetterWithResourceIdentityResponse?>('deadLetterWithResourceIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeadLetterWithResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryWithResourceIdentity = registerOutput<DeliveryWithResourceIdentityResponse?>('deliveryWithResourceIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeliveryWithResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destination = registerOutput<AzureFunctionEventSubscriptionDestinationResponse?>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureFunctionEventSubscriptionDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
     expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
-    filter = registerOutput<EventSubscriptionFilterResponse?>(
-      'filter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventSubscriptionFilterResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    filter = registerOutput<EventSubscriptionFilterResponse?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    retryPolicy = registerOutput<RetryPolicyResponse?>(
-      'retryPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RetryPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retryPolicy = registerOutput<RetryPolicyResponse?>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RetryPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     topic = registerOutput<String>('topic');
     type = registerOutput<String>('type');
   }

@@ -162,23 +162,16 @@ import 'proxy_resource_response_system_data.dart';
 class PrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the name.
   late final pulumi.Output<String> name;
-
   /// The private endpoint information.
   late final pulumi.Output<PrivateEndpointResponse?> privateEndpoint;
-
   /// The private link service connection state.
-  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse?>
-  privateLinkServiceConnectionState;
-
+  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse?> privateLinkServiceConnectionState;
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<ProxyResourceResponseSystemData> systemData;
-
   /// Gets or sets the type.
   late final pulumi.Output<String> type;
 
@@ -191,45 +184,17 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:purview:PrivateEndpointConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:purview:PrivateEndpointConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    privateEndpoint = registerOutput<PrivateEndpointResponse?>(
-      'privateEndpoint',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PrivateEndpointResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateLinkServiceConnectionState =
-        registerOutput<PrivateLinkServiceConnectionStateResponse?>(
-          'privateLinkServiceConnectionState',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return PrivateLinkServiceConnectionStateResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    privateEndpoint = registerOutput<PrivateEndpointResponse?>('privateEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateLinkServiceConnectionState = registerOutput<PrivateLinkServiceConnectionStateResponse?>('privateLinkServiceConnectionState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateLinkServiceConnectionStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<ProxyResourceResponseSystemData>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProxyResourceResponseSystemData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<ProxyResourceResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProxyResourceResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

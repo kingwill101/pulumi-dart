@@ -15,3 +15,4 @@ enum ModelTaskType {
     throw ArgumentError('Unknown ModelTaskType value: $value');
   }
 }
+

@@ -213,34 +213,22 @@ import 'exascale_database_storage_vault_state.dart';
 class ExascaleDatabaseStorageVault extends pulumi.CustomResource {
   /// The size of additional Flash Cache in percentage of High Capacity database storage. Changing this forces a new Exadata Database Storage Vault to be created.
   late final pulumi.Output<int> additionalFlashCachePercentage;
-
   /// Exadata Database Storage Vault description. Changing this forces a new Exadata Database Storage Vault to be created.
   late final pulumi.Output<String> description;
-
   /// The user-friendly name for the Exadata Database Storage Vault resource. The name does not need to be unique. Changing this forces a new Exadata Database Storage Vault to be created.
   late final pulumi.Output<String> displayName;
-
   /// A `high_capacity_database_storage` block as defined below. Changing this forces a new Exadata Database Storage Vault to be created.
-  late final pulumi.Output<
-    ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage
-  >
-  highCapacityDatabaseStorage;
-
+  late final pulumi.Output<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage> highCapacityDatabaseStorage;
   /// The Azure Region where the Exadata Database Storage Vault should exist. Changing this forces a new Exadata Database Storage Vault to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Exadata Database Storage Vault. Changing this forces a new Exadata Database Storage Vault to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Exadata Database Storage Vault should exist. Changing this forces a new Exadata Database Storage Vault to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Exadata Database Storage Vault.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The time zone that you want to use for the Exadata Database Storage Vault. Changing this forces a new Exadata Database Storage Vault to be created. For details, see [Time Zones](https://docs.oracle.com/en/cloud/paas/base-database/time-zone/).
   late final pulumi.Output<String?> timeZone;
-
   /// Exadata Database Storage Vault zones. Changing this forces a new Exadata Database Storage Vault to be created.
   late final pulumi.Output<List<String>> zones;
 
@@ -253,27 +241,15 @@ class ExascaleDatabaseStorageVault extends pulumi.CustomResource {
     ExascaleDatabaseStorageVaultArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:oracle/exascaleDatabaseStorageVault:ExascaleDatabaseStorageVault',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalFlashCachePercentage = registerOutput<int>(
-      'additionalFlashCachePercentage',
-    );
+          'azure:oracle/exascaleDatabaseStorageVault:ExascaleDatabaseStorageVault',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalFlashCachePercentage = registerOutput<int>('additionalFlashCachePercentage');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    highCapacityDatabaseStorage =
-        registerOutput<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>(
-          'highCapacityDatabaseStorage',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    highCapacityDatabaseStorage = registerOutput<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>('highCapacityDatabaseStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -300,27 +276,15 @@ class ExascaleDatabaseStorageVault extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:oracle/exascaleDatabaseStorageVault:ExascaleDatabaseStorageVault',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalFlashCachePercentage = registerOutput<int>(
-      'additionalFlashCachePercentage',
-    );
+          'azure:oracle/exascaleDatabaseStorageVault:ExascaleDatabaseStorageVault',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalFlashCachePercentage = registerOutput<int>('additionalFlashCachePercentage');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    highCapacityDatabaseStorage =
-        registerOutput<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>(
-          'highCapacityDatabaseStorage',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    highCapacityDatabaseStorage = registerOutput<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>('highCapacityDatabaseStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

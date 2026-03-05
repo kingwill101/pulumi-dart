@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getManagedApi.
 class GetManagedApiResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -38,3 +39,4 @@ class GetManagedApiResult {
     );
   }
 }
+

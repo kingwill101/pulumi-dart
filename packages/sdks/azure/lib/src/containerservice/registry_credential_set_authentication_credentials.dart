@@ -7,7 +7,6 @@ class RegistryCredentialSetAuthenticationCredentials {
   ///
   /// &gt; **Note:** Be aware that you will need to permit the Identity that is created for the Container Registry to have `get` on secrets to the Key Vault, e.g. using the `azure.keyvault.AccessPolicy` resource.
   final pulumi.Input<String> passwordSecretId;
-
   /// The URI of the secret containing the username in a Key Vault.
   final pulumi.Input<String> usernameSecretId;
 
@@ -26,16 +25,11 @@ class RegistryCredentialSetAuthenticationCredentials {
     };
   }
 
-  factory RegistryCredentialSetAuthenticationCredentials.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegistryCredentialSetAuthenticationCredentials.fromMap(Map<String, dynamic> map) {
     return RegistryCredentialSetAuthenticationCredentials(
-      passwordSecretId: pulumi.Input.fromValue(
-        map['passwordSecretId'] as String,
-      ),
-      usernameSecretId: pulumi.Input.fromValue(
-        map['usernameSecretId'] as String,
-      ),
+      passwordSecretId: pulumi.Input.fromValue(map['passwordSecretId'] as String),
+      usernameSecretId: pulumi.Input.fromValue(map['usernameSecretId'] as String),
     );
   }
 }
+

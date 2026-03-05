@@ -8,21 +8,20 @@ class FirewallPolicyRuleSecureTagComputeV1 {
 
   /// Creates a new [FirewallPolicyRuleSecureTagComputeV1].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
-  FirewallPolicyRuleSecureTagComputeV1({this.name});
+  FirewallPolicyRuleSecureTagComputeV1({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory FirewallPolicyRuleSecureTagComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirewallPolicyRuleSecureTagComputeV1.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleSecureTagComputeV1(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

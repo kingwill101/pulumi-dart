@@ -9,21 +9,20 @@ class ServiceProviderParameterMetadataConstraintsResponse {
 
   /// Creates a new [ServiceProviderParameterMetadataConstraintsResponse].
   /// [required] Whether required the constraints of the bot meta data.
-  ServiceProviderParameterMetadataConstraintsResponse({this.required});
+  ServiceProviderParameterMetadataConstraintsResponse({
+    this.required,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'required': ?required};
+    return <String, dynamic>{
+      'required': ?required,
+    };
   }
 
-  factory ServiceProviderParameterMetadataConstraintsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceProviderParameterMetadataConstraintsResponse.fromMap(Map<String, dynamic> map) {
     return ServiceProviderParameterMetadataConstraintsResponse(
-      required: (() {
-        final guardedValue = map['required'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      required: (() { final guardedValue = map['required']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

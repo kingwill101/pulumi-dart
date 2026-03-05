@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointDnsEntry {
   /// The DNS name.
   final pulumi.Input<String>? dnsName;
-
   /// The ID of the private hosted zone.
   final pulumi.Input<String>? hostedZoneId;
 
   /// Creates a new [VpcEndpointDnsEntry].
   /// [dnsName] The DNS name.
   /// [hostedZoneId] The ID of the private hosted zone.
-  VpcEndpointDnsEntry({this.dnsName, this.hostedZoneId});
+  VpcEndpointDnsEntry({
+    this.dnsName,
+    this.hostedZoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,16 +25,9 @@ class VpcEndpointDnsEntry {
 
   factory VpcEndpointDnsEntry.fromMap(Map<String, dynamic> map) {
     return VpcEndpointDnsEntry(
-      dnsName: (() {
-        final guardedValue = map['dnsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostedZoneId: (() {
-        final guardedValue = map['hostedZoneId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostedZoneId: (() { final guardedValue = map['hostedZoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

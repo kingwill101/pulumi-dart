@@ -6,31 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureVmDiskDetailsResponse {
   /// The custom target Azure disk name.
   final pulumi.Input<String>? customTargetDiskName;
-
   /// The DiskEncryptionSet ARM ID.
   final pulumi.Input<String>? diskEncryptionSetId;
-
   /// The disk resource id.
   final pulumi.Input<String>? diskId;
-
   /// Ordinal\LunId of the disk for the Azure VM.
   final pulumi.Input<String>? lunId;
-
   /// Max side in MB.
   final pulumi.Input<String>? maxSizeMB;
-
   /// Blob uri of the Azure disk.
   final pulumi.Input<String>? targetDiskLocation;
-
   /// The target Azure disk name.
   final pulumi.Input<String>? targetDiskName;
-
   /// The VHD id.
   final pulumi.Input<String>? vhdId;
-
   /// VHD name.
   final pulumi.Input<String>? vhdName;
-
   /// VHD type.
   final pulumi.Input<String>? vhdType;
 
@@ -75,56 +66,17 @@ class AzureVmDiskDetailsResponse {
 
   factory AzureVmDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AzureVmDiskDetailsResponse(
-      customTargetDiskName: (() {
-        final guardedValue = map['customTargetDiskName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      diskEncryptionSetId: (() {
-        final guardedValue = map['diskEncryptionSetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      diskId: (() {
-        final guardedValue = map['diskId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lunId: (() {
-        final guardedValue = map['lunId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxSizeMB: (() {
-        final guardedValue = map['maxSizeMB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetDiskLocation: (() {
-        final guardedValue = map['targetDiskLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetDiskName: (() {
-        final guardedValue = map['targetDiskName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vhdId: (() {
-        final guardedValue = map['vhdId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vhdName: (() {
-        final guardedValue = map['vhdName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vhdType: (() {
-        final guardedValue = map['vhdType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customTargetDiskName: (() { final guardedValue = map['customTargetDiskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskEncryptionSetId: (() { final guardedValue = map['diskEncryptionSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskId: (() { final guardedValue = map['diskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lunId: (() { final guardedValue = map['lunId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxSizeMB: (() { final guardedValue = map['maxSizeMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetDiskLocation: (() { final guardedValue = map['targetDiskLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetDiskName: (() { final guardedValue = map['targetDiskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vhdId: (() { final guardedValue = map['vhdId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vhdName: (() { final guardedValue = map['vhdName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vhdType: (() { final guardedValue = map['vhdType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

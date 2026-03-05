@@ -500,76 +500,51 @@ import 'multitenant_distribution_viewer_certificate.dart';
 class MultitenantDistribution extends pulumi.CustomResource {
   /// List of key groups that CloudFront can use to validate signed URLs or signed cookies. See Active Trusted Key Groups below.
   late final pulumi.Output<List<Map<String, dynamic>>?> activeTrustedKeyGroups;
-
   /// ARN for the distribution.
   late final pulumi.Output<String> arn;
-
   /// Ordered list of cache behaviors resource for this distribution. See Cache Behavior below.
   late final pulumi.Output<List<Map<String, dynamic>>?> cacheBehaviors;
-
   /// Internal value used by CloudFront to allow future updates to the distribution configuration.
   late final pulumi.Output<String> callerReference;
-
   /// Any comments you want to include about the distribution.
   late final pulumi.Output<String> comment;
-
   /// Connection mode for the distribution. Always set to `tenant-only` for multi-tenant distributions.
   late final pulumi.Output<String> connectionMode;
-
   /// One or more custom error response elements. See Custom Error Response below.
   late final pulumi.Output<List<Map<String, dynamic>>?> customErrorResponses;
-
   /// Default cache behavior for this distribution. See Default Cache Behavior below.
-  late final pulumi.Output<MultitenantDistributionDefaultCacheBehavior>
-  defaultCacheBehavior;
-
+  late final pulumi.Output<MultitenantDistributionDefaultCacheBehavior> defaultCacheBehavior;
   /// Object that you want CloudFront to return when an end user requests the root URL.
   late final pulumi.Output<String?> defaultRootObject;
-
   /// Domain name corresponding to the distribution.
   late final pulumi.Output<String> domainName;
-
   /// Whether the distribution is enabled to accept end user requests for content.
   late final pulumi.Output<bool> enabled;
-
   /// Current version of the distribution's information.
   late final pulumi.Output<String> etag;
-
   /// Maximum HTTP version to support on the distribution. Allowed values are `http1.1`, `http2`, `http2and3`, and `http3`. Default: `http2`.
   late final pulumi.Output<String> httpVersion;
-
   /// Number of invalidation batches currently in progress.
   late final pulumi.Output<int> inProgressInvalidationBatches;
-
   /// Date and time the distribution was last modified.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// One or more origin_group for this distribution (multiples allowed). See Origin Group below.
   late final pulumi.Output<List<Map<String, dynamic>>?> originGroups;
-
   /// One or more origins for this distribution (multiples allowed). See Origin below.
   late final pulumi.Output<List<Map<String, dynamic>>?> origins;
-
   /// Restriction configuration for this distribution. See Restrictions below.
   late final pulumi.Output<MultitenantDistributionRestrictions?> restrictions;
-
   /// Current status of the distribution. `Deployed` if the distribution's information is fully propagated throughout the Amazon CloudFront system.
   late final pulumi.Output<String> status;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Tenant configuration that contains parameter definitions for multi-tenant distributions. See Tenant Config below.
   late final pulumi.Output<MultitenantDistributionTenantConfig> tenantConfig;
   late final pulumi.Output<MultitenantDistributionTimeouts?> timeouts;
-
   /// SSL configuration for this distribution. See Viewer Certificate below.
-  late final pulumi.Output<MultitenantDistributionViewerCertificate>
-  viewerCertificate;
-
+  late final pulumi.Output<MultitenantDistributionViewerCertificate> viewerCertificate;
   /// Unique identifier that specifies the AWS WAF v2 web ACL to associate with this distribution.
   late final pulumi.Output<String?> webAclId;
 
@@ -582,90 +557,35 @@ class MultitenantDistribution extends pulumi.CustomResource {
     MultitenantDistributionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/multitenantDistribution:MultitenantDistribution',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    activeTrustedKeyGroups = registerOutput<List<Map<String, dynamic>>?>(
-      'activeTrustedKeyGroups',
-    );
+          'aws:cloudfront/multitenantDistribution:MultitenantDistribution',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    activeTrustedKeyGroups = registerOutput<List<Map<String, dynamic>>?>('activeTrustedKeyGroups');
     arn = registerOutput<String>('arn');
-    cacheBehaviors = registerOutput<List<Map<String, dynamic>>?>(
-      'cacheBehaviors',
-    );
+    cacheBehaviors = registerOutput<List<Map<String, dynamic>>?>('cacheBehaviors');
     callerReference = registerOutput<String>('callerReference');
     comment = registerOutput<String>('comment');
     connectionMode = registerOutput<String>('connectionMode');
-    customErrorResponses = registerOutput<List<Map<String, dynamic>>?>(
-      'customErrorResponses',
-    );
-    defaultCacheBehavior =
-        registerOutput<MultitenantDistributionDefaultCacheBehavior>(
-          'defaultCacheBehavior',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MultitenantDistributionDefaultCacheBehavior.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    customErrorResponses = registerOutput<List<Map<String, dynamic>>?>('customErrorResponses');
+    defaultCacheBehavior = registerOutput<MultitenantDistributionDefaultCacheBehavior>('defaultCacheBehavior', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionDefaultCacheBehavior.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultRootObject = registerOutput<String?>('defaultRootObject');
     domainName = registerOutput<String>('domainName');
     enabled = registerOutput<bool>('enabled');
     etag = registerOutput<String>('etag');
     httpVersion = registerOutput<String>('httpVersion');
-    inProgressInvalidationBatches = registerOutput<int>(
-      'inProgressInvalidationBatches',
-    );
+    inProgressInvalidationBatches = registerOutput<int>('inProgressInvalidationBatches');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     originGroups = registerOutput<List<Map<String, dynamic>>?>('originGroups');
     origins = registerOutput<List<Map<String, dynamic>>?>('origins');
-    restrictions = registerOutput<MultitenantDistributionRestrictions?>(
-      'restrictions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultitenantDistributionRestrictions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    restrictions = registerOutput<MultitenantDistributionRestrictions?>('restrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    tenantConfig = registerOutput<MultitenantDistributionTenantConfig>(
-      'tenantConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultitenantDistributionTenantConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    timeouts = registerOutput<MultitenantDistributionTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultitenantDistributionTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    viewerCertificate =
-        registerOutput<MultitenantDistributionViewerCertificate>(
-          'viewerCertificate',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MultitenantDistributionViewerCertificate.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    tenantConfig = registerOutput<MultitenantDistributionTenantConfig>('tenantConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionTenantConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeouts = registerOutput<MultitenantDistributionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    viewerCertificate = registerOutput<MultitenantDistributionViewerCertificate>('viewerCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionViewerCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webAclId = registerOutput<String?>('webAclId');
   }
 
@@ -687,90 +607,35 @@ class MultitenantDistribution extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/multitenantDistribution:MultitenantDistribution',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    activeTrustedKeyGroups = registerOutput<List<Map<String, dynamic>>?>(
-      'activeTrustedKeyGroups',
-    );
+          'aws:cloudfront/multitenantDistribution:MultitenantDistribution',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    activeTrustedKeyGroups = registerOutput<List<Map<String, dynamic>>?>('activeTrustedKeyGroups');
     arn = registerOutput<String>('arn');
-    cacheBehaviors = registerOutput<List<Map<String, dynamic>>?>(
-      'cacheBehaviors',
-    );
+    cacheBehaviors = registerOutput<List<Map<String, dynamic>>?>('cacheBehaviors');
     callerReference = registerOutput<String>('callerReference');
     comment = registerOutput<String>('comment');
     connectionMode = registerOutput<String>('connectionMode');
-    customErrorResponses = registerOutput<List<Map<String, dynamic>>?>(
-      'customErrorResponses',
-    );
-    defaultCacheBehavior =
-        registerOutput<MultitenantDistributionDefaultCacheBehavior>(
-          'defaultCacheBehavior',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MultitenantDistributionDefaultCacheBehavior.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    customErrorResponses = registerOutput<List<Map<String, dynamic>>?>('customErrorResponses');
+    defaultCacheBehavior = registerOutput<MultitenantDistributionDefaultCacheBehavior>('defaultCacheBehavior', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionDefaultCacheBehavior.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultRootObject = registerOutput<String?>('defaultRootObject');
     domainName = registerOutput<String>('domainName');
     enabled = registerOutput<bool>('enabled');
     etag = registerOutput<String>('etag');
     httpVersion = registerOutput<String>('httpVersion');
-    inProgressInvalidationBatches = registerOutput<int>(
-      'inProgressInvalidationBatches',
-    );
+    inProgressInvalidationBatches = registerOutput<int>('inProgressInvalidationBatches');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     originGroups = registerOutput<List<Map<String, dynamic>>?>('originGroups');
     origins = registerOutput<List<Map<String, dynamic>>?>('origins');
-    restrictions = registerOutput<MultitenantDistributionRestrictions?>(
-      'restrictions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultitenantDistributionRestrictions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    restrictions = registerOutput<MultitenantDistributionRestrictions?>('restrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    tenantConfig = registerOutput<MultitenantDistributionTenantConfig>(
-      'tenantConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultitenantDistributionTenantConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    timeouts = registerOutput<MultitenantDistributionTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultitenantDistributionTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    viewerCertificate =
-        registerOutput<MultitenantDistributionViewerCertificate>(
-          'viewerCertificate',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MultitenantDistributionViewerCertificate.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    tenantConfig = registerOutput<MultitenantDistributionTenantConfig>('tenantConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionTenantConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeouts = registerOutput<MultitenantDistributionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    viewerCertificate = registerOutput<MultitenantDistributionViewerCertificate>('viewerCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionViewerCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webAclId = registerOutput<String?>('webAclId');
   }
 }

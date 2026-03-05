@@ -20,3 +20,4 @@ enum ArcKindEnum {
     throw ArgumentError('Unknown ArcKindEnum value: $value');
   }
 }
+

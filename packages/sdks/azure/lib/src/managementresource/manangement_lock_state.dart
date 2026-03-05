@@ -8,13 +8,10 @@ class ManangementLockState {
   ///
   /// &gt; **Note:** `CanNotDelete` means authorized users are able to read and modify the resources, but not delete. `ReadOnly` means authorized users can only read from a resource, but they can't modify or delete it.
   final pulumi.Input<String>? lockLevel;
-
   /// Specifies the name of the Management Lock. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies some notes about the lock. Maximum of 512 characters. Changing this forces a new resource to be created.
   final pulumi.Input<String>? notes;
-
   /// Specifies the scope at which the Management Lock should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? scope;
 
@@ -23,7 +20,12 @@ class ManangementLockState {
   /// [name] Specifies the name of the Management Lock. Changing this forces a new resource to be created.
   /// [notes] Specifies some notes about the lock. Maximum of 512 characters. Changing this forces a new resource to be created.
   /// [scope] Specifies the scope at which the Management Lock should be created. Changing this forces a new resource to be created.
-  ManangementLockState({this.lockLevel, this.name, this.notes, this.scope});
+  ManangementLockState({
+    this.lockLevel,
+    this.name,
+    this.notes,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,26 +38,11 @@ class ManangementLockState {
 
   factory ManangementLockState.fromMap(Map<String, dynamic> map) {
     return ManangementLockState(
-      lockLevel: (() {
-        final guardedValue = map['lockLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      notes: (() {
-        final guardedValue = map['notes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      lockLevel: (() { final guardedValue = map['lockLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

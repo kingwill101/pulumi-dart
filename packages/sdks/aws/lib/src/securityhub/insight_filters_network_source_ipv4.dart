@@ -8,10 +8,14 @@ class InsightFiltersNetworkSourceIpv4 {
 
   /// Creates a new [InsightFiltersNetworkSourceIpv4].
   /// [cidr] A finding's CIDR value.
-  InsightFiltersNetworkSourceIpv4({required this.cidr});
+  InsightFiltersNetworkSourceIpv4({
+    required this.cidr,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cidr': cidr};
+    return <String, dynamic>{
+      'cidr': cidr,
+    };
   }
 
   factory InsightFiltersNetworkSourceIpv4.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class InsightFiltersNetworkSourceIpv4 {
     );
   }
 }
+

@@ -7,13 +7,10 @@ class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy {
   ///
   /// * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
   final pulumi.Input<int> sharegroupId;
-
   /// The label from the associated im_ImageShareGroup row.
   final pulumi.Input<String> sharegroupLabel;
-
   /// The sharegroup_uuid from the im_ImageShare row.
   final pulumi.Input<String> sharegroupUuid;
-
   /// The image id of the base image (will only be shown to producers, will be null for consumers).
   final pulumi.Input<String> sourceImageId;
 
@@ -38,9 +35,7 @@ class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy {
     };
   }
 
-  factory GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy.fromMap(Map<String, dynamic> map) {
     return GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy(
       sharegroupId: pulumi.Input.fromValue(map['sharegroupId'] as int),
       sharegroupLabel: pulumi.Input.fromValue(map['sharegroupLabel'] as String),
@@ -49,3 +44,4 @@ class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy {
     );
   }
 }
+

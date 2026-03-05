@@ -19,3 +19,4 @@ enum CoolAccessRetrievalPolicy {
     throw ArgumentError('Unknown CoolAccessRetrievalPolicy value: $value');
   }
 }
+

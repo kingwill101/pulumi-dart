@@ -10,41 +10,20 @@ class GoogleCloudSecuritycenterV1CustomOutputSpec {
 
   /// Creates a new [GoogleCloudSecuritycenterV1CustomOutputSpec].
   /// [properties] A list of custom output properties to add to the finding.
-  GoogleCloudSecuritycenterV1CustomOutputSpec({this.properties});
+  GoogleCloudSecuritycenterV1CustomOutputSpec({
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudSecuritycenterV1Property>,
-            List<Map<String, dynamic>>
-          >(
-            properties,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudSecuritycenterV1Property,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'properties': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudSecuritycenterV1Property>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<GoogleCloudSecuritycenterV1Property, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GoogleCloudSecuritycenterV1CustomOutputSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudSecuritycenterV1CustomOutputSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudSecuritycenterV1CustomOutputSpec(
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GoogleCloudSecuritycenterV1Property>(
-            guardedValue,
-            (value) => GoogleCloudSecuritycenterV1Property.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudSecuritycenterV1Property>(guardedValue, (value) => GoogleCloudSecuritycenterV1Property.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

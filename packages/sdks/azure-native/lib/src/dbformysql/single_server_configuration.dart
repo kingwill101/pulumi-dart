@@ -144,28 +144,20 @@ import 'single_server_configuration_args.dart';
 class SingleServerConfiguration extends pulumi.CustomResource {
   /// Allowed values of the configuration.
   late final pulumi.Output<String> allowedValues;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Data type of the configuration.
   late final pulumi.Output<String> dataType;
-
   /// Default value of the configuration.
   late final pulumi.Output<String> defaultValue;
-
   /// Description of the configuration.
   late final pulumi.Output<String> description;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Source of the configuration.
   late final pulumi.Output<String?> source;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Value of the configuration.
   late final pulumi.Output<String?> value;
 
@@ -178,11 +170,11 @@ class SingleServerConfiguration extends pulumi.CustomResource {
     SingleServerConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:dbformysql:SingleServerConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:dbformysql:SingleServerConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedValues = registerOutput<String>('allowedValues');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dataType = registerOutput<String>('dataType');

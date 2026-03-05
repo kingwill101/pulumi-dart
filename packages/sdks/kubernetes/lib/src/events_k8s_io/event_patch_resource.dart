@@ -15,50 +15,35 @@ import 'event_series_patch_events_k8s_io_v1beta1.dart';
 class EventPatchResource extends pulumi.CustomResource {
   /// What action was taken/failed regarding to the regarding object.
   late final pulumi.Output<String?> action;
-
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
-
   /// Deprecated field assuring backward compatibility with core.v1 Event type
   late final pulumi.Output<int?> deprecatedCount;
-
   /// Deprecated field assuring backward compatibility with core.v1 Event type
   late final pulumi.Output<String?> deprecatedFirstTimestamp;
-
   /// Deprecated field assuring backward compatibility with core.v1 Event type
   late final pulumi.Output<String?> deprecatedLastTimestamp;
-
   /// Deprecated field assuring backward compatibility with core.v1 Event type
   late final pulumi.Output<EventSourcePatch?> deprecatedSource;
-
   /// Required. Time when this Event was first observed.
   late final pulumi.Output<String?> eventTime;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
   late final pulumi.Output<ObjectMetaPatch?> metadata;
-
   /// Optional. A human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.
   late final pulumi.Output<String?> note;
-
   /// Why the action was taken.
   late final pulumi.Output<String?> reason;
-
   /// The object this Event is about. In most cases it's an Object reporting controller implements. E.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.
   late final pulumi.Output<ObjectReferencePatch?> regarding;
-
   /// Optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.
   late final pulumi.Output<ObjectReferencePatch?> related;
-
   /// Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
   late final pulumi.Output<String?> reportingController;
-
   /// ID of the controller instance, e.g. `kubelet-xyzf`.
   late final pulumi.Output<String?> reportingInstance;
-
   /// Data about the Event series this event represents or nil if it's a singleton Event.
   late final pulumi.Output<EventSeriesPatchEventsK8sIoV1beta1?> series;
-
   /// Type of this event (Normal, Warning), new types could be added in the future.
   late final pulumi.Output<String?> type;
 
@@ -71,76 +56,27 @@ class EventPatchResource extends pulumi.CustomResource {
     EventPatchEventsK8sIoV1beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'kubernetes:events.k8s.io/v1beta1:EventPatch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'kubernetes:events.k8s.io/v1beta1:EventPatch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String?>('action');
     apiVersion = registerOutput<String?>('apiVersion');
     deprecatedCount = registerOutput<int?>('deprecatedCount');
-    deprecatedFirstTimestamp = registerOutput<String?>(
-      'deprecatedFirstTimestamp',
-    );
-    deprecatedLastTimestamp = registerOutput<String?>(
-      'deprecatedLastTimestamp',
-    );
-    deprecatedSource = registerOutput<EventSourcePatch?>(
-      'deprecatedSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventSourcePatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deprecatedFirstTimestamp = registerOutput<String?>('deprecatedFirstTimestamp');
+    deprecatedLastTimestamp = registerOutput<String?>('deprecatedLastTimestamp');
+    deprecatedSource = registerOutput<EventSourcePatch?>('deprecatedSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourcePatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventTime = registerOutput<String?>('eventTime');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMetaPatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     note = registerOutput<String?>('note');
     reason = registerOutput<String?>('reason');
-    regarding = registerOutput<ObjectReferencePatch?>(
-      'regarding',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectReferencePatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    related = registerOutput<ObjectReferencePatch?>(
-      'related',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectReferencePatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    regarding = registerOutput<ObjectReferencePatch?>('regarding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectReferencePatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    related = registerOutput<ObjectReferencePatch?>('related', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectReferencePatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reportingController = registerOutput<String?>('reportingController');
     reportingInstance = registerOutput<String?>('reportingInstance');
-    series = registerOutput<EventSeriesPatchEventsK8sIoV1beta1?>(
-      'series',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventSeriesPatchEventsK8sIoV1beta1.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    series = registerOutput<EventSeriesPatchEventsK8sIoV1beta1?>('series', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSeriesPatchEventsK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String?>('type');
   }
 }

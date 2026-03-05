@@ -1,9 +1,7 @@
 /// Type of encryption
 enum EncryptionType {
   valueEncryptionAtRestWithPlatformKey("EncryptionAtRestWithPlatformKey"),
-  valueEncryptionAtRestWithCustomerManagedKey(
-    "EncryptionAtRestWithCustomerManagedKey",
-  );
+  valueEncryptionAtRestWithCustomerManagedKey("EncryptionAtRestWithCustomerManagedKey");
 
   const EncryptionType(this.wireValue);
   final String wireValue;
@@ -17,3 +15,4 @@ enum EncryptionType {
     throw ArgumentError('Unknown EncryptionType value: $value');
   }
 }
+

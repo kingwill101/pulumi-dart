@@ -10,27 +10,20 @@ class GooglePrivacyDlpV2DetectionRuleResponse {
 
   /// Creates a new [GooglePrivacyDlpV2DetectionRuleResponse].
   /// [hotwordRule] Hotword-based detection rule.
-  GooglePrivacyDlpV2DetectionRuleResponse({required this.hotwordRule});
+  GooglePrivacyDlpV2DetectionRuleResponse({
+    required this.hotwordRule,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hotwordRule':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2HotwordRuleResponse,
-            Map<String, dynamic>
-          >(hotwordRule, (value) => value.toMap()),
+      'hotwordRule': pulumi.Input.mapInputValue<GooglePrivacyDlpV2HotwordRuleResponse, Map<String, dynamic>>(hotwordRule, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2DetectionRuleResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2DetectionRuleResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DetectionRuleResponse(
-      hotwordRule: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2HotwordRuleResponse.fromMap(
-          (map['hotwordRule']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      hotwordRule: pulumi.Input.fromValue(GooglePrivacyDlpV2HotwordRuleResponse.fromMap((map['hotwordRule']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

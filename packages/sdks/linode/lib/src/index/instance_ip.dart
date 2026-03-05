@@ -151,34 +151,24 @@ import 'instance_ip_state.dart';
 class InstanceIp extends pulumi.CustomResource {
   /// The resulting IPv4 address.
   late final pulumi.Output<String> address;
-
   /// If true, the instance will be rebooted to update network interfaces.
   late final pulumi.Output<bool> applyImmediately;
-
   /// The default gateway for this address
   late final pulumi.Output<String> gateway;
-
   /// The ID of the Linode to allocate an IPv4 address for.
   late final pulumi.Output<int> linodeId;
-
   /// The number of bits set in the subnet mask.
   late final pulumi.Output<int> prefix;
-
   /// Whether the IPv4 address is public or private. Defaults to true.
   late final pulumi.Output<bool> public;
-
   /// The reverse DNS assigned to this address.
   late final pulumi.Output<String> rdns;
-
   /// The region this IP resides in.
   late final pulumi.Output<String> region;
-
   /// The mask that separates host bits from network bits for this address.
   late final pulumi.Output<String> subnetMask;
-
   /// The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
   late final pulumi.Output<String> type;
-
   /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
   late final pulumi.Output<List<Map<String, dynamic>>> vpcNat11s;
 
@@ -191,11 +181,11 @@ class InstanceIp extends pulumi.CustomResource {
     InstanceIpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/instanceIp:InstanceIp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/instanceIp:InstanceIp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     applyImmediately = registerOutput<bool>('applyImmediately');
     gateway = registerOutput<String>('gateway');
@@ -227,11 +217,11 @@ class InstanceIp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/instanceIp:InstanceIp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/instanceIp:InstanceIp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     applyImmediately = registerOutput<bool>('applyImmediately');
     gateway = registerOutput<String>('gateway');

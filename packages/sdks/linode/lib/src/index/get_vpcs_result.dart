@@ -7,7 +7,6 @@ import 'get_vpcs_vpc.dart';
 /// Result data returned by getVpcs.
 class GetVpcsResult {
   final List<GetVpcsFilter>? filters;
-
   /// The unique id of this VPC.
   final String id;
   final List<GetVpcsVpc> vpcs;
@@ -16,42 +15,26 @@ class GetVpcsResult {
   /// [filters] Optional.
   /// [id] The unique id of this VPC.
   /// [vpcs] Required.
-  GetVpcsResult({this.filters, required this.id, required this.vpcs});
+  GetVpcsResult({
+    this.filters,
+    required this.id,
+    required this.vpcs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<GetVpcsFilter, Map<String, dynamic>>(
-          guardedValue,
-          (value) => value.toMap(),
-        );
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVpcsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
-      'vpcs': pulumi.Input.encodeList<GetVpcsVpc, Map<String, dynamic>>(
-        vpcs,
-        (value) => value.toMap(),
-      ),
+      'vpcs': pulumi.Input.encodeList<GetVpcsVpc, Map<String, dynamic>>(vpcs, (value) => value.toMap()),
     };
   }
 
   factory GetVpcsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcsResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetVpcsFilter>(
-          guardedValue,
-          (value) =>
-              GetVpcsFilter.fromMap((value as Map).cast<String, dynamic>()),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVpcsFilter>(guardedValue, (value) => GetVpcsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      vpcs: pulumi.Input.decodeList<GetVpcsVpc>(
-        map['vpcs']!,
-        (value) => GetVpcsVpc.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      vpcs: pulumi.Input.decodeList<GetVpcsVpc>(map['vpcs']!, (value) => GetVpcsVpc.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

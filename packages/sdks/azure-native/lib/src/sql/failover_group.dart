@@ -437,36 +437,24 @@ import 'failover_group_read_write_endpoint_response.dart';
 class FailoverGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// List of databases in the failover group.
   late final pulumi.Output<List<String>?> databases;
-
   /// Resource location.
   late final pulumi.Output<String> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// List of partner server information for the failover group.
   late final pulumi.Output<List<Map<String, dynamic>>> partnerServers;
-
   /// Read-only endpoint of the failover group instance.
-  late final pulumi.Output<FailoverGroupReadOnlyEndpointResponse?>
-  readOnlyEndpoint;
-
+  late final pulumi.Output<FailoverGroupReadOnlyEndpointResponse?> readOnlyEndpoint;
   /// Read-write endpoint of the failover group instance.
-  late final pulumi.Output<FailoverGroupReadWriteEndpointResponse>
-  readWriteEndpoint;
-
+  late final pulumi.Output<FailoverGroupReadWriteEndpointResponse> readWriteEndpoint;
   /// Local replication role of the failover group instance.
   late final pulumi.Output<String> replicationRole;
-
   /// Replication state of the failover group instance.
   late final pulumi.Output<String> replicationState;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -479,38 +467,18 @@ class FailoverGroup extends pulumi.CustomResource {
     FailoverGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:FailoverGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:FailoverGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     databases = registerOutput<List<String>?>('databases');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    partnerServers = registerOutput<List<Map<String, dynamic>>>(
-      'partnerServers',
-    );
-    readOnlyEndpoint = registerOutput<FailoverGroupReadOnlyEndpointResponse?>(
-      'readOnlyEndpoint',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FailoverGroupReadOnlyEndpointResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    readWriteEndpoint = registerOutput<FailoverGroupReadWriteEndpointResponse>(
-      'readWriteEndpoint',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FailoverGroupReadWriteEndpointResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    partnerServers = registerOutput<List<Map<String, dynamic>>>('partnerServers');
+    readOnlyEndpoint = registerOutput<FailoverGroupReadOnlyEndpointResponse?>('readOnlyEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FailoverGroupReadOnlyEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    readWriteEndpoint = registerOutput<FailoverGroupReadWriteEndpointResponse>('readWriteEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FailoverGroupReadWriteEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     replicationRole = registerOutput<String>('replicationRole');
     replicationState = registerOutput<String>('replicationState');
     tags = registerOutput<Map<String, String>?>('tags');

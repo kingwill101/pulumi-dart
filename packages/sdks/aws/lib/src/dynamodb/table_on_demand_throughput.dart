@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableOnDemandThroughput {
   /// Maximum number of read request units for the specified table. To specify set the value greater than or equal to 1. To remove set the value to -1.
   final pulumi.Input<int>? maxReadRequestUnits;
-
   /// Maximum number of write request units for the specified table. To specify set the value greater than or equal to 1. To remove set the value to -1.
   final pulumi.Input<int>? maxWriteRequestUnits;
 
@@ -26,16 +25,9 @@ class TableOnDemandThroughput {
 
   factory TableOnDemandThroughput.fromMap(Map<String, dynamic> map) {
     return TableOnDemandThroughput(
-      maxReadRequestUnits: (() {
-        final guardedValue = map['maxReadRequestUnits'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxWriteRequestUnits: (() {
-        final guardedValue = map['maxWriteRequestUnits'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxReadRequestUnits: (() { final guardedValue = map['maxReadRequestUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxWriteRequestUnits: (() { final guardedValue = map['maxWriteRequestUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

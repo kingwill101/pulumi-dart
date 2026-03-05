@@ -7,44 +7,29 @@ import 'vm_scanners_base_response_configuration.dart';
 class DefenderCspmGcpOfferingResponseVmScanners {
   /// Configuration for VM scanning
   final pulumi.Input<VmScannersBaseResponseConfiguration>? configuration;
-
   /// Is VM scanning enabled
   final pulumi.Input<bool>? enabled;
 
   /// Creates a new [DefenderCspmGcpOfferingResponseVmScanners].
   /// [configuration] Configuration for VM scanning
   /// [enabled] Is VM scanning enabled
-  DefenderCspmGcpOfferingResponseVmScanners({this.configuration, this.enabled});
+  DefenderCspmGcpOfferingResponseVmScanners({
+    this.configuration,
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration':
-          ?pulumi.Input.mapOptionalInputValue<
-            VmScannersBaseResponseConfiguration,
-            Map<String, dynamic>
-          >(configuration, (value) => value.toMap()),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<VmScannersBaseResponseConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'enabled': ?enabled,
     };
   }
 
-  factory DefenderCspmGcpOfferingResponseVmScanners.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefenderCspmGcpOfferingResponseVmScanners.fromMap(Map<String, dynamic> map) {
     return DefenderCspmGcpOfferingResponseVmScanners(
-      configuration: (() {
-        final guardedValue = map['configuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VmScannersBaseResponseConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VmScannersBaseResponseConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -7,13 +7,10 @@ import 'google_cloud_orgpolicy_v2_policy_spec_response.dart';
 class GetFolderPolicyResult {
   /// Deprecated.
   final GoogleCloudOrgpolicyV2AlternatePolicySpecResponse alternate;
-
   /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
   final GoogleCloudOrgpolicyV2PolicySpecResponse dryRunSpec;
-
   /// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
   final String name;
-
   /// Basic information about the Organization Policy.
   final GoogleCloudOrgpolicyV2PolicySpecResponse spec;
 
@@ -40,16 +37,11 @@ class GetFolderPolicyResult {
 
   factory GetFolderPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetFolderPolicyResult(
-      alternate: GoogleCloudOrgpolicyV2AlternatePolicySpecResponse.fromMap(
-        (map['alternate']! as Map).cast<String, dynamic>(),
-      ),
-      dryRunSpec: GoogleCloudOrgpolicyV2PolicySpecResponse.fromMap(
-        (map['dryRunSpec']! as Map).cast<String, dynamic>(),
-      ),
+      alternate: GoogleCloudOrgpolicyV2AlternatePolicySpecResponse.fromMap((map['alternate']! as Map).cast<String, dynamic>()),
+      dryRunSpec: GoogleCloudOrgpolicyV2PolicySpecResponse.fromMap((map['dryRunSpec']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      spec: GoogleCloudOrgpolicyV2PolicySpecResponse.fromMap(
-        (map['spec']! as Map).cast<String, dynamic>(),
-      ),
+      spec: GoogleCloudOrgpolicyV2PolicySpecResponse.fromMap((map['spec']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

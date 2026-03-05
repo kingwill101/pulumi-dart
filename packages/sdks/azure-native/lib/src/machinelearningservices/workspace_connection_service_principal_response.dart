@@ -25,25 +25,12 @@ class WorkspaceConnectionServicePrincipalResponse {
     };
   }
 
-  factory WorkspaceConnectionServicePrincipalResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkspaceConnectionServicePrincipalResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionServicePrincipalResponse(
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientSecret: (() {
-        final guardedValue = map['clientSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

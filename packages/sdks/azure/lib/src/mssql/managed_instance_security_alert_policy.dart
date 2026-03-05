@@ -1388,30 +1388,22 @@ import 'managed_instance_security_alert_policy_state.dart';
 class ManagedInstanceSecurityAlertPolicy extends pulumi.CustomResource {
   /// Specifies an array of alerts that are disabled. Possible values are `Sql_Injection`, `Sql_Injection_Vulnerability`, `Access_Anomaly`, `Data_Exfiltration`, `Unsafe_Action` and `Brute_Force`.
   late final pulumi.Output<List<String>?> disabledAlerts;
-
   /// Boolean flag which specifies if the alert is sent to the account administrators or not. Defaults to `false`.
   late final pulumi.Output<bool?> emailAccountAdminsEnabled;
-
   /// Specifies an array of email addresses to which the alert is sent.
   late final pulumi.Output<List<String>?> emailAddresses;
-
   /// Specifies the state of the Security Alert Policy, whether it is enabled or disabled. Possible values are `true`, `false`.
   late final pulumi.Output<bool?> enabled;
-
   /// Specifies the name of the MS SQL Managed Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedInstanceName;
-
   /// The name of the resource group that contains the MS SQL Managed Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Specifies the number of days to keep in the Threat Detection audit logs. Defaults to `0`.
   late final pulumi.Output<int?> retentionDays;
-
   /// Specifies the identifier key of the Threat Detection audit storage account. This is mandatory when you use `storage_endpoint` to specify a storage account blob endpoint.
   ///
   /// &gt; **Note:** Please note that storage accounts configured with `shared_access_key_enabled = false` cannot be used to configure `azure.mssql.ManagedInstanceSecurityAlertPolicy` with `storage_endpoint` for now.
   late final pulumi.Output<String?> storageAccountAccessKey;
-
   /// Specifies the blob storage endpoint (e.g. https://example.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
   late final pulumi.Output<String?> storageEndpoint;
 
@@ -1424,23 +1416,19 @@ class ManagedInstanceSecurityAlertPolicy extends pulumi.CustomResource {
     ManagedInstanceSecurityAlertPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/managedInstanceSecurityAlertPolicy:ManagedInstanceSecurityAlertPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/managedInstanceSecurityAlertPolicy:ManagedInstanceSecurityAlertPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
-    emailAccountAdminsEnabled = registerOutput<bool?>(
-      'emailAccountAdminsEnabled',
-    );
+    emailAccountAdminsEnabled = registerOutput<bool?>('emailAccountAdminsEnabled');
     emailAddresses = registerOutput<List<String>?>('emailAddresses');
     enabled = registerOutput<bool?>('enabled');
     managedInstanceName = registerOutput<String>('managedInstanceName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionDays = registerOutput<int?>('retentionDays');
-    storageAccountAccessKey = registerOutput<String?>(
-      'storageAccountAccessKey',
-    );
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 
@@ -1462,23 +1450,19 @@ class ManagedInstanceSecurityAlertPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/managedInstanceSecurityAlertPolicy:ManagedInstanceSecurityAlertPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/managedInstanceSecurityAlertPolicy:ManagedInstanceSecurityAlertPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
-    emailAccountAdminsEnabled = registerOutput<bool?>(
-      'emailAccountAdminsEnabled',
-    );
+    emailAccountAdminsEnabled = registerOutput<bool?>('emailAccountAdminsEnabled');
     emailAddresses = registerOutput<List<String>?>('emailAddresses');
     enabled = registerOutput<bool?>('enabled');
     managedInstanceName = registerOutput<String>('managedInstanceName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionDays = registerOutput<int?>('retentionDays');
-    storageAccountAccessKey = registerOutput<String?>(
-      'storageAccountAccessKey',
-    );
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 }

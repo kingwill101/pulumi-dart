@@ -7,7 +7,6 @@ import 'standard_rollout_policy_response.dart';
 class BlueGreenSettingsResponse {
   /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
   final pulumi.Input<String> nodePoolSoakDuration;
-
   /// Standard policy for the blue-green upgrade.
   final pulumi.Input<StandardRolloutPolicyResponse> standardRolloutPolicy;
 
@@ -22,24 +21,15 @@ class BlueGreenSettingsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nodePoolSoakDuration': nodePoolSoakDuration,
-      'standardRolloutPolicy':
-          pulumi.Input.mapInputValue<
-            StandardRolloutPolicyResponse,
-            Map<String, dynamic>
-          >(standardRolloutPolicy, (value) => value.toMap()),
+      'standardRolloutPolicy': pulumi.Input.mapInputValue<StandardRolloutPolicyResponse, Map<String, dynamic>>(standardRolloutPolicy, (value) => value.toMap()),
     };
   }
 
   factory BlueGreenSettingsResponse.fromMap(Map<String, dynamic> map) {
     return BlueGreenSettingsResponse(
-      nodePoolSoakDuration: pulumi.Input.fromValue(
-        map['nodePoolSoakDuration'] as String,
-      ),
-      standardRolloutPolicy: pulumi.Input.fromValue(
-        StandardRolloutPolicyResponse.fromMap(
-          (map['standardRolloutPolicy']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      nodePoolSoakDuration: pulumi.Input.fromValue(map['nodePoolSoakDuration'] as String),
+      standardRolloutPolicy: pulumi.Input.fromValue(StandardRolloutPolicyResponse.fromMap((map['standardRolloutPolicy']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -192,22 +192,16 @@ import 'fc_trigger_state.dart';
 class FcTrigger extends pulumi.CustomResource {
   /// The name of the Event.
   late final pulumi.Output<String> eventMetaName;
-
   /// The version of the Event.
   late final pulumi.Output<String> eventMetaVersion;
-
   /// The function arn. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`.
   late final pulumi.Output<String?> functionArn;
-
   /// The Note information.
   late final pulumi.Output<String> notes;
-
   /// The role authorized by RAM. The value formats as `acs:ram::{AccountID}:role/{RoleName}`.
   late final pulumi.Output<String> roleArn;
-
   /// Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
   late final pulumi.Output<String> sourceArn;
-
   /// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
   late final pulumi.Output<String> triggerArn;
 
@@ -220,11 +214,11 @@ class FcTrigger extends pulumi.CustomResource {
     FcTriggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cdn/fcTrigger:FcTrigger',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cdn/fcTrigger:FcTrigger',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     eventMetaName = registerOutput<String>('eventMetaName');
     eventMetaVersion = registerOutput<String>('eventMetaVersion');
     functionArn = registerOutput<String?>('functionArn');
@@ -252,11 +246,11 @@ class FcTrigger extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cdn/fcTrigger:FcTrigger',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cdn/fcTrigger:FcTrigger',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     eventMetaName = registerOutput<String>('eventMetaName');
     eventMetaVersion = registerOutput<String>('eventMetaVersion');
     functionArn = registerOutput<String?>('functionArn');

@@ -7,25 +7,18 @@ import 'end_point.dart';
 class ContactProfileLinkChannel {
   /// Bandwidth in MHz.
   final pulumi.Input<double> bandwidthMHz;
-
   /// Center Frequency in MHz.
   final pulumi.Input<double> centerFrequencyMHz;
-
   /// Currently unused.
   final pulumi.Input<String>? decodingConfiguration;
-
   /// Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx. Only valid for downlink directions. If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
   final pulumi.Input<String>? demodulationConfiguration;
-
   /// Currently unused.
   final pulumi.Input<String>? encodingConfiguration;
-
   /// Customer end point to store and retrieve data during a contact with the spacecraft.
   final pulumi.Input<EndPoint> endPoint;
-
   /// Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
   final pulumi.Input<String>? modulationConfiguration;
-
   /// Channel name.
   final pulumi.Input<String> name;
 
@@ -56,10 +49,7 @@ class ContactProfileLinkChannel {
       'decodingConfiguration': ?decodingConfiguration,
       'demodulationConfiguration': ?demodulationConfiguration,
       'encodingConfiguration': ?encodingConfiguration,
-      'endPoint': pulumi.Input.mapInputValue<EndPoint, Map<String, dynamic>>(
-        endPoint,
-        (value) => value.toMap(),
-      ),
+      'endPoint': pulumi.Input.mapInputValue<EndPoint, Map<String, dynamic>>(endPoint, (value) => value.toMap()),
       'modulationConfiguration': ?modulationConfiguration,
       'name': name,
     };
@@ -68,33 +58,14 @@ class ContactProfileLinkChannel {
   factory ContactProfileLinkChannel.fromMap(Map<String, dynamic> map) {
     return ContactProfileLinkChannel(
       bandwidthMHz: pulumi.Input.fromValue(map['bandwidthMHz'] as double),
-      centerFrequencyMHz: pulumi.Input.fromValue(
-        map['centerFrequencyMHz'] as double,
-      ),
-      decodingConfiguration: (() {
-        final guardedValue = map['decodingConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      demodulationConfiguration: (() {
-        final guardedValue = map['demodulationConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encodingConfiguration: (() {
-        final guardedValue = map['encodingConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endPoint: pulumi.Input.fromValue(
-        EndPoint.fromMap((map['endPoint']! as Map).cast<String, dynamic>()),
-      ),
-      modulationConfiguration: (() {
-        final guardedValue = map['modulationConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      centerFrequencyMHz: pulumi.Input.fromValue(map['centerFrequencyMHz'] as double),
+      decodingConfiguration: (() { final guardedValue = map['decodingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      demodulationConfiguration: (() { final guardedValue = map['demodulationConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encodingConfiguration: (() { final guardedValue = map['encodingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endPoint: pulumi.Input.fromValue(EndPoint.fromMap((map['endPoint']! as Map).cast<String, dynamic>())),
+      modulationConfiguration: (() { final guardedValue = map['modulationConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

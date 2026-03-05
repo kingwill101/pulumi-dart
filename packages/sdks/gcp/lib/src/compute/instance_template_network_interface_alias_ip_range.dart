@@ -9,7 +9,6 @@ class InstanceTemplateNetworkInterfaceAliasIpRange {
   /// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
   /// error.
   final pulumi.Input<String> ipCidrRange;
-
   /// The subnetwork secondary range name specifying
   /// the secondary range from which to allocate the IP CIDR range for this alias IP
   /// range. If left unspecified, the primary range of the subnetwork will be used.
@@ -30,16 +29,11 @@ class InstanceTemplateNetworkInterfaceAliasIpRange {
     };
   }
 
-  factory InstanceTemplateNetworkInterfaceAliasIpRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceTemplateNetworkInterfaceAliasIpRange.fromMap(Map<String, dynamic> map) {
     return InstanceTemplateNetworkInterfaceAliasIpRange(
       ipCidrRange: pulumi.Input.fromValue(map['ipCidrRange'] as String),
-      subnetworkRangeName: (() {
-        final guardedValue = map['subnetworkRangeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subnetworkRangeName: (() { final guardedValue = map['subnetworkRangeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

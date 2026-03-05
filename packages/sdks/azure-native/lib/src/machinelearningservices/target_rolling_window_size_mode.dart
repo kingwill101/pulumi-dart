@@ -15,3 +15,4 @@ enum TargetRollingWindowSizeMode {
     throw ArgumentError('Unknown TargetRollingWindowSizeMode value: $value');
   }
 }
+

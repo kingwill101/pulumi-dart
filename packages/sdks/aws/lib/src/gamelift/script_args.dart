@@ -10,19 +10,14 @@ import 'script_storage_location.dart';
 class ScriptArgs {
   /// Name of the script
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Information indicating where your game script files are stored. See below.
   final pulumi.Input<ScriptStorageLocation>? storageLocation;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Version that is associated with this script.
   final pulumi.Input<String>? version;
-
   /// A data object containing your Realtime scripts and dependencies as a zip  file. The zip file can have one or multiple files. Maximum size of a zip file is 5 MB.
   final pulumi.Input<String>? zipFile;
 
@@ -46,11 +41,7 @@ class ScriptArgs {
     return <String, dynamic>{
       'name': ?name,
       'region': ?region,
-      'storageLocation':
-          ?pulumi.Input.mapOptionalInputValue<
-            ScriptStorageLocation,
-            Map<String, dynamic>
-          >(storageLocation, (value) => value.toMap()),
+      'storageLocation': ?pulumi.Input.mapOptionalInputValue<ScriptStorageLocation, Map<String, dynamic>>(storageLocation, (value) => value.toMap()),
       'tags': ?tags,
       'version': ?version,
       'zipFile': ?zipFile,
@@ -59,42 +50,13 @@ class ScriptArgs {
 
   factory ScriptArgs.fromMap(Map<String, dynamic> map) {
     return ScriptArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageLocation: (() {
-        final guardedValue = map['storageLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ScriptStorageLocation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zipFile: (() {
-        final guardedValue = map['zipFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageLocation: (() { final guardedValue = map['storageLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScriptStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zipFile: (() { final guardedValue = map['zipFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

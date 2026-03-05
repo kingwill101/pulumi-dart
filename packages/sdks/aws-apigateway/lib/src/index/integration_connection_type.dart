@@ -14,3 +14,4 @@ enum IntegrationConnectionType {
     throw ArgumentError('Unknown IntegrationConnectionType value: $value');
   }
 }
+

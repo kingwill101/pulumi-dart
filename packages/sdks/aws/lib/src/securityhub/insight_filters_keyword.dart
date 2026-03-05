@@ -8,10 +8,14 @@ class InsightFiltersKeyword {
 
   /// Creates a new [InsightFiltersKeyword].
   /// [value] A value for the keyword.
-  InsightFiltersKeyword({required this.value});
+  InsightFiltersKeyword({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory InsightFiltersKeyword.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class InsightFiltersKeyword {
     );
   }
 }
+

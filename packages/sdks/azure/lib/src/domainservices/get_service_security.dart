@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceSecurity {
   /// (Optional) Whether the Kerberos Armoring is enabled.
   final pulumi.Input<bool> kerberosArmoringEnabled;
-
   /// (Optional) Whether the Kerberos RC4 Encryption is enabled.
   final pulumi.Input<bool> kerberosRc4EncryptionEnabled;
-
   /// Whether legacy NTLM v1 support is enabled.
   final pulumi.Input<bool> ntlmV1Enabled;
-
   /// Whether Kerberos password hashes are synchronized to the managed domain.
   final pulumi.Input<bool> syncKerberosPasswords;
-
   /// Whether NTLM password hashes are synchronized to the managed domain.
   final pulumi.Input<bool> syncNtlmPasswords;
-
   /// Whether on-premises password hashes are synchronized to the managed domain.
   final pulumi.Input<bool> syncOnPremPasswords;
-
   /// Whether legacy TLS v1 support is enabled.
   final pulumi.Input<bool> tlsV1Enabled;
 
@@ -56,23 +50,14 @@ class GetServiceSecurity {
 
   factory GetServiceSecurity.fromMap(Map<String, dynamic> map) {
     return GetServiceSecurity(
-      kerberosArmoringEnabled: pulumi.Input.fromValue(
-        map['kerberosArmoringEnabled'] as bool,
-      ),
-      kerberosRc4EncryptionEnabled: pulumi.Input.fromValue(
-        map['kerberosRc4EncryptionEnabled'] as bool,
-      ),
+      kerberosArmoringEnabled: pulumi.Input.fromValue(map['kerberosArmoringEnabled'] as bool),
+      kerberosRc4EncryptionEnabled: pulumi.Input.fromValue(map['kerberosRc4EncryptionEnabled'] as bool),
       ntlmV1Enabled: pulumi.Input.fromValue(map['ntlmV1Enabled'] as bool),
-      syncKerberosPasswords: pulumi.Input.fromValue(
-        map['syncKerberosPasswords'] as bool,
-      ),
-      syncNtlmPasswords: pulumi.Input.fromValue(
-        map['syncNtlmPasswords'] as bool,
-      ),
-      syncOnPremPasswords: pulumi.Input.fromValue(
-        map['syncOnPremPasswords'] as bool,
-      ),
+      syncKerberosPasswords: pulumi.Input.fromValue(map['syncKerberosPasswords'] as bool),
+      syncNtlmPasswords: pulumi.Input.fromValue(map['syncNtlmPasswords'] as bool),
+      syncOnPremPasswords: pulumi.Input.fromValue(map['syncOnPremPasswords'] as bool),
       tlsV1Enabled: pulumi.Input.fromValue(map['tlsV1Enabled'] as bool),
     );
   }
 }
+

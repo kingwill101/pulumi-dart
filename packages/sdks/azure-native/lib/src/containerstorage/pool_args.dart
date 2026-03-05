@@ -12,28 +12,20 @@ import 'resources.dart';
 class PoolArgs {
   /// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
   final pulumi.Input<List<Assignment>>? assignments;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// Pool Object
   final pulumi.Input<String>? poolName;
-
   /// Type of the Pool: ephemeralDisk, azureDisk, or elasticsan.
   final pulumi.Input<PoolType> poolType;
-
   /// ReclaimPolicy defines what happens to the backend storage when StoragePool is deleted
   final pulumi.Input<String>? reclaimPolicy;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resources represent the resources the pool should have.
   final pulumi.Input<Resources>? resources;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// List of availability zones that resources can be created in.
   final pulumi.Input<List<String>>? zones;
 
@@ -61,31 +53,13 @@ class PoolArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assignments':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Assignment>,
-            List<Map<String, dynamic>>
-          >(
-            assignments,
-            (value) =>
-                pulumi.Input.encodeList<Assignment, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'assignments': ?pulumi.Input.mapOptionalInputValue<List<Assignment>, List<Map<String, dynamic>>>(assignments, (value) => pulumi.Input.encodeList<Assignment, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
       'poolName': ?poolName,
-      'poolType': pulumi.Input.mapInputValue<PoolType, Map<String, dynamic>>(
-        poolType,
-        (value) => value.toMap(),
-      ),
+      'poolType': pulumi.Input.mapInputValue<PoolType, Map<String, dynamic>>(poolType, (value) => value.toMap()),
       'reclaimPolicy': ?reclaimPolicy,
       'resourceGroupName': resourceGroupName,
-      'resources':
-          ?pulumi.Input.mapOptionalInputValue<Resources, Map<String, dynamic>>(
-            resources,
-            (value) => value.toMap(),
-          ),
+      'resources': ?pulumi.Input.mapOptionalInputValue<Resources, Map<String, dynamic>>(resources, (value) => value.toMap()),
       'tags': ?tags,
       'zones': ?zones,
     };
@@ -93,57 +67,16 @@ class PoolArgs {
 
   factory PoolArgs.fromMap(Map<String, dynamic> map) {
     return PoolArgs(
-      assignments: (() {
-        final guardedValue = map['assignments'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Assignment>(
-            guardedValue,
-            (value) =>
-                Assignment.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      poolName: (() {
-        final guardedValue = map['poolName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      poolType: pulumi.Input.fromValue(
-        PoolType.fromMap((map['poolType']! as Map).cast<String, dynamic>()),
-      ),
-      reclaimPolicy: (() {
-        final guardedValue = map['reclaimPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      resources: (() {
-        final guardedValue = map['resources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Resources.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      zones: (() {
-        final guardedValue = map['zones'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      assignments: (() { final guardedValue = map['assignments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Assignment>(guardedValue, (value) => Assignment.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      poolName: (() { final guardedValue = map['poolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      poolType: pulumi.Input.fromValue(PoolType.fromMap((map['poolType']! as Map).cast<String, dynamic>())),
+      reclaimPolicy: (() { final guardedValue = map['reclaimPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Resources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -21,3 +21,4 @@ enum RollingRateType {
     throw ArgumentError('Unknown RollingRateType value: $value');
   }
 }
+

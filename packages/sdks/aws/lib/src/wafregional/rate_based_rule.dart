@@ -231,28 +231,20 @@ import 'rate_based_rule_state.dart';
 class RateBasedRule extends pulumi.CustomResource {
   /// The ARN of the WAF Regional Rate Based Rule.
   late final pulumi.Output<String> arn;
-
   /// The name or description for the Amazon CloudWatch metric of this rule.
   late final pulumi.Output<String> metricName;
-
   /// The name or description of the rule.
   late final pulumi.Output<String> name;
-
   /// The objects to include in a rule (documented below).
   late final pulumi.Output<List<Map<String, dynamic>>?> predicates;
-
   /// Valid value is IP.
   late final pulumi.Output<String> rateKey;
-
   /// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
   late final pulumi.Output<int> rateLimit;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -265,11 +257,11 @@ class RateBasedRule extends pulumi.CustomResource {
     RateBasedRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:wafregional/rateBasedRule:RateBasedRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:wafregional/rateBasedRule:RateBasedRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
@@ -299,11 +291,11 @@ class RateBasedRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:wafregional/rateBasedRule:RateBasedRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:wafregional/rateBasedRule:RateBasedRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');

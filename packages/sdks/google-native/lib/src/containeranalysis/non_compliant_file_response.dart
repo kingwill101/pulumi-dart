@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NonCompliantFileResponse {
   /// Command to display the non-compliant files.
   final pulumi.Input<String> displayCommand;
-
   /// Empty if `display_command` is set.
   final pulumi.Input<String> path;
-
   /// Explains why a file is non compliant for a CIS check.
   final pulumi.Input<String> reason;
 
@@ -39,3 +37,4 @@ class NonCompliantFileResponse {
     );
   }
 }
+

@@ -10,10 +10,8 @@ import 'registration_assignment_properties.dart';
 class RegistrationAssignmentArgs {
   /// The properties of a registration assignment.
   final pulumi.Input<RegistrationAssignmentProperties>? properties;
-
   /// The GUID of the registration assignment.
   final pulumi.Input<String>? registrationAssignmentId;
-
   /// The scope of the resource.
   final pulumi.Input<String> scope;
 
@@ -29,11 +27,7 @@ class RegistrationAssignmentArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            RegistrationAssignmentProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<RegistrationAssignmentProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'registrationAssignmentId': ?registrationAssignmentId,
       'scope': scope,
     };
@@ -41,21 +35,10 @@ class RegistrationAssignmentArgs {
 
   factory RegistrationAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return RegistrationAssignmentArgs(
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RegistrationAssignmentProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      registrationAssignmentId: (() {
-        final guardedValue = map['registrationAssignmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegistrationAssignmentProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      registrationAssignmentId: (() { final guardedValue = map['registrationAssignmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

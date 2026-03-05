@@ -114,11 +114,9 @@ import 'service_config_state.dart';
 class ServiceConfig extends pulumi.CustomResource {
   /// The location in which the Service config is to be initialized.
   late final pulumi.Output<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The resource type to which the default service config will be applied.
   late final pulumi.Output<String> resourceType;
 
@@ -131,11 +129,11 @@ class ServiceConfig extends pulumi.CustomResource {
     ServiceConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:backupdisasterrecovery/serviceConfig:ServiceConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:backupdisasterrecovery/serviceConfig:ServiceConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
     resourceType = registerOutput<String>('resourceType');
@@ -159,11 +157,11 @@ class ServiceConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:backupdisasterrecovery/serviceConfig:ServiceConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:backupdisasterrecovery/serviceConfig:ServiceConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
     resourceType = registerOutput<String>('resourceType');

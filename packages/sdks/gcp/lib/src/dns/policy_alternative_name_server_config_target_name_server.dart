@@ -10,7 +10,6 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
   ///
   /// &lt;a name="nested_dns64_config"&gt;&lt;/a&gt;The `dns64_config` block supports:
   final pulumi.Input<String>? forwardingPath;
-
   /// IPv4 address to forward to.
   final pulumi.Input<String> ipv4Address;
 
@@ -29,16 +28,11 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
     };
   }
 
-  factory PolicyAlternativeNameServerConfigTargetNameServer.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PolicyAlternativeNameServerConfigTargetNameServer.fromMap(Map<String, dynamic> map) {
     return PolicyAlternativeNameServerConfigTargetNameServer(
-      forwardingPath: (() {
-        final guardedValue = map['forwardingPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      forwardingPath: (() { final guardedValue = map['forwardingPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv4Address: pulumi.Input.fromValue(map['ipv4Address'] as String),
     );
   }
 }
+

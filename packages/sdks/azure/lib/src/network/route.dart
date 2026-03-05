@@ -212,19 +212,14 @@ import 'route_state.dart';
 class Route extends pulumi.CustomResource {
   /// The destination to which the route applies. Can be CIDR (such as `10.1.0.0/16`) or [Azure Service Tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) (such as `ApiManagement`, `AzureBackup` or `AzureMonitor`) format.
   late final pulumi.Output<String> addressPrefix;
-
   /// The name of the route. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Contains the IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is `VirtualAppliance`.
   late final pulumi.Output<String?> nextHopInIpAddress;
-
   /// The type of Azure hop the packet should be sent to. Possible values are `VirtualNetworkGateway`, `VnetLocal`, `Internet`, `VirtualAppliance` and `None`.
   late final pulumi.Output<String> nextHopType;
-
   /// The name of the resource group in which to create the route. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The name of the route table within which create the route. Changing this forces a new resource to be created.
   late final pulumi.Output<String> routeTableName;
 
@@ -232,13 +227,16 @@ class Route extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Route]. {@macro pulumi_network_route_route_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Route(String name, {RouteArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:network/route:Route',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Route(
+    String name, {
+    RouteArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:network/route:Route',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressPrefix = registerOutput<String>('addressPrefix');
     this.name = registerOutput<String>('name');
     nextHopInIpAddress = registerOutput<String?>('nextHopInIpAddress');
@@ -248,7 +246,11 @@ class Route extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Route] resource's state with the given [name] and [id].
-  static Route get(String name, pulumi.Input<String> id, {RouteState? state}) {
+  static Route get(
+    String name,
+    pulumi.Input<String> id, {
+    RouteState? state,
+  }) {
     return Route._get(
       name,
       state: state?.toMap(),
@@ -261,11 +263,11 @@ class Route extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/route:Route',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/route:Route',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressPrefix = registerOutput<String>('addressPrefix');
     this.name = registerOutput<String>('name');
     nextHopInIpAddress = registerOutput<String?>('nextHopInIpAddress');

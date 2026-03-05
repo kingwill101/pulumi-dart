@@ -6,7 +6,6 @@ class GetPoolStorageImageReference {
   /// The Batch pool ID.
   final pulumi.Input<String> id;
   final pulumi.Input<String> offer;
-
   /// The name of the extension handler publisher.The name of the extension handler publisher.
   final pulumi.Input<String> publisher;
   final pulumi.Input<String> sku;
@@ -46,3 +45,4 @@ class GetPoolStorageImageReference {
     );
   }
 }
+

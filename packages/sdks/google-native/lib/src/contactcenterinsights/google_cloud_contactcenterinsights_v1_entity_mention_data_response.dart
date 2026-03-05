@@ -7,11 +7,8 @@ import 'google_cloud_contactcenterinsights_v1_sentiment_data_response.dart';
 class GoogleCloudContactcenterinsightsV1EntityMentionDataResponse {
   /// The key of this entity in conversation entities. Can be used to retrieve the exact `Entity` this mention is attached to.
   final pulumi.Input<String> entityUniqueId;
-
   /// Sentiment expressed for this mention of the entity.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1SentimentDataResponse>
-  sentiment;
-
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1SentimentDataResponse> sentiment;
   /// The type of the entity mention.
   final pulumi.Input<String> type;
 
@@ -28,26 +25,17 @@ class GoogleCloudContactcenterinsightsV1EntityMentionDataResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'entityUniqueId': entityUniqueId,
-      'sentiment':
-          pulumi.Input.mapInputValue<
-            GoogleCloudContactcenterinsightsV1SentimentDataResponse,
-            Map<String, dynamic>
-          >(sentiment, (value) => value.toMap()),
+      'sentiment': pulumi.Input.mapInputValue<GoogleCloudContactcenterinsightsV1SentimentDataResponse, Map<String, dynamic>>(sentiment, (value) => value.toMap()),
       'type': type,
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1EntityMentionDataResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContactcenterinsightsV1EntityMentionDataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1EntityMentionDataResponse(
       entityUniqueId: pulumi.Input.fromValue(map['entityUniqueId'] as String),
-      sentiment: pulumi.Input.fromValue(
-        GoogleCloudContactcenterinsightsV1SentimentDataResponse.fromMap(
-          (map['sentiment']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      sentiment: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1SentimentDataResponse.fromMap((map['sentiment']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

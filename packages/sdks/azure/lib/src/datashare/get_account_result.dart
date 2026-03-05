@@ -7,12 +7,10 @@ import 'get_account_identity.dart';
 class GetAccountResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// An `identity` block as defined below.
   final List<GetAccountIdentity> identities;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the Data Share Account.
   final Map<String, String> tags;
 
@@ -33,11 +31,7 @@ class GetAccountResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetAccountIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
+      'identities': pulumi.Input.encodeList<GetAccountIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'name': name,
       'resourceGroupName': resourceGroupName,
       'tags': tags,
@@ -47,14 +41,11 @@ class GetAccountResult {
   factory GetAccountResult.fromMap(Map<String, dynamic> map) {
     return GetAccountResult(
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetAccountIdentity>(
-        map['identities']!,
-        (value) =>
-            GetAccountIdentity.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      identities: pulumi.Input.decodeList<GetAccountIdentity>(map['identities']!, (value) => GetAccountIdentity.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

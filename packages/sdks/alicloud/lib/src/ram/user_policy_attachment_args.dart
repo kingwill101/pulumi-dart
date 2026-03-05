@@ -9,12 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPolicyAttachmentArgs {
   /// The name of the policy.
   final pulumi.Input<String> policyName;
-
   /// Permission policy type.
   /// - Custom: Custom policy.
   /// - System: System policy.
   final pulumi.Input<String> policyType;
-
   /// The name of the RAM user.
   final pulumi.Input<String> userName;
 
@@ -44,3 +42,4 @@ class UserPolicyAttachmentArgs {
     );
   }
 }
+

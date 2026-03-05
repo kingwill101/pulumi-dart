@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefenderCspmAwsOfferingResponseDatabasesDspm {
   /// The cloud role ARN in AWS for this feature
   final pulumi.Input<String>? cloudRoleArn;
-
   /// Is databases DSPM protection enabled
   final pulumi.Input<bool>? enabled;
 
@@ -25,20 +24,11 @@ class DefenderCspmAwsOfferingResponseDatabasesDspm {
     };
   }
 
-  factory DefenderCspmAwsOfferingResponseDatabasesDspm.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefenderCspmAwsOfferingResponseDatabasesDspm.fromMap(Map<String, dynamic> map) {
     return DefenderCspmAwsOfferingResponseDatabasesDspm(
-      cloudRoleArn: (() {
-        final guardedValue = map['cloudRoleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      cloudRoleArn: (() { final guardedValue = map['cloudRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

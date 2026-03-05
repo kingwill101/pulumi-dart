@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainTopicArgs {
   /// Specifies the name of the EventGrid Domain. Changing this forces a new resource to be created.
   final pulumi.Input<String> domainName;
-
   /// Specifies the name of the EventGrid Domain Topic resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the resource group in which the EventGrid Domain exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,14 +35,9 @@ class DomainTopicArgs {
   factory DomainTopicArgs.fromMap(Map<String, dynamic> map) {
     return DomainTopicArgs(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

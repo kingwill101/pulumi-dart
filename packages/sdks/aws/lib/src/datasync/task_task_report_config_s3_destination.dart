@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TaskTaskReportConfigS3Destination {
   /// Specifies the Amazon Resource Name (ARN) of the IAM policy that allows DataSync to upload a task report to your S3 bucket.
   final pulumi.Input<String> bucketAccessRoleArn;
-
   /// Specifies the ARN of the S3 bucket where DataSync uploads your report.
   final pulumi.Input<String> s3BucketArn;
-
   /// Specifies a bucket prefix for your report.
   final pulumi.Input<String>? subdirectory;
 
@@ -32,15 +30,10 @@ class TaskTaskReportConfigS3Destination {
 
   factory TaskTaskReportConfigS3Destination.fromMap(Map<String, dynamic> map) {
     return TaskTaskReportConfigS3Destination(
-      bucketAccessRoleArn: pulumi.Input.fromValue(
-        map['bucketAccessRoleArn'] as String,
-      ),
+      bucketAccessRoleArn: pulumi.Input.fromValue(map['bucketAccessRoleArn'] as String),
       s3BucketArn: pulumi.Input.fromValue(map['s3BucketArn'] as String),
-      subdirectory: (() {
-        final guardedValue = map['subdirectory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subdirectory: (() { final guardedValue = map['subdirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,29 +6,21 @@ import 'system_data_response.dart';
 class GetPartnerRegistrationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified identifier of the resource.
   final String id;
-
   /// Location of the resource.
   final String location;
-
   /// Name of the resource.
   final String name;
-
   /// The immutableId of the corresponding partner registration.
   /// Note: This property is marked for deprecation and is not supported in any future GA API version
   final String? partnerRegistrationImmutableId;
-
   /// Provisioning state of the partner registration.
   final String provisioningState;
-
   /// The system metadata relating to the Event Grid resource.
   final SystemDataResponse systemData;
-
   /// Tags of the resource.
   final Map<String, String>? tags;
-
   /// Type of the resource.
   final String type;
 
@@ -74,21 +66,12 @@ class GetPartnerRegistrationResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      partnerRegistrationImmutableId: (() {
-        final guardedValue = map['partnerRegistrationImmutableId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      partnerRegistrationImmutableId: (() { final guardedValue = map['partnerRegistrationImmutableId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

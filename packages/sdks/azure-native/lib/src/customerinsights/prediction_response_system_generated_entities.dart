@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PredictionResponseSystemGeneratedEntities {
   /// Generated interaction types.
   final pulumi.Input<List<String>>? generatedInteractionTypes;
-
   /// Generated KPIs.
   final pulumi.Input<Map<String, String>>? generatedKpis;
-
   /// Generated links.
   final pulumi.Input<List<String>>? generatedLinks;
 
@@ -31,27 +29,12 @@ class PredictionResponseSystemGeneratedEntities {
     };
   }
 
-  factory PredictionResponseSystemGeneratedEntities.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PredictionResponseSystemGeneratedEntities.fromMap(Map<String, dynamic> map) {
     return PredictionResponseSystemGeneratedEntities(
-      generatedInteractionTypes: (() {
-        final guardedValue = map['generatedInteractionTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      generatedKpis: (() {
-        final guardedValue = map['generatedKpis'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      generatedLinks: (() {
-        final guardedValue = map['generatedLinks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      generatedInteractionTypes: (() { final guardedValue = map['generatedInteractionTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      generatedKpis: (() { final guardedValue = map['generatedKpis']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      generatedLinks: (() { final guardedValue = map['generatedLinks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

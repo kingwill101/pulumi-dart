@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTunnelPolicyArgs {
   /// Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   final pulumi.Input<String> profileName;
-
   /// Name of the Resource group within the Azure subscription.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the Tunnel Policy under the profile.
   final pulumi.Input<String> tunnelPolicyName;
 
@@ -37,12 +35,9 @@ class GetTunnelPolicyArgs {
   factory GetTunnelPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTunnelPolicyArgs(
       profileName: pulumi.Input.fromValue(map['profileName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tunnelPolicyName: pulumi.Input.fromValue(
-        map['tunnelPolicyName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tunnelPolicyName: pulumi.Input.fromValue(map['tunnelPolicyName'] as String),
     );
   }
 }
+

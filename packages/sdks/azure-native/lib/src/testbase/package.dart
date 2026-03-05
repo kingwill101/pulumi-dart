@@ -618,71 +618,48 @@ import 'system_data_response.dart';
 class Package extends pulumi.CustomResource {
   /// Application name
   late final pulumi.Output<String> applicationName;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The file path of the package.
   late final pulumi.Output<String?> blobPath;
-
   /// The id of draft package. Used to create or update this package from a draft package.
   late final pulumi.Output<String?> draftPackageId;
-
   /// The list of first party applications to test along with user application.
   late final pulumi.Output<List<Map<String, dynamic>>?> firstPartyApps;
-
   /// The flighting ring for feature update.
   late final pulumi.Output<String?> flightingRing;
-
   /// The list of gallery apps to test along with user application.
   late final pulumi.Output<List<Map<String, dynamic>>> galleryApps;
-
   /// Specifies the baseline os and target os for inplace upgrade.
   late final pulumi.Output<InplaceUpgradeOSInfoResponse?> inplaceUpgradeOSPair;
-
   /// The metadata of Intune enrollment.
-  late final pulumi.Output<IntuneEnrollmentMetadataResponse?>
-  intuneEnrollmentMetadata;
-
+  late final pulumi.Output<IntuneEnrollmentMetadataResponse?> intuneEnrollmentMetadata;
   /// Flag showing that whether the package is enabled. It doesn't schedule test for package which is not enabled.
   late final pulumi.Output<bool> isEnabled;
-
   /// The UTC timestamp when the package was last modified.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the package.
   late final pulumi.Output<String> packageStatus;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the target OSs of specific OS Update types.
   late final pulumi.Output<List<Map<String, dynamic>>?> targetOSList;
-
   /// OOB, functional or flow driven. Mapped to the data in 'tests' property.
   late final pulumi.Output<List<String>> testTypes;
-
   /// The detailed test information.
   late final pulumi.Output<List<Map<String, dynamic>>?> tests;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The validation results. There's validation on package when it's created or updated.
   late final pulumi.Output<List<Map<String, dynamic>>> validationResults;
-
   /// Application version
   late final pulumi.Output<String> version;
 
@@ -695,65 +672,33 @@ class Package extends pulumi.CustomResource {
     PackageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:testbase:Package',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:testbase:Package',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationName = registerOutput<String>('applicationName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     blobPath = registerOutput<String?>('blobPath');
     draftPackageId = registerOutput<String?>('draftPackageId');
-    firstPartyApps = registerOutput<List<Map<String, dynamic>>?>(
-      'firstPartyApps',
-    );
+    firstPartyApps = registerOutput<List<Map<String, dynamic>>?>('firstPartyApps');
     flightingRing = registerOutput<String?>('flightingRing');
     galleryApps = registerOutput<List<Map<String, dynamic>>>('galleryApps');
-    inplaceUpgradeOSPair = registerOutput<InplaceUpgradeOSInfoResponse?>(
-      'inplaceUpgradeOSPair',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InplaceUpgradeOSInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    intuneEnrollmentMetadata =
-        registerOutput<IntuneEnrollmentMetadataResponse?>(
-          'intuneEnrollmentMetadata',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return IntuneEnrollmentMetadataResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    inplaceUpgradeOSPair = registerOutput<InplaceUpgradeOSInfoResponse?>('inplaceUpgradeOSPair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InplaceUpgradeOSInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    intuneEnrollmentMetadata = registerOutput<IntuneEnrollmentMetadataResponse?>('intuneEnrollmentMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntuneEnrollmentMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isEnabled = registerOutput<bool>('isEnabled');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     packageStatus = registerOutput<String>('packageStatus');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     targetOSList = registerOutput<List<Map<String, dynamic>>?>('targetOSList');
     testTypes = registerOutput<List<String>>('testTypes');
     tests = registerOutput<List<Map<String, dynamic>>?>('tests');
     type = registerOutput<String>('type');
-    validationResults = registerOutput<List<Map<String, dynamic>>>(
-      'validationResults',
-    );
+    validationResults = registerOutput<List<Map<String, dynamic>>>('validationResults');
     version = registerOutput<String>('version');
   }
 }

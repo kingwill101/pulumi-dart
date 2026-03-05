@@ -8,17 +8,20 @@ class BucketWebsiteConfigurationV2ErrorDocument {
 
   /// Creates a new [BucketWebsiteConfigurationV2ErrorDocument].
   /// [key] Object key name to use when a 4XX class error occurs.
-  BucketWebsiteConfigurationV2ErrorDocument({required this.key});
+  BucketWebsiteConfigurationV2ErrorDocument({
+    required this.key,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key};
+    return <String, dynamic>{
+      'key': key,
+    };
   }
 
-  factory BucketWebsiteConfigurationV2ErrorDocument.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketWebsiteConfigurationV2ErrorDocument.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteConfigurationV2ErrorDocument(
       key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
+

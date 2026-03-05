@@ -9,10 +9,14 @@ class L2ConnectionsPropertiesEdgeSite {
 
   /// Creates a new [L2ConnectionsPropertiesEdgeSite].
   /// [id] Resource ID.
-  L2ConnectionsPropertiesEdgeSite({required this.id});
+  L2ConnectionsPropertiesEdgeSite({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory L2ConnectionsPropertiesEdgeSite.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class L2ConnectionsPropertiesEdgeSite {
     );
   }
 }
+

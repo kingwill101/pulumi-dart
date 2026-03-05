@@ -14,10 +14,14 @@ class GetAccessPolicyArgs {
 
   /// Creates a new [GetAccessPolicyArgs].
   /// [name] Specifies the name of the Management Template. Possible values are: `Key Management`,
-  GetAccessPolicyArgs({required this.name});
+  GetAccessPolicyArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -26,3 +30,4 @@ class GetAccessPolicyArgs {
     );
   }
 }
+

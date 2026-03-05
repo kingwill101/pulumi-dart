@@ -8,7 +8,6 @@ import 'resource_attributes_patch.dart';
 class SelfSubjectAccessReviewSpecPatch {
   /// NonResourceAttributes describes information for a non-resource access request
   final pulumi.Input<NonResourceAttributesPatch>? nonResourceAttributes;
-
   /// ResourceAuthorizationAttributes describes information for a resource access request
   final pulumi.Input<ResourceAttributesPatch>? resourceAttributes;
 
@@ -22,39 +21,16 @@ class SelfSubjectAccessReviewSpecPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nonResourceAttributes':
-          ?pulumi.Input.mapOptionalInputValue<
-            NonResourceAttributesPatch,
-            Map<String, dynamic>
-          >(nonResourceAttributes, (value) => value.toMap()),
-      'resourceAttributes':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceAttributesPatch,
-            Map<String, dynamic>
-          >(resourceAttributes, (value) => value.toMap()),
+      'nonResourceAttributes': ?pulumi.Input.mapOptionalInputValue<NonResourceAttributesPatch, Map<String, dynamic>>(nonResourceAttributes, (value) => value.toMap()),
+      'resourceAttributes': ?pulumi.Input.mapOptionalInputValue<ResourceAttributesPatch, Map<String, dynamic>>(resourceAttributes, (value) => value.toMap()),
     };
   }
 
   factory SelfSubjectAccessReviewSpecPatch.fromMap(Map<String, dynamic> map) {
     return SelfSubjectAccessReviewSpecPatch(
-      nonResourceAttributes: (() {
-        final guardedValue = map['nonResourceAttributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NonResourceAttributesPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceAttributes: (() {
-        final guardedValue = map['resourceAttributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceAttributesPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      nonResourceAttributes: (() { final guardedValue = map['nonResourceAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NonResourceAttributesPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceAttributes: (() { final guardedValue = map['resourceAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceAttributesPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

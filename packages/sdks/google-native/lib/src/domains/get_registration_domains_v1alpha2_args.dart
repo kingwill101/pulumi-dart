@@ -32,12 +32,9 @@ class GetRegistrationDomainsV1alpha2Args {
   factory GetRegistrationDomainsV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return GetRegistrationDomainsV1alpha2Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registrationId: pulumi.Input.fromValue(map['registrationId'] as String),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIacProfileArgs {
   /// The name of the IacProfile.
   final pulumi.Input<String> iacProfileName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetIacProfileArgs {
   factory GetIacProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetIacProfileArgs(
       iacProfileName: pulumi.Input.fromValue(map['iacProfileName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

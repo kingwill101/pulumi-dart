@@ -10,39 +10,20 @@ class WinRMConfigurationResponse {
 
   /// Creates a new [WinRMConfigurationResponse].
   /// [listeners] The list of Windows Remote Management listeners
-  WinRMConfigurationResponse({this.listeners});
+  WinRMConfigurationResponse({
+    this.listeners,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'listeners':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<WinRMListenerResponse>,
-            List<Map<String, dynamic>>
-          >(
-            listeners,
-            (value) =>
-                pulumi.Input.encodeList<
-                  WinRMListenerResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'listeners': ?pulumi.Input.mapOptionalInputValue<List<WinRMListenerResponse>, List<Map<String, dynamic>>>(listeners, (value) => pulumi.Input.encodeList<WinRMListenerResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WinRMConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return WinRMConfigurationResponse(
-      listeners: (() {
-        final guardedValue = map['listeners'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<WinRMListenerResponse>(
-            guardedValue,
-            (value) => WinRMListenerResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      listeners: (() { final guardedValue = map['listeners']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WinRMListenerResponse>(guardedValue, (value) => WinRMListenerResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

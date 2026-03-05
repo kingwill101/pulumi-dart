@@ -8,10 +8,14 @@ class GetAdbsCharacterSetsCharacterSet {
 
   /// Creates a new [GetAdbsCharacterSetsCharacterSet].
   /// [characterSet] A valid Oracle character set.
-  GetAdbsCharacterSetsCharacterSet({required this.characterSet});
+  GetAdbsCharacterSetsCharacterSet({
+    required this.characterSet,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'characterSet': characterSet};
+    return <String, dynamic>{
+      'characterSet': characterSet,
+    };
   }
 
   factory GetAdbsCharacterSetsCharacterSet.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetAdbsCharacterSetsCharacterSet {
     );
   }
 }
+

@@ -9,19 +9,20 @@ class EndpointServiceResponse {
 
   /// Creates a new [EndpointServiceResponse].
   /// [id] A unique identifier of the service being referenced by the interface endpoint.
-  EndpointServiceResponse({this.id});
+  EndpointServiceResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory EndpointServiceResponse.fromMap(Map<String, dynamic> map) {
     return EndpointServiceResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

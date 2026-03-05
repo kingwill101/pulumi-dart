@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AcceleratorConfigComputeV1 {
   /// The number of the guest accelerator cards exposed to this instance.
   final pulumi.Input<int>? acceleratorCount;
-
   /// Full or partial URL of the accelerator type resource to attach to this instance. For example: projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100 If you are creating an instance template, specify only the accelerator name. See GPUs on Compute Engine for a full list of accelerator types.
   final pulumi.Input<String>? acceleratorType;
 
   /// Creates a new [AcceleratorConfigComputeV1].
   /// [acceleratorCount] The number of the guest accelerator cards exposed to this instance.
   /// [acceleratorType] Full or partial URL of the accelerator type resource to attach to this instance. For example: projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100 If you are creating an instance template, specify only the accelerator name. See GPUs on Compute Engine for a full list of accelerator types.
-  AcceleratorConfigComputeV1({this.acceleratorCount, this.acceleratorType});
+  AcceleratorConfigComputeV1({
+    this.acceleratorCount,
+    this.acceleratorType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class AcceleratorConfigComputeV1 {
 
   factory AcceleratorConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return AcceleratorConfigComputeV1(
-      acceleratorCount: (() {
-        final guardedValue = map['acceleratorCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      acceleratorType: (() {
-        final guardedValue = map['acceleratorType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      acceleratorCount: (() { final guardedValue = map['acceleratorCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      acceleratorType: (() { final guardedValue = map['acceleratorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

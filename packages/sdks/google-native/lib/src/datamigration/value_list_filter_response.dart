@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ValueListFilterResponse {
   /// Whether to ignore case when filtering by values. Defaults to false
   final pulumi.Input<bool> ignoreCase;
-
   /// Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
   final pulumi.Input<String> valuePresentList;
-
   /// The list to be used to filter by
   final pulumi.Input<List<String>> values;
 
@@ -34,10 +32,9 @@ class ValueListFilterResponse {
   factory ValueListFilterResponse.fromMap(Map<String, dynamic> map) {
     return ValueListFilterResponse(
       ignoreCase: pulumi.Input.fromValue(map['ignoreCase'] as bool),
-      valuePresentList: pulumi.Input.fromValue(
-        map['valuePresentList'] as String,
-      ),
+      valuePresentList: pulumi.Input.fromValue(map['valuePresentList'] as String),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

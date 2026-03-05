@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualHubRouteTableArgs {
   /// The name of the Virtual Hub Route Table.
   final pulumi.Input<String> name;
-
   /// The Name of the Resource Group where the Virtual Hub Route Table exists.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name which should be used for Virtual Hub Route Table.
   final pulumi.Input<String> virtualHubName;
 
@@ -37,10 +35,9 @@ class GetVirtualHubRouteTableArgs {
   factory GetVirtualHubRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualHubRouteTableArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       virtualHubName: pulumi.Input.fromValue(map['virtualHubName'] as String),
     );
   }
 }
+

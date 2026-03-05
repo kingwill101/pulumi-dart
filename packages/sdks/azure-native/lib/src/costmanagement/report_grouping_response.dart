@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReportGroupingResponse {
   /// The name of the column to group.
   final pulumi.Input<String> name;
-
   /// Has type of the column to group.
   final pulumi.Input<String> type;
 
   /// Creates a new [ReportGroupingResponse].
   /// [name] The name of the column to group.
   /// [type] Has type of the column to group.
-  ReportGroupingResponse({required this.name, required this.type});
+  ReportGroupingResponse({
+    required this.name,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+    };
   }
 
   factory ReportGroupingResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ReportGroupingResponse {
     );
   }
 }
+

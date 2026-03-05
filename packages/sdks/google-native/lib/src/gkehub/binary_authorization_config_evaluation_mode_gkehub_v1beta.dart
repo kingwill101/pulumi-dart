@@ -7,17 +7,13 @@ enum BinaryAuthorizationConfigEvaluationModeGkehubV1beta {
   const BinaryAuthorizationConfigEvaluationModeGkehubV1beta(this.wireValue);
   final String wireValue;
 
-  static BinaryAuthorizationConfigEvaluationModeGkehubV1beta fromValue(
-    String value,
-  ) {
-    for (final item
-        in BinaryAuthorizationConfigEvaluationModeGkehubV1beta.values) {
+  static BinaryAuthorizationConfigEvaluationModeGkehubV1beta fromValue(String value) {
+    for (final item in BinaryAuthorizationConfigEvaluationModeGkehubV1beta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown BinaryAuthorizationConfigEvaluationModeGkehubV1beta value: $value',
-    );
+    throw ArgumentError('Unknown BinaryAuthorizationConfigEvaluationModeGkehubV1beta value: $value');
   }
 }
+

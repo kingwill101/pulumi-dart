@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVersionArgs {
   /// The location of the artifact registry.
   final pulumi.Input<String> location;
-
   /// The name of the package.
   final pulumi.Input<String> packageName;
-
   /// The project ID in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The last part of the repository name to fetch from.
   final pulumi.Input<String> repositoryId;
-
   /// The name of the version.
   final pulumi.Input<String> versionName;
-
   /// The view, which determines what version information is returned in a response. Possible values are `"BASIC"` and `"FULL"`. Defaults to `"BASIC"`.
   final pulumi.Input<String>? view;
 
@@ -56,18 +51,11 @@ class GetVersionArgs {
     return GetVersionArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       packageName: pulumi.Input.fromValue(map['packageName'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
       versionName: pulumi.Input.fromValue(map['versionName'] as String),
-      view: (() {
-        final guardedValue = map['view'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      view: (() { final guardedValue = map['view']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

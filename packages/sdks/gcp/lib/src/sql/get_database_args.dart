@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseArgs {
   /// The name of the Cloud SQL database instance in which the database belongs.
   final pulumi.Input<String> instance;
-
   /// The name of the database.
   final pulumi.Input<String> name;
-
   /// The ID of the project in which the instance belongs.
   final pulumi.Input<String>? project;
 
@@ -20,7 +18,11 @@ class GetDatabaseArgs {
   /// [instance] The name of the Cloud SQL database instance in which the database belongs.
   /// [name] The name of the database.
   /// [project] The ID of the project in which the instance belongs.
-  GetDatabaseArgs({required this.instance, required this.name, this.project});
+  GetDatabaseArgs({
+    required this.instance,
+    required this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,11 +36,8 @@ class GetDatabaseArgs {
     return GetDatabaseArgs(
       instance: pulumi.Input.fromValue(map['instance'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

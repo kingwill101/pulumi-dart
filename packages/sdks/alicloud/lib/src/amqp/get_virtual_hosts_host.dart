@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualHostsHost {
   /// The ID of the Virtual Host.
   final pulumi.Input<String> id;
-
   /// InstanceId.
   final pulumi.Input<String> instanceId;
-
   /// VirtualHostName.
   final pulumi.Input<String> virtualHostName;
 
@@ -38,3 +36,4 @@ class GetVirtualHostsHost {
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReceiptRuleAddHeaderAction {
   /// The name of the header to add
   final pulumi.Input<String> headerName;
-
   /// The value of the header to add
   final pulumi.Input<String> headerValue;
-
   /// The position of the action in the receipt rule
   final pulumi.Input<int> position;
 
@@ -38,3 +36,4 @@ class ReceiptRuleAddHeaderAction {
     );
   }
 }
+

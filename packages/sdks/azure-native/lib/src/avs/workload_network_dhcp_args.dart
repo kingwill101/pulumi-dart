@@ -10,13 +10,10 @@ import 'workload_network_dhcp_relay.dart';
 class WorkloadNetworkDhcpArgs {
   /// The ID of the DHCP configuration
   final pulumi.Input<String>? dhcpId;
-
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<WorkloadNetworkDhcpRelay>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,37 +33,18 @@ class WorkloadNetworkDhcpArgs {
     return <String, dynamic>{
       'dhcpId': ?dhcpId,
       'privateCloudName': privateCloudName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            WorkloadNetworkDhcpRelay,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<WorkloadNetworkDhcpRelay, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory WorkloadNetworkDhcpArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkDhcpArgs(
-      dhcpId: (() {
-        final guardedValue = map['dhcpId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateCloudName: pulumi.Input.fromValue(
-        map['privateCloudName'] as String,
-      ),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WorkloadNetworkDhcpRelay.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      dhcpId: (() { final guardedValue = map['dhcpId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateCloudName: pulumi.Input.fromValue(map['privateCloudName'] as String),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkloadNetworkDhcpRelay.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

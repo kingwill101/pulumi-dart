@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceGroupMonitoringAgentProcessAlertConfigTargetList {
   /// The Alibaba Cloud Resource Name (ARN) of the resource.
   final pulumi.Input<String>? arn;
-
   /// The parameters of the alert callback. Specify the parameters in the JSON format.
   final pulumi.Input<String>? jsonParams;
-
   /// The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
   final pulumi.Input<String>? level;
-
   /// The ID of the resource for which alerts are triggered.
   final pulumi.Input<String>? targetListId;
 
@@ -36,30 +33,13 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetList {
     };
   }
 
-  factory ServiceGroupMonitoringAgentProcessAlertConfigTargetList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceGroupMonitoringAgentProcessAlertConfigTargetList.fromMap(Map<String, dynamic> map) {
     return ServiceGroupMonitoringAgentProcessAlertConfigTargetList(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      jsonParams: (() {
-        final guardedValue = map['jsonParams'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      level: (() {
-        final guardedValue = map['level'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetListId: (() {
-        final guardedValue = map['targetListId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      jsonParams: (() { final guardedValue = map['jsonParams']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetListId: (() { final guardedValue = map['targetListId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

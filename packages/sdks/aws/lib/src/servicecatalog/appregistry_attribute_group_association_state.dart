@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppregistryAttributeGroupAssociationState {
   /// ID of the application.
   final pulumi.Input<String>? applicationId;
-
   /// ID of the attribute group to associate with the application.
   final pulumi.Input<String>? attributeGroupId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -31,25 +29,12 @@ class AppregistryAttributeGroupAssociationState {
     };
   }
 
-  factory AppregistryAttributeGroupAssociationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppregistryAttributeGroupAssociationState.fromMap(Map<String, dynamic> map) {
     return AppregistryAttributeGroupAssociationState(
-      applicationId: (() {
-        final guardedValue = map['applicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      attributeGroupId: (() {
-        final guardedValue = map['attributeGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      attributeGroupId: (() { final guardedValue = map['attributeGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

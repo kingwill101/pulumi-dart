@@ -470,38 +470,28 @@ import 'prefix_state.dart';
 class Prefix extends pulumi.CustomResource {
   /// The `cidr` of the Custom IP Prefix, either IPv4 or IPv6. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cidr;
-
   /// Specifies that the custom IP prefix should be commissioned after provisioning in Azure. Defaults to `false`.
   ///
   /// !&gt; **Note:** Changing the value of `commissioning_enabled` from `true` to `false` causes the IP prefix to stop being advertised by Azure and is functionally equivalent to deleting it when used in a production setting.
   late final pulumi.Output<bool?> commissioningEnabled;
-
   /// Specifies that the custom IP prefix should not be publicly advertised on the Internet when commissioned (regional commissioning feature). Defaults to `false`.
   ///
   /// !&gt; **Note:** Changing the value of `internet_advertising_disabled` from `true` to `false` causes the IP prefix to stop being advertised by Azure and is functionally equivalent to deleting it when used in a production setting.
   late final pulumi.Output<bool?> internetAdvertisingDisabled;
-
   /// The location where the Custom IP Prefix should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the Custom IP Prefix. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the ID of the parent prefix. Only needed when creating a regional/child IPv6 prefix. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> parentCustomIpPrefixId;
-
   /// The name of the Resource Group in which to create the Custom IP Prefix. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The expiration date of the Route Origin Authorization (ROA) document which has been filed with the Routing Internet Registry (RIR) for this prefix. The expected format is `YYYY-MM-DD`. Required when provisioning an IPv4 prefix or IPv6 global prefix. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> roaValidityEndDate;
-
   /// A mapping of tags to assign to the Custom IP Prefix.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The signed base64-encoded authorization message, which will be sent to Microsoft for WAN verification. Required when provisioning an IPv4 prefix or IPv6 global prefix. Refer to [Azure documentation](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/create-custom-ip-address-prefix-cli#certificate-readiness) for more details about the process for your RIR. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> wanValidationSignedMessage;
-
   /// Specifies a list of Availability Zones in which this Custom IP Prefix should be located. Should not be specified when creating an IPv6 global prefix. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** In regions with [availability zones](https://docs.microsoft.com/en-us/azure/availability-zones/az-overview), the Custom IP Prefix must be specified as either `Zone-redundant` or assigned to a specific zone. It can't be created with no zone specified in these regions. All IPs from the prefix must have the same zonal properties.
@@ -511,27 +501,26 @@ class Prefix extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Prefix]. {@macro pulumi_customip_prefix_prefix_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Prefix(String name, {PrefixArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:customip/prefix:Prefix',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Prefix(
+    String name, {
+    PrefixArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:customip/prefix:Prefix',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidr = registerOutput<String>('cidr');
     commissioningEnabled = registerOutput<bool?>('commissioningEnabled');
-    internetAdvertisingDisabled = registerOutput<bool?>(
-      'internetAdvertisingDisabled',
-    );
+    internetAdvertisingDisabled = registerOutput<bool?>('internetAdvertisingDisabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parentCustomIpPrefixId = registerOutput<String?>('parentCustomIpPrefixId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     roaValidityEndDate = registerOutput<String?>('roaValidityEndDate');
     tags = registerOutput<Map<String, String>?>('tags');
-    wanValidationSignedMessage = registerOutput<String?>(
-      'wanValidationSignedMessage',
-    );
+    wanValidationSignedMessage = registerOutput<String?>('wanValidationSignedMessage');
     zones = registerOutput<List<String>?>('zones');
   }
 
@@ -553,25 +542,21 @@ class Prefix extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:customip/prefix:Prefix',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:customip/prefix:Prefix',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidr = registerOutput<String>('cidr');
     commissioningEnabled = registerOutput<bool?>('commissioningEnabled');
-    internetAdvertisingDisabled = registerOutput<bool?>(
-      'internetAdvertisingDisabled',
-    );
+    internetAdvertisingDisabled = registerOutput<bool?>('internetAdvertisingDisabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parentCustomIpPrefixId = registerOutput<String?>('parentCustomIpPrefixId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     roaValidityEndDate = registerOutput<String?>('roaValidityEndDate');
     tags = registerOutput<Map<String, String>?>('tags');
-    wanValidationSignedMessage = registerOutput<String?>(
-      'wanValidationSignedMessage',
-    );
+    wanValidationSignedMessage = registerOutput<String?>('wanValidationSignedMessage');
     zones = registerOutput<List<String>?>('zones');
   }
 }

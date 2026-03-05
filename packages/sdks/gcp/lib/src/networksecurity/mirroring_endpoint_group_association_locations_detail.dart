@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MirroringEndpointGroupAssociationLocationsDetail {
   /// The cloud location of the association, currently restricted to `global`.
   final pulumi.Input<String>? location;
-
   /// (Output)
   /// The current state of the association in this location.
   /// Possible values:
@@ -17,26 +16,23 @@ class MirroringEndpointGroupAssociationLocationsDetail {
   /// Creates a new [MirroringEndpointGroupAssociationLocationsDetail].
   /// [location] The cloud location of the association, currently restricted to `global`.
   /// [state] (Output)
-  MirroringEndpointGroupAssociationLocationsDetail({this.location, this.state});
+  MirroringEndpointGroupAssociationLocationsDetail({
+    this.location,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': ?location, 'state': ?state};
+    return <String, dynamic>{
+      'location': ?location,
+      'state': ?state,
+    };
   }
 
-  factory MirroringEndpointGroupAssociationLocationsDetail.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MirroringEndpointGroupAssociationLocationsDetail.fromMap(Map<String, dynamic> map) {
     return MirroringEndpointGroupAssociationLocationsDetail(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

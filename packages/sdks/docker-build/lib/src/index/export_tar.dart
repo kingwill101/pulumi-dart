@@ -8,13 +8,20 @@ class ExportTar {
 
   /// Creates a new [ExportTar].
   /// [dest] Output path.
-  ExportTar({required this.dest});
+  ExportTar({
+    required this.dest,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dest': dest};
+    return <String, dynamic>{
+      'dest': dest,
+    };
   }
 
   factory ExportTar.fromMap(Map<String, dynamic> map) {
-    return ExportTar(dest: pulumi.Input.fromValue(map['dest'] as String));
+    return ExportTar(
+      dest: pulumi.Input.fromValue(map['dest'] as String),
+    );
   }
 }
+

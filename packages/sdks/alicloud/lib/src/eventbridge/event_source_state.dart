@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSourceState {
   /// The description of the event source.
   final pulumi.Input<String>? description;
-
   /// The name of the event bus to which the event source is attached.
   final pulumi.Input<String>? eventBusName;
-
   /// The name of the event source.
   final pulumi.Input<String>? eventSourceName;
-
   /// The configuration of the external data source.
   /// When `external_source_type` is `RabbitMQ`, The following attributes are supported:
   /// `RegionId` - The region ID of RabbitMQ.
@@ -28,10 +25,8 @@ class EventSourceState {
   /// When `external_source_type` is `MNS`, The following attributes are supported:
   /// `QueueName` - The queue name of MNS.
   final pulumi.Input<Map<String, String>>? externalSourceConfig;
-
   /// The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
   final pulumi.Input<String>? externalSourceType;
-
   /// Specifies whether to connect to an external data source. Default value: `false`.
   final pulumi.Input<bool>? linkedExternalSource;
 
@@ -64,38 +59,13 @@ class EventSourceState {
 
   factory EventSourceState.fromMap(Map<String, dynamic> map) {
     return EventSourceState(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventBusName: (() {
-        final guardedValue = map['eventBusName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventSourceName: (() {
-        final guardedValue = map['eventSourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      externalSourceConfig: (() {
-        final guardedValue = map['externalSourceConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      externalSourceType: (() {
-        final guardedValue = map['externalSourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      linkedExternalSource: (() {
-        final guardedValue = map['linkedExternalSource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventBusName: (() { final guardedValue = map['eventBusName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventSourceName: (() { final guardedValue = map['eventSourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      externalSourceConfig: (() { final guardedValue = map['externalSourceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      externalSourceType: (() { final guardedValue = map['externalSourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      linkedExternalSource: (() { final guardedValue = map['linkedExternalSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

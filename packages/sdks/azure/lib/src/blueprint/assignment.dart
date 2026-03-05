@@ -547,45 +547,33 @@ import 'assignment_state.dart';
 class Assignment extends pulumi.CustomResource {
   /// The name of the blueprint assigned
   late final pulumi.Output<String> blueprintName;
-
   /// The Description on the Blueprint
   late final pulumi.Output<String> description;
-
   /// The display name of the blueprint
   late final pulumi.Output<String> displayName;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<AssignmentIdentity> identity;
-
   /// The Azure location of the Assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// a list of up to 200 actions that are permitted to bypass the locks applied by the Blueprint.
   late final pulumi.Output<List<String>?> lockExcludeActions;
-
   /// a list of up to 5 Principal IDs that are permitted to bypass the locks applied by the Blueprint.
   late final pulumi.Output<List<String>?> lockExcludePrincipals;
-
   /// The locking mode of the Blueprint Assignment. One of `None` (Default), `AllResourcesReadOnly`, or `AllResourcesDoNotDelete`. Defaults to `None`.
   late final pulumi.Output<String?> lockMode;
-
   /// The name of the Blueprint Assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// a JSON string to supply Blueprint Assignment parameter values.
   ///
   /// &gt; **NOTE:** Improperly formatted JSON, or missing values required by a Blueprint will cause the assignment to fail.
   late final pulumi.Output<String?> parameterValues;
-
   /// a JSON string to supply the Blueprint Resource Group information.
   ///
   /// &gt; **NOTE:** Improperly formatted JSON, or missing values required by a Blueprint will cause the assignment to fail.
   late final pulumi.Output<String?> resourceGroups;
-
   /// The Subscription ID the Blueprint Published Version is to be applied to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetSubscriptionId;
   late final pulumi.Output<String> type;
-
   /// The ID of the Published Version of the blueprint to be assigned.
   late final pulumi.Output<String> versionId;
 
@@ -598,29 +586,18 @@ class Assignment extends pulumi.CustomResource {
     AssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:blueprint/assignment:Assignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:blueprint/assignment:Assignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blueprintName = registerOutput<String>('blueprintName');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    identity = registerOutput<AssignmentIdentity>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AssignmentIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<AssignmentIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     lockExcludeActions = registerOutput<List<String>?>('lockExcludeActions');
-    lockExcludePrincipals = registerOutput<List<String>?>(
-      'lockExcludePrincipals',
-    );
+    lockExcludePrincipals = registerOutput<List<String>?>('lockExcludePrincipals');
     lockMode = registerOutput<String?>('lockMode');
     this.name = registerOutput<String>('name');
     parameterValues = registerOutput<String?>('parameterValues');
@@ -648,29 +625,18 @@ class Assignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:blueprint/assignment:Assignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:blueprint/assignment:Assignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blueprintName = registerOutput<String>('blueprintName');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    identity = registerOutput<AssignmentIdentity>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AssignmentIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<AssignmentIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     lockExcludeActions = registerOutput<List<String>?>('lockExcludeActions');
-    lockExcludePrincipals = registerOutput<List<String>?>(
-      'lockExcludePrincipals',
-    );
+    lockExcludePrincipals = registerOutput<List<String>?>('lockExcludePrincipals');
     lockMode = registerOutput<String?>('lockMode');
     this.name = registerOutput<String>('name');
     parameterValues = registerOutput<String?>('parameterValues');

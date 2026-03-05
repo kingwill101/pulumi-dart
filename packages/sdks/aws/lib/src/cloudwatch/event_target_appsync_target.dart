@@ -8,19 +8,20 @@ class EventTargetAppsyncTarget {
 
   /// Creates a new [EventTargetAppsyncTarget].
   /// [graphqlOperation] Contains the GraphQL mutation to be parsed and executed.
-  EventTargetAppsyncTarget({this.graphqlOperation});
+  EventTargetAppsyncTarget({
+    this.graphqlOperation,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'graphqlOperation': ?graphqlOperation};
+    return <String, dynamic>{
+      'graphqlOperation': ?graphqlOperation,
+    };
   }
 
   factory EventTargetAppsyncTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetAppsyncTarget(
-      graphqlOperation: (() {
-        final guardedValue = map['graphqlOperation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      graphqlOperation: (() { final guardedValue = map['graphqlOperation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RamRoleAttachmentState {
   /// The ID of the instance.
   final pulumi.Input<String>? instanceId;
-
   /// The additional policy. When you attach an instance RAM role to instances, you can specify an additional policy to further limit the permissions of the role.
   final pulumi.Input<String>? policy;
-
   /// The name of the instance RAM role.
   final pulumi.Input<String>? ramRoleName;
 
@@ -17,7 +15,11 @@ class RamRoleAttachmentState {
   /// [instanceId] The ID of the instance.
   /// [policy] The additional policy. When you attach an instance RAM role to instances, you can specify an additional policy to further limit the permissions of the role.
   /// [ramRoleName] The name of the instance RAM role.
-  RamRoleAttachmentState({this.instanceId, this.policy, this.ramRoleName});
+  RamRoleAttachmentState({
+    this.instanceId,
+    this.policy,
+    this.ramRoleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class RamRoleAttachmentState {
 
   factory RamRoleAttachmentState.fromMap(Map<String, dynamic> map) {
     return RamRoleAttachmentState(
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ramRoleName: (() {
-        final guardedValue = map['ramRoleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ramRoleName: (() { final guardedValue = map['ramRoleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

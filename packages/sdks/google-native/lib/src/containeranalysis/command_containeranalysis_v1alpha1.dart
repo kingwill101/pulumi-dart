@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CommandContaineranalysisV1alpha1 {
   /// Command-line arguments used when executing this Command.
   final pulumi.Input<List<String>>? args;
-
   /// Working directory (relative to project source root) used when running this Command.
   final pulumi.Input<String>? dir;
-
   /// Environment variables set before running this Command.
   final pulumi.Input<List<String>>? env;
-
   /// Optional unique identifier for this Command, used in wait_for to reference this Command as a dependency.
   final pulumi.Input<String>? id;
-
   /// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
   final pulumi.Input<String>? name;
-
   /// The ID(s) of the Command(s) that this Command depends on.
   final pulumi.Input<List<String>>? waitFor;
 
@@ -51,36 +46,13 @@ class CommandContaineranalysisV1alpha1 {
 
   factory CommandContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return CommandContaineranalysisV1alpha1(
-      args: (() {
-        final guardedValue = map['args'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      dir: (() {
-        final guardedValue = map['dir'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      env: (() {
-        final guardedValue = map['env'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      waitFor: (() {
-        final guardedValue = map['waitFor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      args: (() { final guardedValue = map['args']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      dir: (() { final guardedValue = map['dir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      env: (() { final guardedValue = map['env']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      waitFor: (() { final guardedValue = map['waitFor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

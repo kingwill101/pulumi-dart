@@ -14,16 +14,15 @@ class BareMetalClusterOperationsConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableApplicationLogs': enableApplicationLogs};
+    return <String, dynamic>{
+      'enableApplicationLogs': enableApplicationLogs,
+    };
   }
 
-  factory BareMetalClusterOperationsConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalClusterOperationsConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterOperationsConfigResponse(
-      enableApplicationLogs: pulumi.Input.fromValue(
-        map['enableApplicationLogs'] as bool,
-      ),
+      enableApplicationLogs: pulumi.Input.fromValue(map['enableApplicationLogs'] as bool),
     );
   }
 }
+

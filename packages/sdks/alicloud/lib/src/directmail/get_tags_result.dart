@@ -36,10 +36,7 @@ class GetTagsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'tags': pulumi.Input.encodeList<GetTagsTag, Map<String, dynamic>>(
-        tags,
-        (value) => value.toMap(),
-      ),
+      'tags': pulumi.Input.encodeList<GetTagsTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
@@ -47,21 +44,11 @@ class GetTagsResult {
     return GetTagsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: pulumi.Input.decodeList<GetTagsTag>(
-        map['tags']!,
-        (value) => GetTagsTag.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: pulumi.Input.decodeList<GetTagsTag>(map['tags']!, (value) => GetTagsTag.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

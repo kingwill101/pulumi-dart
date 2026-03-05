@@ -13,8 +13,7 @@ enum NodeGroupMaintenanceIntervalComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown NodeGroupMaintenanceIntervalComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown NodeGroupMaintenanceIntervalComputeBeta value: $value');
   }
 }
+

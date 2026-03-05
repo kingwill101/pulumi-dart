@@ -283,16 +283,12 @@ import 'workspace_run_state.dart';
 class WorkspaceRun extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// Resource attribute field of the experiment ID to which Run belongs
   late final pulumi.Output<String> experimentId;
-
   /// The name of the resource
   late final pulumi.Output<String?> runName;
-
   /// Attribute Resource field representing the source task ID
   late final pulumi.Output<String?> sourceId;
-
   /// Resource attribute fields representing the source type
   late final pulumi.Output<String?> sourceType;
 
@@ -305,11 +301,11 @@ class WorkspaceRun extends pulumi.CustomResource {
     WorkspaceRunArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/workspaceRun:WorkspaceRun',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/workspaceRun:WorkspaceRun',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     experimentId = registerOutput<String>('experimentId');
     runName = registerOutput<String?>('runName');
@@ -335,11 +331,11 @@ class WorkspaceRun extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/workspaceRun:WorkspaceRun',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/workspaceRun:WorkspaceRun',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     experimentId = registerOutput<String>('experimentId');
     runName = registerOutput<String?>('runName');

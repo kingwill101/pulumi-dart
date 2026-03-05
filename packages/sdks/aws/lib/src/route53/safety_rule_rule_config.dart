@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SafetyRuleRuleConfig {
   /// Logical negation of the rule.
   final pulumi.Input<bool> inverted;
-
   /// Number of controls that must be set when you specify an `ATLEAST` type rule.
   final pulumi.Input<int> threshold;
-
   /// Rule type. Valid values are `ATLEAST`, `AND`, and `OR`.
   final pulumi.Input<String> type;
 
@@ -38,3 +36,4 @@ class SafetyRuleRuleConfig {
     );
   }
 }
+

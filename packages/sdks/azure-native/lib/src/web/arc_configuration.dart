@@ -37,63 +37,22 @@ class ArcConfiguration {
       'artifactStorageClassName': ?artifactStorageClassName,
       'artifactStorageMountPath': ?artifactStorageMountPath,
       'artifactStorageNodeName': ?artifactStorageNodeName,
-      'artifactsStorageType':
-          ?pulumi.Input.mapOptionalInputValue<StorageType, String>(
-            artifactsStorageType,
-            (value) => value.wireValue,
-          ),
-      'frontEndServiceConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            FrontEndConfiguration,
-            Map<String, dynamic>
-          >(frontEndServiceConfiguration, (value) => value.toMap()),
+      'artifactsStorageType': ?pulumi.Input.mapOptionalInputValue<StorageType, String>(artifactsStorageType, (value) => value.wireValue),
+      'frontEndServiceConfiguration': ?pulumi.Input.mapOptionalInputValue<FrontEndConfiguration, Map<String, dynamic>>(frontEndServiceConfiguration, (value) => value.toMap()),
       'kubeConfig': ?kubeConfig,
     };
   }
 
   factory ArcConfiguration.fromMap(Map<String, dynamic> map) {
     return ArcConfiguration(
-      artifactStorageAccessMode: (() {
-        final guardedValue = map['artifactStorageAccessMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      artifactStorageClassName: (() {
-        final guardedValue = map['artifactStorageClassName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      artifactStorageMountPath: (() {
-        final guardedValue = map['artifactStorageMountPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      artifactStorageNodeName: (() {
-        final guardedValue = map['artifactStorageNodeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      artifactsStorageType: (() {
-        final guardedValue = map['artifactsStorageType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StorageType.fromValue(guardedValue as String),
-        );
-      })(),
-      frontEndServiceConfiguration: (() {
-        final guardedValue = map['frontEndServiceConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FrontEndConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      kubeConfig: (() {
-        final guardedValue = map['kubeConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      artifactStorageAccessMode: (() { final guardedValue = map['artifactStorageAccessMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      artifactStorageClassName: (() { final guardedValue = map['artifactStorageClassName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      artifactStorageMountPath: (() { final guardedValue = map['artifactStorageMountPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      artifactStorageNodeName: (() { final guardedValue = map['artifactStorageNodeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      artifactsStorageType: (() { final guardedValue = map['artifactsStorageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageType.fromValue(guardedValue as String)); })(),
+      frontEndServiceConfiguration: (() { final guardedValue = map['frontEndServiceConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrontEndConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      kubeConfig: (() { final guardedValue = map['kubeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

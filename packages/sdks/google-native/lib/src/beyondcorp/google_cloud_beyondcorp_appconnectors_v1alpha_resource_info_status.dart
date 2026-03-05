@@ -6,22 +6,16 @@ enum GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus {
   unresponsive("UNRESPONSIVE"),
   degraded("DEGRADED");
 
-  const GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus(
-    this.wireValue,
-  );
+  const GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus.values) {
+  static GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus fromValue(String value) {
+    for (final item in GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus value: $value');
   }
 }
+

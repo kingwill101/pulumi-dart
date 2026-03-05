@@ -7,17 +7,13 @@ enum AllocationAggregateReservationVmFamilyComputeBeta {
   const AllocationAggregateReservationVmFamilyComputeBeta(this.wireValue);
   final String wireValue;
 
-  static AllocationAggregateReservationVmFamilyComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in AllocationAggregateReservationVmFamilyComputeBeta.values) {
+  static AllocationAggregateReservationVmFamilyComputeBeta fromValue(String value) {
+    for (final item in AllocationAggregateReservationVmFamilyComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AllocationAggregateReservationVmFamilyComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown AllocationAggregateReservationVmFamilyComputeBeta value: $value');
   }
 }
+

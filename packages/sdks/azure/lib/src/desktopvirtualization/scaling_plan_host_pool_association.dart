@@ -16,10 +16,8 @@ import 'scaling_plan_host_pool_association_state.dart';
 class ScalingPlanHostPoolAssociation extends pulumi.CustomResource {
   /// Should the Scaling Plan be enabled on this Host Pool.
   late final pulumi.Output<bool> enabled;
-
   /// The resource ID for the Virtual Desktop Host Pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> hostPoolId;
-
   /// The resource ID for the Virtual Desktop Scaling Plan. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scalingPlanId;
 
@@ -32,11 +30,11 @@ class ScalingPlanHostPoolAssociation extends pulumi.CustomResource {
     ScalingPlanHostPoolAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:desktopvirtualization/scalingPlanHostPoolAssociation:ScalingPlanHostPoolAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:desktopvirtualization/scalingPlanHostPoolAssociation:ScalingPlanHostPoolAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool>('enabled');
     hostPoolId = registerOutput<String>('hostPoolId');
     scalingPlanId = registerOutput<String>('scalingPlanId');
@@ -60,11 +58,11 @@ class ScalingPlanHostPoolAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:desktopvirtualization/scalingPlanHostPoolAssociation:ScalingPlanHostPoolAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:desktopvirtualization/scalingPlanHostPoolAssociation:ScalingPlanHostPoolAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool>('enabled');
     hostPoolId = registerOutput<String>('hostPoolId');
     scalingPlanId = registerOutput<String>('scalingPlanId');

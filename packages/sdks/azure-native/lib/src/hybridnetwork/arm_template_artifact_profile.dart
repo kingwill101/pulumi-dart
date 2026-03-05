@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ArmTemplateArtifactProfile {
   /// Template name.
   final pulumi.Input<String>? templateName;
-
   /// Template version.
   final pulumi.Input<String>? templateVersion;
 
   /// Creates a new [ArmTemplateArtifactProfile].
   /// [templateName] Template name.
   /// [templateVersion] Template version.
-  ArmTemplateArtifactProfile({this.templateName, this.templateVersion});
+  ArmTemplateArtifactProfile({
+    this.templateName,
+    this.templateVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class ArmTemplateArtifactProfile {
 
   factory ArmTemplateArtifactProfile.fromMap(Map<String, dynamic> map) {
     return ArmTemplateArtifactProfile(
-      templateName: (() {
-        final guardedValue = map['templateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      templateVersion: (() {
-        final guardedValue = map['templateVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      templateName: (() { final guardedValue = map['templateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      templateVersion: (() { final guardedValue = map['templateVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

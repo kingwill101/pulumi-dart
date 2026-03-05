@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualNodesNodeEvent {
   /// The number of occurrences.
   final pulumi.Input<int> count;
-
   /// The first presentation time stamp.
   final pulumi.Input<String> firstTimestamp;
-
   /// The most recent time stamp.
   final pulumi.Input<String> lastTimestamp;
-
   /// The event of the message body.
   final pulumi.Input<String> message;
-
   /// The name of the event.
   final pulumi.Input<String> name;
-
   /// The causes of the incident.
   final pulumi.Input<String> reason;
-
   /// The Event type.
   final pulumi.Input<String> type;
 
@@ -66,3 +60,4 @@ class GetVirtualNodesNodeEvent {
     );
   }
 }
+

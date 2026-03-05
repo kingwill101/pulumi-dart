@@ -7,44 +7,29 @@ import 'audit_log_config_response.dart';
 class AuditConfigResponse {
   /// The configuration for logging of each type of permission.
   final pulumi.Input<List<AuditLogConfigResponse>> auditLogConfigs;
-
   /// Specifies a service that will be enabled for audit logging. For example, storage.googleapis.com, cloudsql.googleapis.com. allServices is a special value that covers all services.
   final pulumi.Input<String> service;
 
   /// Creates a new [AuditConfigResponse].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, storage.googleapis.com, cloudsql.googleapis.com. allServices is a special value that covers all services.
-  AuditConfigResponse({required this.auditLogConfigs, required this.service});
+  AuditConfigResponse({
+    required this.auditLogConfigs,
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs':
-          pulumi.Input.mapInputValue<
-            List<AuditLogConfigResponse>,
-            List<Map<String, dynamic>>
-          >(
-            auditLogConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AuditLogConfigResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'auditLogConfigs': pulumi.Input.mapInputValue<List<AuditLogConfigResponse>, List<Map<String, dynamic>>>(auditLogConfigs, (value) => pulumi.Input.encodeList<AuditLogConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'service': service,
     };
   }
 
   factory AuditConfigResponse.fromMap(Map<String, dynamic> map) {
     return AuditConfigResponse(
-      auditLogConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<AuditLogConfigResponse>(
-          map['auditLogConfigs']!,
-          (value) => AuditLogConfigResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      auditLogConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<AuditLogConfigResponse>(map['auditLogConfigs']!, (value) => AuditLogConfigResponse.fromMap((value as Map).cast<String, dynamic>()))),
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
+

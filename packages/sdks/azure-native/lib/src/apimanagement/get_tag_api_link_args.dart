@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTagApiLinkArgs {
   /// Tag-API link identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> apiLinkId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
-
   /// Tag identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> tagId;
 
@@ -43,11 +40,10 @@ class GetTagApiLinkArgs {
   factory GetTagApiLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetTagApiLinkArgs(
       apiLinkId: pulumi.Input.fromValue(map['apiLinkId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
       tagId: pulumi.Input.fromValue(map['tagId'] as String),
     );
   }
 }
+

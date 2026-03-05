@@ -12,65 +12,51 @@ class InsightsConfigState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// The name of the App Hub Application.
   /// Format:
   /// projects/{project}/locations/{location}/applications/{application}
   final pulumi.Input<String>? appHubApplication;
-
   /// The artifact configurations of the artifacts that are deployed.
   /// Structure is documented below.
   final pulumi.Input<List<InsightsConfigArtifactConfig>>? artifactConfigs;
-
   /// [Output only] Create timestamp
   final pulumi.Input<String>? createTime;
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
-
   /// Any errors that occurred while setting up the InsightsConfig.
   /// Each error will be in the format: `field_name: error_message`, e.g.
   /// GetAppHubApplication: Permission denied while getting App Hub
   /// application. Please grant permissions to the P4SA.
   /// Structure is documented below.
   final pulumi.Input<List<InsightsConfigError>>? errors;
-
   /// ID of the requesting InsightsConfig.
   final pulumi.Input<String>? insightsConfigId;
-
   /// Set of labels associated with an InsightsConfig.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
-
   /// Identifier. The name of the InsightsConfig.
   /// Format:
   /// projects/{project}/locations/{location}/insightsConfigs/{insightsConfig}
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
-
   /// Reconciling (https://google.aip.dev/128#reconciliation).
   /// Set to true if the current state of InsightsConfig does not match the
   /// user's intended state, and the service is actively updating the resource to
   /// reconcile them. This can happen due to user-triggered updates or
   /// system actions like failover or maintenance.
   final pulumi.Input<bool>? reconciling;
-
   /// The runtime configurations where the application is deployed.
   /// Structure is documented below.
   final pulumi.Input<List<InsightsConfigRuntimeConfig>>? runtimeConfigs;
-
   /// (Output)
   /// The state of the Runtime.
   /// Possible values:
@@ -78,7 +64,6 @@ class InsightsConfigState {
   /// LINKED
   /// UNLINKED
   final pulumi.Input<String>? state;
-
   /// [Output only] Update timestamp
   final pulumi.Input<String>? updateTime;
 
@@ -124,33 +109,11 @@ class InsightsConfigState {
     return <String, dynamic>{
       'annotations': ?annotations,
       'appHubApplication': ?appHubApplication,
-      'artifactConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InsightsConfigArtifactConfig>,
-            List<Map<String, dynamic>>
-          >(
-            artifactConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InsightsConfigArtifactConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'artifactConfigs': ?pulumi.Input.mapOptionalInputValue<List<InsightsConfigArtifactConfig>, List<Map<String, dynamic>>>(artifactConfigs, (value) => pulumi.Input.encodeList<InsightsConfigArtifactConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': ?createTime,
       'effectiveAnnotations': ?effectiveAnnotations,
       'effectiveLabels': ?effectiveLabels,
-      'errors':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InsightsConfigError>,
-            List<Map<String, dynamic>>
-          >(
-            errors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InsightsConfigError,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'errors': ?pulumi.Input.mapOptionalInputValue<List<InsightsConfigError>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<InsightsConfigError, Map<String, dynamic>>(value, (value) => value.toMap())),
       'insightsConfigId': ?insightsConfigId,
       'labels': ?labels,
       'location': ?location,
@@ -158,18 +121,7 @@ class InsightsConfigState {
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
       'reconciling': ?reconciling,
-      'runtimeConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InsightsConfigRuntimeConfig>,
-            List<Map<String, dynamic>>
-          >(
-            runtimeConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InsightsConfigRuntimeConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'runtimeConfigs': ?pulumi.Input.mapOptionalInputValue<List<InsightsConfigRuntimeConfig>, List<Map<String, dynamic>>>(runtimeConfigs, (value) => pulumi.Input.encodeList<InsightsConfigRuntimeConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': ?state,
       'updateTime': ?updateTime,
     };
@@ -177,122 +129,24 @@ class InsightsConfigState {
 
   factory InsightsConfigState.fromMap(Map<String, dynamic> map) {
     return InsightsConfigState(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      appHubApplication: (() {
-        final guardedValue = map['appHubApplication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      artifactConfigs: (() {
-        final guardedValue = map['artifactConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<InsightsConfigArtifactConfig>(
-            guardedValue,
-            (value) => InsightsConfigArtifactConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      effectiveAnnotations: (() {
-        final guardedValue = map['effectiveAnnotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      effectiveLabels: (() {
-        final guardedValue = map['effectiveLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      errors: (() {
-        final guardedValue = map['errors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<InsightsConfigError>(
-            guardedValue,
-            (value) => InsightsConfigError.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      insightsConfigId: (() {
-        final guardedValue = map['insightsConfigId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pulumiLabels: (() {
-        final guardedValue = map['pulumiLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      reconciling: (() {
-        final guardedValue = map['reconciling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      runtimeConfigs: (() {
-        final guardedValue = map['runtimeConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<InsightsConfigRuntimeConfig>(
-            guardedValue,
-            (value) => InsightsConfigRuntimeConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      appHubApplication: (() { final guardedValue = map['appHubApplication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      artifactConfigs: (() { final guardedValue = map['artifactConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InsightsConfigArtifactConfig>(guardedValue, (value) => InsightsConfigArtifactConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InsightsConfigError>(guardedValue, (value) => InsightsConfigError.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      insightsConfigId: (() { final guardedValue = map['insightsConfigId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      runtimeConfigs: (() { final guardedValue = map['runtimeConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InsightsConfigRuntimeConfig>(guardedValue, (value) => InsightsConfigRuntimeConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

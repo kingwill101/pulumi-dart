@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ErrorResponse {
   /// Additional information about the error.
   final pulumi.Input<Map<String, String>> details;
-
   /// The time when the error occurred.
   final pulumi.Input<String> errorTime;
-
   /// A unique identifier for this specific error, allowing it to be traced throughout the system in logs and API responses.
   final pulumi.Input<String> errorUuid;
-
   /// A message containing more information about the error that occurred.
   final pulumi.Input<String> message;
-
   /// A title that explains the reason for the error.
   final pulumi.Input<String> reason;
 
@@ -45,9 +41,7 @@ class ErrorResponse {
 
   factory ErrorResponse.fromMap(Map<String, dynamic> map) {
     return ErrorResponse(
-      details: pulumi.Input.fromValue(
-        (map['details'] as Map).cast<String, String>(),
-      ),
+      details: pulumi.Input.fromValue((map['details'] as Map).cast<String, String>()),
       errorTime: pulumi.Input.fromValue(map['errorTime'] as String),
       errorUuid: pulumi.Input.fromValue(map['errorUuid'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
@@ -55,3 +49,4 @@ class ErrorResponse {
     );
   }
 }
+

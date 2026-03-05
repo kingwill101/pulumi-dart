@@ -6,30 +6,24 @@ import 'dicom_store_stream_config_bigquery_destination.dart';
 class DicomStoreStreamConfig {
   /// BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
   /// Structure is documented below.
-  final pulumi.Input<DicomStoreStreamConfigBigqueryDestination>
-  bigqueryDestination;
+  final pulumi.Input<DicomStoreStreamConfigBigqueryDestination> bigqueryDestination;
 
   /// Creates a new [DicomStoreStreamConfig].
   /// [bigqueryDestination] BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
-  DicomStoreStreamConfig({required this.bigqueryDestination});
+  DicomStoreStreamConfig({
+    required this.bigqueryDestination,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigqueryDestination':
-          pulumi.Input.mapInputValue<
-            DicomStoreStreamConfigBigqueryDestination,
-            Map<String, dynamic>
-          >(bigqueryDestination, (value) => value.toMap()),
+      'bigqueryDestination': pulumi.Input.mapInputValue<DicomStoreStreamConfigBigqueryDestination, Map<String, dynamic>>(bigqueryDestination, (value) => value.toMap()),
     };
   }
 
   factory DicomStoreStreamConfig.fromMap(Map<String, dynamic> map) {
     return DicomStoreStreamConfig(
-      bigqueryDestination: pulumi.Input.fromValue(
-        DicomStoreStreamConfigBigqueryDestination.fromMap(
-          (map['bigqueryDestination']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      bigqueryDestination: pulumi.Input.fromValue(DicomStoreStreamConfigBigqueryDestination.fromMap((map['bigqueryDestination']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

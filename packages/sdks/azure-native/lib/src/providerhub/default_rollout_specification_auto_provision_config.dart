@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultRolloutSpecificationAutoProvisionConfig {
   /// Whether auto provisioning for resource graph is enabled.
   final pulumi.Input<bool>? resourceGraph;
-
   /// Whether auto provisioning for storage is enabled.
   final pulumi.Input<bool>? storage;
 
@@ -25,20 +24,11 @@ class DefaultRolloutSpecificationAutoProvisionConfig {
     };
   }
 
-  factory DefaultRolloutSpecificationAutoProvisionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefaultRolloutSpecificationAutoProvisionConfig.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutSpecificationAutoProvisionConfig(
-      resourceGraph: (() {
-        final guardedValue = map['resourceGraph'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      storage: (() {
-        final guardedValue = map['storage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      resourceGraph: (() { final guardedValue = map['resourceGraph']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

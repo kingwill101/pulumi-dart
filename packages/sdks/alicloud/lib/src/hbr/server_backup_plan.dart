@@ -450,28 +450,20 @@ import 'server_backup_plan_state.dart';
 class ServerBackupPlan extends pulumi.CustomResource {
   /// The role name created in the original account RAM backup by the cross account managed by the current account.
   late final pulumi.Output<String?> crossAccountRoleName;
-
   /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
   late final pulumi.Output<String> crossAccountType;
-
   /// The original account ID of the cross account backup managed by the current account.
   late final pulumi.Output<int?> crossAccountUserId;
-
   /// ECS server backup plan details.
   late final pulumi.Output<List<Map<String, dynamic>>> details;
-
   /// Whether to disable the backup task. Valid values: `true`, `false`.
   late final pulumi.Output<bool> disabled;
-
   /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
   late final pulumi.Output<String> ecsServerBackupPlanName;
-
   /// The ID of ECS instance.
   late final pulumi.Output<String> instanceId;
-
   /// Backup retention days, the minimum is 1.
   late final pulumi.Output<int> retention;
-
   /// Backup strategy. Optional format: `I|{startTime}|{interval}`
   /// * `startTime` Backup start time, UNIX time, in seconds.
   late final pulumi.Output<String> schedule;
@@ -485,11 +477,11 @@ class ServerBackupPlan extends pulumi.CustomResource {
     ServerBackupPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/serverBackupPlan:ServerBackupPlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/serverBackupPlan:ServerBackupPlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
     crossAccountType = registerOutput<String>('crossAccountType');
     crossAccountUserId = registerOutput<int?>('crossAccountUserId');
@@ -519,11 +511,11 @@ class ServerBackupPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/serverBackupPlan:ServerBackupPlan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/serverBackupPlan:ServerBackupPlan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
     crossAccountType = registerOutput<String>('crossAccountType');
     crossAccountUserId = registerOutput<int?>('crossAccountUserId');

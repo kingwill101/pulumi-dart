@@ -14,3 +14,4 @@ enum TpmSupportValues {
     throw ArgumentError('Unknown TpmSupportValues value: $value');
   }
 }
+

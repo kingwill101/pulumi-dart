@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationLoadBalancersBalancerBackendServer {
   /// The description of protocol.
   final pulumi.Input<String> description;
-
   /// The server ID.
   final pulumi.Input<String> serverId;
-
   /// The type of servers.
   final pulumi.Input<String> type;
-
   /// The weight of servers.
   final pulumi.Input<int> weight;
 
@@ -36,9 +33,7 @@ class GetApplicationLoadBalancersBalancerBackendServer {
     };
   }
 
-  factory GetApplicationLoadBalancersBalancerBackendServer.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationLoadBalancersBalancerBackendServer.fromMap(Map<String, dynamic> map) {
     return GetApplicationLoadBalancersBalancerBackendServer(
       description: pulumi.Input.fromValue(map['description'] as String),
       serverId: pulumi.Input.fromValue(map['serverId'] as String),
@@ -47,3 +42,4 @@ class GetApplicationLoadBalancersBalancerBackendServer {
     );
   }
 }
+

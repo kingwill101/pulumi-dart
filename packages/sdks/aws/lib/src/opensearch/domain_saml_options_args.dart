@@ -12,10 +12,8 @@ class DomainSamlOptionsArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> domainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// SAML authentication options for an AWS OpenSearch Domain.
   final pulumi.Input<DomainSamlOptionsSamlOptions>? samlOptions;
 
@@ -33,31 +31,16 @@ class DomainSamlOptionsArgs {
     return <String, dynamic>{
       'domainName': domainName,
       'region': ?region,
-      'samlOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainSamlOptionsSamlOptions,
-            Map<String, dynamic>
-          >(samlOptions, (value) => value.toMap()),
+      'samlOptions': ?pulumi.Input.mapOptionalInputValue<DomainSamlOptionsSamlOptions, Map<String, dynamic>>(samlOptions, (value) => value.toMap()),
     };
   }
 
   factory DomainSamlOptionsArgs.fromMap(Map<String, dynamic> map) {
     return DomainSamlOptionsArgs(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      samlOptions: (() {
-        final guardedValue = map['samlOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainSamlOptionsSamlOptions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      samlOptions: (() { final guardedValue = map['samlOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainSamlOptionsSamlOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

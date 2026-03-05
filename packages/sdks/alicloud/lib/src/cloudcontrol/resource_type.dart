@@ -248,16 +248,12 @@ import 'resource_state.dart';
 class ResourceType extends pulumi.CustomResource {
   /// Resource attributes specified when a user creates or updates a resource.
   late final pulumi.Output<String?> desireAttributes;
-
   /// The product Code represents the product to be operated. Currently supported products and resources can be queried at the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
   late final pulumi.Output<String> product;
-
   /// The collection of properties for the resource.
   late final pulumi.Output<String> resourceAttributes;
-
   /// Resource Code, if there is a parent resource, split with `::`, such as VPC::VSwitch. The supported resource Code can be obtained from the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
   late final pulumi.Output<String> resourceCode;
-
   /// If there is a parent resource, you need to enter the id of the parent resource, for example, in the VPC::VSwtich resource, you need to enter the id of the VPC: vpc-dexadfe3r4ad. If there are more than one level of parent resources, you need to use `:` to split.
   late final pulumi.Output<String> resourceId;
 
@@ -270,11 +266,11 @@ class ResourceType extends pulumi.CustomResource {
     ResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudcontrol/resource:Resource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudcontrol/resource:Resource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     desireAttributes = registerOutput<String?>('desireAttributes');
     product = registerOutput<String>('product');
     resourceAttributes = registerOutput<String>('resourceAttributes');
@@ -300,11 +296,11 @@ class ResourceType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudcontrol/resource:Resource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudcontrol/resource:Resource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     desireAttributes = registerOutput<String?>('desireAttributes');
     product = registerOutput<String>('product');
     resourceAttributes = registerOutput<String>('resourceAttributes');

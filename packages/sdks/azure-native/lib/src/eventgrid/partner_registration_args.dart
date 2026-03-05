@@ -9,17 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PartnerRegistrationArgs {
   /// Location of the resource.
   final pulumi.Input<String>? location;
-
   /// The immutableId of the corresponding partner registration.
   /// Note: This property is marked for deprecation and is not supported in any future GA API version
   final pulumi.Input<String>? partnerRegistrationImmutableId;
-
   /// Name of the partner registration.
   final pulumi.Input<String>? partnerRegistrationName;
-
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
-
   /// Tags of the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -49,31 +45,12 @@ class PartnerRegistrationArgs {
 
   factory PartnerRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return PartnerRegistrationArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partnerRegistrationImmutableId: (() {
-        final guardedValue = map['partnerRegistrationImmutableId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partnerRegistrationName: (() {
-        final guardedValue = map['partnerRegistrationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partnerRegistrationImmutableId: (() { final guardedValue = map['partnerRegistrationImmutableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partnerRegistrationName: (() { final guardedValue = map['partnerRegistrationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

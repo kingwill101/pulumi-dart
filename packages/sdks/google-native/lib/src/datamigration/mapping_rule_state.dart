@@ -17,3 +17,4 @@ enum MappingRuleState {
     throw ArgumentError('Unknown MappingRuleState value: $value');
   }
 }
+

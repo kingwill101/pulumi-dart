@@ -5,11 +5,8 @@ import 'notebook_preparation_error_response.dart';
 
 class NotebookResourceInfoResponse {
   final pulumi.Input<String>? fqdn;
-
   /// The error that occurs when preparing notebook.
-  final pulumi.Input<NotebookPreparationErrorResponse>?
-  notebookPreparationError;
-
+  final pulumi.Input<NotebookPreparationErrorResponse>? notebookPreparationError;
   /// the data plane resourceId that used to initialize notebook component
   final pulumi.Input<String>? resourceId;
 
@@ -26,36 +23,17 @@ class NotebookResourceInfoResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fqdn': ?fqdn,
-      'notebookPreparationError':
-          ?pulumi.Input.mapOptionalInputValue<
-            NotebookPreparationErrorResponse,
-            Map<String, dynamic>
-          >(notebookPreparationError, (value) => value.toMap()),
+      'notebookPreparationError': ?pulumi.Input.mapOptionalInputValue<NotebookPreparationErrorResponse, Map<String, dynamic>>(notebookPreparationError, (value) => value.toMap()),
       'resourceId': ?resourceId,
     };
   }
 
   factory NotebookResourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return NotebookResourceInfoResponse(
-      fqdn: (() {
-        final guardedValue = map['fqdn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      notebookPreparationError: (() {
-        final guardedValue = map['notebookPreparationError'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NotebookPreparationErrorResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notebookPreparationError: (() { final guardedValue = map['notebookPreparationError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NotebookPreparationErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

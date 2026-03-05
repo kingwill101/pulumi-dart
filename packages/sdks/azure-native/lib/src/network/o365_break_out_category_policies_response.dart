@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class O365BreakOutCategoryPoliciesResponse {
   /// Flag to control allow category.
   final pulumi.Input<bool>? allow;
-
   /// Flag to control default category.
   final pulumi.Input<bool>? default_;
-
   /// Flag to control optimize category.
   final pulumi.Input<bool>? optimize;
 
@@ -31,25 +29,12 @@ class O365BreakOutCategoryPoliciesResponse {
     };
   }
 
-  factory O365BreakOutCategoryPoliciesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory O365BreakOutCategoryPoliciesResponse.fromMap(Map<String, dynamic> map) {
     return O365BreakOutCategoryPoliciesResponse(
-      allow: (() {
-        final guardedValue = map['allow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      default_: (() {
-        final guardedValue = map['default'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      optimize: (() {
-        final guardedValue = map['optimize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      allow: (() { final guardedValue = map['allow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      optimize: (() { final guardedValue = map['optimize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbClustersClusterParamChangeLog {
   /// The id of parameter change.
   final pulumi.Input<int> configId;
-
   /// When the parameter change is created.
   final pulumi.Input<String> gmtCreated;
-
   /// When the parameter change is modified.
   final pulumi.Input<String> gmtModified;
-
   /// Whether the parameter changing is applied.
   final pulumi.Input<int> isApplied;
-
   /// Changed parameter name.
   final pulumi.Input<String> name;
-
   /// The new value of parameter.
   final pulumi.Input<String> newValue;
-
   /// The old value of parameter.
   final pulumi.Input<String> oldValue;
 
@@ -66,3 +60,4 @@ class GetDbClustersClusterParamChangeLog {
     );
   }
 }
+

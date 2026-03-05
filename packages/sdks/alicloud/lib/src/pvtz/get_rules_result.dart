@@ -6,7 +6,6 @@ import 'get_rules_rule.dart';
 /// Result data returned by getRules.
 class GetRulesResult {
   final String? endpointId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -41,37 +40,20 @@ class GetRulesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'rules': pulumi.Input.encodeList<GetRulesRule, Map<String, dynamic>>(
-        rules,
-        (value) => value.toMap(),
-      ),
+      'rules': pulumi.Input.encodeList<GetRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
     };
   }
 
   factory GetRulesResult.fromMap(Map<String, dynamic> map) {
     return GetRulesResult(
-      endpointId: (() {
-        final guardedValue = map['endpointId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      endpointId: (() { final guardedValue = map['endpointId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      rules: pulumi.Input.decodeList<GetRulesRule>(
-        map['rules']!,
-        (value) => GetRulesRule.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rules: pulumi.Input.decodeList<GetRulesRule>(map['rules']!, (value) => GetRulesRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

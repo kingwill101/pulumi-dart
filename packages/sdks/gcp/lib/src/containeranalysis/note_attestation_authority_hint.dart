@@ -9,17 +9,20 @@ class NoteAttestationAuthorityHint {
 
   /// Creates a new [NoteAttestationAuthorityHint].
   /// [humanReadableName] The human readable name of this Attestation Authority, for
-  NoteAttestationAuthorityHint({required this.humanReadableName});
+  NoteAttestationAuthorityHint({
+    required this.humanReadableName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'humanReadableName': humanReadableName};
+    return <String, dynamic>{
+      'humanReadableName': humanReadableName,
+    };
   }
 
   factory NoteAttestationAuthorityHint.fromMap(Map<String, dynamic> map) {
     return NoteAttestationAuthorityHint(
-      humanReadableName: pulumi.Input.fromValue(
-        map['humanReadableName'] as String,
-      ),
+      humanReadableName: pulumi.Input.fromValue(map['humanReadableName'] as String),
     );
   }
 }
+

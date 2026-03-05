@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttestationEvidenceResponse {
   /// The description of the evidence
   final pulumi.Input<String>? description;
-
   /// The source url of the evidence
   final pulumi.Input<String>? sourceUrl;
 
   /// Creates a new [AttestationEvidenceResponse].
   /// [description] The description of the evidence
   /// [sourceUrl] The source url of the evidence
-  AttestationEvidenceResponse({this.description, this.sourceUrl});
+  AttestationEvidenceResponse({
+    this.description,
+    this.sourceUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class AttestationEvidenceResponse {
 
   factory AttestationEvidenceResponse.fromMap(Map<String, dynamic> map) {
     return AttestationEvidenceResponse(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceUrl: (() {
-        final guardedValue = map['sourceUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceUrl: (() { final guardedValue = map['sourceUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -13,8 +13,7 @@ enum ApplicationGatewayLoadDistributionAlgorithm {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ApplicationGatewayLoadDistributionAlgorithm value: $value',
-    );
+    throw ArgumentError('Unknown ApplicationGatewayLoadDistributionAlgorithm value: $value');
   }
 }
+

@@ -185,40 +185,28 @@ import 'system_data_response.dart';
 class Cluster extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The UTC time when the Event Hubs Cluster was created.
   late final pulumi.Output<String> createdAt;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// The metric ID of the cluster resource. Provided by the service and not modifiable by the user.
   late final pulumi.Output<String> metricId;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the Cluster.
   late final pulumi.Output<String> provisioningState;
-
   /// Properties of the cluster SKU.
   late final pulumi.Output<ClusterSkuResponse?> sku;
-
   /// Status of the Cluster resource
   late final pulumi.Output<String> status;
-
   /// A value that indicates whether Scaling is Supported.
   late final pulumi.Output<bool?> supportsScaling;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The UTC time when the Event Hubs Cluster was last updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -231,39 +219,21 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventhub:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventhub:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdAt = registerOutput<String>('createdAt');
     location = registerOutput<String?>('location');
     metricId = registerOutput<String>('metricId');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<ClusterSkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<ClusterSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     supportsScaling = registerOutput<bool?>('supportsScaling');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');

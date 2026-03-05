@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSystemTopicArgs {
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the system topic.
   final pulumi.Input<String> systemTopicName;
 
@@ -30,10 +29,9 @@ class GetSystemTopicArgs {
 
   factory GetSystemTopicArgs.fromMap(Map<String, dynamic> map) {
     return GetSystemTopicArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       systemTopicName: pulumi.Input.fromValue(map['systemTopicName'] as String),
     );
   }
 }
+

@@ -13,14 +13,15 @@ class DomainDevicesRngBackendEgdSourceQemuvdAgentClipBoard {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'copyPaste': copyPaste};
+    return <String, dynamic>{
+      'copyPaste': copyPaste,
+    };
   }
 
-  factory DomainDevicesRngBackendEgdSourceQemuvdAgentClipBoard.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesRngBackendEgdSourceQemuvdAgentClipBoard.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRngBackendEgdSourceQemuvdAgentClipBoard(
       copyPaste: pulumi.Input.fromValue(map['copyPaste'] as String),
     );
   }
 }
+

@@ -853,35 +853,25 @@ import 'system_data_response.dart';
 class ADLSGen1FileDataSet extends pulumi.CustomResource {
   /// The ADLS account name.
   late final pulumi.Output<String> accountName;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Unique id for identifying a data set resource
   late final pulumi.Output<String> dataSetId;
-
   /// The file name in the ADLS account.
   late final pulumi.Output<String> fileName;
-
   /// The folder path within the ADLS account.
   late final pulumi.Output<String> folderPath;
-
   /// Kind of data set.
   /// Expected value is 'AdlsGen1File'.
   late final pulumi.Output<String> kind;
-
   /// Name of the azure resource
   late final pulumi.Output<String> name;
-
   /// Resource group of ADLS account.
   late final pulumi.Output<String> resourceGroup;
-
   /// Subscription id of ADLS account.
   late final pulumi.Output<String> subscriptionId;
-
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Type of the azure resource
   late final pulumi.Output<String> type;
 
@@ -894,11 +884,11 @@ class ADLSGen1FileDataSet extends pulumi.CustomResource {
     ADLSGen1FileDataSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datashare:ADLSGen1FileDataSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datashare:ADLSGen1FileDataSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dataSetId = registerOutput<String>('dataSetId');
@@ -908,16 +898,7 @@ class ADLSGen1FileDataSet extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroup = registerOutput<String>('resourceGroup');
     subscriptionId = registerOutput<String>('subscriptionId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

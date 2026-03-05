@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProviderArgs {
   /// Additional user-agent string to append to the default one (&lt;prod_name&gt;/&lt;ver&gt;).
   final pulumi.Input<String>? appendUserAgent;
-
   /// This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
   final pulumi.Input<bool>? disablePartnerName;
-
   /// A Google Partner Name to facilitate partner resource usage attribution.
   final pulumi.Input<String>? partnerName;
-
   /// The default project to manage resources in. If another project is specified on a resource, it will take precedence.
   final pulumi.Input<String>? project;
-
   /// The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
   final pulumi.Input<String>? region;
-
   /// The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
   final pulumi.Input<String>? zone;
 
@@ -54,36 +49,13 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      appendUserAgent: (() {
-        final guardedValue = map['appendUserAgent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disablePartnerName: (() {
-        final guardedValue = map['disablePartnerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      partnerName: (() {
-        final guardedValue = map['partnerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appendUserAgent: (() { final guardedValue = map['appendUserAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disablePartnerName: (() { final guardedValue = map['disablePartnerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      partnerName: (() { final guardedValue = map['partnerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

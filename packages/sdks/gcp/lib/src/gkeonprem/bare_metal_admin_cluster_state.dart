@@ -29,38 +29,29 @@ class BareMetalAdminClusterState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// A human readable description of this Bare Metal Admin Cluster.
   final pulumi.Input<String>? bareMetalVersion;
-
   /// Specifies the Admin Cluster's observability infrastructure.
   /// Structure is documented below.
   final pulumi.Input<BareMetalAdminClusterClusterOperations>? clusterOperations;
-
   /// Specifies the control plane configuration.
   /// Structure is documented below.
   final pulumi.Input<BareMetalAdminClusterControlPlane>? controlPlane;
-
   /// The time the cluster was created, in RFC3339 text format.
   final pulumi.Input<String>? createTime;
-
   /// The time the cluster was deleted, in RFC3339 text format.
   final pulumi.Input<String>? deleteTime;
-
   /// A human readable description of this Bare Metal Admin Cluster.
   final pulumi.Input<String>? description;
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
-
   /// The IP address name of Bare Metal Admin Cluster's API server.
   final pulumi.Input<String>? endpoint;
-
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// Allows clients to perform consistent read-modify-writes
   /// through optimistic concurrency control.
   final pulumi.Input<String>? etag;
-
   /// Fleet related configuration.
   /// Fleets are a Google Cloud concept for logically organizing clusters,
   /// letting you use and manage multi-cluster capabilities and apply
@@ -69,11 +60,9 @@ class BareMetalAdminClusterState {
   /// more details on Anthos multi-cluster capabilities using Fleets.
   /// Structure is documented below.
   final pulumi.Input<List<BareMetalAdminClusterFleet>>? fleets;
-
   /// Specifies the load balancer configuration.
   /// Structure is documented below.
   final pulumi.Input<BareMetalAdminClusterLoadBalancer>? loadBalancer;
-
   /// The object name of the Bare Metal Admin Cluster custom resource on the
   /// associated admin cluster. This field is used to support conflicting
   /// names when enrolling existing clusters to the API. When used as a part of
@@ -85,67 +74,50 @@ class BareMetalAdminClusterState {
   /// kubectl and should expect to see the local name when viewing admin
   /// cluster controller logs.
   final pulumi.Input<String>? localName;
-
   /// The location of the resource.
   final pulumi.Input<String>? location;
-
   /// Specifies the workload node configurations.
   /// Structure is documented below.
   final pulumi.Input<BareMetalAdminClusterMaintenanceConfig>? maintenanceConfig;
-
   /// The bare metal admin cluster name.
   final pulumi.Input<String>? name;
-
   /// Network configuration.
   /// Structure is documented below.
   final pulumi.Input<BareMetalAdminClusterNetworkConfig>? networkConfig;
-
   /// Specifies the node access related settings for the bare metal user cluster.
   /// Structure is documented below.
   final pulumi.Input<BareMetalAdminClusterNodeAccessConfig>? nodeAccessConfig;
-
   /// Specifies the workload node configurations.
   /// Structure is documented below.
   final pulumi.Input<BareMetalAdminClusterNodeConfig>? nodeConfig;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Specifies the cluster proxy configuration.
   /// Structure is documented below.
   final pulumi.Input<BareMetalAdminClusterProxy>? proxy;
-
   /// If set, there are currently changes in flight to the Bare Metal Admin Cluster.
   final pulumi.Input<bool>? reconciling;
-
   /// Specifies the security related settings for the Bare Metal User Cluster.
   /// Structure is documented below.
   final pulumi.Input<BareMetalAdminClusterSecurityConfig>? securityConfig;
-
   /// (Output)
   /// The lifecycle state of the condition.
   final pulumi.Input<String>? state;
-
   /// (Output)
   /// Specifies the detailed validation check status
   /// Structure is documented below.
   final pulumi.Input<List<BareMetalAdminClusterStatus>>? statuses;
-
   /// Specifies the cluster storage configuration.
   /// Structure is documented below.
   final pulumi.Input<BareMetalAdminClusterStorage>? storage;
-
   /// The unique identifier of the Bare Metal Admin Cluster.
   final pulumi.Input<String>? uid;
-
   /// The time the cluster was last updated, in RFC3339 text format.
   final pulumi.Input<String>? updateTime;
-
   /// Specifies the security related settings for the Bare Metal Admin Cluster.
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalAdminClusterValidationCheck>>?
-  validationChecks;
+  final pulumi.Input<List<BareMetalAdminClusterValidationCheck>>? validationChecks;
 
   /// Creates a new [BareMetalAdminClusterState].
   /// [annotations] Annotations on the Bare Metal Admin Cluster.
@@ -213,321 +185,68 @@ class BareMetalAdminClusterState {
     return <String, dynamic>{
       'annotations': ?annotations,
       'bareMetalVersion': ?bareMetalVersion,
-      'clusterOperations':
-          ?pulumi.Input.mapOptionalInputValue<
-            BareMetalAdminClusterClusterOperations,
-            Map<String, dynamic>
-          >(clusterOperations, (value) => value.toMap()),
-      'controlPlane':
-          ?pulumi.Input.mapOptionalInputValue<
-            BareMetalAdminClusterControlPlane,
-            Map<String, dynamic>
-          >(controlPlane, (value) => value.toMap()),
+      'clusterOperations': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminClusterClusterOperations, Map<String, dynamic>>(clusterOperations, (value) => value.toMap()),
+      'controlPlane': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminClusterControlPlane, Map<String, dynamic>>(controlPlane, (value) => value.toMap()),
       'createTime': ?createTime,
       'deleteTime': ?deleteTime,
       'description': ?description,
       'effectiveAnnotations': ?effectiveAnnotations,
       'endpoint': ?endpoint,
       'etag': ?etag,
-      'fleets':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BareMetalAdminClusterFleet>,
-            List<Map<String, dynamic>>
-          >(
-            fleets,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BareMetalAdminClusterFleet,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'loadBalancer':
-          ?pulumi.Input.mapOptionalInputValue<
-            BareMetalAdminClusterLoadBalancer,
-            Map<String, dynamic>
-          >(loadBalancer, (value) => value.toMap()),
+      'fleets': ?pulumi.Input.mapOptionalInputValue<List<BareMetalAdminClusterFleet>, List<Map<String, dynamic>>>(fleets, (value) => pulumi.Input.encodeList<BareMetalAdminClusterFleet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'loadBalancer': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminClusterLoadBalancer, Map<String, dynamic>>(loadBalancer, (value) => value.toMap()),
       'localName': ?localName,
       'location': ?location,
-      'maintenanceConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            BareMetalAdminClusterMaintenanceConfig,
-            Map<String, dynamic>
-          >(maintenanceConfig, (value) => value.toMap()),
+      'maintenanceConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminClusterMaintenanceConfig, Map<String, dynamic>>(maintenanceConfig, (value) => value.toMap()),
       'name': ?name,
-      'networkConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            BareMetalAdminClusterNetworkConfig,
-            Map<String, dynamic>
-          >(networkConfig, (value) => value.toMap()),
-      'nodeAccessConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            BareMetalAdminClusterNodeAccessConfig,
-            Map<String, dynamic>
-          >(nodeAccessConfig, (value) => value.toMap()),
-      'nodeConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            BareMetalAdminClusterNodeConfig,
-            Map<String, dynamic>
-          >(nodeConfig, (value) => value.toMap()),
+      'networkConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminClusterNetworkConfig, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
+      'nodeAccessConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminClusterNodeAccessConfig, Map<String, dynamic>>(nodeAccessConfig, (value) => value.toMap()),
+      'nodeConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminClusterNodeConfig, Map<String, dynamic>>(nodeConfig, (value) => value.toMap()),
       'project': ?project,
-      'proxy':
-          ?pulumi.Input.mapOptionalInputValue<
-            BareMetalAdminClusterProxy,
-            Map<String, dynamic>
-          >(proxy, (value) => value.toMap()),
+      'proxy': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminClusterProxy, Map<String, dynamic>>(proxy, (value) => value.toMap()),
       'reconciling': ?reconciling,
-      'securityConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            BareMetalAdminClusterSecurityConfig,
-            Map<String, dynamic>
-          >(securityConfig, (value) => value.toMap()),
+      'securityConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminClusterSecurityConfig, Map<String, dynamic>>(securityConfig, (value) => value.toMap()),
       'state': ?state,
-      'statuses':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BareMetalAdminClusterStatus>,
-            List<Map<String, dynamic>>
-          >(
-            statuses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BareMetalAdminClusterStatus,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'storage':
-          ?pulumi.Input.mapOptionalInputValue<
-            BareMetalAdminClusterStorage,
-            Map<String, dynamic>
-          >(storage, (value) => value.toMap()),
+      'statuses': ?pulumi.Input.mapOptionalInputValue<List<BareMetalAdminClusterStatus>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<BareMetalAdminClusterStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'storage': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminClusterStorage, Map<String, dynamic>>(storage, (value) => value.toMap()),
       'uid': ?uid,
       'updateTime': ?updateTime,
-      'validationChecks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BareMetalAdminClusterValidationCheck>,
-            List<Map<String, dynamic>>
-          >(
-            validationChecks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BareMetalAdminClusterValidationCheck,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'validationChecks': ?pulumi.Input.mapOptionalInputValue<List<BareMetalAdminClusterValidationCheck>, List<Map<String, dynamic>>>(validationChecks, (value) => pulumi.Input.encodeList<BareMetalAdminClusterValidationCheck, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BareMetalAdminClusterState.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterState(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      bareMetalVersion: (() {
-        final guardedValue = map['bareMetalVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clusterOperations: (() {
-        final guardedValue = map['clusterOperations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BareMetalAdminClusterClusterOperations.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      controlPlane: (() {
-        final guardedValue = map['controlPlane'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BareMetalAdminClusterControlPlane.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deleteTime: (() {
-        final guardedValue = map['deleteTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      effectiveAnnotations: (() {
-        final guardedValue = map['effectiveAnnotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      endpoint: (() {
-        final guardedValue = map['endpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fleets: (() {
-        final guardedValue = map['fleets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BareMetalAdminClusterFleet>(
-            guardedValue,
-            (value) => BareMetalAdminClusterFleet.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      loadBalancer: (() {
-        final guardedValue = map['loadBalancer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BareMetalAdminClusterLoadBalancer.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      localName: (() {
-        final guardedValue = map['localName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maintenanceConfig: (() {
-        final guardedValue = map['maintenanceConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BareMetalAdminClusterMaintenanceConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkConfig: (() {
-        final guardedValue = map['networkConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BareMetalAdminClusterNetworkConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      nodeAccessConfig: (() {
-        final guardedValue = map['nodeAccessConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BareMetalAdminClusterNodeAccessConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      nodeConfig: (() {
-        final guardedValue = map['nodeConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BareMetalAdminClusterNodeConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      proxy: (() {
-        final guardedValue = map['proxy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BareMetalAdminClusterProxy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      reconciling: (() {
-        final guardedValue = map['reconciling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      securityConfig: (() {
-        final guardedValue = map['securityConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BareMetalAdminClusterSecurityConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      statuses: (() {
-        final guardedValue = map['statuses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BareMetalAdminClusterStatus>(
-            guardedValue,
-            (value) => BareMetalAdminClusterStatus.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      storage: (() {
-        final guardedValue = map['storage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BareMetalAdminClusterStorage.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      uid: (() {
-        final guardedValue = map['uid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      validationChecks: (() {
-        final guardedValue = map['validationChecks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BareMetalAdminClusterValidationCheck>(
-            guardedValue,
-            (value) => BareMetalAdminClusterValidationCheck.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      bareMetalVersion: (() { final guardedValue = map['bareMetalVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterOperations: (() { final guardedValue = map['clusterOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalAdminClusterClusterOperations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      controlPlane: (() { final guardedValue = map['controlPlane']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalAdminClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fleets: (() { final guardedValue = map['fleets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BareMetalAdminClusterFleet>(guardedValue, (value) => BareMetalAdminClusterFleet.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      loadBalancer: (() { final guardedValue = map['loadBalancer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalAdminClusterLoadBalancer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      localName: (() { final guardedValue = map['localName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maintenanceConfig: (() { final guardedValue = map['maintenanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalAdminClusterMaintenanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalAdminClusterNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      nodeAccessConfig: (() { final guardedValue = map['nodeAccessConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalAdminClusterNodeAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      nodeConfig: (() { final guardedValue = map['nodeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalAdminClusterNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      proxy: (() { final guardedValue = map['proxy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalAdminClusterProxy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      securityConfig: (() { final guardedValue = map['securityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalAdminClusterSecurityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BareMetalAdminClusterStatus>(guardedValue, (value) => BareMetalAdminClusterStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalAdminClusterStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      validationChecks: (() { final guardedValue = map['validationChecks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BareMetalAdminClusterValidationCheck>(guardedValue, (value) => BareMetalAdminClusterValidationCheck.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

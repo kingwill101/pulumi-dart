@@ -9,19 +9,20 @@ class ServicePrincipal {
 
   /// Creates a new [ServicePrincipal].
   /// [type] Service principal type.
-  ServicePrincipal({this.type});
+  ServicePrincipal({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
   factory ServicePrincipal.fromMap(Map<String, dynamic> map) {
     return ServicePrincipal(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

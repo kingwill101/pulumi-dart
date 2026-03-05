@@ -11,15 +11,12 @@ class RuntimeState {
   /// The config settings for accessing runtime.
   /// Structure is documented below.
   final pulumi.Input<RuntimeAccessConfig>? accessConfig;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
-
   /// The health state of this runtime. For a list of possible output
   /// values, see `https://cloud.google.com/vertex-ai/docs/workbench/
   /// reference/rest/v1/projects.locations.runtimes#healthstate`.
   final pulumi.Input<String>? healthState;
-
   /// The labels to associate with this runtime. Label **keys** must
   /// contain 1 to 63 characters, and must conform to [RFC 1035]
   /// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
@@ -30,33 +27,25 @@ class RuntimeState {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// A reference to the zone where the machine resides.
   final pulumi.Input<String>? location;
-
   /// Contains Runtime daemon metrics such as Service status and JupyterLab
   /// status
   /// Structure is documented below.
   final pulumi.Input<List<RuntimeMetric>>? metrics;
-
   /// The name specified for the Notebook runtime.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
-
   /// The config settings for software inside the runtime.
   /// Structure is documented below.
   final pulumi.Input<RuntimeSoftwareConfig>? softwareConfig;
-
   /// The state of this runtime.
   final pulumi.Input<String>? state;
-
   /// Use a Compute Engine VM image to start the managed notebook instance.
   /// Structure is documented below.
   final pulumi.Input<RuntimeVirtualMachine>? virtualMachine;
@@ -91,130 +80,36 @@ class RuntimeState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeAccessConfig,
-            Map<String, dynamic>
-          >(accessConfig, (value) => value.toMap()),
+      'accessConfig': ?pulumi.Input.mapOptionalInputValue<RuntimeAccessConfig, Map<String, dynamic>>(accessConfig, (value) => value.toMap()),
       'effectiveLabels': ?effectiveLabels,
       'healthState': ?healthState,
       'labels': ?labels,
       'location': ?location,
-      'metrics':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<RuntimeMetric>,
-            List<Map<String, dynamic>>
-          >(
-            metrics,
-            (value) =>
-                pulumi.Input.encodeList<RuntimeMetric, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'metrics': ?pulumi.Input.mapOptionalInputValue<List<RuntimeMetric>, List<Map<String, dynamic>>>(metrics, (value) => pulumi.Input.encodeList<RuntimeMetric, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
-      'softwareConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeSoftwareConfig,
-            Map<String, dynamic>
-          >(softwareConfig, (value) => value.toMap()),
+      'softwareConfig': ?pulumi.Input.mapOptionalInputValue<RuntimeSoftwareConfig, Map<String, dynamic>>(softwareConfig, (value) => value.toMap()),
       'state': ?state,
-      'virtualMachine':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeVirtualMachine,
-            Map<String, dynamic>
-          >(virtualMachine, (value) => value.toMap()),
+      'virtualMachine': ?pulumi.Input.mapOptionalInputValue<RuntimeVirtualMachine, Map<String, dynamic>>(virtualMachine, (value) => value.toMap()),
     };
   }
 
   factory RuntimeState.fromMap(Map<String, dynamic> map) {
     return RuntimeState(
-      accessConfig: (() {
-        final guardedValue = map['accessConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuntimeAccessConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      effectiveLabels: (() {
-        final guardedValue = map['effectiveLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      healthState: (() {
-        final guardedValue = map['healthState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metrics: (() {
-        final guardedValue = map['metrics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<RuntimeMetric>(
-            guardedValue,
-            (value) =>
-                RuntimeMetric.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pulumiLabels: (() {
-        final guardedValue = map['pulumiLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      softwareConfig: (() {
-        final guardedValue = map['softwareConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuntimeSoftwareConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualMachine: (() {
-        final guardedValue = map['virtualMachine'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuntimeVirtualMachine.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      accessConfig: (() { final guardedValue = map['accessConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      healthState: (() { final guardedValue = map['healthState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RuntimeMetric>(guardedValue, (value) => RuntimeMetric.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      softwareConfig: (() { final guardedValue = map['softwareConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeSoftwareConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualMachine: (() { final guardedValue = map['virtualMachine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeVirtualMachine.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -463,68 +463,46 @@ import 'hbase_cluster_storage_account_gen2.dart';
 class HBaseCluster extends pulumi.CustomResource {
   /// Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterVersion;
-
   /// A `component_version` block as defined below.
   late final pulumi.Output<HBaseClusterComponentVersion> componentVersion;
-
   /// A `compute_isolation` block as defined below.
   late final pulumi.Output<HBaseClusterComputeIsolation?> computeIsolation;
-
   /// One or more `disk_encryption` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> diskEncryptions;
-
   /// An `extension` block as defined below.
   late final pulumi.Output<HBaseClusterExtension?> extension;
-
   /// A `gateway` block as defined below.
   late final pulumi.Output<HBaseClusterGateway> gateway;
-
   /// The HTTPS Connectivity Endpoint for this HDInsight HBase Cluster.
   late final pulumi.Output<String> httpsEndpoint;
-
   /// Specifies the Azure Region which this HDInsight HBase Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// A `metastores` block as defined below.
   late final pulumi.Output<HBaseClusterMetastores?> metastores;
-
   /// A `monitor` block as defined below.
   late final pulumi.Output<HBaseClusterMonitor?> monitor;
-
   /// Specifies the name for this HDInsight HBase Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A `network` block as defined below.
   late final pulumi.Output<HBaseClusterNetwork?> network;
-
   /// A `private_link_configuration` block as defined below.
-  late final pulumi.Output<HBaseClusterPrivateLinkConfiguration?>
-  privateLinkConfiguration;
-
+  late final pulumi.Output<HBaseClusterPrivateLinkConfiguration?> privateLinkConfiguration;
   /// Specifies the name of the Resource Group in which this HDInsight HBase Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `roles` block as defined below.
   late final pulumi.Output<HBaseClusterRoles> roles;
-
   /// A `security_profile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<HBaseClusterSecurityProfile?> securityProfile;
-
   /// The SSH Connectivity Endpoint for this HDInsight HBase Cluster.
   late final pulumi.Output<String> sshEndpoint;
-
   /// A `storage_account_gen2` block as defined below.
   late final pulumi.Output<HBaseClusterStorageAccountGen2?> storageAccountGen2;
-
   /// One or more `storage_account` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
-
   /// A map of Tags which should be assigned to this HDInsight HBase Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the Tier which should be used for this HDInsight HBase Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> tier;
-
   /// The minimal supported TLS version. Possible values are 1.0, 1.1 or 1.2. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
@@ -539,134 +517,30 @@ class HBaseCluster extends pulumi.CustomResource {
     HBaseClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:hdinsight/hBaseCluster:HBaseCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:hdinsight/hBaseCluster:HBaseCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterVersion = registerOutput<String>('clusterVersion');
-    componentVersion = registerOutput<HBaseClusterComponentVersion>(
-      'componentVersion',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterComponentVersion.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    computeIsolation = registerOutput<HBaseClusterComputeIsolation?>(
-      'computeIsolation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterComputeIsolation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
-      'diskEncryptions',
-    );
-    extension = registerOutput<HBaseClusterExtension?>(
-      'extension',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterExtension.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    gateway = registerOutput<HBaseClusterGateway>(
-      'gateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterGateway.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    componentVersion = registerOutput<HBaseClusterComponentVersion>('componentVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterComponentVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeIsolation = registerOutput<HBaseClusterComputeIsolation?>('computeIsolation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterComputeIsolation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>('diskEncryptions');
+    extension = registerOutput<HBaseClusterExtension?>('extension', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterExtension.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gateway = registerOutput<HBaseClusterGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpsEndpoint = registerOutput<String>('httpsEndpoint');
     location = registerOutput<String>('location');
-    metastores = registerOutput<HBaseClusterMetastores?>(
-      'metastores',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterMetastores.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    monitor = registerOutput<HBaseClusterMonitor?>(
-      'monitor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterMonitor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metastores = registerOutput<HBaseClusterMetastores?>('metastores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterMetastores.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitor = registerOutput<HBaseClusterMonitor?>('monitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    network = registerOutput<HBaseClusterNetwork?>(
-      'network',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateLinkConfiguration =
-        registerOutput<HBaseClusterPrivateLinkConfiguration?>(
-          'privateLinkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return HBaseClusterPrivateLinkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    network = registerOutput<HBaseClusterNetwork?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateLinkConfiguration = registerOutput<HBaseClusterPrivateLinkConfiguration?>('privateLinkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterPrivateLinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    roles = registerOutput<HBaseClusterRoles>(
-      'roles',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterRoles.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    securityProfile = registerOutput<HBaseClusterSecurityProfile?>(
-      'securityProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterSecurityProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    roles = registerOutput<HBaseClusterRoles>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterRoles.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityProfile = registerOutput<HBaseClusterSecurityProfile?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sshEndpoint = registerOutput<String>('sshEndpoint');
-    storageAccountGen2 = registerOutput<HBaseClusterStorageAccountGen2?>(
-      'storageAccountGen2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterStorageAccountGen2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
-      'storageAccounts',
-    );
+    storageAccountGen2 = registerOutput<HBaseClusterStorageAccountGen2?>('storageAccountGen2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterStorageAccountGen2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>('storageAccounts');
     tags = registerOutput<Map<String, String>?>('tags');
     tier = registerOutput<String>('tier');
     tlsMinVersion = registerOutput<String?>('tlsMinVersion');
@@ -690,134 +564,30 @@ class HBaseCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:hdinsight/hBaseCluster:HBaseCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:hdinsight/hBaseCluster:HBaseCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterVersion = registerOutput<String>('clusterVersion');
-    componentVersion = registerOutput<HBaseClusterComponentVersion>(
-      'componentVersion',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterComponentVersion.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    computeIsolation = registerOutput<HBaseClusterComputeIsolation?>(
-      'computeIsolation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterComputeIsolation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
-      'diskEncryptions',
-    );
-    extension = registerOutput<HBaseClusterExtension?>(
-      'extension',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterExtension.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    gateway = registerOutput<HBaseClusterGateway>(
-      'gateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterGateway.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    componentVersion = registerOutput<HBaseClusterComponentVersion>('componentVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterComponentVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeIsolation = registerOutput<HBaseClusterComputeIsolation?>('computeIsolation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterComputeIsolation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>('diskEncryptions');
+    extension = registerOutput<HBaseClusterExtension?>('extension', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterExtension.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gateway = registerOutput<HBaseClusterGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpsEndpoint = registerOutput<String>('httpsEndpoint');
     location = registerOutput<String>('location');
-    metastores = registerOutput<HBaseClusterMetastores?>(
-      'metastores',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterMetastores.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    monitor = registerOutput<HBaseClusterMonitor?>(
-      'monitor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterMonitor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metastores = registerOutput<HBaseClusterMetastores?>('metastores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterMetastores.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitor = registerOutput<HBaseClusterMonitor?>('monitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    network = registerOutput<HBaseClusterNetwork?>(
-      'network',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateLinkConfiguration =
-        registerOutput<HBaseClusterPrivateLinkConfiguration?>(
-          'privateLinkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return HBaseClusterPrivateLinkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    network = registerOutput<HBaseClusterNetwork?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateLinkConfiguration = registerOutput<HBaseClusterPrivateLinkConfiguration?>('privateLinkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterPrivateLinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    roles = registerOutput<HBaseClusterRoles>(
-      'roles',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterRoles.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    securityProfile = registerOutput<HBaseClusterSecurityProfile?>(
-      'securityProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterSecurityProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    roles = registerOutput<HBaseClusterRoles>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterRoles.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityProfile = registerOutput<HBaseClusterSecurityProfile?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sshEndpoint = registerOutput<String>('sshEndpoint');
-    storageAccountGen2 = registerOutput<HBaseClusterStorageAccountGen2?>(
-      'storageAccountGen2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HBaseClusterStorageAccountGen2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
-      'storageAccounts',
-    );
+    storageAccountGen2 = registerOutput<HBaseClusterStorageAccountGen2?>('storageAccountGen2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HBaseClusterStorageAccountGen2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>('storageAccounts');
     tags = registerOutput<Map<String, String>?>('tags');
     tier = registerOutput<String>('tier');
     tlsMinVersion = registerOutput<String?>('tlsMinVersion');

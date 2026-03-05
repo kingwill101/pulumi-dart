@@ -409,7 +409,6 @@ class Database extends pulumi.CustomResource {
   ///
   /// More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
   late final pulumi.Output<String?> characterSet;
-
   /// The name of the database.
   /// &gt; **NOTE:**
   /// The name must be 2 to 64 characters in length.
@@ -418,17 +417,13 @@ class Database extends pulumi.CustomResource {
   /// The name must be unique within the instance.
   /// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
   late final pulumi.Output<String> dataBaseName;
-
   /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
   late final pulumi.Output<String?> description;
-
   /// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
   late final pulumi.Output<String> instanceId;
-
   /// The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
   /// &gt; **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
   late final pulumi.Output<String> name;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -441,11 +436,11 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/database:Database',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/database:Database',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     characterSet = registerOutput<String?>('characterSet');
     dataBaseName = registerOutput<String>('dataBaseName');
     description = registerOutput<String?>('description');
@@ -472,11 +467,11 @@ class Database extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/database:Database',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/database:Database',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     characterSet = registerOutput<String?>('characterSet');
     dataBaseName = registerOutput<String>('dataBaseName');
     description = registerOutput<String?>('description');

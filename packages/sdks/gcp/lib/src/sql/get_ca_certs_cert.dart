@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCaCertsCert {
   /// The CA certificate used to connect to the SQL instance via SSL.
   final pulumi.Input<String> cert;
-
   /// The CN valid for the CA cert.
   final pulumi.Input<String> commonName;
-
   /// Creation time of the CA cert.
   final pulumi.Input<String> createTime;
-
   /// Expiration time of the CA cert.
   final pulumi.Input<String> expirationTime;
-
   /// SHA1 fingerprint of the CA cert.
   final pulumi.Input<String> sha1Fingerprint;
 
@@ -52,3 +48,4 @@ class GetCaCertsCert {
     );
   }
 }
+

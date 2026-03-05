@@ -10,31 +10,20 @@ class GoogleCloudDialogflowV2FulfillmentFeature {
 
   /// Creates a new [GoogleCloudDialogflowV2FulfillmentFeature].
   /// [type] The type of the feature that enabled for fulfillment.
-  GoogleCloudDialogflowV2FulfillmentFeature({this.type});
+  GoogleCloudDialogflowV2FulfillmentFeature({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowV2FulfillmentFeatureType,
-            String
-          >(type, (value) => value.wireValue),
+      'type': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2FulfillmentFeatureType, String>(type, (value) => value.wireValue),
     };
   }
 
-  factory GoogleCloudDialogflowV2FulfillmentFeature.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2FulfillmentFeature.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2FulfillmentFeature(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowV2FulfillmentFeatureType.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowV2FulfillmentFeatureType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

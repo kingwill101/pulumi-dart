@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName {
   /// A list of alternative DNS names (FQDNs) identified by the Certificate.
   final pulumi.Input<List<String>> dnsNames;
-
   /// A list of email addresses identified by this Certificate.
   final pulumi.Input<List<String>> emails;
-
   /// A list of User Principal Names identified by the Certificate.
   final pulumi.Input<List<String>> upns;
 
@@ -30,15 +28,12 @@ class GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeNa
     };
   }
 
-  factory GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName.fromMap(Map<String, dynamic> map) {
     return GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName(
-      dnsNames: pulumi.Input.fromValue(
-        (map['dnsNames'] as List).cast<String>(),
-      ),
+      dnsNames: pulumi.Input.fromValue((map['dnsNames'] as List).cast<String>()),
       emails: pulumi.Input.fromValue((map['emails'] as List).cast<String>()),
       upns: pulumi.Input.fromValue((map['upns'] as List).cast<String>()),
     );
   }
 }
+

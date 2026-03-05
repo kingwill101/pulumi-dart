@@ -14,16 +14,15 @@ class GoogleCloudDatacatalogLineageV1EntityReferenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fullyQualifiedName': fullyQualifiedName};
+    return <String, dynamic>{
+      'fullyQualifiedName': fullyQualifiedName,
+    };
   }
 
-  factory GoogleCloudDatacatalogLineageV1EntityReferenceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogLineageV1EntityReferenceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogLineageV1EntityReferenceResponse(
-      fullyQualifiedName: pulumi.Input.fromValue(
-        map['fullyQualifiedName'] as String,
-      ),
+      fullyQualifiedName: pulumi.Input.fromValue(map['fullyQualifiedName'] as String),
     );
   }
 }
+

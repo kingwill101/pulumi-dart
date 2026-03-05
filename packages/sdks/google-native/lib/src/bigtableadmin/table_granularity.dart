@@ -15,3 +15,4 @@ enum TableGranularity {
     throw ArgumentError('Unknown TableGranularity value: $value');
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFlexibleServerHighAvailability {
   /// The high availability mode of the PostgreSQL Flexible Server.
   final pulumi.Input<String> mode;
-
   /// The availability zone of the standby Flexible Server.
   final pulumi.Input<String> standbyAvailabilityZone;
 
@@ -27,9 +26,8 @@ class GetFlexibleServerHighAvailability {
   factory GetFlexibleServerHighAvailability.fromMap(Map<String, dynamic> map) {
     return GetFlexibleServerHighAvailability(
       mode: pulumi.Input.fromValue(map['mode'] as String),
-      standbyAvailabilityZone: pulumi.Input.fromValue(
-        map['standbyAvailabilityZone'] as String,
-      ),
+      standbyAvailabilityZone: pulumi.Input.fromValue(map['standbyAvailabilityZone'] as String),
     );
   }
 }
+

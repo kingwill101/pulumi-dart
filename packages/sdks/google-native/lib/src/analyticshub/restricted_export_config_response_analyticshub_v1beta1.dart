@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestrictedExportConfigResponseAnalyticshubV1beta1 {
   /// Optional. If true, enable restricted export.
   final pulumi.Input<bool> enabled;
-
   /// If true, restrict direct table access(read api/tabledata.list) on linked table.
   final pulumi.Input<bool> restrictDirectTableAccess;
-
   /// Optional. If true, restrict export of query result derived from restricted linked dataset table.
   final pulumi.Input<bool> restrictQueryResult;
 
@@ -31,17 +29,12 @@ class RestrictedExportConfigResponseAnalyticshubV1beta1 {
     };
   }
 
-  factory RestrictedExportConfigResponseAnalyticshubV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestrictedExportConfigResponseAnalyticshubV1beta1.fromMap(Map<String, dynamic> map) {
     return RestrictedExportConfigResponseAnalyticshubV1beta1(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      restrictDirectTableAccess: pulumi.Input.fromValue(
-        map['restrictDirectTableAccess'] as bool,
-      ),
-      restrictQueryResult: pulumi.Input.fromValue(
-        map['restrictQueryResult'] as bool,
-      ),
+      restrictDirectTableAccess: pulumi.Input.fromValue(map['restrictDirectTableAccess'] as bool),
+      restrictQueryResult: pulumi.Input.fromValue(map['restrictQueryResult'] as bool),
     );
   }
 }
+

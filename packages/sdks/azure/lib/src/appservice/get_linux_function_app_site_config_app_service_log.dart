@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinuxFunctionAppSiteConfigAppServiceLog {
   /// The amount of disk space used for logs.
   final pulumi.Input<int> diskQuotaMb;
-
   /// After how many days backups are deleted.
   final pulumi.Input<int> retentionPeriodDays;
 
@@ -24,14 +23,11 @@ class GetLinuxFunctionAppSiteConfigAppServiceLog {
     };
   }
 
-  factory GetLinuxFunctionAppSiteConfigAppServiceLog.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLinuxFunctionAppSiteConfigAppServiceLog.fromMap(Map<String, dynamic> map) {
     return GetLinuxFunctionAppSiteConfigAppServiceLog(
       diskQuotaMb: pulumi.Input.fromValue(map['diskQuotaMb'] as int),
-      retentionPeriodDays: pulumi.Input.fromValue(
-        map['retentionPeriodDays'] as int,
-      ),
+      retentionPeriodDays: pulumi.Input.fromValue(map['retentionPeriodDays'] as int),
     );
   }
 }
+

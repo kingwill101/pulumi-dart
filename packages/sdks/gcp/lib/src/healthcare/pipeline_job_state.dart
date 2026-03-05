@@ -10,16 +10,12 @@ class PipelineJobState {
   /// Specifies the backfill configuration.
   /// Structure is documented below.
   final pulumi.Input<PipelineJobBackfillPipelineJob>? backfillPipelineJob;
-
   /// Healthcare Dataset under which the Pipeline Job is to run
   final pulumi.Input<String>? dataset;
-
   /// If true, disables writing lineage for the pipeline.
   final pulumi.Input<bool>? disableLineage;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
-
   /// User-supplied key-value pairs used to organize Pipeline Jobs.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
   /// maximum 128 bytes, and must conform to the following PCRE regular expression:
@@ -34,26 +30,19 @@ class PipelineJobState {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Location where the Pipeline Job is to run
   final pulumi.Input<String>? location;
-
   /// Specifies mapping configuration.
   /// Structure is documented below.
   final pulumi.Input<PipelineJobMappingPipelineJob>? mappingPipelineJob;
-
   /// Specifies the name of the pipeline job. This field is user-assigned.
   final pulumi.Input<String>? name;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
-
   /// Specifies reconciliation configuration.
   /// Structure is documented below.
-  final pulumi.Input<PipelineJobReconciliationPipelineJob>?
-  reconciliationPipelineJob;
-
+  final pulumi.Input<PipelineJobReconciliationPipelineJob>? reconciliationPipelineJob;
   /// The fully qualified name of this dataset
   final pulumi.Input<String>? selfLink;
 
@@ -85,107 +74,34 @@ class PipelineJobState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backfillPipelineJob':
-          ?pulumi.Input.mapOptionalInputValue<
-            PipelineJobBackfillPipelineJob,
-            Map<String, dynamic>
-          >(backfillPipelineJob, (value) => value.toMap()),
+      'backfillPipelineJob': ?pulumi.Input.mapOptionalInputValue<PipelineJobBackfillPipelineJob, Map<String, dynamic>>(backfillPipelineJob, (value) => value.toMap()),
       'dataset': ?dataset,
       'disableLineage': ?disableLineage,
       'effectiveLabels': ?effectiveLabels,
       'labels': ?labels,
       'location': ?location,
-      'mappingPipelineJob':
-          ?pulumi.Input.mapOptionalInputValue<
-            PipelineJobMappingPipelineJob,
-            Map<String, dynamic>
-          >(mappingPipelineJob, (value) => value.toMap()),
+      'mappingPipelineJob': ?pulumi.Input.mapOptionalInputValue<PipelineJobMappingPipelineJob, Map<String, dynamic>>(mappingPipelineJob, (value) => value.toMap()),
       'name': ?name,
       'pulumiLabels': ?pulumiLabels,
-      'reconciliationPipelineJob':
-          ?pulumi.Input.mapOptionalInputValue<
-            PipelineJobReconciliationPipelineJob,
-            Map<String, dynamic>
-          >(reconciliationPipelineJob, (value) => value.toMap()),
+      'reconciliationPipelineJob': ?pulumi.Input.mapOptionalInputValue<PipelineJobReconciliationPipelineJob, Map<String, dynamic>>(reconciliationPipelineJob, (value) => value.toMap()),
       'selfLink': ?selfLink,
     };
   }
 
   factory PipelineJobState.fromMap(Map<String, dynamic> map) {
     return PipelineJobState(
-      backfillPipelineJob: (() {
-        final guardedValue = map['backfillPipelineJob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PipelineJobBackfillPipelineJob.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      dataset: (() {
-        final guardedValue = map['dataset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disableLineage: (() {
-        final guardedValue = map['disableLineage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      effectiveLabels: (() {
-        final guardedValue = map['effectiveLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mappingPipelineJob: (() {
-        final guardedValue = map['mappingPipelineJob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PipelineJobMappingPipelineJob.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pulumiLabels: (() {
-        final guardedValue = map['pulumiLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      reconciliationPipelineJob: (() {
-        final guardedValue = map['reconciliationPipelineJob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PipelineJobReconciliationPipelineJob.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      selfLink: (() {
-        final guardedValue = map['selfLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backfillPipelineJob: (() { final guardedValue = map['backfillPipelineJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineJobBackfillPipelineJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dataset: (() { final guardedValue = map['dataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disableLineage: (() { final guardedValue = map['disableLineage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mappingPipelineJob: (() { final guardedValue = map['mappingPipelineJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineJobMappingPipelineJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      reconciliationPipelineJob: (() { final guardedValue = map['reconciliationPipelineJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineJobReconciliationPipelineJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

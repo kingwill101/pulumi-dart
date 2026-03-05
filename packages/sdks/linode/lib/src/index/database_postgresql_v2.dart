@@ -1073,234 +1073,159 @@ import 'database_postgresql_v2_updates.dart';
 class DatabasePostgresqlV2 extends pulumi.CustomResource {
   /// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
   late final pulumi.Output<List<String>> allowLists;
-
   /// The base64-encoded SSL CA certificate for the Managed Database.
   late final pulumi.Output<String> caCert;
-
   /// The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
   late final pulumi.Output<int> clusterSize;
-
   /// When this Managed Database was created.
   late final pulumi.Output<String> created;
-
   /// Whether the Managed Databases is encrypted.
   late final pulumi.Output<bool> encrypted;
-
   /// The Managed Database engine. (e.g. `postgresql`)
   late final pulumi.Output<String> engine;
-
   /// Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
   late final pulumi.Output<double> engineConfigPgAutovacuumAnalyzeScaleFactor;
-
   /// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
   late final pulumi.Output<int> engineConfigPgAutovacuumAnalyzeThreshold;
-
   /// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
   late final pulumi.Output<int> engineConfigPgAutovacuumMaxWorkers;
-
   /// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
   late final pulumi.Output<int> engineConfigPgAutovacuumNaptime;
-
   /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
   late final pulumi.Output<int> engineConfigPgAutovacuumVacuumCostDelay;
-
   /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
   late final pulumi.Output<int> engineConfigPgAutovacuumVacuumCostLimit;
-
   /// Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
   late final pulumi.Output<double> engineConfigPgAutovacuumVacuumScaleFactor;
-
   /// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
   late final pulumi.Output<int> engineConfigPgAutovacuumVacuumThreshold;
-
   /// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
   late final pulumi.Output<int> engineConfigPgBgwriterDelay;
-
   /// Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
   late final pulumi.Output<int> engineConfigPgBgwriterFlushAfter;
-
   /// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
   late final pulumi.Output<int> engineConfigPgBgwriterLruMaxpages;
-
   /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
   late final pulumi.Output<double> engineConfigPgBgwriterLruMultiplier;
-
   /// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
   late final pulumi.Output<int> engineConfigPgDeadlockTimeout;
-
   /// Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
   late final pulumi.Output<String> engineConfigPgDefaultToastCompression;
-
   /// Time out sessions with open transactions after this number of milliseconds.
   late final pulumi.Output<int> engineConfigPgIdleInTransactionSessionTimeout;
-
   /// Controls system-wide use of Just-in-Time Compilation (JIT).
   late final pulumi.Output<bool> engineConfigPgJit;
-
   /// PostgreSQL maximum number of files that can be open per process.
   late final pulumi.Output<int> engineConfigPgMaxFilesPerProcess;
-
   /// PostgreSQL maximum locks per transaction.
   late final pulumi.Output<int> engineConfigPgMaxLocksPerTransaction;
-
   /// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
   late final pulumi.Output<int> engineConfigPgMaxLogicalReplicationWorkers;
-
   /// Sets the maximum number of workers that the system can support for parallel queries.
   late final pulumi.Output<int> engineConfigPgMaxParallelWorkers;
-
   /// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
   late final pulumi.Output<int> engineConfigPgMaxParallelWorkersPerGather;
-
   /// PostgreSQL maximum predicate locks per transaction.
   late final pulumi.Output<int> engineConfigPgMaxPredLocksPerTransaction;
-
   /// PostgreSQL maximum replication slots.
   late final pulumi.Output<int> engineConfigPgMaxReplicationSlots;
-
   /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
   late final pulumi.Output<int> engineConfigPgMaxSlotWalKeepSize;
-
   /// Maximum depth of the stack in bytes.
   late final pulumi.Output<int> engineConfigPgMaxStackDepth;
-
   /// Max standby archive delay in milliseconds.
   late final pulumi.Output<int> engineConfigPgMaxStandbyArchiveDelay;
-
   /// Max standby streaming delay in milliseconds.
   late final pulumi.Output<int> engineConfigPgMaxStandbyStreamingDelay;
-
   /// PostgreSQL maximum WAL senders.
   late final pulumi.Output<int> engineConfigPgMaxWalSenders;
-
   /// Sets the maximum number of background processes that the system can support.
   late final pulumi.Output<int> engineConfigPgMaxWorkerProcesses;
-
   /// Chooses the algorithm for encrypting passwords. (default `md5`)
   late final pulumi.Output<String> engineConfigPgPasswordEncryption;
-
   /// Sets the time interval to run pg_partman's scheduled tasks.
   late final pulumi.Output<int> engineConfigPgPgPartmanBgwInterval;
-
   /// Controls which role to use for pg_partman's scheduled background tasks.
   late final pulumi.Output<String> engineConfigPgPgPartmanBgwRole;
-
   /// Enables or disables query plan monitoring.
   late final pulumi.Output<bool> engineConfigPgPgStatMonitorPgsmEnableQueryPlan;
-
   /// Sets the maximum number of buckets.
   late final pulumi.Output<int> engineConfigPgPgStatMonitorPgsmMaxBuckets;
-
   /// Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
   late final pulumi.Output<String> engineConfigPgPgStatStatementsTrack;
-
   /// Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
   late final pulumi.Output<bool> engineConfigPgStatMonitorEnable;
-
   /// PostgreSQL temporary file limit in KiB, -1 for unlimited.
   late final pulumi.Output<int> engineConfigPgTempFileLimit;
-
   /// PostgreSQL service timezone.
   late final pulumi.Output<String> engineConfigPgTimezone;
-
   /// Specifies the number of bytes reserved to track the currently executing command for each active session.
   late final pulumi.Output<int> engineConfigPgTrackActivityQuerySize;
-
   /// Record commit time of transactions.
   late final pulumi.Output<String> engineConfigPgTrackCommitTimestamp;
-
   /// Enables tracking of function call counts and time used.
   late final pulumi.Output<String> engineConfigPgTrackFunctions;
-
   /// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
   late final pulumi.Output<String> engineConfigPgTrackIoTiming;
-
   /// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
   late final pulumi.Output<int> engineConfigPgWalSenderTimeout;
-
   /// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
   late final pulumi.Output<int> engineConfigPgWalWriterDelay;
-
   /// Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
-  late final pulumi.Output<int>
-  engineConfigPglookoutMaxFailoverReplicationTimeLag;
-
+  late final pulumi.Output<int> engineConfigPglookoutMaxFailoverReplicationTimeLag;
   /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
   late final pulumi.Output<double> engineConfigSharedBuffersPercentage;
-
   /// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
   late final pulumi.Output<int> engineConfigWorkMem;
-
   /// The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
   late final pulumi.Output<String> engineId;
-
   /// The database timestamp from which it was restored.
   late final pulumi.Output<String> forkRestoreTime;
-
   /// The ID of the database that was forked from.
   ///
   /// * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
   ///
   /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
   late final pulumi.Output<int?> forkSource;
-
   /// The primary host for the Managed Database.
   late final pulumi.Output<String> hostPrimary;
-
   /// The secondary/private host for the managed database.
   late final pulumi.Output<String> hostSecondary;
-
   /// A unique, user-defined string referring to the Managed Database.
   late final pulumi.Output<String> label;
-
   /// A mapping between IP addresses and strings designating them as primary or failover.
   late final pulumi.Output<Map<String, String>> members;
-
   /// The oldest time to which a database can be restored.
   late final pulumi.Output<String> oldestRestoreTime;
-
   /// A set of pending updates.
   late final pulumi.Output<List<Map<String, dynamic>>> pendingUpdates;
-
   /// The back-end platform for relational databases used by the service.
   late final pulumi.Output<String> platform;
-
   /// The access port for this Managed Database.
   late final pulumi.Output<int> port;
-
   /// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
   late final pulumi.Output<DatabasePostgresqlV2PrivateNetwork?> privateNetwork;
-
   /// The region to use for the Managed Database.
   late final pulumi.Output<String> region;
-
   /// The randomly-generated root password for the Managed Database instance.
   late final pulumi.Output<String> rootPassword;
-
   /// The root username for the Managed Database instance.
   late final pulumi.Output<String> rootUsername;
-
   /// Whether to require SSL credentials to establish a connection to the Managed Database.
   late final pulumi.Output<bool> sslConnection;
-
   /// The operating status of the Managed Database.
   late final pulumi.Output<String> status;
-
   /// Whether this Managed Database should be suspended.
   late final pulumi.Output<bool> suspended;
   late final pulumi.Output<DatabasePostgresqlV2Timeouts?> timeouts;
-
   /// The Linode Instance type used for the nodes of the Managed Database.
   ///
   /// - - -
   late final pulumi.Output<String> type;
-
   /// When this Managed Database was last updated.
   late final pulumi.Output<String> updated;
-
   /// Configuration settings for automated patch update maintenance for the Managed Database.
   late final pulumi.Output<DatabasePostgresqlV2Updates> updates;
-
   /// The Managed Database engine version. (e.g. `13.2`)
   late final pulumi.Output<String> version;
 
@@ -1313,151 +1238,63 @@ class DatabasePostgresqlV2 extends pulumi.CustomResource {
     DatabasePostgresqlV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/databasePostgresqlV2:DatabasePostgresqlV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/databasePostgresqlV2:DatabasePostgresqlV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowLists = registerOutput<List<String>>('allowLists');
     caCert = registerOutput<String>('caCert');
     clusterSize = registerOutput<int>('clusterSize');
     created = registerOutput<String>('created');
     encrypted = registerOutput<bool>('encrypted');
     engine = registerOutput<String>('engine');
-    engineConfigPgAutovacuumAnalyzeScaleFactor = registerOutput<double>(
-      'engineConfigPgAutovacuumAnalyzeScaleFactor',
-    );
-    engineConfigPgAutovacuumAnalyzeThreshold = registerOutput<int>(
-      'engineConfigPgAutovacuumAnalyzeThreshold',
-    );
-    engineConfigPgAutovacuumMaxWorkers = registerOutput<int>(
-      'engineConfigPgAutovacuumMaxWorkers',
-    );
-    engineConfigPgAutovacuumNaptime = registerOutput<int>(
-      'engineConfigPgAutovacuumNaptime',
-    );
-    engineConfigPgAutovacuumVacuumCostDelay = registerOutput<int>(
-      'engineConfigPgAutovacuumVacuumCostDelay',
-    );
-    engineConfigPgAutovacuumVacuumCostLimit = registerOutput<int>(
-      'engineConfigPgAutovacuumVacuumCostLimit',
-    );
-    engineConfigPgAutovacuumVacuumScaleFactor = registerOutput<double>(
-      'engineConfigPgAutovacuumVacuumScaleFactor',
-    );
-    engineConfigPgAutovacuumVacuumThreshold = registerOutput<int>(
-      'engineConfigPgAutovacuumVacuumThreshold',
-    );
-    engineConfigPgBgwriterDelay = registerOutput<int>(
-      'engineConfigPgBgwriterDelay',
-    );
-    engineConfigPgBgwriterFlushAfter = registerOutput<int>(
-      'engineConfigPgBgwriterFlushAfter',
-    );
-    engineConfigPgBgwriterLruMaxpages = registerOutput<int>(
-      'engineConfigPgBgwriterLruMaxpages',
-    );
-    engineConfigPgBgwriterLruMultiplier = registerOutput<double>(
-      'engineConfigPgBgwriterLruMultiplier',
-    );
-    engineConfigPgDeadlockTimeout = registerOutput<int>(
-      'engineConfigPgDeadlockTimeout',
-    );
-    engineConfigPgDefaultToastCompression = registerOutput<String>(
-      'engineConfigPgDefaultToastCompression',
-    );
-    engineConfigPgIdleInTransactionSessionTimeout = registerOutput<int>(
-      'engineConfigPgIdleInTransactionSessionTimeout',
-    );
+    engineConfigPgAutovacuumAnalyzeScaleFactor = registerOutput<double>('engineConfigPgAutovacuumAnalyzeScaleFactor');
+    engineConfigPgAutovacuumAnalyzeThreshold = registerOutput<int>('engineConfigPgAutovacuumAnalyzeThreshold');
+    engineConfigPgAutovacuumMaxWorkers = registerOutput<int>('engineConfigPgAutovacuumMaxWorkers');
+    engineConfigPgAutovacuumNaptime = registerOutput<int>('engineConfigPgAutovacuumNaptime');
+    engineConfigPgAutovacuumVacuumCostDelay = registerOutput<int>('engineConfigPgAutovacuumVacuumCostDelay');
+    engineConfigPgAutovacuumVacuumCostLimit = registerOutput<int>('engineConfigPgAutovacuumVacuumCostLimit');
+    engineConfigPgAutovacuumVacuumScaleFactor = registerOutput<double>('engineConfigPgAutovacuumVacuumScaleFactor');
+    engineConfigPgAutovacuumVacuumThreshold = registerOutput<int>('engineConfigPgAutovacuumVacuumThreshold');
+    engineConfigPgBgwriterDelay = registerOutput<int>('engineConfigPgBgwriterDelay');
+    engineConfigPgBgwriterFlushAfter = registerOutput<int>('engineConfigPgBgwriterFlushAfter');
+    engineConfigPgBgwriterLruMaxpages = registerOutput<int>('engineConfigPgBgwriterLruMaxpages');
+    engineConfigPgBgwriterLruMultiplier = registerOutput<double>('engineConfigPgBgwriterLruMultiplier');
+    engineConfigPgDeadlockTimeout = registerOutput<int>('engineConfigPgDeadlockTimeout');
+    engineConfigPgDefaultToastCompression = registerOutput<String>('engineConfigPgDefaultToastCompression');
+    engineConfigPgIdleInTransactionSessionTimeout = registerOutput<int>('engineConfigPgIdleInTransactionSessionTimeout');
     engineConfigPgJit = registerOutput<bool>('engineConfigPgJit');
-    engineConfigPgMaxFilesPerProcess = registerOutput<int>(
-      'engineConfigPgMaxFilesPerProcess',
-    );
-    engineConfigPgMaxLocksPerTransaction = registerOutput<int>(
-      'engineConfigPgMaxLocksPerTransaction',
-    );
-    engineConfigPgMaxLogicalReplicationWorkers = registerOutput<int>(
-      'engineConfigPgMaxLogicalReplicationWorkers',
-    );
-    engineConfigPgMaxParallelWorkers = registerOutput<int>(
-      'engineConfigPgMaxParallelWorkers',
-    );
-    engineConfigPgMaxParallelWorkersPerGather = registerOutput<int>(
-      'engineConfigPgMaxParallelWorkersPerGather',
-    );
-    engineConfigPgMaxPredLocksPerTransaction = registerOutput<int>(
-      'engineConfigPgMaxPredLocksPerTransaction',
-    );
-    engineConfigPgMaxReplicationSlots = registerOutput<int>(
-      'engineConfigPgMaxReplicationSlots',
-    );
-    engineConfigPgMaxSlotWalKeepSize = registerOutput<int>(
-      'engineConfigPgMaxSlotWalKeepSize',
-    );
-    engineConfigPgMaxStackDepth = registerOutput<int>(
-      'engineConfigPgMaxStackDepth',
-    );
-    engineConfigPgMaxStandbyArchiveDelay = registerOutput<int>(
-      'engineConfigPgMaxStandbyArchiveDelay',
-    );
-    engineConfigPgMaxStandbyStreamingDelay = registerOutput<int>(
-      'engineConfigPgMaxStandbyStreamingDelay',
-    );
-    engineConfigPgMaxWalSenders = registerOutput<int>(
-      'engineConfigPgMaxWalSenders',
-    );
-    engineConfigPgMaxWorkerProcesses = registerOutput<int>(
-      'engineConfigPgMaxWorkerProcesses',
-    );
-    engineConfigPgPasswordEncryption = registerOutput<String>(
-      'engineConfigPgPasswordEncryption',
-    );
-    engineConfigPgPgPartmanBgwInterval = registerOutput<int>(
-      'engineConfigPgPgPartmanBgwInterval',
-    );
-    engineConfigPgPgPartmanBgwRole = registerOutput<String>(
-      'engineConfigPgPgPartmanBgwRole',
-    );
-    engineConfigPgPgStatMonitorPgsmEnableQueryPlan = registerOutput<bool>(
-      'engineConfigPgPgStatMonitorPgsmEnableQueryPlan',
-    );
-    engineConfigPgPgStatMonitorPgsmMaxBuckets = registerOutput<int>(
-      'engineConfigPgPgStatMonitorPgsmMaxBuckets',
-    );
-    engineConfigPgPgStatStatementsTrack = registerOutput<String>(
-      'engineConfigPgPgStatStatementsTrack',
-    );
-    engineConfigPgStatMonitorEnable = registerOutput<bool>(
-      'engineConfigPgStatMonitorEnable',
-    );
-    engineConfigPgTempFileLimit = registerOutput<int>(
-      'engineConfigPgTempFileLimit',
-    );
+    engineConfigPgMaxFilesPerProcess = registerOutput<int>('engineConfigPgMaxFilesPerProcess');
+    engineConfigPgMaxLocksPerTransaction = registerOutput<int>('engineConfigPgMaxLocksPerTransaction');
+    engineConfigPgMaxLogicalReplicationWorkers = registerOutput<int>('engineConfigPgMaxLogicalReplicationWorkers');
+    engineConfigPgMaxParallelWorkers = registerOutput<int>('engineConfigPgMaxParallelWorkers');
+    engineConfigPgMaxParallelWorkersPerGather = registerOutput<int>('engineConfigPgMaxParallelWorkersPerGather');
+    engineConfigPgMaxPredLocksPerTransaction = registerOutput<int>('engineConfigPgMaxPredLocksPerTransaction');
+    engineConfigPgMaxReplicationSlots = registerOutput<int>('engineConfigPgMaxReplicationSlots');
+    engineConfigPgMaxSlotWalKeepSize = registerOutput<int>('engineConfigPgMaxSlotWalKeepSize');
+    engineConfigPgMaxStackDepth = registerOutput<int>('engineConfigPgMaxStackDepth');
+    engineConfigPgMaxStandbyArchiveDelay = registerOutput<int>('engineConfigPgMaxStandbyArchiveDelay');
+    engineConfigPgMaxStandbyStreamingDelay = registerOutput<int>('engineConfigPgMaxStandbyStreamingDelay');
+    engineConfigPgMaxWalSenders = registerOutput<int>('engineConfigPgMaxWalSenders');
+    engineConfigPgMaxWorkerProcesses = registerOutput<int>('engineConfigPgMaxWorkerProcesses');
+    engineConfigPgPasswordEncryption = registerOutput<String>('engineConfigPgPasswordEncryption');
+    engineConfigPgPgPartmanBgwInterval = registerOutput<int>('engineConfigPgPgPartmanBgwInterval');
+    engineConfigPgPgPartmanBgwRole = registerOutput<String>('engineConfigPgPgPartmanBgwRole');
+    engineConfigPgPgStatMonitorPgsmEnableQueryPlan = registerOutput<bool>('engineConfigPgPgStatMonitorPgsmEnableQueryPlan');
+    engineConfigPgPgStatMonitorPgsmMaxBuckets = registerOutput<int>('engineConfigPgPgStatMonitorPgsmMaxBuckets');
+    engineConfigPgPgStatStatementsTrack = registerOutput<String>('engineConfigPgPgStatStatementsTrack');
+    engineConfigPgStatMonitorEnable = registerOutput<bool>('engineConfigPgStatMonitorEnable');
+    engineConfigPgTempFileLimit = registerOutput<int>('engineConfigPgTempFileLimit');
     engineConfigPgTimezone = registerOutput<String>('engineConfigPgTimezone');
-    engineConfigPgTrackActivityQuerySize = registerOutput<int>(
-      'engineConfigPgTrackActivityQuerySize',
-    );
-    engineConfigPgTrackCommitTimestamp = registerOutput<String>(
-      'engineConfigPgTrackCommitTimestamp',
-    );
-    engineConfigPgTrackFunctions = registerOutput<String>(
-      'engineConfigPgTrackFunctions',
-    );
-    engineConfigPgTrackIoTiming = registerOutput<String>(
-      'engineConfigPgTrackIoTiming',
-    );
-    engineConfigPgWalSenderTimeout = registerOutput<int>(
-      'engineConfigPgWalSenderTimeout',
-    );
-    engineConfigPgWalWriterDelay = registerOutput<int>(
-      'engineConfigPgWalWriterDelay',
-    );
-    engineConfigPglookoutMaxFailoverReplicationTimeLag = registerOutput<int>(
-      'engineConfigPglookoutMaxFailoverReplicationTimeLag',
-    );
-    engineConfigSharedBuffersPercentage = registerOutput<double>(
-      'engineConfigSharedBuffersPercentage',
-    );
+    engineConfigPgTrackActivityQuerySize = registerOutput<int>('engineConfigPgTrackActivityQuerySize');
+    engineConfigPgTrackCommitTimestamp = registerOutput<String>('engineConfigPgTrackCommitTimestamp');
+    engineConfigPgTrackFunctions = registerOutput<String>('engineConfigPgTrackFunctions');
+    engineConfigPgTrackIoTiming = registerOutput<String>('engineConfigPgTrackIoTiming');
+    engineConfigPgWalSenderTimeout = registerOutput<int>('engineConfigPgWalSenderTimeout');
+    engineConfigPgWalWriterDelay = registerOutput<int>('engineConfigPgWalWriterDelay');
+    engineConfigPglookoutMaxFailoverReplicationTimeLag = registerOutput<int>('engineConfigPglookoutMaxFailoverReplicationTimeLag');
+    engineConfigSharedBuffersPercentage = registerOutput<double>('engineConfigSharedBuffersPercentage');
     engineConfigWorkMem = registerOutput<int>('engineConfigWorkMem');
     engineId = registerOutput<String>('engineId');
     forkRestoreTime = registerOutput<String>('forkRestoreTime');
@@ -1467,49 +1304,20 @@ class DatabasePostgresqlV2 extends pulumi.CustomResource {
     label = registerOutput<String>('label');
     members = registerOutput<Map<String, String>>('members');
     oldestRestoreTime = registerOutput<String>('oldestRestoreTime');
-    pendingUpdates = registerOutput<List<Map<String, dynamic>>>(
-      'pendingUpdates',
-    );
+    pendingUpdates = registerOutput<List<Map<String, dynamic>>>('pendingUpdates');
     platform = registerOutput<String>('platform');
     port = registerOutput<int>('port');
-    privateNetwork = registerOutput<DatabasePostgresqlV2PrivateNetwork?>(
-      'privateNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabasePostgresqlV2PrivateNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    privateNetwork = registerOutput<DatabasePostgresqlV2PrivateNetwork?>('privateNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabasePostgresqlV2PrivateNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     rootPassword = registerOutput<String>('rootPassword');
     rootUsername = registerOutput<String>('rootUsername');
     sslConnection = registerOutput<bool>('sslConnection');
     status = registerOutput<String>('status');
     suspended = registerOutput<bool>('suspended');
-    timeouts = registerOutput<DatabasePostgresqlV2Timeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabasePostgresqlV2Timeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<DatabasePostgresqlV2Timeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabasePostgresqlV2Timeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updated = registerOutput<String>('updated');
-    updates = registerOutput<DatabasePostgresqlV2Updates>(
-      'updates',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabasePostgresqlV2Updates.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updates = registerOutput<DatabasePostgresqlV2Updates>('updates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabasePostgresqlV2Updates.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }
 
@@ -1531,151 +1339,63 @@ class DatabasePostgresqlV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/databasePostgresqlV2:DatabasePostgresqlV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/databasePostgresqlV2:DatabasePostgresqlV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowLists = registerOutput<List<String>>('allowLists');
     caCert = registerOutput<String>('caCert');
     clusterSize = registerOutput<int>('clusterSize');
     created = registerOutput<String>('created');
     encrypted = registerOutput<bool>('encrypted');
     engine = registerOutput<String>('engine');
-    engineConfigPgAutovacuumAnalyzeScaleFactor = registerOutput<double>(
-      'engineConfigPgAutovacuumAnalyzeScaleFactor',
-    );
-    engineConfigPgAutovacuumAnalyzeThreshold = registerOutput<int>(
-      'engineConfigPgAutovacuumAnalyzeThreshold',
-    );
-    engineConfigPgAutovacuumMaxWorkers = registerOutput<int>(
-      'engineConfigPgAutovacuumMaxWorkers',
-    );
-    engineConfigPgAutovacuumNaptime = registerOutput<int>(
-      'engineConfigPgAutovacuumNaptime',
-    );
-    engineConfigPgAutovacuumVacuumCostDelay = registerOutput<int>(
-      'engineConfigPgAutovacuumVacuumCostDelay',
-    );
-    engineConfigPgAutovacuumVacuumCostLimit = registerOutput<int>(
-      'engineConfigPgAutovacuumVacuumCostLimit',
-    );
-    engineConfigPgAutovacuumVacuumScaleFactor = registerOutput<double>(
-      'engineConfigPgAutovacuumVacuumScaleFactor',
-    );
-    engineConfigPgAutovacuumVacuumThreshold = registerOutput<int>(
-      'engineConfigPgAutovacuumVacuumThreshold',
-    );
-    engineConfigPgBgwriterDelay = registerOutput<int>(
-      'engineConfigPgBgwriterDelay',
-    );
-    engineConfigPgBgwriterFlushAfter = registerOutput<int>(
-      'engineConfigPgBgwriterFlushAfter',
-    );
-    engineConfigPgBgwriterLruMaxpages = registerOutput<int>(
-      'engineConfigPgBgwriterLruMaxpages',
-    );
-    engineConfigPgBgwriterLruMultiplier = registerOutput<double>(
-      'engineConfigPgBgwriterLruMultiplier',
-    );
-    engineConfigPgDeadlockTimeout = registerOutput<int>(
-      'engineConfigPgDeadlockTimeout',
-    );
-    engineConfigPgDefaultToastCompression = registerOutput<String>(
-      'engineConfigPgDefaultToastCompression',
-    );
-    engineConfigPgIdleInTransactionSessionTimeout = registerOutput<int>(
-      'engineConfigPgIdleInTransactionSessionTimeout',
-    );
+    engineConfigPgAutovacuumAnalyzeScaleFactor = registerOutput<double>('engineConfigPgAutovacuumAnalyzeScaleFactor');
+    engineConfigPgAutovacuumAnalyzeThreshold = registerOutput<int>('engineConfigPgAutovacuumAnalyzeThreshold');
+    engineConfigPgAutovacuumMaxWorkers = registerOutput<int>('engineConfigPgAutovacuumMaxWorkers');
+    engineConfigPgAutovacuumNaptime = registerOutput<int>('engineConfigPgAutovacuumNaptime');
+    engineConfigPgAutovacuumVacuumCostDelay = registerOutput<int>('engineConfigPgAutovacuumVacuumCostDelay');
+    engineConfigPgAutovacuumVacuumCostLimit = registerOutput<int>('engineConfigPgAutovacuumVacuumCostLimit');
+    engineConfigPgAutovacuumVacuumScaleFactor = registerOutput<double>('engineConfigPgAutovacuumVacuumScaleFactor');
+    engineConfigPgAutovacuumVacuumThreshold = registerOutput<int>('engineConfigPgAutovacuumVacuumThreshold');
+    engineConfigPgBgwriterDelay = registerOutput<int>('engineConfigPgBgwriterDelay');
+    engineConfigPgBgwriterFlushAfter = registerOutput<int>('engineConfigPgBgwriterFlushAfter');
+    engineConfigPgBgwriterLruMaxpages = registerOutput<int>('engineConfigPgBgwriterLruMaxpages');
+    engineConfigPgBgwriterLruMultiplier = registerOutput<double>('engineConfigPgBgwriterLruMultiplier');
+    engineConfigPgDeadlockTimeout = registerOutput<int>('engineConfigPgDeadlockTimeout');
+    engineConfigPgDefaultToastCompression = registerOutput<String>('engineConfigPgDefaultToastCompression');
+    engineConfigPgIdleInTransactionSessionTimeout = registerOutput<int>('engineConfigPgIdleInTransactionSessionTimeout');
     engineConfigPgJit = registerOutput<bool>('engineConfigPgJit');
-    engineConfigPgMaxFilesPerProcess = registerOutput<int>(
-      'engineConfigPgMaxFilesPerProcess',
-    );
-    engineConfigPgMaxLocksPerTransaction = registerOutput<int>(
-      'engineConfigPgMaxLocksPerTransaction',
-    );
-    engineConfigPgMaxLogicalReplicationWorkers = registerOutput<int>(
-      'engineConfigPgMaxLogicalReplicationWorkers',
-    );
-    engineConfigPgMaxParallelWorkers = registerOutput<int>(
-      'engineConfigPgMaxParallelWorkers',
-    );
-    engineConfigPgMaxParallelWorkersPerGather = registerOutput<int>(
-      'engineConfigPgMaxParallelWorkersPerGather',
-    );
-    engineConfigPgMaxPredLocksPerTransaction = registerOutput<int>(
-      'engineConfigPgMaxPredLocksPerTransaction',
-    );
-    engineConfigPgMaxReplicationSlots = registerOutput<int>(
-      'engineConfigPgMaxReplicationSlots',
-    );
-    engineConfigPgMaxSlotWalKeepSize = registerOutput<int>(
-      'engineConfigPgMaxSlotWalKeepSize',
-    );
-    engineConfigPgMaxStackDepth = registerOutput<int>(
-      'engineConfigPgMaxStackDepth',
-    );
-    engineConfigPgMaxStandbyArchiveDelay = registerOutput<int>(
-      'engineConfigPgMaxStandbyArchiveDelay',
-    );
-    engineConfigPgMaxStandbyStreamingDelay = registerOutput<int>(
-      'engineConfigPgMaxStandbyStreamingDelay',
-    );
-    engineConfigPgMaxWalSenders = registerOutput<int>(
-      'engineConfigPgMaxWalSenders',
-    );
-    engineConfigPgMaxWorkerProcesses = registerOutput<int>(
-      'engineConfigPgMaxWorkerProcesses',
-    );
-    engineConfigPgPasswordEncryption = registerOutput<String>(
-      'engineConfigPgPasswordEncryption',
-    );
-    engineConfigPgPgPartmanBgwInterval = registerOutput<int>(
-      'engineConfigPgPgPartmanBgwInterval',
-    );
-    engineConfigPgPgPartmanBgwRole = registerOutput<String>(
-      'engineConfigPgPgPartmanBgwRole',
-    );
-    engineConfigPgPgStatMonitorPgsmEnableQueryPlan = registerOutput<bool>(
-      'engineConfigPgPgStatMonitorPgsmEnableQueryPlan',
-    );
-    engineConfigPgPgStatMonitorPgsmMaxBuckets = registerOutput<int>(
-      'engineConfigPgPgStatMonitorPgsmMaxBuckets',
-    );
-    engineConfigPgPgStatStatementsTrack = registerOutput<String>(
-      'engineConfigPgPgStatStatementsTrack',
-    );
-    engineConfigPgStatMonitorEnable = registerOutput<bool>(
-      'engineConfigPgStatMonitorEnable',
-    );
-    engineConfigPgTempFileLimit = registerOutput<int>(
-      'engineConfigPgTempFileLimit',
-    );
+    engineConfigPgMaxFilesPerProcess = registerOutput<int>('engineConfigPgMaxFilesPerProcess');
+    engineConfigPgMaxLocksPerTransaction = registerOutput<int>('engineConfigPgMaxLocksPerTransaction');
+    engineConfigPgMaxLogicalReplicationWorkers = registerOutput<int>('engineConfigPgMaxLogicalReplicationWorkers');
+    engineConfigPgMaxParallelWorkers = registerOutput<int>('engineConfigPgMaxParallelWorkers');
+    engineConfigPgMaxParallelWorkersPerGather = registerOutput<int>('engineConfigPgMaxParallelWorkersPerGather');
+    engineConfigPgMaxPredLocksPerTransaction = registerOutput<int>('engineConfigPgMaxPredLocksPerTransaction');
+    engineConfigPgMaxReplicationSlots = registerOutput<int>('engineConfigPgMaxReplicationSlots');
+    engineConfigPgMaxSlotWalKeepSize = registerOutput<int>('engineConfigPgMaxSlotWalKeepSize');
+    engineConfigPgMaxStackDepth = registerOutput<int>('engineConfigPgMaxStackDepth');
+    engineConfigPgMaxStandbyArchiveDelay = registerOutput<int>('engineConfigPgMaxStandbyArchiveDelay');
+    engineConfigPgMaxStandbyStreamingDelay = registerOutput<int>('engineConfigPgMaxStandbyStreamingDelay');
+    engineConfigPgMaxWalSenders = registerOutput<int>('engineConfigPgMaxWalSenders');
+    engineConfigPgMaxWorkerProcesses = registerOutput<int>('engineConfigPgMaxWorkerProcesses');
+    engineConfigPgPasswordEncryption = registerOutput<String>('engineConfigPgPasswordEncryption');
+    engineConfigPgPgPartmanBgwInterval = registerOutput<int>('engineConfigPgPgPartmanBgwInterval');
+    engineConfigPgPgPartmanBgwRole = registerOutput<String>('engineConfigPgPgPartmanBgwRole');
+    engineConfigPgPgStatMonitorPgsmEnableQueryPlan = registerOutput<bool>('engineConfigPgPgStatMonitorPgsmEnableQueryPlan');
+    engineConfigPgPgStatMonitorPgsmMaxBuckets = registerOutput<int>('engineConfigPgPgStatMonitorPgsmMaxBuckets');
+    engineConfigPgPgStatStatementsTrack = registerOutput<String>('engineConfigPgPgStatStatementsTrack');
+    engineConfigPgStatMonitorEnable = registerOutput<bool>('engineConfigPgStatMonitorEnable');
+    engineConfigPgTempFileLimit = registerOutput<int>('engineConfigPgTempFileLimit');
     engineConfigPgTimezone = registerOutput<String>('engineConfigPgTimezone');
-    engineConfigPgTrackActivityQuerySize = registerOutput<int>(
-      'engineConfigPgTrackActivityQuerySize',
-    );
-    engineConfigPgTrackCommitTimestamp = registerOutput<String>(
-      'engineConfigPgTrackCommitTimestamp',
-    );
-    engineConfigPgTrackFunctions = registerOutput<String>(
-      'engineConfigPgTrackFunctions',
-    );
-    engineConfigPgTrackIoTiming = registerOutput<String>(
-      'engineConfigPgTrackIoTiming',
-    );
-    engineConfigPgWalSenderTimeout = registerOutput<int>(
-      'engineConfigPgWalSenderTimeout',
-    );
-    engineConfigPgWalWriterDelay = registerOutput<int>(
-      'engineConfigPgWalWriterDelay',
-    );
-    engineConfigPglookoutMaxFailoverReplicationTimeLag = registerOutput<int>(
-      'engineConfigPglookoutMaxFailoverReplicationTimeLag',
-    );
-    engineConfigSharedBuffersPercentage = registerOutput<double>(
-      'engineConfigSharedBuffersPercentage',
-    );
+    engineConfigPgTrackActivityQuerySize = registerOutput<int>('engineConfigPgTrackActivityQuerySize');
+    engineConfigPgTrackCommitTimestamp = registerOutput<String>('engineConfigPgTrackCommitTimestamp');
+    engineConfigPgTrackFunctions = registerOutput<String>('engineConfigPgTrackFunctions');
+    engineConfigPgTrackIoTiming = registerOutput<String>('engineConfigPgTrackIoTiming');
+    engineConfigPgWalSenderTimeout = registerOutput<int>('engineConfigPgWalSenderTimeout');
+    engineConfigPgWalWriterDelay = registerOutput<int>('engineConfigPgWalWriterDelay');
+    engineConfigPglookoutMaxFailoverReplicationTimeLag = registerOutput<int>('engineConfigPglookoutMaxFailoverReplicationTimeLag');
+    engineConfigSharedBuffersPercentage = registerOutput<double>('engineConfigSharedBuffersPercentage');
     engineConfigWorkMem = registerOutput<int>('engineConfigWorkMem');
     engineId = registerOutput<String>('engineId');
     forkRestoreTime = registerOutput<String>('forkRestoreTime');
@@ -1685,49 +1405,20 @@ class DatabasePostgresqlV2 extends pulumi.CustomResource {
     label = registerOutput<String>('label');
     members = registerOutput<Map<String, String>>('members');
     oldestRestoreTime = registerOutput<String>('oldestRestoreTime');
-    pendingUpdates = registerOutput<List<Map<String, dynamic>>>(
-      'pendingUpdates',
-    );
+    pendingUpdates = registerOutput<List<Map<String, dynamic>>>('pendingUpdates');
     platform = registerOutput<String>('platform');
     port = registerOutput<int>('port');
-    privateNetwork = registerOutput<DatabasePostgresqlV2PrivateNetwork?>(
-      'privateNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabasePostgresqlV2PrivateNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    privateNetwork = registerOutput<DatabasePostgresqlV2PrivateNetwork?>('privateNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabasePostgresqlV2PrivateNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     rootPassword = registerOutput<String>('rootPassword');
     rootUsername = registerOutput<String>('rootUsername');
     sslConnection = registerOutput<bool>('sslConnection');
     status = registerOutput<String>('status');
     suspended = registerOutput<bool>('suspended');
-    timeouts = registerOutput<DatabasePostgresqlV2Timeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabasePostgresqlV2Timeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<DatabasePostgresqlV2Timeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabasePostgresqlV2Timeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updated = registerOutput<String>('updated');
-    updates = registerOutput<DatabasePostgresqlV2Updates>(
-      'updates',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabasePostgresqlV2Updates.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updates = registerOutput<DatabasePostgresqlV2Updates>('updates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabasePostgresqlV2Updates.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }
 }

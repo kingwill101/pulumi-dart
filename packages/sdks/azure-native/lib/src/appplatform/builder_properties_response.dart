@@ -8,10 +8,8 @@ import 'stack_properties_response.dart';
 class BuilderPropertiesResponse {
   /// Builder buildpack groups.
   final pulumi.Input<List<BuildpacksGroupPropertiesResponse>>? buildpackGroups;
-
   /// Builder provision status.
   final pulumi.Input<String> provisioningState;
-
   /// Builder cluster stack property.
   final pulumi.Input<StackPropertiesResponse>? stack;
 
@@ -27,53 +25,18 @@ class BuilderPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buildpackGroups':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BuildpacksGroupPropertiesResponse>,
-            List<Map<String, dynamic>>
-          >(
-            buildpackGroups,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BuildpacksGroupPropertiesResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'buildpackGroups': ?pulumi.Input.mapOptionalInputValue<List<BuildpacksGroupPropertiesResponse>, List<Map<String, dynamic>>>(buildpackGroups, (value) => pulumi.Input.encodeList<BuildpacksGroupPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
-      'stack':
-          ?pulumi.Input.mapOptionalInputValue<
-            StackPropertiesResponse,
-            Map<String, dynamic>
-          >(stack, (value) => value.toMap()),
+      'stack': ?pulumi.Input.mapOptionalInputValue<StackPropertiesResponse, Map<String, dynamic>>(stack, (value) => value.toMap()),
     };
   }
 
   factory BuilderPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BuilderPropertiesResponse(
-      buildpackGroups: (() {
-        final guardedValue = map['buildpackGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BuildpacksGroupPropertiesResponse>(
-            guardedValue,
-            (value) => BuildpacksGroupPropertiesResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      stack: (() {
-        final guardedValue = map['stack'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StackPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      buildpackGroups: (() { final guardedValue = map['buildpackGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BuildpacksGroupPropertiesResponse>(guardedValue, (value) => BuildpacksGroupPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      stack: (() { final guardedValue = map['stack']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StackPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

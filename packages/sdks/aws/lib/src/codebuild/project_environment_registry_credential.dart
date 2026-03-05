@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectEnvironmentRegistryCredential {
   /// ARN or name of credentials created using AWS Secrets Manager.
   final pulumi.Input<String> credential;
-
   /// Service that created the credentials to access a private Docker registry. Valid
   /// value: `SECRETS_MANAGER` (AWS Secrets Manager).
   final pulumi.Input<String> credentialProvider;
@@ -25,14 +24,11 @@ class ProjectEnvironmentRegistryCredential {
     };
   }
 
-  factory ProjectEnvironmentRegistryCredential.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProjectEnvironmentRegistryCredential.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentRegistryCredential(
       credential: pulumi.Input.fromValue(map['credential'] as String),
-      credentialProvider: pulumi.Input.fromValue(
-        map['credentialProvider'] as String,
-      ),
+      credentialProvider: pulumi.Input.fromValue(map['credentialProvider'] as String),
     );
   }
 }
+

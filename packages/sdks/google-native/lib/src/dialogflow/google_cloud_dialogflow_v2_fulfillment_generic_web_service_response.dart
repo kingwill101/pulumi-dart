@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse {
   /// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
   final pulumi.Input<bool> isCloudFunction;
-
   /// Optional. The password for HTTP Basic authentication.
   final pulumi.Input<String> password;
-
   /// Optional. The HTTP request headers to send together with fulfillment requests.
   final pulumi.Input<Map<String, String>> requestHeaders;
-
   /// The fulfillment URI for receiving POST requests. It must use https protocol.
   final pulumi.Input<String> uri;
-
   /// Optional. The user name for HTTP Basic authentication.
   final pulumi.Input<String> username;
 
@@ -43,17 +39,14 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse(
       isCloudFunction: pulumi.Input.fromValue(map['isCloudFunction'] as bool),
       password: pulumi.Input.fromValue(map['password'] as String),
-      requestHeaders: pulumi.Input.fromValue(
-        (map['requestHeaders'] as Map).cast<String, String>(),
-      ),
+      requestHeaders: pulumi.Input.fromValue((map['requestHeaders'] as Map).cast<String, String>()),
       uri: pulumi.Input.fromValue(map['uri'] as String),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

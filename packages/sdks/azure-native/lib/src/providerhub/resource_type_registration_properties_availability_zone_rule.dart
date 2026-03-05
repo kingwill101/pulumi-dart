@@ -13,18 +13,15 @@ class ResourceTypeRegistrationPropertiesAvailabilityZoneRule {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'availabilityZonePolicy': ?availabilityZonePolicy};
+    return <String, dynamic>{
+      'availabilityZonePolicy': ?availabilityZonePolicy,
+    };
   }
 
-  factory ResourceTypeRegistrationPropertiesAvailabilityZoneRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceTypeRegistrationPropertiesAvailabilityZoneRule.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesAvailabilityZoneRule(
-      availabilityZonePolicy: (() {
-        final guardedValue = map['availabilityZonePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      availabilityZonePolicy: (() { final guardedValue = map['availabilityZonePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

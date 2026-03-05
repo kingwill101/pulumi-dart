@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterConfigurationManagedStorageConfiguration {
   /// AWS Key Management Service key ARN for the Fargate ephemeral storage.
   final pulumi.Input<String>? fargateEphemeralStorageKmsKeyId;
-
   /// AWS Key Management Service key ARN to encrypt the managed storage.
   final pulumi.Input<String>? kmsKeyId;
 
@@ -24,20 +23,11 @@ class ClusterConfigurationManagedStorageConfiguration {
     };
   }
 
-  factory ClusterConfigurationManagedStorageConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterConfigurationManagedStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterConfigurationManagedStorageConfiguration(
-      fargateEphemeralStorageKmsKeyId: (() {
-        final guardedValue = map['fargateEphemeralStorageKmsKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsKeyId: (() {
-        final guardedValue = map['kmsKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fargateEphemeralStorageKmsKeyId: (() { final guardedValue = map['fargateEphemeralStorageKmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

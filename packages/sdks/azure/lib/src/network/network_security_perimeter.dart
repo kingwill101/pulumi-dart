@@ -157,13 +157,10 @@ import 'network_security_perimeter_state.dart';
 class NetworkSecurityPerimeter extends pulumi.CustomResource {
   /// The Azure Region where the Network Security Perimeter should exist. Changing this forces a new Network Security Perimeter to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Network Security Perimeter. Changing this forces a new Network Security Perimeter to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Network Security Perimeter should exist.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Network Security Perimeter.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -176,11 +173,11 @@ class NetworkSecurityPerimeter extends pulumi.CustomResource {
     NetworkSecurityPerimeterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkSecurityPerimeter:NetworkSecurityPerimeter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkSecurityPerimeter:NetworkSecurityPerimeter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -205,11 +202,11 @@ class NetworkSecurityPerimeter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkSecurityPerimeter:NetworkSecurityPerimeter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkSecurityPerimeter:NetworkSecurityPerimeter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

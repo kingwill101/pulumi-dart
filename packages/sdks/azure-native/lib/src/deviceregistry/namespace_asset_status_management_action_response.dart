@@ -8,17 +8,12 @@ import 'status_error_response.dart';
 class NamespaceAssetStatusManagementActionResponse {
   /// Object to transfer and persist errors that originate from the edge.
   final pulumi.Input<StatusErrorResponse> error;
-
   /// The name of the action. Must be unique within the status.actions array. This name is used to correlate between the spec and status event information.
   final pulumi.Input<String> name;
-
   /// The request message schema reference object for the action.
-  final pulumi.Input<NamespaceMessageSchemaReferenceResponse>
-  requestMessageSchemaReference;
-
+  final pulumi.Input<NamespaceMessageSchemaReferenceResponse> requestMessageSchemaReference;
   /// The response message schema reference object for the action.
-  final pulumi.Input<NamespaceMessageSchemaReferenceResponse>
-  responseMessageSchemaReference;
+  final pulumi.Input<NamespaceMessageSchemaReferenceResponse> responseMessageSchemaReference;
 
   /// Creates a new [NamespaceAssetStatusManagementActionResponse].
   /// [error] Object to transfer and persist errors that originate from the edge.
@@ -34,47 +29,20 @@ class NamespaceAssetStatusManagementActionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error':
-          pulumi.Input.mapInputValue<StatusErrorResponse, Map<String, dynamic>>(
-            error,
-            (value) => value.toMap(),
-          ),
+      'error': pulumi.Input.mapInputValue<StatusErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'name': name,
-      'requestMessageSchemaReference':
-          pulumi.Input.mapInputValue<
-            NamespaceMessageSchemaReferenceResponse,
-            Map<String, dynamic>
-          >(requestMessageSchemaReference, (value) => value.toMap()),
-      'responseMessageSchemaReference':
-          pulumi.Input.mapInputValue<
-            NamespaceMessageSchemaReferenceResponse,
-            Map<String, dynamic>
-          >(responseMessageSchemaReference, (value) => value.toMap()),
+      'requestMessageSchemaReference': pulumi.Input.mapInputValue<NamespaceMessageSchemaReferenceResponse, Map<String, dynamic>>(requestMessageSchemaReference, (value) => value.toMap()),
+      'responseMessageSchemaReference': pulumi.Input.mapInputValue<NamespaceMessageSchemaReferenceResponse, Map<String, dynamic>>(responseMessageSchemaReference, (value) => value.toMap()),
     };
   }
 
-  factory NamespaceAssetStatusManagementActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NamespaceAssetStatusManagementActionResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceAssetStatusManagementActionResponse(
-      error: pulumi.Input.fromValue(
-        StatusErrorResponse.fromMap(
-          (map['error']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      error: pulumi.Input.fromValue(StatusErrorResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
-      requestMessageSchemaReference: pulumi.Input.fromValue(
-        NamespaceMessageSchemaReferenceResponse.fromMap(
-          (map['requestMessageSchemaReference']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
-      responseMessageSchemaReference: pulumi.Input.fromValue(
-        NamespaceMessageSchemaReferenceResponse.fromMap(
-          (map['responseMessageSchemaReference']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
+      requestMessageSchemaReference: pulumi.Input.fromValue(NamespaceMessageSchemaReferenceResponse.fromMap((map['requestMessageSchemaReference']! as Map).cast<String, dynamic>())),
+      responseMessageSchemaReference: pulumi.Input.fromValue(NamespaceMessageSchemaReferenceResponse.fromMap((map['responseMessageSchemaReference']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

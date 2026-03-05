@@ -361,31 +361,21 @@ import 'cx_generative_settings_state.dart';
 class CxGenerativeSettings extends pulumi.CustomResource {
   /// Settings for Generative Fallback.
   /// Structure is documented below.
-  late final pulumi.Output<CxGenerativeSettingsFallbackSettings?>
-  fallbackSettings;
-
+  late final pulumi.Output<CxGenerativeSettingsFallbackSettings?> fallbackSettings;
   /// Settings for Generative Safety.
   /// Structure is documented below.
-  late final pulumi.Output<CxGenerativeSettingsGenerativeSafetySettings?>
-  generativeSafetySettings;
-
+  late final pulumi.Output<CxGenerativeSettingsGenerativeSafetySettings?> generativeSafetySettings;
   /// Settings for knowledge connector.
   /// Structure is documented below.
-  late final pulumi.Output<CxGenerativeSettingsKnowledgeConnectorSettings?>
-  knowledgeConnectorSettings;
-
+  late final pulumi.Output<CxGenerativeSettingsKnowledgeConnectorSettings?> knowledgeConnectorSettings;
   /// Language for this settings.
   late final pulumi.Output<String> languageCode;
-
   /// LLM model settings.
   /// Structure is documented below.
-  late final pulumi.Output<CxGenerativeSettingsLlmModelSettings?>
-  llmModelSettings;
-
+  late final pulumi.Output<CxGenerativeSettingsLlmModelSettings?> llmModelSettings;
   /// The unique identifier of the generativeSettings.
   /// Format: projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/generativeSettings.
   late final pulumi.Output<String> name;
-
   /// The agent to create a flow for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   late final pulumi.Output<String?> parent;
@@ -399,54 +389,16 @@ class CxGenerativeSettings extends pulumi.CustomResource {
     CxGenerativeSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    fallbackSettings = registerOutput<CxGenerativeSettingsFallbackSettings?>(
-      'fallbackSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxGenerativeSettingsFallbackSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    generativeSafetySettings =
-        registerOutput<CxGenerativeSettingsGenerativeSafetySettings?>(
-          'generativeSafetySettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CxGenerativeSettingsGenerativeSafetySettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    knowledgeConnectorSettings =
-        registerOutput<CxGenerativeSettingsKnowledgeConnectorSettings?>(
-          'knowledgeConnectorSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CxGenerativeSettingsKnowledgeConnectorSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    fallbackSettings = registerOutput<CxGenerativeSettingsFallbackSettings?>('fallbackSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGenerativeSettingsFallbackSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    generativeSafetySettings = registerOutput<CxGenerativeSettingsGenerativeSafetySettings?>('generativeSafetySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGenerativeSettingsGenerativeSafetySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    knowledgeConnectorSettings = registerOutput<CxGenerativeSettingsKnowledgeConnectorSettings?>('knowledgeConnectorSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGenerativeSettingsKnowledgeConnectorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     languageCode = registerOutput<String>('languageCode');
-    llmModelSettings = registerOutput<CxGenerativeSettingsLlmModelSettings?>(
-      'llmModelSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxGenerativeSettingsLlmModelSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    llmModelSettings = registerOutput<CxGenerativeSettingsLlmModelSettings?>('llmModelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGenerativeSettingsLlmModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
   }
@@ -469,54 +421,16 @@ class CxGenerativeSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    fallbackSettings = registerOutput<CxGenerativeSettingsFallbackSettings?>(
-      'fallbackSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxGenerativeSettingsFallbackSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    generativeSafetySettings =
-        registerOutput<CxGenerativeSettingsGenerativeSafetySettings?>(
-          'generativeSafetySettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CxGenerativeSettingsGenerativeSafetySettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    knowledgeConnectorSettings =
-        registerOutput<CxGenerativeSettingsKnowledgeConnectorSettings?>(
-          'knowledgeConnectorSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CxGenerativeSettingsKnowledgeConnectorSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    fallbackSettings = registerOutput<CxGenerativeSettingsFallbackSettings?>('fallbackSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGenerativeSettingsFallbackSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    generativeSafetySettings = registerOutput<CxGenerativeSettingsGenerativeSafetySettings?>('generativeSafetySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGenerativeSettingsGenerativeSafetySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    knowledgeConnectorSettings = registerOutput<CxGenerativeSettingsKnowledgeConnectorSettings?>('knowledgeConnectorSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGenerativeSettingsKnowledgeConnectorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     languageCode = registerOutput<String>('languageCode');
-    llmModelSettings = registerOutput<CxGenerativeSettingsLlmModelSettings?>(
-      'llmModelSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxGenerativeSettingsLlmModelSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    llmModelSettings = registerOutput<CxGenerativeSettingsLlmModelSettings?>('llmModelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGenerativeSettingsLlmModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
   }

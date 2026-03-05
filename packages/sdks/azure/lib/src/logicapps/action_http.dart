@@ -197,27 +197,20 @@ import 'action_http_state.dart';
 class ActionHttp extends pulumi.CustomResource {
   /// Specifies the HTTP Body that should be sent to the `uri` when this HTTP Action is triggered.
   late final pulumi.Output<String?> body;
-
   /// Specifies a Map of Key-Value Pairs that should be sent to the `uri` when this HTTP Action is triggered.
   late final pulumi.Output<Map<String, String>?> headers;
-
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   late final pulumi.Output<String> logicAppId;
-
   /// Specifies the HTTP Method which should be used for this HTTP Action. Possible values include `DELETE`, `GET`, `PATCH`, `POST` and `PUT`.
   late final pulumi.Output<String> method;
-
   /// Specifies the name of the HTTP Action to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** This name must be unique across all Actions within the Logic App Workflow.
   late final pulumi.Output<String> name;
-
   /// Specifies a Map of Key-Value Pairs that should be sent to the `uri` when this HTTP Action is triggered.
   late final pulumi.Output<Map<String, String>?> queries;
-
   /// Specifies the place of the HTTP Action in the Logic App Workflow. If not specified, the HTTP Action is right after the Trigger. A `run_after` block is as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> runAfters;
-
   /// Specifies the URI which will be called when this HTTP Action is triggered.
   late final pulumi.Output<String> uri;
 
@@ -230,11 +223,11 @@ class ActionHttp extends pulumi.CustomResource {
     ActionHttpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/actionHttp:ActionHttp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/actionHttp:ActionHttp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     body = registerOutput<String?>('body');
     headers = registerOutput<Map<String, String>?>('headers');
     logicAppId = registerOutput<String>('logicAppId');
@@ -263,11 +256,11 @@ class ActionHttp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/actionHttp:ActionHttp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/actionHttp:ActionHttp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     body = registerOutput<String?>('body');
     headers = registerOutput<Map<String, String>?>('headers');
     logicAppId = registerOutput<String>('logicAppId');

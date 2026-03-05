@@ -15,7 +15,11 @@ class GetDomainArgs {
   /// [domainId] Required.
   /// [project] Optional.
   /// [siteId] Required.
-  GetDomainArgs({required this.domainId, this.project, required this.siteId});
+  GetDomainArgs({
+    required this.domainId,
+    this.project,
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,12 +32,9 @@ class GetDomainArgs {
   factory GetDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainArgs(
       domainId: pulumi.Input.fromValue(map['domainId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
     );
   }
 }
+

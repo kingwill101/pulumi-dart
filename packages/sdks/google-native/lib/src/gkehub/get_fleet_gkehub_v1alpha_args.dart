@@ -33,11 +33,8 @@ class GetFleetGkehubV1alphaArgs {
     return GetFleetGkehubV1alphaArgs(
       fleetId: pulumi.Input.fromValue(map['fleetId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

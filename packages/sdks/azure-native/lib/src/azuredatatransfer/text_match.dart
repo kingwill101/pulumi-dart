@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TextMatch {
   /// Specifies the text matching conditions based on casing. For more detail please refer to the Casing model.
   final pulumi.Input<String> caseSensitivity;
-
   /// Specifies the text matching condition for text comparison. For more detail please refer to the MatchType model.
   final pulumi.Input<String> matchType;
-
   /// The word or phrase to match against replicated content. A phrase with spaces will be considered a single substring.
   final pulumi.Input<String> text;
 
@@ -39,3 +37,4 @@ class TextMatch {
     );
   }
 }
+

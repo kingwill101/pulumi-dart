@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
   /// Must be specified if type is `INTEGER`. Maximum value of the parameter.
   final pulumi.Input<String>? maxValue;
-
   /// Must be specified if type is `INTEGER`. Minimum value of the parameter.
   final pulumi.Input<String>? minValue;
 
@@ -18,23 +17,17 @@ class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maxValue': ?maxValue, 'minValue': ?minValue};
+    return <String, dynamic>{
+      'maxValue': ?maxValue,
+      'minValue': ?minValue,
+    };
   }
 
-  factory GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec(
-      maxValue: (() {
-        final guardedValue = map['maxValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      minValue: (() {
-        final guardedValue = map['minValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      maxValue: (() { final guardedValue = map['maxValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minValue: (() { final guardedValue = map['minValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

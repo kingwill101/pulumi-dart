@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FileSystemMaintenanceWindow {
   /// The day of the week on which the maintenance window will occur. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and `Saturday`.
   final pulumi.Input<String> dayOfWeek;
-
   /// The time of day (in UTC) to start the maintenance window.
   final pulumi.Input<String> timeOfDayInUtc;
 
@@ -31,3 +30,4 @@ class FileSystemMaintenanceWindow {
     );
   }
 }
+

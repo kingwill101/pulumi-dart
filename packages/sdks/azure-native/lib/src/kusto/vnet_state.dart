@@ -15,3 +15,4 @@ enum VnetState {
     throw ArgumentError('Unknown VnetState value: $value');
   }
 }
+

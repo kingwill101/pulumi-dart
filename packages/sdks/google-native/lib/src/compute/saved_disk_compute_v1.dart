@@ -9,19 +9,20 @@ class SavedDiskComputeV1 {
 
   /// Creates a new [SavedDiskComputeV1].
   /// [sourceDisk] Specifies a URL of the disk attached to the source instance.
-  SavedDiskComputeV1({this.sourceDisk});
+  SavedDiskComputeV1({
+    this.sourceDisk,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sourceDisk': ?sourceDisk};
+    return <String, dynamic>{
+      'sourceDisk': ?sourceDisk,
+    };
   }
 
   factory SavedDiskComputeV1.fromMap(Map<String, dynamic> map) {
     return SavedDiskComputeV1(
-      sourceDisk: (() {
-        final guardedValue = map['sourceDisk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sourceDisk: (() { final guardedValue = map['sourceDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

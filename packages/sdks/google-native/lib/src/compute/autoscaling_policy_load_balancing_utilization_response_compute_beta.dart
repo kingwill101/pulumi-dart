@@ -14,16 +14,15 @@ class AutoscalingPolicyLoadBalancingUtilizationResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'utilizationTarget': utilizationTarget};
+    return <String, dynamic>{
+      'utilizationTarget': utilizationTarget,
+    };
   }
 
-  factory AutoscalingPolicyLoadBalancingUtilizationResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutoscalingPolicyLoadBalancingUtilizationResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyLoadBalancingUtilizationResponseComputeBeta(
-      utilizationTarget: pulumi.Input.fromValue(
-        map['utilizationTarget'] as double,
-      ),
+      utilizationTarget: pulumi.Input.fromValue(map['utilizationTarget'] as double),
     );
   }
 }
+

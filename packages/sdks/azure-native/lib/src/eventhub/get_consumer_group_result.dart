@@ -6,28 +6,20 @@ import 'system_data_response.dart';
 class GetConsumerGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Exact time the message was created.
   final String createdAt;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The system meta data relating to this resource.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   final String type;
-
   /// The exact time the message was updated.
   final String updatedAt;
-
   /// User Metadata is a placeholder to store user-defined string data with maximum length 1024. e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
   final String? userMetadata;
 
@@ -74,16 +66,11 @@ class GetConsumerGroupResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       updatedAt: map['updatedAt'] as String,
-      userMetadata: (() {
-        final guardedValue = map['userMetadata'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      userMetadata: (() { final guardedValue = map['userMetadata']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

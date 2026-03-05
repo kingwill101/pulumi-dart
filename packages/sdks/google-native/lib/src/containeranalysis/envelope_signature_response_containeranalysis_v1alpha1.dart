@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvelopeSignatureResponseContaineranalysisV1alpha1 {
   /// A reference id to the key being used for signing
   final pulumi.Input<String> keyid;
-
   /// The signature itself
   final pulumi.Input<String> sig;
 
@@ -19,15 +18,17 @@ class EnvelopeSignatureResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyid': keyid, 'sig': sig};
+    return <String, dynamic>{
+      'keyid': keyid,
+      'sig': sig,
+    };
   }
 
-  factory EnvelopeSignatureResponseContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnvelopeSignatureResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return EnvelopeSignatureResponseContaineranalysisV1alpha1(
       keyid: pulumi.Input.fromValue(map['keyid'] as String),
       sig: pulumi.Input.fromValue(map['sig'] as String),
     );
   }
 }
+

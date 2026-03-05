@@ -17,14 +17,15 @@ class LocalRulestackOutboundTrustCertificateAssociationArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'certificateId': certificateId};
+    return <String, dynamic>{
+      'certificateId': certificateId,
+    };
   }
 
-  factory LocalRulestackOutboundTrustCertificateAssociationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LocalRulestackOutboundTrustCertificateAssociationArgs.fromMap(Map<String, dynamic> map) {
     return LocalRulestackOutboundTrustCertificateAssociationArgs(
       certificateId: pulumi.Input.fromValue(map['certificateId'] as String),
     );
   }
 }
+

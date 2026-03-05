@@ -220,13 +220,10 @@ import 'identity_provider_microsoft_state.dart';
 class IdentityProviderMicrosoft extends pulumi.CustomResource {
   /// The Name of the API Management Service where this Microsoft Identity Provider should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// Client Id of the Azure AD Application.
   late final pulumi.Output<String> clientId;
-
   /// Client secret of the Azure AD Application.
   late final pulumi.Output<String> clientSecret;
-
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -239,11 +236,11 @@ class IdentityProviderMicrosoft extends pulumi.CustomResource {
     IdentityProviderMicrosoftArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/identityProviderMicrosoft:IdentityProviderMicrosoft',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/identityProviderMicrosoft:IdentityProviderMicrosoft',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');
@@ -268,11 +265,11 @@ class IdentityProviderMicrosoft extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/identityProviderMicrosoft:IdentityProviderMicrosoft',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/identityProviderMicrosoft:IdentityProviderMicrosoft',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');

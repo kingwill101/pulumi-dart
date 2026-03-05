@@ -14,8 +14,7 @@ enum NodeGroupMaintenancePolicyComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown NodeGroupMaintenancePolicyComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown NodeGroupMaintenancePolicyComputeV1 value: $value');
   }
 }
+

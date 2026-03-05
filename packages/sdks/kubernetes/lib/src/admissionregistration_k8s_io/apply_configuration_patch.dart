@@ -36,19 +36,20 @@ class ApplyConfigurationPatch {
 
   /// Creates a new [ApplyConfigurationPatch].
   /// [expression] expression will be evaluated by CEL to create an apply configuration. ref: https://github.com/google/cel-spec
-  ApplyConfigurationPatch({this.expression});
+  ApplyConfigurationPatch({
+    this.expression,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'expression': ?expression};
+    return <String, dynamic>{
+      'expression': ?expression,
+    };
   }
 
   factory ApplyConfigurationPatch.fromMap(Map<String, dynamic> map) {
     return ApplyConfigurationPatch(
-      expression: (() {
-        final guardedValue = map['expression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expression: (() { final guardedValue = map['expression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

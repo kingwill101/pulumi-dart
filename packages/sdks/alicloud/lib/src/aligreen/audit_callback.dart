@@ -205,16 +205,12 @@ import 'audit_callback_state.dart';
 class AuditCallback extends pulumi.CustomResource {
   /// The AuditCallback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
   late final pulumi.Output<String> auditCallbackName;
-
   /// List of audit results supported by message notification. Value: block: confirmed violation, review: Suspected violation, review: normal.
   late final pulumi.Output<List<String>> callbackSuggestions;
-
   /// A list of Callback types. Value: machineScan: Machine audit result notification, selfAudit: self-service audit notification.
   late final pulumi.Output<List<String>> callbackTypes;
-
   /// The encryption algorithm is used to verify that the callback request is sent by the content security service to your business service. The value is SHA256:SHA256 encryption algorithm and SM3: SM3 encryption algorithm.
   late final pulumi.Output<String> cryptType;
-
   /// The detection result will be called back to the url.
   late final pulumi.Output<String> url;
 
@@ -227,11 +223,11 @@ class AuditCallback extends pulumi.CustomResource {
     AuditCallbackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:aligreen/auditCallback:AuditCallback',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:aligreen/auditCallback:AuditCallback',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     auditCallbackName = registerOutput<String>('auditCallbackName');
     callbackSuggestions = registerOutput<List<String>>('callbackSuggestions');
     callbackTypes = registerOutput<List<String>>('callbackTypes');
@@ -257,11 +253,11 @@ class AuditCallback extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:aligreen/auditCallback:AuditCallback',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:aligreen/auditCallback:AuditCallback',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     auditCallbackName = registerOutput<String>('auditCallbackName');
     callbackSuggestions = registerOutput<List<String>>('callbackSuggestions');
     callbackTypes = registerOutput<List<String>>('callbackTypes');

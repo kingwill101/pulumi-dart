@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualHubRouteV2 {
   /// The type of destinations.
   final pulumi.Input<String>? destinationType;
-
   /// List of all destinations.
   final pulumi.Input<List<String>>? destinations;
-
   /// The type of next hops.
   final pulumi.Input<String>? nextHopType;
-
   /// NextHops ip address.
   final pulumi.Input<List<String>>? nextHops;
 
@@ -39,26 +36,11 @@ class VirtualHubRouteV2 {
 
   factory VirtualHubRouteV2.fromMap(Map<String, dynamic> map) {
     return VirtualHubRouteV2(
-      destinationType: (() {
-        final guardedValue = map['destinationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destinations: (() {
-        final guardedValue = map['destinations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nextHopType: (() {
-        final guardedValue = map['nextHopType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nextHops: (() {
-        final guardedValue = map['nextHops'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      destinationType: (() { final guardedValue = map['destinationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destinations: (() { final guardedValue = map['destinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nextHopType: (() { final guardedValue = map['nextHopType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nextHops: (() { final guardedValue = map['nextHops']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

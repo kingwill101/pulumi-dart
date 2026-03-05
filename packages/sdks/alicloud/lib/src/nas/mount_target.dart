@@ -318,7 +318,6 @@ import 'mount_target_state.dart';
 class MountTarget extends pulumi.CustomResource {
   /// The name of the permission group.
   late final pulumi.Output<String?> accessGroupName;
-
   /// Whether to create an IPv6 mount point.
   ///
   /// Value:
@@ -327,25 +326,18 @@ class MountTarget extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
   late final pulumi.Output<bool?> dualStack;
-
   /// The ID of the file system.
   late final pulumi.Output<String> fileSystemId;
-
   /// The domain name of the Mount point.
   late final pulumi.Output<String> mountTargetDomain;
-
   /// Network type.
   late final pulumi.Output<String> networkType;
-
   /// The ID of the security group.
   late final pulumi.Output<String?> securityGroupId;
-
   /// The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
   late final pulumi.Output<String> status;
-
   /// VPC ID.
   late final pulumi.Output<String> vpcId;
-
   /// The ID of the switch.
   late final pulumi.Output<String?> vswitchId;
 
@@ -358,11 +350,11 @@ class MountTarget extends pulumi.CustomResource {
     MountTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nas/mountTarget:MountTarget',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nas/mountTarget:MountTarget',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessGroupName = registerOutput<String?>('accessGroupName');
     dualStack = registerOutput<bool?>('dualStack');
     fileSystemId = registerOutput<String>('fileSystemId');
@@ -392,11 +384,11 @@ class MountTarget extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nas/mountTarget:MountTarget',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nas/mountTarget:MountTarget',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessGroupName = registerOutput<String?>('accessGroupName');
     dualStack = registerOutput<bool?>('dualStack');
     fileSystemId = registerOutput<String>('fileSystemId');

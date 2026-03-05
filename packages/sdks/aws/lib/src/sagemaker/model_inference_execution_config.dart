@@ -8,10 +8,14 @@ class ModelInferenceExecutionConfig {
 
   /// Creates a new [ModelInferenceExecutionConfig].
   /// [mode] How containers in a multi-container are run. Allowed values are: `Serial` and `Direct`.
-  ModelInferenceExecutionConfig({required this.mode});
+  ModelInferenceExecutionConfig({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
   factory ModelInferenceExecutionConfig.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class ModelInferenceExecutionConfig {
     );
   }
 }
+

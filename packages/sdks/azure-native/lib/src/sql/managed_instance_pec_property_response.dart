@@ -7,10 +7,8 @@ import 'managed_instance_private_endpoint_connection_properties_response.dart';
 class ManagedInstancePecPropertyResponse {
   /// Resource ID.
   final pulumi.Input<String> id;
-
   /// Private endpoint connection properties
-  final pulumi.Input<ManagedInstancePrivateEndpointConnectionPropertiesResponse>
-  properties;
+  final pulumi.Input<ManagedInstancePrivateEndpointConnectionPropertiesResponse> properties;
 
   /// Creates a new [ManagedInstancePecPropertyResponse].
   /// [id] Resource ID.
@@ -23,22 +21,15 @@ class ManagedInstancePecPropertyResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'properties':
-          pulumi.Input.mapInputValue<
-            ManagedInstancePrivateEndpointConnectionPropertiesResponse,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<ManagedInstancePrivateEndpointConnectionPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory ManagedInstancePecPropertyResponse.fromMap(Map<String, dynamic> map) {
     return ManagedInstancePecPropertyResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
-      properties: pulumi.Input.fromValue(
-        ManagedInstancePrivateEndpointConnectionPropertiesResponse.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      properties: pulumi.Input.fromValue(ManagedInstancePrivateEndpointConnectionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

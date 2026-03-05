@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QosPolicyOverrides {
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
   final pulumi.Input<String>? bandwidthPercentageSMB;
-
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
   final pulumi.Input<String>? priorityValue8021ActionCluster;
-
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
   final pulumi.Input<String>? priorityValue8021ActionSMB;
 
@@ -33,21 +31,10 @@ class QosPolicyOverrides {
 
   factory QosPolicyOverrides.fromMap(Map<String, dynamic> map) {
     return QosPolicyOverrides(
-      bandwidthPercentageSMB: (() {
-        final guardedValue = map['bandwidthPercentageSMB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      priorityValue8021ActionCluster: (() {
-        final guardedValue = map['priorityValue8021ActionCluster'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      priorityValue8021ActionSMB: (() {
-        final guardedValue = map['priorityValue8021ActionSMB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bandwidthPercentageSMB: (() { final guardedValue = map['bandwidthPercentageSMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      priorityValue8021ActionCluster: (() { final guardedValue = map['priorityValue8021ActionCluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      priorityValue8021ActionSMB: (() { final guardedValue = map['priorityValue8021ActionSMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

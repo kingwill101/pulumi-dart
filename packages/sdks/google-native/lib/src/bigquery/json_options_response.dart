@@ -8,10 +8,14 @@ class JsonOptionsResponse {
 
   /// Creates a new [JsonOptionsResponse].
   /// [encoding] [Optional] The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
-  JsonOptionsResponse({required this.encoding});
+  JsonOptionsResponse({
+    required this.encoding,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'encoding': encoding};
+    return <String, dynamic>{
+      'encoding': encoding,
+    };
   }
 
   factory JsonOptionsResponse.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class JsonOptionsResponse {
     );
   }
 }
+

@@ -6,38 +6,27 @@ import 'system_data_response.dart';
 class GetBlobFolderDataSetResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Container that has the file path.
   final String containerName;
-
   /// Unique id for identifying a data set resource
   final String dataSetId;
-
   /// The resource id of the azure resource
   final String id;
-
   /// Kind of data set.
   /// Expected value is 'BlobFolder'.
   final String kind;
-
   /// Name of the azure resource
   final String name;
-
   /// Prefix for blob folder
   final String prefix;
-
   /// Resource group of storage account
   final String resourceGroup;
-
   /// Storage account name of the source data set
   final String storageAccountName;
-
   /// Subscription id of storage account
   final String subscriptionId;
-
   /// System Data of the Azure resource.
   final SystemDataResponse systemData;
-
   /// Type of the azure resource
   final String type;
 
@@ -98,10 +87,9 @@ class GetBlobFolderDataSetResult {
       resourceGroup: map['resourceGroup'] as String,
       storageAccountName: map['storageAccountName'] as String,
       subscriptionId: map['subscriptionId'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

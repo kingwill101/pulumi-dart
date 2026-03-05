@@ -272,63 +272,44 @@ import 'https_application_configuration_state.dart';
 class HttpsApplicationConfiguration extends pulumi.CustomResource {
   /// Function switch, default off. Value range:
   late final pulumi.Output<String?> altSvc;
-
   /// Alt-Svc whether The header contains the clear parameter. This parameter is disabled by default. Value range:
   late final pulumi.Output<String?> altSvcClear;
-
   /// The effective time of the Alt-Svc, in seconds. The default value is 86400 seconds.
   late final pulumi.Output<String?> altSvcMa;
-
   /// Alt-Svc whether The header contains the persist parameter. This parameter is disabled by default. Value range:
   late final pulumi.Output<String?> altSvcPersist;
-
   /// Config Id
   late final pulumi.Output<int> configId;
-
   /// Whether to enable HSTS. It is disabled by default. Value range:
   late final pulumi.Output<String?> hsts;
-
   /// Whether to include subdomains in HSTS is disabled by default. Value range:
   late final pulumi.Output<String?> hstsIncludeSubdomains;
-
   /// The expiration time of HSTS, in seconds.
   late final pulumi.Output<String?> hstsMaxAge;
-
   /// Whether to enable HSTS preloading. It is disabled by default. Value range:
   late final pulumi.Output<String?> hstsPreload;
-
   /// Whether to enable forced HTTPS. It is disabled by default. Value range:
   late final pulumi.Output<String?> httpsForce;
-
   /// Forced HTTPS jump status code, value range:
   late final pulumi.Output<String?> httpsForceCode;
-
   /// Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
   late final pulumi.Output<String?> httpsNoSniDeny;
-
   /// Whether to enable SNI verification. It is disabled by default. Value range:
   late final pulumi.Output<String?> httpsSniVerify;
-
   /// Specifies the list of allowed SNI whitelists, separated by spaces.
   late final pulumi.Output<String?> httpsSniWhitelist;
-
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// - Match all incoming requests: value set to true
   /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
   late final pulumi.Output<String?> rule;
-
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   late final pulumi.Output<String?> ruleEnable;
-
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   late final pulumi.Output<String?> ruleName;
-
   /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   late final pulumi.Output<int> sequence;
-
   /// The site ID, which can be obtained by calling the ListSites API.
   late final pulumi.Output<String> siteId;
-
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   late final pulumi.Output<int?> siteVersion;
 
@@ -341,11 +322,11 @@ class HttpsApplicationConfiguration extends pulumi.CustomResource {
     HttpsApplicationConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/httpsApplicationConfiguration:HttpsApplicationConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/httpsApplicationConfiguration:HttpsApplicationConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     altSvc = registerOutput<String?>('altSvc');
     altSvcClear = registerOutput<String?>('altSvcClear');
     altSvcMa = registerOutput<String?>('altSvcMa');
@@ -386,11 +367,11 @@ class HttpsApplicationConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/httpsApplicationConfiguration:HttpsApplicationConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/httpsApplicationConfiguration:HttpsApplicationConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     altSvc = registerOutput<String?>('altSvc');
     altSvcClear = registerOutput<String?>('altSvcClear');
     altSvcMa = registerOutput<String?>('altSvcMa');

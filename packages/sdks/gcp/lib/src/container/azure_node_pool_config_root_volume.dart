@@ -8,19 +8,20 @@ class AzureNodePoolConfigRootVolume {
 
   /// Creates a new [AzureNodePoolConfigRootVolume].
   /// [sizeGib] Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
-  AzureNodePoolConfigRootVolume({this.sizeGib});
+  AzureNodePoolConfigRootVolume({
+    this.sizeGib,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sizeGib': ?sizeGib};
+    return <String, dynamic>{
+      'sizeGib': ?sizeGib,
+    };
   }
 
   factory AzureNodePoolConfigRootVolume.fromMap(Map<String, dynamic> map) {
     return AzureNodePoolConfigRootVolume(
-      sizeGib: (() {
-        final guardedValue = map['sizeGib'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      sizeGib: (() { final guardedValue = map['sizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

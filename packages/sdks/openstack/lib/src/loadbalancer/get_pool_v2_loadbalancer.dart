@@ -7,10 +7,14 @@ class GetPoolV2Loadbalancer {
 
   /// Creates a new [GetPoolV2Loadbalancer].
   /// [id] Required.
-  GetPoolV2Loadbalancer({required this.id});
+  GetPoolV2Loadbalancer({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetPoolV2Loadbalancer.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class GetPoolV2Loadbalancer {
     );
   }
 }
+

@@ -9,21 +9,20 @@ class ReservationReservationSharingPolicy {
 
   /// Creates a new [ReservationReservationSharingPolicy].
   /// [serviceShareType] Sharing config for all Google Cloud services.
-  ReservationReservationSharingPolicy({this.serviceShareType});
+  ReservationReservationSharingPolicy({
+    this.serviceShareType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serviceShareType': ?serviceShareType};
+    return <String, dynamic>{
+      'serviceShareType': ?serviceShareType,
+    };
   }
 
-  factory ReservationReservationSharingPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReservationReservationSharingPolicy.fromMap(Map<String, dynamic> map) {
     return ReservationReservationSharingPolicy(
-      serviceShareType: (() {
-        final guardedValue = map['serviceShareType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serviceShareType: (() { final guardedValue = map['serviceShareType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,14 @@ class CapacityAdministrationResponse {
 
   /// Creates a new [CapacityAdministrationResponse].
   /// [members] An array of administrator user identities.
-  CapacityAdministrationResponse({required this.members});
+  CapacityAdministrationResponse({
+    required this.members,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'members': members};
+    return <String, dynamic>{
+      'members': members,
+    };
   }
 
   factory CapacityAdministrationResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class CapacityAdministrationResponse {
     );
   }
 }
+

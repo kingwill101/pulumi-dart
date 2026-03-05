@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPolicyAttachmentArgs {
   /// The ARN of the policy you want to apply
   final pulumi.Input<String> policyArn;
-
   /// The user the policy should be applied to
   final pulumi.Input<String> user;
 
   /// Creates a new [UserPolicyAttachmentArgs].
   /// [policyArn] The ARN of the policy you want to apply
   /// [user] The user the policy should be applied to
-  UserPolicyAttachmentArgs({required this.policyArn, required this.user});
+  UserPolicyAttachmentArgs({
+    required this.policyArn,
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policyArn': policyArn, 'user': user};
+    return <String, dynamic>{
+      'policyArn': policyArn,
+      'user': user,
+    };
   }
 
   factory UserPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class UserPolicyAttachmentArgs {
     );
   }
 }
+

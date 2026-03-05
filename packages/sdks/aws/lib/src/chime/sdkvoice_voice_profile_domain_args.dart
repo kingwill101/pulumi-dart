@@ -10,18 +10,12 @@ import 'sdkvoice_voice_profile_domain_server_side_encryption_configuration.dart'
 class SdkvoiceVoiceProfileDomainArgs {
   /// Description of Voice Profile Domain.
   final pulumi.Input<String>? description;
-
   /// Name of Voice Profile Domain.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Configuration for server side encryption.
-  final pulumi.Input<
-    SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration
-  >
-  serverSideEncryptionConfiguration;
+  final pulumi.Input<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration> serverSideEncryptionConfiguration;
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [SdkvoiceVoiceProfileDomainArgs].
@@ -43,45 +37,19 @@ class SdkvoiceVoiceProfileDomainArgs {
       'description': ?description,
       'name': ?name,
       'region': ?region,
-      'serverSideEncryptionConfiguration':
-          pulumi.Input.mapInputValue<
-            SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration,
-            Map<String, dynamic>
-          >(serverSideEncryptionConfiguration, (value) => value.toMap()),
+      'serverSideEncryptionConfiguration': pulumi.Input.mapInputValue<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration, Map<String, dynamic>>(serverSideEncryptionConfiguration, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory SdkvoiceVoiceProfileDomainArgs.fromMap(Map<String, dynamic> map) {
     return SdkvoiceVoiceProfileDomainArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverSideEncryptionConfiguration: pulumi.Input.fromValue(
-        SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration.fromMap(
-          (map['serverSideEncryptionConfiguration']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverSideEncryptionConfiguration: pulumi.Input.fromValue(SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration.fromMap((map['serverSideEncryptionConfiguration']! as Map).cast<String, dynamic>())),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

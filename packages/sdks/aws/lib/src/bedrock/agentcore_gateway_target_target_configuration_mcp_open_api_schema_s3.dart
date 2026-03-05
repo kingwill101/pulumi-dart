@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3 {
   /// Account ID of the S3 bucket owner.
   final pulumi.Input<String>? bucketOwnerAccountId;
-
   /// S3 URI where the schema is stored.
   final pulumi.Input<String>? uri;
 
@@ -24,20 +23,11 @@ class AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3 {
     };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3(
-      bucketOwnerAccountId: (() {
-        final guardedValue = map['bucketOwnerAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucketOwnerAccountId: (() { final guardedValue = map['bucketOwnerAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

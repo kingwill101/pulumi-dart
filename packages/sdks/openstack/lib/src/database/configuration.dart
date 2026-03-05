@@ -6,17 +6,13 @@ import 'configuration_state.dart';
 class Configuration extends pulumi.CustomResource {
   /// An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> configurations;
-
   /// An array of database engine type and version. The datastore
   /// object structure is documented below. Changing this creates resource.
   late final pulumi.Output<ConfigurationDatastore> datastore;
-
   /// Description of the resource.
   late final pulumi.Output<String> description;
-
   /// A unique name for the resource.
   late final pulumi.Output<String> name;
-
   /// The region in which to create the db instance. Changing this
   /// creates a new instance.
   late final pulumi.Output<String> region;
@@ -30,24 +26,13 @@ class Configuration extends pulumi.CustomResource {
     ConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:database/configuration:Configuration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configurations = registerOutput<List<Map<String, dynamic>>?>(
-      'configurations',
-    );
-    datastore = registerOutput<ConfigurationDatastore>(
-      'datastore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConfigurationDatastore.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'openstack:database/configuration:Configuration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configurations = registerOutput<List<Map<String, dynamic>>?>('configurations');
+    datastore = registerOutput<ConfigurationDatastore>('datastore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationDatastore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -71,24 +56,13 @@ class Configuration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:database/configuration:Configuration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configurations = registerOutput<List<Map<String, dynamic>>?>(
-      'configurations',
-    );
-    datastore = registerOutput<ConfigurationDatastore>(
-      'datastore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConfigurationDatastore.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'openstack:database/configuration:Configuration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configurations = registerOutput<List<Map<String, dynamic>>?>('configurations');
+    datastore = registerOutput<ConfigurationDatastore>('datastore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationDatastore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

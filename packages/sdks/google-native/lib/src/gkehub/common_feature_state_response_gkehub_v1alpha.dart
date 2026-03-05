@@ -10,23 +10,15 @@ import 'service_mesh_feature_state_response.dart';
 /// CommonFeatureState contains Hub-wide Feature status information.
 class CommonFeatureStateResponseGkehubV1alpha {
   /// Appdevexperience specific state.
-  final pulumi.Input<AppDevExperienceFeatureStateResponseGkehubV1alpha>
-  appdevexperience;
-
+  final pulumi.Input<AppDevExperienceFeatureStateResponseGkehubV1alpha> appdevexperience;
   /// ClusterUpgrade fleet-level state.
-  final pulumi.Input<ClusterUpgradeFleetStateResponseGkehubV1alpha>
-  clusterupgrade;
-
+  final pulumi.Input<ClusterUpgradeFleetStateResponseGkehubV1alpha> clusterupgrade;
   /// FleetObservability feature state.
-  final pulumi.Input<FleetObservabilityFeatureStateResponseGkehubV1alpha>
-  fleetobservability;
-
+  final pulumi.Input<FleetObservabilityFeatureStateResponseGkehubV1alpha> fleetobservability;
   /// Namespace Actuation feature state.
   final pulumi.Input<Map<String, dynamic>> namespaceactuation;
-
   /// Service Mesh-specific state.
   final pulumi.Input<ServiceMeshFeatureStateResponse> servicemesh;
-
   /// The "running state" of the Feature in this Hub.
   final pulumi.Input<FeatureStateResponseGkehubV1alpha> state;
 
@@ -48,67 +40,24 @@ class CommonFeatureStateResponseGkehubV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appdevexperience':
-          pulumi.Input.mapInputValue<
-            AppDevExperienceFeatureStateResponseGkehubV1alpha,
-            Map<String, dynamic>
-          >(appdevexperience, (value) => value.toMap()),
-      'clusterupgrade':
-          pulumi.Input.mapInputValue<
-            ClusterUpgradeFleetStateResponseGkehubV1alpha,
-            Map<String, dynamic>
-          >(clusterupgrade, (value) => value.toMap()),
-      'fleetobservability':
-          pulumi.Input.mapInputValue<
-            FleetObservabilityFeatureStateResponseGkehubV1alpha,
-            Map<String, dynamic>
-          >(fleetobservability, (value) => value.toMap()),
+      'appdevexperience': pulumi.Input.mapInputValue<AppDevExperienceFeatureStateResponseGkehubV1alpha, Map<String, dynamic>>(appdevexperience, (value) => value.toMap()),
+      'clusterupgrade': pulumi.Input.mapInputValue<ClusterUpgradeFleetStateResponseGkehubV1alpha, Map<String, dynamic>>(clusterupgrade, (value) => value.toMap()),
+      'fleetobservability': pulumi.Input.mapInputValue<FleetObservabilityFeatureStateResponseGkehubV1alpha, Map<String, dynamic>>(fleetobservability, (value) => value.toMap()),
       'namespaceactuation': namespaceactuation,
-      'servicemesh':
-          pulumi.Input.mapInputValue<
-            ServiceMeshFeatureStateResponse,
-            Map<String, dynamic>
-          >(servicemesh, (value) => value.toMap()),
-      'state':
-          pulumi.Input.mapInputValue<
-            FeatureStateResponseGkehubV1alpha,
-            Map<String, dynamic>
-          >(state, (value) => value.toMap()),
+      'servicemesh': pulumi.Input.mapInputValue<ServiceMeshFeatureStateResponse, Map<String, dynamic>>(servicemesh, (value) => value.toMap()),
+      'state': pulumi.Input.mapInputValue<FeatureStateResponseGkehubV1alpha, Map<String, dynamic>>(state, (value) => value.toMap()),
     };
   }
 
-  factory CommonFeatureStateResponseGkehubV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CommonFeatureStateResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return CommonFeatureStateResponseGkehubV1alpha(
-      appdevexperience: pulumi.Input.fromValue(
-        AppDevExperienceFeatureStateResponseGkehubV1alpha.fromMap(
-          (map['appdevexperience']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      clusterupgrade: pulumi.Input.fromValue(
-        ClusterUpgradeFleetStateResponseGkehubV1alpha.fromMap(
-          (map['clusterupgrade']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      fleetobservability: pulumi.Input.fromValue(
-        FleetObservabilityFeatureStateResponseGkehubV1alpha.fromMap(
-          (map['fleetobservability']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      namespaceactuation: pulumi.Input.fromValue(
-        (map['namespaceactuation']! as Map).cast<String, dynamic>(),
-      ),
-      servicemesh: pulumi.Input.fromValue(
-        ServiceMeshFeatureStateResponse.fromMap(
-          (map['servicemesh']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      state: pulumi.Input.fromValue(
-        FeatureStateResponseGkehubV1alpha.fromMap(
-          (map['state']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      appdevexperience: pulumi.Input.fromValue(AppDevExperienceFeatureStateResponseGkehubV1alpha.fromMap((map['appdevexperience']! as Map).cast<String, dynamic>())),
+      clusterupgrade: pulumi.Input.fromValue(ClusterUpgradeFleetStateResponseGkehubV1alpha.fromMap((map['clusterupgrade']! as Map).cast<String, dynamic>())),
+      fleetobservability: pulumi.Input.fromValue(FleetObservabilityFeatureStateResponseGkehubV1alpha.fromMap((map['fleetobservability']! as Map).cast<String, dynamic>())),
+      namespaceactuation: pulumi.Input.fromValue((map['namespaceactuation']! as Map).cast<String, dynamic>()),
+      servicemesh: pulumi.Input.fromValue(ServiceMeshFeatureStateResponse.fromMap((map['servicemesh']! as Map).cast<String, dynamic>())),
+      state: pulumi.Input.fromValue(FeatureStateResponseGkehubV1alpha.fromMap((map['state']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

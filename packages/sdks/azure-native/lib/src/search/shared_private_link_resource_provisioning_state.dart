@@ -15,8 +15,7 @@ enum SharedPrivateLinkResourceProvisioningState {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SharedPrivateLinkResourceProvisioningState value: $value',
-    );
+    throw ArgumentError('Unknown SharedPrivateLinkResourceProvisioningState value: $value');
   }
 }
+

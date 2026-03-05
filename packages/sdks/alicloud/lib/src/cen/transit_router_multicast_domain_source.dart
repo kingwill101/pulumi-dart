@@ -725,16 +725,12 @@ import 'transit_router_multicast_domain_source_state.dart';
 class TransitRouterMulticastDomainSource extends pulumi.CustomResource {
   /// The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
   late final pulumi.Output<String> groupIpAddress;
-
   /// ENI ID of the multicast source.
   late final pulumi.Output<String> networkInterfaceId;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The ID of the multicast domain to which the multicast source belongs.
   late final pulumi.Output<String> transitRouterMulticastDomainId;
-
   /// The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
   late final pulumi.Output<String> vpcId;
 
@@ -747,17 +743,15 @@ class TransitRouterMulticastDomainSource extends pulumi.CustomResource {
     TransitRouterMulticastDomainSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterMulticastDomainSource:TransitRouterMulticastDomainSource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterMulticastDomainSource:TransitRouterMulticastDomainSource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupIpAddress = registerOutput<String>('groupIpAddress');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     status = registerOutput<String>('status');
-    transitRouterMulticastDomainId = registerOutput<String>(
-      'transitRouterMulticastDomainId',
-    );
+    transitRouterMulticastDomainId = registerOutput<String>('transitRouterMulticastDomainId');
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -779,17 +773,15 @@ class TransitRouterMulticastDomainSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterMulticastDomainSource:TransitRouterMulticastDomainSource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterMulticastDomainSource:TransitRouterMulticastDomainSource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupIpAddress = registerOutput<String>('groupIpAddress');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     status = registerOutput<String>('status');
-    transitRouterMulticastDomainId = registerOutput<String>(
-      'transitRouterMulticastDomainId',
-    );
+    transitRouterMulticastDomainId = registerOutput<String>('transitRouterMulticastDomainId');
     vpcId = registerOutput<String>('vpcId');
   }
 }

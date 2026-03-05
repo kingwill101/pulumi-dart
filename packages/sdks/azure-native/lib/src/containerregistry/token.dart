@@ -190,28 +190,20 @@ import 'token_credentials_properties_response.dart';
 class Token extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The creation date of scope map.
   late final pulumi.Output<String> creationDate;
-
   /// The credentials that can be used for authenticating the token.
   late final pulumi.Output<TokenCredentialsPropertiesResponse?> credentials;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The resource ID of the scope map to which the token will be associated with.
   late final pulumi.Output<String?> scopeMapId;
-
   /// The status of the token example enabled or disabled.
   late final pulumi.Output<String?> status;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -219,39 +211,24 @@ class Token extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Token]. {@macro pulumi_containerregistry_token_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Token(String name, {TokenArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:containerregistry:Token',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Token(
+    String name, {
+    TokenArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:containerregistry:Token',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationDate = registerOutput<String>('creationDate');
-    credentials = registerOutput<TokenCredentialsPropertiesResponse?>(
-      'credentials',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TokenCredentialsPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    credentials = registerOutput<TokenCredentialsPropertiesResponse?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TokenCredentialsPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     scopeMapId = registerOutput<String?>('scopeMapId');
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

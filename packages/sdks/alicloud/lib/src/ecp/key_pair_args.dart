@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyPairArgs {
   /// The Key Name.
   final pulumi.Input<String> keyPairName;
-
   /// The public key body.
   final pulumi.Input<String> publicKeyBody;
 
   /// Creates a new [KeyPairArgs].
   /// [keyPairName] The Key Name.
   /// [publicKeyBody] The public key body.
-  KeyPairArgs({required this.keyPairName, required this.publicKeyBody});
+  KeyPairArgs({
+    required this.keyPairName,
+    required this.publicKeyBody,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,3 +34,4 @@ class KeyPairArgs {
     );
   }
 }
+

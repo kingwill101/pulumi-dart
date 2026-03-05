@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPasswordAlloydbV1alpha {
   /// The initial password for the user.
   final pulumi.Input<String>? password;
-
   /// The database username.
   final pulumi.Input<String>? user;
 
   /// Creates a new [UserPasswordAlloydbV1alpha].
   /// [password] The initial password for the user.
   /// [user] The database username.
-  UserPasswordAlloydbV1alpha({this.password, this.user});
+  UserPasswordAlloydbV1alpha({
+    this.password,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': ?password, 'user': ?user};
+    return <String, dynamic>{
+      'password': ?password,
+      'user': ?user,
+    };
   }
 
   factory UserPasswordAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return UserPasswordAlloydbV1alpha(
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      user: (() {
-        final guardedValue = map['user'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

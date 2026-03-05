@@ -425,68 +425,46 @@ import 'system_data_response.dart';
 class Cache extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The size of this Cache, in GB.
   late final pulumi.Output<int?> cacheSizeGB;
-
   /// Specifies Directory Services settings of the cache.
-  late final pulumi.Output<CacheDirectorySettingsResponse?>
-  directoryServicesSettings;
-
+  late final pulumi.Output<CacheDirectorySettingsResponse?> directoryServicesSettings;
   /// Specifies encryption settings of the cache.
   late final pulumi.Output<CacheEncryptionSettingsResponse?> encryptionSettings;
-
   /// Health of the cache.
   late final pulumi.Output<CacheHealthResponse> health;
-
   /// The identity of the cache, if configured.
   late final pulumi.Output<CacheIdentityResponse?> identity;
-
   /// Region name string.
   late final pulumi.Output<String?> location;
-
   /// Array of IPv4 addresses that can be used by clients mounting this cache.
   late final pulumi.Output<List<String>> mountAddresses;
-
   /// Name of cache.
   late final pulumi.Output<String> name;
-
   /// Specifies network settings of the cache.
   late final pulumi.Output<CacheNetworkSettingsResponse?> networkSettings;
-
   /// Specifies the priming jobs defined in the cache.
   late final pulumi.Output<List<Map<String, dynamic>>> primingJobs;
-
   /// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
   late final pulumi.Output<String> provisioningState;
-
   /// Specifies security settings of the cache.
   late final pulumi.Output<CacheSecuritySettingsResponse?> securitySettings;
-
   /// SKU for the cache.
   late final pulumi.Output<CacheResponseSku?> sku;
-
   /// Specifies the space allocation percentage for each storage target in the cache.
   late final pulumi.Output<List<Map<String, dynamic>>> spaceAllocation;
-
   /// Subnet used for the cache.
   late final pulumi.Output<String?> subnet;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Type of the cache; Microsoft.StorageCache/Cache
   late final pulumi.Output<String> type;
-
   /// Upgrade settings of the cache.
   late final pulumi.Output<CacheUpgradeSettingsResponse?> upgradeSettings;
-
   /// Upgrade status of the cache.
   late final pulumi.Output<CacheUpgradeStatusResponse> upgradeStatus;
-
   /// Availability zones for resources. This field should only contain a single element in the array.
   late final pulumi.Output<List<String>?> zones;
 
@@ -494,126 +472,37 @@ class Cache extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Cache]. {@macro pulumi_storagecache_cache_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Cache(String name, {CacheArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:storagecache:Cache',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Cache(
+    String name, {
+    CacheArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:storagecache:Cache',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cacheSizeGB = registerOutput<int?>('cacheSizeGB');
-    directoryServicesSettings = registerOutput<CacheDirectorySettingsResponse?>(
-      'directoryServicesSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheDirectorySettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptionSettings = registerOutput<CacheEncryptionSettingsResponse?>(
-      'encryptionSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheEncryptionSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    health = registerOutput<CacheHealthResponse>(
-      'health',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheHealthResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<CacheIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    directoryServicesSettings = registerOutput<CacheDirectorySettingsResponse?>('directoryServicesSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDirectorySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionSettings = registerOutput<CacheEncryptionSettingsResponse?>('encryptionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheEncryptionSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    health = registerOutput<CacheHealthResponse>('health', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheHealthResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<CacheIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     mountAddresses = registerOutput<List<String>>('mountAddresses');
     this.name = registerOutput<String>('name');
-    networkSettings = registerOutput<CacheNetworkSettingsResponse?>(
-      'networkSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheNetworkSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkSettings = registerOutput<CacheNetworkSettingsResponse?>('networkSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheNetworkSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     primingJobs = registerOutput<List<Map<String, dynamic>>>('primingJobs');
     provisioningState = registerOutput<String>('provisioningState');
-    securitySettings = registerOutput<CacheSecuritySettingsResponse?>(
-      'securitySettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheSecuritySettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sku = registerOutput<CacheResponseSku?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheResponseSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    spaceAllocation = registerOutput<List<Map<String, dynamic>>>(
-      'spaceAllocation',
-    );
+    securitySettings = registerOutput<CacheSecuritySettingsResponse?>('securitySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheSecuritySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<CacheResponseSku?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheResponseSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spaceAllocation = registerOutput<List<Map<String, dynamic>>>('spaceAllocation');
     subnet = registerOutput<String?>('subnet');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    upgradeSettings = registerOutput<CacheUpgradeSettingsResponse?>(
-      'upgradeSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheUpgradeSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    upgradeStatus = registerOutput<CacheUpgradeStatusResponse>(
-      'upgradeStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheUpgradeStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    upgradeSettings = registerOutput<CacheUpgradeSettingsResponse?>('upgradeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheUpgradeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    upgradeStatus = registerOutput<CacheUpgradeStatusResponse>('upgradeStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheUpgradeStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zones = registerOutput<List<String>?>('zones');
   }
 }

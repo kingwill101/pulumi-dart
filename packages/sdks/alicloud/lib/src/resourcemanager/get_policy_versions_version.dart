@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyVersionsVersion {
   /// The ID of the resource, the value is `&lt;policy_name&gt;`:`&lt;version_id&gt;`.
   final pulumi.Input<String> id;
-
   /// Indicates whether the policy version is the default version.
   final pulumi.Input<bool> isDefaultVersion;
-
   /// (Available in v1.114.0+) The policy document of the policy version.
   final pulumi.Input<String> policyDocument;
-
   /// The ID of the policy version.
   final pulumi.Input<String> versionId;
 
@@ -45,3 +42,4 @@ class GetPolicyVersionsVersion {
     );
   }
 }
+

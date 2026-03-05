@@ -9,25 +9,18 @@ import 'task_spec.dart';
 class TaskGroup {
   /// Max number of tasks that can run in parallel. Default to min(task_count, parallel tasks per job limit). See: [Job Limits](https://cloud.google.com/batch/quotas#job_limits). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
   final pulumi.Input<String>? parallelism;
-
   /// When true, Batch will configure SSH to allow passwordless login between VMs running the Batch tasks in the same TaskGroup.
   final pulumi.Input<bool>? permissiveSsh;
-
   /// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
   final pulumi.Input<bool>? requireHostsFile;
-
   /// Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
   final pulumi.Input<TaskGroupSchedulingPolicy>? schedulingPolicy;
-
   /// Number of Tasks in the TaskGroup. Default is 1.
   final pulumi.Input<String>? taskCount;
-
   /// Max number of tasks that can be run on a VM at the same time. If not specified, the system will decide a value based on available compute resources on a VM and task requirements.
   final pulumi.Input<String>? taskCountPerNode;
-
   /// An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1).
   final pulumi.Input<List<Environment>>? taskEnvironments;
-
   /// Tasks in the group share the same task spec.
   final pulumi.Input<TaskSpec> taskSpec;
 
@@ -56,80 +49,25 @@ class TaskGroup {
       'parallelism': ?parallelism,
       'permissiveSsh': ?permissiveSsh,
       'requireHostsFile': ?requireHostsFile,
-      'schedulingPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            TaskGroupSchedulingPolicy,
-            String
-          >(schedulingPolicy, (value) => value.wireValue),
+      'schedulingPolicy': ?pulumi.Input.mapOptionalInputValue<TaskGroupSchedulingPolicy, String>(schedulingPolicy, (value) => value.wireValue),
       'taskCount': ?taskCount,
       'taskCountPerNode': ?taskCountPerNode,
-      'taskEnvironments':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Environment>,
-            List<Map<String, dynamic>>
-          >(
-            taskEnvironments,
-            (value) =>
-                pulumi.Input.encodeList<Environment, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'taskSpec': pulumi.Input.mapInputValue<TaskSpec, Map<String, dynamic>>(
-        taskSpec,
-        (value) => value.toMap(),
-      ),
+      'taskEnvironments': ?pulumi.Input.mapOptionalInputValue<List<Environment>, List<Map<String, dynamic>>>(taskEnvironments, (value) => pulumi.Input.encodeList<Environment, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'taskSpec': pulumi.Input.mapInputValue<TaskSpec, Map<String, dynamic>>(taskSpec, (value) => value.toMap()),
     };
   }
 
   factory TaskGroup.fromMap(Map<String, dynamic> map) {
     return TaskGroup(
-      parallelism: (() {
-        final guardedValue = map['parallelism'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      permissiveSsh: (() {
-        final guardedValue = map['permissiveSsh'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      requireHostsFile: (() {
-        final guardedValue = map['requireHostsFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      schedulingPolicy: (() {
-        final guardedValue = map['schedulingPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TaskGroupSchedulingPolicy.fromValue(guardedValue as String),
-        );
-      })(),
-      taskCount: (() {
-        final guardedValue = map['taskCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      taskCountPerNode: (() {
-        final guardedValue = map['taskCountPerNode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      taskEnvironments: (() {
-        final guardedValue = map['taskEnvironments'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Environment>(
-            guardedValue,
-            (value) =>
-                Environment.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      taskSpec: pulumi.Input.fromValue(
-        TaskSpec.fromMap((map['taskSpec']! as Map).cast<String, dynamic>()),
-      ),
+      parallelism: (() { final guardedValue = map['parallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      permissiveSsh: (() { final guardedValue = map['permissiveSsh']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      requireHostsFile: (() { final guardedValue = map['requireHostsFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      schedulingPolicy: (() { final guardedValue = map['schedulingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskGroupSchedulingPolicy.fromValue(guardedValue as String)); })(),
+      taskCount: (() { final guardedValue = map['taskCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      taskCountPerNode: (() { final guardedValue = map['taskCountPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      taskEnvironments: (() { final guardedValue = map['taskEnvironments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Environment>(guardedValue, (value) => Environment.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      taskSpec: pulumi.Input.fromValue(TaskSpec.fromMap((map['taskSpec']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

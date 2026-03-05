@@ -537,12 +537,10 @@ class NodePool extends pulumi.CustomResource {
   /// Configuration required by cluster autoscaler to adjust
   /// the size of the node pool to the current cluster usage. Structure is documented below.
   late final pulumi.Output<NodePoolAutoscaling?> autoscaling;
-
   /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
   ///
   /// - - -
   late final pulumi.Output<String> cluster;
-
   /// The initial number of nodes for the pool. In
   /// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
   /// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -551,53 +549,41 @@ class NodePool extends pulumi.CustomResource {
   /// need this value, don't set it.  If you do need it, you can use a lifecycle block to
   /// ignore subsqeuent changes to this field.
   late final pulumi.Output<int> initialNodeCount;
-
   /// The resource URLs of the managed instance groups associated with this node pool.
   late final pulumi.Output<List<String>> instanceGroupUrls;
-
   /// The location (region or zone) of the cluster.
   ///
   /// - - -
   late final pulumi.Output<String> location;
-
   /// List of instance group URLs which have been assigned to this node pool.
   late final pulumi.Output<List<String>> managedInstanceGroupUrls;
-
   /// Node management configuration, wherein auto-repair and
   /// auto-upgrade is configured. Structure is documented below.
   late final pulumi.Output<NodePoolManagement> management;
-
   /// The maximum number of pods per node in this node pool.
   /// Note that this does not work on node pools which are "route-based" - that is, node
   /// pools belonging to clusters that do not have IP Aliasing enabled.
   /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
   /// for more information.
   late final pulumi.Output<int> maxPodsPerNode;
-
   /// The name of the node pool. If left blank, the provider will
   /// auto-generate a unique name.
   late final pulumi.Output<String> name;
-
   /// Creates a unique name for the node pool beginning
   /// with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
-
   /// The network configuration of the pool. Such as
   /// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
   /// documented below
   late final pulumi.Output<NodePoolNetworkConfig> networkConfig;
-
   /// Parameters used in creating the node pool. See
   /// gcp.container.Cluster for schema.
   late final pulumi.Output<NodePoolNodeConfig> nodeConfig;
-
   /// The number of nodes per instance group. This field can be used to
   /// update the number of nodes per instance group but should not be used alongside `autoscaling`.
   late final pulumi.Output<int> nodeCount;
-
   /// The node drain configuration of the pool. Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> nodeDrainConfigs;
-
   /// The list of zones in which the node pool's nodes should be located. Nodes must
   /// be in the region of their regional cluster or in the same region as their
   /// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -608,25 +594,20 @@ class NodePool extends pulumi.CustomResource {
   /// cluster.
   late final pulumi.Output<List<String>> nodeLocations;
   late final pulumi.Output<String> operation;
-
   /// Specifies a custom placement policy for the
   /// nodes.
   late final pulumi.Output<NodePoolPlacementPolicy?> placementPolicy;
-
   /// The ID of the project in which to create the node pool. If blank,
   /// the provider-configured project will be used.
   late final pulumi.Output<String> project;
-
   /// Specifies node pool-level settings of queued provisioning.
   /// Structure is documented below.
   ///
   /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
   late final pulumi.Output<NodePoolQueuedProvisioning?> queuedProvisioning;
-
   /// Specify node upgrade settings to change how GKE upgrades nodes.
   /// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
   late final pulumi.Output<NodePoolUpgradeSettings> upgradeSettings;
-
   /// The Kubernetes version for the nodes in this pool. Note that if this field
   /// and `auto_upgrade` are both specified, they will fight each other for what the node version should
   /// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
@@ -644,98 +625,31 @@ class NodePool extends pulumi.CustomResource {
     NodePoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:container/nodePool:NodePool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoscaling = registerOutput<NodePoolAutoscaling?>(
-      'autoscaling',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodePoolAutoscaling.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:container/nodePool:NodePool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoscaling = registerOutput<NodePoolAutoscaling?>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     initialNodeCount = registerOutput<int>('initialNodeCount');
     instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls');
     location = registerOutput<String>('location');
-    managedInstanceGroupUrls = registerOutput<List<String>>(
-      'managedInstanceGroupUrls',
-    );
-    management = registerOutput<NodePoolManagement>(
-      'management',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodePoolManagement.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managedInstanceGroupUrls = registerOutput<List<String>>('managedInstanceGroupUrls');
+    management = registerOutput<NodePoolManagement>('management', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxPodsPerNode = registerOutput<int>('maxPodsPerNode');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    networkConfig = registerOutput<NodePoolNetworkConfig>(
-      'networkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodePoolNetworkConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    nodeConfig = registerOutput<NodePoolNodeConfig>(
-      'nodeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodePoolNodeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkConfig = registerOutput<NodePoolNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeConfig = registerOutput<NodePoolNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeCount = registerOutput<int>('nodeCount');
-    nodeDrainConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'nodeDrainConfigs',
-    );
+    nodeDrainConfigs = registerOutput<List<Map<String, dynamic>>>('nodeDrainConfigs');
     nodeLocations = registerOutput<List<String>>('nodeLocations');
     operation = registerOutput<String>('operation');
-    placementPolicy = registerOutput<NodePoolPlacementPolicy?>(
-      'placementPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodePoolPlacementPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    placementPolicy = registerOutput<NodePoolPlacementPolicy?>('placementPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolPlacementPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    queuedProvisioning = registerOutput<NodePoolQueuedProvisioning?>(
-      'queuedProvisioning',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodePoolQueuedProvisioning.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    upgradeSettings = registerOutput<NodePoolUpgradeSettings>(
-      'upgradeSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodePoolUpgradeSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    queuedProvisioning = registerOutput<NodePoolQueuedProvisioning?>('queuedProvisioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolQueuedProvisioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    upgradeSettings = registerOutput<NodePoolUpgradeSettings>('upgradeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolUpgradeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }
 
@@ -757,98 +671,31 @@ class NodePool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:container/nodePool:NodePool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoscaling = registerOutput<NodePoolAutoscaling?>(
-      'autoscaling',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodePoolAutoscaling.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:container/nodePool:NodePool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoscaling = registerOutput<NodePoolAutoscaling?>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     initialNodeCount = registerOutput<int>('initialNodeCount');
     instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls');
     location = registerOutput<String>('location');
-    managedInstanceGroupUrls = registerOutput<List<String>>(
-      'managedInstanceGroupUrls',
-    );
-    management = registerOutput<NodePoolManagement>(
-      'management',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodePoolManagement.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managedInstanceGroupUrls = registerOutput<List<String>>('managedInstanceGroupUrls');
+    management = registerOutput<NodePoolManagement>('management', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxPodsPerNode = registerOutput<int>('maxPodsPerNode');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    networkConfig = registerOutput<NodePoolNetworkConfig>(
-      'networkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodePoolNetworkConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    nodeConfig = registerOutput<NodePoolNodeConfig>(
-      'nodeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodePoolNodeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkConfig = registerOutput<NodePoolNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeConfig = registerOutput<NodePoolNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeCount = registerOutput<int>('nodeCount');
-    nodeDrainConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'nodeDrainConfigs',
-    );
+    nodeDrainConfigs = registerOutput<List<Map<String, dynamic>>>('nodeDrainConfigs');
     nodeLocations = registerOutput<List<String>>('nodeLocations');
     operation = registerOutput<String>('operation');
-    placementPolicy = registerOutput<NodePoolPlacementPolicy?>(
-      'placementPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodePoolPlacementPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    placementPolicy = registerOutput<NodePoolPlacementPolicy?>('placementPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolPlacementPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    queuedProvisioning = registerOutput<NodePoolQueuedProvisioning?>(
-      'queuedProvisioning',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodePoolQueuedProvisioning.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    upgradeSettings = registerOutput<NodePoolUpgradeSettings>(
-      'upgradeSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodePoolUpgradeSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    queuedProvisioning = registerOutput<NodePoolQueuedProvisioning?>('queuedProvisioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolQueuedProvisioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    upgradeSettings = registerOutput<NodePoolUpgradeSettings>('upgradeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolUpgradeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }
 }

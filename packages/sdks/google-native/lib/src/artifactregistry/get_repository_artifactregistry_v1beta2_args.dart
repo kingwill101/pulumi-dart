@@ -29,17 +29,12 @@ class GetRepositoryArtifactregistryV1beta2Args {
     };
   }
 
-  factory GetRepositoryArtifactregistryV1beta2Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRepositoryArtifactregistryV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetRepositoryArtifactregistryV1beta2Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
     );
   }
 }
+

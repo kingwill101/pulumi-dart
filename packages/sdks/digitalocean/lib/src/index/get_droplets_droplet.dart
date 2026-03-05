@@ -5,76 +5,52 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDropletsDroplet {
   /// Whether backups are enabled.
   final pulumi.Input<bool> backups;
-
   /// the creation date for the Droplet
   final pulumi.Input<String> createdAt;
-
   /// The size of the Droplet's disk in GB.
   final pulumi.Input<int> disk;
-
   /// The ID of the Droplet.
   final pulumi.Input<int> id;
-
   /// The Droplet image ID or slug.
   final pulumi.Input<String> image;
-
   /// The Droplet's public IPv4 address
   final pulumi.Input<String> ipv4Address;
-
   /// The Droplet's private IPv4 address
   final pulumi.Input<String> ipv4AddressPrivate;
-
   /// Whether IPv6 is enabled.
   final pulumi.Input<bool> ipv6;
-
   /// The Droplet's public IPv6 address
   final pulumi.Input<String> ipv6Address;
-
   /// The Droplet's private IPv6 address
   final pulumi.Input<String> ipv6AddressPrivate;
-
   /// Whether the Droplet is locked.
   final pulumi.Input<bool> locked;
-
   /// The amount of the Droplet's memory in MB.
   final pulumi.Input<int> memory;
-
   /// Whether monitoring agent is installed.
   final pulumi.Input<bool> monitoring;
-
   /// name of the Droplet
   final pulumi.Input<String> name;
-
   /// Droplet hourly price.
   final pulumi.Input<double> priceHourly;
-
   /// Droplet monthly price.
   final pulumi.Input<double> priceMonthly;
-
   /// Whether private networks are enabled.
   final pulumi.Input<bool> privateNetworking;
-
   /// The region the Droplet is running in.
   final pulumi.Input<String> region;
-
   /// The unique slug that identifies the type of Droplet.
   final pulumi.Input<String> size;
-
   /// The status of the Droplet.
   final pulumi.Input<String> status;
-
   /// A list of the tags associated to the Droplet.
   final pulumi.Input<List<String>> tags;
-
   /// The uniform resource name of the Droplet
   final pulumi.Input<String> urn;
-
   /// The number of the Droplet's virtual CPUs.
   final pulumi.Input<int> vcpus;
-
   /// List of the IDs of each volumes attached to the Droplet.
   final pulumi.Input<List<String>> volumeIds;
-
   /// The ID of the VPC where the Droplet is located.
   final pulumi.Input<String> vpcUuid;
 
@@ -170,33 +146,26 @@ class GetDropletsDroplet {
       id: pulumi.Input.fromValue(map['id'] as int),
       image: pulumi.Input.fromValue(map['image'] as String),
       ipv4Address: pulumi.Input.fromValue(map['ipv4Address'] as String),
-      ipv4AddressPrivate: pulumi.Input.fromValue(
-        map['ipv4AddressPrivate'] as String,
-      ),
+      ipv4AddressPrivate: pulumi.Input.fromValue(map['ipv4AddressPrivate'] as String),
       ipv6: pulumi.Input.fromValue(map['ipv6'] as bool),
       ipv6Address: pulumi.Input.fromValue(map['ipv6Address'] as String),
-      ipv6AddressPrivate: pulumi.Input.fromValue(
-        map['ipv6AddressPrivate'] as String,
-      ),
+      ipv6AddressPrivate: pulumi.Input.fromValue(map['ipv6AddressPrivate'] as String),
       locked: pulumi.Input.fromValue(map['locked'] as bool),
       memory: pulumi.Input.fromValue(map['memory'] as int),
       monitoring: pulumi.Input.fromValue(map['monitoring'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
       priceHourly: pulumi.Input.fromValue(map['priceHourly'] as double),
       priceMonthly: pulumi.Input.fromValue(map['priceMonthly'] as double),
-      privateNetworking: pulumi.Input.fromValue(
-        map['privateNetworking'] as bool,
-      ),
+      privateNetworking: pulumi.Input.fromValue(map['privateNetworking'] as bool),
       region: pulumi.Input.fromValue(map['region'] as String),
       size: pulumi.Input.fromValue(map['size'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
       urn: pulumi.Input.fromValue(map['urn'] as String),
       vcpus: pulumi.Input.fromValue(map['vcpus'] as int),
-      volumeIds: pulumi.Input.fromValue(
-        (map['volumeIds'] as List).cast<String>(),
-      ),
+      volumeIds: pulumi.Input.fromValue((map['volumeIds'] as List).cast<String>()),
       vpcUuid: pulumi.Input.fromValue(map['vpcUuid'] as String),
     );
   }
 }
+

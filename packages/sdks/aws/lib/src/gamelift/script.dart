@@ -136,25 +136,18 @@ import 'script_storage_location.dart';
 class Script extends pulumi.CustomResource {
   /// GameLift Script ARN.
   late final pulumi.Output<String> arn;
-
   /// Name of the script
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Information indicating where your game script files are stored. See below.
   late final pulumi.Output<ScriptStorageLocation> storageLocation;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Version that is associated with this script.
   late final pulumi.Output<String?> version;
-
   /// A data object containing your Realtime scripts and dependencies as a zip  file. The zip file can have one or multiple files. Maximum size of a zip file is 5 MB.
   late final pulumi.Output<String?> zipFile;
 
@@ -162,26 +155,20 @@ class Script extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Script]. {@macro pulumi_gamelift_script_script_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Script(String name, {ScriptArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:gamelift/script:Script',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Script(
+    String name, {
+    ScriptArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:gamelift/script:Script',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    storageLocation = registerOutput<ScriptStorageLocation>(
-      'storageLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScriptStorageLocation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storageLocation = registerOutput<ScriptStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScriptStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     version = registerOutput<String?>('version');
@@ -206,24 +193,15 @@ class Script extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:gamelift/script:Script',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:gamelift/script:Script',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    storageLocation = registerOutput<ScriptStorageLocation>(
-      'storageLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScriptStorageLocation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storageLocation = registerOutput<ScriptStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScriptStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     version = registerOutput<String?>('version');

@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listAuthorizationServerSecrets.
 class ListAuthorizationServerSecretsResult {
   /// oAuth Authorization Server Secrets.
   final String? clientSecret;
-
   /// Can be optionally specified when resource owner password grant type is supported by this authorization server. Default resource owner password.
   final String? resourceOwnerPassword;
-
   /// Can be optionally specified when resource owner password grant type is supported by this authorization server. Default resource owner username.
   final String? resourceOwnerUsername;
 
@@ -29,25 +28,12 @@ class ListAuthorizationServerSecretsResult {
     };
   }
 
-  factory ListAuthorizationServerSecretsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListAuthorizationServerSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListAuthorizationServerSecretsResult(
-      clientSecret: (() {
-        final guardedValue = map['clientSecret'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceOwnerPassword: (() {
-        final guardedValue = map['resourceOwnerPassword'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceOwnerUsername: (() {
-        final guardedValue = map['resourceOwnerUsername'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceOwnerPassword: (() { final guardedValue = map['resourceOwnerPassword']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceOwnerUsername: (() { final guardedValue = map['resourceOwnerUsername']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

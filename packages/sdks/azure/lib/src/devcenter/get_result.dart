@@ -7,18 +7,14 @@ import 'get_identity.dart';
 class GetResult {
   /// The URI of the Dev Center.
   final String devCenterUri;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// An `identity` block as defined below.
   final List<GetIdentity> identities;
-
   /// The Azure Region where the Dev Center exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the Dev Center.
   final Map<String, String> tags;
 
@@ -44,10 +40,7 @@ class GetResult {
     return <String, dynamic>{
       'devCenterUri': devCenterUri,
       'id': id,
-      'identities': pulumi.Input.encodeList<GetIdentity, Map<String, dynamic>>(
-        identities,
-        (value) => value.toMap(),
-      ),
+      'identities': pulumi.Input.encodeList<GetIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
@@ -59,10 +52,7 @@ class GetResult {
     return GetResult(
       devCenterUri: map['devCenterUri'] as String,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetIdentity>(
-        map['identities']!,
-        (value) => GetIdentity.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      identities: pulumi.Input.decodeList<GetIdentity>(map['identities']!, (value) => GetIdentity.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
@@ -70,3 +60,4 @@ class GetResult {
     );
   }
 }
+

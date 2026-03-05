@@ -161,10 +161,8 @@ import 'log_transformer_state.dart';
 class LogTransformer extends pulumi.CustomResource {
   /// Log group ARN to set the transformer for.
   late final pulumi.Output<String> logGroupArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Specifies the configuration of the transformer. You must include at least one configuration, and 20 at most. See `transformer_config` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> transformerConfigs;
 
@@ -177,16 +175,14 @@ class LogTransformer extends pulumi.CustomResource {
     LogTransformerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/logTransformer:LogTransformer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/logTransformer:LogTransformer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     logGroupArn = registerOutput<String>('logGroupArn');
     region = registerOutput<String>('region');
-    transformerConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'transformerConfigs',
-    );
+    transformerConfigs = registerOutput<List<Map<String, dynamic>>>('transformerConfigs');
   }
 
   /// Gets an existing [LogTransformer] resource's state with the given [name] and [id].
@@ -207,15 +203,13 @@ class LogTransformer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/logTransformer:LogTransformer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/logTransformer:LogTransformer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     logGroupArn = registerOutput<String>('logGroupArn');
     region = registerOutput<String>('region');
-    transformerConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'transformerConfigs',
-    );
+    transformerConfigs = registerOutput<List<Map<String, dynamic>>>('transformerConfigs');
   }
 }

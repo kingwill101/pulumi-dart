@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSaasSubscriptionLevelArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the resource.
   final pulumi.Input<String> resourceName;
 
@@ -30,10 +29,9 @@ class GetSaasSubscriptionLevelArgs {
 
   factory GetSaasSubscriptionLevelArgs.fromMap(Map<String, dynamic> map) {
     return GetSaasSubscriptionLevelArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

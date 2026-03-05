@@ -468,45 +468,34 @@ import 'blockchain_nodes_state.dart';
 class BlockchainNodes extends pulumi.CustomResource {
   /// ID of the requesting object.
   late final pulumi.Output<String> blockchainNodeId;
-
   /// User-provided key-value pairs
   /// Possible values are: `ETHEREUM`.
   late final pulumi.Output<String?> blockchainType;
-
   /// The connection information through which to interact with a blockchain node.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> connectionInfos;
-
   /// The timestamp at which the blockchain node was first created.
   late final pulumi.Output<String> createTime;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// User-provided key-value pairs
   /// Structure is documented below.
   late final pulumi.Output<BlockchainNodesEthereumDetails?> ethereumDetails;
-
   /// User-provided key-value pairs
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Location of Blockchain Node being created.
   late final pulumi.Output<String> location;
-
   /// The fully qualified name of the blockchain node. e.g. projects/my-project/locations/us-central1/blockchainNodes/my-node.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The timestamp at which the blockchain node was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -519,28 +508,17 @@ class BlockchainNodes extends pulumi.CustomResource {
     BlockchainNodesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blockchainNodeId = registerOutput<String>('blockchainNodeId');
     blockchainType = registerOutput<String?>('blockchainType');
-    connectionInfos = registerOutput<List<Map<String, dynamic>>>(
-      'connectionInfos',
-    );
+    connectionInfos = registerOutput<List<Map<String, dynamic>>>('connectionInfos');
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    ethereumDetails = registerOutput<BlockchainNodesEthereumDetails?>(
-      'ethereumDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BlockchainNodesEthereumDetails.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ethereumDetails = registerOutput<BlockchainNodesEthereumDetails?>('ethereumDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlockchainNodesEthereumDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -567,28 +545,17 @@ class BlockchainNodes extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blockchainNodeId = registerOutput<String>('blockchainNodeId');
     blockchainType = registerOutput<String?>('blockchainType');
-    connectionInfos = registerOutput<List<Map<String, dynamic>>>(
-      'connectionInfos',
-    );
+    connectionInfos = registerOutput<List<Map<String, dynamic>>>('connectionInfos');
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    ethereumDetails = registerOutput<BlockchainNodesEthereumDetails?>(
-      'ethereumDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BlockchainNodesEthereumDetails.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ethereumDetails = registerOutput<BlockchainNodesEthereumDetails?>('ethereumDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlockchainNodesEthereumDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

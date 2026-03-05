@@ -8,10 +8,14 @@ class DiskAsyncPrimaryDisk {
 
   /// Creates a new [DiskAsyncPrimaryDisk].
   /// [disk] Primary disk for asynchronous disk replication.
-  DiskAsyncPrimaryDisk({required this.disk});
+  DiskAsyncPrimaryDisk({
+    required this.disk,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disk': disk};
+    return <String, dynamic>{
+      'disk': disk,
+    };
   }
 
   factory DiskAsyncPrimaryDisk.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DiskAsyncPrimaryDisk {
     );
   }
 }
+

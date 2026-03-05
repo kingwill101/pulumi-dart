@@ -6,22 +6,16 @@ import 'skuresponse.dart';
 class GetAccountResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The ID of the resource
   final String id;
-
   /// The location of the resource
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The SKU of the resource
   final SKUResponse sku;
-
   /// The tags of the resource
   final Map<String, String>? tags;
-
   /// The fully qualified type of the resource
   final String type;
 
@@ -62,12 +56,9 @@ class GetAccountResult {
       location: map['location'] as String,
       name: map['name'] as String,
       sku: SKUResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

@@ -268,19 +268,14 @@ import 'sql_stored_procedure_state.dart';
 class SqlStoredProcedure extends pulumi.CustomResource {
   /// The name of the Cosmos DB Account to create the stored procedure within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-
   /// The body of the stored procedure.
   late final pulumi.Output<String> body;
-
   /// The name of the Cosmos DB SQL Container to create the stored procedure within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> containerName;
-
   /// The name of the Cosmos DB SQL Database to create the stored procedure within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseName;
-
   /// Specifies the name of the Cosmos DB SQL Stored Procedure. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which the Cosmos DB SQL Database is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -293,11 +288,11 @@ class SqlStoredProcedure extends pulumi.CustomResource {
     SqlStoredProcedureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/sqlStoredProcedure:SqlStoredProcedure',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/sqlStoredProcedure:SqlStoredProcedure',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     body = registerOutput<String>('body');
     containerName = registerOutput<String>('containerName');
@@ -324,11 +319,11 @@ class SqlStoredProcedure extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/sqlStoredProcedure:SqlStoredProcedure',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/sqlStoredProcedure:SqlStoredProcedure',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     body = registerOutput<String>('body');
     containerName = registerOutput<String>('containerName');

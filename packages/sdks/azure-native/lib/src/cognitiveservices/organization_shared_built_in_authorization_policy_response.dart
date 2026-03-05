@@ -10,17 +10,20 @@ class OrganizationSharedBuiltInAuthorizationPolicyResponse {
 
   /// Creates a new [OrganizationSharedBuiltInAuthorizationPolicyResponse].
   /// [type] Authorization scheme type.
-  OrganizationSharedBuiltInAuthorizationPolicyResponse({required this.type});
+  OrganizationSharedBuiltInAuthorizationPolicyResponse({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
-  factory OrganizationSharedBuiltInAuthorizationPolicyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OrganizationSharedBuiltInAuthorizationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return OrganizationSharedBuiltInAuthorizationPolicyResponse(
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

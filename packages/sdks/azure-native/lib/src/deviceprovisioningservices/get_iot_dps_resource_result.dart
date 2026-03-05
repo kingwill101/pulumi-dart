@@ -9,40 +9,28 @@ import 'system_data_response.dart';
 class GetIotDpsResourceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.
   final String? etag;
-
   /// The resource identifier.
   final String id;
-
   /// The managed identities for a provisioning service.
   final ManagedServiceIdentityResponse? identity;
-
   /// The resource location.
   final String location;
-
   /// The resource name.
   final String name;
-
   /// Service specific properties for a provisioning service
   final IotDpsPropertiesDescriptionResponse properties;
-
   /// The resource group of the resource.
   final String? resourcegroup;
-
   /// Sku info for a provisioning Service.
   final IotDpsSkuInfoResponse sku;
-
   /// The subscription id of the resource.
   final String? subscriptionid;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// The resource tags.
   final Map<String, String>? tags;
-
   /// The resource type.
   final String type;
 
@@ -97,46 +85,19 @@ class GetIotDpsResourceResult {
   factory GetIotDpsResourceResult.fromMap(Map<String, dynamic> map) {
     return GetIotDpsResourceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: IotDpsPropertiesDescriptionResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      resourcegroup: (() {
-        final guardedValue = map['resourcegroup'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sku: IotDpsSkuInfoResponse.fromMap(
-        (map['sku']! as Map).cast<String, dynamic>(),
-      ),
-      subscriptionid: (() {
-        final guardedValue = map['subscriptionid'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: IotDpsPropertiesDescriptionResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      resourcegroup: (() { final guardedValue = map['resourcegroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sku: IotDpsSkuInfoResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      subscriptionid: (() { final guardedValue = map['subscriptionid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

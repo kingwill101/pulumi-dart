@@ -111,34 +111,24 @@ import 'place_index_state.dart';
 class PlaceIndex extends pulumi.CustomResource {
   /// The timestamp for when the place index resource was created in ISO 8601 format.
   late final pulumi.Output<String> createTime;
-
   /// Specifies the geospatial data provider for the new place index.
   late final pulumi.Output<String> dataSource;
-
   /// Configuration block with the data storage option chosen for requesting Places. Detailed below.
-  late final pulumi.Output<PlaceIndexDataSourceConfiguration>
-  dataSourceConfiguration;
-
+  late final pulumi.Output<PlaceIndexDataSourceConfiguration> dataSourceConfiguration;
   /// The optional description for the place index resource.
   late final pulumi.Output<String?> description;
-
   /// The Amazon Resource Name (ARN) for the place index resource. Used to specify a resource across AWS.
   late final pulumi.Output<String> indexArn;
-
   /// The name of the place index resource.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> indexName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The timestamp for when the place index resource was last update in ISO 8601.
   late final pulumi.Output<String> updateTime;
 
@@ -151,23 +141,14 @@ class PlaceIndex extends pulumi.CustomResource {
     PlaceIndexArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:location/placeIndex:PlaceIndex',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:location/placeIndex:PlaceIndex',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dataSource = registerOutput<String>('dataSource');
-    dataSourceConfiguration = registerOutput<PlaceIndexDataSourceConfiguration>(
-      'dataSourceConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlaceIndexDataSourceConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataSourceConfiguration = registerOutput<PlaceIndexDataSourceConfiguration>('dataSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlaceIndexDataSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     indexArn = registerOutput<String>('indexArn');
     indexName = registerOutput<String>('indexName');
@@ -195,23 +176,14 @@ class PlaceIndex extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:location/placeIndex:PlaceIndex',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:location/placeIndex:PlaceIndex',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dataSource = registerOutput<String>('dataSource');
-    dataSourceConfiguration = registerOutput<PlaceIndexDataSourceConfiguration>(
-      'dataSourceConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlaceIndexDataSourceConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataSourceConfiguration = registerOutput<PlaceIndexDataSourceConfiguration>('dataSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlaceIndexDataSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     indexArn = registerOutput<String>('indexArn');
     indexName = registerOutput<String>('indexName');

@@ -8,69 +8,29 @@ import 'public_ipaddress_arm_reference.dart';
 class NatGatewayProperties {
   /// List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
   final pulumi.Input<List<InboundNATRule>>? inboundNATRules;
-
   /// List of public ip addresses that the gateway can use for NAT.
   final pulumi.Input<List<PublicIPAddressArmReference>>? publicIPAddresses;
 
   /// Creates a new [NatGatewayProperties].
   /// [inboundNATRules] List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
   /// [publicIPAddresses] List of public ip addresses that the gateway can use for NAT.
-  NatGatewayProperties({this.inboundNATRules, this.publicIPAddresses});
+  NatGatewayProperties({
+    this.inboundNATRules,
+    this.publicIPAddresses,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inboundNATRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InboundNATRule>,
-            List<Map<String, dynamic>>
-          >(
-            inboundNATRules,
-            (value) =>
-                pulumi.Input.encodeList<InboundNATRule, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'publicIPAddresses':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<PublicIPAddressArmReference>,
-            List<Map<String, dynamic>>
-          >(
-            publicIPAddresses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PublicIPAddressArmReference,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'inboundNATRules': ?pulumi.Input.mapOptionalInputValue<List<InboundNATRule>, List<Map<String, dynamic>>>(inboundNATRules, (value) => pulumi.Input.encodeList<InboundNATRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'publicIPAddresses': ?pulumi.Input.mapOptionalInputValue<List<PublicIPAddressArmReference>, List<Map<String, dynamic>>>(publicIPAddresses, (value) => pulumi.Input.encodeList<PublicIPAddressArmReference, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NatGatewayProperties.fromMap(Map<String, dynamic> map) {
     return NatGatewayProperties(
-      inboundNATRules: (() {
-        final guardedValue = map['inboundNATRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<InboundNATRule>(
-            guardedValue,
-            (value) =>
-                InboundNATRule.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      publicIPAddresses: (() {
-        final guardedValue = map['publicIPAddresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<PublicIPAddressArmReference>(
-            guardedValue,
-            (value) => PublicIPAddressArmReference.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      inboundNATRules: (() { final guardedValue = map['inboundNATRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InboundNATRule>(guardedValue, (value) => InboundNATRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      publicIPAddresses: (() { final guardedValue = map['publicIPAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PublicIPAddressArmReference>(guardedValue, (value) => PublicIPAddressArmReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

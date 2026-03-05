@@ -6,17 +6,13 @@ enum FileSystemProtectionReplicationOverwriteProtection {
   const FileSystemProtectionReplicationOverwriteProtection(this.wireValue);
   final String wireValue;
 
-  static FileSystemProtectionReplicationOverwriteProtection fromValue(
-    String value,
-  ) {
-    for (final item
-        in FileSystemProtectionReplicationOverwriteProtection.values) {
+  static FileSystemProtectionReplicationOverwriteProtection fromValue(String value) {
+    for (final item in FileSystemProtectionReplicationOverwriteProtection.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FileSystemProtectionReplicationOverwriteProtection value: $value',
-    );
+    throw ArgumentError('Unknown FileSystemProtectionReplicationOverwriteProtection value: $value');
   }
 }
+

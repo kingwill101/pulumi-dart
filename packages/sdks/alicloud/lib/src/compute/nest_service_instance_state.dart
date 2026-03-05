@@ -8,43 +8,30 @@ import 'nest_service_instance_operation_metadata.dart';
 class NestServiceInstanceState {
   /// The order information of cloud market. See `commodity` below.
   final pulumi.Input<NestServiceInstanceCommodity>? commodity;
-
   /// Whether the service instance has the O&M function. Default value: `false`. Valid values:
   final pulumi.Input<bool>? enableInstanceOps;
-
   /// Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
   final pulumi.Input<bool>? enableUserPrometheus;
-
   /// The configuration of O&M. See `operation_metadata` below.
   final pulumi.Input<NestServiceInstanceOperationMetadata>? operationMetadata;
-
   /// The parameters entered by the deployment service instance.
   final pulumi.Input<String>? parameters;
-
   /// The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
   final pulumi.Input<String>? paymentType;
-
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
-
   /// The ID of the service.
   final pulumi.Input<String>? serviceId;
-
   /// The name of the Service Instance.
   final pulumi.Input<String>? serviceInstanceName;
-
   /// The version of the service.
   final pulumi.Input<String>? serviceVersion;
-
   /// The name of the specification.
   final pulumi.Input<String>? specificationName;
-
   /// The status of the Service Instance.
   final pulumi.Input<String>? status;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The name of the template.
   final pulumi.Input<String>? templateName;
 
@@ -82,18 +69,10 @@ class NestServiceInstanceState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'commodity':
-          ?pulumi.Input.mapOptionalInputValue<
-            NestServiceInstanceCommodity,
-            Map<String, dynamic>
-          >(commodity, (value) => value.toMap()),
+      'commodity': ?pulumi.Input.mapOptionalInputValue<NestServiceInstanceCommodity, Map<String, dynamic>>(commodity, (value) => value.toMap()),
       'enableInstanceOps': ?enableInstanceOps,
       'enableUserPrometheus': ?enableUserPrometheus,
-      'operationMetadata':
-          ?pulumi.Input.mapOptionalInputValue<
-            NestServiceInstanceOperationMetadata,
-            Map<String, dynamic>
-          >(operationMetadata, (value) => value.toMap()),
+      'operationMetadata': ?pulumi.Input.mapOptionalInputValue<NestServiceInstanceOperationMetadata, Map<String, dynamic>>(operationMetadata, (value) => value.toMap()),
       'parameters': ?parameters,
       'paymentType': ?paymentType,
       'resourceGroupId': ?resourceGroupId,
@@ -109,86 +88,21 @@ class NestServiceInstanceState {
 
   factory NestServiceInstanceState.fromMap(Map<String, dynamic> map) {
     return NestServiceInstanceState(
-      commodity: (() {
-        final guardedValue = map['commodity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NestServiceInstanceCommodity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      enableInstanceOps: (() {
-        final guardedValue = map['enableInstanceOps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableUserPrometheus: (() {
-        final guardedValue = map['enableUserPrometheus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      operationMetadata: (() {
-        final guardedValue = map['operationMetadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NestServiceInstanceOperationMetadata.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      paymentType: (() {
-        final guardedValue = map['paymentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceId: (() {
-        final guardedValue = map['serviceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceInstanceName: (() {
-        final guardedValue = map['serviceInstanceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceVersion: (() {
-        final guardedValue = map['serviceVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      specificationName: (() {
-        final guardedValue = map['specificationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      templateName: (() {
-        final guardedValue = map['templateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      commodity: (() { final guardedValue = map['commodity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NestServiceInstanceCommodity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      enableInstanceOps: (() { final guardedValue = map['enableInstanceOps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableUserPrometheus: (() { final guardedValue = map['enableUserPrometheus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      operationMetadata: (() { final guardedValue = map['operationMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NestServiceInstanceOperationMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      paymentType: (() { final guardedValue = map['paymentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceInstanceName: (() { final guardedValue = map['serviceInstanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceVersion: (() { final guardedValue = map['serviceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      specificationName: (() { final guardedValue = map['specificationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      templateName: (() { final guardedValue = map['templateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

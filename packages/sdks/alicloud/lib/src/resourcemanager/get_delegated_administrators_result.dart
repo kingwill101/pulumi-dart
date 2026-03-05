@@ -6,7 +6,6 @@ import 'get_delegated_administrators_administrator.dart';
 /// Result data returned by getDelegatedAdministrators.
 class GetDelegatedAdministratorsResult {
   final List<GetDelegatedAdministratorsAdministrator> administrators;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -35,11 +34,7 @@ class GetDelegatedAdministratorsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'administrators':
-          pulumi.Input.encodeList<
-            GetDelegatedAdministratorsAdministrator,
-            Map<String, dynamic>
-          >(administrators, (value) => value.toMap()),
+      'administrators': pulumi.Input.encodeList<GetDelegatedAdministratorsAdministrator, Map<String, dynamic>>(administrators, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
@@ -51,35 +46,14 @@ class GetDelegatedAdministratorsResult {
 
   factory GetDelegatedAdministratorsResult.fromMap(Map<String, dynamic> map) {
     return GetDelegatedAdministratorsResult(
-      administrators:
-          pulumi.Input.decodeList<GetDelegatedAdministratorsAdministrator>(
-            map['administrators']!,
-            (value) => GetDelegatedAdministratorsAdministrator.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      administrators: pulumi.Input.decodeList<GetDelegatedAdministratorsAdministrator>(map['administrators']!, (value) => GetDelegatedAdministratorsAdministrator.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      servicePrincipal: (() {
-        final guardedValue = map['servicePrincipal'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      servicePrincipal: (() { final guardedValue = map['servicePrincipal']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum IndexingMode {
     throw ArgumentError('Unknown IndexingMode value: $value');
   }
 }
+

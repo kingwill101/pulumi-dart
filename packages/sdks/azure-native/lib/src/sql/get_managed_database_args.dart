@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedDatabaseArgs {
   /// The name of the database.
   final pulumi.Input<String> databaseName;
-
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetManagedDatabaseArgs {
   factory GetManagedDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedDatabaseArgs(
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      managedInstanceName: pulumi.Input.fromValue(
-        map['managedInstanceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      managedInstanceName: pulumi.Input.fromValue(map['managedInstanceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

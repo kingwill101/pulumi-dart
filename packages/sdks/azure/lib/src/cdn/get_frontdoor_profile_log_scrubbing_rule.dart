@@ -8,17 +8,20 @@ class GetFrontdoorProfileLogScrubbingRule {
 
   /// Creates a new [GetFrontdoorProfileLogScrubbingRule].
   /// [matchVariable] The variable that is scrubbed from the logs.
-  GetFrontdoorProfileLogScrubbingRule({required this.matchVariable});
+  GetFrontdoorProfileLogScrubbingRule({
+    required this.matchVariable,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'matchVariable': matchVariable};
+    return <String, dynamic>{
+      'matchVariable': matchVariable,
+    };
   }
 
-  factory GetFrontdoorProfileLogScrubbingRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFrontdoorProfileLogScrubbingRule.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorProfileLogScrubbingRule(
       matchVariable: pulumi.Input.fromValue(map['matchVariable'] as String),
     );
   }
 }
+

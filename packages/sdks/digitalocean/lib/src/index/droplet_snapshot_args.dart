@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DropletSnapshotArgs {
   /// The ID of the Droplet from which the snapshot will be taken.
   final pulumi.Input<String> dropletId;
-
   /// A name for the Droplet snapshot.
   final pulumi.Input<String>? name;
 
   /// Creates a new [DropletSnapshotArgs].
   /// [dropletId] The ID of the Droplet from which the snapshot will be taken.
   /// [name] A name for the Droplet snapshot.
-  DropletSnapshotArgs({required this.dropletId, this.name});
+  DropletSnapshotArgs({
+    required this.dropletId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dropletId': dropletId, 'name': ?name};
+    return <String, dynamic>{
+      'dropletId': dropletId,
+      'name': ?name,
+    };
   }
 
   factory DropletSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return DropletSnapshotArgs(
       dropletId: pulumi.Input.fromValue(map['dropletId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

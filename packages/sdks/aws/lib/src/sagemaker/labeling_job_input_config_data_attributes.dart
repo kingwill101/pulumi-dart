@@ -8,21 +8,20 @@ class LabelingJobInputConfigDataAttributes {
 
   /// Creates a new [LabelingJobInputConfigDataAttributes].
   /// [contentClassifiers] Declares that your content is free of personally identifiable information or adult content. Valid values: `FreeOfPersonallyIdentifiableInformation`, `FreeOfAdultContent`.
-  LabelingJobInputConfigDataAttributes({this.contentClassifiers});
+  LabelingJobInputConfigDataAttributes({
+    this.contentClassifiers,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'contentClassifiers': ?contentClassifiers};
+    return <String, dynamic>{
+      'contentClassifiers': ?contentClassifiers,
+    };
   }
 
-  factory LabelingJobInputConfigDataAttributes.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LabelingJobInputConfigDataAttributes.fromMap(Map<String, dynamic> map) {
     return LabelingJobInputConfigDataAttributes(
-      contentClassifiers: (() {
-        final guardedValue = map['contentClassifiers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      contentClassifiers: (() { final guardedValue = map['contentClassifiers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

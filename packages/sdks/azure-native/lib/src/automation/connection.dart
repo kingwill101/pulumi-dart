@@ -190,26 +190,18 @@ import 'connection_type_association_property_response.dart';
 class Connection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the connectionType of the connection.
-  late final pulumi.Output<ConnectionTypeAssociationPropertyResponse?>
-  connectionType;
-
+  late final pulumi.Output<ConnectionTypeAssociationPropertyResponse?> connectionType;
   /// Gets the creation time.
   late final pulumi.Output<String> creationTime;
-
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
-
   /// Gets the field definition values of the connection.
   late final pulumi.Output<Map<String, String>> fieldDefinitionValues;
-
   /// Gets the last modified time.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -222,27 +214,16 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:automation:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:automation:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    connectionType = registerOutput<ConnectionTypeAssociationPropertyResponse?>(
-      'connectionType',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionTypeAssociationPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connectionType = registerOutput<ConnectionTypeAssociationPropertyResponse?>('connectionType', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionTypeAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTime = registerOutput<String>('creationTime');
     description = registerOutput<String?>('description');
-    fieldDefinitionValues = registerOutput<Map<String, String>>(
-      'fieldDefinitionValues',
-    );
+    fieldDefinitionValues = registerOutput<Map<String, String>>('fieldDefinitionValues');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');

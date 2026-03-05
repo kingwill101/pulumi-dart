@@ -17,3 +17,4 @@ enum HostpoolPublicNetworkAccess {
     throw ArgumentError('Unknown HostpoolPublicNetworkAccess value: $value');
   }
 }
+

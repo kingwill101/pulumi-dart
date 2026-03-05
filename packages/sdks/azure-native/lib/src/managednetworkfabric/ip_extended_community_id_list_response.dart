@@ -9,19 +9,20 @@ class IpExtendedCommunityIdListResponse {
 
   /// Creates a new [IpExtendedCommunityIdListResponse].
   /// [ipExtendedCommunityIds] List of IP Extended Community resource IDs.
-  IpExtendedCommunityIdListResponse({this.ipExtendedCommunityIds});
+  IpExtendedCommunityIdListResponse({
+    this.ipExtendedCommunityIds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipExtendedCommunityIds': ?ipExtendedCommunityIds};
+    return <String, dynamic>{
+      'ipExtendedCommunityIds': ?ipExtendedCommunityIds,
+    };
   }
 
   factory IpExtendedCommunityIdListResponse.fromMap(Map<String, dynamic> map) {
     return IpExtendedCommunityIdListResponse(
-      ipExtendedCommunityIds: (() {
-        final guardedValue = map['ipExtendedCommunityIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      ipExtendedCommunityIds: (() { final guardedValue = map['ipExtendedCommunityIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

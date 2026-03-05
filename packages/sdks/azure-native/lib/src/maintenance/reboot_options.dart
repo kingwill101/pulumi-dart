@@ -16,3 +16,4 @@ enum RebootOptions {
     throw ArgumentError('Unknown RebootOptions value: $value');
   }
 }
+

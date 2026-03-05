@@ -9,19 +9,20 @@ class LoginRoutesResponse {
 
   /// Creates a new [LoginRoutesResponse].
   /// [logoutEndpoint] The endpoint at which a logout request should be made.
-  LoginRoutesResponse({this.logoutEndpoint});
+  LoginRoutesResponse({
+    this.logoutEndpoint,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'logoutEndpoint': ?logoutEndpoint};
+    return <String, dynamic>{
+      'logoutEndpoint': ?logoutEndpoint,
+    };
   }
 
   factory LoginRoutesResponse.fromMap(Map<String, dynamic> map) {
     return LoginRoutesResponse(
-      logoutEndpoint: (() {
-        final guardedValue = map['logoutEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      logoutEndpoint: (() { final guardedValue = map['logoutEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

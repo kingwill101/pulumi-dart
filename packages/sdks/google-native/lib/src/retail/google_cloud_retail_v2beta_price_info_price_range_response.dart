@@ -7,7 +7,6 @@ import 'google_cloud_retail_v2beta_interval_response.dart';
 class GoogleCloudRetailV2betaPriceInfoPriceRangeResponse {
   /// The inclusive Product.pricing_info.original_price internal of all variant Product having the same Product.primary_product_id.
   final pulumi.Input<GoogleCloudRetailV2betaIntervalResponse> originalPrice;
-
   /// The inclusive Product.pricing_info.price interval of all variant Product having the same Product.primary_product_id.
   final pulumi.Input<GoogleCloudRetailV2betaIntervalResponse> price;
 
@@ -21,33 +20,16 @@ class GoogleCloudRetailV2betaPriceInfoPriceRangeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'originalPrice':
-          pulumi.Input.mapInputValue<
-            GoogleCloudRetailV2betaIntervalResponse,
-            Map<String, dynamic>
-          >(originalPrice, (value) => value.toMap()),
-      'price':
-          pulumi.Input.mapInputValue<
-            GoogleCloudRetailV2betaIntervalResponse,
-            Map<String, dynamic>
-          >(price, (value) => value.toMap()),
+      'originalPrice': pulumi.Input.mapInputValue<GoogleCloudRetailV2betaIntervalResponse, Map<String, dynamic>>(originalPrice, (value) => value.toMap()),
+      'price': pulumi.Input.mapInputValue<GoogleCloudRetailV2betaIntervalResponse, Map<String, dynamic>>(price, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudRetailV2betaPriceInfoPriceRangeResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2betaPriceInfoPriceRangeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaPriceInfoPriceRangeResponse(
-      originalPrice: pulumi.Input.fromValue(
-        GoogleCloudRetailV2betaIntervalResponse.fromMap(
-          (map['originalPrice']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      price: pulumi.Input.fromValue(
-        GoogleCloudRetailV2betaIntervalResponse.fromMap(
-          (map['price']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      originalPrice: pulumi.Input.fromValue(GoogleCloudRetailV2betaIntervalResponse.fromMap((map['originalPrice']! as Map).cast<String, dynamic>())),
+      price: pulumi.Input.fromValue(GoogleCloudRetailV2betaIntervalResponse.fromMap((map['price']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -469,19 +469,15 @@ import 'workspace_network_outbound_rule_private_endpoint_state.dart';
 /// ```sh
 /// $ pulumi import azure:machinelearning/workspaceNetworkOutboundRulePrivateEndpoint:WorkspaceNetworkOutboundRulePrivateEndpoint example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.MachineLearningServices/workspaces/workspace1/outboundRules/rule1
 /// ```
-class WorkspaceNetworkOutboundRulePrivateEndpoint
-    extends pulumi.CustomResource {
+class WorkspaceNetworkOutboundRulePrivateEndpoint extends pulumi.CustomResource {
   /// Specifies the name of the Machine Learning Workspace Network Outbound Rule Private Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the Service Resource ID to connect. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Supported service resources: **Key Vault**, **Storage Account**, **Machine Learning Workspace**, **Redis**.
   late final pulumi.Output<String> serviceResourceId;
-
   /// Whether to enable an additional private endpoint to be used by jobs running on Spark. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> sparkEnabled;
-
   /// Specifies the Sub Resource of the service resource to connect to. Possible values are `vault`,`amlworkspace`,`blob`,`table`,`queue`,`file`,`web`,`dfs`, `redisCache`. Changing this forces a new resource to be created.
   ///
   /// | Service                    | Sub Resource Type                         |
@@ -491,7 +487,6 @@ class WorkspaceNetworkOutboundRulePrivateEndpoint
   /// | Storage Account            | `blob`,`table`,`queue`,`file`,`web`,`dfs` |
   /// | Key Vault                  | `vault`                                   |
   late final pulumi.Output<String> subResourceTarget;
-
   /// Specifies the ID of the Machine Learning Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> workspaceId;
 
@@ -504,11 +499,11 @@ class WorkspaceNetworkOutboundRulePrivateEndpoint
     WorkspaceNetworkOutboundRulePrivateEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:machinelearning/workspaceNetworkOutboundRulePrivateEndpoint:WorkspaceNetworkOutboundRulePrivateEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:machinelearning/workspaceNetworkOutboundRulePrivateEndpoint:WorkspaceNetworkOutboundRulePrivateEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     serviceResourceId = registerOutput<String>('serviceResourceId');
     sparkEnabled = registerOutput<bool?>('sparkEnabled');
@@ -534,11 +529,11 @@ class WorkspaceNetworkOutboundRulePrivateEndpoint
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:machinelearning/workspaceNetworkOutboundRulePrivateEndpoint:WorkspaceNetworkOutboundRulePrivateEndpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:machinelearning/workspaceNetworkOutboundRulePrivateEndpoint:WorkspaceNetworkOutboundRulePrivateEndpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     serviceResourceId = registerOutput<String>('serviceResourceId');
     sparkEnabled = registerOutput<bool?>('sparkEnabled');

@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseArgs {
   /// The name of the MS SQL Database.
   final pulumi.Input<String> name;
-
   /// The id of the MS SQL Server on which to read the database.
   final pulumi.Input<String> serverId;
 
   /// Creates a new [GetDatabaseArgs].
   /// [name] The name of the MS SQL Database.
   /// [serverId] The id of the MS SQL Server on which to read the database.
-  GetDatabaseArgs({required this.name, required this.serverId});
+  GetDatabaseArgs({
+    required this.name,
+    required this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'serverId': serverId};
+    return <String, dynamic>{
+      'name': name,
+      'serverId': serverId,
+    };
   }
 
   factory GetDatabaseArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetDatabaseArgs {
     );
   }
 }
+

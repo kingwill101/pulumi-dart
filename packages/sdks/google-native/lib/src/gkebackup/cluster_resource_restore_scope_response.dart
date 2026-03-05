@@ -7,13 +7,10 @@ import 'group_kind_response.dart';
 class ClusterResourceRestoreScopeResponse {
   /// Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message.
   final pulumi.Input<bool> allGroupKinds;
-
   /// Optional. A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all valid cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive to any other field in the message.
   final pulumi.Input<List<GroupKindResponse>> excludedGroupKinds;
-
   /// Optional. If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is not defined. Mutually exclusive to any other field in the message.
   final pulumi.Input<bool> noGroupKinds;
-
   /// Optional. A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
   final pulumi.Input<List<GroupKindResponse>> selectedGroupKinds;
 
@@ -32,54 +29,19 @@ class ClusterResourceRestoreScopeResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allGroupKinds': allGroupKinds,
-      'excludedGroupKinds':
-          pulumi.Input.mapInputValue<
-            List<GroupKindResponse>,
-            List<Map<String, dynamic>>
-          >(
-            excludedGroupKinds,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GroupKindResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'excludedGroupKinds': pulumi.Input.mapInputValue<List<GroupKindResponse>, List<Map<String, dynamic>>>(excludedGroupKinds, (value) => pulumi.Input.encodeList<GroupKindResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'noGroupKinds': noGroupKinds,
-      'selectedGroupKinds':
-          pulumi.Input.mapInputValue<
-            List<GroupKindResponse>,
-            List<Map<String, dynamic>>
-          >(
-            selectedGroupKinds,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GroupKindResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'selectedGroupKinds': pulumi.Input.mapInputValue<List<GroupKindResponse>, List<Map<String, dynamic>>>(selectedGroupKinds, (value) => pulumi.Input.encodeList<GroupKindResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ClusterResourceRestoreScopeResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterResourceRestoreScopeResponse.fromMap(Map<String, dynamic> map) {
     return ClusterResourceRestoreScopeResponse(
       allGroupKinds: pulumi.Input.fromValue(map['allGroupKinds'] as bool),
-      excludedGroupKinds: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GroupKindResponse>(
-          map['excludedGroupKinds']!,
-          (value) =>
-              GroupKindResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      excludedGroupKinds: pulumi.Input.fromValue(pulumi.Input.decodeList<GroupKindResponse>(map['excludedGroupKinds']!, (value) => GroupKindResponse.fromMap((value as Map).cast<String, dynamic>()))),
       noGroupKinds: pulumi.Input.fromValue(map['noGroupKinds'] as bool),
-      selectedGroupKinds: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GroupKindResponse>(
-          map['selectedGroupKinds']!,
-          (value) =>
-              GroupKindResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      selectedGroupKinds: pulumi.Input.fromValue(pulumi.Input.decodeList<GroupKindResponse>(map['selectedGroupKinds']!, (value) => GroupKindResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

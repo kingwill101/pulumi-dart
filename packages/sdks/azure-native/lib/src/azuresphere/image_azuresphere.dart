@@ -139,40 +139,28 @@ import 'system_data_response.dart';
 class ImageAzuresphere extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The image component id.
   late final pulumi.Output<String> componentId;
-
   /// The image description.
   late final pulumi.Output<String> description;
-
   /// Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads.
   late final pulumi.Output<String?> image;
-
   /// Image ID
   late final pulumi.Output<String?> imageId;
-
   /// Image name
   late final pulumi.Output<String> imageName;
-
   /// The image type.
   late final pulumi.Output<String> imageType;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
-
   /// Regional data boundary for an image
   late final pulumi.Output<String?> regionalDataBoundary;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Location the image
   late final pulumi.Output<String> uri;
 
@@ -185,11 +173,11 @@ class ImageAzuresphere extends pulumi.CustomResource {
     ImageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azuresphere:Image',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azuresphere:Image',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     componentId = registerOutput<String>('componentId');
     description = registerOutput<String>('description');
@@ -200,16 +188,7 @@ class ImageAzuresphere extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     regionalDataBoundary = registerOutput<String?>('regionalDataBoundary');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     uri = registerOutput<String>('uri');
   }

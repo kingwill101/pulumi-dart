@@ -17,3 +17,4 @@ enum AzureSqlMIAuthenticationType {
     throw ArgumentError('Unknown AzureSqlMIAuthenticationType value: $value');
   }
 }
+

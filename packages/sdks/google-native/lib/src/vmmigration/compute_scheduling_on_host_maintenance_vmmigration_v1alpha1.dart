@@ -7,17 +7,13 @@ enum ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1 {
   const ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1(this.wireValue);
   final String wireValue;
 
-  static ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1.values) {
+  static ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1 fromValue(String value) {
+    for (final item in ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1 value: $value',
-    );
+    throw ArgumentError('Unknown ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1 value: $value');
   }
 }
+

@@ -6,16 +6,12 @@ import 'cost_allocation_rule_properties_response.dart';
 class GetCostAllocationRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Azure Resource Manager Id for the rule. This is a read ony value.
   final String id;
-
   /// Name of the rule. This is a read only value.
   final String name;
-
   /// Cost allocation rule properties
   final CostAllocationRulePropertiesResponse properties;
-
   /// Resource type of the rule. This is a read only value of Microsoft.CostManagement/CostAllocationRule.
   final String type;
 
@@ -48,10 +44,9 @@ class GetCostAllocationRuleResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: CostAllocationRulePropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: CostAllocationRulePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

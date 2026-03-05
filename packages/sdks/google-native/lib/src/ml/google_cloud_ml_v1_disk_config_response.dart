@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1DiskConfigResponse {
   /// Size in GB of the boot disk (default is 100GB).
   final pulumi.Input<int> bootDiskSizeGb;
-
   /// Type of the boot disk (default is "pd-ssd"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
   final pulumi.Input<String> bootDiskType;
 
@@ -32,3 +31,4 @@ class GoogleCloudMlV1DiskConfigResponse {
     );
   }
 }
+

@@ -6,12 +6,8 @@ import 'channel_encoder_settings_motion_graphics_configuration_motion_graphics_s
 class ChannelEncoderSettingsMotionGraphicsConfiguration {
   /// Motion Graphics Insertion.
   final pulumi.Input<String>? motionGraphicsInsertion;
-
   /// Motion Graphics Settings. See Motion Graphics Settings for more details.
-  final pulumi.Input<
-    ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings
-  >
-  motionGraphicsSettings;
+  final pulumi.Input<ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings> motionGraphicsSettings;
 
   /// Creates a new [ChannelEncoderSettingsMotionGraphicsConfiguration].
   /// [motionGraphicsInsertion] Motion Graphics Insertion.
@@ -24,28 +20,15 @@ class ChannelEncoderSettingsMotionGraphicsConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'motionGraphicsInsertion': ?motionGraphicsInsertion,
-      'motionGraphicsSettings':
-          pulumi.Input.mapInputValue<
-            ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings,
-            Map<String, dynamic>
-          >(motionGraphicsSettings, (value) => value.toMap()),
+      'motionGraphicsSettings': pulumi.Input.mapInputValue<ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings, Map<String, dynamic>>(motionGraphicsSettings, (value) => value.toMap()),
     };
   }
 
-  factory ChannelEncoderSettingsMotionGraphicsConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsMotionGraphicsConfiguration.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsMotionGraphicsConfiguration(
-      motionGraphicsInsertion: (() {
-        final guardedValue = map['motionGraphicsInsertion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      motionGraphicsSettings: pulumi.Input.fromValue(
-        ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings.fromMap(
-          (map['motionGraphicsSettings']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      motionGraphicsInsertion: (() { final guardedValue = map['motionGraphicsInsertion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      motionGraphicsSettings: pulumi.Input.fromValue(ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings.fromMap((map['motionGraphicsSettings']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -390,43 +390,30 @@ import 'fhir_service_state.dart';
 class FhirService extends pulumi.CustomResource {
   /// A list of the access policies of the service instance.
   late final pulumi.Output<List<String>?> accessPolicyObjectIds;
-
   /// An `authentication` block as defined below.
   late final pulumi.Output<FhirServiceAuthentication> authentication;
-
   /// Specifies the name of the storage account which the operation configuration information is exported to.
   late final pulumi.Output<String?> configurationExportStorageAccountName;
-
   /// A list of azure container registry settings used for convert data operation of the service instance.
   late final pulumi.Output<List<String>?> containerRegistryLoginServerUrls;
-
   /// A `cors` block as defined below.
   late final pulumi.Output<FhirServiceCors?> cors;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<FhirServiceIdentity?> identity;
-
   /// Specifies the kind of the Healthcare FHIR Service. Possible values are: `fhir-Stu3` and `fhir-R4`. Defaults to `fhir-R4`. Changing this forces a new Healthcare FHIR Service to be created.
   late final pulumi.Output<String?> kind;
-
   /// Specifies the Azure Region where the Healthcare FHIR Service should be created. Changing this forces a new Healthcare FHIR Service to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Healthcare FHIR Service. Changing this forces a new Healthcare FHIR Service to be created.
   late final pulumi.Output<String> name;
-
   /// [A list](https://www.terraform.io/docs/configuration/attr-as-blocks.html) of `oci_artifact` objects as defined below to describe [OCI artifacts for export](https://learn.microsoft.com/en-gb/azure/healthcare-apis/fhir/de-identified-export).
   late final pulumi.Output<List<Map<String, dynamic>>?> ociArtifacts;
-
   /// Whether public networks access is enabled.
   late final pulumi.Output<bool> publicNetworkAccessEnabled;
-
   /// Specifies the name of the Resource Group in which to create the Healthcare FHIR Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the Healthcare FHIR Service.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the id of the Healthcare Workspace where the Healthcare FHIR Service should exist. Changing this forces a new Healthcare FHIR Service to be created.
   late final pulumi.Output<String> workspaceId;
 
@@ -439,57 +426,22 @@ class FhirService extends pulumi.CustomResource {
     FhirServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:healthcare/fhirService:FhirService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessPolicyObjectIds = registerOutput<List<String>?>(
-      'accessPolicyObjectIds',
-    );
-    authentication = registerOutput<FhirServiceAuthentication>(
-      'authentication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FhirServiceAuthentication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    configurationExportStorageAccountName = registerOutput<String?>(
-      'configurationExportStorageAccountName',
-    );
-    containerRegistryLoginServerUrls = registerOutput<List<String>?>(
-      'containerRegistryLoginServerUrls',
-    );
-    cors = registerOutput<FhirServiceCors?>(
-      'cors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FhirServiceCors.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<FhirServiceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FhirServiceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:healthcare/fhirService:FhirService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessPolicyObjectIds = registerOutput<List<String>?>('accessPolicyObjectIds');
+    authentication = registerOutput<FhirServiceAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FhirServiceAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configurationExportStorageAccountName = registerOutput<String?>('configurationExportStorageAccountName');
+    containerRegistryLoginServerUrls = registerOutput<List<String>?>('containerRegistryLoginServerUrls');
+    cors = registerOutput<FhirServiceCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FhirServiceCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<FhirServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FhirServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     ociArtifacts = registerOutput<List<Map<String, dynamic>>?>('ociArtifacts');
-    publicNetworkAccessEnabled = registerOutput<bool>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
     workspaceId = registerOutput<String>('workspaceId');
@@ -513,57 +465,22 @@ class FhirService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:healthcare/fhirService:FhirService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessPolicyObjectIds = registerOutput<List<String>?>(
-      'accessPolicyObjectIds',
-    );
-    authentication = registerOutput<FhirServiceAuthentication>(
-      'authentication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FhirServiceAuthentication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    configurationExportStorageAccountName = registerOutput<String?>(
-      'configurationExportStorageAccountName',
-    );
-    containerRegistryLoginServerUrls = registerOutput<List<String>?>(
-      'containerRegistryLoginServerUrls',
-    );
-    cors = registerOutput<FhirServiceCors?>(
-      'cors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FhirServiceCors.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<FhirServiceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FhirServiceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:healthcare/fhirService:FhirService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessPolicyObjectIds = registerOutput<List<String>?>('accessPolicyObjectIds');
+    authentication = registerOutput<FhirServiceAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FhirServiceAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configurationExportStorageAccountName = registerOutput<String?>('configurationExportStorageAccountName');
+    containerRegistryLoginServerUrls = registerOutput<List<String>?>('containerRegistryLoginServerUrls');
+    cors = registerOutput<FhirServiceCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FhirServiceCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<FhirServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FhirServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     ociArtifacts = registerOutput<List<Map<String, dynamic>>?>('ociArtifacts');
-    publicNetworkAccessEnabled = registerOutput<bool>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
     workspaceId = registerOutput<String>('workspaceId');

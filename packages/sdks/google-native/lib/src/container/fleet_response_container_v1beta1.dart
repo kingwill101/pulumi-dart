@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetResponseContainerV1beta1 {
   /// [Output only] The full resource name of the registered fleet membership of the cluster, in the format `//gkehub.googleapis.com/projects/*/locations/*/memberships/*`.
   final pulumi.Input<String> membership;
-
   /// [Output only] Whether the cluster has been registered through the fleet API.
   final pulumi.Input<bool> preRegistered;
-
   /// The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
   final pulumi.Input<String> project;
 
@@ -39,3 +37,4 @@ class FleetResponseContainerV1beta1 {
     );
   }
 }
+

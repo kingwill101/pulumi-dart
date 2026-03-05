@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointAclPolicyArgs {
   /// The description of the entry.
   final pulumi.Input<String>? description;
-
   /// The type of endpoint. Valid values: `internet`.
   final pulumi.Input<String> endpointType;
-
   /// The IP segment that allowed to access.
   final pulumi.Input<String> entry;
-
   /// The ID of the CR Instance.
   final pulumi.Input<String> instanceId;
-
   /// The module that needs to set the access policy. Valid values: `Registry`.
   final pulumi.Input<String>? moduleName;
 
@@ -48,19 +44,12 @@ class EndpointAclPolicyArgs {
 
   factory EndpointAclPolicyArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAclPolicyArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
       entry: pulumi.Input.fromValue(map['entry'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      moduleName: (() {
-        final guardedValue = map['moduleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      moduleName: (() { final guardedValue = map['moduleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

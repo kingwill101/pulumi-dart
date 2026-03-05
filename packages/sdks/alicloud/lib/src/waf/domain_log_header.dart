@@ -9,24 +9,23 @@ class DomainLogHeader {
   /// Creates a new [DomainLogHeader].
   /// [key] Optional.
   /// [value] Optional.
-  DomainLogHeader({this.key, this.value});
+  DomainLogHeader({
+    this.key,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key, 'value': ?value};
+    return <String, dynamic>{
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
   factory DomainLogHeader.fromMap(Map<String, dynamic> map) {
     return DomainLogHeader(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

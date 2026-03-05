@@ -22,20 +22,11 @@ class CustomRolloutSpecificationAutoProvisionConfigResponse {
     };
   }
 
-  factory CustomRolloutSpecificationAutoProvisionConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomRolloutSpecificationAutoProvisionConfigResponse.fromMap(Map<String, dynamic> map) {
     return CustomRolloutSpecificationAutoProvisionConfigResponse(
-      resourceGraph: (() {
-        final guardedValue = map['resourceGraph'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      storage: (() {
-        final guardedValue = map['storage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      resourceGraph: (() { final guardedValue = map['resourceGraph']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

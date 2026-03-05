@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LakeHouseArtifact {
   /// [Required] OneLake artifact name
   final pulumi.Input<String> artifactName;
-
   /// Enum to determine OneLake artifact type.
   /// Expected value is 'LakeHouse'.
   final pulumi.Input<String> artifactType;
@@ -13,7 +12,10 @@ class LakeHouseArtifact {
   /// Creates a new [LakeHouseArtifact].
   /// [artifactName] [Required] OneLake artifact name
   /// [artifactType] Enum to determine OneLake artifact type.
-  LakeHouseArtifact({required this.artifactName, required this.artifactType});
+  LakeHouseArtifact({
+    required this.artifactName,
+    required this.artifactType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +31,4 @@ class LakeHouseArtifact {
     );
   }
 }
+

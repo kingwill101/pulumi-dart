@@ -9,7 +9,6 @@ import 'get_gradientai_agents_sort.dart';
 class GetGradientaiAgentsResult {
   final List<GetGradientaiAgentsAgent> agents;
   final List<GetGradientaiAgentsFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? onlyDeployed;
@@ -31,66 +30,22 @@ class GetGradientaiAgentsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agents':
-          pulumi.Input.encodeList<
-            GetGradientaiAgentsAgent,
-            Map<String, dynamic>
-          >(agents, (value) => value.toMap()),
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetGradientaiAgentsFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'agents': pulumi.Input.encodeList<GetGradientaiAgentsAgent, Map<String, dynamic>>(agents, (value) => value.toMap()),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGradientaiAgentsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'onlyDeployed': ?onlyDeployed,
-      'sorts': ?(() {
-        final guardedValue = sorts;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetGradientaiAgentsSort,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'sorts': ?(() { final guardedValue = sorts; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGradientaiAgentsSort, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetGradientaiAgentsResult.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsResult(
-      agents: pulumi.Input.decodeList<GetGradientaiAgentsAgent>(
-        map['agents']!,
-        (value) => GetGradientaiAgentsAgent.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetGradientaiAgentsFilter>(
-          guardedValue,
-          (value) => GetGradientaiAgentsFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      agents: pulumi.Input.decodeList<GetGradientaiAgentsAgent>(map['agents']!, (value) => GetGradientaiAgentsAgent.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGradientaiAgentsFilter>(guardedValue, (value) => GetGradientaiAgentsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      onlyDeployed: (() {
-        final guardedValue = map['onlyDeployed'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      sorts: (() {
-        final guardedValue = map['sorts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetGradientaiAgentsSort>(
-          guardedValue,
-          (value) => GetGradientaiAgentsSort.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      onlyDeployed: (() { final guardedValue = map['onlyDeployed']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      sorts: (() { final guardedValue = map['sorts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGradientaiAgentsSort>(guardedValue, (value) => GetGradientaiAgentsSort.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

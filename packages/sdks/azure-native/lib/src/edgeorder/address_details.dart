@@ -10,25 +10,20 @@ class AddressDetails {
 
   /// Creates a new [AddressDetails].
   /// [forwardAddress] Customer address and contact details.
-  AddressDetails({required this.forwardAddress});
+  AddressDetails({
+    required this.forwardAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'forwardAddress':
-          pulumi.Input.mapInputValue<AddressProperties, Map<String, dynamic>>(
-            forwardAddress,
-            (value) => value.toMap(),
-          ),
+      'forwardAddress': pulumi.Input.mapInputValue<AddressProperties, Map<String, dynamic>>(forwardAddress, (value) => value.toMap()),
     };
   }
 
   factory AddressDetails.fromMap(Map<String, dynamic> map) {
     return AddressDetails(
-      forwardAddress: pulumi.Input.fromValue(
-        AddressProperties.fromMap(
-          (map['forwardAddress']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      forwardAddress: pulumi.Input.fromValue(AddressProperties.fromMap((map['forwardAddress']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

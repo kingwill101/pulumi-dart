@@ -16,15 +16,17 @@ class ResponsePolicyGKEClusterResponseDnsV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'gkeClusterName': gkeClusterName, 'kind': kind};
+    return <String, dynamic>{
+      'gkeClusterName': gkeClusterName,
+      'kind': kind,
+    };
   }
 
-  factory ResponsePolicyGKEClusterResponseDnsV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResponsePolicyGKEClusterResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyGKEClusterResponseDnsV1beta2(
       gkeClusterName: pulumi.Input.fromValue(map['gkeClusterName'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
     );
   }
 }
+

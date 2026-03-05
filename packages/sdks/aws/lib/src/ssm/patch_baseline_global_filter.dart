@@ -9,10 +9,16 @@ class PatchBaselineGlobalFilter {
   /// Creates a new [PatchBaselineGlobalFilter].
   /// [key] Required.
   /// [values] Required.
-  PatchBaselineGlobalFilter({required this.key, required this.values});
+  PatchBaselineGlobalFilter({
+    required this.key,
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'values': values};
+    return <String, dynamic>{
+      'key': key,
+      'values': values,
+    };
   }
 
   factory PatchBaselineGlobalFilter.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class PatchBaselineGlobalFilter {
     );
   }
 }
+

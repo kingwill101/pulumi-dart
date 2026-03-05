@@ -467,10 +467,8 @@ import 'slot_virtual_network_swift_connection_state.dart';
 class SlotVirtualNetworkSwiftConnection extends pulumi.CustomResource {
   /// The ID of the App Service or Function App to associate to the VNet. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServiceId;
-
   /// The name of the App Service Slot or Function App Slot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> slotName;
-
   /// The ID of the subnet the app service will be associated to (the subnet must have a `service_delegation` configured for `Microsoft.Web/serverFarms`).
   late final pulumi.Output<String> subnetId;
 
@@ -483,11 +481,11 @@ class SlotVirtualNetworkSwiftConnection extends pulumi.CustomResource {
     SlotVirtualNetworkSwiftConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/slotVirtualNetworkSwiftConnection:SlotVirtualNetworkSwiftConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/slotVirtualNetworkSwiftConnection:SlotVirtualNetworkSwiftConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceId = registerOutput<String>('appServiceId');
     slotName = registerOutput<String>('slotName');
     subnetId = registerOutput<String>('subnetId');
@@ -511,11 +509,11 @@ class SlotVirtualNetworkSwiftConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/slotVirtualNetworkSwiftConnection:SlotVirtualNetworkSwiftConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/slotVirtualNetworkSwiftConnection:SlotVirtualNetworkSwiftConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceId = registerOutput<String>('appServiceId');
     slotName = registerOutput<String>('slotName');
     subnetId = registerOutput<String>('subnetId');

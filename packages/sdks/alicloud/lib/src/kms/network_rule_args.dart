@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkRuleArgs {
   /// Description.
   final pulumi.Input<String>? description;
-
   /// Network Rule Name.
   final pulumi.Input<String>? networkRuleName;
-
   /// Allowed private network addresses.
   final pulumi.Input<List<String>> sourcePrivateIps;
 
@@ -36,19 +34,10 @@ class NetworkRuleArgs {
 
   factory NetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkRuleArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkRuleName: (() {
-        final guardedValue = map['networkRuleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourcePrivateIps: pulumi.Input.fromValue(
-        (map['sourcePrivateIps'] as List).cast<String>(),
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkRuleName: (() { final guardedValue = map['networkRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourcePrivateIps: pulumi.Input.fromValue((map['sourcePrivateIps'] as List).cast<String>()),
     );
   }
 }
+

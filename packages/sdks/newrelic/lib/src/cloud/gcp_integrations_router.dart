@@ -8,19 +8,20 @@ class GcpIntegrationsRouter {
 
   /// Creates a new [GcpIntegrationsRouter].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsRouter({this.metricsPollingInterval});
+  GcpIntegrationsRouter({
+    this.metricsPollingInterval,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metricsPollingInterval': ?metricsPollingInterval};
+    return <String, dynamic>{
+      'metricsPollingInterval': ?metricsPollingInterval,
+    };
   }
 
   factory GcpIntegrationsRouter.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsRouter(
-      metricsPollingInterval: (() {
-        final guardedValue = map['metricsPollingInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      metricsPollingInterval: (() { final guardedValue = map['metricsPollingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

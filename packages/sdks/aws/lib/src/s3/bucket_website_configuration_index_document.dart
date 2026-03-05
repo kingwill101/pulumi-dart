@@ -10,17 +10,20 @@ class BucketWebsiteConfigurationIndexDocument {
 
   /// Creates a new [BucketWebsiteConfigurationIndexDocument].
   /// [suffix] Suffix that is appended to a request that is for a directory on the website endpoint.
-  BucketWebsiteConfigurationIndexDocument({required this.suffix});
+  BucketWebsiteConfigurationIndexDocument({
+    required this.suffix,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'suffix': suffix};
+    return <String, dynamic>{
+      'suffix': suffix,
+    };
   }
 
-  factory BucketWebsiteConfigurationIndexDocument.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketWebsiteConfigurationIndexDocument.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteConfigurationIndexDocument(
       suffix: pulumi.Input.fromValue(map['suffix'] as String),
     );
   }
 }
+

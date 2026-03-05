@@ -6,14 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataBoxHeavyAccountCopyLogDetailsResponse {
   /// Account name.
   final pulumi.Input<String> accountName;
-
   /// Indicates the type of job details.
   /// Expected value is 'DataBoxHeavy'.
   final pulumi.Input<String> copyLogDetailsType;
-
   /// Link for copy logs.
   final pulumi.Input<List<String>> copyLogLink;
-
   /// Link for copy verbose logs. This will be set only when the LogCollectionLevel is set to verbose.
   final pulumi.Input<List<String>> copyVerboseLogLink;
 
@@ -38,20 +35,13 @@ class DataBoxHeavyAccountCopyLogDetailsResponse {
     };
   }
 
-  factory DataBoxHeavyAccountCopyLogDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataBoxHeavyAccountCopyLogDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DataBoxHeavyAccountCopyLogDetailsResponse(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      copyLogDetailsType: pulumi.Input.fromValue(
-        map['copyLogDetailsType'] as String,
-      ),
-      copyLogLink: pulumi.Input.fromValue(
-        (map['copyLogLink'] as List).cast<String>(),
-      ),
-      copyVerboseLogLink: pulumi.Input.fromValue(
-        (map['copyVerboseLogLink'] as List).cast<String>(),
-      ),
+      copyLogDetailsType: pulumi.Input.fromValue(map['copyLogDetailsType'] as String),
+      copyLogLink: pulumi.Input.fromValue((map['copyLogLink'] as List).cast<String>()),
+      copyVerboseLogLink: pulumi.Input.fromValue((map['copyVerboseLogLink'] as List).cast<String>()),
     );
   }
 }
+

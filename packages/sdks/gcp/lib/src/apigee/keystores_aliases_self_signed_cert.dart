@@ -742,40 +742,27 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
   /// This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
   /// this parameter or the JSON body.
   late final pulumi.Output<String> alias;
-
   /// Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
   late final pulumi.Output<int?> certValidityInDays;
-
   /// Chain of certificates under this alias.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> certsInfos;
-
   /// The Apigee environment name
   late final pulumi.Output<String> environment;
-
   /// Key size. Default and maximum value is 2048 bits.
   late final pulumi.Output<String?> keySize;
-
   /// The Apigee keystore name associated in an Apigee environment
   late final pulumi.Output<String> keystore;
-
   /// The Apigee Organization name associated with the Apigee environment
   late final pulumi.Output<String> orgId;
-
   /// Signature algorithm to generate private key. Valid values are SHA512withRSA, SHA384withRSA, and SHA256withRSA
   late final pulumi.Output<String> sigAlg;
-
   /// Subject details.
   /// Structure is documented below.
   late final pulumi.Output<KeystoresAliasesSelfSignedCertSubject> subject;
-
   /// List of alternative host names. Maximum length is 255 characters for each value.
   /// Structure is documented below.
-  late final pulumi.Output<
-    KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?
-  >
-  subjectAlternativeDnsNames;
-
+  late final pulumi.Output<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?> subjectAlternativeDnsNames;
   /// Optional.Type of Alias
   late final pulumi.Output<String> type;
 
@@ -788,11 +775,11 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
     KeystoresAliasesSelfSignedCertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String>('alias');
     certValidityInDays = registerOutput<int?>('certValidityInDays');
     certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
@@ -801,29 +788,8 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
     keystore = registerOutput<String>('keystore');
     orgId = registerOutput<String>('orgId');
     sigAlg = registerOutput<String>('sigAlg');
-    subject = registerOutput<KeystoresAliasesSelfSignedCertSubject>(
-      'subject',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KeystoresAliasesSelfSignedCertSubject.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    subjectAlternativeDnsNames =
-        registerOutput<
-          KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?
-        >(
-          'subjectAlternativeDnsNames',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    subject = registerOutput<KeystoresAliasesSelfSignedCertSubject>('subject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeystoresAliasesSelfSignedCertSubject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subjectAlternativeDnsNames = registerOutput<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?>('subjectAlternativeDnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 
@@ -845,11 +811,11 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String>('alias');
     certValidityInDays = registerOutput<int?>('certValidityInDays');
     certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
@@ -858,29 +824,8 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
     keystore = registerOutput<String>('keystore');
     orgId = registerOutput<String>('orgId');
     sigAlg = registerOutput<String>('sigAlg');
-    subject = registerOutput<KeystoresAliasesSelfSignedCertSubject>(
-      'subject',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KeystoresAliasesSelfSignedCertSubject.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    subjectAlternativeDnsNames =
-        registerOutput<
-          KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?
-        >(
-          'subjectAlternativeDnsNames',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    subject = registerOutput<KeystoresAliasesSelfSignedCertSubject>('subject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeystoresAliasesSelfSignedCertSubject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subjectAlternativeDnsNames = registerOutput<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?>('subjectAlternativeDnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

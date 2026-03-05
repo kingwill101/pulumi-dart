@@ -6,40 +6,28 @@ import 'system_data_response.dart';
 class GetNetworkInterfaceResult {
   /// Administrative state of the resource.
   final String administrativeState;
-
   /// Switch configuration description.
   final String? annotation;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The ARM resource id of the interface or compute server its connected to.
   final String connectedTo;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The Interface Type. Example: Management/Data
   final String interfaceType;
-
   /// IPv4Address of the interface.
   final String ipv4Address;
-
   /// IPv6Address of the interface.
   final String ipv6Address;
-
   /// The name of the resource
   final String name;
-
   /// Physical Identifier of the network interface.
   final String physicalIdentifier;
-
   /// Provisioning state of the resource.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -94,11 +82,7 @@ class GetNetworkInterfaceResult {
   factory GetNetworkInterfaceResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceResult(
       administrativeState: map['administrativeState'] as String,
-      annotation: (() {
-        final guardedValue = map['annotation'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
       connectedTo: map['connectedTo'] as String,
       id: map['id'] as String,
@@ -108,10 +92,9 @@ class GetNetworkInterfaceResult {
       name: map['name'] as String,
       physicalIdentifier: map['physicalIdentifier'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

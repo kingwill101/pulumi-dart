@@ -15,101 +15,71 @@ import 'system_data_response.dart';
 class GetPrivateCloudResult {
   /// Properties describing how the cloud is distributed across availability zones
   final AvailabilityPropertiesResponse? availability;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// An ExpressRoute Circuit
   final CircuitResponse? circuit;
-
   /// The type of DNS zone to use.
   final String? dnsZoneType;
-
   /// Customer managed key encryption, can be enabled or disabled
   final EncryptionResponse? encryption;
-
   /// The endpoints
   final EndpointsResponse endpoints;
-
   /// Array of additional networks noncontiguous with networkBlock. Networks must be
   /// unique and non-overlapping across VNet in your subscription, on-premise, and
   /// this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
   /// (A.B.C.D/X).
   final List<String>? extendedNetworkBlocks;
-
   /// Array of cloud link IDs from other clouds that connect to this one
   final List<String> externalCloudLinks;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The managed service identities assigned to this resource.
   final SystemAssignedServiceIdentityResponse? identity;
-
   /// vCenter Single Sign On Identity Sources
   final List<IdentitySourceResponse>? identitySources;
-
   /// Connectivity to internet is enabled or disabled
   final String? internet;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The default cluster used for management
   final ManagementClusterResponse managementCluster;
-
   /// Network used to access vCenter Server and NSX-T Manager
   final String managementNetwork;
-
   /// The name of the resource
   final String name;
-
   /// The block of addresses should be unique across VNet in your subscription as
   /// well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where
   /// A,B,C,D are between 0 and 255, and X is between 0 and 22
   final String networkBlock;
-
   /// Flag to indicate whether the private cloud has the quota for provisioned NSX
   /// Public IP count raised from 64 to 1024
   final String nsxPublicIpQuotaRaised;
-
   /// Thumbprint of the NSX-T Manager SSL certificate
   final String nsxtCertificateThumbprint;
-
   /// Optionally, set the NSX-T Manager password when the private cloud is created
   final String? nsxtPassword;
-
   /// Used for virtual machine cold migration, cloning, and snapshot migration
   final String provisioningNetwork;
-
   /// The provisioning state
   final String provisioningState;
-
   /// A secondary expressRoute circuit from a separate AZ. Only present in a
   /// stretched private cloud
   final CircuitResponse? secondaryCircuit;
-
   /// The SKU (Stock Keeping Unit) assigned to this resource.
   final SkuResponse sku;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Thumbprint of the vCenter Server SSL certificate
   final String vcenterCertificateThumbprint;
-
   /// Optionally, set the vCenter admin password when the private cloud is created
   final String? vcenterPassword;
-
   /// Azure resource ID of the virtual network
   final String? virtualNetworkId;
-
   /// Used for live migration of virtual machines
   final String vmotionNetwork;
 
@@ -191,14 +161,7 @@ class GetPrivateCloudResult {
       'externalCloudLinks': externalCloudLinks,
       'id': id,
       'identity': ?identity?.toMap(),
-      'identitySources': ?(() {
-        final guardedValue = identitySources;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          IdentitySourceResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'identitySources': ?(() { final guardedValue = identitySources; if (guardedValue == null) return null; return pulumi.Input.encodeList<IdentitySourceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'internet': ?internet,
       'location': location,
       'managementCluster': managementCluster.toMap(),
@@ -224,111 +187,38 @@ class GetPrivateCloudResult {
 
   factory GetPrivateCloudResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudResult(
-      availability: (() {
-        final guardedValue = map['availability'];
-        if (guardedValue == null) return null;
-        return AvailabilityPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      availability: (() { final guardedValue = map['availability']; if (guardedValue == null) return null; return AvailabilityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      circuit: (() {
-        final guardedValue = map['circuit'];
-        if (guardedValue == null) return null;
-        return CircuitResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      dnsZoneType: (() {
-        final guardedValue = map['dnsZoneType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      encryption: (() {
-        final guardedValue = map['encryption'];
-        if (guardedValue == null) return null;
-        return EncryptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      endpoints: EndpointsResponse.fromMap(
-        (map['endpoints']! as Map).cast<String, dynamic>(),
-      ),
-      extendedNetworkBlocks: (() {
-        final guardedValue = map['extendedNetworkBlocks'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      circuit: (() { final guardedValue = map['circuit']; if (guardedValue == null) return null; return CircuitResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      dnsZoneType: (() { final guardedValue = map['dnsZoneType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return EncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      endpoints: EndpointsResponse.fromMap((map['endpoints']! as Map).cast<String, dynamic>()),
+      extendedNetworkBlocks: (() { final guardedValue = map['extendedNetworkBlocks']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       externalCloudLinks: (map['externalCloudLinks'] as List).cast<String>(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return SystemAssignedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      identitySources: (() {
-        final guardedValue = map['identitySources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<IdentitySourceResponse>(
-          guardedValue,
-          (value) => IdentitySourceResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      internet: (() {
-        final guardedValue = map['internet'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return SystemAssignedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      identitySources: (() { final guardedValue = map['identitySources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<IdentitySourceResponse>(guardedValue, (value) => IdentitySourceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      internet: (() { final guardedValue = map['internet']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: map['location'] as String,
-      managementCluster: ManagementClusterResponse.fromMap(
-        (map['managementCluster']! as Map).cast<String, dynamic>(),
-      ),
+      managementCluster: ManagementClusterResponse.fromMap((map['managementCluster']! as Map).cast<String, dynamic>()),
       managementNetwork: map['managementNetwork'] as String,
       name: map['name'] as String,
       networkBlock: map['networkBlock'] as String,
       nsxPublicIpQuotaRaised: map['nsxPublicIpQuotaRaised'] as String,
       nsxtCertificateThumbprint: map['nsxtCertificateThumbprint'] as String,
-      nsxtPassword: (() {
-        final guardedValue = map['nsxtPassword'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nsxtPassword: (() { final guardedValue = map['nsxtPassword']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningNetwork: map['provisioningNetwork'] as String,
       provisioningState: map['provisioningState'] as String,
-      secondaryCircuit: (() {
-        final guardedValue = map['secondaryCircuit'];
-        if (guardedValue == null) return null;
-        return CircuitResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      secondaryCircuit: (() { final guardedValue = map['secondaryCircuit']; if (guardedValue == null) return null; return CircuitResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sku: SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      vcenterCertificateThumbprint:
-          map['vcenterCertificateThumbprint'] as String,
-      vcenterPassword: (() {
-        final guardedValue = map['vcenterPassword'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      virtualNetworkId: (() {
-        final guardedValue = map['virtualNetworkId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      vcenterCertificateThumbprint: map['vcenterCertificateThumbprint'] as String,
+      vcenterPassword: (() { final guardedValue = map['vcenterPassword']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      virtualNetworkId: (() { final guardedValue = map['virtualNetworkId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vmotionNetwork: map['vmotionNetwork'] as String,
     );
   }
 }
+

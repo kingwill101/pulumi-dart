@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkspaceProductGroupLink.
 class GetWorkspaceProductGroupLinkResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Full resource Id of a group.
   final String groupId;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -51,3 +48,4 @@ class GetWorkspaceProductGroupLinkResult {
     );
   }
 }
+

@@ -118,40 +118,30 @@ class Service extends pulumi.CustomResource {
   /// The administrative state of the resource. Can either be up(true) or down(false).
   /// Changing this updates the administrative state of the existing service.
   late final pulumi.Output<bool?> adminStateUp;
-
   /// The human-readable description for the service.
   /// Changing this updates the description of the existing service.
   late final pulumi.Output<String?> description;
-
   /// The read-only external (public) IPv4 address that is used for the VPN service.
   late final pulumi.Output<String> externalV4Ip;
-
   /// The read-only external (public) IPv6 address that is used for the VPN service.
   late final pulumi.Output<String> externalV6Ip;
-
   /// The name of the service. Changing this updates the name of
   /// the existing service.
   late final pulumi.Output<String> name;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a VPN service. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// service.
   late final pulumi.Output<String> region;
-
   /// The ID of the router. Changing this creates a new service.
   late final pulumi.Output<String> routerId;
-
   /// Indicates whether IPsec VPN service is currently operational. Values are ACTIVE, DOWN, BUILD, ERROR, PENDING_CREATE, PENDING_UPDATE, or PENDING_DELETE.
   late final pulumi.Output<String> status;
-
   /// SubnetID is the ID of the subnet. Default is null.
   late final pulumi.Output<String?> subnetId;
-
   /// The owner of the service. Required if admin wants to
   /// create a service for another project. Changing this creates a new service.
   late final pulumi.Output<String> tenantId;
-
   /// Map of additional options.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
 
@@ -164,11 +154,11 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:vpnaas/service:Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:vpnaas/service:Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminStateUp = registerOutput<bool?>('adminStateUp');
     description = registerOutput<String?>('description');
     externalV4Ip = registerOutput<String>('externalV4Ip');
@@ -200,11 +190,11 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:vpnaas/service:Service',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:vpnaas/service:Service',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminStateUp = registerOutput<bool?>('adminStateUp');
     description = registerOutput<String?>('description');
     externalV4Ip = registerOutput<String>('externalV4Ip');

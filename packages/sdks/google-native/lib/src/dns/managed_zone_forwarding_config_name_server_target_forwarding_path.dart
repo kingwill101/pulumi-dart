@@ -3,22 +3,16 @@ enum ManagedZoneForwardingConfigNameServerTargetForwardingPath {
   default_("default"),
   private("private");
 
-  const ManagedZoneForwardingConfigNameServerTargetForwardingPath(
-    this.wireValue,
-  );
+  const ManagedZoneForwardingConfigNameServerTargetForwardingPath(this.wireValue);
   final String wireValue;
 
-  static ManagedZoneForwardingConfigNameServerTargetForwardingPath fromValue(
-    String value,
-  ) {
-    for (final item
-        in ManagedZoneForwardingConfigNameServerTargetForwardingPath.values) {
+  static ManagedZoneForwardingConfigNameServerTargetForwardingPath fromValue(String value) {
+    for (final item in ManagedZoneForwardingConfigNameServerTargetForwardingPath.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ManagedZoneForwardingConfigNameServerTargetForwardingPath value: $value',
-    );
+    throw ArgumentError('Unknown ManagedZoneForwardingConfigNameServerTargetForwardingPath value: $value');
   }
 }
+

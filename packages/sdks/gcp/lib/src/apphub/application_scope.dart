@@ -12,10 +12,14 @@ class ApplicationScope {
 
   /// Creates a new [ApplicationScope].
   /// [type] Required. Scope Type.
-  ApplicationScope({required this.type});
+  ApplicationScope({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory ApplicationScope.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class ApplicationScope {
     );
   }
 }
+

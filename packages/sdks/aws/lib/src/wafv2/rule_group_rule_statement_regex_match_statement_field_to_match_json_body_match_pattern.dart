@@ -16,25 +16,17 @@ class RuleGroupRuleStatementRegexMatchStatementFieldToMatchJsonBodyMatchPattern 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'all': ?all, 'includedPaths': ?includedPaths};
+    return <String, dynamic>{
+      'all': ?all,
+      'includedPaths': ?includedPaths,
+    };
   }
 
-  factory RuleGroupRuleStatementRegexMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementRegexMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRegexMatchStatementFieldToMatchJsonBodyMatchPattern(
-      all: (() {
-        final guardedValue = map['all'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      includedPaths: (() {
-        final guardedValue = map['includedPaths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      all: (() { final guardedValue = map['all']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      includedPaths: (() { final guardedValue = map['includedPaths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

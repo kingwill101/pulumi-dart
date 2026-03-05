@@ -110,7 +110,6 @@ import 'storage_bundle_state.dart';
 class StorageBundle extends pulumi.CustomResource {
   /// The description of storage bundle.
   late final pulumi.Output<String?> description;
-
   /// The name of storage bundle.
   late final pulumi.Output<String> storageBundleName;
 
@@ -123,11 +122,11 @@ class StorageBundle extends pulumi.CustomResource {
     StorageBundleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudstoragegateway/storageBundle:StorageBundle',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudstoragegateway/storageBundle:StorageBundle',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     storageBundleName = registerOutput<String>('storageBundleName');
   }
@@ -150,11 +149,11 @@ class StorageBundle extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudstoragegateway/storageBundle:StorageBundle',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudstoragegateway/storageBundle:StorageBundle',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     storageBundleName = registerOutput<String>('storageBundleName');
   }

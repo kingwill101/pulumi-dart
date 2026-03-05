@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkteamMemberDefinitionCognitoMemberDefinition {
   /// An identifier for an application client. You must create the app client ID using Amazon Cognito.
   final pulumi.Input<String> clientId;
-
   /// An identifier for a user group.
   final pulumi.Input<String> userGroup;
-
   /// An identifier for a user pool. The user pool must be in the same region as the service that you are calling.
   final pulumi.Input<String> userPool;
 
@@ -30,9 +28,7 @@ class WorkteamMemberDefinitionCognitoMemberDefinition {
     };
   }
 
-  factory WorkteamMemberDefinitionCognitoMemberDefinition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkteamMemberDefinitionCognitoMemberDefinition.fromMap(Map<String, dynamic> map) {
     return WorkteamMemberDefinitionCognitoMemberDefinition(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       userGroup: pulumi.Input.fromValue(map['userGroup'] as String),
@@ -40,3 +36,4 @@ class WorkteamMemberDefinitionCognitoMemberDefinition {
     );
   }
 }
+

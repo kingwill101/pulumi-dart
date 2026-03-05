@@ -5,19 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainCertInfo {
   /// If You Enable HTTPS Here Certificate Name.
   final pulumi.Input<String>? certName;
-
   /// Certificate Type. Value Range:
   /// * upload: Certificate
   /// * cas: Certificate Authority Certificate.
   /// * free: Free Certificate.
   final pulumi.Input<String>? certType;
-
   /// Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
   final pulumi.Input<String>? sslPri;
-
   /// Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
   final pulumi.Input<String>? sslProtocol;
-
   /// If You Enable HTTPS Here Key.
   final pulumi.Input<String>? sslPub;
 
@@ -47,31 +43,12 @@ class DomainCertInfo {
 
   factory DomainCertInfo.fromMap(Map<String, dynamic> map) {
     return DomainCertInfo(
-      certName: (() {
-        final guardedValue = map['certName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certType: (() {
-        final guardedValue = map['certType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sslPri: (() {
-        final guardedValue = map['sslPri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sslProtocol: (() {
-        final guardedValue = map['sslProtocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sslPub: (() {
-        final guardedValue = map['sslPub'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certName: (() { final guardedValue = map['certName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certType: (() { final guardedValue = map['certType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslPri: (() { final guardedValue = map['sslPri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslProtocol: (() { final guardedValue = map['sslProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslPub: (() { final guardedValue = map['sslPub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

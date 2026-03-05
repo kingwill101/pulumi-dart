@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatadogApiKeyResponse {
   /// The time of creation of the API key.
   final pulumi.Input<String>? created;
-
   /// The user that created the API key.
   final pulumi.Input<String>? createdBy;
-
   /// The value of the API key.
   final pulumi.Input<String> key;
-
   /// The name of the API key.
   final pulumi.Input<String>? name;
 
@@ -38,22 +35,11 @@ class DatadogApiKeyResponse {
 
   factory DatadogApiKeyResponse.fromMap(Map<String, dynamic> map) {
     return DatadogApiKeyResponse(
-      created: (() {
-        final guardedValue = map['created'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createdBy: (() {
-        final guardedValue = map['createdBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       key: pulumi.Input.fromValue(map['key'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

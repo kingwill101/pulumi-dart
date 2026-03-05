@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerBackendAddressPoolReferenceResponse {
   /// Gets the name of the proxy resource on the target side.
   final pulumi.Input<String>? name;
-
   /// Gets the ARM resource ID of the tracked resource being referenced.
   final pulumi.Input<String> sourceArmResourceId;
 
@@ -25,18 +24,11 @@ class LoadBalancerBackendAddressPoolReferenceResponse {
     };
   }
 
-  factory LoadBalancerBackendAddressPoolReferenceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoadBalancerBackendAddressPoolReferenceResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressPoolReferenceResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceArmResourceId: pulumi.Input.fromValue(
-        map['sourceArmResourceId'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceArmResourceId: pulumi.Input.fromValue(map['sourceArmResourceId'] as String),
     );
   }
 }
+

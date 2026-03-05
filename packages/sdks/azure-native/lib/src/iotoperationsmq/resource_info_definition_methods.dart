@@ -16,3 +16,4 @@ enum ResourceInfoDefinitionMethods {
     throw ArgumentError('Unknown ResourceInfoDefinitionMethods value: $value');
   }
 }
+

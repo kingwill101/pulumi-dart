@@ -7,12 +7,9 @@ import 'sql_connection_info_response.dart';
 /// Input for task that validates migration input for SQL sync migrations
 class ValidateSyncMigrationInputSqlServerTaskInputResponse {
   /// Databases to migrate
-  final pulumi.Input<List<MigrateSqlServerSqlDbSyncDatabaseInputResponse>>
-  selectedDatabases;
-
+  final pulumi.Input<List<MigrateSqlServerSqlDbSyncDatabaseInputResponse>> selectedDatabases;
   /// Information for connecting to source SQL server
   final pulumi.Input<SqlConnectionInfoResponse> sourceConnectionInfo;
-
   /// Information for connecting to target
   final pulumi.Input<SqlConnectionInfoResponse> targetConnectionInfo;
 
@@ -28,53 +25,18 @@ class ValidateSyncMigrationInputSqlServerTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'selectedDatabases':
-          pulumi.Input.mapInputValue<
-            List<MigrateSqlServerSqlDbSyncDatabaseInputResponse>,
-            List<Map<String, dynamic>>
-          >(
-            selectedDatabases,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MigrateSqlServerSqlDbSyncDatabaseInputResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'sourceConnectionInfo':
-          pulumi.Input.mapInputValue<
-            SqlConnectionInfoResponse,
-            Map<String, dynamic>
-          >(sourceConnectionInfo, (value) => value.toMap()),
-      'targetConnectionInfo':
-          pulumi.Input.mapInputValue<
-            SqlConnectionInfoResponse,
-            Map<String, dynamic>
-          >(targetConnectionInfo, (value) => value.toMap()),
+      'selectedDatabases': pulumi.Input.mapInputValue<List<MigrateSqlServerSqlDbSyncDatabaseInputResponse>, List<Map<String, dynamic>>>(selectedDatabases, (value) => pulumi.Input.encodeList<MigrateSqlServerSqlDbSyncDatabaseInputResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfoResponse, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfoResponse, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
-  factory ValidateSyncMigrationInputSqlServerTaskInputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ValidateSyncMigrationInputSqlServerTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return ValidateSyncMigrationInputSqlServerTaskInputResponse(
-      selectedDatabases: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<MigrateSqlServerSqlDbSyncDatabaseInputResponse>(
-          map['selectedDatabases']!,
-          (value) => MigrateSqlServerSqlDbSyncDatabaseInputResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      sourceConnectionInfo: pulumi.Input.fromValue(
-        SqlConnectionInfoResponse.fromMap(
-          (map['sourceConnectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      targetConnectionInfo: pulumi.Input.fromValue(
-        SqlConnectionInfoResponse.fromMap(
-          (map['targetConnectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      selectedDatabases: pulumi.Input.fromValue(pulumi.Input.decodeList<MigrateSqlServerSqlDbSyncDatabaseInputResponse>(map['selectedDatabases']!, (value) => MigrateSqlServerSqlDbSyncDatabaseInputResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      sourceConnectionInfo: pulumi.Input.fromValue(SqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo']! as Map).cast<String, dynamic>())),
+      targetConnectionInfo: pulumi.Input.fromValue(SqlConnectionInfoResponse.fromMap((map['targetConnectionInfo']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

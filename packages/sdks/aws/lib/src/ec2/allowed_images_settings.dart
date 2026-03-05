@@ -273,10 +273,8 @@ import 'allowed_images_settings_state.dart';
 class AllowedImagesSettings extends pulumi.CustomResource {
   /// List of image criteria. Maximum of 10 criterion blocks allowed. See `image_criterion` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> imageCriterions;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// State of the allowed images settings. Valid values are `enabled` or `audit-mode`.
   late final pulumi.Output<String> state;
 
@@ -289,14 +287,12 @@ class AllowedImagesSettings extends pulumi.CustomResource {
     AllowedImagesSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/allowedImagesSettings:AllowedImagesSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    imageCriterions = registerOutput<List<Map<String, dynamic>>?>(
-      'imageCriterions',
-    );
+          'aws:ec2/allowedImagesSettings:AllowedImagesSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    imageCriterions = registerOutput<List<Map<String, dynamic>>?>('imageCriterions');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
   }
@@ -319,14 +315,12 @@ class AllowedImagesSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/allowedImagesSettings:AllowedImagesSettings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    imageCriterions = registerOutput<List<Map<String, dynamic>>?>(
-      'imageCriterions',
-    );
+          'aws:ec2/allowedImagesSettings:AllowedImagesSettings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    imageCriterions = registerOutput<List<Map<String, dynamic>>?>('imageCriterions');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
   }

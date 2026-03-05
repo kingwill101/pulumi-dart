@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointServiceUserState {
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   final pulumi.Input<bool>? dryRun;
-
   /// The endpoint service ID.
   final pulumi.Input<String>? serviceId;
-
   /// The whitelist in the format of ARN.
   final pulumi.Input<String>? userArn;
-
   /// The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
   final pulumi.Input<String>? userId;
 
@@ -39,26 +36,11 @@ class VpcEndpointServiceUserState {
 
   factory VpcEndpointServiceUserState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceUserState(
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      serviceId: (() {
-        final guardedValue = map['serviceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userArn: (() {
-        final guardedValue = map['userArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userId: (() {
-        final guardedValue = map['userId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userArn: (() { final guardedValue = map['userArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

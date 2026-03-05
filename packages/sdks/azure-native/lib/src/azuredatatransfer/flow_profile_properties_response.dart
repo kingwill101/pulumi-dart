@@ -7,19 +7,14 @@ import 'flow_profile_rulesets_response.dart';
 class FlowProfilePropertiesResponse {
   /// A user-defined description of the FlowProfile.
   final pulumi.Input<String> description;
-
   /// A guid represented as a string for the FlowProfile resource, assigned by the system.
   final pulumi.Input<String> flowProfileId;
-
   /// The current provisioning state of the FlowProfile.
   final pulumi.Input<String> provisioningState;
-
   /// The data replication scenario handled by this FlowProfile. Please not, that this value cannot be updated after creation.
   final pulumi.Input<String> replicationScenario;
-
   /// A set of configurable rulesets applied to this FlowProfile.
   final pulumi.Input<FlowProfileRulesetsResponse>? rulesets;
-
   /// The operational status of the FlowProfile.
   final pulumi.Input<String> status;
 
@@ -45,11 +40,7 @@ class FlowProfilePropertiesResponse {
       'flowProfileId': flowProfileId,
       'provisioningState': provisioningState,
       'replicationScenario': replicationScenario,
-      'rulesets':
-          ?pulumi.Input.mapOptionalInputValue<
-            FlowProfileRulesetsResponse,
-            Map<String, dynamic>
-          >(rulesets, (value) => value.toMap()),
+      'rulesets': ?pulumi.Input.mapOptionalInputValue<FlowProfileRulesetsResponse, Map<String, dynamic>>(rulesets, (value) => value.toMap()),
       'status': status,
     };
   }
@@ -58,22 +49,11 @@ class FlowProfilePropertiesResponse {
     return FlowProfilePropertiesResponse(
       description: pulumi.Input.fromValue(map['description'] as String),
       flowProfileId: pulumi.Input.fromValue(map['flowProfileId'] as String),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      replicationScenario: pulumi.Input.fromValue(
-        map['replicationScenario'] as String,
-      ),
-      rulesets: (() {
-        final guardedValue = map['rulesets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FlowProfileRulesetsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      replicationScenario: pulumi.Input.fromValue(map['replicationScenario'] as String),
+      rulesets: (() { final guardedValue = map['rulesets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlowProfileRulesetsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

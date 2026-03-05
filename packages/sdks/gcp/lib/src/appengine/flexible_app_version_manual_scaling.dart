@@ -10,10 +10,14 @@ class FlexibleAppVersionManualScaling {
 
   /// Creates a new [FlexibleAppVersionManualScaling].
   /// [instances] Number of instances to assign to the service at the start.
-  FlexibleAppVersionManualScaling({required this.instances});
+  FlexibleAppVersionManualScaling({
+    required this.instances,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instances': instances};
+    return <String, dynamic>{
+      'instances': instances,
+    };
   }
 
   factory FlexibleAppVersionManualScaling.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class FlexibleAppVersionManualScaling {
     );
   }
 }
+

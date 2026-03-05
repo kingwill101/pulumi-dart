@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPublicIpv4PoolArgs {
   /// AWS resource IDs of a public IPv4 pool (as a string) for which this data source will fetch detailed information.
   final pulumi.Input<String> poolId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Any tags for the address pool.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -20,7 +18,11 @@ class GetPublicIpv4PoolArgs {
   /// [poolId] AWS resource IDs of a public IPv4 pool (as a string) for which this data source will fetch detailed information.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Any tags for the address pool.
-  GetPublicIpv4PoolArgs({required this.poolId, this.region, this.tags});
+  GetPublicIpv4PoolArgs({
+    required this.poolId,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,18 +35,9 @@ class GetPublicIpv4PoolArgs {
   factory GetPublicIpv4PoolArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicIpv4PoolArgs(
       poolId: pulumi.Input.fromValue(map['poolId'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

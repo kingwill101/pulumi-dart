@@ -14,18 +14,15 @@ class RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
-  factory RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink.fromMap(Map<String, dynamic> map) {
     return RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

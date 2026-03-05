@@ -9,19 +9,20 @@ class EdgeCluster {
 
   /// Creates a new [EdgeCluster].
   /// [resourceLink] Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
-  EdgeCluster({this.resourceLink});
+  EdgeCluster({
+    this.resourceLink,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceLink': ?resourceLink};
+    return <String, dynamic>{
+      'resourceLink': ?resourceLink,
+    };
   }
 
   factory EdgeCluster.fromMap(Map<String, dynamic> map) {
     return EdgeCluster(
-      resourceLink: (() {
-        final guardedValue = map['resourceLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceLink: (() { final guardedValue = map['resourceLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

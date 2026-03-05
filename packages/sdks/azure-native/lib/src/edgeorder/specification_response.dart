@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpecificationResponse {
   /// Name of the specification.
   final pulumi.Input<String> name;
-
   /// Value of the specification.
   final pulumi.Input<String> value;
 
   /// Creates a new [SpecificationResponse].
   /// [name] Name of the specification.
   /// [value] Value of the specification.
-  SpecificationResponse({required this.name, required this.value});
+  SpecificationResponse({
+    required this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory SpecificationResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class SpecificationResponse {
     );
   }
 }
+

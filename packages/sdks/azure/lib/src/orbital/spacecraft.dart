@@ -258,25 +258,18 @@ import 'spacecraft_state.dart';
 class Spacecraft extends pulumi.CustomResource {
   /// A `links` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> links;
-
   /// The location where the Spacecraft exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the Spacecraft. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// NORAD ID of the Spacecraft.
   late final pulumi.Output<String> noradId;
-
   /// The name of the Resource Group where the Spacecraft exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Title of the two line elements (TLE).
   late final pulumi.Output<String> titleLine;
-
   /// A list of the two line elements (TLE), the first string being the first of the TLE, the second string being the second line of the TLE. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>> twoLineElements;
 
@@ -289,11 +282,11 @@ class Spacecraft extends pulumi.CustomResource {
     SpacecraftArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:orbital/spacecraft:Spacecraft',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:orbital/spacecraft:Spacecraft',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     links = registerOutput<List<Map<String, dynamic>>>('links');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -322,11 +315,11 @@ class Spacecraft extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:orbital/spacecraft:Spacecraft',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:orbital/spacecraft:Spacecraft',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     links = registerOutput<List<Map<String, dynamic>>>('links');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

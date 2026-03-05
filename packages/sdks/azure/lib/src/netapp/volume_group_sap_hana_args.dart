@@ -10,22 +10,16 @@ import 'volume_group_sap_hana_volume.dart';
 class VolumeGroupSapHanaArgs {
   /// Name of the account where the application volume group belong to. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> accountName;
-
   /// The SAP System ID, maximum 3 characters, e.g. `SH9`. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> applicationIdentifier;
-
   /// Volume group description. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> groupDescription;
-
   /// The Azure Region where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String>? location;
-
   /// The name which should be used for this Application Volume Group. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String>? name;
-
   /// The name of the Resource Group where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> resourceGroupName;
-
   /// One or more `volume` blocks as defined below.
   final pulumi.Input<List<VolumeGroupSapHanaVolume>> volumes;
 
@@ -55,51 +49,20 @@ class VolumeGroupSapHanaArgs {
       'location': ?location,
       'name': ?name,
       'resourceGroupName': resourceGroupName,
-      'volumes':
-          pulumi.Input.mapInputValue<
-            List<VolumeGroupSapHanaVolume>,
-            List<Map<String, dynamic>>
-          >(
-            volumes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VolumeGroupSapHanaVolume,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'volumes': pulumi.Input.mapInputValue<List<VolumeGroupSapHanaVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<VolumeGroupSapHanaVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VolumeGroupSapHanaArgs.fromMap(Map<String, dynamic> map) {
     return VolumeGroupSapHanaArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      applicationIdentifier: pulumi.Input.fromValue(
-        map['applicationIdentifier'] as String,
-      ),
-      groupDescription: pulumi.Input.fromValue(
-        map['groupDescription'] as String,
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      volumes: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<VolumeGroupSapHanaVolume>(
-          map['volumes']!,
-          (value) => VolumeGroupSapHanaVolume.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      applicationIdentifier: pulumi.Input.fromValue(map['applicationIdentifier'] as String),
+      groupDescription: pulumi.Input.fromValue(map['groupDescription'] as String),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      volumes: pulumi.Input.fromValue(pulumi.Input.decodeList<VolumeGroupSapHanaVolume>(map['volumes']!, (value) => VolumeGroupSapHanaVolume.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

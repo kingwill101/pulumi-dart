@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DbInstanceEndpointAddressArgs {
   /// The prefix of the public endpoint.
   final pulumi.Input<String> connectionStringPrefix;
-
   /// The Endpoint ID of the instance.
   final pulumi.Input<String> dbInstanceEndpointId;
-
   /// The ID of the instance.
   final pulumi.Input<String> dbInstanceId;
-
   /// The port number of the public endpoint.
   final pulumi.Input<String> port;
 
@@ -42,14 +39,11 @@ class DbInstanceEndpointAddressArgs {
 
   factory DbInstanceEndpointAddressArgs.fromMap(Map<String, dynamic> map) {
     return DbInstanceEndpointAddressArgs(
-      connectionStringPrefix: pulumi.Input.fromValue(
-        map['connectionStringPrefix'] as String,
-      ),
-      dbInstanceEndpointId: pulumi.Input.fromValue(
-        map['dbInstanceEndpointId'] as String,
-      ),
+      connectionStringPrefix: pulumi.Input.fromValue(map['connectionStringPrefix'] as String),
+      dbInstanceEndpointId: pulumi.Input.fromValue(map['dbInstanceEndpointId'] as String),
       dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
       port: pulumi.Input.fromValue(map['port'] as String),
     );
   }
 }
+

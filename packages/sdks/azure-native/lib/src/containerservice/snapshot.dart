@@ -179,43 +179,30 @@ import 'system_data_response.dart';
 class Snapshot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// CreationData to be used to specify the source agent pool resource ID to create this snapshot.
   late final pulumi.Output<CreationDataResponse?> creationData;
-
   /// Whether to use a FIPS-enabled OS.
   late final pulumi.Output<bool> enableFIPS;
-
   /// The version of Kubernetes.
   late final pulumi.Output<String> kubernetesVersion;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The version of node image.
   late final pulumi.Output<String> nodeImageVersion;
-
   /// Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes &lt;= 1.24 or Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows.
   late final pulumi.Output<String> osSku;
-
   /// The operating system type. The default is Linux.
   late final pulumi.Output<String> osType;
-
   /// The type of a snapshot. The default is NodePool.
   late final pulumi.Output<String?> snapshotType;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The size of the VM.
   late final pulumi.Output<String> vmSize;
 
@@ -228,22 +215,13 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerservice:Snapshot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:containerservice:Snapshot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    creationData = registerOutput<CreationDataResponse?>(
-      'creationData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CreationDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    creationData = registerOutput<CreationDataResponse?>('creationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CreationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enableFIPS = registerOutput<bool>('enableFIPS');
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');
@@ -252,16 +230,7 @@ class Snapshot extends pulumi.CustomResource {
     osSku = registerOutput<String>('osSku');
     osType = registerOutput<String>('osType');
     snapshotType = registerOutput<String?>('snapshotType');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     vmSize = registerOutput<String>('vmSize');

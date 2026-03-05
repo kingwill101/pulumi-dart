@@ -5,22 +5,16 @@ enum InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta {
   replace("REPLACE"),
   restart("RESTART");
 
-  const InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta(
-    this.wireValue,
-  );
+  const InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta(this.wireValue);
   final String wireValue;
 
-  static InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta.values) {
+  static InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta fromValue(String value) {
+    for (final item in InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta value: $value');
   }
 }
+

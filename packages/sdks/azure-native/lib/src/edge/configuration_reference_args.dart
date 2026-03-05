@@ -10,10 +10,8 @@ import 'configuration_reference_properties.dart';
 class ConfigurationReferenceArgs {
   /// The name of the ConfigurationReference
   final pulumi.Input<String>? configurationReferenceName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<ConfigurationReferenceProperties>? properties;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -30,32 +28,17 @@ class ConfigurationReferenceArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configurationReferenceName': ?configurationReferenceName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigurationReferenceProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<ConfigurationReferenceProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceUri': resourceUri,
     };
   }
 
   factory ConfigurationReferenceArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationReferenceArgs(
-      configurationReferenceName: (() {
-        final guardedValue = map['configurationReferenceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigurationReferenceProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      configurationReferenceName: (() { final guardedValue = map['configurationReferenceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationReferenceProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
+

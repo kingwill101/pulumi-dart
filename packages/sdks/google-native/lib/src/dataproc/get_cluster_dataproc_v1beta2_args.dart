@@ -32,12 +32,9 @@ class GetClusterDataprocV1beta2Args {
   factory GetClusterDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetClusterDataprocV1beta2Args(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

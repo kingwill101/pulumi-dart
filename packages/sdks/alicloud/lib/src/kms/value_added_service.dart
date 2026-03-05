@@ -160,29 +160,23 @@ import 'value_added_service_state.dart';
 class ValueAddedService extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// The payment type of the resource
   late final pulumi.Output<String> paymentType;
   late final pulumi.Output<int?> period;
-
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
-
   /// Automatic renewal period, in years.
   ///
   /// &gt; **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
   late final pulumi.Output<int?> renewPeriod;
-
   /// The renewal status of the specified instance. Valid values:
   ///
   /// - AutoRenewal: The instance is automatically renewed.
   /// - ManualRenewal: The instance is manually renewed.
   /// - NotRenewal: The instance is not renewed.
   late final pulumi.Output<String?> renewStatus;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// value added service type, Instance Backup 1 default key rotation 2 Expert service 3
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -197,11 +191,11 @@ class ValueAddedService extends pulumi.CustomResource {
     ValueAddedServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kms/valueAddedService:ValueAddedService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kms/valueAddedService:ValueAddedService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     paymentType = registerOutput<String>('paymentType');
     period = registerOutput<int?>('period');
@@ -230,11 +224,11 @@ class ValueAddedService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kms/valueAddedService:ValueAddedService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kms/valueAddedService:ValueAddedService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     paymentType = registerOutput<String>('paymentType');
     period = registerOutput<int?>('period');

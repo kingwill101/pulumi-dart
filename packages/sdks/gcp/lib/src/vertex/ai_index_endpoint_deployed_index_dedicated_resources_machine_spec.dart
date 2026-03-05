@@ -11,21 +11,20 @@ class AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec {
 
   /// Creates a new [AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec].
   /// [machineType] The type of the machine.
-  AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec({this.machineType});
+  AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec({
+    this.machineType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'machineType': ?machineType};
+    return <String, dynamic>{
+      'machineType': ?machineType,
+    };
   }
 
-  factory AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec(
-      machineType: (() {
-        final guardedValue = map['machineType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

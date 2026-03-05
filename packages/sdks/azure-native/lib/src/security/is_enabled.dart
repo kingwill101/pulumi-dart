@@ -15,3 +15,4 @@ enum IsEnabled {
     throw ArgumentError('Unknown IsEnabled value: $value');
   }
 }
+

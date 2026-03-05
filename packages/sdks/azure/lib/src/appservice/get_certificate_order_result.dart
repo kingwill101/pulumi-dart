@@ -7,57 +7,40 @@ import 'get_certificate_order_certificate.dart';
 class GetCertificateOrderResult {
   /// Reasons why App Service Certificate is not renewable at the current moment.
   final List<String> appServiceCertificateNotRenewableReasons;
-
   /// true if the certificate should be automatically renewed when it expires; otherwise, false.
   final bool autoRenew;
-
   /// State of the Key Vault secret. A `certificates` block as defined below.
   final List<GetCertificateOrderCertificate> certificates;
-
   /// Last CSR that was created for this order.
   final String csr;
-
   /// The Distinguished Name for the App Service Certificate Order.
   final String distinguishedName;
-
   /// Domain verification token.
   final String domainVerificationToken;
-
   /// Certificate expiration time.
   final String expirationTime;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Certificate thumbprint intermediate certificate.
   final String intermediateThumbprint;
-
   /// Whether the private key is external or not.
   final bool isPrivateKeyExternal;
-
   /// Certificate key size.
   final int keySize;
-
   /// The Azure location where the App Service exists.
   final String location;
   final String name;
-
   /// Certificate product type, such as `Standard` or `WildCard`.
   final String productType;
   final String resourceGroupName;
-
   /// Certificate thumbprint for root certificate.
   final String rootThumbprint;
-
   /// Certificate thumbprint for signed certificate.
   final String signedCertificateThumbprint;
-
   /// Current order status.
   final String status;
-
   /// A mapping of tags to assign to the resource.
   final Map<String, String> tags;
-
   /// Duration in years (must be between 1 and 3).
   final int validityInYears;
 
@@ -107,14 +90,9 @@ class GetCertificateOrderResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appServiceCertificateNotRenewableReasons':
-          appServiceCertificateNotRenewableReasons,
+      'appServiceCertificateNotRenewableReasons': appServiceCertificateNotRenewableReasons,
       'autoRenew': autoRenew,
-      'certificates':
-          pulumi.Input.encodeList<
-            GetCertificateOrderCertificate,
-            Map<String, dynamic>
-          >(certificates, (value) => value.toMap()),
+      'certificates': pulumi.Input.encodeList<GetCertificateOrderCertificate, Map<String, dynamic>>(certificates, (value) => value.toMap()),
       'csr': csr,
       'distinguishedName': distinguishedName,
       'domainVerificationToken': domainVerificationToken,
@@ -137,16 +115,9 @@ class GetCertificateOrderResult {
 
   factory GetCertificateOrderResult.fromMap(Map<String, dynamic> map) {
     return GetCertificateOrderResult(
-      appServiceCertificateNotRenewableReasons:
-          (map['appServiceCertificateNotRenewableReasons'] as List)
-              .cast<String>(),
+      appServiceCertificateNotRenewableReasons: (map['appServiceCertificateNotRenewableReasons'] as List).cast<String>(),
       autoRenew: map['autoRenew'] as bool,
-      certificates: pulumi.Input.decodeList<GetCertificateOrderCertificate>(
-        map['certificates']!,
-        (value) => GetCertificateOrderCertificate.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      certificates: pulumi.Input.decodeList<GetCertificateOrderCertificate>(map['certificates']!, (value) => GetCertificateOrderCertificate.fromMap((value as Map).cast<String, dynamic>())),
       csr: map['csr'] as String,
       distinguishedName: map['distinguishedName'] as String,
       domainVerificationToken: map['domainVerificationToken'] as String,
@@ -167,3 +138,4 @@ class GetCertificateOrderResult {
     );
   }
 }
+

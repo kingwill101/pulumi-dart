@@ -8,14 +8,9 @@ import 'postgre_sql_connection_info_response.dart';
 /// Input for the task that migrates Oracle databases to Azure Database for PostgreSQL for online migrations
 class MigrateOracleAzureDbPostgreSqlSyncTaskInputResponse {
   /// Databases to migrate
-  final pulumi.Input<
-    List<MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse>
-  >
-  selectedDatabases;
-
+  final pulumi.Input<List<MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse>> selectedDatabases;
   /// Connection information for source Oracle
   final pulumi.Input<OracleConnectionInfoResponse> sourceConnectionInfo;
-
   /// Connection information for target Azure Database for PostgreSQL
   final pulumi.Input<PostgreSqlConnectionInfoResponse> targetConnectionInfo;
 
@@ -31,56 +26,18 @@ class MigrateOracleAzureDbPostgreSqlSyncTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'selectedDatabases':
-          pulumi.Input.mapInputValue<
-            List<MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse>,
-            List<Map<String, dynamic>>
-          >(
-            selectedDatabases,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'sourceConnectionInfo':
-          pulumi.Input.mapInputValue<
-            OracleConnectionInfoResponse,
-            Map<String, dynamic>
-          >(sourceConnectionInfo, (value) => value.toMap()),
-      'targetConnectionInfo':
-          pulumi.Input.mapInputValue<
-            PostgreSqlConnectionInfoResponse,
-            Map<String, dynamic>
-          >(targetConnectionInfo, (value) => value.toMap()),
+      'selectedDatabases': pulumi.Input.mapInputValue<List<MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse>, List<Map<String, dynamic>>>(selectedDatabases, (value) => pulumi.Input.encodeList<MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<OracleConnectionInfoResponse, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<PostgreSqlConnectionInfoResponse, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
-  factory MigrateOracleAzureDbPostgreSqlSyncTaskInputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MigrateOracleAzureDbPostgreSqlSyncTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return MigrateOracleAzureDbPostgreSqlSyncTaskInputResponse(
-      selectedDatabases: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse
-        >(
-          map['selectedDatabases']!,
-          (value) =>
-              MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      sourceConnectionInfo: pulumi.Input.fromValue(
-        OracleConnectionInfoResponse.fromMap(
-          (map['sourceConnectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      targetConnectionInfo: pulumi.Input.fromValue(
-        PostgreSqlConnectionInfoResponse.fromMap(
-          (map['targetConnectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      selectedDatabases: pulumi.Input.fromValue(pulumi.Input.decodeList<MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse>(map['selectedDatabases']!, (value) => MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      sourceConnectionInfo: pulumi.Input.fromValue(OracleConnectionInfoResponse.fromMap((map['sourceConnectionInfo']! as Map).cast<String, dynamic>())),
+      targetConnectionInfo: pulumi.Input.fromValue(PostgreSqlConnectionInfoResponse.fromMap((map['targetConnectionInfo']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

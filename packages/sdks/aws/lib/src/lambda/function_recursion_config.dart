@@ -364,12 +364,10 @@ import 'function_recursion_config_state.dart';
 class FunctionRecursionConfig extends pulumi.CustomResource {
   /// Name of the Lambda function.
   late final pulumi.Output<String> functionName;
-
   /// Lambda function recursion configuration. Valid values are `Allow` or `Terminate`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> recursiveLoop;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -382,11 +380,11 @@ class FunctionRecursionConfig extends pulumi.CustomResource {
     FunctionRecursionConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lambda/functionRecursionConfig:FunctionRecursionConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lambda/functionRecursionConfig:FunctionRecursionConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     functionName = registerOutput<String>('functionName');
     recursiveLoop = registerOutput<String>('recursiveLoop');
     region = registerOutput<String>('region');
@@ -410,11 +408,11 @@ class FunctionRecursionConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lambda/functionRecursionConfig:FunctionRecursionConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lambda/functionRecursionConfig:FunctionRecursionConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     functionName = registerOutput<String>('functionName');
     recursiveLoop = registerOutput<String>('recursiveLoop');
     region = registerOutput<String>('region');

@@ -9,21 +9,20 @@ class DefenderForServersAwsOfferingResponseDefenderForServers {
 
   /// Creates a new [DefenderForServersAwsOfferingResponseDefenderForServers].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
-  DefenderForServersAwsOfferingResponseDefenderForServers({this.cloudRoleArn});
+  DefenderForServersAwsOfferingResponseDefenderForServers({
+    this.cloudRoleArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cloudRoleArn': ?cloudRoleArn};
+    return <String, dynamic>{
+      'cloudRoleArn': ?cloudRoleArn,
+    };
   }
 
-  factory DefenderForServersAwsOfferingResponseDefenderForServers.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefenderForServersAwsOfferingResponseDefenderForServers.fromMap(Map<String, dynamic> map) {
     return DefenderForServersAwsOfferingResponseDefenderForServers(
-      cloudRoleArn: (() {
-        final guardedValue = map['cloudRoleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cloudRoleArn: (() { final guardedValue = map['cloudRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

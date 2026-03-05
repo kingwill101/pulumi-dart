@@ -4,12 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_scheduled_query_rules_alert_trigger_metric_trigger.dart';
 
 class GetScheduledQueryRulesAlertTrigger {
-  final pulumi.Input<List<GetScheduledQueryRulesAlertTriggerMetricTrigger>>
-  metricTriggers;
-
+  final pulumi.Input<List<GetScheduledQueryRulesAlertTriggerMetricTrigger>> metricTriggers;
   /// Evaluation operation for rule.
   final pulumi.Input<String> operator;
-
   /// Result or count threshold based on which rule should be triggered.
   final pulumi.Input<double> threshold;
 
@@ -25,18 +22,7 @@ class GetScheduledQueryRulesAlertTrigger {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metricTriggers':
-          pulumi.Input.mapInputValue<
-            List<GetScheduledQueryRulesAlertTriggerMetricTrigger>,
-            List<Map<String, dynamic>>
-          >(
-            metricTriggers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetScheduledQueryRulesAlertTriggerMetricTrigger,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'metricTriggers': pulumi.Input.mapInputValue<List<GetScheduledQueryRulesAlertTriggerMetricTrigger>, List<Map<String, dynamic>>>(metricTriggers, (value) => pulumi.Input.encodeList<GetScheduledQueryRulesAlertTriggerMetricTrigger, Map<String, dynamic>>(value, (value) => value.toMap())),
       'operator': operator,
       'threshold': threshold,
     };
@@ -44,17 +30,10 @@ class GetScheduledQueryRulesAlertTrigger {
 
   factory GetScheduledQueryRulesAlertTrigger.fromMap(Map<String, dynamic> map) {
     return GetScheduledQueryRulesAlertTrigger(
-      metricTriggers: pulumi.Input.fromValue(
-        pulumi
-            .Input.decodeList<GetScheduledQueryRulesAlertTriggerMetricTrigger>(
-          map['metricTriggers']!,
-          (value) => GetScheduledQueryRulesAlertTriggerMetricTrigger.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      metricTriggers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetScheduledQueryRulesAlertTriggerMetricTrigger>(map['metricTriggers']!, (value) => GetScheduledQueryRulesAlertTriggerMetricTrigger.fromMap((value as Map).cast<String, dynamic>()))),
       operator: pulumi.Input.fromValue(map['operator'] as String),
       threshold: pulumi.Input.fromValue(map['threshold'] as double),
     );
   }
 }
+

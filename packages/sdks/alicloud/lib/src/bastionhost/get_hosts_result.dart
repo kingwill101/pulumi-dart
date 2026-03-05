@@ -9,7 +9,6 @@ class GetHostsResult {
   final String? hostAddress;
   final String? hostName;
   final List<GetHostsHost> hosts;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -59,10 +58,7 @@ class GetHostsResult {
       'enableDetails': ?enableDetails,
       'hostAddress': ?hostAddress,
       'hostName': ?hostName,
-      'hosts': pulumi.Input.encodeList<GetHostsHost, Map<String, dynamic>>(
-        hosts,
-        (value) => value.toMap(),
-      ),
+      'hosts': pulumi.Input.encodeList<GetHostsHost, Map<String, dynamic>>(hosts, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'instanceId': instanceId,
@@ -78,59 +74,21 @@ class GetHostsResult {
 
   factory GetHostsResult.fromMap(Map<String, dynamic> map) {
     return GetHostsResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      hostAddress: (() {
-        final guardedValue = map['hostAddress'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      hostName: (() {
-        final guardedValue = map['hostName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      hosts: pulumi.Input.decodeList<GetHostsHost>(
-        map['hosts']!,
-        (value) => GetHostsHost.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      hostAddress: (() { final guardedValue = map['hostAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hosts: pulumi.Input.decodeList<GetHostsHost>(map['hosts']!, (value) => GetHostsHost.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      osType: (() {
-        final guardedValue = map['osType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sourceInstanceId: (() {
-        final guardedValue = map['sourceInstanceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sourceInstanceState: (() {
-        final guardedValue = map['sourceInstanceState'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceInstanceId: (() { final guardedValue = map['sourceInstanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceInstanceState: (() { final guardedValue = map['sourceInstanceState']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

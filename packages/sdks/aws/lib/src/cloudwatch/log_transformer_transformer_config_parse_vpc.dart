@@ -8,21 +8,20 @@ class LogTransformerTransformerConfigParseVpc {
 
   /// Creates a new [LogTransformerTransformerConfigParseVpc].
   /// [source] Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
-  LogTransformerTransformerConfigParseVpc({this.source});
+  LogTransformerTransformerConfigParseVpc({
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'source': ?source};
+    return <String, dynamic>{
+      'source': ?source,
+    };
   }
 
-  factory LogTransformerTransformerConfigParseVpc.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogTransformerTransformerConfigParseVpc.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigParseVpc(
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

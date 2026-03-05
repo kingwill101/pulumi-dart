@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHybridUseBenefitArgs {
   /// This is a unique identifier for a plan. Should be a guid.
   final pulumi.Input<String> planId;
-
   /// The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
   final pulumi.Input<String> scope;
 
   /// Creates a new [GetHybridUseBenefitArgs].
   /// [planId] This is a unique identifier for a plan. Should be a guid.
   /// [scope] The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
-  GetHybridUseBenefitArgs({required this.planId, required this.scope});
+  GetHybridUseBenefitArgs({
+    required this.planId,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'planId': planId, 'scope': scope};
+    return <String, dynamic>{
+      'planId': planId,
+      'scope': scope,
+    };
   }
 
   factory GetHybridUseBenefitArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetHybridUseBenefitArgs {
     );
   }
 }
+

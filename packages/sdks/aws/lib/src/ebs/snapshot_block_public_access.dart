@@ -103,7 +103,6 @@ import 'snapshot_block_public_access_state.dart';
 class SnapshotBlockPublicAccess extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The mode in which to enable "Block public access for snapshots" for the region. Allowed values are `block-all-sharing`, `block-new-sharing`, `unblocked`.
   late final pulumi.Output<String> state;
 
@@ -116,11 +115,11 @@ class SnapshotBlockPublicAccess extends pulumi.CustomResource {
     SnapshotBlockPublicAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ebs/snapshotBlockPublicAccess:SnapshotBlockPublicAccess',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ebs/snapshotBlockPublicAccess:SnapshotBlockPublicAccess',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
   }
@@ -143,11 +142,11 @@ class SnapshotBlockPublicAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ebs/snapshotBlockPublicAccess:SnapshotBlockPublicAccess',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ebs/snapshotBlockPublicAccess:SnapshotBlockPublicAccess',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
   }

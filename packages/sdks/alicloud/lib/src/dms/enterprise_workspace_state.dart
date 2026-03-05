@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseWorkspaceState {
   /// The description of the Workspace.
   final pulumi.Input<String>? description;
-
   /// The region ID of the resource.
   final pulumi.Input<String>? regionId;
-
   /// The ID of the VPC.
   final pulumi.Input<String>? vpcId;
-
   /// The name of the Workspace.
   final pulumi.Input<String>? workspaceName;
 
@@ -39,26 +36,11 @@ class EnterpriseWorkspaceState {
 
   factory EnterpriseWorkspaceState.fromMap(Map<String, dynamic> map) {
     return EnterpriseWorkspaceState(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regionId: (() {
-        final guardedValue = map['regionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workspaceName: (() {
-        final guardedValue = map['workspaceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionId: (() { final guardedValue = map['regionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workspaceName: (() { final guardedValue = map['workspaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

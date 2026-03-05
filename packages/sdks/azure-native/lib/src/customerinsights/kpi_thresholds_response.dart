@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KpiThresholdsResponse {
   /// Whether or not the KPI is an increasing KPI.
   final pulumi.Input<bool> increasingKpi;
-
   /// The lower threshold limit.
   final pulumi.Input<double> lowerLimit;
-
   /// The upper threshold limit.
   final pulumi.Input<double> upperLimit;
 
@@ -39,3 +37,4 @@ class KpiThresholdsResponse {
     );
   }
 }
+

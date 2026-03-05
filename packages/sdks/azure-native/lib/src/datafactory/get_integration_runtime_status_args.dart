@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIntegrationRuntimeStatusArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
-
   /// The integration runtime name.
   final pulumi.Input<String> integrationRuntimeName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetIntegrationRuntimeStatusArgs {
   factory GetIntegrationRuntimeStatusArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationRuntimeStatusArgs(
       factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
-      integrationRuntimeName: pulumi.Input.fromValue(
-        map['integrationRuntimeName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      integrationRuntimeName: pulumi.Input.fromValue(map['integrationRuntimeName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

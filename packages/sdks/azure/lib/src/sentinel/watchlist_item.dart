@@ -290,10 +290,8 @@ import 'watchlist_item_state.dart';
 class WatchlistItem extends pulumi.CustomResource {
   /// The name in UUID format which should be used for this Sentinel Watchlist Item. Changing this forces a new Sentinel Watchlist Item to be created.
   late final pulumi.Output<String> name;
-
   /// The key value pairs of the Sentinel Watchlist Item.
   late final pulumi.Output<Map<String, String>> properties;
-
   /// The ID of the Sentinel Watchlist that this Item resides in. Changing this forces a new Sentinel Watchlist Item to be created.
   late final pulumi.Output<String> watchlistId;
 
@@ -306,11 +304,11 @@ class WatchlistItem extends pulumi.CustomResource {
     WatchlistItemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/watchlistItem:WatchlistItem',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/watchlistItem:WatchlistItem',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     properties = registerOutput<Map<String, String>>('properties');
     watchlistId = registerOutput<String>('watchlistId');
@@ -334,11 +332,11 @@ class WatchlistItem extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/watchlistItem:WatchlistItem',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/watchlistItem:WatchlistItem',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     properties = registerOutput<Map<String, String>>('properties');
     watchlistId = registerOutput<String>('watchlistId');

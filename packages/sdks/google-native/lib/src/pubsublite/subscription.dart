@@ -7,21 +7,16 @@ import 'subscription_args.dart';
 class Subscription extends pulumi.CustomResource {
   /// The settings for this subscription's message delivery.
   late final pulumi.Output<DeliveryConfigResponse> deliveryConfig;
-
   /// If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
   late final pulumi.Output<ExportConfigResponse> exportConfig;
   late final pulumi.Output<String> location;
-
   /// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
   late final pulumi.Output<bool?> skipBacklog;
-
   /// Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
   late final pulumi.Output<String> subscriptionId;
-
   /// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
   late final pulumi.Output<String> topic;
 
@@ -34,31 +29,13 @@ class Subscription extends pulumi.CustomResource {
     SubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:pubsublite/v1:Subscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deliveryConfig = registerOutput<DeliveryConfigResponse>(
-      'deliveryConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeliveryConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    exportConfig = registerOutput<ExportConfigResponse>(
-      'exportConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExportConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'google-native:pubsublite/v1:Subscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deliveryConfig = registerOutput<DeliveryConfigResponse>('deliveryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeliveryConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    exportConfig = registerOutput<ExportConfigResponse>('exportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

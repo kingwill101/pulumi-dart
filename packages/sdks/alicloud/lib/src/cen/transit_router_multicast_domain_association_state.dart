@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitRouterMulticastDomainAssociationState {
   /// The status of the Transit Router Multicast Domain Association.
   final pulumi.Input<String>? status;
-
   /// The ID of the VPC connection.
   final pulumi.Input<String>? transitRouterAttachmentId;
-
   /// The ID of the multicast domain.
   final pulumi.Input<String>? transitRouterMulticastDomainId;
-
   /// The ID of the vSwitch.
   final pulumi.Input<String>? vswitchId;
 
@@ -37,30 +34,13 @@ class TransitRouterMulticastDomainAssociationState {
     };
   }
 
-  factory TransitRouterMulticastDomainAssociationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TransitRouterMulticastDomainAssociationState.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainAssociationState(
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouterAttachmentId: (() {
-        final guardedValue = map['transitRouterAttachmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouterMulticastDomainId: (() {
-        final guardedValue = map['transitRouterMulticastDomainId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vswitchId: (() {
-        final guardedValue = map['vswitchId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouterAttachmentId: (() { final guardedValue = map['transitRouterAttachmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouterMulticastDomainId: (() { final guardedValue = map['transitRouterMulticastDomainId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vswitchId: (() { final guardedValue = map['vswitchId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

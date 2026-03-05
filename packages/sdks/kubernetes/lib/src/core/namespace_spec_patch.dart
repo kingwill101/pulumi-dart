@@ -9,19 +9,20 @@ class NamespaceSpecPatch {
 
   /// Creates a new [NamespaceSpecPatch].
   /// [finalizers] Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
-  NamespaceSpecPatch({this.finalizers});
+  NamespaceSpecPatch({
+    this.finalizers,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'finalizers': ?finalizers};
+    return <String, dynamic>{
+      'finalizers': ?finalizers,
+    };
   }
 
   factory NamespaceSpecPatch.fromMap(Map<String, dynamic> map) {
     return NamespaceSpecPatch(
-      finalizers: (() {
-        final guardedValue = map['finalizers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      finalizers: (() { final guardedValue = map['finalizers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

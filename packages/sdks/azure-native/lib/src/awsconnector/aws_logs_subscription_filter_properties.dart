@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsLogsSubscriptionFilterProperties {
   /// The Amazon Resource Name (ARN) of the destination.
   final pulumi.Input<String>? destinationArn;
-
   /// The method used to distribute log data to the destination, which can be either random or grouped by log stream.
   final pulumi.Input<String>? distribution;
-
   /// The name of the subscription filter.
   final pulumi.Input<String>? filterName;
-
   /// The filtering expressions that restrict what gets delivered to the destination AWS resource. For more information about the filter pattern syntax, see [Filter and Pattern Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
   final pulumi.Input<String>? filterPattern;
-
   /// The log group to associate with the subscription filter. All log events that are uploaded to this log group are filtered and delivered to the specified AWS resource if the filter pattern matches the log events.
   final pulumi.Input<String>? logGroupName;
-
   /// The ARN of an IAM role that grants CWL permissions to deliver ingested log events to the destination stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery.
   final pulumi.Input<String>? roleArn;
 
@@ -49,40 +44,15 @@ class AwsLogsSubscriptionFilterProperties {
     };
   }
 
-  factory AwsLogsSubscriptionFilterProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AwsLogsSubscriptionFilterProperties.fromMap(Map<String, dynamic> map) {
     return AwsLogsSubscriptionFilterProperties(
-      destinationArn: (() {
-        final guardedValue = map['destinationArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      distribution: (() {
-        final guardedValue = map['distribution'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filterName: (() {
-        final guardedValue = map['filterName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filterPattern: (() {
-        final guardedValue = map['filterPattern'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logGroupName: (() {
-        final guardedValue = map['logGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleArn: (() {
-        final guardedValue = map['roleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      destinationArn: (() { final guardedValue = map['destinationArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      distribution: (() { final guardedValue = map['distribution']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filterName: (() { final guardedValue = map['filterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filterPattern: (() { final guardedValue = map['filterPattern']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logGroupName: (() { final guardedValue = map['logGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

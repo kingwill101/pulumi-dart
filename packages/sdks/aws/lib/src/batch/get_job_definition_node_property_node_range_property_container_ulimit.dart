@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit {
   /// The hard limit for the ulimit type.
   final pulumi.Input<int> hardLimit;
-
   /// The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   final pulumi.Input<String> name;
-
   /// The soft limit for the ulimit type.
   final pulumi.Input<int> softLimit;
 
@@ -30,9 +28,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit {
     };
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit(
       hardLimit: pulumi.Input.fromValue(map['hardLimit'] as int),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -40,3 +36,4 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit {
     );
   }
 }
+

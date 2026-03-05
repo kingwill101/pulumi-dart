@@ -275,22 +275,16 @@ import 'express_route_gateway_state.dart';
 class ExpressRouteGateway extends pulumi.CustomResource {
   /// Specified whether this gateway accept traffic from non-Virtual WAN networks. Defaults to `false`.
   late final pulumi.Output<bool?> allowNonVirtualWanTraffic;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the ExpressRoute gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the ExpressRoute gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The number of scale units with which to provision the ExpressRoute gateway. Each scale unit is equal to 2Gbps, with support for up to 10 scale units (20Gbps).
   late final pulumi.Output<int> scaleUnits;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of a Virtual HUB within which the ExpressRoute gateway should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualHubId;
 
@@ -303,14 +297,12 @@ class ExpressRouteGateway extends pulumi.CustomResource {
     ExpressRouteGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/expressRouteGateway:ExpressRouteGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowNonVirtualWanTraffic = registerOutput<bool?>(
-      'allowNonVirtualWanTraffic',
-    );
+          'azure:network/expressRouteGateway:ExpressRouteGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowNonVirtualWanTraffic = registerOutput<bool?>('allowNonVirtualWanTraffic');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -337,14 +329,12 @@ class ExpressRouteGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/expressRouteGateway:ExpressRouteGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowNonVirtualWanTraffic = registerOutput<bool?>(
-      'allowNonVirtualWanTraffic',
-    );
+          'azure:network/expressRouteGateway:ExpressRouteGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowNonVirtualWanTraffic = registerOutput<bool?>('allowNonVirtualWanTraffic');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

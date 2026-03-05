@@ -16,15 +16,17 @@ class SystemTopicEventSubscriptionAdvancedFilterNumberGreaterThan {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory SystemTopicEventSubscriptionAdvancedFilterNumberGreaterThan.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SystemTopicEventSubscriptionAdvancedFilterNumberGreaterThan.fromMap(Map<String, dynamic> map) {
     return SystemTopicEventSubscriptionAdvancedFilterNumberGreaterThan(
       key: pulumi.Input.fromValue(map['key'] as String),
       value: pulumi.Input.fromValue(map['value'] as double),
     );
   }
 }
+

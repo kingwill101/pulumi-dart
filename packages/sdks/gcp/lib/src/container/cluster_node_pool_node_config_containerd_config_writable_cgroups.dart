@@ -13,14 +13,15 @@ class ClusterNodePoolNodeConfigContainerdConfigWritableCgroups {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory ClusterNodePoolNodeConfigContainerdConfigWritableCgroups.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterNodePoolNodeConfigContainerdConfigWritableCgroups.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigContainerdConfigWritableCgroups(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

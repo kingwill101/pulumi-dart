@@ -167,26 +167,19 @@ import 'application_flexible_federated_identity_credential_state.dart';
 /// ```
 ///
 /// &gt; This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
-class ApplicationFlexibleFederatedIdentityCredential
-    extends pulumi.CustomResource {
+class ApplicationFlexibleFederatedIdentityCredential extends pulumi.CustomResource {
   /// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
-
   /// The audience that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
   late final pulumi.Output<String> audience;
-
   /// The expression to match for claims. See the Preview Documentation for more information.
   late final pulumi.Output<String> claimsMatchingExpression;
-
   /// A UUID used to uniquely identify this federated identity credential.
   late final pulumi.Output<String> credentialId;
-
   /// A description for the federated identity credential.
   late final pulumi.Output<String?> description;
-
   /// A unique display name for the federated identity credential. Changing this forces a new resource to be created.
   late final pulumi.Output<String> displayName;
-
   /// The URL of the external identity provider, which must match the issuer claim of the external token being exchanged.
   late final pulumi.Output<String> issuer;
 
@@ -199,16 +192,14 @@ class ApplicationFlexibleFederatedIdentityCredential
     ApplicationFlexibleFederatedIdentityCredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationFlexibleFederatedIdentityCredential:ApplicationFlexibleFederatedIdentityCredential',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationFlexibleFederatedIdentityCredential:ApplicationFlexibleFederatedIdentityCredential',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     audience = registerOutput<String>('audience');
-    claimsMatchingExpression = registerOutput<String>(
-      'claimsMatchingExpression',
-    );
+    claimsMatchingExpression = registerOutput<String>('claimsMatchingExpression');
     credentialId = registerOutput<String>('credentialId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -233,16 +224,14 @@ class ApplicationFlexibleFederatedIdentityCredential
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationFlexibleFederatedIdentityCredential:ApplicationFlexibleFederatedIdentityCredential',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationFlexibleFederatedIdentityCredential:ApplicationFlexibleFederatedIdentityCredential',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     audience = registerOutput<String>('audience');
-    claimsMatchingExpression = registerOutput<String>(
-      'claimsMatchingExpression',
-    );
+    claimsMatchingExpression = registerOutput<String>('claimsMatchingExpression');
     credentialId = registerOutput<String>('credentialId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

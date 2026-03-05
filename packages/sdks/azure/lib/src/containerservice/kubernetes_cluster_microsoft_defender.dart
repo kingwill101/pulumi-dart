@@ -8,7 +8,9 @@ class KubernetesClusterMicrosoftDefender {
 
   /// Creates a new [KubernetesClusterMicrosoftDefender].
   /// [logAnalyticsWorkspaceId] Specifies the ID of the Log Analytics Workspace where the audit logs collected by Microsoft Defender should be sent to.
-  KubernetesClusterMicrosoftDefender({required this.logAnalyticsWorkspaceId});
+  KubernetesClusterMicrosoftDefender({
+    required this.logAnalyticsWorkspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,9 +20,8 @@ class KubernetesClusterMicrosoftDefender {
 
   factory KubernetesClusterMicrosoftDefender.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterMicrosoftDefender(
-      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
-        map['logAnalyticsWorkspaceId'] as String,
-      ),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(map['logAnalyticsWorkspaceId'] as String),
     );
   }
 }
+

@@ -9,11 +9,7 @@ class InterconnectAttachmentGroupLogicalStructureRegion {
   /// These are three-letter lowercase strings like "iad". This will be set
   /// for some blockers (like NO_ATTACHMENTS_IN_METRO_AND_ZONE) but does
   /// not apply to others.
-  final pulumi.Input<
-    List<InterconnectAttachmentGroupLogicalStructureRegionMetro>
-  >?
-  metros;
-
+  final pulumi.Input<List<InterconnectAttachmentGroupLogicalStructureRegionMetro>>? metros;
   /// (Output)
   /// The name of a region, like "us-central1".
   final pulumi.Input<String>? region;
@@ -21,50 +17,23 @@ class InterconnectAttachmentGroupLogicalStructureRegion {
   /// Creates a new [InterconnectAttachmentGroupLogicalStructureRegion].
   /// [metros] (Output)
   /// [region] (Output)
-  InterconnectAttachmentGroupLogicalStructureRegion({this.metros, this.region});
+  InterconnectAttachmentGroupLogicalStructureRegion({
+    this.metros,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metros':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InterconnectAttachmentGroupLogicalStructureRegionMetro>,
-            List<Map<String, dynamic>>
-          >(
-            metros,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InterconnectAttachmentGroupLogicalStructureRegionMetro,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'metros': ?pulumi.Input.mapOptionalInputValue<List<InterconnectAttachmentGroupLogicalStructureRegionMetro>, List<Map<String, dynamic>>>(metros, (value) => pulumi.Input.encodeList<InterconnectAttachmentGroupLogicalStructureRegionMetro, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
     };
   }
 
-  factory InterconnectAttachmentGroupLogicalStructureRegion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InterconnectAttachmentGroupLogicalStructureRegion.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupLogicalStructureRegion(
-      metros: (() {
-        final guardedValue = map['metros'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            InterconnectAttachmentGroupLogicalStructureRegionMetro
-          >(
-            guardedValue,
-            (value) =>
-                InterconnectAttachmentGroupLogicalStructureRegionMetro.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      metros: (() { final guardedValue = map['metros']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InterconnectAttachmentGroupLogicalStructureRegionMetro>(guardedValue, (value) => InterconnectAttachmentGroupLogicalStructureRegionMetro.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

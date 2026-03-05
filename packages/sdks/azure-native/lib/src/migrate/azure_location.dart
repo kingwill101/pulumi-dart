@@ -81,3 +81,4 @@ enum AzureLocation {
     throw ArgumentError('Unknown AzureLocation value: $value');
   }
 }
+

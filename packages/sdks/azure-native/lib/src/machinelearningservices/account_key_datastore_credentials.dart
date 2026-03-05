@@ -8,7 +8,6 @@ class AccountKeyDatastoreCredentials {
   /// Enum to determine the datastore credentials type.
   /// Expected value is 'AccountKey'.
   final pulumi.Input<String> credentialsType;
-
   /// [Required] Storage account secrets.
   final pulumi.Input<AccountKeyDatastoreSecrets> secrets;
 
@@ -23,22 +22,15 @@ class AccountKeyDatastoreCredentials {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'credentialsType': credentialsType,
-      'secrets':
-          pulumi.Input.mapInputValue<
-            AccountKeyDatastoreSecrets,
-            Map<String, dynamic>
-          >(secrets, (value) => value.toMap()),
+      'secrets': pulumi.Input.mapInputValue<AccountKeyDatastoreSecrets, Map<String, dynamic>>(secrets, (value) => value.toMap()),
     };
   }
 
   factory AccountKeyDatastoreCredentials.fromMap(Map<String, dynamic> map) {
     return AccountKeyDatastoreCredentials(
       credentialsType: pulumi.Input.fromValue(map['credentialsType'] as String),
-      secrets: pulumi.Input.fromValue(
-        AccountKeyDatastoreSecrets.fromMap(
-          (map['secrets']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      secrets: pulumi.Input.fromValue(AccountKeyDatastoreSecrets.fromMap((map['secrets']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

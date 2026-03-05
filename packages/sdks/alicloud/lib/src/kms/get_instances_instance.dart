@@ -8,10 +8,14 @@ class GetInstancesInstance {
 
   /// Creates a new [GetInstancesInstance].
   /// [instanceId] The first ID of the resource
-  GetInstancesInstance({required this.instanceId});
+  GetInstancesInstance({
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instanceId': instanceId};
+    return <String, dynamic>{
+      'instanceId': instanceId,
+    };
   }
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetInstancesInstance {
     );
   }
 }
+

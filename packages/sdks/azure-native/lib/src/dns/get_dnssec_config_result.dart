@@ -8,25 +8,18 @@ import 'system_data_response.dart';
 class GetDnssecConfigResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The etag of the DNSSEC configuration.
   final String? etag;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Provisioning State of the DNSSEC configuration.
   final String provisioningState;
-
   /// The list of signing keys.
   final List<SigningKeyResponse> signingKeys;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -57,11 +50,7 @@ class GetDnssecConfigResult {
       'id': id,
       'name': name,
       'provisioningState': provisioningState,
-      'signingKeys':
-          pulumi.Input.encodeList<SigningKeyResponse, Map<String, dynamic>>(
-            signingKeys,
-            (value) => value.toMap(),
-          ),
+      'signingKeys': pulumi.Input.encodeList<SigningKeyResponse, Map<String, dynamic>>(signingKeys, (value) => value.toMap()),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -70,23 +59,14 @@ class GetDnssecConfigResult {
   factory GetDnssecConfigResult.fromMap(Map<String, dynamic> map) {
     return GetDnssecConfigResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      signingKeys: pulumi.Input.decodeList<SigningKeyResponse>(
-        map['signingKeys']!,
-        (value) =>
-            SigningKeyResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      signingKeys: pulumi.Input.decodeList<SigningKeyResponse>(map['signingKeys']!, (value) => SigningKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

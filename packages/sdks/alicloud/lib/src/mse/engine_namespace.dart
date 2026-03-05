@@ -326,21 +326,16 @@ import 'engine_namespace_state.dart';
 class EngineNamespace extends pulumi.CustomResource {
   /// The language type of the returned information. Valid values: `zh`, `en`.
   late final pulumi.Output<String?> acceptLanguage;
-
   /// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
   late final pulumi.Output<String> clusterId;
-
   /// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
   late final pulumi.Output<String> instanceId;
-
   /// The description of the namespace.
   ///
   /// **NOTE:** You must set `cluster_id` or `instance_id` or both.
   late final pulumi.Output<String> namespaceDesc;
-
   /// The id of Namespace.
   late final pulumi.Output<String> namespaceId;
-
   /// The name of the Engine Namespace.
   late final pulumi.Output<String> namespaceShowName;
 
@@ -353,11 +348,11 @@ class EngineNamespace extends pulumi.CustomResource {
     EngineNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mse/engineNamespace:EngineNamespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mse/engineNamespace:EngineNamespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     clusterId = registerOutput<String>('clusterId');
     instanceId = registerOutput<String>('instanceId');
@@ -384,11 +379,11 @@ class EngineNamespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mse/engineNamespace:EngineNamespace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mse/engineNamespace:EngineNamespace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     clusterId = registerOutput<String>('clusterId');
     instanceId = registerOutput<String>('instanceId');

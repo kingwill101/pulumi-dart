@@ -200,14 +200,10 @@ import 'project_capability_host_response.dart';
 class ProjectCapabilityHostCognitiveservices extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<ProjectCapabilityHostResponse>
-  projectCapabilityHostProperties;
-
+  late final pulumi.Output<ProjectCapabilityHostResponse> projectCapabilityHostProperties;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -220,24 +216,14 @@ class ProjectCapabilityHostCognitiveservices extends pulumi.CustomResource {
     ProjectCapabilityHostArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cognitiveservices:ProjectCapabilityHost',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cognitiveservices:ProjectCapabilityHost',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    projectCapabilityHostProperties =
-        registerOutput<ProjectCapabilityHostResponse>(
-          'projectCapabilityHostProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ProjectCapabilityHostResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    projectCapabilityHostProperties = registerOutput<ProjectCapabilityHostResponse>('projectCapabilityHostProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectCapabilityHostResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

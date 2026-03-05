@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomRoutingEndpointGroupsGroup {
   /// The ID of the GA instance.
   final pulumi.Input<String> acceleratorId;
-
   /// The name of the endpoint group.
   final pulumi.Input<String> customRoutingEndpointGroupName;
-
   /// The description of the endpoint group.
   final pulumi.Input<String> description;
-
   /// The ID of the endpoint group.
   final pulumi.Input<String> endpointGroupId;
-
   /// The list of endpoint group IP addresses.
   final pulumi.Input<List<String>> endpointGroupIpLists;
-
   /// The ID of the region where the endpoint group is created.
   final pulumi.Input<String> endpointGroupRegion;
-
   /// The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
   final pulumi.Input<List<String>> endpointGroupUnconfirmedIpLists;
-
   /// The id of the Custom Routing Endpoint Group.
   final pulumi.Input<String> id;
-
   /// The ID of the custom routing listener.
   final pulumi.Input<String> listenerId;
-
   /// The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
   final pulumi.Input<String> status;
 
@@ -72,28 +63,19 @@ class GetCustomRoutingEndpointGroupsGroup {
     };
   }
 
-  factory GetCustomRoutingEndpointGroupsGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCustomRoutingEndpointGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingEndpointGroupsGroup(
       acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
-      customRoutingEndpointGroupName: pulumi.Input.fromValue(
-        map['customRoutingEndpointGroupName'] as String,
-      ),
+      customRoutingEndpointGroupName: pulumi.Input.fromValue(map['customRoutingEndpointGroupName'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       endpointGroupId: pulumi.Input.fromValue(map['endpointGroupId'] as String),
-      endpointGroupIpLists: pulumi.Input.fromValue(
-        (map['endpointGroupIpLists'] as List).cast<String>(),
-      ),
-      endpointGroupRegion: pulumi.Input.fromValue(
-        map['endpointGroupRegion'] as String,
-      ),
-      endpointGroupUnconfirmedIpLists: pulumi.Input.fromValue(
-        (map['endpointGroupUnconfirmedIpLists'] as List).cast<String>(),
-      ),
+      endpointGroupIpLists: pulumi.Input.fromValue((map['endpointGroupIpLists'] as List).cast<String>()),
+      endpointGroupRegion: pulumi.Input.fromValue(map['endpointGroupRegion'] as String),
+      endpointGroupUnconfirmedIpLists: pulumi.Input.fromValue((map['endpointGroupUnconfirmedIpLists'] as List).cast<String>()),
       id: pulumi.Input.fromValue(map['id'] as String),
       listenerId: pulumi.Input.fromValue(map['listenerId'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

@@ -408,58 +408,36 @@ import 'system_data_response.dart';
 class NetworkToNetworkInterconnect extends pulumi.CustomResource {
   /// Administrative state of the resource.
   late final pulumi.Output<String> administrativeState;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Configuration state of the resource.
   late final pulumi.Output<String> configurationState;
-
   /// Egress Acl. ARM resource ID of Access Control Lists.
   late final pulumi.Output<String?> egressAclId;
-
   /// Export Route Policy configuration.
-  late final pulumi.Output<ExportRoutePolicyInformationResponse?>
-  exportRoutePolicy;
-
+  late final pulumi.Output<ExportRoutePolicyInformationResponse?> exportRoutePolicy;
   /// Import Route Policy configuration.
-  late final pulumi.Output<ImportRoutePolicyInformationResponse?>
-  importRoutePolicy;
-
+  late final pulumi.Output<ImportRoutePolicyInformationResponse?> importRoutePolicy;
   /// Ingress Acl. ARM resource ID of Access Control Lists.
   late final pulumi.Output<String?> ingressAclId;
-
   /// Configuration to use NNI for Infrastructure Management. Example: True/False.
   late final pulumi.Output<String?> isManagementType;
-
   /// Common properties for Layer2 Configuration.
   late final pulumi.Output<Layer2ConfigurationResponse?> layer2Configuration;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Type of NNI used. Example: CE | NPB
   late final pulumi.Output<String?> nniType;
-
   /// NPB Static Route Configuration properties.
-  late final pulumi.Output<NpbStaticRouteConfigurationResponse?>
-  npbStaticRouteConfiguration;
-
+  late final pulumi.Output<NpbStaticRouteConfigurationResponse?> npbStaticRouteConfiguration;
   /// Common properties for Layer3Configuration.
-  late final pulumi.Output<
-    NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration?
-  >
-  optionBLayer3Configuration;
-
+  late final pulumi.Output<NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration?> optionBLayer3Configuration;
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Based on this option layer3 parameters are mandatory. Example: True/False
   late final pulumi.Output<String> useOptionB;
 
@@ -472,84 +450,26 @@ class NetworkToNetworkInterconnect extends pulumi.CustomResource {
     NetworkToNetworkInterconnectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:managednetworkfabric:NetworkToNetworkInterconnect',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:managednetworkfabric:NetworkToNetworkInterconnect',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administrativeState = registerOutput<String>('administrativeState');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     configurationState = registerOutput<String>('configurationState');
     egressAclId = registerOutput<String?>('egressAclId');
-    exportRoutePolicy = registerOutput<ExportRoutePolicyInformationResponse?>(
-      'exportRoutePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExportRoutePolicyInformationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    importRoutePolicy = registerOutput<ImportRoutePolicyInformationResponse?>(
-      'importRoutePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ImportRoutePolicyInformationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    exportRoutePolicy = registerOutput<ExportRoutePolicyInformationResponse?>('exportRoutePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportRoutePolicyInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    importRoutePolicy = registerOutput<ImportRoutePolicyInformationResponse?>('importRoutePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImportRoutePolicyInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ingressAclId = registerOutput<String?>('ingressAclId');
     isManagementType = registerOutput<String?>('isManagementType');
-    layer2Configuration = registerOutput<Layer2ConfigurationResponse?>(
-      'layer2Configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return Layer2ConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    layer2Configuration = registerOutput<Layer2ConfigurationResponse?>('layer2Configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Layer2ConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     nniType = registerOutput<String?>('nniType');
-    npbStaticRouteConfiguration =
-        registerOutput<NpbStaticRouteConfigurationResponse?>(
-          'npbStaticRouteConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NpbStaticRouteConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    optionBLayer3Configuration =
-        registerOutput<
-          NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration?
-        >(
-          'optionBLayer3Configuration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    npbStaticRouteConfiguration = registerOutput<NpbStaticRouteConfigurationResponse?>('npbStaticRouteConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NpbStaticRouteConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    optionBLayer3Configuration = registerOutput<NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration?>('optionBLayer3Configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     useOptionB = registerOutput<String>('useOptionB');
   }

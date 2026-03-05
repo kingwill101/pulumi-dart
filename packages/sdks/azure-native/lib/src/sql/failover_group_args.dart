@@ -12,28 +12,20 @@ import 'partner_info.dart';
 class FailoverGroupArgs {
   /// List of databases in the failover group.
   final pulumi.Input<List<String>>? databases;
-
   /// The name of the failover group.
   final pulumi.Input<String>? failoverGroupName;
-
   /// List of partner server information for the failover group.
   final pulumi.Input<List<PartnerInfo>> partnerServers;
-
   /// Read-only endpoint of the failover group instance.
   final pulumi.Input<FailoverGroupReadOnlyEndpoint>? readOnlyEndpoint;
-
   /// Read-write endpoint of the failover group instance.
   final pulumi.Input<FailoverGroupReadWriteEndpoint> readWriteEndpoint;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// Databases secondary type on partner server.
   final pulumi.Input<String>? secondaryType;
-
   /// The name of the server containing the failover group.
   final pulumi.Input<String> serverName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -63,28 +55,9 @@ class FailoverGroupArgs {
     return <String, dynamic>{
       'databases': ?databases,
       'failoverGroupName': ?failoverGroupName,
-      'partnerServers':
-          pulumi.Input.mapInputValue<
-            List<PartnerInfo>,
-            List<Map<String, dynamic>>
-          >(
-            partnerServers,
-            (value) =>
-                pulumi.Input.encodeList<PartnerInfo, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'readOnlyEndpoint':
-          ?pulumi.Input.mapOptionalInputValue<
-            FailoverGroupReadOnlyEndpoint,
-            Map<String, dynamic>
-          >(readOnlyEndpoint, (value) => value.toMap()),
-      'readWriteEndpoint':
-          pulumi.Input.mapInputValue<
-            FailoverGroupReadWriteEndpoint,
-            Map<String, dynamic>
-          >(readWriteEndpoint, (value) => value.toMap()),
+      'partnerServers': pulumi.Input.mapInputValue<List<PartnerInfo>, List<Map<String, dynamic>>>(partnerServers, (value) => pulumi.Input.encodeList<PartnerInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'readOnlyEndpoint': ?pulumi.Input.mapOptionalInputValue<FailoverGroupReadOnlyEndpoint, Map<String, dynamic>>(readOnlyEndpoint, (value) => value.toMap()),
+      'readWriteEndpoint': pulumi.Input.mapInputValue<FailoverGroupReadWriteEndpoint, Map<String, dynamic>>(readWriteEndpoint, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'secondaryType': ?secondaryType,
       'serverName': serverName,
@@ -94,53 +67,16 @@ class FailoverGroupArgs {
 
   factory FailoverGroupArgs.fromMap(Map<String, dynamic> map) {
     return FailoverGroupArgs(
-      databases: (() {
-        final guardedValue = map['databases'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      failoverGroupName: (() {
-        final guardedValue = map['failoverGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partnerServers: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<PartnerInfo>(
-          map['partnerServers']!,
-          (value) =>
-              PartnerInfo.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      readOnlyEndpoint: (() {
-        final guardedValue = map['readOnlyEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FailoverGroupReadOnlyEndpoint.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      readWriteEndpoint: pulumi.Input.fromValue(
-        FailoverGroupReadWriteEndpoint.fromMap(
-          (map['readWriteEndpoint']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      secondaryType: (() {
-        final guardedValue = map['secondaryType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      databases: (() { final guardedValue = map['databases']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      failoverGroupName: (() { final guardedValue = map['failoverGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partnerServers: pulumi.Input.fromValue(pulumi.Input.decodeList<PartnerInfo>(map['partnerServers']!, (value) => PartnerInfo.fromMap((value as Map).cast<String, dynamic>()))),
+      readOnlyEndpoint: (() { final guardedValue = map['readOnlyEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FailoverGroupReadOnlyEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      readWriteEndpoint: pulumi.Input.fromValue(FailoverGroupReadWriteEndpoint.fromMap((map['readWriteEndpoint']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      secondaryType: (() { final guardedValue = map['secondaryType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

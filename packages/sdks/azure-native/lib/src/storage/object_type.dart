@@ -15,3 +15,4 @@ enum ObjectType {
     throw ArgumentError('Unknown ObjectType value: $value');
   }
 }
+

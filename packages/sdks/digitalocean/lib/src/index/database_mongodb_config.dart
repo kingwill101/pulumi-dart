@@ -194,19 +194,14 @@ import 'database_mongodb_config_state.dart';
 class DatabaseMongodbConfig extends pulumi.CustomResource {
   /// The ID of the target MongoDB cluster.
   late final pulumi.Output<String> clusterId;
-
   /// Specifies the default consistency behavior of reads from the database. Data that is returned from the query with may or may not have been acknowledged by all nodes in the replicaset depending on this value. Learn more [here](https://www.mongodb.com/docs/manual/reference/read-concern/).
   late final pulumi.Output<String> defaultReadConcern;
-
   /// Describes the level of acknowledgment requested from MongoDB for write operations clusters. This field can set to either `majority` or a number`0...n` which will describe the number of nodes that must acknowledge the write operation before it is fully accepted. Setting to `0` will request no acknowledgement of the write operation. Learn more [here](https://www.mongodb.com/docs/manual/reference/write-concern/).
   late final pulumi.Output<String> defaultWriteConcern;
-
   /// Operations that run for longer than this threshold are considered slow which are then recorded to the diagnostic logs. Higher log levels (verbosity) will record all operations regardless of this threshold on the primary node. &lt;em&gt;Changing this parameter will lead to a restart of the MongoDB service.&lt;/em&gt; Learn more [here](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-operationProfiling.slowOpThresholdMs).
   late final pulumi.Output<int> slowOpThresholdMs;
-
   /// Specifies the lifetime of multi-document transactions. Transactions that exceed this limit are considered expired and will be aborted by a periodic cleanup process. The cleanup process runs every `transactionLifetimeLimitSeconds/2 seconds` or at least once every 60 seconds. &lt;em&gt;Changing this parameter will lead to a restart of the MongoDB service.&lt;/em&gt; Learn more [here](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.transactionLifetimeLimitSeconds).
   late final pulumi.Output<int> transactionLifetimeLimitSeconds;
-
   /// The log message verbosity level. The verbosity level determines the amount of Informational and Debug messages MongoDB outputs. 0 includes informational messages while 1...5 increases the level to include debug messages. &lt;em&gt;Changing this parameter will lead to a restart of the MongoDB service.&lt;/em&gt; Learn more [here](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-systemLog.verbosity).
   late final pulumi.Output<int> verbosity;
 
@@ -219,18 +214,16 @@ class DatabaseMongodbConfig extends pulumi.CustomResource {
     DatabaseMongodbConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     defaultReadConcern = registerOutput<String>('defaultReadConcern');
     defaultWriteConcern = registerOutput<String>('defaultWriteConcern');
     slowOpThresholdMs = registerOutput<int>('slowOpThresholdMs');
-    transactionLifetimeLimitSeconds = registerOutput<int>(
-      'transactionLifetimeLimitSeconds',
-    );
+    transactionLifetimeLimitSeconds = registerOutput<int>('transactionLifetimeLimitSeconds');
     verbosity = registerOutput<int>('verbosity');
   }
 
@@ -252,18 +245,16 @@ class DatabaseMongodbConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     defaultReadConcern = registerOutput<String>('defaultReadConcern');
     defaultWriteConcern = registerOutput<String>('defaultWriteConcern');
     slowOpThresholdMs = registerOutput<int>('slowOpThresholdMs');
-    transactionLifetimeLimitSeconds = registerOutput<int>(
-      'transactionLifetimeLimitSeconds',
-    );
+    transactionLifetimeLimitSeconds = registerOutput<int>('transactionLifetimeLimitSeconds');
     verbosity = registerOutput<int>('verbosity');
   }
 }

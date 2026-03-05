@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceAllowedIpAttachmentState {
   /// The IP address whitelist. It can be a CIDR block.
   final pulumi.Input<String>? allowedIp;
-
   /// The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
   final pulumi.Input<String>? allowedType;
-
   /// The ID of the instance.
   final pulumi.Input<String>? instanceId;
-
   /// The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
   /// - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
   /// - `9093/9093`: The port range for access from the Internet.
@@ -43,26 +40,11 @@ class InstanceAllowedIpAttachmentState {
 
   factory InstanceAllowedIpAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceAllowedIpAttachmentState(
-      allowedIp: (() {
-        final guardedValue = map['allowedIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      allowedType: (() {
-        final guardedValue = map['allowedType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      portRange: (() {
-        final guardedValue = map['portRange'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowedIp: (() { final guardedValue = map['allowedIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      allowedType: (() { final guardedValue = map['allowedType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      portRange: (() { final guardedValue = map['portRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

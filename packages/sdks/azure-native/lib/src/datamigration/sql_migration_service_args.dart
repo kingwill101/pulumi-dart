@@ -8,10 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datamigration_sql_migration_service_args_doc}
 class SqlMigrationServiceArgs {
   final pulumi.Input<String>? location;
-
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the SQL Migration Service.
   final pulumi.Input<String>? sqlMigrationServiceName;
   final pulumi.Input<Map<String, String>>? tags;
@@ -39,26 +37,11 @@ class SqlMigrationServiceArgs {
 
   factory SqlMigrationServiceArgs.fromMap(Map<String, dynamic> map) {
     return SqlMigrationServiceArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sqlMigrationServiceName: (() {
-        final guardedValue = map['sqlMigrationServiceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sqlMigrationServiceName: (() { final guardedValue = map['sqlMigrationServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

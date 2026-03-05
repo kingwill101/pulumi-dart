@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OnboardingConfiguration {
   /// Azure Arc virtual machine ID.
   final pulumi.Input<String>? arcVirtualMachineId;
-
   /// Location of the resource.
   final pulumi.Input<String>? location;
-
   /// Resource ID.
   final pulumi.Input<String>? resourceId;
-
   /// Tenant ID of the resource.
   final pulumi.Input<String>? tenantId;
-
   /// Type of the onboarding resource to support polymorphic resource.
   final pulumi.Input<String>? type;
 
@@ -45,31 +41,12 @@ class OnboardingConfiguration {
 
   factory OnboardingConfiguration.fromMap(Map<String, dynamic> map) {
     return OnboardingConfiguration(
-      arcVirtualMachineId: (() {
-        final guardedValue = map['arcVirtualMachineId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      arcVirtualMachineId: (() { final guardedValue = map['arcVirtualMachineId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

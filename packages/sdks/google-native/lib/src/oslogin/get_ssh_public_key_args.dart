@@ -13,7 +13,10 @@ class GetSshPublicKeyArgs {
   /// Creates a new [GetSshPublicKeyArgs].
   /// [sshPublicKeyId] Required.
   /// [userId] Required.
-  GetSshPublicKeyArgs({required this.sshPublicKeyId, required this.userId});
+  GetSshPublicKeyArgs({
+    required this.sshPublicKeyId,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetSshPublicKeyArgs {
     );
   }
 }
+

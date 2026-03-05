@@ -10,29 +10,20 @@ class VirtualMachineInstanceViewResponse {
 
   /// Creates a new [VirtualMachineInstanceViewResponse].
   /// [vmAgent] The VM Config Agent running on the virtual machine.
-  VirtualMachineInstanceViewResponse({this.vmAgent});
+  VirtualMachineInstanceViewResponse({
+    this.vmAgent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'vmAgent':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualMachineConfigAgentInstanceViewResponse,
-            Map<String, dynamic>
-          >(vmAgent, (value) => value.toMap()),
+      'vmAgent': ?pulumi.Input.mapOptionalInputValue<VirtualMachineConfigAgentInstanceViewResponse, Map<String, dynamic>>(vmAgent, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstanceViewResponse(
-      vmAgent: (() {
-        final guardedValue = map['vmAgent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualMachineConfigAgentInstanceViewResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      vmAgent: (() { final guardedValue = map['vmAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineConfigAgentInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

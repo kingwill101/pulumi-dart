@@ -384,41 +384,32 @@ class L7RuleV2 extends pulumi.CustomResource {
   /// The administrative state of the L7 Rule.
   /// A valid value is true (UP) or false (DOWN).
   late final pulumi.Output<bool?> adminStateUp;
-
   /// The comparison type for the L7 rule - can either be
   /// CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
   late final pulumi.Output<String> compareType;
-
   /// When true the logic of the rule is inverted. For example, with invert
   /// true, equal to would become not equal to. Default is false.
   late final pulumi.Output<bool?> invert;
-
   /// The key to use for the comparison. For example, the name of the cookie to
   /// evaluate. Valid when `type` is set to COOKIE or HEADER.
   late final pulumi.Output<String?> key;
-
   /// The ID of the L7 Policy to query. Changing this creates a new
   /// L7 Rule.
   late final pulumi.Output<String> l7policyId;
-
   /// The ID of the Listener owning this resource.
   late final pulumi.Output<String> listenerId;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create an L7 rule. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// L7 Rule.
   late final pulumi.Output<String> region;
-
   /// Required for admins. The UUID of the tenant who owns
   /// the L7 Rule.  Only administrative users can specify a tenant UUID
   /// other than their own. Changing this creates a new L7 Rule.
   late final pulumi.Output<String> tenantId;
-
   /// The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
   /// HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
   late final pulumi.Output<String> type;
-
   /// The value to use for the comparison. For example, the file type to
   /// compare.
   late final pulumi.Output<String> value;
@@ -432,11 +423,11 @@ class L7RuleV2 extends pulumi.CustomResource {
     L7RuleV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:loadbalancer/l7RuleV2:L7RuleV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:loadbalancer/l7RuleV2:L7RuleV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminStateUp = registerOutput<bool?>('adminStateUp');
     compareType = registerOutput<String>('compareType');
     invert = registerOutput<bool?>('invert');
@@ -467,11 +458,11 @@ class L7RuleV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:loadbalancer/l7RuleV2:L7RuleV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:loadbalancer/l7RuleV2:L7RuleV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminStateUp = registerOutput<bool?>('adminStateUp');
     compareType = registerOutput<String>('compareType');
     invert = registerOutput<bool?>('invert');

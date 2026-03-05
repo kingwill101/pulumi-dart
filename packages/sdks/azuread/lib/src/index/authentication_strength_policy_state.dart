@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthenticationStrengthPolicyState {
   /// List of allowed authentication methods for this authentication strength policy.
   final pulumi.Input<List<String>>? allowedCombinations;
-
   /// The description for this authentication strength policy.
   final pulumi.Input<String>? description;
-
   /// The friendly name for this authentication strength policy.
   final pulumi.Input<String>? displayName;
 
@@ -33,21 +31,10 @@ class AuthenticationStrengthPolicyState {
 
   factory AuthenticationStrengthPolicyState.fromMap(Map<String, dynamic> map) {
     return AuthenticationStrengthPolicyState(
-      allowedCombinations: (() {
-        final guardedValue = map['allowedCombinations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowedCombinations: (() { final guardedValue = map['allowedCombinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

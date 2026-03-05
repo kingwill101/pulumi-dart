@@ -7,21 +7,20 @@ class ProviderFeaturesApplicationInsights {
 
   /// Creates a new [ProviderFeaturesApplicationInsights].
   /// [disableGeneratedRule] Optional.
-  ProviderFeaturesApplicationInsights({this.disableGeneratedRule});
+  ProviderFeaturesApplicationInsights({
+    this.disableGeneratedRule,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disableGeneratedRule': ?disableGeneratedRule};
+    return <String, dynamic>{
+      'disableGeneratedRule': ?disableGeneratedRule,
+    };
   }
 
-  factory ProviderFeaturesApplicationInsights.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProviderFeaturesApplicationInsights.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesApplicationInsights(
-      disableGeneratedRule: (() {
-        final guardedValue = map['disableGeneratedRule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disableGeneratedRule: (() { final guardedValue = map['disableGeneratedRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HardwareProfileResponse {
   /// Specifies the Azure Large Instance SKU.
   final pulumi.Input<String>? azureLargeInstanceSize;
-
   /// Name of the hardware type (vendor and/or their product name)
   final pulumi.Input<String>? hardwareType;
 
   /// Creates a new [HardwareProfileResponse].
   /// [azureLargeInstanceSize] Specifies the Azure Large Instance SKU.
   /// [hardwareType] Name of the hardware type (vendor and/or their product name)
-  HardwareProfileResponse({this.azureLargeInstanceSize, this.hardwareType});
+  HardwareProfileResponse({
+    this.azureLargeInstanceSize,
+    this.hardwareType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class HardwareProfileResponse {
 
   factory HardwareProfileResponse.fromMap(Map<String, dynamic> map) {
     return HardwareProfileResponse(
-      azureLargeInstanceSize: (() {
-        final guardedValue = map['azureLargeInstanceSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hardwareType: (() {
-        final guardedValue = map['hardwareType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      azureLargeInstanceSize: (() { final guardedValue = map['azureLargeInstanceSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hardwareType: (() { final guardedValue = map['hardwareType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

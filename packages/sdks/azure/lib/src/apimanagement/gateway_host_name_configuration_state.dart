@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayHostNameConfigurationState {
   /// The ID of the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementId;
-
   /// The certificate ID to be used for TLS connection establishment.
   final pulumi.Input<String>? certificateId;
-
   /// The name of the API Management Gateway. Changing this forces a new resource to be created.
   final pulumi.Input<String>? gatewayName;
-
   /// The host name to use for the API Management Gateway Host Name Configuration.
   final pulumi.Input<String>? hostName;
-
   /// Whether HTTP/2.0 is supported. Defaults to `true`.
   final pulumi.Input<bool>? http2Enabled;
-
   /// The name of the API Management Gateway Host Name Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Whether the API Management Gateway requests a client certificate.
   final pulumi.Input<bool>? requestClientCertificateEnabled;
-
   /// Whether TLS 1.0 is supported.
   final pulumi.Input<bool>? tls10Enabled;
-
   /// Whether TLS 1.1 is supported.
   final pulumi.Input<bool>? tls11Enabled;
 
@@ -69,51 +61,16 @@ class GatewayHostNameConfigurationState {
 
   factory GatewayHostNameConfigurationState.fromMap(Map<String, dynamic> map) {
     return GatewayHostNameConfigurationState(
-      apiManagementId: (() {
-        final guardedValue = map['apiManagementId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certificateId: (() {
-        final guardedValue = map['certificateId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      gatewayName: (() {
-        final guardedValue = map['gatewayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostName: (() {
-        final guardedValue = map['hostName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      http2Enabled: (() {
-        final guardedValue = map['http2Enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestClientCertificateEnabled: (() {
-        final guardedValue = map['requestClientCertificateEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      tls10Enabled: (() {
-        final guardedValue = map['tls10Enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      tls11Enabled: (() {
-        final guardedValue = map['tls11Enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      apiManagementId: (() { final guardedValue = map['apiManagementId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificateId: (() { final guardedValue = map['certificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gatewayName: (() { final guardedValue = map['gatewayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      http2Enabled: (() { final guardedValue = map['http2Enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestClientCertificateEnabled: (() { final guardedValue = map['requestClientCertificateEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tls10Enabled: (() { final guardedValue = map['tls10Enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tls11Enabled: (() { final guardedValue = map['tls11Enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

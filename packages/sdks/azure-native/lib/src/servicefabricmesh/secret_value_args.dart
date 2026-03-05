@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretValueArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// Azure resource group name
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the secret resource.
   final pulumi.Input<String> secretResourceName;
-
   /// The name of the secret resource value which is typically the version identifier for the value.
   final pulumi.Input<String>? secretValueResourceName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The actual value of the secret.
   final pulumi.Input<String>? value;
 
@@ -54,34 +49,13 @@ class SecretValueArgs {
 
   factory SecretValueArgs.fromMap(Map<String, dynamic> map) {
     return SecretValueArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      secretResourceName: pulumi.Input.fromValue(
-        map['secretResourceName'] as String,
-      ),
-      secretValueResourceName: (() {
-        final guardedValue = map['secretValueResourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      secretResourceName: pulumi.Input.fromValue(map['secretResourceName'] as String),
+      secretValueResourceName: (() { final guardedValue = map['secretValueResourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

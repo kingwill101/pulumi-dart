@@ -8,41 +8,20 @@ class ResponseHeadersPolicyCustomHeadersConfig {
 
   /// Creates a new [ResponseHeadersPolicyCustomHeadersConfig].
   /// [items] Optional.
-  ResponseHeadersPolicyCustomHeadersConfig({this.items});
+  ResponseHeadersPolicyCustomHeadersConfig({
+    this.items,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ResponseHeadersPolicyCustomHeadersConfigItem>,
-            List<Map<String, dynamic>>
-          >(
-            items,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ResponseHeadersPolicyCustomHeadersConfigItem,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'items': ?pulumi.Input.mapOptionalInputValue<List<ResponseHeadersPolicyCustomHeadersConfigItem>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<ResponseHeadersPolicyCustomHeadersConfigItem, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ResponseHeadersPolicyCustomHeadersConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResponseHeadersPolicyCustomHeadersConfig.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicyCustomHeadersConfig(
-      items: (() {
-        final guardedValue = map['items'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ResponseHeadersPolicyCustomHeadersConfigItem>(
-            guardedValue,
-            (value) => ResponseHeadersPolicyCustomHeadersConfigItem.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResponseHeadersPolicyCustomHeadersConfigItem>(guardedValue, (value) => ResponseHeadersPolicyCustomHeadersConfigItem.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

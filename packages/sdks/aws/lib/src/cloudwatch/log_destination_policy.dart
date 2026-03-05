@@ -253,13 +253,10 @@ import 'log_destination_policy_state.dart';
 class LogDestinationPolicy extends pulumi.CustomResource {
   /// The policy document. This is a JSON formatted string.
   late final pulumi.Output<String> accessPolicy;
-
   /// A name for the subscription filter
   late final pulumi.Output<String> destinationName;
-
   /// Specify true if you are updating an existing destination policy to grant permission to an organization ID instead of granting permission to individual AWS accounts.
   late final pulumi.Output<bool?> forceUpdate;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -272,11 +269,11 @@ class LogDestinationPolicy extends pulumi.CustomResource {
     LogDestinationPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/logDestinationPolicy:LogDestinationPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/logDestinationPolicy:LogDestinationPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicy = registerOutput<String>('accessPolicy');
     destinationName = registerOutput<String>('destinationName');
     forceUpdate = registerOutput<bool?>('forceUpdate');
@@ -301,11 +298,11 @@ class LogDestinationPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/logDestinationPolicy:LogDestinationPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/logDestinationPolicy:LogDestinationPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicy = registerOutput<String>('accessPolicy');
     destinationName = registerOutput<String>('destinationName');
     forceUpdate = registerOutput<bool?>('forceUpdate');

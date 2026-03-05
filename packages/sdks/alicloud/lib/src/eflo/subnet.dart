@@ -228,37 +228,27 @@ import 'subnet_state.dart';
 class Subnet extends pulumi.CustomResource {
   /// CIDR network segment.
   late final pulumi.Output<String> cidr;
-
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// Modification time.
   late final pulumi.Output<String> gmtModified;
-
   /// Error message.
   late final pulumi.Output<String> message;
-
   /// Resource Group ID.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// The id of the subnet.
   late final pulumi.Output<String> subnetId;
-
   /// The Subnet name.
   late final pulumi.Output<String> subnetName;
-
   /// Eflo subnet usage type. optional value:
   /// - General type is not filled in
   /// - OOB:OOB type
   /// - LB: LB type
   late final pulumi.Output<String?> type;
-
   /// The Eflo VPD ID.
   late final pulumi.Output<String> vpdId;
-
   /// The zone ID  of the resource.
   late final pulumi.Output<String> zoneId;
 
@@ -266,13 +256,16 @@ class Subnet extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Subnet]. {@macro pulumi_eflo_subnet_subnet_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Subnet(String name, {SubnetArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:eflo/subnet:Subnet',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Subnet(
+    String name, {
+    SubnetArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:eflo/subnet:Subnet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidr = registerOutput<String>('cidr');
     createTime = registerOutput<String>('createTime');
     gmtModified = registerOutput<String>('gmtModified');
@@ -304,11 +297,11 @@ class Subnet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/subnet:Subnet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/subnet:Subnet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidr = registerOutput<String>('cidr');
     createTime = registerOutput<String>('createTime');
     gmtModified = registerOutput<String>('gmtModified');

@@ -10,46 +10,32 @@ import 'key_vault_secret_reference.dart';
 class VirtualMachineScaleSetExtensionArgs {
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   final pulumi.Input<bool>? autoUpgradeMinorVersion;
-
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
   final pulumi.Input<bool>? enableAutomaticUpgrade;
-
   /// If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
   final pulumi.Input<String>? forceUpdateTag;
-
   /// Resource name
   final pulumi.Input<String>? name;
-
   /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
   final pulumi.Input<dynamic>? protectedSettings;
-
   /// The extensions protected settings that are passed by reference, and consumed from key vault
   final pulumi.Input<KeyVaultSecretReference>? protectedSettingsFromKeyVault;
-
   /// Collection of extension names after which this extension needs to be provisioned.
   final pulumi.Input<List<String>>? provisionAfterExtensions;
-
   /// The name of the extension handler publisher.
   final pulumi.Input<String>? publisher;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Json formatted public settings for the extension.
   final pulumi.Input<dynamic>? settings;
-
   /// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
   final pulumi.Input<bool>? suppressFailures;
-
   /// Specifies the type of the extension; an example is "CustomScriptExtension".
   final pulumi.Input<String>? type;
-
   /// Specifies the version of the script handler.
   final pulumi.Input<String>? typeHandlerVersion;
-
   /// The name of the VM scale set.
   final pulumi.Input<String> vmScaleSetName;
-
   /// The name of the VM scale set extension.
   final pulumi.Input<String>? vmssExtensionName;
 
@@ -94,11 +80,7 @@ class VirtualMachineScaleSetExtensionArgs {
       'forceUpdateTag': ?forceUpdateTag,
       'name': ?name,
       'protectedSettings': ?protectedSettings,
-      'protectedSettingsFromKeyVault':
-          ?pulumi.Input.mapOptionalInputValue<
-            KeyVaultSecretReference,
-            Map<String, dynamic>
-          >(protectedSettingsFromKeyVault, (value) => value.toMap()),
+      'protectedSettingsFromKeyVault': ?pulumi.Input.mapOptionalInputValue<KeyVaultSecretReference, Map<String, dynamic>>(protectedSettingsFromKeyVault, (value) => value.toMap()),
       'provisionAfterExtensions': ?provisionAfterExtensions,
       'publisher': ?publisher,
       'resourceGroupName': resourceGroupName,
@@ -111,83 +93,24 @@ class VirtualMachineScaleSetExtensionArgs {
     };
   }
 
-  factory VirtualMachineScaleSetExtensionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachineScaleSetExtensionArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetExtensionArgs(
-      autoUpgradeMinorVersion: (() {
-        final guardedValue = map['autoUpgradeMinorVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableAutomaticUpgrade: (() {
-        final guardedValue = map['enableAutomaticUpgrade'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      forceUpdateTag: (() {
-        final guardedValue = map['forceUpdateTag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protectedSettings: (() {
-        final guardedValue = map['protectedSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      protectedSettingsFromKeyVault: (() {
-        final guardedValue = map['protectedSettingsFromKeyVault'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KeyVaultSecretReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      provisionAfterExtensions: (() {
-        final guardedValue = map['provisionAfterExtensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      publisher: (() {
-        final guardedValue = map['publisher'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      settings: (() {
-        final guardedValue = map['settings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      suppressFailures: (() {
-        final guardedValue = map['suppressFailures'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      typeHandlerVersion: (() {
-        final guardedValue = map['typeHandlerVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autoUpgradeMinorVersion: (() { final guardedValue = map['autoUpgradeMinorVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableAutomaticUpgrade: (() { final guardedValue = map['enableAutomaticUpgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      forceUpdateTag: (() { final guardedValue = map['forceUpdateTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protectedSettings: (() { final guardedValue = map['protectedSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      protectedSettingsFromKeyVault: (() { final guardedValue = map['protectedSettingsFromKeyVault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      provisionAfterExtensions: (() { final guardedValue = map['provisionAfterExtensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      publisher: (() { final guardedValue = map['publisher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      suppressFailures: (() { final guardedValue = map['suppressFailures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      typeHandlerVersion: (() { final guardedValue = map['typeHandlerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vmScaleSetName: pulumi.Input.fromValue(map['vmScaleSetName'] as String),
-      vmssExtensionName: (() {
-        final guardedValue = map['vmssExtensionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      vmssExtensionName: (() { final guardedValue = map['vmssExtensionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

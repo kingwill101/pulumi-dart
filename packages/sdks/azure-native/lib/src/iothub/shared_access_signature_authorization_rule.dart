@@ -7,13 +7,10 @@ import 'access_rights.dart';
 class SharedAccessSignatureAuthorizationRule {
   /// The name of the shared access policy.
   final pulumi.Input<String> keyName;
-
   /// The primary key.
   final pulumi.Input<String>? primaryKey;
-
   /// The permissions assigned to the shared access policy.
   final pulumi.Input<AccessRights> rights;
-
   /// The secondary key.
   final pulumi.Input<String>? secondaryKey;
 
@@ -33,32 +30,18 @@ class SharedAccessSignatureAuthorizationRule {
     return <String, dynamic>{
       'keyName': keyName,
       'primaryKey': ?primaryKey,
-      'rights': pulumi.Input.mapInputValue<AccessRights, String>(
-        rights,
-        (value) => value.wireValue,
-      ),
+      'rights': pulumi.Input.mapInputValue<AccessRights, String>(rights, (value) => value.wireValue),
       'secondaryKey': ?secondaryKey,
     };
   }
 
-  factory SharedAccessSignatureAuthorizationRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SharedAccessSignatureAuthorizationRule.fromMap(Map<String, dynamic> map) {
     return SharedAccessSignatureAuthorizationRule(
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
-      primaryKey: (() {
-        final guardedValue = map['primaryKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rights: pulumi.Input.fromValue(
-        AccessRights.fromValue(map['rights']! as String),
-      ),
-      secondaryKey: (() {
-        final guardedValue = map['secondaryKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rights: pulumi.Input.fromValue(AccessRights.fromValue(map['rights']! as String)),
+      secondaryKey: (() { final guardedValue = map['secondaryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

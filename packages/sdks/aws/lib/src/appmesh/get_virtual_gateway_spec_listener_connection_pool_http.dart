@@ -21,14 +21,11 @@ class GetVirtualGatewaySpecListenerConnectionPoolHttp {
     };
   }
 
-  factory GetVirtualGatewaySpecListenerConnectionPoolHttp.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualGatewaySpecListenerConnectionPoolHttp.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerConnectionPoolHttp(
       maxConnections: pulumi.Input.fromValue(map['maxConnections'] as int),
-      maxPendingRequests: pulumi.Input.fromValue(
-        map['maxPendingRequests'] as int,
-      ),
+      maxPendingRequests: pulumi.Input.fromValue(map['maxPendingRequests'] as int),
     );
   }
 }
+

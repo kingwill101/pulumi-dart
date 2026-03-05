@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceState {
   /// Creation time of the service
   final pulumi.Input<String>? createTime;
-
   /// Whether to enter the development mode.
   final pulumi.Input<String>? develop;
-
   /// The region ID of the resource
   final pulumi.Input<String>? regionId;
-
   /// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
   final pulumi.Input<String>? serviceConfig;
-
   /// Service Current Status.
   final pulumi.Input<String>? status;
-
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Workspace id
   final pulumi.Input<String>? workspaceId;
 
@@ -57,43 +51,14 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      develop: (() {
-        final guardedValue = map['develop'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regionId: (() {
-        final guardedValue = map['regionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceConfig: (() {
-        final guardedValue = map['serviceConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      workspaceId: (() {
-        final guardedValue = map['workspaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      develop: (() { final guardedValue = map['develop']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionId: (() { final guardedValue = map['regionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceConfig: (() { final guardedValue = map['serviceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,14 @@ class MoboBrokerResourceResponse {
 
   /// Creates a new [MoboBrokerResourceResponse].
   /// [id] Resource Id of MoboBrokerResource
-  MoboBrokerResourceResponse({required this.id});
+  MoboBrokerResourceResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory MoboBrokerResourceResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class MoboBrokerResourceResponse {
     );
   }
 }
+

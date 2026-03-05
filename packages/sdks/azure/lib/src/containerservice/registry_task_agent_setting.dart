@@ -8,10 +8,14 @@ class RegistryTaskAgentSetting {
 
   /// Creates a new [RegistryTaskAgentSetting].
   /// [cpu] The number of cores required for the Container Registry Task. Possible value is `2`.
-  RegistryTaskAgentSetting({required this.cpu});
+  RegistryTaskAgentSetting({
+    required this.cpu,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpu': cpu};
+    return <String, dynamic>{
+      'cpu': cpu,
+    };
   }
 
   factory RegistryTaskAgentSetting.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class RegistryTaskAgentSetting {
     );
   }
 }
+

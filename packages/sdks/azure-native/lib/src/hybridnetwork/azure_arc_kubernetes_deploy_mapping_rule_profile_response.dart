@@ -7,7 +7,6 @@ import 'helm_mapping_rule_profile_response.dart';
 class AzureArcKubernetesDeployMappingRuleProfileResponse {
   /// The application enablement.
   final pulumi.Input<String>? applicationEnablement;
-
   /// The helm mapping rule profile.
   final pulumi.Input<HelmMappingRuleProfileResponse>? helmMappingRuleProfile;
 
@@ -22,32 +21,15 @@ class AzureArcKubernetesDeployMappingRuleProfileResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationEnablement': ?applicationEnablement,
-      'helmMappingRuleProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            HelmMappingRuleProfileResponse,
-            Map<String, dynamic>
-          >(helmMappingRuleProfile, (value) => value.toMap()),
+      'helmMappingRuleProfile': ?pulumi.Input.mapOptionalInputValue<HelmMappingRuleProfileResponse, Map<String, dynamic>>(helmMappingRuleProfile, (value) => value.toMap()),
     };
   }
 
-  factory AzureArcKubernetesDeployMappingRuleProfileResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureArcKubernetesDeployMappingRuleProfileResponse.fromMap(Map<String, dynamic> map) {
     return AzureArcKubernetesDeployMappingRuleProfileResponse(
-      applicationEnablement: (() {
-        final guardedValue = map['applicationEnablement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      helmMappingRuleProfile: (() {
-        final guardedValue = map['helmMappingRuleProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HelmMappingRuleProfileResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      applicationEnablement: (() { final guardedValue = map['applicationEnablement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      helmMappingRuleProfile: (() { final guardedValue = map['helmMappingRuleProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HelmMappingRuleProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

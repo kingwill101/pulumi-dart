@@ -263,47 +263,34 @@ import 'node_balancer_state.dart';
 class NodeBalancer extends pulumi.CustomResource {
   /// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
   late final pulumi.Output<int> clientConnThrottle;
-
   /// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
   ///
   /// * **NOTE: This argument may not be generally available.**
   late final pulumi.Output<int> clientUdpSessThrottle;
-
   /// When this firewall was created.
   late final pulumi.Output<String> created;
-
   /// ID for the firewall you'd like to use with this NodeBalancer.
   late final pulumi.Output<int?> firewallId;
-
   /// A list of Firewalls assigned to this NodeBalancer.
   late final pulumi.Output<List<Map<String, dynamic>>> firewalls;
-
   /// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
   late final pulumi.Output<String> hostname;
-
   /// A list of IPv4 addresses or networks. Must be in IP/mask format.
   late final pulumi.Output<String> ipv4;
-
   /// A list of IPv6 addresses or networks. Must be in IP/mask format.
   late final pulumi.Output<String> ipv6;
-
   /// The label of the Linode NodeBalancer
   late final pulumi.Output<String?> label;
-
   /// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
   ///
   /// - - -
   late final pulumi.Output<String> region;
-
   /// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   late final pulumi.Output<List<String>> tags;
-
   /// Information about the amount of transfer this NodeBalancer has had so far this month.
   late final pulumi.Output<List<Map<String, dynamic>>> transfers;
-
   /// When this firewall was last updated.
   late final pulumi.Output<String> updated;
-
   /// A list of VPCs to be assigned to this NodeBalancer.
   late final pulumi.Output<List<Map<String, dynamic>>?> vpcs;
 
@@ -316,11 +303,11 @@ class NodeBalancer extends pulumi.CustomResource {
     NodeBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/nodeBalancer:NodeBalancer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/nodeBalancer:NodeBalancer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientConnThrottle = registerOutput<int>('clientConnThrottle');
     clientUdpSessThrottle = registerOutput<int>('clientUdpSessThrottle');
     created = registerOutput<String>('created');
@@ -355,11 +342,11 @@ class NodeBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/nodeBalancer:NodeBalancer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/nodeBalancer:NodeBalancer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientConnThrottle = registerOutput<int>('clientConnThrottle');
     clientUdpSessThrottle = registerOutput<int>('clientUdpSessThrottle');
     created = registerOutput<String>('created');

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnsConfiguration {
   /// The DNS servers for the container group.
   final pulumi.Input<List<String>> nameServers;
-
   /// The DNS options for the container group.
   final pulumi.Input<String>? options;
-
   /// The DNS search domains for hostname lookup in the container group.
   final pulumi.Input<String>? searchDomains;
 
@@ -33,19 +31,10 @@ class DnsConfiguration {
 
   factory DnsConfiguration.fromMap(Map<String, dynamic> map) {
     return DnsConfiguration(
-      nameServers: pulumi.Input.fromValue(
-        (map['nameServers'] as List).cast<String>(),
-      ),
-      options: (() {
-        final guardedValue = map['options'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      searchDomains: (() {
-        final guardedValue = map['searchDomains'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      nameServers: pulumi.Input.fromValue((map['nameServers'] as List).cast<String>()),
+      options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      searchDomains: (() { final guardedValue = map['searchDomains']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

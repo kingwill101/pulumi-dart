@@ -9,19 +9,20 @@ class ApiVersionConstraintResponse {
 
   /// Creates a new [ApiVersionConstraintResponse].
   /// [minApiVersion] Limit control plane API calls to API Management service with version equal to or newer than this value.
-  ApiVersionConstraintResponse({this.minApiVersion});
+  ApiVersionConstraintResponse({
+    this.minApiVersion,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'minApiVersion': ?minApiVersion};
+    return <String, dynamic>{
+      'minApiVersion': ?minApiVersion,
+    };
   }
 
   factory ApiVersionConstraintResponse.fromMap(Map<String, dynamic> map) {
     return ApiVersionConstraintResponse(
-      minApiVersion: (() {
-        final guardedValue = map['minApiVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      minApiVersion: (() { final guardedValue = map['minApiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

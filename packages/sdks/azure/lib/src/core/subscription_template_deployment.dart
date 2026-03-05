@@ -207,25 +207,18 @@ import 'subscription_template_deployment_state.dart';
 class SubscriptionTemplateDeployment extends pulumi.CustomResource {
   /// The Debug Level which should be used for this Subscription Template Deployment. Possible values are `none`, `requestContent`, `responseContent` and `requestContent, responseContent`.
   late final pulumi.Output<String?> debugLevel;
-
   /// The Azure Region where the Subscription Template Deployment should exist. Changing this forces a new Subscription Template Deployment to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Subscription Template Deployment. Changing this forces a new Subscription Template Deployment to be created.
   late final pulumi.Output<String> name;
-
   /// The JSON Content of the Outputs of the ARM Template Deployment.
   late final pulumi.Output<String> outputContent;
-
   /// The contents of the ARM Template parameters file - containing a JSON list of parameters.
   late final pulumi.Output<String> parametersContent;
-
   /// A mapping of tags which should be assigned to the Subscription Template Deployment.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The contents of the ARM Template which should be deployed into this Subscription.
   late final pulumi.Output<String> templateContent;
-
   /// The ID of the Template Spec Version to deploy into the Subscription. Cannot be specified with `template_content`.
   late final pulumi.Output<String?> templateSpecVersionId;
 
@@ -238,11 +231,11 @@ class SubscriptionTemplateDeployment extends pulumi.CustomResource {
     SubscriptionTemplateDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/subscriptionTemplateDeployment:SubscriptionTemplateDeployment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/subscriptionTemplateDeployment:SubscriptionTemplateDeployment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     debugLevel = registerOutput<String?>('debugLevel');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -271,11 +264,11 @@ class SubscriptionTemplateDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/subscriptionTemplateDeployment:SubscriptionTemplateDeployment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/subscriptionTemplateDeployment:SubscriptionTemplateDeployment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     debugLevel = registerOutput<String?>('debugLevel');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

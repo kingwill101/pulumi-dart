@@ -230,18 +230,25 @@ class Event extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Event]. {@macro pulumi_insights_event_event_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Event(String name, {EventArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'newrelic:insights/event:Event',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Event(
+    String name, {
+    EventArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'newrelic:insights/event:Event',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     events = registerOutput<List<Map<String, dynamic>>>('events');
   }
 
   /// Gets an existing [Event] resource's state with the given [name] and [id].
-  static Event get(String name, pulumi.Input<String> id, {EventState? state}) {
+  static Event get(
+    String name,
+    pulumi.Input<String> id, {
+    EventState? state,
+  }) {
     return Event._get(
       name,
       state: state?.toMap(),
@@ -254,11 +261,11 @@ class Event extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:insights/event:Event',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:insights/event:Event',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     events = registerOutput<List<Map<String, dynamic>>>('events');
   }
 }

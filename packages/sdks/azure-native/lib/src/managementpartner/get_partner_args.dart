@@ -12,10 +12,14 @@ class GetPartnerArgs {
 
   /// Creates a new [GetPartnerArgs].
   /// [partnerId] Id of the Partner
-  GetPartnerArgs({required this.partnerId});
+  GetPartnerArgs({
+    required this.partnerId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'partnerId': partnerId};
+    return <String, dynamic>{
+      'partnerId': partnerId,
+    };
   }
 
   factory GetPartnerArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetPartnerArgs {
     );
   }
 }
+

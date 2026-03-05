@@ -22,3 +22,4 @@ enum MatchVariable {
     throw ArgumentError('Unknown MatchVariable value: $value');
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomNamingConventionResponse {
   /// The custom naming formula for the resource type.
   final pulumi.Input<String> formula;
-
   /// The type of the resource.
   final pulumi.Input<String> resourceType;
 
@@ -19,7 +18,10 @@ class CustomNamingConventionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'formula': formula, 'resourceType': resourceType};
+    return <String, dynamic>{
+      'formula': formula,
+      'resourceType': resourceType,
+    };
   }
 
   factory CustomNamingConventionResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class CustomNamingConventionResponse {
     );
   }
 }
+

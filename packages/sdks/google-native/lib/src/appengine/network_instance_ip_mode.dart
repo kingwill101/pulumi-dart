@@ -16,3 +16,4 @@ enum NetworkInstanceIpMode {
     throw ArgumentError('Unknown NetworkInstanceIpMode value: $value');
   }
 }
+

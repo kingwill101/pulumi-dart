@@ -8,26 +8,13 @@ import 'google_cloud_dialogflow_v2_notification_config_response.dart';
 /// Defines the Human Agent Assist to connect to a conversation.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse {
   /// Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
-  final pulumi.Input<
-    GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse
-  >
-  endUserSuggestionConfig;
-
+  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse> endUserSuggestionConfig;
   /// Configuration for agent assistance of human agent participant.
-  final pulumi.Input<
-    GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse
-  >
-  humanAgentSuggestionConfig;
-
+  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse> humanAgentSuggestionConfig;
   /// Configuration for message analysis.
-  final pulumi.Input<
-    GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse
-  >
-  messageAnalysisConfig;
-
+  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse> messageAnalysisConfig;
   /// Pub/Sub topic on which to publish new agent assistant events.
-  final pulumi.Input<GoogleCloudDialogflowV2NotificationConfigResponse>
-  notificationConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2NotificationConfigResponse> notificationConfig;
 
   /// Creates a new [GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse].
   /// [endUserSuggestionConfig] Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
@@ -43,53 +30,20 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endUserSuggestionConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse,
-            Map<String, dynamic>
-          >(endUserSuggestionConfig, (value) => value.toMap()),
-      'humanAgentSuggestionConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse,
-            Map<String, dynamic>
-          >(humanAgentSuggestionConfig, (value) => value.toMap()),
-      'messageAnalysisConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse,
-            Map<String, dynamic>
-          >(messageAnalysisConfig, (value) => value.toMap()),
-      'notificationConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDialogflowV2NotificationConfigResponse,
-            Map<String, dynamic>
-          >(notificationConfig, (value) => value.toMap()),
+      'endUserSuggestionConfig': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse, Map<String, dynamic>>(endUserSuggestionConfig, (value) => value.toMap()),
+      'humanAgentSuggestionConfig': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse, Map<String, dynamic>>(humanAgentSuggestionConfig, (value) => value.toMap()),
+      'messageAnalysisConfig': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse, Map<String, dynamic>>(messageAnalysisConfig, (value) => value.toMap()),
+      'notificationConfig': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2NotificationConfigResponse, Map<String, dynamic>>(notificationConfig, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse(
-      endUserSuggestionConfig: pulumi.Input.fromValue(
-        GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse.fromMap(
-          (map['endUserSuggestionConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      humanAgentSuggestionConfig: pulumi.Input.fromValue(
-        GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse.fromMap(
-          (map['humanAgentSuggestionConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      messageAnalysisConfig: pulumi.Input.fromValue(
-        GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse.fromMap(
-          (map['messageAnalysisConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      notificationConfig: pulumi.Input.fromValue(
-        GoogleCloudDialogflowV2NotificationConfigResponse.fromMap(
-          (map['notificationConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      endUserSuggestionConfig: pulumi.Input.fromValue(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse.fromMap((map['endUserSuggestionConfig']! as Map).cast<String, dynamic>())),
+      humanAgentSuggestionConfig: pulumi.Input.fromValue(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse.fromMap((map['humanAgentSuggestionConfig']! as Map).cast<String, dynamic>())),
+      messageAnalysisConfig: pulumi.Input.fromValue(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse.fromMap((map['messageAnalysisConfig']! as Map).cast<String, dynamic>())),
+      notificationConfig: pulumi.Input.fromValue(GoogleCloudDialogflowV2NotificationConfigResponse.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

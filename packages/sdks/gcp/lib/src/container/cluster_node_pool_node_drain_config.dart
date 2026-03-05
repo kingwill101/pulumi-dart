@@ -8,7 +8,9 @@ class ClusterNodePoolNodeDrainConfig {
 
   /// Creates a new [ClusterNodePoolNodeDrainConfig].
   /// [respectPdbDuringNodePoolDeletion] Whether to respect PodDisruptionBudget policy during node pool deletion.
-  ClusterNodePoolNodeDrainConfig({this.respectPdbDuringNodePoolDeletion});
+  ClusterNodePoolNodeDrainConfig({
+    this.respectPdbDuringNodePoolDeletion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,11 +20,8 @@ class ClusterNodePoolNodeDrainConfig {
 
   factory ClusterNodePoolNodeDrainConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeDrainConfig(
-      respectPdbDuringNodePoolDeletion: (() {
-        final guardedValue = map['respectPdbDuringNodePoolDeletion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      respectPdbDuringNodePoolDeletion: (() { final guardedValue = map['respectPdbDuringNodePoolDeletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

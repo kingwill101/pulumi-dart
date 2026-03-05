@@ -9,19 +9,20 @@ class ArtifactPackagingEnumValueResponse {
 
   /// Creates a new [ArtifactPackagingEnumValueResponse].
   /// [value] Property value
-  ArtifactPackagingEnumValueResponse({this.value});
+  ArtifactPackagingEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory ArtifactPackagingEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactPackagingEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

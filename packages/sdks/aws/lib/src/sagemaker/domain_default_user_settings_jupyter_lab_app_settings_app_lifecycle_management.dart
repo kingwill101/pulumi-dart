@@ -5,10 +5,7 @@ import 'domain_default_user_settings_jupyter_lab_app_settings_app_lifecycle_mana
 
 class DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement {
   /// Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
-  final pulumi.Input<
-    DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings
-  >?
-  idleSettings;
+  final pulumi.Input<DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings>? idleSettings;
 
   /// Creates a new [DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
@@ -18,27 +15,14 @@ class DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'idleSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings,
-            Map<String, dynamic>
-          >(idleSettings, (value) => value.toMap()),
+      'idleSettings': ?pulumi.Input.mapOptionalInputValue<DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings, Map<String, dynamic>>(idleSettings, (value) => value.toMap()),
     };
   }
 
-  factory DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement(
-      idleSettings: (() {
-        final guardedValue = map['idleSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      idleSettings: (() { final guardedValue = map['idleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

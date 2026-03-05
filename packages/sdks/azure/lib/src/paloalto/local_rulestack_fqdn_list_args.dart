@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocalRulestackFqdnListArgs {
   /// The comment for Audit purposes.
   final pulumi.Input<String>? auditComment;
-
   /// The description for the FQDN List.
   final pulumi.Input<String>? description;
-
   /// Specifies a list of Fully Qualified Domain Names.
   final pulumi.Input<List<String>> fullyQualifiedDomainNames;
-
   /// The name which should be used for this Palo Alto Local Rulestack FQDN List.
   final pulumi.Input<String>? name;
-
   /// The ID of the TODO. Changing this forces a new Palo Alto Local Rulestack FQDN List to be created.
   final pulumi.Input<String> rulestackId;
 
@@ -48,25 +44,12 @@ class LocalRulestackFqdnListArgs {
 
   factory LocalRulestackFqdnListArgs.fromMap(Map<String, dynamic> map) {
     return LocalRulestackFqdnListArgs(
-      auditComment: (() {
-        final guardedValue = map['auditComment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fullyQualifiedDomainNames: pulumi.Input.fromValue(
-        (map['fullyQualifiedDomainNames'] as List).cast<String>(),
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      auditComment: (() { final guardedValue = map['auditComment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fullyQualifiedDomainNames: pulumi.Input.fromValue((map['fullyQualifiedDomainNames'] as List).cast<String>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rulestackId: pulumi.Input.fromValue(map['rulestackId'] as String),
     );
   }
 }
+

@@ -14,18 +14,15 @@ class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'outputType': ?outputType};
+    return <String, dynamic>{
+      'outputType': ?outputType,
+    };
   }
 
-  factory SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo(
-      outputType: (() {
-        final guardedValue = map['outputType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputType: (() { final guardedValue = map['outputType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

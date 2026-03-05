@@ -105,8 +105,7 @@ Future<GetCatalogResult> getCatalog(
 /// Other available API versions: 2023-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_devcenter_get_catalog_dev_box_definition_error_details_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCatalogDevBoxDefinitionErrorDetailsResult>
-getCatalogDevBoxDefinitionErrorDetails(
+Future<GetCatalogDevBoxDefinitionErrorDetailsResult> getCatalogDevBoxDefinitionErrorDetails(
   GetCatalogDevBoxDefinitionErrorDetailsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -226,8 +225,7 @@ Future<GetDevCenterResult> getDevCenter(
 /// Other available API versions: 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_devcenter_get_dev_center_catalog_image_definition_build_details_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDevCenterCatalogImageDefinitionBuildDetailsResult>
-getDevCenterCatalogImageDefinitionBuildDetails(
+Future<GetDevCenterCatalogImageDefinitionBuildDetailsResult> getDevCenterCatalogImageDefinitionBuildDetails(
   GetDevCenterCatalogImageDefinitionBuildDetailsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -247,8 +245,7 @@ getDevCenterCatalogImageDefinitionBuildDetails(
 /// Other available API versions: 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_devcenter_get_dev_center_catalog_image_definition_error_details_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDevCenterCatalogImageDefinitionErrorDetailsResult>
-getDevCenterCatalogImageDefinitionErrorDetails(
+Future<GetDevCenterCatalogImageDefinitionErrorDetailsResult> getDevCenterCatalogImageDefinitionErrorDetails(
   GetDevCenterCatalogImageDefinitionErrorDetailsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -288,8 +285,7 @@ Future<GetEncryptionSetResult> getEncryptionSet(
 /// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_devcenter_get_environment_definition_error_details_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEnvironmentDefinitionErrorDetailsResult>
-getEnvironmentDefinitionErrorDetails(
+Future<GetEnvironmentDefinitionErrorDetailsResult> getEnvironmentDefinitionErrorDetails(
   GetEnvironmentDefinitionErrorDetailsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -469,8 +465,7 @@ Future<GetProjectCatalogResult> getProjectCatalog(
 /// Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_devcenter_get_project_catalog_environment_definition_error_details_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetProjectCatalogEnvironmentDefinitionErrorDetailsResult>
-getProjectCatalogEnvironmentDefinitionErrorDetails(
+Future<GetProjectCatalogEnvironmentDefinitionErrorDetailsResult> getProjectCatalogEnvironmentDefinitionErrorDetails(
   GetProjectCatalogEnvironmentDefinitionErrorDetailsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -480,9 +475,7 @@ getProjectCatalogEnvironmentDefinitionErrorDetails(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetProjectCatalogEnvironmentDefinitionErrorDetailsResult.fromMap(
-    result,
-  );
+  return GetProjectCatalogEnvironmentDefinitionErrorDetailsResult.fromMap(result);
 }
 
 /// Gets Build details
@@ -492,8 +485,7 @@ getProjectCatalogEnvironmentDefinitionErrorDetails(
 /// Other available API versions: 2024-07-01-preview, 2024-08-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_devcenter_get_project_catalog_image_definition_build_details_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetProjectCatalogImageDefinitionBuildDetailsResult>
-getProjectCatalogImageDefinitionBuildDetails(
+Future<GetProjectCatalogImageDefinitionBuildDetailsResult> getProjectCatalogImageDefinitionBuildDetails(
   GetProjectCatalogImageDefinitionBuildDetailsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -513,8 +505,7 @@ getProjectCatalogImageDefinitionBuildDetails(
 /// Other available API versions: 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_devcenter_get_project_catalog_image_definition_error_details_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetProjectCatalogImageDefinitionErrorDetailsResult>
-getProjectCatalogImageDefinitionErrorDetails(
+Future<GetProjectCatalogImageDefinitionErrorDetailsResult> getProjectCatalogImageDefinitionErrorDetails(
   GetProjectCatalogImageDefinitionErrorDetailsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -534,8 +525,7 @@ getProjectCatalogImageDefinitionErrorDetails(
 /// Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_devcenter_get_project_catalog_sync_error_details_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetProjectCatalogSyncErrorDetailsResult>
-getProjectCatalogSyncErrorDetails(
+Future<GetProjectCatalogSyncErrorDetailsResult> getProjectCatalogSyncErrorDetails(
   GetProjectCatalogSyncErrorDetailsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

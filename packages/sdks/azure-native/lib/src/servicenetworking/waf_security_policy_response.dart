@@ -9,10 +9,14 @@ class WafSecurityPolicyResponse {
 
   /// Creates a new [WafSecurityPolicyResponse].
   /// [id] Resource ID of the Waf Security Policy
-  WafSecurityPolicyResponse({required this.id});
+  WafSecurityPolicyResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory WafSecurityPolicyResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class WafSecurityPolicyResponse {
     );
   }
 }
+

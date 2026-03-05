@@ -9,17 +9,20 @@ class PodCIDROverprovisionConfigResponseContainerV1beta1 {
 
   /// Creates a new [PodCIDROverprovisionConfigResponseContainerV1beta1].
   /// [disable] Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
-  PodCIDROverprovisionConfigResponseContainerV1beta1({required this.disable});
+  PodCIDROverprovisionConfigResponseContainerV1beta1({
+    required this.disable,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disable': disable};
+    return <String, dynamic>{
+      'disable': disable,
+    };
   }
 
-  factory PodCIDROverprovisionConfigResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PodCIDROverprovisionConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return PodCIDROverprovisionConfigResponseContainerV1beta1(
       disable: pulumi.Input.fromValue(map['disable'] as bool),
     );
   }
 }
+

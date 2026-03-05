@@ -17,3 +17,4 @@ enum SubnetType {
     throw ArgumentError('Unknown SubnetType value: $value');
   }
 }
+

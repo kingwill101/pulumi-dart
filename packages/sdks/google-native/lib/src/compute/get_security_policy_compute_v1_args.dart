@@ -13,7 +13,10 @@ class GetSecurityPolicyComputeV1Args {
   /// Creates a new [GetSecurityPolicyComputeV1Args].
   /// [project] Optional.
   /// [securityPolicy] Required.
-  GetSecurityPolicyComputeV1Args({this.project, required this.securityPolicy});
+  GetSecurityPolicyComputeV1Args({
+    this.project,
+    required this.securityPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,12 +27,9 @@ class GetSecurityPolicyComputeV1Args {
 
   factory GetSecurityPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyComputeV1Args(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityPolicy: pulumi.Input.fromValue(map['securityPolicy'] as String),
     );
   }
 }
+

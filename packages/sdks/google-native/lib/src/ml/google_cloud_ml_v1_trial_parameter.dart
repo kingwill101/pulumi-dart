@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1TrialParameter {
   /// Must be set if ParameterType is DOUBLE or DISCRETE.
   final pulumi.Input<double>? floatValue;
-
   /// Must be set if ParameterType is INTEGER
   final pulumi.Input<String>? intValue;
-
   /// The name of the parameter.
   final pulumi.Input<String>? parameter;
-
   /// Must be set if ParameterTypeis CATEGORICAL
   final pulumi.Input<String>? stringValue;
 
@@ -39,26 +36,11 @@ class GoogleCloudMlV1TrialParameter {
 
   factory GoogleCloudMlV1TrialParameter.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1TrialParameter(
-      floatValue: (() {
-        final guardedValue = map['floatValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      intValue: (() {
-        final guardedValue = map['intValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameter: (() {
-        final guardedValue = map['parameter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stringValue: (() {
-        final guardedValue = map['stringValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      floatValue: (() { final guardedValue = map['floatValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      intValue: (() { final guardedValue = map['intValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameter: (() { final guardedValue = map['parameter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stringValue: (() { final guardedValue = map['stringValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

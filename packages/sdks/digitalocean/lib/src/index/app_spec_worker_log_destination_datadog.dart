@@ -5,27 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppSpecWorkerLogDestinationDatadog {
   /// Datadog API key.
   final pulumi.Input<String> apiKey;
-
   /// Datadog HTTP log intake endpoint.
   final pulumi.Input<String>? endpoint;
 
   /// Creates a new [AppSpecWorkerLogDestinationDatadog].
   /// [apiKey] Datadog API key.
   /// [endpoint] Datadog HTTP log intake endpoint.
-  AppSpecWorkerLogDestinationDatadog({required this.apiKey, this.endpoint});
+  AppSpecWorkerLogDestinationDatadog({
+    required this.apiKey,
+    this.endpoint,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'apiKey': apiKey, 'endpoint': ?endpoint};
+    return <String, dynamic>{
+      'apiKey': apiKey,
+      'endpoint': ?endpoint,
+    };
   }
 
   factory AppSpecWorkerLogDestinationDatadog.fromMap(Map<String, dynamic> map) {
     return AppSpecWorkerLogDestinationDatadog(
       apiKey: pulumi.Input.fromValue(map['apiKey'] as String),
-      endpoint: (() {
-        final guardedValue = map['endpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

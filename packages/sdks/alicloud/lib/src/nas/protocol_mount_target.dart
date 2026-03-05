@@ -440,10 +440,8 @@ class ProtocolMountTarget extends pulumi.CustomResource {
   /// The permission group name.
   /// Default value: DEFAULT_VPC_GROUP_NAME
   late final pulumi.Output<String> accessGroupName;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// Description of the protocol service mount target. Display as the export directory name in the console.
   ///
   /// Limitations:
@@ -452,13 +450,10 @@ class ProtocolMountTarget extends pulumi.CustomResource {
   /// - Can contain numbers, colons (:), underscores (_), or dashes (-).
   late final pulumi.Output<String?> description;
   late final pulumi.Output<bool?> dryRun;
-
   /// Protocol Service Mount Target ID
   late final pulumi.Output<String> exportId;
-
   /// The ID of the file system.
   late final pulumi.Output<String> fileSystemId;
-
   /// The ID of the Fileset to be mounted.
   ///
   /// Limitations:
@@ -466,7 +461,6 @@ class ProtocolMountTarget extends pulumi.CustomResource {
   /// - A Fileset allows only one export directory to be created.
   /// - Fileset and Path can and must specify only one.
   late final pulumi.Output<String?> fsetId;
-
   /// The path of the CPFS directory to be mounted.
   ///
   /// Limitations:
@@ -479,19 +473,14 @@ class ProtocolMountTarget extends pulumi.CustomResource {
   /// - Use UTF-8 encoding.
   /// - Must start and end with a forward slash (/) and root directory is/.
   late final pulumi.Output<String> path;
-
   /// Protocol Service ID
   late final pulumi.Output<String> protocolServiceId;
-
   /// Status
   late final pulumi.Output<String> status;
-
   /// The VPC ID of the protocol service mount point.
   late final pulumi.Output<String?> vpcId;
-
   /// The vSwitch ID of the protocol service mount target.
   late final pulumi.Output<String?> vswitchId;
-
   /// The vSwitch IDs of the protocol service mount target.
   /// When the storage redundancy type of the file system is ZRS, if VpcId is set, the vSwitch ID of three different zones under the Vpc must be set in this field.
   late final pulumi.Output<List<String>?> vswitchIds;
@@ -505,11 +494,11 @@ class ProtocolMountTarget extends pulumi.CustomResource {
     ProtocolMountTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nas/protocolMountTarget:ProtocolMountTarget',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nas/protocolMountTarget:ProtocolMountTarget',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessGroupName = registerOutput<String>('accessGroupName');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -543,11 +532,11 @@ class ProtocolMountTarget extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nas/protocolMountTarget:ProtocolMountTarget',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nas/protocolMountTarget:ProtocolMountTarget',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessGroupName = registerOutput<String>('accessGroupName');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

@@ -5,40 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouteTablesTable {
   /// The description of the route table instance.
   final pulumi.Input<String> description;
-
   /// ID of the Route Table.
   final pulumi.Input<String> id;
-
   /// Name of the route table.
   final pulumi.Input<String> name;
-
   /// The Id of resource group which route tables belongs.
   final pulumi.Input<String> resourceGroupId;
-
   /// The route table id.
   final pulumi.Input<String> routeTableId;
-
   /// The route table name.
   final pulumi.Input<String> routeTableName;
-
   /// The route table type.
   final pulumi.Input<String> routeTableType;
-
   /// The router ID.
   final pulumi.Input<String> routerId;
-
   /// The route type of route table. Valid values: `VRouter` and `VBR`.
   final pulumi.Input<String> routerType;
-
   /// The status of resource. Valid values: `Available` and `Pending`.
   final pulumi.Input<String> status;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// Vpc id of the route table.
   final pulumi.Input<String> vpcId;
-
   /// A list of vswitch id.
   final pulumi.Input<List<String>> vswitchIds;
 
@@ -104,9 +92,8 @@ class GetRouteTablesTable {
       status: pulumi.Input.fromValue(map['status'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
-      vswitchIds: pulumi.Input.fromValue(
-        (map['vswitchIds'] as List).cast<String>(),
-      ),
+      vswitchIds: pulumi.Input.fromValue((map['vswitchIds'] as List).cast<String>()),
     );
   }
 }
+

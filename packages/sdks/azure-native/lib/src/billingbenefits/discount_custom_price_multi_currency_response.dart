@@ -9,33 +9,23 @@ import 'price_guarantee_properties_response.dart';
 class DiscountCustomPriceMultiCurrencyResponse {
   /// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
   final pulumi.Input<String> applyDiscountOn;
-
   /// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
   final pulumi.Input<List<ConditionsItemResponse>>? conditions;
-
   /// Custom price properties for a given discount.
   final pulumi.Input<CustomPricePropertiesResponse>? customPriceProperties;
-
   /// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
   final pulumi.Input<String>? discountCombinationRule;
-
   /// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
   final pulumi.Input<double>? discountPercentage;
-
   /// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
   /// Expected value is 'CustomPriceMultiCurrency'.
   final pulumi.Input<String> discountType;
-
   /// Set only in price guarantee scenario.
-  final pulumi.Input<PriceGuaranteePropertiesResponse>?
-  priceGuaranteeProperties;
-
+  final pulumi.Input<PriceGuaranteePropertiesResponse>? priceGuaranteeProperties;
   /// Product family for which the discount is given. Validation: Optional
   final pulumi.Input<String>? productFamilyName;
-
   /// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
   final pulumi.Input<String>? productId;
-
   /// ResourceSku for the given discount. Validation: Optional.
   final pulumi.Input<String>? skuId;
 
@@ -66,98 +56,31 @@ class DiscountCustomPriceMultiCurrencyResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applyDiscountOn': applyDiscountOn,
-      'conditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConditionsItemResponse>,
-            List<Map<String, dynamic>>
-          >(
-            conditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConditionsItemResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'customPriceProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomPricePropertiesResponse,
-            Map<String, dynamic>
-          >(customPriceProperties, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<ConditionsItemResponse>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ConditionsItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customPriceProperties': ?pulumi.Input.mapOptionalInputValue<CustomPricePropertiesResponse, Map<String, dynamic>>(customPriceProperties, (value) => value.toMap()),
       'discountCombinationRule': ?discountCombinationRule,
       'discountPercentage': ?discountPercentage,
       'discountType': discountType,
-      'priceGuaranteeProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            PriceGuaranteePropertiesResponse,
-            Map<String, dynamic>
-          >(priceGuaranteeProperties, (value) => value.toMap()),
+      'priceGuaranteeProperties': ?pulumi.Input.mapOptionalInputValue<PriceGuaranteePropertiesResponse, Map<String, dynamic>>(priceGuaranteeProperties, (value) => value.toMap()),
       'productFamilyName': ?productFamilyName,
       'productId': ?productId,
       'skuId': ?skuId,
     };
   }
 
-  factory DiscountCustomPriceMultiCurrencyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiscountCustomPriceMultiCurrencyResponse.fromMap(Map<String, dynamic> map) {
     return DiscountCustomPriceMultiCurrencyResponse(
       applyDiscountOn: pulumi.Input.fromValue(map['applyDiscountOn'] as String),
-      conditions: (() {
-        final guardedValue = map['conditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ConditionsItemResponse>(
-            guardedValue,
-            (value) => ConditionsItemResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      customPriceProperties: (() {
-        final guardedValue = map['customPriceProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomPricePropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      discountCombinationRule: (() {
-        final guardedValue = map['discountCombinationRule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      discountPercentage: (() {
-        final guardedValue = map['discountPercentage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConditionsItemResponse>(guardedValue, (value) => ConditionsItemResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      customPriceProperties: (() { final guardedValue = map['customPriceProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomPricePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      discountCombinationRule: (() { final guardedValue = map['discountCombinationRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       discountType: pulumi.Input.fromValue(map['discountType'] as String),
-      priceGuaranteeProperties: (() {
-        final guardedValue = map['priceGuaranteeProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PriceGuaranteePropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      productFamilyName: (() {
-        final guardedValue = map['productFamilyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      productId: (() {
-        final guardedValue = map['productId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      skuId: (() {
-        final guardedValue = map['skuId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      priceGuaranteeProperties: (() { final guardedValue = map['priceGuaranteeProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PriceGuaranteePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      productFamilyName: (() { final guardedValue = map['productFamilyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      productId: (() { final guardedValue = map['productId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      skuId: (() { final guardedValue = map['skuId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

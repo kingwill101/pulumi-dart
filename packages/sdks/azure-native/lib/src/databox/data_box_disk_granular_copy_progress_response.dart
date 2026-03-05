@@ -7,59 +7,41 @@ import 'cloud_error_response.dart';
 class DataBoxDiskGranularCopyProgressResponse {
   /// Id of the account where the data needs to be uploaded.
   final pulumi.Input<String> accountId;
-
   /// Available actions on the job.
   final pulumi.Input<List<String>> actions;
-
   /// To indicate bytes transferred.
   final pulumi.Input<double> bytesProcessed;
-
   /// The Status of the copy
   final pulumi.Input<String> copyStatus;
-
   /// Data Account Type.
   final pulumi.Input<String> dataAccountType;
-
   /// To indicate directories errored out in the job.
   final pulumi.Input<double> directoriesErroredOut;
-
   /// Error, if any, in the stage
   final pulumi.Input<CloudErrorResponse> error;
-
   /// Number of files which could not be copied
   final pulumi.Input<double> filesErroredOut;
-
   /// Number of files processed
   final pulumi.Input<double> filesProcessed;
-
   /// To indicate directories renamed
   final pulumi.Input<double> invalidDirectoriesProcessed;
-
   /// Total amount of data not adhering to azure naming conventions which were processed by automatic renaming
   final pulumi.Input<double> invalidFileBytesUploaded;
-
   /// Number of files not adhering to azure naming conventions which were processed by automatic renaming
   final pulumi.Input<double> invalidFilesProcessed;
-
   /// To indicate if enumeration of data is in progress.
   /// Until this is true, the TotalBytesToProcess may not be valid.
   final pulumi.Input<bool> isEnumerationInProgress;
-
   /// Number of folders not adhering to azure naming conventions which were processed by automatic renaming
   final pulumi.Input<double> renamedContainerCount;
-
   /// Disk Serial Number.
   final pulumi.Input<String> serialNumber;
-
   /// Name of the storage account. This will be empty for data account types other than storage account.
   final pulumi.Input<String> storageAccountName;
-
   /// Total amount of data to be processed by the job.
   final pulumi.Input<double> totalBytesToProcess;
-
   /// Total files to process
   final pulumi.Input<double> totalFilesToProcess;
-
   /// Transfer type of data
   final pulumi.Input<String> transferType;
 
@@ -113,11 +95,7 @@ class DataBoxDiskGranularCopyProgressResponse {
       'copyStatus': copyStatus,
       'dataAccountType': dataAccountType,
       'directoriesErroredOut': directoriesErroredOut,
-      'error':
-          pulumi.Input.mapInputValue<CloudErrorResponse, Map<String, dynamic>>(
-            error,
-            (value) => value.toMap(),
-          ),
+      'error': pulumi.Input.mapInputValue<CloudErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'filesErroredOut': filesErroredOut,
       'filesProcessed': filesProcessed,
       'invalidDirectoriesProcessed': invalidDirectoriesProcessed,
@@ -133,51 +111,28 @@ class DataBoxDiskGranularCopyProgressResponse {
     };
   }
 
-  factory DataBoxDiskGranularCopyProgressResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataBoxDiskGranularCopyProgressResponse.fromMap(Map<String, dynamic> map) {
     return DataBoxDiskGranularCopyProgressResponse(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       actions: pulumi.Input.fromValue((map['actions'] as List).cast<String>()),
       bytesProcessed: pulumi.Input.fromValue(map['bytesProcessed'] as double),
       copyStatus: pulumi.Input.fromValue(map['copyStatus'] as String),
       dataAccountType: pulumi.Input.fromValue(map['dataAccountType'] as String),
-      directoriesErroredOut: pulumi.Input.fromValue(
-        map['directoriesErroredOut'] as double,
-      ),
-      error: pulumi.Input.fromValue(
-        CloudErrorResponse.fromMap(
-          (map['error']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      directoriesErroredOut: pulumi.Input.fromValue(map['directoriesErroredOut'] as double),
+      error: pulumi.Input.fromValue(CloudErrorResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
       filesErroredOut: pulumi.Input.fromValue(map['filesErroredOut'] as double),
       filesProcessed: pulumi.Input.fromValue(map['filesProcessed'] as double),
-      invalidDirectoriesProcessed: pulumi.Input.fromValue(
-        map['invalidDirectoriesProcessed'] as double,
-      ),
-      invalidFileBytesUploaded: pulumi.Input.fromValue(
-        map['invalidFileBytesUploaded'] as double,
-      ),
-      invalidFilesProcessed: pulumi.Input.fromValue(
-        map['invalidFilesProcessed'] as double,
-      ),
-      isEnumerationInProgress: pulumi.Input.fromValue(
-        map['isEnumerationInProgress'] as bool,
-      ),
-      renamedContainerCount: pulumi.Input.fromValue(
-        map['renamedContainerCount'] as double,
-      ),
+      invalidDirectoriesProcessed: pulumi.Input.fromValue(map['invalidDirectoriesProcessed'] as double),
+      invalidFileBytesUploaded: pulumi.Input.fromValue(map['invalidFileBytesUploaded'] as double),
+      invalidFilesProcessed: pulumi.Input.fromValue(map['invalidFilesProcessed'] as double),
+      isEnumerationInProgress: pulumi.Input.fromValue(map['isEnumerationInProgress'] as bool),
+      renamedContainerCount: pulumi.Input.fromValue(map['renamedContainerCount'] as double),
       serialNumber: pulumi.Input.fromValue(map['serialNumber'] as String),
-      storageAccountName: pulumi.Input.fromValue(
-        map['storageAccountName'] as String,
-      ),
-      totalBytesToProcess: pulumi.Input.fromValue(
-        map['totalBytesToProcess'] as double,
-      ),
-      totalFilesToProcess: pulumi.Input.fromValue(
-        map['totalFilesToProcess'] as double,
-      ),
+      storageAccountName: pulumi.Input.fromValue(map['storageAccountName'] as String),
+      totalBytesToProcess: pulumi.Input.fromValue(map['totalBytesToProcess'] as double),
+      totalFilesToProcess: pulumi.Input.fromValue(map['totalFilesToProcess'] as double),
       transferType: pulumi.Input.fromValue(map['transferType'] as String),
     );
   }
 }
+

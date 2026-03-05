@@ -15,3 +15,4 @@ enum AllowedCopyScope {
     throw ArgumentError('Unknown AllowedCopyScope value: $value');
   }
 }
+

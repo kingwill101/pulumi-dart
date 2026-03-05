@@ -218,19 +218,14 @@ import 'services_communications_gateway_test_line_state.dart';
 class ServicesCommunicationsGatewayTestLine extends pulumi.CustomResource {
   /// Specifies the Azure Region where the Voice Services Communications Gateway Test Line should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name which should be used for this Voice Services Communications Gateway Test Line. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the phone number.
   late final pulumi.Output<String> phoneNumber;
-
   /// The purpose of the Voice Services Communications Gateway Test Line. Possible values are `Automated` or `Manual`.
   late final pulumi.Output<String> purpose;
-
   /// A mapping of tags which should be assigned to the Voice Services Communications Gateway Test Line.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the ID of the Voice Services Communications Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> voiceServicesCommunicationsGatewayId;
 
@@ -243,19 +238,17 @@ class ServicesCommunicationsGatewayTestLine extends pulumi.CustomResource {
     ServicesCommunicationsGatewayTestLineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:voice/servicesCommunicationsGatewayTestLine:ServicesCommunicationsGatewayTestLine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:voice/servicesCommunicationsGatewayTestLine:ServicesCommunicationsGatewayTestLine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     phoneNumber = registerOutput<String>('phoneNumber');
     purpose = registerOutput<String>('purpose');
     tags = registerOutput<Map<String, String>?>('tags');
-    voiceServicesCommunicationsGatewayId = registerOutput<String>(
-      'voiceServicesCommunicationsGatewayId',
-    );
+    voiceServicesCommunicationsGatewayId = registerOutput<String>('voiceServicesCommunicationsGatewayId');
   }
 
   /// Gets an existing [ServicesCommunicationsGatewayTestLine] resource's state with the given [name] and [id].
@@ -276,18 +269,16 @@ class ServicesCommunicationsGatewayTestLine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:voice/servicesCommunicationsGatewayTestLine:ServicesCommunicationsGatewayTestLine',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:voice/servicesCommunicationsGatewayTestLine:ServicesCommunicationsGatewayTestLine',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     phoneNumber = registerOutput<String>('phoneNumber');
     purpose = registerOutput<String>('purpose');
     tags = registerOutput<Map<String, String>?>('tags');
-    voiceServicesCommunicationsGatewayId = registerOutput<String>(
-      'voiceServicesCommunicationsGatewayId',
-    );
+    voiceServicesCommunicationsGatewayId = registerOutput<String>('voiceServicesCommunicationsGatewayId');
   }
 }

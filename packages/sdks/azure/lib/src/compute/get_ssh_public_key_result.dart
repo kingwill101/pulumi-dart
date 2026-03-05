@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSshPublicKey.
 class GetSshPublicKeyResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// The SSH public key used to authenticate to a virtual machine through ssh.
   final String publicKey;
   final String resourceGroupName;
@@ -41,11 +41,8 @@ class GetSshPublicKeyResult {
       name: map['name'] as String,
       publicKey: map['publicKey'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

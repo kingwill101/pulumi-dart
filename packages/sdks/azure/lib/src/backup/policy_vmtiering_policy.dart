@@ -5,30 +5,24 @@ import 'policy_vmtiering_policy_archived_restore_point.dart';
 
 class PolicyVMTieringPolicy {
   /// An `archived_restore_point` block as defined below.
-  final pulumi.Input<PolicyVMTieringPolicyArchivedRestorePoint>
-  archivedRestorePoint;
+  final pulumi.Input<PolicyVMTieringPolicyArchivedRestorePoint> archivedRestorePoint;
 
   /// Creates a new [PolicyVMTieringPolicy].
   /// [archivedRestorePoint] An `archived_restore_point` block as defined below.
-  PolicyVMTieringPolicy({required this.archivedRestorePoint});
+  PolicyVMTieringPolicy({
+    required this.archivedRestorePoint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'archivedRestorePoint':
-          pulumi.Input.mapInputValue<
-            PolicyVMTieringPolicyArchivedRestorePoint,
-            Map<String, dynamic>
-          >(archivedRestorePoint, (value) => value.toMap()),
+      'archivedRestorePoint': pulumi.Input.mapInputValue<PolicyVMTieringPolicyArchivedRestorePoint, Map<String, dynamic>>(archivedRestorePoint, (value) => value.toMap()),
     };
   }
 
   factory PolicyVMTieringPolicy.fromMap(Map<String, dynamic> map) {
     return PolicyVMTieringPolicy(
-      archivedRestorePoint: pulumi.Input.fromValue(
-        PolicyVMTieringPolicyArchivedRestorePoint.fromMap(
-          (map['archivedRestorePoint']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      archivedRestorePoint: pulumi.Input.fromValue(PolicyVMTieringPolicyArchivedRestorePoint.fromMap((map['archivedRestorePoint']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

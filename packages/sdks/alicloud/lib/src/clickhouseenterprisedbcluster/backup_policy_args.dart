@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPolicyArgs {
   /// Backup retention time.
   final pulumi.Input<int> backupRetentionPeriod;
-
   /// The instance ID.
   final pulumi.Input<String> dbInstanceId;
-
   /// Backup period.
   final pulumi.Input<String> preferredBackupPeriod;
-
   /// Backup time.
   final pulumi.Input<String> preferredBackupTime;
 
@@ -42,16 +39,11 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      backupRetentionPeriod: pulumi.Input.fromValue(
-        map['backupRetentionPeriod'] as int,
-      ),
+      backupRetentionPeriod: pulumi.Input.fromValue(map['backupRetentionPeriod'] as int),
       dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
-      preferredBackupPeriod: pulumi.Input.fromValue(
-        map['preferredBackupPeriod'] as String,
-      ),
-      preferredBackupTime: pulumi.Input.fromValue(
-        map['preferredBackupTime'] as String,
-      ),
+      preferredBackupPeriod: pulumi.Input.fromValue(map['preferredBackupPeriod'] as String),
+      preferredBackupTime: pulumi.Input.fromValue(map['preferredBackupTime'] as String),
     );
   }
 }
+

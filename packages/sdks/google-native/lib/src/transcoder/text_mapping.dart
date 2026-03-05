@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TextMapping {
   /// The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
   final pulumi.Input<String> atomKey;
-
   /// The Input.key that identifies the input file.
   final pulumi.Input<String> inputKey;
-
   /// The zero-based index of the track in the input file.
   final pulumi.Input<int> inputTrack;
 
@@ -39,3 +37,4 @@ class TextMapping {
     );
   }
 }
+

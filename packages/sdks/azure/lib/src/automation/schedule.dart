@@ -245,37 +245,26 @@ import 'schedule_state.dart';
 class Schedule extends pulumi.CustomResource {
   /// The name of the automation account in which the Schedule is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
-
   /// A description for this Schedule.
   late final pulumi.Output<String?> description;
-
   /// The end time of the schedule.
   late final pulumi.Output<String> expiryTime;
-
   /// The frequency of the schedule. - can be either `OneTime`, `Day`, `Hour`, `Week`, or `Month`.
   late final pulumi.Output<String> frequency;
-
   /// The number of `frequency`s between runs. Only valid when frequency is `Day`, `Hour`, `Week`, or `Month` and defaults to `1`.
   late final pulumi.Output<int> interval;
-
   /// List of days of the month that the job should execute on. Must be between `1` and `31`. `-1` for last day of the month. Only valid when frequency is `Month`.
   late final pulumi.Output<List<int>?> monthDays;
-
   /// One `monthly_occurrence` blocks as defined below to specifies occurrences of days within a month. Only valid when frequency is `Month`. The `monthly_occurrence` block supports fields documented below.
   late final pulumi.Output<ScheduleMonthlyOccurrence?> monthlyOccurrence;
-
   /// Specifies the name of the Schedule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which the Schedule is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Start time of the schedule. Must be at least five minutes in the future. Defaults to seven minutes in the future from the time the resource is created.
   late final pulumi.Output<String> startTime;
-
   /// The timezone of the start time. Defaults to `Etc/UTC`. For possible values see: &lt;https://docs.microsoft.com/en-us/rest/api/maps/timezone/gettimezoneenumwindows&gt;
   late final pulumi.Output<String?> timezone;
-
   /// List of days of the week that the job should execute on. Only valid when frequency is `Week`. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
   late final pulumi.Output<List<String>?> weekDays;
 
@@ -288,27 +277,18 @@ class Schedule extends pulumi.CustomResource {
     ScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/schedule:Schedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/schedule:Schedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     description = registerOutput<String?>('description');
     expiryTime = registerOutput<String>('expiryTime');
     frequency = registerOutput<String>('frequency');
     interval = registerOutput<int>('interval');
     monthDays = registerOutput<List<int>?>('monthDays');
-    monthlyOccurrence = registerOutput<ScheduleMonthlyOccurrence?>(
-      'monthlyOccurrence',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduleMonthlyOccurrence.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monthlyOccurrence = registerOutput<ScheduleMonthlyOccurrence?>('monthlyOccurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleMonthlyOccurrence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     startTime = registerOutput<String>('startTime');
@@ -334,27 +314,18 @@ class Schedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/schedule:Schedule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/schedule:Schedule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     description = registerOutput<String?>('description');
     expiryTime = registerOutput<String>('expiryTime');
     frequency = registerOutput<String>('frequency');
     interval = registerOutput<int>('interval');
     monthDays = registerOutput<List<int>?>('monthDays');
-    monthlyOccurrence = registerOutput<ScheduleMonthlyOccurrence?>(
-      'monthlyOccurrence',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduleMonthlyOccurrence.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monthlyOccurrence = registerOutput<ScheduleMonthlyOccurrence?>('monthlyOccurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleMonthlyOccurrence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     startTime = registerOutput<String>('startTime');

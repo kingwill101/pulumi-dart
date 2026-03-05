@@ -287,10 +287,8 @@ import 'rest_api_policy_state.dart';
 class RestApiPolicy extends pulumi.CustomResource {
   /// JSON formatted policy document that controls access to the API Gateway.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the REST API.
   late final pulumi.Output<String> restApiId;
 
@@ -303,11 +301,11 @@ class RestApiPolicy extends pulumi.CustomResource {
     RestApiPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigateway/restApiPolicy:RestApiPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigateway/restApiPolicy:RestApiPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     restApiId = registerOutput<String>('restApiId');
@@ -331,11 +329,11 @@ class RestApiPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigateway/restApiPolicy:RestApiPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigateway/restApiPolicy:RestApiPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     restApiId = registerOutput<String>('restApiId');

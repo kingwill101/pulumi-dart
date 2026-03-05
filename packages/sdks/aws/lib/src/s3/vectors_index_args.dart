@@ -11,29 +11,20 @@ import 'vectors_index_metadata_configuration.dart';
 class VectorsIndexArgs {
   /// Data type of the vectors to be inserted into the vector index. Valid values: `float32`.
   final pulumi.Input<String> dataType;
-
   /// Dimensions of the vectors to be inserted into the vector index.
   final pulumi.Input<int> dimension;
-
   /// Distance metric to be used for similarity search. Valid values: `cosine`, `euclidean`.
   final pulumi.Input<String> distanceMetric;
-
   /// Block for encryption configuration for the vector index. See `encyption_configuration` block below.
-  final pulumi.Input<List<VectorsIndexEncryptionConfiguration>>?
-  encryptionConfigurations;
-
+  final pulumi.Input<List<VectorsIndexEncryptionConfiguration>>? encryptionConfigurations;
   /// Name of the vector index.
   final pulumi.Input<String> indexName;
-
   /// Block for metadata configuration for the vector index. See `metadata_configuration` block below.
   final pulumi.Input<VectorsIndexMetadataConfiguration>? metadataConfiguration;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Name of the vector bucket for the vector index.
   ///
   /// The following arguments are optional:
@@ -66,24 +57,9 @@ class VectorsIndexArgs {
       'dataType': dataType,
       'dimension': dimension,
       'distanceMetric': distanceMetric,
-      'encryptionConfigurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VectorsIndexEncryptionConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            encryptionConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VectorsIndexEncryptionConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'encryptionConfigurations': ?pulumi.Input.mapOptionalInputValue<List<VectorsIndexEncryptionConfiguration>, List<Map<String, dynamic>>>(encryptionConfigurations, (value) => pulumi.Input.encodeList<VectorsIndexEncryptionConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'indexName': indexName,
-      'metadataConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            VectorsIndexMetadataConfiguration,
-            Map<String, dynamic>
-          >(metadataConfiguration, (value) => value.toMap()),
+      'metadataConfiguration': ?pulumi.Input.mapOptionalInputValue<VectorsIndexMetadataConfiguration, Map<String, dynamic>>(metadataConfiguration, (value) => value.toMap()),
       'region': ?region,
       'tags': ?tags,
       'vectorBucketName': vectorBucketName,
@@ -95,43 +71,13 @@ class VectorsIndexArgs {
       dataType: pulumi.Input.fromValue(map['dataType'] as String),
       dimension: pulumi.Input.fromValue(map['dimension'] as int),
       distanceMetric: pulumi.Input.fromValue(map['distanceMetric'] as String),
-      encryptionConfigurations: (() {
-        final guardedValue = map['encryptionConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VectorsIndexEncryptionConfiguration>(
-            guardedValue,
-            (value) => VectorsIndexEncryptionConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      encryptionConfigurations: (() { final guardedValue = map['encryptionConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VectorsIndexEncryptionConfiguration>(guardedValue, (value) => VectorsIndexEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       indexName: pulumi.Input.fromValue(map['indexName'] as String),
-      metadataConfiguration: (() {
-        final guardedValue = map['metadataConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VectorsIndexMetadataConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      vectorBucketName: pulumi.Input.fromValue(
-        map['vectorBucketName'] as String,
-      ),
+      metadataConfiguration: (() { final guardedValue = map['metadataConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VectorsIndexMetadataConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      vectorBucketName: pulumi.Input.fromValue(map['vectorBucketName'] as String),
     );
   }
 }
+

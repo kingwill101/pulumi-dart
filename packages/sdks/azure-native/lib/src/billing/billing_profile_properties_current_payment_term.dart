@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BillingProfilePropertiesCurrentPaymentTerm {
   /// The date on when the defined 'Payment Term' will end and is always in UTC.
   final pulumi.Input<String>? endDate;
-
   /// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
   final pulumi.Input<String>? startDate;
-
   /// Represents duration in netXX format. Always in days.
   final pulumi.Input<String>? term;
 
@@ -31,25 +29,12 @@ class BillingProfilePropertiesCurrentPaymentTerm {
     };
   }
 
-  factory BillingProfilePropertiesCurrentPaymentTerm.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BillingProfilePropertiesCurrentPaymentTerm.fromMap(Map<String, dynamic> map) {
     return BillingProfilePropertiesCurrentPaymentTerm(
-      endDate: (() {
-        final guardedValue = map['endDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startDate: (() {
-        final guardedValue = map['startDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      term: (() {
-        final guardedValue = map['term'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      term: (() { final guardedValue = map['term']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

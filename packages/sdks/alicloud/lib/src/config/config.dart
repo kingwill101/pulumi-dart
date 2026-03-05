@@ -46,26 +46,14 @@ class AlicloudConfig {
 
   AssumeRole? get assumeRole {
     final raw = _raw('assumeRole');
-    return (() {
-      final guardedValue = raw;
-      if (guardedValue == null) return null;
-      return AssumeRole.fromMap(
-        (jsonDecode(guardedValue) as Map).cast<String, dynamic>(),
-      );
-    })();
+    return (() { final guardedValue = raw; if (guardedValue == null) return null; return AssumeRole.fromMap((jsonDecode(guardedValue) as Map).cast<String, dynamic>()); })();
   }
 
   bool get assumeRoleIsSecret => _isSecret('assumeRole');
 
   AssumeRoleWithOidc? get assumeRoleWithOidc {
     final raw = _raw('assumeRoleWithOidc');
-    return (() {
-      final guardedValue = raw;
-      if (guardedValue == null) return null;
-      return AssumeRoleWithOidc.fromMap(
-        (jsonDecode(guardedValue) as Map).cast<String, dynamic>(),
-      );
-    })();
+    return (() { final guardedValue = raw; if (guardedValue == null) return null; return AssumeRoleWithOidc.fromMap((jsonDecode(guardedValue) as Map).cast<String, dynamic>()); })();
   }
 
   bool get assumeRoleWithOidcIsSecret => _isSecret('assumeRoleWithOidc');
@@ -111,14 +99,7 @@ class AlicloudConfig {
 
   List<Endpoints>? get endpoints {
     final raw = _raw('endpoints');
-    return (() {
-      final guardedValue = raw;
-      if (guardedValue == null) return null;
-      return pulumi.Input.decodeList<Endpoints>(
-        jsonDecode(guardedValue),
-        (value) => Endpoints.fromMap((value as Map).cast<String, dynamic>()),
-      );
-    })();
+    return (() { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Endpoints>(jsonDecode(guardedValue), (value) => Endpoints.fromMap((value as Map).cast<String, dynamic>())); })();
   }
 
   bool get endpointsIsSecret => _isSecret('endpoints');
@@ -223,13 +204,7 @@ class AlicloudConfig {
 
   SignVersion? get signVersion {
     final raw = _raw('signVersion');
-    return (() {
-      final guardedValue = raw;
-      if (guardedValue == null) return null;
-      return SignVersion.fromMap(
-        (jsonDecode(guardedValue) as Map).cast<String, dynamic>(),
-      );
-    })();
+    return (() { final guardedValue = raw; if (guardedValue == null) return null; return SignVersion.fromMap((jsonDecode(guardedValue) as Map).cast<String, dynamic>()); })();
   }
 
   bool get signVersionIsSecret => _isSecret('signVersion');
@@ -249,6 +224,8 @@ class AlicloudConfig {
   }
 
   bool get sourceIpIsSecret => _isSecret('sourceIp');
+
 }
 
 final config = AlicloudConfig();
+

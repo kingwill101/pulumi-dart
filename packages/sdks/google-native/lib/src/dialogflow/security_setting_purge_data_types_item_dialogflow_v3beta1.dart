@@ -5,17 +5,13 @@ enum SecuritySettingPurgeDataTypesItemDialogflowV3beta1 {
   const SecuritySettingPurgeDataTypesItemDialogflowV3beta1(this.wireValue);
   final String wireValue;
 
-  static SecuritySettingPurgeDataTypesItemDialogflowV3beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in SecuritySettingPurgeDataTypesItemDialogflowV3beta1.values) {
+  static SecuritySettingPurgeDataTypesItemDialogflowV3beta1 fromValue(String value) {
+    for (final item in SecuritySettingPurgeDataTypesItemDialogflowV3beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SecuritySettingPurgeDataTypesItemDialogflowV3beta1 value: $value',
-    );
+    throw ArgumentError('Unknown SecuritySettingPurgeDataTypesItemDialogflowV3beta1 value: $value');
   }
 }
+

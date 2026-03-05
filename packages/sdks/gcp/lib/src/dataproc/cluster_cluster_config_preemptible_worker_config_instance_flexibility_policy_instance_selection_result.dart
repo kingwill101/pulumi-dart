@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
   /// Full machine-type names, e.g. "n1-standard-16".
   final pulumi.Input<String>? machineType;
-
   /// Number of VM provisioned with the machine_type.
   final pulumi.Input<int>? vmCount;
 
@@ -18,23 +17,17 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'machineType': ?machineType, 'vmCount': ?vmCount};
+    return <String, dynamic>{
+      'machineType': ?machineType,
+      'vmCount': ?vmCount,
+    };
   }
 
-  factory ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult(
-      machineType: (() {
-        final guardedValue = map['machineType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vmCount: (() {
-        final guardedValue = map['vmCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vmCount: (() { final guardedValue = map['vmCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

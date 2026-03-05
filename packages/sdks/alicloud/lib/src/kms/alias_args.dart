@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AliasArgs {
   /// The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
   final pulumi.Input<String> aliasName;
-
   /// The id of the key.
   ///
   /// &gt; **NOTE:** Each alias represents only one master key(CMK).
@@ -22,10 +21,16 @@ class AliasArgs {
   /// Creates a new [AliasArgs].
   /// [aliasName] The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
   /// [keyId] The id of the key.
-  AliasArgs({required this.aliasName, required this.keyId});
+  AliasArgs({
+    required this.aliasName,
+    required this.keyId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'aliasName': aliasName, 'keyId': keyId};
+    return <String, dynamic>{
+      'aliasName': aliasName,
+      'keyId': keyId,
+    };
   }
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
@@ -35,3 +40,4 @@ class AliasArgs {
     );
   }
 }
+

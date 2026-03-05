@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserSettingsWithLocationArgs {
   /// The provider location
   final pulumi.Input<String> location;
-
   /// The name of the user settings
   final pulumi.Input<String> userSettingsName;
 
@@ -31,9 +30,8 @@ class GetUserSettingsWithLocationArgs {
   factory GetUserSettingsWithLocationArgs.fromMap(Map<String, dynamic> map) {
     return GetUserSettingsWithLocationArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      userSettingsName: pulumi.Input.fromValue(
-        map['userSettingsName'] as String,
-      ),
+      userSettingsName: pulumi.Input.fromValue(map['userSettingsName'] as String),
     );
   }
 }
+

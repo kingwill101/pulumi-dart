@@ -11,8 +11,7 @@ enum SearchDataExfiltrationProtection {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SearchDataExfiltrationProtection value: $value',
-    );
+    throw ArgumentError('Unknown SearchDataExfiltrationProtection value: $value');
   }
 }
+

@@ -11,27 +11,29 @@ class GetNetworkArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> id;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetNetworkArgs].
   /// [id] Unique identifier of the odb network resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetNetworkArgs({required this.id, this.region});
+  GetNetworkArgs({
+    required this.id,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'region': ?region};
+    return <String, dynamic>{
+      'id': id,
+      'region': ?region,
+    };
   }
 
   factory GetNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkArgs(
       id: pulumi.Input.fromValue(map['id'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

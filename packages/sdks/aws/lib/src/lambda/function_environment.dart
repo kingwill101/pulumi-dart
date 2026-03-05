@@ -8,21 +8,20 @@ class FunctionEnvironment {
 
   /// Creates a new [FunctionEnvironment].
   /// [variables] Map of environment variables available to your Lambda function during execution.
-  FunctionEnvironment({this.variables});
+  FunctionEnvironment({
+    this.variables,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'variables': ?variables};
+    return <String, dynamic>{
+      'variables': ?variables,
+    };
   }
 
   factory FunctionEnvironment.fromMap(Map<String, dynamic> map) {
     return FunctionEnvironment(
-      variables: (() {
-        final guardedValue = map['variables'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      variables: (() { final guardedValue = map['variables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -10,24 +10,18 @@ class ProtectedVMState {
   ///
   /// &gt; **Note:** When `protection_state` is set to `BackupsSuspended` or `ProtectionStopped`, the Azure API may not return `backup_policy_id`. To avoid a perpetual diff, use Terraform's ignore_changes argument.
   final pulumi.Input<String>? backupPolicyId;
-
   /// A list of Disks' Logical Unit Numbers (LUN) to be excluded for VM Protection.
   final pulumi.Input<List<int>>? excludeDiskLuns;
-
   /// A list of Disks' Logical Unit Numbers (LUN) to be included for VM Protection.
   final pulumi.Input<List<int>>? includeDiskLuns;
-
   /// Specifies Protection state of the backup. Possible values are `Protected`, `BackupsSuspended`, and `ProtectionStopped`.
   ///
   /// &gt; **Note:** `protection_state` cannot be set to `BackupsSuspended` unless the `azure.recoveryservices.Vault` has `immutability` set to `Unlocked` or `Locked`.
   final pulumi.Input<String>? protectionState;
-
   /// Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   final pulumi.Input<String>? recoveryVaultName;
-
   /// Specifies the name of the Resource Group **associated with** the Recovery Services Vault to use. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// Specifies the ID of the virtual machine to back up. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** After creation, the `source_vm_id` property can be removed without forcing a new resource to be created; however, setting it to a different ID will create a new resource. This allows the source virtual machine to be deleted without having to remove the backup.
@@ -65,41 +59,14 @@ class ProtectedVMState {
 
   factory ProtectedVMState.fromMap(Map<String, dynamic> map) {
     return ProtectedVMState(
-      backupPolicyId: (() {
-        final guardedValue = map['backupPolicyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      excludeDiskLuns: (() {
-        final guardedValue = map['excludeDiskLuns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
-      includeDiskLuns: (() {
-        final guardedValue = map['includeDiskLuns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
-      protectionState: (() {
-        final guardedValue = map['protectionState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recoveryVaultName: (() {
-        final guardedValue = map['recoveryVaultName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceVmId: (() {
-        final guardedValue = map['sourceVmId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backupPolicyId: (() { final guardedValue = map['backupPolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      excludeDiskLuns: (() { final guardedValue = map['excludeDiskLuns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
+      includeDiskLuns: (() { final guardedValue = map['includeDiskLuns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
+      protectionState: (() { final guardedValue = map['protectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recoveryVaultName: (() { final guardedValue = map['recoveryVaultName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceVmId: (() { final guardedValue = map['sourceVmId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

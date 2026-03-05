@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMarketplaceGalleryImageArgs {
   /// Name of the marketplace gallery image
   final pulumi.Input<String> marketplaceGalleryImageName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetMarketplaceGalleryImageArgs {
 
   factory GetMarketplaceGalleryImageArgs.fromMap(Map<String, dynamic> map) {
     return GetMarketplaceGalleryImageArgs(
-      marketplaceGalleryImageName: pulumi.Input.fromValue(
-        map['marketplaceGalleryImageName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      marketplaceGalleryImageName: pulumi.Input.fromValue(map['marketplaceGalleryImageName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

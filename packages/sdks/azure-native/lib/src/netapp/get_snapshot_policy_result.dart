@@ -10,43 +10,30 @@ import 'weekly_schedule_response.dart';
 class GetSnapshotPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Schedule for daily snapshots
   final DailyScheduleResponse? dailySchedule;
-
   /// The property to decide policy is enabled or not
   final bool? enabled;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
-
   /// Schedule for hourly snapshots
   final HourlyScheduleResponse? hourlySchedule;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// Schedule for monthly snapshots
   final MonthlyScheduleResponse? monthlySchedule;
-
   /// The name of the resource
   final String name;
-
   /// Azure lifecycle management
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Schedule for weekly snapshots
   final WeeklyScheduleResponse? weeklySchedule;
 
@@ -104,53 +91,20 @@ class GetSnapshotPolicyResult {
   factory GetSnapshotPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dailySchedule: (() {
-        final guardedValue = map['dailySchedule'];
-        if (guardedValue == null) return null;
-        return DailyScheduleResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      dailySchedule: (() { final guardedValue = map['dailySchedule']; if (guardedValue == null) return null; return DailyScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       etag: map['etag'] as String,
-      hourlySchedule: (() {
-        final guardedValue = map['hourlySchedule'];
-        if (guardedValue == null) return null;
-        return HourlyScheduleResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      hourlySchedule: (() { final guardedValue = map['hourlySchedule']; if (guardedValue == null) return null; return HourlyScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       location: map['location'] as String,
-      monthlySchedule: (() {
-        final guardedValue = map['monthlySchedule'];
-        if (guardedValue == null) return null;
-        return MonthlyScheduleResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      monthlySchedule: (() { final guardedValue = map['monthlySchedule']; if (guardedValue == null) return null; return MonthlyScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      weeklySchedule: (() {
-        final guardedValue = map['weeklySchedule'];
-        if (guardedValue == null) return null;
-        return WeeklyScheduleResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      weeklySchedule: (() { final guardedValue = map['weeklySchedule']; if (guardedValue == null) return null; return WeeklyScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

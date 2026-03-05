@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CaaRecord {
   /// The flags for this CAA record as an integer between 0 and 255.
   final pulumi.Input<int>? flags;
-
   /// The tag for this CAA record.
   final pulumi.Input<String>? tag;
-
   /// The value for this CAA record.
   final pulumi.Input<String>? value;
 
@@ -17,29 +15,26 @@ class CaaRecord {
   /// [flags] The flags for this CAA record as an integer between 0 and 255.
   /// [tag] The tag for this CAA record.
   /// [value] The value for this CAA record.
-  CaaRecord({this.flags, this.tag, this.value});
+  CaaRecord({
+    this.flags,
+    this.tag,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'flags': ?flags, 'tag': ?tag, 'value': ?value};
+    return <String, dynamic>{
+      'flags': ?flags,
+      'tag': ?tag,
+      'value': ?value,
+    };
   }
 
   factory CaaRecord.fromMap(Map<String, dynamic> map) {
     return CaaRecord(
-      flags: (() {
-        final guardedValue = map['flags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      tag: (() {
-        final guardedValue = map['tag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      flags: (() { final guardedValue = map['flags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

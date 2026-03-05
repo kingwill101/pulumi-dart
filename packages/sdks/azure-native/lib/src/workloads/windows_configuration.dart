@@ -10,10 +10,14 @@ class WindowsConfiguration {
 
   /// Creates a new [WindowsConfiguration].
   /// [osType] The OS Type
-  WindowsConfiguration({required this.osType});
+  WindowsConfiguration({
+    required this.osType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'osType': osType};
+    return <String, dynamic>{
+      'osType': osType,
+    };
   }
 
   factory WindowsConfiguration.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class WindowsConfiguration {
     );
   }
 }
+

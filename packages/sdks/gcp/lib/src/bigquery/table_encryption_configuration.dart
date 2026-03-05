@@ -9,14 +9,16 @@ class TableEncryptionConfiguration {
   /// `gcp.bigquery.getDefaultServiceAccount` datasource and the
   /// `gcp.kms.CryptoKeyIAMBinding` resource.
   final pulumi.Input<String> kmsKeyName;
-
   /// The self link or full name of the kms key version used to encrypt this table.
   final pulumi.Input<String>? kmsKeyVersion;
 
   /// Creates a new [TableEncryptionConfiguration].
   /// [kmsKeyName] The self link or full name of a key which should be used to
   /// [kmsKeyVersion] The self link or full name of the kms key version used to encrypt this table.
-  TableEncryptionConfiguration({required this.kmsKeyName, this.kmsKeyVersion});
+  TableEncryptionConfiguration({
+    required this.kmsKeyName,
+    this.kmsKeyVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,11 +30,8 @@ class TableEncryptionConfiguration {
   factory TableEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return TableEncryptionConfiguration(
       kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
-      kmsKeyVersion: (() {
-        final guardedValue = map['kmsKeyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyVersion: (() { final guardedValue = map['kmsKeyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

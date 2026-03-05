@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateEndpointConnectionArgs {
   /// EnterprisePolicy for the Microsoft Azure subscription.
   final pulumi.Input<String> enterprisePolicyName;
-
   /// The name of the private endpoint connection.
   final pulumi.Input<String> privateEndpointConnectionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,15 +34,10 @@ class GetPrivateEndpointConnectionArgs {
 
   factory GetPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionArgs(
-      enterprisePolicyName: pulumi.Input.fromValue(
-        map['enterprisePolicyName'] as String,
-      ),
-      privateEndpointConnectionName: pulumi.Input.fromValue(
-        map['privateEndpointConnectionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      enterprisePolicyName: pulumi.Input.fromValue(map['enterprisePolicyName'] as String),
+      privateEndpointConnectionName: pulumi.Input.fromValue(map['privateEndpointConnectionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

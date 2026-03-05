@@ -11,7 +11,6 @@ class DeviceCapacity {
   ///
   /// If unset, capacity requests are unconstrained: requests can consume any amount of capacity, as long as the total consumed across all allocations does not exceed the device's defined capacity. If request is also unset, default is the full capacity value.
   final pulumi.Input<CapacityRequestPolicy>? requestPolicy;
-
   /// Value defines how much of a certain capacity that device has.
   ///
   /// This field reflects the fixed total capacity and does not change. The consumed amount is tracked separately by scheduler and does not affect this value.
@@ -20,31 +19,23 @@ class DeviceCapacity {
   /// Creates a new [DeviceCapacity].
   /// [requestPolicy] RequestPolicy defines how this DeviceCapacity must be consumed when the device is allowed to be shared by multiple allocations.
   /// [value] Value defines how much of a certain capacity that device has.
-  DeviceCapacity({this.requestPolicy, required this.value});
+  DeviceCapacity({
+    this.requestPolicy,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            CapacityRequestPolicy,
-            Map<String, dynamic>
-          >(requestPolicy, (value) => value.toMap()),
+      'requestPolicy': ?pulumi.Input.mapOptionalInputValue<CapacityRequestPolicy, Map<String, dynamic>>(requestPolicy, (value) => value.toMap()),
       'value': value,
     };
   }
 
   factory DeviceCapacity.fromMap(Map<String, dynamic> map) {
     return DeviceCapacity(
-      requestPolicy: (() {
-        final guardedValue = map['requestPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CapacityRequestPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      requestPolicy: (() { final guardedValue = map['requestPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CapacityRequestPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

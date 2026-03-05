@@ -15,3 +15,4 @@ enum DefaultAction {
     throw ArgumentError('Unknown DefaultAction value: $value');
   }
 }
+

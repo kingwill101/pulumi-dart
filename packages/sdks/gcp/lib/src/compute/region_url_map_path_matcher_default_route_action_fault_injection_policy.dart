@@ -7,17 +7,10 @@ import 'region_url_map_path_matcher_default_route_action_fault_injection_policy_
 class RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicy {
   /// The specification for how client requests are aborted as part of fault injection.
   /// Structure is documented below.
-  final pulumi.Input<
-    RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort
-  >?
-  abort;
-
+  final pulumi.Input<RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort>? abort;
   /// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
   /// Structure is documented below.
-  final pulumi.Input<
-    RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay
-  >?
-  delay;
+  final pulumi.Input<RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay>? delay;
 
   /// Creates a new [RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicy].
   /// [abort] The specification for how client requests are aborted as part of fault injection.
@@ -29,41 +22,16 @@ class RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'abort':
-          ?pulumi.Input.mapOptionalInputValue<
-            RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort,
-            Map<String, dynamic>
-          >(abort, (value) => value.toMap()),
-      'delay':
-          ?pulumi.Input.mapOptionalInputValue<
-            RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay,
-            Map<String, dynamic>
-          >(delay, (value) => value.toMap()),
+      'abort': ?pulumi.Input.mapOptionalInputValue<RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort, Map<String, dynamic>>(abort, (value) => value.toMap()),
+      'delay': ?pulumi.Input.mapOptionalInputValue<RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay, Map<String, dynamic>>(delay, (value) => value.toMap()),
     };
   }
 
-  factory RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicy.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicy(
-      abort: (() {
-        final guardedValue = map['abort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      delay: (() {
-        final guardedValue = map['delay'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      abort: (() { final guardedValue = map['abort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      delay: (() { final guardedValue = map['delay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

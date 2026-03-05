@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecommendedActionErrorInfoResponse {
   /// Gets the reason why the recommended action was put to error state. e.g., DatabaseHasQdsOff, IndexAlreadyExists
   final pulumi.Input<String> errorCode;
-
   /// Gets whether the error could be ignored and recommended action could be retried. Possible values are: Yes/No
   final pulumi.Input<String> isRetryable;
 
@@ -32,3 +31,4 @@ class RecommendedActionErrorInfoResponse {
     );
   }
 }
+

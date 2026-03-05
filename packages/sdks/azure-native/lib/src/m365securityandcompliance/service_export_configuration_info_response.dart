@@ -9,21 +9,20 @@ class ServiceExportConfigurationInfoResponse {
 
   /// Creates a new [ServiceExportConfigurationInfoResponse].
   /// [storageAccountName] The name of the default export storage account.
-  ServiceExportConfigurationInfoResponse({this.storageAccountName});
+  ServiceExportConfigurationInfoResponse({
+    this.storageAccountName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'storageAccountName': ?storageAccountName};
+    return <String, dynamic>{
+      'storageAccountName': ?storageAccountName,
+    };
   }
 
-  factory ServiceExportConfigurationInfoResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceExportConfigurationInfoResponse.fromMap(Map<String, dynamic> map) {
     return ServiceExportConfigurationInfoResponse(
-      storageAccountName: (() {
-        final guardedValue = map['storageAccountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

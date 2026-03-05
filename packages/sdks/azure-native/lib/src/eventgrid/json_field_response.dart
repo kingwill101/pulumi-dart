@@ -9,19 +9,20 @@ class JsonFieldResponse {
 
   /// Creates a new [JsonFieldResponse].
   /// [sourceField] Name of a field in the input event schema that's to be used as the source of a mapping.
-  JsonFieldResponse({this.sourceField});
+  JsonFieldResponse({
+    this.sourceField,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sourceField': ?sourceField};
+    return <String, dynamic>{
+      'sourceField': ?sourceField,
+    };
   }
 
   factory JsonFieldResponse.fromMap(Map<String, dynamic> map) {
     return JsonFieldResponse(
-      sourceField: (() {
-        final guardedValue = map['sourceField'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sourceField: (() { final guardedValue = map['sourceField']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

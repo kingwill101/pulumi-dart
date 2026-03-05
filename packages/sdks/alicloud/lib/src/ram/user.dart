@@ -183,19 +183,14 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
   late final pulumi.Output<String?> comments;
-
   /// Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
   late final pulumi.Output<String?> displayName;
-
   /// Email of the RAM user.
   late final pulumi.Output<String?> email;
-
   /// This parameter is used for resource destroy. Default value: `false`.
   late final pulumi.Output<bool?> force;
-
   /// Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
   late final pulumi.Output<String?> mobile;
-
   /// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
   late final pulumi.Output<String> name;
 
@@ -203,13 +198,16 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_ram_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:ram/user:User',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  User(
+    String name, {
+    UserArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:ram/user:User',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     comments = registerOutput<String?>('comments');
     displayName = registerOutput<String?>('displayName');
     email = registerOutput<String?>('email');
@@ -219,7 +217,11 @@ class User extends pulumi.CustomResource {
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
+  static User get(
+    String name,
+    pulumi.Input<String> id, {
+    UserState? state,
+  }) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -232,11 +234,11 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ram/user:User',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ram/user:User',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     comments = registerOutput<String?>('comments');
     displayName = registerOutput<String?>('displayName');
     email = registerOutput<String?>('email');

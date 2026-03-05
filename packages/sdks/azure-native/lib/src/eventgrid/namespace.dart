@@ -188,56 +188,39 @@ import 'topics_configuration_response.dart';
 class Namespace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Identity information for the Namespace resource.
   late final pulumi.Output<IdentityInfoResponse?> identity;
-
   /// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
   late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
-
   /// This is an optional property and it allows the user to specify if the namespace resource supports zone-redundancy capability or not. If this
   /// property is not specified explicitly by the user, its default value depends on the following conditions:
   /// a. For Availability Zones enabled regions - The default property value would be true.
   /// b. For non-Availability Zones enabled regions - The default property value would be false.
   /// Once specified, this property cannot be updated.
   late final pulumi.Output<bool?> isZoneRedundant;
-
   /// Location of the resource.
   late final pulumi.Output<String> location;
-
   /// Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported.
   late final pulumi.Output<String?> minimumTlsVersionAllowed;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// List of private endpoint connections.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> privateEndpointConnections;
   /// Provisioning state of the namespace resource.
   late final pulumi.Output<String> provisioningState;
-
   /// This determines if traffic is allowed over public network. By default it is enabled.
   /// You can further restrict to specific IPs by configuring &lt;seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceProperties.InboundIpRules" /&gt;
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// Represents available Sku pricing tiers.
   late final pulumi.Output<NamespaceSkuResponse?> sku;
-
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Topic spaces configuration information for the namespace resource
-  late final pulumi.Output<TopicSpacesConfigurationResponse?>
-  topicSpacesConfiguration;
-
+  late final pulumi.Output<TopicSpacesConfigurationResponse?> topicSpacesConfiguration;
   /// Topics configuration information for the namespace resource
   late final pulumi.Output<TopicsConfigurationResponse?> topicsConfiguration;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -250,78 +233,26 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventgrid:Namespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventgrid:Namespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    identity = registerOutput<IdentityInfoResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
-      'inboundIpRules',
-    );
+    identity = registerOutput<IdentityInfoResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
     isZoneRedundant = registerOutput<bool?>('isZoneRedundant');
     location = registerOutput<String>('location');
-    minimumTlsVersionAllowed = registerOutput<String?>(
-      'minimumTlsVersionAllowed',
-    );
+    minimumTlsVersionAllowed = registerOutput<String?>('minimumTlsVersionAllowed');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    sku = registerOutput<NamespaceSkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NamespaceSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<NamespaceSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    topicSpacesConfiguration =
-        registerOutput<TopicSpacesConfigurationResponse?>(
-          'topicSpacesConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return TopicSpacesConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    topicsConfiguration = registerOutput<TopicsConfigurationResponse?>(
-      'topicsConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TopicsConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    topicSpacesConfiguration = registerOutput<TopicSpacesConfigurationResponse?>('topicSpacesConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicSpacesConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    topicsConfiguration = registerOutput<TopicsConfigurationResponse?>('topicsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicsConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -8,16 +8,12 @@ import 'prediction_distribution_definition_response.dart';
 class GetPredictionTrainingResultsResult {
   /// Canonical profiles.
   final List<CanonicalProfileDefinitionResponse> canonicalProfiles;
-
   /// Prediction distribution.
   final PredictionDistributionDefinitionResponse predictionDistribution;
-
   /// Instance count of the primary profile.
   final double primaryProfileInstanceCount;
-
   /// Score name.
   final String scoreName;
-
   /// The hub name.
   final String tenantId;
 
@@ -37,11 +33,7 @@ class GetPredictionTrainingResultsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'canonicalProfiles':
-          pulumi.Input.encodeList<
-            CanonicalProfileDefinitionResponse,
-            Map<String, dynamic>
-          >(canonicalProfiles, (value) => value.toMap()),
+      'canonicalProfiles': pulumi.Input.encodeList<CanonicalProfileDefinitionResponse, Map<String, dynamic>>(canonicalProfiles, (value) => value.toMap()),
       'predictionDistribution': predictionDistribution.toMap(),
       'primaryProfileInstanceCount': primaryProfileInstanceCount,
       'scoreName': scoreName,
@@ -51,19 +43,12 @@ class GetPredictionTrainingResultsResult {
 
   factory GetPredictionTrainingResultsResult.fromMap(Map<String, dynamic> map) {
     return GetPredictionTrainingResultsResult(
-      canonicalProfiles:
-          pulumi.Input.decodeList<CanonicalProfileDefinitionResponse>(
-            map['canonicalProfiles']!,
-            (value) => CanonicalProfileDefinitionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      predictionDistribution: PredictionDistributionDefinitionResponse.fromMap(
-        (map['predictionDistribution']! as Map).cast<String, dynamic>(),
-      ),
+      canonicalProfiles: pulumi.Input.decodeList<CanonicalProfileDefinitionResponse>(map['canonicalProfiles']!, (value) => CanonicalProfileDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      predictionDistribution: PredictionDistributionDefinitionResponse.fromMap((map['predictionDistribution']! as Map).cast<String, dynamic>()),
       primaryProfileInstanceCount: map['primaryProfileInstanceCount'] as double,
       scoreName: map['scoreName'] as String,
       tenantId: map['tenantId'] as String,
     );
   }
 }
+

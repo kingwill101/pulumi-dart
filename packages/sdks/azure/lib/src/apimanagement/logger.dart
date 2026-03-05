@@ -287,25 +287,18 @@ import 'logger_state.dart';
 class Logger extends pulumi.CustomResource {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// An `application_insights` block as documented below. Changing this forces a new resource to be created.
   late final pulumi.Output<LoggerApplicationInsights?> applicationInsights;
-
   /// Specifies whether records should be buffered in the Logger prior to publishing. Defaults to `true`.
   late final pulumi.Output<bool?> buffered;
-
   /// A description of this Logger.
   late final pulumi.Output<String?> description;
-
   /// An `eventhub` block as documented below. Changing this forces a new resource to be created.
   late final pulumi.Output<LoggerEventhub?> eventhub;
-
   /// The name of this Logger, which must be unique within the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The target resource id which will be linked in the API-Management portal page. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> resourceId;
 
@@ -313,36 +306,21 @@ class Logger extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Logger]. {@macro pulumi_apimanagement_logger_logger_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Logger(String name, {LoggerArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:apimanagement/logger:Logger',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Logger(
+    String name, {
+    LoggerArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:apimanagement/logger:Logger',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
-    applicationInsights = registerOutput<LoggerApplicationInsights?>(
-      'applicationInsights',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoggerApplicationInsights.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    applicationInsights = registerOutput<LoggerApplicationInsights?>('applicationInsights', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggerApplicationInsights.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     buffered = registerOutput<bool?>('buffered');
     description = registerOutput<String?>('description');
-    eventhub = registerOutput<LoggerEventhub?>(
-      'eventhub',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoggerEventhub.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eventhub = registerOutput<LoggerEventhub?>('eventhub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggerEventhub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceId = registerOutput<String?>('resourceId');
@@ -366,34 +344,16 @@ class Logger extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/logger:Logger',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/logger:Logger',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
-    applicationInsights = registerOutput<LoggerApplicationInsights?>(
-      'applicationInsights',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoggerApplicationInsights.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    applicationInsights = registerOutput<LoggerApplicationInsights?>('applicationInsights', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggerApplicationInsights.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     buffered = registerOutput<bool?>('buffered');
     description = registerOutput<String?>('description');
-    eventhub = registerOutput<LoggerEventhub?>(
-      'eventhub',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoggerEventhub.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eventhub = registerOutput<LoggerEventhub?>('eventhub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggerEventhub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceId = registerOutput<String?>('resourceId');

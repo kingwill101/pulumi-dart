@@ -224,44 +224,32 @@ import 'disk_replica_group_state.dart';
 class DiskReplicaGroup extends pulumi.CustomResource {
   /// The description of the consistent replication group.
   late final pulumi.Output<String?> description;
-
   /// The ID of the region to which the disaster recovery site belongs.
   late final pulumi.Output<String> destinationRegionId;
-
   /// The ID of the zone to which the disaster recovery site belongs.
   late final pulumi.Output<String> destinationZoneId;
-
   /// Consistent replication group name.
   late final pulumi.Output<String> diskReplicaGroupName;
-
   /// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
   late final pulumi.Output<String> groupName;
-
   /// Whether to synchronize immediately. Value range:
   /// - true: Start data synchronization immediately.
   /// - false: Data Synchronization starts after the RPO time period.
   ///
   /// Default value: false.
   late final pulumi.Output<bool?> oneShot;
-
   /// List of replication pair IDs contained in a consistent replication group.
   late final pulumi.Output<List<String>?> pairIds;
-
   /// resource group ID of enterprise
   late final pulumi.Output<String> resourceGroupId;
-
   /// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
   late final pulumi.Output<bool?> reverseReplicate;
-
   /// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
   late final pulumi.Output<int?> rpo;
-
   /// The ID of the region to which the production site belongs.
   late final pulumi.Output<String> sourceRegionId;
-
   /// The ID of the zone to which the production site belongs.
   late final pulumi.Output<String> sourceZoneId;
-
   /// The status of the consistent replication group. Possible values:
   /// - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
   /// - creating: creating.
@@ -282,7 +270,6 @@ class DiskReplicaGroup extends pulumi.CustomResource {
   /// - delete_failed: delete failed.
   /// - deleted: deleted.
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -297,11 +284,11 @@ class DiskReplicaGroup extends pulumi.CustomResource {
     DiskReplicaGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ebs/diskReplicaGroup:DiskReplicaGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ebs/diskReplicaGroup:DiskReplicaGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     destinationRegionId = registerOutput<String>('destinationRegionId');
     destinationZoneId = registerOutput<String>('destinationZoneId');
@@ -336,11 +323,11 @@ class DiskReplicaGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ebs/diskReplicaGroup:DiskReplicaGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ebs/diskReplicaGroup:DiskReplicaGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     destinationRegionId = registerOutput<String>('destinationRegionId');
     destinationZoneId = registerOutput<String>('destinationZoneId');

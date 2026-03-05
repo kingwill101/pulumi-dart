@@ -6,18 +6,13 @@ import 'web_test_properties_response_content_validation.dart';
 /// The collection of validation rule properties
 class WebTestPropertiesResponseValidationRules {
   /// The collection of content validation properties
-  final pulumi.Input<WebTestPropertiesResponseContentValidation>?
-  contentValidation;
-
+  final pulumi.Input<WebTestPropertiesResponseContentValidation>? contentValidation;
   /// Validate that the WebTest returns the http status code provided.
   final pulumi.Input<int>? expectedHttpStatusCode;
-
   /// When set, validation will ignore the status code.
   final pulumi.Input<bool>? ignoreHttpStatusCode;
-
   /// A number of days to check still remain before the the existing SSL cert expires.  Value must be positive and the SSLCheck must be set to true.
   final pulumi.Input<int>? sSLCertRemainingLifetimeCheck;
-
   /// Checks to see if the SSL cert is still valid.
   final pulumi.Input<bool>? sSLCheck;
 
@@ -37,11 +32,7 @@ class WebTestPropertiesResponseValidationRules {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'contentValidation':
-          ?pulumi.Input.mapOptionalInputValue<
-            WebTestPropertiesResponseContentValidation,
-            Map<String, dynamic>
-          >(contentValidation, (value) => value.toMap()),
+      'contentValidation': ?pulumi.Input.mapOptionalInputValue<WebTestPropertiesResponseContentValidation, Map<String, dynamic>>(contentValidation, (value) => value.toMap()),
       'expectedHttpStatusCode': ?expectedHttpStatusCode,
       'ignoreHttpStatusCode': ?ignoreHttpStatusCode,
       'sSLCertRemainingLifetimeCheck': ?sSLCertRemainingLifetimeCheck,
@@ -49,39 +40,14 @@ class WebTestPropertiesResponseValidationRules {
     };
   }
 
-  factory WebTestPropertiesResponseValidationRules.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebTestPropertiesResponseValidationRules.fromMap(Map<String, dynamic> map) {
     return WebTestPropertiesResponseValidationRules(
-      contentValidation: (() {
-        final guardedValue = map['contentValidation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WebTestPropertiesResponseContentValidation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      expectedHttpStatusCode: (() {
-        final guardedValue = map['expectedHttpStatusCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ignoreHttpStatusCode: (() {
-        final guardedValue = map['ignoreHttpStatusCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sSLCertRemainingLifetimeCheck: (() {
-        final guardedValue = map['sSLCertRemainingLifetimeCheck'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      sSLCheck: (() {
-        final guardedValue = map['sSLCheck'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      contentValidation: (() { final guardedValue = map['contentValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebTestPropertiesResponseContentValidation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      expectedHttpStatusCode: (() { final guardedValue = map['expectedHttpStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ignoreHttpStatusCode: (() { final guardedValue = map['ignoreHttpStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sSLCertRemainingLifetimeCheck: (() { final guardedValue = map['sSLCertRemainingLifetimeCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sSLCheck: (() { final guardedValue = map['sSLCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

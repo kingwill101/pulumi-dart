@@ -9,21 +9,20 @@ class VMMServerPropertiesResponseCredentials {
 
   /// Creates a new [VMMServerPropertiesResponseCredentials].
   /// [username] Username to use to connect to VMMServer.
-  VMMServerPropertiesResponseCredentials({this.username});
+  VMMServerPropertiesResponseCredentials({
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'username': ?username};
+    return <String, dynamic>{
+      'username': ?username,
+    };
   }
 
-  factory VMMServerPropertiesResponseCredentials.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VMMServerPropertiesResponseCredentials.fromMap(Map<String, dynamic> map) {
     return VMMServerPropertiesResponseCredentials(
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

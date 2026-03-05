@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCacheArgs {
   /// Identifier of the Cache entity. Cache identifier (should be either 'default' or valid Azure region identifier).
   final pulumi.Input<String> cacheId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -37,10 +35,9 @@ class GetCacheArgs {
   factory GetCacheArgs.fromMap(Map<String, dynamic> map) {
     return GetCacheArgs(
       cacheId: pulumi.Input.fromValue(map['cacheId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

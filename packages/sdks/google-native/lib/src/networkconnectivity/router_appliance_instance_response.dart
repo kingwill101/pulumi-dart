@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouterApplianceInstanceResponse {
   /// The IP address on the VM to use for peering.
   final pulumi.Input<String> ipAddress;
-
   /// The URI of the VM.
   final pulumi.Input<String> virtualMachine;
 
@@ -32,3 +31,4 @@ class RouterApplianceInstanceResponse {
     );
   }
 }
+

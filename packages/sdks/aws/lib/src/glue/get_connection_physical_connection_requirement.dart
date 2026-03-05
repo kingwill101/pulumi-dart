@@ -25,17 +25,12 @@ class GetConnectionPhysicalConnectionRequirement {
     };
   }
 
-  factory GetConnectionPhysicalConnectionRequirement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetConnectionPhysicalConnectionRequirement.fromMap(Map<String, dynamic> map) {
     return GetConnectionPhysicalConnectionRequirement(
-      availabilityZone: pulumi.Input.fromValue(
-        map['availabilityZone'] as String,
-      ),
-      securityGroupIdLists: pulumi.Input.fromValue(
-        (map['securityGroupIdLists'] as List).cast<String>(),
-      ),
+      availabilityZone: pulumi.Input.fromValue(map['availabilityZone'] as String),
+      securityGroupIdLists: pulumi.Input.fromValue((map['securityGroupIdLists'] as List).cast<String>()),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
+

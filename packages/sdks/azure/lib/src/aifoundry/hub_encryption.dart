@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HubEncryption {
   /// The Key Vault URI to access the encryption key.
   final pulumi.Input<String> keyId;
-
   /// The Key Vault ID where the customer owned encryption key exists.
   final pulumi.Input<String> keyVaultId;
-
   /// The user assigned identity ID that has access to the encryption key.
   ///
   /// &gt; **Note:** `user_assigned_identity_id` must be set when`identity.type` is `UserAssigned` in order for the service to find the assigned permissions.
@@ -36,11 +34,8 @@ class HubEncryption {
     return HubEncryption(
       keyId: pulumi.Input.fromValue(map['keyId'] as String),
       keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
-      userAssignedIdentityId: (() {
-        final guardedValue = map['userAssignedIdentityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userAssignedIdentityId: (() { final guardedValue = map['userAssignedIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

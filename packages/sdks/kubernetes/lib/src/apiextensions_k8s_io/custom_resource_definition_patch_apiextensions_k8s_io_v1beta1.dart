@@ -9,22 +9,13 @@ import 'custom_resource_definition_status_patch_apiextensions_k8s_io_v1beta1.dar
 class CustomResourceDefinitionPatchApiextensionsK8sIoV1beta1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
   final pulumi.Input<ObjectMetaPatch>? metadata;
-
   /// spec describes how the user wants the resources to appear
-  final pulumi.Input<
-    CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1
-  >?
-  spec;
-
+  final pulumi.Input<CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1>? spec;
   /// status indicates the actual state of the CustomResourceDefinition
-  final pulumi.Input<
-    CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1
-  >?
-  status;
+  final pulumi.Input<CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1>? status;
 
   /// Creates a new [CustomResourceDefinitionPatchApiextensionsK8sIoV1beta1].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -44,65 +35,20 @@ class CustomResourceDefinitionPatchApiextensionsK8sIoV1beta1 {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata':
-          ?pulumi.Input.mapOptionalInputValue<
-            ObjectMetaPatch,
-            Map<String, dynamic>
-          >(metadata, (value) => value.toMap()),
-      'spec':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1,
-            Map<String, dynamic>
-          >(spec, (value) => value.toMap()),
-      'status':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1,
-            Map<String, dynamic>
-          >(status, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
-  factory CustomResourceDefinitionPatchApiextensionsK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomResourceDefinitionPatchApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionPatchApiextensionsK8sIoV1beta1(
-      apiVersion: (() {
-        final guardedValue = map['apiVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ObjectMetaPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      spec: (() {
-        final guardedValue = map['spec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

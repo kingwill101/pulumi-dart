@@ -16,3 +16,4 @@ enum X12DateFormat {
     throw ArgumentError('Unknown X12DateFormat value: $value');
   }
 }
+

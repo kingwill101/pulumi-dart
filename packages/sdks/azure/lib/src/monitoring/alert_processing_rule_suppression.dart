@@ -386,25 +386,18 @@ import 'alert_processing_rule_suppression_state.dart';
 class AlertProcessingRuleSuppression extends pulumi.CustomResource {
   /// A `condition` block as defined below.
   late final pulumi.Output<AlertProcessingRuleSuppressionCondition?> condition;
-
   /// Specifies a description for the Alert Processing Rule.
   late final pulumi.Output<String?> description;
-
   /// Should the Alert Processing Rule be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// The name which should be used for this Alert Processing Rule. Changing this forces a new Alert Processing Rule to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Alert Processing Rule should exist. Changing this forces a new Alert Processing Rule to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `schedule` block as defined below.
   late final pulumi.Output<AlertProcessingRuleSuppressionSchedule?> schedule;
-
   /// A list of resource IDs which will be the target of Alert Processing Rule.
   late final pulumi.Output<List<String>> scopes;
-
   /// A mapping of tags which should be assigned to the Alert Processing Rule.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -417,35 +410,17 @@ class AlertProcessingRuleSuppression extends pulumi.CustomResource {
     AlertProcessingRuleSuppressionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/alertProcessingRuleSuppression:AlertProcessingRuleSuppression',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    condition = registerOutput<AlertProcessingRuleSuppressionCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertProcessingRuleSuppressionCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:monitoring/alertProcessingRuleSuppression:AlertProcessingRuleSuppression',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    condition = registerOutput<AlertProcessingRuleSuppressionCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertProcessingRuleSuppressionCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    schedule = registerOutput<AlertProcessingRuleSuppressionSchedule?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertProcessingRuleSuppressionSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<AlertProcessingRuleSuppressionSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertProcessingRuleSuppressionSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scopes = registerOutput<List<String>>('scopes');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -468,35 +443,17 @@ class AlertProcessingRuleSuppression extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/alertProcessingRuleSuppression:AlertProcessingRuleSuppression',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    condition = registerOutput<AlertProcessingRuleSuppressionCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertProcessingRuleSuppressionCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:monitoring/alertProcessingRuleSuppression:AlertProcessingRuleSuppression',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    condition = registerOutput<AlertProcessingRuleSuppressionCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertProcessingRuleSuppressionCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    schedule = registerOutput<AlertProcessingRuleSuppressionSchedule?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertProcessingRuleSuppressionSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<AlertProcessingRuleSuppressionSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertProcessingRuleSuppressionSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scopes = registerOutput<List<String>>('scopes');
     tags = registerOutput<Map<String, String>?>('tags');
   }

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TlsCertificatePathsResponse {
   /// The path to the file holding the client or server TLS certificate to use.
   final pulumi.Input<String> certificatePath;
-
   /// The path to the file holding the client or server private key.
   final pulumi.Input<String> privateKeyPath;
 
@@ -32,3 +31,4 @@ class TlsCertificatePathsResponse {
     );
   }
 }
+

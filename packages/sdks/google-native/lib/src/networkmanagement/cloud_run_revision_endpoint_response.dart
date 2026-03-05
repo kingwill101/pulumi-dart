@@ -9,10 +9,14 @@ class CloudRunRevisionEndpointResponse {
 
   /// Creates a new [CloudRunRevisionEndpointResponse].
   /// [uri] A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
-  CloudRunRevisionEndpointResponse({required this.uri});
+  CloudRunRevisionEndpointResponse({
+    required this.uri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': uri};
+    return <String, dynamic>{
+      'uri': uri,
+    };
   }
 
   factory CloudRunRevisionEndpointResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class CloudRunRevisionEndpointResponse {
     );
   }
 }
+

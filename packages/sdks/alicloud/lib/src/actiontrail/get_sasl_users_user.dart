@@ -4,13 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSaslUsersUser {
   final pulumi.Input<String> id;
-
   /// The password of the user.
   final pulumi.Input<String> password;
-
   /// (Available since v1.260.0) The type of the user.
   final pulumi.Input<String> type;
-
   /// The username of the user.
   final pulumi.Input<String> username;
 
@@ -44,3 +41,4 @@ class GetSaslUsersUser {
     );
   }
 }
+

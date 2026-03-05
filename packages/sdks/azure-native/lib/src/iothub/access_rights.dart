@@ -10,21 +10,11 @@ enum AccessRights {
   valueRegistryWriteServiceConnect("RegistryWrite, ServiceConnect"),
   valueRegistryWriteDeviceConnect("RegistryWrite, DeviceConnect"),
   valueServiceConnectDeviceConnect("ServiceConnect, DeviceConnect"),
-  valueRegistryReadRegistryWriteServiceConnect(
-    "RegistryRead, RegistryWrite, ServiceConnect",
-  ),
-  valueRegistryReadRegistryWriteDeviceConnect(
-    "RegistryRead, RegistryWrite, DeviceConnect",
-  ),
-  valueRegistryReadServiceConnectDeviceConnect(
-    "RegistryRead, ServiceConnect, DeviceConnect",
-  ),
-  valueRegistryWriteServiceConnectDeviceConnect(
-    "RegistryWrite, ServiceConnect, DeviceConnect",
-  ),
-  valueRegistryReadRegistryWriteServiceConnectDeviceConnect(
-    "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect",
-  );
+  valueRegistryReadRegistryWriteServiceConnect("RegistryRead, RegistryWrite, ServiceConnect"),
+  valueRegistryReadRegistryWriteDeviceConnect("RegistryRead, RegistryWrite, DeviceConnect"),
+  valueRegistryReadServiceConnectDeviceConnect("RegistryRead, ServiceConnect, DeviceConnect"),
+  valueRegistryWriteServiceConnectDeviceConnect("RegistryWrite, ServiceConnect, DeviceConnect"),
+  valueRegistryReadRegistryWriteServiceConnectDeviceConnect("RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect");
 
   const AccessRights(this.wireValue);
   final String wireValue;
@@ -38,3 +28,4 @@ enum AccessRights {
     throw ArgumentError('Unknown AccessRights value: $value');
   }
 }
+

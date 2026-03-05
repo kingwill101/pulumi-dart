@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterAvailableVersionResponse {
   /// The last date the version of the platform is supported.
   final pulumi.Input<String> supportExpiryDate;
-
   /// The version of the cluster to be deployed.
   final pulumi.Input<String> targetClusterVersion;
 
@@ -26,12 +25,9 @@ class ClusterAvailableVersionResponse {
 
   factory ClusterAvailableVersionResponse.fromMap(Map<String, dynamic> map) {
     return ClusterAvailableVersionResponse(
-      supportExpiryDate: pulumi.Input.fromValue(
-        map['supportExpiryDate'] as String,
-      ),
-      targetClusterVersion: pulumi.Input.fromValue(
-        map['targetClusterVersion'] as String,
-      ),
+      supportExpiryDate: pulumi.Input.fromValue(map['supportExpiryDate'] as String),
+      targetClusterVersion: pulumi.Input.fromValue(map['targetClusterVersion'] as String),
     );
   }
 }
+

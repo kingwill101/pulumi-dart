@@ -35,9 +35,8 @@ class GetPoolCertificate {
       id: pulumi.Input.fromValue(map['id'] as String),
       storeLocation: pulumi.Input.fromValue(map['storeLocation'] as String),
       storeName: pulumi.Input.fromValue(map['storeName'] as String),
-      visibilities: pulumi.Input.fromValue(
-        (map['visibilities'] as List).cast<String>(),
-      ),
+      visibilities: pulumi.Input.fromValue((map['visibilities'] as List).cast<String>()),
     );
   }
 }
+

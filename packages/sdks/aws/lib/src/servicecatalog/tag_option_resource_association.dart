@@ -114,22 +114,16 @@ import 'tag_option_resource_association_state.dart';
 class TagOptionResourceAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the resource.
   late final pulumi.Output<String> resourceArn;
-
   /// Creation time of the resource.
   late final pulumi.Output<String> resourceCreatedTime;
-
   /// Description of the resource.
   late final pulumi.Output<String> resourceDescription;
-
   /// Resource identifier.
   late final pulumi.Output<String> resourceId;
-
   /// Description of the resource.
   late final pulumi.Output<String> resourceName;
-
   /// Tag Option identifier.
   late final pulumi.Output<String> tagOptionId;
 
@@ -142,11 +136,11 @@ class TagOptionResourceAssociation extends pulumi.CustomResource {
     TagOptionResourceAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicecatalog/tagOptionResourceAssociation:TagOptionResourceAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicecatalog/tagOptionResourceAssociation:TagOptionResourceAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
     resourceCreatedTime = registerOutput<String>('resourceCreatedTime');
@@ -174,11 +168,11 @@ class TagOptionResourceAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicecatalog/tagOptionResourceAssociation:TagOptionResourceAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicecatalog/tagOptionResourceAssociation:TagOptionResourceAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
     resourceCreatedTime = registerOutput<String>('resourceCreatedTime');

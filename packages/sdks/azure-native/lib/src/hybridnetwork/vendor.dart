@@ -118,19 +118,14 @@ import 'vendor_args.dart';
 class Vendor extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the vendor resource.
   late final pulumi.Output<String> provisioningState;
-
   /// A list of IDs of the vendor skus offered by the vendor.
   late final pulumi.Output<List<Map<String, dynamic>>> skus;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -138,27 +133,21 @@ class Vendor extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Vendor]. {@macro pulumi_hybridnetwork_vendor_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Vendor(String name, {VendorArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:hybridnetwork:Vendor',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Vendor(
+    String name, {
+    VendorArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:hybridnetwork:Vendor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     skus = registerOutput<List<Map<String, dynamic>>>('skus');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

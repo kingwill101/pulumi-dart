@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNodeGroupAutoScalingPolicyConstraints {
   /// The maximum capacity of constraints for emr node group auto scaling policy.
   final pulumi.Input<int>? maxCapacity;
-
   /// The minimum capacity of constraints for emr node group auto scaling policy.
   final pulumi.Input<int>? minCapacity;
 
@@ -24,20 +23,11 @@ class ClusterNodeGroupAutoScalingPolicyConstraints {
     };
   }
 
-  factory ClusterNodeGroupAutoScalingPolicyConstraints.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterNodeGroupAutoScalingPolicyConstraints.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAutoScalingPolicyConstraints(
-      maxCapacity: (() {
-        final guardedValue = map['maxCapacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minCapacity: (() {
-        final guardedValue = map['minCapacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxCapacity: (() { final guardedValue = map['maxCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minCapacity: (() { final guardedValue = map['minCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

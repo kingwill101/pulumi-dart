@@ -13,14 +13,15 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': values};
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
-  factory GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse(
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

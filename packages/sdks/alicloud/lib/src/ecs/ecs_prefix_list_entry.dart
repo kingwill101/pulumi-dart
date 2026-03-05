@@ -11,31 +11,29 @@ class EcsPrefixListEntry {
   /// * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
   /// * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
   final pulumi.Input<String>? cidr;
-
   /// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
   final pulumi.Input<String>? description;
 
   /// Creates a new [EcsPrefixListEntry].
   /// [cidr] The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
   /// [description] The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
-  EcsPrefixListEntry({this.cidr, this.description});
+  EcsPrefixListEntry({
+    this.cidr,
+    this.description,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cidr': ?cidr, 'description': ?description};
+    return <String, dynamic>{
+      'cidr': ?cidr,
+      'description': ?description,
+    };
   }
 
   factory EcsPrefixListEntry.fromMap(Map<String, dynamic> map) {
     return EcsPrefixListEntry(
-      cidr: (() {
-        final guardedValue = map['cidr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cidr: (() { final guardedValue = map['cidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

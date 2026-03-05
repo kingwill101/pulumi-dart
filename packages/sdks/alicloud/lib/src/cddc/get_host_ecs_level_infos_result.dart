@@ -6,7 +6,6 @@ import 'get_host_ecs_level_infos_info.dart';
 /// Result data returned by getHostEcsLevelInfos.
 class GetHostEcsLevelInfosResult {
   final String dbType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? imageCategory;
@@ -38,11 +37,7 @@ class GetHostEcsLevelInfosResult {
       'dbType': dbType,
       'id': id,
       'imageCategory': ?imageCategory,
-      'infos':
-          pulumi.Input.encodeList<
-            GetHostEcsLevelInfosInfo,
-            Map<String, dynamic>
-          >(infos, (value) => value.toMap()),
+      'infos': pulumi.Input.encodeList<GetHostEcsLevelInfosInfo, Map<String, dynamic>>(infos, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'storageType': storageType,
       'zoneId': zoneId,
@@ -53,24 +48,12 @@ class GetHostEcsLevelInfosResult {
     return GetHostEcsLevelInfosResult(
       dbType: map['dbType'] as String,
       id: map['id'] as String,
-      imageCategory: (() {
-        final guardedValue = map['imageCategory'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      infos: pulumi.Input.decodeList<GetHostEcsLevelInfosInfo>(
-        map['infos']!,
-        (value) => GetHostEcsLevelInfosInfo.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      imageCategory: (() { final guardedValue = map['imageCategory']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      infos: pulumi.Input.decodeList<GetHostEcsLevelInfosInfo>(map['infos']!, (value) => GetHostEcsLevelInfosInfo.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageType: map['storageType'] as String,
       zoneId: map['zoneId'] as String,
     );
   }
 }
+

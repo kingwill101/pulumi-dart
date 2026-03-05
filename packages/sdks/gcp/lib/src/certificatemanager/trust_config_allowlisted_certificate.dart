@@ -8,10 +8,14 @@ class TrustConfigAllowlistedCertificate {
 
   /// Creates a new [TrustConfigAllowlistedCertificate].
   /// [pemCertificate] PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
-  TrustConfigAllowlistedCertificate({required this.pemCertificate});
+  TrustConfigAllowlistedCertificate({
+    required this.pemCertificate,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pemCertificate': pemCertificate};
+    return <String, dynamic>{
+      'pemCertificate': pemCertificate,
+    };
   }
 
   factory TrustConfigAllowlistedCertificate.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class TrustConfigAllowlistedCertificate {
     );
   }
 }
+

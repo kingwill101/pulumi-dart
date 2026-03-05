@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NatGatewayArgs {
   /// The ID of the ENS node.
   final pulumi.Input<String> ensRegionId;
-
   /// NAT specifications. Value: `enat.default`.
   final pulumi.Input<String>? instanceType;
-
   /// The name of the NAT gateway. The length is 1 to 128 characters, but it cannot start with 'http:// 'or 'https.
   final pulumi.Input<String>? natName;
-
   /// The network ID.
   final pulumi.Input<String> networkId;
-
   /// The vSwitch ID.
   final pulumi.Input<String> vswitchId;
 
@@ -49,18 +45,11 @@ class NatGatewayArgs {
   factory NatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return NatGatewayArgs(
       ensRegionId: pulumi.Input.fromValue(map['ensRegionId'] as String),
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      natName: (() {
-        final guardedValue = map['natName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      natName: (() { final guardedValue = map['natName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkId: pulumi.Input.fromValue(map['networkId'] as String),
       vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
+

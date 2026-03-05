@@ -575,31 +575,22 @@ import 'alert_prometheus_rule_group_state.dart';
 class AlertPrometheusRuleGroup extends pulumi.CustomResource {
   /// Specifies the name of the Managed Kubernetes Cluster.
   late final pulumi.Output<String?> clusterName;
-
   /// The description of the Alert Management Prometheus Rule Group.
   late final pulumi.Output<String?> description;
-
   /// Specifies the interval in which to run the Alert Management Prometheus Rule Group represented in ISO 8601 duration format. Possible values are between `PT1M` and `PT15M`.
   late final pulumi.Output<String?> interval;
-
   /// Specifies the Azure Region where the Alert Management Prometheus Rule Group should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name which should be used for this Alert Management Prometheus Rule Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the Resource Group where the Alert Management Prometheus Rule Group should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Is this Alert Management Prometheus Rule Group enabled? Possible values are `true` and `false`.
   late final pulumi.Output<bool?> ruleGroupEnabled;
-
   /// One or more `rule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
-
   /// Specifies the resource ID of the Azure Monitor Workspace.
   late final pulumi.Output<List<String>> scopes;
-
   /// A mapping of tags to assign to the Alert Management Prometheus Rule Group.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -612,11 +603,11 @@ class AlertPrometheusRuleGroup extends pulumi.CustomResource {
     AlertPrometheusRuleGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/alertPrometheusRuleGroup:AlertPrometheusRuleGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:monitoring/alertPrometheusRuleGroup:AlertPrometheusRuleGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterName = registerOutput<String?>('clusterName');
     description = registerOutput<String?>('description');
     interval = registerOutput<String?>('interval');
@@ -647,11 +638,11 @@ class AlertPrometheusRuleGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/alertPrometheusRuleGroup:AlertPrometheusRuleGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:monitoring/alertPrometheusRuleGroup:AlertPrometheusRuleGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterName = registerOutput<String?>('clusterName');
     description = registerOutput<String?>('description');
     interval = registerOutput<String?>('interval');

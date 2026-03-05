@@ -11,14 +11,11 @@ class RuleSetArgs {
   /// Short description of the rule-set.
   final pulumi.Input<String>? description;
   final pulumi.Input<String>? location;
-
   /// The resource name of the rule set. Managed internally. Format: projects/{project_number}/locations/{location}/ruleSet/{rule_set_id}. The name is ignored when creating a rule set.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
-
   /// List of rules given by the customer.
   final pulumi.Input<List<GoogleCloudContentwarehouseV1Rule>>? rules;
-
   /// Source of the rules i.e., customer name.
   final pulumi.Input<String>? source;
 
@@ -44,61 +41,20 @@ class RuleSetArgs {
       'location': ?location,
       'name': ?name,
       'project': ?project,
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudContentwarehouseV1Rule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudContentwarehouseV1Rule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudContentwarehouseV1Rule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<GoogleCloudContentwarehouseV1Rule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'source': ?source,
     };
   }
 
   factory RuleSetArgs.fromMap(Map<String, dynamic> map) {
     return RuleSetArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GoogleCloudContentwarehouseV1Rule>(
-            guardedValue,
-            (value) => GoogleCloudContentwarehouseV1Rule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudContentwarehouseV1Rule>(guardedValue, (value) => GoogleCloudContentwarehouseV1Rule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

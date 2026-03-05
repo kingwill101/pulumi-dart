@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserState {
   /// Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
   final pulumi.Input<String>? comment;
-
   /// Specify the New Created the User's Display Name. Supports up to 128 Characters.
   final pulumi.Input<String>? displayName;
-
   /// Specify the New User's Mailbox.
   final pulumi.Input<String>? email;
-
   /// You Want to Query the User the Bastion Host ID of.
   final pulumi.Input<String>? instanceId;
-
   /// Specify the New of the User That Created a Different Mobile Phone Number from Your.
   final pulumi.Input<String>? mobile;
-
   /// Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN. Valid Values:
   /// * CN: Mainland China (+86)
   /// * HK: hong Kong, China (+852)
@@ -40,10 +35,8 @@ class UserState {
   /// * CH: Switzerland (+41)
   /// * SE: Sweden (+46)
   final pulumi.Input<String>? mobileCountryCode;
-
   /// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
   final pulumi.Input<String>? password;
-
   /// Specify the New of the User That Created the Source. Valid Values:
   /// * Local: Local User
   /// * Ram: Ram User
@@ -51,16 +44,12 @@ class UserState {
   /// * LDAP: LDAP-authenticated User
   /// &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
   final pulumi.Input<String>? source;
-
   /// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
   final pulumi.Input<String>? sourceUserId;
-
   /// The status of the resource. Valid values: `Frozen`, `Normal`.
   final pulumi.Input<String>? status;
-
   /// The User ID.
   final pulumi.Input<String>? userId;
-
   /// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
   final pulumi.Input<String>? userName;
 
@@ -111,66 +100,19 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      comment: (() {
-        final guardedValue = map['comment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mobile: (() {
-        final guardedValue = map['mobile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mobileCountryCode: (() {
-        final guardedValue = map['mobileCountryCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceUserId: (() {
-        final guardedValue = map['sourceUserId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userId: (() {
-        final guardedValue = map['userId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mobile: (() { final guardedValue = map['mobile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mobileCountryCode: (() { final guardedValue = map['mobileCountryCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceUserId: (() { final guardedValue = map['sourceUserId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

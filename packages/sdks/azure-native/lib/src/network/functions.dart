@@ -401,8 +401,7 @@ Future<GetApplicationGatewayResult> getApplicationGateway(
 /// Other available API versions: 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_application_gateway_backend_health_on_demand_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetApplicationGatewayBackendHealthOnDemandResult>
-getApplicationGatewayBackendHealthOnDemand(
+Future<GetApplicationGatewayBackendHealthOnDemandResult> getApplicationGatewayBackendHealthOnDemand(
   GetApplicationGatewayBackendHealthOnDemandArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -422,8 +421,7 @@ getApplicationGatewayBackendHealthOnDemand(
 /// Other available API versions: 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_application_gateway_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetApplicationGatewayPrivateEndpointConnectionResult>
-getApplicationGatewayPrivateEndpointConnection(
+Future<GetApplicationGatewayPrivateEndpointConnectionResult> getApplicationGatewayPrivateEndpointConnection(
   GetApplicationGatewayPrivateEndpointConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -719,8 +717,7 @@ Future<GetExpressRouteCircuitResult> getExpressRouteCircuit(
 /// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_express_route_circuit_authorization_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetExpressRouteCircuitAuthorizationResult>
-getExpressRouteCircuitAuthorization(
+Future<GetExpressRouteCircuitAuthorizationResult> getExpressRouteCircuitAuthorization(
   GetExpressRouteCircuitAuthorizationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -800,8 +797,7 @@ Future<GetExpressRouteConnectionResult> getExpressRouteConnection(
 /// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_express_route_cross_connection_peering_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetExpressRouteCrossConnectionPeeringResult>
-getExpressRouteCrossConnectionPeering(
+Future<GetExpressRouteCrossConnectionPeeringResult> getExpressRouteCrossConnectionPeering(
   GetExpressRouteCrossConnectionPeeringArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -921,8 +917,7 @@ Future<GetFirewallPolicyDraftResult> getFirewallPolicyDraft(
 /// Other available API versions: 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_firewall_policy_rule_collection_group_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFirewallPolicyRuleCollectionGroupResult>
-getFirewallPolicyRuleCollectionGroup(
+Future<GetFirewallPolicyRuleCollectionGroupResult> getFirewallPolicyRuleCollectionGroup(
   GetFirewallPolicyRuleCollectionGroupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -942,8 +937,7 @@ getFirewallPolicyRuleCollectionGroup(
 /// Other available API versions: 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_firewall_policy_rule_collection_group_draft_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFirewallPolicyRuleCollectionGroupDraftResult>
-getFirewallPolicyRuleCollectionGroupDraft(
+Future<GetFirewallPolicyRuleCollectionGroupDraftResult> getFirewallPolicyRuleCollectionGroupDraft(
   GetFirewallPolicyRuleCollectionGroupDraftArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1183,8 +1177,7 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// Other available API versions: 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_load_balancer_backend_address_pool_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetLoadBalancerBackendAddressPoolResult>
-getLoadBalancerBackendAddressPool(
+Future<GetLoadBalancerBackendAddressPoolResult> getLoadBalancerBackendAddressPool(
   GetLoadBalancerBackendAddressPoolArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1224,8 +1217,7 @@ Future<GetLocalNetworkGatewayResult> getLocalNetworkGateway(
 /// Other available API versions: 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_management_group_network_manager_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagementGroupNetworkManagerConnectionResult>
-getManagementGroupNetworkManagerConnection(
+Future<GetManagementGroupNetworkManagerConnectionResult> getManagementGroupNetworkManagerConnection(
   GetManagementGroupNetworkManagerConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1325,8 +1317,7 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
 /// Other available API versions: 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_network_interface_tap_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkInterfaceTapConfigurationResult>
-getNetworkInterfaceTapConfiguration(
+Future<GetNetworkInterfaceTapConfigurationResult> getNetworkInterfaceTapConfiguration(
   GetNetworkInterfaceTapConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1366,8 +1357,7 @@ Future<GetNetworkManagerResult> getNetworkManager(
 /// Other available API versions: 2024-03-01, 2024-07-01, 2024-09-01-preview, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_network_manager_routing_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkManagerRoutingConfigurationResult>
-getNetworkManagerRoutingConfiguration(
+Future<GetNetworkManagerRoutingConfigurationResult> getNetworkManagerRoutingConfiguration(
   GetNetworkManagerRoutingConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1447,8 +1437,7 @@ Future<GetNetworkSecurityPerimeterResult> getNetworkSecurityPerimeter(
 /// Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_network_security_perimeter_access_rule_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkSecurityPerimeterAccessRuleResult>
-getNetworkSecurityPerimeterAccessRule(
+Future<GetNetworkSecurityPerimeterAccessRuleResult> getNetworkSecurityPerimeterAccessRule(
   GetNetworkSecurityPerimeterAccessRuleArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1468,8 +1457,7 @@ getNetworkSecurityPerimeterAccessRule(
 /// Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_network_security_perimeter_association_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkSecurityPerimeterAssociationResult>
-getNetworkSecurityPerimeterAssociation(
+Future<GetNetworkSecurityPerimeterAssociationResult> getNetworkSecurityPerimeterAssociation(
   GetNetworkSecurityPerimeterAssociationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1509,8 +1497,7 @@ Future<GetNetworkSecurityPerimeterLinkResult> getNetworkSecurityPerimeterLink(
 /// Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_network_security_perimeter_logging_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkSecurityPerimeterLoggingConfigurationResult>
-getNetworkSecurityPerimeterLoggingConfiguration(
+Future<GetNetworkSecurityPerimeterLoggingConfigurationResult> getNetworkSecurityPerimeterLoggingConfiguration(
   GetNetworkSecurityPerimeterLoggingConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1530,8 +1517,7 @@ getNetworkSecurityPerimeterLoggingConfiguration(
 /// Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_network_security_perimeter_profile_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkSecurityPerimeterProfileResult>
-getNetworkSecurityPerimeterProfile(
+Future<GetNetworkSecurityPerimeterProfileResult> getNetworkSecurityPerimeterProfile(
   GetNetworkSecurityPerimeterProfileArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1571,8 +1557,7 @@ Future<GetNetworkVirtualApplianceResult> getNetworkVirtualAppliance(
 /// Other available API versions: 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_network_virtual_appliance_boot_diagnostic_logs_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkVirtualApplianceBootDiagnosticLogsResult>
-getNetworkVirtualApplianceBootDiagnosticLogs(
+Future<GetNetworkVirtualApplianceBootDiagnosticLogsResult> getNetworkVirtualApplianceBootDiagnosticLogs(
   GetNetworkVirtualApplianceBootDiagnosticLogsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1592,8 +1577,7 @@ getNetworkVirtualApplianceBootDiagnosticLogs(
 /// Other available API versions: 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_network_virtual_appliance_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkVirtualApplianceConnectionResult>
-getNetworkVirtualApplianceConnection(
+Future<GetNetworkVirtualApplianceConnectionResult> getNetworkVirtualApplianceConnection(
   GetNetworkVirtualApplianceConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1733,8 +1717,7 @@ Future<GetP2sVpnGatewayResult> getP2sVpnGateway(
 /// Other available API versions: 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_p2s_vpn_gateway_p2s_vpn_connection_health_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetP2sVpnGatewayP2sVpnConnectionHealthResult>
-getP2sVpnGatewayP2sVpnConnectionHealth(
+Future<GetP2sVpnGatewayP2sVpnConnectionHealthResult> getP2sVpnGatewayP2sVpnConnectionHealth(
   GetP2sVpnGatewayP2sVpnConnectionHealthArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1754,8 +1737,7 @@ getP2sVpnGatewayP2sVpnConnectionHealth(
 /// Other available API versions: 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_p2s_vpn_gateway_p2s_vpn_connection_health_detailed_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetP2sVpnGatewayP2sVpnConnectionHealthDetailedResult>
-getP2sVpnGatewayP2sVpnConnectionHealthDetailed(
+Future<GetP2sVpnGatewayP2sVpnConnectionHealthDetailedResult> getP2sVpnGatewayP2sVpnConnectionHealthDetailed(
   GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1875,8 +1857,7 @@ Future<GetPrivateLinkServiceResult> getPrivateLinkService(
 /// Other available API versions: 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_private_link_service_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateLinkServicePrivateEndpointConnectionResult>
-getPrivateLinkServicePrivateEndpointConnection(
+Future<GetPrivateLinkServicePrivateEndpointConnectionResult> getPrivateLinkServicePrivateEndpointConnection(
   GetPrivateLinkServicePrivateEndpointConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2296,8 +2277,7 @@ Future<GetServiceEndpointPolicyResult> getServiceEndpointPolicy(
 /// Other available API versions: 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_service_endpoint_policy_definition_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServiceEndpointPolicyDefinitionResult>
-getServiceEndpointPolicyDefinition(
+Future<GetServiceEndpointPolicyDefinitionResult> getServiceEndpointPolicyDefinition(
   GetServiceEndpointPolicyDefinitionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2395,8 +2375,7 @@ Future<GetSubnetResult> getSubnet(
 /// Other available API versions: 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_subscription_network_manager_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSubscriptionNetworkManagerConnectionResult>
-getSubscriptionNetworkManagerConnection(
+Future<GetSubscriptionNetworkManagerConnectionResult> getSubscriptionNetworkManagerConnection(
   GetSubscriptionNetworkManagerConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2634,8 +2613,7 @@ Future<GetVirtualNetworkGatewayResult> getVirtualNetworkGateway(
 /// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_virtual_network_gateway_advertised_routes_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualNetworkGatewayAdvertisedRoutesResult>
-getVirtualNetworkGatewayAdvertisedRoutes(
+Future<GetVirtualNetworkGatewayAdvertisedRoutesResult> getVirtualNetworkGatewayAdvertisedRoutes(
   GetVirtualNetworkGatewayAdvertisedRoutesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2655,8 +2633,7 @@ getVirtualNetworkGatewayAdvertisedRoutes(
 /// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_virtual_network_gateway_bgp_peer_status_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualNetworkGatewayBgpPeerStatusResult>
-getVirtualNetworkGatewayBgpPeerStatus(
+Future<GetVirtualNetworkGatewayBgpPeerStatusResult> getVirtualNetworkGatewayBgpPeerStatus(
   GetVirtualNetworkGatewayBgpPeerStatusArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2676,8 +2653,7 @@ getVirtualNetworkGatewayBgpPeerStatus(
 /// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_virtual_network_gateway_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualNetworkGatewayConnectionResult>
-getVirtualNetworkGatewayConnection(
+Future<GetVirtualNetworkGatewayConnectionResult> getVirtualNetworkGatewayConnection(
   GetVirtualNetworkGatewayConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2697,8 +2673,7 @@ getVirtualNetworkGatewayConnection(
 /// Other available API versions: 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_virtual_network_gateway_connection_ike_sas_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualNetworkGatewayConnectionIkeSasResult>
-getVirtualNetworkGatewayConnectionIkeSas(
+Future<GetVirtualNetworkGatewayConnectionIkeSasResult> getVirtualNetworkGatewayConnectionIkeSas(
   GetVirtualNetworkGatewayConnectionIkeSasArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2718,8 +2693,7 @@ getVirtualNetworkGatewayConnectionIkeSas(
 /// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_virtual_network_gateway_learned_routes_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualNetworkGatewayLearnedRoutesResult>
-getVirtualNetworkGatewayLearnedRoutes(
+Future<GetVirtualNetworkGatewayLearnedRoutesResult> getVirtualNetworkGatewayLearnedRoutes(
   GetVirtualNetworkGatewayLearnedRoutesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2759,8 +2733,7 @@ Future<GetVirtualNetworkGatewayNatRuleResult> getVirtualNetworkGatewayNatRule(
 /// Other available API versions: 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_virtual_network_gateway_resiliency_information_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualNetworkGatewayResiliencyInformationResult>
-getVirtualNetworkGatewayResiliencyInformation(
+Future<GetVirtualNetworkGatewayResiliencyInformationResult> getVirtualNetworkGatewayResiliencyInformation(
   GetVirtualNetworkGatewayResiliencyInformationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2780,8 +2753,7 @@ getVirtualNetworkGatewayResiliencyInformation(
 /// Other available API versions: 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_virtual_network_gateway_routes_information_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualNetworkGatewayRoutesInformationResult>
-getVirtualNetworkGatewayRoutesInformation(
+Future<GetVirtualNetworkGatewayRoutesInformationResult> getVirtualNetworkGatewayRoutesInformation(
   GetVirtualNetworkGatewayRoutesInformationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2801,8 +2773,7 @@ getVirtualNetworkGatewayRoutesInformation(
 /// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_virtual_network_gateway_vpn_profile_package_url_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualNetworkGatewayVpnProfilePackageUrlResult>
-getVirtualNetworkGatewayVpnProfilePackageUrl(
+Future<GetVirtualNetworkGatewayVpnProfilePackageUrlResult> getVirtualNetworkGatewayVpnProfilePackageUrl(
   GetVirtualNetworkGatewayVpnProfilePackageUrlArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2822,8 +2793,7 @@ getVirtualNetworkGatewayVpnProfilePackageUrl(
 /// Other available API versions: 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_virtual_network_gateway_vpnclient_connection_health_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualNetworkGatewayVpnclientConnectionHealthResult>
-getVirtualNetworkGatewayVpnclientConnectionHealth(
+Future<GetVirtualNetworkGatewayVpnclientConnectionHealthResult> getVirtualNetworkGatewayVpnclientConnectionHealth(
   GetVirtualNetworkGatewayVpnclientConnectionHealthArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2833,9 +2803,7 @@ getVirtualNetworkGatewayVpnclientConnectionHealth(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetVirtualNetworkGatewayVpnclientConnectionHealthResult.fromMap(
-    result,
-  );
+  return GetVirtualNetworkGatewayVpnclientConnectionHealthResult.fromMap(result);
 }
 
 /// The Get VpnclientIpsecParameters operation retrieves information about the vpnclient ipsec policy for P2S client of virtual network gateway in the specified resource group through Network resource provider.
@@ -2845,8 +2813,7 @@ getVirtualNetworkGatewayVpnclientConnectionHealth(
 /// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_virtual_network_gateway_vpnclient_ipsec_parameters_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualNetworkGatewayVpnclientIpsecParametersResult>
-getVirtualNetworkGatewayVpnclientIpsecParameters(
+Future<GetVirtualNetworkGatewayVpnclientIpsecParametersResult> getVirtualNetworkGatewayVpnclientIpsecParameters(
   GetVirtualNetworkGatewayVpnclientIpsecParametersArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3084,8 +3051,7 @@ Future<GetWebApplicationFirewallPolicyResult> getWebApplicationFirewallPolicy(
 /// Uses Azure REST API version 2021-02-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_list_active_connectivity_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListActiveConnectivityConfigurationResult>
-listActiveConnectivityConfiguration(
+Future<ListActiveConnectivityConfigurationResult> listActiveConnectivityConfiguration(
   ListActiveConnectivityConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3105,8 +3071,7 @@ listActiveConnectivityConfiguration(
 /// Other available API versions: 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_list_active_connectivity_configurations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListActiveConnectivityConfigurationsResult>
-listActiveConnectivityConfigurations(
+Future<ListActiveConnectivityConfigurationsResult> listActiveConnectivityConfigurations(
   ListActiveConnectivityConfigurationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3200,8 +3165,7 @@ Future<ListActiveSecurityUserRulesResult> listActiveSecurityUserRules(
 /// Uses Azure REST API version 2021-02-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_list_effective_connectivity_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListEffectiveConnectivityConfigurationResult>
-listEffectiveConnectivityConfiguration(
+Future<ListEffectiveConnectivityConfigurationResult> listEffectiveConnectivityConfiguration(
   ListEffectiveConnectivityConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3219,8 +3183,7 @@ listEffectiveConnectivityConfiguration(
 /// Uses Azure REST API version 2021-02-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_list_effective_virtual_network_by_network_group_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListEffectiveVirtualNetworkByNetworkGroupResult>
-listEffectiveVirtualNetworkByNetworkGroup(
+Future<ListEffectiveVirtualNetworkByNetworkGroupResult> listEffectiveVirtualNetworkByNetworkGroup(
   ListEffectiveVirtualNetworkByNetworkGroupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3240,8 +3203,7 @@ listEffectiveVirtualNetworkByNetworkGroup(
 /// Other available API versions: 2021-02-01-preview, 2022-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_list_effective_virtual_network_by_network_manager_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListEffectiveVirtualNetworkByNetworkManagerResult>
-listEffectiveVirtualNetworkByNetworkManager(
+Future<ListEffectiveVirtualNetworkByNetworkManagerResult> listEffectiveVirtualNetworkByNetworkManager(
   ListEffectiveVirtualNetworkByNetworkManagerArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3281,8 +3243,7 @@ Future<ListFirewallPolicyIdpsSignatureResult> listFirewallPolicyIdpsSignature(
 /// Other available API versions: 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_list_firewall_policy_idps_signatures_filter_value_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListFirewallPolicyIdpsSignaturesFilterValueResult>
-listFirewallPolicyIdpsSignaturesFilterValue(
+Future<ListFirewallPolicyIdpsSignaturesFilterValueResult> listFirewallPolicyIdpsSignaturesFilterValue(
   ListFirewallPolicyIdpsSignaturesFilterValueArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3322,8 +3283,7 @@ Future<ListIpamPoolAssociatedResourcesResult> listIpamPoolAssociatedResources(
 /// Other available API versions: 2022-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_list_list_effective_virtual_network_by_network_group_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListListEffectiveVirtualNetworkByNetworkGroupResult>
-listListEffectiveVirtualNetworkByNetworkGroup(
+Future<ListListEffectiveVirtualNetworkByNetworkGroupResult> listListEffectiveVirtualNetworkByNetworkGroup(
   ListListEffectiveVirtualNetworkByNetworkGroupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3343,8 +3303,7 @@ listListEffectiveVirtualNetworkByNetworkGroup(
 /// Other available API versions: 2021-02-01-preview, 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_list_network_manager_deployment_status_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListNetworkManagerDeploymentStatusResult>
-listNetworkManagerDeploymentStatus(
+Future<ListNetworkManagerDeploymentStatusResult> listNetworkManagerDeploymentStatus(
   ListNetworkManagerDeploymentStatusArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3364,8 +3323,7 @@ listNetworkManagerDeploymentStatus(
 /// Other available API versions: 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_list_network_manager_effective_connectivity_configurations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListNetworkManagerEffectiveConnectivityConfigurationsResult>
-listNetworkManagerEffectiveConnectivityConfigurations(
+Future<ListNetworkManagerEffectiveConnectivityConfigurationsResult> listNetworkManagerEffectiveConnectivityConfigurations(
   ListNetworkManagerEffectiveConnectivityConfigurationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3375,9 +3333,7 @@ listNetworkManagerEffectiveConnectivityConfigurations(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return ListNetworkManagerEffectiveConnectivityConfigurationsResult.fromMap(
-    result,
-  );
+  return ListNetworkManagerEffectiveConnectivityConfigurationsResult.fromMap(result);
 }
 
 /// List all effective security admin rules applied on a virtual network.
@@ -3385,8 +3341,7 @@ listNetworkManagerEffectiveConnectivityConfigurations(
 /// Uses Azure REST API version 2021-02-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_list_network_manager_effective_security_admin_rule_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListNetworkManagerEffectiveSecurityAdminRuleResult>
-listNetworkManagerEffectiveSecurityAdminRule(
+Future<ListNetworkManagerEffectiveSecurityAdminRuleResult> listNetworkManagerEffectiveSecurityAdminRule(
   ListNetworkManagerEffectiveSecurityAdminRuleArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3406,8 +3361,7 @@ listNetworkManagerEffectiveSecurityAdminRule(
 /// Other available API versions: 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_list_network_manager_effective_security_admin_rules_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListNetworkManagerEffectiveSecurityAdminRulesResult>
-listNetworkManagerEffectiveSecurityAdminRules(
+Future<ListNetworkManagerEffectiveSecurityAdminRulesResult> listNetworkManagerEffectiveSecurityAdminRules(
   ListNetworkManagerEffectiveSecurityAdminRulesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3427,8 +3381,7 @@ listNetworkManagerEffectiveSecurityAdminRules(
 /// Other available API versions: 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_list_virtual_network_gateway_radius_secrets_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListVirtualNetworkGatewayRadiusSecretsResult>
-listVirtualNetworkGatewayRadiusSecrets(
+Future<ListVirtualNetworkGatewayRadiusSecretsResult> listVirtualNetworkGatewayRadiusSecrets(
   ListVirtualNetworkGatewayRadiusSecretsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3448,8 +3401,7 @@ listVirtualNetworkGatewayRadiusSecrets(
 /// Other available API versions: 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_list_vpn_link_connection_default_shared_key_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListVpnLinkConnectionDefaultSharedKeyResult>
-listVpnLinkConnectionDefaultSharedKey(
+Future<ListVpnLinkConnectionDefaultSharedKeyResult> listVpnLinkConnectionDefaultSharedKey(
   ListVpnLinkConnectionDefaultSharedKeyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3469,8 +3421,7 @@ listVpnLinkConnectionDefaultSharedKey(
 /// Other available API versions: 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_list_vpn_server_configuration_radius_secrets_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListVpnServerConfigurationRadiusSecretsResult>
-listVpnServerConfigurationRadiusSecrets(
+Future<ListVpnServerConfigurationRadiusSecretsResult> listVpnServerConfigurationRadiusSecrets(
   ListVpnServerConfigurationRadiusSecretsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

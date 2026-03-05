@@ -14,19 +14,14 @@ import 'resource_user_access_param.dart';
 class ResourceType extends pulumi.CustomResource {
   /// Used to provide a description or comment on the compute cluster.
   late final pulumi.Output<String?> clusterDesc;
-
   /// Used to uniquely identify a computing cluster.
   late final pulumi.Output<String> clusterId;
-
   /// Represents the name of the compute cluster, usually including the model number.
   late final pulumi.Output<String> clusterName;
-
   /// Generally refers to the type or instance type of a computing resource. See `machine_types` below.
   late final pulumi.Output<ResourceMachineTypes> machineTypes;
-
   /// The ID of the Resource.
   late final pulumi.Output<String> resourceId;
-
   /// Used to define the access parameters for the user. See `user_access_param` below.
   late final pulumi.Output<ResourceUserAccessParam> userAccessParam;
 
@@ -39,35 +34,17 @@ class ResourceType extends pulumi.CustomResource {
     ResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/resource:Resource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/resource:Resource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterDesc = registerOutput<String?>('clusterDesc');
     clusterId = registerOutput<String>('clusterId');
     clusterName = registerOutput<String>('clusterName');
-    machineTypes = registerOutput<ResourceMachineTypes>(
-      'machineTypes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceMachineTypes.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    machineTypes = registerOutput<ResourceMachineTypes>('machineTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceMachineTypes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceId = registerOutput<String>('resourceId');
-    userAccessParam = registerOutput<ResourceUserAccessParam>(
-      'userAccessParam',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceUserAccessParam.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    userAccessParam = registerOutput<ResourceUserAccessParam>('userAccessParam', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceUserAccessParam.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [ResourceType] resource's state with the given [name] and [id].
@@ -88,34 +65,16 @@ class ResourceType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/resource:Resource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/resource:Resource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterDesc = registerOutput<String?>('clusterDesc');
     clusterId = registerOutput<String>('clusterId');
     clusterName = registerOutput<String>('clusterName');
-    machineTypes = registerOutput<ResourceMachineTypes>(
-      'machineTypes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceMachineTypes.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    machineTypes = registerOutput<ResourceMachineTypes>('machineTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceMachineTypes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceId = registerOutput<String>('resourceId');
-    userAccessParam = registerOutput<ResourceUserAccessParam>(
-      'userAccessParam',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceUserAccessParam.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    userAccessParam = registerOutput<ResourceUserAccessParam>('userAccessParam', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceUserAccessParam.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -830,32 +830,24 @@ import 'entry_link_state.dart';
 class EntryLink extends pulumi.CustomResource {
   /// The time when the Entry Link was created.
   late final pulumi.Output<String> createTime;
-
   /// The id of the entry group this entry link is in.
   late final pulumi.Output<String> entryGroupId;
-
   /// The id of the entry link to create.
   late final pulumi.Output<String> entryLinkId;
-
   /// Relative resource name of the Entry Link Type used to create this Entry Link. For example:
   /// projects/dataplex-types/locations/global/entryLinkTypes/definition
   late final pulumi.Output<String> entryLinkType;
-
   /// Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> entryReferences;
-
   /// The location for the entry.
   late final pulumi.Output<String> location;
-
   /// The relative resource name of the Entry Link, of the form:
   /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The time when the Entry Link was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -868,18 +860,16 @@ class EntryLink extends pulumi.CustomResource {
     EntryLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataplex/entryLink:EntryLink',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataplex/entryLink:EntryLink',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     entryGroupId = registerOutput<String>('entryGroupId');
     entryLinkId = registerOutput<String>('entryLinkId');
     entryLinkType = registerOutput<String>('entryLinkType');
-    entryReferences = registerOutput<List<Map<String, dynamic>>>(
-      'entryReferences',
-    );
+    entryReferences = registerOutput<List<Map<String, dynamic>>>('entryReferences');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -904,18 +894,16 @@ class EntryLink extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataplex/entryLink:EntryLink',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataplex/entryLink:EntryLink',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     entryGroupId = registerOutput<String>('entryGroupId');
     entryLinkId = registerOutput<String>('entryLinkId');
     entryLinkType = registerOutput<String>('entryLinkType');
-    entryReferences = registerOutput<List<Map<String, dynamic>>>(
-      'entryReferences',
-    );
+    entryReferences = registerOutput<List<Map<String, dynamic>>>('entryReferences');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

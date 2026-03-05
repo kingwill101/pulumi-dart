@@ -502,28 +502,20 @@ import 'logtail_config_state.dart';
 class LogtailConfig extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// The detailed configuration entered by logtail.
   late final pulumi.Output<String?> inputDetail;
-
   /// Method of log entry
   late final pulumi.Output<String?> inputType;
-
   /// Last modification time, unix timestamp
   late final pulumi.Output<int> lastModifyTime;
-
   /// Sample log
   late final pulumi.Output<String?> logSample;
-
   /// The name of the resource
   late final pulumi.Output<String> logtailConfigName;
-
   /// Detailed configuration of logtail output See `output_detail` below.
   late final pulumi.Output<LogtailConfigOutputDetail?> outputDetail;
-
   /// Log output mode. You can only upload data to log service.
   late final pulumi.Output<String?> outputType;
-
   /// Project name
   late final pulumi.Output<String> projectName;
 
@@ -536,27 +528,18 @@ class LogtailConfig extends pulumi.CustomResource {
     LogtailConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sls/logtailConfig:LogtailConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sls/logtailConfig:LogtailConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     inputDetail = registerOutput<String?>('inputDetail');
     inputType = registerOutput<String?>('inputType');
     lastModifyTime = registerOutput<int>('lastModifyTime');
     logSample = registerOutput<String?>('logSample');
     logtailConfigName = registerOutput<String>('logtailConfigName');
-    outputDetail = registerOutput<LogtailConfigOutputDetail?>(
-      'outputDetail',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LogtailConfigOutputDetail.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    outputDetail = registerOutput<LogtailConfigOutputDetail?>('outputDetail', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogtailConfigOutputDetail.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outputType = registerOutput<String?>('outputType');
     projectName = registerOutput<String>('projectName');
   }
@@ -579,27 +562,18 @@ class LogtailConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sls/logtailConfig:LogtailConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sls/logtailConfig:LogtailConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     inputDetail = registerOutput<String?>('inputDetail');
     inputType = registerOutput<String?>('inputType');
     lastModifyTime = registerOutput<int>('lastModifyTime');
     logSample = registerOutput<String?>('logSample');
     logtailConfigName = registerOutput<String>('logtailConfigName');
-    outputDetail = registerOutput<LogtailConfigOutputDetail?>(
-      'outputDetail',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LogtailConfigOutputDetail.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    outputDetail = registerOutput<LogtailConfigOutputDetail?>('outputDetail', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogtailConfigOutputDetail.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outputType = registerOutput<String?>('outputType');
     projectName = registerOutput<String>('projectName');
   }

@@ -9,21 +9,20 @@ class ServiceServicePropertyFunctionalType {
 
   /// Creates a new [ServiceServicePropertyFunctionalType].
   /// [type] (Output)
-  ServiceServicePropertyFunctionalType({this.type});
+  ServiceServicePropertyFunctionalType({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
-  factory ServiceServicePropertyFunctionalType.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceServicePropertyFunctionalType.fromMap(Map<String, dynamic> map) {
     return ServiceServicePropertyFunctionalType(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

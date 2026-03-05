@@ -563,50 +563,34 @@ import 'system_data_response.dart';
 class DataLakeConnector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// DataLake database format to use.
   late final pulumi.Output<String> databaseFormat;
-
   /// Extended Location
   late final pulumi.Output<ExtendedLocationPropertyResponse> extendedLocation;
-
   /// The details of DataLakeConnector Docker Image.
   late final pulumi.Output<ContainerImageResponse> image;
-
   /// The number of DataLakeConnector pods to spin up.
   late final pulumi.Output<int?> instances;
-
   /// The details for connecting with Local Broker.
-  late final pulumi.Output<LocalBrokerConnectionSpecResponse?>
-  localBrokerConnection;
-
+  late final pulumi.Output<LocalBrokerConnectionSpecResponse?> localBrokerConnection;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The log level of the DataLake Connector instances.
   late final pulumi.Output<String?> logLevel;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The Node Tolerations for the DataLake Connector pods.
   late final pulumi.Output<NodeTolerationsResponse?> nodeTolerations;
-
   /// The protocol to use for connecting with Brokers.
   late final pulumi.Output<String> protocol;
-
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The protocol to use for connecting with Brokers. NOTE - Enum only storage is supported at at time.
   late final pulumi.Output<DataLakeTargetStorageResponse> target;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -619,80 +603,26 @@ class DataLakeConnector extends pulumi.CustomResource {
     DataLakeConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:iotoperationsmq:DataLakeConnector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:iotoperationsmq:DataLakeConnector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     databaseFormat = registerOutput<String>('databaseFormat');
-    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    image = registerOutput<ContainerImageResponse>(
-      'image',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContainerImageResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    image = registerOutput<ContainerImageResponse>('image', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instances = registerOutput<int?>('instances');
-    localBrokerConnection = registerOutput<LocalBrokerConnectionSpecResponse?>(
-      'localBrokerConnection',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LocalBrokerConnectionSpecResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    localBrokerConnection = registerOutput<LocalBrokerConnectionSpecResponse?>('localBrokerConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalBrokerConnectionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     logLevel = registerOutput<String?>('logLevel');
     this.name = registerOutput<String>('name');
-    nodeTolerations = registerOutput<NodeTolerationsResponse?>(
-      'nodeTolerations',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeTolerationsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nodeTolerations = registerOutput<NodeTolerationsResponse?>('nodeTolerations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeTolerationsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protocol = registerOutput<String>('protocol');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    target = registerOutput<DataLakeTargetStorageResponse>(
-      'target',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataLakeTargetStorageResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    target = registerOutput<DataLakeTargetStorageResponse>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataLakeTargetStorageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

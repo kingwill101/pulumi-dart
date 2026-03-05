@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerGroupImageRegistryCredential {
   /// The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
   final pulumi.Input<String> password;
-
   /// The address of the image repository. It is required when `image_registry_credential` is configured.
   final pulumi.Input<String> server;
-
   /// The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
   final pulumi.Input<String> userName;
 
@@ -30,9 +28,7 @@ class ContainerGroupImageRegistryCredential {
     };
   }
 
-  factory ContainerGroupImageRegistryCredential.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContainerGroupImageRegistryCredential.fromMap(Map<String, dynamic> map) {
     return ContainerGroupImageRegistryCredential(
       password: pulumi.Input.fromValue(map['password'] as String),
       server: pulumi.Input.fromValue(map['server'] as String),
@@ -40,3 +36,4 @@ class ContainerGroupImageRegistryCredential {
     );
   }
 }
+

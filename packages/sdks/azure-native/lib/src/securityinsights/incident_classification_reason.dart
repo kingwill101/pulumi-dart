@@ -17,3 +17,4 @@ enum IncidentClassificationReason {
     throw ArgumentError('Unknown IncidentClassificationReason value: $value');
   }
 }
+

@@ -2106,7 +2106,6 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
   /// The expression must output a boolean representing whether to allow the federation.
   /// The following keywords may be referenced in the expressions:
   late final pulumi.Output<String?> attributeCondition;
-
   /// Maps attributes from authentication credentials issued by an external identity provider
   /// to Google Cloud attributes, such as `subject` and `segment`.
   /// Each key must be a string specifying the Google Cloud IAM attribute to map to.
@@ -2159,37 +2158,28 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
   /// {"google.subject": "assertion.sub"}
   /// ```
   late final pulumi.Output<Map<String, String>?> attributeMapping;
-
   /// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
   /// Structure is documented below.
   late final pulumi.Output<WorkloadIdentityPoolProviderAws?> aws;
-
   /// A description for the provider. Cannot exceed 256 characters.
   late final pulumi.Output<String?> description;
-
   /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
   /// However, existing tokens still grant access.
   late final pulumi.Output<bool?> disabled;
-
   /// A display name for the provider. Cannot exceed 32 characters.
   late final pulumi.Output<String?> displayName;
-
   /// The resource name of the provider as
   /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
   late final pulumi.Output<String> name;
-
   /// An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
   /// Structure is documented below.
   late final pulumi.Output<WorkloadIdentityPoolProviderOidc?> oidc;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
   /// Structure is documented below.
   late final pulumi.Output<WorkloadIdentityPoolProviderSaml?> saml;
-
   /// The state of the provider.
   /// * STATE_UNSPECIFIED: State unspecified.
   /// * ACTIVE: The provider is active, and may be used to validate authentication credentials.
@@ -2198,17 +2188,14 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
   /// UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
   /// until it is permanently deleted.
   late final pulumi.Output<String> state;
-
   /// The ID used for the pool, which is the final component of the pool resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
   late final pulumi.Output<String> workloadIdentityPoolId;
-
   /// The ID for the provider, which becomes the final component of the resource name. This
   /// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
   late final pulumi.Output<String> workloadIdentityPoolProviderId;
-
   /// An X.509-type identity provider represents a CA. It is trusted to assert a
   /// client identity if the client has a certificate that chains up to this CA.
   /// Structure is documented below.
@@ -2223,63 +2210,25 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
     WorkloadIdentityPoolProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributeCondition = registerOutput<String?>('attributeCondition');
     attributeMapping = registerOutput<Map<String, String>?>('attributeMapping');
-    aws = registerOutput<WorkloadIdentityPoolProviderAws?>(
-      'aws',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadIdentityPoolProviderAws.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    aws = registerOutput<WorkloadIdentityPoolProviderAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    oidc = registerOutput<WorkloadIdentityPoolProviderOidc?>(
-      'oidc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadIdentityPoolProviderOidc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    oidc = registerOutput<WorkloadIdentityPoolProviderOidc?>('oidc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderOidc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    saml = registerOutput<WorkloadIdentityPoolProviderSaml?>(
-      'saml',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadIdentityPoolProviderSaml.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    saml = registerOutput<WorkloadIdentityPoolProviderSaml?>('saml', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderSaml.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
-    workloadIdentityPoolProviderId = registerOutput<String>(
-      'workloadIdentityPoolProviderId',
-    );
-    x509 = registerOutput<WorkloadIdentityPoolProviderX509?>(
-      'x509',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadIdentityPoolProviderX509.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    workloadIdentityPoolProviderId = registerOutput<String>('workloadIdentityPoolProviderId');
+    x509 = registerOutput<WorkloadIdentityPoolProviderX509?>('x509', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderX509.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [WorkloadIdentityPoolProvider] resource's state with the given [name] and [id].
@@ -2300,62 +2249,24 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributeCondition = registerOutput<String?>('attributeCondition');
     attributeMapping = registerOutput<Map<String, String>?>('attributeMapping');
-    aws = registerOutput<WorkloadIdentityPoolProviderAws?>(
-      'aws',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadIdentityPoolProviderAws.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    aws = registerOutput<WorkloadIdentityPoolProviderAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    oidc = registerOutput<WorkloadIdentityPoolProviderOidc?>(
-      'oidc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadIdentityPoolProviderOidc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    oidc = registerOutput<WorkloadIdentityPoolProviderOidc?>('oidc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderOidc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    saml = registerOutput<WorkloadIdentityPoolProviderSaml?>(
-      'saml',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadIdentityPoolProviderSaml.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    saml = registerOutput<WorkloadIdentityPoolProviderSaml?>('saml', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderSaml.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
     workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
-    workloadIdentityPoolProviderId = registerOutput<String>(
-      'workloadIdentityPoolProviderId',
-    );
-    x509 = registerOutput<WorkloadIdentityPoolProviderX509?>(
-      'x509',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadIdentityPoolProviderX509.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    workloadIdentityPoolProviderId = registerOutput<String>('workloadIdentityPoolProviderId');
+    x509 = registerOutput<WorkloadIdentityPoolProviderX509?>('x509', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderX509.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

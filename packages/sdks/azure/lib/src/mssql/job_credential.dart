@@ -304,16 +304,12 @@ import 'job_credential_state.dart';
 class JobCredential extends pulumi.CustomResource {
   /// The ID of the Elastic Job Agent. Changing this forces a new Elastic Job Credential to be created.
   late final pulumi.Output<String> jobAgentId;
-
   /// The name which should be used for this Elastic Job Credential. Changing this forces a new Elastic Job Credential to be created.
   late final pulumi.Output<String> name;
-
   /// The password to use for this Elastic Job credential.
   late final pulumi.Output<String?> password;
-
   /// An integer value used to trigger an update for `password_wo`. This property should be incremented when updating `password_wo`.
   late final pulumi.Output<int?> passwordWoVersion;
-
   /// The username to use for this Elastic Job credential.
   late final pulumi.Output<String> username;
 
@@ -326,11 +322,11 @@ class JobCredential extends pulumi.CustomResource {
     JobCredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/jobCredential:JobCredential',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/jobCredential:JobCredential',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     jobAgentId = registerOutput<String>('jobAgentId');
     this.name = registerOutput<String>('name');
     password = registerOutput<String?>('password');
@@ -356,11 +352,11 @@ class JobCredential extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/jobCredential:JobCredential',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/jobCredential:JobCredential',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     jobAgentId = registerOutput<String>('jobAgentId');
     this.name = registerOutput<String>('name');
     password = registerOutput<String?>('password');

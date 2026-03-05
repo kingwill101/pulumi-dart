@@ -12,8 +12,7 @@ enum BackingResourcePublicNetworkAccess {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown BackingResourcePublicNetworkAccess value: $value',
-    );
+    throw ArgumentError('Unknown BackingResourcePublicNetworkAccess value: $value');
   }
 }
+

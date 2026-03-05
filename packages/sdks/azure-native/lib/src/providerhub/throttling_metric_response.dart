@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThrottlingMetricResponse {
   /// The interval.
   final pulumi.Input<String>? interval;
-
   /// The limit.
   final pulumi.Input<double> limit;
-
   /// The throttling metric type
   final pulumi.Input<String> type;
 
@@ -32,13 +30,10 @@ class ThrottlingMetricResponse {
 
   factory ThrottlingMetricResponse.fromMap(Map<String, dynamic> map) {
     return ThrottlingMetricResponse(
-      interval: (() {
-        final guardedValue = map['interval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       limit: pulumi.Input.fromValue(map['limit'] as double),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

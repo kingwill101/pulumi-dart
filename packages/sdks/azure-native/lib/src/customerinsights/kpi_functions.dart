@@ -21,3 +21,4 @@ enum KpiFunctions {
     throw ArgumentError('Unknown KpiFunctions value: $value');
   }
 }
+

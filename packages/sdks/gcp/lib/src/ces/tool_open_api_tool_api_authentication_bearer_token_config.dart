@@ -9,21 +9,20 @@ class ToolOpenApiToolApiAuthenticationBearerTokenConfig {
 
   /// Creates a new [ToolOpenApiToolApiAuthenticationBearerTokenConfig].
   /// [token] (Output)
-  ToolOpenApiToolApiAuthenticationBearerTokenConfig({this.token});
+  ToolOpenApiToolApiAuthenticationBearerTokenConfig({
+    this.token,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'token': ?token};
+    return <String, dynamic>{
+      'token': ?token,
+    };
   }
 
-  factory ToolOpenApiToolApiAuthenticationBearerTokenConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ToolOpenApiToolApiAuthenticationBearerTokenConfig.fromMap(Map<String, dynamic> map) {
     return ToolOpenApiToolApiAuthenticationBearerTokenConfig(
-      token: (() {
-        final guardedValue = map['token'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      token: (() { final guardedValue = map['token']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsAccessKeyResponse {
   /// AWS access key ID.
   final pulumi.Input<String> accessKeyId;
-
   /// AWS secret access key. This field is not returned in RPC responses.
   final pulumi.Input<String> secretAccessKey;
 
@@ -32,3 +31,4 @@ class AwsAccessKeyResponse {
     );
   }
 }
+

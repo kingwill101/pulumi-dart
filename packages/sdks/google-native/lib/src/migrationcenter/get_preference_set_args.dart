@@ -33,11 +33,8 @@ class GetPreferenceSetArgs {
     return GetPreferenceSetArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       preferenceSetId: pulumi.Input.fromValue(map['preferenceSetId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

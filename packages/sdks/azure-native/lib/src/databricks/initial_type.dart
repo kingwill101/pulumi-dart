@@ -15,3 +15,4 @@ enum InitialType {
     throw ArgumentError('Unknown InitialType value: $value');
   }
 }
+

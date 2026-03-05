@@ -103,7 +103,6 @@ import 'serial_console_access_state.dart';
 class SerialConsoleAccess extends pulumi.CustomResource {
   /// Whether or not serial console access is enabled. Valid values are `true` or `false`. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -116,11 +115,11 @@ class SerialConsoleAccess extends pulumi.CustomResource {
     SerialConsoleAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/serialConsoleAccess:SerialConsoleAccess',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/serialConsoleAccess:SerialConsoleAccess',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool?>('enabled');
     region = registerOutput<String>('region');
   }
@@ -143,11 +142,11 @@ class SerialConsoleAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/serialConsoleAccess:SerialConsoleAccess',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/serialConsoleAccess:SerialConsoleAccess',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool?>('enabled');
     region = registerOutput<String>('region');
   }

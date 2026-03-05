@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPackageCatalogRoleAssignmentState {
   /// The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
   final pulumi.Input<String>? catalogId;
-
   /// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   final pulumi.Input<String>? principalObjectId;
-
   /// The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
   final pulumi.Input<String>? roleId;
 
@@ -31,25 +29,12 @@ class AccessPackageCatalogRoleAssignmentState {
     };
   }
 
-  factory AccessPackageCatalogRoleAssignmentState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessPackageCatalogRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return AccessPackageCatalogRoleAssignmentState(
-      catalogId: (() {
-        final guardedValue = map['catalogId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      principalObjectId: (() {
-        final guardedValue = map['principalObjectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleId: (() {
-        final guardedValue = map['roleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      catalogId: (() { final guardedValue = map['catalogId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principalObjectId: (() { final guardedValue = map['principalObjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleId: (() { final guardedValue = map['roleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

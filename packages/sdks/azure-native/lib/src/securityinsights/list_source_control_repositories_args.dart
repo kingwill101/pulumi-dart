@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListSourceControlRepositoriesArgs {
   /// OAuth ClientId. Required when `kind` is `OAuth`
   final pulumi.Input<String>? clientId;
-
   /// OAuth Code. Required when `kind` is `OAuth`
   final pulumi.Input<String>? code;
-
   /// Application installation ID. Required when `kind` is `App`. Supported by `GitHub` only.
   final pulumi.Input<String>? installationId;
-
   /// The kind of repository access credentials
   final pulumi.Input<String> kind;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// OAuth State. Required when `kind` is `OAuth`
   final pulumi.Input<String>? state;
-
   /// Personal Access Token. Required when `kind` is `PAT`
   final pulumi.Input<String>? token;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -66,36 +59,15 @@ class ListSourceControlRepositoriesArgs {
 
   factory ListSourceControlRepositoriesArgs.fromMap(Map<String, dynamic> map) {
     return ListSourceControlRepositoriesArgs(
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      code: (() {
-        final guardedValue = map['code'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      installationId: (() {
-        final guardedValue = map['installationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      installationId: (() { final guardedValue = map['installationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      token: (() {
-        final guardedValue = map['token'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      token: (() { final guardedValue = map['token']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

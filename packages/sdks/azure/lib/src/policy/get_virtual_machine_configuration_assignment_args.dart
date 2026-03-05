@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualMachineConfigurationAssignmentArgs {
   /// Specifies the name of the Guest Configuration Assignment.
   final pulumi.Input<String> name;
-
   /// Specifies the Name of the Resource Group where the Guest Configuration Assignment exists.
   final pulumi.Input<String> resourceGroupName;
-
   /// Only retrieve Policy Set Definitions from this Management Group.
   final pulumi.Input<String> virtualMachineName;
 
@@ -34,17 +32,12 @@ class GetVirtualMachineConfigurationAssignmentArgs {
     };
   }
 
-  factory GetVirtualMachineConfigurationAssignmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualMachineConfigurationAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineConfigurationAssignmentArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualMachineName: pulumi.Input.fromValue(
-        map['virtualMachineName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualMachineName: pulumi.Input.fromValue(map['virtualMachineName'] as String),
     );
   }
 }
+

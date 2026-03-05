@@ -9,31 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BaselineStrategyArgs {
   /// Policy name.
   final pulumi.Input<String> baselineStrategyName;
-
   /// The type of policy. Value:
   /// * **common**: standard policy
   /// * **custom**: custom policy
   final pulumi.Input<String> customType;
-
   /// The detection period of the policy.
   final pulumi.Input<int> cycleDays;
-
   /// The detection period of the policy. Value:
   /// * **0**: 0:00~06:00
   /// * **6**: 6:00~12:00
   /// * **12**: 12:00~18:00
   /// * **18**: 18:00~24:00
   final pulumi.Input<int>? cycleStartTime;
-
   /// The baseline check policy execution end time.
   final pulumi.Input<String> endTime;
-
   /// Detection item subtype.
   final pulumi.Input<String> riskSubTypeName;
-
   /// The baseline check policy start time.
   final pulumi.Input<String> startTime;
-
   /// The method of adding assets that take effect from the policy. Value:
   /// * **groupId**: Added by asset group.
   /// * **uuid**: Add by single asset.
@@ -74,16 +67,10 @@ class BaselineStrategyArgs {
 
   factory BaselineStrategyArgs.fromMap(Map<String, dynamic> map) {
     return BaselineStrategyArgs(
-      baselineStrategyName: pulumi.Input.fromValue(
-        map['baselineStrategyName'] as String,
-      ),
+      baselineStrategyName: pulumi.Input.fromValue(map['baselineStrategyName'] as String),
       customType: pulumi.Input.fromValue(map['customType'] as String),
       cycleDays: pulumi.Input.fromValue(map['cycleDays'] as int),
-      cycleStartTime: (() {
-        final guardedValue = map['cycleStartTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      cycleStartTime: (() { final guardedValue = map['cycleStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
       riskSubTypeName: pulumi.Input.fromValue(map['riskSubTypeName'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
@@ -91,3 +78,4 @@ class BaselineStrategyArgs {
     );
   }
 }
+

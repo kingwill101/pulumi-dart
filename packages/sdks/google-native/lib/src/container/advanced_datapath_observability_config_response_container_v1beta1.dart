@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdvancedDatapathObservabilityConfigResponseContainerV1beta1 {
   /// Expose flow metrics on nodes
   final pulumi.Input<bool> enableMetrics;
-
   /// Method used to make Relay available
   final pulumi.Input<String> relayMode;
 
@@ -25,12 +24,11 @@ class AdvancedDatapathObservabilityConfigResponseContainerV1beta1 {
     };
   }
 
-  factory AdvancedDatapathObservabilityConfigResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AdvancedDatapathObservabilityConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AdvancedDatapathObservabilityConfigResponseContainerV1beta1(
       enableMetrics: pulumi.Input.fromValue(map['enableMetrics'] as bool),
       relayMode: pulumi.Input.fromValue(map['relayMode'] as String),
     );
   }
 }
+

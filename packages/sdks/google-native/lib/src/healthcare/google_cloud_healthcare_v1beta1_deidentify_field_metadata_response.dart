@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse {
   /// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
   final pulumi.Input<Map<String, dynamic>> characterMaskField;
-
   /// Inspect the field's text and transform sensitive text. Configure using TextConfig. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
   final pulumi.Input<Map<String, dynamic>> cleanTextField;
-
   /// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
   final pulumi.Input<Map<String, dynamic>> cryptoHashField;
-
   /// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
   final pulumi.Input<Map<String, dynamic>> dateShiftField;
-
   /// Keep the field unchanged.
   final pulumi.Input<Map<String, dynamic>> keepField;
-
   /// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR [type](https://www.hl7.org/fhir/datatypes.html) name. All types begin with an upper case letter. For example, the resource field `Patient.Address.city`, which uses a [string](https://www.hl7.org/fhir/datatypes-definitions.html#Address.city) type, can be matched by `Patient.Address.String`. Partial matching is supported. For example, `Patient.Address.city` can be matched by `Address.city` (with `Patient` omitted). Partial matching and type matching can be combined, for example `Patient.Address.city` can be matched by `Address.String`. For "choice" types (those defined in the FHIR spec with the format `field[x]`), use two separate components. For example, `deceasedAge.unit` is matched by `Deceased.Age.unit`. The following types are supported: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example `HumanName.given`, `HumanName.family`) can be omitted.
   final pulumi.Input<List<String>> paths;
-
   /// Remove the field.
   final pulumi.Input<Map<String, dynamic>> removeField;
 
@@ -55,29 +49,16 @@ class GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse {
     };
   }
 
-  factory GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse(
-      characterMaskField: pulumi.Input.fromValue(
-        (map['characterMaskField']! as Map).cast<String, dynamic>(),
-      ),
-      cleanTextField: pulumi.Input.fromValue(
-        (map['cleanTextField']! as Map).cast<String, dynamic>(),
-      ),
-      cryptoHashField: pulumi.Input.fromValue(
-        (map['cryptoHashField']! as Map).cast<String, dynamic>(),
-      ),
-      dateShiftField: pulumi.Input.fromValue(
-        (map['dateShiftField']! as Map).cast<String, dynamic>(),
-      ),
-      keepField: pulumi.Input.fromValue(
-        (map['keepField']! as Map).cast<String, dynamic>(),
-      ),
+      characterMaskField: pulumi.Input.fromValue((map['characterMaskField']! as Map).cast<String, dynamic>()),
+      cleanTextField: pulumi.Input.fromValue((map['cleanTextField']! as Map).cast<String, dynamic>()),
+      cryptoHashField: pulumi.Input.fromValue((map['cryptoHashField']! as Map).cast<String, dynamic>()),
+      dateShiftField: pulumi.Input.fromValue((map['dateShiftField']! as Map).cast<String, dynamic>()),
+      keepField: pulumi.Input.fromValue((map['keepField']! as Map).cast<String, dynamic>()),
       paths: pulumi.Input.fromValue((map['paths'] as List).cast<String>()),
-      removeField: pulumi.Input.fromValue(
-        (map['removeField']! as Map).cast<String, dynamic>(),
-      ),
+      removeField: pulumi.Input.fromValue((map['removeField']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -265,19 +265,14 @@ import 'document_ai_warehouse_document_schema_state.dart';
 class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
   /// Name of the schema given by the user.
   late final pulumi.Output<String> displayName;
-
   /// Tells whether the document is a folder or a typical document.
   late final pulumi.Output<bool?> documentIsFolder;
-
   /// The location of the resource.
   late final pulumi.Output<String> location;
-
   /// The resource name of the document schema.
   late final pulumi.Output<String> name;
-
   /// The unique identifier of the project.
   late final pulumi.Output<String> projectNumber;
-
   /// Defines the metadata for a schema property.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> propertyDefinitions;
@@ -291,19 +286,17 @@ class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
     DocumentAiWarehouseDocumentSchemaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     documentIsFolder = registerOutput<bool?>('documentIsFolder');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     projectNumber = registerOutput<String>('projectNumber');
-    propertyDefinitions = registerOutput<List<Map<String, dynamic>>>(
-      'propertyDefinitions',
-    );
+    propertyDefinitions = registerOutput<List<Map<String, dynamic>>>('propertyDefinitions');
   }
 
   /// Gets an existing [DocumentAiWarehouseDocumentSchema] resource's state with the given [name] and [id].
@@ -324,18 +317,16 @@ class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     documentIsFolder = registerOutput<bool?>('documentIsFolder');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     projectNumber = registerOutput<String>('projectNumber');
-    propertyDefinitions = registerOutput<List<Map<String, dynamic>>>(
-      'propertyDefinitions',
-    );
+    propertyDefinitions = registerOutput<List<Map<String, dynamic>>>('propertyDefinitions');
   }
 }

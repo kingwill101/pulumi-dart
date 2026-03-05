@@ -7,22 +7,12 @@ import 'rule_group_rule_statement_regex_pattern_set_reference_statement_text_tra
 class RuleGroupRuleStatementRegexPatternSetReferenceStatement {
   /// The Amazon Resource Name (ARN) of the Regex Pattern Set that this statement references.
   final pulumi.Input<String> arn;
-
   /// The part of a web request that you want AWS WAF to inspect. See Field to Match below for details.
-  final pulumi.Input<
-    RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch
-  >?
-  fieldToMatch;
-
+  final pulumi.Input<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch>? fieldToMatch;
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection.
   /// At least one required.
   /// See Text Transformation below for details.
-  final pulumi.Input<
-    List<
-      RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation
-    >
-  >
-  textTransformations;
+  final pulumi.Input<List<RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation>> textTransformations;
 
   /// Creates a new [RuleGroupRuleStatementRegexPatternSetReferenceStatement].
   /// [arn] The Amazon Resource Name (ARN) of the Regex Pattern Set that this statement references.
@@ -37,53 +27,17 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatement {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': arn,
-      'fieldToMatch':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch,
-            Map<String, dynamic>
-          >(fieldToMatch, (value) => value.toMap()),
-      'textTransformations':
-          pulumi.Input.mapInputValue<
-            List<
-              RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation
-            >,
-            List<Map<String, dynamic>>
-          >(
-            textTransformations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'fieldToMatch': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch, Map<String, dynamic>>(fieldToMatch, (value) => value.toMap()),
+      'textTransformations': pulumi.Input.mapInputValue<List<RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation>, List<Map<String, dynamic>>>(textTransformations, (value) => pulumi.Input.encodeList<RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory RuleGroupRuleStatementRegexPatternSetReferenceStatement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementRegexPatternSetReferenceStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRegexPatternSetReferenceStatement(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      fieldToMatch: (() {
-        final guardedValue = map['fieldToMatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      textTransformations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation
-        >(
-          map['textTransformations']!,
-          (value) =>
-              RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      fieldToMatch: (() { final guardedValue = map['fieldToMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      textTransformations: pulumi.Input.fromValue(pulumi.Input.decodeList<RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

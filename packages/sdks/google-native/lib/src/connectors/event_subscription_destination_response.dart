@@ -7,10 +7,8 @@ import 'end_point_response.dart';
 class EventSubscriptionDestinationResponse {
   /// OPTION 1: Hit an endpoint when we receive an event.
   final pulumi.Input<EndPointResponse> endpoint;
-
   /// Service account needed for runtime plane to trigger IP workflow.
   final pulumi.Input<String> serviceAccount;
-
   /// type of the destination
   final pulumi.Input<String> type;
 
@@ -26,27 +24,18 @@ class EventSubscriptionDestinationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endpoint':
-          pulumi.Input.mapInputValue<EndPointResponse, Map<String, dynamic>>(
-            endpoint,
-            (value) => value.toMap(),
-          ),
+      'endpoint': pulumi.Input.mapInputValue<EndPointResponse, Map<String, dynamic>>(endpoint, (value) => value.toMap()),
       'serviceAccount': serviceAccount,
       'type': type,
     };
   }
 
-  factory EventSubscriptionDestinationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventSubscriptionDestinationResponse.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionDestinationResponse(
-      endpoint: pulumi.Input.fromValue(
-        EndPointResponse.fromMap(
-          (map['endpoint']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      endpoint: pulumi.Input.fromValue(EndPointResponse.fromMap((map['endpoint']! as Map).cast<String, dynamic>())),
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

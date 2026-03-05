@@ -9,29 +9,20 @@ class AwsClusterLoggingConfig {
 
   /// Creates a new [AwsClusterLoggingConfig].
   /// [componentConfig] Configuration of the logging components.
-  AwsClusterLoggingConfig({this.componentConfig});
+  AwsClusterLoggingConfig({
+    this.componentConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'componentConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AwsClusterLoggingConfigComponentConfig,
-            Map<String, dynamic>
-          >(componentConfig, (value) => value.toMap()),
+      'componentConfig': ?pulumi.Input.mapOptionalInputValue<AwsClusterLoggingConfigComponentConfig, Map<String, dynamic>>(componentConfig, (value) => value.toMap()),
     };
   }
 
   factory AwsClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
     return AwsClusterLoggingConfig(
-      componentConfig: (() {
-        final guardedValue = map['componentConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AwsClusterLoggingConfigComponentConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      componentConfig: (() { final guardedValue = map['componentConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsClusterLoggingConfigComponentConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

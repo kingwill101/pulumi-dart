@@ -13,20 +13,23 @@ class GetPolicyArgs {
   /// Creates a new [GetPolicyArgs].
   /// [policyId] Required.
   /// [project] Optional.
-  GetPolicyArgs({required this.policyId, this.project});
+  GetPolicyArgs({
+    required this.policyId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policyId': policyId, 'project': ?project};
+    return <String, dynamic>{
+      'policyId': policyId,
+      'project': ?project,
+    };
   }
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyArgs(
       policyId: pulumi.Input.fromValue(map['policyId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

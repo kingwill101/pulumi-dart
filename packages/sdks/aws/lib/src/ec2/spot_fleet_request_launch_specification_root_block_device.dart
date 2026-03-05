@@ -41,45 +41,16 @@ class SpotFleetRequestLaunchSpecificationRootBlockDevice {
     };
   }
 
-  factory SpotFleetRequestLaunchSpecificationRootBlockDevice.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpotFleetRequestLaunchSpecificationRootBlockDevice.fromMap(Map<String, dynamic> map) {
     return SpotFleetRequestLaunchSpecificationRootBlockDevice(
-      deleteOnTermination: (() {
-        final guardedValue = map['deleteOnTermination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      encrypted: (() {
-        final guardedValue = map['encrypted'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      iops: (() {
-        final guardedValue = map['iops'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      kmsKeyId: (() {
-        final guardedValue = map['kmsKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      throughput: (() {
-        final guardedValue = map['throughput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      volumeSize: (() {
-        final guardedValue = map['volumeSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      volumeType: (() {
-        final guardedValue = map['volumeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deleteOnTermination: (() { final guardedValue = map['deleteOnTermination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      encrypted: (() { final guardedValue = map['encrypted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      volumeSize: (() { final guardedValue = map['volumeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      volumeType: (() { final guardedValue = map['volumeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

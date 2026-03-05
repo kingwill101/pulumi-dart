@@ -233,19 +233,14 @@ import 'subscription_state.dart';
 class Subscription extends pulumi.CustomResource {
   /// Comment of the datahub subscription. It cannot be longer than 255 characters.
   late final pulumi.Output<String?> comment;
-
   /// Create time of the datahub subscription. It is a human-readable string rather than 64-bits UTC.
   late final pulumi.Output<String> createTime;
-
   /// Last modify time of the datahub subscription. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
   late final pulumi.Output<String> lastModifyTime;
-
   /// The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
   late final pulumi.Output<String> projectName;
-
   /// The identidy of the subscription, generate from server side.
   late final pulumi.Output<String> subId;
-
   /// The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
   late final pulumi.Output<String> topicName;
 
@@ -258,11 +253,11 @@ class Subscription extends pulumi.CustomResource {
     SubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:datahub/subscription:Subscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:datahub/subscription:Subscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     comment = registerOutput<String?>('comment');
     createTime = registerOutput<String>('createTime');
     lastModifyTime = registerOutput<String>('lastModifyTime');
@@ -289,11 +284,11 @@ class Subscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:datahub/subscription:Subscription',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:datahub/subscription:Subscription',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     comment = registerOutput<String?>('comment');
     createTime = registerOutput<String>('createTime');
     lastModifyTime = registerOutput<String>('lastModifyTime');

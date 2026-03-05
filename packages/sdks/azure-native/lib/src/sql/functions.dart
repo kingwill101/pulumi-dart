@@ -163,8 +163,7 @@ Future<GetBackupLongTermRetentionPolicyResult> getBackupLongTermRetentionPolicy(
 /// Other available API versions: 2017-10-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_backup_short_term_retention_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBackupShortTermRetentionPolicyResult>
-getBackupShortTermRetentionPolicy(
+Future<GetBackupShortTermRetentionPolicyResult> getBackupShortTermRetentionPolicy(
   GetBackupShortTermRetentionPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -284,8 +283,7 @@ Future<GetDatabaseSecurityAlertPolicyResult> getDatabaseSecurityAlertPolicy(
 /// Other available API versions: 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_database_sql_vulnerability_assessment_rule_baseline_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseSqlVulnerabilityAssessmentRuleBaselineResult>
-getDatabaseSqlVulnerabilityAssessmentRuleBaseline(
+Future<GetDatabaseSqlVulnerabilityAssessmentRuleBaselineResult> getDatabaseSqlVulnerabilityAssessmentRuleBaseline(
   GetDatabaseSqlVulnerabilityAssessmentRuleBaselineArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -295,9 +293,7 @@ getDatabaseSqlVulnerabilityAssessmentRuleBaseline(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetDatabaseSqlVulnerabilityAssessmentRuleBaselineResult.fromMap(
-    result,
-  );
+  return GetDatabaseSqlVulnerabilityAssessmentRuleBaselineResult.fromMap(result);
 }
 
 /// Gets a database's threat detection policy.
@@ -325,8 +321,7 @@ Future<GetDatabaseThreatDetectionPolicyResult> getDatabaseThreatDetectionPolicy(
 /// Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_database_vulnerability_assessment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseVulnerabilityAssessmentResult>
-getDatabaseVulnerabilityAssessment(
+Future<GetDatabaseVulnerabilityAssessmentResult> getDatabaseVulnerabilityAssessment(
   GetDatabaseVulnerabilityAssessmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -346,8 +341,7 @@ getDatabaseVulnerabilityAssessment(
 /// Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_database_vulnerability_assessment_rule_baseline_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseVulnerabilityAssessmentRuleBaselineResult>
-getDatabaseVulnerabilityAssessmentRuleBaseline(
+Future<GetDatabaseVulnerabilityAssessmentRuleBaselineResult> getDatabaseVulnerabilityAssessmentRuleBaseline(
   GetDatabaseVulnerabilityAssessmentRuleBaselineArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -445,8 +439,7 @@ Future<GetEncryptionProtectorResult> getEncryptionProtector(
 /// Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_extended_database_blob_auditing_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetExtendedDatabaseBlobAuditingPolicyResult>
-getExtendedDatabaseBlobAuditingPolicy(
+Future<GetExtendedDatabaseBlobAuditingPolicyResult> getExtendedDatabaseBlobAuditingPolicy(
   GetExtendedDatabaseBlobAuditingPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -466,8 +459,7 @@ getExtendedDatabaseBlobAuditingPolicy(
 /// Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_extended_server_blob_auditing_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetExtendedServerBlobAuditingPolicyResult>
-getExtendedServerBlobAuditingPolicy(
+Future<GetExtendedServerBlobAuditingPolicyResult> getExtendedServerBlobAuditingPolicy(
   GetExtendedServerBlobAuditingPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -767,8 +759,7 @@ Future<GetManagedDatabaseResult> getManagedDatabase(
 /// Other available API versions: 2018-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_managed_database_sensitivity_label_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagedDatabaseSensitivityLabelResult>
-getManagedDatabaseSensitivityLabel(
+Future<GetManagedDatabaseSensitivityLabelResult> getManagedDatabaseSensitivityLabel(
   GetManagedDatabaseSensitivityLabelArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -788,8 +779,7 @@ getManagedDatabaseSensitivityLabel(
 /// Other available API versions: 2017-10-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_managed_database_vulnerability_assessment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagedDatabaseVulnerabilityAssessmentResult>
-getManagedDatabaseVulnerabilityAssessment(
+Future<GetManagedDatabaseVulnerabilityAssessmentResult> getManagedDatabaseVulnerabilityAssessment(
   GetManagedDatabaseVulnerabilityAssessmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -809,8 +799,7 @@ getManagedDatabaseVulnerabilityAssessment(
 /// Other available API versions: 2017-10-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_managed_database_vulnerability_assessment_rule_baseline_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagedDatabaseVulnerabilityAssessmentRuleBaselineResult>
-getManagedDatabaseVulnerabilityAssessmentRuleBaseline(
+Future<GetManagedDatabaseVulnerabilityAssessmentRuleBaselineResult> getManagedDatabaseVulnerabilityAssessmentRuleBaseline(
   GetManagedDatabaseVulnerabilityAssessmentRuleBaselineArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -820,9 +809,7 @@ getManagedDatabaseVulnerabilityAssessmentRuleBaseline(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetManagedDatabaseVulnerabilityAssessmentRuleBaselineResult.fromMap(
-    result,
-  );
+  return GetManagedDatabaseVulnerabilityAssessmentRuleBaselineResult.fromMap(result);
 }
 
 /// Gets a managed instance.
@@ -872,8 +859,7 @@ Future<GetManagedInstanceAdministratorResult> getManagedInstanceAdministrator(
 /// Other available API versions: 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_managed_instance_azure_adonly_authentication_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagedInstanceAzureADOnlyAuthenticationResult>
-getManagedInstanceAzureADOnlyAuthentication(
+Future<GetManagedInstanceAzureADOnlyAuthenticationResult> getManagedInstanceAzureADOnlyAuthentication(
   GetManagedInstanceAzureADOnlyAuthenticationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -913,8 +899,7 @@ Future<GetManagedInstanceKeyResult> getManagedInstanceKey(
 /// Other available API versions: 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_managed_instance_long_term_retention_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagedInstanceLongTermRetentionPolicyResult>
-getManagedInstanceLongTermRetentionPolicy(
+Future<GetManagedInstanceLongTermRetentionPolicyResult> getManagedInstanceLongTermRetentionPolicy(
   GetManagedInstanceLongTermRetentionPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -934,8 +919,7 @@ getManagedInstanceLongTermRetentionPolicy(
 /// Other available API versions: 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_managed_instance_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagedInstancePrivateEndpointConnectionResult>
-getManagedInstancePrivateEndpointConnection(
+Future<GetManagedInstancePrivateEndpointConnectionResult> getManagedInstancePrivateEndpointConnection(
   GetManagedInstancePrivateEndpointConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -955,8 +939,7 @@ getManagedInstancePrivateEndpointConnection(
 /// Other available API versions: 2018-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_managed_instance_vulnerability_assessment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagedInstanceVulnerabilityAssessmentResult>
-getManagedInstanceVulnerabilityAssessment(
+Future<GetManagedInstanceVulnerabilityAssessmentResult> getManagedInstanceVulnerabilityAssessment(
   GetManagedInstanceVulnerabilityAssessmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1136,8 +1119,7 @@ Future<GetServerAzureADAdministratorResult> getServerAzureADAdministrator(
 /// Other available API versions: 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_server_azure_adonly_authentication_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServerAzureADOnlyAuthenticationResult>
-getServerAzureADOnlyAuthentication(
+Future<GetServerAzureADOnlyAuthenticationResult> getServerAzureADOnlyAuthentication(
   GetServerAzureADOnlyAuthenticationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1315,8 +1297,7 @@ Future<GetServerVulnerabilityAssessmentResult> getServerVulnerabilityAssessment(
 /// Other available API versions: 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_sql_vulnerability_assessment_rule_baseline_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSqlVulnerabilityAssessmentRuleBaselineResult>
-getSqlVulnerabilityAssessmentRuleBaseline(
+Future<GetSqlVulnerabilityAssessmentRuleBaselineResult> getSqlVulnerabilityAssessmentRuleBaseline(
   GetSqlVulnerabilityAssessmentRuleBaselineArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1336,8 +1317,7 @@ getSqlVulnerabilityAssessmentRuleBaseline(
 /// Other available API versions: 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_sql_vulnerability_assessments_setting_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSqlVulnerabilityAssessmentsSettingResult>
-getSqlVulnerabilityAssessmentsSetting(
+Future<GetSqlVulnerabilityAssessmentsSettingResult> getSqlVulnerabilityAssessmentsSetting(
   GetSqlVulnerabilityAssessmentsSettingArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1357,8 +1337,7 @@ getSqlVulnerabilityAssessmentsSetting(
 /// Other available API versions: 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_start_stop_managed_instance_schedule_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetStartStopManagedInstanceScheduleResult>
-getStartStopManagedInstanceSchedule(
+Future<GetStartStopManagedInstanceScheduleResult> getStartStopManagedInstanceSchedule(
   GetStartStopManagedInstanceScheduleArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

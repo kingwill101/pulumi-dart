@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MoverTargetEndpointArgs {
   /// Specifies a description for the Storage Mover Target Endpoint.
   final pulumi.Input<String>? description;
-
   /// Specifies the name which should be used for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the ID of the storage account for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageAccountId;
-
   /// Specifies the name of the storage blob container for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageContainerName;
-
   /// Specifies the ID of the storage mover for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageMoverId;
 
@@ -48,23 +44,12 @@ class MoverTargetEndpointArgs {
 
   factory MoverTargetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return MoverTargetEndpointArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountId: pulumi.Input.fromValue(
-        map['storageAccountId'] as String,
-      ),
-      storageContainerName: pulumi.Input.fromValue(
-        map['storageContainerName'] as String,
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountId: pulumi.Input.fromValue(map['storageAccountId'] as String),
+      storageContainerName: pulumi.Input.fromValue(map['storageContainerName'] as String),
       storageMoverId: pulumi.Input.fromValue(map['storageMoverId'] as String),
     );
   }
 }
+

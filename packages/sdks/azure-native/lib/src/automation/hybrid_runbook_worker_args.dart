@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HybridRunbookWorkerArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-
   /// The hybrid runbook worker group name
   final pulumi.Input<String> hybridRunbookWorkerGroupName;
-
   /// The hybrid runbook worker id
   final pulumi.Input<String>? hybridRunbookWorkerId;
-
   /// Gets or sets the name of the resource.
   final pulumi.Input<String>? name;
-
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// Azure Resource Manager Id for a virtual machine.
   final pulumi.Input<String>? vmResourceId;
 
@@ -54,30 +49,13 @@ class HybridRunbookWorkerArgs {
 
   factory HybridRunbookWorkerArgs.fromMap(Map<String, dynamic> map) {
     return HybridRunbookWorkerArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
-      hybridRunbookWorkerGroupName: pulumi.Input.fromValue(
-        map['hybridRunbookWorkerGroupName'] as String,
-      ),
-      hybridRunbookWorkerId: (() {
-        final guardedValue = map['hybridRunbookWorkerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      vmResourceId: (() {
-        final guardedValue = map['vmResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
+      hybridRunbookWorkerGroupName: pulumi.Input.fromValue(map['hybridRunbookWorkerGroupName'] as String),
+      hybridRunbookWorkerId: (() { final guardedValue = map['hybridRunbookWorkerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      vmResourceId: (() { final guardedValue = map['vmResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,17 +8,20 @@ class DomainDevicesInputSourcePassthrough {
 
   /// Creates a new [DomainDevicesInputSourcePassthrough].
   /// [evDev] Specifies the event device used in passthrough mode for the input device.
-  DomainDevicesInputSourcePassthrough({required this.evDev});
+  DomainDevicesInputSourcePassthrough({
+    required this.evDev,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'evDev': evDev};
+    return <String, dynamic>{
+      'evDev': evDev,
+    };
   }
 
-  factory DomainDevicesInputSourcePassthrough.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesInputSourcePassthrough.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInputSourcePassthrough(
       evDev: pulumi.Input.fromValue(map['evDev'] as String),
     );
   }
 }
+

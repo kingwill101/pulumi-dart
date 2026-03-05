@@ -33,18 +33,13 @@ class GetNamespaceServiceIamPolicyServicedirectoryV1beta1Args {
     };
   }
 
-  factory GetNamespaceServiceIamPolicyServicedirectoryV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNamespaceServiceIamPolicyServicedirectoryV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetNamespaceServiceIamPolicyServicedirectoryV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
       namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
     );
   }
 }
+

@@ -15,22 +15,16 @@ import 'dataset_blob_storage_storage_account.dart';
 class DatasetBlobStorage extends pulumi.CustomResource {
   /// The name of the storage account container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
   late final pulumi.Output<String> containerName;
-
   /// The ID of the Data Share in which this Data Share Blob Storage Dataset should be created. Changing this forces a new Data Share Blob Storage Dataset to be created.
   late final pulumi.Output<String> dataShareId;
-
   /// The name of the Data Share Dataset.
   late final pulumi.Output<String> displayName;
-
   /// The path of the file in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
   late final pulumi.Output<String?> filePath;
-
   /// The path of the folder in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
   late final pulumi.Output<String?> folderPath;
-
   /// The name which should be used for this Data Share Blob Storage Dataset. Changing this forces a new Data Share Blob Storage Dataset to be created.
   late final pulumi.Output<String> name;
-
   /// A `storage_account` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<DatasetBlobStorageStorageAccount> storageAccount;
 
@@ -43,27 +37,18 @@ class DatasetBlobStorage extends pulumi.CustomResource {
     DatasetBlobStorageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datashare/datasetBlobStorage:DatasetBlobStorage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datashare/datasetBlobStorage:DatasetBlobStorage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     containerName = registerOutput<String>('containerName');
     dataShareId = registerOutput<String>('dataShareId');
     displayName = registerOutput<String>('displayName');
     filePath = registerOutput<String?>('filePath');
     folderPath = registerOutput<String?>('folderPath');
     this.name = registerOutput<String>('name');
-    storageAccount = registerOutput<DatasetBlobStorageStorageAccount>(
-      'storageAccount',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatasetBlobStorageStorageAccount.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storageAccount = registerOutput<DatasetBlobStorageStorageAccount>('storageAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBlobStorageStorageAccount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [DatasetBlobStorage] resource's state with the given [name] and [id].
@@ -84,26 +69,17 @@ class DatasetBlobStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datashare/datasetBlobStorage:DatasetBlobStorage',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datashare/datasetBlobStorage:DatasetBlobStorage',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     containerName = registerOutput<String>('containerName');
     dataShareId = registerOutput<String>('dataShareId');
     displayName = registerOutput<String>('displayName');
     filePath = registerOutput<String?>('filePath');
     folderPath = registerOutput<String?>('folderPath');
     this.name = registerOutput<String>('name');
-    storageAccount = registerOutput<DatasetBlobStorageStorageAccount>(
-      'storageAccount',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatasetBlobStorageStorageAccount.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storageAccount = registerOutput<DatasetBlobStorageStorageAccount>('storageAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBlobStorageStorageAccount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -9,21 +9,20 @@ class ObjectReplicationPolicyPropertiesMetrics {
 
   /// Creates a new [ObjectReplicationPolicyPropertiesMetrics].
   /// [enabled] Indicates whether object replication metrics feature is enabled for the policy.
-  ObjectReplicationPolicyPropertiesMetrics({this.enabled});
+  ObjectReplicationPolicyPropertiesMetrics({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory ObjectReplicationPolicyPropertiesMetrics.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ObjectReplicationPolicyPropertiesMetrics.fromMap(Map<String, dynamic> map) {
     return ObjectReplicationPolicyPropertiesMetrics(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -5,18 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAuthScopeServiceCatalogEndpoint {
   /// The ID of the endpoint.
   final pulumi.Input<String> id;
-
   /// The interface of the endpoint.
   final pulumi.Input<String> interface;
-
   /// The region in which to obtain the V3 Identity client.
   /// A Identity client is needed to retrieve tokens IDs. If omitted, the
   /// `region` argument of the provider is used.
   final pulumi.Input<String> region;
-
   /// The region ID of the endpoint.
   final pulumi.Input<String> regionId;
-
   /// The URL of the endpoint.
   final pulumi.Input<String> url;
 
@@ -54,3 +50,4 @@ class GetAuthScopeServiceCatalogEndpoint {
     );
   }
 }
+

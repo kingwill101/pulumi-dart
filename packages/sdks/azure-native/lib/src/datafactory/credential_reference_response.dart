@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CredentialReferenceResponse {
   /// Reference credential name.
   final pulumi.Input<String> referenceName;
-
   /// Credential reference type.
   final pulumi.Input<String> type;
 
@@ -19,7 +18,10 @@ class CredentialReferenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'referenceName': referenceName, 'type': type};
+    return <String, dynamic>{
+      'referenceName': referenceName,
+      'type': type,
+    };
   }
 
   factory CredentialReferenceResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class CredentialReferenceResponse {
     );
   }
 }
+

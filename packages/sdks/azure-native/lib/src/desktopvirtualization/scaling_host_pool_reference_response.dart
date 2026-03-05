@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScalingHostPoolReferenceResponse {
   /// Arm path of referenced hostpool.
   final pulumi.Input<String>? hostPoolArmPath;
-
   /// Is the scaling plan enabled for this hostpool.
   final pulumi.Input<bool>? scalingPlanEnabled;
 
@@ -27,16 +26,9 @@ class ScalingHostPoolReferenceResponse {
 
   factory ScalingHostPoolReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ScalingHostPoolReferenceResponse(
-      hostPoolArmPath: (() {
-        final guardedValue = map['hostPoolArmPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scalingPlanEnabled: (() {
-        final guardedValue = map['scalingPlanEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      hostPoolArmPath: (() { final guardedValue = map['hostPoolArmPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scalingPlanEnabled: (() { final guardedValue = map['scalingPlanEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

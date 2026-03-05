@@ -10,10 +10,8 @@ import 'get_bot_association_lex_bot.dart';
 class GetBotAssociationArgs {
   /// Identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
   final pulumi.Input<String> instanceId;
-
   /// Configuration information of an Amazon Lex (V1) bot. Detailed below.
   final pulumi.Input<GetBotAssociationLexBot> lexBot;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -30,11 +28,7 @@ class GetBotAssociationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'instanceId': instanceId,
-      'lexBot':
-          pulumi.Input.mapInputValue<
-            GetBotAssociationLexBot,
-            Map<String, dynamic>
-          >(lexBot, (value) => value.toMap()),
+      'lexBot': pulumi.Input.mapInputValue<GetBotAssociationLexBot, Map<String, dynamic>>(lexBot, (value) => value.toMap()),
       'region': ?region,
     };
   }
@@ -42,16 +36,9 @@ class GetBotAssociationArgs {
   factory GetBotAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetBotAssociationArgs(
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      lexBot: pulumi.Input.fromValue(
-        GetBotAssociationLexBot.fromMap(
-          (map['lexBot']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      lexBot: pulumi.Input.fromValue(GetBotAssociationLexBot.fromMap((map['lexBot']! as Map).cast<String, dynamic>())),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

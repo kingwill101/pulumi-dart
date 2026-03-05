@@ -9,19 +9,20 @@ class AzureCredentialsResponse {
 
   /// Creates a new [AzureCredentialsResponse].
   /// [subscriptionId] Subscription Id.
-  AzureCredentialsResponse({this.subscriptionId});
+  AzureCredentialsResponse({
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'subscriptionId': ?subscriptionId};
+    return <String, dynamic>{
+      'subscriptionId': ?subscriptionId,
+    };
   }
 
   factory AzureCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return AzureCredentialsResponse(
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

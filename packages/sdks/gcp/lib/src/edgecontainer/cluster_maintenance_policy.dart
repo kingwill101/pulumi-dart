@@ -9,9 +9,7 @@ class ClusterMaintenancePolicy {
   /// in these windows. Each exclusion has a unique name and may be active or expired.
   /// The max number of maintenance exclusions allowed at a given time is 3.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterMaintenancePolicyMaintenanceExclusion>>?
-  maintenanceExclusions;
-
+  final pulumi.Input<List<ClusterMaintenancePolicyMaintenanceExclusion>>? maintenanceExclusions;
   /// Specifies the maintenance window in which maintenance may be performed.
   /// Structure is documented below.
   final pulumi.Input<ClusterMaintenancePolicyWindow> window;
@@ -19,49 +17,23 @@ class ClusterMaintenancePolicy {
   /// Creates a new [ClusterMaintenancePolicy].
   /// [maintenanceExclusions] Exclusions to automatic maintenance. Non-emergency maintenance should not occur
   /// [window] Specifies the maintenance window in which maintenance may be performed.
-  ClusterMaintenancePolicy({this.maintenanceExclusions, required this.window});
+  ClusterMaintenancePolicy({
+    this.maintenanceExclusions,
+    required this.window,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maintenanceExclusions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ClusterMaintenancePolicyMaintenanceExclusion>,
-            List<Map<String, dynamic>>
-          >(
-            maintenanceExclusions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ClusterMaintenancePolicyMaintenanceExclusion,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'window':
-          pulumi.Input.mapInputValue<
-            ClusterMaintenancePolicyWindow,
-            Map<String, dynamic>
-          >(window, (value) => value.toMap()),
+      'maintenanceExclusions': ?pulumi.Input.mapOptionalInputValue<List<ClusterMaintenancePolicyMaintenanceExclusion>, List<Map<String, dynamic>>>(maintenanceExclusions, (value) => pulumi.Input.encodeList<ClusterMaintenancePolicyMaintenanceExclusion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'window': pulumi.Input.mapInputValue<ClusterMaintenancePolicyWindow, Map<String, dynamic>>(window, (value) => value.toMap()),
     };
   }
 
   factory ClusterMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicy(
-      maintenanceExclusions: (() {
-        final guardedValue = map['maintenanceExclusions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ClusterMaintenancePolicyMaintenanceExclusion>(
-            guardedValue,
-            (value) => ClusterMaintenancePolicyMaintenanceExclusion.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      window: pulumi.Input.fromValue(
-        ClusterMaintenancePolicyWindow.fromMap(
-          (map['window']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      maintenanceExclusions: (() { final guardedValue = map['maintenanceExclusions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterMaintenancePolicyMaintenanceExclusion>(guardedValue, (value) => ClusterMaintenancePolicyMaintenanceExclusion.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      window: pulumi.Input.fromValue(ClusterMaintenancePolicyWindow.fromMap((map['window']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

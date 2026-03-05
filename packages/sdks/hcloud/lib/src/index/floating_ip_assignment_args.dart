@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FloatingIpAssignmentArgs {
   /// ID of the Floating IP.
   final pulumi.Input<int> floatingIpId;
-
   /// Server to assign the Floating IP to.
   final pulumi.Input<int> serverId;
 
@@ -35,3 +34,4 @@ class FloatingIpAssignmentArgs {
     );
   }
 }
+

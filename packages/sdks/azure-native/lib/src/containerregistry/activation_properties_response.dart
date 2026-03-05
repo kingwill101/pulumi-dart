@@ -9,10 +9,14 @@ class ActivationPropertiesResponse {
 
   /// Creates a new [ActivationPropertiesResponse].
   /// [status] The activation status of the connected registry.
-  ActivationPropertiesResponse({required this.status});
+  ActivationPropertiesResponse({
+    required this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': status};
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
   factory ActivationPropertiesResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ActivationPropertiesResponse {
     );
   }
 }
+

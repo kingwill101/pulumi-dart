@@ -2880,22 +2880,17 @@ class CxToolVersion extends pulumi.CustomResource {
   /// Offsets other than "Z" are also accepted.
   /// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
   late final pulumi.Output<String> createTime;
-
   /// The display name of the tool version.
   late final pulumi.Output<String> displayName;
-
   /// The unique identifier of the tool version.
   /// Format: projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/tools/&lt;ToolID&gt;/versions/&lt;VersionID&gt;.
   late final pulumi.Output<String> name;
-
   /// The tool to create a Version for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/tools/&lt;Tool ID&gt;.
   late final pulumi.Output<String> parent;
-
   /// Snapshot of the tool to be associated with this version.
   /// Structure is documented below.
   late final pulumi.Output<CxToolVersionTool> tool;
-
   /// Last time the tool version was created or modified.
   /// Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits.
   /// Offsets other than "Z" are also accepted.
@@ -2911,25 +2906,16 @@ class CxToolVersion extends pulumi.CustomResource {
     CxToolVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxToolVersion:CxToolVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:diagflow/cxToolVersion:CxToolVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    tool = registerOutput<CxToolVersionTool>(
-      'tool',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxToolVersionTool.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tool = registerOutput<CxToolVersionTool>('tool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolVersionTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -2951,25 +2937,16 @@ class CxToolVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxToolVersion:CxToolVersion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:diagflow/cxToolVersion:CxToolVersion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    tool = registerOutput<CxToolVersionTool>(
-      'tool',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxToolVersionTool.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tool = registerOutput<CxToolVersionTool>('tool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolVersionTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

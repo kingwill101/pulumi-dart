@@ -509,23 +509,16 @@ import 'credential_service_principal_state.dart';
 class CredentialServicePrincipal extends pulumi.CustomResource {
   /// List of tags that can be used for describing the Data Factory Credential.
   late final pulumi.Output<List<String>?> annotations;
-
   /// The Data Factory ID in which to associate the Credential with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
-
   /// The description for the Data Factory Credential.
   late final pulumi.Output<String?> description;
-
   /// Specifies the name of the Credential. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The Client ID of the Service Principal.
   late final pulumi.Output<String> servicePrincipalId;
-
   /// A `service_principal_key` block as defined below.
-  late final pulumi.Output<CredentialServicePrincipalServicePrincipalKey?>
-  servicePrincipalKey;
-
+  late final pulumi.Output<CredentialServicePrincipalServicePrincipalKey?> servicePrincipalKey;
   /// The Tenant ID of the Service Principal.
   late final pulumi.Output<String> tenantId;
 
@@ -538,27 +531,17 @@ class CredentialServicePrincipal extends pulumi.CustomResource {
     CredentialServicePrincipalArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/credentialServicePrincipal:CredentialServicePrincipal',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datafactory/credentialServicePrincipal:CredentialServicePrincipal',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<List<String>?>('annotations');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
-    servicePrincipalKey =
-        registerOutput<CredentialServicePrincipalServicePrincipalKey?>(
-          'servicePrincipalKey',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CredentialServicePrincipalServicePrincipalKey.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    servicePrincipalKey = registerOutput<CredentialServicePrincipalServicePrincipalKey?>('servicePrincipalKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CredentialServicePrincipalServicePrincipalKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenantId = registerOutput<String>('tenantId');
   }
 
@@ -580,27 +563,17 @@ class CredentialServicePrincipal extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/credentialServicePrincipal:CredentialServicePrincipal',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datafactory/credentialServicePrincipal:CredentialServicePrincipal',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<List<String>?>('annotations');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
-    servicePrincipalKey =
-        registerOutput<CredentialServicePrincipalServicePrincipalKey?>(
-          'servicePrincipalKey',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CredentialServicePrincipalServicePrincipalKey.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    servicePrincipalKey = registerOutput<CredentialServicePrincipalServicePrincipalKey?>('servicePrincipalKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CredentialServicePrincipalServicePrincipalKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenantId = registerOutput<String>('tenantId');
   }
 }

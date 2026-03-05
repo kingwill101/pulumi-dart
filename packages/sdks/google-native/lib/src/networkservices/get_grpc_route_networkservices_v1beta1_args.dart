@@ -29,17 +29,12 @@ class GetGrpcRouteNetworkservicesV1beta1Args {
     };
   }
 
-  factory GetGrpcRouteNetworkservicesV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGrpcRouteNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetGrpcRouteNetworkservicesV1beta1Args(
       grpcRouteId: pulumi.Input.fromValue(map['grpcRouteId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,10 +8,14 @@ class GetConfigurationSetSendingOption {
 
   /// Creates a new [GetConfigurationSetSendingOption].
   /// [sendingEnabled] Specifies whether email sending is enabled.
-  GetConfigurationSetSendingOption({required this.sendingEnabled});
+  GetConfigurationSetSendingOption({
+    required this.sendingEnabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sendingEnabled': sendingEnabled};
+    return <String, dynamic>{
+      'sendingEnabled': sendingEnabled,
+    };
   }
 
   factory GetConfigurationSetSendingOption.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetConfigurationSetSendingOption {
     );
   }
 }
+

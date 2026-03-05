@@ -6,14 +6,10 @@ import 'container_recipe_instance_configuration_block_device_mapping_ebs.dart';
 class ContainerRecipeInstanceConfigurationBlockDeviceMapping {
   /// Name of the device. For example, `/dev/sda` or `/dev/xvdb`.
   final pulumi.Input<String>? deviceName;
-
   /// Configuration block with Elastic Block Storage (EBS) block device mapping settings. Detailed below.
-  final pulumi.Input<ContainerRecipeInstanceConfigurationBlockDeviceMappingEbs>?
-  ebs;
-
+  final pulumi.Input<ContainerRecipeInstanceConfigurationBlockDeviceMappingEbs>? ebs;
   /// Set to `true` to remove a mapping from the parent image.
   final pulumi.Input<bool>? noDevice;
-
   /// Virtual device name. For example, `ephemeral0`. Instance store volumes are numbered starting from 0.
   final pulumi.Input<String>? virtualName;
 
@@ -32,44 +28,19 @@ class ContainerRecipeInstanceConfigurationBlockDeviceMapping {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deviceName': ?deviceName,
-      'ebs':
-          ?pulumi.Input.mapOptionalInputValue<
-            ContainerRecipeInstanceConfigurationBlockDeviceMappingEbs,
-            Map<String, dynamic>
-          >(ebs, (value) => value.toMap()),
+      'ebs': ?pulumi.Input.mapOptionalInputValue<ContainerRecipeInstanceConfigurationBlockDeviceMappingEbs, Map<String, dynamic>>(ebs, (value) => value.toMap()),
       'noDevice': ?noDevice,
       'virtualName': ?virtualName,
     };
   }
 
-  factory ContainerRecipeInstanceConfigurationBlockDeviceMapping.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContainerRecipeInstanceConfigurationBlockDeviceMapping.fromMap(Map<String, dynamic> map) {
     return ContainerRecipeInstanceConfigurationBlockDeviceMapping(
-      deviceName: (() {
-        final guardedValue = map['deviceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ebs: (() {
-        final guardedValue = map['ebs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ContainerRecipeInstanceConfigurationBlockDeviceMappingEbs.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      noDevice: (() {
-        final guardedValue = map['noDevice'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      virtualName: (() {
-        final guardedValue = map['virtualName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deviceName: (() { final guardedValue = map['deviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ebs: (() { final guardedValue = map['ebs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerRecipeInstanceConfigurationBlockDeviceMappingEbs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      noDevice: (() { final guardedValue = map['noDevice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      virtualName: (() { final guardedValue = map['virtualName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

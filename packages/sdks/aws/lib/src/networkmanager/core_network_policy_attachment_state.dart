@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CoreNetworkPolicyAttachmentState {
   /// ID of the core network that a policy will be attached to and made `LIVE`.
   final pulumi.Input<String>? coreNetworkId;
-
   /// Policy document for creating a core network. Note that updating this argument will result in the new policy document version being set as the `LATEST` and `LIVE` policy document. Refer to the [Core network policies documentation](https://docs.aws.amazon.com/network-manager/latest/cloudwan/cloudwan-policy-change-sets.html) for more information.
   final pulumi.Input<String>? policyDocument;
-
   /// Current state of a core network.
   final pulumi.Input<String>? state;
 
@@ -33,21 +31,10 @@ class CoreNetworkPolicyAttachmentState {
 
   factory CoreNetworkPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return CoreNetworkPolicyAttachmentState(
-      coreNetworkId: (() {
-        final guardedValue = map['coreNetworkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policyDocument: (() {
-        final guardedValue = map['policyDocument'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      coreNetworkId: (() { final guardedValue = map['coreNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyDocument: (() { final guardedValue = map['policyDocument']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

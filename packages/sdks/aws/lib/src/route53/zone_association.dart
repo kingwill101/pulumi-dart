@@ -251,13 +251,10 @@ import 'zone_association_state.dart';
 class ZoneAssociation extends pulumi.CustomResource {
   /// The account ID of the account that created the hosted zone.
   late final pulumi.Output<String> owningAccount;
-
   /// The VPC to associate with the private hosted zone.
   late final pulumi.Output<String> vpcId;
-
   /// The VPC's region. Defaults to the region of the AWS provider.
   late final pulumi.Output<String> vpcRegion;
-
   /// The private hosted zone to associate.
   late final pulumi.Output<String> zoneId;
 
@@ -270,11 +267,11 @@ class ZoneAssociation extends pulumi.CustomResource {
     ZoneAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/zoneAssociation:ZoneAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/zoneAssociation:ZoneAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     owningAccount = registerOutput<String>('owningAccount');
     vpcId = registerOutput<String>('vpcId');
     vpcRegion = registerOutput<String>('vpcRegion');
@@ -299,11 +296,11 @@ class ZoneAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/zoneAssociation:ZoneAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/zoneAssociation:ZoneAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     owningAccount = registerOutput<String>('owningAccount');
     vpcId = registerOutput<String>('vpcId');
     vpcRegion = registerOutput<String>('vpcRegion');

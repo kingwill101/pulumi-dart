@@ -15,3 +15,4 @@ enum IncrementalDataRefresh {
     throw ArgumentError('Unknown IncrementalDataRefresh value: $value');
   }
 }
+

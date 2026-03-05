@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReceivedLicenseEntitlement {
   /// Indicates whether check-ins are allowed.
   final pulumi.Input<bool> allowCheckIn;
-
   /// Maximum entitlement count. Use if the unit is not None.
   final pulumi.Input<int> maxCount;
-
   /// The key name.
   final pulumi.Input<String> name;
-
   /// Indicates whether overages are allowed.
   final pulumi.Input<bool> overage;
-
   /// Entitlement unit.
   final pulumi.Input<String> unit;
-
   /// The value.
   final pulumi.Input<String> value;
 
@@ -59,3 +54,4 @@ class GetReceivedLicenseEntitlement {
     );
   }
 }
+

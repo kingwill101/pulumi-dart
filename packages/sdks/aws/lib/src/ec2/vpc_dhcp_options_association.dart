@@ -116,10 +116,8 @@ import 'vpc_dhcp_options_association_state.dart';
 class VpcDhcpOptionsAssociation extends pulumi.CustomResource {
   /// The ID of the DHCP Options Set to associate to the VPC.
   late final pulumi.Output<String> dhcpOptionsId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the VPC to which we would like to associate a DHCP Options Set.
   late final pulumi.Output<String> vpcId;
 
@@ -132,11 +130,11 @@ class VpcDhcpOptionsAssociation extends pulumi.CustomResource {
     VpcDhcpOptionsAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcDhcpOptionsAssociation:VpcDhcpOptionsAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcDhcpOptionsAssociation:VpcDhcpOptionsAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dhcpOptionsId = registerOutput<String>('dhcpOptionsId');
     region = registerOutput<String>('region');
     vpcId = registerOutput<String>('vpcId');
@@ -160,11 +158,11 @@ class VpcDhcpOptionsAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcDhcpOptionsAssociation:VpcDhcpOptionsAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcDhcpOptionsAssociation:VpcDhcpOptionsAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dhcpOptionsId = registerOutput<String>('dhcpOptionsId');
     region = registerOutput<String>('region');
     vpcId = registerOutput<String>('vpcId');

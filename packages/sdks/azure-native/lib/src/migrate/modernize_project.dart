@@ -368,20 +368,15 @@ class ModernizeProject extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<ResourceIdentityResponse?> identity;
-
   /// Gets or sets the location of the modernizeProject.
   late final pulumi.Output<String?> location;
-
   /// Gets or sets the name of the resource.
   late final pulumi.Output<String> name;
-
   /// ModernizeProject properties.
   late final pulumi.Output<ModernizeProjectModelPropertiesResponse> properties;
   late final pulumi.Output<ModernizeProjectModelResponseSystemData> systemData;
-
   /// Gets or sets the resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -394,44 +389,17 @@ class ModernizeProject extends pulumi.CustomResource {
     ModernizeProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:migrate:ModernizeProject',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:migrate:ModernizeProject',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    identity = registerOutput<ResourceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ModernizeProjectModelPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ModernizeProjectModelPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<ModernizeProjectModelResponseSystemData>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ModernizeProjectModelResponseSystemData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ModernizeProjectModelPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModernizeProjectModelPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<ModernizeProjectModelResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModernizeProjectModelResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

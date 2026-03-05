@@ -311,15 +311,12 @@ import 'disk_resource_policy_attachment_state.dart';
 class DiskResourcePolicyAttachment extends pulumi.CustomResource {
   /// The name of the disk in which the resource policies are attached to.
   late final pulumi.Output<String> disk;
-
   /// The resource policy to be attached to the disk for scheduling snapshot
   /// creation. Do not specify the self link.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// A reference to the zone where the disk resides.
   late final pulumi.Output<String> zone;
 
@@ -332,11 +329,11 @@ class DiskResourcePolicyAttachment extends pulumi.CustomResource {
     DiskResourcePolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     disk = registerOutput<String>('disk');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -361,11 +358,11 @@ class DiskResourcePolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     disk = registerOutput<String>('disk');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -17,17 +17,12 @@ import 'web_app_azure_storage_accounts_slot_args.dart';
 class WebAppAzureStorageAccountsSlot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Azure storage accounts.
-  late final pulumi.Output<Map<String, AzureStorageInfoValueResponse>>
-  properties;
-
+  late final pulumi.Output<Map<String, AzureStorageInfoValueResponse>> properties;
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -40,27 +35,15 @@ class WebAppAzureStorageAccountsSlot extends pulumi.CustomResource {
     WebAppAzureStorageAccountsSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppAzureStorageAccountsSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppAzureStorageAccountsSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<Map<String, AzureStorageInfoValueResponse>>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeMapValues<AzureStorageInfoValueResponse>(
-          guardedValue,
-          (value) => AzureStorageInfoValueResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      },
-    );
+    properties = registerOutput<Map<String, AzureStorageInfoValueResponse>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<AzureStorageInfoValueResponse>(guardedValue, (value) => AzureStorageInfoValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

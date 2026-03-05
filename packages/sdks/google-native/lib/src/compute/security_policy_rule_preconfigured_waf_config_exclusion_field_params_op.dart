@@ -6,22 +6,16 @@ enum SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp {
   equalsAny("EQUALS_ANY"),
   startsWith("STARTS_WITH");
 
-  const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(
-    this.wireValue,
-  );
+  const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(this.wireValue);
   final String wireValue;
 
-  static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp
-  fromValue(String value) {
-    for (final item
-        in SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp
-            .values) {
+  static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp fromValue(String value) {
+    for (final item in SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp value: $value',
-    );
+    throw ArgumentError('Unknown SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp value: $value');
   }
 }
+

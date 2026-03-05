@@ -6,13 +6,7 @@ import 'stream_backfill_all_postgresql_excluded_objects_postgresql_schema_postgr
 class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema {
   /// Tables in the schema.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<
-      StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable
-    >
-  >?
-  postgresqlTables;
-
+  final pulumi.Input<List<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable>>? postgresqlTables;
   /// Database name.
   final pulumi.Input<String> schema;
 
@@ -26,44 +20,16 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postgresqlTables':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable
-            >,
-            List<Map<String, dynamic>>
-          >(
-            postgresqlTables,
-            (value) =>
-                pulumi.Input.encodeList<
-                  StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'postgresqlTables': ?pulumi.Input.mapOptionalInputValue<List<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable>, List<Map<String, dynamic>>>(postgresqlTables, (value) => pulumi.Input.encodeList<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schema': schema,
     };
   }
 
-  factory StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema(
-      postgresqlTables: (() {
-        final guardedValue = map['postgresqlTables'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable
-          >(
-            guardedValue,
-            (value) =>
-                StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      postgresqlTables: (() { final guardedValue = map['postgresqlTables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable>(guardedValue, (value) => StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable.fromMap((value as Map).cast<String, dynamic>()))); })(),
       schema: pulumi.Input.fromValue(map['schema'] as String),
     );
   }
 }
+

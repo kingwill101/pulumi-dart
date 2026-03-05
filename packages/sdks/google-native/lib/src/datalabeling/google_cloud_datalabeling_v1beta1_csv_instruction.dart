@@ -9,21 +9,20 @@ class GoogleCloudDatalabelingV1beta1CsvInstruction {
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1CsvInstruction].
   /// [gcsFileUri] CSV file for the instruction. Only gcs path is allowed.
-  GoogleCloudDatalabelingV1beta1CsvInstruction({this.gcsFileUri});
+  GoogleCloudDatalabelingV1beta1CsvInstruction({
+    this.gcsFileUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'gcsFileUri': ?gcsFileUri};
+    return <String, dynamic>{
+      'gcsFileUri': ?gcsFileUri,
+    };
   }
 
-  factory GoogleCloudDatalabelingV1beta1CsvInstruction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatalabelingV1beta1CsvInstruction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1CsvInstruction(
-      gcsFileUri: (() {
-        final guardedValue = map['gcsFileUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gcsFileUri: (() { final guardedValue = map['gcsFileUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -17,3 +17,4 @@ enum AfdCipherSuiteSetType {
     throw ArgumentError('Unknown AfdCipherSuiteSetType value: $value');
   }
 }
+

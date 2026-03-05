@@ -6,17 +6,13 @@ enum NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta {
   const NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta(this.wireValue);
   final String wireValue;
 
-  static NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta.values) {
+  static NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta fromValue(String value) {
+    for (final item in NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta value: $value');
   }
 }
+

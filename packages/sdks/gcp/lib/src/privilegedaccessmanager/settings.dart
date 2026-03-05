@@ -293,30 +293,21 @@ class Settings extends pulumi.CustomResource {
   /// Create timestamp. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
   /// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
   late final pulumi.Output<String> createTime;
-
   /// EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
   /// Structure is documented below.
-  late final pulumi.Output<SettingsEmailNotificationSettings?>
-  emailNotificationSettings;
-
+  late final pulumi.Output<SettingsEmailNotificationSettings?> emailNotificationSettings;
   /// Fingerprint for optimistic concurrency returned in the response of GetSettings. Must be provided in the requests to UpdateSettings. If the value provided does not match the value known to the server, ABORTED will be thrown, and the client should retry the read-modify-write cycle.
   late final pulumi.Output<String> etag;
-
   /// The region of the PAM settings resource.
   late final pulumi.Output<String> location;
-
   /// Name of the settings resource. Possible formats:
   /// projects/{project-id|project-number}/locations/{location}/settings folders/{folder-number}/locations/{location}/settings organizations/{organization-number}/locations/{location}/settings
   late final pulumi.Output<String> name;
-
   /// Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
   late final pulumi.Output<String> parent;
-
   /// This controls the node-level settings for allowing service accounts as approvers.
   /// Structure is documented below.
-  late final pulumi.Output<SettingsServiceAccountApproverSettings?>
-  serviceAccountApproverSettings;
-
+  late final pulumi.Output<SettingsServiceAccountApproverSettings?> serviceAccountApproverSettings;
   /// Update timestamp. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
   /// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
   late final pulumi.Output<String> updateTime;
@@ -330,38 +321,18 @@ class Settings extends pulumi.CustomResource {
     SettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:privilegedaccessmanager/settings:Settings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:privilegedaccessmanager/settings:Settings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    emailNotificationSettings =
-        registerOutput<SettingsEmailNotificationSettings?>(
-          'emailNotificationSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SettingsEmailNotificationSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    emailNotificationSettings = registerOutput<SettingsEmailNotificationSettings?>('emailNotificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsEmailNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    serviceAccountApproverSettings =
-        registerOutput<SettingsServiceAccountApproverSettings?>(
-          'serviceAccountApproverSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SettingsServiceAccountApproverSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    serviceAccountApproverSettings = registerOutput<SettingsServiceAccountApproverSettings?>('serviceAccountApproverSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsServiceAccountApproverSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -383,38 +354,18 @@ class Settings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:privilegedaccessmanager/settings:Settings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:privilegedaccessmanager/settings:Settings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    emailNotificationSettings =
-        registerOutput<SettingsEmailNotificationSettings?>(
-          'emailNotificationSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SettingsEmailNotificationSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    emailNotificationSettings = registerOutput<SettingsEmailNotificationSettings?>('emailNotificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsEmailNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    serviceAccountApproverSettings =
-        registerOutput<SettingsServiceAccountApproverSettings?>(
-          'serviceAccountApproverSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SettingsServiceAccountApproverSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    serviceAccountApproverSettings = registerOutput<SettingsServiceAccountApproverSettings?>('serviceAccountApproverSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsServiceAccountApproverSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

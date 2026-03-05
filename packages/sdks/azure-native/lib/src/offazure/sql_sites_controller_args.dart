@@ -10,19 +10,14 @@ import 'site_appliance_properties.dart';
 class SqlSitesControllerArgs {
   /// Gets or sets the discovery scenario.
   final pulumi.Input<String>? discoveryScenario;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Gets or sets the appliance details used by service to communicate
   ///
   /// to the appliance.
-  final pulumi.Input<List<SiteApplianceProperties>>?
-  siteAppliancePropertiesCollection;
-
+  final pulumi.Input<List<SiteApplianceProperties>>? siteAppliancePropertiesCollection;
   /// Site name
   final pulumi.Input<String> siteName;
-
   /// SQL site name.
   final pulumi.Input<String>? sqlSiteName;
 
@@ -44,18 +39,7 @@ class SqlSitesControllerArgs {
     return <String, dynamic>{
       'discoveryScenario': ?discoveryScenario,
       'resourceGroupName': resourceGroupName,
-      'siteAppliancePropertiesCollection':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SiteApplianceProperties>,
-            List<Map<String, dynamic>>
-          >(
-            siteAppliancePropertiesCollection,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SiteApplianceProperties,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'siteAppliancePropertiesCollection': ?pulumi.Input.mapOptionalInputValue<List<SiteApplianceProperties>, List<Map<String, dynamic>>>(siteAppliancePropertiesCollection, (value) => pulumi.Input.encodeList<SiteApplianceProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
       'siteName': siteName,
       'sqlSiteName': ?sqlSiteName,
     };
@@ -63,32 +47,12 @@ class SqlSitesControllerArgs {
 
   factory SqlSitesControllerArgs.fromMap(Map<String, dynamic> map) {
     return SqlSitesControllerArgs(
-      discoveryScenario: (() {
-        final guardedValue = map['discoveryScenario'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      siteAppliancePropertiesCollection: (() {
-        final guardedValue = map['siteAppliancePropertiesCollection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SiteApplianceProperties>(
-            guardedValue,
-            (value) => SiteApplianceProperties.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      discoveryScenario: (() { final guardedValue = map['discoveryScenario']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      siteAppliancePropertiesCollection: (() { final guardedValue = map['siteAppliancePropertiesCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SiteApplianceProperties>(guardedValue, (value) => SiteApplianceProperties.fromMap((value as Map).cast<String, dynamic>()))); })(),
       siteName: pulumi.Input.fromValue(map['siteName'] as String),
-      sqlSiteName: (() {
-        final guardedValue = map['sqlSiteName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sqlSiteName: (() { final guardedValue = map['sqlSiteName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

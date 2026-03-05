@@ -8,67 +8,46 @@ import 'google_cloud_apigee_v1_report_property_response.dart';
 class GetReportResult {
   /// This field contains the chart type for the report
   final String chartType;
-
   /// Legacy field: not used. This field contains a list of comments associated with custom report
   final List<String> comments;
-
   /// Unix time when the app was created json key: createdAt
   final String createdAt;
-
   /// This contains the list of dimensions for the report
   final List<String> dimensions;
-
   /// This is the display name for the report
   final String displayName;
-
   /// Environment name
   final String environment;
-
   /// This field contains the filter expression
   final String filter;
-
   /// Legacy field: not used. Contains the from time for the report
   final String fromTime;
-
   /// Modified time of this entity as milliseconds since epoch. json key: lastModifiedAt
   final String lastModifiedAt;
-
   /// Last viewed time of this entity as milliseconds since epoch
   final String lastViewedAt;
-
   /// Legacy field: not used This field contains the limit for the result retrieved
   final String limit;
-
   /// This contains the list of metrics
   final List<GoogleCloudApigeeV1CustomReportMetricResponse> metrics;
-
   /// Unique identifier for the report T his is a legacy field used to encode custom report unique id
   final String name;
-
   /// Legacy field: not used. This field contains the offset for the data
   final String offset;
-
   /// Organization name
   final String organization;
-
   /// This field contains report properties such as ui metadata etc.
   final List<GoogleCloudApigeeV1ReportPropertyResponse> properties;
-
   /// Legacy field: not used much. Contains the list of sort by columns
   final List<String> sortByCols;
-
   /// Legacy field: not used much. Contains the sort order for the sort columns
   final String sortOrder;
-
   /// Legacy field: not used. This field contains a list of tags associated with custom report
   final List<String> tags;
-
   /// This field contains the time unit of aggregation for the report
   final String timeUnit;
-
   /// Legacy field: not used. Contains the end time for the report
   final String toTime;
-
   /// Legacy field: not used. This field contains the top k parameter value for restricting the result
   final String topk;
 
@@ -133,19 +112,11 @@ class GetReportResult {
       'lastModifiedAt': lastModifiedAt,
       'lastViewedAt': lastViewedAt,
       'limit': limit,
-      'metrics':
-          pulumi.Input.encodeList<
-            GoogleCloudApigeeV1CustomReportMetricResponse,
-            Map<String, dynamic>
-          >(metrics, (value) => value.toMap()),
+      'metrics': pulumi.Input.encodeList<GoogleCloudApigeeV1CustomReportMetricResponse, Map<String, dynamic>>(metrics, (value) => value.toMap()),
       'name': name,
       'offset': offset,
       'organization': organization,
-      'properties':
-          pulumi.Input.encodeList<
-            GoogleCloudApigeeV1ReportPropertyResponse,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.encodeList<GoogleCloudApigeeV1ReportPropertyResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'sortByCols': sortByCols,
       'sortOrder': sortOrder,
       'tags': tags,
@@ -168,24 +139,11 @@ class GetReportResult {
       lastModifiedAt: map['lastModifiedAt'] as String,
       lastViewedAt: map['lastViewedAt'] as String,
       limit: map['limit'] as String,
-      metrics:
-          pulumi
-              .Input.decodeList<GoogleCloudApigeeV1CustomReportMetricResponse>(
-            map['metrics']!,
-            (value) => GoogleCloudApigeeV1CustomReportMetricResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      metrics: pulumi.Input.decodeList<GoogleCloudApigeeV1CustomReportMetricResponse>(map['metrics']!, (value) => GoogleCloudApigeeV1CustomReportMetricResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       offset: map['offset'] as String,
       organization: map['organization'] as String,
-      properties:
-          pulumi.Input.decodeList<GoogleCloudApigeeV1ReportPropertyResponse>(
-            map['properties']!,
-            (value) => GoogleCloudApigeeV1ReportPropertyResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      properties: pulumi.Input.decodeList<GoogleCloudApigeeV1ReportPropertyResponse>(map['properties']!, (value) => GoogleCloudApigeeV1ReportPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
       sortByCols: (map['sortByCols'] as List).cast<String>(),
       sortOrder: map['sortOrder'] as String,
       tags: (map['tags'] as List).cast<String>(),
@@ -195,3 +153,4 @@ class GetReportResult {
     );
   }
 }
+

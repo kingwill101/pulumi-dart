@@ -7,24 +7,12 @@ import 'get_cluster_node_pool_node_config_guest_accelerator_gpu_sharing_config.d
 class GetClusterNodePoolNodeConfigGuestAccelerator {
   /// The number of the accelerator cards exposed to an instance.
   final pulumi.Input<int> count;
-
   /// Configuration for auto installation of GPU driver.
-  final pulumi.Input<
-    List<
-      GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig
-    >
-  >
-  gpuDriverInstallationConfigs;
-
+  final pulumi.Input<List<GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig>> gpuDriverInstallationConfigs;
   /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
   final pulumi.Input<String> gpuPartitionSize;
-
   /// Configuration for GPU sharing.
-  final pulumi.Input<
-    List<GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig>
-  >
-  gpuSharingConfigs;
-
+  final pulumi.Input<List<GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig>> gpuSharingConfigs;
   /// The accelerator type resource name.
   final pulumi.Input<String> type;
 
@@ -45,68 +33,21 @@ class GetClusterNodePoolNodeConfigGuestAccelerator {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'count': count,
-      'gpuDriverInstallationConfigs':
-          pulumi.Input.mapInputValue<
-            List<
-              GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig
-            >,
-            List<Map<String, dynamic>>
-          >(
-            gpuDriverInstallationConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'gpuDriverInstallationConfigs': pulumi.Input.mapInputValue<List<GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig>, List<Map<String, dynamic>>>(gpuDriverInstallationConfigs, (value) => pulumi.Input.encodeList<GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'gpuPartitionSize': gpuPartitionSize,
-      'gpuSharingConfigs':
-          pulumi.Input.mapInputValue<
-            List<GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig>,
-            List<Map<String, dynamic>>
-          >(
-            gpuSharingConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'gpuSharingConfigs': pulumi.Input.mapInputValue<List<GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig>, List<Map<String, dynamic>>>(gpuSharingConfigs, (value) => pulumi.Input.encodeList<GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
-  factory GetClusterNodePoolNodeConfigGuestAccelerator.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodePoolNodeConfigGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigGuestAccelerator(
       count: pulumi.Input.fromValue(map['count'] as int),
-      gpuDriverInstallationConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig
-        >(
-          map['gpuDriverInstallationConfigs']!,
-          (value) =>
-              GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      gpuPartitionSize: pulumi.Input.fromValue(
-        map['gpuPartitionSize'] as String,
-      ),
-      gpuSharingConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig
-        >(
-          map['gpuSharingConfigs']!,
-          (value) =>
-              GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      gpuDriverInstallationConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig>(map['gpuDriverInstallationConfigs']!, (value) => GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      gpuPartitionSize: pulumi.Input.fromValue(map['gpuPartitionSize'] as String),
+      gpuSharingConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig>(map['gpuSharingConfigs']!, (value) => GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap((value as Map).cast<String, dynamic>()))),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

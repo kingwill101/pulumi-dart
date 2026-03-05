@@ -7,21 +7,16 @@ import 'get_backup_vault_identity.dart';
 class GetBackupVaultResult {
   /// Specifies the type of the data store.
   final String datastoreType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A `identity` block as defined below.
   final List<GetBackupVaultIdentity> identities;
-
   /// The Azure Region where the Backup Vault exists.
   final String location;
   final String name;
-
   /// Specifies the backup storage redundancy.
   final String redundancy;
   final String resourceGroupName;
-
   /// A mapping of tags which are assigned to the Backup Vault.
   final Map<String, String> tags;
 
@@ -49,11 +44,7 @@ class GetBackupVaultResult {
     return <String, dynamic>{
       'datastoreType': datastoreType,
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetBackupVaultIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
+      'identities': pulumi.Input.encodeList<GetBackupVaultIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'location': location,
       'name': name,
       'redundancy': redundancy,
@@ -66,12 +57,7 @@ class GetBackupVaultResult {
     return GetBackupVaultResult(
       datastoreType: map['datastoreType'] as String,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetBackupVaultIdentity>(
-        map['identities']!,
-        (value) => GetBackupVaultIdentity.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      identities: pulumi.Input.decodeList<GetBackupVaultIdentity>(map['identities']!, (value) => GetBackupVaultIdentity.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
       redundancy: map['redundancy'] as String,
@@ -80,3 +66,4 @@ class GetBackupVaultResult {
     );
   }
 }
+

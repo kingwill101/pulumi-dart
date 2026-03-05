@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWafPbSuggestionsArgs {
   /// The minimum learning score for suggestions.
   final pulumi.Input<int> minimumLearningScore;
-
   /// Partition on which WAF policy is located.
   final pulumi.Input<String> partition;
-
   /// System generated id of the WAF policy
   final pulumi.Input<String>? policyId;
-
   /// WAF policy name from which PB suggestions should be exported.
   final pulumi.Input<String> policyName;
 
@@ -42,16 +39,11 @@ class GetWafPbSuggestionsArgs {
 
   factory GetWafPbSuggestionsArgs.fromMap(Map<String, dynamic> map) {
     return GetWafPbSuggestionsArgs(
-      minimumLearningScore: pulumi.Input.fromValue(
-        map['minimumLearningScore'] as int,
-      ),
+      minimumLearningScore: pulumi.Input.fromValue(map['minimumLearningScore'] as int),
       partition: pulumi.Input.fromValue(map['partition'] as String),
-      policyId: (() {
-        final guardedValue = map['policyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyName: pulumi.Input.fromValue(map['policyName'] as String),
     );
   }
 }
+

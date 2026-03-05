@@ -189,43 +189,30 @@ import 'volume_args.dart';
 class Volume extends pulumi.CustomResource {
   /// The list of resource IDs that attach the volume. It may include virtual machines and Hybrid AKS clusters.
   late final pulumi.Output<List<String>> attachedTo;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The more detailed status of the volume.
   late final pulumi.Output<String> detailedStatus;
-
   /// The descriptive message about the current detailed status.
   late final pulumi.Output<String> detailedStatusMessage;
-
   /// Resource ETag.
   late final pulumi.Output<String> etag;
-
   /// The extended location of the cluster associated with the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the volume.
   late final pulumi.Output<String> provisioningState;
-
   /// The unique identifier of the volume.
   late final pulumi.Output<String> serialNumber;
-
   /// The size of the allocation for this volume in Mebibytes.
   late final pulumi.Output<double> sizeMiB;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -233,43 +220,28 @@ class Volume extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_networkcloud_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:networkcloud:Volume',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Volume(
+    String name, {
+    VolumeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:networkcloud:Volume',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachedTo = registerOutput<List<String>>('attachedTo');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     detailedStatus = registerOutput<String>('detailedStatus');
     detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
     etag = registerOutput<String>('etag');
-    extendedLocation = registerOutput<ExtendedLocationResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     serialNumber = registerOutput<String>('serialNumber');
     sizeMiB = registerOutput<double>('sizeMiB');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

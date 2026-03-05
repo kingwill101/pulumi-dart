@@ -766,58 +766,40 @@ import 'front_door_args.dart';
 class FrontDoor extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Backend pools available to routing rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> backendPools;
-
   /// Settings for all backendPools
   late final pulumi.Output<BackendPoolsSettingsResponse?> backendPoolsSettings;
-
   /// The host that each frontendEndpoint must CNAME to.
   late final pulumi.Output<String> cname;
-
   /// Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'
   late final pulumi.Output<String?> enabledState;
-
   /// Key-Value pair representing additional properties for frontdoor.
   late final pulumi.Output<Map<String, String>> extendedProperties;
-
   /// A friendly name for the frontDoor
   late final pulumi.Output<String?> friendlyName;
-
   /// The Id of the frontdoor.
   late final pulumi.Output<String> frontdoorId;
-
   /// Frontend endpoints available to routing rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> frontendEndpoints;
-
   /// Health probe settings associated with this Front Door instance.
   late final pulumi.Output<List<Map<String, dynamic>>?> healthProbeSettings;
-
   /// Load balancing settings associated with this Front Door instance.
   late final pulumi.Output<List<Map<String, dynamic>>?> loadBalancingSettings;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the Front Door.
   late final pulumi.Output<String> provisioningState;
-
   /// Resource status of the Front Door.
   late final pulumi.Output<String> resourceState;
-
   /// Routing rules associated with this Front Door.
   late final pulumi.Output<List<Map<String, dynamic>>?> routingRules;
-
   /// Rules Engine Configurations available to routing rules.
   late final pulumi.Output<List<Map<String, dynamic>>> rulesEngines;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -830,39 +812,22 @@ class FrontDoor extends pulumi.CustomResource {
     FrontDoorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:frontdoor:FrontDoor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:frontdoor:FrontDoor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     backendPools = registerOutput<List<Map<String, dynamic>>?>('backendPools');
-    backendPoolsSettings = registerOutput<BackendPoolsSettingsResponse?>(
-      'backendPoolsSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackendPoolsSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    backendPoolsSettings = registerOutput<BackendPoolsSettingsResponse?>('backendPoolsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendPoolsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cname = registerOutput<String>('cname');
     enabledState = registerOutput<String?>('enabledState');
-    extendedProperties = registerOutput<Map<String, String>>(
-      'extendedProperties',
-    );
+    extendedProperties = registerOutput<Map<String, String>>('extendedProperties');
     friendlyName = registerOutput<String?>('friendlyName');
     frontdoorId = registerOutput<String>('frontdoorId');
-    frontendEndpoints = registerOutput<List<Map<String, dynamic>>?>(
-      'frontendEndpoints',
-    );
-    healthProbeSettings = registerOutput<List<Map<String, dynamic>>?>(
-      'healthProbeSettings',
-    );
-    loadBalancingSettings = registerOutput<List<Map<String, dynamic>>?>(
-      'loadBalancingSettings',
-    );
+    frontendEndpoints = registerOutput<List<Map<String, dynamic>>?>('frontendEndpoints');
+    healthProbeSettings = registerOutput<List<Map<String, dynamic>>?>('healthProbeSettings');
+    loadBalancingSettings = registerOutput<List<Map<String, dynamic>>?>('loadBalancingSettings');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

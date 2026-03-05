@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventHubDirectDestinationResponse {
   /// The resource ID of the event hub.
   final pulumi.Input<String>? eventHubResourceId;
-
   /// A friendly name for the destination.
   /// This name should be unique across all destinations (regardless of type) within the data collection rule.
   final pulumi.Input<String>? name;
@@ -13,7 +12,10 @@ class EventHubDirectDestinationResponse {
   /// Creates a new [EventHubDirectDestinationResponse].
   /// [eventHubResourceId] The resource ID of the event hub.
   /// [name] A friendly name for the destination.
-  EventHubDirectDestinationResponse({this.eventHubResourceId, this.name});
+  EventHubDirectDestinationResponse({
+    this.eventHubResourceId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class EventHubDirectDestinationResponse {
 
   factory EventHubDirectDestinationResponse.fromMap(Map<String, dynamic> map) {
     return EventHubDirectDestinationResponse(
-      eventHubResourceId: (() {
-        final guardedValue = map['eventHubResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eventHubResourceId: (() { final guardedValue = map['eventHubResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

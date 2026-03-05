@@ -11,8 +11,7 @@ enum StatefulRuleGroupOverrideAction {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown StatefulRuleGroupOverrideAction value: $value',
-    );
+    throw ArgumentError('Unknown StatefulRuleGroupOverrideAction value: $value');
   }
 }
+

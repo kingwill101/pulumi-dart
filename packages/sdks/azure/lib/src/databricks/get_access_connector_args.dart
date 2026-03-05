@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessConnectorArgs {
   /// The name of this Databricks Access Connector.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group where the Databricks Access Connector exists. Changing this forces a new Databricks Access Connector to be created.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetAccessConnectorArgs].
   /// [name] The name of this Databricks Access Connector.
   /// [resourceGroupName] The name of the Resource Group where the Databricks Access Connector exists. Changing this forces a new Databricks Access Connector to be created.
-  GetAccessConnectorArgs({required this.name, required this.resourceGroupName});
+  GetAccessConnectorArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetAccessConnectorArgs {
   factory GetAccessConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessConnectorArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

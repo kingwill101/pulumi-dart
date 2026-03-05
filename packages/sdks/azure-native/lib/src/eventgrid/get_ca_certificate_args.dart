@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCaCertificateArgs {
   /// Name of the CA certificate.
   final pulumi.Input<String> caCertificateName;
-
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
-
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetCaCertificateArgs {
 
   factory GetCaCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCaCertificateArgs(
-      caCertificateName: pulumi.Input.fromValue(
-        map['caCertificateName'] as String,
-      ),
+      caCertificateName: pulumi.Input.fromValue(map['caCertificateName'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listFeatureSubscription.
 class ListFeatureSubscriptionResult {
   /// Features with enabled status
@@ -7,10 +8,14 @@ class ListFeatureSubscriptionResult {
 
   /// Creates a new [ListFeatureSubscriptionResult].
   /// [features] Features with enabled status
-  ListFeatureSubscriptionResult({required this.features});
+  ListFeatureSubscriptionResult({
+    required this.features,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'features': features};
+    return <String, dynamic>{
+      'features': features,
+    };
   }
 
   factory ListFeatureSubscriptionResult.fromMap(Map<String, dynamic> map) {
@@ -19,3 +24,4 @@ class ListFeatureSubscriptionResult {
     );
   }
 }
+

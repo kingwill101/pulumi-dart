@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OpenApiExplorerApiMcpServerApi {
   /// API version information, typically in date format—for example, the version for ECS is 2014-05-26.
   final pulumi.Input<String> apiVersion;
-
   /// Product code, such as Ecs.
   final pulumi.Input<String> product;
-
   /// Selectors in array format, where each item is an API name—for example, GetApiDefinition or ListApiDefinitions. You can obtain the complete list of supported APIs from the Alibaba Cloud Developer Portal.
   final pulumi.Input<List<String>> selectors;
 
@@ -34,9 +32,8 @@ class OpenApiExplorerApiMcpServerApi {
     return OpenApiExplorerApiMcpServerApi(
       apiVersion: pulumi.Input.fromValue(map['apiVersion'] as String),
       product: pulumi.Input.fromValue(map['product'] as String),
-      selectors: pulumi.Input.fromValue(
-        (map['selectors'] as List).cast<String>(),
-      ),
+      selectors: pulumi.Input.fromValue((map['selectors'] as List).cast<String>()),
     );
   }
 }
+

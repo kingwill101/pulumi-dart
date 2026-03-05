@@ -15,3 +15,4 @@ enum LinkTypes {
     throw ArgumentError('Unknown LinkTypes value: $value');
   }
 }
+

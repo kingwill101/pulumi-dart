@@ -5,16 +5,12 @@ import 'team_access_token_args.dart';
 class TeamAccessToken extends pulumi.CustomResource {
   /// Optional. Description for the token.
   late final pulumi.Output<String?> description;
-
   /// The name for the token. This must be unique amongst all machine tokens within your organization.
   late final pulumi.Output<String> name;
-
   /// The organization's name.
   late final pulumi.Output<String> organizationName;
-
   /// The team name.
   late final pulumi.Output<String> teamName;
-
   /// The token's value.
   late final pulumi.Output<String> value;
 
@@ -27,11 +23,11 @@ class TeamAccessToken extends pulumi.CustomResource {
     TeamAccessTokenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'pulumiservice:index:TeamAccessToken',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'pulumiservice:index:TeamAccessToken',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     organizationName = registerOutput<String>('organizationName');

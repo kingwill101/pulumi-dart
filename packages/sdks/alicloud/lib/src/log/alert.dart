@@ -1732,83 +1732,57 @@ import 'alert_template_configuration.dart';
 class Alert extends pulumi.CustomResource {
   /// Alert description.
   late final pulumi.Output<String?> alertDescription;
-
   /// Alert displayname.
   late final pulumi.Output<String> alertDisplayname;
-
   /// Name of logstore for configuring alarm service.
   late final pulumi.Output<String> alertName;
-
   /// Annotations for new alert.
   late final pulumi.Output<List<Map<String, dynamic>>?> annotations;
-
   /// whether to add automatic annotation, default is false.
   late final pulumi.Output<bool?> autoAnnotation;
-
   /// Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
   late final pulumi.Output<String?> condition;
   late final pulumi.Output<String?> dashboard;
-
   /// Group configuration for new alert.
   late final pulumi.Output<AlertGroupConfiguration?> groupConfiguration;
-
   /// Join configuration for different queries.
   late final pulumi.Output<List<Map<String, dynamic>>?> joinConfigurations;
-
   /// Labels for new alert.
   late final pulumi.Output<List<Map<String, dynamic>>?> labels;
-
   /// Timestamp, notifications before closing again.
   late final pulumi.Output<int> muteUntil;
-
   /// Switch for whether new alert fires when no data happens, default is false.
   late final pulumi.Output<bool?> noDataFire;
-
   /// when no data happens, the severity of new alert.
   late final pulumi.Output<int?> noDataSeverity;
-
   /// Alarm information notification list, Deprecated from 1.161.0+.
   late final pulumi.Output<List<Map<String, dynamic>>?> notificationLists;
-
   /// Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
   late final pulumi.Output<int?> notifyThreshold;
-
   /// Policy configuration for new alert.
   late final pulumi.Output<AlertPolicyConfiguration?> policyConfiguration;
-
   /// The project name.
   late final pulumi.Output<String> projectName;
-
   /// Multiple conditions for configured alarm query.
   late final pulumi.Output<List<Map<String, dynamic>>?> queryLists;
-
   /// schedule for alert.
   late final pulumi.Output<AlertSchedule?> schedule;
-
   /// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
   late final pulumi.Output<String> scheduleInterval;
-
   /// Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
   late final pulumi.Output<String> scheduleType;
-
   /// when new alert is resolved, whether to notify, default is false.
   late final pulumi.Output<bool?> sendResolved;
-
   /// Severity configuration for new alert.
   late final pulumi.Output<List<Map<String, dynamic>>?> severityConfigurations;
-
   /// Template configuration for alert, when `type` is `tpl`.
   late final pulumi.Output<AlertTemplateConfiguration?> templateConfiguration;
-
   /// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
   late final pulumi.Output<int> threshold;
-
   /// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
   late final pulumi.Output<String?> throttling;
-
   /// The type of new alert, `default` for custom alert, `tpl` for template alert.
   late final pulumi.Output<String?> type;
-
   /// The version of alert, new alert is 2.0.
   late final pulumi.Output<String?> version;
 
@@ -1816,13 +1790,16 @@ class Alert extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Alert]. {@macro pulumi_log_alert_alert_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Alert(String name, {AlertArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:log/alert:Alert',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Alert(
+    String name, {
+    AlertArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:log/alert:Alert',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertDescription = registerOutput<String?>('alertDescription');
     alertDisplayname = registerOutput<String>('alertDisplayname');
     alertName = registerOutput<String>('alertName');
@@ -1830,65 +1807,23 @@ class Alert extends pulumi.CustomResource {
     autoAnnotation = registerOutput<bool?>('autoAnnotation');
     condition = registerOutput<String?>('condition');
     dashboard = registerOutput<String?>('dashboard');
-    groupConfiguration = registerOutput<AlertGroupConfiguration?>(
-      'groupConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertGroupConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    joinConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'joinConfigurations',
-    );
+    groupConfiguration = registerOutput<AlertGroupConfiguration?>('groupConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertGroupConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    joinConfigurations = registerOutput<List<Map<String, dynamic>>?>('joinConfigurations');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');
     muteUntil = registerOutput<int>('muteUntil');
     noDataFire = registerOutput<bool?>('noDataFire');
     noDataSeverity = registerOutput<int?>('noDataSeverity');
-    notificationLists = registerOutput<List<Map<String, dynamic>>?>(
-      'notificationLists',
-    );
+    notificationLists = registerOutput<List<Map<String, dynamic>>?>('notificationLists');
     notifyThreshold = registerOutput<int?>('notifyThreshold');
-    policyConfiguration = registerOutput<AlertPolicyConfiguration?>(
-      'policyConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertPolicyConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    policyConfiguration = registerOutput<AlertPolicyConfiguration?>('policyConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertPolicyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     projectName = registerOutput<String>('projectName');
     queryLists = registerOutput<List<Map<String, dynamic>>?>('queryLists');
-    schedule = registerOutput<AlertSchedule?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<AlertSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scheduleInterval = registerOutput<String>('scheduleInterval');
     scheduleType = registerOutput<String>('scheduleType');
     sendResolved = registerOutput<bool?>('sendResolved');
-    severityConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'severityConfigurations',
-    );
-    templateConfiguration = registerOutput<AlertTemplateConfiguration?>(
-      'templateConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertTemplateConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    severityConfigurations = registerOutput<List<Map<String, dynamic>>?>('severityConfigurations');
+    templateConfiguration = registerOutput<AlertTemplateConfiguration?>('templateConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertTemplateConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     threshold = registerOutput<int>('threshold');
     throttling = registerOutput<String?>('throttling');
     type = registerOutput<String?>('type');
@@ -1896,7 +1831,11 @@ class Alert extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Alert] resource's state with the given [name] and [id].
-  static Alert get(String name, pulumi.Input<String> id, {AlertState? state}) {
+  static Alert get(
+    String name,
+    pulumi.Input<String> id, {
+    AlertState? state,
+  }) {
     return Alert._get(
       name,
       state: state?.toMap(),
@@ -1909,11 +1848,11 @@ class Alert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:log/alert:Alert',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:log/alert:Alert',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertDescription = registerOutput<String?>('alertDescription');
     alertDisplayname = registerOutput<String>('alertDisplayname');
     alertName = registerOutput<String>('alertName');
@@ -1921,65 +1860,23 @@ class Alert extends pulumi.CustomResource {
     autoAnnotation = registerOutput<bool?>('autoAnnotation');
     condition = registerOutput<String?>('condition');
     dashboard = registerOutput<String?>('dashboard');
-    groupConfiguration = registerOutput<AlertGroupConfiguration?>(
-      'groupConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertGroupConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    joinConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'joinConfigurations',
-    );
+    groupConfiguration = registerOutput<AlertGroupConfiguration?>('groupConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertGroupConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    joinConfigurations = registerOutput<List<Map<String, dynamic>>?>('joinConfigurations');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');
     muteUntil = registerOutput<int>('muteUntil');
     noDataFire = registerOutput<bool?>('noDataFire');
     noDataSeverity = registerOutput<int?>('noDataSeverity');
-    notificationLists = registerOutput<List<Map<String, dynamic>>?>(
-      'notificationLists',
-    );
+    notificationLists = registerOutput<List<Map<String, dynamic>>?>('notificationLists');
     notifyThreshold = registerOutput<int?>('notifyThreshold');
-    policyConfiguration = registerOutput<AlertPolicyConfiguration?>(
-      'policyConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertPolicyConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    policyConfiguration = registerOutput<AlertPolicyConfiguration?>('policyConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertPolicyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     projectName = registerOutput<String>('projectName');
     queryLists = registerOutput<List<Map<String, dynamic>>?>('queryLists');
-    schedule = registerOutput<AlertSchedule?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<AlertSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scheduleInterval = registerOutput<String>('scheduleInterval');
     scheduleType = registerOutput<String>('scheduleType');
     sendResolved = registerOutput<bool?>('sendResolved');
-    severityConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'severityConfigurations',
-    );
-    templateConfiguration = registerOutput<AlertTemplateConfiguration?>(
-      'templateConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertTemplateConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    severityConfigurations = registerOutput<List<Map<String, dynamic>>?>('severityConfigurations');
+    templateConfiguration = registerOutput<AlertTemplateConfiguration?>('templateConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertTemplateConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     threshold = registerOutput<int>('threshold');
     throttling = registerOutput<String?>('throttling');
     type = registerOutput<String?>('type');

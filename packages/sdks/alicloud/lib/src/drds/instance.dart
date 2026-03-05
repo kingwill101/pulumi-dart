@@ -248,25 +248,19 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// (Available since v1.196.0) The connection string of the DRDS instance.
   late final pulumi.Output<String> connectionString;
-
   /// Description of the DRDS instance, This description can have a string of 2 to 256 characters.
   late final pulumi.Output<String> description;
-
   /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
   late final pulumi.Output<String?> instanceChargeType;
-
   /// The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
   /// - `drds.sn2.4c16g` Starter Edition.
   /// - `drds.sn2.8c32g` Standard Edition.
   /// - `drds.sn2.16c64g` Enterprise Edition.
   late final pulumi.Output<String> instanceSeries;
-
   /// The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
   late final pulumi.Output<int> mysqlVersion;
-
   /// (Available since v1.196.0) The connection port of the DRDS instance.
   late final pulumi.Output<String> port;
-
   /// User-defined DRDS instance specification. Value range:
   /// - `drds.sn1.4c8g` for DRDS instance Starter version;
   /// - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -277,13 +271,10 @@ class Instance extends pulumi.CustomResource {
   /// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
   /// - value range : `drds.sn1.32c64g.128c256g`
   late final pulumi.Output<String> specification;
-
   /// The id of the VPC.
   late final pulumi.Output<String> vpcId;
-
   /// The VSwitch ID to launch in.
   late final pulumi.Output<String> vswitchId;
-
   /// The Zone to launch the DRDS instance.
   late final pulumi.Output<String> zoneId;
 
@@ -296,11 +287,11 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:drds/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:drds/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionString = registerOutput<String>('connectionString');
     description = registerOutput<String>('description');
     instanceChargeType = registerOutput<String?>('instanceChargeType');
@@ -331,11 +322,11 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:drds/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:drds/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionString = registerOutput<String>('connectionString');
     description = registerOutput<String>('description');
     instanceChargeType = registerOutput<String?>('instanceChargeType');

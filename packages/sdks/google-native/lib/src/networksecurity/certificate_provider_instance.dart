@@ -9,10 +9,14 @@ class CertificateProviderInstance {
 
   /// Creates a new [CertificateProviderInstance].
   /// [pluginInstance] Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
-  CertificateProviderInstance({required this.pluginInstance});
+  CertificateProviderInstance({
+    required this.pluginInstance,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pluginInstance': pluginInstance};
+    return <String, dynamic>{
+      'pluginInstance': pluginInstance,
+    };
   }
 
   factory CertificateProviderInstance.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class CertificateProviderInstance {
     );
   }
 }
+

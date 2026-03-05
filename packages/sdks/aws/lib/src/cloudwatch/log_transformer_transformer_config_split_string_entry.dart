@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogTransformerTransformerConfigSplitStringEntry {
   /// Specifies the separator characters to split the string entry on.
   final pulumi.Input<String> delimiter;
-
   /// Specifies the key to modify.
   final pulumi.Input<String> source;
 
@@ -18,15 +17,17 @@ class LogTransformerTransformerConfigSplitStringEntry {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'delimiter': delimiter, 'source': source};
+    return <String, dynamic>{
+      'delimiter': delimiter,
+      'source': source,
+    };
   }
 
-  factory LogTransformerTransformerConfigSplitStringEntry.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogTransformerTransformerConfigSplitStringEntry.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigSplitStringEntry(
       delimiter: pulumi.Input.fromValue(map['delimiter'] as String),
       source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
+

@@ -10,10 +10,16 @@ class GetInstanceGroupNamedPort {
   /// Creates a new [GetInstanceGroupNamedPort].
   /// [name] The name of the instance group. Either `name` or `self_link` must be provided.
   /// [port] Required.
-  GetInstanceGroupNamedPort({required this.name, required this.port});
+  GetInstanceGroupNamedPort({
+    required this.name,
+    required this.port,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'port': port};
+    return <String, dynamic>{
+      'name': name,
+      'port': port,
+    };
   }
 
   factory GetInstanceGroupNamedPort.fromMap(Map<String, dynamic> map) {
@@ -23,3 +29,4 @@ class GetInstanceGroupNamedPort {
     );
   }
 }
+

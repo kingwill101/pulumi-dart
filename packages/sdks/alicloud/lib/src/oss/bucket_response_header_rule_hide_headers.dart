@@ -8,21 +8,20 @@ class BucketResponseHeaderRuleHideHeaders {
 
   /// Creates a new [BucketResponseHeaderRuleHideHeaders].
   /// [headers] The response header needs to be hidden.
-  BucketResponseHeaderRuleHideHeaders({this.headers});
+  BucketResponseHeaderRuleHideHeaders({
+    this.headers,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'headers': ?headers};
+    return <String, dynamic>{
+      'headers': ?headers,
+    };
   }
 
-  factory BucketResponseHeaderRuleHideHeaders.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketResponseHeaderRuleHideHeaders.fromMap(Map<String, dynamic> map) {
     return BucketResponseHeaderRuleHideHeaders(
-      headers: (() {
-        final guardedValue = map['headers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

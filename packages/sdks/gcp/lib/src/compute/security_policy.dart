@@ -1069,55 +1069,39 @@ import 'security_policy_state.dart';
 /// ```
 class SecurityPolicy extends pulumi.CustomResource {
   /// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
-  late final pulumi.Output<SecurityPolicyAdaptiveProtectionConfig?>
-  adaptiveProtectionConfig;
-
+  late final pulumi.Output<SecurityPolicyAdaptiveProtectionConfig?> adaptiveProtectionConfig;
   /// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
   /// Structure is documented below.
-  late final pulumi.Output<SecurityPolicyAdvancedOptionsConfig>
-  advancedOptionsConfig;
-
+  late final pulumi.Output<SecurityPolicyAdvancedOptionsConfig> advancedOptionsConfig;
   /// An optional description of this security policy. Max size is 2048.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Fingerprint of this resource.
   late final pulumi.Output<String> fingerprint;
-
   /// The unique fingerprint of the labels.
   late final pulumi.Output<String> labelFingerprint;
-
   /// Labels to apply to this address. A list of key-&gt;value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The name of the security policy.
   ///
   /// - - -
   late final pulumi.Output<String> name;
-
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
-  late final pulumi.Output<SecurityPolicyRecaptchaOptionsConfig?>
-  recaptchaOptionsConfig;
-
+  late final pulumi.Output<SecurityPolicyRecaptchaOptionsConfig?> recaptchaOptionsConfig;
   /// The set of rules that belong to this policy. There must always be a default
   /// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
   /// security policy, a default rule with action "allow" will be added. Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-
   /// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
   /// * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
   /// They filter requests before they hit the origin servers.
@@ -1137,32 +1121,13 @@ class SecurityPolicy extends pulumi.CustomResource {
     SecurityPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/securityPolicy:SecurityPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    adaptiveProtectionConfig =
-        registerOutput<SecurityPolicyAdaptiveProtectionConfig?>(
-          'adaptiveProtectionConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecurityPolicyAdaptiveProtectionConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    advancedOptionsConfig = registerOutput<SecurityPolicyAdvancedOptionsConfig>(
-      'advancedOptionsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityPolicyAdvancedOptionsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:compute/securityPolicy:SecurityPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    adaptiveProtectionConfig = registerOutput<SecurityPolicyAdaptiveProtectionConfig?>('adaptiveProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdaptiveProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    advancedOptionsConfig = registerOutput<SecurityPolicyAdvancedOptionsConfig>('advancedOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdvancedOptionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     fingerprint = registerOutput<String>('fingerprint');
@@ -1171,17 +1136,7 @@ class SecurityPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    recaptchaOptionsConfig =
-        registerOutput<SecurityPolicyRecaptchaOptionsConfig?>(
-          'recaptchaOptionsConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecurityPolicyRecaptchaOptionsConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    recaptchaOptionsConfig = registerOutput<SecurityPolicyRecaptchaOptionsConfig?>('recaptchaOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRecaptchaOptionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
     selfLink = registerOutput<String>('selfLink');
     type = registerOutput<String>('type');
@@ -1205,32 +1160,13 @@ class SecurityPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/securityPolicy:SecurityPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    adaptiveProtectionConfig =
-        registerOutput<SecurityPolicyAdaptiveProtectionConfig?>(
-          'adaptiveProtectionConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecurityPolicyAdaptiveProtectionConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    advancedOptionsConfig = registerOutput<SecurityPolicyAdvancedOptionsConfig>(
-      'advancedOptionsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityPolicyAdvancedOptionsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:compute/securityPolicy:SecurityPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    adaptiveProtectionConfig = registerOutput<SecurityPolicyAdaptiveProtectionConfig?>('adaptiveProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdaptiveProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    advancedOptionsConfig = registerOutput<SecurityPolicyAdvancedOptionsConfig>('advancedOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdvancedOptionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     fingerprint = registerOutput<String>('fingerprint');
@@ -1239,17 +1175,7 @@ class SecurityPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    recaptchaOptionsConfig =
-        registerOutput<SecurityPolicyRecaptchaOptionsConfig?>(
-          'recaptchaOptionsConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecurityPolicyRecaptchaOptionsConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    recaptchaOptionsConfig = registerOutput<SecurityPolicyRecaptchaOptionsConfig?>('recaptchaOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRecaptchaOptionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
     selfLink = registerOutput<String>('selfLink');
     type = registerOutput<String>('type');

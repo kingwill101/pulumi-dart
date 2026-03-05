@@ -155,19 +155,14 @@ import 'shared_directory_accepter_state.dart';
 class SharedDirectoryAccepter extends pulumi.CustomResource {
   /// Method used when sharing a directory (i.e., `ORGANIZATIONS` or `HANDSHAKE`).
   late final pulumi.Output<String> method;
-
   /// Message sent by the directory owner to the directory consumer to help the directory consumer administrator determine whether to approve or reject the share invitation.
   late final pulumi.Output<String> notes;
-
   /// Account identifier of the directory owner.
   late final pulumi.Output<String> ownerAccountId;
-
   /// Identifier of the Managed Microsoft AD directory from the perspective of the directory owner.
   late final pulumi.Output<String> ownerDirectoryId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Identifier of the directory that is stored in the directory consumer account that corresponds to the shared directory in the owner account.
   late final pulumi.Output<String> sharedDirectoryId;
 
@@ -180,11 +175,11 @@ class SharedDirectoryAccepter extends pulumi.CustomResource {
     SharedDirectoryAccepterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:directoryservice/sharedDirectoryAccepter:SharedDirectoryAccepter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:directoryservice/sharedDirectoryAccepter:SharedDirectoryAccepter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     method = registerOutput<String>('method');
     notes = registerOutput<String>('notes');
     ownerAccountId = registerOutput<String>('ownerAccountId');
@@ -211,11 +206,11 @@ class SharedDirectoryAccepter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:directoryservice/sharedDirectoryAccepter:SharedDirectoryAccepter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:directoryservice/sharedDirectoryAccepter:SharedDirectoryAccepter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     method = registerOutput<String>('method');
     notes = registerOutput<String>('notes');
     ownerAccountId = registerOutput<String>('ownerAccountId');

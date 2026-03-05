@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs {
   /// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> featureOnlineStore;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> featureView;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region for the resource. It should be the same as the featureonlinestore region. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
   /// region is specified, it is taken from the provider configuration.
@@ -43,24 +40,13 @@ class GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs {
     };
   }
 
-  factory GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs(
-      featureOnlineStore: pulumi.Input.fromValue(
-        map['featureOnlineStore'] as String,
-      ),
+      featureOnlineStore: pulumi.Input.fromValue(map['featureOnlineStore'] as String),
       featureView: pulumi.Input.fromValue(map['featureView'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

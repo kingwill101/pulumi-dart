@@ -1612,32 +1612,25 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// Specifies the DNS address of the DB instance.
   late final pulumi.Output<String> address;
-
   /// The allocated storage in gibibytes. If `max_allocated_storage` is configured, this argument represents the initial storage allocation and differences from the configuration will be ignored automatically when Storage Autoscaling occurs. If `replicate_source_db` is set, the value is ignored during the creation of the instance.
   late final pulumi.Output<int> allocatedStorage;
-
   /// Indicates that major version
   /// upgrades are allowed. Changing this parameter does not result in an outage and
   /// the change is asynchronously applied as soon as possible.
   late final pulumi.Output<bool?> allowMajorVersionUpgrade;
-
   /// Specifies whether any database modifications
   /// are applied immediately, or during the next maintenance window. Default is
   /// `false`. See [Amazon RDS Documentation for more
   /// information.](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
   late final pulumi.Output<bool?> applyImmediately;
-
   /// The ARN of the RDS instance.
   late final pulumi.Output<String> arn;
-
   /// Indicates that minor engine upgrades
   /// will be applied automatically to the DB instance during the maintenance window.
   /// Defaults to true.
   late final pulumi.Output<bool?> autoMinorVersionUpgrade;
-
   /// The AZ for the RDS instance.
   late final pulumi.Output<String> availabilityZone;
-
   /// The days to retain backups for.
   /// Must be between `0` and `35`.
   /// Default is `0`.
@@ -1645,34 +1638,26 @@ class Instance extends pulumi.CustomResource {
   /// uses low-downtime updates,
   /// or will use [RDS Blue/Green deployments][blue-green].
   late final pulumi.Output<int> backupRetentionPeriod;
-
   /// Specifies where automated backups and manual snapshots are stored. Possible values are `region` (default) and `outposts`. See [Working with Amazon RDS on AWS Outposts](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html) for more information.
   late final pulumi.Output<String> backupTarget;
-
   /// The daily time range (in UTC) during which automated backups are created if they are enabled.
   /// Example: "09:46-10:16". Must not overlap with `maintenance_window`.
   late final pulumi.Output<String> backupWindow;
-
   /// Enables low-downtime updates using [RDS Blue/Green deployments][blue-green].
   /// See `blue_green_update` below.
   late final pulumi.Output<InstanceBlueGreenUpdate?> blueGreenUpdate;
-
   /// The identifier of the CA certificate for the DB instance.
   late final pulumi.Output<String> caCertIdentifier;
-
   /// The character set name to use for DB encoding in Oracle and Microsoft SQL instances (collation).
   /// This can't be changed.
   /// See [Oracle Character Sets Supported in Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.OracleCharacterSets.html) or
   /// [Server-Level Collation for Microsoft SQL Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.SQLServer.CommonDBATasks.Collation.html) for more information.
   /// Cannot be set  with `replicate_source_db`, `restore_to_point_in_time`, `s3_import`, or `snapshot_identifier`.
   late final pulumi.Output<String> characterSetName;
-
   /// Copy all Instance `tags` to snapshots. Default is `false`.
   late final pulumi.Output<bool?> copyTagsToSnapshot;
-
   /// The instance profile associated with the underlying Amazon EC2 instance of an RDS Custom DB instance.
   late final pulumi.Output<String?> customIamInstanceProfile;
-
   /// Indicates whether to enable a customer-owned IP address (CoIP) for an RDS on Outposts DB instance. See [CoIP for RDS on Outposts](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html#rds-on-outposts.coip) for more information.
   ///
   /// For more detailed documentation about each argument, refer to the [AWS official
@@ -1682,13 +1667,10 @@ class Instance extends pulumi.CustomResource {
   /// Replicate database managed by the provider will promote the database to a fully
   /// standalone database.
   late final pulumi.Output<bool?> customerOwnedIpEnabled;
-
   /// The mode of Database Insights that is enabled for the instance. Valid values: `standard`, `advanced` .
   late final pulumi.Output<String> databaseInsightsMode;
-
   /// The name of the database to create when the DB instance is created. If this parameter is not specified, no database is created in the DB instance. Note that this does not apply for Oracle or SQL Server engines. See the [AWS documentation](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/rds/create-db-instance.html) for more details on what applies for those engines. If you are providing an Oracle db name, it needs to be in all upper case. Cannot be specified for a replica.
   late final pulumi.Output<String> dbName;
-
   /// Name of DB subnet group.
   /// DB instance will be created in the VPC associated with the DB subnet group.
   /// If unspecified, will be created in the `default` Subnet Group.
@@ -1696,86 +1678,61 @@ class Instance extends pulumi.CustomResource {
   /// When working with read replicas created in a different region, defaults to the `default` Subnet Group.
   /// See [DBSubnetGroupName in API action CreateDBInstanceReadReplica](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstanceReadReplica.html) for additional read replica constraints.
   late final pulumi.Output<String> dbSubnetGroupName;
-
   /// Use a dedicated log volume (DLV) for the DB instance. Requires Provisioned IOPS. See the [AWS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.dlv) for more details.
   late final pulumi.Output<bool?> dedicatedLogVolume;
-
   /// Specifies whether to remove automated backups immediately after the DB instance is deleted. Default is `true`.
   late final pulumi.Output<bool?> deleteAutomatedBackups;
-
   /// If the DB instance should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
   late final pulumi.Output<bool?> deletionProtection;
-
   /// The ID of the Directory Service Active Directory domain to create the instance in. Conflicts with `domain_fqdn`, `domain_ou`, `domain_auth_secret_arn` and a `domain_dns_ips`.
   late final pulumi.Output<String?> domain;
-
   /// The ARN for the Secrets Manager secret with the self managed Active Directory credentials for the user joining the domain. Conflicts with `domain` and `domain_iam_role_name`.
   late final pulumi.Output<String?> domainAuthSecretArn;
-
   /// The IPv4 DNS IP addresses of your primary and secondary self managed Active Directory domain controllers. Two IP addresses must be provided. If there isn't a secondary domain controller, use the IP address of the primary domain controller for both entries in the list. Conflicts with `domain` and `domain_iam_role_name`.
   late final pulumi.Output<List<String>?> domainDnsIps;
-
   /// The fully qualified domain name (FQDN) of the self managed Active Directory domain. Conflicts with `domain` and `domain_iam_role_name`.
   late final pulumi.Output<String> domainFqdn;
-
   /// The name of the IAM role to be used when making API calls to the Directory Service. Conflicts with `domain_fqdn`, `domain_ou`, `domain_auth_secret_arn` and a `domain_dns_ips`.
   late final pulumi.Output<String?> domainIamRoleName;
-
   /// The self managed Active Directory organizational unit for your DB instance to join. Conflicts with `domain` and `domain_iam_role_name`.
   late final pulumi.Output<String?> domainOu;
-
   /// Set of log types to enable for exporting to CloudWatch logs. If omitted, no logs will be exported. For supported values, see the EnableCloudwatchLogsExports.member.N parameter in [API action CreateDBInstance](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html).
   late final pulumi.Output<List<String>?> enabledCloudwatchLogsExports;
-
   /// The connection endpoint in `address:port` format.
   late final pulumi.Output<String> endpoint;
-
   /// The database engine to use. For supported values, see the Engine parameter in [API action CreateDBInstance](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html). Note that for Amazon Aurora instances the engine must match the DB cluster's engine'. For information on the difference between the available Aurora MySQL engines see [Comparison between Aurora MySQL 1 and Aurora MySQL 2](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraMySQL.Updates.20180206.html) in the Amazon RDS User Guide.
   late final pulumi.Output<String> engine;
-
   /// The life cycle type for this DB instance. This setting applies only to RDS for MySQL and RDS for PostgreSQL. Valid values are `open-source-rds-extended-support`, `open-source-rds-extended-support-disabled`. Default value is `open-source-rds-extended-support`. [Using Amazon RDS Extended Support]: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html
   late final pulumi.Output<String> engineLifecycleSupport;
-
   /// The engine version to use. If `auto_minor_version_upgrade` is enabled, you can provide a prefix of the version such as `8.0` (for `8.0.36`). The actual engine version used is returned in the attribute `engine_version_actual`, see Attribute Reference below. For supported values, see the EngineVersion parameter in [API action CreateDBInstance](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html). Note that for Amazon Aurora instances the engine version must match the DB cluster's engine version'.
   late final pulumi.Output<String> engineVersion;
-
   /// The running version of the database.
   late final pulumi.Output<String> engineVersionActual;
-
   /// The name of your final DB snapshot
   /// when this DB instance is deleted. Must be provided if `skip_final_snapshot` is
   /// set to `false`. The value must begin with a letter, only contain alphanumeric characters and hyphens, and not end with a hyphen or contain two consecutive hyphens. Must not be provided when deleting a read replica.
   late final pulumi.Output<String?> finalSnapshotIdentifier;
-
   /// Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.
   late final pulumi.Output<String> hostedZoneId;
-
   /// Specifies whether mappings of AWS Identity and Access Management (IAM) accounts to database
   /// accounts is enabled.
   late final pulumi.Output<bool?> iamDatabaseAuthenticationEnabled;
-
   /// The name of the RDS instance, if omitted, this provider will assign a random, unique identifier. Required if `restore_to_point_in_time` is specified.
   late final pulumi.Output<String> identifier;
-
   /// Creates a unique identifier beginning with the specified prefix. Conflicts with `identifier`.
   late final pulumi.Output<String> identifierPrefix;
-
   /// The instance type of the RDS instance.
   late final pulumi.Output<String> instanceClass;
-
   /// The amount of provisioned IOPS. Setting this implies a
   /// storage_type of "io1" or "io2". Can only be set when `storage_type` is `"io1"`, `"io2` or `"gp3"`.
   /// Cannot be specified for gp3 storage if the `allocated_storage` value is below a per-`engine` threshold.
   /// See the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#gp3-storage) for details.
   late final pulumi.Output<int> iops;
-
   /// The ARN for the KMS encryption key. If creating an
   /// encrypted replica, set this to the destination KMS ARN.
   late final pulumi.Output<String> kmsKeyId;
-
   /// The latest time, in UTC [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8), to which a database can be restored with point-in-time restore.
   late final pulumi.Output<String> latestRestorableTime;
-
   /// License model information for this DB instance. Valid values for this field are as follows:
   /// * RDS for MariaDB: `general-public-license`
   /// * RDS for Microsoft SQL Server: `license-included`
@@ -1783,92 +1740,68 @@ class Instance extends pulumi.CustomResource {
   /// * RDS for Oracle: `bring-your-own-license | license-included`
   /// * RDS for PostgreSQL: `postgresql-license`
   late final pulumi.Output<String> licenseModel;
-
   /// Specifies the listener connection endpoint for SQL Server Always On. See endpoint below.
   late final pulumi.Output<List<Map<String, dynamic>>> listenerEndpoints;
-
   /// The window to perform maintenance in.
   /// Syntax: "ddd:hh24:mi-ddd:hh24:mi". Eg: "Mon:00:00-Mon:03:00". See [RDS
   /// Maintenance Window
   /// docs](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow)
   /// for more information.
   late final pulumi.Output<String> maintenanceWindow;
-
   /// Set to true to allow RDS to manage the master user password in Secrets Manager. Cannot be set if `password` or `password_wo` is provided.
   late final pulumi.Output<bool?> manageMasterUserPassword;
-
   /// The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key. To use a KMS key in a different Amazon Web Services account, specify the key ARN or alias ARN. If not specified, the default KMS key for your Amazon Web Services account is used.
   late final pulumi.Output<String> masterUserSecretKmsKeyId;
-
   /// A block that specifies the master user secret. Only available when `manage_master_user_password` is set to true. Documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> masterUserSecrets;
-
   /// Specifies the maximum storage (in GiB) that Amazon RDS can automatically scale to for this DB instance. By default, Storage Autoscaling is disabled. To enable Storage Autoscaling, set `max_allocated_storage` to **greater than or equal to** `allocated_storage`. Setting `max_allocated_storage` to 0 explicitly disables Storage Autoscaling. When configured, changes to `allocated_storage` will be automatically ignored as the storage can dynamically scale.
   late final pulumi.Output<int?> maxAllocatedStorage;
-
   /// The interval, in seconds, between points
   /// when Enhanced Monitoring metrics are collected for the DB instance. To disable
   /// collecting Enhanced Monitoring metrics, specify 0. The default is 0. Valid
   /// Values: 0, 1, 5, 10, 15, 30, 60.
   late final pulumi.Output<int?> monitoringInterval;
-
   /// The ARN for the IAM role that permits RDS
   /// to send enhanced monitoring metrics to CloudWatch Logs. You can find more
   /// information on the [AWS
   /// Documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html)
   /// what IAM permissions are needed to allow Enhanced Monitoring for RDS Instances.
   late final pulumi.Output<String> monitoringRoleArn;
-
   /// Specifies if the RDS instance is multi-AZ
   late final pulumi.Output<bool> multiAz;
-
   /// The national character set is used in the NCHAR, NVARCHAR2, and NCLOB data types for Oracle instances. This can't be changed. See [Oracle Character Sets
   /// Supported in Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.OracleCharacterSets.html).
   late final pulumi.Output<String> ncharCharacterSetName;
-
   /// The network type of the DB instance. Valid values: `IPV4`, `DUAL`.
   late final pulumi.Output<String> networkType;
-
   /// Name of the DB option group to associate.
   late final pulumi.Output<String> optionGroupName;
-
   /// Name of the DB parameter group to associate.
   late final pulumi.Output<String> parameterGroupName;
-
   /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Cannot be set if `manage_master_user_password` is set to `true`.
   late final pulumi.Output<String?> password;
-
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Cannot be set if `manage_master_user_password` is set to `true`.
   late final pulumi.Output<String?> passwordWo;
-
   /// Used together with `password_wo` to trigger an update. Increment this value when an update to `password_wo` is required.
   late final pulumi.Output<int?> passwordWoVersion;
-
   /// Specifies whether Performance Insights are enabled. Defaults to false.
   late final pulumi.Output<bool?> performanceInsightsEnabled;
-
   /// The ARN for the KMS key to encrypt Performance Insights data. When specifying `performance_insights_kms_key_id`, `performance_insights_enabled` needs to be set to true. Once KMS key is set, it can never be changed.
   late final pulumi.Output<String> performanceInsightsKmsKeyId;
-
   /// Amount of time in days to retain Performance Insights data. Valid values are `7`, `731` (2 years) or a multiple of `31`. When specifying `performance_insights_retention_period`, `performance_insights_enabled` needs to be set to true. Defaults to '7'.
   late final pulumi.Output<int> performanceInsightsRetentionPeriod;
-
   /// The port on which the DB accepts connections.
   late final pulumi.Output<int> port;
-
   /// Bool to control if instance is publicly
   /// accessible. Default is `false`.
   late final pulumi.Output<bool?> publiclyAccessible;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Specifies whether the replica is in either `mounted` or `open-read-only` mode. This attribute
   /// is only supported by Oracle instances. Oracle replicas operate in `open-read-only` mode unless otherwise specified. See [Working with Oracle Read Replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html) for more information.
   late final pulumi.Output<String> replicaMode;
   late final pulumi.Output<List<String>> replicas;
-
   /// Specifies that this resource is a Replica database, and to use this value as the source database.
   /// If replicating an Amazon RDS Database Instance in the same region, use the `identifier` of the source DB, unless also specifying the `db_subnet_group_name`.
   /// If specifying the `db_subnet_group_name` in the same region, use the `arn` of the source DB.
@@ -1876,71 +1809,55 @@ class Instance extends pulumi.CustomResource {
   /// Note that if you are creating a cross-region replica of an encrypted database you will also need to specify a `kms_key_id`.
   /// See [DB Instance Replication][instance-replication] and [Working with PostgreSQL and MySQL Read Replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html) for more information on using Replication.
   late final pulumi.Output<String?> replicateSourceDb;
-
   /// The RDS Resource ID of this instance.
   late final pulumi.Output<String> resourceId;
-
   /// A configuration block for restoring a DB instance to an arbitrary point in time.
   /// Requires the `identifier` argument to be set with the name of the new DB instance to be created.
   /// See Restore To Point In Time below for details.
   late final pulumi.Output<InstanceRestoreToPointInTime?> restoreToPointInTime;
-
   /// Restore from a Percona Xtrabackup in S3.  See [Importing Data into an Amazon RDS MySQL DB Instance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html)
   late final pulumi.Output<InstanceS3Import?> s3Import;
-
   /// Determines whether a final DB snapshot is
   /// created before the DB instance is deleted. If true is specified, no DBSnapshot
   /// is created. If false is specified, a DB snapshot is created before the DB
   /// instance is deleted, using the value from `final_snapshot_identifier`. Default
   /// is `false`.
   late final pulumi.Output<bool?> skipFinalSnapshot;
-
   /// Specifies whether or not to create this database from a snapshot.
   /// This corresponds to the snapshot ID you'd find in the RDS console, e.g: rds:production-2015-06-26-06-05.
   late final pulumi.Output<String> snapshotIdentifier;
-
   /// The RDS instance status.
   late final pulumi.Output<String> status;
-
   /// Specifies whether the DB instance is
   /// encrypted. Note that if you are creating a cross-region read replica this field
   /// is ignored and you should instead declare `kms_key_id` with a valid ARN. The
   /// default is `false` if not specified.
   late final pulumi.Output<bool?> storageEncrypted;
-
   /// The storage throughput value for the DB instance. Can only be set when `storage_type` is `"gp3"`. Cannot be specified if the `allocated_storage` value is below a per-`engine` threshold. See the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#gp3-storage) for details.
   late final pulumi.Output<int> storageThroughput;
-
   /// One of "standard" (magnetic), "gp2" (general
   /// purpose SSD), "gp3" (general purpose SSD that needs `iops` independently)
   /// "io1" (provisioned IOPS SSD) or "io2" (block express storage provisioned IOPS
   /// SSD). The default is "io1" if `iops` is specified, "gp2" if not.
   late final pulumi.Output<String> storageType;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Time zone of the DB instance. `timezone` is currently
   /// only supported by Microsoft SQL Server. The `timezone` can only be set on
   /// creation. See [MSSQL User
   /// Guide](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone)
   /// for more information.
   late final pulumi.Output<String> timezone;
-
   /// Order in which the instances are upgraded (`first`, `second`, `last`). See [the AWS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Maintenance.AMVU.UpgradeRollout.html) for details.
   late final pulumi.Output<String> upgradeRolloutOrder;
-
   /// Whether to upgrade the storage file system configuration on the read replica.
   /// Can only be set with `replicate_source_db`.
   late final pulumi.Output<bool?> upgradeStorageConfig;
-
   /// (Required unless a `snapshot_identifier` or `replicate_source_db`
   /// is provided) Username for the master DB user. Cannot be specified for a replica.
   late final pulumi.Output<String> username;
-
   /// List of VPC security groups to
   /// associate.
   late final pulumi.Output<List<String>> vpcSecurityGroupIds;
@@ -1954,16 +1871,14 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rds/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rds/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     allocatedStorage = registerOutput<int>('allocatedStorage');
-    allowMajorVersionUpgrade = registerOutput<bool?>(
-      'allowMajorVersionUpgrade',
-    );
+    allowMajorVersionUpgrade = registerOutput<bool?>('allowMajorVersionUpgrade');
     applyImmediately = registerOutput<bool?>('applyImmediately');
     arn = registerOutput<String>('arn');
     autoMinorVersionUpgrade = registerOutput<bool?>('autoMinorVersionUpgrade');
@@ -1971,22 +1886,11 @@ class Instance extends pulumi.CustomResource {
     backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
     backupTarget = registerOutput<String>('backupTarget');
     backupWindow = registerOutput<String>('backupWindow');
-    blueGreenUpdate = registerOutput<InstanceBlueGreenUpdate?>(
-      'blueGreenUpdate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceBlueGreenUpdate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    blueGreenUpdate = registerOutput<InstanceBlueGreenUpdate?>('blueGreenUpdate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceBlueGreenUpdate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     caCertIdentifier = registerOutput<String>('caCertIdentifier');
     characterSetName = registerOutput<String>('characterSetName');
     copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
-    customIamInstanceProfile = registerOutput<String?>(
-      'customIamInstanceProfile',
-    );
+    customIamInstanceProfile = registerOutput<String?>('customIamInstanceProfile');
     customerOwnedIpEnabled = registerOutput<bool?>('customerOwnedIpEnabled');
     databaseInsightsMode = registerOutput<String>('databaseInsightsMode');
     dbName = registerOutput<String>('dbName');
@@ -2000,21 +1904,15 @@ class Instance extends pulumi.CustomResource {
     domainFqdn = registerOutput<String>('domainFqdn');
     domainIamRoleName = registerOutput<String?>('domainIamRoleName');
     domainOu = registerOutput<String?>('domainOu');
-    enabledCloudwatchLogsExports = registerOutput<List<String>?>(
-      'enabledCloudwatchLogsExports',
-    );
+    enabledCloudwatchLogsExports = registerOutput<List<String>?>('enabledCloudwatchLogsExports');
     endpoint = registerOutput<String>('endpoint');
     engine = registerOutput<String>('engine');
     engineLifecycleSupport = registerOutput<String>('engineLifecycleSupport');
     engineVersion = registerOutput<String>('engineVersion');
     engineVersionActual = registerOutput<String>('engineVersionActual');
-    finalSnapshotIdentifier = registerOutput<String?>(
-      'finalSnapshotIdentifier',
-    );
+    finalSnapshotIdentifier = registerOutput<String?>('finalSnapshotIdentifier');
     hostedZoneId = registerOutput<String>('hostedZoneId');
-    iamDatabaseAuthenticationEnabled = registerOutput<bool?>(
-      'iamDatabaseAuthenticationEnabled',
-    );
+    iamDatabaseAuthenticationEnabled = registerOutput<bool?>('iamDatabaseAuthenticationEnabled');
     identifier = registerOutput<String>('identifier');
     identifierPrefix = registerOutput<String>('identifierPrefix');
     instanceClass = registerOutput<String>('instanceClass');
@@ -2022,19 +1920,11 @@ class Instance extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     latestRestorableTime = registerOutput<String>('latestRestorableTime');
     licenseModel = registerOutput<String>('licenseModel');
-    listenerEndpoints = registerOutput<List<Map<String, dynamic>>>(
-      'listenerEndpoints',
-    );
+    listenerEndpoints = registerOutput<List<Map<String, dynamic>>>('listenerEndpoints');
     maintenanceWindow = registerOutput<String>('maintenanceWindow');
-    manageMasterUserPassword = registerOutput<bool?>(
-      'manageMasterUserPassword',
-    );
-    masterUserSecretKmsKeyId = registerOutput<String>(
-      'masterUserSecretKmsKeyId',
-    );
-    masterUserSecrets = registerOutput<List<Map<String, dynamic>>>(
-      'masterUserSecrets',
-    );
+    manageMasterUserPassword = registerOutput<bool?>('manageMasterUserPassword');
+    masterUserSecretKmsKeyId = registerOutput<String>('masterUserSecretKmsKeyId');
+    masterUserSecrets = registerOutput<List<Map<String, dynamic>>>('masterUserSecrets');
     maxAllocatedStorage = registerOutput<int?>('maxAllocatedStorage');
     monitoringInterval = registerOutput<int?>('monitoringInterval');
     monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
@@ -2046,15 +1936,9 @@ class Instance extends pulumi.CustomResource {
     password = registerOutput<String?>('password');
     passwordWo = registerOutput<String?>('passwordWo');
     passwordWoVersion = registerOutput<int?>('passwordWoVersion');
-    performanceInsightsEnabled = registerOutput<bool?>(
-      'performanceInsightsEnabled',
-    );
-    performanceInsightsKmsKeyId = registerOutput<String>(
-      'performanceInsightsKmsKeyId',
-    );
-    performanceInsightsRetentionPeriod = registerOutput<int>(
-      'performanceInsightsRetentionPeriod',
-    );
+    performanceInsightsEnabled = registerOutput<bool?>('performanceInsightsEnabled');
+    performanceInsightsKmsKeyId = registerOutput<String>('performanceInsightsKmsKeyId');
+    performanceInsightsRetentionPeriod = registerOutput<int>('performanceInsightsRetentionPeriod');
     port = registerOutput<int>('port');
     publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
     region = registerOutput<String>('region');
@@ -2062,26 +1946,8 @@ class Instance extends pulumi.CustomResource {
     replicas = registerOutput<List<String>>('replicas');
     replicateSourceDb = registerOutput<String?>('replicateSourceDb');
     resourceId = registerOutput<String>('resourceId');
-    restoreToPointInTime = registerOutput<InstanceRestoreToPointInTime?>(
-      'restoreToPointInTime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceRestoreToPointInTime.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    s3Import = registerOutput<InstanceS3Import?>(
-      's3Import',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceS3Import.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    restoreToPointInTime = registerOutput<InstanceRestoreToPointInTime?>('restoreToPointInTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceRestoreToPointInTime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    s3Import = registerOutput<InstanceS3Import?>('s3Import', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceS3Import.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
     snapshotIdentifier = registerOutput<String>('snapshotIdentifier');
     status = registerOutput<String>('status');
@@ -2115,16 +1981,14 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rds/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rds/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     allocatedStorage = registerOutput<int>('allocatedStorage');
-    allowMajorVersionUpgrade = registerOutput<bool?>(
-      'allowMajorVersionUpgrade',
-    );
+    allowMajorVersionUpgrade = registerOutput<bool?>('allowMajorVersionUpgrade');
     applyImmediately = registerOutput<bool?>('applyImmediately');
     arn = registerOutput<String>('arn');
     autoMinorVersionUpgrade = registerOutput<bool?>('autoMinorVersionUpgrade');
@@ -2132,22 +1996,11 @@ class Instance extends pulumi.CustomResource {
     backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
     backupTarget = registerOutput<String>('backupTarget');
     backupWindow = registerOutput<String>('backupWindow');
-    blueGreenUpdate = registerOutput<InstanceBlueGreenUpdate?>(
-      'blueGreenUpdate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceBlueGreenUpdate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    blueGreenUpdate = registerOutput<InstanceBlueGreenUpdate?>('blueGreenUpdate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceBlueGreenUpdate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     caCertIdentifier = registerOutput<String>('caCertIdentifier');
     characterSetName = registerOutput<String>('characterSetName');
     copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
-    customIamInstanceProfile = registerOutput<String?>(
-      'customIamInstanceProfile',
-    );
+    customIamInstanceProfile = registerOutput<String?>('customIamInstanceProfile');
     customerOwnedIpEnabled = registerOutput<bool?>('customerOwnedIpEnabled');
     databaseInsightsMode = registerOutput<String>('databaseInsightsMode');
     dbName = registerOutput<String>('dbName');
@@ -2161,21 +2014,15 @@ class Instance extends pulumi.CustomResource {
     domainFqdn = registerOutput<String>('domainFqdn');
     domainIamRoleName = registerOutput<String?>('domainIamRoleName');
     domainOu = registerOutput<String?>('domainOu');
-    enabledCloudwatchLogsExports = registerOutput<List<String>?>(
-      'enabledCloudwatchLogsExports',
-    );
+    enabledCloudwatchLogsExports = registerOutput<List<String>?>('enabledCloudwatchLogsExports');
     endpoint = registerOutput<String>('endpoint');
     engine = registerOutput<String>('engine');
     engineLifecycleSupport = registerOutput<String>('engineLifecycleSupport');
     engineVersion = registerOutput<String>('engineVersion');
     engineVersionActual = registerOutput<String>('engineVersionActual');
-    finalSnapshotIdentifier = registerOutput<String?>(
-      'finalSnapshotIdentifier',
-    );
+    finalSnapshotIdentifier = registerOutput<String?>('finalSnapshotIdentifier');
     hostedZoneId = registerOutput<String>('hostedZoneId');
-    iamDatabaseAuthenticationEnabled = registerOutput<bool?>(
-      'iamDatabaseAuthenticationEnabled',
-    );
+    iamDatabaseAuthenticationEnabled = registerOutput<bool?>('iamDatabaseAuthenticationEnabled');
     identifier = registerOutput<String>('identifier');
     identifierPrefix = registerOutput<String>('identifierPrefix');
     instanceClass = registerOutput<String>('instanceClass');
@@ -2183,19 +2030,11 @@ class Instance extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     latestRestorableTime = registerOutput<String>('latestRestorableTime');
     licenseModel = registerOutput<String>('licenseModel');
-    listenerEndpoints = registerOutput<List<Map<String, dynamic>>>(
-      'listenerEndpoints',
-    );
+    listenerEndpoints = registerOutput<List<Map<String, dynamic>>>('listenerEndpoints');
     maintenanceWindow = registerOutput<String>('maintenanceWindow');
-    manageMasterUserPassword = registerOutput<bool?>(
-      'manageMasterUserPassword',
-    );
-    masterUserSecretKmsKeyId = registerOutput<String>(
-      'masterUserSecretKmsKeyId',
-    );
-    masterUserSecrets = registerOutput<List<Map<String, dynamic>>>(
-      'masterUserSecrets',
-    );
+    manageMasterUserPassword = registerOutput<bool?>('manageMasterUserPassword');
+    masterUserSecretKmsKeyId = registerOutput<String>('masterUserSecretKmsKeyId');
+    masterUserSecrets = registerOutput<List<Map<String, dynamic>>>('masterUserSecrets');
     maxAllocatedStorage = registerOutput<int?>('maxAllocatedStorage');
     monitoringInterval = registerOutput<int?>('monitoringInterval');
     monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
@@ -2207,15 +2046,9 @@ class Instance extends pulumi.CustomResource {
     password = registerOutput<String?>('password');
     passwordWo = registerOutput<String?>('passwordWo');
     passwordWoVersion = registerOutput<int?>('passwordWoVersion');
-    performanceInsightsEnabled = registerOutput<bool?>(
-      'performanceInsightsEnabled',
-    );
-    performanceInsightsKmsKeyId = registerOutput<String>(
-      'performanceInsightsKmsKeyId',
-    );
-    performanceInsightsRetentionPeriod = registerOutput<int>(
-      'performanceInsightsRetentionPeriod',
-    );
+    performanceInsightsEnabled = registerOutput<bool?>('performanceInsightsEnabled');
+    performanceInsightsKmsKeyId = registerOutput<String>('performanceInsightsKmsKeyId');
+    performanceInsightsRetentionPeriod = registerOutput<int>('performanceInsightsRetentionPeriod');
     port = registerOutput<int>('port');
     publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
     region = registerOutput<String>('region');
@@ -2223,26 +2056,8 @@ class Instance extends pulumi.CustomResource {
     replicas = registerOutput<List<String>>('replicas');
     replicateSourceDb = registerOutput<String?>('replicateSourceDb');
     resourceId = registerOutput<String>('resourceId');
-    restoreToPointInTime = registerOutput<InstanceRestoreToPointInTime?>(
-      'restoreToPointInTime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceRestoreToPointInTime.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    s3Import = registerOutput<InstanceS3Import?>(
-      's3Import',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceS3Import.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    restoreToPointInTime = registerOutput<InstanceRestoreToPointInTime?>('restoreToPointInTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceRestoreToPointInTime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    s3Import = registerOutput<InstanceS3Import?>('s3Import', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceS3Import.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
     snapshotIdentifier = registerOutput<String>('snapshotIdentifier');
     status = registerOutput<String>('status');

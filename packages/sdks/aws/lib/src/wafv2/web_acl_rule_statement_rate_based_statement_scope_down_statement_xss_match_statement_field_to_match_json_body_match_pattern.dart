@@ -16,25 +16,17 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'all': ?all, 'includedPaths': ?includedPaths};
+    return <String, dynamic>{
+      'all': ?all,
+      'includedPaths': ?includedPaths,
+    };
   }
 
-  factory WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchJsonBodyMatchPattern(
-      all: (() {
-        final guardedValue = map['all'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      includedPaths: (() {
-        final guardedValue = map['includedPaths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      all: (() { final guardedValue = map['all']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      includedPaths: (() { final guardedValue = map['includedPaths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

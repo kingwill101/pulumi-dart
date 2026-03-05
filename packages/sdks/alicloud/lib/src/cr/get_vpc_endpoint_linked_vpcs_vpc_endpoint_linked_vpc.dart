@@ -5,27 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
   /// Indicates whether the default policy is used to access the instance.
   final pulumi.Input<bool> defaultAccess;
-
   /// The ID of the Vpc Endpoint Linked Vpc. It formats as `&lt;instance_id&gt;:&lt;vpc_id&gt;:&lt;vswitch_id&gt;:&lt;module_name&gt;`.
   final pulumi.Input<String> id;
-
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
-
   /// IP address.
   final pulumi.Input<String> ip;
-
   /// The name of the module that you want to access. Valid Values:
   /// - `Registry`: the image repository.
   /// - `Chart`: a Helm chart.
   final pulumi.Input<String> moduleName;
-
   /// The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
   final pulumi.Input<String> status;
-
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
-
   /// The ID of the vSwitch.
   final pulumi.Input<String> vswitchId;
 
@@ -62,9 +55,7 @@ class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
     };
   }
 
-  factory GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc(
       defaultAccess: pulumi.Input.fromValue(map['defaultAccess'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -77,3 +68,4 @@ class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
     );
   }
 }
+

@@ -224,15 +224,12 @@ import 'named_location_state.dart';
 class NamedLocation extends pulumi.CustomResource {
   /// A `country` block as documented below, which configures a country-based named location.
   late final pulumi.Output<NamedLocationCountry?> country;
-
   /// The friendly name for this named location.
   late final pulumi.Output<String> displayName;
-
   /// An `ip` block as documented below, which configures an IP-based named location.
   ///
   /// &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
   late final pulumi.Output<NamedLocationIp?> ip;
-
   /// The object ID of the named location.
   late final pulumi.Output<String> objectId;
 
@@ -245,32 +242,14 @@ class NamedLocation extends pulumi.CustomResource {
     NamedLocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/namedLocation:NamedLocation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    country = registerOutput<NamedLocationCountry?>(
-      'country',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NamedLocationCountry.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azuread:index/namedLocation:NamedLocation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    country = registerOutput<NamedLocationCountry?>('country', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedLocationCountry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    ip = registerOutput<NamedLocationIp?>(
-      'ip',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NamedLocationIp.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ip = registerOutput<NamedLocationIp?>('ip', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedLocationIp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     objectId = registerOutput<String>('objectId');
   }
 
@@ -292,32 +271,14 @@ class NamedLocation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/namedLocation:NamedLocation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    country = registerOutput<NamedLocationCountry?>(
-      'country',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NamedLocationCountry.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azuread:index/namedLocation:NamedLocation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    country = registerOutput<NamedLocationCountry?>('country', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedLocationCountry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    ip = registerOutput<NamedLocationIp?>(
-      'ip',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NamedLocationIp.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ip = registerOutput<NamedLocationIp?>('ip', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedLocationIp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     objectId = registerOutput<String>('objectId');
   }
 }

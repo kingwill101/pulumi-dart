@@ -31,8 +31,7 @@ Future<GetAppServiceCertificateOrderResult> getAppServiceCertificateOrder(
 /// Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native certificateregistration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_certificateregistration_get_app_service_certificate_order_certificate_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAppServiceCertificateOrderCertificateResult>
-getAppServiceCertificateOrderCertificate(
+Future<GetAppServiceCertificateOrderCertificateResult> getAppServiceCertificateOrderCertificate(
   GetAppServiceCertificateOrderCertificateArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

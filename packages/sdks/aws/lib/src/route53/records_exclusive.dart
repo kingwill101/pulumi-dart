@@ -319,7 +319,6 @@ class RecordsExclusive extends pulumi.CustomResource {
   /// See `resource_record_set` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceRecordSets;
   late final pulumi.Output<RecordsExclusiveTimeouts?> timeouts;
-
   /// ID of the hosted zone containing the resource record sets.
   ///
   /// The following arguments are optional:
@@ -334,24 +333,13 @@ class RecordsExclusive extends pulumi.CustomResource {
     RecordsExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/recordsExclusive:RecordsExclusive',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    resourceRecordSets = registerOutput<List<Map<String, dynamic>>?>(
-      'resourceRecordSets',
-    );
-    timeouts = registerOutput<RecordsExclusiveTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RecordsExclusiveTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:route53/recordsExclusive:RecordsExclusive',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    resourceRecordSets = registerOutput<List<Map<String, dynamic>>?>('resourceRecordSets');
+    timeouts = registerOutput<RecordsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -373,24 +361,13 @@ class RecordsExclusive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/recordsExclusive:RecordsExclusive',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    resourceRecordSets = registerOutput<List<Map<String, dynamic>>?>(
-      'resourceRecordSets',
-    );
-    timeouts = registerOutput<RecordsExclusiveTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RecordsExclusiveTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:route53/recordsExclusive:RecordsExclusive',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    resourceRecordSets = registerOutput<List<Map<String, dynamic>>?>('resourceRecordSets');
+    timeouts = registerOutput<RecordsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zoneId = registerOutput<String>('zoneId');
   }
 }

@@ -1,17 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkspaceTable.
 class GetWorkspaceTableResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// The billing plan information for the Log Analytics Workspace Table.
   final String plan;
-
   /// The table's data retention in days.
   final int retentionInDays;
-
   /// The table's total data retention in days.
   final int totalRetentionInDays;
   final String workspaceId;
@@ -54,3 +52,4 @@ class GetWorkspaceTableResult {
     );
   }
 }
+

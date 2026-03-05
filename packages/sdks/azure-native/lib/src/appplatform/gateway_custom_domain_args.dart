@@ -10,16 +10,12 @@ import 'gateway_custom_domain_properties.dart';
 class GatewayCustomDomainArgs {
   /// The name of the Spring Cloud Gateway custom domain.
   final pulumi.Input<String>? domainName;
-
   /// The name of Spring Cloud Gateway.
   final pulumi.Input<String> gatewayName;
-
   /// The properties of custom domain for Spring Cloud Gateway
   final pulumi.Input<GatewayCustomDomainProperties>? properties;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -41,11 +37,7 @@ class GatewayCustomDomainArgs {
     return <String, dynamic>{
       'domainName': ?domainName,
       'gatewayName': gatewayName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            GatewayCustomDomainProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<GatewayCustomDomainProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
     };
@@ -53,25 +45,12 @@ class GatewayCustomDomainArgs {
 
   factory GatewayCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return GatewayCustomDomainArgs(
-      domainName: (() {
-        final guardedValue = map['domainName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GatewayCustomDomainProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GatewayCustomDomainProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

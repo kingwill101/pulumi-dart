@@ -9,19 +9,20 @@ class KubernetesDashboard {
 
   /// Creates a new [KubernetesDashboard].
   /// [disabled] Whether the Kubernetes Dashboard is enabled for this cluster.
-  KubernetesDashboard({this.disabled});
+  KubernetesDashboard({
+    this.disabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disabled': ?disabled};
+    return <String, dynamic>{
+      'disabled': ?disabled,
+    };
   }
 
   factory KubernetesDashboard.fromMap(Map<String, dynamic> map) {
     return KubernetesDashboard(
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

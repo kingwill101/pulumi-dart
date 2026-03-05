@@ -9,10 +9,14 @@ class CloudFunctionV2Target {
 
   /// Creates a new [CloudFunctionV2Target].
   /// [name] Fully qualified GCFv2 resource name i.e. projects/{project}/locations/{location}/functions/{function} Required.
-  CloudFunctionV2Target({required this.name});
+  CloudFunctionV2Target({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory CloudFunctionV2Target.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class CloudFunctionV2Target {
     );
   }
 }
+

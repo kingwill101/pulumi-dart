@@ -32,7 +32,6 @@ class TopicMessageTransformJavascriptUdf {
   /// }
   /// ```
   final pulumi.Input<String> code;
-
   /// Name of the JavaScript function that should be applied to Pub/Sub messages.
   final pulumi.Input<String> functionName;
 
@@ -45,7 +44,10 @@ class TopicMessageTransformJavascriptUdf {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code, 'functionName': functionName};
+    return <String, dynamic>{
+      'code': code,
+      'functionName': functionName,
+    };
   }
 
   factory TopicMessageTransformJavascriptUdf.fromMap(Map<String, dynamic> map) {
@@ -55,3 +57,4 @@ class TopicMessageTransformJavascriptUdf {
     );
   }
 }
+

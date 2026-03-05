@@ -19,19 +19,17 @@ class GetOccurrenceIamPolicyContaineranalysisV1alpha1Args {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'occurrenceId': occurrenceId, 'project': ?project};
+    return <String, dynamic>{
+      'occurrenceId': occurrenceId,
+      'project': ?project,
+    };
   }
 
-  factory GetOccurrenceIamPolicyContaineranalysisV1alpha1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOccurrenceIamPolicyContaineranalysisV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetOccurrenceIamPolicyContaineranalysisV1alpha1Args(
       occurrenceId: pulumi.Input.fromValue(map['occurrenceId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

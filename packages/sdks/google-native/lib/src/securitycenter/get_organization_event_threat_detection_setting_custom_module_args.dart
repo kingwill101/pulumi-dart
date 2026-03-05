@@ -25,12 +25,11 @@ class GetOrganizationEventThreatDetectionSettingCustomModuleArgs {
     };
   }
 
-  factory GetOrganizationEventThreatDetectionSettingCustomModuleArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOrganizationEventThreatDetectionSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationEventThreatDetectionSettingCustomModuleArgs(
       customModuleId: pulumi.Input.fromValue(map['customModuleId'] as String),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
+

@@ -913,28 +913,22 @@ import 'field_ttl_config.dart';
 class Field extends pulumi.CustomResource {
   /// The id of the collection group to configure.
   late final pulumi.Output<String> collection;
-
   /// The Firestore database id. Defaults to `"(default)"`.
   late final pulumi.Output<String?> database;
-
   /// The id of the field to configure.
   late final pulumi.Output<String> field;
-
   /// The single field index configuration for this field.
   /// Creating an index configuration for this field will override any inherited configuration with the
   /// indexes specified. Configuring the index configuration with an empty block disables all indexes on
   /// the field.
   /// Structure is documented below.
   late final pulumi.Output<FieldIndexConfig?> indexConfig;
-
   /// The name of this field. Format:
   /// `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}`
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
   /// Structure is documented below.
   late final pulumi.Output<FieldTtlConfig?> ttlConfig;
@@ -943,42 +937,31 @@ class Field extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Field]. {@macro pulumi_firestore_field_field_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Field(String name, {FieldArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:firestore/field:Field',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Field(
+    String name, {
+    FieldArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:firestore/field:Field',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     collection = registerOutput<String>('collection');
     database = registerOutput<String?>('database');
     field = registerOutput<String>('field');
-    indexConfig = registerOutput<FieldIndexConfig?>(
-      'indexConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FieldIndexConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    indexConfig = registerOutput<FieldIndexConfig?>('indexConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FieldIndexConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    ttlConfig = registerOutput<FieldTtlConfig?>(
-      'ttlConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FieldTtlConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ttlConfig = registerOutput<FieldTtlConfig?>('ttlConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FieldTtlConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Field] resource's state with the given [name] and [id].
-  static Field get(String name, pulumi.Input<String> id, {FieldState? state}) {
+  static Field get(
+    String name,
+    pulumi.Input<String> id, {
+    FieldState? state,
+  }) {
     return Field._get(
       name,
       state: state?.toMap(),
@@ -991,35 +974,17 @@ class Field extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firestore/field:Field',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:firestore/field:Field',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     collection = registerOutput<String>('collection');
     database = registerOutput<String?>('database');
     field = registerOutput<String>('field');
-    indexConfig = registerOutput<FieldIndexConfig?>(
-      'indexConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FieldIndexConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    indexConfig = registerOutput<FieldIndexConfig?>('indexConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FieldIndexConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    ttlConfig = registerOutput<FieldTtlConfig?>(
-      'ttlConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FieldTtlConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ttlConfig = registerOutput<FieldTtlConfig?>('ttlConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FieldTtlConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

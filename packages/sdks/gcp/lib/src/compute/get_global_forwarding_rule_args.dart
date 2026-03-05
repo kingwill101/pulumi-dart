@@ -11,7 +11,6 @@ class GetGlobalForwardingRuleArgs {
   ///
   /// - - -
   final pulumi.Input<String> name;
-
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -19,20 +18,23 @@ class GetGlobalForwardingRuleArgs {
   /// Creates a new [GetGlobalForwardingRuleArgs].
   /// [name] The name of the global forwarding rule.
   /// [project] The project in which the resource belongs. If it
-  GetGlobalForwardingRuleArgs({required this.name, this.project});
+  GetGlobalForwardingRuleArgs({
+    required this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'project': ?project};
+    return <String, dynamic>{
+      'name': name,
+      'project': ?project,
+    };
   }
 
   factory GetGlobalForwardingRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalForwardingRuleArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -227,22 +227,16 @@ import 'data_source_windows_performance_counter_state.dart';
 class DataSourceWindowsPerformanceCounter extends pulumi.CustomResource {
   /// The friendly name of the performance counter.
   late final pulumi.Output<String> counterName;
-
   /// The name of the virtual machine instance to which the Windows Performance Counter DataSource be applied. Specify a `*` will apply to all instances.
   late final pulumi.Output<String> instanceName;
-
   /// The time of sample interval in seconds. Supports values between 10 and 2147483647.
   late final pulumi.Output<int> intervalSeconds;
-
   /// The Name which should be used for this Log Analytics Windows Performance Counter DataSource. Changing this forces a new Log Analytics Windows Performance Counter DataSource to be created.
   late final pulumi.Output<String> name;
-
   /// The object name of the Log Analytics Windows Performance Counter DataSource.
   late final pulumi.Output<String> objectName;
-
   /// The name of the Resource Group where the Log Analytics Windows Performance Counter DataSource should exist. Changing this forces a new Log Analytics Windows Performance Counter DataSource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The name of the Log Analytics Workspace where the Log Analytics Windows Performance Counter DataSource should exist. Changing this forces a new Log Analytics Windows Performance Counter DataSource to be created.
   late final pulumi.Output<String> workspaceName;
 
@@ -255,11 +249,11 @@ class DataSourceWindowsPerformanceCounter extends pulumi.CustomResource {
     DataSourceWindowsPerformanceCounterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/dataSourceWindowsPerformanceCounter:DataSourceWindowsPerformanceCounter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/dataSourceWindowsPerformanceCounter:DataSourceWindowsPerformanceCounter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     counterName = registerOutput<String>('counterName');
     instanceName = registerOutput<String>('instanceName');
     intervalSeconds = registerOutput<int>('intervalSeconds');
@@ -287,11 +281,11 @@ class DataSourceWindowsPerformanceCounter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/dataSourceWindowsPerformanceCounter:DataSourceWindowsPerformanceCounter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/dataSourceWindowsPerformanceCounter:DataSourceWindowsPerformanceCounter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     counterName = registerOutput<String>('counterName');
     instanceName = registerOutput<String>('instanceName');
     intervalSeconds = registerOutput<int>('intervalSeconds');

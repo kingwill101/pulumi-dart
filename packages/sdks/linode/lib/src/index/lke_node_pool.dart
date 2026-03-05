@@ -667,40 +667,28 @@ import 'lke_node_pool_state.dart';
 /// ```
 class LkeNodePool extends pulumi.CustomResource {
   late final pulumi.Output<LkeNodePoolAutoscaler?> autoscaler;
-
   /// ID of the LKE Cluster where to create the current Node Pool.
   late final pulumi.Output<int> clusterId;
-
   /// The disk encryption policy for nodes in this pool.
   late final pulumi.Output<String> diskEncryption;
-
   /// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
   late final pulumi.Output<int> firewallId;
-
   /// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
   late final pulumi.Output<String> k8sVersion;
-
   /// A label for the Node Pool. If not provided, it defaults to empty string.
   late final pulumi.Output<String> label;
-
   /// A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
   late final pulumi.Output<Map<String, String>> labels;
-
   /// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
   late final pulumi.Output<int> nodeCount;
-
   /// A list of nodes in the node pool.
   late final pulumi.Output<List<Map<String, dynamic>>> nodes;
-
   /// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
   late final pulumi.Output<List<String>> tags;
-
   /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
   late final pulumi.Output<List<Map<String, dynamic>>?> taints;
-
   /// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
   late final pulumi.Output<String> type;
-
   /// The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
   ///
   /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
@@ -717,21 +705,12 @@ class LkeNodePool extends pulumi.CustomResource {
     LkeNodePoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/lkeNodePool:LkeNodePool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoscaler = registerOutput<LkeNodePoolAutoscaler?>(
-      'autoscaler',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LkeNodePoolAutoscaler.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'linode:index/lkeNodePool:LkeNodePool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoscaler = registerOutput<LkeNodePoolAutoscaler?>('autoscaler', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LkeNodePoolAutoscaler.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<int>('clusterId');
     diskEncryption = registerOutput<String>('diskEncryption');
     firewallId = registerOutput<int>('firewallId');
@@ -764,21 +743,12 @@ class LkeNodePool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/lkeNodePool:LkeNodePool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoscaler = registerOutput<LkeNodePoolAutoscaler?>(
-      'autoscaler',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LkeNodePoolAutoscaler.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'linode:index/lkeNodePool:LkeNodePool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoscaler = registerOutput<LkeNodePoolAutoscaler?>('autoscaler', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LkeNodePoolAutoscaler.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<int>('clusterId');
     diskEncryption = registerOutput<String>('diskEncryption');
     firewallId = registerOutput<int>('firewallId');

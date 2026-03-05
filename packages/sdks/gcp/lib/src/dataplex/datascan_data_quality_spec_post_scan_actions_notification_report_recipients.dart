@@ -13,18 +13,15 @@ class DatascanDataQualitySpecPostScanActionsNotificationReportRecipients {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'emails': ?emails};
+    return <String, dynamic>{
+      'emails': ?emails,
+    };
   }
 
-  factory DatascanDataQualitySpecPostScanActionsNotificationReportRecipients.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DatascanDataQualitySpecPostScanActionsNotificationReportRecipients.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpecPostScanActionsNotificationReportRecipients(
-      emails: (() {
-        final guardedValue = map['emails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      emails: (() { final guardedValue = map['emails']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

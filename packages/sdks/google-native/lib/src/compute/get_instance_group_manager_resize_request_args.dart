@@ -33,20 +33,13 @@ class GetInstanceGroupManagerResizeRequestArgs {
     };
   }
 
-  factory GetInstanceGroupManagerResizeRequestArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceGroupManagerResizeRequestArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerResizeRequestArgs(
-      instanceGroupManager: pulumi.Input.fromValue(
-        map['instanceGroupManager'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceGroupManager: pulumi.Input.fromValue(map['instanceGroupManager'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resizeRequest: pulumi.Input.fromValue(map['resizeRequest'] as String),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
+

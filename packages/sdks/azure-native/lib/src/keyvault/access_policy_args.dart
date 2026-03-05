@@ -10,10 +10,8 @@ import 'access_policy_entry.dart';
 class AccessPolicyArgs {
   /// The definition of the access policy.
   final pulumi.Input<AccessPolicyEntry> policy;
-
   /// Name of the resource group that contains the vault.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the Key Vault.
   final pulumi.Input<String> vaultName;
 
@@ -29,11 +27,7 @@ class AccessPolicyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policy':
-          pulumi.Input.mapInputValue<AccessPolicyEntry, Map<String, dynamic>>(
-            policy,
-            (value) => value.toMap(),
-          ),
+      'policy': pulumi.Input.mapInputValue<AccessPolicyEntry, Map<String, dynamic>>(policy, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'vaultName': vaultName,
     };
@@ -41,15 +35,10 @@ class AccessPolicyArgs {
 
   factory AccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyArgs(
-      policy: pulumi.Input.fromValue(
-        AccessPolicyEntry.fromMap(
-          (map['policy']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      policy: pulumi.Input.fromValue(AccessPolicyEntry.fromMap((map['policy']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
+

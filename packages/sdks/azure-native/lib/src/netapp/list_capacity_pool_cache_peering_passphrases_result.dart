@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listCapacityPoolCachePeeringPassphrases.
 class ListCapacityPoolCachePeeringPassphrasesResult {
   /// The cluster peering command.
   final String clusterPeeringCommand;
-
   /// The cluster peering passphrase.
   final String clusterPeeringPassphrase;
-
   /// The vserver peering command.
   final String vserverPeeringCommand;
 
@@ -29,9 +28,7 @@ class ListCapacityPoolCachePeeringPassphrasesResult {
     };
   }
 
-  factory ListCapacityPoolCachePeeringPassphrasesResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListCapacityPoolCachePeeringPassphrasesResult.fromMap(Map<String, dynamic> map) {
     return ListCapacityPoolCachePeeringPassphrasesResult(
       clusterPeeringCommand: map['clusterPeeringCommand'] as String,
       clusterPeeringPassphrase: map['clusterPeeringPassphrase'] as String,
@@ -39,3 +36,4 @@ class ListCapacityPoolCachePeeringPassphrasesResult {
     );
   }
 }
+

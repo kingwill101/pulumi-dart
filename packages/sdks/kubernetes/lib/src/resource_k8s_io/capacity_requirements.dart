@@ -19,21 +19,20 @@ class CapacityRequirements {
 
   /// Creates a new [CapacityRequirements].
   /// [requests] Requests represent individual device resource requests for distinct resources, all of which must be provided by the device.
-  CapacityRequirements({this.requests});
+  CapacityRequirements({
+    this.requests,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'requests': ?requests};
+    return <String, dynamic>{
+      'requests': ?requests,
+    };
   }
 
   factory CapacityRequirements.fromMap(Map<String, dynamic> map) {
     return CapacityRequirements(
-      requests: (() {
-        final guardedValue = map['requests'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      requests: (() { final guardedValue = map['requests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

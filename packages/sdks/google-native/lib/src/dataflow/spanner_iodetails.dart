@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpannerIODetails {
   /// DatabaseId accessed in the connection.
   final pulumi.Input<String>? databaseId;
-
   /// InstanceId accessed in the connection.
   final pulumi.Input<String>? instanceId;
-
   /// ProjectId accessed in the connection.
   final pulumi.Input<String>? project;
 
@@ -17,7 +15,11 @@ class SpannerIODetails {
   /// [databaseId] DatabaseId accessed in the connection.
   /// [instanceId] InstanceId accessed in the connection.
   /// [project] ProjectId accessed in the connection.
-  SpannerIODetails({this.databaseId, this.instanceId, this.project});
+  SpannerIODetails({
+    this.databaseId,
+    this.instanceId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class SpannerIODetails {
 
   factory SpannerIODetails.fromMap(Map<String, dynamic> map) {
     return SpannerIODetails(
-      databaseId: (() {
-        final guardedValue = map['databaseId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      databaseId: (() { final guardedValue = map['databaseId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

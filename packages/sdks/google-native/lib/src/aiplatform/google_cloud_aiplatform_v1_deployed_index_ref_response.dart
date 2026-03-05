@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1DeployedIndexRefResponse {
   /// Immutable. The ID of the DeployedIndex in the above IndexEndpoint.
   final pulumi.Input<String> deployedIndexId;
-
   /// Immutable. A resource name of the IndexEndpoint.
   final pulumi.Input<String> indexEndpoint;
 
@@ -25,12 +24,11 @@ class GoogleCloudAiplatformV1DeployedIndexRefResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1DeployedIndexRefResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1DeployedIndexRefResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1DeployedIndexRefResponse(
       deployedIndexId: pulumi.Input.fromValue(map['deployedIndexId'] as String),
       indexEndpoint: pulumi.Input.fromValue(map['indexEndpoint'] as String),
     );
   }
 }
+

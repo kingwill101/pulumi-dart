@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareControlPlaneVsphereConfig {
   /// The Vsphere datastore used by the control plane Node.
   final pulumi.Input<String>? datastore;
-
   /// The Vsphere storage policy used by the control plane Node.
   final pulumi.Input<String>? storagePolicyName;
 
   /// Creates a new [VmwareControlPlaneVsphereConfig].
   /// [datastore] The Vsphere datastore used by the control plane Node.
   /// [storagePolicyName] The Vsphere storage policy used by the control plane Node.
-  VmwareControlPlaneVsphereConfig({this.datastore, this.storagePolicyName});
+  VmwareControlPlaneVsphereConfig({
+    this.datastore,
+    this.storagePolicyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class VmwareControlPlaneVsphereConfig {
 
   factory VmwareControlPlaneVsphereConfig.fromMap(Map<String, dynamic> map) {
     return VmwareControlPlaneVsphereConfig(
-      datastore: (() {
-        final guardedValue = map['datastore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storagePolicyName: (() {
-        final guardedValue = map['storagePolicyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      datastore: (() { final guardedValue = map['datastore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storagePolicyName: (() { final guardedValue = map['storagePolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

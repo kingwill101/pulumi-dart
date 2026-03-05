@@ -10,39 +10,20 @@ class NodeTaintsContainerV1beta1 {
 
   /// Creates a new [NodeTaintsContainerV1beta1].
   /// [taints] List of node taints.
-  NodeTaintsContainerV1beta1({this.taints});
+  NodeTaintsContainerV1beta1({
+    this.taints,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'taints':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NodeTaintContainerV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            taints,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NodeTaintContainerV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'taints': ?pulumi.Input.mapOptionalInputValue<List<NodeTaintContainerV1beta1>, List<Map<String, dynamic>>>(taints, (value) => pulumi.Input.encodeList<NodeTaintContainerV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NodeTaintsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodeTaintsContainerV1beta1(
-      taints: (() {
-        final guardedValue = map['taints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NodeTaintContainerV1beta1>(
-            guardedValue,
-            (value) => NodeTaintContainerV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      taints: (() { final guardedValue = map['taints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NodeTaintContainerV1beta1>(guardedValue, (value) => NodeTaintContainerV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

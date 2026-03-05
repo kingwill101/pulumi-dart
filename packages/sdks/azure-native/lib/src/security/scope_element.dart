@@ -9,19 +9,20 @@ class ScopeElement {
 
   /// Creates a new [ScopeElement].
   /// [field] The alert entity type to suppress by.
-  ScopeElement({this.field});
+  ScopeElement({
+    this.field,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'field': ?field};
+    return <String, dynamic>{
+      'field': ?field,
+    };
   }
 
   factory ScopeElement.fromMap(Map<String, dynamic> map) {
     return ScopeElement(
-      field: (() {
-        final guardedValue = map['field'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      field: (() { final guardedValue = map['field']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

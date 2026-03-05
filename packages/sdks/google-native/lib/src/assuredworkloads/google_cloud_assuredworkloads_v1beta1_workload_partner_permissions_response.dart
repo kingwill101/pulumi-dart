@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse {
   /// Optional. Allow partner to view violation alerts.
   final pulumi.Input<bool> assuredWorkloadsMonitoring;
-
   /// Allow the partner to view inspectability logs and monitoring violations.
   final pulumi.Input<bool> dataLogsViewer;
-
   /// Optional. Allow partner to view access approval logs.
   final pulumi.Input<bool> serviceAccessApprover;
 
@@ -31,17 +29,12 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse {
     };
   }
 
-  factory GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse(
-      assuredWorkloadsMonitoring: pulumi.Input.fromValue(
-        map['assuredWorkloadsMonitoring'] as bool,
-      ),
+      assuredWorkloadsMonitoring: pulumi.Input.fromValue(map['assuredWorkloadsMonitoring'] as bool),
       dataLogsViewer: pulumi.Input.fromValue(map['dataLogsViewer'] as bool),
-      serviceAccessApprover: pulumi.Input.fromValue(
-        map['serviceAccessApprover'] as bool,
-      ),
+      serviceAccessApprover: pulumi.Input.fromValue(map['serviceAccessApprover'] as bool),
     );
   }
 }
+

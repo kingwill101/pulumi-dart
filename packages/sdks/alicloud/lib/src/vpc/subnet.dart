@@ -22,13 +22,16 @@ class Subnet extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Subnet]. {@macro pulumi_vpc_subnet_subnet_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Subnet(String name, {SubnetArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:vpc/subnet:Subnet',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Subnet(
+    String name, {
+    SubnetArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:vpc/subnet:Subnet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     availabilityZone = registerOutput<String>('availabilityZone');
     cidrBlock = registerOutput<String>('cidrBlock');
     createTime = registerOutput<String>('createTime');
@@ -63,11 +66,11 @@ class Subnet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/subnet:Subnet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/subnet:Subnet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     availabilityZone = registerOutput<String>('availabilityZone');
     cidrBlock = registerOutput<String>('cidrBlock');
     createTime = registerOutput<String>('createTime');

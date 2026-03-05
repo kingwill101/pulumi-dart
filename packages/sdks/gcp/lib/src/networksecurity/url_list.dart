@@ -281,26 +281,20 @@ class UrlList extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC 'Zulu' format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: '2014-10-02T15:01:23Z' and '2014-10-02T15:01:23.045123456Z'
   late final pulumi.Output<String> createTime;
-
   /// Free-text description of the resource.
   late final pulumi.Output<String?> description;
-
   /// The location of the url lists.
   late final pulumi.Output<String> location;
-
   /// Short name of the UrlList resource to be created.
   /// This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. 'urlList'.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Output only. Time when the security policy was updated.
   /// A timestamp in RFC3339 UTC 'Zulu' format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: '2014-10-02T15:01:23Z' and '2014-10-02T15:01:23.045123456Z'.
   late final pulumi.Output<String> updateTime;
-
   /// FQDNs and URLs.
   late final pulumi.Output<List<String>> values;
 
@@ -313,11 +307,11 @@ class UrlList extends pulumi.CustomResource {
     UrlListArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networksecurity/urlList:UrlList',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networksecurity/urlList:UrlList',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
@@ -345,11 +339,11 @@ class UrlList extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networksecurity/urlList:UrlList',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networksecurity/urlList:UrlList',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');

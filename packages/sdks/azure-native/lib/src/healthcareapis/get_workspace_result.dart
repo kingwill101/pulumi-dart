@@ -7,28 +7,20 @@ import 'workspace_response_properties.dart';
 class GetWorkspaceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// An etag associated with the resource, used for optimistic concurrency when editing it.
   final String? etag;
-
   /// The resource identifier.
   final String id;
-
   /// The resource location.
   final String? location;
-
   /// The resource name.
   final String name;
-
   /// Workspaces resource specific properties.
   final WorkspaceResponseProperties properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The resource type.
   final String type;
 
@@ -71,30 +63,15 @@ class GetWorkspaceResult {
   factory GetWorkspaceResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: WorkspaceResponseProperties.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: WorkspaceResponseProperties.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

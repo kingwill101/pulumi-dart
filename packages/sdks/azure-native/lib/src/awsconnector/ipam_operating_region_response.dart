@@ -9,19 +9,20 @@ class IpamOperatingRegionResponse {
 
   /// Creates a new [IpamOperatingRegionResponse].
   /// [regionName] &lt;p&gt;The name of the operating Region.&lt;/p&gt;
-  IpamOperatingRegionResponse({this.regionName});
+  IpamOperatingRegionResponse({
+    this.regionName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'regionName': ?regionName};
+    return <String, dynamic>{
+      'regionName': ?regionName,
+    };
   }
 
   factory IpamOperatingRegionResponse.fromMap(Map<String, dynamic> map) {
     return IpamOperatingRegionResponse(
-      regionName: (() {
-        final guardedValue = map['regionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      regionName: (() { final guardedValue = map['regionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

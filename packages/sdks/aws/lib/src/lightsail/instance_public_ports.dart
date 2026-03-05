@@ -289,12 +289,10 @@ import 'instance_public_ports_state.dart';
 class InstancePublicPorts extends pulumi.CustomResource {
   /// Name of the instance for which to open ports.
   late final pulumi.Output<String> instanceName;
-
   /// Descriptor of the ports to open for the specified instance. AWS closes all currently open ports that are not included in this argument. See `port_info` Block for details.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<Map<String, dynamic>>> portInfos;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -307,11 +305,11 @@ class InstancePublicPorts extends pulumi.CustomResource {
     InstancePublicPortsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lightsail/instancePublicPorts:InstancePublicPorts',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lightsail/instancePublicPorts:InstancePublicPorts',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceName = registerOutput<String>('instanceName');
     portInfos = registerOutput<List<Map<String, dynamic>>>('portInfos');
     region = registerOutput<String>('region');
@@ -335,11 +333,11 @@ class InstancePublicPorts extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lightsail/instancePublicPorts:InstancePublicPorts',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lightsail/instancePublicPorts:InstancePublicPorts',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceName = registerOutput<String>('instanceName');
     portInfos = registerOutput<List<Map<String, dynamic>>>('portInfos');
     region = registerOutput<String>('region');

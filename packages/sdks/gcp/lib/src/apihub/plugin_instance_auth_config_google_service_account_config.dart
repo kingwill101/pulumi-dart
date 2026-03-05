@@ -15,14 +15,15 @@ class PluginInstanceAuthConfigGoogleServiceAccountConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serviceAccount': serviceAccount};
+    return <String, dynamic>{
+      'serviceAccount': serviceAccount,
+    };
   }
 
-  factory PluginInstanceAuthConfigGoogleServiceAccountConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PluginInstanceAuthConfigGoogleServiceAccountConfig.fromMap(Map<String, dynamic> map) {
     return PluginInstanceAuthConfigGoogleServiceAccountConfig(
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
     );
   }
 }
+

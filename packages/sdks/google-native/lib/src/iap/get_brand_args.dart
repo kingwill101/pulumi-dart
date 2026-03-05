@@ -13,20 +13,23 @@ class GetBrandArgs {
   /// Creates a new [GetBrandArgs].
   /// [brandId] Required.
   /// [project] Optional.
-  GetBrandArgs({required this.brandId, this.project});
+  GetBrandArgs({
+    required this.brandId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'brandId': brandId, 'project': ?project};
+    return <String, dynamic>{
+      'brandId': brandId,
+      'project': ?project,
+    };
   }
 
   factory GetBrandArgs.fromMap(Map<String, dynamic> map) {
     return GetBrandArgs(
       brandId: pulumi.Input.fromValue(map['brandId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

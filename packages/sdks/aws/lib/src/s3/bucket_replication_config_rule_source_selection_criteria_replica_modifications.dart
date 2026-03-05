@@ -13,14 +13,15 @@ class BucketReplicationConfigRuleSourceSelectionCriteriaReplicaModifications {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': status};
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
-  factory BucketReplicationConfigRuleSourceSelectionCriteriaReplicaModifications.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketReplicationConfigRuleSourceSelectionCriteriaReplicaModifications.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleSourceSelectionCriteriaReplicaModifications(
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

@@ -16,15 +16,17 @@ class MetricStreamStatisticsConfigurationIncludeMetric {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metricName': metricName, 'namespace': namespace};
+    return <String, dynamic>{
+      'metricName': metricName,
+      'namespace': namespace,
+    };
   }
 
-  factory MetricStreamStatisticsConfigurationIncludeMetric.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MetricStreamStatisticsConfigurationIncludeMetric.fromMap(Map<String, dynamic> map) {
     return MetricStreamStatisticsConfigurationIncludeMetric(
       metricName: pulumi.Input.fromValue(map['metricName'] as String),
       namespace: pulumi.Input.fromValue(map['namespace'] as String),
     );
   }
 }
+

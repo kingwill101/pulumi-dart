@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchemaArgs {
   /// The unique id of the data store.
   final pulumi.Input<String> dataStoreId;
-
   /// The JSON representation of the schema.
   final pulumi.Input<String>? jsonSchema;
-
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The unique id of the schema.
   final pulumi.Input<String> schemaId;
 
@@ -51,18 +47,11 @@ class SchemaArgs {
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
       dataStoreId: pulumi.Input.fromValue(map['dataStoreId'] as String),
-      jsonSchema: (() {
-        final guardedValue = map['jsonSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      jsonSchema: (() { final guardedValue = map['jsonSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schemaId: pulumi.Input.fromValue(map['schemaId'] as String),
     );
   }
 }
+

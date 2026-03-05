@@ -7,10 +7,8 @@ class JobQueryScriptOptions {
   /// used to populate the schema and query results of the script job.
   /// Possible values are: `LAST`, `FIRST_SELECT`.
   final pulumi.Input<String>? keyResultStatement;
-
   /// Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
   final pulumi.Input<String>? statementByteBudget;
-
   /// Timeout period for each statement in a script.
   final pulumi.Input<String>? statementTimeoutMs;
 
@@ -34,21 +32,10 @@ class JobQueryScriptOptions {
 
   factory JobQueryScriptOptions.fromMap(Map<String, dynamic> map) {
     return JobQueryScriptOptions(
-      keyResultStatement: (() {
-        final guardedValue = map['keyResultStatement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      statementByteBudget: (() {
-        final guardedValue = map['statementByteBudget'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      statementTimeoutMs: (() {
-        final guardedValue = map['statementTimeoutMs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyResultStatement: (() { final guardedValue = map['keyResultStatement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statementByteBudget: (() { final guardedValue = map['statementByteBudget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statementTimeoutMs: (() { final guardedValue = map['statementTimeoutMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

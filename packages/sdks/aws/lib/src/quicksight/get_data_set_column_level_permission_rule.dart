@@ -21,16 +21,11 @@ class GetDataSetColumnLevelPermissionRule {
     };
   }
 
-  factory GetDataSetColumnLevelPermissionRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataSetColumnLevelPermissionRule.fromMap(Map<String, dynamic> map) {
     return GetDataSetColumnLevelPermissionRule(
-      columnNames: pulumi.Input.fromValue(
-        (map['columnNames'] as List).cast<String>(),
-      ),
-      principals: pulumi.Input.fromValue(
-        (map['principals'] as List).cast<String>(),
-      ),
+      columnNames: pulumi.Input.fromValue((map['columnNames'] as List).cast<String>()),
+      principals: pulumi.Input.fromValue((map['principals'] as List).cast<String>()),
     );
   }
 }
+

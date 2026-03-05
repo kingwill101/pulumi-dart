@@ -123,7 +123,6 @@ class KeyVersion extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
   late final pulumi.Output<String> keyId;
-
   /// The id of the Alikms key version.
   late final pulumi.Output<String> keyVersionId;
 
@@ -136,11 +135,11 @@ class KeyVersion extends pulumi.CustomResource {
     KeyVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kms/keyVersion:KeyVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kms/keyVersion:KeyVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keyId = registerOutput<String>('keyId');
     keyVersionId = registerOutput<String>('keyVersionId');
   }
@@ -163,11 +162,11 @@ class KeyVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kms/keyVersion:KeyVersion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kms/keyVersion:KeyVersion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keyId = registerOutput<String>('keyId');
     keyVersionId = registerOutput<String>('keyVersionId');
   }

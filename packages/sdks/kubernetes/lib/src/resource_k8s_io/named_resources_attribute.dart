@@ -8,25 +8,18 @@ import 'named_resources_string_slice.dart';
 class NamedResourcesAttribute {
   /// BoolValue is a true/false value.
   final pulumi.Input<bool>? bool_;
-
   /// IntValue is a 64-bit integer.
   final pulumi.Input<int>? int_;
-
   /// IntSliceValue is an array of 64-bit integers.
   final pulumi.Input<NamedResourcesIntSlice>? intSlice;
-
   /// Name is unique identifier among all resource instances managed by the driver on the node. It must be a DNS subdomain.
   final pulumi.Input<String> name;
-
   /// QuantityValue is a quantity.
   final pulumi.Input<String>? quantity;
-
   /// StringValue is a string.
   final pulumi.Input<String>? string_;
-
   /// StringSliceValue is an array of strings.
   final pulumi.Input<NamedResourcesStringSlice>? stringSlice;
-
   /// VersionValue is a semantic version according to semver.org spec 2.0.0.
   final pulumi.Input<String>? version;
 
@@ -54,69 +47,26 @@ class NamedResourcesAttribute {
     return <String, dynamic>{
       'bool': ?bool_,
       'int': ?int_,
-      'intSlice':
-          ?pulumi.Input.mapOptionalInputValue<
-            NamedResourcesIntSlice,
-            Map<String, dynamic>
-          >(intSlice, (value) => value.toMap()),
+      'intSlice': ?pulumi.Input.mapOptionalInputValue<NamedResourcesIntSlice, Map<String, dynamic>>(intSlice, (value) => value.toMap()),
       'name': name,
       'quantity': ?quantity,
       'string': ?string_,
-      'stringSlice':
-          ?pulumi.Input.mapOptionalInputValue<
-            NamedResourcesStringSlice,
-            Map<String, dynamic>
-          >(stringSlice, (value) => value.toMap()),
+      'stringSlice': ?pulumi.Input.mapOptionalInputValue<NamedResourcesStringSlice, Map<String, dynamic>>(stringSlice, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory NamedResourcesAttribute.fromMap(Map<String, dynamic> map) {
     return NamedResourcesAttribute(
-      bool_: (() {
-        final guardedValue = map['bool'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      int_: (() {
-        final guardedValue = map['int'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      intSlice: (() {
-        final guardedValue = map['intSlice'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NamedResourcesIntSlice.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      bool_: (() { final guardedValue = map['bool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      int_: (() { final guardedValue = map['int']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      intSlice: (() { final guardedValue = map['intSlice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NamedResourcesIntSlice.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      quantity: (() {
-        final guardedValue = map['quantity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      string_: (() {
-        final guardedValue = map['string'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stringSlice: (() {
-        final guardedValue = map['stringSlice'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NamedResourcesStringSlice.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      string_: (() { final guardedValue = map['string']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stringSlice: (() { final guardedValue = map['stringSlice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NamedResourcesStringSlice.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

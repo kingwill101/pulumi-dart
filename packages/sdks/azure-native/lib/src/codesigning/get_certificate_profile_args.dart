@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateProfileArgs {
   /// Trusted Signing account name.
   final pulumi.Input<String> accountName;
-
   /// Certificate profile name.
   final pulumi.Input<String> profileName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetCertificateProfileArgs {
     return GetCertificateProfileArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       profileName: pulumi.Input.fromValue(map['profileName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

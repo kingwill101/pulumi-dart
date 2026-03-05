@@ -16,3 +16,4 @@ enum InstanceType {
     throw ArgumentError('Unknown InstanceType value: $value');
   }
 }
+

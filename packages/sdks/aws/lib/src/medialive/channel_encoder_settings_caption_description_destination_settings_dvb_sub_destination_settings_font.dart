@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettingsFont {
   /// Key used to extract the password from EC2 Parameter store.
   final pulumi.Input<String>? passwordParam;
-
   /// Path to a file accessible to the live stream.
   final pulumi.Input<String> uri;
-
   /// Username to be used.
   final pulumi.Input<String>? username;
 
@@ -30,21 +28,12 @@ class ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinati
     };
   }
 
-  factory ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettingsFont.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettingsFont.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettingsFont(
-      passwordParam: (() {
-        final guardedValue = map['passwordParam'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      passwordParam: (() { final guardedValue = map['passwordParam']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

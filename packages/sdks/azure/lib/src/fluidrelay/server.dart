@@ -159,40 +159,28 @@ import 'server_state.dart';
 class Server extends pulumi.CustomResource {
   /// A `customer_managed_key` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ServerCustomerManagedKey?> customerManagedKey;
-
   /// The Fluid tenantId for this server.
   late final pulumi.Output<String> frsTenantId;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<ServerIdentity?> identity;
-
   /// The Azure Region where the Fluid Relay Server should exist. Changing this forces a new Fluid Relay Server to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Fluid Relay Server. Changing this forces a new Fluid Relay Server to be created.
   late final pulumi.Output<String> name;
-
   /// An array of the Fluid Relay Orderer endpoints. This will be deprecated in future version of fluid relay server and will always be empty, [more details](https://learn.microsoft.com/en-us/azure/azure-fluid-relay/concepts/version-compatibility).
   late final pulumi.Output<List<String>> ordererEndpoints;
-
   /// The primary key for this server.
   late final pulumi.Output<String> primaryKey;
-
   /// The name of the Resource Group where the Fluid Relay Server should exist. Changing this forces a new Fluid Relay Server to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The secondary key for this server.
   late final pulumi.Output<String> secondaryKey;
-
   /// An array of service endpoints for this Fluid Relay Server.
   late final pulumi.Output<List<String>> serviceEndpoints;
-
   /// An array of storage endpoints for this Fluid Relay Server. This will be deprecated in future version of fluid relay server and will always be empty, [more details](https://learn.microsoft.com/en-us/azure/azure-fluid-relay/concepts/version-compatibility).
   late final pulumi.Output<List<String>> storageEndpoints;
-
   /// Sku of the storage associated with the resource, Possible values are `standard` and `basic`. Changing this forces a new Fluid Relay Server to be created.
   late final pulumi.Output<String> storageSku;
-
   /// A mapping of tags which should be assigned to the Fluid Relay Server.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -200,34 +188,19 @@ class Server extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Server]. {@macro pulumi_fluidrelay_server_server_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Server(String name, {ServerArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:fluidrelay/server:Server',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    customerManagedKey = registerOutput<ServerCustomerManagedKey?>(
-      'customerManagedKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerCustomerManagedKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Server(
+    String name, {
+    ServerArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:fluidrelay/server:Server',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customerManagedKey = registerOutput<ServerCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     frsTenantId = registerOutput<String>('frsTenantId');
-    identity = registerOutput<ServerIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ServerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     ordererEndpoints = registerOutput<List<String>>('ordererEndpoints');
@@ -258,32 +231,14 @@ class Server extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:fluidrelay/server:Server',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customerManagedKey = registerOutput<ServerCustomerManagedKey?>(
-      'customerManagedKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerCustomerManagedKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:fluidrelay/server:Server',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customerManagedKey = registerOutput<ServerCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     frsTenantId = registerOutput<String>('frsTenantId');
-    identity = registerOutput<ServerIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ServerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     ordererEndpoints = registerOutput<List<String>>('ordererEndpoints');

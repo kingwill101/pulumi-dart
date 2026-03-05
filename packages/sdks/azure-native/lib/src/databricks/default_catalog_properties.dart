@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultCatalogProperties {
   /// Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
   final pulumi.Input<String>? initialName;
-
   /// Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
   final pulumi.Input<String>? initialType;
 
   /// Creates a new [DefaultCatalogProperties].
   /// [initialName] Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
   /// [initialType] Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
-  DefaultCatalogProperties({this.initialName, this.initialType});
+  DefaultCatalogProperties({
+    this.initialName,
+    this.initialType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class DefaultCatalogProperties {
 
   factory DefaultCatalogProperties.fromMap(Map<String, dynamic> map) {
     return DefaultCatalogProperties(
-      initialName: (() {
-        final guardedValue = map['initialName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      initialType: (() {
-        final guardedValue = map['initialType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      initialName: (() { final guardedValue = map['initialName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      initialType: (() { final guardedValue = map['initialType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum LocalTimestampFormat {
     throw ArgumentError('Unknown LocalTimestampFormat value: $value');
   }
 }
+

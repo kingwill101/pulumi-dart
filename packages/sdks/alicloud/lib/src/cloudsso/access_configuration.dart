@@ -267,27 +267,20 @@ import 'access_configuration_state.dart';
 class AccessConfiguration extends pulumi.CustomResource {
   /// The ID of the Access Configuration.
   late final pulumi.Output<String> accessConfigurationId;
-
   /// The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
   late final pulumi.Output<String> accessConfigurationName;
-
   /// The description of the access configuration. The description can be up to `1024` characters in length.
   late final pulumi.Output<String?> description;
-
   /// The ID of the Directory.
   late final pulumi.Output<String> directoryId;
-
   /// This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
   ///
   /// * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
   late final pulumi.Output<bool?> forceRemovePermissionPolicies;
-
   /// The Policy List. See `permission_policies` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> permissionPolicies;
-
   /// The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
   late final pulumi.Output<String?> relayState;
-
   /// The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
   late final pulumi.Output<int> sessionDuration;
 
@@ -300,21 +293,17 @@ class AccessConfiguration extends pulumi.CustomResource {
     AccessConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/accessConfiguration:AccessConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/accessConfiguration:AccessConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessConfigurationId = registerOutput<String>('accessConfigurationId');
     accessConfigurationName = registerOutput<String>('accessConfigurationName');
     description = registerOutput<String?>('description');
     directoryId = registerOutput<String>('directoryId');
-    forceRemovePermissionPolicies = registerOutput<bool?>(
-      'forceRemovePermissionPolicies',
-    );
-    permissionPolicies = registerOutput<List<Map<String, dynamic>>?>(
-      'permissionPolicies',
-    );
+    forceRemovePermissionPolicies = registerOutput<bool?>('forceRemovePermissionPolicies');
+    permissionPolicies = registerOutput<List<Map<String, dynamic>>?>('permissionPolicies');
     relayState = registerOutput<String?>('relayState');
     sessionDuration = registerOutput<int>('sessionDuration');
   }
@@ -337,21 +326,17 @@ class AccessConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/accessConfiguration:AccessConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/accessConfiguration:AccessConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessConfigurationId = registerOutput<String>('accessConfigurationId');
     accessConfigurationName = registerOutput<String>('accessConfigurationName');
     description = registerOutput<String?>('description');
     directoryId = registerOutput<String>('directoryId');
-    forceRemovePermissionPolicies = registerOutput<bool?>(
-      'forceRemovePermissionPolicies',
-    );
-    permissionPolicies = registerOutput<List<Map<String, dynamic>>?>(
-      'permissionPolicies',
-    );
+    forceRemovePermissionPolicies = registerOutput<bool?>('forceRemovePermissionPolicies');
+    permissionPolicies = registerOutput<List<Map<String, dynamic>>?>('permissionPolicies');
     relayState = registerOutput<String?>('relayState');
     sessionDuration = registerOutput<int>('sessionDuration');
   }

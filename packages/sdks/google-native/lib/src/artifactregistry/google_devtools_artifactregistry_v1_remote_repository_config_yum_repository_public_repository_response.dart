@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse {
   /// A common public repository base for Yum.
   final pulumi.Input<String> repositoryBase;
-
   /// A custom field to define a path to a specific repository from the base.
   final pulumi.Input<String> repositoryPath;
 
@@ -25,12 +24,11 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicR
     };
   }
 
-  factory GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse(
       repositoryBase: pulumi.Input.fromValue(map['repositoryBase'] as String),
       repositoryPath: pulumi.Input.fromValue(map['repositoryPath'] as String),
     );
   }
 }
+

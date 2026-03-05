@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceGroupCostManagementViewDatasetSorting {
   /// Direction of sort. Possible values are `Ascending` and `Descending`.
   final pulumi.Input<String> direction;
-
   /// The name of the column to sort.
   final pulumi.Input<String> name;
 
@@ -18,15 +17,17 @@ class ResourceGroupCostManagementViewDatasetSorting {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'direction': direction, 'name': name};
+    return <String, dynamic>{
+      'direction': direction,
+      'name': name,
+    };
   }
 
-  factory ResourceGroupCostManagementViewDatasetSorting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceGroupCostManagementViewDatasetSorting.fromMap(Map<String, dynamic> map) {
     return ResourceGroupCostManagementViewDatasetSorting(
       direction: pulumi.Input.fromValue(map['direction'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

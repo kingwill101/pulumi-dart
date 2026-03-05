@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesAddonMetadataArgs {
   /// The id of kubernetes cluster.
   final pulumi.Input<String> clusterId;
-
   /// The name of the cluster addon. You can get a list of available addons that the cluster can install by using data source `alicloud.cs.getKubernetesAddons`.
   final pulumi.Input<String> name;
-
   /// The version of the cluster addon.
   final pulumi.Input<String> version;
 
@@ -42,3 +40,4 @@ class GetKubernetesAddonMetadataArgs {
     );
   }
 }
+

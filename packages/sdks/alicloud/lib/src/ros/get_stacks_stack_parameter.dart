@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStacksStackParameter {
   /// The key of parameters.
   final pulumi.Input<String> parameterKey;
-
   /// The value of parameters.
   final pulumi.Input<String> parameterValue;
 
@@ -31,3 +30,4 @@ class GetStacksStackParameter {
     );
   }
 }
+

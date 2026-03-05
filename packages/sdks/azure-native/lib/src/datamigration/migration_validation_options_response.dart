@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrationValidationOptionsResponse {
   /// Allows to perform a checksum based data integrity validation between source and target for the selected database / tables .
   final pulumi.Input<bool>? enableDataIntegrityValidation;
-
   /// Allows to perform a quick and intelligent query analysis by retrieving queries from the source database and executes them in the target. The result will have execution statistics for executions in source and target databases for the extracted queries.
   final pulumi.Input<bool>? enableQueryAnalysisValidation;
-
   /// Allows to compare the schema information between source and target.
   final pulumi.Input<bool>? enableSchemaValidation;
 
@@ -33,21 +31,10 @@ class MigrationValidationOptionsResponse {
 
   factory MigrationValidationOptionsResponse.fromMap(Map<String, dynamic> map) {
     return MigrationValidationOptionsResponse(
-      enableDataIntegrityValidation: (() {
-        final guardedValue = map['enableDataIntegrityValidation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableQueryAnalysisValidation: (() {
-        final guardedValue = map['enableQueryAnalysisValidation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableSchemaValidation: (() {
-        final guardedValue = map['enableSchemaValidation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableDataIntegrityValidation: (() { final guardedValue = map['enableDataIntegrityValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableQueryAnalysisValidation: (() { final guardedValue = map['enableQueryAnalysisValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableSchemaValidation: (() { final guardedValue = map['enableSchemaValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -10,39 +10,20 @@ class ActionListResponse {
 
   /// Creates a new [ActionListResponse].
   /// [actionGroups] The list of the Action Groups.
-  ActionListResponse({this.actionGroups});
+  ActionListResponse({
+    this.actionGroups,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionGroups':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ActionGroupResponse>,
-            List<Map<String, dynamic>>
-          >(
-            actionGroups,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ActionGroupResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'actionGroups': ?pulumi.Input.mapOptionalInputValue<List<ActionGroupResponse>, List<Map<String, dynamic>>>(actionGroups, (value) => pulumi.Input.encodeList<ActionGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ActionListResponse.fromMap(Map<String, dynamic> map) {
     return ActionListResponse(
-      actionGroups: (() {
-        final guardedValue = map['actionGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ActionGroupResponse>(
-            guardedValue,
-            (value) => ActionGroupResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      actionGroups: (() { final guardedValue = map['actionGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActionGroupResponse>(guardedValue, (value) => ActionGroupResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

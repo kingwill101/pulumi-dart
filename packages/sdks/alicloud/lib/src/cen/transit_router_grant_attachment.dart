@@ -221,16 +221,12 @@ import 'transit_router_grant_attachment_state.dart';
 class TransitRouterGrantAttachment extends pulumi.CustomResource {
   /// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
   late final pulumi.Output<String> cenId;
-
   /// The ID of the Alibaba Cloud account to which the CEN instance belongs.
   late final pulumi.Output<String> cenOwnerId;
-
   /// The ID of the network instance.
   late final pulumi.Output<String> instanceId;
-
   /// The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
   late final pulumi.Output<String> instanceType;
-
   /// The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
   late final pulumi.Output<String> orderType;
 
@@ -243,11 +239,11 @@ class TransitRouterGrantAttachment extends pulumi.CustomResource {
     TransitRouterGrantAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenId = registerOutput<String>('cenId');
     cenOwnerId = registerOutput<String>('cenOwnerId');
     instanceId = registerOutput<String>('instanceId');
@@ -273,11 +269,11 @@ class TransitRouterGrantAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenId = registerOutput<String>('cenId');
     cenOwnerId = registerOutput<String>('cenOwnerId');
     instanceId = registerOutput<String>('instanceId');

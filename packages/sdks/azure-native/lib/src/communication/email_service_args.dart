@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmailServiceArgs {
   /// The location where the email service stores its data at rest.
   final pulumi.Input<String> dataLocation;
-
   /// The name of the EmailService resource.
   final pulumi.Input<String>? emailServiceName;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -49,26 +45,11 @@ class EmailServiceArgs {
   factory EmailServiceArgs.fromMap(Map<String, dynamic> map) {
     return EmailServiceArgs(
       dataLocation: pulumi.Input.fromValue(map['dataLocation'] as String),
-      emailServiceName: (() {
-        final guardedValue = map['emailServiceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      emailServiceName: (() { final guardedValue = map['emailServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

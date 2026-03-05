@@ -202,13 +202,10 @@ import 'hybrid_runbook_worker_group_state.dart';
 class HybridRunbookWorkerGroup extends pulumi.CustomResource {
   /// The name of the Automation Account in which the Runbook Worker Group is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
-
   /// The name of resource type `azure.automation.Credential` to use for hybrid worker.
   late final pulumi.Output<String?> credentialName;
-
   /// The name which should be used for this Automation Account Runbook Worker Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Automation should exist. Changing this forces a new Automation to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -221,11 +218,11 @@ class HybridRunbookWorkerGroup extends pulumi.CustomResource {
     HybridRunbookWorkerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/hybridRunbookWorkerGroup:HybridRunbookWorkerGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/hybridRunbookWorkerGroup:HybridRunbookWorkerGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     credentialName = registerOutput<String?>('credentialName');
     this.name = registerOutput<String>('name');
@@ -250,11 +247,11 @@ class HybridRunbookWorkerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/hybridRunbookWorkerGroup:HybridRunbookWorkerGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/hybridRunbookWorkerGroup:HybridRunbookWorkerGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     credentialName = registerOutput<String?>('credentialName');
     this.name = registerOutput<String>('name');

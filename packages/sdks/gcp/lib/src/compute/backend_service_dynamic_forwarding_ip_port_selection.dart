@@ -8,21 +8,20 @@ class BackendServiceDynamicForwardingIpPortSelection {
 
   /// Creates a new [BackendServiceDynamicForwardingIpPortSelection].
   /// [enabled] A boolean flag enabling IP:PORT based dynamic forwarding.
-  BackendServiceDynamicForwardingIpPortSelection({this.enabled});
+  BackendServiceDynamicForwardingIpPortSelection({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory BackendServiceDynamicForwardingIpPortSelection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackendServiceDynamicForwardingIpPortSelection.fromMap(Map<String, dynamic> map) {
     return BackendServiceDynamicForwardingIpPortSelection(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

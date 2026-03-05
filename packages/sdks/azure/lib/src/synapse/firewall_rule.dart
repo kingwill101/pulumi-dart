@@ -333,13 +333,10 @@ class FirewallRule extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** The Azure feature `Allow access to Azure services` requires the `name` to be `AllowAllWindowsAzureIps`.
   late final pulumi.Output<String> endIpAddress;
-
   /// The Name of the firewall rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The starting IP address to allow through the firewall for this rule.
   late final pulumi.Output<String> startIpAddress;
-
   /// The ID of the Synapse Workspace on which to create the Firewall Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> synapseWorkspaceId;
 
@@ -352,11 +349,11 @@ class FirewallRule extends pulumi.CustomResource {
     FirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/firewallRule:FirewallRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:synapse/firewallRule:FirewallRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
     startIpAddress = registerOutput<String>('startIpAddress');
@@ -381,11 +378,11 @@ class FirewallRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/firewallRule:FirewallRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:synapse/firewallRule:FirewallRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
     startIpAddress = registerOutput<String>('startIpAddress');

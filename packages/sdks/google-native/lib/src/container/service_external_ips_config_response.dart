@@ -9,10 +9,14 @@ class ServiceExternalIPsConfigResponse {
 
   /// Creates a new [ServiceExternalIPsConfigResponse].
   /// [enabled] Whether Services with ExternalIPs field are allowed or not.
-  ServiceExternalIPsConfigResponse({required this.enabled});
+  ServiceExternalIPsConfigResponse({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory ServiceExternalIPsConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ServiceExternalIPsConfigResponse {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnatEntryArgs {
   /// The destination CIDR block.
   final pulumi.Input<String> cidrBlock;
-
   /// The ID of the SAG instance.
   final pulumi.Input<String> sagId;
-
   /// The public IP address.
   final pulumi.Input<String> snatIp;
 
@@ -42,3 +40,4 @@ class SnatEntryArgs {
     );
   }
 }
+

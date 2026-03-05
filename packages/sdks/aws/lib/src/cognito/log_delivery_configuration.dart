@@ -1008,10 +1008,8 @@ import 'log_delivery_configuration_state.dart';
 class LogDeliveryConfiguration extends pulumi.CustomResource {
   /// Configuration block for log delivery. At least one configuration block is required. See Log Configurations below.
   late final pulumi.Output<List<Map<String, dynamic>>> logConfigurations;
-
   /// The AWS region.
   late final pulumi.Output<String> region;
-
   /// The ID of the user pool for which to configure log delivery.
   ///
   /// The following arguments are optional:
@@ -1026,14 +1024,12 @@ class LogDeliveryConfiguration extends pulumi.CustomResource {
     LogDeliveryConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/logDeliveryConfiguration:LogDeliveryConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    logConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'logConfigurations',
-    );
+          'aws:cognito/logDeliveryConfiguration:LogDeliveryConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    logConfigurations = registerOutput<List<Map<String, dynamic>>>('logConfigurations');
     region = registerOutput<String>('region');
     userPoolId = registerOutput<String>('userPoolId');
   }
@@ -1056,14 +1052,12 @@ class LogDeliveryConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/logDeliveryConfiguration:LogDeliveryConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    logConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'logConfigurations',
-    );
+          'aws:cognito/logDeliveryConfiguration:LogDeliveryConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    logConfigurations = registerOutput<List<Map<String, dynamic>>>('logConfigurations');
     region = registerOutput<String>('region');
     userPoolId = registerOutput<String>('userPoolId');
   }

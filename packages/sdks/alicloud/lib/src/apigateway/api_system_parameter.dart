@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiSystemParameter {
   /// System parameter location; values: 'HEAD' and 'QUERY'.
   final pulumi.Input<String> in_;
-
   /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
   final pulumi.Input<String> name;
-
   /// Backend service's parameter name.
   final pulumi.Input<String> nameService;
 
@@ -38,3 +36,4 @@ class ApiSystemParameter {
     );
   }
 }
+

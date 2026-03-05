@@ -5,29 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAddressesAddress {
   /// The IP address (for example `1.2.3.4`).
   final pulumi.Input<String> address;
-
   /// The IP address type, can be `EXTERNAL` or `INTERNAL`.
   final pulumi.Input<String> addressType;
-
   /// The IP address description.
   final pulumi.Input<String> description;
-
   /// A map containing IP labels.
   final pulumi.Input<Map<String, String>> labels;
-
   /// The IP address name.
   final pulumi.Input<String> name;
-
   /// The prefix length of the IP range. If not present, it means the address field is a single IP address.
   final pulumi.Input<int> prefixLength;
-
   /// Region that should be considered to search addresses.
   /// All regions are considered if missing.
   final pulumi.Input<String> region;
-
   /// The URI of the created resource.
   final pulumi.Input<String> selfLink;
-
   /// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
   final pulumi.Input<String> status;
 
@@ -72,9 +64,7 @@ class GetAddressesAddress {
       address: pulumi.Input.fromValue(map['address'] as String),
       addressType: pulumi.Input.fromValue(map['addressType'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       prefixLength: pulumi.Input.fromValue(map['prefixLength'] as int),
       region: pulumi.Input.fromValue(map['region'] as String),
@@ -83,3 +73,4 @@ class GetAddressesAddress {
     );
   }
 }
+

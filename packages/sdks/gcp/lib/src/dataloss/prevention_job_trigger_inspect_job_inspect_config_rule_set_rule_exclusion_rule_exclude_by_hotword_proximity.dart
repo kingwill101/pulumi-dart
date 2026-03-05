@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity {
   /// Number of characters after the finding to consider. Either this or window_before must be specified
   final pulumi.Input<int>? windowAfter;
-
   /// Number of characters before the finding to consider. Either this or window_after must be specified
   final pulumi.Input<int>? windowBefore;
 
@@ -24,20 +23,11 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
     };
   }
 
-  factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity(
-      windowAfter: (() {
-        final guardedValue = map['windowAfter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      windowBefore: (() {
-        final guardedValue = map['windowBefore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      windowAfter: (() { final guardedValue = map['windowAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      windowBefore: (() { final guardedValue = map['windowBefore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -8,34 +8,25 @@ import 'resize_request_status.dart';
 class ResizeRequestState {
   /// The creation timestamp for this resize request in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
-
   /// An optional description of this resize-request.
   final pulumi.Input<String>? description;
-
   /// The reference of the instance group manager this ResizeRequest is a part of.
   final pulumi.Input<String>? instanceGroupManager;
-
   /// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
   /// Structure is documented below.
   final pulumi.Input<ResizeRequestRequestedRunDuration>? requestedRunDuration;
-
   /// The number of instances to be created by this resize request. The group's target size will be increased by this number.
   final pulumi.Input<int>? resizeBy;
-
   /// Current state of the request.
   final pulumi.Input<String>? state;
-
   /// Status of the request.
   /// Structure is documented below.
   final pulumi.Input<List<ResizeRequestStatus>>? statuses;
-
   /// The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
   final pulumi.Input<String>? zone;
 
@@ -70,92 +61,27 @@ class ResizeRequestState {
       'instanceGroupManager': ?instanceGroupManager,
       'name': ?name,
       'project': ?project,
-      'requestedRunDuration':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResizeRequestRequestedRunDuration,
-            Map<String, dynamic>
-          >(requestedRunDuration, (value) => value.toMap()),
+      'requestedRunDuration': ?pulumi.Input.mapOptionalInputValue<ResizeRequestRequestedRunDuration, Map<String, dynamic>>(requestedRunDuration, (value) => value.toMap()),
       'resizeBy': ?resizeBy,
       'state': ?state,
-      'statuses':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ResizeRequestStatus>,
-            List<Map<String, dynamic>>
-          >(
-            statuses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ResizeRequestStatus,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'statuses': ?pulumi.Input.mapOptionalInputValue<List<ResizeRequestStatus>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<ResizeRequestStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'zone': ?zone,
     };
   }
 
   factory ResizeRequestState.fromMap(Map<String, dynamic> map) {
     return ResizeRequestState(
-      creationTimestamp: (() {
-        final guardedValue = map['creationTimestamp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceGroupManager: (() {
-        final guardedValue = map['instanceGroupManager'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestedRunDuration: (() {
-        final guardedValue = map['requestedRunDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResizeRequestRequestedRunDuration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resizeBy: (() {
-        final guardedValue = map['resizeBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      statuses: (() {
-        final guardedValue = map['statuses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ResizeRequestStatus>(
-            guardedValue,
-            (value) => ResizeRequestStatus.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceGroupManager: (() { final guardedValue = map['instanceGroupManager']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestedRunDuration: (() { final guardedValue = map['requestedRunDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResizeRequestRequestedRunDuration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resizeBy: (() { final guardedValue = map['resizeBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResizeRequestStatus>(guardedValue, (value) => ResizeRequestStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

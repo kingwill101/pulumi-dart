@@ -6,34 +6,24 @@ import 'sub_resource_response.dart';
 class GetNspAssociationResult {
   /// Access mode on the association.
   final String? accessMode;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Specifies if there are provisioning issues
   final String hasProvisioningIssues;
-
   /// Resource ID.
   final String id;
-
   /// Resource location.
   final String? location;
-
   /// Resource name.
   final String name;
-
   /// The PaaS resource to be associated.
   final SubResourceResponse? privateLinkResource;
-
   /// Profile id to which the PaaS resource is associated.
   final SubResourceResponse? profile;
-
   /// The provisioning state of the resource  association resource.
   final String provisioningState;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Resource type.
   final String type;
 
@@ -81,41 +71,18 @@ class GetNspAssociationResult {
 
   factory GetNspAssociationResult.fromMap(Map<String, dynamic> map) {
     return GetNspAssociationResult(
-      accessMode: (() {
-        final guardedValue = map['accessMode'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      accessMode: (() { final guardedValue = map['accessMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
       hasProvisioningIssues: map['hasProvisioningIssues'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      privateLinkResource: (() {
-        final guardedValue = map['privateLinkResource'];
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      profile: (() {
-        final guardedValue = map['profile'];
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      privateLinkResource: (() { final guardedValue = map['privateLinkResource']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       provisioningState: map['provisioningState'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

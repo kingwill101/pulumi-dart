@@ -8,19 +8,20 @@ class AliasState {
 
   /// Creates a new [AliasState].
   /// [accountAlias] Optional.
-  AliasState({this.accountAlias});
+  AliasState({
+    this.accountAlias,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accountAlias': ?accountAlias};
+    return <String, dynamic>{
+      'accountAlias': ?accountAlias,
+    };
   }
 
   factory AliasState.fromMap(Map<String, dynamic> map) {
     return AliasState(
-      accountAlias: (() {
-        final guardedValue = map['accountAlias'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountAlias: (() { final guardedValue = map['accountAlias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecycleBinArgs {
   /// The ID of the file system for which you want to enable the recycle bin feature.
   final pulumi.Input<String> fileSystemId;
-
   /// The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
   final pulumi.Input<int>? reservedDays;
 
   /// Creates a new [RecycleBinArgs].
   /// [fileSystemId] The ID of the file system for which you want to enable the recycle bin feature.
   /// [reservedDays] The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
-  RecycleBinArgs({required this.fileSystemId, this.reservedDays});
+  RecycleBinArgs({
+    required this.fileSystemId,
+    this.reservedDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,11 +30,8 @@ class RecycleBinArgs {
   factory RecycleBinArgs.fromMap(Map<String, dynamic> map) {
     return RecycleBinArgs(
       fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
-      reservedDays: (() {
-        final guardedValue = map['reservedDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      reservedDays: (() { final guardedValue = map['reservedDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

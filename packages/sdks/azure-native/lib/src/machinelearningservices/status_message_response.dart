@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatusMessageResponse {
   /// Service-defined message code.
   final pulumi.Input<String> code;
-
   /// Time in UTC at which the message was created.
   final pulumi.Input<String> createdDateTime;
-
   /// Severity level of message.
   final pulumi.Input<String> level;
-
   /// A human-readable representation of the message code.
   final pulumi.Input<String> message;
 
@@ -46,3 +43,4 @@ class StatusMessageResponse {
     );
   }
 }
+

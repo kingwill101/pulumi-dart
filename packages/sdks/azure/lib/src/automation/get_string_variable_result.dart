@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getStringVariable.
 class GetStringVariableResult {
   final String automationAccountName;
-
   /// The description of the Automation Variable.
   final String description;
-
   /// Specifies if the Automation Variable is encrypted. Defaults to `false`.
   final bool encrypted;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String resourceGroupName;
-
   /// The value of the Automation Variable as a `string`.
   final String value;
 
@@ -60,3 +57,4 @@ class GetStringVariableResult {
     );
   }
 }
+

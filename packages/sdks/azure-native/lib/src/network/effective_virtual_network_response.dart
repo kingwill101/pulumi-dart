@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EffectiveVirtualNetworkResponse {
   /// Effective vnet Id.
   final pulumi.Input<String>? id;
-
   /// Location of vnet.
   final pulumi.Input<String>? location;
-
   /// Membership Type.
   final pulumi.Input<String>? membershipType;
 
@@ -33,21 +31,10 @@ class EffectiveVirtualNetworkResponse {
 
   factory EffectiveVirtualNetworkResponse.fromMap(Map<String, dynamic> map) {
     return EffectiveVirtualNetworkResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      membershipType: (() {
-        final guardedValue = map['membershipType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      membershipType: (() { final guardedValue = map['membershipType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

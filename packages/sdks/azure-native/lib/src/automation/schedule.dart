@@ -179,52 +179,36 @@ import 'schedule_args.dart';
 class Schedule extends pulumi.CustomResource {
   /// Gets or sets the advanced schedule.
   late final pulumi.Output<AdvancedScheduleResponse?> advancedSchedule;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the creation time.
   late final pulumi.Output<String?> creationTime;
-
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
-
   /// Gets or sets the end time of the schedule.
   late final pulumi.Output<String?> expiryTime;
-
   /// Gets or sets the expiry time's offset in minutes.
   late final pulumi.Output<double?> expiryTimeOffsetMinutes;
-
   /// Gets or sets the frequency of the schedule.
   late final pulumi.Output<String?> frequency;
-
   /// Gets or sets the interval of the schedule.
   late final pulumi.Output<dynamic> interval;
-
   /// Gets or sets a value indicating whether this schedule is enabled.
   late final pulumi.Output<bool?> isEnabled;
-
   /// Gets or sets the last modified time.
   late final pulumi.Output<String?> lastModifiedTime;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Gets or sets the next run time of the schedule.
   late final pulumi.Output<String?> nextRun;
-
   /// Gets or sets the next run time's offset in minutes.
   late final pulumi.Output<double?> nextRunOffsetMinutes;
-
   /// Gets or sets the start time of the schedule.
   late final pulumi.Output<String?> startTime;
-
   /// Gets the start time's offset in minutes.
   late final pulumi.Output<double> startTimeOffsetMinutes;
-
   /// Gets or sets the time zone of the schedule.
   late final pulumi.Output<String?> timeZone;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -237,28 +221,17 @@ class Schedule extends pulumi.CustomResource {
     ScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:automation:Schedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    advancedSchedule = registerOutput<AdvancedScheduleResponse?>(
-      'advancedSchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AdvancedScheduleResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:automation:Schedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    advancedSchedule = registerOutput<AdvancedScheduleResponse?>('advancedSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdvancedScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String?>('creationTime');
     description = registerOutput<String?>('description');
     expiryTime = registerOutput<String?>('expiryTime');
-    expiryTimeOffsetMinutes = registerOutput<double?>(
-      'expiryTimeOffsetMinutes',
-    );
+    expiryTimeOffsetMinutes = registerOutput<double?>('expiryTimeOffsetMinutes');
     frequency = registerOutput<String?>('frequency');
     interval = registerOutput<dynamic>('interval');
     isEnabled = registerOutput<bool?>('isEnabled');

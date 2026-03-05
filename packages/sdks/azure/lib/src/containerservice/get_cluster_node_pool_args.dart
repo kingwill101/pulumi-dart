@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterNodePoolArgs {
   /// The Name of the Kubernetes Cluster where this Node Pool is located.
   final pulumi.Input<String> kubernetesClusterName;
-
   /// The name of this Kubernetes Cluster Node Pool.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group where the Kubernetes Cluster exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetClusterNodePoolArgs {
 
   factory GetClusterNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolArgs(
-      kubernetesClusterName: pulumi.Input.fromValue(
-        map['kubernetesClusterName'] as String,
-      ),
+      kubernetesClusterName: pulumi.Input.fromValue(map['kubernetesClusterName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

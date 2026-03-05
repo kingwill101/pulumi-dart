@@ -12,17 +12,20 @@ class ListPrivateStoreNewPlansNotificationsArgs {
 
   /// Creates a new [ListPrivateStoreNewPlansNotificationsArgs].
   /// [privateStoreId] The store ID - must use the tenant ID
-  ListPrivateStoreNewPlansNotificationsArgs({required this.privateStoreId});
+  ListPrivateStoreNewPlansNotificationsArgs({
+    required this.privateStoreId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'privateStoreId': privateStoreId};
+    return <String, dynamic>{
+      'privateStoreId': privateStoreId,
+    };
   }
 
-  factory ListPrivateStoreNewPlansNotificationsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListPrivateStoreNewPlansNotificationsArgs.fromMap(Map<String, dynamic> map) {
     return ListPrivateStoreNewPlansNotificationsArgs(
       privateStoreId: pulumi.Input.fromValue(map['privateStoreId'] as String),
     );
   }
 }
+

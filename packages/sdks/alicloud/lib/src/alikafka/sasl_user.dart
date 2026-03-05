@@ -422,25 +422,19 @@ import 'sasl_user_state.dart';
 class SaslUser extends pulumi.CustomResource {
   /// The instance ID.
   late final pulumi.Output<String> instanceId;
-
   /// An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
   late final pulumi.Output<String?> kmsEncryptedPassword;
-
   /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   late final pulumi.Output<Map<String, String>?> kmsEncryptionContext;
-
   /// The encryption method. Valid values:
   /// - SCRAM-SHA-512. This is the default value.
   /// - SCRAM-SHA-256
   /// &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
   late final pulumi.Output<String> mechanism;
-
   /// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
   late final pulumi.Output<String> password;
-
   /// The authentication mechanism. Default value: `plain`. Valid values:
   late final pulumi.Output<String> type;
-
   /// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
   late final pulumi.Output<String> username;
 
@@ -453,16 +447,14 @@ class SaslUser extends pulumi.CustomResource {
     SaslUserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alikafka/saslUser:SaslUser',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alikafka/saslUser:SaslUser',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
     mechanism = registerOutput<String>('mechanism');
     password = registerOutput<String>('password');
     type = registerOutput<String>('type');
@@ -487,16 +479,14 @@ class SaslUser extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alikafka/saslUser:SaslUser',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alikafka/saslUser:SaslUser',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
     mechanism = registerOutput<String>('mechanism');
     password = registerOutput<String>('password');
     type = registerOutput<String>('type');

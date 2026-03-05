@@ -7,27 +7,15 @@ import 'feature_fleet_default_member_config_policycontroller_policy_controller_h
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> component;
-
   /// Container resource requirements.
   /// Structure is documented below.
-  final pulumi.Input<
-    FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources
-  >?
-  containerResources;
-
+  final pulumi.Input<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources>? containerResources;
   /// Pod affinity configuration.
   /// Possible values are: `AFFINITY_UNSPECIFIED`, `NO_AFFINITY`, `ANTI_AFFINITY`.
   final pulumi.Input<String>? podAffinity;
-
   /// Pod tolerations of node taints.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<
-      FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration
-    >
-  >?
-  podTolerations;
-
+  final pulumi.Input<List<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>>? podTolerations;
   /// Pod replica count.
   final pulumi.Input<int>? replicaCount;
 
@@ -48,69 +36,21 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'component': component,
-      'containerResources':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources,
-            Map<String, dynamic>
-          >(containerResources, (value) => value.toMap()),
+      'containerResources': ?pulumi.Input.mapOptionalInputValue<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources, Map<String, dynamic>>(containerResources, (value) => value.toMap()),
       'podAffinity': ?podAffinity,
-      'podTolerations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration
-            >,
-            List<Map<String, dynamic>>
-          >(
-            podTolerations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'podTolerations': ?pulumi.Input.mapOptionalInputValue<List<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>, List<Map<String, dynamic>>>(podTolerations, (value) => pulumi.Input.encodeList<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'replicaCount': ?replicaCount,
     };
   }
 
-  factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig(
       component: pulumi.Input.fromValue(map['component'] as String),
-      containerResources: (() {
-        final guardedValue = map['containerResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      podAffinity: (() {
-        final guardedValue = map['podAffinity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      podTolerations: (() {
-        final guardedValue = map['podTolerations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration
-          >(
-            guardedValue,
-            (value) =>
-                FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      replicaCount: (() {
-        final guardedValue = map['replicaCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      containerResources: (() { final guardedValue = map['containerResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      podAffinity: (() { final guardedValue = map['podAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      podTolerations: (() { final guardedValue = map['podTolerations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>(guardedValue, (value) => FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

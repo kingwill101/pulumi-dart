@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWorkspaceNotebookAccessTokenArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -28,14 +27,11 @@ class ListWorkspaceNotebookAccessTokenArgs {
     };
   }
 
-  factory ListWorkspaceNotebookAccessTokenArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListWorkspaceNotebookAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return ListWorkspaceNotebookAccessTokenArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

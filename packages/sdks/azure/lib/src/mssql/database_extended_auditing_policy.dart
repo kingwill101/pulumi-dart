@@ -311,27 +311,21 @@ import 'database_extended_auditing_policy_state.dart';
 class DatabaseExtendedAuditingPolicy extends pulumi.CustomResource {
   /// The ID of the SQL database to set the extended auditing policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseId;
-
   /// Whether to enable the extended auditing policy. Possible values are `true` and `false`. Defaults to `true`.
   ///
   /// &gt; **Note:** If `enabled` is `true`, `storage_endpoint` or `log_monitoring_enabled` are required.
   late final pulumi.Output<bool?> enabled;
-
   /// Enable audit events to Azure Monitor? Defaults to `true`.
   ///
   /// &gt; **Note:** To enable sending audit events to Log Analytics, please refer to the example which can be found in the `./examples/sql-azure/sql_auditing_log_analytics` directory within the GitHub Repository.  To enable sending server audit events to Log Analytics, please enable the master database to send audit events to Log Analytics.
   /// To enable audit events to Eventhub, please refer to the example which can be found in the `./examples/sql-azure/sql_auditing_eventhub` directory within the GitHub Repository.
   late final pulumi.Output<bool?> logMonitoringEnabled;
-
   /// The number of days to retain logs for in the storage account. Defaults to `0`.
   late final pulumi.Output<int?> retentionInDays;
-
   /// The access key to use for the auditing storage account.
   late final pulumi.Output<String?> storageAccountAccessKey;
-
   /// Is `storage_account_access_key` value the storage's secondary key?
   late final pulumi.Output<bool?> storageAccountAccessKeyIsSecondary;
-
   /// The blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all extended auditing logs.
   late final pulumi.Output<String?> storageEndpoint;
 
@@ -344,21 +338,17 @@ class DatabaseExtendedAuditingPolicy extends pulumi.CustomResource {
     DatabaseExtendedAuditingPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/databaseExtendedAuditingPolicy:DatabaseExtendedAuditingPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/databaseExtendedAuditingPolicy:DatabaseExtendedAuditingPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     databaseId = registerOutput<String>('databaseId');
     enabled = registerOutput<bool?>('enabled');
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     retentionInDays = registerOutput<int?>('retentionInDays');
-    storageAccountAccessKey = registerOutput<String?>(
-      'storageAccountAccessKey',
-    );
-    storageAccountAccessKeyIsSecondary = registerOutput<bool?>(
-      'storageAccountAccessKeyIsSecondary',
-    );
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 
@@ -380,21 +370,17 @@ class DatabaseExtendedAuditingPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/databaseExtendedAuditingPolicy:DatabaseExtendedAuditingPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/databaseExtendedAuditingPolicy:DatabaseExtendedAuditingPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     databaseId = registerOutput<String>('databaseId');
     enabled = registerOutput<bool?>('enabled');
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     retentionInDays = registerOutput<int?>('retentionInDays');
-    storageAccountAccessKey = registerOutput<String?>(
-      'storageAccountAccessKey',
-    );
-    storageAccountAccessKeyIsSecondary = registerOutput<bool?>(
-      'storageAccountAccessKeyIsSecondary',
-    );
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 }

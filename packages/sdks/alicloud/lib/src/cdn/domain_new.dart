@@ -215,34 +215,24 @@ import 'domain_new_state.dart';
 class DomainNew extends pulumi.CustomResource {
   /// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
   late final pulumi.Output<String> cdnType;
-
   /// Certificate configuration See `certificate_config` below.
   late final pulumi.Output<DomainNewCertificateConfig> certificateConfig;
-
   /// Health test URL.
   late final pulumi.Output<String?> checkUrl;
-
   /// The CNAME domain name corresponding to the accelerated domain name.
   late final pulumi.Output<String> cname;
-
   /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
   late final pulumi.Output<String> domainName;
-
   /// Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
   late final pulumi.Output<String?> env;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
   late final pulumi.Output<String> scope;
-
   /// The source address list of the accelerated domain. Defaults to null. See `sources` below.
   late final pulumi.Output<List<Map<String, dynamic>>> sources;
-
   /// The status of the resource, valid values: `online`, `offline`.
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -255,22 +245,13 @@ class DomainNew extends pulumi.CustomResource {
     DomainNewArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cdn/domainNew:DomainNew',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cdn/domainNew:DomainNew',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cdnType = registerOutput<String>('cdnType');
-    certificateConfig = registerOutput<DomainNewCertificateConfig>(
-      'certificateConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainNewCertificateConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    certificateConfig = registerOutput<DomainNewCertificateConfig>('certificateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNewCertificateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     checkUrl = registerOutput<String?>('checkUrl');
     cname = registerOutput<String>('cname');
     domainName = registerOutput<String>('domainName');
@@ -300,22 +281,13 @@ class DomainNew extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cdn/domainNew:DomainNew',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cdn/domainNew:DomainNew',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cdnType = registerOutput<String>('cdnType');
-    certificateConfig = registerOutput<DomainNewCertificateConfig>(
-      'certificateConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainNewCertificateConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    certificateConfig = registerOutput<DomainNewCertificateConfig>('certificateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNewCertificateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     checkUrl = registerOutput<String?>('checkUrl');
     cname = registerOutput<String>('cname');
     domainName = registerOutput<String>('domainName');

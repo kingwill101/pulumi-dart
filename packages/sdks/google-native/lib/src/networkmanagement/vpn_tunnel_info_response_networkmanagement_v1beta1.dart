@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnTunnelInfoResponseNetworkmanagementV1beta1 {
   /// Name of a VPN tunnel.
   final pulumi.Input<String> displayName;
-
   /// URI of a Compute Engine network where the VPN tunnel is configured.
   final pulumi.Input<String> networkUri;
-
   /// Name of a Google Cloud region where this VPN tunnel is configured.
   final pulumi.Input<String> region;
-
   /// URI of a VPN gateway at remote end of the tunnel.
   final pulumi.Input<String> remoteGateway;
-
   /// Remote VPN gateway's IP address.
   final pulumi.Input<String> remoteGatewayIp;
-
   /// Type of the routing policy.
   final pulumi.Input<String> routingType;
-
   /// URI of the VPN gateway at local end of the tunnel.
   final pulumi.Input<String> sourceGateway;
-
   /// Local VPN gateway's IP address.
   final pulumi.Input<String> sourceGatewayIp;
-
   /// URI of a VPN tunnel.
   final pulumi.Input<String> uri;
 
@@ -67,9 +59,7 @@ class VpnTunnelInfoResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory VpnTunnelInfoResponseNetworkmanagementV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VpnTunnelInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return VpnTunnelInfoResponseNetworkmanagementV1beta1(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       networkUri: pulumi.Input.fromValue(map['networkUri'] as String),
@@ -83,3 +73,4 @@ class VpnTunnelInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
+

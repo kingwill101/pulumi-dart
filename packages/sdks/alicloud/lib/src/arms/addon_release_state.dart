@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AddonReleaseState {
   /// Addon Name.
   final pulumi.Input<String>? addonName;
-
   /// The name of the resource.
   final pulumi.Input<String>? addonReleaseName;
-
   /// Version number of Addon. Addon information can be obtained through ListAddons.
   final pulumi.Input<String>? addonVersion;
-
   /// The installed locale.
   final pulumi.Input<String>? aliyunLang;
-
   /// Creation time.
   final pulumi.Input<String>? createTime;
-
   /// Environment id.
   final pulumi.Input<String>? environmentId;
-
   /// Configuration information for installing Addon. Obtain the configuration template from ListAddonSchema, for example, {"host":"mysql-service.default","port":3306,"username":"root","password":"roots"}.
   final pulumi.Input<String>? values;
 
@@ -57,41 +51,14 @@ class AddonReleaseState {
 
   factory AddonReleaseState.fromMap(Map<String, dynamic> map) {
     return AddonReleaseState(
-      addonName: (() {
-        final guardedValue = map['addonName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      addonReleaseName: (() {
-        final guardedValue = map['addonReleaseName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      addonVersion: (() {
-        final guardedValue = map['addonVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      aliyunLang: (() {
-        final guardedValue = map['aliyunLang'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      environmentId: (() {
-        final guardedValue = map['environmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addonName: (() { final guardedValue = map['addonName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      addonReleaseName: (() { final guardedValue = map['addonReleaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      addonVersion: (() { final guardedValue = map['addonVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      aliyunLang: (() { final guardedValue = map['aliyunLang']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

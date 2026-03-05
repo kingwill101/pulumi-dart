@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VersionResponse {
   /// Represents a list of available feature names for a given version.
   final pulumi.Input<List<String>> availableFeatures;
-
   /// Whether this is currently the default version for Cloud Data Fusion
   final pulumi.Input<bool> defaultVersion;
-
   /// Type represents the release availability of the version
   final pulumi.Input<String> type;
-
   /// The version number of the Data Fusion instance, such as '6.0.1.0'.
   final pulumi.Input<String> versionNumber;
 
@@ -39,12 +36,11 @@ class VersionResponse {
 
   factory VersionResponse.fromMap(Map<String, dynamic> map) {
     return VersionResponse(
-      availableFeatures: pulumi.Input.fromValue(
-        (map['availableFeatures'] as List).cast<String>(),
-      ),
+      availableFeatures: pulumi.Input.fromValue((map['availableFeatures'] as List).cast<String>()),
       defaultVersion: pulumi.Input.fromValue(map['defaultVersion'] as bool),
       type: pulumi.Input.fromValue(map['type'] as String),
       versionNumber: pulumi.Input.fromValue(map['versionNumber'] as String),
     );
   }
 }
+

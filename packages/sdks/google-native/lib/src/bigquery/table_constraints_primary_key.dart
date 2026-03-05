@@ -8,19 +8,20 @@ class TableConstraintsPrimaryKey {
 
   /// Creates a new [TableConstraintsPrimaryKey].
   /// [columns] Optional.
-  TableConstraintsPrimaryKey({this.columns});
+  TableConstraintsPrimaryKey({
+    this.columns,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'columns': ?columns};
+    return <String, dynamic>{
+      'columns': ?columns,
+    };
   }
 
   factory TableConstraintsPrimaryKey.fromMap(Map<String, dynamic> map) {
     return TableConstraintsPrimaryKey(
-      columns: (() {
-        final guardedValue = map['columns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      columns: (() { final guardedValue = map['columns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

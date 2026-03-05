@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListLinkerConfigurationsArgs {
   /// The name Linker resource.
   final pulumi.Input<String> linkerName;
-
   /// The fully qualified Azure Resource manager identifier of the resource to be connected.
   final pulumi.Input<String> resourceUri;
 
@@ -35,3 +34,4 @@ class ListLinkerConfigurationsArgs {
     );
   }
 }
+

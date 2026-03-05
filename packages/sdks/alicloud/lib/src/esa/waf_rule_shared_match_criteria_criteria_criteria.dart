@@ -7,21 +7,20 @@ class WafRuleSharedMatchCriteriaCriteriaCriteria {
 
   /// Creates a new [WafRuleSharedMatchCriteriaCriteriaCriteria].
   /// [matchType] Optional.
-  WafRuleSharedMatchCriteriaCriteriaCriteria({this.matchType});
+  WafRuleSharedMatchCriteriaCriteriaCriteria({
+    this.matchType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'matchType': ?matchType};
+    return <String, dynamic>{
+      'matchType': ?matchType,
+    };
   }
 
-  factory WafRuleSharedMatchCriteriaCriteriaCriteria.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WafRuleSharedMatchCriteriaCriteriaCriteria.fromMap(Map<String, dynamic> map) {
     return WafRuleSharedMatchCriteriaCriteriaCriteria(
-      matchType: (() {
-        final guardedValue = map['matchType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      matchType: (() { final guardedValue = map['matchType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

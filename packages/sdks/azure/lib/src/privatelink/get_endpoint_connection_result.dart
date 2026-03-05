@@ -8,15 +8,12 @@ import 'get_endpoint_connection_private_service_connection.dart';
 class GetEndpointConnectionResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The supported Azure location where the resource exists.
   final String location;
-
   /// The name of the private endpoint.
   final String name;
   final List<GetEndpointConnectionNetworkInterface> networkInterfaces;
-  final List<GetEndpointConnectionPrivateServiceConnection>
-  privateServiceConnections;
+  final List<GetEndpointConnectionPrivateServiceConnection> privateServiceConnections;
   final String resourceGroupName;
 
   /// Creates a new [GetEndpointConnectionResult].
@@ -40,16 +37,8 @@ class GetEndpointConnectionResult {
       'id': id,
       'location': location,
       'name': name,
-      'networkInterfaces':
-          pulumi.Input.encodeList<
-            GetEndpointConnectionNetworkInterface,
-            Map<String, dynamic>
-          >(networkInterfaces, (value) => value.toMap()),
-      'privateServiceConnections':
-          pulumi.Input.encodeList<
-            GetEndpointConnectionPrivateServiceConnection,
-            Map<String, dynamic>
-          >(privateServiceConnections, (value) => value.toMap()),
+      'networkInterfaces': pulumi.Input.encodeList<GetEndpointConnectionNetworkInterface, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
+      'privateServiceConnections': pulumi.Input.encodeList<GetEndpointConnectionPrivateServiceConnection, Map<String, dynamic>>(privateServiceConnections, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -59,22 +48,10 @@ class GetEndpointConnectionResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      networkInterfaces:
-          pulumi.Input.decodeList<GetEndpointConnectionNetworkInterface>(
-            map['networkInterfaces']!,
-            (value) => GetEndpointConnectionNetworkInterface.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      privateServiceConnections:
-          pulumi
-              .Input.decodeList<GetEndpointConnectionPrivateServiceConnection>(
-            map['privateServiceConnections']!,
-            (value) => GetEndpointConnectionPrivateServiceConnection.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      networkInterfaces: pulumi.Input.decodeList<GetEndpointConnectionNetworkInterface>(map['networkInterfaces']!, (value) => GetEndpointConnectionNetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
+      privateServiceConnections: pulumi.Input.decodeList<GetEndpointConnectionPrivateServiceConnection>(map['privateServiceConnections']!, (value) => GetEndpointConnectionPrivateServiceConnection.fromMap((value as Map).cast<String, dynamic>())),
       resourceGroupName: map['resourceGroupName'] as String,
     );
   }
 }
+

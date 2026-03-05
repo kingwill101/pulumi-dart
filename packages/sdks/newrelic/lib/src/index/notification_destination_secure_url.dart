@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationDestinationSecureUrl {
   /// The prefix of the URL.
   final pulumi.Input<String> prefix;
-
   /// The suffix of the URL, which contains sensitive data.
   final pulumi.Input<String> secureSuffix;
 
@@ -18,7 +17,10 @@ class NotificationDestinationSecureUrl {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'prefix': prefix, 'secureSuffix': secureSuffix};
+    return <String, dynamic>{
+      'prefix': prefix,
+      'secureSuffix': secureSuffix,
+    };
   }
 
   factory NotificationDestinationSecureUrl.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class NotificationDestinationSecureUrl {
     );
   }
 }
+

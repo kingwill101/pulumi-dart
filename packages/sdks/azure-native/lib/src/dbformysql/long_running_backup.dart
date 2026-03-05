@@ -133,26 +133,19 @@ import 'system_data_response.dart';
 class LongRunningBackup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Backup name
   late final pulumi.Output<String?> backupNameV2;
   late final pulumi.Output<String?> backupType;
-
   /// Backup completed time (ISO8601 format).
   late final pulumi.Output<String?> completedTime;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state of backup resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Backup source
   late final pulumi.Output<String?> source;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -165,11 +158,11 @@ class LongRunningBackup extends pulumi.CustomResource {
     LongRunningBackupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:dbformysql:LongRunningBackup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:dbformysql:LongRunningBackup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     backupNameV2 = registerOutput<String?>('backupNameV2');
     backupType = registerOutput<String?>('backupType');
@@ -177,16 +170,7 @@ class LongRunningBackup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     source = registerOutput<String?>('source');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

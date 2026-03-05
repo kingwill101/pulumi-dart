@@ -9,17 +9,20 @@ class KpiParticipantProfilesMetadataResponse {
 
   /// Creates a new [KpiParticipantProfilesMetadataResponse].
   /// [typeName] Name of the type.
-  KpiParticipantProfilesMetadataResponse({required this.typeName});
+  KpiParticipantProfilesMetadataResponse({
+    required this.typeName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'typeName': typeName};
+    return <String, dynamic>{
+      'typeName': typeName,
+    };
   }
 
-  factory KpiParticipantProfilesMetadataResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KpiParticipantProfilesMetadataResponse.fromMap(Map<String, dynamic> map) {
     return KpiParticipantProfilesMetadataResponse(
       typeName: pulumi.Input.fromValue(map['typeName'] as String),
     );
   }
 }
+

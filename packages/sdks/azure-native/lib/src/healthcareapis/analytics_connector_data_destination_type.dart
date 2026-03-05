@@ -11,8 +11,7 @@ enum AnalyticsConnectorDataDestinationType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AnalyticsConnectorDataDestinationType value: $value',
-    );
+    throw ArgumentError('Unknown AnalyticsConnectorDataDestinationType value: $value');
   }
 }
+

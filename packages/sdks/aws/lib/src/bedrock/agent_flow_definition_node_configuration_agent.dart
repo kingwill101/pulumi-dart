@@ -8,17 +8,20 @@ class AgentFlowDefinitionNodeConfigurationAgent {
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationAgent].
   /// [agentAliasArn] The Amazon Resource Name (ARN) of the alias of the agent to invoke.
-  AgentFlowDefinitionNodeConfigurationAgent({required this.agentAliasArn});
+  AgentFlowDefinitionNodeConfigurationAgent({
+    required this.agentAliasArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'agentAliasArn': agentAliasArn};
+    return <String, dynamic>{
+      'agentAliasArn': agentAliasArn,
+    };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationAgent.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentFlowDefinitionNodeConfigurationAgent.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationAgent(
       agentAliasArn: pulumi.Input.fromValue(map['agentAliasArn'] as String),
     );
   }
 }
+

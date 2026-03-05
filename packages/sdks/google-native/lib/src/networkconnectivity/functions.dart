@@ -203,8 +203,7 @@ Future<GetServiceConnectionPolicyResult> getServiceConnectionPolicy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1_get_service_connection_policy_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServiceConnectionPolicyIamPolicyResult>
-getServiceConnectionPolicyIamPolicy(
+Future<GetServiceConnectionPolicyIamPolicyResult> getServiceConnectionPolicyIamPolicy(
   GetServiceConnectionPolicyIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -268,8 +267,7 @@ Future<GetSpokeIamPolicyResult> getSpokeIamPolicy(
 /// Gets details about a Network Connectivity Center hub.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1alpha1_get_hub_networkconnectivity_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetHubNetworkconnectivityV1alpha1Result>
-getHubNetworkconnectivityV1alpha1(
+Future<GetHubNetworkconnectivityV1alpha1Result> getHubNetworkconnectivityV1alpha1(
   GetHubNetworkconnectivityV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -285,8 +283,7 @@ getHubNetworkconnectivityV1alpha1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1alpha1_get_hub_iam_policy_networkconnectivity_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetHubIamPolicyNetworkconnectivityV1alpha1Result>
-getHubIamPolicyNetworkconnectivityV1alpha1(
+Future<GetHubIamPolicyNetworkconnectivityV1alpha1Result> getHubIamPolicyNetworkconnectivityV1alpha1(
   GetHubIamPolicyNetworkconnectivityV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -302,8 +299,7 @@ getHubIamPolicyNetworkconnectivityV1alpha1(
 /// Gets details of a single internal range.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1alpha1_get_internal_range_networkconnectivity_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInternalRangeNetworkconnectivityV1alpha1Result>
-getInternalRangeNetworkconnectivityV1alpha1(
+Future<GetInternalRangeNetworkconnectivityV1alpha1Result> getInternalRangeNetworkconnectivityV1alpha1(
   GetInternalRangeNetworkconnectivityV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -335,8 +331,7 @@ Future<GetInternalRangeIamPolicyResult> getInternalRangeIamPolicy(
 /// Gets details about a Network Connectivity Center spoke.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1alpha1_get_spoke_networkconnectivity_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSpokeNetworkconnectivityV1alpha1Result>
-getSpokeNetworkconnectivityV1alpha1(
+Future<GetSpokeNetworkconnectivityV1alpha1Result> getSpokeNetworkconnectivityV1alpha1(
   GetSpokeNetworkconnectivityV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -352,8 +347,7 @@ getSpokeNetworkconnectivityV1alpha1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1alpha1_get_spoke_iam_policy_networkconnectivity_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSpokeIamPolicyNetworkconnectivityV1alpha1Result>
-getSpokeIamPolicyNetworkconnectivityV1alpha1(
+Future<GetSpokeIamPolicyNetworkconnectivityV1alpha1Result> getSpokeIamPolicyNetworkconnectivityV1alpha1(
   GetSpokeIamPolicyNetworkconnectivityV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -16,3 +16,4 @@ enum CategoricalDataQualityMetric {
     throw ArgumentError('Unknown CategoricalDataQualityMetric value: $value');
   }
 }
+

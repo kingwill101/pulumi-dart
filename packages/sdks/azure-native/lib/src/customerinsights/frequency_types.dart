@@ -18,3 +18,4 @@ enum FrequencyTypes {
     throw ArgumentError('Unknown FrequencyTypes value: $value');
   }
 }
+

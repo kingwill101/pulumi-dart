@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefenseRuleConfigGrayConfig {
   /// The percentage of traffic for which the canary release takes effect. The value must be in the range of 1 to 100.
   final pulumi.Input<int>? grayRate;
-
   /// The sub-feature of the statistical object. This parameter is required when you set the `GrayTarget` parameter to `cookie`, `header`, or `queryarg`.
   final pulumi.Input<String>? graySubKey;
-
   /// The type of the canary release object. Valid values:
   final pulumi.Input<String>? grayTarget;
 
@@ -32,21 +30,10 @@ class DefenseRuleConfigGrayConfig {
 
   factory DefenseRuleConfigGrayConfig.fromMap(Map<String, dynamic> map) {
     return DefenseRuleConfigGrayConfig(
-      grayRate: (() {
-        final guardedValue = map['grayRate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      graySubKey: (() {
-        final guardedValue = map['graySubKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      grayTarget: (() {
-        final guardedValue = map['grayTarget'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      grayRate: (() { final guardedValue = map['grayRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      graySubKey: (() { final guardedValue = map['graySubKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      grayTarget: (() { final guardedValue = map['grayTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

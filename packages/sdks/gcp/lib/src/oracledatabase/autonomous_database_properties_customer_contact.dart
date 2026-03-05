@@ -11,17 +11,20 @@ class AutonomousDatabasePropertiesCustomerContact {
 
   /// Creates a new [AutonomousDatabasePropertiesCustomerContact].
   /// [email] The email address used by Oracle to send notifications regarding databases
-  AutonomousDatabasePropertiesCustomerContact({required this.email});
+  AutonomousDatabasePropertiesCustomerContact({
+    required this.email,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'email': email};
+    return <String, dynamic>{
+      'email': email,
+    };
   }
 
-  factory AutonomousDatabasePropertiesCustomerContact.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutonomousDatabasePropertiesCustomerContact.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabasePropertiesCustomerContact(
       email: pulumi.Input.fromValue(map['email'] as String),
     );
   }
 }
+

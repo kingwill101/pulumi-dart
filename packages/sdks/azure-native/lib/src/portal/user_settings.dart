@@ -208,7 +208,6 @@ import 'user_settings_args.dart';
 class UserSettings extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The cloud shell user settings properties.
   late final pulumi.Output<UserPropertiesResponse> properties;
 
@@ -221,21 +220,12 @@ class UserSettings extends pulumi.CustomResource {
     UserSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:portal:UserSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:portal:UserSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    properties = registerOutput<UserPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<UserPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

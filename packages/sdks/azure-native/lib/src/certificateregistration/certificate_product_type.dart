@@ -15,3 +15,4 @@ enum CertificateProductType {
     throw ArgumentError('Unknown CertificateProductType value: $value');
   }
 }
+

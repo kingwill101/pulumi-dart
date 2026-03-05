@@ -10,29 +10,20 @@ class CreateManagementGroupDetails {
 
   /// Creates a new [CreateManagementGroupDetails].
   /// [parent] (Optional) The ID of the parent management group used during creation.
-  CreateManagementGroupDetails({this.parent});
+  CreateManagementGroupDetails({
+    this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parent':
-          ?pulumi.Input.mapOptionalInputValue<
-            CreateParentGroupInfo,
-            Map<String, dynamic>
-          >(parent, (value) => value.toMap()),
+      'parent': ?pulumi.Input.mapOptionalInputValue<CreateParentGroupInfo, Map<String, dynamic>>(parent, (value) => value.toMap()),
     };
   }
 
   factory CreateManagementGroupDetails.fromMap(Map<String, dynamic> map) {
     return CreateManagementGroupDetails(
-      parent: (() {
-        final guardedValue = map['parent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CreateParentGroupInfo.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CreateParentGroupInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

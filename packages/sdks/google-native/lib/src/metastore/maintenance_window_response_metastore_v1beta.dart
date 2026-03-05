@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaintenanceWindowResponseMetastoreV1beta {
   /// The day of week, when the window starts.
   final pulumi.Input<String> dayOfWeek;
-
   /// The hour of day (0-23) when the window starts.
   final pulumi.Input<int> hourOfDay;
 
@@ -19,15 +18,17 @@ class MaintenanceWindowResponseMetastoreV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dayOfWeek': dayOfWeek, 'hourOfDay': hourOfDay};
+    return <String, dynamic>{
+      'dayOfWeek': dayOfWeek,
+      'hourOfDay': hourOfDay,
+    };
   }
 
-  factory MaintenanceWindowResponseMetastoreV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MaintenanceWindowResponseMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowResponseMetastoreV1beta(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
       hourOfDay: pulumi.Input.fromValue(map['hourOfDay'] as int),
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PermissionsDataCellsFilter {
   /// The name of the database.
   final pulumi.Input<String> databaseName;
-
   /// The name of the data cells filter.
   final pulumi.Input<String> name;
-
   /// The ID of the Data Catalog.
   final pulumi.Input<String> tableCatalogId;
-
   /// The name of the table.
   final pulumi.Input<String> tableName;
 
@@ -45,3 +42,4 @@ class PermissionsDataCellsFilter {
     );
   }
 }
+

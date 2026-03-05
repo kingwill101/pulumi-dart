@@ -8,10 +8,14 @@ class InterfaceVpcIpv4Range {
 
   /// Creates a new [InterfaceVpcIpv4Range].
   /// [range] The IPv4 range.
-  InterfaceVpcIpv4Range({required this.range});
+  InterfaceVpcIpv4Range({
+    required this.range,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'range': range};
+    return <String, dynamic>{
+      'range': range,
+    };
   }
 
   factory InterfaceVpcIpv4Range.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class InterfaceVpcIpv4Range {
     );
   }
 }
+

@@ -13,8 +13,7 @@ enum LoadBalancerOutboundRuleProtocol {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown LoadBalancerOutboundRuleProtocol value: $value',
-    );
+    throw ArgumentError('Unknown LoadBalancerOutboundRuleProtocol value: $value');
   }
 }
+

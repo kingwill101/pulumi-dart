@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRunV1Condition {
   /// Optional. Last time the condition transitioned from one status to another.
   final pulumi.Input<String>? lastTransitionTime;
-
   /// Optional. Human readable message indicating details about the current status.
   final pulumi.Input<String>? message;
-
   /// Optional. One-word CamelCase reason for the condition's last transition. These are intended to be stable, unique values which the client may use to trigger error handling logic, whereas messages which may be changed later by the server.
   final pulumi.Input<String>? reason;
-
   /// Optional. How to interpret this condition. One of Error, Warning, or Info. Conditions of severity Info do not contribute to resource readiness.
   final pulumi.Input<String>? severity;
-
   /// Status of the condition, one of True, False, Unknown.
   final pulumi.Input<String>? status;
-
   /// type is used to communicate the status of the reconciliation process. Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
   final pulumi.Input<String>? type;
 
@@ -51,36 +46,13 @@ class GoogleCloudRunV1Condition {
 
   factory GoogleCloudRunV1Condition.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV1Condition(
-      lastTransitionTime: (() {
-        final guardedValue = map['lastTransitionTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reason: (() {
-        final guardedValue = map['reason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      severity: (() {
-        final guardedValue = map['severity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      lastTransitionTime: (() { final guardedValue = map['lastTransitionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -11,13 +11,10 @@ import 'resource_claim_spec_patch_resource_k8s_io_v1alpha3.dart';
 class ResourceClaimPatchResourceK8sIoV1alpha3Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
-
   /// Standard object metadata
   final pulumi.Input<ObjectMetaPatch>? metadata;
-
   /// Spec describes what is being requested and how to configure it. The spec is immutable.
   final pulumi.Input<ResourceClaimSpecPatchResourceK8sIoV1alpha3>? spec;
 
@@ -37,51 +34,18 @@ class ResourceClaimPatchResourceK8sIoV1alpha3Args {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata':
-          ?pulumi.Input.mapOptionalInputValue<
-            ObjectMetaPatch,
-            Map<String, dynamic>
-          >(metadata, (value) => value.toMap()),
-      'spec':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceClaimSpecPatchResourceK8sIoV1alpha3,
-            Map<String, dynamic>
-          >(spec, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<ResourceClaimSpecPatchResourceK8sIoV1alpha3, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
-  factory ResourceClaimPatchResourceK8sIoV1alpha3Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceClaimPatchResourceK8sIoV1alpha3Args.fromMap(Map<String, dynamic> map) {
     return ResourceClaimPatchResourceK8sIoV1alpha3Args(
-      apiVersion: (() {
-        final guardedValue = map['apiVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ObjectMetaPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      spec: (() {
-        final guardedValue = map['spec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceClaimSpecPatchResourceK8sIoV1alpha3.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceClaimSpecPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -6,12 +6,9 @@ import 'custom_https_configuration_custom_https_configuration.dart';
 /// Input properties used for looking up and filtering CustomHttpsConfiguration resources.
 class CustomHttpsConfigurationState {
   /// A `custom_https_configuration` block as defined above.
-  final pulumi.Input<CustomHttpsConfigurationCustomHttpsConfiguration>?
-  customHttpsConfiguration;
-
+  final pulumi.Input<CustomHttpsConfigurationCustomHttpsConfiguration>? customHttpsConfiguration;
   /// Should the HTTPS protocol be enabled for this custom domain associated with the Front Door?
   final pulumi.Input<bool>? customHttpsProvisioningEnabled;
-
   /// The ID of the Front Door Frontend Endpoint which this configuration refers to. Changing this forces a new resource to be created.
   final pulumi.Input<String>? frontendEndpointId;
 
@@ -27,11 +24,7 @@ class CustomHttpsConfigurationState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customHttpsConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomHttpsConfigurationCustomHttpsConfiguration,
-            Map<String, dynamic>
-          >(customHttpsConfiguration, (value) => value.toMap()),
+      'customHttpsConfiguration': ?pulumi.Input.mapOptionalInputValue<CustomHttpsConfigurationCustomHttpsConfiguration, Map<String, dynamic>>(customHttpsConfiguration, (value) => value.toMap()),
       'customHttpsProvisioningEnabled': ?customHttpsProvisioningEnabled,
       'frontendEndpointId': ?frontendEndpointId,
     };
@@ -39,25 +32,10 @@ class CustomHttpsConfigurationState {
 
   factory CustomHttpsConfigurationState.fromMap(Map<String, dynamic> map) {
     return CustomHttpsConfigurationState(
-      customHttpsConfiguration: (() {
-        final guardedValue = map['customHttpsConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomHttpsConfigurationCustomHttpsConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      customHttpsProvisioningEnabled: (() {
-        final guardedValue = map['customHttpsProvisioningEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      frontendEndpointId: (() {
-        final guardedValue = map['frontendEndpointId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customHttpsConfiguration: (() { final guardedValue = map['customHttpsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomHttpsConfigurationCustomHttpsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      customHttpsProvisioningEnabled: (() { final guardedValue = map['customHttpsProvisioningEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      frontendEndpointId: (() { final guardedValue = map['frontendEndpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

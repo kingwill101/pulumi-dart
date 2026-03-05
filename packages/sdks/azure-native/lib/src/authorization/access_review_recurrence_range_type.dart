@@ -13,8 +13,7 @@ enum AccessReviewRecurrenceRangeType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AccessReviewRecurrenceRangeType value: $value',
-    );
+    throw ArgumentError('Unknown AccessReviewRecurrenceRangeType value: $value');
   }
 }
+

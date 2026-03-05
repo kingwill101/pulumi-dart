@@ -1,0 +1,13 @@
+name: gcp-faas-basic-url
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Basic Cloud Run URL example for pulumi_dart_faas.
+template:
+  config:
+    gcp:project:
+      description: The Google Cloud project to deploy into
+    gcp:region:
+      default: us-central1
+      description: The Google Cloud region

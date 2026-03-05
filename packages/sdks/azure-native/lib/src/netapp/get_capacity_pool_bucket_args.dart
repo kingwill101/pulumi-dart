@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCapacityPoolBucketArgs {
   /// The name of the NetApp account
   final pulumi.Input<String> accountName;
-
   /// The name of the bucket
   final pulumi.Input<String> bucketName;
-
   /// The name of the capacity pool
   final pulumi.Input<String> poolName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the volume
   final pulumi.Input<String> volumeName;
 
@@ -51,10 +47,9 @@ class GetCapacityPoolBucketArgs {
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
       poolName: pulumi.Input.fromValue(map['poolName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       volumeName: pulumi.Input.fromValue(map['volumeName'] as String),
     );
   }
 }
+

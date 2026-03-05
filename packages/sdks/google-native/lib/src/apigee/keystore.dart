@@ -6,7 +6,6 @@ class Keystore extends pulumi.CustomResource {
   /// Aliases in this keystore.
   late final pulumi.Output<List<String>> aliases;
   late final pulumi.Output<String> environmentId;
-
   /// Optional. Name of the keystore. Overrides the value in Keystore.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
@@ -20,11 +19,11 @@ class Keystore extends pulumi.CustomResource {
     KeystoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:apigee/v1:Keystore',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:apigee/v1:Keystore',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliases = registerOutput<List<String>>('aliases');
     environmentId = registerOutput<String>('environmentId');
     this.name = registerOutput<String>('name');

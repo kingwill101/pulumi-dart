@@ -7,19 +7,14 @@ import 'azure_storage_type.dart';
 class AzureStorageInfoValue {
   /// Access key for the storage account.
   final pulumi.Input<String>? accessKey;
-
   /// Name of the storage account.
   final pulumi.Input<String>? accountName;
-
   /// Path to mount the storage within the site's runtime environment.
   final pulumi.Input<String>? mountPath;
-
   /// Mounting protocol to use for the storage account.
   final pulumi.Input<String>? protocol;
-
   /// Name of the file share (container name, for Blob storage).
   final pulumi.Input<String>? shareName;
-
   /// Type of storage.
   final pulumi.Input<AzureStorageType>? type;
 
@@ -46,47 +41,19 @@ class AzureStorageInfoValue {
       'mountPath': ?mountPath,
       'protocol': ?protocol,
       'shareName': ?shareName,
-      'type': ?pulumi.Input.mapOptionalInputValue<AzureStorageType, String>(
-        type,
-        (value) => value.wireValue,
-      ),
+      'type': ?pulumi.Input.mapOptionalInputValue<AzureStorageType, String>(type, (value) => value.wireValue),
     };
   }
 
   factory AzureStorageInfoValue.fromMap(Map<String, dynamic> map) {
     return AzureStorageInfoValue(
-      accessKey: (() {
-        final guardedValue = map['accessKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      accountName: (() {
-        final guardedValue = map['accountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mountPath: (() {
-        final guardedValue = map['mountPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      shareName: (() {
-        final guardedValue = map['shareName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureStorageType.fromValue(guardedValue as String),
-        );
-      })(),
+      accessKey: (() { final guardedValue = map['accessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mountPath: (() { final guardedValue = map['mountPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shareName: (() { final guardedValue = map['shareName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureStorageType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

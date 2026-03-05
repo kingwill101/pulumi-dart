@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectEnvironmentTypeArgs {
   /// The ID of the associated Dev Center Project.
   final pulumi.Input<String> devCenterProjectId;
-
   /// The name of this Dev Center Project Environment Type.
   final pulumi.Input<String> name;
 
@@ -30,10 +29,9 @@ class GetProjectEnvironmentTypeArgs {
 
   factory GetProjectEnvironmentTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectEnvironmentTypeArgs(
-      devCenterProjectId: pulumi.Input.fromValue(
-        map['devCenterProjectId'] as String,
-      ),
+      devCenterProjectId: pulumi.Input.fromValue(map['devCenterProjectId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

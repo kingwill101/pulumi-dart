@@ -37,23 +37,14 @@ class GetDatasetConsentStoreIamPolicyHealthcareV1beta1Args {
     };
   }
 
-  factory GetDatasetConsentStoreIamPolicyHealthcareV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatasetConsentStoreIamPolicyHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetDatasetConsentStoreIamPolicyHealthcareV1beta1Args(
       consentStoreId: pulumi.Input.fromValue(map['consentStoreId'] as String),
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

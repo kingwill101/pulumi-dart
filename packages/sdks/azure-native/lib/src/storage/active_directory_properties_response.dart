@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActiveDirectoryPropertiesResponse {
   /// Specifies the Active Directory account type for Azure Storage.
   final pulumi.Input<String>? accountType;
-
   /// Specifies the security identifier (SID) for Azure Storage.
   final pulumi.Input<String>? azureStorageSid;
-
   /// Specifies the domain GUID.
   final pulumi.Input<String> domainGuid;
-
   /// Specifies the primary domain that the AD DNS server is authoritative for.
   final pulumi.Input<String> domainName;
-
   /// Specifies the security identifier (SID).
   final pulumi.Input<String>? domainSid;
-
   /// Specifies the Active Directory forest to get.
   final pulumi.Input<String>? forestName;
-
   /// Specifies the NetBIOS domain name.
   final pulumi.Input<String>? netBiosDomainName;
-
   /// Specifies the Active Directory SAMAccountName for Azure Storage.
   final pulumi.Input<String>? samAccountName;
 
@@ -63,38 +56,15 @@ class ActiveDirectoryPropertiesResponse {
 
   factory ActiveDirectoryPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryPropertiesResponse(
-      accountType: (() {
-        final guardedValue = map['accountType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      azureStorageSid: (() {
-        final guardedValue = map['azureStorageSid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountType: (() { final guardedValue = map['accountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureStorageSid: (() { final guardedValue = map['azureStorageSid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domainGuid: pulumi.Input.fromValue(map['domainGuid'] as String),
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      domainSid: (() {
-        final guardedValue = map['domainSid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      forestName: (() {
-        final guardedValue = map['forestName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      netBiosDomainName: (() {
-        final guardedValue = map['netBiosDomainName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      samAccountName: (() {
-        final guardedValue = map['samAccountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domainSid: (() { final guardedValue = map['domainSid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      forestName: (() { final guardedValue = map['forestName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      netBiosDomainName: (() { final guardedValue = map['netBiosDomainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      samAccountName: (() { final guardedValue = map['samAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

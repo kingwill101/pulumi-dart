@@ -211,25 +211,18 @@ import 'api_schema_state.dart';
 class ApiSchema extends pulumi.CustomResource {
   /// The Name of the API Management Service where the API exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// The name of the API within the API Management Service where this API Schema should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiName;
-
   /// Types definitions. Used for Swagger/OpenAPI v2/v3 schemas only.
   late final pulumi.Output<String?> components;
-
   /// The content type of the API Schema.
   late final pulumi.Output<String> contentType;
-
   /// Types definitions. Used for Swagger/OpenAPI v1 schemas only.
   late final pulumi.Output<String?> definitions;
-
   /// The Name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A unique identifier for this API Schema. Changing this forces a new resource to be created.
   late final pulumi.Output<String> schemaId;
-
   /// The JSON escaped string defining the document representing the Schema.
   late final pulumi.Output<String?> value;
 
@@ -242,11 +235,11 @@ class ApiSchema extends pulumi.CustomResource {
     ApiSchemaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiSchema:ApiSchema',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiSchema:ApiSchema',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
     components = registerOutput<String?>('components');
@@ -275,11 +268,11 @@ class ApiSchema extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiSchema:ApiSchema',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiSchema:ApiSchema',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
     components = registerOutput<String?>('components');

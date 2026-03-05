@@ -10,41 +10,20 @@ class DedicatedHostAvailableCapacityResponse {
 
   /// Creates a new [DedicatedHostAvailableCapacityResponse].
   /// [allocatableVMs] The unutilized capacity of the dedicated host represented in terms of each VM size that is allowed to be deployed to the dedicated host.
-  DedicatedHostAvailableCapacityResponse({this.allocatableVMs});
+  DedicatedHostAvailableCapacityResponse({
+    this.allocatableVMs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allocatableVMs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DedicatedHostAllocatableVMResponse>,
-            List<Map<String, dynamic>>
-          >(
-            allocatableVMs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DedicatedHostAllocatableVMResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'allocatableVMs': ?pulumi.Input.mapOptionalInputValue<List<DedicatedHostAllocatableVMResponse>, List<Map<String, dynamic>>>(allocatableVMs, (value) => pulumi.Input.encodeList<DedicatedHostAllocatableVMResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory DedicatedHostAvailableCapacityResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DedicatedHostAvailableCapacityResponse.fromMap(Map<String, dynamic> map) {
     return DedicatedHostAvailableCapacityResponse(
-      allocatableVMs: (() {
-        final guardedValue = map['allocatableVMs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DedicatedHostAllocatableVMResponse>(
-            guardedValue,
-            (value) => DedicatedHostAllocatableVMResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      allocatableVMs: (() { final guardedValue = map['allocatableVMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DedicatedHostAllocatableVMResponse>(guardedValue, (value) => DedicatedHostAllocatableVMResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

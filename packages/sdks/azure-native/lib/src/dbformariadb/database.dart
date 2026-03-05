@@ -144,16 +144,12 @@ import 'database_args.dart';
 class Database extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The charset of the database.
   late final pulumi.Output<String?> charset;
-
   /// The collation of the database.
   late final pulumi.Output<String?> collation;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -166,11 +162,11 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:dbformariadb:Database',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:dbformariadb:Database',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     charset = registerOutput<String?>('charset');
     collation = registerOutput<String?>('collation');

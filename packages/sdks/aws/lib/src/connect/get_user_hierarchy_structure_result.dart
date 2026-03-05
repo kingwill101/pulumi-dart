@@ -7,7 +7,6 @@ import 'get_user_hierarchy_structure_hierarchy_structure.dart';
 class GetUserHierarchyStructureResult {
   /// Block that defines the hierarchy structure's levels. The `hierarchy_structure` block is documented below.
   final List<GetUserHierarchyStructureHierarchyStructure> hierarchyStructures;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
@@ -27,11 +26,7 @@ class GetUserHierarchyStructureResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hierarchyStructures':
-          pulumi.Input.encodeList<
-            GetUserHierarchyStructureHierarchyStructure,
-            Map<String, dynamic>
-          >(hierarchyStructures, (value) => value.toMap()),
+      'hierarchyStructures': pulumi.Input.encodeList<GetUserHierarchyStructureHierarchyStructure, Map<String, dynamic>>(hierarchyStructures, (value) => value.toMap()),
       'id': id,
       'instanceId': instanceId,
       'region': region,
@@ -40,16 +35,11 @@ class GetUserHierarchyStructureResult {
 
   factory GetUserHierarchyStructureResult.fromMap(Map<String, dynamic> map) {
     return GetUserHierarchyStructureResult(
-      hierarchyStructures:
-          pulumi.Input.decodeList<GetUserHierarchyStructureHierarchyStructure>(
-            map['hierarchyStructures']!,
-            (value) => GetUserHierarchyStructureHierarchyStructure.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      hierarchyStructures: pulumi.Input.decodeList<GetUserHierarchyStructureHierarchyStructure>(map['hierarchyStructures']!, (value) => GetUserHierarchyStructureHierarchyStructure.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
       region: map['region'] as String,
     );
   }
 }
+

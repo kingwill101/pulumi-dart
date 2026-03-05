@@ -9,19 +9,20 @@ class DaemonEndpointPatch {
 
   /// Creates a new [DaemonEndpointPatch].
   /// [port] Port number of the given endpoint.
-  DaemonEndpointPatch({this.port});
+  DaemonEndpointPatch({
+    this.port,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'Port': ?port};
+    return <String, dynamic>{
+      'Port': ?port,
+    };
   }
 
   factory DaemonEndpointPatch.fromMap(Map<String, dynamic> map) {
     return DaemonEndpointPatch(
-      port: (() {
-        final guardedValue = map['Port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      port: (() { final guardedValue = map['Port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -10,13 +10,10 @@ import 'contact_detail.dart';
 class PeerAsnArgs {
   /// The Autonomous System Number (ASN) of the peer.
   final pulumi.Input<int>? peerAsn;
-
   /// The peer ASN name.
   final pulumi.Input<String>? peerAsnName;
-
   /// The contact details of the peer.
   final pulumi.Input<List<ContactDetail>>? peerContactDetail;
-
   /// The name of the peer.
   final pulumi.Input<String>? peerName;
 
@@ -36,50 +33,18 @@ class PeerAsnArgs {
     return <String, dynamic>{
       'peerAsn': ?peerAsn,
       'peerAsnName': ?peerAsnName,
-      'peerContactDetail':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ContactDetail>,
-            List<Map<String, dynamic>>
-          >(
-            peerContactDetail,
-            (value) =>
-                pulumi.Input.encodeList<ContactDetail, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'peerContactDetail': ?pulumi.Input.mapOptionalInputValue<List<ContactDetail>, List<Map<String, dynamic>>>(peerContactDetail, (value) => pulumi.Input.encodeList<ContactDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
       'peerName': ?peerName,
     };
   }
 
   factory PeerAsnArgs.fromMap(Map<String, dynamic> map) {
     return PeerAsnArgs(
-      peerAsn: (() {
-        final guardedValue = map['peerAsn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      peerAsnName: (() {
-        final guardedValue = map['peerAsnName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peerContactDetail: (() {
-        final guardedValue = map['peerContactDetail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ContactDetail>(
-            guardedValue,
-            (value) =>
-                ContactDetail.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      peerName: (() {
-        final guardedValue = map['peerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      peerAsn: (() { final guardedValue = map['peerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      peerAsnName: (() { final guardedValue = map['peerAsnName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerContactDetail: (() { final guardedValue = map['peerContactDetail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContactDetail>(guardedValue, (value) => ContactDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      peerName: (() { final guardedValue = map['peerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

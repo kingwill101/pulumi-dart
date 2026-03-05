@@ -32,14 +32,9 @@ class GetPersistentResourceArgs {
   factory GetPersistentResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetPersistentResourceArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      persistentResourceId: pulumi.Input.fromValue(
-        map['persistentResourceId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      persistentResourceId: pulumi.Input.fromValue(map['persistentResourceId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

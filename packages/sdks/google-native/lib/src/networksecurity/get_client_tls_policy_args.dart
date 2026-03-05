@@ -31,15 +31,10 @@ class GetClientTlsPolicyArgs {
 
   factory GetClientTlsPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetClientTlsPolicyArgs(
-      clientTlsPolicyId: pulumi.Input.fromValue(
-        map['clientTlsPolicyId'] as String,
-      ),
+      clientTlsPolicyId: pulumi.Input.fromValue(map['clientTlsPolicyId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

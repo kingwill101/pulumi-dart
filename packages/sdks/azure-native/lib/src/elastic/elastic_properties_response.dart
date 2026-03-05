@@ -8,7 +8,6 @@ import 'elastic_cloud_user_response.dart';
 class ElasticPropertiesResponse {
   /// Details of the elastic cloud deployment.
   final pulumi.Input<ElasticCloudDeploymentResponse>? elasticCloudDeployment;
-
   /// Details of the user's elastic account.
   final pulumi.Input<ElasticCloudUserResponse>? elasticCloudUser;
 
@@ -22,39 +21,16 @@ class ElasticPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'elasticCloudDeployment':
-          ?pulumi.Input.mapOptionalInputValue<
-            ElasticCloudDeploymentResponse,
-            Map<String, dynamic>
-          >(elasticCloudDeployment, (value) => value.toMap()),
-      'elasticCloudUser':
-          ?pulumi.Input.mapOptionalInputValue<
-            ElasticCloudUserResponse,
-            Map<String, dynamic>
-          >(elasticCloudUser, (value) => value.toMap()),
+      'elasticCloudDeployment': ?pulumi.Input.mapOptionalInputValue<ElasticCloudDeploymentResponse, Map<String, dynamic>>(elasticCloudDeployment, (value) => value.toMap()),
+      'elasticCloudUser': ?pulumi.Input.mapOptionalInputValue<ElasticCloudUserResponse, Map<String, dynamic>>(elasticCloudUser, (value) => value.toMap()),
     };
   }
 
   factory ElasticPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticPropertiesResponse(
-      elasticCloudDeployment: (() {
-        final guardedValue = map['elasticCloudDeployment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ElasticCloudDeploymentResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      elasticCloudUser: (() {
-        final guardedValue = map['elasticCloudUser'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ElasticCloudUserResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      elasticCloudDeployment: (() { final guardedValue = map['elasticCloudDeployment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ElasticCloudDeploymentResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      elasticCloudUser: (() { final guardedValue = map['elasticCloudUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ElasticCloudUserResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

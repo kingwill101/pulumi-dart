@@ -9,10 +9,14 @@ class X12MessageIdentifier {
 
   /// Creates a new [X12MessageIdentifier].
   /// [messageId] The message id.
-  X12MessageIdentifier({required this.messageId});
+  X12MessageIdentifier({
+    required this.messageId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'messageId': messageId};
+    return <String, dynamic>{
+      'messageId': messageId,
+    };
   }
 
   factory X12MessageIdentifier.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class X12MessageIdentifier {
     );
   }
 }
+

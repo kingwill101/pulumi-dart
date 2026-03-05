@@ -454,16 +454,12 @@ import 'realtime_log_config_state.dart';
 class RealtimeLogConfig extends pulumi.CustomResource {
   /// The ARN (Amazon Resource Name) of the CloudFront real-time log configuration.
   late final pulumi.Output<String> arn;
-
   /// The Amazon Kinesis data streams where real-time log data is sent.
   late final pulumi.Output<RealtimeLogConfigEndpoint> endpoint;
-
   /// The fields that are included in each real-time log record. See the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/real-time-logs.html#understand-real-time-log-config-fields) for supported values.
   late final pulumi.Output<List<String>> fields;
-
   /// The unique name to identify this real-time log configuration.
   late final pulumi.Output<String> name;
-
   /// The sampling rate for this real-time log configuration. The sampling rate determines the percentage of viewer requests that are represented in the real-time log data. An integer between `1` and `100`, inclusive.
   late final pulumi.Output<int> samplingRate;
 
@@ -476,22 +472,13 @@ class RealtimeLogConfig extends pulumi.CustomResource {
     RealtimeLogConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/realtimeLogConfig:RealtimeLogConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/realtimeLogConfig:RealtimeLogConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    endpoint = registerOutput<RealtimeLogConfigEndpoint>(
-      'endpoint',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RealtimeLogConfigEndpoint.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    endpoint = registerOutput<RealtimeLogConfigEndpoint>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RealtimeLogConfigEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fields = registerOutput<List<String>>('fields');
     this.name = registerOutput<String>('name');
     samplingRate = registerOutput<int>('samplingRate');
@@ -515,22 +502,13 @@ class RealtimeLogConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/realtimeLogConfig:RealtimeLogConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/realtimeLogConfig:RealtimeLogConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    endpoint = registerOutput<RealtimeLogConfigEndpoint>(
-      'endpoint',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RealtimeLogConfigEndpoint.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    endpoint = registerOutput<RealtimeLogConfigEndpoint>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RealtimeLogConfigEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fields = registerOutput<List<String>>('fields');
     this.name = registerOutput<String>('name');
     samplingRate = registerOutput<int>('samplingRate');

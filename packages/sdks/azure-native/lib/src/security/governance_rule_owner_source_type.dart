@@ -15,3 +15,4 @@ enum GovernanceRuleOwnerSourceType {
     throw ArgumentError('Unknown GovernanceRuleOwnerSourceType value: $value');
   }
 }
+

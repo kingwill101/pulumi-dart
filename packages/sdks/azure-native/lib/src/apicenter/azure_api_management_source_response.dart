@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureApiManagementSourceResponse {
   /// The resource ID of the managed identity that has access to the API Management instance.
   final pulumi.Input<String>? msiResourceId;
-
   /// API Management service resource ID.
   final pulumi.Input<String> resourceId;
 
@@ -27,12 +26,9 @@ class AzureApiManagementSourceResponse {
 
   factory AzureApiManagementSourceResponse.fromMap(Map<String, dynamic> map) {
     return AzureApiManagementSourceResponse(
-      msiResourceId: (() {
-        final guardedValue = map['msiResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      msiResourceId: (() { final guardedValue = map['msiResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
+

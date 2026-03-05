@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InMageRcmFailbackSyncDetailsResponse {
   /// The bytes transferred in last 15 minutes from source VM to target.
   final pulumi.Input<double> last15MinutesTransferredBytes;
-
   /// The time of the last data transfer from source VM to target.
   final pulumi.Input<String> lastDataTransferTimeUtc;
-
   /// The last refresh time.
   final pulumi.Input<String> lastRefreshTime;
-
   /// The total processed bytes. This includes bytes that are transferred from source VM to target and matched bytes.
   final pulumi.Input<double> processedBytes;
-
   /// The progress health.
   final pulumi.Input<String> progressHealth;
-
   /// Progress in percentage. Progress percentage is calculated based on processed bytes.
   final pulumi.Input<int> progressPercentage;
-
   /// The start time.
   final pulumi.Input<String> startTime;
-
   /// The transferred bytes from source VM to azure for the disk.
   final pulumi.Input<double> transferredBytes;
 
@@ -61,26 +54,17 @@ class InMageRcmFailbackSyncDetailsResponse {
     };
   }
 
-  factory InMageRcmFailbackSyncDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InMageRcmFailbackSyncDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmFailbackSyncDetailsResponse(
-      last15MinutesTransferredBytes: pulumi.Input.fromValue(
-        map['last15MinutesTransferredBytes'] as double,
-      ),
-      lastDataTransferTimeUtc: pulumi.Input.fromValue(
-        map['lastDataTransferTimeUtc'] as String,
-      ),
+      last15MinutesTransferredBytes: pulumi.Input.fromValue(map['last15MinutesTransferredBytes'] as double),
+      lastDataTransferTimeUtc: pulumi.Input.fromValue(map['lastDataTransferTimeUtc'] as String),
       lastRefreshTime: pulumi.Input.fromValue(map['lastRefreshTime'] as String),
       processedBytes: pulumi.Input.fromValue(map['processedBytes'] as double),
       progressHealth: pulumi.Input.fromValue(map['progressHealth'] as String),
-      progressPercentage: pulumi.Input.fromValue(
-        map['progressPercentage'] as int,
-      ),
+      progressPercentage: pulumi.Input.fromValue(map['progressPercentage'] as int),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
-      transferredBytes: pulumi.Input.fromValue(
-        map['transferredBytes'] as double,
-      ),
+      transferredBytes: pulumi.Input.fromValue(map['transferredBytes'] as double),
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'edifact_one_way_agreement.dart';
 class EdifactAgreementContent {
   /// The EDIFACT one-way receive agreement.
   final pulumi.Input<EdifactOneWayAgreement> receiveAgreement;
-
   /// The EDIFACT one-way send agreement.
   final pulumi.Input<EdifactOneWayAgreement> sendAgreement;
 
@@ -21,31 +20,16 @@ class EdifactAgreementContent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'receiveAgreement':
-          pulumi.Input.mapInputValue<
-            EdifactOneWayAgreement,
-            Map<String, dynamic>
-          >(receiveAgreement, (value) => value.toMap()),
-      'sendAgreement':
-          pulumi.Input.mapInputValue<
-            EdifactOneWayAgreement,
-            Map<String, dynamic>
-          >(sendAgreement, (value) => value.toMap()),
+      'receiveAgreement': pulumi.Input.mapInputValue<EdifactOneWayAgreement, Map<String, dynamic>>(receiveAgreement, (value) => value.toMap()),
+      'sendAgreement': pulumi.Input.mapInputValue<EdifactOneWayAgreement, Map<String, dynamic>>(sendAgreement, (value) => value.toMap()),
     };
   }
 
   factory EdifactAgreementContent.fromMap(Map<String, dynamic> map) {
     return EdifactAgreementContent(
-      receiveAgreement: pulumi.Input.fromValue(
-        EdifactOneWayAgreement.fromMap(
-          (map['receiveAgreement']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sendAgreement: pulumi.Input.fromValue(
-        EdifactOneWayAgreement.fromMap(
-          (map['sendAgreement']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      receiveAgreement: pulumi.Input.fromValue(EdifactOneWayAgreement.fromMap((map['receiveAgreement']! as Map).cast<String, dynamic>())),
+      sendAgreement: pulumi.Input.fromValue(EdifactOneWayAgreement.fromMap((map['sendAgreement']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

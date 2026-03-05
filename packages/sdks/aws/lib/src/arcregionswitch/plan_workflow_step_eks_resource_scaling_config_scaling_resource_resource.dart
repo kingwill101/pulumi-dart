@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlanWorkflowStepEksResourceScalingConfigScalingResourceResource {
   /// Name of the Horizontal Pod Autoscaler.
   final pulumi.Input<String>? hpaName;
-
   /// Name of the Kubernetes object.
   final pulumi.Input<String> name;
-
   /// Kubernetes namespace.
   final pulumi.Input<String> namespace;
-
   /// Name of the resource.
   final pulumi.Input<String> resourceName;
 
@@ -36,18 +33,13 @@ class PlanWorkflowStepEksResourceScalingConfigScalingResourceResource {
     };
   }
 
-  factory PlanWorkflowStepEksResourceScalingConfigScalingResourceResource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PlanWorkflowStepEksResourceScalingConfigScalingResourceResource.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepEksResourceScalingConfigScalingResourceResource(
-      hpaName: (() {
-        final guardedValue = map['hpaName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      hpaName: (() { final guardedValue = map['hpaName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       namespace: pulumi.Input.fromValue(map['namespace'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

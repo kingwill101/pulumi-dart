@@ -9,19 +9,20 @@ class PhysicalReplicationSlotState {
 
   /// Creates a new [PhysicalReplicationSlotState].
   /// [name] The name of the replication slot.
-  PhysicalReplicationSlotState({this.name});
+  PhysicalReplicationSlotState({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory PhysicalReplicationSlotState.fromMap(Map<String, dynamic> map) {
     return PhysicalReplicationSlotState(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

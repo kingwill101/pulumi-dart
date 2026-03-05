@@ -32,8 +32,7 @@ class OpenstackConfig {
     return raw;
   }
 
-  bool get applicationCredentialIdIsSecret =>
-      _isSecret('applicationCredentialId');
+  bool get applicationCredentialIdIsSecret => _isSecret('applicationCredentialId');
 
   /// Application Credential name to login with.
   String? get applicationCredentialName {
@@ -41,8 +40,7 @@ class OpenstackConfig {
     return raw;
   }
 
-  bool get applicationCredentialNameIsSecret =>
-      _isSecret('applicationCredentialName');
+  bool get applicationCredentialNameIsSecret => _isSecret('applicationCredentialName');
 
   /// Application Credential secret to login with.
   String? get applicationCredentialSecret {
@@ -50,8 +48,7 @@ class OpenstackConfig {
     return raw;
   }
 
-  bool get applicationCredentialSecretIsSecret =>
-      _isSecret('applicationCredentialSecret');
+  bool get applicationCredentialSecretIsSecret => _isSecret('applicationCredentialSecret');
 
   /// The Identity authentication URL.
   String? get authUrl {
@@ -138,11 +135,7 @@ class OpenstackConfig {
   /// from the Keystone catalog
   Map<String, String>? get endpointOverrides {
     final raw = _raw('endpointOverrides');
-    return (() {
-      final guardedValue = raw;
-      if (guardedValue == null) return null;
-      return (jsonDecode(guardedValue) as Map).cast<String, String>();
-    })();
+    return (() { final guardedValue = raw; if (guardedValue == null) return null; return (jsonDecode(guardedValue) as Map).cast<String, String>(); })();
   }
 
   bool get endpointOverridesIsSecret => _isSecret('endpointOverrides');
@@ -284,6 +277,8 @@ class OpenstackConfig {
   }
 
   bool get userNameIsSecret => _isSecret('userName');
+
 }
 
 final config = OpenstackConfig();
+

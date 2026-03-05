@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MessageCountDetailsResponse {
   /// Number of active messages in the queue, topic, or subscription.
   final pulumi.Input<double> activeMessageCount;
-
   /// Number of messages that are dead lettered.
   final pulumi.Input<double> deadLetterMessageCount;
-
   /// Number of scheduled messages.
   final pulumi.Input<double> scheduledMessageCount;
-
   /// Number of messages transferred into dead letters.
   final pulumi.Input<double> transferDeadLetterMessageCount;
-
   /// Number of messages transferred to another queue, topic, or subscription.
   final pulumi.Input<double> transferMessageCount;
 
@@ -45,21 +41,12 @@ class MessageCountDetailsResponse {
 
   factory MessageCountDetailsResponse.fromMap(Map<String, dynamic> map) {
     return MessageCountDetailsResponse(
-      activeMessageCount: pulumi.Input.fromValue(
-        map['activeMessageCount'] as double,
-      ),
-      deadLetterMessageCount: pulumi.Input.fromValue(
-        map['deadLetterMessageCount'] as double,
-      ),
-      scheduledMessageCount: pulumi.Input.fromValue(
-        map['scheduledMessageCount'] as double,
-      ),
-      transferDeadLetterMessageCount: pulumi.Input.fromValue(
-        map['transferDeadLetterMessageCount'] as double,
-      ),
-      transferMessageCount: pulumi.Input.fromValue(
-        map['transferMessageCount'] as double,
-      ),
+      activeMessageCount: pulumi.Input.fromValue(map['activeMessageCount'] as double),
+      deadLetterMessageCount: pulumi.Input.fromValue(map['deadLetterMessageCount'] as double),
+      scheduledMessageCount: pulumi.Input.fromValue(map['scheduledMessageCount'] as double),
+      transferDeadLetterMessageCount: pulumi.Input.fromValue(map['transferDeadLetterMessageCount'] as double),
+      transferMessageCount: pulumi.Input.fromValue(map['transferMessageCount'] as double),
     );
   }
 }
+

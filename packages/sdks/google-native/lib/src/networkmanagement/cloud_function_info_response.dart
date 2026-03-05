@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudFunctionInfoResponse {
   /// Name of a Cloud Function.
   final pulumi.Input<String> displayName;
-
   /// Location in which the Cloud Function is deployed.
   final pulumi.Input<String> location;
-
   /// URI of a Cloud Function.
   final pulumi.Input<String> uri;
-
   /// Latest successfully deployed version id of the Cloud Function.
   final pulumi.Input<String> versionId;
 
@@ -46,3 +43,4 @@ class CloudFunctionInfoResponse {
     );
   }
 }
+

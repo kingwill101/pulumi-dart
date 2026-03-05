@@ -16,3 +16,4 @@ enum WebTestKind {
     throw ArgumentError('Unknown WebTestKind value: $value');
   }
 }
+

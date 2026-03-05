@@ -8,19 +8,20 @@ class GatewayNetworkAccessConfig {
 
   /// Creates a new [GatewayNetworkAccessConfig].
   /// [type] Network Access Type
-  GatewayNetworkAccessConfig({this.type});
+  GatewayNetworkAccessConfig({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
   factory GatewayNetworkAccessConfig.fromMap(Map<String, dynamic> map) {
     return GatewayNetworkAccessConfig(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

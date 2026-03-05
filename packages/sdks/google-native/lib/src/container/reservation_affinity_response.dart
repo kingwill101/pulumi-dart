@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReservationAffinityResponse {
   /// Corresponds to the type of reservation consumption.
   final pulumi.Input<String> consumeReservationType;
-
   /// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
   final pulumi.Input<String> key;
-
   /// Corresponds to the label value(s) of reservation resource(s).
   final pulumi.Input<List<String>> values;
 
@@ -33,11 +31,10 @@ class ReservationAffinityResponse {
 
   factory ReservationAffinityResponse.fromMap(Map<String, dynamic> map) {
     return ReservationAffinityResponse(
-      consumeReservationType: pulumi.Input.fromValue(
-        map['consumeReservationType'] as String,
-      ),
+      consumeReservationType: pulumi.Input.fromValue(map['consumeReservationType'] as String),
       key: pulumi.Input.fromValue(map['key'] as String),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

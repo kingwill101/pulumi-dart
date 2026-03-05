@@ -240,50 +240,34 @@ import 'dsc_configuration_parameter_response.dart';
 class DscConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the creation time.
   late final pulumi.Output<String?> creationTime;
-
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
-
   /// Gets or sets the etag of the resource.
   late final pulumi.Output<String?> etag;
-
   /// Gets or sets the job count of the configuration.
   late final pulumi.Output<int?> jobCount;
-
   /// Gets or sets the last modified time.
   late final pulumi.Output<String?> lastModifiedTime;
-
   /// The Azure Region where the resource lives
   late final pulumi.Output<String?> location;
-
   /// Gets or sets verbose log option.
   late final pulumi.Output<bool?> logVerbose;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Gets the number of compiled node configurations.
   late final pulumi.Output<int?> nodeConfigurationCount;
-
   /// Gets or sets the configuration parameters.
-  late final pulumi.Output<Map<String, DscConfigurationParameterResponse>?>
-  parameters;
-
+  late final pulumi.Output<Map<String, DscConfigurationParameterResponse>?> parameters;
   /// Gets or sets the provisioning state of the configuration.
   late final pulumi.Output<String?> provisioningState;
-
   /// Gets or sets the source.
   late final pulumi.Output<ContentSourceResponse?> source;
-
   /// Gets or sets the state of the configuration.
   late final pulumi.Output<String?> state;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -296,11 +280,11 @@ class DscConfiguration extends pulumi.CustomResource {
     DscConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:automation:DscConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:automation:DscConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String?>('creationTime');
     description = registerOutput<String?>('description');
@@ -311,32 +295,9 @@ class DscConfiguration extends pulumi.CustomResource {
     logVerbose = registerOutput<bool?>('logVerbose');
     this.name = registerOutput<String>('name');
     nodeConfigurationCount = registerOutput<int?>('nodeConfigurationCount');
-    parameters =
-        registerOutput<Map<String, DscConfigurationParameterResponse>?>(
-          'parameters',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return pulumi
-                .Input.decodeMapValues<DscConfigurationParameterResponse>(
-              guardedValue,
-              (value) => DscConfigurationParameterResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            );
-          },
-        );
+    parameters = registerOutput<Map<String, DscConfigurationParameterResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<DscConfigurationParameterResponse>(guardedValue, (value) => DscConfigurationParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String?>('provisioningState');
-    source = registerOutput<ContentSourceResponse?>(
-      'source',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContentSourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    source = registerOutput<ContentSourceResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContentSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String?>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

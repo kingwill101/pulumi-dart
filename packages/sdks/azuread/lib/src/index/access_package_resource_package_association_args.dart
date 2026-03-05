@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPackageResourcePackageAssociationArgs {
   /// The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
   final pulumi.Input<String> accessPackageId;
-
   /// The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? accessType;
-
   /// The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
   final pulumi.Input<String> catalogResourceAssociationId;
 
@@ -34,19 +32,12 @@ class AccessPackageResourcePackageAssociationArgs {
     };
   }
 
-  factory AccessPackageResourcePackageAssociationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessPackageResourcePackageAssociationArgs.fromMap(Map<String, dynamic> map) {
     return AccessPackageResourcePackageAssociationArgs(
       accessPackageId: pulumi.Input.fromValue(map['accessPackageId'] as String),
-      accessType: (() {
-        final guardedValue = map['accessType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      catalogResourceAssociationId: pulumi.Input.fromValue(
-        map['catalogResourceAssociationId'] as String,
-      ),
+      accessType: (() { final guardedValue = map['accessType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      catalogResourceAssociationId: pulumi.Input.fromValue(map['catalogResourceAssociationId'] as String),
     );
   }
 }
+

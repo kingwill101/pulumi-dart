@@ -7,19 +7,15 @@ import 'get_traffic_mirror_filters_filter.dart';
 class GetTrafficMirrorFiltersResult {
   /// A list of Vpc Traffic Mirror Filters. Each element contains the following attributes:
   final List<GetTrafficMirrorFiltersFilter> filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of Traffic Mirror Filter names.
   final List<String> names;
   final String? outputFile;
-
   /// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
   final String? status;
-
   /// The name of the filter.
   final String? trafficMirrorFilterName;
 
@@ -45,11 +41,7 @@ class GetTrafficMirrorFiltersResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          pulumi.Input.encodeList<
-            GetTrafficMirrorFiltersFilter,
-            Map<String, dynamic>
-          >(filters, (value) => value.toMap()),
+      'filters': pulumi.Input.encodeList<GetTrafficMirrorFiltersFilter, Map<String, dynamic>>(filters, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -62,35 +54,15 @@ class GetTrafficMirrorFiltersResult {
 
   factory GetTrafficMirrorFiltersResult.fromMap(Map<String, dynamic> map) {
     return GetTrafficMirrorFiltersResult(
-      filters: pulumi.Input.decodeList<GetTrafficMirrorFiltersFilter>(
-        map['filters']!,
-        (value) => GetTrafficMirrorFiltersFilter.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      filters: pulumi.Input.decodeList<GetTrafficMirrorFiltersFilter>(map['filters']!, (value) => GetTrafficMirrorFiltersFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      trafficMirrorFilterName: (() {
-        final guardedValue = map['trafficMirrorFilterName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      trafficMirrorFilterName: (() { final guardedValue = map['trafficMirrorFilterName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

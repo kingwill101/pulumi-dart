@@ -9,19 +9,20 @@ class ContainerStateRunning {
 
   /// Creates a new [ContainerStateRunning].
   /// [startedAt] Time at which the container was last (re-)started
-  ContainerStateRunning({this.startedAt});
+  ContainerStateRunning({
+    this.startedAt,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'startedAt': ?startedAt};
+    return <String, dynamic>{
+      'startedAt': ?startedAt,
+    };
   }
 
   factory ContainerStateRunning.fromMap(Map<String, dynamic> map) {
     return ContainerStateRunning(
-      startedAt: (() {
-        final guardedValue = map['startedAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      startedAt: (() { final guardedValue = map['startedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

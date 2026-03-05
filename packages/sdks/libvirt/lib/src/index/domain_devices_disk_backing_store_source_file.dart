@@ -6,13 +6,10 @@ import 'domain_devices_disk_backing_store_source_file_sec_label.dart';
 class DomainDevicesDiskBackingStoreSourceFile {
   /// Sets the file descriptor group for the file specified in the backing store source.
   final pulumi.Input<String>? fdGroup;
-
   /// Specifies the actual file referenced in the backing store source configuration.
   final pulumi.Input<String>? file;
-
   /// Configures the security label associated with the file in the backing store source.
-  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceFileSecLabel>>?
-  secLabels;
+  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceFileSecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceFile].
   /// [fdGroup] Sets the file descriptor group for the file specified in the backing store source.
@@ -28,49 +25,16 @@ class DomainDevicesDiskBackingStoreSourceFile {
     return <String, dynamic>{
       'fdGroup': ?fdGroup,
       'file': ?file,
-      'secLabels':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DomainDevicesDiskBackingStoreSourceFileSecLabel>,
-            List<Map<String, dynamic>>
-          >(
-            secLabels,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DomainDevicesDiskBackingStoreSourceFileSecLabel,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskBackingStoreSourceFileSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesDiskBackingStoreSourceFileSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory DomainDevicesDiskBackingStoreSourceFile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskBackingStoreSourceFile.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceFile(
-      fdGroup: (() {
-        final guardedValue = map['fdGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      file: (() {
-        final guardedValue = map['file'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secLabels: (() {
-        final guardedValue = map['secLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            DomainDevicesDiskBackingStoreSourceFileSecLabel
-          >(
-            guardedValue,
-            (value) => DomainDevicesDiskBackingStoreSourceFileSecLabel.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      fdGroup: (() { final guardedValue = map['fdGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      file: (() { final guardedValue = map['file']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secLabels: (() { final guardedValue = map['secLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainDevicesDiskBackingStoreSourceFileSecLabel>(guardedValue, (value) => DomainDevicesDiskBackingStoreSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

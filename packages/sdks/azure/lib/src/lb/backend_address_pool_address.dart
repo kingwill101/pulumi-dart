@@ -333,20 +333,14 @@ class BackendAddressPoolAddress extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** For cross-region load balancer, please append the name of the load balancers, virtual machines, and other resources in each region with a -R1 and -R2.
   late final pulumi.Output<String?> backendAddressIpConfigurationId;
-
   /// The ID of the Backend Address Pool. Changing this forces a new Backend Address Pool Address to be created.
   late final pulumi.Output<String> backendAddressPoolId;
-
   /// A list of `inbound_nat_rule_port_mapping` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  inboundNatRulePortMappings;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> inboundNatRulePortMappings;
   /// The Static IP Address which should be allocated to this Backend Address Pool.
   late final pulumi.Output<String?> ipAddress;
-
   /// The name which should be used for this Backend Address Pool Address. Changing this forces a new Backend Address Pool Address to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Virtual Network within which the Backend Address Pool should exist.
   late final pulumi.Output<String?> virtualNetworkId;
 
@@ -359,18 +353,14 @@ class BackendAddressPoolAddress extends pulumi.CustomResource {
     BackendAddressPoolAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:lb/backendAddressPoolAddress:BackendAddressPoolAddress',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backendAddressIpConfigurationId = registerOutput<String?>(
-      'backendAddressIpConfigurationId',
-    );
+          'azure:lb/backendAddressPoolAddress:BackendAddressPoolAddress',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backendAddressIpConfigurationId = registerOutput<String?>('backendAddressIpConfigurationId');
     backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
-    inboundNatRulePortMappings = registerOutput<List<Map<String, dynamic>>>(
-      'inboundNatRulePortMappings',
-    );
+    inboundNatRulePortMappings = registerOutput<List<Map<String, dynamic>>>('inboundNatRulePortMappings');
     ipAddress = registerOutput<String?>('ipAddress');
     this.name = registerOutput<String>('name');
     virtualNetworkId = registerOutput<String?>('virtualNetworkId');
@@ -394,18 +384,14 @@ class BackendAddressPoolAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:lb/backendAddressPoolAddress:BackendAddressPoolAddress',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backendAddressIpConfigurationId = registerOutput<String?>(
-      'backendAddressIpConfigurationId',
-    );
+          'azure:lb/backendAddressPoolAddress:BackendAddressPoolAddress',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backendAddressIpConfigurationId = registerOutput<String?>('backendAddressIpConfigurationId');
     backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
-    inboundNatRulePortMappings = registerOutput<List<Map<String, dynamic>>>(
-      'inboundNatRulePortMappings',
-    );
+    inboundNatRulePortMappings = registerOutput<List<Map<String, dynamic>>>('inboundNatRulePortMappings');
     ipAddress = registerOutput<String?>('ipAddress');
     this.name = registerOutput<String>('name');
     virtualNetworkId = registerOutput<String?>('virtualNetworkId');

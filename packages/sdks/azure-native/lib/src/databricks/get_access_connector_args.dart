@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessConnectorArgs {
   /// The name of the Azure Databricks Access Connector.
   final pulumi.Input<String> connectorName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetAccessConnectorArgs {
   factory GetAccessConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessConnectorArgs(
       connectorName: pulumi.Input.fromValue(map['connectorName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

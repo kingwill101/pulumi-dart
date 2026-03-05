@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration {
   /// Matches a taint effect.
   final pulumi.Input<String>? effect;
-
   /// Matches a taint key (not necessarily unique).
   final pulumi.Input<String>? key;
-
   /// Matches a taint operator.
   final pulumi.Input<String>? operator;
-
   /// Matches a taint value.
   final pulumi.Input<String>? value;
 
@@ -36,30 +33,13 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
     };
   }
 
-  factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration(
-      effect: (() {
-        final guardedValue = map['effect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operator: (() {
-        final guardedValue = map['operator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      effect: (() { final guardedValue = map['effect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operator: (() { final guardedValue = map['operator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

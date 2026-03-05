@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPoolV2Member {
   final pulumi.Input<String> address;
-
   /// The administrative state of the Pool, which is up (true)
   /// or down (false).
   final pulumi.Input<bool> adminStateUp;
@@ -12,26 +11,20 @@ class GetPoolV2Member {
   final pulumi.Input<String> id;
   final pulumi.Input<String> monitorAddress;
   final pulumi.Input<int> monitorPort;
-
   /// The name of the pool. Exactly one of `name`, `pool_id`
   /// is required to be set.
   final pulumi.Input<String> name;
-
   /// The operating status of the pool.
   final pulumi.Input<String> operatingStatus;
-
   /// The ID of the pool. Exactly one of `name`, `pool_id`
   /// is required to be set.
   final pulumi.Input<String> poolId;
-
   /// The owner (project/tenant) ID of the pool.
   final pulumi.Input<String> projectId;
   final pulumi.Input<int> protocolPort;
-
   /// The provisioning status of the pool.
   final pulumi.Input<String> provisioningStatus;
   final pulumi.Input<String> subnetId;
-
   /// A set of tags applied to the loadbalancer's pool. The
   /// loadbalancer' pool will be returned if it has all of the specified tags.
   final pulumi.Input<List<String>> tags;
@@ -104,12 +97,11 @@ class GetPoolV2Member {
       poolId: pulumi.Input.fromValue(map['poolId'] as String),
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
       protocolPort: pulumi.Input.fromValue(map['protocolPort'] as int),
-      provisioningStatus: pulumi.Input.fromValue(
-        map['provisioningStatus'] as String,
-      ),
+      provisioningStatus: pulumi.Input.fromValue(map['provisioningStatus'] as String),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
       weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
+

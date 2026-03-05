@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval {
   /// The confidence level used to construct the interval, i.e. there is X% chance that the true value is within this interval.
   final pulumi.Input<double>? confidenceLevel;
-
   /// Lower bound of the interval.
   final pulumi.Input<double>? lowerBound;
-
   /// The percent change between an experiment metric's value and the value for its control.
   final pulumi.Input<double>? ratio;
-
   /// Upper bound of the interval.
   final pulumi.Input<double>? upperBound;
 
@@ -37,30 +34,13 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval(
-      confidenceLevel: (() {
-        final guardedValue = map['confidenceLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      lowerBound: (() {
-        final guardedValue = map['lowerBound'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      ratio: (() {
-        final guardedValue = map['ratio'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      upperBound: (() {
-        final guardedValue = map['upperBound'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      confidenceLevel: (() { final guardedValue = map['confidenceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      lowerBound: (() { final guardedValue = map['lowerBound']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      ratio: (() { final guardedValue = map['ratio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      upperBound: (() { final guardedValue = map['upperBound']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

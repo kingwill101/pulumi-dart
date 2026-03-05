@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionStatusCode {
   /// Status codes in the response that indicate a failed login attempt.
   final pulumi.Input<List<int>> failureCodes;
-
   /// Status codes in the response that indicate a successful login attempt.
   final pulumi.Input<List<int>> successCodes;
 
@@ -24,16 +23,11 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
     };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionStatusCode.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionStatusCode.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionStatusCode(
-      failureCodes: pulumi.Input.fromValue(
-        (map['failureCodes'] as List).cast<int>(),
-      ),
-      successCodes: pulumi.Input.fromValue(
-        (map['successCodes'] as List).cast<int>(),
-      ),
+      failureCodes: pulumi.Input.fromValue((map['failureCodes'] as List).cast<int>()),
+      successCodes: pulumi.Input.fromValue((map['successCodes'] as List).cast<int>()),
     );
   }
 }
+

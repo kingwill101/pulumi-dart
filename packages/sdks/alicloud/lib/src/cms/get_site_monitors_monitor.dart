@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSiteMonitorsMonitor {
   /// Address.
   final pulumi.Input<String> address;
-
   /// CreateTime.
   final pulumi.Input<String> createTime;
-
   /// Monitoring frequency.
   final pulumi.Input<String> interval;
-
   /// Task ID.
   final pulumi.Input<String> taskId;
-
   /// Task Name.
   final pulumi.Input<String> taskName;
-
   /// Task Type.
   final pulumi.Input<String> taskType;
 
@@ -59,3 +54,4 @@ class GetSiteMonitorsMonitor {
     );
   }
 }
+

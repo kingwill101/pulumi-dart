@@ -6,34 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterEndpointState {
   /// Amazon Resource Name (ARN) of cluster
   final pulumi.Input<String>? arn;
-
   /// The identifier to use for the new endpoint. This parameter is stored as a lowercase string.
   final pulumi.Input<String>? clusterEndpointIdentifier;
-
   /// The cluster identifier.
   final pulumi.Input<String>? clusterIdentifier;
-
   /// The type of the endpoint. One of: READER , ANY .
   final pulumi.Input<String>? customEndpointType;
-
   /// A custom endpoint for the Aurora cluster
   final pulumi.Input<String>? endpoint;
-
   /// List of DB instance identifiers that aren't part of the custom endpoint group. All other eligible instances are reachable through the custom endpoint. Only relevant if the list of static members is empty. Conflicts with `static_members`.
   final pulumi.Input<List<String>>? excludedMembers;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// List of DB instance identifiers that are part of the custom endpoint group. Conflicts with `excluded_members`.
   final pulumi.Input<List<String>>? staticMembers;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to
   /// the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-db-cluster-endpoint.html).
   final pulumi.Input<Map<String, String>>? tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -78,60 +69,17 @@ class ClusterEndpointState {
 
   factory ClusterEndpointState.fromMap(Map<String, dynamic> map) {
     return ClusterEndpointState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clusterEndpointIdentifier: (() {
-        final guardedValue = map['clusterEndpointIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clusterIdentifier: (() {
-        final guardedValue = map['clusterIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customEndpointType: (() {
-        final guardedValue = map['customEndpointType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpoint: (() {
-        final guardedValue = map['endpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      excludedMembers: (() {
-        final guardedValue = map['excludedMembers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      staticMembers: (() {
-        final guardedValue = map['staticMembers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterEndpointIdentifier: (() { final guardedValue = map['clusterEndpointIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterIdentifier: (() { final guardedValue = map['clusterIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customEndpointType: (() { final guardedValue = map['customEndpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      excludedMembers: (() { final guardedValue = map['excludedMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      staticMembers: (() { final guardedValue = map['staticMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -1680,52 +1680,38 @@ import 'service_state.dart';
 class Service extends pulumi.CustomResource {
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   late final pulumi.Output<String> applicationId;
-
   /// Consumer provided attributes.
   /// Structure is documented below.
   late final pulumi.Output<ServiceAttributes?> attributes;
-
   /// Output only. Create time.
   late final pulumi.Output<String> createTime;
-
   /// User-defined description of a Service.
   late final pulumi.Output<String?> description;
-
   /// Immutable. The resource name of the original discovered service.
   late final pulumi.Output<String> discoveredService;
-
   /// User-defined name for the Service.
   late final pulumi.Output<String?> displayName;
-
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   late final pulumi.Output<String> location;
-
   /// Identifier. The resource name of a Service. Format:
   /// "projects/{host-project-id}/locations/{location}/applications/{application-id}/services/{service-id}"
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The Service identifier.
   late final pulumi.Output<String> serviceId;
-
   /// Properties of an underlying cloud resource that can comprise a Service.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> serviceProperties;
-
   /// Reference to an underlying networking resource that can comprise a Service.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> serviceReferences;
-
   /// Output only. Service state. Possible values: STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
   late final pulumi.Output<String> state;
-
   /// Output only. A universally unique identifier (UUID) for the `Service` in the UUID4
   /// format.
   late final pulumi.Output<String> uid;
-
   /// Output only. Update time.
   late final pulumi.Output<String> updateTime;
 
@@ -1738,22 +1724,13 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apphub/service:Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apphub/service:Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
-    attributes = registerOutput<ServiceAttributes?>(
-      'attributes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceAttributes.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    attributes = registerOutput<ServiceAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     discoveredService = registerOutput<String>('discoveredService');
@@ -1762,12 +1739,8 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serviceId = registerOutput<String>('serviceId');
-    serviceProperties = registerOutput<List<Map<String, dynamic>>>(
-      'serviceProperties',
-    );
-    serviceReferences = registerOutput<List<Map<String, dynamic>>>(
-      'serviceReferences',
-    );
+    serviceProperties = registerOutput<List<Map<String, dynamic>>>('serviceProperties');
+    serviceReferences = registerOutput<List<Map<String, dynamic>>>('serviceReferences');
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -1791,22 +1764,13 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apphub/service:Service',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apphub/service:Service',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
-    attributes = registerOutput<ServiceAttributes?>(
-      'attributes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceAttributes.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    attributes = registerOutput<ServiceAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     discoveredService = registerOutput<String>('discoveredService');
@@ -1815,12 +1779,8 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serviceId = registerOutput<String>('serviceId');
-    serviceProperties = registerOutput<List<Map<String, dynamic>>>(
-      'serviceProperties',
-    );
-    serviceReferences = registerOutput<List<Map<String, dynamic>>>(
-      'serviceReferences',
-    );
+    serviceProperties = registerOutput<List<Map<String, dynamic>>>('serviceProperties');
+    serviceReferences = registerOutput<List<Map<String, dynamic>>>('serviceReferences');
     this.state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

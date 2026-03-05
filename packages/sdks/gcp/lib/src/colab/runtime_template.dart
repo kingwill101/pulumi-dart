@@ -786,65 +786,47 @@ import 'runtime_template_state.dart';
 class RuntimeTemplate extends pulumi.CustomResource {
   /// The configuration for the data disk of the runtime.
   /// Structure is documented below.
-  late final pulumi.Output<RuntimeTemplateDataPersistentDiskSpec>
-  dataPersistentDiskSpec;
-
+  late final pulumi.Output<RuntimeTemplateDataPersistentDiskSpec> dataPersistentDiskSpec;
   /// The description of the Runtime Template.
   late final pulumi.Output<String?> description;
-
   /// Required. The display name of the Runtime Template.
   late final pulumi.Output<String> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Customer-managed encryption key spec for the notebook runtime.
   /// Structure is documented below.
   late final pulumi.Output<RuntimeTemplateEncryptionSpec?> encryptionSpec;
-
   /// EUC configuration of the NotebookRuntimeTemplate.
   /// Structure is documented below.
   late final pulumi.Output<RuntimeTemplateEucConfig> eucConfig;
-
   /// Notebook Idle Shutdown configuration for the runtime.
   /// Structure is documented below.
-  late final pulumi.Output<RuntimeTemplateIdleShutdownConfig>
-  idleShutdownConfig;
-
+  late final pulumi.Output<RuntimeTemplateIdleShutdownConfig> idleShutdownConfig;
   /// Labels to identify and group the runtime template.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>> labels;
-
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   late final pulumi.Output<String> location;
-
   /// 'The machine configuration of the runtime.'
   /// Structure is documented below.
   late final pulumi.Output<RuntimeTemplateMachineSpec> machineSpec;
-
   /// The resource name of the Runtime Template
   late final pulumi.Output<String> name;
-
   /// The network configuration for the runtime.
   /// Structure is documented below.
   late final pulumi.Output<RuntimeTemplateNetworkSpec> networkSpec;
-
   /// Applies the given Compute Engine tags to the runtime.
   late final pulumi.Output<List<String>?> networkTags;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Runtime Shielded VM spec.
   /// Structure is documented below.
   late final pulumi.Output<RuntimeTemplateShieldedVmConfig> shieldedVmConfig;
-
   /// The notebook software configuration of the notebook runtime.
   /// Structure is documented below.
   late final pulumi.Output<RuntimeTemplateSoftwareConfig> softwareConfig;
@@ -858,101 +840,28 @@ class RuntimeTemplate extends pulumi.CustomResource {
     RuntimeTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:colab/runtimeTemplate:RuntimeTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    dataPersistentDiskSpec =
-        registerOutput<RuntimeTemplateDataPersistentDiskSpec>(
-          'dataPersistentDiskSpec',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RuntimeTemplateDataPersistentDiskSpec.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'gcp:colab/runtimeTemplate:RuntimeTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    dataPersistentDiskSpec = registerOutput<RuntimeTemplateDataPersistentDiskSpec>('dataPersistentDiskSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateDataPersistentDiskSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    encryptionSpec = registerOutput<RuntimeTemplateEncryptionSpec?>(
-      'encryptionSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeTemplateEncryptionSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    eucConfig = registerOutput<RuntimeTemplateEucConfig>(
-      'eucConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeTemplateEucConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    idleShutdownConfig = registerOutput<RuntimeTemplateIdleShutdownConfig>(
-      'idleShutdownConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeTemplateIdleShutdownConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionSpec = registerOutput<RuntimeTemplateEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eucConfig = registerOutput<RuntimeTemplateEucConfig>('eucConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateEucConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    idleShutdownConfig = registerOutput<RuntimeTemplateIdleShutdownConfig>('idleShutdownConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateIdleShutdownConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
-    machineSpec = registerOutput<RuntimeTemplateMachineSpec>(
-      'machineSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeTemplateMachineSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    machineSpec = registerOutput<RuntimeTemplateMachineSpec>('machineSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateMachineSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkSpec = registerOutput<RuntimeTemplateNetworkSpec>(
-      'networkSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeTemplateNetworkSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkSpec = registerOutput<RuntimeTemplateNetworkSpec>('networkSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateNetworkSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     networkTags = registerOutput<List<String>?>('networkTags');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    shieldedVmConfig = registerOutput<RuntimeTemplateShieldedVmConfig>(
-      'shieldedVmConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeTemplateShieldedVmConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    softwareConfig = registerOutput<RuntimeTemplateSoftwareConfig>(
-      'softwareConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeTemplateSoftwareConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    shieldedVmConfig = registerOutput<RuntimeTemplateShieldedVmConfig>('shieldedVmConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateShieldedVmConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    softwareConfig = registerOutput<RuntimeTemplateSoftwareConfig>('softwareConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateSoftwareConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [RuntimeTemplate] resource's state with the given [name] and [id].
@@ -973,100 +882,27 @@ class RuntimeTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:colab/runtimeTemplate:RuntimeTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    dataPersistentDiskSpec =
-        registerOutput<RuntimeTemplateDataPersistentDiskSpec>(
-          'dataPersistentDiskSpec',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RuntimeTemplateDataPersistentDiskSpec.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'gcp:colab/runtimeTemplate:RuntimeTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    dataPersistentDiskSpec = registerOutput<RuntimeTemplateDataPersistentDiskSpec>('dataPersistentDiskSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateDataPersistentDiskSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    encryptionSpec = registerOutput<RuntimeTemplateEncryptionSpec?>(
-      'encryptionSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeTemplateEncryptionSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    eucConfig = registerOutput<RuntimeTemplateEucConfig>(
-      'eucConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeTemplateEucConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    idleShutdownConfig = registerOutput<RuntimeTemplateIdleShutdownConfig>(
-      'idleShutdownConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeTemplateIdleShutdownConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionSpec = registerOutput<RuntimeTemplateEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eucConfig = registerOutput<RuntimeTemplateEucConfig>('eucConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateEucConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    idleShutdownConfig = registerOutput<RuntimeTemplateIdleShutdownConfig>('idleShutdownConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateIdleShutdownConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
-    machineSpec = registerOutput<RuntimeTemplateMachineSpec>(
-      'machineSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeTemplateMachineSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    machineSpec = registerOutput<RuntimeTemplateMachineSpec>('machineSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateMachineSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkSpec = registerOutput<RuntimeTemplateNetworkSpec>(
-      'networkSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeTemplateNetworkSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkSpec = registerOutput<RuntimeTemplateNetworkSpec>('networkSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateNetworkSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     networkTags = registerOutput<List<String>?>('networkTags');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    shieldedVmConfig = registerOutput<RuntimeTemplateShieldedVmConfig>(
-      'shieldedVmConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeTemplateShieldedVmConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    softwareConfig = registerOutput<RuntimeTemplateSoftwareConfig>(
-      'softwareConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeTemplateSoftwareConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    shieldedVmConfig = registerOutput<RuntimeTemplateShieldedVmConfig>('shieldedVmConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateShieldedVmConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    softwareConfig = registerOutput<RuntimeTemplateSoftwareConfig>('softwareConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateSoftwareConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

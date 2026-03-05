@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAlias.
 class GetAliasResult {
   /// Amazon Resource Name(ARN) of the key alias.
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Name of the alias
   final String name;
   final String region;
-
   /// ARN pointed to by the alias.
   final String targetKeyArn;
-
   /// Key identifier pointed to by the alias.
   final String targetKeyId;
 
@@ -56,3 +53,4 @@ class GetAliasResult {
     );
   }
 }
+

@@ -250,60 +250,41 @@ import 'custom_model_vpc_config.dart';
 class CustomModel extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the base model.
   late final pulumi.Output<String> baseModelIdentifier;
-
   /// The ARN of the output model.
   late final pulumi.Output<String> customModelArn;
-
   /// The custom model is encrypted at rest using this key. Specify the key ARN.
   late final pulumi.Output<String?> customModelKmsKeyId;
-
   /// Name for the custom model.
   late final pulumi.Output<String> customModelName;
-
   /// The customization type. Valid values: `FINE_TUNING`, `CONTINUED_PRE_TRAINING`.
   late final pulumi.Output<String> customizationType;
-
   /// [Parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models-hp.html) related to tuning the model.
   late final pulumi.Output<Map<String, String>> hyperparameters;
-
   /// The ARN of the customization job.
   late final pulumi.Output<String> jobArn;
-
   /// A name for the customization job.
   late final pulumi.Output<String> jobName;
-
   /// The status of the customization job. A successful job transitions from `InProgress` to `Completed` when the output model is ready to use.
   late final pulumi.Output<String> jobStatus;
-
   /// S3 location for the output data.
   late final pulumi.Output<CustomModelOutputDataConfig> outputDataConfig;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) of an IAM role that Bedrock can assume to perform tasks on your behalf.
   late final pulumi.Output<String> roleArn;
-
   /// A map of tags to assign to the customization job and custom model. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<CustomModelTimeouts?> timeouts;
-
   /// Information about the training dataset.
   late final pulumi.Output<CustomModelTrainingDataConfig> trainingDataConfig;
-
   /// Metrics associated with the customization job.
   late final pulumi.Output<List<Map<String, dynamic>>> trainingMetrics;
-
   /// Information about the validation dataset.
-  late final pulumi.Output<CustomModelValidationDataConfig?>
-  validationDataConfig;
-
+  late final pulumi.Output<CustomModelValidationDataConfig?> validationDataConfig;
   /// The loss metric for each validator that you provided.
   late final pulumi.Output<List<Map<String, dynamic>>> validationMetrics;
-
   /// Configuration parameters for the private Virtual Private Cloud (VPC) that contains the resources you are using for this job.
   late final pulumi.Output<CustomModelVpcConfig?> vpcConfig;
 
@@ -316,11 +297,11 @@ class CustomModel extends pulumi.CustomResource {
     CustomModelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/customModel:CustomModel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:bedrock/customModel:CustomModel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     baseModelIdentifier = registerOutput<String>('baseModelIdentifier');
     customModelArn = registerOutput<String>('customModelArn');
     customModelKmsKeyId = registerOutput<String?>('customModelKmsKeyId');
@@ -330,66 +311,17 @@ class CustomModel extends pulumi.CustomResource {
     jobArn = registerOutput<String>('jobArn');
     jobName = registerOutput<String>('jobName');
     jobStatus = registerOutput<String>('jobStatus');
-    outputDataConfig = registerOutput<CustomModelOutputDataConfig>(
-      'outputDataConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomModelOutputDataConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    outputDataConfig = registerOutput<CustomModelOutputDataConfig>('outputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelOutputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<CustomModelTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomModelTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    trainingDataConfig = registerOutput<CustomModelTrainingDataConfig>(
-      'trainingDataConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomModelTrainingDataConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    trainingMetrics = registerOutput<List<Map<String, dynamic>>>(
-      'trainingMetrics',
-    );
-    validationDataConfig = registerOutput<CustomModelValidationDataConfig?>(
-      'validationDataConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomModelValidationDataConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    validationMetrics = registerOutput<List<Map<String, dynamic>>>(
-      'validationMetrics',
-    );
-    vpcConfig = registerOutput<CustomModelVpcConfig?>(
-      'vpcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomModelVpcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<CustomModelTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trainingDataConfig = registerOutput<CustomModelTrainingDataConfig>('trainingDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelTrainingDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trainingMetrics = registerOutput<List<Map<String, dynamic>>>('trainingMetrics');
+    validationDataConfig = registerOutput<CustomModelValidationDataConfig?>('validationDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelValidationDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    validationMetrics = registerOutput<List<Map<String, dynamic>>>('validationMetrics');
+    vpcConfig = registerOutput<CustomModelVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [CustomModel] resource's state with the given [name] and [id].
@@ -410,11 +342,11 @@ class CustomModel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/customModel:CustomModel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:bedrock/customModel:CustomModel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     baseModelIdentifier = registerOutput<String>('baseModelIdentifier');
     customModelArn = registerOutput<String>('customModelArn');
     customModelKmsKeyId = registerOutput<String?>('customModelKmsKeyId');
@@ -424,65 +356,16 @@ class CustomModel extends pulumi.CustomResource {
     jobArn = registerOutput<String>('jobArn');
     jobName = registerOutput<String>('jobName');
     jobStatus = registerOutput<String>('jobStatus');
-    outputDataConfig = registerOutput<CustomModelOutputDataConfig>(
-      'outputDataConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomModelOutputDataConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    outputDataConfig = registerOutput<CustomModelOutputDataConfig>('outputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelOutputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<CustomModelTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomModelTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    trainingDataConfig = registerOutput<CustomModelTrainingDataConfig>(
-      'trainingDataConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomModelTrainingDataConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    trainingMetrics = registerOutput<List<Map<String, dynamic>>>(
-      'trainingMetrics',
-    );
-    validationDataConfig = registerOutput<CustomModelValidationDataConfig?>(
-      'validationDataConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomModelValidationDataConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    validationMetrics = registerOutput<List<Map<String, dynamic>>>(
-      'validationMetrics',
-    );
-    vpcConfig = registerOutput<CustomModelVpcConfig?>(
-      'vpcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomModelVpcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<CustomModelTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trainingDataConfig = registerOutput<CustomModelTrainingDataConfig>('trainingDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelTrainingDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trainingMetrics = registerOutput<List<Map<String, dynamic>>>('trainingMetrics');
+    validationDataConfig = registerOutput<CustomModelValidationDataConfig?>('validationDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelValidationDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    validationMetrics = registerOutput<List<Map<String, dynamic>>>('validationMetrics');
+    vpcConfig = registerOutput<CustomModelVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomModelVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -9,65 +9,45 @@ import 'parameter_specification.dart';
 class PrestoLinkedService {
   /// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false. Only used for Version 1.0.
   final pulumi.Input<dynamic>? allowHostNameCNMismatch;
-
   /// Specifies whether to allow self-signed certificates from the server. The default value is false. Only used for Version 1.0.
   final pulumi.Input<dynamic>? allowSelfSignedServerCert;
-
   /// List of tags that can be used for describing the linked service.
   final pulumi.Input<List<dynamic>>? annotations;
-
   /// The authentication mechanism used to connect to the Presto server.
   final pulumi.Input<String> authenticationType;
-
   /// The catalog context for all request against the server.
   final pulumi.Input<dynamic> catalog;
-
   /// The integration runtime reference.
   final pulumi.Input<IntegrationRuntimeReference>? connectVia;
-
   /// Linked service description.
   final pulumi.Input<String>? description;
-
   /// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
   final pulumi.Input<dynamic>? enableServerCertificateValidation;
-
   /// Specifies whether the connections to the server are encrypted using SSL. The default value for legacy version is False. The default value for version 2.0 is True.
   final pulumi.Input<dynamic>? enableSsl;
-
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
   final pulumi.Input<String>? encryptedCredential;
-
   /// The IP address or host name of the Presto server. (i.e. 192.168.222.160)
   final pulumi.Input<dynamic> host;
-
   /// Parameters for linked service.
   final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
-
   /// The password corresponding to the user name.
   final pulumi.Input<AzureKeyVaultSecretReference>? password;
-
   /// The TCP port that the Presto server uses to listen for client connections. The default value is 8080 when disable SSL, default value is 443 when enable SSL.
   final pulumi.Input<dynamic>? port;
-
   /// The version of the Presto server. (i.e. 0.148-t) Only used for Version 1.0.
   final pulumi.Input<dynamic>? serverVersion;
-
   /// The local time zone used by the connection. Valid values for this option are specified in the IANA Time Zone Database. The default value for Version 1.0 is the client system time zone. The default value for Version 2.0 is server system timeZone
   final pulumi.Input<dynamic>? timeZoneID;
-
   /// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Only used for Version 1.0.
   final pulumi.Input<dynamic>? trustedCertPath;
-
   /// Type of linked service.
   /// Expected value is 'Presto'.
   final pulumi.Input<String> type;
-
   /// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Only used for Version 1.0.
   final pulumi.Input<dynamic>? useSystemTrustStore;
-
   /// The user name used to connect to the Presto server.
   final pulumi.Input<dynamic>? username;
-
   /// Version of the linked service.
   final pulumi.Input<String>? version;
 
@@ -124,33 +104,14 @@ class PrestoLinkedService {
       'annotations': ?annotations,
       'authenticationType': authenticationType,
       'catalog': catalog,
-      'connectVia':
-          ?pulumi.Input.mapOptionalInputValue<
-            IntegrationRuntimeReference,
-            Map<String, dynamic>
-          >(connectVia, (value) => value.toMap()),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'enableServerCertificateValidation': ?enableServerCertificateValidation,
       'enableSsl': ?enableSsl,
       'encryptedCredential': ?encryptedCredential,
       'host': host,
-      'parameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, ParameterSpecification>,
-            Map<String, Map<String, dynamic>>
-          >(
-            parameters,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  ParameterSpecification,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'password':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureKeyVaultSecretReference,
-            Map<String, dynamic>
-          >(password, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
       'port': ?port,
       'serverVersion': ?serverVersion,
       'timeZoneID': ?timeZoneID,
@@ -164,112 +125,28 @@ class PrestoLinkedService {
 
   factory PrestoLinkedService.fromMap(Map<String, dynamic> map) {
     return PrestoLinkedService(
-      allowHostNameCNMismatch: (() {
-        final guardedValue = map['allowHostNameCNMismatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      allowSelfSignedServerCert: (() {
-        final guardedValue = map['allowSelfSignedServerCert'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
-      authenticationType: pulumi.Input.fromValue(
-        map['authenticationType'] as String,
-      ),
+      allowHostNameCNMismatch: (() { final guardedValue = map['allowHostNameCNMismatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      allowSelfSignedServerCert: (() { final guardedValue = map['allowSelfSignedServerCert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      authenticationType: pulumi.Input.fromValue(map['authenticationType'] as String),
       catalog: pulumi.Input.fromValue(map['catalog']),
-      connectVia: (() {
-        final guardedValue = map['connectVia'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IntegrationRuntimeReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enableServerCertificateValidation: (() {
-        final guardedValue = map['enableServerCertificateValidation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      enableSsl: (() {
-        final guardedValue = map['enableSsl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      encryptedCredential: (() {
-        final guardedValue = map['encryptedCredential'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectVia: (() { final guardedValue = map['connectVia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enableServerCertificateValidation: (() { final guardedValue = map['enableServerCertificateValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      enableSsl: (() { final guardedValue = map['enableSsl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       host: pulumi.Input.fromValue(map['host']),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<ParameterSpecification>(
-            guardedValue,
-            (value) => ParameterSpecification.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureKeyVaultSecretReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      serverVersion: (() {
-        final guardedValue = map['serverVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      timeZoneID: (() {
-        final guardedValue = map['timeZoneID'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      trustedCertPath: (() {
-        final guardedValue = map['trustedCertPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      serverVersion: (() { final guardedValue = map['serverVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      timeZoneID: (() { final guardedValue = map['timeZoneID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      trustedCertPath: (() { final guardedValue = map['trustedCertPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      useSystemTrustStore: (() {
-        final guardedValue = map['useSystemTrustStore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      useSystemTrustStore: (() { final guardedValue = map['useSystemTrustStore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

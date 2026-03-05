@@ -443,10 +443,8 @@ import 'network_acl_entries_state.dart';
 class NetworkAclEntries extends pulumi.CustomResource {
   /// List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> egresses;
-
   /// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> ingresses;
-
   /// The id of the network acl, the field can't be changed.
   late final pulumi.Output<String> networkAclId;
 
@@ -459,11 +457,11 @@ class NetworkAclEntries extends pulumi.CustomResource {
     NetworkAclEntriesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/networkAclEntries:NetworkAclEntries',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/networkAclEntries:NetworkAclEntries',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     egresses = registerOutput<List<Map<String, dynamic>>?>('egresses');
     ingresses = registerOutput<List<Map<String, dynamic>>?>('ingresses');
     networkAclId = registerOutput<String>('networkAclId');
@@ -487,11 +485,11 @@ class NetworkAclEntries extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/networkAclEntries:NetworkAclEntries',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/networkAclEntries:NetworkAclEntries',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     egresses = registerOutput<List<Map<String, dynamic>>?>('egresses');
     ingresses = registerOutput<List<Map<String, dynamic>>?>('ingresses');
     networkAclId = registerOutput<String>('networkAclId');

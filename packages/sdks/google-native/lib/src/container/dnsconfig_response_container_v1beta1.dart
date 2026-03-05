@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DNSConfigResponseContainerV1beta1 {
   /// cluster_dns indicates which in-cluster DNS provider should be used.
   final pulumi.Input<String> clusterDns;
-
   /// cluster_dns_domain is the suffix used for all cluster service records.
   final pulumi.Input<String> clusterDnsDomain;
-
   /// cluster_dns_scope indicates the scope of access to cluster DNS records.
   final pulumi.Input<String> clusterDnsScope;
 
@@ -34,10 +32,9 @@ class DNSConfigResponseContainerV1beta1 {
   factory DNSConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return DNSConfigResponseContainerV1beta1(
       clusterDns: pulumi.Input.fromValue(map['clusterDns'] as String),
-      clusterDnsDomain: pulumi.Input.fromValue(
-        map['clusterDnsDomain'] as String,
-      ),
+      clusterDnsDomain: pulumi.Input.fromValue(map['clusterDnsDomain'] as String),
       clusterDnsScope: pulumi.Input.fromValue(map['clusterDnsScope'] as String),
     );
   }
 }
+

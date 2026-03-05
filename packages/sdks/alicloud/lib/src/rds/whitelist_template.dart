@@ -120,7 +120,6 @@ class WhitelistTemplate extends pulumi.CustomResource {
   /// - IP address format, for example: 10.23.XX.XX.
   /// - CIDR format, for example: 10.23.XX.XX/24 (no inter domain routing, 24 represents the length of the prefix in the address, ranging from 1 to 32).
   late final pulumi.Output<String> ipWhiteList;
-
   /// Whitelist template name. Passed in when creating a template, and cannot have the same name under the same account, starting with a letter.
   late final pulumi.Output<String> templateName;
 
@@ -133,11 +132,11 @@ class WhitelistTemplate extends pulumi.CustomResource {
     WhitelistTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/whitelistTemplate:WhitelistTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/whitelistTemplate:WhitelistTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ipWhiteList = registerOutput<String>('ipWhiteList');
     templateName = registerOutput<String>('templateName');
   }
@@ -160,11 +159,11 @@ class WhitelistTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/whitelistTemplate:WhitelistTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/whitelistTemplate:WhitelistTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ipWhiteList = registerOutput<String>('ipWhiteList');
     templateName = registerOutput<String>('templateName');
   }

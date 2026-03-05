@@ -29,17 +29,12 @@ class GetFunctionCloudfunctionsV2betaArgs {
     };
   }
 
-  factory GetFunctionCloudfunctionsV2betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFunctionCloudfunctionsV2betaArgs.fromMap(Map<String, dynamic> map) {
     return GetFunctionCloudfunctionsV2betaArgs(
       functionId: pulumi.Input.fromValue(map['functionId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

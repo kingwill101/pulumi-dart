@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseInstancesInstanceSettingPasswordValidationPolicy {
   /// Password complexity.
   final pulumi.Input<String> complexity;
-
   /// Disallow username as a part of the password.
   final pulumi.Input<bool> disallowUsernameSubstring;
-
   /// Whether the password policy is enabled or not.
   final pulumi.Input<bool> enablePasswordPolicy;
-
   /// Minimum number of characters allowed.
   final pulumi.Input<int> minLength;
-
   /// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
   final pulumi.Input<String> passwordChangeInterval;
-
   /// Number of previous passwords that cannot be reused.
   final pulumi.Input<int> reuseInterval;
 
@@ -48,22 +43,15 @@ class GetDatabaseInstancesInstanceSettingPasswordValidationPolicy {
     };
   }
 
-  factory GetDatabaseInstancesInstanceSettingPasswordValidationPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstancesInstanceSettingPasswordValidationPolicy.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingPasswordValidationPolicy(
       complexity: pulumi.Input.fromValue(map['complexity'] as String),
-      disallowUsernameSubstring: pulumi.Input.fromValue(
-        map['disallowUsernameSubstring'] as bool,
-      ),
-      enablePasswordPolicy: pulumi.Input.fromValue(
-        map['enablePasswordPolicy'] as bool,
-      ),
+      disallowUsernameSubstring: pulumi.Input.fromValue(map['disallowUsernameSubstring'] as bool),
+      enablePasswordPolicy: pulumi.Input.fromValue(map['enablePasswordPolicy'] as bool),
       minLength: pulumi.Input.fromValue(map['minLength'] as int),
-      passwordChangeInterval: pulumi.Input.fromValue(
-        map['passwordChangeInterval'] as String,
-      ),
+      passwordChangeInterval: pulumi.Input.fromValue(map['passwordChangeInterval'] as String),
       reuseInterval: pulumi.Input.fromValue(map['reuseInterval'] as int),
     );
   }
 }
+

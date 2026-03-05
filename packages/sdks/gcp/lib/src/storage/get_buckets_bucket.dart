@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketsBucket {
   /// User-provided bucket labels, in key/value pairs.
   final pulumi.Input<Map<String, String>> labels;
-
   /// The location of the bucket.
   final pulumi.Input<String> location;
-
   /// The name of the bucket.
   final pulumi.Input<String> name;
-
   /// A url reference to the bucket.
   final pulumi.Input<String> selfLink;
-
   /// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket.
   final pulumi.Input<String> storageClass;
 
@@ -44,9 +40,7 @@ class GetBucketsBucket {
 
   factory GetBucketsBucket.fromMap(Map<String, dynamic> map) {
     return GetBucketsBucket(
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       selfLink: pulumi.Input.fromValue(map['selfLink'] as String),
@@ -54,3 +48,4 @@ class GetBucketsBucket {
     );
   }
 }
+

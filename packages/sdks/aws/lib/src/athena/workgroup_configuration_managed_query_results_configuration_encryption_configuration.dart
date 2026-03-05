@@ -12,18 +12,15 @@ class WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfigurat
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKey': ?kmsKey};
+    return <String, dynamic>{
+      'kmsKey': ?kmsKey,
+    };
   }
 
-  factory WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfiguration(
-      kmsKey: (() {
-        final guardedValue = map['kmsKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

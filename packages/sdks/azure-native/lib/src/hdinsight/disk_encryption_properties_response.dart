@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskEncryptionPropertiesResponse {
   /// Algorithm identifier for encryption, default RSA-OAEP.
   final pulumi.Input<String>? encryptionAlgorithm;
-
   /// Indicates whether or not resource disk encryption is enabled.
   final pulumi.Input<bool>? encryptionAtHost;
-
   /// Key name that is used for enabling disk encryption.
   final pulumi.Input<String>? keyName;
-
   /// Specific key version that is used for enabling disk encryption.
   final pulumi.Input<String>? keyVersion;
-
   /// Resource ID of Managed Identity that is used to access the key vault.
   final pulumi.Input<String>? msiResourceId;
-
   /// Base key vault URI where the customers key is located eg. https://myvault.vault.azure.net
   final pulumi.Input<String>? vaultUri;
 
@@ -51,36 +46,13 @@ class DiskEncryptionPropertiesResponse {
 
   factory DiskEncryptionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionPropertiesResponse(
-      encryptionAlgorithm: (() {
-        final guardedValue = map['encryptionAlgorithm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encryptionAtHost: (() {
-        final guardedValue = map['encryptionAtHost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      keyName: (() {
-        final guardedValue = map['keyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVersion: (() {
-        final guardedValue = map['keyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      msiResourceId: (() {
-        final guardedValue = map['msiResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vaultUri: (() {
-        final guardedValue = map['vaultUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      encryptionAlgorithm: (() { final guardedValue = map['encryptionAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptionAtHost: (() { final guardedValue = map['encryptionAtHost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVersion: (() { final guardedValue = map['keyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      msiResourceId: (() { final guardedValue = map['msiResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vaultUri: (() { final guardedValue = map['vaultUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -4,19 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig {
   final pulumi.Input<String> bgpStatus;
-
   /// Local asn.
   final pulumi.Input<String> localAsn;
-
   /// Local bgp IP.
   final pulumi.Input<String> localBgpIp;
-
   /// The counterpart autonomous system number.
   final pulumi.Input<String> peerAsn;
-
   /// The BGP address on the other side.
   final pulumi.Input<String> peerBgpIp;
-
   /// BGP Tunnel CIDR.
   final pulumi.Input<String> tunnelCidr;
 
@@ -47,9 +42,7 @@ class GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig {
     };
   }
 
-  factory GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig.fromMap(Map<String, dynamic> map) {
     return GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig(
       bgpStatus: pulumi.Input.fromValue(map['bgpStatus'] as String),
       localAsn: pulumi.Input.fromValue(map['localAsn'] as String),
@@ -60,3 +53,4 @@ class GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig {
     );
   }
 }
+

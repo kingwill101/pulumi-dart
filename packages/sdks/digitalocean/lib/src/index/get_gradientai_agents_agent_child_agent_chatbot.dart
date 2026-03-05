@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGradientaiAgentsAgentChildAgentChatbot {
   /// Background color for the chatbot button
   final pulumi.Input<String>? buttonBackgroundColor;
-
   /// Logo for the chatbot
   final pulumi.Input<String>? logo;
-
   /// Name of the chatbot
   final pulumi.Input<String>? name;
-
   /// Primary color for the chatbot
   final pulumi.Input<String>? primaryColor;
-
   /// Secondary color for the chatbot
   final pulumi.Input<String>? secondaryColor;
-
   /// Starting message for the chatbot
   final pulumi.Input<String>? startingMessage;
 
@@ -48,40 +43,15 @@ class GetGradientaiAgentsAgentChildAgentChatbot {
     };
   }
 
-  factory GetGradientaiAgentsAgentChildAgentChatbot.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGradientaiAgentsAgentChildAgentChatbot.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsAgentChildAgentChatbot(
-      buttonBackgroundColor: (() {
-        final guardedValue = map['buttonBackgroundColor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logo: (() {
-        final guardedValue = map['logo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      primaryColor: (() {
-        final guardedValue = map['primaryColor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryColor: (() {
-        final guardedValue = map['secondaryColor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startingMessage: (() {
-        final guardedValue = map['startingMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      buttonBackgroundColor: (() { final guardedValue = map['buttonBackgroundColor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logo: (() { final guardedValue = map['logo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      primaryColor: (() { final guardedValue = map['primaryColor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryColor: (() { final guardedValue = map['secondaryColor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startingMessage: (() { final guardedValue = map['startingMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,19 +9,15 @@ class GetServiceSubscriptionsResult {
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of Subscription names.
   final List<String> names;
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
-
   /// The name of the subscription.
   final String? subscriptionName;
-
   /// A list of Subscriptions. Each element contains the following attributes:
   final List<GetServiceSubscriptionsSubscription> subscriptions;
-
   /// The name of the topic.
   final String topicName;
 
@@ -59,11 +55,7 @@ class GetServiceSubscriptionsResult {
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
       'subscriptionName': ?subscriptionName,
-      'subscriptions':
-          pulumi.Input.encodeList<
-            GetServiceSubscriptionsSubscription,
-            Map<String, dynamic>
-          >(subscriptions, (value) => value.toMap()),
+      'subscriptions': pulumi.Input.encodeList<GetServiceSubscriptionsSubscription, Map<String, dynamic>>(subscriptions, (value) => value.toMap()),
       'topicName': topicName,
     };
   }
@@ -72,40 +64,15 @@ class GetServiceSubscriptionsResult {
     return GetServiceSubscriptionsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      subscriptionName: (() {
-        final guardedValue = map['subscriptionName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      subscriptions:
-          pulumi.Input.decodeList<GetServiceSubscriptionsSubscription>(
-            map['subscriptions']!,
-            (value) => GetServiceSubscriptionsSubscription.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      subscriptionName: (() { final guardedValue = map['subscriptionName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subscriptions: pulumi.Input.decodeList<GetServiceSubscriptionsSubscription>(map['subscriptions']!, (value) => GetServiceSubscriptionsSubscription.fromMap((value as Map).cast<String, dynamic>())),
       topicName: map['topicName'] as String,
     );
   }
 }
+

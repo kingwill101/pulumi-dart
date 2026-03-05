@@ -225,34 +225,24 @@ import 'dns_record_state.dart';
 class DnsRecord extends pulumi.CustomResource {
   /// The domain to add the record to.
   late final pulumi.Output<String> domain;
-
   /// The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
   late final pulumi.Output<int?> flags;
-
   /// The FQDN of the record
   late final pulumi.Output<String> fqdn;
-
   /// The hostname of the record. Use `@` for records on domain's name itself.
   late final pulumi.Output<String> name;
-
   /// The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
   late final pulumi.Output<int?> port;
-
   /// The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
   late final pulumi.Output<int?> priority;
-
   /// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
   late final pulumi.Output<String?> tag;
-
   /// The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
   late final pulumi.Output<int> ttl;
-
   /// The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
   late final pulumi.Output<String> type;
-
   /// The value of the record.
   late final pulumi.Output<String> value;
-
   /// The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
   late final pulumi.Output<int?> weight;
 
@@ -265,11 +255,11 @@ class DnsRecord extends pulumi.CustomResource {
     DnsRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/dnsRecord:DnsRecord',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/dnsRecord:DnsRecord',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domain = registerOutput<String>('domain');
     flags = registerOutput<int?>('flags');
     fqdn = registerOutput<String>('fqdn');
@@ -301,11 +291,11 @@ class DnsRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/dnsRecord:DnsRecord',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/dnsRecord:DnsRecord',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domain = registerOutput<String>('domain');
     flags = registerOutput<int?>('flags');
     fqdn = registerOutput<String>('fqdn');

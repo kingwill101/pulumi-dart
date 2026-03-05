@@ -8,14 +8,10 @@ import 'zone_fault_simulation_content_response.dart';
 class FaultSimulationDetailsResponse {
   /// unique identifier for the cluster resource.
   final pulumi.Input<String>? clusterId;
-
   /// List of node type simulations associated with the cluster fault simulation.
-  final pulumi.Input<List<NodeTypeFaultSimulationResponse>>?
-  nodeTypeFaultSimulation;
-
+  final pulumi.Input<List<NodeTypeFaultSimulationResponse>>? nodeTypeFaultSimulation;
   /// unique identifier for the operation associated with the fault simulation.
   final pulumi.Input<String>? operationId;
-
   /// Fault simulation parameters.
   final pulumi.Input<ZoneFaultSimulationContentResponse>? parameters;
 
@@ -34,60 +30,19 @@ class FaultSimulationDetailsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clusterId': ?clusterId,
-      'nodeTypeFaultSimulation':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NodeTypeFaultSimulationResponse>,
-            List<Map<String, dynamic>>
-          >(
-            nodeTypeFaultSimulation,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NodeTypeFaultSimulationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'nodeTypeFaultSimulation': ?pulumi.Input.mapOptionalInputValue<List<NodeTypeFaultSimulationResponse>, List<Map<String, dynamic>>>(nodeTypeFaultSimulation, (value) => pulumi.Input.encodeList<NodeTypeFaultSimulationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'operationId': ?operationId,
-      'parameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            ZoneFaultSimulationContentResponse,
-            Map<String, dynamic>
-          >(parameters, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<ZoneFaultSimulationContentResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory FaultSimulationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return FaultSimulationDetailsResponse(
-      clusterId: (() {
-        final guardedValue = map['clusterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeTypeFaultSimulation: (() {
-        final guardedValue = map['nodeTypeFaultSimulation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NodeTypeFaultSimulationResponse>(
-            guardedValue,
-            (value) => NodeTypeFaultSimulationResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      operationId: (() {
-        final guardedValue = map['operationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ZoneFaultSimulationContentResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      clusterId: (() { final guardedValue = map['clusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeTypeFaultSimulation: (() { final guardedValue = map['nodeTypeFaultSimulation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NodeTypeFaultSimulationResponse>(guardedValue, (value) => NodeTypeFaultSimulationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      operationId: (() { final guardedValue = map['operationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZoneFaultSimulationContentResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -10,17 +10,13 @@ enum CVSSConfidentialityImpactContaineranalysisV1beta1 {
   const CVSSConfidentialityImpactContaineranalysisV1beta1(this.wireValue);
   final String wireValue;
 
-  static CVSSConfidentialityImpactContaineranalysisV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in CVSSConfidentialityImpactContaineranalysisV1beta1.values) {
+  static CVSSConfidentialityImpactContaineranalysisV1beta1 fromValue(String value) {
+    for (final item in CVSSConfidentialityImpactContaineranalysisV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown CVSSConfidentialityImpactContaineranalysisV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown CVSSConfidentialityImpactContaineranalysisV1beta1 value: $value');
   }
 }
+

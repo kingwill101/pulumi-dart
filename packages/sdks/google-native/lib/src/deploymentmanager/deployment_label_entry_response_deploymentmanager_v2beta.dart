@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentLabelEntryResponseDeploymentmanagerV2beta {
   /// Key of the label
   final pulumi.Input<String> key;
-
   /// Value of the label
   final pulumi.Input<String> value;
 
@@ -19,15 +18,17 @@ class DeploymentLabelEntryResponseDeploymentmanagerV2beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory DeploymentLabelEntryResponseDeploymentmanagerV2beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DeploymentLabelEntryResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return DeploymentLabelEntryResponseDeploymentmanagerV2beta(
       key: pulumi.Input.fromValue(map['key'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

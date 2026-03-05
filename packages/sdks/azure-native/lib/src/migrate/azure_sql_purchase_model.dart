@@ -16,3 +16,4 @@ enum AzureSqlPurchaseModel {
     throw ArgumentError('Unknown AzureSqlPurchaseModel value: $value');
   }
 }
+

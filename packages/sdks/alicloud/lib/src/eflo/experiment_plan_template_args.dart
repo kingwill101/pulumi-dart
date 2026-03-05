@@ -12,16 +12,12 @@ class ExperimentPlanTemplateArgs {
   /// - private: Indicates that the content is private and restricted to specific users or permission groups. Private content is usually not publicly displayed, and only authorized users can view or edit it.
   /// - public: Indicates that the content is public and can be accessed by anyone. Public content is usually viewable by all users and is suitable for sharing information or resources
   final pulumi.Input<String> privacyLevel;
-
   /// Describe the purpose of this template.
   final pulumi.Input<String>? templateDescription;
-
   /// Help users identify and select specific templates.
   final pulumi.Input<String> templateName;
-
   /// Representative Template Pipeline. See `template_pipeline` below.
-  final pulumi.Input<List<ExperimentPlanTemplateTemplatePipeline>>
-  templatePipelines;
+  final pulumi.Input<List<ExperimentPlanTemplateTemplatePipeline>> templatePipelines;
 
   /// Creates a new [ExperimentPlanTemplateArgs].
   /// [privacyLevel] Used to indicate the privacy level of the content or information. It can have the following optional parameters:
@@ -40,38 +36,17 @@ class ExperimentPlanTemplateArgs {
       'privacyLevel': privacyLevel,
       'templateDescription': ?templateDescription,
       'templateName': templateName,
-      'templatePipelines':
-          pulumi.Input.mapInputValue<
-            List<ExperimentPlanTemplateTemplatePipeline>,
-            List<Map<String, dynamic>>
-          >(
-            templatePipelines,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ExperimentPlanTemplateTemplatePipeline,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'templatePipelines': pulumi.Input.mapInputValue<List<ExperimentPlanTemplateTemplatePipeline>, List<Map<String, dynamic>>>(templatePipelines, (value) => pulumi.Input.encodeList<ExperimentPlanTemplateTemplatePipeline, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ExperimentPlanTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ExperimentPlanTemplateArgs(
       privacyLevel: pulumi.Input.fromValue(map['privacyLevel'] as String),
-      templateDescription: (() {
-        final guardedValue = map['templateDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      templateDescription: (() { final guardedValue = map['templateDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       templateName: pulumi.Input.fromValue(map['templateName'] as String),
-      templatePipelines: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ExperimentPlanTemplateTemplatePipeline>(
-          map['templatePipelines']!,
-          (value) => ExperimentPlanTemplateTemplatePipeline.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      templatePipelines: pulumi.Input.fromValue(pulumi.Input.decodeList<ExperimentPlanTemplateTemplatePipeline>(map['templatePipelines']!, (value) => ExperimentPlanTemplateTemplatePipeline.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

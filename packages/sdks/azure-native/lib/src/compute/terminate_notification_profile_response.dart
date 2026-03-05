@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TerminateNotificationProfileResponse {
   /// Specifies whether the Terminate Scheduled event is enabled or disabled.
   final pulumi.Input<bool>? enable;
-
   /// Configurable length of time a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out). The configuration must be specified in ISO 8601 format, the default value is 5 minutes (PT5M)
   final pulumi.Input<String>? notBeforeTimeout;
 
   /// Creates a new [TerminateNotificationProfileResponse].
   /// [enable] Specifies whether the Terminate Scheduled event is enabled or disabled.
   /// [notBeforeTimeout] Configurable length of time a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out). The configuration must be specified in ISO 8601 format, the default value is 5 minutes (PT5M)
-  TerminateNotificationProfileResponse({this.enable, this.notBeforeTimeout});
+  TerminateNotificationProfileResponse({
+    this.enable,
+    this.notBeforeTimeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,20 +23,11 @@ class TerminateNotificationProfileResponse {
     };
   }
 
-  factory TerminateNotificationProfileResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TerminateNotificationProfileResponse.fromMap(Map<String, dynamic> map) {
     return TerminateNotificationProfileResponse(
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      notBeforeTimeout: (() {
-        final guardedValue = map['notBeforeTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      notBeforeTimeout: (() { final guardedValue = map['notBeforeTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

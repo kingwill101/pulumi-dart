@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListAccountKeysArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class ListAccountKeysArgs {
   factory ListAccountKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListAccountKeysArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExperimentTemplateTargetFilter {
   /// Attribute path for the filter.
   final pulumi.Input<String> path;
-
   /// Set of attribute values for the filter.
   ///
   /// &gt; **NOTE:** Values specified in a `filter` are joined with an `OR` clause, while values across multiple `filter` blocks are joined with an `AND` clause. For more information, see [Targets for AWS FIS](https://docs.aws.amazon.com/fis/latest/userguide/targets.html#target-filters).
@@ -14,10 +13,16 @@ class ExperimentTemplateTargetFilter {
   /// Creates a new [ExperimentTemplateTargetFilter].
   /// [path] Attribute path for the filter.
   /// [values] Set of attribute values for the filter.
-  ExperimentTemplateTargetFilter({required this.path, required this.values});
+  ExperimentTemplateTargetFilter({
+    required this.path,
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path, 'values': values};
+    return <String, dynamic>{
+      'path': path,
+      'values': values,
+    };
   }
 
   factory ExperimentTemplateTargetFilter.fromMap(Map<String, dynamic> map) {
@@ -27,3 +32,4 @@ class ExperimentTemplateTargetFilter {
     );
   }
 }
+

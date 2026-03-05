@@ -148,25 +148,18 @@ import 'system_data_response.dart';
 class Container extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Current status of the container.
   late final pulumi.Output<String> containerStatus;
-
   /// The UTC time when container got created.
   late final pulumi.Output<String> createdDateTime;
-
   /// DataFormat for Container
   late final pulumi.Output<String> dataFormat;
-
   /// The object name.
   late final pulumi.Output<String> name;
-
   /// Details of the refresh job on this container.
   late final pulumi.Output<RefreshDetailsResponse> refreshDetails;
-
   /// Metadata pertaining to creation and last modification of Container
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -179,36 +172,18 @@ class Container extends pulumi.CustomResource {
     ContainerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:databoxedge:Container',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:databoxedge:Container',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     containerStatus = registerOutput<String>('containerStatus');
     createdDateTime = registerOutput<String>('createdDateTime');
     dataFormat = registerOutput<String>('dataFormat');
     this.name = registerOutput<String>('name');
-    refreshDetails = registerOutput<RefreshDetailsResponse>(
-      'refreshDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RefreshDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    refreshDetails = registerOutput<RefreshDetailsResponse>('refreshDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RefreshDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

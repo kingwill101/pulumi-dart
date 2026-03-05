@@ -8,10 +8,14 @@ class DomainDevicesSerialSourceSpicePort {
 
   /// Creates a new [DomainDevicesSerialSourceSpicePort].
   /// [channel] Sets the channel attribute for the SPICE port in the random number generator backend.
-  DomainDevicesSerialSourceSpicePort({required this.channel});
+  DomainDevicesSerialSourceSpicePort({
+    required this.channel,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'channel': channel};
+    return <String, dynamic>{
+      'channel': channel,
+    };
   }
 
   factory DomainDevicesSerialSourceSpicePort.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesSerialSourceSpicePort {
     );
   }
 }
+

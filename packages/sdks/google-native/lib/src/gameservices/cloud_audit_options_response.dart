@@ -6,9 +6,7 @@ import 'authorization_logging_options_response.dart';
 /// Write a Cloud Audit log
 class CloudAuditOptionsResponse {
   /// Information used by the Cloud Audit Logging pipeline.
-  final pulumi.Input<AuthorizationLoggingOptionsResponse>
-  authorizationLoggingOptions;
-
+  final pulumi.Input<AuthorizationLoggingOptionsResponse> authorizationLoggingOptions;
   /// The log_name to populate in the Cloud Audit Record.
   final pulumi.Input<String> logName;
 
@@ -22,23 +20,16 @@ class CloudAuditOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizationLoggingOptions':
-          pulumi.Input.mapInputValue<
-            AuthorizationLoggingOptionsResponse,
-            Map<String, dynamic>
-          >(authorizationLoggingOptions, (value) => value.toMap()),
+      'authorizationLoggingOptions': pulumi.Input.mapInputValue<AuthorizationLoggingOptionsResponse, Map<String, dynamic>>(authorizationLoggingOptions, (value) => value.toMap()),
       'logName': logName,
     };
   }
 
   factory CloudAuditOptionsResponse.fromMap(Map<String, dynamic> map) {
     return CloudAuditOptionsResponse(
-      authorizationLoggingOptions: pulumi.Input.fromValue(
-        AuthorizationLoggingOptionsResponse.fromMap(
-          (map['authorizationLoggingOptions']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      authorizationLoggingOptions: pulumi.Input.fromValue(AuthorizationLoggingOptionsResponse.fromMap((map['authorizationLoggingOptions']! as Map).cast<String, dynamic>())),
       logName: pulumi.Input.fromValue(map['logName'] as String),
     );
   }
 }
+

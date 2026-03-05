@@ -12,8 +12,7 @@ enum VirtualMachineSchedulingExecution {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown VirtualMachineSchedulingExecution value: $value',
-    );
+    throw ArgumentError('Unknown VirtualMachineSchedulingExecution value: $value');
   }
 }
+

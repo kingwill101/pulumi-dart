@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSignalDefinitionArgs {
   /// The name of the Azure Monitor Workspace. The name is case insensitive
   final pulumi.Input<String> azureMonitorWorkspaceName;
-
   /// Name of health model resource
   final pulumi.Input<String> healthModelName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the signal definition. Must be unique within a health model.
   final pulumi.Input<String> signalDefinitionName;
 
@@ -42,16 +39,11 @@ class GetSignalDefinitionArgs {
 
   factory GetSignalDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetSignalDefinitionArgs(
-      azureMonitorWorkspaceName: pulumi.Input.fromValue(
-        map['azureMonitorWorkspaceName'] as String,
-      ),
+      azureMonitorWorkspaceName: pulumi.Input.fromValue(map['azureMonitorWorkspaceName'] as String),
       healthModelName: pulumi.Input.fromValue(map['healthModelName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      signalDefinitionName: pulumi.Input.fromValue(
-        map['signalDefinitionName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      signalDefinitionName: pulumi.Input.fromValue(map['signalDefinitionName'] as String),
     );
   }
 }
+

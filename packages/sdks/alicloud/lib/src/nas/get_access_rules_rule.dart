@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessRulesRule {
   /// AccessRuleId of the AccessRule.
   final pulumi.Input<String> accessRuleId;
-
   /// Priority of the AccessRule.
   final pulumi.Input<int> priority;
-
   /// Filter results by a specific RWAccess.
   final pulumi.Input<String> rwAccess;
-
   /// Filter results by a specific SourceCidrIp.
   final pulumi.Input<String> sourceCidrIp;
-
   /// Filter results by a specific UserAccess.
   final pulumi.Input<String> userAccess;
 
@@ -52,3 +48,4 @@ class GetAccessRulesRule {
     );
   }
 }
+

@@ -8,19 +8,20 @@ class ResourceIdListResultResponseValue {
 
   /// Creates a new [ResourceIdListResultResponseValue].
   /// [id] The Azure Resource ID.
-  ResourceIdListResultResponseValue({this.id});
+  ResourceIdListResultResponseValue({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory ResourceIdListResultResponseValue.fromMap(Map<String, dynamic> map) {
     return ResourceIdListResultResponseValue(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

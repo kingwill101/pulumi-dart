@@ -9,13 +9,20 @@ class Certificate {
 
   /// Creates a new [Certificate].
   /// [rawDer] The raw certificate bytes in DER format.
-  Certificate({required this.rawDer});
+  Certificate({
+    required this.rawDer,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'rawDer': rawDer};
+    return <String, dynamic>{
+      'rawDer': rawDer,
+    };
   }
 
   factory Certificate.fromMap(Map<String, dynamic> map) {
-    return Certificate(rawDer: pulumi.Input.fromValue(map['rawDer'] as String));
+    return Certificate(
+      rawDer: pulumi.Input.fromValue(map['rawDer'] as String),
+    );
   }
 }
+

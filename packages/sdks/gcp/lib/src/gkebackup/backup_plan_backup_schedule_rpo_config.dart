@@ -12,9 +12,7 @@ class BackupPlanBackupScheduleRpoConfig {
   /// only allow &lt;=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no
   /// restriction on number of single occurrence windows.
   /// Structure is documented below.
-  final pulumi.Input<List<BackupPlanBackupScheduleRpoConfigExclusionWindow>>?
-  exclusionWindows;
-
+  final pulumi.Input<List<BackupPlanBackupScheduleRpoConfigExclusionWindow>>? exclusionWindows;
   /// Defines the target RPO for the BackupPlan in minutes, which means the target
   /// maximum data loss in time that is acceptable for this BackupPlan. This must be
   /// at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
@@ -30,39 +28,16 @@ class BackupPlanBackupScheduleRpoConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exclusionWindows':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BackupPlanBackupScheduleRpoConfigExclusionWindow>,
-            List<Map<String, dynamic>>
-          >(
-            exclusionWindows,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BackupPlanBackupScheduleRpoConfigExclusionWindow,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'exclusionWindows': ?pulumi.Input.mapOptionalInputValue<List<BackupPlanBackupScheduleRpoConfigExclusionWindow>, List<Map<String, dynamic>>>(exclusionWindows, (value) => pulumi.Input.encodeList<BackupPlanBackupScheduleRpoConfigExclusionWindow, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetRpoMinutes': targetRpoMinutes,
     };
   }
 
   factory BackupPlanBackupScheduleRpoConfig.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupScheduleRpoConfig(
-      exclusionWindows: (() {
-        final guardedValue = map['exclusionWindows'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            BackupPlanBackupScheduleRpoConfigExclusionWindow
-          >(
-            guardedValue,
-            (value) => BackupPlanBackupScheduleRpoConfigExclusionWindow.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      exclusionWindows: (() { final guardedValue = map['exclusionWindows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BackupPlanBackupScheduleRpoConfigExclusionWindow>(guardedValue, (value) => BackupPlanBackupScheduleRpoConfigExclusionWindow.fromMap((value as Map).cast<String, dynamic>()))); })(),
       targetRpoMinutes: pulumi.Input.fromValue(map['targetRpoMinutes'] as int),
     );
   }
 }
+

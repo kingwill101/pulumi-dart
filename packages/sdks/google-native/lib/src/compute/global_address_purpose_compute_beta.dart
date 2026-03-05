@@ -18,8 +18,7 @@ enum GlobalAddressPurposeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GlobalAddressPurposeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown GlobalAddressPurposeComputeBeta value: $value');
   }
 }
+

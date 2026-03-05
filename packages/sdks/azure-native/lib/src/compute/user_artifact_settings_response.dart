@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserArtifactSettingsResponse {
   /// Optional. The name to assign the downloaded config file on the VM. This is limited to 4096 characters. If not specified, the config file will be named the Gallery Application name appended with "_config".
   final pulumi.Input<String>? configFileName;
-
   /// Optional. The name to assign the downloaded package file on the VM. This is limited to 4096 characters. If not specified, the package file will be named the same as the Gallery Application name.
   final pulumi.Input<String>? packageFileName;
-
   /// Optional. The action to be taken with regards to install/update/remove of the gallery application in the event of a reboot.
   final pulumi.Input<String>? scriptBehaviorAfterReboot;
 
@@ -33,21 +31,10 @@ class UserArtifactSettingsResponse {
 
   factory UserArtifactSettingsResponse.fromMap(Map<String, dynamic> map) {
     return UserArtifactSettingsResponse(
-      configFileName: (() {
-        final guardedValue = map['configFileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      packageFileName: (() {
-        final guardedValue = map['packageFileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scriptBehaviorAfterReboot: (() {
-        final guardedValue = map['scriptBehaviorAfterReboot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      configFileName: (() { final guardedValue = map['configFileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      packageFileName: (() { final guardedValue = map['packageFileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scriptBehaviorAfterReboot: (() { final guardedValue = map['scriptBehaviorAfterReboot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

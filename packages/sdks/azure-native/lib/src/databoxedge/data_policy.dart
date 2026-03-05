@@ -15,3 +15,4 @@ enum DataPolicy {
     throw ArgumentError('Unknown DataPolicy value: $value');
   }
 }
+

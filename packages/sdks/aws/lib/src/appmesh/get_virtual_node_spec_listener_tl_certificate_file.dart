@@ -21,14 +21,11 @@ class GetVirtualNodeSpecListenerTlCertificateFile {
     };
   }
 
-  factory GetVirtualNodeSpecListenerTlCertificateFile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualNodeSpecListenerTlCertificateFile.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTlCertificateFile(
-      certificateChain: pulumi.Input.fromValue(
-        map['certificateChain'] as String,
-      ),
+      certificateChain: pulumi.Input.fromValue(map['certificateChain'] as String),
       privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
     );
   }
 }
+

@@ -198,28 +198,20 @@ class CredentialSet extends pulumi.CustomResource {
   /// List of authentication credentials stored for an upstream.
   /// Usually consists of a primary and an optional secondary credential.
   late final pulumi.Output<List<Map<String, dynamic>>?> authCredentials;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The creation date of credential store resource.
   late final pulumi.Output<String> creationDate;
-
   /// Identities associated with the resource. This is used to access the KeyVault secrets.
   late final pulumi.Output<IdentityPropertiesResponse?> identity;
-
   /// The credentials are stored for this upstream or login server.
   late final pulumi.Output<String?> loginServer;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -232,39 +224,19 @@ class CredentialSet extends pulumi.CustomResource {
     CredentialSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerregistry:CredentialSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authCredentials = registerOutput<List<Map<String, dynamic>>?>(
-      'authCredentials',
-    );
+          'azure-native:containerregistry:CredentialSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authCredentials = registerOutput<List<Map<String, dynamic>>?>('authCredentials');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationDate = registerOutput<String>('creationDate');
-    identity = registerOutput<IdentityPropertiesResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     loginServer = registerOutput<String?>('loginServer');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -9,19 +9,20 @@ class SubnetResponse {
 
   /// Creates a new [SubnetResponse].
   /// [addressPrefix] Represents address prefix.
-  SubnetResponse({this.addressPrefix});
+  SubnetResponse({
+    this.addressPrefix,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'addressPrefix': ?addressPrefix};
+    return <String, dynamic>{
+      'addressPrefix': ?addressPrefix,
+    };
   }
 
   factory SubnetResponse.fromMap(Map<String, dynamic> map) {
     return SubnetResponse(
-      addressPrefix: (() {
-        final guardedValue = map['addressPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addressPrefix: (() { final guardedValue = map['addressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

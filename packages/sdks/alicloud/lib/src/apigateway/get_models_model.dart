@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetModelsModel {
   /// The creation time of the model.
   final pulumi.Input<String> createTime;
-
   /// The description of the model.
   final pulumi.Input<String> description;
-
   /// The ID of the api group.
   final pulumi.Input<String> groupId;
-
   /// The ID of the Api Gateway Model.
   final pulumi.Input<String> id;
-
   /// The id of the model.
   final pulumi.Input<String> modelId;
-
   /// The name of the Model.
   final pulumi.Input<String> modelName;
-
   /// The reference of the model.
   final pulumi.Input<String> modelRef;
-
   /// The modified time of the model.
   final pulumi.Input<String> modifiedTime;
-
   /// The schema of the model.
   final pulumi.Input<String> schema;
 
@@ -80,3 +72,4 @@ class GetModelsModel {
     );
   }
 }
+

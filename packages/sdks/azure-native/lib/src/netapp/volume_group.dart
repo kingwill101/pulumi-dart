@@ -3650,22 +3650,16 @@ import 'volume_group_meta_data_response.dart';
 class VolumeGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Volume group details
   late final pulumi.Output<VolumeGroupMetaDataResponse?> groupMetaData;
-
   /// Resource location
   late final pulumi.Output<String?> location;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
-
   /// Resource type
   late final pulumi.Output<String> type;
-
   /// List of volumes from group
   late final pulumi.Output<List<Map<String, dynamic>>?> volumes;
 
@@ -3678,22 +3672,13 @@ class VolumeGroup extends pulumi.CustomResource {
     VolumeGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:netapp:VolumeGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:netapp:VolumeGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    groupMetaData = registerOutput<VolumeGroupMetaDataResponse?>(
-      'groupMetaData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VolumeGroupMetaDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    groupMetaData = registerOutput<VolumeGroupMetaDataResponse?>('groupMetaData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeGroupMetaDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

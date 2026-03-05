@@ -8,42 +8,30 @@ class GetCertificatesCertificate {
   final pulumi.Input<String> cert;
   final pulumi.Input<String> certId;
   final pulumi.Input<String> certificateName;
-
   /// The cert's city.
   final pulumi.Input<String> city;
-
   /// The cert's common name.
   final pulumi.Input<String> common;
-
   /// The cert's country.
   final pulumi.Input<String> country;
-
   /// The cert's not valid after time.
   final pulumi.Input<String> endDate;
-
   /// The cert is expired or not.
   final pulumi.Input<bool> expired;
   final pulumi.Input<String> fingerprint;
-
   /// The cert's id.
   final pulumi.Input<String> id;
-
   /// The cert's .
   final pulumi.Input<String> issuer;
   final pulumi.Input<String> key;
-
   /// The cert's name.
   final pulumi.Input<String> name;
-
   /// The cert's organization.
   final pulumi.Input<String> orgName;
-
   /// The cert's province.
   final pulumi.Input<String> province;
-
   /// The cert's subject alternative name.
   final pulumi.Input<String> sans;
-
   /// The cert's not valid before time.
   final pulumi.Input<String> startDate;
 
@@ -133,3 +121,4 @@ class GetCertificatesCertificate {
     );
   }
 }
+

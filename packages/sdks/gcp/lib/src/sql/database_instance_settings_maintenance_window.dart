@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseInstanceSettingsMaintenanceWindow {
   /// Day of week (`1-7`), starting on Monday
   final pulumi.Input<int>? day;
-
   /// Hour of day (`0-23`), ignored if `day` not set
   final pulumi.Input<int>? hour;
-
   /// Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
   final pulumi.Input<String>? updateTrack;
 
@@ -30,25 +28,12 @@ class DatabaseInstanceSettingsMaintenanceWindow {
     };
   }
 
-  factory DatabaseInstanceSettingsMaintenanceWindow.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DatabaseInstanceSettingsMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsMaintenanceWindow(
-      day: (() {
-        final guardedValue = map['day'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      hour: (() {
-        final guardedValue = map['hour'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      updateTrack: (() {
-        final guardedValue = map['updateTrack'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      day: (() { final guardedValue = map['day']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hour: (() { final guardedValue = map['hour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      updateTrack: (() { final guardedValue = map['updateTrack']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

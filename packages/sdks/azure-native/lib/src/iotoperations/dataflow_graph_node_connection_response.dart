@@ -8,44 +8,29 @@ import 'dataflow_graph_connection_output_response.dart';
 class DataflowGraphNodeConnectionResponse {
   /// Information about the source node.
   final pulumi.Input<DataflowGraphConnectionInputResponse> from;
-
   /// Information about the destination node.
   final pulumi.Input<DataflowGraphConnectionOutputResponse> to;
 
   /// Creates a new [DataflowGraphNodeConnectionResponse].
   /// [from] Information about the source node.
   /// [to] Information about the destination node.
-  DataflowGraphNodeConnectionResponse({required this.from, required this.to});
+  DataflowGraphNodeConnectionResponse({
+    required this.from,
+    required this.to,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'from':
-          pulumi.Input.mapInputValue<
-            DataflowGraphConnectionInputResponse,
-            Map<String, dynamic>
-          >(from, (value) => value.toMap()),
-      'to':
-          pulumi.Input.mapInputValue<
-            DataflowGraphConnectionOutputResponse,
-            Map<String, dynamic>
-          >(to, (value) => value.toMap()),
+      'from': pulumi.Input.mapInputValue<DataflowGraphConnectionInputResponse, Map<String, dynamic>>(from, (value) => value.toMap()),
+      'to': pulumi.Input.mapInputValue<DataflowGraphConnectionOutputResponse, Map<String, dynamic>>(to, (value) => value.toMap()),
     };
   }
 
-  factory DataflowGraphNodeConnectionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataflowGraphNodeConnectionResponse.fromMap(Map<String, dynamic> map) {
     return DataflowGraphNodeConnectionResponse(
-      from: pulumi.Input.fromValue(
-        DataflowGraphConnectionInputResponse.fromMap(
-          (map['from']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      to: pulumi.Input.fromValue(
-        DataflowGraphConnectionOutputResponse.fromMap(
-          (map['to']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      from: pulumi.Input.fromValue(DataflowGraphConnectionInputResponse.fromMap((map['from']! as Map).cast<String, dynamic>())),
+      to: pulumi.Input.fromValue(DataflowGraphConnectionOutputResponse.fromMap((map['to']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

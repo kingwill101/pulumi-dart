@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagState {
   /// Name of the source image.
   final pulumi.Input<String>? sourceImage;
-
   /// ImageID of the source image in the format of `sha256:&lt;&lt;ID&gt;&gt;`
   final pulumi.Input<String>? sourceImageId;
-
   /// List of values which cause the tag to be (re)created. This is useful for triggering a new tag when the source image changes.
   final pulumi.Input<List<String>>? tagTriggers;
-
   /// Name of the target image.
   final pulumi.Input<String>? targetImage;
 
@@ -39,26 +36,11 @@ class TagState {
 
   factory TagState.fromMap(Map<String, dynamic> map) {
     return TagState(
-      sourceImage: (() {
-        final guardedValue = map['sourceImage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceImageId: (() {
-        final guardedValue = map['sourceImageId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tagTriggers: (() {
-        final guardedValue = map['tagTriggers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      targetImage: (() {
-        final guardedValue = map['targetImage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sourceImage: (() { final guardedValue = map['sourceImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceImageId: (() { final guardedValue = map['sourceImageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tagTriggers: (() { final guardedValue = map['tagTriggers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      targetImage: (() { final guardedValue = map['targetImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

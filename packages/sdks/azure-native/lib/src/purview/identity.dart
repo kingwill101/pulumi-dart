@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Identity {
   /// Identity Type
   final pulumi.Input<String>? type;
-
   /// User Assigned Identities
   final pulumi.Input<List<String>>? userAssignedIdentities;
 
   /// Creates a new [Identity].
   /// [type] Identity Type
   /// [userAssignedIdentities] User Assigned Identities
-  Identity({this.type, this.userAssignedIdentities});
+  Identity({
+    this.type,
+    this.userAssignedIdentities,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class Identity {
 
   factory Identity.fromMap(Map<String, dynamic> map) {
     return Identity(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentities: (() {
-        final guardedValue = map['userAssignedIdentities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

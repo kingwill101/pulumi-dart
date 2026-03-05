@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkRuleResponse {
   /// The resource identifier.
   final pulumi.Input<String> id;
-
   /// The resource name.
   final pulumi.Input<String> name;
-
   /// The resource identifier for the subnet
   final pulumi.Input<String> subnetId;
-
   /// The resource type.
   final pulumi.Input<String> type;
-
   /// The current state of the VirtualNetwork Rule
   final pulumi.Input<String> virtualNetworkRuleState;
 
@@ -49,9 +45,8 @@ class VirtualNetworkRuleResponse {
       name: pulumi.Input.fromValue(map['name'] as String),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
-      virtualNetworkRuleState: pulumi.Input.fromValue(
-        map['virtualNetworkRuleState'] as String,
-      ),
+      virtualNetworkRuleState: pulumi.Input.fromValue(map['virtualNetworkRuleState'] as String),
     );
   }
 }
+

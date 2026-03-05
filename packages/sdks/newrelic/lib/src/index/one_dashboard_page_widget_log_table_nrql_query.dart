@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OneDashboardPageWidgetLogTableNrqlQuery {
   /// Determines the New Relic account where the dashboard will be created. Defaults to the account associated with the API key used.
   final pulumi.Input<String>? accountId;
-
   /// (Required) Valid NRQL query string. See [Writing NRQL Queries](https://docs.newrelic.com/docs/insights/nrql-new-relic-query-language/using-nrql/introduction-nrql) for help.
   final pulumi.Input<String> query;
 
@@ -18,19 +17,17 @@ class OneDashboardPageWidgetLogTableNrqlQuery {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accountId': ?accountId, 'query': query};
+    return <String, dynamic>{
+      'accountId': ?accountId,
+      'query': query,
+    };
   }
 
-  factory OneDashboardPageWidgetLogTableNrqlQuery.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OneDashboardPageWidgetLogTableNrqlQuery.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetLogTableNrqlQuery(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       query: pulumi.Input.fromValue(map['query'] as String),
     );
   }
 }
+

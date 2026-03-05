@@ -12,8 +12,7 @@ enum PartnerDestinationActivationState {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PartnerDestinationActivationState value: $value',
-    );
+    throw ArgumentError('Unknown PartnerDestinationActivationState value: $value');
   }
 }
+

@@ -23,16 +23,9 @@ class TrustProviderSseSpecification {
 
   factory TrustProviderSseSpecification.fromMap(Map<String, dynamic> map) {
     return TrustProviderSseSpecification(
-      customerManagedKeyEnabled: (() {
-        final guardedValue = map['customerManagedKeyEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      kmsKeyArn: (() {
-        final guardedValue = map['kmsKeyArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customerManagedKeyEnabled: (() { final guardedValue = map['customerManagedKeyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      kmsKeyArn: (() { final guardedValue = map['kmsKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

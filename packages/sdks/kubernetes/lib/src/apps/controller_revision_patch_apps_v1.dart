@@ -12,16 +12,12 @@ import 'controller_revision_patch_args.dart';
 class ControllerRevisionPatchAppsV1 extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
-
   /// Data is the serialized representation of the state.
   late final pulumi.Output<dynamic> data;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
-
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMetaPatch?> metadata;
-
   /// Revision indicates the revision of the state represented by Data.
   late final pulumi.Output<int?> revision;
 
@@ -34,24 +30,15 @@ class ControllerRevisionPatchAppsV1 extends pulumi.CustomResource {
     ControllerRevisionPatchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'kubernetes:apps/v1:ControllerRevisionPatch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'kubernetes:apps/v1:ControllerRevisionPatch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     data = registerOutput<dynamic>('data');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMetaPatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     revision = registerOutput<int?>('revision');
   }
 }

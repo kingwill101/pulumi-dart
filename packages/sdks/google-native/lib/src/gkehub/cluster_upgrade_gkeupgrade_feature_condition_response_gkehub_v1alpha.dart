@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1alpha {
   /// Reason why the feature is in this status.
   final pulumi.Input<String> reason;
-
   /// Status of the condition, one of True, False, Unknown.
   final pulumi.Input<String> status;
-
   /// Type of the condition, for example, "ready".
   final pulumi.Input<String> type;
-
   /// Last timestamp the condition was updated.
   final pulumi.Input<String> updateTime;
 
@@ -37,9 +34,7 @@ class ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1alpha {
     };
   }
 
-  factory ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1alpha(
       reason: pulumi.Input.fromValue(map['reason'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
@@ -48,3 +43,4 @@ class ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1alpha {
     );
   }
 }
+

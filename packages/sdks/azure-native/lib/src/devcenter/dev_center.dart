@@ -160,38 +160,26 @@ import 'system_data_response.dart';
 class DevCenter extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The URI of the Dev Center.
   late final pulumi.Output<String> devCenterUri;
-
   /// The display name of the devcenter.
   late final pulumi.Output<String?> displayName;
-
   /// Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations).
   late final pulumi.Output<EncryptionResponse?> encryption;
-
   /// Managed identity properties
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Dev Center settings to be used when associating a project with a catalog.
-  late final pulumi.Output<DevCenterProjectCatalogSettingsResponse?>
-  projectCatalogSettings;
-
+  late final pulumi.Output<DevCenterProjectCatalogSettingsResponse?> projectCatalogSettings;
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -204,58 +192,21 @@ class DevCenter extends pulumi.CustomResource {
     DevCenterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devcenter:DevCenter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:devcenter:DevCenter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     devCenterUri = registerOutput<String>('devCenterUri');
     displayName = registerOutput<String?>('displayName');
-    encryption = registerOutput<EncryptionResponse?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<EncryptionResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    projectCatalogSettings =
-        registerOutput<DevCenterProjectCatalogSettingsResponse?>(
-          'projectCatalogSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DevCenterProjectCatalogSettingsResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    projectCatalogSettings = registerOutput<DevCenterProjectCatalogSettingsResponse?>('projectCatalogSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevCenterProjectCatalogSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

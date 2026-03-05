@@ -1292,13 +1292,10 @@ import 'namespace_customer_managed_key_state.dart';
 class NamespaceCustomerManagedKeyEventhub extends pulumi.CustomResource {
   /// The ID of the EventHub Namespace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> eventhubNamespaceId;
-
   /// Whether to enable Infrastructure Encryption (Double Encryption). Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> infrastructureEncryptionEnabled;
-
   /// The list of keys of Key Vault.
   late final pulumi.Output<List<String>> keyVaultKeyIds;
-
   /// The ID of a User Managed Identity that will be used to access Key Vaults that contain the encryption keys.
   ///
   /// &gt; **Note:** If using `user_assigned_identity_id`, ensure the User Assigned Identity is also assigned to the parent Event Hub.
@@ -1315,15 +1312,13 @@ class NamespaceCustomerManagedKeyEventhub extends pulumi.CustomResource {
     NamespaceCustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventhub/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:eventhub/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     eventhubNamespaceId = registerOutput<String>('eventhubNamespaceId');
-    infrastructureEncryptionEnabled = registerOutput<bool?>(
-      'infrastructureEncryptionEnabled',
-    );
+    infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
     keyVaultKeyIds = registerOutput<List<String>>('keyVaultKeyIds');
     userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
   }
@@ -1346,15 +1341,13 @@ class NamespaceCustomerManagedKeyEventhub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventhub/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:eventhub/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     eventhubNamespaceId = registerOutput<String>('eventhubNamespaceId');
-    infrastructureEncryptionEnabled = registerOutput<bool?>(
-      'infrastructureEncryptionEnabled',
-    );
+    infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
     keyVaultKeyIds = registerOutput<List<String>>('keyVaultKeyIds');
     userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
   }

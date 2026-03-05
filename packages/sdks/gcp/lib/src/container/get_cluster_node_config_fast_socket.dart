@@ -8,10 +8,14 @@ class GetClusterNodeConfigFastSocket {
 
   /// Creates a new [GetClusterNodeConfigFastSocket].
   /// [enabled] Whether or not NCCL Fast Socket is enabled
-  GetClusterNodeConfigFastSocket({required this.enabled});
+  GetClusterNodeConfigFastSocket({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory GetClusterNodeConfigFastSocket.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetClusterNodeConfigFastSocket {
     );
   }
 }
+

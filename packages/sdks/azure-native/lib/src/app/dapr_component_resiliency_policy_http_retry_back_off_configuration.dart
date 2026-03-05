@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration {
   /// The optional initial delay in milliseconds before an operation is retried
   final pulumi.Input<int>? initialDelayInMilliseconds;
-
   /// The optional maximum time interval in milliseconds between retry attempts
   final pulumi.Input<int>? maxIntervalInMilliseconds;
 
@@ -25,20 +24,11 @@ class DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration {
     };
   }
 
-  factory DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration.fromMap(Map<String, dynamic> map) {
     return DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration(
-      initialDelayInMilliseconds: (() {
-        final guardedValue = map['initialDelayInMilliseconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxIntervalInMilliseconds: (() {
-        final guardedValue = map['maxIntervalInMilliseconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      initialDelayInMilliseconds: (() { final guardedValue = map['initialDelayInMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxIntervalInMilliseconds: (() { final guardedValue = map['maxIntervalInMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

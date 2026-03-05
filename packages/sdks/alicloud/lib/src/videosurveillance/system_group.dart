@@ -137,46 +137,32 @@ import 'system_group_state.dart';
 class SystemGroup extends pulumi.CustomResource {
   /// The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
   late final pulumi.Output<String?> callback;
-
   /// The capture image.
   late final pulumi.Output<int> captureImage;
-
   /// The capture interval.
   late final pulumi.Output<int> captureInterval;
-
   /// The capture oss bucket.
   late final pulumi.Output<String> captureOssBucket;
-
   /// The capture oss path.
   late final pulumi.Output<String> captureOssPath;
-
   /// The capture video.
   late final pulumi.Output<int> captureVideo;
-
   /// The description of Group.
   late final pulumi.Output<String?> description;
-
   /// Whether to open Group.
   late final pulumi.Output<bool> enabled;
-
   /// The Group Name.
   late final pulumi.Output<String> groupName;
-
   /// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
   late final pulumi.Output<String> inProtocol;
-
   /// Whether to enable on-demand streaming. Default value:`false`.
   late final pulumi.Output<bool> lazyPull;
-
   /// The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
   late final pulumi.Output<String> outProtocol;
-
   /// The domain name of plan streaming used by the group.
   late final pulumi.Output<String> playDomain;
-
   /// The domain name of push streaming used by the group.
   late final pulumi.Output<String> pushDomain;
-
   /// Whether to open Group. Valid values: `on`,`off`.
   late final pulumi.Output<bool> status;
 
@@ -189,11 +175,11 @@ class SystemGroup extends pulumi.CustomResource {
     SystemGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:videosurveillance/systemGroup:SystemGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:videosurveillance/systemGroup:SystemGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     callback = registerOutput<String?>('callback');
     captureImage = registerOutput<int>('captureImage');
     captureInterval = registerOutput<int>('captureInterval');
@@ -229,11 +215,11 @@ class SystemGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:videosurveillance/systemGroup:SystemGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:videosurveillance/systemGroup:SystemGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     callback = registerOutput<String?>('callback');
     captureImage = registerOutput<int>('captureImage');
     captureInterval = registerOutput<int>('captureInterval');

@@ -106,11 +106,11 @@ class PhysicalReplicationSlot extends pulumi.CustomResource {
     PhysicalReplicationSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
   }
 
@@ -132,11 +132,11 @@ class PhysicalReplicationSlot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
   }
 }

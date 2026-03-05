@@ -18,3 +18,4 @@ enum ProtectedItemHealthStatus {
     throw ArgumentError('Unknown ProtectedItemHealthStatus value: $value');
   }
 }
+

@@ -7,42 +7,29 @@ import 'export_dataset_configuration.dart';
 class ExportDataset {
   /// The export dataset configuration.
   final pulumi.Input<ExportDatasetConfiguration>? configuration;
-
   /// The granularity of rows in the export. Currently only 'Daily' is supported.
   final pulumi.Input<String>? granularity;
 
   /// Creates a new [ExportDataset].
   /// [configuration] The export dataset configuration.
   /// [granularity] The granularity of rows in the export. Currently only 'Daily' is supported.
-  ExportDataset({this.configuration, this.granularity});
+  ExportDataset({
+    this.configuration,
+    this.granularity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExportDatasetConfiguration,
-            Map<String, dynamic>
-          >(configuration, (value) => value.toMap()),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<ExportDatasetConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'granularity': ?granularity,
     };
   }
 
   factory ExportDataset.fromMap(Map<String, dynamic> map) {
     return ExportDataset(
-      configuration: (() {
-        final guardedValue = map['configuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExportDatasetConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      granularity: (() {
-        final guardedValue = map['granularity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExportDatasetConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      granularity: (() { final guardedValue = map['granularity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

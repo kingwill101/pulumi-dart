@@ -9,21 +9,20 @@ class EnvironmentResponse {
 
   /// Creates a new [EnvironmentResponse].
   /// [variables] Environment variable key-value pairs. For more information, see [Using Lambda environment variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html).
-  EnvironmentResponse({this.variables});
+  EnvironmentResponse({
+    this.variables,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'variables': ?variables};
+    return <String, dynamic>{
+      'variables': ?variables,
+    };
   }
 
   factory EnvironmentResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentResponse(
-      variables: (() {
-        final guardedValue = map['variables'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      variables: (() { final guardedValue = map['variables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

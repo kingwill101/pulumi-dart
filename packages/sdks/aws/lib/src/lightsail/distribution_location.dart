@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DistributionLocation {
   /// Availability Zone. Follows the format us-east-2a (case-sensitive).
   final pulumi.Input<String> availabilityZone;
-
   /// AWS Region name.
   final pulumi.Input<String> regionName;
 
@@ -26,10 +25,9 @@ class DistributionLocation {
 
   factory DistributionLocation.fromMap(Map<String, dynamic> map) {
     return DistributionLocation(
-      availabilityZone: pulumi.Input.fromValue(
-        map['availabilityZone'] as String,
-      ),
+      availabilityZone: pulumi.Input.fromValue(map['availabilityZone'] as String),
       regionName: pulumi.Input.fromValue(map['regionName'] as String),
     );
   }
 }
+

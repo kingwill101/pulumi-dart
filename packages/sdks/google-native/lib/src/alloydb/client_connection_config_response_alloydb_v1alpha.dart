@@ -7,7 +7,6 @@ import 'ssl_config_response_alloydb_v1alpha.dart';
 class ClientConnectionConfigResponseAlloydbV1alpha {
   /// Optional. Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
   final pulumi.Input<bool> requireConnectors;
-
   /// Optional. SSL config option for this instance.
   final pulumi.Input<SslConfigResponseAlloydbV1alpha> sslConfig;
 
@@ -22,26 +21,15 @@ class ClientConnectionConfigResponseAlloydbV1alpha {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'requireConnectors': requireConnectors,
-      'sslConfig':
-          pulumi.Input.mapInputValue<
-            SslConfigResponseAlloydbV1alpha,
-            Map<String, dynamic>
-          >(sslConfig, (value) => value.toMap()),
+      'sslConfig': pulumi.Input.mapInputValue<SslConfigResponseAlloydbV1alpha, Map<String, dynamic>>(sslConfig, (value) => value.toMap()),
     };
   }
 
-  factory ClientConnectionConfigResponseAlloydbV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClientConnectionConfigResponseAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return ClientConnectionConfigResponseAlloydbV1alpha(
-      requireConnectors: pulumi.Input.fromValue(
-        map['requireConnectors'] as bool,
-      ),
-      sslConfig: pulumi.Input.fromValue(
-        SslConfigResponseAlloydbV1alpha.fromMap(
-          (map['sslConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      requireConnectors: pulumi.Input.fromValue(map['requireConnectors'] as bool),
+      sslConfig: pulumi.Input.fromValue(SslConfigResponseAlloydbV1alpha.fromMap((map['sslConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

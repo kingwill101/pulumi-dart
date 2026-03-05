@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotPolicyMonthlySchedule {
   /// List of the days of the month when the snapshots will be created, valid range is from 1 to 30.
   final pulumi.Input<List<int>> daysOfMonths;
-
   /// Hour of the day that the snapshots will be created, valid range is from 0 to 23.
   final pulumi.Input<int> hour;
-
   /// Minute of the hour that the snapshots will be created, valid range is from 0 to 59.
   final pulumi.Input<int> minute;
-
   /// How many hourly snapshots to keep, valid range is from 0 to 255.
   final pulumi.Input<int> snapshotsToKeep;
 
@@ -38,12 +35,11 @@ class SnapshotPolicyMonthlySchedule {
 
   factory SnapshotPolicyMonthlySchedule.fromMap(Map<String, dynamic> map) {
     return SnapshotPolicyMonthlySchedule(
-      daysOfMonths: pulumi.Input.fromValue(
-        (map['daysOfMonths'] as List).cast<int>(),
-      ),
+      daysOfMonths: pulumi.Input.fromValue((map['daysOfMonths'] as List).cast<int>()),
       hour: pulumi.Input.fromValue(map['hour'] as int),
       minute: pulumi.Input.fromValue(map['minute'] as int),
       snapshotsToKeep: pulumi.Input.fromValue(map['snapshotsToKeep'] as int),
     );
   }
 }
+

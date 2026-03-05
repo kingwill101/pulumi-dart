@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleTypeTimeOfDayResponseAlloydbV1beta {
   /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
   final pulumi.Input<int> hours;
-
   /// Minutes of hour of day. Must be from 0 to 59.
   final pulumi.Input<int> minutes;
-
   /// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
   final pulumi.Input<int> nanos;
-
   /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
   final pulumi.Input<int> seconds;
 
@@ -37,9 +34,7 @@ class GoogleTypeTimeOfDayResponseAlloydbV1beta {
     };
   }
 
-  factory GoogleTypeTimeOfDayResponseAlloydbV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleTypeTimeOfDayResponseAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return GoogleTypeTimeOfDayResponseAlloydbV1beta(
       hours: pulumi.Input.fromValue(map['hours'] as int),
       minutes: pulumi.Input.fromValue(map['minutes'] as int),
@@ -48,3 +43,4 @@ class GoogleTypeTimeOfDayResponseAlloydbV1beta {
     );
   }
 }
+

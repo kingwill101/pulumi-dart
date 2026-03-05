@@ -22,8 +22,7 @@ enum InterconnectAttachmentBandwidthComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InterconnectAttachmentBandwidthComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown InterconnectAttachmentBandwidthComputeBeta value: $value');
   }
 }
+

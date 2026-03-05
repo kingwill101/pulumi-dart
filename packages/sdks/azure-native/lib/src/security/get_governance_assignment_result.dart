@@ -8,31 +8,22 @@ import 'remediation_eta_response.dart';
 class GetGovernanceAssignmentResult {
   /// The additional data for the governance assignment - e.g. links to ticket (optional), see example
   final GovernanceAssignmentAdditionalDataResponse? additionalData;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
   final GovernanceEmailNotificationResponse? governanceEmailNotification;
-
   /// Resource Id
   final String id;
-
   /// Defines whether there is a grace period on the governance assignment
   final bool? isGracePeriod;
-
   /// Resource name
   final String name;
-
   /// The Owner for the governance assignment - e.g. user@contoso.com - see example
   final String? owner;
-
   /// The remediation due-date - after this date Secure Score will be affected (in case of  active grace-period)
   final String remediationDueDate;
-
   /// The ETA (estimated time of arrival) for remediation (optional), see example
   final RemediationEtaResponse? remediationEta;
-
   /// Resource type
   final String type;
 
@@ -77,42 +68,17 @@ class GetGovernanceAssignmentResult {
 
   factory GetGovernanceAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetGovernanceAssignmentResult(
-      additionalData: (() {
-        final guardedValue = map['additionalData'];
-        if (guardedValue == null) return null;
-        return GovernanceAssignmentAdditionalDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      additionalData: (() { final guardedValue = map['additionalData']; if (guardedValue == null) return null; return GovernanceAssignmentAdditionalDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      governanceEmailNotification: (() {
-        final guardedValue = map['governanceEmailNotification'];
-        if (guardedValue == null) return null;
-        return GovernanceEmailNotificationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      governanceEmailNotification: (() { final guardedValue = map['governanceEmailNotification']; if (guardedValue == null) return null; return GovernanceEmailNotificationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      isGracePeriod: (() {
-        final guardedValue = map['isGracePeriod'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      isGracePeriod: (() { final guardedValue = map['isGracePeriod']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: map['name'] as String,
-      owner: (() {
-        final guardedValue = map['owner'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return guardedValue as String; })(),
       remediationDueDate: map['remediationDueDate'] as String,
-      remediationEta: (() {
-        final guardedValue = map['remediationEta'];
-        if (guardedValue == null) return null;
-        return RemediationEtaResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      remediationEta: (() { final guardedValue = map['remediationEta']; if (guardedValue == null) return null; return RemediationEtaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       type: map['type'] as String,
     );
   }
 }
+

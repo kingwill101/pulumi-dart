@@ -12,8 +12,7 @@ enum TransparentDataEncryptionStatus {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown TransparentDataEncryptionStatus value: $value',
-    );
+    throw ArgumentError('Unknown TransparentDataEncryptionStatus value: $value');
   }
 }
+

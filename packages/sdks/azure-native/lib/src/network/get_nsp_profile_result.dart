@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNspProfile.
 class GetNspProfileResult {
   /// Version number that increases with every update to access rules within the profile.
   final String accessRulesVersion;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Version number that increases with every update to diagnostic settings within the profile.
   final String diagnosticSettingsVersion;
-
   /// Resource ID.
   final String id;
-
   /// Resource location.
   final String? location;
-
   /// Resource name.
   final String name;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Resource type.
   final String type;
 
@@ -65,18 +59,11 @@ class GetNspProfileResult {
       azureApiVersion: map['azureApiVersion'] as String,
       diagnosticSettingsVersion: map['diagnosticSettingsVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

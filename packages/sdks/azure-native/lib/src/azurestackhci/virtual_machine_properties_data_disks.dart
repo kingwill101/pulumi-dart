@@ -8,19 +8,20 @@ class VirtualMachinePropertiesDataDisks {
 
   /// Creates a new [VirtualMachinePropertiesDataDisks].
   /// [id] Resource ID of the data disk
-  VirtualMachinePropertiesDataDisks({this.id});
+  VirtualMachinePropertiesDataDisks({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory VirtualMachinePropertiesDataDisks.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesDataDisks(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

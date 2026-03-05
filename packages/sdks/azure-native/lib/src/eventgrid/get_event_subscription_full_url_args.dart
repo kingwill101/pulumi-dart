@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEventSubscriptionFullUrlArgs {
   /// Name of the event subscription.
   final pulumi.Input<String> eventSubscriptionName;
-
   /// The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
   final pulumi.Input<String> scope;
 
@@ -30,10 +29,9 @@ class GetEventSubscriptionFullUrlArgs {
 
   factory GetEventSubscriptionFullUrlArgs.fromMap(Map<String, dynamic> map) {
     return GetEventSubscriptionFullUrlArgs(
-      eventSubscriptionName: pulumi.Input.fromValue(
-        map['eventSubscriptionName'] as String,
-      ),
+      eventSubscriptionName: pulumi.Input.fromValue(map['eventSubscriptionName'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

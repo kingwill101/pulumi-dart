@@ -186,61 +186,42 @@ import 'export_configuration_args.dart';
 class ExportConfiguration extends pulumi.CustomResource {
   /// The name of the Application Insights component.
   late final pulumi.Output<String> applicationName;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the destination storage container.
   late final pulumi.Output<String> containerName;
-
   /// The name of destination account.
   late final pulumi.Output<String> destinationAccountId;
-
   /// The destination account location ID.
   late final pulumi.Output<String> destinationStorageLocationId;
-
   /// The destination storage account subscription ID.
   late final pulumi.Output<String> destinationStorageSubscriptionId;
-
   /// The destination type.
   late final pulumi.Output<String> destinationType;
-
   /// The unique ID of the export configuration inside an Application Insights component. It is auto generated when the Continuous Export configuration is created.
   late final pulumi.Output<String> exportId;
-
   /// This indicates current Continuous Export configuration status. The possible values are 'Preparing', 'Success', 'Failure'.
   late final pulumi.Output<String> exportStatus;
-
   /// The instrumentation key of the Application Insights component.
   late final pulumi.Output<String> instrumentationKey;
-
   /// This will be 'true' if the Continuous Export configuration is enabled, otherwise it will be 'false'.
   late final pulumi.Output<String> isUserEnabled;
-
   /// The last time the Continuous Export configuration started failing.
   late final pulumi.Output<String> lastGapTime;
-
   /// The last time data was successfully delivered to the destination storage container for this Continuous Export configuration.
   late final pulumi.Output<String> lastSuccessTime;
-
   /// Last time the Continuous Export configuration was updated.
   late final pulumi.Output<String> lastUserUpdate;
-
   /// Deprecated
   late final pulumi.Output<String?> notificationQueueEnabled;
-
   /// This is the reason the Continuous Export configuration started failing. It can be 'AzureStorageNotFound' or 'AzureStorageAccessDenied'.
   late final pulumi.Output<String> permanentErrorReason;
-
   /// This comma separated list of document types that will be exported. The possible values include 'Requests', 'Event', 'Exceptions', 'Metrics', 'PageViews', 'PageViewPerformance', 'Rdd', 'PerformanceCounters', 'Availability', 'Messages'.
   late final pulumi.Output<String?> recordTypes;
-
   /// The resource group of the Application Insights component.
   late final pulumi.Output<String> resourceGroup;
-
   /// The name of the destination storage account.
   late final pulumi.Output<String> storageName;
-
   /// The subscription of the Application Insights component.
   late final pulumi.Output<String> subscriptionId;
 
@@ -253,21 +234,17 @@ class ExportConfiguration extends pulumi.CustomResource {
     ExportConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:applicationinsights:ExportConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:applicationinsights:ExportConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationName = registerOutput<String>('applicationName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     containerName = registerOutput<String>('containerName');
     destinationAccountId = registerOutput<String>('destinationAccountId');
-    destinationStorageLocationId = registerOutput<String>(
-      'destinationStorageLocationId',
-    );
-    destinationStorageSubscriptionId = registerOutput<String>(
-      'destinationStorageSubscriptionId',
-    );
+    destinationStorageLocationId = registerOutput<String>('destinationStorageLocationId');
+    destinationStorageSubscriptionId = registerOutput<String>('destinationStorageSubscriptionId');
     destinationType = registerOutput<String>('destinationType');
     exportId = registerOutput<String>('exportId');
     exportStatus = registerOutput<String>('exportStatus');
@@ -276,9 +253,7 @@ class ExportConfiguration extends pulumi.CustomResource {
     lastGapTime = registerOutput<String>('lastGapTime');
     lastSuccessTime = registerOutput<String>('lastSuccessTime');
     lastUserUpdate = registerOutput<String>('lastUserUpdate');
-    notificationQueueEnabled = registerOutput<String?>(
-      'notificationQueueEnabled',
-    );
+    notificationQueueEnabled = registerOutput<String?>('notificationQueueEnabled');
     permanentErrorReason = registerOutput<String>('permanentErrorReason');
     recordTypes = registerOutput<String?>('recordTypes');
     resourceGroup = registerOutput<String>('resourceGroup');

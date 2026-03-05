@@ -486,10 +486,8 @@ class WorkspaceModelVersion extends pulumi.CustomResource {
   /// - Approved: Allow to go online.
   /// - Rejected: Online is not allowed.
   late final pulumi.Output<String> approvalStatus;
-
   /// Other information.
   late final pulumi.Output<Map<String, String>?> extraInfo;
-
   /// The format of the model. Valid values:
   /// - OfflineModel
   /// - SavedModel
@@ -502,7 +500,6 @@ class WorkspaceModelVersion extends pulumi.CustomResource {
   /// - AlinkModel
   /// - ONNX
   late final pulumi.Output<String?> formatType;
-
   /// The framework of the model. Valid values:
   /// - Pytorch
   /// - XGBoost
@@ -512,40 +509,29 @@ class WorkspaceModelVersion extends pulumi.CustomResource {
   /// - Xflow
   /// - TensorFlow
   late final pulumi.Output<String?> frameworkType;
-
   /// Describes how to apply to downstream inference services.
   late final pulumi.Output<Map<String, String>?> inferenceSpec;
-
   /// List of model version labels. See `labels` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> labels;
-
   /// The metrics for the model. The serialized length is limited to 8192.
   late final pulumi.Output<Map<String, String>?> metrics;
-
   /// The model ID.
   late final pulumi.Output<String> modelId;
-
   /// The extended field. This is a JSON string.
   late final pulumi.Output<String?> options;
-
   /// The source ID.
   late final pulumi.Output<String?> sourceId;
-
   /// The type of the model source. Valid values:
   /// - Custom: Custom.
   /// - PAIFlow:PAI workflow.
   /// - TrainingService:PAI training service.
   late final pulumi.Output<String> sourceType;
-
   /// The training configurations. Used for fine-tuning and incremental training.
   late final pulumi.Output<Map<String, String>?> trainingSpec;
-
   /// The URI of the model version.
   late final pulumi.Output<String> uri;
-
   /// The version descriptions.
   late final pulumi.Output<String?> versionDescription;
-
   /// The Model version.
   late final pulumi.Output<String> versionName;
 
@@ -558,11 +544,11 @@ class WorkspaceModelVersion extends pulumi.CustomResource {
     WorkspaceModelVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/workspaceModelVersion:WorkspaceModelVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/workspaceModelVersion:WorkspaceModelVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     approvalStatus = registerOutput<String>('approvalStatus');
     extraInfo = registerOutput<Map<String, String>?>('extraInfo');
     formatType = registerOutput<String?>('formatType');
@@ -598,11 +584,11 @@ class WorkspaceModelVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/workspaceModelVersion:WorkspaceModelVersion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/workspaceModelVersion:WorkspaceModelVersion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     approvalStatus = registerOutput<String>('approvalStatus');
     extraInfo = registerOutput<Map<String, String>?>('extraInfo');
     formatType = registerOutput<String?>('formatType');

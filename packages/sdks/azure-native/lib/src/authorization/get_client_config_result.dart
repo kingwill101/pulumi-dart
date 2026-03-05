@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getClientConfig.
 class GetClientConfigResult {
   /// Azure Client ID (Application Object ID).
   final String clientId;
-
   /// Azure Object ID of the current user or service principal.
   final String objectId;
-
   /// Azure Subscription ID
   final String subscriptionId;
-
   /// Azure Tenant ID
   final String tenantId;
 
@@ -44,3 +42,4 @@ class GetClientConfigResult {
     );
   }
 }
+

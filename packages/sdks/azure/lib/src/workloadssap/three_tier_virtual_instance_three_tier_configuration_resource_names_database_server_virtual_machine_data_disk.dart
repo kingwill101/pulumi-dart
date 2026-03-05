@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerVirtualMachineDataDisk {
   /// A list of full names of Data Disks per Volume. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>> names;
-
   /// The name of the Volume. Possible values are `default`, `hanaData`, `hanaLog`, `hanaShared` and `usrSap`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Possible value for Application Server and Central Server is `default`.
@@ -22,15 +21,17 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerV
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'names': names, 'volumeName': volumeName};
+    return <String, dynamic>{
+      'names': names,
+      'volumeName': volumeName,
+    };
   }
 
-  factory ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerVirtualMachineDataDisk.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerVirtualMachineDataDisk.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerVirtualMachineDataDisk(
       names: pulumi.Input.fromValue((map['names'] as List).cast<String>()),
       volumeName: pulumi.Input.fromValue(map['volumeName'] as String),
     );
   }
 }
+

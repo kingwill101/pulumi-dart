@@ -109,19 +109,14 @@ import 'group_membership_state.dart';
 /// ```
 class GroupMembership extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
-
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
-
   /// The name of the group in which the member will be added.
   late final pulumi.Output<String> groupName;
-
   /// The name of the member to add to the group.
   late final pulumi.Output<String> memberName;
-
   /// The namespace that you want the user to be a part of. Defaults to `default`.
   late final pulumi.Output<String?> namespace;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -134,11 +129,11 @@ class GroupMembership extends pulumi.CustomResource {
     GroupMembershipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:quicksight/groupMembership:GroupMembership',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:quicksight/groupMembership:GroupMembership',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
     groupName = registerOutput<String>('groupName');
@@ -165,11 +160,11 @@ class GroupMembership extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:quicksight/groupMembership:GroupMembership',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:quicksight/groupMembership:GroupMembership',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
     groupName = registerOutput<String>('groupName');

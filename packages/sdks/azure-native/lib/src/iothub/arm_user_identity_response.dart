@@ -9,10 +9,16 @@ class ArmUserIdentityResponse {
   /// Creates a new [ArmUserIdentityResponse].
   /// [clientId] Required.
   /// [principalId] Required.
-  ArmUserIdentityResponse({required this.clientId, required this.principalId});
+  ArmUserIdentityResponse({
+    required this.clientId,
+    required this.principalId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'clientId': clientId, 'principalId': principalId};
+    return <String, dynamic>{
+      'clientId': clientId,
+      'principalId': principalId,
+    };
   }
 
   factory ArmUserIdentityResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class ArmUserIdentityResponse {
     );
   }
 }
+

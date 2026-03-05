@@ -30,18 +30,13 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse {
     };
   }
 
-  factory SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse(
-      confidenceThreshold: pulumi.Input.fromValue(
-        map['confidenceThreshold'] as double,
-      ),
+      confidenceThreshold: pulumi.Input.fromValue(map['confidenceThreshold'] as double),
       expirationSec: pulumi.Input.fromValue(map['expirationSec'] as int),
-      impactedBaselineThreshold: pulumi.Input.fromValue(
-        map['impactedBaselineThreshold'] as double,
-      ),
+      impactedBaselineThreshold: pulumi.Input.fromValue(map['impactedBaselineThreshold'] as double),
       loadThreshold: pulumi.Input.fromValue(map['loadThreshold'] as double),
     );
   }
 }
+

@@ -12,24 +12,18 @@ import 'volume_group_network_rule.dart';
 class VolumeGroupArgs {
   /// Specifies the Elastic SAN ID within which this Elastic SAN Volume Group should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> elasticSanId;
-
   /// An `encryption` block as defined below.
   ///
   /// &gt; **Note:** The `encryption` block can only be set when `encryption_type` is set to `EncryptionAtRestWithCustomerManagedKey`.
   final pulumi.Input<VolumeGroupEncryption>? encryption;
-
   /// Specifies the type of the key used to encrypt the data of the disk. Possible values are `EncryptionAtRestWithCustomerManagedKey` and `EncryptionAtRestWithPlatformKey`. Defaults to `EncryptionAtRestWithPlatformKey`.
   final pulumi.Input<String>? encryptionType;
-
   /// An `identity` block as defined below. Specifies the Managed Identity which should be assigned to this Elastic SAN Volume Group.
   final pulumi.Input<VolumeGroupIdentity>? identity;
-
   /// Specifies the name of this Elastic SAN Volume Group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// One or more `network_rule` blocks as defined below.
   final pulumi.Input<List<VolumeGroupNetworkRule>>? networkRules;
-
   /// Specifies the type of the storage target. The only possible value is `Iscsi`. Defaults to `Iscsi`.
   final pulumi.Input<String>? protocolType;
 
@@ -54,30 +48,11 @@ class VolumeGroupArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'elasticSanId': elasticSanId,
-      'encryption':
-          ?pulumi.Input.mapOptionalInputValue<
-            VolumeGroupEncryption,
-            Map<String, dynamic>
-          >(encryption, (value) => value.toMap()),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<VolumeGroupEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'encryptionType': ?encryptionType,
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            VolumeGroupIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<VolumeGroupIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'name': ?name,
-      'networkRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VolumeGroupNetworkRule>,
-            List<Map<String, dynamic>>
-          >(
-            networkRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VolumeGroupNetworkRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'networkRules': ?pulumi.Input.mapOptionalInputValue<List<VolumeGroupNetworkRule>, List<Map<String, dynamic>>>(networkRules, (value) => pulumi.Input.encodeList<VolumeGroupNetworkRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'protocolType': ?protocolType,
     };
   }
@@ -85,51 +60,13 @@ class VolumeGroupArgs {
   factory VolumeGroupArgs.fromMap(Map<String, dynamic> map) {
     return VolumeGroupArgs(
       elasticSanId: pulumi.Input.fromValue(map['elasticSanId'] as String),
-      encryption: (() {
-        final guardedValue = map['encryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VolumeGroupEncryption.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      encryptionType: (() {
-        final guardedValue = map['encryptionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VolumeGroupIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkRules: (() {
-        final guardedValue = map['networkRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VolumeGroupNetworkRule>(
-            guardedValue,
-            (value) => VolumeGroupNetworkRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      protocolType: (() {
-        final guardedValue = map['protocolType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeGroupEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      encryptionType: (() { final guardedValue = map['encryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeGroupIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkRules: (() { final guardedValue = map['networkRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VolumeGroupNetworkRule>(guardedValue, (value) => VolumeGroupNetworkRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      protocolType: (() { final guardedValue = map['protocolType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

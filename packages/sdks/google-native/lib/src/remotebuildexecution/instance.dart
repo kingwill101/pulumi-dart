@@ -6,21 +6,14 @@ import 'instance_args.dart';
 /// Auto-naming is currently not supported for this resource.
 class Instance extends pulumi.CustomResource {
   /// The policy to define whether or not RBE features can be used or how they can be used.
-  late final pulumi.Output<
-    GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse
-  >
-  featurePolicy;
-
+  late final pulumi.Output<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse> featurePolicy;
   /// The location is a GCP region. Currently only `us-central1` is supported.
   late final pulumi.Output<String> location;
-
   /// Whether stack driver logging is enabled for the instance.
   late final pulumi.Output<bool> loggingEnabled;
-
   /// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// State of the instance.
   late final pulumi.Output<String> state;
 
@@ -33,24 +26,12 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:remotebuildexecution/v1alpha:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    featurePolicy =
-        registerOutput<
-          GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse
-        >(
-          'featurePolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'google-native:remotebuildexecution/v1alpha:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    featurePolicy = registerOutput<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse>('featurePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     loggingEnabled = registerOutput<bool>('loggingEnabled');
     this.name = registerOutput<String>('name');

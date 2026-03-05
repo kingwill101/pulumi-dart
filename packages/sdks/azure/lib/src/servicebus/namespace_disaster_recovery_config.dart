@@ -314,25 +314,18 @@ import 'namespace_disaster_recovery_config_state.dart';
 class NamespaceDisasterRecoveryConfig extends pulumi.CustomResource {
   /// The Shared access policies used to access the connection string for the alias.
   late final pulumi.Output<String?> aliasAuthorizationRuleId;
-
   /// The primary access key for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> defaultPrimaryKey;
-
   /// The secondary access key for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> defaultSecondaryKey;
-
   /// Specifies the name of the Disaster Recovery Config. This is the alias DNS name that will be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Service Bus Namespace to replicate to.
   late final pulumi.Output<String> partnerNamespaceId;
-
   /// The alias Primary Connection String for the ServiceBus Namespace.
   late final pulumi.Output<String> primaryConnectionStringAlias;
-
   /// The ID of the primary Service Bus Namespace to replicate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> primaryNamespaceId;
-
   /// The alias Secondary Connection String for the ServiceBus Namespace
   late final pulumi.Output<String> secondaryConnectionStringAlias;
 
@@ -345,25 +338,19 @@ class NamespaceDisasterRecoveryConfig extends pulumi.CustomResource {
     NamespaceDisasterRecoveryConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:servicebus/namespaceDisasterRecoveryConfig:NamespaceDisasterRecoveryConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    aliasAuthorizationRuleId = registerOutput<String?>(
-      'aliasAuthorizationRuleId',
-    );
+          'azure:servicebus/namespaceDisasterRecoveryConfig:NamespaceDisasterRecoveryConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    aliasAuthorizationRuleId = registerOutput<String?>('aliasAuthorizationRuleId');
     defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey');
     defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
     this.name = registerOutput<String>('name');
     partnerNamespaceId = registerOutput<String>('partnerNamespaceId');
-    primaryConnectionStringAlias = registerOutput<String>(
-      'primaryConnectionStringAlias',
-    );
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
     primaryNamespaceId = registerOutput<String>('primaryNamespaceId');
-    secondaryConnectionStringAlias = registerOutput<String>(
-      'secondaryConnectionStringAlias',
-    );
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
   }
 
   /// Gets an existing [NamespaceDisasterRecoveryConfig] resource's state with the given [name] and [id].
@@ -384,24 +371,18 @@ class NamespaceDisasterRecoveryConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:servicebus/namespaceDisasterRecoveryConfig:NamespaceDisasterRecoveryConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    aliasAuthorizationRuleId = registerOutput<String?>(
-      'aliasAuthorizationRuleId',
-    );
+          'azure:servicebus/namespaceDisasterRecoveryConfig:NamespaceDisasterRecoveryConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    aliasAuthorizationRuleId = registerOutput<String?>('aliasAuthorizationRuleId');
     defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey');
     defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
     this.name = registerOutput<String>('name');
     partnerNamespaceId = registerOutput<String>('partnerNamespaceId');
-    primaryConnectionStringAlias = registerOutput<String>(
-      'primaryConnectionStringAlias',
-    );
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
     primaryNamespaceId = registerOutput<String>('primaryNamespaceId');
-    secondaryConnectionStringAlias = registerOutput<String>(
-      'secondaryConnectionStringAlias',
-    );
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
   }
 }

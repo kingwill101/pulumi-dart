@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCiphertext.
 class GetCiphertextResult {
   /// The ciphertext of the data key encrypted with the primary CMK version.
   final String ciphertextBlob;
   final Map<String, String>? encryptionContext;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String keyId;
@@ -38,14 +38,11 @@ class GetCiphertextResult {
   factory GetCiphertextResult.fromMap(Map<String, dynamic> map) {
     return GetCiphertextResult(
       ciphertextBlob: map['ciphertextBlob'] as String,
-      encryptionContext: (() {
-        final guardedValue = map['encryptionContext'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      encryptionContext: (() { final guardedValue = map['encryptionContext']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       id: map['id'] as String,
       keyId: map['keyId'] as String,
       plaintext: map['plaintext'] as String,
     );
   }
 }
+

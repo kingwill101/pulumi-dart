@@ -182,43 +182,30 @@ import 'database_valkey_config_state.dart';
 class DatabaseValkeyConfig extends pulumi.CustomResource {
   /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
   late final pulumi.Output<String> aclChannelsDefault;
-
   /// The ID of the target Valkey cluster.
   late final pulumi.Output<String> clusterId;
-
   /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
   late final pulumi.Output<bool> frequentSnapshots;
-
   /// The Valkey IO thread count.
   late final pulumi.Output<int> ioThreads;
-
   /// The LFU maxmemory policy counter decay time in minutes.
   late final pulumi.Output<int> lfuDecayTime;
-
   /// The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
   late final pulumi.Output<int> lfuLogFactor;
-
   /// The `notify-keyspace-events` option. Requires at least `K` or `E`.
   late final pulumi.Output<String> notifyKeyspaceEvents;
-
   /// The number of Valkey databases. Changing this will cause a restart of Valkey service.
   late final pulumi.Output<int> numberOfDatabases;
-
   /// When persistence is 'rdb', Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
   late final pulumi.Output<String> persistence;
-
   /// The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
   late final pulumi.Output<int> pubsubClientOutputBufferLimit;
-
   /// A boolean indicating whether to require SSL to access Valkey.
   late final pulumi.Output<bool> ssl;
-
   /// The Valkey idle connection timeout in seconds.
   late final pulumi.Output<int> timeout;
-
   /// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
   late final pulumi.Output<int> valkeyActiveExpireEffort;
-
   /// Eviction policy model
   late final pulumi.Output<String> valkeyMaxmemoryPolicy;
 
@@ -231,11 +218,11 @@ class DatabaseValkeyConfig extends pulumi.CustomResource {
     DatabaseValkeyConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclChannelsDefault = registerOutput<String>('aclChannelsDefault');
     clusterId = registerOutput<String>('clusterId');
     frequentSnapshots = registerOutput<bool>('frequentSnapshots');
@@ -245,9 +232,7 @@ class DatabaseValkeyConfig extends pulumi.CustomResource {
     notifyKeyspaceEvents = registerOutput<String>('notifyKeyspaceEvents');
     numberOfDatabases = registerOutput<int>('numberOfDatabases');
     persistence = registerOutput<String>('persistence');
-    pubsubClientOutputBufferLimit = registerOutput<int>(
-      'pubsubClientOutputBufferLimit',
-    );
+    pubsubClientOutputBufferLimit = registerOutput<int>('pubsubClientOutputBufferLimit');
     ssl = registerOutput<bool>('ssl');
     timeout = registerOutput<int>('timeout');
     valkeyActiveExpireEffort = registerOutput<int>('valkeyActiveExpireEffort');
@@ -272,11 +257,11 @@ class DatabaseValkeyConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclChannelsDefault = registerOutput<String>('aclChannelsDefault');
     clusterId = registerOutput<String>('clusterId');
     frequentSnapshots = registerOutput<bool>('frequentSnapshots');
@@ -286,9 +271,7 @@ class DatabaseValkeyConfig extends pulumi.CustomResource {
     notifyKeyspaceEvents = registerOutput<String>('notifyKeyspaceEvents');
     numberOfDatabases = registerOutput<int>('numberOfDatabases');
     persistence = registerOutput<String>('persistence');
-    pubsubClientOutputBufferLimit = registerOutput<int>(
-      'pubsubClientOutputBufferLimit',
-    );
+    pubsubClientOutputBufferLimit = registerOutput<int>('pubsubClientOutputBufferLimit');
     ssl = registerOutput<bool>('ssl');
     timeout = registerOutput<int>('timeout');
     valkeyActiveExpireEffort = registerOutput<int>('valkeyActiveExpireEffort');

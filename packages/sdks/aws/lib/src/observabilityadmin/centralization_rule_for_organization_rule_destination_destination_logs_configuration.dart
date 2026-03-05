@@ -6,16 +6,9 @@ import 'centralization_rule_for_organization_rule_destination_destination_logs_c
 
 class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration {
   /// Configuration block for backup settings. See `backup_configuration` below.
-  final pulumi.Input<
-    CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration
-  >?
-  backupConfiguration;
-
+  final pulumi.Input<CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration>? backupConfiguration;
   /// Configuration block for logs encryption settings. See `logs_encryption_configuration` below.
-  final pulumi.Input<
-    CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration
-  >?
-  logsEncryptionConfiguration;
+  final pulumi.Input<CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration>? logsEncryptionConfiguration;
 
   /// Creates a new [CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration].
   /// [backupConfiguration] Configuration block for backup settings. See `backup_configuration` below.
@@ -27,41 +20,16 @@ class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurati
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration,
-            Map<String, dynamic>
-          >(backupConfiguration, (value) => value.toMap()),
-      'logsEncryptionConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration,
-            Map<String, dynamic>
-          >(logsEncryptionConfiguration, (value) => value.toMap()),
+      'backupConfiguration': ?pulumi.Input.mapOptionalInputValue<CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration, Map<String, dynamic>>(backupConfiguration, (value) => value.toMap()),
+      'logsEncryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration, Map<String, dynamic>>(logsEncryptionConfiguration, (value) => value.toMap()),
     };
   }
 
-  factory CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration.fromMap(Map<String, dynamic> map) {
     return CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration(
-      backupConfiguration: (() {
-        final guardedValue = map['backupConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      logsEncryptionConfiguration: (() {
-        final guardedValue = map['logsEncryptionConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      backupConfiguration: (() { final guardedValue = map['backupConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      logsEncryptionConfiguration: (() { final guardedValue = map['logsEncryptionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

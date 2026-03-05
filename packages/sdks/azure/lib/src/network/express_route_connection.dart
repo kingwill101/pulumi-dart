@@ -503,26 +503,19 @@ import 'express_route_connection_state.dart';
 class ExpressRouteConnection extends pulumi.CustomResource {
   /// The authorization key to establish the Express Route Connection.
   late final pulumi.Output<String?> authorizationKey;
-
   /// Is Internet security enabled for this Express Route Connection?
   late final pulumi.Output<bool?> enableInternetSecurity;
-
   /// The ID of the Express Route Circuit Peering that this Express Route Connection connects with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> expressRouteCircuitPeeringId;
-
   /// Specified whether Fast Path is enabled for Virtual Wan Firewall Hub. Defaults to `false`.
   late final pulumi.Output<bool?> expressRouteGatewayBypassEnabled;
-
   /// The ID of the Express Route Gateway that this Express Route Connection connects with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> expressRouteGatewayId;
-
   /// The name which should be used for this Express Route Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   late final pulumi.Output<bool?> privateLinkFastPathEnabled;
-
   /// A `routing` block as defined below.
   late final pulumi.Output<ExpressRouteConnectionRouting> routing;
-
   /// The routing weight associated to the Express Route Connection. Possible value is between `0` and `32000`. Defaults to `0`.
   late final pulumi.Output<int?> routingWeight;
 
@@ -535,34 +528,19 @@ class ExpressRouteConnection extends pulumi.CustomResource {
     ExpressRouteConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/expressRouteConnection:ExpressRouteConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/expressRouteConnection:ExpressRouteConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizationKey = registerOutput<String?>('authorizationKey');
     enableInternetSecurity = registerOutput<bool?>('enableInternetSecurity');
-    expressRouteCircuitPeeringId = registerOutput<String>(
-      'expressRouteCircuitPeeringId',
-    );
-    expressRouteGatewayBypassEnabled = registerOutput<bool?>(
-      'expressRouteGatewayBypassEnabled',
-    );
+    expressRouteCircuitPeeringId = registerOutput<String>('expressRouteCircuitPeeringId');
+    expressRouteGatewayBypassEnabled = registerOutput<bool?>('expressRouteGatewayBypassEnabled');
     expressRouteGatewayId = registerOutput<String>('expressRouteGatewayId');
     this.name = registerOutput<String>('name');
-    privateLinkFastPathEnabled = registerOutput<bool?>(
-      'privateLinkFastPathEnabled',
-    );
-    routing = registerOutput<ExpressRouteConnectionRouting>(
-      'routing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExpressRouteConnectionRouting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    privateLinkFastPathEnabled = registerOutput<bool?>('privateLinkFastPathEnabled');
+    routing = registerOutput<ExpressRouteConnectionRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteConnectionRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     routingWeight = registerOutput<int?>('routingWeight');
   }
 
@@ -584,34 +562,19 @@ class ExpressRouteConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/expressRouteConnection:ExpressRouteConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/expressRouteConnection:ExpressRouteConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizationKey = registerOutput<String?>('authorizationKey');
     enableInternetSecurity = registerOutput<bool?>('enableInternetSecurity');
-    expressRouteCircuitPeeringId = registerOutput<String>(
-      'expressRouteCircuitPeeringId',
-    );
-    expressRouteGatewayBypassEnabled = registerOutput<bool?>(
-      'expressRouteGatewayBypassEnabled',
-    );
+    expressRouteCircuitPeeringId = registerOutput<String>('expressRouteCircuitPeeringId');
+    expressRouteGatewayBypassEnabled = registerOutput<bool?>('expressRouteGatewayBypassEnabled');
     expressRouteGatewayId = registerOutput<String>('expressRouteGatewayId');
     this.name = registerOutput<String>('name');
-    privateLinkFastPathEnabled = registerOutput<bool?>(
-      'privateLinkFastPathEnabled',
-    );
-    routing = registerOutput<ExpressRouteConnectionRouting>(
-      'routing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExpressRouteConnectionRouting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    privateLinkFastPathEnabled = registerOutput<bool?>('privateLinkFastPathEnabled');
+    routing = registerOutput<ExpressRouteConnectionRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteConnectionRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     routingWeight = registerOutput<int?>('routingWeight');
   }
 }

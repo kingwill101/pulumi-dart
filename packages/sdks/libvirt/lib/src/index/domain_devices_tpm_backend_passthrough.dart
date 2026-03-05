@@ -9,29 +9,20 @@ class DomainDevicesTpmBackendPassthrough {
 
   /// Creates a new [DomainDevicesTpmBackendPassthrough].
   /// [device] Sets parameters for the passthrough device associated with the TPM.
-  DomainDevicesTpmBackendPassthrough({this.device});
+  DomainDevicesTpmBackendPassthrough({
+    this.device,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'device':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesTpmBackendPassthroughDevice,
-            Map<String, dynamic>
-          >(device, (value) => value.toMap()),
+      'device': ?pulumi.Input.mapOptionalInputValue<DomainDevicesTpmBackendPassthroughDevice, Map<String, dynamic>>(device, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesTpmBackendPassthrough.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendPassthrough(
-      device: (() {
-        final guardedValue = map['device'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesTpmBackendPassthroughDevice.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      device: (() { final guardedValue = map['device']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesTpmBackendPassthroughDevice.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

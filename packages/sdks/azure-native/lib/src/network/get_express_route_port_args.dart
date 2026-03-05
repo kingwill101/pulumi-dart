@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExpressRoutePortArgs {
   /// The name of ExpressRoutePort.
   final pulumi.Input<String> expressRoutePortName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetExpressRoutePortArgs {
 
   factory GetExpressRoutePortArgs.fromMap(Map<String, dynamic> map) {
     return GetExpressRoutePortArgs(
-      expressRoutePortName: pulumi.Input.fromValue(
-        map['expressRoutePortName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      expressRoutePortName: pulumi.Input.fromValue(map['expressRoutePortName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

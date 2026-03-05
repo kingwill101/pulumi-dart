@@ -9,19 +9,20 @@ class KeyAlgorithmEnumValueResponse {
 
   /// Creates a new [KeyAlgorithmEnumValueResponse].
   /// [value] Property value
-  KeyAlgorithmEnumValueResponse({this.value});
+  KeyAlgorithmEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory KeyAlgorithmEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return KeyAlgorithmEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

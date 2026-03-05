@@ -15,3 +15,4 @@ enum JsonMapperElement {
     throw ArgumentError('Unknown JsonMapperElement value: $value');
   }
 }
+

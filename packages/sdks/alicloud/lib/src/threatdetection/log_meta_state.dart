@@ -26,31 +26,29 @@ class LogMetaState {
   /// - sas-filedetect-log: file detection log
   /// - sas-net-block: Network Defense Log
   final pulumi.Input<String>? logMetaName;
-
   /// The status of the resource
   final pulumi.Input<String>? status;
 
   /// Creates a new [LogMetaState].
   /// [logMetaName] The name of the exclusive Logstore where logs are stored. Value:
   /// [status] The status of the resource
-  LogMetaState({this.logMetaName, this.status});
+  LogMetaState({
+    this.logMetaName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'logMetaName': ?logMetaName, 'status': ?status};
+    return <String, dynamic>{
+      'logMetaName': ?logMetaName,
+      'status': ?status,
+    };
   }
 
   factory LogMetaState.fromMap(Map<String, dynamic> map) {
     return LogMetaState(
-      logMetaName: (() {
-        final guardedValue = map['logMetaName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      logMetaName: (() { final guardedValue = map['logMetaName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

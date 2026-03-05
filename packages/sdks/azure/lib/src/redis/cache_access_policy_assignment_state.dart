@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheAccessPolicyAssignmentState {
   /// The name of the Access Policy to be assigned. Changing this forces a new Redis Cache Access Policy Assignment to be created.
   final pulumi.Input<String>? accessPolicyName;
-
   /// The name of the Redis Cache Access Policy Assignment. Changing this forces a new Redis Cache Access Policy Assignment to be created.
   final pulumi.Input<String>? name;
-
   /// The principal ID to be assigned the Access Policy. Changing this forces a new Redis Cache Access Policy Assignment to be created.
   final pulumi.Input<String>? objectId;
-
   /// The alias of the principal ID. User-friendly name for object ID. Also represents username for token based authentication. Changing this forces a new Redis Cache Access Policy Assignment to be created.
   final pulumi.Input<String>? objectIdAlias;
-
   /// The ID of the Redis Cache. Changing this forces a new Redis Cache Access Policy Assignment to be created.
   final pulumi.Input<String>? redisCacheId;
 
@@ -45,31 +41,12 @@ class CacheAccessPolicyAssignmentState {
 
   factory CacheAccessPolicyAssignmentState.fromMap(Map<String, dynamic> map) {
     return CacheAccessPolicyAssignmentState(
-      accessPolicyName: (() {
-        final guardedValue = map['accessPolicyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      objectId: (() {
-        final guardedValue = map['objectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      objectIdAlias: (() {
-        final guardedValue = map['objectIdAlias'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      redisCacheId: (() {
-        final guardedValue = map['redisCacheId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessPolicyName: (() { final guardedValue = map['accessPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      objectIdAlias: (() { final guardedValue = map['objectIdAlias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redisCacheId: (() { final guardedValue = map['redisCacheId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,40 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareVmDetailsResponseVmmigrationV1alpha1 {
   /// The VM Boot Option.
   final pulumi.Input<String> bootOption;
-
   /// The total size of the storage allocated to the VM in MB.
   final pulumi.Input<String> committedStorage;
-
   /// The total size of the storage allocated to the VM in MB.
   final pulumi.Input<String> committedStorageMb;
-
   /// The number of cpus in the VM.
   final pulumi.Input<int> cpuCount;
-
   /// The descriptive name of the vCenter's datacenter this VM is contained in.
   final pulumi.Input<String> datacenterDescription;
-
   /// The id of the vCenter's datacenter this VM is contained in.
   final pulumi.Input<String> datacenterId;
-
   /// The number of disks the VM has.
   final pulumi.Input<int> diskCount;
-
   /// The display name of the VM. Note that this is not necessarily unique.
   final pulumi.Input<String> displayName;
-
   /// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
   final pulumi.Input<String> guestDescription;
-
   /// The size of the memory of the VM in MB.
   final pulumi.Input<int> memoryMb;
-
   /// The power state of the VM at the moment list was taken.
   final pulumi.Input<String> powerState;
-
   /// The unique identifier of the VM in vCenter.
   final pulumi.Input<String> uuid;
-
   /// The VM's id in the source (note that this is not the MigratingVm's id). This is the moref id of the VM.
   final pulumi.Input<String> vmId;
 
@@ -91,27 +79,17 @@ class VmwareVmDetailsResponseVmmigrationV1alpha1 {
     };
   }
 
-  factory VmwareVmDetailsResponseVmmigrationV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VmwareVmDetailsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return VmwareVmDetailsResponseVmmigrationV1alpha1(
       bootOption: pulumi.Input.fromValue(map['bootOption'] as String),
-      committedStorage: pulumi.Input.fromValue(
-        map['committedStorage'] as String,
-      ),
-      committedStorageMb: pulumi.Input.fromValue(
-        map['committedStorageMb'] as String,
-      ),
+      committedStorage: pulumi.Input.fromValue(map['committedStorage'] as String),
+      committedStorageMb: pulumi.Input.fromValue(map['committedStorageMb'] as String),
       cpuCount: pulumi.Input.fromValue(map['cpuCount'] as int),
-      datacenterDescription: pulumi.Input.fromValue(
-        map['datacenterDescription'] as String,
-      ),
+      datacenterDescription: pulumi.Input.fromValue(map['datacenterDescription'] as String),
       datacenterId: pulumi.Input.fromValue(map['datacenterId'] as String),
       diskCount: pulumi.Input.fromValue(map['diskCount'] as int),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      guestDescription: pulumi.Input.fromValue(
-        map['guestDescription'] as String,
-      ),
+      guestDescription: pulumi.Input.fromValue(map['guestDescription'] as String),
       memoryMb: pulumi.Input.fromValue(map['memoryMb'] as int),
       powerState: pulumi.Input.fromValue(map['powerState'] as String),
       uuid: pulumi.Input.fromValue(map['uuid'] as String),
@@ -119,3 +97,4 @@ class VmwareVmDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
+

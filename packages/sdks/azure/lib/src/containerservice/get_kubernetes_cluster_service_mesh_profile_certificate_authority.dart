@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesClusterServiceMeshProfileCertificateAuthority {
   /// The certificate chain object name in Azure Key Vault.
   final pulumi.Input<String> certChainObjectName;
-
   /// The intermediate certificate object name in Azure Key Vault.
   final pulumi.Input<String> certObjectName;
-
   /// The intermediate certificate private key object name in Azure Key Vault.
   final pulumi.Input<String> keyObjectName;
-
   /// The resource ID of the Key Vault.
   final pulumi.Input<String> keyVaultId;
-
   /// The root certificate object name in Azure Key Vault.
   final pulumi.Input<String> rootCertObjectName;
 
@@ -42,19 +38,14 @@ class GetKubernetesClusterServiceMeshProfileCertificateAuthority {
     };
   }
 
-  factory GetKubernetesClusterServiceMeshProfileCertificateAuthority.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetKubernetesClusterServiceMeshProfileCertificateAuthority.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterServiceMeshProfileCertificateAuthority(
-      certChainObjectName: pulumi.Input.fromValue(
-        map['certChainObjectName'] as String,
-      ),
+      certChainObjectName: pulumi.Input.fromValue(map['certChainObjectName'] as String),
       certObjectName: pulumi.Input.fromValue(map['certObjectName'] as String),
       keyObjectName: pulumi.Input.fromValue(map['keyObjectName'] as String),
       keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
-      rootCertObjectName: pulumi.Input.fromValue(
-        map['rootCertObjectName'] as String,
-      ),
+      rootCertObjectName: pulumi.Input.fromValue(map['rootCertObjectName'] as String),
     );
   }
 }
+

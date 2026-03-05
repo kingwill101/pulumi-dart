@@ -9,39 +9,20 @@ class DomainSysInfoSmbiosProcessor {
 
   /// Creates a new [DomainSysInfoSmbiosProcessor].
   /// [entries] Specifies individual entries for processor information in the SMBIOS.
-  DomainSysInfoSmbiosProcessor({this.entries});
+  DomainSysInfoSmbiosProcessor({
+    this.entries,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entries':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DomainSysInfoSmbiosProcessorEntry>,
-            List<Map<String, dynamic>>
-          >(
-            entries,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DomainSysInfoSmbiosProcessorEntry,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'entries': ?pulumi.Input.mapOptionalInputValue<List<DomainSysInfoSmbiosProcessorEntry>, List<Map<String, dynamic>>>(entries, (value) => pulumi.Input.encodeList<DomainSysInfoSmbiosProcessorEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainSysInfoSmbiosProcessor.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbiosProcessor(
-      entries: (() {
-        final guardedValue = map['entries'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DomainSysInfoSmbiosProcessorEntry>(
-            guardedValue,
-            (value) => DomainSysInfoSmbiosProcessorEntry.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      entries: (() { final guardedValue = map['entries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainSysInfoSmbiosProcessorEntry>(guardedValue, (value) => DomainSysInfoSmbiosProcessorEntry.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

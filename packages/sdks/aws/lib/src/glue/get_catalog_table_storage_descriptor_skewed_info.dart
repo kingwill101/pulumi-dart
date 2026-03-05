@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCatalogTableStorageDescriptorSkewedInfo {
   /// List of names of columns that contain skewed values.
   final pulumi.Input<List<String>> skewedColumnNames;
-
   /// List of values that appear so frequently as to be considered skewed.
   final pulumi.Input<Map<String, String>> skewedColumnValueLocationMaps;
-
   /// Map of skewed values to the columns that contain them.
   final pulumi.Input<List<String>> skewedColumnValues;
 
@@ -30,19 +28,12 @@ class GetCatalogTableStorageDescriptorSkewedInfo {
     };
   }
 
-  factory GetCatalogTableStorageDescriptorSkewedInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCatalogTableStorageDescriptorSkewedInfo.fromMap(Map<String, dynamic> map) {
     return GetCatalogTableStorageDescriptorSkewedInfo(
-      skewedColumnNames: pulumi.Input.fromValue(
-        (map['skewedColumnNames'] as List).cast<String>(),
-      ),
-      skewedColumnValueLocationMaps: pulumi.Input.fromValue(
-        (map['skewedColumnValueLocationMaps'] as Map).cast<String, String>(),
-      ),
-      skewedColumnValues: pulumi.Input.fromValue(
-        (map['skewedColumnValues'] as List).cast<String>(),
-      ),
+      skewedColumnNames: pulumi.Input.fromValue((map['skewedColumnNames'] as List).cast<String>()),
+      skewedColumnValueLocationMaps: pulumi.Input.fromValue((map['skewedColumnValueLocationMaps'] as Map).cast<String, String>()),
+      skewedColumnValues: pulumi.Input.fromValue((map['skewedColumnValues'] as List).cast<String>()),
     );
   }
 }
+

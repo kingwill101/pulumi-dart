@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientInfoDetailResponse {
   /// The key of detailed client information.
   final pulumi.Input<String> key;
-
   /// The value of detailed client information.
   final pulumi.Input<String> value;
 
   /// Creates a new [ClientInfoDetailResponse].
   /// [key] The key of detailed client information.
   /// [value] The value of detailed client information.
-  ClientInfoDetailResponse({required this.key, required this.value});
+  ClientInfoDetailResponse({
+    required this.key,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory ClientInfoDetailResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ClientInfoDetailResponse {
     );
   }
 }
+

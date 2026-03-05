@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetadataItem {
   /// The name of the metadata item.
   final pulumi.Input<String> name;
-
   /// The value of the metadata item.
   final pulumi.Input<String> value;
 
   /// Creates a new [MetadataItem].
   /// [name] The name of the metadata item.
   /// [value] The value of the metadata item.
-  MetadataItem({required this.name, required this.value});
+  MetadataItem({
+    required this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory MetadataItem.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class MetadataItem {
     );
   }
 }
+

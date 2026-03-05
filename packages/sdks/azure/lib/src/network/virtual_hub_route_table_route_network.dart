@@ -550,19 +550,14 @@ import 'virtual_hub_route_table_route_state.dart';
 class VirtualHubRouteTableRouteNetwork extends pulumi.CustomResource {
   /// A list of destination addresses for this route.
   late final pulumi.Output<List<String>> destinations;
-
   /// The type of destinations. Possible values are `CIDR`, `ResourceId` and `Service`.
   late final pulumi.Output<String> destinationsType;
-
   /// The name which should be used for this route. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The next hop's resource ID.
   late final pulumi.Output<String> nextHop;
-
   /// The type of next hop. Currently the only possible value is `ResourceId`. Defaults to `ResourceId`.
   late final pulumi.Output<String?> nextHopType;
-
   /// The ID of the Virtual Hub Route Table to link this route to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> routeTableId;
 
@@ -575,11 +570,11 @@ class VirtualHubRouteTableRouteNetwork extends pulumi.CustomResource {
     VirtualHubRouteTableRouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualHubRouteTableRoute:VirtualHubRouteTableRoute',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/virtualHubRouteTableRoute:VirtualHubRouteTableRoute',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     destinations = registerOutput<List<String>>('destinations');
     destinationsType = registerOutput<String>('destinationsType');
     this.name = registerOutput<String>('name');
@@ -606,11 +601,11 @@ class VirtualHubRouteTableRouteNetwork extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualHubRouteTableRoute:VirtualHubRouteTableRoute',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/virtualHubRouteTableRoute:VirtualHubRouteTableRoute',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     destinations = registerOutput<List<String>>('destinations');
     destinationsType = registerOutput<String>('destinationsType');
     this.name = registerOutput<String>('name');

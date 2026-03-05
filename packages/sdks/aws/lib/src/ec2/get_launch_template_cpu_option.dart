@@ -33,10 +33,9 @@ class GetLaunchTemplateCpuOption {
     return GetLaunchTemplateCpuOption(
       amdSevSnp: pulumi.Input.fromValue(map['amdSevSnp'] as String),
       coreCount: pulumi.Input.fromValue(map['coreCount'] as int),
-      nestedVirtualization: pulumi.Input.fromValue(
-        map['nestedVirtualization'] as String,
-      ),
+      nestedVirtualization: pulumi.Input.fromValue(map['nestedVirtualization'] as String),
       threadsPerCore: pulumi.Input.fromValue(map['threadsPerCore'] as int),
     );
   }
 }
+

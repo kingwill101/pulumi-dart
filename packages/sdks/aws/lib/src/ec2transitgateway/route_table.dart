@@ -101,22 +101,16 @@ import 'route_table_state.dart';
 class RouteTable extends pulumi.CustomResource {
   /// EC2 Transit Gateway Route Table Amazon Resource Name (ARN).
   late final pulumi.Output<String> arn;
-
   /// Boolean whether this is the default association route table for the EC2 Transit Gateway.
   late final pulumi.Output<bool> defaultAssociationRouteTable;
-
   /// Boolean whether this is the default propagation route table for the EC2 Transit Gateway.
   late final pulumi.Output<bool> defaultPropagationRouteTable;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value tags for the EC2 Transit Gateway Route Table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Identifier of EC2 Transit Gateway.
   late final pulumi.Output<String> transitGatewayId;
 
@@ -129,18 +123,14 @@ class RouteTable extends pulumi.CustomResource {
     RouteTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2transitgateway/routeTable:RouteTable',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2transitgateway/routeTable:RouteTable',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    defaultAssociationRouteTable = registerOutput<bool>(
-      'defaultAssociationRouteTable',
-    );
-    defaultPropagationRouteTable = registerOutput<bool>(
-      'defaultPropagationRouteTable',
-    );
+    defaultAssociationRouteTable = registerOutput<bool>('defaultAssociationRouteTable');
+    defaultPropagationRouteTable = registerOutput<bool>('defaultPropagationRouteTable');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -165,18 +155,14 @@ class RouteTable extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2transitgateway/routeTable:RouteTable',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2transitgateway/routeTable:RouteTable',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    defaultAssociationRouteTable = registerOutput<bool>(
-      'defaultAssociationRouteTable',
-    );
-    defaultPropagationRouteTable = registerOutput<bool>(
-      'defaultPropagationRouteTable',
-    );
+    defaultAssociationRouteTable = registerOutput<bool>('defaultAssociationRouteTable');
+    defaultPropagationRouteTable = registerOutput<bool>('defaultPropagationRouteTable');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

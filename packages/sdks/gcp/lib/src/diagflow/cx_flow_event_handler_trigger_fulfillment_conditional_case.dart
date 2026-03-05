@@ -9,21 +9,20 @@ class CxFlowEventHandlerTriggerFulfillmentConditionalCase {
 
   /// Creates a new [CxFlowEventHandlerTriggerFulfillmentConditionalCase].
   /// [cases] A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
-  CxFlowEventHandlerTriggerFulfillmentConditionalCase({this.cases});
+  CxFlowEventHandlerTriggerFulfillmentConditionalCase({
+    this.cases,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cases': ?cases};
+    return <String, dynamic>{
+      'cases': ?cases,
+    };
   }
 
-  factory CxFlowEventHandlerTriggerFulfillmentConditionalCase.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxFlowEventHandlerTriggerFulfillmentConditionalCase.fromMap(Map<String, dynamic> map) {
     return CxFlowEventHandlerTriggerFulfillmentConditionalCase(
-      cases: (() {
-        final guardedValue = map['cases'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cases: (() { final guardedValue = map['cases']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

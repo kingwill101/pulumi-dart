@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTiersTier {
   /// The maximum disk size of this tier in bytes.
   final pulumi.Input<int> diskQuota;
-
   /// The maximum ram usage of this tier in bytes.
   final pulumi.Input<int> ram;
-
   /// The applicable regions for this tier.
   final pulumi.Input<List<String>> regions;
-
   /// An identifier for the machine type, for example, db-custom-1-3840.
   final pulumi.Input<String> tier;
 
@@ -45,3 +42,4 @@ class GetTiersTier {
     );
   }
 }
+

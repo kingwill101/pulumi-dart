@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWorkspaceSubscriptionSecretsArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
-
   /// Subscription entity Identifier. The entity represents the association between a user and a product in API Management.
   final pulumi.Input<String> sid;
-
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 
@@ -40,16 +37,13 @@ class ListWorkspaceSubscriptionSecretsArgs {
     };
   }
 
-  factory ListWorkspaceSubscriptionSecretsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListWorkspaceSubscriptionSecretsArgs.fromMap(Map<String, dynamic> map) {
     return ListWorkspaceSubscriptionSecretsArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
       sid: pulumi.Input.fromValue(map['sid'] as String),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
+

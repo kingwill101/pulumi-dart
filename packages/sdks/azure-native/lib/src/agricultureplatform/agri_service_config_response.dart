@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgriServiceConfigResponse {
   /// App service resource Id.
   final pulumi.Input<String> appServiceResourceId;
-
   /// Cosmos Db resource Id.
   final pulumi.Input<String> cosmosDbResourceId;
-
   /// Instance URI of the AgriService instance.
   final pulumi.Input<String> instanceUri;
-
   /// Key vault resource Id.
   final pulumi.Input<String> keyVaultResourceId;
-
   /// Redis cache resource Id.
   final pulumi.Input<String> redisCacheResourceId;
-
   /// Storage account resource Id.
   final pulumi.Input<String> storageAccountResourceId;
-
   /// Version of AgriService instance.
   final pulumi.Input<String> version;
 
@@ -57,23 +51,14 @@ class AgriServiceConfigResponse {
 
   factory AgriServiceConfigResponse.fromMap(Map<String, dynamic> map) {
     return AgriServiceConfigResponse(
-      appServiceResourceId: pulumi.Input.fromValue(
-        map['appServiceResourceId'] as String,
-      ),
-      cosmosDbResourceId: pulumi.Input.fromValue(
-        map['cosmosDbResourceId'] as String,
-      ),
+      appServiceResourceId: pulumi.Input.fromValue(map['appServiceResourceId'] as String),
+      cosmosDbResourceId: pulumi.Input.fromValue(map['cosmosDbResourceId'] as String),
       instanceUri: pulumi.Input.fromValue(map['instanceUri'] as String),
-      keyVaultResourceId: pulumi.Input.fromValue(
-        map['keyVaultResourceId'] as String,
-      ),
-      redisCacheResourceId: pulumi.Input.fromValue(
-        map['redisCacheResourceId'] as String,
-      ),
-      storageAccountResourceId: pulumi.Input.fromValue(
-        map['storageAccountResourceId'] as String,
-      ),
+      keyVaultResourceId: pulumi.Input.fromValue(map['keyVaultResourceId'] as String),
+      redisCacheResourceId: pulumi.Input.fromValue(map['redisCacheResourceId'] as String),
+      storageAccountResourceId: pulumi.Input.fromValue(map['storageAccountResourceId'] as String),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

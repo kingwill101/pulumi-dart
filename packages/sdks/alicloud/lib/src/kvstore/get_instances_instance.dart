@@ -5,160 +5,108 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
   final pulumi.Input<String> architectureType;
-
   /// Indicates whether auto-renewal is enabled for the instance.
   final pulumi.Input<bool> autoRenew;
-
   /// The duration for which the instance is automatically renewed. Unit: months.
   final pulumi.Input<int> autoRenewPeriod;
-
   /// It has been deprecated from provider version 1.101.0 and `zone_id` instead.
   final pulumi.Input<String> availabilityZone;
-
   /// Instance bandwidth limit. Unit: Mbit/s.
   final pulumi.Input<int> bandwidth;
-
   /// Capacity of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. Unit: MB.
   final pulumi.Input<int> capacity;
-
   /// It has been deprecated from provider version 1.101.0 and `payment_type` instead.
   final pulumi.Input<String> chargeType;
-
   /// The parameter configuration of the instance.
   final pulumi.Input<Map<String, String>> config;
-
   /// Instance connection domain (only Intranet access supported).
   final pulumi.Input<String> connectionDomain;
-
   /// The connection mode of the instance.
   final pulumi.Input<String> connectionMode;
-
   /// IIt has been deprecated from provider version 1.101.0 and `max_connections` instead.
   final pulumi.Input<int> connections;
-
   /// Creation time of the instance.
   final pulumi.Input<String> createTime;
-
   /// The ID of the instance.
   final pulumi.Input<String> dbInstanceId;
-
   /// The name of the instance.
   final pulumi.Input<String> dbInstanceName;
-
   /// The time when the instance was destroyed.
   final pulumi.Input<String> destroyTime;
-
   /// Expiration time. Pay-As-You-Go instances are never expire.
   final pulumi.Input<String> endTime;
-
   /// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
   final pulumi.Input<String> engineVersion;
-
   /// It has been deprecated from provider version 1.101.0 and `end_time` instead.
   final pulumi.Input<String> expireTime;
-
   /// Indicates whether there was an order of renewal with configuration change that had not taken effect.
   final pulumi.Input<bool> hasRenewChangeOrder;
-
   /// The ID of the instance.
   final pulumi.Input<String> id;
-
   /// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
   final pulumi.Input<String> instanceClass;
-
   /// Indicates whether the release protection feature is enabled for the instance.
   final pulumi.Input<bool> instanceReleaseProtection;
-
   /// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
   final pulumi.Input<String> instanceType;
-
   /// Indicates whether the instance is managed by Relational Database Service (RDS).
   final pulumi.Input<bool> isRds;
-
   /// The end time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
   final pulumi.Input<String> maintainEndTime;
-
   /// The start time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
   final pulumi.Input<String> maintainStartTime;
-
   /// Instance connection quantity limit. Unit: count.
   final pulumi.Input<int> maxConnections;
-
   /// It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
   final pulumi.Input<String> name;
-
   /// The type of the network. Valid values: `CLASSIC`, `VPC`.
   final pulumi.Input<String> networkType;
-
   /// The node type of the instance.
   final pulumi.Input<String> nodeType;
-
   /// The type of the package.
   final pulumi.Input<String> packageType;
-
   /// The payment type. Valid values: `PostPaid`, `PrePaid`.
   final pulumi.Input<String> paymentType;
-
   /// The service port of the instance.
   final pulumi.Input<int> port;
-
   /// Private IP address of the instance.
   final pulumi.Input<String> privateIp;
-
   /// The queries per second (QPS) supported by the instance.
   final pulumi.Input<int> qps;
-
   /// Region ID the instance belongs to.
   final pulumi.Input<String> regionId;
-
   /// The logical ID of the replica instance.
   final pulumi.Input<String> replacateId;
-
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
-
   /// The name of the instance.
   final pulumi.Input<String> searchKey;
-
   /// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
   final pulumi.Input<String> secondaryZoneId;
-
   /// The ID of the security group associated with the instance.
   final pulumi.Input<String> securityGroupId;
-
   /// By default, this parameter is left empty. The attribute of the whitelist. The console does not display the whitelist whose value of this parameter is hidden
   final pulumi.Input<String> securityIpGroupAttribute;
-
   /// The name of the IP address whitelist.
   final pulumi.Input<String> securityIpGroupName;
-
   /// The IP addresses in the whitelist.
   final pulumi.Input<List<String>> securityIps;
-
   /// Indicates whether SSL encryption is enabled.
   final pulumi.Input<String> sslEnable;
-
   /// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
   final pulumi.Input<String> status;
-
   /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
   final pulumi.Input<Map<String, String>> tags;
-
   /// The username of the instance.
   final pulumi.Input<String> userName;
-
   /// Indicates whether password authentication is enabled. Valid values: Open, Close.
   final pulumi.Input<String> vpcAuthMode;
-
   /// Connection port of the instance.
   final pulumi.Input<String> vpcCloudInstanceId;
-
   /// Used to retrieve instances belong to specified VPC.
   final pulumi.Input<String> vpcId;
-
   /// Used to retrieve instances belong to specified `vswitch` resources.
   final pulumi.Input<String> vswitchId;
-
   /// The ID of the zone.
   final pulumi.Input<String> zoneId;
 
@@ -332,23 +280,15 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      architectureType: pulumi.Input.fromValue(
-        map['architectureType'] as String,
-      ),
+      architectureType: pulumi.Input.fromValue(map['architectureType'] as String),
       autoRenew: pulumi.Input.fromValue(map['autoRenew'] as bool),
       autoRenewPeriod: pulumi.Input.fromValue(map['autoRenewPeriod'] as int),
-      availabilityZone: pulumi.Input.fromValue(
-        map['availabilityZone'] as String,
-      ),
+      availabilityZone: pulumi.Input.fromValue(map['availabilityZone'] as String),
       bandwidth: pulumi.Input.fromValue(map['bandwidth'] as int),
       capacity: pulumi.Input.fromValue(map['capacity'] as int),
       chargeType: pulumi.Input.fromValue(map['chargeType'] as String),
-      config: pulumi.Input.fromValue(
-        (map['config'] as Map).cast<String, String>(),
-      ),
-      connectionDomain: pulumi.Input.fromValue(
-        map['connectionDomain'] as String,
-      ),
+      config: pulumi.Input.fromValue((map['config'] as Map).cast<String, String>()),
+      connectionDomain: pulumi.Input.fromValue(map['connectionDomain'] as String),
       connectionMode: pulumi.Input.fromValue(map['connectionMode'] as String),
       connections: pulumi.Input.fromValue(map['connections'] as int),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
@@ -358,20 +298,14 @@ class GetInstancesInstance {
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
       engineVersion: pulumi.Input.fromValue(map['engineVersion'] as String),
       expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
-      hasRenewChangeOrder: pulumi.Input.fromValue(
-        map['hasRenewChangeOrder'] as bool,
-      ),
+      hasRenewChangeOrder: pulumi.Input.fromValue(map['hasRenewChangeOrder'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),
       instanceClass: pulumi.Input.fromValue(map['instanceClass'] as String),
-      instanceReleaseProtection: pulumi.Input.fromValue(
-        map['instanceReleaseProtection'] as bool,
-      ),
+      instanceReleaseProtection: pulumi.Input.fromValue(map['instanceReleaseProtection'] as bool),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       isRds: pulumi.Input.fromValue(map['isRds'] as bool),
       maintainEndTime: pulumi.Input.fromValue(map['maintainEndTime'] as String),
-      maintainStartTime: pulumi.Input.fromValue(
-        map['maintainStartTime'] as String,
-      ),
+      maintainStartTime: pulumi.Input.fromValue(map['maintainStartTime'] as String),
       maxConnections: pulumi.Input.fromValue(map['maxConnections'] as int),
       name: pulumi.Input.fromValue(map['name'] as String),
       networkType: pulumi.Input.fromValue(map['networkType'] as String),
@@ -387,26 +321,19 @@ class GetInstancesInstance {
       searchKey: pulumi.Input.fromValue(map['searchKey'] as String),
       secondaryZoneId: pulumi.Input.fromValue(map['secondaryZoneId'] as String),
       securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
-      securityIpGroupAttribute: pulumi.Input.fromValue(
-        map['securityIpGroupAttribute'] as String,
-      ),
-      securityIpGroupName: pulumi.Input.fromValue(
-        map['securityIpGroupName'] as String,
-      ),
-      securityIps: pulumi.Input.fromValue(
-        (map['securityIps'] as List).cast<String>(),
-      ),
+      securityIpGroupAttribute: pulumi.Input.fromValue(map['securityIpGroupAttribute'] as String),
+      securityIpGroupName: pulumi.Input.fromValue(map['securityIpGroupName'] as String),
+      securityIps: pulumi.Input.fromValue((map['securityIps'] as List).cast<String>()),
       sslEnable: pulumi.Input.fromValue(map['sslEnable'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       userName: pulumi.Input.fromValue(map['userName'] as String),
       vpcAuthMode: pulumi.Input.fromValue(map['vpcAuthMode'] as String),
-      vpcCloudInstanceId: pulumi.Input.fromValue(
-        map['vpcCloudInstanceId'] as String,
-      ),
+      vpcCloudInstanceId: pulumi.Input.fromValue(map['vpcCloudInstanceId'] as String),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
       vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
+

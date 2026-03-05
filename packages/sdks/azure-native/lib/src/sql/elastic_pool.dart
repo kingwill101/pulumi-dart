@@ -1242,47 +1242,32 @@ import 'sku_response.dart';
 class ElasticPool extends pulumi.CustomResource {
   /// Time in minutes after which elastic pool is automatically paused. A value of -1 means that automatic pause is disabled
   late final pulumi.Output<int?> autoPauseDelay;
-
   /// Specifies the availability zone the pool's primary replica is pinned to.
   late final pulumi.Output<String?> availabilityZone;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The creation date of the elastic pool (ISO8601 format).
   late final pulumi.Output<String> creationDate;
-
   /// The number of secondary replicas associated with the Business Critical, Premium, or Hyperscale edition elastic pool that are used to provide high availability. Applicable only to Hyperscale elastic pools.
   late final pulumi.Output<int?> highAvailabilityReplicaCount;
-
   /// Kind of elastic pool. This is metadata used for the Azure portal experience.
   late final pulumi.Output<String> kind;
-
   /// The license type to apply for this elastic pool.
   late final pulumi.Output<String?> licenseType;
-
   /// Resource location.
   late final pulumi.Output<String> location;
-
   /// Maintenance configuration id assigned to the elastic pool. This configuration defines the period when the maintenance updates will will occur.
   late final pulumi.Output<String?> maintenanceConfigurationId;
-
   /// The storage limit for the database elastic pool in bytes.
   late final pulumi.Output<double?> maxSizeBytes;
-
   /// Minimal capacity that serverless pool will not shrink below, if not paused
   late final pulumi.Output<double?> minCapacity;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The per database settings for the elastic pool.
-  late final pulumi.Output<ElasticPoolPerDatabaseSettingsResponse?>
-  perDatabaseSettings;
-
+  late final pulumi.Output<ElasticPoolPerDatabaseSettingsResponse?> perDatabaseSettings;
   /// Type of enclave requested on the elastic pool.
   late final pulumi.Output<String?> preferredEnclaveType;
-
   /// The elastic pool SKU.
   ///
   /// The list of SKUs may vary by region and support offer. To determine the SKUs (including the SKU name, tier/edition, family, and capacity) that are available to your subscription in an Azure region, use the `Capabilities_ListByLocation` REST API or the following command:
@@ -1291,16 +1276,12 @@ class ElasticPool extends pulumi.CustomResource {
   /// az sql elastic-pool list-editions -l <location> -o table
   /// ````
   late final pulumi.Output<SkuResponse?> sku;
-
   /// The state of the elastic pool.
   late final pulumi.Output<String> state;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// Whether or not this elastic pool is zone redundant, which means the replicas of this elastic pool will be spread across multiple availability zones.
   late final pulumi.Output<bool?> zoneRedundant;
 
@@ -1313,49 +1294,26 @@ class ElasticPool extends pulumi.CustomResource {
     ElasticPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:ElasticPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:ElasticPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPauseDelay = registerOutput<int?>('autoPauseDelay');
     availabilityZone = registerOutput<String?>('availabilityZone');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationDate = registerOutput<String>('creationDate');
-    highAvailabilityReplicaCount = registerOutput<int?>(
-      'highAvailabilityReplicaCount',
-    );
+    highAvailabilityReplicaCount = registerOutput<int?>('highAvailabilityReplicaCount');
     kind = registerOutput<String>('kind');
     licenseType = registerOutput<String?>('licenseType');
     location = registerOutput<String>('location');
-    maintenanceConfigurationId = registerOutput<String?>(
-      'maintenanceConfigurationId',
-    );
+    maintenanceConfigurationId = registerOutput<String?>('maintenanceConfigurationId');
     maxSizeBytes = registerOutput<double?>('maxSizeBytes');
     minCapacity = registerOutput<double?>('minCapacity');
     this.name = registerOutput<String>('name');
-    perDatabaseSettings =
-        registerOutput<ElasticPoolPerDatabaseSettingsResponse?>(
-          'perDatabaseSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ElasticPoolPerDatabaseSettingsResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    perDatabaseSettings = registerOutput<ElasticPoolPerDatabaseSettingsResponse?>('perDatabaseSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticPoolPerDatabaseSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preferredEnclaveType = registerOutput<String?>('preferredEnclaveType');
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

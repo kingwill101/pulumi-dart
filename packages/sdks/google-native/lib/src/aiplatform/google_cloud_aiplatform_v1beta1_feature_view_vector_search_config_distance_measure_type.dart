@@ -5,22 +5,16 @@ enum GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTyp
   cosineDistance("COSINE_DISTANCE"),
   dotProductDistance("DOT_PRODUCT_DISTANCE");
 
-  const GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType(
-    this.wireValue,
-  );
+  const GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType
-  fromValue(String value) {
-    for (final item
-        in GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType
-            .values) {
+  static GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType fromValue(String value) {
+    for (final item in GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType value: $value');
   }
 }
+

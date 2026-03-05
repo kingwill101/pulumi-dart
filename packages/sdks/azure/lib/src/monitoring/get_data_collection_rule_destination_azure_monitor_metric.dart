@@ -8,17 +8,20 @@ class GetDataCollectionRuleDestinationAzureMonitorMetric {
 
   /// Creates a new [GetDataCollectionRuleDestinationAzureMonitorMetric].
   /// [name] Specifies the name of the Data Collection Rule.
-  GetDataCollectionRuleDestinationAzureMonitorMetric({required this.name});
+  GetDataCollectionRuleDestinationAzureMonitorMetric({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory GetDataCollectionRuleDestinationAzureMonitorMetric.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataCollectionRuleDestinationAzureMonitorMetric.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleDestinationAzureMonitorMetric(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

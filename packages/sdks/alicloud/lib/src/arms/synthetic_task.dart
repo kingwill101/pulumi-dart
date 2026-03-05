@@ -1165,37 +1165,26 @@ import 'synthetic_task_state.dart';
 class SyntheticTask extends pulumi.CustomResource {
   /// Assertion List. See `available_assertions` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> availableAssertions;
-
   /// Common settings. See `common_setting` below.
   late final pulumi.Output<SyntheticTaskCommonSetting> commonSetting;
-
   /// Custom Cycle. See `custom_period` below.
   late final pulumi.Output<SyntheticTaskCustomPeriod?> customPeriod;
-
   /// Frequency.
   late final pulumi.Output<String> frequency;
-
   /// Classification of selected monitors.
   late final pulumi.Output<int> monitorCategory;
-
   /// Monitoring configuration. See `monitor_conf` below.
   late final pulumi.Output<SyntheticTaskMonitorConf> monitorConf;
-
   /// List of selected monitors. See `monitors` below.
   late final pulumi.Output<List<Map<String, dynamic>>> monitors;
-
   /// Describes which resource group the resource belongs.
   late final pulumi.Output<String> resourceGroupId;
-
   /// task status.
   late final pulumi.Output<String> status;
-
   /// The name of synthetic task.
   late final pulumi.Output<String> syntheticTaskName;
-
   /// The list of tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of synthetic task.
   late final pulumi.Output<int> taskType;
 
@@ -1208,46 +1197,17 @@ class SyntheticTask extends pulumi.CustomResource {
     SyntheticTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/syntheticTask:SyntheticTask',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    availableAssertions = registerOutput<List<Map<String, dynamic>>?>(
-      'availableAssertions',
-    );
-    commonSetting = registerOutput<SyntheticTaskCommonSetting>(
-      'commonSetting',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SyntheticTaskCommonSetting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    customPeriod = registerOutput<SyntheticTaskCustomPeriod?>(
-      'customPeriod',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SyntheticTaskCustomPeriod.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:arms/syntheticTask:SyntheticTask',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    availableAssertions = registerOutput<List<Map<String, dynamic>>?>('availableAssertions');
+    commonSetting = registerOutput<SyntheticTaskCommonSetting>('commonSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SyntheticTaskCommonSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customPeriod = registerOutput<SyntheticTaskCustomPeriod?>('customPeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SyntheticTaskCustomPeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     frequency = registerOutput<String>('frequency');
     monitorCategory = registerOutput<int>('monitorCategory');
-    monitorConf = registerOutput<SyntheticTaskMonitorConf>(
-      'monitorConf',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SyntheticTaskMonitorConf.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monitorConf = registerOutput<SyntheticTaskMonitorConf>('monitorConf', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SyntheticTaskMonitorConf.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitors = registerOutput<List<Map<String, dynamic>>>('monitors');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     status = registerOutput<String>('status');
@@ -1274,46 +1234,17 @@ class SyntheticTask extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/syntheticTask:SyntheticTask',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    availableAssertions = registerOutput<List<Map<String, dynamic>>?>(
-      'availableAssertions',
-    );
-    commonSetting = registerOutput<SyntheticTaskCommonSetting>(
-      'commonSetting',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SyntheticTaskCommonSetting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    customPeriod = registerOutput<SyntheticTaskCustomPeriod?>(
-      'customPeriod',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SyntheticTaskCustomPeriod.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:arms/syntheticTask:SyntheticTask',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    availableAssertions = registerOutput<List<Map<String, dynamic>>?>('availableAssertions');
+    commonSetting = registerOutput<SyntheticTaskCommonSetting>('commonSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SyntheticTaskCommonSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customPeriod = registerOutput<SyntheticTaskCustomPeriod?>('customPeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SyntheticTaskCustomPeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     frequency = registerOutput<String>('frequency');
     monitorCategory = registerOutput<int>('monitorCategory');
-    monitorConf = registerOutput<SyntheticTaskMonitorConf>(
-      'monitorConf',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SyntheticTaskMonitorConf.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monitorConf = registerOutput<SyntheticTaskMonitorConf>('monitorConf', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SyntheticTaskMonitorConf.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitors = registerOutput<List<Map<String, dynamic>>>('monitors');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     status = registerOutput<String>('status');

@@ -10,28 +10,20 @@ import 'repository_release_config_code_compilation_config.dart';
 class RepositoryReleaseConfigArgs {
   /// Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryReleaseConfigCodeCompilationConfig>?
-  codeCompilationConfig;
-
+  final pulumi.Input<RepositoryReleaseConfigCodeCompilationConfig>? codeCompilationConfig;
   /// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
   final pulumi.Input<String>? cronSchedule;
-
   /// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
   final pulumi.Input<String> gitCommitish;
-
   /// The release's name.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A reference to the region
   final pulumi.Input<String>? region;
-
   /// A reference to the Dataform repository
   final pulumi.Input<String>? repository;
-
   /// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
   final pulumi.Input<String>? timeZone;
 
@@ -57,11 +49,7 @@ class RepositoryReleaseConfigArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'codeCompilationConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RepositoryReleaseConfigCodeCompilationConfig,
-            Map<String, dynamic>
-          >(codeCompilationConfig, (value) => value.toMap()),
+      'codeCompilationConfig': ?pulumi.Input.mapOptionalInputValue<RepositoryReleaseConfigCodeCompilationConfig, Map<String, dynamic>>(codeCompilationConfig, (value) => value.toMap()),
       'cronSchedule': ?cronSchedule,
       'gitCommitish': gitCommitish,
       'name': ?name,
@@ -74,46 +62,15 @@ class RepositoryReleaseConfigArgs {
 
   factory RepositoryReleaseConfigArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryReleaseConfigArgs(
-      codeCompilationConfig: (() {
-        final guardedValue = map['codeCompilationConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RepositoryReleaseConfigCodeCompilationConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      cronSchedule: (() {
-        final guardedValue = map['cronSchedule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      codeCompilationConfig: (() { final guardedValue = map['codeCompilationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryReleaseConfigCodeCompilationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      cronSchedule: (() { final guardedValue = map['cronSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gitCommitish: pulumi.Input.fromValue(map['gitCommitish'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      repository: (() {
-        final guardedValue = map['repository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      repository: (() { final guardedValue = map['repository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -32,12 +32,9 @@ class GetRegionAutoscalerArgs {
   factory GetRegionAutoscalerArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionAutoscalerArgs(
       autoscaler: pulumi.Input.fromValue(map['autoscaler'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

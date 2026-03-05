@@ -45,8 +45,7 @@ Future<GetAgentPoolResult> getAgentPool(
 /// Other available API versions: 2023-11-15-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcontainerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_hybridcontainerservice_get_cluster_instance_hybrid_identity_metadatum_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetClusterInstanceHybridIdentityMetadatumResult>
-getClusterInstanceHybridIdentityMetadatum(
+Future<GetClusterInstanceHybridIdentityMetadatumResult> getClusterInstanceHybridIdentityMetadatum(
   GetClusterInstanceHybridIdentityMetadatumArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -180,8 +179,7 @@ Future<GetVirtualNetworkRetrieveResult> getVirtualNetworkRetrieve(
 /// Other available API versions: 2023-11-15-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcontainerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_hybridcontainerservice_list_provisioned_cluster_instance_admin_kubeconfig_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListProvisionedClusterInstanceAdminKubeconfigResult>
-listProvisionedClusterInstanceAdminKubeconfig(
+Future<ListProvisionedClusterInstanceAdminKubeconfigResult> listProvisionedClusterInstanceAdminKubeconfig(
   ListProvisionedClusterInstanceAdminKubeconfigArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -201,8 +199,7 @@ listProvisionedClusterInstanceAdminKubeconfig(
 /// Other available API versions: 2023-11-15-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcontainerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_hybridcontainerservice_list_provisioned_cluster_instance_user_kubeconfig_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListProvisionedClusterInstanceUserKubeconfigResult>
-listProvisionedClusterInstanceUserKubeconfig(
+Future<ListProvisionedClusterInstanceUserKubeconfigResult> listProvisionedClusterInstanceUserKubeconfig(
   ListProvisionedClusterInstanceUserKubeconfigArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

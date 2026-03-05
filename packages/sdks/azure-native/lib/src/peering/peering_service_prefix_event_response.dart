@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PeeringServicePrefixEventResponse {
   /// The description of the event associated with a prefix.
   final pulumi.Input<String> eventDescription;
-
   /// The level of the event associated with a prefix.
   final pulumi.Input<String> eventLevel;
-
   /// The summary of the event associated with a prefix.
   final pulumi.Input<String> eventSummary;
-
   /// The timestamp of the event associated with a prefix.
   final pulumi.Input<String> eventTimestamp;
-
   /// The type of the event associated with a prefix.
   final pulumi.Input<String> eventType;
 
@@ -45,9 +41,7 @@ class PeeringServicePrefixEventResponse {
 
   factory PeeringServicePrefixEventResponse.fromMap(Map<String, dynamic> map) {
     return PeeringServicePrefixEventResponse(
-      eventDescription: pulumi.Input.fromValue(
-        map['eventDescription'] as String,
-      ),
+      eventDescription: pulumi.Input.fromValue(map['eventDescription'] as String),
       eventLevel: pulumi.Input.fromValue(map['eventLevel'] as String),
       eventSummary: pulumi.Input.fromValue(map['eventSummary'] as String),
       eventTimestamp: pulumi.Input.fromValue(map['eventTimestamp'] as String),
@@ -55,3 +49,4 @@ class PeeringServicePrefixEventResponse {
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilterFilterCriteriaEcrImagePushedAt {
   /// (Required) The end of the port range, inclusive.
   final pulumi.Input<String>? endInclusive;
-
   /// (Optional) Start of the date range in RFC 3339 format, inclusive. Set the timezone to UTC.
   final pulumi.Input<String>? startInclusive;
 
@@ -24,20 +23,11 @@ class FilterFilterCriteriaEcrImagePushedAt {
     };
   }
 
-  factory FilterFilterCriteriaEcrImagePushedAt.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FilterFilterCriteriaEcrImagePushedAt.fromMap(Map<String, dynamic> map) {
     return FilterFilterCriteriaEcrImagePushedAt(
-      endInclusive: (() {
-        final guardedValue = map['endInclusive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startInclusive: (() {
-        final guardedValue = map['startInclusive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endInclusive: (() { final guardedValue = map['endInclusive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startInclusive: (() { final guardedValue = map['startInclusive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

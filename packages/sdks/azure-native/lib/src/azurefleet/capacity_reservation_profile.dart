@@ -13,27 +13,20 @@ class CapacityReservationProfile {
 
   /// Creates a new [CapacityReservationProfile].
   /// [capacityReservationGroup] Specifies the capacity reservation group resource id that should be used for
-  CapacityReservationProfile({this.capacityReservationGroup});
+  CapacityReservationProfile({
+    this.capacityReservationGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capacityReservationGroup':
-          ?pulumi.Input.mapOptionalInputValue<
-            SubResource,
-            Map<String, dynamic>
-          >(capacityReservationGroup, (value) => value.toMap()),
+      'capacityReservationGroup': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(capacityReservationGroup, (value) => value.toMap()),
     };
   }
 
   factory CapacityReservationProfile.fromMap(Map<String, dynamic> map) {
     return CapacityReservationProfile(
-      capacityReservationGroup: (() {
-        final guardedValue = map['capacityReservationGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      capacityReservationGroup: (() { final guardedValue = map['capacityReservationGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

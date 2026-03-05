@@ -7,13 +7,10 @@ import 'enterprise_crm_eventbus_proto_failure_policy_retry_strategy.dart';
 class EnterpriseCrmEventbusProtoFailurePolicy {
   /// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the initial interval for backoff.
   final pulumi.Input<String>? intervalInSeconds;
-
   /// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the number of times the task will be retried if failed.
   final pulumi.Input<int>? maxNumRetries;
-
   /// Defines what happens to the task upon failure.
-  final pulumi.Input<EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy>?
-  retryStrategy;
+  final pulumi.Input<EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy>? retryStrategy;
 
   /// Creates a new [EnterpriseCrmEventbusProtoFailurePolicy].
   /// [intervalInSeconds] Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the initial interval for backoff.
@@ -29,37 +26,16 @@ class EnterpriseCrmEventbusProtoFailurePolicy {
     return <String, dynamic>{
       'intervalInSeconds': ?intervalInSeconds,
       'maxNumRetries': ?maxNumRetries,
-      'retryStrategy':
-          ?pulumi.Input.mapOptionalInputValue<
-            EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy,
-            String
-          >(retryStrategy, (value) => value.wireValue),
+      'retryStrategy': ?pulumi.Input.mapOptionalInputValue<EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy, String>(retryStrategy, (value) => value.wireValue),
     };
   }
 
-  factory EnterpriseCrmEventbusProtoFailurePolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoFailurePolicy.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoFailurePolicy(
-      intervalInSeconds: (() {
-        final guardedValue = map['intervalInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxNumRetries: (() {
-        final guardedValue = map['maxNumRetries'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      retryStrategy: (() {
-        final guardedValue = map['retryStrategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      intervalInSeconds: (() { final guardedValue = map['intervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxNumRetries: (() { final guardedValue = map['maxNumRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retryStrategy: (() { final guardedValue = map['retryStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

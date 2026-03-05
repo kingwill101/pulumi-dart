@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class YarnApplicationResponse {
   /// The application name.
   final pulumi.Input<String> name;
-
   /// The numerical progress of the application, from 1 to 100.
   final pulumi.Input<double> progress;
-
   /// The application state.
   final pulumi.Input<String> state;
-
   /// Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides application-specific information. The URL uses the internal hostname, and requires a proxy server for resolution and, possibly, access.
   final pulumi.Input<String> trackingUrl;
 
@@ -46,3 +43,4 @@ class YarnApplicationResponse {
     );
   }
 }
+

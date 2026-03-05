@@ -309,10 +309,8 @@ import 'alert_policy_channel_state.dart';
 class AlertPolicyChannel extends pulumi.CustomResource {
   /// Determines the New Relic account where the alert policy channel will be created. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
-
   /// Array of channel IDs to apply to the specified policy. We recommended sorting channel IDs in ascending order to avoid drift your Terraform state.
   late final pulumi.Output<List<String>> channelIds;
-
   /// The ID of the policy.
   late final pulumi.Output<String> policyId;
 
@@ -325,11 +323,11 @@ class AlertPolicyChannel extends pulumi.CustomResource {
     AlertPolicyChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/alertPolicyChannel:AlertPolicyChannel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/alertPolicyChannel:AlertPolicyChannel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     channelIds = registerOutput<List<String>>('channelIds');
     policyId = registerOutput<String>('policyId');
@@ -353,11 +351,11 @@ class AlertPolicyChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/alertPolicyChannel:AlertPolicyChannel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/alertPolicyChannel:AlertPolicyChannel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     channelIds = registerOutput<List<String>>('channelIds');
     policyId = registerOutput<String>('policyId');

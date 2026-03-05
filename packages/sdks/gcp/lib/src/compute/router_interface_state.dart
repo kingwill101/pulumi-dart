@@ -8,34 +8,26 @@ class RouterInterfaceState {
   /// VLAN interconnect for this interface. Changing this forces a new interface to
   /// be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
   final pulumi.Input<String>? interconnectAttachment;
-
   /// IP address and range of the interface. The IP range must be
   /// in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
   final pulumi.Input<String>? ipRange;
-
   /// IP version of this interface. Can be either IPV4 or IPV6.
   final pulumi.Input<String>? ipVersion;
-
   /// A unique name for the interface, required by GCE. Changing
   /// this forces a new interface to be created.
   final pulumi.Input<String>? name;
-
   /// The regional private internal IP address that is used
   /// to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
   final pulumi.Input<String>? privateIpAddress;
-
   /// The ID of the project in which this interface's routerbelongs.
   /// If it is not provided, the provider project is used. Changing this forces a new interface to be created.
   final pulumi.Input<String>? project;
-
   /// The name of the interface that is redundant to
   /// this interface. Changing this forces a new interface to be created.
   final pulumi.Input<String>? redundantInterface;
-
   /// The region this interface's router sits in.
   /// If not specified, the project region will be used. Changing this forces a new interface to be created.
   final pulumi.Input<String>? region;
-
   /// The name of the router this interface will be attached to.
   /// Changing this forces a new interface to be created.
   ///
@@ -43,11 +35,9 @@ class RouterInterfaceState {
   ///
   /// - - -
   final pulumi.Input<String>? router;
-
   /// The URI of the subnetwork resource that this interface
   /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
   final pulumi.Input<String>? subnetwork;
-
   /// The name or resource link to the VPN tunnel this
   /// interface will be linked to. Changing this forces a new interface to be created. Only
   /// one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
@@ -97,61 +87,18 @@ class RouterInterfaceState {
 
   factory RouterInterfaceState.fromMap(Map<String, dynamic> map) {
     return RouterInterfaceState(
-      interconnectAttachment: (() {
-        final guardedValue = map['interconnectAttachment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipRange: (() {
-        final guardedValue = map['ipRange'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipVersion: (() {
-        final guardedValue = map['ipVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateIpAddress: (() {
-        final guardedValue = map['privateIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      redundantInterface: (() {
-        final guardedValue = map['redundantInterface'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      router: (() {
-        final guardedValue = map['router'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetwork: (() {
-        final guardedValue = map['subnetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vpnTunnel: (() {
-        final guardedValue = map['vpnTunnel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      interconnectAttachment: (() { final guardedValue = map['interconnectAttachment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipRange: (() { final guardedValue = map['ipRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipVersion: (() { final guardedValue = map['ipVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redundantInterface: (() { final guardedValue = map['redundantInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      router: (() { final guardedValue = map['router']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vpnTunnel: (() { final guardedValue = map['vpnTunnel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

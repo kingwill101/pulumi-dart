@@ -9,21 +9,20 @@ class GoogleCloudMlV1IntegratedGradientsAttribution {
 
   /// Creates a new [GoogleCloudMlV1IntegratedGradientsAttribution].
   /// [numIntegralSteps] Number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is met within the desired error range.
-  GoogleCloudMlV1IntegratedGradientsAttribution({this.numIntegralSteps});
+  GoogleCloudMlV1IntegratedGradientsAttribution({
+    this.numIntegralSteps,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'numIntegralSteps': ?numIntegralSteps};
+    return <String, dynamic>{
+      'numIntegralSteps': ?numIntegralSteps,
+    };
   }
 
-  factory GoogleCloudMlV1IntegratedGradientsAttribution.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudMlV1IntegratedGradientsAttribution.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1IntegratedGradientsAttribution(
-      numIntegralSteps: (() {
-        final guardedValue = map['numIntegralSteps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      numIntegralSteps: (() { final guardedValue = map['numIntegralSteps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -8,7 +8,6 @@ class GetDeviceGroupsResult {
   final bool? enableDetails;
   final String? groupName;
   final List<GetDeviceGroupsGroup> groups;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -43,11 +42,7 @@ class GetDeviceGroupsResult {
     return <String, dynamic>{
       'enableDetails': ?enableDetails,
       'groupName': ?groupName,
-      'groups':
-          pulumi.Input.encodeList<GetDeviceGroupsGroup, Map<String, dynamic>>(
-            groups,
-            (value) => value.toMap(),
-          ),
+      'groups': pulumi.Input.encodeList<GetDeviceGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'iotInstanceId': ?iotInstanceId,
@@ -59,44 +54,16 @@ class GetDeviceGroupsResult {
 
   factory GetDeviceGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetDeviceGroupsResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      groupName: (() {
-        final guardedValue = map['groupName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      groups: pulumi.Input.decodeList<GetDeviceGroupsGroup>(
-        map['groups']!,
-        (value) => GetDeviceGroupsGroup.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      groupName: (() { final guardedValue = map['groupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      groups: pulumi.Input.decodeList<GetDeviceGroupsGroup>(map['groups']!, (value) => GetDeviceGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      iotInstanceId: (() {
-        final guardedValue = map['iotInstanceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      superGroupId: (() {
-        final guardedValue = map['superGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      iotInstanceId: (() { final guardedValue = map['iotInstanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      superGroupId: (() { final guardedValue = map['superGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

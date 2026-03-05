@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SslSettingsResponseAppengineV1alpha {
   /// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
   final pulumi.Input<String> certificateId;
-
   /// Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.
   final pulumi.Input<bool> isManagedCertificate;
 
@@ -25,14 +24,11 @@ class SslSettingsResponseAppengineV1alpha {
     };
   }
 
-  factory SslSettingsResponseAppengineV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SslSettingsResponseAppengineV1alpha.fromMap(Map<String, dynamic> map) {
     return SslSettingsResponseAppengineV1alpha(
       certificateId: pulumi.Input.fromValue(map['certificateId'] as String),
-      isManagedCertificate: pulumi.Input.fromValue(
-        map['isManagedCertificate'] as bool,
-      ),
+      isManagedCertificate: pulumi.Input.fromValue(map['isManagedCertificate'] as bool),
     );
   }
 }
+

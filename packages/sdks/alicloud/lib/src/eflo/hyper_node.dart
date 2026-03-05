@@ -207,69 +207,49 @@ import 'hyper_node_state.dart';
 class HyperNode extends pulumi.CustomResource {
   /// Cluster ID
   late final pulumi.Output<String?> clusterId;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
-
   /// The host name prefix of the sub computing node
   late final pulumi.Output<String?> hostname;
-
   /// Number of the cluster to which the hyper computing node belongs
   late final pulumi.Output<String?> hpnZone;
-
   /// Login Password of the sub computing node
   late final pulumi.Output<String?> loginPassword;
-
   /// The model used by the hyper computing node
   late final pulumi.Output<String?> machineType;
-
   /// Node group ID
   late final pulumi.Output<String?> nodeGroupId;
-
   /// The duration of the instance purchase, in units.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<int?> paymentDuration;
-
   /// The payment type of the resource
   late final pulumi.Output<String> paymentType;
-
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
-
   /// Number of auto-renewal cycles
   late final pulumi.Output<int?> renewalDuration;
-
   /// Automatic renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. The default ManualRenewal.
   late final pulumi.Output<String> renewalStatus;
-
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
-
   /// Hyper Node Architecture
   late final pulumi.Output<String?> serverArch;
-
   /// The number of installments of the hyper computing node of the fixed fee installment.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> stageNum;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Custom user data for the sub computing node
   late final pulumi.Output<String?> userData;
-
   /// The ID of the vpc to which the sub computing node
   late final pulumi.Output<String?> vpcId;
-
   /// The ID of the vswitch to which the sub computing node
   late final pulumi.Output<String?> vswitchId;
-
   /// The zone where the hyper compute node is located
   late final pulumi.Output<String?> zoneId;
 
@@ -282,11 +262,11 @@ class HyperNode extends pulumi.CustomResource {
     HyperNodeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/hyperNode:HyperNode',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/hyperNode:HyperNode',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String?>('clusterId');
     createTime = registerOutput<String>('createTime');
     dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
@@ -329,11 +309,11 @@ class HyperNode extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/hyperNode:HyperNode',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/hyperNode:HyperNode',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String?>('clusterId');
     createTime = registerOutput<String>('createTime');
     dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');

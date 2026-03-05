@@ -7,29 +7,29 @@ class KeyVaultSecretUriSecretInfoResponse {
   /// The secret type.
   /// Expected value is 'keyVaultSecretUri'.
   final pulumi.Input<String> secretType;
-
   /// URI to the keyvault secret
   final pulumi.Input<String>? value;
 
   /// Creates a new [KeyVaultSecretUriSecretInfoResponse].
   /// [secretType] The secret type.
   /// [value] URI to the keyvault secret
-  KeyVaultSecretUriSecretInfoResponse({required this.secretType, this.value});
+  KeyVaultSecretUriSecretInfoResponse({
+    required this.secretType,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretType': secretType, 'value': ?value};
+    return <String, dynamic>{
+      'secretType': secretType,
+      'value': ?value,
+    };
   }
 
-  factory KeyVaultSecretUriSecretInfoResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KeyVaultSecretUriSecretInfoResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultSecretUriSecretInfoResponse(
       secretType: pulumi.Input.fromValue(map['secretType'] as String),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

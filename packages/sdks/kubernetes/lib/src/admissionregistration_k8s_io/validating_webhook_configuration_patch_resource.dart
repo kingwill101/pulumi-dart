@@ -9,17 +9,13 @@ import 'validating_webhook_configuration_patch_admissionregistration_k8s_io_v1be
 /// [Server-Side Apply Docs](https://www.pulumi.com/registry/packages/kubernetes/how-to-guides/managing-resources-with-server-side-apply/) for
 /// additional information about using Server-Side Apply to manage Kubernetes resources with Pulumi.
 /// ValidatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and object without changing it. Deprecated in v1.16, planned for removal in v1.19. Use admissionregistration.k8s.io/v1 ValidatingWebhookConfiguration instead.
-class ValidatingWebhookConfigurationPatchResource
-    extends pulumi.CustomResource {
+class ValidatingWebhookConfigurationPatchResource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
-
   /// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
   late final pulumi.Output<ObjectMetaPatch?> metadata;
-
   /// Webhooks is a list of webhooks and the affected resources and operations.
   late final pulumi.Output<List<Map<String, dynamic>>?> webhooks;
 
@@ -29,27 +25,17 @@ class ValidatingWebhookConfigurationPatchResource
   /// [options] Resource options controlling this resource's behavior.
   ValidatingWebhookConfigurationPatchResource(
     String name, {
-    ValidatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1beta1Args?
-    args,
+    ValidatingWebhookConfigurationPatchAdmissionregistrationK8sIoV1beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'kubernetes:admissionregistration.k8s.io/v1beta1:ValidatingWebhookConfigurationPatch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'kubernetes:admissionregistration.k8s.io/v1beta1:ValidatingWebhookConfigurationPatch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMetaPatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webhooks = registerOutput<List<Map<String, dynamic>>?>('webhooks');
   }
 }

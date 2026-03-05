@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HciStoragePathArgs {
   /// The ID of Custom Location where the Azure Stack HCI Storage Path should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> customLocationId;
-
   /// The Azure Region where the Azure Stack HCI Storage Path should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// The name which should be used for this Azure Stack HCI Storage Path. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The file path on the disk to create the Storage Path. Changing this forces a new resource to be created.
   final pulumi.Input<String> path;
-
   /// The name of the Resource Group where the Azure Stack HCI Storage Path should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Azure Stack HCI Storage Path.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -54,30 +49,13 @@ class HciStoragePathArgs {
 
   factory HciStoragePathArgs.fromMap(Map<String, dynamic> map) {
     return HciStoragePathArgs(
-      customLocationId: pulumi.Input.fromValue(
-        map['customLocationId'] as String,
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customLocationId: pulumi.Input.fromValue(map['customLocationId'] as String),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       path: pulumi.Input.fromValue(map['path'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

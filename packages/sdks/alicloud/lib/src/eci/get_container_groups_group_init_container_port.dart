@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerGroupsGroupInitContainerPort {
   /// The port number. Valid values: 1 to 65535.
   final pulumi.Input<int> port;
-
   /// Valid values: `TCP` and `UDP`.
   final pulumi.Input<String> protocol;
 
@@ -18,15 +17,17 @@ class GetContainerGroupsGroupInitContainerPort {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': port, 'protocol': protocol};
+    return <String, dynamic>{
+      'port': port,
+      'protocol': protocol,
+    };
   }
 
-  factory GetContainerGroupsGroupInitContainerPort.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetContainerGroupsGroupInitContainerPort.fromMap(Map<String, dynamic> map) {
     return GetContainerGroupsGroupInitContainerPort(
       port: pulumi.Input.fromValue(map['port'] as int),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
+

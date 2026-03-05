@@ -9,7 +9,9 @@ class NetworkPerformanceConfigResponse {
 
   /// Creates a new [NetworkPerformanceConfigResponse].
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for the NodePool.
-  NetworkPerformanceConfigResponse({required this.totalEgressBandwidthTier});
+  NetworkPerformanceConfigResponse({
+    required this.totalEgressBandwidthTier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,9 +21,8 @@ class NetworkPerformanceConfigResponse {
 
   factory NetworkPerformanceConfigResponse.fromMap(Map<String, dynamic> map) {
     return NetworkPerformanceConfigResponse(
-      totalEgressBandwidthTier: pulumi.Input.fromValue(
-        map['totalEgressBandwidthTier'] as String,
-      ),
+      totalEgressBandwidthTier: pulumi.Input.fromValue(map['totalEgressBandwidthTier'] as String),
     );
   }
 }
+

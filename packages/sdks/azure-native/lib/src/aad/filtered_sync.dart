@@ -15,3 +15,4 @@ enum FilteredSync {
     throw ArgumentError('Unknown FilteredSync value: $value');
   }
 }
+

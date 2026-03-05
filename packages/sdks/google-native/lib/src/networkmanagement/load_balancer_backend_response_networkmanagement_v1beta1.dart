@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerBackendResponseNetworkmanagementV1beta1 {
   /// Name of a Compute Engine instance or network endpoint.
   final pulumi.Input<String> displayName;
-
   /// A list of firewall rule URIs allowing probes from health check IP ranges.
   final pulumi.Input<List<String>> healthCheckAllowingFirewallRules;
-
   /// A list of firewall rule URIs blocking probes from health check IP ranges.
   final pulumi.Input<List<String>> healthCheckBlockingFirewallRules;
-
   /// State of the health check firewall configuration.
   final pulumi.Input<String> healthCheckFirewallState;
-
   /// URI of a Compute Engine instance or network endpoint.
   final pulumi.Input<String> uri;
 
@@ -43,21 +39,14 @@ class LoadBalancerBackendResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory LoadBalancerBackendResponseNetworkmanagementV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoadBalancerBackendResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendResponseNetworkmanagementV1beta1(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      healthCheckAllowingFirewallRules: pulumi.Input.fromValue(
-        (map['healthCheckAllowingFirewallRules'] as List).cast<String>(),
-      ),
-      healthCheckBlockingFirewallRules: pulumi.Input.fromValue(
-        (map['healthCheckBlockingFirewallRules'] as List).cast<String>(),
-      ),
-      healthCheckFirewallState: pulumi.Input.fromValue(
-        map['healthCheckFirewallState'] as String,
-      ),
+      healthCheckAllowingFirewallRules: pulumi.Input.fromValue((map['healthCheckAllowingFirewallRules'] as List).cast<String>()),
+      healthCheckBlockingFirewallRules: pulumi.Input.fromValue((map['healthCheckBlockingFirewallRules'] as List).cast<String>()),
+      healthCheckFirewallState: pulumi.Input.fromValue(map['healthCheckFirewallState'] as String),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

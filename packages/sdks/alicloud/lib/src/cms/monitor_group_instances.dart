@@ -261,7 +261,6 @@ import 'monitor_group_instances_state.dart';
 class MonitorGroupInstances extends pulumi.CustomResource {
   /// The id of Cms Group.
   late final pulumi.Output<String> groupId;
-
   /// Instance information added to the Cms Group. See `instances` below.
   late final pulumi.Output<List<Map<String, dynamic>>> instances;
 
@@ -274,11 +273,11 @@ class MonitorGroupInstances extends pulumi.CustomResource {
     MonitorGroupInstancesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/monitorGroupInstances:MonitorGroupInstances',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/monitorGroupInstances:MonitorGroupInstances',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupId = registerOutput<String>('groupId');
     instances = registerOutput<List<Map<String, dynamic>>>('instances');
   }
@@ -301,11 +300,11 @@ class MonitorGroupInstances extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/monitorGroupInstances:MonitorGroupInstances',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/monitorGroupInstances:MonitorGroupInstances',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupId = registerOutput<String>('groupId');
     instances = registerOutput<List<Map<String, dynamic>>>('instances');
   }

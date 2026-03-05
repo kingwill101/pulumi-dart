@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterLoggingInfoBrokerLogsCloudwatchLogs {
   final pulumi.Input<bool> enabled;
-
   /// Name of the Cloudwatch Log Group to deliver logs to.
   final pulumi.Input<String>? logGroup;
 
@@ -17,19 +16,17 @@ class ClusterLoggingInfoBrokerLogsCloudwatchLogs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled, 'logGroup': ?logGroup};
+    return <String, dynamic>{
+      'enabled': enabled,
+      'logGroup': ?logGroup,
+    };
   }
 
-  factory ClusterLoggingInfoBrokerLogsCloudwatchLogs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterLoggingInfoBrokerLogsCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return ClusterLoggingInfoBrokerLogsCloudwatchLogs(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      logGroup: (() {
-        final guardedValue = map['logGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      logGroup: (() { final guardedValue = map['logGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

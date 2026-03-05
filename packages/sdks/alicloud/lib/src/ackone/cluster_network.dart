@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNetwork {
   /// Security group to which the cluster belongs.
   final pulumi.Input<List<String>>? securityGroupIds;
-
   /// VpcId to which the cluster belongs.
   final pulumi.Input<String> vpcId;
-
   /// Switch to which the cluster belongs.
   final pulumi.Input<List<String>> vswitches;
 
@@ -32,15 +30,10 @@ class ClusterNetwork {
 
   factory ClusterNetwork.fromMap(Map<String, dynamic> map) {
     return ClusterNetwork(
-      securityGroupIds: (() {
-        final guardedValue = map['securityGroupIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      securityGroupIds: (() { final guardedValue = map['securityGroupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
-      vswitches: pulumi.Input.fromValue(
-        (map['vswitches'] as List).cast<String>(),
-      ),
+      vswitches: pulumi.Input.fromValue((map['vswitches'] as List).cast<String>()),
     );
   }
 }
+

@@ -101,10 +101,8 @@ import 'cidr_collection_state.dart';
 class CidrCollection extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the CIDR collection.
   late final pulumi.Output<String> arn;
-
   /// Unique name for the CIDR collection.
   late final pulumi.Output<String> name;
-
   /// The lastest version of the CIDR collection.
   late final pulumi.Output<int> version;
 
@@ -117,11 +115,11 @@ class CidrCollection extends pulumi.CustomResource {
     CidrCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/cidrCollection:CidrCollection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/cidrCollection:CidrCollection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     version = registerOutput<int>('version');
@@ -145,11 +143,11 @@ class CidrCollection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/cidrCollection:CidrCollection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/cidrCollection:CidrCollection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     version = registerOutput<int>('version');

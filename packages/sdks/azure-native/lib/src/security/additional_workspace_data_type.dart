@@ -15,3 +15,4 @@ enum AdditionalWorkspaceDataType {
     throw ArgumentError('Unknown AdditionalWorkspaceDataType value: $value');
   }
 }
+

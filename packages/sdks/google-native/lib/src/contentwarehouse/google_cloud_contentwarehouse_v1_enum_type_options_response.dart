@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContentwarehouseV1EnumTypeOptionsResponse {
   /// List of possible enum values.
   final pulumi.Input<List<String>> possibleValues;
-
   /// Make sure the Enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
   final pulumi.Input<bool> validationCheckDisabled;
 
@@ -25,16 +24,11 @@ class GoogleCloudContentwarehouseV1EnumTypeOptionsResponse {
     };
   }
 
-  factory GoogleCloudContentwarehouseV1EnumTypeOptionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1EnumTypeOptionsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1EnumTypeOptionsResponse(
-      possibleValues: pulumi.Input.fromValue(
-        (map['possibleValues'] as List).cast<String>(),
-      ),
-      validationCheckDisabled: pulumi.Input.fromValue(
-        map['validationCheckDisabled'] as bool,
-      ),
+      possibleValues: pulumi.Input.fromValue((map['possibleValues'] as List).cast<String>()),
+      validationCheckDisabled: pulumi.Input.fromValue(map['validationCheckDisabled'] as bool),
     );
   }
 }
+

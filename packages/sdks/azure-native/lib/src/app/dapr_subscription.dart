@@ -591,35 +591,24 @@ import 'system_data_response.dart';
 class DaprSubscription extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Bulk subscription options
-  late final pulumi.Output<DaprSubscriptionBulkSubscribeOptionsResponse?>
-  bulkSubscribe;
-
+  late final pulumi.Output<DaprSubscriptionBulkSubscribeOptionsResponse?> bulkSubscribe;
   /// Deadletter topic name
   late final pulumi.Output<String?> deadLetterTopic;
-
   /// Subscription metadata
   late final pulumi.Output<Map<String, String>?> metadata;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Dapr PubSub component name
   late final pulumi.Output<String?> pubsubName;
-
   /// Subscription routes
   late final pulumi.Output<DaprSubscriptionRoutesResponse?> routes;
-
   /// Application scopes to restrict the subscription to specific apps.
   late final pulumi.Output<List<String>?> scopes;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Topic name
   late final pulumi.Output<String?> topic;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -632,48 +621,20 @@ class DaprSubscription extends pulumi.CustomResource {
     DaprSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:app:DaprSubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:app:DaprSubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    bulkSubscribe =
-        registerOutput<DaprSubscriptionBulkSubscribeOptionsResponse?>(
-          'bulkSubscribe',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DaprSubscriptionBulkSubscribeOptionsResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    bulkSubscribe = registerOutput<DaprSubscriptionBulkSubscribeOptionsResponse?>('bulkSubscribe', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaprSubscriptionBulkSubscribeOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deadLetterTopic = registerOutput<String?>('deadLetterTopic');
     metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
     pubsubName = registerOutput<String?>('pubsubName');
-    routes = registerOutput<DaprSubscriptionRoutesResponse?>(
-      'routes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DaprSubscriptionRoutesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routes = registerOutput<DaprSubscriptionRoutesResponse?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaprSubscriptionRoutesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scopes = registerOutput<List<String>?>('scopes');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     topic = registerOutput<String?>('topic');
     type = registerOutput<String>('type');
   }

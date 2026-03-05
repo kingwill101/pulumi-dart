@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayCustomErrorResponse {
   /// Error page URL of the application gateway custom error.
   final pulumi.Input<String>? customErrorPageUrl;
-
   /// Status code of the application gateway custom error.
   final pulumi.Input<String>? statusCode;
 
@@ -25,20 +24,11 @@ class ApplicationGatewayCustomErrorResponse {
     };
   }
 
-  factory ApplicationGatewayCustomErrorResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationGatewayCustomErrorResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayCustomErrorResponse(
-      customErrorPageUrl: (() {
-        final guardedValue = map['customErrorPageUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      statusCode: (() {
-        final guardedValue = map['statusCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customErrorPageUrl: (() { final guardedValue = map['customErrorPageUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -1145,16 +1145,12 @@ import 'audit_state.dart';
 class Audit extends pulumi.CustomResource {
   /// Aliuid value of your account.
   late final pulumi.Output<String> aliuid;
-
   /// Name of SLS log audit.
   late final pulumi.Output<String> displayName;
-
   /// Multi-account configuration, please fill in multiple aliuid.
   late final pulumi.Output<List<String>?> multiAccounts;
-
   /// Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
   late final pulumi.Output<String?> resourceDirectoryType;
-
   /// Log audit detailed configuration.
   late final pulumi.Output<Map<String, String>?> variableMap;
 
@@ -1162,13 +1158,16 @@ class Audit extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Audit]. {@macro pulumi_log_audit_audit_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Audit(String name, {AuditArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:log/audit:Audit',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Audit(
+    String name, {
+    AuditArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:log/audit:Audit',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliuid = registerOutput<String>('aliuid');
     displayName = registerOutput<String>('displayName');
     multiAccounts = registerOutput<List<String>?>('multiAccounts');
@@ -1177,7 +1176,11 @@ class Audit extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Audit] resource's state with the given [name] and [id].
-  static Audit get(String name, pulumi.Input<String> id, {AuditState? state}) {
+  static Audit get(
+    String name,
+    pulumi.Input<String> id, {
+    AuditState? state,
+  }) {
     return Audit._get(
       name,
       state: state?.toMap(),
@@ -1190,11 +1193,11 @@ class Audit extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:log/audit:Audit',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:log/audit:Audit',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliuid = registerOutput<String>('aliuid');
     displayName = registerOutput<String>('displayName');
     multiAccounts = registerOutput<List<String>?>('multiAccounts');

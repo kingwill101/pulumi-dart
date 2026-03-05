@@ -14,20 +14,15 @@ import 'scheduling_patch.dart';
 class RuntimeClassPatchNodeK8sIoV1 extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
-
   /// handler specifies the underlying runtime and configuration that the CRI implementation will use to handle pods of this class. The possible values are specific to the node & CRI configuration.  It is assumed that all handlers are available on every node, and handlers of the same name are equivalent on every node. For example, a handler called "runc" might specify that the runc OCI runtime (using native Linux containers) will be used to run the containers in a pod. The Handler must be lowercase, conform to the DNS Label (RFC 1123) requirements, and is immutable.
   late final pulumi.Output<String?> handler;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
-
   /// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMetaPatch?> metadata;
-
   /// overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see
   /// https://kubernetes.io/docs/concepts/scheduling-eviction/pod-overhead/
   late final pulumi.Output<OverheadPatch?> overhead;
-
   /// scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
   late final pulumi.Output<SchedulingPatch?> scheduling;
 
@@ -40,43 +35,16 @@ class RuntimeClassPatchNodeK8sIoV1 extends pulumi.CustomResource {
     RuntimeClassPatchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'kubernetes:node.k8s.io/v1:RuntimeClassPatch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'kubernetes:node.k8s.io/v1:RuntimeClassPatch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     handler = registerOutput<String?>('handler');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMetaPatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    overhead = registerOutput<OverheadPatch?>(
-      'overhead',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OverheadPatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    scheduling = registerOutput<SchedulingPatch?>(
-      'scheduling',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SchedulingPatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    overhead = registerOutput<OverheadPatch?>('overhead', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OverheadPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduling = registerOutput<SchedulingPatch?>('scheduling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulingPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

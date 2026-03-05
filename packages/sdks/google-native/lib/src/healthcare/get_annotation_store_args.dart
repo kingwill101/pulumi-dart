@@ -35,16 +35,11 @@ class GetAnnotationStoreArgs {
 
   factory GetAnnotationStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetAnnotationStoreArgs(
-      annotationStoreId: pulumi.Input.fromValue(
-        map['annotationStoreId'] as String,
-      ),
+      annotationStoreId: pulumi.Input.fromValue(map['annotationStoreId'] as String),
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

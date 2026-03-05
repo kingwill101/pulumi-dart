@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVmmServerArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the VMMServer.
   final pulumi.Input<String> vmmServerName;
 
@@ -30,10 +29,9 @@ class GetVmmServerArgs {
 
   factory GetVmmServerArgs.fromMap(Map<String, dynamic> map) {
     return GetVmmServerArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vmmServerName: pulumi.Input.fromValue(map['vmmServerName'] as String),
     );
   }
 }
+

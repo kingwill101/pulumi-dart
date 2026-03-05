@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyState {
   /// Network Rules in JSON struct.
   final pulumi.Input<String>? accessControlRules;
-
   /// Description.
   final pulumi.Input<String>? description;
-
   /// KMS instance .
   final pulumi.Input<String>? kmsInstanceId;
-
   /// Allowed permissions (RBAC)Optional values:"RbacPermission/Template/CryptoServiceKeyUser" and "RbacPermission/Template/CryptoServiceSecretUser".
   final pulumi.Input<List<String>>? permissions;
-
   /// Policy Name.
   final pulumi.Input<String>? policyName;
-
   /// The resources that the permission policy allows to access.Use "key/${KeyId}" or "key/*"  to specify a key or all keys.Use "secret/${SecretName}" or "secret/*" to specify a secret or all secrets.
   final pulumi.Input<List<String>>? resources;
 
@@ -51,36 +46,13 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      accessControlRules: (() {
-        final guardedValue = map['accessControlRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsInstanceId: (() {
-        final guardedValue = map['kmsInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      permissions: (() {
-        final guardedValue = map['permissions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      policyName: (() {
-        final guardedValue = map['policyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resources: (() {
-        final guardedValue = map['resources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      accessControlRules: (() { final guardedValue = map['accessControlRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsInstanceId: (() { final guardedValue = map['kmsInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      policyName: (() { final guardedValue = map['policyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

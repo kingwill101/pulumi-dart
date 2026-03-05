@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNpmPackageArgs {
   /// The location of the Artifact Registry repository.
   final pulumi.Input<String> location;
-
   /// The name of the package to fetch. Can optionally include a specific version (e.g., `my_pkg:1.2.3`). If no version is provided, the latest version is used.
   final pulumi.Input<String> packageName;
-
   /// The ID of the project that owns the repository. If not provided, the provider-level project is used.
   final pulumi.Input<String>? project;
-
   /// The ID of the repository containing the NPM package.
   final pulumi.Input<String> repositoryId;
 
@@ -44,12 +41,9 @@ class GetNpmPackageArgs {
     return GetNpmPackageArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       packageName: pulumi.Input.fromValue(map['packageName'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
     );
   }
 }
+

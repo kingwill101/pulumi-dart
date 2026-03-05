@@ -144,13 +144,10 @@ import 'tag_state.dart';
 class Tag extends pulumi.CustomResource {
   /// Tag name.
   late final pulumi.Output<String> key;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the AWS Secrets Manager secret to tag.
   late final pulumi.Output<String> secretId;
-
   /// Tag value.
   late final pulumi.Output<String> value;
 
@@ -158,13 +155,16 @@ class Tag extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Tag]. {@macro pulumi_secretsmanager_tag_tag_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Tag(String name, {TagArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:secretsmanager/tag:Tag',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Tag(
+    String name, {
+    TagArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:secretsmanager/tag:Tag',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');
     secretId = registerOutput<String>('secretId');
@@ -172,7 +172,11 @@ class Tag extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Tag] resource's state with the given [name] and [id].
-  static Tag get(String name, pulumi.Input<String> id, {TagState? state}) {
+  static Tag get(
+    String name,
+    pulumi.Input<String> id, {
+    TagState? state,
+  }) {
     return Tag._get(
       name,
       state: state?.toMap(),
@@ -185,11 +189,11 @@ class Tag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:secretsmanager/tag:Tag',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:secretsmanager/tag:Tag',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');
     secretId = registerOutput<String>('secretId');

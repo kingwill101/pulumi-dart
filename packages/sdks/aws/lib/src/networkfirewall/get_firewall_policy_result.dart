@@ -6,21 +6,16 @@ import 'get_firewall_policy_firewall_policy.dart';
 /// Result data returned by getFirewallPolicy.
 class GetFirewallPolicyResult {
   final String? arn;
-
   /// Description of the firewall policy.
   final String description;
-
   /// The [policy][2] for the specified firewall policy.
   final List<GetFirewallPolicyFirewallPolicy> firewallPolicies;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? name;
   final String region;
-
   /// Key-value tags for the firewall policy.
   final Map<String, String> tags;
-
   /// Token used for optimistic locking.
   final String updateToken;
 
@@ -48,11 +43,7 @@ class GetFirewallPolicyResult {
     return <String, dynamic>{
       'arn': ?arn,
       'description': description,
-      'firewallPolicies':
-          pulumi.Input.encodeList<
-            GetFirewallPolicyFirewallPolicy,
-            Map<String, dynamic>
-          >(firewallPolicies, (value) => value.toMap()),
+      'firewallPolicies': pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicy, Map<String, dynamic>>(firewallPolicies, (value) => value.toMap()),
       'id': id,
       'name': ?name,
       'region': region,
@@ -63,28 +54,15 @@ class GetFirewallPolicyResult {
 
   factory GetFirewallPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyResult(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: map['description'] as String,
-      firewallPolicies:
-          pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicy>(
-            map['firewallPolicies']!,
-            (value) => GetFirewallPolicyFirewallPolicy.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      firewallPolicies: pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicy>(map['firewallPolicies']!, (value) => GetFirewallPolicyFirewallPolicy.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       updateToken: map['updateToken'] as String,
     );
   }
 }
+

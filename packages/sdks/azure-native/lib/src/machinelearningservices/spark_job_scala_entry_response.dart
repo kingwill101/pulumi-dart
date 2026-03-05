@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SparkJobScalaEntryResponse {
   /// [Required] Scala class name used as entry point.
   final pulumi.Input<String> className;
-
   /// Expected value is 'SparkJobScalaEntry'.
   final pulumi.Input<String> sparkJobEntryType;
 
@@ -27,9 +26,8 @@ class SparkJobScalaEntryResponse {
   factory SparkJobScalaEntryResponse.fromMap(Map<String, dynamic> map) {
     return SparkJobScalaEntryResponse(
       className: pulumi.Input.fromValue(map['className'] as String),
-      sparkJobEntryType: pulumi.Input.fromValue(
-        map['sparkJobEntryType'] as String,
-      ),
+      sparkJobEntryType: pulumi.Input.fromValue(map['sparkJobEntryType'] as String),
     );
   }
 }
+

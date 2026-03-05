@@ -17,3 +17,4 @@ enum AzureHybridUseBenefit {
     throw ArgumentError('Unknown AzureHybridUseBenefit value: $value');
   }
 }
+

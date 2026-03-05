@@ -9,21 +9,20 @@ class ConfigurationProfileAssignmentProperties {
 
   /// Creates a new [ConfigurationProfileAssignmentProperties].
   /// [configurationProfile] The Automanage configurationProfile ARM Resource URI.
-  ConfigurationProfileAssignmentProperties({this.configurationProfile});
+  ConfigurationProfileAssignmentProperties({
+    this.configurationProfile,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'configurationProfile': ?configurationProfile};
+    return <String, dynamic>{
+      'configurationProfile': ?configurationProfile,
+    };
   }
 
-  factory ConfigurationProfileAssignmentProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigurationProfileAssignmentProperties.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileAssignmentProperties(
-      configurationProfile: (() {
-        final guardedValue = map['configurationProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      configurationProfile: (() { final guardedValue = map['configurationProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

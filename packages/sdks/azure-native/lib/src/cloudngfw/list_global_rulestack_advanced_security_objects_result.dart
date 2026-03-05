@@ -6,7 +6,6 @@ import 'adv_security_object_model_response.dart';
 class ListGlobalRulestackAdvancedSecurityObjectsResult {
   /// next link
   final String? nextLink;
-
   /// response value
   final AdvSecurityObjectModelResponse value;
 
@@ -19,21 +18,17 @@ class ListGlobalRulestackAdvancedSecurityObjectsResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nextLink': ?nextLink, 'value': value.toMap()};
+    return <String, dynamic>{
+      'nextLink': ?nextLink,
+      'value': value.toMap(),
+    };
   }
 
-  factory ListGlobalRulestackAdvancedSecurityObjectsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListGlobalRulestackAdvancedSecurityObjectsResult.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackAdvancedSecurityObjectsResult(
-      nextLink: (() {
-        final guardedValue = map['nextLink'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      value: AdvSecurityObjectModelResponse.fromMap(
-        (map['value']! as Map).cast<String, dynamic>(),
-      ),
+      nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      value: AdvSecurityObjectModelResponse.fromMap((map['value']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

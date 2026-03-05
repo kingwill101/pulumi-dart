@@ -231,33 +231,24 @@ import 'producer_image_share_group_state.dart';
 class ProducerImageShareGroup extends pulumi.CustomResource {
   /// The date and time the Image Share Group was created.
   late final pulumi.Output<String> created;
-
   /// The description of the Image Share Group
   ///
   /// * `images` - (Optional) A list of Images to include in the Image Share Group.
   late final pulumi.Output<String?> description;
-
   /// The date and time the Image Share Group will expire.
   late final pulumi.Output<String> expiry;
-
   /// The images to be shared using this Image Share Group.
   late final pulumi.Output<List<Map<String, dynamic>>> images;
-
   /// The number of images in the Image Share Group.
   late final pulumi.Output<int> imagesCount;
-
   /// Whether the Image Share Group is suspended.
   late final pulumi.Output<bool> isSuspended;
-
   /// The label of the Image Share Group.
   late final pulumi.Output<String> label;
-
   /// The number of members in the Image Share Group.
   late final pulumi.Output<int> membersCount;
-
   /// The date and time the Image Share Group was last updated.
   late final pulumi.Output<String> updated;
-
   /// The UUID of the Image Share Group.
   late final pulumi.Output<String> uuid;
 
@@ -270,11 +261,11 @@ class ProducerImageShareGroup extends pulumi.CustomResource {
     ProducerImageShareGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/producerImageShareGroup:ProducerImageShareGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/producerImageShareGroup:ProducerImageShareGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     created = registerOutput<String>('created');
     description = registerOutput<String?>('description');
     expiry = registerOutput<String>('expiry');
@@ -305,11 +296,11 @@ class ProducerImageShareGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/producerImageShareGroup:ProducerImageShareGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/producerImageShareGroup:ProducerImageShareGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     created = registerOutput<String>('created');
     description = registerOutput<String?>('description');
     expiry = registerOutput<String>('expiry');

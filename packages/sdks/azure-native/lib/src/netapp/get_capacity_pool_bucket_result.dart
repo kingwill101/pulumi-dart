@@ -8,35 +8,26 @@ import 'system_data_response.dart';
 class GetCapacityPoolBucketResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
   final FileSystemUserResponse? fileSystemUser;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The volume path mounted inside the bucket. The default is the root path '/' if no value is provided when the bucket is created.
   final String? path;
-
   /// Provisioning state of the resource
   final String provisioningState;
-
   /// Properties of the server managing the lifecycle of volume buckets
   final BucketServerPropertiesResponse? server;
-
   /// The bucket credentials status. There states:
   ///
   /// "NoCredentialsSet": Access and Secret key pair have not been generated.
   /// "CredentialsExpired": Access and Secret key pair have expired.
   /// "Active": The certificate has been installed and credentials are unexpired.
   final String status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -82,33 +73,16 @@ class GetCapacityPoolBucketResult {
   factory GetCapacityPoolBucketResult.fromMap(Map<String, dynamic> map) {
     return GetCapacityPoolBucketResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      fileSystemUser: (() {
-        final guardedValue = map['fileSystemUser'];
-        if (guardedValue == null) return null;
-        return FileSystemUserResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      fileSystemUser: (() { final guardedValue = map['fileSystemUser']; if (guardedValue == null) return null; return FileSystemUserResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
-      server: (() {
-        final guardedValue = map['server'];
-        if (guardedValue == null) return null;
-        return BucketServerPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      server: (() { final guardedValue = map['server']; if (guardedValue == null) return null; return BucketServerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

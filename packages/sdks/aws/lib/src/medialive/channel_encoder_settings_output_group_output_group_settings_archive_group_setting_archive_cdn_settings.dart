@@ -5,10 +5,7 @@ import 'channel_encoder_settings_output_group_output_group_settings_archive_grou
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings {
   /// Archive S3 Settings. See Archive S3 Settings for more details.
-  final pulumi.Input<
-    ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettingsArchiveS3Settings
-  >?
-  archiveS3Settings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettingsArchiveS3Settings>? archiveS3Settings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings].
   /// [archiveS3Settings] Archive S3 Settings. See Archive S3 Settings for more details.
@@ -18,27 +15,14 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArc
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'archiveS3Settings':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettingsArchiveS3Settings,
-            Map<String, dynamic>
-          >(archiveS3Settings, (value) => value.toMap()),
+      'archiveS3Settings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettingsArchiveS3Settings, Map<String, dynamic>>(archiveS3Settings, (value) => value.toMap()),
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings(
-      archiveS3Settings: (() {
-        final guardedValue = map['archiveS3Settings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettingsArchiveS3Settings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      archiveS3Settings: (() { final guardedValue = map['archiveS3Settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettingsArchiveS3Settings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

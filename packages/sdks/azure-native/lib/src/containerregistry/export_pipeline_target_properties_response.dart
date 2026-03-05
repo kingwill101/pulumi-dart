@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExportPipelineTargetPropertiesResponse {
   /// They key vault secret uri to obtain the target storage SAS token.
   final pulumi.Input<String> keyVaultUri;
-
   /// The type of target for the export pipeline.
   final pulumi.Input<String>? type;
-
   /// The target uri of the export pipeline.
   /// When 'AzureStorageBlob': "https://accountName.blob.core.windows.net/containerName/blobName"
   /// When 'AzureStorageBlobContainer':  "https://accountName.blob.core.windows.net/containerName"
@@ -33,21 +31,12 @@ class ExportPipelineTargetPropertiesResponse {
     };
   }
 
-  factory ExportPipelineTargetPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExportPipelineTargetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ExportPipelineTargetPropertiesResponse(
       keyVaultUri: pulumi.Input.fromValue(map['keyVaultUri'] as String),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

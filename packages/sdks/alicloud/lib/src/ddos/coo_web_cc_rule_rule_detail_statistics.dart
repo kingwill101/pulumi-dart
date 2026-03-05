@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CooWebCcRuleRuleDetailStatistics {
   /// The statistic source. Valid values:
   final pulumi.Input<String> field;
-
   /// Set this parameter only when the statistic source is `header`.
   final pulumi.Input<String>? headerName;
-
   /// The deduplication mode. Valid values:
   final pulumi.Input<String> mode;
 
@@ -33,12 +31,9 @@ class CooWebCcRuleRuleDetailStatistics {
   factory CooWebCcRuleRuleDetailStatistics.fromMap(Map<String, dynamic> map) {
     return CooWebCcRuleRuleDetailStatistics(
       field: pulumi.Input.fromValue(map['field'] as String),
-      headerName: (() {
-        final guardedValue = map['headerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      headerName: (() { final guardedValue = map['headerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
+

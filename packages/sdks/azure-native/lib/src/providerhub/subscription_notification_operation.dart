@@ -16,8 +16,7 @@ enum SubscriptionNotificationOperation {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SubscriptionNotificationOperation value: $value',
-    );
+    throw ArgumentError('Unknown SubscriptionNotificationOperation value: $value');
   }
 }
+

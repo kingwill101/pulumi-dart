@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduledSnapshotsConfigResponse {
   /// Optional. Whether scheduled snapshots creation is enabled.
   final pulumi.Input<bool> enabled;
-
   /// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
   final pulumi.Input<String> snapshotCreationSchedule;
-
   /// Optional. The Cloud Storage location for storing automatically created snapshots.
   final pulumi.Input<String> snapshotLocation;
-
   /// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
   final pulumi.Input<String> timeZone;
 
@@ -40,13 +37,10 @@ class ScheduledSnapshotsConfigResponse {
   factory ScheduledSnapshotsConfigResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledSnapshotsConfigResponse(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      snapshotCreationSchedule: pulumi.Input.fromValue(
-        map['snapshotCreationSchedule'] as String,
-      ),
-      snapshotLocation: pulumi.Input.fromValue(
-        map['snapshotLocation'] as String,
-      ),
+      snapshotCreationSchedule: pulumi.Input.fromValue(map['snapshotCreationSchedule'] as String),
+      snapshotLocation: pulumi.Input.fromValue(map['snapshotLocation'] as String),
       timeZone: pulumi.Input.fromValue(map['timeZone'] as String),
     );
   }
 }
+

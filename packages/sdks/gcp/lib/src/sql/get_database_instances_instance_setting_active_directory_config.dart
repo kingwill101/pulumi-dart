@@ -13,14 +13,15 @@ class GetDatabaseInstancesInstanceSettingActiveDirectoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domain': domain};
+    return <String, dynamic>{
+      'domain': domain,
+    };
   }
 
-  factory GetDatabaseInstancesInstanceSettingActiveDirectoryConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstancesInstanceSettingActiveDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingActiveDirectoryConfig(
       domain: pulumi.Input.fromValue(map['domain'] as String),
     );
   }
 }
+

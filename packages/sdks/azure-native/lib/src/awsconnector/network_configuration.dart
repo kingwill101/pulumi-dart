@@ -10,29 +10,20 @@ class NetworkConfiguration {
 
   /// Creates a new [NetworkConfiguration].
   /// [awsvpcConfiguration] The VPC subnets and security groups that are associated with a task.  All specified subnets and security groups must be from the same VPC. An object representing the networking details for a task or service. For example ``awsvpcConfiguration={subnets=['subnet-12344321'],securityGroups=['sg-12344321']}``
-  NetworkConfiguration({this.awsvpcConfiguration});
+  NetworkConfiguration({
+    this.awsvpcConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'awsvpcConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            AwsVpcConfiguration,
-            Map<String, dynamic>
-          >(awsvpcConfiguration, (value) => value.toMap()),
+      'awsvpcConfiguration': ?pulumi.Input.mapOptionalInputValue<AwsVpcConfiguration, Map<String, dynamic>>(awsvpcConfiguration, (value) => value.toMap()),
     };
   }
 
   factory NetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkConfiguration(
-      awsvpcConfiguration: (() {
-        final guardedValue = map['awsvpcConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AwsVpcConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      awsvpcConfiguration: (() { final guardedValue = map['awsvpcConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

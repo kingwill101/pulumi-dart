@@ -1029,38 +1029,28 @@ import 'app_state.dart';
 class App extends pulumi.CustomResource {
   /// The ID the app's currently active deployment.
   late final pulumi.Output<String> activeDeploymentId;
-
   /// The uniform resource identifier for the app.
   late final pulumi.Output<String> appUrn;
-
   /// The date and time of when the app was created.
   late final pulumi.Output<String> createdAt;
-
   /// The dedicated egress IP addresses associated with the app.
   late final pulumi.Output<List<Map<String, dynamic>>> dedicatedIps;
-
   /// The default URL to access the app.
   late final pulumi.Output<String> defaultIngress;
-
   /// (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
   late final pulumi.Output<int?> deploymentPerPage;
-
   /// The live domain of the app.
   late final pulumi.Output<String> liveDomain;
-
   /// The live URL of the app.
   late final pulumi.Output<String> liveUrl;
-
   /// The ID of the project that the app is assigned to.
   ///
   /// A spec can contain multiple components.
   ///
   /// A `service` can contain:
   late final pulumi.Output<String> projectId;
-
   /// A DigitalOcean App spec describing the app.
   late final pulumi.Output<AppSpec?> spec;
-
   /// The date and time of when the app was last updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -1068,13 +1058,16 @@ class App extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [App]. {@macro pulumi_index_app_app_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  App(String name, {AppArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'digitalocean:index/app:App',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  App(
+    String name, {
+    AppArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'digitalocean:index/app:App',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activeDeploymentId = registerOutput<String>('activeDeploymentId');
     appUrn = registerOutput<String>('appUrn');
     createdAt = registerOutput<String>('createdAt');
@@ -1084,19 +1077,16 @@ class App extends pulumi.CustomResource {
     liveDomain = registerOutput<String>('liveDomain');
     liveUrl = registerOutput<String>('liveUrl');
     projectId = registerOutput<String>('projectId');
-    spec = registerOutput<AppSpec?>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppSpec.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    spec = registerOutput<AppSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
   }
 
   /// Gets an existing [App] resource's state with the given [name] and [id].
-  static App get(String name, pulumi.Input<String> id, {AppState? state}) {
+  static App get(
+    String name,
+    pulumi.Input<String> id, {
+    AppState? state,
+  }) {
     return App._get(
       name,
       state: state?.toMap(),
@@ -1109,11 +1099,11 @@ class App extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/app:App',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/app:App',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activeDeploymentId = registerOutput<String>('activeDeploymentId');
     appUrn = registerOutput<String>('appUrn');
     createdAt = registerOutput<String>('createdAt');
@@ -1123,14 +1113,7 @@ class App extends pulumi.CustomResource {
     liveDomain = registerOutput<String>('liveDomain');
     liveUrl = registerOutput<String>('liveUrl');
     projectId = registerOutput<String>('projectId');
-    spec = registerOutput<AppSpec?>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppSpec.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    spec = registerOutput<AppSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
   }
 }

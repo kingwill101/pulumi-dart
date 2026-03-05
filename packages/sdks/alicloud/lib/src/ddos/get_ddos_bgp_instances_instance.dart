@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDdosBgpInstancesInstance {
   /// The instance's elastic defend bandwidth.
   final pulumi.Input<int> bandwidth;
-
   /// The instance's base defend bandwidth.
   final pulumi.Input<int> baseBandwidth;
-
   /// The instance's id.
   final pulumi.Input<String> id;
-
   /// The instance's count of ip config.
   final pulumi.Input<int> ipCount;
-
   /// The instance's IP version.
   final pulumi.Input<String> ipType;
-
   /// The instance's remark.
   final pulumi.Input<String> name;
-
   /// Normal defend bandwidth of the instance. The unit is Gbps.
   final pulumi.Input<int> normalBandwidth;
-
   /// The instance's region.
   final pulumi.Input<String> region;
-
   /// The instance's type.
   final pulumi.Input<String> type;
 
@@ -80,3 +72,4 @@ class GetDdosBgpInstancesInstance {
     );
   }
 }
+

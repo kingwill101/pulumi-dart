@@ -211,17 +211,14 @@ import 'firewall_policy_association_state.dart';
 class FirewallPolicyAssociation extends pulumi.CustomResource {
   /// The target that the firewall policy is attached to.
   late final pulumi.Output<String> attachmentTarget;
-
   /// The firewall policy of the resource.
   /// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
   /// firewall policy with the flag to override the existing attachmentTarget's policy association.
   /// **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
   /// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
   late final pulumi.Output<String> firewallPolicy;
-
   /// The name for an association.
   late final pulumi.Output<String> name;
-
   /// The short name of the firewall policy of the association.
   late final pulumi.Output<String> shortName;
 
@@ -234,11 +231,11 @@ class FirewallPolicyAssociation extends pulumi.CustomResource {
     FirewallPolicyAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachmentTarget = registerOutput<String>('attachmentTarget');
     firewallPolicy = registerOutput<String>('firewallPolicy');
     this.name = registerOutput<String>('name');
@@ -263,11 +260,11 @@ class FirewallPolicyAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachmentTarget = registerOutput<String>('attachmentTarget');
     firewallPolicy = registerOutput<String>('firewallPolicy');
     this.name = registerOutput<String>('name');

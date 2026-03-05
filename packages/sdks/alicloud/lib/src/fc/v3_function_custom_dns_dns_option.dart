@@ -5,31 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V3FunctionCustomDnsDnsOption {
   /// Configuration Item Name
   final pulumi.Input<String>? name;
-
   /// Configuration Item Value
   final pulumi.Input<String>? value;
 
   /// Creates a new [V3FunctionCustomDnsDnsOption].
   /// [name] Configuration Item Name
   /// [value] Configuration Item Value
-  V3FunctionCustomDnsDnsOption({this.name, this.value});
+  V3FunctionCustomDnsDnsOption({
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'value': ?value};
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory V3FunctionCustomDnsDnsOption.fromMap(Map<String, dynamic> map) {
     return V3FunctionCustomDnsDnsOption(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,11 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShareDirectoryArgs {
   /// A mapping of metadata to assign to this Directory.
   final pulumi.Input<Map<String, String>>? metadata;
-
   /// The name (or path) of the Directory that should be created within this File Share. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? storageShareId;
-
   /// The Storage Share URL in which this file will be placed into. Changing this forces a new resource to be created.
   final pulumi.Input<String>? storageShareUrl;
 
@@ -40,28 +38,11 @@ class ShareDirectoryArgs {
 
   factory ShareDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return ShareDirectoryArgs(
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageShareId: (() {
-        final guardedValue = map['storageShareId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageShareUrl: (() {
-        final guardedValue = map['storageShareUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageShareId: (() { final guardedValue = map['storageShareId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageShareUrl: (() { final guardedValue = map['storageShareUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

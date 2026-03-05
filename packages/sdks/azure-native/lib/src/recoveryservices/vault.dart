@@ -629,31 +629,22 @@ import 'vault_properties_response.dart';
 class Vault extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Optional ETag.
   late final pulumi.Output<String?> etag;
-
   /// Identity for the resource.
   late final pulumi.Output<IdentityDataResponse?> identity;
-
   /// Resource location.
   late final pulumi.Output<String> location;
-
   /// Resource name associated with the resource.
   late final pulumi.Output<String> name;
-
   /// Properties of the vault.
   late final pulumi.Output<VaultPropertiesResponse> properties;
-
   /// Identifies the unique system identifier for each Azure resource.
   late final pulumi.Output<SkuResponse?> sku;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   late final pulumi.Output<String> type;
 
@@ -661,57 +652,24 @@ class Vault extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Vault]. {@macro pulumi_recoveryservices_vault_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Vault(String name, {VaultArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:recoveryservices:Vault',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Vault(
+    String name, {
+    VaultArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:recoveryservices:Vault',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String?>('etag');
-    identity = registerOutput<IdentityDataResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityDataResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<VaultPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VaultPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<VaultPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VaultPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

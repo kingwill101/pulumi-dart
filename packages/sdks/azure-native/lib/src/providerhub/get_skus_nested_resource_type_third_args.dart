@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSkusNestedResourceTypeThirdArgs {
   /// The first child resource type.
   final pulumi.Input<String> nestedResourceTypeFirst;
-
   /// The second child resource type.
   final pulumi.Input<String> nestedResourceTypeSecond;
-
   /// The third child resource type.
   final pulumi.Input<String> nestedResourceTypeThird;
-
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
-
   /// The resource type.
   final pulumi.Input<String> resourceType;
-
   /// The SKU.
   final pulumi.Input<String> sku;
 
@@ -54,20 +49,13 @@ class GetSkusNestedResourceTypeThirdArgs {
 
   factory GetSkusNestedResourceTypeThirdArgs.fromMap(Map<String, dynamic> map) {
     return GetSkusNestedResourceTypeThirdArgs(
-      nestedResourceTypeFirst: pulumi.Input.fromValue(
-        map['nestedResourceTypeFirst'] as String,
-      ),
-      nestedResourceTypeSecond: pulumi.Input.fromValue(
-        map['nestedResourceTypeSecond'] as String,
-      ),
-      nestedResourceTypeThird: pulumi.Input.fromValue(
-        map['nestedResourceTypeThird'] as String,
-      ),
-      providerNamespace: pulumi.Input.fromValue(
-        map['providerNamespace'] as String,
-      ),
+      nestedResourceTypeFirst: pulumi.Input.fromValue(map['nestedResourceTypeFirst'] as String),
+      nestedResourceTypeSecond: pulumi.Input.fromValue(map['nestedResourceTypeSecond'] as String),
+      nestedResourceTypeThird: pulumi.Input.fromValue(map['nestedResourceTypeThird'] as String),
+      providerNamespace: pulumi.Input.fromValue(map['providerNamespace'] as String),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
       sku: pulumi.Input.fromValue(map['sku'] as String),
     );
   }
 }
+

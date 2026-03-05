@@ -38,11 +38,8 @@ class GetBackupArgs {
       backupId: pulumi.Input.fromValue(map['backupId'] as String),
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

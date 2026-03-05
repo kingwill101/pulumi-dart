@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceTypeExtensionResponse {
   /// The endpoint uri.
   final pulumi.Input<String>? endpointUri;
-
   /// The extension categories.
   final pulumi.Input<List<String>>? extensionCategories;
-
   /// The timeout.
   final pulumi.Input<String>? timeout;
 
@@ -32,21 +30,10 @@ class ResourceTypeExtensionResponse {
 
   factory ResourceTypeExtensionResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeExtensionResponse(
-      endpointUri: (() {
-        final guardedValue = map['endpointUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      extensionCategories: (() {
-        final guardedValue = map['extensionCategories'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      timeout: (() {
-        final guardedValue = map['timeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpointUri: (() { final guardedValue = map['endpointUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      extensionCategories: (() { final guardedValue = map['extensionCategories']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -129,60 +129,46 @@ import 'eip_state.dart';
 /// ```
 class Eip extends pulumi.CustomResource {
   late final pulumi.Output<String?> activityId;
-
   /// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
   late final pulumi.Output<String> addressName;
   late final pulumi.Output<String> allocationId;
   late final pulumi.Output<bool?> autoPay;
-
   /// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
   late final pulumi.Output<String> bandwidth;
   late final pulumi.Output<String> createTime;
-
   /// Whether enable the deletion protection or not. Default value: `false`.
   /// - true: Enable deletion protection.
   /// - false: Disable deletion protection.
   late final pulumi.Output<bool> deletionProtection;
-
   /// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
   late final pulumi.Output<String> description;
   late final pulumi.Output<String> highDefinitionMonitorLogStatus;
-
   /// (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
   late final pulumi.Output<String> instanceChargeType;
-
   /// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
   late final pulumi.Output<String> internetChargeType;
-
   /// The elastic ip address
   late final pulumi.Output<String> ipAddress;
-
   /// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
   late final pulumi.Output<String> isp;
   late final pulumi.Output<String?> logProject;
   late final pulumi.Output<String?> logStore;
   late final pulumi.Output<String> mode;
-
   /// It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> netmode;
-
   /// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
-
   /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
   /// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
   late final pulumi.Output<int?> period;
   late final pulumi.Output<String?> pricingCycle;
   late final pulumi.Output<String?> publicIpAddressPoolId;
-
   /// The Id of resource group which the eip belongs.
   late final pulumi.Output<String> resourceGroupId;
   late final pulumi.Output<List<String>?> securityProtectionTypes;
-
   /// The EIP current status.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<String> zone;
@@ -191,13 +177,16 @@ class Eip extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Eip]. {@macro pulumi_ecs_eip_eip_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Eip(String name, {EipArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:ecs/eip:Eip',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Eip(
+    String name, {
+    EipArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:ecs/eip:Eip',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activityId = registerOutput<String?>('activityId');
     addressName = registerOutput<String>('addressName');
     allocationId = registerOutput<String>('allocationId');
@@ -206,9 +195,7 @@ class Eip extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionProtection = registerOutput<bool>('deletionProtection');
     description = registerOutput<String>('description');
-    highDefinitionMonitorLogStatus = registerOutput<String>(
-      'highDefinitionMonitorLogStatus',
-    );
+    highDefinitionMonitorLogStatus = registerOutput<String>('highDefinitionMonitorLogStatus');
     instanceChargeType = registerOutput<String>('instanceChargeType');
     internetChargeType = registerOutput<String>('internetChargeType');
     ipAddress = registerOutput<String>('ipAddress');
@@ -223,16 +210,18 @@ class Eip extends pulumi.CustomResource {
     pricingCycle = registerOutput<String?>('pricingCycle');
     publicIpAddressPoolId = registerOutput<String?>('publicIpAddressPoolId');
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    securityProtectionTypes = registerOutput<List<String>?>(
-      'securityProtectionTypes',
-    );
+    securityProtectionTypes = registerOutput<List<String>?>('securityProtectionTypes');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     zone = registerOutput<String>('zone');
   }
 
   /// Gets an existing [Eip] resource's state with the given [name] and [id].
-  static Eip get(String name, pulumi.Input<String> id, {EipState? state}) {
+  static Eip get(
+    String name,
+    pulumi.Input<String> id, {
+    EipState? state,
+  }) {
     return Eip._get(
       name,
       state: state?.toMap(),
@@ -245,11 +234,11 @@ class Eip extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/eip:Eip',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/eip:Eip',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activityId = registerOutput<String?>('activityId');
     addressName = registerOutput<String>('addressName');
     allocationId = registerOutput<String>('allocationId');
@@ -258,9 +247,7 @@ class Eip extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionProtection = registerOutput<bool>('deletionProtection');
     description = registerOutput<String>('description');
-    highDefinitionMonitorLogStatus = registerOutput<String>(
-      'highDefinitionMonitorLogStatus',
-    );
+    highDefinitionMonitorLogStatus = registerOutput<String>('highDefinitionMonitorLogStatus');
     instanceChargeType = registerOutput<String>('instanceChargeType');
     internetChargeType = registerOutput<String>('internetChargeType');
     ipAddress = registerOutput<String>('ipAddress');
@@ -275,9 +262,7 @@ class Eip extends pulumi.CustomResource {
     pricingCycle = registerOutput<String?>('pricingCycle');
     publicIpAddressPoolId = registerOutput<String?>('publicIpAddressPoolId');
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    securityProtectionTypes = registerOutput<List<String>?>(
-      'securityProtectionTypes',
-    );
+    securityProtectionTypes = registerOutput<List<String>?>('securityProtectionTypes');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     zone = registerOutput<String>('zone');

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceTextFilterResponse {
   /// Optional. The filter will match columns with length smaller than or equal to this number.
   final pulumi.Input<String> sourceMaxLengthFilter;
-
   /// Optional. The filter will match columns with length greater than or equal to this number.
   final pulumi.Input<String> sourceMinLengthFilter;
 
@@ -27,12 +26,9 @@ class SourceTextFilterResponse {
 
   factory SourceTextFilterResponse.fromMap(Map<String, dynamic> map) {
     return SourceTextFilterResponse(
-      sourceMaxLengthFilter: pulumi.Input.fromValue(
-        map['sourceMaxLengthFilter'] as String,
-      ),
-      sourceMinLengthFilter: pulumi.Input.fromValue(
-        map['sourceMinLengthFilter'] as String,
-      ),
+      sourceMaxLengthFilter: pulumi.Input.fromValue(map['sourceMaxLengthFilter'] as String),
+      sourceMinLengthFilter: pulumi.Input.fromValue(map['sourceMinLengthFilter'] as String),
     );
   }
 }
+

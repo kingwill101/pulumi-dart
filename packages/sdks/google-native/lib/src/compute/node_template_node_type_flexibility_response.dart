@@ -25,9 +25,7 @@ class NodeTemplateNodeTypeFlexibilityResponse {
     };
   }
 
-  factory NodeTemplateNodeTypeFlexibilityResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NodeTemplateNodeTypeFlexibilityResponse.fromMap(Map<String, dynamic> map) {
     return NodeTemplateNodeTypeFlexibilityResponse(
       cpus: pulumi.Input.fromValue(map['cpus'] as String),
       localSsd: pulumi.Input.fromValue(map['localSsd'] as String),
@@ -35,3 +33,4 @@ class NodeTemplateNodeTypeFlexibilityResponse {
     );
   }
 }
+

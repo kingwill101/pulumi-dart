@@ -523,117 +523,78 @@ import 'sku_response.dart';
 class ManagedInstance extends pulumi.CustomResource {
   /// Administrator username for the managed instance. Can only be specified when the managed instance is being created (and is required for creation).
   late final pulumi.Output<String?> administratorLogin;
-
   /// The Azure Active Directory administrator of the instance. This can only be used at instance create time. If used for instance update, it will be ignored or it will result in an error. For updates individual APIs will need to be used.
-  late final pulumi.Output<ManagedInstanceExternalAdministratorResponse?>
-  administrators;
-
+  late final pulumi.Output<ManagedInstanceExternalAdministratorResponse?> administrators;
   /// The managed instance's authentication metadata lookup mode.
   late final pulumi.Output<String?> authenticationMetadata;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Collation of the managed instance.
   late final pulumi.Output<String?> collation;
-
   /// Specifies the point in time (ISO8601 format) of the Managed Instance creation.
   late final pulumi.Output<String> createTime;
-
   /// The storage account type used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
   late final pulumi.Output<String> currentBackupStorageRedundancy;
-
   /// Specifies the internal format of instance databases specific to the SQL engine version.
   late final pulumi.Output<String?> databaseFormat;
-
   /// The Dns Zone that the managed instance is in.
   late final pulumi.Output<String> dnsZone;
-
   /// Status of external governance.
   late final pulumi.Output<String> externalGovernanceStatus;
-
   /// The fully qualified domain name of the managed instance.
   late final pulumi.Output<String> fullyQualifiedDomainName;
-
   /// Hybrid secondary usage. Possible values are 'Active' (default value) and 'Passive' (customer uses the secondary as Passive DR).
   late final pulumi.Output<String?> hybridSecondaryUsage;
-
   /// Hybrid secondary usage detected. Possible values are 'Active' (customer does not meet the requirements to use the secondary as Passive DR) and 'Passive' (customer meets the requirements to use the secondary as Passive DR).
   late final pulumi.Output<String> hybridSecondaryUsageDetected;
-
   /// The Azure Active Directory identity of the managed instance.
   late final pulumi.Output<ResourceIdentityResponse?> identity;
-
   /// The Id of the instance pool this managed server belongs to.
   late final pulumi.Output<String?> instancePoolId;
-
   /// Whether or not this is a GPv2 variant of General Purpose edition.
   late final pulumi.Output<bool?> isGeneralPurposeV2;
-
   /// A CMK URI of the key to use for encryption.
   late final pulumi.Output<String?> keyId;
-
   /// The license type. Possible values are 'LicenseIncluded' (regular price inclusive of a new SQL license) and 'BasePrice' (discounted AHB price for bringing your own SQL licenses).
   late final pulumi.Output<String?> licenseType;
-
   /// Resource location.
   late final pulumi.Output<String> location;
-
   /// Specifies maintenance configuration id to apply to this managed instance.
   late final pulumi.Output<String?> maintenanceConfigurationId;
-
   /// Minimal TLS version. Allowed values: 'None', '1.0', '1.1', '1.2'
   late final pulumi.Output<String?> minimalTlsVersion;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Pricing model of Managed Instance.
   late final pulumi.Output<String?> pricingModel;
-
   /// The resource id of a user assigned identity to be used by default.
   late final pulumi.Output<String?> primaryUserAssignedIdentityId;
-
   /// List of private endpoint connections on a managed instance.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Provisioning state of managed instance.
   late final pulumi.Output<String> provisioningState;
-
   /// Connection type used for connecting to the instance.
   late final pulumi.Output<String?> proxyOverride;
-
   /// Whether or not the public data endpoint is enabled.
   late final pulumi.Output<bool?> publicDataEndpointEnabled;
-
   /// The storage account type to be used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
   late final pulumi.Output<String?> requestedBackupStorageRedundancy;
-
   /// The managed instance's service principal.
   late final pulumi.Output<ServicePrincipalResponse?> servicePrincipal;
-
   /// Managed instance SKU. Allowed values for sku.name: GP_Gen5, GP_G8IM, GP_G8IH, BC_Gen5, BC_G8IM, BC_G8IH
   late final pulumi.Output<SkuResponse?> sku;
-
   /// The state of the managed instance.
   late final pulumi.Output<String> state;
-
   /// Storage IOps. Minimum value: 300. Maximum value: 80000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
   late final pulumi.Output<int?> storageIOps;
-
   /// Storage size in GB. Minimum value: 32. Maximum value: 16384. Increments of 32 GB allowed only. Maximum value depends on the selected hardware family and number of vCores.
   late final pulumi.Output<int?> storageSizeInGB;
-
   /// Storage throughput MBps parameter is not supported in the instance create/update operation.
   late final pulumi.Output<int?> storageThroughputMBps;
-
   /// Subnet resource ID for the managed instance.
   late final pulumi.Output<String?> subnetId;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Id of the timezone. Allowed values are timezones supported by Windows.
   /// Windows keeps details on supported timezones, including the id, in registry under
   /// KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones.
@@ -641,16 +602,12 @@ class ManagedInstance extends pulumi.CustomResource {
   /// List of Ids can also be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell.
   /// An example of valid timezone id is "Pacific Standard Time" or "W. Europe Standard Time".
   late final pulumi.Output<String?> timezoneId;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// The number of vCores. Allowed values: 8, 16, 24, 32, 40, 64, 80.
   late final pulumi.Output<int?> vCores;
-
   /// Virtual cluster resource id for the Managed Instance.
   late final pulumi.Output<String> virtualClusterId;
-
   /// Whether or not the multi-az is enabled.
   late final pulumi.Output<bool?> zoneRedundant;
 
@@ -663,97 +620,42 @@ class ManagedInstance extends pulumi.CustomResource {
     ManagedInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:ManagedInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:ManagedInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administratorLogin = registerOutput<String?>('administratorLogin');
-    administrators =
-        registerOutput<ManagedInstanceExternalAdministratorResponse?>(
-          'administrators',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedInstanceExternalAdministratorResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    administrators = registerOutput<ManagedInstanceExternalAdministratorResponse?>('administrators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedInstanceExternalAdministratorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authenticationMetadata = registerOutput<String?>('authenticationMetadata');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     collation = registerOutput<String?>('collation');
     createTime = registerOutput<String>('createTime');
-    currentBackupStorageRedundancy = registerOutput<String>(
-      'currentBackupStorageRedundancy',
-    );
+    currentBackupStorageRedundancy = registerOutput<String>('currentBackupStorageRedundancy');
     databaseFormat = registerOutput<String?>('databaseFormat');
     dnsZone = registerOutput<String>('dnsZone');
-    externalGovernanceStatus = registerOutput<String>(
-      'externalGovernanceStatus',
-    );
-    fullyQualifiedDomainName = registerOutput<String>(
-      'fullyQualifiedDomainName',
-    );
+    externalGovernanceStatus = registerOutput<String>('externalGovernanceStatus');
+    fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
     hybridSecondaryUsage = registerOutput<String?>('hybridSecondaryUsage');
-    hybridSecondaryUsageDetected = registerOutput<String>(
-      'hybridSecondaryUsageDetected',
-    );
-    identity = registerOutput<ResourceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hybridSecondaryUsageDetected = registerOutput<String>('hybridSecondaryUsageDetected');
+    identity = registerOutput<ResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instancePoolId = registerOutput<String?>('instancePoolId');
     isGeneralPurposeV2 = registerOutput<bool?>('isGeneralPurposeV2');
     keyId = registerOutput<String?>('keyId');
     licenseType = registerOutput<String?>('licenseType');
     location = registerOutput<String>('location');
-    maintenanceConfigurationId = registerOutput<String?>(
-      'maintenanceConfigurationId',
-    );
+    maintenanceConfigurationId = registerOutput<String?>('maintenanceConfigurationId');
     minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
     this.name = registerOutput<String>('name');
     pricingModel = registerOutput<String?>('pricingModel');
-    primaryUserAssignedIdentityId = registerOutput<String?>(
-      'primaryUserAssignedIdentityId',
-    );
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    primaryUserAssignedIdentityId = registerOutput<String?>('primaryUserAssignedIdentityId');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     proxyOverride = registerOutput<String?>('proxyOverride');
-    publicDataEndpointEnabled = registerOutput<bool?>(
-      'publicDataEndpointEnabled',
-    );
-    requestedBackupStorageRedundancy = registerOutput<String?>(
-      'requestedBackupStorageRedundancy',
-    );
-    servicePrincipal = registerOutput<ServicePrincipalResponse?>(
-      'servicePrincipal',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServicePrincipalResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    publicDataEndpointEnabled = registerOutput<bool?>('publicDataEndpointEnabled');
+    requestedBackupStorageRedundancy = registerOutput<String?>('requestedBackupStorageRedundancy');
+    servicePrincipal = registerOutput<ServicePrincipalResponse?>('servicePrincipal', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePrincipalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     storageIOps = registerOutput<int?>('storageIOps');
     storageSizeInGB = registerOutput<int?>('storageSizeInGB');

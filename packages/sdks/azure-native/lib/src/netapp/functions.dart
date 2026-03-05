@@ -87,8 +87,7 @@ Future<GetAccountResult> getAccount(
 /// Other available API versions: 2023-11-01-preview, 2024-03-01-preview, 2024-05-01-preview, 2024-07-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview, 2025-08-01, 2025-08-01-preview, 2025-09-01, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_account_change_key_vault_information_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAccountChangeKeyVaultInformationResult>
-getAccountChangeKeyVaultInformation(
+Future<GetAccountChangeKeyVaultInformationResult> getAccountChangeKeyVaultInformation(
   GetAccountChangeKeyVaultInformationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -360,8 +359,7 @@ Future<GetCapacityPoolVolumeResult> getCapacityPoolVolume(
 /// Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview, 2025-08-01, 2025-08-01-preview, 2025-09-01, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_capacity_pool_volume_group_id_for_ldap_user_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCapacityPoolVolumeGroupIdForLdapUserResult>
-getCapacityPoolVolumeGroupIdForLdapUser(
+Future<GetCapacityPoolVolumeGroupIdForLdapUserResult> getCapacityPoolVolumeGroupIdForLdapUser(
   GetCapacityPoolVolumeGroupIdForLdapUserArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -583,8 +581,7 @@ Future<GetVolumeGroupResult> getVolumeGroup(
 /// Uses Azure REST API version 2025-09-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_list_capacity_pool_cache_peering_passphrases_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListCapacityPoolCachePeeringPassphrasesResult>
-listCapacityPoolCachePeeringPassphrases(
+Future<ListCapacityPoolCachePeeringPassphrasesResult> listCapacityPoolCachePeeringPassphrases(
   ListCapacityPoolCachePeeringPassphrasesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -604,8 +601,7 @@ listCapacityPoolCachePeeringPassphrases(
 /// Other available API versions: 2024-03-01-preview, 2024-05-01-preview, 2024-07-01-preview, 2025-01-01-preview, 2025-03-01-preview, 2025-07-01-preview, 2025-08-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_list_capacity_pool_volume_quota_report_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListCapacityPoolVolumeQuotaReportResult>
-listCapacityPoolVolumeQuotaReport(
+Future<ListCapacityPoolVolumeQuotaReportResult> listCapacityPoolVolumeQuotaReport(
   ListCapacityPoolVolumeQuotaReportArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -625,8 +621,7 @@ listCapacityPoolVolumeQuotaReport(
 /// Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview, 2025-08-01, 2025-08-01-preview, 2025-09-01, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_list_capacity_pool_volume_replications_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListCapacityPoolVolumeReplicationsResult>
-listCapacityPoolVolumeReplications(
+Future<ListCapacityPoolVolumeReplicationsResult> listCapacityPoolVolumeReplications(
   ListCapacityPoolVolumeReplicationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

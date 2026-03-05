@@ -6,7 +6,6 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig {
   /// (Output)
   /// Whether summarization is disabled.
   final pulumi.Input<bool>? disabled;
-
   /// (Output)
   /// The groundedness threshold of the answer based on the retrieved sources.
   /// The value has a configurable range of [1, 5]. The level is used to
@@ -32,20 +31,11 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig {
     };
   }
 
-  factory AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig(
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      groundingLevel: (() {
-        final guardedValue = map['groundingLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      groundingLevel: (() { final guardedValue = map['groundingLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

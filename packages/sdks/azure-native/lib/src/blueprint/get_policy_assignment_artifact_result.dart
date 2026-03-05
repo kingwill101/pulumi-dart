@@ -7,35 +7,25 @@ import 'parameter_value_response.dart';
 class GetPolicyAssignmentArtifactResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Artifacts which need to be deployed before the specified artifact.
   final List<String>? dependsOn;
-
   /// Multi-line explain this resource.
   final String? description;
-
   /// One-liner string explain this resource.
   final String? displayName;
-
   /// String Id used to locate any resource on Azure.
   final String id;
-
   /// Specifies the kind of blueprint artifact.
   /// Expected value is 'policyAssignment'.
   final String kind;
-
   /// Name of this resource.
   final String name;
-
   /// Parameter values for the policy definition.
   final Map<String, ParameterValueResponse> parameters;
-
   /// Azure resource ID of the policy definition.
   final String policyDefinitionId;
-
   /// Name of the resource group placeholder to which the policy will be assigned.
   final String? resourceGroup;
-
   /// Type of this resource.
   final String type;
 
@@ -74,11 +64,7 @@ class GetPolicyAssignmentArtifactResult {
       'id': id,
       'kind': kind,
       'name': name,
-      'parameters':
-          pulumi.Input.encodeMapValues<
-            ParameterValueResponse,
-            Map<String, dynamic>
-          >(parameters, (value) => value.toMap()),
+      'parameters': pulumi.Input.encodeMapValues<ParameterValueResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
       'policyDefinitionId': policyDefinitionId,
       'resourceGroup': ?resourceGroup,
       'type': type,
@@ -88,37 +74,17 @@ class GetPolicyAssignmentArtifactResult {
   factory GetPolicyAssignmentArtifactResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyAssignmentArtifactResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dependsOn: (() {
-        final guardedValue = map['dependsOn'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      parameters: pulumi.Input.decodeMapValues<ParameterValueResponse>(
-        map['parameters']!,
-        (value) => ParameterValueResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      parameters: pulumi.Input.decodeMapValues<ParameterValueResponse>(map['parameters']!, (value) => ParameterValueResponse.fromMap((value as Map).cast<String, dynamic>())),
       policyDefinitionId: map['policyDefinitionId'] as String,
-      resourceGroup: (() {
-        final guardedValue = map['resourceGroup'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      resourceGroup: (() { final guardedValue = map['resourceGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

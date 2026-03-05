@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTablesTable {
   /// The table name.
   final pulumi.Input<String> objectName;
-
   /// The parent schema.
   final pulumi.Input<String> schemaName;
-
   /// The table type as defined in ``information_schema.tables``.
   final pulumi.Input<String> tableType;
 
@@ -38,3 +36,4 @@ class GetTablesTable {
     );
   }
 }
+

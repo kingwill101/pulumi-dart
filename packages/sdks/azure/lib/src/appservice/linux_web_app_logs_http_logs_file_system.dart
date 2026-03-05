@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxWebAppLogsHttpLogsFileSystem {
   /// The retention period in days. A value of `0` means no retention.
   final pulumi.Input<int> retentionInDays;
-
   /// The maximum size in megabytes that log files can use.
   final pulumi.Input<int> retentionInMb;
 
@@ -31,3 +30,4 @@ class LinuxWebAppLogsHttpLogsFileSystem {
     );
   }
 }
+

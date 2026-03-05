@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerPortResponse {
   /// Port number the container listens on. If present, this must be a valid port number, 0 &lt; x &lt; 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
   final pulumi.Input<int> containerPort;
-
   /// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
   final pulumi.Input<String> name;
-
   /// Protocol for port. Must be "TCP". Defaults to "TCP".
   final pulumi.Input<String> protocol;
 
@@ -39,3 +37,4 @@ class ContainerPortResponse {
     );
   }
 }
+

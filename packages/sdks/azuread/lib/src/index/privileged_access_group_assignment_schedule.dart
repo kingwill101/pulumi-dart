@@ -213,36 +213,26 @@ import 'privileged_access_group_assignment_schedule_state.dart';
 class PrivilegedAccessGroupAssignmentSchedule extends pulumi.CustomResource {
   /// The type of assignment to the group. Can be either `member` or `owner`.
   late final pulumi.Output<String> assignmentType;
-
   /// The duration that this assignment is valid for, formatted as an ISO8601 duration (e.g. P30D for 30 days, PT3H for three hours).
   late final pulumi.Output<String?> duration;
-
   /// The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).
   late final pulumi.Output<String> expirationDate;
-
   /// The Object ID of the Azure AD group to which the principal will be assigned.
   late final pulumi.Output<String> groupId;
-
   /// The justification for this assignment. May be required by the role policy.
   late final pulumi.Output<String?> justification;
-
   /// Is this assigment permanently valid.
   ///
   /// At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
   late final pulumi.Output<bool> permanentAssignment;
-
   /// The Object ID of the principal to be assigned to the above group. Can be either a user or a group.
   late final pulumi.Output<String> principalId;
-
   /// The date from which this assignment is valid, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z). If not provided, the assignment is immediately valid.
   late final pulumi.Output<String> startDate;
-
   /// (String) The provisioning status of this request.
   late final pulumi.Output<String> status;
-
   /// The ticket number in the ticket system approving this assignment. May be required by the role policy.
   late final pulumi.Output<String?> ticketNumber;
-
   /// The ticket system containing the ticket number approving this assignment. May be required by the role policy.
   late final pulumi.Output<String?> ticketSystem;
 
@@ -255,11 +245,11 @@ class PrivilegedAccessGroupAssignmentSchedule extends pulumi.CustomResource {
     PrivilegedAccessGroupAssignmentScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assignmentType = registerOutput<String>('assignmentType');
     duration = registerOutput<String?>('duration');
     expirationDate = registerOutput<String>('expirationDate');
@@ -291,11 +281,11 @@ class PrivilegedAccessGroupAssignmentSchedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assignmentType = registerOutput<String>('assignmentType');
     duration = registerOutput<String?>('duration');
     expirationDate = registerOutput<String>('expirationDate');

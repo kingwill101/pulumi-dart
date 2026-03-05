@@ -179,10 +179,8 @@ import 'connection_association_state.dart';
 class ConnectionAssociation extends pulumi.CustomResource {
   /// The ID of the connection.
   late final pulumi.Output<String> connectionId;
-
   /// The ID of the LAG with which to associate the connection.
   late final pulumi.Output<String> lagId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -195,11 +193,11 @@ class ConnectionAssociation extends pulumi.CustomResource {
     ConnectionAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:directconnect/connectionAssociation:ConnectionAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:directconnect/connectionAssociation:ConnectionAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionId = registerOutput<String>('connectionId');
     lagId = registerOutput<String>('lagId');
     region = registerOutput<String>('region');
@@ -223,11 +221,11 @@ class ConnectionAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:directconnect/connectionAssociation:ConnectionAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:directconnect/connectionAssociation:ConnectionAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionId = registerOutput<String>('connectionId');
     lagId = registerOutput<String>('lagId');
     region = registerOutput<String>('region');

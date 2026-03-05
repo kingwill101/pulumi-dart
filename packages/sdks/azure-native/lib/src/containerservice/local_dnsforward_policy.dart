@@ -16,3 +16,4 @@ enum LocalDNSForwardPolicy {
     throw ArgumentError('Unknown LocalDNSForwardPolicy value: $value');
   }
 }
+

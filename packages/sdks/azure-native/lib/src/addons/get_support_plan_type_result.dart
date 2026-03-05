@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSupportPlanType.
 class GetSupportPlanTypeResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The id of the ARM resource, e.g. "/subscriptions/{id}/providers/Microsoft.Addons/supportProvider/{supportProviderName}/supportPlanTypes/{planTypeName}".
   final String id;
-
   /// The name of the Canonical support plan, i.e. "essential", "standard" or "advanced".
   final String name;
-
   /// The provisioning state of the resource.
   final String? provisioningState;
-
   /// Microsoft.Addons/supportProvider
   final String type;
 
@@ -46,12 +43,9 @@ class GetSupportPlanTypeResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      provisioningState: (() {
-        final guardedValue = map['provisioningState'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

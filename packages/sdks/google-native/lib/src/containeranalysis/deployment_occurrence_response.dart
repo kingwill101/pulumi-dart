@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentOccurrenceResponse {
   /// Address of the runtime element hosting this deployment.
   final pulumi.Input<String> address;
-
   /// Configuration used to create this deployment.
   final pulumi.Input<String> config;
-
   /// Beginning of the lifetime of this deployment.
   final pulumi.Input<String> deployTime;
-
   /// Platform hosting this deployment.
   final pulumi.Input<String> platform;
-
   /// Resource URI for the artifact being deployed taken from the deployable field with the same name.
   final pulumi.Input<List<String>> resourceUri;
-
   /// End of the lifetime of this deployment.
   final pulumi.Input<String> undeployTime;
-
   /// Identity of the user that triggered this deployment.
   final pulumi.Input<String> userEmail;
 
@@ -61,11 +55,10 @@ class DeploymentOccurrenceResponse {
       config: pulumi.Input.fromValue(map['config'] as String),
       deployTime: pulumi.Input.fromValue(map['deployTime'] as String),
       platform: pulumi.Input.fromValue(map['platform'] as String),
-      resourceUri: pulumi.Input.fromValue(
-        (map['resourceUri'] as List).cast<String>(),
-      ),
+      resourceUri: pulumi.Input.fromValue((map['resourceUri'] as List).cast<String>()),
       undeployTime: pulumi.Input.fromValue(map['undeployTime'] as String),
       userEmail: pulumi.Input.fromValue(map['userEmail'] as String),
     );
   }
 }
+

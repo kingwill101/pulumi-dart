@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications {
   /// The additional recipients to notify
   final pulumi.Input<List<String>>? additionalRecipients;
-
   /// Whether the default recipients are notified
   final pulumi.Input<bool> defaultRecipients;
-
   /// What level of notifications are sent
   final pulumi.Input<String> notificationLevel;
 
@@ -30,21 +28,12 @@ class RoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications
     };
   }
 
-  factory RoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications(
-      additionalRecipients: (() {
-        final guardedValue = map['additionalRecipients'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      defaultRecipients: pulumi.Input.fromValue(
-        map['defaultRecipients'] as bool,
-      ),
-      notificationLevel: pulumi.Input.fromValue(
-        map['notificationLevel'] as String,
-      ),
+      additionalRecipients: (() { final guardedValue = map['additionalRecipients']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      defaultRecipients: pulumi.Input.fromValue(map['defaultRecipients'] as bool),
+      notificationLevel: pulumi.Input.fromValue(map['notificationLevel'] as String),
     );
   }
 }
+

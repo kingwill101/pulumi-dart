@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinuxFunctionAppAuthSettingMicrosoft {
   /// The OAuth 2.0 client ID that was created for the app used for authentication.
   final pulumi.Input<String> clientId;
-
   /// The OAuth 2.0 client secret that was created for the app used for authentication.
   final pulumi.Input<String> clientSecret;
-
   /// The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication.
   final pulumi.Input<String> clientSecretSettingName;
-
   /// A list of OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication.
   final pulumi.Input<List<String>> oauthScopes;
 
@@ -36,18 +33,13 @@ class GetLinuxFunctionAppAuthSettingMicrosoft {
     };
   }
 
-  factory GetLinuxFunctionAppAuthSettingMicrosoft.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLinuxFunctionAppAuthSettingMicrosoft.fromMap(Map<String, dynamic> map) {
     return GetLinuxFunctionAppAuthSettingMicrosoft(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
-      clientSecretSettingName: pulumi.Input.fromValue(
-        map['clientSecretSettingName'] as String,
-      ),
-      oauthScopes: pulumi.Input.fromValue(
-        (map['oauthScopes'] as List).cast<String>(),
-      ),
+      clientSecretSettingName: pulumi.Input.fromValue(map['clientSecretSettingName'] as String),
+      oauthScopes: pulumi.Input.fromValue((map['oauthScopes'] as List).cast<String>()),
     );
   }
 }
+

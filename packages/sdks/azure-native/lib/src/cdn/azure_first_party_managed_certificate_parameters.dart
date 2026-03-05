@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureFirstPartyManagedCertificateParameters {
   /// The list of SANs.
   final pulumi.Input<List<String>>? subjectAlternativeNames;
-
   /// The type of the secret resource.
   /// Expected value is 'AzureFirstPartyManagedCertificate'.
   final pulumi.Input<String> type;
@@ -26,16 +25,11 @@ class AzureFirstPartyManagedCertificateParameters {
     };
   }
 
-  factory AzureFirstPartyManagedCertificateParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureFirstPartyManagedCertificateParameters.fromMap(Map<String, dynamic> map) {
     return AzureFirstPartyManagedCertificateParameters(
-      subjectAlternativeNames: (() {
-        final guardedValue = map['subjectAlternativeNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      subjectAlternativeNames: (() { final guardedValue = map['subjectAlternativeNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

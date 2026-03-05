@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UsageLimitArgs {
   /// The limit amount. If time-based, this amount is in minutes. If data-based, this amount is in terabytes (TB). The value must be a positive number.
   final pulumi.Input<int> amount;
-
   /// The action that Amazon Redshift takes when the limit is reached. The default is `log`. Valid values are `log`, `emit-metric`, and `disable`.
   final pulumi.Input<String>? breachAction;
-
   /// The identifier of the cluster that you want to limit usage.
   final pulumi.Input<String> clusterIdentifier;
-
   /// The Amazon Redshift feature that you want to limit. Valid values are `spectrum`, `concurrency-scaling`, and `cross-region-datasharing`.
   final pulumi.Input<String> featureType;
-
   /// The type of limit. Depending on the feature type, this can be based on a time duration or data size. If FeatureType is `spectrum`, then LimitType must be `data-scanned`. If FeatureType is `concurrency-scaling`, then LimitType must be `time`. If FeatureType is `cross-region-datasharing`, then LimitType must be `data-scanned`. Valid values are `data-scanned`, and `time`.
   final pulumi.Input<String> limitType;
-
   /// The time period that the amount applies to. A weekly period begins on Sunday. The default is `monthly`. Valid values are `daily`, `weekly`, and `monthly`.
   final pulumi.Input<String>? period;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -67,33 +60,14 @@ class UsageLimitArgs {
   factory UsageLimitArgs.fromMap(Map<String, dynamic> map) {
     return UsageLimitArgs(
       amount: pulumi.Input.fromValue(map['amount'] as int),
-      breachAction: (() {
-        final guardedValue = map['breachAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clusterIdentifier: pulumi.Input.fromValue(
-        map['clusterIdentifier'] as String,
-      ),
+      breachAction: (() { final guardedValue = map['breachAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterIdentifier: pulumi.Input.fromValue(map['clusterIdentifier'] as String),
       featureType: pulumi.Input.fromValue(map['featureType'] as String),
       limitType: pulumi.Input.fromValue(map['limitType'] as String),
-      period: (() {
-        final guardedValue = map['period'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

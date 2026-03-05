@@ -15,3 +15,4 @@ enum AvailabilityStrategy {
     throw ArgumentError('Unknown AvailabilityStrategy value: $value');
   }
 }
+

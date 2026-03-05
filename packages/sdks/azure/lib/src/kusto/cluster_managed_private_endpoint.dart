@@ -313,22 +313,16 @@ import 'cluster_managed_private_endpoint_state.dart';
 class ClusterManagedPrivateEndpoint extends pulumi.CustomResource {
   /// The name of the Kusto Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterName;
-
   /// The group id in which the managed private endpoint is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> groupId;
-
   /// The name of the Managed Private Endpoints to create. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ARM resource ID of the resource for which the managed private endpoint is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> privateLinkResourceId;
-
   /// The region of the resource to which the managed private endpoint is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> privateLinkResourceRegion;
-
   /// The user request message.
   late final pulumi.Output<String?> requestMessage;
-
   /// Specifies the Resource Group where the Kusto Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -341,18 +335,16 @@ class ClusterManagedPrivateEndpoint extends pulumi.CustomResource {
     ClusterManagedPrivateEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/clusterManagedPrivateEndpoint:ClusterManagedPrivateEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:kusto/clusterManagedPrivateEndpoint:ClusterManagedPrivateEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterName = registerOutput<String>('clusterName');
     groupId = registerOutput<String>('groupId');
     this.name = registerOutput<String>('name');
     privateLinkResourceId = registerOutput<String>('privateLinkResourceId');
-    privateLinkResourceRegion = registerOutput<String?>(
-      'privateLinkResourceRegion',
-    );
+    privateLinkResourceRegion = registerOutput<String?>('privateLinkResourceRegion');
     requestMessage = registerOutput<String?>('requestMessage');
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
@@ -375,18 +367,16 @@ class ClusterManagedPrivateEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/clusterManagedPrivateEndpoint:ClusterManagedPrivateEndpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:kusto/clusterManagedPrivateEndpoint:ClusterManagedPrivateEndpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterName = registerOutput<String>('clusterName');
     groupId = registerOutput<String>('groupId');
     this.name = registerOutput<String>('name');
     privateLinkResourceId = registerOutput<String>('privateLinkResourceId');
-    privateLinkResourceRegion = registerOutput<String?>(
-      'privateLinkResourceRegion',
-    );
+    privateLinkResourceRegion = registerOutput<String?>('privateLinkResourceRegion');
     requestMessage = registerOutput<String?>('requestMessage');
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }

@@ -18,13 +18,10 @@ class FirehoseDeliveryStreamOpensearchConfigurationDocumentIdOptions {
     };
   }
 
-  factory FirehoseDeliveryStreamOpensearchConfigurationDocumentIdOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirehoseDeliveryStreamOpensearchConfigurationDocumentIdOptions.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamOpensearchConfigurationDocumentIdOptions(
-      defaultDocumentIdFormat: pulumi.Input.fromValue(
-        map['defaultDocumentIdFormat'] as String,
-      ),
+      defaultDocumentIdFormat: pulumi.Input.fromValue(map['defaultDocumentIdFormat'] as String),
     );
   }
 }
+

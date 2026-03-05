@@ -29,17 +29,12 @@ class GetMetadataStoreAiplatformV1beta1Args {
     };
   }
 
-  factory GetMetadataStoreAiplatformV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMetadataStoreAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetMetadataStoreAiplatformV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
       metadataStoreId: pulumi.Input.fromValue(map['metadataStoreId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

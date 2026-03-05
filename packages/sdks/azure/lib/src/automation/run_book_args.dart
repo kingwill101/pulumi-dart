@@ -12,52 +12,38 @@ import 'run_book_publish_content_link.dart';
 class RunBookArgs {
   /// The name of the automation account in which the Runbook is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> automationAccountName;
-
   /// The desired content of the runbook.
   ///
   /// &gt; **Note:** The Azure API requires a `publish_content_link` to be supplied even when specifying your own `content`.
   final pulumi.Input<String>? content;
-
   /// A description for the runbook.
   final pulumi.Input<String>? description;
-
   /// A `draft` block as defined below.
   final pulumi.Input<RunBookDraft>? draft;
-
   /// One or more `job_schedule` block as defined below.
   ///
   /// &gt; **Note:** AzureRM provides a stand-alone azure.automation.JobSchedule and this inlined `job_schedule` property to manage the job schedules. At this time you should choose one of them to manage the job schedule resources.
   final pulumi.Input<List<RunBookJobSchedule>>? jobSchedules;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// Specifies the activity-level tracing options of the runbook, available only for Graphical runbooks. Possible values are `0` for None, `9` for Basic, and `15` for Detailed. Must turn on Verbose logging in order to see the tracing.
   final pulumi.Input<int>? logActivityTraceLevel;
-
   /// Progress log option.
   final pulumi.Input<bool> logProgress;
-
   /// Verbose log option.
   final pulumi.Input<bool> logVerbose;
-
   /// Specifies the name of the Runbook. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// One `publish_content_link` block as defined below.
   final pulumi.Input<RunBookPublishContentLink>? publishContentLink;
-
   /// The name of the resource group in which the Runbook is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The type of the runbook - can be either `Graph`, `GraphPowerShell`, `GraphPowerShellWorkflow`, `PowerShellWorkflow`, `PowerShell`, `PowerShell72`, `Python`, `Python3`, `Python2` or `Script`. Changing this forces a new resource to be created.
   final pulumi.Input<String> runbookType;
-
   /// The runtime environment name for the runbook.
   ///
   /// &gt; **Note:** The `runbook_type` must be set to a value that supports runtime environments, such as `PowerShell` or `Python`.
   final pulumi.Input<String>? runtimeEnvironmentName;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -100,33 +86,14 @@ class RunBookArgs {
       'automationAccountName': automationAccountName,
       'content': ?content,
       'description': ?description,
-      'draft':
-          ?pulumi.Input.mapOptionalInputValue<
-            RunBookDraft,
-            Map<String, dynamic>
-          >(draft, (value) => value.toMap()),
-      'jobSchedules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<RunBookJobSchedule>,
-            List<Map<String, dynamic>>
-          >(
-            jobSchedules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RunBookJobSchedule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'draft': ?pulumi.Input.mapOptionalInputValue<RunBookDraft, Map<String, dynamic>>(draft, (value) => value.toMap()),
+      'jobSchedules': ?pulumi.Input.mapOptionalInputValue<List<RunBookJobSchedule>, List<Map<String, dynamic>>>(jobSchedules, (value) => pulumi.Input.encodeList<RunBookJobSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
       'logActivityTraceLevel': ?logActivityTraceLevel,
       'logProgress': logProgress,
       'logVerbose': logVerbose,
       'name': ?name,
-      'publishContentLink':
-          ?pulumi.Input.mapOptionalInputValue<
-            RunBookPublishContentLink,
-            Map<String, dynamic>
-          >(publishContentLink, (value) => value.toMap()),
+      'publishContentLink': ?pulumi.Input.mapOptionalInputValue<RunBookPublishContentLink, Map<String, dynamic>>(publishContentLink, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'runbookType': runbookType,
       'runtimeEnvironmentName': ?runtimeEnvironmentName,
@@ -136,80 +103,22 @@ class RunBookArgs {
 
   factory RunBookArgs.fromMap(Map<String, dynamic> map) {
     return RunBookArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      draft: (() {
-        final guardedValue = map['draft'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RunBookDraft.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      jobSchedules: (() {
-        final guardedValue = map['jobSchedules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<RunBookJobSchedule>(
-            guardedValue,
-            (value) => RunBookJobSchedule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logActivityTraceLevel: (() {
-        final guardedValue = map['logActivityTraceLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      draft: (() { final guardedValue = map['draft']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RunBookDraft.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      jobSchedules: (() { final guardedValue = map['jobSchedules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RunBookJobSchedule>(guardedValue, (value) => RunBookJobSchedule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logActivityTraceLevel: (() { final guardedValue = map['logActivityTraceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       logProgress: pulumi.Input.fromValue(map['logProgress'] as bool),
       logVerbose: pulumi.Input.fromValue(map['logVerbose'] as bool),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publishContentLink: (() {
-        final guardedValue = map['publishContentLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RunBookPublishContentLink.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publishContentLink: (() { final guardedValue = map['publishContentLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RunBookPublishContentLink.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       runbookType: pulumi.Input.fromValue(map['runbookType'] as String),
-      runtimeEnvironmentName: (() {
-        final guardedValue = map['runtimeEnvironmentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      runtimeEnvironmentName: (() { final guardedValue = map['runtimeEnvironmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

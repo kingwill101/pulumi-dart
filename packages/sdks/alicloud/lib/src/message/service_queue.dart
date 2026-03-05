@@ -166,31 +166,22 @@ import 'service_queue_state.dart';
 class ServiceQueue extends pulumi.CustomResource {
   /// (Available since v1.223.2) The time when the queue was created.
   late final pulumi.Output<int> createTime;
-
   /// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
   late final pulumi.Output<int> delaySeconds;
-
   /// The dead-letter queue policy. See `dlq_policy` below.
   late final pulumi.Output<ServiceQueueDlqPolicy> dlqPolicy;
-
   /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> loggingEnabled;
-
   /// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
   late final pulumi.Output<int> maximumMessageSize;
-
   /// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
   late final pulumi.Output<int> messageRetentionPeriod;
-
   /// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
   late final pulumi.Output<int> pollingWaitSeconds;
-
   /// The name of the queue.
   late final pulumi.Output<String> queueName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
   late final pulumi.Output<int> visibilityTimeout;
 
@@ -203,23 +194,14 @@ class ServiceQueue extends pulumi.CustomResource {
     ServiceQueueArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:message/serviceQueue:ServiceQueue',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:message/serviceQueue:ServiceQueue',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
     delaySeconds = registerOutput<int>('delaySeconds');
-    dlqPolicy = registerOutput<ServiceQueueDlqPolicy>(
-      'dlqPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceQueueDlqPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dlqPolicy = registerOutput<ServiceQueueDlqPolicy>('dlqPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceQueueDlqPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     loggingEnabled = registerOutput<bool?>('loggingEnabled');
     maximumMessageSize = registerOutput<int>('maximumMessageSize');
     messageRetentionPeriod = registerOutput<int>('messageRetentionPeriod');
@@ -247,23 +229,14 @@ class ServiceQueue extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:message/serviceQueue:ServiceQueue',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:message/serviceQueue:ServiceQueue',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
     delaySeconds = registerOutput<int>('delaySeconds');
-    dlqPolicy = registerOutput<ServiceQueueDlqPolicy>(
-      'dlqPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceQueueDlqPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dlqPolicy = registerOutput<ServiceQueueDlqPolicy>('dlqPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceQueueDlqPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     loggingEnabled = registerOutput<bool?>('loggingEnabled');
     maximumMessageSize = registerOutput<int>('maximumMessageSize');
     messageRetentionPeriod = registerOutput<int>('messageRetentionPeriod');

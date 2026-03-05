@@ -7,19 +7,14 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 class BucketVersioningV2State {
   /// Name of the S3 bucket.
   final pulumi.Input<String>? bucket;
-
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
-
   /// Concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
   final pulumi.Input<String>? mfa;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Configuration block for the versioning parameters. See below.
-  final pulumi.Input<BucketVersioningV2VersioningConfiguration>?
-  versioningConfiguration;
+  final pulumi.Input<BucketVersioningV2VersioningConfiguration>? versioningConfiguration;
 
   /// Creates a new [BucketVersioningV2State].
   /// [bucket] Name of the S3 bucket.
@@ -41,45 +36,18 @@ class BucketVersioningV2State {
       'expectedBucketOwner': ?expectedBucketOwner,
       'mfa': ?mfa,
       'region': ?region,
-      'versioningConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            BucketVersioningV2VersioningConfiguration,
-            Map<String, dynamic>
-          >(versioningConfiguration, (value) => value.toMap()),
+      'versioningConfiguration': ?pulumi.Input.mapOptionalInputValue<BucketVersioningV2VersioningConfiguration, Map<String, dynamic>>(versioningConfiguration, (value) => value.toMap()),
     };
   }
 
   factory BucketVersioningV2State.fromMap(Map<String, dynamic> map) {
     return BucketVersioningV2State(
-      bucket: (() {
-        final guardedValue = map['bucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expectedBucketOwner: (() {
-        final guardedValue = map['expectedBucketOwner'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mfa: (() {
-        final guardedValue = map['mfa'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      versioningConfiguration: (() {
-        final guardedValue = map['versioningConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BucketVersioningV2VersioningConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expectedBucketOwner: (() { final guardedValue = map['expectedBucketOwner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mfa: (() { final guardedValue = map['mfa']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      versioningConfiguration: (() { final guardedValue = map['versioningConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BucketVersioningV2VersioningConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

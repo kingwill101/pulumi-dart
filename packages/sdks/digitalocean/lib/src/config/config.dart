@@ -95,6 +95,8 @@ class DigitaloceanConfig {
   }
 
   bool get tokenIsSecret => _isSecret('token');
+
 }
 
 final config = DigitaloceanConfig();
+

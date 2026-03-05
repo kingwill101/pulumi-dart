@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScheduledTriggerArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the shareSubscription.
   final pulumi.Input<String> shareSubscriptionName;
-
   /// The name of the trigger.
   final pulumi.Input<String> triggerName;
 
@@ -43,13 +40,10 @@ class GetScheduledTriggerArgs {
   factory GetScheduledTriggerArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduledTriggerArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      shareSubscriptionName: pulumi.Input.fromValue(
-        map['shareSubscriptionName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      shareSubscriptionName: pulumi.Input.fromValue(map['shareSubscriptionName'] as String),
       triggerName: pulumi.Input.fromValue(map['triggerName'] as String),
     );
   }
 }
+

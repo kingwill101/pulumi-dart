@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGrantRuleToCensCen {
   /// The ID of the authorized CEN instance.
   final pulumi.Input<String> cenId;
-
   /// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
   final pulumi.Input<int> cenOwnerId;
-
   /// The time when the instance was created.
   final pulumi.Input<String> createTime;
-
   /// The ID of the Grant Rule To Cen. It formats as `&lt;cen_id&gt;:&lt;cen_owner_id&gt;:&lt;instance_id&gt;`.
   final pulumi.Input<String> id;
 
@@ -45,3 +42,4 @@ class GetGrantRuleToCensCen {
     );
   }
 }
+

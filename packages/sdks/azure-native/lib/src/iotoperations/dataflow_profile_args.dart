@@ -11,16 +11,12 @@ import 'extended_location.dart';
 class DataflowProfileArgs {
   /// Name of Instance dataflowProfile resource
   final pulumi.Input<String>? dataflowProfileName;
-
   /// Edge location of the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
-
   /// Name of instance.
   final pulumi.Input<String> instanceName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<DataflowProfileProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -41,46 +37,21 @@ class DataflowProfileArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataflowProfileName': ?dataflowProfileName,
-      'extendedLocation':
-          pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(
-            extendedLocation,
-            (value) => value.toMap(),
-          ),
+      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'instanceName': instanceName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            DataflowProfileProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<DataflowProfileProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory DataflowProfileArgs.fromMap(Map<String, dynamic> map) {
     return DataflowProfileArgs(
-      dataflowProfileName: (() {
-        final guardedValue = map['dataflowProfileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      extendedLocation: pulumi.Input.fromValue(
-        ExtendedLocation.fromMap(
-          (map['extendedLocation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      dataflowProfileName: (() { final guardedValue = map['dataflowProfileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      extendedLocation: pulumi.Input.fromValue(ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DataflowProfileProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowProfileProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

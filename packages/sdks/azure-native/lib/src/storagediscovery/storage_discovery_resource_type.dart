@@ -14,3 +14,4 @@ enum StorageDiscoveryResourceType {
     throw ArgumentError('Unknown StorageDiscoveryResourceType value: $value');
   }
 }
+

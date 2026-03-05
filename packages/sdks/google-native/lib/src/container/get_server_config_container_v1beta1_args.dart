@@ -33,18 +33,13 @@ class GetServerConfigContainerV1beta1Args {
     };
   }
 
-  factory GetServerConfigContainerV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServerConfigContainerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetServerConfigContainerV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
+

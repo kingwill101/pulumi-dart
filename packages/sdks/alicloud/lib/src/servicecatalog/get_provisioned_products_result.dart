@@ -8,23 +8,18 @@ import 'get_provisioned_products_provisioned_product.dart';
 class GetProvisionedProductsResult {
   final String? accessLevelFilter;
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Provisioned Product IDs.
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of name of Provisioned Products.
   final List<String> names;
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
-
   /// (Deprecated since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
   final List<GetProvisionedProductsProduct> products;
-
   /// (Available since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
   final List<GetProvisionedProductsProvisionedProduct> provisionedProducts;
   final String? sortBy;
@@ -71,16 +66,8 @@ class GetProvisionedProductsResult {
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
-      'products':
-          pulumi.Input.encodeList<
-            GetProvisionedProductsProduct,
-            Map<String, dynamic>
-          >(products, (value) => value.toMap()),
-      'provisionedProducts':
-          pulumi.Input.encodeList<
-            GetProvisionedProductsProvisionedProduct,
-            Map<String, dynamic>
-          >(provisionedProducts, (value) => value.toMap()),
+      'products': pulumi.Input.encodeList<GetProvisionedProductsProduct, Map<String, dynamic>>(products, (value) => value.toMap()),
+      'provisionedProducts': pulumi.Input.encodeList<GetProvisionedProductsProvisionedProduct, Map<String, dynamic>>(provisionedProducts, (value) => value.toMap()),
       'sortBy': ?sortBy,
       'sortOrder': ?sortOrder,
     };
@@ -88,62 +75,20 @@ class GetProvisionedProductsResult {
 
   factory GetProvisionedProductsResult.fromMap(Map<String, dynamic> map) {
     return GetProvisionedProductsResult(
-      accessLevelFilter: (() {
-        final guardedValue = map['accessLevelFilter'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      accessLevelFilter: (() { final guardedValue = map['accessLevelFilter']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      products: pulumi.Input.decodeList<GetProvisionedProductsProduct>(
-        map['products']!,
-        (value) => GetProvisionedProductsProduct.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      provisionedProducts:
-          pulumi.Input.decodeList<GetProvisionedProductsProvisionedProduct>(
-            map['provisionedProducts']!,
-            (value) => GetProvisionedProductsProvisionedProduct.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      sortBy: (() {
-        final guardedValue = map['sortBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sortOrder: (() {
-        final guardedValue = map['sortOrder'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      products: pulumi.Input.decodeList<GetProvisionedProductsProduct>(map['products']!, (value) => GetProvisionedProductsProduct.fromMap((value as Map).cast<String, dynamic>())),
+      provisionedProducts: pulumi.Input.decodeList<GetProvisionedProductsProvisionedProduct>(map['provisionedProducts']!, (value) => GetProvisionedProductsProvisionedProduct.fromMap((value as Map).cast<String, dynamic>())),
+      sortBy: (() { final guardedValue = map['sortBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sortOrder: (() { final guardedValue = map['sortOrder']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

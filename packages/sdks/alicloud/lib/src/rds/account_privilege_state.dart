@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountPrivilegeState {
   /// A specified account name.
   final pulumi.Input<String>? accountName;
-
   /// List of specified database name.
   final pulumi.Input<List<String>>? dbNames;
-
   /// The Id of instance in which account belongs.
   final pulumi.Input<String>? instanceId;
-
   /// The privilege of one account access database. Valid values:
   /// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
   /// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
@@ -45,26 +42,11 @@ class AccountPrivilegeState {
 
   factory AccountPrivilegeState.fromMap(Map<String, dynamic> map) {
     return AccountPrivilegeState(
-      accountName: (() {
-        final guardedValue = map['accountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dbNames: (() {
-        final guardedValue = map['dbNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privilege: (() {
-        final guardedValue = map['privilege'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dbNames: (() { final guardedValue = map['dbNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privilege: (() { final guardedValue = map['privilege']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

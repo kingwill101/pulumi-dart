@@ -9,19 +9,20 @@ class VolumeNodeResources {
 
   /// Creates a new [VolumeNodeResources].
   /// [count] count indicates the maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume that is both attached and mounted on a node is considered to be used once, not twice. The same rule applies for a unique volume that is shared among multiple pods on the same node. If this field is not specified, then the supported number of volumes on this node is unbounded.
-  VolumeNodeResources({this.count});
+  VolumeNodeResources({
+    this.count,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'count': ?count};
+    return <String, dynamic>{
+      'count': ?count,
+    };
   }
 
   factory VolumeNodeResources.fromMap(Map<String, dynamic> map) {
     return VolumeNodeResources(
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrincipalDefinition {
   /// A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication.
   final pulumi.Input<List<Map<String, String>>>? attributes;
-
   /// A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection.
   final pulumi.Input<List<String>>? clientIds;
-
   /// A list of usernames that match the clients. The usernames are case-sensitive and must match the usernames provided by the clients during authentication.
   final pulumi.Input<List<String>>? usernames;
 
@@ -17,7 +15,11 @@ class PrincipalDefinition {
   /// [attributes] A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication.
   /// [clientIds] A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection.
   /// [usernames] A list of usernames that match the clients. The usernames are case-sensitive and must match the usernames provided by the clients during authentication.
-  PrincipalDefinition({this.attributes, this.clientIds, this.usernames});
+  PrincipalDefinition({
+    this.attributes,
+    this.clientIds,
+    this.usernames,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,23 +31,10 @@ class PrincipalDefinition {
 
   factory PrincipalDefinition.fromMap(Map<String, dynamic> map) {
     return PrincipalDefinition(
-      attributes: (() {
-        final guardedValue = map['attributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as List).cast<Map<String, String>>(),
-        );
-      })(),
-      clientIds: (() {
-        final guardedValue = map['clientIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      usernames: (() {
-        final guardedValue = map['usernames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<Map<String, String>>()); })(),
+      clientIds: (() { final guardedValue = map['clientIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      usernames: (() { final guardedValue = map['usernames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

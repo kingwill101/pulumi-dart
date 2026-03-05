@@ -10,31 +10,20 @@ class IPAddressSpecPatchNetworkingK8sIoV1alpha1 {
 
   /// Creates a new [IPAddressSpecPatchNetworkingK8sIoV1alpha1].
   /// [parentRef] ParentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.
-  IPAddressSpecPatchNetworkingK8sIoV1alpha1({this.parentRef});
+  IPAddressSpecPatchNetworkingK8sIoV1alpha1({
+    this.parentRef,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parentRef':
-          ?pulumi.Input.mapOptionalInputValue<
-            ParentReferencePatchNetworkingK8sIoV1alpha1,
-            Map<String, dynamic>
-          >(parentRef, (value) => value.toMap()),
+      'parentRef': ?pulumi.Input.mapOptionalInputValue<ParentReferencePatchNetworkingK8sIoV1alpha1, Map<String, dynamic>>(parentRef, (value) => value.toMap()),
     };
   }
 
-  factory IPAddressSpecPatchNetworkingK8sIoV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IPAddressSpecPatchNetworkingK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return IPAddressSpecPatchNetworkingK8sIoV1alpha1(
-      parentRef: (() {
-        final guardedValue = map['parentRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ParentReferencePatchNetworkingK8sIoV1alpha1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      parentRef: (() { final guardedValue = map['parentRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ParentReferencePatchNetworkingK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

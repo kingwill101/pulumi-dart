@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggerBuildSourceStorageSource {
   /// Google Cloud Storage bucket containing the source.
   final pulumi.Input<String> bucket;
-
   /// Google Cloud Storage generation for the object.
   /// If the generation is omitted, the latest generation will be used
   final pulumi.Input<String>? generation;
-
   /// Google Cloud Storage object containing the source.
   /// This object must be a gzipped archive file (.tar.gz) containing source to build.
   final pulumi.Input<String> object_;
@@ -35,12 +33,9 @@ class TriggerBuildSourceStorageSource {
   factory TriggerBuildSourceStorageSource.fromMap(Map<String, dynamic> map) {
     return TriggerBuildSourceStorageSource(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      generation: (() {
-        final guardedValue = map['generation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
+

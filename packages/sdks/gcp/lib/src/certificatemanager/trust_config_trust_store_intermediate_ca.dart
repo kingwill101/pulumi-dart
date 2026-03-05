@@ -10,21 +10,20 @@ class TrustConfigTrustStoreIntermediateCa {
 
   /// Creates a new [TrustConfigTrustStoreIntermediateCa].
   /// [pemCertificate] PEM intermediate certificate used for building up paths for validation.
-  TrustConfigTrustStoreIntermediateCa({this.pemCertificate});
+  TrustConfigTrustStoreIntermediateCa({
+    this.pemCertificate,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pemCertificate': ?pemCertificate};
+    return <String, dynamic>{
+      'pemCertificate': ?pemCertificate,
+    };
   }
 
-  factory TrustConfigTrustStoreIntermediateCa.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TrustConfigTrustStoreIntermediateCa.fromMap(Map<String, dynamic> map) {
     return TrustConfigTrustStoreIntermediateCa(
-      pemCertificate: (() {
-        final guardedValue = map['pemCertificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pemCertificate: (() { final guardedValue = map['pemCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

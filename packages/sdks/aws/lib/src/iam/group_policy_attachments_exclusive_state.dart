@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupPolicyAttachmentsExclusiveState {
   /// IAM group name.
   final pulumi.Input<String>? groupName;
-
   /// A list of managed IAM policy ARNs to be attached to the group. Policies attached to this group but not configured in this argument will be removed.
   final pulumi.Input<List<String>>? policyArns;
 
   /// Creates a new [GroupPolicyAttachmentsExclusiveState].
   /// [groupName] IAM group name.
   /// [policyArns] A list of managed IAM policy ARNs to be attached to the group. Policies attached to this group but not configured in this argument will be removed.
-  GroupPolicyAttachmentsExclusiveState({this.groupName, this.policyArns});
+  GroupPolicyAttachmentsExclusiveState({
+    this.groupName,
+    this.policyArns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,20 +24,11 @@ class GroupPolicyAttachmentsExclusiveState {
     };
   }
 
-  factory GroupPolicyAttachmentsExclusiveState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GroupPolicyAttachmentsExclusiveState.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAttachmentsExclusiveState(
-      groupName: (() {
-        final guardedValue = map['groupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policyArns: (() {
-        final guardedValue = map['policyArns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      groupName: (() { final guardedValue = map['groupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyArns: (() { final guardedValue = map['policyArns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

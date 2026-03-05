@@ -7,45 +7,32 @@ import 'get_flexible_server_high_availability.dart';
 class GetFlexibleServerResult {
   /// The Administrator login for the PostgreSQL Flexible Server.
   final String administratorLogin;
-
   /// Is the storage auto grow for PostgreSQL Flexible Server enabled?
   final bool autoGrowEnabled;
-
   /// The backup retention days for the PostgreSQL Flexible Server.
   final int backupRetentionDays;
-
   /// The ID of the virtual network subnet to create the PostgreSQL Flexible Server.
   final String delegatedSubnetId;
-
   /// The FQDN of the PostgreSQL Flexible Server.
   final String fqdn;
-
   /// A `high_availability` block for this PostgreSQL Flexible Server as defined below.
   final List<GetFlexibleServerHighAvailability> highAvailabilities;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region where the PostgreSQL Flexible Server exists.
   final String location;
   final String name;
-
   /// Is public network access enabled?
   final bool publicNetworkAccessEnabled;
   final String resourceGroupName;
-
   /// The SKU Name for the PostgreSQL Flexible Server. The name of the SKU, follows the `tier` + `name` pattern (e.g. `B_Standard_B1ms`, `GP_Standard_D2s_v3`, `MO_Standard_E4s_v3`).
   final String skuName;
-
   /// The max storage allowed for the PostgreSQL Flexible Server.
   final int storageMb;
-
   /// A mapping of tags assigned to the PostgreSQL Flexible Server.
   final Map<String, String> tags;
-
   /// The version of PostgreSQL Flexible Server to use.
   final String version;
-
   /// The Availability Zones where this PostgreSQL Flexible Server is located.
   final String zone;
 
@@ -92,11 +79,7 @@ class GetFlexibleServerResult {
       'backupRetentionDays': backupRetentionDays,
       'delegatedSubnetId': delegatedSubnetId,
       'fqdn': fqdn,
-      'highAvailabilities':
-          pulumi.Input.encodeList<
-            GetFlexibleServerHighAvailability,
-            Map<String, dynamic>
-          >(highAvailabilities, (value) => value.toMap()),
+      'highAvailabilities': pulumi.Input.encodeList<GetFlexibleServerHighAvailability, Map<String, dynamic>>(highAvailabilities, (value) => value.toMap()),
       'id': id,
       'location': location,
       'name': name,
@@ -117,13 +100,7 @@ class GetFlexibleServerResult {
       backupRetentionDays: map['backupRetentionDays'] as int,
       delegatedSubnetId: map['delegatedSubnetId'] as String,
       fqdn: map['fqdn'] as String,
-      highAvailabilities:
-          pulumi.Input.decodeList<GetFlexibleServerHighAvailability>(
-            map['highAvailabilities']!,
-            (value) => GetFlexibleServerHighAvailability.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      highAvailabilities: pulumi.Input.decodeList<GetFlexibleServerHighAvailability>(map['highAvailabilities']!, (value) => GetFlexibleServerHighAvailability.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
@@ -137,3 +114,4 @@ class GetFlexibleServerResult {
     );
   }
 }
+

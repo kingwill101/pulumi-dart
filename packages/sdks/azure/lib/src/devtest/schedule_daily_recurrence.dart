@@ -8,10 +8,14 @@ class ScheduleDailyRecurrence {
 
   /// Creates a new [ScheduleDailyRecurrence].
   /// [time] The time each day when the schedule takes effect.
-  ScheduleDailyRecurrence({required this.time});
+  ScheduleDailyRecurrence({
+    required this.time,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'time': time};
+    return <String, dynamic>{
+      'time': time,
+    };
   }
 
   factory ScheduleDailyRecurrence.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class ScheduleDailyRecurrence {
     );
   }
 }
+

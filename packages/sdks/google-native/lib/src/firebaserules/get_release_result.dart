@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRelease.
 class GetReleaseResult {
   /// Time the release was created.
   final String createTime;
-
   /// Format: `projects/{project_id}/releases/{release_id}`
   final String name;
-
   /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
   final String rulesetName;
-
   /// Time the release was updated.
   final String updateTime;
 
@@ -44,3 +42,4 @@ class GetReleaseResult {
     );
   }
 }
+

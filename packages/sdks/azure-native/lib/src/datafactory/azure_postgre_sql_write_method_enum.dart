@@ -16,3 +16,4 @@ enum AzurePostgreSqlWriteMethodEnum {
     throw ArgumentError('Unknown AzurePostgreSqlWriteMethodEnum value: $value');
   }
 }
+

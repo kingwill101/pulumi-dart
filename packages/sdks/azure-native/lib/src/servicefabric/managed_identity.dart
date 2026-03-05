@@ -7,7 +7,6 @@ import 'managed_identity_type.dart';
 class ManagedIdentity {
   /// The type of managed identity for the resource.
   final pulumi.Input<ManagedIdentityType>? type;
-
   /// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
   /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
   final pulumi.Input<List<String>>? userAssignedIdentities;
@@ -15,32 +14,23 @@ class ManagedIdentity {
   /// Creates a new [ManagedIdentity].
   /// [type] The type of managed identity for the resource.
   /// [userAssignedIdentities] The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
-  ManagedIdentity({this.type, this.userAssignedIdentities});
+  ManagedIdentity({
+    this.type,
+    this.userAssignedIdentities,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?pulumi.Input.mapOptionalInputValue<ManagedIdentityType, String>(
-        type,
-        (value) => value.wireValue,
-      ),
+      'type': ?pulumi.Input.mapOptionalInputValue<ManagedIdentityType, String>(type, (value) => value.wireValue),
       'userAssignedIdentities': ?userAssignedIdentities,
     };
   }
 
   factory ManagedIdentity.fromMap(Map<String, dynamic> map) {
     return ManagedIdentity(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedIdentityType.fromValue(guardedValue as String),
-        );
-      })(),
-      userAssignedIdentities: (() {
-        final guardedValue = map['userAssignedIdentities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedIdentityType.fromValue(guardedValue as String)); })(),
+      userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -8,10 +8,14 @@ class ClusterAuthenticatorGroupsConfig {
 
   /// Creates a new [ClusterAuthenticatorGroupsConfig].
   /// [securityGroup] The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
-  ClusterAuthenticatorGroupsConfig({required this.securityGroup});
+  ClusterAuthenticatorGroupsConfig({
+    required this.securityGroup,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'securityGroup': securityGroup};
+    return <String, dynamic>{
+      'securityGroup': securityGroup,
+    };
   }
 
   factory ClusterAuthenticatorGroupsConfig.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class ClusterAuthenticatorGroupsConfig {
     );
   }
 }
+

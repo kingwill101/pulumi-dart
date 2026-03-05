@@ -9,21 +9,20 @@ class ExecutePipelineActivityPolicyResponse {
 
   /// Creates a new [ExecutePipelineActivityPolicyResponse].
   /// [secureInput] When set to true, Input from activity is considered as secure and will not be logged to monitoring.
-  ExecutePipelineActivityPolicyResponse({this.secureInput});
+  ExecutePipelineActivityPolicyResponse({
+    this.secureInput,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secureInput': ?secureInput};
+    return <String, dynamic>{
+      'secureInput': ?secureInput,
+    };
   }
 
-  factory ExecutePipelineActivityPolicyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExecutePipelineActivityPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ExecutePipelineActivityPolicyResponse(
-      secureInput: (() {
-        final guardedValue = map['secureInput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      secureInput: (() { final guardedValue = map['secureInput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

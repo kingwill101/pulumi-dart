@@ -681,111 +681,71 @@ import 'application_gateway_waf_configuration.dart';
 /// ```
 class ApplicationGateway extends pulumi.CustomResource {
   /// One or more `authentication_certificate` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  authenticationCertificates;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> authenticationCertificates;
   /// An `autoscale_configuration` block as defined below.
-  late final pulumi.Output<ApplicationGatewayAutoscaleConfiguration?>
-  autoscaleConfiguration;
-
+  late final pulumi.Output<ApplicationGatewayAutoscaleConfiguration?> autoscaleConfiguration;
   /// One or more `backend_address_pool` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> backendAddressPools;
-
   /// One or more `backend_http_settings` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> backendHttpSettings;
-
   /// One or more `custom_error_configuration` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  customErrorConfigurations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> customErrorConfigurations;
   /// Is HTTP2 enabled on the application gateway resource? Defaults to `false`.
   late final pulumi.Output<bool?> enableHttp2;
-
   /// Is FIPS enabled on the Application Gateway?
   late final pulumi.Output<bool?> fipsEnabled;
-
   /// The ID of the Web Application Firewall Policy.
   late final pulumi.Output<String?> firewallPolicyId;
-
   /// Is the Firewall Policy associated with the Application Gateway?
   late final pulumi.Output<bool?> forceFirewallPolicyAssociation;
-
   /// One or more `frontend_ip_configuration` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> frontendIpConfigurations;
-
   /// One or more `frontend_port` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> frontendPorts;
-
   /// One or more `gateway_ip_configuration` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> gatewayIpConfigurations;
-
   /// A `global` block as defined below.
   late final pulumi.Output<ApplicationGatewayGlobal?> global;
-
   /// One or more `http_listener` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> httpListeners;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<ApplicationGatewayIdentity?> identity;
-
   /// The Azure region where the Application Gateway should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the Application Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A list of `private_endpoint_connection` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// One or more `private_link_configuration` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  privateLinkConfigurations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> privateLinkConfigurations;
   /// One or more `probe` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> probes;
-
   /// One or more `redirect_configuration` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> redirectConfigurations;
-
   /// One or more `request_routing_rule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> requestRoutingRules;
-
   /// The name of the resource group in which to the Application Gateway should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// One or more `rewrite_rule_set` blocks as defined below. Only valid for v2 WAF and Standard SKUs.
   late final pulumi.Output<List<Map<String, dynamic>>?> rewriteRuleSets;
-
   /// A `sku` block as defined below.
   late final pulumi.Output<ApplicationGatewaySku> sku;
-
   /// One or more `ssl_certificate` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> sslCertificates;
-
   /// a `ssl_policy` block as defined below.
   late final pulumi.Output<ApplicationGatewaySslPolicy> sslPolicy;
-
   /// One or more `ssl_profile` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> sslProfiles;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// One or more `trusted_client_certificate` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  trustedClientCertificates;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> trustedClientCertificates;
   /// One or more `trusted_root_certificate` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> trustedRootCertificates;
-
   /// One or more `url_path_map` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> urlPathMaps;
-
   /// A `waf_configuration` block as defined below.
-  late final pulumi.Output<ApplicationGatewayWafConfiguration?>
-  wafConfiguration;
-
+  late final pulumi.Output<ApplicationGatewayWafConfiguration?> wafConfiguration;
   /// Specifies a list of Availability Zones in which this Application Gateway should be located. Changing this forces a new Application Gateway to be created.
   ///
   /// &gt; **Note:** Availability Zones are not supported in all regions at this time, please check the [official documentation](https://docs.microsoft.com/azure/availability-zones/az-overview) for more information. They are also only supported for [v2 SKUs](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
@@ -800,129 +760,44 @@ class ApplicationGateway extends pulumi.CustomResource {
     ApplicationGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/applicationGateway:ApplicationGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authenticationCertificates = registerOutput<List<Map<String, dynamic>>?>(
-      'authenticationCertificates',
-    );
-    autoscaleConfiguration =
-        registerOutput<ApplicationGatewayAutoscaleConfiguration?>(
-          'autoscaleConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ApplicationGatewayAutoscaleConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    backendAddressPools = registerOutput<List<Map<String, dynamic>>>(
-      'backendAddressPools',
-    );
-    backendHttpSettings = registerOutput<List<Map<String, dynamic>>>(
-      'backendHttpSettings',
-    );
-    customErrorConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'customErrorConfigurations',
-    );
+          'azure:network/applicationGateway:ApplicationGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authenticationCertificates = registerOutput<List<Map<String, dynamic>>?>('authenticationCertificates');
+    autoscaleConfiguration = registerOutput<ApplicationGatewayAutoscaleConfiguration?>('autoscaleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayAutoscaleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backendAddressPools = registerOutput<List<Map<String, dynamic>>>('backendAddressPools');
+    backendHttpSettings = registerOutput<List<Map<String, dynamic>>>('backendHttpSettings');
+    customErrorConfigurations = registerOutput<List<Map<String, dynamic>>?>('customErrorConfigurations');
     enableHttp2 = registerOutput<bool?>('enableHttp2');
     fipsEnabled = registerOutput<bool?>('fipsEnabled');
     firewallPolicyId = registerOutput<String?>('firewallPolicyId');
-    forceFirewallPolicyAssociation = registerOutput<bool?>(
-      'forceFirewallPolicyAssociation',
-    );
-    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'frontendIpConfigurations',
-    );
+    forceFirewallPolicyAssociation = registerOutput<bool?>('forceFirewallPolicyAssociation');
+    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>>('frontendIpConfigurations');
     frontendPorts = registerOutput<List<Map<String, dynamic>>>('frontendPorts');
-    gatewayIpConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'gatewayIpConfigurations',
-    );
-    global = registerOutput<ApplicationGatewayGlobal?>(
-      'global',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationGatewayGlobal.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gatewayIpConfigurations = registerOutput<List<Map<String, dynamic>>>('gatewayIpConfigurations');
+    global = registerOutput<ApplicationGatewayGlobal?>('global', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayGlobal.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpListeners = registerOutput<List<Map<String, dynamic>>>('httpListeners');
-    identity = registerOutput<ApplicationGatewayIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationGatewayIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ApplicationGatewayIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
-    privateLinkConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'privateLinkConfigurations',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateLinkConfigurations = registerOutput<List<Map<String, dynamic>>?>('privateLinkConfigurations');
     probes = registerOutput<List<Map<String, dynamic>>?>('probes');
-    redirectConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'redirectConfigurations',
-    );
-    requestRoutingRules = registerOutput<List<Map<String, dynamic>>>(
-      'requestRoutingRules',
-    );
+    redirectConfigurations = registerOutput<List<Map<String, dynamic>>?>('redirectConfigurations');
+    requestRoutingRules = registerOutput<List<Map<String, dynamic>>>('requestRoutingRules');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    rewriteRuleSets = registerOutput<List<Map<String, dynamic>>?>(
-      'rewriteRuleSets',
-    );
-    sku = registerOutput<ApplicationGatewaySku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationGatewaySku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sslCertificates = registerOutput<List<Map<String, dynamic>>?>(
-      'sslCertificates',
-    );
-    sslPolicy = registerOutput<ApplicationGatewaySslPolicy>(
-      'sslPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationGatewaySslPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rewriteRuleSets = registerOutput<List<Map<String, dynamic>>?>('rewriteRuleSets');
+    sku = registerOutput<ApplicationGatewaySku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewaySku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sslCertificates = registerOutput<List<Map<String, dynamic>>?>('sslCertificates');
+    sslPolicy = registerOutput<ApplicationGatewaySslPolicy>('sslPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewaySslPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sslProfiles = registerOutput<List<Map<String, dynamic>>?>('sslProfiles');
     tags = registerOutput<Map<String, String>?>('tags');
-    trustedClientCertificates = registerOutput<List<Map<String, dynamic>>?>(
-      'trustedClientCertificates',
-    );
-    trustedRootCertificates = registerOutput<List<Map<String, dynamic>>?>(
-      'trustedRootCertificates',
-    );
+    trustedClientCertificates = registerOutput<List<Map<String, dynamic>>?>('trustedClientCertificates');
+    trustedRootCertificates = registerOutput<List<Map<String, dynamic>>?>('trustedRootCertificates');
     urlPathMaps = registerOutput<List<Map<String, dynamic>>?>('urlPathMaps');
-    wafConfiguration = registerOutput<ApplicationGatewayWafConfiguration?>(
-      'wafConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationGatewayWafConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    wafConfiguration = registerOutput<ApplicationGatewayWafConfiguration?>('wafConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayWafConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zones = registerOutput<List<String>?>('zones');
   }
 
@@ -944,129 +819,44 @@ class ApplicationGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/applicationGateway:ApplicationGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authenticationCertificates = registerOutput<List<Map<String, dynamic>>?>(
-      'authenticationCertificates',
-    );
-    autoscaleConfiguration =
-        registerOutput<ApplicationGatewayAutoscaleConfiguration?>(
-          'autoscaleConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ApplicationGatewayAutoscaleConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    backendAddressPools = registerOutput<List<Map<String, dynamic>>>(
-      'backendAddressPools',
-    );
-    backendHttpSettings = registerOutput<List<Map<String, dynamic>>>(
-      'backendHttpSettings',
-    );
-    customErrorConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'customErrorConfigurations',
-    );
+          'azure:network/applicationGateway:ApplicationGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authenticationCertificates = registerOutput<List<Map<String, dynamic>>?>('authenticationCertificates');
+    autoscaleConfiguration = registerOutput<ApplicationGatewayAutoscaleConfiguration?>('autoscaleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayAutoscaleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backendAddressPools = registerOutput<List<Map<String, dynamic>>>('backendAddressPools');
+    backendHttpSettings = registerOutput<List<Map<String, dynamic>>>('backendHttpSettings');
+    customErrorConfigurations = registerOutput<List<Map<String, dynamic>>?>('customErrorConfigurations');
     enableHttp2 = registerOutput<bool?>('enableHttp2');
     fipsEnabled = registerOutput<bool?>('fipsEnabled');
     firewallPolicyId = registerOutput<String?>('firewallPolicyId');
-    forceFirewallPolicyAssociation = registerOutput<bool?>(
-      'forceFirewallPolicyAssociation',
-    );
-    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'frontendIpConfigurations',
-    );
+    forceFirewallPolicyAssociation = registerOutput<bool?>('forceFirewallPolicyAssociation');
+    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>>('frontendIpConfigurations');
     frontendPorts = registerOutput<List<Map<String, dynamic>>>('frontendPorts');
-    gatewayIpConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'gatewayIpConfigurations',
-    );
-    global = registerOutput<ApplicationGatewayGlobal?>(
-      'global',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationGatewayGlobal.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gatewayIpConfigurations = registerOutput<List<Map<String, dynamic>>>('gatewayIpConfigurations');
+    global = registerOutput<ApplicationGatewayGlobal?>('global', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayGlobal.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpListeners = registerOutput<List<Map<String, dynamic>>>('httpListeners');
-    identity = registerOutput<ApplicationGatewayIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationGatewayIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ApplicationGatewayIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
-    privateLinkConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'privateLinkConfigurations',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateLinkConfigurations = registerOutput<List<Map<String, dynamic>>?>('privateLinkConfigurations');
     probes = registerOutput<List<Map<String, dynamic>>?>('probes');
-    redirectConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'redirectConfigurations',
-    );
-    requestRoutingRules = registerOutput<List<Map<String, dynamic>>>(
-      'requestRoutingRules',
-    );
+    redirectConfigurations = registerOutput<List<Map<String, dynamic>>?>('redirectConfigurations');
+    requestRoutingRules = registerOutput<List<Map<String, dynamic>>>('requestRoutingRules');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    rewriteRuleSets = registerOutput<List<Map<String, dynamic>>?>(
-      'rewriteRuleSets',
-    );
-    sku = registerOutput<ApplicationGatewaySku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationGatewaySku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sslCertificates = registerOutput<List<Map<String, dynamic>>?>(
-      'sslCertificates',
-    );
-    sslPolicy = registerOutput<ApplicationGatewaySslPolicy>(
-      'sslPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationGatewaySslPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rewriteRuleSets = registerOutput<List<Map<String, dynamic>>?>('rewriteRuleSets');
+    sku = registerOutput<ApplicationGatewaySku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewaySku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sslCertificates = registerOutput<List<Map<String, dynamic>>?>('sslCertificates');
+    sslPolicy = registerOutput<ApplicationGatewaySslPolicy>('sslPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewaySslPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sslProfiles = registerOutput<List<Map<String, dynamic>>?>('sslProfiles');
     tags = registerOutput<Map<String, String>?>('tags');
-    trustedClientCertificates = registerOutput<List<Map<String, dynamic>>?>(
-      'trustedClientCertificates',
-    );
-    trustedRootCertificates = registerOutput<List<Map<String, dynamic>>?>(
-      'trustedRootCertificates',
-    );
+    trustedClientCertificates = registerOutput<List<Map<String, dynamic>>?>('trustedClientCertificates');
+    trustedRootCertificates = registerOutput<List<Map<String, dynamic>>?>('trustedRootCertificates');
     urlPathMaps = registerOutput<List<Map<String, dynamic>>?>('urlPathMaps');
-    wafConfiguration = registerOutput<ApplicationGatewayWafConfiguration?>(
-      'wafConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationGatewayWafConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    wafConfiguration = registerOutput<ApplicationGatewayWafConfiguration?>('wafConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayWafConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zones = registerOutput<List<String>?>('zones');
   }
 }

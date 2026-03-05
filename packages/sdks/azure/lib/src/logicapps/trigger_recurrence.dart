@@ -198,24 +198,18 @@ import 'trigger_recurrence_state.dart';
 class TriggerRecurrence extends pulumi.CustomResource {
   /// Specifies the Frequency at which this Trigger should be run. Possible values include `Month`, `Week`, `Day`, `Hour`, `Minute` and `Second`.
   late final pulumi.Output<String> frequency;
-
   /// Specifies interval used for the Frequency, for example a value of `4` for `interval` and `hour` for `frequency` would run the Trigger every 4 hours.
   late final pulumi.Output<int> interval;
-
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   late final pulumi.Output<String> logicAppId;
-
   /// Specifies the name of the Recurrence Triggers to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** This name must be unique across all Triggers within the Logic App Workflow.
   late final pulumi.Output<String> name;
-
   /// A `schedule` block as specified below.
   late final pulumi.Output<TriggerRecurrenceSchedule?> schedule;
-
   /// Specifies the start date and time for this trigger in RFC3339 format: `2000-01-02T03:04:05Z`.
   late final pulumi.Output<String?> startTime;
-
   /// Specifies the time zone for this trigger. Supported time zone options are listed [here](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)
   late final pulumi.Output<String> timeZone;
 
@@ -228,25 +222,16 @@ class TriggerRecurrence extends pulumi.CustomResource {
     TriggerRecurrenceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/triggerRecurrence:TriggerRecurrence',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/triggerRecurrence:TriggerRecurrence',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     frequency = registerOutput<String>('frequency');
     interval = registerOutput<int>('interval');
     logicAppId = registerOutput<String>('logicAppId');
     this.name = registerOutput<String>('name');
-    schedule = registerOutput<TriggerRecurrenceSchedule?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TriggerRecurrenceSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<TriggerRecurrenceSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerRecurrenceSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startTime = registerOutput<String?>('startTime');
     timeZone = registerOutput<String>('timeZone');
   }
@@ -269,25 +254,16 @@ class TriggerRecurrence extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/triggerRecurrence:TriggerRecurrence',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/triggerRecurrence:TriggerRecurrence',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     frequency = registerOutput<String>('frequency');
     interval = registerOutput<int>('interval');
     logicAppId = registerOutput<String>('logicAppId');
     this.name = registerOutput<String>('name');
-    schedule = registerOutput<TriggerRecurrenceSchedule?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TriggerRecurrenceSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<TriggerRecurrenceSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerRecurrenceSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startTime = registerOutput<String?>('startTime');
     timeZone = registerOutput<String>('timeZone');
   }

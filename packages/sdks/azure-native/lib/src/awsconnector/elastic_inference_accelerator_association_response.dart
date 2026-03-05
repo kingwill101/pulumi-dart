@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticInferenceAcceleratorAssociationResponse {
   /// &lt;p&gt; The Amazon Resource Name (ARN) of the elastic inference accelerator. &lt;/p&gt;
   final pulumi.Input<String>? elasticInferenceAcceleratorArn;
-
   /// &lt;p&gt; The ID of the association. &lt;/p&gt;
   final pulumi.Input<String>? elasticInferenceAcceleratorAssociationId;
-
   /// &lt;p&gt; The state of the elastic inference accelerator. &lt;/p&gt;
   final pulumi.Input<String>? elasticInferenceAcceleratorAssociationState;
-
   /// &lt;p&gt; The time at which the elastic inference accelerator is associated with an instance. &lt;/p&gt;
   final pulumi.Input<String>? elasticInferenceAcceleratorAssociationTime;
 
@@ -31,39 +28,19 @@ class ElasticInferenceAcceleratorAssociationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'elasticInferenceAcceleratorArn': ?elasticInferenceAcceleratorArn,
-      'elasticInferenceAcceleratorAssociationId':
-          ?elasticInferenceAcceleratorAssociationId,
-      'elasticInferenceAcceleratorAssociationState':
-          ?elasticInferenceAcceleratorAssociationState,
-      'elasticInferenceAcceleratorAssociationTime':
-          ?elasticInferenceAcceleratorAssociationTime,
+      'elasticInferenceAcceleratorAssociationId': ?elasticInferenceAcceleratorAssociationId,
+      'elasticInferenceAcceleratorAssociationState': ?elasticInferenceAcceleratorAssociationState,
+      'elasticInferenceAcceleratorAssociationTime': ?elasticInferenceAcceleratorAssociationTime,
     };
   }
 
-  factory ElasticInferenceAcceleratorAssociationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ElasticInferenceAcceleratorAssociationResponse.fromMap(Map<String, dynamic> map) {
     return ElasticInferenceAcceleratorAssociationResponse(
-      elasticInferenceAcceleratorArn: (() {
-        final guardedValue = map['elasticInferenceAcceleratorArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      elasticInferenceAcceleratorAssociationId: (() {
-        final guardedValue = map['elasticInferenceAcceleratorAssociationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      elasticInferenceAcceleratorAssociationState: (() {
-        final guardedValue = map['elasticInferenceAcceleratorAssociationState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      elasticInferenceAcceleratorAssociationTime: (() {
-        final guardedValue = map['elasticInferenceAcceleratorAssociationTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      elasticInferenceAcceleratorArn: (() { final guardedValue = map['elasticInferenceAcceleratorArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      elasticInferenceAcceleratorAssociationId: (() { final guardedValue = map['elasticInferenceAcceleratorAssociationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      elasticInferenceAcceleratorAssociationState: (() { final guardedValue = map['elasticInferenceAcceleratorAssociationState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      elasticInferenceAcceleratorAssociationTime: (() { final guardedValue = map['elasticInferenceAcceleratorAssociationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

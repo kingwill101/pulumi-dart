@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyncGroupSchemaTableColumnResponse {
   /// Data size of the column.
   final pulumi.Input<String>? dataSize;
-
   /// Data type of the column.
   final pulumi.Input<String>? dataType;
-
   /// Quoted name of sync group table column.
   final pulumi.Input<String>? quotedName;
 
@@ -33,21 +31,10 @@ class SyncGroupSchemaTableColumnResponse {
 
   factory SyncGroupSchemaTableColumnResponse.fromMap(Map<String, dynamic> map) {
     return SyncGroupSchemaTableColumnResponse(
-      dataSize: (() {
-        final guardedValue = map['dataSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataType: (() {
-        final guardedValue = map['dataType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      quotedName: (() {
-        final guardedValue = map['quotedName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataSize: (() { final guardedValue = map['dataSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataType: (() { final guardedValue = map['dataType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      quotedName: (() { final guardedValue = map['quotedName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

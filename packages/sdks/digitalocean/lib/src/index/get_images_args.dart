@@ -12,7 +12,6 @@ class GetImagesArgs {
   /// Filter the results.
   /// The `filter` block is documented below.
   final pulumi.Input<List<GetImagesFilter>>? filters;
-
   /// Sort the results.
   /// The `sort` block is documented below.
   final pulumi.Input<List<GetImagesSort>>? sorts;
@@ -20,61 +19,23 @@ class GetImagesArgs {
   /// Creates a new [GetImagesArgs].
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
-  GetImagesArgs({this.filters, this.sorts});
+  GetImagesArgs({
+    this.filters,
+    this.sorts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetImagesFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<GetImagesFilter, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'sorts':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetImagesSort>,
-            List<Map<String, dynamic>>
-          >(
-            sorts,
-            (value) =>
-                pulumi.Input.encodeList<GetImagesSort, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetImagesFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetImagesFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sorts': ?pulumi.Input.mapOptionalInputValue<List<GetImagesSort>, List<Map<String, dynamic>>>(sorts, (value) => pulumi.Input.encodeList<GetImagesSort, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetImagesFilter>(
-            guardedValue,
-            (value) =>
-                GetImagesFilter.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      sorts: (() {
-        final guardedValue = map['sorts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetImagesSort>(
-            guardedValue,
-            (value) =>
-                GetImagesSort.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetImagesFilter>(guardedValue, (value) => GetImagesFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      sorts: (() { final guardedValue = map['sorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetImagesSort>(guardedValue, (value) => GetImagesSort.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

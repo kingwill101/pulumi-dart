@@ -496,73 +496,50 @@ import 'topic_response.dart';
 class DiscoveredAsset extends pulumi.CustomResource {
   /// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
   late final pulumi.Output<String> assetEndpointProfileRef;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set.
   late final pulumi.Output<List<Map<String, dynamic>>?> datasets;
-
   /// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
   late final pulumi.Output<String?> defaultDatasetsConfiguration;
-
   /// Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
   late final pulumi.Output<String?> defaultEventsConfiguration;
-
   /// Object that describes the default topic information for the asset.
   late final pulumi.Output<TopicResponse?> defaultTopic;
-
   /// Identifier used to detect changes in the asset.
   late final pulumi.Output<String> discoveryId;
-
   /// Reference to the documentation.
   late final pulumi.Output<String?> documentationUri;
-
   /// Array of events that are part of the asset. Each event can have per-event configuration.
   late final pulumi.Output<List<Map<String, dynamic>>?> events;
-
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
-
   /// Revision number of the hardware.
   late final pulumi.Output<String?> hardwareRevision;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Asset manufacturer name.
   late final pulumi.Output<String?> manufacturer;
-
   /// Asset manufacturer URI.
   late final pulumi.Output<String?> manufacturerUri;
-
   /// Asset model name.
   late final pulumi.Output<String?> model;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Asset product code.
   late final pulumi.Output<String?> productCode;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Asset serial number.
   late final pulumi.Output<String?> serialNumber;
-
   /// Revision number of the software.
   late final pulumi.Output<String?> softwareRevision;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// An integer that is incremented each time the resource is modified.
   late final pulumi.Output<double> version;
 
@@ -575,43 +552,21 @@ class DiscoveredAsset extends pulumi.CustomResource {
     DiscoveredAssetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:deviceregistry:DiscoveredAsset',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:deviceregistry:DiscoveredAsset',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assetEndpointProfileRef = registerOutput<String>('assetEndpointProfileRef');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     datasets = registerOutput<List<Map<String, dynamic>>?>('datasets');
-    defaultDatasetsConfiguration = registerOutput<String?>(
-      'defaultDatasetsConfiguration',
-    );
-    defaultEventsConfiguration = registerOutput<String?>(
-      'defaultEventsConfiguration',
-    );
-    defaultTopic = registerOutput<TopicResponse?>(
-      'defaultTopic',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TopicResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    defaultDatasetsConfiguration = registerOutput<String?>('defaultDatasetsConfiguration');
+    defaultEventsConfiguration = registerOutput<String?>('defaultEventsConfiguration');
+    defaultTopic = registerOutput<TopicResponse?>('defaultTopic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     discoveryId = registerOutput<String>('discoveryId');
     documentationUri = registerOutput<String?>('documentationUri');
     events = registerOutput<List<Map<String, dynamic>>?>('events');
-    extendedLocation = registerOutput<ExtendedLocationResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hardwareRevision = registerOutput<String?>('hardwareRevision');
     location = registerOutput<String>('location');
     manufacturer = registerOutput<String?>('manufacturer');
@@ -622,16 +577,7 @@ class DiscoveredAsset extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     serialNumber = registerOutput<String?>('serialNumber');
     softwareRevision = registerOutput<String?>('softwareRevision');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     version = registerOutput<double>('version');

@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BandwidthPackageAttachmentState {
   /// The ID of the bandwidth package.
   final pulumi.Input<String>? bandwidthPackageId;
-
   /// The ID of the CEN.
   final pulumi.Input<String>? instanceId;
 
   /// Creates a new [BandwidthPackageAttachmentState].
   /// [bandwidthPackageId] The ID of the bandwidth package.
   /// [instanceId] The ID of the CEN.
-  BandwidthPackageAttachmentState({this.bandwidthPackageId, this.instanceId});
+  BandwidthPackageAttachmentState({
+    this.bandwidthPackageId,
+    this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class BandwidthPackageAttachmentState {
 
   factory BandwidthPackageAttachmentState.fromMap(Map<String, dynamic> map) {
     return BandwidthPackageAttachmentState(
-      bandwidthPackageId: (() {
-        final guardedValue = map['bandwidthPackageId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bandwidthPackageId: (() { final guardedValue = map['bandwidthPackageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

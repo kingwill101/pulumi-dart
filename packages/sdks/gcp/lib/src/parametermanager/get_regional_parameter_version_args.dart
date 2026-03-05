@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionalParameterVersionArgs {
   /// The location of regional parameter.
   final pulumi.Input<String>? location;
-
   /// The parameter for obtaining the Regional Parameter Version.
   /// This can be either the reference of the regional parameter as in `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}` or only the name of the regional parameter as in `{{parameter_id}}`.
   final pulumi.Input<String> parameter;
-
   /// The version of the regional parameter to get.
   final pulumi.Input<String> parameterVersionId;
-
   /// The project for retrieving the Regional Parameter Version. If it's not specified,
   /// the provider project will be used.
   final pulumi.Input<String>? project;
@@ -44,20 +41,11 @@ class GetRegionalParameterVersionArgs {
 
   factory GetRegionalParameterVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionalParameterVersionArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameter: pulumi.Input.fromValue(map['parameter'] as String),
-      parameterVersionId: pulumi.Input.fromValue(
-        map['parameterVersionId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      parameterVersionId: pulumi.Input.fromValue(map['parameterVersionId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

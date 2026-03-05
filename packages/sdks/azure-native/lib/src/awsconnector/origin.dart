@@ -15,3 +15,4 @@ enum Origin {
     throw ArgumentError('Unknown Origin value: $value');
   }
 }
+

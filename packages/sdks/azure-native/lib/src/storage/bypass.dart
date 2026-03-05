@@ -17,3 +17,4 @@ enum Bypass {
     throw ArgumentError('Unknown Bypass value: $value');
   }
 }
+

@@ -13,7 +13,10 @@ class GetHostQueryArgs {
   /// Creates a new [GetHostQueryArgs].
   /// [hostQueryId] Required.
   /// [organizationId] Required.
-  GetHostQueryArgs({required this.hostQueryId, required this.organizationId});
+  GetHostQueryArgs({
+    required this.hostQueryId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetHostQueryArgs {
     );
   }
 }
+

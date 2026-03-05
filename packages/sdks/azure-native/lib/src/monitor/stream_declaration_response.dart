@@ -10,39 +10,20 @@ class StreamDeclarationResponse {
 
   /// Creates a new [StreamDeclarationResponse].
   /// [columns] List of columns used by data in this stream.
-  StreamDeclarationResponse({this.columns});
+  StreamDeclarationResponse({
+    this.columns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ColumnDefinitionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            columns,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ColumnDefinitionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'columns': ?pulumi.Input.mapOptionalInputValue<List<ColumnDefinitionResponse>, List<Map<String, dynamic>>>(columns, (value) => pulumi.Input.encodeList<ColumnDefinitionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StreamDeclarationResponse.fromMap(Map<String, dynamic> map) {
     return StreamDeclarationResponse(
-      columns: (() {
-        final guardedValue = map['columns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ColumnDefinitionResponse>(
-            guardedValue,
-            (value) => ColumnDefinitionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      columns: (() { final guardedValue = map['columns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ColumnDefinitionResponse>(guardedValue, (value) => ColumnDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

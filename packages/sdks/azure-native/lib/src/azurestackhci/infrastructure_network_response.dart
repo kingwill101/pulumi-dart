@@ -7,16 +7,12 @@ import 'ip_pools_response.dart';
 class InfrastructureNetworkResponse {
   /// IPv4 address of the DNS servers in your environment.
   final pulumi.Input<List<String>>? dnsServers;
-
   /// Default gateway that should be used for the provided IP address space.
   final pulumi.Input<String>? gateway;
-
   /// Range of IP addresses from which addresses are allocated for nodes within a subnet.
   final pulumi.Input<List<IpPoolsResponse>>? ipPools;
-
   /// Subnet mask that matches the provided IP address space.
   final pulumi.Input<String>? subnetMask;
-
   /// Allows customers to use DHCP for Hosts and Cluster IPs. If not declared, the deployment will default to static IPs. When true, GW and DNS servers are not required
   final pulumi.Input<bool>? useDhcp;
 
@@ -38,18 +34,7 @@ class InfrastructureNetworkResponse {
     return <String, dynamic>{
       'dnsServers': ?dnsServers,
       'gateway': ?gateway,
-      'ipPools':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<IpPoolsResponse>,
-            List<Map<String, dynamic>>
-          >(
-            ipPools,
-            (value) =>
-                pulumi.Input.encodeList<IpPoolsResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'ipPools': ?pulumi.Input.mapOptionalInputValue<List<IpPoolsResponse>, List<Map<String, dynamic>>>(ipPools, (value) => pulumi.Input.encodeList<IpPoolsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'subnetMask': ?subnetMask,
       'useDhcp': ?useDhcp,
     };
@@ -57,37 +42,12 @@ class InfrastructureNetworkResponse {
 
   factory InfrastructureNetworkResponse.fromMap(Map<String, dynamic> map) {
     return InfrastructureNetworkResponse(
-      dnsServers: (() {
-        final guardedValue = map['dnsServers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      gateway: (() {
-        final guardedValue = map['gateway'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipPools: (() {
-        final guardedValue = map['ipPools'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<IpPoolsResponse>(
-            guardedValue,
-            (value) =>
-                IpPoolsResponse.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      subnetMask: (() {
-        final guardedValue = map['subnetMask'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      useDhcp: (() {
-        final guardedValue = map['useDhcp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dnsServers: (() { final guardedValue = map['dnsServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      gateway: (() { final guardedValue = map['gateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipPools: (() { final guardedValue = map['ipPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpPoolsResponse>(guardedValue, (value) => IpPoolsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      subnetMask: (() { final guardedValue = map['subnetMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      useDhcp: (() { final guardedValue = map['useDhcp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

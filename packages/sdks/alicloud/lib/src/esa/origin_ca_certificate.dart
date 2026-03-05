@@ -335,19 +335,14 @@ import 'origin_ca_certificate_state.dart';
 class OriginCaCertificate extends pulumi.CustomResource {
   /// Certificate content.
   late final pulumi.Output<String> certificate;
-
   /// Creation time.
   late final pulumi.Output<String> createTime;
-
   /// The certificate name.
   late final pulumi.Output<String> name;
-
   /// OriginCaCertificate Id
   late final pulumi.Output<String> originCaCertificateId;
-
   /// Site Id
   late final pulumi.Output<String> siteId;
-
   /// Certificate status.
   late final pulumi.Output<String> status;
 
@@ -360,11 +355,11 @@ class OriginCaCertificate extends pulumi.CustomResource {
     OriginCaCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/originCaCertificate:OriginCaCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/originCaCertificate:OriginCaCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificate = registerOutput<String>('certificate');
     createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');
@@ -391,11 +386,11 @@ class OriginCaCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/originCaCertificate:OriginCaCertificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/originCaCertificate:OriginCaCertificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificate = registerOutput<String>('certificate');
     createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');

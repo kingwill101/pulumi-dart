@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SigningProfileRevocationRecord {
   /// The time when revocation becomes effective.
   final pulumi.Input<String>? revocationEffectiveFrom;
-
   /// The time when the signing profile was revoked.
   final pulumi.Input<String>? revokedAt;
-
   /// The identity of the revoker.
   final pulumi.Input<String>? revokedBy;
 
@@ -32,21 +30,10 @@ class SigningProfileRevocationRecord {
 
   factory SigningProfileRevocationRecord.fromMap(Map<String, dynamic> map) {
     return SigningProfileRevocationRecord(
-      revocationEffectiveFrom: (() {
-        final guardedValue = map['revocationEffectiveFrom'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      revokedAt: (() {
-        final guardedValue = map['revokedAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      revokedBy: (() {
-        final guardedValue = map['revokedBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      revocationEffectiveFrom: (() { final guardedValue = map['revocationEffectiveFrom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      revokedAt: (() { final guardedValue = map['revokedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      revokedBy: (() { final guardedValue = map['revokedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

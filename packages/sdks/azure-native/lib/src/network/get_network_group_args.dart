@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkGroupArgs {
   /// The name of the network group.
   final pulumi.Input<String> networkGroupName;
-
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,15 +34,10 @@ class GetNetworkGroupArgs {
 
   factory GetNetworkGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkGroupArgs(
-      networkGroupName: pulumi.Input.fromValue(
-        map['networkGroupName'] as String,
-      ),
-      networkManagerName: pulumi.Input.fromValue(
-        map['networkManagerName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      networkGroupName: pulumi.Input.fromValue(map['networkGroupName'] as String),
+      networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

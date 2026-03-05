@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsNetworkInterfacePermissionsArgs {
   /// A list of Network Interface Permission IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// The ID of the network interface.
   final pulumi.Input<String> networkInterfaceId;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
   final pulumi.Input<int>? pageNumber;
   final pulumi.Input<int>? pageSize;
-
   /// The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
   final pulumi.Input<String>? status;
 
@@ -48,38 +45,15 @@ class GetEcsNetworkInterfacePermissionsArgs {
     };
   }
 
-  factory GetEcsNetworkInterfacePermissionsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEcsNetworkInterfacePermissionsArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsNetworkInterfacePermissionsArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      networkInterfaceId: pulumi.Input.fromValue(
-        map['networkInterfaceId'] as String,
-      ),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      networkInterfaceId: pulumi.Input.fromValue(map['networkInterfaceId'] as String),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

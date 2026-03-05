@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleManagementPolicyActiveAssignmentRules {
   /// Must an assignment have an expiry date. `false` allows permanent assignment.
   final pulumi.Input<bool>? expirationRequired;
-
   /// The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
   final pulumi.Input<String>? expireAfter;
-
   /// Is a justification required to create new assignments.
   final pulumi.Input<bool>? requireJustification;
-
   /// Is multi-factor authentication required to create new assignments.
   final pulumi.Input<bool>? requireMultifactorAuthentication;
-
   /// Is ticket information required to create new assignments.
   ///
   /// One of `expiration_required` or `expire_after` must be provided.
@@ -44,35 +40,14 @@ class RoleManagementPolicyActiveAssignmentRules {
     };
   }
 
-  factory RoleManagementPolicyActiveAssignmentRules.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RoleManagementPolicyActiveAssignmentRules.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyActiveAssignmentRules(
-      expirationRequired: (() {
-        final guardedValue = map['expirationRequired'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      expireAfter: (() {
-        final guardedValue = map['expireAfter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requireJustification: (() {
-        final guardedValue = map['requireJustification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      requireMultifactorAuthentication: (() {
-        final guardedValue = map['requireMultifactorAuthentication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      requireTicketInfo: (() {
-        final guardedValue = map['requireTicketInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      expirationRequired: (() { final guardedValue = map['expirationRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      expireAfter: (() { final guardedValue = map['expireAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requireJustification: (() { final guardedValue = map['requireJustification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      requireMultifactorAuthentication: (() { final guardedValue = map['requireMultifactorAuthentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      requireTicketInfo: (() { final guardedValue = map['requireTicketInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

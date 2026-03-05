@@ -6,16 +6,9 @@ import 'fleet_observability_fleet_observability_base_feature_state_response_gkeh
 /// Feature state for logging feature.
 class FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1alpha {
   /// The base feature state of fleet default log.
-  final pulumi.Input<
-    FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha
-  >
-  defaultLog;
-
+  final pulumi.Input<FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha> defaultLog;
   /// The base feature state of fleet scope log.
-  final pulumi.Input<
-    FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha
-  >
-  scopeLog;
+  final pulumi.Input<FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha> scopeLog;
 
   /// Creates a new [FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1alpha].
   /// [defaultLog] The base feature state of fleet default log.
@@ -27,33 +20,16 @@ class FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultLog':
-          pulumi.Input.mapInputValue<
-            FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha,
-            Map<String, dynamic>
-          >(defaultLog, (value) => value.toMap()),
-      'scopeLog':
-          pulumi.Input.mapInputValue<
-            FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha,
-            Map<String, dynamic>
-          >(scopeLog, (value) => value.toMap()),
+      'defaultLog': pulumi.Input.mapInputValue<FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha, Map<String, dynamic>>(defaultLog, (value) => value.toMap()),
+      'scopeLog': pulumi.Input.mapInputValue<FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha, Map<String, dynamic>>(scopeLog, (value) => value.toMap()),
     };
   }
 
-  factory FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1alpha(
-      defaultLog: pulumi.Input.fromValue(
-        FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha.fromMap(
-          (map['defaultLog']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      scopeLog: pulumi.Input.fromValue(
-        FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha.fromMap(
-          (map['scopeLog']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      defaultLog: pulumi.Input.fromValue(FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha.fromMap((map['defaultLog']! as Map).cast<String, dynamic>())),
+      scopeLog: pulumi.Input.fromValue(FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha.fromMap((map['scopeLog']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityPolicyRuleRateLimitOptionsRpcStatusResponse {
   /// The status code, which should be an enum value of google.rpc.Code.
   final pulumi.Input<int> code;
-
   /// A developer-facing error message, which should be in English.
   final pulumi.Input<String> message;
 
@@ -19,15 +18,17 @@ class SecurityPolicyRuleRateLimitOptionsRpcStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code, 'message': message};
+    return <String, dynamic>{
+      'code': code,
+      'message': message,
+    };
   }
 
-  factory SecurityPolicyRuleRateLimitOptionsRpcStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPolicyRuleRateLimitOptionsRpcStatusResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRateLimitOptionsRpcStatusResponse(
       code: pulumi.Input.fromValue(map['code'] as int),
       message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
+

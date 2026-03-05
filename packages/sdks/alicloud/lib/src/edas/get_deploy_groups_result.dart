@@ -7,14 +7,11 @@ import 'get_deploy_groups_group.dart';
 class GetDeployGroupsResult {
   /// The ID of the application that you want to deploy.
   final String appId;
-
   /// A list of consumer group ids.
   final List<GetDeployGroupsGroup> groups;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? nameRegex;
-
   /// A list of deploy group names.
   final List<String> names;
   final String? outputFile;
@@ -38,11 +35,7 @@ class GetDeployGroupsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appId': appId,
-      'groups':
-          pulumi.Input.encodeList<GetDeployGroupsGroup, Map<String, dynamic>>(
-            groups,
-            (value) => value.toMap(),
-          ),
+      'groups': pulumi.Input.encodeList<GetDeployGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
       'id': id,
       'nameRegex': ?nameRegex,
       'names': names,
@@ -53,24 +46,12 @@ class GetDeployGroupsResult {
   factory GetDeployGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetDeployGroupsResult(
       appId: map['appId'] as String,
-      groups: pulumi.Input.decodeList<GetDeployGroupsGroup>(
-        map['groups']!,
-        (value) => GetDeployGroupsGroup.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      groups: pulumi.Input.decodeList<GetDeployGroupsGroup>(map['groups']!, (value) => GetDeployGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

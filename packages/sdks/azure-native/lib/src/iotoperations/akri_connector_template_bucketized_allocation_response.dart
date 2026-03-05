@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AkriConnectorTemplateBucketizedAllocationResponse {
   /// The bucketized allocation of AEPs for connectors.
   final pulumi.Input<int> bucketSize;
-
   /// AkriConnectorTemplateAllocationPolicy properties.
   /// Expected value is 'Bucketized'.
   final pulumi.Input<String> policy;
@@ -20,15 +19,17 @@ class AkriConnectorTemplateBucketizedAllocationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucketSize': bucketSize, 'policy': policy};
+    return <String, dynamic>{
+      'bucketSize': bucketSize,
+      'policy': policy,
+    };
   }
 
-  factory AkriConnectorTemplateBucketizedAllocationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AkriConnectorTemplateBucketizedAllocationResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateBucketizedAllocationResponse(
       bucketSize: pulumi.Input.fromValue(map['bucketSize'] as int),
       policy: pulumi.Input.fromValue(map['policy'] as String),
     );
   }
 }
+

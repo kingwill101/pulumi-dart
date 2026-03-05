@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreAgentRuntimeLifecycleConfiguration {
   /// Timeout in seconds for idle runtime sessions.
   final pulumi.Input<int> idleRuntimeSessionTimeout;
-
   /// Maximum lifetime for the instance in seconds.
   final pulumi.Input<int> maxLifetime;
 
@@ -24,14 +23,11 @@ class AgentcoreAgentRuntimeLifecycleConfiguration {
     };
   }
 
-  factory AgentcoreAgentRuntimeLifecycleConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreAgentRuntimeLifecycleConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeLifecycleConfiguration(
-      idleRuntimeSessionTimeout: pulumi.Input.fromValue(
-        map['idleRuntimeSessionTimeout'] as int,
-      ),
+      idleRuntimeSessionTimeout: pulumi.Input.fromValue(map['idleRuntimeSessionTimeout'] as int),
       maxLifetime: pulumi.Input.fromValue(map['maxLifetime'] as int),
     );
   }
 }
+

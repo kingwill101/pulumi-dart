@@ -14,18 +14,15 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cases': ?cases};
+    return <String, dynamic>{
+      'cases': ?cases,
+    };
   }
 
-  factory CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase.fromMap(Map<String, dynamic> map) {
     return CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase(
-      cases: (() {
-        final guardedValue = map['cases'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cases: (() { final guardedValue = map['cases']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

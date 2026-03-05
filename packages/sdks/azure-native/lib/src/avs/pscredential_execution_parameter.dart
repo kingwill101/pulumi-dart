@@ -6,14 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PSCredentialExecutionParameter {
   /// The parameter name
   final pulumi.Input<String> name;
-
   /// password for login
   final pulumi.Input<String>? password;
-
   /// script execution parameter type
   /// Expected value is 'Credential'.
   final pulumi.Input<String> type;
-
   /// username for login
   final pulumi.Input<String>? username;
 
@@ -41,17 +38,10 @@ class PSCredentialExecutionParameter {
   factory PSCredentialExecutionParameter.fromMap(Map<String, dynamic> map) {
     return PSCredentialExecutionParameter(
       name: pulumi.Input.fromValue(map['name'] as String),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

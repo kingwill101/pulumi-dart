@@ -18,13 +18,10 @@ class FlowDefinitionHumanLoopRequestSource {
     };
   }
 
-  factory FlowDefinitionHumanLoopRequestSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowDefinitionHumanLoopRequestSource.fromMap(Map<String, dynamic> map) {
     return FlowDefinitionHumanLoopRequestSource(
-      awsManagedHumanLoopRequestSource: pulumi.Input.fromValue(
-        map['awsManagedHumanLoopRequestSource'] as String,
-      ),
+      awsManagedHumanLoopRequestSource: pulumi.Input.fromValue(map['awsManagedHumanLoopRequestSource'] as String),
     );
   }
 }
+

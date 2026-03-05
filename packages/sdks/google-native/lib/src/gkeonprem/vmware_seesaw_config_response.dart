@@ -7,19 +7,14 @@ import 'vmware_ip_block_response.dart';
 class VmwareSeesawConfigResponse {
   /// Enable two load balancer VMs to achieve a highly-available Seesaw load balancer.
   final pulumi.Input<bool> enableHa;
-
   /// In general the following format should be used for the Seesaw group name: seesaw-for-[cluster_name].
   final pulumi.Input<String> group;
-
   /// The IP Blocks to be used by the Seesaw load balancer
   final pulumi.Input<List<VmwareIpBlockResponse>> ipBlocks;
-
   /// MasterIP is the IP announced by the master of Seesaw group.
   final pulumi.Input<String> masterIp;
-
   /// Name to be used by Stackdriver.
   final pulumi.Input<String> stackdriverName;
-
   /// Names of the VMs created for this Seesaw group.
   final pulumi.Input<List<String>> vms;
 
@@ -43,18 +38,7 @@ class VmwareSeesawConfigResponse {
     return <String, dynamic>{
       'enableHa': enableHa,
       'group': group,
-      'ipBlocks':
-          pulumi.Input.mapInputValue<
-            List<VmwareIpBlockResponse>,
-            List<Map<String, dynamic>>
-          >(
-            ipBlocks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VmwareIpBlockResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ipBlocks': pulumi.Input.mapInputValue<List<VmwareIpBlockResponse>, List<Map<String, dynamic>>>(ipBlocks, (value) => pulumi.Input.encodeList<VmwareIpBlockResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'masterIp': masterIp,
       'stackdriverName': stackdriverName,
       'vms': vms,
@@ -65,17 +49,11 @@ class VmwareSeesawConfigResponse {
     return VmwareSeesawConfigResponse(
       enableHa: pulumi.Input.fromValue(map['enableHa'] as bool),
       group: pulumi.Input.fromValue(map['group'] as String),
-      ipBlocks: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<VmwareIpBlockResponse>(
-          map['ipBlocks']!,
-          (value) => VmwareIpBlockResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      ipBlocks: pulumi.Input.fromValue(pulumi.Input.decodeList<VmwareIpBlockResponse>(map['ipBlocks']!, (value) => VmwareIpBlockResponse.fromMap((value as Map).cast<String, dynamic>()))),
       masterIp: pulumi.Input.fromValue(map['masterIp'] as String),
       stackdriverName: pulumi.Input.fromValue(map['stackdriverName'] as String),
       vms: pulumi.Input.fromValue((map['vms'] as List).cast<String>()),
     );
   }
 }
+

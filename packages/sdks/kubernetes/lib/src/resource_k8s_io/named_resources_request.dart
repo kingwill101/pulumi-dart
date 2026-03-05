@@ -14,10 +14,14 @@ class NamedResourcesRequest {
 
   /// Creates a new [NamedResourcesRequest].
   /// [selector] Selector is a CEL expression which must evaluate to true if a resource instance is suitable. The language is as defined in https://kubernetes.io/docs/reference/using-api/cel/
-  NamedResourcesRequest({required this.selector});
+  NamedResourcesRequest({
+    required this.selector,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'selector': selector};
+    return <String, dynamic>{
+      'selector': selector,
+    };
   }
 
   factory NamedResourcesRequest.fromMap(Map<String, dynamic> map) {
@@ -26,3 +30,4 @@ class NamedResourcesRequest {
     );
   }
 }
+

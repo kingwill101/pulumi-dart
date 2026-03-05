@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceAggregatedAssociationOverview {
   /// &lt;p&gt;Detailed status information about the aggregated associations.&lt;/p&gt;
   final pulumi.Input<String>? detailedStatus;
-
   /// &lt;p&gt;The number of associations for the managed nodes.&lt;/p&gt;
-  final pulumi.Input<Map<String, int>>?
-  instanceAssociationStatusAggregatedCount;
+  final pulumi.Input<Map<String, int>>? instanceAssociationStatusAggregatedCount;
 
   /// Creates a new [InstanceAggregatedAssociationOverview].
   /// [detailedStatus] &lt;p&gt;Detailed status information about the aggregated associations.&lt;/p&gt;
@@ -22,27 +20,15 @@ class InstanceAggregatedAssociationOverview {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'detailedStatus': ?detailedStatus,
-      'instanceAssociationStatusAggregatedCount':
-          ?instanceAssociationStatusAggregatedCount,
+      'instanceAssociationStatusAggregatedCount': ?instanceAssociationStatusAggregatedCount,
     };
   }
 
-  factory InstanceAggregatedAssociationOverview.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceAggregatedAssociationOverview.fromMap(Map<String, dynamic> map) {
     return InstanceAggregatedAssociationOverview(
-      detailedStatus: (() {
-        final guardedValue = map['detailedStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceAssociationStatusAggregatedCount: (() {
-        final guardedValue = map['instanceAssociationStatusAggregatedCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, int>(),
-        );
-      })(),
+      detailedStatus: (() { final guardedValue = map['detailedStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceAssociationStatusAggregatedCount: (() { final guardedValue = map['instanceAssociationStatusAggregatedCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, int>()); })(),
     );
   }
 }
+

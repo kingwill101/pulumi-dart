@@ -378,25 +378,18 @@ import 'access_management_state.dart';
 class AccessManagement extends pulumi.CustomResource {
   /// The ID of the access configuration.
   late final pulumi.Output<String> accessConfigurationId;
-
   /// (Available since v1.254.0) The time when the access permissions were assigned.
   late final pulumi.Output<String> createTime;
-
   /// Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
   late final pulumi.Output<String?> deprovisionStrategy;
-
   /// The ID of the Directory.
   late final pulumi.Output<String> directoryId;
-
   /// The ID of the CloudSSO identity.
   late final pulumi.Output<String> principalId;
-
   /// The type of the CloudSSO identity. Valid values: `User`, `Group`.
   late final pulumi.Output<String> principalType;
-
   /// The ID of the task object.
   late final pulumi.Output<String> targetId;
-
   /// The type of the task object. Valid values: `RD-Account`.
   late final pulumi.Output<String> targetType;
 
@@ -409,11 +402,11 @@ class AccessManagement extends pulumi.CustomResource {
     AccessManagementArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/accessManagement:AccessManagement',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/accessManagement:AccessManagement',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessConfigurationId = registerOutput<String>('accessConfigurationId');
     createTime = registerOutput<String>('createTime');
     deprovisionStrategy = registerOutput<String?>('deprovisionStrategy');
@@ -442,11 +435,11 @@ class AccessManagement extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/accessManagement:AccessManagement',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/accessManagement:AccessManagement',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessConfigurationId = registerOutput<String>('accessConfigurationId');
     createTime = registerOutput<String>('createTime');
     deprovisionStrategy = registerOutput<String?>('deprovisionStrategy');

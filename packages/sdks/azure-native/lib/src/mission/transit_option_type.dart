@@ -16,3 +16,4 @@ enum TransitOptionType {
     throw ArgumentError('Unknown TransitOptionType value: $value');
   }
 }
+

@@ -9,19 +9,20 @@ class ProducerPscConfig {
 
   /// Creates a new [ProducerPscConfig].
   /// [serviceAttachmentUri] The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
-  ProducerPscConfig({this.serviceAttachmentUri});
+  ProducerPscConfig({
+    this.serviceAttachmentUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serviceAttachmentUri': ?serviceAttachmentUri};
+    return <String, dynamic>{
+      'serviceAttachmentUri': ?serviceAttachmentUri,
+    };
   }
 
   factory ProducerPscConfig.fromMap(Map<String, dynamic> map) {
     return ProducerPscConfig(
-      serviceAttachmentUri: (() {
-        final guardedValue = map['serviceAttachmentUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serviceAttachmentUri: (() { final guardedValue = map['serviceAttachmentUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StackScriptUserDefinedField {
   /// The default value. If not specified, this value will be used.
   final pulumi.Input<String> default_;
-
   /// An example value for the field.
   final pulumi.Input<String> example;
-
   /// The StackScript's label is for display purposes only.
   final pulumi.Input<String> label;
-
   /// A list of acceptable values for the field in any quantity, combination or order.
   final pulumi.Input<String> manyOf;
-
   /// The name of the field.
   final pulumi.Input<String> name;
-
   /// A list of acceptable single values for the field.
   final pulumi.Input<String> oneOf;
 
@@ -59,3 +54,4 @@ class StackScriptUserDefinedField {
     );
   }
 }
+

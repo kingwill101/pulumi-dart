@@ -232,32 +232,22 @@ import 'database_state.dart';
 class Database extends pulumi.CustomResource {
   /// That an Amazon S3 canned ACL should be set to control ownership of stored query results. See ACL Configuration below.
   late final pulumi.Output<DatabaseAclConfiguration?> aclConfiguration;
-
   /// Name of S3 bucket to save the results of the query execution.
   late final pulumi.Output<String?> bucket;
-
   /// Description of the database.
   late final pulumi.Output<String?> comment;
-
   /// Encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. See Encryption Configuration below.
-  late final pulumi.Output<DatabaseEncryptionConfiguration?>
-  encryptionConfiguration;
-
+  late final pulumi.Output<DatabaseEncryptionConfiguration?> encryptionConfiguration;
   /// AWS account ID that you expect to be the owner of the Amazon S3 bucket.
   late final pulumi.Output<String?> expectedBucketOwner;
-
   /// Boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
   late final pulumi.Output<bool?> forceDestroy;
-
   /// Name of the database to create.
   late final pulumi.Output<String> name;
-
   /// Key-value map of custom metadata properties for the database definition.
   late final pulumi.Output<Map<String, String>?> properties;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Name of the workgroup.
   late final pulumi.Output<String?> workgroup;
 
@@ -270,33 +260,15 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:athena/database:Database',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    aclConfiguration = registerOutput<DatabaseAclConfiguration?>(
-      'aclConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseAclConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:athena/database:Database',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    aclConfiguration = registerOutput<DatabaseAclConfiguration?>('aclConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseAclConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bucket = registerOutput<String?>('bucket');
     comment = registerOutput<String?>('comment');
-    encryptionConfiguration = registerOutput<DatabaseEncryptionConfiguration?>(
-      'encryptionConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseEncryptionConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionConfiguration = registerOutput<DatabaseEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     this.name = registerOutput<String>('name');
@@ -323,33 +295,15 @@ class Database extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:athena/database:Database',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    aclConfiguration = registerOutput<DatabaseAclConfiguration?>(
-      'aclConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseAclConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:athena/database:Database',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    aclConfiguration = registerOutput<DatabaseAclConfiguration?>('aclConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseAclConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bucket = registerOutput<String?>('bucket');
     comment = registerOutput<String?>('comment');
-    encryptionConfiguration = registerOutput<DatabaseEncryptionConfiguration?>(
-      'encryptionConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseEncryptionConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionConfiguration = registerOutput<DatabaseEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     this.name = registerOutput<String>('name');

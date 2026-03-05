@@ -9,7 +9,6 @@ import 'get_vpc_subnets_filter.dart';
 /// {@macro pulumi_index_get_vpc_subnets_get_vpc_subnets_args_doc}
 class GetVpcSubnetsArgs {
   final pulumi.Input<List<GetVpcSubnetsFilter>>? filters;
-
   /// The id of the parent VPC for the list of VPCs.
   ///
   /// * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
@@ -18,41 +17,23 @@ class GetVpcSubnetsArgs {
   /// Creates a new [GetVpcSubnetsArgs].
   /// [filters] Optional.
   /// [vpcId] The id of the parent VPC for the list of VPCs.
-  GetVpcSubnetsArgs({this.filters, required this.vpcId});
+  GetVpcSubnetsArgs({
+    this.filters,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetVpcSubnetsFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetVpcSubnetsFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetVpcSubnetsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetVpcSubnetsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcId': vpcId,
     };
   }
 
   factory GetVpcSubnetsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcSubnetsArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetVpcSubnetsFilter>(
-            guardedValue,
-            (value) => GetVpcSubnetsFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetVpcSubnetsFilter>(guardedValue, (value) => GetVpcSubnetsFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as int),
     );
   }
 }
+

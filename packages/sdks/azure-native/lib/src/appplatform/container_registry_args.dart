@@ -10,13 +10,10 @@ import 'container_registry_properties.dart';
 class ContainerRegistryArgs {
   /// The name of the container registry.
   final pulumi.Input<String>? containerRegistryName;
-
   /// Properties of the container registry resource payload.
   final pulumi.Input<ContainerRegistryProperties>? properties;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -35,11 +32,7 @@ class ContainerRegistryArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'containerRegistryName': ?containerRegistryName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            ContainerRegistryProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<ContainerRegistryProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
     };
@@ -47,24 +40,11 @@ class ContainerRegistryArgs {
 
   factory ContainerRegistryArgs.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryArgs(
-      containerRegistryName: (() {
-        final guardedValue = map['containerRegistryName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ContainerRegistryProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      containerRegistryName: (() { final guardedValue = map['containerRegistryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerRegistryProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

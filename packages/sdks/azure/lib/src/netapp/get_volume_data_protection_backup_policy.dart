@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeDataProtectionBackupPolicy {
   /// The Resource ID of the backup policy.
   final pulumi.Input<String> backupPolicyId;
-
   /// The Resource ID of the backup backup vault.
   final pulumi.Input<String> backupVaultId;
-
   /// Backup policy is enabled or not.
   final pulumi.Input<bool> policyEnabled;
 
@@ -30,9 +28,7 @@ class GetVolumeDataProtectionBackupPolicy {
     };
   }
 
-  factory GetVolumeDataProtectionBackupPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVolumeDataProtectionBackupPolicy.fromMap(Map<String, dynamic> map) {
     return GetVolumeDataProtectionBackupPolicy(
       backupPolicyId: pulumi.Input.fromValue(map['backupPolicyId'] as String),
       backupVaultId: pulumi.Input.fromValue(map['backupVaultId'] as String),
@@ -40,3 +36,4 @@ class GetVolumeDataProtectionBackupPolicy {
     );
   }
 }
+

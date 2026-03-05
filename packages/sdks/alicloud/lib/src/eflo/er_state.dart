@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ErState {
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
-
   /// Description.
   final pulumi.Input<String>? description;
-
   /// Lingjun HUB name
   final pulumi.Input<String>? erName;
-
   /// Primary zone
   final pulumi.Input<String>? masterZoneId;
-
   /// region information
   final pulumi.Input<String>? regionId;
-
   /// The ID of the resource group instance.
   final pulumi.Input<String>? resourceGroupId;
-
   /// Status
   final pulumi.Input<String>? status;
-
   /// Label List
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -63,48 +56,15 @@ class ErState {
 
   factory ErState.fromMap(Map<String, dynamic> map) {
     return ErState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      erName: (() {
-        final guardedValue = map['erName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      masterZoneId: (() {
-        final guardedValue = map['masterZoneId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regionId: (() {
-        final guardedValue = map['regionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      erName: (() { final guardedValue = map['erName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      masterZoneId: (() { final guardedValue = map['masterZoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionId: (() { final guardedValue = map['regionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

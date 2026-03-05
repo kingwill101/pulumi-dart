@@ -13,14 +13,15 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'channel': channel};
+    return <String, dynamic>{
+      'channel': channel,
+    };
   }
 
-  factory DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort(
       channel: pulumi.Input.fromValue(map['channel'] as String),
     );
   }
 }
+

@@ -12,10 +12,8 @@ import 'bucket_cname_token_state.dart';
 class BucketCnameToken extends pulumi.CustomResource {
   /// The name of the bucket
   late final pulumi.Output<String> bucket;
-
   /// The custom domain
   late final pulumi.Output<String> domain;
-
   /// Token used to verify domain ownership
   late final pulumi.Output<String> token;
 
@@ -28,11 +26,11 @@ class BucketCnameToken extends pulumi.CustomResource {
     BucketCnameTokenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketCnameToken:BucketCnameToken',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketCnameToken:BucketCnameToken',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     domain = registerOutput<String>('domain');
     token = registerOutput<String>('token');
@@ -56,11 +54,11 @@ class BucketCnameToken extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketCnameToken:BucketCnameToken',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketCnameToken:BucketCnameToken',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     domain = registerOutput<String>('domain');
     token = registerOutput<String>('token');

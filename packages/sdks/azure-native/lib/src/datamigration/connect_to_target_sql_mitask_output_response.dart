@@ -7,19 +7,14 @@ import 'reportable_exception_response.dart';
 class ConnectToTargetSqlMITaskOutputResponse {
   /// List of agent jobs on the target server.
   final pulumi.Input<List<String>> agentJobs;
-
   /// Result identifier
   final pulumi.Input<String> id;
-
   /// List of logins on the target server.
   final pulumi.Input<List<String>> logins;
-
   /// Target server brand version
   final pulumi.Input<String> targetServerBrandVersion;
-
   /// Target server version
   final pulumi.Input<String> targetServerVersion;
-
   /// Validation errors
   final pulumi.Input<List<ReportableExceptionResponse>> validationErrors;
 
@@ -46,44 +41,19 @@ class ConnectToTargetSqlMITaskOutputResponse {
       'logins': logins,
       'targetServerBrandVersion': targetServerBrandVersion,
       'targetServerVersion': targetServerVersion,
-      'validationErrors':
-          pulumi.Input.mapInputValue<
-            List<ReportableExceptionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            validationErrors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReportableExceptionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'validationErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ConnectToTargetSqlMITaskOutputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectToTargetSqlMITaskOutputResponse.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetSqlMITaskOutputResponse(
-      agentJobs: pulumi.Input.fromValue(
-        (map['agentJobs'] as List).cast<String>(),
-      ),
+      agentJobs: pulumi.Input.fromValue((map['agentJobs'] as List).cast<String>()),
       id: pulumi.Input.fromValue(map['id'] as String),
       logins: pulumi.Input.fromValue((map['logins'] as List).cast<String>()),
-      targetServerBrandVersion: pulumi.Input.fromValue(
-        map['targetServerBrandVersion'] as String,
-      ),
-      targetServerVersion: pulumi.Input.fromValue(
-        map['targetServerVersion'] as String,
-      ),
-      validationErrors: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ReportableExceptionResponse>(
-          map['validationErrors']!,
-          (value) => ReportableExceptionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      targetServerBrandVersion: pulumi.Input.fromValue(map['targetServerBrandVersion'] as String),
+      targetServerVersion: pulumi.Input.fromValue(map['targetServerVersion'] as String),
+      validationErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors']!, (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

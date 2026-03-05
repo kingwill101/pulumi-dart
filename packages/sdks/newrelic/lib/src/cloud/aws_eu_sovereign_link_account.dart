@@ -132,13 +132,10 @@ import 'aws_eu_sovereign_link_account_state.dart';
 class AwsEuSovereignLinkAccount extends pulumi.CustomResource {
   /// The New Relic account ID to operate on. This allows the user to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`, if not specified in the configuration.
   late final pulumi.Output<String> accountId;
-
   /// The Amazon Resource Name (ARN) of the IAM role.
   late final pulumi.Output<String> arn;
-
   /// How metrics will be collected. Use `PUSH` for metric stream, `PULL` for API polling of the 3 services not supported by metric streams (Billing, CloudTrail and X-Ray), or `BOTH` for both methods. Defaults to `PUSH`, if not specified in the configuration.
   late final pulumi.Output<String?> metricCollectionMode;
-
   /// The name/identifier of the AWS EU Sovereign - New Relic 'linked' account.
   ///
   /// &gt; **WARNING:** Updating any of the aforementioned attributes (except `name`) of a `newrelic.cloud.AwsEuSovereignLinkAccount` resource that has been applied would **force a replacement** of the resource (destruction of the resource, followed by the creation of a new resource). Please carefully review the output of `pulumi preview`, which would clearly indicate a replacement of this resource, before performing a `pulumi up`.
@@ -155,11 +152,11 @@ class AwsEuSovereignLinkAccount extends pulumi.CustomResource {
     AwsEuSovereignLinkAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:cloud/awsEuSovereignLinkAccount:AwsEuSovereignLinkAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:cloud/awsEuSovereignLinkAccount:AwsEuSovereignLinkAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
     metricCollectionMode = registerOutput<String?>('metricCollectionMode');
@@ -184,11 +181,11 @@ class AwsEuSovereignLinkAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:cloud/awsEuSovereignLinkAccount:AwsEuSovereignLinkAccount',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:cloud/awsEuSovereignLinkAccount:AwsEuSovereignLinkAccount',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
     metricCollectionMode = registerOutput<String?>('metricCollectionMode');

@@ -7,40 +7,28 @@ import 'system_data_response.dart';
 class GetVirtualNetworkResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The extended location.
   final ExtendedLocationResponse extendedLocation;
-
   /// Resource Id
   final String id;
-
   /// Gets or sets the inventory Item ID for the resource.
   final String? inventoryItemId;
-
   /// Gets or sets the location.
   final String location;
-
   /// Resource Name
   final String name;
-
   /// Name of the virtual network in vmmServer.
   final String networkName;
-
   /// Gets or sets the provisioning state.
   final String provisioningState;
-
   /// The system data.
   final SystemDataResponse systemData;
-
   /// Resource tags
   final Map<String, String>? tags;
-
   /// Resource Type
   final String type;
-
   /// Unique ID of the virtual network.
   final String? uuid;
-
   /// ARM Id of the vmmServer resource in which this resource resides.
   final String? vmmServerId;
 
@@ -95,38 +83,19 @@ class GetVirtualNetworkResult {
   factory GetVirtualNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: ExtendedLocationResponse.fromMap(
-        (map['extendedLocation']! as Map).cast<String, dynamic>(),
-      ),
+      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      inventoryItemId: (() {
-        final guardedValue = map['inventoryItemId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      inventoryItemId: (() { final guardedValue = map['inventoryItemId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: map['location'] as String,
       name: map['name'] as String,
       networkName: map['networkName'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      uuid: (() {
-        final guardedValue = map['uuid'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vmmServerId: (() {
-        final guardedValue = map['vmmServerId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vmmServerId: (() { final guardedValue = map['vmmServerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

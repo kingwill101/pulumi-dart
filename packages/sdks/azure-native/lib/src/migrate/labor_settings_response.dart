@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LaborSettingsResponse {
   /// Hourly administrator cost.
   final pulumi.Input<double> hourlyAdminCost;
-
   /// Physical servers per administrator.
   final pulumi.Input<int> physicalServersPerAdmin;
-
   /// Virtual machines per administrator.
   final pulumi.Input<int> virtualMachinesPerAdmin;
 
@@ -34,12 +32,9 @@ class LaborSettingsResponse {
   factory LaborSettingsResponse.fromMap(Map<String, dynamic> map) {
     return LaborSettingsResponse(
       hourlyAdminCost: pulumi.Input.fromValue(map['hourlyAdminCost'] as double),
-      physicalServersPerAdmin: pulumi.Input.fromValue(
-        map['physicalServersPerAdmin'] as int,
-      ),
-      virtualMachinesPerAdmin: pulumi.Input.fromValue(
-        map['virtualMachinesPerAdmin'] as int,
-      ),
+      physicalServersPerAdmin: pulumi.Input.fromValue(map['physicalServersPerAdmin'] as int),
+      virtualMachinesPerAdmin: pulumi.Input.fromValue(map['virtualMachinesPerAdmin'] as int),
     );
   }
 }
+

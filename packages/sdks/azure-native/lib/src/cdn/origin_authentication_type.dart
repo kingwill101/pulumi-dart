@@ -15,3 +15,4 @@ enum OriginAuthenticationType {
     throw ArgumentError('Unknown OriginAuthenticationType value: $value');
   }
 }
+

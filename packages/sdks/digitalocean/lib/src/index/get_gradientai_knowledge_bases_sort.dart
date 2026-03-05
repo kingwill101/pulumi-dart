@@ -9,20 +9,23 @@ class GetGradientaiKnowledgeBasesSort {
   /// Creates a new [GetGradientaiKnowledgeBasesSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGradientaiKnowledgeBasesSort({this.direction, required this.key});
+  GetGradientaiKnowledgeBasesSort({
+    this.direction,
+    required this.key,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'direction': ?direction, 'key': key};
+    return <String, dynamic>{
+      'direction': ?direction,
+      'key': key,
+    };
   }
 
   factory GetGradientaiKnowledgeBasesSort.fromMap(Map<String, dynamic> map) {
     return GetGradientaiKnowledgeBasesSort(
-      direction: (() {
-        final guardedValue = map['direction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
+

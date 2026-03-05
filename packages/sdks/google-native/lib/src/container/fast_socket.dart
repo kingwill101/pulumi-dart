@@ -9,19 +9,20 @@ class FastSocket {
 
   /// Creates a new [FastSocket].
   /// [enabled] Whether Fast Socket features are enabled in the node pool.
-  FastSocket({this.enabled});
+  FastSocket({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory FastSocket.fromMap(Map<String, dynamic> map) {
     return FastSocket(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

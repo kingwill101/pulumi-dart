@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SearchResourceProperty {
   /// Details about this property. The content of this field is a JSON object that varies based on the resource type.
   final pulumi.Input<String> data;
-
   /// The date and time that the information about this resource property was last updated.
   final pulumi.Input<String> lastReportedAt;
-
   /// Name of this property of the resource.
   final pulumi.Input<String> name;
 
@@ -38,3 +36,4 @@ class SearchResourceProperty {
     );
   }
 }
+

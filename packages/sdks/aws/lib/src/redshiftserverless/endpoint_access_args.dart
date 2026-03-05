@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointAccessArgs {
   /// The name of the endpoint.
   final pulumi.Input<String> endpointName;
-
   /// The owner Amazon Web Services account for the Amazon Redshift Serverless workgroup.
   final pulumi.Input<String>? ownerAccount;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// An array of VPC subnet IDs to associate with the endpoint.
   final pulumi.Input<List<String>> subnetIds;
-
   /// An array of security group IDs to associate with the workgroup.
   final pulumi.Input<List<String>>? vpcSecurityGroupIds;
-
   /// The name of the workgroup.
   final pulumi.Input<String> workgroupName;
 
@@ -55,25 +50,12 @@ class EndpointAccessArgs {
   factory EndpointAccessArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAccessArgs(
       endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
-      ownerAccount: (() {
-        final guardedValue = map['ownerAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetIds: pulumi.Input.fromValue(
-        (map['subnetIds'] as List).cast<String>(),
-      ),
-      vpcSecurityGroupIds: (() {
-        final guardedValue = map['vpcSecurityGroupIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      ownerAccount: (() { final guardedValue = map['ownerAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetIds: pulumi.Input.fromValue((map['subnetIds'] as List).cast<String>()),
+      vpcSecurityGroupIds: (() { final guardedValue = map['vpcSecurityGroupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       workgroupName: pulumi.Input.fromValue(map['workgroupName'] as String),
     );
   }
 }
+

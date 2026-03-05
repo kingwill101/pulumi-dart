@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPublishedBlueprintArgs {
   /// Name of the blueprint definition.
   final pulumi.Input<String> blueprintName;
-
   /// The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   final pulumi.Input<String> resourceScope;
-
   /// Version of the published blueprint definition.
   final pulumi.Input<String> versionId;
 
@@ -42,3 +40,4 @@ class GetPublishedBlueprintArgs {
     );
   }
 }
+

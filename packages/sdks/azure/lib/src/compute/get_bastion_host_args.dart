@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBastionHostArgs {
   /// The name of the Bastion Host.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group where the Bastion Host exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetBastionHostArgs].
   /// [name] The name of the Bastion Host.
   /// [resourceGroupName] The name of the Resource Group where the Bastion Host exists.
-  GetBastionHostArgs({required this.name, required this.resourceGroupName});
+  GetBastionHostArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetBastionHostArgs {
   factory GetBastionHostArgs.fromMap(Map<String, dynamic> map) {
     return GetBastionHostArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

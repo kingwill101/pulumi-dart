@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TemplateSpecVersionInfoResponse {
   /// Template Spec version description.
   final pulumi.Input<String> description;
-
   /// The timestamp of when the version was created.
   final pulumi.Input<String> timeCreated;
-
   /// The timestamp of when the version was last modified.
   final pulumi.Input<String> timeModified;
 
@@ -39,3 +37,4 @@ class TemplateSpecVersionInfoResponse {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetModuleArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-
   /// The module name.
   final pulumi.Input<String> moduleName;
-
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetModuleArgs {
 
   factory GetModuleArgs.fromMap(Map<String, dynamic> map) {
     return GetModuleArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
       moduleName: pulumi.Input.fromValue(map['moduleName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

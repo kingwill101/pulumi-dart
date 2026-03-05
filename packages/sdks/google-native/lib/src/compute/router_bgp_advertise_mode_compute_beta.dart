@@ -12,8 +12,7 @@ enum RouterBgpAdvertiseModeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RouterBgpAdvertiseModeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown RouterBgpAdvertiseModeComputeBeta value: $value');
   }
 }
+

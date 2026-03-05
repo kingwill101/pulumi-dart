@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationsApplication {
   /// The name of the application.
   final pulumi.Input<String> applicationName;
-
   /// The Created time of the application.
   final pulumi.Input<String> createTime;
-
   /// Application group description information.
   final pulumi.Input<String> description;
-
   /// The ID of the Application. The value is formate as &lt;application_name&gt;.
   final pulumi.Input<String> id;
-
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
-
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// The Updated time of the application.
   final pulumi.Input<String> updateTime;
 
@@ -66,3 +60,4 @@ class GetApplicationsApplication {
     );
   }
 }
+

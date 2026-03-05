@@ -9,10 +9,14 @@ class LogAnalyticsOutputResponse {
 
   /// Creates a new [LogAnalyticsOutputResponse].
   /// [output] Output file Uri path to blob container.
-  LogAnalyticsOutputResponse({required this.output});
+  LogAnalyticsOutputResponse({
+    required this.output,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'output': output};
+    return <String, dynamic>{
+      'output': output,
+    };
   }
 
   factory LogAnalyticsOutputResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class LogAnalyticsOutputResponse {
     );
   }
 }
+

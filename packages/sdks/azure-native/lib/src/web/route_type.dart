@@ -21,3 +21,4 @@ enum RouteType {
     throw ArgumentError('Unknown RouteType value: $value');
   }
 }
+

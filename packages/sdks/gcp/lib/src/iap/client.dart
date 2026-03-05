@@ -242,13 +242,10 @@ class Client extends pulumi.CustomResource {
   /// is attached to. The format is
   /// `projects/{project_number}/brands/{brand_id}`.
   late final pulumi.Output<String> brand;
-
   /// Output only. Unique identifier of the OAuth client.
   late final pulumi.Output<String> clientId;
-
   /// Human-friendly name given to the OAuth client.
   late final pulumi.Output<String> displayName;
-
   /// Output only. Client secret of the OAuth client.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> secret;
@@ -257,13 +254,16 @@ class Client extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Client]. {@macro pulumi_iap_client_client_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Client(String name, {ClientArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:iap/client:Client',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Client(
+    String name, {
+    ClientArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:iap/client:Client',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     brand = registerOutput<String>('brand');
     clientId = registerOutput<String>('clientId');
     displayName = registerOutput<String>('displayName');
@@ -288,11 +288,11 @@ class Client extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iap/client:Client',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:iap/client:Client',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     brand = registerOutput<String>('brand');
     clientId = registerOutput<String>('clientId');
     displayName = registerOutput<String>('displayName');

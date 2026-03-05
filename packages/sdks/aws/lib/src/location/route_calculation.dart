@@ -110,30 +110,22 @@ import 'route_calculation_state.dart';
 class RouteCalculation extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) for the Route calculator resource. Use the ARN when you specify a resource across AWS.
   late final pulumi.Output<String> calculatorArn;
-
   /// The name of the route calculator resource.
   late final pulumi.Output<String> calculatorName;
-
   /// The timestamp for when the route calculator resource was created in ISO 8601 format.
   late final pulumi.Output<String> createTime;
-
   /// Specifies the data provider of traffic and road network data.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> dataSource;
-
   /// The optional description for the route calculator resource.
   late final pulumi.Output<String?> description;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value tags for the route calculator. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The timestamp for when the route calculator resource was last update in ISO 8601.
   late final pulumi.Output<String> updateTime;
 
@@ -146,11 +138,11 @@ class RouteCalculation extends pulumi.CustomResource {
     RouteCalculationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:location/routeCalculation:RouteCalculation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:location/routeCalculation:RouteCalculation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     calculatorArn = registerOutput<String>('calculatorArn');
     calculatorName = registerOutput<String>('calculatorName');
     createTime = registerOutput<String>('createTime');
@@ -180,11 +172,11 @@ class RouteCalculation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:location/routeCalculation:RouteCalculation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:location/routeCalculation:RouteCalculation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     calculatorArn = registerOutput<String>('calculatorArn');
     calculatorName = registerOutput<String>('calculatorName');
     createTime = registerOutput<String>('createTime');

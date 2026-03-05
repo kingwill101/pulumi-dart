@@ -647,10 +647,8 @@ class WorkspaceRootDbfsCustomerManagedKey extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** If you are using multiple service principals to execute Terraform across subscriptions you will need to add an additional `azure.keyvault.AccessPolicy` resource granting the service principal access to the key vault in that subscription.
   late final pulumi.Output<String?> keyVaultId;
-
   /// The ID of the Key Vault Key to be used.
   late final pulumi.Output<String> keyVaultKeyId;
-
   /// The Resource ID of the Databricks Workspace.
   late final pulumi.Output<String> workspaceId;
 
@@ -663,11 +661,11 @@ class WorkspaceRootDbfsCustomerManagedKey extends pulumi.CustomResource {
     WorkspaceRootDbfsCustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:databricks/workspaceRootDbfsCustomerManagedKey:WorkspaceRootDbfsCustomerManagedKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:databricks/workspaceRootDbfsCustomerManagedKey:WorkspaceRootDbfsCustomerManagedKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keyVaultId = registerOutput<String?>('keyVaultId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     workspaceId = registerOutput<String>('workspaceId');
@@ -691,11 +689,11 @@ class WorkspaceRootDbfsCustomerManagedKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:databricks/workspaceRootDbfsCustomerManagedKey:WorkspaceRootDbfsCustomerManagedKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:databricks/workspaceRootDbfsCustomerManagedKey:WorkspaceRootDbfsCustomerManagedKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keyVaultId = registerOutput<String?>('keyVaultId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     workspaceId = registerOutput<String>('workspaceId');

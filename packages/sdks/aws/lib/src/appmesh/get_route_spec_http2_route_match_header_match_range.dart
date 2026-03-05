@@ -15,15 +15,17 @@ class GetRouteSpecHttp2RouteMatchHeaderMatchRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'end': end, 'start': start};
+    return <String, dynamic>{
+      'end': end,
+      'start': start,
+    };
   }
 
-  factory GetRouteSpecHttp2RouteMatchHeaderMatchRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRouteSpecHttp2RouteMatchHeaderMatchRange.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttp2RouteMatchHeaderMatchRange(
       end: pulumi.Input.fromValue(map['end'] as int),
       start: pulumi.Input.fromValue(map['start'] as int),
     );
   }
 }
+

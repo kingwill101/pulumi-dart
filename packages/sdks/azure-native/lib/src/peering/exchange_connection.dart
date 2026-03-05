@@ -7,10 +7,8 @@ import 'bgp_session.dart';
 class ExchangeConnection {
   /// The BGP session associated with the connection.
   final pulumi.Input<BgpSession>? bgpSession;
-
   /// The unique identifier (GUID) for the connection.
   final pulumi.Input<String>? connectionIdentifier;
-
   /// The PeeringDB.com ID of the facility at which the connection has to be set up.
   final pulumi.Input<int>? peeringDBFacilityId;
 
@@ -26,11 +24,7 @@ class ExchangeConnection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgpSession':
-          ?pulumi.Input.mapOptionalInputValue<BgpSession, Map<String, dynamic>>(
-            bgpSession,
-            (value) => value.toMap(),
-          ),
+      'bgpSession': ?pulumi.Input.mapOptionalInputValue<BgpSession, Map<String, dynamic>>(bgpSession, (value) => value.toMap()),
       'connectionIdentifier': ?connectionIdentifier,
       'peeringDBFacilityId': ?peeringDBFacilityId,
     };
@@ -38,23 +32,10 @@ class ExchangeConnection {
 
   factory ExchangeConnection.fromMap(Map<String, dynamic> map) {
     return ExchangeConnection(
-      bgpSession: (() {
-        final guardedValue = map['bgpSession'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BgpSession.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      connectionIdentifier: (() {
-        final guardedValue = map['connectionIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peeringDBFacilityId: (() {
-        final guardedValue = map['peeringDBFacilityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      bgpSession: (() { final guardedValue = map['bgpSession']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BgpSession.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      connectionIdentifier: (() { final guardedValue = map['connectionIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peeringDBFacilityId: (() { final guardedValue = map['peeringDBFacilityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

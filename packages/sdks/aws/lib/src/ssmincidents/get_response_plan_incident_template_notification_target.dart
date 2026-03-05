@@ -13,14 +13,15 @@ class GetResponsePlanIncidentTemplateNotificationTarget {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'snsTopicArn': snsTopicArn};
+    return <String, dynamic>{
+      'snsTopicArn': snsTopicArn,
+    };
   }
 
-  factory GetResponsePlanIncidentTemplateNotificationTarget.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetResponsePlanIncidentTemplateNotificationTarget.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanIncidentTemplateNotificationTarget(
       snsTopicArn: pulumi.Input.fromValue(map['snsTopicArn'] as String),
     );
   }
 }
+

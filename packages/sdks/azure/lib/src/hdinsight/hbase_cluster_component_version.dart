@@ -8,10 +8,14 @@ class HBaseClusterComponentVersion {
 
   /// Creates a new [HBaseClusterComponentVersion].
   /// [hbase] The version of HBase which should be used for this HDInsight HBase Cluster. Changing this forces a new resource to be created.
-  HBaseClusterComponentVersion({required this.hbase});
+  HBaseClusterComponentVersion({
+    required this.hbase,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hbase': hbase};
+    return <String, dynamic>{
+      'hbase': hbase,
+    };
   }
 
   factory HBaseClusterComponentVersion.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class HBaseClusterComponentVersion {
     );
   }
 }
+

@@ -9,40 +9,20 @@ class BastionHostPropertiesFormatResponseNetworkAcls {
 
   /// Creates a new [BastionHostPropertiesFormatResponseNetworkAcls].
   /// [ipRules] Sets the IP ACL rules for Developer Bastion Host.
-  BastionHostPropertiesFormatResponseNetworkAcls({this.ipRules});
+  BastionHostPropertiesFormatResponseNetworkAcls({
+    this.ipRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<IPRuleResponse>,
-            List<Map<String, dynamic>>
-          >(
-            ipRules,
-            (value) =>
-                pulumi.Input.encodeList<IPRuleResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'ipRules': ?pulumi.Input.mapOptionalInputValue<List<IPRuleResponse>, List<Map<String, dynamic>>>(ipRules, (value) => pulumi.Input.encodeList<IPRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory BastionHostPropertiesFormatResponseNetworkAcls.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BastionHostPropertiesFormatResponseNetworkAcls.fromMap(Map<String, dynamic> map) {
     return BastionHostPropertiesFormatResponseNetworkAcls(
-      ipRules: (() {
-        final guardedValue = map['ipRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<IPRuleResponse>(
-            guardedValue,
-            (value) =>
-                IPRuleResponse.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      ipRules: (() { final guardedValue = map['ipRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IPRuleResponse>(guardedValue, (value) => IPRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

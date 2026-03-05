@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFactoryIdentity {
   /// The list of User Assigned Managed Identity IDs assigned to this Data Factory.
   final pulumi.Input<List<String>> identityIds;
-
   /// The Principal ID of the System Assigned Managed Service Identity that is configured on this Data Factory.
   final pulumi.Input<String> principalId;
-
   /// The Tenant ID associated with the VSTS account.
   final pulumi.Input<String> tenantId;
-
   /// The type of Managed Service Identity that is configured on this Data Factory.
   final pulumi.Input<String> type;
 
@@ -38,12 +35,11 @@ class GetFactoryIdentity {
 
   factory GetFactoryIdentity.fromMap(Map<String, dynamic> map) {
     return GetFactoryIdentity(
-      identityIds: pulumi.Input.fromValue(
-        (map['identityIds'] as List).cast<String>(),
-      ),
+      identityIds: pulumi.Input.fromValue((map['identityIds'] as List).cast<String>()),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

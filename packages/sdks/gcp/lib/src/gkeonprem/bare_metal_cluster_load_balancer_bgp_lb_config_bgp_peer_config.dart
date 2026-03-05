@@ -6,14 +6,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig {
   /// BGP autonomous system number (ASN) for the network that contains the
   /// external peer device.
   final pulumi.Input<int> asn;
-
   /// The IP address of the control plane node that connects to the external
   /// peer.
   /// If you don't specify any control plane nodes, all control plane nodes
   /// can connect to the external peer. If you specify one or more IP addresses,
   /// only the nodes specified participate in peering sessions.
   final pulumi.Input<List<String>>? controlPlaneNodes;
-
   /// The IP address of the external peer device.
   final pulumi.Input<String> ipAddress;
 
@@ -35,17 +33,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig {
     };
   }
 
-  factory BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig(
       asn: pulumi.Input.fromValue(map['asn'] as int),
-      controlPlaneNodes: (() {
-        final guardedValue = map['controlPlaneNodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      controlPlaneNodes: (() { final guardedValue = map['controlPlaneNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
     );
   }
 }
+

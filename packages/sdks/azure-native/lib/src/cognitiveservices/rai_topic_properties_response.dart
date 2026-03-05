@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RaiTopicPropertiesResponse {
   /// Creation time of the custom topic.
   final pulumi.Input<String>? createdAt;
-
   /// Description of the custom topic.
   final pulumi.Input<String>? description;
-
   /// Failed reason if the status is Failed.
   final pulumi.Input<String>? failedReason;
-
   /// Last modified time of the custom topic.
   final pulumi.Input<String>? lastModifiedAt;
-
   /// Sample blob url for the custom topic.
   final pulumi.Input<String>? sampleBlobUrl;
-
   /// Status of the custom topic.
   final pulumi.Input<String>? status;
-
   /// The unique identifier of the custom topic.
   final pulumi.Input<String>? topicId;
-
   /// The name of the custom topic.
   final pulumi.Input<String>? topicName;
 
@@ -63,46 +56,15 @@ class RaiTopicPropertiesResponse {
 
   factory RaiTopicPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RaiTopicPropertiesResponse(
-      createdAt: (() {
-        final guardedValue = map['createdAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      failedReason: (() {
-        final guardedValue = map['failedReason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastModifiedAt: (() {
-        final guardedValue = map['lastModifiedAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sampleBlobUrl: (() {
-        final guardedValue = map['sampleBlobUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      topicId: (() {
-        final guardedValue = map['topicId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      topicName: (() {
-        final guardedValue = map['topicName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      failedReason: (() { final guardedValue = map['failedReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastModifiedAt: (() { final guardedValue = map['lastModifiedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sampleBlobUrl: (() { final guardedValue = map['sampleBlobUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      topicId: (() { final guardedValue = map['topicId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      topicName: (() { final guardedValue = map['topicName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

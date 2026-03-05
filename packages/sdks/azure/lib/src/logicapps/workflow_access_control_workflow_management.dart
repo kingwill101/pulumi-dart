@@ -18,13 +18,10 @@ class WorkflowAccessControlWorkflowManagement {
     };
   }
 
-  factory WorkflowAccessControlWorkflowManagement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowAccessControlWorkflowManagement.fromMap(Map<String, dynamic> map) {
     return WorkflowAccessControlWorkflowManagement(
-      allowedCallerIpAddressRanges: pulumi.Input.fromValue(
-        (map['allowedCallerIpAddressRanges'] as List).cast<String>(),
-      ),
+      allowedCallerIpAddressRanges: pulumi.Input.fromValue((map['allowedCallerIpAddressRanges'] as List).cast<String>()),
     );
   }
 }
+

@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowOnExceptionStepTagStepDetailsTag {
   final pulumi.Input<String> key;
-
   /// The value that corresponds to the key.
   final pulumi.Input<String> value;
 
@@ -17,15 +16,17 @@ class WorkflowOnExceptionStepTagStepDetailsTag {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory WorkflowOnExceptionStepTagStepDetailsTag.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowOnExceptionStepTagStepDetailsTag.fromMap(Map<String, dynamic> map) {
     return WorkflowOnExceptionStepTagStepDetailsTag(
       key: pulumi.Input.fromValue(map['key'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

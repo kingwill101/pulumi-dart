@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicAuthModelResponse {
   /// The password
   final pulumi.Input<String> password;
-
   /// Type of paging
   /// Expected value is 'Basic'.
   final pulumi.Input<String> type;
-
   /// The user name.
   final pulumi.Input<String> userName;
 
@@ -40,3 +38,4 @@ class BasicAuthModelResponse {
     );
   }
 }
+

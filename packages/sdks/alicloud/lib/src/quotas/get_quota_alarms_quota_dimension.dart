@@ -9,24 +9,23 @@ class GetQuotaAlarmsQuotaDimension {
   /// Creates a new [GetQuotaAlarmsQuotaDimension].
   /// [key] Optional.
   /// [value] Optional.
-  GetQuotaAlarmsQuotaDimension({this.key, this.value});
+  GetQuotaAlarmsQuotaDimension({
+    this.key,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key, 'value': ?value};
+    return <String, dynamic>{
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
   factory GetQuotaAlarmsQuotaDimension.fromMap(Map<String, dynamic> map) {
     return GetQuotaAlarmsQuotaDimension(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

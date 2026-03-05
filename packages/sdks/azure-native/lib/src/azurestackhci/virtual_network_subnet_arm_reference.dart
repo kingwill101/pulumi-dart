@@ -9,19 +9,20 @@ class VirtualNetworkSubnetArmReference {
 
   /// Creates a new [VirtualNetworkSubnetArmReference].
   /// [resourceId] The Azure Resource ID for a Virtual Network subnet.
-  VirtualNetworkSubnetArmReference({this.resourceId});
+  VirtualNetworkSubnetArmReference({
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceId': ?resourceId};
+    return <String, dynamic>{
+      'resourceId': ?resourceId,
+    };
   }
 
   factory VirtualNetworkSubnetArmReference.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnetArmReference(
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

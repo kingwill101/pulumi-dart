@@ -14,20 +14,14 @@ class NotebookInstanceInstanceMetadataServiceConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'minimumInstanceMetadataServiceVersion':
-          ?minimumInstanceMetadataServiceVersion,
+      'minimumInstanceMetadataServiceVersion': ?minimumInstanceMetadataServiceVersion,
     };
   }
 
-  factory NotebookInstanceInstanceMetadataServiceConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NotebookInstanceInstanceMetadataServiceConfiguration.fromMap(Map<String, dynamic> map) {
     return NotebookInstanceInstanceMetadataServiceConfiguration(
-      minimumInstanceMetadataServiceVersion: (() {
-        final guardedValue = map['minimumInstanceMetadataServiceVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      minimumInstanceMetadataServiceVersion: (() { final guardedValue = map['minimumInstanceMetadataServiceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

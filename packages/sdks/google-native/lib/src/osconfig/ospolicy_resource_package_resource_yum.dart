@@ -9,10 +9,14 @@ class OSPolicyResourcePackageResourceYUM {
 
   /// Creates a new [OSPolicyResourcePackageResourceYUM].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceYUM({required this.name});
+  OSPolicyResourcePackageResourceYUM({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory OSPolicyResourcePackageResourceYUM.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class OSPolicyResourcePackageResourceYUM {
     );
   }
 }
+

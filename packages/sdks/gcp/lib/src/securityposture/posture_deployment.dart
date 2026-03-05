@@ -29,61 +29,46 @@ import 'posture_deployment_state.dart';
 class PostureDeployment extends pulumi.CustomResource {
   /// Time the posture deployment was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// Description of the posture deployment.
   late final pulumi.Output<String?> description;
-
   /// This is an output only optional field which will be filled in case when
   /// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
   /// It denotes the desired posture to be deployed.
   late final pulumi.Output<String> desiredPostureId;
-
   /// This is an output only optional field which will be filled in case when
   /// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
   /// It denotes the desired posture revision_id to be deployed.
   late final pulumi.Output<String> desiredPostureRevisionId;
-
   /// For Resource freshness validation (https://google.aip.dev/154)
   late final pulumi.Output<String> etag;
-
   /// This is a output only optional field which will be filled in case where
   /// PostureDeployment enters a failure state like UPDATE_FAILED or
   /// CREATE_FAILED or DELETE_FAILED. It will have the failure message for posture deployment's
   /// CREATE/UPDATE/DELETE methods.
   late final pulumi.Output<String> failureMessage;
-
   /// The location of the resource, eg. global`.
   late final pulumi.Output<String> location;
-
   /// Name of the posture deployment instance.
   late final pulumi.Output<String> name;
-
   /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
   late final pulumi.Output<String> parent;
-
   /// ID of the posture deployment.
   late final pulumi.Output<String> postureDeploymentId;
-
   /// Relative name of the posture which needs to be deployed. It should be in the format:
   /// organizations/{organization_id}/locations/{location}/postures/{posture_id}
   late final pulumi.Output<String> postureId;
-
   /// Revision_id the posture which needs to be deployed.
   late final pulumi.Output<String> postureRevisionId;
-
   /// If set, there are currently changes in flight to the posture deployment.
   late final pulumi.Output<bool> reconciling;
-
   /// State of the posture deployment. A posture deployment can be in the following terminal states:
   /// ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
   late final pulumi.Output<String> state;
-
   /// The resource on which the posture should be deployed. This can be in one of the following formats:
   /// projects/{project_number},
   /// folders/{folder_number},
   /// organizations/{organization_id}
   late final pulumi.Output<String> targetResource;
-
   /// Time the posture deployment was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -96,17 +81,15 @@ class PostureDeployment extends pulumi.CustomResource {
     PostureDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securityposture/postureDeployment:PostureDeployment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securityposture/postureDeployment:PostureDeployment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     desiredPostureId = registerOutput<String>('desiredPostureId');
-    desiredPostureRevisionId = registerOutput<String>(
-      'desiredPostureRevisionId',
-    );
+    desiredPostureRevisionId = registerOutput<String>('desiredPostureRevisionId');
     etag = registerOutput<String>('etag');
     failureMessage = registerOutput<String>('failureMessage');
     location = registerOutput<String>('location');
@@ -139,17 +122,15 @@ class PostureDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securityposture/postureDeployment:PostureDeployment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securityposture/postureDeployment:PostureDeployment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     desiredPostureId = registerOutput<String>('desiredPostureId');
-    desiredPostureRevisionId = registerOutput<String>(
-      'desiredPostureRevisionId',
-    );
+    desiredPostureRevisionId = registerOutput<String>('desiredPostureRevisionId');
     etag = registerOutput<String>('etag');
     failureMessage = registerOutput<String>('failureMessage');
     location = registerOutput<String>('location');

@@ -992,10 +992,8 @@ import 'netapp_volume_attachment_state.dart';
 class NetappVolumeAttachment extends pulumi.CustomResource {
   /// The name which should be used for this Azure VMware Solution Private Cloud Netapp File Volume Attachment. Changing this forces a new Azure VMware Solution Private Cloud Netapp File Volume Attachment to be created.
   late final pulumi.Output<String> name;
-
   /// The netapp file volume for this Azure VMware Solution Private Cloud Netapp File Volume Attachment to connect to. Changing this forces a new Azure VMware Solution Private Cloud Netapp File Volume Attachment to be created.
   late final pulumi.Output<String> netappVolumeId;
-
   /// The vmware cluster for this Azure VMware Solution Private Cloud Netapp File Volume Attachment to associated to. Changing this forces a new Azure VMware Solution Private Cloud Netapp File Volume Attachment to be created.
   ///
   /// &gt; **Note:** please follow the prerequisites mentioned in this [article](https://learn.microsoft.com/en-us/azure/azure-vmware/attach-azure-netapp-files-to-azure-vmware-solution-hosts?tabs=azure-portal#prerequisites) before associating the netapp file volume to the Azure VMware Solution hosts.
@@ -1010,11 +1008,11 @@ class NetappVolumeAttachment extends pulumi.CustomResource {
     NetappVolumeAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:avs/netappVolumeAttachment:NetappVolumeAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:avs/netappVolumeAttachment:NetappVolumeAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     netappVolumeId = registerOutput<String>('netappVolumeId');
     vmwareClusterId = registerOutput<String>('vmwareClusterId');
@@ -1038,11 +1036,11 @@ class NetappVolumeAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:avs/netappVolumeAttachment:NetappVolumeAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:avs/netappVolumeAttachment:NetappVolumeAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     netappVolumeId = registerOutput<String>('netappVolumeId');
     vmwareClusterId = registerOutput<String>('vmwareClusterId');

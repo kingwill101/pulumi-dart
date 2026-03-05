@@ -177,23 +177,16 @@ import 'system_data_response.dart';
 class RaiExternalSafetyProvider extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource Etag.
   late final pulumi.Output<String> etag;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Properties of Cognitive Services Rai External Safety provider.
-  late final pulumi.Output<RaiExternalSafetyProviderSchemaPropertiesResponse>
-  properties;
-
+  late final pulumi.Output<RaiExternalSafetyProviderSchemaPropertiesResponse> properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -206,35 +199,16 @@ class RaiExternalSafetyProvider extends pulumi.CustomResource {
     RaiExternalSafetyProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cognitiveservices:RaiExternalSafetyProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cognitiveservices:RaiExternalSafetyProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    properties =
-        registerOutput<RaiExternalSafetyProviderSchemaPropertiesResponse>(
-          'properties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RaiExternalSafetyProviderSchemaPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<RaiExternalSafetyProviderSchemaPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RaiExternalSafetyProviderSchemaPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -233,31 +233,22 @@ class SecretParameter extends pulumi.CustomResource {
   /// * `MinLength`: The minimum length of the encryption parameter.
   /// * `MaxLength`: The maximum length of the encryption parameter.
   late final pulumi.Output<String?> constraints;
-
   /// Parameter creation time
   late final pulumi.Output<String> createTime;
-
   /// The description of the encryption parameter. The description must be `1` to `200` characters in length.
   late final pulumi.Output<String?> description;
-
   /// The ID of the KMS instance.
   late final pulumi.Output<String?> dkmsInstanceId;
-
   /// The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
   late final pulumi.Output<String?> keyId;
-
   /// The ID of the Resource Group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
   late final pulumi.Output<String> secretParameterName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>> tags;
-
   /// The data type of the encryption parameter. Valid values: `Secret`.
   late final pulumi.Output<String> type;
-
   /// The value of the encryption parameter. The value must be `1` to `4096` characters in length.
   late final pulumi.Output<String> value;
 
@@ -270,11 +261,11 @@ class SecretParameter extends pulumi.CustomResource {
     SecretParameterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oos/secretParameter:SecretParameter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oos/secretParameter:SecretParameter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     constraints = registerOutput<String?>('constraints');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -305,11 +296,11 @@ class SecretParameter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oos/secretParameter:SecretParameter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oos/secretParameter:SecretParameter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     constraints = registerOutput<String?>('constraints');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

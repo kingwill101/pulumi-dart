@@ -8,21 +8,20 @@ class DashboardDashboardPublishOptionsSheetControlsOption {
 
   /// Creates a new [DashboardDashboardPublishOptionsSheetControlsOption].
   /// [visibilityState] Visibility state. Possibles values: EXPANDED, COLLAPSED.
-  DashboardDashboardPublishOptionsSheetControlsOption({this.visibilityState});
+  DashboardDashboardPublishOptionsSheetControlsOption({
+    this.visibilityState,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'visibilityState': ?visibilityState};
+    return <String, dynamic>{
+      'visibilityState': ?visibilityState,
+    };
   }
 
-  factory DashboardDashboardPublishOptionsSheetControlsOption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DashboardDashboardPublishOptionsSheetControlsOption.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptionsSheetControlsOption(
-      visibilityState: (() {
-        final guardedValue = map['visibilityState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      visibilityState: (() { final guardedValue = map['visibilityState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

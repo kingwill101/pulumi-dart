@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPimRoleEligibilityScheduleArgs {
   /// The name (guid) of the role eligibility schedule request to get.
   final pulumi.Input<String> roleEligibilityScheduleRequestName;
-
   /// The scope of the role eligibility schedule request.
   final pulumi.Input<String> scope;
 
@@ -30,10 +29,9 @@ class GetPimRoleEligibilityScheduleArgs {
 
   factory GetPimRoleEligibilityScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetPimRoleEligibilityScheduleArgs(
-      roleEligibilityScheduleRequestName: pulumi.Input.fromValue(
-        map['roleEligibilityScheduleRequestName'] as String,
-      ),
+      roleEligibilityScheduleRequestName: pulumi.Input.fromValue(map['roleEligibilityScheduleRequestName'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

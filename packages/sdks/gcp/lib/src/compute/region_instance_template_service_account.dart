@@ -6,7 +6,6 @@ class RegionInstanceTemplateServiceAccount {
   /// The service account e-mail address. If not given, the
   /// default Google Compute Engine service account is used.
   final pulumi.Input<String>? email;
-
   /// A list of service scopes. Both OAuth2 URLs and gcloud
   /// short names are supported. To allow full access to all Cloud APIs, use the
   /// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
@@ -22,22 +21,23 @@ class RegionInstanceTemplateServiceAccount {
   /// Creates a new [RegionInstanceTemplateServiceAccount].
   /// [email] The service account e-mail address. If not given, the
   /// [scopes] A list of service scopes. Both OAuth2 URLs and gcloud
-  RegionInstanceTemplateServiceAccount({this.email, required this.scopes});
+  RegionInstanceTemplateServiceAccount({
+    this.email,
+    required this.scopes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'email': ?email, 'scopes': scopes};
+    return <String, dynamic>{
+      'email': ?email,
+      'scopes': scopes,
+    };
   }
 
-  factory RegionInstanceTemplateServiceAccount.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionInstanceTemplateServiceAccount.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateServiceAccount(
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scopes: pulumi.Input.fromValue((map['scopes'] as List).cast<String>()),
     );
   }
 }
+

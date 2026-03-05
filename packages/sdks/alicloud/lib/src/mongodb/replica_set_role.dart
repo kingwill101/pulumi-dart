@@ -366,24 +366,18 @@ import 'replica_set_role_state.dart';
 class ReplicaSetRole extends pulumi.CustomResource {
   /// The connection address of the role.
   late final pulumi.Output<String> connectionDomain;
-
   /// The port of the connection string, will be computed if not specified.`
   late final pulumi.Output<int> connectionPort;
-
   /// The prefix of the connection string, will be computed if not specified.
   late final pulumi.Output<String> connectionPrefix;
-
   /// The instance ID.
   late final pulumi.Output<String> dbInstanceId;
-
   /// The network type of the connection string. Valid values:
   /// - `VPC`: private network address.
   /// - `Public`: public network address.
   late final pulumi.Output<String> networkType;
-
   /// The role of the related connection string.
   late final pulumi.Output<String> replicaSetRole;
-
   /// The role ID in the replica set.
   late final pulumi.Output<String> roleId;
 
@@ -396,11 +390,11 @@ class ReplicaSetRole extends pulumi.CustomResource {
     ReplicaSetRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mongodb/replicaSetRole:ReplicaSetRole',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mongodb/replicaSetRole:ReplicaSetRole',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionDomain = registerOutput<String>('connectionDomain');
     connectionPort = registerOutput<int>('connectionPort');
     connectionPrefix = registerOutput<String>('connectionPrefix');
@@ -428,11 +422,11 @@ class ReplicaSetRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mongodb/replicaSetRole:ReplicaSetRole',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mongodb/replicaSetRole:ReplicaSetRole',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionDomain = registerOutput<String>('connectionDomain');
     connectionPort = registerOutput<int>('connectionPort');
     connectionPrefix = registerOutput<String>('connectionPrefix');

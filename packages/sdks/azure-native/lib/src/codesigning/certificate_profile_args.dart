@@ -9,31 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateProfileArgs {
   /// Trusted Signing account name.
   final pulumi.Input<String> accountName;
-
   /// Identity validation id used for the certificate subject name.
   final pulumi.Input<String> identityValidationId;
-
   /// Whether to include L in the certificate subject name. Applicable only for private trust, private trust ci profile types
   final pulumi.Input<bool>? includeCity;
-
   /// Whether to include C in the certificate subject name. Applicable only for private trust, private trust ci profile types
   final pulumi.Input<bool>? includeCountry;
-
   /// Whether to include PC in the certificate subject name.
   final pulumi.Input<bool>? includePostalCode;
-
   /// Whether to include S in the certificate subject name. Applicable only for private trust, private trust ci profile types
   final pulumi.Input<bool>? includeState;
-
   /// Whether to include STREET in the certificate subject name.
   final pulumi.Input<bool>? includeStreetAddress;
-
   /// Certificate profile name.
   final pulumi.Input<String>? profileName;
-
   /// Profile type of the certificate.
   final pulumi.Input<String> profileType;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -79,43 +70,16 @@ class CertificateProfileArgs {
   factory CertificateProfileArgs.fromMap(Map<String, dynamic> map) {
     return CertificateProfileArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      identityValidationId: pulumi.Input.fromValue(
-        map['identityValidationId'] as String,
-      ),
-      includeCity: (() {
-        final guardedValue = map['includeCity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      includeCountry: (() {
-        final guardedValue = map['includeCountry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      includePostalCode: (() {
-        final guardedValue = map['includePostalCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      includeState: (() {
-        final guardedValue = map['includeState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      includeStreetAddress: (() {
-        final guardedValue = map['includeStreetAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      profileName: (() {
-        final guardedValue = map['profileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identityValidationId: pulumi.Input.fromValue(map['identityValidationId'] as String),
+      includeCity: (() { final guardedValue = map['includeCity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includeCountry: (() { final guardedValue = map['includeCountry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includePostalCode: (() { final guardedValue = map['includePostalCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includeState: (() { final guardedValue = map['includeState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includeStreetAddress: (() { final guardedValue = map['includeStreetAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      profileName: (() { final guardedValue = map['profileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profileType: pulumi.Input.fromValue(map['profileType'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

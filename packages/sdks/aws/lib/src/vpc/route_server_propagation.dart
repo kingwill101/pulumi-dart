@@ -113,10 +113,8 @@ import 'route_server_propagation_timeouts.dart';
 class RouteServerPropagation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The unique identifier for the route server to be associated.
   late final pulumi.Output<String> routeServerId;
-
   /// The ID of the route table to which route server will propagate routes.
   ///
   /// The following arguments are optional:
@@ -132,24 +130,15 @@ class RouteServerPropagation extends pulumi.CustomResource {
     RouteServerPropagationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:vpc/routeServerPropagation:RouteServerPropagation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:vpc/routeServerPropagation:RouteServerPropagation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
     routeServerId = registerOutput<String>('routeServerId');
     routeTableId = registerOutput<String>('routeTableId');
-    timeouts = registerOutput<RouteServerPropagationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RouteServerPropagationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<RouteServerPropagationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteServerPropagationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [RouteServerPropagation] resource's state with the given [name] and [id].
@@ -170,23 +159,14 @@ class RouteServerPropagation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:vpc/routeServerPropagation:RouteServerPropagation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:vpc/routeServerPropagation:RouteServerPropagation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
     routeServerId = registerOutput<String>('routeServerId');
     routeTableId = registerOutput<String>('routeTableId');
-    timeouts = registerOutput<RouteServerPropagationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RouteServerPropagationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<RouteServerPropagationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteServerPropagationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

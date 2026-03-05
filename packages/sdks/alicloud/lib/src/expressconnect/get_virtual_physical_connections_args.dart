@@ -12,32 +12,24 @@ class GetVirtualPhysicalConnectionsArgs {
   /// - **Financialized**: Arrears locked.
   /// - **SecurityLocked**: locked for security reasons.
   final pulumi.Input<String>? businessStatus;
-
   /// A list of Virtual Physical Connection IDs.
   final pulumi.Input<List<String>>? ids;
   final pulumi.Input<bool>? isConfirmed;
-
   /// A regex string to filter results by Group Metric Rule name.
   final pulumi.Input<String>? nameRegex;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The ID of the instance of the physical connection.
   final pulumi.Input<String>? parentPhysicalConnectionId;
-
   /// The ID of the hosted connection. You can specify multiple hosted connection IDs.
   final pulumi.Input<List<String>>? virtualPhysicalConnectionIds;
-
   /// The business status of the shared line. Value:
   /// - **Confirmed**: The shared line has been Confirmed to receive.
   /// - **UnConfirmed**: The shared line has not been confirmed to be received.
   /// - **Deleted**: The shared line has been Deleted.
   final pulumi.Input<String>? virtualPhysicalConnectionStatus;
-
   /// The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
   final pulumi.Input<List<int>>? vlanIds;
-
   /// The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
   final pulumi.Input<String>? vpconnAliUid;
 
@@ -82,56 +74,17 @@ class GetVirtualPhysicalConnectionsArgs {
 
   factory GetVirtualPhysicalConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualPhysicalConnectionsArgs(
-      businessStatus: (() {
-        final guardedValue = map['businessStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      isConfirmed: (() {
-        final guardedValue = map['isConfirmed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parentPhysicalConnectionId: (() {
-        final guardedValue = map['parentPhysicalConnectionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualPhysicalConnectionIds: (() {
-        final guardedValue = map['virtualPhysicalConnectionIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      virtualPhysicalConnectionStatus: (() {
-        final guardedValue = map['virtualPhysicalConnectionStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vlanIds: (() {
-        final guardedValue = map['vlanIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
-      vpconnAliUid: (() {
-        final guardedValue = map['vpconnAliUid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      businessStatus: (() { final guardedValue = map['businessStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      isConfirmed: (() { final guardedValue = map['isConfirmed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parentPhysicalConnectionId: (() { final guardedValue = map['parentPhysicalConnectionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualPhysicalConnectionIds: (() { final guardedValue = map['virtualPhysicalConnectionIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      virtualPhysicalConnectionStatus: (() { final guardedValue = map['virtualPhysicalConnectionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vlanIds: (() { final guardedValue = map['vlanIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
+      vpconnAliUid: (() { final guardedValue = map['vpconnAliUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

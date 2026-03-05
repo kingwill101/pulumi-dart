@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScheduledQueryRulesAlertTriggerMetricTrigger {
   final pulumi.Input<String> metricColumn;
   final pulumi.Input<String> metricTriggerType;
-
   /// Evaluation operation for rule.
   final pulumi.Input<String> operator;
-
   /// Result or count threshold based on which rule should be triggered.
   final pulumi.Input<double> threshold;
 
@@ -33,16 +31,13 @@ class GetScheduledQueryRulesAlertTriggerMetricTrigger {
     };
   }
 
-  factory GetScheduledQueryRulesAlertTriggerMetricTrigger.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetScheduledQueryRulesAlertTriggerMetricTrigger.fromMap(Map<String, dynamic> map) {
     return GetScheduledQueryRulesAlertTriggerMetricTrigger(
       metricColumn: pulumi.Input.fromValue(map['metricColumn'] as String),
-      metricTriggerType: pulumi.Input.fromValue(
-        map['metricTriggerType'] as String,
-      ),
+      metricTriggerType: pulumi.Input.fromValue(map['metricTriggerType'] as String),
       operator: pulumi.Input.fromValue(map['operator'] as String),
       threshold: pulumi.Input.fromValue(map['threshold'] as double),
     );
   }
 }
+

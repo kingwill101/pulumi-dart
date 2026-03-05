@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesClusterMaintenancePolicy {
   /// The day for the service window of the Kubernetes cluster.
   final pulumi.Input<String> day;
-
   /// The duration of the operation.
   final pulumi.Input<String> duration;
-
   /// The start time of the upgrade operation.
   final pulumi.Input<String> startTime;
 
@@ -30,9 +28,7 @@ class GetKubernetesClusterMaintenancePolicy {
     };
   }
 
-  factory GetKubernetesClusterMaintenancePolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetKubernetesClusterMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterMaintenancePolicy(
       day: pulumi.Input.fromValue(map['day'] as String),
       duration: pulumi.Input.fromValue(map['duration'] as String),
@@ -40,3 +36,4 @@ class GetKubernetesClusterMaintenancePolicy {
     );
   }
 }
+

@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlexibleServerVirtualEndpointArgs {
   /// The name of the Virtual Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The Resource ID of the *Replica* Postgres Flexible Server this should be associated with
   ///
   /// &gt; **Note:** If a fail-over has occurred, you will be unable to update `replica_server_id`. You can remove the resource from state and reimport it back in with `source_server_id` and `replica_server_id` flipped and then update `replica_server_id`.
   final pulumi.Input<String> replicaServerId;
-
   /// The Resource ID of the *Source* Postgres Flexible Server this should be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String> sourceServerId;
-
   /// The type of Virtual Endpoint. Currently only `ReadWrite` is supported. Changing this forces a new resource to be created.
   final pulumi.Input<String> type;
 
@@ -44,14 +41,11 @@ class FlexibleServerVirtualEndpointArgs {
 
   factory FlexibleServerVirtualEndpointArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleServerVirtualEndpointArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       replicaServerId: pulumi.Input.fromValue(map['replicaServerId'] as String),
       sourceServerId: pulumi.Input.fromValue(map['sourceServerId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

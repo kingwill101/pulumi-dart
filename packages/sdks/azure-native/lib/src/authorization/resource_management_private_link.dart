@@ -131,17 +131,11 @@ import 'resource_management_private_link_endpoint_connections_response.dart';
 class ResourceManagementPrivateLink extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// the region of the rmpl
   late final pulumi.Output<String?> location;
-
   /// The rmpl Name.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<
-    ResourceManagementPrivateLinkEndpointConnectionsResponse
-  >
-  properties;
-
+  late final pulumi.Output<ResourceManagementPrivateLinkEndpointConnectionsResponse> properties;
   /// The operation type.
   late final pulumi.Output<String> type;
 
@@ -154,27 +148,15 @@ class ResourceManagementPrivateLink extends pulumi.CustomResource {
     ResourceManagementPrivateLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:authorization:ResourceManagementPrivateLink',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:authorization:ResourceManagementPrivateLink',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties =
-        registerOutput<
-          ResourceManagementPrivateLinkEndpointConnectionsResponse
-        >(
-          'properties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ResourceManagementPrivateLinkEndpointConnectionsResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    properties = registerOutput<ResourceManagementPrivateLinkEndpointConnectionsResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceManagementPrivateLinkEndpointConnectionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

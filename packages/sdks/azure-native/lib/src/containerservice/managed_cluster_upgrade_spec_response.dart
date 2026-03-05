@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterUpgradeSpecResponse {
   /// The Kubernetes version to upgrade the member clusters to.
   final pulumi.Input<String>? kubernetesVersion;
-
   /// ManagedClusterUpgradeType is the type of upgrade to be applied.
   final pulumi.Input<String> type;
 
@@ -27,12 +26,9 @@ class ManagedClusterUpgradeSpecResponse {
 
   factory ManagedClusterUpgradeSpecResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterUpgradeSpecResponse(
-      kubernetesVersion: (() {
-        final guardedValue = map['kubernetesVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kubernetesVersion: (() { final guardedValue = map['kubernetesVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

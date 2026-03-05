@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateLinkServiceConnectionResponse {
   /// List of group IDs.
   final pulumi.Input<List<String>>? groupIds;
-
   /// Private link service connection name.
   final pulumi.Input<String>? name;
-
   /// Request message.
   final pulumi.Input<String>? requestMessage;
 
@@ -31,25 +29,12 @@ class PrivateLinkServiceConnectionResponse {
     };
   }
 
-  factory PrivateLinkServiceConnectionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrivateLinkServiceConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnectionResponse(
-      groupIds: (() {
-        final guardedValue = map['groupIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestMessage: (() {
-        final guardedValue = map['requestMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      groupIds: (() { final guardedValue = map['groupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestMessage: (() { final guardedValue = map['requestMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

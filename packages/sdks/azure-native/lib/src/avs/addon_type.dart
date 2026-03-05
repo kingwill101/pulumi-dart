@@ -17,3 +17,4 @@ enum AddonType {
     throw ArgumentError('Unknown AddonType value: $value');
   }
 }
+

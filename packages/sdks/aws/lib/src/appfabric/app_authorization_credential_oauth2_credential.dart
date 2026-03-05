@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppAuthorizationCredentialOauth2Credential {
   /// The client ID of the client application.
   final pulumi.Input<String> clientId;
-
   /// The client secret of the client application.
   final pulumi.Input<String> clientSecret;
 
@@ -24,12 +23,11 @@ class AppAuthorizationCredentialOauth2Credential {
     };
   }
 
-  factory AppAuthorizationCredentialOauth2Credential.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppAuthorizationCredentialOauth2Credential.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationCredentialOauth2Credential(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
     );
   }
 }
+

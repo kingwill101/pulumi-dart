@@ -13,40 +13,20 @@ class GetDnsResourceReferenceByTarResourcesArgs {
 
   /// Creates a new [GetDnsResourceReferenceByTarResourcesArgs].
   /// [targetResources] A list of references to azure resources for which referencing dns records need to be queried.
-  GetDnsResourceReferenceByTarResourcesArgs({this.targetResources});
+  GetDnsResourceReferenceByTarResourcesArgs({
+    this.targetResources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'targetResources':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SubResource>,
-            List<Map<String, dynamic>>
-          >(
-            targetResources,
-            (value) =>
-                pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'targetResources': ?pulumi.Input.mapOptionalInputValue<List<SubResource>, List<Map<String, dynamic>>>(targetResources, (value) => pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetDnsResourceReferenceByTarResourcesArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDnsResourceReferenceByTarResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetDnsResourceReferenceByTarResourcesArgs(
-      targetResources: (() {
-        final guardedValue = map['targetResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SubResource>(
-            guardedValue,
-            (value) =>
-                SubResource.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      targetResources: (() { final guardedValue = map['targetResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubResource>(guardedValue, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

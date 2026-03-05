@@ -483,19 +483,14 @@ import 'attachment_state.dart';
 class Attachment extends pulumi.CustomResource {
   /// The backend servers of the load balancer.
   late final pulumi.Output<String> backendServers;
-
   /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
   late final pulumi.Output<bool?> deleteProtectionValidation;
-
   /// A list of instance ids to added backend server in the SLB.
   late final pulumi.Output<List<String>> instanceIds;
-
   /// ID of the load balancer.
   late final pulumi.Output<String> loadBalancerId;
-
   /// Type of the instances. Valid value ecs, eni. Default to ecs.
   late final pulumi.Output<String?> serverType;
-
   /// Weight of the instances. Valid value range: [0-100]. Default to 100.
   late final pulumi.Output<int?> weight;
 
@@ -508,15 +503,13 @@ class Attachment extends pulumi.CustomResource {
     AttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:slb/attachment:Attachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:slb/attachment:Attachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backendServers = registerOutput<String>('backendServers');
-    deleteProtectionValidation = registerOutput<bool?>(
-      'deleteProtectionValidation',
-    );
+    deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
     instanceIds = registerOutput<List<String>>('instanceIds');
     loadBalancerId = registerOutput<String>('loadBalancerId');
     serverType = registerOutput<String?>('serverType');
@@ -541,15 +534,13 @@ class Attachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:slb/attachment:Attachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:slb/attachment:Attachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backendServers = registerOutput<String>('backendServers');
-    deleteProtectionValidation = registerOutput<bool?>(
-      'deleteProtectionValidation',
-    );
+    deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
     instanceIds = registerOutput<List<String>>('instanceIds');
     loadBalancerId = registerOutput<String>('loadBalancerId');
     serverType = registerOutput<String?>('serverType');

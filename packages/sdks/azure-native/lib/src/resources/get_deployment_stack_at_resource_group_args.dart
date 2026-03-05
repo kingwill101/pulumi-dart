@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeploymentStackAtResourceGroupArgs {
   /// Name of the deployment stack.
   final pulumi.Input<String> deploymentStackName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -28,16 +27,11 @@ class GetDeploymentStackAtResourceGroupArgs {
     };
   }
 
-  factory GetDeploymentStackAtResourceGroupArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDeploymentStackAtResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentStackAtResourceGroupArgs(
-      deploymentStackName: pulumi.Input.fromValue(
-        map['deploymentStackName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      deploymentStackName: pulumi.Input.fromValue(map['deploymentStackName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

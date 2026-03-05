@@ -9,7 +9,9 @@ class ConfigurationReferenceProperties {
 
   /// Creates a new [ConfigurationReferenceProperties].
   /// [configurationResourceId] ArmId of Configuration resource
-  ConfigurationReferenceProperties({this.configurationResourceId});
+  ConfigurationReferenceProperties({
+    this.configurationResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class ConfigurationReferenceProperties {
 
   factory ConfigurationReferenceProperties.fromMap(Map<String, dynamic> map) {
     return ConfigurationReferenceProperties(
-      configurationResourceId: (() {
-        final guardedValue = map['configurationResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      configurationResourceId: (() { final guardedValue = map['configurationResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

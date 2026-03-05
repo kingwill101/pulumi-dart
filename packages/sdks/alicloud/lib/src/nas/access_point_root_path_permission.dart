@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPointRootPathPermission {
   /// The ID of the primary user group.
   final pulumi.Input<int>? ownerGroupId;
-
   /// The owner user ID.
   final pulumi.Input<int>? ownerUserId;
-
   /// The Portable Operating System Interface for UNIX (POSIX) permission.
   final pulumi.Input<String>? permission;
 
@@ -32,21 +30,10 @@ class AccessPointRootPathPermission {
 
   factory AccessPointRootPathPermission.fromMap(Map<String, dynamic> map) {
     return AccessPointRootPathPermission(
-      ownerGroupId: (() {
-        final guardedValue = map['ownerGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ownerUserId: (() {
-        final guardedValue = map['ownerUserId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      permission: (() {
-        final guardedValue = map['permission'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ownerGroupId: (() { final guardedValue = map['ownerGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ownerUserId: (() { final guardedValue = map['ownerUserId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      permission: (() { final guardedValue = map['permission']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

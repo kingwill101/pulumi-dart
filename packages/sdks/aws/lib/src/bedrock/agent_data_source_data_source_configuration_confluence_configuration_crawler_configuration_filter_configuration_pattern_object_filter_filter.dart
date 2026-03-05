@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter {
   final pulumi.Input<List<String>>? exclusionFilters;
   final pulumi.Input<List<String>>? inclusionFilters;
-
   /// The supported object type or content type of the data source.
   final pulumi.Input<String> objectType;
 
@@ -27,21 +26,12 @@ class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfig
     };
   }
 
-  factory AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter(
-      exclusionFilters: (() {
-        final guardedValue = map['exclusionFilters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      inclusionFilters: (() {
-        final guardedValue = map['inclusionFilters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      exclusionFilters: (() { final guardedValue = map['exclusionFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      inclusionFilters: (() { final guardedValue = map['inclusionFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       objectType: pulumi.Input.fromValue(map['objectType'] as String),
     );
   }
 }
+

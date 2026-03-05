@@ -6,13 +6,9 @@ import 'get_network_insights_path_filter_at_source_source_port_range.dart';
 
 class GetNetworkInsightsPathFilterAtSource {
   final pulumi.Input<String> destinationAddress;
-  final pulumi.Input<
-    List<GetNetworkInsightsPathFilterAtSourceDestinationPortRange>
-  >
-  destinationPortRanges;
+  final pulumi.Input<List<GetNetworkInsightsPathFilterAtSourceDestinationPortRange>> destinationPortRanges;
   final pulumi.Input<String> sourceAddress;
-  final pulumi.Input<List<GetNetworkInsightsPathFilterAtSourceSourcePortRange>>
-  sourcePortRanges;
+  final pulumi.Input<List<GetNetworkInsightsPathFilterAtSourceSourcePortRange>> sourcePortRanges;
 
   /// Creates a new [GetNetworkInsightsPathFilterAtSource].
   /// [destinationAddress] Required.
@@ -29,64 +25,19 @@ class GetNetworkInsightsPathFilterAtSource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destinationAddress': destinationAddress,
-      'destinationPortRanges':
-          pulumi.Input.mapInputValue<
-            List<GetNetworkInsightsPathFilterAtSourceDestinationPortRange>,
-            List<Map<String, dynamic>>
-          >(
-            destinationPortRanges,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetNetworkInsightsPathFilterAtSourceDestinationPortRange,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'destinationPortRanges': pulumi.Input.mapInputValue<List<GetNetworkInsightsPathFilterAtSourceDestinationPortRange>, List<Map<String, dynamic>>>(destinationPortRanges, (value) => pulumi.Input.encodeList<GetNetworkInsightsPathFilterAtSourceDestinationPortRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sourceAddress': sourceAddress,
-      'sourcePortRanges':
-          pulumi.Input.mapInputValue<
-            List<GetNetworkInsightsPathFilterAtSourceSourcePortRange>,
-            List<Map<String, dynamic>>
-          >(
-            sourcePortRanges,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetNetworkInsightsPathFilterAtSourceSourcePortRange,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'sourcePortRanges': pulumi.Input.mapInputValue<List<GetNetworkInsightsPathFilterAtSourceSourcePortRange>, List<Map<String, dynamic>>>(sourcePortRanges, (value) => pulumi.Input.encodeList<GetNetworkInsightsPathFilterAtSourceSourcePortRange, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetNetworkInsightsPathFilterAtSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInsightsPathFilterAtSource.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsPathFilterAtSource(
-      destinationAddress: pulumi.Input.fromValue(
-        map['destinationAddress'] as String,
-      ),
-      destinationPortRanges: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetNetworkInsightsPathFilterAtSourceDestinationPortRange
-        >(
-          map['destinationPortRanges']!,
-          (value) =>
-              GetNetworkInsightsPathFilterAtSourceDestinationPortRange.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      destinationAddress: pulumi.Input.fromValue(map['destinationAddress'] as String),
+      destinationPortRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<GetNetworkInsightsPathFilterAtSourceDestinationPortRange>(map['destinationPortRanges']!, (value) => GetNetworkInsightsPathFilterAtSourceDestinationPortRange.fromMap((value as Map).cast<String, dynamic>()))),
       sourceAddress: pulumi.Input.fromValue(map['sourceAddress'] as String),
-      sourcePortRanges: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetNetworkInsightsPathFilterAtSourceSourcePortRange
-        >(
-          map['sourcePortRanges']!,
-          (value) =>
-              GetNetworkInsightsPathFilterAtSourceSourcePortRange.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      sourcePortRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<GetNetworkInsightsPathFilterAtSourceSourcePortRange>(map['sourcePortRanges']!, (value) => GetNetworkInsightsPathFilterAtSourceSourcePortRange.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

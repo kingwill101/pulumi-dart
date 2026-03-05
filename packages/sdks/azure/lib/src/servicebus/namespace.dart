@@ -182,60 +182,43 @@ import 'namespace_state.dart';
 class Namespace extends pulumi.CustomResource {
   /// Specifies the capacity. When `sku` is `Premium`, capacity can be `1`, `2`, `4`, `8` or `16`. When `sku` is `Basic` or `Standard`, capacity can be `0` only.
   late final pulumi.Output<int?> capacity;
-
   /// An `customer_managed_key` block as defined below.
   late final pulumi.Output<NamespaceCustomerManagedKey?> customerManagedKey;
-
   /// The primary connection string for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> defaultPrimaryConnectionString;
-
   /// The primary access key for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> defaultPrimaryKey;
-
   /// The secondary connection string for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> defaultSecondaryConnectionString;
-
   /// The secondary access key for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> defaultSecondaryKey;
-
   /// The URL to access the Service Bus Namespace.
   late final pulumi.Output<String> endpoint;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<NamespaceIdentity?> identity;
-
   /// Whether or not SAS authentication is enabled for the Service Bus namespace. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthEnabled;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The minimum supported TLS version for this Service Bus Namespace. Valid values are: `1.0`, `1.1` and `1.2`. Defaults to `1.2`.
   ///
   /// &gt; **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
   late final pulumi.Output<String?> minimumTlsVersion;
-
   /// Specifies the name of the Service Bus Namespace resource . Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// An `network_rule_set` block as defined below.
   late final pulumi.Output<NamespaceNetworkRuleSet> networkRuleSet;
-
   /// Specifies the number messaging partitions. Only valid when `sku` is `Premium` and the minimum number is `1`. Possible values include `0`, `1`, `2`, and `4`. Defaults to `0` for Standard, Basic namespace. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** It's not possible to change the partitioning option on any existing namespace. The number of partitions can only be set during namespace creation. Please check the doc https://learn.microsoft.com/en-us/azure/service-bus-messaging/enable-partitions-premium for more feature restrictions.
   late final pulumi.Output<int?> premiumMessagingPartitions;
-
   /// Is public network access enabled for the Service Bus Namespace? Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// The name of the resource group in which to Changing this forces a new resource to be created.
   /// create the namespace.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Defines which tier to use. Options are `Basic`, `Standard` or `Premium`. Please note that setting this field to `Premium` will force the creation of a new resource.
   late final pulumi.Output<String> sku;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -248,61 +231,26 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:servicebus/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:servicebus/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     capacity = registerOutput<int?>('capacity');
-    customerManagedKey = registerOutput<NamespaceCustomerManagedKey?>(
-      'customerManagedKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NamespaceCustomerManagedKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    defaultPrimaryConnectionString = registerOutput<String>(
-      'defaultPrimaryConnectionString',
-    );
+    customerManagedKey = registerOutput<NamespaceCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultPrimaryConnectionString = registerOutput<String>('defaultPrimaryConnectionString');
     defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey');
-    defaultSecondaryConnectionString = registerOutput<String>(
-      'defaultSecondaryConnectionString',
-    );
+    defaultSecondaryConnectionString = registerOutput<String>('defaultSecondaryConnectionString');
     defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
     endpoint = registerOutput<String>('endpoint');
-    identity = registerOutput<NamespaceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NamespaceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<NamespaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    networkRuleSet = registerOutput<NamespaceNetworkRuleSet>(
-      'networkRuleSet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NamespaceNetworkRuleSet.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    premiumMessagingPartitions = registerOutput<int?>(
-      'premiumMessagingPartitions',
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    networkRuleSet = registerOutput<NamespaceNetworkRuleSet>('networkRuleSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceNetworkRuleSet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    premiumMessagingPartitions = registerOutput<int?>('premiumMessagingPartitions');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -326,61 +274,26 @@ class Namespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:servicebus/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:servicebus/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     capacity = registerOutput<int?>('capacity');
-    customerManagedKey = registerOutput<NamespaceCustomerManagedKey?>(
-      'customerManagedKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NamespaceCustomerManagedKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    defaultPrimaryConnectionString = registerOutput<String>(
-      'defaultPrimaryConnectionString',
-    );
+    customerManagedKey = registerOutput<NamespaceCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultPrimaryConnectionString = registerOutput<String>('defaultPrimaryConnectionString');
     defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey');
-    defaultSecondaryConnectionString = registerOutput<String>(
-      'defaultSecondaryConnectionString',
-    );
+    defaultSecondaryConnectionString = registerOutput<String>('defaultSecondaryConnectionString');
     defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
     endpoint = registerOutput<String>('endpoint');
-    identity = registerOutput<NamespaceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NamespaceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<NamespaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    networkRuleSet = registerOutput<NamespaceNetworkRuleSet>(
-      'networkRuleSet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NamespaceNetworkRuleSet.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    premiumMessagingPartitions = registerOutput<int?>(
-      'premiumMessagingPartitions',
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    networkRuleSet = registerOutput<NamespaceNetworkRuleSet>('networkRuleSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceNetworkRuleSet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    premiumMessagingPartitions = registerOutput<int?>('premiumMessagingPartitions');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
     tags = registerOutput<Map<String, String>?>('tags');

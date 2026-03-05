@@ -331,13 +331,10 @@ class VirtualNetworkRule extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** If `ignore_missing_vnet_service_endpoint` is false, and the target subnet does not contain the `Microsoft.SQL` endpoint in the `service_endpoints` array, the deployment will fail when it tries to create the SQL virtual network rule.
   late final pulumi.Output<bool?> ignoreMissingVnetServiceEndpoint;
-
   /// The name of the SQL virtual network rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The resource ID of the SQL Server to which this SQL virtual network rule will be applied. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
-
   /// The ID of the subnet from which the SQL server will accept communications.
   late final pulumi.Output<String> subnetId;
 
@@ -350,14 +347,12 @@ class VirtualNetworkRule extends pulumi.CustomResource {
     VirtualNetworkRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/virtualNetworkRule:VirtualNetworkRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    ignoreMissingVnetServiceEndpoint = registerOutput<bool?>(
-      'ignoreMissingVnetServiceEndpoint',
-    );
+          'azure:mssql/virtualNetworkRule:VirtualNetworkRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    ignoreMissingVnetServiceEndpoint = registerOutput<bool?>('ignoreMissingVnetServiceEndpoint');
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');
     subnetId = registerOutput<String>('subnetId');
@@ -381,14 +376,12 @@ class VirtualNetworkRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/virtualNetworkRule:VirtualNetworkRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    ignoreMissingVnetServiceEndpoint = registerOutput<bool?>(
-      'ignoreMissingVnetServiceEndpoint',
-    );
+          'azure:mssql/virtualNetworkRule:VirtualNetworkRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    ignoreMissingVnetServiceEndpoint = registerOutput<bool?>('ignoreMissingVnetServiceEndpoint');
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');
     subnetId = registerOutput<String>('subnetId');

@@ -337,13 +337,10 @@ import 'project_member_state.dart';
 class ProjectMember extends pulumi.CustomResource {
   /// Project ID
   late final pulumi.Output<int> projectId;
-
   /// List of roles owned by members. See `roles` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> roles;
-
   /// The status of the user in project
   late final pulumi.Output<String> status;
-
   /// The user ID of the member.
   late final pulumi.Output<String> userId;
 
@@ -356,11 +353,11 @@ class ProjectMember extends pulumi.CustomResource {
     ProjectMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dataworks/projectMember:ProjectMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dataworks/projectMember:ProjectMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     projectId = registerOutput<int>('projectId');
     roles = registerOutput<List<Map<String, dynamic>>?>('roles');
     status = registerOutput<String>('status');
@@ -385,11 +382,11 @@ class ProjectMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dataworks/projectMember:ProjectMember',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dataworks/projectMember:ProjectMember',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     projectId = registerOutput<int>('projectId');
     roles = registerOutput<List<Map<String, dynamic>>?>('roles');
     status = registerOutput<String>('status');

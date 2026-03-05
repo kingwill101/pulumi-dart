@@ -251,37 +251,27 @@ import 'primary_ip_state.dart';
 class PrimaryIp extends pulumi.CustomResource {
   /// ID of the assigned resource.
   late final pulumi.Output<int> assigneeId;
-
   /// The type of the assigned resource. Currently supported: `server`
   late final pulumi.Output<String> assigneeType;
-
   /// Whether auto delete is enabled.
   /// `Important note:`It is recommended to set `auto_delete` to `false`, because if a server assigned to the managed ip is getting deleted, it will also delete the primary IP which will break the TF state.
   late final pulumi.Output<bool> autoDelete;
-
   /// The datacenter name to create the resource in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
   late final pulumi.Output<String> datacenter;
-
   /// Whether delete protection is enabled. See "Delete Protection" in the Provider Docs for details.
   ///
   /// Note: At least one of `location`, `datacenter` or `assignee_id` is required.
   late final pulumi.Output<bool?> deleteProtection;
-
   /// (string) IP Address of the Primary IP.
   late final pulumi.Output<String> ipAddress;
-
   /// (string) IPv6 subnet of the Primary IP for IPv6 addresses. (Only set if `type` is `ipv6`)
   late final pulumi.Output<String> ipNetwork;
-
   /// User-defined labels (key-value pairs).
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location name to create the resource in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   late final pulumi.Output<String> location;
-
   /// Name of the Primary IP.
   late final pulumi.Output<String> name;
-
   /// Type of the Primary IP. `ipv4` or `ipv6`
   late final pulumi.Output<String> type;
 
@@ -294,11 +284,11 @@ class PrimaryIp extends pulumi.CustomResource {
     PrimaryIpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/primaryIp:PrimaryIp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/primaryIp:PrimaryIp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assigneeId = registerOutput<int>('assigneeId');
     assigneeType = registerOutput<String>('assigneeType');
     autoDelete = registerOutput<bool>('autoDelete');
@@ -330,11 +320,11 @@ class PrimaryIp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/primaryIp:PrimaryIp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/primaryIp:PrimaryIp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assigneeId = registerOutput<int>('assigneeId');
     assigneeType = registerOutput<String>('assigneeType');
     autoDelete = registerOutput<bool>('autoDelete');

@@ -423,19 +423,14 @@ import 'sql_pool_extended_auditing_policy_state.dart';
 class SqlPoolExtendedAuditingPolicy extends pulumi.CustomResource {
   /// Enable audit events to Azure Monitor? To enable server audit events to Azure Monitor, please enable its master database audit events to Azure Monitor. Defaults to `true`.
   late final pulumi.Output<bool?> logMonitoringEnabled;
-
   /// The number of days to retain logs for in the storage account. Defaults to `0`.
   late final pulumi.Output<int?> retentionInDays;
-
   /// The ID of the Synapse SQL pool to set the extended auditing policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sqlPoolId;
-
   /// The access key to use for the auditing storage account.
   late final pulumi.Output<String?> storageAccountAccessKey;
-
   /// Is `storage_account_access_key` value the storage's secondary key?
   late final pulumi.Output<bool?> storageAccountAccessKeyIsSecondary;
-
   /// The blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all extended auditing logs.
   late final pulumi.Output<String?> storageEndpoint;
 
@@ -448,20 +443,16 @@ class SqlPoolExtendedAuditingPolicy extends pulumi.CustomResource {
     SqlPoolExtendedAuditingPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/sqlPoolExtendedAuditingPolicy:SqlPoolExtendedAuditingPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:synapse/sqlPoolExtendedAuditingPolicy:SqlPoolExtendedAuditingPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     retentionInDays = registerOutput<int?>('retentionInDays');
     sqlPoolId = registerOutput<String>('sqlPoolId');
-    storageAccountAccessKey = registerOutput<String?>(
-      'storageAccountAccessKey',
-    );
-    storageAccountAccessKeyIsSecondary = registerOutput<bool?>(
-      'storageAccountAccessKeyIsSecondary',
-    );
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 
@@ -483,20 +474,16 @@ class SqlPoolExtendedAuditingPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/sqlPoolExtendedAuditingPolicy:SqlPoolExtendedAuditingPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:synapse/sqlPoolExtendedAuditingPolicy:SqlPoolExtendedAuditingPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     retentionInDays = registerOutput<int?>('retentionInDays');
     sqlPoolId = registerOutput<String>('sqlPoolId');
-    storageAccountAccessKey = registerOutput<String?>(
-      'storageAccountAccessKey',
-    );
-    storageAccountAccessKeyIsSecondary = registerOutput<bool?>(
-      'storageAccountAccessKeyIsSecondary',
-    );
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 }

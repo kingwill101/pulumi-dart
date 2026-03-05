@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VersionedAgentReferenceResponse {
   /// Gets the agent's unique identifier within the organization (subscription).
   final pulumi.Input<String>? agentId;
-
   /// Gets the agent's name (unique within the project/app).
   final pulumi.Input<String>? agentName;
-
   /// Gets the agent's version (unique for each agent lineage).
   final pulumi.Input<String>? agentVersion;
 
@@ -33,21 +31,10 @@ class VersionedAgentReferenceResponse {
 
   factory VersionedAgentReferenceResponse.fromMap(Map<String, dynamic> map) {
     return VersionedAgentReferenceResponse(
-      agentId: (() {
-        final guardedValue = map['agentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      agentName: (() {
-        final guardedValue = map['agentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      agentVersion: (() {
-        final guardedValue = map['agentVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      agentId: (() { final guardedValue = map['agentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      agentName: (() { final guardedValue = map['agentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      agentVersion: (() { final guardedValue = map['agentVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewaysGatewaySlbList {
   /// The associate id.
   final pulumi.Input<String> associateId;
-
   /// The Mode of the gateway slb.
   final pulumi.Input<String> gatewaySlbMode;
-
   /// The Status of the gateway slb.
   final pulumi.Input<String> gatewaySlbStatus;
-
   /// The creation time of the gateway slb.
   final pulumi.Input<String> gmtCreate;
-
   /// The ID of the gateway slb.
   final pulumi.Input<String> slbId;
-
   /// The ip of the gateway slb.
   final pulumi.Input<String> slbIp;
-
   /// The port of the gateway slb.
   final pulumi.Input<String> slbPort;
-
   /// The type of the gateway slb.
   final pulumi.Input<String> type;
 
@@ -64,9 +57,7 @@ class GetGatewaysGatewaySlbList {
     return GetGatewaysGatewaySlbList(
       associateId: pulumi.Input.fromValue(map['associateId'] as String),
       gatewaySlbMode: pulumi.Input.fromValue(map['gatewaySlbMode'] as String),
-      gatewaySlbStatus: pulumi.Input.fromValue(
-        map['gatewaySlbStatus'] as String,
-      ),
+      gatewaySlbStatus: pulumi.Input.fromValue(map['gatewaySlbStatus'] as String),
       gmtCreate: pulumi.Input.fromValue(map['gmtCreate'] as String),
       slbId: pulumi.Input.fromValue(map['slbId'] as String),
       slbIp: pulumi.Input.fromValue(map['slbIp'] as String),
@@ -75,3 +66,4 @@ class GetGatewaysGatewaySlbList {
     );
   }
 }
+

@@ -20,13 +20,10 @@ class GetInstancePscInstanceConfigPscInterfaceConfig {
     };
   }
 
-  factory GetInstancePscInstanceConfigPscInterfaceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstancePscInstanceConfigPscInterfaceConfig.fromMap(Map<String, dynamic> map) {
     return GetInstancePscInstanceConfigPscInterfaceConfig(
-      networkAttachmentResource: pulumi.Input.fromValue(
-        map['networkAttachmentResource'] as String,
-      ),
+      networkAttachmentResource: pulumi.Input.fromValue(map['networkAttachmentResource'] as String),
     );
   }
 }
+

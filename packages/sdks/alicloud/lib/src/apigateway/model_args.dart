@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ModelArgs {
   /// The description of the model.
   final pulumi.Input<String>? description;
-
   /// The group of the model belongs to.
   final pulumi.Input<String> groupId;
-
   /// The name of the model.
   final pulumi.Input<String> modelName;
-
   /// The schema of the model.
   final pulumi.Input<String> schema;
 
@@ -42,14 +39,11 @@ class ModelArgs {
 
   factory ModelArgs.fromMap(Map<String, dynamic> map) {
     return ModelArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       groupId: pulumi.Input.fromValue(map['groupId'] as String),
       modelName: pulumi.Input.fromValue(map['modelName'] as String),
       schema: pulumi.Input.fromValue(map['schema'] as String),
     );
   }
 }
+

@@ -5,40 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityGroupRulesRule {
   /// The description of the rule.
   final pulumi.Input<String> description;
-
   /// Target IP address segment for egress authorization.
   final pulumi.Input<String> destCidrIp;
-
   /// Target security group id for ingress authorization.
   final pulumi.Input<String> destGroupId;
-
   /// Alibaba Cloud account of the target security group.
   final pulumi.Input<String> destGroupOwnerAccount;
-
   /// Authorization direction. Valid values are: `ingress` or `egress`.
   final pulumi.Input<String> direction;
-
   /// The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
   final pulumi.Input<String> ipProtocol;
-
   /// Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
   final pulumi.Input<String> nicType;
-
   /// Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
   final pulumi.Input<String> policy;
-
   /// The range of port numbers.
   final pulumi.Input<String> portRange;
-
   /// Rule priority.
   final pulumi.Input<int> priority;
-
   /// Source IP address segment for ingress authorization.
   final pulumi.Input<String> sourceCidrIp;
-
   /// Source security group ID for ingress authorization.
   final pulumi.Input<String> sourceGroupId;
-
   /// Alibaba Cloud account of the source security group.
   final pulumi.Input<String> sourceGroupOwnerAccount;
 
@@ -95,9 +83,7 @@ class GetSecurityGroupRulesRule {
       description: pulumi.Input.fromValue(map['description'] as String),
       destCidrIp: pulumi.Input.fromValue(map['destCidrIp'] as String),
       destGroupId: pulumi.Input.fromValue(map['destGroupId'] as String),
-      destGroupOwnerAccount: pulumi.Input.fromValue(
-        map['destGroupOwnerAccount'] as String,
-      ),
+      destGroupOwnerAccount: pulumi.Input.fromValue(map['destGroupOwnerAccount'] as String),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       ipProtocol: pulumi.Input.fromValue(map['ipProtocol'] as String),
       nicType: pulumi.Input.fromValue(map['nicType'] as String),
@@ -106,9 +92,8 @@ class GetSecurityGroupRulesRule {
       priority: pulumi.Input.fromValue(map['priority'] as int),
       sourceCidrIp: pulumi.Input.fromValue(map['sourceCidrIp'] as String),
       sourceGroupId: pulumi.Input.fromValue(map['sourceGroupId'] as String),
-      sourceGroupOwnerAccount: pulumi.Input.fromValue(
-        map['sourceGroupOwnerAccount'] as String,
-      ),
+      sourceGroupOwnerAccount: pulumi.Input.fromValue(map['sourceGroupOwnerAccount'] as String),
     );
   }
 }
+

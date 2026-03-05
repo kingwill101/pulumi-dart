@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TermTypeDetailsResponse {
   /// Term Commitment Type
   final pulumi.Input<String> termType;
-
   /// Duration for the term type.
   final pulumi.Input<String> termTypeDuration;
 
@@ -28,9 +27,8 @@ class TermTypeDetailsResponse {
   factory TermTypeDetailsResponse.fromMap(Map<String, dynamic> map) {
     return TermTypeDetailsResponse(
       termType: pulumi.Input.fromValue(map['termType'] as String),
-      termTypeDuration: pulumi.Input.fromValue(
-        map['termTypeDuration'] as String,
-      ),
+      termTypeDuration: pulumi.Input.fromValue(map['termTypeDuration'] as String),
     );
   }
 }
+

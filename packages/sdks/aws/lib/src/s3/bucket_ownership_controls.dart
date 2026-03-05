@@ -150,10 +150,8 @@ import 'bucket_ownership_controls_state.dart';
 class BucketOwnershipControls extends pulumi.CustomResource {
   /// Name of the bucket that you want to associate this access point with.
   late final pulumi.Output<String> bucket;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block(s) with Ownership Controls rules. Detailed below.
   late final pulumi.Output<BucketOwnershipControlsRule> rule;
 
@@ -166,23 +164,14 @@ class BucketOwnershipControls extends pulumi.CustomResource {
     BucketOwnershipControlsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketOwnershipControls:BucketOwnershipControls',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketOwnershipControls:BucketOwnershipControls',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');
-    rule = registerOutput<BucketOwnershipControlsRule>(
-      'rule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketOwnershipControlsRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rule = registerOutput<BucketOwnershipControlsRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketOwnershipControlsRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [BucketOwnershipControls] resource's state with the given [name] and [id].
@@ -203,22 +192,13 @@ class BucketOwnershipControls extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketOwnershipControls:BucketOwnershipControls',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketOwnershipControls:BucketOwnershipControls',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');
-    rule = registerOutput<BucketOwnershipControlsRule>(
-      'rule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketOwnershipControlsRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rule = registerOutput<BucketOwnershipControlsRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketOwnershipControlsRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

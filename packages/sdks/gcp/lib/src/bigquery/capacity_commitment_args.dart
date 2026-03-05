@@ -12,27 +12,20 @@ class CapacityCommitmentArgs {
   /// cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
   /// or merged.
   final pulumi.Input<String>? capacityCommitmentId;
-
   /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
   final pulumi.Input<String>? edition;
-
   /// If true, fail the request if another project in the organization has a capacity commitment.
   final pulumi.Input<String>? enforceSingleAdminProjectPerOrg;
-
   /// The geographic location where the transfer config should reside.
   /// Examples: US, EU, asia-northeast1. The default value is US.
   final pulumi.Input<String>? location;
-
   /// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
   final pulumi.Input<String> plan;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
   final pulumi.Input<String>? renewalPlan;
-
   /// Number of slots in this commitment.
   final pulumi.Input<int> slotCount;
 
@@ -71,38 +64,15 @@ class CapacityCommitmentArgs {
 
   factory CapacityCommitmentArgs.fromMap(Map<String, dynamic> map) {
     return CapacityCommitmentArgs(
-      capacityCommitmentId: (() {
-        final guardedValue = map['capacityCommitmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      edition: (() {
-        final guardedValue = map['edition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enforceSingleAdminProjectPerOrg: (() {
-        final guardedValue = map['enforceSingleAdminProjectPerOrg'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      capacityCommitmentId: (() { final guardedValue = map['capacityCommitmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enforceSingleAdminProjectPerOrg: (() { final guardedValue = map['enforceSingleAdminProjectPerOrg']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       plan: pulumi.Input.fromValue(map['plan'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      renewalPlan: (() {
-        final guardedValue = map['renewalPlan'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      renewalPlan: (() { final guardedValue = map['renewalPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       slotCount: pulumi.Input.fromValue(map['slotCount'] as int),
     );
   }
 }
+

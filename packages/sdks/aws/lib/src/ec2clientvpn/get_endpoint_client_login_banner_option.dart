@@ -15,7 +15,10 @@ class GetEndpointClientLoginBannerOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bannerText': bannerText, 'enabled': enabled};
+    return <String, dynamic>{
+      'bannerText': bannerText,
+      'enabled': enabled,
+    };
   }
 
   factory GetEndpointClientLoginBannerOption.fromMap(Map<String, dynamic> map) {
@@ -25,3 +28,4 @@ class GetEndpointClientLoginBannerOption {
     );
   }
 }
+

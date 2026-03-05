@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpsecServersServerIkeConfig {
   /// The IKE authentication algorithm.
   final pulumi.Input<String> ikeAuthAlg;
-
   /// The IKE encryption algorithm.
   final pulumi.Input<String> ikeEncAlg;
-
   /// The IKE lifetime. Unit: seconds.
   final pulumi.Input<int> ikeLifetime;
-
   /// The IKE negotiation mode.
   final pulumi.Input<String> ikeMode;
-
   /// Diffie-Hellman key exchange algorithm.
   final pulumi.Input<String> ikePfs;
-
   /// The IKE version.
   final pulumi.Input<String> ikeVersion;
-
   /// IPsec server identifier. Supports the format of FQDN and IP address. The public IP address of the VPN gateway is selected by default.
   final pulumi.Input<String> localId;
-
   /// The peer identifier. Supports the format of FQDN and IP address, which is empty by default.
   final pulumi.Input<String> remoteId;
 
@@ -73,3 +66,4 @@ class GetIpsecServersServerIkeConfig {
     );
   }
 }
+

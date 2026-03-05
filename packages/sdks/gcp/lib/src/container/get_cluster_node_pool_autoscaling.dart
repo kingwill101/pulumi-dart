@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterNodePoolAutoscaling {
   /// Location policy specifies the algorithm used when scaling-up the node pool. "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations, and reduces preemption risk for Spot VMs.
   final pulumi.Input<String> locationPolicy;
-
   /// Maximum number of nodes per zone in the node pool. Must be &gt;= min_node_count. Cannot be used with total limits.
   final pulumi.Input<int> maxNodeCount;
-
   /// Minimum number of nodes per zone in the node pool. Must be &gt;=0 and &lt;= max_node_count. Cannot be used with total limits.
   final pulumi.Input<int> minNodeCount;
-
   /// Maximum number of all nodes in the node pool. Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
   final pulumi.Input<int> totalMaxNodeCount;
-
   /// Minimum number of all nodes in the node pool. Must be &gt;=0 and &lt;= total_max_node_count. Cannot be used with per zone limits.
   final pulumi.Input<int> totalMinNodeCount;
 
@@ -47,12 +43,9 @@ class GetClusterNodePoolAutoscaling {
       locationPolicy: pulumi.Input.fromValue(map['locationPolicy'] as String),
       maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
       minNodeCount: pulumi.Input.fromValue(map['minNodeCount'] as int),
-      totalMaxNodeCount: pulumi.Input.fromValue(
-        map['totalMaxNodeCount'] as int,
-      ),
-      totalMinNodeCount: pulumi.Input.fromValue(
-        map['totalMinNodeCount'] as int,
-      ),
+      totalMaxNodeCount: pulumi.Input.fromValue(map['totalMaxNodeCount'] as int),
+      totalMinNodeCount: pulumi.Input.fromValue(map['totalMinNodeCount'] as int),
     );
   }
 }
+

@@ -6,22 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubAccountState {
   /// The billing account id.
   final pulumi.Input<String>? billingAccountId;
-
   /// If set to "RENAME_ON_DESTROY" the billing account display_name
   /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
   /// Default is "".
   final pulumi.Input<String>? deletionPolicy;
-
   /// The display name of the billing account.
   final pulumi.Input<String>? displayName;
-
   /// The name of the master billing account that the subaccount
   /// will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
   final pulumi.Input<String>? masterBillingAccount;
-
   /// The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
   final pulumi.Input<String>? name;
-
   /// `true` if the billing account is open, `false` if the billing account is closed.
   final pulumi.Input<bool>? open;
 
@@ -54,36 +49,13 @@ class SubAccountState {
 
   factory SubAccountState.fromMap(Map<String, dynamic> map) {
     return SubAccountState(
-      billingAccountId: (() {
-        final guardedValue = map['billingAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deletionPolicy: (() {
-        final guardedValue = map['deletionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      masterBillingAccount: (() {
-        final guardedValue = map['masterBillingAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      open: (() {
-        final guardedValue = map['open'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      billingAccountId: (() { final guardedValue = map['billingAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      masterBillingAccount: (() { final guardedValue = map['masterBillingAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      open: (() { final guardedValue = map['open']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

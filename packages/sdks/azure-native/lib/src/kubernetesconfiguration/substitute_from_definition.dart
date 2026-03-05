@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubstituteFromDefinition {
   /// Define whether it is ConfigMap or Secret that holds the variables to be used in substitution.
   final pulumi.Input<String>? kind;
-
   /// Name of the ConfigMap/Secret that holds the variables to be used in substitution.
   final pulumi.Input<String>? name;
-
   /// Set to True to proceed without ConfigMap/Secret, if it is not present.
   final pulumi.Input<bool>? optional;
 
@@ -17,7 +15,11 @@ class SubstituteFromDefinition {
   /// [kind] Define whether it is ConfigMap or Secret that holds the variables to be used in substitution.
   /// [name] Name of the ConfigMap/Secret that holds the variables to be used in substitution.
   /// [optional] Set to True to proceed without ConfigMap/Secret, if it is not present.
-  SubstituteFromDefinition({this.kind, this.name, this.optional});
+  SubstituteFromDefinition({
+    this.kind,
+    this.name,
+    this.optional,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class SubstituteFromDefinition {
 
   factory SubstituteFromDefinition.fromMap(Map<String, dynamic> map) {
     return SubstituteFromDefinition(
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      optional: (() {
-        final guardedValue = map['optional'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      optional: (() { final guardedValue = map['optional']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

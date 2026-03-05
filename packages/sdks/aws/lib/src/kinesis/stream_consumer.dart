@@ -149,16 +149,12 @@ import 'stream_consumer_state.dart';
 class StreamConsumer extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the stream consumer.
   late final pulumi.Output<String> arn;
-
   /// Approximate timestamp in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of when the stream consumer was created.
   late final pulumi.Output<String> creationTimestamp;
-
   /// Name of the stream consumer.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Amazon Resource Name (ARN) of the data stream the consumer is registered with.
   late final pulumi.Output<String> streamArn;
   late final pulumi.Output<Map<String, String>?> tags;
@@ -173,11 +169,11 @@ class StreamConsumer extends pulumi.CustomResource {
     StreamConsumerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:kinesis/streamConsumer:StreamConsumer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:kinesis/streamConsumer:StreamConsumer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     this.name = registerOutput<String>('name');
@@ -205,11 +201,11 @@ class StreamConsumer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:kinesis/streamConsumer:StreamConsumer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:kinesis/streamConsumer:StreamConsumer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     this.name = registerOutput<String>('name');

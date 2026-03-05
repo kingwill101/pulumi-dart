@@ -733,16 +733,12 @@ import 'attachment_state.dart';
 class Attachment extends pulumi.CustomResource {
   /// Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
   late final pulumi.Output<bool?> entrusted;
-
   /// Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
   late final pulumi.Output<bool?> force;
-
   /// ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
   late final pulumi.Output<List<String>> instanceIds;
-
   /// Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
   late final pulumi.Output<bool?> lifecycleHook;
-
   /// The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
   ///
   /// &gt; **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
@@ -755,7 +751,6 @@ class Attachment extends pulumi.CustomResource {
   /// - The attached ECS instances has not been attached to other scaling groups.
   /// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
   late final pulumi.Output<List<int>> loadBalancerWeights;
-
   /// ID of the scaling group of a scaling configuration.
   late final pulumi.Output<String> scalingGroupId;
 
@@ -768,11 +763,11 @@ class Attachment extends pulumi.CustomResource {
     AttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/attachment:Attachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/attachment:Attachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     entrusted = registerOutput<bool?>('entrusted');
     force = registerOutput<bool?>('force');
     instanceIds = registerOutput<List<String>>('instanceIds');
@@ -799,11 +794,11 @@ class Attachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/attachment:Attachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/attachment:Attachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     entrusted = registerOutput<bool?>('entrusted');
     force = registerOutput<bool?>('force');
     instanceIds = registerOutput<List<String>>('instanceIds');

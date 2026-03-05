@@ -178,46 +178,32 @@ import 'synchronization_instance_state.dart';
 class SynchronizationInstance extends pulumi.CustomResource {
   /// Whether to automatically renew when it expires. Valid values: `true`, `false`.
   late final pulumi.Output<String?> autoPay;
-
   /// Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
   late final pulumi.Output<String?> autoStart;
-
   /// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
   late final pulumi.Output<int?> computeUnit;
-
   /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
   late final pulumi.Output<int?> databaseCount;
-
   /// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
   late final pulumi.Output<String> destinationEndpointEngineName;
-
   /// The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
   late final pulumi.Output<String> destinationEndpointRegion;
-
   /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
   late final pulumi.Output<String> instanceClass;
-
   /// The duration of prepaid instance purchase. this parameter is required When `payment_type` equals `Subscription`.
   late final pulumi.Output<int?> paymentDuration;
-
   /// The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
   late final pulumi.Output<String?> paymentDurationUnit;
-
   /// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
-
   /// The number of instances purchased.
   late final pulumi.Output<int?> quantity;
-
   /// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
   late final pulumi.Output<String> sourceEndpointEngineName;
-
   /// The region of source instance.
   late final pulumi.Output<String> sourceEndpointRegion;
-
   /// The status.
   late final pulumi.Output<String> status;
-
   /// The sync architecture. Valid values: `oneway`, `bidirectional`.
   late final pulumi.Output<String?> syncArchitecture;
 
@@ -230,29 +216,23 @@ class SynchronizationInstance extends pulumi.CustomResource {
     SynchronizationInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dts/synchronizationInstance:SynchronizationInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dts/synchronizationInstance:SynchronizationInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPay = registerOutput<String?>('autoPay');
     autoStart = registerOutput<String?>('autoStart');
     computeUnit = registerOutput<int?>('computeUnit');
     databaseCount = registerOutput<int?>('databaseCount');
-    destinationEndpointEngineName = registerOutput<String>(
-      'destinationEndpointEngineName',
-    );
-    destinationEndpointRegion = registerOutput<String>(
-      'destinationEndpointRegion',
-    );
+    destinationEndpointEngineName = registerOutput<String>('destinationEndpointEngineName');
+    destinationEndpointRegion = registerOutput<String>('destinationEndpointRegion');
     instanceClass = registerOutput<String>('instanceClass');
     paymentDuration = registerOutput<int?>('paymentDuration');
     paymentDurationUnit = registerOutput<String?>('paymentDurationUnit');
     paymentType = registerOutput<String>('paymentType');
     quantity = registerOutput<int?>('quantity');
-    sourceEndpointEngineName = registerOutput<String>(
-      'sourceEndpointEngineName',
-    );
+    sourceEndpointEngineName = registerOutput<String>('sourceEndpointEngineName');
     sourceEndpointRegion = registerOutput<String>('sourceEndpointRegion');
     status = registerOutput<String>('status');
     syncArchitecture = registerOutput<String?>('syncArchitecture');
@@ -276,29 +256,23 @@ class SynchronizationInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dts/synchronizationInstance:SynchronizationInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dts/synchronizationInstance:SynchronizationInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPay = registerOutput<String?>('autoPay');
     autoStart = registerOutput<String?>('autoStart');
     computeUnit = registerOutput<int?>('computeUnit');
     databaseCount = registerOutput<int?>('databaseCount');
-    destinationEndpointEngineName = registerOutput<String>(
-      'destinationEndpointEngineName',
-    );
-    destinationEndpointRegion = registerOutput<String>(
-      'destinationEndpointRegion',
-    );
+    destinationEndpointEngineName = registerOutput<String>('destinationEndpointEngineName');
+    destinationEndpointRegion = registerOutput<String>('destinationEndpointRegion');
     instanceClass = registerOutput<String>('instanceClass');
     paymentDuration = registerOutput<int?>('paymentDuration');
     paymentDurationUnit = registerOutput<String?>('paymentDurationUnit');
     paymentType = registerOutput<String>('paymentType');
     quantity = registerOutput<int?>('quantity');
-    sourceEndpointEngineName = registerOutput<String>(
-      'sourceEndpointEngineName',
-    );
+    sourceEndpointEngineName = registerOutput<String>('sourceEndpointEngineName');
     sourceEndpointRegion = registerOutput<String>('sourceEndpointRegion');
     status = registerOutput<String>('status');
     syncArchitecture = registerOutput<String?>('syncArchitecture');

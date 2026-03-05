@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenerRuleConditionHttpHeader {
   /// Name of the HTTP header to match.
   final pulumi.Input<String> httpHeaderName;
-
   /// Set of regular expressions to compare against the request URL.
   final pulumi.Input<List<String>> regexValues;
-
   /// Set of `key`-`value` pairs indicating the query string parameters to match.
   final pulumi.Input<List<String>> values;
 
@@ -33,10 +31,9 @@ class GetListenerRuleConditionHttpHeader {
   factory GetListenerRuleConditionHttpHeader.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleConditionHttpHeader(
       httpHeaderName: pulumi.Input.fromValue(map['httpHeaderName'] as String),
-      regexValues: pulumi.Input.fromValue(
-        (map['regexValues'] as List).cast<String>(),
-      ),
+      regexValues: pulumi.Input.fromValue((map['regexValues'] as List).cast<String>()),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

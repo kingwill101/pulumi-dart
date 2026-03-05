@@ -71,71 +71,20 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      desiredCapacity: (() {
-        final guardedValue = map['desiredCapacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      launchExpirationTime: (() {
-        final guardedValue = map['launchExpirationTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      launchTime: (() {
-        final guardedValue = map['launchTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxValue: (() {
-        final guardedValue = map['maxValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minValue: (() {
-        final guardedValue = map['minValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      recurrenceEndTime: (() {
-        final guardedValue = map['recurrenceEndTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recurrenceType: (() {
-        final guardedValue = map['recurrenceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recurrenceValue: (() {
-        final guardedValue = map['recurrenceValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scalingGroupId: (() {
-        final guardedValue = map['scalingGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scheduledAction: (() {
-        final guardedValue = map['scheduledAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scheduledTaskName: (() {
-        final guardedValue = map['scheduledTaskName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      taskEnabled: (() {
-        final guardedValue = map['taskEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      desiredCapacity: (() { final guardedValue = map['desiredCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      launchExpirationTime: (() { final guardedValue = map['launchExpirationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      launchTime: (() { final guardedValue = map['launchTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxValue: (() { final guardedValue = map['maxValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minValue: (() { final guardedValue = map['minValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recurrenceEndTime: (() { final guardedValue = map['recurrenceEndTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recurrenceType: (() { final guardedValue = map['recurrenceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recurrenceValue: (() { final guardedValue = map['recurrenceValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scalingGroupId: (() { final guardedValue = map['scalingGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scheduledAction: (() { final guardedValue = map['scheduledAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scheduledTaskName: (() { final guardedValue = map['scheduledTaskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      taskEnabled: (() { final guardedValue = map['taskEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

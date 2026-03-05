@@ -15,3 +15,4 @@ enum EventsOutOfOrderPolicy {
     throw ArgumentError('Unknown EventsOutOfOrderPolicy value: $value');
   }
 }
+

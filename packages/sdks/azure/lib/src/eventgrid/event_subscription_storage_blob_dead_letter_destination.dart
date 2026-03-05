@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSubscriptionStorageBlobDeadLetterDestination {
   /// Specifies the id of the storage account id where the storage blob is located.
   final pulumi.Input<String> storageAccountId;
-
   /// Specifies the name of the Storage blob container that is the destination of the deadletter events.
   final pulumi.Input<String> storageBlobContainerName;
 
@@ -24,16 +23,11 @@ class EventSubscriptionStorageBlobDeadLetterDestination {
     };
   }
 
-  factory EventSubscriptionStorageBlobDeadLetterDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventSubscriptionStorageBlobDeadLetterDestination.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionStorageBlobDeadLetterDestination(
-      storageAccountId: pulumi.Input.fromValue(
-        map['storageAccountId'] as String,
-      ),
-      storageBlobContainerName: pulumi.Input.fromValue(
-        map['storageBlobContainerName'] as String,
-      ),
+      storageAccountId: pulumi.Input.fromValue(map['storageAccountId'] as String),
+      storageBlobContainerName: pulumi.Input.fromValue(map['storageBlobContainerName'] as String),
     );
   }
 }
+

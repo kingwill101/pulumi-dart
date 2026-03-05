@@ -9,7 +9,9 @@ class ManagementResourcePreferences {
 
   /// Creates a new [ManagementResourcePreferences].
   /// [preferredManagementResourceId] Customer preferred Management resource ARM ID.
-  ManagementResourcePreferences({this.preferredManagementResourceId});
+  ManagementResourcePreferences({
+    this.preferredManagementResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class ManagementResourcePreferences {
 
   factory ManagementResourcePreferences.fromMap(Map<String, dynamic> map) {
     return ManagementResourcePreferences(
-      preferredManagementResourceId: (() {
-        final guardedValue = map['preferredManagementResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      preferredManagementResourceId: (() { final guardedValue = map['preferredManagementResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

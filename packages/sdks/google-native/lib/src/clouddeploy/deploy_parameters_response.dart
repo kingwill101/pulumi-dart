@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeployParametersResponse {
   /// Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
   final pulumi.Input<Map<String, String>> matchTargetLabels;
-
   /// Values are deploy parameters in key-value pairs.
   final pulumi.Input<Map<String, String>> values;
 
@@ -27,12 +26,9 @@ class DeployParametersResponse {
 
   factory DeployParametersResponse.fromMap(Map<String, dynamic> map) {
     return DeployParametersResponse(
-      matchTargetLabels: pulumi.Input.fromValue(
-        (map['matchTargetLabels'] as Map).cast<String, String>(),
-      ),
-      values: pulumi.Input.fromValue(
-        (map['values'] as Map).cast<String, String>(),
-      ),
+      matchTargetLabels: pulumi.Input.fromValue((map['matchTargetLabels'] as Map).cast<String, String>()),
+      values: pulumi.Input.fromValue((map['values'] as Map).cast<String, String>()),
     );
   }
 }
+

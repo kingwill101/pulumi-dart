@@ -509,37 +509,26 @@ import 'nat_firewall_state.dart';
 class NatFirewall extends pulumi.CustomResource {
   /// Safety protection switch. Value:-**open**: open-**close**: close.
   late final pulumi.Output<String?> firewallSwitch;
-
   /// Lang.
   late final pulumi.Output<String?> lang;
-
   /// NAT gateway ID.
   late final pulumi.Output<String> natGatewayId;
-
   /// The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
   late final pulumi.Output<List<Map<String, dynamic>>> natRouteEntryLists;
-
   /// NAT firewall name.
   late final pulumi.Output<String> proxyName;
-
   /// Region.
   late final pulumi.Output<String> regionNo;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// Whether strict mode is enabled 1-Enable strict mode 0-Disable strict mode.
   late final pulumi.Output<int?> strictMode;
-
   /// The ID of the VPC instance.
   late final pulumi.Output<String> vpcId;
-
   /// Whether to use switch automatic mode. Value: **true**: Use automatic mode: **false**: Use manual mode.
   late final pulumi.Output<String?> vswitchAuto;
-
   /// The network segment of the virtual switch. Required for Switch automatic mode.
   late final pulumi.Output<String?> vswitchCidr;
-
   /// The switch ID. Required for switch manual mode.
   late final pulumi.Output<String?> vswitchId;
 
@@ -552,17 +541,15 @@ class NatFirewall extends pulumi.CustomResource {
     NatFirewallArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/natFirewall:NatFirewall',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/natFirewall:NatFirewall',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     firewallSwitch = registerOutput<String?>('firewallSwitch');
     lang = registerOutput<String?>('lang');
     natGatewayId = registerOutput<String>('natGatewayId');
-    natRouteEntryLists = registerOutput<List<Map<String, dynamic>>>(
-      'natRouteEntryLists',
-    );
+    natRouteEntryLists = registerOutput<List<Map<String, dynamic>>>('natRouteEntryLists');
     proxyName = registerOutput<String>('proxyName');
     regionNo = registerOutput<String>('regionNo');
     status = registerOutput<String>('status');
@@ -591,17 +578,15 @@ class NatFirewall extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/natFirewall:NatFirewall',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/natFirewall:NatFirewall',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     firewallSwitch = registerOutput<String?>('firewallSwitch');
     lang = registerOutput<String?>('lang');
     natGatewayId = registerOutput<String>('natGatewayId');
-    natRouteEntryLists = registerOutput<List<Map<String, dynamic>>>(
-      'natRouteEntryLists',
-    );
+    natRouteEntryLists = registerOutput<List<Map<String, dynamic>>>('natRouteEntryLists');
     proxyName = registerOutput<String>('proxyName');
     regionNo = registerOutput<String>('regionNo');
     status = registerOutput<String>('status');

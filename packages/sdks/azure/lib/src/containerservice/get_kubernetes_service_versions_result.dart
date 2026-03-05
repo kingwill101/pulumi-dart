@@ -1,19 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKubernetesServiceVersions.
 class GetKubernetesServiceVersionsResult {
   /// The N-1 minor non-preview version and latest patch.
   final String defaultVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? includePreview;
-
   /// The most recent version available. If `include_preview == false`, this is the most recent non-preview version available.
   final String latestVersion;
   final String location;
   final String? versionPrefix;
-
   /// The list of all supported versions.
   final List<String> versions;
 
@@ -51,19 +49,12 @@ class GetKubernetesServiceVersionsResult {
     return GetKubernetesServiceVersionsResult(
       defaultVersion: map['defaultVersion'] as String,
       id: map['id'] as String,
-      includePreview: (() {
-        final guardedValue = map['includePreview'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      includePreview: (() { final guardedValue = map['includePreview']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       latestVersion: map['latestVersion'] as String,
       location: map['location'] as String,
-      versionPrefix: (() {
-        final guardedValue = map['versionPrefix'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      versionPrefix: (() { final guardedValue = map['versionPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
       versions: (map['versions'] as List).cast<String>(),
     );
   }
 }
+

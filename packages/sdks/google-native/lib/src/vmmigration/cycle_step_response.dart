@@ -7,16 +7,12 @@ import 'replicating_step_response.dart';
 class CycleStepResponse {
   /// The time the cycle step has ended.
   final pulumi.Input<String> endTime;
-
   /// Initializing replication step.
   final pulumi.Input<Map<String, dynamic>> initializingReplication;
-
   /// Post processing step.
   final pulumi.Input<Map<String, dynamic>> postProcessing;
-
   /// Replicating step.
   final pulumi.Input<ReplicatingStepResponse> replicating;
-
   /// The time the cycle step has started.
   final pulumi.Input<String> startTime;
 
@@ -39,11 +35,7 @@ class CycleStepResponse {
       'endTime': endTime,
       'initializingReplication': initializingReplication,
       'postProcessing': postProcessing,
-      'replicating':
-          pulumi.Input.mapInputValue<
-            ReplicatingStepResponse,
-            Map<String, dynamic>
-          >(replicating, (value) => value.toMap()),
+      'replicating': pulumi.Input.mapInputValue<ReplicatingStepResponse, Map<String, dynamic>>(replicating, (value) => value.toMap()),
       'startTime': startTime,
     };
   }
@@ -51,18 +43,11 @@ class CycleStepResponse {
   factory CycleStepResponse.fromMap(Map<String, dynamic> map) {
     return CycleStepResponse(
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
-      initializingReplication: pulumi.Input.fromValue(
-        (map['initializingReplication']! as Map).cast<String, dynamic>(),
-      ),
-      postProcessing: pulumi.Input.fromValue(
-        (map['postProcessing']! as Map).cast<String, dynamic>(),
-      ),
-      replicating: pulumi.Input.fromValue(
-        ReplicatingStepResponse.fromMap(
-          (map['replicating']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      initializingReplication: pulumi.Input.fromValue((map['initializingReplication']! as Map).cast<String, dynamic>()),
+      postProcessing: pulumi.Input.fromValue((map['postProcessing']! as Map).cast<String, dynamic>()),
+      replicating: pulumi.Input.fromValue(ReplicatingStepResponse.fromMap((map['replicating']! as Map).cast<String, dynamic>())),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
+

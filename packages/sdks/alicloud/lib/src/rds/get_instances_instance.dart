@@ -11,144 +11,101 @@ class GetInstancesInstance {
   /// - verify-ca
   /// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
   final pulumi.Input<String> acl;
-
   /// Availability zone.
   final pulumi.Input<String> availabilityZone;
-
   /// (Available in 1.124.1+) The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
   /// - aliyun: a cloud certificate
   /// - custom: a custom certificate
   final pulumi.Input<String> caType;
-
   /// Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
   final pulumi.Input<String> chargeType;
-
   /// (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
   final pulumi.Input<String> clientCaCert;
-
   /// (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is not supported now.
   final pulumi.Input<String> clientCaCertExpireTime;
-
   /// (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
   final pulumi.Input<String> clientCertRevocationList;
-
   /// `Standard` for standard access mode and `Safe` for high security access mode.
   final pulumi.Input<String> connectionMode;
-
   /// (Available in 1.70.3+) RDS database connection string.
   final pulumi.Input<String> connectionString;
-
   /// Creation time of the instance.
   final pulumi.Input<String> createTime;
-
   /// (Available in 1.124.3+) The creator of the encryption key.
   final pulumi.Input<String> creator;
-
   /// (Available in 1.70.3+) The storage type of the instance.
   final pulumi.Input<String> dbInstanceStorageType;
-
   /// (Available in 1.197.0+) The type of instance.
   final pulumi.Input<String> dbInstanceType;
-
   /// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
   final pulumi.Input<String> dbType;
-
   /// (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   final pulumi.Input<String> deleteDate;
-
   /// (Available in 1.167.0+) Indicates whether the release protection feature is enabled for the instance. Valid values:
   /// * **true**: The release protection feature is enabled.
   /// * **false**: The release protection feature is disabled.
   final pulumi.Input<bool> deletionProtection;
-
   /// (Available in 1.124.3+) The description of the encryption key.
   final pulumi.Input<String> description;
-
   /// (Available in 1.124.3+) The ID of the encryption key.
   final pulumi.Input<String> encryptionKey;
-
   /// (Available in 1.124.3+) The status of the encryption key. Valid values:
   /// - Enabled
   /// - Disabled
   final pulumi.Input<String> encryptionKeyStatus;
-
   /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
   final pulumi.Input<String> engine;
-
   /// Database version.
   final pulumi.Input<String> engineVersion;
-
   /// Expiration time. Pay-As-You-Go instances never expire.
   final pulumi.Input<String> expireTime;
-
   /// If a disaster recovery instance is attached to the current instance, the ID of the disaster recovery instance applies.
   final pulumi.Input<String> guardInstanceId;
-
   /// (Available since v1.209.1) The high availability mode of the instance.
   final pulumi.Input<String> haMode;
-
   /// (Available since v1.209.1) An array that consists of the information of the primary and secondary instances.
-  final pulumi.Input<List<GetInstancesInstanceHostInstanceInfo>>
-  hostInstanceInfos;
-
+  final pulumi.Input<List<GetInstancesInstanceHostInstanceInfo>> hostInstanceInfos;
   /// The ID of the RDS instance.
   final pulumi.Input<String> id;
-
   /// (Available in 1.70.3+) User-defined DB instance storage space.
   final pulumi.Input<int> instanceStorage;
-
   /// Sizing of the RDS instance.
   final pulumi.Input<String> instanceType;
-
   /// (Available in 1.124.3+) The purpose of the encryption key.
   final pulumi.Input<String> keyUsage;
-
   /// (Available in 1.124.1+) The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
   /// - success
   /// - setting
   /// - failed
   final pulumi.Input<String> lastModifyStatus;
-
   /// ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
   final pulumi.Input<String> masterInstanceId;
-
   /// (Available in 1.101.0+) The master zone of the instance.
   final pulumi.Input<String> masterZone;
-
   /// (Available in 1.124.3+) The time when the encryption key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   final pulumi.Input<String> materialExpireTime;
-
   /// (Available in 1.124.1+) The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
   final pulumi.Input<String> modifyStatusReason;
-
   /// The name of the RDS instance.
   final pulumi.Input<String> name;
-
   /// `Internet` for public network or `Intranet` for private network.
   final pulumi.Input<String> netType;
-
   /// (Available in 1.124.3+) The source of the encryption key.
   final pulumi.Input<String> origin;
-
   /// (Available in 1.135.0+) Parameter list.
   final pulumi.Input<List<GetInstancesInstanceParameter>> parameters;
-
   /// (Available in 1.70.3+) RDS database connection port.
   final pulumi.Input<String> port;
-
   /// A list of IDs of read-only instances attached to the primary instance.
   final pulumi.Input<List<String>> readonlyInstanceIds;
-
   /// The region ID of the instance.
   final pulumi.Input<String> regionId;
-
   /// (Available in 1.124.1+) The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
   /// - cert
   /// - perfer
   /// - verify-ca
   /// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
   final pulumi.Input<String> replicationAcl;
-
   /// (Available in 1.124.1+) Indicates whether the server certificate needs to be updated.
   /// - Valid values for ApsaraDB RDS for MySQL and ApsaraDB RDS for SQL Server:
   /// - No
@@ -157,51 +114,36 @@ class GetInstancesInstance {
   /// - 0: no
   /// - 1: yes
   final pulumi.Input<String> requireUpdate;
-
   /// (Available in 1.124.1+) The server certificate that needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
   final pulumi.Input<String> requireUpdateItem;
-
   /// (Available in 1.124.1+) The reason why the server certificate needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
   final pulumi.Input<String> requireUpdateReason;
-
   /// (Available in 1.124.1+) The URL of the CA that issues the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
   final pulumi.Input<String> serverCaUrl;
-
   /// (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
   final pulumi.Input<String> serverCert;
-
   /// (Available in 1.124.1+) The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
   final pulumi.Input<String> serverKey;
-
   /// (Available in 1.124.1+) The time when the server certificate was created. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is valid only when the CAType parameter is set to aliyun.
   final pulumi.Input<String> sslCreateTime;
-
   /// (Available in 1.124.1+) Indicates whether SSL encryption is enabled. Valid values:
   /// - on: enabled
   /// - off: disabled
   final pulumi.Input<String> sslEnabled;
-
   /// (Available in 1.124.1+) The time when the server certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   final pulumi.Input<String> sslExpireTime;
-
   /// Status of the instance.
   final pulumi.Input<String> status;
-
   /// (Available since v1.209.1) The data replication mode of the instance.
   final pulumi.Input<String> syncMode;
-
   /// If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
   final pulumi.Input<String> tempInstanceId;
-
   /// Used to retrieve instances belong to specified VPC.
   final pulumi.Input<String> vpcId;
-
   /// Used to retrieve instances belong to specified `vswitch` resources.
   final pulumi.Input<String> vswitchId;
-
   /// (Available in 1.101.0+) The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
   final pulumi.Input<String> zoneIdSlaveA;
-
   /// (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
   final pulumi.Input<String> zoneIdSlaveB;
 
@@ -351,18 +293,7 @@ class GetInstancesInstance {
       'expireTime': expireTime,
       'guardInstanceId': guardInstanceId,
       'haMode': haMode,
-      'hostInstanceInfos':
-          pulumi.Input.mapInputValue<
-            List<GetInstancesInstanceHostInstanceInfo>,
-            List<Map<String, dynamic>>
-          >(
-            hostInstanceInfos,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetInstancesInstanceHostInstanceInfo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'hostInstanceInfos': pulumi.Input.mapInputValue<List<GetInstancesInstanceHostInstanceInfo>, List<Map<String, dynamic>>>(hostInstanceInfos, (value) => pulumi.Input.encodeList<GetInstancesInstanceHostInstanceInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'instanceStorage': instanceStorage,
       'instanceType': instanceType,
@@ -375,18 +306,7 @@ class GetInstancesInstance {
       'name': name,
       'netType': netType,
       'origin': origin,
-      'parameters':
-          pulumi.Input.mapInputValue<
-            List<GetInstancesInstanceParameter>,
-            List<Map<String, dynamic>>
-          >(
-            parameters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetInstancesInstanceParameter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'parameters': pulumi.Input.mapInputValue<List<GetInstancesInstanceParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<GetInstancesInstanceParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'port': port,
       'readonlyInstanceIds': readonlyInstanceIds,
       'regionId': regionId,
@@ -413,92 +333,50 @@ class GetInstancesInstance {
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
       acl: pulumi.Input.fromValue(map['acl'] as String),
-      availabilityZone: pulumi.Input.fromValue(
-        map['availabilityZone'] as String,
-      ),
+      availabilityZone: pulumi.Input.fromValue(map['availabilityZone'] as String),
       caType: pulumi.Input.fromValue(map['caType'] as String),
       chargeType: pulumi.Input.fromValue(map['chargeType'] as String),
       clientCaCert: pulumi.Input.fromValue(map['clientCaCert'] as String),
-      clientCaCertExpireTime: pulumi.Input.fromValue(
-        map['clientCaCertExpireTime'] as String,
-      ),
-      clientCertRevocationList: pulumi.Input.fromValue(
-        map['clientCertRevocationList'] as String,
-      ),
+      clientCaCertExpireTime: pulumi.Input.fromValue(map['clientCaCertExpireTime'] as String),
+      clientCertRevocationList: pulumi.Input.fromValue(map['clientCertRevocationList'] as String),
       connectionMode: pulumi.Input.fromValue(map['connectionMode'] as String),
-      connectionString: pulumi.Input.fromValue(
-        map['connectionString'] as String,
-      ),
+      connectionString: pulumi.Input.fromValue(map['connectionString'] as String),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       creator: pulumi.Input.fromValue(map['creator'] as String),
-      dbInstanceStorageType: pulumi.Input.fromValue(
-        map['dbInstanceStorageType'] as String,
-      ),
+      dbInstanceStorageType: pulumi.Input.fromValue(map['dbInstanceStorageType'] as String),
       dbInstanceType: pulumi.Input.fromValue(map['dbInstanceType'] as String),
       dbType: pulumi.Input.fromValue(map['dbType'] as String),
       deleteDate: pulumi.Input.fromValue(map['deleteDate'] as String),
-      deletionProtection: pulumi.Input.fromValue(
-        map['deletionProtection'] as bool,
-      ),
+      deletionProtection: pulumi.Input.fromValue(map['deletionProtection'] as bool),
       description: pulumi.Input.fromValue(map['description'] as String),
       encryptionKey: pulumi.Input.fromValue(map['encryptionKey'] as String),
-      encryptionKeyStatus: pulumi.Input.fromValue(
-        map['encryptionKeyStatus'] as String,
-      ),
+      encryptionKeyStatus: pulumi.Input.fromValue(map['encryptionKeyStatus'] as String),
       engine: pulumi.Input.fromValue(map['engine'] as String),
       engineVersion: pulumi.Input.fromValue(map['engineVersion'] as String),
       expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
       guardInstanceId: pulumi.Input.fromValue(map['guardInstanceId'] as String),
       haMode: pulumi.Input.fromValue(map['haMode'] as String),
-      hostInstanceInfos: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetInstancesInstanceHostInstanceInfo>(
-          map['hostInstanceInfos']!,
-          (value) => GetInstancesInstanceHostInstanceInfo.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      hostInstanceInfos: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstancesInstanceHostInstanceInfo>(map['hostInstanceInfos']!, (value) => GetInstancesInstanceHostInstanceInfo.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),
       instanceStorage: pulumi.Input.fromValue(map['instanceStorage'] as int),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       keyUsage: pulumi.Input.fromValue(map['keyUsage'] as String),
-      lastModifyStatus: pulumi.Input.fromValue(
-        map['lastModifyStatus'] as String,
-      ),
-      masterInstanceId: pulumi.Input.fromValue(
-        map['masterInstanceId'] as String,
-      ),
+      lastModifyStatus: pulumi.Input.fromValue(map['lastModifyStatus'] as String),
+      masterInstanceId: pulumi.Input.fromValue(map['masterInstanceId'] as String),
       masterZone: pulumi.Input.fromValue(map['masterZone'] as String),
-      materialExpireTime: pulumi.Input.fromValue(
-        map['materialExpireTime'] as String,
-      ),
-      modifyStatusReason: pulumi.Input.fromValue(
-        map['modifyStatusReason'] as String,
-      ),
+      materialExpireTime: pulumi.Input.fromValue(map['materialExpireTime'] as String),
+      modifyStatusReason: pulumi.Input.fromValue(map['modifyStatusReason'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       netType: pulumi.Input.fromValue(map['netType'] as String),
       origin: pulumi.Input.fromValue(map['origin'] as String),
-      parameters: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetInstancesInstanceParameter>(
-          map['parameters']!,
-          (value) => GetInstancesInstanceParameter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      parameters: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstancesInstanceParameter>(map['parameters']!, (value) => GetInstancesInstanceParameter.fromMap((value as Map).cast<String, dynamic>()))),
       port: pulumi.Input.fromValue(map['port'] as String),
-      readonlyInstanceIds: pulumi.Input.fromValue(
-        (map['readonlyInstanceIds'] as List).cast<String>(),
-      ),
+      readonlyInstanceIds: pulumi.Input.fromValue((map['readonlyInstanceIds'] as List).cast<String>()),
       regionId: pulumi.Input.fromValue(map['regionId'] as String),
       replicationAcl: pulumi.Input.fromValue(map['replicationAcl'] as String),
       requireUpdate: pulumi.Input.fromValue(map['requireUpdate'] as String),
-      requireUpdateItem: pulumi.Input.fromValue(
-        map['requireUpdateItem'] as String,
-      ),
-      requireUpdateReason: pulumi.Input.fromValue(
-        map['requireUpdateReason'] as String,
-      ),
+      requireUpdateItem: pulumi.Input.fromValue(map['requireUpdateItem'] as String),
+      requireUpdateReason: pulumi.Input.fromValue(map['requireUpdateReason'] as String),
       serverCaUrl: pulumi.Input.fromValue(map['serverCaUrl'] as String),
       serverCert: pulumi.Input.fromValue(map['serverCert'] as String),
       serverKey: pulumi.Input.fromValue(map['serverKey'] as String),
@@ -515,3 +393,4 @@ class GetInstancesInstance {
     );
   }
 }
+

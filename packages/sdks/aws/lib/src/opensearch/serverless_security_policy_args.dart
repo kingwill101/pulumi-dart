@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerlessSecurityPolicyArgs {
   /// Description of the policy. Typically used to store information about the permissions defined in the policy.
   final pulumi.Input<String>? description;
-
   /// Name of the policy.
   final pulumi.Input<String>? name;
-
   /// JSON policy document to use as the content for the new policy
   final pulumi.Input<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Type of security policy. One of `encryption` or `network`.
   ///
   /// The following arguments are optional:
@@ -50,23 +46,12 @@ class ServerlessSecurityPolicyArgs {
 
   factory ServerlessSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServerlessSecurityPolicyArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policy: pulumi.Input.fromValue(map['policy'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

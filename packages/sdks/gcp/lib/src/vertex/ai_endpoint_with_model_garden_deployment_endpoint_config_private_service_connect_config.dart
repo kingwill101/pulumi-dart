@@ -6,17 +6,11 @@ import 'ai_endpoint_with_model_garden_deployment_endpoint_config_private_service
 class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig {
   /// Required. If true, expose the IndexEndpoint via private service connect.
   final pulumi.Input<bool> enablePrivateServiceConnect;
-
   /// A list of Projects from which the forwarding rule will target the service attachment.
   final pulumi.Input<List<String>>? projectAllowlists;
-
   /// PSC config that is used to automatically create PSC endpoints in the user projects.
   /// Structure is documented below.
-  final pulumi.Input<
-    AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs
-  >?
-  pscAutomationConfigs;
-
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs>? pscAutomationConfigs;
   /// (Output)
   /// Output only. The name of the generated service attachment resource.
   /// This is only populated if the endpoint is deployed with PrivateServiceConnect.
@@ -38,41 +32,18 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
     return <String, dynamic>{
       'enablePrivateServiceConnect': enablePrivateServiceConnect,
       'projectAllowlists': ?projectAllowlists,
-      'pscAutomationConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs,
-            Map<String, dynamic>
-          >(pscAutomationConfigs, (value) => value.toMap()),
+      'pscAutomationConfigs': ?pulumi.Input.mapOptionalInputValue<AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs, Map<String, dynamic>>(pscAutomationConfigs, (value) => value.toMap()),
       'serviceAttachment': ?serviceAttachment,
     };
   }
 
-  factory AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig(
-      enablePrivateServiceConnect: pulumi.Input.fromValue(
-        map['enablePrivateServiceConnect'] as bool,
-      ),
-      projectAllowlists: (() {
-        final guardedValue = map['projectAllowlists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      pscAutomationConfigs: (() {
-        final guardedValue = map['pscAutomationConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      serviceAttachment: (() {
-        final guardedValue = map['serviceAttachment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enablePrivateServiceConnect: pulumi.Input.fromValue(map['enablePrivateServiceConnect'] as bool),
+      projectAllowlists: (() { final guardedValue = map['projectAllowlists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      pscAutomationConfigs: (() { final guardedValue = map['pscAutomationConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serviceAttachment: (() { final guardedValue = map['serviceAttachment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

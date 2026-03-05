@@ -12,77 +12,60 @@ class GatewayArgs {
   /// This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
   /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
   final pulumi.Input<List<String>>? addresses;
-
   /// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
   /// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
   final pulumi.Input<List<String>>? certificateUrls;
-
   /// When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
   /// If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
   final pulumi.Input<bool>? deleteSwgAutogenRouterOnDestroy;
-
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
-
   /// Determines if envoy will insert internal debug headers into upstream requests.
   /// Other Envoy headers may still be injected.
   /// By default, envoy will not insert any debug headers.
   /// Possible values are: `NONE`, `DEBUG_HEADERS`.
   final pulumi.Input<String>? envoyHeaders;
-
   /// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
   /// For example: 'projects/*/locations/*/gatewaySecurityPolicies/swg-policy'.
   /// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
   final pulumi.Input<String>? gatewaySecurityPolicy;
-
   /// The IP Version that will be used by this gateway.
   /// Possible values are: `IPV4`, `IPV6`.
   final pulumi.Input<String>? ipVersion;
-
   /// Set of label tags associated with the Gateway resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location of the gateway.
   /// The default value is `global`.
   final pulumi.Input<String>? location;
-
   /// Name of the Gateway resource.
   final pulumi.Input<String>? name;
-
   /// The relative resource name identifying the VPC network that is using this configuration.
   /// For example: 'projects/*/global/networks/network-1'.
   /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
   final pulumi.Input<String>? network;
-
   /// One or more port numbers (1-65535), on which the Gateway will receive traffic.
   /// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
   /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
   final pulumi.Input<List<int>> ports;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
   /// Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
   final pulumi.Input<String>? routingMode;
-
   /// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
   /// The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
   /// Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
   final pulumi.Input<String>? scope;
-
   /// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
   final pulumi.Input<String>? serverTlsPolicy;
-
   /// The relative resource name identifying the subnetwork in which this SWG is allocated.
   /// For example: projects/*/regions/us-central1/subnetworks/network-1.
   /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
   final pulumi.Input<String>? subnetwork;
-
   /// Immutable. The type of the customer managed gateway.
   /// Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
   final pulumi.Input<String> type;
@@ -152,90 +135,25 @@ class GatewayArgs {
 
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
-      addresses: (() {
-        final guardedValue = map['addresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      certificateUrls: (() {
-        final guardedValue = map['certificateUrls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      deleteSwgAutogenRouterOnDestroy: (() {
-        final guardedValue = map['deleteSwgAutogenRouterOnDestroy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      envoyHeaders: (() {
-        final guardedValue = map['envoyHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      gatewaySecurityPolicy: (() {
-        final guardedValue = map['gatewaySecurityPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipVersion: (() {
-        final guardedValue = map['ipVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addresses: (() { final guardedValue = map['addresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      certificateUrls: (() { final guardedValue = map['certificateUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deleteSwgAutogenRouterOnDestroy: (() { final guardedValue = map['deleteSwgAutogenRouterOnDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      envoyHeaders: (() { final guardedValue = map['envoyHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gatewaySecurityPolicy: (() { final guardedValue = map['gatewaySecurityPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipVersion: (() { final guardedValue = map['ipVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ports: pulumi.Input.fromValue((map['ports'] as List).cast<int>()),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routingMode: (() {
-        final guardedValue = map['routingMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverTlsPolicy: (() {
-        final guardedValue = map['serverTlsPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetwork: (() {
-        final guardedValue = map['subnetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routingMode: (() { final guardedValue = map['routingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverTlsPolicy: (() { final guardedValue = map['serverTlsPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

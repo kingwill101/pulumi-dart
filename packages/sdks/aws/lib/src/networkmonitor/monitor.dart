@@ -112,21 +112,16 @@ import 'monitor_state.dart';
 class Monitor extends pulumi.CustomResource {
   /// The time, in seconds, that metrics are aggregated and sent to Amazon CloudWatch. Valid values are either 30 or 60.
   late final pulumi.Output<int> aggregationPeriod;
-
   /// The ARN of the monitor.
   late final pulumi.Output<String> arn;
-
   /// The name of the monitor.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> monitorName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value tags for the monitor. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -139,11 +134,11 @@ class Monitor extends pulumi.CustomResource {
     MonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkmonitor/monitor:Monitor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkmonitor/monitor:Monitor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aggregationPeriod = registerOutput<int>('aggregationPeriod');
     arn = registerOutput<String>('arn');
     monitorName = registerOutput<String>('monitorName');
@@ -170,11 +165,11 @@ class Monitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkmonitor/monitor:Monitor',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkmonitor/monitor:Monitor',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aggregationPeriod = registerOutput<int>('aggregationPeriod');
     arn = registerOutput<String>('arn');
     monitorName = registerOutput<String>('monitorName');

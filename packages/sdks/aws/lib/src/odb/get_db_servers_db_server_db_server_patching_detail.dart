@@ -29,20 +29,13 @@ class GetDbServersDbServerDbServerPatchingDetail {
     };
   }
 
-  factory GetDbServersDbServerDbServerPatchingDetail.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDbServersDbServerDbServerPatchingDetail.fromMap(Map<String, dynamic> map) {
     return GetDbServersDbServerDbServerPatchingDetail(
-      estimatedPatchDuration: pulumi.Input.fromValue(
-        map['estimatedPatchDuration'] as int,
-      ),
+      estimatedPatchDuration: pulumi.Input.fromValue(map['estimatedPatchDuration'] as int),
       patchingStatus: pulumi.Input.fromValue(map['patchingStatus'] as String),
-      timePatchingEnded: pulumi.Input.fromValue(
-        map['timePatchingEnded'] as String,
-      ),
-      timePatchingStarted: pulumi.Input.fromValue(
-        map['timePatchingStarted'] as String,
-      ),
+      timePatchingEnded: pulumi.Input.fromValue(map['timePatchingEnded'] as String),
+      timePatchingStarted: pulumi.Input.fromValue(map['timePatchingStarted'] as String),
     );
   }
 }
+

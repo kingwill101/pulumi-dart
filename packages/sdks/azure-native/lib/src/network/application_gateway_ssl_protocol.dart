@@ -17,3 +17,4 @@ enum ApplicationGatewaySslProtocol {
     throw ArgumentError('Unknown ApplicationGatewaySslProtocol value: $value');
   }
 }
+

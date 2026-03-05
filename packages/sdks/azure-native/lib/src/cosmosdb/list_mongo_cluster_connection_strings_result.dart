@@ -10,28 +10,20 @@ class ListMongoClusterConnectionStringsResult {
 
   /// Creates a new [ListMongoClusterConnectionStringsResult].
   /// [connectionStrings] An array that contains the connection strings for a mongo cluster.
-  ListMongoClusterConnectionStringsResult({required this.connectionStrings});
+  ListMongoClusterConnectionStringsResult({
+    required this.connectionStrings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionStrings':
-          pulumi.Input.encodeList<
-            ConnectionStringResponse,
-            Map<String, dynamic>
-          >(connectionStrings, (value) => value.toMap()),
+      'connectionStrings': pulumi.Input.encodeList<ConnectionStringResponse, Map<String, dynamic>>(connectionStrings, (value) => value.toMap()),
     };
   }
 
-  factory ListMongoClusterConnectionStringsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListMongoClusterConnectionStringsResult.fromMap(Map<String, dynamic> map) {
     return ListMongoClusterConnectionStringsResult(
-      connectionStrings: pulumi.Input.decodeList<ConnectionStringResponse>(
-        map['connectionStrings']!,
-        (value) => ConnectionStringResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      connectionStrings: pulumi.Input.decodeList<ConnectionStringResponse>(map['connectionStrings']!, (value) => ConnectionStringResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

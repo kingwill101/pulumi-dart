@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ArtifactObjects {
   /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
   final pulumi.Input<String>? location;
-
   /// Path globs used to match files in the build's workspace.
   final pulumi.Input<List<String>>? paths;
 
   /// Creates a new [ArtifactObjects].
   /// [location] Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
   /// [paths] Path globs used to match files in the build's workspace.
-  ArtifactObjects({this.location, this.paths});
+  ArtifactObjects({
+    this.location,
+    this.paths,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': ?location, 'paths': ?paths};
+    return <String, dynamic>{
+      'location': ?location,
+      'paths': ?paths,
+    };
   }
 
   factory ArtifactObjects.fromMap(Map<String, dynamic> map) {
     return ArtifactObjects(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      paths: (() {
-        final guardedValue = map['paths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      paths: (() { final guardedValue = map['paths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

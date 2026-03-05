@@ -7,16 +7,12 @@ import 'enterprise_crm_eventbus_stats_dimensions_response.dart';
 class EnterpriseCrmEventbusStatsResponse {
   /// Dimensions that these stats have been aggregated on.
   final pulumi.Input<EnterpriseCrmEventbusStatsDimensionsResponse> dimensions;
-
   /// Average duration in seconds.
   final pulumi.Input<double> durationInSeconds;
-
   /// Average error rate.
   final pulumi.Input<double> errorRate;
-
   /// Queries per second.
   final pulumi.Input<double> qps;
-
   /// Average warning rate.
   final pulumi.Input<double> warningRate;
 
@@ -36,11 +32,7 @@ class EnterpriseCrmEventbusStatsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions':
-          pulumi.Input.mapInputValue<
-            EnterpriseCrmEventbusStatsDimensionsResponse,
-            Map<String, dynamic>
-          >(dimensions, (value) => value.toMap()),
+      'dimensions': pulumi.Input.mapInputValue<EnterpriseCrmEventbusStatsDimensionsResponse, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
       'durationInSeconds': durationInSeconds,
       'errorRate': errorRate,
       'qps': qps,
@@ -50,17 +42,12 @@ class EnterpriseCrmEventbusStatsResponse {
 
   factory EnterpriseCrmEventbusStatsResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusStatsResponse(
-      dimensions: pulumi.Input.fromValue(
-        EnterpriseCrmEventbusStatsDimensionsResponse.fromMap(
-          (map['dimensions']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      durationInSeconds: pulumi.Input.fromValue(
-        map['durationInSeconds'] as double,
-      ),
+      dimensions: pulumi.Input.fromValue(EnterpriseCrmEventbusStatsDimensionsResponse.fromMap((map['dimensions']! as Map).cast<String, dynamic>())),
+      durationInSeconds: pulumi.Input.fromValue(map['durationInSeconds'] as double),
       errorRate: pulumi.Input.fromValue(map['errorRate'] as double),
       qps: pulumi.Input.fromValue(map['qps'] as double),
       warningRate: pulumi.Input.fromValue(map['warningRate'] as double),
     );
   }
 }
+

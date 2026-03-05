@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionsRegionMonitors {
   /// A list of ACLP alerts services supported in the region.
   final pulumi.Input<List<String>> alerts;
-
   /// A list of ACLP metrics services supported in the region.
   final pulumi.Input<List<String>> metrics;
 
   /// Creates a new [GetRegionsRegionMonitors].
   /// [alerts] A list of ACLP alerts services supported in the region.
   /// [metrics] A list of ACLP metrics services supported in the region.
-  GetRegionsRegionMonitors({required this.alerts, required this.metrics});
+  GetRegionsRegionMonitors({
+    required this.alerts,
+    required this.metrics,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'alerts': alerts, 'metrics': metrics};
+    return <String, dynamic>{
+      'alerts': alerts,
+      'metrics': metrics,
+    };
   }
 
   factory GetRegionsRegionMonitors.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class GetRegionsRegionMonitors {
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScaleSetPacketCaptureMachineScope {
   /// A list of Virtual Machine Scale Set instance IDs which should be excluded from running Packet Capture, e.g. `["0", "2"]`. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>>? excludeInstanceIds;
-
   /// A list of Virtual Machine Scale Set instance IDs which should be included for Packet Capture, e.g. `["1", "3"]`. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>>? includeInstanceIds;
 
@@ -26,16 +25,9 @@ class ScaleSetPacketCaptureMachineScope {
 
   factory ScaleSetPacketCaptureMachineScope.fromMap(Map<String, dynamic> map) {
     return ScaleSetPacketCaptureMachineScope(
-      excludeInstanceIds: (() {
-        final guardedValue = map['excludeInstanceIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      includeInstanceIds: (() {
-        final guardedValue = map['includeInstanceIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      excludeInstanceIds: (() { final guardedValue = map['excludeInstanceIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      includeInstanceIds: (() { final guardedValue = map['includeInstanceIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

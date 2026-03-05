@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionSettingResponse {
   /// Maps the region to the regional custom subdomain.
   final pulumi.Input<String>? customsubdomain;
-
   /// Name of the region.
   final pulumi.Input<String>? name;
-
   /// A value for priority or weighted routing methods.
   final pulumi.Input<double>? value;
 
@@ -17,7 +15,11 @@ class RegionSettingResponse {
   /// [customsubdomain] Maps the region to the regional custom subdomain.
   /// [name] Name of the region.
   /// [value] A value for priority or weighted routing methods.
-  RegionSettingResponse({this.customsubdomain, this.name, this.value});
+  RegionSettingResponse({
+    this.customsubdomain,
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class RegionSettingResponse {
 
   factory RegionSettingResponse.fromMap(Map<String, dynamic> map) {
     return RegionSettingResponse(
-      customsubdomain: (() {
-        final guardedValue = map['customsubdomain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      customsubdomain: (() { final guardedValue = map['customsubdomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

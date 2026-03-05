@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AclEntryAttachmentArgs {
   /// The ID of the Acl.
   final pulumi.Input<String> aclId;
-
   /// The comment of the entry.
   final pulumi.Input<String>? comment;
-
   /// The CIDR blocks.
   final pulumi.Input<String> entry;
 
@@ -37,12 +35,9 @@ class AclEntryAttachmentArgs {
   factory AclEntryAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AclEntryAttachmentArgs(
       aclId: pulumi.Input.fromValue(map['aclId'] as String),
-      comment: (() {
-        final guardedValue = map['comment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entry: pulumi.Input.fromValue(map['entry'] as String),
     );
   }
 }
+

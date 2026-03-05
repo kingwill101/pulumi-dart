@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomResourceProviderArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the resource provider.
   final pulumi.Input<String> resourceProviderName;
 
@@ -30,12 +29,9 @@ class GetCustomResourceProviderArgs {
 
   factory GetCustomResourceProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomResourceProviderArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      resourceProviderName: pulumi.Input.fromValue(
-        map['resourceProviderName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      resourceProviderName: pulumi.Input.fromValue(map['resourceProviderName'] as String),
     );
   }
 }
+

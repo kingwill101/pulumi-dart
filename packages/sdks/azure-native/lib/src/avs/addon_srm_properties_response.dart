@@ -7,10 +7,8 @@ class AddonSrmPropertiesResponse {
   /// Addon type
   /// Expected value is 'SRM'.
   final pulumi.Input<String> addonType;
-
   /// The Site Recovery Manager (SRM) license
   final pulumi.Input<String>? licenseKey;
-
   /// The state of the addon provisioning
   final pulumi.Input<String> provisioningState;
 
@@ -35,14 +33,9 @@ class AddonSrmPropertiesResponse {
   factory AddonSrmPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AddonSrmPropertiesResponse(
       addonType: pulumi.Input.fromValue(map['addonType'] as String),
-      licenseKey: (() {
-        final guardedValue = map['licenseKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      licenseKey: (() { final guardedValue = map['licenseKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

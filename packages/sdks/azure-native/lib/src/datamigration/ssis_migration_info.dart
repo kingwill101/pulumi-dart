@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SsisMigrationInfo {
   /// The overwrite option for the SSIS environment migration
   final pulumi.Input<String>? environmentOverwriteOption;
-
   /// The overwrite option for the SSIS project migration
   final pulumi.Input<String>? projectOverwriteOption;
-
   /// The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
   final pulumi.Input<String>? ssisStoreType;
 
@@ -33,21 +31,10 @@ class SsisMigrationInfo {
 
   factory SsisMigrationInfo.fromMap(Map<String, dynamic> map) {
     return SsisMigrationInfo(
-      environmentOverwriteOption: (() {
-        final guardedValue = map['environmentOverwriteOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      projectOverwriteOption: (() {
-        final guardedValue = map['projectOverwriteOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ssisStoreType: (() {
-        final guardedValue = map['ssisStoreType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      environmentOverwriteOption: (() { final guardedValue = map['environmentOverwriteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      projectOverwriteOption: (() { final guardedValue = map['projectOverwriteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ssisStoreType: (() { final guardedValue = map['ssisStoreType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

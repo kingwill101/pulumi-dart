@@ -12,10 +12,14 @@ class GetRealtimeLogConfigArgs {
 
   /// Creates a new [GetRealtimeLogConfigArgs].
   /// [name] Unique name to identify this real-time log configuration.
-  GetRealtimeLogConfigArgs({required this.name});
+  GetRealtimeLogConfigArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetRealtimeLogConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetRealtimeLogConfigArgs {
     );
   }
 }
+

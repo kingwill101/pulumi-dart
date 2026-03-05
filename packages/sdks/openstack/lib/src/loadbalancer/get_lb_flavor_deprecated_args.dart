@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLbFlavorDeprecatedArgs {
   /// The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
   final pulumi.Input<String>? flavorId;
-
   /// The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
   final pulumi.Input<String>? name;
-
   /// The region in which to obtain the V2 Load Balancer client.
   /// If omitted, the `region` argument of the provider is used.
   final pulumi.Input<String>? region;
@@ -21,7 +19,11 @@ class GetLbFlavorDeprecatedArgs {
   /// [flavorId] The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
   /// [name] The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
   /// [region] The region in which to obtain the V2 Load Balancer client.
-  GetLbFlavorDeprecatedArgs({this.flavorId, this.name, this.region});
+  GetLbFlavorDeprecatedArgs({
+    this.flavorId,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,21 +35,10 @@ class GetLbFlavorDeprecatedArgs {
 
   factory GetLbFlavorDeprecatedArgs.fromMap(Map<String, dynamic> map) {
     return GetLbFlavorDeprecatedArgs(
-      flavorId: (() {
-        final guardedValue = map['flavorId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      flavorId: (() { final guardedValue = map['flavorId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

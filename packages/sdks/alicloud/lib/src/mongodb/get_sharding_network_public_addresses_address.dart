@@ -5,34 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetShardingNetworkPublicAddressesAddress {
   /// The db instance id.
   final pulumi.Input<String> dbInstanceId;
-
   /// The remaining duration of the classic network address. Unit: `seconds`.
   final pulumi.Input<String> expiredTime;
-
   /// The IP address of the instance.
   final pulumi.Input<String> ipAddress;
-
   /// The endpoint of the instance.
   final pulumi.Input<String> networkAddress;
-
   /// The network type.
   final pulumi.Input<String> networkType;
-
   /// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
   final pulumi.Input<String> nodeId;
-
   /// The type of the node.
   final pulumi.Input<String> nodeType;
-
   /// The port number.
   final pulumi.Input<String> port;
-
   /// The role of the node.
   final pulumi.Input<String> role;
-
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
-
   /// The vSwitch ID of the VPC.
   final pulumi.Input<String> vswitchId;
 
@@ -78,9 +68,7 @@ class GetShardingNetworkPublicAddressesAddress {
     };
   }
 
-  factory GetShardingNetworkPublicAddressesAddress.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetShardingNetworkPublicAddressesAddress.fromMap(Map<String, dynamic> map) {
     return GetShardingNetworkPublicAddressesAddress(
       dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
       expiredTime: pulumi.Input.fromValue(map['expiredTime'] as String),
@@ -96,3 +84,4 @@ class GetShardingNetworkPublicAddressesAddress {
     );
   }
 }
+

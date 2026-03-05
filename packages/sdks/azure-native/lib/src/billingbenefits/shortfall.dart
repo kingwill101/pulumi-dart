@@ -7,22 +7,16 @@ import 'commitment.dart';
 class Shortfall {
   /// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
   final pulumi.Input<double>? balanceVersion;
-
   /// Shortfall amount with grain.
   final pulumi.Input<Commitment>? charge;
-
   /// End DateTime in UTC.
   final pulumi.Input<String>? endAt;
-
   /// Represents catalog UPN.
   final pulumi.Input<String>? productCode;
-
   /// Fully-qualified resource identifier of the credits associated with the shortfall.
   final pulumi.Input<String>? resourceId;
-
   /// Start DateTime.
   final pulumi.Input<String>? startAt;
-
   /// This is an identifier of the shortfall which will not change for its lifetime.
   final pulumi.Input<String>? systemId;
 
@@ -47,11 +41,7 @@ class Shortfall {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'balanceVersion': ?balanceVersion,
-      'charge':
-          ?pulumi.Input.mapOptionalInputValue<Commitment, Map<String, dynamic>>(
-            charge,
-            (value) => value.toMap(),
-          ),
+      'charge': ?pulumi.Input.mapOptionalInputValue<Commitment, Map<String, dynamic>>(charge, (value) => value.toMap()),
       'endAt': ?endAt,
       'productCode': ?productCode,
       'resourceId': ?resourceId,
@@ -62,43 +52,14 @@ class Shortfall {
 
   factory Shortfall.fromMap(Map<String, dynamic> map) {
     return Shortfall(
-      balanceVersion: (() {
-        final guardedValue = map['balanceVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      charge: (() {
-        final guardedValue = map['charge'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Commitment.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      endAt: (() {
-        final guardedValue = map['endAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      productCode: (() {
-        final guardedValue = map['productCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startAt: (() {
-        final guardedValue = map['startAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      systemId: (() {
-        final guardedValue = map['systemId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      balanceVersion: (() { final guardedValue = map['balanceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      charge: (() { final guardedValue = map['charge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Commitment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      endAt: (() { final guardedValue = map['endAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      productCode: (() { final guardedValue = map['productCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startAt: (() { final guardedValue = map['startAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      systemId: (() { final guardedValue = map['systemId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

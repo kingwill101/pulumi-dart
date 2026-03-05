@@ -11,7 +11,6 @@ class GetCloudVmClustersArgs {
   ///
   /// - - -
   final pulumi.Input<String> location;
-
   /// The project to which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -19,20 +18,23 @@ class GetCloudVmClustersArgs {
   /// Creates a new [GetCloudVmClustersArgs].
   /// [location] The location of the resource.
   /// [project] The project to which the resource belongs. If it
-  GetCloudVmClustersArgs({required this.location, this.project});
+  GetCloudVmClustersArgs({
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': location, 'project': ?project};
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetCloudVmClustersArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClustersArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

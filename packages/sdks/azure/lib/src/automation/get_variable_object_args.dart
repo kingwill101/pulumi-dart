@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVariableObjectArgs {
   /// The name of the automation account in which the Automation Variable exists.
   final pulumi.Input<String> automationAccountName;
-
   /// The name of the Automation Variable.
   final pulumi.Input<String> name;
-
   /// The Name of the Resource Group where the automation account exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetVariableObjectArgs {
 
   factory GetVariableObjectArgs.fromMap(Map<String, dynamic> map) {
     return GetVariableObjectArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

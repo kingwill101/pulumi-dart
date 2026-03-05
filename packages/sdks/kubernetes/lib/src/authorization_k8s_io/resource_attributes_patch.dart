@@ -8,28 +8,20 @@ import 'label_selector_attributes_patch.dart';
 class ResourceAttributesPatch {
   /// fieldSelector describes the limitation on access based on field.  It can only limit access, not broaden it.
   final pulumi.Input<FieldSelectorAttributesPatch>? fieldSelector;
-
   /// Group is the API Group of the Resource.  "*" means all.
   final pulumi.Input<String>? group;
-
   /// labelSelector describes the limitation on access based on labels.  It can only limit access, not broaden it.
   final pulumi.Input<LabelSelectorAttributesPatch>? labelSelector;
-
   /// Name is the name of the resource being requested for a "get" or deleted for a "delete". "" (empty) means all.
   final pulumi.Input<String>? name;
-
   /// Namespace is the namespace of the action being requested.  Currently, there is no distinction between no namespace and all namespaces "" (empty) is defaulted for LocalSubjectAccessReviews "" (empty) is empty for cluster-scoped resources "" (empty) means "all" for namespace scoped resources from a SubjectAccessReview or SelfSubjectAccessReview
   final pulumi.Input<String>? namespace;
-
   /// Resource is one of the existing resource types.  "*" means all.
   final pulumi.Input<String>? resource;
-
   /// Subresource is one of the existing resource types.  "" means none.
   final pulumi.Input<String>? subresource;
-
   /// Verb is a kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy.  "*" means all.
   final pulumi.Input<String>? verb;
-
   /// Version is the API Version of the Resource.  "*" means all.
   final pulumi.Input<String>? version;
 
@@ -57,17 +49,9 @@ class ResourceAttributesPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fieldSelector':
-          ?pulumi.Input.mapOptionalInputValue<
-            FieldSelectorAttributesPatch,
-            Map<String, dynamic>
-          >(fieldSelector, (value) => value.toMap()),
+      'fieldSelector': ?pulumi.Input.mapOptionalInputValue<FieldSelectorAttributesPatch, Map<String, dynamic>>(fieldSelector, (value) => value.toMap()),
       'group': ?group,
-      'labelSelector':
-          ?pulumi.Input.mapOptionalInputValue<
-            LabelSelectorAttributesPatch,
-            Map<String, dynamic>
-          >(labelSelector, (value) => value.toMap()),
+      'labelSelector': ?pulumi.Input.mapOptionalInputValue<LabelSelectorAttributesPatch, Map<String, dynamic>>(labelSelector, (value) => value.toMap()),
       'name': ?name,
       'namespace': ?namespace,
       'resource': ?resource,
@@ -79,59 +63,16 @@ class ResourceAttributesPatch {
 
   factory ResourceAttributesPatch.fromMap(Map<String, dynamic> map) {
     return ResourceAttributesPatch(
-      fieldSelector: (() {
-        final guardedValue = map['fieldSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FieldSelectorAttributesPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      group: (() {
-        final guardedValue = map['group'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labelSelector: (() {
-        final guardedValue = map['labelSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LabelSelectorAttributesPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resource: (() {
-        final guardedValue = map['resource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subresource: (() {
-        final guardedValue = map['subresource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      verb: (() {
-        final guardedValue = map['verb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fieldSelector: (() { final guardedValue = map['fieldSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FieldSelectorAttributesPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labelSelector: (() { final guardedValue = map['labelSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LabelSelectorAttributesPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subresource: (() { final guardedValue = map['subresource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      verb: (() { final guardedValue = map['verb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

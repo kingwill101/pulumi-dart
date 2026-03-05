@@ -305,23 +305,18 @@ import 'custom_hostname_binding_state.dart';
 class CustomHostnameBinding extends pulumi.CustomResource {
   /// The name of the App Service in which to add the Custom Hostname Binding. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServiceName;
-
   /// Specifies the Custom Hostname to use for the App Service, example `www.example.com`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** A CNAME needs to be configured from this Hostname to the Azure Website - otherwise Azure will reject the Hostname Binding.
   late final pulumi.Output<String> hostname;
-
   /// The name of the resource group in which the App Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The SSL type. Possible values are `IpBasedEnabled` and `SniEnabled`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sslState;
-
   /// The SSL certificate thumbprint. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `thumbprint` must be specified when `ssl_state` is set.
   late final pulumi.Output<String> thumbprint;
-
   /// The virtual IP address assigned to the hostname if IP based SSL is enabled.
   late final pulumi.Output<String> virtualIp;
 
@@ -334,11 +329,11 @@ class CustomHostnameBinding extends pulumi.CustomResource {
     CustomHostnameBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/customHostnameBinding:CustomHostnameBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/customHostnameBinding:CustomHostnameBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceName = registerOutput<String>('appServiceName');
     hostname = registerOutput<String>('hostname');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -365,11 +360,11 @@ class CustomHostnameBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/customHostnameBinding:CustomHostnameBinding',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/customHostnameBinding:CustomHostnameBinding',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceName = registerOutput<String>('appServiceName');
     hostname = registerOutput<String>('hostname');
     resourceGroupName = registerOutput<String>('resourceGroupName');

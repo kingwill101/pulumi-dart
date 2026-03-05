@@ -13,18 +13,15 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'token': ?token};
+    return <String, dynamic>{
+      'token': ?token,
+    };
   }
 
-  factory AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig(
-      token: (() {
-        final guardedValue = map['token'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      token: (() { final guardedValue = map['token']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,15 +8,10 @@ import 'action_ip_extended_community_properties_response.dart';
 class StatementActionPropertiesResponse {
   /// Action type. Example: Permit | Deny | Continue.
   final pulumi.Input<String> actionType;
-
   /// IP Community Properties.
-  final pulumi.Input<ActionIpCommunityPropertiesResponse>?
-  ipCommunityProperties;
-
+  final pulumi.Input<ActionIpCommunityPropertiesResponse>? ipCommunityProperties;
   /// IP Extended Community Properties.
-  final pulumi.Input<ActionIpExtendedCommunityPropertiesResponse>?
-  ipExtendedCommunityProperties;
-
+  final pulumi.Input<ActionIpExtendedCommunityPropertiesResponse>? ipExtendedCommunityProperties;
   /// Local Preference of the route policy.
   final pulumi.Input<double>? localPreference;
 
@@ -35,16 +30,8 @@ class StatementActionPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actionType': actionType,
-      'ipCommunityProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            ActionIpCommunityPropertiesResponse,
-            Map<String, dynamic>
-          >(ipCommunityProperties, (value) => value.toMap()),
-      'ipExtendedCommunityProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            ActionIpExtendedCommunityPropertiesResponse,
-            Map<String, dynamic>
-          >(ipExtendedCommunityProperties, (value) => value.toMap()),
+      'ipCommunityProperties': ?pulumi.Input.mapOptionalInputValue<ActionIpCommunityPropertiesResponse, Map<String, dynamic>>(ipCommunityProperties, (value) => value.toMap()),
+      'ipExtendedCommunityProperties': ?pulumi.Input.mapOptionalInputValue<ActionIpExtendedCommunityPropertiesResponse, Map<String, dynamic>>(ipExtendedCommunityProperties, (value) => value.toMap()),
       'localPreference': ?localPreference,
     };
   }
@@ -52,29 +39,10 @@ class StatementActionPropertiesResponse {
   factory StatementActionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StatementActionPropertiesResponse(
       actionType: pulumi.Input.fromValue(map['actionType'] as String),
-      ipCommunityProperties: (() {
-        final guardedValue = map['ipCommunityProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ActionIpCommunityPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      ipExtendedCommunityProperties: (() {
-        final guardedValue = map['ipExtendedCommunityProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ActionIpExtendedCommunityPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      localPreference: (() {
-        final guardedValue = map['localPreference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      ipCommunityProperties: (() { final guardedValue = map['ipCommunityProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActionIpCommunityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ipExtendedCommunityProperties: (() { final guardedValue = map['ipExtendedCommunityProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActionIpExtendedCommunityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      localPreference: (() { final guardedValue = map['localPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

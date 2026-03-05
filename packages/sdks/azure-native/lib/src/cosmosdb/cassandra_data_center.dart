@@ -172,13 +172,10 @@ import 'data_center_resource_response_properties.dart';
 class CassandraDataCenter extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the database account.
   late final pulumi.Output<String> name;
-
   /// Properties of a managed Cassandra data center.
   late final pulumi.Output<DataCenterResourceResponseProperties> properties;
-
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -191,23 +188,14 @@ class CassandraDataCenter extends pulumi.CustomResource {
     CassandraDataCenterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cosmosdb:CassandraDataCenter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cosmosdb:CassandraDataCenter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<DataCenterResourceResponseProperties>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataCenterResourceResponseProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<DataCenterResourceResponseProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCenterResourceResponseProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

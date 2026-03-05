@@ -7,19 +7,20 @@ class RouteSpecTcpRouteMatch {
 
   /// Creates a new [RouteSpecTcpRouteMatch].
   /// [port] Optional.
-  RouteSpecTcpRouteMatch({this.port});
+  RouteSpecTcpRouteMatch({
+    this.port,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': ?port};
+    return <String, dynamic>{
+      'port': ?port,
+    };
   }
 
   factory RouteSpecTcpRouteMatch.fromMap(Map<String, dynamic> map) {
     return RouteSpecTcpRouteMatch(
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

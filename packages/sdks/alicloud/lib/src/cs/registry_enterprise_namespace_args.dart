@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryEnterpriseNamespaceArgs {
   /// Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
   final pulumi.Input<bool>? autoCreate;
-
   /// The default type of the repository that is automatically created. Valid values:
   /// - `PUBLIC`: A public repository.
   /// - `PRIVATE`: A private repository.
   final pulumi.Input<String>? defaultVisibility;
-
   /// The ID of the Container Registry Enterprise Edition instance.
   final pulumi.Input<String> instanceId;
-
   /// The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
   final pulumi.Input<String>? name;
 
@@ -44,22 +41,11 @@ class RegistryEnterpriseNamespaceArgs {
 
   factory RegistryEnterpriseNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return RegistryEnterpriseNamespaceArgs(
-      autoCreate: (() {
-        final guardedValue = map['autoCreate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      defaultVisibility: (() {
-        final guardedValue = map['defaultVisibility'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autoCreate: (() { final guardedValue = map['autoCreate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      defaultVisibility: (() { final guardedValue = map['defaultVisibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressGatewayServiceNetworkConfiguration {
   /// Security groups associated with the task. If not specified, the default security group for the VPC is used.
   final pulumi.Input<List<String>> securityGroups;
-
   /// Subnets associated with the task. At least 2 subnets must be specified when using network configuration. If not specified, default subnets will be used.
   final pulumi.Input<List<String>> subnets;
 
@@ -24,14 +23,11 @@ class ExpressGatewayServiceNetworkConfiguration {
     };
   }
 
-  factory ExpressGatewayServiceNetworkConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExpressGatewayServiceNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServiceNetworkConfiguration(
-      securityGroups: pulumi.Input.fromValue(
-        (map['securityGroups'] as List).cast<String>(),
-      ),
+      securityGroups: pulumi.Input.fromValue((map['securityGroups'] as List).cast<String>()),
       subnets: pulumi.Input.fromValue((map['subnets'] as List).cast<String>()),
     );
   }
 }
+

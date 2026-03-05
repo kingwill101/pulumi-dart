@@ -160,7 +160,6 @@ import 'networking_ip_assignment_state.dart';
 class NetworkingIpAssignment extends pulumi.CustomResource {
   /// A list of IP/Linode assignments to apply.
   late final pulumi.Output<List<Map<String, dynamic>>?> assignments;
-
   /// The region where the IP addresses will be assigned.
   late final pulumi.Output<String> region;
 
@@ -173,11 +172,11 @@ class NetworkingIpAssignment extends pulumi.CustomResource {
     NetworkingIpAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/networkingIpAssignment:NetworkingIpAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/networkingIpAssignment:NetworkingIpAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assignments = registerOutput<List<Map<String, dynamic>>?>('assignments');
     region = registerOutput<String>('region');
   }
@@ -200,11 +199,11 @@ class NetworkingIpAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/networkingIpAssignment:NetworkingIpAssignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/networkingIpAssignment:NetworkingIpAssignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assignments = registerOutput<List<Map<String, dynamic>>?>('assignments');
     region = registerOutput<String>('region');
   }

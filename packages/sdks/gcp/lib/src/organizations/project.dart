@@ -395,7 +395,6 @@ import 'project_state.dart';
 class Project extends pulumi.CustomResource {
   /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
   late final pulumi.Output<bool?> autoCreateNetwork;
-
   /// The alphanumeric ID of the billing account this project
   /// belongs to. The user or service account performing this operation with the provider
   /// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
@@ -403,28 +402,22 @@ class Project extends pulumi.CustomResource {
   /// for more details.
   late final pulumi.Output<String?> billingAccount;
   late final pulumi.Output<String?> deletionPolicy;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The numeric ID of the folder this project should be
   /// created under. Only one of `org_id` or `folder_id` may be
   /// specified. If the `folder_id` is specified, then the project is
   /// created under the specified folder. Changing this forces the
   /// project to be migrated to the newly specified folder.
   late final pulumi.Output<String?> folderId;
-
   /// A set of key/value label pairs to assign to the project.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The display name of the project.
   late final pulumi.Output<String> name;
-
   /// The numeric identifier of the project.
   late final pulumi.Output<String> number;
-
   /// The numeric ID of the organization this project belongs to.
   /// Changing this forces a new project to be created.  Only one of
   /// `org_id` or `folder_id` may be specified. If the `org_id` is
@@ -432,13 +425,10 @@ class Project extends pulumi.CustomResource {
   /// this forces the project to be migrated to the newly specified
   /// organization.
   late final pulumi.Output<String?> orgId;
-
   /// The project ID. Changing this forces a new project to be created.
   late final pulumi.Output<String> projectId;
-
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `gcp.tags.TagValue` resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -451,11 +441,11 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:organizations/project:Project',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:organizations/project:Project',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoCreateNetwork = registerOutput<bool?>('autoCreateNetwork');
     billingAccount = registerOutput<String?>('billingAccount');
     deletionPolicy = registerOutput<String?>('deletionPolicy');
@@ -488,11 +478,11 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:organizations/project:Project',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:organizations/project:Project',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoCreateNetwork = registerOutput<bool?>('autoCreateNetwork');
     billingAccount = registerOutput<String?>('billingAccount');
     deletionPolicy = registerOutput<String?>('deletionPolicy');

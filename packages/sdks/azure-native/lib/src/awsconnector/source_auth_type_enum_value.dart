@@ -9,19 +9,20 @@ class SourceAuthTypeEnumValue {
 
   /// Creates a new [SourceAuthTypeEnumValue].
   /// [value] Property value
-  SourceAuthTypeEnumValue({this.value});
+  SourceAuthTypeEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory SourceAuthTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return SourceAuthTypeEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudEndpointArgs {
   /// Azure file share name
   final pulumi.Input<String>? azureFileShareName;
-
   /// Name of Cloud Endpoint object.
   final pulumi.Input<String>? cloudEndpointName;
-
   /// Friendly Name
   final pulumi.Input<String>? friendlyName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Storage Account Resource Id
   final pulumi.Input<String>? storageAccountResourceId;
-
   /// Storage Account Tenant Id
   final pulumi.Input<String>? storageAccountTenantId;
-
   /// Name of Storage Sync Service resource.
   final pulumi.Input<String> storageSyncServiceName;
-
   /// Name of Sync Group resource.
   final pulumi.Input<String> syncGroupName;
 
@@ -66,38 +59,15 @@ class CloudEndpointArgs {
 
   factory CloudEndpointArgs.fromMap(Map<String, dynamic> map) {
     return CloudEndpointArgs(
-      azureFileShareName: (() {
-        final guardedValue = map['azureFileShareName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cloudEndpointName: (() {
-        final guardedValue = map['cloudEndpointName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      friendlyName: (() {
-        final guardedValue = map['friendlyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      storageAccountResourceId: (() {
-        final guardedValue = map['storageAccountResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountTenantId: (() {
-        final guardedValue = map['storageAccountTenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageSyncServiceName: pulumi.Input.fromValue(
-        map['storageSyncServiceName'] as String,
-      ),
+      azureFileShareName: (() { final guardedValue = map['azureFileShareName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cloudEndpointName: (() { final guardedValue = map['cloudEndpointName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      storageAccountResourceId: (() { final guardedValue = map['storageAccountResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountTenantId: (() { final guardedValue = map['storageAccountTenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageSyncServiceName: pulumi.Input.fromValue(map['storageSyncServiceName'] as String),
       syncGroupName: pulumi.Input.fromValue(map['syncGroupName'] as String),
     );
   }
 }
+

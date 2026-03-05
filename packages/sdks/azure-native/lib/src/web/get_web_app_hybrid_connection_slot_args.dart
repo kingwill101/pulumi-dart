@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppHybridConnectionSlotArgs {
   /// The name of the web app.
   final pulumi.Input<String> name;
-
   /// The namespace for this hybrid connection.
   final pulumi.Input<String> namespaceName;
-
   /// The relay name for this hybrid connection.
   final pulumi.Input<String> relayName;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the slot for the web app.
   final pulumi.Input<String> slot;
 
@@ -51,10 +47,9 @@ class GetWebAppHybridConnectionSlotArgs {
       name: pulumi.Input.fromValue(map['name'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
       relayName: pulumi.Input.fromValue(map['relayName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
+

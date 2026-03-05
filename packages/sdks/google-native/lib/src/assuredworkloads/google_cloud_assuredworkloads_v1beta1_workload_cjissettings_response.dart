@@ -6,10 +6,7 @@ import 'google_cloud_assuredworkloads_v1beta1_workload_kmssettings_response.dart
 /// Settings specific to resources needed for CJIS.
 class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse {
   /// Input only. Immutable. Settings used to create a CMEK crypto key.
-  final pulumi.Input<
-    GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse
-  >
-  kmsSettings;
+  final pulumi.Input<GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse> kmsSettings;
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse].
   /// [kmsSettings] Input only. Immutable. Settings used to create a CMEK crypto key.
@@ -19,23 +16,14 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kmsSettings':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse,
-            Map<String, dynamic>
-          >(kmsSettings, (value) => value.toMap()),
+      'kmsSettings': pulumi.Input.mapInputValue<GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse, Map<String, dynamic>>(kmsSettings, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse(
-      kmsSettings: pulumi.Input.fromValue(
-        GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse.fromMap(
-          (map['kmsSettings']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      kmsSettings: pulumi.Input.fromValue(GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse.fromMap((map['kmsSettings']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

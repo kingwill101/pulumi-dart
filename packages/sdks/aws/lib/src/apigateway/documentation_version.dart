@@ -209,13 +209,10 @@ import 'documentation_version_state.dart';
 class DocumentationVersion extends pulumi.CustomResource {
   /// Description of the API documentation version.
   late final pulumi.Output<String?> description;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the associated Rest API
   late final pulumi.Output<String> restApiId;
-
   /// Version identifier of the API documentation snapshot.
   late final pulumi.Output<String> version;
 
@@ -228,11 +225,11 @@ class DocumentationVersion extends pulumi.CustomResource {
     DocumentationVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigateway/documentationVersion:DocumentationVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigateway/documentationVersion:DocumentationVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
     restApiId = registerOutput<String>('restApiId');
@@ -257,11 +254,11 @@ class DocumentationVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigateway/documentationVersion:DocumentationVersion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigateway/documentationVersion:DocumentationVersion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
     restApiId = registerOutput<String>('restApiId');

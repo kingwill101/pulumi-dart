@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabasePostgresqlV2PrivateNetwork {
   /// Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
   final pulumi.Input<bool>? publicAccess;
-
   /// The ID of the VPC subnet to restrict access to this database using.
   final pulumi.Input<int> subnetId;
-
   /// The ID of the virtual private cloud (VPC) to restrict access to this database using.
   final pulumi.Input<int> vpcId;
 
@@ -32,13 +30,10 @@ class DatabasePostgresqlV2PrivateNetwork {
 
   factory DatabasePostgresqlV2PrivateNetwork.fromMap(Map<String, dynamic> map) {
     return DatabasePostgresqlV2PrivateNetwork(
-      publicAccess: (() {
-        final guardedValue = map['publicAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      publicAccess: (() { final guardedValue = map['publicAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as int),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as int),
     );
   }
 }
+

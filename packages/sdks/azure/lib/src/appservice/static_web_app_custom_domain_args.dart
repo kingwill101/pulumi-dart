@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticWebAppCustomDomainArgs {
   /// The Domain Name which should be associated with this Static Site. Changing this forces a new Static Site Custom Domain to be created.
   final pulumi.Input<String> domainName;
-
   /// The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
   final pulumi.Input<String> staticWebAppId;
-
   /// One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
   ///
   /// &gt; **Note:** Apex domains must use `dns-txt-token` validation.
@@ -46,3 +44,4 @@ class StaticWebAppCustomDomainArgs {
     );
   }
 }
+

@@ -236,13 +236,10 @@ import 'consumer_group_state.dart';
 class ConsumerGroup extends pulumi.CustomResource {
   /// The name of the Event Hub-compatible endpoint in the IoT hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> eventhubEndpointName;
-
   /// The name of the IoT Hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubName;
-
   /// The name of this Consumer Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group that contains the IoT hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -255,11 +252,11 @@ class ConsumerGroup extends pulumi.CustomResource {
     ConsumerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iot/consumerGroup:ConsumerGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:iot/consumerGroup:ConsumerGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     eventhubEndpointName = registerOutput<String>('eventhubEndpointName');
     iothubName = registerOutput<String>('iothubName');
     this.name = registerOutput<String>('name');
@@ -284,11 +281,11 @@ class ConsumerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iot/consumerGroup:ConsumerGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:iot/consumerGroup:ConsumerGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     eventhubEndpointName = registerOutput<String>('eventhubEndpointName');
     iothubName = registerOutput<String>('iothubName');
     this.name = registerOutput<String>('name');

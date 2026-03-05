@@ -219,34 +219,24 @@ import 'web_agent_args.dart';
 class WebAgent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Optional textual description of the agent.
   late final pulumi.Output<String?> description;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// List of paths associated with the web agent.
   late final pulumi.Output<List<Map<String, dynamic>>?> paths;
-
   /// References to agent links in CDN profiles.
   late final pulumi.Output<List<Map<String, dynamic>>> profileAgentLinks;
-
   /// Provisioning status of the web agent.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// System prompt for the web agent.
   late final pulumi.Output<String?> systemPrompt;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -259,30 +249,19 @@ class WebAgent extends pulumi.CustomResource {
     WebAgentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cdn:WebAgent',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cdn:WebAgent',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     paths = registerOutput<List<Map<String, dynamic>>?>('paths');
-    profileAgentLinks = registerOutput<List<Map<String, dynamic>>>(
-      'profileAgentLinks',
-    );
+    profileAgentLinks = registerOutput<List<Map<String, dynamic>>>('profileAgentLinks');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemPrompt = registerOutput<String?>('systemPrompt');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

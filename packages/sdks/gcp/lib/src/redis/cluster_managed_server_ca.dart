@@ -11,39 +11,20 @@ class ClusterManagedServerCa {
 
   /// Creates a new [ClusterManagedServerCa].
   /// [caCerts] (Output)
-  ClusterManagedServerCa({this.caCerts});
+  ClusterManagedServerCa({
+    this.caCerts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caCerts':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ClusterManagedServerCaCaCert>,
-            List<Map<String, dynamic>>
-          >(
-            caCerts,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ClusterManagedServerCaCaCert,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'caCerts': ?pulumi.Input.mapOptionalInputValue<List<ClusterManagedServerCaCaCert>, List<Map<String, dynamic>>>(caCerts, (value) => pulumi.Input.encodeList<ClusterManagedServerCaCaCert, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ClusterManagedServerCa.fromMap(Map<String, dynamic> map) {
     return ClusterManagedServerCa(
-      caCerts: (() {
-        final guardedValue = map['caCerts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ClusterManagedServerCaCaCert>(
-            guardedValue,
-            (value) => ClusterManagedServerCaCaCert.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      caCerts: (() { final guardedValue = map['caCerts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterManagedServerCaCaCert>(guardedValue, (value) => ClusterManagedServerCaCaCert.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -11,41 +11,28 @@ import 'service_external_ips_config_response.dart';
 class NetworkConfigResponse {
   /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
   final pulumi.Input<String> datapathProvider;
-
   /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
   final pulumi.Input<DefaultSnatStatusResponse> defaultSnatStatus;
-
   /// DNSConfig contains clusterDNS config for this cluster.
   final pulumi.Input<DNSConfigResponse> dnsConfig;
-
   /// Whether FQDN Network Policy is enabled on this cluster.
   final pulumi.Input<bool> enableFqdnNetworkPolicy;
-
   /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
   final pulumi.Input<bool> enableIntraNodeVisibility;
-
   /// Whether L4ILB Subsetting is enabled for this cluster.
   final pulumi.Input<bool> enableL4ilbSubsetting;
-
   /// Whether multi-networking is enabled for this cluster.
   final pulumi.Input<bool> enableMultiNetworking;
-
   /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
   final pulumi.Input<GatewayAPIConfigResponse> gatewayApiConfig;
-
   /// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
   final pulumi.Input<String> network;
-
   /// Network bandwidth tier configuration.
-  final pulumi.Input<ClusterNetworkPerformanceConfigResponse>
-  networkPerformanceConfig;
-
+  final pulumi.Input<ClusterNetworkPerformanceConfigResponse> networkPerformanceConfig;
   /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
   final pulumi.Input<String> privateIpv6GoogleAccess;
-
   /// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
   final pulumi.Input<ServiceExternalIPsConfigResponse> serviceExternalIpsConfig;
-
   /// The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
   final pulumi.Input<String> subnetwork;
 
@@ -82,88 +69,37 @@ class NetworkConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'datapathProvider': datapathProvider,
-      'defaultSnatStatus':
-          pulumi.Input.mapInputValue<
-            DefaultSnatStatusResponse,
-            Map<String, dynamic>
-          >(defaultSnatStatus, (value) => value.toMap()),
-      'dnsConfig':
-          pulumi.Input.mapInputValue<DNSConfigResponse, Map<String, dynamic>>(
-            dnsConfig,
-            (value) => value.toMap(),
-          ),
+      'defaultSnatStatus': pulumi.Input.mapInputValue<DefaultSnatStatusResponse, Map<String, dynamic>>(defaultSnatStatus, (value) => value.toMap()),
+      'dnsConfig': pulumi.Input.mapInputValue<DNSConfigResponse, Map<String, dynamic>>(dnsConfig, (value) => value.toMap()),
       'enableFqdnNetworkPolicy': enableFqdnNetworkPolicy,
       'enableIntraNodeVisibility': enableIntraNodeVisibility,
       'enableL4ilbSubsetting': enableL4ilbSubsetting,
       'enableMultiNetworking': enableMultiNetworking,
-      'gatewayApiConfig':
-          pulumi.Input.mapInputValue<
-            GatewayAPIConfigResponse,
-            Map<String, dynamic>
-          >(gatewayApiConfig, (value) => value.toMap()),
+      'gatewayApiConfig': pulumi.Input.mapInputValue<GatewayAPIConfigResponse, Map<String, dynamic>>(gatewayApiConfig, (value) => value.toMap()),
       'network': network,
-      'networkPerformanceConfig':
-          pulumi.Input.mapInputValue<
-            ClusterNetworkPerformanceConfigResponse,
-            Map<String, dynamic>
-          >(networkPerformanceConfig, (value) => value.toMap()),
+      'networkPerformanceConfig': pulumi.Input.mapInputValue<ClusterNetworkPerformanceConfigResponse, Map<String, dynamic>>(networkPerformanceConfig, (value) => value.toMap()),
       'privateIpv6GoogleAccess': privateIpv6GoogleAccess,
-      'serviceExternalIpsConfig':
-          pulumi.Input.mapInputValue<
-            ServiceExternalIPsConfigResponse,
-            Map<String, dynamic>
-          >(serviceExternalIpsConfig, (value) => value.toMap()),
+      'serviceExternalIpsConfig': pulumi.Input.mapInputValue<ServiceExternalIPsConfigResponse, Map<String, dynamic>>(serviceExternalIpsConfig, (value) => value.toMap()),
       'subnetwork': subnetwork,
     };
   }
 
   factory NetworkConfigResponse.fromMap(Map<String, dynamic> map) {
     return NetworkConfigResponse(
-      datapathProvider: pulumi.Input.fromValue(
-        map['datapathProvider'] as String,
-      ),
-      defaultSnatStatus: pulumi.Input.fromValue(
-        DefaultSnatStatusResponse.fromMap(
-          (map['defaultSnatStatus']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      dnsConfig: pulumi.Input.fromValue(
-        DNSConfigResponse.fromMap(
-          (map['dnsConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      enableFqdnNetworkPolicy: pulumi.Input.fromValue(
-        map['enableFqdnNetworkPolicy'] as bool,
-      ),
-      enableIntraNodeVisibility: pulumi.Input.fromValue(
-        map['enableIntraNodeVisibility'] as bool,
-      ),
-      enableL4ilbSubsetting: pulumi.Input.fromValue(
-        map['enableL4ilbSubsetting'] as bool,
-      ),
-      enableMultiNetworking: pulumi.Input.fromValue(
-        map['enableMultiNetworking'] as bool,
-      ),
-      gatewayApiConfig: pulumi.Input.fromValue(
-        GatewayAPIConfigResponse.fromMap(
-          (map['gatewayApiConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      datapathProvider: pulumi.Input.fromValue(map['datapathProvider'] as String),
+      defaultSnatStatus: pulumi.Input.fromValue(DefaultSnatStatusResponse.fromMap((map['defaultSnatStatus']! as Map).cast<String, dynamic>())),
+      dnsConfig: pulumi.Input.fromValue(DNSConfigResponse.fromMap((map['dnsConfig']! as Map).cast<String, dynamic>())),
+      enableFqdnNetworkPolicy: pulumi.Input.fromValue(map['enableFqdnNetworkPolicy'] as bool),
+      enableIntraNodeVisibility: pulumi.Input.fromValue(map['enableIntraNodeVisibility'] as bool),
+      enableL4ilbSubsetting: pulumi.Input.fromValue(map['enableL4ilbSubsetting'] as bool),
+      enableMultiNetworking: pulumi.Input.fromValue(map['enableMultiNetworking'] as bool),
+      gatewayApiConfig: pulumi.Input.fromValue(GatewayAPIConfigResponse.fromMap((map['gatewayApiConfig']! as Map).cast<String, dynamic>())),
       network: pulumi.Input.fromValue(map['network'] as String),
-      networkPerformanceConfig: pulumi.Input.fromValue(
-        ClusterNetworkPerformanceConfigResponse.fromMap(
-          (map['networkPerformanceConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      privateIpv6GoogleAccess: pulumi.Input.fromValue(
-        map['privateIpv6GoogleAccess'] as String,
-      ),
-      serviceExternalIpsConfig: pulumi.Input.fromValue(
-        ServiceExternalIPsConfigResponse.fromMap(
-          (map['serviceExternalIpsConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      networkPerformanceConfig: pulumi.Input.fromValue(ClusterNetworkPerformanceConfigResponse.fromMap((map['networkPerformanceConfig']! as Map).cast<String, dynamic>())),
+      privateIpv6GoogleAccess: pulumi.Input.fromValue(map['privateIpv6GoogleAccess'] as String),
+      serviceExternalIpsConfig: pulumi.Input.fromValue(ServiceExternalIPsConfigResponse.fromMap((map['serviceExternalIpsConfig']! as Map).cast<String, dynamic>())),
       subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
     );
   }
 }
+

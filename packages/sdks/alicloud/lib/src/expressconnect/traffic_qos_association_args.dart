@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficQosAssociationArgs {
   /// The ID of the associated instance.
   final pulumi.Input<String>? instanceId;
-
   /// The type of the associated instance. Value: **physical connection** physical connection.
   final pulumi.Input<String>? instanceType;
-
   /// The QoS policy ID.
   final pulumi.Input<String> qosId;
 
@@ -36,17 +34,10 @@ class TrafficQosAssociationArgs {
 
   factory TrafficQosAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TrafficQosAssociationArgs(
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       qosId: pulumi.Input.fromValue(map['qosId'] as String),
     );
   }
 }
+

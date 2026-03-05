@@ -13,8 +13,7 @@ enum NotificationConfigEventTypesItem {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown NotificationConfigEventTypesItem value: $value',
-    );
+    throw ArgumentError('Unknown NotificationConfigEventTypesItem value: $value');
   }
 }
+

@@ -948,29 +948,20 @@ import 'object_replication_policy_properties_response_metrics.dart';
 class ObjectReplicationPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Required. Destination account name. It should be full resource id if allowCrossTenantReplication set to false.
   late final pulumi.Output<String> destinationAccount;
-
   /// Indicates when the policy is enabled on the source account.
   late final pulumi.Output<String> enabledTime;
-
   /// Optional. The object replication policy metrics feature options.
-  late final pulumi.Output<ObjectReplicationPolicyPropertiesResponseMetrics?>
-  metrics;
-
+  late final pulumi.Output<ObjectReplicationPolicyPropertiesResponseMetrics?> metrics;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// A unique id for object replication policy.
   late final pulumi.Output<String> policyId;
-
   /// The storage account object replication rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
-
   /// Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
   late final pulumi.Output<String> sourceAccount;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -983,24 +974,15 @@ class ObjectReplicationPolicy extends pulumi.CustomResource {
     ObjectReplicationPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:storage:ObjectReplicationPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:storage:ObjectReplicationPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     destinationAccount = registerOutput<String>('destinationAccount');
     enabledTime = registerOutput<String>('enabledTime');
-    metrics = registerOutput<ObjectReplicationPolicyPropertiesResponseMetrics?>(
-      'metrics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectReplicationPolicyPropertiesResponseMetrics.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metrics = registerOutput<ObjectReplicationPolicyPropertiesResponseMetrics?>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectReplicationPolicyPropertiesResponseMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');

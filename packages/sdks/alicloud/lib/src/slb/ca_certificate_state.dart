@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CaCertificateState {
   /// the content of the CA certificate.
   final pulumi.Input<String>? caCertificate;
-
   /// Name of the CA Certificate.
   final pulumi.Input<String>? caCertificateName;
-
   /// Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
   final pulumi.Input<String>? name;
-
   /// The Id of resource group which the slb_ca certificate belongs.
   final pulumi.Input<String>? resourceGroupId;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,33 +41,12 @@ class CaCertificateState {
 
   factory CaCertificateState.fromMap(Map<String, dynamic> map) {
     return CaCertificateState(
-      caCertificate: (() {
-        final guardedValue = map['caCertificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      caCertificateName: (() {
-        final guardedValue = map['caCertificateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      caCertificate: (() { final guardedValue = map['caCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      caCertificateName: (() { final guardedValue = map['caCertificateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

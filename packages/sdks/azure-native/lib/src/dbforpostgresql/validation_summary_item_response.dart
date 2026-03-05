@@ -7,10 +7,8 @@ import 'validation_message_response.dart';
 class ValidationSummaryItemResponse {
   /// Validation messages.
   final pulumi.Input<List<ValidationMessageResponse>>? messages;
-
   /// Validation status for migration.
   final pulumi.Input<String>? state;
-
   /// Validation type.
   final pulumi.Input<String>? type;
 
@@ -18,22 +16,15 @@ class ValidationSummaryItemResponse {
   /// [messages] Validation messages.
   /// [state] Validation status for migration.
   /// [type] Validation type.
-  ValidationSummaryItemResponse({this.messages, this.state, this.type});
+  ValidationSummaryItemResponse({
+    this.messages,
+    this.state,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'messages':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ValidationMessageResponse>,
-            List<Map<String, dynamic>>
-          >(
-            messages,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ValidationMessageResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'messages': ?pulumi.Input.mapOptionalInputValue<List<ValidationMessageResponse>, List<Map<String, dynamic>>>(messages, (value) => pulumi.Input.encodeList<ValidationMessageResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': ?state,
       'type': ?type,
     };
@@ -41,28 +32,10 @@ class ValidationSummaryItemResponse {
 
   factory ValidationSummaryItemResponse.fromMap(Map<String, dynamic> map) {
     return ValidationSummaryItemResponse(
-      messages: (() {
-        final guardedValue = map['messages'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ValidationMessageResponse>(
-            guardedValue,
-            (value) => ValidationMessageResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      messages: (() { final guardedValue = map['messages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ValidationMessageResponse>(guardedValue, (value) => ValidationMessageResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

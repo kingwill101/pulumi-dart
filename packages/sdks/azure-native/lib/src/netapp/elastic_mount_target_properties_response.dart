@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticMountTargetPropertiesResponse {
   /// The mount target's IPv4 address, used to mount the volume
   final pulumi.Input<String> ipAddress;
-
   /// The SMB server's Fully Qualified Domain Name, FQDN
   final pulumi.Input<String> smbServerFqdn;
 
@@ -25,12 +24,11 @@ class ElasticMountTargetPropertiesResponse {
     };
   }
 
-  factory ElasticMountTargetPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ElasticMountTargetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticMountTargetPropertiesResponse(
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       smbServerFqdn: pulumi.Input.fromValue(map['smbServerFqdn'] as String),
     );
   }
 }
+

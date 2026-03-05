@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpsTriggerResponse {
   /// The security level for the function.
   final pulumi.Input<String> securityLevel;
-
   /// The deployed url for the function.
   final pulumi.Input<String> url;
 
   /// Creates a new [HttpsTriggerResponse].
   /// [securityLevel] The security level for the function.
   /// [url] The deployed url for the function.
-  HttpsTriggerResponse({required this.securityLevel, required this.url});
+  HttpsTriggerResponse({
+    required this.securityLevel,
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'securityLevel': securityLevel, 'url': url};
+    return <String, dynamic>{
+      'securityLevel': securityLevel,
+      'url': url,
+    };
   }
 
   factory HttpsTriggerResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class HttpsTriggerResponse {
     );
   }
 }
+

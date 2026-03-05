@@ -8,10 +8,14 @@ class GetSQuotaInfoDimensionsInfoDetail {
 
   /// Creates a new [GetSQuotaInfoDimensionsInfoDetail].
   /// [value] The value currently in effect and being enforced.
-  GetSQuotaInfoDimensionsInfoDetail({required this.value});
+  GetSQuotaInfoDimensionsInfoDetail({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory GetSQuotaInfoDimensionsInfoDetail.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetSQuotaInfoDimensionsInfoDetail {
     );
   }
 }
+

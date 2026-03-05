@@ -21,20 +21,11 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
     };
   }
 
-  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus(
-      revokedStatusAction: (() {
-        final guardedValue = map['revokedStatusAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      unknownStatusAction: (() {
-        final guardedValue = map['unknownStatusAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      revokedStatusAction: (() { final guardedValue = map['revokedStatusAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      unknownStatusAction: (() { final guardedValue = map['unknownStatusAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

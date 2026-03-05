@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRecommendationengineV1beta1ImageResponse {
   /// Optional. Height of the image in number of pixels.
   final pulumi.Input<int> height;
-
   /// URL of the image with a length limit of 5 KiB.
   final pulumi.Input<String> uri;
-
   /// Optional. Width of the image in number of pixels.
   final pulumi.Input<int> width;
 
@@ -24,12 +22,14 @@ class GoogleCloudRecommendationengineV1beta1ImageResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'height': height, 'uri': uri, 'width': width};
+    return <String, dynamic>{
+      'height': height,
+      'uri': uri,
+      'width': width,
+    };
   }
 
-  factory GoogleCloudRecommendationengineV1beta1ImageResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRecommendationengineV1beta1ImageResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecommendationengineV1beta1ImageResponse(
       height: pulumi.Input.fromValue(map['height'] as int),
       uri: pulumi.Input.fromValue(map['uri'] as String),
@@ -37,3 +37,4 @@ class GoogleCloudRecommendationengineV1beta1ImageResponse {
     );
   }
 }
+

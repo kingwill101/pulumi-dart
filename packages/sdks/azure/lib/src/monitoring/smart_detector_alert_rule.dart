@@ -292,34 +292,24 @@ import 'smart_detector_alert_rule_state.dart';
 class SmartDetectorAlertRule extends pulumi.CustomResource {
   /// An `action_group` block as defined below.
   late final pulumi.Output<SmartDetectorAlertRuleActionGroup> actionGroup;
-
   /// Specifies a description for the Smart Detector Alert Rule.
   late final pulumi.Output<String?> description;
-
   /// Specifies the Built-In Smart Detector type that this alert rule will use. Currently the only possible values are `FailureAnomaliesDetector`, `RequestPerformanceDegradationDetector`, `DependencyPerformanceDegradationDetector`, `ExceptionVolumeChangedDetector`, `TraceSeverityDetector`, `MemoryLeakDetector`.
   late final pulumi.Output<String> detectorType;
-
   /// Is the Smart Detector Alert Rule enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// Specifies the frequency of this Smart Detector Alert Rule in ISO8601 format.
   late final pulumi.Output<String> frequency;
-
   /// Specifies the name of the Monitor Smart Detector Alert Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the resource group in which the Monitor Smart Detector Alert Rule should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Specifies the scopes of this Smart Detector Alert Rule.
   late final pulumi.Output<List<String>> scopeResourceIds;
-
   /// Specifies the severity of this Smart Detector Alert Rule. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3` or `Sev4`.
   late final pulumi.Output<String> severity;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the duration (in ISO8601 format) to wait before notifying on the alert rule again.
   late final pulumi.Output<String?> throttlingDuration;
 
@@ -332,21 +322,12 @@ class SmartDetectorAlertRule extends pulumi.CustomResource {
     SmartDetectorAlertRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/smartDetectorAlertRule:SmartDetectorAlertRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    actionGroup = registerOutput<SmartDetectorAlertRuleActionGroup>(
-      'actionGroup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SmartDetectorAlertRuleActionGroup.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:monitoring/smartDetectorAlertRule:SmartDetectorAlertRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    actionGroup = registerOutput<SmartDetectorAlertRuleActionGroup>('actionGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SmartDetectorAlertRuleActionGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     detectorType = registerOutput<String>('detectorType');
     enabled = registerOutput<bool?>('enabled');
@@ -377,21 +358,12 @@ class SmartDetectorAlertRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/smartDetectorAlertRule:SmartDetectorAlertRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    actionGroup = registerOutput<SmartDetectorAlertRuleActionGroup>(
-      'actionGroup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SmartDetectorAlertRuleActionGroup.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:monitoring/smartDetectorAlertRule:SmartDetectorAlertRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    actionGroup = registerOutput<SmartDetectorAlertRuleActionGroup>('actionGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SmartDetectorAlertRuleActionGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     detectorType = registerOutput<String>('detectorType');
     enabled = registerOutput<bool?>('enabled');

@@ -13,22 +13,14 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec {
   /// NUMERICAL
   /// FRESHNESS
   final pulumi.Input<String>? attributeType;
-
   /// The control points used to define the curve. The monotonic function
   /// (defined through the interpolation_type above) passes through the
   /// control points listed here.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<
-      ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint
-    >
-  >?
-  controlPoints;
-
+  final pulumi.Input<List<ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>>? controlPoints;
   /// The name of the field whose value will be used to determine the
   /// boost amount.
   final pulumi.Input<String>? fieldName;
-
   /// The interpolation type to be applied to connect the control points
   /// listed below.
   /// Possible values:
@@ -50,59 +42,19 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attributeType': ?attributeType,
-      'controlPoints':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint
-            >,
-            List<Map<String, dynamic>>
-          >(
-            controlPoints,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'controlPoints': ?pulumi.Input.mapOptionalInputValue<List<ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>, List<Map<String, dynamic>>>(controlPoints, (value) => pulumi.Input.encodeList<ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'fieldName': ?fieldName,
       'interpolationType': ?interpolationType,
     };
   }
 
-  factory ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec(
-      attributeType: (() {
-        final guardedValue = map['attributeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      controlPoints: (() {
-        final guardedValue = map['controlPoints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint
-          >(
-            guardedValue,
-            (value) =>
-                ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      fieldName: (() {
-        final guardedValue = map['fieldName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      interpolationType: (() {
-        final guardedValue = map['interpolationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attributeType: (() { final guardedValue = map['attributeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      controlPoints: (() { final guardedValue = map['controlPoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>(guardedValue, (value) => ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      fieldName: (() { final guardedValue = map['fieldName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interpolationType: (() { final guardedValue = map['interpolationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

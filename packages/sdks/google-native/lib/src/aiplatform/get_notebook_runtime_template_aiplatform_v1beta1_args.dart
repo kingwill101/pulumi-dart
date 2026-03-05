@@ -29,19 +29,12 @@ class GetNotebookRuntimeTemplateAiplatformV1beta1Args {
     };
   }
 
-  factory GetNotebookRuntimeTemplateAiplatformV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNotebookRuntimeTemplateAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetNotebookRuntimeTemplateAiplatformV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      notebookRuntimeTemplateId: pulumi.Input.fromValue(
-        map['notebookRuntimeTemplateId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      notebookRuntimeTemplateId: pulumi.Input.fromValue(map['notebookRuntimeTemplateId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

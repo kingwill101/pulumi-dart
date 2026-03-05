@@ -205,23 +205,17 @@ class ThingGroup extends pulumi.CustomResource {
   /// The ARN of the Thing Group.
   late final pulumi.Output<String> arn;
   late final pulumi.Output<List<Map<String, dynamic>>> metadatas;
-
   /// The name of the Thing Group.
   late final pulumi.Output<String> name;
-
   /// The name of the parent Thing Group.
   late final pulumi.Output<String?> parentGroupName;
-
   /// The Thing Group properties. Defined below.
   late final pulumi.Output<ThingGroupProperties?> properties;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value mapping of resource tags
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The current version of the Thing Group record in the registry.
   late final pulumi.Output<int> version;
 
@@ -234,25 +228,16 @@ class ThingGroup extends pulumi.CustomResource {
     ThingGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iot/thingGroup:ThingGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iot/thingGroup:ThingGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     metadatas = registerOutput<List<Map<String, dynamic>>>('metadatas');
     this.name = registerOutput<String>('name');
     parentGroupName = registerOutput<String?>('parentGroupName');
-    properties = registerOutput<ThingGroupProperties?>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ThingGroupProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ThingGroupProperties?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThingGroupProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -277,25 +262,16 @@ class ThingGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iot/thingGroup:ThingGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iot/thingGroup:ThingGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     metadatas = registerOutput<List<Map<String, dynamic>>>('metadatas');
     this.name = registerOutput<String>('name');
     parentGroupName = registerOutput<String?>('parentGroupName');
-    properties = registerOutput<ThingGroupProperties?>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ThingGroupProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ThingGroupProperties?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThingGroupProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

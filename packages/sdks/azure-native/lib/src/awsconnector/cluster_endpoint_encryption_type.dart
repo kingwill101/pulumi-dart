@@ -15,3 +15,4 @@ enum ClusterEndpointEncryptionType {
     throw ArgumentError('Unknown ClusterEndpointEncryptionType value: $value');
   }
 }
+

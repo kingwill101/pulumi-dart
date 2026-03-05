@@ -8,21 +8,20 @@ class ThemeConfigurationSheetTileLayoutMargin {
 
   /// Creates a new [ThemeConfigurationSheetTileLayoutMargin].
   /// [show] This Boolean value controls whether to display sheet margins.
-  ThemeConfigurationSheetTileLayoutMargin({this.show});
+  ThemeConfigurationSheetTileLayoutMargin({
+    this.show,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'show': ?show};
+    return <String, dynamic>{
+      'show': ?show,
+    };
   }
 
-  factory ThemeConfigurationSheetTileLayoutMargin.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ThemeConfigurationSheetTileLayoutMargin.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationSheetTileLayoutMargin(
-      show: (() {
-        final guardedValue = map['show'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      show: (() { final guardedValue = map['show']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

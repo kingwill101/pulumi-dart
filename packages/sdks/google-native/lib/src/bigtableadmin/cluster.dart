@@ -7,27 +7,20 @@ import 'encryption_config_response.dart';
 class Cluster extends pulumi.CustomResource {
   /// Configuration for this cluster.
   late final pulumi.Output<ClusterConfigResponse> clusterConfig;
-
   /// Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
   late final pulumi.Output<String> clusterId;
-
   /// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
   late final pulumi.Output<String> defaultStorageType;
-
   /// Immutable. The encryption configuration for CMEK-protected clusters.
   late final pulumi.Output<EncryptionConfigResponse> encryptionConfig;
   late final pulumi.Output<String> instanceId;
-
   /// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
   late final pulumi.Output<String> location;
-
   /// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
   late final pulumi.Output<int> serveNodes;
-
   /// The current state of the cluster.
   late final pulumi.Output<String> state;
 
@@ -40,33 +33,15 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:bigtableadmin/v2:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    clusterConfig = registerOutput<ClusterConfigResponse>(
-      'clusterConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'google-native:bigtableadmin/v2:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    clusterConfig = registerOutput<ClusterConfigResponse>('clusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
     defaultStorageType = registerOutput<String>('defaultStorageType');
-    encryptionConfig = registerOutput<EncryptionConfigResponse>(
-      'encryptionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionConfig = registerOutput<EncryptionConfigResponse>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

@@ -21,3 +21,4 @@ enum FeatureDataType {
     throw ArgumentError('Unknown FeatureDataType value: $value');
   }
 }
+

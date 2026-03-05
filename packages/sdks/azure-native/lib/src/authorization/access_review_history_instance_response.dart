@@ -6,34 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessReviewHistoryInstanceResponse {
   /// The display name for the parent history definition.
   final pulumi.Input<String>? displayName;
-
   /// Uri which can be used to retrieve review history data. To generate this Uri, generateDownloadUri() must be called for a specific accessReviewHistoryDefinitionInstance. The link expires after a 24 hour period. Callers can see the expiration date time by looking at the 'se' parameter in the generated uri.
   final pulumi.Input<String> downloadUri;
-
   /// Date time when history data report expires and the associated data is deleted.
   final pulumi.Input<String>? expiration;
-
   /// Date time when the history data report is scheduled to be generated.
   final pulumi.Input<String>? fulfilledDateTime;
-
   /// The access review history definition instance id.
   final pulumi.Input<String> id;
-
   /// The access review history definition instance unique id.
   final pulumi.Input<String> name;
-
   /// Date time used when selecting review data, all reviews included in data end on or before this date. For use only with one-time/non-recurring reports.
   final pulumi.Input<String>? reviewHistoryPeriodEndDateTime;
-
   /// Date time used when selecting review data, all reviews included in data start on or after this date. For use only with one-time/non-recurring reports.
   final pulumi.Input<String>? reviewHistoryPeriodStartDateTime;
-
   /// Date time when the history data report is scheduled to be generated.
   final pulumi.Input<String>? runDateTime;
-
   /// Status of the requested review history instance data. This is either requested, in-progress, done or error. The state transitions are as follows - Requested -&gt; InProgress -&gt; Done -&gt; Expired
   final pulumi.Input<String> status;
-
   /// The resource type.
   final pulumi.Input<String> type;
 
@@ -79,45 +69,20 @@ class AccessReviewHistoryInstanceResponse {
     };
   }
 
-  factory AccessReviewHistoryInstanceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessReviewHistoryInstanceResponse.fromMap(Map<String, dynamic> map) {
     return AccessReviewHistoryInstanceResponse(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       downloadUri: pulumi.Input.fromValue(map['downloadUri'] as String),
-      expiration: (() {
-        final guardedValue = map['expiration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fulfilledDateTime: (() {
-        final guardedValue = map['fulfilledDateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fulfilledDateTime: (() { final guardedValue = map['fulfilledDateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      reviewHistoryPeriodEndDateTime: (() {
-        final guardedValue = map['reviewHistoryPeriodEndDateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reviewHistoryPeriodStartDateTime: (() {
-        final guardedValue = map['reviewHistoryPeriodStartDateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      runDateTime: (() {
-        final guardedValue = map['runDateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      reviewHistoryPeriodEndDateTime: (() { final guardedValue = map['reviewHistoryPeriodEndDateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reviewHistoryPeriodStartDateTime: (() { final guardedValue = map['reviewHistoryPeriodStartDateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      runDateTime: (() { final guardedValue = map['runDateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum ResourceIdentityType {
     throw ArgumentError('Unknown ResourceIdentityType value: $value');
   }
 }
+

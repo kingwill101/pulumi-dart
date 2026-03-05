@@ -9,10 +9,14 @@ class EntraIdentityProviderProperties {
 
   /// Creates a new [EntraIdentityProviderProperties].
   /// [principalType] The principal type of the user.
-  EntraIdentityProviderProperties({required this.principalType});
+  EntraIdentityProviderProperties({
+    required this.principalType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'principalType': principalType};
+    return <String, dynamic>{
+      'principalType': principalType,
+    };
   }
 
   factory EntraIdentityProviderProperties.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class EntraIdentityProviderProperties {
     );
   }
 }
+

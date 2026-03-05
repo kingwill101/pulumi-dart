@@ -18,3 +18,4 @@ enum AssessmentType {
     throw ArgumentError('Unknown AssessmentType value: $value');
   }
 }
+

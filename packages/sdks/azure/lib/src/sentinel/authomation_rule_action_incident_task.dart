@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthomationRuleActionIncidentTask {
   /// The description of the incident task.
   final pulumi.Input<String>? description;
-
   /// The execution order of this action.
   final pulumi.Input<int> order;
-
   /// The title of the incident task.
   final pulumi.Input<String> title;
 
@@ -32,13 +30,10 @@ class AuthomationRuleActionIncidentTask {
 
   factory AuthomationRuleActionIncidentTask.fromMap(Map<String, dynamic> map) {
     return AuthomationRuleActionIncidentTask(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       order: pulumi.Input.fromValue(map['order'] as int),
       title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
+

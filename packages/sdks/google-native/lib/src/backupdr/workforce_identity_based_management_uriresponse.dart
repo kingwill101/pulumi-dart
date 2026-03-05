@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkforceIdentityBasedManagementURIResponse {
   /// First party Management URI for Google Identities.
   final pulumi.Input<String> firstPartyManagementUri;
-
   /// Third party Management URI for External Identity Providers.
   final pulumi.Input<String> thirdPartyManagementUri;
 
@@ -25,16 +24,11 @@ class WorkforceIdentityBasedManagementURIResponse {
     };
   }
 
-  factory WorkforceIdentityBasedManagementURIResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkforceIdentityBasedManagementURIResponse.fromMap(Map<String, dynamic> map) {
     return WorkforceIdentityBasedManagementURIResponse(
-      firstPartyManagementUri: pulumi.Input.fromValue(
-        map['firstPartyManagementUri'] as String,
-      ),
-      thirdPartyManagementUri: pulumi.Input.fromValue(
-        map['thirdPartyManagementUri'] as String,
-      ),
+      firstPartyManagementUri: pulumi.Input.fromValue(map['firstPartyManagementUri'] as String),
+      thirdPartyManagementUri: pulumi.Input.fromValue(map['thirdPartyManagementUri'] as String),
     );
   }
 }
+

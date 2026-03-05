@@ -9,10 +9,14 @@ class OnlineExperimentationWorkspaceSku {
 
   /// Creates a new [OnlineExperimentationWorkspaceSku].
   /// [name] The name of the SKU. Ex - F0, P0. It is typically a letter+number code
-  OnlineExperimentationWorkspaceSku({required this.name});
+  OnlineExperimentationWorkspaceSku({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory OnlineExperimentationWorkspaceSku.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class OnlineExperimentationWorkspaceSku {
     );
   }
 }
+

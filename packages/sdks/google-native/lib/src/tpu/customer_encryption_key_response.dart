@@ -9,10 +9,14 @@ class CustomerEncryptionKeyResponse {
 
   /// Creates a new [CustomerEncryptionKeyResponse].
   /// [kmsKeyName] The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
-  CustomerEncryptionKeyResponse({required this.kmsKeyName});
+  CustomerEncryptionKeyResponse({
+    required this.kmsKeyName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyName': kmsKeyName};
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+    };
   }
 
   factory CustomerEncryptionKeyResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class CustomerEncryptionKeyResponse {
     );
   }
 }
+

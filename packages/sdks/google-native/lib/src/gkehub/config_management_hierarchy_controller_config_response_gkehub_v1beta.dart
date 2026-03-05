@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigManagementHierarchyControllerConfigResponseGkehubV1beta {
   /// Whether hierarchical resource quota is enabled in this cluster.
   final pulumi.Input<bool> enableHierarchicalResourceQuota;
-
   /// Whether pod tree labels are enabled in this cluster.
   final pulumi.Input<bool> enablePodTreeLabels;
-
   /// Whether Hierarchy Controller is enabled in this cluster.
   final pulumi.Input<bool> enabled;
 
@@ -31,17 +29,12 @@ class ConfigManagementHierarchyControllerConfigResponseGkehubV1beta {
     };
   }
 
-  factory ConfigManagementHierarchyControllerConfigResponseGkehubV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigManagementHierarchyControllerConfigResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ConfigManagementHierarchyControllerConfigResponseGkehubV1beta(
-      enableHierarchicalResourceQuota: pulumi.Input.fromValue(
-        map['enableHierarchicalResourceQuota'] as bool,
-      ),
-      enablePodTreeLabels: pulumi.Input.fromValue(
-        map['enablePodTreeLabels'] as bool,
-      ),
+      enableHierarchicalResourceQuota: pulumi.Input.fromValue(map['enableHierarchicalResourceQuota'] as bool),
+      enablePodTreeLabels: pulumi.Input.fromValue(map['enablePodTreeLabels'] as bool),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

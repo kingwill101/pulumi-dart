@@ -380,12 +380,9 @@ class Environment extends pulumi.CustomResource {
   /// the Environment and cannot be changed.
   /// Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
   late final pulumi.Output<String> apiProxyType;
-
   /// The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
   /// Structure is documented below.
-  late final pulumi.Output<EnvironmentClientIpResolutionConfig?>
-  clientIpResolutionConfig;
-
+  late final pulumi.Output<EnvironmentClientIpResolutionConfig?> clientIpResolutionConfig;
   /// Optional. Deployment type supported by the environment. The deployment type can be
   /// set when creating the environment and cannot be changed. When you enable archive
   /// deployment, you will be prevented from performing a subset of actions within the
@@ -395,31 +392,23 @@ class Environment extends pulumi.CustomResource {
   /// Creating, updating, or deleting target servers.
   /// Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
   late final pulumi.Output<String> deploymentType;
-
   /// Description of the environment.
   late final pulumi.Output<String?> description;
-
   /// Display name of the environment.
   late final pulumi.Output<String?> displayName;
-
   /// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
   late final pulumi.Output<String?> forwardProxyUri;
-
   /// The resource ID of the environment.
   late final pulumi.Output<String> name;
-
   /// NodeConfig for setting the min/max number of nodes associated with the environment.
   /// Structure is documented below.
   late final pulumi.Output<EnvironmentNodeConfig> nodeConfig;
-
   /// The Apigee Organization associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}`.
   late final pulumi.Output<String> orgId;
-
   /// Key-value pairs that may be used for customizing the environment.
   /// Structure is documented below.
   late final pulumi.Output<EnvironmentProperties?> properties;
-
   /// Types that can be selected for an Environment. Each of the types are
   /// limited by capability and capacity. Refer to Apigee's public documentation
   /// to understand about each of these types in details.
@@ -436,49 +425,21 @@ class Environment extends pulumi.CustomResource {
     EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/environment:Environment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/environment:Environment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiProxyType = registerOutput<String>('apiProxyType');
-    clientIpResolutionConfig =
-        registerOutput<EnvironmentClientIpResolutionConfig?>(
-          'clientIpResolutionConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EnvironmentClientIpResolutionConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    clientIpResolutionConfig = registerOutput<EnvironmentClientIpResolutionConfig?>('clientIpResolutionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentClientIpResolutionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deploymentType = registerOutput<String>('deploymentType');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     forwardProxyUri = registerOutput<String?>('forwardProxyUri');
     this.name = registerOutput<String>('name');
-    nodeConfig = registerOutput<EnvironmentNodeConfig>(
-      'nodeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnvironmentNodeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nodeConfig = registerOutput<EnvironmentNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     orgId = registerOutput<String>('orgId');
-    properties = registerOutput<EnvironmentProperties?>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnvironmentProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<EnvironmentProperties?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 
@@ -500,49 +461,21 @@ class Environment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/environment:Environment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/environment:Environment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiProxyType = registerOutput<String>('apiProxyType');
-    clientIpResolutionConfig =
-        registerOutput<EnvironmentClientIpResolutionConfig?>(
-          'clientIpResolutionConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EnvironmentClientIpResolutionConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    clientIpResolutionConfig = registerOutput<EnvironmentClientIpResolutionConfig?>('clientIpResolutionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentClientIpResolutionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deploymentType = registerOutput<String>('deploymentType');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     forwardProxyUri = registerOutput<String?>('forwardProxyUri');
     this.name = registerOutput<String>('name');
-    nodeConfig = registerOutput<EnvironmentNodeConfig>(
-      'nodeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnvironmentNodeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nodeConfig = registerOutput<EnvironmentNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     orgId = registerOutput<String>('orgId');
-    properties = registerOutput<EnvironmentProperties?>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnvironmentProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<EnvironmentProperties?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

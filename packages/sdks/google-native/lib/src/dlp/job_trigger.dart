@@ -6,34 +6,24 @@ import 'job_trigger_args.dart';
 class JobTrigger extends pulumi.CustomResource {
   /// The creation timestamp of a triggeredJob.
   late final pulumi.Output<String> createTime;
-
   /// User provided description (max 256 chars)
   late final pulumi.Output<String> description;
-
   /// Display name (max 100 chars)
   late final pulumi.Output<String> displayName;
-
   /// A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
   late final pulumi.Output<List<Map<String, dynamic>>> errors;
-
   /// For inspect jobs, a snapshot of the configuration.
-  late final pulumi.Output<GooglePrivacyDlpV2InspectJobConfigResponse>
-  inspectJob;
-
+  late final pulumi.Output<GooglePrivacyDlpV2InspectJobConfigResponse> inspectJob;
   /// The timestamp of the last time this trigger executed.
   late final pulumi.Output<String> lastRunTime;
   late final pulumi.Output<String> location;
-
   /// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// A status for this trigger.
   late final pulumi.Output<String> status;
-
   /// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
   late final pulumi.Output<List<Map<String, dynamic>>> triggers;
-
   /// The last update timestamp of a triggeredJob.
   late final pulumi.Output<String> updateTime;
 
@@ -46,25 +36,16 @@ class JobTrigger extends pulumi.CustomResource {
     JobTriggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:dlp/v2:JobTrigger',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:dlp/v2:JobTrigger',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     errors = registerOutput<List<Map<String, dynamic>>>('errors');
-    inspectJob = registerOutput<GooglePrivacyDlpV2InspectJobConfigResponse>(
-      'inspectJob',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GooglePrivacyDlpV2InspectJobConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    inspectJob = registerOutput<GooglePrivacyDlpV2InspectJobConfigResponse>('inspectJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GooglePrivacyDlpV2InspectJobConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastRunTime = registerOutput<String>('lastRunTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

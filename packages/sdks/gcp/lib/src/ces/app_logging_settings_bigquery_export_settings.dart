@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppLoggingSettingsBigqueryExportSettings {
   /// The BigQuery dataset to export the data to.
   final pulumi.Input<String>? dataset;
-
   /// Indicates whether the BigQuery export is enabled.
   final pulumi.Input<bool>? enabled;
-
   /// The project ID of the BigQuery dataset to export the data to.
   /// Note: If the BigQuery dataset is in a different project from the app, you should grant
   /// roles/bigquery.admin role to the CES service agent service-&lt;PROJECT-
@@ -33,25 +31,12 @@ class AppLoggingSettingsBigqueryExportSettings {
     };
   }
 
-  factory AppLoggingSettingsBigqueryExportSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppLoggingSettingsBigqueryExportSettings.fromMap(Map<String, dynamic> map) {
     return AppLoggingSettingsBigqueryExportSettings(
-      dataset: (() {
-        final guardedValue = map['dataset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataset: (() { final guardedValue = map['dataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

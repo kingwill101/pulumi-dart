@@ -6,27 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageInsightStatusResponse {
   /// Description of the state of the storage insight.
   final pulumi.Input<String>? description;
-
   /// The state of the storage insight connection to the workspace
   final pulumi.Input<String> state;
 
   /// Creates a new [StorageInsightStatusResponse].
   /// [description] Description of the state of the storage insight.
   /// [state] The state of the storage insight connection to the workspace
-  StorageInsightStatusResponse({this.description, required this.state});
+  StorageInsightStatusResponse({
+    this.description,
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'description': ?description, 'state': state};
+    return <String, dynamic>{
+      'description': ?description,
+      'state': state,
+    };
   }
 
   factory StorageInsightStatusResponse.fromMap(Map<String, dynamic> map) {
     return StorageInsightStatusResponse(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

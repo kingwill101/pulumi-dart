@@ -9,10 +9,14 @@ class AiTensorboardEncryptionSpec {
 
   /// Creates a new [AiTensorboardEncryptionSpec].
   /// [kmsKeyName] The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-  AiTensorboardEncryptionSpec({required this.kmsKeyName});
+  AiTensorboardEncryptionSpec({
+    required this.kmsKeyName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyName': kmsKeyName};
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+    };
   }
 
   factory AiTensorboardEncryptionSpec.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class AiTensorboardEncryptionSpec {
     );
   }
 }
+

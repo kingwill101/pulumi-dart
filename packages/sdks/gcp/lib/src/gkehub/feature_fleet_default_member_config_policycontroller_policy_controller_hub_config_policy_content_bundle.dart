@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> bundle;
-
   /// The set of namespaces to be exempted from the bundle.
   final pulumi.Input<List<String>>? exemptedNamespaces;
 
@@ -24,16 +23,11 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
     };
   }
 
-  factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle(
       bundle: pulumi.Input.fromValue(map['bundle'] as String),
-      exemptedNamespaces: (() {
-        final guardedValue = map['exemptedNamespaces'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      exemptedNamespaces: (() { final guardedValue = map['exemptedNamespaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

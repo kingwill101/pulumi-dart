@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSapVirtualInstanceArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Virtual Instances for SAP solutions resource
   final pulumi.Input<String> sapVirtualInstanceName;
 
@@ -30,12 +29,9 @@ class GetSapVirtualInstanceArgs {
 
   factory GetSapVirtualInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetSapVirtualInstanceArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sapVirtualInstanceName: pulumi.Input.fromValue(
-        map['sapVirtualInstanceName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sapVirtualInstanceName: pulumi.Input.fromValue(map['sapVirtualInstanceName'] as String),
     );
   }
 }
+

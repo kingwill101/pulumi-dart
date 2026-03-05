@@ -282,65 +282,42 @@ import 'virtual_machine_run_command_script_source_response.dart';
 class VirtualMachineRunCommandByVirtualMachine extends pulumi.CustomResource {
   /// Optional. If set to true, provisioning will complete as soon as the script starts and will not wait for script to complete.
   late final pulumi.Output<bool?> asyncExecution;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
-  late final pulumi.Output<RunCommandManagedIdentityResponse?>
-  errorBlobManagedIdentity;
-
+  late final pulumi.Output<RunCommandManagedIdentityResponse?> errorBlobManagedIdentity;
   /// Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter.
   late final pulumi.Output<String?> errorBlobUri;
-
   /// The virtual machine run command instance view.
-  late final pulumi.Output<VirtualMachineRunCommandInstanceViewResponse>
-  instanceView;
-
+  late final pulumi.Output<VirtualMachineRunCommandInstanceViewResponse> instanceView;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
-  late final pulumi.Output<RunCommandManagedIdentityResponse?>
-  outputBlobManagedIdentity;
-
+  late final pulumi.Output<RunCommandManagedIdentityResponse?> outputBlobManagedIdentity;
   /// Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.
   late final pulumi.Output<String?> outputBlobUri;
-
   /// The parameters used by the script.
   late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
-
   /// The parameters used by the script.
   late final pulumi.Output<List<Map<String, dynamic>>?> protectedParameters;
-
   /// The provisioning state, which only appears in the response. If treatFailureAsDeploymentFailure set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If treatFailureAsDeploymentFailure set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
   late final pulumi.Output<String> provisioningState;
-
   /// Specifies the user account password on the VM when executing the run command.
   late final pulumi.Output<String?> runAsPassword;
-
   /// Specifies the user account on the VM when executing the run command.
   late final pulumi.Output<String?> runAsUser;
-
   /// The source of the run command script.
-  late final pulumi.Output<VirtualMachineRunCommandScriptSourceResponse?>
-  source;
-
+  late final pulumi.Output<VirtualMachineRunCommandScriptSourceResponse?> source;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The timeout in seconds to execute the run command.
   late final pulumi.Output<int?> timeoutInSeconds;
-
   /// Optional. If set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
   late final pulumi.Output<bool?> treatFailureAsDeploymentFailure;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -353,81 +330,30 @@ class VirtualMachineRunCommandByVirtualMachine extends pulumi.CustomResource {
     VirtualMachineRunCommandByVirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:compute:VirtualMachineRunCommandByVirtualMachine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:compute:VirtualMachineRunCommandByVirtualMachine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     asyncExecution = registerOutput<bool?>('asyncExecution');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    errorBlobManagedIdentity =
-        registerOutput<RunCommandManagedIdentityResponse?>(
-          'errorBlobManagedIdentity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RunCommandManagedIdentityResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    errorBlobManagedIdentity = registerOutput<RunCommandManagedIdentityResponse?>('errorBlobManagedIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunCommandManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     errorBlobUri = registerOutput<String?>('errorBlobUri');
-    instanceView = registerOutput<VirtualMachineRunCommandInstanceViewResponse>(
-      'instanceView',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualMachineRunCommandInstanceViewResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    instanceView = registerOutput<VirtualMachineRunCommandInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineRunCommandInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    outputBlobManagedIdentity =
-        registerOutput<RunCommandManagedIdentityResponse?>(
-          'outputBlobManagedIdentity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RunCommandManagedIdentityResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    outputBlobManagedIdentity = registerOutput<RunCommandManagedIdentityResponse?>('outputBlobManagedIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunCommandManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outputBlobUri = registerOutput<String?>('outputBlobUri');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
-    protectedParameters = registerOutput<List<Map<String, dynamic>>?>(
-      'protectedParameters',
-    );
+    protectedParameters = registerOutput<List<Map<String, dynamic>>?>('protectedParameters');
     provisioningState = registerOutput<String>('provisioningState');
     runAsPassword = registerOutput<String?>('runAsPassword');
     runAsUser = registerOutput<String?>('runAsUser');
-    source = registerOutput<VirtualMachineRunCommandScriptSourceResponse?>(
-      'source',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualMachineRunCommandScriptSourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    source = registerOutput<VirtualMachineRunCommandScriptSourceResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineRunCommandScriptSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
-    treatFailureAsDeploymentFailure = registerOutput<bool?>(
-      'treatFailureAsDeploymentFailure',
-    );
+    treatFailureAsDeploymentFailure = registerOutput<bool?>('treatFailureAsDeploymentFailure');
     type = registerOutput<String>('type');
   }
 }

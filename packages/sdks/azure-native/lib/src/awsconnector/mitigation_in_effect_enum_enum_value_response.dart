@@ -9,21 +9,20 @@ class MitigationInEffectEnumEnumValueResponse {
 
   /// Creates a new [MitigationInEffectEnumEnumValueResponse].
   /// [value] Property value
-  MitigationInEffectEnumEnumValueResponse({this.value});
+  MitigationInEffectEnumEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory MitigationInEffectEnumEnumValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MitigationInEffectEnumEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return MitigationInEffectEnumEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

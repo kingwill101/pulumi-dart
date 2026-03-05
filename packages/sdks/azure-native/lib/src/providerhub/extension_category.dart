@@ -16,9 +16,7 @@ enum ExtensionCategory {
   resourceMoveBegin("ResourceMoveBegin"),
   resourceMoveCompleted("ResourceMoveCompleted"),
   bestMatchOperationBegin("BestMatchOperationBegin"),
-  subscriptionLifecycleNotificationDeletion(
-    "SubscriptionLifecycleNotificationDeletion",
-  );
+  subscriptionLifecycleNotificationDeletion("SubscriptionLifecycleNotificationDeletion");
 
   const ExtensionCategory(this.wireValue);
   final String wireValue;
@@ -32,3 +30,4 @@ enum ExtensionCategory {
     throw ArgumentError('Unknown ExtensionCategory value: $value');
   }
 }
+

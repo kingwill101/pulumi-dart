@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseTypeResponseDatamigrationV1beta1 {
   /// The database engine.
   final pulumi.Input<String> engine;
-
   /// The database provider.
   final pulumi.Input<String> provider;
 
@@ -19,15 +18,17 @@ class DatabaseTypeResponseDatamigrationV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'engine': engine, 'provider': provider};
+    return <String, dynamic>{
+      'engine': engine,
+      'provider': provider,
+    };
   }
 
-  factory DatabaseTypeResponseDatamigrationV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DatabaseTypeResponseDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
     return DatabaseTypeResponseDatamigrationV1beta1(
       engine: pulumi.Input.fromValue(map['engine'] as String),
       provider: pulumi.Input.fromValue(map['provider'] as String),
     );
   }
 }
+

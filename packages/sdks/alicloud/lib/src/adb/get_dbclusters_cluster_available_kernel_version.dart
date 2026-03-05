@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDBClustersClusterAvailableKernelVersion {
   /// The maintenance expiration time of the version
   final pulumi.Input<String> expireDate;
-
   /// The minor version. Example: 3.1.9.
   final pulumi.Input<String> kernelVersion;
-
   /// The time when the minor version was released.
   final pulumi.Input<String> releaseDate;
 
@@ -30,9 +28,7 @@ class GetDBClustersClusterAvailableKernelVersion {
     };
   }
 
-  factory GetDBClustersClusterAvailableKernelVersion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDBClustersClusterAvailableKernelVersion.fromMap(Map<String, dynamic> map) {
     return GetDBClustersClusterAvailableKernelVersion(
       expireDate: pulumi.Input.fromValue(map['expireDate'] as String),
       kernelVersion: pulumi.Input.fromValue(map['kernelVersion'] as String),
@@ -40,3 +36,4 @@ class GetDBClustersClusterAvailableKernelVersion {
     );
   }
 }
+

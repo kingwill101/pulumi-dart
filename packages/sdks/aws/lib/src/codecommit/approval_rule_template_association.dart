@@ -110,10 +110,8 @@ import 'approval_rule_template_association_state.dart';
 class ApprovalRuleTemplateAssociation extends pulumi.CustomResource {
   /// The name for the approval rule template.
   late final pulumi.Output<String> approvalRuleTemplateName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The name of the repository that you want to associate with the template.
   late final pulumi.Output<String> repositoryName;
 
@@ -126,14 +124,12 @@ class ApprovalRuleTemplateAssociation extends pulumi.CustomResource {
     ApprovalRuleTemplateAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codecommit/approvalRuleTemplateAssociation:ApprovalRuleTemplateAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    approvalRuleTemplateName = registerOutput<String>(
-      'approvalRuleTemplateName',
-    );
+          'aws:codecommit/approvalRuleTemplateAssociation:ApprovalRuleTemplateAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    approvalRuleTemplateName = registerOutput<String>('approvalRuleTemplateName');
     region = registerOutput<String>('region');
     repositoryName = registerOutput<String>('repositoryName');
   }
@@ -156,14 +152,12 @@ class ApprovalRuleTemplateAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codecommit/approvalRuleTemplateAssociation:ApprovalRuleTemplateAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    approvalRuleTemplateName = registerOutput<String>(
-      'approvalRuleTemplateName',
-    );
+          'aws:codecommit/approvalRuleTemplateAssociation:ApprovalRuleTemplateAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    approvalRuleTemplateName = registerOutput<String>('approvalRuleTemplateName');
     region = registerOutput<String>('region');
     repositoryName = registerOutput<String>('repositoryName');
   }

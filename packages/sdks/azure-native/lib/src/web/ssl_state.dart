@@ -16,3 +16,4 @@ enum SslState {
     throw ArgumentError('Unknown SslState value: $value');
   }
 }
+

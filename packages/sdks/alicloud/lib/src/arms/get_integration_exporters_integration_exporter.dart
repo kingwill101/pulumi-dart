@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIntegrationExportersIntegrationExporter {
   /// The ID of the Prometheus instance.
   final pulumi.Input<String> clusterId;
-
   /// Integration Exporter Type.
   final pulumi.Input<String> exporterType;
-
   /// The ID of the Integration Exporter. It formats as `&lt;cluster_id&gt;:&lt;integration_type&gt;:&lt;instance_id&gt;`.
   final pulumi.Input<String> id;
-
   /// The ID of the Integration Exporter instance.
   final pulumi.Input<int> instanceId;
-
   /// The name of the instance.
   final pulumi.Input<String> instanceName;
-
   /// The type of prometheus integration.
   final pulumi.Input<String> integrationType;
-
   /// Exporter configuration parameter json string.
   final pulumi.Input<String> param;
-
   /// Monitor the target address.
   final pulumi.Input<String> target;
-
   /// The version information.
   final pulumi.Input<String> version;
 
@@ -66,9 +58,7 @@ class GetIntegrationExportersIntegrationExporter {
     };
   }
 
-  factory GetIntegrationExportersIntegrationExporter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetIntegrationExportersIntegrationExporter.fromMap(Map<String, dynamic> map) {
     return GetIntegrationExportersIntegrationExporter(
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
       exporterType: pulumi.Input.fromValue(map['exporterType'] as String),
@@ -82,3 +72,4 @@ class GetIntegrationExportersIntegrationExporter {
     );
   }
 }
+

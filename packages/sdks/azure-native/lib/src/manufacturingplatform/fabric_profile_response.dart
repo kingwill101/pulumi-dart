@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FabricProfileResponse {
   /// Azure Key Vault Uri
   final pulumi.Input<String> keyUri;
-
   /// One Lake Path
   final pulumi.Input<String> oneLakePath;
-
   /// URI of One Lake
   final pulumi.Input<String> oneLakeUri;
 
@@ -39,3 +37,4 @@ class FabricProfileResponse {
     );
   }
 }
+

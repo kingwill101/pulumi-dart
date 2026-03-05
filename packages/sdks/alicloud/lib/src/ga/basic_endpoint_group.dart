@@ -393,25 +393,18 @@ import 'basic_endpoint_group_state.dart';
 class BasicEndpointGroup extends pulumi.CustomResource {
   /// The ID of the basic GA instance.
   late final pulumi.Output<String> acceleratorId;
-
   /// The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
   late final pulumi.Output<String?> basicEndpointGroupName;
-
   /// The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
   late final pulumi.Output<String?> description;
-
   /// The address of the endpoint.
   late final pulumi.Output<String> endpointAddress;
-
   /// The ID of the region where you want to create the endpoint group.
   late final pulumi.Output<String> endpointGroupRegion;
-
   /// The sub address of the endpoint.
   late final pulumi.Output<String> endpointSubAddress;
-
   /// The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
   late final pulumi.Output<String> endpointType;
-
   /// The status of the Basic Endpoint Group.
   late final pulumi.Output<String> status;
 
@@ -424,11 +417,11 @@ class BasicEndpointGroup extends pulumi.CustomResource {
     BasicEndpointGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/basicEndpointGroup:BasicEndpointGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/basicEndpointGroup:BasicEndpointGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorId = registerOutput<String>('acceleratorId');
     basicEndpointGroupName = registerOutput<String?>('basicEndpointGroupName');
     description = registerOutput<String?>('description');
@@ -457,11 +450,11 @@ class BasicEndpointGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/basicEndpointGroup:BasicEndpointGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/basicEndpointGroup:BasicEndpointGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorId = registerOutput<String>('acceleratorId');
     basicEndpointGroupName = registerOutput<String?>('basicEndpointGroupName');
     description = registerOutput<String?>('description');

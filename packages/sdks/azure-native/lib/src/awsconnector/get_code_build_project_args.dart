@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCodeBuildProjectArgs {
   /// Name of CodeBuildProject
   final pulumi.Input<String> name;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetCodeBuildProjectArgs {
   factory GetCodeBuildProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetCodeBuildProjectArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

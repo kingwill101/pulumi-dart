@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupSubscriptionAssociationArgs {
   /// The ID of the Management Group to associate the Subscription with. Changing this forces a new Management to be created.
   final pulumi.Input<String> managementGroupId;
-
   /// The ID of the Subscription to be associated with the Management Group. Changing this forces a new Management to be created.
   final pulumi.Input<String> subscriptionId;
 
@@ -30,10 +29,9 @@ class GroupSubscriptionAssociationArgs {
 
   factory GroupSubscriptionAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GroupSubscriptionAssociationArgs(
-      managementGroupId: pulumi.Input.fromValue(
-        map['managementGroupId'] as String,
-      ),
+      managementGroupId: pulumi.Input.fromValue(map['managementGroupId'] as String),
       subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
+

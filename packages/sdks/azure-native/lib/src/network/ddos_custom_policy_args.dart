@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DdosCustomPolicyArgs {
   /// The name of the DDoS custom policy.
   final pulumi.Input<String>? ddosCustomPolicyName;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// Resource location.
   final pulumi.Input<String>? location;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -48,31 +44,12 @@ class DdosCustomPolicyArgs {
 
   factory DdosCustomPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DdosCustomPolicyArgs(
-      ddosCustomPolicyName: (() {
-        final guardedValue = map['ddosCustomPolicyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      ddosCustomPolicyName: (() { final guardedValue = map['ddosCustomPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

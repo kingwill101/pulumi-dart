@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupMembershipArgs {
   /// The IAM Group name to attach the list of `users` to
   final pulumi.Input<String> group;
-
   /// The name to identify the Group Membership
   final pulumi.Input<String>? name;
-
   /// A list of IAM User names to associate with the Group
   final pulumi.Input<List<String>> users;
 
@@ -20,21 +18,26 @@ class GroupMembershipArgs {
   /// [group] The IAM Group name to attach the list of `users` to
   /// [name] The name to identify the Group Membership
   /// [users] A list of IAM User names to associate with the Group
-  GroupMembershipArgs({required this.group, this.name, required this.users});
+  GroupMembershipArgs({
+    required this.group,
+    this.name,
+    required this.users,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'group': group, 'name': ?name, 'users': users};
+    return <String, dynamic>{
+      'group': group,
+      'name': ?name,
+      'users': users,
+    };
   }
 
   factory GroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return GroupMembershipArgs(
       group: pulumi.Input.fromValue(map['group'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       users: pulumi.Input.fromValue((map['users'] as List).cast<String>()),
     );
   }
 }
+

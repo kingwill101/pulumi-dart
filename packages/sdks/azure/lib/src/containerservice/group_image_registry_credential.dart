@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupImageRegistryCredential {
   /// The password with which to connect to the registry. Changing this forces a new resource to be created.
   final pulumi.Input<String>? password;
-
   /// The address to use to connect to the registry without protocol ("https"/"http"). For example: "myacr.acr.io". Changing this forces a new resource to be created.
   final pulumi.Input<String> server;
-
   /// The identity ID for the private registry. Changing this forces a new resource to be created.
   final pulumi.Input<String>? userAssignedIdentityId;
-
   /// The username with which to connect to the registry. Changing this forces a new resource to be created.
   final pulumi.Input<String>? username;
 
@@ -38,22 +35,11 @@ class GroupImageRegistryCredential {
 
   factory GroupImageRegistryCredential.fromMap(Map<String, dynamic> map) {
     return GroupImageRegistryCredential(
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       server: pulumi.Input.fromValue(map['server'] as String),
-      userAssignedIdentityId: (() {
-        final guardedValue = map['userAssignedIdentityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userAssignedIdentityId: (() { final guardedValue = map['userAssignedIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

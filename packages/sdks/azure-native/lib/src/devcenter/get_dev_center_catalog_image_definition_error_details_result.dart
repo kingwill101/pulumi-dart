@@ -10,28 +10,20 @@ class GetDevCenterCatalogImageDefinitionErrorDetailsResult {
 
   /// Creates a new [GetDevCenterCatalogImageDefinitionErrorDetailsResult].
   /// [errors] Errors associated with resources synchronized from the catalog.
-  GetDevCenterCatalogImageDefinitionErrorDetailsResult({required this.errors});
+  GetDevCenterCatalogImageDefinitionErrorDetailsResult({
+    required this.errors,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors':
-          pulumi.Input.encodeList<
-            CatalogErrorDetailsResponse,
-            Map<String, dynamic>
-          >(errors, (value) => value.toMap()),
+      'errors': pulumi.Input.encodeList<CatalogErrorDetailsResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
     };
   }
 
-  factory GetDevCenterCatalogImageDefinitionErrorDetailsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDevCenterCatalogImageDefinitionErrorDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetDevCenterCatalogImageDefinitionErrorDetailsResult(
-      errors: pulumi.Input.decodeList<CatalogErrorDetailsResponse>(
-        map['errors']!,
-        (value) => CatalogErrorDetailsResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      errors: pulumi.Input.decodeList<CatalogErrorDetailsResponse>(map['errors']!, (value) => CatalogErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

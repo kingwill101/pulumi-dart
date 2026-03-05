@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocalBrokerKubernetesAuthentication {
   /// Secret Path where SAT is mounted.
   final pulumi.Input<String>? secretPath;
-
   /// Token name where SAT is mounted on secret path.
   final pulumi.Input<String>? serviceAccountTokenName;
 
@@ -25,20 +24,11 @@ class LocalBrokerKubernetesAuthentication {
     };
   }
 
-  factory LocalBrokerKubernetesAuthentication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LocalBrokerKubernetesAuthentication.fromMap(Map<String, dynamic> map) {
     return LocalBrokerKubernetesAuthentication(
-      secretPath: (() {
-        final guardedValue = map['secretPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceAccountTokenName: (() {
-        final guardedValue = map['serviceAccountTokenName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      secretPath: (() { final guardedValue = map['secretPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceAccountTokenName: (() { final guardedValue = map['serviceAccountTokenName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -10,16 +10,13 @@ class AppCheckRecaptchaV3ConfigArgs {
   /// The ID of an
   /// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
   final pulumi.Input<String> appId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The site secret used to identify your service for reCAPTCHA v3 verification.
   /// For security reasons, this field will never be populated in any response.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String> siteSecret;
-
   /// Specifies the duration for which App Check tokens exchanged from reCAPTCHA V3 artifacts will be valid.
   /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -49,17 +46,10 @@ class AppCheckRecaptchaV3ConfigArgs {
   factory AppCheckRecaptchaV3ConfigArgs.fromMap(Map<String, dynamic> map) {
     return AppCheckRecaptchaV3ConfigArgs(
       appId: pulumi.Input.fromValue(map['appId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       siteSecret: pulumi.Input.fromValue(map['siteSecret'] as String),
-      tokenTtl: (() {
-        final guardedValue = map['tokenTtl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tokenTtl: (() { final guardedValue = map['tokenTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

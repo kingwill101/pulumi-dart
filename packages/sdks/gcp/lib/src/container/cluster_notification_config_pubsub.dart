@@ -6,10 +6,8 @@ import 'cluster_notification_config_pubsub_filter.dart';
 class ClusterNotificationConfigPubsub {
   /// Whether or not the notification config is enabled
   final pulumi.Input<bool> enabled;
-
   /// Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
   final pulumi.Input<ClusterNotificationConfigPubsubFilter>? filter;
-
   /// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
   final pulumi.Input<String>? topic;
 
@@ -26,11 +24,7 @@ class ClusterNotificationConfigPubsub {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'filter':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterNotificationConfigPubsubFilter,
-            Map<String, dynamic>
-          >(filter, (value) => value.toMap()),
+      'filter': ?pulumi.Input.mapOptionalInputValue<ClusterNotificationConfigPubsubFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'topic': ?topic,
     };
   }
@@ -38,20 +32,9 @@ class ClusterNotificationConfigPubsub {
   factory ClusterNotificationConfigPubsub.fromMap(Map<String, dynamic> map) {
     return ClusterNotificationConfigPubsub(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterNotificationConfigPubsubFilter.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      topic: (() {
-        final guardedValue = map['topic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNotificationConfigPubsubFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      topic: (() { final guardedValue = map['topic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

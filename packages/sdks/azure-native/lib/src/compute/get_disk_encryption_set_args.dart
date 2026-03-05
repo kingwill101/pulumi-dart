@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiskEncryptionSetArgs {
   /// The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
   final pulumi.Input<String> diskEncryptionSetName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetDiskEncryptionSetArgs {
 
   factory GetDiskEncryptionSetArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskEncryptionSetArgs(
-      diskEncryptionSetName: pulumi.Input.fromValue(
-        map['diskEncryptionSetName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      diskEncryptionSetName: pulumi.Input.fromValue(map['diskEncryptionSetName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

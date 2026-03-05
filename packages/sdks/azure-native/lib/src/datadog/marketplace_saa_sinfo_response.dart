@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MarketplaceSaaSInfoResponse {
   /// The Azure Subscription ID to which the Marketplace Subscription belongs and gets billed into.
   final pulumi.Input<String>? billedAzureSubscriptionId;
-
   /// Marketplace Subscription Details: SAAS Name
   final pulumi.Input<String>? marketplaceName;
-
   /// Marketplace Subscription Details: SaaS Subscription Status
   final pulumi.Input<String>? marketplaceStatus;
-
   /// Marketplace Subscription Id. This is a GUID-formatted string.
   final pulumi.Input<String>? marketplaceSubscriptionId;
-
   /// Flag specifying if the Marketplace status is subscribed or not.
   final pulumi.Input<bool>? subscribed;
 
@@ -45,31 +41,12 @@ class MarketplaceSaaSInfoResponse {
 
   factory MarketplaceSaaSInfoResponse.fromMap(Map<String, dynamic> map) {
     return MarketplaceSaaSInfoResponse(
-      billedAzureSubscriptionId: (() {
-        final guardedValue = map['billedAzureSubscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      marketplaceName: (() {
-        final guardedValue = map['marketplaceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      marketplaceStatus: (() {
-        final guardedValue = map['marketplaceStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      marketplaceSubscriptionId: (() {
-        final guardedValue = map['marketplaceSubscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subscribed: (() {
-        final guardedValue = map['subscribed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      billedAzureSubscriptionId: (() { final guardedValue = map['billedAzureSubscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      marketplaceName: (() { final guardedValue = map['marketplaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      marketplaceStatus: (() { final guardedValue = map['marketplaceStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      marketplaceSubscriptionId: (() { final guardedValue = map['marketplaceSubscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscribed: (() { final guardedValue = map['subscribed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -1,32 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAuthorizationRule.
 class GetAuthorizationRuleResult {
   final String eventhubName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? listen;
   final bool? manage;
   final String name;
   final String namespaceName;
-
   /// The Primary Connection String for the Event Hubs Authorization Rule.
   final String primaryConnectionString;
-
   /// The alias of the Primary Connection String for the Event Hubs Authorization Rule.
   final String primaryConnectionStringAlias;
-
   /// The Primary Key for the Event Hubs Authorization Rule.
   final String primaryKey;
   final String resourceGroupName;
-
   /// The Secondary Connection String for the Event Hubs Authorization Rule.
   final String secondaryConnectionString;
-
   /// The alias of the Secondary Connection String for the Event Hubs Authorization Rule.
   final String secondaryConnectionStringAlias;
-
   /// The Secondary Key for the Event Hubs Authorization Rule.
   final String secondaryKey;
   final bool? send;
@@ -86,32 +80,19 @@ class GetAuthorizationRuleResult {
     return GetAuthorizationRuleResult(
       eventhubName: map['eventhubName'] as String,
       id: map['id'] as String,
-      listen: (() {
-        final guardedValue = map['listen'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      manage: (() {
-        final guardedValue = map['manage'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      listen: (() { final guardedValue = map['listen']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      manage: (() { final guardedValue = map['manage']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: map['name'] as String,
       namespaceName: map['namespaceName'] as String,
       primaryConnectionString: map['primaryConnectionString'] as String,
-      primaryConnectionStringAlias:
-          map['primaryConnectionStringAlias'] as String,
+      primaryConnectionStringAlias: map['primaryConnectionStringAlias'] as String,
       primaryKey: map['primaryKey'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
       secondaryConnectionString: map['secondaryConnectionString'] as String,
-      secondaryConnectionStringAlias:
-          map['secondaryConnectionStringAlias'] as String,
+      secondaryConnectionStringAlias: map['secondaryConnectionStringAlias'] as String,
       secondaryKey: map['secondaryKey'] as String,
-      send: (() {
-        final guardedValue = map['send'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      send: (() { final guardedValue = map['send']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }
+

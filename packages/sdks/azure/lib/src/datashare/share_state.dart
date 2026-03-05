@@ -7,19 +7,14 @@ import 'share_snapshot_schedule.dart';
 class ShareState {
   /// The ID of the Data Share account in which the Data Share is created. Changing this forces a new Data Share to be created.
   final pulumi.Input<String>? accountId;
-
   /// The Data Share's description.
   final pulumi.Input<String>? description;
-
   /// The kind of the Data Share. Possible values are `CopyBased` and `InPlace`. Changing this forces a new Data Share to be created.
   final pulumi.Input<String>? kind;
-
   /// The name which should be used for this Data Share. Changing this forces a new Data Share to be created.
   final pulumi.Input<String>? name;
-
   /// A `snapshot_schedule` block as defined below.
   final pulumi.Input<ShareSnapshotSchedule>? snapshotSchedule;
-
   /// The terms of the Data Share.
   final pulumi.Input<String>? terms;
 
@@ -45,51 +40,20 @@ class ShareState {
       'description': ?description,
       'kind': ?kind,
       'name': ?name,
-      'snapshotSchedule':
-          ?pulumi.Input.mapOptionalInputValue<
-            ShareSnapshotSchedule,
-            Map<String, dynamic>
-          >(snapshotSchedule, (value) => value.toMap()),
+      'snapshotSchedule': ?pulumi.Input.mapOptionalInputValue<ShareSnapshotSchedule, Map<String, dynamic>>(snapshotSchedule, (value) => value.toMap()),
       'terms': ?terms,
     };
   }
 
   factory ShareState.fromMap(Map<String, dynamic> map) {
     return ShareState(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      snapshotSchedule: (() {
-        final guardedValue = map['snapshotSchedule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ShareSnapshotSchedule.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      terms: (() {
-        final guardedValue = map['terms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      snapshotSchedule: (() { final guardedValue = map['snapshotSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ShareSnapshotSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      terms: (() { final guardedValue = map['terms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

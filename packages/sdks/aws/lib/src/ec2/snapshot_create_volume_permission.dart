@@ -159,10 +159,8 @@ import 'snapshot_create_volume_permission_state.dart';
 class SnapshotCreateVolumePermission extends pulumi.CustomResource {
   /// An AWS Account ID to add create volume permissions. The AWS Account cannot be the snapshot's owner
   late final pulumi.Output<String> accountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A snapshot ID
   late final pulumi.Output<String> snapshotId;
 
@@ -175,11 +173,11 @@ class SnapshotCreateVolumePermission extends pulumi.CustomResource {
     SnapshotCreateVolumePermissionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/snapshotCreateVolumePermission:SnapshotCreateVolumePermission',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/snapshotCreateVolumePermission:SnapshotCreateVolumePermission',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     region = registerOutput<String>('region');
     snapshotId = registerOutput<String>('snapshotId');
@@ -203,11 +201,11 @@ class SnapshotCreateVolumePermission extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/snapshotCreateVolumePermission:SnapshotCreateVolumePermission',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/snapshotCreateVolumePermission:SnapshotCreateVolumePermission',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     region = registerOutput<String>('region');
     snapshotId = registerOutput<String>('snapshotId');

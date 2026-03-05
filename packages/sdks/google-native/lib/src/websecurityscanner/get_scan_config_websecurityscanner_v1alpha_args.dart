@@ -19,19 +19,17 @@ class GetScanConfigWebsecurityscannerV1alphaArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'scanConfigId': scanConfigId};
+    return <String, dynamic>{
+      'project': ?project,
+      'scanConfigId': scanConfigId,
+    };
   }
 
-  factory GetScanConfigWebsecurityscannerV1alphaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetScanConfigWebsecurityscannerV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetScanConfigWebsecurityscannerV1alphaArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scanConfigId: pulumi.Input.fromValue(map['scanConfigId'] as String),
     );
   }
 }
+

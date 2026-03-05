@@ -9,19 +9,20 @@ class LoadBalancerBackendAddressPool {
 
   /// Creates a new [LoadBalancerBackendAddressPool].
   /// [resource] The Load Balancer backend address pool ARM resource Id.
-  LoadBalancerBackendAddressPool({this.resource});
+  LoadBalancerBackendAddressPool({
+    this.resource,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resource': ?resource};
+    return <String, dynamic>{
+      'resource': ?resource,
+    };
   }
 
   factory LoadBalancerBackendAddressPool.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressPool(
-      resource: (() {
-        final guardedValue = map['resource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,10 +7,8 @@ import 'system_data_response.dart';
 class GetApplicationBusinessProcessDevelopmentArtifactResult {
   /// The name of the business process development artifact.
   final String name;
-
   /// The properties of the business process development artifact.
   final BusinessProcessDevelopmentArtifactPropertiesResponse properties;
-
   /// The system data of the business process development artifact.
   final SystemDataResponse systemData;
 
@@ -32,17 +30,12 @@ class GetApplicationBusinessProcessDevelopmentArtifactResult {
     };
   }
 
-  factory GetApplicationBusinessProcessDevelopmentArtifactResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationBusinessProcessDevelopmentArtifactResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationBusinessProcessDevelopmentArtifactResult(
       name: map['name'] as String,
-      properties: BusinessProcessDevelopmentArtifactPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      properties: BusinessProcessDevelopmentArtifactPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

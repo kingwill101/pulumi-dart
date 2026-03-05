@@ -8,68 +8,29 @@ import 'weekly_schedule_days_of_week_item.dart';
 class WeeklySchedule {
   /// The days of the week to perform a backup. If this field is left empty, the default of every day of the week is used.
   final pulumi.Input<List<WeeklyScheduleDaysOfWeekItem>>? daysOfWeek;
-
   /// The times during the day to start a backup. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00). If no start times are provided, a single fixed start time is chosen arbitrarily.
   final pulumi.Input<List<GoogleTypeTimeOfDay>>? startTimes;
 
   /// Creates a new [WeeklySchedule].
   /// [daysOfWeek] The days of the week to perform a backup. If this field is left empty, the default of every day of the week is used.
   /// [startTimes] The times during the day to start a backup. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00). If no start times are provided, a single fixed start time is chosen arbitrarily.
-  WeeklySchedule({this.daysOfWeek, this.startTimes});
+  WeeklySchedule({
+    this.daysOfWeek,
+    this.startTimes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'daysOfWeek':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<WeeklyScheduleDaysOfWeekItem>,
-            List<String>
-          >(
-            daysOfWeek,
-            (value) =>
-                pulumi.Input.encodeList<WeeklyScheduleDaysOfWeekItem, String>(
-                  value,
-                  (value) => value.wireValue,
-                ),
-          ),
-      'startTimes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleTypeTimeOfDay>,
-            List<Map<String, dynamic>>
-          >(
-            startTimes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleTypeTimeOfDay,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'daysOfWeek': ?pulumi.Input.mapOptionalInputValue<List<WeeklyScheduleDaysOfWeekItem>, List<String>>(daysOfWeek, (value) => pulumi.Input.encodeList<WeeklyScheduleDaysOfWeekItem, String>(value, (value) => value.wireValue)),
+      'startTimes': ?pulumi.Input.mapOptionalInputValue<List<GoogleTypeTimeOfDay>, List<Map<String, dynamic>>>(startTimes, (value) => pulumi.Input.encodeList<GoogleTypeTimeOfDay, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WeeklySchedule.fromMap(Map<String, dynamic> map) {
     return WeeklySchedule(
-      daysOfWeek: (() {
-        final guardedValue = map['daysOfWeek'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<WeeklyScheduleDaysOfWeekItem>(
-            guardedValue,
-            (value) => WeeklyScheduleDaysOfWeekItem.fromValue(value as String),
-          ),
-        );
-      })(),
-      startTimes: (() {
-        final guardedValue = map['startTimes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GoogleTypeTimeOfDay>(
-            guardedValue,
-            (value) => GoogleTypeTimeOfDay.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      daysOfWeek: (() { final guardedValue = map['daysOfWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WeeklyScheduleDaysOfWeekItem>(guardedValue, (value) => WeeklyScheduleDaysOfWeekItem.fromValue(value as String))); })(),
+      startTimes: (() { final guardedValue = map['startTimes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleTypeTimeOfDay>(guardedValue, (value) => GoogleTypeTimeOfDay.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

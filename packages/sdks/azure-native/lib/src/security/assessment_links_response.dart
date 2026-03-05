@@ -9,10 +9,14 @@ class AssessmentLinksResponse {
 
   /// Creates a new [AssessmentLinksResponse].
   /// [azurePortalUri] Link to assessment in Azure Portal
-  AssessmentLinksResponse({required this.azurePortalUri});
+  AssessmentLinksResponse({
+    required this.azurePortalUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'azurePortalUri': azurePortalUri};
+    return <String, dynamic>{
+      'azurePortalUri': azurePortalUri,
+    };
   }
 
   factory AssessmentLinksResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class AssessmentLinksResponse {
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum SmartDataActions {
     throw ArgumentError('Unknown SmartDataActions value: $value');
   }
 }
+

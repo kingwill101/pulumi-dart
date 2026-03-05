@@ -267,41 +267,28 @@ import 'system_data_response.dart';
 class SourceControl extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Array of source control content types.
   late final pulumi.Output<List<String>> contentTypes;
-
   /// A description of the source control
   late final pulumi.Output<String?> description;
-
   /// The display name of the source control
   late final pulumi.Output<String> displayName;
-
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// Information regarding the latest deployment for the source control.
   late final pulumi.Output<DeploymentInfoResponse?> lastDeploymentInfo;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The repository type of the source control
   late final pulumi.Output<String> repoType;
-
   /// Repository metadata.
   late final pulumi.Output<RepositoryResponse> repository;
-
   /// Information regarding the resources created in user's repository.
-  late final pulumi.Output<RepositoryResourceInfoResponse?>
-  repositoryResourceInfo;
-
+  late final pulumi.Output<RepositoryResourceInfoResponse?> repositoryResourceInfo;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The version number associated with the source control
   late final pulumi.Output<String?> version;
 
@@ -314,58 +301,22 @@ class SourceControl extends pulumi.CustomResource {
     SourceControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:SourceControl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:securityinsights:SourceControl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     contentTypes = registerOutput<List<String>>('contentTypes');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String?>('etag');
-    lastDeploymentInfo = registerOutput<DeploymentInfoResponse?>(
-      'lastDeploymentInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeploymentInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    lastDeploymentInfo = registerOutput<DeploymentInfoResponse?>('lastDeploymentInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     repoType = registerOutput<String>('repoType');
-    repository = registerOutput<RepositoryResponse>(
-      'repository',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RepositoryResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    repositoryResourceInfo = registerOutput<RepositoryResourceInfoResponse?>(
-      'repositoryResourceInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RepositoryResourceInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    repository = registerOutput<RepositoryResponse>('repository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    repositoryResourceInfo = registerOutput<RepositoryResourceInfoResponse?>('repositoryResourceInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryResourceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }

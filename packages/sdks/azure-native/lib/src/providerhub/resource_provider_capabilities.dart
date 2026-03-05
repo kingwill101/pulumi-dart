@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceProviderCapabilities {
   /// The effect.
   final pulumi.Input<String> effect;
-
   /// The quota id.
   final pulumi.Input<String> quotaId;
-
   /// The required features.
   final pulumi.Input<List<String>>? requiredFeatures;
 
@@ -34,11 +32,8 @@ class ResourceProviderCapabilities {
     return ResourceProviderCapabilities(
       effect: pulumi.Input.fromValue(map['effect'] as String),
       quotaId: pulumi.Input.fromValue(map['quotaId'] as String),
-      requiredFeatures: (() {
-        final guardedValue = map['requiredFeatures'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      requiredFeatures: (() { final guardedValue = map['requiredFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

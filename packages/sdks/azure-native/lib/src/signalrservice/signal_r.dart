@@ -657,23 +657,18 @@ import 'system_data_response.dart';
 class SignalR extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Cross-Origin Resource Sharing (CORS) settings.
   late final pulumi.Output<SignalRCorsSettingsResponse?> cors;
-
   /// DisableLocalAuth
   /// Enable or disable aad auth
   /// When set as true, connection with AuthType=aad won't work.
   late final pulumi.Output<bool?> disableAadAuth;
-
   /// DisableLocalAuth
   /// Enable or disable local auth with AccessKey
   /// When set as true, connection with AccessKey=xxx won't work.
   late final pulumi.Output<bool?> disableLocalAuth;
-
   /// The publicly accessible IP of the resource.
   late final pulumi.Output<String> externalIP;
-
   /// List of the featureFlags.
   ///
   /// FeatureFlags that are not included in the parameters for the update operation will not be modified.
@@ -681,89 +676,60 @@ class SignalR extends pulumi.CustomResource {
   /// When a featureFlag is not explicitly set, its globally default value will be used
   /// But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags.
   late final pulumi.Output<List<Map<String, dynamic>>?> features;
-
   /// FQDN of the service instance.
   late final pulumi.Output<String> hostName;
-
   /// Deprecated.
   late final pulumi.Output<String> hostNamePrefix;
-
   /// A class represent managed identities used for request and response
   late final pulumi.Output<ManagedIdentityResponse?> identity;
-
   /// The kind of the service
   late final pulumi.Output<String?> kind;
-
   /// Live trace configuration of a Microsoft.SignalRService resource.
-  late final pulumi.Output<LiveTraceConfigurationResponse?>
-  liveTraceConfiguration;
-
+  late final pulumi.Output<LiveTraceConfigurationResponse?> liveTraceConfiguration;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Network ACLs for the resource
   late final pulumi.Output<SignalRNetworkACLsResponse?> networkACLs;
-
   /// Private endpoint connections to the resource.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Enable or disable public network access. Default to "Enabled".
   /// When it's Enabled, network ACLs still apply.
   /// When it's Disabled, public network access is always disabled no matter what you set in network ACLs.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// The publicly accessible port of the resource which is designed for browser/client side usage.
   late final pulumi.Output<int> publicPort;
-
   /// Enable or disable the regional endpoint. Default to "Enabled".
   /// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
   /// This property is replica specific. Disable the regional endpoint without replica is not allowed.
   late final pulumi.Output<String?> regionEndpointEnabled;
-
   /// Resource log configuration of a Microsoft.SignalRService resource.
-  late final pulumi.Output<ResourceLogConfigurationResponse?>
-  resourceLogConfiguration;
-
+  late final pulumi.Output<ResourceLogConfigurationResponse?> resourceLogConfiguration;
   /// Stop or start the resource.  Default to "False".
   /// When it's true, the data plane of the resource is shutdown.
   /// When it's false, the data plane of the resource is started.
   late final pulumi.Output<String?> resourceStopped;
-
   /// The publicly accessible port of the resource which is designed for customer server side usage.
   late final pulumi.Output<int> serverPort;
-
   /// Serverless settings.
   late final pulumi.Output<ServerlessSettingsResponse?> serverless;
-
   /// The list of shared private link resources.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  sharedPrivateLinkResources;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> sharedPrivateLinkResources;
   /// The billing information of the resource.
   late final pulumi.Output<ResourceSkuResponse?> sku;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// TLS settings for the resource
   late final pulumi.Output<SignalRTlsSettingsResponse?> tls;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The settings for the Upstream when the service is in server-less mode.
   late final pulumi.Output<ServerlessUpstreamSettingsResponse?> upstream;
-
   /// Version of the resource. Probably you need the same or higher version of client SDKs.
   late final pulumi.Output<String> version;
 
@@ -776,136 +742,41 @@ class SignalR extends pulumi.CustomResource {
     SignalRArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:signalrservice:SignalR',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:signalrservice:SignalR',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cors = registerOutput<SignalRCorsSettingsResponse?>(
-      'cors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SignalRCorsSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cors = registerOutput<SignalRCorsSettingsResponse?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SignalRCorsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     disableAadAuth = registerOutput<bool?>('disableAadAuth');
     disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
     externalIP = registerOutput<String>('externalIP');
     features = registerOutput<List<Map<String, dynamic>>?>('features');
     hostName = registerOutput<String>('hostName');
     hostNamePrefix = registerOutput<String>('hostNamePrefix');
-    identity = registerOutput<ManagedIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ManagedIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
-    liveTraceConfiguration = registerOutput<LiveTraceConfigurationResponse?>(
-      'liveTraceConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LiveTraceConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    liveTraceConfiguration = registerOutput<LiveTraceConfigurationResponse?>('liveTraceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiveTraceConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkACLs = registerOutput<SignalRNetworkACLsResponse?>(
-      'networkACLs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SignalRNetworkACLsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    networkACLs = registerOutput<SignalRNetworkACLsResponse?>('networkACLs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SignalRNetworkACLsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     publicPort = registerOutput<int>('publicPort');
     regionEndpointEnabled = registerOutput<String?>('regionEndpointEnabled');
-    resourceLogConfiguration =
-        registerOutput<ResourceLogConfigurationResponse?>(
-          'resourceLogConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ResourceLogConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    resourceLogConfiguration = registerOutput<ResourceLogConfigurationResponse?>('resourceLogConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLogConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceStopped = registerOutput<String?>('resourceStopped');
     serverPort = registerOutput<int>('serverPort');
-    serverless = registerOutput<ServerlessSettingsResponse?>(
-      'serverless',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerlessSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sharedPrivateLinkResources = registerOutput<List<Map<String, dynamic>>>(
-      'sharedPrivateLinkResources',
-    );
-    sku = registerOutput<ResourceSkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serverless = registerOutput<ServerlessSettingsResponse?>('serverless', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sharedPrivateLinkResources = registerOutput<List<Map<String, dynamic>>>('sharedPrivateLinkResources');
+    sku = registerOutput<ResourceSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    tls = registerOutput<SignalRTlsSettingsResponse?>(
-      'tls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SignalRTlsSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tls = registerOutput<SignalRTlsSettingsResponse?>('tls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SignalRTlsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    upstream = registerOutput<ServerlessUpstreamSettingsResponse?>(
-      'upstream',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerlessUpstreamSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    upstream = registerOutput<ServerlessUpstreamSettingsResponse?>('upstream', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessUpstreamSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }
 }

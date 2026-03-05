@@ -10,29 +10,20 @@ class SqlManagedInstanceK8sRaw {
 
   /// Creates a new [SqlManagedInstanceK8sRaw].
   /// [spec] The kubernetes spec information.
-  SqlManagedInstanceK8sRaw({this.spec});
+  SqlManagedInstanceK8sRaw({
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'spec':
-          ?pulumi.Input.mapOptionalInputValue<
-            SqlManagedInstanceK8sSpec,
-            Map<String, dynamic>
-          >(spec, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<SqlManagedInstanceK8sSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
   factory SqlManagedInstanceK8sRaw.fromMap(Map<String, dynamic> map) {
     return SqlManagedInstanceK8sRaw(
-      spec: (() {
-        final guardedValue = map['spec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SqlManagedInstanceK8sSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SqlManagedInstanceK8sSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

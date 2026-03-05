@@ -12,30 +12,21 @@ import 'ai_endpoint_with_model_garden_deployment_model_config.dart';
 class AiEndpointWithModelGardenDeploymentArgs {
   /// The deploy config to use for the deployment.
   /// Structure is documented below.
-  final pulumi.Input<AiEndpointWithModelGardenDeploymentDeployConfig>?
-  deployConfig;
-
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentDeployConfig>? deployConfig;
   /// The endpoint config to use for the deployment.
   /// Structure is documented below.
-  final pulumi.Input<AiEndpointWithModelGardenDeploymentEndpointConfig>?
-  endpointConfig;
-
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentEndpointConfig>? endpointConfig;
   /// The Hugging Face model to deploy.
   /// Format: Hugging Face model ID like `google/gemma-2-2b-it`.
   final pulumi.Input<String>? huggingFaceModelId;
-
   /// Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
-
   /// The model config to use for the deployment.
   /// Structure is documented below.
-  final pulumi.Input<AiEndpointWithModelGardenDeploymentModelConfig>?
-  modelConfig;
-
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentModelConfig>? modelConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The Model Garden model to deploy.
   /// Format:
   /// `publishers/{publisher}/models/{publisher_model}@{version_id}`, or
@@ -62,75 +53,26 @@ class AiEndpointWithModelGardenDeploymentArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deployConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiEndpointWithModelGardenDeploymentDeployConfig,
-            Map<String, dynamic>
-          >(deployConfig, (value) => value.toMap()),
-      'endpointConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiEndpointWithModelGardenDeploymentEndpointConfig,
-            Map<String, dynamic>
-          >(endpointConfig, (value) => value.toMap()),
+      'deployConfig': ?pulumi.Input.mapOptionalInputValue<AiEndpointWithModelGardenDeploymentDeployConfig, Map<String, dynamic>>(deployConfig, (value) => value.toMap()),
+      'endpointConfig': ?pulumi.Input.mapOptionalInputValue<AiEndpointWithModelGardenDeploymentEndpointConfig, Map<String, dynamic>>(endpointConfig, (value) => value.toMap()),
       'huggingFaceModelId': ?huggingFaceModelId,
       'location': location,
-      'modelConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiEndpointWithModelGardenDeploymentModelConfig,
-            Map<String, dynamic>
-          >(modelConfig, (value) => value.toMap()),
+      'modelConfig': ?pulumi.Input.mapOptionalInputValue<AiEndpointWithModelGardenDeploymentModelConfig, Map<String, dynamic>>(modelConfig, (value) => value.toMap()),
       'project': ?project,
       'publisherModelName': ?publisherModelName,
     };
   }
 
-  factory AiEndpointWithModelGardenDeploymentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiEndpointWithModelGardenDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentArgs(
-      deployConfig: (() {
-        final guardedValue = map['deployConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AiEndpointWithModelGardenDeploymentDeployConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      endpointConfig: (() {
-        final guardedValue = map['endpointConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      huggingFaceModelId: (() {
-        final guardedValue = map['huggingFaceModelId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deployConfig: (() { final guardedValue = map['deployConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      endpointConfig: (() { final guardedValue = map['endpointConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      huggingFaceModelId: (() { final guardedValue = map['huggingFaceModelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      modelConfig: (() {
-        final guardedValue = map['modelConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AiEndpointWithModelGardenDeploymentModelConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publisherModelName: (() {
-        final guardedValue = map['publisherModelName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      modelConfig: (() { final guardedValue = map['modelConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiEndpointWithModelGardenDeploymentModelConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publisherModelName: (() { final guardedValue = map['publisherModelName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

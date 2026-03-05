@@ -16,3 +16,4 @@ enum SizeTypes {
     throw ArgumentError('Unknown SizeTypes value: $value');
   }
 }
+

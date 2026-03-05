@@ -8,17 +8,20 @@ class KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
 
   /// Creates a new [KubernetesClusterAmdGpuDeviceMetricsExporterPlugin].
   /// [enabled] Boolean flag whether the component is enabled or not.
-  KubernetesClusterAmdGpuDeviceMetricsExporterPlugin({required this.enabled});
+  KubernetesClusterAmdGpuDeviceMetricsExporterPlugin({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory KubernetesClusterAmdGpuDeviceMetricsExporterPlugin.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KubernetesClusterAmdGpuDeviceMetricsExporterPlugin.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterAmdGpuDeviceMetricsExporterPlugin(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

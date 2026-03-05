@@ -6,7 +6,6 @@ import 'expr_response.dart';
 class BucketIamPolicyBindingsItemResponse {
   /// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
   final pulumi.Input<ExprResponse> condition;
-
   /// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
   /// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
   /// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -18,7 +17,6 @@ class BucketIamPolicyBindingsItemResponse {
   /// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
   /// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
   final pulumi.Input<List<String>> members;
-
   /// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
   /// The new IAM roles are:
   /// - roles/storage.admin — Full control of Google Cloud Storage resources.
@@ -44,27 +42,18 @@ class BucketIamPolicyBindingsItemResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          pulumi.Input.mapInputValue<ExprResponse, Map<String, dynamic>>(
-            condition,
-            (value) => value.toMap(),
-          ),
+      'condition': pulumi.Input.mapInputValue<ExprResponse, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'members': members,
       'role': role,
     };
   }
 
-  factory BucketIamPolicyBindingsItemResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketIamPolicyBindingsItemResponse.fromMap(Map<String, dynamic> map) {
     return BucketIamPolicyBindingsItemResponse(
-      condition: pulumi.Input.fromValue(
-        ExprResponse.fromMap(
-          (map['condition']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      condition: pulumi.Input.fromValue(ExprResponse.fromMap((map['condition']! as Map).cast<String, dynamic>())),
       members: pulumi.Input.fromValue((map['members'] as List).cast<String>()),
       role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
+

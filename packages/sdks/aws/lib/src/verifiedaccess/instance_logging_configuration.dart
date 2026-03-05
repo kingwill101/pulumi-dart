@@ -803,10 +803,8 @@ import 'instance_logging_configuration_state.dart';
 class InstanceLoggingConfiguration extends pulumi.CustomResource {
   /// A block that specifies the configuration options for Verified Access instances. Detailed below.
   late final pulumi.Output<InstanceLoggingConfigurationAccessLogs> accessLogs;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the Verified Access instance.
   late final pulumi.Output<String> verifiedaccessInstanceId;
 
@@ -819,25 +817,14 @@ class InstanceLoggingConfiguration extends pulumi.CustomResource {
     InstanceLoggingConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:verifiedaccess/instanceLoggingConfiguration:InstanceLoggingConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessLogs = registerOutput<InstanceLoggingConfigurationAccessLogs>(
-      'accessLogs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceLoggingConfigurationAccessLogs.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:verifiedaccess/instanceLoggingConfiguration:InstanceLoggingConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessLogs = registerOutput<InstanceLoggingConfigurationAccessLogs>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceLoggingConfigurationAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    verifiedaccessInstanceId = registerOutput<String>(
-      'verifiedaccessInstanceId',
-    );
+    verifiedaccessInstanceId = registerOutput<String>('verifiedaccessInstanceId');
   }
 
   /// Gets an existing [InstanceLoggingConfiguration] resource's state with the given [name] and [id].
@@ -858,24 +845,13 @@ class InstanceLoggingConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:verifiedaccess/instanceLoggingConfiguration:InstanceLoggingConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessLogs = registerOutput<InstanceLoggingConfigurationAccessLogs>(
-      'accessLogs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceLoggingConfigurationAccessLogs.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:verifiedaccess/instanceLoggingConfiguration:InstanceLoggingConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessLogs = registerOutput<InstanceLoggingConfigurationAccessLogs>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceLoggingConfigurationAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    verifiedaccessInstanceId = registerOutput<String>(
-      'verifiedaccessInstanceId',
-    );
+    verifiedaccessInstanceId = registerOutput<String>('verifiedaccessInstanceId');
   }
 }

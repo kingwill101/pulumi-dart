@@ -7,10 +7,8 @@ import 'main_principal_response.dart';
 class FleetspacePropertiesResponse {
   /// Maximum number of vCores database fleet manager is allowed to provision in the fleetspace.
   final pulumi.Input<int>? capacityMax;
-
   /// Main Microsoft Entra ID principal that has admin access to all databases in the fleetspace.
   final pulumi.Input<MainPrincipalResponse>? mainPrincipal;
-
   /// Fleetspace state.
   final pulumi.Input<String> provisioningState;
 
@@ -27,34 +25,17 @@ class FleetspacePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capacityMax': ?capacityMax,
-      'mainPrincipal':
-          ?pulumi.Input.mapOptionalInputValue<
-            MainPrincipalResponse,
-            Map<String, dynamic>
-          >(mainPrincipal, (value) => value.toMap()),
+      'mainPrincipal': ?pulumi.Input.mapOptionalInputValue<MainPrincipalResponse, Map<String, dynamic>>(mainPrincipal, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
   factory FleetspacePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FleetspacePropertiesResponse(
-      capacityMax: (() {
-        final guardedValue = map['capacityMax'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      mainPrincipal: (() {
-        final guardedValue = map['mainPrincipal'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MainPrincipalResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      capacityMax: (() { final guardedValue = map['capacityMax']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mainPrincipal: (() { final guardedValue = map['mainPrincipal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MainPrincipalResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

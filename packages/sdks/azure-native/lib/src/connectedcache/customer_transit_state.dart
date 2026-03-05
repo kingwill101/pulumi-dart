@@ -16,3 +16,4 @@ enum CustomerTransitState {
     throw ArgumentError('Unknown CustomerTransitState value: $value');
   }
 }
+

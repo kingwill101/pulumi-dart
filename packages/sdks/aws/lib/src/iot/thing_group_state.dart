@@ -9,23 +9,17 @@ class ThingGroupState {
   /// The ARN of the Thing Group.
   final pulumi.Input<String>? arn;
   final pulumi.Input<List<ThingGroupMetadata>>? metadatas;
-
   /// The name of the Thing Group.
   final pulumi.Input<String>? name;
-
   /// The name of the parent Thing Group.
   final pulumi.Input<String>? parentGroupName;
-
   /// The Thing Group properties. Defined below.
   final pulumi.Input<ThingGroupProperties>? properties;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value mapping of resource tags
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
-
   /// The current version of the Thing Group record in the registry.
   final pulumi.Input<int>? version;
 
@@ -54,25 +48,10 @@ class ThingGroupState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'metadatas':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ThingGroupMetadata>,
-            List<Map<String, dynamic>>
-          >(
-            metadatas,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ThingGroupMetadata,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'metadatas': ?pulumi.Input.mapOptionalInputValue<List<ThingGroupMetadata>, List<Map<String, dynamic>>>(metadatas, (value) => pulumi.Input.encodeList<ThingGroupMetadata, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'parentGroupName': ?parentGroupName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            ThingGroupProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<ThingGroupProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'region': ?region,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
@@ -82,66 +61,16 @@ class ThingGroupState {
 
   factory ThingGroupState.fromMap(Map<String, dynamic> map) {
     return ThingGroupState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metadatas: (() {
-        final guardedValue = map['metadatas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ThingGroupMetadata>(
-            guardedValue,
-            (value) => ThingGroupMetadata.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parentGroupName: (() {
-        final guardedValue = map['parentGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ThingGroupProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadatas: (() { final guardedValue = map['metadatas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ThingGroupMetadata>(guardedValue, (value) => ThingGroupMetadata.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parentGroupName: (() { final guardedValue = map['parentGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ThingGroupProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

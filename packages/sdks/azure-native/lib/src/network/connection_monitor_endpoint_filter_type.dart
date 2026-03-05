@@ -11,8 +11,7 @@ enum ConnectionMonitorEndpointFilterType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ConnectionMonitorEndpointFilterType value: $value',
-    );
+    throw ArgumentError('Unknown ConnectionMonitorEndpointFilterType value: $value');
   }
 }
+

@@ -14,3 +14,4 @@ enum AuthPolicyPermissionLevel {
     throw ArgumentError('Unknown AuthPolicyPermissionLevel value: $value');
   }
 }
+

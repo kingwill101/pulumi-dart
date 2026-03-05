@@ -8,10 +8,14 @@ class FleetUpdateStrategyStageGroup {
 
   /// Creates a new [FleetUpdateStrategyStageGroup].
   /// [name] The name which should be used for this group.
-  FleetUpdateStrategyStageGroup({required this.name});
+  FleetUpdateStrategyStageGroup({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory FleetUpdateStrategyStageGroup.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class FleetUpdateStrategyStageGroup {
     );
   }
 }
+

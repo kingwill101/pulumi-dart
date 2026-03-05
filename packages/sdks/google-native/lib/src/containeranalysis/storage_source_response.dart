@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageSourceResponse {
   /// Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   final pulumi.Input<String> bucket;
-
   /// Google Cloud Storage generation for the object.
   final pulumi.Input<String> generation;
-
   /// Google Cloud Storage object containing source.
   final pulumi.Input<String> object_;
 
@@ -39,3 +37,4 @@ class StorageSourceResponse {
     );
   }
 }
+

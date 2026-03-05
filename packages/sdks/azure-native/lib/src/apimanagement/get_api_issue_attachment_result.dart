@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getApiIssueAttachment.
 class GetApiIssueAttachmentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// An HTTP link or Base64-encoded binary data.
   final String content;
-
   /// Either 'link' if content is provided via an HTTP link or the MIME type of the Base64-encoded binary data provided in the 'content' property.
   final String contentFormat;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Filename by which the binary data will be saved.
   final String title;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -65,3 +60,4 @@ class GetApiIssueAttachmentResult {
     );
   }
 }
+

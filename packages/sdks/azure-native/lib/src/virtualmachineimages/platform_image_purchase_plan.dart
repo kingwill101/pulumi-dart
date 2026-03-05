@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlatformImagePurchasePlan {
   /// Name of the purchase plan.
   final pulumi.Input<String> planName;
-
   /// Product of the purchase plan.
   final pulumi.Input<String> planProduct;
-
   /// Publisher of the purchase plan.
   final pulumi.Input<String> planPublisher;
 
@@ -39,3 +37,4 @@ class PlatformImagePurchasePlan {
     );
   }
 }
+

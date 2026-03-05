@@ -7,19 +7,20 @@ class ApplicationLivenessV2TcpSocket {
 
   /// Creates a new [ApplicationLivenessV2TcpSocket].
   /// [port] Optional.
-  ApplicationLivenessV2TcpSocket({this.port});
+  ApplicationLivenessV2TcpSocket({
+    this.port,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': ?port};
+    return <String, dynamic>{
+      'port': ?port,
+    };
   }
 
   factory ApplicationLivenessV2TcpSocket.fromMap(Map<String, dynamic> map) {
     return ApplicationLivenessV2TcpSocket(
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -9,10 +9,14 @@ class StorageProfileResponse {
 
   /// Creates a new [StorageProfileResponse].
   /// [id] Resource Id of Storage Resource
-  StorageProfileResponse({required this.id});
+  StorageProfileResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class StorageProfileResponse {
     );
   }
 }
+

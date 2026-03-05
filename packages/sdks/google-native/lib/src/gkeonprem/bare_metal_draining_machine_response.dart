@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalDrainingMachineResponse {
   /// Draining machine IP address.
   final pulumi.Input<String> nodeIp;
-
   /// The count of pods yet to drain.
   final pulumi.Input<int> podCount;
 
@@ -19,7 +18,10 @@ class BareMetalDrainingMachineResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nodeIp': nodeIp, 'podCount': podCount};
+    return <String, dynamic>{
+      'nodeIp': nodeIp,
+      'podCount': podCount,
+    };
   }
 
   factory BareMetalDrainingMachineResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class BareMetalDrainingMachineResponse {
     );
   }
 }
+

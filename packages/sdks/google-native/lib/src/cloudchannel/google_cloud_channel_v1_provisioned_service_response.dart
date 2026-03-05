@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudChannelV1ProvisionedServiceResponse {
   /// The product pertaining to the provisioning resource as specified in the Offer.
   final pulumi.Input<String> productId;
-
   /// Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount.
   final pulumi.Input<String> provisioningId;
-
   /// The SKU pertaining to the provisioning resource as specified in the Offer.
   final pulumi.Input<String> skuId;
 
@@ -31,9 +29,7 @@ class GoogleCloudChannelV1ProvisionedServiceResponse {
     };
   }
 
-  factory GoogleCloudChannelV1ProvisionedServiceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudChannelV1ProvisionedServiceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1ProvisionedServiceResponse(
       productId: pulumi.Input.fromValue(map['productId'] as String),
       provisioningId: pulumi.Input.fromValue(map['provisioningId'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudChannelV1ProvisionedServiceResponse {
     );
   }
 }
+

@@ -228,36 +228,26 @@ class SharedAccessPolicy extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** At least one of `registry_read`, `registry_write`, `service_connect`, `device_connect` permissions must be set to `true`.
   late final pulumi.Output<bool?> deviceConnect;
-
   /// The name of the IoTHub to which this Shared Access Policy belongs. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubName;
-
   /// Specifies the name of the IotHub Shared Access Policy resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The primary connection string of the Shared Access Policy.
   late final pulumi.Output<String> primaryConnectionString;
-
   /// The primary key used to create the authentication token.
   late final pulumi.Output<String> primaryKey;
-
   /// Adds `RegistryRead` permission to this Shared Access Account. It allows read access to the identity registry.
   late final pulumi.Output<bool?> registryRead;
-
   /// Adds `RegistryWrite` permission to this Shared Access Account. It allows write access to the identity registry.
   ///
   /// &gt; **Note:** When `registry_write` is set to `true`, `registry_read` must also be set to true. This is a limitation of the Azure REST API
   late final pulumi.Output<bool?> registryWrite;
-
   /// The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The secondary connection string of the Shared Access Policy.
   late final pulumi.Output<String> secondaryConnectionString;
-
   /// The secondary key used to create the authentication token.
   late final pulumi.Output<String> secondaryKey;
-
   /// Adds `ServiceConnect` permission to this Shared Access Account. It allows sending and receiving on the cloud-side endpoints.
   late final pulumi.Output<bool?> serviceConnect;
 
@@ -270,11 +260,11 @@ class SharedAccessPolicy extends pulumi.CustomResource {
     SharedAccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iot/sharedAccessPolicy:SharedAccessPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:iot/sharedAccessPolicy:SharedAccessPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deviceConnect = registerOutput<bool?>('deviceConnect');
     iothubName = registerOutput<String>('iothubName');
     this.name = registerOutput<String>('name');
@@ -283,9 +273,7 @@ class SharedAccessPolicy extends pulumi.CustomResource {
     registryRead = registerOutput<bool?>('registryRead');
     registryWrite = registerOutput<bool?>('registryWrite');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>(
-      'secondaryConnectionString',
-    );
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
     secondaryKey = registerOutput<String>('secondaryKey');
     serviceConnect = registerOutput<bool?>('serviceConnect');
   }
@@ -308,11 +296,11 @@ class SharedAccessPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iot/sharedAccessPolicy:SharedAccessPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:iot/sharedAccessPolicy:SharedAccessPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deviceConnect = registerOutput<bool?>('deviceConnect');
     iothubName = registerOutput<String>('iothubName');
     this.name = registerOutput<String>('name');
@@ -321,9 +309,7 @@ class SharedAccessPolicy extends pulumi.CustomResource {
     registryRead = registerOutput<bool?>('registryRead');
     registryWrite = registerOutput<bool?>('registryWrite');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>(
-      'secondaryConnectionString',
-    );
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
     secondaryKey = registerOutput<String>('secondaryKey');
     serviceConnect = registerOutput<bool?>('serviceConnect');
   }

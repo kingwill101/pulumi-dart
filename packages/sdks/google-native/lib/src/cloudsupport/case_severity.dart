@@ -19,3 +19,4 @@ enum CaseSeverity {
     throw ArgumentError('Unknown CaseSeverity value: $value');
   }
 }
+

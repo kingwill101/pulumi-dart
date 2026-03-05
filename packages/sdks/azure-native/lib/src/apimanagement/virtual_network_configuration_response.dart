@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkConfigurationResponse {
   /// The full resource ID of a subnet in a virtual network to deploy the API Management service in.
   final pulumi.Input<String>? subnetResourceId;
-
   /// The name of the subnet.
   final pulumi.Input<String> subnetname;
-
   /// The virtual network ID. This is typically a GUID. Expect a null GUID by default.
   final pulumi.Input<String> vnetid;
 
@@ -31,17 +29,12 @@ class VirtualNetworkConfigurationResponse {
     };
   }
 
-  factory VirtualNetworkConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkConfigurationResponse(
-      subnetResourceId: (() {
-        final guardedValue = map['subnetResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subnetResourceId: (() { final guardedValue = map['subnetResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetname: pulumi.Input.fromValue(map['subnetname'] as String),
       vnetid: pulumi.Input.fromValue(map['vnetid'] as String),
     );
   }
 }
+

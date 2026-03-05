@@ -9,19 +9,20 @@ class GroupState {
 
   /// Creates a new [GroupState].
   /// [name] Name of the domain group.
-  GroupState({this.name});
+  GroupState({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

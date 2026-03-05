@@ -9,17 +9,20 @@ class GoogleCloudNetworksecurityV1beta1GrpcEndpoint {
 
   /// Creates a new [GoogleCloudNetworksecurityV1beta1GrpcEndpoint].
   /// [targetUri] The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
-  GoogleCloudNetworksecurityV1beta1GrpcEndpoint({required this.targetUri});
+  GoogleCloudNetworksecurityV1beta1GrpcEndpoint({
+    required this.targetUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'targetUri': targetUri};
+    return <String, dynamic>{
+      'targetUri': targetUri,
+    };
   }
 
-  factory GoogleCloudNetworksecurityV1beta1GrpcEndpoint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudNetworksecurityV1beta1GrpcEndpoint.fromMap(Map<String, dynamic> map) {
     return GoogleCloudNetworksecurityV1beta1GrpcEndpoint(
       targetUri: pulumi.Input.fromValue(map['targetUri'] as String),
     );
   }
 }
+

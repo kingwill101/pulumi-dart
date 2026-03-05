@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BlueprintStatusResponse {
   /// Last modified time of this blueprint definition.
   final pulumi.Input<String> lastModified;
-
   /// Creation time of this blueprint definition.
   final pulumi.Input<String> timeCreated;
 
@@ -32,3 +31,4 @@ class BlueprintStatusResponse {
     );
   }
 }
+

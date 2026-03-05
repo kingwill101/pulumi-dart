@@ -12,10 +12,14 @@ class GetDiagnosticCategoriesArgs {
 
   /// Creates a new [GetDiagnosticCategoriesArgs].
   /// [resourceId] The ID of an existing Resource which Monitor Diagnostics Categories should be retrieved for.
-  GetDiagnosticCategoriesArgs({required this.resourceId});
+  GetDiagnosticCategoriesArgs({
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceId': resourceId};
+    return <String, dynamic>{
+      'resourceId': resourceId,
+    };
   }
 
   factory GetDiagnosticCategoriesArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetDiagnosticCategoriesArgs {
     );
   }
 }
+

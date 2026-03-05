@@ -18,13 +18,10 @@ class GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey {
     };
   }
 
-  factory GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey(
-      gcpSecretManagerSecretUri: pulumi.Input.fromValue(
-        map['gcpSecretManagerSecretUri'] as String,
-      ),
+      gcpSecretManagerSecretUri: pulumi.Input.fromValue(map['gcpSecretManagerSecretUri'] as String),
     );
   }
 }
+

@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceV2Network {
   /// The IPv4 address assigned to this network port.
   final pulumi.Input<String> fixedIpV4;
-
   /// The IPv6 address assigned to this network port.
   final pulumi.Input<String> fixedIpV6;
-
   /// The MAC address assigned to this network interface.
   final pulumi.Input<String> mac;
-
   /// The name of the network
   final pulumi.Input<String> name;
-
   /// The port UUID for this network
   final pulumi.Input<String> port;
-
   /// The UUID of the network
   final pulumi.Input<String> uuid;
 
@@ -59,3 +54,4 @@ class GetInstanceV2Network {
     );
   }
 }
+

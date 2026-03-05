@@ -16,3 +16,4 @@ enum SamplingAlgorithmType {
     throw ArgumentError('Unknown SamplingAlgorithmType value: $value');
   }
 }
+

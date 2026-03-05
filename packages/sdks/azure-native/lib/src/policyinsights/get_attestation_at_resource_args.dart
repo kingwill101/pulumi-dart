@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAttestationAtResourceArgs {
   /// The name of the attestation.
   final pulumi.Input<String> attestationName;
-
   /// Resource ID.
   final pulumi.Input<String> resourceId;
 
@@ -35,3 +34,4 @@ class GetAttestationAtResourceArgs {
     );
   }
 }
+

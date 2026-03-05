@@ -209,31 +209,22 @@ import 'route_filter_args.dart';
 class RouteFilter extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// A collection of references to express route circuit ipv6 peerings.
   late final pulumi.Output<List<Map<String, dynamic>>> ipv6Peerings;
-
   /// Resource location.
   late final pulumi.Output<String> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// A collection of references to express route circuit peerings.
   late final pulumi.Output<List<Map<String, dynamic>>> peerings;
-
   /// The provisioning state of the route filter resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Collection of RouteFilterRules contained within a route filter.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -246,11 +237,11 @@ class RouteFilter extends pulumi.CustomResource {
     RouteFilterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:RouteFilter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:RouteFilter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     ipv6Peerings = registerOutput<List<Map<String, dynamic>>>('ipv6Peerings');

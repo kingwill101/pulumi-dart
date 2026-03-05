@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OriginAccessControlArgs {
   /// The description of the Origin Access Control. Defaults to "Managed by Pulumi" if omitted.
   final pulumi.Input<String>? description;
-
   /// A name that identifies the Origin Access Control.
   final pulumi.Input<String>? name;
-
   /// The type of origin that this Origin Access Control is for. Valid values are `lambda`, `mediapackagev2`, `mediastore`, and `s3`.
   final pulumi.Input<String> originAccessControlOriginType;
-
   /// Specifies which requests CloudFront signs. Specify `always` for the most common use case. Allowed values: `always`, `never`, and `no-override`.
   final pulumi.Input<String> signingBehavior;
-
   /// Determines how CloudFront signs (authenticates) requests. The only valid value is `sigv4`.
   final pulumi.Input<String> signingProtocol;
 
@@ -48,21 +44,12 @@ class OriginAccessControlArgs {
 
   factory OriginAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return OriginAccessControlArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      originAccessControlOriginType: pulumi.Input.fromValue(
-        map['originAccessControlOriginType'] as String,
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      originAccessControlOriginType: pulumi.Input.fromValue(map['originAccessControlOriginType'] as String),
       signingBehavior: pulumi.Input.fromValue(map['signingBehavior'] as String),
       signingProtocol: pulumi.Input.fromValue(map['signingProtocol'] as String),
     );
   }
 }
+

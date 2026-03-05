@@ -17,3 +17,4 @@ enum VersionKind {
     throw ArgumentError('Unknown VersionKind value: $value');
   }
 }
+

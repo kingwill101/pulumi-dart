@@ -234,43 +234,30 @@ import 'system_data_response.dart';
 class DiscoveredAssetEndpointProfile extends pulumi.CustomResource {
   /// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
   late final pulumi.Output<String?> additionalConfiguration;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Identifier used to detect changes in the asset endpoint profile.
   late final pulumi.Output<String> discoveryId;
-
   /// Defines the configuration for the connector type that is being used with the endpoint profile.
   late final pulumi.Output<String> endpointProfileType;
-
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// List of supported authentication methods supported by the target server.
   late final pulumi.Output<List<String>?> supportedAuthenticationMethods;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
   late final pulumi.Output<String> targetAddress;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// An integer that is incremented each time the resource is modified.
   late final pulumi.Output<double> version;
 
@@ -283,43 +270,21 @@ class DiscoveredAssetEndpointProfile extends pulumi.CustomResource {
     DiscoveredAssetEndpointProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:deviceregistry:DiscoveredAssetEndpointProfile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalConfiguration = registerOutput<String?>(
-      'additionalConfiguration',
-    );
+          'azure-native:deviceregistry:DiscoveredAssetEndpointProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalConfiguration = registerOutput<String?>('additionalConfiguration');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     discoveryId = registerOutput<String>('discoveryId');
     endpointProfileType = registerOutput<String>('endpointProfileType');
-    extendedLocation = registerOutput<ExtendedLocationResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    supportedAuthenticationMethods = registerOutput<List<String>?>(
-      'supportedAuthenticationMethods',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    supportedAuthenticationMethods = registerOutput<List<String>?>('supportedAuthenticationMethods');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     targetAddress = registerOutput<String>('targetAddress');
     type = registerOutput<String>('type');

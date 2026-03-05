@@ -285,21 +285,16 @@ import 'access_policy_state.dart';
 class AccessPolicy extends pulumi.CustomResource {
   /// Time the AccessPolicy was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// Resource name of the AccessPolicy. Format: '{{policy_id}}'
   late final pulumi.Output<String> name;
-
   /// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
   /// Format: 'organizations/{{organization_id}}'
   late final pulumi.Output<String> parent;
-
   /// Folder or project on which this policy is applicable.
   /// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
   late final pulumi.Output<String?> scopes;
-
   /// Human readable title. Does not affect behavior.
   late final pulumi.Output<String> title;
-
   /// Time the AccessPolicy was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -312,11 +307,11 @@ class AccessPolicy extends pulumi.CustomResource {
     AccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/accessPolicy:AccessPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:accesscontextmanager/accessPolicy:AccessPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
@@ -343,11 +338,11 @@ class AccessPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/accessPolicy:AccessPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:accesscontextmanager/accessPolicy:AccessPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');

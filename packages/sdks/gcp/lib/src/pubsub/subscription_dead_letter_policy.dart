@@ -13,7 +13,6 @@ class SubscriptionDeadLetterPolicy {
   /// Users should ensure that there is a subscription attached to this topic
   /// since messages published to a topic with no subscriptions are lost.
   final pulumi.Input<String>? deadLetterTopic;
-
   /// The maximum number of delivery attempts for any message. The value must be
   /// between 5 and 100.
   /// The number of delivery attempts is defined as 1 + (the sum of number of
@@ -41,16 +40,9 @@ class SubscriptionDeadLetterPolicy {
 
   factory SubscriptionDeadLetterPolicy.fromMap(Map<String, dynamic> map) {
     return SubscriptionDeadLetterPolicy(
-      deadLetterTopic: (() {
-        final guardedValue = map['deadLetterTopic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxDeliveryAttempts: (() {
-        final guardedValue = map['maxDeliveryAttempts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      deadLetterTopic: (() { final guardedValue = map['deadLetterTopic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxDeliveryAttempts: (() { final guardedValue = map['maxDeliveryAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

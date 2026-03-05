@@ -19,13 +19,10 @@ class GoogleCloudDatalabelingV1beta1SentimentConfigResponse {
     };
   }
 
-  factory GoogleCloudDatalabelingV1beta1SentimentConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatalabelingV1beta1SentimentConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1SentimentConfigResponse(
-      enableLabelSentimentSelection: pulumi.Input.fromValue(
-        map['enableLabelSentimentSelection'] as bool,
-      ),
+      enableLabelSentimentSelection: pulumi.Input.fromValue(map['enableLabelSentimentSelection'] as bool),
     );
   }
 }
+

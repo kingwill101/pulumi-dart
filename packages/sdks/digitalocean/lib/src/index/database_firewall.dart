@@ -669,7 +669,6 @@ import 'database_firewall_state.dart';
 class DatabaseFirewall extends pulumi.CustomResource {
   /// The ID of the target database cluster.
   late final pulumi.Output<String> clusterId;
-
   /// A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
 
@@ -682,11 +681,11 @@ class DatabaseFirewall extends pulumi.CustomResource {
     DatabaseFirewallArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseFirewall:DatabaseFirewall',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseFirewall:DatabaseFirewall',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
   }
@@ -709,11 +708,11 @@ class DatabaseFirewall extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseFirewall:DatabaseFirewall',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseFirewall:DatabaseFirewall',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
   }

@@ -8,7 +8,9 @@ class VectorsIndexMetadataConfiguration {
 
   /// Creates a new [VectorsIndexMetadataConfiguration].
   /// [nonFilterableMetadataKeys] List of non-filterable metadata keys.
-  VectorsIndexMetadataConfiguration({required this.nonFilterableMetadataKeys});
+  VectorsIndexMetadataConfiguration({
+    required this.nonFilterableMetadataKeys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,9 +20,8 @@ class VectorsIndexMetadataConfiguration {
 
   factory VectorsIndexMetadataConfiguration.fromMap(Map<String, dynamic> map) {
     return VectorsIndexMetadataConfiguration(
-      nonFilterableMetadataKeys: pulumi.Input.fromValue(
-        (map['nonFilterableMetadataKeys'] as List).cast<String>(),
-      ),
+      nonFilterableMetadataKeys: pulumi.Input.fromValue((map['nonFilterableMetadataKeys'] as List).cast<String>()),
     );
   }
 }
+

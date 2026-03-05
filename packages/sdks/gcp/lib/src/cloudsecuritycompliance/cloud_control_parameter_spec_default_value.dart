@@ -7,20 +7,14 @@ import 'cloud_control_parameter_spec_default_value_string_list_value.dart';
 class CloudControlParameterSpecDefaultValue {
   /// Represents a boolean value.
   final pulumi.Input<bool>? boolValue;
-
   /// Represents a double value.
   final pulumi.Input<double>? numberValue;
-
   /// Sub-parameter values.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecDefaultValueOneofValue>?
-  oneofValue;
-
+  final pulumi.Input<CloudControlParameterSpecDefaultValueOneofValue>? oneofValue;
   /// A list of strings.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecDefaultValueStringListValue>?
-  stringListValue;
-
+  final pulumi.Input<CloudControlParameterSpecDefaultValueStringListValue>? stringListValue;
   /// Represents a string value.
   final pulumi.Input<String>? stringValue;
 
@@ -42,57 +36,20 @@ class CloudControlParameterSpecDefaultValue {
     return <String, dynamic>{
       'boolValue': ?boolValue,
       'numberValue': ?numberValue,
-      'oneofValue':
-          ?pulumi.Input.mapOptionalInputValue<
-            CloudControlParameterSpecDefaultValueOneofValue,
-            Map<String, dynamic>
-          >(oneofValue, (value) => value.toMap()),
-      'stringListValue':
-          ?pulumi.Input.mapOptionalInputValue<
-            CloudControlParameterSpecDefaultValueStringListValue,
-            Map<String, dynamic>
-          >(stringListValue, (value) => value.toMap()),
+      'oneofValue': ?pulumi.Input.mapOptionalInputValue<CloudControlParameterSpecDefaultValueOneofValue, Map<String, dynamic>>(oneofValue, (value) => value.toMap()),
+      'stringListValue': ?pulumi.Input.mapOptionalInputValue<CloudControlParameterSpecDefaultValueStringListValue, Map<String, dynamic>>(stringListValue, (value) => value.toMap()),
       'stringValue': ?stringValue,
     };
   }
 
-  factory CloudControlParameterSpecDefaultValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudControlParameterSpecDefaultValue.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecDefaultValue(
-      boolValue: (() {
-        final guardedValue = map['boolValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      numberValue: (() {
-        final guardedValue = map['numberValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      oneofValue: (() {
-        final guardedValue = map['oneofValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CloudControlParameterSpecDefaultValueOneofValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      stringListValue: (() {
-        final guardedValue = map['stringListValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CloudControlParameterSpecDefaultValueStringListValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      stringValue: (() {
-        final guardedValue = map['stringValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      boolValue: (() { final guardedValue = map['boolValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      numberValue: (() { final guardedValue = map['numberValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      oneofValue: (() { final guardedValue = map['oneofValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudControlParameterSpecDefaultValueOneofValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      stringListValue: (() { final guardedValue = map['stringListValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudControlParameterSpecDefaultValueStringListValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      stringValue: (() { final guardedValue = map['stringValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

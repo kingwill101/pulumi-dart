@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiscoveryRuleArgs {
   /// Name of the discovery rule. Must be unique within a health model.
   final pulumi.Input<String> discoveryRuleName;
-
   /// Name of health model resource
   final pulumi.Input<String> healthModelName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetDiscoveryRuleArgs {
 
   factory GetDiscoveryRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscoveryRuleArgs(
-      discoveryRuleName: pulumi.Input.fromValue(
-        map['discoveryRuleName'] as String,
-      ),
+      discoveryRuleName: pulumi.Input.fromValue(map['discoveryRuleName'] as String),
       healthModelName: pulumi.Input.fromValue(map['healthModelName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

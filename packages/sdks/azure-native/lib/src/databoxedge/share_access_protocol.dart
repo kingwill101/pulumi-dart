@@ -15,3 +15,4 @@ enum ShareAccessProtocol {
     throw ArgumentError('Unknown ShareAccessProtocol value: $value');
   }
 }
+

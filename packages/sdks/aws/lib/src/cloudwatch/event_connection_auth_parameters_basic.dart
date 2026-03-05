@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventConnectionAuthParametersBasic {
   /// A password for the authorization. Created and stored in AWS Secrets Manager.
   final pulumi.Input<String> password;
-
   /// A username for the authorization.
   final pulumi.Input<String> username;
 
@@ -18,7 +17,10 @@ class EventConnectionAuthParametersBasic {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': password, 'username': username};
+    return <String, dynamic>{
+      'password': password,
+      'username': username,
+    };
   }
 
   factory EventConnectionAuthParametersBasic.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class EventConnectionAuthParametersBasic {
     );
   }
 }
+

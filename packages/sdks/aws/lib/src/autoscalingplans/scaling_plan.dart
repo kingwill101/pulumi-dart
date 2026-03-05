@@ -813,16 +813,12 @@ import 'scaling_plan_state.dart';
 class ScalingPlan extends pulumi.CustomResource {
   /// CloudFormation stack or set of tags. You can create one scaling plan per application source.
   late final pulumi.Output<ScalingPlanApplicationSource> applicationSource;
-
   /// Name of the scaling plan. Names cannot contain vertical bars, colons, or forward slashes.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Scaling instructions. More details can be found in the [AWS Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html).
   late final pulumi.Output<List<Map<String, dynamic>>> scalingInstructions;
-
   /// The version number of the scaling plan. This value is always 1.
   late final pulumi.Output<int> scalingPlanVersion;
 
@@ -835,26 +831,15 @@ class ScalingPlan extends pulumi.CustomResource {
     ScalingPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:autoscalingplans/scalingPlan:ScalingPlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationSource = registerOutput<ScalingPlanApplicationSource>(
-      'applicationSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScalingPlanApplicationSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:autoscalingplans/scalingPlan:ScalingPlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationSource = registerOutput<ScalingPlanApplicationSource>('applicationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScalingPlanApplicationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    scalingInstructions = registerOutput<List<Map<String, dynamic>>>(
-      'scalingInstructions',
-    );
+    scalingInstructions = registerOutput<List<Map<String, dynamic>>>('scalingInstructions');
     scalingPlanVersion = registerOutput<int>('scalingPlanVersion');
   }
 
@@ -876,26 +861,15 @@ class ScalingPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:autoscalingplans/scalingPlan:ScalingPlan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationSource = registerOutput<ScalingPlanApplicationSource>(
-      'applicationSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScalingPlanApplicationSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:autoscalingplans/scalingPlan:ScalingPlan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationSource = registerOutput<ScalingPlanApplicationSource>('applicationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScalingPlanApplicationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    scalingInstructions = registerOutput<List<Map<String, dynamic>>>(
-      'scalingInstructions',
-    );
+    scalingInstructions = registerOutput<List<Map<String, dynamic>>>('scalingInstructions');
     scalingPlanVersion = registerOutput<int>('scalingPlanVersion');
   }
 }

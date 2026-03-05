@@ -9,22 +9,16 @@ import 'git_lab_secrets_response.dart';
 class GitLabConfigResponse {
   /// Connected GitLab.com or GitLabEnterprise repositories for this config.
   final pulumi.Input<List<GitLabRepositoryIdResponse>> connectedRepositories;
-
   /// Time when the config was created.
   final pulumi.Input<String> createTime;
-
   /// Optional. GitLabEnterprise config.
   final pulumi.Input<GitLabEnterpriseConfigResponse> enterpriseConfig;
-
   /// The resource name for the config.
   final pulumi.Input<String> name;
-
   /// Secret Manager secrets needed by the config.
   final pulumi.Input<GitLabSecretsResponse> secrets;
-
   /// Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.
   final pulumi.Input<String> username;
-
   /// UUID included in webhook requests. The UUID is used to look up the corresponding config.
   final pulumi.Input<String> webhookKey;
 
@@ -48,30 +42,11 @@ class GitLabConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectedRepositories':
-          pulumi.Input.mapInputValue<
-            List<GitLabRepositoryIdResponse>,
-            List<Map<String, dynamic>>
-          >(
-            connectedRepositories,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GitLabRepositoryIdResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'connectedRepositories': pulumi.Input.mapInputValue<List<GitLabRepositoryIdResponse>, List<Map<String, dynamic>>>(connectedRepositories, (value) => pulumi.Input.encodeList<GitLabRepositoryIdResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': createTime,
-      'enterpriseConfig':
-          pulumi.Input.mapInputValue<
-            GitLabEnterpriseConfigResponse,
-            Map<String, dynamic>
-          >(enterpriseConfig, (value) => value.toMap()),
+      'enterpriseConfig': pulumi.Input.mapInputValue<GitLabEnterpriseConfigResponse, Map<String, dynamic>>(enterpriseConfig, (value) => value.toMap()),
       'name': name,
-      'secrets':
-          pulumi.Input.mapInputValue<
-            GitLabSecretsResponse,
-            Map<String, dynamic>
-          >(secrets, (value) => value.toMap()),
+      'secrets': pulumi.Input.mapInputValue<GitLabSecretsResponse, Map<String, dynamic>>(secrets, (value) => value.toMap()),
       'username': username,
       'webhookKey': webhookKey,
     };
@@ -79,28 +54,14 @@ class GitLabConfigResponse {
 
   factory GitLabConfigResponse.fromMap(Map<String, dynamic> map) {
     return GitLabConfigResponse(
-      connectedRepositories: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GitLabRepositoryIdResponse>(
-          map['connectedRepositories']!,
-          (value) => GitLabRepositoryIdResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      connectedRepositories: pulumi.Input.fromValue(pulumi.Input.decodeList<GitLabRepositoryIdResponse>(map['connectedRepositories']!, (value) => GitLabRepositoryIdResponse.fromMap((value as Map).cast<String, dynamic>()))),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
-      enterpriseConfig: pulumi.Input.fromValue(
-        GitLabEnterpriseConfigResponse.fromMap(
-          (map['enterpriseConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      enterpriseConfig: pulumi.Input.fromValue(GitLabEnterpriseConfigResponse.fromMap((map['enterpriseConfig']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
-      secrets: pulumi.Input.fromValue(
-        GitLabSecretsResponse.fromMap(
-          (map['secrets']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      secrets: pulumi.Input.fromValue(GitLabSecretsResponse.fromMap((map['secrets']! as Map).cast<String, dynamic>())),
       username: pulumi.Input.fromValue(map['username'] as String),
       webhookKey: pulumi.Input.fromValue(map['webhookKey'] as String),
     );
   }
 }
+

@@ -5,49 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretParametersParameter {
   /// The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> constraints;
-
   /// The time when the encryption parameter was created.
   final pulumi.Input<String> createTime;
-
   /// The user who created the encryption parameter.
   final pulumi.Input<String> createdBy;
-
   /// The description of the encryption parameter.
   final pulumi.Input<String> description;
-
   /// The ID of the Secret Parameter.
   final pulumi.Input<String> id;
-
   /// The ID of the key of Key Management Service (KMS) that is used for encryption.
   final pulumi.Input<String> keyId;
-
   /// The version number of the encryption parameter.
   final pulumi.Input<int> parameterVersion;
-
   /// The ID of the Resource Group.
   final pulumi.Input<String> resourceGroupId;
-
   /// The ID of the encryption parameter.
   final pulumi.Input<String> secretParameterId;
-
   /// The name of the Secret Parameter.
   final pulumi.Input<String> secretParameterName;
-
   /// The share type of the encryption parameter.
   final pulumi.Input<String> shareType;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// The type of the parameter.
   final pulumi.Input<String> type;
-
   /// The user who updated the encryption parameter.
   final pulumi.Input<String> updatedBy;
-
   /// The time when the encryption parameter was updated.
   final pulumi.Input<String> updatedDate;
-
   /// (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `with_decryption` is set to `true`.
   final pulumi.Input<String> value;
 
@@ -118,12 +103,8 @@ class GetSecretParametersParameter {
       keyId: pulumi.Input.fromValue(map['keyId'] as String),
       parameterVersion: pulumi.Input.fromValue(map['parameterVersion'] as int),
       resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
-      secretParameterId: pulumi.Input.fromValue(
-        map['secretParameterId'] as String,
-      ),
-      secretParameterName: pulumi.Input.fromValue(
-        map['secretParameterName'] as String,
-      ),
+      secretParameterId: pulumi.Input.fromValue(map['secretParameterId'] as String),
+      secretParameterName: pulumi.Input.fromValue(map['secretParameterName'] as String),
       shareType: pulumi.Input.fromValue(map['shareType'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       type: pulumi.Input.fromValue(map['type'] as String),
@@ -133,3 +114,4 @@ class GetSecretParametersParameter {
     );
   }
 }
+

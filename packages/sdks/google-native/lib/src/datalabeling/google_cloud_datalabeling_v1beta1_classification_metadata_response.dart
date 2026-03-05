@@ -14,14 +14,15 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'isMultiLabel': isMultiLabel};
+    return <String, dynamic>{
+      'isMultiLabel': isMultiLabel,
+    };
   }
 
-  factory GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse(
       isMultiLabel: pulumi.Input.fromValue(map['isMultiLabel'] as bool),
     );
   }
 }
+

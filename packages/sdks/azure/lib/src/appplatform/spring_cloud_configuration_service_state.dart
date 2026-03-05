@@ -7,17 +7,12 @@ import 'spring_cloud_configuration_service_repository.dart';
 class SpringCloudConfigurationServiceState {
   /// The generation of the Spring Cloud Configuration Service. Possible values are `Gen1` and `Gen2`.
   final pulumi.Input<String>? generation;
-
   /// The name which should be used for this Spring Cloud Configuration Service. The only possible value is `default`. Changing this forces a new Spring Cloud Configuration Service to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies how often to check repository updates. Minimum value is 0.
   final pulumi.Input<int>? refreshIntervalInSeconds;
-
   /// One or more `repository` blocks as defined below.
-  final pulumi.Input<List<SpringCloudConfigurationServiceRepository>>?
-  repositories;
-
+  final pulumi.Input<List<SpringCloudConfigurationServiceRepository>>? repositories;
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Configuration Service to be created.
   final pulumi.Input<String>? springCloudServiceId;
 
@@ -40,58 +35,19 @@ class SpringCloudConfigurationServiceState {
       'generation': ?generation,
       'name': ?name,
       'refreshIntervalInSeconds': ?refreshIntervalInSeconds,
-      'repositories':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SpringCloudConfigurationServiceRepository>,
-            List<Map<String, dynamic>>
-          >(
-            repositories,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SpringCloudConfigurationServiceRepository,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'repositories': ?pulumi.Input.mapOptionalInputValue<List<SpringCloudConfigurationServiceRepository>, List<Map<String, dynamic>>>(repositories, (value) => pulumi.Input.encodeList<SpringCloudConfigurationServiceRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
       'springCloudServiceId': ?springCloudServiceId,
     };
   }
 
-  factory SpringCloudConfigurationServiceState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpringCloudConfigurationServiceState.fromMap(Map<String, dynamic> map) {
     return SpringCloudConfigurationServiceState(
-      generation: (() {
-        final guardedValue = map['generation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      refreshIntervalInSeconds: (() {
-        final guardedValue = map['refreshIntervalInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      repositories: (() {
-        final guardedValue = map['repositories'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SpringCloudConfigurationServiceRepository>(
-            guardedValue,
-            (value) => SpringCloudConfigurationServiceRepository.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      springCloudServiceId: (() {
-        final guardedValue = map['springCloudServiceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      refreshIntervalInSeconds: (() { final guardedValue = map['refreshIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      repositories: (() { final guardedValue = map['repositories']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SpringCloudConfigurationServiceRepository>(guardedValue, (value) => SpringCloudConfigurationServiceRepository.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      springCloudServiceId: (() { final guardedValue = map['springCloudServiceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

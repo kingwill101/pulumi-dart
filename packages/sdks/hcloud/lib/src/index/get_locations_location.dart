@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLocationsLocation {
   /// Name of the closest city to the Location. City name and optionally state in short form.
   final pulumi.Input<String> city;
-
   /// Country the Location resides in. ISO 3166-1 alpha-2 code of the country.
   final pulumi.Input<String> country;
-
   /// Description of the Location.
   final pulumi.Input<String> description;
-
   /// ID of the Location.
   final pulumi.Input<int> id;
-
   /// Latitude of the city closest to the Location.
   final pulumi.Input<double> latitude;
-
   /// Longitude of the city closest to the Location.
   final pulumi.Input<double> longitude;
-
   /// Name of the Location.
   final pulumi.Input<String> name;
-
   /// Name of the Network Zone this Location resides in.
   final pulumi.Input<String> networkZone;
 
@@ -73,3 +66,4 @@ class GetLocationsLocation {
     );
   }
 }
+

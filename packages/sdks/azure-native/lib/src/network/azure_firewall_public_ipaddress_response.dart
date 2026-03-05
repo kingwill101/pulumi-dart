@@ -9,21 +9,20 @@ class AzureFirewallPublicIPAddressResponse {
 
   /// Creates a new [AzureFirewallPublicIPAddressResponse].
   /// [address] Public IP Address value.
-  AzureFirewallPublicIPAddressResponse({this.address});
+  AzureFirewallPublicIPAddressResponse({
+    this.address,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'address': ?address};
+    return <String, dynamic>{
+      'address': ?address,
+    };
   }
 
-  factory AzureFirewallPublicIPAddressResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureFirewallPublicIPAddressResponse.fromMap(Map<String, dynamic> map) {
     return AzureFirewallPublicIPAddressResponse(
-      address: (() {
-        final guardedValue = map['address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

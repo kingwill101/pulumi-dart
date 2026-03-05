@@ -26,13 +26,10 @@ class ValidationAdmissionregistrationK8sIoV1alpha1 {
   /// non-intersecting keys are appended, retaining their partial order.
   /// Required.
   final pulumi.Input<String> expression;
-
   /// Message represents the message displayed when validation fails. The message is required if the Expression contains line breaks. The message must not contain line breaks. If unset, the message is "failed rule: {Rule}". e.g. "must be a URL with the host matching spec.host" If the Expression contains line breaks. Message is required. The message must not contain line breaks. If unset, the message is "failed Expression: {Expression}".
   final pulumi.Input<String>? message;
-
   /// messageExpression declares a CEL expression that evaluates to the validation failure message that is returned when this rule fails. Since messageExpression is used as a failure message, it must evaluate to a string. If both message and messageExpression are present on a validation, then messageExpression will be used if validation fails. If messageExpression results in a runtime error, the runtime error is logged, and the validation failure message is produced as if the messageExpression field were unset. If messageExpression evaluates to an empty string, a string with only spaces, or a string that contains line breaks, then the validation failure message will also be produced as if the messageExpression field were unset, and the fact that messageExpression produced an empty string/string with only spaces/string with line breaks will be logged. messageExpression has access to all the same variables as the `expression` except for 'authorizer' and 'authorizer.requestResource'. Example: "object.x must be less than max ("+string(params.max)+")"
   final pulumi.Input<String>? messageExpression;
-
   /// Reason represents a machine-readable description of why this validation failed. If this is the first validation in the list to fail, this reason, as well as the corresponding HTTP response code, are used in the HTTP response to the client. The currently supported reasons are: "Unauthorized", "Forbidden", "Invalid", "RequestEntityTooLarge". If not set, StatusReasonInvalid is used in the response to the client.
   final pulumi.Input<String>? reason;
 
@@ -57,26 +54,13 @@ class ValidationAdmissionregistrationK8sIoV1alpha1 {
     };
   }
 
-  factory ValidationAdmissionregistrationK8sIoV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ValidationAdmissionregistrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ValidationAdmissionregistrationK8sIoV1alpha1(
       expression: pulumi.Input.fromValue(map['expression'] as String),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      messageExpression: (() {
-        final guardedValue = map['messageExpression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reason: (() {
-        final guardedValue = map['reason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      messageExpression: (() { final guardedValue = map['messageExpression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

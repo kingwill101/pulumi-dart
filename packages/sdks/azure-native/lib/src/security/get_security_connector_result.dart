@@ -9,43 +9,30 @@ import 'system_data_response.dart';
 class GetSecurityConnectorResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The security connector environment data.
   final AwsEnvironmentDataResponse? environmentData;
-
   /// The multi cloud resource's cloud name.
   final String? environmentName;
-
   /// Entity tag is used for comparing two or more entities from the same requested resource.
   final String? etag;
-
   /// The multi cloud resource identifier (account id in case of AWS connector, project number in case of GCP connector).
   final String? hierarchyIdentifier;
-
   /// The date on which the trial period will end, if applicable. Trial period exists for 30 days after upgrading to payed offerings.
   final String hierarchyIdentifierTrialEndDate;
-
   /// Resource Id
   final String id;
-
   /// Kind of the resource
   final String? kind;
-
   /// Location where the resource is stored
   final String? location;
-
   /// Resource name
   final String name;
-
   /// A collection of offerings for the security connector.
   final List<CspmMonitorAwsOfferingResponse>? offerings;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// A list of key value pairs that describe the resource.
   final Map<String, String>? tags;
-
   /// Resource type
   final String type;
 
@@ -93,14 +80,7 @@ class GetSecurityConnectorResult {
       'kind': ?kind,
       'location': ?location,
       'name': name,
-      'offerings': ?(() {
-        final guardedValue = offerings;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          CspmMonitorAwsOfferingResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'offerings': ?(() { final guardedValue = offerings; if (guardedValue == null) return null; return pulumi.Input.encodeList<CspmMonitorAwsOfferingResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -110,61 +90,20 @@ class GetSecurityConnectorResult {
   factory GetSecurityConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      environmentData: (() {
-        final guardedValue = map['environmentData'];
-        if (guardedValue == null) return null;
-        return AwsEnvironmentDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      environmentName: (() {
-        final guardedValue = map['environmentName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      hierarchyIdentifier: (() {
-        final guardedValue = map['hierarchyIdentifier'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      hierarchyIdentifierTrialEndDate:
-          map['hierarchyIdentifierTrialEndDate'] as String,
+      environmentData: (() { final guardedValue = map['environmentData']; if (guardedValue == null) return null; return AwsEnvironmentDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      environmentName: (() { final guardedValue = map['environmentName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hierarchyIdentifier: (() { final guardedValue = map['hierarchyIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hierarchyIdentifierTrialEndDate: map['hierarchyIdentifierTrialEndDate'] as String,
       id: map['id'] as String,
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      offerings: (() {
-        final guardedValue = map['offerings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<CspmMonitorAwsOfferingResponse>(
-          guardedValue,
-          (value) => CspmMonitorAwsOfferingResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      offerings: (() { final guardedValue = map['offerings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<CspmMonitorAwsOfferingResponse>(guardedValue, (value) => CspmMonitorAwsOfferingResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

@@ -7,10 +7,8 @@ class FrontdoorFirewallPolicyManagedRuleOverrideExclusion {
   ///
   /// &gt; **Note:** `RequestBodyJsonArgNames` is only available on Default Rule Set (DRS) 2.0 or later
   final pulumi.Input<String> matchVariable;
-
   /// Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, or `EqualsAny`.
   final pulumi.Input<String> operator;
-
   /// Selector for the value in the `match_variable` attribute this exclusion applies to.
   ///
   /// &gt; **Note:** `selector` must be set to `*` if `operator` is set to `EqualsAny`.
@@ -34,9 +32,7 @@ class FrontdoorFirewallPolicyManagedRuleOverrideExclusion {
     };
   }
 
-  factory FrontdoorFirewallPolicyManagedRuleOverrideExclusion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FrontdoorFirewallPolicyManagedRuleOverrideExclusion.fromMap(Map<String, dynamic> map) {
     return FrontdoorFirewallPolicyManagedRuleOverrideExclusion(
       matchVariable: pulumi.Input.fromValue(map['matchVariable'] as String),
       operator: pulumi.Input.fromValue(map['operator'] as String),
@@ -44,3 +40,4 @@ class FrontdoorFirewallPolicyManagedRuleOverrideExclusion {
     );
   }
 }
+

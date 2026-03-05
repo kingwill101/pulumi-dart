@@ -385,22 +385,18 @@ class DbInstanceIpArray extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:**  You can call the [DescribeDBInstances](https://www.alibabacloud.com/help/en/doc-detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
   late final pulumi.Output<String> dbInstanceId;
-
   /// The default is empty. To distinguish between different attribute values, the console does not display groups with the 'hidden' attribute.
   late final pulumi.Output<String?> dbInstanceIpArrayAttribute;
-
   /// The name of the IP address whitelist. If you do not specify this parameter, the default whitelist is queried.
   ///
   /// &gt; **NOTE:**   Each instance supports up to 50 IP address whitelists.
   late final pulumi.Output<String> dbInstanceIpArrayName;
-
   /// The method of modification. Valid values:
   ///
   /// - `Cover`: overwrites the whitelist.
   /// - `Append`: appends data to the whitelist.
   /// - `Delete`: deletes the whitelist.
   late final pulumi.Output<String?> modifyMode;
-
   /// The IP address whitelist contains a maximum of 1000 IP addresses separated by commas in the following three formats:
   /// - 0.0.0.0/0
   /// - 10.23.12.24(IP)
@@ -416,15 +412,13 @@ class DbInstanceIpArray extends pulumi.CustomResource {
     DbInstanceIpArrayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbInstanceId = registerOutput<String>('dbInstanceId');
-    dbInstanceIpArrayAttribute = registerOutput<String?>(
-      'dbInstanceIpArrayAttribute',
-    );
+    dbInstanceIpArrayAttribute = registerOutput<String?>('dbInstanceIpArrayAttribute');
     dbInstanceIpArrayName = registerOutput<String>('dbInstanceIpArrayName');
     modifyMode = registerOutput<String?>('modifyMode');
     securityIpLists = registerOutput<List<String>>('securityIpLists');
@@ -448,15 +442,13 @@ class DbInstanceIpArray extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbInstanceId = registerOutput<String>('dbInstanceId');
-    dbInstanceIpArrayAttribute = registerOutput<String?>(
-      'dbInstanceIpArrayAttribute',
-    );
+    dbInstanceIpArrayAttribute = registerOutput<String?>('dbInstanceIpArrayAttribute');
     dbInstanceIpArrayName = registerOutput<String>('dbInstanceIpArrayName');
     modifyMode = registerOutput<String?>('modifyMode');
     securityIpLists = registerOutput<List<String>>('securityIpLists');

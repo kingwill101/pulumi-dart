@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubnetworksSubnetwork {
   /// Description of the subnetwork.
   final pulumi.Input<String> description;
-
   /// The IP address range represented as a CIDR block.
   final pulumi.Input<String> ipCidrRange;
-
   /// The name of the subnetwork.
   final pulumi.Input<String> name;
-
   /// The self link of the parent network.
   final pulumi.Input<String> network;
-
   /// The name of the parent network computed from `network` attribute.
   final pulumi.Input<String> networkName;
-
   /// (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `network_name` instead.)
   final pulumi.Input<String> networkSelfLink;
-
   /// Whether the VMs in the subnet can access Google services without assigned external IP addresses.
   final pulumi.Input<bool> privateIpGoogleAccess;
-
   /// The self link of the subnetwork.
   final pulumi.Input<String> selfLink;
 
@@ -68,10 +61,9 @@ class GetSubnetworksSubnetwork {
       network: pulumi.Input.fromValue(map['network'] as String),
       networkName: pulumi.Input.fromValue(map['networkName'] as String),
       networkSelfLink: pulumi.Input.fromValue(map['networkSelfLink'] as String),
-      privateIpGoogleAccess: pulumi.Input.fromValue(
-        map['privateIpGoogleAccess'] as bool,
-      ),
+      privateIpGoogleAccess: pulumi.Input.fromValue(map['privateIpGoogleAccess'] as bool),
       selfLink: pulumi.Input.fromValue(map['selfLink'] as String),
     );
   }
 }
+

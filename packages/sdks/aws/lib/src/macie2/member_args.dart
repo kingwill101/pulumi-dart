@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MemberArgs {
   /// The AWS account ID for the account.
   final pulumi.Input<String> accountId;
-
   /// The email address for the account.
   final pulumi.Input<String> email;
-
   /// Specifies whether to send an email notification to the root user of each account that the invitation will be sent to. This notification is in addition to an alert that the root user receives in AWS Personal Health Dashboard. To send an email notification to the root user of each account, set this value to `true`.
   final pulumi.Input<bool>? invitationDisableEmailNotification;
-
   /// A custom message to include in the invitation. Amazon Macie adds this message to the standard content that it sends for an invitation.
   final pulumi.Input<String>? invitationMessage;
-
   /// Send an invitation to a member
   final pulumi.Input<bool>? invite;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
   final pulumi.Input<String>? status;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -68,38 +61,13 @@ class MemberArgs {
     return MemberArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       email: pulumi.Input.fromValue(map['email'] as String),
-      invitationDisableEmailNotification: (() {
-        final guardedValue = map['invitationDisableEmailNotification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      invitationMessage: (() {
-        final guardedValue = map['invitationMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      invite: (() {
-        final guardedValue = map['invite'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      invitationDisableEmailNotification: (() { final guardedValue = map['invitationDisableEmailNotification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      invitationMessage: (() { final guardedValue = map['invitationMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      invite: (() { final guardedValue = map['invite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

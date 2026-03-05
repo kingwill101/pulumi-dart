@@ -252,49 +252,34 @@ import 'system_data_response.dart';
 class DiagnosticService extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The frequency at which the data will be exported.
   late final pulumi.Output<int?> dataExportFrequencySeconds;
-
   /// Extended Location
   late final pulumi.Output<ExtendedLocationPropertyResponse> extendedLocation;
-
   /// The details of Diagnostic Service Docker Image.
   late final pulumi.Output<ContainerImageResponse> image;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The format for the logs generated.
   late final pulumi.Output<String?> logFormat;
-
   /// The format for the logs generated.
   late final pulumi.Output<String?> logLevel;
-
   /// The maximum data stored in MiB.
   late final pulumi.Output<double?> maxDataStorageSize;
-
   /// The port at which metrics is exposed.
   late final pulumi.Output<int?> metricsPort;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The destination to collect traces. Diagnostic service will push traces to this endpoint
   late final pulumi.Output<String?> openTelemetryTracesCollectorAddr;
-
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
-
   /// Metric inactivity timeout.
   late final pulumi.Output<int?> staleDataTimeoutSeconds;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -307,56 +292,25 @@ class DiagnosticService extends pulumi.CustomResource {
     DiagnosticServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:iotoperationsmq:DiagnosticService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:iotoperationsmq:DiagnosticService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dataExportFrequencySeconds = registerOutput<int?>(
-      'dataExportFrequencySeconds',
-    );
-    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    image = registerOutput<ContainerImageResponse>(
-      'image',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContainerImageResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataExportFrequencySeconds = registerOutput<int?>('dataExportFrequencySeconds');
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    image = registerOutput<ContainerImageResponse>('image', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     logFormat = registerOutput<String?>('logFormat');
     logLevel = registerOutput<String?>('logLevel');
     maxDataStorageSize = registerOutput<double?>('maxDataStorageSize');
     metricsPort = registerOutput<int?>('metricsPort');
     this.name = registerOutput<String>('name');
-    openTelemetryTracesCollectorAddr = registerOutput<String?>(
-      'openTelemetryTracesCollectorAddr',
-    );
+    openTelemetryTracesCollectorAddr = registerOutput<String?>('openTelemetryTracesCollectorAddr');
     provisioningState = registerOutput<String>('provisioningState');
     staleDataTimeoutSeconds = registerOutput<int?>('staleDataTimeoutSeconds');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

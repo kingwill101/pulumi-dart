@@ -317,31 +317,22 @@ import 'prometheus_state.dart';
 class Prometheus extends pulumi.CustomResource {
   /// The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
   late final pulumi.Output<String> clusterId;
-
   /// The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
   late final pulumi.Output<String> clusterName;
-
   /// The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
   late final pulumi.Output<String> clusterType;
-
   /// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
   late final pulumi.Output<String> grafanaInstanceId;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
   late final pulumi.Output<String?> securityGroupId;
-
   /// The child instance json string of the globalView instance.
   late final pulumi.Output<String?> subClustersJson;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
   late final pulumi.Output<String?> vpcId;
-
   /// The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
   late final pulumi.Output<String?> vswitchId;
 
@@ -354,11 +345,11 @@ class Prometheus extends pulumi.CustomResource {
     PrometheusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/prometheus:Prometheus',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/prometheus:Prometheus',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     clusterName = registerOutput<String>('clusterName');
     clusterType = registerOutput<String>('clusterType');
@@ -389,11 +380,11 @@ class Prometheus extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/prometheus:Prometheus',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/prometheus:Prometheus',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     clusterName = registerOutput<String>('clusterName');
     clusterType = registerOutput<String>('clusterType');

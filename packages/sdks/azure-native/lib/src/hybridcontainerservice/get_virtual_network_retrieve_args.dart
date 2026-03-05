@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualNetworkRetrieveArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Parameter for the name of the virtual network
   final pulumi.Input<String> virtualNetworksName;
 
@@ -30,12 +29,9 @@ class GetVirtualNetworkRetrieveArgs {
 
   factory GetVirtualNetworkRetrieveArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkRetrieveArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualNetworksName: pulumi.Input.fromValue(
-        map['virtualNetworksName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualNetworksName: pulumi.Input.fromValue(map['virtualNetworksName'] as String),
     );
   }
 }
+

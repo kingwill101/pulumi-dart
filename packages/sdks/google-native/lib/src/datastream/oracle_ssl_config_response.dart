@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OracleSslConfigResponse {
   /// Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
   final pulumi.Input<String> caCertificate;
-
   /// Indicates whether the ca_certificate field has been set for this Connection-Profile.
   final pulumi.Input<bool> caCertificateSet;
 
@@ -32,3 +31,4 @@ class OracleSslConfigResponse {
     );
   }
 }
+

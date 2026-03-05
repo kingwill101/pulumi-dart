@@ -20,3 +20,4 @@ enum AzureFunctionActivityMethod {
     throw ArgumentError('Unknown AzureFunctionActivityMethod value: $value');
   }
 }
+

@@ -7,10 +7,8 @@ import 'duration_compute_v1.dart';
 class ConsistentHashLoadBalancerSettingsHttpCookieComputeV1 {
   /// Name of the cookie.
   final pulumi.Input<String>? name;
-
   /// Path to set for the cookie.
   final pulumi.Input<String>? path;
-
   /// Lifetime of the cookie.
   final pulumi.Input<DurationComputeV1>? ttl;
 
@@ -28,37 +26,16 @@ class ConsistentHashLoadBalancerSettingsHttpCookieComputeV1 {
     return <String, dynamic>{
       'name': ?name,
       'path': ?path,
-      'ttl':
-          ?pulumi.Input.mapOptionalInputValue<
-            DurationComputeV1,
-            Map<String, dynamic>
-          >(ttl, (value) => value.toMap()),
+      'ttl': ?pulumi.Input.mapOptionalInputValue<DurationComputeV1, Map<String, dynamic>>(ttl, (value) => value.toMap()),
     };
   }
 
-  factory ConsistentHashLoadBalancerSettingsHttpCookieComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConsistentHashLoadBalancerSettingsHttpCookieComputeV1.fromMap(Map<String, dynamic> map) {
     return ConsistentHashLoadBalancerSettingsHttpCookieComputeV1(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ttl: (() {
-        final guardedValue = map['ttl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DurationComputeV1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DurationComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

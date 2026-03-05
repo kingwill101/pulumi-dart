@@ -6,50 +6,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatacenterAddressLocationResponseResponse {
   /// Special instruction for shipping
   final pulumi.Input<String> additionalShippingInformation;
-
   /// Address type
   final pulumi.Input<String> addressType;
-
   /// City name
   final pulumi.Input<String> city;
-
   /// Company name
   final pulumi.Input<String> company;
-
   /// Contact person name
   final pulumi.Input<String> contactPersonName;
-
   /// name of the country
   final pulumi.Input<String> country;
-
   /// Azure Location where the Data Center serves primarily.
   final pulumi.Input<String> dataCenterAzureLocation;
-
   /// Data center address type
   /// Expected value is 'DatacenterAddressLocation'.
   final pulumi.Input<String> datacenterAddressType;
-
   /// Phone number
   final pulumi.Input<String> phone;
-
   /// Phone extension
   final pulumi.Input<String> phoneExtension;
-
   /// name of the state
   final pulumi.Input<String> state;
-
   /// Street address line 1
   final pulumi.Input<String> street1;
-
   /// Street address line 2
   final pulumi.Input<String> street2;
-
   /// Street address line 3
   final pulumi.Input<String> street3;
-
   /// List of supported carriers for return shipment.
   final pulumi.Input<List<String>> supportedCarriersForReturnShipment;
-
   /// Zip code
   final pulumi.Input<String> zip;
 
@@ -110,36 +95,25 @@ class DatacenterAddressLocationResponseResponse {
     };
   }
 
-  factory DatacenterAddressLocationResponseResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DatacenterAddressLocationResponseResponse.fromMap(Map<String, dynamic> map) {
     return DatacenterAddressLocationResponseResponse(
-      additionalShippingInformation: pulumi.Input.fromValue(
-        map['additionalShippingInformation'] as String,
-      ),
+      additionalShippingInformation: pulumi.Input.fromValue(map['additionalShippingInformation'] as String),
       addressType: pulumi.Input.fromValue(map['addressType'] as String),
       city: pulumi.Input.fromValue(map['city'] as String),
       company: pulumi.Input.fromValue(map['company'] as String),
-      contactPersonName: pulumi.Input.fromValue(
-        map['contactPersonName'] as String,
-      ),
+      contactPersonName: pulumi.Input.fromValue(map['contactPersonName'] as String),
       country: pulumi.Input.fromValue(map['country'] as String),
-      dataCenterAzureLocation: pulumi.Input.fromValue(
-        map['dataCenterAzureLocation'] as String,
-      ),
-      datacenterAddressType: pulumi.Input.fromValue(
-        map['datacenterAddressType'] as String,
-      ),
+      dataCenterAzureLocation: pulumi.Input.fromValue(map['dataCenterAzureLocation'] as String),
+      datacenterAddressType: pulumi.Input.fromValue(map['datacenterAddressType'] as String),
       phone: pulumi.Input.fromValue(map['phone'] as String),
       phoneExtension: pulumi.Input.fromValue(map['phoneExtension'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
       street1: pulumi.Input.fromValue(map['street1'] as String),
       street2: pulumi.Input.fromValue(map['street2'] as String),
       street3: pulumi.Input.fromValue(map['street3'] as String),
-      supportedCarriersForReturnShipment: pulumi.Input.fromValue(
-        (map['supportedCarriersForReturnShipment'] as List).cast<String>(),
-      ),
+      supportedCarriersForReturnShipment: pulumi.Input.fromValue((map['supportedCarriersForReturnShipment'] as List).cast<String>()),
       zip: pulumi.Input.fromValue(map['zip'] as String),
     );
   }
 }
+

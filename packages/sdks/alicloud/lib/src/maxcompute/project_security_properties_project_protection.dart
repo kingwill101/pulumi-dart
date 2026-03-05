@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectSecurityPropertiesProjectProtection {
   /// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
   final pulumi.Input<String>? exceptionPolicy;
-
   /// Whether enabled, value:(true/false)
   final pulumi.Input<bool>? protected;
 
@@ -24,20 +23,11 @@ class ProjectSecurityPropertiesProjectProtection {
     };
   }
 
-  factory ProjectSecurityPropertiesProjectProtection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProjectSecurityPropertiesProjectProtection.fromMap(Map<String, dynamic> map) {
     return ProjectSecurityPropertiesProjectProtection(
-      exceptionPolicy: (() {
-        final guardedValue = map['exceptionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protected: (() {
-        final guardedValue = map['protected'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      exceptionPolicy: (() { final guardedValue = map['exceptionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protected: (() { final guardedValue = map['protected']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

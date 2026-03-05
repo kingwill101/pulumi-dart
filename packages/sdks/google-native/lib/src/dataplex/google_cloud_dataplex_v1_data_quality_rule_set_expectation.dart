@@ -9,21 +9,20 @@ class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityRuleSetExpectation].
   /// [values] Optional. Expected values for the column value.
-  GoogleCloudDataplexV1DataQualityRuleSetExpectation({this.values});
+  GoogleCloudDataplexV1DataQualityRuleSetExpectation({
+    this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': ?values};
+    return <String, dynamic>{
+      'values': ?values,
+    };
   }
 
-  factory GoogleCloudDataplexV1DataQualityRuleSetExpectation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1DataQualityRuleSetExpectation.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityRuleSetExpectation(
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

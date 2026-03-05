@@ -188,30 +188,23 @@ import 'project_notification_config_streaming_config.dart';
 class ProjectNotificationConfig extends pulumi.CustomResource {
   /// This must be unique within the organization.
   late final pulumi.Output<String> configId;
-
   /// The description of the notification config (max of 1024 characters).
   late final pulumi.Output<String?> description;
-
   /// The resource name of this notification config, in the format
   /// `projects/{{projectId}}/notificationConfigs/{{config_id}}`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[project_id]/topics/[topic]".
   late final pulumi.Output<String> pubsubTopic;
-
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
   late final pulumi.Output<String> serviceAccount;
-
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
-  late final pulumi.Output<ProjectNotificationConfigStreamingConfig>
-  streamingConfig;
+  late final pulumi.Output<ProjectNotificationConfigStreamingConfig> streamingConfig;
 
   /// Creates a new [ProjectNotificationConfig].
   /// [name] The Pulumi resource name.
@@ -222,27 +215,18 @@ class ProjectNotificationConfig extends pulumi.CustomResource {
     ProjectNotificationConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configId = registerOutput<String>('configId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pubsubTopic = registerOutput<String>('pubsubTopic');
     serviceAccount = registerOutput<String>('serviceAccount');
-    streamingConfig = registerOutput<ProjectNotificationConfigStreamingConfig>(
-      'streamingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectNotificationConfigStreamingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    streamingConfig = registerOutput<ProjectNotificationConfigStreamingConfig>('streamingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectNotificationConfigStreamingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [ProjectNotificationConfig] resource's state with the given [name] and [id].
@@ -263,26 +247,17 @@ class ProjectNotificationConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configId = registerOutput<String>('configId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pubsubTopic = registerOutput<String>('pubsubTopic');
     serviceAccount = registerOutput<String>('serviceAccount');
-    streamingConfig = registerOutput<ProjectNotificationConfigStreamingConfig>(
-      'streamingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectNotificationConfigStreamingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    streamingConfig = registerOutput<ProjectNotificationConfigStreamingConfig>('streamingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectNotificationConfigStreamingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomRPValidationsResponse {
   /// A link to the validation specification. The specification must be hosted on raw.githubusercontent.com.
   final pulumi.Input<String> specification;
-
   /// The type of validation to run against a matching request.
   final pulumi.Input<String>? validationType;
 
@@ -28,11 +27,8 @@ class CustomRPValidationsResponse {
   factory CustomRPValidationsResponse.fromMap(Map<String, dynamic> map) {
     return CustomRPValidationsResponse(
       specification: pulumi.Input.fromValue(map['specification'] as String),
-      validationType: (() {
-        final guardedValue = map['validationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      validationType: (() { final guardedValue = map['validationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

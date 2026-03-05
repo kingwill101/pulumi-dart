@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLayerVersionArgs {
   /// Specific architecture the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided architecture will be used.
   final pulumi.Input<String>? compatibleArchitecture;
-
   /// Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
   final pulumi.Input<String>? compatibleRuntime;
-
   /// Name of the Lambda layer.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> layerName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Specific layer version. Conflicts with `compatible_runtime` and `compatible_architecture`. If omitted, the latest available layer version will be used.
   final pulumi.Input<int>? version;
 
@@ -50,27 +46,12 @@ class GetLayerVersionArgs {
 
   factory GetLayerVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetLayerVersionArgs(
-      compatibleArchitecture: (() {
-        final guardedValue = map['compatibleArchitecture'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      compatibleRuntime: (() {
-        final guardedValue = map['compatibleRuntime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      compatibleArchitecture: (() { final guardedValue = map['compatibleArchitecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      compatibleRuntime: (() { final guardedValue = map['compatibleRuntime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       layerName: pulumi.Input.fromValue(map['layerName'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

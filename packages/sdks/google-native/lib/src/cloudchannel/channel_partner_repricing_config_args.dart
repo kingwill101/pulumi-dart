@@ -10,7 +10,6 @@ import 'google_cloud_channel_v1_repricing_config.dart';
 class ChannelPartnerRepricingConfigArgs {
   final pulumi.Input<String> accountId;
   final pulumi.Input<String> channelPartnerLinkId;
-
   /// The configuration for bill modifications made by a reseller before sending it to ChannelPartner.
   final pulumi.Input<GoogleCloudChannelV1RepricingConfig> repricingConfig;
 
@@ -28,25 +27,16 @@ class ChannelPartnerRepricingConfigArgs {
     return <String, dynamic>{
       'accountId': accountId,
       'channelPartnerLinkId': channelPartnerLinkId,
-      'repricingConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudChannelV1RepricingConfig,
-            Map<String, dynamic>
-          >(repricingConfig, (value) => value.toMap()),
+      'repricingConfig': pulumi.Input.mapInputValue<GoogleCloudChannelV1RepricingConfig, Map<String, dynamic>>(repricingConfig, (value) => value.toMap()),
     };
   }
 
   factory ChannelPartnerRepricingConfigArgs.fromMap(Map<String, dynamic> map) {
     return ChannelPartnerRepricingConfigArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      channelPartnerLinkId: pulumi.Input.fromValue(
-        map['channelPartnerLinkId'] as String,
-      ),
-      repricingConfig: pulumi.Input.fromValue(
-        GoogleCloudChannelV1RepricingConfig.fromMap(
-          (map['repricingConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      channelPartnerLinkId: pulumi.Input.fromValue(map['channelPartnerLinkId'] as String),
+      repricingConfig: pulumi.Input.fromValue(GoogleCloudChannelV1RepricingConfig.fromMap((map['repricingConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

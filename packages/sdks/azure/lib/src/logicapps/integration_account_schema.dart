@@ -232,19 +232,14 @@ import 'integration_account_schema_state.dart';
 class IntegrationAccountSchema extends pulumi.CustomResource {
   /// The content of the Logic App Integration Account Schema.
   late final pulumi.Output<String> content;
-
   /// The file name of the Logic App Integration Account Schema.
   late final pulumi.Output<String?> fileName;
-
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Schema to be created.
   late final pulumi.Output<String> integrationAccountName;
-
   /// The metadata of the Logic App Integration Account Schema.
   late final pulumi.Output<String?> metadata;
-
   /// The name which should be used for this Logic App Integration Account Schema. Changing this forces a new Logic App Integration Account Schema to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Logic App Integration Account Schema should exist. Changing this forces a new Logic App Integration Account Schema to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -257,11 +252,11 @@ class IntegrationAccountSchema extends pulumi.CustomResource {
     IntegrationAccountSchemaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/integrationAccountSchema:IntegrationAccountSchema',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/integrationAccountSchema:IntegrationAccountSchema',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     content = registerOutput<String>('content');
     fileName = registerOutput<String?>('fileName');
     integrationAccountName = registerOutput<String>('integrationAccountName');
@@ -288,11 +283,11 @@ class IntegrationAccountSchema extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/integrationAccountSchema:IntegrationAccountSchema',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/integrationAccountSchema:IntegrationAccountSchema',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     content = registerOutput<String>('content');
     fileName = registerOutput<String?>('fileName');
     integrationAccountName = registerOutput<String>('integrationAccountName');

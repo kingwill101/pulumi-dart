@@ -118,10 +118,8 @@ import 'folder_state.dart';
 /// ```
 class Folder extends pulumi.CustomResource {
   late final pulumi.Output<String> folderId;
-
   /// Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
   late final pulumi.Output<String> folderPath;
-
   /// The ID of the project.
   late final pulumi.Output<String?> projectId;
   late final pulumi.Output<String?> projectIdentifier;
@@ -130,13 +128,16 @@ class Folder extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Folder]. {@macro pulumi_dataworks_folder_folder_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Folder(String name, {FolderArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:dataworks/folder:Folder',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Folder(
+    String name, {
+    FolderArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:dataworks/folder:Folder',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     folderId = registerOutput<String>('folderId');
     folderPath = registerOutput<String>('folderPath');
     projectId = registerOutput<String?>('projectId');
@@ -161,11 +162,11 @@ class Folder extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dataworks/folder:Folder',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dataworks/folder:Folder',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     folderId = registerOutput<String>('folderId');
     folderPath = registerOutput<String>('folderPath');
     projectId = registerOutput<String?>('projectId');

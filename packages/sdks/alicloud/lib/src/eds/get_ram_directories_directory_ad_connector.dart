@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRamDirectoriesDirectoryAdConnector {
   /// The address of AD connector.
   final pulumi.Input<String> adConnectorAddress;
-
   /// The status of connector.
   final pulumi.Input<String> connectorStatus;
-
   /// The ID of the network interface.
   final pulumi.Input<String> networkInterfaceId;
-
   /// The ID of vSwitch.
   final pulumi.Input<String> vswitchId;
 
@@ -36,18 +33,13 @@ class GetRamDirectoriesDirectoryAdConnector {
     };
   }
 
-  factory GetRamDirectoriesDirectoryAdConnector.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRamDirectoriesDirectoryAdConnector.fromMap(Map<String, dynamic> map) {
     return GetRamDirectoriesDirectoryAdConnector(
-      adConnectorAddress: pulumi.Input.fromValue(
-        map['adConnectorAddress'] as String,
-      ),
+      adConnectorAddress: pulumi.Input.fromValue(map['adConnectorAddress'] as String),
       connectorStatus: pulumi.Input.fromValue(map['connectorStatus'] as String),
-      networkInterfaceId: pulumi.Input.fromValue(
-        map['networkInterfaceId'] as String,
-      ),
+      networkInterfaceId: pulumi.Input.fromValue(map['networkInterfaceId'] as String),
       vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
+

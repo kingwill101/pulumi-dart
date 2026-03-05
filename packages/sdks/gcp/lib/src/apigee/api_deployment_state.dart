@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiDeploymentState {
   /// The Apigee Environment associated with the Apigee API deployment.
   final pulumi.Input<String>? environment;
-
   /// The Apigee Organization associated with the Apigee API deployment.
   final pulumi.Input<String>? orgId;
-
   /// The Apigee API associated with the Apigee API deployment.
   final pulumi.Input<String>? proxyId;
-
   /// The revision of the API proxy to be deployed.
   final pulumi.Input<String>? revision;
 
@@ -39,26 +36,11 @@ class ApiDeploymentState {
 
   factory ApiDeploymentState.fromMap(Map<String, dynamic> map) {
     return ApiDeploymentState(
-      environment: (() {
-        final guardedValue = map['environment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      orgId: (() {
-        final guardedValue = map['orgId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      proxyId: (() {
-        final guardedValue = map['proxyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      revision: (() {
-        final guardedValue = map['revision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orgId: (() { final guardedValue = map['orgId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      proxyId: (() { final guardedValue = map['proxyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

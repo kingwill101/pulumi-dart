@@ -24,18 +24,7 @@ class EndpointCidrOptions {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cidr': cidr,
-      'portRanges':
-          pulumi.Input.mapInputValue<
-            List<EndpointCidrOptionsPortRange>,
-            List<Map<String, dynamic>>
-          >(
-            portRanges,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EndpointCidrOptionsPortRange,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'portRanges': pulumi.Input.mapInputValue<List<EndpointCidrOptionsPortRange>, List<Map<String, dynamic>>>(portRanges, (value) => pulumi.Input.encodeList<EndpointCidrOptionsPortRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'protocol': ?protocol,
       'subnetIds': ?subnetIds,
     };
@@ -44,24 +33,10 @@ class EndpointCidrOptions {
   factory EndpointCidrOptions.fromMap(Map<String, dynamic> map) {
     return EndpointCidrOptions(
       cidr: pulumi.Input.fromValue(map['cidr'] as String),
-      portRanges: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<EndpointCidrOptionsPortRange>(
-          map['portRanges']!,
-          (value) => EndpointCidrOptionsPortRange.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetIds: (() {
-        final guardedValue = map['subnetIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      portRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointCidrOptionsPortRange>(map['portRanges']!, (value) => EndpointCidrOptionsPortRange.fromMap((value as Map).cast<String, dynamic>()))),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetIds: (() { final guardedValue = map['subnetIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

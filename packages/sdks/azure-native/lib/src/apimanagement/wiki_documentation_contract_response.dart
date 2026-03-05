@@ -9,19 +9,20 @@ class WikiDocumentationContractResponse {
 
   /// Creates a new [WikiDocumentationContractResponse].
   /// [documentationId] Documentation Identifier
-  WikiDocumentationContractResponse({this.documentationId});
+  WikiDocumentationContractResponse({
+    this.documentationId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'documentationId': ?documentationId};
+    return <String, dynamic>{
+      'documentationId': ?documentationId,
+    };
   }
 
   factory WikiDocumentationContractResponse.fromMap(Map<String, dynamic> map) {
     return WikiDocumentationContractResponse(
-      documentationId: (() {
-        final guardedValue = map['documentationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      documentationId: (() { final guardedValue = map['documentationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerAppsAuthConfigArgs {
   /// Name of the Container App AuthConfig.
   final pulumi.Input<String> authConfigName;
-
   /// Name of the Container App.
   final pulumi.Input<String> containerAppName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetContainerAppsAuthConfigArgs {
   factory GetContainerAppsAuthConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerAppsAuthConfigArgs(
       authConfigName: pulumi.Input.fromValue(map['authConfigName'] as String),
-      containerAppName: pulumi.Input.fromValue(
-        map['containerAppName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      containerAppName: pulumi.Input.fromValue(map['containerAppName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

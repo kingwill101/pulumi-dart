@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParentReferencePatchNetworkingK8sIoV1alpha1 {
   /// Group is the group of the object being referenced.
   final pulumi.Input<String>? group;
-
   /// Name is the name of the object being referenced.
   final pulumi.Input<String>? name;
-
   /// Namespace is the namespace of the object being referenced.
   final pulumi.Input<String>? namespace;
-
   /// Resource is the resource of the object being referenced.
   final pulumi.Input<String>? resource;
-
   /// UID is the uid of the object being referenced.
   final pulumi.Input<String>? uid;
 
@@ -43,35 +39,14 @@ class ParentReferencePatchNetworkingK8sIoV1alpha1 {
     };
   }
 
-  factory ParentReferencePatchNetworkingK8sIoV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ParentReferencePatchNetworkingK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ParentReferencePatchNetworkingK8sIoV1alpha1(
-      group: (() {
-        final guardedValue = map['group'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resource: (() {
-        final guardedValue = map['resource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uid: (() {
-        final guardedValue = map['uid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

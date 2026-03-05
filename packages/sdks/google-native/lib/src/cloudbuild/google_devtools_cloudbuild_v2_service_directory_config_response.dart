@@ -14,14 +14,15 @@ class GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'service': service};
+    return <String, dynamic>{
+      'service': service,
+    };
   }
 
-  factory GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse(
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
+

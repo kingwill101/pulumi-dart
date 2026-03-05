@@ -223,16 +223,13 @@ import 'default_service_accounts_state.dart';
 class DefaultServiceAccounts extends pulumi.CustomResource {
   /// The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
   late final pulumi.Output<String> action;
-
   /// The project ID where service accounts are created.
   late final pulumi.Output<String> project;
-
   /// The action to be performed in the default service accounts on the resource destroy.
   /// Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
   /// If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
   /// If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
   late final pulumi.Output<String?> restorePolicy;
-
   /// The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
   late final pulumi.Output<Map<String, String>> serviceAccounts;
 
@@ -245,11 +242,11 @@ class DefaultServiceAccounts extends pulumi.CustomResource {
     DefaultServiceAccountsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:projects/defaultServiceAccounts:DefaultServiceAccounts',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:projects/defaultServiceAccounts:DefaultServiceAccounts',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     project = registerOutput<String>('project');
     restorePolicy = registerOutput<String?>('restorePolicy');
@@ -274,11 +271,11 @@ class DefaultServiceAccounts extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:projects/defaultServiceAccounts:DefaultServiceAccounts',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:projects/defaultServiceAccounts:DefaultServiceAccounts',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     project = registerOutput<String>('project');
     restorePolicy = registerOutput<String?>('restorePolicy');

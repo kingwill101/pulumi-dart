@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta {
   /// Name of the project scoping this PublicDelegatedSubPrefix.
   final pulumi.Input<String>? delegateeProject;
-
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
-
   /// The IP address range, in CIDR format, represented by this sub public delegated prefix.
   final pulumi.Input<String>? ipCidrRange;
-
   /// Whether the sub prefix is delegated to create Address resources in the delegatee project.
   final pulumi.Input<bool>? isAddress;
-
   /// The name of the sub public delegated prefix.
   final pulumi.Input<String>? name;
 
@@ -43,35 +39,14 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta {
     };
   }
 
-  factory PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta(
-      delegateeProject: (() {
-        final guardedValue = map['delegateeProject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipCidrRange: (() {
-        final guardedValue = map['ipCidrRange'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isAddress: (() {
-        final guardedValue = map['isAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      delegateeProject: (() { final guardedValue = map['delegateeProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipCidrRange: (() { final guardedValue = map['ipCidrRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isAddress: (() { final guardedValue = map['isAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

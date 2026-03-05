@@ -6,10 +6,7 @@ import 'get_network_insights_analysis_explanation_acl_rule_port_range.dart';
 class GetNetworkInsightsAnalysisExplanationAclRule {
   final pulumi.Input<String> cidr;
   final pulumi.Input<bool> egress;
-  final pulumi.Input<
-    List<GetNetworkInsightsAnalysisExplanationAclRulePortRange>
-  >
-  portRanges;
+  final pulumi.Input<List<GetNetworkInsightsAnalysisExplanationAclRulePortRange>> portRanges;
   final pulumi.Input<String> protocol;
   final pulumi.Input<String> ruleAction;
   final pulumi.Input<int> ruleNumber;
@@ -34,44 +31,22 @@ class GetNetworkInsightsAnalysisExplanationAclRule {
     return <String, dynamic>{
       'cidr': cidr,
       'egress': egress,
-      'portRanges':
-          pulumi.Input.mapInputValue<
-            List<GetNetworkInsightsAnalysisExplanationAclRulePortRange>,
-            List<Map<String, dynamic>>
-          >(
-            portRanges,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetNetworkInsightsAnalysisExplanationAclRulePortRange,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'portRanges': pulumi.Input.mapInputValue<List<GetNetworkInsightsAnalysisExplanationAclRulePortRange>, List<Map<String, dynamic>>>(portRanges, (value) => pulumi.Input.encodeList<GetNetworkInsightsAnalysisExplanationAclRulePortRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'protocol': protocol,
       'ruleAction': ruleAction,
       'ruleNumber': ruleNumber,
     };
   }
 
-  factory GetNetworkInsightsAnalysisExplanationAclRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInsightsAnalysisExplanationAclRule.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisExplanationAclRule(
       cidr: pulumi.Input.fromValue(map['cidr'] as String),
       egress: pulumi.Input.fromValue(map['egress'] as bool),
-      portRanges: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetNetworkInsightsAnalysisExplanationAclRulePortRange
-        >(
-          map['portRanges']!,
-          (value) =>
-              GetNetworkInsightsAnalysisExplanationAclRulePortRange.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      portRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<GetNetworkInsightsAnalysisExplanationAclRulePortRange>(map['portRanges']!, (value) => GetNetworkInsightsAnalysisExplanationAclRulePortRange.fromMap((value as Map).cast<String, dynamic>()))),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       ruleAction: pulumi.Input.fromValue(map['ruleAction'] as String),
       ruleNumber: pulumi.Input.fromValue(map['ruleNumber'] as int),
     );
   }
 }
+

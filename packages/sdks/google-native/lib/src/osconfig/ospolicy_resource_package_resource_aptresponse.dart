@@ -9,17 +9,20 @@ class OSPolicyResourcePackageResourceAPTResponse {
 
   /// Creates a new [OSPolicyResourcePackageResourceAPTResponse].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceAPTResponse({required this.name});
+  OSPolicyResourcePackageResourceAPTResponse({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory OSPolicyResourcePackageResourceAPTResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OSPolicyResourcePackageResourceAPTResponse.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceAPTResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

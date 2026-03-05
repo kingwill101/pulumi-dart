@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGroupRoleManagementPolicy.
 class GetGroupRoleManagementPolicyResult {
   /// (String) The description of this policy.
   final String description;
-
   /// (String) The display name of this policy.
   final String displayName;
   final String groupId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String roleId;
@@ -47,3 +46,4 @@ class GetGroupRoleManagementPolicyResult {
     );
   }
 }
+

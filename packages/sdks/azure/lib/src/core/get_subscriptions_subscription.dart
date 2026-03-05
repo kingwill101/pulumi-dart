@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubscriptionsSubscription {
   /// The subscription display name.
   final pulumi.Input<String> displayName;
-
   /// The ID of this subscription.
   final pulumi.Input<String> id;
-
   /// The subscription location placement ID.
   final pulumi.Input<String> locationPlacementId;
-
   /// The subscription quota ID.
   final pulumi.Input<String> quotaId;
-
   /// The subscription spending limit.
   final pulumi.Input<String> spendingLimit;
-
   /// The subscription state. Possible values are Enabled, Warned, PastDue, Disabled, and Deleted.
   final pulumi.Input<String> state;
-
   /// The subscription GUID.
   final pulumi.Input<String> subscriptionId;
-
   /// A mapping of tags assigned to the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// The subscription tenant ID.
   final pulumi.Input<String> tenantId;
 
@@ -70,9 +62,7 @@ class GetSubscriptionsSubscription {
     return GetSubscriptionsSubscription(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      locationPlacementId: pulumi.Input.fromValue(
-        map['locationPlacementId'] as String,
-      ),
+      locationPlacementId: pulumi.Input.fromValue(map['locationPlacementId'] as String),
       quotaId: pulumi.Input.fromValue(map['quotaId'] as String),
       spendingLimit: pulumi.Input.fromValue(map['spendingLimit'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
@@ -82,3 +72,4 @@ class GetSubscriptionsSubscription {
     );
   }
 }
+

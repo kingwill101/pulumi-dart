@@ -300,49 +300,34 @@ import 'system_data_response.dart';
 class AzureBareMetalInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Specifies the Azure Bare Metal Instance unique ID.
   late final pulumi.Output<String?> azureBareMetalInstanceId;
-
   /// Specifies the hardware settings for the Azure Bare Metal Instance.
   late final pulumi.Output<HardwareProfileResponse?> hardwareProfile;
-
   /// Hardware revision of an Azure Bare Metal Instance
   late final pulumi.Output<String?> hwRevision;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Specifies the network settings for the Azure Bare Metal Instance.
   late final pulumi.Output<NetworkProfileResponse?> networkProfile;
-
   /// Specifies the operating system settings for the Azure Bare Metal Instance.
   late final pulumi.Output<OSProfileResponse?> osProfile;
-
   /// ARM ID of another AzureBareMetalInstance that will share a network with this AzureBareMetalInstance
   late final pulumi.Output<String?> partnerNodeId;
-
   /// Resource power state
   late final pulumi.Output<String?> powerState;
-
   /// State of provisioning of the AzureBareMetalInstance
   late final pulumi.Output<String> provisioningState;
-
   /// Resource proximity placement group
   late final pulumi.Output<String?> proximityPlacementGroup;
-
   /// Specifies the storage settings for the Azure Bare Metal Instance disks.
   late final pulumi.Output<StorageProfileResponse?> storageProfile;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -355,74 +340,25 @@ class AzureBareMetalInstance extends pulumi.CustomResource {
     AzureBareMetalInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:baremetalinfrastructure:AzureBareMetalInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:baremetalinfrastructure:AzureBareMetalInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    azureBareMetalInstanceId = registerOutput<String?>(
-      'azureBareMetalInstanceId',
-    );
-    hardwareProfile = registerOutput<HardwareProfileResponse?>(
-      'hardwareProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HardwareProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    azureBareMetalInstanceId = registerOutput<String?>('azureBareMetalInstanceId');
+    hardwareProfile = registerOutput<HardwareProfileResponse?>('hardwareProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HardwareProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hwRevision = registerOutput<String?>('hwRevision');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<NetworkProfileResponse?>(
-      'networkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    osProfile = registerOutput<OSProfileResponse?>(
-      'osProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OSProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osProfile = registerOutput<OSProfileResponse?>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OSProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     partnerNodeId = registerOutput<String?>('partnerNodeId');
     powerState = registerOutput<String?>('powerState');
     provisioningState = registerOutput<String>('provisioningState');
-    proximityPlacementGroup = registerOutput<String?>(
-      'proximityPlacementGroup',
-    );
-    storageProfile = registerOutput<StorageProfileResponse?>(
-      'storageProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StorageProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    proximityPlacementGroup = registerOutput<String?>('proximityPlacementGroup');
+    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

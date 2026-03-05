@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BindingPropertiesResponse {
   /// Configuration values for the binding.
   final pulumi.Input<dynamic> config;
-
   /// Name of the provider.
   final pulumi.Input<String> provider;
-
   /// Role that the provider binds to with the component.
   final pulumi.Input<String> role;
 
@@ -39,3 +37,4 @@ class BindingPropertiesResponse {
     );
   }
 }
+

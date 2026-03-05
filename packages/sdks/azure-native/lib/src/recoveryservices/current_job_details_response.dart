@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CurrentJobDetailsResponse {
   /// The ARM Id of the job being executed.
   final pulumi.Input<String> jobId;
-
   /// The job name.
   final pulumi.Input<String> jobName;
-
   /// The start time of the job.
   final pulumi.Input<String> startTime;
 
@@ -39,3 +37,4 @@ class CurrentJobDetailsResponse {
     );
   }
 }
+

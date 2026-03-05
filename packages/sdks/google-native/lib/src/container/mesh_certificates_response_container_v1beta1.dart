@@ -9,19 +9,20 @@ class MeshCertificatesResponseContainerV1beta1 {
 
   /// Creates a new [MeshCertificatesResponseContainerV1beta1].
   /// [enableCertificates] enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
-  MeshCertificatesResponseContainerV1beta1({required this.enableCertificates});
+  MeshCertificatesResponseContainerV1beta1({
+    required this.enableCertificates,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableCertificates': enableCertificates};
+    return <String, dynamic>{
+      'enableCertificates': enableCertificates,
+    };
   }
 
-  factory MeshCertificatesResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MeshCertificatesResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MeshCertificatesResponseContainerV1beta1(
-      enableCertificates: pulumi.Input.fromValue(
-        map['enableCertificates'] as bool,
-      ),
+      enableCertificates: pulumi.Input.fromValue(map['enableCertificates'] as bool),
     );
   }
 }
+

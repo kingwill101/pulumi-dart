@@ -343,22 +343,16 @@ import 'database_state.dart';
 class Database extends pulumi.CustomResource {
   /// Character set, default value is UTF8
   late final pulumi.Output<String?> characterSetName;
-
   /// Database locale parameters, specifying string comparison/collation
   late final pulumi.Output<String?> collate;
-
   /// Database locale parameters, specifying character classification/case conversion rules
   late final pulumi.Output<String?> ctype;
-
   /// Database Name
   late final pulumi.Output<String> databaseName;
-
   /// Instance ID
   late final pulumi.Output<String> dbInstanceId;
-
   /// Database Description
   late final pulumi.Output<String?> description;
-
   /// Data Sheet owner
   late final pulumi.Output<String> owner;
 
@@ -371,11 +365,11 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/database:Database',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/database:Database',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     characterSetName = registerOutput<String?>('characterSetName');
     collate = registerOutput<String?>('collate');
     ctype = registerOutput<String?>('ctype');
@@ -403,11 +397,11 @@ class Database extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/database:Database',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/database:Database',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     characterSetName = registerOutput<String?>('characterSetName');
     collate = registerOutput<String?>('collate');
     ctype = registerOutput<String?>('ctype');

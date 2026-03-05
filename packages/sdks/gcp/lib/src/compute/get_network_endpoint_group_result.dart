@@ -1,29 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNetworkEndpointGroup.
 class GetNetworkEndpointGroupResult {
   /// The NEG default port.
   final int defaultPort;
-
   /// The NEG description.
   final String description;
   final int generatedId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? name;
-
   /// The network to which all network endpoints in the NEG belong.
   final String network;
-
   /// Type of network endpoints in this network endpoint group.
   final String networkEndpointType;
   final String? project;
   final String? selfLink;
-
   /// Number of network endpoints in the network endpoint group.
   final int size;
-
   /// subnetwork to which all network endpoints in the NEG belong.
   final String subnetwork;
   final String? zone;
@@ -79,30 +74,15 @@ class GetNetworkEndpointGroupResult {
       description: map['description'] as String,
       generatedId: map['generatedId'] as int,
       id: map['id'] as String,
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       network: map['network'] as String,
       networkEndpointType: map['networkEndpointType'] as String,
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      selfLink: (() {
-        final guardedValue = map['selfLink'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
       size: map['size'] as int,
       subnetwork: map['subnetwork'] as String,
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

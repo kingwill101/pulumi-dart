@@ -29,17 +29,12 @@ class GetTagTemplateDatacatalogV1beta1Args {
     };
   }
 
-  factory GetTagTemplateDatacatalogV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTagTemplateDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetTagTemplateDatacatalogV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tagTemplateId: pulumi.Input.fromValue(map['tagTemplateId'] as String),
     );
   }
 }
+

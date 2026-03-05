@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CircuitMetadataMapResponse {
   /// Link to the Express Route circuit
   final pulumi.Input<String>? link;
-
   /// Peering location of the Express Route Circuit
   final pulumi.Input<String>? location;
-
   /// Express Route Circuit Name
   final pulumi.Input<String>? name;
 
@@ -16,7 +14,11 @@ class CircuitMetadataMapResponse {
   /// [link] Link to the Express Route circuit
   /// [location] Peering location of the Express Route Circuit
   /// [name] Express Route Circuit Name
-  CircuitMetadataMapResponse({this.link, this.location, this.name});
+  CircuitMetadataMapResponse({
+    this.link,
+    this.location,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,21 +30,10 @@ class CircuitMetadataMapResponse {
 
   factory CircuitMetadataMapResponse.fromMap(Map<String, dynamic> map) {
     return CircuitMetadataMapResponse(
-      link: (() {
-        final guardedValue = map['link'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      link: (() { final guardedValue = map['link']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -12,8 +12,7 @@ enum OperationPreferencesRegionConcurrencyType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown OperationPreferencesRegionConcurrencyType value: $value',
-    );
+    throw ArgumentError('Unknown OperationPreferencesRegionConcurrencyType value: $value');
   }
 }
+

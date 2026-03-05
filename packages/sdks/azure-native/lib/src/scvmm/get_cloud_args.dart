@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCloudArgs {
   /// Name of the Cloud.
   final pulumi.Input<String> cloudName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetCloudArgs].
   /// [cloudName] Name of the Cloud.
   /// [resourceGroupName] The name of the resource group.
-  GetCloudArgs({required this.cloudName, required this.resourceGroupName});
+  GetCloudArgs({
+    required this.cloudName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetCloudArgs {
   factory GetCloudArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudArgs(
       cloudName: pulumi.Input.fromValue(map['cloudName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

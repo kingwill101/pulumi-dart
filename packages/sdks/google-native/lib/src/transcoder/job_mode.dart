@@ -16,3 +16,4 @@ enum JobMode {
     throw ArgumentError('Unknown JobMode value: $value');
   }
 }
+

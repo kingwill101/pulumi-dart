@@ -9,17 +9,20 @@ class NetworkTagsResponseContainerV1beta1 {
 
   /// Creates a new [NetworkTagsResponseContainerV1beta1].
   /// [tags] List of network tags.
-  NetworkTagsResponseContainerV1beta1({required this.tags});
+  NetworkTagsResponseContainerV1beta1({
+    required this.tags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tags': tags};
+    return <String, dynamic>{
+      'tags': tags,
+    };
   }
 
-  factory NetworkTagsResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkTagsResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkTagsResponseContainerV1beta1(
       tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
     );
   }
 }
+

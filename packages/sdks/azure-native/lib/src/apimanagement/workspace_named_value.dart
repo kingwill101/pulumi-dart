@@ -361,25 +361,18 @@ import 'workspace_named_value_args.dart';
 class WorkspaceNamedValue extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore characters.
   late final pulumi.Output<String> displayName;
-
   /// KeyVault location details of the namedValue.
   late final pulumi.Output<KeyVaultContractPropertiesResponse?> keyVault;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Determines whether the value is a secret and should be encrypted or not. Default value is false.
   late final pulumi.Output<bool?> secret;
-
   /// Optional tags that when provided can be used to filter the NamedValue list.
   late final pulumi.Output<List<String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Value of the NamedValue. Can contain policy expressions. It may not be empty or consist only of whitespace. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
   late final pulumi.Output<String?> value;
 
@@ -392,23 +385,14 @@ class WorkspaceNamedValue extends pulumi.CustomResource {
     WorkspaceNamedValueArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:WorkspaceNamedValue',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:WorkspaceNamedValue',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String>('displayName');
-    keyVault = registerOutput<KeyVaultContractPropertiesResponse?>(
-      'keyVault',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KeyVaultContractPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    keyVault = registerOutput<KeyVaultContractPropertiesResponse?>('keyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyVaultContractPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     secret = registerOutput<bool?>('secret');
     tags = registerOutput<List<String>?>('tags');

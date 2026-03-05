@@ -10,29 +10,20 @@ class InstanceDirectoryServices {
 
   /// Creates a new [InstanceDirectoryServices].
   /// [ldap] Configuration for LDAP servers.
-  InstanceDirectoryServices({this.ldap});
+  InstanceDirectoryServices({
+    this.ldap,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ldap':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstanceDirectoryServicesLdap,
-            Map<String, dynamic>
-          >(ldap, (value) => value.toMap()),
+      'ldap': ?pulumi.Input.mapOptionalInputValue<InstanceDirectoryServicesLdap, Map<String, dynamic>>(ldap, (value) => value.toMap()),
     };
   }
 
   factory InstanceDirectoryServices.fromMap(Map<String, dynamic> map) {
     return InstanceDirectoryServices(
-      ldap: (() {
-        final guardedValue = map['ldap'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstanceDirectoryServicesLdap.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      ldap: (() { final guardedValue = map['ldap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceDirectoryServicesLdap.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

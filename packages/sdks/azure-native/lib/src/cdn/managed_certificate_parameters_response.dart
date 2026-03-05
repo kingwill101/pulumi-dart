@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedCertificateParametersResponse {
   /// Certificate expiration date.
   final pulumi.Input<String> expirationDate;
-
   /// Subject name in the certificate.
   final pulumi.Input<String> subject;
-
   /// The type of the secret resource.
   /// Expected value is 'ManagedCertificate'.
   final pulumi.Input<String> type;
@@ -32,9 +30,7 @@ class ManagedCertificateParametersResponse {
     };
   }
 
-  factory ManagedCertificateParametersResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedCertificateParametersResponse.fromMap(Map<String, dynamic> map) {
     return ManagedCertificateParametersResponse(
       expirationDate: pulumi.Input.fromValue(map['expirationDate'] as String),
       subject: pulumi.Input.fromValue(map['subject'] as String),
@@ -42,3 +38,4 @@ class ManagedCertificateParametersResponse {
     );
   }
 }
+

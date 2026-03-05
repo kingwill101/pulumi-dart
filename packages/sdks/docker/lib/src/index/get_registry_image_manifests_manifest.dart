@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegistryImageManifestsManifest {
   /// The platform architecture supported by the manifest.
   final pulumi.Input<String> architecture;
-
   /// The media type of the manifest.
   final pulumi.Input<String> mediaType;
-
   /// The operating system supported by the manifest.
   final pulumi.Input<String> os;
-
   /// The content digest of the manifest, as stored in the registry.
   final pulumi.Input<String> sha256Digest;
 
@@ -45,3 +42,4 @@ class GetRegistryImageManifestsManifest {
     );
   }
 }
+

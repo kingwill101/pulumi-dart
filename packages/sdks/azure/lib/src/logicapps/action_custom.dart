@@ -276,10 +276,8 @@ import 'action_custom_state.dart';
 class ActionCustom extends pulumi.CustomResource {
   /// Specifies the JSON Blob defining the Body of this Custom Action.
   late final pulumi.Output<String> body;
-
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   late final pulumi.Output<String> logicAppId;
-
   /// Specifies the name of the HTTP Action to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** This name must be unique across all Actions within the Logic App Workflow.
@@ -294,11 +292,11 @@ class ActionCustom extends pulumi.CustomResource {
     ActionCustomArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/actionCustom:ActionCustom',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/actionCustom:ActionCustom',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     body = registerOutput<String>('body');
     logicAppId = registerOutput<String>('logicAppId');
     this.name = registerOutput<String>('name');
@@ -322,11 +320,11 @@ class ActionCustom extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/actionCustom:ActionCustom',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/actionCustom:ActionCustom',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     body = registerOutput<String>('body');
     logicAppId = registerOutput<String>('logicAppId');
     this.name = registerOutput<String>('name');

@@ -13,18 +13,15 @@ class NetworkConnectionMonitorTestConfigurationIcmpConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'traceRouteEnabled': ?traceRouteEnabled};
+    return <String, dynamic>{
+      'traceRouteEnabled': ?traceRouteEnabled,
+    };
   }
 
-  factory NetworkConnectionMonitorTestConfigurationIcmpConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkConnectionMonitorTestConfigurationIcmpConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorTestConfigurationIcmpConfiguration(
-      traceRouteEnabled: (() {
-        final guardedValue = map['traceRouteEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      traceRouteEnabled: (() { final guardedValue = map['traceRouteEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

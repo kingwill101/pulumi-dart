@@ -10,8 +10,7 @@ class PlanWorkflowStepDocumentDbConfig {
   final pulumi.Input<String>? externalId;
   final pulumi.Input<String> globalClusterIdentifier;
   final pulumi.Input<int>? timeoutMinutes;
-  final pulumi.Input<List<PlanWorkflowStepDocumentDbConfigUngraceful>>?
-  ungracefuls;
+  final pulumi.Input<List<PlanWorkflowStepDocumentDbConfigUngraceful>>? ungracefuls;
 
   /// Creates a new [PlanWorkflowStepDocumentDbConfig].
   /// [behavior] Required.
@@ -39,57 +38,20 @@ class PlanWorkflowStepDocumentDbConfig {
       'externalId': ?externalId,
       'globalClusterIdentifier': globalClusterIdentifier,
       'timeoutMinutes': ?timeoutMinutes,
-      'ungracefuls':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<PlanWorkflowStepDocumentDbConfigUngraceful>,
-            List<Map<String, dynamic>>
-          >(
-            ungracefuls,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PlanWorkflowStepDocumentDbConfigUngraceful,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ungracefuls': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepDocumentDbConfigUngraceful>, List<Map<String, dynamic>>>(ungracefuls, (value) => pulumi.Input.encodeList<PlanWorkflowStepDocumentDbConfigUngraceful, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PlanWorkflowStepDocumentDbConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepDocumentDbConfig(
       behavior: pulumi.Input.fromValue(map['behavior'] as String),
-      crossAccountRole: (() {
-        final guardedValue = map['crossAccountRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      databaseClusterArns: pulumi.Input.fromValue(
-        (map['databaseClusterArns'] as List).cast<String>(),
-      ),
-      externalId: (() {
-        final guardedValue = map['externalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      globalClusterIdentifier: pulumi.Input.fromValue(
-        map['globalClusterIdentifier'] as String,
-      ),
-      timeoutMinutes: (() {
-        final guardedValue = map['timeoutMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ungracefuls: (() {
-        final guardedValue = map['ungracefuls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<PlanWorkflowStepDocumentDbConfigUngraceful>(
-            guardedValue,
-            (value) => PlanWorkflowStepDocumentDbConfigUngraceful.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      crossAccountRole: (() { final guardedValue = map['crossAccountRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      databaseClusterArns: pulumi.Input.fromValue((map['databaseClusterArns'] as List).cast<String>()),
+      externalId: (() { final guardedValue = map['externalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      globalClusterIdentifier: pulumi.Input.fromValue(map['globalClusterIdentifier'] as String),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ungracefuls: (() { final guardedValue = map['ungracefuls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepDocumentDbConfigUngraceful>(guardedValue, (value) => PlanWorkflowStepDocumentDbConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

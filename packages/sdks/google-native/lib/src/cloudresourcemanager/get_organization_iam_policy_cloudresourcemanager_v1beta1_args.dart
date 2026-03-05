@@ -16,14 +16,15 @@ class GetOrganizationIamPolicyCloudresourcemanagerV1beta1Args {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'organizationId': organizationId};
+    return <String, dynamic>{
+      'organizationId': organizationId,
+    };
   }
 
-  factory GetOrganizationIamPolicyCloudresourcemanagerV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOrganizationIamPolicyCloudresourcemanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetOrganizationIamPolicyCloudresourcemanagerV1beta1Args(
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
+

@@ -670,23 +670,16 @@ import 'logging_configuration_state.dart';
 class LoggingConfiguration extends pulumi.CustomResource {
   /// ARN of the Logging Configuration.
   late final pulumi.Output<String> arn;
-
   /// Object containing destination configuration for where chat activity will be logged. This object must contain exactly one of the following children arguments:
-  late final pulumi.Output<LoggingConfigurationDestinationConfiguration?>
-  destinationConfiguration;
-
+  late final pulumi.Output<LoggingConfigurationDestinationConfiguration?> destinationConfiguration;
   /// Logging Configuration name.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// State of the Logging Configuration.
   late final pulumi.Output<String> state;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -699,23 +692,13 @@ class LoggingConfiguration extends pulumi.CustomResource {
     LoggingConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ivschat/loggingConfiguration:LoggingConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ivschat/loggingConfiguration:LoggingConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    destinationConfiguration =
-        registerOutput<LoggingConfigurationDestinationConfiguration?>(
-          'destinationConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LoggingConfigurationDestinationConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    destinationConfiguration = registerOutput<LoggingConfigurationDestinationConfiguration?>('destinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggingConfigurationDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
@@ -741,23 +724,13 @@ class LoggingConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ivschat/loggingConfiguration:LoggingConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ivschat/loggingConfiguration:LoggingConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    destinationConfiguration =
-        registerOutput<LoggingConfigurationDestinationConfiguration?>(
-          'destinationConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LoggingConfigurationDestinationConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    destinationConfiguration = registerOutput<LoggingConfigurationDestinationConfiguration?>('destinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggingConfigurationDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');

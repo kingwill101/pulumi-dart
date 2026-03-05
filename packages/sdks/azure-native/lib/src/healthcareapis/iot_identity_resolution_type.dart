@@ -15,3 +15,4 @@ enum IotIdentityResolutionType {
     throw ArgumentError('Unknown IotIdentityResolutionType value: $value');
   }
 }
+

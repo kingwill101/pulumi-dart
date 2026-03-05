@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficManagerExternalEndpointCustomHeader {
   /// The name of the custom header.
   final pulumi.Input<String> name;
-
   /// The value of custom header. Applicable for HTTP and HTTPS protocol.
   final pulumi.Input<String> value;
 
@@ -18,15 +17,17 @@ class TrafficManagerExternalEndpointCustomHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory TrafficManagerExternalEndpointCustomHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TrafficManagerExternalEndpointCustomHeader.fromMap(Map<String, dynamic> map) {
     return TrafficManagerExternalEndpointCustomHeader(
       name: pulumi.Input.fromValue(map['name'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

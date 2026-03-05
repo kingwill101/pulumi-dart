@@ -16,15 +16,17 @@ class EventSubscriptionAdvancedFilterNumberLessThanOrEqual {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory EventSubscriptionAdvancedFilterNumberLessThanOrEqual.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventSubscriptionAdvancedFilterNumberLessThanOrEqual.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionAdvancedFilterNumberLessThanOrEqual(
       key: pulumi.Input.fromValue(map['key'] as String),
       value: pulumi.Input.fromValue(map['value'] as double),
     );
   }
 }
+

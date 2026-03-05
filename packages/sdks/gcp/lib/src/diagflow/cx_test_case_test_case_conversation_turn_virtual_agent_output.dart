@@ -8,27 +8,15 @@ import 'cx_test_case_test_case_conversation_turn_virtual_agent_output_triggered_
 class CxTestCaseTestCaseConversationTurnVirtualAgentOutput {
   /// The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
   /// Structure is documented below.
-  final pulumi.Input<
-    CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage
-  >?
-  currentPage;
-
+  final pulumi.Input<CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage>? currentPage;
   /// The session parameters available to the bot at this point.
   final pulumi.Input<String>? sessionParameters;
-
   /// The text responses from the agent for the turn.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse>
-  >?
-  textResponses;
-
+  final pulumi.Input<List<CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse>>? textResponses;
   /// The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
   /// Structure is documented below.
-  final pulumi.Input<
-    CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent
-  >?
-  triggeredIntent;
+  final pulumi.Input<CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent>? triggeredIntent;
 
   /// Creates a new [CxTestCaseTestCaseConversationTurnVirtualAgentOutput].
   /// [currentPage] The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
@@ -44,76 +32,20 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'currentPage':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage,
-            Map<String, dynamic>
-          >(currentPage, (value) => value.toMap()),
+      'currentPage': ?pulumi.Input.mapOptionalInputValue<CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage, Map<String, dynamic>>(currentPage, (value) => value.toMap()),
       'sessionParameters': ?sessionParameters,
-      'textResponses':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse
-            >,
-            List<Map<String, dynamic>>
-          >(
-            textResponses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'triggeredIntent':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent,
-            Map<String, dynamic>
-          >(triggeredIntent, (value) => value.toMap()),
+      'textResponses': ?pulumi.Input.mapOptionalInputValue<List<CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse>, List<Map<String, dynamic>>>(textResponses, (value) => pulumi.Input.encodeList<CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'triggeredIntent': ?pulumi.Input.mapOptionalInputValue<CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent, Map<String, dynamic>>(triggeredIntent, (value) => value.toMap()),
     };
   }
 
-  factory CxTestCaseTestCaseConversationTurnVirtualAgentOutput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxTestCaseTestCaseConversationTurnVirtualAgentOutput.fromMap(Map<String, dynamic> map) {
     return CxTestCaseTestCaseConversationTurnVirtualAgentOutput(
-      currentPage: (() {
-        final guardedValue = map['currentPage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sessionParameters: (() {
-        final guardedValue = map['sessionParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      textResponses: (() {
-        final guardedValue = map['textResponses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse
-          >(
-            guardedValue,
-            (value) =>
-                CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      triggeredIntent: (() {
-        final guardedValue = map['triggeredIntent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      currentPage: (() { final guardedValue = map['currentPage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sessionParameters: (() { final guardedValue = map['sessionParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      textResponses: (() { final guardedValue = map['textResponses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse>(guardedValue, (value) => CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      triggeredIntent: (() { final guardedValue = map['triggeredIntent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

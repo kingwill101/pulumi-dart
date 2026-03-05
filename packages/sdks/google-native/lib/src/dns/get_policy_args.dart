@@ -15,7 +15,11 @@ class GetPolicyArgs {
   /// [clientOperationId] Optional.
   /// [policy] Required.
   /// [project] Optional.
-  GetPolicyArgs({this.clientOperationId, required this.policy, this.project});
+  GetPolicyArgs({
+    this.clientOperationId,
+    required this.policy,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,17 +31,10 @@ class GetPolicyArgs {
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyArgs(
-      clientOperationId: (() {
-        final guardedValue = map['clientOperationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientOperationId: (() { final guardedValue = map['clientOperationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policy: pulumi.Input.fromValue(map['policy'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

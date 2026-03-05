@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1beta1SystemTimestampsResponse {
   /// The creation time of the resource within the given system.
   final pulumi.Input<String> createTime;
-
   /// The expiration time of the resource within the given system. Currently only apllicable to BigQuery resources.
   final pulumi.Input<String> expireTime;
-
   /// The last-modified time of the resource within the given system.
   final pulumi.Input<String> updateTime;
 
@@ -31,9 +29,7 @@ class GoogleCloudDatacatalogV1beta1SystemTimestampsResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1beta1SystemTimestampsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogV1beta1SystemTimestampsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1beta1SystemTimestampsResponse(
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudDatacatalogV1beta1SystemTimestampsResponse {
     );
   }
 }
+

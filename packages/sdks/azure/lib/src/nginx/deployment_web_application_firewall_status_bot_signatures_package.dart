@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentWebApplicationFirewallStatusBotSignaturesPackage {
   /// The revision date and time of the threat campaigns package.
   final pulumi.Input<String>? revisionDatetime;
-
   /// The version of the threat campaigns package.
   final pulumi.Input<String>? version;
 
@@ -24,20 +23,11 @@ class DeploymentWebApplicationFirewallStatusBotSignaturesPackage {
     };
   }
 
-  factory DeploymentWebApplicationFirewallStatusBotSignaturesPackage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DeploymentWebApplicationFirewallStatusBotSignaturesPackage.fromMap(Map<String, dynamic> map) {
     return DeploymentWebApplicationFirewallStatusBotSignaturesPackage(
-      revisionDatetime: (() {
-        final guardedValue = map['revisionDatetime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      revisionDatetime: (() { final guardedValue = map['revisionDatetime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

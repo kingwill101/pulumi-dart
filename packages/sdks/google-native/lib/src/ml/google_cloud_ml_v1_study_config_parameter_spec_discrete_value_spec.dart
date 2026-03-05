@@ -8,21 +8,20 @@ class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
 
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec].
   /// [values] Must be specified if type is `DISCRETE`. A list of feasible points. The list should be in strictly increasing order. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list should not contain more than 1,000 values.
-  GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec({this.values});
+  GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec({
+    this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': ?values};
+    return <String, dynamic>{
+      'values': ?values,
+    };
   }
 
-  factory GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec(
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<double>());
-      })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<double>()); })(),
     );
   }
 }
+

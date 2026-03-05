@@ -7,11 +7,8 @@ import 'maintenance_exclusion_options_response_container_v1beta1.dart';
 class TimeWindowResponseContainerV1beta1 {
   /// The time that the window ends. The end time should take place after the start time.
   final pulumi.Input<String> endTime;
-
   /// MaintenanceExclusionOptions provides maintenance exclusion related options.
-  final pulumi.Input<MaintenanceExclusionOptionsResponseContainerV1beta1>
-  maintenanceExclusionOptions;
-
+  final pulumi.Input<MaintenanceExclusionOptionsResponseContainerV1beta1> maintenanceExclusionOptions;
   /// The time that the window first starts.
   final pulumi.Input<String> startTime;
 
@@ -28,11 +25,7 @@ class TimeWindowResponseContainerV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endTime': endTime,
-      'maintenanceExclusionOptions':
-          pulumi.Input.mapInputValue<
-            MaintenanceExclusionOptionsResponseContainerV1beta1,
-            Map<String, dynamic>
-          >(maintenanceExclusionOptions, (value) => value.toMap()),
+      'maintenanceExclusionOptions': pulumi.Input.mapInputValue<MaintenanceExclusionOptionsResponseContainerV1beta1, Map<String, dynamic>>(maintenanceExclusionOptions, (value) => value.toMap()),
       'startTime': startTime,
     };
   }
@@ -40,12 +33,9 @@ class TimeWindowResponseContainerV1beta1 {
   factory TimeWindowResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return TimeWindowResponseContainerV1beta1(
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
-      maintenanceExclusionOptions: pulumi.Input.fromValue(
-        MaintenanceExclusionOptionsResponseContainerV1beta1.fromMap(
-          (map['maintenanceExclusionOptions']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      maintenanceExclusionOptions: pulumi.Input.fromValue(MaintenanceExclusionOptionsResponseContainerV1beta1.fromMap((map['maintenanceExclusionOptions']! as Map).cast<String, dynamic>())),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
+

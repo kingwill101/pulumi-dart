@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NatGatewayState {
   /// Creation time. UTC time, in the format of YYYY-MM-DDThh:mm:ssZ.
   final pulumi.Input<String>? createTime;
-
   /// The ID of the ENS node.
   final pulumi.Input<String>? ensRegionId;
-
   /// NAT specifications. Value: `enat.default`.
   final pulumi.Input<String>? instanceType;
-
   /// The name of the NAT gateway. The length is 1 to 128 characters, but it cannot start with 'http:// 'or 'https.
   final pulumi.Input<String>? natName;
-
   /// The network ID.
   final pulumi.Input<String>? networkId;
-
   /// The vSwitch ID.
   final pulumi.Input<String>? vswitchId;
 
@@ -51,36 +46,13 @@ class NatGatewayState {
 
   factory NatGatewayState.fromMap(Map<String, dynamic> map) {
     return NatGatewayState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ensRegionId: (() {
-        final guardedValue = map['ensRegionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      natName: (() {
-        final guardedValue = map['natName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkId: (() {
-        final guardedValue = map['networkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vswitchId: (() {
-        final guardedValue = map['vswitchId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ensRegionId: (() { final guardedValue = map['ensRegionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      natName: (() { final guardedValue = map['natName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vswitchId: (() { final guardedValue = map['vswitchId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

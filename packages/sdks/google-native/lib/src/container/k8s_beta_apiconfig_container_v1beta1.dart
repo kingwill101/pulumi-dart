@@ -9,19 +9,20 @@ class K8sBetaAPIConfigContainerV1beta1 {
 
   /// Creates a new [K8sBetaAPIConfigContainerV1beta1].
   /// [enabledApis] api name, e.g. storage.k8s.io/v1beta1/csistoragecapacities.
-  K8sBetaAPIConfigContainerV1beta1({this.enabledApis});
+  K8sBetaAPIConfigContainerV1beta1({
+    this.enabledApis,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabledApis': ?enabledApis};
+    return <String, dynamic>{
+      'enabledApis': ?enabledApis,
+    };
   }
 
   factory K8sBetaAPIConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return K8sBetaAPIConfigContainerV1beta1(
-      enabledApis: (() {
-        final guardedValue = map['enabledApis'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      enabledApis: (() { final guardedValue = map['enabledApis']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

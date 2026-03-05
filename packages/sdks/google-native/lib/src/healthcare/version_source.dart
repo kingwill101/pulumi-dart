@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VersionSource {
   /// The field to extract from the MSH segment. For example, "3.1" or "18[1].1".
   final pulumi.Input<String>? mshField;
-
   /// The value to match with the field. For example, "My Application Name" or "2.3".
   final pulumi.Input<String>? value;
 
   /// Creates a new [VersionSource].
   /// [mshField] The field to extract from the MSH segment. For example, "3.1" or "18[1].1".
   /// [value] The value to match with the field. For example, "My Application Name" or "2.3".
-  VersionSource({this.mshField, this.value});
+  VersionSource({
+    this.mshField,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mshField': ?mshField, 'value': ?value};
+    return <String, dynamic>{
+      'mshField': ?mshField,
+      'value': ?value,
+    };
   }
 
   factory VersionSource.fromMap(Map<String, dynamic> map) {
     return VersionSource(
-      mshField: (() {
-        final guardedValue = map['mshField'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mshField: (() { final guardedValue = map['mshField']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

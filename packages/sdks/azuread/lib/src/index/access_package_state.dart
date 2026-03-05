@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPackageState {
   /// The ID of the Catalog this access package will be created in.
   final pulumi.Input<String>? catalogId;
-
   /// The description of the access package.
   final pulumi.Input<String>? description;
-
   /// The display name of the access package.
   final pulumi.Input<String>? displayName;
-
   /// Whether the access package is hidden from the requestor.
   final pulumi.Input<bool>? hidden;
 
@@ -39,26 +36,11 @@ class AccessPackageState {
 
   factory AccessPackageState.fromMap(Map<String, dynamic> map) {
     return AccessPackageState(
-      catalogId: (() {
-        final guardedValue = map['catalogId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hidden: (() {
-        final guardedValue = map['hidden'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      catalogId: (() { final guardedValue = map['catalogId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hidden: (() { final guardedValue = map['hidden']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

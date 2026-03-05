@@ -8,10 +8,14 @@ class SessionInfoResponse {
 
   /// Creates a new [SessionInfoResponse].
   /// [sessionId] // [Preview] Id of the session.
-  SessionInfoResponse({required this.sessionId});
+  SessionInfoResponse({
+    required this.sessionId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sessionId': sessionId};
+    return <String, dynamic>{
+      'sessionId': sessionId,
+    };
   }
 
   factory SessionInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class SessionInfoResponse {
     );
   }
 }
+

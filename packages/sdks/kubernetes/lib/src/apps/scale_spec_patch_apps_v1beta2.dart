@@ -9,19 +9,20 @@ class ScaleSpecPatchAppsV1beta2 {
 
   /// Creates a new [ScaleSpecPatchAppsV1beta2].
   /// [replicas] desired number of instances for the scaled object.
-  ScaleSpecPatchAppsV1beta2({this.replicas});
+  ScaleSpecPatchAppsV1beta2({
+    this.replicas,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'replicas': ?replicas};
+    return <String, dynamic>{
+      'replicas': ?replicas,
+    };
   }
 
   factory ScaleSpecPatchAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return ScaleSpecPatchAppsV1beta2(
-      replicas: (() {
-        final guardedValue = map['replicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -9,21 +9,20 @@ class DistributedAvailabilityGroupDatabase {
 
   /// Creates a new [DistributedAvailabilityGroupDatabase].
   /// [databaseName] The name of the database in link
-  DistributedAvailabilityGroupDatabase({this.databaseName});
+  DistributedAvailabilityGroupDatabase({
+    this.databaseName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'databaseName': ?databaseName};
+    return <String, dynamic>{
+      'databaseName': ?databaseName,
+    };
   }
 
-  factory DistributedAvailabilityGroupDatabase.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DistributedAvailabilityGroupDatabase.fromMap(Map<String, dynamic> map) {
     return DistributedAvailabilityGroupDatabase(
-      databaseName: (() {
-        final guardedValue = map['databaseName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

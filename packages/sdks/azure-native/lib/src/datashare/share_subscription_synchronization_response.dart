@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShareSubscriptionSynchronizationResponse {
   /// Synchronization duration
   final pulumi.Input<int> durationMs;
-
   /// End time of synchronization
   final pulumi.Input<String> endTime;
-
   /// message of Synchronization
   final pulumi.Input<String> message;
-
   /// start time of synchronization
   final pulumi.Input<String> startTime;
-
   /// Raw Status
   final pulumi.Input<String> status;
-
   /// Synchronization id
   final pulumi.Input<String> synchronizationId;
-
   /// Synchronization Mode
   final pulumi.Input<String> synchronizationMode;
 
@@ -55,21 +49,16 @@ class ShareSubscriptionSynchronizationResponse {
     };
   }
 
-  factory ShareSubscriptionSynchronizationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ShareSubscriptionSynchronizationResponse.fromMap(Map<String, dynamic> map) {
     return ShareSubscriptionSynchronizationResponse(
       durationMs: pulumi.Input.fromValue(map['durationMs'] as int),
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      synchronizationId: pulumi.Input.fromValue(
-        map['synchronizationId'] as String,
-      ),
-      synchronizationMode: pulumi.Input.fromValue(
-        map['synchronizationMode'] as String,
-      ),
+      synchronizationId: pulumi.Input.fromValue(map['synchronizationId'] as String),
+      synchronizationMode: pulumi.Input.fromValue(map['synchronizationMode'] as String),
     );
   }
 }
+

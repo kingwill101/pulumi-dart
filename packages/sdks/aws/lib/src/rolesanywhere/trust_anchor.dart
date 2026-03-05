@@ -365,20 +365,15 @@ import 'trust_anchor_state.dart';
 class TrustAnchor extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the Trust Anchor
   late final pulumi.Output<String> arn;
-
   /// Whether or not the Trust Anchor should be enabled.
   late final pulumi.Output<bool> enabled;
-
   /// The name of the Trust Anchor.
   late final pulumi.Output<String> name;
   late final pulumi.Output<List<Map<String, dynamic>>> notificationSettings;
-
   /// The source of trust, documented below
   late final pulumi.Output<TrustAnchorSource> source;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -391,27 +386,16 @@ class TrustAnchor extends pulumi.CustomResource {
     TrustAnchorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rolesanywhere/trustAnchor:TrustAnchor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rolesanywhere/trustAnchor:TrustAnchor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool>('enabled');
     this.name = registerOutput<String>('name');
-    notificationSettings = registerOutput<List<Map<String, dynamic>>>(
-      'notificationSettings',
-    );
-    source = registerOutput<TrustAnchorSource>(
-      'source',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TrustAnchorSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notificationSettings = registerOutput<List<Map<String, dynamic>>>('notificationSettings');
+    source = registerOutput<TrustAnchorSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustAnchorSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -434,27 +418,16 @@ class TrustAnchor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rolesanywhere/trustAnchor:TrustAnchor',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rolesanywhere/trustAnchor:TrustAnchor',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool>('enabled');
     this.name = registerOutput<String>('name');
-    notificationSettings = registerOutput<List<Map<String, dynamic>>>(
-      'notificationSettings',
-    );
-    source = registerOutput<TrustAnchorSource>(
-      'source',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TrustAnchorSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notificationSettings = registerOutput<List<Map<String, dynamic>>>('notificationSettings');
+    source = registerOutput<TrustAnchorSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustAnchorSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

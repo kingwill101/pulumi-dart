@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserDetails {
   /// Location of the secret used for authentication.
   final pulumi.Input<String>? secretLocation;
-
   /// Type of the secret used for authentication.
   final pulumi.Input<String> secretType;
-
   /// SSH Public Key for the user.
   final pulumi.Input<List<String>>? sshPubKey;
-
   /// Name of the user.
   final pulumi.Input<String> userName;
 
@@ -39,18 +36,11 @@ class UserDetails {
 
   factory UserDetails.fromMap(Map<String, dynamic> map) {
     return UserDetails(
-      secretLocation: (() {
-        final guardedValue = map['secretLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      secretLocation: (() { final guardedValue = map['secretLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretType: pulumi.Input.fromValue(map['secretType'] as String),
-      sshPubKey: (() {
-        final guardedValue = map['sshPubKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      sshPubKey: (() { final guardedValue = map['sshPubKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
+

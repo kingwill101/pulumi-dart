@@ -9,17 +9,20 @@ class MaintenanceExclusionOptionsResponse {
 
   /// Creates a new [MaintenanceExclusionOptionsResponse].
   /// [scope] Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
-  MaintenanceExclusionOptionsResponse({required this.scope});
+  MaintenanceExclusionOptionsResponse({
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scope': scope};
+    return <String, dynamic>{
+      'scope': scope,
+    };
   }
 
-  factory MaintenanceExclusionOptionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MaintenanceExclusionOptionsResponse.fromMap(Map<String, dynamic> map) {
     return MaintenanceExclusionOptionsResponse(
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

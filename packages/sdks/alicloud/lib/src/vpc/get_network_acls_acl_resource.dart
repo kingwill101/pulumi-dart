@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkAclsAclResource {
   /// The ID of the associated resource.
   final pulumi.Input<String> resourceId;
-
   /// The type of the associated resource.
   final pulumi.Input<String> resourceType;
-
   /// The state of the associated resource.
   final pulumi.Input<String> status;
 
@@ -38,3 +36,4 @@ class GetNetworkAclsAclResource {
     );
   }
 }
+

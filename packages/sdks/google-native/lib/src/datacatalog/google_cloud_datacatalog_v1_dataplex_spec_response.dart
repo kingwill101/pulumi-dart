@@ -7,13 +7,10 @@ import 'google_cloud_datacatalog_v1_physical_schema_response.dart';
 class GoogleCloudDatacatalogV1DataplexSpecResponse {
   /// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
   final pulumi.Input<String> asset;
-
   /// Compression format of the data, e.g., zip, gzip etc.
   final pulumi.Input<String> compressionFormat;
-
   /// Format of the data.
   final pulumi.Input<GoogleCloudDatacatalogV1PhysicalSchemaResponse> dataFormat;
-
   /// Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
   final pulumi.Input<String> project;
 
@@ -33,29 +30,18 @@ class GoogleCloudDatacatalogV1DataplexSpecResponse {
     return <String, dynamic>{
       'asset': asset,
       'compressionFormat': compressionFormat,
-      'dataFormat':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDatacatalogV1PhysicalSchemaResponse,
-            Map<String, dynamic>
-          >(dataFormat, (value) => value.toMap()),
+      'dataFormat': pulumi.Input.mapInputValue<GoogleCloudDatacatalogV1PhysicalSchemaResponse, Map<String, dynamic>>(dataFormat, (value) => value.toMap()),
       'project': project,
     };
   }
 
-  factory GoogleCloudDatacatalogV1DataplexSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogV1DataplexSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DataplexSpecResponse(
       asset: pulumi.Input.fromValue(map['asset'] as String),
-      compressionFormat: pulumi.Input.fromValue(
-        map['compressionFormat'] as String,
-      ),
-      dataFormat: pulumi.Input.fromValue(
-        GoogleCloudDatacatalogV1PhysicalSchemaResponse.fromMap(
-          (map['dataFormat']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      compressionFormat: pulumi.Input.fromValue(map['compressionFormat'] as String),
+      dataFormat: pulumi.Input.fromValue(GoogleCloudDatacatalogV1PhysicalSchemaResponse.fromMap((map['dataFormat']! as Map).cast<String, dynamic>())),
       project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
+

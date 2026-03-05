@@ -6,14 +6,10 @@ import 'knowledge_base_response_containeranalysis_v1beta1.dart';
 class WindowsDetailResponseContaineranalysisV1beta1 {
   /// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
   final pulumi.Input<String> cpeUri;
-
   /// The description of the vulnerability.
   final pulumi.Input<String> description;
-
   /// The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
-  final pulumi.Input<List<KnowledgeBaseResponseContaineranalysisV1beta1>>
-  fixingKbs;
-
+  final pulumi.Input<List<KnowledgeBaseResponseContaineranalysisV1beta1>> fixingKbs;
   /// The name of the vulnerability.
   final pulumi.Input<String> name;
 
@@ -33,37 +29,18 @@ class WindowsDetailResponseContaineranalysisV1beta1 {
     return <String, dynamic>{
       'cpeUri': cpeUri,
       'description': description,
-      'fixingKbs':
-          pulumi.Input.mapInputValue<
-            List<KnowledgeBaseResponseContaineranalysisV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            fixingKbs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  KnowledgeBaseResponseContaineranalysisV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'fixingKbs': pulumi.Input.mapInputValue<List<KnowledgeBaseResponseContaineranalysisV1beta1>, List<Map<String, dynamic>>>(fixingKbs, (value) => pulumi.Input.encodeList<KnowledgeBaseResponseContaineranalysisV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
-  factory WindowsDetailResponseContaineranalysisV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WindowsDetailResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return WindowsDetailResponseContaineranalysisV1beta1(
       cpeUri: pulumi.Input.fromValue(map['cpeUri'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      fixingKbs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<KnowledgeBaseResponseContaineranalysisV1beta1>(
-          map['fixingKbs']!,
-          (value) => KnowledgeBaseResponseContaineranalysisV1beta1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      fixingKbs: pulumi.Input.fromValue(pulumi.Input.decodeList<KnowledgeBaseResponseContaineranalysisV1beta1>(map['fixingKbs']!, (value) => KnowledgeBaseResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

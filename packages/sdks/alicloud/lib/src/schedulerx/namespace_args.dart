@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceArgs {
   /// Namespace description.
   final pulumi.Input<String>? description;
-
   /// Namespace name.
   final pulumi.Input<String> namespaceName;
-
   /// namespace uid
   final pulumi.Input<String>? namespaceUid;
 
@@ -36,17 +34,10 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      namespaceUid: (() {
-        final guardedValue = map['namespaceUid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      namespaceUid: (() { final guardedValue = map['namespaceUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

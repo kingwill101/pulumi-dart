@@ -8,21 +8,20 @@ class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig {
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig].
   /// [policy] The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
-  WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig({this.policy});
+  WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig({
+    this.policy,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policy': ?policy};
+    return <String, dynamic>{
+      'policy': ?policy,
+    };
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig(
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

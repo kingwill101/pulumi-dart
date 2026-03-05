@@ -6,40 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudEndpointChangeEnumerationActivityResponse {
   /// Progress percentage for processing deletes. This is done separately from the rest of the enumeration run
   final pulumi.Input<int> deletesProgressPercent;
-
   /// Last updated timestamp
   final pulumi.Input<String> lastUpdatedTimestamp;
-
   /// Estimate of time remaining for the enumeration run
   final pulumi.Input<int> minutesRemaining;
-
   /// Change enumeration operation state
   final pulumi.Input<String> operationState;
-
   /// Count of directories processed
   final pulumi.Input<double> processedDirectoriesCount;
-
   /// Count of files processed
   final pulumi.Input<double> processedFilesCount;
-
   /// Progress percentage for change enumeration run, excluding processing of deletes
   final pulumi.Input<int> progressPercent;
-
   /// Timestamp when change enumeration started
   final pulumi.Input<String> startedTimestamp;
-
   /// When non-zero, indicates an issue that is delaying change enumeration
   final pulumi.Input<int> statusCode;
-
   /// Change enumeration total counts state
   final pulumi.Input<String> totalCountsState;
-
   /// Total count of directories enumerated
   final pulumi.Input<double> totalDirectoriesCount;
-
   /// Total count of files enumerated
   final pulumi.Input<double> totalFilesCount;
-
   /// Total enumerated size in bytes
   final pulumi.Input<double> totalSizeBytes;
 
@@ -91,37 +79,22 @@ class CloudEndpointChangeEnumerationActivityResponse {
     };
   }
 
-  factory CloudEndpointChangeEnumerationActivityResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudEndpointChangeEnumerationActivityResponse.fromMap(Map<String, dynamic> map) {
     return CloudEndpointChangeEnumerationActivityResponse(
-      deletesProgressPercent: pulumi.Input.fromValue(
-        map['deletesProgressPercent'] as int,
-      ),
-      lastUpdatedTimestamp: pulumi.Input.fromValue(
-        map['lastUpdatedTimestamp'] as String,
-      ),
+      deletesProgressPercent: pulumi.Input.fromValue(map['deletesProgressPercent'] as int),
+      lastUpdatedTimestamp: pulumi.Input.fromValue(map['lastUpdatedTimestamp'] as String),
       minutesRemaining: pulumi.Input.fromValue(map['minutesRemaining'] as int),
       operationState: pulumi.Input.fromValue(map['operationState'] as String),
-      processedDirectoriesCount: pulumi.Input.fromValue(
-        map['processedDirectoriesCount'] as double,
-      ),
-      processedFilesCount: pulumi.Input.fromValue(
-        map['processedFilesCount'] as double,
-      ),
+      processedDirectoriesCount: pulumi.Input.fromValue(map['processedDirectoriesCount'] as double),
+      processedFilesCount: pulumi.Input.fromValue(map['processedFilesCount'] as double),
       progressPercent: pulumi.Input.fromValue(map['progressPercent'] as int),
-      startedTimestamp: pulumi.Input.fromValue(
-        map['startedTimestamp'] as String,
-      ),
+      startedTimestamp: pulumi.Input.fromValue(map['startedTimestamp'] as String),
       statusCode: pulumi.Input.fromValue(map['statusCode'] as int),
-      totalCountsState: pulumi.Input.fromValue(
-        map['totalCountsState'] as String,
-      ),
-      totalDirectoriesCount: pulumi.Input.fromValue(
-        map['totalDirectoriesCount'] as double,
-      ),
+      totalCountsState: pulumi.Input.fromValue(map['totalCountsState'] as String),
+      totalDirectoriesCount: pulumi.Input.fromValue(map['totalDirectoriesCount'] as double),
       totalFilesCount: pulumi.Input.fromValue(map['totalFilesCount'] as double),
       totalSizeBytes: pulumi.Input.fromValue(map['totalSizeBytes'] as double),
     );
   }
 }
+

@@ -216,21 +216,16 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
   late final pulumi.Output<String?> authPlugin;
-
   /// The source host of the user. Defaults to "localhost".
   late final pulumi.Output<String?> host;
-
   /// Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
   late final pulumi.Output<String?> password;
-
   /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
   late final pulumi.Output<String?> plaintextPassword;
-
   /// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
   ///
   /// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
   late final pulumi.Output<String?> tlsOption;
-
   /// The name of the user.
   late final pulumi.Output<String> user;
 
@@ -238,13 +233,16 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_index_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'mysql:index/user:User',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  User(
+    String name, {
+    UserArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'mysql:index/user:User',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authPlugin = registerOutput<String?>('authPlugin');
     host = registerOutput<String?>('host');
     password = registerOutput<String?>('password');
@@ -254,7 +252,11 @@ class User extends pulumi.CustomResource {
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
+  static User get(
+    String name,
+    pulumi.Input<String> id, {
+    UserState? state,
+  }) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -267,11 +269,11 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'mysql:index/user:User',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'mysql:index/user:User',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authPlugin = registerOutput<String?>('authPlugin');
     host = registerOutput<String?>('host');
     password = registerOutput<String?>('password');

@@ -6,34 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdifactAcknowledgementSettingsResponse {
   /// The acknowledgement control number lower bound.
   final pulumi.Input<int> acknowledgementControlNumberLowerBound;
-
   /// The acknowledgement control number prefix.
   final pulumi.Input<String>? acknowledgementControlNumberPrefix;
-
   /// The acknowledgement control number suffix.
   final pulumi.Input<String>? acknowledgementControlNumberSuffix;
-
   /// The acknowledgement control number upper bound.
   final pulumi.Input<int> acknowledgementControlNumberUpperBound;
-
   /// The value indicating whether to batch functional acknowledgements.
   final pulumi.Input<bool> batchFunctionalAcknowledgements;
-
   /// The value indicating whether to batch the technical acknowledgements.
   final pulumi.Input<bool> batchTechnicalAcknowledgements;
-
   /// The value indicating whether functional acknowledgement is needed.
   final pulumi.Input<bool> needFunctionalAcknowledgement;
-
   /// The value indicating whether a loop is needed for valid messages.
   final pulumi.Input<bool> needLoopForValidMessages;
-
   /// The value indicating whether technical acknowledgement is needed.
   final pulumi.Input<bool> needTechnicalAcknowledgement;
-
   /// The value indicating whether to rollover acknowledgement control number.
   final pulumi.Input<bool> rolloverAcknowledgementControlNumber;
-
   /// The value indicating whether to send synchronous acknowledgement.
   final pulumi.Input<bool> sendSynchronousAcknowledgement;
 
@@ -65,64 +55,34 @@ class EdifactAcknowledgementSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acknowledgementControlNumberLowerBound':
-          acknowledgementControlNumberLowerBound,
+      'acknowledgementControlNumberLowerBound': acknowledgementControlNumberLowerBound,
       'acknowledgementControlNumberPrefix': ?acknowledgementControlNumberPrefix,
       'acknowledgementControlNumberSuffix': ?acknowledgementControlNumberSuffix,
-      'acknowledgementControlNumberUpperBound':
-          acknowledgementControlNumberUpperBound,
+      'acknowledgementControlNumberUpperBound': acknowledgementControlNumberUpperBound,
       'batchFunctionalAcknowledgements': batchFunctionalAcknowledgements,
       'batchTechnicalAcknowledgements': batchTechnicalAcknowledgements,
       'needFunctionalAcknowledgement': needFunctionalAcknowledgement,
       'needLoopForValidMessages': needLoopForValidMessages,
       'needTechnicalAcknowledgement': needTechnicalAcknowledgement,
-      'rolloverAcknowledgementControlNumber':
-          rolloverAcknowledgementControlNumber,
+      'rolloverAcknowledgementControlNumber': rolloverAcknowledgementControlNumber,
       'sendSynchronousAcknowledgement': sendSynchronousAcknowledgement,
     };
   }
 
-  factory EdifactAcknowledgementSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EdifactAcknowledgementSettingsResponse.fromMap(Map<String, dynamic> map) {
     return EdifactAcknowledgementSettingsResponse(
-      acknowledgementControlNumberLowerBound: pulumi.Input.fromValue(
-        map['acknowledgementControlNumberLowerBound'] as int,
-      ),
-      acknowledgementControlNumberPrefix: (() {
-        final guardedValue = map['acknowledgementControlNumberPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      acknowledgementControlNumberSuffix: (() {
-        final guardedValue = map['acknowledgementControlNumberSuffix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      acknowledgementControlNumberUpperBound: pulumi.Input.fromValue(
-        map['acknowledgementControlNumberUpperBound'] as int,
-      ),
-      batchFunctionalAcknowledgements: pulumi.Input.fromValue(
-        map['batchFunctionalAcknowledgements'] as bool,
-      ),
-      batchTechnicalAcknowledgements: pulumi.Input.fromValue(
-        map['batchTechnicalAcknowledgements'] as bool,
-      ),
-      needFunctionalAcknowledgement: pulumi.Input.fromValue(
-        map['needFunctionalAcknowledgement'] as bool,
-      ),
-      needLoopForValidMessages: pulumi.Input.fromValue(
-        map['needLoopForValidMessages'] as bool,
-      ),
-      needTechnicalAcknowledgement: pulumi.Input.fromValue(
-        map['needTechnicalAcknowledgement'] as bool,
-      ),
-      rolloverAcknowledgementControlNumber: pulumi.Input.fromValue(
-        map['rolloverAcknowledgementControlNumber'] as bool,
-      ),
-      sendSynchronousAcknowledgement: pulumi.Input.fromValue(
-        map['sendSynchronousAcknowledgement'] as bool,
-      ),
+      acknowledgementControlNumberLowerBound: pulumi.Input.fromValue(map['acknowledgementControlNumberLowerBound'] as int),
+      acknowledgementControlNumberPrefix: (() { final guardedValue = map['acknowledgementControlNumberPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      acknowledgementControlNumberSuffix: (() { final guardedValue = map['acknowledgementControlNumberSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      acknowledgementControlNumberUpperBound: pulumi.Input.fromValue(map['acknowledgementControlNumberUpperBound'] as int),
+      batchFunctionalAcknowledgements: pulumi.Input.fromValue(map['batchFunctionalAcknowledgements'] as bool),
+      batchTechnicalAcknowledgements: pulumi.Input.fromValue(map['batchTechnicalAcknowledgements'] as bool),
+      needFunctionalAcknowledgement: pulumi.Input.fromValue(map['needFunctionalAcknowledgement'] as bool),
+      needLoopForValidMessages: pulumi.Input.fromValue(map['needLoopForValidMessages'] as bool),
+      needTechnicalAcknowledgement: pulumi.Input.fromValue(map['needTechnicalAcknowledgement'] as bool),
+      rolloverAcknowledgementControlNumber: pulumi.Input.fromValue(map['rolloverAcknowledgementControlNumber'] as bool),
+      sendSynchronousAcknowledgement: pulumi.Input.fromValue(map['sendSynchronousAcknowledgement'] as bool),
     );
   }
 }
+

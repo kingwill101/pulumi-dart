@@ -15,7 +15,10 @@ class InsightFiltersNetworkSourceDomain {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comparison': comparison, 'value': value};
+    return <String, dynamic>{
+      'comparison': comparison,
+      'value': value,
+    };
   }
 
   factory InsightFiltersNetworkSourceDomain.fromMap(Map<String, dynamic> map) {
@@ -25,3 +28,4 @@ class InsightFiltersNetworkSourceDomain {
     );
   }
 }
+

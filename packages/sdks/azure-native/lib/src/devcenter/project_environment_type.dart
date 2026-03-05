@@ -20,49 +20,32 @@ import 'user_role_assignment_response.dart';
 class ProjectEnvironmentType extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The role definition assigned to the environment creator on backing resources.
-  late final pulumi.Output<
-    ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment?
-  >
-  creatorRoleAssignment;
-
+  late final pulumi.Output<ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment?> creatorRoleAssignment;
   /// Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
   late final pulumi.Output<String?> deploymentTargetId;
-
   /// The display name of the project environment type.
   late final pulumi.Output<String?> displayName;
-
   /// The number of environments of this type.
   late final pulumi.Output<int> environmentCount;
-
   /// Managed identity properties
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// The geo-location for the environment type
   late final pulumi.Output<String?> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Defines whether this Environment Type can be used in this Project.
   late final pulumi.Output<String?> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs.
-  late final pulumi.Output<Map<String, UserRoleAssignmentResponse>?>
-  userRoleAssignments;
+  late final pulumi.Output<Map<String, UserRoleAssignmentResponse>?> userRoleAssignments;
 
   /// Creates a new [ProjectEnvironmentType].
   /// [name] The Pulumi resource name.
@@ -73,67 +56,24 @@ class ProjectEnvironmentType extends pulumi.CustomResource {
     ProjectEnvironmentTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devcenter:ProjectEnvironmentType',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:devcenter:ProjectEnvironmentType',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    creatorRoleAssignment =
-        registerOutput<
-          ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment?
-        >(
-          'creatorRoleAssignment',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    creatorRoleAssignment = registerOutput<ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment?>('creatorRoleAssignment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deploymentTargetId = registerOutput<String?>('deploymentTargetId');
     displayName = registerOutput<String?>('displayName');
     environmentCount = registerOutput<int>('environmentCount');
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    userRoleAssignments =
-        registerOutput<Map<String, UserRoleAssignmentResponse>?>(
-          'userRoleAssignments',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return pulumi.Input.decodeMapValues<UserRoleAssignmentResponse>(
-              guardedValue,
-              (value) => UserRoleAssignmentResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            );
-          },
-        );
+    userRoleAssignments = registerOutput<Map<String, UserRoleAssignmentResponse>?>('userRoleAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<UserRoleAssignmentResponse>(guardedValue, (value) => UserRoleAssignmentResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

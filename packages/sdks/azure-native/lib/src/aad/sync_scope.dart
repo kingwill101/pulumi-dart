@@ -15,3 +15,4 @@ enum SyncScope {
     throw ArgumentError('Unknown SyncScope value: $value');
   }
 }
+

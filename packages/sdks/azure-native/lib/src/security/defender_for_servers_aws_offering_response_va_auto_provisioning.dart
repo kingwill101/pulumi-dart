@@ -6,9 +6,7 @@ import 'defender_for_servers_aws_offering_response_configuration.dart';
 /// The Vulnerability Assessment autoprovisioning configuration
 class DefenderForServersAwsOfferingResponseVaAutoProvisioning {
   /// configuration for Vulnerability Assessment autoprovisioning
-  final pulumi.Input<DefenderForServersAwsOfferingResponseConfiguration>?
-  configuration;
-
+  final pulumi.Input<DefenderForServersAwsOfferingResponseConfiguration>? configuration;
   /// Is Vulnerability Assessment auto provisioning enabled
   final pulumi.Input<bool>? enabled;
 
@@ -22,33 +20,16 @@ class DefenderForServersAwsOfferingResponseVaAutoProvisioning {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration':
-          ?pulumi.Input.mapOptionalInputValue<
-            DefenderForServersAwsOfferingResponseConfiguration,
-            Map<String, dynamic>
-          >(configuration, (value) => value.toMap()),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<DefenderForServersAwsOfferingResponseConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'enabled': ?enabled,
     };
   }
 
-  factory DefenderForServersAwsOfferingResponseVaAutoProvisioning.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefenderForServersAwsOfferingResponseVaAutoProvisioning.fromMap(Map<String, dynamic> map) {
     return DefenderForServersAwsOfferingResponseVaAutoProvisioning(
-      configuration: (() {
-        final guardedValue = map['configuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DefenderForServersAwsOfferingResponseConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersAwsOfferingResponseConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

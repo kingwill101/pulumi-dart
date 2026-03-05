@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MpnsCredential {
   /// Gets or sets the certificate key for this credential.
   final pulumi.Input<String> certificateKey;
-
   /// Gets or sets the MPNS certificate.
   final pulumi.Input<String> mpnsCertificate;
-
   /// Gets or sets the MPNS certificate Thumbprint
   final pulumi.Input<String> thumbprint;
 
@@ -39,3 +37,4 @@ class MpnsCredential {
     );
   }
 }
+

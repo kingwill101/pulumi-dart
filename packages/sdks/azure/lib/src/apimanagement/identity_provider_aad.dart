@@ -232,22 +232,16 @@ import 'identity_provider_aad_state.dart';
 class IdentityProviderAad extends pulumi.CustomResource {
   /// List of allowed AAD Tenants.
   late final pulumi.Output<List<String>> allowedTenants;
-
   /// The Name of the API Management Service where this AAD Identity Provider should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// Client Id of the Application in the AAD Identity Provider.
   late final pulumi.Output<String> clientId;
-
   /// The client library to be used in the AAD Identity Provider.
   late final pulumi.Output<String?> clientLibrary;
-
   /// Client secret of the Application in the AAD Identity Provider.
   late final pulumi.Output<String> clientSecret;
-
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The AAD Tenant to use instead of Common when logging into Active Directory.
   late final pulumi.Output<String?> signinTenant;
 
@@ -260,11 +254,11 @@ class IdentityProviderAad extends pulumi.CustomResource {
     IdentityProviderAadArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/identityProviderAad:IdentityProviderAad',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/identityProviderAad:IdentityProviderAad',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedTenants = registerOutput<List<String>>('allowedTenants');
     apiManagementName = registerOutput<String>('apiManagementName');
     clientId = registerOutput<String>('clientId');
@@ -292,11 +286,11 @@ class IdentityProviderAad extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/identityProviderAad:IdentityProviderAad',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/identityProviderAad:IdentityProviderAad',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedTenants = registerOutput<List<String>>('allowedTenants');
     apiManagementName = registerOutput<String>('apiManagementName');
     clientId = registerOutput<String>('clientId');

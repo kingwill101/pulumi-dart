@@ -514,10 +514,8 @@ import 'network_interface_nat_rule_association_state.dart';
 class NetworkInterfaceNatRuleAssociation extends pulumi.CustomResource {
   /// The Name of the IP Configuration within the Network Interface which should be connected to the NAT Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> ipConfigurationName;
-
   /// The ID of the Load Balancer NAT Rule which this Network Interface which should be connected to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> natRuleId;
-
   /// The ID of the Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkInterfaceId;
 
@@ -530,11 +528,11 @@ class NetworkInterfaceNatRuleAssociation extends pulumi.CustomResource {
     NetworkInterfaceNatRuleAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkInterfaceNatRuleAssociation:NetworkInterfaceNatRuleAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkInterfaceNatRuleAssociation:NetworkInterfaceNatRuleAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ipConfigurationName = registerOutput<String>('ipConfigurationName');
     natRuleId = registerOutput<String>('natRuleId');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
@@ -558,11 +556,11 @@ class NetworkInterfaceNatRuleAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkInterfaceNatRuleAssociation:NetworkInterfaceNatRuleAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkInterfaceNatRuleAssociation:NetworkInterfaceNatRuleAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ipConfigurationName = registerOutput<String>('ipConfigurationName');
     natRuleId = registerOutput<String>('natRuleId');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');

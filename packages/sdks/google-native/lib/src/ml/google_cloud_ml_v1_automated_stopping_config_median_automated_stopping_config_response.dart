@@ -14,14 +14,15 @@ class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfigRespons
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'useElapsedTime': useElapsedTime};
+    return <String, dynamic>{
+      'useElapsedTime': useElapsedTime,
+    };
   }
 
-  factory GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfigResponse(
       useElapsedTime: pulumi.Input.fromValue(map['useElapsedTime'] as bool),
     );
   }
 }
+

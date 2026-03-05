@@ -14,3 +14,4 @@ enum ObjectDetectionPrimaryMetrics {
     throw ArgumentError('Unknown ObjectDetectionPrimaryMetrics value: $value');
   }
 }
+

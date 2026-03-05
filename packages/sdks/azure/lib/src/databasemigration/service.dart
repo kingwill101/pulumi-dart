@@ -274,19 +274,14 @@ import 'service_state.dart';
 class Service extends pulumi.CustomResource {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specify the name of the database migration service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Name of the resource group in which to create the database migration service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The SKU name of the database migration service. Possible values are `Premium_4vCores`, `Standard_1vCores`, `Standard_2vCores` and `Standard_4vCores`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> skuName;
-
   /// The ID of the virtual subnet resource to which the database migration service should be joined. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subnetId;
-
   /// A mapping of tags to assigned to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -299,11 +294,11 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:databasemigration/service:Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:databasemigration/service:Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -330,11 +325,11 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:databasemigration/service:Service',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:databasemigration/service:Service',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

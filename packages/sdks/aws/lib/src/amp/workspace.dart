@@ -380,25 +380,18 @@ import 'workspace_state.dart';
 class Workspace extends pulumi.CustomResource {
   /// The alias of the prometheus workspace. See more [in AWS Docs](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-onboard-create-workspace.html).
   late final pulumi.Output<String?> alias;
-
   /// Amazon Resource Name (ARN) of the workspace.
   late final pulumi.Output<String> arn;
-
   /// The ARN for the KMS encryption key. If this argument is not provided, then the AWS owned encryption key will be used to encrypt the data in the workspace. See more [in AWS Docs](https://docs.aws.amazon.com/prometheus/latest/userguide/encryption-at-rest-Amazon-Service-Prometheus.html)
   late final pulumi.Output<String?> kmsKeyArn;
-
   /// Logging configuration for the workspace. See Logging Configuration below for details.
   late final pulumi.Output<WorkspaceLoggingConfiguration?> loggingConfiguration;
-
   /// Prometheus endpoint available for this workspace.
   late final pulumi.Output<String> prometheusEndpoint;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -411,24 +404,15 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:amp/workspace:Workspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:amp/workspace:Workspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String?>('alias');
     arn = registerOutput<String>('arn');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
-    loggingConfiguration = registerOutput<WorkspaceLoggingConfiguration?>(
-      'loggingConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceLoggingConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loggingConfiguration = registerOutput<WorkspaceLoggingConfiguration?>('loggingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceLoggingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     prometheusEndpoint = registerOutput<String>('prometheusEndpoint');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -453,24 +437,15 @@ class Workspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:amp/workspace:Workspace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:amp/workspace:Workspace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String?>('alias');
     arn = registerOutput<String>('arn');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
-    loggingConfiguration = registerOutput<WorkspaceLoggingConfiguration?>(
-      'loggingConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceLoggingConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loggingConfiguration = registerOutput<WorkspaceLoggingConfiguration?>('loggingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceLoggingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     prometheusEndpoint = registerOutput<String>('prometheusEndpoint');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

@@ -15,3 +15,4 @@ enum ScopedResourceKind {
     throw ArgumentError('Unknown ScopedResourceKind value: $value');
   }
 }
+

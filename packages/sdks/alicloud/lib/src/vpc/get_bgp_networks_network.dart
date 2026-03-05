@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBgpNetworksNetwork {
   /// Advertised BGP networks.
   final pulumi.Input<String> dstCidrBlock;
-
   /// The ID of the Bgp Network. The value formats as `&lt;router_id&gt;:&lt;dst_cidr_block&gt;`.
   final pulumi.Input<String> id;
-
   /// The ID of the vRouter.
   final pulumi.Input<String> routerId;
-
   /// The state of the advertised BGP network.
   final pulumi.Input<String> status;
 
@@ -45,3 +42,4 @@ class GetBgpNetworksNetwork {
     );
   }
 }
+

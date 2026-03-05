@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicesResourceResponseIdentity {
   /// The principal ID of the resource identity.
   final pulumi.Input<String> principalId;
-
   /// The tenant ID of the resource.
   final pulumi.Input<String> tenantId;
-
   /// Type of identity being specified, currently SystemAssigned and None are allowed.
   final pulumi.Input<String>? type;
 
@@ -35,11 +33,8 @@ class ServicesResourceResponseIdentity {
     return ServicesResourceResponseIdentity(
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

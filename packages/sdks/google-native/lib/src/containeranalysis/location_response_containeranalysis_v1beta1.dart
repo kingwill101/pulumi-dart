@@ -7,10 +7,8 @@ import 'version_response_containeranalysis_v1beta1.dart';
 class LocationResponseContaineranalysisV1beta1 {
   /// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
   final pulumi.Input<String> cpeUri;
-
   /// The path from which we gathered that this package/version is installed.
   final pulumi.Input<String> path;
-
   /// Deprecated. The version installed at this location.
   final pulumi.Input<VersionResponseContaineranalysisV1beta1> version;
 
@@ -28,25 +26,16 @@ class LocationResponseContaineranalysisV1beta1 {
     return <String, dynamic>{
       'cpeUri': cpeUri,
       'path': path,
-      'version':
-          pulumi.Input.mapInputValue<
-            VersionResponseContaineranalysisV1beta1,
-            Map<String, dynamic>
-          >(version, (value) => value.toMap()),
+      'version': pulumi.Input.mapInputValue<VersionResponseContaineranalysisV1beta1, Map<String, dynamic>>(version, (value) => value.toMap()),
     };
   }
 
-  factory LocationResponseContaineranalysisV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LocationResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return LocationResponseContaineranalysisV1beta1(
       cpeUri: pulumi.Input.fromValue(map['cpeUri'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
-      version: pulumi.Input.fromValue(
-        VersionResponseContaineranalysisV1beta1.fromMap(
-          (map['version']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      version: pulumi.Input.fromValue(VersionResponseContaineranalysisV1beta1.fromMap((map['version']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

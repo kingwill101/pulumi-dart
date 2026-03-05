@@ -161,22 +161,16 @@ import 'scim_server_credential_state.dart';
 class ScimServerCredential extends pulumi.CustomResource {
   /// (Available since v1.245.0) The time when the SCIM credential was created.
   late final pulumi.Output<String> createTime;
-
   /// The ID of the SCIM credential.
   late final pulumi.Output<String> credentialId;
-
   /// The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
   late final pulumi.Output<String?> credentialSecretFile;
-
   /// (Available since v1.245.0) The type of the SCIM credential.
   late final pulumi.Output<String> credentialType;
-
   /// The ID of the Directory.
   late final pulumi.Output<String> directoryId;
-
   /// (Available since v1.245.0) The time when the SCIM credential expires.
   late final pulumi.Output<String> expireTime;
-
   /// The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
   late final pulumi.Output<String> status;
 
@@ -189,11 +183,11 @@ class ScimServerCredential extends pulumi.CustomResource {
     ScimServerCredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/scimServerCredential:ScimServerCredential',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/scimServerCredential:ScimServerCredential',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     credentialId = registerOutput<String>('credentialId');
     credentialSecretFile = registerOutput<String?>('credentialSecretFile');
@@ -221,11 +215,11 @@ class ScimServerCredential extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/scimServerCredential:ScimServerCredential',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/scimServerCredential:ScimServerCredential',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     credentialId = registerOutput<String>('credentialId');
     credentialSecretFile = registerOutput<String?>('credentialSecretFile');

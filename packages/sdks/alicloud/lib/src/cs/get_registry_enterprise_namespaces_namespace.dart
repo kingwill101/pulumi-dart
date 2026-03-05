@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegistryEnterpriseNamespacesNamespace {
   /// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
   final pulumi.Input<bool> autoCreate;
-
   /// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
   final pulumi.Input<String> defaultVisibility;
-
   /// ID of Container Registry Enterprise Edition namespace. It formats as `&lt;instance_id&gt;:&lt;namespace_name&gt;`. Before 1.161.0, it is a namespace uuid.
   final pulumi.Input<String> id;
-
   /// ID of Container Registry Enterprise Edition instance.
   final pulumi.Input<String> instanceId;
-
   /// Name of Container Registry Enterprise Edition namespace.
   final pulumi.Input<String> name;
-
   /// Container Registry Enterprise Edition namespace id. It is a uuid.
   final pulumi.Input<String> namespaceId;
-
   /// Name of Container Registry Enterprise Edition namespace.
   final pulumi.Input<String> namespaceName;
 
@@ -54,14 +48,10 @@ class GetRegistryEnterpriseNamespacesNamespace {
     };
   }
 
-  factory GetRegistryEnterpriseNamespacesNamespace.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegistryEnterpriseNamespacesNamespace.fromMap(Map<String, dynamic> map) {
     return GetRegistryEnterpriseNamespacesNamespace(
       autoCreate: pulumi.Input.fromValue(map['autoCreate'] as bool),
-      defaultVisibility: pulumi.Input.fromValue(
-        map['defaultVisibility'] as String,
-      ),
+      defaultVisibility: pulumi.Input.fromValue(map['defaultVisibility'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -70,3 +60,4 @@ class GetRegistryEnterpriseNamespacesNamespace {
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListAccountKeysArgs {
   /// Account Name
   final pulumi.Input<String> accountName;
-
   /// Resource Group Name
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class ListAccountKeysArgs {
   factory ListAccountKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListAccountKeysArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

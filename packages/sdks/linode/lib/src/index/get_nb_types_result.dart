@@ -28,51 +28,22 @@ class GetNbTypesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<GetNbTypesFilter, Map<String, dynamic>>(
-          guardedValue,
-          (value) => value.toMap(),
-        );
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNbTypesFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'order': ?order,
       'orderBy': ?orderBy,
-      'types': pulumi.Input.encodeList<GetNbTypesType, Map<String, dynamic>>(
-        types,
-        (value) => value.toMap(),
-      ),
+      'types': pulumi.Input.encodeList<GetNbTypesType, Map<String, dynamic>>(types, (value) => value.toMap()),
     };
   }
 
   factory GetNbTypesResult.fromMap(Map<String, dynamic> map) {
     return GetNbTypesResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetNbTypesFilter>(
-          guardedValue,
-          (value) =>
-              GetNbTypesFilter.fromMap((value as Map).cast<String, dynamic>()),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNbTypesFilter>(guardedValue, (value) => GetNbTypesFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      order: (() {
-        final guardedValue = map['order'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      orderBy: (() {
-        final guardedValue = map['orderBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      types: pulumi.Input.decodeList<GetNbTypesType>(
-        map['types']!,
-        (value) =>
-            GetNbTypesType.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      types: pulumi.Input.decodeList<GetNbTypesType>(map['types']!, (value) => GetNbTypesType.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

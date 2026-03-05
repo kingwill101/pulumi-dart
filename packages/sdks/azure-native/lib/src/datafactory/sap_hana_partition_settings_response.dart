@@ -9,19 +9,20 @@ class SapHanaPartitionSettingsResponse {
 
   /// Creates a new [SapHanaPartitionSettingsResponse].
   /// [partitionColumnName] The name of the column that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
-  SapHanaPartitionSettingsResponse({this.partitionColumnName});
+  SapHanaPartitionSettingsResponse({
+    this.partitionColumnName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'partitionColumnName': ?partitionColumnName};
+    return <String, dynamic>{
+      'partitionColumnName': ?partitionColumnName,
+    };
   }
 
   factory SapHanaPartitionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SapHanaPartitionSettingsResponse(
-      partitionColumnName: (() {
-        final guardedValue = map['partitionColumnName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      partitionColumnName: (() { final guardedValue = map['partitionColumnName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

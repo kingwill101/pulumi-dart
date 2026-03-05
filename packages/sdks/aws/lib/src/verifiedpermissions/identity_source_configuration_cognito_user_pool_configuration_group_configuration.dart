@@ -13,14 +13,15 @@ class IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupEntityType': groupEntityType};
+    return <String, dynamic>{
+      'groupEntityType': groupEntityType,
+    };
   }
 
-  factory IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration.fromMap(Map<String, dynamic> map) {
     return IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration(
       groupEntityType: pulumi.Input.fromValue(map['groupEntityType'] as String),
     );
   }
 }
+

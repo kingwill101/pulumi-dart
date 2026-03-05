@@ -101,18 +101,14 @@ import 'recovery_group_state.dart';
 class RecoveryGroup extends pulumi.CustomResource {
   /// ARN of the recovery group
   late final pulumi.Output<String> arn;
-
   /// List of cell arns to add as nested fault domains within this recovery group
   late final pulumi.Output<List<String>?> cells;
-
   /// A unique name describing the recovery group.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> recoveryGroupName;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -125,11 +121,11 @@ class RecoveryGroup extends pulumi.CustomResource {
     RecoveryGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53recoveryreadiness/recoveryGroup:RecoveryGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53recoveryreadiness/recoveryGroup:RecoveryGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     cells = registerOutput<List<String>?>('cells');
     recoveryGroupName = registerOutput<String>('recoveryGroupName');
@@ -155,11 +151,11 @@ class RecoveryGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53recoveryreadiness/recoveryGroup:RecoveryGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53recoveryreadiness/recoveryGroup:RecoveryGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     cells = registerOutput<List<String>?>('cells');
     recoveryGroupName = registerOutput<String>('recoveryGroupName');

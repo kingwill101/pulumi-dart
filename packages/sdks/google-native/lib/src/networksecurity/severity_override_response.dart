@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SeverityOverrideResponse {
   /// Threat action override.
   final pulumi.Input<String> action;
-
   /// Severity level to match.
   final pulumi.Input<String> severity;
 
   /// Creates a new [SeverityOverrideResponse].
   /// [action] Threat action override.
   /// [severity] Severity level to match.
-  SeverityOverrideResponse({required this.action, required this.severity});
+  SeverityOverrideResponse({
+    required this.action,
+    required this.severity,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'action': action, 'severity': severity};
+    return <String, dynamic>{
+      'action': action,
+      'severity': severity,
+    };
   }
 
   factory SeverityOverrideResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class SeverityOverrideResponse {
     );
   }
 }
+

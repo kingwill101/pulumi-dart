@@ -445,38 +445,25 @@ import 'system_data_response.dart';
 /// ```
 class AvailabilityGroupListener extends pulumi.CustomResource {
   /// Availability Group configuration.
-  late final pulumi.Output<AgConfigurationResponse?>
-  availabilityGroupConfiguration;
-
+  late final pulumi.Output<AgConfigurationResponse?> availabilityGroupConfiguration;
   /// Name of the availability group.
   late final pulumi.Output<String?> availabilityGroupName;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Create a default availability group if it does not exist.
   late final pulumi.Output<bool?> createDefaultAvailabilityGroupIfNotExist;
-
   /// List of load balancer configurations for an availability group listener.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  loadBalancerConfigurations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> loadBalancerConfigurations;
   /// List of multi subnet IP configurations for an AG listener.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  multiSubnetIpConfigurations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> multiSubnetIpConfigurations;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Listener port.
   late final pulumi.Output<int?> port;
-
   /// Provisioning state to track the async operation status.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -489,45 +476,21 @@ class AvailabilityGroupListener extends pulumi.CustomResource {
     AvailabilityGroupListenerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sqlvirtualmachine:AvailabilityGroupListener',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    availabilityGroupConfiguration = registerOutput<AgConfigurationResponse?>(
-      'availabilityGroupConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:sqlvirtualmachine:AvailabilityGroupListener',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    availabilityGroupConfiguration = registerOutput<AgConfigurationResponse?>('availabilityGroupConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     availabilityGroupName = registerOutput<String?>('availabilityGroupName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    createDefaultAvailabilityGroupIfNotExist = registerOutput<bool?>(
-      'createDefaultAvailabilityGroupIfNotExist',
-    );
-    loadBalancerConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'loadBalancerConfigurations',
-    );
-    multiSubnetIpConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'multiSubnetIpConfigurations',
-    );
+    createDefaultAvailabilityGroupIfNotExist = registerOutput<bool?>('createDefaultAvailabilityGroupIfNotExist');
+    loadBalancerConfigurations = registerOutput<List<Map<String, dynamic>>?>('loadBalancerConfigurations');
+    multiSubnetIpConfigurations = registerOutput<List<Map<String, dynamic>>?>('multiSubnetIpConfigurations');
     this.name = registerOutput<String>('name');
     port = registerOutput<int?>('port');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

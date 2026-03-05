@@ -10,11 +10,9 @@ class ManagedCertificateArgs {
   /// Domain names for which a certificate
   /// should be obtained.
   final pulumi.Input<List<String>> domainNames;
-
   /// User-defined labels (key-value pairs) the
   /// certificate should be created with.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Name of the Certificate.
   final pulumi.Input<String>? name;
 
@@ -22,7 +20,11 @@ class ManagedCertificateArgs {
   /// [domainNames] Domain names for which a certificate
   /// [labels] User-defined labels (key-value pairs) the
   /// [name] Name of the Certificate.
-  ManagedCertificateArgs({required this.domainNames, this.labels, this.name});
+  ManagedCertificateArgs({
+    required this.domainNames,
+    this.labels,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,21 +36,10 @@ class ManagedCertificateArgs {
 
   factory ManagedCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ManagedCertificateArgs(
-      domainNames: pulumi.Input.fromValue(
-        (map['domainNames'] as List).cast<String>(),
-      ),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domainNames: pulumi.Input.fromValue((map['domainNames'] as List).cast<String>()),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

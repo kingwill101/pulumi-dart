@@ -13,14 +13,15 @@ class WorkgroupConfigurationResultConfigurationAclConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'s3AclOption': s3AclOption};
+    return <String, dynamic>{
+      's3AclOption': s3AclOption,
+    };
   }
 
-  factory WorkgroupConfigurationResultConfigurationAclConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkgroupConfigurationResultConfigurationAclConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationResultConfigurationAclConfiguration(
       s3AclOption: pulumi.Input.fromValue(map['s3AclOption'] as String),
     );
   }
 }
+

@@ -244,85 +244,58 @@ import 'threat_intelligence_indicator_state.dart';
 class ThreatIntelligenceIndicator extends pulumi.CustomResource {
   /// Confidence levels of the Threat Intelligence Indicator.
   late final pulumi.Output<int?> confidence;
-
   /// The creator of the Threat Intelligence Indicator.
   late final pulumi.Output<String?> createdBy;
-
   /// The date of this Threat Intelligence Indicator created.
   late final pulumi.Output<String> createdOn;
-
   /// Whether the Threat Intelligence entity is defanged?
   late final pulumi.Output<bool> defanged;
-
   /// The description of the Threat Intelligence Indicator.
   late final pulumi.Output<String?> description;
-
   /// The display name of the Threat Intelligence Indicator.
   late final pulumi.Output<String> displayName;
-
   /// The extension config of the Threat Intelligence Indicator in JSON format.
   late final pulumi.Output<String> extension;
-
   /// The external ID of the Threat Intelligence Indicator.
   late final pulumi.Output<String> externalId;
-
   /// the External last updated time in UTC.
   late final pulumi.Output<String> externalLastUpdatedTimeUtc;
-
   /// One or more `external_reference` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> externalReferences;
-
   /// One or more `granular_marking` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> granularMarkings;
-
   /// The guid of this Sentinel Threat Intelligence Indicator.
   late final pulumi.Output<String> guid;
-
   /// A list of indicator types of this Threat Intelligence Indicator.
   late final pulumi.Output<List<String>> indicatorTypes;
-
   /// One or more `kill_chain_phase` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> killChainPhases;
-
   /// The language of the Threat Intelligence Indicator.
   late final pulumi.Output<String?> language;
-
   /// The last updated time of the Threat Intelligence Indicator in UTC.
   late final pulumi.Output<String> lastUpdatedTimeUtc;
-
   /// Specifies a list of Threat Intelligence marking references.
   late final pulumi.Output<List<String>?> objectMarkingRefs;
-
   /// A `parsed_pattern` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> parsedPatterns;
-
   /// The pattern used by the Threat Intelligence Indicator. When `pattern_type` set to `file`, `pattern` must be specified with `&lt;HashName&gt;:&lt;Value&gt;` format, such as `MD5:78ecc5c05cd8b79af480df2f8fba0b9d`.
   late final pulumi.Output<String> pattern;
-
   /// The type of pattern used by the Threat Intelligence Indicator. Possible values are `domain-name`, `file`, `ipv4-addr`, `ipv6-addr` and `url`.
   late final pulumi.Output<String> patternType;
-
   /// The version of a Threat Intelligence entity.
   late final pulumi.Output<String?> patternVersion;
-
   /// Whether the Threat Intelligence entity revoked.
   late final pulumi.Output<bool?> revoked;
-
   /// Source of the Threat Intelligence Indicator. Changing this forces a new resource to be created.
   late final pulumi.Output<String> source;
-
   /// Specifies a list of tags of the Threat Intelligence Indicator.
   late final pulumi.Output<List<String>?> tags;
-
   /// Specifies a list of threat types of this Threat Intelligence Indicator.
   late final pulumi.Output<List<String>?> threatTypes;
-
   /// The start of validate date in RFC3339.
   late final pulumi.Output<String> validateFromUtc;
-
   /// The end of validate date of the Threat Intelligence Indicator in RFC3339 format.
   late final pulumi.Output<String?> validateUntilUtc;
-
   /// The ID of the Log Analytics Workspace. Changing this forces a new Sentinel Threat Intelligence Indicator to be created.
   late final pulumi.Output<String> workspaceId;
 
@@ -335,11 +308,11 @@ class ThreatIntelligenceIndicator extends pulumi.CustomResource {
     ThreatIntelligenceIndicatorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/threatIntelligenceIndicator:ThreatIntelligenceIndicator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/threatIntelligenceIndicator:ThreatIntelligenceIndicator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     confidence = registerOutput<int?>('confidence');
     createdBy = registerOutput<String?>('createdBy');
     createdOn = registerOutput<String>('createdOn');
@@ -348,26 +321,16 @@ class ThreatIntelligenceIndicator extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     extension = registerOutput<String>('extension');
     externalId = registerOutput<String>('externalId');
-    externalLastUpdatedTimeUtc = registerOutput<String>(
-      'externalLastUpdatedTimeUtc',
-    );
-    externalReferences = registerOutput<List<Map<String, dynamic>>?>(
-      'externalReferences',
-    );
-    granularMarkings = registerOutput<List<Map<String, dynamic>>?>(
-      'granularMarkings',
-    );
+    externalLastUpdatedTimeUtc = registerOutput<String>('externalLastUpdatedTimeUtc');
+    externalReferences = registerOutput<List<Map<String, dynamic>>?>('externalReferences');
+    granularMarkings = registerOutput<List<Map<String, dynamic>>?>('granularMarkings');
     guid = registerOutput<String>('guid');
     indicatorTypes = registerOutput<List<String>>('indicatorTypes');
-    killChainPhases = registerOutput<List<Map<String, dynamic>>?>(
-      'killChainPhases',
-    );
+    killChainPhases = registerOutput<List<Map<String, dynamic>>?>('killChainPhases');
     language = registerOutput<String?>('language');
     lastUpdatedTimeUtc = registerOutput<String>('lastUpdatedTimeUtc');
     objectMarkingRefs = registerOutput<List<String>?>('objectMarkingRefs');
-    parsedPatterns = registerOutput<List<Map<String, dynamic>>>(
-      'parsedPatterns',
-    );
+    parsedPatterns = registerOutput<List<Map<String, dynamic>>>('parsedPatterns');
     pattern = registerOutput<String>('pattern');
     patternType = registerOutput<String>('patternType');
     patternVersion = registerOutput<String?>('patternVersion');
@@ -398,11 +361,11 @@ class ThreatIntelligenceIndicator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/threatIntelligenceIndicator:ThreatIntelligenceIndicator',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/threatIntelligenceIndicator:ThreatIntelligenceIndicator',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     confidence = registerOutput<int?>('confidence');
     createdBy = registerOutput<String?>('createdBy');
     createdOn = registerOutput<String>('createdOn');
@@ -411,26 +374,16 @@ class ThreatIntelligenceIndicator extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     extension = registerOutput<String>('extension');
     externalId = registerOutput<String>('externalId');
-    externalLastUpdatedTimeUtc = registerOutput<String>(
-      'externalLastUpdatedTimeUtc',
-    );
-    externalReferences = registerOutput<List<Map<String, dynamic>>?>(
-      'externalReferences',
-    );
-    granularMarkings = registerOutput<List<Map<String, dynamic>>?>(
-      'granularMarkings',
-    );
+    externalLastUpdatedTimeUtc = registerOutput<String>('externalLastUpdatedTimeUtc');
+    externalReferences = registerOutput<List<Map<String, dynamic>>?>('externalReferences');
+    granularMarkings = registerOutput<List<Map<String, dynamic>>?>('granularMarkings');
     guid = registerOutput<String>('guid');
     indicatorTypes = registerOutput<List<String>>('indicatorTypes');
-    killChainPhases = registerOutput<List<Map<String, dynamic>>?>(
-      'killChainPhases',
-    );
+    killChainPhases = registerOutput<List<Map<String, dynamic>>?>('killChainPhases');
     language = registerOutput<String?>('language');
     lastUpdatedTimeUtc = registerOutput<String>('lastUpdatedTimeUtc');
     objectMarkingRefs = registerOutput<List<String>?>('objectMarkingRefs');
-    parsedPatterns = registerOutput<List<Map<String, dynamic>>>(
-      'parsedPatterns',
-    );
+    parsedPatterns = registerOutput<List<Map<String, dynamic>>>('parsedPatterns');
     pattern = registerOutput<String>('pattern');
     patternType = registerOutput<String>('patternType');
     patternVersion = registerOutput<String?>('patternVersion');

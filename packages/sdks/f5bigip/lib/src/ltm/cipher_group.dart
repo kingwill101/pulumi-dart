@@ -135,16 +135,12 @@ import 'cipher_group_state.dart';
 class CipherGroup extends pulumi.CustomResource {
   /// Specifies the configuration of the allowed groups of ciphers. You can select a cipher rule from the Available Cipher Rules list. To have no allowed ciphers, omit this attribute in the config or set it to an empty set like, `[]`.
   late final pulumi.Output<List<String>?> allows;
-
   /// Specifies descriptive text that identifies the cipher rule
   late final pulumi.Output<String?> description;
-
   /// Name of the Cipher group. Name should be in pattern `partition` + `cipher_group_name`
   late final pulumi.Output<String> name;
-
   /// Controls the order of the Cipher String list in the Cipher Audit section. Options are Default, Speed, Strength, FIPS, and Hardware. The rules are processed in the order listed. The default is `default`.
   late final pulumi.Output<String?> ordering;
-
   /// Specifies the configuration of the restrict groups of ciphers. You can select a cipher rule from the Available Cipher Rules list. To have no restricted ciphers, omit this attribute in the config or set it to an empty set like, `[]`.
   late final pulumi.Output<List<String>?> requires;
 
@@ -157,11 +153,11 @@ class CipherGroup extends pulumi.CustomResource {
     CipherGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/cipherGroup:CipherGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/cipherGroup:CipherGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allows = registerOutput<List<String>?>('allows');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -187,11 +183,11 @@ class CipherGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/cipherGroup:CipherGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/cipherGroup:CipherGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allows = registerOutput<List<String>?>('allows');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

@@ -11,11 +11,9 @@ class AiRagEngineConfigArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Required. The config of the RagManagedDb used by RagEngine.
   /// Structure is documented below.
   final pulumi.Input<AiRagEngineConfigRagManagedDbConfig> ragManagedDbConfig;
-
   /// The region of the RagEngineConfig. eg us-central1
   final pulumi.Input<String>? region;
 
@@ -32,32 +30,17 @@ class AiRagEngineConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'project': ?project,
-      'ragManagedDbConfig':
-          pulumi.Input.mapInputValue<
-            AiRagEngineConfigRagManagedDbConfig,
-            Map<String, dynamic>
-          >(ragManagedDbConfig, (value) => value.toMap()),
+      'ragManagedDbConfig': pulumi.Input.mapInputValue<AiRagEngineConfigRagManagedDbConfig, Map<String, dynamic>>(ragManagedDbConfig, (value) => value.toMap()),
       'region': ?region,
     };
   }
 
   factory AiRagEngineConfigArgs.fromMap(Map<String, dynamic> map) {
     return AiRagEngineConfigArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ragManagedDbConfig: pulumi.Input.fromValue(
-        AiRagEngineConfigRagManagedDbConfig.fromMap(
-          (map['ragManagedDbConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ragManagedDbConfig: pulumi.Input.fromValue(AiRagEngineConfigRagManagedDbConfig.fromMap((map['ragManagedDbConfig']! as Map).cast<String, dynamic>())),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

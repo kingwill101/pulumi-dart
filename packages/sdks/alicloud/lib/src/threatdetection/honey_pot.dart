@@ -224,25 +224,18 @@ import 'honey_pot_state.dart';
 class HoneyPot extends pulumi.CustomResource {
   /// Honeypot ID.
   late final pulumi.Output<String> honeypotId;
-
   /// The image ID of the honeypot.
   late final pulumi.Output<String> honeypotImageId;
-
   /// Honeypot mirror name.
   late final pulumi.Output<String> honeypotImageName;
-
   /// Honeypot custom name.
   late final pulumi.Output<String> honeypotName;
-
   /// The ID of the honeypot management node.
   late final pulumi.Output<String> nodeId;
-
   /// The custom parameter ID of honeypot.
   late final pulumi.Output<String> presetId;
-
   /// Honeypot status.
   late final pulumi.Output<List<String>> states;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -255,11 +248,11 @@ class HoneyPot extends pulumi.CustomResource {
     HoneyPotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/honeyPot:HoneyPot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/honeyPot:HoneyPot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     honeypotId = registerOutput<String>('honeypotId');
     honeypotImageId = registerOutput<String>('honeypotImageId');
     honeypotImageName = registerOutput<String>('honeypotImageName');
@@ -288,11 +281,11 @@ class HoneyPot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/honeyPot:HoneyPot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/honeyPot:HoneyPot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     honeypotId = registerOutput<String>('honeypotId');
     honeypotImageId = registerOutput<String>('honeypotImageId');
     honeypotImageName = registerOutput<String>('honeypotImageName');

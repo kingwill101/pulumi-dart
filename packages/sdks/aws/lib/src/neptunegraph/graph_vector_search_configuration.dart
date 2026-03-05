@@ -8,19 +8,20 @@ class GraphVectorSearchConfiguration {
 
   /// Creates a new [GraphVectorSearchConfiguration].
   /// [vectorSearchDimension] Specifies the number of dimensions for vector embeddings.  Value must be between 1 and 65,535.
-  GraphVectorSearchConfiguration({this.vectorSearchDimension});
+  GraphVectorSearchConfiguration({
+    this.vectorSearchDimension,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vectorSearchDimension': ?vectorSearchDimension};
+    return <String, dynamic>{
+      'vectorSearchDimension': ?vectorSearchDimension,
+    };
   }
 
   factory GraphVectorSearchConfiguration.fromMap(Map<String, dynamic> map) {
     return GraphVectorSearchConfiguration(
-      vectorSearchDimension: (() {
-        final guardedValue = map['vectorSearchDimension'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      vectorSearchDimension: (() { final guardedValue = map['vectorSearchDimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

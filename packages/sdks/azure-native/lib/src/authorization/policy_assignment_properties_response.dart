@@ -9,11 +9,8 @@ import 'policy_assignment_properties_response_scope.dart';
 class PolicyAssignmentPropertiesResponse {
   /// Details of the policy
   final pulumi.Input<PolicyAssignmentPropertiesResponsePolicy>? policy;
-
   /// Details of role definition
-  final pulumi.Input<PolicyAssignmentPropertiesResponseRoleDefinition>?
-  roleDefinition;
-
+  final pulumi.Input<PolicyAssignmentPropertiesResponseRoleDefinition>? roleDefinition;
   /// Details of the resource scope
   final pulumi.Input<PolicyAssignmentPropertiesResponseScope>? scope;
 
@@ -29,53 +26,18 @@ class PolicyAssignmentPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policy':
-          ?pulumi.Input.mapOptionalInputValue<
-            PolicyAssignmentPropertiesResponsePolicy,
-            Map<String, dynamic>
-          >(policy, (value) => value.toMap()),
-      'roleDefinition':
-          ?pulumi.Input.mapOptionalInputValue<
-            PolicyAssignmentPropertiesResponseRoleDefinition,
-            Map<String, dynamic>
-          >(roleDefinition, (value) => value.toMap()),
-      'scope':
-          ?pulumi.Input.mapOptionalInputValue<
-            PolicyAssignmentPropertiesResponseScope,
-            Map<String, dynamic>
-          >(scope, (value) => value.toMap()),
+      'policy': ?pulumi.Input.mapOptionalInputValue<PolicyAssignmentPropertiesResponsePolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
+      'roleDefinition': ?pulumi.Input.mapOptionalInputValue<PolicyAssignmentPropertiesResponseRoleDefinition, Map<String, dynamic>>(roleDefinition, (value) => value.toMap()),
+      'scope': ?pulumi.Input.mapOptionalInputValue<PolicyAssignmentPropertiesResponseScope, Map<String, dynamic>>(scope, (value) => value.toMap()),
     };
   }
 
   factory PolicyAssignmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PolicyAssignmentPropertiesResponse(
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PolicyAssignmentPropertiesResponsePolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      roleDefinition: (() {
-        final guardedValue = map['roleDefinition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PolicyAssignmentPropertiesResponseRoleDefinition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PolicyAssignmentPropertiesResponseScope.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyAssignmentPropertiesResponsePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      roleDefinition: (() { final guardedValue = map['roleDefinition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyAssignmentPropertiesResponseRoleDefinition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyAssignmentPropertiesResponseScope.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -7,15 +7,12 @@ import 'get_products_product.dart';
 class GetProductsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Product IDs.
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of name of Products.
   final List<String> names;
   final String? outputFile;
-
   /// A list of Product Entries. Each element contains the following attributes:
   final List<GetProductsProduct> products;
 
@@ -42,11 +39,7 @@ class GetProductsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'products':
-          pulumi.Input.encodeList<GetProductsProduct, Map<String, dynamic>>(
-            products,
-            (value) => value.toMap(),
-          ),
+      'products': pulumi.Input.encodeList<GetProductsProduct, Map<String, dynamic>>(products, (value) => value.toMap()),
     };
   }
 
@@ -54,22 +47,11 @@ class GetProductsResult {
     return GetProductsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      products: pulumi.Input.decodeList<GetProductsProduct>(
-        map['products']!,
-        (value) =>
-            GetProductsProduct.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      products: pulumi.Input.decodeList<GetProductsProduct>(map['products']!, (value) => GetProductsProduct.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

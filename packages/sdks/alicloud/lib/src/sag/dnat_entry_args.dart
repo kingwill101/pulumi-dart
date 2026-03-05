@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnatEntryArgs {
   /// The external public IP address.when "type" is "Internet",automatically identify the external ip.
   final pulumi.Input<String>? externalIp;
-
   /// The public port.Value range: 1 to 65535 or "any".
   final pulumi.Input<String> externalPort;
-
   /// The destination private IP address.
   final pulumi.Input<String> internalIp;
-
   /// The destination private port.Value range: 1 to 65535 or "any".
   final pulumi.Input<String> internalPort;
-
   /// The protocol type. Valid values: TCP: Forwards packets of the TCP protocol. UDP: Forwards packets of the UDP protocol. Any: Forwards packets of all protocols.
   final pulumi.Input<String> ipProtocol;
-
   /// The ID of the SAG instance.
   final pulumi.Input<String> sagId;
-
   /// The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
   final pulumi.Input<String> type;
 
@@ -60,11 +54,7 @@ class DnatEntryArgs {
 
   factory DnatEntryArgs.fromMap(Map<String, dynamic> map) {
     return DnatEntryArgs(
-      externalIp: (() {
-        final guardedValue = map['externalIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      externalIp: (() { final guardedValue = map['externalIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalPort: pulumi.Input.fromValue(map['externalPort'] as String),
       internalIp: pulumi.Input.fromValue(map['internalIp'] as String),
       internalPort: pulumi.Input.fromValue(map['internalPort'] as String),
@@ -74,3 +64,4 @@ class DnatEntryArgs {
     );
   }
 }
+

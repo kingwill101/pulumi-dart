@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Pipeline {
   /// Reference to exporters configured for the pipeline.
   final pulumi.Input<List<String>> exporters;
-
   /// Name of the pipeline.
   final pulumi.Input<String> name;
-
   /// Reference to processors configured for the pipeline.
   final pulumi.Input<List<String>>? processors;
-
   /// Reference to receivers configured for the pipeline.
   final pulumi.Input<List<String>> receivers;
-
   /// The type of pipeline
   final pulumi.Input<String> type;
 
@@ -45,19 +41,12 @@ class Pipeline {
 
   factory Pipeline.fromMap(Map<String, dynamic> map) {
     return Pipeline(
-      exporters: pulumi.Input.fromValue(
-        (map['exporters'] as List).cast<String>(),
-      ),
+      exporters: pulumi.Input.fromValue((map['exporters'] as List).cast<String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
-      processors: (() {
-        final guardedValue = map['processors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      receivers: pulumi.Input.fromValue(
-        (map['receivers'] as List).cast<String>(),
-      ),
+      processors: (() { final guardedValue = map['processors']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      receivers: pulumi.Input.fromValue((map['receivers'] as List).cast<String>()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

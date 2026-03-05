@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RolePolicyAttachmentsExclusiveArgs {
   /// A list of managed IAM policy ARNs to be attached to the role. Policies attached to this role but not configured in this argument will be removed.
   final pulumi.Input<List<String>> policyArns;
-
   /// IAM role name.
   final pulumi.Input<String> roleName;
 
@@ -22,15 +21,17 @@ class RolePolicyAttachmentsExclusiveArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policyArns': policyArns, 'roleName': roleName};
+    return <String, dynamic>{
+      'policyArns': policyArns,
+      'roleName': roleName,
+    };
   }
 
   factory RolePolicyAttachmentsExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return RolePolicyAttachmentsExclusiveArgs(
-      policyArns: pulumi.Input.fromValue(
-        (map['policyArns'] as List).cast<String>(),
-      ),
+      policyArns: pulumi.Input.fromValue((map['policyArns'] as List).cast<String>()),
       roleName: pulumi.Input.fromValue(map['roleName'] as String),
     );
   }
 }
+

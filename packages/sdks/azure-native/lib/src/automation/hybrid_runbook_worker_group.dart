@@ -155,20 +155,14 @@ import 'system_data_response.dart';
 class HybridRunbookWorkerGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Sets the credential of a worker group.
-  late final pulumi.Output<RunAsCredentialAssociationPropertyResponse?>
-  credential;
-
+  late final pulumi.Output<RunAsCredentialAssociationPropertyResponse?> credential;
   /// Type of the HybridWorkerGroup.
   late final pulumi.Output<String?> groupType;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Resource system metadata.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -181,34 +175,16 @@ class HybridRunbookWorkerGroup extends pulumi.CustomResource {
     HybridRunbookWorkerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:automation:HybridRunbookWorkerGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:automation:HybridRunbookWorkerGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    credential = registerOutput<RunAsCredentialAssociationPropertyResponse?>(
-      'credential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RunAsCredentialAssociationPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    credential = registerOutput<RunAsCredentialAssociationPropertyResponse?>('credential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunAsCredentialAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     groupType = registerOutput<String?>('groupType');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

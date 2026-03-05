@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureWindowResponse {
   /// Specifies the feature window end time
   final pulumi.Input<String>? featureWindowEnd;
-
   /// Specifies the feature window start time
   final pulumi.Input<String>? featureWindowStart;
 
   /// Creates a new [FeatureWindowResponse].
   /// [featureWindowEnd] Specifies the feature window end time
   /// [featureWindowStart] Specifies the feature window start time
-  FeatureWindowResponse({this.featureWindowEnd, this.featureWindowStart});
+  FeatureWindowResponse({
+    this.featureWindowEnd,
+    this.featureWindowStart,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class FeatureWindowResponse {
 
   factory FeatureWindowResponse.fromMap(Map<String, dynamic> map) {
     return FeatureWindowResponse(
-      featureWindowEnd: (() {
-        final guardedValue = map['featureWindowEnd'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      featureWindowStart: (() {
-        final guardedValue = map['featureWindowStart'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      featureWindowEnd: (() { final guardedValue = map['featureWindowEnd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      featureWindowStart: (() { final guardedValue = map['featureWindowStart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

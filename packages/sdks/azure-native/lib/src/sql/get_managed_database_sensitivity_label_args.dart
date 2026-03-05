@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedDatabaseSensitivityLabelArgs {
   /// The name of the column.
   final pulumi.Input<String> columnName;
-
   /// The name of the database.
   final pulumi.Input<String> databaseName;
-
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the schema.
   final pulumi.Input<String> schemaName;
-
   /// The source of the sensitivity label.
   final pulumi.Input<String> sensitivityLabelSource;
-
   /// The name of the table.
   final pulumi.Input<String> tableName;
 
@@ -58,23 +52,16 @@ class GetManagedDatabaseSensitivityLabelArgs {
     };
   }
 
-  factory GetManagedDatabaseSensitivityLabelArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedDatabaseSensitivityLabelArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedDatabaseSensitivityLabelArgs(
       columnName: pulumi.Input.fromValue(map['columnName'] as String),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      managedInstanceName: pulumi.Input.fromValue(
-        map['managedInstanceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      managedInstanceName: pulumi.Input.fromValue(map['managedInstanceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       schemaName: pulumi.Input.fromValue(map['schemaName'] as String),
-      sensitivityLabelSource: pulumi.Input.fromValue(
-        map['sensitivityLabelSource'] as String,
-      ),
+      sensitivityLabelSource: pulumi.Input.fromValue(map['sensitivityLabelSource'] as String),
       tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
+

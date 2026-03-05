@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ViolationResponse {
   /// Error message.
   final pulumi.Input<String> errorMessage;
-
   /// Id of the item that violates tenant configuration.
   final pulumi.Input<String> id;
-
   /// Id of the user who owns violated item.
   final pulumi.Input<String> userId;
 
@@ -39,3 +37,4 @@ class ViolationResponse {
     );
   }
 }
+

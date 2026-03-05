@@ -9,19 +9,20 @@ class DayDetailsResponse {
 
   /// Creates a new [DayDetailsResponse].
   /// [time] The time of day the schedule will occur.
-  DayDetailsResponse({this.time});
+  DayDetailsResponse({
+    this.time,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'time': ?time};
+    return <String, dynamic>{
+      'time': ?time,
+    };
   }
 
   factory DayDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DayDetailsResponse(
-      time: (() {
-        final guardedValue = map['time'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      time: (() { final guardedValue = map['time']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,28 +8,20 @@ import 'http_logs_config_response.dart';
 class GetWebAppDiagnosticLogsConfigurationResult {
   /// Application logs configuration.
   final ApplicationLogsConfigResponse? applicationLogs;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Detailed error messages configuration.
   final EnabledConfigResponse? detailedErrorMessages;
-
   /// Failed requests tracing configuration.
   final EnabledConfigResponse? failedRequestsTracing;
-
   /// HTTP logs configuration.
   final HttpLogsConfigResponse? httpLogs;
-
   /// Resource Id.
   final String id;
-
   /// Kind of resource.
   final String? kind;
-
   /// Resource Name.
   final String name;
-
   /// Resource type.
   final String type;
 
@@ -69,47 +61,18 @@ class GetWebAppDiagnosticLogsConfigurationResult {
     };
   }
 
-  factory GetWebAppDiagnosticLogsConfigurationResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWebAppDiagnosticLogsConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppDiagnosticLogsConfigurationResult(
-      applicationLogs: (() {
-        final guardedValue = map['applicationLogs'];
-        if (guardedValue == null) return null;
-        return ApplicationLogsConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      applicationLogs: (() { final guardedValue = map['applicationLogs']; if (guardedValue == null) return null; return ApplicationLogsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      detailedErrorMessages: (() {
-        final guardedValue = map['detailedErrorMessages'];
-        if (guardedValue == null) return null;
-        return EnabledConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      failedRequestsTracing: (() {
-        final guardedValue = map['failedRequestsTracing'];
-        if (guardedValue == null) return null;
-        return EnabledConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      httpLogs: (() {
-        final guardedValue = map['httpLogs'];
-        if (guardedValue == null) return null;
-        return HttpLogsConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      detailedErrorMessages: (() { final guardedValue = map['detailedErrorMessages']; if (guardedValue == null) return null; return EnabledConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      failedRequestsTracing: (() { final guardedValue = map['failedRequestsTracing']; if (guardedValue == null) return null; return EnabledConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      httpLogs: (() { final guardedValue = map['httpLogs']; if (guardedValue == null) return null; return HttpLogsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
+

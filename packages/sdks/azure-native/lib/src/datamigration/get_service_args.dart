@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceArgs {
   /// Name of the resource group
   final pulumi.Input<String> groupName;
-
   /// Name of the service
   final pulumi.Input<String> serviceName;
 
   /// Creates a new [GetServiceArgs].
   /// [groupName] Name of the resource group
   /// [serviceName] Name of the service
-  GetServiceArgs({required this.groupName, required this.serviceName});
+  GetServiceArgs({
+    required this.groupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,3 +34,4 @@ class GetServiceArgs {
     );
   }
 }
+

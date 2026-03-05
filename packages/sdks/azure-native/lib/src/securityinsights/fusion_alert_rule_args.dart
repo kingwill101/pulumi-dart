@@ -9,20 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FusionAlertRuleArgs {
   /// The Name of the alert rule template used to create this rule.
   final pulumi.Input<String> alertRuleTemplateName;
-
   /// Determines whether this alert rule is enabled or disabled.
   final pulumi.Input<bool> enabled;
-
   /// The kind of the alert rule
   /// Expected value is 'Fusion'.
   final pulumi.Input<String> kind;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Alert rule ID
   final pulumi.Input<String>? ruleId;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -55,20 +50,13 @@ class FusionAlertRuleArgs {
 
   factory FusionAlertRuleArgs.fromMap(Map<String, dynamic> map) {
     return FusionAlertRuleArgs(
-      alertRuleTemplateName: pulumi.Input.fromValue(
-        map['alertRuleTemplateName'] as String,
-      ),
+      alertRuleTemplateName: pulumi.Input.fromValue(map['alertRuleTemplateName'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      ruleId: (() {
-        final guardedValue = map['ruleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

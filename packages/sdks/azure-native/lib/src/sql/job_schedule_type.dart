@@ -15,3 +15,4 @@ enum JobScheduleType {
     throw ArgumentError('Unknown JobScheduleType value: $value');
   }
 }
+

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BlobContainerLegalHoldArgs {
   /// Name of the Storage Account.
   final pulumi.Input<String> accountName;
-
   /// When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining legal hold protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.
   final pulumi.Input<bool>? allowProtectedAppendWritesAll;
-
   /// Name of the Blob Container.
   final pulumi.Input<String> containerName;
-
   /// Name of the resource group that contains the storage account.
   final pulumi.Input<String> resourceGroupName;
-
   /// List of legal hold tags. Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP.
   final pulumi.Input<List<String>> tags;
 
@@ -49,16 +45,11 @@ class BlobContainerLegalHoldArgs {
   factory BlobContainerLegalHoldArgs.fromMap(Map<String, dynamic> map) {
     return BlobContainerLegalHoldArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      allowProtectedAppendWritesAll: (() {
-        final guardedValue = map['allowProtectedAppendWritesAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      allowProtectedAppendWritesAll: (() { final guardedValue = map['allowProtectedAppendWritesAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       containerName: pulumi.Input.fromValue(map['containerName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
     );
   }
 }
+

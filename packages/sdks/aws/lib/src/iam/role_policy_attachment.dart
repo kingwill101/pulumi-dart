@@ -353,7 +353,6 @@ import 'role_policy_attachment_state.dart';
 class RolePolicyAttachment extends pulumi.CustomResource {
   /// The ARN of the policy you want to apply
   late final pulumi.Output<String> policyArn;
-
   /// The name of the IAM role to which the policy should be applied
   late final pulumi.Output<String> role;
 
@@ -366,11 +365,11 @@ class RolePolicyAttachment extends pulumi.CustomResource {
     RolePolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/rolePolicyAttachment:RolePolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/rolePolicyAttachment:RolePolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyArn = registerOutput<String>('policyArn');
     role = registerOutput<String>('role');
   }
@@ -393,11 +392,11 @@ class RolePolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/rolePolicyAttachment:RolePolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/rolePolicyAttachment:RolePolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyArn = registerOutput<String>('policyArn');
     role = registerOutput<String>('role');
   }

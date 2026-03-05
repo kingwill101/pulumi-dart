@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntComparisonFilterResponse {
   /// Integer compare value to be used
   final pulumi.Input<String> value;
-
   /// Relation between source value and compare value
   final pulumi.Input<String> valueComparison;
 
@@ -32,3 +31,4 @@ class IntComparisonFilterResponse {
     );
   }
 }
+

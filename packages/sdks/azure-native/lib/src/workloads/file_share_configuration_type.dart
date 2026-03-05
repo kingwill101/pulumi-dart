@@ -16,3 +16,4 @@ enum FileShareConfigurationType {
     throw ArgumentError('Unknown FileShareConfigurationType value: $value');
   }
 }
+

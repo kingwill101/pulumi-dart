@@ -10,25 +10,20 @@ class DeviceStatusEndpointResponse {
 
   /// Creates a new [DeviceStatusEndpointResponse].
   /// [error] Defines the error related to this endpoint.
-  DeviceStatusEndpointResponse({required this.error});
+  DeviceStatusEndpointResponse({
+    required this.error,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error':
-          pulumi.Input.mapInputValue<StatusErrorResponse, Map<String, dynamic>>(
-            error,
-            (value) => value.toMap(),
-          ),
+      'error': pulumi.Input.mapInputValue<StatusErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
     };
   }
 
   factory DeviceStatusEndpointResponse.fromMap(Map<String, dynamic> map) {
     return DeviceStatusEndpointResponse(
-      error: pulumi.Input.fromValue(
-        StatusErrorResponse.fromMap(
-          (map['error']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      error: pulumi.Input.fromValue(StatusErrorResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

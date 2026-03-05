@@ -1150,73 +1150,50 @@ import 'replicated_vmstate.dart';
 class ReplicatedVM extends pulumi.CustomResource {
   /// One or more `managed_disk` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> managedDisks;
-
   /// Name of group in which all machines will replicate together and have shared crash consistent and app-consistent recovery points when failed over.
   late final pulumi.Output<String?> multiVmGroupName;
-
   /// The name of the replication for the replicated VM. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// One or more `network_interface` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
-
   /// Id of the policy to use for this replicated vm. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryReplicationPolicyId;
-
   /// The name of the vault that should be updated. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;
-
   /// Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Name of fabric that should contain this replication. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourceRecoveryFabricName;
-
   /// Name of the protection container to use. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourceRecoveryProtectionContainerName;
-
   /// Id of the VM to replicate Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourceVmId;
-
   /// Id of availability set that the new VM should belong to when a failover is done.
   late final pulumi.Output<String?> targetAvailabilitySetId;
-
   /// Id of the storage account which the new VM should used for boot diagnostic when a failover is done.
   late final pulumi.Output<String?> targetBootDiagnosticStorageAccountId;
-
   /// Id of the Capacity reservation group where the new VM should belong to when a failover is done.
   late final pulumi.Output<String?> targetCapacityReservationGroupId;
-
   /// Specifies the Edge Zone within the Azure Region where this Managed Kubernetes Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> targetEdgeZone;
-
   /// Network to use when a failover is done (recommended to set if any network_interface is configured for failover).
   late final pulumi.Output<String> targetNetworkId;
-
   /// Id of Proximity Placement Group the new VM should belong to when a failover is done.
   late final pulumi.Output<String?> targetProximityPlacementGroupId;
-
   /// Id of fabric where the VM replication should be handled when a failover is done. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetRecoveryFabricId;
-
   /// Id of protection container where the VM replication should be created when a failover is done. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetRecoveryProtectionContainerId;
-
   /// Id of resource group where the VM should be created when a failover is done. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetResourceGroupId;
-
   /// Id of the Virtual Machine Scale Set which the new Vm should belong to when a failover is done.
   late final pulumi.Output<String?> targetVirtualMachineScaleSetId;
-
   /// Specifies the size the Virtual Machine should have.
   late final pulumi.Output<String> targetVirtualMachineSize;
-
   /// Specifies the Availability Zone where the Failover VM should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> targetZone;
-
   /// Network to use when a test failover is done.
   late final pulumi.Output<String> testNetworkId;
-
   /// One or more `unmanaged_disk` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> unmanagedDisks;
 
@@ -1229,59 +1206,35 @@ class ReplicatedVM extends pulumi.CustomResource {
     ReplicatedVMArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/replicatedVM:ReplicatedVM',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:siterecovery/replicatedVM:ReplicatedVM',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     managedDisks = registerOutput<List<Map<String, dynamic>>>('managedDisks');
     multiVmGroupName = registerOutput<String?>('multiVmGroupName');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
-      'networkInterfaces',
-    );
-    recoveryReplicationPolicyId = registerOutput<String>(
-      'recoveryReplicationPolicyId',
-    );
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    recoveryReplicationPolicyId = registerOutput<String>('recoveryReplicationPolicyId');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sourceRecoveryFabricName = registerOutput<String>(
-      'sourceRecoveryFabricName',
-    );
-    sourceRecoveryProtectionContainerName = registerOutput<String>(
-      'sourceRecoveryProtectionContainerName',
-    );
+    sourceRecoveryFabricName = registerOutput<String>('sourceRecoveryFabricName');
+    sourceRecoveryProtectionContainerName = registerOutput<String>('sourceRecoveryProtectionContainerName');
     sourceVmId = registerOutput<String>('sourceVmId');
-    targetAvailabilitySetId = registerOutput<String?>(
-      'targetAvailabilitySetId',
-    );
-    targetBootDiagnosticStorageAccountId = registerOutput<String?>(
-      'targetBootDiagnosticStorageAccountId',
-    );
-    targetCapacityReservationGroupId = registerOutput<String?>(
-      'targetCapacityReservationGroupId',
-    );
+    targetAvailabilitySetId = registerOutput<String?>('targetAvailabilitySetId');
+    targetBootDiagnosticStorageAccountId = registerOutput<String?>('targetBootDiagnosticStorageAccountId');
+    targetCapacityReservationGroupId = registerOutput<String?>('targetCapacityReservationGroupId');
     targetEdgeZone = registerOutput<String?>('targetEdgeZone');
     targetNetworkId = registerOutput<String>('targetNetworkId');
-    targetProximityPlacementGroupId = registerOutput<String?>(
-      'targetProximityPlacementGroupId',
-    );
+    targetProximityPlacementGroupId = registerOutput<String?>('targetProximityPlacementGroupId');
     targetRecoveryFabricId = registerOutput<String>('targetRecoveryFabricId');
-    targetRecoveryProtectionContainerId = registerOutput<String>(
-      'targetRecoveryProtectionContainerId',
-    );
+    targetRecoveryProtectionContainerId = registerOutput<String>('targetRecoveryProtectionContainerId');
     targetResourceGroupId = registerOutput<String>('targetResourceGroupId');
-    targetVirtualMachineScaleSetId = registerOutput<String?>(
-      'targetVirtualMachineScaleSetId',
-    );
-    targetVirtualMachineSize = registerOutput<String>(
-      'targetVirtualMachineSize',
-    );
+    targetVirtualMachineScaleSetId = registerOutput<String?>('targetVirtualMachineScaleSetId');
+    targetVirtualMachineSize = registerOutput<String>('targetVirtualMachineSize');
     targetZone = registerOutput<String?>('targetZone');
     testNetworkId = registerOutput<String>('testNetworkId');
-    unmanagedDisks = registerOutput<List<Map<String, dynamic>>>(
-      'unmanagedDisks',
-    );
+    unmanagedDisks = registerOutput<List<Map<String, dynamic>>>('unmanagedDisks');
   }
 
   /// Gets an existing [ReplicatedVM] resource's state with the given [name] and [id].
@@ -1302,58 +1255,34 @@ class ReplicatedVM extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/replicatedVM:ReplicatedVM',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:siterecovery/replicatedVM:ReplicatedVM',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     managedDisks = registerOutput<List<Map<String, dynamic>>>('managedDisks');
     multiVmGroupName = registerOutput<String?>('multiVmGroupName');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
-      'networkInterfaces',
-    );
-    recoveryReplicationPolicyId = registerOutput<String>(
-      'recoveryReplicationPolicyId',
-    );
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    recoveryReplicationPolicyId = registerOutput<String>('recoveryReplicationPolicyId');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sourceRecoveryFabricName = registerOutput<String>(
-      'sourceRecoveryFabricName',
-    );
-    sourceRecoveryProtectionContainerName = registerOutput<String>(
-      'sourceRecoveryProtectionContainerName',
-    );
+    sourceRecoveryFabricName = registerOutput<String>('sourceRecoveryFabricName');
+    sourceRecoveryProtectionContainerName = registerOutput<String>('sourceRecoveryProtectionContainerName');
     sourceVmId = registerOutput<String>('sourceVmId');
-    targetAvailabilitySetId = registerOutput<String?>(
-      'targetAvailabilitySetId',
-    );
-    targetBootDiagnosticStorageAccountId = registerOutput<String?>(
-      'targetBootDiagnosticStorageAccountId',
-    );
-    targetCapacityReservationGroupId = registerOutput<String?>(
-      'targetCapacityReservationGroupId',
-    );
+    targetAvailabilitySetId = registerOutput<String?>('targetAvailabilitySetId');
+    targetBootDiagnosticStorageAccountId = registerOutput<String?>('targetBootDiagnosticStorageAccountId');
+    targetCapacityReservationGroupId = registerOutput<String?>('targetCapacityReservationGroupId');
     targetEdgeZone = registerOutput<String?>('targetEdgeZone');
     targetNetworkId = registerOutput<String>('targetNetworkId');
-    targetProximityPlacementGroupId = registerOutput<String?>(
-      'targetProximityPlacementGroupId',
-    );
+    targetProximityPlacementGroupId = registerOutput<String?>('targetProximityPlacementGroupId');
     targetRecoveryFabricId = registerOutput<String>('targetRecoveryFabricId');
-    targetRecoveryProtectionContainerId = registerOutput<String>(
-      'targetRecoveryProtectionContainerId',
-    );
+    targetRecoveryProtectionContainerId = registerOutput<String>('targetRecoveryProtectionContainerId');
     targetResourceGroupId = registerOutput<String>('targetResourceGroupId');
-    targetVirtualMachineScaleSetId = registerOutput<String?>(
-      'targetVirtualMachineScaleSetId',
-    );
-    targetVirtualMachineSize = registerOutput<String>(
-      'targetVirtualMachineSize',
-    );
+    targetVirtualMachineScaleSetId = registerOutput<String?>('targetVirtualMachineScaleSetId');
+    targetVirtualMachineSize = registerOutput<String>('targetVirtualMachineSize');
     targetZone = registerOutput<String?>('targetZone');
     testNetworkId = registerOutput<String>('testNetworkId');
-    unmanagedDisks = registerOutput<List<Map<String, dynamic>>>(
-      'unmanagedDisks',
-    );
+    unmanagedDisks = registerOutput<List<Map<String, dynamic>>>('unmanagedDisks');
   }
 }

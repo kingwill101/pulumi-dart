@@ -517,19 +517,14 @@ import 'classifier_xml_classifier.dart';
 class Classifier extends pulumi.CustomResource {
   /// A classifier for CSV content. Defined below.
   late final pulumi.Output<ClassifierCsvClassifier?> csvClassifier;
-
   /// A classifier that uses grok patterns. Defined below.
   late final pulumi.Output<ClassifierGrokClassifier?> grokClassifier;
-
   /// A classifier for JSON content. Defined below.
   late final pulumi.Output<ClassifierJsonClassifier?> jsonClassifier;
-
   /// The name of the classifier.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A classifier for XML content. Defined below.
   late final pulumi.Output<ClassifierXmlClassifier?> xmlClassifier;
 
@@ -542,53 +537,17 @@ class Classifier extends pulumi.CustomResource {
     ClassifierArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:glue/classifier:Classifier',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    csvClassifier = registerOutput<ClassifierCsvClassifier?>(
-      'csvClassifier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClassifierCsvClassifier.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    grokClassifier = registerOutput<ClassifierGrokClassifier?>(
-      'grokClassifier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClassifierGrokClassifier.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    jsonClassifier = registerOutput<ClassifierJsonClassifier?>(
-      'jsonClassifier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClassifierJsonClassifier.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:glue/classifier:Classifier',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    csvClassifier = registerOutput<ClassifierCsvClassifier?>('csvClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierCsvClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    grokClassifier = registerOutput<ClassifierGrokClassifier?>('grokClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierGrokClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jsonClassifier = registerOutput<ClassifierJsonClassifier?>('jsonClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierJsonClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    xmlClassifier = registerOutput<ClassifierXmlClassifier?>(
-      'xmlClassifier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClassifierXmlClassifier.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    xmlClassifier = registerOutput<ClassifierXmlClassifier?>('xmlClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierXmlClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Classifier] resource's state with the given [name] and [id].
@@ -609,52 +568,16 @@ class Classifier extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:glue/classifier:Classifier',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    csvClassifier = registerOutput<ClassifierCsvClassifier?>(
-      'csvClassifier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClassifierCsvClassifier.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    grokClassifier = registerOutput<ClassifierGrokClassifier?>(
-      'grokClassifier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClassifierGrokClassifier.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    jsonClassifier = registerOutput<ClassifierJsonClassifier?>(
-      'jsonClassifier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClassifierJsonClassifier.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:glue/classifier:Classifier',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    csvClassifier = registerOutput<ClassifierCsvClassifier?>('csvClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierCsvClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    grokClassifier = registerOutput<ClassifierGrokClassifier?>('grokClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierGrokClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jsonClassifier = registerOutput<ClassifierJsonClassifier?>('jsonClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierJsonClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    xmlClassifier = registerOutput<ClassifierXmlClassifier?>(
-      'xmlClassifier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClassifierXmlClassifier.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    xmlClassifier = registerOutput<ClassifierXmlClassifier?>('xmlClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierXmlClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

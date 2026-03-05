@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkRuleResponse {
   /// Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
   final pulumi.Input<String> id;
-
   /// Property to specify whether NRP will ignore the check if parent subnet has serviceEndpoints configured.
   final pulumi.Input<bool>? ignoreMissingVnetServiceEndpoint;
 
@@ -28,11 +27,8 @@ class VirtualNetworkRuleResponse {
   factory VirtualNetworkRuleResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
-      ignoreMissingVnetServiceEndpoint: (() {
-        final guardedValue = map['ignoreMissingVnetServiceEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      ignoreMissingVnetServiceEndpoint: (() { final guardedValue = map['ignoreMissingVnetServiceEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

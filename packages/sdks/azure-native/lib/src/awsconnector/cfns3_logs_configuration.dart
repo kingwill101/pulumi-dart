@@ -9,19 +9,20 @@ class CFNS3LogsConfiguration {
 
   /// Creates a new [CFNS3LogsConfiguration].
   /// [enable] Property enable
-  CFNS3LogsConfiguration({this.enable});
+  CFNS3LogsConfiguration({
+    this.enable,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enable': ?enable};
+    return <String, dynamic>{
+      'enable': ?enable,
+    };
   }
 
   factory CFNS3LogsConfiguration.fromMap(Map<String, dynamic> map) {
     return CFNS3LogsConfiguration(
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

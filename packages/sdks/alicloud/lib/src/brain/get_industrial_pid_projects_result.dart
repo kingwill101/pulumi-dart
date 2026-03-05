@@ -9,17 +9,13 @@ class GetIndustrialPidProjectsResult {
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of Pid Project names.
   final List<String> names;
   final String? outputFile;
-
   /// The ID of Pid Organization.
   final String? pidOrganizationId;
-
   /// The name of Pid Project.
   final String? pidProjectName;
-
   /// A list of Brain Industrial Pid Projects. Each element contains the following attributes:
   final List<GetIndustrialPidProjectsProject> projects;
 
@@ -52,11 +48,7 @@ class GetIndustrialPidProjectsResult {
       'outputFile': ?outputFile,
       'pidOrganizationId': ?pidOrganizationId,
       'pidProjectName': ?pidProjectName,
-      'projects':
-          pulumi.Input.encodeList<
-            GetIndustrialPidProjectsProject,
-            Map<String, dynamic>
-          >(projects, (value) => value.toMap()),
+      'projects': pulumi.Input.encodeList<GetIndustrialPidProjectsProject, Map<String, dynamic>>(projects, (value) => value.toMap()),
     };
   }
 
@@ -64,33 +56,13 @@ class GetIndustrialPidProjectsResult {
     return GetIndustrialPidProjectsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pidOrganizationId: (() {
-        final guardedValue = map['pidOrganizationId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pidProjectName: (() {
-        final guardedValue = map['pidProjectName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      projects: pulumi.Input.decodeList<GetIndustrialPidProjectsProject>(
-        map['projects']!,
-        (value) => GetIndustrialPidProjectsProject.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pidOrganizationId: (() { final guardedValue = map['pidOrganizationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pidProjectName: (() { final guardedValue = map['pidProjectName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      projects: pulumi.Input.decodeList<GetIndustrialPidProjectsProject>(map['projects']!, (value) => GetIndustrialPidProjectsProject.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

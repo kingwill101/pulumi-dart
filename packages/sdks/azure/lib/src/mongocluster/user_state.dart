@@ -7,16 +7,12 @@ import 'user_role.dart';
 class UserState {
   /// The identity provider type for the Mongo Cluster User. The only possible value is `MicrosoftEntraID`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? identityProviderType;
-
   /// The ID of the Mongo Cluster where the User should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? mongoClusterId;
-
   /// The Object ID of the Entra ID User or Service Principal. Changing this forces a new resource to be created.
   final pulumi.Input<String>? objectId;
-
   /// The principal type for the Mongo Cluster User. Possible values are `user` and `servicePrincipal`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? principalType;
-
   /// One or more `role` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<UserRole>>? roles;
 
@@ -40,52 +36,18 @@ class UserState {
       'mongoClusterId': ?mongoClusterId,
       'objectId': ?objectId,
       'principalType': ?principalType,
-      'roles':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<UserRole>,
-            List<Map<String, dynamic>>
-          >(
-            roles,
-            (value) => pulumi.Input.encodeList<UserRole, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'roles': ?pulumi.Input.mapOptionalInputValue<List<UserRole>, List<Map<String, dynamic>>>(roles, (value) => pulumi.Input.encodeList<UserRole, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      identityProviderType: (() {
-        final guardedValue = map['identityProviderType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mongoClusterId: (() {
-        final guardedValue = map['mongoClusterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      objectId: (() {
-        final guardedValue = map['objectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      principalType: (() {
-        final guardedValue = map['principalType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roles: (() {
-        final guardedValue = map['roles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<UserRole>(
-            guardedValue,
-            (value) => UserRole.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      identityProviderType: (() { final guardedValue = map['identityProviderType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mongoClusterId: (() { final guardedValue = map['mongoClusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principalType: (() { final guardedValue = map['principalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserRole>(guardedValue, (value) => UserRole.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

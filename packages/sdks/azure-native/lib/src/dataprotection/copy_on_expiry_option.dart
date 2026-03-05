@@ -10,10 +10,14 @@ class CopyOnExpiryOption {
 
   /// Creates a new [CopyOnExpiryOption].
   /// [objectType] Type of the specific object - used for deserializing
-  CopyOnExpiryOption({required this.objectType});
+  CopyOnExpiryOption({
+    required this.objectType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectType': objectType};
+    return <String, dynamic>{
+      'objectType': objectType,
+    };
   }
 
   factory CopyOnExpiryOption.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class CopyOnExpiryOption {
     );
   }
 }
+

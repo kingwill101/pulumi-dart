@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationAssignmentConfigurationState {
   /// ARN of the application.
   final pulumi.Input<String>? applicationArn;
-
   /// Indicates whether users must have an explicit assignment to access the application. If `false`, all users have access to the application.
   final pulumi.Input<bool>? assignmentRequired;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -31,25 +29,12 @@ class ApplicationAssignmentConfigurationState {
     };
   }
 
-  factory ApplicationAssignmentConfigurationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationAssignmentConfigurationState.fromMap(Map<String, dynamic> map) {
     return ApplicationAssignmentConfigurationState(
-      applicationArn: (() {
-        final guardedValue = map['applicationArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      assignmentRequired: (() {
-        final guardedValue = map['assignmentRequired'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationArn: (() { final guardedValue = map['applicationArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      assignmentRequired: (() { final guardedValue = map['assignmentRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

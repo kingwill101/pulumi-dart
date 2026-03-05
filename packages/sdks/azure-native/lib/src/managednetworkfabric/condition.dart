@@ -17,3 +17,4 @@ enum Condition {
     throw ArgumentError('Unknown Condition value: $value');
   }
 }
+

@@ -313,28 +313,20 @@ import 'spring_cloud_api_portal_state.dart';
 class SpringCloudApiPortal extends pulumi.CustomResource {
   /// Specifies whether the API try-out feature is enabled. When enabled, users can try out the API by sending requests and viewing responses in API portal.
   late final pulumi.Output<bool?> apiTryOutEnabled;
-
   /// Specifies a list of Spring Cloud Gateway.
   late final pulumi.Output<List<String>?> gatewayIds;
-
   /// is only https is allowed?
   late final pulumi.Output<bool?> httpsOnlyEnabled;
-
   /// Specifies the required instance count of the Spring Cloud API Portal. Possible Values are between `1` and `500`. Defaults to `1` if not specified.
   late final pulumi.Output<int?> instanceCount;
-
   /// The name which should be used for this Spring Cloud API Portal. Changing this forces a new Spring Cloud API Portal to be created. The only possible value is `default`.
   late final pulumi.Output<String> name;
-
   /// Is the public network access enabled?
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud API Portal to be created.
   late final pulumi.Output<String> springCloudServiceId;
-
   /// A `sso` block as defined below.
   late final pulumi.Output<SpringCloudApiPortalSso?> sso;
-
   /// TODO.
   late final pulumi.Output<String> url;
 
@@ -347,30 +339,19 @@ class SpringCloudApiPortal extends pulumi.CustomResource {
     SpringCloudApiPortalArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudApiPortal:SpringCloudApiPortal',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudApiPortal:SpringCloudApiPortal',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiTryOutEnabled = registerOutput<bool?>('apiTryOutEnabled');
     gatewayIds = registerOutput<List<String>?>('gatewayIds');
     httpsOnlyEnabled = registerOutput<bool?>('httpsOnlyEnabled');
     instanceCount = registerOutput<int?>('instanceCount');
     this.name = registerOutput<String>('name');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    sso = registerOutput<SpringCloudApiPortalSso?>(
-      'sso',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudApiPortalSso.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sso = registerOutput<SpringCloudApiPortalSso?>('sso', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudApiPortalSso.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     url = registerOutput<String>('url');
   }
 
@@ -392,30 +373,19 @@ class SpringCloudApiPortal extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudApiPortal:SpringCloudApiPortal',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudApiPortal:SpringCloudApiPortal',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiTryOutEnabled = registerOutput<bool?>('apiTryOutEnabled');
     gatewayIds = registerOutput<List<String>?>('gatewayIds');
     httpsOnlyEnabled = registerOutput<bool?>('httpsOnlyEnabled');
     instanceCount = registerOutput<int?>('instanceCount');
     this.name = registerOutput<String>('name');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    sso = registerOutput<SpringCloudApiPortalSso?>(
-      'sso',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudApiPortalSso.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sso = registerOutput<SpringCloudApiPortalSso?>('sso', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudApiPortalSso.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     url = registerOutput<String>('url');
   }
 }

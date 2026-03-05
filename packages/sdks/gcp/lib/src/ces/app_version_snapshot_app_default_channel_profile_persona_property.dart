@@ -13,21 +13,20 @@ class AppVersionSnapshotAppDefaultChannelProfilePersonaProperty {
 
   /// Creates a new [AppVersionSnapshotAppDefaultChannelProfilePersonaProperty].
   /// [persona] (Output)
-  AppVersionSnapshotAppDefaultChannelProfilePersonaProperty({this.persona});
+  AppVersionSnapshotAppDefaultChannelProfilePersonaProperty({
+    this.persona,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'persona': ?persona};
+    return <String, dynamic>{
+      'persona': ?persona,
+    };
   }
 
-  factory AppVersionSnapshotAppDefaultChannelProfilePersonaProperty.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotAppDefaultChannelProfilePersonaProperty.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppDefaultChannelProfilePersonaProperty(
-      persona: (() {
-        final guardedValue = map['persona'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      persona: (() { final guardedValue = map['persona']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

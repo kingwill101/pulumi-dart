@@ -311,10 +311,8 @@ import 'security_ip_state.dart';
 class SecurityIp extends pulumi.CustomResource {
   /// The cluster ID.
   late final pulumi.Output<String> dbInstanceId;
-
   /// The whitelist name.
   late final pulumi.Output<String> groupName;
-
   /// The IP address list under the whitelist group.
   late final pulumi.Output<String> securityIpList;
 
@@ -327,11 +325,11 @@ class SecurityIp extends pulumi.CustomResource {
     SecurityIpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbInstanceId = registerOutput<String>('dbInstanceId');
     groupName = registerOutput<String>('groupName');
     securityIpList = registerOutput<String>('securityIpList');
@@ -355,11 +353,11 @@ class SecurityIp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbInstanceId = registerOutput<String>('dbInstanceId');
     groupName = registerOutput<String>('groupName');
     securityIpList = registerOutput<String>('securityIpList');

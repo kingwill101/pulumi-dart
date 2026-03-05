@@ -1072,82 +1072,58 @@ import 'monitor_state.dart';
 class Monitor extends pulumi.CustomResource {
   /// The account in which the Synthetics monitor will be created.
   late final pulumi.Output<String> accountId;
-
   /// The multiple browsers list on which synthetic monitors will run. Valid values are `CHROME` and `FIREFOX`.
   late final pulumi.Output<List<String>?> browsers;
-
   /// Monitor should skip default HEAD request and instead use GET verb in check.
   ///
   /// The `BROWSER` monitor type supports the following additional arguments:
   late final pulumi.Output<bool?> bypassHeadRequest;
-
   /// Custom headers to use in monitor job. See Nested custom_header blocks below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> customHeaders;
-
   /// Device emulation orientation field. Valid values are `LANDSCAPE` and `PORTRAIT`.
   /// * We recommend you to use `devices` field instead of `device_type`,`device_orientation` fields, as it allows you to select multiple combinations of device types and orientations.
   late final pulumi.Output<String?> deviceOrientation;
-
   /// Device emulation type field. Valid values are `MOBILE` and `TABLET`.
   /// * We recommend you to use `devices` field instead of `device_type`,`device_orientation` fields, as it allows you to select multiple combinations of device types and orientations.
   late final pulumi.Output<String?> deviceType;
-
   /// The multiple devices list on which synthetic monitors will run. Valid values are `DESKTOP`, `MOBILE_LANDSCAPE`, `MOBILE_PORTRAIT`, `TABLET_LANDSCAPE` and `TABLET_PORTRAIT`.
   late final pulumi.Output<List<String>?> devices;
-
   /// Capture a screenshot during job execution.
   late final pulumi.Output<bool?> enableScreenshotOnFailureAndScript;
-
   /// The location the monitor will run from. Accepts a list of private location GUIDs. At least one of either `locations_public` or `locations_private` is required.
   late final pulumi.Output<List<String>?> locationsPrivates;
-
   /// The location the monitor will run from. Check out [this page](https://docs.newrelic.com/docs/synthetics/synthetic-monitoring/administration/synthetic-public-minion-ips/) for a list of valid public locations. You don't need the `AWS_` prefix as the provider uses NerdGraph. At least one of either `locations_public` or `location_private` is required.
   late final pulumi.Output<List<String>?> locationsPublics;
-
   /// The monitor id of the Synthetics monitor (not to be confused with the GUID of the monitor).
   late final pulumi.Output<String> monitorId;
-
   /// The human-readable identifier for the monitor.
   late final pulumi.Output<String> name;
-
   /// The interval at which this monitor should run. Valid values are `EVERY_MINUTE`, `EVERY_5_MINUTES`, `EVERY_10_MINUTES`, `EVERY_15_MINUTES`, `EVERY_30_MINUTES`, `EVERY_HOUR`, `EVERY_6_HOURS`, `EVERY_12_HOURS`, or `EVERY_DAY`.
   late final pulumi.Output<String> period;
-
   /// The interval in minutes at which Synthetic monitor should run.
   late final pulumi.Output<int> periodInMinutes;
-
   /// The runtime that the monitor will use to run jobs (`CHROME_BROWSER`).
   late final pulumi.Output<String?> runtimeType_;
-
   /// The specific version of the runtime type selected (`100`).
   late final pulumi.Output<String?> runtimeTypeVersion;
-
   /// The programing language that should execute the script.
   late final pulumi.Output<String?> scriptLanguage;
-
   /// The run state of the monitor. (`ENABLED` or `DISABLED`).
   late final pulumi.Output<String> status;
-
   /// The tags that will be associated with the monitor. See Nested tag blocks below for details.
   ///
   /// The `SIMPLE` monitor type supports the following additional arguments:
   late final pulumi.Output<List<Map<String, dynamic>>?> tags;
-
   /// Categorize redirects during a monitor job as a failure.
   late final pulumi.Output<bool?> treatRedirectAsFailure;
-
   /// The monitor type. Valid values are `SIMPLE` and `BROWSER`.
   late final pulumi.Output<String> type;
-
   /// The URI the monitor runs against.
   late final pulumi.Output<String?> uri;
-
   /// A boolean attribute to be set true by the customer, if they would like to use the unsupported legacy runtime of Synthetic Monitors by means of an exemption given until the October 22, 2024 Legacy Runtime EOL. Setting this attribute to true would allow skipping validation performed by the the New Relic Terraform Provider starting v3.43.0 to disallow using the legacy runtime with new monitors. This would, hence, allow creation of monitors in the legacy runtime until the October 22, 2024 Legacy Runtime EOL, if exempt by the API.
   late final pulumi.Output<bool?> useUnsupportedLegacyRuntime;
-
   /// Validation text for monitor to search for at given URI.
   late final pulumi.Output<String?> validationString;
-
   /// Monitor should validate SSL certificate chain.
   late final pulumi.Output<bool?> verifySsl;
 
@@ -1160,23 +1136,19 @@ class Monitor extends pulumi.CustomResource {
     MonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:synthetics/monitor:Monitor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:synthetics/monitor:Monitor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     browsers = registerOutput<List<String>?>('browsers');
     bypassHeadRequest = registerOutput<bool?>('bypassHeadRequest');
-    customHeaders = registerOutput<List<Map<String, dynamic>>?>(
-      'customHeaders',
-    );
+    customHeaders = registerOutput<List<Map<String, dynamic>>?>('customHeaders');
     deviceOrientation = registerOutput<String?>('deviceOrientation');
     deviceType = registerOutput<String?>('deviceType');
     devices = registerOutput<List<String>?>('devices');
-    enableScreenshotOnFailureAndScript = registerOutput<bool?>(
-      'enableScreenshotOnFailureAndScript',
-    );
+    enableScreenshotOnFailureAndScript = registerOutput<bool?>('enableScreenshotOnFailureAndScript');
     locationsPrivates = registerOutput<List<String>?>('locationsPrivates');
     locationsPublics = registerOutput<List<String>?>('locationsPublics');
     monitorId = registerOutput<String>('monitorId');
@@ -1191,9 +1163,7 @@ class Monitor extends pulumi.CustomResource {
     treatRedirectAsFailure = registerOutput<bool?>('treatRedirectAsFailure');
     type = registerOutput<String>('type');
     uri = registerOutput<String?>('uri');
-    useUnsupportedLegacyRuntime = registerOutput<bool?>(
-      'useUnsupportedLegacyRuntime',
-    );
+    useUnsupportedLegacyRuntime = registerOutput<bool?>('useUnsupportedLegacyRuntime');
     validationString = registerOutput<String?>('validationString');
     verifySsl = registerOutput<bool?>('verifySsl');
   }
@@ -1216,23 +1186,19 @@ class Monitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:synthetics/monitor:Monitor',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:synthetics/monitor:Monitor',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     browsers = registerOutput<List<String>?>('browsers');
     bypassHeadRequest = registerOutput<bool?>('bypassHeadRequest');
-    customHeaders = registerOutput<List<Map<String, dynamic>>?>(
-      'customHeaders',
-    );
+    customHeaders = registerOutput<List<Map<String, dynamic>>?>('customHeaders');
     deviceOrientation = registerOutput<String?>('deviceOrientation');
     deviceType = registerOutput<String?>('deviceType');
     devices = registerOutput<List<String>?>('devices');
-    enableScreenshotOnFailureAndScript = registerOutput<bool?>(
-      'enableScreenshotOnFailureAndScript',
-    );
+    enableScreenshotOnFailureAndScript = registerOutput<bool?>('enableScreenshotOnFailureAndScript');
     locationsPrivates = registerOutput<List<String>?>('locationsPrivates');
     locationsPublics = registerOutput<List<String>?>('locationsPublics');
     monitorId = registerOutput<String>('monitorId');
@@ -1247,9 +1213,7 @@ class Monitor extends pulumi.CustomResource {
     treatRedirectAsFailure = registerOutput<bool?>('treatRedirectAsFailure');
     type = registerOutput<String>('type');
     uri = registerOutput<String?>('uri');
-    useUnsupportedLegacyRuntime = registerOutput<bool?>(
-      'useUnsupportedLegacyRuntime',
-    );
+    useUnsupportedLegacyRuntime = registerOutput<bool?>('useUnsupportedLegacyRuntime');
     validationString = registerOutput<String?>('validationString');
     verifySsl = registerOutput<bool?>('verifySsl');
   }

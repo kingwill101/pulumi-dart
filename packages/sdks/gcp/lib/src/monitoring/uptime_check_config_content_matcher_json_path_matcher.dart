@@ -7,7 +7,6 @@ class UptimeCheckConfigContentMatcherJsonPathMatcher {
   /// Default value is `EXACT_MATCH`.
   /// Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
   final pulumi.Input<String>? jsonMatcher;
-
   /// JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
   final pulumi.Input<String> jsonPath;
 
@@ -20,19 +19,17 @@ class UptimeCheckConfigContentMatcherJsonPathMatcher {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'jsonMatcher': ?jsonMatcher, 'jsonPath': jsonPath};
+    return <String, dynamic>{
+      'jsonMatcher': ?jsonMatcher,
+      'jsonPath': jsonPath,
+    };
   }
 
-  factory UptimeCheckConfigContentMatcherJsonPathMatcher.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UptimeCheckConfigContentMatcherJsonPathMatcher.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigContentMatcherJsonPathMatcher(
-      jsonMatcher: (() {
-        final guardedValue = map['jsonMatcher'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      jsonMatcher: (() { final guardedValue = map['jsonMatcher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jsonPath: pulumi.Input.fromValue(map['jsonPath'] as String),
     );
   }
 }
+

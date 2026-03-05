@@ -6,28 +6,20 @@ import 'get_confidential_ledger_certificate_based_security_principal.dart';
 
 /// Result data returned by getConfidentialLedger.
 class GetConfidentialLedgerResult {
-  final List<GetConfidentialLedgerAzureadBasedServicePrincipal>
-  azureadBasedServicePrincipals;
-  final List<GetConfidentialLedgerCertificateBasedSecurityPrincipal>
-  certificateBasedSecurityPrincipals;
-
+  final List<GetConfidentialLedgerAzureadBasedServicePrincipal> azureadBasedServicePrincipals;
+  final List<GetConfidentialLedgerCertificateBasedSecurityPrincipal> certificateBasedSecurityPrincipals;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Identity Service Endpoint for this Confidential Ledger.
   final String identityServiceEndpoint;
-
   /// The Endpoint for this Confidential Ledger.
   final String ledgerEndpoint;
-
   /// The type of Confidential Ledger.
   final String ledgerType;
-
   /// The supported Azure location where the Confidential Ledger exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags to assign to the Confidential Ledger.
   final Map<String, String> tags;
 
@@ -57,16 +49,8 @@ class GetConfidentialLedgerResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureadBasedServicePrincipals':
-          pulumi.Input.encodeList<
-            GetConfidentialLedgerAzureadBasedServicePrincipal,
-            Map<String, dynamic>
-          >(azureadBasedServicePrincipals, (value) => value.toMap()),
-      'certificateBasedSecurityPrincipals':
-          pulumi.Input.encodeList<
-            GetConfidentialLedgerCertificateBasedSecurityPrincipal,
-            Map<String, dynamic>
-          >(certificateBasedSecurityPrincipals, (value) => value.toMap()),
+      'azureadBasedServicePrincipals': pulumi.Input.encodeList<GetConfidentialLedgerAzureadBasedServicePrincipal, Map<String, dynamic>>(azureadBasedServicePrincipals, (value) => value.toMap()),
+      'certificateBasedSecurityPrincipals': pulumi.Input.encodeList<GetConfidentialLedgerCertificateBasedSecurityPrincipal, Map<String, dynamic>>(certificateBasedSecurityPrincipals, (value) => value.toMap()),
       'id': id,
       'identityServiceEndpoint': identityServiceEndpoint,
       'ledgerEndpoint': ledgerEndpoint,
@@ -80,26 +64,8 @@ class GetConfidentialLedgerResult {
 
   factory GetConfidentialLedgerResult.fromMap(Map<String, dynamic> map) {
     return GetConfidentialLedgerResult(
-      azureadBasedServicePrincipals:
-          pulumi.Input.decodeList<
-            GetConfidentialLedgerAzureadBasedServicePrincipal
-          >(
-            map['azureadBasedServicePrincipals']!,
-            (value) =>
-                GetConfidentialLedgerAzureadBasedServicePrincipal.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-      certificateBasedSecurityPrincipals:
-          pulumi.Input.decodeList<
-            GetConfidentialLedgerCertificateBasedSecurityPrincipal
-          >(
-            map['certificateBasedSecurityPrincipals']!,
-            (value) =>
-                GetConfidentialLedgerCertificateBasedSecurityPrincipal.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      azureadBasedServicePrincipals: pulumi.Input.decodeList<GetConfidentialLedgerAzureadBasedServicePrincipal>(map['azureadBasedServicePrincipals']!, (value) => GetConfidentialLedgerAzureadBasedServicePrincipal.fromMap((value as Map).cast<String, dynamic>())),
+      certificateBasedSecurityPrincipals: pulumi.Input.decodeList<GetConfidentialLedgerCertificateBasedSecurityPrincipal>(map['certificateBasedSecurityPrincipals']!, (value) => GetConfidentialLedgerCertificateBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       identityServiceEndpoint: map['identityServiceEndpoint'] as String,
       ledgerEndpoint: map['ledgerEndpoint'] as String,
@@ -111,3 +77,4 @@ class GetConfidentialLedgerResult {
     );
   }
 }
+

@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessControlListActionResponse {
   /// Name of the counter block to get match count information.
   final pulumi.Input<String>? counterName;
-
   /// Type of actions that can be performed.
   final pulumi.Input<String>? type;
 
   /// Creates a new [AccessControlListActionResponse].
   /// [counterName] Name of the counter block to get match count information.
   /// [type] Type of actions that can be performed.
-  AccessControlListActionResponse({this.counterName, this.type});
+  AccessControlListActionResponse({
+    this.counterName,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'counterName': ?counterName, 'type': ?type};
+    return <String, dynamic>{
+      'counterName': ?counterName,
+      'type': ?type,
+    };
   }
 
   factory AccessControlListActionResponse.fromMap(Map<String, dynamic> map) {
     return AccessControlListActionResponse(
-      counterName: (() {
-        final guardedValue = map['counterName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      counterName: (() { final guardedValue = map['counterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

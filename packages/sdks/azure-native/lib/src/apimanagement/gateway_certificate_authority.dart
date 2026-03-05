@@ -146,13 +146,10 @@ import 'gateway_certificate_authority_args.dart';
 class GatewayCertificateAuthority extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Determines whether certificate authority is trusted.
   late final pulumi.Output<bool?> isTrusted;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -165,11 +162,11 @@ class GatewayCertificateAuthority extends pulumi.CustomResource {
     GatewayCertificateAuthorityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:GatewayCertificateAuthority',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:GatewayCertificateAuthority',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     isTrusted = registerOutput<bool?>('isTrusted');
     this.name = registerOutput<String>('name');

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpRouteTargetResponse {
   /// Container App Name to route requests to
   final pulumi.Input<String> containerApp;
-
   /// Label/Revision to route requests to
   final pulumi.Input<String>? label;
-
   /// Revision to route requests to
   final pulumi.Input<String>? revision;
-
   /// Weighted routing
   final pulumi.Input<int>? weight;
 
@@ -40,21 +37,10 @@ class HttpRouteTargetResponse {
   factory HttpRouteTargetResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteTargetResponse(
       containerApp: pulumi.Input.fromValue(map['containerApp'] as String),
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      revision: (() {
-        final guardedValue = map['revision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      weight: (() {
-        final guardedValue = map['weight'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

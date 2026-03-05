@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttachedVolume {
   /// DevicePath represents the device path where the volume should be available
   final pulumi.Input<String> devicePath;
-
   /// Name of the attached volume
   final pulumi.Input<String> name;
 
   /// Creates a new [AttachedVolume].
   /// [devicePath] DevicePath represents the device path where the volume should be available
   /// [name] Name of the attached volume
-  AttachedVolume({required this.devicePath, required this.name});
+  AttachedVolume({
+    required this.devicePath,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'devicePath': devicePath, 'name': name};
+    return <String, dynamic>{
+      'devicePath': devicePath,
+      'name': name,
+    };
   }
 
   factory AttachedVolume.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class AttachedVolume {
     );
   }
 }
+

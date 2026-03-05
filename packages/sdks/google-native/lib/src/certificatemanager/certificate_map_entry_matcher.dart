@@ -15,3 +15,4 @@ enum CertificateMapEntryMatcher {
     throw ArgumentError('Unknown CertificateMapEntryMatcher value: $value');
   }
 }
+

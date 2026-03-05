@@ -7,10 +7,8 @@ import 'resource_collection_response_value.dart';
 class ListWorkspacePolicyFragmentReferencesResult {
   /// Total record count number.
   final double? count;
-
   /// Next page link if any.
   final String? nextLink;
-
   /// A collection of resources.
   final List<ResourceCollectionResponseValue>? value;
 
@@ -28,41 +26,16 @@ class ListWorkspacePolicyFragmentReferencesResult {
     return <String, dynamic>{
       'count': ?count,
       'nextLink': ?nextLink,
-      'value': ?(() {
-        final guardedValue = value;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          ResourceCollectionResponseValue,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceCollectionResponseValue, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
-  factory ListWorkspacePolicyFragmentReferencesResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListWorkspacePolicyFragmentReferencesResult.fromMap(Map<String, dynamic> map) {
     return ListWorkspacePolicyFragmentReferencesResult(
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
-      nextLink: (() {
-        final guardedValue = map['nextLink'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<ResourceCollectionResponseValue>(
-          guardedValue,
-          (value) => ResourceCollectionResponseValue.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceCollectionResponseValue>(guardedValue, (value) => ResourceCollectionResponseValue.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

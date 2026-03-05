@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkAttachmentArgs {
   /// The ID of the CCN instance.
   final pulumi.Input<String> ccnId;
-
   /// The ID of the Smart Access Gateway instance.
   final pulumi.Input<String> sagId;
 
   /// Creates a new [NetworkAttachmentArgs].
   /// [ccnId] The ID of the CCN instance.
   /// [sagId] The ID of the Smart Access Gateway instance.
-  NetworkAttachmentArgs({required this.ccnId, required this.sagId});
+  NetworkAttachmentArgs({
+    required this.ccnId,
+    required this.sagId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ccnId': ccnId, 'sagId': sagId};
+    return <String, dynamic>{
+      'ccnId': ccnId,
+      'sagId': sagId,
+    };
   }
 
   factory NetworkAttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class NetworkAttachmentArgs {
     );
   }
 }
+

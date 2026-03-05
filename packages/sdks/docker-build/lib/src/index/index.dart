@@ -435,20 +435,16 @@ class Index extends pulumi.CustomResource {
   ///
   /// Defaults to `true`.
   late final pulumi.Output<bool?> push;
-
   /// The pushed tag with digest.
   ///
   /// Identical to the tag if the index was not pushed.
   late final pulumi.Output<String> ref;
-
   /// Authentication for the registry where the tagged index will be pushed.
   ///
   /// Credentials can also be included with the provider's configuration.
   late final pulumi.Output<Registry?> registry;
-
   /// Existing images to include in the index.
   late final pulumi.Output<List<String>> sources;
-
   /// The tag to apply to the index.
   late final pulumi.Output<String> tag;
 
@@ -456,23 +452,19 @@ class Index extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Index]. {@macro pulumi_index_index_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Index(String name, {IndexArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'docker-build:index:Index',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Index(
+    String name, {
+    IndexArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'docker-build:index:Index',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     push = registerOutput<bool?>('push');
     ref = registerOutput<String>('ref');
-    registry = registerOutput<Registry?>(
-      'registry',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return Registry.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    registry = registerOutput<Registry?>('registry', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Registry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sources = registerOutput<List<String>>('sources');
     tag = registerOutput<String>('tag');
   }

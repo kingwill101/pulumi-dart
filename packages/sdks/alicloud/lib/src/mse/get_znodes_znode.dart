@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZnodesZnode {
   /// The ID of the Cluster.
   final pulumi.Input<String> clusterId;
-
   /// The Node data.
   final pulumi.Input<String> data;
-
   /// Node list information, the value is as follows:
   final pulumi.Input<bool> dir;
-
   /// The ID of the Znode. The value formats as `&lt;cluster_id&gt;:&lt;path&gt;`.
   final pulumi.Input<String> id;
-
   /// The Node path.
   final pulumi.Input<String> path;
-
   /// The Node name.
   final pulumi.Input<String> znodeName;
 
@@ -59,3 +54,4 @@ class GetZnodesZnode {
     );
   }
 }
+

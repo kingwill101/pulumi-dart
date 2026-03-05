@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExpressRouteGatewayArgs {
   /// The name of the ExpressRoute gateway.
   final pulumi.Input<String> expressRouteGatewayName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetExpressRouteGatewayArgs {
 
   factory GetExpressRouteGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteGatewayArgs(
-      expressRouteGatewayName: pulumi.Input.fromValue(
-        map['expressRouteGatewayName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      expressRouteGatewayName: pulumi.Input.fromValue(map['expressRouteGatewayName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

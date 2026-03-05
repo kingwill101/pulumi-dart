@@ -235,28 +235,20 @@ import 'project_state.dart';
 class Project extends pulumi.CustomResource {
   /// Workspace Description
   late final pulumi.Output<String?> description;
-
   /// Is Development Environment Enabled
   late final pulumi.Output<bool> devEnvironmentEnabled;
-
   /// Is Development Role Disabled
   late final pulumi.Output<bool> devRoleDisabled;
-
   /// Workspace Display Name
   late final pulumi.Output<String> displayName;
-
   /// Create PAI Workspace Together
   late final pulumi.Output<bool> paiTaskEnabled;
-
   /// Workspace Name
   late final pulumi.Output<String> projectName;
-
   /// Aliyun Resource Group Id
   late final pulumi.Output<String> resourceGroupId;
-
   /// Workspace Status
   late final pulumi.Output<String> status;
-
   /// Aliyun Resource Tag
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -269,11 +261,11 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dataworks/project:Project',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dataworks/project:Project',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     devEnvironmentEnabled = registerOutput<bool>('devEnvironmentEnabled');
     devRoleDisabled = registerOutput<bool>('devRoleDisabled');
@@ -303,11 +295,11 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dataworks/project:Project',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dataworks/project:Project',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     devEnvironmentEnabled = registerOutput<bool>('devEnvironmentEnabled');
     devRoleDisabled = registerOutput<bool>('devRoleDisabled');

@@ -7,7 +7,6 @@ import 'sasl_remote_broker_basic_authentication_token_response.dart';
 class SaslRemoteBrokerBasicAuthenticationResponse {
   /// Sasl Mechanism for remote broker authentication.
   final pulumi.Input<String> saslType;
-
   /// Sasl token for remote broker authentication.
   final pulumi.Input<SaslRemoteBrokerBasicAuthenticationTokenResponse> token;
 
@@ -22,24 +21,15 @@ class SaslRemoteBrokerBasicAuthenticationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'saslType': saslType,
-      'token':
-          pulumi.Input.mapInputValue<
-            SaslRemoteBrokerBasicAuthenticationTokenResponse,
-            Map<String, dynamic>
-          >(token, (value) => value.toMap()),
+      'token': pulumi.Input.mapInputValue<SaslRemoteBrokerBasicAuthenticationTokenResponse, Map<String, dynamic>>(token, (value) => value.toMap()),
     };
   }
 
-  factory SaslRemoteBrokerBasicAuthenticationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SaslRemoteBrokerBasicAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return SaslRemoteBrokerBasicAuthenticationResponse(
       saslType: pulumi.Input.fromValue(map['saslType'] as String),
-      token: pulumi.Input.fromValue(
-        SaslRemoteBrokerBasicAuthenticationTokenResponse.fromMap(
-          (map['token']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      token: pulumi.Input.fromValue(SaslRemoteBrokerBasicAuthenticationTokenResponse.fromMap((map['token']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

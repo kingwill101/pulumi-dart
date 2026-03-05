@@ -151,19 +151,14 @@ import 'honeypot_node_state.dart';
 class HoneypotNode extends pulumi.CustomResource {
   /// Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
   late final pulumi.Output<bool?> allowHoneypotAccessInternet;
-
   /// Number of probes available.
   late final pulumi.Output<int> availableProbeNum;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// Management node name.
   late final pulumi.Output<String> nodeName;
-
   /// Release the collection of network segments.
   late final pulumi.Output<List<String>?> securityGroupProbeIpLists;
-
   /// The status of the resource
   late final pulumi.Output<int> status;
 
@@ -176,20 +171,16 @@ class HoneypotNode extends pulumi.CustomResource {
     HoneypotNodeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/honeypotNode:HoneypotNode',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowHoneypotAccessInternet = registerOutput<bool?>(
-      'allowHoneypotAccessInternet',
-    );
+          'alicloud:threatdetection/honeypotNode:HoneypotNode',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowHoneypotAccessInternet = registerOutput<bool?>('allowHoneypotAccessInternet');
     availableProbeNum = registerOutput<int>('availableProbeNum');
     createTime = registerOutput<String>('createTime');
     nodeName = registerOutput<String>('nodeName');
-    securityGroupProbeIpLists = registerOutput<List<String>?>(
-      'securityGroupProbeIpLists',
-    );
+    securityGroupProbeIpLists = registerOutput<List<String>?>('securityGroupProbeIpLists');
     status = registerOutput<int>('status');
   }
 
@@ -211,20 +202,16 @@ class HoneypotNode extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/honeypotNode:HoneypotNode',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowHoneypotAccessInternet = registerOutput<bool?>(
-      'allowHoneypotAccessInternet',
-    );
+          'alicloud:threatdetection/honeypotNode:HoneypotNode',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowHoneypotAccessInternet = registerOutput<bool?>('allowHoneypotAccessInternet');
     availableProbeNum = registerOutput<int>('availableProbeNum');
     createTime = registerOutput<String>('createTime');
     nodeName = registerOutput<String>('nodeName');
-    securityGroupProbeIpLists = registerOutput<List<String>?>(
-      'securityGroupProbeIpLists',
-    );
+    securityGroupProbeIpLists = registerOutput<List<String>?>('securityGroupProbeIpLists');
     status = registerOutput<int>('status');
   }
 }

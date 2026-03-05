@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesFilesystemSourceVolume {
   /// Defines the pool from which the volume of the filesystem is sourced.
   final pulumi.Input<String> pool;
-
   /// Indicates the specific volume name sourced for the filesystem.
   final pulumi.Input<String> volume;
 
@@ -18,15 +17,17 @@ class DomainDevicesFilesystemSourceVolume {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pool': pool, 'volume': volume};
+    return <String, dynamic>{
+      'pool': pool,
+      'volume': volume,
+    };
   }
 
-  factory DomainDevicesFilesystemSourceVolume.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesFilesystemSourceVolume.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemSourceVolume(
       pool: pulumi.Input.fromValue(map['pool'] as String),
       volume: pulumi.Input.fromValue(map['volume'] as String),
     );
   }
 }
+

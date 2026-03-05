@@ -9,10 +9,14 @@ class RoleSinkInfo {
 
   /// Creates a new [RoleSinkInfo].
   /// [roleId] Compute role ID.
-  RoleSinkInfo({required this.roleId});
+  RoleSinkInfo({
+    required this.roleId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'roleId': roleId};
+    return <String, dynamic>{
+      'roleId': roleId,
+    };
   }
 
   factory RoleSinkInfo.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class RoleSinkInfo {
     );
   }
 }
+

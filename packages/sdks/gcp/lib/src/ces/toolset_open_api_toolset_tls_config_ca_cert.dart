@@ -14,7 +14,6 @@ class ToolsetOpenApiToolsetTlsConfigCaCert {
   /// -out example.com.crt \
   /// -extfile &lt;(printf "\nsubjectAltName='DNS:www.example.com'")
   final pulumi.Input<String> cert;
-
   /// The name of the allowed custom CA certificates. This
   /// can be used to disambiguate the custom CA certificates.
   final pulumi.Input<String> displayName;
@@ -28,15 +27,17 @@ class ToolsetOpenApiToolsetTlsConfigCaCert {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cert': cert, 'displayName': displayName};
+    return <String, dynamic>{
+      'cert': cert,
+      'displayName': displayName,
+    };
   }
 
-  factory ToolsetOpenApiToolsetTlsConfigCaCert.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ToolsetOpenApiToolsetTlsConfigCaCert.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetTlsConfigCaCert(
       cert: pulumi.Input.fromValue(map['cert'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
     );
   }
 }
+

@@ -32,10 +32,9 @@ class GetCustomerArgs {
   factory GetCustomerArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomerArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      channelPartnerLinkId: pulumi.Input.fromValue(
-        map['channelPartnerLinkId'] as String,
-      ),
+      channelPartnerLinkId: pulumi.Input.fromValue(map['channelPartnerLinkId'] as String),
       customerId: pulumi.Input.fromValue(map['customerId'] as String),
     );
   }
 }
+

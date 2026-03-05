@@ -10,17 +10,13 @@ enum HttpRouteRedirectResponseCodeNetworkservicesV1beta1 {
   const HttpRouteRedirectResponseCodeNetworkservicesV1beta1(this.wireValue);
   final String wireValue;
 
-  static HttpRouteRedirectResponseCodeNetworkservicesV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in HttpRouteRedirectResponseCodeNetworkservicesV1beta1.values) {
+  static HttpRouteRedirectResponseCodeNetworkservicesV1beta1 fromValue(String value) {
+    for (final item in HttpRouteRedirectResponseCodeNetworkservicesV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown HttpRouteRedirectResponseCodeNetworkservicesV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown HttpRouteRedirectResponseCodeNetworkservicesV1beta1 value: $value');
   }
 }
+

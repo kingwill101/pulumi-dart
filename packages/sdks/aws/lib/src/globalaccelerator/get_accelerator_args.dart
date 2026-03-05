@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAcceleratorArgs {
   /// Full ARN of the Global Accelerator.
   final pulumi.Input<String>? arn;
-
   /// Unique name of the Global Accelerator.
   ///
   /// &gt; **NOTE:** When both `arn` and `name` are specified, `arn` takes precedence.
@@ -18,24 +17,23 @@ class GetAcceleratorArgs {
   /// Creates a new [GetAcceleratorArgs].
   /// [arn] Full ARN of the Global Accelerator.
   /// [name] Unique name of the Global Accelerator.
-  GetAcceleratorArgs({this.arn, this.name});
+  GetAcceleratorArgs({
+    this.arn,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': ?arn, 'name': ?name};
+    return <String, dynamic>{
+      'arn': ?arn,
+      'name': ?name,
+    };
   }
 
   factory GetAcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return GetAcceleratorArgs(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

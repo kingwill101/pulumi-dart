@@ -8,10 +8,14 @@ class GetInstanceManagedBackupSource {
 
   /// Creates a new [GetInstanceManagedBackupSource].
   /// [backup] Example: 'projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}'.
-  GetInstanceManagedBackupSource({required this.backup});
+  GetInstanceManagedBackupSource({
+    required this.backup,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'backup': backup};
+    return <String, dynamic>{
+      'backup': backup,
+    };
   }
 
   factory GetInstanceManagedBackupSource.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetInstanceManagedBackupSource {
     );
   }
 }
+

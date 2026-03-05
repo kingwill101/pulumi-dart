@@ -170,16 +170,12 @@ import 'management_association_properties_response.dart';
 class ManagementAssociation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource location
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Properties for ManagementAssociation object supported by the OperationsManagement resource provider.
   late final pulumi.Output<ManagementAssociationPropertiesResponse> properties;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -192,24 +188,15 @@ class ManagementAssociation extends pulumi.CustomResource {
     ManagementAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:operationsmanagement:ManagementAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:operationsmanagement:ManagementAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ManagementAssociationPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagementAssociationPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ManagementAssociationPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementAssociationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

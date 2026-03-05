@@ -6,14 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MiSqlConnectionInfo {
   /// Resource id for Azure SQL database Managed instance
   final pulumi.Input<String> managedInstanceResourceId;
-
   /// Password credential.
   final pulumi.Input<String>? password;
-
   /// Type of connection info
   /// Expected value is 'MiSqlConnectionInfo'.
   final pulumi.Input<String> type;
-
   /// User name
   final pulumi.Input<String>? userName;
 
@@ -40,20 +37,11 @@ class MiSqlConnectionInfo {
 
   factory MiSqlConnectionInfo.fromMap(Map<String, dynamic> map) {
     return MiSqlConnectionInfo(
-      managedInstanceResourceId: pulumi.Input.fromValue(
-        map['managedInstanceResourceId'] as String,
-      ),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      managedInstanceResourceId: pulumi.Input.fromValue(map['managedInstanceResourceId'] as String),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

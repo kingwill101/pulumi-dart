@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutomationRuleRepairRolloutRuleRepairPhaseRetry {
   /// Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
   final pulumi.Input<String> attempts;
-
   /// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if wait is 0.
   /// Possible values are: `BACKOFF_MODE_UNSPECIFIED`, `BACKOFF_MODE_LINEAR`, `BACKOFF_MODE_EXPONENTIAL`.
   final pulumi.Input<String>? backoffMode;
-
   /// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d. A duration in seconds with up to nine fractional digits, ending with 's'. Example: `3.5s`.
   final pulumi.Input<String>? wait;
 
@@ -31,21 +29,12 @@ class AutomationRuleRepairRolloutRuleRepairPhaseRetry {
     };
   }
 
-  factory AutomationRuleRepairRolloutRuleRepairPhaseRetry.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutomationRuleRepairRolloutRuleRepairPhaseRetry.fromMap(Map<String, dynamic> map) {
     return AutomationRuleRepairRolloutRuleRepairPhaseRetry(
       attempts: pulumi.Input.fromValue(map['attempts'] as String),
-      backoffMode: (() {
-        final guardedValue = map['backoffMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      wait: (() {
-        final guardedValue = map['wait'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backoffMode: (() { final guardedValue = map['backoffMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      wait: (() { final guardedValue = map['wait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

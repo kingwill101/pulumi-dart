@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExtensionArgs {
   /// The name of the proxy resource holding details of HCI ArcSetting information.
   final pulumi.Input<String> arcSettingName;
-
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// The name of the machine extension.
   final pulumi.Input<String> extensionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -45,9 +42,8 @@ class GetExtensionArgs {
       arcSettingName: pulumi.Input.fromValue(map['arcSettingName'] as String),
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       extensionName: pulumi.Input.fromValue(map['extensionName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

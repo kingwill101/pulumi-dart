@@ -8,10 +8,14 @@ class GetManagedRuleGroupAvailableLabel {
 
   /// Creates a new [GetManagedRuleGroupAvailableLabel].
   /// [name] Managed rule group name.
-  GetManagedRuleGroupAvailableLabel({required this.name});
+  GetManagedRuleGroupAvailableLabel({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetManagedRuleGroupAvailableLabel.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetManagedRuleGroupAvailableLabel {
     );
   }
 }
+

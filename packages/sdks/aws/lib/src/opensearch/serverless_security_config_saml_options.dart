@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerlessSecurityConfigSamlOptions {
   /// Group attribute for this SAML integration.
   final pulumi.Input<String>? groupAttribute;
-
   /// The XML IdP metadata file generated from your identity provider.
   final pulumi.Input<String> metadata;
-
   /// Session timeout, in minutes. Minimum is 5 minutes and maximum is 720 minutes (12 hours). Default is 60 minutes.
   final pulumi.Input<int>? sessionTimeout;
-
   /// User attribute for this SAML integration.
   final pulumi.Input<String>? userAttribute;
 
@@ -36,26 +33,13 @@ class ServerlessSecurityConfigSamlOptions {
     };
   }
 
-  factory ServerlessSecurityConfigSamlOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServerlessSecurityConfigSamlOptions.fromMap(Map<String, dynamic> map) {
     return ServerlessSecurityConfigSamlOptions(
-      groupAttribute: (() {
-        final guardedValue = map['groupAttribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      groupAttribute: (() { final guardedValue = map['groupAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: pulumi.Input.fromValue(map['metadata'] as String),
-      sessionTimeout: (() {
-        final guardedValue = map['sessionTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      userAttribute: (() {
-        final guardedValue = map['userAttribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sessionTimeout: (() { final guardedValue = map['sessionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      userAttribute: (() { final guardedValue = map['userAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

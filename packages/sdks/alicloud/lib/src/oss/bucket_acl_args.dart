@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketAclArgs {
   /// Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
   final pulumi.Input<String> acl;
-
   /// The name of the bucket to which the current ACL configuration belongs.
   final pulumi.Input<String> bucket;
 
   /// Creates a new [BucketAclArgs].
   /// [acl] Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
   /// [bucket] The name of the bucket to which the current ACL configuration belongs.
-  BucketAclArgs({required this.acl, required this.bucket});
+  BucketAclArgs({
+    required this.acl,
+    required this.bucket,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'acl': acl, 'bucket': bucket};
+    return <String, dynamic>{
+      'acl': acl,
+      'bucket': bucket,
+    };
   }
 
   factory BucketAclArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class BucketAclArgs {
     );
   }
 }
+

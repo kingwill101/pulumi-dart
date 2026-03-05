@@ -2,9 +2,7 @@
 enum EncryptionType {
   encryptionAtRestWithPlatformKey("EncryptionAtRestWithPlatformKey"),
   encryptionAtRestWithCustomerKey("EncryptionAtRestWithCustomerKey"),
-  encryptionAtRestWithPlatformAndCustomerKeys(
-    "EncryptionAtRestWithPlatformAndCustomerKeys",
-  );
+  encryptionAtRestWithPlatformAndCustomerKeys("EncryptionAtRestWithPlatformAndCustomerKeys");
 
   const EncryptionType(this.wireValue);
   final String wireValue;
@@ -18,3 +16,4 @@ enum EncryptionType {
     throw ArgumentError('Unknown EncryptionType value: $value');
   }
 }
+

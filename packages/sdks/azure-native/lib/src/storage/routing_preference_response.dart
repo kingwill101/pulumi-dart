@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoutingPreferenceResponse {
   /// A boolean flag which indicates whether internet routing storage endpoints are to be published
   final pulumi.Input<bool>? publishInternetEndpoints;
-
   /// A boolean flag which indicates whether microsoft routing storage endpoints are to be published
   final pulumi.Input<bool>? publishMicrosoftEndpoints;
-
   /// Routing Choice defines the kind of network routing opted by the user.
   final pulumi.Input<String>? routingChoice;
 
@@ -33,21 +31,10 @@ class RoutingPreferenceResponse {
 
   factory RoutingPreferenceResponse.fromMap(Map<String, dynamic> map) {
     return RoutingPreferenceResponse(
-      publishInternetEndpoints: (() {
-        final guardedValue = map['publishInternetEndpoints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      publishMicrosoftEndpoints: (() {
-        final guardedValue = map['publishMicrosoftEndpoints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      routingChoice: (() {
-        final guardedValue = map['routingChoice'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      publishInternetEndpoints: (() { final guardedValue = map['publishInternetEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      publishMicrosoftEndpoints: (() { final guardedValue = map['publishMicrosoftEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      routingChoice: (() { final guardedValue = map['routingChoice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

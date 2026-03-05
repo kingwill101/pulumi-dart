@@ -15,3 +15,4 @@ enum CreateDiffDisk {
     throw ArgumentError('Unknown CreateDiffDisk value: $value');
   }
 }
+

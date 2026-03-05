@@ -7,18 +7,14 @@ import 'sql_database_autoscale_settings.dart';
 class SqlDatabaseState {
   /// The name of the Cosmos DB SQL Database to create the table within. Changing this forces a new resource to be created.
   final pulumi.Input<String>? accountName;
-
   /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   final pulumi.Input<SqlDatabaseAutoscaleSettings>? autoscaleSettings;
-
   /// Specifies the name of the Cosmos DB SQL Database. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the resource group in which the Cosmos DB SQL Database is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// The throughput of SQL database (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply. Do not set when `azure.cosmosdb.Account` is configured with `EnableServerless` capability.
   ///
   /// &gt; **Note:** Throughput has a maximum value of `1000000` unless a higher limit is requested via Azure Support
@@ -41,11 +37,7 @@ class SqlDatabaseState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountName': ?accountName,
-      'autoscaleSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            SqlDatabaseAutoscaleSettings,
-            Map<String, dynamic>
-          >(autoscaleSettings, (value) => value.toMap()),
+      'autoscaleSettings': ?pulumi.Input.mapOptionalInputValue<SqlDatabaseAutoscaleSettings, Map<String, dynamic>>(autoscaleSettings, (value) => value.toMap()),
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
       'throughput': ?throughput,
@@ -54,35 +46,12 @@ class SqlDatabaseState {
 
   factory SqlDatabaseState.fromMap(Map<String, dynamic> map) {
     return SqlDatabaseState(
-      accountName: (() {
-        final guardedValue = map['accountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      autoscaleSettings: (() {
-        final guardedValue = map['autoscaleSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SqlDatabaseAutoscaleSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      throughput: (() {
-        final guardedValue = map['throughput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      autoscaleSettings: (() { final guardedValue = map['autoscaleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SqlDatabaseAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

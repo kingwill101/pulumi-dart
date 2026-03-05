@@ -96,12 +96,10 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// ARN of the Lightsail domain.
   late final pulumi.Output<String> arn;
-
   /// Name of the Lightsail domain to manage.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> domainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -109,13 +107,16 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_lightsail_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:lightsail/domain:Domain',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Domain(
+    String name, {
+    DomainArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:lightsail/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');
@@ -139,11 +140,11 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lightsail/domain:Domain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lightsail/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');

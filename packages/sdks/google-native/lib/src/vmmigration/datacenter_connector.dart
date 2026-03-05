@@ -9,52 +9,37 @@ import 'upgrade_status_response.dart';
 class DatacenterConnector extends pulumi.CustomResource {
   /// Appliance OVA version. This is the OVA which is manually installed by the user and contains the infrastructure for the automatically updatable components on the appliance.
   late final pulumi.Output<String> applianceInfrastructureVersion;
-
   /// Appliance last installed update bundle version. This is the version of the automatically updatable components on the appliance.
   late final pulumi.Output<String> applianceSoftwareVersion;
-
   /// The available versions for updating this appliance.
   late final pulumi.Output<AvailableUpdatesResponse> availableVersions;
-
   /// The communication channel between the datacenter connector and Google Cloud.
   late final pulumi.Output<String> bucket;
-
   /// The time the connector was created (as an API call, not when it was actually installed).
   late final pulumi.Output<String> createTime;
-
   /// Required. The datacenterConnector identifier.
   late final pulumi.Output<String> datacenterConnectorId;
-
   /// Provides details on the state of the Datacenter Connector in case of an error.
   late final pulumi.Output<StatusResponse> error;
   late final pulumi.Output<String> location;
-
   /// The connector's name.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Immutable. A unique key for this connector. This key is internal to the OVA connector and is supplied with its creation during the registration process and can not be modified.
   late final pulumi.Output<String> registrationId;
-
   /// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
-
   /// The service account to use in the connector when communicating with the cloud.
   late final pulumi.Output<String> serviceAccount;
   late final pulumi.Output<String> sourceId;
-
   /// State of the DatacenterConnector, as determined by the health checks.
   late final pulumi.Output<String> state;
-
   /// The time the state was last set.
   late final pulumi.Output<String> stateTime;
-
   /// The last time the connector was updated with an API call.
   late final pulumi.Output<String> updateTime;
-
   /// The status of the current / last upgradeAppliance operation.
   late final pulumi.Output<UpgradeStatusResponse> upgradeStatus;
-
   /// The version running in the DatacenterConnector. This is supplied by the OVA connector during the registration process and can not be modified.
   late final pulumi.Output<String> version;
 
@@ -67,40 +52,18 @@ class DatacenterConnector extends pulumi.CustomResource {
     DatacenterConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:vmmigration/v1:DatacenterConnector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applianceInfrastructureVersion = registerOutput<String>(
-      'applianceInfrastructureVersion',
-    );
-    applianceSoftwareVersion = registerOutput<String>(
-      'applianceSoftwareVersion',
-    );
-    availableVersions = registerOutput<AvailableUpdatesResponse>(
-      'availableVersions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AvailableUpdatesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'google-native:vmmigration/v1:DatacenterConnector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applianceInfrastructureVersion = registerOutput<String>('applianceInfrastructureVersion');
+    applianceSoftwareVersion = registerOutput<String>('applianceSoftwareVersion');
+    availableVersions = registerOutput<AvailableUpdatesResponse>('availableVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AvailableUpdatesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
     datacenterConnectorId = registerOutput<String>('datacenterConnectorId');
-    error = registerOutput<StatusResponse>(
-      'error',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    error = registerOutput<StatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -111,16 +74,7 @@ class DatacenterConnector extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     stateTime = registerOutput<String>('stateTime');
     updateTime = registerOutput<String>('updateTime');
-    upgradeStatus = registerOutput<UpgradeStatusResponse>(
-      'upgradeStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UpgradeStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    upgradeStatus = registerOutput<UpgradeStatusResponse>('upgradeStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpgradeStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }
 }

@@ -542,31 +542,22 @@ import 'ecs_snapshot_group_state.dart';
 class EcsSnapshotGroup extends pulumi.CustomResource {
   /// The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
   late final pulumi.Output<String?> description;
-
   /// The ID of disk for which to create snapshots. You can specify multiple disk IDs across instances with the same zone.
   late final pulumi.Output<List<String>?> diskIds;
-
   /// The ID of disk N for which you do not need to create snapshots. After this parameter is specified, the created snapshot-consistent group does not contain snapshots of the disk.
   late final pulumi.Output<List<String>?> excludeDiskIds;
-
   /// The ID of the instance.
   late final pulumi.Output<String?> instanceId;
-
   /// Specifies whether to enable the instant access feature.
   late final pulumi.Output<bool?> instantAccess;
-
   /// Specify the number of days for which the instant access feature is available. Unit: days. Valid values: `1` to `65535`.
   late final pulumi.Output<int?> instantAccessRetentionDays;
-
   /// The ID of the resource group to which the snapshot consistency group belongs.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> snapshotGroupName;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the snapshot group.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -579,19 +570,17 @@ class EcsSnapshotGroup extends pulumi.CustomResource {
     EcsSnapshotGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     diskIds = registerOutput<List<String>?>('diskIds');
     excludeDiskIds = registerOutput<List<String>?>('excludeDiskIds');
     instanceId = registerOutput<String?>('instanceId');
     instantAccess = registerOutput<bool?>('instantAccess');
-    instantAccessRetentionDays = registerOutput<int?>(
-      'instantAccessRetentionDays',
-    );
+    instantAccessRetentionDays = registerOutput<int?>('instantAccessRetentionDays');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     snapshotGroupName = registerOutput<String?>('snapshotGroupName');
     status = registerOutput<String>('status');
@@ -616,19 +605,17 @@ class EcsSnapshotGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     diskIds = registerOutput<List<String>?>('diskIds');
     excludeDiskIds = registerOutput<List<String>?>('excludeDiskIds');
     instanceId = registerOutput<String?>('instanceId');
     instantAccess = registerOutput<bool?>('instantAccess');
-    instantAccessRetentionDays = registerOutput<int?>(
-      'instantAccessRetentionDays',
-    );
+    instantAccessRetentionDays = registerOutput<int?>('instantAccessRetentionDays');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     snapshotGroupName = registerOutput<String?>('snapshotGroupName');
     status = registerOutput<String>('status');

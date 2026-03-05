@@ -9,19 +9,20 @@ class ProjectVisibilityTypeEnumValue {
 
   /// Creates a new [ProjectVisibilityTypeEnumValue].
   /// [value] Property value
-  ProjectVisibilityTypeEnumValue({this.value});
+  ProjectVisibilityTypeEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory ProjectVisibilityTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return ProjectVisibilityTypeEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

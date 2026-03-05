@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableResourceTableArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Cosmos DB table name.
   final pulumi.Input<String> tableName;
 
@@ -37,10 +35,9 @@ class GetTableResourceTableArgs {
   factory GetTableResourceTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableResourceTableArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
+

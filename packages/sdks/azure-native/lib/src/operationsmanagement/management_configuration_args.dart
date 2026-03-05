@@ -10,13 +10,10 @@ import 'management_configuration_properties.dart';
 class ManagementConfigurationArgs {
   /// Resource location
   final pulumi.Input<String>? location;
-
   /// User Management Configuration Name.
   final pulumi.Input<String>? managementConfigurationName;
-
   /// Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
   final pulumi.Input<ManagementConfigurationProperties>? properties;
-
   /// The name of the resource group to get. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,39 +33,18 @@ class ManagementConfigurationArgs {
     return <String, dynamic>{
       'location': ?location,
       'managementConfigurationName': ?managementConfigurationName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagementConfigurationProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<ManagementConfigurationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory ManagementConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ManagementConfigurationArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managementConfigurationName: (() {
-        final guardedValue = map['managementConfigurationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagementConfigurationProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managementConfigurationName: (() { final guardedValue = map['managementConfigurationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagementConfigurationProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

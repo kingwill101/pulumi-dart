@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAppSiteExtensionArgs {
   /// Site name.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// Site extension name.
   final pulumi.Input<String>? siteExtensionId;
 
@@ -37,14 +35,9 @@ class WebAppSiteExtensionArgs {
   factory WebAppSiteExtensionArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSiteExtensionArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      siteExtensionId: (() {
-        final guardedValue = map['siteExtensionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      siteExtensionId: (() { final guardedValue = map['siteExtensionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

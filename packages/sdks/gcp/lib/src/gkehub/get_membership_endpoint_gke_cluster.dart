@@ -7,10 +7,14 @@ class GetMembershipEndpointGkeCluster {
 
   /// Creates a new [GetMembershipEndpointGkeCluster].
   /// [resourceLink] Required.
-  GetMembershipEndpointGkeCluster({required this.resourceLink});
+  GetMembershipEndpointGkeCluster({
+    required this.resourceLink,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceLink': resourceLink};
+    return <String, dynamic>{
+      'resourceLink': resourceLink,
+    };
   }
 
   factory GetMembershipEndpointGkeCluster.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class GetMembershipEndpointGkeCluster {
     );
   }
 }
+

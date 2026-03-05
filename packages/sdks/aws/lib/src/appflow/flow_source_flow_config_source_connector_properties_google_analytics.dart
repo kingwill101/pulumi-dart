@@ -12,14 +12,15 @@ class FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'object': object_};
+    return <String, dynamic>{
+      'object': object_,
+    };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics(
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
+

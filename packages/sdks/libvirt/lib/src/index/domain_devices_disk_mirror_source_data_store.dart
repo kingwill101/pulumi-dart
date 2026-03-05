@@ -9,31 +9,20 @@ class DomainDevicesDiskMirrorSourceDataStore {
 
   /// Creates a new [DomainDevicesDiskMirrorSourceDataStore].
   /// [format] Defines the format of the data store used in the backing store source configuration.
-  DomainDevicesDiskMirrorSourceDataStore({this.format});
+  DomainDevicesDiskMirrorSourceDataStore({
+    this.format,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'format':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskMirrorSourceDataStoreFormat,
-            Map<String, dynamic>
-          >(format, (value) => value.toMap()),
+      'format': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceDataStoreFormat, Map<String, dynamic>>(format, (value) => value.toMap()),
     };
   }
 
-  factory DomainDevicesDiskMirrorSourceDataStore.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskMirrorSourceDataStore.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceDataStore(
-      format: (() {
-        final guardedValue = map['format'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskMirrorSourceDataStoreFormat.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorSourceDataStoreFormat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

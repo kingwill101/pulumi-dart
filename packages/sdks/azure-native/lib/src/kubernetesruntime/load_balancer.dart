@@ -172,28 +172,20 @@ import 'system_data_response.dart';
 class LoadBalancer extends pulumi.CustomResource {
   /// IP Range
   late final pulumi.Output<List<String>> addresses;
-
   /// Advertise Mode
   late final pulumi.Output<String> advertiseMode;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The list of BGP peers it should advertise to. Null or empty means to advertise to all peers.
   late final pulumi.Output<List<String>?> bgpPeers;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Resource provision state
   late final pulumi.Output<String> provisioningState;
-
   /// A dynamic label mapping to select related services. For instance, if you want to create a load balancer only for services with label "a=b", then please specify {"a": "b"} in the field.
   late final pulumi.Output<Map<String, String>?> serviceSelector;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -206,11 +198,11 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:kubernetesruntime:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:kubernetesruntime:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addresses = registerOutput<List<String>>('addresses');
     advertiseMode = registerOutput<String>('advertiseMode');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -218,16 +210,7 @@ class LoadBalancer extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     serviceSelector = registerOutput<Map<String, String>?>('serviceSelector');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

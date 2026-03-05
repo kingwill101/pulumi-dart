@@ -18,7 +18,6 @@ class DatabaseArgs {
   ///
   /// More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
   final pulumi.Input<String>? characterSet;
-
   /// The name of the database.
   /// &gt; **NOTE:**
   /// The name must be 2 to 64 characters in length.
@@ -27,13 +26,10 @@ class DatabaseArgs {
   /// The name must be unique within the instance.
   /// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
   final pulumi.Input<String>? dataBaseName;
-
   /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
   final pulumi.Input<String>? description;
-
   /// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
   final pulumi.Input<String> instanceId;
-
   /// The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
   /// &gt; **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
   final pulumi.Input<String>? name;
@@ -64,27 +60,12 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      characterSet: (() {
-        final guardedValue = map['characterSet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataBaseName: (() {
-        final guardedValue = map['dataBaseName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      characterSet: (() { final guardedValue = map['characterSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataBaseName: (() { final guardedValue = map['dataBaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

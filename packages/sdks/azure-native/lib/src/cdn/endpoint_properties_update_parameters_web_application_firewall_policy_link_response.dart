@@ -14,18 +14,15 @@ class EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
-  factory EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse.fromMap(Map<String, dynamic> map) {
     return EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

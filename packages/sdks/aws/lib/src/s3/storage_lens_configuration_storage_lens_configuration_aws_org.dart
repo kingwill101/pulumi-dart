@@ -8,17 +8,20 @@ class StorageLensConfigurationStorageLensConfigurationAwsOrg {
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAwsOrg].
   /// [arn] The Amazon Resource Name (ARN) of the Amazon Web Services organization.
-  StorageLensConfigurationStorageLensConfigurationAwsOrg({required this.arn});
+  StorageLensConfigurationStorageLensConfigurationAwsOrg({
+    required this.arn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': arn};
+    return <String, dynamic>{
+      'arn': arn,
+    };
   }
 
-  factory StorageLensConfigurationStorageLensConfigurationAwsOrg.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageLensConfigurationStorageLensConfigurationAwsOrg.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAwsOrg(
       arn: pulumi.Input.fromValue(map['arn'] as String),
     );
   }
 }
+

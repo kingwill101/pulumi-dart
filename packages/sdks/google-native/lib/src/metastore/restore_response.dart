@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreResponse {
   /// The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
   final pulumi.Input<String> backup;
-
   /// Optional. A Cloud Storage URI specifying where the backup artifacts are stored, in the format gs:///.
   final pulumi.Input<String> backupLocation;
-
   /// The restore details containing the revision of the service to be restored to, in format of JSON.
   final pulumi.Input<String> details;
-
   /// The time when the restore ended.
   final pulumi.Input<String> endTime;
-
   /// The time when the restore started.
   final pulumi.Input<String> startTime;
-
   /// The current state of the restore.
   final pulumi.Input<String> state;
-
   /// The type of restore.
   final pulumi.Input<String> type;
 
@@ -67,3 +61,4 @@ class RestoreResponse {
     );
   }
 }
+

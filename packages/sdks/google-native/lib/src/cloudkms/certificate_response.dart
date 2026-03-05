@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateResponse {
   /// The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
   final pulumi.Input<String> issuer;
-
   /// The certificate is not valid after this time. Only present if parsed is true.
   final pulumi.Input<String> notAfterTime;
-
   /// The certificate is not valid before this time. Only present if parsed is true.
   final pulumi.Input<String> notBeforeTime;
-
   /// True if the certificate was parsed successfully.
   final pulumi.Input<bool> parsed;
-
   /// The raw certificate bytes in DER format.
   final pulumi.Input<String> rawDer;
-
   /// The certificate serial number as a hex string. Only present if parsed is true.
   final pulumi.Input<String> serialNumber;
-
   /// The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
   final pulumi.Input<String> sha256Fingerprint;
-
   /// The subject distinguished name in RFC 2253 format. Only present if parsed is true.
   final pulumi.Input<String> subject;
-
   /// The subject Alternative DNS names. Only present if parsed is true.
   final pulumi.Input<List<String>> subjectAlternativeDnsNames;
 
@@ -75,13 +67,10 @@ class CertificateResponse {
       parsed: pulumi.Input.fromValue(map['parsed'] as bool),
       rawDer: pulumi.Input.fromValue(map['rawDer'] as String),
       serialNumber: pulumi.Input.fromValue(map['serialNumber'] as String),
-      sha256Fingerprint: pulumi.Input.fromValue(
-        map['sha256Fingerprint'] as String,
-      ),
+      sha256Fingerprint: pulumi.Input.fromValue(map['sha256Fingerprint'] as String),
       subject: pulumi.Input.fromValue(map['subject'] as String),
-      subjectAlternativeDnsNames: pulumi.Input.fromValue(
-        (map['subjectAlternativeDnsNames'] as List).cast<String>(),
-      ),
+      subjectAlternativeDnsNames: pulumi.Input.fromValue((map['subjectAlternativeDnsNames'] as List).cast<String>()),
     );
   }
 }
+

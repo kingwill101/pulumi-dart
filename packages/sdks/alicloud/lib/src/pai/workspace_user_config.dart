@@ -147,13 +147,10 @@ import 'workspace_user_config_state.dart';
 class WorkspaceUserConfig extends pulumi.CustomResource {
   /// The category. Valid values: `DataPrivacyConfig`.
   late final pulumi.Output<String> categoryName;
-
   /// The key of the configuration.
   late final pulumi.Output<String> configKey;
-
   /// The value of the configuration.
   late final pulumi.Output<String> configValue;
-
   /// The scope. Default value: `owner`. Valid values: `owner`, `subUser`.
   late final pulumi.Output<String> scope;
 
@@ -166,11 +163,11 @@ class WorkspaceUserConfig extends pulumi.CustomResource {
     WorkspaceUserConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/workspaceUserConfig:WorkspaceUserConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/workspaceUserConfig:WorkspaceUserConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     categoryName = registerOutput<String>('categoryName');
     configKey = registerOutput<String>('configKey');
     configValue = registerOutput<String>('configValue');
@@ -195,11 +192,11 @@ class WorkspaceUserConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/workspaceUserConfig:WorkspaceUserConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/workspaceUserConfig:WorkspaceUserConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     categoryName = registerOutput<String>('categoryName');
     configKey = registerOutput<String>('configKey');
     configValue = registerOutput<String>('configValue');

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualSCSIControllerResponse {
   /// Gets or sets the bus number of the controller.
   final pulumi.Input<int>? busNumber;
-
   /// Gets or sets the key of the controller.
   final pulumi.Input<int>? controllerKey;
-
   /// Gets or sets the SCSI controller unit number.
   final pulumi.Input<int>? scsiCtlrUnitNumber;
-
   /// Gets or sets the sharing mode.
   final pulumi.Input<String>? sharing;
-
   /// Gets or sets the controller type.
   final pulumi.Input<String>? type;
 
@@ -45,31 +41,12 @@ class VirtualSCSIControllerResponse {
 
   factory VirtualSCSIControllerResponse.fromMap(Map<String, dynamic> map) {
     return VirtualSCSIControllerResponse(
-      busNumber: (() {
-        final guardedValue = map['busNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      controllerKey: (() {
-        final guardedValue = map['controllerKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      scsiCtlrUnitNumber: (() {
-        final guardedValue = map['scsiCtlrUnitNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      sharing: (() {
-        final guardedValue = map['sharing'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      busNumber: (() { final guardedValue = map['busNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      controllerKey: (() { final guardedValue = map['controllerKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scsiCtlrUnitNumber: (() { final guardedValue = map['scsiCtlrUnitNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sharing: (() { final guardedValue = map['sharing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

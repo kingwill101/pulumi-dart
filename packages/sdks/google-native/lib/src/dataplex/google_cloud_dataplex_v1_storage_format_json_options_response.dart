@@ -14,14 +14,15 @@ class GoogleCloudDataplexV1StorageFormatJsonOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'encoding': encoding};
+    return <String, dynamic>{
+      'encoding': encoding,
+    };
   }
 
-  factory GoogleCloudDataplexV1StorageFormatJsonOptionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1StorageFormatJsonOptionsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1StorageFormatJsonOptionsResponse(
       encoding: pulumi.Input.fromValue(map['encoding'] as String),
     );
   }
 }
+

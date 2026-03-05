@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CsvResponse {
   /// The delimiter used for separating items in the CSV file being imported.
   final pulumi.Input<String>? delimiter;
-
   /// List of the headers used to specify a common header for all source CSV files being imported. If this field is specified then the first line of each CSV file is treated as data instead of the header. If this field is not specified the the first line of each CSV file is treated as the header.
   final pulumi.Input<List<String>>? headerList;
 
   /// Creates a new [CsvResponse].
   /// [delimiter] The delimiter used for separating items in the CSV file being imported.
   /// [headerList] List of the headers used to specify a common header for all source CSV files being imported. If this field is specified then the first line of each CSV file is treated as data instead of the header. If this field is not specified the the first line of each CSV file is treated as the header.
-  CsvResponse({this.delimiter, this.headerList});
+  CsvResponse({
+    this.delimiter,
+    this.headerList,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class CsvResponse {
 
   factory CsvResponse.fromMap(Map<String, dynamic> map) {
     return CsvResponse(
-      delimiter: (() {
-        final guardedValue = map['delimiter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      headerList: (() {
-        final guardedValue = map['headerList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      delimiter: (() { final guardedValue = map['delimiter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      headerList: (() { final guardedValue = map['headerList']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

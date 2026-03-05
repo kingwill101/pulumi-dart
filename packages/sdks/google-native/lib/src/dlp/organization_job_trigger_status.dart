@@ -17,3 +17,4 @@ enum OrganizationJobTriggerStatus {
     throw ArgumentError('Unknown OrganizationJobTriggerStatus value: $value');
   }
 }
+

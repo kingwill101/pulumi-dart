@@ -174,25 +174,18 @@ import 'transit_router_route_table_state.dart';
 class TransitRouterRouteTable extends pulumi.CustomResource {
   /// The dry run.
   late final pulumi.Output<bool?> dryRun;
-
   /// The associating status of the Transit Router.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the transit router.
   late final pulumi.Output<String> transitRouterId;
-
   /// The description of the transit router route table.
   late final pulumi.Output<String> transitRouterRouteTableDescription;
-
   /// The id of the transit router route table.
   late final pulumi.Output<String> transitRouterRouteTableId;
-
   /// The name of the transit router route table.
   late final pulumi.Output<String?> transitRouterRouteTableName;
-
   /// The type of the transit router route table. Valid values: `Custom`, `System`.
   late final pulumi.Output<String> transitRouterRouteTableType;
 
@@ -205,27 +198,19 @@ class TransitRouterRouteTable extends pulumi.CustomResource {
     TransitRouterRouteTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     transitRouterId = registerOutput<String>('transitRouterId');
-    transitRouterRouteTableDescription = registerOutput<String>(
-      'transitRouterRouteTableDescription',
-    );
-    transitRouterRouteTableId = registerOutput<String>(
-      'transitRouterRouteTableId',
-    );
-    transitRouterRouteTableName = registerOutput<String?>(
-      'transitRouterRouteTableName',
-    );
-    transitRouterRouteTableType = registerOutput<String>(
-      'transitRouterRouteTableType',
-    );
+    transitRouterRouteTableDescription = registerOutput<String>('transitRouterRouteTableDescription');
+    transitRouterRouteTableId = registerOutput<String>('transitRouterRouteTableId');
+    transitRouterRouteTableName = registerOutput<String?>('transitRouterRouteTableName');
+    transitRouterRouteTableType = registerOutput<String>('transitRouterRouteTableType');
   }
 
   /// Gets an existing [TransitRouterRouteTable] resource's state with the given [name] and [id].
@@ -246,26 +231,18 @@ class TransitRouterRouteTable extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     transitRouterId = registerOutput<String>('transitRouterId');
-    transitRouterRouteTableDescription = registerOutput<String>(
-      'transitRouterRouteTableDescription',
-    );
-    transitRouterRouteTableId = registerOutput<String>(
-      'transitRouterRouteTableId',
-    );
-    transitRouterRouteTableName = registerOutput<String?>(
-      'transitRouterRouteTableName',
-    );
-    transitRouterRouteTableType = registerOutput<String>(
-      'transitRouterRouteTableType',
-    );
+    transitRouterRouteTableDescription = registerOutput<String>('transitRouterRouteTableDescription');
+    transitRouterRouteTableId = registerOutput<String>('transitRouterRouteTableId');
+    transitRouterRouteTableName = registerOutput<String?>('transitRouterRouteTableName');
+    transitRouterRouteTableType = registerOutput<String>('transitRouterRouteTableType');
   }
 }

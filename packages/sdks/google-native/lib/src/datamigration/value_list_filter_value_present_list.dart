@@ -13,8 +13,7 @@ enum ValueListFilterValuePresentList {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ValueListFilterValuePresentList value: $value',
-    );
+    throw ArgumentError('Unknown ValueListFilterValuePresentList value: $value');
   }
 }
+

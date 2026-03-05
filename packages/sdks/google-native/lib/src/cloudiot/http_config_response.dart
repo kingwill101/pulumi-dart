@@ -9,17 +9,20 @@ class HttpConfigResponse {
 
   /// Creates a new [HttpConfigResponse].
   /// [httpEnabledState] If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
-  HttpConfigResponse({required this.httpEnabledState});
+  HttpConfigResponse({
+    required this.httpEnabledState,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'httpEnabledState': httpEnabledState};
+    return <String, dynamic>{
+      'httpEnabledState': httpEnabledState,
+    };
   }
 
   factory HttpConfigResponse.fromMap(Map<String, dynamic> map) {
     return HttpConfigResponse(
-      httpEnabledState: pulumi.Input.fromValue(
-        map['httpEnabledState'] as String,
-      ),
+      httpEnabledState: pulumi.Input.fromValue(map['httpEnabledState'] as String),
     );
   }
 }
+

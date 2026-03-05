@@ -31,11 +31,10 @@ class GetCanaryEvaluationArgs {
 
   factory GetCanaryEvaluationArgs.fromMap(Map<String, dynamic> map) {
     return GetCanaryEvaluationArgs(
-      canaryevaluationId: pulumi.Input.fromValue(
-        map['canaryevaluationId'] as String,
-      ),
+      canaryevaluationId: pulumi.Input.fromValue(map['canaryevaluationId'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
+

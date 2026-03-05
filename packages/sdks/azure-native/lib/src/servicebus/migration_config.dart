@@ -147,31 +147,22 @@ import 'system_data_response.dart';
 class MigrationConfig extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// State in which Standard to Premium Migration is, possible values : Unknown, Reverting, Completing, Initiating, Syncing, Active
   late final pulumi.Output<String> migrationState;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Number of entities pending to be replicated.
   late final pulumi.Output<double> pendingReplicationOperationsCount;
-
   /// Name to access Standard Namespace after migration
   late final pulumi.Output<String> postMigrationName;
-
   /// Provisioning state of Migration Configuration
   late final pulumi.Output<String> provisioningState;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Existing premium Namespace ARM Id name which has no entities, will be used for migration
   late final pulumi.Output<String> targetNamespace;
-
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   late final pulumi.Output<String> type;
 
@@ -184,30 +175,19 @@ class MigrationConfig extends pulumi.CustomResource {
     MigrationConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:servicebus:MigrationConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:servicebus:MigrationConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     migrationState = registerOutput<String>('migrationState');
     this.name = registerOutput<String>('name');
-    pendingReplicationOperationsCount = registerOutput<double>(
-      'pendingReplicationOperationsCount',
-    );
+    pendingReplicationOperationsCount = registerOutput<double>('pendingReplicationOperationsCount');
     postMigrationName = registerOutput<String>('postMigrationName');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetNamespace = registerOutput<String>('targetNamespace');
     type = registerOutput<String>('type');
   }

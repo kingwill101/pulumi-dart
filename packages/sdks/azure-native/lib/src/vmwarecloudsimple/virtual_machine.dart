@@ -274,82 +274,56 @@ import 'virtual_machine_args.dart';
 class VirtualMachine extends pulumi.CustomResource {
   /// The amount of memory
   late final pulumi.Output<int> amountOfRam;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The list of Virtual Disks' Controllers
   late final pulumi.Output<List<Map<String, dynamic>>> controllers;
-
   /// Virtual machine properties
   late final pulumi.Output<GuestOSCustomizationResponse?> customization;
-
   /// The list of Virtual Disks
   late final pulumi.Output<List<Map<String, dynamic>>?> disks;
-
   /// The DNS name of Virtual Machine in VCenter
   late final pulumi.Output<String> dnsname;
-
   /// Expose Guest OS or not
   late final pulumi.Output<bool?> exposeToGuestVM;
-
   /// The path to virtual machine folder in VCenter
   late final pulumi.Output<String> folder;
-
   /// The name of Guest OS
   late final pulumi.Output<String> guestOS;
-
   /// The Guest OS type
   late final pulumi.Output<String> guestOSType;
-
   /// Azure region
   late final pulumi.Output<String> location;
-
   /// {virtualMachineName}
   late final pulumi.Output<String> name;
-
   /// The list of Virtual NICs
   late final pulumi.Output<List<Map<String, dynamic>>?> nics;
-
   /// The number of CPU cores
   late final pulumi.Output<int> numberOfCores;
-
   /// Password for login. Deprecated - use customization property
   late final pulumi.Output<String?> password;
-
   /// Private Cloud Id
   late final pulumi.Output<String> privateCloudId;
-
   /// The provisioning status of the resource
   late final pulumi.Output<String> provisioningState;
-
   /// The public ip of Virtual Machine
   late final pulumi.Output<String> publicIP;
-
   /// Virtual Machines Resource Pool
   late final pulumi.Output<ResourcePoolResponse?> resourcePool;
-
   /// The status of Virtual machine
   late final pulumi.Output<String> status;
-
   /// The list of tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Virtual Machine Template Id
   late final pulumi.Output<String?> templateId;
-
   /// {resourceProviderNamespace}/{resourceType}
   late final pulumi.Output<String> type;
-
   /// Username for login. Deprecated - use customization property
   late final pulumi.Output<String?> username;
-
   /// The list of Virtual VSphere Networks
   late final pulumi.Output<List<String>?> vSphereNetworks;
-
   /// The internal id of Virtual Machine in VCenter
   late final pulumi.Output<String> vmId;
-
   /// VMware tools version
   late final pulumi.Output<String> vmwaretools;
 
@@ -362,24 +336,15 @@ class VirtualMachine extends pulumi.CustomResource {
     VirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:vmwarecloudsimple:VirtualMachine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:vmwarecloudsimple:VirtualMachine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amountOfRam = registerOutput<int>('amountOfRam');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     controllers = registerOutput<List<Map<String, dynamic>>>('controllers');
-    customization = registerOutput<GuestOSCustomizationResponse?>(
-      'customization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuestOSCustomizationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customization = registerOutput<GuestOSCustomizationResponse?>('customization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuestOSCustomizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     disks = registerOutput<List<Map<String, dynamic>>?>('disks');
     dnsname = registerOutput<String>('dnsname');
     exposeToGuestVM = registerOutput<bool?>('exposeToGuestVM');
@@ -394,16 +359,7 @@ class VirtualMachine extends pulumi.CustomResource {
     privateCloudId = registerOutput<String>('privateCloudId');
     provisioningState = registerOutput<String>('provisioningState');
     publicIP = registerOutput<String>('publicIP');
-    resourcePool = registerOutput<ResourcePoolResponse?>(
-      'resourcePool',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourcePoolResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourcePool = registerOutput<ResourcePoolResponse?>('resourcePool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePoolResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     templateId = registerOutput<String?>('templateId');

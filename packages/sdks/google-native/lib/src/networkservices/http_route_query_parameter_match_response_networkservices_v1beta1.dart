@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpRouteQueryParameterMatchResponseNetworkservicesV1beta1 {
   /// The value of the query parameter must exactly match the contents of exact_match. Only one of exact_match, regex_match, or present_match must be set.
   final pulumi.Input<String> exactMatch;
-
   /// Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of whether the parameter has a value or not. Only one of exact_match, regex_match, or present_match must be set.
   final pulumi.Input<bool> presentMatch;
-
   /// The name of the query parameter to match.
   final pulumi.Input<String> queryParameter;
-
   /// The value of the query parameter must match the regular expression specified by regex_match. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax Only one of exact_match, regex_match, or present_match must be set.
   final pulumi.Input<String> regexMatch;
 
@@ -37,9 +34,7 @@ class HttpRouteQueryParameterMatchResponseNetworkservicesV1beta1 {
     };
   }
 
-  factory HttpRouteQueryParameterMatchResponseNetworkservicesV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HttpRouteQueryParameterMatchResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteQueryParameterMatchResponseNetworkservicesV1beta1(
       exactMatch: pulumi.Input.fromValue(map['exactMatch'] as String),
       presentMatch: pulumi.Input.fromValue(map['presentMatch'] as bool),
@@ -48,3 +43,4 @@ class HttpRouteQueryParameterMatchResponseNetworkservicesV1beta1 {
     );
   }
 }
+

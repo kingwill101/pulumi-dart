@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleServiceInfoResponseNetworkmanagementV1beta1 {
   /// Recognized type of a Google Service.
   final pulumi.Input<String> googleServiceType;
-
   /// Source IP address.
   final pulumi.Input<String> sourceIp;
 
@@ -25,14 +24,11 @@ class GoogleServiceInfoResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory GoogleServiceInfoResponseNetworkmanagementV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleServiceInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return GoogleServiceInfoResponseNetworkmanagementV1beta1(
-      googleServiceType: pulumi.Input.fromValue(
-        map['googleServiceType'] as String,
-      ),
+      googleServiceType: pulumi.Input.fromValue(map['googleServiceType'] as String),
       sourceIp: pulumi.Input.fromValue(map['sourceIp'] as String),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupArgs {
   /// The Description of the group. The description can be up to `1024` characters long.
   final pulumi.Input<String>? description;
-
   /// The ID of the Directory.
   final pulumi.Input<String> directoryId;
-
   /// The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
   final pulumi.Input<String> groupName;
 
@@ -36,13 +34,10 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
     );
   }
 }
+

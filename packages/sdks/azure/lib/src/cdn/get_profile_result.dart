@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getProfile.
 class GetProfileResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region where the resource exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// The pricing related information of current CDN profile.
   final String sku;
-
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -54,3 +52,4 @@ class GetProfileResult {
     );
   }
 }
+

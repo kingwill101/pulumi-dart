@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlowletDataFlowSourceSchemaLinkedService {
   /// The name for the Data Factory Linked Service with schema.
   final pulumi.Input<String> name;
-
   /// A map of parameters to associate with the Data Factory Linked Service.
   final pulumi.Input<Map<String, String>>? parameters;
 
@@ -18,21 +17,17 @@ class FlowletDataFlowSourceSchemaLinkedService {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'parameters': ?parameters};
+    return <String, dynamic>{
+      'name': name,
+      'parameters': ?parameters,
+    };
   }
 
-  factory FlowletDataFlowSourceSchemaLinkedService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowletDataFlowSourceSchemaLinkedService.fromMap(Map<String, dynamic> map) {
     return FlowletDataFlowSourceSchemaLinkedService(
       name: pulumi.Input.fromValue(map['name'] as String),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

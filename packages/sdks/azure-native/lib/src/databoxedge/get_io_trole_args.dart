@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIoTRoleArgs {
   /// The device name.
   final pulumi.Input<String> deviceName;
-
   /// The role name.
   final pulumi.Input<String> name;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetIoTRoleArgs {
     return GetIoTRoleArgs(
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

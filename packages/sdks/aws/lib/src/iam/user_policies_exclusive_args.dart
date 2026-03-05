@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPoliciesExclusiveArgs {
   /// A list of inline policy names to be assigned to the user. Policies attached to this user but not configured in this argument will be removed.
   final pulumi.Input<List<String>> policyNames;
-
   /// IAM user name.
   final pulumi.Input<String> userName;
 
@@ -22,15 +21,17 @@ class UserPoliciesExclusiveArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policyNames': policyNames, 'userName': userName};
+    return <String, dynamic>{
+      'policyNames': policyNames,
+      'userName': userName,
+    };
   }
 
   factory UserPoliciesExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return UserPoliciesExclusiveArgs(
-      policyNames: pulumi.Input.fromValue(
-        (map['policyNames'] as List).cast<String>(),
-      ),
+      policyNames: pulumi.Input.fromValue((map['policyNames'] as List).cast<String>()),
       userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
+

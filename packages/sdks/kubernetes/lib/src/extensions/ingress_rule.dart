@@ -17,35 +17,23 @@ class IngressRule {
   /// Creates a new [IngressRule].
   /// [host] Host is the fully qualified domain name of a network host, as defined by RFC 3986. Note the following deviations from the "host" part of the URI as defined in the RFC: 1. IPs are not allowed. Currently an IngressRuleValue can only apply to the
   /// [http] Optional.
-  IngressRule({this.host, this.http});
+  IngressRule({
+    this.host,
+    this.http,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'host': ?host,
-      'http':
-          ?pulumi.Input.mapOptionalInputValue<
-            HTTPIngressRuleValue,
-            Map<String, dynamic>
-          >(http, (value) => value.toMap()),
+      'http': ?pulumi.Input.mapOptionalInputValue<HTTPIngressRuleValue, Map<String, dynamic>>(http, (value) => value.toMap()),
     };
   }
 
   factory IngressRule.fromMap(Map<String, dynamic> map) {
     return IngressRule(
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      http: (() {
-        final guardedValue = map['http'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HTTPIngressRuleValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      http: (() { final guardedValue = map['http']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HTTPIngressRuleValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

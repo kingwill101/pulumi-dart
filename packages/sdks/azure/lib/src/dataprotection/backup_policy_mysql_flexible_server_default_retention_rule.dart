@@ -5,10 +5,7 @@ import 'backup_policy_mysql_flexible_server_default_retention_rule_life_cycle.da
 
 class BackupPolicyMysqlFlexibleServerDefaultRetentionRule {
   /// A `life_cycle` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<
-    List<BackupPolicyMysqlFlexibleServerDefaultRetentionRuleLifeCycle>
-  >
-  lifeCycles;
+  final pulumi.Input<List<BackupPolicyMysqlFlexibleServerDefaultRetentionRuleLifeCycle>> lifeCycles;
 
   /// Creates a new [BackupPolicyMysqlFlexibleServerDefaultRetentionRule].
   /// [lifeCycles] A `life_cycle` block as defined below. Changing this forces a new resource to be created.
@@ -18,36 +15,14 @@ class BackupPolicyMysqlFlexibleServerDefaultRetentionRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lifeCycles':
-          pulumi.Input.mapInputValue<
-            List<BackupPolicyMysqlFlexibleServerDefaultRetentionRuleLifeCycle>,
-            List<Map<String, dynamic>>
-          >(
-            lifeCycles,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BackupPolicyMysqlFlexibleServerDefaultRetentionRuleLifeCycle,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'lifeCycles': pulumi.Input.mapInputValue<List<BackupPolicyMysqlFlexibleServerDefaultRetentionRuleLifeCycle>, List<Map<String, dynamic>>>(lifeCycles, (value) => pulumi.Input.encodeList<BackupPolicyMysqlFlexibleServerDefaultRetentionRuleLifeCycle, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory BackupPolicyMysqlFlexibleServerDefaultRetentionRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackupPolicyMysqlFlexibleServerDefaultRetentionRule.fromMap(Map<String, dynamic> map) {
     return BackupPolicyMysqlFlexibleServerDefaultRetentionRule(
-      lifeCycles: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          BackupPolicyMysqlFlexibleServerDefaultRetentionRuleLifeCycle
-        >(
-          map['lifeCycles']!,
-          (value) =>
-              BackupPolicyMysqlFlexibleServerDefaultRetentionRuleLifeCycle.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      lifeCycles: pulumi.Input.fromValue(pulumi.Input.decodeList<BackupPolicyMysqlFlexibleServerDefaultRetentionRuleLifeCycle>(map['lifeCycles']!, (value) => BackupPolicyMysqlFlexibleServerDefaultRetentionRuleLifeCycle.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

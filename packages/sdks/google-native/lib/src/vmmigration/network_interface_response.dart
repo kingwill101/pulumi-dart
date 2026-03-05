@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceResponse {
   /// The external IP to define in the NIC.
   final pulumi.Input<String> externalIp;
-
   /// The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
   final pulumi.Input<String> internalIp;
-
   /// The network to connect the NIC to.
   final pulumi.Input<String> network;
-
   /// The subnetwork to connect the NIC to.
   final pulumi.Input<String> subnetwork;
 
@@ -46,3 +43,4 @@ class NetworkInterfaceResponse {
     );
   }
 }
+

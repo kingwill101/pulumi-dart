@@ -8,10 +8,8 @@ import 'entra_identity_provider_response.dart';
 class UserPropertiesResponse {
   /// The user's identity provider definition.
   final pulumi.Input<EntraIdentityProviderResponse>? identityProvider;
-
   /// The provisioning state of the user.
   final pulumi.Input<String> provisioningState;
-
   /// Database roles that are assigned to the user.
   final pulumi.Input<List<DatabaseRoleResponse>>? roles;
 
@@ -27,53 +25,18 @@ class UserPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identityProvider':
-          ?pulumi.Input.mapOptionalInputValue<
-            EntraIdentityProviderResponse,
-            Map<String, dynamic>
-          >(identityProvider, (value) => value.toMap()),
+      'identityProvider': ?pulumi.Input.mapOptionalInputValue<EntraIdentityProviderResponse, Map<String, dynamic>>(identityProvider, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'roles':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DatabaseRoleResponse>,
-            List<Map<String, dynamic>>
-          >(
-            roles,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DatabaseRoleResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'roles': ?pulumi.Input.mapOptionalInputValue<List<DatabaseRoleResponse>, List<Map<String, dynamic>>>(roles, (value) => pulumi.Input.encodeList<DatabaseRoleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory UserPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return UserPropertiesResponse(
-      identityProvider: (() {
-        final guardedValue = map['identityProvider'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EntraIdentityProviderResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      roles: (() {
-        final guardedValue = map['roles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DatabaseRoleResponse>(
-            guardedValue,
-            (value) => DatabaseRoleResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      identityProvider: (() { final guardedValue = map['identityProvider']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntraIdentityProviderResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DatabaseRoleResponse>(guardedValue, (value) => DatabaseRoleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

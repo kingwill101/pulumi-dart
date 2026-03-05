@@ -474,42 +474,32 @@ class TrustConfig extends pulumi.CustomResource {
   /// the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> allowlistedCertificates;
-
   /// The creation timestamp of a TrustConfig.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
-
   /// One or more paragraphs of text description of a trust config.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Set of label tags associated with the trust config.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The trust config location.
   late final pulumi.Output<String> location;
-
   /// A user-defined name of the trust config. Trust config names must be unique globally.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Set of trust stores to perform validation against.
   /// This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> trustStores;
-
   /// The last update timestamp of a TrustConfig.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -524,14 +514,12 @@ class TrustConfig extends pulumi.CustomResource {
     TrustConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:certificatemanager/trustConfig:TrustConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowlistedCertificates = registerOutput<List<Map<String, dynamic>>?>(
-      'allowlistedCertificates',
-    );
+          'gcp:certificatemanager/trustConfig:TrustConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowlistedCertificates = registerOutput<List<Map<String, dynamic>>?>('allowlistedCertificates');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -562,14 +550,12 @@ class TrustConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:certificatemanager/trustConfig:TrustConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowlistedCertificates = registerOutput<List<Map<String, dynamic>>?>(
-      'allowlistedCertificates',
-    );
+          'gcp:certificatemanager/trustConfig:TrustConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowlistedCertificates = registerOutput<List<Map<String, dynamic>>?>('allowlistedCertificates');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

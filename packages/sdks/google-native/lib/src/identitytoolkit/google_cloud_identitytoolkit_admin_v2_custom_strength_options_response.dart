@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse {
   /// The password must contain a lower case character.
   final pulumi.Input<bool> containsLowercaseCharacter;
-
   /// The password must contain a non alpha numeric character.
   final pulumi.Input<bool> containsNonAlphanumericCharacter;
-
   /// The password must contain a number.
   final pulumi.Input<bool> containsNumericCharacter;
-
   /// The password must contain an upper case character.
   final pulumi.Input<bool> containsUppercaseCharacter;
-
   /// Maximum password length. No default max length
   final pulumi.Input<int> maxPasswordLength;
-
   /// Minimum password length. Range from 6 to 30
   final pulumi.Input<int> minPasswordLength;
 
@@ -49,28 +44,15 @@ class GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse {
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse(
-      containsLowercaseCharacter: pulumi.Input.fromValue(
-        map['containsLowercaseCharacter'] as bool,
-      ),
-      containsNonAlphanumericCharacter: pulumi.Input.fromValue(
-        map['containsNonAlphanumericCharacter'] as bool,
-      ),
-      containsNumericCharacter: pulumi.Input.fromValue(
-        map['containsNumericCharacter'] as bool,
-      ),
-      containsUppercaseCharacter: pulumi.Input.fromValue(
-        map['containsUppercaseCharacter'] as bool,
-      ),
-      maxPasswordLength: pulumi.Input.fromValue(
-        map['maxPasswordLength'] as int,
-      ),
-      minPasswordLength: pulumi.Input.fromValue(
-        map['minPasswordLength'] as int,
-      ),
+      containsLowercaseCharacter: pulumi.Input.fromValue(map['containsLowercaseCharacter'] as bool),
+      containsNonAlphanumericCharacter: pulumi.Input.fromValue(map['containsNonAlphanumericCharacter'] as bool),
+      containsNumericCharacter: pulumi.Input.fromValue(map['containsNumericCharacter'] as bool),
+      containsUppercaseCharacter: pulumi.Input.fromValue(map['containsUppercaseCharacter'] as bool),
+      maxPasswordLength: pulumi.Input.fromValue(map['maxPasswordLength'] as int),
+      minPasswordLength: pulumi.Input.fromValue(map['minPasswordLength'] as int),
     );
   }
 }
+

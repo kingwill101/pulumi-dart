@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayDestinationResponse {
   /// Name of the service fabric Mesh application.
   final pulumi.Input<String> applicationName;
-
   /// name of the endpoint in the service.
   final pulumi.Input<String> endpointName;
-
   /// service that contains the endpoint.
   final pulumi.Input<String> serviceName;
 
@@ -39,3 +37,4 @@ class GatewayDestinationResponse {
     );
   }
 }
+

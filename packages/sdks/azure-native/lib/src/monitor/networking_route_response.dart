@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkingRouteResponse {
   /// Route path.
   final pulumi.Input<String>? path;
-
   /// The port that will be configured externally. If not specified, it will use the port from the receiver definition.
   final pulumi.Input<int>? port;
-
   /// The name of the previously defined receiver.
   final pulumi.Input<String> receiver;
-
   /// Route subdomain.
   final pulumi.Input<String>? subdomain;
 
@@ -39,22 +36,11 @@ class NetworkingRouteResponse {
 
   factory NetworkingRouteResponse.fromMap(Map<String, dynamic> map) {
     return NetworkingRouteResponse(
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       receiver: pulumi.Input.fromValue(map['receiver'] as String),
-      subdomain: (() {
-        final guardedValue = map['subdomain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subdomain: (() { final guardedValue = map['subdomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -13,14 +13,15 @@ class GetClusterResourceUsageExportConfigBigqueryDestination {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'datasetId': datasetId};
+    return <String, dynamic>{
+      'datasetId': datasetId,
+    };
   }
 
-  factory GetClusterResourceUsageExportConfigBigqueryDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterResourceUsageExportConfigBigqueryDestination.fromMap(Map<String, dynamic> map) {
     return GetClusterResourceUsageExportConfigBigqueryDestination(
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
     );
   }
 }
+

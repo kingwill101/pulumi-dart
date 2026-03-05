@@ -19,8 +19,7 @@ enum ApplicationGatewayCustomErrorStatusCode {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ApplicationGatewayCustomErrorStatusCode value: $value',
-    );
+    throw ArgumentError('Unknown ApplicationGatewayCustomErrorStatusCode value: $value');
   }
 }
+

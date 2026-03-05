@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse {
   /// Optional. Size in GB of the disk. Default is 100 GB.
   final pulumi.Input<int> diskSizeGb;
-
   /// Optional. Max configurable nodes. If max_node_count &gt; node_count, then auto-scaling is enabled.
   final pulumi.Input<int> maxNodeCount;
-
   /// Optional. Total number of nodes in the sessions created for this environment.
   final pulumi.Input<int> nodeCount;
 
@@ -31,9 +29,7 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse
     };
   }
 
-  factory GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse(
       diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
       maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
@@ -41,3 +37,4 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse
     );
   }
 }
+

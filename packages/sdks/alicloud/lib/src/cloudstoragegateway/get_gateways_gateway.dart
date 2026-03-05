@@ -6,74 +6,51 @@ class GetGatewaysGateway {
   /// gateway .
   final pulumi.Input<String> activatedTime;
   final pulumi.Input<String> buyUrl;
-
   /// gateway category.
   final pulumi.Input<String> category;
-
   /// gateway created timestamp in second format.
   final pulumi.Input<String> createTime;
-
   /// gateway description.
   final pulumi.Input<String> description;
-
   /// gateway ecs instance id.
   final pulumi.Input<String> ecsInstanceId;
-
   /// gateway expiration status.
   final pulumi.Input<int> expireStatus;
-
   /// gateway expiration timestamp in second format.
   final pulumi.Input<String> expiredTime;
-
   /// gateway class.
   final pulumi.Input<String> gatewayClass;
-
   /// gateway id.
   final pulumi.Input<String> gatewayId;
-
   /// gateway name.
   final pulumi.Input<String> gatewayName;
-
   /// gateway version.
   final pulumi.Input<String> gatewayVersion;
-
   /// The ID of the Gateway.
   final pulumi.Input<String> id;
-
   /// gateway service ip.
   final pulumi.Input<String> innerIp;
-
   /// gateway public ip.
   final pulumi.Input<String> ip;
-
   /// whether subscription gateway is released after expiration or not.
   final pulumi.Input<bool> isReleaseAfterExpiration;
-
   /// gateway location.
   final pulumi.Input<String> location;
-
   /// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`, `Subscription`.
   final pulumi.Input<String> paymentType;
-
   /// gateway public network bandwidth.
   final pulumi.Input<int> publicNetworkBandwidth;
   final pulumi.Input<String> renewUrl;
-
   /// gateway status.
   final pulumi.Input<String> status;
-
   /// storage bundle id.
   final pulumi.Input<String> storageBundleId;
-
   /// gateway task id.
   final pulumi.Input<String> taskId;
-
   /// gateway type.
   final pulumi.Input<String> type;
-
   /// gateway vpc id.
   final pulumi.Input<String> vpcId;
-
   /// The vswitch id.
   final pulumi.Input<String> vswitchId;
 
@@ -181,14 +158,10 @@ class GetGatewaysGateway {
       id: pulumi.Input.fromValue(map['id'] as String),
       innerIp: pulumi.Input.fromValue(map['innerIp'] as String),
       ip: pulumi.Input.fromValue(map['ip'] as String),
-      isReleaseAfterExpiration: pulumi.Input.fromValue(
-        map['isReleaseAfterExpiration'] as bool,
-      ),
+      isReleaseAfterExpiration: pulumi.Input.fromValue(map['isReleaseAfterExpiration'] as bool),
       location: pulumi.Input.fromValue(map['location'] as String),
       paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
-      publicNetworkBandwidth: pulumi.Input.fromValue(
-        map['publicNetworkBandwidth'] as int,
-      ),
+      publicNetworkBandwidth: pulumi.Input.fromValue(map['publicNetworkBandwidth'] as int),
       renewUrl: pulumi.Input.fromValue(map['renewUrl'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       storageBundleId: pulumi.Input.fromValue(map['storageBundleId'] as String),
@@ -199,3 +172,4 @@ class GetGatewaysGateway {
     );
   }
 }
+

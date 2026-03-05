@@ -588,13 +588,10 @@ import 'peering_connection_options_state.dart';
 class PeeringConnectionOptions extends pulumi.CustomResource {
   /// An optional configuration block that allows for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to be set for the VPC that accepts the peering connection (a maximum of one).
   late final pulumi.Output<PeeringConnectionOptionsAccepter> accepter;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A optional configuration block that allows for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to be set for the VPC that requests the peering connection (a maximum of one).
   late final pulumi.Output<PeeringConnectionOptionsRequester> requester;
-
   /// The ID of the requester VPC peering connection.
   late final pulumi.Output<String> vpcPeeringConnectionId;
 
@@ -607,32 +604,14 @@ class PeeringConnectionOptions extends pulumi.CustomResource {
     PeeringConnectionOptionsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/peeringConnectionOptions:PeeringConnectionOptions',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accepter = registerOutput<PeeringConnectionOptionsAccepter>(
-      'accepter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PeeringConnectionOptionsAccepter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:ec2/peeringConnectionOptions:PeeringConnectionOptions',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accepter = registerOutput<PeeringConnectionOptionsAccepter>('accepter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringConnectionOptionsAccepter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    requester = registerOutput<PeeringConnectionOptionsRequester>(
-      'requester',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PeeringConnectionOptionsRequester.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    requester = registerOutput<PeeringConnectionOptionsRequester>('requester', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringConnectionOptionsRequester.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcPeeringConnectionId = registerOutput<String>('vpcPeeringConnectionId');
   }
 
@@ -654,32 +633,14 @@ class PeeringConnectionOptions extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/peeringConnectionOptions:PeeringConnectionOptions',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accepter = registerOutput<PeeringConnectionOptionsAccepter>(
-      'accepter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PeeringConnectionOptionsAccepter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:ec2/peeringConnectionOptions:PeeringConnectionOptions',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accepter = registerOutput<PeeringConnectionOptionsAccepter>('accepter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringConnectionOptionsAccepter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    requester = registerOutput<PeeringConnectionOptionsRequester>(
-      'requester',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PeeringConnectionOptionsRequester.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    requester = registerOutput<PeeringConnectionOptionsRequester>('requester', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringConnectionOptionsRequester.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcPeeringConnectionId = registerOutput<String>('vpcPeeringConnectionId');
   }
 }

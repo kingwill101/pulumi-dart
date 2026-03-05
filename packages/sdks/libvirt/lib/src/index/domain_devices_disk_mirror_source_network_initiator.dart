@@ -9,31 +9,20 @@ class DomainDevicesDiskMirrorSourceNetworkInitiator {
 
   /// Creates a new [DomainDevicesDiskMirrorSourceNetworkInitiator].
   /// [iqn] Configures the iSCSI qualified name (IQN) used for the initiator in network block device configurations.
-  DomainDevicesDiskMirrorSourceNetworkInitiator({this.iqn});
+  DomainDevicesDiskMirrorSourceNetworkInitiator({
+    this.iqn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iqn':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskMirrorSourceNetworkInitiatorIqn,
-            Map<String, dynamic>
-          >(iqn, (value) => value.toMap()),
+      'iqn': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceNetworkInitiatorIqn, Map<String, dynamic>>(iqn, (value) => value.toMap()),
     };
   }
 
-  factory DomainDevicesDiskMirrorSourceNetworkInitiator.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskMirrorSourceNetworkInitiator.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceNetworkInitiator(
-      iqn: (() {
-        final guardedValue = map['iqn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskMirrorSourceNetworkInitiatorIqn.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      iqn: (() { final guardedValue = map['iqn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorSourceNetworkInitiatorIqn.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

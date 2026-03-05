@@ -4,7 +4,8 @@ import 'get_client_token_result.dart';
 
 /// Use this function to access the current configuration of the native Google provider.
 /// [options] Invoke options controlling this call.
-Future<GetClientConfigResult> getClientConfig({
+Future<GetClientConfigResult> getClientConfig(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -18,7 +19,8 @@ Future<GetClientConfigResult> getClientConfig({
 
 /// Use this function to get an Google authentication token for the current login context.
 /// [options] Invoke options controlling this call.
-Future<GetClientTokenResult> getClientToken({
+Future<GetClientTokenResult> getClientToken(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;

@@ -10,13 +10,10 @@ import 'configuration_profile_assignment_properties.dart';
 class ConfigurationProfileHCIAssignmentArgs {
   /// The name of the Arc machine.
   final pulumi.Input<String> clusterName;
-
   /// Name of the configuration profile assignment. Only default is supported.
   final pulumi.Input<String>? configurationProfileAssignmentName;
-
   /// Properties of the configuration profile assignment.
   final pulumi.Input<ConfigurationProfileAssignmentProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,37 +33,18 @@ class ConfigurationProfileHCIAssignmentArgs {
     return <String, dynamic>{
       'clusterName': clusterName,
       'configurationProfileAssignmentName': ?configurationProfileAssignmentName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigurationProfileAssignmentProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<ConfigurationProfileAssignmentProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
-  factory ConfigurationProfileHCIAssignmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigurationProfileHCIAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileHCIAssignmentArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      configurationProfileAssignmentName: (() {
-        final guardedValue = map['configurationProfileAssignmentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigurationProfileAssignmentProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      configurationProfileAssignmentName: (() { final guardedValue = map['configurationProfileAssignmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationProfileAssignmentProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

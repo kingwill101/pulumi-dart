@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRedisFirewallRuleArgs {
   /// The name of the Redis cache.
   final pulumi.Input<String> cacheName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the firewall rule.
   final pulumi.Input<String> ruleName;
 
@@ -37,10 +35,9 @@ class GetRedisFirewallRuleArgs {
   factory GetRedisFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetRedisFirewallRuleArgs(
       cacheName: pulumi.Input.fromValue(map['cacheName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
     );
   }
 }
+

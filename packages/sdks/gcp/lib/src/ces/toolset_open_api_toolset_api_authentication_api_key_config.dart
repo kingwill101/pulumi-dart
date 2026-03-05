@@ -9,11 +9,9 @@ class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig {
   /// service agent
   /// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
   final pulumi.Input<String> apiKeySecretVersion;
-
   /// The parameter name or the header name of the API key.
   /// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
   final pulumi.Input<String> keyName;
-
   /// Key location in the request.
   /// Possible values:
   /// HEADER
@@ -38,15 +36,12 @@ class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig {
     };
   }
 
-  factory ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig(
-      apiKeySecretVersion: pulumi.Input.fromValue(
-        map['apiKeySecretVersion'] as String,
-      ),
+      apiKeySecretVersion: pulumi.Input.fromValue(map['apiKeySecretVersion'] as String),
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
       requestLocation: pulumi.Input.fromValue(map['requestLocation'] as String),
     );
   }
 }
+

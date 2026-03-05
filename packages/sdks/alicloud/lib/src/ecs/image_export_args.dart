@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageExportArgs {
   /// The source image ID.
   final pulumi.Input<String> imageId;
-
   /// Save the exported OSS bucket.
   final pulumi.Input<String> ossBucket;
-
   /// The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
   final pulumi.Input<String>? ossPrefix;
 
@@ -38,11 +36,8 @@ class ImageExportArgs {
     return ImageExportArgs(
       imageId: pulumi.Input.fromValue(map['imageId'] as String),
       ossBucket: pulumi.Input.fromValue(map['ossBucket'] as String),
-      ossPrefix: (() {
-        final guardedValue = map['ossPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ossPrefix: (() { final guardedValue = map['ossPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

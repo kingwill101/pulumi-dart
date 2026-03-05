@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointSubnetAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the subnet to be associated with the VPC endpoint.
   final pulumi.Input<String> subnetId;
-
   /// The ID of the VPC endpoint with which the subnet will be associated.
   final pulumi.Input<String> vpcEndpointId;
 
@@ -36,13 +34,10 @@ class VpcEndpointSubnetAssociationArgs {
 
   factory VpcEndpointSubnetAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointSubnetAssociationArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       vpcEndpointId: pulumi.Input.fromValue(map['vpcEndpointId'] as String),
     );
   }
 }
+

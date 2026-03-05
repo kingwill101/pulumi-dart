@@ -10,37 +10,29 @@ class QuotaArgs {
   /// Quota value for health_monitors. Changing
   /// this updates the existing quota. Omitting it sets it to 0.
   final pulumi.Input<int>? healthMonitor;
-
   /// Quota value for l7_policies. Changing this
   /// updates the existing quota. Omitting it sets it to 0. Available in
   /// **Octavia minor version 2.19**.
   final pulumi.Input<int>? l7Policy;
-
   /// Quota value for l7_rules. Changing this
   /// updates the existing quota. Omitting it sets it to 0. Available in
   /// **Octavia minor version 2.19**.
   final pulumi.Input<int>? l7Rule;
-
   /// Quota value for listeners. Changing this updates
   /// the existing quota. Omitting it sets it to 0.
   final pulumi.Input<int>? listener;
-
   /// Quota value for loadbalancers. Changing this
   /// updates the existing quota. Omitting it sets it to 0.
   final pulumi.Input<int>? loadbalancer;
-
   /// Quota value for members. Changing this updates
   /// the existing quota. Omitting it sets it to 0.
   final pulumi.Input<int>? member;
-
   /// Quota value for pools. Changing this updates the
   /// the existing quota. Omitting it sets it to 0.
   final pulumi.Input<int>? pool;
-
   /// ID of the project to manage quotas. Changing this
   /// creates a new quota.
   final pulumi.Input<String> projectId;
-
   /// Region in which to manage quotas. Changing this
   /// creates a new quota. If ommited, the region of the credentials is used.
   final pulumi.Input<String>? region;
@@ -83,47 +75,16 @@ class QuotaArgs {
 
   factory QuotaArgs.fromMap(Map<String, dynamic> map) {
     return QuotaArgs(
-      healthMonitor: (() {
-        final guardedValue = map['healthMonitor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      l7Policy: (() {
-        final guardedValue = map['l7Policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      l7Rule: (() {
-        final guardedValue = map['l7Rule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      listener: (() {
-        final guardedValue = map['listener'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      loadbalancer: (() {
-        final guardedValue = map['loadbalancer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      member: (() {
-        final guardedValue = map['member'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      pool: (() {
-        final guardedValue = map['pool'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      healthMonitor: (() { final guardedValue = map['healthMonitor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      l7Policy: (() { final guardedValue = map['l7Policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      l7Rule: (() { final guardedValue = map['l7Rule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      listener: (() { final guardedValue = map['listener']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      loadbalancer: (() { final guardedValue = map['loadbalancer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      member: (() { final guardedValue = map['member']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pool: (() { final guardedValue = map['pool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

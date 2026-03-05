@@ -9,19 +9,20 @@ class BackupScheduleWeeklyRecurrence {
 
   /// Creates a new [BackupScheduleWeeklyRecurrence].
   /// [day] The day of week to run.
-  BackupScheduleWeeklyRecurrence({this.day});
+  BackupScheduleWeeklyRecurrence({
+    this.day,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'day': ?day};
+    return <String, dynamic>{
+      'day': ?day,
+    };
   }
 
   factory BackupScheduleWeeklyRecurrence.fromMap(Map<String, dynamic> map) {
     return BackupScheduleWeeklyRecurrence(
-      day: (() {
-        final guardedValue = map['day'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      day: (() { final guardedValue = map['day']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

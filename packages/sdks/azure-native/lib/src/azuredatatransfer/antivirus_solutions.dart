@@ -15,3 +15,4 @@ enum AntivirusSolutions {
     throw ArgumentError('Unknown AntivirusSolutions value: $value');
   }
 }
+

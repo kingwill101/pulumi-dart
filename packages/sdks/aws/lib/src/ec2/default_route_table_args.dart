@@ -12,16 +12,12 @@ class DefaultRouteTableArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> defaultRouteTableId;
-
   /// List of virtual gateways for propagation.
   final pulumi.Input<List<String>>? propagatingVgws;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Set of objects. Detailed below
   final pulumi.Input<List<DefaultRouteTableRoute>>? routes;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,56 +40,19 @@ class DefaultRouteTableArgs {
       'defaultRouteTableId': defaultRouteTableId,
       'propagatingVgws': ?propagatingVgws,
       'region': ?region,
-      'routes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DefaultRouteTableRoute>,
-            List<Map<String, dynamic>>
-          >(
-            routes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DefaultRouteTableRoute,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'routes': ?pulumi.Input.mapOptionalInputValue<List<DefaultRouteTableRoute>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<DefaultRouteTableRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
     };
   }
 
   factory DefaultRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return DefaultRouteTableArgs(
-      defaultRouteTableId: pulumi.Input.fromValue(
-        map['defaultRouteTableId'] as String,
-      ),
-      propagatingVgws: (() {
-        final guardedValue = map['propagatingVgws'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routes: (() {
-        final guardedValue = map['routes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DefaultRouteTableRoute>(
-            guardedValue,
-            (value) => DefaultRouteTableRoute.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      defaultRouteTableId: pulumi.Input.fromValue(map['defaultRouteTableId'] as String),
+      propagatingVgws: (() { final guardedValue = map['propagatingVgws']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routes: (() { final guardedValue = map['routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DefaultRouteTableRoute>(guardedValue, (value) => DefaultRouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

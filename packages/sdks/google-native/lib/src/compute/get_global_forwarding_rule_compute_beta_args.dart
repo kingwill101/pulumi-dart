@@ -25,16 +25,11 @@ class GetGlobalForwardingRuleComputeBetaArgs {
     };
   }
 
-  factory GetGlobalForwardingRuleComputeBetaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGlobalForwardingRuleComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalForwardingRuleComputeBetaArgs(
       forwardingRule: pulumi.Input.fromValue(map['forwardingRule'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

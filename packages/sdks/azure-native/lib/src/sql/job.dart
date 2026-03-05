@@ -309,19 +309,14 @@ import 'job_schedule_response.dart';
 class Job extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// User-defined description of the job.
   late final pulumi.Output<String?> description;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Schedule properties of the job.
   late final pulumi.Output<JobScheduleResponse?> schedule;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// The job version number.
   late final pulumi.Output<int> version;
 
@@ -329,26 +324,20 @@ class Job extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Job]. {@macro pulumi_sql_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Job(String name, {JobArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:sql:Job',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Job(
+    String name, {
+    JobArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:sql:Job',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    schedule = registerOutput<JobScheduleResponse?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobScheduleResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<JobScheduleResponse?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<int>('version');
   }

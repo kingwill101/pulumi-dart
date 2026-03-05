@@ -18,3 +18,4 @@ enum SuppressionType {
     throw ArgumentError('Unknown SuppressionType value: $value');
   }
 }
+

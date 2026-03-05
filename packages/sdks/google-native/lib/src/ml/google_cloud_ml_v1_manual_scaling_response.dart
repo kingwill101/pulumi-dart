@@ -9,17 +9,20 @@ class GoogleCloudMlV1ManualScalingResponse {
 
   /// Creates a new [GoogleCloudMlV1ManualScalingResponse].
   /// [nodes] The number of nodes to allocate for this model. These nodes are always up, starting from the time the model is deployed, so the cost of operating this model will be proportional to `nodes` * number of hours since last billing cycle plus the cost for each prediction performed.
-  GoogleCloudMlV1ManualScalingResponse({required this.nodes});
+  GoogleCloudMlV1ManualScalingResponse({
+    required this.nodes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nodes': nodes};
+    return <String, dynamic>{
+      'nodes': nodes,
+    };
   }
 
-  factory GoogleCloudMlV1ManualScalingResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudMlV1ManualScalingResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1ManualScalingResponse(
       nodes: pulumi.Input.fromValue(map['nodes'] as int),
     );
   }
 }
+

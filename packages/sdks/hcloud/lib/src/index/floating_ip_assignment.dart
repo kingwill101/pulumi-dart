@@ -186,7 +186,6 @@ import 'floating_ip_assignment_state.dart';
 class FloatingIpAssignment extends pulumi.CustomResource {
   /// ID of the Floating IP.
   late final pulumi.Output<int> floatingIpId;
-
   /// Server to assign the Floating IP to.
   late final pulumi.Output<int> serverId;
 
@@ -199,11 +198,11 @@ class FloatingIpAssignment extends pulumi.CustomResource {
     FloatingIpAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/floatingIpAssignment:FloatingIpAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/floatingIpAssignment:FloatingIpAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     floatingIpId = registerOutput<int>('floatingIpId');
     serverId = registerOutput<int>('serverId');
   }
@@ -226,11 +225,11 @@ class FloatingIpAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/floatingIpAssignment:FloatingIpAssignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/floatingIpAssignment:FloatingIpAssignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     floatingIpId = registerOutput<int>('floatingIpId');
     serverId = registerOutput<int>('serverId');
   }

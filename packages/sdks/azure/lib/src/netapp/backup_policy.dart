@@ -208,30 +208,22 @@ import 'backup_policy_state.dart';
 class BackupPolicy extends pulumi.CustomResource {
   /// The name of the NetApp account in which the NetApp Policy should be created under. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-
   /// Provides the number of daily backups to keep, defaults to `2` which is the minimum, maximum is 1019.
   late final pulumi.Output<int?> dailyBackupsToKeep;
-
   /// Whether the Backup Policy is enabled. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Provides the number of monthly backups to keep, defaults to `1`. The minimum is `0` and the maximum is `1019`.
   ///
   /// &gt; **Note:** Currently, the combined (daily + weekly + monthy) retention counts cannot exceed 1019.
   late final pulumi.Output<int?> monthlyBackupsToKeep;
-
   /// The name of the NetApp Backup Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group where the NetApp Backup Policy should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Provides the number of weekly backups to keep, defaults to `1`. The minimum is `0` and the maximum is `1019`.
   late final pulumi.Output<int?> weeklyBackupsToKeep;
 
@@ -244,11 +236,11 @@ class BackupPolicy extends pulumi.CustomResource {
     BackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:netapp/backupPolicy:BackupPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:netapp/backupPolicy:BackupPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     dailyBackupsToKeep = registerOutput<int?>('dailyBackupsToKeep');
     enabled = registerOutput<bool?>('enabled');
@@ -278,11 +270,11 @@ class BackupPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:netapp/backupPolicy:BackupPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:netapp/backupPolicy:BackupPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     dailyBackupsToKeep = registerOutput<int?>('dailyBackupsToKeep');
     enabled = registerOutput<bool?>('enabled');

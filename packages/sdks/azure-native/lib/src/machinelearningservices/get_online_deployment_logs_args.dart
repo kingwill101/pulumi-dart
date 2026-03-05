@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOnlineDeploymentLogsArgs {
   /// The type of container to retrieve logs from.
   final pulumi.Input<String>? containerType;
-
   /// The name and identifier for the endpoint.
   final pulumi.Input<String> deploymentName;
-
   /// Inference endpoint name.
   final pulumi.Input<String> endpointName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The maximum number of lines to tail.
   final pulumi.Input<int>? tail;
-
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -54,22 +49,13 @@ class GetOnlineDeploymentLogsArgs {
 
   factory GetOnlineDeploymentLogsArgs.fromMap(Map<String, dynamic> map) {
     return GetOnlineDeploymentLogsArgs(
-      containerType: (() {
-        final guardedValue = map['containerType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      containerType: (() { final guardedValue = map['containerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deploymentName: pulumi.Input.fromValue(map['deploymentName'] as String),
       endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tail: (() {
-        final guardedValue = map['tail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tail: (() { final guardedValue = map['tail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

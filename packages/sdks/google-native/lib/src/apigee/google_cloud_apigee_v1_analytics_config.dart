@@ -9,19 +9,20 @@ class GoogleCloudApigeeV1AnalyticsConfig {
 
   /// Creates a new [GoogleCloudApigeeV1AnalyticsConfig].
   /// [enabled] Whether the Analytics add-on is enabled.
-  GoogleCloudApigeeV1AnalyticsConfig({this.enabled});
+  GoogleCloudApigeeV1AnalyticsConfig({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory GoogleCloudApigeeV1AnalyticsConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1AnalyticsConfig(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

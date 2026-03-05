@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy {
   /// The sharegroup_id from the im_ImageShare row.
   final pulumi.Input<int> sharegroupId;
-
   /// The label from the associated im_ImageShareGroup row.
   final pulumi.Input<String> sharegroupLabel;
-
   /// The sharegroup_uuid from the im_ImageShare row.
   final pulumi.Input<String> sharegroupUuid;
-
   /// The image id of the base image (will only be shown to producers, will be null for consumers).
   final pulumi.Input<String> sourceImageId;
 
@@ -36,9 +33,7 @@ class GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy {
     };
   }
 
-  factory GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy.fromMap(Map<String, dynamic> map) {
     return GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy(
       sharegroupId: pulumi.Input.fromValue(map['sharegroupId'] as int),
       sharegroupLabel: pulumi.Input.fromValue(map['sharegroupLabel'] as String),
@@ -47,3 +42,4 @@ class GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy {
     );
   }
 }
+

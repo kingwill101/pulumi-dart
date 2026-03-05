@@ -7,25 +7,16 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 /// Input properties used for looking up and filtering CustomerManagedPolicyAttachmentsExclusive resources.
 class CustomerManagedPolicyAttachmentsExclusiveState {
   /// Specifies the names and paths of the customer managed policies to attach. See Customer Managed Policy Reference below.
-  final pulumi.Input<
-    List<
-      CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference
-    >
-  >?
-  customerManagedPolicyReferences;
-
+  final pulumi.Input<List<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>>? customerManagedPolicyReferences;
   /// ARN of the SSO Instance.
   final pulumi.Input<String>? instanceArn;
-
   /// ARN of the Permission Set.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? permissionSetArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  final pulumi.Input<CustomerManagedPolicyAttachmentsExclusiveTimeouts>?
-  timeouts;
+  final pulumi.Input<CustomerManagedPolicyAttachmentsExclusiveTimeouts>? timeouts;
 
   /// Creates a new [CustomerManagedPolicyAttachmentsExclusiveState].
   /// [customerManagedPolicyReferences] Specifies the names and paths of the customer managed policies to attach. See Customer Managed Policy Reference below.
@@ -43,74 +34,22 @@ class CustomerManagedPolicyAttachmentsExclusiveState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customerManagedPolicyReferences':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference
-            >,
-            List<Map<String, dynamic>>
-          >(
-            customerManagedPolicyReferences,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'customerManagedPolicyReferences': ?pulumi.Input.mapOptionalInputValue<List<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>, List<Map<String, dynamic>>>(customerManagedPolicyReferences, (value) => pulumi.Input.encodeList<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference, Map<String, dynamic>>(value, (value) => value.toMap())),
       'instanceArn': ?instanceArn,
       'permissionSetArn': ?permissionSetArn,
       'region': ?region,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomerManagedPolicyAttachmentsExclusiveTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<CustomerManagedPolicyAttachmentsExclusiveTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
-  factory CustomerManagedPolicyAttachmentsExclusiveState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomerManagedPolicyAttachmentsExclusiveState.fromMap(Map<String, dynamic> map) {
     return CustomerManagedPolicyAttachmentsExclusiveState(
-      customerManagedPolicyReferences: (() {
-        final guardedValue = map['customerManagedPolicyReferences'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference
-          >(
-            guardedValue,
-            (value) =>
-                CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      instanceArn: (() {
-        final guardedValue = map['instanceArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      permissionSetArn: (() {
-        final guardedValue = map['permissionSetArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomerManagedPolicyAttachmentsExclusiveTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      customerManagedPolicyReferences: (() { final guardedValue = map['customerManagedPolicyReferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>(guardedValue, (value) => CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      instanceArn: (() { final guardedValue = map['instanceArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      permissionSetArn: (() { final guardedValue = map['permissionSetArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomerManagedPolicyAttachmentsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

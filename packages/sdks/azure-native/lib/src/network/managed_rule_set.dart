@@ -7,10 +7,8 @@ import 'managed_rule_group_override.dart';
 class ManagedRuleSet {
   /// Defines the rule group overrides to apply to the rule set.
   final pulumi.Input<List<ManagedRuleGroupOverride>>? ruleGroupOverrides;
-
   /// Defines the rule set type to use.
   final pulumi.Input<String> ruleSetType;
-
   /// Defines the version of the rule set to use.
   final pulumi.Input<String> ruleSetVersion;
 
@@ -26,18 +24,7 @@ class ManagedRuleSet {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ruleGroupOverrides':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ManagedRuleGroupOverride>,
-            List<Map<String, dynamic>>
-          >(
-            ruleGroupOverrides,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ManagedRuleGroupOverride,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ruleGroupOverrides': ?pulumi.Input.mapOptionalInputValue<List<ManagedRuleGroupOverride>, List<Map<String, dynamic>>>(ruleGroupOverrides, (value) => pulumi.Input.encodeList<ManagedRuleGroupOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ruleSetType': ruleSetType,
       'ruleSetVersion': ruleSetVersion,
     };
@@ -45,20 +32,10 @@ class ManagedRuleSet {
 
   factory ManagedRuleSet.fromMap(Map<String, dynamic> map) {
     return ManagedRuleSet(
-      ruleGroupOverrides: (() {
-        final guardedValue = map['ruleGroupOverrides'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ManagedRuleGroupOverride>(
-            guardedValue,
-            (value) => ManagedRuleGroupOverride.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      ruleGroupOverrides: (() { final guardedValue = map['ruleGroupOverrides']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedRuleGroupOverride>(guardedValue, (value) => ManagedRuleGroupOverride.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ruleSetType: pulumi.Input.fromValue(map['ruleSetType'] as String),
       ruleSetVersion: pulumi.Input.fromValue(map['ruleSetVersion'] as String),
     );
   }
 }
+

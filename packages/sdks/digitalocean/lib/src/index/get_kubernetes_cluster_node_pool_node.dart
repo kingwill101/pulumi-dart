@@ -6,16 +6,12 @@ class GetKubernetesClusterNodePoolNode {
   /// The date and time when the node was created.
   final pulumi.Input<String> createdAt;
   final pulumi.Input<String> dropletId;
-
   /// A unique ID that can be used to identify and reference the node.
   final pulumi.Input<String> id;
-
   /// The name of Kubernetes cluster.
   final pulumi.Input<String> name;
-
   /// A string indicating the current status of the individual node.
   final pulumi.Input<String> status;
-
   /// The date and time when the node was last updated.
   final pulumi.Input<String> updatedAt;
 
@@ -57,3 +53,4 @@ class GetKubernetesClusterNodePoolNode {
     );
   }
 }
+

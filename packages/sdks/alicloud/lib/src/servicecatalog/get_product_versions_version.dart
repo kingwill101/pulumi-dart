@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProductVersionsVersion {
   /// Whether the version is activated
   final pulumi.Input<bool> active;
-
   /// The creation time of the resource
   final pulumi.Input<String> createTime;
-
   /// Version description
   final pulumi.Input<String> description;
-
   /// Administrator guidance
   final pulumi.Input<String> guidance;
-
   /// ID of product version.
   final pulumi.Input<String> id;
-
   /// Product ID
   final pulumi.Input<String> productId;
-
   /// The first ID of the resource
   final pulumi.Input<String> productVersionId;
-
   /// The name of the resource
   final pulumi.Input<String> productVersionName;
-
   /// Template Type
   final pulumi.Input<String> templateType;
-
   /// Template URL
   final pulumi.Input<String> templateUrl;
 
@@ -80,14 +71,11 @@ class GetProductVersionsVersion {
       guidance: pulumi.Input.fromValue(map['guidance'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       productId: pulumi.Input.fromValue(map['productId'] as String),
-      productVersionId: pulumi.Input.fromValue(
-        map['productVersionId'] as String,
-      ),
-      productVersionName: pulumi.Input.fromValue(
-        map['productVersionName'] as String,
-      ),
+      productVersionId: pulumi.Input.fromValue(map['productVersionId'] as String),
+      productVersionName: pulumi.Input.fromValue(map['productVersionName'] as String),
       templateType: pulumi.Input.fromValue(map['templateType'] as String),
       templateUrl: pulumi.Input.fromValue(map['templateUrl'] as String),
     );
   }
 }
+

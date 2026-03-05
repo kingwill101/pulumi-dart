@@ -8,10 +8,14 @@ class GetChainsChainChainConfigRouterTo {
 
   /// Creates a new [GetChainsChainChainConfigRouterTo].
   /// [nodeName] The name of delivery chain node.
-  GetChainsChainChainConfigRouterTo({required this.nodeName});
+  GetChainsChainChainConfigRouterTo({
+    required this.nodeName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nodeName': nodeName};
+    return <String, dynamic>{
+      'nodeName': nodeName,
+    };
   }
 
   factory GetChainsChainChainConfigRouterTo.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetChainsChainChainConfigRouterTo {
     );
   }
 }
+

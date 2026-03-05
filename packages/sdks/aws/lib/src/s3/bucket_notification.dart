@@ -2183,19 +2183,14 @@ class BucketNotification extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> bucket;
-
   /// Whether to enable Amazon EventBridge notifications. Defaults to `false`.
   late final pulumi.Output<bool?> eventbridge;
-
   /// Used to configure notifications to a Lambda Function. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> lambdaFunctions;
-
   /// Notification configuration to SQS Queue. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> queues;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Notification configuration to SNS Topic. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> topics;
 
@@ -2208,16 +2203,14 @@ class BucketNotification extends pulumi.CustomResource {
     BucketNotificationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketNotification:BucketNotification',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketNotification:BucketNotification',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     eventbridge = registerOutput<bool?>('eventbridge');
-    lambdaFunctions = registerOutput<List<Map<String, dynamic>>?>(
-      'lambdaFunctions',
-    );
+    lambdaFunctions = registerOutput<List<Map<String, dynamic>>?>('lambdaFunctions');
     queues = registerOutput<List<Map<String, dynamic>>?>('queues');
     region = registerOutput<String>('region');
     topics = registerOutput<List<Map<String, dynamic>>?>('topics');
@@ -2241,16 +2234,14 @@ class BucketNotification extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketNotification:BucketNotification',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketNotification:BucketNotification',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     eventbridge = registerOutput<bool?>('eventbridge');
-    lambdaFunctions = registerOutput<List<Map<String, dynamic>>?>(
-      'lambdaFunctions',
-    );
+    lambdaFunctions = registerOutput<List<Map<String, dynamic>>?>('lambdaFunctions');
     queues = registerOutput<List<Map<String, dynamic>>?>('queues');
     region = registerOutput<String>('region');
     topics = registerOutput<List<Map<String, dynamic>>?>('topics');

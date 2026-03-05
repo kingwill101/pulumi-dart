@@ -16,3 +16,4 @@ enum ConfidenceLevel {
     throw ArgumentError('Unknown ConfidenceLevel value: $value');
   }
 }
+

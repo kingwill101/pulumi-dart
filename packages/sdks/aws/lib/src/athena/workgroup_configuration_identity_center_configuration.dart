@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkgroupConfigurationIdentityCenterConfiguration {
   /// Specifies whether the workgroup is IAM Identity Center supported.
   final pulumi.Input<bool>? enableIdentityCenter;
-
   /// The IAM Identity Center instance ARN that the workgroup associates to.
   final pulumi.Input<String>? identityCenterInstanceArn;
 
@@ -24,20 +23,11 @@ class WorkgroupConfigurationIdentityCenterConfiguration {
     };
   }
 
-  factory WorkgroupConfigurationIdentityCenterConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkgroupConfigurationIdentityCenterConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationIdentityCenterConfiguration(
-      enableIdentityCenter: (() {
-        final guardedValue = map['enableIdentityCenter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      identityCenterInstanceArn: (() {
-        final guardedValue = map['identityCenterInstanceArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enableIdentityCenter: (() { final guardedValue = map['enableIdentityCenter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      identityCenterInstanceArn: (() { final guardedValue = map['identityCenterInstanceArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

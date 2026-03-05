@@ -5,12 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxFunctionAppSlotAuthSettingsV2AppleV2 {
   /// The OpenID Connect Client ID for the Apple web application.
   final pulumi.Input<String> clientId;
-
   /// The app setting name that contains the `client_secret` value used for Apple Login.
   ///
   /// !&gt; **Note:** A setting with this name must exist in `app_settings` to function correctly.
   final pulumi.Input<String> clientSecretSettingName;
-
   /// A list of Login Scopes provided by this Authentication Provider.
   ///
   /// &gt; **Note:** This is configured on the Authentication Provider side and is Read Only here.
@@ -34,19 +32,12 @@ class LinuxFunctionAppSlotAuthSettingsV2AppleV2 {
     };
   }
 
-  factory LinuxFunctionAppSlotAuthSettingsV2AppleV2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LinuxFunctionAppSlotAuthSettingsV2AppleV2.fromMap(Map<String, dynamic> map) {
     return LinuxFunctionAppSlotAuthSettingsV2AppleV2(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
-      clientSecretSettingName: pulumi.Input.fromValue(
-        map['clientSecretSettingName'] as String,
-      ),
-      loginScopes: (() {
-        final guardedValue = map['loginScopes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      clientSecretSettingName: pulumi.Input.fromValue(map['clientSecretSettingName'] as String),
+      loginScopes: (() { final guardedValue = map['loginScopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

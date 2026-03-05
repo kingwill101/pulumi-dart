@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualApplianceSkuPropertiesResponse {
   /// Virtual Appliance Scale Unit.
   final pulumi.Input<String>? bundledScaleUnit;
-
   /// Virtual Appliance Version.
   final pulumi.Input<String>? marketPlaceVersion;
-
   /// Virtual Appliance Vendor.
   final pulumi.Input<String>? vendor;
 
@@ -31,25 +29,12 @@ class VirtualApplianceSkuPropertiesResponse {
     };
   }
 
-  factory VirtualApplianceSkuPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualApplianceSkuPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceSkuPropertiesResponse(
-      bundledScaleUnit: (() {
-        final guardedValue = map['bundledScaleUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      marketPlaceVersion: (() {
-        final guardedValue = map['marketPlaceVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vendor: (() {
-        final guardedValue = map['vendor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bundledScaleUnit: (() { final guardedValue = map['bundledScaleUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      marketPlaceVersion: (() { final guardedValue = map['marketPlaceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vendor: (() { final guardedValue = map['vendor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

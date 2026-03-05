@@ -14,3 +14,4 @@ enum HeaderMatchType {
     throw ArgumentError('Unknown HeaderMatchType value: $value');
   }
 }
+

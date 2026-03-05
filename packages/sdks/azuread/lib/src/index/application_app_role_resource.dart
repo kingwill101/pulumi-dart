@@ -307,21 +307,16 @@ import 'application_app_role_state.dart';
 class ApplicationAppRoleResource extends pulumi.CustomResource {
   /// A set of values to specify whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications by setting to `Application`, or to both.
   late final pulumi.Output<List<String>> allowedMemberTypes;
-
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
-
   /// Description of the app role that appears when the role is being assigned, and if the role functions as an application permissions, during the consent experiences.
   late final pulumi.Output<String> description;
-
   /// Display name for the app role that appears during app role assignment and in consent experiences.
   late final pulumi.Output<String> displayName;
-
   /// The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
   ///
   /// &gt; **Tip** Use the `random_uuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
   late final pulumi.Output<String> roleId;
-
   /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
   ///
   /// &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
@@ -336,11 +331,11 @@ class ApplicationAppRoleResource extends pulumi.CustomResource {
     ApplicationAppRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationAppRole:ApplicationAppRole',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationAppRole:ApplicationAppRole',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedMemberTypes = registerOutput<List<String>>('allowedMemberTypes');
     applicationId = registerOutput<String>('applicationId');
     description = registerOutput<String>('description');
@@ -367,11 +362,11 @@ class ApplicationAppRoleResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationAppRole:ApplicationAppRole',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationAppRole:ApplicationAppRole',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedMemberTypes = registerOutput<List<String>>('allowedMemberTypes');
     applicationId = registerOutput<String>('applicationId');
     description = registerOutput<String>('description');

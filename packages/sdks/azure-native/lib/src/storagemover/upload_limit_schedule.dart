@@ -10,39 +10,20 @@ class UploadLimitSchedule {
 
   /// Creates a new [UploadLimitSchedule].
   /// [weeklyRecurrences] The set of weekly repeating recurrences of the WAN-link upload limit schedule.
-  UploadLimitSchedule({this.weeklyRecurrences});
+  UploadLimitSchedule({
+    this.weeklyRecurrences,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'weeklyRecurrences':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<UploadLimitWeeklyRecurrence>,
-            List<Map<String, dynamic>>
-          >(
-            weeklyRecurrences,
-            (value) =>
-                pulumi.Input.encodeList<
-                  UploadLimitWeeklyRecurrence,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'weeklyRecurrences': ?pulumi.Input.mapOptionalInputValue<List<UploadLimitWeeklyRecurrence>, List<Map<String, dynamic>>>(weeklyRecurrences, (value) => pulumi.Input.encodeList<UploadLimitWeeklyRecurrence, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory UploadLimitSchedule.fromMap(Map<String, dynamic> map) {
     return UploadLimitSchedule(
-      weeklyRecurrences: (() {
-        final guardedValue = map['weeklyRecurrences'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<UploadLimitWeeklyRecurrence>(
-            guardedValue,
-            (value) => UploadLimitWeeklyRecurrence.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      weeklyRecurrences: (() { final guardedValue = map['weeklyRecurrences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UploadLimitWeeklyRecurrence>(guardedValue, (value) => UploadLimitWeeklyRecurrence.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

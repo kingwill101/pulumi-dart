@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterCertificate {
   /// The Thumbprint of the Certificate.
   final pulumi.Input<String> thumbprint;
-
   /// The Secondary Thumbprint of the Certificate.
   final pulumi.Input<String>? thumbprintSecondary;
-
   /// The X509 Store where the Certificate Exists, such as `My`.
   final pulumi.Input<String> x509StoreName;
 
@@ -33,12 +31,9 @@ class ClusterCertificate {
   factory ClusterCertificate.fromMap(Map<String, dynamic> map) {
     return ClusterCertificate(
       thumbprint: pulumi.Input.fromValue(map['thumbprint'] as String),
-      thumbprintSecondary: (() {
-        final guardedValue = map['thumbprintSecondary'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      thumbprintSecondary: (() { final guardedValue = map['thumbprintSecondary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       x509StoreName: pulumi.Input.fromValue(map['x509StoreName'] as String),
     );
   }
 }
+

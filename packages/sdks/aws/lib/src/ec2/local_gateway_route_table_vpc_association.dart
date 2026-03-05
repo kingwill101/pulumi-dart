@@ -161,19 +161,14 @@ import 'local_gateway_route_table_vpc_association_state.dart';
 /// ```
 class LocalGatewayRouteTableVpcAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> localGatewayId;
-
   /// Identifier of EC2 Local Gateway Route Table.
   late final pulumi.Output<String> localGatewayRouteTableId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Identifier of EC2 VPC.
   ///
   /// The following arguments are optional:
@@ -188,15 +183,13 @@ class LocalGatewayRouteTableVpcAssociation extends pulumi.CustomResource {
     LocalGatewayRouteTableVpcAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/localGatewayRouteTableVpcAssociation:LocalGatewayRouteTableVpcAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/localGatewayRouteTableVpcAssociation:LocalGatewayRouteTableVpcAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     localGatewayId = registerOutput<String>('localGatewayId');
-    localGatewayRouteTableId = registerOutput<String>(
-      'localGatewayRouteTableId',
-    );
+    localGatewayRouteTableId = registerOutput<String>('localGatewayRouteTableId');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -221,15 +214,13 @@ class LocalGatewayRouteTableVpcAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/localGatewayRouteTableVpcAssociation:LocalGatewayRouteTableVpcAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/localGatewayRouteTableVpcAssociation:LocalGatewayRouteTableVpcAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     localGatewayId = registerOutput<String>('localGatewayId');
-    localGatewayRouteTableId = registerOutput<String>(
-      'localGatewayRouteTableId',
-    );
+    localGatewayRouteTableId = registerOutput<String>('localGatewayRouteTableId');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

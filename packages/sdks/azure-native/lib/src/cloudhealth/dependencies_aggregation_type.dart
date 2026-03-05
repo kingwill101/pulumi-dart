@@ -15,3 +15,4 @@ enum DependenciesAggregationType {
     throw ArgumentError('Unknown DependenciesAggregationType value: $value');
   }
 }
+

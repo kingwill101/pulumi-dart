@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBillingProfileArgs {
   /// The ID that uniquely identifies a billing account.
   final pulumi.Input<String> billingAccountName;
-
   /// The ID that uniquely identifies a billing profile.
   final pulumi.Input<String> billingProfileName;
 
@@ -30,12 +29,9 @@ class GetBillingProfileArgs {
 
   factory GetBillingProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingProfileArgs(
-      billingAccountName: pulumi.Input.fromValue(
-        map['billingAccountName'] as String,
-      ),
-      billingProfileName: pulumi.Input.fromValue(
-        map['billingProfileName'] as String,
-      ),
+      billingAccountName: pulumi.Input.fromValue(map['billingAccountName'] as String),
+      billingProfileName: pulumi.Input.fromValue(map['billingProfileName'] as String),
     );
   }
 }
+

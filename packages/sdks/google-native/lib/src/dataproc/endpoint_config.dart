@@ -9,19 +9,20 @@ class EndpointConfig {
 
   /// Creates a new [EndpointConfig].
   /// [enableHttpPortAccess] Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
-  EndpointConfig({this.enableHttpPortAccess});
+  EndpointConfig({
+    this.enableHttpPortAccess,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableHttpPortAccess': ?enableHttpPortAccess};
+    return <String, dynamic>{
+      'enableHttpPortAccess': ?enableHttpPortAccess,
+    };
   }
 
   factory EndpointConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfig(
-      enableHttpPortAccess: (() {
-        final guardedValue = map['enableHttpPortAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableHttpPortAccess: (() { final guardedValue = map['enableHttpPortAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExpressRouteCircuitPeeringArgs {
   /// The name of the express route circuit.
   final pulumi.Input<String> circuitName;
-
   /// The name of the peering.
   final pulumi.Input<String> peeringName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetExpressRouteCircuitPeeringArgs {
     return GetExpressRouteCircuitPeeringArgs(
       circuitName: pulumi.Input.fromValue(map['circuitName'] as String),
       peeringName: pulumi.Input.fromValue(map['peeringName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

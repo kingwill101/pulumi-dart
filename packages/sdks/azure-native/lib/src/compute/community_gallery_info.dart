@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CommunityGalleryInfo {
   /// End-user license agreement for community gallery image.
   final pulumi.Input<String>? eula;
-
   /// The prefix of the gallery name that will be displayed publicly. Visible to all users.
   final pulumi.Input<String>? publicNamePrefix;
-
   /// Community gallery publisher support email. The email address of the publisher. Visible to all users.
   final pulumi.Input<String>? publisherContact;
-
   /// The link to the publisher website. Visible to all users.
   final pulumi.Input<String>? publisherUri;
 
@@ -39,26 +36,11 @@ class CommunityGalleryInfo {
 
   factory CommunityGalleryInfo.fromMap(Map<String, dynamic> map) {
     return CommunityGalleryInfo(
-      eula: (() {
-        final guardedValue = map['eula'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicNamePrefix: (() {
-        final guardedValue = map['publicNamePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publisherContact: (() {
-        final guardedValue = map['publisherContact'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publisherUri: (() {
-        final guardedValue = map['publisherUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eula: (() { final guardedValue = map['eula']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNamePrefix: (() { final guardedValue = map['publicNamePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publisherContact: (() { final guardedValue = map['publisherContact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publisherUri: (() { final guardedValue = map['publisherUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

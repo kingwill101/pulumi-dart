@@ -14,8 +14,7 @@ enum VirtualNetworkPrivateEndpointNetworkPolicies {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown VirtualNetworkPrivateEndpointNetworkPolicies value: $value',
-    );
+    throw ArgumentError('Unknown VirtualNetworkPrivateEndpointNetworkPolicies value: $value');
   }
 }
+

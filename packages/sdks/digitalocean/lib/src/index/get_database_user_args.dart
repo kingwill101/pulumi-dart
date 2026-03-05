@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseUserArgs {
   /// The ID of the database cluster.
   final pulumi.Input<String> clusterId;
-
   /// The name of the database user.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetDatabaseUserArgs].
   /// [clusterId] The ID of the database cluster.
   /// [name] The name of the database user.
-  GetDatabaseUserArgs({required this.clusterId, required this.name});
+  GetDatabaseUserArgs({
+    required this.clusterId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'clusterId': clusterId, 'name': name};
+    return <String, dynamic>{
+      'clusterId': clusterId,
+      'name': name,
+    };
   }
 
   factory GetDatabaseUserArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetDatabaseUserArgs {
     );
   }
 }
+

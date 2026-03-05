@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SparkBatchResponse {
   /// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
   final pulumi.Input<List<String>> archiveUris;
-
   /// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
   final pulumi.Input<List<String>> args;
-
   /// Optional. HCFS URIs of files to be placed in the working directory of each executor.
   final pulumi.Input<List<String>> fileUris;
-
   /// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
   final pulumi.Input<List<String>> jarFileUris;
-
   /// Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
   final pulumi.Input<String> mainClass;
-
   /// Optional. The HCFS URI of the jar file that contains the main class.
   final pulumi.Input<String> mainJarFileUri;
 
@@ -51,18 +46,13 @@ class SparkBatchResponse {
 
   factory SparkBatchResponse.fromMap(Map<String, dynamic> map) {
     return SparkBatchResponse(
-      archiveUris: pulumi.Input.fromValue(
-        (map['archiveUris'] as List).cast<String>(),
-      ),
+      archiveUris: pulumi.Input.fromValue((map['archiveUris'] as List).cast<String>()),
       args: pulumi.Input.fromValue((map['args'] as List).cast<String>()),
-      fileUris: pulumi.Input.fromValue(
-        (map['fileUris'] as List).cast<String>(),
-      ),
-      jarFileUris: pulumi.Input.fromValue(
-        (map['jarFileUris'] as List).cast<String>(),
-      ),
+      fileUris: pulumi.Input.fromValue((map['fileUris'] as List).cast<String>()),
+      jarFileUris: pulumi.Input.fromValue((map['jarFileUris'] as List).cast<String>()),
       mainClass: pulumi.Input.fromValue(map['mainClass'] as String),
       mainJarFileUri: pulumi.Input.fromValue(map['mainJarFileUri'] as String),
     );
   }
 }
+

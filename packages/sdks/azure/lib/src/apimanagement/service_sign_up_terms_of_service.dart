@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceSignUpTermsOfService {
   /// Should the user be asked for consent during sign up?
   final pulumi.Input<bool> consentRequired;
-
   /// Should Terms of Service be displayed during sign up?.
   final pulumi.Input<bool> enabled;
-
   /// The Terms of Service which users are required to agree to in order to sign up.
   final pulumi.Input<String>? text;
 
@@ -34,11 +32,8 @@ class ServiceSignUpTermsOfService {
     return ServiceSignUpTermsOfService(
       consentRequired: pulumi.Input.fromValue(map['consentRequired'] as bool),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      text: (() {
-        final guardedValue = map['text'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

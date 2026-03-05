@@ -647,29 +647,20 @@ import 'scale_set_packet_capture_storage_location.dart';
 class ScaleSetPacketCapture extends pulumi.CustomResource {
   /// One or more `filter` blocks as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> filters;
-
   /// A `machine_scope` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ScaleSetPacketCaptureMachineScope?> machineScope;
-
   /// The number of bytes captured per packet. The remaining bytes are truncated. Defaults to `0` (Entire Packet Captured). Changing this forces a new resource to be created.
   late final pulumi.Output<int?> maximumBytesPerPacket;
-
   /// Maximum size of the capture in Bytes. Defaults to `1073741824` (1GB). Changing this forces a new resource to be created.
   late final pulumi.Output<int?> maximumBytesPerSession;
-
   /// The maximum duration of the capture session in seconds. Defaults to `18000` (5 hours). Changing this forces a new resource to be created.
   late final pulumi.Output<int?> maximumCaptureDurationInSeconds;
-
   /// The name to use for this Network Packet Capture. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The resource ID of the Network Watcher. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkWatcherId;
-
   /// A `storage_location` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<ScaleSetPacketCaptureStorageLocation>
-  storageLocation;
-
+  late final pulumi.Output<ScaleSetPacketCaptureStorageLocation> storageLocation;
   /// The resource ID of the Virtual Machine Scale Set to capture packets from. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineScaleSetId;
 
@@ -682,42 +673,20 @@ class ScaleSetPacketCapture extends pulumi.CustomResource {
     ScaleSetPacketCaptureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/scaleSetPacketCapture:ScaleSetPacketCapture',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/scaleSetPacketCapture:ScaleSetPacketCapture',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     filters = registerOutput<List<Map<String, dynamic>>?>('filters');
-    machineScope = registerOutput<ScaleSetPacketCaptureMachineScope?>(
-      'machineScope',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScaleSetPacketCaptureMachineScope.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    machineScope = registerOutput<ScaleSetPacketCaptureMachineScope?>('machineScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetPacketCaptureMachineScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
     maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
-    maximumCaptureDurationInSeconds = registerOutput<int?>(
-      'maximumCaptureDurationInSeconds',
-    );
+    maximumCaptureDurationInSeconds = registerOutput<int?>('maximumCaptureDurationInSeconds');
     this.name = registerOutput<String>('name');
     networkWatcherId = registerOutput<String>('networkWatcherId');
-    storageLocation = registerOutput<ScaleSetPacketCaptureStorageLocation>(
-      'storageLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScaleSetPacketCaptureStorageLocation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    virtualMachineScaleSetId = registerOutput<String>(
-      'virtualMachineScaleSetId',
-    );
+    storageLocation = registerOutput<ScaleSetPacketCaptureStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetPacketCaptureStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualMachineScaleSetId = registerOutput<String>('virtualMachineScaleSetId');
   }
 
   /// Gets an existing [ScaleSetPacketCapture] resource's state with the given [name] and [id].
@@ -738,41 +707,19 @@ class ScaleSetPacketCapture extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/scaleSetPacketCapture:ScaleSetPacketCapture',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/scaleSetPacketCapture:ScaleSetPacketCapture',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     filters = registerOutput<List<Map<String, dynamic>>?>('filters');
-    machineScope = registerOutput<ScaleSetPacketCaptureMachineScope?>(
-      'machineScope',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScaleSetPacketCaptureMachineScope.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    machineScope = registerOutput<ScaleSetPacketCaptureMachineScope?>('machineScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetPacketCaptureMachineScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
     maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
-    maximumCaptureDurationInSeconds = registerOutput<int?>(
-      'maximumCaptureDurationInSeconds',
-    );
+    maximumCaptureDurationInSeconds = registerOutput<int?>('maximumCaptureDurationInSeconds');
     this.name = registerOutput<String>('name');
     networkWatcherId = registerOutput<String>('networkWatcherId');
-    storageLocation = registerOutput<ScaleSetPacketCaptureStorageLocation>(
-      'storageLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScaleSetPacketCaptureStorageLocation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    virtualMachineScaleSetId = registerOutput<String>(
-      'virtualMachineScaleSetId',
-    );
+    storageLocation = registerOutput<ScaleSetPacketCaptureStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetPacketCaptureStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualMachineScaleSetId = registerOutput<String>('virtualMachineScaleSetId');
   }
 }

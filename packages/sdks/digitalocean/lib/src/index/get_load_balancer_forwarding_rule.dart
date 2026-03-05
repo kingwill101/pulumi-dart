@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLoadBalancerForwardingRule {
   /// the id of the tls certificate used for ssl termination if enabled
   final pulumi.Input<String> certificateId;
-
   /// the name of the tls certificate used for ssl termination if enabled
   final pulumi.Input<String> certificateName;
-
   /// the port on which the load balancer instance will listen
   final pulumi.Input<int> entryPort;
-
   /// the protocol used for traffic to the load balancer
   final pulumi.Input<String> entryProtocol;
-
   /// the port on the backend Droplets to which the load balancer will send traffic
   final pulumi.Input<int> targetPort;
-
   /// the protocol used for traffic to the backend droplets
   final pulumi.Input<String> targetProtocol;
-
   /// whether ssl encrypted traffic will be passed through to the backend droplets
   final pulumi.Input<bool> tlsPassthrough;
 
@@ -66,3 +60,4 @@ class GetLoadBalancerForwardingRule {
     );
   }
 }
+

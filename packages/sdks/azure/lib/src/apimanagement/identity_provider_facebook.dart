@@ -220,13 +220,10 @@ import 'identity_provider_facebook_state.dart';
 class IdentityProviderFacebook extends pulumi.CustomResource {
   /// The Name of the API Management Service where this Facebook Identity Provider should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// App ID for Facebook.
   late final pulumi.Output<String> appId;
-
   /// App Secret for Facebook.
   late final pulumi.Output<String> appSecret;
-
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -239,11 +236,11 @@ class IdentityProviderFacebook extends pulumi.CustomResource {
     IdentityProviderFacebookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/identityProviderFacebook:IdentityProviderFacebook',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/identityProviderFacebook:IdentityProviderFacebook',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     appId = registerOutput<String>('appId');
     appSecret = registerOutput<String>('appSecret');
@@ -268,11 +265,11 @@ class IdentityProviderFacebook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/identityProviderFacebook:IdentityProviderFacebook',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/identityProviderFacebook:IdentityProviderFacebook',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     appId = registerOutput<String>('appId');
     appSecret = registerOutput<String>('appSecret');

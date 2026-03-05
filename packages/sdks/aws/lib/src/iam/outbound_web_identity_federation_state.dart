@@ -9,19 +9,20 @@ class OutboundWebIdentityFederationState {
 
   /// Creates a new [OutboundWebIdentityFederationState].
   /// [issuerIdentifier] A unique issuer URL for your AWS account that hosts the OpenID Connect (OIDC) discovery endpoints.
-  OutboundWebIdentityFederationState({this.issuerIdentifier});
+  OutboundWebIdentityFederationState({
+    this.issuerIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'issuerIdentifier': ?issuerIdentifier};
+    return <String, dynamic>{
+      'issuerIdentifier': ?issuerIdentifier,
+    };
   }
 
   factory OutboundWebIdentityFederationState.fromMap(Map<String, dynamic> map) {
     return OutboundWebIdentityFederationState(
-      issuerIdentifier: (() {
-        final guardedValue = map['issuerIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      issuerIdentifier: (() { final guardedValue = map['issuerIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

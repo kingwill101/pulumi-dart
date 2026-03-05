@@ -1075,81 +1075,54 @@ import 'user_pool_client_token_validity_units.dart';
 class UserPoolClient extends pulumi.CustomResource {
   /// Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. By default, the unit is hours. The unit can be overridden by a value in `token_validity_units.access_token`.
   late final pulumi.Output<int> accessTokenValidity;
-
   /// List of allowed OAuth flows, including `code`, `implicit`, and `client_credentials`. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
   late final pulumi.Output<List<String>> allowedOauthFlows;
-
   /// Whether the client is allowed to use OAuth 2.0 features. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure the following arguments: `callback_urls`, `logout_urls`, `allowed_oauth_scopes` and `allowed_oauth_flows`.
   late final pulumi.Output<bool> allowedOauthFlowsUserPoolClient;
-
   /// List of allowed OAuth scopes, including `phone`, `email`, `openid`, `profile`, and `aws.cognito.signin.user.admin`. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
   late final pulumi.Output<List<String>> allowedOauthScopes;
-
   /// Configuration block for Amazon Pinpoint analytics that collects metrics for this user pool. See details below.
-  late final pulumi.Output<UserPoolClientAnalyticsConfiguration?>
-  analyticsConfiguration;
-
+  late final pulumi.Output<UserPoolClientAnalyticsConfiguration?> analyticsConfiguration;
   /// Duration, in minutes, of the session token created by Amazon Cognito for each API request in an authentication flow. The session token must be responded to by the native user of the user pool before it expires. Valid values for `auth_session_validity` are between `3` and `15`, with a default value of `3`.
   late final pulumi.Output<int> authSessionValidity;
-
   /// List of allowed callback URLs for the identity providers. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
   late final pulumi.Output<List<String>> callbackUrls;
-
   /// Client secret of the user pool client.
   late final pulumi.Output<String> clientSecret;
-
   /// Default redirect URI and must be included in the list of callback URLs.
   late final pulumi.Output<String> defaultRedirectUri;
-
   /// Enables the propagation of additional user context data.
   late final pulumi.Output<bool> enablePropagateAdditionalUserContextData;
-
   /// Enables or disables token revocation.
   late final pulumi.Output<bool> enableTokenRevocation;
-
   /// List of authentication flows. The available options include `ADMIN_NO_SRP_AUTH`, `CUSTOM_AUTH_FLOW_ONLY`, `USER_PASSWORD_AUTH`, `ALLOW_ADMIN_USER_PASSWORD_AUTH`, `ALLOW_CUSTOM_AUTH`, `ALLOW_USER_PASSWORD_AUTH`, `ALLOW_USER_SRP_AUTH`, `ALLOW_REFRESH_TOKEN_AUTH`, and `ALLOW_USER_AUTH`.
   late final pulumi.Output<List<String>> explicitAuthFlows;
-
   /// Boolean flag indicating whether an application secret should be generated.
   late final pulumi.Output<bool?> generateSecret;
-
   /// Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. By default, the unit is hours. The unit can be overridden by a value in `token_validity_units.id_token`.
   late final pulumi.Output<int> idTokenValidity;
-
   /// List of allowed logout URLs for the identity providers. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
   late final pulumi.Output<List<String>> logoutUrls;
-
   /// Name of the application client.
   late final pulumi.Output<String> name;
-
   /// Setting determines the errors and responses returned by Cognito APIs when a user does not exist in the user pool during authentication, account confirmation, and password recovery.
   late final pulumi.Output<String> preventUserExistenceErrors;
-
   /// List of user pool attributes that the application client can read from.
   late final pulumi.Output<List<String>> readAttributes;
-
   /// A block that specifies the configuration of refresh token rotation. Detailed below.
-  late final pulumi.Output<UserPoolClientRefreshTokenRotation?>
-  refreshTokenRotation;
-
+  late final pulumi.Output<UserPoolClientRefreshTokenRotation?> refreshTokenRotation;
   /// Time limit, between 60 minutes and 10 years, after which the refresh token is no longer valid and cannot be used. By default, the unit is days. The unit can be overridden by a value in `token_validity_units.refresh_token`.
   late final pulumi.Output<int> refreshTokenValidity;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// List of provider names for the identity providers that are supported on this client. It uses the `provider_name` attribute of the `aws.cognito.IdentityProvider` resource(s), or the equivalent string(s).
   late final pulumi.Output<List<String>> supportedIdentityProviders;
-
   /// Configuration block for representing the validity times in units. See details below. Detailed below.
-  late final pulumi.Output<UserPoolClientTokenValidityUnits?>
-  tokenValidityUnits;
-
+  late final pulumi.Output<UserPoolClientTokenValidityUnits?> tokenValidityUnits;
   /// User pool the client belongs to.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> userPoolId;
-
   /// List of user pool attributes that the application client can write to.
   late final pulumi.Output<List<String>> writeAttributes;
 
@@ -1162,70 +1135,34 @@ class UserPoolClient extends pulumi.CustomResource {
     UserPoolClientArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/userPoolClient:UserPoolClient',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cognito/userPoolClient:UserPoolClient',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessTokenValidity = registerOutput<int>('accessTokenValidity');
     allowedOauthFlows = registerOutput<List<String>>('allowedOauthFlows');
-    allowedOauthFlowsUserPoolClient = registerOutput<bool>(
-      'allowedOauthFlowsUserPoolClient',
-    );
+    allowedOauthFlowsUserPoolClient = registerOutput<bool>('allowedOauthFlowsUserPoolClient');
     allowedOauthScopes = registerOutput<List<String>>('allowedOauthScopes');
-    analyticsConfiguration =
-        registerOutput<UserPoolClientAnalyticsConfiguration?>(
-          'analyticsConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return UserPoolClientAnalyticsConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    analyticsConfiguration = registerOutput<UserPoolClientAnalyticsConfiguration?>('analyticsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientAnalyticsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authSessionValidity = registerOutput<int>('authSessionValidity');
     callbackUrls = registerOutput<List<String>>('callbackUrls');
     clientSecret = registerOutput<String>('clientSecret');
     defaultRedirectUri = registerOutput<String>('defaultRedirectUri');
-    enablePropagateAdditionalUserContextData = registerOutput<bool>(
-      'enablePropagateAdditionalUserContextData',
-    );
+    enablePropagateAdditionalUserContextData = registerOutput<bool>('enablePropagateAdditionalUserContextData');
     enableTokenRevocation = registerOutput<bool>('enableTokenRevocation');
     explicitAuthFlows = registerOutput<List<String>>('explicitAuthFlows');
     generateSecret = registerOutput<bool?>('generateSecret');
     idTokenValidity = registerOutput<int>('idTokenValidity');
     logoutUrls = registerOutput<List<String>>('logoutUrls');
     this.name = registerOutput<String>('name');
-    preventUserExistenceErrors = registerOutput<String>(
-      'preventUserExistenceErrors',
-    );
+    preventUserExistenceErrors = registerOutput<String>('preventUserExistenceErrors');
     readAttributes = registerOutput<List<String>>('readAttributes');
-    refreshTokenRotation = registerOutput<UserPoolClientRefreshTokenRotation?>(
-      'refreshTokenRotation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserPoolClientRefreshTokenRotation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    refreshTokenRotation = registerOutput<UserPoolClientRefreshTokenRotation?>('refreshTokenRotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientRefreshTokenRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     refreshTokenValidity = registerOutput<int>('refreshTokenValidity');
     region = registerOutput<String>('region');
-    supportedIdentityProviders = registerOutput<List<String>>(
-      'supportedIdentityProviders',
-    );
-    tokenValidityUnits = registerOutput<UserPoolClientTokenValidityUnits?>(
-      'tokenValidityUnits',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserPoolClientTokenValidityUnits.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    supportedIdentityProviders = registerOutput<List<String>>('supportedIdentityProviders');
+    tokenValidityUnits = registerOutput<UserPoolClientTokenValidityUnits?>('tokenValidityUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientTokenValidityUnits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userPoolId = registerOutput<String>('userPoolId');
     writeAttributes = registerOutput<List<String>>('writeAttributes');
   }
@@ -1248,70 +1185,34 @@ class UserPoolClient extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/userPoolClient:UserPoolClient',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cognito/userPoolClient:UserPoolClient',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessTokenValidity = registerOutput<int>('accessTokenValidity');
     allowedOauthFlows = registerOutput<List<String>>('allowedOauthFlows');
-    allowedOauthFlowsUserPoolClient = registerOutput<bool>(
-      'allowedOauthFlowsUserPoolClient',
-    );
+    allowedOauthFlowsUserPoolClient = registerOutput<bool>('allowedOauthFlowsUserPoolClient');
     allowedOauthScopes = registerOutput<List<String>>('allowedOauthScopes');
-    analyticsConfiguration =
-        registerOutput<UserPoolClientAnalyticsConfiguration?>(
-          'analyticsConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return UserPoolClientAnalyticsConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    analyticsConfiguration = registerOutput<UserPoolClientAnalyticsConfiguration?>('analyticsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientAnalyticsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authSessionValidity = registerOutput<int>('authSessionValidity');
     callbackUrls = registerOutput<List<String>>('callbackUrls');
     clientSecret = registerOutput<String>('clientSecret');
     defaultRedirectUri = registerOutput<String>('defaultRedirectUri');
-    enablePropagateAdditionalUserContextData = registerOutput<bool>(
-      'enablePropagateAdditionalUserContextData',
-    );
+    enablePropagateAdditionalUserContextData = registerOutput<bool>('enablePropagateAdditionalUserContextData');
     enableTokenRevocation = registerOutput<bool>('enableTokenRevocation');
     explicitAuthFlows = registerOutput<List<String>>('explicitAuthFlows');
     generateSecret = registerOutput<bool?>('generateSecret');
     idTokenValidity = registerOutput<int>('idTokenValidity');
     logoutUrls = registerOutput<List<String>>('logoutUrls');
     this.name = registerOutput<String>('name');
-    preventUserExistenceErrors = registerOutput<String>(
-      'preventUserExistenceErrors',
-    );
+    preventUserExistenceErrors = registerOutput<String>('preventUserExistenceErrors');
     readAttributes = registerOutput<List<String>>('readAttributes');
-    refreshTokenRotation = registerOutput<UserPoolClientRefreshTokenRotation?>(
-      'refreshTokenRotation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserPoolClientRefreshTokenRotation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    refreshTokenRotation = registerOutput<UserPoolClientRefreshTokenRotation?>('refreshTokenRotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientRefreshTokenRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     refreshTokenValidity = registerOutput<int>('refreshTokenValidity');
     region = registerOutput<String>('region');
-    supportedIdentityProviders = registerOutput<List<String>>(
-      'supportedIdentityProviders',
-    );
-    tokenValidityUnits = registerOutput<UserPoolClientTokenValidityUnits?>(
-      'tokenValidityUnits',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserPoolClientTokenValidityUnits.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    supportedIdentityProviders = registerOutput<List<String>>('supportedIdentityProviders');
+    tokenValidityUnits = registerOutput<UserPoolClientTokenValidityUnits?>('tokenValidityUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientTokenValidityUnits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userPoolId = registerOutput<String>('userPoolId');
     writeAttributes = registerOutput<List<String>>('writeAttributes');
   }

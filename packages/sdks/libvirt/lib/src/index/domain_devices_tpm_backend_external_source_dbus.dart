@@ -8,21 +8,20 @@ class DomainDevicesTpmBackendExternalSourceDbus {
 
   /// Creates a new [DomainDevicesTpmBackendExternalSourceDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainDevicesTpmBackendExternalSourceDbus({this.channel});
+  DomainDevicesTpmBackendExternalSourceDbus({
+    this.channel,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'channel': ?channel};
+    return <String, dynamic>{
+      'channel': ?channel,
+    };
   }
 
-  factory DomainDevicesTpmBackendExternalSourceDbus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesTpmBackendExternalSourceDbus.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendExternalSourceDbus(
-      channel: (() {
-        final guardedValue = map['channel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      channel: (() { final guardedValue = map['channel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

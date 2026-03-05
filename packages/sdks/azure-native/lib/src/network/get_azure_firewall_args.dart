@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAzureFirewallArgs {
   /// The name of the Azure Firewall.
   final pulumi.Input<String> azureFirewallName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetAzureFirewallArgs {
 
   factory GetAzureFirewallArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureFirewallArgs(
-      azureFirewallName: pulumi.Input.fromValue(
-        map['azureFirewallName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      azureFirewallName: pulumi.Input.fromValue(map['azureFirewallName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

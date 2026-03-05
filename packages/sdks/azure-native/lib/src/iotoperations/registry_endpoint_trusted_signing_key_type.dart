@@ -12,8 +12,7 @@ enum RegistryEndpointTrustedSigningKeyType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RegistryEndpointTrustedSigningKeyType value: $value',
-    );
+    throw ArgumentError('Unknown RegistryEndpointTrustedSigningKeyType value: $value');
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHcxEnterpriseSiteArgs {
   /// Name of the HCX Enterprise Site
   final pulumi.Input<String> hcxEnterpriseSiteName;
-
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,15 +34,10 @@ class GetHcxEnterpriseSiteArgs {
 
   factory GetHcxEnterpriseSiteArgs.fromMap(Map<String, dynamic> map) {
     return GetHcxEnterpriseSiteArgs(
-      hcxEnterpriseSiteName: pulumi.Input.fromValue(
-        map['hcxEnterpriseSiteName'] as String,
-      ),
-      privateCloudName: pulumi.Input.fromValue(
-        map['privateCloudName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      hcxEnterpriseSiteName: pulumi.Input.fromValue(map['hcxEnterpriseSiteName'] as String),
+      privateCloudName: pulumi.Input.fromValue(map['privateCloudName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

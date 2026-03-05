@@ -206,31 +206,22 @@ import 'trust_store_state.dart';
 class TrustStore extends pulumi.CustomResource {
   /// ARN of the Trust Store (matches `id`).
   late final pulumi.Output<String> arn;
-
   /// ARN suffix for use with CloudWatch Metrics.
   late final pulumi.Output<String> arnSuffix;
-
   /// S3 Bucket name holding the client certificate CA bundle.
   late final pulumi.Output<String> caCertificatesBundleS3Bucket;
-
   /// S3 object key holding the client certificate CA bundle.
   late final pulumi.Output<String> caCertificatesBundleS3Key;
-
   /// Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   late final pulumi.Output<String?> caCertificatesBundleS3ObjectVersion;
-
   /// Name of the Trust Store. If omitted, the provider will assign a random, unique name. This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
   late final pulumi.Output<String> name;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Cannot be longer than 6 characters.
   late final pulumi.Output<String> namePrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -243,22 +234,16 @@ class TrustStore extends pulumi.CustomResource {
     TrustStoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lb/trustStore:TrustStore',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lb/trustStore:TrustStore',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     arnSuffix = registerOutput<String>('arnSuffix');
-    caCertificatesBundleS3Bucket = registerOutput<String>(
-      'caCertificatesBundleS3Bucket',
-    );
-    caCertificatesBundleS3Key = registerOutput<String>(
-      'caCertificatesBundleS3Key',
-    );
-    caCertificatesBundleS3ObjectVersion = registerOutput<String?>(
-      'caCertificatesBundleS3ObjectVersion',
-    );
+    caCertificatesBundleS3Bucket = registerOutput<String>('caCertificatesBundleS3Bucket');
+    caCertificatesBundleS3Key = registerOutput<String>('caCertificatesBundleS3Key');
+    caCertificatesBundleS3ObjectVersion = registerOutput<String?>('caCertificatesBundleS3ObjectVersion');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
@@ -284,22 +269,16 @@ class TrustStore extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lb/trustStore:TrustStore',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lb/trustStore:TrustStore',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     arnSuffix = registerOutput<String>('arnSuffix');
-    caCertificatesBundleS3Bucket = registerOutput<String>(
-      'caCertificatesBundleS3Bucket',
-    );
-    caCertificatesBundleS3Key = registerOutput<String>(
-      'caCertificatesBundleS3Key',
-    );
-    caCertificatesBundleS3ObjectVersion = registerOutput<String?>(
-      'caCertificatesBundleS3ObjectVersion',
-    );
+    caCertificatesBundleS3Bucket = registerOutput<String>('caCertificatesBundleS3Bucket');
+    caCertificatesBundleS3Key = registerOutput<String>('caCertificatesBundleS3Key');
+    caCertificatesBundleS3ObjectVersion = registerOutput<String?>('caCertificatesBundleS3ObjectVersion');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');

@@ -8,24 +8,18 @@ import 'resource_claim_consumer_reference_patch_resource_k8s_io_v1alpha1.dart';
 class ResourceClaimStatusPatchResourceK8sIoV1alpha1 {
   /// Allocation is set by the resource driver once a resource has been allocated successfully. If this is not specified, the resource is not yet allocated.
   final pulumi.Input<AllocationResultPatchResourceK8sIoV1alpha1>? allocation;
-
   /// DeallocationRequested indicates that a ResourceClaim is to be deallocated.
   ///
   /// The driver then must deallocate this claim and reset the field together with clearing the Allocation field.
   ///
   /// While DeallocationRequested is set, no new consumers may be added to ReservedFor.
   final pulumi.Input<bool>? deallocationRequested;
-
   /// DriverName is a copy of the driver name from the ResourceClass at the time when allocation started.
   final pulumi.Input<String>? driverName;
-
   /// ReservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started.
   ///
   /// There can be at most 32 such reservations. This may get increased in the future, but not reduced.
-  final pulumi.Input<
-    List<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1>
-  >?
-  reservedFor;
+  final pulumi.Input<List<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1>>? reservedFor;
 
   /// Creates a new [ResourceClaimStatusPatchResourceK8sIoV1alpha1].
   /// [allocation] Allocation is set by the resource driver once a resource has been allocated successfully. If this is not specified, the resource is not yet allocated.
@@ -41,66 +35,20 @@ class ResourceClaimStatusPatchResourceK8sIoV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allocation':
-          ?pulumi.Input.mapOptionalInputValue<
-            AllocationResultPatchResourceK8sIoV1alpha1,
-            Map<String, dynamic>
-          >(allocation, (value) => value.toMap()),
+      'allocation': ?pulumi.Input.mapOptionalInputValue<AllocationResultPatchResourceK8sIoV1alpha1, Map<String, dynamic>>(allocation, (value) => value.toMap()),
       'deallocationRequested': ?deallocationRequested,
       'driverName': ?driverName,
-      'reservedFor':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1>,
-            List<Map<String, dynamic>>
-          >(
-            reservedFor,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'reservedFor': ?pulumi.Input.mapOptionalInputValue<List<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1>, List<Map<String, dynamic>>>(reservedFor, (value) => pulumi.Input.encodeList<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ResourceClaimStatusPatchResourceK8sIoV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceClaimStatusPatchResourceK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ResourceClaimStatusPatchResourceK8sIoV1alpha1(
-      allocation: (() {
-        final guardedValue = map['allocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AllocationResultPatchResourceK8sIoV1alpha1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      deallocationRequested: (() {
-        final guardedValue = map['deallocationRequested'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      driverName: (() {
-        final guardedValue = map['driverName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reservedFor: (() {
-        final guardedValue = map['reservedFor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1
-          >(
-            guardedValue,
-            (value) =>
-                ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      allocation: (() { final guardedValue = map['allocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AllocationResultPatchResourceK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deallocationRequested: (() { final guardedValue = map['deallocationRequested']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      driverName: (() { final guardedValue = map['driverName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reservedFor: (() { final guardedValue = map['reservedFor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1>(guardedValue, (value) => ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

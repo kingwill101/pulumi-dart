@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTopicsTopic {
   /// The id of the topic. The value is set to `name`.
   final pulumi.Input<String> id;
-
   /// Whether to enable logging.
   final pulumi.Input<bool> loggingEnabled;
-
   /// This indicates the maximum length, in bytes, of any message body sent to the topic.
   final pulumi.Input<int> maximumMessageSize;
-
   /// The name of the topic.
   final pulumi.Input<String> name;
 
@@ -40,10 +37,9 @@ class GetTopicsTopic {
     return GetTopicsTopic(
       id: pulumi.Input.fromValue(map['id'] as String),
       loggingEnabled: pulumi.Input.fromValue(map['loggingEnabled'] as bool),
-      maximumMessageSize: pulumi.Input.fromValue(
-        map['maximumMessageSize'] as int,
-      ),
+      maximumMessageSize: pulumi.Input.fromValue(map['maximumMessageSize'] as int),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

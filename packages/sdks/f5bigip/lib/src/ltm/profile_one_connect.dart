@@ -103,31 +103,22 @@ import 'profile_one_connect_state.dart';
 class ProfileOneConnect extends pulumi.CustomResource {
   /// Specifies the profile that you want to use as the parent profile. Your new profile inherits all settings and values from the parent profile specified.
   late final pulumi.Output<String> defaultsFrom;
-
   /// Specifies the number of seconds that a connection is idle before the connection flow is eligible for deletion. Possible values are `disabled`, `indefinite`, or a numeric value that you specify. The default value is `disabled`
   late final pulumi.Output<String> idleTimeoutOverride;
-
   /// Controls how connection limits are enforced in conjunction with OneConnect. The default is `None`. Supported Values: `[None,idle,strict]`
   late final pulumi.Output<String> limitType;
-
   /// Specifies the maximum age in number of seconds allowed for a connection in the connection reuse pool. For any connection with an age higher than this value, the system removes that connection from the reuse pool. The default value is `86400`.
   late final pulumi.Output<int> maxAge;
-
   /// Specifies the maximum number of times that a server-side connection can be reused. The default value is `1000`.
   late final pulumi.Output<int> maxReuse;
-
   /// Specifies the maximum number of connections that the system holds in the connection reuse pool. If the pool is already full, then the server-side connection closes after the response is completed. The default value is `10000`.
   late final pulumi.Output<int> maxSize;
-
   /// Name of Profile should be full path.The full path is the combination of the `partition + profile_name`,For example `/Common/test-oneconnect-profile`.
   late final pulumi.Output<String> name;
-
   /// Displays the administrative partition within which this profile resides
   late final pulumi.Output<String> partition;
-
   /// Specify if you want to share the pool, default value is `disabled`.
   late final pulumi.Output<String> sharePools;
-
   /// Specifies a source IP mask. The default value is `0.0.0.0`. The system applies the value of this option to the source address to determine its eligibility for reuse. A mask of 0.0.0.0 causes the system to share reused connections across all clients. A host mask (all 1's in binary), causes the system to share only those reused connections originating from the same client IP address.
   late final pulumi.Output<String> sourceMask;
 
@@ -140,11 +131,11 @@ class ProfileOneConnect extends pulumi.CustomResource {
     ProfileOneConnectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileOneConnect:ProfileOneConnect',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileOneConnect:ProfileOneConnect',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defaultsFrom = registerOutput<String>('defaultsFrom');
     idleTimeoutOverride = registerOutput<String>('idleTimeoutOverride');
     limitType = registerOutput<String>('limitType');
@@ -175,11 +166,11 @@ class ProfileOneConnect extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileOneConnect:ProfileOneConnect',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileOneConnect:ProfileOneConnect',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defaultsFrom = registerOutput<String>('defaultsFrom');
     idleTimeoutOverride = registerOutput<String>('idleTimeoutOverride');
     limitType = registerOutput<String>('limitType');

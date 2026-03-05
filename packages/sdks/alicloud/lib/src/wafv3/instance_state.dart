@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceState {
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
-
   /// The first ID of the resource
   final pulumi.Input<String>? instanceId;
-
   /// The status of the resource
   final pulumi.Input<String>? status;
 
@@ -17,7 +15,11 @@ class InstanceState {
   /// [createTime] The creation time of the resource
   /// [instanceId] The first ID of the resource
   /// [status] The status of the resource
-  InstanceState({this.createTime, this.instanceId, this.status});
+  InstanceState({
+    this.createTime,
+    this.instanceId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

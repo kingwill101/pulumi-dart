@@ -13,21 +13,20 @@ class RouteParams {
 
   /// Creates a new [RouteParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the route. Tag keys and values have the
-  RouteParams({this.resourceManagerTags});
+  RouteParams({
+    this.resourceManagerTags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceManagerTags': ?resourceManagerTags};
+    return <String, dynamic>{
+      'resourceManagerTags': ?resourceManagerTags,
+    };
   }
 
   factory RouteParams.fromMap(Map<String, dynamic> map) {
     return RouteParams(
-      resourceManagerTags: (() {
-        final guardedValue = map['resourceManagerTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      resourceManagerTags: (() { final guardedValue = map['resourceManagerTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

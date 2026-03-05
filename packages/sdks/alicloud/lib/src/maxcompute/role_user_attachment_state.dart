@@ -6,12 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleUserAttachmentState {
   /// Project Name
   final pulumi.Input<String>? projectName;
-
   /// Role Name, Valid Values: super_administrator, admin, Custom Role
   ///
   /// &gt; **NOTE:** -- super_administrator: the built-in management role of MaxCompute. The Super Administrator of the project has the permission to operate all resources in the project and the management permission. Project owners or users with the Super_Administrator role can assign the Super_Administrator role to other users. -- admin: the built-in management role of MaxCompute, which has the permission to operate all resources in the project and some basic management permissions. Project owners can assign the Admin role to other users. -- Custom role: a role that is not built-in to MaxCompute and needs to be customized. You can refer to the role (starting with role_) definition in DataWorks.
   final pulumi.Input<String>? roleName;
-
   /// Supported input: Alibaba Cloud account, RAM user, and RAM role
   ///
   /// &gt; **NOTE:** -- Alibaba Cloud account: the account registered on the Alibaba Cloud official website. - RAM User: a user created by an Alibaba Cloud account to assist the Alibaba Cloud account to complete data processing. -- RAM role: a RAM role, like a RAM user, is a type of RAM identity. A RAM role is a virtual user that does not have a specific identity authentication key and needs to be played by a trusted entity user for normal use.
@@ -21,7 +19,11 @@ class RoleUserAttachmentState {
   /// [projectName] Project Name
   /// [roleName] Role Name, Valid Values: super_administrator, admin, Custom Role
   /// [user] Supported input: Alibaba Cloud account, RAM user, and RAM role
-  RoleUserAttachmentState({this.projectName, this.roleName, this.user});
+  RoleUserAttachmentState({
+    this.projectName,
+    this.roleName,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,21 +35,10 @@ class RoleUserAttachmentState {
 
   factory RoleUserAttachmentState.fromMap(Map<String, dynamic> map) {
     return RoleUserAttachmentState(
-      projectName: (() {
-        final guardedValue = map['projectName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleName: (() {
-        final guardedValue = map['roleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      user: (() {
-        final guardedValue = map['user'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      projectName: (() { final guardedValue = map['projectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleName: (() { final guardedValue = map['roleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

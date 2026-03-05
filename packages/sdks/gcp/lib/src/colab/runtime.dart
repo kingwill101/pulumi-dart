@@ -886,43 +886,30 @@ import 'runtime_state.dart';
 class Runtime extends pulumi.CustomResource {
   /// Triggers an upgrade anytime the runtime is started if it is upgradable.
   late final pulumi.Output<bool?> autoUpgrade;
-
   /// The description of the Runtime.
   late final pulumi.Output<String?> description;
-
   /// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
   late final pulumi.Output<String?> desiredState;
-
   /// Required. The display name of the Runtime.
   late final pulumi.Output<String> displayName;
-
   /// Output only. Timestamp when this NotebookRuntime will be expired.
   late final pulumi.Output<String> expirationTime;
-
   /// Output only. Checks if the NotebookRuntime is upgradable.
   late final pulumi.Output<bool> isUpgradable;
-
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   late final pulumi.Output<String> location;
-
   /// The resource name of the Runtime
   late final pulumi.Output<String> name;
-
   /// 'Runtime specific information used for NotebookRuntime creation.'
   /// Structure is documented below.
-  late final pulumi.Output<RuntimeNotebookRuntimeTemplateRef?>
-  notebookRuntimeTemplateRef;
-
+  late final pulumi.Output<RuntimeNotebookRuntimeTemplateRef?> notebookRuntimeTemplateRef;
   /// Output only. The type of the notebook runtime.
   late final pulumi.Output<String> notebookRuntimeType;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The user email of the NotebookRuntime.
   late final pulumi.Output<String> runtimeUser;
-
   /// Output only. The state of the runtime.
   late final pulumi.Output<String> state;
 
@@ -935,11 +922,11 @@ class Runtime extends pulumi.CustomResource {
     RuntimeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:colab/runtime:Runtime',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:colab/runtime:Runtime',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoUpgrade = registerOutput<bool?>('autoUpgrade');
     description = registerOutput<String?>('description');
     desiredState = registerOutput<String?>('desiredState');
@@ -948,17 +935,7 @@ class Runtime extends pulumi.CustomResource {
     isUpgradable = registerOutput<bool>('isUpgradable');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notebookRuntimeTemplateRef =
-        registerOutput<RuntimeNotebookRuntimeTemplateRef?>(
-          'notebookRuntimeTemplateRef',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RuntimeNotebookRuntimeTemplateRef.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    notebookRuntimeTemplateRef = registerOutput<RuntimeNotebookRuntimeTemplateRef?>('notebookRuntimeTemplateRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeNotebookRuntimeTemplateRef.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     notebookRuntimeType = registerOutput<String>('notebookRuntimeType');
     project = registerOutput<String>('project');
     runtimeUser = registerOutput<String>('runtimeUser');
@@ -983,11 +960,11 @@ class Runtime extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:colab/runtime:Runtime',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:colab/runtime:Runtime',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoUpgrade = registerOutput<bool?>('autoUpgrade');
     description = registerOutput<String?>('description');
     desiredState = registerOutput<String?>('desiredState');
@@ -996,17 +973,7 @@ class Runtime extends pulumi.CustomResource {
     isUpgradable = registerOutput<bool>('isUpgradable');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notebookRuntimeTemplateRef =
-        registerOutput<RuntimeNotebookRuntimeTemplateRef?>(
-          'notebookRuntimeTemplateRef',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RuntimeNotebookRuntimeTemplateRef.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    notebookRuntimeTemplateRef = registerOutput<RuntimeNotebookRuntimeTemplateRef?>('notebookRuntimeTemplateRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeNotebookRuntimeTemplateRef.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     notebookRuntimeType = registerOutput<String>('notebookRuntimeType');
     project = registerOutput<String>('project');
     runtimeUser = registerOutput<String>('runtimeUser');

@@ -216,70 +216,49 @@ import 'fleet_vpc_config.dart';
 class Fleet extends pulumi.CustomResource {
   /// ARN of the appstream fleet.
   late final pulumi.Output<String> arn;
-
   /// Configuration block for the desired capacity of the fleet. See below.
   late final pulumi.Output<FleetComputeCapacity> computeCapacity;
-
   /// Date and time, in UTC and extended RFC 3339 format, when the fleet was created.
   late final pulumi.Output<String> createdTime;
-
   /// Description to display.
   late final pulumi.Output<String> description;
-
   /// Amount of time that a streaming session remains active after users disconnect.
   late final pulumi.Output<int> disconnectTimeoutInSeconds;
-
   /// Human-readable friendly name for the AppStream fleet.
   late final pulumi.Output<String> displayName;
-
   /// Configuration block for the name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain. See below.
   late final pulumi.Output<FleetDomainJoinInfo> domainJoinInfo;
-
   /// Enables or disables default internet access for the fleet.
   late final pulumi.Output<bool> enableDefaultInternetAccess;
-
   /// Fleet type. Valid values are: `ON_DEMAND`, `ALWAYS_ON`
   late final pulumi.Output<String> fleetType;
-
   /// ARN of the IAM role to apply to the fleet.
   late final pulumi.Output<String> iamRoleArn;
-
   /// Amount of time that users can be idle (inactive) before they are disconnected from their streaming session and the `disconnect_timeout_in_seconds` time interval begins. Defaults to `0`. Valid value is between `60` and `3600 `seconds.
   late final pulumi.Output<int?> idleDisconnectTimeoutInSeconds;
-
   /// ARN of the public, private, or shared image to use.
   late final pulumi.Output<String> imageArn;
-
   /// Name of the image used to create the fleet.
   late final pulumi.Output<String> imageName;
-
   /// Instance type to use when launching fleet instances.
   late final pulumi.Output<String> instanceType;
-
   /// The maximum number of user sessions on an instance. This only applies to multi-session fleets.
   late final pulumi.Output<int?> maxSessionsPerInstance;
-
   /// Maximum amount of time that a streaming session can remain active, in seconds.
   late final pulumi.Output<int> maxUserDurationInSeconds;
-
   /// Unique name for the fleet.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// State of the fleet. Can be `STARTING`, `RUNNING`, `STOPPING` or `STOPPED`
   late final pulumi.Output<String> state;
-
   /// AppStream 2.0 view that is displayed to your users when they stream from the fleet. When `APP` is specified, only the windows of applications opened by users display. When `DESKTOP` is specified, the standard desktop that is provided by the operating system displays. If not specified, defaults to `APP`.
   late final pulumi.Output<String> streamView;
-
   /// Map of tags to attach to AppStream instances.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Configuration block for the VPC configuration for the image builder. See below.
   late final pulumi.Output<FleetVpcConfig> vpcConfig;
 
@@ -287,48 +266,27 @@ class Fleet extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Fleet]. {@macro pulumi_appstream_fleet_fleet_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Fleet(String name, {FleetArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:appstream/fleet:Fleet',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Fleet(
+    String name, {
+    FleetArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:appstream/fleet:Fleet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    computeCapacity = registerOutput<FleetComputeCapacity>(
-      'computeCapacity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FleetComputeCapacity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    computeCapacity = registerOutput<FleetComputeCapacity>('computeCapacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetComputeCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdTime = registerOutput<String>('createdTime');
     description = registerOutput<String>('description');
-    disconnectTimeoutInSeconds = registerOutput<int>(
-      'disconnectTimeoutInSeconds',
-    );
+    disconnectTimeoutInSeconds = registerOutput<int>('disconnectTimeoutInSeconds');
     displayName = registerOutput<String>('displayName');
-    domainJoinInfo = registerOutput<FleetDomainJoinInfo>(
-      'domainJoinInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FleetDomainJoinInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    enableDefaultInternetAccess = registerOutput<bool>(
-      'enableDefaultInternetAccess',
-    );
+    domainJoinInfo = registerOutput<FleetDomainJoinInfo>('domainJoinInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetDomainJoinInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableDefaultInternetAccess = registerOutput<bool>('enableDefaultInternetAccess');
     fleetType = registerOutput<String>('fleetType');
     iamRoleArn = registerOutput<String>('iamRoleArn');
-    idleDisconnectTimeoutInSeconds = registerOutput<int?>(
-      'idleDisconnectTimeoutInSeconds',
-    );
+    idleDisconnectTimeoutInSeconds = registerOutput<int?>('idleDisconnectTimeoutInSeconds');
     imageArn = registerOutput<String>('imageArn');
     imageName = registerOutput<String>('imageName');
     instanceType = registerOutput<String>('instanceType');
@@ -340,20 +298,15 @@ class Fleet extends pulumi.CustomResource {
     streamView = registerOutput<String>('streamView');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfig = registerOutput<FleetVpcConfig>(
-      'vpcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FleetVpcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcConfig = registerOutput<FleetVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Fleet] resource's state with the given [name] and [id].
-  static Fleet get(String name, pulumi.Input<String> id, {FleetState? state}) {
+  static Fleet get(
+    String name,
+    pulumi.Input<String> id, {
+    FleetState? state,
+  }) {
     return Fleet._get(
       name,
       state: state?.toMap(),
@@ -366,46 +319,22 @@ class Fleet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appstream/fleet:Fleet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appstream/fleet:Fleet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    computeCapacity = registerOutput<FleetComputeCapacity>(
-      'computeCapacity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FleetComputeCapacity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    computeCapacity = registerOutput<FleetComputeCapacity>('computeCapacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetComputeCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdTime = registerOutput<String>('createdTime');
     description = registerOutput<String>('description');
-    disconnectTimeoutInSeconds = registerOutput<int>(
-      'disconnectTimeoutInSeconds',
-    );
+    disconnectTimeoutInSeconds = registerOutput<int>('disconnectTimeoutInSeconds');
     displayName = registerOutput<String>('displayName');
-    domainJoinInfo = registerOutput<FleetDomainJoinInfo>(
-      'domainJoinInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FleetDomainJoinInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    enableDefaultInternetAccess = registerOutput<bool>(
-      'enableDefaultInternetAccess',
-    );
+    domainJoinInfo = registerOutput<FleetDomainJoinInfo>('domainJoinInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetDomainJoinInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableDefaultInternetAccess = registerOutput<bool>('enableDefaultInternetAccess');
     fleetType = registerOutput<String>('fleetType');
     iamRoleArn = registerOutput<String>('iamRoleArn');
-    idleDisconnectTimeoutInSeconds = registerOutput<int?>(
-      'idleDisconnectTimeoutInSeconds',
-    );
+    idleDisconnectTimeoutInSeconds = registerOutput<int?>('idleDisconnectTimeoutInSeconds');
     imageArn = registerOutput<String>('imageArn');
     imageName = registerOutput<String>('imageName');
     instanceType = registerOutput<String>('instanceType');
@@ -417,15 +346,6 @@ class Fleet extends pulumi.CustomResource {
     streamView = registerOutput<String>('streamView');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfig = registerOutput<FleetVpcConfig>(
-      'vpcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FleetVpcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcConfig = registerOutput<FleetVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

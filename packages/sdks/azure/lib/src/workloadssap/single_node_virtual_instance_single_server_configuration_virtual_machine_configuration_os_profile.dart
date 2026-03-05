@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfile {
   /// The name of the administrator account. Changing this forces a new resource to be created.
   final pulumi.Input<String> adminUsername;
-
   /// The SSH public key that is used to authenticate with the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String> sshPrivateKey;
-
   /// The SSH private key that is used to authenticate with the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String> sshPublicKey;
 
@@ -30,9 +28,7 @@ class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurat
     };
   }
 
-  factory SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfile.fromMap(Map<String, dynamic> map) {
     return SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfile(
       adminUsername: pulumi.Input.fromValue(map['adminUsername'] as String),
       sshPrivateKey: pulumi.Input.fromValue(map['sshPrivateKey'] as String),
@@ -40,3 +36,4 @@ class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurat
     );
   }
 }
+

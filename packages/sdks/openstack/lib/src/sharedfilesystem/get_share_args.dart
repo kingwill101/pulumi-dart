@@ -9,33 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetShareArgs {
   /// The human-readable description for the share.
   final pulumi.Input<String>? description;
-
   /// The export location path of the share. Available
   /// since Manila API version 2.35.
   final pulumi.Input<String>? exportLocationPath;
-
   /// The level of visibility for the share.
   /// length.
   final pulumi.Input<bool>? isPublic;
-
   /// One or more metadata key and value pairs as a dictionary of
   /// strings.
   final pulumi.Input<Map<String, String>>? metadata;
-
   /// The name of the share.
   final pulumi.Input<String>? name;
-
   /// The region in which to obtain the V2 Shared File System
   /// client. A Shared File System client is needed to read a share. If omitted,
   /// the `region` argument of the provider is used.
   final pulumi.Input<String>? region;
-
   /// The UUID of the share's share network.
   final pulumi.Input<String>? shareNetworkId;
-
   /// The UUID of the share's base snapshot.
   final pulumi.Input<String>? snapshotId;
-
   /// A share status filter. A valid value is `creating`,
   /// `error`, `available`, `deleting`, `error_deleting`, `manage_starting`,
   /// `manage_error`, `unmanage_starting`, `unmanage_error`, `unmanaged`,
@@ -81,53 +73,16 @@ class GetShareArgs {
 
   factory GetShareArgs.fromMap(Map<String, dynamic> map) {
     return GetShareArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      exportLocationPath: (() {
-        final guardedValue = map['exportLocationPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isPublic: (() {
-        final guardedValue = map['isPublic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      shareNetworkId: (() {
-        final guardedValue = map['shareNetworkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      snapshotId: (() {
-        final guardedValue = map['snapshotId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      exportLocationPath: (() { final guardedValue = map['exportLocationPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isPublic: (() { final guardedValue = map['isPublic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shareNetworkId: (() { final guardedValue = map['shareNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      snapshotId: (() { final guardedValue = map['snapshotId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

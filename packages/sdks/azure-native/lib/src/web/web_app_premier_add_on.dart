@@ -16,34 +16,24 @@ import 'web_app_premier_add_on_args.dart';
 class WebAppPremierAddOn extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   late final pulumi.Output<String?> kind;
-
   /// Resource Location.
   late final pulumi.Output<String> location;
-
   /// Premier add on Marketplace offer.
   late final pulumi.Output<String?> marketplaceOffer;
-
   /// Premier add on Marketplace publisher.
   late final pulumi.Output<String?> marketplacePublisher;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Premier add on Product.
   late final pulumi.Output<String?> product;
-
   /// Premier add on SKU.
   late final pulumi.Output<String?> sku;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// Premier add on Vendor.
   late final pulumi.Output<String?> vendor;
 
@@ -56,11 +46,11 @@ class WebAppPremierAddOn extends pulumi.CustomResource {
     WebAppPremierAddOnArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppPremierAddOn',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppPremierAddOn',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');

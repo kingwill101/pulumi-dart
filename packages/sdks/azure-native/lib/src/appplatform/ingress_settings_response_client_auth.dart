@@ -9,19 +9,20 @@ class IngressSettingsResponseClientAuth {
 
   /// Creates a new [IngressSettingsResponseClientAuth].
   /// [certificates] Collection of certificate resource id.
-  IngressSettingsResponseClientAuth({this.certificates});
+  IngressSettingsResponseClientAuth({
+    this.certificates,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'certificates': ?certificates};
+    return <String, dynamic>{
+      'certificates': ?certificates,
+    };
   }
 
   factory IngressSettingsResponseClientAuth.fromMap(Map<String, dynamic> map) {
     return IngressSettingsResponseClientAuth(
-      certificates: (() {
-        final guardedValue = map['certificates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      certificates: (() { final guardedValue = map['certificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

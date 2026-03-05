@@ -9,13 +9,10 @@ import 'enterprise_crm_logging_gws_sanitize_options_sanitize_type.dart';
 class EnterpriseCrmLoggingGwsSanitizeOptions {
   /// If true, the value has already been sanitized and needs no further sanitization. For instance, a D3 customer id is already an obfuscated entity and *might not* need further sanitization.
   final pulumi.Input<bool>? isAlreadySanitized;
-
   /// To which type(s) of logs the sanitize options apply.
-  final pulumi.Input<List<EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem>>?
-  logType;
+  final pulumi.Input<List<EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem>>? logType;
   final pulumi.Input<EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy>? privacy;
-  final pulumi.Input<EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType>?
-  sanitizeType;
+  final pulumi.Input<EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType>? sanitizeType;
 
   /// Creates a new [EnterpriseCrmLoggingGwsSanitizeOptions].
   /// [isAlreadySanitized] If true, the value has already been sanitized and needs no further sanitization. For instance, a D3 customer id is already an obfuscated entity and *might not* need further sanitization.
@@ -32,73 +29,19 @@ class EnterpriseCrmLoggingGwsSanitizeOptions {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'isAlreadySanitized': ?isAlreadySanitized,
-      'logType':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem>,
-            List<String>
-          >(
-            logType,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem,
-                  String
-                >(value, (value) => value.wireValue),
-          ),
-      'privacy':
-          ?pulumi.Input.mapOptionalInputValue<
-            EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy,
-            String
-          >(privacy, (value) => value.wireValue),
-      'sanitizeType':
-          ?pulumi.Input.mapOptionalInputValue<
-            EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType,
-            String
-          >(sanitizeType, (value) => value.wireValue),
+      'logType': ?pulumi.Input.mapOptionalInputValue<List<EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem>, List<String>>(logType, (value) => pulumi.Input.encodeList<EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem, String>(value, (value) => value.wireValue)),
+      'privacy': ?pulumi.Input.mapOptionalInputValue<EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy, String>(privacy, (value) => value.wireValue),
+      'sanitizeType': ?pulumi.Input.mapOptionalInputValue<EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType, String>(sanitizeType, (value) => value.wireValue),
     };
   }
 
-  factory EnterpriseCrmLoggingGwsSanitizeOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmLoggingGwsSanitizeOptions.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmLoggingGwsSanitizeOptions(
-      isAlreadySanitized: (() {
-        final guardedValue = map['isAlreadySanitized'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      logType: (() {
-        final guardedValue = map['logType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem
-          >(
-            guardedValue,
-            (value) =>
-                EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem.fromValue(
-                  value as String,
-                ),
-          ),
-        );
-      })(),
-      privacy: (() {
-        final guardedValue = map['privacy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      sanitizeType: (() {
-        final guardedValue = map['sanitizeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      isAlreadySanitized: (() { final guardedValue = map['isAlreadySanitized']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      logType: (() { final guardedValue = map['logType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem>(guardedValue, (value) => EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem.fromValue(value as String))); })(),
+      privacy: (() { final guardedValue = map['privacy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy.fromValue(guardedValue as String)); })(),
+      sanitizeType: (() { final guardedValue = map['sanitizeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

@@ -13,14 +13,15 @@ class GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

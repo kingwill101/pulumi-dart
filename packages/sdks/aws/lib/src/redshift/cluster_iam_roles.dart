@@ -118,13 +118,10 @@ import 'cluster_iam_roles_state.dart';
 class ClusterIamRoles extends pulumi.CustomResource {
   /// The name of the Redshift Cluster IAM Roles.
   late final pulumi.Output<String> clusterIdentifier;
-
   /// The Amazon Resource Name (ARN) for the IAM role that was set as default for the cluster when the cluster was created.
   late final pulumi.Output<String> defaultIamRoleArn;
-
   /// A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
   late final pulumi.Output<List<String>> iamRoleArns;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -137,11 +134,11 @@ class ClusterIamRoles extends pulumi.CustomResource {
     ClusterIamRolesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshift/clusterIamRoles:ClusterIamRoles',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:redshift/clusterIamRoles:ClusterIamRoles',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     defaultIamRoleArn = registerOutput<String>('defaultIamRoleArn');
     iamRoleArns = registerOutput<List<String>>('iamRoleArns');
@@ -166,11 +163,11 @@ class ClusterIamRoles extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshift/clusterIamRoles:ClusterIamRoles',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:redshift/clusterIamRoles:ClusterIamRoles',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     defaultIamRoleArn = registerOutput<String>('defaultIamRoleArn');
     iamRoleArns = registerOutput<List<String>>('iamRoleArns');

@@ -10,34 +10,20 @@ class ColumnLayoutResponse {
 
   /// Creates a new [ColumnLayoutResponse].
   /// [columns] The columns of content to display.
-  ColumnLayoutResponse({required this.columns});
+  ColumnLayoutResponse({
+    required this.columns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns':
-          pulumi.Input.mapInputValue<
-            List<ColumnResponse>,
-            List<Map<String, dynamic>>
-          >(
-            columns,
-            (value) =>
-                pulumi.Input.encodeList<ColumnResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'columns': pulumi.Input.mapInputValue<List<ColumnResponse>, List<Map<String, dynamic>>>(columns, (value) => pulumi.Input.encodeList<ColumnResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ColumnLayoutResponse.fromMap(Map<String, dynamic> map) {
     return ColumnLayoutResponse(
-      columns: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ColumnResponse>(
-          map['columns']!,
-          (value) =>
-              ColumnResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      columns: pulumi.Input.fromValue(pulumi.Input.decodeList<ColumnResponse>(map['columns']!, (value) => ColumnResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

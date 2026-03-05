@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CFNFeatureAdditionalConfiguration {
   /// Property name
   final pulumi.Input<String>? name;
-
   /// Property status
   final pulumi.Input<String>? status;
 
   /// Creates a new [CFNFeatureAdditionalConfiguration].
   /// [name] Property name
   /// [status] Property status
-  CFNFeatureAdditionalConfiguration({this.name, this.status});
+  CFNFeatureAdditionalConfiguration({
+    this.name,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'status': ?status};
+    return <String, dynamic>{
+      'name': ?name,
+      'status': ?status,
+    };
   }
 
   factory CFNFeatureAdditionalConfiguration.fromMap(Map<String, dynamic> map) {
     return CFNFeatureAdditionalConfiguration(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

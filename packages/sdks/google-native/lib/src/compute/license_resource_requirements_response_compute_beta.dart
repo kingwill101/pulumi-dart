@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LicenseResourceRequirementsResponseComputeBeta {
   /// Minimum number of guest cpus required to use the Instance. Enforced at Instance creation and Instance start.
   final pulumi.Input<int> minGuestCpuCount;
-
   /// Minimum memory required to use the Instance. Enforced at Instance creation and Instance start.
   final pulumi.Input<int> minMemoryMb;
 
@@ -24,12 +23,11 @@ class LicenseResourceRequirementsResponseComputeBeta {
     };
   }
 
-  factory LicenseResourceRequirementsResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LicenseResourceRequirementsResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return LicenseResourceRequirementsResponseComputeBeta(
       minGuestCpuCount: pulumi.Input.fromValue(map['minGuestCpuCount'] as int),
       minMemoryMb: pulumi.Input.fromValue(map['minMemoryMb'] as int),
     );
   }
 }
+

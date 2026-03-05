@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHoursOfOperationConfigEndTime {
   /// Hour of opening.
   final pulumi.Input<int> hours;
-
   /// Minute of opening.
   final pulumi.Input<int> minutes;
 
@@ -18,7 +17,10 @@ class GetHoursOfOperationConfigEndTime {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hours': hours, 'minutes': minutes};
+    return <String, dynamic>{
+      'hours': hours,
+      'minutes': minutes,
+    };
   }
 
   factory GetHoursOfOperationConfigEndTime.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class GetHoursOfOperationConfigEndTime {
     );
   }
 }
+

@@ -9,19 +9,20 @@ class ConfigurationProfileProperties {
 
   /// Creates a new [ConfigurationProfileProperties].
   /// [configuration] configuration dictionary of the configuration profile.
-  ConfigurationProfileProperties({this.configuration});
+  ConfigurationProfileProperties({
+    this.configuration,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'configuration': ?configuration};
+    return <String, dynamic>{
+      'configuration': ?configuration,
+    };
   }
 
   factory ConfigurationProfileProperties.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileProperties(
-      configuration: (() {
-        final guardedValue = map['configuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

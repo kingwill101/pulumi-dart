@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShieldedInstanceConfigResponseDataprocV1beta2 {
   /// Optional. Defines whether instances have integrity monitoring enabled.
   final pulumi.Input<bool> enableIntegrityMonitoring;
-
   /// Optional. Defines whether instances have Secure Boot enabled.
   final pulumi.Input<bool> enableSecureBoot;
-
   /// Optional. Defines whether instances have the vTPM enabled.
   final pulumi.Input<bool> enableVtpm;
 
@@ -31,15 +29,12 @@ class ShieldedInstanceConfigResponseDataprocV1beta2 {
     };
   }
 
-  factory ShieldedInstanceConfigResponseDataprocV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ShieldedInstanceConfigResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return ShieldedInstanceConfigResponseDataprocV1beta2(
-      enableIntegrityMonitoring: pulumi.Input.fromValue(
-        map['enableIntegrityMonitoring'] as bool,
-      ),
+      enableIntegrityMonitoring: pulumi.Input.fromValue(map['enableIntegrityMonitoring'] as bool),
       enableSecureBoot: pulumi.Input.fromValue(map['enableSecureBoot'] as bool),
       enableVtpm: pulumi.Input.fromValue(map['enableVtpm'] as bool),
     );
   }
 }
+

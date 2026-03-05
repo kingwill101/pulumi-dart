@@ -242,25 +242,18 @@ import 'python3_package_state.dart';
 class Python3Package extends pulumi.CustomResource {
   /// The name of the automation account in which the Python3 Package is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
-
   /// The URL of the python package. Changing this forces a new Automation Python3 Package to be created.
   late final pulumi.Output<String> contentUri;
-
   /// Specify the version of the python3 package. The value should meet the system.version class format like `1.1.1`. Changing this forces a new Automation Python3 Package to be created.
   late final pulumi.Output<String?> contentVersion;
-
   /// Specify the hash algorithm used to hash the content of the python3 package. Changing this forces a new Automation Python3 Package to be created.
   late final pulumi.Output<String?> hashAlgorithm;
-
   /// Specity the hash value of the content. Changing this forces a new Automation Python3 Package to be created.
   late final pulumi.Output<String?> hashValue;
-
   /// The name which should be used for this Automation Python3 Package. Changing this forces a new Automation Python3 Package to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which the Python3 Package is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Automation Python3 Package.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -273,11 +266,11 @@ class Python3Package extends pulumi.CustomResource {
     Python3PackageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/python3Package:Python3Package',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/python3Package:Python3Package',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     contentUri = registerOutput<String>('contentUri');
     contentVersion = registerOutput<String?>('contentVersion');
@@ -306,11 +299,11 @@ class Python3Package extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/python3Package:Python3Package',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/python3Package:Python3Package',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     contentUri = registerOutput<String>('contentUri');
     contentVersion = registerOutput<String?>('contentVersion');

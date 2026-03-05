@@ -9,21 +9,20 @@ class NspAccessRulePropertiesSubscriptionsItemResponse {
 
   /// Creates a new [NspAccessRulePropertiesSubscriptionsItemResponse].
   /// [id] Fully qualified identifier of subscription
-  NspAccessRulePropertiesSubscriptionsItemResponse({this.id});
+  NspAccessRulePropertiesSubscriptionsItemResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
-  factory NspAccessRulePropertiesSubscriptionsItemResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NspAccessRulePropertiesSubscriptionsItemResponse.fromMap(Map<String, dynamic> map) {
     return NspAccessRulePropertiesSubscriptionsItemResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,25 +8,20 @@ class StatefulPolicyResponse {
 
   /// Creates a new [StatefulPolicyResponse].
   /// [preservedState] Required.
-  StatefulPolicyResponse({required this.preservedState});
+  StatefulPolicyResponse({
+    required this.preservedState,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'preservedState':
-          pulumi.Input.mapInputValue<
-            StatefulPolicyPreservedStateResponse,
-            Map<String, dynamic>
-          >(preservedState, (value) => value.toMap()),
+      'preservedState': pulumi.Input.mapInputValue<StatefulPolicyPreservedStateResponse, Map<String, dynamic>>(preservedState, (value) => value.toMap()),
     };
   }
 
   factory StatefulPolicyResponse.fromMap(Map<String, dynamic> map) {
     return StatefulPolicyResponse(
-      preservedState: pulumi.Input.fromValue(
-        StatefulPolicyPreservedStateResponse.fromMap(
-          (map['preservedState']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      preservedState: pulumi.Input.fromValue(StatefulPolicyPreservedStateResponse.fromMap((map['preservedState']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

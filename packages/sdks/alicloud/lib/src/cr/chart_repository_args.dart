@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChartRepositoryArgs {
   /// The ID of the Container Registry instance.
   final pulumi.Input<String> instanceId;
-
   /// The name of the repository that you want to create.
   final pulumi.Input<String> repoName;
-
   /// The namespace to which the repository belongs.
   final pulumi.Input<String> repoNamespaceName;
-
   /// The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
   final pulumi.Input<String>? repoType;
-
   /// The summary about the repository.
   final pulumi.Input<String>? summary;
 
@@ -50,19 +46,10 @@ class ChartRepositoryArgs {
     return ChartRepositoryArgs(
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       repoName: pulumi.Input.fromValue(map['repoName'] as String),
-      repoNamespaceName: pulumi.Input.fromValue(
-        map['repoNamespaceName'] as String,
-      ),
-      repoType: (() {
-        final guardedValue = map['repoType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      summary: (() {
-        final guardedValue = map['summary'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      repoNamespaceName: pulumi.Input.fromValue(map['repoNamespaceName'] as String),
+      repoType: (() { final guardedValue = map['repoType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      summary: (() { final guardedValue = map['summary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

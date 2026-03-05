@@ -1039,39 +1039,30 @@ class VPNTunnel extends pulumi.CustomResource {
   /// User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
   /// Structure is documented below.
   late final pulumi.Output<VPNTunnelCipherSuite?> cipherSuite;
-
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// Detailed status message for the VPN tunnel.
   late final pulumi.Output<String> detailedStatus;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// IKE protocol version to use when establishing the VPN tunnel with
   /// peer VPN gateway.
   /// Acceptable IKE versions are 1 or 2. Default version is 2.
   late final pulumi.Output<int?> ikeVersion;
-
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
   late final pulumi.Output<String> labelFingerprint;
-
   /// Labels to apply to this VpnTunnel.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Local traffic selector to use when establishing the VPN tunnel with
   /// peer VPN gateway. The value should be a CIDR formatted string,
   /// for example `192.168.0.0/16`. The ranges should be disjoint.
   /// Only IPv4 is supported.
   late final pulumi.Output<List<String>> localTrafficSelectors;
-
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63
   /// characters long and match the regular expression
@@ -1080,53 +1071,40 @@ class VPNTunnel extends pulumi.CustomResource {
   /// be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
-
   /// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
   late final pulumi.Output<String?> peerExternalGateway;
-
   /// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
   late final pulumi.Output<int?> peerExternalGatewayInterface;
-
   /// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
   /// If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
   /// ID in the peer GCP VPN gateway.
   /// This field must reference a `gcp.compute.HaVpnGateway` resource.
   late final pulumi.Output<String?> peerGcpGateway;
-
   /// IP address of the peer VPN gateway. Only IPv4 is supported.
   late final pulumi.Output<String> peerIp;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
   late final pulumi.Output<String> region;
-
   /// Remote traffic selector to use when establishing the VPN tunnel with
   /// peer VPN gateway. The value should be a CIDR formatted string,
   /// for example `192.168.0.0/16`. The ranges should be disjoint.
   /// Only IPv4 is supported.
   late final pulumi.Output<List<String>> remoteTrafficSelectors;
-
   /// URL of router resource to be used for dynamic routing.
   late final pulumi.Output<String?> router;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-
   /// Shared secret used to set the secure session between the Cloud VPN
   /// gateway and the peer VPN gateway.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String?> sharedSecret;
-
   /// Hash of the shared secret.
   late final pulumi.Output<String> sharedSecretHash;
-
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// Shared secret used to set the secure session between the Cloud VPN
@@ -1135,22 +1113,17 @@ class VPNTunnel extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** One of `shared_secret` or `shared_secret_wo` can only be set.
   late final pulumi.Output<String?> sharedSecretWo;
-
   /// Triggers update of `shared_secret_wo` write-only. Increment this value when an update to `shared_secret_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   late final pulumi.Output<String?> sharedSecretWoVersion;
-
   /// URL of the Target VPN gateway with which this VPN tunnel is
   /// associated.
   late final pulumi.Output<String?> targetVpnGateway;
-
   /// The unique identifier for the resource. This identifier is defined by the server.
   late final pulumi.Output<String> tunnelId;
-
   /// URL of the VPN gateway with which this VPN tunnel is associated.
   /// This must be used if a High Availability VPN gateway resource is created.
   /// This field must reference a `gcp.compute.HaVpnGateway` resource.
   late final pulumi.Output<String?> vpnGateway;
-
   /// The interface ID of the VPN gateway with which this VPN tunnel is associated.
   late final pulumi.Output<int?> vpnGatewayInterface;
 
@@ -1163,21 +1136,12 @@ class VPNTunnel extends pulumi.CustomResource {
     VPNTunnelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/vPNTunnel:VPNTunnel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    cipherSuite = registerOutput<VPNTunnelCipherSuite?>(
-      'cipherSuite',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VPNTunnelCipherSuite.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:compute/vPNTunnel:VPNTunnel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    cipherSuite = registerOutput<VPNTunnelCipherSuite?>('cipherSuite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VPNTunnelCipherSuite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
     detailedStatus = registerOutput<String>('detailedStatus');
@@ -1185,22 +1149,16 @@ class VPNTunnel extends pulumi.CustomResource {
     ikeVersion = registerOutput<int?>('ikeVersion');
     labelFingerprint = registerOutput<String>('labelFingerprint');
     labels = registerOutput<Map<String, String>?>('labels');
-    localTrafficSelectors = registerOutput<List<String>>(
-      'localTrafficSelectors',
-    );
+    localTrafficSelectors = registerOutput<List<String>>('localTrafficSelectors');
     this.name = registerOutput<String>('name');
     peerExternalGateway = registerOutput<String?>('peerExternalGateway');
-    peerExternalGatewayInterface = registerOutput<int?>(
-      'peerExternalGatewayInterface',
-    );
+    peerExternalGatewayInterface = registerOutput<int?>('peerExternalGatewayInterface');
     peerGcpGateway = registerOutput<String?>('peerGcpGateway');
     peerIp = registerOutput<String>('peerIp');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     region = registerOutput<String>('region');
-    remoteTrafficSelectors = registerOutput<List<String>>(
-      'remoteTrafficSelectors',
-    );
+    remoteTrafficSelectors = registerOutput<List<String>>('remoteTrafficSelectors');
     router = registerOutput<String?>('router');
     selfLink = registerOutput<String>('selfLink');
     sharedSecret = registerOutput<String?>('sharedSecret');
@@ -1231,21 +1189,12 @@ class VPNTunnel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/vPNTunnel:VPNTunnel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    cipherSuite = registerOutput<VPNTunnelCipherSuite?>(
-      'cipherSuite',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VPNTunnelCipherSuite.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:compute/vPNTunnel:VPNTunnel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    cipherSuite = registerOutput<VPNTunnelCipherSuite?>('cipherSuite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VPNTunnelCipherSuite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
     detailedStatus = registerOutput<String>('detailedStatus');
@@ -1253,22 +1202,16 @@ class VPNTunnel extends pulumi.CustomResource {
     ikeVersion = registerOutput<int?>('ikeVersion');
     labelFingerprint = registerOutput<String>('labelFingerprint');
     labels = registerOutput<Map<String, String>?>('labels');
-    localTrafficSelectors = registerOutput<List<String>>(
-      'localTrafficSelectors',
-    );
+    localTrafficSelectors = registerOutput<List<String>>('localTrafficSelectors');
     this.name = registerOutput<String>('name');
     peerExternalGateway = registerOutput<String?>('peerExternalGateway');
-    peerExternalGatewayInterface = registerOutput<int?>(
-      'peerExternalGatewayInterface',
-    );
+    peerExternalGatewayInterface = registerOutput<int?>('peerExternalGatewayInterface');
     peerGcpGateway = registerOutput<String?>('peerGcpGateway');
     peerIp = registerOutput<String>('peerIp');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     region = registerOutput<String>('region');
-    remoteTrafficSelectors = registerOutput<List<String>>(
-      'remoteTrafficSelectors',
-    );
+    remoteTrafficSelectors = registerOutput<List<String>>('remoteTrafficSelectors');
     router = registerOutput<String?>('router');
     selfLink = registerOutput<String>('selfLink');
     sharedSecret = registerOutput<String?>('sharedSecret');

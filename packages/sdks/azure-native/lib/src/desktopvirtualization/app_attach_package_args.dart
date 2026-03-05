@@ -10,16 +10,12 @@ import 'app_attach_package_properties.dart';
 class AppAttachPackageArgs {
   /// The name of the App Attach package
   final pulumi.Input<String>? appAttachPackageName;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// Detailed properties for App Attach Package
   final pulumi.Input<AppAttachPackageProperties> properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,11 +37,7 @@ class AppAttachPackageArgs {
     return <String, dynamic>{
       'appAttachPackageName': ?appAttachPackageName,
       'location': ?location,
-      'properties':
-          pulumi.Input.mapInputValue<
-            AppAttachPackageProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<AppAttachPackageProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -53,31 +45,12 @@ class AppAttachPackageArgs {
 
   factory AppAttachPackageArgs.fromMap(Map<String, dynamic> map) {
     return AppAttachPackageArgs(
-      appAttachPackageName: (() {
-        final guardedValue = map['appAttachPackageName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: pulumi.Input.fromValue(
-        AppAttachPackageProperties.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      appAttachPackageName: (() { final guardedValue = map['appAttachPackageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: pulumi.Input.fromValue(AppAttachPackageProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

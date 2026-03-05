@@ -164,35 +164,24 @@ import 'environment_deployment_properties_response.dart';
 class Environment extends pulumi.CustomResource {
   /// The display name of the Azure Resource Manager template that produced the environment.
   late final pulumi.Output<String?> armTemplateDisplayName;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The creator of the environment.
   late final pulumi.Output<String> createdByUser;
-
   /// The deployment properties of the environment.
-  late final pulumi.Output<EnvironmentDeploymentPropertiesResponse?>
-  deploymentProperties;
-
+  late final pulumi.Output<EnvironmentDeploymentPropertiesResponse?> deploymentProperties;
   /// The location of the resource.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The identifier of the resource group containing the environment's resources.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
 
@@ -205,25 +194,15 @@ class Environment extends pulumi.CustomResource {
     EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devtestlab:Environment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:devtestlab:Environment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     armTemplateDisplayName = registerOutput<String?>('armTemplateDisplayName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdByUser = registerOutput<String>('createdByUser');
-    deploymentProperties =
-        registerOutput<EnvironmentDeploymentPropertiesResponse?>(
-          'deploymentProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EnvironmentDeploymentPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    deploymentProperties = registerOutput<EnvironmentDeploymentPropertiesResponse?>('deploymentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentDeploymentPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

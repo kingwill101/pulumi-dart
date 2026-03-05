@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DcAccessSecurityCodeResponse {
   /// Forward Dc access security code.
   final pulumi.Input<String>? forwardDCAccessCode;
-
   /// Reverse Dc access security code.
   final pulumi.Input<String>? reverseDCAccessCode;
 
@@ -27,16 +26,9 @@ class DcAccessSecurityCodeResponse {
 
   factory DcAccessSecurityCodeResponse.fromMap(Map<String, dynamic> map) {
     return DcAccessSecurityCodeResponse(
-      forwardDCAccessCode: (() {
-        final guardedValue = map['forwardDCAccessCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reverseDCAccessCode: (() {
-        final guardedValue = map['reverseDCAccessCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      forwardDCAccessCode: (() { final guardedValue = map['forwardDCAccessCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reverseDCAccessCode: (() { final guardedValue = map['reverseDCAccessCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

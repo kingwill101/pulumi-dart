@@ -755,27 +755,18 @@ import 'application_scaling_rule_state.dart';
 class ApplicationScalingRule extends pulumi.CustomResource {
   /// Application ID.
   late final pulumi.Output<String> appId;
-
   /// The min ready instance ratio.
   late final pulumi.Output<int?> minReadyInstanceRatio;
-
   /// The min ready instances.
   late final pulumi.Output<int?> minReadyInstances;
-
   /// True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
   late final pulumi.Output<bool> scalingRuleEnable;
-
   /// Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
-  late final pulumi.Output<ApplicationScalingRuleScalingRuleMetric?>
-  scalingRuleMetric;
-
+  late final pulumi.Output<ApplicationScalingRuleScalingRuleMetric?> scalingRuleMetric;
   /// The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
   late final pulumi.Output<String> scalingRuleName;
-
   /// Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
-  late final pulumi.Output<ApplicationScalingRuleScalingRuleTimer?>
-  scalingRuleTimer;
-
+  late final pulumi.Output<ApplicationScalingRuleScalingRuleTimer?> scalingRuleTimer;
   /// Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
   late final pulumi.Output<String> scalingRuleType;
 
@@ -788,37 +779,18 @@ class ApplicationScalingRule extends pulumi.CustomResource {
     ApplicationScalingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/applicationScalingRule:ApplicationScalingRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/applicationScalingRule:ApplicationScalingRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     minReadyInstanceRatio = registerOutput<int?>('minReadyInstanceRatio');
     minReadyInstances = registerOutput<int?>('minReadyInstances');
     scalingRuleEnable = registerOutput<bool>('scalingRuleEnable');
-    scalingRuleMetric =
-        registerOutput<ApplicationScalingRuleScalingRuleMetric?>(
-          'scalingRuleMetric',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ApplicationScalingRuleScalingRuleMetric.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    scalingRuleMetric = registerOutput<ApplicationScalingRuleScalingRuleMetric?>('scalingRuleMetric', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationScalingRuleScalingRuleMetric.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scalingRuleName = registerOutput<String>('scalingRuleName');
-    scalingRuleTimer = registerOutput<ApplicationScalingRuleScalingRuleTimer?>(
-      'scalingRuleTimer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationScalingRuleScalingRuleTimer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scalingRuleTimer = registerOutput<ApplicationScalingRuleScalingRuleTimer?>('scalingRuleTimer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationScalingRuleScalingRuleTimer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scalingRuleType = registerOutput<String>('scalingRuleType');
   }
 
@@ -840,37 +812,18 @@ class ApplicationScalingRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/applicationScalingRule:ApplicationScalingRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/applicationScalingRule:ApplicationScalingRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     minReadyInstanceRatio = registerOutput<int?>('minReadyInstanceRatio');
     minReadyInstances = registerOutput<int?>('minReadyInstances');
     scalingRuleEnable = registerOutput<bool>('scalingRuleEnable');
-    scalingRuleMetric =
-        registerOutput<ApplicationScalingRuleScalingRuleMetric?>(
-          'scalingRuleMetric',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ApplicationScalingRuleScalingRuleMetric.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    scalingRuleMetric = registerOutput<ApplicationScalingRuleScalingRuleMetric?>('scalingRuleMetric', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationScalingRuleScalingRuleMetric.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scalingRuleName = registerOutput<String>('scalingRuleName');
-    scalingRuleTimer = registerOutput<ApplicationScalingRuleScalingRuleTimer?>(
-      'scalingRuleTimer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationScalingRuleScalingRuleTimer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scalingRuleTimer = registerOutput<ApplicationScalingRuleScalingRuleTimer?>('scalingRuleTimer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationScalingRuleScalingRuleTimer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scalingRuleType = registerOutput<String>('scalingRuleType');
   }
 }

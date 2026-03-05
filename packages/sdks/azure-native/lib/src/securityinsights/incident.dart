@@ -210,73 +210,50 @@ import 'system_data_response.dart';
 class Incident extends pulumi.CustomResource {
   /// Additional data on the incident
   late final pulumi.Output<IncidentAdditionalDataResponse> additionalData;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The reason the incident was closed
   late final pulumi.Output<String?> classification;
-
   /// Describes the reason the incident was closed
   late final pulumi.Output<String?> classificationComment;
-
   /// The classification reason the incident was closed with
   late final pulumi.Output<String?> classificationReason;
-
   /// The time the incident was created
   late final pulumi.Output<String> createdTimeUtc;
-
   /// The description of the incident
   late final pulumi.Output<String?> description;
-
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// The time of the first activity in the incident
   late final pulumi.Output<String?> firstActivityTimeUtc;
-
   /// A sequential number
   late final pulumi.Output<int> incidentNumber;
-
   /// The deep-link url to the incident in Azure portal
   late final pulumi.Output<String> incidentUrl;
-
   /// List of labels relevant to this incident
   late final pulumi.Output<List<Map<String, dynamic>>?> labels;
-
   /// The time of the last activity in the incident
   late final pulumi.Output<String?> lastActivityTimeUtc;
-
   /// The last time the incident was updated
   late final pulumi.Output<String> lastModifiedTimeUtc;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Describes a user that the incident is assigned to
   late final pulumi.Output<IncidentOwnerInfoResponse?> owner;
-
   /// The incident ID assigned by the incident provider
   late final pulumi.Output<String> providerIncidentId;
-
   /// The name of the source provider that generated the incident
   late final pulumi.Output<String> providerName;
-
   /// List of resource ids of Analytic rules related to the incident
   late final pulumi.Output<List<String>> relatedAnalyticRuleIds;
-
   /// The severity of the incident
   late final pulumi.Output<String> severity;
-
   /// The status of the incident
   late final pulumi.Output<String> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The title of the incident
   late final pulumi.Output<String> title;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -289,21 +266,12 @@ class Incident extends pulumi.CustomResource {
     IncidentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:Incident',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalData = registerOutput<IncidentAdditionalDataResponse>(
-      'additionalData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IncidentAdditionalDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:securityinsights:Incident',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalData = registerOutput<IncidentAdditionalDataResponse>('additionalData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IncidentAdditionalDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     classification = registerOutput<String?>('classification');
     classificationComment = registerOutput<String?>('classificationComment');
@@ -318,33 +286,13 @@ class Incident extends pulumi.CustomResource {
     lastActivityTimeUtc = registerOutput<String?>('lastActivityTimeUtc');
     lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
     this.name = registerOutput<String>('name');
-    owner = registerOutput<IncidentOwnerInfoResponse?>(
-      'owner',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IncidentOwnerInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    owner = registerOutput<IncidentOwnerInfoResponse?>('owner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IncidentOwnerInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     providerIncidentId = registerOutput<String>('providerIncidentId');
     providerName = registerOutput<String>('providerName');
-    relatedAnalyticRuleIds = registerOutput<List<String>>(
-      'relatedAnalyticRuleIds',
-    );
+    relatedAnalyticRuleIds = registerOutput<List<String>>('relatedAnalyticRuleIds');
     severity = registerOutput<String>('severity');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     title = registerOutput<String>('title');
     type = registerOutput<String>('type');
   }

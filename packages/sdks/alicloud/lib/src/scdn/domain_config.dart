@@ -238,16 +238,12 @@ import 'domain_config_state.dart';
 class DomainConfig extends pulumi.CustomResource {
   /// The SCDN domain config id.
   late final pulumi.Output<String> configId;
-
   /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
   late final pulumi.Output<String> domainName;
-
   /// The args of the domain config.
   late final pulumi.Output<List<Map<String, dynamic>>> functionArgs;
-
   /// The name of the domain config.
   late final pulumi.Output<String> functionName;
-
   /// The status of this resource.
   late final pulumi.Output<String> status;
 
@@ -260,11 +256,11 @@ class DomainConfig extends pulumi.CustomResource {
     DomainConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:scdn/domainConfig:DomainConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:scdn/domainConfig:DomainConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configId = registerOutput<String>('configId');
     domainName = registerOutput<String>('domainName');
     functionArgs = registerOutput<List<Map<String, dynamic>>>('functionArgs');
@@ -290,11 +286,11 @@ class DomainConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:scdn/domainConfig:DomainConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:scdn/domainConfig:DomainConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configId = registerOutput<String>('configId');
     domainName = registerOutput<String>('domainName');
     functionArgs = registerOutput<List<Map<String, dynamic>>>('functionArgs');

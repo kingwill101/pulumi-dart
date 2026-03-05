@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Backup {
   /// Backup retention days for the server.
   final pulumi.Input<int>? backupRetentionDays;
-
   /// Indicates if the server is configured to create geographically redundant backups.
   final pulumi.Input<String>? geoRedundantBackup;
 
   /// Creates a new [Backup].
   /// [backupRetentionDays] Backup retention days for the server.
   /// [geoRedundantBackup] Indicates if the server is configured to create geographically redundant backups.
-  Backup({this.backupRetentionDays, this.geoRedundantBackup});
+  Backup({
+    this.backupRetentionDays,
+    this.geoRedundantBackup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class Backup {
 
   factory Backup.fromMap(Map<String, dynamic> map) {
     return Backup(
-      backupRetentionDays: (() {
-        final guardedValue = map['backupRetentionDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      geoRedundantBackup: (() {
-        final guardedValue = map['geoRedundantBackup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backupRetentionDays: (() { final guardedValue = map['backupRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      geoRedundantBackup: (() { final guardedValue = map['geoRedundantBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

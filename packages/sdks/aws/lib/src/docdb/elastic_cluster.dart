@@ -144,53 +144,38 @@ import 'elastic_cluster_timeouts.dart';
 class ElasticCluster extends pulumi.CustomResource {
   /// Name of the Elastic DocumentDB cluster administrator
   late final pulumi.Output<String> adminUserName;
-
   /// Password for the Elastic DocumentDB cluster administrator. Can contain any printable ASCII characters. Must be at least 8 characters
   late final pulumi.Output<String> adminUserPassword;
-
   /// ARN of the DocumentDB Elastic Cluster
   late final pulumi.Output<String> arn;
-
   /// Authentication type for the Elastic DocumentDB cluster. Valid values are `PLAIN_TEXT` and `SECRET_ARN`
   late final pulumi.Output<String> authType;
-
   /// The number of days for which automatic snapshots are retained. It should be in between 1 and 35. If not specified, the default value of 1 is set.
   late final pulumi.Output<int> backupRetentionPeriod;
-
   /// The DNS address of the DocDB instance
   late final pulumi.Output<String> endpoint;
-
   /// ARN of a KMS key that is used to encrypt the Elastic DocumentDB cluster. If not specified, the default encryption key that KMS creates for your account is used.
   late final pulumi.Output<String> kmsKeyId;
-
   /// Name of the Elastic DocumentDB cluster
   late final pulumi.Output<String> name;
-
   /// The daily time range during which automated backups are created if automated backups are enabled, as determined by the `backup_retention_period`.
   late final pulumi.Output<String> preferredBackupWindow;
-
   /// Weekly time range during which system maintenance can occur in UTC. Format: `ddd:hh24:mi-ddd:hh24:mi`. If not specified, AWS will choose a random 30-minute window on a random day of the week.
   late final pulumi.Output<String> preferredMaintenanceWindow;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Number of vCPUs assigned to each elastic cluster shard. Maximum is 64. Allowed values are 2, 4, 8, 16, 32, 64
   late final pulumi.Output<int> shardCapacity;
-
   /// Number of shards assigned to the elastic cluster. Maximum is 32
   ///
   /// The following arguments are optional:
   late final pulumi.Output<int> shardCount;
-
   /// IDs of subnets in which the Elastic DocumentDB Cluster operates.
   late final pulumi.Output<List<String>> subnetIds;
-
   /// A map of tags to assign to the collection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ElasticClusterTimeouts?> timeouts;
-
   /// List of VPC security groups to associate with the Elastic DocumentDB Cluster
   ///
   /// For more detailed documentation about each argument, refer to
@@ -206,11 +191,11 @@ class ElasticCluster extends pulumi.CustomResource {
     ElasticClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:docdb/elasticCluster:ElasticCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:docdb/elasticCluster:ElasticCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminUserName = registerOutput<String>('adminUserName');
     adminUserPassword = registerOutput<String>('adminUserPassword');
     arn = registerOutput<String>('arn');
@@ -220,25 +205,14 @@ class ElasticCluster extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     this.name = registerOutput<String>('name');
     preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
-    preferredMaintenanceWindow = registerOutput<String>(
-      'preferredMaintenanceWindow',
-    );
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
     region = registerOutput<String>('region');
     shardCapacity = registerOutput<int>('shardCapacity');
     shardCount = registerOutput<int>('shardCount');
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ElasticClusterTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ElasticClusterTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ElasticClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
   }
 
@@ -260,11 +234,11 @@ class ElasticCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:docdb/elasticCluster:ElasticCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:docdb/elasticCluster:ElasticCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminUserName = registerOutput<String>('adminUserName');
     adminUserPassword = registerOutput<String>('adminUserPassword');
     arn = registerOutput<String>('arn');
@@ -274,25 +248,14 @@ class ElasticCluster extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     this.name = registerOutput<String>('name');
     preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
-    preferredMaintenanceWindow = registerOutput<String>(
-      'preferredMaintenanceWindow',
-    );
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
     region = registerOutput<String>('region');
     shardCapacity = registerOutput<int>('shardCapacity');
     shardCount = registerOutput<int>('shardCount');
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ElasticClusterTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ElasticClusterTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ElasticClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
   }
 }

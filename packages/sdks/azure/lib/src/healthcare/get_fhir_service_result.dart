@@ -9,32 +9,23 @@ import 'get_fhir_service_identity.dart';
 class GetFhirServiceResult {
   /// The list of the access policies of the service instance.
   final List<String> accessPolicyObjectIds;
-
   /// The `authentication` block as defined below.
   final List<GetFhirServiceAuthentication> authentications;
-
   /// The name of the storage account which the operation configuration information is exported to.
   final String configurationExportStorageAccountName;
-
   /// The list of azure container registry settings used for convert data operation of the service instance.
   final List<String> containerRegistryLoginServerUrls;
-
   /// The `cors` block as defined below.
   final List<GetFhirServiceCor> cors;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The `identity` block as defined below.
   final List<GetFhirServiceIdentity> identities;
-
   /// The kind of the Healthcare FHIR Service.
   final String kind;
-
   /// The Azure Region where the Healthcare FHIR Service is located.
   final String location;
   final String name;
-
   /// The map of tags assigned to the Healthcare FHIR Service.
   final Map<String, String>? tags;
   final String workspaceId;
@@ -70,24 +61,12 @@ class GetFhirServiceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessPolicyObjectIds': accessPolicyObjectIds,
-      'authentications':
-          pulumi.Input.encodeList<
-            GetFhirServiceAuthentication,
-            Map<String, dynamic>
-          >(authentications, (value) => value.toMap()),
-      'configurationExportStorageAccountName':
-          configurationExportStorageAccountName,
+      'authentications': pulumi.Input.encodeList<GetFhirServiceAuthentication, Map<String, dynamic>>(authentications, (value) => value.toMap()),
+      'configurationExportStorageAccountName': configurationExportStorageAccountName,
       'containerRegistryLoginServerUrls': containerRegistryLoginServerUrls,
-      'cors': pulumi.Input.encodeList<GetFhirServiceCor, Map<String, dynamic>>(
-        cors,
-        (value) => value.toMap(),
-      ),
+      'cors': pulumi.Input.encodeList<GetFhirServiceCor, Map<String, dynamic>>(cors, (value) => value.toMap()),
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetFhirServiceIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
+      'identities': pulumi.Input.encodeList<GetFhirServiceIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'kind': kind,
       'location': location,
       'name': name,
@@ -98,39 +77,19 @@ class GetFhirServiceResult {
 
   factory GetFhirServiceResult.fromMap(Map<String, dynamic> map) {
     return GetFhirServiceResult(
-      accessPolicyObjectIds: (map['accessPolicyObjectIds'] as List)
-          .cast<String>(),
-      authentications: pulumi.Input.decodeList<GetFhirServiceAuthentication>(
-        map['authentications']!,
-        (value) => GetFhirServiceAuthentication.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      configurationExportStorageAccountName:
-          map['configurationExportStorageAccountName'] as String,
-      containerRegistryLoginServerUrls:
-          (map['containerRegistryLoginServerUrls'] as List).cast<String>(),
-      cors: pulumi.Input.decodeList<GetFhirServiceCor>(
-        map['cors']!,
-        (value) =>
-            GetFhirServiceCor.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      accessPolicyObjectIds: (map['accessPolicyObjectIds'] as List).cast<String>(),
+      authentications: pulumi.Input.decodeList<GetFhirServiceAuthentication>(map['authentications']!, (value) => GetFhirServiceAuthentication.fromMap((value as Map).cast<String, dynamic>())),
+      configurationExportStorageAccountName: map['configurationExportStorageAccountName'] as String,
+      containerRegistryLoginServerUrls: (map['containerRegistryLoginServerUrls'] as List).cast<String>(),
+      cors: pulumi.Input.decodeList<GetFhirServiceCor>(map['cors']!, (value) => GetFhirServiceCor.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetFhirServiceIdentity>(
-        map['identities']!,
-        (value) => GetFhirServiceIdentity.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      identities: pulumi.Input.decodeList<GetFhirServiceIdentity>(map['identities']!, (value) => GetFhirServiceIdentity.fromMap((value as Map).cast<String, dynamic>())),
       kind: map['kind'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       workspaceId: map['workspaceId'] as String,
     );
   }
 }
+

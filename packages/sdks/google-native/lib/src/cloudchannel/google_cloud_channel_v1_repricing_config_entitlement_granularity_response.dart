@@ -14,14 +14,15 @@ class GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'entitlement': entitlement};
+    return <String, dynamic>{
+      'entitlement': entitlement,
+    };
   }
 
-  factory GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse(
       entitlement: pulumi.Input.fromValue(map['entitlement'] as String),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStandardsControlAssociationsArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The identifier of the control (identified with `SecurityControlId`, `SecurityControlArn`, or a mix of both parameters).
   final pulumi.Input<String> securityControlId;
 
@@ -28,18 +27,11 @@ class GetStandardsControlAssociationsArgs {
     };
   }
 
-  factory GetStandardsControlAssociationsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetStandardsControlAssociationsArgs.fromMap(Map<String, dynamic> map) {
     return GetStandardsControlAssociationsArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securityControlId: pulumi.Input.fromValue(
-        map['securityControlId'] as String,
-      ),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityControlId: pulumi.Input.fromValue(map['securityControlId'] as String),
     );
   }
 }
+

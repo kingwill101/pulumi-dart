@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AvailableSolutionTemplateVersionResponse {
   /// Has this solution template version been configured
   final pulumi.Input<bool> isConfigured;
-
   /// Latest Configuration Revision
   final pulumi.Input<String> latestConfigRevision;
-
   /// Solution template Version
   final pulumi.Input<String> solutionTemplateVersion;
 
@@ -31,17 +29,12 @@ class AvailableSolutionTemplateVersionResponse {
     };
   }
 
-  factory AvailableSolutionTemplateVersionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AvailableSolutionTemplateVersionResponse.fromMap(Map<String, dynamic> map) {
     return AvailableSolutionTemplateVersionResponse(
       isConfigured: pulumi.Input.fromValue(map['isConfigured'] as bool),
-      latestConfigRevision: pulumi.Input.fromValue(
-        map['latestConfigRevision'] as String,
-      ),
-      solutionTemplateVersion: pulumi.Input.fromValue(
-        map['solutionTemplateVersion'] as String,
-      ),
+      latestConfigRevision: pulumi.Input.fromValue(map['latestConfigRevision'] as String),
+      solutionTemplateVersion: pulumi.Input.fromValue(map['solutionTemplateVersion'] as String),
     );
   }
 }
+

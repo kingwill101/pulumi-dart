@@ -33,11 +33,8 @@ class GetIndexFirestoreV1beta1Args {
     return GetIndexFirestoreV1beta1Args(
       databaseId: pulumi.Input.fromValue(map['databaseId'] as String),
       indexId: pulumi.Input.fromValue(map['indexId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

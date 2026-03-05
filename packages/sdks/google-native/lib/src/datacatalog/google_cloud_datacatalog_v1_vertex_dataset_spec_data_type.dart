@@ -17,17 +17,13 @@ enum GoogleCloudDatacatalogV1VertexDatasetSpecDataType {
   const GoogleCloudDatacatalogV1VertexDatasetSpecDataType(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudDatacatalogV1VertexDatasetSpecDataType fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudDatacatalogV1VertexDatasetSpecDataType.values) {
+  static GoogleCloudDatacatalogV1VertexDatasetSpecDataType fromValue(String value) {
+    for (final item in GoogleCloudDatacatalogV1VertexDatasetSpecDataType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudDatacatalogV1VertexDatasetSpecDataType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudDatacatalogV1VertexDatasetSpecDataType value: $value');
   }
 }
+

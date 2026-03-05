@@ -8,10 +8,14 @@ class DeploymentNetworkInterface {
 
   /// Creates a new [DeploymentNetworkInterface].
   /// [subnetId] Specify The Subnet Resource ID for this NGINX Deployment.
-  DeploymentNetworkInterface({required this.subnetId});
+  DeploymentNetworkInterface({
+    required this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'subnetId': subnetId};
+    return <String, dynamic>{
+      'subnetId': subnetId,
+    };
   }
 
   factory DeploymentNetworkInterface.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DeploymentNetworkInterface {
     );
   }
 }
+

@@ -9,19 +9,20 @@ class CostManagementConfig {
 
   /// Creates a new [CostManagementConfig].
   /// [enabled] Whether the feature is enabled or not.
-  CostManagementConfig({this.enabled});
+  CostManagementConfig({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory CostManagementConfig.fromMap(Map<String, dynamic> map) {
     return CostManagementConfig(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

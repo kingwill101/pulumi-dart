@@ -9,31 +9,22 @@ import 'system_data_response.dart';
 class GetPostgresInstanceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The extendedLocation of the resource.
   final ExtendedLocationResponse? extendedLocation;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// null
   final PostgresInstancePropertiesResponse properties;
-
   /// Resource sku.
   final PostgresInstanceSkuResponse? sku;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -79,35 +70,16 @@ class GetPostgresInstanceResult {
   factory GetPostgresInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetPostgresInstanceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: PostgresInstancePropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return PostgresInstanceSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: PostgresInstancePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return PostgresInstanceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

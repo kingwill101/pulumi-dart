@@ -7,19 +7,14 @@ import 'system_data_response.dart';
 class GetAliasResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified ID for the alias resource.
   final String id;
-
   /// Alias ID.
   final String name;
-
   /// Subscription Alias response properties.
   final SubscriptionAliasResponsePropertiesResponse properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// Resource type, Microsoft.Subscription/aliases.
   final String type;
 
@@ -55,13 +50,10 @@ class GetAliasResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: SubscriptionAliasResponsePropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      properties: SubscriptionAliasResponsePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

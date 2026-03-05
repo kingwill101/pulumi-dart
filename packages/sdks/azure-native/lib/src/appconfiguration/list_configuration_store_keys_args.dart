@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListConfigurationStoreKeysArgs {
   /// The name of the configuration store.
   final pulumi.Input<String> configStoreName;
-
   /// The name of the resource group to which the container registry belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
   final pulumi.Input<String>? skipToken;
 
@@ -37,14 +35,9 @@ class ListConfigurationStoreKeysArgs {
   factory ListConfigurationStoreKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListConfigurationStoreKeysArgs(
       configStoreName: pulumi.Input.fromValue(map['configStoreName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      skipToken: (() {
-        final guardedValue = map['skipToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      skipToken: (() { final guardedValue = map['skipToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

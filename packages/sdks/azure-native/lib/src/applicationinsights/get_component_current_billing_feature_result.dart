@@ -6,10 +6,8 @@ import 'application_insights_component_data_volume_cap_response.dart';
 class GetComponentCurrentBillingFeatureResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Current enabled pricing plan. When the component is in the Enterprise plan, this will list both 'Basic' and 'Application Insights Enterprise'.
   final List<String>? currentBillingFeatures;
-
   /// An Application Insights component daily data volume cap
   final ApplicationInsightsComponentDataVolumeCapResponse? dataVolumeCap;
 
@@ -31,23 +29,12 @@ class GetComponentCurrentBillingFeatureResult {
     };
   }
 
-  factory GetComponentCurrentBillingFeatureResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetComponentCurrentBillingFeatureResult.fromMap(Map<String, dynamic> map) {
     return GetComponentCurrentBillingFeatureResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      currentBillingFeatures: (() {
-        final guardedValue = map['currentBillingFeatures'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      dataVolumeCap: (() {
-        final guardedValue = map['dataVolumeCap'];
-        if (guardedValue == null) return null;
-        return ApplicationInsightsComponentDataVolumeCapResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      currentBillingFeatures: (() { final guardedValue = map['currentBillingFeatures']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      dataVolumeCap: (() { final guardedValue = map['dataVolumeCap']; if (guardedValue == null) return null; return ApplicationInsightsComponentDataVolumeCapResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

@@ -126,26 +126,18 @@ import 'project_state.dart';
 class Project extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) assigned by AWS to this Project.
   late final pulumi.Output<String> arn;
-
   /// A description for the project.
   late final pulumi.Output<String?> projectDescription;
-
   /// The ID of the project.
   late final pulumi.Output<String> projectId;
-
   /// The name of the Project.
   late final pulumi.Output<String> projectName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The product ID and provisioning artifact ID to provision a service catalog. See Service Catalog Provisioning Details below.
-  late final pulumi.Output<ProjectServiceCatalogProvisioningDetails>
-  serviceCatalogProvisioningDetails;
-
+  late final pulumi.Output<ProjectServiceCatalogProvisioningDetails> serviceCatalogProvisioningDetails;
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -158,27 +150,17 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/project:Project',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/project:Project',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     projectDescription = registerOutput<String?>('projectDescription');
     projectId = registerOutput<String>('projectId');
     projectName = registerOutput<String>('projectName');
     region = registerOutput<String>('region');
-    serviceCatalogProvisioningDetails =
-        registerOutput<ProjectServiceCatalogProvisioningDetails>(
-          'serviceCatalogProvisioningDetails',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ProjectServiceCatalogProvisioningDetails.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    serviceCatalogProvisioningDetails = registerOutput<ProjectServiceCatalogProvisioningDetails>('serviceCatalogProvisioningDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectServiceCatalogProvisioningDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -201,27 +183,17 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/project:Project',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/project:Project',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     projectDescription = registerOutput<String?>('projectDescription');
     projectId = registerOutput<String>('projectId');
     projectName = registerOutput<String>('projectName');
     region = registerOutput<String>('region');
-    serviceCatalogProvisioningDetails =
-        registerOutput<ProjectServiceCatalogProvisioningDetails>(
-          'serviceCatalogProvisioningDetails',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ProjectServiceCatalogProvisioningDetails.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    serviceCatalogProvisioningDetails = registerOutput<ProjectServiceCatalogProvisioningDetails>('serviceCatalogProvisioningDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectServiceCatalogProvisioningDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

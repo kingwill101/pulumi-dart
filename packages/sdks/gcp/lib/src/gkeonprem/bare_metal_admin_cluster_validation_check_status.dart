@@ -7,48 +7,24 @@ class BareMetalAdminClusterValidationCheckStatus {
   /// (Output)
   /// Individual checks which failed as part of the Preflight check execution.
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalAdminClusterValidationCheckStatusResult>>?
-  results;
+  final pulumi.Input<List<BareMetalAdminClusterValidationCheckStatusResult>>? results;
 
   /// Creates a new [BareMetalAdminClusterValidationCheckStatus].
   /// [results] (Output)
-  BareMetalAdminClusterValidationCheckStatus({this.results});
+  BareMetalAdminClusterValidationCheckStatus({
+    this.results,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'results':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BareMetalAdminClusterValidationCheckStatusResult>,
-            List<Map<String, dynamic>>
-          >(
-            results,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BareMetalAdminClusterValidationCheckStatusResult,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'results': ?pulumi.Input.mapOptionalInputValue<List<BareMetalAdminClusterValidationCheckStatusResult>, List<Map<String, dynamic>>>(results, (value) => pulumi.Input.encodeList<BareMetalAdminClusterValidationCheckStatusResult, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory BareMetalAdminClusterValidationCheckStatus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalAdminClusterValidationCheckStatus.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterValidationCheckStatus(
-      results: (() {
-        final guardedValue = map['results'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            BareMetalAdminClusterValidationCheckStatusResult
-          >(
-            guardedValue,
-            (value) => BareMetalAdminClusterValidationCheckStatusResult.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BareMetalAdminClusterValidationCheckStatusResult>(guardedValue, (value) => BareMetalAdminClusterValidationCheckStatusResult.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

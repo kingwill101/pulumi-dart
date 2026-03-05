@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheArgs {
   /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
   final pulumi.Input<String> diskId;
-
   /// The Amazon Resource Name (ARN) of the gateway.
   final pulumi.Input<String> gatewayArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -20,7 +18,11 @@ class CacheArgs {
   /// [diskId] Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
   /// [gatewayArn] The Amazon Resource Name (ARN) of the gateway.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  CacheArgs({required this.diskId, required this.gatewayArn, this.region});
+  CacheArgs({
+    required this.diskId,
+    required this.gatewayArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,11 +36,8 @@ class CacheArgs {
     return CacheArgs(
       diskId: pulumi.Input.fromValue(map['diskId'] as String),
       gatewayArn: pulumi.Input.fromValue(map['gatewayArn'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

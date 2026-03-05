@@ -17,3 +17,4 @@ enum ServiceLoadMetricWeight {
     throw ArgumentError('Unknown ServiceLoadMetricWeight value: $value');
   }
 }
+

@@ -173,84 +173,58 @@ import 'virtual_machine_template_args.dart';
 class VirtualMachineTemplate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets the name of the corresponding resource in Kubernetes.
   late final pulumi.Output<String> customResourceName;
-
   /// Gets or sets the disks the template.
   late final pulumi.Output<List<Map<String, dynamic>>> disks;
-
   /// Gets or sets the extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// Firmware type
   late final pulumi.Output<String> firmwareType;
-
   /// Gets or sets the folder path of the template.
   late final pulumi.Output<String> folderPath;
-
   /// Gets or sets the inventory Item ID for the virtual machine template.
   late final pulumi.Output<String?> inventoryItemId;
-
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
-
   /// Gets or sets the location.
   late final pulumi.Output<String> location;
-
   /// Gets or sets memory size in MBs for the template.
   late final pulumi.Output<int> memorySizeMB;
-
   /// Gets or sets the vCenter Managed Object name for the virtual machine template.
   late final pulumi.Output<String> moName;
-
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machine
   /// template.
   late final pulumi.Output<String?> moRefId;
-
   /// Gets or sets the name.
   late final pulumi.Output<String> name;
-
   /// Gets or sets the network interfaces of the template.
   late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
-
   /// Gets or sets the number of vCPUs for the template.
   late final pulumi.Output<int> numCPUs;
-
   /// Gets or sets the number of cores per socket for the template.
   /// Defaults to 1 if unspecified.
   late final pulumi.Output<int> numCoresPerSocket;
-
   /// Gets or sets os name.
   late final pulumi.Output<String> osName;
-
   /// Gets or sets the type of the os.
   late final pulumi.Output<String> osType;
-
   /// Gets the provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// The resource status information.
   late final pulumi.Output<List<Map<String, dynamic>>> statuses;
-
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Gets or sets the Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Gets or sets the current version of VMware Tools.
   late final pulumi.Output<String> toolsVersion;
-
   /// Gets or sets the current version status of VMware Tools installed in the guest operating system.
   late final pulumi.Output<String> toolsVersionStatus;
-
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
-
   /// Gets or sets a unique identifier for this resource.
   late final pulumi.Output<String> uuid;
-
   /// Gets or sets the ARM Id of the vCenter resource in which this template resides.
   late final pulumi.Output<String?> vCenterId;
 
@@ -263,24 +237,15 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
     VirtualMachineTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:connectedvmwarevsphere:VirtualMachineTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:connectedvmwarevsphere:VirtualMachineTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     customResourceName = registerOutput<String>('customResourceName');
     disks = registerOutput<List<Map<String, dynamic>>>('disks');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     firmwareType = registerOutput<String>('firmwareType');
     folderPath = registerOutput<String>('folderPath');
     inventoryItemId = registerOutput<String?>('inventoryItemId');
@@ -290,25 +255,14 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
     moName = registerOutput<String>('moName');
     moRefId = registerOutput<String?>('moRefId');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
-      'networkInterfaces',
-    );
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
     numCPUs = registerOutput<int>('numCPUs');
     numCoresPerSocket = registerOutput<int>('numCoresPerSocket');
     osName = registerOutput<String>('osName');
     osType = registerOutput<String>('osType');
     provisioningState = registerOutput<String>('provisioningState');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     toolsVersion = registerOutput<String>('toolsVersion');
     toolsVersionStatus = registerOutput<String>('toolsVersionStatus');

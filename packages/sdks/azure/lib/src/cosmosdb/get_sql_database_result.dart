@@ -6,15 +6,12 @@ import 'get_sql_database_autoscale_setting.dart';
 /// Result data returned by getSqlDatabase.
 class GetSqlDatabaseResult {
   final String accountName;
-
   /// An `autoscale_settings` block as defined below.
   final List<GetSqlDatabaseAutoscaleSetting> autoscaleSettings;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String resourceGroupName;
-
   /// The throughput of SQL database (RU/s).
   final int throughput;
 
@@ -37,11 +34,7 @@ class GetSqlDatabaseResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountName': accountName,
-      'autoscaleSettings':
-          pulumi.Input.encodeList<
-            GetSqlDatabaseAutoscaleSetting,
-            Map<String, dynamic>
-          >(autoscaleSettings, (value) => value.toMap()),
+      'autoscaleSettings': pulumi.Input.encodeList<GetSqlDatabaseAutoscaleSetting, Map<String, dynamic>>(autoscaleSettings, (value) => value.toMap()),
       'id': id,
       'name': name,
       'resourceGroupName': resourceGroupName,
@@ -52,13 +45,7 @@ class GetSqlDatabaseResult {
   factory GetSqlDatabaseResult.fromMap(Map<String, dynamic> map) {
     return GetSqlDatabaseResult(
       accountName: map['accountName'] as String,
-      autoscaleSettings:
-          pulumi.Input.decodeList<GetSqlDatabaseAutoscaleSetting>(
-            map['autoscaleSettings']!,
-            (value) => GetSqlDatabaseAutoscaleSetting.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      autoscaleSettings: pulumi.Input.decodeList<GetSqlDatabaseAutoscaleSetting>(map['autoscaleSettings']!, (value) => GetSqlDatabaseAutoscaleSetting.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
@@ -66,3 +53,4 @@ class GetSqlDatabaseResult {
     );
   }
 }
+

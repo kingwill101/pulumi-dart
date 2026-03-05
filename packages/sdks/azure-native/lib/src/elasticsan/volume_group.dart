@@ -138,38 +138,26 @@ import 'volume_group_args.dart';
 class VolumeGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Type of encryption
   late final pulumi.Output<String?> encryption;
-
   /// Encryption Properties describing Key Vault and Identity information
   late final pulumi.Output<EncryptionPropertiesResponse?> encryptionProperties;
-
   /// A boolean indicating whether or not Data Integrity Check is enabled
   late final pulumi.Output<bool?> enforceDataIntegrityCheckForIscsi;
-
   /// The identity of the resource.
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// A collection of rules governing the accessibility from specific network locations.
   late final pulumi.Output<NetworkRuleSetResponse?> networkAcls;
-
   /// The list of Private Endpoint Connections.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Type of storage target
   late final pulumi.Output<String?> protocolType;
-
   /// State of the operation on the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -182,62 +170,22 @@ class VolumeGroup extends pulumi.CustomResource {
     VolumeGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:elasticsan:VolumeGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:elasticsan:VolumeGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     encryption = registerOutput<String?>('encryption');
-    encryptionProperties = registerOutput<EncryptionPropertiesResponse?>(
-      'encryptionProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    enforceDataIntegrityCheckForIscsi = registerOutput<bool?>(
-      'enforceDataIntegrityCheckForIscsi',
-    );
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionProperties = registerOutput<EncryptionPropertiesResponse?>('encryptionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enforceDataIntegrityCheckForIscsi = registerOutput<bool?>('enforceDataIntegrityCheckForIscsi');
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkAcls = registerOutput<NetworkRuleSetResponse?>(
-      'networkAcls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkRuleSetResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    networkAcls = registerOutput<NetworkRuleSetResponse?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkRuleSetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     protocolType = registerOutput<String?>('protocolType');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

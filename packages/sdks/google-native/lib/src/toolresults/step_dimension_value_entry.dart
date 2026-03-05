@@ -9,24 +9,23 @@ class StepDimensionValueEntry {
   /// Creates a new [StepDimensionValueEntry].
   /// [key] Optional.
   /// [value] Optional.
-  StepDimensionValueEntry({this.key, this.value});
+  StepDimensionValueEntry({
+    this.key,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key, 'value': ?value};
+    return <String, dynamic>{
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
   factory StepDimensionValueEntry.fromMap(Map<String, dynamic> map) {
     return StepDimensionValueEntry(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

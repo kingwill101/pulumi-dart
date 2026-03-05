@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSyncIdentityProviderArgs {
   /// The name of the SyncIdentityProvider resource.
   final pulumi.Input<String> childResourceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the OpenShift cluster resource.
   final pulumi.Input<String> resourceName;
 
@@ -36,13 +34,10 @@ class GetSyncIdentityProviderArgs {
 
   factory GetSyncIdentityProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetSyncIdentityProviderArgs(
-      childResourceName: pulumi.Input.fromValue(
-        map['childResourceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      childResourceName: pulumi.Input.fromValue(map['childResourceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

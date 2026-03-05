@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultResourceGuardAssociationArgs {
   /// ID of the Resource Guard which should be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGuardId;
-
   /// ID of the Recovery Services Vault which should be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String> vaultId;
 
@@ -35,3 +34,4 @@ class VaultResourceGuardAssociationArgs {
     );
   }
 }
+

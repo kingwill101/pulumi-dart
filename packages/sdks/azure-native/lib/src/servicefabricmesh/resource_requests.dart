@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceRequests {
   /// Requested number of CPU cores. At present, only full cores are supported.
   final pulumi.Input<double> cpu;
-
   /// The memory request in GB for this container.
   final pulumi.Input<double> memoryInGB;
 
   /// Creates a new [ResourceRequests].
   /// [cpu] Requested number of CPU cores. At present, only full cores are supported.
   /// [memoryInGB] The memory request in GB for this container.
-  ResourceRequests({required this.cpu, required this.memoryInGB});
+  ResourceRequests({
+    required this.cpu,
+    required this.memoryInGB,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpu': cpu, 'memoryInGB': memoryInGB};
+    return <String, dynamic>{
+      'cpu': cpu,
+      'memoryInGB': memoryInGB,
+    };
   }
 
   factory ResourceRequests.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ResourceRequests {
     );
   }
 }
+

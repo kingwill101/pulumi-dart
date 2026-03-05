@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceIpFilterRuleArgs {
   /// The IP Filter Action
   final pulumi.Input<String>? action;
-
   /// IP Filter name
   final pulumi.Input<String>? filterName;
-
   /// The IP Filter Rule name.
   final pulumi.Input<String>? ipFilterRuleName;
-
   /// IP Mask
   final pulumi.Input<String>? ipMask;
-
   /// The namespace name
   final pulumi.Input<String> namespaceName;
-
   /// Name of the Resource group within the Azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -54,30 +49,13 @@ class NamespaceIpFilterRuleArgs {
 
   factory NamespaceIpFilterRuleArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceIpFilterRuleArgs(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filterName: (() {
-        final guardedValue = map['filterName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipFilterRuleName: (() {
-        final guardedValue = map['ipFilterRuleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipMask: (() {
-        final guardedValue = map['ipMask'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filterName: (() { final guardedValue = map['filterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipFilterRuleName: (() { final guardedValue = map['ipFilterRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipMask: (() { final guardedValue = map['ipMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

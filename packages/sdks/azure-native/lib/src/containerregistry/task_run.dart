@@ -212,31 +212,22 @@ import 'task_run_args.dart';
 class TaskRun extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// How the run should be forced to rerun even if the run request configuration has not changed
   late final pulumi.Output<String?> forceUpdateTag;
-
   /// Identity for the resource.
   late final pulumi.Output<IdentityPropertiesResponse?> identity;
-
   /// The location of the resource
   late final pulumi.Output<String?> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of this task run
   late final pulumi.Output<String> provisioningState;
-
   /// The request (parameters) for the run
   late final pulumi.Output<DockerBuildRequestResponse?> runRequest;
-
   /// The result of this task run
   late final pulumi.Output<RunResponse> runResult;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -249,56 +240,20 @@ class TaskRun extends pulumi.CustomResource {
     TaskRunArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerregistry:TaskRun',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:containerregistry:TaskRun',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
-    identity = registerOutput<IdentityPropertiesResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    runRequest = registerOutput<DockerBuildRequestResponse?>(
-      'runRequest',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DockerBuildRequestResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    runResult = registerOutput<RunResponse>(
-      'runResult',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RunResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    runRequest = registerOutput<DockerBuildRequestResponse?>('runRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DockerBuildRequestResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    runResult = registerOutput<RunResponse>('runResult', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -115,43 +115,30 @@ import 'profile_web_acceleration_state.dart';
 class ProfileWebAcceleration extends pulumi.CustomResource {
   /// Specifies how quickly the system ages a cache entry. The aging rate ranges from 0 (slowest aging) to 10 (fastest aging). The default value is `9`.
   late final pulumi.Output<int> cacheAgingRate;
-
   /// Specifies which cache disabling headers sent by clients the system ignores. The default value is `all`.
   late final pulumi.Output<String> cacheClientCacheControlMode;
-
   /// Inserts Age and Date headers in the response. The default value is `enabled`.
   late final pulumi.Output<String> cacheInsertAgeHeader;
-
   /// Specifies how long the system considers the cached content to be valid. The default value is `3600 seconds`.
   late final pulumi.Output<int> cacheMaxAge;
-
   /// Specifies the maximum number of entries that can be in the cache. The default value is `0` (zero), which means that the system does not limit the maximum entries.
   late final pulumi.Output<int> cacheMaxEntries;
-
   /// Specifies the smallest object that the system considers eligible for caching. The default value is `500 bytes`.
   late final pulumi.Output<int> cacheObjectMaxSize;
-
   /// Specifies the smallest object that the system considers eligible for caching. The default value is `500 bytes`.
   late final pulumi.Output<int> cacheObjectMinSize;
-
   /// Specifies the maximum size for the cache. When the cache reaches the maximum size, the system starts removing the oldest entries. The default value is `100 megabytes`.
   late final pulumi.Output<int> cacheSize;
-
   /// Configures a list of URIs to exclude from the cache. The default value of `none` specifies no URIs are excluded.
   late final pulumi.Output<List<String>> cacheUriExcludes;
-
   /// Configures a list of URIs to include in the cache even if they would normally be excluded due to factors like object size or HTTP request type. The default value of none specifies no URIs are to be forced into the cache.
   late final pulumi.Output<List<String>> cacheUriIncludeOverrides;
-
   /// Configures a list of URIs to include in the cache. The default value of `.*` specifies that all URIs are cacheable.
   late final pulumi.Output<List<String>> cacheUriIncludes;
-
   /// Configures a list of URIs to keep in the cache. The pinning process keeps URIs in cache when they would normally be evicted to make room for more active URIs.
   late final pulumi.Output<List<String>> cacheUriPinneds;
-
   /// Specifies the profile that you want to use as the parent profile. Your new profile inherits all settings and values from the parent profile specified.
   late final pulumi.Output<String> defaultsFrom;
-
   /// Specifies the name of the web acceleration profile service ,name of Profile should be full path. Full path is the combination of the `partition + web acceleration profile name`,For example `/Common/sample-resource`.
   late final pulumi.Output<String> name;
 
@@ -164,15 +151,13 @@ class ProfileWebAcceleration extends pulumi.CustomResource {
     ProfileWebAccelerationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileWebAcceleration:ProfileWebAcceleration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileWebAcceleration:ProfileWebAcceleration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cacheAgingRate = registerOutput<int>('cacheAgingRate');
-    cacheClientCacheControlMode = registerOutput<String>(
-      'cacheClientCacheControlMode',
-    );
+    cacheClientCacheControlMode = registerOutput<String>('cacheClientCacheControlMode');
     cacheInsertAgeHeader = registerOutput<String>('cacheInsertAgeHeader');
     cacheMaxAge = registerOutput<int>('cacheMaxAge');
     cacheMaxEntries = registerOutput<int>('cacheMaxEntries');
@@ -180,9 +165,7 @@ class ProfileWebAcceleration extends pulumi.CustomResource {
     cacheObjectMinSize = registerOutput<int>('cacheObjectMinSize');
     cacheSize = registerOutput<int>('cacheSize');
     cacheUriExcludes = registerOutput<List<String>>('cacheUriExcludes');
-    cacheUriIncludeOverrides = registerOutput<List<String>>(
-      'cacheUriIncludeOverrides',
-    );
+    cacheUriIncludeOverrides = registerOutput<List<String>>('cacheUriIncludeOverrides');
     cacheUriIncludes = registerOutput<List<String>>('cacheUriIncludes');
     cacheUriPinneds = registerOutput<List<String>>('cacheUriPinneds');
     defaultsFrom = registerOutput<String>('defaultsFrom');
@@ -207,15 +190,13 @@ class ProfileWebAcceleration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileWebAcceleration:ProfileWebAcceleration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileWebAcceleration:ProfileWebAcceleration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cacheAgingRate = registerOutput<int>('cacheAgingRate');
-    cacheClientCacheControlMode = registerOutput<String>(
-      'cacheClientCacheControlMode',
-    );
+    cacheClientCacheControlMode = registerOutput<String>('cacheClientCacheControlMode');
     cacheInsertAgeHeader = registerOutput<String>('cacheInsertAgeHeader');
     cacheMaxAge = registerOutput<int>('cacheMaxAge');
     cacheMaxEntries = registerOutput<int>('cacheMaxEntries');
@@ -223,9 +204,7 @@ class ProfileWebAcceleration extends pulumi.CustomResource {
     cacheObjectMinSize = registerOutput<int>('cacheObjectMinSize');
     cacheSize = registerOutput<int>('cacheSize');
     cacheUriExcludes = registerOutput<List<String>>('cacheUriExcludes');
-    cacheUriIncludeOverrides = registerOutput<List<String>>(
-      'cacheUriIncludeOverrides',
-    );
+    cacheUriIncludeOverrides = registerOutput<List<String>>('cacheUriIncludeOverrides');
     cacheUriIncludes = registerOutput<List<String>>('cacheUriIncludes');
     cacheUriPinneds = registerOutput<List<String>>('cacheUriPinneds');
     defaultsFrom = registerOutput<String>('defaultsFrom');

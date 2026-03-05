@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagOperationLinkArgs {
   /// Full resource Id of an API operation.
   final pulumi.Input<String> operationId;
-
   /// Tag-operation link identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? operationLinkId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
-
   /// Tag identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> tagId;
 
@@ -49,16 +45,11 @@ class TagOperationLinkArgs {
   factory TagOperationLinkArgs.fromMap(Map<String, dynamic> map) {
     return TagOperationLinkArgs(
       operationId: pulumi.Input.fromValue(map['operationId'] as String),
-      operationLinkId: (() {
-        final guardedValue = map['operationLinkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      operationLinkId: (() { final guardedValue = map['operationLinkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
       tagId: pulumi.Input.fromValue(map['tagId'] as String),
     );
   }
 }
+

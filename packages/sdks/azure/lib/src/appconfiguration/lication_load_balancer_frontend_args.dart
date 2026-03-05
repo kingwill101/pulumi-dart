@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LicationLoadBalancerFrontendArgs {
   /// The ID of the Application Gateway for Containers. Changing this forces a new resource to be created.
   final pulumi.Input<String> applicationLoadBalancerId;
-
   /// The name which should be used for this Application Gateway for Containers Frontend. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// A mapping of tags which should be assigned to the Application Gateway for Containers Frontend.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -36,21 +34,10 @@ class LicationLoadBalancerFrontendArgs {
 
   factory LicationLoadBalancerFrontendArgs.fromMap(Map<String, dynamic> map) {
     return LicationLoadBalancerFrontendArgs(
-      applicationLoadBalancerId: pulumi.Input.fromValue(
-        map['applicationLoadBalancerId'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      applicationLoadBalancerId: pulumi.Input.fromValue(map['applicationLoadBalancerId'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

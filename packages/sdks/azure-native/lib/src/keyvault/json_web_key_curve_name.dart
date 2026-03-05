@@ -17,3 +17,4 @@ enum JsonWebKeyCurveName {
     throw ArgumentError('Unknown JsonWebKeyCurveName value: $value');
   }
 }
+

@@ -238,19 +238,14 @@ import 'integration_account_map_state.dart';
 class IntegrationAccountMap extends pulumi.CustomResource {
   /// The content of the Logic App Integration Account Map.
   late final pulumi.Output<String> content;
-
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Map to be created.
   late final pulumi.Output<String> integrationAccountName;
-
   /// The type of the Logic App Integration Account Map. Possible values are `Liquid`, `NotSpecified`, `Xslt`, `Xslt30` and `Xslt20`.
   late final pulumi.Output<String> mapType;
-
   /// The metadata of the Logic App Integration Account Map.
   late final pulumi.Output<Map<String, String>?> metadata;
-
   /// The name which should be used for this Logic App Integration Account Map. Changing this forces a new Logic App Integration Account Map to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Logic App Integration Account Map should exist. Changing this forces a new Logic App Integration Account Map to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -263,11 +258,11 @@ class IntegrationAccountMap extends pulumi.CustomResource {
     IntegrationAccountMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/integrationAccountMap:IntegrationAccountMap',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/integrationAccountMap:IntegrationAccountMap',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     content = registerOutput<String>('content');
     integrationAccountName = registerOutput<String>('integrationAccountName');
     mapType = registerOutput<String>('mapType');
@@ -294,11 +289,11 @@ class IntegrationAccountMap extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/integrationAccountMap:IntegrationAccountMap',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/integrationAccountMap:IntegrationAccountMap',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     content = registerOutput<String>('content');
     integrationAccountName = registerOutput<String>('integrationAccountName');
     mapType = registerOutput<String>('mapType');

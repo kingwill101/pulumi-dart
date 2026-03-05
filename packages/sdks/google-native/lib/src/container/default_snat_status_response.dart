@@ -9,10 +9,14 @@ class DefaultSnatStatusResponse {
 
   /// Creates a new [DefaultSnatStatusResponse].
   /// [disabled] Disables cluster default sNAT rules.
-  DefaultSnatStatusResponse({required this.disabled});
+  DefaultSnatStatusResponse({
+    required this.disabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disabled': disabled};
+    return <String, dynamic>{
+      'disabled': disabled,
+    };
   }
 
   factory DefaultSnatStatusResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class DefaultSnatStatusResponse {
     );
   }
 }
+

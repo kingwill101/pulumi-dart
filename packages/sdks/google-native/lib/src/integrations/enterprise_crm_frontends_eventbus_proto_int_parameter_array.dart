@@ -7,21 +7,20 @@ class EnterpriseCrmFrontendsEventbusProtoIntParameterArray {
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoIntParameterArray].
   /// [intValues] Optional.
-  EnterpriseCrmFrontendsEventbusProtoIntParameterArray({this.intValues});
+  EnterpriseCrmFrontendsEventbusProtoIntParameterArray({
+    this.intValues,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'intValues': ?intValues};
+    return <String, dynamic>{
+      'intValues': ?intValues,
+    };
   }
 
-  factory EnterpriseCrmFrontendsEventbusProtoIntParameterArray.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmFrontendsEventbusProtoIntParameterArray.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoIntParameterArray(
-      intValues: (() {
-        final guardedValue = map['intValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      intValues: (() { final guardedValue = map['intValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

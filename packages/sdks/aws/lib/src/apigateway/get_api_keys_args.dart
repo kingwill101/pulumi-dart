@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApiKeysArgs {
   /// Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.
   final pulumi.Input<String>? customerId;
-
   /// Set this value to `true` if you wish the result contains the key value. Defaults to `false`.
   final pulumi.Input<bool>? includeValues;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -20,7 +18,11 @@ class GetApiKeysArgs {
   /// [customerId] Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.
   /// [includeValues] Set this value to `true` if you wish the result contains the key value. Defaults to `false`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetApiKeysArgs({this.customerId, this.includeValues, this.region});
+  GetApiKeysArgs({
+    this.customerId,
+    this.includeValues,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,21 +34,10 @@ class GetApiKeysArgs {
 
   factory GetApiKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetApiKeysArgs(
-      customerId: (() {
-        final guardedValue = map['customerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      includeValues: (() {
-        final guardedValue = map['includeValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customerId: (() { final guardedValue = map['customerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      includeValues: (() { final guardedValue = map['includeValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

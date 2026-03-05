@@ -6,8 +6,7 @@ import 'google_cloud_contentwarehouse_v1_property_response.dart';
 /// Property values.
 class GoogleCloudContentwarehouseV1PropertyArrayResponse {
   /// List of property values.
-  final pulumi.Input<List<GoogleCloudContentwarehouseV1PropertyResponse>>
-  properties;
+  final pulumi.Input<List<GoogleCloudContentwarehouseV1PropertyResponse>> properties;
 
   /// Creates a new [GoogleCloudContentwarehouseV1PropertyArrayResponse].
   /// [properties] List of property values.
@@ -17,33 +16,14 @@ class GoogleCloudContentwarehouseV1PropertyArrayResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties':
-          pulumi.Input.mapInputValue<
-            List<GoogleCloudContentwarehouseV1PropertyResponse>,
-            List<Map<String, dynamic>>
-          >(
-            properties,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudContentwarehouseV1PropertyResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'properties': pulumi.Input.mapInputValue<List<GoogleCloudContentwarehouseV1PropertyResponse>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<GoogleCloudContentwarehouseV1PropertyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GoogleCloudContentwarehouseV1PropertyArrayResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1PropertyArrayResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1PropertyArrayResponse(
-      properties: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GoogleCloudContentwarehouseV1PropertyResponse>(
-          map['properties']!,
-          (value) => GoogleCloudContentwarehouseV1PropertyResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      properties: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudContentwarehouseV1PropertyResponse>(map['properties']!, (value) => GoogleCloudContentwarehouseV1PropertyResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

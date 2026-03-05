@@ -7,13 +7,10 @@ import 'execution_status_response.dart';
 class ExecutionPropertiesResponse {
   /// Provisioning state of resource
   final pulumi.Input<String> provisioningState;
-
   /// Execution specification
   final pulumi.Input<dynamic>? specification;
-
   /// Status of Execution
   final pulumi.Input<ExecutionStatusResponse> status;
-
   /// Workflow version of execution
   final pulumi.Input<String> workflowVersionId;
 
@@ -33,33 +30,18 @@ class ExecutionPropertiesResponse {
     return <String, dynamic>{
       'provisioningState': provisioningState,
       'specification': ?specification,
-      'status':
-          pulumi.Input.mapInputValue<
-            ExecutionStatusResponse,
-            Map<String, dynamic>
-          >(status, (value) => value.toMap()),
+      'status': pulumi.Input.mapInputValue<ExecutionStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
       'workflowVersionId': workflowVersionId,
     };
   }
 
   factory ExecutionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionPropertiesResponse(
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      specification: (() {
-        final guardedValue = map['specification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      status: pulumi.Input.fromValue(
-        ExecutionStatusResponse.fromMap(
-          (map['status']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      workflowVersionId: pulumi.Input.fromValue(
-        map['workflowVersionId'] as String,
-      ),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      specification: (() { final guardedValue = map['specification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      status: pulumi.Input.fromValue(ExecutionStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>())),
+      workflowVersionId: pulumi.Input.fromValue(map['workflowVersionId'] as String),
     );
   }
 }
+

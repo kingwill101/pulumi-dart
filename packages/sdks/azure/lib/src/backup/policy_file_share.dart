@@ -424,36 +424,26 @@ import 'policy_file_share_state.dart';
 class PolicyFileShare extends pulumi.CustomResource {
   /// Configures the Policy backup frequency and times as documented in the `backup` block below.
   late final pulumi.Output<PolicyFileShareBackup> backup;
-
   /// The backup tier to use. Possible values are `vault-standard` and `snapshot`. Defaults to `snapshot`.
   ///
   /// &gt; **Note:** When `backup_tier` is set to `vault-standard`, the `snapshot_retention_in_days` value must be less than the `retention_daily` count.
   late final pulumi.Output<String?> backupTier;
-
   /// Specifies the name of the policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;
-
   /// The name of the resource group in which to create the policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Configures the policy daily retention as documented in the `retention_daily` block below.
   late final pulumi.Output<PolicyFileShareRetentionDaily> retentionDaily;
-
   /// Configures the policy monthly retention as documented in the `retention_monthly` block below.
   late final pulumi.Output<PolicyFileShareRetentionMonthly?> retentionMonthly;
-
   /// Configures the policy weekly retention as documented in the `retention_weekly` block below.
   late final pulumi.Output<PolicyFileShareRetentionWeekly?> retentionWeekly;
-
   /// Configures the policy yearly retention as documented in the `retention_yearly` block below.
   late final pulumi.Output<PolicyFileShareRetentionYearly?> retentionYearly;
-
   /// The number of days to retain the snapshots. Defaults to `0`.
   late final pulumi.Output<int?> snapshotRetentionInDays;
-
   /// Specifies the timezone. [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/). Defaults to `UTC`
   ///
   /// &gt; **Note:** The maximum number of snapshots that Azure Files can retain is 200. If your combined snapshot count exceeds 200 based on your retention policies, it will result in an error. See [this](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#what-is-the-maximum-retention-i-can-configure-for-backups) article for more information.
@@ -468,65 +458,20 @@ class PolicyFileShare extends pulumi.CustomResource {
     PolicyFileShareArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:backup/policyFileShare:PolicyFileShare',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backup = registerOutput<PolicyFileShareBackup>(
-      'backup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyFileShareBackup.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:backup/policyFileShare:PolicyFileShare',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backup = registerOutput<PolicyFileShareBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupTier = registerOutput<String?>('backupTier');
     this.name = registerOutput<String>('name');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retentionDaily = registerOutput<PolicyFileShareRetentionDaily>(
-      'retentionDaily',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyFileShareRetentionDaily.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    retentionMonthly = registerOutput<PolicyFileShareRetentionMonthly?>(
-      'retentionMonthly',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyFileShareRetentionMonthly.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    retentionWeekly = registerOutput<PolicyFileShareRetentionWeekly?>(
-      'retentionWeekly',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyFileShareRetentionWeekly.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    retentionYearly = registerOutput<PolicyFileShareRetentionYearly?>(
-      'retentionYearly',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyFileShareRetentionYearly.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionDaily = registerOutput<PolicyFileShareRetentionDaily>('retentionDaily', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareRetentionDaily.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionMonthly = registerOutput<PolicyFileShareRetentionMonthly?>('retentionMonthly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareRetentionMonthly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionWeekly = registerOutput<PolicyFileShareRetentionWeekly?>('retentionWeekly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareRetentionWeekly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionYearly = registerOutput<PolicyFileShareRetentionYearly?>('retentionYearly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareRetentionYearly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     snapshotRetentionInDays = registerOutput<int?>('snapshotRetentionInDays');
     timezone = registerOutput<String?>('timezone');
   }
@@ -549,65 +494,20 @@ class PolicyFileShare extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:backup/policyFileShare:PolicyFileShare',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backup = registerOutput<PolicyFileShareBackup>(
-      'backup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyFileShareBackup.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:backup/policyFileShare:PolicyFileShare',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backup = registerOutput<PolicyFileShareBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupTier = registerOutput<String?>('backupTier');
     this.name = registerOutput<String>('name');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retentionDaily = registerOutput<PolicyFileShareRetentionDaily>(
-      'retentionDaily',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyFileShareRetentionDaily.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    retentionMonthly = registerOutput<PolicyFileShareRetentionMonthly?>(
-      'retentionMonthly',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyFileShareRetentionMonthly.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    retentionWeekly = registerOutput<PolicyFileShareRetentionWeekly?>(
-      'retentionWeekly',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyFileShareRetentionWeekly.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    retentionYearly = registerOutput<PolicyFileShareRetentionYearly?>(
-      'retentionYearly',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyFileShareRetentionYearly.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionDaily = registerOutput<PolicyFileShareRetentionDaily>('retentionDaily', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareRetentionDaily.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionMonthly = registerOutput<PolicyFileShareRetentionMonthly?>('retentionMonthly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareRetentionMonthly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionWeekly = registerOutput<PolicyFileShareRetentionWeekly?>('retentionWeekly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareRetentionWeekly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionYearly = registerOutput<PolicyFileShareRetentionYearly?>('retentionYearly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareRetentionYearly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     snapshotRetentionInDays = registerOutput<int?>('snapshotRetentionInDays');
     timezone = registerOutput<String?>('timezone');
   }

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableBucketPolicyState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Amazon Web Services resource-based policy document in JSON format.
   final pulumi.Input<String>? resourcePolicy;
-
   /// ARN referencing the Table Bucket that owns this policy.
   final pulumi.Input<String>? tableBucketArn;
 
@@ -33,21 +31,10 @@ class TableBucketPolicyState {
 
   factory TableBucketPolicyState.fromMap(Map<String, dynamic> map) {
     return TableBucketPolicyState(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourcePolicy: (() {
-        final guardedValue = map['resourcePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tableBucketArn: (() {
-        final guardedValue = map['tableBucketArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourcePolicy: (() { final guardedValue = map['resourcePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tableBucketArn: (() { final guardedValue = map['tableBucketArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

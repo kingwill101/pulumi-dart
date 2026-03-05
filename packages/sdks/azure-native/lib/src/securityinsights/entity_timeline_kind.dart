@@ -17,3 +17,4 @@ enum EntityTimelineKind {
     throw ArgumentError('Unknown EntityTimelineKind value: $value');
   }
 }
+

@@ -8,27 +8,20 @@ import 'language_codes_set_response.dart';
 class Glossary extends pulumi.CustomResource {
   /// Optional. The display name of the glossary.
   late final pulumi.Output<String> displayName;
-
   /// When the glossary creation was finished.
   late final pulumi.Output<String> endTime;
-
   /// The number of entries defined in the glossary.
   late final pulumi.Output<int> entryCount;
-
   /// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
   late final pulumi.Output<GlossaryInputConfigResponse> inputConfig;
-
   /// Used with equivalent term set glossaries.
   late final pulumi.Output<LanguageCodesSetResponse> languageCodesSet;
-
   /// Used with unidirectional glossaries.
   late final pulumi.Output<LanguageCodePairResponse> languagePair;
   late final pulumi.Output<String> location;
-
   /// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// When CreateGlossary was called.
   late final pulumi.Output<String> submitTime;
 
@@ -41,44 +34,17 @@ class Glossary extends pulumi.CustomResource {
     GlossaryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:translate/v3:Glossary',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:translate/v3:Glossary',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     endTime = registerOutput<String>('endTime');
     entryCount = registerOutput<int>('entryCount');
-    inputConfig = registerOutput<GlossaryInputConfigResponse>(
-      'inputConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GlossaryInputConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    languageCodesSet = registerOutput<LanguageCodesSetResponse>(
-      'languageCodesSet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LanguageCodesSetResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    languagePair = registerOutput<LanguageCodePairResponse>(
-      'languagePair',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LanguageCodePairResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    inputConfig = registerOutput<GlossaryInputConfigResponse>('inputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlossaryInputConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languageCodesSet = registerOutput<LanguageCodesSetResponse>('languageCodesSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LanguageCodesSetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languagePair = registerOutput<LanguageCodePairResponse>('languagePair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LanguageCodePairResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -9,28 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnatEntriesArgs {
   /// A list of Snat Entries IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// A regex string to filter results by the resource name.
   final pulumi.Input<String>? nameRegex;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The name of snat entry.
   final pulumi.Input<String>? snatEntryName;
-
   /// The public IP of the Snat Entry.
   final pulumi.Input<String>? snatIp;
-
   /// The ID of the Snat table.
   final pulumi.Input<String> snatTableId;
-
   /// The source CIDR block of the Snat Entry.
   final pulumi.Input<String>? sourceCidr;
-
   /// The source vswitch ID.
   final pulumi.Input<String>? sourceVswitchId;
-
   /// The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
   final pulumi.Input<String>? status;
 
@@ -72,47 +64,16 @@ class GetSnatEntriesArgs {
 
   factory GetSnatEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetSnatEntriesArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      snatEntryName: (() {
-        final guardedValue = map['snatEntryName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      snatIp: (() {
-        final guardedValue = map['snatIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      snatEntryName: (() { final guardedValue = map['snatEntryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      snatIp: (() { final guardedValue = map['snatIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       snatTableId: pulumi.Input.fromValue(map['snatTableId'] as String),
-      sourceCidr: (() {
-        final guardedValue = map['sourceCidr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceVswitchId: (() {
-        final guardedValue = map['sourceVswitchId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sourceCidr: (() { final guardedValue = map['sourceCidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceVswitchId: (() { final guardedValue = map['sourceVswitchId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

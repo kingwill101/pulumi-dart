@@ -6,24 +6,18 @@ import 'conversation_args.dart';
 class Conversation extends pulumi.CustomResource {
   late final pulumi.Output<String> collectionId;
   late final pulumi.Output<String> dataStoreId;
-
   /// The time the conversation finished.
   late final pulumi.Output<String> endTime;
   late final pulumi.Output<String> location;
-
   /// Conversation messages.
   late final pulumi.Output<List<Map<String, dynamic>>> messages;
-
   /// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// The time the conversation started.
   late final pulumi.Output<String> startTime;
-
   /// The state of the Conversation.
   late final pulumi.Output<String> state;
-
   /// A unique identifier for tracking users.
   late final pulumi.Output<String> userPseudoId;
 
@@ -36,11 +30,11 @@ class Conversation extends pulumi.CustomResource {
     ConversationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:discoveryengine/v1alpha:Conversation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:discoveryengine/v1alpha:Conversation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     collectionId = registerOutput<String>('collectionId');
     dataStoreId = registerOutput<String>('dataStoreId');
     endTime = registerOutput<String>('endTime');

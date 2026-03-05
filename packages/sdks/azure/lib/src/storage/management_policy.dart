@@ -545,7 +545,6 @@ import 'management_policy_state.dart';
 class ManagementPolicy extends pulumi.CustomResource {
   /// A `rule` block as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
-
   /// Specifies the id of the storage account to apply the management policy to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
 
@@ -558,11 +557,11 @@ class ManagementPolicy extends pulumi.CustomResource {
     ManagementPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/managementPolicy:ManagementPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/managementPolicy:ManagementPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
     storageAccountId = registerOutput<String>('storageAccountId');
   }
@@ -585,11 +584,11 @@ class ManagementPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/managementPolicy:ManagementPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/managementPolicy:ManagementPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
     storageAccountId = registerOutput<String>('storageAccountId');
   }

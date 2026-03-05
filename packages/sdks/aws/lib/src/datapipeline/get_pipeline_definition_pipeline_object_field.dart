@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPipelineDefinitionPipelineObjectField {
   /// Field identifier.
   final pulumi.Input<String> key;
-
   /// Field value, expressed as the identifier of another object
   final pulumi.Input<String> refValue;
-
   /// Field value, expressed as a String.
   final pulumi.Input<String> stringValue;
 
@@ -30,9 +28,7 @@ class GetPipelineDefinitionPipelineObjectField {
     };
   }
 
-  factory GetPipelineDefinitionPipelineObjectField.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPipelineDefinitionPipelineObjectField.fromMap(Map<String, dynamic> map) {
     return GetPipelineDefinitionPipelineObjectField(
       key: pulumi.Input.fromValue(map['key'] as String),
       refValue: pulumi.Input.fromValue(map['refValue'] as String),
@@ -40,3 +36,4 @@ class GetPipelineDefinitionPipelineObjectField {
     );
   }
 }
+

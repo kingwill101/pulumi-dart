@@ -14,31 +14,26 @@ class GetZonesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
   /// [zones] Required.
-  GetZonesResult({required this.id, this.outputFile, required this.zones});
+  GetZonesResult({
+    required this.id,
+    this.outputFile,
+    required this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
       'outputFile': ?outputFile,
-      'zones': pulumi.Input.encodeList<GetZonesZone, Map<String, dynamic>>(
-        zones,
-        (value) => value.toMap(),
-      ),
+      'zones': pulumi.Input.encodeList<GetZonesZone, Map<String, dynamic>>(zones, (value) => value.toMap()),
     };
   }
 
   factory GetZonesResult.fromMap(Map<String, dynamic> map) {
     return GetZonesResult(
       id: map['id'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      zones: pulumi.Input.decodeList<GetZonesZone>(
-        map['zones']!,
-        (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zones: pulumi.Input.decodeList<GetZonesZone>(map['zones']!, (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

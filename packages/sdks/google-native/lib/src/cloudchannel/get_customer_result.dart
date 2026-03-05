@@ -8,40 +8,28 @@ import 'google_type_postal_address_response.dart';
 class GetCustomerResult {
   /// Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
   final String alternateEmail;
-
   /// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
   final String channelPartnerId;
-
   /// The customer's Cloud Identity ID if the customer has a Cloud Identity resource.
   final String cloudIdentityId;
-
   /// Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
   final GoogleCloudChannelV1CloudIdentityInfoResponse cloudIdentityInfo;
-
   /// Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
   final String correlationId;
-
   /// Time when the customer was created.
   final String createTime;
-
   /// The customer's primary domain. Must match the primary contact email's domain.
   final String domain;
-
   /// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
   final String languageCode;
-
   /// Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id}
   final String name;
-
   /// Name of the organization that the customer entity represents.
   final String orgDisplayName;
-
   /// The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
   final GoogleTypePostalAddressResponse orgPostalAddress;
-
   /// Primary contact info.
   final GoogleCloudChannelV1ContactInfoResponse primaryContactInfo;
-
   /// Time when the customer was updated.
   final String updateTime;
 
@@ -98,22 +86,17 @@ class GetCustomerResult {
       alternateEmail: map['alternateEmail'] as String,
       channelPartnerId: map['channelPartnerId'] as String,
       cloudIdentityId: map['cloudIdentityId'] as String,
-      cloudIdentityInfo: GoogleCloudChannelV1CloudIdentityInfoResponse.fromMap(
-        (map['cloudIdentityInfo']! as Map).cast<String, dynamic>(),
-      ),
+      cloudIdentityInfo: GoogleCloudChannelV1CloudIdentityInfoResponse.fromMap((map['cloudIdentityInfo']! as Map).cast<String, dynamic>()),
       correlationId: map['correlationId'] as String,
       createTime: map['createTime'] as String,
       domain: map['domain'] as String,
       languageCode: map['languageCode'] as String,
       name: map['name'] as String,
       orgDisplayName: map['orgDisplayName'] as String,
-      orgPostalAddress: GoogleTypePostalAddressResponse.fromMap(
-        (map['orgPostalAddress']! as Map).cast<String, dynamic>(),
-      ),
-      primaryContactInfo: GoogleCloudChannelV1ContactInfoResponse.fromMap(
-        (map['primaryContactInfo']! as Map).cast<String, dynamic>(),
-      ),
+      orgPostalAddress: GoogleTypePostalAddressResponse.fromMap((map['orgPostalAddress']! as Map).cast<String, dynamic>()),
+      primaryContactInfo: GoogleCloudChannelV1ContactInfoResponse.fromMap((map['primaryContactInfo']! as Map).cast<String, dynamic>()),
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

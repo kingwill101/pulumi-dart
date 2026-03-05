@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityIpArgs {
   /// The cluster ID.
   final pulumi.Input<String> dbInstanceId;
-
   /// The whitelist name.
   final pulumi.Input<String> groupName;
-
   /// The IP address list under the whitelist group.
   final pulumi.Input<String> securityIpList;
 
@@ -42,3 +40,4 @@ class SecurityIpArgs {
     );
   }
 }
+

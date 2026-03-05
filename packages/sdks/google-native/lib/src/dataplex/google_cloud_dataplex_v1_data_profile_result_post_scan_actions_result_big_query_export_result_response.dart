@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse {
   /// Additional information about the BigQuery exporting.
   final pulumi.Input<String> message;
-
   /// Execution state for the BigQuery exporting.
   final pulumi.Input<String> state;
 
@@ -19,15 +18,17 @@ class GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportR
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'message': message, 'state': state};
+    return <String, dynamic>{
+      'message': message,
+      'state': state,
+    };
   }
 
-  factory GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse(
       message: pulumi.Input.fromValue(map['message'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

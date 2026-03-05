@@ -7,31 +7,22 @@ import 'get_service_cors_configuration.dart';
 /// Result data returned by getService.
 class GetServiceResult {
   final List<String> accessPolicyObjectIds;
-
   /// An `authentication_configuration` block as defined below.
-  final List<GetServiceAuthenticationConfiguration>
-  authenticationConfigurations;
-
+  final List<GetServiceAuthenticationConfiguration> authenticationConfigurations;
   /// A `cors_configuration` block as defined below.
   final List<GetServiceCorsConfiguration> corsConfigurations;
-
   /// The versionless Key Vault Key ID for CMK encryption of the backing database.
   final String cosmosdbKeyVaultKeyVersionlessId;
-
   /// The provisioned throughput for the backing database.
   final int cosmosdbThroughput;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The type of the service.
   final String kind;
-
   /// The Azure Region where the Service is located.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   final Map<String, String> tags;
 
@@ -64,16 +55,8 @@ class GetServiceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessPolicyObjectIds': accessPolicyObjectIds,
-      'authenticationConfigurations':
-          pulumi.Input.encodeList<
-            GetServiceAuthenticationConfiguration,
-            Map<String, dynamic>
-          >(authenticationConfigurations, (value) => value.toMap()),
-      'corsConfigurations':
-          pulumi.Input.encodeList<
-            GetServiceCorsConfiguration,
-            Map<String, dynamic>
-          >(corsConfigurations, (value) => value.toMap()),
+      'authenticationConfigurations': pulumi.Input.encodeList<GetServiceAuthenticationConfiguration, Map<String, dynamic>>(authenticationConfigurations, (value) => value.toMap()),
+      'corsConfigurations': pulumi.Input.encodeList<GetServiceCorsConfiguration, Map<String, dynamic>>(corsConfigurations, (value) => value.toMap()),
       'cosmosdbKeyVaultKeyVersionlessId': cosmosdbKeyVaultKeyVersionlessId,
       'cosmosdbThroughput': cosmosdbThroughput,
       'id': id,
@@ -87,23 +70,10 @@ class GetServiceResult {
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
-      accessPolicyObjectIds: (map['accessPolicyObjectIds'] as List)
-          .cast<String>(),
-      authenticationConfigurations:
-          pulumi.Input.decodeList<GetServiceAuthenticationConfiguration>(
-            map['authenticationConfigurations']!,
-            (value) => GetServiceAuthenticationConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      corsConfigurations: pulumi.Input.decodeList<GetServiceCorsConfiguration>(
-        map['corsConfigurations']!,
-        (value) => GetServiceCorsConfiguration.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      cosmosdbKeyVaultKeyVersionlessId:
-          map['cosmosdbKeyVaultKeyVersionlessId'] as String,
+      accessPolicyObjectIds: (map['accessPolicyObjectIds'] as List).cast<String>(),
+      authenticationConfigurations: pulumi.Input.decodeList<GetServiceAuthenticationConfiguration>(map['authenticationConfigurations']!, (value) => GetServiceAuthenticationConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      corsConfigurations: pulumi.Input.decodeList<GetServiceCorsConfiguration>(map['corsConfigurations']!, (value) => GetServiceCorsConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      cosmosdbKeyVaultKeyVersionlessId: map['cosmosdbKeyVaultKeyVersionlessId'] as String,
       cosmosdbThroughput: map['cosmosdbThroughput'] as int,
       id: map['id'] as String,
       kind: map['kind'] as String,
@@ -114,3 +84,4 @@ class GetServiceResult {
     );
   }
 }
+

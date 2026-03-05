@@ -6,9 +6,7 @@ import 'akri_connector_template_runtime_image_configuration.dart';
 /// AkriConnectorTemplateManagedConfiguration properties.
 class AkriConnectorTemplateManagedConfiguration {
   /// The managed configuration settings.
-  final pulumi.Input<AkriConnectorTemplateRuntimeImageConfiguration>
-  managedConfigurationSettings;
-
+  final pulumi.Input<AkriConnectorTemplateRuntimeImageConfiguration> managedConfigurationSettings;
   /// Runtime configuration types.
   /// Expected value is 'ManagedConfiguration'.
   final pulumi.Input<String> runtimeConfigurationType;
@@ -23,27 +21,16 @@ class AkriConnectorTemplateManagedConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'managedConfigurationSettings':
-          pulumi.Input.mapInputValue<
-            AkriConnectorTemplateRuntimeImageConfiguration,
-            Map<String, dynamic>
-          >(managedConfigurationSettings, (value) => value.toMap()),
+      'managedConfigurationSettings': pulumi.Input.mapInputValue<AkriConnectorTemplateRuntimeImageConfiguration, Map<String, dynamic>>(managedConfigurationSettings, (value) => value.toMap()),
       'runtimeConfigurationType': runtimeConfigurationType,
     };
   }
 
-  factory AkriConnectorTemplateManagedConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AkriConnectorTemplateManagedConfiguration.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateManagedConfiguration(
-      managedConfigurationSettings: pulumi.Input.fromValue(
-        AkriConnectorTemplateRuntimeImageConfiguration.fromMap(
-          (map['managedConfigurationSettings']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      runtimeConfigurationType: pulumi.Input.fromValue(
-        map['runtimeConfigurationType'] as String,
-      ),
+      managedConfigurationSettings: pulumi.Input.fromValue(AkriConnectorTemplateRuntimeImageConfiguration.fromMap((map['managedConfigurationSettings']! as Map).cast<String, dynamic>())),
+      runtimeConfigurationType: pulumi.Input.fromValue(map['runtimeConfigurationType'] as String),
     );
   }
 }
+

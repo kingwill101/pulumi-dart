@@ -7,17 +7,13 @@ enum EnterpriseCrmEventbusStatsDimensionsRetryAttempt {
   const EnterpriseCrmEventbusStatsDimensionsRetryAttempt(this.wireValue);
   final String wireValue;
 
-  static EnterpriseCrmEventbusStatsDimensionsRetryAttempt fromValue(
-    String value,
-  ) {
-    for (final item
-        in EnterpriseCrmEventbusStatsDimensionsRetryAttempt.values) {
+  static EnterpriseCrmEventbusStatsDimensionsRetryAttempt fromValue(String value) {
+    for (final item in EnterpriseCrmEventbusStatsDimensionsRetryAttempt.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EnterpriseCrmEventbusStatsDimensionsRetryAttempt value: $value',
-    );
+    throw ArgumentError('Unknown EnterpriseCrmEventbusStatsDimensionsRetryAttempt value: $value');
   }
 }
+

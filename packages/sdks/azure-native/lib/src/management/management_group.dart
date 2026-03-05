@@ -162,25 +162,18 @@ import 'system_data_response.dart';
 class ManagementGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The list of children.
   late final pulumi.Output<List<Map<String, dynamic>>?> children;
-
   /// The details of a management group.
   late final pulumi.Output<ManagementGroupDetailsResponse?> details;
-
   /// The friendly name of the management group.
   late final pulumi.Output<String?> displayName;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
   late final pulumi.Output<String?> tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -193,35 +186,17 @@ class ManagementGroup extends pulumi.CustomResource {
     ManagementGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:management:ManagementGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:management:ManagementGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     children = registerOutput<List<Map<String, dynamic>>?>('children');
-    details = registerOutput<ManagementGroupDetailsResponse?>(
-      'details',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagementGroupDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    details = registerOutput<ManagementGroupDetailsResponse?>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementGroupDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');
   }

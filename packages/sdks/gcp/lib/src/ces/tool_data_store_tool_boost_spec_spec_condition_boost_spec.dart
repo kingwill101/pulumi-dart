@@ -13,16 +13,11 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpec {
   /// Setting to 0.0 means no boost applied. The boosting condition is
   /// ignored.
   final pulumi.Input<double>? boost;
-
   /// Specification for custom ranking based on customer specified attribute
   /// value. It provides more controls for customized ranking than the simple
   /// (condition, boost) combination above.
   /// Structure is documented below.
-  final pulumi.Input<
-    ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec
-  >?
-  boostControlSpec;
-
+  final pulumi.Input<ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec>? boostControlSpec;
   /// An expression which specifies a boost condition. The syntax is the same
   /// as filter expression syntax. Currently, the only supported condition is
   /// a list of BCP-47 lang codes.
@@ -43,34 +38,17 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'boost': ?boost,
-      'boostControlSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec,
-            Map<String, dynamic>
-          >(boostControlSpec, (value) => value.toMap()),
+      'boostControlSpec': ?pulumi.Input.mapOptionalInputValue<ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec, Map<String, dynamic>>(boostControlSpec, (value) => value.toMap()),
       'condition': condition,
     };
   }
 
-  factory ToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolBoostSpecSpecConditionBoostSpec(
-      boost: (() {
-        final guardedValue = map['boost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      boostControlSpec: (() {
-        final guardedValue = map['boostControlSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      boost: (() { final guardedValue = map['boost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      boostControlSpec: (() { final guardedValue = map['boostControlSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       condition: pulumi.Input.fromValue(map['condition'] as String),
     );
   }
 }
+

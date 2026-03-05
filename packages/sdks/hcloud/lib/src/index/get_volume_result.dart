@@ -1,29 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVolume.
 class GetVolumeResult {
   /// (bool) Whether delete protection is enabled.
   final bool deleteProtection;
-
   /// (int) Unique ID of the volume.
   final int id;
-
   /// (map) User-defined labels (key-value pairs).
   final Map<String, String> labels;
-
   /// (string) Device path on the file system for the Volume.
   final String linuxDevice;
-
   /// (string) The location name. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   final String? location;
-
   /// (string) Name of the volume.
   final String name;
   final String? selector;
-
   /// (Optional, int) Server ID the volume is attached to
   final int? serverId;
-
   /// (int) Size of the volume.
   final int size;
   final String? withSelector;
@@ -77,33 +71,14 @@ class GetVolumeResult {
       id: map['id'] as int,
       labels: (map['labels'] as Map).cast<String, String>(),
       linuxDevice: map['linuxDevice'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      selector: (() {
-        final guardedValue = map['selector'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      serverId: (() {
-        final guardedValue = map['serverId'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return guardedValue as int; })(),
       size: map['size'] as int,
-      withSelector: (() {
-        final guardedValue = map['withSelector'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      withStatuses: (() {
-        final guardedValue = map['withStatuses'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      withStatuses: (() { final guardedValue = map['withStatuses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }
+

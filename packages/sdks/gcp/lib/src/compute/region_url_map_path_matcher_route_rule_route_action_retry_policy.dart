@@ -6,16 +6,11 @@ import 'region_url_map_path_matcher_route_rule_route_action_retry_policy_per_try
 class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
   /// Specifies the allowed number retries. This number must be &gt; 0. If not specified, defaults to 1.
   final pulumi.Input<int> numRetries;
-
   /// Specifies a non-zero timeout per retry attempt.
   /// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
   /// will use the largest timeout among all backend services associated with the route.
   /// Structure is documented below.
-  final pulumi.Input<
-    RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout
-  >?
-  perTryTimeout;
-
+  final pulumi.Input<RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout>? perTryTimeout;
   /// Specifies one or more conditions when this retry policy applies.
   /// Valid values are listed below. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true: cancelled, deadline-exceeded, internal, resource-exhausted, unavailable.
   /// - 5xx : retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams.
@@ -43,34 +38,17 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'numRetries': numRetries,
-      'perTryTimeout':
-          ?pulumi.Input.mapOptionalInputValue<
-            RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout,
-            Map<String, dynamic>
-          >(perTryTimeout, (value) => value.toMap()),
+      'perTryTimeout': ?pulumi.Input.mapOptionalInputValue<RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout, Map<String, dynamic>>(perTryTimeout, (value) => value.toMap()),
       'retryConditions': ?retryConditions,
     };
   }
 
-  factory RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy(
       numRetries: pulumi.Input.fromValue(map['numRetries'] as int),
-      perTryTimeout: (() {
-        final guardedValue = map['perTryTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      retryConditions: (() {
-        final guardedValue = map['retryConditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      perTryTimeout: (() { final guardedValue = map['perTryTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      retryConditions: (() { final guardedValue = map['retryConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

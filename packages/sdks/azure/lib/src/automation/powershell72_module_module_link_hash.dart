@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Powershell72ModuleModuleLinkHash {
   /// Specifies the algorithm used for the hash content.
   final pulumi.Input<String> algorithm;
-
   /// The hash value of the content.
   final pulumi.Input<String> value;
 
@@ -18,7 +17,10 @@ class Powershell72ModuleModuleLinkHash {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'algorithm': algorithm, 'value': value};
+    return <String, dynamic>{
+      'algorithm': algorithm,
+      'value': value,
+    };
   }
 
   factory Powershell72ModuleModuleLinkHash.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class Powershell72ModuleModuleLinkHash {
     );
   }
 }
+

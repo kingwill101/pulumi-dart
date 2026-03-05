@@ -272,10 +272,8 @@ import 'network_grant_state.dart';
 class NetworkGrant extends pulumi.CustomResource {
   /// The ID of the CCN instance.
   late final pulumi.Output<String> ccnId;
-
   /// The ID of the CEN instance.
   late final pulumi.Output<String> cenId;
-
   /// The ID of the account to which the CEN instance belongs.
   late final pulumi.Output<String> cenUid;
 
@@ -288,11 +286,11 @@ class NetworkGrant extends pulumi.CustomResource {
     NetworkGrantArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudconnect/networkGrant:NetworkGrant',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudconnect/networkGrant:NetworkGrant',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ccnId = registerOutput<String>('ccnId');
     cenId = registerOutput<String>('cenId');
     cenUid = registerOutput<String>('cenUid');
@@ -316,11 +314,11 @@ class NetworkGrant extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudconnect/networkGrant:NetworkGrant',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudconnect/networkGrant:NetworkGrant',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ccnId = registerOutput<String>('ccnId');
     cenId = registerOutput<String>('cenId');
     cenUid = registerOutput<String>('cenUid');

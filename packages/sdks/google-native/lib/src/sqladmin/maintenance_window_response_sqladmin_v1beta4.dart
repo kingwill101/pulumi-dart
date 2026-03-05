@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaintenanceWindowResponseSqladminV1beta4 {
   /// day of week (1-7), starting on Monday.
   final pulumi.Input<int> day;
-
   /// hour of day - 0 to 23.
   final pulumi.Input<int> hour;
-
   /// This is always `sql#maintenanceWindow`.
   final pulumi.Input<String> kind;
-
   /// Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
   final pulumi.Input<String> updateTrack;
 
@@ -37,9 +34,7 @@ class MaintenanceWindowResponseSqladminV1beta4 {
     };
   }
 
-  factory MaintenanceWindowResponseSqladminV1beta4.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MaintenanceWindowResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowResponseSqladminV1beta4(
       day: pulumi.Input.fromValue(map['day'] as int),
       hour: pulumi.Input.fromValue(map['hour'] as int),
@@ -48,3 +43,4 @@ class MaintenanceWindowResponseSqladminV1beta4 {
     );
   }
 }
+

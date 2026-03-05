@@ -16,3 +16,4 @@ enum MongoDbShardKeyOrder {
     throw ArgumentError('Unknown MongoDbShardKeyOrder value: $value');
   }
 }
+

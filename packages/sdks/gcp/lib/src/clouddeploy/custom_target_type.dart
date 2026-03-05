@@ -771,49 +771,36 @@ class CustomTargetType extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// Time at which the `CustomTargetType` was created.
   late final pulumi.Output<String> createTime;
-
   /// Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
   /// Structure is documented below.
   late final pulumi.Output<CustomTargetTypeCustomActions?> customActions;
-
   /// Resource id of the `CustomTargetType`.
   late final pulumi.Output<String> customTargetTypeId;
-
   /// Description of the `CustomTargetType`. Max length is 255 characters.
   late final pulumi.Output<String?> description;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The weak etag of the `CustomTargetType` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
-
   /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location of the source.
   late final pulumi.Output<String> location;
-
   /// Name of the `CustomTargetType`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Unique identifier of the `CustomTargetType`.
   late final pulumi.Output<String> uid;
-
   /// Time at which the `CustomTargetType` was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -826,28 +813,17 @@ class CustomTargetType extends pulumi.CustomResource {
     CustomTargetTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:clouddeploy/customTargetType:CustomTargetType',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:clouddeploy/customTargetType:CustomTargetType',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
-    customActions = registerOutput<CustomTargetTypeCustomActions?>(
-      'customActions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomTargetTypeCustomActions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customActions = registerOutput<CustomTargetTypeCustomActions?>('customActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomTargetTypeCustomActions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customTargetTypeId = registerOutput<String>('customTargetTypeId');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -877,28 +853,17 @@ class CustomTargetType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:clouddeploy/customTargetType:CustomTargetType',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:clouddeploy/customTargetType:CustomTargetType',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
-    customActions = registerOutput<CustomTargetTypeCustomActions?>(
-      'customActions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomTargetTypeCustomActions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customActions = registerOutput<CustomTargetTypeCustomActions?>('customActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomTargetTypeCustomActions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customTargetTypeId = registerOutput<String>('customTargetTypeId');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>?>('labels');

@@ -3,22 +3,16 @@ enum RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1 {
   and("AND"),
   noAggregation("NO_AGGREGATION");
 
-  const RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1(
-    this.wireValue,
-  );
+  const RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1(this.wireValue);
   final String wireValue;
 
-  static RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1
-  fromValue(String value) {
-    for (final item
-        in RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1
-            .values) {
+  static RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1 fromValue(String value) {
+    for (final item in RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1 value: $value');
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSitesByServiceGroupArgs {
   /// The name of the service group
   final pulumi.Input<String> servicegroupName;
-
   /// The name of the Site
   final pulumi.Input<String> siteName;
 
@@ -30,10 +29,9 @@ class GetSitesByServiceGroupArgs {
 
   factory GetSitesByServiceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSitesByServiceGroupArgs(
-      servicegroupName: pulumi.Input.fromValue(
-        map['servicegroupName'] as String,
-      ),
+      servicegroupName: pulumi.Input.fromValue(map['servicegroupName'] as String),
       siteName: pulumi.Input.fromValue(map['siteName'] as String),
     );
   }
 }
+

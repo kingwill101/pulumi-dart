@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListAppServicePlanHybridConnectionKeysArgs {
   /// Name of the App Service plan.
   final pulumi.Input<String> name;
-
   /// The name of the Service Bus namespace.
   final pulumi.Input<String> namespaceName;
-
   /// The name of the Service Bus relay.
   final pulumi.Input<String> relayName;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -40,16 +37,13 @@ class ListAppServicePlanHybridConnectionKeysArgs {
     };
   }
 
-  factory ListAppServicePlanHybridConnectionKeysArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListAppServicePlanHybridConnectionKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListAppServicePlanHybridConnectionKeysArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
       relayName: pulumi.Input.fromValue(map['relayName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

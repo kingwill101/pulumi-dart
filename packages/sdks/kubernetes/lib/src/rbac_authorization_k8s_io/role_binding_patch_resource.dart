@@ -13,16 +13,12 @@ import 'role_ref_patch_rbac_authorization_k8s_io_v1alpha1.dart';
 class RoleBindingPatchResource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
-
   /// Standard object's metadata.
   late final pulumi.Output<ObjectMetaPatch?> metadata;
-
   /// RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
   late final pulumi.Output<RoleRefPatchRbacAuthorizationK8sIoV1alpha1?> roleRef;
-
   /// Subjects holds references to the objects the role applies to.
   late final pulumi.Output<List<Map<String, dynamic>>?> subjects;
 
@@ -35,33 +31,15 @@ class RoleBindingPatchResource extends pulumi.CustomResource {
     RoleBindingPatchRbacAuthorizationK8sIoV1alpha1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'kubernetes:rbac.authorization.k8s.io/v1alpha1:RoleBindingPatch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'kubernetes:rbac.authorization.k8s.io/v1alpha1:RoleBindingPatch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMetaPatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    roleRef = registerOutput<RoleRefPatchRbacAuthorizationK8sIoV1alpha1?>(
-      'roleRef',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RoleRefPatchRbacAuthorizationK8sIoV1alpha1.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    roleRef = registerOutput<RoleRefPatchRbacAuthorizationK8sIoV1alpha1?>('roleRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleRefPatchRbacAuthorizationK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subjects = registerOutput<List<Map<String, dynamic>>?>('subjects');
   }
 }

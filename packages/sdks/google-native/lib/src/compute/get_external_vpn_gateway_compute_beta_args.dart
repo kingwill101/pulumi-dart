@@ -25,18 +25,11 @@ class GetExternalVpnGatewayComputeBetaArgs {
     };
   }
 
-  factory GetExternalVpnGatewayComputeBetaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetExternalVpnGatewayComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetExternalVpnGatewayComputeBetaArgs(
-      externalVpnGateway: pulumi.Input.fromValue(
-        map['externalVpnGateway'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      externalVpnGateway: pulumi.Input.fromValue(map['externalVpnGateway'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -4,21 +4,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultVpc extends pulumi.ComponentResource {
   late final pulumi.Output<List<String>?> privateSubnetIds;
   late final pulumi.Output<List<String>?> publicSubnetIds;
-
   /// The VPC ID for the default VPC
   late final pulumi.Output<String?> vpcId;
 
   /// Creates a new [DefaultVpc].
   /// [name] The Pulumi resource name.
   /// [options] Resource options controlling this resource's behavior.
-  DefaultVpc(String name, {pulumi.ComponentResourceOptions? options})
-    : super(
-        'awsx:ec2:DefaultVpc',
-        name,
-        null,
-        options ?? pulumi.ComponentResourceOptions(),
-        remote: true,
-      ) {
+  DefaultVpc(
+    String name, {
+    pulumi.ComponentResourceOptions? options,
+  }) : super(
+          'awsx:ec2:DefaultVpc',
+          name,
+          null,
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        ) {
     privateSubnetIds = registerOutput<List<String>?>('privateSubnetIds');
     publicSubnetIds = registerOutput<List<String>?>('publicSubnetIds');
     vpcId = registerOutput<String?>('vpcId');

@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDdosCooPortsPort {
   /// The source station port.
   final pulumi.Input<String> backendPort;
-
   /// The forwarding port.
   final pulumi.Input<String> frontendPort;
-
   /// The forwarding protocol. Valid values `tcp` and `udp`.
   final pulumi.Input<String> frontendProtocol;
-
   /// The ID of the Port.
   final pulumi.Input<String> id;
-
   /// The DdosCoo instance ID.
   final pulumi.Input<String> instanceId;
-
   /// List of source IP addresses.
   final pulumi.Input<List<String>> realServers;
 
@@ -52,14 +47,11 @@ class GetDdosCooPortsPort {
     return GetDdosCooPortsPort(
       backendPort: pulumi.Input.fromValue(map['backendPort'] as String),
       frontendPort: pulumi.Input.fromValue(map['frontendPort'] as String),
-      frontendProtocol: pulumi.Input.fromValue(
-        map['frontendProtocol'] as String,
-      ),
+      frontendProtocol: pulumi.Input.fromValue(map['frontendProtocol'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      realServers: pulumi.Input.fromValue(
-        (map['realServers'] as List).cast<String>(),
-      ),
+      realServers: pulumi.Input.fromValue((map['realServers'] as List).cast<String>()),
     );
   }
 }
+

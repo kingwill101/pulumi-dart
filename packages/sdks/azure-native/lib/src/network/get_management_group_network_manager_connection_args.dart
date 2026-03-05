@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagementGroupNetworkManagerConnectionArgs {
   /// The management group Id which uniquely identify the Microsoft Azure management group.
   final pulumi.Input<String> managementGroupId;
-
   /// Name for the network manager connection.
   final pulumi.Input<String> networkManagerConnectionName;
 
@@ -28,16 +27,11 @@ class GetManagementGroupNetworkManagerConnectionArgs {
     };
   }
 
-  factory GetManagementGroupNetworkManagerConnectionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagementGroupNetworkManagerConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementGroupNetworkManagerConnectionArgs(
-      managementGroupId: pulumi.Input.fromValue(
-        map['managementGroupId'] as String,
-      ),
-      networkManagerConnectionName: pulumi.Input.fromValue(
-        map['networkManagerConnectionName'] as String,
-      ),
+      managementGroupId: pulumi.Input.fromValue(map['managementGroupId'] as String),
+      networkManagerConnectionName: pulumi.Input.fromValue(map['networkManagerConnectionName'] as String),
     );
   }
 }
+

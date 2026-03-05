@@ -548,43 +548,30 @@ class TrafficMirrorSession extends pulumi.CustomResource {
   /// - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
   /// - **false** (default): Sends a normal request and directly creates a mirror session after checking.
   late final pulumi.Output<bool?> dryRun;
-
   /// Specifies whether to enable traffic mirror sessions. default to `false`.
   late final pulumi.Output<bool?> enabled;
-
   /// Maximum Transmission Unit (MTU).
   late final pulumi.Output<int> packetLength;
-
   /// The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
   late final pulumi.Output<int> priority;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// The tags of this resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the filter.
   late final pulumi.Output<String> trafficMirrorFilterId;
-
   /// The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> trafficMirrorSessionDescription;
-
   /// The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
   late final pulumi.Output<String?> trafficMirrorSessionName;
-
   /// The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
   late final pulumi.Output<List<String>> trafficMirrorSourceIds;
-
   /// The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
   late final pulumi.Output<String> trafficMirrorTargetId;
-
   /// The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
   late final pulumi.Output<String> trafficMirrorTargetType;
-
   /// The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: `0` to `16777215`. You can specify VNIs for the traffic mirror destination to identify mirrored traffic from different sessions. If you do not specify a VNI, the system randomly allocates a VNI. If you want the system to randomly allocate a VNI, ignore this parameter.
   late final pulumi.Output<int> virtualNetworkId;
 
@@ -597,11 +584,11 @@ class TrafficMirrorSession extends pulumi.CustomResource {
     TrafficMirrorSessionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/trafficMirrorSession:TrafficMirrorSession',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/trafficMirrorSession:TrafficMirrorSession',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     enabled = registerOutput<bool?>('enabled');
     packetLength = registerOutput<int>('packetLength');
@@ -610,15 +597,9 @@ class TrafficMirrorSession extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     trafficMirrorFilterId = registerOutput<String>('trafficMirrorFilterId');
-    trafficMirrorSessionDescription = registerOutput<String?>(
-      'trafficMirrorSessionDescription',
-    );
-    trafficMirrorSessionName = registerOutput<String?>(
-      'trafficMirrorSessionName',
-    );
-    trafficMirrorSourceIds = registerOutput<List<String>>(
-      'trafficMirrorSourceIds',
-    );
+    trafficMirrorSessionDescription = registerOutput<String?>('trafficMirrorSessionDescription');
+    trafficMirrorSessionName = registerOutput<String?>('trafficMirrorSessionName');
+    trafficMirrorSourceIds = registerOutput<List<String>>('trafficMirrorSourceIds');
     trafficMirrorTargetId = registerOutput<String>('trafficMirrorTargetId');
     trafficMirrorTargetType = registerOutput<String>('trafficMirrorTargetType');
     virtualNetworkId = registerOutput<int>('virtualNetworkId');
@@ -642,11 +623,11 @@ class TrafficMirrorSession extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/trafficMirrorSession:TrafficMirrorSession',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/trafficMirrorSession:TrafficMirrorSession',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     enabled = registerOutput<bool?>('enabled');
     packetLength = registerOutput<int>('packetLength');
@@ -655,15 +636,9 @@ class TrafficMirrorSession extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     trafficMirrorFilterId = registerOutput<String>('trafficMirrorFilterId');
-    trafficMirrorSessionDescription = registerOutput<String?>(
-      'trafficMirrorSessionDescription',
-    );
-    trafficMirrorSessionName = registerOutput<String?>(
-      'trafficMirrorSessionName',
-    );
-    trafficMirrorSourceIds = registerOutput<List<String>>(
-      'trafficMirrorSourceIds',
-    );
+    trafficMirrorSessionDescription = registerOutput<String?>('trafficMirrorSessionDescription');
+    trafficMirrorSessionName = registerOutput<String?>('trafficMirrorSessionName');
+    trafficMirrorSourceIds = registerOutput<List<String>>('trafficMirrorSourceIds');
     trafficMirrorTargetId = registerOutput<String>('trafficMirrorTargetId');
     trafficMirrorTargetType = registerOutput<String>('trafficMirrorTargetType');
     virtualNetworkId = registerOutput<int>('virtualNetworkId');

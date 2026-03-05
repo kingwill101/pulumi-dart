@@ -8,17 +8,20 @@ class CloudControlRuleCelExpressionResourceTypesValues {
 
   /// Creates a new [CloudControlRuleCelExpressionResourceTypesValues].
   /// [values] The strings in the list.
-  CloudControlRuleCelExpressionResourceTypesValues({required this.values});
+  CloudControlRuleCelExpressionResourceTypesValues({
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': values};
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
-  factory CloudControlRuleCelExpressionResourceTypesValues.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudControlRuleCelExpressionResourceTypesValues.fromMap(Map<String, dynamic> map) {
     return CloudControlRuleCelExpressionResourceTypesValues(
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

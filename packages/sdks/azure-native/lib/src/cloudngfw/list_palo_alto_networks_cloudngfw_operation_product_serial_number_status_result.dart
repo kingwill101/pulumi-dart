@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listPaloAltoNetworksCloudngfwOperationProductSerialNumberStatus.
 class ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult {
   /// product Serial associated with given resource
   final String? serialNumber;
-
   /// allocation status of the product serial number
   final String status;
 
@@ -17,19 +17,17 @@ class ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serialNumber': ?serialNumber, 'status': status};
+    return <String, dynamic>{
+      'serialNumber': ?serialNumber,
+      'status': status,
+    };
   }
 
-  factory ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult.fromMap(Map<String, dynamic> map) {
     return ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult(
-      serialNumber: (() {
-        final guardedValue = map['serialNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      serialNumber: (() { final guardedValue = map['serialNumber']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: map['status'] as String,
     );
   }
 }
+

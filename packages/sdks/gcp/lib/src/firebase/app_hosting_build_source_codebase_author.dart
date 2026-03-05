@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppHostingBuildSourceCodebaseAuthor {
   /// Human-readable name. 63 character limit.
   final pulumi.Input<String>? displayName;
-
   /// The 'email' field in a Git user's git.config, if available.
   final pulumi.Input<String>? email;
-
   /// The URI of an image file associated with the user's account in an
   /// external source control provider, if available.
   final pulumi.Input<String>? imageUri;
@@ -31,25 +29,12 @@ class AppHostingBuildSourceCodebaseAuthor {
     };
   }
 
-  factory AppHostingBuildSourceCodebaseAuthor.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppHostingBuildSourceCodebaseAuthor.fromMap(Map<String, dynamic> map) {
     return AppHostingBuildSourceCodebaseAuthor(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      imageUri: (() {
-        final guardedValue = map['imageUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      imageUri: (() { final guardedValue = map['imageUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

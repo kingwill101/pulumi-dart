@@ -9,17 +9,20 @@ class SubordinateConfigChain {
 
   /// Creates a new [SubordinateConfigChain].
   /// [pemCertificates] Expected to be in leaf-to-root order according to RFC 5246.
-  SubordinateConfigChain({required this.pemCertificates});
+  SubordinateConfigChain({
+    required this.pemCertificates,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pemCertificates': pemCertificates};
+    return <String, dynamic>{
+      'pemCertificates': pemCertificates,
+    };
   }
 
   factory SubordinateConfigChain.fromMap(Map<String, dynamic> map) {
     return SubordinateConfigChain(
-      pemCertificates: pulumi.Input.fromValue(
-        (map['pemCertificates'] as List).cast<String>(),
-      ),
+      pemCertificates: pulumi.Input.fromValue((map['pemCertificates'] as List).cast<String>()),
     );
   }
 }
+

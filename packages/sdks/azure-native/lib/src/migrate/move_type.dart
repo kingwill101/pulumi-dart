@@ -15,3 +15,4 @@ enum MoveType {
     throw ArgumentError('Unknown MoveType value: $value');
   }
 }
+

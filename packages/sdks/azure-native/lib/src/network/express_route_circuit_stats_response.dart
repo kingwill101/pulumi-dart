@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressRouteCircuitStatsResponse {
   /// The Primary BytesIn of the peering.
   final pulumi.Input<double>? primarybytesIn;
-
   /// The primary BytesOut of the peering.
   final pulumi.Input<double>? primarybytesOut;
-
   /// The secondary BytesIn of the peering.
   final pulumi.Input<double>? secondarybytesIn;
-
   /// The secondary BytesOut of the peering.
   final pulumi.Input<double>? secondarybytesOut;
 
@@ -39,26 +36,11 @@ class ExpressRouteCircuitStatsResponse {
 
   factory ExpressRouteCircuitStatsResponse.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitStatsResponse(
-      primarybytesIn: (() {
-        final guardedValue = map['primarybytesIn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      primarybytesOut: (() {
-        final guardedValue = map['primarybytesOut'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      secondarybytesIn: (() {
-        final guardedValue = map['secondarybytesIn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      secondarybytesOut: (() {
-        final guardedValue = map['secondarybytesOut'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      primarybytesIn: (() { final guardedValue = map['primarybytesIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      primarybytesOut: (() { final guardedValue = map['primarybytesOut']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      secondarybytesIn: (() { final guardedValue = map['secondarybytesIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      secondarybytesOut: (() { final guardedValue = map['secondarybytesOut']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

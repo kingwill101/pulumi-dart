@@ -6,31 +6,22 @@ import 'system_data_response.dart';
 class GetSchemaVersionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Human-readable description of the schema.
   final String? description;
-
   /// Hash of the schema content.
   final String hash;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Provisioning state of the resource.
   final String provisioningState;
-
   /// Schema content.
   final String schemaContent;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Globally unique, immutable, non-reusable id.
   final String uuid;
 
@@ -76,21 +67,16 @@ class GetSchemaVersionResult {
   factory GetSchemaVersionResult.fromMap(Map<String, dynamic> map) {
     return GetSchemaVersionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hash: map['hash'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       schemaContent: map['schemaContent'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       uuid: map['uuid'] as String,
     );
   }
 }
+

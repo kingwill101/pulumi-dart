@@ -14,3 +14,4 @@ enum EmissionType {
     throw ArgumentError('Unknown EmissionType value: $value');
   }
 }
+

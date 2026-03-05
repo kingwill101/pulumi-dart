@@ -184,19 +184,14 @@ import 'linked_service_props_response.dart';
 class LinkedService extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Identity for the resource.
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// location of the linked service.
   late final pulumi.Output<String?> location;
-
   /// Friendly name of the linked service.
   late final pulumi.Output<String> name;
-
   /// LinkedService specific properties.
   late final pulumi.Output<LinkedServicePropsResponse> properties;
-
   /// Resource type of linked service.
   late final pulumi.Output<String> type;
 
@@ -209,34 +204,16 @@ class LinkedService extends pulumi.CustomResource {
     LinkedServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:machinelearningservices:LinkedService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:machinelearningservices:LinkedService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<LinkedServicePropsResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinkedServicePropsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<LinkedServicePropsResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServicePropsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

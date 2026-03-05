@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo {
   /// The comparison operator of the threshold for info-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
   final pulumi.Input<String> comparisonOperator;
-
   /// The statistical aggregation method for info-level alerts.
   final pulumi.Input<String> statistics;
-
   /// The threshold for info-level alerts.
   final pulumi.Input<String> threshold;
-
   /// The consecutive number of times for which the metric value is measured before an info-level
   /// alert is triggered.
   final pulumi.Input<String> times;
@@ -37,16 +34,13 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo {
     };
   }
 
-  factory GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo.fromMap(Map<String, dynamic> map) {
     return GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo(
-      comparisonOperator: pulumi.Input.fromValue(
-        map['comparisonOperator'] as String,
-      ),
+      comparisonOperator: pulumi.Input.fromValue(map['comparisonOperator'] as String),
       statistics: pulumi.Input.fromValue(map['statistics'] as String),
       threshold: pulumi.Input.fromValue(map['threshold'] as String),
       times: pulumi.Input.fromValue(map['times'] as String),
     );
   }
 }
+

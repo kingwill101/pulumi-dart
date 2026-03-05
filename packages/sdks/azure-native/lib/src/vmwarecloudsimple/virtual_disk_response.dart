@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualDiskResponse {
   /// Disk's Controller id
   final pulumi.Input<String> controllerId;
-
   /// Disk's independence mode type
   final pulumi.Input<String> independenceMode;
-
   /// Disk's total size
   final pulumi.Input<int> totalSize;
-
   /// Disk's id
   final pulumi.Input<String>? virtualDiskId;
-
   /// Disk's display name
   final pulumi.Input<String> virtualDiskName;
 
@@ -46,16 +42,11 @@ class VirtualDiskResponse {
   factory VirtualDiskResponse.fromMap(Map<String, dynamic> map) {
     return VirtualDiskResponse(
       controllerId: pulumi.Input.fromValue(map['controllerId'] as String),
-      independenceMode: pulumi.Input.fromValue(
-        map['independenceMode'] as String,
-      ),
+      independenceMode: pulumi.Input.fromValue(map['independenceMode'] as String),
       totalSize: pulumi.Input.fromValue(map['totalSize'] as int),
-      virtualDiskId: (() {
-        final guardedValue = map['virtualDiskId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      virtualDiskId: (() { final guardedValue = map['virtualDiskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       virtualDiskName: pulumi.Input.fromValue(map['virtualDiskName'] as String),
     );
   }
 }
+

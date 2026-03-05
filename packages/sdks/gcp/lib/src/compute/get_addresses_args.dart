@@ -30,11 +30,9 @@ class GetAddressesArgs {
   /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell")
   /// AND (scheduling.automaticRestart = true)
   final pulumi.Input<String>? filter;
-
   /// The google project in which addresses are listed.
   /// Defaults to provider's configuration if missing.
   final pulumi.Input<String>? project;
-
   /// Region that should be considered to search addresses.
   /// All regions are considered if missing.
   final pulumi.Input<String>? region;
@@ -43,7 +41,11 @@ class GetAddressesArgs {
   /// [filter] A filter expression that
   /// [project] The google project in which addresses are listed.
   /// [region] Region that should be considered to search addresses.
-  GetAddressesArgs({this.filter, this.project, this.region});
+  GetAddressesArgs({
+    this.filter,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,21 +57,10 @@ class GetAddressesArgs {
 
   factory GetAddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetAddressesArgs(
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

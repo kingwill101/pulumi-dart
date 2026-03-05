@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceGroupsArgs {
   /// DBClusterId
   final pulumi.Input<String> dbClusterId;
-
   /// The name of the resource pool, which cannot exceed 64 bytes in length.
   final pulumi.Input<String>? groupName;
-
   /// A list of AnalyticDB for MySQL (ADB) Resource Group IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -43,21 +40,10 @@ class GetResourceGroupsArgs {
   factory GetResourceGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceGroupsArgs(
       dbClusterId: pulumi.Input.fromValue(map['dbClusterId'] as String),
-      groupName: (() {
-        final guardedValue = map['groupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      groupName: (() { final guardedValue = map['groupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

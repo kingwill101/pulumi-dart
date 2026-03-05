@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualHardDiskStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the virtual hard disk
   final pulumi.Input<String>? operationId;
-
   /// The status of the operation performed on the virtual hard disk [Succeeded, Failed, InProgress]
   final pulumi.Input<String> status;
 
@@ -19,19 +18,17 @@ class VirtualHardDiskStatusProvisioningStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'operationId': ?operationId, 'status': status};
+    return <String, dynamic>{
+      'operationId': ?operationId,
+      'status': status,
+    };
   }
 
-  factory VirtualHardDiskStatusProvisioningStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualHardDiskStatusProvisioningStatusResponse.fromMap(Map<String, dynamic> map) {
     return VirtualHardDiskStatusProvisioningStatusResponse(
-      operationId: (() {
-        final guardedValue = map['operationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      operationId: (() { final guardedValue = map['operationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

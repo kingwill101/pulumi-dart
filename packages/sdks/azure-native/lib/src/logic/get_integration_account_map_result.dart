@@ -7,44 +7,30 @@ import 'integration_account_map_properties_response_parameters_schema.dart';
 class GetIntegrationAccountMapResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The changed time.
   final String changedTime;
-
   /// The content.
   final String? content;
-
   /// The content link.
   final ContentLinkResponse contentLink;
-
   /// The content type.
   final String? contentType;
-
   /// The created time.
   final String createdTime;
-
   /// The resource id.
   final String id;
-
   /// The resource location.
   final String? location;
-
   /// The map type.
   final String mapType;
-
   /// The metadata.
   final dynamic metadata;
-
   /// Gets the resource name.
   final String name;
-
   /// The parameters schema of integration account map.
-  final IntegrationAccountMapPropertiesResponseParametersSchema?
-  parametersSchema;
-
+  final IntegrationAccountMapPropertiesResponseParametersSchema? parametersSchema;
   /// The resource tags.
   final Map<String, String>? tags;
-
   /// Gets the resource type.
   final String type;
 
@@ -103,46 +89,19 @@ class GetIntegrationAccountMapResult {
     return GetIntegrationAccountMapResult(
       azureApiVersion: map['azureApiVersion'] as String,
       changedTime: map['changedTime'] as String,
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      contentLink: ContentLinkResponse.fromMap(
-        (map['contentLink']! as Map).cast<String, dynamic>(),
-      ),
-      contentType: (() {
-        final guardedValue = map['contentType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      contentLink: ContentLinkResponse.fromMap((map['contentLink']! as Map).cast<String, dynamic>()),
+      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createdTime: map['createdTime'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mapType: map['mapType'] as String,
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return guardedValue;
-      })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return guardedValue; })(),
       name: map['name'] as String,
-      parametersSchema: (() {
-        final guardedValue = map['parametersSchema'];
-        if (guardedValue == null) return null;
-        return IntegrationAccountMapPropertiesResponseParametersSchema.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      parametersSchema: (() { final guardedValue = map['parametersSchema']; if (guardedValue == null) return null; return IntegrationAccountMapPropertiesResponseParametersSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

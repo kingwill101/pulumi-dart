@@ -24,14 +24,12 @@ class ServiceAgentConfig extends pulumi.CustomResource {
     ServiceAgentConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudmonitor/serviceAgentConfig:ServiceAgentConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    enableInstallAgentNewEcs = registerOutput<bool?>(
-      'enableInstallAgentNewEcs',
-    );
+          'alicloud:cloudmonitor/serviceAgentConfig:ServiceAgentConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    enableInstallAgentNewEcs = registerOutput<bool?>('enableInstallAgentNewEcs');
   }
 
   /// Gets an existing [ServiceAgentConfig] resource's state with the given [name] and [id].
@@ -52,13 +50,11 @@ class ServiceAgentConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudmonitor/serviceAgentConfig:ServiceAgentConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    enableInstallAgentNewEcs = registerOutput<bool?>(
-      'enableInstallAgentNewEcs',
-    );
+          'alicloud:cloudmonitor/serviceAgentConfig:ServiceAgentConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    enableInstallAgentNewEcs = registerOutput<bool?>('enableInstallAgentNewEcs');
   }
 }

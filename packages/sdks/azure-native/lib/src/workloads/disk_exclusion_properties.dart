@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskExclusionProperties {
   /// List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.
   final pulumi.Input<List<int>> diskLunList;
-
   /// Flag to indicate whether DiskLunList is to be included/ excluded from backup.
   final pulumi.Input<bool> isInclusionList;
 
@@ -27,10 +26,9 @@ class DiskExclusionProperties {
 
   factory DiskExclusionProperties.fromMap(Map<String, dynamic> map) {
     return DiskExclusionProperties(
-      diskLunList: pulumi.Input.fromValue(
-        (map['diskLunList'] as List).cast<int>(),
-      ),
+      diskLunList: pulumi.Input.fromValue((map['diskLunList'] as List).cast<int>()),
       isInclusionList: pulumi.Input.fromValue(map['isInclusionList'] as bool),
     );
   }
 }
+

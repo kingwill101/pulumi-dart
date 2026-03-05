@@ -1805,27 +1805,22 @@ class Tag extends pulumi.CustomResource {
   /// For attaching a tag to a nested column, use `.` to separate the column names. Example:
   /// `outer_column.inner_column`
   late final pulumi.Output<String?> column;
-
   /// This maps the ID of a tag field to the value of and additional information about that field.
   /// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> fields;
-
   /// The resource name of the tag in URL format. Example:
   /// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
   /// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
   /// where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
   late final pulumi.Output<String> name;
-
   /// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
   /// all entries in that group.
   late final pulumi.Output<String?> parent;
-
   /// The resource name of the tag template that this tag uses. Example:
   /// projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
   /// This field cannot be modified after creation.
   late final pulumi.Output<String> template;
-
   /// The display name of the tag template.
   late final pulumi.Output<String> templateDisplayname;
 
@@ -1833,13 +1828,16 @@ class Tag extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Tag]. {@macro pulumi_datacatalog_tag_tag_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Tag(String name, {TagArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:datacatalog/tag:Tag',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Tag(
+    String name, {
+    TagArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:datacatalog/tag:Tag',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     column = registerOutput<String?>('column');
     fields = registerOutput<List<Map<String, dynamic>>>('fields');
     this.name = registerOutput<String>('name');
@@ -1849,7 +1847,11 @@ class Tag extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Tag] resource's state with the given [name] and [id].
-  static Tag get(String name, pulumi.Input<String> id, {TagState? state}) {
+  static Tag get(
+    String name,
+    pulumi.Input<String> id, {
+    TagState? state,
+  }) {
     return Tag._get(
       name,
       state: state?.toMap(),
@@ -1862,11 +1864,11 @@ class Tag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:datacatalog/tag:Tag',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:datacatalog/tag:Tag',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     column = registerOutput<String?>('column');
     fields = registerOutput<List<Map<String, dynamic>>>('fields');
     this.name = registerOutput<String>('name');

@@ -44,11 +44,7 @@ class GetNasFileSystemsResult {
       'officeSiteId': ?officeSiteId,
       'outputFile': ?outputFile,
       'status': ?status,
-      'systems':
-          pulumi.Input.encodeList<
-            GetNasFileSystemsSystem,
-            Map<String, dynamic>
-          >(systems, (value) => value.toMap()),
+      'systems': pulumi.Input.encodeList<GetNasFileSystemsSystem, Map<String, dynamic>>(systems, (value) => value.toMap()),
     };
   }
 
@@ -56,33 +52,13 @@ class GetNasFileSystemsResult {
     return GetNasFileSystemsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      officeSiteId: (() {
-        final guardedValue = map['officeSiteId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systems: pulumi.Input.decodeList<GetNasFileSystemsSystem>(
-        map['systems']!,
-        (value) => GetNasFileSystemsSystem.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      officeSiteId: (() { final guardedValue = map['officeSiteId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systems: pulumi.Input.decodeList<GetNasFileSystemsSystem>(map['systems']!, (value) => GetNasFileSystemsSystem.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

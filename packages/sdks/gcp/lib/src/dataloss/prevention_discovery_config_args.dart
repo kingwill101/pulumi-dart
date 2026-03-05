@@ -14,34 +14,25 @@ class PreventionDiscoveryConfigArgs {
   /// Actions to execute at the completion of scanning
   /// Structure is documented below.
   final pulumi.Input<List<PreventionDiscoveryConfigAction>>? actions;
-
   /// Display Name (max 1000 Chars)
   final pulumi.Input<String>? displayName;
-
   /// Detection logic for profile generation
   final pulumi.Input<List<String>>? inspectTemplates;
-
   /// Location to create the discovery config in.
   final pulumi.Input<String> location;
-
   /// A nested object resource.
   /// Structure is documented below.
   final pulumi.Input<PreventionDiscoveryConfigOrgConfig>? orgConfig;
-
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigOtherCloudStartingLocation>?
-  otherCloudStartingLocation;
-
+  final pulumi.Input<PreventionDiscoveryConfigOtherCloudStartingLocation>? otherCloudStartingLocation;
   /// The parent of the discovery config in any of the following formats:
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
   final pulumi.Input<String> parent;
-
   /// Required. A status for this configuration
   /// Possible values are: `RUNNING`, `PAUSED`.
   final pulumi.Input<String>? status;
-
   /// Target to match against for determining what to scan and how frequently
   /// Structure is documented below.
   final pulumi.Input<List<PreventionDiscoveryConfigTarget>>? targets;
@@ -70,109 +61,30 @@ class PreventionDiscoveryConfigArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<PreventionDiscoveryConfigAction>,
-            List<Map<String, dynamic>>
-          >(
-            actions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PreventionDiscoveryConfigAction,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'actions': ?pulumi.Input.mapOptionalInputValue<List<PreventionDiscoveryConfigAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<PreventionDiscoveryConfigAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'displayName': ?displayName,
       'inspectTemplates': ?inspectTemplates,
       'location': location,
-      'orgConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            PreventionDiscoveryConfigOrgConfig,
-            Map<String, dynamic>
-          >(orgConfig, (value) => value.toMap()),
-      'otherCloudStartingLocation':
-          ?pulumi.Input.mapOptionalInputValue<
-            PreventionDiscoveryConfigOtherCloudStartingLocation,
-            Map<String, dynamic>
-          >(otherCloudStartingLocation, (value) => value.toMap()),
+      'orgConfig': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigOrgConfig, Map<String, dynamic>>(orgConfig, (value) => value.toMap()),
+      'otherCloudStartingLocation': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigOtherCloudStartingLocation, Map<String, dynamic>>(otherCloudStartingLocation, (value) => value.toMap()),
       'parent': parent,
       'status': ?status,
-      'targets':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<PreventionDiscoveryConfigTarget>,
-            List<Map<String, dynamic>>
-          >(
-            targets,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PreventionDiscoveryConfigTarget,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'targets': ?pulumi.Input.mapOptionalInputValue<List<PreventionDiscoveryConfigTarget>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<PreventionDiscoveryConfigTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PreventionDiscoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigArgs(
-      actions: (() {
-        final guardedValue = map['actions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<PreventionDiscoveryConfigAction>(
-            guardedValue,
-            (value) => PreventionDiscoveryConfigAction.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      inspectTemplates: (() {
-        final guardedValue = map['inspectTemplates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PreventionDiscoveryConfigAction>(guardedValue, (value) => PreventionDiscoveryConfigAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      inspectTemplates: (() { final guardedValue = map['inspectTemplates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      orgConfig: (() {
-        final guardedValue = map['orgConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PreventionDiscoveryConfigOrgConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      otherCloudStartingLocation: (() {
-        final guardedValue = map['otherCloudStartingLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PreventionDiscoveryConfigOtherCloudStartingLocation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      orgConfig: (() { final guardedValue = map['orgConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionDiscoveryConfigOrgConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      otherCloudStartingLocation: (() { final guardedValue = map['otherCloudStartingLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionDiscoveryConfigOtherCloudStartingLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       parent: pulumi.Input.fromValue(map['parent'] as String),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targets: (() {
-        final guardedValue = map['targets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<PreventionDiscoveryConfigTarget>(
-            guardedValue,
-            (value) => PreventionDiscoveryConfigTarget.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targets: (() { final guardedValue = map['targets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PreventionDiscoveryConfigTarget>(guardedValue, (value) => PreventionDiscoveryConfigTarget.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

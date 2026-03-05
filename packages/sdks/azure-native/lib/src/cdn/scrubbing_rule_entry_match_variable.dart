@@ -13,8 +13,7 @@ enum ScrubbingRuleEntryMatchVariable {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ScrubbingRuleEntryMatchVariable value: $value',
-    );
+    throw ArgumentError('Unknown ScrubbingRuleEntryMatchVariable value: $value');
   }
 }
+

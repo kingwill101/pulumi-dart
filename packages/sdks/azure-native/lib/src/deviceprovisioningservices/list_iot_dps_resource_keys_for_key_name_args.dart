@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListIotDpsResourceKeysForKeyNameArgs {
   /// Logical key name to get key-values for.
   final pulumi.Input<String> keyName;
-
   /// Name of the provisioning service.
   final pulumi.Input<String> provisioningServiceName;
-
   /// The name of the resource group that contains the provisioning service.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,17 +32,12 @@ class ListIotDpsResourceKeysForKeyNameArgs {
     };
   }
 
-  factory ListIotDpsResourceKeysForKeyNameArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListIotDpsResourceKeysForKeyNameArgs.fromMap(Map<String, dynamic> map) {
     return ListIotDpsResourceKeysForKeyNameArgs(
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
-      provisioningServiceName: pulumi.Input.fromValue(
-        map['provisioningServiceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      provisioningServiceName: pulumi.Input.fromValue(map['provisioningServiceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

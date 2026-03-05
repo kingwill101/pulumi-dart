@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionKeyVaultProperties {
   /// The name of the key.
   final pulumi.Input<String>? keyName;
-
   /// The URL of the vault.
   final pulumi.Input<String>? keyVaultUrl;
-
   /// The version of the key.
   final pulumi.Input<String>? keyVersion;
 
@@ -33,21 +31,10 @@ class EncryptionKeyVaultProperties {
 
   factory EncryptionKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return EncryptionKeyVaultProperties(
-      keyName: (() {
-        final guardedValue = map['keyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultUrl: (() {
-        final guardedValue = map['keyVaultUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVersion: (() {
-        final guardedValue = map['keyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultUrl: (() { final guardedValue = map['keyVaultUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVersion: (() { final guardedValue = map['keyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

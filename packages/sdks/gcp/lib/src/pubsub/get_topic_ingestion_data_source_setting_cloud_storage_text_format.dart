@@ -15,14 +15,15 @@ class GetTopicIngestionDataSourceSettingCloudStorageTextFormat {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'delimiter': delimiter};
+    return <String, dynamic>{
+      'delimiter': delimiter,
+    };
   }
 
-  factory GetTopicIngestionDataSourceSettingCloudStorageTextFormat.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTopicIngestionDataSourceSettingCloudStorageTextFormat.fromMap(Map<String, dynamic> map) {
     return GetTopicIngestionDataSourceSettingCloudStorageTextFormat(
       delimiter: pulumi.Input.fromValue(map['delimiter'] as String),
     );
   }
 }
+

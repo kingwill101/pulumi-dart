@@ -6,19 +6,14 @@ import 'managed_identity_credential_response.dart';
 class GetCredentialOperationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Etag identifies change in the resource.
   final String etag;
-
   /// The resource identifier.
   final String id;
-
   /// The resource name.
   final String name;
-
   /// Properties of credentials.
   final ManagedIdentityCredentialResponse properties;
-
   /// The resource type.
   final String type;
 
@@ -55,10 +50,9 @@ class GetCredentialOperationResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: ManagedIdentityCredentialResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: ManagedIdentityCredentialResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

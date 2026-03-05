@@ -17,3 +17,4 @@ enum ApimIdentityType {
     throw ArgumentError('Unknown ApimIdentityType value: $value');
   }
 }
+

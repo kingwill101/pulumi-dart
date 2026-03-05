@@ -6,19 +6,14 @@ import 'network_mapping_properties_response.dart';
 class GetReplicationNetworkMappingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource Id
   final String id;
-
   /// Resource Location
   final String? location;
-
   /// Resource Name
   final String name;
-
   /// The Network Mapping Properties.
   final NetworkMappingPropertiesResponse properties;
-
   /// Resource Type
   final String type;
 
@@ -53,16 +48,11 @@ class GetReplicationNetworkMappingResult {
     return GetReplicationNetworkMappingResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: NetworkMappingPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: NetworkMappingPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

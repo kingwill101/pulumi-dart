@@ -7,88 +7,60 @@ import 'health_error_response.dart';
 class ProcessServerDetailsResponse {
   /// The available memory.
   final pulumi.Input<double> availableMemoryInBytes;
-
   /// The available disk space.
   final pulumi.Input<double> availableSpaceInBytes;
-
   /// The process server Bios Id.
   final pulumi.Input<String> biosId;
-
   /// The disk usage status.
   final pulumi.Input<String> diskUsageStatus;
-
   /// The fabric object Id.
   final pulumi.Input<String> fabricObjectId;
-
   /// The process server Fqdn.
   final pulumi.Input<String> fqdn;
-
   /// The free disk space percentage.
   final pulumi.Input<double> freeSpacePercentage;
-
   /// The health of the process server.
   final pulumi.Input<String> health;
-
   /// The health errors.
   final pulumi.Input<List<HealthErrorResponse>> healthErrors;
-
   /// The historic health of the process server based on the health in last 24 hours.
   final pulumi.Input<String> historicHealth;
-
   /// The process server Id.
   final pulumi.Input<String> id;
-
   /// The list of IP addresses for communicating with the RCM component.
   final pulumi.Input<List<String>> ipAddresses;
-
   /// The last heartbeat received from the process server.
   final pulumi.Input<String> lastHeartbeatUtc;
-
   /// The memory usage percentage.
   final pulumi.Input<double> memoryUsagePercentage;
-
   /// The memory usage status.
   final pulumi.Input<String> memoryUsageStatus;
-
   /// The process server name.
   final pulumi.Input<String> name;
-
   /// The processor usage percentage.
   final pulumi.Input<double> processorUsagePercentage;
-
   /// The processor usage status.
   final pulumi.Input<String> processorUsageStatus;
-
   /// The protected item count.
   final pulumi.Input<int> protectedItemCount;
-
   /// The system load.
   final pulumi.Input<double> systemLoad;
-
   /// The system load status.
   final pulumi.Input<String> systemLoadStatus;
-
   /// The throughput in bytes.
   final pulumi.Input<double> throughputInBytes;
-
   /// The throughput status.
   final pulumi.Input<String> throughputStatus;
-
   /// The uploading pending data in bytes.
   final pulumi.Input<double> throughputUploadPendingDataInBytes;
-
   /// The total memory.
   final pulumi.Input<double> totalMemoryInBytes;
-
   /// The total disk space.
   final pulumi.Input<double> totalSpaceInBytes;
-
   /// The used memory.
   final pulumi.Input<double> usedMemoryInBytes;
-
   /// The used disk space.
   final pulumi.Input<double> usedSpaceInBytes;
-
   /// The version.
   final pulumi.Input<String> version;
 
@@ -164,18 +136,7 @@ class ProcessServerDetailsResponse {
       'fqdn': fqdn,
       'freeSpacePercentage': freeSpacePercentage,
       'health': health,
-      'healthErrors':
-          pulumi.Input.mapInputValue<
-            List<HealthErrorResponse>,
-            List<Map<String, dynamic>>
-          >(
-            healthErrors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  HealthErrorResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'healthErrors': pulumi.Input.mapInputValue<List<HealthErrorResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'historicHealth': historicHealth,
       'id': id,
       'ipAddresses': ipAddresses,
@@ -201,78 +162,36 @@ class ProcessServerDetailsResponse {
 
   factory ProcessServerDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ProcessServerDetailsResponse(
-      availableMemoryInBytes: pulumi.Input.fromValue(
-        map['availableMemoryInBytes'] as double,
-      ),
-      availableSpaceInBytes: pulumi.Input.fromValue(
-        map['availableSpaceInBytes'] as double,
-      ),
+      availableMemoryInBytes: pulumi.Input.fromValue(map['availableMemoryInBytes'] as double),
+      availableSpaceInBytes: pulumi.Input.fromValue(map['availableSpaceInBytes'] as double),
       biosId: pulumi.Input.fromValue(map['biosId'] as String),
       diskUsageStatus: pulumi.Input.fromValue(map['diskUsageStatus'] as String),
       fabricObjectId: pulumi.Input.fromValue(map['fabricObjectId'] as String),
       fqdn: pulumi.Input.fromValue(map['fqdn'] as String),
-      freeSpacePercentage: pulumi.Input.fromValue(
-        map['freeSpacePercentage'] as double,
-      ),
+      freeSpacePercentage: pulumi.Input.fromValue(map['freeSpacePercentage'] as double),
       health: pulumi.Input.fromValue(map['health'] as String),
-      healthErrors: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<HealthErrorResponse>(
-          map['healthErrors']!,
-          (value) => HealthErrorResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      healthErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors']!, (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))),
       historicHealth: pulumi.Input.fromValue(map['historicHealth'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      ipAddresses: pulumi.Input.fromValue(
-        (map['ipAddresses'] as List).cast<String>(),
-      ),
-      lastHeartbeatUtc: pulumi.Input.fromValue(
-        map['lastHeartbeatUtc'] as String,
-      ),
-      memoryUsagePercentage: pulumi.Input.fromValue(
-        map['memoryUsagePercentage'] as double,
-      ),
-      memoryUsageStatus: pulumi.Input.fromValue(
-        map['memoryUsageStatus'] as String,
-      ),
+      ipAddresses: pulumi.Input.fromValue((map['ipAddresses'] as List).cast<String>()),
+      lastHeartbeatUtc: pulumi.Input.fromValue(map['lastHeartbeatUtc'] as String),
+      memoryUsagePercentage: pulumi.Input.fromValue(map['memoryUsagePercentage'] as double),
+      memoryUsageStatus: pulumi.Input.fromValue(map['memoryUsageStatus'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      processorUsagePercentage: pulumi.Input.fromValue(
-        map['processorUsagePercentage'] as double,
-      ),
-      processorUsageStatus: pulumi.Input.fromValue(
-        map['processorUsageStatus'] as String,
-      ),
-      protectedItemCount: pulumi.Input.fromValue(
-        map['protectedItemCount'] as int,
-      ),
+      processorUsagePercentage: pulumi.Input.fromValue(map['processorUsagePercentage'] as double),
+      processorUsageStatus: pulumi.Input.fromValue(map['processorUsageStatus'] as String),
+      protectedItemCount: pulumi.Input.fromValue(map['protectedItemCount'] as int),
       systemLoad: pulumi.Input.fromValue(map['systemLoad'] as double),
-      systemLoadStatus: pulumi.Input.fromValue(
-        map['systemLoadStatus'] as String,
-      ),
-      throughputInBytes: pulumi.Input.fromValue(
-        map['throughputInBytes'] as double,
-      ),
-      throughputStatus: pulumi.Input.fromValue(
-        map['throughputStatus'] as String,
-      ),
-      throughputUploadPendingDataInBytes: pulumi.Input.fromValue(
-        map['throughputUploadPendingDataInBytes'] as double,
-      ),
-      totalMemoryInBytes: pulumi.Input.fromValue(
-        map['totalMemoryInBytes'] as double,
-      ),
-      totalSpaceInBytes: pulumi.Input.fromValue(
-        map['totalSpaceInBytes'] as double,
-      ),
-      usedMemoryInBytes: pulumi.Input.fromValue(
-        map['usedMemoryInBytes'] as double,
-      ),
-      usedSpaceInBytes: pulumi.Input.fromValue(
-        map['usedSpaceInBytes'] as double,
-      ),
+      systemLoadStatus: pulumi.Input.fromValue(map['systemLoadStatus'] as String),
+      throughputInBytes: pulumi.Input.fromValue(map['throughputInBytes'] as double),
+      throughputStatus: pulumi.Input.fromValue(map['throughputStatus'] as String),
+      throughputUploadPendingDataInBytes: pulumi.Input.fromValue(map['throughputUploadPendingDataInBytes'] as double),
+      totalMemoryInBytes: pulumi.Input.fromValue(map['totalMemoryInBytes'] as double),
+      totalSpaceInBytes: pulumi.Input.fromValue(map['totalSpaceInBytes'] as double),
+      usedMemoryInBytes: pulumi.Input.fromValue(map['usedMemoryInBytes'] as double),
+      usedSpaceInBytes: pulumi.Input.fromValue(map['usedSpaceInBytes'] as double),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

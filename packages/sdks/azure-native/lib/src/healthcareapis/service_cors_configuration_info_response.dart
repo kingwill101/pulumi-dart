@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceCorsConfigurationInfoResponse {
   /// If credentials are allowed via CORS.
   final pulumi.Input<bool>? allowCredentials;
-
   /// The headers to be allowed via CORS.
   final pulumi.Input<List<String>>? headers;
-
   /// The max age to be allowed via CORS.
   final pulumi.Input<int>? maxAge;
-
   /// The methods to be allowed via CORS.
   final pulumi.Input<List<String>>? methods;
-
   /// The origins to be allowed via CORS.
   final pulumi.Input<List<String>>? origins;
 
@@ -43,35 +39,14 @@ class ServiceCorsConfigurationInfoResponse {
     };
   }
 
-  factory ServiceCorsConfigurationInfoResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceCorsConfigurationInfoResponse.fromMap(Map<String, dynamic> map) {
     return ServiceCorsConfigurationInfoResponse(
-      allowCredentials: (() {
-        final guardedValue = map['allowCredentials'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      headers: (() {
-        final guardedValue = map['headers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      maxAge: (() {
-        final guardedValue = map['maxAge'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      methods: (() {
-        final guardedValue = map['methods'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      origins: (() {
-        final guardedValue = map['origins'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowCredentials: (() { final guardedValue = map['allowCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      maxAge: (() { final guardedValue = map['maxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      methods: (() { final guardedValue = map['methods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      origins: (() { final guardedValue = map['origins']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

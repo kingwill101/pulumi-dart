@@ -8,17 +8,13 @@ enum ManagementSettingsPreferredRenewalMethodDomainsV1alpha2 {
   const ManagementSettingsPreferredRenewalMethodDomainsV1alpha2(this.wireValue);
   final String wireValue;
 
-  static ManagementSettingsPreferredRenewalMethodDomainsV1alpha2 fromValue(
-    String value,
-  ) {
-    for (final item
-        in ManagementSettingsPreferredRenewalMethodDomainsV1alpha2.values) {
+  static ManagementSettingsPreferredRenewalMethodDomainsV1alpha2 fromValue(String value) {
+    for (final item in ManagementSettingsPreferredRenewalMethodDomainsV1alpha2.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ManagementSettingsPreferredRenewalMethodDomainsV1alpha2 value: $value',
-    );
+    throw ArgumentError('Unknown ManagementSettingsPreferredRenewalMethodDomainsV1alpha2 value: $value');
   }
 }
+

@@ -16,3 +16,4 @@ enum EthereumDetailsConsensusClient {
     throw ArgumentError('Unknown EthereumDetailsConsensusClient value: $value');
   }
 }
+

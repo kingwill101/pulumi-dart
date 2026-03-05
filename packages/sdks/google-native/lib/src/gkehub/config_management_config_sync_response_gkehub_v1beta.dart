@@ -8,22 +8,16 @@ import 'config_management_oci_config_response_gkehub_v1beta.dart';
 class ConfigManagementConfigSyncResponseGkehubV1beta {
   /// Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.
   final pulumi.Input<bool> allowVerticalScale;
-
   /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
   final pulumi.Input<bool> enabled;
-
   /// Git repo configuration for the cluster.
   final pulumi.Input<ConfigManagementGitConfigResponseGkehubV1beta> git;
-
   /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
   final pulumi.Input<String> metricsGcpServiceAccountEmail;
-
   /// OCI repo configuration for the cluster
   final pulumi.Input<ConfigManagementOciConfigResponseGkehubV1beta> oci;
-
   /// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
   final pulumi.Input<bool> preventDrift;
-
   /// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
   final pulumi.Input<String> sourceFormat;
 
@@ -49,45 +43,24 @@ class ConfigManagementConfigSyncResponseGkehubV1beta {
     return <String, dynamic>{
       'allowVerticalScale': allowVerticalScale,
       'enabled': enabled,
-      'git':
-          pulumi.Input.mapInputValue<
-            ConfigManagementGitConfigResponseGkehubV1beta,
-            Map<String, dynamic>
-          >(git, (value) => value.toMap()),
+      'git': pulumi.Input.mapInputValue<ConfigManagementGitConfigResponseGkehubV1beta, Map<String, dynamic>>(git, (value) => value.toMap()),
       'metricsGcpServiceAccountEmail': metricsGcpServiceAccountEmail,
-      'oci':
-          pulumi.Input.mapInputValue<
-            ConfigManagementOciConfigResponseGkehubV1beta,
-            Map<String, dynamic>
-          >(oci, (value) => value.toMap()),
+      'oci': pulumi.Input.mapInputValue<ConfigManagementOciConfigResponseGkehubV1beta, Map<String, dynamic>>(oci, (value) => value.toMap()),
       'preventDrift': preventDrift,
       'sourceFormat': sourceFormat,
     };
   }
 
-  factory ConfigManagementConfigSyncResponseGkehubV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigManagementConfigSyncResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ConfigManagementConfigSyncResponseGkehubV1beta(
-      allowVerticalScale: pulumi.Input.fromValue(
-        map['allowVerticalScale'] as bool,
-      ),
+      allowVerticalScale: pulumi.Input.fromValue(map['allowVerticalScale'] as bool),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      git: pulumi.Input.fromValue(
-        ConfigManagementGitConfigResponseGkehubV1beta.fromMap(
-          (map['git']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      metricsGcpServiceAccountEmail: pulumi.Input.fromValue(
-        map['metricsGcpServiceAccountEmail'] as String,
-      ),
-      oci: pulumi.Input.fromValue(
-        ConfigManagementOciConfigResponseGkehubV1beta.fromMap(
-          (map['oci']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      git: pulumi.Input.fromValue(ConfigManagementGitConfigResponseGkehubV1beta.fromMap((map['git']! as Map).cast<String, dynamic>())),
+      metricsGcpServiceAccountEmail: pulumi.Input.fromValue(map['metricsGcpServiceAccountEmail'] as String),
+      oci: pulumi.Input.fromValue(ConfigManagementOciConfigResponseGkehubV1beta.fromMap((map['oci']! as Map).cast<String, dynamic>())),
       preventDrift: pulumi.Input.fromValue(map['preventDrift'] as bool),
       sourceFormat: pulumi.Input.fromValue(map['sourceFormat'] as String),
     );
   }
 }
+

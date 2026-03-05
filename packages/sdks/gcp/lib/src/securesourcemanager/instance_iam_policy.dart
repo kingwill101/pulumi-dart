@@ -18,11 +18,11 @@ class InstanceIamPolicy extends pulumi.CustomResource {
     InstanceIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securesourcemanager/instanceIamPolicy:InstanceIamPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securesourcemanager/instanceIamPolicy:InstanceIamPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     etag = registerOutput<String>('etag');
     instanceId = registerOutput<String>('instanceId');
     location = registerOutput<String>('location');
@@ -48,11 +48,11 @@ class InstanceIamPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securesourcemanager/instanceIamPolicy:InstanceIamPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securesourcemanager/instanceIamPolicy:InstanceIamPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     etag = registerOutput<String>('etag');
     instanceId = registerOutput<String>('instanceId');
     location = registerOutput<String>('location');

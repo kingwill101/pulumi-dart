@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IsolatedVmAttestationConfigurationResponse {
   /// Fully qualified Azure resource id of the Microsoft Azure attestation resource associated with this cluster.
   final pulumi.Input<String> attestationResourceId;
-
   /// Region specific endpoint for Microsoft Azure Attestation service for the cluster
   final pulumi.Input<String> attestationServiceEndpoint;
-
   /// Region specific endpoint for relying party service.
   final pulumi.Input<String> relyingPartyServiceEndpoint;
 
@@ -31,19 +29,12 @@ class IsolatedVmAttestationConfigurationResponse {
     };
   }
 
-  factory IsolatedVmAttestationConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IsolatedVmAttestationConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return IsolatedVmAttestationConfigurationResponse(
-      attestationResourceId: pulumi.Input.fromValue(
-        map['attestationResourceId'] as String,
-      ),
-      attestationServiceEndpoint: pulumi.Input.fromValue(
-        map['attestationServiceEndpoint'] as String,
-      ),
-      relyingPartyServiceEndpoint: pulumi.Input.fromValue(
-        map['relyingPartyServiceEndpoint'] as String,
-      ),
+      attestationResourceId: pulumi.Input.fromValue(map['attestationResourceId'] as String),
+      attestationServiceEndpoint: pulumi.Input.fromValue(map['attestationServiceEndpoint'] as String),
+      relyingPartyServiceEndpoint: pulumi.Input.fromValue(map['relyingPartyServiceEndpoint'] as String),
     );
   }
 }
+

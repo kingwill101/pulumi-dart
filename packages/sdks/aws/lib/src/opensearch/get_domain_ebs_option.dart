@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainEbsOption {
   /// Whether EBS volumes are attached to data nodes in the domain.
   final pulumi.Input<bool> ebsEnabled;
-
   /// Baseline input/output (I/O) performance of EBS volumes attached to data nodes.
   final pulumi.Input<int> iops;
-
   /// The throughput (in MiB/s) of the EBS volumes attached to data nodes.
   final pulumi.Input<int> throughput;
-
   /// Size of EBS volumes attached to data nodes (in GB).
   final pulumi.Input<int> volumeSize;
-
   /// Type of EBS volumes attached to data nodes.
   final pulumi.Input<String> volumeType;
 
@@ -52,3 +48,4 @@ class GetDomainEbsOption {
     );
   }
 }
+

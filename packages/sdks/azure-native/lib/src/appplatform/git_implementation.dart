@@ -15,3 +15,4 @@ enum GitImplementation {
     throw ArgumentError('Unknown GitImplementation value: $value');
   }
 }
+

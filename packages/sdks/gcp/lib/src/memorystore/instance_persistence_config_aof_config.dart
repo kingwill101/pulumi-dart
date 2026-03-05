@@ -12,19 +12,20 @@ class InstancePersistenceConfigAofConfig {
 
   /// Creates a new [InstancePersistenceConfigAofConfig].
   /// [appendFsync] Optional. The fsync mode.
-  InstancePersistenceConfigAofConfig({this.appendFsync});
+  InstancePersistenceConfigAofConfig({
+    this.appendFsync,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'appendFsync': ?appendFsync};
+    return <String, dynamic>{
+      'appendFsync': ?appendFsync,
+    };
   }
 
   factory InstancePersistenceConfigAofConfig.fromMap(Map<String, dynamic> map) {
     return InstancePersistenceConfigAofConfig(
-      appendFsync: (() {
-        final guardedValue = map['appendFsync'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appendFsync: (() { final guardedValue = map['appendFsync']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

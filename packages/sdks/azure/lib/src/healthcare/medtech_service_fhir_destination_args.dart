@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MedtechServiceFhirDestinationArgs {
   /// Specifies the destination Fhir mappings of the Med Tech Service Fhir Destination.
   final pulumi.Input<String> destinationFhirMappingJson;
-
   /// Specifies the destination fhir service id of the Med Tech Service Fhir Destination.
   final pulumi.Input<String> destinationFhirServiceId;
-
   /// Specifies the destination identity resolution type where the Healthcare Med Tech Service Fhir Destination should be created. Possible values are `Create`, `Lookup`.
   final pulumi.Input<String> destinationIdentityResolutionType;
-
   /// Specifies the Azure Region where the Healthcare Med Tech Service Fhir Destination should be created. Changing this forces a new Healthcare Med Tech Service Fhir Destination to be created.
   final pulumi.Input<String>? location;
-
   /// Specifies the name of the Healthcare Med Tech Service where the Healthcare Med Tech Service Fhir Destination should exist. Changing this forces a new Healthcare Med Tech Service Fhir Destination to be created.
   final pulumi.Input<String> medtechServiceId;
-
   /// Specifies the name of the Healthcare Med Tech Service Fhir Destination. Changing this forces a new Healthcare Med Tech Service Fhir Destination to be created.
   final pulumi.Input<String>? name;
 
@@ -54,28 +49,13 @@ class MedtechServiceFhirDestinationArgs {
 
   factory MedtechServiceFhirDestinationArgs.fromMap(Map<String, dynamic> map) {
     return MedtechServiceFhirDestinationArgs(
-      destinationFhirMappingJson: pulumi.Input.fromValue(
-        map['destinationFhirMappingJson'] as String,
-      ),
-      destinationFhirServiceId: pulumi.Input.fromValue(
-        map['destinationFhirServiceId'] as String,
-      ),
-      destinationIdentityResolutionType: pulumi.Input.fromValue(
-        map['destinationIdentityResolutionType'] as String,
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      medtechServiceId: pulumi.Input.fromValue(
-        map['medtechServiceId'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      destinationFhirMappingJson: pulumi.Input.fromValue(map['destinationFhirMappingJson'] as String),
+      destinationFhirServiceId: pulumi.Input.fromValue(map['destinationFhirServiceId'] as String),
+      destinationIdentityResolutionType: pulumi.Input.fromValue(map['destinationIdentityResolutionType'] as String),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      medtechServiceId: pulumi.Input.fromValue(map['medtechServiceId'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OneDashboardPageWidgetBillboardInitialSorting {
   /// (Required) Defines the sort order. Accepted values are `asc` for ascending or `desc` for descending.
   final pulumi.Input<String> direction;
-
   /// The title of the dashboard.
   final pulumi.Input<String> name;
 
@@ -18,15 +17,17 @@ class OneDashboardPageWidgetBillboardInitialSorting {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'direction': direction, 'name': name};
+    return <String, dynamic>{
+      'direction': direction,
+      'name': name,
+    };
   }
 
-  factory OneDashboardPageWidgetBillboardInitialSorting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OneDashboardPageWidgetBillboardInitialSorting.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetBillboardInitialSorting(
       direction: pulumi.Input.fromValue(map['direction'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

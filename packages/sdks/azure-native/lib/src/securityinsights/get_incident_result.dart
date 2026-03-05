@@ -10,76 +10,52 @@ import 'system_data_response.dart';
 class GetIncidentResult {
   /// Additional data on the incident
   final IncidentAdditionalDataResponse additionalData;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The reason the incident was closed
   final String? classification;
-
   /// Describes the reason the incident was closed
   final String? classificationComment;
-
   /// The classification reason the incident was closed with
   final String? classificationReason;
-
   /// The time the incident was created
   final String createdTimeUtc;
-
   /// The description of the incident
   final String? description;
-
   /// Etag of the azure resource
   final String? etag;
-
   /// The time of the first activity in the incident
   final String? firstActivityTimeUtc;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// A sequential number
   final int incidentNumber;
-
   /// The deep-link url to the incident in Azure portal
   final String incidentUrl;
-
   /// List of labels relevant to this incident
   final List<IncidentLabelResponse>? labels;
-
   /// The time of the last activity in the incident
   final String? lastActivityTimeUtc;
-
   /// The last time the incident was updated
   final String lastModifiedTimeUtc;
-
   /// The name of the resource
   final String name;
-
   /// Describes a user that the incident is assigned to
   final IncidentOwnerInfoResponse? owner;
-
   /// The incident ID assigned by the incident provider
   final String providerIncidentId;
-
   /// The name of the source provider that generated the incident
   final String providerName;
-
   /// List of resource ids of Analytic rules related to the incident
   final List<String> relatedAnalyticRuleIds;
-
   /// The severity of the incident
   final String severity;
-
   /// The status of the incident
   final String status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The title of the incident
   final String title;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -151,14 +127,7 @@ class GetIncidentResult {
       'id': id,
       'incidentNumber': incidentNumber,
       'incidentUrl': incidentUrl,
-      'labels': ?(() {
-        final guardedValue = labels;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          IncidentLabelResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'labels': ?(() { final guardedValue = labels; if (guardedValue == null) return null; return pulumi.Input.encodeList<IncidentLabelResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'lastActivityTimeUtc': ?lastActivityTimeUtc,
       'lastModifiedTimeUtc': lastModifiedTimeUtc,
       'name': name,
@@ -176,79 +145,32 @@ class GetIncidentResult {
 
   factory GetIncidentResult.fromMap(Map<String, dynamic> map) {
     return GetIncidentResult(
-      additionalData: IncidentAdditionalDataResponse.fromMap(
-        (map['additionalData']! as Map).cast<String, dynamic>(),
-      ),
+      additionalData: IncidentAdditionalDataResponse.fromMap((map['additionalData']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      classification: (() {
-        final guardedValue = map['classification'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      classificationComment: (() {
-        final guardedValue = map['classificationComment'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      classificationReason: (() {
-        final guardedValue = map['classificationReason'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      classification: (() { final guardedValue = map['classification']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      classificationComment: (() { final guardedValue = map['classificationComment']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      classificationReason: (() { final guardedValue = map['classificationReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createdTimeUtc: map['createdTimeUtc'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      firstActivityTimeUtc: (() {
-        final guardedValue = map['firstActivityTimeUtc'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      firstActivityTimeUtc: (() { final guardedValue = map['firstActivityTimeUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       incidentNumber: map['incidentNumber'] as int,
       incidentUrl: map['incidentUrl'] as String,
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<IncidentLabelResponse>(
-          guardedValue,
-          (value) => IncidentLabelResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      lastActivityTimeUtc: (() {
-        final guardedValue = map['lastActivityTimeUtc'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.decodeList<IncidentLabelResponse>(guardedValue, (value) => IncidentLabelResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      lastActivityTimeUtc: (() { final guardedValue = map['lastActivityTimeUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastModifiedTimeUtc: map['lastModifiedTimeUtc'] as String,
       name: map['name'] as String,
-      owner: (() {
-        final guardedValue = map['owner'];
-        if (guardedValue == null) return null;
-        return IncidentOwnerInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return IncidentOwnerInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       providerIncidentId: map['providerIncidentId'] as String,
       providerName: map['providerName'] as String,
-      relatedAnalyticRuleIds: (map['relatedAnalyticRuleIds'] as List)
-          .cast<String>(),
+      relatedAnalyticRuleIds: (map['relatedAnalyticRuleIds'] as List).cast<String>(),
       severity: map['severity'] as String,
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       title: map['title'] as String,
       type: map['type'] as String,
     );
   }
 }
+

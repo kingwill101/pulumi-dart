@@ -10,12 +10,9 @@ class SlsaProvenanceZeroTwoResponse {
   final pulumi.Input<Map<String, String>> buildConfig;
   final pulumi.Input<String> buildType;
   final pulumi.Input<Map<String, dynamic>> builder;
-  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse>
-  invocation;
-  final pulumi.Input<List<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse>>
-  materials;
-  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse>
-  metadata;
+  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse> invocation;
+  final pulumi.Input<List<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse>> materials;
+  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse> metadata;
 
   /// Creates a new [SlsaProvenanceZeroTwoResponse].
   /// [buildConfig] Required.
@@ -38,60 +35,21 @@ class SlsaProvenanceZeroTwoResponse {
       'buildConfig': buildConfig,
       'buildType': buildType,
       'builder': builder,
-      'invocation':
-          pulumi.Input.mapInputValue<
-            GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse,
-            Map<String, dynamic>
-          >(invocation, (value) => value.toMap()),
-      'materials':
-          pulumi.Input.mapInputValue<
-            List<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse>,
-            List<Map<String, dynamic>>
-          >(
-            materials,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'metadata':
-          pulumi.Input.mapInputValue<
-            GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse,
-            Map<String, dynamic>
-          >(metadata, (value) => value.toMap()),
+      'invocation': pulumi.Input.mapInputValue<GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse, Map<String, dynamic>>(invocation, (value) => value.toMap()),
+      'materials': pulumi.Input.mapInputValue<List<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse>, List<Map<String, dynamic>>>(materials, (value) => pulumi.Input.encodeList<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'metadata': pulumi.Input.mapInputValue<GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
   }
 
   factory SlsaProvenanceZeroTwoResponse.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceZeroTwoResponse(
-      buildConfig: pulumi.Input.fromValue(
-        (map['buildConfig'] as Map).cast<String, String>(),
-      ),
+      buildConfig: pulumi.Input.fromValue((map['buildConfig'] as Map).cast<String, String>()),
       buildType: pulumi.Input.fromValue(map['buildType'] as String),
-      builder: pulumi.Input.fromValue(
-        (map['builder']! as Map).cast<String, dynamic>(),
-      ),
-      invocation: pulumi.Input.fromValue(
-        GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap(
-          (map['invocation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      materials: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse
-        >(
-          map['materials']!,
-          (value) => GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      metadata: pulumi.Input.fromValue(
-        GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse.fromMap(
-          (map['metadata']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      builder: pulumi.Input.fromValue((map['builder']! as Map).cast<String, dynamic>()),
+      invocation: pulumi.Input.fromValue(GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap((map['invocation']! as Map).cast<String, dynamic>())),
+      materials: pulumi.Input.fromValue(pulumi.Input.decodeList<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse>(map['materials']!, (value) => GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      metadata: pulumi.Input.fromValue(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

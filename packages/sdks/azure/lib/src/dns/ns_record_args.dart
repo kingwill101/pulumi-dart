@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NsRecordArgs {
   /// The name of the DNS NS Record. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// A list of values that make up the NS record.
   final pulumi.Input<List<String>> records;
-
   /// Specifies the resource group where the DNS Zone (parent resource) exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The Time To Live (TTL) of the DNS record in seconds.
   final pulumi.Input<int> ttl;
-
   /// Specifies the DNS Zone where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> zoneName;
 
@@ -54,24 +49,13 @@ class NsRecordArgs {
 
   factory NsRecordArgs.fromMap(Map<String, dynamic> map) {
     return NsRecordArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       records: pulumi.Input.fromValue((map['records'] as List).cast<String>()),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       ttl: pulumi.Input.fromValue(map['ttl'] as int),
       zoneName: pulumi.Input.fromValue(map['zoneName'] as String),
     );
   }
 }
+

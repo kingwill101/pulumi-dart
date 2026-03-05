@@ -9,21 +9,20 @@ class RegionBackendServiceHaPolicyLeaderNetworkEndpoint {
 
   /// Creates a new [RegionBackendServiceHaPolicyLeaderNetworkEndpoint].
   /// [instance] The name of the VM instance of the leader network endpoint. The instance must
-  RegionBackendServiceHaPolicyLeaderNetworkEndpoint({this.instance});
+  RegionBackendServiceHaPolicyLeaderNetworkEndpoint({
+    this.instance,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instance': ?instance};
+    return <String, dynamic>{
+      'instance': ?instance,
+    };
   }
 
-  factory RegionBackendServiceHaPolicyLeaderNetworkEndpoint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionBackendServiceHaPolicyLeaderNetworkEndpoint.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceHaPolicyLeaderNetworkEndpoint(
-      instance: (() {
-        final guardedValue = map['instance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

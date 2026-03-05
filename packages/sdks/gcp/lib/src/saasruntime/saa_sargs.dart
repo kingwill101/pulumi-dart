@@ -15,25 +15,20 @@ class SaaSArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
-
   /// List of locations that the service is available in. Rollout refers to the
   /// list to generate a rollout plan.
   /// Structure is documented below.
   final pulumi.Input<List<SaaSLocation>>? locations;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The ID value for the new saas.
   final pulumi.Input<String> saasId;
 
@@ -58,18 +53,7 @@ class SaaSArgs {
       'annotations': ?annotations,
       'labels': ?labels,
       'location': location,
-      'locations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SaaSLocation>,
-            List<Map<String, dynamic>>
-          >(
-            locations,
-            (value) =>
-                pulumi.Input.encodeList<SaaSLocation, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'locations': ?pulumi.Input.mapOptionalInputValue<List<SaaSLocation>, List<Map<String, dynamic>>>(locations, (value) => pulumi.Input.encodeList<SaaSLocation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'project': ?project,
       'saasId': saasId,
     };
@@ -77,38 +61,13 @@ class SaaSArgs {
 
   factory SaaSArgs.fromMap(Map<String, dynamic> map) {
     return SaaSArgs(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      locations: (() {
-        final guardedValue = map['locations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SaaSLocation>(
-            guardedValue,
-            (value) =>
-                SaaSLocation.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      locations: (() { final guardedValue = map['locations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SaaSLocation>(guardedValue, (value) => SaaSLocation.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       saasId: pulumi.Input.fromValue(map['saasId'] as String),
     );
   }
 }
+

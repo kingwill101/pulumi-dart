@@ -187,34 +187,24 @@ import 'system_data_response.dart';
 class GuestAgent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Username / Password Credentials to provision guest agent.
   late final pulumi.Output<GuestCredentialResponse?> credentials;
-
   /// Gets the name of the corresponding resource in Kubernetes.
   late final pulumi.Output<String> customResourceName;
-
   /// HTTP Proxy configuration for the VM.
   late final pulumi.Output<HttpProxyConfigurationResponse?> httpProxyConfig;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Gets or sets the guest agent provisioning action.
   late final pulumi.Output<String?> provisioningAction;
-
   /// Gets or sets the provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Gets or sets the guest agent status.
   late final pulumi.Output<String> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Gets or sets a unique identifier for this resource.
   late final pulumi.Output<String> uuid;
 
@@ -227,47 +217,20 @@ class GuestAgent extends pulumi.CustomResource {
     GuestAgentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:scvmm:GuestAgent',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:scvmm:GuestAgent',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    credentials = registerOutput<GuestCredentialResponse?>(
-      'credentials',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuestCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    credentials = registerOutput<GuestCredentialResponse?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuestCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customResourceName = registerOutput<String>('customResourceName');
-    httpProxyConfig = registerOutput<HttpProxyConfigurationResponse?>(
-      'httpProxyConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HttpProxyConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    httpProxyConfig = registerOutput<HttpProxyConfigurationResponse?>('httpProxyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpProxyConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     provisioningAction = registerOutput<String?>('provisioningAction');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');
   }

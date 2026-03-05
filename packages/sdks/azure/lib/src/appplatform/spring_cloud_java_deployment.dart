@@ -313,22 +313,16 @@ import 'spring_cloud_java_deployment_state.dart';
 class SpringCloudJavaDeployment extends pulumi.CustomResource {
   /// Specifies the environment variables of the Spring Cloud Deployment as a map of key-value pairs.
   late final pulumi.Output<Map<String, String>?> environmentVariables;
-
   /// Specifies the required instance count of the Spring Cloud Deployment. Possible Values are between `1` and `500`. Defaults to `1` if not specified.
   late final pulumi.Output<int?> instanceCount;
-
   /// Specifies the jvm option of the Spring Cloud Deployment.
   late final pulumi.Output<String?> jvmOptions;
-
   /// Specifies the name of the Spring Cloud Deployment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A `quota` block as defined below.
   late final pulumi.Output<SpringCloudJavaDeploymentQuota> quota;
-
   /// Specifies the runtime version of the Spring Cloud Deployment. Possible Values are `Java_8`, `Java_11` and `Java_17`. Defaults to `Java_8`.
   late final pulumi.Output<String?> runtimeVersion;
-
   /// Specifies the id of the Spring Cloud Application in which to create the Deployment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudAppId;
 
@@ -341,27 +335,16 @@ class SpringCloudJavaDeployment extends pulumi.CustomResource {
     SpringCloudJavaDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudJavaDeployment:SpringCloudJavaDeployment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    environmentVariables = registerOutput<Map<String, String>?>(
-      'environmentVariables',
-    );
+          'azure:appplatform/springCloudJavaDeployment:SpringCloudJavaDeployment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
     instanceCount = registerOutput<int?>('instanceCount');
     jvmOptions = registerOutput<String?>('jvmOptions');
     this.name = registerOutput<String>('name');
-    quota = registerOutput<SpringCloudJavaDeploymentQuota>(
-      'quota',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudJavaDeploymentQuota.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    quota = registerOutput<SpringCloudJavaDeploymentQuota>('quota', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudJavaDeploymentQuota.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     runtimeVersion = registerOutput<String?>('runtimeVersion');
     springCloudAppId = registerOutput<String>('springCloudAppId');
   }
@@ -384,27 +367,16 @@ class SpringCloudJavaDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudJavaDeployment:SpringCloudJavaDeployment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    environmentVariables = registerOutput<Map<String, String>?>(
-      'environmentVariables',
-    );
+          'azure:appplatform/springCloudJavaDeployment:SpringCloudJavaDeployment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
     instanceCount = registerOutput<int?>('instanceCount');
     jvmOptions = registerOutput<String?>('jvmOptions');
     this.name = registerOutput<String>('name');
-    quota = registerOutput<SpringCloudJavaDeploymentQuota>(
-      'quota',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudJavaDeploymentQuota.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    quota = registerOutput<SpringCloudJavaDeploymentQuota>('quota', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudJavaDeploymentQuota.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     runtimeVersion = registerOutput<String?>('runtimeVersion');
     springCloudAppId = registerOutput<String>('springCloudAppId');
   }

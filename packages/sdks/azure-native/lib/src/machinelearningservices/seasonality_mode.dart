@@ -15,3 +15,4 @@ enum SeasonalityMode {
     throw ArgumentError('Unknown SeasonalityMode value: $value');
   }
 }
+

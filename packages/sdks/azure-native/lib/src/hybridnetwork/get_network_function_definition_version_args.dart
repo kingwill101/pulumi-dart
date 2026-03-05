@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkFunctionDefinitionVersionArgs {
   /// The name of the network function definition group.
   final pulumi.Input<String> networkFunctionDefinitionGroupName;
-
   /// The name of the network function definition version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html.
   final pulumi.Input<String> networkFunctionDefinitionVersionName;
-
   /// The name of the publisher.
   final pulumi.Input<String> publisherName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,27 +31,19 @@ class GetNetworkFunctionDefinitionVersionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'networkFunctionDefinitionGroupName': networkFunctionDefinitionGroupName,
-      'networkFunctionDefinitionVersionName':
-          networkFunctionDefinitionVersionName,
+      'networkFunctionDefinitionVersionName': networkFunctionDefinitionVersionName,
       'publisherName': publisherName,
       'resourceGroupName': resourceGroupName,
     };
   }
 
-  factory GetNetworkFunctionDefinitionVersionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkFunctionDefinitionVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkFunctionDefinitionVersionArgs(
-      networkFunctionDefinitionGroupName: pulumi.Input.fromValue(
-        map['networkFunctionDefinitionGroupName'] as String,
-      ),
-      networkFunctionDefinitionVersionName: pulumi.Input.fromValue(
-        map['networkFunctionDefinitionVersionName'] as String,
-      ),
+      networkFunctionDefinitionGroupName: pulumi.Input.fromValue(map['networkFunctionDefinitionGroupName'] as String),
+      networkFunctionDefinitionVersionName: pulumi.Input.fromValue(map['networkFunctionDefinitionVersionName'] as String),
       publisherName: pulumi.Input.fromValue(map['publisherName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

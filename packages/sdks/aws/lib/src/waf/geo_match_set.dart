@@ -163,10 +163,8 @@ import 'geo_match_set_state.dart';
 class GeoMatchSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN)
   late final pulumi.Output<String> arn;
-
   /// The GeoMatchConstraint objects which contain the country that you want AWS WAF to search for.
   late final pulumi.Output<List<Map<String, dynamic>>?> geoMatchConstraints;
-
   /// The name or description of the GeoMatchSet.
   late final pulumi.Output<String> name;
 
@@ -179,15 +177,13 @@ class GeoMatchSet extends pulumi.CustomResource {
     GeoMatchSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:waf/geoMatchSet:GeoMatchSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:waf/geoMatchSet:GeoMatchSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    geoMatchConstraints = registerOutput<List<Map<String, dynamic>>?>(
-      'geoMatchConstraints',
-    );
+    geoMatchConstraints = registerOutput<List<Map<String, dynamic>>?>('geoMatchConstraints');
     this.name = registerOutput<String>('name');
   }
 
@@ -209,15 +205,13 @@ class GeoMatchSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:waf/geoMatchSet:GeoMatchSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:waf/geoMatchSet:GeoMatchSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    geoMatchConstraints = registerOutput<List<Map<String, dynamic>>?>(
-      'geoMatchConstraints',
-    );
+    geoMatchConstraints = registerOutput<List<Map<String, dynamic>>?>('geoMatchConstraints');
     this.name = registerOutput<String>('name');
   }
 }

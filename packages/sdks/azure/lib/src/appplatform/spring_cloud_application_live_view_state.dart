@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudApplicationLiveViewState {
   /// The name which should be used for this Spring Cloud Application Live View. Changing this forces a new Spring Cloud Application Live View to be created. The only possible value is `default`.
   final pulumi.Input<String>? name;
-
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Application Live View to be created.
   final pulumi.Input<String>? springCloudServiceId;
 
   /// Creates a new [SpringCloudApplicationLiveViewState].
   /// [name] The name which should be used for this Spring Cloud Application Live View. Changing this forces a new Spring Cloud Application Live View to be created. The only possible value is `default`.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Application Live View to be created.
-  SpringCloudApplicationLiveViewState({this.name, this.springCloudServiceId});
+  SpringCloudApplicationLiveViewState({
+    this.name,
+    this.springCloudServiceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,20 +24,11 @@ class SpringCloudApplicationLiveViewState {
     };
   }
 
-  factory SpringCloudApplicationLiveViewState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpringCloudApplicationLiveViewState.fromMap(Map<String, dynamic> map) {
     return SpringCloudApplicationLiveViewState(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      springCloudServiceId: (() {
-        final guardedValue = map['springCloudServiceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      springCloudServiceId: (() { final guardedValue = map['springCloudServiceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

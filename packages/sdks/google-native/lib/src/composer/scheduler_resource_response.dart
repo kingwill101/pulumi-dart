@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchedulerResourceResponse {
   /// Optional. The number of schedulers.
   final pulumi.Input<int> count;
-
   /// Optional. CPU request and limit for a single Airflow scheduler replica.
   final pulumi.Input<double> cpu;
-
   /// Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
   final pulumi.Input<double> memoryGb;
-
   /// Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
   final pulumi.Input<double> storageGb;
 
@@ -46,3 +43,4 @@ class SchedulerResourceResponse {
     );
   }
 }
+

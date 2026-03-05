@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetElasticSanArgs {
   /// The name of the ElasticSan.
   final pulumi.Input<String> elasticSanName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetElasticSanArgs {
   factory GetElasticSanArgs.fromMap(Map<String, dynamic> map) {
     return GetElasticSanArgs(
       elasticSanName: pulumi.Input.fromValue(map['elasticSanName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

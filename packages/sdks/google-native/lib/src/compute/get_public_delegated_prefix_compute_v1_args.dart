@@ -29,19 +29,12 @@ class GetPublicDelegatedPrefixComputeV1Args {
     };
   }
 
-  factory GetPublicDelegatedPrefixComputeV1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPublicDelegatedPrefixComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetPublicDelegatedPrefixComputeV1Args(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicDelegatedPrefix: pulumi.Input.fromValue(
-        map['publicDelegatedPrefix'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicDelegatedPrefix: pulumi.Input.fromValue(map['publicDelegatedPrefix'] as String),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListEdgeSiteL2ConnectionsArgs {
   /// Edge site name.
   final pulumi.Input<String> edgeSiteName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class ListEdgeSiteL2ConnectionsArgs {
   factory ListEdgeSiteL2ConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return ListEdgeSiteL2ConnectionsArgs(
       edgeSiteName: pulumi.Input.fromValue(map['edgeSiteName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

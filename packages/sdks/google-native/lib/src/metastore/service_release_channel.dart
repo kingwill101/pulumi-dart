@@ -16,3 +16,4 @@ enum ServiceReleaseChannel {
     throw ArgumentError('Unknown ServiceReleaseChannel value: $value');
   }
 }
+

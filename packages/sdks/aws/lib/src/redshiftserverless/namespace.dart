@@ -103,59 +103,42 @@ import 'namespace_state.dart';
 class Namespace extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of namespace's admin user credentials secret.
   late final pulumi.Output<String> adminPasswordSecretArn;
-
   /// ID of the KMS key used to encrypt the namespace's admin credentials secret.
   late final pulumi.Output<String> adminPasswordSecretKmsKeyId;
-
   /// The password of the administrator for the first database created in the namespace.
   /// Conflicts with `manage_admin_password` and `admin_user_password_wo`.
   late final pulumi.Output<String?> adminUserPassword;
-
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// The password of the administrator for the first database created in the namespace.
   /// Conflicts with `manage_admin_password` and `admin_user_password`.
   late final pulumi.Output<String?> adminUserPasswordWo;
-
   /// Used together with `admin_user_password_wo` to trigger an update. Increment this value when an update to the `admin_user_password_wo` is required
   late final pulumi.Output<int?> adminUserPasswordWoVersion;
-
   /// The username of the administrator for the first database created in the namespace.
   late final pulumi.Output<String> adminUsername;
-
   /// Amazon Resource Name (ARN) of the Redshift Serverless Namespace.
   late final pulumi.Output<String> arn;
-
   /// The name of the first database created in the namespace.
   late final pulumi.Output<String> dbName;
-
   /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `default_iam_role_arn`, it also must be part of `iam_roles`.
   late final pulumi.Output<String?> defaultIamRoleArn;
-
   /// A list of IAM roles to associate with the namespace.
   late final pulumi.Output<List<String>> iamRoles;
-
   /// The ARN of the Amazon Web Services Key Management Service key used to encrypt your data.
   late final pulumi.Output<String> kmsKeyId;
-
   /// The types of logs the namespace can export. Available export types are `userlog`, `connectionlog`, and `useractivitylog`.
   late final pulumi.Output<List<String>?> logExports;
-
   /// Whether to use AWS SecretManager to manage namespace's admin credentials.
   /// Conflicts with `admin_user_password` and `admin_user_password_wo`.
   late final pulumi.Output<bool?> manageAdminPassword;
-
   /// The Redshift Namespace ID.
   late final pulumi.Output<String> namespaceId;
-
   /// The name of the namespace.
   late final pulumi.Output<String> namespaceName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -168,20 +151,16 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshiftserverless/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:redshiftserverless/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminPasswordSecretArn = registerOutput<String>('adminPasswordSecretArn');
-    adminPasswordSecretKmsKeyId = registerOutput<String>(
-      'adminPasswordSecretKmsKeyId',
-    );
+    adminPasswordSecretKmsKeyId = registerOutput<String>('adminPasswordSecretKmsKeyId');
     adminUserPassword = registerOutput<String?>('adminUserPassword');
     adminUserPasswordWo = registerOutput<String?>('adminUserPasswordWo');
-    adminUserPasswordWoVersion = registerOutput<int?>(
-      'adminUserPasswordWoVersion',
-    );
+    adminUserPasswordWoVersion = registerOutput<int?>('adminUserPasswordWoVersion');
     adminUsername = registerOutput<String>('adminUsername');
     arn = registerOutput<String>('arn');
     dbName = registerOutput<String>('dbName');
@@ -215,20 +194,16 @@ class Namespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshiftserverless/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:redshiftserverless/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminPasswordSecretArn = registerOutput<String>('adminPasswordSecretArn');
-    adminPasswordSecretKmsKeyId = registerOutput<String>(
-      'adminPasswordSecretKmsKeyId',
-    );
+    adminPasswordSecretKmsKeyId = registerOutput<String>('adminPasswordSecretKmsKeyId');
     adminUserPassword = registerOutput<String?>('adminUserPassword');
     adminUserPasswordWo = registerOutput<String?>('adminUserPasswordWo');
-    adminUserPasswordWoVersion = registerOutput<int?>(
-      'adminUserPasswordWoVersion',
-    );
+    adminUserPasswordWoVersion = registerOutput<int?>('adminUserPasswordWoVersion');
     adminUsername = registerOutput<String>('adminUsername');
     arn = registerOutput<String>('arn');
     dbName = registerOutput<String>('dbName');

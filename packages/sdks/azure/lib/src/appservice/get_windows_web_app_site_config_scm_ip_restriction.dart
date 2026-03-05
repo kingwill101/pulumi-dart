@@ -6,24 +6,17 @@ import 'get_windows_web_app_site_config_scm_ip_restriction_header.dart';
 class GetWindowsWebAppSiteConfigScmIpRestriction {
   /// A `action` block as defined above.
   final pulumi.Input<String> action;
-
   /// The description of the ip restriction rule.
   final pulumi.Input<String> description;
-  final pulumi.Input<List<GetWindowsWebAppSiteConfigScmIpRestrictionHeader>>
-  headers;
-
+  final pulumi.Input<List<GetWindowsWebAppSiteConfigScmIpRestrictionHeader>> headers;
   /// The CIDR notation of the IP or IP Range to match.
   final pulumi.Input<String> ipAddress;
-
   /// The name of this Windows Web App.
   final pulumi.Input<String> name;
-
   /// The priority value of this `ip_restriction`.
   final pulumi.Input<int> priority;
-
   /// The Service Tag used for this IP Restriction.
   final pulumi.Input<String> serviceTag;
-
   /// The subnet id which the Windows Web App is vNet Integrated with.
   final pulumi.Input<String> virtualNetworkSubnetId;
 
@@ -51,18 +44,7 @@ class GetWindowsWebAppSiteConfigScmIpRestriction {
     return <String, dynamic>{
       'action': action,
       'description': description,
-      'headers':
-          pulumi.Input.mapInputValue<
-            List<GetWindowsWebAppSiteConfigScmIpRestrictionHeader>,
-            List<Map<String, dynamic>>
-          >(
-            headers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetWindowsWebAppSiteConfigScmIpRestrictionHeader,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'headers': pulumi.Input.mapInputValue<List<GetWindowsWebAppSiteConfigScmIpRestrictionHeader>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<GetWindowsWebAppSiteConfigScmIpRestrictionHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipAddress': ipAddress,
       'name': name,
       'priority': priority,
@@ -71,28 +53,17 @@ class GetWindowsWebAppSiteConfigScmIpRestriction {
     };
   }
 
-  factory GetWindowsWebAppSiteConfigScmIpRestriction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWindowsWebAppSiteConfigScmIpRestriction.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteConfigScmIpRestriction(
       action: pulumi.Input.fromValue(map['action'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      headers: pulumi.Input.fromValue(
-        pulumi
-            .Input.decodeList<GetWindowsWebAppSiteConfigScmIpRestrictionHeader>(
-          map['headers']!,
-          (value) => GetWindowsWebAppSiteConfigScmIpRestrictionHeader.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      headers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWindowsWebAppSiteConfigScmIpRestrictionHeader>(map['headers']!, (value) => GetWindowsWebAppSiteConfigScmIpRestrictionHeader.fromMap((value as Map).cast<String, dynamic>()))),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       priority: pulumi.Input.fromValue(map['priority'] as int),
       serviceTag: pulumi.Input.fromValue(map['serviceTag'] as String),
-      virtualNetworkSubnetId: pulumi.Input.fromValue(
-        map['virtualNetworkSubnetId'] as String,
-      ),
+      virtualNetworkSubnetId: pulumi.Input.fromValue(map['virtualNetworkSubnetId'] as String),
     );
   }
 }
+

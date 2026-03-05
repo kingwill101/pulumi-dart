@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCreatorArgs {
   /// The name of the Maps Account.
   final pulumi.Input<String> accountName;
-
   /// The name of the Maps Creator instance.
   final pulumi.Input<String> creatorName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetCreatorArgs {
     return GetCreatorArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       creatorName: pulumi.Input.fromValue(map['creatorName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

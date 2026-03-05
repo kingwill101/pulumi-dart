@@ -16,3 +16,4 @@ enum ChangeDetailsMode {
     throw ArgumentError('Unknown ChangeDetailsMode value: $value');
   }
 }
+

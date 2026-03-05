@@ -9,10 +9,8 @@ class ResourceHandlePatch {
   ///
   /// The maximum size of this field is 16KiB. This may get increased in the future, but not reduced.
   final pulumi.Input<String>? data;
-
   /// DriverName specifies the name of the resource driver whose kubelet plugin should be invoked to process this ResourceHandle's data once it lands on a node. This may differ from the DriverName set in ResourceClaimStatus this ResourceHandle is embedded in.
   final pulumi.Input<String>? driverName;
-
   /// If StructuredData is set, then it needs to be used instead of Data.
   final pulumi.Input<StructuredResourceHandlePatch>? structuredData;
 
@@ -20,41 +18,26 @@ class ResourceHandlePatch {
   /// [data] Data contains the opaque data associated with this ResourceHandle. It is set by the controller component of the resource driver whose name matches the DriverName set in the ResourceClaimStatus this ResourceHandle is embedded in. It is set at allocation time and is intended for processing by the kubelet plugin whose name matches the DriverName set in this ResourceHandle.
   /// [driverName] DriverName specifies the name of the resource driver whose kubelet plugin should be invoked to process this ResourceHandle's data once it lands on a node. This may differ from the DriverName set in ResourceClaimStatus this ResourceHandle is embedded in.
   /// [structuredData] If StructuredData is set, then it needs to be used instead of Data.
-  ResourceHandlePatch({this.data, this.driverName, this.structuredData});
+  ResourceHandlePatch({
+    this.data,
+    this.driverName,
+    this.structuredData,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'data': ?data,
       'driverName': ?driverName,
-      'structuredData':
-          ?pulumi.Input.mapOptionalInputValue<
-            StructuredResourceHandlePatch,
-            Map<String, dynamic>
-          >(structuredData, (value) => value.toMap()),
+      'structuredData': ?pulumi.Input.mapOptionalInputValue<StructuredResourceHandlePatch, Map<String, dynamic>>(structuredData, (value) => value.toMap()),
     };
   }
 
   factory ResourceHandlePatch.fromMap(Map<String, dynamic> map) {
     return ResourceHandlePatch(
-      data: (() {
-        final guardedValue = map['data'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      driverName: (() {
-        final guardedValue = map['driverName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      structuredData: (() {
-        final guardedValue = map['structuredData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StructuredResourceHandlePatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      driverName: (() { final guardedValue = map['driverName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      structuredData: (() { final guardedValue = map['structuredData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StructuredResourceHandlePatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -10,12 +10,10 @@ class GetInstanceGuestAttributesResult {
   final String name;
   final String project;
   final String? queryPath;
-
   /// Structure is documented below.
   final List<GetInstanceGuestAttributesQueryValue> queryValues;
   final String region;
   final String? variableKey;
-
   /// Value of the queried guest_attribute.
   final String variableValue;
   final String zone;
@@ -48,11 +46,7 @@ class GetInstanceGuestAttributesResult {
       'name': name,
       'project': project,
       'queryPath': ?queryPath,
-      'queryValues':
-          pulumi.Input.encodeList<
-            GetInstanceGuestAttributesQueryValue,
-            Map<String, dynamic>
-          >(queryValues, (value) => value.toMap()),
+      'queryValues': pulumi.Input.encodeList<GetInstanceGuestAttributesQueryValue, Map<String, dynamic>>(queryValues, (value) => value.toMap()),
       'region': region,
       'variableKey': ?variableKey,
       'variableValue': variableValue,
@@ -65,26 +59,13 @@ class GetInstanceGuestAttributesResult {
       id: map['id'] as String,
       name: map['name'] as String,
       project: map['project'] as String,
-      queryPath: (() {
-        final guardedValue = map['queryPath'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      queryValues:
-          pulumi.Input.decodeList<GetInstanceGuestAttributesQueryValue>(
-            map['queryValues']!,
-            (value) => GetInstanceGuestAttributesQueryValue.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      queryPath: (() { final guardedValue = map['queryPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      queryValues: pulumi.Input.decodeList<GetInstanceGuestAttributesQueryValue>(map['queryValues']!, (value) => GetInstanceGuestAttributesQueryValue.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
-      variableKey: (() {
-        final guardedValue = map['variableKey'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      variableKey: (() { final guardedValue = map['variableKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       variableValue: map['variableValue'] as String,
       zone: map['zone'] as String,
     );
   }
 }
+

@@ -441,17 +441,12 @@ import 'system_data_response.dart';
 class FeaturesetVersionMachinelearningservices extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<FeaturesetVersionResponse>
-  featuresetVersionProperties;
-
+  late final pulumi.Output<FeaturesetVersionResponse> featuresetVersionProperties;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -464,33 +459,15 @@ class FeaturesetVersionMachinelearningservices extends pulumi.CustomResource {
     FeaturesetVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:machinelearningservices:FeaturesetVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:machinelearningservices:FeaturesetVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    featuresetVersionProperties = registerOutput<FeaturesetVersionResponse>(
-      'featuresetVersionProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FeaturesetVersionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    featuresetVersionProperties = registerOutput<FeaturesetVersionResponse>('featuresetVersionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeaturesetVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

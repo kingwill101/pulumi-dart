@@ -359,77 +359,57 @@ import 'transit_router_peer_attachment_state.dart';
 class TransitRouterPeerAttachment extends pulumi.CustomResource {
   /// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
   late final pulumi.Output<bool?> autoPublishRouteEnabled;
-
   /// The bandwidth value of the inter-region connection. Unit: Mbit/s.
   ///
   /// - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
   /// - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
   late final pulumi.Output<int?> bandwidth;
-
   /// The method that is used to allocate bandwidth to the inter-region connection. Valid values:
   ///
   /// - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
   /// - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
   late final pulumi.Output<String> bandwidthType;
-
   /// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
   ///
   /// &gt; **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
   late final pulumi.Output<String?> cenBandwidthPackageId;
-
   /// The ID of the Cloud Enterprise Network (CEN) instance.
   late final pulumi.Output<String?> cenId;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// The default line type.
   /// Valid values: Platinum and Gold.
   /// Platinum is supported only when BandwidthType is set to DataTransfer.
   late final pulumi.Output<String> defaultLinkType;
-
   /// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
   late final pulumi.Output<bool?> dryRun;
-
   /// The ID of the peer transit router.
   late final pulumi.Output<String> peerTransitRouterId;
-
   /// The ID of the region where the peer transit router is deployed.
   late final pulumi.Output<String?> peerTransitRouterRegionId;
-
   /// The ID of the region where the local Enterprise Edition transit router is deployed.
   late final pulumi.Output<String> regionId;
-
   /// The resource type to attachment. Only support `VR` and default value is `VR`.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
   late final pulumi.Output<String?> resourceType;
-
   /// Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
   late final pulumi.Output<bool?> routeTableAssociationEnabled;
-
   /// Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
   late final pulumi.Output<bool?> routeTablePropagationEnabled;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The new description of the inter-region connection.
   /// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
   late final pulumi.Output<String?> transitRouterAttachmentDescription;
-
   /// The ID of the inter-region connection.
   late final pulumi.Output<String> transitRouterAttachmentId;
-
   /// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
   late final pulumi.Output<String> transitRouterAttachmentName;
-
   /// The ID of the local Enterprise Edition transit router.
   late final pulumi.Output<String?> transitRouterId;
-
   /// The new name of the inter-region connection.
   /// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
   late final pulumi.Output<String> transitRouterPeerAttachmentName;
@@ -443,11 +423,11 @@ class TransitRouterPeerAttachment extends pulumi.CustomResource {
     TransitRouterPeerAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPublishRouteEnabled = registerOutput<bool?>('autoPublishRouteEnabled');
     bandwidth = registerOutput<int?>('bandwidth');
     bandwidthType = registerOutput<String>('bandwidthType');
@@ -457,32 +437,18 @@ class TransitRouterPeerAttachment extends pulumi.CustomResource {
     defaultLinkType = registerOutput<String>('defaultLinkType');
     dryRun = registerOutput<bool?>('dryRun');
     peerTransitRouterId = registerOutput<String>('peerTransitRouterId');
-    peerTransitRouterRegionId = registerOutput<String?>(
-      'peerTransitRouterRegionId',
-    );
+    peerTransitRouterRegionId = registerOutput<String?>('peerTransitRouterRegionId');
     regionId = registerOutput<String>('regionId');
     resourceType = registerOutput<String?>('resourceType');
-    routeTableAssociationEnabled = registerOutput<bool?>(
-      'routeTableAssociationEnabled',
-    );
-    routeTablePropagationEnabled = registerOutput<bool?>(
-      'routeTablePropagationEnabled',
-    );
+    routeTableAssociationEnabled = registerOutput<bool?>('routeTableAssociationEnabled');
+    routeTablePropagationEnabled = registerOutput<bool?>('routeTablePropagationEnabled');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    transitRouterAttachmentDescription = registerOutput<String?>(
-      'transitRouterAttachmentDescription',
-    );
-    transitRouterAttachmentId = registerOutput<String>(
-      'transitRouterAttachmentId',
-    );
-    transitRouterAttachmentName = registerOutput<String>(
-      'transitRouterAttachmentName',
-    );
+    transitRouterAttachmentDescription = registerOutput<String?>('transitRouterAttachmentDescription');
+    transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
+    transitRouterAttachmentName = registerOutput<String>('transitRouterAttachmentName');
     transitRouterId = registerOutput<String?>('transitRouterId');
-    transitRouterPeerAttachmentName = registerOutput<String>(
-      'transitRouterPeerAttachmentName',
-    );
+    transitRouterPeerAttachmentName = registerOutput<String>('transitRouterPeerAttachmentName');
   }
 
   /// Gets an existing [TransitRouterPeerAttachment] resource's state with the given [name] and [id].
@@ -503,11 +469,11 @@ class TransitRouterPeerAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPublishRouteEnabled = registerOutput<bool?>('autoPublishRouteEnabled');
     bandwidth = registerOutput<int?>('bandwidth');
     bandwidthType = registerOutput<String>('bandwidthType');
@@ -517,31 +483,17 @@ class TransitRouterPeerAttachment extends pulumi.CustomResource {
     defaultLinkType = registerOutput<String>('defaultLinkType');
     dryRun = registerOutput<bool?>('dryRun');
     peerTransitRouterId = registerOutput<String>('peerTransitRouterId');
-    peerTransitRouterRegionId = registerOutput<String?>(
-      'peerTransitRouterRegionId',
-    );
+    peerTransitRouterRegionId = registerOutput<String?>('peerTransitRouterRegionId');
     regionId = registerOutput<String>('regionId');
     resourceType = registerOutput<String?>('resourceType');
-    routeTableAssociationEnabled = registerOutput<bool?>(
-      'routeTableAssociationEnabled',
-    );
-    routeTablePropagationEnabled = registerOutput<bool?>(
-      'routeTablePropagationEnabled',
-    );
+    routeTableAssociationEnabled = registerOutput<bool?>('routeTableAssociationEnabled');
+    routeTablePropagationEnabled = registerOutput<bool?>('routeTablePropagationEnabled');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    transitRouterAttachmentDescription = registerOutput<String?>(
-      'transitRouterAttachmentDescription',
-    );
-    transitRouterAttachmentId = registerOutput<String>(
-      'transitRouterAttachmentId',
-    );
-    transitRouterAttachmentName = registerOutput<String>(
-      'transitRouterAttachmentName',
-    );
+    transitRouterAttachmentDescription = registerOutput<String?>('transitRouterAttachmentDescription');
+    transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
+    transitRouterAttachmentName = registerOutput<String>('transitRouterAttachmentName');
     transitRouterId = registerOutput<String?>('transitRouterId');
-    transitRouterPeerAttachmentName = registerOutput<String>(
-      'transitRouterPeerAttachmentName',
-    );
+    transitRouterPeerAttachmentName = registerOutput<String>('transitRouterPeerAttachmentName');
   }
 }

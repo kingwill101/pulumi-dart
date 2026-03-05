@@ -431,25 +431,18 @@ import 'budget_management_group_time_period.dart';
 class BudgetManagementGroup extends pulumi.CustomResource {
   /// The total amount of cost to track with the budget.
   late final pulumi.Output<double> amount;
-
   /// (Optional) The ETag of the Management Group Consumption Budget.
   late final pulumi.Output<String> etag;
-
   /// A `filter` block as defined below.
   late final pulumi.Output<BudgetManagementGroupFilter?> filter;
-
   /// The ID of the Management Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managementGroupId;
-
   /// The name which should be used for this Management Group Consumption Budget. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// One or more `notification` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> notifications;
-
   /// The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> timeGrain;
-
   /// A `time_period` block as defined below.
   late final pulumi.Output<BudgetManagementGroupTimePeriod> timePeriod;
 
@@ -462,37 +455,19 @@ class BudgetManagementGroup extends pulumi.CustomResource {
     BudgetManagementGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:consumption/budgetManagementGroup:BudgetManagementGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:consumption/budgetManagementGroup:BudgetManagementGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amount = registerOutput<double>('amount');
     etag = registerOutput<String>('etag');
-    filter = registerOutput<BudgetManagementGroupFilter?>(
-      'filter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BudgetManagementGroupFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    filter = registerOutput<BudgetManagementGroupFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetManagementGroupFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
     notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
     timeGrain = registerOutput<String?>('timeGrain');
-    timePeriod = registerOutput<BudgetManagementGroupTimePeriod>(
-      'timePeriod',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BudgetManagementGroupTimePeriod.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timePeriod = registerOutput<BudgetManagementGroupTimePeriod>('timePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetManagementGroupTimePeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [BudgetManagementGroup] resource's state with the given [name] and [id].
@@ -513,36 +488,18 @@ class BudgetManagementGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:consumption/budgetManagementGroup:BudgetManagementGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:consumption/budgetManagementGroup:BudgetManagementGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amount = registerOutput<double>('amount');
     etag = registerOutput<String>('etag');
-    filter = registerOutput<BudgetManagementGroupFilter?>(
-      'filter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BudgetManagementGroupFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    filter = registerOutput<BudgetManagementGroupFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetManagementGroupFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
     notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
     timeGrain = registerOutput<String?>('timeGrain');
-    timePeriod = registerOutput<BudgetManagementGroupTimePeriod>(
-      'timePeriod',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BudgetManagementGroupTimePeriod.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timePeriod = registerOutput<BudgetManagementGroupTimePeriod>('timePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetManagementGroupTimePeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

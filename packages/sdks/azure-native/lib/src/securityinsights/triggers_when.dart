@@ -14,3 +14,4 @@ enum TriggersWhen {
     throw ArgumentError('Unknown TriggersWhen value: $value');
   }
 }
+

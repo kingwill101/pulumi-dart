@@ -1,17 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getFlavorprofileV2.
 class GetFlavorprofileV2Result {
   /// Extra data of the flavorprofile depending on the provider.
   final String flavorData;
   final String flavorprofileId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The name of the flavorprofile.
   final String name;
-
   /// The name of the provider that the flavorprofile uses.
   final String providerName;
   final String region;
@@ -54,3 +52,4 @@ class GetFlavorprofileV2Result {
     );
   }
 }
+

@@ -147,13 +147,10 @@ import 'cross_account_state.dart';
 class CrossAccount extends pulumi.CustomResource {
   /// Backup account alias
   late final pulumi.Output<String?> alias;
-
   /// Timestamp of the creation time
   late final pulumi.Output<int> createTime;
-
   /// The name of RAM role that the backup account authorizes the management account to manage its resources
   late final pulumi.Output<String> crossAccountRoleName;
-
   /// The uid of the backup account.
   late final pulumi.Output<int> crossAccountUserId;
 
@@ -166,11 +163,11 @@ class CrossAccount extends pulumi.CustomResource {
     CrossAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/crossAccount:CrossAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/crossAccount:CrossAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String?>('alias');
     createTime = registerOutput<int>('createTime');
     crossAccountRoleName = registerOutput<String>('crossAccountRoleName');
@@ -195,11 +192,11 @@ class CrossAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/crossAccount:CrossAccount',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/crossAccount:CrossAccount',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String?>('alias');
     createTime = registerOutput<int>('createTime');
     crossAccountRoleName = registerOutput<String>('crossAccountRoleName');

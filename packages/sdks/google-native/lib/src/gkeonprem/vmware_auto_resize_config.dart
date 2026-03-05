@@ -9,19 +9,20 @@ class VmwareAutoResizeConfig {
 
   /// Creates a new [VmwareAutoResizeConfig].
   /// [enabled] Whether to enable controle plane node auto resizing.
-  VmwareAutoResizeConfig({this.enabled});
+  VmwareAutoResizeConfig({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory VmwareAutoResizeConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAutoResizeConfig(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

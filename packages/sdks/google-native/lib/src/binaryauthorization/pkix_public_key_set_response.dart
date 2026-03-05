@@ -10,35 +10,20 @@ class PkixPublicKeySetResponse {
 
   /// Creates a new [PkixPublicKeySetResponse].
   /// [pkixPublicKeys] `pkix_public_keys` must have at least one entry.
-  PkixPublicKeySetResponse({required this.pkixPublicKeys});
+  PkixPublicKeySetResponse({
+    required this.pkixPublicKeys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pkixPublicKeys':
-          pulumi.Input.mapInputValue<
-            List<PkixPublicKeyResponse>,
-            List<Map<String, dynamic>>
-          >(
-            pkixPublicKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PkixPublicKeyResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'pkixPublicKeys': pulumi.Input.mapInputValue<List<PkixPublicKeyResponse>, List<Map<String, dynamic>>>(pkixPublicKeys, (value) => pulumi.Input.encodeList<PkixPublicKeyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PkixPublicKeySetResponse.fromMap(Map<String, dynamic> map) {
     return PkixPublicKeySetResponse(
-      pkixPublicKeys: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<PkixPublicKeyResponse>(
-          map['pkixPublicKeys']!,
-          (value) => PkixPublicKeyResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      pkixPublicKeys: pulumi.Input.fromValue(pulumi.Input.decodeList<PkixPublicKeyResponse>(map['pkixPublicKeys']!, (value) => PkixPublicKeyResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

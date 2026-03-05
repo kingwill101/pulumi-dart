@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb {
   /// Whether to delete the volume on termination. Defaults to unset, which is the value inherited from the parent image.
   final pulumi.Input<bool> deleteOnTermination;
-
   /// Whether to encrypt the volume. Defaults to unset, which is the value inherited from the parent image.
   final pulumi.Input<bool> encrypted;
-
   /// Number of Input/Output (I/O) operations per second to provision for an `io1` or `io2` volume.
   final pulumi.Input<int> iops;
-
   /// KMS key used to encrypt the container image.
   final pulumi.Input<String> kmsKeyId;
-
   /// Identifier of the EC2 Volume Snapshot.
   final pulumi.Input<String> snapshotId;
-
   /// For GP3 volumes only. The throughput in MiB/s that the volume supports.
   final pulumi.Input<int> throughput;
-
   /// Size of the volume, in GiB.
   final pulumi.Input<int> volumeSize;
-
   /// Type of the volume. For example, `gp2` or `io2`.
   final pulumi.Input<String> volumeType;
 
@@ -60,13 +53,9 @@ class GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb {
     };
   }
 
-  factory GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb.fromMap(Map<String, dynamic> map) {
     return GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb(
-      deleteOnTermination: pulumi.Input.fromValue(
-        map['deleteOnTermination'] as bool,
-      ),
+      deleteOnTermination: pulumi.Input.fromValue(map['deleteOnTermination'] as bool),
       encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
       iops: pulumi.Input.fromValue(map['iops'] as int),
       kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
@@ -77,3 +66,4 @@ class GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb {
     );
   }
 }
+

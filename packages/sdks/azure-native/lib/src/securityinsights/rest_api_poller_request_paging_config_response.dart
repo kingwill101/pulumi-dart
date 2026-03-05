@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestApiPollerRequestPagingConfigResponse {
   /// Page size
   final pulumi.Input<int>? pageSize;
-
   /// Page size parameter name
   final pulumi.Input<String>? pageSizeParameterName;
-
   /// Type of paging
   final pulumi.Input<String> pagingType;
 
@@ -31,21 +29,12 @@ class RestApiPollerRequestPagingConfigResponse {
     };
   }
 
-  factory RestApiPollerRequestPagingConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestApiPollerRequestPagingConfigResponse.fromMap(Map<String, dynamic> map) {
     return RestApiPollerRequestPagingConfigResponse(
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      pageSizeParameterName: (() {
-        final guardedValue = map['pageSizeParameterName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pageSizeParameterName: (() { final guardedValue = map['pageSizeParameterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pagingType: pulumi.Input.fromValue(map['pagingType'] as String),
     );
   }
 }
+

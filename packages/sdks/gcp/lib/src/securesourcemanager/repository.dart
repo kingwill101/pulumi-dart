@@ -388,7 +388,6 @@ import 'repository_state.dart';
 class Repository extends pulumi.CustomResource {
   /// Time the repository was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// The deletion policy for the repository. Setting `ABANDON` allows the resource
   /// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
   /// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
@@ -398,36 +397,26 @@ class Repository extends pulumi.CustomResource {
   /// * PREVENT
   /// * ABANDON
   late final pulumi.Output<String?> deletionPolicy;
-
   /// Description of the repository, which cannot exceed 500 characters.
   late final pulumi.Output<String?> description;
-
   /// Initial configurations for the repository.
   /// Structure is documented below.
   late final pulumi.Output<RepositoryInitialConfig?> initialConfig;
-
   /// The name of the instance in which the repository is hosted.
   late final pulumi.Output<String> instance;
-
   /// The location for the Repository.
   late final pulumi.Output<String> location;
-
   /// The resource name for the Repository.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The ID for the Repository.
   late final pulumi.Output<String> repositoryId;
-
   /// Unique identifier of the repository.
   late final pulumi.Output<String> uid;
-
   /// Time the repository was updated in UTC.
   late final pulumi.Output<String> updateTime;
-
   /// URIs for the repository.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> uris;
@@ -441,24 +430,15 @@ class Repository extends pulumi.CustomResource {
     RepositoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securesourcemanager/repository:Repository',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securesourcemanager/repository:Repository',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String?>('deletionPolicy');
     description = registerOutput<String?>('description');
-    initialConfig = registerOutput<RepositoryInitialConfig?>(
-      'initialConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RepositoryInitialConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    initialConfig = registerOutput<RepositoryInitialConfig?>('initialConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryInitialConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -487,24 +467,15 @@ class Repository extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securesourcemanager/repository:Repository',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securesourcemanager/repository:Repository',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String?>('deletionPolicy');
     description = registerOutput<String?>('description');
-    initialConfig = registerOutput<RepositoryInitialConfig?>(
-      'initialConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RepositoryInitialConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    initialConfig = registerOutput<RepositoryInitialConfig?>('initialConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryInitialConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

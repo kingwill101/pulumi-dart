@@ -6,10 +6,8 @@ import 'query_parameter_type_response.dart';
 class QueryParameterTypeStructTypesItemResponse {
   /// [Optional] Human-oriented description of the field.
   final pulumi.Input<String> description;
-
   /// [Optional] The name of this field.
   final pulumi.Input<String> name;
-
   /// [Required] The type of this field.
   final pulumi.Input<QueryParameterTypeResponse> type;
 
@@ -27,25 +25,16 @@ class QueryParameterTypeStructTypesItemResponse {
     return <String, dynamic>{
       'description': description,
       'name': name,
-      'type':
-          pulumi.Input.mapInputValue<
-            QueryParameterTypeResponse,
-            Map<String, dynamic>
-          >(type, (value) => value.toMap()),
+      'type': pulumi.Input.mapInputValue<QueryParameterTypeResponse, Map<String, dynamic>>(type, (value) => value.toMap()),
     };
   }
 
-  factory QueryParameterTypeStructTypesItemResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory QueryParameterTypeStructTypesItemResponse.fromMap(Map<String, dynamic> map) {
     return QueryParameterTypeStructTypesItemResponse(
       description: pulumi.Input.fromValue(map['description'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      type: pulumi.Input.fromValue(
-        QueryParameterTypeResponse.fromMap(
-          (map['type']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      type: pulumi.Input.fromValue(QueryParameterTypeResponse.fromMap((map['type']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

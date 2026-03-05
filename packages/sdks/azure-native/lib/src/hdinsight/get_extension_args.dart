@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExtensionArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// The name of the cluster extension.
   final pulumi.Input<String> extensionName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetExtensionArgs {
     return GetExtensionArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       extensionName: pulumi.Input.fromValue(map['extensionName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

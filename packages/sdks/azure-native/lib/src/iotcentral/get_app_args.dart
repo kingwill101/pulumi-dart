@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppArgs {
   /// The name of the resource group that contains the IoT Central application.
   final pulumi.Input<String> resourceGroupName;
-
   /// The ARM resource name of the IoT Central application.
   final pulumi.Input<String> resourceName;
 
   /// Creates a new [GetAppArgs].
   /// [resourceGroupName] The name of the resource group that contains the IoT Central application.
   /// [resourceName] The ARM resource name of the IoT Central application.
-  GetAppArgs({required this.resourceGroupName, required this.resourceName});
+  GetAppArgs({
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,10 +29,9 @@ class GetAppArgs {
 
   factory GetAppArgs.fromMap(Map<String, dynamic> map) {
     return GetAppArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

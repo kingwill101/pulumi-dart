@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatementConditionPropertiesResponse {
   /// List of IP Community resource IDs.
   final pulumi.Input<List<String>>? ipCommunityIds;
-
   /// List of IP Extended Community resource IDs.
   final pulumi.Input<List<String>>? ipExtendedCommunityIds;
-
   /// Arm Resource Id of IpPrefix.
   final pulumi.Input<String>? ipPrefixId;
-
   /// Type of the condition used.
   final pulumi.Input<String>? type;
 
@@ -37,30 +34,13 @@ class StatementConditionPropertiesResponse {
     };
   }
 
-  factory StatementConditionPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StatementConditionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StatementConditionPropertiesResponse(
-      ipCommunityIds: (() {
-        final guardedValue = map['ipCommunityIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      ipExtendedCommunityIds: (() {
-        final guardedValue = map['ipExtendedCommunityIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      ipPrefixId: (() {
-        final guardedValue = map['ipPrefixId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipCommunityIds: (() { final guardedValue = map['ipCommunityIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      ipExtendedCommunityIds: (() { final guardedValue = map['ipExtendedCommunityIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      ipPrefixId: (() { final guardedValue = map['ipPrefixId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

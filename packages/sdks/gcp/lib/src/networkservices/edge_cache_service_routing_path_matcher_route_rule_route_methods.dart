@@ -14,18 +14,15 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowedMethods': ?allowedMethods};
+    return <String, dynamic>{
+      'allowedMethods': ?allowedMethods,
+    };
   }
 
-  factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods(
-      allowedMethods: (() {
-        final guardedValue = map['allowedMethods'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowedMethods: (() { final guardedValue = map['allowedMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

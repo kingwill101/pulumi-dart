@@ -375,7 +375,6 @@ class Cert extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<int?> afterTime;
-
   /// The key algorithm of the client certificate. The key algorithm is specified in the format `_`. Valid values:
   /// - `RSA_1024`: corresponds to the signature algorithm Sha256WithRSA.
   /// - `RSA_2048`: corresponds to the signature algorithm Sha256WithRSA.
@@ -389,25 +388,19 @@ class Cert extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** You can call [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) to query the key algorithm of the subordinate CA certificate.
   late final pulumi.Output<String> algorithm;
-
   /// The name assigned to the issued certificate.
   late final pulumi.Output<String?> aliasName;
-
   /// The issuance time of the client certificate, in timestamp format. By default, it is set to the time when you call this API. Unit: seconds.
   ///
   /// &gt; **NOTE:**  The `before_time` and `after_time` parameters must either both be empty or both be specified.
   late final pulumi.Output<int?> beforeTime;
-
   /// Name of the certificate subject. For a Client Authentication (ClientAuth) certificate, the subject is typically an individual, company, organization, or application. We recommend using the common name of the subject—for example, Zhang San, Alibaba, Alibaba Cloud KMS, or Tmall Genie.
   late final pulumi.Output<String?> commonName;
-
   /// Country code of the organization associated with the subordinate CA certificate that issued this certificate.
   /// For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
   late final pulumi.Output<String?> countryCode;
-
   /// A user-defined unique identifier.
   late final pulumi.Output<String?> customIdentifier;
-
   /// Validity period of the client certificate, in days.
   ///
   /// The `days`, `before_time`, and `after_time` parameters cannot all be empty. Additionally, `before_time` and `after_time` must either both be set or both remain unset. The specific rules are as follows:
@@ -417,57 +410,42 @@ class Cert extends pulumi.CustomResource {
   /// &gt; **NOTE:** - If you set `days`, `before_time`, and `after_time` simultaneously, the validity period of the client certificate is determined by the value of `days`.
   /// - The validity period of the client certificate cannot exceed that of the issuing subordinate CA certificate. You can call [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) to check the validity period of the subordinate CA certificate.
   late final pulumi.Output<int> days;
-
   /// Whether to include the CRL URL. Valid values:
   late final pulumi.Output<int?> enableCrl;
-
   /// Specifies whether to return the digital certificate immediately. Valid values:
   late final pulumi.Output<int?> immediately;
-
   /// The name of the city where the organization associated with the certificate is located. Chinese characters, English letters, and other characters are supported.
   /// By default, this value is the same as the city name of the organization associated with the issuing subordinate CA certificate.
   late final pulumi.Output<String?> locality;
-
   /// The duration for which the certificate is purchased, in months.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<int?> months;
-
   /// Name of the organization associated with the subordinate CA certificate that issued this certificate.
   late final pulumi.Output<String?> organization;
-
   /// Department name. Default: Aliyun CDN.
   late final pulumi.Output<String?> organizationUnit;
-
   /// The unique identifier of the subordinate CA certificate that issued this certificate.
   late final pulumi.Output<String> parentIdentifier;
-
   /// The resource group ID. You can obtain this ID by calling the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The Subject Alternative Name (SAN) type supported by the client certificate. Valid values:
   late final pulumi.Output<String?> sanType;
-
   /// Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> sanValue;
-
   /// The name of the province, municipality, or autonomous region where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the province, municipality, or autonomous region of the organization associated with the subordinate CA certificate that issued this certificate.
   /// The name of the state or province where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the state or province of the organization associated with the subordinate CA certificate that issued this certificate.
   late final pulumi.Output<String?> state;
-
   /// The status of the certificate. Valid values:
   /// - `REVOKE`: indicates that the certificate has been revoked.
   /// &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
   late final pulumi.Output<String> status;
-
   /// Information about the queried instances and their associated tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Indicates whether the certificate has been uploaded to the SSL certificate management platform.
   late final pulumi.Output<int?> uploadFlag;
-
   /// The duration for which the certificate is purchased, in years.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -477,13 +455,16 @@ class Cert extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Cert]. {@macro pulumi_sslcertificatesservicepca_cert_cert_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Cert(String name, {CertArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:sslcertificatesservicepca/cert:Cert',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Cert(
+    String name, {
+    CertArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:sslcertificatesservicepca/cert:Cert',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     afterTime = registerOutput<int?>('afterTime');
     algorithm = registerOutput<String>('algorithm');
     aliasName = registerOutput<String?>('aliasName');
@@ -510,7 +491,11 @@ class Cert extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Cert] resource's state with the given [name] and [id].
-  static Cert get(String name, pulumi.Input<String> id, {CertState? state}) {
+  static Cert get(
+    String name,
+    pulumi.Input<String> id, {
+    CertState? state,
+  }) {
     return Cert._get(
       name,
       state: state?.toMap(),
@@ -523,11 +508,11 @@ class Cert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sslcertificatesservicepca/cert:Cert',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sslcertificatesservicepca/cert:Cert',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     afterTime = registerOutput<int?>('afterTime');
     algorithm = registerOutput<String>('algorithm');
     aliasName = registerOutput<String?>('aliasName');

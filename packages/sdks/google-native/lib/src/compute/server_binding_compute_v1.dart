@@ -8,27 +8,20 @@ class ServerBindingComputeV1 {
 
   /// Creates a new [ServerBindingComputeV1].
   /// [type] Optional.
-  ServerBindingComputeV1({this.type});
+  ServerBindingComputeV1({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServerBindingTypeComputeV1,
-            String
-          >(type, (value) => value.wireValue),
+      'type': ?pulumi.Input.mapOptionalInputValue<ServerBindingTypeComputeV1, String>(type, (value) => value.wireValue),
     };
   }
 
   factory ServerBindingComputeV1.fromMap(Map<String, dynamic> map) {
     return ServerBindingComputeV1(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServerBindingTypeComputeV1.fromValue(guardedValue as String),
-        );
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServerBindingTypeComputeV1.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

@@ -10,27 +10,20 @@ class RoleGkehubV1alpha {
 
   /// Creates a new [RoleGkehubV1alpha].
   /// [predefinedRole] predefined_role is the Kubernetes default role to use
-  RoleGkehubV1alpha({this.predefinedRole});
+  RoleGkehubV1alpha({
+    this.predefinedRole,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'predefinedRole':
-          ?pulumi.Input.mapOptionalInputValue<
-            RolePredefinedRoleGkehubV1alpha,
-            String
-          >(predefinedRole, (value) => value.wireValue),
+      'predefinedRole': ?pulumi.Input.mapOptionalInputValue<RolePredefinedRoleGkehubV1alpha, String>(predefinedRole, (value) => value.wireValue),
     };
   }
 
   factory RoleGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return RoleGkehubV1alpha(
-      predefinedRole: (() {
-        final guardedValue = map['predefinedRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RolePredefinedRoleGkehubV1alpha.fromValue(guardedValue as String),
-        );
-      })(),
+      predefinedRole: (() { final guardedValue = map['predefinedRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RolePredefinedRoleGkehubV1alpha.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

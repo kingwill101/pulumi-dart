@@ -351,12 +351,10 @@ class TrafficQosRule extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
   late final pulumi.Output<String?> dstCidr;
-
   /// The QoS rule traffic matches the Destination IPv6 network segment.
   ///
   /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
   late final pulumi.Output<String?> dstIpv6Cidr;
-
   /// QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
   /// - `ALL`:-1/-1, not editable.
   /// - **ICMP(IPv4)**:-1/-1, non-editable.
@@ -375,13 +373,10 @@ class TrafficQosRule extends pulumi.CustomResource {
   /// - `PostgreSQL`:5432/5432, non-editable.
   /// - `Redis`:6379/6379, non-editable.
   late final pulumi.Output<String> dstPortRange;
-
   /// The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
   late final pulumi.Output<int> matchDscp;
-
   /// QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
   late final pulumi.Output<int> priority;
-
   /// QoS rule protocol type, value:
   /// - `ALL`
   /// - **ICMP(IPv4)**
@@ -400,40 +395,30 @@ class TrafficQosRule extends pulumi.CustomResource {
   /// - `PostgreSQL`
   /// - `Redis`
   late final pulumi.Output<String> protocol;
-
   /// The QoS policy ID.
   late final pulumi.Output<String> qosId;
-
   /// The QoS queue ID.
   late final pulumi.Output<String> queueId;
-
   /// Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
   late final pulumi.Output<int> remarkingDscp;
-
   /// The description of the QoS rule.
   /// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
   late final pulumi.Output<String?> ruleDescription;
-
   /// The ID of the QoS rule.
   late final pulumi.Output<String> ruleId;
-
   /// The name of the QoS rule.
   /// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
   late final pulumi.Output<String?> ruleName;
-
   /// The QoS rule traffic matches the source IPv4 CIDR block.
   ///
   /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
   late final pulumi.Output<String?> srcCidr;
-
   /// The QoS rule traffic matches the source IPv6 network segment.
   ///
   /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
   late final pulumi.Output<String?> srcIpv6Cidr;
-
   /// The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
   late final pulumi.Output<String> srcPortRange;
-
   /// The status of the QoS rule. Value:
   late final pulumi.Output<String> status;
 
@@ -446,11 +431,11 @@ class TrafficQosRule extends pulumi.CustomResource {
     TrafficQosRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/trafficQosRule:TrafficQosRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/trafficQosRule:TrafficQosRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dstCidr = registerOutput<String?>('dstCidr');
     dstIpv6Cidr = registerOutput<String?>('dstIpv6Cidr');
     dstPortRange = registerOutput<String>('dstPortRange');
@@ -487,11 +472,11 @@ class TrafficQosRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/trafficQosRule:TrafficQosRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/trafficQosRule:TrafficQosRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dstCidr = registerOutput<String?>('dstCidr');
     dstIpv6Cidr = registerOutput<String?>('dstIpv6Cidr');
     dstPortRange = registerOutput<String>('dstPortRange');

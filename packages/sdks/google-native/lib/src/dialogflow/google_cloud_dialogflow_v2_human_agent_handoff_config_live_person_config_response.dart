@@ -14,14 +14,15 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accountNumber': accountNumber};
+    return <String, dynamic>{
+      'accountNumber': accountNumber,
+    };
   }
 
-  factory GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse(
       accountNumber: pulumi.Input.fromValue(map['accountNumber'] as String),
     );
   }
 }
+

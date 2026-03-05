@@ -352,107 +352,72 @@ import 'account_args.dart';
 class Account extends pulumi.CustomResource {
   /// The unique identifier associated with this Data Lake Analytics account.
   late final pulumi.Output<String> accountId;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The list of compute policies associated with this account.
   late final pulumi.Output<List<Map<String, dynamic>>> computePolicies;
-
   /// The account creation time.
   late final pulumi.Output<String> creationTime;
-
   /// The commitment tier in use for the current month.
   late final pulumi.Output<String> currentTier;
-
   /// The list of Data Lake Store accounts associated with this account.
   late final pulumi.Output<List<Map<String, dynamic>>> dataLakeStoreAccounts;
-
   /// The current state of the DebugDataAccessLevel for this account.
   late final pulumi.Output<String> debugDataAccessLevel;
-
   /// The default Data Lake Store account associated with this account.
   late final pulumi.Output<String> defaultDataLakeStoreAccount;
-
   /// The type of the default Data Lake Store account associated with this account.
   late final pulumi.Output<String> defaultDataLakeStoreAccountType;
-
   /// The full CName endpoint for this account.
   late final pulumi.Output<String> endpoint;
-
   /// The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
   late final pulumi.Output<String?> firewallAllowAzureIps;
-
   /// The list of firewall rules associated with this account.
   late final pulumi.Output<List<Map<String, dynamic>>> firewallRules;
-
   /// The current state of the IP address firewall for this account.
   late final pulumi.Output<String?> firewallState;
-
   /// The list of hiveMetastores associated with this account.
   late final pulumi.Output<List<Map<String, dynamic>>> hiveMetastores;
-
   /// The account last modified time.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// The resource location.
   late final pulumi.Output<String> location;
-
   /// The maximum supported active jobs under the account at the same time.
   late final pulumi.Output<int> maxActiveJobCountPerUser;
-
   /// The maximum supported degree of parallelism for this account.
   late final pulumi.Output<int?> maxDegreeOfParallelism;
-
   /// The maximum supported degree of parallelism per job for this account.
   late final pulumi.Output<int?> maxDegreeOfParallelismPerJob;
-
   /// The maximum supported jobs running under the account at the same time.
   late final pulumi.Output<int?> maxJobCount;
-
   /// The maximum supported active jobs under the account at the same time.
   late final pulumi.Output<int> maxJobRunningTimeInMin;
-
   /// The maximum supported jobs queued under the account at the same time.
   late final pulumi.Output<int> maxQueuedJobCountPerUser;
-
   /// The minimum supported priority per job for this account.
   late final pulumi.Output<int> minPriorityPerJob;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// The commitment tier for the next month.
   late final pulumi.Output<String?> newTier;
-
   /// The provisioning status of the Data Lake Analytics account.
   late final pulumi.Output<String> provisioningState;
-
   /// The list of Data Lake Store accounts associated with this account.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  publicDataLakeStoreAccounts;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> publicDataLakeStoreAccounts;
   /// The number of days that job metadata is retained.
   late final pulumi.Output<int?> queryStoreRetention;
-
   /// The state of the Data Lake Analytics account.
   late final pulumi.Output<String> state;
-
   /// The list of Azure Blob Storage accounts associated with this account.
   late final pulumi.Output<List<Map<String, dynamic>>> storageAccounts;
-
   /// The system defined maximum supported degree of parallelism for this account, which restricts the maximum value of parallelism the user can set for the account.
   late final pulumi.Output<int> systemMaxDegreeOfParallelism;
-
   /// The system defined maximum supported jobs running under the account at the same time, which restricts the maximum number of running jobs the user can set for the account.
   late final pulumi.Output<int> systemMaxJobCount;
-
   /// The resource tags.
   late final pulumi.Output<Map<String, String>> tags;
-
   /// The resource type.
   late final pulumi.Output<String> type;
-
   /// The list of virtualNetwork rules associated with this account.
   late final pulumi.Output<List<Map<String, dynamic>>> virtualNetworkRules;
 
@@ -465,42 +430,30 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datalakeanalytics:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datalakeanalytics:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    computePolicies = registerOutput<List<Map<String, dynamic>>>(
-      'computePolicies',
-    );
+    computePolicies = registerOutput<List<Map<String, dynamic>>>('computePolicies');
     creationTime = registerOutput<String>('creationTime');
     currentTier = registerOutput<String>('currentTier');
-    dataLakeStoreAccounts = registerOutput<List<Map<String, dynamic>>>(
-      'dataLakeStoreAccounts',
-    );
+    dataLakeStoreAccounts = registerOutput<List<Map<String, dynamic>>>('dataLakeStoreAccounts');
     debugDataAccessLevel = registerOutput<String>('debugDataAccessLevel');
-    defaultDataLakeStoreAccount = registerOutput<String>(
-      'defaultDataLakeStoreAccount',
-    );
-    defaultDataLakeStoreAccountType = registerOutput<String>(
-      'defaultDataLakeStoreAccountType',
-    );
+    defaultDataLakeStoreAccount = registerOutput<String>('defaultDataLakeStoreAccount');
+    defaultDataLakeStoreAccountType = registerOutput<String>('defaultDataLakeStoreAccountType');
     endpoint = registerOutput<String>('endpoint');
     firewallAllowAzureIps = registerOutput<String?>('firewallAllowAzureIps');
     firewallRules = registerOutput<List<Map<String, dynamic>>>('firewallRules');
     firewallState = registerOutput<String?>('firewallState');
-    hiveMetastores = registerOutput<List<Map<String, dynamic>>>(
-      'hiveMetastores',
-    );
+    hiveMetastores = registerOutput<List<Map<String, dynamic>>>('hiveMetastores');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     location = registerOutput<String>('location');
     maxActiveJobCountPerUser = registerOutput<int>('maxActiveJobCountPerUser');
     maxDegreeOfParallelism = registerOutput<int?>('maxDegreeOfParallelism');
-    maxDegreeOfParallelismPerJob = registerOutput<int?>(
-      'maxDegreeOfParallelismPerJob',
-    );
+    maxDegreeOfParallelismPerJob = registerOutput<int?>('maxDegreeOfParallelismPerJob');
     maxJobCount = registerOutput<int?>('maxJobCount');
     maxJobRunningTimeInMin = registerOutput<int>('maxJobRunningTimeInMin');
     maxQueuedJobCountPerUser = registerOutput<int>('maxQueuedJobCountPerUser');
@@ -508,22 +461,14 @@ class Account extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     newTier = registerOutput<String?>('newTier');
     provisioningState = registerOutput<String>('provisioningState');
-    publicDataLakeStoreAccounts = registerOutput<List<Map<String, dynamic>>?>(
-      'publicDataLakeStoreAccounts',
-    );
+    publicDataLakeStoreAccounts = registerOutput<List<Map<String, dynamic>>?>('publicDataLakeStoreAccounts');
     queryStoreRetention = registerOutput<int?>('queryStoreRetention');
     state = registerOutput<String>('state');
-    storageAccounts = registerOutput<List<Map<String, dynamic>>>(
-      'storageAccounts',
-    );
-    systemMaxDegreeOfParallelism = registerOutput<int>(
-      'systemMaxDegreeOfParallelism',
-    );
+    storageAccounts = registerOutput<List<Map<String, dynamic>>>('storageAccounts');
+    systemMaxDegreeOfParallelism = registerOutput<int>('systemMaxDegreeOfParallelism');
     systemMaxJobCount = registerOutput<int>('systemMaxJobCount');
     tags = registerOutput<Map<String, String>>('tags');
     type = registerOutput<String>('type');
-    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>>(
-      'virtualNetworkRules',
-    );
+    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>>('virtualNetworkRules');
   }
 }

@@ -285,10 +285,8 @@ class DiskAttachment extends pulumi.CustomResource {
   late final pulumi.Output<bool?> bootable;
   late final pulumi.Output<bool?> deleteWithInstance;
   late final pulumi.Output<String> device;
-
   /// ID of the Disk to be attached.
   late final pulumi.Output<String> diskId;
-
   /// ID of the Instance to attach to.
   late final pulumi.Output<String> instanceId;
   late final pulumi.Output<String?> keyPairName;
@@ -303,11 +301,11 @@ class DiskAttachment extends pulumi.CustomResource {
     DiskAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/diskAttachment:DiskAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/diskAttachment:DiskAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bootable = registerOutput<bool?>('bootable');
     deleteWithInstance = registerOutput<bool?>('deleteWithInstance');
     device = registerOutput<String>('device');
@@ -335,11 +333,11 @@ class DiskAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/diskAttachment:DiskAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/diskAttachment:DiskAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bootable = registerOutput<bool?>('bootable');
     deleteWithInstance = registerOutput<bool?>('deleteWithInstance');
     device = registerOutput<String>('device');

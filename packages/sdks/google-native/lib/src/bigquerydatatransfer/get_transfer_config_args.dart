@@ -32,14 +32,9 @@ class GetTransferConfigArgs {
   factory GetTransferConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetTransferConfigArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transferConfigId: pulumi.Input.fromValue(
-        map['transferConfigId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transferConfigId: pulumi.Input.fromValue(map['transferConfigId'] as String),
     );
   }
 }
+

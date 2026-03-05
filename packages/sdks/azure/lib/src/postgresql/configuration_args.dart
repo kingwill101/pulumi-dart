@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationArgs {
   /// Specifies the name of the PostgreSQL Configuration, which needs [to be a valid PostgreSQL configuration name](https://www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIER). Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
-
   /// The name of the resource group in which the PostgreSQL Server exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> serverName;
-
   /// Specifies the value of the PostgreSQL Configuration. See the PostgreSQL documentation for valid values. Changing this forces a new resource to be created.
   final pulumi.Input<String> value;
 
@@ -43,11 +40,10 @@ class ConfigurationArgs {
   factory ConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

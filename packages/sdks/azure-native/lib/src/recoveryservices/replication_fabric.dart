@@ -164,16 +164,12 @@ import 'replication_fabric_args.dart';
 class ReplicationFabric extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource Location
   late final pulumi.Output<String?> location;
-
   /// Resource Name
   late final pulumi.Output<String> name;
-
   /// Fabric related data.
   late final pulumi.Output<FabricPropertiesResponse> properties;
-
   /// Resource Type
   late final pulumi.Output<String> type;
 
@@ -186,24 +182,15 @@ class ReplicationFabric extends pulumi.CustomResource {
     ReplicationFabricArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:recoveryservices:ReplicationFabric',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:recoveryservices:ReplicationFabric',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<FabricPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FabricPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<FabricPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FabricPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

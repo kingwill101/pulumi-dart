@@ -9,12 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReadinessCheckArgs {
   /// Unique name describing the readiness check.
   final pulumi.Input<String> readinessCheckName;
-
   /// Name describing the resource set that will be monitored for readiness.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> resourceSetName;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -38,17 +36,10 @@ class ReadinessCheckArgs {
 
   factory ReadinessCheckArgs.fromMap(Map<String, dynamic> map) {
     return ReadinessCheckArgs(
-      readinessCheckName: pulumi.Input.fromValue(
-        map['readinessCheckName'] as String,
-      ),
+      readinessCheckName: pulumi.Input.fromValue(map['readinessCheckName'] as String),
       resourceSetName: pulumi.Input.fromValue(map['resourceSetName'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

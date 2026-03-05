@@ -10,10 +10,14 @@ class UserIdentity {
 
   /// Creates a new [UserIdentity].
   /// [identityType] Enum to determine identity framework.
-  UserIdentity({required this.identityType});
+  UserIdentity({
+    required this.identityType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'identityType': identityType};
+    return <String, dynamic>{
+      'identityType': identityType,
+    };
   }
 
   factory UserIdentity.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class UserIdentity {
     );
   }
 }
+

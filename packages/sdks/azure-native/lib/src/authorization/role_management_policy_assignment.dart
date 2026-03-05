@@ -141,26 +141,18 @@ import 'role_management_policy_assignment_args.dart';
 class RoleManagementPolicyAssignment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The readonly computed rule applied to the policy.
   late final pulumi.Output<List<Map<String, dynamic>>> effectiveRules;
-
   /// The role management policy name.
   late final pulumi.Output<String> name;
-
   /// Additional properties of scope, role definition and policy
-  late final pulumi.Output<PolicyAssignmentPropertiesResponse>
-  policyAssignmentProperties;
-
+  late final pulumi.Output<PolicyAssignmentPropertiesResponse> policyAssignmentProperties;
   /// The policy id role management policy assignment.
   late final pulumi.Output<String?> policyId;
-
   /// The role definition of management policy assignment.
   late final pulumi.Output<String?> roleDefinitionId;
-
   /// The role management policy scope.
   late final pulumi.Output<String?> scope;
-
   /// The role management policy type.
   late final pulumi.Output<String> type;
 
@@ -173,27 +165,15 @@ class RoleManagementPolicyAssignment extends pulumi.CustomResource {
     RoleManagementPolicyAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:authorization:RoleManagementPolicyAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:authorization:RoleManagementPolicyAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    effectiveRules = registerOutput<List<Map<String, dynamic>>>(
-      'effectiveRules',
-    );
+    effectiveRules = registerOutput<List<Map<String, dynamic>>>('effectiveRules');
     this.name = registerOutput<String>('name');
-    policyAssignmentProperties =
-        registerOutput<PolicyAssignmentPropertiesResponse>(
-          'policyAssignmentProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return PolicyAssignmentPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    policyAssignmentProperties = registerOutput<PolicyAssignmentPropertiesResponse>('policyAssignmentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyAssignmentPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyId = registerOutput<String?>('policyId');
     roleDefinitionId = registerOutput<String?>('roleDefinitionId');
     scope = registerOutput<String?>('scope');

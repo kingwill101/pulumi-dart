@@ -237,8 +237,7 @@ Future<GetBusinessCaseOperationResult> getBusinessCaseOperation(
 /// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-03-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrate_get_business_case_operation_report_download_url_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBusinessCaseOperationReportDownloadUrlResult>
-getBusinessCaseOperationReportDownloadUrl(
+Future<GetBusinessCaseOperationReportDownloadUrlResult> getBusinessCaseOperationReportDownloadUrl(
   GetBusinessCaseOperationReportDownloadUrlArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -312,8 +311,7 @@ Future<GetGroupsOperationResult> getGroupsOperation(
 /// Uses Azure REST API version 2024-03-03-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrate_get_heterogeneous_assessment_operation_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetHeterogeneousAssessmentOperationResult>
-getHeterogeneousAssessmentOperation(
+Future<GetHeterogeneousAssessmentOperationResult> getHeterogeneousAssessmentOperation(
   GetHeterogeneousAssessmentOperationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -481,8 +479,7 @@ Future<GetMigrateProjectResult> getMigrateProject(
 /// Other available API versions: 2023-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrate_get_migrate_projects_controller_migrate_project_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMigrateProjectsControllerMigrateProjectResult>
-getMigrateProjectsControllerMigrateProject(
+Future<GetMigrateProjectsControllerMigrateProjectResult> getMigrateProjectsControllerMigrateProject(
   GetMigrateProjectsControllerMigrateProjectArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -614,8 +611,7 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
 /// Other available API versions: 2023-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrate_get_private_endpoint_connection_controller_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult>
-getPrivateEndpointConnectionControllerPrivateEndpointConnection(
+Future<GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult> getPrivateEndpointConnectionControllerPrivateEndpointConnection(
   GetPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -625,9 +621,7 @@ getPrivateEndpointConnectionControllerPrivateEndpointConnection(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult.fromMap(
-    result,
-  );
+  return GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult.fromMap(result);
 }
 
 /// Get a PrivateEndpointConnection
@@ -637,8 +631,7 @@ getPrivateEndpointConnectionControllerPrivateEndpointConnection(
 /// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15, 2024-03-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrate_get_private_endpoint_connection_operation_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateEndpointConnectionOperationResult>
-getPrivateEndpointConnectionOperation(
+Future<GetPrivateEndpointConnectionOperationResult> getPrivateEndpointConnectionOperation(
   GetPrivateEndpointConnectionOperationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -956,8 +949,7 @@ Future<GetWorkloadDeploymentResult> getWorkloadDeployment(
 /// Uses Azure REST API version 2022-05-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrate_get_workload_deployment_secret_configurations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWorkloadDeploymentSecretConfigurationsResult>
-getWorkloadDeploymentSecretConfigurations(
+Future<GetWorkloadDeploymentSecretConfigurationsResult> getWorkloadDeploymentSecretConfigurations(
   GetWorkloadDeploymentSecretConfigurationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

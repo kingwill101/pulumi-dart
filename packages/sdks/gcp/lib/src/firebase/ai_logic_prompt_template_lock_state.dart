@@ -6,18 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiLogicPromptTemplateLockState {
   /// The location of the prompt template.
   final pulumi.Input<String>? location;
-
   /// Indicates if the prompt template is currently locked.
   /// This is verified against the server-side PromptTemplate resource.
   final pulumi.Input<bool>? locked;
-
   /// The resource name of the prompt template.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The ID of the prompt template.
   final pulumi.Input<String>? templateId;
 
@@ -47,31 +43,12 @@ class AiLogicPromptTemplateLockState {
 
   factory AiLogicPromptTemplateLockState.fromMap(Map<String, dynamic> map) {
     return AiLogicPromptTemplateLockState(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      locked: (() {
-        final guardedValue = map['locked'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      templateId: (() {
-        final guardedValue = map['templateId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      locked: (() { final guardedValue = map['locked']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      templateId: (() { final guardedValue = map['templateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -197,32 +197,22 @@ import 'system_data_response.dart';
 class DnsForwardingRuleset extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  dnsResolverOutboundEndpoints;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> dnsResolverOutboundEndpoints;
   /// ETag of the DNS forwarding ruleset.
   late final pulumi.Output<String> etag;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The current provisioning state of the DNS forwarding ruleset. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<String> provisioningState;
-
   /// The resourceGuid for the DNS forwarding ruleset.
   late final pulumi.Output<String> resourceGuid;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -235,30 +225,19 @@ class DnsForwardingRuleset extends pulumi.CustomResource {
     DnsForwardingRulesetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:dnsresolver:DnsForwardingRuleset',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:dnsresolver:DnsForwardingRuleset',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dnsResolverOutboundEndpoints = registerOutput<List<Map<String, dynamic>>>(
-      'dnsResolverOutboundEndpoints',
-    );
+    dnsResolverOutboundEndpoints = registerOutput<List<Map<String, dynamic>>>('dnsResolverOutboundEndpoints');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

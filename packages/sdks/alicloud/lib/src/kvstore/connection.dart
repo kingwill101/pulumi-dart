@@ -391,13 +391,10 @@ import 'connection_state.dart';
 class Connection extends pulumi.CustomResource {
   /// The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
   late final pulumi.Output<String> connectionString;
-
   /// The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
   late final pulumi.Output<String> connectionStringPrefix;
-
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
-
   /// The service port number of the instance.
   late final pulumi.Output<String> port;
 
@@ -410,11 +407,11 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kvstore/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kvstore/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionString = registerOutput<String>('connectionString');
     connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
     instanceId = registerOutput<String>('instanceId');
@@ -439,11 +436,11 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kvstore/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kvstore/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionString = registerOutput<String>('connectionString');
     connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
     instanceId = registerOutput<String>('instanceId');

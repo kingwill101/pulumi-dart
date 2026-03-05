@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps {
   /// The maximum amount of network bandwidth, in Gbps. To specify no maximum limit, omit this parameter.
   final pulumi.Input<double>? max;
-
   /// The minimum amount of network bandwidth, in Gbps. To specify no minimum limit, omit this parameter.
   final pulumi.Input<double>? min;
 
@@ -18,23 +17,17 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': ?max, 'min': ?min};
+    return <String, dynamic>{
+      'max': ?max,
+      'min': ?min,
+    };
   }
 
-  factory FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps.fromMap(Map<String, dynamic> map) {
     return FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps(
-      max: (() {
-        final guardedValue = map['max'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      min: (() {
-        final guardedValue = map['min'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

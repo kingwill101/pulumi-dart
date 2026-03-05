@@ -10,34 +10,20 @@ class TpuResponse {
 
   /// Creates a new [TpuResponse].
   /// [nodeSpec] The TPU node(s) being requested.
-  TpuResponse({required this.nodeSpec});
+  TpuResponse({
+    required this.nodeSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeSpec':
-          pulumi.Input.mapInputValue<
-            List<NodeSpecResponse>,
-            List<Map<String, dynamic>>
-          >(
-            nodeSpec,
-            (value) =>
-                pulumi.Input.encodeList<NodeSpecResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'nodeSpec': pulumi.Input.mapInputValue<List<NodeSpecResponse>, List<Map<String, dynamic>>>(nodeSpec, (value) => pulumi.Input.encodeList<NodeSpecResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TpuResponse.fromMap(Map<String, dynamic> map) {
     return TpuResponse(
-      nodeSpec: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<NodeSpecResponse>(
-          map['nodeSpec']!,
-          (value) =>
-              NodeSpecResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      nodeSpec: pulumi.Input.fromValue(pulumi.Input.decodeList<NodeSpecResponse>(map['nodeSpec']!, (value) => NodeSpecResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

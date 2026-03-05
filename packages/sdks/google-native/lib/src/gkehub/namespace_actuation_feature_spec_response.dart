@@ -9,17 +9,20 @@ class NamespaceActuationFeatureSpecResponse {
 
   /// Creates a new [NamespaceActuationFeatureSpecResponse].
   /// [actuationMode] actuation_mode controls the behavior of the controller
-  NamespaceActuationFeatureSpecResponse({required this.actuationMode});
+  NamespaceActuationFeatureSpecResponse({
+    required this.actuationMode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'actuationMode': actuationMode};
+    return <String, dynamic>{
+      'actuationMode': actuationMode,
+    };
   }
 
-  factory NamespaceActuationFeatureSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NamespaceActuationFeatureSpecResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceActuationFeatureSpecResponse(
       actuationMode: pulumi.Input.fromValue(map['actuationMode'] as String),
     );
   }
 }
+

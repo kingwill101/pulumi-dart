@@ -14,3 +14,4 @@ enum IsDeviceOperator {
     throw ArgumentError('Unknown IsDeviceOperator value: $value');
   }
 }
+

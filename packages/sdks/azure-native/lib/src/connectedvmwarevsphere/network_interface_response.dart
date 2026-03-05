@@ -7,35 +7,25 @@ import 'nic_ipsettings_response.dart';
 class NetworkInterfaceResponse {
   /// Gets or sets the device key value.
   final pulumi.Input<int>? deviceKey;
-
   /// Gets or sets the nic ip addresses.
   final pulumi.Input<List<String>> ipAddresses;
-
   /// Gets or sets the ipsettings.
   final pulumi.Input<NicIPSettingsResponse>? ipSettings;
-
   /// Gets or sets the label of the virtual network in vCenter that the nic is connected to.
   final pulumi.Input<String> label;
-
   /// Gets or sets the NIC MAC address.
   final pulumi.Input<String> macAddress;
-
   /// Gets or sets the name of the network interface.
   final pulumi.Input<String>? name;
-
   /// Gets or sets the ARM Id of the network resource to connect the virtual machine.
   final pulumi.Input<String>? networkId;
-
   /// Gets or sets the name of the virtual network in vCenter that the nic is connected to.
   final pulumi.Input<String> networkMoName;
-
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID of the virtual network
   /// that the nic is connected to.
   final pulumi.Input<String> networkMoRefId;
-
   /// NIC type
   final pulumi.Input<String>? nicType;
-
   /// Gets or sets the power on boot.
   final pulumi.Input<String>? powerOnBoot;
 
@@ -69,11 +59,7 @@ class NetworkInterfaceResponse {
     return <String, dynamic>{
       'deviceKey': ?deviceKey,
       'ipAddresses': ipAddresses,
-      'ipSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            NicIPSettingsResponse,
-            Map<String, dynamic>
-          >(ipSettings, (value) => value.toMap()),
+      'ipSettings': ?pulumi.Input.mapOptionalInputValue<NicIPSettingsResponse, Map<String, dynamic>>(ipSettings, (value) => value.toMap()),
       'label': label,
       'macAddress': macAddress,
       'name': ?name,
@@ -87,47 +73,18 @@ class NetworkInterfaceResponse {
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      deviceKey: (() {
-        final guardedValue = map['deviceKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ipAddresses: pulumi.Input.fromValue(
-        (map['ipAddresses'] as List).cast<String>(),
-      ),
-      ipSettings: (() {
-        final guardedValue = map['ipSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NicIPSettingsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      deviceKey: (() { final guardedValue = map['deviceKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ipAddresses: pulumi.Input.fromValue((map['ipAddresses'] as List).cast<String>()),
+      ipSettings: (() { final guardedValue = map['ipSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NicIPSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       label: pulumi.Input.fromValue(map['label'] as String),
       macAddress: pulumi.Input.fromValue(map['macAddress'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkId: (() {
-        final guardedValue = map['networkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkMoName: pulumi.Input.fromValue(map['networkMoName'] as String),
       networkMoRefId: pulumi.Input.fromValue(map['networkMoRefId'] as String),
-      nicType: (() {
-        final guardedValue = map['nicType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      powerOnBoot: (() {
-        final guardedValue = map['powerOnBoot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      nicType: (() { final guardedValue = map['nicType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      powerOnBoot: (() { final guardedValue = map['powerOnBoot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

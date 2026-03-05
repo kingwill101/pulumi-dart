@@ -9,19 +9,20 @@ class Address {
 
   /// Creates a new [Address].
   /// [addressDefinition] Property addressDefinition
-  Address({this.addressDefinition});
+  Address({
+    this.addressDefinition,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'addressDefinition': ?addressDefinition};
+    return <String, dynamic>{
+      'addressDefinition': ?addressDefinition,
+    };
   }
 
   factory Address.fromMap(Map<String, dynamic> map) {
     return Address(
-      addressDefinition: (() {
-        final guardedValue = map['addressDefinition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addressDefinition: (() { final guardedValue = map['addressDefinition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,14 @@ class KubernetesRoleCompute {
 
   /// Creates a new [KubernetesRoleCompute].
   /// [vmProfile] VM profile
-  KubernetesRoleCompute({required this.vmProfile});
+  KubernetesRoleCompute({
+    required this.vmProfile,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vmProfile': vmProfile};
+    return <String, dynamic>{
+      'vmProfile': vmProfile,
+    };
   }
 
   factory KubernetesRoleCompute.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class KubernetesRoleCompute {
     );
   }
 }
+

@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificatesCertificate {
   /// Certificate recording ID.
   final pulumi.Input<String> certificateId;
-
   /// Your certificate name.
   final pulumi.Input<String> certificateName;
-
   /// Certificate bound to the domain name.
   final pulumi.Input<String> commonName;
-
   /// WAF domain name.
   final pulumi.Input<String> domain;
-
   /// The ID of the Certificate.
   final pulumi.Input<String> id;
-
   /// WAF instance ID.
   final pulumi.Input<String> instanceId;
   final pulumi.Input<bool> isUsing;
@@ -69,3 +64,4 @@ class GetCertificatesCertificate {
     );
   }
 }
+

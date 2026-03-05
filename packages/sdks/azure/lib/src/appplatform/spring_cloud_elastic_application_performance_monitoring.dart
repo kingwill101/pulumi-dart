@@ -238,23 +238,17 @@ import 'spring_cloud_elastic_application_performance_monitoring_state.dart';
 /// ```sh
 /// $ pulumi import azure:appplatform/springCloudElasticApplicationPerformanceMonitoring:SpringCloudElasticApplicationPerformanceMonitoring example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.AppPlatform/spring/service1/apms/apm1
 /// ```
-class SpringCloudElasticApplicationPerformanceMonitoring
-    extends pulumi.CustomResource {
+class SpringCloudElasticApplicationPerformanceMonitoring extends pulumi.CustomResource {
   /// Specifies a list of the packages which should be used to determine whether a stack trace frame is an in-app frame or a library frame. This is a comma separated list of package names.
   late final pulumi.Output<List<String>> applicationPackages;
-
   /// Specifies whether the Spring Cloud Application Performance Monitoring resource for Application Insights is enabled globally. Defaults to `false`.
   late final pulumi.Output<bool?> globallyEnabled;
-
   /// The name which should be used for this Spring Cloud Application Performance Monitoring resource for Elastic. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the server URL. The URL must be fully qualified, including protocol (http or https) and port.
   late final pulumi.Output<String> serverUrl;
-
   /// Specifies the service name which is used to keep all the errors and transactions of your service together and is the primary filter in the Elastic APM user interface.
   late final pulumi.Output<String> serviceName;
-
   /// The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudServiceId;
 
@@ -267,11 +261,11 @@ class SpringCloudElasticApplicationPerformanceMonitoring
     SpringCloudElasticApplicationPerformanceMonitoringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudElasticApplicationPerformanceMonitoring:SpringCloudElasticApplicationPerformanceMonitoring',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudElasticApplicationPerformanceMonitoring:SpringCloudElasticApplicationPerformanceMonitoring',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationPackages = registerOutput<List<String>>('applicationPackages');
     globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
@@ -298,11 +292,11 @@ class SpringCloudElasticApplicationPerformanceMonitoring
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudElasticApplicationPerformanceMonitoring:SpringCloudElasticApplicationPerformanceMonitoring',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudElasticApplicationPerformanceMonitoring:SpringCloudElasticApplicationPerformanceMonitoring',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationPackages = registerOutput<List<String>>('applicationPackages');
     globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');

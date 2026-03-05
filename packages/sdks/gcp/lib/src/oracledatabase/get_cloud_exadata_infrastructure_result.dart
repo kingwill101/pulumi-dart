@@ -12,7 +12,6 @@ class GetCloudExadataInfrastructureResult {
   final Map<String, String> effectiveLabels;
   final String entitlementId;
   final String gcpOracleZone;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -68,21 +67,14 @@ class GetCloudExadataInfrastructureResult {
       'location': location,
       'name': name,
       'project': ?project,
-      'properties':
-          pulumi.Input.encodeList<
-            GetCloudExadataInfrastructureProperty,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.encodeList<GetCloudExadataInfrastructureProperty, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'pulumiLabels': pulumiLabels,
     };
   }
 
-  factory GetCloudExadataInfrastructureResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCloudExadataInfrastructureResult.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructureResult(
-      cloudExadataInfrastructureId:
-          map['cloudExadataInfrastructureId'] as String,
+      cloudExadataInfrastructureId: map['cloudExadataInfrastructureId'] as String,
       createTime: map['createTime'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       displayName: map['displayName'] as String,
@@ -93,19 +85,10 @@ class GetCloudExadataInfrastructureResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       name: map['name'] as String,
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      properties:
-          pulumi.Input.decodeList<GetCloudExadataInfrastructureProperty>(
-            map['properties']!,
-            (value) => GetCloudExadataInfrastructureProperty.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: pulumi.Input.decodeList<GetCloudExadataInfrastructureProperty>(map['properties']!, (value) => GetCloudExadataInfrastructureProperty.fromMap((value as Map).cast<String, dynamic>())),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
     );
   }
 }
+

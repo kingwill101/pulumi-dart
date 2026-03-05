@@ -15,10 +15,8 @@ class DiJobTableMappingTransformationRule {
   ///
   /// DefineIncrementalCondition
   final pulumi.Input<String>? ruleActionType;
-
   /// Rule Name
   final pulumi.Input<String>? ruleName;
-
   /// Target type of action, optional enumeration value:
   ///
   /// Table (Table)
@@ -44,25 +42,12 @@ class DiJobTableMappingTransformationRule {
     };
   }
 
-  factory DiJobTableMappingTransformationRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiJobTableMappingTransformationRule.fromMap(Map<String, dynamic> map) {
     return DiJobTableMappingTransformationRule(
-      ruleActionType: (() {
-        final guardedValue = map['ruleActionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ruleName: (() {
-        final guardedValue = map['ruleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ruleTargetType: (() {
-        final guardedValue = map['ruleTargetType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ruleActionType: (() { final guardedValue = map['ruleActionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleTargetType: (() { final guardedValue = map['ruleTargetType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

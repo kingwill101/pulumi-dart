@@ -14,64 +14,47 @@ import 'runtime_template_software_config.dart';
 class RuntimeTemplateState {
   /// The configuration for the data disk of the runtime.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeTemplateDataPersistentDiskSpec>?
-  dataPersistentDiskSpec;
-
+  final pulumi.Input<RuntimeTemplateDataPersistentDiskSpec>? dataPersistentDiskSpec;
   /// The description of the Runtime Template.
   final pulumi.Input<String>? description;
-
   /// Required. The display name of the Runtime Template.
   final pulumi.Input<String>? displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
-
   /// Customer-managed encryption key spec for the notebook runtime.
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateEncryptionSpec>? encryptionSpec;
-
   /// EUC configuration of the NotebookRuntimeTemplate.
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateEucConfig>? eucConfig;
-
   /// Notebook Idle Shutdown configuration for the runtime.
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateIdleShutdownConfig>? idleShutdownConfig;
-
   /// Labels to identify and group the runtime template.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   final pulumi.Input<String>? location;
-
   /// 'The machine configuration of the runtime.'
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateMachineSpec>? machineSpec;
-
   /// The resource name of the Runtime Template
   final pulumi.Input<String>? name;
-
   /// The network configuration for the runtime.
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateNetworkSpec>? networkSpec;
-
   /// Applies the given Compute Engine tags to the runtime.
   final pulumi.Input<List<String>>? networkTags;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
-
   /// Runtime Shielded VM spec.
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateShieldedVmConfig>? shieldedVmConfig;
-
   /// The notebook software configuration of the notebook runtime.
   /// Structure is documented below.
   final pulumi.Input<RuntimeTemplateSoftwareConfig>? softwareConfig;
@@ -116,183 +99,46 @@ class RuntimeTemplateState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataPersistentDiskSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateDataPersistentDiskSpec,
-            Map<String, dynamic>
-          >(dataPersistentDiskSpec, (value) => value.toMap()),
+      'dataPersistentDiskSpec': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateDataPersistentDiskSpec, Map<String, dynamic>>(dataPersistentDiskSpec, (value) => value.toMap()),
       'description': ?description,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
-      'encryptionSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateEncryptionSpec,
-            Map<String, dynamic>
-          >(encryptionSpec, (value) => value.toMap()),
-      'eucConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateEucConfig,
-            Map<String, dynamic>
-          >(eucConfig, (value) => value.toMap()),
-      'idleShutdownConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateIdleShutdownConfig,
-            Map<String, dynamic>
-          >(idleShutdownConfig, (value) => value.toMap()),
+      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
+      'eucConfig': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateEucConfig, Map<String, dynamic>>(eucConfig, (value) => value.toMap()),
+      'idleShutdownConfig': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateIdleShutdownConfig, Map<String, dynamic>>(idleShutdownConfig, (value) => value.toMap()),
       'labels': ?labels,
       'location': ?location,
-      'machineSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateMachineSpec,
-            Map<String, dynamic>
-          >(machineSpec, (value) => value.toMap()),
+      'machineSpec': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateMachineSpec, Map<String, dynamic>>(machineSpec, (value) => value.toMap()),
       'name': ?name,
-      'networkSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateNetworkSpec,
-            Map<String, dynamic>
-          >(networkSpec, (value) => value.toMap()),
+      'networkSpec': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateNetworkSpec, Map<String, dynamic>>(networkSpec, (value) => value.toMap()),
       'networkTags': ?networkTags,
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
-      'shieldedVmConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateShieldedVmConfig,
-            Map<String, dynamic>
-          >(shieldedVmConfig, (value) => value.toMap()),
-      'softwareConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeTemplateSoftwareConfig,
-            Map<String, dynamic>
-          >(softwareConfig, (value) => value.toMap()),
+      'shieldedVmConfig': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateShieldedVmConfig, Map<String, dynamic>>(shieldedVmConfig, (value) => value.toMap()),
+      'softwareConfig': ?pulumi.Input.mapOptionalInputValue<RuntimeTemplateSoftwareConfig, Map<String, dynamic>>(softwareConfig, (value) => value.toMap()),
     };
   }
 
   factory RuntimeTemplateState.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateState(
-      dataPersistentDiskSpec: (() {
-        final guardedValue = map['dataPersistentDiskSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuntimeTemplateDataPersistentDiskSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      effectiveLabels: (() {
-        final guardedValue = map['effectiveLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      encryptionSpec: (() {
-        final guardedValue = map['encryptionSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuntimeTemplateEncryptionSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      eucConfig: (() {
-        final guardedValue = map['eucConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuntimeTemplateEucConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      idleShutdownConfig: (() {
-        final guardedValue = map['idleShutdownConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuntimeTemplateIdleShutdownConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      machineSpec: (() {
-        final guardedValue = map['machineSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuntimeTemplateMachineSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkSpec: (() {
-        final guardedValue = map['networkSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuntimeTemplateNetworkSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      networkTags: (() {
-        final guardedValue = map['networkTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pulumiLabels: (() {
-        final guardedValue = map['pulumiLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      shieldedVmConfig: (() {
-        final guardedValue = map['shieldedVmConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuntimeTemplateShieldedVmConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      softwareConfig: (() {
-        final guardedValue = map['softwareConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuntimeTemplateSoftwareConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      dataPersistentDiskSpec: (() { final guardedValue = map['dataPersistentDiskSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeTemplateDataPersistentDiskSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      encryptionSpec: (() { final guardedValue = map['encryptionSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeTemplateEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      eucConfig: (() { final guardedValue = map['eucConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeTemplateEucConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      idleShutdownConfig: (() { final guardedValue = map['idleShutdownConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeTemplateIdleShutdownConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      machineSpec: (() { final guardedValue = map['machineSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeTemplateMachineSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkSpec: (() { final guardedValue = map['networkSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeTemplateNetworkSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      networkTags: (() { final guardedValue = map['networkTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      shieldedVmConfig: (() { final guardedValue = map['shieldedVmConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeTemplateShieldedVmConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      softwareConfig: (() { final guardedValue = map['softwareConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeTemplateSoftwareConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

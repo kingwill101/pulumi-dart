@@ -11,10 +11,14 @@ class GetFirewallPolicyArgs {
 
   /// Creates a new [GetFirewallPolicyArgs].
   /// [firewallPolicy] Required.
-  GetFirewallPolicyArgs({required this.firewallPolicy});
+  GetFirewallPolicyArgs({
+    required this.firewallPolicy,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'firewallPolicy': firewallPolicy};
+    return <String, dynamic>{
+      'firewallPolicy': firewallPolicy,
+    };
   }
 
   factory GetFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetFirewallPolicyArgs {
     );
   }
 }
+

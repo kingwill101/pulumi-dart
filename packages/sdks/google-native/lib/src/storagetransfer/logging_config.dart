@@ -8,10 +8,8 @@ import 'logging_config_log_actions_item.dart';
 class LoggingConfig {
   /// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
   final pulumi.Input<bool>? enableOnpremGcsTransferLogs;
-
   /// States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
   final pulumi.Input<List<LoggingConfigLogActionStatesItem>>? logActionStates;
-
   /// Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
   final pulumi.Input<List<LoggingConfigLogActionsItem>>? logActions;
 
@@ -28,61 +26,17 @@ class LoggingConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enableOnpremGcsTransferLogs': ?enableOnpremGcsTransferLogs,
-      'logActionStates':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LoggingConfigLogActionStatesItem>,
-            List<String>
-          >(
-            logActionStates,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LoggingConfigLogActionStatesItem,
-                  String
-                >(value, (value) => value.wireValue),
-          ),
-      'logActions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LoggingConfigLogActionsItem>,
-            List<String>
-          >(
-            logActions,
-            (value) =>
-                pulumi.Input.encodeList<LoggingConfigLogActionsItem, String>(
-                  value,
-                  (value) => value.wireValue,
-                ),
-          ),
+      'logActionStates': ?pulumi.Input.mapOptionalInputValue<List<LoggingConfigLogActionStatesItem>, List<String>>(logActionStates, (value) => pulumi.Input.encodeList<LoggingConfigLogActionStatesItem, String>(value, (value) => value.wireValue)),
+      'logActions': ?pulumi.Input.mapOptionalInputValue<List<LoggingConfigLogActionsItem>, List<String>>(logActions, (value) => pulumi.Input.encodeList<LoggingConfigLogActionsItem, String>(value, (value) => value.wireValue)),
     };
   }
 
   factory LoggingConfig.fromMap(Map<String, dynamic> map) {
     return LoggingConfig(
-      enableOnpremGcsTransferLogs: (() {
-        final guardedValue = map['enableOnpremGcsTransferLogs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      logActionStates: (() {
-        final guardedValue = map['logActionStates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LoggingConfigLogActionStatesItem>(
-            guardedValue,
-            (value) =>
-                LoggingConfigLogActionStatesItem.fromValue(value as String),
-          ),
-        );
-      })(),
-      logActions: (() {
-        final guardedValue = map['logActions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LoggingConfigLogActionsItem>(
-            guardedValue,
-            (value) => LoggingConfigLogActionsItem.fromValue(value as String),
-          ),
-        );
-      })(),
+      enableOnpremGcsTransferLogs: (() { final guardedValue = map['enableOnpremGcsTransferLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      logActionStates: (() { final guardedValue = map['logActionStates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LoggingConfigLogActionStatesItem>(guardedValue, (value) => LoggingConfigLogActionStatesItem.fromValue(value as String))); })(),
+      logActions: (() { final guardedValue = map['logActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LoggingConfigLogActionsItem>(guardedValue, (value) => LoggingConfigLogActionsItem.fromValue(value as String))); })(),
     );
   }
 }
+

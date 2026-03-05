@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCacheRuleArgs {
   /// The name of the cache rule.
   final pulumi.Input<String> cacheRuleName;
-
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetCacheRuleArgs {
     return GetCacheRuleArgs(
       cacheRuleName: pulumi.Input.fromValue(map['cacheRuleName'] as String),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

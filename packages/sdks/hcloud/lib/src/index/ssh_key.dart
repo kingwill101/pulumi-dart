@@ -134,13 +134,10 @@ import 'ssh_key_state.dart';
 class SshKey extends pulumi.CustomResource {
   /// Fingerprint of the SSH public key.
   late final pulumi.Output<String> fingerprint;
-
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   late final pulumi.Output<Map<String, String>> labels;
-
   /// Name of the SSH Key.
   late final pulumi.Output<String> name;
-
   /// Public key of the SSH Key pair. If this is a file, it can be read using the `file` interpolation function.
   late final pulumi.Output<String> publicKey;
 
@@ -148,13 +145,16 @@ class SshKey extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [SshKey]. {@macro pulumi_index_ssh_key_ssh_key_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  SshKey(String name, {SshKeyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'hcloud:index/sshKey:SshKey',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  SshKey(
+    String name, {
+    SshKeyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'hcloud:index/sshKey:SshKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fingerprint = registerOutput<String>('fingerprint');
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
@@ -179,11 +179,11 @@ class SshKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/sshKey:SshKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/sshKey:SshKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fingerprint = registerOutput<String>('fingerprint');
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');

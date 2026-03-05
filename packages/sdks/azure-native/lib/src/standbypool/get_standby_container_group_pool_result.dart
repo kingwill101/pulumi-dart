@@ -8,31 +8,22 @@ import 'system_data_response.dart';
 class GetStandbyContainerGroupPoolResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Specifies container group properties of standby container group pools.
   final ContainerGroupPropertiesResponse containerGroupProperties;
-
   /// Specifies elasticity profile of standby container group pools.
   final StandbyContainerGroupPoolElasticityProfileResponse elasticityProfile;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The status of the last operation.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -78,26 +69,16 @@ class GetStandbyContainerGroupPoolResult {
   factory GetStandbyContainerGroupPoolResult.fromMap(Map<String, dynamic> map) {
     return GetStandbyContainerGroupPoolResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      containerGroupProperties: ContainerGroupPropertiesResponse.fromMap(
-        (map['containerGroupProperties']! as Map).cast<String, dynamic>(),
-      ),
-      elasticityProfile:
-          StandbyContainerGroupPoolElasticityProfileResponse.fromMap(
-            (map['elasticityProfile']! as Map).cast<String, dynamic>(),
-          ),
+      containerGroupProperties: ContainerGroupPropertiesResponse.fromMap((map['containerGroupProperties']! as Map).cast<String, dynamic>()),
+      elasticityProfile: StandbyContainerGroupPoolElasticityProfileResponse.fromMap((map['elasticityProfile']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

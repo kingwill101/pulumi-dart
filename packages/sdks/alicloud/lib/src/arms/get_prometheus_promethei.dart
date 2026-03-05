@@ -5,61 +5,42 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrometheusPromethei {
   /// (Available since v1.214.0) The authorization token. **Note:** `auth_token` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> authToken;
-
   /// The ID of the cluster.
   final pulumi.Input<String> clusterId;
-
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// The type of the cluster.
   final pulumi.Input<String> clusterType;
-
   /// The ID of the Grafana workspace.
   final pulumi.Input<String> grafanaInstanceId;
-
   /// (Available since v1.214.0) The public URL for the HTTP API. **Note:** `http_api_inter_url` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> httpApiInterUrl;
-
   /// (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `http_api_intra_url` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> httpApiIntraUrl;
-
   /// The ID of the Prometheus.
   final pulumi.Input<String> id;
-
   /// (Available since v1.214.0) The public URL for Pushgateway. **Note:** `push_gate_way_inter_url` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> pushGateWayInterUrl;
-
   /// (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `push_gate_way_intra_url` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> pushGateWayIntraUrl;
-
   /// (Available since v1.214.0) The public URL for remote read. **Note:** `remote_read_inter_url` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> remoteReadInterUrl;
-
   /// (Available since v1.214.0) The internal URL for remote read. **Note:** `remote_read_intra_url` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> remoteReadIntraUrl;
-
   /// (Available since v1.214.0) The public URL for remote write. **Note:** `remote_write_inter_url` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> remoteWriteInterUrl;
-
   /// (Available since v1.214.0) The internal URL for remote write. **Note:** `remote_write_intra_url` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> remoteWriteIntraUrl;
-
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
-
   /// The ID of the security group.
   final pulumi.Input<String> securityGroupId;
-
   /// The child instance json string of the globalView instance.
   final pulumi.Input<String> subClustersJson;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
-
   /// The ID of the VSwitch.
   final pulumi.Input<String> vswitchId;
 
@@ -138,30 +119,16 @@ class GetPrometheusPromethei {
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       clusterType: pulumi.Input.fromValue(map['clusterType'] as String),
-      grafanaInstanceId: pulumi.Input.fromValue(
-        map['grafanaInstanceId'] as String,
-      ),
+      grafanaInstanceId: pulumi.Input.fromValue(map['grafanaInstanceId'] as String),
       httpApiInterUrl: pulumi.Input.fromValue(map['httpApiInterUrl'] as String),
       httpApiIntraUrl: pulumi.Input.fromValue(map['httpApiIntraUrl'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      pushGateWayInterUrl: pulumi.Input.fromValue(
-        map['pushGateWayInterUrl'] as String,
-      ),
-      pushGateWayIntraUrl: pulumi.Input.fromValue(
-        map['pushGateWayIntraUrl'] as String,
-      ),
-      remoteReadInterUrl: pulumi.Input.fromValue(
-        map['remoteReadInterUrl'] as String,
-      ),
-      remoteReadIntraUrl: pulumi.Input.fromValue(
-        map['remoteReadIntraUrl'] as String,
-      ),
-      remoteWriteInterUrl: pulumi.Input.fromValue(
-        map['remoteWriteInterUrl'] as String,
-      ),
-      remoteWriteIntraUrl: pulumi.Input.fromValue(
-        map['remoteWriteIntraUrl'] as String,
-      ),
+      pushGateWayInterUrl: pulumi.Input.fromValue(map['pushGateWayInterUrl'] as String),
+      pushGateWayIntraUrl: pulumi.Input.fromValue(map['pushGateWayIntraUrl'] as String),
+      remoteReadInterUrl: pulumi.Input.fromValue(map['remoteReadInterUrl'] as String),
+      remoteReadIntraUrl: pulumi.Input.fromValue(map['remoteReadIntraUrl'] as String),
+      remoteWriteInterUrl: pulumi.Input.fromValue(map['remoteWriteInterUrl'] as String),
+      remoteWriteIntraUrl: pulumi.Input.fromValue(map['remoteWriteIntraUrl'] as String),
       resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
       securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
       subClustersJson: pulumi.Input.fromValue(map['subClustersJson'] as String),
@@ -171,3 +138,4 @@ class GetPrometheusPromethei {
     );
   }
 }
+

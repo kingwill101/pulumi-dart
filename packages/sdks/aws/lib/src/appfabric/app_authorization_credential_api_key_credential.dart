@@ -8,17 +8,20 @@ class AppAuthorizationCredentialApiKeyCredential {
 
   /// Creates a new [AppAuthorizationCredentialApiKeyCredential].
   /// [apiKey] Contains API key credential information.
-  AppAuthorizationCredentialApiKeyCredential({required this.apiKey});
+  AppAuthorizationCredentialApiKeyCredential({
+    required this.apiKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'apiKey': apiKey};
+    return <String, dynamic>{
+      'apiKey': apiKey,
+    };
   }
 
-  factory AppAuthorizationCredentialApiKeyCredential.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppAuthorizationCredentialApiKeyCredential.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationCredentialApiKeyCredential(
       apiKey: pulumi.Input.fromValue(map['apiKey'] as String),
     );
   }
 }
+

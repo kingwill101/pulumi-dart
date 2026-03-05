@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionImageConfig {
   /// Parameters to pass to the container image.
   final pulumi.Input<List<String>>? commands;
-
   /// Entry point to your application.
   final pulumi.Input<List<String>>? entryPoints;
-
   /// Working directory for the container image.
   final pulumi.Input<String>? workingDirectory;
 
@@ -16,7 +14,11 @@ class FunctionImageConfig {
   /// [commands] Parameters to pass to the container image.
   /// [entryPoints] Entry point to your application.
   /// [workingDirectory] Working directory for the container image.
-  FunctionImageConfig({this.commands, this.entryPoints, this.workingDirectory});
+  FunctionImageConfig({
+    this.commands,
+    this.entryPoints,
+    this.workingDirectory,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,21 +30,10 @@ class FunctionImageConfig {
 
   factory FunctionImageConfig.fromMap(Map<String, dynamic> map) {
     return FunctionImageConfig(
-      commands: (() {
-        final guardedValue = map['commands'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      entryPoints: (() {
-        final guardedValue = map['entryPoints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      workingDirectory: (() {
-        final guardedValue = map['workingDirectory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      commands: (() { final guardedValue = map['commands']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      entryPoints: (() { final guardedValue = map['entryPoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      workingDirectory: (() { final guardedValue = map['workingDirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

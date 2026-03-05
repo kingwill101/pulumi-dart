@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterRbacBindingConfig {
   /// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
   final pulumi.Input<bool> enableInsecureBindingSystemAuthenticated;
-
   /// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
   final pulumi.Input<bool> enableInsecureBindingSystemUnauthenticated;
 
@@ -19,21 +18,16 @@ class GetClusterRbacBindingConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enableInsecureBindingSystemAuthenticated':
-          enableInsecureBindingSystemAuthenticated,
-      'enableInsecureBindingSystemUnauthenticated':
-          enableInsecureBindingSystemUnauthenticated,
+      'enableInsecureBindingSystemAuthenticated': enableInsecureBindingSystemAuthenticated,
+      'enableInsecureBindingSystemUnauthenticated': enableInsecureBindingSystemUnauthenticated,
     };
   }
 
   factory GetClusterRbacBindingConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterRbacBindingConfig(
-      enableInsecureBindingSystemAuthenticated: pulumi.Input.fromValue(
-        map['enableInsecureBindingSystemAuthenticated'] as bool,
-      ),
-      enableInsecureBindingSystemUnauthenticated: pulumi.Input.fromValue(
-        map['enableInsecureBindingSystemUnauthenticated'] as bool,
-      ),
+      enableInsecureBindingSystemAuthenticated: pulumi.Input.fromValue(map['enableInsecureBindingSystemAuthenticated'] as bool),
+      enableInsecureBindingSystemUnauthenticated: pulumi.Input.fromValue(map['enableInsecureBindingSystemUnauthenticated'] as bool),
     );
   }
 }
+

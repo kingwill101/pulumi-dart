@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationResourceArgs {
   /// The name of the Application
   final pulumi.Input<String> applicationName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The Arm id of the application resource.
   final pulumi.Input<String> resourceId;
-
   /// The kind of the application resource.
   final pulumi.Input<String>? resourceKind;
-
   /// The name of the application resource.
   final pulumi.Input<String>? resourceName;
-
   /// The type of the application resource.
   final pulumi.Input<String> resourceType;
-
   /// The name of the space
   final pulumi.Input<String> spaceName;
 
@@ -61,22 +55,13 @@ class ApplicationResourceArgs {
   factory ApplicationResourceArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationResourceArgs(
       applicationName: pulumi.Input.fromValue(map['applicationName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
-      resourceKind: (() {
-        final guardedValue = map['resourceKind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceName: (() {
-        final guardedValue = map['resourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceKind: (() { final guardedValue = map['resourceKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
       spaceName: pulumi.Input.fromValue(map['spaceName'] as String),
     );
   }
 }
+

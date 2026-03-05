@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListGlobalRulestackAppIdsArgs {
   final pulumi.Input<String>? appIdVersion;
   final pulumi.Input<String>? appPrefix;
-
   /// GlobalRulestack resource name
   final pulumi.Input<String> globalRulestackName;
   final pulumi.Input<String>? skip;
@@ -41,29 +40,12 @@ class ListGlobalRulestackAppIdsArgs {
 
   factory ListGlobalRulestackAppIdsArgs.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackAppIdsArgs(
-      appIdVersion: (() {
-        final guardedValue = map['appIdVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      appPrefix: (() {
-        final guardedValue = map['appPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      globalRulestackName: pulumi.Input.fromValue(
-        map['globalRulestackName'] as String,
-      ),
-      skip: (() {
-        final guardedValue = map['skip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      top: (() {
-        final guardedValue = map['top'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      appIdVersion: (() { final guardedValue = map['appIdVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      appPrefix: (() { final guardedValue = map['appPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      globalRulestackName: pulumi.Input.fromValue(map['globalRulestackName'] as String),
+      skip: (() { final guardedValue = map['skip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

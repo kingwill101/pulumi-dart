@@ -1,26 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCertificate.
 class GetCertificateResult {
   /// Domains for which the certificate was issued.
   final List<String> domains;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// The expiration date and time of the certificate.
   final String notAfter;
-
   /// The SHA1 fingerprint of the certificate.
   final String sha1Fingerprint;
-
   /// the current state of the certificate.
   final String state;
-
   /// The type of the certificate.
   final String type;
-
   /// The ID of the certificate.
   final String uuid;
 
@@ -70,3 +65,4 @@ class GetCertificateResult {
     );
   }
 }
+

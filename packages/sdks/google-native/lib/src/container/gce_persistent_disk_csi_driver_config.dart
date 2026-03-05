@@ -9,19 +9,20 @@ class GcePersistentDiskCsiDriverConfig {
 
   /// Creates a new [GcePersistentDiskCsiDriverConfig].
   /// [enabled] Whether the Compute Engine PD CSI driver is enabled for this cluster.
-  GcePersistentDiskCsiDriverConfig({this.enabled});
+  GcePersistentDiskCsiDriverConfig({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory GcePersistentDiskCsiDriverConfig.fromMap(Map<String, dynamic> map) {
     return GcePersistentDiskCsiDriverConfig(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OptimizedAutoscale {
   /// A boolean value that indicate if the optimized autoscale feature is enabled or not.
   final pulumi.Input<bool> isEnabled;
-
   /// Maximum allowed instances count.
   final pulumi.Input<int> maximum;
-
   /// Minimum allowed instances count.
   final pulumi.Input<int> minimum;
-
   /// The version of the template defined, for instance 1.
   final pulumi.Input<int> version;
 
@@ -46,3 +43,4 @@ class OptimizedAutoscale {
     );
   }
 }
+

@@ -13,8 +13,7 @@ enum BareMetalClusterUpgradePolicyPolicy {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown BareMetalClusterUpgradePolicyPolicy value: $value',
-    );
+    throw ArgumentError('Unknown BareMetalClusterUpgradePolicyPolicy value: $value');
   }
 }
+

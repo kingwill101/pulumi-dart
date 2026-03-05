@@ -8,17 +8,20 @@ class DomainDevicesDiskBackingStoreSourceNetworkSnapshot {
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceNetworkSnapshot].
   /// [name] Configures the name attribute for the snapshot used in network storage operations.
-  DomainDevicesDiskBackingStoreSourceNetworkSnapshot({required this.name});
+  DomainDevicesDiskBackingStoreSourceNetworkSnapshot({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory DomainDevicesDiskBackingStoreSourceNetworkSnapshot.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskBackingStoreSourceNetworkSnapshot.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceNetworkSnapshot(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

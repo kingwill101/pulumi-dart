@@ -15,7 +15,10 @@ class GetFirewallsFirewallApplyTo {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labelSelector': labelSelector, 'server': server};
+    return <String, dynamic>{
+      'labelSelector': labelSelector,
+      'server': server,
+    };
   }
 
   factory GetFirewallsFirewallApplyTo.fromMap(Map<String, dynamic> map) {
@@ -25,3 +28,4 @@ class GetFirewallsFirewallApplyTo {
     );
   }
 }
+

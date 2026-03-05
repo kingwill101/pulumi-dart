@@ -296,41 +296,27 @@ import 'repository_state.dart';
 class Repository extends pulumi.CustomResource {
   /// Full ARN of the repository.
   late final pulumi.Output<String> arn;
-
   /// Encryption configuration for the repository. See below for schema.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  encryptionConfigurations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> encryptionConfigurations;
   /// If `true`, will delete the repository even if it contains images.
   /// Defaults to `false`.
   late final pulumi.Output<bool?> forceDelete;
-
   /// Configuration block that defines image scanning configuration for the repository. By default, image scanning must be manually triggered. See the [ECR User Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html) for more information about image scanning.
-  late final pulumi.Output<RepositoryImageScanningConfiguration?>
-  imageScanningConfiguration;
-
+  late final pulumi.Output<RepositoryImageScanningConfiguration?> imageScanningConfiguration;
   /// The tag mutability setting for the repository. Must be one of: `MUTABLE`, `IMMUTABLE`, `IMMUTABLE_WITH_EXCLUSION`, or `MUTABLE_WITH_EXCLUSION`. Defaults to `MUTABLE`.
   late final pulumi.Output<String?> imageTagMutability;
-
   /// Configuration block that defines filters to specify which image tags can override the default tag mutability setting. Only applicable when `image_tag_mutability` is set to `IMMUTABLE_WITH_EXCLUSION` or `MUTABLE_WITH_EXCLUSION`. See below for schema.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  imageTagMutabilityExclusionFilters;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> imageTagMutabilityExclusionFilters;
   /// Name of the repository.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The registry ID where the repository was created.
   late final pulumi.Output<String> registryId;
-
   /// The URL of the repository (in the form `aws_account_id.dkr.ecr.region.amazonaws.com/repositoryName`).
   late final pulumi.Output<String> repositoryUrl;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -343,32 +329,17 @@ class Repository extends pulumi.CustomResource {
     RepositoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ecr/repository:Repository',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ecr/repository:Repository',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'encryptionConfigurations',
-    );
+    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>?>('encryptionConfigurations');
     forceDelete = registerOutput<bool?>('forceDelete');
-    imageScanningConfiguration =
-        registerOutput<RepositoryImageScanningConfiguration?>(
-          'imageScanningConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RepositoryImageScanningConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    imageScanningConfiguration = registerOutput<RepositoryImageScanningConfiguration?>('imageScanningConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryImageScanningConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     imageTagMutability = registerOutput<String?>('imageTagMutability');
-    imageTagMutabilityExclusionFilters =
-        registerOutput<List<Map<String, dynamic>>?>(
-          'imageTagMutabilityExclusionFilters',
-        );
+    imageTagMutabilityExclusionFilters = registerOutput<List<Map<String, dynamic>>?>('imageTagMutabilityExclusionFilters');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');
@@ -395,32 +366,17 @@ class Repository extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ecr/repository:Repository',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ecr/repository:Repository',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'encryptionConfigurations',
-    );
+    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>?>('encryptionConfigurations');
     forceDelete = registerOutput<bool?>('forceDelete');
-    imageScanningConfiguration =
-        registerOutput<RepositoryImageScanningConfiguration?>(
-          'imageScanningConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RepositoryImageScanningConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    imageScanningConfiguration = registerOutput<RepositoryImageScanningConfiguration?>('imageScanningConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryImageScanningConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     imageTagMutability = registerOutput<String?>('imageTagMutability');
-    imageTagMutabilityExclusionFilters =
-        registerOutput<List<Map<String, dynamic>>?>(
-          'imageTagMutabilityExclusionFilters',
-        );
+    imageTagMutabilityExclusionFilters = registerOutput<List<Map<String, dynamic>>?>('imageTagMutabilityExclusionFilters');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');

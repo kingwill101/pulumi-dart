@@ -36,17 +36,10 @@ class GetTableArgs {
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tableId: pulumi.Input.fromValue(map['tableId'] as String),
-      view: (() {
-        final guardedValue = map['view'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      view: (() { final guardedValue = map['view']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

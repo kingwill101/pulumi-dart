@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationArgs {
   /// Name of the configuration (also known as server parameter).
   final pulumi.Input<String> configurationName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -36,13 +34,10 @@ class GetConfigurationArgs {
 
   factory GetConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationArgs(
-      configurationName: pulumi.Input.fromValue(
-        map['configurationName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      configurationName: pulumi.Input.fromValue(map['configurationName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
+

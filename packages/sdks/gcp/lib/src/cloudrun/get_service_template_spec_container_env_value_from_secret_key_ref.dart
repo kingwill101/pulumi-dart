@@ -6,7 +6,6 @@ class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
   /// A Cloud Secret Manager secret version. Must be 'latest' for the latest
   /// version or an integer for a specific version.
   final pulumi.Input<String> key;
-
   /// The name of the Cloud Run Service.
   final pulumi.Input<String> name;
 
@@ -19,15 +18,17 @@ class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'name': name};
+    return <String, dynamic>{
+      'key': key,
+      'name': name,
+    };
   }
 
-  factory GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef(
       key: pulumi.Input.fromValue(map['key'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

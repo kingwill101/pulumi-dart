@@ -9,17 +9,20 @@ class GetFileShareLimitsResult {
 
   /// Creates a new [GetFileShareLimitsResult].
   /// [properties] The properties of the file share limits.
-  GetFileShareLimitsResult({required this.properties});
+  GetFileShareLimitsResult({
+    required this.properties,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'properties': properties.toMap()};
+    return <String, dynamic>{
+      'properties': properties.toMap(),
+    };
   }
 
   factory GetFileShareLimitsResult.fromMap(Map<String, dynamic> map) {
     return GetFileShareLimitsResult(
-      properties: FileShareLimitsOutputResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: FileShareLimitsOutputResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

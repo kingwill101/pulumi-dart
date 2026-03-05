@@ -35,12 +35,11 @@ class GetBillingAccountBucketLinkArgs {
 
   factory GetBillingAccountBucketLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountBucketLinkArgs(
-      billingAccountId: pulumi.Input.fromValue(
-        map['billingAccountId'] as String,
-      ),
+      billingAccountId: pulumi.Input.fromValue(map['billingAccountId'] as String),
       bucketId: pulumi.Input.fromValue(map['bucketId'] as String),
       linkId: pulumi.Input.fromValue(map['linkId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
+

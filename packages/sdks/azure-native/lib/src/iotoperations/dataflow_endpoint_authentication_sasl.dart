@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataflowEndpointAuthenticationSasl {
   /// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
   final pulumi.Input<String> saslType;
-
   /// Token secret name.
   final pulumi.Input<String> secretRef;
 
@@ -19,7 +18,10 @@ class DataflowEndpointAuthenticationSasl {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'saslType': saslType, 'secretRef': secretRef};
+    return <String, dynamic>{
+      'saslType': saslType,
+      'secretRef': secretRef,
+    };
   }
 
   factory DataflowEndpointAuthenticationSasl.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class DataflowEndpointAuthenticationSasl {
     );
   }
 }
+

@@ -1213,13 +1213,10 @@ import 'listener_additional_certificate_attachment_state.dart';
 class ListenerAdditionalCertificateAttachment extends pulumi.CustomResource {
   /// The ID of additional certificates.
   late final pulumi.Output<String> certificateId;
-
   /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
   late final pulumi.Output<bool?> dryRun;
-
   /// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
   late final pulumi.Output<String> listenerId;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -1232,11 +1229,11 @@ class ListenerAdditionalCertificateAttachment extends pulumi.CustomResource {
     ListenerAdditionalCertificateAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateId = registerOutput<String>('certificateId');
     dryRun = registerOutput<bool?>('dryRun');
     listenerId = registerOutput<String>('listenerId');
@@ -1261,11 +1258,11 @@ class ListenerAdditionalCertificateAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateId = registerOutput<String>('certificateId');
     dryRun = registerOutput<bool?>('dryRun');
     listenerId = registerOutput<String>('listenerId');

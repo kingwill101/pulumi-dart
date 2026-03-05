@@ -13,14 +13,15 @@ class AgentPromptVariantTemplateConfigurationChatInputVariable {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory AgentPromptVariantTemplateConfigurationChatInputVariable.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentPromptVariantTemplateConfigurationChatInputVariable.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatInputVariable(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

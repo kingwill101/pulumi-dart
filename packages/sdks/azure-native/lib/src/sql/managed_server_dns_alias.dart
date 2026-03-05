@@ -134,16 +134,12 @@ import 'managed_server_dns_alias_args.dart';
 class ManagedServerDnsAlias extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The fully qualified DNS record for managed server alias
   late final pulumi.Output<String> azureDnsRecord;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The fully qualified public DNS record for managed server alias
   late final pulumi.Output<String> publicAzureDnsRecord;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -156,11 +152,11 @@ class ManagedServerDnsAlias extends pulumi.CustomResource {
     ManagedServerDnsAliasArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:ManagedServerDnsAlias',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:ManagedServerDnsAlias',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     azureDnsRecord = registerOutput<String>('azureDnsRecord');
     this.name = registerOutput<String>('name');

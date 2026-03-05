@@ -1289,46 +1289,34 @@ import 'transit_router_vpn_attachment_state.dart';
 class TransitRouterVpnAttachment extends pulumi.CustomResource {
   /// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
   late final pulumi.Output<bool?> autoPublishRouteEnabled;
-
   /// The ID of the Cloud Enterprise Network (CEN) instance.
   late final pulumi.Output<String> cenId;
-
   /// The billing method.
   /// Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
   late final pulumi.Output<String> chargeType;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// The ID of the region where the transit router is deployed.
   late final pulumi.Output<String> regionId;
-
   /// Status
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The new description of the VPN attachment.
   /// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> transitRouterAttachmentDescription;
-
   /// The name of the VPN attachment.
   /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
   late final pulumi.Output<String?> transitRouterAttachmentName;
-
   /// The ID of the transit router.
   late final pulumi.Output<String?> transitRouterId;
-
   /// The ID of the IPsec-VPN attachment.
   late final pulumi.Output<String> vpnId;
-
   /// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
   ///
   /// - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
   /// - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
   late final pulumi.Output<String> vpnOwnerId;
-
   /// The Zone ID in the current region.
   /// System will create resources under the Zone that you specify.
   /// Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
@@ -1343,11 +1331,11 @@ class TransitRouterVpnAttachment extends pulumi.CustomResource {
     TransitRouterVpnAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPublishRouteEnabled = registerOutput<bool?>('autoPublishRouteEnabled');
     cenId = registerOutput<String>('cenId');
     chargeType = registerOutput<String>('chargeType');
@@ -1355,12 +1343,8 @@ class TransitRouterVpnAttachment extends pulumi.CustomResource {
     regionId = registerOutput<String>('regionId');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    transitRouterAttachmentDescription = registerOutput<String?>(
-      'transitRouterAttachmentDescription',
-    );
-    transitRouterAttachmentName = registerOutput<String?>(
-      'transitRouterAttachmentName',
-    );
+    transitRouterAttachmentDescription = registerOutput<String?>('transitRouterAttachmentDescription');
+    transitRouterAttachmentName = registerOutput<String?>('transitRouterAttachmentName');
     transitRouterId = registerOutput<String?>('transitRouterId');
     vpnId = registerOutput<String>('vpnId');
     vpnOwnerId = registerOutput<String>('vpnOwnerId');
@@ -1385,11 +1369,11 @@ class TransitRouterVpnAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPublishRouteEnabled = registerOutput<bool?>('autoPublishRouteEnabled');
     cenId = registerOutput<String>('cenId');
     chargeType = registerOutput<String>('chargeType');
@@ -1397,12 +1381,8 @@ class TransitRouterVpnAttachment extends pulumi.CustomResource {
     regionId = registerOutput<String>('regionId');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    transitRouterAttachmentDescription = registerOutput<String?>(
-      'transitRouterAttachmentDescription',
-    );
-    transitRouterAttachmentName = registerOutput<String?>(
-      'transitRouterAttachmentName',
-    );
+    transitRouterAttachmentDescription = registerOutput<String?>('transitRouterAttachmentDescription');
+    transitRouterAttachmentName = registerOutput<String?>('transitRouterAttachmentName');
     transitRouterId = registerOutput<String?>('transitRouterId');
     vpnId = registerOutput<String>('vpnId');
     vpnOwnerId = registerOutput<String>('vpnOwnerId');

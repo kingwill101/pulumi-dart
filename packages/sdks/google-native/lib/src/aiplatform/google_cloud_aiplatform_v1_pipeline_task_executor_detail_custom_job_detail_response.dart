@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetailResponse {
   /// The names of the previously failed CustomJob. The list includes the all attempts in chronological order.
   final pulumi.Input<List<String>> failedJobs;
-
   /// The name of the CustomJob.
   final pulumi.Input<String> job;
 
@@ -19,17 +18,17 @@ class GoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetailResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'failedJobs': failedJobs, 'job': job};
+    return <String, dynamic>{
+      'failedJobs': failedJobs,
+      'job': job,
+    };
   }
 
-  factory GoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetailResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetailResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetailResponse(
-      failedJobs: pulumi.Input.fromValue(
-        (map['failedJobs'] as List).cast<String>(),
-      ),
+      failedJobs: pulumi.Input.fromValue((map['failedJobs'] as List).cast<String>()),
       job: pulumi.Input.fromValue(map['job'] as String),
     );
   }
 }
+

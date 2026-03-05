@@ -6,7 +6,6 @@ class ServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
   /// A Cloud Secret Manager secret version. Must be 'latest' for the latest
   /// version or an integer for a specific version.
   final pulumi.Input<String> key;
-
   /// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
   /// If the secret is in another project, you must define an alias.
   /// An alias definition has the form:
@@ -24,15 +23,17 @@ class ServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'name': name};
+    return <String, dynamic>{
+      'key': key,
+      'name': name,
+    };
   }
 
-  factory ServiceTemplateSpecContainerEnvValueFromSecretKeyRef.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceTemplateSpecContainerEnvValueFromSecretKeyRef.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerEnvValueFromSecretKeyRef(
       key: pulumi.Input.fromValue(map['key'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

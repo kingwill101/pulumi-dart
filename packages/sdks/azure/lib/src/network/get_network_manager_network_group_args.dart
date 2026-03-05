@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkManagerNetworkGroupArgs {
   /// Specifies the name of the Network Manager Network Group.
   final pulumi.Input<String> name;
-
   /// Specifies the ID of the Network Manager.
   final pulumi.Input<String> networkManagerId;
 
@@ -31,9 +30,8 @@ class GetNetworkManagerNetworkGroupArgs {
   factory GetNetworkManagerNetworkGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagerNetworkGroupArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      networkManagerId: pulumi.Input.fromValue(
-        map['networkManagerId'] as String,
-      ),
+      networkManagerId: pulumi.Input.fromValue(map['networkManagerId'] as String),
     );
   }
 }
+

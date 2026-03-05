@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListAgentApplicationAgentsArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
-
   /// Agent Application name.
   final pulumi.Input<String> name;
-
   /// The name of Cognitive Services account's project.
   final pulumi.Input<String> projectName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -45,9 +42,8 @@ class ListAgentApplicationAgentsArgs {
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

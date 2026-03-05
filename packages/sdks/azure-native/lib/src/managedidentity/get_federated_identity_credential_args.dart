@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFederatedIdentityCredentialArgs {
   /// The name of the federated identity credential resource.
   final pulumi.Input<String> federatedIdentityCredentialResourceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the identity resource.
   final pulumi.Input<String> resourceName;
 
@@ -28,8 +26,7 @@ class GetFederatedIdentityCredentialArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'federatedIdentityCredentialResourceName':
-          federatedIdentityCredentialResourceName,
+      'federatedIdentityCredentialResourceName': federatedIdentityCredentialResourceName,
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
     };
@@ -37,13 +34,10 @@ class GetFederatedIdentityCredentialArgs {
 
   factory GetFederatedIdentityCredentialArgs.fromMap(Map<String, dynamic> map) {
     return GetFederatedIdentityCredentialArgs(
-      federatedIdentityCredentialResourceName: pulumi.Input.fromValue(
-        map['federatedIdentityCredentialResourceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      federatedIdentityCredentialResourceName: pulumi.Input.fromValue(map['federatedIdentityCredentialResourceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

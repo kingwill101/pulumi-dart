@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserSettingsCookieSynchronizationConfigurationBlocklist {
   /// Domain of the cookie.
   final pulumi.Input<String> domain;
-
   /// Name of the cookie.
   final pulumi.Input<String>? name;
-
   /// Path of the cookie.
   final pulumi.Input<String>? path;
 
@@ -23,24 +21,19 @@ class UserSettingsCookieSynchronizationConfigurationBlocklist {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domain': domain, 'name': ?name, 'path': ?path};
+    return <String, dynamic>{
+      'domain': domain,
+      'name': ?name,
+      'path': ?path,
+    };
   }
 
-  factory UserSettingsCookieSynchronizationConfigurationBlocklist.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserSettingsCookieSynchronizationConfigurationBlocklist.fromMap(Map<String, dynamic> map) {
     return UserSettingsCookieSynchronizationConfigurationBlocklist(
       domain: pulumi.Input.fromValue(map['domain'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

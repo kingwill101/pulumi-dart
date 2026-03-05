@@ -352,29 +352,22 @@ class AppleApp extends pulumi.CustomResource {
   /// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
   /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
   late final pulumi.Output<String> apiKeyId;
-
   /// The globally unique, Firebase-assigned identifier of the App.
   /// This identifier should be treated as an opaque token, as the data format is not specified.
   late final pulumi.Output<String> appId;
-
   /// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
   late final pulumi.Output<String?> appStoreId;
-
   /// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
   late final pulumi.Output<String> bundleId;
   late final pulumi.Output<String?> deletionPolicy;
-
   /// The user-assigned display name of the App.
   late final pulumi.Output<String> displayName;
-
   /// The fully qualified resource name of the App, for example:
   /// projects/projectId/iosApps/appId
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The Apple Developer Team ID associated with the App in the App Store.
   late final pulumi.Output<String?> teamId;
 
@@ -387,11 +380,11 @@ class AppleApp extends pulumi.CustomResource {
     AppleAppArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firebase/appleApp:AppleApp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:firebase/appleApp:AppleApp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');
     appStoreId = registerOutput<String?>('appStoreId');
@@ -421,11 +414,11 @@ class AppleApp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firebase/appleApp:AppleApp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:firebase/appleApp:AppleApp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');
     appStoreId = registerOutput<String?>('appStoreId');

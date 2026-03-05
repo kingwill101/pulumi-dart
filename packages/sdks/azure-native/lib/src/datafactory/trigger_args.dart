@@ -10,13 +10,10 @@ import 'blob_events_trigger.dart';
 class TriggerArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
-
   /// Properties of the trigger.
   final pulumi.Input<BlobEventsTrigger> properties;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The trigger name.
   final pulumi.Input<String>? triggerName;
 
@@ -35,11 +32,7 @@ class TriggerArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'factoryName': factoryName,
-      'properties':
-          pulumi.Input.mapInputValue<BlobEventsTrigger, Map<String, dynamic>>(
-            properties,
-            (value) => value.toMap(),
-          ),
+      'properties': pulumi.Input.mapInputValue<BlobEventsTrigger, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'triggerName': ?triggerName,
     };
@@ -48,19 +41,10 @@ class TriggerArgs {
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
       factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
-      properties: pulumi.Input.fromValue(
-        BlobEventsTrigger.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      triggerName: (() {
-        final guardedValue = map['triggerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      properties: pulumi.Input.fromValue(BlobEventsTrigger.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      triggerName: (() { final guardedValue = map['triggerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

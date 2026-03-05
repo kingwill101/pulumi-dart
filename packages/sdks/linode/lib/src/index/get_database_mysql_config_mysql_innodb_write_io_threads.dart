@@ -37,9 +37,7 @@ class GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads(
       description: pulumi.Input.fromValue(map['description'] as String),
       example: pulumi.Input.fromValue(map['example'] as int),
@@ -50,3 +48,4 @@ class GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads {
     );
   }
 }
+

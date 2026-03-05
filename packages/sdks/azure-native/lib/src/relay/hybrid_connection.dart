@@ -141,31 +141,22 @@ import 'system_data_response.dart';
 class HybridConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The time the hybrid connection was created.
   late final pulumi.Output<String> createdAt;
-
   /// The number of listeners for this hybrid connection. Note that min : 1 and max:25 are supported.
   late final pulumi.Output<int> listenerCount;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Returns true if client authorization is needed for this hybrid connection; otherwise, false.
   late final pulumi.Output<bool?> requiresClientAuthorization;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The time the namespace was updated.
   late final pulumi.Output<String> updatedAt;
-
   /// The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
   late final pulumi.Output<String?> userMetadata;
 
@@ -178,29 +169,18 @@ class HybridConnection extends pulumi.CustomResource {
     HybridConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:relay:HybridConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:relay:HybridConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdAt = registerOutput<String>('createdAt');
     listenerCount = registerOutput<int>('listenerCount');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    requiresClientAuthorization = registerOutput<bool?>(
-      'requiresClientAuthorization',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    requiresClientAuthorization = registerOutput<bool?>('requiresClientAuthorization');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
     userMetadata = registerOutput<String?>('userMetadata');

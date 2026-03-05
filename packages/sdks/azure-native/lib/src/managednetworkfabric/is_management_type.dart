@@ -15,3 +15,4 @@ enum IsManagementType {
     throw ArgumentError('Unknown IsManagementType value: $value');
   }
 }
+

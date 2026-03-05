@@ -141,31 +141,22 @@ import 'directory_state.dart';
 class Directory extends pulumi.CustomResource {
   /// The type of billing for the AAD B2C tenant. Possible values include: `MAU` or `Auths`.
   late final pulumi.Output<String> billingType;
-
   /// Country code of the B2C tenant. The `country_code` should be valid for the specified `data_residency_location`. See [official docs](https://aka.ms/B2CDataResidency) for valid country codes. Required when creating a new resource. Changing this forces a new AAD B2C Directory to be created.
   late final pulumi.Output<String> countryCode;
-
   /// Location in which the B2C tenant is hosted and data resides. The `data_residency_location` should be valid for the specified `country_code`. See [official docs](https://aka.ms/B2CDataResidenc) for more information. Changing this forces a new AAD B2C Directory to be created. Possible values are `Asia Pacific`, `Australia`, `Europe`, `Global` and `United States`.
   late final pulumi.Output<String> dataResidencyLocation;
-
   /// The initial display name of the B2C tenant. Required when creating a new resource. Changing this forces a new AAD B2C Directory to be created.
   late final pulumi.Output<String> displayName;
-
   /// Domain name of the B2C tenant, including the `.onmicrosoft.com` suffix. Changing this forces a new AAD B2C Directory to be created.
   late final pulumi.Output<String> domainName;
-
   /// The date from which the billing type took effect. May not be populated until after the first billing cycle.
   late final pulumi.Output<String> effectiveStartDate;
-
   /// The name of the Resource Group where the AAD B2C Directory should exist. Changing this forces a new AAD B2C Directory to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Billing SKU for the B2C tenant. Must be one of: `PremiumP1` or `PremiumP2` (`Standard` is not supported). See [official docs](https://aka.ms/b2cBilling) for more information.
   late final pulumi.Output<String> skuName;
-
   /// A mapping of tags which should be assigned to the AAD B2C Directory.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Tenant ID for the AAD B2C tenant.
   late final pulumi.Output<String> tenantId;
 
@@ -178,11 +169,11 @@ class Directory extends pulumi.CustomResource {
     DirectoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:aadb2c/directory:Directory',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:aadb2c/directory:Directory',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     billingType = registerOutput<String>('billingType');
     countryCode = registerOutput<String>('countryCode');
     dataResidencyLocation = registerOutput<String>('dataResidencyLocation');
@@ -213,11 +204,11 @@ class Directory extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:aadb2c/directory:Directory',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:aadb2c/directory:Directory',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     billingType = registerOutput<String>('billingType');
     countryCode = registerOutput<String>('countryCode');
     dataResidencyLocation = registerOutput<String>('dataResidencyLocation');

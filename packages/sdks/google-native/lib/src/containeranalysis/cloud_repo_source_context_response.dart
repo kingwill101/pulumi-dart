@@ -8,10 +8,8 @@ import 'repo_id_response.dart';
 class CloudRepoSourceContextResponse {
   /// An alias, which may be a branch or tag.
   final pulumi.Input<AliasContextResponse> aliasContext;
-
   /// The ID of the repo.
   final pulumi.Input<RepoIdResponse> repoId;
-
   /// A revision ID.
   final pulumi.Input<String> revisionId;
 
@@ -27,31 +25,18 @@ class CloudRepoSourceContextResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aliasContext':
-          pulumi.Input.mapInputValue<
-            AliasContextResponse,
-            Map<String, dynamic>
-          >(aliasContext, (value) => value.toMap()),
-      'repoId':
-          pulumi.Input.mapInputValue<RepoIdResponse, Map<String, dynamic>>(
-            repoId,
-            (value) => value.toMap(),
-          ),
+      'aliasContext': pulumi.Input.mapInputValue<AliasContextResponse, Map<String, dynamic>>(aliasContext, (value) => value.toMap()),
+      'repoId': pulumi.Input.mapInputValue<RepoIdResponse, Map<String, dynamic>>(repoId, (value) => value.toMap()),
       'revisionId': revisionId,
     };
   }
 
   factory CloudRepoSourceContextResponse.fromMap(Map<String, dynamic> map) {
     return CloudRepoSourceContextResponse(
-      aliasContext: pulumi.Input.fromValue(
-        AliasContextResponse.fromMap(
-          (map['aliasContext']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      repoId: pulumi.Input.fromValue(
-        RepoIdResponse.fromMap((map['repoId']! as Map).cast<String, dynamic>()),
-      ),
+      aliasContext: pulumi.Input.fromValue(AliasContextResponse.fromMap((map['aliasContext']! as Map).cast<String, dynamic>())),
+      repoId: pulumi.Input.fromValue(RepoIdResponse.fromMap((map['repoId']! as Map).cast<String, dynamic>())),
       revisionId: pulumi.Input.fromValue(map['revisionId'] as String),
     );
   }
 }
+

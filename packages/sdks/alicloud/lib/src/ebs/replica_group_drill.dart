@@ -130,10 +130,8 @@ import 'replica_group_drill_state.dart';
 class ReplicaGroupDrill extends pulumi.CustomResource {
   /// The ID of the replication group. You can use the describediskreplicaggroups interface to query the asynchronous replication group list to obtain the value of the replication group ID input parameter.
   late final pulumi.Output<String> groupId;
-
   /// The first ID of the resource.
   late final pulumi.Output<String> replicaGroupDrillId;
-
   /// Walkthrough status. _failed: Execution failed._failed: Cleanup failed.
   late final pulumi.Output<String> status;
 
@@ -146,11 +144,11 @@ class ReplicaGroupDrill extends pulumi.CustomResource {
     ReplicaGroupDrillArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupId = registerOutput<String>('groupId');
     replicaGroupDrillId = registerOutput<String>('replicaGroupDrillId');
     status = registerOutput<String>('status');
@@ -174,11 +172,11 @@ class ReplicaGroupDrill extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupId = registerOutput<String>('groupId');
     replicaGroupDrillId = registerOutput<String>('replicaGroupDrillId');
     status = registerOutput<String>('status');

@@ -763,106 +763,72 @@ import 'repository_opts.dart';
 class Release extends pulumi.CustomResource {
   /// Whether to allow Null values in helm chart configs.
   late final pulumi.Output<bool?> allowNullValues;
-
   /// If set, installation process purges chart on fail. `skipAwait` will be disabled automatically if atomic is used.
   late final pulumi.Output<bool?> atomic;
-
   /// Chart name to be installed. A path may be used.
   late final pulumi.Output<String> chart;
-
   /// Allow deletion of new resources created in this upgrade when upgrade fails.
   late final pulumi.Output<bool?> cleanupOnFail;
-
   /// Create the namespace if it does not exist.
   late final pulumi.Output<bool?> createNamespace;
-
   /// Run helm dependency update before installing the chart.
   late final pulumi.Output<bool?> dependencyUpdate;
-
   /// Add a custom description
   late final pulumi.Output<String?> description;
-
   /// Use chart development versions, too. Equivalent to version '&gt;0.0.0-0'. If `version` is set, this is ignored.
   late final pulumi.Output<bool?> devel;
-
   /// Prevent CRD hooks from running, but run other hooks.  See helm install --no-crd-hook
   late final pulumi.Output<bool?> disableCRDHooks;
-
   /// If set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema
   late final pulumi.Output<bool?> disableOpenapiValidation;
-
   /// Prevent hooks from running.
   late final pulumi.Output<bool?> disableWebhooks;
-
   /// Force resource update through delete/recreate if needed.
   late final pulumi.Output<bool?> forceUpdate;
-
   /// Location of public keys used for verification. Used only if `verify` is true
   late final pulumi.Output<String?> keyring;
-
   /// Run helm lint when planning.
   late final pulumi.Output<bool?> lint;
-
   /// The rendered manifests as JSON. Not yet supported.
   late final pulumi.Output<Map<String, dynamic>?> manifest;
-
   /// Limit the maximum number of revisions saved per release. Use 0 for no limit.
   late final pulumi.Output<int?> maxHistory;
-
   /// Release name.
   late final pulumi.Output<String?> name;
-
   /// Namespace to install the release into.
   late final pulumi.Output<String?> namespace;
-
   /// Postrender command to run.
   late final pulumi.Output<String?> postrender;
-
   /// Perform pods restart during upgrade/rollback.
   late final pulumi.Output<bool?> recreatePods;
-
   /// If set, render subchart notes along with the parent.
   late final pulumi.Output<bool?> renderSubchartNotes;
-
   /// Re-use the given name, even if that name is already used. This is unsafe in production
   late final pulumi.Output<bool?> replace;
-
   /// Specification defining the Helm chart repository to use.
   late final pulumi.Output<RepositoryOpts?> repositoryOpts;
-
   /// When upgrading, reset the values to the ones built into the chart.
   late final pulumi.Output<bool?> resetValues;
-
   /// Names of resources created by the release grouped by "kind/version".
   late final pulumi.Output<Map<String, List<String>>?> resourceNames;
-
   /// When upgrading, reuse the last release's values and merge in any overrides. If 'resetValues' is specified, this is ignored
   late final pulumi.Output<bool?> reuseValues;
-
   /// By default, the provider waits until all resources are in a ready state before marking the release as successful. Setting this to true will skip such await logic.
   late final pulumi.Output<bool?> skipAwait;
-
   /// If set, no CRDs will be installed. By default, CRDs are installed if not already present.
   late final pulumi.Output<bool?> skipCrds;
-
   /// Status of the deployed release.
   late final pulumi.Output<ReleaseStatus> status;
-
   /// Time in seconds to wait for any individual kubernetes operation.
   late final pulumi.Output<int?> timeout;
-
   /// List of assets (raw yaml files). Content is read and merged with values (with values taking precedence).
   late final pulumi.Output<List<Map<String, dynamic>>?> valueYamlFiles;
-
   /// Custom values set for the release.
   late final pulumi.Output<Map<String, dynamic>?> values;
-
   /// Verify the package before installing it.
   late final pulumi.Output<bool?> verify;
-
   /// Specify the exact chart version to install. If this is not specified, the latest version is installed.
   late final pulumi.Output<String?> version;
-
   /// Will wait until all Jobs have been completed before marking the release as successful. This is ignored if `skipAwait` is enabled.
   late final pulumi.Output<bool?> waitForJobs;
 
@@ -875,11 +841,11 @@ class Release extends pulumi.CustomResource {
     ReleaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'kubernetes:helm.sh/v3:Release',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'kubernetes:helm.sh/v3:Release',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowNullValues = registerOutput<bool?>('allowNullValues');
     atomic = registerOutput<bool?>('atomic');
     chart = registerOutput<String>('chart');
@@ -889,9 +855,7 @@ class Release extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     devel = registerOutput<bool?>('devel');
     disableCRDHooks = registerOutput<bool?>('disableCRDHooks');
-    disableOpenapiValidation = registerOutput<bool?>(
-      'disableOpenapiValidation',
-    );
+    disableOpenapiValidation = registerOutput<bool?>('disableOpenapiValidation');
     disableWebhooks = registerOutput<bool?>('disableWebhooks');
     forceUpdate = registerOutput<bool?>('forceUpdate');
     keyring = registerOutput<String?>('keyring');
@@ -904,35 +868,15 @@ class Release extends pulumi.CustomResource {
     recreatePods = registerOutput<bool?>('recreatePods');
     renderSubchartNotes = registerOutput<bool?>('renderSubchartNotes');
     replace = registerOutput<bool?>('replace');
-    repositoryOpts = registerOutput<RepositoryOpts?>(
-      'repositoryOpts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RepositoryOpts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    repositoryOpts = registerOutput<RepositoryOpts?>('repositoryOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryOpts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resetValues = registerOutput<bool?>('resetValues');
     resourceNames = registerOutput<Map<String, List<String>>?>('resourceNames');
     reuseValues = registerOutput<bool?>('reuseValues');
     skipAwait = registerOutput<bool?>('skipAwait');
     skipCrds = registerOutput<bool?>('skipCrds');
-    status = registerOutput<ReleaseStatus>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReleaseStatus.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    status = registerOutput<ReleaseStatus>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReleaseStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeout = registerOutput<int?>('timeout');
-    valueYamlFiles = registerOutput<List<Map<String, dynamic>>?>(
-      'valueYamlFiles',
-    );
+    valueYamlFiles = registerOutput<List<Map<String, dynamic>>?>('valueYamlFiles');
     values = registerOutput<Map<String, dynamic>?>('values');
     verify = registerOutput<bool?>('verify');
     version = registerOutput<String?>('version');

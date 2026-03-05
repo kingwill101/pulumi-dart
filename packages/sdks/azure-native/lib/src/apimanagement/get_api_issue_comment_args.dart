@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApiIssueCommentArgs {
   /// API identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> apiId;
-
   /// Comment identifier within an Issue. Must be unique in the current Issue.
   final pulumi.Input<String> commentId;
-
   /// Issue identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> issueId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -51,10 +47,9 @@ class GetApiIssueCommentArgs {
       apiId: pulumi.Input.fromValue(map['apiId'] as String),
       commentId: pulumi.Input.fromValue(map['commentId'] as String),
       issueId: pulumi.Input.fromValue(map['issueId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

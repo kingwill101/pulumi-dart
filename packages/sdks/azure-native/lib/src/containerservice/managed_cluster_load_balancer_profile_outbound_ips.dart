@@ -10,41 +10,20 @@ class ManagedClusterLoadBalancerProfileOutboundIPs {
 
   /// Creates a new [ManagedClusterLoadBalancerProfileOutboundIPs].
   /// [publicIPs] A list of public IP resources.
-  ManagedClusterLoadBalancerProfileOutboundIPs({this.publicIPs});
+  ManagedClusterLoadBalancerProfileOutboundIPs({
+    this.publicIPs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicIPs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ResourceReference>,
-            List<Map<String, dynamic>>
-          >(
-            publicIPs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ResourceReference,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'publicIPs': ?pulumi.Input.mapOptionalInputValue<List<ResourceReference>, List<Map<String, dynamic>>>(publicIPs, (value) => pulumi.Input.encodeList<ResourceReference, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ManagedClusterLoadBalancerProfileOutboundIPs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedClusterLoadBalancerProfileOutboundIPs.fromMap(Map<String, dynamic> map) {
     return ManagedClusterLoadBalancerProfileOutboundIPs(
-      publicIPs: (() {
-        final guardedValue = map['publicIPs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ResourceReference>(
-            guardedValue,
-            (value) => ResourceReference.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      publicIPs: (() { final guardedValue = map['publicIPs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceReference>(guardedValue, (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -7,40 +7,29 @@ import 'jupyter_config_kernel.dart';
 class JupyterConfig {
   /// Optional. Display name, shown in the Jupyter kernelspec card.
   final pulumi.Input<String>? displayName;
-
   /// Optional. Kernel
   final pulumi.Input<JupyterConfigKernel>? kernel;
 
   /// Creates a new [JupyterConfig].
   /// [displayName] Optional. Display name, shown in the Jupyter kernelspec card.
   /// [kernel] Optional. Kernel
-  JupyterConfig({this.displayName, this.kernel});
+  JupyterConfig({
+    this.displayName,
+    this.kernel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': ?displayName,
-      'kernel':
-          ?pulumi.Input.mapOptionalInputValue<JupyterConfigKernel, String>(
-            kernel,
-            (value) => value.wireValue,
-          ),
+      'kernel': ?pulumi.Input.mapOptionalInputValue<JupyterConfigKernel, String>(kernel, (value) => value.wireValue),
     };
   }
 
   factory JupyterConfig.fromMap(Map<String, dynamic> map) {
     return JupyterConfig(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kernel: (() {
-        final guardedValue = map['kernel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JupyterConfigKernel.fromValue(guardedValue as String),
-        );
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kernel: (() { final guardedValue = map['kernel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JupyterConfigKernel.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

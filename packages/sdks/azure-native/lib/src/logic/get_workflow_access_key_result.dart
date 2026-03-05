@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkflowAccessKey.
 class GetWorkflowAccessKeyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets or sets the resource id.
   final String? id;
-
   /// Gets the workflow access key name.
   final String name;
-
   /// Gets or sets the not-after time.
   final String? notAfter;
-
   /// Gets or sets the not-before time.
   final String? notBefore;
-
   /// Gets the workflow access key type.
   final String type;
 
@@ -50,23 +46,12 @@ class GetWorkflowAccessKeyResult {
   factory GetWorkflowAccessKeyResult.fromMap(Map<String, dynamic> map) {
     return GetWorkflowAccessKeyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      notAfter: (() {
-        final guardedValue = map['notAfter'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      notBefore: (() {
-        final guardedValue = map['notBefore'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      notAfter: (() { final guardedValue = map['notAfter']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      notBefore: (() { final guardedValue = map['notBefore']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

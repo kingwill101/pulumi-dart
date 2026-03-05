@@ -182,52 +182,36 @@ import 'system_data_response.dart';
 class GalleryImage extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
   late final pulumi.Output<String?> cloudInitDataSource;
-
   /// Storage ContainerID of the storage container to be used for gallery image
   late final pulumi.Output<String?> containerId;
-
   /// The extendedLocation of the resource.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// The hypervisor generation of the Virtual Machine [V1, V2]
   late final pulumi.Output<String?> hyperVGeneration;
-
   /// This is the gallery image definition identifier.
   late final pulumi.Output<GalleryImageIdentifierResponse?> identifier;
-
   /// location of the image the gallery image should be created from
   late final pulumi.Output<String?> imagePath;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Operating system type that the gallery image uses [Windows, Linux]
   late final pulumi.Output<String> osType;
-
   /// Provisioning state of the gallery image.
   late final pulumi.Output<String> provisioningState;
-
   /// Resource ID of the source virtual machine from whose OS disk the gallery image is created.
   late final pulumi.Output<String?> sourceVirtualMachineId;
-
   /// The observed state of gallery images
   late final pulumi.Output<GalleryImageStatusResponse> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Specifies information about the gallery image version that you want to create or update.
   late final pulumi.Output<GalleryImageVersionResponse?> version;
 
@@ -240,72 +224,27 @@ class GalleryImage extends pulumi.CustomResource {
     GalleryImageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azurestackhci:GalleryImage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azurestackhci:GalleryImage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cloudInitDataSource = registerOutput<String?>('cloudInitDataSource');
     containerId = registerOutput<String?>('containerId');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
-    identifier = registerOutput<GalleryImageIdentifierResponse?>(
-      'identifier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GalleryImageIdentifierResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identifier = registerOutput<GalleryImageIdentifierResponse?>('identifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageIdentifierResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     imagePath = registerOutput<String?>('imagePath');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     osType = registerOutput<String>('osType');
     provisioningState = registerOutput<String>('provisioningState');
     sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
-    status = registerOutput<GalleryImageStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GalleryImageStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    status = registerOutput<GalleryImageStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    version = registerOutput<GalleryImageVersionResponse?>(
-      'version',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GalleryImageVersionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    version = registerOutput<GalleryImageVersionResponse?>('version', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

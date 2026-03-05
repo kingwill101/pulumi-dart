@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationDestinationProperty {
   /// Notification property display key.
   final pulumi.Input<String>? displayValue;
-
   /// Notification property key.
   final pulumi.Input<String> key;
-
   /// Notification property label.
   final pulumi.Input<String>? label;
-
   /// Notification property value.
   final pulumi.Input<String> value;
 
@@ -38,18 +35,11 @@ class NotificationDestinationProperty {
 
   factory NotificationDestinationProperty.fromMap(Map<String, dynamic> map) {
     return NotificationDestinationProperty(
-      displayValue: (() {
-        final guardedValue = map['displayValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayValue: (() { final guardedValue = map['displayValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       key: pulumi.Input.fromValue(map['key'] as String),
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

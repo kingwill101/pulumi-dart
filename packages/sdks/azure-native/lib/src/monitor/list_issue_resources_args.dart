@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListIssueResourcesArgs {
   /// The name of the Azure Monitor Workspace. The name is case insensitive
   final pulumi.Input<String> azureMonitorWorkspaceName;
-
   /// The filter to apply on the operation. For example, to filter by relevance, use "$filter=relevance eq 'Relevant'". Note: this property is currently a placeholder and is not in use.
   final pulumi.Input<String>? filter;
-
   /// The name of the IssueResource
   final pulumi.Input<String> issueName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,18 +39,11 @@ class ListIssueResourcesArgs {
 
   factory ListIssueResourcesArgs.fromMap(Map<String, dynamic> map) {
     return ListIssueResourcesArgs(
-      azureMonitorWorkspaceName: pulumi.Input.fromValue(
-        map['azureMonitorWorkspaceName'] as String,
-      ),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      azureMonitorWorkspaceName: pulumi.Input.fromValue(map['azureMonitorWorkspaceName'] as String),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       issueName: pulumi.Input.fromValue(map['issueName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

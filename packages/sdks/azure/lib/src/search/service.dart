@@ -472,66 +472,48 @@ class Service extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** The `allowed_ips` are only applied if the `public_network_access_enabled` field has been set to `true`, else all traffic over the public interface will be rejected, even if the `allowed_ips` field has been defined. When the `public_network_access_enabled` field has been set to `false` the private endpoint connections are the only allowed access point to the Search Service.
   late final pulumi.Output<List<String>?> allowedIps;
-
   /// Specifies the response that the Search Service should return for requests that fail authentication. Possible values include `http401WithBearerChallenge` or `http403`.
   ///
   /// &gt; **Note:** `authentication_failure_mode` can only be configured when using `local_authentication_enabled` is set to `true` - which when set together specifies that both API Keys and AzureAD Authentication should be supported.
   late final pulumi.Output<String?> authenticationFailureMode;
-
   /// Describes whether the search service is compliant or not with respect to having non-customer encrypted resources. If a service has more than one non-customer encrypted resource and `Enforcement` is `enabled` then the service will be marked as `NonCompliant`. If all the resources are customer encrypted, then the service will be marked as `Compliant`.
   late final pulumi.Output<String> customerManagedKeyEncryptionComplianceStatus;
-
   /// Specifies whether the Search Service should enforce that non-customer resources are encrypted. Defaults to `false`.
   late final pulumi.Output<bool?> customerManagedKeyEnforcementEnabled;
-
   /// Specifies the Hosting Mode, which allows for High Density partitions (that allow for up to 1000 indexes) should be supported. Possible values are `HighDensity` or `Default`. Defaults to `Default`. Changing this forces a new Search Service to be created.
   ///
   /// &gt; **Note:** `hosting_mode` can only be configured when `sku` is set to `standard3`.
   late final pulumi.Output<String?> hostingMode;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<ServiceIdentity?> identity;
-
   /// Specifies whether the Search Service allows authenticating using API Keys? Defaults to `true`.
   late final pulumi.Output<bool?> localAuthenticationEnabled;
-
   /// The Azure Region where the Search Service should exist. Changing this forces a new Search Service to be created.
   late final pulumi.Output<String> location;
-
   /// The Name which should be used for this Search Service. Changing this forces a new Search Service to be created.
   late final pulumi.Output<String> name;
-
   /// Whether to allow trusted Azure services to access a network restricted Search Service? Possible values are `None` and `AzureServices`. Defaults to `None`.
   late final pulumi.Output<String?> networkRuleBypassOption;
-
   /// Specifies the number of partitions which should be created. This field cannot be set when using a `free` sku ([see the Microsoft documentation](https://learn.microsoft.com/azure/search/search-sku-tier)). Possible values include `1`, `2`, `3`, `4`, `6`, or `12`. Defaults to `1`.
   ///
   /// &gt; **Note:** when `hosting_mode` is set to `highDensity` the maximum number of partitions allowed is `3`.
   late final pulumi.Output<int?> partitionCount;
-
   /// The Primary Key used for Search Service Administration.
   late final pulumi.Output<String> primaryKey;
-
   /// Specifies whether Public Network Access is allowed for this resource. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// A `query_keys` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> queryKeys;
-
   /// Specifies the number of Replica's which should be created for this Search Service. This field cannot be set when using a `free` sku ([see the Microsoft documentation](https://learn.microsoft.com/azure/search/search-sku-tier)).
   late final pulumi.Output<int?> replicaCount;
-
   /// The name of the Resource Group where the Search Service should exist. Changing this forces a new Search Service to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The Secondary Key used for Search Service Administration.
   late final pulumi.Output<String> secondaryKey;
-
   /// Specifies the Semantic Search SKU which should be used for this Search Service. Possible values include `free` and `standard`.
   ///
   /// &gt; **Note:** The `semantic_search_sku` cannot be defined if your Search Services `sku` is set to `free`. The Semantic Search feature is only available in certain regions, please see the [product documentation](https://learn.microsoft.com/azure/search/semantic-search-overview#availability-and-pricing) for more information.
   late final pulumi.Output<String?> semanticSearchSku;
-
   /// The SKU which should be used for this Search Service. Possible values include `basic`, `free`, `standard`, `standard2`, `standard3`, `storage_optimized_l1` and `storage_optimized_l2`.
   ///
   /// &gt; **Note:** The `basic` and `free` SKUs provision the Search Service in a Shared Cluster - the `standard` SKUs use a Dedicated Cluster.
@@ -540,7 +522,6 @@ class Service extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** SKU upgrades between Basic and Standard (S1, S2, S3) tiers from a lower tier to a higher tier (e.g., Basic → S1, S1 → S2, S2 → S3) are supported without recreating the resource. And your region must support the higher tier. All other SKU changes (downgrades, changes from/to Free tier, or changes to/from Storage Optimized tiers) will force creation of a new Search Service.
   late final pulumi.Output<String> sku;
-
   /// Specifies a mapping of tags which should be assigned to this Search Service.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -553,45 +534,24 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:search/service:Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:search/service:Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedIps = registerOutput<List<String>?>('allowedIps');
-    authenticationFailureMode = registerOutput<String?>(
-      'authenticationFailureMode',
-    );
-    customerManagedKeyEncryptionComplianceStatus = registerOutput<String>(
-      'customerManagedKeyEncryptionComplianceStatus',
-    );
-    customerManagedKeyEnforcementEnabled = registerOutput<bool?>(
-      'customerManagedKeyEnforcementEnabled',
-    );
+    authenticationFailureMode = registerOutput<String?>('authenticationFailureMode');
+    customerManagedKeyEncryptionComplianceStatus = registerOutput<String>('customerManagedKeyEncryptionComplianceStatus');
+    customerManagedKeyEnforcementEnabled = registerOutput<bool?>('customerManagedKeyEnforcementEnabled');
     hostingMode = registerOutput<String?>('hostingMode');
-    identity = registerOutput<ServiceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localAuthenticationEnabled = registerOutput<bool?>(
-      'localAuthenticationEnabled',
-    );
+    identity = registerOutput<ServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkRuleBypassOption = registerOutput<String?>(
-      'networkRuleBypassOption',
-    );
+    networkRuleBypassOption = registerOutput<String?>('networkRuleBypassOption');
     partitionCount = registerOutput<int?>('partitionCount');
     primaryKey = registerOutput<String>('primaryKey');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     queryKeys = registerOutput<List<Map<String, dynamic>>>('queryKeys');
     replicaCount = registerOutput<int?>('replicaCount');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -619,45 +579,24 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:search/service:Service',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:search/service:Service',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedIps = registerOutput<List<String>?>('allowedIps');
-    authenticationFailureMode = registerOutput<String?>(
-      'authenticationFailureMode',
-    );
-    customerManagedKeyEncryptionComplianceStatus = registerOutput<String>(
-      'customerManagedKeyEncryptionComplianceStatus',
-    );
-    customerManagedKeyEnforcementEnabled = registerOutput<bool?>(
-      'customerManagedKeyEnforcementEnabled',
-    );
+    authenticationFailureMode = registerOutput<String?>('authenticationFailureMode');
+    customerManagedKeyEncryptionComplianceStatus = registerOutput<String>('customerManagedKeyEncryptionComplianceStatus');
+    customerManagedKeyEnforcementEnabled = registerOutput<bool?>('customerManagedKeyEnforcementEnabled');
     hostingMode = registerOutput<String?>('hostingMode');
-    identity = registerOutput<ServiceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localAuthenticationEnabled = registerOutput<bool?>(
-      'localAuthenticationEnabled',
-    );
+    identity = registerOutput<ServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkRuleBypassOption = registerOutput<String?>(
-      'networkRuleBypassOption',
-    );
+    networkRuleBypassOption = registerOutput<String?>('networkRuleBypassOption');
     partitionCount = registerOutput<int?>('partitionCount');
     primaryKey = registerOutput<String>('primaryKey');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     queryKeys = registerOutput<List<Map<String, dynamic>>>('queryKeys');
     replicaCount = registerOutput<int?>('replicaCount');
     resourceGroupName = registerOutput<String>('resourceGroupName');

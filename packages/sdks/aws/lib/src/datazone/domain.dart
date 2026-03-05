@@ -1047,43 +1047,31 @@ import 'domain_timeouts.dart';
 class Domain extends pulumi.CustomResource {
   /// ARN of the Domain.
   late final pulumi.Output<String> arn;
-
   /// Description of the Domain.
   late final pulumi.Output<String?> description;
-
   /// ARN of the role used by DataZone to configure the Domain.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> domainExecutionRole;
-
   /// Version of the Domain. Valid values are `V1` and `V2`. Defaults to `V1`.
   late final pulumi.Output<String> domainVersion;
-
   /// ARN of the KMS key used to encrypt the Amazon DataZone domain, metadata and reporting data.
   late final pulumi.Output<String?> kmsKeyIdentifier;
-
   /// Name of the Domain.
   late final pulumi.Output<String> name;
-
   /// URL of the data portal for the Domain.
   late final pulumi.Output<String> portalUrl;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the root domain unit.
   late final pulumi.Output<String> rootDomainUnitId;
-
   /// ARN of the service role used by DataZone. Required when `domain_version` is set to `V2`.
   late final pulumi.Output<String?> serviceRole;
-
   /// Single sign on options, used to [enable AWS IAM Identity Center](https://docs.aws.amazon.com/datazone/latest/userguide/enable-IAM-identity-center-for-datazone.html) for DataZone.
   late final pulumi.Output<DomainSingleSignOn?> singleSignOn;
-
   /// Whether to skip the deletion check for the Domain.
   late final pulumi.Output<bool?> skipDeletionCheck;
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<DomainTimeouts?> timeouts;
@@ -1092,13 +1080,16 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_datazone_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:datazone/domain:Domain',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Domain(
+    String name, {
+    DomainArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:datazone/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     domainExecutionRole = registerOutput<String>('domainExecutionRole');
@@ -1109,29 +1100,11 @@ class Domain extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rootDomainUnitId = registerOutput<String>('rootDomainUnitId');
     serviceRole = registerOutput<String?>('serviceRole');
-    singleSignOn = registerOutput<DomainSingleSignOn?>(
-      'singleSignOn',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainSingleSignOn.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    singleSignOn = registerOutput<DomainSingleSignOn?>('singleSignOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSingleSignOn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipDeletionCheck = registerOutput<bool?>('skipDeletionCheck');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<DomainTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<DomainTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -1152,11 +1125,11 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:datazone/domain:Domain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:datazone/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     domainExecutionRole = registerOutput<String>('domainExecutionRole');
@@ -1167,28 +1140,10 @@ class Domain extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rootDomainUnitId = registerOutput<String>('rootDomainUnitId');
     serviceRole = registerOutput<String?>('serviceRole');
-    singleSignOn = registerOutput<DomainSingleSignOn?>(
-      'singleSignOn',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainSingleSignOn.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    singleSignOn = registerOutput<DomainSingleSignOn?>('singleSignOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSingleSignOn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipDeletionCheck = registerOutput<bool?>('skipDeletionCheck');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<DomainTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<DomainTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

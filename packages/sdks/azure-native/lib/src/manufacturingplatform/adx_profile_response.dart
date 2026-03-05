@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdxProfileResponse {
   /// Data Ingestion Uri of Adx Resource
   final pulumi.Input<String> dataIngestionUri;
-
   /// Resource Id of Adx Resource
   final pulumi.Input<String> id;
-
   /// Uri of Adx Resource
   final pulumi.Input<String> uri;
 
@@ -33,11 +31,10 @@ class AdxProfileResponse {
 
   factory AdxProfileResponse.fromMap(Map<String, dynamic> map) {
     return AdxProfileResponse(
-      dataIngestionUri: pulumi.Input.fromValue(
-        map['dataIngestionUri'] as String,
-      ),
+      dataIngestionUri: pulumi.Input.fromValue(map['dataIngestionUri'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

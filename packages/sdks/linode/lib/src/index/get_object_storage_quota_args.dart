@@ -12,10 +12,14 @@ class GetObjectStorageQuotaArgs {
 
   /// Creates a new [GetObjectStorageQuotaArgs].
   /// [quotaId] The Object Storage quota ID.
-  GetObjectStorageQuotaArgs({required this.quotaId});
+  GetObjectStorageQuotaArgs({
+    required this.quotaId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'quotaId': quotaId};
+    return <String, dynamic>{
+      'quotaId': quotaId,
+    };
   }
 
   factory GetObjectStorageQuotaArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetObjectStorageQuotaArgs {
     );
   }
 }
+

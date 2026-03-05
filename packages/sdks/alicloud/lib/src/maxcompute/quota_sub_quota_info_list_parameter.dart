@@ -5,23 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QuotaSubQuotaInfoListParameter {
   /// Enable priority. Valid values: true/false, default: false
   final pulumi.Input<bool>? enablePriority;
-
   /// Exclusive or not. Valid values: true/false, default: false
   final pulumi.Input<bool>? forceReservedMin;
-
   /// The value of maxCU in Reserved CUs.
   ///
   /// &gt; **NOTE:**  The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
   final pulumi.Input<int> maxCu;
-
   /// The value of minCU in Reserved CUs.
   ///
   /// &gt; **NOTE:**  -- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.    -- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
   final pulumi.Input<int> minCu;
-
   /// Scheduling policy. Valid values: Fifo/Fair, default: Fifo
   final pulumi.Input<String>? schedulerType;
-
   /// Single job CU upper limit. Valid value: greater than or equal to 1
   ///
   /// &gt; **NOTE:** -- If you want to not restrict SingleJobCuLimit, please make sure that this parameter is not included in the configuration at all. That is, do not configure SingleJobCuLimit to "null" or any other invalid value
@@ -56,28 +51,13 @@ class QuotaSubQuotaInfoListParameter {
 
   factory QuotaSubQuotaInfoListParameter.fromMap(Map<String, dynamic> map) {
     return QuotaSubQuotaInfoListParameter(
-      enablePriority: (() {
-        final guardedValue = map['enablePriority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      forceReservedMin: (() {
-        final guardedValue = map['forceReservedMin'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enablePriority: (() { final guardedValue = map['enablePriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      forceReservedMin: (() { final guardedValue = map['forceReservedMin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       maxCu: pulumi.Input.fromValue(map['maxCu'] as int),
       minCu: pulumi.Input.fromValue(map['minCu'] as int),
-      schedulerType: (() {
-        final guardedValue = map['schedulerType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      singleJobCuLimit: (() {
-        final guardedValue = map['singleJobCuLimit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      schedulerType: (() { final guardedValue = map['schedulerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      singleJobCuLimit: (() { final guardedValue = map['singleJobCuLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

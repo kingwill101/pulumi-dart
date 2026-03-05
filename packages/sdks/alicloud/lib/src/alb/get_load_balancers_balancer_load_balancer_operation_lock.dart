@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLoadBalancersBalancerLoadBalancerOperationLock {
   /// The Locking of the Reasons.
   final pulumi.Input<String> lockReason;
-
   /// The Locking of the Type.
   final pulumi.Input<String> lockType;
 
@@ -18,15 +17,17 @@ class GetLoadBalancersBalancerLoadBalancerOperationLock {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'lockReason': lockReason, 'lockType': lockType};
+    return <String, dynamic>{
+      'lockReason': lockReason,
+      'lockType': lockType,
+    };
   }
 
-  factory GetLoadBalancersBalancerLoadBalancerOperationLock.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLoadBalancersBalancerLoadBalancerOperationLock.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancerLoadBalancerOperationLock(
       lockReason: pulumi.Input.fromValue(map['lockReason'] as String),
       lockType: pulumi.Input.fromValue(map['lockType'] as String),
     );
   }
 }
+

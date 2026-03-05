@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvFeatureArgs {
   /// The name of the resource.
   final pulumi.Input<String> envFeatureName;
-
   /// The first ID of the resource.
   final pulumi.Input<String> environmentId;
-
   /// Version information of the Feature. You can query Feature information by using ListEnvironmentFeatures.
   final pulumi.Input<String> featureVersion;
 
@@ -42,3 +40,4 @@ class EnvFeatureArgs {
     );
   }
 }
+

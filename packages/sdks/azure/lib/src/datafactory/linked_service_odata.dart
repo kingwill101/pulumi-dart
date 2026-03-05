@@ -253,29 +253,20 @@ import 'linked_service_odata_state.dart';
 class LinkedServiceOdata extends pulumi.CustomResource {
   /// A map of additional properties to associate with the Data Factory Linked Service OData.
   late final pulumi.Output<Map<String, String>?> additionalProperties;
-
   /// List of tags that can be used for describing the Data Factory Linked Service OData.
   late final pulumi.Output<List<String>?> annotations;
-
   /// A `basic_authentication` block as defined below.
-  late final pulumi.Output<LinkedServiceOdataBasicAuthentication?>
-  basicAuthentication;
-
+  late final pulumi.Output<LinkedServiceOdataBasicAuthentication?> basicAuthentication;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
-
   /// The description for the Data Factory Linked Service OData.
   late final pulumi.Output<String?> description;
-
   /// The integration runtime reference to associate with the Data Factory Linked Service OData.
   late final pulumi.Output<String?> integrationRuntimeName;
-
   /// Specifies the name of the Data Factory Linked Service OData. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
-
   /// A map of parameters to associate with the Data Factory Linked Service OData.
   late final pulumi.Output<Map<String, String>?> parameters;
-
   /// The URL of the OData service endpoint.
   late final pulumi.Output<String> url;
 
@@ -288,26 +279,14 @@ class LinkedServiceOdata extends pulumi.CustomResource {
     LinkedServiceOdataArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/linkedServiceOdata:LinkedServiceOdata',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+          'azure:datafactory/linkedServiceOdata:LinkedServiceOdata',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
-    basicAuthentication =
-        registerOutput<LinkedServiceOdataBasicAuthentication?>(
-          'basicAuthentication',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LinkedServiceOdataBasicAuthentication.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    basicAuthentication = registerOutput<LinkedServiceOdataBasicAuthentication?>('basicAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceOdataBasicAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
@@ -334,26 +313,14 @@ class LinkedServiceOdata extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/linkedServiceOdata:LinkedServiceOdata',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+          'azure:datafactory/linkedServiceOdata:LinkedServiceOdata',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
-    basicAuthentication =
-        registerOutput<LinkedServiceOdataBasicAuthentication?>(
-          'basicAuthentication',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LinkedServiceOdataBasicAuthentication.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    basicAuthentication = registerOutput<LinkedServiceOdataBasicAuthentication?>('basicAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceOdataBasicAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');

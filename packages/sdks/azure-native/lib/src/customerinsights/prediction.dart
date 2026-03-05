@@ -257,62 +257,42 @@ import 'prediction_response_system_generated_entities.dart';
 class Prediction extends pulumi.CustomResource {
   /// Whether do auto analyze.
   late final pulumi.Output<bool> autoAnalyze;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Description of the prediction.
   late final pulumi.Output<Map<String, String>?> description;
-
   /// Display name of the prediction.
   late final pulumi.Output<Map<String, String>?> displayName;
-
   /// The prediction grades.
   late final pulumi.Output<List<Map<String, dynamic>>?> grades;
-
   /// Interaction types involved in the prediction.
   late final pulumi.Output<List<String>?> involvedInteractionTypes;
-
   /// KPI types involved in the prediction.
   late final pulumi.Output<List<String>?> involvedKpiTypes;
-
   /// Relationships involved in the prediction.
   late final pulumi.Output<List<String>?> involvedRelationships;
-
   /// Definition of the link mapping of prediction.
   late final pulumi.Output<PredictionResponseMappings> mappings;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Negative outcome expression.
   late final pulumi.Output<String> negativeOutcomeExpression;
-
   /// Positive outcome expression.
   late final pulumi.Output<String> positiveOutcomeExpression;
-
   /// Name of the prediction.
   late final pulumi.Output<String?> predictionName;
-
   /// Primary profile type.
   late final pulumi.Output<String> primaryProfileType;
-
   /// Provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Scope expression.
   late final pulumi.Output<String> scopeExpression;
-
   /// Score label.
   late final pulumi.Output<String> scoreLabel;
-
   /// System generated entities.
-  late final pulumi.Output<PredictionResponseSystemGeneratedEntities>
-  systemGeneratedEntities;
-
+  late final pulumi.Output<PredictionResponseSystemGeneratedEntities> systemGeneratedEntities;
   /// The hub name.
   late final pulumi.Output<String> tenantId;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -325,56 +305,29 @@ class Prediction extends pulumi.CustomResource {
     PredictionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:customerinsights:Prediction',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:customerinsights:Prediction',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoAnalyze = registerOutput<bool>('autoAnalyze');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<Map<String, String>?>('description');
     displayName = registerOutput<Map<String, String>?>('displayName');
     grades = registerOutput<List<Map<String, dynamic>>?>('grades');
-    involvedInteractionTypes = registerOutput<List<String>?>(
-      'involvedInteractionTypes',
-    );
+    involvedInteractionTypes = registerOutput<List<String>?>('involvedInteractionTypes');
     involvedKpiTypes = registerOutput<List<String>?>('involvedKpiTypes');
-    involvedRelationships = registerOutput<List<String>?>(
-      'involvedRelationships',
-    );
-    mappings = registerOutput<PredictionResponseMappings>(
-      'mappings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PredictionResponseMappings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    involvedRelationships = registerOutput<List<String>?>('involvedRelationships');
+    mappings = registerOutput<PredictionResponseMappings>('mappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PredictionResponseMappings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    negativeOutcomeExpression = registerOutput<String>(
-      'negativeOutcomeExpression',
-    );
-    positiveOutcomeExpression = registerOutput<String>(
-      'positiveOutcomeExpression',
-    );
+    negativeOutcomeExpression = registerOutput<String>('negativeOutcomeExpression');
+    positiveOutcomeExpression = registerOutput<String>('positiveOutcomeExpression');
     predictionName = registerOutput<String?>('predictionName');
     primaryProfileType = registerOutput<String>('primaryProfileType');
     provisioningState = registerOutput<String>('provisioningState');
     scopeExpression = registerOutput<String>('scopeExpression');
     scoreLabel = registerOutput<String>('scoreLabel');
-    systemGeneratedEntities =
-        registerOutput<PredictionResponseSystemGeneratedEntities>(
-          'systemGeneratedEntities',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return PredictionResponseSystemGeneratedEntities.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    systemGeneratedEntities = registerOutput<PredictionResponseSystemGeneratedEntities>('systemGeneratedEntities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PredictionResponseSystemGeneratedEntities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
   }

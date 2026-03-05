@@ -12,7 +12,6 @@ class GetInstanceResult {
   final Map<String, String> effectiveLabels;
   final String filesystem;
   final bool gkeSupportEnabled;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
@@ -83,11 +82,7 @@ class GetInstanceResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessRulesOptions':
-          pulumi.Input.encodeList<
-            GetInstanceAccessRulesOption,
-            Map<String, dynamic>
-          >(accessRulesOptions, (value) => value.toMap()),
+      'accessRulesOptions': pulumi.Input.encodeList<GetInstanceAccessRulesOption, Map<String, dynamic>>(accessRulesOptions, (value) => value.toMap()),
       'capacityGib': capacityGib,
       'createTime': createTime,
       'description': description,
@@ -115,12 +110,7 @@ class GetInstanceResult {
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
-      accessRulesOptions: pulumi.Input.decodeList<GetInstanceAccessRulesOption>(
-        map['accessRulesOptions']!,
-        (value) => GetInstanceAccessRulesOption.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      accessRulesOptions: pulumi.Input.decodeList<GetInstanceAccessRulesOption>(map['accessRulesOptions']!, (value) => GetInstanceAccessRulesOption.fromMap((value as Map).cast<String, dynamic>())),
       capacityGib: map['capacityGib'] as String,
       createTime: map['createTime'] as String,
       description: map['description'] as String,
@@ -137,20 +127,13 @@ class GetInstanceResult {
       network: map['network'] as String,
       perUnitStorageThroughput: map['perUnitStorageThroughput'] as String,
       placementPolicy: map['placementPolicy'] as String,
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       state: map['state'] as String,
       stateReason: map['stateReason'] as String,
       updateTime: map['updateTime'] as String,
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

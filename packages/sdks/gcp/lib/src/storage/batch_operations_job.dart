@@ -263,45 +263,33 @@ class BatchOperationsJob extends pulumi.CustomResource {
   /// List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned
   /// Structure is documented below.
   late final pulumi.Output<BatchOperationsJobBucketList?> bucketList;
-
   /// The time that the job was completed.
   late final pulumi.Output<String> completeTime;
-
   /// The timestamp at which this storage batch operation was created.
   late final pulumi.Output<String> createTime;
-
   /// allows batch operations to delete objects in bucket
   /// Structure is documented below.
   late final pulumi.Output<BatchOperationsJobDeleteObject?> deleteObject;
-
   /// If set to `true`, the storage batch operation job will not be deleted and new job will be created.
   late final pulumi.Output<bool?> deleteProtection;
-
   /// The ID of the job.
   late final pulumi.Output<String?> jobId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// allows batch operations to update metadata for objects in bucket
   /// Structure is documented below.
   late final pulumi.Output<BatchOperationsJobPutMetadata?> putMetadata;
-
   /// allows to update temporary hold or eventBased hold for objects in bucket.
   /// Structure is documented below.
   late final pulumi.Output<BatchOperationsJobPutObjectHold?> putObjectHold;
-
   /// allows to update encryption key for objects in bucket.
   /// Structure is documented below.
   late final pulumi.Output<BatchOperationsJobRewriteObject?> rewriteObject;
-
   /// The time that the job was scheduled.
   late final pulumi.Output<String> scheduleTime;
-
   /// State of the job.
   late final pulumi.Output<String> state;
-
   /// The timestamp at which this storage batch operation was most recently updated.
   late final pulumi.Output<String> updateTime;
 
@@ -314,66 +302,21 @@ class BatchOperationsJob extends pulumi.CustomResource {
     BatchOperationsJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:storage/batchOperationsJob:BatchOperationsJob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bucketList = registerOutput<BatchOperationsJobBucketList?>(
-      'bucketList',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BatchOperationsJobBucketList.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:storage/batchOperationsJob:BatchOperationsJob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bucketList = registerOutput<BatchOperationsJobBucketList?>('bucketList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobBucketList.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     completeTime = registerOutput<String>('completeTime');
     createTime = registerOutput<String>('createTime');
-    deleteObject = registerOutput<BatchOperationsJobDeleteObject?>(
-      'deleteObject',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BatchOperationsJobDeleteObject.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deleteObject = registerOutput<BatchOperationsJobDeleteObject?>('deleteObject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobDeleteObject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteProtection = registerOutput<bool?>('deleteProtection');
     jobId = registerOutput<String?>('jobId');
     project = registerOutput<String>('project');
-    putMetadata = registerOutput<BatchOperationsJobPutMetadata?>(
-      'putMetadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BatchOperationsJobPutMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    putObjectHold = registerOutput<BatchOperationsJobPutObjectHold?>(
-      'putObjectHold',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BatchOperationsJobPutObjectHold.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    rewriteObject = registerOutput<BatchOperationsJobRewriteObject?>(
-      'rewriteObject',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BatchOperationsJobRewriteObject.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    putMetadata = registerOutput<BatchOperationsJobPutMetadata?>('putMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobPutMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    putObjectHold = registerOutput<BatchOperationsJobPutObjectHold?>('putObjectHold', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobPutObjectHold.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rewriteObject = registerOutput<BatchOperationsJobRewriteObject?>('rewriteObject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobRewriteObject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scheduleTime = registerOutput<String>('scheduleTime');
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
@@ -397,66 +340,21 @@ class BatchOperationsJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:storage/batchOperationsJob:BatchOperationsJob',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bucketList = registerOutput<BatchOperationsJobBucketList?>(
-      'bucketList',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BatchOperationsJobBucketList.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:storage/batchOperationsJob:BatchOperationsJob',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bucketList = registerOutput<BatchOperationsJobBucketList?>('bucketList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobBucketList.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     completeTime = registerOutput<String>('completeTime');
     createTime = registerOutput<String>('createTime');
-    deleteObject = registerOutput<BatchOperationsJobDeleteObject?>(
-      'deleteObject',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BatchOperationsJobDeleteObject.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deleteObject = registerOutput<BatchOperationsJobDeleteObject?>('deleteObject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobDeleteObject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteProtection = registerOutput<bool?>('deleteProtection');
     jobId = registerOutput<String?>('jobId');
     project = registerOutput<String>('project');
-    putMetadata = registerOutput<BatchOperationsJobPutMetadata?>(
-      'putMetadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BatchOperationsJobPutMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    putObjectHold = registerOutput<BatchOperationsJobPutObjectHold?>(
-      'putObjectHold',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BatchOperationsJobPutObjectHold.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    rewriteObject = registerOutput<BatchOperationsJobRewriteObject?>(
-      'rewriteObject',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BatchOperationsJobRewriteObject.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    putMetadata = registerOutput<BatchOperationsJobPutMetadata?>('putMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobPutMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    putObjectHold = registerOutput<BatchOperationsJobPutObjectHold?>('putObjectHold', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobPutObjectHold.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rewriteObject = registerOutput<BatchOperationsJobRewriteObject?>('rewriteObject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobRewriteObject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scheduleTime = registerOutput<String>('scheduleTime');
     this.state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');

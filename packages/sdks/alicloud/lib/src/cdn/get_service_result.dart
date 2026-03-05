@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getService.
 class GetServiceResult {
   /// The time when the metering method for the next cycle takes effect. The time is displayed in GMT.
   final String changingAffectTime;
-
   /// The metering method for the next cycle.
   final String changingChargeType;
   final String? enable;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? internetChargeType;
-
   /// The time when the CDN service was activated. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format.
   final String openingTime;
-
   /// The current service enable status.
   final String status;
 
@@ -53,19 +50,12 @@ class GetServiceResult {
     return GetServiceResult(
       changingAffectTime: map['changingAffectTime'] as String,
       changingChargeType: map['changingChargeType'] as String,
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      internetChargeType: (() {
-        final guardedValue = map['internetChargeType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      internetChargeType: (() { final guardedValue = map['internetChargeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       openingTime: map['openingTime'] as String,
       status: map['status'] as String,
     );
   }
 }
+

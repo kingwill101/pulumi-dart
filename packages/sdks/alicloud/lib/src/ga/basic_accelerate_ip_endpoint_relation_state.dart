@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicAccelerateIpEndpointRelationState {
   /// The ID of the Basic Accelerate IP.
   final pulumi.Input<String>? accelerateIpId;
-
   /// The ID of the Basic GA instance.
   final pulumi.Input<String>? acceleratorId;
-
   /// The ID of the Basic Endpoint.
   final pulumi.Input<String>? endpointId;
-
   /// The status of the Basic Accelerate Ip Endpoint Relation.
   final pulumi.Input<String>? status;
 
@@ -37,30 +34,13 @@ class BasicAccelerateIpEndpointRelationState {
     };
   }
 
-  factory BasicAccelerateIpEndpointRelationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BasicAccelerateIpEndpointRelationState.fromMap(Map<String, dynamic> map) {
     return BasicAccelerateIpEndpointRelationState(
-      accelerateIpId: (() {
-        final guardedValue = map['accelerateIpId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      acceleratorId: (() {
-        final guardedValue = map['acceleratorId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpointId: (() {
-        final guardedValue = map['endpointId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accelerateIpId: (() { final guardedValue = map['accelerateIpId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      acceleratorId: (() { final guardedValue = map['acceleratorId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointId: (() { final guardedValue = map['endpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

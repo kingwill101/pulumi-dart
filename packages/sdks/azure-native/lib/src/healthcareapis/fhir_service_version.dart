@@ -15,3 +15,4 @@ enum FhirServiceVersion {
     throw ArgumentError('Unknown FhirServiceVersion value: $value');
   }
 }
+

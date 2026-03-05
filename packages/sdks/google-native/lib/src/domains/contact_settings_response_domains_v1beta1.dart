@@ -7,13 +7,10 @@ import 'contact_response_domains_v1beta1.dart';
 class ContactSettingsResponseDomainsV1beta1 {
   /// The administrative contact for the `Registration`.
   final pulumi.Input<ContactResponseDomainsV1beta1> adminContact;
-
   /// Privacy setting for the contacts associated with the `Registration`.
   final pulumi.Input<String> privacy;
-
   /// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant receives an email confirmation that they must complete within 15 days to avoid domain suspension.*
   final pulumi.Input<ContactResponseDomainsV1beta1> registrantContact;
-
   /// The technical contact for the `Registration`.
   final pulumi.Input<ContactResponseDomainsV1beta1> technicalContact;
 
@@ -31,45 +28,20 @@ class ContactSettingsResponseDomainsV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminContact':
-          pulumi.Input.mapInputValue<
-            ContactResponseDomainsV1beta1,
-            Map<String, dynamic>
-          >(adminContact, (value) => value.toMap()),
+      'adminContact': pulumi.Input.mapInputValue<ContactResponseDomainsV1beta1, Map<String, dynamic>>(adminContact, (value) => value.toMap()),
       'privacy': privacy,
-      'registrantContact':
-          pulumi.Input.mapInputValue<
-            ContactResponseDomainsV1beta1,
-            Map<String, dynamic>
-          >(registrantContact, (value) => value.toMap()),
-      'technicalContact':
-          pulumi.Input.mapInputValue<
-            ContactResponseDomainsV1beta1,
-            Map<String, dynamic>
-          >(technicalContact, (value) => value.toMap()),
+      'registrantContact': pulumi.Input.mapInputValue<ContactResponseDomainsV1beta1, Map<String, dynamic>>(registrantContact, (value) => value.toMap()),
+      'technicalContact': pulumi.Input.mapInputValue<ContactResponseDomainsV1beta1, Map<String, dynamic>>(technicalContact, (value) => value.toMap()),
     };
   }
 
-  factory ContactSettingsResponseDomainsV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContactSettingsResponseDomainsV1beta1.fromMap(Map<String, dynamic> map) {
     return ContactSettingsResponseDomainsV1beta1(
-      adminContact: pulumi.Input.fromValue(
-        ContactResponseDomainsV1beta1.fromMap(
-          (map['adminContact']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      adminContact: pulumi.Input.fromValue(ContactResponseDomainsV1beta1.fromMap((map['adminContact']! as Map).cast<String, dynamic>())),
       privacy: pulumi.Input.fromValue(map['privacy'] as String),
-      registrantContact: pulumi.Input.fromValue(
-        ContactResponseDomainsV1beta1.fromMap(
-          (map['registrantContact']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      technicalContact: pulumi.Input.fromValue(
-        ContactResponseDomainsV1beta1.fromMap(
-          (map['technicalContact']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      registrantContact: pulumi.Input.fromValue(ContactResponseDomainsV1beta1.fromMap((map['registrantContact']! as Map).cast<String, dynamic>())),
+      technicalContact: pulumi.Input.fromValue(ContactResponseDomainsV1beta1.fromMap((map['technicalContact']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -6,7 +6,6 @@ class RepositoryGroupRepository {
   /// Required. The Git branch pattern used for indexing in RE2 syntax.
   /// See https://github.com/google/re2/wiki/syntax for syntax.
   final pulumi.Input<String> branchPattern;
-
   /// Required. The DeveloperConnect repository full resource name, relative resource name
   /// or resource URL to be indexed.
   final pulumi.Input<String> resource;
@@ -33,3 +32,4 @@ class RepositoryGroupRepository {
     );
   }
 }
+

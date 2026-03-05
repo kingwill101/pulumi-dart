@@ -13,7 +13,6 @@ class SloWindowsBasedSliMetricMeanInRange {
   /// good service.
   /// Structure is documented below.
   final pulumi.Input<SloWindowsBasedSliMetricMeanInRangeRange> range;
-
   /// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// specifying the TimeSeries to use for evaluating window
   /// The provided TimeSeries must have ValueType = INT64 or
@@ -32,25 +31,16 @@ class SloWindowsBasedSliMetricMeanInRange {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'range':
-          pulumi.Input.mapInputValue<
-            SloWindowsBasedSliMetricMeanInRangeRange,
-            Map<String, dynamic>
-          >(range, (value) => value.toMap()),
+      'range': pulumi.Input.mapInputValue<SloWindowsBasedSliMetricMeanInRangeRange, Map<String, dynamic>>(range, (value) => value.toMap()),
       'timeSeries': timeSeries,
     };
   }
 
-  factory SloWindowsBasedSliMetricMeanInRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SloWindowsBasedSliMetricMeanInRange.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSliMetricMeanInRange(
-      range: pulumi.Input.fromValue(
-        SloWindowsBasedSliMetricMeanInRangeRange.fromMap(
-          (map['range']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      range: pulumi.Input.fromValue(SloWindowsBasedSliMetricMeanInRangeRange.fromMap((map['range']! as Map).cast<String, dynamic>())),
       timeSeries: pulumi.Input.fromValue(map['timeSeries'] as String),
     );
   }
 }
+

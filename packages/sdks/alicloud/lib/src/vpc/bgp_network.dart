@@ -282,13 +282,10 @@ import 'bgp_network_state.dart';
 class BgpNetwork extends pulumi.CustomResource {
   /// The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
   late final pulumi.Output<String> dstCidrBlock;
-
   /// The region ID of the virtual border router (VBR) group.
   late final pulumi.Output<String> routerId;
-
   /// The state of the advertised BGP network.
   late final pulumi.Output<String> status;
-
   /// The ID of the VPC.
   late final pulumi.Output<String?> vpcId;
 
@@ -301,11 +298,11 @@ class BgpNetwork extends pulumi.CustomResource {
     BgpNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/bgpNetwork:BgpNetwork',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/bgpNetwork:BgpNetwork',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dstCidrBlock = registerOutput<String>('dstCidrBlock');
     routerId = registerOutput<String>('routerId');
     status = registerOutput<String>('status');
@@ -330,11 +327,11 @@ class BgpNetwork extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/bgpNetwork:BgpNetwork',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/bgpNetwork:BgpNetwork',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dstCidrBlock = registerOutput<String>('dstCidrBlock');
     routerId = registerOutput<String>('routerId');
     status = registerOutput<String>('status');

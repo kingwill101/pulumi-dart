@@ -341,23 +341,17 @@ import 'jit_network_access_policy_args.dart';
 class JitNetworkAccessPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Kind of the resource
   late final pulumi.Output<String?> kind;
-
   /// Location where the resource is stored
   late final pulumi.Output<String> location;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Gets the provisioning state of the Just-in-Time policy.
   late final pulumi.Output<String> provisioningState;
   late final pulumi.Output<List<Map<String, dynamic>>?> requests;
-
   /// Resource type
   late final pulumi.Output<String> type;
-
   /// Configurations for Microsoft.Compute/virtualMachines resource type.
   late final pulumi.Output<List<Map<String, dynamic>>> virtualMachines;
 
@@ -370,11 +364,11 @@ class JitNetworkAccessPolicy extends pulumi.CustomResource {
     JitNetworkAccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:JitNetworkAccessPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:security:JitNetworkAccessPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
@@ -382,8 +376,6 @@ class JitNetworkAccessPolicy extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     requests = registerOutput<List<Map<String, dynamic>>?>('requests');
     type = registerOutput<String>('type');
-    virtualMachines = registerOutput<List<Map<String, dynamic>>>(
-      'virtualMachines',
-    );
+    virtualMachines = registerOutput<List<Map<String, dynamic>>>('virtualMachines');
   }
 }

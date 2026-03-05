@@ -9,16 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomRoutingEndpointArgs {
   /// The ID of the endpoint (vSwitch).
   final pulumi.Input<String> endpoint;
-
   /// The ID of the endpoint group in which to create endpoints.
   final pulumi.Input<String> endpointGroupId;
-
   /// The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
   /// - `DenyAll`: denies all traffic to the endpoint.
   /// - `AllowAll`: allows all traffic to the endpoint.
   /// - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
   final pulumi.Input<String>? trafficToEndpointPolicy;
-
   /// The backend service type of the endpoint. Valid values: `PrivateSubNet`.
   final pulumi.Input<String> type;
 
@@ -47,12 +44,9 @@ class CustomRoutingEndpointArgs {
     return CustomRoutingEndpointArgs(
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
       endpointGroupId: pulumi.Input.fromValue(map['endpointGroupId'] as String),
-      trafficToEndpointPolicy: (() {
-        final guardedValue = map['trafficToEndpointPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      trafficToEndpointPolicy: (() { final guardedValue = map['trafficToEndpointPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

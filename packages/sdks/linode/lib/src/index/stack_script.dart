@@ -250,42 +250,30 @@ import 'stack_script_state.dart';
 class StackScript extends pulumi.CustomResource {
   /// The date this StackScript was created.
   late final pulumi.Output<String> created;
-
   /// Count of currently active, deployed Linodes created from this StackScript.
   late final pulumi.Output<int> deploymentsActive;
-
   /// The total number of times this StackScript has been deployed.
   late final pulumi.Output<int> deploymentsTotal;
-
   /// A description for the StackScript.
   late final pulumi.Output<String> description;
-
   /// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
   ///
   /// - - -
   late final pulumi.Output<List<String>> images;
-
   /// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
   late final pulumi.Output<bool> isPublic;
-
   /// The StackScript's label is for display purposes only.
   late final pulumi.Output<String> label;
-
   /// This field allows you to add notes for the set of revisions made to this StackScript.
   late final pulumi.Output<String> revNote;
-
   /// The script to execute when provisioning a new Linode with this StackScript.
   late final pulumi.Output<String> script;
-
   /// The date this StackScript was updated.
   late final pulumi.Output<String> updated;
-
   /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
   late final pulumi.Output<List<Map<String, dynamic>>> userDefinedFields;
-
   /// The Gravatar ID for the User who created the StackScript.
   late final pulumi.Output<String> userGravatarId;
-
   /// The User who created the StackScript.
   late final pulumi.Output<String> username;
 
@@ -298,11 +286,11 @@ class StackScript extends pulumi.CustomResource {
     StackScriptArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/stackScript:StackScript',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/stackScript:StackScript',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     created = registerOutput<String>('created');
     deploymentsActive = registerOutput<int>('deploymentsActive');
     deploymentsTotal = registerOutput<int>('deploymentsTotal');
@@ -313,9 +301,7 @@ class StackScript extends pulumi.CustomResource {
     revNote = registerOutput<String>('revNote');
     script = registerOutput<String>('script');
     updated = registerOutput<String>('updated');
-    userDefinedFields = registerOutput<List<Map<String, dynamic>>>(
-      'userDefinedFields',
-    );
+    userDefinedFields = registerOutput<List<Map<String, dynamic>>>('userDefinedFields');
     userGravatarId = registerOutput<String>('userGravatarId');
     username = registerOutput<String>('username');
   }
@@ -338,11 +324,11 @@ class StackScript extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/stackScript:StackScript',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/stackScript:StackScript',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     created = registerOutput<String>('created');
     deploymentsActive = registerOutput<int>('deploymentsActive');
     deploymentsTotal = registerOutput<int>('deploymentsTotal');
@@ -353,9 +339,7 @@ class StackScript extends pulumi.CustomResource {
     revNote = registerOutput<String>('revNote');
     script = registerOutput<String>('script');
     updated = registerOutput<String>('updated');
-    userDefinedFields = registerOutput<List<Map<String, dynamic>>>(
-      'userDefinedFields',
-    );
+    userDefinedFields = registerOutput<List<Map<String, dynamic>>>('userDefinedFields');
     userGravatarId = registerOutput<String>('userGravatarId');
     username = registerOutput<String>('username');
   }

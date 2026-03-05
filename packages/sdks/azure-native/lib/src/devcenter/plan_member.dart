@@ -170,31 +170,22 @@ import 'system_data_response.dart';
 class PlanMember extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The unique id of the member.
   late final pulumi.Output<String?> memberId;
-
   /// The type of the member (user, group)
   late final pulumi.Output<String?> memberType;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The sync status of the member.
   late final pulumi.Output<PlanMemberSyncStatusResponse> syncStatus;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The tier of the member.
   late final pulumi.Output<String?> tier;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -207,36 +198,18 @@ class PlanMember extends pulumi.CustomResource {
     PlanMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devcenter:PlanMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:devcenter:PlanMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     memberId = registerOutput<String?>('memberId');
     memberType = registerOutput<String?>('memberType');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    syncStatus = registerOutput<PlanMemberSyncStatusResponse>(
-      'syncStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlanMemberSyncStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    syncStatus = registerOutput<PlanMemberSyncStatusResponse>('syncStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanMemberSyncStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tier = registerOutput<String?>('tier');
     type = registerOutput<String>('type');

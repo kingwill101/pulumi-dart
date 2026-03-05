@@ -10,18 +10,14 @@ class RepositoryArgs {
   /// Allows clients to store small amounts of arbitrary data.
   final pulumi.Input<Map<String, String>>? annotations;
   final pulumi.Input<String> connectionId;
-
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   final pulumi.Input<String>? etag;
   final pulumi.Input<String>? location;
-
   /// Immutable. Resource name of the repository, in the format `projects/*/locations/*/connections/*/repositories/*`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
-
   /// Git Clone HTTPS URI.
   final pulumi.Input<String> remoteUri;
-
   /// Required. The ID to use for the repository, which will become the final component of the repository's resource name. This ID should be unique in the connection. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
   final pulumi.Input<String> repositoryId;
 
@@ -60,36 +56,15 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       connectionId: pulumi.Input.fromValue(map['connectionId'] as String),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       remoteUri: pulumi.Input.fromValue(map['remoteUri'] as String),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
     );
   }
 }
+

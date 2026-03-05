@@ -6,11 +6,7 @@ import 'certificate_template_passthrough_extensions_additional_extension.dart';
 class CertificateTemplatePassthroughExtensions {
   /// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<CertificateTemplatePassthroughExtensionsAdditionalExtension>
-  >?
-  additionalExtensions;
-
+  final pulumi.Input<List<CertificateTemplatePassthroughExtensionsAdditionalExtension>>? additionalExtensions;
   /// Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
   final pulumi.Input<List<String>>? knownExtensions;
 
@@ -24,46 +20,16 @@ class CertificateTemplatePassthroughExtensions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalExtensions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CertificateTemplatePassthroughExtensionsAdditionalExtension>,
-            List<Map<String, dynamic>>
-          >(
-            additionalExtensions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CertificateTemplatePassthroughExtensionsAdditionalExtension,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'additionalExtensions': ?pulumi.Input.mapOptionalInputValue<List<CertificateTemplatePassthroughExtensionsAdditionalExtension>, List<Map<String, dynamic>>>(additionalExtensions, (value) => pulumi.Input.encodeList<CertificateTemplatePassthroughExtensionsAdditionalExtension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'knownExtensions': ?knownExtensions,
     };
   }
 
-  factory CertificateTemplatePassthroughExtensions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CertificateTemplatePassthroughExtensions.fromMap(Map<String, dynamic> map) {
     return CertificateTemplatePassthroughExtensions(
-      additionalExtensions: (() {
-        final guardedValue = map['additionalExtensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            CertificateTemplatePassthroughExtensionsAdditionalExtension
-          >(
-            guardedValue,
-            (value) =>
-                CertificateTemplatePassthroughExtensionsAdditionalExtension.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      knownExtensions: (() {
-        final guardedValue = map['knownExtensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      additionalExtensions: (() { final guardedValue = map['additionalExtensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CertificateTemplatePassthroughExtensionsAdditionalExtension>(guardedValue, (value) => CertificateTemplatePassthroughExtensionsAdditionalExtension.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      knownExtensions: (() { final guardedValue = map['knownExtensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

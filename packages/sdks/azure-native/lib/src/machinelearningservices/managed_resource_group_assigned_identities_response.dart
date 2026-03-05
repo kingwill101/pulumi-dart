@@ -9,17 +9,20 @@ class ManagedResourceGroupAssignedIdentitiesResponse {
 
   /// Creates a new [ManagedResourceGroupAssignedIdentitiesResponse].
   /// [principalId] Identity principal Id
-  ManagedResourceGroupAssignedIdentitiesResponse({required this.principalId});
+  ManagedResourceGroupAssignedIdentitiesResponse({
+    required this.principalId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'principalId': principalId};
+    return <String, dynamic>{
+      'principalId': principalId,
+    };
   }
 
-  factory ManagedResourceGroupAssignedIdentitiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedResourceGroupAssignedIdentitiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedResourceGroupAssignedIdentitiesResponse(
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
     );
   }
 }
+

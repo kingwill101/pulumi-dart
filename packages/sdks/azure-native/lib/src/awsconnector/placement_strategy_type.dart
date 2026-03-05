@@ -16,3 +16,4 @@ enum PlacementStrategyType {
     throw ArgumentError('Unknown PlacementStrategyType value: $value');
   }
 }
+

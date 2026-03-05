@@ -9,17 +9,20 @@ class PolicyControllerTemplateLibraryConfigResponse {
 
   /// Creates a new [PolicyControllerTemplateLibraryConfigResponse].
   /// [installation] Configures the manner in which the template library is installed on the cluster.
-  PolicyControllerTemplateLibraryConfigResponse({required this.installation});
+  PolicyControllerTemplateLibraryConfigResponse({
+    required this.installation,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'installation': installation};
+    return <String, dynamic>{
+      'installation': installation,
+    };
   }
 
-  factory PolicyControllerTemplateLibraryConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PolicyControllerTemplateLibraryConfigResponse.fromMap(Map<String, dynamic> map) {
     return PolicyControllerTemplateLibraryConfigResponse(
       installation: pulumi.Input.fromValue(map['installation'] as String),
     );
   }
 }
+

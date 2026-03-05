@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WeeklyScheduleResponse {
   /// Specifies on which day of the week the maintenance occurs.
   final pulumi.Input<String> dayOfWeek;
-
   /// Specifies the number of weeks between each set of occurrences.
   final pulumi.Input<int> intervalWeeks;
 
@@ -32,3 +31,4 @@ class WeeklyScheduleResponse {
     );
   }
 }
+

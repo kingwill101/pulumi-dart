@@ -10,39 +10,20 @@ class RuntimeResponseLogging {
 
   /// Creates a new [RuntimeResponseLogging].
   /// [loggerSettings] Settings of the logger for the java app.
-  RuntimeResponseLogging({this.loggerSettings});
+  RuntimeResponseLogging({
+    this.loggerSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'loggerSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LoggerSettingResponse>,
-            List<Map<String, dynamic>>
-          >(
-            loggerSettings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LoggerSettingResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'loggerSettings': ?pulumi.Input.mapOptionalInputValue<List<LoggerSettingResponse>, List<Map<String, dynamic>>>(loggerSettings, (value) => pulumi.Input.encodeList<LoggerSettingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RuntimeResponseLogging.fromMap(Map<String, dynamic> map) {
     return RuntimeResponseLogging(
-      loggerSettings: (() {
-        final guardedValue = map['loggerSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LoggerSettingResponse>(
-            guardedValue,
-            (value) => LoggerSettingResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      loggerSettings: (() { final guardedValue = map['loggerSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LoggerSettingResponse>(guardedValue, (value) => LoggerSettingResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

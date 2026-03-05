@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TimeZoneOsconfigV1beta {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
   final pulumi.Input<String>? id;
-
   /// Optional. IANA Time Zone Database version number, e.g. "2019a".
   final pulumi.Input<String>? version;
 
   /// Creates a new [TimeZoneOsconfigV1beta].
   /// [id] IANA Time Zone Database time zone, e.g. "America/New_York".
   /// [version] Optional. IANA Time Zone Database version number, e.g. "2019a".
-  TimeZoneOsconfigV1beta({this.id, this.version});
+  TimeZoneOsconfigV1beta({
+    this.id,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id, 'version': ?version};
+    return <String, dynamic>{
+      'id': ?id,
+      'version': ?version,
+    };
   }
 
   factory TimeZoneOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return TimeZoneOsconfigV1beta(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

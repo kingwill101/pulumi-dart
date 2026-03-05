@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspacePolicyFragmentState {
   /// Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementWorkspaceId;
-
   /// Specifies the description for the API Management Workspace Policy Fragment.
   final pulumi.Input<String>? description;
-
   /// Specifies the name of the API Management Workspace Policy Fragment. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the XML content of the API Management Workspace Policy Fragment.
   final pulumi.Input<String>? xmlContent;
-
   /// Specifies the XML format of the API Management Workspace Policy Fragment. Possible values are `xml` or `rawxml`. Defaults to `xml`.
   final pulumi.Input<String>? xmlFormat;
 
@@ -45,31 +41,12 @@ class WorkspacePolicyFragmentState {
 
   factory WorkspacePolicyFragmentState.fromMap(Map<String, dynamic> map) {
     return WorkspacePolicyFragmentState(
-      apiManagementWorkspaceId: (() {
-        final guardedValue = map['apiManagementWorkspaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      xmlContent: (() {
-        final guardedValue = map['xmlContent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      xmlFormat: (() {
-        final guardedValue = map['xmlFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiManagementWorkspaceId: (() { final guardedValue = map['apiManagementWorkspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      xmlContent: (() { final guardedValue = map['xmlContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      xmlFormat: (() { final guardedValue = map['xmlFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

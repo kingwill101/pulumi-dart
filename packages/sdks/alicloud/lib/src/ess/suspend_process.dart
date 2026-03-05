@@ -539,7 +539,6 @@ import 'suspend_process_state.dart';
 class SuspendProcess extends pulumi.CustomResource {
   /// Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
   late final pulumi.Output<String> process;
-
   /// ID of the scaling group.
   late final pulumi.Output<String> scalingGroupId;
 
@@ -552,11 +551,11 @@ class SuspendProcess extends pulumi.CustomResource {
     SuspendProcessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/suspendProcess:SuspendProcess',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/suspendProcess:SuspendProcess',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     process = registerOutput<String>('process');
     scalingGroupId = registerOutput<String>('scalingGroupId');
   }
@@ -579,11 +578,11 @@ class SuspendProcess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/suspendProcess:SuspendProcess',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/suspendProcess:SuspendProcess',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     process = registerOutput<String>('process');
     scalingGroupId = registerOutput<String>('scalingGroupId');
   }

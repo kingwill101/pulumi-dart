@@ -8,28 +8,13 @@ import 'channel_input_attachment_input_settings_audio_selector_selector_settings
 
 class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings {
   /// Audio HLS Rendition Selection. See Audio HLS Rendition Selection for more details.
-  final pulumi.Input<
-    ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection
-  >?
-  audioHlsRenditionSelection;
-
+  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection>? audioHlsRenditionSelection;
   /// Audio Language Selection. See Audio Language Selection for more details.
-  final pulumi.Input<
-    ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioLanguageSelection
-  >?
-  audioLanguageSelection;
-
+  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioLanguageSelection>? audioLanguageSelection;
   /// Audio Pid Selection. See Audio PID Selection for more details.
-  final pulumi.Input<
-    ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection
-  >?
-  audioPidSelection;
-
+  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection>? audioPidSelection;
   /// Audio Track Selection. See Audio Track Selection for more details.
-  final pulumi.Input<
-    ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection
-  >?
-  audioTrackSelection;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection>? audioTrackSelection;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings].
   /// [audioHlsRenditionSelection] Audio HLS Rendition Selection. See Audio HLS Rendition Selection for more details.
@@ -45,69 +30,20 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioHlsRenditionSelection':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection,
-            Map<String, dynamic>
-          >(audioHlsRenditionSelection, (value) => value.toMap()),
-      'audioLanguageSelection':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioLanguageSelection,
-            Map<String, dynamic>
-          >(audioLanguageSelection, (value) => value.toMap()),
-      'audioPidSelection':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection,
-            Map<String, dynamic>
-          >(audioPidSelection, (value) => value.toMap()),
-      'audioTrackSelection':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection,
-            Map<String, dynamic>
-          >(audioTrackSelection, (value) => value.toMap()),
+      'audioHlsRenditionSelection': ?pulumi.Input.mapOptionalInputValue<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection, Map<String, dynamic>>(audioHlsRenditionSelection, (value) => value.toMap()),
+      'audioLanguageSelection': ?pulumi.Input.mapOptionalInputValue<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioLanguageSelection, Map<String, dynamic>>(audioLanguageSelection, (value) => value.toMap()),
+      'audioPidSelection': ?pulumi.Input.mapOptionalInputValue<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection, Map<String, dynamic>>(audioPidSelection, (value) => value.toMap()),
+      'audioTrackSelection': ?pulumi.Input.mapOptionalInputValue<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection, Map<String, dynamic>>(audioTrackSelection, (value) => value.toMap()),
     };
   }
 
-  factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings(
-      audioHlsRenditionSelection: (() {
-        final guardedValue = map['audioHlsRenditionSelection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      audioLanguageSelection: (() {
-        final guardedValue = map['audioLanguageSelection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioLanguageSelection.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      audioPidSelection: (() {
-        final guardedValue = map['audioPidSelection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      audioTrackSelection: (() {
-        final guardedValue = map['audioTrackSelection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      audioHlsRenditionSelection: (() { final guardedValue = map['audioHlsRenditionSelection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      audioLanguageSelection: (() { final guardedValue = map['audioLanguageSelection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioLanguageSelection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      audioPidSelection: (() { final guardedValue = map['audioPidSelection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      audioTrackSelection: (() { final guardedValue = map['audioTrackSelection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -9,19 +9,20 @@ class DiskSkuResponse {
 
   /// Creates a new [DiskSkuResponse].
   /// [name] Defines the disk sku name.
-  DiskSkuResponse({this.name});
+  DiskSkuResponse({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory DiskSkuResponse.fromMap(Map<String, dynamic> map) {
     return DiskSkuResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

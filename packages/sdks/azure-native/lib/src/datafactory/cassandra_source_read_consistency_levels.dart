@@ -20,8 +20,7 @@ enum CassandraSourceReadConsistencyLevels {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown CassandraSourceReadConsistencyLevels value: $value',
-    );
+    throw ArgumentError('Unknown CassandraSourceReadConsistencyLevels value: $value');
   }
 }
+

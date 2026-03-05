@@ -11,42 +11,29 @@ class CounterSet {
   ///
   /// The maximum number of counters is 32.
   final pulumi.Input<Map<String, Counter>> counters;
-
   /// Name defines the name of the counter set. It must be a DNS label.
   final pulumi.Input<String> name;
 
   /// Creates a new [CounterSet].
   /// [counters] Counters defines the set of counters for this CounterSet The name of each counter must be unique in that set and must be a DNS label.
   /// [name] Name defines the name of the counter set. It must be a DNS label.
-  CounterSet({required this.counters, required this.name});
+  CounterSet({
+    required this.counters,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'counters':
-          pulumi.Input.mapInputValue<
-            Map<String, Counter>,
-            Map<String, Map<String, dynamic>>
-          >(
-            counters,
-            (value) =>
-                pulumi.Input.encodeMapValues<Counter, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'counters': pulumi.Input.mapInputValue<Map<String, Counter>, Map<String, Map<String, dynamic>>>(counters, (value) => pulumi.Input.encodeMapValues<Counter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
   factory CounterSet.fromMap(Map<String, dynamic> map) {
     return CounterSet(
-      counters: pulumi.Input.fromValue(
-        pulumi.Input.decodeMapValues<Counter>(
-          map['counters']!,
-          (value) => Counter.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      counters: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<Counter>(map['counters']!, (value) => Counter.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

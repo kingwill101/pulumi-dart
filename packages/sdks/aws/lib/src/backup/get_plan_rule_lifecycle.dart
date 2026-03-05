@@ -21,8 +21,7 @@ class GetPlanRuleLifecycle {
     return <String, dynamic>{
       'coldStorageAfter': coldStorageAfter,
       'deleteAfter': deleteAfter,
-      'optInToArchiveForSupportedResources':
-          optInToArchiveForSupportedResources,
+      'optInToArchiveForSupportedResources': optInToArchiveForSupportedResources,
     };
   }
 
@@ -30,9 +29,8 @@ class GetPlanRuleLifecycle {
     return GetPlanRuleLifecycle(
       coldStorageAfter: pulumi.Input.fromValue(map['coldStorageAfter'] as int),
       deleteAfter: pulumi.Input.fromValue(map['deleteAfter'] as int),
-      optInToArchiveForSupportedResources: pulumi.Input.fromValue(
-        map['optInToArchiveForSupportedResources'] as bool,
-      ),
+      optInToArchiveForSupportedResources: pulumi.Input.fromValue(map['optInToArchiveForSupportedResources'] as bool),
     );
   }
 }
+

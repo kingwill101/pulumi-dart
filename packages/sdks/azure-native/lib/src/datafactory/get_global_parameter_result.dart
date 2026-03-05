@@ -7,19 +7,14 @@ import 'global_parameter_specification_response.dart';
 class GetGlobalParameterResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Etag identifies change in the resource.
   final String etag;
-
   /// The resource identifier.
   final String id;
-
   /// The resource name.
   final String name;
-
   /// Properties of the global parameter.
   final Map<String, GlobalParameterSpecificationResponse> properties;
-
   /// The resource type.
   final String type;
 
@@ -45,11 +40,7 @@ class GetGlobalParameterResult {
       'etag': etag,
       'id': id,
       'name': name,
-      'properties':
-          pulumi.Input.encodeMapValues<
-            GlobalParameterSpecificationResponse,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.encodeMapValues<GlobalParameterSpecificationResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'type': type,
     };
   }
@@ -60,14 +51,9 @@ class GetGlobalParameterResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties:
-          pulumi.Input.decodeMapValues<GlobalParameterSpecificationResponse>(
-            map['properties']!,
-            (value) => GlobalParameterSpecificationResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      properties: pulumi.Input.decodeMapValues<GlobalParameterSpecificationResponse>(map['properties']!, (value) => GlobalParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlConnectivityUpdateSettings {
   /// SQL Server connectivity option.
   final pulumi.Input<String>? connectivityType;
-
   /// SQL Server port.
   final pulumi.Input<int>? port;
-
   /// SQL Server sysadmin login password.
   final pulumi.Input<String>? sqlAuthUpdatePassword;
-
   /// SQL Server sysadmin login to create.
   final pulumi.Input<String>? sqlAuthUpdateUserName;
 
@@ -39,26 +36,11 @@ class SqlConnectivityUpdateSettings {
 
   factory SqlConnectivityUpdateSettings.fromMap(Map<String, dynamic> map) {
     return SqlConnectivityUpdateSettings(
-      connectivityType: (() {
-        final guardedValue = map['connectivityType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      sqlAuthUpdatePassword: (() {
-        final guardedValue = map['sqlAuthUpdatePassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sqlAuthUpdateUserName: (() {
-        final guardedValue = map['sqlAuthUpdateUserName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectivityType: (() { final guardedValue = map['connectivityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sqlAuthUpdatePassword: (() { final guardedValue = map['sqlAuthUpdatePassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sqlAuthUpdateUserName: (() { final guardedValue = map['sqlAuthUpdateUserName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

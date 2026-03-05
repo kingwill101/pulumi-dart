@@ -29,16 +29,13 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
     };
   }
 
-  factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification(
-      deletionCharacter: pulumi.Input.fromValue(
-        map['deletionCharacter'] as String,
-      ),
+      deletionCharacter: pulumi.Input.fromValue(map['deletionCharacter'] as String),
       endCharacter: pulumi.Input.fromValue(map['endCharacter'] as String),
       endTimeoutMs: pulumi.Input.fromValue(map['endTimeoutMs'] as int),
       maxLength: pulumi.Input.fromValue(map['maxLength'] as int),
     );
   }
 }
+

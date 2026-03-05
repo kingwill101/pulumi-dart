@@ -170,83 +170,65 @@ import 'cluster_state.dart';
 /// ```
 class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> apiAddress;
-
   /// The UUID of the V1 Container Infra cluster
   /// template. Changing this creates a new cluster.
   late final pulumi.Output<String> clusterTemplateId;
   late final pulumi.Output<String> coeVersion;
   late final pulumi.Output<String> containerVersion;
-
   /// The timeout (in minutes) for creating the
   /// cluster. Changing this creates a new cluster.
   late final pulumi.Output<int> createTimeout;
   late final pulumi.Output<String> createdAt;
-
   /// The URL used for cluster node discovery.
   /// Changing this creates a new cluster.
   late final pulumi.Output<String> discoveryUrl;
-
   /// The size (in GB) of the Docker volume.
   /// Changing this creates a new cluster.
   late final pulumi.Output<int> dockerVolumeSize;
-
   /// The fixed network that will be attached to the
   /// cluster. Changing this creates a new cluster.
   late final pulumi.Output<String> fixedNetwork;
-
   /// The fixed subnet that will be attached to the
   /// cluster. Changing this creates a new cluster.
   late final pulumi.Output<String> fixedSubnet;
-
   /// The flavor for the nodes of the cluster. Can be set via
   /// the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
   /// cluster.
   late final pulumi.Output<String> flavor;
-
   /// Indicates whether floating IP should be
   /// created for every cluster node. Changing this creates a new cluster.
   late final pulumi.Output<bool> floatingIpEnabled;
-
   /// The name of the Compute service SSH keypair. Changing
   /// this creates a new cluster.
   late final pulumi.Output<String> keypair;
   late final pulumi.Output<Map<String, String>> kubeconfig;
-
   /// The list of key value pairs representing additional
   /// properties of the cluster. Changing this creates a new cluster.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<List<String>> masterAddresses;
-
   /// The number of master nodes for the cluster.
   /// Changing this creates a new cluster.
   late final pulumi.Output<int> masterCount;
-
   /// The flavor for the master nodes. Can be set via
   /// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
   /// new cluster.
   late final pulumi.Output<String> masterFlavor;
-
   /// Indicates whether to create a load balancer
   /// for the master nodes. Changing this creates a new cluster.
   late final pulumi.Output<bool> masterLbEnabled;
-
   /// Indicates whether the provided labels should be
   /// merged with cluster template labels. Changing this creates a new cluster.
   late final pulumi.Output<bool?> mergeLabels;
-
   /// The name of the cluster. Changing this creates a new
   /// cluster.
   late final pulumi.Output<String> name;
   late final pulumi.Output<List<String>> nodeAddresses;
-
   /// The number of nodes for the cluster.
   late final pulumi.Output<int?> nodeCount;
-
   /// The project of the cluster. Required if admin wants
   /// to create a cluster in another project. Changing this creates a new
   /// cluster.
   late final pulumi.Output<String> projectId;
-
   /// The region in which to obtain the V1 Container Infra
   /// client. A Container Infra client is needed to create a cluster. If omitted,
   /// the `region` argument of the provider is used. Changing this creates a new
@@ -254,7 +236,6 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   late final pulumi.Output<String> stackId;
   late final pulumi.Output<String> updatedAt;
-
   /// The user of the cluster. Required if admin wants to
   /// create a cluster template for another user. Changing this creates a new
   /// cluster.
@@ -269,11 +250,11 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:containerinfra/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:containerinfra/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiAddress = registerOutput<String>('apiAddress');
     clusterTemplateId = registerOutput<String>('clusterTemplateId');
     coeVersion = registerOutput<String>('coeVersion');
@@ -322,11 +303,11 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:containerinfra/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:containerinfra/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiAddress = registerOutput<String>('apiAddress');
     clusterTemplateId = registerOutput<String>('clusterTemplateId');
     coeVersion = registerOutput<String>('coeVersion');

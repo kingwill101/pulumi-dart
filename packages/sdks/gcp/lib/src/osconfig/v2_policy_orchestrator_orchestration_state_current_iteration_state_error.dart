@@ -6,15 +6,10 @@ import 'v2_policy_orchestrator_orchestration_state_current_iteration_state_error
 class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateError {
   /// The status code, which should be an enum value of google.rpc.Code.
   final pulumi.Input<int>? code;
-
   /// A list of messages that carry the error details.  There is a common set of
   /// message types for APIs to use.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetail>
-  >?
-  details;
-
+  final pulumi.Input<List<V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetail>>? details;
   /// A developer-facing error message, which should be in English. Any
   /// user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
@@ -33,53 +28,17 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateError {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': ?code,
-      'details':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetail
-            >,
-            List<Map<String, dynamic>>
-          >(
-            details,
-            (value) =>
-                pulumi.Input.encodeList<
-                  V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetail,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'details': ?pulumi.Input.mapOptionalInputValue<List<V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetail>, List<Map<String, dynamic>>>(details, (value) => pulumi.Input.encodeList<V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
       'message': ?message,
     };
   }
 
-  factory V2PolicyOrchestratorOrchestrationStateCurrentIterationStateError.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2PolicyOrchestratorOrchestrationStateCurrentIterationStateError.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorOrchestrationStateCurrentIterationStateError(
-      code: (() {
-        final guardedValue = map['code'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      details: (() {
-        final guardedValue = map['details'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetail
-          >(
-            guardedValue,
-            (value) =>
-                V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetail.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetail>(guardedValue, (value) => V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

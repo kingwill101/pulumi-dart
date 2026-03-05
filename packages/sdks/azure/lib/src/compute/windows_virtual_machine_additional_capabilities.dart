@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsVirtualMachineAdditionalCapabilities {
   /// Whether to enable the hibernation capability or not.
   final pulumi.Input<bool>? hibernationEnabled;
-
   /// Should the capacity to enable Data Disks of the `UltraSSD_LRS` storage account type be supported on this Virtual Machine? Defaults to `false`.
   final pulumi.Input<bool>? ultraSsdEnabled;
 
@@ -24,20 +23,11 @@ class WindowsVirtualMachineAdditionalCapabilities {
     };
   }
 
-  factory WindowsVirtualMachineAdditionalCapabilities.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WindowsVirtualMachineAdditionalCapabilities.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineAdditionalCapabilities(
-      hibernationEnabled: (() {
-        final guardedValue = map['hibernationEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ultraSsdEnabled: (() {
-        final guardedValue = map['ultraSsdEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      hibernationEnabled: (() { final guardedValue = map['hibernationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ultraSsdEnabled: (() { final guardedValue = map['ultraSsdEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

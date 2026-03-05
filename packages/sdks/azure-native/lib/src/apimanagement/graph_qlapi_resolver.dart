@@ -158,19 +158,14 @@ import 'graph_qlapi_resolver_args.dart';
 class GraphQLApiResolver extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Description of the resolver. May include HTML formatting tags.
   late final pulumi.Output<String?> description;
-
   /// Resolver Name.
   late final pulumi.Output<String?> displayName;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Path is type/field being resolved.
   late final pulumi.Output<String?> path;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -183,11 +178,11 @@ class GraphQLApiResolver extends pulumi.CustomResource {
     GraphQLApiResolverArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:GraphQLApiResolver',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:GraphQLApiResolver',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

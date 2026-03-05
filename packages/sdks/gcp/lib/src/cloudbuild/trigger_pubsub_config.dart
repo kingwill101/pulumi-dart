@@ -5,16 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggerPubsubConfig {
   /// Service account that will make the push request.
   final pulumi.Input<String>? serviceAccountEmail;
-
   /// (Output)
   /// Potential issues with the underlying Pub/Sub subscription configuration.
   /// Only populated on get requests.
   final pulumi.Input<String>? state;
-
   /// (Output)
   /// Output only. Name of the subscription.
   final pulumi.Input<String>? subscription;
-
   /// The name of the topic from which this subscription is receiving messages.
   final pulumi.Input<String> topic;
 
@@ -41,22 +38,11 @@ class TriggerPubsubConfig {
 
   factory TriggerPubsubConfig.fromMap(Map<String, dynamic> map) {
     return TriggerPubsubConfig(
-      serviceAccountEmail: (() {
-        final guardedValue = map['serviceAccountEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subscription: (() {
-        final guardedValue = map['subscription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serviceAccountEmail: (() { final guardedValue = map['serviceAccountEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscription: (() { final guardedValue = map['subscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       topic: pulumi.Input.fromValue(map['topic'] as String),
     );
   }
 }
+

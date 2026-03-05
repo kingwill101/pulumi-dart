@@ -13,8 +13,7 @@ enum StoragePoolCapacityProvisioningType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown StoragePoolCapacityProvisioningType value: $value',
-    );
+    throw ArgumentError('Unknown StoragePoolCapacityProvisioningType value: $value');
   }
 }
+

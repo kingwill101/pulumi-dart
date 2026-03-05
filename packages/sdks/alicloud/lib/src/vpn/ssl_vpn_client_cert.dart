@@ -430,22 +430,16 @@ import 'ssl_vpn_client_cert_state.dart';
 class SslVpnClientCert extends pulumi.CustomResource {
   /// The client ca cert.
   late final pulumi.Output<String> caCert;
-
   /// The client cert.
   late final pulumi.Output<String> clientCert;
-
   /// The vpn client config.
   late final pulumi.Output<String> clientConfig;
-
   /// The client key.
   late final pulumi.Output<String> clientKey;
-
   /// The name of the client certificate.
   late final pulumi.Output<String> name;
-
   /// The ID of the SSL-VPN server.
   late final pulumi.Output<String> sslVpnServerId;
-
   /// The status of the client certificate.
   late final pulumi.Output<String> status;
 
@@ -458,11 +452,11 @@ class SslVpnClientCert extends pulumi.CustomResource {
     SslVpnClientCertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpn/sslVpnClientCert:SslVpnClientCert',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpn/sslVpnClientCert:SslVpnClientCert',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     caCert = registerOutput<String>('caCert');
     clientCert = registerOutput<String>('clientCert');
     clientConfig = registerOutput<String>('clientConfig');
@@ -490,11 +484,11 @@ class SslVpnClientCert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpn/sslVpnClientCert:SslVpnClientCert',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpn/sslVpnClientCert:SslVpnClientCert',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     caCert = registerOutput<String>('caCert');
     clientCert = registerOutput<String>('clientCert');
     clientConfig = registerOutput<String>('clientConfig');

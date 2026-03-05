@@ -9,10 +9,16 @@ class InsightFiltersType {
   /// Creates a new [InsightFiltersType].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersType({required this.comparison, required this.value});
+  InsightFiltersType({
+    required this.comparison,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comparison': comparison, 'value': value};
+    return <String, dynamic>{
+      'comparison': comparison,
+      'value': value,
+    };
   }
 
   factory InsightFiltersType.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class InsightFiltersType {
     );
   }
 }
+

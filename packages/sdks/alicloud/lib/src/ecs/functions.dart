@@ -3027,8 +3027,7 @@ Future<GetEcsLaunchTemplatesResult> getEcsLaunchTemplates(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ecs_get_ecs_network_interface_permissions_get_ecs_network_interface_permissions_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEcsNetworkInterfacePermissionsResult>
-getEcsNetworkInterfacePermissions(
+Future<GetEcsNetworkInterfacePermissionsResult> getEcsNetworkInterfacePermissions(
   GetEcsNetworkInterfacePermissionsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

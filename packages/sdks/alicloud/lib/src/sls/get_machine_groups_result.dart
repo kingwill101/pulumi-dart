@@ -7,13 +7,10 @@ import 'get_machine_groups_group.dart';
 class GetMachineGroupsResult {
   /// Machine Group name
   final String? groupName;
-
   /// A list of Machine Group Entries. Each element contains the following attributes:
   final List<GetMachineGroupsGroup> groups;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Machine Group IDs.
   final List<String> ids;
   final String? outputFile;
@@ -38,11 +35,7 @@ class GetMachineGroupsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'groupName': ?groupName,
-      'groups':
-          pulumi.Input.encodeList<GetMachineGroupsGroup, Map<String, dynamic>>(
-            groups,
-            (value) => value.toMap(),
-          ),
+      'groups': pulumi.Input.encodeList<GetMachineGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
@@ -52,25 +45,13 @@ class GetMachineGroupsResult {
 
   factory GetMachineGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetMachineGroupsResult(
-      groupName: (() {
-        final guardedValue = map['groupName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      groups: pulumi.Input.decodeList<GetMachineGroupsGroup>(
-        map['groups']!,
-        (value) => GetMachineGroupsGroup.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      groupName: (() { final guardedValue = map['groupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      groups: pulumi.Input.decodeList<GetMachineGroupsGroup>(map['groups']!, (value) => GetMachineGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       projectName: map['projectName'] as String,
     );
   }
 }
+

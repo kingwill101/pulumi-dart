@@ -9,17 +9,20 @@ class GooglePrivacyDlpV2PublishToPubSubResponse {
 
   /// Creates a new [GooglePrivacyDlpV2PublishToPubSubResponse].
   /// [topic] Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to the DLP API service account executing the long running DlpJob sending the notifications. Format is projects/{project}/topics/{topic}.
-  GooglePrivacyDlpV2PublishToPubSubResponse({required this.topic});
+  GooglePrivacyDlpV2PublishToPubSubResponse({
+    required this.topic,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'topic': topic};
+    return <String, dynamic>{
+      'topic': topic,
+    };
   }
 
-  factory GooglePrivacyDlpV2PublishToPubSubResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2PublishToPubSubResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PublishToPubSubResponse(
       topic: pulumi.Input.fromValue(map['topic'] as String),
     );
   }
 }
+

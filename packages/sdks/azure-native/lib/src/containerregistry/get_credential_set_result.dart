@@ -10,31 +10,22 @@ class GetCredentialSetResult {
   /// List of authentication credentials stored for an upstream.
   /// Usually consists of a primary and an optional secondary credential.
   final List<AuthCredentialResponse>? authCredentials;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The creation date of credential store resource.
   final String creationDate;
-
   /// The resource ID.
   final String id;
-
   /// Identities associated with the resource. This is used to access the KeyVault secrets.
   final IdentityPropertiesResponse? identity;
-
   /// The credentials are stored for this upstream or login server.
   final String? loginServer;
-
   /// The name of the resource.
   final String name;
-
   /// Provisioning state of the resource.
   final String provisioningState;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// The type of the resource.
   final String type;
 
@@ -64,14 +55,7 @@ class GetCredentialSetResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authCredentials': ?(() {
-        final guardedValue = authCredentials;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          AuthCredentialResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'authCredentials': ?(() { final guardedValue = authCredentials; if (guardedValue == null) return null; return pulumi.Input.encodeList<AuthCredentialResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'azureApiVersion': azureApiVersion,
       'creationDate': creationDate,
       'id': id,
@@ -86,37 +70,17 @@ class GetCredentialSetResult {
 
   factory GetCredentialSetResult.fromMap(Map<String, dynamic> map) {
     return GetCredentialSetResult(
-      authCredentials: (() {
-        final guardedValue = map['authCredentials'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<AuthCredentialResponse>(
-          guardedValue,
-          (value) => AuthCredentialResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      authCredentials: (() { final guardedValue = map['authCredentials']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthCredentialResponse>(guardedValue, (value) => AuthCredentialResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       azureApiVersion: map['azureApiVersion'] as String,
       creationDate: map['creationDate'] as String,
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return IdentityPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      loginServer: (() {
-        final guardedValue = map['loginServer'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      loginServer: (() { final guardedValue = map['loginServer']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

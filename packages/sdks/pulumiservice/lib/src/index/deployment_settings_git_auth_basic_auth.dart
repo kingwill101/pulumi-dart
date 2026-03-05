@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentSettingsGitAuthBasicAuth {
   /// Password for git basic authentication.
   final pulumi.Input<String> password;
-
   /// User name for git basic authentication.
   final pulumi.Input<String> username;
 
@@ -19,7 +18,10 @@ class DeploymentSettingsGitAuthBasicAuth {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': password, 'username': username};
+    return <String, dynamic>{
+      'password': password,
+      'username': username,
+    };
   }
 
   factory DeploymentSettingsGitAuthBasicAuth.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class DeploymentSettingsGitAuthBasicAuth {
     );
   }
 }
+

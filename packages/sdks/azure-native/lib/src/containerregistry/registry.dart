@@ -336,71 +336,48 @@ import 'system_data_response.dart';
 class Registry extends pulumi.CustomResource {
   /// The value that indicates whether the admin user is enabled.
   late final pulumi.Output<bool?> adminUserEnabled;
-
   /// Enables registry-wide pull from unauthenticated clients.
   late final pulumi.Output<bool?> anonymousPullEnabled;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The creation date of the container registry in ISO8601 format.
   late final pulumi.Output<String> creationDate;
-
   /// Enable a single data endpoint per region for serving data.
   late final pulumi.Output<bool?> dataEndpointEnabled;
-
   /// List of host names that will serve data when dataEndpointEnabled is true.
   late final pulumi.Output<List<String>> dataEndpointHostNames;
-
   /// The encryption settings of container registry.
   late final pulumi.Output<EncryptionPropertyResponse?> encryption;
-
   /// The identity of the container registry.
   late final pulumi.Output<IdentityPropertiesResponse?> identity;
-
   /// The location of the resource. This cannot be changed after the resource is created.
   late final pulumi.Output<String> location;
-
   /// The URL that can be used to log into the container registry.
   late final pulumi.Output<String> loginServer;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// Whether to allow trusted Azure services to access a network restricted registry.
   late final pulumi.Output<String?> networkRuleBypassOptions;
-
   /// The network rule set for a container registry.
   late final pulumi.Output<NetworkRuleSetResponse?> networkRuleSet;
-
   /// The policies for a container registry.
   late final pulumi.Output<PoliciesResponse?> policies;
-
   /// List of private endpoint connections for a container registry.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// The provisioning state of the container registry at the time the operation was called.
   late final pulumi.Output<String> provisioningState;
-
   /// Whether or not public network access is allowed for the container registry.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// The SKU of the container registry.
   late final pulumi.Output<SkuResponse> sku;
-
   /// The status of the container registry at the time the operation was called.
   late final pulumi.Output<StatusResponse> status;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// Whether or not zone redundancy is enabled for this container registry
   late final pulumi.Output<String?> zoneRedundancy;
 
@@ -413,100 +390,31 @@ class Registry extends pulumi.CustomResource {
     RegistryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerregistry:Registry',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:containerregistry:Registry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminUserEnabled = registerOutput<bool?>('adminUserEnabled');
     anonymousPullEnabled = registerOutput<bool?>('anonymousPullEnabled');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationDate = registerOutput<String>('creationDate');
     dataEndpointEnabled = registerOutput<bool?>('dataEndpointEnabled');
-    dataEndpointHostNames = registerOutput<List<String>>(
-      'dataEndpointHostNames',
-    );
-    encryption = registerOutput<EncryptionPropertyResponse?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<IdentityPropertiesResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataEndpointHostNames = registerOutput<List<String>>('dataEndpointHostNames');
+    encryption = registerOutput<EncryptionPropertyResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<IdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     loginServer = registerOutput<String>('loginServer');
     this.name = registerOutput<String>('name');
-    networkRuleBypassOptions = registerOutput<String?>(
-      'networkRuleBypassOptions',
-    );
-    networkRuleSet = registerOutput<NetworkRuleSetResponse?>(
-      'networkRuleSet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkRuleSetResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    policies = registerOutput<PoliciesResponse?>(
-      'policies',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PoliciesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    networkRuleBypassOptions = registerOutput<String?>('networkRuleBypassOptions');
+    networkRuleSet = registerOutput<NetworkRuleSetResponse?>('networkRuleSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkRuleSetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    policies = registerOutput<PoliciesResponse?>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoliciesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    sku = registerOutput<SkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<StatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<StatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     zoneRedundancy = registerOutput<String?>('zoneRedundancy');

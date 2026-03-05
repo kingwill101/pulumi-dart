@@ -13,14 +13,15 @@ class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serverGroupId': serverGroupId};
+    return <String, dynamic>{
+      'serverGroupId': serverGroupId,
+    };
   }
 
-  factory GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple(
       serverGroupId: pulumi.Input.fromValue(map['serverGroupId'] as String),
     );
   }
 }
+

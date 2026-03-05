@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterSkuResponse {
   /// Denotes the number of streaming units the cluster can support. Valid values for this property are multiples of 36 with a minimum value of 36 and maximum value of 216. Required on PUT (CreateOrUpdate) requests.
   final pulumi.Input<int>? capacity;
-
   /// Specifies the SKU name of the cluster. Required on PUT (CreateOrUpdate) requests.
   final pulumi.Input<String>? name;
 
   /// Creates a new [ClusterSkuResponse].
   /// [capacity] Denotes the number of streaming units the cluster can support. Valid values for this property are multiples of 36 with a minimum value of 36 and maximum value of 216. Required on PUT (CreateOrUpdate) requests.
   /// [name] Specifies the SKU name of the cluster. Required on PUT (CreateOrUpdate) requests.
-  ClusterSkuResponse({this.capacity, this.name});
+  ClusterSkuResponse({
+    this.capacity,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'capacity': ?capacity, 'name': ?name};
+    return <String, dynamic>{
+      'capacity': ?capacity,
+      'name': ?name,
+    };
   }
 
   factory ClusterSkuResponse.fromMap(Map<String, dynamic> map) {
     return ClusterSkuResponse(
-      capacity: (() {
-        final guardedValue = map['capacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

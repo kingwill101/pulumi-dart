@@ -342,15 +342,12 @@ import 'mongo_user_definition_state.dart';
 class MongoUserDefinition extends pulumi.CustomResource {
   /// The resource ID of the Mongo DB. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cosmosMongoDatabaseId;
-
   /// A list of Mongo Roles that are inherited to the Mongo User Definition.
   ///
   /// &gt; **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmos_mongo_database_id`.
   late final pulumi.Output<List<String>?> inheritedRoleNames;
-
   /// The password for the Mongo User Definition.
   late final pulumi.Output<String> password;
-
   /// The username for the Mongo User Definition. Changing this forces a new resource to be created.
   late final pulumi.Output<String> username;
 
@@ -363,11 +360,11 @@ class MongoUserDefinition extends pulumi.CustomResource {
     MongoUserDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/mongoUserDefinition:MongoUserDefinition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/mongoUserDefinition:MongoUserDefinition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');
     inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames');
     password = registerOutput<String>('password');
@@ -392,11 +389,11 @@ class MongoUserDefinition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/mongoUserDefinition:MongoUserDefinition',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/mongoUserDefinition:MongoUserDefinition',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');
     inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames');
     password = registerOutput<String>('password');

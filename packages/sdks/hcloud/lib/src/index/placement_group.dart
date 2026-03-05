@@ -170,11 +170,9 @@ import 'placement_group_state.dart';
 class PlacementGroup extends pulumi.CustomResource {
   /// User-defined labels (key-value pairs) should be created with.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Name of the Placement Group.
   late final pulumi.Output<String> name;
   late final pulumi.Output<List<int>> servers;
-
   /// Type of the Placement Group.
   late final pulumi.Output<String> type;
 
@@ -187,11 +185,11 @@ class PlacementGroup extends pulumi.CustomResource {
     PlacementGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/placementGroup:PlacementGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/placementGroup:PlacementGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     servers = registerOutput<List<int>>('servers');
@@ -216,11 +214,11 @@ class PlacementGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/placementGroup:PlacementGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/placementGroup:PlacementGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     servers = registerOutput<List<int>>('servers');

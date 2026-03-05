@@ -27,19 +27,10 @@ class DomainReferConfig {
 
   factory DomainReferConfig.fromMap(Map<String, dynamic> map) {
     return DomainReferConfig(
-      allowEmpty: (() {
-        final guardedValue = map['allowEmpty'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      referLists: pulumi.Input.fromValue(
-        (map['referLists'] as List).cast<String>(),
-      ),
-      referType: (() {
-        final guardedValue = map['referType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowEmpty: (() { final guardedValue = map['allowEmpty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      referLists: pulumi.Input.fromValue((map['referLists'] as List).cast<String>()),
+      referType: (() { final guardedValue = map['referType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

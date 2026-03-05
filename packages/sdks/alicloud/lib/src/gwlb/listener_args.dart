@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListenerArgs {
   /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
   final pulumi.Input<bool>? dryRun;
-
   /// The description of the listener.
   ///
   /// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
   final pulumi.Input<String>? listenerDescription;
-
   /// The GWLB instance ID.
   final pulumi.Input<String> loadBalancerId;
-
   /// The server group ID.
   final pulumi.Input<String> serverGroupId;
-
   /// The tags. You can specify at most 20 tags in each call.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -50,25 +46,12 @@ class ListenerArgs {
 
   factory ListenerArgs.fromMap(Map<String, dynamic> map) {
     return ListenerArgs(
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      listenerDescription: (() {
-        final guardedValue = map['listenerDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      listenerDescription: (() { final guardedValue = map['listenerDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
       serverGroupId: pulumi.Input.fromValue(map['serverGroupId'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

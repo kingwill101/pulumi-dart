@@ -9,13 +9,20 @@ class AccountSku {
 
   /// Creates a new [AccountSku].
   /// [name] Name of the SKU.
-  AccountSku({required this.name});
+  AccountSku({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory AccountSku.fromMap(Map<String, dynamic> map) {
-    return AccountSku(name: pulumi.Input.fromValue(map['name'] as String));
+    return AccountSku(
+      name: pulumi.Input.fromValue(map['name'] as String),
+    );
   }
 }
+

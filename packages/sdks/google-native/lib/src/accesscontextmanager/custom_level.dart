@@ -10,22 +10,20 @@ class CustomLevel {
 
   /// Creates a new [CustomLevel].
   /// [expr] A Cloud CEL expression evaluating to a boolean.
-  CustomLevel({required this.expr});
+  CustomLevel({
+    required this.expr,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expr': pulumi.Input.mapInputValue<Expr, Map<String, dynamic>>(
-        expr,
-        (value) => value.toMap(),
-      ),
+      'expr': pulumi.Input.mapInputValue<Expr, Map<String, dynamic>>(expr, (value) => value.toMap()),
     };
   }
 
   factory CustomLevel.fromMap(Map<String, dynamic> map) {
     return CustomLevel(
-      expr: pulumi.Input.fromValue(
-        Expr.fromMap((map['expr']! as Map).cast<String, dynamic>()),
-      ),
+      expr: pulumi.Input.fromValue(Expr.fromMap((map['expr']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

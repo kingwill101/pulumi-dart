@@ -7,18 +7,12 @@ import 'user_assigned_identities_response_user_assigned_identities.dart';
 class AmlFilesystemIdentityResponse {
   /// The principal ID for the user-assigned identity of the resource.
   final pulumi.Input<String> principalId;
-
   /// The tenant ID associated with the resource.
   final pulumi.Input<String> tenantId;
-
   /// The type of identity used for the resource.
   final pulumi.Input<String>? type;
-
   /// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
-  final pulumi.Input<
-    Map<String, UserAssignedIdentitiesResponseUserAssignedIdentities>
-  >?
-  userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentitiesResponseUserAssignedIdentities>>? userAssignedIdentities;
 
   /// Creates a new [AmlFilesystemIdentityResponse].
   /// [principalId] The principal ID for the user-assigned identity of the resource.
@@ -37,18 +31,7 @@ class AmlFilesystemIdentityResponse {
       'principalId': principalId,
       'tenantId': tenantId,
       'type': ?type,
-      'userAssignedIdentities':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, UserAssignedIdentitiesResponseUserAssignedIdentities>,
-            Map<String, Map<String, dynamic>>
-          >(
-            userAssignedIdentities,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  UserAssignedIdentitiesResponseUserAssignedIdentities,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'userAssignedIdentities': ?pulumi.Input.mapOptionalInputValue<Map<String, UserAssignedIdentitiesResponseUserAssignedIdentities>, Map<String, Map<String, dynamic>>>(userAssignedIdentities, (value) => pulumi.Input.encodeMapValues<UserAssignedIdentitiesResponseUserAssignedIdentities, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -56,26 +39,9 @@ class AmlFilesystemIdentityResponse {
     return AmlFilesystemIdentityResponse(
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentities: (() {
-        final guardedValue = map['userAssignedIdentities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<
-            UserAssignedIdentitiesResponseUserAssignedIdentities
-          >(
-            guardedValue,
-            (value) =>
-                UserAssignedIdentitiesResponseUserAssignedIdentities.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<UserAssignedIdentitiesResponseUserAssignedIdentities>(guardedValue, (value) => UserAssignedIdentitiesResponseUserAssignedIdentities.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

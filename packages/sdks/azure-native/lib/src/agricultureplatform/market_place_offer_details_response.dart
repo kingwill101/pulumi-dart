@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MarketPlaceOfferDetailsResponse {
   /// Publisher Id.
   final pulumi.Input<String> publisherId;
-
   /// Saas offer Id.
   final pulumi.Input<String> saasOfferId;
 
@@ -32,3 +31,4 @@ class MarketPlaceOfferDetailsResponse {
     );
   }
 }
+

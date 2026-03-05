@@ -8,10 +8,14 @@ class AssessmentScopeAwsService {
 
   /// Creates a new [AssessmentScopeAwsService].
   /// [serviceName] Name of the Amazon Web Service.
-  AssessmentScopeAwsService({required this.serviceName});
+  AssessmentScopeAwsService({
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serviceName': serviceName};
+    return <String, dynamic>{
+      'serviceName': serviceName,
+    };
   }
 
   factory AssessmentScopeAwsService.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class AssessmentScopeAwsService {
     );
   }
 }
+

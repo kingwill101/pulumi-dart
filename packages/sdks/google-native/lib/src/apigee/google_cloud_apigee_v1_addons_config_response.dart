@@ -11,28 +11,17 @@ import 'google_cloud_apigee_v1_monetization_config_response.dart';
 /// Add-on configurations for the Apigee organization.
 class GoogleCloudApigeeV1AddonsConfigResponse {
   /// Configuration for the Advanced API Ops add-on.
-  final pulumi.Input<GoogleCloudApigeeV1AdvancedApiOpsConfigResponse>
-  advancedApiOpsConfig;
-
+  final pulumi.Input<GoogleCloudApigeeV1AdvancedApiOpsConfigResponse> advancedApiOpsConfig;
   /// Configuration for the Analytics add-on.
-  final pulumi.Input<GoogleCloudApigeeV1AnalyticsConfigResponse>
-  analyticsConfig;
-
+  final pulumi.Input<GoogleCloudApigeeV1AnalyticsConfigResponse> analyticsConfig;
   /// Configuration for the API Security add-on.
-  final pulumi.Input<GoogleCloudApigeeV1ApiSecurityConfigResponse>
-  apiSecurityConfig;
-
+  final pulumi.Input<GoogleCloudApigeeV1ApiSecurityConfigResponse> apiSecurityConfig;
   /// Configuration for the Connectors Platform add-on.
-  final pulumi.Input<GoogleCloudApigeeV1ConnectorsPlatformConfigResponse>
-  connectorsPlatformConfig;
-
+  final pulumi.Input<GoogleCloudApigeeV1ConnectorsPlatformConfigResponse> connectorsPlatformConfig;
   /// Configuration for the Integration add-on.
-  final pulumi.Input<GoogleCloudApigeeV1IntegrationConfigResponse>
-  integrationConfig;
-
+  final pulumi.Input<GoogleCloudApigeeV1IntegrationConfigResponse> integrationConfig;
   /// Configuration for the Monetization add-on.
-  final pulumi.Input<GoogleCloudApigeeV1MonetizationConfigResponse>
-  monetizationConfig;
+  final pulumi.Input<GoogleCloudApigeeV1MonetizationConfigResponse> monetizationConfig;
 
   /// Creates a new [GoogleCloudApigeeV1AddonsConfigResponse].
   /// [advancedApiOpsConfig] Configuration for the Advanced API Ops add-on.
@@ -52,73 +41,24 @@ class GoogleCloudApigeeV1AddonsConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedApiOpsConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudApigeeV1AdvancedApiOpsConfigResponse,
-            Map<String, dynamic>
-          >(advancedApiOpsConfig, (value) => value.toMap()),
-      'analyticsConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudApigeeV1AnalyticsConfigResponse,
-            Map<String, dynamic>
-          >(analyticsConfig, (value) => value.toMap()),
-      'apiSecurityConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudApigeeV1ApiSecurityConfigResponse,
-            Map<String, dynamic>
-          >(apiSecurityConfig, (value) => value.toMap()),
-      'connectorsPlatformConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudApigeeV1ConnectorsPlatformConfigResponse,
-            Map<String, dynamic>
-          >(connectorsPlatformConfig, (value) => value.toMap()),
-      'integrationConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudApigeeV1IntegrationConfigResponse,
-            Map<String, dynamic>
-          >(integrationConfig, (value) => value.toMap()),
-      'monetizationConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudApigeeV1MonetizationConfigResponse,
-            Map<String, dynamic>
-          >(monetizationConfig, (value) => value.toMap()),
+      'advancedApiOpsConfig': pulumi.Input.mapInputValue<GoogleCloudApigeeV1AdvancedApiOpsConfigResponse, Map<String, dynamic>>(advancedApiOpsConfig, (value) => value.toMap()),
+      'analyticsConfig': pulumi.Input.mapInputValue<GoogleCloudApigeeV1AnalyticsConfigResponse, Map<String, dynamic>>(analyticsConfig, (value) => value.toMap()),
+      'apiSecurityConfig': pulumi.Input.mapInputValue<GoogleCloudApigeeV1ApiSecurityConfigResponse, Map<String, dynamic>>(apiSecurityConfig, (value) => value.toMap()),
+      'connectorsPlatformConfig': pulumi.Input.mapInputValue<GoogleCloudApigeeV1ConnectorsPlatformConfigResponse, Map<String, dynamic>>(connectorsPlatformConfig, (value) => value.toMap()),
+      'integrationConfig': pulumi.Input.mapInputValue<GoogleCloudApigeeV1IntegrationConfigResponse, Map<String, dynamic>>(integrationConfig, (value) => value.toMap()),
+      'monetizationConfig': pulumi.Input.mapInputValue<GoogleCloudApigeeV1MonetizationConfigResponse, Map<String, dynamic>>(monetizationConfig, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudApigeeV1AddonsConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudApigeeV1AddonsConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1AddonsConfigResponse(
-      advancedApiOpsConfig: pulumi.Input.fromValue(
-        GoogleCloudApigeeV1AdvancedApiOpsConfigResponse.fromMap(
-          (map['advancedApiOpsConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      analyticsConfig: pulumi.Input.fromValue(
-        GoogleCloudApigeeV1AnalyticsConfigResponse.fromMap(
-          (map['analyticsConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      apiSecurityConfig: pulumi.Input.fromValue(
-        GoogleCloudApigeeV1ApiSecurityConfigResponse.fromMap(
-          (map['apiSecurityConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      connectorsPlatformConfig: pulumi.Input.fromValue(
-        GoogleCloudApigeeV1ConnectorsPlatformConfigResponse.fromMap(
-          (map['connectorsPlatformConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      integrationConfig: pulumi.Input.fromValue(
-        GoogleCloudApigeeV1IntegrationConfigResponse.fromMap(
-          (map['integrationConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      monetizationConfig: pulumi.Input.fromValue(
-        GoogleCloudApigeeV1MonetizationConfigResponse.fromMap(
-          (map['monetizationConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      advancedApiOpsConfig: pulumi.Input.fromValue(GoogleCloudApigeeV1AdvancedApiOpsConfigResponse.fromMap((map['advancedApiOpsConfig']! as Map).cast<String, dynamic>())),
+      analyticsConfig: pulumi.Input.fromValue(GoogleCloudApigeeV1AnalyticsConfigResponse.fromMap((map['analyticsConfig']! as Map).cast<String, dynamic>())),
+      apiSecurityConfig: pulumi.Input.fromValue(GoogleCloudApigeeV1ApiSecurityConfigResponse.fromMap((map['apiSecurityConfig']! as Map).cast<String, dynamic>())),
+      connectorsPlatformConfig: pulumi.Input.fromValue(GoogleCloudApigeeV1ConnectorsPlatformConfigResponse.fromMap((map['connectorsPlatformConfig']! as Map).cast<String, dynamic>())),
+      integrationConfig: pulumi.Input.fromValue(GoogleCloudApigeeV1IntegrationConfigResponse.fromMap((map['integrationConfig']! as Map).cast<String, dynamic>())),
+      monetizationConfig: pulumi.Input.fromValue(GoogleCloudApigeeV1MonetizationConfigResponse.fromMap((map['monetizationConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

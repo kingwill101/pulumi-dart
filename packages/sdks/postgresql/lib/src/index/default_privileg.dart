@@ -396,22 +396,16 @@ import 'default_privileg_state.dart';
 class DefaultPrivileg extends pulumi.CustomResource {
   /// The database to grant default privileges for this role.
   late final pulumi.Output<String> database;
-
   /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
   late final pulumi.Output<String> objectType;
-
   /// Specifies the role that creates objects for which the default privileges will be applied.
   late final pulumi.Output<String> owner;
-
   /// List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
   late final pulumi.Output<List<String>> privileges;
-
   /// The role that will automatically be granted the specified privileges on new objects created by the owner.
   late final pulumi.Output<String> role;
-
   /// The database schema to set default privileges for this role.
   late final pulumi.Output<String?> schema;
-
   /// Permit the grant recipient to grant it to others
   late final pulumi.Output<bool?> withGrantOption;
 
@@ -424,11 +418,11 @@ class DefaultPrivileg extends pulumi.CustomResource {
     DefaultPrivilegArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/defaultPrivileg:DefaultPrivileg',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/defaultPrivileg:DefaultPrivileg',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     database = registerOutput<String>('database');
     objectType = registerOutput<String>('objectType');
     owner = registerOutput<String>('owner');
@@ -456,11 +450,11 @@ class DefaultPrivileg extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/defaultPrivileg:DefaultPrivileg',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/defaultPrivileg:DefaultPrivileg',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     database = registerOutput<String>('database');
     objectType = registerOutput<String>('objectType');
     owner = registerOutput<String>('owner');

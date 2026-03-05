@@ -13,14 +13,15 @@ class RuleGroupRuleStatementByteMatchStatementFieldToMatchSingleQueryArgument {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory RuleGroupRuleStatementByteMatchStatementFieldToMatchSingleQueryArgument.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementByteMatchStatementFieldToMatchSingleQueryArgument.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementByteMatchStatementFieldToMatchSingleQueryArgument(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

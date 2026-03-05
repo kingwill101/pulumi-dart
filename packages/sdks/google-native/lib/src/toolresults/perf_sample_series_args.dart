@@ -31,11 +31,7 @@ class PerfSampleSeriesArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicPerfSampleSeries':
-          ?pulumi.Input.mapOptionalInputValue<
-            BasicPerfSampleSeries,
-            Map<String, dynamic>
-          >(basicPerfSampleSeries, (value) => value.toMap()),
+      'basicPerfSampleSeries': ?pulumi.Input.mapOptionalInputValue<BasicPerfSampleSeries, Map<String, dynamic>>(basicPerfSampleSeries, (value) => value.toMap()),
       'executionId': executionId,
       'historyId': historyId,
       'project': ?project,
@@ -45,23 +41,12 @@ class PerfSampleSeriesArgs {
 
   factory PerfSampleSeriesArgs.fromMap(Map<String, dynamic> map) {
     return PerfSampleSeriesArgs(
-      basicPerfSampleSeries: (() {
-        final guardedValue = map['basicPerfSampleSeries'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BasicPerfSampleSeries.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      basicPerfSampleSeries: (() { final guardedValue = map['basicPerfSampleSeries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BasicPerfSampleSeries.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       executionId: pulumi.Input.fromValue(map['executionId'] as String),
       historyId: pulumi.Input.fromValue(map['historyId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       stepId: pulumi.Input.fromValue(map['stepId'] as String),
     );
   }
 }
+

@@ -18,19 +18,14 @@ import 'cache_blob_target_state.dart';
 class CacheBlobTarget extends pulumi.CustomResource {
   /// The name of the access policy applied to this target. Defaults to `default`.
   late final pulumi.Output<String?> accessPolicyName;
-
   /// The name HPC Cache, which the HPC Cache Blob Target will be added to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cacheName;
-
   /// The name of the HPC Cache Blob Target. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The client-facing file path of the HPC Cache Blob Target.
   late final pulumi.Output<String> namespacePath;
-
   /// The name of the Resource Group in which to create the HPC Cache Blob Target. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The Resource Manager ID of the Storage Container used as the HPC Cache Blob Target. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This is the Resource Manager ID of the Storage Container, rather than the regular ID - and can be accessed on the `azure.storage.Container` Data Source/Resource as `resource_manager_id`.
@@ -45,11 +40,11 @@ class CacheBlobTarget extends pulumi.CustomResource {
     CacheBlobTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:hpc/cacheBlobTarget:CacheBlobTarget',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:hpc/cacheBlobTarget:CacheBlobTarget',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicyName = registerOutput<String?>('accessPolicyName');
     cacheName = registerOutput<String>('cacheName');
     this.name = registerOutput<String>('name');
@@ -76,11 +71,11 @@ class CacheBlobTarget extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:hpc/cacheBlobTarget:CacheBlobTarget',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:hpc/cacheBlobTarget:CacheBlobTarget',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicyName = registerOutput<String?>('accessPolicyName');
     cacheName = registerOutput<String>('cacheName');
     this.name = registerOutput<String>('name');

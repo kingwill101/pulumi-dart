@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CniConfigResponse {
   /// Pod Subnet
   final pulumi.Input<String> podSubnet;
-
   /// Service subnet
   final pulumi.Input<String> serviceSubnet;
-
   /// Cni type
   final pulumi.Input<String> type;
-
   /// Cni version
   final pulumi.Input<String> version;
 
@@ -46,3 +43,4 @@ class CniConfigResponse {
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum RouteFilterRuleType {
     throw ArgumentError('Unknown RouteFilterRuleType value: $value');
   }
 }
+

@@ -18,8 +18,7 @@ enum WebApplicationFirewallMatchVariable {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown WebApplicationFirewallMatchVariable value: $value',
-    );
+    throw ArgumentError('Unknown WebApplicationFirewallMatchVariable value: $value');
   }
 }
+

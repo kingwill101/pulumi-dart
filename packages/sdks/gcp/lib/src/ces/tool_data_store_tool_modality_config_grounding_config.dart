@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ToolDataStoreToolModalityConfigGroundingConfig {
   /// Whether grounding is disabled.
   final pulumi.Input<bool>? disabled;
-
   /// The groundedness threshold of the answer based on the retrieved sources.
   /// The value has a configurable range of [1, 5]. The level is used to
   /// threshold the groundedness of the answer, meaning that all responses with
@@ -30,20 +29,11 @@ class ToolDataStoreToolModalityConfigGroundingConfig {
     };
   }
 
-  factory ToolDataStoreToolModalityConfigGroundingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ToolDataStoreToolModalityConfigGroundingConfig.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolModalityConfigGroundingConfig(
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      groundingLevel: (() {
-        final guardedValue = map['groundingLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      groundingLevel: (() { final guardedValue = map['groundingLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEndpoint.
 class GetEndpointResult {
   /// See Argument Reference above.
   final String? endpointRegion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// See Argument Reference above.
   final String? interface;
-
   /// See Argument Reference above.
   final String? name;
-
   /// See Argument Reference above.
   final String region;
-
   /// See Argument Reference above.
   final String? serviceId;
-
   /// See Argument Reference above.
   final String? serviceName;
-
   /// See Argument Reference above.
   final String? serviceType;
-
   /// The endpoint URL.
   final String url;
 
@@ -67,39 +60,16 @@ class GetEndpointResult {
 
   factory GetEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetEndpointResult(
-      endpointRegion: (() {
-        final guardedValue = map['endpointRegion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      endpointRegion: (() { final guardedValue = map['endpointRegion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      interface: (() {
-        final guardedValue = map['interface'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      interface: (() { final guardedValue = map['interface']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: map['region'] as String,
-      serviceId: (() {
-        final guardedValue = map['serviceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      serviceName: (() {
-        final guardedValue = map['serviceName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      serviceType: (() {
-        final guardedValue = map['serviceType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceType: (() { final guardedValue = map['serviceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       url: map['url'] as String,
     );
   }
 }
+

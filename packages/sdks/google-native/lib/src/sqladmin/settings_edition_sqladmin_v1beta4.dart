@@ -16,3 +16,4 @@ enum SettingsEditionSqladminV1beta4 {
     throw ArgumentError('Unknown SettingsEditionSqladminV1beta4 value: $value');
   }
 }
+

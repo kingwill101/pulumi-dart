@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RetryPolicy {
   /// Optional. The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
   final pulumi.Input<String>? maximumBackoff;
-
   /// Optional. The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
   final pulumi.Input<String>? minimumBackoff;
 
   /// Creates a new [RetryPolicy].
   /// [maximumBackoff] Optional. The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
   /// [minimumBackoff] Optional. The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
-  RetryPolicy({this.maximumBackoff, this.minimumBackoff});
+  RetryPolicy({
+    this.maximumBackoff,
+    this.minimumBackoff,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class RetryPolicy {
 
   factory RetryPolicy.fromMap(Map<String, dynamic> map) {
     return RetryPolicy(
-      maximumBackoff: (() {
-        final guardedValue = map['maximumBackoff'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      minimumBackoff: (() {
-        final guardedValue = map['minimumBackoff'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      maximumBackoff: (() { final guardedValue = map['maximumBackoff']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minimumBackoff: (() { final guardedValue = map['minimumBackoff']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

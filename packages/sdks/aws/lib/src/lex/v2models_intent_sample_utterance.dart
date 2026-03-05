@@ -8,10 +8,14 @@ class V2modelsIntentSampleUtterance {
 
   /// Creates a new [V2modelsIntentSampleUtterance].
   /// [utterance] Sample utterance that Amazon Lex uses to build its machine-learning model to recognize intents.
-  V2modelsIntentSampleUtterance({required this.utterance});
+  V2modelsIntentSampleUtterance({
+    required this.utterance,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'utterance': utterance};
+    return <String, dynamic>{
+      'utterance': utterance,
+    };
   }
 
   factory V2modelsIntentSampleUtterance.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class V2modelsIntentSampleUtterance {
     );
   }
 }
+

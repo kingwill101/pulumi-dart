@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancePscAttachmentDetail {
   /// Service attachment URI which your self-created PscConnection should use as target.
   final pulumi.Input<String> connectionType;
-
   /// Service attachment URI which your self-created PscConnection should use as target.
   final pulumi.Input<String> serviceAttachment;
 
@@ -27,9 +26,8 @@ class GetInstancePscAttachmentDetail {
   factory GetInstancePscAttachmentDetail.fromMap(Map<String, dynamic> map) {
     return GetInstancePscAttachmentDetail(
       connectionType: pulumi.Input.fromValue(map['connectionType'] as String),
-      serviceAttachment: pulumi.Input.fromValue(
-        map['serviceAttachment'] as String,
-      ),
+      serviceAttachment: pulumi.Input.fromValue(map['serviceAttachment'] as String),
     );
   }
 }
+

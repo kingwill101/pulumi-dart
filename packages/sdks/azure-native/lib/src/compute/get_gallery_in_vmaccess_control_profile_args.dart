@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGalleryInVMAccessControlProfileArgs {
   /// The name of the Shared Image Gallery.
   final pulumi.Input<String> galleryName;
-
   /// The name of the gallery inVMAccessControlProfile to be retrieved.
   final pulumi.Input<String> inVMAccessControlProfileName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,17 +32,12 @@ class GetGalleryInVMAccessControlProfileArgs {
     };
   }
 
-  factory GetGalleryInVMAccessControlProfileArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGalleryInVMAccessControlProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetGalleryInVMAccessControlProfileArgs(
       galleryName: pulumi.Input.fromValue(map['galleryName'] as String),
-      inVMAccessControlProfileName: pulumi.Input.fromValue(
-        map['inVMAccessControlProfileName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      inVMAccessControlProfileName: pulumi.Input.fromValue(map['inVMAccessControlProfileName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

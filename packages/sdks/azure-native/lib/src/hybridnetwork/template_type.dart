@@ -15,3 +15,4 @@ enum TemplateType {
     throw ArgumentError('Unknown TemplateType value: $value');
   }
 }
+

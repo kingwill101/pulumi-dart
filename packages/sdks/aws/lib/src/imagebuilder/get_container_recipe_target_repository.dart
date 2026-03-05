@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerRecipeTargetRepository {
   /// Name of the container repository where the output container image is stored. The name is prefixed by the repository location.
   final pulumi.Input<String> repositoryName;
-
   /// Service in which this image is registered.
   final pulumi.Input<String> service;
 
@@ -31,3 +30,4 @@ class GetContainerRecipeTargetRepository {
     );
   }
 }
+

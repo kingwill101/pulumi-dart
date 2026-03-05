@@ -1,30 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVolume.
 class GetVolumeResult {
   /// Text describing a block storage volume.
   final String? description;
-
   /// A list of associated Droplet ids.
   final List<int> dropletIds;
-
   /// Filesystem label currently in-use on the block storage volume.
   final String filesystemLabel;
-
   /// Filesystem type currently in-use on the block storage volume.
   final String filesystemType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String? region;
-
   /// The size of the block storage volume in GiB.
   final int size;
-
   /// A list of the tags associated to the Volume.
   final List<String> tags;
-
   /// The uniform resource name for the storage volume.
   final String urn;
 
@@ -69,24 +63,17 @@ class GetVolumeResult {
 
   factory GetVolumeResult.fromMap(Map<String, dynamic> map) {
     return GetVolumeResult(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dropletIds: (map['dropletIds'] as List).cast<int>(),
       filesystemLabel: map['filesystemLabel'] as String,
       filesystemType: map['filesystemType'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       size: map['size'] as int,
       tags: (map['tags'] as List).cast<String>(),
       urn: map['urn'] as String,
     );
   }
 }
+

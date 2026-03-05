@@ -471,44 +471,28 @@ import 'system_data_response.dart';
 class ContactProfile extends pulumi.CustomResource {
   /// Auto-tracking configuration.
   late final pulumi.Output<String?> autoTrackingConfiguration;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
   late final pulumi.Output<String?> eventHubUri;
-
   /// Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
   late final pulumi.Output<List<Map<String, dynamic>>> links;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Minimum viable elevation for the contact in decimal degrees. Used for listing the available contacts with a spacecraft at a given ground station.
   late final pulumi.Output<double?> minimumElevationDegrees;
-
   /// Minimum viable contact duration in ISO 8601 format. Used for listing the available contacts with a spacecraft at a given ground station.
   late final pulumi.Output<String?> minimumViableContactDuration;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Network configuration of customer virtual network.
-  late final pulumi.Output<
-    ContactProfilesPropertiesResponseNetworkConfiguration
-  >
-  networkConfiguration;
-
+  late final pulumi.Output<ContactProfilesPropertiesResponseNetworkConfiguration> networkConfiguration;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  thirdPartyConfigurations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> thirdPartyConfigurations;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -521,50 +505,23 @@ class ContactProfile extends pulumi.CustomResource {
     ContactProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:orbital:ContactProfile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoTrackingConfiguration = registerOutput<String?>(
-      'autoTrackingConfiguration',
-    );
+          'azure-native:orbital:ContactProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoTrackingConfiguration = registerOutput<String?>('autoTrackingConfiguration');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eventHubUri = registerOutput<String?>('eventHubUri');
     links = registerOutput<List<Map<String, dynamic>>>('links');
     location = registerOutput<String>('location');
-    minimumElevationDegrees = registerOutput<double?>(
-      'minimumElevationDegrees',
-    );
-    minimumViableContactDuration = registerOutput<String?>(
-      'minimumViableContactDuration',
-    );
+    minimumElevationDegrees = registerOutput<double?>('minimumElevationDegrees');
+    minimumViableContactDuration = registerOutput<String?>('minimumViableContactDuration');
     this.name = registerOutput<String>('name');
-    networkConfiguration =
-        registerOutput<ContactProfilesPropertiesResponseNetworkConfiguration>(
-          'networkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ContactProfilesPropertiesResponseNetworkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkConfiguration = registerOutput<ContactProfilesPropertiesResponseNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactProfilesPropertiesResponseNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    thirdPartyConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'thirdPartyConfigurations',
-    );
+    thirdPartyConfigurations = registerOutput<List<Map<String, dynamic>>?>('thirdPartyConfigurations');
     type = registerOutput<String>('type');
   }
 }

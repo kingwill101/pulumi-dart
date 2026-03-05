@@ -16,3 +16,4 @@ enum InternalCheckerState {
     throw ArgumentError('Unknown InternalCheckerState value: $value');
   }
 }
+

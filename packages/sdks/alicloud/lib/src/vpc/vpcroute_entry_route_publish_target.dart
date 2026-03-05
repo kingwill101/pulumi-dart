@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VPCRouteEntryRoutePublishTarget {
   /// Route Publish Status
   final pulumi.Input<String>? publishStatus;
-
   /// Route publish target instance id.
   final pulumi.Input<String>? targetInstanceId;
-
   /// Route publish target type
   final pulumi.Input<String> targetType;
 
@@ -32,17 +30,10 @@ class VPCRouteEntryRoutePublishTarget {
 
   factory VPCRouteEntryRoutePublishTarget.fromMap(Map<String, dynamic> map) {
     return VPCRouteEntryRoutePublishTarget(
-      publishStatus: (() {
-        final guardedValue = map['publishStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetInstanceId: (() {
-        final guardedValue = map['targetInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      publishStatus: (() { final guardedValue = map['publishStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetInstanceId: (() { final guardedValue = map['targetInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetType: pulumi.Input.fromValue(map['targetType'] as String),
     );
   }
 }
+

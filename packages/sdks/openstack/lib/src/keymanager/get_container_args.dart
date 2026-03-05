@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerArgs {
   /// The Container name.
   final pulumi.Input<String>? name;
-
   /// The region in which to obtain the V1 KeyManager client.
   /// A KeyManager client is needed to fetch a container. If omitted, the `region`
   /// argument of the provider is used.
@@ -18,24 +17,23 @@ class GetContainerArgs {
   /// Creates a new [GetContainerArgs].
   /// [name] The Container name.
   /// [region] The region in which to obtain the V1 KeyManager client.
-  GetContainerArgs({this.name, this.region});
+  GetContainerArgs({
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'region': ?region};
+    return <String, dynamic>{
+      'name': ?name,
+      'region': ?region,
+    };
   }
 
   factory GetContainerArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

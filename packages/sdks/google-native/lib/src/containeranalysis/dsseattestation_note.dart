@@ -9,27 +9,20 @@ class DSSEAttestationNote {
 
   /// Creates a new [DSSEAttestationNote].
   /// [hint] DSSEHint hints at the purpose of the attestation authority.
-  DSSEAttestationNote({this.hint});
+  DSSEAttestationNote({
+    this.hint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hint':
-          ?pulumi.Input.mapOptionalInputValue<DSSEHint, Map<String, dynamic>>(
-            hint,
-            (value) => value.toMap(),
-          ),
+      'hint': ?pulumi.Input.mapOptionalInputValue<DSSEHint, Map<String, dynamic>>(hint, (value) => value.toMap()),
     };
   }
 
   factory DSSEAttestationNote.fromMap(Map<String, dynamic> map) {
     return DSSEAttestationNote(
-      hint: (() {
-        final guardedValue = map['hint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DSSEHint.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      hint: (() { final guardedValue = map['hint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DSSEHint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

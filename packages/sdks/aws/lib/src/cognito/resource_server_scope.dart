@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceServerScope {
   /// The scope description.
   final pulumi.Input<String> scopeDescription;
-
   /// The scope name.
   final pulumi.Input<String> scopeName;
 
@@ -26,10 +25,9 @@ class ResourceServerScope {
 
   factory ResourceServerScope.fromMap(Map<String, dynamic> map) {
     return ResourceServerScope(
-      scopeDescription: pulumi.Input.fromValue(
-        map['scopeDescription'] as String,
-      ),
+      scopeDescription: pulumi.Input.fromValue(map['scopeDescription'] as String),
       scopeName: pulumi.Input.fromValue(map['scopeName'] as String),
     );
   }
 }
+

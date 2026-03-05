@@ -8,13 +8,20 @@ class GetNamespaceSku {
 
   /// Creates a new [GetNamespaceSku].
   /// [name] Specifies the Name of the Notification Hub Namespace.
-  GetNamespaceSku({required this.name});
+  GetNamespaceSku({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetNamespaceSku.fromMap(Map<String, dynamic> map) {
-    return GetNamespaceSku(name: pulumi.Input.fromValue(map['name'] as String));
+    return GetNamespaceSku(
+      name: pulumi.Input.fromValue(map['name'] as String),
+    );
   }
 }
+

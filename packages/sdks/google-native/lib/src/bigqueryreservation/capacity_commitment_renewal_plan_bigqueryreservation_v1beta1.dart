@@ -9,17 +9,13 @@ enum CapacityCommitmentRenewalPlanBigqueryreservationV1beta1 {
   const CapacityCommitmentRenewalPlanBigqueryreservationV1beta1(this.wireValue);
   final String wireValue;
 
-  static CapacityCommitmentRenewalPlanBigqueryreservationV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in CapacityCommitmentRenewalPlanBigqueryreservationV1beta1.values) {
+  static CapacityCommitmentRenewalPlanBigqueryreservationV1beta1 fromValue(String value) {
+    for (final item in CapacityCommitmentRenewalPlanBigqueryreservationV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown CapacityCommitmentRenewalPlanBigqueryreservationV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown CapacityCommitmentRenewalPlanBigqueryreservationV1beta1 value: $value');
   }
 }
+

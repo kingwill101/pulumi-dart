@@ -6,23 +6,16 @@ import 'get_projects_project_security_properties_project_protection.dart';
 class GetProjectsProjectSecurityProperties {
   /// Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
   final pulumi.Input<bool> enableDownloadPrivilege;
-
   /// Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
   final pulumi.Input<bool> labelSecurity;
-
   /// Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
   final pulumi.Input<bool> objectCreatorHasAccessPermission;
-
   /// The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
   final pulumi.Input<bool> objectCreatorHasGrantPermission;
-
   /// Project protection.
-  final pulumi.Input<GetProjectsProjectSecurityPropertiesProjectProtection>
-  projectProtection;
-
+  final pulumi.Input<GetProjectsProjectSecurityPropertiesProjectProtection> projectProtection;
   /// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
   final pulumi.Input<bool> usingAcl;
-
   /// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
   final pulumi.Input<bool> usingPolicy;
 
@@ -50,37 +43,22 @@ class GetProjectsProjectSecurityProperties {
       'labelSecurity': labelSecurity,
       'objectCreatorHasAccessPermission': objectCreatorHasAccessPermission,
       'objectCreatorHasGrantPermission': objectCreatorHasGrantPermission,
-      'projectProtection':
-          pulumi.Input.mapInputValue<
-            GetProjectsProjectSecurityPropertiesProjectProtection,
-            Map<String, dynamic>
-          >(projectProtection, (value) => value.toMap()),
+      'projectProtection': pulumi.Input.mapInputValue<GetProjectsProjectSecurityPropertiesProjectProtection, Map<String, dynamic>>(projectProtection, (value) => value.toMap()),
       'usingAcl': usingAcl,
       'usingPolicy': usingPolicy,
     };
   }
 
-  factory GetProjectsProjectSecurityProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetProjectsProjectSecurityProperties.fromMap(Map<String, dynamic> map) {
     return GetProjectsProjectSecurityProperties(
-      enableDownloadPrivilege: pulumi.Input.fromValue(
-        map['enableDownloadPrivilege'] as bool,
-      ),
+      enableDownloadPrivilege: pulumi.Input.fromValue(map['enableDownloadPrivilege'] as bool),
       labelSecurity: pulumi.Input.fromValue(map['labelSecurity'] as bool),
-      objectCreatorHasAccessPermission: pulumi.Input.fromValue(
-        map['objectCreatorHasAccessPermission'] as bool,
-      ),
-      objectCreatorHasGrantPermission: pulumi.Input.fromValue(
-        map['objectCreatorHasGrantPermission'] as bool,
-      ),
-      projectProtection: pulumi.Input.fromValue(
-        GetProjectsProjectSecurityPropertiesProjectProtection.fromMap(
-          (map['projectProtection']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      objectCreatorHasAccessPermission: pulumi.Input.fromValue(map['objectCreatorHasAccessPermission'] as bool),
+      objectCreatorHasGrantPermission: pulumi.Input.fromValue(map['objectCreatorHasGrantPermission'] as bool),
+      projectProtection: pulumi.Input.fromValue(GetProjectsProjectSecurityPropertiesProjectProtection.fromMap((map['projectProtection']! as Map).cast<String, dynamic>())),
       usingAcl: pulumi.Input.fromValue(map['usingAcl'] as bool),
       usingPolicy: pulumi.Input.fromValue(map['usingPolicy'] as bool),
     );
   }
 }
+

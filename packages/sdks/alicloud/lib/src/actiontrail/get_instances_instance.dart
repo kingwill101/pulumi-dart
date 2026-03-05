@@ -7,89 +7,60 @@ import 'get_instances_instance_upgrade_service_detail_info.dart';
 class GetInstancesInstance {
   /// The allowed list of the instance.
   final pulumi.Input<List<GetInstancesInstanceAllowedList>> allowedLists;
-
   /// The config the instance.
   final pulumi.Input<String> config;
-
   /// The create time of the instance.
   final pulumi.Input<String> createTime;
-
   /// The deployed type of the instance.
   final pulumi.Input<int> deployType;
-
   /// The disk size of the instance.
   final pulumi.Input<int> diskSize;
-
   /// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
   final pulumi.Input<int> diskType;
-
   /// The domain point of the instance.
   final pulumi.Input<String> domainEndpoint;
-
   /// The peak bandwidth of the instance.
   final pulumi.Input<int> eipMax;
-
   /// The endPoint to access the instance.
   final pulumi.Input<String> endPoint;
-
   /// The expired time  of the instance.
   final pulumi.Input<int> expiredTime;
-
   /// ID of the instance.
   final pulumi.Input<String> id;
-
   /// The peak value of io of the instance.
   final pulumi.Input<int> ioMax;
-
   /// The msg retain of the instance.
   final pulumi.Input<int> msgRetain;
-
   /// Name of the instance.
   final pulumi.Input<String> name;
-
   /// The paid type of the instance.
   final pulumi.Input<String> paidType;
-
   /// (Available in 1.194.0+) The number of partitions.
   final pulumi.Input<int> partitionNum;
-
   /// The SASL domain point of the instance.
   final pulumi.Input<String> saslDomainEndpoint;
-
   /// The security group of the instance.
   final pulumi.Input<String> securityGroup;
-
   /// The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
   final pulumi.Input<int> serviceStatus;
-
   /// The kafka openSource version of the instance.
   final pulumi.Input<String> serviceVersion;
-
   /// The spec type of the instance.
   final pulumi.Input<String> specType;
-
   /// The SSL domain point of the instance.
   final pulumi.Input<String> sslDomainEndpoint;
-
   /// The SSL end point of the instance.
   final pulumi.Input<String> sslEndPoint;
-
   /// A mapping of tags to assign to the instance.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The max num of topic can be create of the instance.
   final pulumi.Input<int> topicQuota;
-
   /// The UpgradeServiceDetailInfo List.
-  final pulumi.Input<List<GetInstancesInstanceUpgradeServiceDetailInfo>>
-  upgradeServiceDetailInfos;
-
+  final pulumi.Input<List<GetInstancesInstanceUpgradeServiceDetailInfo>> upgradeServiceDetailInfos;
   /// The ID of attaching VPC to instance.
   final pulumi.Input<String> vpcId;
-
   /// The ID of attaching vswitch to instance.
   final pulumi.Input<String> vswitchId;
-
   /// The ID of attaching zone to instance.
   final pulumi.Input<String> zoneId;
 
@@ -157,18 +128,7 @@ class GetInstancesInstance {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedLists':
-          pulumi.Input.mapInputValue<
-            List<GetInstancesInstanceAllowedList>,
-            List<Map<String, dynamic>>
-          >(
-            allowedLists,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetInstancesInstanceAllowedList,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'allowedLists': pulumi.Input.mapInputValue<List<GetInstancesInstanceAllowedList>, List<Map<String, dynamic>>>(allowedLists, (value) => pulumi.Input.encodeList<GetInstancesInstanceAllowedList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'config': config,
       'createTime': createTime,
       'deployType': deployType,
@@ -193,18 +153,7 @@ class GetInstancesInstance {
       'sslEndPoint': sslEndPoint,
       'tags': ?tags,
       'topicQuota': topicQuota,
-      'upgradeServiceDetailInfos':
-          pulumi.Input.mapInputValue<
-            List<GetInstancesInstanceUpgradeServiceDetailInfo>,
-            List<Map<String, dynamic>>
-          >(
-            upgradeServiceDetailInfos,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetInstancesInstanceUpgradeServiceDetailInfo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'upgradeServiceDetailInfos': pulumi.Input.mapInputValue<List<GetInstancesInstanceUpgradeServiceDetailInfo>, List<Map<String, dynamic>>>(upgradeServiceDetailInfos, (value) => pulumi.Input.encodeList<GetInstancesInstanceUpgradeServiceDetailInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcId': vpcId,
       'vswitchId': vswitchId,
       'zoneId': zoneId,
@@ -213,14 +162,7 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      allowedLists: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetInstancesInstanceAllowedList>(
-          map['allowedLists']!,
-          (value) => GetInstancesInstanceAllowedList.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      allowedLists: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstancesInstanceAllowedList>(map['allowedLists']!, (value) => GetInstancesInstanceAllowedList.fromMap((value as Map).cast<String, dynamic>()))),
       config: pulumi.Input.fromValue(map['config'] as String),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       deployType: pulumi.Input.fromValue(map['deployType'] as int),
@@ -236,36 +178,20 @@ class GetInstancesInstance {
       name: pulumi.Input.fromValue(map['name'] as String),
       paidType: pulumi.Input.fromValue(map['paidType'] as String),
       partitionNum: pulumi.Input.fromValue(map['partitionNum'] as int),
-      saslDomainEndpoint: pulumi.Input.fromValue(
-        map['saslDomainEndpoint'] as String,
-      ),
+      saslDomainEndpoint: pulumi.Input.fromValue(map['saslDomainEndpoint'] as String),
       securityGroup: pulumi.Input.fromValue(map['securityGroup'] as String),
       serviceStatus: pulumi.Input.fromValue(map['serviceStatus'] as int),
       serviceVersion: pulumi.Input.fromValue(map['serviceVersion'] as String),
       specType: pulumi.Input.fromValue(map['specType'] as String),
-      sslDomainEndpoint: pulumi.Input.fromValue(
-        map['sslDomainEndpoint'] as String,
-      ),
+      sslDomainEndpoint: pulumi.Input.fromValue(map['sslDomainEndpoint'] as String),
       sslEndPoint: pulumi.Input.fromValue(map['sslEndPoint'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       topicQuota: pulumi.Input.fromValue(map['topicQuota'] as int),
-      upgradeServiceDetailInfos: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetInstancesInstanceUpgradeServiceDetailInfo>(
-          map['upgradeServiceDetailInfos']!,
-          (value) => GetInstancesInstanceUpgradeServiceDetailInfo.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      upgradeServiceDetailInfos: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstancesInstanceUpgradeServiceDetailInfo>(map['upgradeServiceDetailInfos']!, (value) => GetInstancesInstanceUpgradeServiceDetailInfo.fromMap((value as Map).cast<String, dynamic>()))),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
       vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
+

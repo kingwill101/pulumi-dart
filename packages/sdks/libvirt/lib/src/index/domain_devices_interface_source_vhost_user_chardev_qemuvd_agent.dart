@@ -6,16 +6,9 @@ import 'domain_devices_interface_source_vhost_user_chardev_qemuvd_agent_mouse.da
 
 class DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgent {
   /// Configures clipboard sharing settings for the QEMU guest agent.
-  final pulumi.Input<
-    DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard
-  >?
-  clipBoard;
-
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard>? clipBoard;
   /// Configures mouse settings for the QEMU guest agent in the random number generator setup.
-  final pulumi.Input<
-    DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse
-  >?
-  mouse;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse>? mouse;
 
   /// Creates a new [DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgent].
   /// [clipBoard] Configures clipboard sharing settings for the QEMU guest agent.
@@ -27,41 +20,16 @@ class DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clipBoard':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard,
-            Map<String, dynamic>
-          >(clipBoard, (value) => value.toMap()),
-      'mouse':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse,
-            Map<String, dynamic>
-          >(mouse, (value) => value.toMap()),
+      'clipBoard': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard, Map<String, dynamic>>(clipBoard, (value) => value.toMap()),
+      'mouse': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse, Map<String, dynamic>>(mouse, (value) => value.toMap()),
     };
   }
 
-  factory DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgent.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgent.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgent(
-      clipBoard: (() {
-        final guardedValue = map['clipBoard'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      mouse: (() {
-        final guardedValue = map['mouse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      clipBoard: (() { final guardedValue = map['clipBoard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      mouse: (() { final guardedValue = map['mouse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

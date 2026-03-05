@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DirectoryMfaAuthenticationSettingInfo {
   /// Global MFA validation policy
   final pulumi.Input<String>? mfaAuthenticationAdvanceSettings;
-
   /// MFA verification policy for abnormal logon.
   final pulumi.Input<String>? operationForRiskLogin;
 
@@ -24,20 +23,11 @@ class DirectoryMfaAuthenticationSettingInfo {
     };
   }
 
-  factory DirectoryMfaAuthenticationSettingInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DirectoryMfaAuthenticationSettingInfo.fromMap(Map<String, dynamic> map) {
     return DirectoryMfaAuthenticationSettingInfo(
-      mfaAuthenticationAdvanceSettings: (() {
-        final guardedValue = map['mfaAuthenticationAdvanceSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operationForRiskLogin: (() {
-        final guardedValue = map['operationForRiskLogin'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mfaAuthenticationAdvanceSettings: (() { final guardedValue = map['mfaAuthenticationAdvanceSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operationForRiskLogin: (() { final guardedValue = map['operationForRiskLogin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

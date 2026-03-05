@@ -10,10 +10,14 @@ class RemoveAllActionGroups {
 
   /// Creates a new [RemoveAllActionGroups].
   /// [actionType] Action that should be applied.
-  RemoveAllActionGroups({required this.actionType});
+  RemoveAllActionGroups({
+    required this.actionType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'actionType': actionType};
+    return <String, dynamic>{
+      'actionType': actionType,
+    };
   }
 
   factory RemoveAllActionGroups.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class RemoveAllActionGroups {
     );
   }
 }
+

@@ -186,25 +186,18 @@ import 'system_data_response.dart';
 class InstanceDetails extends pulumi.CustomResource {
   /// A collection of DFP instance administrators
   late final pulumi.Output<DFPInstanceAdministratorsResponse?> administration;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Location of the DFP resource.
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The current deployment state of DFP resource. The provisioningState is to indicate states for resource provisioning.
   late final pulumi.Output<String> provisioningState;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Key-value pairs of additional resource provisioning properties.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -217,35 +210,17 @@ class InstanceDetails extends pulumi.CustomResource {
     InstanceDetailsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:dynamics365fraudprotection:InstanceDetails',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    administration = registerOutput<DFPInstanceAdministratorsResponse?>(
-      'administration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DFPInstanceAdministratorsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:dynamics365fraudprotection:InstanceDetails',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    administration = registerOutput<DFPInstanceAdministratorsResponse?>('administration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DFPInstanceAdministratorsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

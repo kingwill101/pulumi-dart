@@ -272,31 +272,22 @@ import 'network_connection_state.dart';
 class NetworkConnection extends pulumi.CustomResource {
   /// The Azure Active Directory Join type. Possible values are `AzureADJoin`, `HybridAzureADJoin` and `None`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> domainJoinType;
-
   /// The name of the Azure Active Directory domain.
   late final pulumi.Output<String?> domainName;
-
   /// The password for the account used to join domain.
   late final pulumi.Output<String?> domainPassword;
-
   /// The username of the Azure Active Directory account (user or service account) that has permissions to create computer objects in Active Directory.
   late final pulumi.Output<String?> domainUsername;
-
   /// The Azure Region where the Dev Center Network Connection should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of this Dev Center Network Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The Azure Active Directory domain Organization Unit (OU).
   late final pulumi.Output<String?> organizationUnit;
-
   /// Specifies the name of the Resource Group within which this Dev Center Network Connection should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The ID of the Subnet that is used to attach Virtual Machines.
   late final pulumi.Output<String> subnetId;
-
   /// A mapping of tags which should be assigned to the Dev Center Network Connection.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -309,11 +300,11 @@ class NetworkConnection extends pulumi.CustomResource {
     NetworkConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devcenter/networkConnection:NetworkConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:devcenter/networkConnection:NetworkConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainJoinType = registerOutput<String>('domainJoinType');
     domainName = registerOutput<String?>('domainName');
     domainPassword = registerOutput<String?>('domainPassword');
@@ -344,11 +335,11 @@ class NetworkConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devcenter/networkConnection:NetworkConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:devcenter/networkConnection:NetworkConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainJoinType = registerOutput<String>('domainJoinType');
     domainName = registerOutput<String?>('domainName');
     domainPassword = registerOutput<String?>('domainPassword');

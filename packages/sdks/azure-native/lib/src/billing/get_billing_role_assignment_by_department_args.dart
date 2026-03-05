@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBillingRoleAssignmentByDepartmentArgs {
   /// The ID that uniquely identifies a billing account.
   final pulumi.Input<String> billingAccountName;
-
   /// The ID that uniquely identifies a role assignment.
   final pulumi.Input<String> billingRoleAssignmentName;
-
   /// The name of the department.
   final pulumi.Input<String> departmentName;
 
@@ -34,17 +32,12 @@ class GetBillingRoleAssignmentByDepartmentArgs {
     };
   }
 
-  factory GetBillingRoleAssignmentByDepartmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBillingRoleAssignmentByDepartmentArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingRoleAssignmentByDepartmentArgs(
-      billingAccountName: pulumi.Input.fromValue(
-        map['billingAccountName'] as String,
-      ),
-      billingRoleAssignmentName: pulumi.Input.fromValue(
-        map['billingRoleAssignmentName'] as String,
-      ),
+      billingAccountName: pulumi.Input.fromValue(map['billingAccountName'] as String),
+      billingRoleAssignmentName: pulumi.Input.fromValue(map['billingRoleAssignmentName'] as String),
       departmentName: pulumi.Input.fromValue(map['departmentName'] as String),
     );
   }
 }
+

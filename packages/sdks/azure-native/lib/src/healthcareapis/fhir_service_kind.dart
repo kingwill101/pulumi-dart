@@ -15,3 +15,4 @@ enum FhirServiceKind {
     throw ArgumentError('Unknown FhirServiceKind value: $value');
   }
 }
+

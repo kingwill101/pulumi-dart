@@ -12,14 +12,16 @@ class NonResourcePolicyRulePatch {
   /// - "/healthz/*" matches all per-component health checks.
   /// "*" matches all non-resource urls. if it is present, it must be the only entry. Required.
   final pulumi.Input<List<String>>? nonResourceURLs;
-
   /// `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present, it must be the only entry. Required.
   final pulumi.Input<List<String>>? verbs;
 
   /// Creates a new [NonResourcePolicyRulePatch].
   /// [nonResourceURLs] `nonResourceURLs` is a set of url prefixes that a user should have access to and may not be empty. For example:
   /// [verbs] `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present, it must be the only entry. Required.
-  NonResourcePolicyRulePatch({this.nonResourceURLs, this.verbs});
+  NonResourcePolicyRulePatch({
+    this.nonResourceURLs,
+    this.verbs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,16 +32,9 @@ class NonResourcePolicyRulePatch {
 
   factory NonResourcePolicyRulePatch.fromMap(Map<String, dynamic> map) {
     return NonResourcePolicyRulePatch(
-      nonResourceURLs: (() {
-        final guardedValue = map['nonResourceURLs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      verbs: (() {
-        final guardedValue = map['verbs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      nonResourceURLs: (() { final guardedValue = map['nonResourceURLs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      verbs: (() { final guardedValue = map['verbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

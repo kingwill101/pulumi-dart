@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTrackerAssociations.
 class GetTrackerAssociationsResult {
   /// List of geofence collection ARNs associated to the tracker resource.
   final List<String> consumerArns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -40,3 +40,4 @@ class GetTrackerAssociationsResult {
     );
   }
 }
+

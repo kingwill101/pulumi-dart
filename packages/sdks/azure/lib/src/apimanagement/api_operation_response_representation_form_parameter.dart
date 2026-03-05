@@ -6,31 +6,20 @@ import 'api_operation_response_representation_form_parameter_example.dart';
 class ApiOperationResponseRepresentationFormParameter {
   /// The default value for this Form Parameter.
   final pulumi.Input<String>? defaultValue;
-
   /// A description of this Form Parameter.
   final pulumi.Input<String>? description;
-
   /// One or more `example` blocks as defined above.
-  final pulumi.Input<
-    List<ApiOperationResponseRepresentationFormParameterExample>
-  >?
-  examples;
-
+  final pulumi.Input<List<ApiOperationResponseRepresentationFormParameterExample>>? examples;
   /// The Name of this Form Parameter.
   final pulumi.Input<String> name;
-
   /// Is this Form Parameter Required?
   final pulumi.Input<bool> required;
-
   /// The name of the Schema.
   final pulumi.Input<String>? schemaId;
-
   /// The Type of this Form Parameter, such as a `string`.
   final pulumi.Input<String> type;
-
   /// The type name defined by the Schema.
   final pulumi.Input<String>? typeName;
-
   /// One or more acceptable values for this Form Parameter.
   final pulumi.Input<List<String>>? values;
 
@@ -60,18 +49,7 @@ class ApiOperationResponseRepresentationFormParameter {
     return <String, dynamic>{
       'defaultValue': ?defaultValue,
       'description': ?description,
-      'examples':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ApiOperationResponseRepresentationFormParameterExample>,
-            List<Map<String, dynamic>>
-          >(
-            examples,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ApiOperationResponseRepresentationFormParameterExample,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'examples': ?pulumi.Input.mapOptionalInputValue<List<ApiOperationResponseRepresentationFormParameterExample>, List<Map<String, dynamic>>>(examples, (value) => pulumi.Input.encodeList<ApiOperationResponseRepresentationFormParameterExample, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'required': required,
       'schemaId': ?schemaId,
@@ -81,53 +59,18 @@ class ApiOperationResponseRepresentationFormParameter {
     };
   }
 
-  factory ApiOperationResponseRepresentationFormParameter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApiOperationResponseRepresentationFormParameter.fromMap(Map<String, dynamic> map) {
     return ApiOperationResponseRepresentationFormParameter(
-      defaultValue: (() {
-        final guardedValue = map['defaultValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      examples: (() {
-        final guardedValue = map['examples'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            ApiOperationResponseRepresentationFormParameterExample
-          >(
-            guardedValue,
-            (value) =>
-                ApiOperationResponseRepresentationFormParameterExample.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      defaultValue: (() { final guardedValue = map['defaultValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      examples: (() { final guardedValue = map['examples']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApiOperationResponseRepresentationFormParameterExample>(guardedValue, (value) => ApiOperationResponseRepresentationFormParameterExample.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       required: pulumi.Input.fromValue(map['required'] as bool),
-      schemaId: (() {
-        final guardedValue = map['schemaId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      schemaId: (() { final guardedValue = map['schemaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      typeName: (() {
-        final guardedValue = map['typeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      typeName: (() { final guardedValue = map['typeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

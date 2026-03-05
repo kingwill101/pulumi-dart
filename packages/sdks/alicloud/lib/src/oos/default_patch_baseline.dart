@@ -155,7 +155,6 @@ import 'default_patch_baseline_state.dart';
 class DefaultPatchBaseline extends pulumi.CustomResource {
   /// The ID of the patch baseline.
   late final pulumi.Output<String> patchBaselineId;
-
   /// The name of the patch baseline.
   late final pulumi.Output<String> patchBaselineName;
 
@@ -168,11 +167,11 @@ class DefaultPatchBaseline extends pulumi.CustomResource {
     DefaultPatchBaselineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     patchBaselineId = registerOutput<String>('patchBaselineId');
     patchBaselineName = registerOutput<String>('patchBaselineName');
   }
@@ -195,11 +194,11 @@ class DefaultPatchBaseline extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     patchBaselineId = registerOutput<String>('patchBaselineId');
     patchBaselineName = registerOutput<String>('patchBaselineName');
   }

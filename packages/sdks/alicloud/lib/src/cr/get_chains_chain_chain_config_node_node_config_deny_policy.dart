@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetChainsChainChainConfigNodeNodeConfigDenyPolicy {
   /// The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
   final pulumi.Input<String>? action;
-
   /// The count of scanning vulnerabilities that triggers blocking.
   final pulumi.Input<String> issueCount;
-
   /// The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
   final pulumi.Input<String> issueLevel;
-
   /// The logic of trigger blocking. Valid values: `AND`, `OR`.
   final pulumi.Input<String> logic;
 
@@ -36,18 +33,13 @@ class GetChainsChainChainConfigNodeNodeConfigDenyPolicy {
     };
   }
 
-  factory GetChainsChainChainConfigNodeNodeConfigDenyPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetChainsChainChainConfigNodeNodeConfigDenyPolicy.fromMap(Map<String, dynamic> map) {
     return GetChainsChainChainConfigNodeNodeConfigDenyPolicy(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       issueCount: pulumi.Input.fromValue(map['issueCount'] as String),
       issueLevel: pulumi.Input.fromValue(map['issueLevel'] as String),
       logic: pulumi.Input.fromValue(map['logic'] as String),
     );
   }
 }
+

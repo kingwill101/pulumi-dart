@@ -5,55 +5,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceCertificatesCertificate {
   /// Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buy_in_aliyun` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<bool> buyInAliyun;
-
   /// The Cert of the certificate. **Note:** `cert` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> cert;
-
   /// The ID of the certificate.
   final pulumi.Input<String> certId;
-
   /// The name of the certificate.
   final pulumi.Input<String> certificateName;
-
   /// The city in which the organization is located.
   final pulumi.Input<String> city;
-
   /// The parent domain name of the certificate.
   final pulumi.Input<String> common;
-
   /// The code of the country in which the organization is located.
   final pulumi.Input<String> country;
-
   /// The time at which the certificate expires.
   final pulumi.Input<String> endDate;
-
   /// Whether the certificate has expired.
   final pulumi.Input<bool> expired;
-
   /// The fingerprint of the certificate.
   final pulumi.Input<String> fingerprint;
-
   /// The ID of the Ssl Certificates Service Certificate.
   final pulumi.Input<String> id;
-
   /// The issuer of the certificate.
   final pulumi.Input<String> issuer;
-
   /// The Key of the certificate. **Note:** `key` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> key;
-
   /// (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead.
   final pulumi.Input<String> name;
-
   /// The name of the organization that is associated with the certificate.
   final pulumi.Input<String> orgName;
-
   /// The province or autonomous region in which the organization is located.
   final pulumi.Input<String> province;
-
   /// All domain names that are bound to the certificate.
   final pulumi.Input<String> sans;
-
   /// The time at which the certificate starts to take effect.
   final pulumi.Input<String> startDate;
 
@@ -143,3 +126,4 @@ class GetServiceCertificatesCertificate {
     );
   }
 }
+

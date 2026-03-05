@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebhookResponse {
   /// A flag to instruct the backend service to rotate webhook secret.
   final pulumi.Input<bool>? rotateWebhookSecret;
-
   /// Unique identifier for the webhook.
   final pulumi.Input<String>? webhookId;
-
   /// Time when the webhook secret was updated.
   final pulumi.Input<String>? webhookSecretUpdateTime;
-
   /// URL that gets invoked by the webhook.
   final pulumi.Input<String>? webhookUrl;
 
@@ -39,26 +36,11 @@ class WebhookResponse {
 
   factory WebhookResponse.fromMap(Map<String, dynamic> map) {
     return WebhookResponse(
-      rotateWebhookSecret: (() {
-        final guardedValue = map['rotateWebhookSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      webhookId: (() {
-        final guardedValue = map['webhookId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      webhookSecretUpdateTime: (() {
-        final guardedValue = map['webhookSecretUpdateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      webhookUrl: (() {
-        final guardedValue = map['webhookUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      rotateWebhookSecret: (() { final guardedValue = map['rotateWebhookSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      webhookId: (() { final guardedValue = map['webhookId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      webhookSecretUpdateTime: (() { final guardedValue = map['webhookSecretUpdateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      webhookUrl: (() { final guardedValue = map['webhookUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

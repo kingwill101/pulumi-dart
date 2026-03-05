@@ -17,3 +17,4 @@ enum LinkedAction {
     throw ArgumentError('Unknown LinkedAction value: $value');
   }
 }
+

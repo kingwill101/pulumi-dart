@@ -8,19 +8,20 @@ class InsightsDatasetConfigExcludeCloudStorageLocations {
 
   /// Creates a new [InsightsDatasetConfigExcludeCloudStorageLocations].
   /// [locations] The list of cloud storage locations to exclude in the DatasetConfig.
-  InsightsDatasetConfigExcludeCloudStorageLocations({required this.locations});
+  InsightsDatasetConfigExcludeCloudStorageLocations({
+    required this.locations,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'locations': locations};
+    return <String, dynamic>{
+      'locations': locations,
+    };
   }
 
-  factory InsightsDatasetConfigExcludeCloudStorageLocations.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InsightsDatasetConfigExcludeCloudStorageLocations.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigExcludeCloudStorageLocations(
-      locations: pulumi.Input.fromValue(
-        (map['locations'] as List).cast<String>(),
-      ),
+      locations: pulumi.Input.fromValue((map['locations'] as List).cast<String>()),
     );
   }
 }
+

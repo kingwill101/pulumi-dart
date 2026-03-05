@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicaSetConditionAppsV1beta2 {
   /// The last time the condition transitioned from one status to another.
   final pulumi.Input<String>? lastTransitionTime;
-
   /// A human readable message indicating details about the transition.
   final pulumi.Input<String>? message;
-
   /// The reason for the condition's last transition.
   final pulumi.Input<String>? reason;
-
   /// Status of the condition, one of True, False, Unknown.
   final pulumi.Input<String> status;
-
   /// Type of replica set condition.
   final pulumi.Input<String> type;
 
@@ -45,23 +41,12 @@ class ReplicaSetConditionAppsV1beta2 {
 
   factory ReplicaSetConditionAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return ReplicaSetConditionAppsV1beta2(
-      lastTransitionTime: (() {
-        final guardedValue = map['lastTransitionTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reason: (() {
-        final guardedValue = map['reason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      lastTransitionTime: (() { final guardedValue = map['lastTransitionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkerPoolTemplateVolumeSecretItem {
   /// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
   final pulumi.Input<int> mode;
-
   /// The relative path of the secret in the container.
   final pulumi.Input<String> path;
-
   /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
   final pulumi.Input<String> version;
 
@@ -23,12 +21,14 @@ class GetWorkerPoolTemplateVolumeSecretItem {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode, 'path': path, 'version': version};
+    return <String, dynamic>{
+      'mode': mode,
+      'path': path,
+      'version': version,
+    };
   }
 
-  factory GetWorkerPoolTemplateVolumeSecretItem.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWorkerPoolTemplateVolumeSecretItem.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolTemplateVolumeSecretItem(
       mode: pulumi.Input.fromValue(map['mode'] as int),
       path: pulumi.Input.fromValue(map['path'] as String),
@@ -36,3 +36,4 @@ class GetWorkerPoolTemplateVolumeSecretItem {
     );
   }
 }
+

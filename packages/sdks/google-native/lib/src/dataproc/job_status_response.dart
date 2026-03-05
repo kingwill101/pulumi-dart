@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobStatusResponse {
   /// Optional. Output only. Job state details, such as an error description if the state is ERROR.
   final pulumi.Input<String> details;
-
   /// A state message specifying the overall job state.
   final pulumi.Input<String> state;
-
   /// The time when this state was entered.
   final pulumi.Input<String> stateStartTime;
-
   /// Additional state information, which includes status reported by the agent.
   final pulumi.Input<String> substate;
 
@@ -46,3 +43,4 @@ class JobStatusResponse {
     );
   }
 }
+

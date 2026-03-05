@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse {
   /// Count of the corresponding value in the scanned data.
   final pulumi.Input<String> count;
-
   /// Ratio of the corresponding value in the field against the total number of rows in the scanned data.
   final pulumi.Input<double> ratio;
-
   /// String value of a top N non-null value.
   final pulumi.Input<String> value;
 
@@ -24,12 +22,14 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResp
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'count': count, 'ratio': ratio, 'value': value};
+    return <String, dynamic>{
+      'count': count,
+      'ratio': ratio,
+      'value': value,
+    };
   }
 
-  factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse(
       count: pulumi.Input.fromValue(map['count'] as String),
       ratio: pulumi.Input.fromValue(map['ratio'] as double),
@@ -37,3 +37,4 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResp
     );
   }
 }
+

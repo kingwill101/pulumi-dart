@@ -13,31 +13,22 @@ import 'mapper_target_connections_info.dart';
 class ChangeDataCaptureArgs {
   /// A boolean to determine if the vnet configuration needs to be overwritten.
   final pulumi.Input<bool>? allowVNetOverride;
-
   /// The change data capture name.
   final pulumi.Input<String>? changeDataCaptureName;
-
   /// The description of the change data capture.
   final pulumi.Input<String>? description;
-
   /// The factory name.
   final pulumi.Input<String> factoryName;
-
   /// The folder that this CDC is in. If not specified, CDC will appear at the root level.
   final pulumi.Input<ChangeDataCaptureFolder>? folder;
-
   /// CDC policy
   final pulumi.Input<MapperPolicy> policy;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// List of sources connections that can be used as sources in the CDC.
   final pulumi.Input<List<MapperSourceConnectionsInfo>> sourceConnectionsInfo;
-
   /// Status of the CDC as to if it is running or stopped.
   final pulumi.Input<String>? status;
-
   /// List of target connections that can be used as sources in the CDC.
   final pulumi.Input<List<MapperTargetConnectionsInfo>> targetConnectionsInfo;
 
@@ -71,98 +62,28 @@ class ChangeDataCaptureArgs {
       'changeDataCaptureName': ?changeDataCaptureName,
       'description': ?description,
       'factoryName': factoryName,
-      'folder':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChangeDataCaptureFolder,
-            Map<String, dynamic>
-          >(folder, (value) => value.toMap()),
-      'policy': pulumi.Input.mapInputValue<MapperPolicy, Map<String, dynamic>>(
-        policy,
-        (value) => value.toMap(),
-      ),
+      'folder': ?pulumi.Input.mapOptionalInputValue<ChangeDataCaptureFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'policy': pulumi.Input.mapInputValue<MapperPolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
-      'sourceConnectionsInfo':
-          pulumi.Input.mapInputValue<
-            List<MapperSourceConnectionsInfo>,
-            List<Map<String, dynamic>>
-          >(
-            sourceConnectionsInfo,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MapperSourceConnectionsInfo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'sourceConnectionsInfo': pulumi.Input.mapInputValue<List<MapperSourceConnectionsInfo>, List<Map<String, dynamic>>>(sourceConnectionsInfo, (value) => pulumi.Input.encodeList<MapperSourceConnectionsInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': ?status,
-      'targetConnectionsInfo':
-          pulumi.Input.mapInputValue<
-            List<MapperTargetConnectionsInfo>,
-            List<Map<String, dynamic>>
-          >(
-            targetConnectionsInfo,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MapperTargetConnectionsInfo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'targetConnectionsInfo': pulumi.Input.mapInputValue<List<MapperTargetConnectionsInfo>, List<Map<String, dynamic>>>(targetConnectionsInfo, (value) => pulumi.Input.encodeList<MapperTargetConnectionsInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ChangeDataCaptureArgs.fromMap(Map<String, dynamic> map) {
     return ChangeDataCaptureArgs(
-      allowVNetOverride: (() {
-        final guardedValue = map['allowVNetOverride'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      changeDataCaptureName: (() {
-        final guardedValue = map['changeDataCaptureName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowVNetOverride: (() { final guardedValue = map['allowVNetOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      changeDataCaptureName: (() { final guardedValue = map['changeDataCaptureName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
-      folder: (() {
-        final guardedValue = map['folder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChangeDataCaptureFolder.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      policy: pulumi.Input.fromValue(
-        MapperPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>()),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sourceConnectionsInfo: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<MapperSourceConnectionsInfo>(
-          map['sourceConnectionsInfo']!,
-          (value) => MapperSourceConnectionsInfo.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetConnectionsInfo: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<MapperTargetConnectionsInfo>(
-          map['targetConnectionsInfo']!,
-          (value) => MapperTargetConnectionsInfo.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChangeDataCaptureFolder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      policy: pulumi.Input.fromValue(MapperPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sourceConnectionsInfo: pulumi.Input.fromValue(pulumi.Input.decodeList<MapperSourceConnectionsInfo>(map['sourceConnectionsInfo']!, (value) => MapperSourceConnectionsInfo.fromMap((value as Map).cast<String, dynamic>()))),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetConnectionsInfo: pulumi.Input.fromValue(pulumi.Input.decodeList<MapperTargetConnectionsInfo>(map['targetConnectionsInfo']!, (value) => MapperTargetConnectionsInfo.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

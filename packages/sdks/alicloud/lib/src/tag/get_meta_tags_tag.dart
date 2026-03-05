@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMetaTagsTag {
   /// The type of the resource tags.
   final pulumi.Input<String> category;
-
   /// The name of the key.
   final pulumi.Input<String> keyName;
-
   /// The name of the value.
   final pulumi.Input<String> valueName;
 
@@ -38,3 +36,4 @@ class GetMetaTagsTag {
     );
   }
 }
+

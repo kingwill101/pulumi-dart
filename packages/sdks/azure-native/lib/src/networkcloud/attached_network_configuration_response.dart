@@ -7,16 +7,11 @@ import 'trunked_network_attachment_configuration_response.dart';
 
 class AttachedNetworkConfigurationResponse {
   /// The list of Layer 2 Networks and related configuration for attachment.
-  final pulumi.Input<List<L2NetworkAttachmentConfigurationResponse>>?
-  l2Networks;
-
+  final pulumi.Input<List<L2NetworkAttachmentConfigurationResponse>>? l2Networks;
   /// The list of Layer 3 Networks and related configuration for attachment.
-  final pulumi.Input<List<L3NetworkAttachmentConfigurationResponse>>?
-  l3Networks;
-
+  final pulumi.Input<List<L3NetworkAttachmentConfigurationResponse>>? l3Networks;
   /// The list of Trunked Networks and related configuration for attachment.
-  final pulumi.Input<List<TrunkedNetworkAttachmentConfigurationResponse>>?
-  trunkedNetworks;
+  final pulumi.Input<List<TrunkedNetworkAttachmentConfigurationResponse>>? trunkedNetworks;
 
   /// Creates a new [AttachedNetworkConfigurationResponse].
   /// [l2Networks] The list of Layer 2 Networks and related configuration for attachment.
@@ -30,86 +25,18 @@ class AttachedNetworkConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'l2Networks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<L2NetworkAttachmentConfigurationResponse>,
-            List<Map<String, dynamic>>
-          >(
-            l2Networks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  L2NetworkAttachmentConfigurationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'l3Networks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<L3NetworkAttachmentConfigurationResponse>,
-            List<Map<String, dynamic>>
-          >(
-            l3Networks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  L3NetworkAttachmentConfigurationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'trunkedNetworks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TrunkedNetworkAttachmentConfigurationResponse>,
-            List<Map<String, dynamic>>
-          >(
-            trunkedNetworks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TrunkedNetworkAttachmentConfigurationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'l2Networks': ?pulumi.Input.mapOptionalInputValue<List<L2NetworkAttachmentConfigurationResponse>, List<Map<String, dynamic>>>(l2Networks, (value) => pulumi.Input.encodeList<L2NetworkAttachmentConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'l3Networks': ?pulumi.Input.mapOptionalInputValue<List<L3NetworkAttachmentConfigurationResponse>, List<Map<String, dynamic>>>(l3Networks, (value) => pulumi.Input.encodeList<L3NetworkAttachmentConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'trunkedNetworks': ?pulumi.Input.mapOptionalInputValue<List<TrunkedNetworkAttachmentConfigurationResponse>, List<Map<String, dynamic>>>(trunkedNetworks, (value) => pulumi.Input.encodeList<TrunkedNetworkAttachmentConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory AttachedNetworkConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AttachedNetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AttachedNetworkConfigurationResponse(
-      l2Networks: (() {
-        final guardedValue = map['l2Networks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<L2NetworkAttachmentConfigurationResponse>(
-            guardedValue,
-            (value) => L2NetworkAttachmentConfigurationResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      l3Networks: (() {
-        final guardedValue = map['l3Networks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<L3NetworkAttachmentConfigurationResponse>(
-            guardedValue,
-            (value) => L3NetworkAttachmentConfigurationResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      trunkedNetworks: (() {
-        final guardedValue = map['trunkedNetworks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi
-              .Input.decodeList<TrunkedNetworkAttachmentConfigurationResponse>(
-            guardedValue,
-            (value) => TrunkedNetworkAttachmentConfigurationResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      l2Networks: (() { final guardedValue = map['l2Networks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<L2NetworkAttachmentConfigurationResponse>(guardedValue, (value) => L2NetworkAttachmentConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      l3Networks: (() { final guardedValue = map['l3Networks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<L3NetworkAttachmentConfigurationResponse>(guardedValue, (value) => L3NetworkAttachmentConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      trunkedNetworks: (() { final guardedValue = map['trunkedNetworks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TrunkedNetworkAttachmentConfigurationResponse>(guardedValue, (value) => TrunkedNetworkAttachmentConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

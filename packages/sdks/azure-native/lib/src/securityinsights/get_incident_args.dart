@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIncidentArgs {
   /// Incident ID
   final pulumi.Input<String> incidentId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -37,10 +35,9 @@ class GetIncidentArgs {
   factory GetIncidentArgs.fromMap(Map<String, dynamic> map) {
     return GetIncidentArgs(
       incidentId: pulumi.Input.fromValue(map['incidentId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

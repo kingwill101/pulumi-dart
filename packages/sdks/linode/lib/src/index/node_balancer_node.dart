@@ -17,28 +17,20 @@ class NodeBalancerNode extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> address;
-
   /// The ID of the NodeBalancerConfig to access.
   late final pulumi.Output<int> configId;
-
   /// The label of the Linode NodeBalancer Node. This is for display purposes only.
   late final pulumi.Output<String> label;
-
   /// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
   late final pulumi.Output<String> mode;
-
   /// The ID of the NodeBalancer to access.
   late final pulumi.Output<int> nodebalancerId;
-
   /// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
   late final pulumi.Output<String> status;
-
   /// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
   late final pulumi.Output<int?> subnetId;
-
   /// The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
   late final pulumi.Output<int> vpcConfigId;
-
   /// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
   late final pulumi.Output<int> weight;
 
@@ -51,11 +43,11 @@ class NodeBalancerNode extends pulumi.CustomResource {
     NodeBalancerNodeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/nodeBalancerNode:NodeBalancerNode',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/nodeBalancerNode:NodeBalancerNode',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     configId = registerOutput<int>('configId');
     label = registerOutput<String>('label');
@@ -85,11 +77,11 @@ class NodeBalancerNode extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/nodeBalancerNode:NodeBalancerNode',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/nodeBalancerNode:NodeBalancerNode',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     configId = registerOutput<int>('configId');
     label = registerOutput<String>('label');

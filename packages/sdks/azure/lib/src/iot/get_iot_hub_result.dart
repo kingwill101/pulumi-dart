@@ -7,10 +7,8 @@ import 'get_iot_hub_identity.dart';
 class GetIotHubResult {
   /// The Hostname of the IoTHub.
   final String hostname;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A `identity` block as defined below.
   final List<GetIotHubIdentity> identities;
   final String name;
@@ -37,11 +35,7 @@ class GetIotHubResult {
     return <String, dynamic>{
       'hostname': hostname,
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetIotHubIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
+      'identities': pulumi.Input.encodeList<GetIotHubIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'name': name,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -52,18 +46,11 @@ class GetIotHubResult {
     return GetIotHubResult(
       hostname: map['hostname'] as String,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetIotHubIdentity>(
-        map['identities']!,
-        (value) =>
-            GetIotHubIdentity.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      identities: pulumi.Input.decodeList<GetIotHubIdentity>(map['identities']!, (value) => GetIotHubIdentity.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum HostPoolType {
     throw ArgumentError('Unknown HostPoolType value: $value');
   }
 }
+

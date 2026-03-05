@@ -9,17 +9,20 @@ class VpcPeeringConnectivityResponseDatamigrationV1beta1 {
 
   /// Creates a new [VpcPeeringConnectivityResponseDatamigrationV1beta1].
   /// [vpc] The name of the VPC network to peer with the Cloud SQL private network.
-  VpcPeeringConnectivityResponseDatamigrationV1beta1({required this.vpc});
+  VpcPeeringConnectivityResponseDatamigrationV1beta1({
+    required this.vpc,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vpc': vpc};
+    return <String, dynamic>{
+      'vpc': vpc,
+    };
   }
 
-  factory VpcPeeringConnectivityResponseDatamigrationV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VpcPeeringConnectivityResponseDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
     return VpcPeeringConnectivityResponseDatamigrationV1beta1(
       vpc: pulumi.Input.fromValue(map['vpc'] as String),
     );
   }
 }
+

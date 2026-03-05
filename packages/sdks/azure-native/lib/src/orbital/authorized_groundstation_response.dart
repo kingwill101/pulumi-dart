@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthorizedGroundstationResponse {
   /// Date of authorization expiration.
   final pulumi.Input<String> expirationDate;
-
   /// Groundstation name.
   final pulumi.Input<String> groundStation;
 
@@ -32,3 +31,4 @@ class AuthorizedGroundstationResponse {
     );
   }
 }
+

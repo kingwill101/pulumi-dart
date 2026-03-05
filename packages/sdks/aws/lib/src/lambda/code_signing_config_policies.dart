@@ -8,7 +8,9 @@ class CodeSigningConfigPolicies {
 
   /// Creates a new [CodeSigningConfigPolicies].
   /// [untrustedArtifactOnDeployment] Code signing configuration policy for deployment validation failure. If you set the policy to `Enforce`, Lambda blocks the deployment request if code-signing validation checks fail. If you set the policy to `Warn`, Lambda allows the deployment and creates a CloudWatch log. Valid values: `Warn`, `Enforce`. Default value: `Warn`.
-  CodeSigningConfigPolicies({required this.untrustedArtifactOnDeployment});
+  CodeSigningConfigPolicies({
+    required this.untrustedArtifactOnDeployment,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,9 +20,8 @@ class CodeSigningConfigPolicies {
 
   factory CodeSigningConfigPolicies.fromMap(Map<String, dynamic> map) {
     return CodeSigningConfigPolicies(
-      untrustedArtifactOnDeployment: pulumi.Input.fromValue(
-        map['untrustedArtifactOnDeployment'] as String,
-      ),
+      untrustedArtifactOnDeployment: pulumi.Input.fromValue(map['untrustedArtifactOnDeployment'] as String),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSapInstanceArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the discovery site resource for SAP Migration.
   final pulumi.Input<String> sapDiscoverySiteName;
-
   /// The name of SAP Instance resource for SAP Migration.
   final pulumi.Input<String> sapInstanceName;
 
@@ -36,13 +34,10 @@ class GetSapInstanceArgs {
 
   factory GetSapInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetSapInstanceArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sapDiscoverySiteName: pulumi.Input.fromValue(
-        map['sapDiscoverySiteName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sapDiscoverySiteName: pulumi.Input.fromValue(map['sapDiscoverySiteName'] as String),
       sapInstanceName: pulumi.Input.fromValue(map['sapInstanceName'] as String),
     );
   }
 }
+

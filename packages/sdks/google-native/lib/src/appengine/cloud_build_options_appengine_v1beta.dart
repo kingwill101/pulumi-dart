@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudBuildOptionsAppengineV1beta {
   /// Path to the yaml file used in deployment, used to determine runtime configuration details.Required for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref for more details.
   final pulumi.Input<String>? appYamlPath;
-
   /// The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
   final pulumi.Input<String>? cloudBuildTimeout;
 
   /// Creates a new [CloudBuildOptionsAppengineV1beta].
   /// [appYamlPath] Path to the yaml file used in deployment, used to determine runtime configuration details.Required for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref for more details.
   /// [cloudBuildTimeout] The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
-  CloudBuildOptionsAppengineV1beta({this.appYamlPath, this.cloudBuildTimeout});
+  CloudBuildOptionsAppengineV1beta({
+    this.appYamlPath,
+    this.cloudBuildTimeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class CloudBuildOptionsAppengineV1beta {
 
   factory CloudBuildOptionsAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return CloudBuildOptionsAppengineV1beta(
-      appYamlPath: (() {
-        final guardedValue = map['appYamlPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cloudBuildTimeout: (() {
-        final guardedValue = map['cloudBuildTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appYamlPath: (() { final guardedValue = map['appYamlPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cloudBuildTimeout: (() { final guardedValue = map['cloudBuildTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

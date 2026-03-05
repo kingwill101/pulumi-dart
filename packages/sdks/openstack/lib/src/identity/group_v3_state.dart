@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupV3State {
   /// A description of the group.
   final pulumi.Input<String>? description;
-
   /// The domain the group belongs to.
   final pulumi.Input<String>? domainId;
-
   /// The name of the group.
   final pulumi.Input<String>? name;
-
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new group.
@@ -23,7 +20,12 @@ class GroupV3State {
   /// [domainId] The domain the group belongs to.
   /// [name] The name of the group.
   /// [region] The region in which to obtain the V3 Keystone client.
-  GroupV3State({this.description, this.domainId, this.name, this.region});
+  GroupV3State({
+    this.description,
+    this.domainId,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,26 +38,11 @@ class GroupV3State {
 
   factory GroupV3State.fromMap(Map<String, dynamic> map) {
     return GroupV3State(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      domainId: (() {
-        final guardedValue = map['domainId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      domainId: (() { final guardedValue = map['domainId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

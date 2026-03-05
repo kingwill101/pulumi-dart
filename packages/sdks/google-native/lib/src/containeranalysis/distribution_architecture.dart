@@ -16,3 +16,4 @@ enum DistributionArchitecture {
     throw ArgumentError('Unknown DistributionArchitecture value: $value');
   }
 }
+

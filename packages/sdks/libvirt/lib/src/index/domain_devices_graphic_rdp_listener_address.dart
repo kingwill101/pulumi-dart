@@ -8,21 +8,20 @@ class DomainDevicesGraphicRdpListenerAddress {
 
   /// Creates a new [DomainDevicesGraphicRdpListenerAddress].
   /// [address] Sets the actual network address where the Spice listener will accept connections.
-  DomainDevicesGraphicRdpListenerAddress({this.address});
+  DomainDevicesGraphicRdpListenerAddress({
+    this.address,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'address': ?address};
+    return <String, dynamic>{
+      'address': ?address,
+    };
   }
 
-  factory DomainDevicesGraphicRdpListenerAddress.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesGraphicRdpListenerAddress.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicRdpListenerAddress(
-      address: (() {
-        final guardedValue = map['address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

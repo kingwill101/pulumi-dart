@@ -441,17 +441,12 @@ import 'fleet_update_run_state.dart';
 class FleetUpdateRun extends pulumi.CustomResource {
   /// The ID of the Fleet Update Strategy. Only one of `fleet_update_strategy_id` or `stage` can be specified.
   late final pulumi.Output<String?> fleetUpdateStrategyId;
-
   /// The ID of the Fleet Manager. Changing this forces a new Kubernetes Fleet Update Run to be created.
   late final pulumi.Output<String> kubernetesFleetManagerId;
-
   /// A `managed_cluster_update` block as defined below.
-  late final pulumi.Output<FleetUpdateRunManagedClusterUpdate>
-  managedClusterUpdate;
-
+  late final pulumi.Output<FleetUpdateRunManagedClusterUpdate> managedClusterUpdate;
   /// The name which should be used for this Kubernetes Fleet Update Run. Changing this forces a new Kubernetes Fleet Update Run to be created.
   late final pulumi.Output<String> name;
-
   /// One or more `stage` blocks as defined below. Only one of `stage` or `fleet_update_strategy_id` can be specified.
   late final pulumi.Output<List<Map<String, dynamic>>?> stages;
 
@@ -464,25 +459,14 @@ class FleetUpdateRun extends pulumi.CustomResource {
     FleetUpdateRunArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/fleetUpdateRun:FleetUpdateRun',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:containerservice/fleetUpdateRun:FleetUpdateRun',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fleetUpdateStrategyId = registerOutput<String?>('fleetUpdateStrategyId');
-    kubernetesFleetManagerId = registerOutput<String>(
-      'kubernetesFleetManagerId',
-    );
-    managedClusterUpdate = registerOutput<FleetUpdateRunManagedClusterUpdate>(
-      'managedClusterUpdate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FleetUpdateRunManagedClusterUpdate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    kubernetesFleetManagerId = registerOutput<String>('kubernetesFleetManagerId');
+    managedClusterUpdate = registerOutput<FleetUpdateRunManagedClusterUpdate>('managedClusterUpdate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetUpdateRunManagedClusterUpdate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     stages = registerOutput<List<Map<String, dynamic>>?>('stages');
   }
@@ -505,25 +489,14 @@ class FleetUpdateRun extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/fleetUpdateRun:FleetUpdateRun',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:containerservice/fleetUpdateRun:FleetUpdateRun',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fleetUpdateStrategyId = registerOutput<String?>('fleetUpdateStrategyId');
-    kubernetesFleetManagerId = registerOutput<String>(
-      'kubernetesFleetManagerId',
-    );
-    managedClusterUpdate = registerOutput<FleetUpdateRunManagedClusterUpdate>(
-      'managedClusterUpdate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FleetUpdateRunManagedClusterUpdate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    kubernetesFleetManagerId = registerOutput<String>('kubernetesFleetManagerId');
+    managedClusterUpdate = registerOutput<FleetUpdateRunManagedClusterUpdate>('managedClusterUpdate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetUpdateRunManagedClusterUpdate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     stages = registerOutput<List<Map<String, dynamic>>?>('stages');
   }

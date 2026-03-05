@@ -12,10 +12,14 @@ class GetTriggerSchedulesArgs {
 
   /// Creates a new [GetTriggerSchedulesArgs].
   /// [dataFactoryId] The ID of the Azure Data Factory to fetch trigger schedules from.
-  GetTriggerSchedulesArgs({required this.dataFactoryId});
+  GetTriggerSchedulesArgs({
+    required this.dataFactoryId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dataFactoryId': dataFactoryId};
+    return <String, dynamic>{
+      'dataFactoryId': dataFactoryId,
+    };
   }
 
   factory GetTriggerSchedulesArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetTriggerSchedulesArgs {
     );
   }
 }
+

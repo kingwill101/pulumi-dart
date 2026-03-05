@@ -310,84 +310,59 @@ import 'service_state.dart';
 class Service extends pulumi.CustomResource {
   /// Whether to enable AAD auth? Defaults to `true`.
   late final pulumi.Output<bool?> aadAuthEnabled;
-
   /// Specifies if Connectivity Logs are enabled or not. Defaults to `false`.
   late final pulumi.Output<bool?> connectivityLogsEnabled;
-
   /// A `cors` block as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> cors;
-
   /// The FQDN of the SignalR service.
   late final pulumi.Output<String> hostname;
-
   /// Specifies if Http Request Logs are enabled or not. Defaults to `false`.
   late final pulumi.Output<bool?> httpRequestLogsEnabled;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<ServiceIdentity?> identity;
-
   /// The publicly accessible IP of the SignalR service.
   late final pulumi.Output<String> ipAddress;
-
   /// A `live_trace` block as defined below.
   late final pulumi.Output<ServiceLiveTrace?> liveTrace;
   late final pulumi.Output<bool?> liveTraceEnabled;
-
   /// Whether to enable local auth? Defaults to `true`.
   late final pulumi.Output<bool?> localAuthEnabled;
-
   /// Specifies the supported Azure location where the SignalR service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies if Messaging Logs are enabled or not. Defaults to `false`.
   late final pulumi.Output<bool?> messagingLogsEnabled;
-
   /// The name of the SignalR service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The primary access key for the SignalR service.
   late final pulumi.Output<String> primaryAccessKey;
-
   /// The primary connection string for the SignalR service.
   late final pulumi.Output<String> primaryConnectionString;
-
   /// Whether to enable public network access? Defaults to `true`.
   ///
   /// &gt; **Note:** `public_network_access_enabled` cannot be set to `false` in `Free` sku tier.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// The publicly accessible port of the SignalR service which is designed for browser/client use.
   late final pulumi.Output<int> publicPort;
-
   /// The name of the resource group in which to create the SignalR service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The secondary access key for the SignalR service.
   late final pulumi.Output<String> secondaryAccessKey;
-
   /// The secondary connection string for the SignalR service.
   late final pulumi.Output<String> secondaryConnectionString;
-
   /// The publicly accessible port of the SignalR service which is designed for customer server side use.
   late final pulumi.Output<int> serverPort;
-
   /// Specifies the client connection timeout. Defaults to `30`.
   late final pulumi.Output<int?> serverlessConnectionTimeoutInSeconds;
-
   /// Specifies the service mode. Possible values are `Classic`, `Default` and `Serverless`. Defaults to `Default`.
   late final pulumi.Output<String?> serviceMode;
-
   /// A `sku` block as documented below.
   late final pulumi.Output<ServiceSku> sku;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Whether to request client certificate during TLS handshake? Defaults to `false`.
   ///
   /// &gt; **Note:** `tls_client_cert_enabled` cannot be set to `true` in `Free` sku tier.
   late final pulumi.Output<bool?> tlsClientCertEnabled;
-
   /// An `upstream_endpoint` block as documented below. Using this block requires the SignalR service to be Serverless. When creating multiple blocks they will be processed in the order they are defined in.
   late final pulumi.Output<List<Map<String, dynamic>>?> upstreamEndpoints;
 
@@ -400,37 +375,19 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:signalr/service:Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:signalr/service:Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
     connectivityLogsEnabled = registerOutput<bool?>('connectivityLogsEnabled');
     cors = registerOutput<List<Map<String, dynamic>>>('cors');
     hostname = registerOutput<String>('hostname');
     httpRequestLogsEnabled = registerOutput<bool?>('httpRequestLogsEnabled');
-    identity = registerOutput<ServiceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddress = registerOutput<String>('ipAddress');
-    liveTrace = registerOutput<ServiceLiveTrace?>(
-      'liveTrace',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceLiveTrace.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLiveTrace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     liveTraceEnabled = registerOutput<bool?>('liveTraceEnabled');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
@@ -438,35 +395,18 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     primaryAccessKey = registerOutput<String>('primaryAccessKey');
     primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     publicPort = registerOutput<int>('publicPort');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    secondaryConnectionString = registerOutput<String>(
-      'secondaryConnectionString',
-    );
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
     serverPort = registerOutput<int>('serverPort');
-    serverlessConnectionTimeoutInSeconds = registerOutput<int?>(
-      'serverlessConnectionTimeoutInSeconds',
-    );
+    serverlessConnectionTimeoutInSeconds = registerOutput<int?>('serverlessConnectionTimeoutInSeconds');
     serviceMode = registerOutput<String?>('serviceMode');
-    sku = registerOutput<ServiceSku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<ServiceSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
-    upstreamEndpoints = registerOutput<List<Map<String, dynamic>>?>(
-      'upstreamEndpoints',
-    );
+    upstreamEndpoints = registerOutput<List<Map<String, dynamic>>?>('upstreamEndpoints');
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -487,37 +427,19 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:signalr/service:Service',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:signalr/service:Service',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
     connectivityLogsEnabled = registerOutput<bool?>('connectivityLogsEnabled');
     cors = registerOutput<List<Map<String, dynamic>>>('cors');
     hostname = registerOutput<String>('hostname');
     httpRequestLogsEnabled = registerOutput<bool?>('httpRequestLogsEnabled');
-    identity = registerOutput<ServiceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddress = registerOutput<String>('ipAddress');
-    liveTrace = registerOutput<ServiceLiveTrace?>(
-      'liveTrace',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceLiveTrace.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLiveTrace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     liveTraceEnabled = registerOutput<bool?>('liveTraceEnabled');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
@@ -525,34 +447,17 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     primaryAccessKey = registerOutput<String>('primaryAccessKey');
     primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     publicPort = registerOutput<int>('publicPort');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    secondaryConnectionString = registerOutput<String>(
-      'secondaryConnectionString',
-    );
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
     serverPort = registerOutput<int>('serverPort');
-    serverlessConnectionTimeoutInSeconds = registerOutput<int?>(
-      'serverlessConnectionTimeoutInSeconds',
-    );
+    serverlessConnectionTimeoutInSeconds = registerOutput<int?>('serverlessConnectionTimeoutInSeconds');
     serviceMode = registerOutput<String?>('serviceMode');
-    sku = registerOutput<ServiceSku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<ServiceSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
-    upstreamEndpoints = registerOutput<List<Map<String, dynamic>>?>(
-      'upstreamEndpoints',
-    );
+    upstreamEndpoints = registerOutput<List<Map<String, dynamic>>?>('upstreamEndpoints');
   }
 }

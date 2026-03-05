@@ -14,18 +14,15 @@ class ResourceTypeRegistrationPropertiesResourceQueryManagement {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filterOption': ?filterOption};
+    return <String, dynamic>{
+      'filterOption': ?filterOption,
+    };
   }
 
-  factory ResourceTypeRegistrationPropertiesResourceQueryManagement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceTypeRegistrationPropertiesResourceQueryManagement.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceQueryManagement(
-      filterOption: (() {
-        final guardedValue = map['filterOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filterOption: (() { final guardedValue = map['filterOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

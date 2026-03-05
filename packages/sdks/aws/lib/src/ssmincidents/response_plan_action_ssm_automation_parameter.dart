@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResponsePlanActionSsmAutomationParameter {
   /// The name of parameter.
   final pulumi.Input<String> name;
-
   /// The values for the associated parameter name.
   final pulumi.Input<List<String>> values;
 
@@ -18,15 +17,17 @@ class ResponsePlanActionSsmAutomationParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'values': values};
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
-  factory ResponsePlanActionSsmAutomationParameter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResponsePlanActionSsmAutomationParameter.fromMap(Map<String, dynamic> map) {
     return ResponsePlanActionSsmAutomationParameter(
       name: pulumi.Input.fromValue(map['name'] as String),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

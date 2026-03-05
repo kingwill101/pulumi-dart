@@ -7,7 +7,6 @@ import 'l3_export_route_policy_response.dart';
 class ConnectedSubnetRoutePolicyResponse {
   /// Array of ARM Resource ID of the RoutePolicies.
   final pulumi.Input<L3ExportRoutePolicyResponse>? exportRoutePolicy;
-
   /// ARM Resource ID of the Route Policy. This is used for the backward compatibility.
   final pulumi.Input<String>? exportRoutePolicyId;
 
@@ -21,31 +20,16 @@ class ConnectedSubnetRoutePolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exportRoutePolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            L3ExportRoutePolicyResponse,
-            Map<String, dynamic>
-          >(exportRoutePolicy, (value) => value.toMap()),
+      'exportRoutePolicy': ?pulumi.Input.mapOptionalInputValue<L3ExportRoutePolicyResponse, Map<String, dynamic>>(exportRoutePolicy, (value) => value.toMap()),
       'exportRoutePolicyId': ?exportRoutePolicyId,
     };
   }
 
   factory ConnectedSubnetRoutePolicyResponse.fromMap(Map<String, dynamic> map) {
     return ConnectedSubnetRoutePolicyResponse(
-      exportRoutePolicy: (() {
-        final guardedValue = map['exportRoutePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          L3ExportRoutePolicyResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      exportRoutePolicyId: (() {
-        final guardedValue = map['exportRoutePolicyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      exportRoutePolicy: (() { final guardedValue = map['exportRoutePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(L3ExportRoutePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      exportRoutePolicyId: (() { final guardedValue = map['exportRoutePolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

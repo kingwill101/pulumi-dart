@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomizedAcceleratorArgs {
   /// The name of the application accelerator.
   final pulumi.Input<String> applicationAcceleratorName;
-
   /// The name of the customized accelerator.
   final pulumi.Input<String> customizedAcceleratorName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -42,16 +39,11 @@ class GetCustomizedAcceleratorArgs {
 
   factory GetCustomizedAcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomizedAcceleratorArgs(
-      applicationAcceleratorName: pulumi.Input.fromValue(
-        map['applicationAcceleratorName'] as String,
-      ),
-      customizedAcceleratorName: pulumi.Input.fromValue(
-        map['customizedAcceleratorName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      applicationAcceleratorName: pulumi.Input.fromValue(map['applicationAcceleratorName'] as String),
+      customizedAcceleratorName: pulumi.Input.fromValue(map['customizedAcceleratorName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

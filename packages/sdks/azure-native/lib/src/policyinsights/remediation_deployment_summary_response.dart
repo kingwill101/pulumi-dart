@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemediationDeploymentSummaryResponse {
   /// The number of deployments required by the remediation that have failed.
   final pulumi.Input<int> failedDeployments;
-
   /// The number of deployments required by the remediation that have succeeded.
   final pulumi.Input<int> successfulDeployments;
-
   /// The number of deployments required by the remediation.
   final pulumi.Input<int> totalDeployments;
 
@@ -31,17 +29,12 @@ class RemediationDeploymentSummaryResponse {
     };
   }
 
-  factory RemediationDeploymentSummaryResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RemediationDeploymentSummaryResponse.fromMap(Map<String, dynamic> map) {
     return RemediationDeploymentSummaryResponse(
-      failedDeployments: pulumi.Input.fromValue(
-        map['failedDeployments'] as int,
-      ),
-      successfulDeployments: pulumi.Input.fromValue(
-        map['successfulDeployments'] as int,
-      ),
+      failedDeployments: pulumi.Input.fromValue(map['failedDeployments'] as int),
+      successfulDeployments: pulumi.Input.fromValue(map['successfulDeployments'] as int),
       totalDeployments: pulumi.Input.fromValue(map['totalDeployments'] as int),
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEventBusesBus {
   /// The time of this bus was created.
   final pulumi.Input<String> createTime;
-
   /// The description of event bus.
   final pulumi.Input<String> description;
-
   /// The name of event bus.
   final pulumi.Input<String> eventBusName;
-
   /// The ID of the Event Bus. Its value is same as Queue Name.
   final pulumi.Input<String> id;
 
@@ -45,3 +42,4 @@ class GetEventBusesBus {
     );
   }
 }
+

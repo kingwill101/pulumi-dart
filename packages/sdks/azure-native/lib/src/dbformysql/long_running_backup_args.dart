@@ -9,20 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LongRunningBackupArgs {
   /// The name of the backup.
   final pulumi.Input<String>? backupName;
-
   /// Backup name
   final pulumi.Input<String>? backupNameV2;
   final pulumi.Input<String>? backupType;
-
   /// Backup completed time (ISO8601 format).
   final pulumi.Input<String>? completedTime;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the server.
   final pulumi.Input<String> serverName;
-
   /// Backup source
   final pulumi.Input<String>? source;
 
@@ -58,35 +53,14 @@ class LongRunningBackupArgs {
 
   factory LongRunningBackupArgs.fromMap(Map<String, dynamic> map) {
     return LongRunningBackupArgs(
-      backupName: (() {
-        final guardedValue = map['backupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      backupNameV2: (() {
-        final guardedValue = map['backupNameV2'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      backupType: (() {
-        final guardedValue = map['backupType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      completedTime: (() {
-        final guardedValue = map['completedTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      backupName: (() { final guardedValue = map['backupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backupNameV2: (() { final guardedValue = map['backupNameV2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backupType: (() { final guardedValue = map['backupType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      completedTime: (() { final guardedValue = map['completedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -37,23 +37,14 @@ class GetApiConfigIamPolicyApigatewayV1betaArgs {
     };
   }
 
-  factory GetApiConfigIamPolicyApigatewayV1betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApiConfigIamPolicyApigatewayV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetApiConfigIamPolicyApigatewayV1betaArgs(
       apiId: pulumi.Input.fromValue(map['apiId'] as String),
       configId: pulumi.Input.fromValue(map['configId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

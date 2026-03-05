@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesClusterKubeConfig {
   /// The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
   final pulumi.Input<String> clientCertificate;
-
   /// The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
   final pulumi.Input<String> clientKey;
-
   /// The base64 encoded public certificate for the cluster's certificate authority.
   final pulumi.Input<String> clusterCaCertificate;
-
   /// The date and time when the credentials will expire and need to be regenerated.
   final pulumi.Input<String> expiresAt;
-
   /// The URL of the API server on the Kubernetes master node.
   final pulumi.Input<String> host;
-
   /// The full contents of the Kubernetes cluster's kubeconfig file.
   final pulumi.Input<String> rawConfig;
-
   /// The DigitalOcean API access token used by clients to access the cluster.
   final pulumi.Input<String> token;
 
@@ -56,13 +50,9 @@ class GetKubernetesClusterKubeConfig {
 
   factory GetKubernetesClusterKubeConfig.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterKubeConfig(
-      clientCertificate: pulumi.Input.fromValue(
-        map['clientCertificate'] as String,
-      ),
+      clientCertificate: pulumi.Input.fromValue(map['clientCertificate'] as String),
       clientKey: pulumi.Input.fromValue(map['clientKey'] as String),
-      clusterCaCertificate: pulumi.Input.fromValue(
-        map['clusterCaCertificate'] as String,
-      ),
+      clusterCaCertificate: pulumi.Input.fromValue(map['clusterCaCertificate'] as String),
       expiresAt: pulumi.Input.fromValue(map['expiresAt'] as String),
       host: pulumi.Input.fromValue(map['host'] as String),
       rawConfig: pulumi.Input.fromValue(map['rawConfig'] as String),
@@ -70,3 +60,4 @@ class GetKubernetesClusterKubeConfig {
     );
   }
 }
+

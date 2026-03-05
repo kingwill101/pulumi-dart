@@ -9,9 +9,7 @@ class ProjectKajPolicyConfigState {
   /// created in this project. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  final pulumi.Input<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy>?
-  defaultKeyAccessJustificationPolicy;
-
+  final pulumi.Input<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy>? defaultKeyAccessJustificationPolicy;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -26,31 +24,16 @@ class ProjectKajPolicyConfigState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultKeyAccessJustificationPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy,
-            Map<String, dynamic>
-          >(defaultKeyAccessJustificationPolicy, (value) => value.toMap()),
+      'defaultKeyAccessJustificationPolicy': ?pulumi.Input.mapOptionalInputValue<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy, Map<String, dynamic>>(defaultKeyAccessJustificationPolicy, (value) => value.toMap()),
       'project': ?project,
     };
   }
 
   factory ProjectKajPolicyConfigState.fromMap(Map<String, dynamic> map) {
     return ProjectKajPolicyConfigState(
-      defaultKeyAccessJustificationPolicy: (() {
-        final guardedValue = map['defaultKeyAccessJustificationPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      defaultKeyAccessJustificationPolicy: (() { final guardedValue = map['defaultKeyAccessJustificationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

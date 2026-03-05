@@ -9,31 +9,18 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
   /// Confidence threshold of query result.
   /// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
   final pulumi.Input<double>? confidenceThreshold;
-
   /// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
   /// Structure is documented below.
-  final pulumi.Input<
-    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings
-  >?
-  contextFilterSettings;
-
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings>? contextFilterSettings;
   /// Query from Dialogflow agent.
   /// This feature is supported for types: DIALOGFLOW_ASSIST.
   /// Structure is documented below.
-  final pulumi.Input<
-    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource
-  >?
-  dialogflowQuerySource;
-
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource>? dialogflowQuerySource;
   /// Maximum number of results to return.
   final pulumi.Input<int>? maxResults;
-
   /// he customized sections chosen to return when requesting a summary of a conversation.
   /// Structure is documented below.
-  final pulumi.Input<
-    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections
-  >?
-  sections;
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections>? sections;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig].
   /// [confidenceThreshold] Confidence threshold of query result.
@@ -52,66 +39,21 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'confidenceThreshold': ?confidenceThreshold,
-      'contextFilterSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings,
-            Map<String, dynamic>
-          >(contextFilterSettings, (value) => value.toMap()),
-      'dialogflowQuerySource':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource,
-            Map<String, dynamic>
-          >(dialogflowQuerySource, (value) => value.toMap()),
+      'contextFilterSettings': ?pulumi.Input.mapOptionalInputValue<ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings, Map<String, dynamic>>(contextFilterSettings, (value) => value.toMap()),
+      'dialogflowQuerySource': ?pulumi.Input.mapOptionalInputValue<ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource, Map<String, dynamic>>(dialogflowQuerySource, (value) => value.toMap()),
       'maxResults': ?maxResults,
-      'sections':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections,
-            Map<String, dynamic>
-          >(sections, (value) => value.toMap()),
+      'sections': ?pulumi.Input.mapOptionalInputValue<ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections, Map<String, dynamic>>(sections, (value) => value.toMap()),
     };
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig(
-      confidenceThreshold: (() {
-        final guardedValue = map['confidenceThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      contextFilterSettings: (() {
-        final guardedValue = map['contextFilterSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      dialogflowQuerySource: (() {
-        final guardedValue = map['dialogflowQuerySource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      maxResults: (() {
-        final guardedValue = map['maxResults'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      sections: (() {
-        final guardedValue = map['sections'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      confidenceThreshold: (() { final guardedValue = map['confidenceThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      contextFilterSettings: (() { final guardedValue = map['contextFilterSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dialogflowQuerySource: (() { final guardedValue = map['dialogflowQuerySource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      maxResults: (() { final guardedValue = map['maxResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sections: (() { final guardedValue = map['sections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -7,13 +7,10 @@ class ResourceGroupPolicyAssignmentIdentity {
   ///
   /// &gt; **Note:** This is required when `type` is set to `UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
-
   /// The Principal ID of the Policy Assignment for this Resource Group.
   final pulumi.Input<String>? principalId;
-
   /// The Tenant ID of the Policy Assignment for this Resource Group.
   final pulumi.Input<String>? tenantId;
-
   /// The Type of Managed Identity which should be added to this Policy Definition. Possible values are `SystemAssigned` and `UserAssigned`.
   final pulumi.Input<String> type;
 
@@ -38,26 +35,13 @@ class ResourceGroupPolicyAssignmentIdentity {
     };
   }
 
-  factory ResourceGroupPolicyAssignmentIdentity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceGroupPolicyAssignmentIdentity.fromMap(Map<String, dynamic> map) {
     return ResourceGroupPolicyAssignmentIdentity(
-      identityIds: (() {
-        final guardedValue = map['identityIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      principalId: (() {
-        final guardedValue = map['principalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identityIds: (() { final guardedValue = map['identityIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

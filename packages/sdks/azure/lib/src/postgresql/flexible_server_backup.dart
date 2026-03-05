@@ -220,10 +220,8 @@ import 'flexible_server_backup_state.dart';
 class FlexibleServerBackup extends pulumi.CustomResource {
   /// The Time (ISO8601 format) at which the backup was completed.
   late final pulumi.Output<String> completedTime;
-
   /// Specifies the name of this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
 
@@ -236,11 +234,11 @@ class FlexibleServerBackup extends pulumi.CustomResource {
     FlexibleServerBackupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:postgresql/flexibleServerBackup:FlexibleServerBackup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:postgresql/flexibleServerBackup:FlexibleServerBackup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     completedTime = registerOutput<String>('completedTime');
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');
@@ -264,11 +262,11 @@ class FlexibleServerBackup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:postgresql/flexibleServerBackup:FlexibleServerBackup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:postgresql/flexibleServerBackup:FlexibleServerBackup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     completedTime = registerOutput<String>('completedTime');
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');

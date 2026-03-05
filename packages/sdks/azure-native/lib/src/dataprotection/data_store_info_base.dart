@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataStoreInfoBase {
   /// type of datastore; Operational/Vault/Archive
   final pulumi.Input<String> dataStoreType;
-
   /// Type of Datasource object, used to initialize the right inherited type
   final pulumi.Input<String> objectType;
 
   /// Creates a new [DataStoreInfoBase].
   /// [dataStoreType] type of datastore; Operational/Vault/Archive
   /// [objectType] Type of Datasource object, used to initialize the right inherited type
-  DataStoreInfoBase({required this.dataStoreType, required this.objectType});
+  DataStoreInfoBase({
+    required this.dataStoreType,
+    required this.objectType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +31,4 @@ class DataStoreInfoBase {
     );
   }
 }
+

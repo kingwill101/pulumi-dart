@@ -6,10 +6,7 @@ import 'allocation_resource_status_specific_skuallocation_response_compute_beta.
 /// [Output Only] Contains output only fields.
 class AllocationResourceStatusResponseComputeBeta {
   /// Allocation Properties of this reservation.
-  final pulumi.Input<
-    AllocationResourceStatusSpecificSKUAllocationResponseComputeBeta
-  >
-  specificSkuAllocation;
+  final pulumi.Input<AllocationResourceStatusSpecificSKUAllocationResponseComputeBeta> specificSkuAllocation;
 
   /// Creates a new [AllocationResourceStatusResponseComputeBeta].
   /// [specificSkuAllocation] Allocation Properties of this reservation.
@@ -19,23 +16,14 @@ class AllocationResourceStatusResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'specificSkuAllocation':
-          pulumi.Input.mapInputValue<
-            AllocationResourceStatusSpecificSKUAllocationResponseComputeBeta,
-            Map<String, dynamic>
-          >(specificSkuAllocation, (value) => value.toMap()),
+      'specificSkuAllocation': pulumi.Input.mapInputValue<AllocationResourceStatusSpecificSKUAllocationResponseComputeBeta, Map<String, dynamic>>(specificSkuAllocation, (value) => value.toMap()),
     };
   }
 
-  factory AllocationResourceStatusResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AllocationResourceStatusResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return AllocationResourceStatusResponseComputeBeta(
-      specificSkuAllocation: pulumi.Input.fromValue(
-        AllocationResourceStatusSpecificSKUAllocationResponseComputeBeta.fromMap(
-          (map['specificSkuAllocation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      specificSkuAllocation: pulumi.Input.fromValue(AllocationResourceStatusSpecificSKUAllocationResponseComputeBeta.fromMap((map['specificSkuAllocation']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

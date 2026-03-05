@@ -9,21 +9,20 @@ class ConnectionMonitorEndpointLocationDetailsResponse {
 
   /// Creates a new [ConnectionMonitorEndpointLocationDetailsResponse].
   /// [region] Region for connection monitor endpoint.
-  ConnectionMonitorEndpointLocationDetailsResponse({this.region});
+  ConnectionMonitorEndpointLocationDetailsResponse({
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'region': ?region};
+    return <String, dynamic>{
+      'region': ?region,
+    };
   }
 
-  factory ConnectionMonitorEndpointLocationDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionMonitorEndpointLocationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorEndpointLocationDetailsResponse(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,17 +8,20 @@ class DicomStoreStreamConfigBigqueryDestination {
 
   /// Creates a new [DicomStoreStreamConfigBigqueryDestination].
   /// [tableUri] a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
-  DicomStoreStreamConfigBigqueryDestination({required this.tableUri});
+  DicomStoreStreamConfigBigqueryDestination({
+    required this.tableUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tableUri': tableUri};
+    return <String, dynamic>{
+      'tableUri': tableUri,
+    };
   }
 
-  factory DicomStoreStreamConfigBigqueryDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DicomStoreStreamConfigBigqueryDestination.fromMap(Map<String, dynamic> map) {
     return DicomStoreStreamConfigBigqueryDestination(
       tableUri: pulumi.Input.fromValue(map['tableUri'] as String),
     );
   }
 }
+

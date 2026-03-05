@@ -7,43 +7,30 @@ import 'lab_virtual_machine_creation_parameter_response.dart';
 class GetFormulaResult {
   /// The author of the formula.
   final String author;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The creation date of the formula.
   final String creationDate;
-
   /// The description of the formula.
   final String? description;
-
   /// The content of the formula.
   final LabVirtualMachineCreationParameterResponse? formulaContent;
-
   /// The identifier of the resource.
   final String id;
-
   /// The location of the resource.
   final String? location;
-
   /// The name of the resource.
   final String name;
-
   /// The OS type of the formula.
   final String? osType;
-
   /// The provisioning status of the resource.
   final String provisioningState;
-
   /// The tags of the resource.
   final Map<String, String>? tags;
-
   /// The type of the resource.
   final String type;
-
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
-
   /// Information about a VM from which a formula is to be created.
   final FormulaPropertiesFromVmResponse? vm;
 
@@ -103,45 +90,18 @@ class GetFormulaResult {
       author: map['author'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       creationDate: map['creationDate'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      formulaContent: (() {
-        final guardedValue = map['formulaContent'];
-        if (guardedValue == null) return null;
-        return LabVirtualMachineCreationParameterResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      formulaContent: (() { final guardedValue = map['formulaContent']; if (guardedValue == null) return null; return LabVirtualMachineCreationParameterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      osType: (() {
-        final guardedValue = map['osType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
-      vm: (() {
-        final guardedValue = map['vm'];
-        if (guardedValue == null) return null;
-        return FormulaPropertiesFromVmResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      vm: (() { final guardedValue = map['vm']; if (guardedValue == null) return null; return FormulaPropertiesFromVmResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

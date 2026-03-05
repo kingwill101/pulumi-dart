@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InlineEventPropertiesResponse {
   /// The dataSchemaUrl for the inline event.
   final pulumi.Input<String>? dataSchemaUrl;
-
   /// The description for the inline event.
   final pulumi.Input<String>? description;
-
   /// The displayName for the inline event.
   final pulumi.Input<String>? displayName;
-
   /// The documentationUrl for the inline event.
   final pulumi.Input<String>? documentationUrl;
 
@@ -39,26 +36,11 @@ class InlineEventPropertiesResponse {
 
   factory InlineEventPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InlineEventPropertiesResponse(
-      dataSchemaUrl: (() {
-        final guardedValue = map['dataSchemaUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      documentationUrl: (() {
-        final guardedValue = map['documentationUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataSchemaUrl: (() { final guardedValue = map['dataSchemaUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      documentationUrl: (() { final guardedValue = map['documentationUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

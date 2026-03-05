@@ -8,17 +8,20 @@ class GetDataQualityRulesRuleRegexExpectation {
 
   /// Creates a new [GetDataQualityRulesRuleRegexExpectation].
   /// [regex] A regular expression the column value is expected to match.
-  GetDataQualityRulesRuleRegexExpectation({required this.regex});
+  GetDataQualityRulesRuleRegexExpectation({
+    required this.regex,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'regex': regex};
+    return <String, dynamic>{
+      'regex': regex,
+    };
   }
 
-  factory GetDataQualityRulesRuleRegexExpectation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataQualityRulesRuleRegexExpectation.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesRuleRegexExpectation(
       regex: pulumi.Input.fromValue(map['regex'] as String),
     );
   }
 }
+

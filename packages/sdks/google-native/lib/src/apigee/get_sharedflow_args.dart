@@ -13,7 +13,10 @@ class GetSharedflowArgs {
   /// Creates a new [GetSharedflowArgs].
   /// [organizationId] Required.
   /// [sharedflowId] Required.
-  GetSharedflowArgs({required this.organizationId, required this.sharedflowId});
+  GetSharedflowArgs({
+    required this.organizationId,
+    required this.sharedflowId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetSharedflowArgs {
     );
   }
 }
+

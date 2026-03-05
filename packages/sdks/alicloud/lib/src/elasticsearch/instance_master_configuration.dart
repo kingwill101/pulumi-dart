@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceMasterConfiguration {
   /// Elasticsearch proprietary master node number of disks
   final pulumi.Input<int>? amount;
-
   /// Elasticsearch proprietary master node disk size
   final pulumi.Input<int>? disk;
-
   /// Elasticsearch proprietary master node disk type
   final pulumi.Input<String>? diskType;
-
   /// Elasticsearch proprietary master node specifications
   final pulumi.Input<String>? spec;
 
@@ -38,26 +35,11 @@ class InstanceMasterConfiguration {
 
   factory InstanceMasterConfiguration.fromMap(Map<String, dynamic> map) {
     return InstanceMasterConfiguration(
-      amount: (() {
-        final guardedValue = map['amount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      disk: (() {
-        final guardedValue = map['disk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      diskType: (() {
-        final guardedValue = map['diskType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      spec: (() {
-        final guardedValue = map['spec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      disk: (() { final guardedValue = map['disk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

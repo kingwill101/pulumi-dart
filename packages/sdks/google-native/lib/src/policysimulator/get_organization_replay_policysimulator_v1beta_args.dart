@@ -29,9 +29,7 @@ class GetOrganizationReplayPolicysimulatorV1betaArgs {
     };
   }
 
-  factory GetOrganizationReplayPolicysimulatorV1betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOrganizationReplayPolicysimulatorV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationReplayPolicysimulatorV1betaArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
@@ -39,3 +37,4 @@ class GetOrganizationReplayPolicysimulatorV1betaArgs {
     );
   }
 }
+

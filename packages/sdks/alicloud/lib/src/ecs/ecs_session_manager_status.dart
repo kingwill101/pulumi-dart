@@ -119,7 +119,6 @@ import 'ecs_session_manager_status_state.dart';
 class EcsSessionManagerStatus extends pulumi.CustomResource {
   /// The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
   late final pulumi.Output<String> sessionManagerStatusName;
-
   /// The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
   late final pulumi.Output<String> status;
 
@@ -132,14 +131,12 @@ class EcsSessionManagerStatus extends pulumi.CustomResource {
     EcsSessionManagerStatusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    sessionManagerStatusName = registerOutput<String>(
-      'sessionManagerStatusName',
-    );
+          'alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    sessionManagerStatusName = registerOutput<String>('sessionManagerStatusName');
     status = registerOutput<String>('status');
   }
 
@@ -161,14 +158,12 @@ class EcsSessionManagerStatus extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    sessionManagerStatusName = registerOutput<String>(
-      'sessionManagerStatusName',
-    );
+          'alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    sessionManagerStatusName = registerOutput<String>('sessionManagerStatusName');
     status = registerOutput<String>('status');
   }
 }

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlanDetails {
   /// Offer ID of the plan
   final pulumi.Input<String>? offerID;
-
   /// Plan ID
   final pulumi.Input<String>? planID;
-
   /// Plan Name
   final pulumi.Input<String>? planName;
-
   /// Publisher ID of the plan
   final pulumi.Input<String>? publisherID;
-
   /// Term ID of the plan
   final pulumi.Input<String>? termID;
 
@@ -45,31 +41,12 @@ class PlanDetails {
 
   factory PlanDetails.fromMap(Map<String, dynamic> map) {
     return PlanDetails(
-      offerID: (() {
-        final guardedValue = map['offerID'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      planID: (() {
-        final guardedValue = map['planID'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      planName: (() {
-        final guardedValue = map['planName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publisherID: (() {
-        final guardedValue = map['publisherID'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      termID: (() {
-        final guardedValue = map['termID'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      offerID: (() { final guardedValue = map['offerID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      planID: (() { final guardedValue = map['planID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      planName: (() { final guardedValue = map['planName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publisherID: (() { final guardedValue = map['publisherID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      termID: (() { final guardedValue = map['termID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

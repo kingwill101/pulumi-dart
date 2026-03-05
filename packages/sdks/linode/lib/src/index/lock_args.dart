@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LockArgs {
   /// The ID of the entity to lock.
   final pulumi.Input<int> entityId;
-
   /// The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
   final pulumi.Input<String> entityType;
-
   /// The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
   final pulumi.Input<String> lockType;
 
@@ -42,3 +40,4 @@ class LockArgs {
     );
   }
 }
+

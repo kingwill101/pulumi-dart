@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCollectorPolicyArgs {
   /// Azure Traffic Collector name
   final pulumi.Input<String> azureTrafficCollectorName;
-
   /// Collector Policy Name
   final pulumi.Input<String> collectorPolicyName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,15 +34,10 @@ class GetCollectorPolicyArgs {
 
   factory GetCollectorPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetCollectorPolicyArgs(
-      azureTrafficCollectorName: pulumi.Input.fromValue(
-        map['azureTrafficCollectorName'] as String,
-      ),
-      collectorPolicyName: pulumi.Input.fromValue(
-        map['collectorPolicyName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      azureTrafficCollectorName: pulumi.Input.fromValue(map['azureTrafficCollectorName'] as String),
+      collectorPolicyName: pulumi.Input.fromValue(map['collectorPolicyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

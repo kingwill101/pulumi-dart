@@ -1,35 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRunbook.
 class GetRunbookResult {
   final String automationAccountName;
-
   /// The content of the Runbook.
   final String content;
-
   /// The description of the Runbook.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region where the Runbook exists.
   final String location;
-
   /// The activity-level tracing of the Runbook.
   final int logActivityTraceLevel;
-
   /// The Progress log option of the Runbook.
   final bool logProgress;
-
   /// The Verbose log option of the Runbook.
   final bool logVerbose;
   final String name;
   final String resourceGroupName;
-
   /// The type of Runbook.
   final String runbookType;
-
   /// A mapping of tags assigned to the Runbook.
   final Map<String, String> tags;
 
@@ -95,3 +87,4 @@ class GetRunbookResult {
     );
   }
 }
+

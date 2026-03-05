@@ -5,34 +5,24 @@ import 'partner_attachment_state.dart';
 
 class PartnerAttachment extends pulumi.CustomResource {
   late final pulumi.Output<PartnerAttachmentBgp> bgp;
-
   /// The children uuids of Partner Attachment
   late final pulumi.Output<List<String>> childrens;
-
   /// The connection bandwidth in Mbps
   late final pulumi.Output<int> connectionBandwidthInMbps;
-
   /// The date and time when the Partner Attachment was created
   late final pulumi.Output<String> createdAt;
-
   /// The NaaS provider
   late final pulumi.Output<String> naasProvider;
-
   /// The name of the Partner Attachment
   late final pulumi.Output<String> name;
-
   /// The UUID of the Parent Partner Attachment
   late final pulumi.Output<String?> parentUuid;
-
   /// The redundancy zone for the NaaS
   late final pulumi.Output<String> redundancyZone;
-
   /// The region where the Partner Attachment will be created
   late final pulumi.Output<String> region;
-
   /// The state of the Partner Attachment
   late final pulumi.Output<String> state;
-
   /// The list of VPC IDs to attach the Partner Attachment to
   late final pulumi.Output<List<String>> vpcIds;
 
@@ -45,25 +35,14 @@ class PartnerAttachment extends pulumi.CustomResource {
     PartnerAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/partnerAttachment:PartnerAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bgp = registerOutput<PartnerAttachmentBgp>(
-      'bgp',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PartnerAttachmentBgp.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'digitalocean:index/partnerAttachment:PartnerAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bgp = registerOutput<PartnerAttachmentBgp>('bgp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PartnerAttachmentBgp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     childrens = registerOutput<List<String>>('childrens');
-    connectionBandwidthInMbps = registerOutput<int>(
-      'connectionBandwidthInMbps',
-    );
+    connectionBandwidthInMbps = registerOutput<int>('connectionBandwidthInMbps');
     createdAt = registerOutput<String>('createdAt');
     naasProvider = registerOutput<String>('naasProvider');
     this.name = registerOutput<String>('name');
@@ -92,25 +71,14 @@ class PartnerAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/partnerAttachment:PartnerAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bgp = registerOutput<PartnerAttachmentBgp>(
-      'bgp',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PartnerAttachmentBgp.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'digitalocean:index/partnerAttachment:PartnerAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bgp = registerOutput<PartnerAttachmentBgp>('bgp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PartnerAttachmentBgp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     childrens = registerOutput<List<String>>('childrens');
-    connectionBandwidthInMbps = registerOutput<int>(
-      'connectionBandwidthInMbps',
-    );
+    connectionBandwidthInMbps = registerOutput<int>('connectionBandwidthInMbps');
     createdAt = registerOutput<String>('createdAt');
     naasProvider = registerOutput<String>('naasProvider');
     this.name = registerOutput<String>('name');

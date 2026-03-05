@@ -1,34 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkloadGroup.
 class GetWorkloadGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String id;
-
   /// The workload group importance level.
   final String? importance;
-
   /// The workload group cap percentage resource.
   final int maxResourcePercent;
-
   /// The workload group request maximum grant percentage.
   final double? maxResourcePercentPerRequest;
-
   /// The workload group minimum percentage resource.
   final int minResourcePercent;
-
   /// The workload group request minimum grant percentage.
   final double minResourcePercentPerRequest;
-
   /// Resource name.
   final String name;
-
   /// The workload group query execution timeout.
   final int? queryExecutionTimeout;
-
   /// Resource type.
   final String type;
 
@@ -75,27 +67,15 @@ class GetWorkloadGroupResult {
     return GetWorkloadGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      importance: (() {
-        final guardedValue = map['importance'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      importance: (() { final guardedValue = map['importance']; if (guardedValue == null) return null; return guardedValue as String; })(),
       maxResourcePercent: map['maxResourcePercent'] as int,
-      maxResourcePercentPerRequest: (() {
-        final guardedValue = map['maxResourcePercentPerRequest'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
+      maxResourcePercentPerRequest: (() { final guardedValue = map['maxResourcePercentPerRequest']; if (guardedValue == null) return null; return guardedValue as double; })(),
       minResourcePercent: map['minResourcePercent'] as int,
-      minResourcePercentPerRequest:
-          map['minResourcePercentPerRequest'] as double,
+      minResourcePercentPerRequest: map['minResourcePercentPerRequest'] as double,
       name: map['name'] as String,
-      queryExecutionTimeout: (() {
-        final guardedValue = map['queryExecutionTimeout'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      queryExecutionTimeout: (() { final guardedValue = map['queryExecutionTimeout']; if (guardedValue == null) return null; return guardedValue as int; })(),
       type: map['type'] as String,
     );
   }
 }
+

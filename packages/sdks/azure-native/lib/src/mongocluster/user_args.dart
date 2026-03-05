@@ -10,13 +10,10 @@ import 'user_properties.dart';
 class UserArgs {
   /// The name of the mongo cluster.
   final pulumi.Input<String> mongoClusterName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<UserProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the mongo cluster user.
   final pulumi.Input<String>? userName;
 
@@ -35,11 +32,7 @@ class UserArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'mongoClusterName': mongoClusterName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            UserProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<UserProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'userName': ?userName,
     };
@@ -47,24 +40,11 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      mongoClusterName: pulumi.Input.fromValue(
-        map['mongoClusterName'] as String,
-      ),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UserProperties.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mongoClusterName: pulumi.Input.fromValue(map['mongoClusterName'] as String),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

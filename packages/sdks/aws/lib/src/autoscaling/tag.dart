@@ -121,10 +121,8 @@ import 'tag_tag.dart';
 class Tag extends pulumi.CustomResource {
   /// Name of the Autoscaling Group to apply the tag to.
   late final pulumi.Output<String> autoscalingGroupName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Tag to create. The `tag` block is documented below.
   late final pulumi.Output<TagTag> tag;
 
@@ -132,27 +130,27 @@ class Tag extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Tag]. {@macro pulumi_autoscaling_tag_tag_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Tag(String name, {TagArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:autoscaling/tag:Tag',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Tag(
+    String name, {
+    TagArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:autoscaling/tag:Tag',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     region = registerOutput<String>('region');
-    tag = registerOutput<TagTag>(
-      'tag',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TagTag.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    tag = registerOutput<TagTag>('tag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Tag] resource's state with the given [name] and [id].
-  static Tag get(String name, pulumi.Input<String> id, {TagState? state}) {
+  static Tag get(
+    String name,
+    pulumi.Input<String> id, {
+    TagState? state,
+  }) {
     return Tag._get(
       name,
       state: state?.toMap(),
@@ -165,20 +163,13 @@ class Tag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:autoscaling/tag:Tag',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:autoscaling/tag:Tag',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     region = registerOutput<String>('region');
-    tag = registerOutput<TagTag>(
-      'tag',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TagTag.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    tag = registerOutput<TagTag>('tag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

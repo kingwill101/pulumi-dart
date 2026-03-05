@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePrincipalClaimsMappingPolicyAssignmentArgs {
   /// The ID of the claims mapping policy to assign.
   final pulumi.Input<String> claimsMappingPolicyId;
-
   /// The ID of the service principal for the policy assignment.
   final pulumi.Input<String> servicePrincipalId;
 
@@ -28,16 +27,11 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs {
     };
   }
 
-  factory ServicePrincipalClaimsMappingPolicyAssignmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServicePrincipalClaimsMappingPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalClaimsMappingPolicyAssignmentArgs(
-      claimsMappingPolicyId: pulumi.Input.fromValue(
-        map['claimsMappingPolicyId'] as String,
-      ),
-      servicePrincipalId: pulumi.Input.fromValue(
-        map['servicePrincipalId'] as String,
-      ),
+      claimsMappingPolicyId: pulumi.Input.fromValue(map['claimsMappingPolicyId'] as String),
+      servicePrincipalId: pulumi.Input.fromValue(map['servicePrincipalId'] as String),
     );
   }
 }
+

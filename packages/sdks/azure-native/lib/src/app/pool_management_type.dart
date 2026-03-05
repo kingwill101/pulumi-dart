@@ -15,3 +15,4 @@ enum PoolManagementType {
     throw ArgumentError('Unknown PoolManagementType value: $value');
   }
 }
+

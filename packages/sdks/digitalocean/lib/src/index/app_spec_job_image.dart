@@ -6,22 +6,16 @@ import 'app_spec_job_image_deploy_on_push.dart';
 class AppSpecJobImage {
   /// Configures automatically deploying images pushed to DOCR.
   final pulumi.Input<List<AppSpecJobImageDeployOnPush>>? deployOnPushes;
-
   /// The image digest. Cannot be specified if `tag` is provided.
   final pulumi.Input<String>? digest;
-
   /// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
   final pulumi.Input<String>? registry;
-
   /// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `&lt;username&gt;:&lt;token&gt;`.
   final pulumi.Input<String>? registryCredentials;
-
   /// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
   final pulumi.Input<String> registryType;
-
   /// The repository name.
   final pulumi.Input<String> repository;
-
   /// The repository tag. Defaults to `latest` if not provided.
   final pulumi.Input<String>? tag;
 
@@ -45,18 +39,7 @@ class AppSpecJobImage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deployOnPushes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AppSpecJobImageDeployOnPush>,
-            List<Map<String, dynamic>>
-          >(
-            deployOnPushes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AppSpecJobImageDeployOnPush,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'deployOnPushes': ?pulumi.Input.mapOptionalInputValue<List<AppSpecJobImageDeployOnPush>, List<Map<String, dynamic>>>(deployOnPushes, (value) => pulumi.Input.encodeList<AppSpecJobImageDeployOnPush, Map<String, dynamic>>(value, (value) => value.toMap())),
       'digest': ?digest,
       'registry': ?registry,
       'registryCredentials': ?registryCredentials,
@@ -68,40 +51,14 @@ class AppSpecJobImage {
 
   factory AppSpecJobImage.fromMap(Map<String, dynamic> map) {
     return AppSpecJobImage(
-      deployOnPushes: (() {
-        final guardedValue = map['deployOnPushes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AppSpecJobImageDeployOnPush>(
-            guardedValue,
-            (value) => AppSpecJobImageDeployOnPush.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      digest: (() {
-        final guardedValue = map['digest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      registry: (() {
-        final guardedValue = map['registry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      registryCredentials: (() {
-        final guardedValue = map['registryCredentials'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deployOnPushes: (() { final guardedValue = map['deployOnPushes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppSpecJobImageDeployOnPush>(guardedValue, (value) => AppSpecJobImageDeployOnPush.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      digest: (() { final guardedValue = map['digest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      registry: (() { final guardedValue = map['registry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      registryCredentials: (() { final guardedValue = map['registryCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registryType: pulumi.Input.fromValue(map['registryType'] as String),
       repository: pulumi.Input.fromValue(map['repository'] as String),
-      tag: (() {
-        final guardedValue = map['tag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

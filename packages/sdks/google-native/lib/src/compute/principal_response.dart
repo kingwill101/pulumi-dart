@@ -6,31 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrincipalResponse {
   /// An expression to specify custom condition.
   final pulumi.Input<String> condition;
-
   /// The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
   final pulumi.Input<List<String>> groups;
-
   /// IPv4 or IPv6 address or range (In CIDR format)
   final pulumi.Input<List<String>> ips;
-
   /// The namespaces. Exact match, prefix match, and suffix match are supported.
   final pulumi.Input<List<String>> namespaces;
-
   /// Negate of groups. Specifies exclusions.
   final pulumi.Input<List<String>> notGroups;
-
   /// Negate of IPs. Specifies exclusions.
   final pulumi.Input<List<String>> notIps;
-
   /// Negate of namespaces. Specifies exclusions.
   final pulumi.Input<List<String>> notNamespaces;
-
   /// Negate of users. Specifies exclusions.
   final pulumi.Input<List<String>> notUsers;
-
   /// A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
   final pulumi.Input<Map<String, String>> properties;
-
   /// The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
   final pulumi.Input<List<String>> users;
 
@@ -78,23 +69,14 @@ class PrincipalResponse {
       condition: pulumi.Input.fromValue(map['condition'] as String),
       groups: pulumi.Input.fromValue((map['groups'] as List).cast<String>()),
       ips: pulumi.Input.fromValue((map['ips'] as List).cast<String>()),
-      namespaces: pulumi.Input.fromValue(
-        (map['namespaces'] as List).cast<String>(),
-      ),
-      notGroups: pulumi.Input.fromValue(
-        (map['notGroups'] as List).cast<String>(),
-      ),
+      namespaces: pulumi.Input.fromValue((map['namespaces'] as List).cast<String>()),
+      notGroups: pulumi.Input.fromValue((map['notGroups'] as List).cast<String>()),
       notIps: pulumi.Input.fromValue((map['notIps'] as List).cast<String>()),
-      notNamespaces: pulumi.Input.fromValue(
-        (map['notNamespaces'] as List).cast<String>(),
-      ),
-      notUsers: pulumi.Input.fromValue(
-        (map['notUsers'] as List).cast<String>(),
-      ),
-      properties: pulumi.Input.fromValue(
-        (map['properties'] as Map).cast<String, String>(),
-      ),
+      notNamespaces: pulumi.Input.fromValue((map['notNamespaces'] as List).cast<String>()),
+      notUsers: pulumi.Input.fromValue((map['notUsers'] as List).cast<String>()),
+      properties: pulumi.Input.fromValue((map['properties'] as Map).cast<String, String>()),
       users: pulumi.Input.fromValue((map['users'] as List).cast<String>()),
     );
   }
 }
+

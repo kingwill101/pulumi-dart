@@ -8,64 +8,44 @@ import 'system_data_response.dart';
 class GetContactResult {
   /// The configuration associated with the allocated antenna.
   final ContactsPropertiesResponseAntennaConfiguration antennaConfiguration;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The reference to the contact profile resource.
   final ContactsPropertiesResponseContactProfile contactProfile;
-
   /// Azimuth of the antenna at the end of the contact in decimal degrees.
   final double endAzimuthDegrees;
-
   /// Spacecraft elevation above the horizon at contact end.
   final double endElevationDegrees;
-
   /// Any error message while scheduling a contact.
   final String errorMessage;
-
   /// Azure Ground Station name.
   final String groundStationName;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// Maximum elevation of the antenna during the contact in decimal degrees.
   final double maximumElevationDegrees;
-
   /// The name of the resource
   final String name;
-
   /// Reservation end time of a contact (ISO 8601 UTC standard).
   final String reservationEndTime;
-
   /// Reservation start time of a contact (ISO 8601 UTC standard).
   final String reservationStartTime;
-
   /// Receive end time of a contact (ISO 8601 UTC standard).
   final String rxEndTime;
-
   /// Receive start time of a contact (ISO 8601 UTC standard).
   final String rxStartTime;
-
   /// Azimuth of the antenna at the start of the contact in decimal degrees.
   final double startAzimuthDegrees;
-
   /// Spacecraft elevation above the horizon at contact start.
   final double startElevationDegrees;
-
   /// Status of a contact.
   final String status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Transmit end time of a contact (ISO 8601 UTC standard).
   final String txEndTime;
-
   /// Transmit start time of a contact (ISO 8601 UTC standard).
   final String txStartTime;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -143,14 +123,9 @@ class GetContactResult {
 
   factory GetContactResult.fromMap(Map<String, dynamic> map) {
     return GetContactResult(
-      antennaConfiguration:
-          ContactsPropertiesResponseAntennaConfiguration.fromMap(
-            (map['antennaConfiguration']! as Map).cast<String, dynamic>(),
-          ),
+      antennaConfiguration: ContactsPropertiesResponseAntennaConfiguration.fromMap((map['antennaConfiguration']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      contactProfile: ContactsPropertiesResponseContactProfile.fromMap(
-        (map['contactProfile']! as Map).cast<String, dynamic>(),
-      ),
+      contactProfile: ContactsPropertiesResponseContactProfile.fromMap((map['contactProfile']! as Map).cast<String, dynamic>()),
       endAzimuthDegrees: map['endAzimuthDegrees'] as double,
       endElevationDegrees: map['endElevationDegrees'] as double,
       errorMessage: map['errorMessage'] as String,
@@ -165,12 +140,11 @@ class GetContactResult {
       startAzimuthDegrees: map['startAzimuthDegrees'] as double,
       startElevationDegrees: map['startElevationDegrees'] as double,
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       txEndTime: map['txEndTime'] as String,
       txStartTime: map['txStartTime'] as String,
       type: map['type'] as String,
     );
   }
 }
+

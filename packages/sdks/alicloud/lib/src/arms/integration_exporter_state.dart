@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationExporterState {
   /// The ID of the Prometheus instance.
   final pulumi.Input<String>? clusterId;
-
   /// The ID of the Integration Exporter instance.
   final pulumi.Input<int>? instanceId;
-
   /// The type of prometheus integration.
   final pulumi.Input<String>? integrationType;
-
   /// Exporter configuration parameter json string.
   final pulumi.Input<String>? param;
 
@@ -39,26 +36,11 @@ class IntegrationExporterState {
 
   factory IntegrationExporterState.fromMap(Map<String, dynamic> map) {
     return IntegrationExporterState(
-      clusterId: (() {
-        final guardedValue = map['clusterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      integrationType: (() {
-        final guardedValue = map['integrationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      param: (() {
-        final guardedValue = map['param'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clusterId: (() { final guardedValue = map['clusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      integrationType: (() { final guardedValue = map['integrationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      param: (() { final guardedValue = map['param']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

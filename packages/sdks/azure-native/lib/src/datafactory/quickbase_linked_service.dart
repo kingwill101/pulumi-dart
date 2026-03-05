@@ -9,29 +9,21 @@ import 'parameter_specification.dart';
 class QuickbaseLinkedService {
   /// List of tags that can be used for describing the linked service.
   final pulumi.Input<List<dynamic>>? annotations;
-
   /// The integration runtime reference.
   final pulumi.Input<IntegrationRuntimeReference>? connectVia;
-
   /// Linked service description.
   final pulumi.Input<String>? description;
-
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
   final pulumi.Input<String>? encryptedCredential;
-
   /// Parameters for linked service.
   final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
-
   /// Type of linked service.
   /// Expected value is 'Quickbase'.
   final pulumi.Input<String> type;
-
   /// The url to connect Quickbase source. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> url;
-
   /// The user token for the Quickbase source.
   final pulumi.Input<AzureKeyVaultSecretReference> userToken;
-
   /// Version of the linked service.
   final pulumi.Input<String>? version;
 
@@ -60,86 +52,29 @@ class QuickbaseLinkedService {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'connectVia':
-          ?pulumi.Input.mapOptionalInputValue<
-            IntegrationRuntimeReference,
-            Map<String, dynamic>
-          >(connectVia, (value) => value.toMap()),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
-      'parameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, ParameterSpecification>,
-            Map<String, Map<String, dynamic>>
-          >(
-            parameters,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  ParameterSpecification,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
       'url': url,
-      'userToken':
-          pulumi.Input.mapInputValue<
-            AzureKeyVaultSecretReference,
-            Map<String, dynamic>
-          >(userToken, (value) => value.toMap()),
+      'userToken': pulumi.Input.mapInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(userToken, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory QuickbaseLinkedService.fromMap(Map<String, dynamic> map) {
     return QuickbaseLinkedService(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
-      connectVia: (() {
-        final guardedValue = map['connectVia'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IntegrationRuntimeReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encryptedCredential: (() {
-        final guardedValue = map['encryptedCredential'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<ParameterSpecification>(
-            guardedValue,
-            (value) => ParameterSpecification.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      connectVia: (() { final guardedValue = map['connectVia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       url: pulumi.Input.fromValue(map['url']),
-      userToken: pulumi.Input.fromValue(
-        AzureKeyVaultSecretReference.fromMap(
-          (map['userToken']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userToken: pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((map['userToken']! as Map).cast<String, dynamic>())),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

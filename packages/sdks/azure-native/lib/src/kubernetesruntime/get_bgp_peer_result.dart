@@ -6,28 +6,20 @@ import 'system_data_response.dart';
 class GetBgpPeerResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// My ASN
   final int myAsn;
-
   /// The name of the resource
   final String name;
-
   /// Peer Address
   final String peerAddress;
-
   /// Peer ASN
   final int peerAsn;
-
   /// Resource provision state
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -76,10 +68,9 @@ class GetBgpPeerResult {
       peerAddress: map['peerAddress'] as String,
       peerAsn: map['peerAsn'] as int,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

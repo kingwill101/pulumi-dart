@@ -9,10 +9,14 @@ class VpcPeeringConnectivityResponse {
 
   /// Creates a new [VpcPeeringConnectivityResponse].
   /// [vpc] The name of the VPC network to peer with the Cloud SQL private network.
-  VpcPeeringConnectivityResponse({required this.vpc});
+  VpcPeeringConnectivityResponse({
+    required this.vpc,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vpc': vpc};
+    return <String, dynamic>{
+      'vpc': vpc,
+    };
   }
 
   factory VpcPeeringConnectivityResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class VpcPeeringConnectivityResponse {
     );
   }
 }
+

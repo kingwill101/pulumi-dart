@@ -12,21 +12,16 @@ import 'app_authorization_timeouts.dart';
 class AppAuthorizationArgs {
   /// The name of the application for valid values see https://docs.aws.amazon.com/appfabric/latest/api/API_CreateAppAuthorization.html.
   final pulumi.Input<String> app;
-
   /// The Amazon Resource Name (ARN) of the app bundle to use for the request.
   final pulumi.Input<String> appBundleArn;
-
   /// The authorization type for the app authorization valid values are oauth2 and apiKey.
   final pulumi.Input<String> authType;
-
   /// Contains credentials for the application, such as an API key or OAuth2 client ID and secret.
   /// Specify credentials that match the authorization type for your request. For example, if the authorization type for your request is OAuth2 (oauth2), then you should provide only the OAuth2 credentials.
   final pulumi.Input<AppAuthorizationCredential> credential;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Contains information about an application tenant, such as the application display name and identifier.
   final pulumi.Input<List<AppAuthorizationTenant>> tenants;
   final pulumi.Input<AppAuthorizationTimeouts>? timeouts;
@@ -56,30 +51,11 @@ class AppAuthorizationArgs {
       'app': app,
       'appBundleArn': appBundleArn,
       'authType': authType,
-      'credential':
-          pulumi.Input.mapInputValue<
-            AppAuthorizationCredential,
-            Map<String, dynamic>
-          >(credential, (value) => value.toMap()),
+      'credential': pulumi.Input.mapInputValue<AppAuthorizationCredential, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'region': ?region,
       'tags': ?tags,
-      'tenants':
-          pulumi.Input.mapInputValue<
-            List<AppAuthorizationTenant>,
-            List<Map<String, dynamic>>
-          >(
-            tenants,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AppAuthorizationTenant,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            AppAuthorizationTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'tenants': pulumi.Input.mapInputValue<List<AppAuthorizationTenant>, List<Map<String, dynamic>>>(tenants, (value) => pulumi.Input.encodeList<AppAuthorizationTenant, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<AppAuthorizationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
@@ -88,40 +64,12 @@ class AppAuthorizationArgs {
       app: pulumi.Input.fromValue(map['app'] as String),
       appBundleArn: pulumi.Input.fromValue(map['appBundleArn'] as String),
       authType: pulumi.Input.fromValue(map['authType'] as String),
-      credential: pulumi.Input.fromValue(
-        AppAuthorizationCredential.fromMap(
-          (map['credential']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tenants: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<AppAuthorizationTenant>(
-          map['tenants']!,
-          (value) => AppAuthorizationTenant.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AppAuthorizationTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      credential: pulumi.Input.fromValue(AppAuthorizationCredential.fromMap((map['credential']! as Map).cast<String, dynamic>())),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tenants: pulumi.Input.fromValue(pulumi.Input.decodeList<AppAuthorizationTenant>(map['tenants']!, (value) => AppAuthorizationTenant.fromMap((value as Map).cast<String, dynamic>()))),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppAuthorizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

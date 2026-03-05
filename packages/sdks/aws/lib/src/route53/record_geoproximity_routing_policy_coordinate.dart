@@ -15,15 +15,17 @@ class RecordGeoproximityRoutingPolicyCoordinate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'latitude': latitude, 'longitude': longitude};
+    return <String, dynamic>{
+      'latitude': latitude,
+      'longitude': longitude,
+    };
   }
 
-  factory RecordGeoproximityRoutingPolicyCoordinate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RecordGeoproximityRoutingPolicyCoordinate.fromMap(Map<String, dynamic> map) {
     return RecordGeoproximityRoutingPolicyCoordinate(
       latitude: pulumi.Input.fromValue(map['latitude'] as String),
       longitude: pulumi.Input.fromValue(map['longitude'] as String),
     );
   }
 }
+

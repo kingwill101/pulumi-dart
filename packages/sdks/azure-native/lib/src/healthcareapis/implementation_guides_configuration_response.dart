@@ -9,21 +9,20 @@ class ImplementationGuidesConfigurationResponse {
 
   /// Creates a new [ImplementationGuidesConfigurationResponse].
   /// [usCoreMissingData] If US Core Missing Data requirement is enabled.
-  ImplementationGuidesConfigurationResponse({this.usCoreMissingData});
+  ImplementationGuidesConfigurationResponse({
+    this.usCoreMissingData,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'usCoreMissingData': ?usCoreMissingData};
+    return <String, dynamic>{
+      'usCoreMissingData': ?usCoreMissingData,
+    };
   }
 
-  factory ImplementationGuidesConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ImplementationGuidesConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ImplementationGuidesConfigurationResponse(
-      usCoreMissingData: (() {
-        final guardedValue = map['usCoreMissingData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      usCoreMissingData: (() { final guardedValue = map['usCoreMissingData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

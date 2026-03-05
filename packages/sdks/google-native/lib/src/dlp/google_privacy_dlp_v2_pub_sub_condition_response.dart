@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2PubSubConditionResponse {
   /// The minimum data risk score that triggers the condition.
   final pulumi.Input<String> minimumRiskScore;
-
   /// The minimum sensitivity level that triggers the condition.
   final pulumi.Input<String> minimumSensitivityScore;
 
@@ -25,16 +24,11 @@ class GooglePrivacyDlpV2PubSubConditionResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2PubSubConditionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2PubSubConditionResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PubSubConditionResponse(
-      minimumRiskScore: pulumi.Input.fromValue(
-        map['minimumRiskScore'] as String,
-      ),
-      minimumSensitivityScore: pulumi.Input.fromValue(
-        map['minimumSensitivityScore'] as String,
-      ),
+      minimumRiskScore: pulumi.Input.fromValue(map['minimumRiskScore'] as String),
+      minimumSensitivityScore: pulumi.Input.fromValue(map['minimumSensitivityScore'] as String),
     );
   }
 }
+

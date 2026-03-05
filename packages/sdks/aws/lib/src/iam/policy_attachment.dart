@@ -418,16 +418,12 @@ import 'policy_attachment_state.dart';
 class PolicyAttachment extends pulumi.CustomResource {
   /// Group(s) the policy should be applied to.
   late final pulumi.Output<List<String>?> groups;
-
   /// Name of the attachment. This cannot be an empty string.
   late final pulumi.Output<String> name;
-
   /// ARN of the policy you want to apply. Typically this should be a reference to the ARN of another resource to ensure dependency ordering, such as `aws_iam_policy.example.arn`.
   late final pulumi.Output<String> policyArn;
-
   /// Role(s) the policy should be applied to.
   late final pulumi.Output<List<String>?> roles;
-
   /// User(s) the policy should be applied to.
   late final pulumi.Output<List<String>?> users;
 
@@ -440,11 +436,11 @@ class PolicyAttachment extends pulumi.CustomResource {
     PolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/policyAttachment:PolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/policyAttachment:PolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groups = registerOutput<List<String>?>('groups');
     this.name = registerOutput<String>('name');
     policyArn = registerOutput<String>('policyArn');
@@ -470,11 +466,11 @@ class PolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/policyAttachment:PolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/policyAttachment:PolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groups = registerOutput<List<String>?>('groups');
     this.name = registerOutput<String>('name');
     policyArn = registerOutput<String>('policyArn');

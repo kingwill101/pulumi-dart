@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActionGroupItsmReceiver {
   /// The unique connection identifier of the ITSM connection.
   final pulumi.Input<String> connectionId;
-
   /// Specifies the name of the Action Group.
   final pulumi.Input<String> name;
-
   /// The region of the workspace.
   final pulumi.Input<String> region;
-
   /// A JSON blob for the configurations of the ITSM action. CreateMultipleWorkItems option will be part of this blob as well.
   final pulumi.Input<String> ticketConfiguration;
-
   /// The Azure Log Analytics workspace ID where this connection is defined.
   final pulumi.Input<String> workspaceId;
 
@@ -47,10 +43,9 @@ class GetActionGroupItsmReceiver {
       connectionId: pulumi.Input.fromValue(map['connectionId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       region: pulumi.Input.fromValue(map['region'] as String),
-      ticketConfiguration: pulumi.Input.fromValue(
-        map['ticketConfiguration'] as String,
-      ),
+      ticketConfiguration: pulumi.Input.fromValue(map['ticketConfiguration'] as String),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
+

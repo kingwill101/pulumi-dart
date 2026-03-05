@@ -9,17 +9,13 @@ class GetExtensionProvidersResult {
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of Extension Provider names.
   final List<String> names;
   final String? outputFile;
-
   /// A list of Service Mesh Extension Providers. Each element contains the following attributes:
   final List<GetExtensionProvidersProvider> providers;
-
   /// The ID of the Service Mesh.
   final String serviceMeshId;
-
   /// The type of the Service Mesh Extension Provider.
   final String type;
 
@@ -50,11 +46,7 @@ class GetExtensionProvidersResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'providers':
-          pulumi.Input.encodeList<
-            GetExtensionProvidersProvider,
-            Map<String, dynamic>
-          >(providers, (value) => value.toMap()),
+      'providers': pulumi.Input.encodeList<GetExtensionProvidersProvider, Map<String, dynamic>>(providers, (value) => value.toMap()),
       'serviceMeshId': serviceMeshId,
       'type': type,
     };
@@ -64,25 +56,13 @@ class GetExtensionProvidersResult {
     return GetExtensionProvidersResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      providers: pulumi.Input.decodeList<GetExtensionProvidersProvider>(
-        map['providers']!,
-        (value) => GetExtensionProvidersProvider.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      providers: pulumi.Input.decodeList<GetExtensionProvidersProvider>(map['providers']!, (value) => GetExtensionProvidersProvider.fromMap((value as Map).cast<String, dynamic>())),
       serviceMeshId: map['serviceMeshId'] as String,
       type: map['type'] as String,
     );
   }
 }
+

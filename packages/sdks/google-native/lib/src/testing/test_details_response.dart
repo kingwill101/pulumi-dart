@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TestDetailsResponse {
   /// If the TestState is ERROR, then this string will contain human-readable details about the error.
   final pulumi.Input<String> errorMessage;
-
   /// Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end of progress_messages.
   final pulumi.Input<List<String>> progressMessages;
 
@@ -28,9 +27,8 @@ class TestDetailsResponse {
   factory TestDetailsResponse.fromMap(Map<String, dynamic> map) {
     return TestDetailsResponse(
       errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
-      progressMessages: pulumi.Input.fromValue(
-        (map['progressMessages'] as List).cast<String>(),
-      ),
+      progressMessages: pulumi.Input.fromValue((map['progressMessages'] as List).cast<String>()),
     );
   }
 }
+

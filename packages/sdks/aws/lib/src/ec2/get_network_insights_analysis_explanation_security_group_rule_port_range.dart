@@ -15,15 +15,17 @@ class GetNetworkInsightsAnalysisExplanationSecurityGroupRulePortRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'from': from, 'to': to};
+    return <String, dynamic>{
+      'from': from,
+      'to': to,
+    };
   }
 
-  factory GetNetworkInsightsAnalysisExplanationSecurityGroupRulePortRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInsightsAnalysisExplanationSecurityGroupRulePortRange.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisExplanationSecurityGroupRulePortRange(
       from: pulumi.Input.fromValue(map['from'] as int),
       to: pulumi.Input.fromValue(map['to'] as int),
     );
   }
 }
+

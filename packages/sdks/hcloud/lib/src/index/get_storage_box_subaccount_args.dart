@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStorageBoxSubaccountArgs {
   /// ID of the Storage Box Subaccount.
   final pulumi.Input<int>? id;
-
   /// Name of the Storage Box Subaccount.
   final pulumi.Input<String>? name;
-
   /// ID of the Storage Box.
   final pulumi.Input<int> storageBoxId;
-
   /// Username of the Storage Box Subaccount.
   final pulumi.Input<String>? username;
-
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
   final pulumi.Input<String>? withSelector;
 
@@ -48,27 +44,12 @@ class GetStorageBoxSubaccountArgs {
 
   factory GetStorageBoxSubaccountArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxSubaccountArgs(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageBoxId: pulumi.Input.fromValue(map['storageBoxId'] as int),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      withSelector: (() {
-        final guardedValue = map['withSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

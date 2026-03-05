@@ -140,31 +140,22 @@ import 'system_data_response.dart';
 class SolutionConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The last time resources were inventoried
   late final pulumi.Output<String> lastSyncTime;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The resource provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Solution settings
   late final pulumi.Output<Map<String, String>?> solutionSettings;
-
   /// The type of the solution
   late final pulumi.Output<String> solutionType;
-
   /// The status of solution configurations
   late final pulumi.Output<String> status;
-
   /// The detailed message of status details
   late final pulumi.Output<String> statusDetails;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -177,11 +168,11 @@ class SolutionConfiguration extends pulumi.CustomResource {
     SolutionConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:hybridconnectivity:SolutionConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:hybridconnectivity:SolutionConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     lastSyncTime = registerOutput<String>('lastSyncTime');
     this.name = registerOutput<String>('name');
@@ -190,16 +181,7 @@ class SolutionConfiguration extends pulumi.CustomResource {
     solutionType = registerOutput<String>('solutionType');
     status = registerOutput<String>('status');
     statusDetails = registerOutput<String>('statusDetails');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

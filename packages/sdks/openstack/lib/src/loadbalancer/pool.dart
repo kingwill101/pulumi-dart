@@ -147,81 +147,65 @@ class Pool extends pulumi.CustomResource {
   /// The administrative state of the pool. A valid
   /// value is true (UP) or false (DOWN).
   late final pulumi.Output<bool?> adminStateUp;
-
   /// A list of ALPN protocols. Available protocols:
   /// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
   /// 2.24**.
   late final pulumi.Output<List<String>> alpnProtocols;
-
   /// The reference of the key manager service
   /// secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
   /// Supported only in **Octavia minor version &gt;= 2.8**.
   late final pulumi.Output<String?> caTlsContainerRef;
-
   /// The reference of the key manager service
   /// secret containing a PEM format CA revocation list file for `tls_enabled`
   /// pools. Supported only in **Octavia minor version &gt;= 2.8**.
   late final pulumi.Output<String?> crlContainerRef;
-
   /// Human-readable description for the pool.
   late final pulumi.Output<String?> description;
-
   /// The load balancing algorithm to distribute traffic
   /// to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
   /// SOURCE_IP, or SOURCE_IP_PORT.
   late final pulumi.Output<String> lbMethod;
-
   /// The Listener on which the members of the pool will
   /// be associated with. Changing this creates a new pool. Note: One of
   /// LoadbalancerID or ListenerID must be provided.
   late final pulumi.Output<String?> listenerId;
-
   /// The load balancer on which to provision this
   /// pool. Changing this creates a new pool. Note: One of LoadbalancerID or
   /// ListenerID must be provided.
   late final pulumi.Output<String?> loadbalancerId;
-
   /// Human-readable name for the pool.
   late final pulumi.Output<String> name;
-
   /// Omit this field to prevent session persistence.
   /// Indicates whether connections in the same session will be processed by the
   /// same Pool member or not. Changing this creates a new pool.
   late final pulumi.Output<PoolPersistence?> persistence;
-
   /// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
   /// UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP (**Octavia minor
   /// version &gt;= 2.23**). Changing this creates a new pool.
   late final pulumi.Output<String> protocol;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a pool. If omitted, the `region`
   /// argument of the provider is used. Changing this creates a new pool.
   late final pulumi.Output<String> region;
   late final pulumi.Output<List<String>?> tags;
-
   /// Required for admins. The UUID of the tenant who owns
   /// the pool.  Only administrative users can specify a tenant UUID other than
   /// their own. Changing this creates a new pool.
   late final pulumi.Output<String> tenantId;
-
   /// List of ciphers in OpenSSL format
   /// (colon-separated). See
   /// https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
   /// Supported only in **Octavia minor version &gt;= 2.15**.
   late final pulumi.Output<String> tlsCiphers;
-
   /// The reference to the key manager service
   /// secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
   /// pools for TLS client authentication to the member servers. Supported only in
   /// **Octavia minor version &gt;= 2.8**.
   late final pulumi.Output<String?> tlsContainerRef;
-
   /// When true connections to backend member servers
   /// will use TLS encryption. Default is false. Supported only in **Octavia minor
   /// version &gt;= 2.8**.
   late final pulumi.Output<bool?> tlsEnabled;
-
   /// A list of TLS protocol versions. Available
   /// versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
   /// **Octavia minor version &gt;= 2.17**.
@@ -231,13 +215,16 @@ class Pool extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Pool]. {@macro pulumi_loadbalancer_pool_pool_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Pool(String name, {PoolArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'openstack:loadbalancer/pool:Pool',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Pool(
+    String name, {
+    PoolArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'openstack:loadbalancer/pool:Pool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminStateUp = registerOutput<bool?>('adminStateUp');
     alpnProtocols = registerOutput<List<String>>('alpnProtocols');
     caTlsContainerRef = registerOutput<String?>('caTlsContainerRef');
@@ -247,16 +234,7 @@ class Pool extends pulumi.CustomResource {
     listenerId = registerOutput<String?>('listenerId');
     loadbalancerId = registerOutput<String?>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    persistence = registerOutput<PoolPersistence?>(
-      'persistence',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PoolPersistence.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    persistence = registerOutput<PoolPersistence?>('persistence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolPersistence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protocol = registerOutput<String>('protocol');
     region = registerOutput<String>('region');
     tags = registerOutput<List<String>?>('tags');
@@ -268,7 +246,11 @@ class Pool extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Pool] resource's state with the given [name] and [id].
-  static Pool get(String name, pulumi.Input<String> id, {PoolState? state}) {
+  static Pool get(
+    String name,
+    pulumi.Input<String> id, {
+    PoolState? state,
+  }) {
     return Pool._get(
       name,
       state: state?.toMap(),
@@ -281,11 +263,11 @@ class Pool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:loadbalancer/pool:Pool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:loadbalancer/pool:Pool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminStateUp = registerOutput<bool?>('adminStateUp');
     alpnProtocols = registerOutput<List<String>>('alpnProtocols');
     caTlsContainerRef = registerOutput<String?>('caTlsContainerRef');
@@ -295,16 +277,7 @@ class Pool extends pulumi.CustomResource {
     listenerId = registerOutput<String?>('listenerId');
     loadbalancerId = registerOutput<String?>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    persistence = registerOutput<PoolPersistence?>(
-      'persistence',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PoolPersistence.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    persistence = registerOutput<PoolPersistence?>('persistence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolPersistence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protocol = registerOutput<String>('protocol');
     region = registerOutput<String>('region');
     tags = registerOutput<List<String>?>('tags');

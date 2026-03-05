@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterHTTPProxyConfig {
   /// The HTTP proxy server endpoint to use.
   final pulumi.Input<String>? httpProxy;
-
   /// The HTTPS proxy server endpoint to use.
   final pulumi.Input<String>? httpsProxy;
-
   /// The endpoints that should not go through proxy.
   final pulumi.Input<List<String>>? noProxy;
-
   /// Alternative CA cert to use for connecting to proxy servers.
   final pulumi.Input<String>? trustedCa;
 
@@ -39,26 +36,11 @@ class ManagedClusterHTTPProxyConfig {
 
   factory ManagedClusterHTTPProxyConfig.fromMap(Map<String, dynamic> map) {
     return ManagedClusterHTTPProxyConfig(
-      httpProxy: (() {
-        final guardedValue = map['httpProxy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      httpsProxy: (() {
-        final guardedValue = map['httpsProxy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      noProxy: (() {
-        final guardedValue = map['noProxy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      trustedCa: (() {
-        final guardedValue = map['trustedCa'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      httpProxy: (() { final guardedValue = map['httpProxy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      httpsProxy: (() { final guardedValue = map['httpsProxy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      noProxy: (() { final guardedValue = map['noProxy']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      trustedCa: (() { final guardedValue = map['trustedCa']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

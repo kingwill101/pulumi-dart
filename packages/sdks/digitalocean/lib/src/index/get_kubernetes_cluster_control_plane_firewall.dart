@@ -21,14 +21,11 @@ class GetKubernetesClusterControlPlaneFirewall {
     };
   }
 
-  factory GetKubernetesClusterControlPlaneFirewall.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetKubernetesClusterControlPlaneFirewall.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterControlPlaneFirewall(
-      allowedAddresses: pulumi.Input.fromValue(
-        (map['allowedAddresses'] as List).cast<String>(),
-      ),
+      allowedAddresses: pulumi.Input.fromValue((map['allowedAddresses'] as List).cast<String>()),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

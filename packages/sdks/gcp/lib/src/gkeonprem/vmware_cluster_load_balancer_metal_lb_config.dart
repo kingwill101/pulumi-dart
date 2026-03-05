@@ -8,44 +8,24 @@ class VMwareClusterLoadBalancerMetalLbConfig {
   /// typed services. All addresses must be routable to load balancer nodes.
   /// IngressVIP must be included in the pools.
   /// Structure is documented below.
-  final pulumi.Input<List<VMwareClusterLoadBalancerMetalLbConfigAddressPool>>
-  addressPools;
+  final pulumi.Input<List<VMwareClusterLoadBalancerMetalLbConfigAddressPool>> addressPools;
 
   /// Creates a new [VMwareClusterLoadBalancerMetalLbConfig].
   /// [addressPools] AddressPools is a list of non-overlapping IP pools used by load balancer
-  VMwareClusterLoadBalancerMetalLbConfig({required this.addressPools});
+  VMwareClusterLoadBalancerMetalLbConfig({
+    required this.addressPools,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addressPools':
-          pulumi.Input.mapInputValue<
-            List<VMwareClusterLoadBalancerMetalLbConfigAddressPool>,
-            List<Map<String, dynamic>>
-          >(
-            addressPools,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VMwareClusterLoadBalancerMetalLbConfigAddressPool,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'addressPools': pulumi.Input.mapInputValue<List<VMwareClusterLoadBalancerMetalLbConfigAddressPool>, List<Map<String, dynamic>>>(addressPools, (value) => pulumi.Input.encodeList<VMwareClusterLoadBalancerMetalLbConfigAddressPool, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory VMwareClusterLoadBalancerMetalLbConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VMwareClusterLoadBalancerMetalLbConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterLoadBalancerMetalLbConfig(
-      addressPools: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          VMwareClusterLoadBalancerMetalLbConfigAddressPool
-        >(
-          map['addressPools']!,
-          (value) => VMwareClusterLoadBalancerMetalLbConfigAddressPool.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      addressPools: pulumi.Input.fromValue(pulumi.Input.decodeList<VMwareClusterLoadBalancerMetalLbConfigAddressPool>(map['addressPools']!, (value) => VMwareClusterLoadBalancerMetalLbConfigAddressPool.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

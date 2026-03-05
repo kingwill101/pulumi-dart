@@ -16,3 +16,4 @@ enum InstanceLifecycleType {
     throw ArgumentError('Unknown InstanceLifecycleType value: $value');
   }
 }
+

@@ -21,3 +21,4 @@ enum ApplicationGatewaySkuName {
     throw ArgumentError('Unknown ApplicationGatewaySkuName value: $value');
   }
 }
+

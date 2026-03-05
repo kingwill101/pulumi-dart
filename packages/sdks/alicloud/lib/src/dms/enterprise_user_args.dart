@@ -9,28 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseUserArgs {
   /// Maximum number of inquiries on the day.
   final pulumi.Input<int>? maxExecuteCount;
-
   /// Query the maximum number of rows on the day.
   final pulumi.Input<int>? maxResultCount;
-
   /// The DingTalk number or mobile number of the user.
   final pulumi.Input<String>? mobile;
-
   /// It has been deprecated from 1.100.0 and use `user_name` instead.
   final pulumi.Input<String>? nickName;
-
   /// The roles that the user plays.
   final pulumi.Input<List<String>>? roleNames;
-
   /// The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
   final pulumi.Input<String>? status;
-
   /// The tenant ID.
   final pulumi.Input<int>? tid;
-
   /// The Alibaba Cloud unique ID (UID) of the user to add.
   final pulumi.Input<String> uid;
-
   /// The nickname of the user.
   final pulumi.Input<String>? userName;
 
@@ -72,47 +64,16 @@ class EnterpriseUserArgs {
 
   factory EnterpriseUserArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseUserArgs(
-      maxExecuteCount: (() {
-        final guardedValue = map['maxExecuteCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxResultCount: (() {
-        final guardedValue = map['maxResultCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      mobile: (() {
-        final guardedValue = map['mobile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nickName: (() {
-        final guardedValue = map['nickName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleNames: (() {
-        final guardedValue = map['roleNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tid: (() {
-        final guardedValue = map['tid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxExecuteCount: (() { final guardedValue = map['maxExecuteCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxResultCount: (() { final guardedValue = map['maxResultCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mobile: (() { final guardedValue = map['mobile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nickName: (() { final guardedValue = map['nickName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleNames: (() { final guardedValue = map['roleNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tid: (() { final guardedValue = map['tid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       uid: pulumi.Input.fromValue(map['uid'] as String),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

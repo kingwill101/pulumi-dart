@@ -11,39 +11,20 @@ class InstanceStateInfo {
 
   /// Creates a new [InstanceStateInfo].
   /// [updateInfos] (Output)
-  InstanceStateInfo({this.updateInfos});
+  InstanceStateInfo({
+    this.updateInfos,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'updateInfos':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InstanceStateInfoUpdateInfo>,
-            List<Map<String, dynamic>>
-          >(
-            updateInfos,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InstanceStateInfoUpdateInfo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'updateInfos': ?pulumi.Input.mapOptionalInputValue<List<InstanceStateInfoUpdateInfo>, List<Map<String, dynamic>>>(updateInfos, (value) => pulumi.Input.encodeList<InstanceStateInfoUpdateInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory InstanceStateInfo.fromMap(Map<String, dynamic> map) {
     return InstanceStateInfo(
-      updateInfos: (() {
-        final guardedValue = map['updateInfos'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<InstanceStateInfoUpdateInfo>(
-            guardedValue,
-            (value) => InstanceStateInfoUpdateInfo.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      updateInfos: (() { final guardedValue = map['updateInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceStateInfoUpdateInfo>(guardedValue, (value) => InstanceStateInfoUpdateInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

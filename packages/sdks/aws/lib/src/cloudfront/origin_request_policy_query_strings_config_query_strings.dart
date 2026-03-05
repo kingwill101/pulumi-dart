@@ -7,21 +7,20 @@ class OriginRequestPolicyQueryStringsConfigQueryStrings {
 
   /// Creates a new [OriginRequestPolicyQueryStringsConfigQueryStrings].
   /// [items] Optional.
-  OriginRequestPolicyQueryStringsConfigQueryStrings({this.items});
+  OriginRequestPolicyQueryStringsConfigQueryStrings({
+    this.items,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'items': ?items};
+    return <String, dynamic>{
+      'items': ?items,
+    };
   }
 
-  factory OriginRequestPolicyQueryStringsConfigQueryStrings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OriginRequestPolicyQueryStringsConfigQueryStrings.fromMap(Map<String, dynamic> map) {
     return OriginRequestPolicyQueryStringsConfigQueryStrings(
-      items: (() {
-        final guardedValue = map['items'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DevToolPortalResourceRequestsResponse {
   /// Cpu quantity allocated to each Dev Tool Portal instance. 1 core can be represented by 1 or 1000m
   final pulumi.Input<String> cpu;
-
   /// Desired instance count of Dev Tool Portal.
   final pulumi.Input<int> instanceCount;
-
   /// Memory quantity allocated to each Dev Tool Portal instance. 1 GB can be represented by 1Gi or 1024Mi.
   final pulumi.Input<String> memory;
 
@@ -31,9 +29,7 @@ class DevToolPortalResourceRequestsResponse {
     };
   }
 
-  factory DevToolPortalResourceRequestsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DevToolPortalResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
     return DevToolPortalResourceRequestsResponse(
       cpu: pulumi.Input.fromValue(map['cpu'] as String),
       instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
@@ -41,3 +37,4 @@ class DevToolPortalResourceRequestsResponse {
     );
   }
 }
+

@@ -6,37 +6,26 @@ import 'get_nodebalancers_nodebalancer_transfer.dart';
 class GetNodebalancersNodebalancer {
   /// Throttle connections per second (0-20)
   final pulumi.Input<int> clientConnThrottle;
-
   /// Throttle UDP sessions per second (0-20).
   final pulumi.Input<int> clientUdpSessThrottle;
-
   /// When this Linode NodeBalancer was created
   final pulumi.Input<String> created;
-
   /// This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
   final pulumi.Input<String> hostname;
-
   /// The Linode NodeBalancer's unique ID
   final pulumi.Input<int> id;
-
   /// The Public IPv4 Address of this NodeBalancer
   final pulumi.Input<String> ipv4;
-
   /// The Public IPv6 Address of this NodeBalancer
   final pulumi.Input<String> ipv6;
-
   /// The label of the Linode NodeBalancer
   final pulumi.Input<String> label;
-
   /// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
   final pulumi.Input<String> region;
-
   /// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   final pulumi.Input<List<String>> tags;
-
   /// Information about the amount of transfer this NodeBalancer has had so far this month.
   final pulumi.Input<List<GetNodebalancersNodebalancerTransfer>> transfers;
-
   /// When this Linode NodeBalancer was last updated
   final pulumi.Input<String> updated;
 
@@ -80,30 +69,15 @@ class GetNodebalancersNodebalancer {
       'label': label,
       'region': region,
       'tags': tags,
-      'transfers':
-          pulumi.Input.mapInputValue<
-            List<GetNodebalancersNodebalancerTransfer>,
-            List<Map<String, dynamic>>
-          >(
-            transfers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetNodebalancersNodebalancerTransfer,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'transfers': pulumi.Input.mapInputValue<List<GetNodebalancersNodebalancerTransfer>, List<Map<String, dynamic>>>(transfers, (value) => pulumi.Input.encodeList<GetNodebalancersNodebalancerTransfer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'updated': updated,
     };
   }
 
   factory GetNodebalancersNodebalancer.fromMap(Map<String, dynamic> map) {
     return GetNodebalancersNodebalancer(
-      clientConnThrottle: pulumi.Input.fromValue(
-        map['clientConnThrottle'] as int,
-      ),
-      clientUdpSessThrottle: pulumi.Input.fromValue(
-        map['clientUdpSessThrottle'] as int,
-      ),
+      clientConnThrottle: pulumi.Input.fromValue(map['clientConnThrottle'] as int),
+      clientUdpSessThrottle: pulumi.Input.fromValue(map['clientUdpSessThrottle'] as int),
       created: pulumi.Input.fromValue(map['created'] as String),
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       id: pulumi.Input.fromValue(map['id'] as int),
@@ -112,15 +86,9 @@ class GetNodebalancersNodebalancer {
       label: pulumi.Input.fromValue(map['label'] as String),
       region: pulumi.Input.fromValue(map['region'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
-      transfers: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetNodebalancersNodebalancerTransfer>(
-          map['transfers']!,
-          (value) => GetNodebalancersNodebalancerTransfer.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      transfers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetNodebalancersNodebalancerTransfer>(map['transfers']!, (value) => GetNodebalancersNodebalancerTransfer.fromMap((value as Map).cast<String, dynamic>()))),
       updated: pulumi.Input.fromValue(map['updated'] as String),
     );
   }
 }
+

@@ -7,9 +7,7 @@ class OsPolicyAssignmentRollout {
   /// The maximum number (or percentage) of VMs
   /// per zone to disrupt at any given moment. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentRolloutDisruptionBudget>
-  disruptionBudget;
-
+  final pulumi.Input<OsPolicyAssignmentRolloutDisruptionBudget> disruptionBudget;
   /// This determines the minimum duration of
   /// time to wait after the configuration changes are applied through the current
   /// rollout. A VM continues to count towards the `disruption_budget` at least
@@ -27,23 +25,16 @@ class OsPolicyAssignmentRollout {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disruptionBudget':
-          pulumi.Input.mapInputValue<
-            OsPolicyAssignmentRolloutDisruptionBudget,
-            Map<String, dynamic>
-          >(disruptionBudget, (value) => value.toMap()),
+      'disruptionBudget': pulumi.Input.mapInputValue<OsPolicyAssignmentRolloutDisruptionBudget, Map<String, dynamic>>(disruptionBudget, (value) => value.toMap()),
       'minWaitDuration': minWaitDuration,
     };
   }
 
   factory OsPolicyAssignmentRollout.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentRollout(
-      disruptionBudget: pulumi.Input.fromValue(
-        OsPolicyAssignmentRolloutDisruptionBudget.fromMap(
-          (map['disruptionBudget']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      disruptionBudget: pulumi.Input.fromValue(OsPolicyAssignmentRolloutDisruptionBudget.fromMap((map['disruptionBudget']! as Map).cast<String, dynamic>())),
       minWaitDuration: pulumi.Input.fromValue(map['minWaitDuration'] as String),
     );
   }
 }
+

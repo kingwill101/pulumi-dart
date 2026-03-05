@@ -463,75 +463,48 @@ import 'interactive_query_cluster_storage_account_gen2.dart';
 class InteractiveQueryCluster extends pulumi.CustomResource {
   /// Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterVersion;
-
   /// A `component_version` block as defined below.
-  late final pulumi.Output<InteractiveQueryClusterComponentVersion>
-  componentVersion;
-
+  late final pulumi.Output<InteractiveQueryClusterComponentVersion> componentVersion;
   /// A `compute_isolation` block as defined below.
-  late final pulumi.Output<InteractiveQueryClusterComputeIsolation?>
-  computeIsolation;
-
+  late final pulumi.Output<InteractiveQueryClusterComputeIsolation?> computeIsolation;
   /// A `disk_encryption` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> diskEncryptions;
-
   /// Whether encryption in transit is enabled for this Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> encryptionInTransitEnabled;
-
   /// An `extension` block as defined below.
   late final pulumi.Output<InteractiveQueryClusterExtension?> extension;
-
   /// A `gateway` block as defined below.
   late final pulumi.Output<InteractiveQueryClusterGateway> gateway;
-
   /// The HTTPS Connectivity Endpoint for this HDInsight Interactive Query Cluster.
   late final pulumi.Output<String> httpsEndpoint;
-
   /// Specifies the Azure Region which this HDInsight Interactive Query Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// A `metastores` block as defined below.
   late final pulumi.Output<InteractiveQueryClusterMetastores?> metastores;
-
   /// A `monitor` block as defined below.
   late final pulumi.Output<InteractiveQueryClusterMonitor?> monitor;
-
   /// Specifies the name for this HDInsight Interactive Query Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A `network` block as defined below.
   late final pulumi.Output<InteractiveQueryClusterNetwork?> network;
-
   /// A `private_link_configuration` block as defined below.
-  late final pulumi.Output<InteractiveQueryClusterPrivateLinkConfiguration?>
-  privateLinkConfiguration;
-
+  late final pulumi.Output<InteractiveQueryClusterPrivateLinkConfiguration?> privateLinkConfiguration;
   /// Specifies the name of the Resource Group in which this HDInsight Interactive Query Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `roles` block as defined below.
   late final pulumi.Output<InteractiveQueryClusterRoles> roles;
-
   /// A `security_profile` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<InteractiveQueryClusterSecurityProfile?>
-  securityProfile;
-
+  late final pulumi.Output<InteractiveQueryClusterSecurityProfile?> securityProfile;
   /// The SSH Connectivity Endpoint for this HDInsight Interactive Query Cluster.
   late final pulumi.Output<String> sshEndpoint;
-
   /// A `storage_account_gen2` block as defined below.
-  late final pulumi.Output<InteractiveQueryClusterStorageAccountGen2?>
-  storageAccountGen2;
-
+  late final pulumi.Output<InteractiveQueryClusterStorageAccountGen2?> storageAccountGen2;
   /// One or more `storage_account` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
-
   /// A map of Tags which should be assigned to this HDInsight Interactive Query Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the Tier which should be used for this HDInsight Interactive Query Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> tier;
-
   /// The minimal supported TLS version. Possible values are 1.0, 1.1 or 1.2. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
@@ -546,138 +519,31 @@ class InteractiveQueryCluster extends pulumi.CustomResource {
     InteractiveQueryClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:hdinsight/interactiveQueryCluster:InteractiveQueryCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:hdinsight/interactiveQueryCluster:InteractiveQueryCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterVersion = registerOutput<String>('clusterVersion');
-    componentVersion = registerOutput<InteractiveQueryClusterComponentVersion>(
-      'componentVersion',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterComponentVersion.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    computeIsolation = registerOutput<InteractiveQueryClusterComputeIsolation?>(
-      'computeIsolation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterComputeIsolation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
-      'diskEncryptions',
-    );
-    encryptionInTransitEnabled = registerOutput<bool?>(
-      'encryptionInTransitEnabled',
-    );
-    extension = registerOutput<InteractiveQueryClusterExtension?>(
-      'extension',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterExtension.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    gateway = registerOutput<InteractiveQueryClusterGateway>(
-      'gateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterGateway.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    componentVersion = registerOutput<InteractiveQueryClusterComponentVersion>('componentVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterComponentVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeIsolation = registerOutput<InteractiveQueryClusterComputeIsolation?>('computeIsolation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterComputeIsolation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>('diskEncryptions');
+    encryptionInTransitEnabled = registerOutput<bool?>('encryptionInTransitEnabled');
+    extension = registerOutput<InteractiveQueryClusterExtension?>('extension', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterExtension.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gateway = registerOutput<InteractiveQueryClusterGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpsEndpoint = registerOutput<String>('httpsEndpoint');
     location = registerOutput<String>('location');
-    metastores = registerOutput<InteractiveQueryClusterMetastores?>(
-      'metastores',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterMetastores.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    monitor = registerOutput<InteractiveQueryClusterMonitor?>(
-      'monitor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterMonitor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metastores = registerOutput<InteractiveQueryClusterMetastores?>('metastores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterMetastores.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitor = registerOutput<InteractiveQueryClusterMonitor?>('monitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    network = registerOutput<InteractiveQueryClusterNetwork?>(
-      'network',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateLinkConfiguration =
-        registerOutput<InteractiveQueryClusterPrivateLinkConfiguration?>(
-          'privateLinkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return InteractiveQueryClusterPrivateLinkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    network = registerOutput<InteractiveQueryClusterNetwork?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateLinkConfiguration = registerOutput<InteractiveQueryClusterPrivateLinkConfiguration?>('privateLinkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterPrivateLinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    roles = registerOutput<InteractiveQueryClusterRoles>(
-      'roles',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterRoles.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    securityProfile = registerOutput<InteractiveQueryClusterSecurityProfile?>(
-      'securityProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterSecurityProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    roles = registerOutput<InteractiveQueryClusterRoles>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterRoles.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityProfile = registerOutput<InteractiveQueryClusterSecurityProfile?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sshEndpoint = registerOutput<String>('sshEndpoint');
-    storageAccountGen2 =
-        registerOutput<InteractiveQueryClusterStorageAccountGen2?>(
-          'storageAccountGen2',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return InteractiveQueryClusterStorageAccountGen2.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
-      'storageAccounts',
-    );
+    storageAccountGen2 = registerOutput<InteractiveQueryClusterStorageAccountGen2?>('storageAccountGen2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterStorageAccountGen2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>('storageAccounts');
     tags = registerOutput<Map<String, String>?>('tags');
     tier = registerOutput<String>('tier');
     tlsMinVersion = registerOutput<String?>('tlsMinVersion');
@@ -701,138 +567,31 @@ class InteractiveQueryCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:hdinsight/interactiveQueryCluster:InteractiveQueryCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:hdinsight/interactiveQueryCluster:InteractiveQueryCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterVersion = registerOutput<String>('clusterVersion');
-    componentVersion = registerOutput<InteractiveQueryClusterComponentVersion>(
-      'componentVersion',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterComponentVersion.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    computeIsolation = registerOutput<InteractiveQueryClusterComputeIsolation?>(
-      'computeIsolation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterComputeIsolation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
-      'diskEncryptions',
-    );
-    encryptionInTransitEnabled = registerOutput<bool?>(
-      'encryptionInTransitEnabled',
-    );
-    extension = registerOutput<InteractiveQueryClusterExtension?>(
-      'extension',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterExtension.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    gateway = registerOutput<InteractiveQueryClusterGateway>(
-      'gateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterGateway.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    componentVersion = registerOutput<InteractiveQueryClusterComponentVersion>('componentVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterComponentVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeIsolation = registerOutput<InteractiveQueryClusterComputeIsolation?>('computeIsolation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterComputeIsolation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>('diskEncryptions');
+    encryptionInTransitEnabled = registerOutput<bool?>('encryptionInTransitEnabled');
+    extension = registerOutput<InteractiveQueryClusterExtension?>('extension', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterExtension.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gateway = registerOutput<InteractiveQueryClusterGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpsEndpoint = registerOutput<String>('httpsEndpoint');
     location = registerOutput<String>('location');
-    metastores = registerOutput<InteractiveQueryClusterMetastores?>(
-      'metastores',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterMetastores.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    monitor = registerOutput<InteractiveQueryClusterMonitor?>(
-      'monitor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterMonitor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metastores = registerOutput<InteractiveQueryClusterMetastores?>('metastores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterMetastores.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitor = registerOutput<InteractiveQueryClusterMonitor?>('monitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    network = registerOutput<InteractiveQueryClusterNetwork?>(
-      'network',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateLinkConfiguration =
-        registerOutput<InteractiveQueryClusterPrivateLinkConfiguration?>(
-          'privateLinkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return InteractiveQueryClusterPrivateLinkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    network = registerOutput<InteractiveQueryClusterNetwork?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateLinkConfiguration = registerOutput<InteractiveQueryClusterPrivateLinkConfiguration?>('privateLinkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterPrivateLinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    roles = registerOutput<InteractiveQueryClusterRoles>(
-      'roles',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterRoles.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    securityProfile = registerOutput<InteractiveQueryClusterSecurityProfile?>(
-      'securityProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InteractiveQueryClusterSecurityProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    roles = registerOutput<InteractiveQueryClusterRoles>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterRoles.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityProfile = registerOutput<InteractiveQueryClusterSecurityProfile?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sshEndpoint = registerOutput<String>('sshEndpoint');
-    storageAccountGen2 =
-        registerOutput<InteractiveQueryClusterStorageAccountGen2?>(
-          'storageAccountGen2',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return InteractiveQueryClusterStorageAccountGen2.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
-      'storageAccounts',
-    );
+    storageAccountGen2 = registerOutput<InteractiveQueryClusterStorageAccountGen2?>('storageAccountGen2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InteractiveQueryClusterStorageAccountGen2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>('storageAccounts');
     tags = registerOutput<Map<String, String>?>('tags');
     tier = registerOutput<String>('tier');
     tlsMinVersion = registerOutput<String?>('tlsMinVersion');

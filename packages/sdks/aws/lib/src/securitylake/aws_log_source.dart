@@ -162,7 +162,6 @@ import 'aws_log_source_state.dart';
 class AwsLogSource extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Specify the natively-supported AWS service to add as a source in Security Lake.
   late final pulumi.Output<AwsLogSourceSource> source;
 
@@ -175,22 +174,13 @@ class AwsLogSource extends pulumi.CustomResource {
     AwsLogSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securitylake/awsLogSource:AwsLogSource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securitylake/awsLogSource:AwsLogSource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
-    source = registerOutput<AwsLogSourceSource>(
-      'source',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AwsLogSourceSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    source = registerOutput<AwsLogSourceSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsLogSourceSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AwsLogSource] resource's state with the given [name] and [id].
@@ -211,21 +201,12 @@ class AwsLogSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securitylake/awsLogSource:AwsLogSource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securitylake/awsLogSource:AwsLogSource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
-    source = registerOutput<AwsLogSourceSource>(
-      'source',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AwsLogSourceSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    source = registerOutput<AwsLogSourceSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsLogSourceSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

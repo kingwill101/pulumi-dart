@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserAssignedIdentityArgs {
   /// The name of the User Assigned Identity.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group in which the User Assigned Identity exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetUserAssignedIdentityArgs {
   factory GetUserAssignedIdentityArgs.fromMap(Map<String, dynamic> map) {
     return GetUserAssignedIdentityArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

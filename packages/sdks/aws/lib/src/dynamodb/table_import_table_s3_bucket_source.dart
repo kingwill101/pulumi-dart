@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableImportTableS3BucketSource {
   /// The S3 bucket that is being imported from.
   final pulumi.Input<String> bucket;
-
   /// The account number of the S3 bucket that is being imported from.
   final pulumi.Input<String>? bucketOwner;
-
   /// The key prefix shared by all S3 Objects that are being imported.
   final pulumi.Input<String>? keyPrefix;
 
@@ -33,16 +31,9 @@ class TableImportTableS3BucketSource {
   factory TableImportTableS3BucketSource.fromMap(Map<String, dynamic> map) {
     return TableImportTableS3BucketSource(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      bucketOwner: (() {
-        final guardedValue = map['bucketOwner'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyPrefix: (() {
-        final guardedValue = map['keyPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucketOwner: (() { final guardedValue = map['bucketOwner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyPrefix: (() { final guardedValue = map['keyPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

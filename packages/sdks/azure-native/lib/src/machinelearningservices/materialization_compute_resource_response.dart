@@ -9,21 +9,20 @@ class MaterializationComputeResourceResponse {
 
   /// Creates a new [MaterializationComputeResourceResponse].
   /// [instanceType] Specifies the instance type
-  MaterializationComputeResourceResponse({this.instanceType});
+  MaterializationComputeResourceResponse({
+    this.instanceType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instanceType': ?instanceType};
+    return <String, dynamic>{
+      'instanceType': ?instanceType,
+    };
   }
 
-  factory MaterializationComputeResourceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MaterializationComputeResourceResponse.fromMap(Map<String, dynamic> map) {
     return MaterializationComputeResourceResponse(
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

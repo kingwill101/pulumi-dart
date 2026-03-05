@@ -189,22 +189,16 @@ import 'sku_response.dart';
 class DedicatedCloudNode extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Azure region
   late final pulumi.Output<String> location;
-
   /// {dedicatedCloudNodeName}
   late final pulumi.Output<String> name;
-
   /// Dedicated Cloud Nodes properties
   late final pulumi.Output<DedicatedCloudNodePropertiesResponse> properties;
-
   /// Dedicated Cloud Nodes SKU
   late final pulumi.Output<SkuResponse?> sku;
-
   /// Dedicated Cloud Nodes tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// {resourceProviderNamespace}/{resourceType}
   late final pulumi.Output<String> type;
 
@@ -217,34 +211,16 @@ class DedicatedCloudNode extends pulumi.CustomResource {
     DedicatedCloudNodeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:vmwarecloudsimple:DedicatedCloudNode',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:vmwarecloudsimple:DedicatedCloudNode',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<DedicatedCloudNodePropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DedicatedCloudNodePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<DedicatedCloudNodePropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DedicatedCloudNodePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

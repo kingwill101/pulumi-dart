@@ -9,25 +9,20 @@ class LaunchMetricMonitor {
 
   /// Creates a new [LaunchMetricMonitor].
   /// [metricDefinition] A block that defines the metric. Detailed below.
-  LaunchMetricMonitor({required this.metricDefinition});
+  LaunchMetricMonitor({
+    required this.metricDefinition,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metricDefinition':
-          pulumi.Input.mapInputValue<
-            LaunchMetricMonitorMetricDefinition,
-            Map<String, dynamic>
-          >(metricDefinition, (value) => value.toMap()),
+      'metricDefinition': pulumi.Input.mapInputValue<LaunchMetricMonitorMetricDefinition, Map<String, dynamic>>(metricDefinition, (value) => value.toMap()),
     };
   }
 
   factory LaunchMetricMonitor.fromMap(Map<String, dynamic> map) {
     return LaunchMetricMonitor(
-      metricDefinition: pulumi.Input.fromValue(
-        LaunchMetricMonitorMetricDefinition.fromMap(
-          (map['metricDefinition']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      metricDefinition: pulumi.Input.fromValue(LaunchMetricMonitorMetricDefinition.fromMap((map['metricDefinition']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

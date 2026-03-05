@@ -272,29 +272,20 @@ import 'group_policy_set_definition_state.dart';
 class GroupPolicySetDefinition extends pulumi.CustomResource {
   /// The description of this Policy Set Definition.
   late final pulumi.Output<String?> description;
-
   /// The display name of this Policy Set Definition.
   late final pulumi.Output<String> displayName;
-
   /// The ID of the Management Group where this Policy Set Definition should be created. Changing this forces a new Policy Set Definition to be created.
   late final pulumi.Output<String> managementGroupId;
-
   /// The metadata for the Policy Set Definition in JSON format.
   late final pulumi.Output<String> metadata;
-
   /// The name which should be used for this Policy Set Definition. Changing this forces a new Policy Set Definition to be created.
   late final pulumi.Output<String> name;
-
   /// The parameters for the Policy Set Definition in JSON format. Reducing the number of parameters forces a new resource to be created.
   late final pulumi.Output<String?> parameters;
-
   /// One or more `policy_definition_group` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> policyDefinitionGroups;
-
   /// One or more `policy_definition_reference` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  policyDefinitionReferences;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> policyDefinitionReferences;
   /// The Policy Set Definition type. Possible values are `BuiltIn`, `Custom`, `NotSpecified`, and `Static`. Changing this forces a new Policy Set Definition to be created.
   late final pulumi.Output<String> policyType;
 
@@ -307,23 +298,19 @@ class GroupPolicySetDefinition extends pulumi.CustomResource {
     GroupPolicySetDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:management/groupPolicySetDefinition:GroupPolicySetDefinition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:management/groupPolicySetDefinition:GroupPolicySetDefinition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     managementGroupId = registerOutput<String>('managementGroupId');
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<String?>('parameters');
-    policyDefinitionGroups = registerOutput<List<Map<String, dynamic>>?>(
-      'policyDefinitionGroups',
-    );
-    policyDefinitionReferences = registerOutput<List<Map<String, dynamic>>>(
-      'policyDefinitionReferences',
-    );
+    policyDefinitionGroups = registerOutput<List<Map<String, dynamic>>?>('policyDefinitionGroups');
+    policyDefinitionReferences = registerOutput<List<Map<String, dynamic>>>('policyDefinitionReferences');
     policyType = registerOutput<String>('policyType');
   }
 
@@ -345,23 +332,19 @@ class GroupPolicySetDefinition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:management/groupPolicySetDefinition:GroupPolicySetDefinition',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:management/groupPolicySetDefinition:GroupPolicySetDefinition',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     managementGroupId = registerOutput<String>('managementGroupId');
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<String?>('parameters');
-    policyDefinitionGroups = registerOutput<List<Map<String, dynamic>>?>(
-      'policyDefinitionGroups',
-    );
-    policyDefinitionReferences = registerOutput<List<Map<String, dynamic>>>(
-      'policyDefinitionReferences',
-    );
+    policyDefinitionGroups = registerOutput<List<Map<String, dynamic>>?>('policyDefinitionGroups');
+    policyDefinitionReferences = registerOutput<List<Map<String, dynamic>>>('policyDefinitionReferences');
     policyType = registerOutput<String>('policyType');
   }
 }

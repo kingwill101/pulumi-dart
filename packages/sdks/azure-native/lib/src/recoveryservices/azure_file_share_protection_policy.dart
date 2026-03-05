@@ -10,25 +10,18 @@ class AzureFileShareProtectionPolicy {
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'AzureStorage'.
   final pulumi.Input<String> backupManagementType;
-
   /// Number of items associated with this policy.
   final pulumi.Input<int>? protectedItemsCount;
-
   /// ResourceGuard Operation Requests
   final pulumi.Input<List<String>>? resourceGuardOperationRequests;
-
   /// Retention policy with the details on backup copy retention ranges.
   final pulumi.Input<LongTermRetentionPolicy>? retentionPolicy;
-
   /// Backup schedule specified as part of backup policy.
   final pulumi.Input<LogSchedulePolicy>? schedulePolicy;
-
   /// TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
   final pulumi.Input<String>? timeZone;
-
   /// Retention policy with the details on hardened backup copy retention ranges.
   final pulumi.Input<VaultRetentionPolicy>? vaultRetentionPolicy;
-
   /// Type of workload for the backup management
   final pulumi.Input<String>? workLoadType;
 
@@ -57,78 +50,25 @@ class AzureFileShareProtectionPolicy {
       'backupManagementType': backupManagementType,
       'protectedItemsCount': ?protectedItemsCount,
       'resourceGuardOperationRequests': ?resourceGuardOperationRequests,
-      'retentionPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            LongTermRetentionPolicy,
-            Map<String, dynamic>
-          >(retentionPolicy, (value) => value.toMap()),
-      'schedulePolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            LogSchedulePolicy,
-            Map<String, dynamic>
-          >(schedulePolicy, (value) => value.toMap()),
+      'retentionPolicy': ?pulumi.Input.mapOptionalInputValue<LongTermRetentionPolicy, Map<String, dynamic>>(retentionPolicy, (value) => value.toMap()),
+      'schedulePolicy': ?pulumi.Input.mapOptionalInputValue<LogSchedulePolicy, Map<String, dynamic>>(schedulePolicy, (value) => value.toMap()),
       'timeZone': ?timeZone,
-      'vaultRetentionPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            VaultRetentionPolicy,
-            Map<String, dynamic>
-          >(vaultRetentionPolicy, (value) => value.toMap()),
+      'vaultRetentionPolicy': ?pulumi.Input.mapOptionalInputValue<VaultRetentionPolicy, Map<String, dynamic>>(vaultRetentionPolicy, (value) => value.toMap()),
       'workLoadType': ?workLoadType,
     };
   }
 
   factory AzureFileShareProtectionPolicy.fromMap(Map<String, dynamic> map) {
     return AzureFileShareProtectionPolicy(
-      backupManagementType: pulumi.Input.fromValue(
-        map['backupManagementType'] as String,
-      ),
-      protectedItemsCount: (() {
-        final guardedValue = map['protectedItemsCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      resourceGuardOperationRequests: (() {
-        final guardedValue = map['resourceGuardOperationRequests'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      retentionPolicy: (() {
-        final guardedValue = map['retentionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LongTermRetentionPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      schedulePolicy: (() {
-        final guardedValue = map['schedulePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LogSchedulePolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vaultRetentionPolicy: (() {
-        final guardedValue = map['vaultRetentionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VaultRetentionPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      workLoadType: (() {
-        final guardedValue = map['workLoadType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backupManagementType: pulumi.Input.fromValue(map['backupManagementType'] as String),
+      protectedItemsCount: (() { final guardedValue = map['protectedItemsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      resourceGuardOperationRequests: (() { final guardedValue = map['resourceGuardOperationRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      retentionPolicy: (() { final guardedValue = map['retentionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LongTermRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      schedulePolicy: (() { final guardedValue = map['schedulePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LogSchedulePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vaultRetentionPolicy: (() { final guardedValue = map['vaultRetentionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VaultRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      workLoadType: (() { final guardedValue = map['workLoadType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

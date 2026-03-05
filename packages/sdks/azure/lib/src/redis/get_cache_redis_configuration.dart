@@ -11,32 +11,23 @@ class GetCacheRedisConfiguration {
   final pulumi.Input<bool> authenticationEnabled;
   final pulumi.Input<String> dataPersistenceAuthenticationMethod;
   final pulumi.Input<int> maxclients;
-
   /// Value in megabytes reserved to accommodate for memory fragmentation.
   final pulumi.Input<int> maxfragmentationmemoryReserved;
-
   /// The max-memory delta for this Redis instance.
   final pulumi.Input<int> maxmemoryDelta;
-
   /// How Redis will select what to remove when `maxmemory` is reached.
   final pulumi.Input<String> maxmemoryPolicy;
-
   /// The value in megabytes reserved for non-cache usage e.g. failover
   final pulumi.Input<int> maxmemoryReserved;
   final pulumi.Input<String> notifyKeyspaceEvents;
-
   /// Is Backup Enabled? Only supported on Premium SKUs.
   final pulumi.Input<bool> rdbBackupEnabled;
-
   /// The Backup Frequency in Minutes. Only supported on Premium SKUs.
   final pulumi.Input<int> rdbBackupFrequency;
-
   /// The maximum number of snapshots that can be created as a backup.
   final pulumi.Input<int> rdbBackupMaxSnapshotCount;
-
   /// The Connection String to the Storage Account. Only supported for Premium SKUs.
   final pulumi.Input<String> rdbStorageConnectionString;
-
   /// The ID of the Subscription containing the Storage Account.
   final pulumi.Input<String> storageAccountSubscriptionId;
 
@@ -80,14 +71,12 @@ class GetCacheRedisConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeDirectoryAuthenticationEnabled':
-          activeDirectoryAuthenticationEnabled,
+      'activeDirectoryAuthenticationEnabled': activeDirectoryAuthenticationEnabled,
       'aofBackupEnabled': aofBackupEnabled,
       'aofStorageConnectionString0': aofStorageConnectionString0,
       'aofStorageConnectionString1': aofStorageConnectionString1,
       'authenticationEnabled': authenticationEnabled,
-      'dataPersistenceAuthenticationMethod':
-          dataPersistenceAuthenticationMethod,
+      'dataPersistenceAuthenticationMethod': dataPersistenceAuthenticationMethod,
       'maxclients': maxclients,
       'maxfragmentationmemoryReserved': maxfragmentationmemoryReserved,
       'maxmemoryDelta': maxmemoryDelta,
@@ -104,47 +93,24 @@ class GetCacheRedisConfiguration {
 
   factory GetCacheRedisConfiguration.fromMap(Map<String, dynamic> map) {
     return GetCacheRedisConfiguration(
-      activeDirectoryAuthenticationEnabled: pulumi.Input.fromValue(
-        map['activeDirectoryAuthenticationEnabled'] as bool,
-      ),
+      activeDirectoryAuthenticationEnabled: pulumi.Input.fromValue(map['activeDirectoryAuthenticationEnabled'] as bool),
       aofBackupEnabled: pulumi.Input.fromValue(map['aofBackupEnabled'] as bool),
-      aofStorageConnectionString0: pulumi.Input.fromValue(
-        map['aofStorageConnectionString0'] as String,
-      ),
-      aofStorageConnectionString1: pulumi.Input.fromValue(
-        map['aofStorageConnectionString1'] as String,
-      ),
-      authenticationEnabled: pulumi.Input.fromValue(
-        map['authenticationEnabled'] as bool,
-      ),
-      dataPersistenceAuthenticationMethod: pulumi.Input.fromValue(
-        map['dataPersistenceAuthenticationMethod'] as String,
-      ),
+      aofStorageConnectionString0: pulumi.Input.fromValue(map['aofStorageConnectionString0'] as String),
+      aofStorageConnectionString1: pulumi.Input.fromValue(map['aofStorageConnectionString1'] as String),
+      authenticationEnabled: pulumi.Input.fromValue(map['authenticationEnabled'] as bool),
+      dataPersistenceAuthenticationMethod: pulumi.Input.fromValue(map['dataPersistenceAuthenticationMethod'] as String),
       maxclients: pulumi.Input.fromValue(map['maxclients'] as int),
-      maxfragmentationmemoryReserved: pulumi.Input.fromValue(
-        map['maxfragmentationmemoryReserved'] as int,
-      ),
+      maxfragmentationmemoryReserved: pulumi.Input.fromValue(map['maxfragmentationmemoryReserved'] as int),
       maxmemoryDelta: pulumi.Input.fromValue(map['maxmemoryDelta'] as int),
       maxmemoryPolicy: pulumi.Input.fromValue(map['maxmemoryPolicy'] as String),
-      maxmemoryReserved: pulumi.Input.fromValue(
-        map['maxmemoryReserved'] as int,
-      ),
-      notifyKeyspaceEvents: pulumi.Input.fromValue(
-        map['notifyKeyspaceEvents'] as String,
-      ),
+      maxmemoryReserved: pulumi.Input.fromValue(map['maxmemoryReserved'] as int),
+      notifyKeyspaceEvents: pulumi.Input.fromValue(map['notifyKeyspaceEvents'] as String),
       rdbBackupEnabled: pulumi.Input.fromValue(map['rdbBackupEnabled'] as bool),
-      rdbBackupFrequency: pulumi.Input.fromValue(
-        map['rdbBackupFrequency'] as int,
-      ),
-      rdbBackupMaxSnapshotCount: pulumi.Input.fromValue(
-        map['rdbBackupMaxSnapshotCount'] as int,
-      ),
-      rdbStorageConnectionString: pulumi.Input.fromValue(
-        map['rdbStorageConnectionString'] as String,
-      ),
-      storageAccountSubscriptionId: pulumi.Input.fromValue(
-        map['storageAccountSubscriptionId'] as String,
-      ),
+      rdbBackupFrequency: pulumi.Input.fromValue(map['rdbBackupFrequency'] as int),
+      rdbBackupMaxSnapshotCount: pulumi.Input.fromValue(map['rdbBackupMaxSnapshotCount'] as int),
+      rdbStorageConnectionString: pulumi.Input.fromValue(map['rdbStorageConnectionString'] as String),
+      storageAccountSubscriptionId: pulumi.Input.fromValue(map['storageAccountSubscriptionId'] as String),
     );
   }
 }
+

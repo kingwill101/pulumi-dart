@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInvitationArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
-
   /// The name of the invitation.
   final pulumi.Input<String> invitationName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the share.
   final pulumi.Input<String> shareName;
 
@@ -44,10 +41,9 @@ class GetInvitationArgs {
     return GetInvitationArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       invitationName: pulumi.Input.fromValue(map['invitationName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       shareName: pulumi.Input.fromValue(map['shareName'] as String),
     );
   }
 }
+

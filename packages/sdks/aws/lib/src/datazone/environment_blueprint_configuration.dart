@@ -221,27 +221,20 @@ import 'environment_blueprint_configuration_state.dart';
 class EnvironmentBlueprintConfiguration extends pulumi.CustomResource {
   /// ID of the Domain.
   late final pulumi.Output<String> domainId;
-
   /// Regions in which the blueprint is enabled
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<String>> enabledRegions;
-
   /// ID of the Environment Blueprint
   late final pulumi.Output<String> environmentBlueprintId;
-
   /// ARN of the manage access role with which this blueprint is created.
   late final pulumi.Output<String?> manageAccessRoleArn;
-
   /// ARN of the provisioning role with which this blueprint is created.
   late final pulumi.Output<String?> provisioningRoleArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Parameters for each region in which the blueprint is enabled
-  late final pulumi.Output<Map<String, Map<String, String>>?>
-  regionalParameters;
+  late final pulumi.Output<Map<String, Map<String, String>>?> regionalParameters;
 
   /// Creates a new [EnvironmentBlueprintConfiguration].
   /// [name] The Pulumi resource name.
@@ -252,20 +245,18 @@ class EnvironmentBlueprintConfiguration extends pulumi.CustomResource {
     EnvironmentBlueprintConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:datazone/environmentBlueprintConfiguration:EnvironmentBlueprintConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:datazone/environmentBlueprintConfiguration:EnvironmentBlueprintConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainId = registerOutput<String>('domainId');
     enabledRegions = registerOutput<List<String>>('enabledRegions');
     environmentBlueprintId = registerOutput<String>('environmentBlueprintId');
     manageAccessRoleArn = registerOutput<String?>('manageAccessRoleArn');
     provisioningRoleArn = registerOutput<String?>('provisioningRoleArn');
     region = registerOutput<String>('region');
-    regionalParameters = registerOutput<Map<String, Map<String, String>>?>(
-      'regionalParameters',
-    );
+    regionalParameters = registerOutput<Map<String, Map<String, String>>?>('regionalParameters');
   }
 
   /// Gets an existing [EnvironmentBlueprintConfiguration] resource's state with the given [name] and [id].
@@ -286,19 +277,17 @@ class EnvironmentBlueprintConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:datazone/environmentBlueprintConfiguration:EnvironmentBlueprintConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:datazone/environmentBlueprintConfiguration:EnvironmentBlueprintConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainId = registerOutput<String>('domainId');
     enabledRegions = registerOutput<List<String>>('enabledRegions');
     environmentBlueprintId = registerOutput<String>('environmentBlueprintId');
     manageAccessRoleArn = registerOutput<String?>('manageAccessRoleArn');
     provisioningRoleArn = registerOutput<String?>('provisioningRoleArn');
     region = registerOutput<String>('region');
-    regionalParameters = registerOutput<Map<String, Map<String, String>>?>(
-      'regionalParameters',
-    );
+    regionalParameters = registerOutput<Map<String, Map<String, String>>?>('regionalParameters');
   }
 }

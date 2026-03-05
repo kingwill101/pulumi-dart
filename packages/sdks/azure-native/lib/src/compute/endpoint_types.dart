@@ -15,3 +15,4 @@ enum EndpointTypes {
     throw ArgumentError('Unknown EndpointTypes value: $value');
   }
 }
+

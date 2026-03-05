@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSensitivityLabelArgs {
   /// The name of the column.
   final pulumi.Input<String> columnName;
-
   /// The name of the database.
   final pulumi.Input<String> databaseName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the schema.
   final pulumi.Input<String> schemaName;
-
   /// The source of the sensitivity label.
   final pulumi.Input<String> sensitivityLabelSource;
-
   /// The name of the server.
   final pulumi.Input<String> serverName;
-
   /// The name of the table.
   final pulumi.Input<String> tableName;
 
@@ -62,15 +56,12 @@ class GetSensitivityLabelArgs {
     return GetSensitivityLabelArgs(
       columnName: pulumi.Input.fromValue(map['columnName'] as String),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       schemaName: pulumi.Input.fromValue(map['schemaName'] as String),
-      sensitivityLabelSource: pulumi.Input.fromValue(
-        map['sensitivityLabelSource'] as String,
-      ),
+      sensitivityLabelSource: pulumi.Input.fromValue(map['sensitivityLabelSource'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
       tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
+

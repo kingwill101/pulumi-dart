@@ -9,34 +9,24 @@ import 'system_data_response.dart';
 class GetIotHubResourceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.
   final String? etag;
-
   /// The resource identifier.
   final String id;
-
   /// The managed identities for the IotHub.
   final ArmIdentityResponse? identity;
-
   /// The resource location.
   final String location;
-
   /// The resource name.
   final String name;
-
   /// IotHub properties
   final IotHubPropertiesResponse properties;
-
   /// IotHub SKU info
   final IotHubSkuInfoResponse sku;
-
   /// The system meta data relating to this resource.
   final SystemDataResponse systemData;
-
   /// The resource tags.
   final Map<String, String>? tags;
-
   /// The resource type.
   final String type;
 
@@ -85,36 +75,17 @@ class GetIotHubResourceResult {
   factory GetIotHubResourceResult.fromMap(Map<String, dynamic> map) {
     return GetIotHubResourceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return ArmIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ArmIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: IotHubPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      sku: IotHubSkuInfoResponse.fromMap(
-        (map['sku']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: IotHubPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      sku: IotHubSkuInfoResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

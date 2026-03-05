@@ -1072,59 +1072,43 @@ class Automation extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// Output only. Time at which the automation was created.
   late final pulumi.Output<String> createTime;
-
   /// The delivery_pipeline for the resource
   late final pulumi.Output<String> deliveryPipeline;
-
   /// Optional. Description of the `Automation`. Max length is 255 characters.
   late final pulumi.Output<String?> description;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Optional. The weak etag of the `Automation` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
-
   /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location for the resource
   late final pulumi.Output<String> location;
-
   /// Name of the `Automation`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Required. List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
-
   /// Required. Selected resources to which the automation will be applied.
   /// Structure is documented below.
   late final pulumi.Output<AutomationSelector> selector;
-
   /// Required. Email address of the user-managed IAM service account that creates Cloud Deploy release and rollout resources.
   late final pulumi.Output<String> serviceAccount;
-
   /// Optional. When Suspended, automation is deactivated from execution.
   late final pulumi.Output<bool?> suspended;
-
   /// Output only. Unique identifier of the `Automation`.
   late final pulumi.Output<String> uid;
-
   /// Output only. Time at which the automation was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -1137,18 +1121,16 @@ class Automation extends pulumi.CustomResource {
     AutomationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:clouddeploy/automation:Automation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:clouddeploy/automation:Automation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     deliveryPipeline = registerOutput<String>('deliveryPipeline');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -1157,16 +1139,7 @@ class Automation extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
-    selector = registerOutput<AutomationSelector>(
-      'selector',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutomationSelector.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    selector = registerOutput<AutomationSelector>('selector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccount = registerOutput<String>('serviceAccount');
     suspended = registerOutput<bool?>('suspended');
     uid = registerOutput<String>('uid');
@@ -1191,18 +1164,16 @@ class Automation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:clouddeploy/automation:Automation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:clouddeploy/automation:Automation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     deliveryPipeline = registerOutput<String>('deliveryPipeline');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -1211,16 +1182,7 @@ class Automation extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
-    selector = registerOutput<AutomationSelector>(
-      'selector',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutomationSelector.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    selector = registerOutput<AutomationSelector>('selector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccount = registerOutput<String>('serviceAccount');
     suspended = registerOutput<bool?>('suspended');
     uid = registerOutput<String>('uid');

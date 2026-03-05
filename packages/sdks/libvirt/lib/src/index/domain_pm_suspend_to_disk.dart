@@ -8,10 +8,14 @@ class DomainPmSuspendToDisk {
 
   /// Creates a new [DomainPmSuspendToDisk].
   /// [enabled] Specifies if the suspend to disk feature is enabled.
-  DomainPmSuspendToDisk({required this.enabled});
+  DomainPmSuspendToDisk({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory DomainPmSuspendToDisk.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainPmSuspendToDisk {
     );
   }
 }
+

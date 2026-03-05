@@ -18,7 +18,11 @@ class GetNbTypesTypeRegionPrice {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hourly': hourly, 'id': id, 'monthly': monthly};
+    return <String, dynamic>{
+      'hourly': hourly,
+      'id': id,
+      'monthly': monthly,
+    };
   }
 
   factory GetNbTypesTypeRegionPrice.fromMap(Map<String, dynamic> map) {
@@ -29,3 +33,4 @@ class GetNbTypesTypeRegionPrice {
     );
   }
 }
+

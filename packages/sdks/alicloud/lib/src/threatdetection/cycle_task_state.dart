@@ -6,34 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CycleTaskState {
   /// Whether to enable. Value:
   final pulumi.Input<int>? enable;
-
   /// First execution time.
   final pulumi.Input<int>? firstDateStr;
-
   /// Interval period.
   final pulumi.Input<int>? intervalPeriod;
-
   /// Extended information field.
   final pulumi.Input<String>? param;
-
   /// Unit of scan cycle, value:
   final pulumi.Input<String>? periodUnit;
-
   /// Added the source of the task.
   final pulumi.Input<String>? source;
-
   /// Task end time (hours).
   final pulumi.Input<int>? targetEndTime;
-
   /// Task start time (hours).
   final pulumi.Input<int>? targetStartTime;
-
   /// The task name.
   /// - **VIRUS_VUL_SCHEDULE_SCAN**: scans for viruses.
   /// - **IMAGE_SCAN**: Image scan.
   /// - **EMG_VUL_SCHEDULE_SCAN**: Emergency vulnerability scanning.
   final pulumi.Input<String>? taskName;
-
   /// The task type.
   /// - **VIRUS_VUL_SCHEDULE_SCAN**: scans for viruses.
   /// - **IMAGE_SCAN**: Image scan.
@@ -81,56 +72,17 @@ class CycleTaskState {
 
   factory CycleTaskState.fromMap(Map<String, dynamic> map) {
     return CycleTaskState(
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      firstDateStr: (() {
-        final guardedValue = map['firstDateStr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      intervalPeriod: (() {
-        final guardedValue = map['intervalPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      param: (() {
-        final guardedValue = map['param'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      periodUnit: (() {
-        final guardedValue = map['periodUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetEndTime: (() {
-        final guardedValue = map['targetEndTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      targetStartTime: (() {
-        final guardedValue = map['targetStartTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      taskName: (() {
-        final guardedValue = map['taskName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      taskType: (() {
-        final guardedValue = map['taskType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      firstDateStr: (() { final guardedValue = map['firstDateStr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      intervalPeriod: (() { final guardedValue = map['intervalPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      param: (() { final guardedValue = map['param']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      periodUnit: (() { final guardedValue = map['periodUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetEndTime: (() { final guardedValue = map['targetEndTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetStartTime: (() { final guardedValue = map['targetStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      taskName: (() { final guardedValue = map['taskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      taskType: (() { final guardedValue = map['taskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

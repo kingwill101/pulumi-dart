@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountArgs {
   /// The name of the Data Lake Analytics account.
   final pulumi.Input<String> accountName;
-
   /// The name of the Azure resource group.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetAccountArgs].
   /// [accountName] The name of the Data Lake Analytics account.
   /// [resourceGroupName] The name of the Azure resource group.
-  GetAccountArgs({required this.accountName, required this.resourceGroupName});
+  GetAccountArgs({
+    required this.accountName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetAccountArgs {
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkSettingsResponse {
   /// Network hardware and software cost percentage.
   final pulumi.Input<double> hardwareSoftwareCostPercentage;
-
   /// Network maintenance cost percentage.
   final pulumi.Input<double> maintenanceCostPercentage;
 
@@ -27,12 +26,9 @@ class NetworkSettingsResponse {
 
   factory NetworkSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NetworkSettingsResponse(
-      hardwareSoftwareCostPercentage: pulumi.Input.fromValue(
-        map['hardwareSoftwareCostPercentage'] as double,
-      ),
-      maintenanceCostPercentage: pulumi.Input.fromValue(
-        map['maintenanceCostPercentage'] as double,
-      ),
+      hardwareSoftwareCostPercentage: pulumi.Input.fromValue(map['hardwareSoftwareCostPercentage'] as double),
+      maintenanceCostPercentage: pulumi.Input.fromValue(map['maintenanceCostPercentage'] as double),
     );
   }
 }
+

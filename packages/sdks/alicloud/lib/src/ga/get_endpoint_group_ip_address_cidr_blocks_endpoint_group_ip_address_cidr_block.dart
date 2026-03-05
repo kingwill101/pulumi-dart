@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock {
   /// The region ID of the endpoint group.
   final pulumi.Input<String> endpointGroupRegion;
-
   /// The CIDR blocks.
   final pulumi.Input<List<String>> ipAddressCidrBlocks;
-
   /// The status of the list of endpoint group ip address cidr blocks.
   final pulumi.Input<String> status;
 
@@ -30,17 +28,12 @@ class GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock {
     };
   }
 
-  factory GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock.fromMap(Map<String, dynamic> map) {
     return GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock(
-      endpointGroupRegion: pulumi.Input.fromValue(
-        map['endpointGroupRegion'] as String,
-      ),
-      ipAddressCidrBlocks: pulumi.Input.fromValue(
-        (map['ipAddressCidrBlocks'] as List).cast<String>(),
-      ),
+      endpointGroupRegion: pulumi.Input.fromValue(map['endpointGroupRegion'] as String),
+      ipAddressCidrBlocks: pulumi.Input.fromValue((map['ipAddressCidrBlocks'] as List).cast<String>()),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum TargetStorageAccessType {
     throw ArgumentError('Unknown TargetStorageAccessType value: $value');
   }
 }
+

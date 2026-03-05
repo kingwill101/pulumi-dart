@@ -7,38 +7,29 @@ import 'managed_disk_details.dart';
 class DataImportDetails {
   /// Account details of the data to be transferred
   final pulumi.Input<ManagedDiskDetails> accountDetails;
-
   /// Level of the logs to be collected.
   final pulumi.Input<String>? logCollectionLevel;
 
   /// Creates a new [DataImportDetails].
   /// [accountDetails] Account details of the data to be transferred
   /// [logCollectionLevel] Level of the logs to be collected.
-  DataImportDetails({required this.accountDetails, this.logCollectionLevel});
+  DataImportDetails({
+    required this.accountDetails,
+    this.logCollectionLevel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountDetails':
-          pulumi.Input.mapInputValue<ManagedDiskDetails, Map<String, dynamic>>(
-            accountDetails,
-            (value) => value.toMap(),
-          ),
+      'accountDetails': pulumi.Input.mapInputValue<ManagedDiskDetails, Map<String, dynamic>>(accountDetails, (value) => value.toMap()),
       'logCollectionLevel': ?logCollectionLevel,
     };
   }
 
   factory DataImportDetails.fromMap(Map<String, dynamic> map) {
     return DataImportDetails(
-      accountDetails: pulumi.Input.fromValue(
-        ManagedDiskDetails.fromMap(
-          (map['accountDetails']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      logCollectionLevel: (() {
-        final guardedValue = map['logCollectionLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountDetails: pulumi.Input.fromValue(ManagedDiskDetails.fromMap((map['accountDetails']! as Map).cast<String, dynamic>())),
+      logCollectionLevel: (() { final guardedValue = map['logCollectionLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeploymentArgs {
   /// The name of the API.
   final pulumi.Input<String> apiName;
-
   /// The name of the API deployment.
   final pulumi.Input<String> deploymentName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of Azure API Center service.
   final pulumi.Input<String> serviceName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -50,11 +46,10 @@ class GetDeploymentArgs {
     return GetDeploymentArgs(
       apiName: pulumi.Input.fromValue(map['apiName'] as String),
       deploymentName: pulumi.Input.fromValue(map['deploymentName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

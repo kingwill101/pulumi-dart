@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionPreferences {
   /// Defines secondary layer of software-based encryption enablement.
   final pulumi.Input<String>? doubleEncryption;
-
   /// Defines Hardware level encryption (Only for disk)
   final pulumi.Input<String>? hardwareEncryption;
 
   /// Creates a new [EncryptionPreferences].
   /// [doubleEncryption] Defines secondary layer of software-based encryption enablement.
   /// [hardwareEncryption] Defines Hardware level encryption (Only for disk)
-  EncryptionPreferences({this.doubleEncryption, this.hardwareEncryption});
+  EncryptionPreferences({
+    this.doubleEncryption,
+    this.hardwareEncryption,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class EncryptionPreferences {
 
   factory EncryptionPreferences.fromMap(Map<String, dynamic> map) {
     return EncryptionPreferences(
-      doubleEncryption: (() {
-        final guardedValue = map['doubleEncryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hardwareEncryption: (() {
-        final guardedValue = map['hardwareEncryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      doubleEncryption: (() { final guardedValue = map['doubleEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hardwareEncryption: (() { final guardedValue = map['hardwareEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

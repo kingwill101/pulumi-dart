@@ -10,19 +10,20 @@ class TrustConfigTrustStoreTrustAnchor {
 
   /// Creates a new [TrustConfigTrustStoreTrustAnchor].
   /// [pemCertificate] PEM root certificate of the PKI used for validation.
-  TrustConfigTrustStoreTrustAnchor({this.pemCertificate});
+  TrustConfigTrustStoreTrustAnchor({
+    this.pemCertificate,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pemCertificate': ?pemCertificate};
+    return <String, dynamic>{
+      'pemCertificate': ?pemCertificate,
+    };
   }
 
   factory TrustConfigTrustStoreTrustAnchor.fromMap(Map<String, dynamic> map) {
     return TrustConfigTrustStoreTrustAnchor(
-      pemCertificate: (() {
-        final guardedValue = map['pemCertificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pemCertificate: (() { final guardedValue = map['pemCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getResolverVirtualNetworkLink.
 class GetResolverVirtualNetworkLinkResult {
   final String dnsForwardingRulesetId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The metadata attached to the Private DNS Resolver Virtual Network Link.
   final Map<String, String> metadata;
   final String name;
-
   /// The ID of the Virtual Network that is linked to the Private DNS Resolver Virtual Network Link.
   final String virtualNetworkId;
 
@@ -38,9 +36,7 @@ class GetResolverVirtualNetworkLinkResult {
     };
   }
 
-  factory GetResolverVirtualNetworkLinkResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetResolverVirtualNetworkLinkResult.fromMap(Map<String, dynamic> map) {
     return GetResolverVirtualNetworkLinkResult(
       dnsForwardingRulesetId: map['dnsForwardingRulesetId'] as String,
       id: map['id'] as String,
@@ -50,3 +46,4 @@ class GetResolverVirtualNetworkLinkResult {
     );
   }
 }
+

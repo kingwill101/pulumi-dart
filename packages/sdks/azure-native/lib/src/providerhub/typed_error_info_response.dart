@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TypedErrorInfoResponse {
   /// The error information.
   final pulumi.Input<dynamic> info;
-
   /// The type of the error.
   final pulumi.Input<String> type;
 
   /// Creates a new [TypedErrorInfoResponse].
   /// [info] The error information.
   /// [type] The type of the error.
-  TypedErrorInfoResponse({required this.info, required this.type});
+  TypedErrorInfoResponse({
+    required this.info,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'info': info, 'type': type};
+    return <String, dynamic>{
+      'info': info,
+      'type': type,
+    };
   }
 
   factory TypedErrorInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class TypedErrorInfoResponse {
     );
   }
 }
+

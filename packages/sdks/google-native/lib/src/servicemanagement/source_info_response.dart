@@ -9,17 +9,20 @@ class SourceInfoResponse {
 
   /// Creates a new [SourceInfoResponse].
   /// [sourceFiles] All files used during config generation.
-  SourceInfoResponse({required this.sourceFiles});
+  SourceInfoResponse({
+    required this.sourceFiles,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sourceFiles': sourceFiles};
+    return <String, dynamic>{
+      'sourceFiles': sourceFiles,
+    };
   }
 
   factory SourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return SourceInfoResponse(
-      sourceFiles: pulumi.Input.fromValue(
-        (map['sourceFiles'] as List).cast<Map<String, String>>(),
-      ),
+      sourceFiles: pulumi.Input.fromValue((map['sourceFiles'] as List).cast<Map<String, String>>()),
     );
   }
 }
+

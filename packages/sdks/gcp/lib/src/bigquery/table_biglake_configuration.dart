@@ -8,14 +8,11 @@ class TableBiglakeConfiguration {
   /// have the form "&lt;project\_id&gt;.&lt;location\_id&gt;.&lt;connection\_id&gt;" or
   /// projects/&lt;project\_id&gt;/locations/&lt;location\_id&gt;/connections/&lt;connection\_id&gt;".
   final pulumi.Input<String> connectionId;
-
   /// The file format the table data is stored in.
   final pulumi.Input<String> fileFormat;
-
   /// The fully qualified location prefix of the external folder where table data
   /// is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
   final pulumi.Input<String> storageUri;
-
   /// The table format the metadata only snapshots are stored in.
   final pulumi.Input<String> tableFormat;
 
@@ -49,3 +46,4 @@ class TableBiglakeConfiguration {
     );
   }
 }
+

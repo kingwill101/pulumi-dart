@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyInitiativeAssignmentProperties {
   /// The parameters of the assigned policy initiative.
   final pulumi.Input<dynamic> assignmentParameters;
-
   /// The fully qualified id of the policy initiative.
   final pulumi.Input<String> policyInitiativeId;
 
@@ -25,14 +24,11 @@ class PolicyInitiativeAssignmentProperties {
     };
   }
 
-  factory PolicyInitiativeAssignmentProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PolicyInitiativeAssignmentProperties.fromMap(Map<String, dynamic> map) {
     return PolicyInitiativeAssignmentProperties(
       assignmentParameters: pulumi.Input.fromValue(map['assignmentParameters']),
-      policyInitiativeId: pulumi.Input.fromValue(
-        map['policyInitiativeId'] as String,
-      ),
+      policyInitiativeId: pulumi.Input.fromValue(map['policyInitiativeId'] as String),
     );
   }
 }
+

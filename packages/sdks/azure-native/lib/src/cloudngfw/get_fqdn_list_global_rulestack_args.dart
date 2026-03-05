@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFqdnListGlobalRulestackArgs {
   /// GlobalRulestack resource name
   final pulumi.Input<String> globalRulestackName;
-
   /// fqdn list name
   final pulumi.Input<String> name;
 
@@ -30,10 +29,9 @@ class GetFqdnListGlobalRulestackArgs {
 
   factory GetFqdnListGlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return GetFqdnListGlobalRulestackArgs(
-      globalRulestackName: pulumi.Input.fromValue(
-        map['globalRulestackName'] as String,
-      ),
+      globalRulestackName: pulumi.Input.fromValue(map['globalRulestackName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

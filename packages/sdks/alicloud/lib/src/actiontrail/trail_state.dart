@@ -6,58 +6,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrailState {
   /// (Available since v1.256.0) The time when the trail was created.
   final pulumi.Input<String>? createTime;
-
   /// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
   final pulumi.Input<String>? dataEventTrailRegion;
-
   /// The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
   final pulumi.Input<String>? eventRw;
-
   /// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
   final pulumi.Input<String>? eventSelectors;
-
   /// Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
   final pulumi.Input<bool>? isOrganizationTrail;
-
   /// The ARN of the MaxCompute project to which you want to deliver events.
   final pulumi.Input<String>? maxComputeProjectArn;
-
   /// The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
   final pulumi.Input<String>? maxComputeWriteRoleArn;
-
   /// Field `mns_topic_arn` has been deprecated from provider version 1.118.0.
   final pulumi.Input<String>? mnsTopicArn;
-
   /// Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.
   final pulumi.Input<String>? name;
-
   /// The OSS bucket to which the trail delivers logs.
   final pulumi.Input<String>? ossBucketName;
-
   /// The prefix of the file name in the OSS bucket to which the trail delivers logs.
   final pulumi.Input<String>? ossKeyPrefix;
-
   /// The name of the RAM role that the user allows ActionTrail to access OSS service.
   final pulumi.Input<String>? ossWriteRoleArn;
-
   /// (Available since v1.256.0) The home region of the trail.
   final pulumi.Input<String>? regionId;
-
   /// Field `role_name` has been deprecated from provider version 1.118.0.
   final pulumi.Input<String>? roleName;
-
   /// The ARN of the Simple Log Service project to which the trail delivers logs.
   final pulumi.Input<String>? slsProjectArn;
-
   /// The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
   final pulumi.Input<String>? slsWriteRoleArn;
-
   /// The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
   final pulumi.Input<String>? status;
-
   /// The name of the trail to be created.
   final pulumi.Input<String>? trailName;
-
   /// The region of the trail.
   final pulumi.Input<String>? trailRegion;
 
@@ -129,101 +111,26 @@ class TrailState {
 
   factory TrailState.fromMap(Map<String, dynamic> map) {
     return TrailState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataEventTrailRegion: (() {
-        final guardedValue = map['dataEventTrailRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventRw: (() {
-        final guardedValue = map['eventRw'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventSelectors: (() {
-        final guardedValue = map['eventSelectors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isOrganizationTrail: (() {
-        final guardedValue = map['isOrganizationTrail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      maxComputeProjectArn: (() {
-        final guardedValue = map['maxComputeProjectArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxComputeWriteRoleArn: (() {
-        final guardedValue = map['maxComputeWriteRoleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mnsTopicArn: (() {
-        final guardedValue = map['mnsTopicArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ossBucketName: (() {
-        final guardedValue = map['ossBucketName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ossKeyPrefix: (() {
-        final guardedValue = map['ossKeyPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ossWriteRoleArn: (() {
-        final guardedValue = map['ossWriteRoleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regionId: (() {
-        final guardedValue = map['regionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleName: (() {
-        final guardedValue = map['roleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      slsProjectArn: (() {
-        final guardedValue = map['slsProjectArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      slsWriteRoleArn: (() {
-        final guardedValue = map['slsWriteRoleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      trailName: (() {
-        final guardedValue = map['trailName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      trailRegion: (() {
-        final guardedValue = map['trailRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataEventTrailRegion: (() { final guardedValue = map['dataEventTrailRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventRw: (() { final guardedValue = map['eventRw']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventSelectors: (() { final guardedValue = map['eventSelectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isOrganizationTrail: (() { final guardedValue = map['isOrganizationTrail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      maxComputeProjectArn: (() { final guardedValue = map['maxComputeProjectArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxComputeWriteRoleArn: (() { final guardedValue = map['maxComputeWriteRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mnsTopicArn: (() { final guardedValue = map['mnsTopicArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ossBucketName: (() { final guardedValue = map['ossBucketName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ossKeyPrefix: (() { final guardedValue = map['ossKeyPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ossWriteRoleArn: (() { final guardedValue = map['ossWriteRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionId: (() { final guardedValue = map['regionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleName: (() { final guardedValue = map['roleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      slsProjectArn: (() { final guardedValue = map['slsProjectArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      slsWriteRoleArn: (() { final guardedValue = map['slsWriteRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      trailName: (() { final guardedValue = map['trailName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      trailRegion: (() { final guardedValue = map['trailRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

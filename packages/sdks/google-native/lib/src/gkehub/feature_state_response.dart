@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureStateResponse {
   /// The high-level, machine-readable status of this Feature.
   final pulumi.Input<String> code;
-
   /// A human-readable description of the current status.
   final pulumi.Input<String> description;
-
   /// The time this status and any related Feature-specific details were updated.
   final pulumi.Input<String> updateTime;
 
@@ -39,3 +37,4 @@ class FeatureStateResponse {
     );
   }
 }
+

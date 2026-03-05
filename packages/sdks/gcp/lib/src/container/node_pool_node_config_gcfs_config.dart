@@ -8,10 +8,14 @@ class NodePoolNodeConfigGcfsConfig {
 
   /// Creates a new [NodePoolNodeConfigGcfsConfig].
   /// [enabled] Whether or not GCFS is enabled
-  NodePoolNodeConfigGcfsConfig({required this.enabled});
+  NodePoolNodeConfigGcfsConfig({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory NodePoolNodeConfigGcfsConfig.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class NodePoolNodeConfigGcfsConfig {
     );
   }
 }
+

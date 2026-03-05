@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemoteImageBuildUlimit {
   /// soft limit
   final pulumi.Input<int> hard;
-
   /// type of ulimit, e.g. `nofile`
   final pulumi.Input<String> name;
-
   /// hard limit
   final pulumi.Input<int> soft;
 
@@ -23,7 +21,11 @@ class RemoteImageBuildUlimit {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hard': hard, 'name': name, 'soft': soft};
+    return <String, dynamic>{
+      'hard': hard,
+      'name': name,
+      'soft': soft,
+    };
   }
 
   factory RemoteImageBuildUlimit.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class RemoteImageBuildUlimit {
     );
   }
 }
+

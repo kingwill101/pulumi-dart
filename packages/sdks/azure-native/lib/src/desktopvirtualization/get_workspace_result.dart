@@ -11,55 +11,39 @@ import 'system_data_response.dart';
 class GetWorkspaceResult {
   /// List of applicationGroup resource Ids.
   final List<String>? applicationGroupReferences;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Is cloud pc resource.
   final bool cloudPcResource;
-
   /// Description of Workspace.
   final String? description;
-
   /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   final String etag;
-
   /// Friendly name of Workspace.
   final String? friendlyName;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   final ResourceModelWithAllowedPropertySetResponseIdentity? identity;
-
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   final String? kind;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
   final String? managedBy;
-
   /// The name of the resource
   final String name;
-
   /// ObjectId of Workspace. (internal use)
   final String objectId;
   final ResourceModelWithAllowedPropertySetResponsePlan? plan;
-
   /// List of private endpoint connection associated with the specified resource
   final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
-
   /// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
   final String? publicNetworkAccess;
   final ResourceModelWithAllowedPropertySetResponseSku? sku;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -123,11 +107,7 @@ class GetWorkspaceResult {
       'name': name,
       'objectId': objectId,
       'plan': ?plan?.toMap(),
-      'privateEndpointConnections':
-          pulumi.Input.encodeList<
-            PrivateEndpointConnectionResponse,
-            Map<String, dynamic>
-          >(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
       'publicNetworkAccess': ?publicNetworkAccess,
       'sku': ?sku?.toMap(),
       'systemData': systemData.toMap(),
@@ -138,80 +118,27 @@ class GetWorkspaceResult {
 
   factory GetWorkspaceResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceResult(
-      applicationGroupReferences: (() {
-        final guardedValue = map['applicationGroupReferences'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      applicationGroupReferences: (() { final guardedValue = map['applicationGroupReferences']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       azureApiVersion: map['azureApiVersion'] as String,
       cloudPcResource: map['cloudPcResource'] as bool,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: map['etag'] as String,
-      friendlyName: (() {
-        final guardedValue = map['friendlyName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return ResourceModelWithAllowedPropertySetResponseIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: map['location'] as String,
-      managedBy: (() {
-        final guardedValue = map['managedBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      managedBy: (() { final guardedValue = map['managedBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       objectId: map['objectId'] as String,
-      plan: (() {
-        final guardedValue = map['plan'];
-        if (guardedValue == null) return null;
-        return ResourceModelWithAllowedPropertySetResponsePlan.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      privateEndpointConnections:
-          pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
-            map['privateEndpointConnections']!,
-            (value) => PrivateEndpointConnectionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return ResourceModelWithAllowedPropertySetResponseSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponsePlan.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseSku.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

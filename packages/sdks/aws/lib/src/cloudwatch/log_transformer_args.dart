@@ -10,10 +10,8 @@ import 'log_transformer_transformer_config.dart';
 class LogTransformerArgs {
   /// Log group ARN to set the transformer for.
   final pulumi.Input<String> logGroupArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Specifies the configuration of the transformer. You must include at least one configuration, and 20 at most. See `transformer_config` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfig>> transformerConfigs;
 
@@ -31,37 +29,16 @@ class LogTransformerArgs {
     return <String, dynamic>{
       'logGroupArn': logGroupArn,
       'region': ?region,
-      'transformerConfigs':
-          pulumi.Input.mapInputValue<
-            List<LogTransformerTransformerConfig>,
-            List<Map<String, dynamic>>
-          >(
-            transformerConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LogTransformerTransformerConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'transformerConfigs': pulumi.Input.mapInputValue<List<LogTransformerTransformerConfig>, List<Map<String, dynamic>>>(transformerConfigs, (value) => pulumi.Input.encodeList<LogTransformerTransformerConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LogTransformerArgs.fromMap(Map<String, dynamic> map) {
     return LogTransformerArgs(
       logGroupArn: pulumi.Input.fromValue(map['logGroupArn'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transformerConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<LogTransformerTransformerConfig>(
-          map['transformerConfigs']!,
-          (value) => LogTransformerTransformerConfig.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transformerConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<LogTransformerTransformerConfig>(map['transformerConfigs']!, (value) => LogTransformerTransformerConfig.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

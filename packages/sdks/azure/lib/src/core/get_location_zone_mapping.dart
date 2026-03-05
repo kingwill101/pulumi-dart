@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLocationZoneMapping {
   /// The logical zone id for the availability zone
   final pulumi.Input<String> logicalZone;
-
   /// The fully qualified physical zone id of availability zone to which logical zone id is mapped to
   final pulumi.Input<String> physicalZone;
 
@@ -31,3 +30,4 @@ class GetLocationZoneMapping {
     );
   }
 }
+

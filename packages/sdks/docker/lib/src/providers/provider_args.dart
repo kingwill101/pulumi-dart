@@ -10,26 +10,19 @@ import '../index/provider_registry_auth.dart';
 class ProviderArgs {
   /// PEM-encoded content of Docker host CA certificate
   final pulumi.Input<String>? caMaterial;
-
   /// PEM-encoded content of Docker client certificate
   final pulumi.Input<String>? certMaterial;
-
   /// Path to directory with Docker TLS config
   final pulumi.Input<String>? certPath;
-
   /// The name of the Docker context to use. Can also be set via `DOCKER_CONTEXT` environment variable. Overrides the `host` if set.
   final pulumi.Input<String>? context;
-
   /// If set to `true`, the provider will not check if the Docker daemon is running. This is useful for resources/data_sourcess that do not require a running Docker daemon, such as the data source `docker.RegistryImage`.
   final pulumi.Input<bool>? disableDockerDaemonCheck;
-
   /// The Docker daemon address
   final pulumi.Input<String>? host;
-
   /// PEM-encoded content of Docker client private key
   final pulumi.Input<String>? keyMaterial;
   final pulumi.Input<List<ProviderRegistryAuth>>? registryAuth;
-
   /// Additional SSH option flags to be appended when using `ssh://` protocol
   final pulumi.Input<List<String>>? sshOpts;
 
@@ -64,76 +57,23 @@ class ProviderArgs {
       'disableDockerDaemonCheck': ?disableDockerDaemonCheck,
       'host': ?host,
       'keyMaterial': ?keyMaterial,
-      'registryAuth':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ProviderRegistryAuth>,
-            List<Map<String, dynamic>>
-          >(
-            registryAuth,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ProviderRegistryAuth,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'registryAuth': ?pulumi.Input.mapOptionalInputValue<List<ProviderRegistryAuth>, List<Map<String, dynamic>>>(registryAuth, (value) => pulumi.Input.encodeList<ProviderRegistryAuth, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sshOpts': ?sshOpts,
     };
   }
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      caMaterial: (() {
-        final guardedValue = map['caMaterial'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certMaterial: (() {
-        final guardedValue = map['certMaterial'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certPath: (() {
-        final guardedValue = map['certPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      context: (() {
-        final guardedValue = map['context'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disableDockerDaemonCheck: (() {
-        final guardedValue = map['disableDockerDaemonCheck'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyMaterial: (() {
-        final guardedValue = map['keyMaterial'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      registryAuth: (() {
-        final guardedValue = map['registryAuth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ProviderRegistryAuth>(
-            guardedValue,
-            (value) => ProviderRegistryAuth.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      sshOpts: (() {
-        final guardedValue = map['sshOpts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      caMaterial: (() { final guardedValue = map['caMaterial']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certMaterial: (() { final guardedValue = map['certMaterial']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certPath: (() { final guardedValue = map['certPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      context: (() { final guardedValue = map['context']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disableDockerDaemonCheck: (() { final guardedValue = map['disableDockerDaemonCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyMaterial: (() { final guardedValue = map['keyMaterial']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      registryAuth: (() { final guardedValue = map['registryAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ProviderRegistryAuth>(guardedValue, (value) => ProviderRegistryAuth.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      sshOpts: (() { final guardedValue = map['sshOpts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -9,39 +9,20 @@ class ResponsePlanIntegration {
 
   /// Creates a new [ResponsePlanIntegration].
   /// [pagerduties] Details about the PagerDuty configuration for a response plan. The following values are supported:
-  ResponsePlanIntegration({this.pagerduties});
+  ResponsePlanIntegration({
+    this.pagerduties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pagerduties':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ResponsePlanIntegrationPagerduty>,
-            List<Map<String, dynamic>>
-          >(
-            pagerduties,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ResponsePlanIntegrationPagerduty,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'pagerduties': ?pulumi.Input.mapOptionalInputValue<List<ResponsePlanIntegrationPagerduty>, List<Map<String, dynamic>>>(pagerduties, (value) => pulumi.Input.encodeList<ResponsePlanIntegrationPagerduty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ResponsePlanIntegration.fromMap(Map<String, dynamic> map) {
     return ResponsePlanIntegration(
-      pagerduties: (() {
-        final guardedValue = map['pagerduties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ResponsePlanIntegrationPagerduty>(
-            guardedValue,
-            (value) => ResponsePlanIntegrationPagerduty.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      pagerduties: (() { final guardedValue = map['pagerduties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResponsePlanIntegrationPagerduty>(guardedValue, (value) => ResponsePlanIntegrationPagerduty.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

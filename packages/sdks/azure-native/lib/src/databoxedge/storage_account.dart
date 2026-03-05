@@ -159,31 +159,22 @@ import 'system_data_response.dart';
 class StorageAccount extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// BlobEndpoint of Storage Account
   late final pulumi.Output<String> blobEndpoint;
-
   /// The Container Count. Present only for Storage Accounts with DataPolicy set to Cloud.
   late final pulumi.Output<int> containerCount;
-
   /// Data policy of the storage Account.
   late final pulumi.Output<String> dataPolicy;
-
   /// Description for the storage Account.
   late final pulumi.Output<String?> description;
-
   /// The object name.
   late final pulumi.Output<String> name;
-
   /// Storage Account Credential Id
   late final pulumi.Output<String?> storageAccountCredentialId;
-
   /// Current status of the storage account
   late final pulumi.Output<String?> storageAccountStatus;
-
   /// Metadata pertaining to creation and last modification of StorageAccount
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -196,31 +187,20 @@ class StorageAccount extends pulumi.CustomResource {
     StorageAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:databoxedge:StorageAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:databoxedge:StorageAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     blobEndpoint = registerOutput<String>('blobEndpoint');
     containerCount = registerOutput<int>('containerCount');
     dataPolicy = registerOutput<String>('dataPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    storageAccountCredentialId = registerOutput<String?>(
-      'storageAccountCredentialId',
-    );
+    storageAccountCredentialId = registerOutput<String?>('storageAccountCredentialId');
     storageAccountStatus = registerOutput<String?>('storageAccountStatus');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

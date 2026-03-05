@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PacketCaptureFilterResponse {
   /// Local IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5"? for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
   final pulumi.Input<String>? localIPAddress;
-
   /// Local port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
   final pulumi.Input<String>? localPort;
-
   /// Protocol to be filtered on.
   final pulumi.Input<String>? protocol;
-
   /// Local IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
   final pulumi.Input<String>? remoteIPAddress;
-
   /// Remote port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
   final pulumi.Input<String>? remotePort;
 
@@ -45,31 +41,12 @@ class PacketCaptureFilterResponse {
 
   factory PacketCaptureFilterResponse.fromMap(Map<String, dynamic> map) {
     return PacketCaptureFilterResponse(
-      localIPAddress: (() {
-        final guardedValue = map['localIPAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      localPort: (() {
-        final guardedValue = map['localPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remoteIPAddress: (() {
-        final guardedValue = map['remoteIPAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remotePort: (() {
-        final guardedValue = map['remotePort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      localIPAddress: (() { final guardedValue = map['localIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localPort: (() { final guardedValue = map['localPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remoteIPAddress: (() { final guardedValue = map['remoteIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remotePort: (() { final guardedValue = map['remotePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -152,27 +152,20 @@ import 'zone_state.dart';
 class Zone extends pulumi.CustomResource {
   /// The maximum number of record sets that can be created in this Private DNS zone.
   late final pulumi.Output<int> maxNumberOfRecordSets;
-
   /// The maximum number of virtual networks that can be linked to this Private DNS zone.
   late final pulumi.Output<int> maxNumberOfVirtualNetworkLinks;
-
   /// The maximum number of virtual networks that can be linked to this Private DNS zone with registration enabled.
   late final pulumi.Output<int> maxNumberOfVirtualNetworkLinksWithRegistration;
-
   /// The name of the Private DNS Zone. Must be a valid domain name. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If you are going to be using the Private DNS Zone with a Private Endpoint the name of the Private DNS Zone must follow the **Private DNS Zone name** schema in the [product documentation](https://docs.microsoft.com/azure/private-link/private-endpoint-dns#virtual-network-and-on-premises-workloads-using-a-dns-forwarder) in order for the two resources to be connected successfully.
   late final pulumi.Output<String> name;
-
   /// The current number of record sets in this Private DNS zone.
   late final pulumi.Output<int> numberOfRecordSets;
-
   /// Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// An `soa_record` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ZoneSoaRecord> soaRecord;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -180,38 +173,32 @@ class Zone extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Zone]. {@macro pulumi_privatedns_zone_zone_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Zone(String name, {ZoneArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:privatedns/zone:Zone',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Zone(
+    String name, {
+    ZoneArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:privatedns/zone:Zone',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     maxNumberOfRecordSets = registerOutput<int>('maxNumberOfRecordSets');
-    maxNumberOfVirtualNetworkLinks = registerOutput<int>(
-      'maxNumberOfVirtualNetworkLinks',
-    );
-    maxNumberOfVirtualNetworkLinksWithRegistration = registerOutput<int>(
-      'maxNumberOfVirtualNetworkLinksWithRegistration',
-    );
+    maxNumberOfVirtualNetworkLinks = registerOutput<int>('maxNumberOfVirtualNetworkLinks');
+    maxNumberOfVirtualNetworkLinksWithRegistration = registerOutput<int>('maxNumberOfVirtualNetworkLinksWithRegistration');
     this.name = registerOutput<String>('name');
     numberOfRecordSets = registerOutput<int>('numberOfRecordSets');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    soaRecord = registerOutput<ZoneSoaRecord>(
-      'soaRecord',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ZoneSoaRecord.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    soaRecord = registerOutput<ZoneSoaRecord>('soaRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneSoaRecord.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Zone] resource's state with the given [name] and [id].
-  static Zone get(String name, pulumi.Input<String> id, {ZoneState? state}) {
+  static Zone get(
+    String name,
+    pulumi.Input<String> id, {
+    ZoneState? state,
+  }) {
     return Zone._get(
       name,
       state: state?.toMap(),
@@ -224,31 +211,18 @@ class Zone extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/zone:Zone',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/zone:Zone',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     maxNumberOfRecordSets = registerOutput<int>('maxNumberOfRecordSets');
-    maxNumberOfVirtualNetworkLinks = registerOutput<int>(
-      'maxNumberOfVirtualNetworkLinks',
-    );
-    maxNumberOfVirtualNetworkLinksWithRegistration = registerOutput<int>(
-      'maxNumberOfVirtualNetworkLinksWithRegistration',
-    );
+    maxNumberOfVirtualNetworkLinks = registerOutput<int>('maxNumberOfVirtualNetworkLinks');
+    maxNumberOfVirtualNetworkLinksWithRegistration = registerOutput<int>('maxNumberOfVirtualNetworkLinksWithRegistration');
     this.name = registerOutput<String>('name');
     numberOfRecordSets = registerOutput<int>('numberOfRecordSets');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    soaRecord = registerOutput<ZoneSoaRecord>(
-      'soaRecord',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ZoneSoaRecord.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    soaRecord = registerOutput<ZoneSoaRecord>('soaRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneSoaRecord.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

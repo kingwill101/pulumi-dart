@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationMigrationItemArgs {
   /// Fabric unique name.
   final pulumi.Input<String> fabricName;
-
   /// Migration item name.
   final pulumi.Input<String> migrationItemName;
-
   /// Protection container name.
   final pulumi.Input<String> protectionContainerName;
-
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
 
@@ -49,16 +45,11 @@ class GetReplicationMigrationItemArgs {
   factory GetReplicationMigrationItemArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationMigrationItemArgs(
       fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
-      migrationItemName: pulumi.Input.fromValue(
-        map['migrationItemName'] as String,
-      ),
-      protectionContainerName: pulumi.Input.fromValue(
-        map['protectionContainerName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      migrationItemName: pulumi.Input.fromValue(map['migrationItemName'] as String),
+      protectionContainerName: pulumi.Input.fromValue(map['protectionContainerName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

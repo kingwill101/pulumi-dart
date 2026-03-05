@@ -7,16 +7,12 @@ import 'secret_attributes_response.dart';
 class SecretPropertiesResponse {
   /// The attributes of the secret.
   final pulumi.Input<SecretAttributesResponse>? attributes;
-
   /// The content type of the secret.
   final pulumi.Input<String>? contentType;
-
   /// The URI to retrieve the current version of the secret.
   final pulumi.Input<String> secretUri;
-
   /// The URI to retrieve the specific version of the secret.
   final pulumi.Input<String> secretUriWithVersion;
-
   /// The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
   final pulumi.Input<String>? value;
 
@@ -36,11 +32,7 @@ class SecretPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecretAttributesResponse,
-            Map<String, dynamic>
-          >(attributes, (value) => value.toMap()),
+      'attributes': ?pulumi.Input.mapOptionalInputValue<SecretAttributesResponse, Map<String, dynamic>>(attributes, (value) => value.toMap()),
       'contentType': ?contentType,
       'secretUri': secretUri,
       'secretUriWithVersion': secretUriWithVersion,
@@ -50,29 +42,12 @@ class SecretPropertiesResponse {
 
   factory SecretPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SecretPropertiesResponse(
-      attributes: (() {
-        final guardedValue = map['attributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecretAttributesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      contentType: (() {
-        final guardedValue = map['contentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecretAttributesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretUri: pulumi.Input.fromValue(map['secretUri'] as String),
-      secretUriWithVersion: pulumi.Input.fromValue(
-        map['secretUriWithVersion'] as String,
-      ),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      secretUriWithVersion: pulumi.Input.fromValue(map['secretUriWithVersion'] as String),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

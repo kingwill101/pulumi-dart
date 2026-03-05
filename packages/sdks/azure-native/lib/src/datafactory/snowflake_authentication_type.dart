@@ -16,3 +16,4 @@ enum SnowflakeAuthenticationType {
     throw ArgumentError('Unknown SnowflakeAuthenticationType value: $value');
   }
 }
+

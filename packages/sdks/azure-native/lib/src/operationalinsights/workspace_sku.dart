@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceSku {
   /// The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
   final pulumi.Input<int>? capacityReservationLevel;
-
   /// The name of the SKU.
   final pulumi.Input<String> name;
 
   /// Creates a new [WorkspaceSku].
   /// [capacityReservationLevel] The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
   /// [name] The name of the SKU.
-  WorkspaceSku({this.capacityReservationLevel, required this.name});
+  WorkspaceSku({
+    this.capacityReservationLevel,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,12 +26,9 @@ class WorkspaceSku {
 
   factory WorkspaceSku.fromMap(Map<String, dynamic> map) {
     return WorkspaceSku(
-      capacityReservationLevel: (() {
-        final guardedValue = map['capacityReservationLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      capacityReservationLevel: (() { final guardedValue = map['capacityReservationLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

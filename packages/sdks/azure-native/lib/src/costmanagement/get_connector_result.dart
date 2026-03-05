@@ -6,46 +6,32 @@ import 'connector_collection_info_response.dart';
 class GetConnectorResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Collection information
   final ConnectorCollectionInfoResponse collection;
-
   /// Connector definition creation datetime
   final String createdOn;
-
   /// Credentials authentication key (eg AWS ARN)
   final String? credentialsKey;
-
   /// Connector DisplayName (defaults to Name)
   final String? displayName;
-
   /// Connector id
   final String id;
-
   /// Connector kind (eg aws)
   final String? kind;
-
   /// Connector location
   final String? location;
-
   /// Connector last modified datetime
   final String modifiedOn;
-
   /// Connector name
   final String name;
-
   /// Connector providerAccountId (determined from credentials)
   final String providerAccountId;
-
   /// Identifying source report. (For AWS this is a CUR report name, defined with Daily and with Resources)
   final String? reportId;
-
   /// Connector status
   final String? status;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Connector type
   final String type;
 
@@ -106,50 +92,21 @@ class GetConnectorResult {
   factory GetConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      collection: ConnectorCollectionInfoResponse.fromMap(
-        (map['collection']! as Map).cast<String, dynamic>(),
-      ),
+      collection: ConnectorCollectionInfoResponse.fromMap((map['collection']! as Map).cast<String, dynamic>()),
       createdOn: map['createdOn'] as String,
-      credentialsKey: (() {
-        final guardedValue = map['credentialsKey'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      credentialsKey: (() { final guardedValue = map['credentialsKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       modifiedOn: map['modifiedOn'] as String,
       name: map['name'] as String,
       providerAccountId: map['providerAccountId'] as String,
-      reportId: (() {
-        final guardedValue = map['reportId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      reportId: (() { final guardedValue = map['reportId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

@@ -341,50 +341,41 @@ class DiagnosticSetting extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** At least one `enabled_log` or `enabled_metric` block must be specified. At least one type of Log or Metric must be enabled.
   late final pulumi.Output<List<Map<String, dynamic>>?> enabledLogs;
-
   /// One or more `enabled_metric` blocks as defined below.
   ///
   /// &gt; **Note:** At least one `enabled_log` or `enabled_metric` block must be specified.
   late final pulumi.Output<List<Map<String, dynamic>>> enabledMetrics;
-
   /// Specifies the ID of an Event Hub Namespace Authorization Rule used to send Diagnostics Data.
   ///
   /// &gt; **NOTE:** This can be sourced from the `azure.eventhub.EventHubNamespaceAuthorizationRule` resource and is different from a `azure.eventhub.AuthorizationRule` resource.
   ///
   /// &gt; **NOTE:** At least one of `eventhub_authorization_rule_id`, `log_analytics_workspace_id`, `partner_solution_id` and `storage_account_id` must be specified.
   late final pulumi.Output<String?> eventhubAuthorizationRuleId;
-
   /// Specifies the name of the Event Hub where Diagnostics Data should be sent.
   ///
   /// &gt; **NOTE:** If this isn't specified then the default Event Hub will be used.
   late final pulumi.Output<String?> eventhubName;
-
   /// Possible values are `AzureDiagnostics` and `Dedicated`. When set to `Dedicated`, logs sent to a Log Analytics workspace will go into resource specific tables, instead of the legacy `AzureDiagnostics` table.
   ///
   /// &gt; **NOTE:** This setting will only have an effect if a `log_analytics_workspace_id` is provided. For some target resource type (e.g., Key Vault), this field is unconfigurable. Please see [resource types](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/azurediagnostics#resource-types) for services that use each method. Please [see the documentation](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#azure-diagnostics-vs-resource-specific) for details on the differences between destination types.
   late final pulumi.Output<String> logAnalyticsDestinationType;
-
   /// Specifies the ID of a Log Analytics Workspace where Diagnostics Data should be sent.
   ///
   /// &gt; **NOTE:** At least one of `eventhub_authorization_rule_id`, `log_analytics_workspace_id`, `partner_solution_id` and `storage_account_id` must be specified.
   late final pulumi.Output<String?> logAnalyticsWorkspaceId;
   late final pulumi.Output<List<Map<String, dynamic>>> metrics;
-
   /// Specifies the name of the Diagnostic Setting. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** If the name is set to 'service' it will not be possible to fully delete the diagnostic setting. This is due to legacy API support.
   late final pulumi.Output<String> name;
-
   /// The ID of the market partner solution where Diagnostics Data should be sent. For potential partner integrations, [click to learn more about partner integration](https://learn.microsoft.com/en-us/azure/partner-solutions/overview).
   ///
   /// &gt; **NOTE:** At least one of `eventhub_authorization_rule_id`, `log_analytics_workspace_id`, `partner_solution_id` and `storage_account_id` must be specified.
   late final pulumi.Output<String?> partnerSolutionId;
-
   /// The ID of the Storage Account where logs should be sent.
   ///
   /// &gt; **NOTE:** At least one of `eventhub_authorization_rule_id`, `log_analytics_workspace_id`, `partner_solution_id` and `storage_account_id` must be specified.
   late final pulumi.Output<String?> storageAccountId;
-
   /// The ID of an existing Resource on which to configure Diagnostic Settings. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetResourceId;
 
@@ -397,25 +388,17 @@ class DiagnosticSetting extends pulumi.CustomResource {
     DiagnosticSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/diagnosticSetting:DiagnosticSetting',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:monitoring/diagnosticSetting:DiagnosticSetting',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabledLogs = registerOutput<List<Map<String, dynamic>>?>('enabledLogs');
-    enabledMetrics = registerOutput<List<Map<String, dynamic>>>(
-      'enabledMetrics',
-    );
-    eventhubAuthorizationRuleId = registerOutput<String?>(
-      'eventhubAuthorizationRuleId',
-    );
+    enabledMetrics = registerOutput<List<Map<String, dynamic>>>('enabledMetrics');
+    eventhubAuthorizationRuleId = registerOutput<String?>('eventhubAuthorizationRuleId');
     eventhubName = registerOutput<String?>('eventhubName');
-    logAnalyticsDestinationType = registerOutput<String>(
-      'logAnalyticsDestinationType',
-    );
-    logAnalyticsWorkspaceId = registerOutput<String?>(
-      'logAnalyticsWorkspaceId',
-    );
+    logAnalyticsDestinationType = registerOutput<String>('logAnalyticsDestinationType');
+    logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
     metrics = registerOutput<List<Map<String, dynamic>>>('metrics');
     this.name = registerOutput<String>('name');
     partnerSolutionId = registerOutput<String?>('partnerSolutionId');
@@ -441,25 +424,17 @@ class DiagnosticSetting extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/diagnosticSetting:DiagnosticSetting',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:monitoring/diagnosticSetting:DiagnosticSetting',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabledLogs = registerOutput<List<Map<String, dynamic>>?>('enabledLogs');
-    enabledMetrics = registerOutput<List<Map<String, dynamic>>>(
-      'enabledMetrics',
-    );
-    eventhubAuthorizationRuleId = registerOutput<String?>(
-      'eventhubAuthorizationRuleId',
-    );
+    enabledMetrics = registerOutput<List<Map<String, dynamic>>>('enabledMetrics');
+    eventhubAuthorizationRuleId = registerOutput<String?>('eventhubAuthorizationRuleId');
     eventhubName = registerOutput<String?>('eventhubName');
-    logAnalyticsDestinationType = registerOutput<String>(
-      'logAnalyticsDestinationType',
-    );
-    logAnalyticsWorkspaceId = registerOutput<String?>(
-      'logAnalyticsWorkspaceId',
-    );
+    logAnalyticsDestinationType = registerOutput<String>('logAnalyticsDestinationType');
+    logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
     metrics = registerOutput<List<Map<String, dynamic>>>('metrics');
     this.name = registerOutput<String>('name');
     partnerSolutionId = registerOutput<String?>('partnerSolutionId');

@@ -15,3 +15,4 @@ enum SourceAuthType {
     throw ArgumentError('Unknown SourceAuthType value: $value');
   }
 }
+

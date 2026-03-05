@@ -10,13 +10,10 @@ import 'open_aiintegration_properties.dart';
 class OpenAIArgs {
   /// OpenAI Integration name
   final pulumi.Input<String>? integrationName;
-
   /// Monitor resource name
   final pulumi.Input<String> monitorName;
-
   /// Open AI Integration details.
   final pulumi.Input<OpenAIIntegrationProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,35 +33,18 @@ class OpenAIArgs {
     return <String, dynamic>{
       'integrationName': ?integrationName,
       'monitorName': monitorName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            OpenAIIntegrationProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<OpenAIIntegrationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory OpenAIArgs.fromMap(Map<String, dynamic> map) {
     return OpenAIArgs(
-      integrationName: (() {
-        final guardedValue = map['integrationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      integrationName: (() { final guardedValue = map['integrationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       monitorName: pulumi.Input.fromValue(map['monitorName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OpenAIIntegrationProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OpenAIIntegrationProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -1304,46 +1304,34 @@ class Queue extends pulumi.CustomResource {
   /// The cluster ID.
   /// You can call the ListClusters operation to query the cluster ID.
   late final pulumi.Output<String> clusterId;
-
   /// The hardware configurations of the compute nodes in the queue. Valid values of N: 1 to 10. See `compute_nodes` below.
   late final pulumi.Output<List<Map<String, dynamic>>> computeNodes;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// Specifies whether to enable auto scale-in for the queue. Valid values:
   ///
   /// - true
   /// - false
   late final pulumi.Output<bool> enableScaleIn;
-
   /// Specifies whether to enable auto scale-out for the queue. Valid values:
   ///
   /// - true
   /// - false
   late final pulumi.Output<bool> enableScaleOut;
-
   /// The hostname prefix of the added compute nodes.
   late final pulumi.Output<String> hostnamePrefix;
-
   /// The hostname suffix of the compute nodes in the queue.
   late final pulumi.Output<String> hostnameSuffix;
-
   /// The initial number of compute nodes in the queue.
   late final pulumi.Output<int> initialCount;
-
   /// The type of the network for interconnecting compute nodes in the queue.
   late final pulumi.Output<String> interConnect;
-
   /// The maximum number of compute nodes that the queue can contain.
   late final pulumi.Output<int> maxCount;
-
   /// The minimum number of compute nodes that the queue must contain.
   late final pulumi.Output<int> minCount;
-
   /// The queue name.
   late final pulumi.Output<String> queueName;
-
   /// The vSwitches available for use by compute nodes in the queue.
   late final pulumi.Output<List<String>?> vswitchIds;
 
@@ -1351,13 +1339,16 @@ class Queue extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Queue]. {@macro pulumi_ehpc_queue_queue_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Queue(String name, {QueueArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:ehpc/queue:Queue',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Queue(
+    String name, {
+    QueueArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:ehpc/queue:Queue',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     computeNodes = registerOutput<List<Map<String, dynamic>>>('computeNodes');
     createTime = registerOutput<String>('createTime');
@@ -1374,7 +1365,11 @@ class Queue extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Queue] resource's state with the given [name] and [id].
-  static Queue get(String name, pulumi.Input<String> id, {QueueState? state}) {
+  static Queue get(
+    String name,
+    pulumi.Input<String> id, {
+    QueueState? state,
+  }) {
     return Queue._get(
       name,
       state: state?.toMap(),
@@ -1387,11 +1382,11 @@ class Queue extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ehpc/queue:Queue',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ehpc/queue:Queue',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     computeNodes = registerOutput<List<Map<String, dynamic>>>('computeNodes');
     createTime = registerOutput<String>('createTime');

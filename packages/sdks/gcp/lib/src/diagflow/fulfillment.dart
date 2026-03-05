@@ -229,22 +229,17 @@ import 'fulfillment_state.dart';
 class Fulfillment extends pulumi.CustomResource {
   /// The human-readable name of the fulfillment, unique within the agent.
   late final pulumi.Output<String> displayName;
-
   /// Whether fulfillment is enabled.
   late final pulumi.Output<bool?> enabled;
-
   /// The field defines whether the fulfillment is enabled for certain features.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> features;
-
   /// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
   /// Structure is documented below.
   late final pulumi.Output<FulfillmentGenericWebService?> genericWebService;
-
   /// The unique identifier of the fulfillment.
   /// Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -258,24 +253,15 @@ class Fulfillment extends pulumi.CustomResource {
     FulfillmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/fulfillment:Fulfillment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:diagflow/fulfillment:Fulfillment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
     features = registerOutput<List<Map<String, dynamic>>?>('features');
-    genericWebService = registerOutput<FulfillmentGenericWebService?>(
-      'genericWebService',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FulfillmentGenericWebService.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    genericWebService = registerOutput<FulfillmentGenericWebService?>('genericWebService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FulfillmentGenericWebService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
   }
@@ -298,24 +284,15 @@ class Fulfillment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/fulfillment:Fulfillment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:diagflow/fulfillment:Fulfillment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
     features = registerOutput<List<Map<String, dynamic>>?>('features');
-    genericWebService = registerOutput<FulfillmentGenericWebService?>(
-      'genericWebService',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FulfillmentGenericWebService.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    genericWebService = registerOutput<FulfillmentGenericWebService?>('genericWebService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FulfillmentGenericWebService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
   }

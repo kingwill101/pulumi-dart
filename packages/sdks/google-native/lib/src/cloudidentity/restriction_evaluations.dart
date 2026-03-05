@@ -9,7 +9,9 @@ class RestrictionEvaluations {
 
   /// Creates a new [RestrictionEvaluations].
   /// [memberRestrictionEvaluation] Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
-  RestrictionEvaluations({this.memberRestrictionEvaluation});
+  RestrictionEvaluations({
+    this.memberRestrictionEvaluation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,13 +21,8 @@ class RestrictionEvaluations {
 
   factory RestrictionEvaluations.fromMap(Map<String, dynamic> map) {
     return RestrictionEvaluations(
-      memberRestrictionEvaluation: (() {
-        final guardedValue = map['memberRestrictionEvaluation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      memberRestrictionEvaluation: (() { final guardedValue = map['memberRestrictionEvaluation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

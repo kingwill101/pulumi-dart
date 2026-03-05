@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkPortGroupVirtualPortParamsOpenVSwitch {
   /// Sets the interface ID for Open vSwitch virtual port parameters.
   final pulumi.Input<String>? interfaceId;
-
   /// Specifies the profile ID for Open vSwitch virtual port parameters.
   final pulumi.Input<String>? profileId;
 
@@ -24,20 +23,11 @@ class NetworkPortGroupVirtualPortParamsOpenVSwitch {
     };
   }
 
-  factory NetworkPortGroupVirtualPortParamsOpenVSwitch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkPortGroupVirtualPortParamsOpenVSwitch.fromMap(Map<String, dynamic> map) {
     return NetworkPortGroupVirtualPortParamsOpenVSwitch(
-      interfaceId: (() {
-        final guardedValue = map['interfaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      profileId: (() {
-        final guardedValue = map['profileId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      interfaceId: (() { final guardedValue = map['interfaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      profileId: (() { final guardedValue = map['profileId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

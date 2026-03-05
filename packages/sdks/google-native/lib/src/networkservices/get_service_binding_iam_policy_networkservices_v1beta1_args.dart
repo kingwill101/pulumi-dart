@@ -33,24 +33,13 @@ class GetServiceBindingIamPolicyNetworkservicesV1beta1Args {
     };
   }
 
-  factory GetServiceBindingIamPolicyNetworkservicesV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceBindingIamPolicyNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetServiceBindingIamPolicyNetworkservicesV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceBindingId: pulumi.Input.fromValue(
-        map['serviceBindingId'] as String,
-      ),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceBindingId: pulumi.Input.fromValue(map['serviceBindingId'] as String),
     );
   }
 }
+

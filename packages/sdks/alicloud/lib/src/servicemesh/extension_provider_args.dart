@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtensionProviderArgs {
   /// The config of the Service Mesh Extension Provider. The `config` format is json.
   final pulumi.Input<String> config;
-
   /// The name of the Service Mesh Extension Provider. It must be prefixed with `$type-`, for example `httpextauth-xxx`, `grpcextauth-xxx`.
   final pulumi.Input<String> extensionProviderName;
-
   /// The ID of the Service Mesh.
   final pulumi.Input<String> serviceMeshId;
-
   /// The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
   final pulumi.Input<String> type;
 
@@ -43,11 +40,10 @@ class ExtensionProviderArgs {
   factory ExtensionProviderArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionProviderArgs(
       config: pulumi.Input.fromValue(map['config'] as String),
-      extensionProviderName: pulumi.Input.fromValue(
-        map['extensionProviderName'] as String,
-      ),
+      extensionProviderName: pulumi.Input.fromValue(map['extensionProviderName'] as String),
       serviceMeshId: pulumi.Input.fromValue(map['serviceMeshId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

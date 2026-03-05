@@ -1,24 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAAAARecord.
 class GetAAAARecordResult {
   /// The FQDN of the DNS AAAA Record.
   final String fqdn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// List of IPv6 Addresses.
   final List<String> records;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
-
   /// The Azure resource id of the target object from where the dns resource value is taken.
   final String targetResourceId;
-
   /// The Time To Live (TTL) of the DNS record in seconds.
   final int ttl;
   final String zoneName;
@@ -73,3 +69,4 @@ class GetAAAARecordResult {
     );
   }
 }
+

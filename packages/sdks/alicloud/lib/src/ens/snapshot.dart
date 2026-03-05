@@ -195,19 +195,14 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   /// Instance creation timeIt is expressed in accordance with the ISO8601 standard and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.Example value: 2020-08-20 T14:52:28Z.
   late final pulumi.Output<String> createTime;
-
   /// Snapshot Description Information.
   late final pulumi.Output<String?> description;
-
   /// Cloud Disk ID.
   late final pulumi.Output<String> diskId;
-
   /// The node ID of ENS.
   late final pulumi.Output<String> ensRegionId;
-
   /// Name of the snapshot instance.
   late final pulumi.Output<String?> snapshotName;
-
   /// Snapshot Status. Valid values: creating, available, deleting, error.
   late final pulumi.Output<String> status;
 
@@ -220,11 +215,11 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ens/snapshot:Snapshot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ens/snapshot:Snapshot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     diskId = registerOutput<String>('diskId');
@@ -251,11 +246,11 @@ class Snapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ens/snapshot:Snapshot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ens/snapshot:Snapshot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     diskId = registerOutput<String>('diskId');

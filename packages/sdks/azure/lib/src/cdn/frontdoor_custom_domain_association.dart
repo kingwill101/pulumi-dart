@@ -732,7 +732,6 @@ import 'frontdoor_custom_domain_association_state.dart';
 class FrontdoorCustomDomainAssociation extends pulumi.CustomResource {
   /// The ID of the Front Door Custom Domain that should be managed by the association resource. Changing this forces a new association resource to be created.
   late final pulumi.Output<String> cdnFrontdoorCustomDomainId;
-
   /// One or more IDs of the Front Door Route to which the Front Door Custom Domain is associated with.
   ///
   /// &gt; **Note:** This should include all of the Front Door Route resources that the Front Door Custom Domain is associated with. If the list of Front Door Routes is not complete you will receive the service side error `This resource is still associated with a route. Please delete the association with the route first before deleting this resource` when you attempt to `destroy`/`delete` your Front Door Custom Domain.
@@ -747,14 +746,12 @@ class FrontdoorCustomDomainAssociation extends pulumi.CustomResource {
     FrontdoorCustomDomainAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cdn/frontdoorCustomDomainAssociation:FrontdoorCustomDomainAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    cdnFrontdoorCustomDomainId = registerOutput<String>(
-      'cdnFrontdoorCustomDomainId',
-    );
+          'azure:cdn/frontdoorCustomDomainAssociation:FrontdoorCustomDomainAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    cdnFrontdoorCustomDomainId = registerOutput<String>('cdnFrontdoorCustomDomainId');
     cdnFrontdoorRouteIds = registerOutput<List<String>>('cdnFrontdoorRouteIds');
   }
 
@@ -776,14 +773,12 @@ class FrontdoorCustomDomainAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cdn/frontdoorCustomDomainAssociation:FrontdoorCustomDomainAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    cdnFrontdoorCustomDomainId = registerOutput<String>(
-      'cdnFrontdoorCustomDomainId',
-    );
+          'azure:cdn/frontdoorCustomDomainAssociation:FrontdoorCustomDomainAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    cdnFrontdoorCustomDomainId = registerOutput<String>('cdnFrontdoorCustomDomainId');
     cdnFrontdoorRouteIds = registerOutput<List<String>>('cdnFrontdoorRouteIds');
   }
 }

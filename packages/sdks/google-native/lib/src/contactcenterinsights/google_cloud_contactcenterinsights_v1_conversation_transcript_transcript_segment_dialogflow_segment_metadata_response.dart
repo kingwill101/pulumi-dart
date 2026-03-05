@@ -19,13 +19,10 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentD
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse(
-      smartReplyAllowlistCovered: pulumi.Input.fromValue(
-        map['smartReplyAllowlistCovered'] as bool,
-      ),
+      smartReplyAllowlistCovered: pulumi.Input.fromValue(map['smartReplyAllowlistCovered'] as bool),
     );
   }
 }
+

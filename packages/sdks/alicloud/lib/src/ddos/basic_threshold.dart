@@ -391,22 +391,16 @@ import 'basic_threshold_state.dart';
 class BasicThreshold extends pulumi.CustomResource {
   /// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
   late final pulumi.Output<int> bps;
-
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
-
   /// The type of the Instance. Valid values: `ecs`,`slb`,`eip`.
   late final pulumi.Output<String> instanceType;
-
   /// The IP address of the public IP address asset.
   late final pulumi.Output<String> internetIp;
-
   /// Maximum flow cleaning threshold. Unit: Mbps.
   late final pulumi.Output<int> maxBps;
-
   /// The maximum number of messages cleaning threshold. Unit: pps.
   late final pulumi.Output<int> maxPps;
-
   /// The current message number cleaning threshold. Unit: pps.
   late final pulumi.Output<int> pps;
 
@@ -419,11 +413,11 @@ class BasicThreshold extends pulumi.CustomResource {
     BasicThresholdArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ddos/basicThreshold:BasicThreshold',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ddos/basicThreshold:BasicThreshold',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bps = registerOutput<int>('bps');
     instanceId = registerOutput<String>('instanceId');
     instanceType = registerOutput<String>('instanceType');
@@ -451,11 +445,11 @@ class BasicThreshold extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ddos/basicThreshold:BasicThreshold',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ddos/basicThreshold:BasicThreshold',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bps = registerOutput<int>('bps');
     instanceId = registerOutput<String>('instanceId');
     instanceType = registerOutput<String>('instanceType');

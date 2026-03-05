@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceParameter {
   /// The parameter name.
   final pulumi.Input<String> name;
-
   /// The parameter value.
   final pulumi.Input<String> value;
 
   /// Creates a new [InstanceParameter].
   /// [name] The parameter name.
   /// [value] The parameter value.
-  InstanceParameter({required this.name, required this.value});
+  InstanceParameter({
+    required this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory InstanceParameter.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class InstanceParameter {
     );
   }
 }
+

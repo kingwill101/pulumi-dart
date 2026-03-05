@@ -7,29 +7,21 @@ import 'managed_identity_reference.dart';
 class ServiceBus {
   /// Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
   final pulumi.Input<String>? authenticationType;
-
   /// Dead letter storage secret for key-based authentication. Will be obfuscated during read.
   final pulumi.Input<String>? deadLetterSecret;
-
   /// Dead letter storage URL for identity-based authentication.
   final pulumi.Input<String>? deadLetterUri;
-
   /// The type of Digital Twins endpoint
   /// Expected value is 'ServiceBus'.
   final pulumi.Input<String> endpointType;
-
   /// The URL of the ServiceBus namespace for identity-based authentication. It must include the protocol 'sb://'.
   final pulumi.Input<String>? endpointUri;
-
   /// The ServiceBus Topic name for identity-based authentication.
   final pulumi.Input<String>? entityPath;
-
   /// Managed identity properties for the endpoint.
   final pulumi.Input<ManagedIdentityReference>? identity;
-
   /// PrimaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
   final pulumi.Input<String>? primaryConnectionString;
-
   /// SecondaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
   final pulumi.Input<String>? secondaryConnectionString;
 
@@ -63,11 +55,7 @@ class ServiceBus {
       'endpointType': endpointType,
       'endpointUri': ?endpointUri,
       'entityPath': ?entityPath,
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedIdentityReference,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedIdentityReference, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'primaryConnectionString': ?primaryConnectionString,
       'secondaryConnectionString': ?secondaryConnectionString,
     };
@@ -75,51 +63,16 @@ class ServiceBus {
 
   factory ServiceBus.fromMap(Map<String, dynamic> map) {
     return ServiceBus(
-      authenticationType: (() {
-        final guardedValue = map['authenticationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deadLetterSecret: (() {
-        final guardedValue = map['deadLetterSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deadLetterUri: (() {
-        final guardedValue = map['deadLetterUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deadLetterSecret: (() { final guardedValue = map['deadLetterSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deadLetterUri: (() { final guardedValue = map['deadLetterUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
-      endpointUri: (() {
-        final guardedValue = map['endpointUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      entityPath: (() {
-        final guardedValue = map['entityPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedIdentityReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      primaryConnectionString: (() {
-        final guardedValue = map['primaryConnectionString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryConnectionString: (() {
-        final guardedValue = map['secondaryConnectionString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpointUri: (() { final guardedValue = map['endpointUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      entityPath: (() { final guardedValue = map['entityPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedIdentityReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      primaryConnectionString: (() { final guardedValue = map['primaryConnectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryConnectionString: (() { final guardedValue = map['secondaryConnectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

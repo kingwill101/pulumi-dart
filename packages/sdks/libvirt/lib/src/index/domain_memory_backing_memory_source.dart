@@ -8,19 +8,20 @@ class DomainMemoryBackingMemorySource {
 
   /// Creates a new [DomainMemoryBackingMemorySource].
   /// [type] Sets the type of the memory source, determining how the memory backing is fetched.
-  DomainMemoryBackingMemorySource({this.type});
+  DomainMemoryBackingMemorySource({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
   factory DomainMemoryBackingMemorySource.fromMap(Map<String, dynamic> map) {
     return DomainMemoryBackingMemorySource(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

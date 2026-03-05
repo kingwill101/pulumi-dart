@@ -5,14 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TritonModelJobInputResponse {
   /// Description for the input.
   final pulumi.Input<String>? description;
-
   /// Enum to determine the Job Input Type.
   /// Expected value is 'triton_model'.
   final pulumi.Input<String> jobInputType;
-
   /// Input Asset Delivery Mode.
   final pulumi.Input<String>? mode;
-
   /// [Required] Input Asset URI.
   final pulumi.Input<String> uri;
 
@@ -39,18 +36,11 @@ class TritonModelJobInputResponse {
 
   factory TritonModelJobInputResponse.fromMap(Map<String, dynamic> map) {
     return TritonModelJobInputResponse(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jobInputType: pulumi.Input.fromValue(map['jobInputType'] as String),
-      mode: (() {
-        final guardedValue = map['mode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

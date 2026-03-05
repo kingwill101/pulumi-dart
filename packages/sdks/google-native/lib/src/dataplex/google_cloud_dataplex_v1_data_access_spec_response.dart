@@ -9,17 +9,20 @@ class GoogleCloudDataplexV1DataAccessSpecResponse {
 
   /// Creates a new [GoogleCloudDataplexV1DataAccessSpecResponse].
   /// [readers] Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources.
-  GoogleCloudDataplexV1DataAccessSpecResponse({required this.readers});
+  GoogleCloudDataplexV1DataAccessSpecResponse({
+    required this.readers,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'readers': readers};
+    return <String, dynamic>{
+      'readers': readers,
+    };
   }
 
-  factory GoogleCloudDataplexV1DataAccessSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1DataAccessSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataAccessSpecResponse(
       readers: pulumi.Input.fromValue((map['readers'] as List).cast<String>()),
     );
   }
 }
+

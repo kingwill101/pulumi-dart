@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStaticAccountsAccount {
   /// Access key.
   final pulumi.Input<String> accessKey;
-
   /// Create time stamp. Unix timestamp, to millisecond level.
   final pulumi.Input<String> createTime;
-
   /// The `key` of the resource supplied above.The value is formulated as `&lt;instance_id&gt;:&lt;access_key&gt;`.
   final pulumi.Input<String> id;
-
   /// InstanceId
   final pulumi.Input<String> instanceId;
-
   /// The ID of the user's primary account.
   final pulumi.Input<String> masterUid;
-
   /// Static password.
   final pulumi.Input<String> password;
-
   /// Static username.
   final pulumi.Input<String> userName;
 
@@ -66,3 +60,4 @@ class GetStaticAccountsAccount {
     );
   }
 }
+

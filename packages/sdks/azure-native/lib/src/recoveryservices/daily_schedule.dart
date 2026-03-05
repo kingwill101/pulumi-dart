@@ -8,19 +8,20 @@ class DailySchedule {
 
   /// Creates a new [DailySchedule].
   /// [scheduleRunTimes] List of times of day this schedule has to be run.
-  DailySchedule({this.scheduleRunTimes});
+  DailySchedule({
+    this.scheduleRunTimes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scheduleRunTimes': ?scheduleRunTimes};
+    return <String, dynamic>{
+      'scheduleRunTimes': ?scheduleRunTimes,
+    };
   }
 
   factory DailySchedule.fromMap(Map<String, dynamic> map) {
     return DailySchedule(
-      scheduleRunTimes: (() {
-        final guardedValue = map['scheduleRunTimes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      scheduleRunTimes: (() { final guardedValue = map['scheduleRunTimes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

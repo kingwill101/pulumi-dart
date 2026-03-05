@@ -166,55 +166,39 @@ class Certificate extends pulumi.CustomResource {
   /// &gt; **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `algorithm` is required.
   late final pulumi.Output<String> algorithm;
   late final pulumi.Output<String?> aliasName;
-
   /// The type of the CA certificate. Default value: `ROOT`. Valid values:
   /// - `ROOT`: A root CA certificate.
   /// - `SUB_ROOT`: A subordinate CA certificate.
   late final pulumi.Output<String> certificateType;
-
   /// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
   late final pulumi.Output<String> commonName;
-
   /// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
   late final pulumi.Output<String?> countryCode;
-
   /// The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crl_day` takes effect only if `certificate_type` is set to `SUB_ROOT`.
   late final pulumi.Output<int> crlDay;
-
   /// This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
   late final pulumi.Output<bool?> enableCrl;
-
   /// The extended key usages. **Note:** `extended_key_usages` takes effect only if `certificate_type` is set to `SUB_ROOT`.
   late final pulumi.Output<List<String>?> extendedKeyUsages;
-
   /// Name of the city where the organization is located. Support the use of Chinese, English characters.
   late final pulumi.Output<String> locality;
-
   /// The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
   late final pulumi.Output<String> organization;
-
   /// The name of the department or branch under the organization. Support the use of Chinese, English characters.
   late final pulumi.Output<String> organizationUnit;
-
   /// The unique identifier of the root CA certificate.
   /// &gt; **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `parent_identifier` is required.
   late final pulumi.Output<String?> parentIdentifier;
-
   /// The certificate path length. Default value: `0`. **Note:** `path_len_constraint` takes effect only if `certificate_type` is set to `SUB_ROOT`.
   late final pulumi.Output<int?> pathLenConstraint;
-
   /// A resource property field representing the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
   late final pulumi.Output<String> state;
-
   /// The status of the CA certificate.
   late final pulumi.Output<String> status;
-
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The validity period of the CA certificate, in years.
   /// &gt; **NOTE:**  It is recommended to set to `5` to `10` years.
   late final pulumi.Output<int> years;
@@ -228,11 +212,11 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sslcertificatesservicepca/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sslcertificatesservicepca/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     algorithm = registerOutput<String>('algorithm');
     aliasName = registerOutput<String?>('aliasName');
     certificateType = registerOutput<String>('certificateType');
@@ -271,11 +255,11 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sslcertificatesservicepca/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sslcertificatesservicepca/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     algorithm = registerOutput<String>('algorithm');
     aliasName = registerOutput<String?>('aliasName');
     certificateType = registerOutput<String>('certificateType');

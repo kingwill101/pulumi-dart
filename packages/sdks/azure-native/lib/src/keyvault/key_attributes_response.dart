@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyAttributesResponse {
   /// Creation time in seconds since 1970-01-01T00:00:00Z.
   final pulumi.Input<double> created;
-
   /// Determines whether or not the object is enabled.
   final pulumi.Input<bool>? enabled;
-
   /// Expiry date in seconds since 1970-01-01T00:00:00Z.
   final pulumi.Input<double>? expires;
-
   /// Indicates if the private key can be exported.
   final pulumi.Input<bool>? exportable;
-
   /// Not before date in seconds since 1970-01-01T00:00:00Z.
   final pulumi.Input<double>? notBefore;
-
   /// The deletion recovery level currently in effect for the object. If it contains 'Purgeable', then the object can be permanently deleted by a privileged user; otherwise, only the system can purge the object at the end of the retention interval.
   final pulumi.Input<String> recoveryLevel;
-
   /// Last updated time in seconds since 1970-01-01T00:00:00Z.
   final pulumi.Input<double> updated;
 
@@ -58,28 +52,13 @@ class KeyAttributesResponse {
   factory KeyAttributesResponse.fromMap(Map<String, dynamic> map) {
     return KeyAttributesResponse(
       created: pulumi.Input.fromValue(map['created'] as double),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      expires: (() {
-        final guardedValue = map['expires'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      exportable: (() {
-        final guardedValue = map['exportable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      notBefore: (() {
-        final guardedValue = map['notBefore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      expires: (() { final guardedValue = map['expires']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      exportable: (() { final guardedValue = map['exportable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      notBefore: (() { final guardedValue = map['notBefore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       recoveryLevel: pulumi.Input.fromValue(map['recoveryLevel'] as String),
       updated: pulumi.Input.fromValue(map['updated'] as double),
     );
   }
 }
+

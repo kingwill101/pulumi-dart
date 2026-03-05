@@ -15,3 +15,4 @@ enum ResourcePredictionsProfileType {
     throw ArgumentError('Unknown ResourcePredictionsProfileType value: $value');
   }
 }
+

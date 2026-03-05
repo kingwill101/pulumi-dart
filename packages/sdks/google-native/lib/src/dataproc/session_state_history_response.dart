@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SessionStateHistoryResponse {
   /// The state of the session at this point in the session history.
   final pulumi.Input<String> state;
-
   /// Details about the state at this point in the session history.
   final pulumi.Input<String> stateMessage;
-
   /// The time when the session entered the historical state.
   final pulumi.Input<String> stateStartTime;
 
@@ -39,3 +37,4 @@ class SessionStateHistoryResponse {
     );
   }
 }
+

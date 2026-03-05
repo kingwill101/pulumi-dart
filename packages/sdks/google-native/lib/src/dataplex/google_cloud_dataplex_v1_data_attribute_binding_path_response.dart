@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1DataAttributeBindingPathResponse {
   /// Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
   final pulumi.Input<List<String>> attributes;
-
   /// The name identifier of the path. Nested columns should be of the form: 'address.city'.
   final pulumi.Input<String> name;
 
@@ -19,17 +18,17 @@ class GoogleCloudDataplexV1DataAttributeBindingPathResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'attributes': attributes, 'name': name};
+    return <String, dynamic>{
+      'attributes': attributes,
+      'name': name,
+    };
   }
 
-  factory GoogleCloudDataplexV1DataAttributeBindingPathResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1DataAttributeBindingPathResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataAttributeBindingPathResponse(
-      attributes: pulumi.Input.fromValue(
-        (map['attributes'] as List).cast<String>(),
-      ),
+      attributes: pulumi.Input.fromValue((map['attributes'] as List).cast<String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

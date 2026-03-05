@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreMemoryStrategyConfigurationConsolidation {
   /// Additional text to append to the model prompt for consolidation processing.
   final pulumi.Input<String> appendToPrompt;
-
   /// ID of the foundation model to use for consolidation processing.
   final pulumi.Input<String> modelId;
 
@@ -24,12 +23,11 @@ class AgentcoreMemoryStrategyConfigurationConsolidation {
     };
   }
 
-  factory AgentcoreMemoryStrategyConfigurationConsolidation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreMemoryStrategyConfigurationConsolidation.fromMap(Map<String, dynamic> map) {
     return AgentcoreMemoryStrategyConfigurationConsolidation(
       appendToPrompt: pulumi.Input.fromValue(map['appendToPrompt'] as String),
       modelId: pulumi.Input.fromValue(map['modelId'] as String),
     );
   }
 }
+

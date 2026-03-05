@@ -391,35 +391,25 @@ import 'resource_gateway_timeouts.dart';
 class ResourceGateway extends pulumi.CustomResource {
   /// ARN of the resource gateway.
   late final pulumi.Output<String> arn;
-
   /// IP address type used by the resource gateway. Valid values are `IPV4`, `IPV6`, and `DUALSTACK`. The IP address type of a resource gateway must be compatible with the subnets of the resource gateway and the IP address type of the resource.
   late final pulumi.Output<String> ipAddressType;
-
   /// The number of IPv4 addresses per ENI for your resource. This argument is only applicable to `IPV4` and `DUALSTACK` IP address types. Defaults to `16`.
   late final pulumi.Output<int> ipv4AddressesPerEni;
-
   /// Name of the resource gateway.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Security group IDs associated with the resource gateway. The security groups must be in the same VPC.
   late final pulumi.Output<List<String>> securityGroupIds;
-
   /// Status of the resource gateway.
   late final pulumi.Output<String> status;
-
   /// IDs of the VPC subnets in which to create the resource gateway.
   late final pulumi.Output<List<String>> subnetIds;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ResourceGatewayTimeouts?> timeouts;
-
   /// ID of the VPC for the resource gateway.
   ///
   /// The following arguments are optional:
@@ -434,11 +424,11 @@ class ResourceGateway extends pulumi.CustomResource {
     ResourceGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:vpclattice/resourceGateway:ResourceGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:vpclattice/resourceGateway:ResourceGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     ipAddressType = registerOutput<String>('ipAddressType');
     ipv4AddressesPerEni = registerOutput<int>('ipv4AddressesPerEni');
@@ -449,16 +439,7 @@ class ResourceGateway extends pulumi.CustomResource {
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ResourceGatewayTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceGatewayTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ResourceGatewayTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceGatewayTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -480,11 +461,11 @@ class ResourceGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:vpclattice/resourceGateway:ResourceGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:vpclattice/resourceGateway:ResourceGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     ipAddressType = registerOutput<String>('ipAddressType');
     ipv4AddressesPerEni = registerOutput<int>('ipv4AddressesPerEni');
@@ -495,16 +476,7 @@ class ResourceGateway extends pulumi.CustomResource {
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ResourceGatewayTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceGatewayTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ResourceGatewayTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceGatewayTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

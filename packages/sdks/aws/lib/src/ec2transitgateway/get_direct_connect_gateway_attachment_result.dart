@@ -9,11 +9,9 @@ class GetDirectConnectGatewayAttachmentResult {
   final String arn;
   final String? dxGatewayId;
   final List<GetDirectConnectGatewayAttachmentFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// Key-value tags for the EC2 Transit Gateway Attachment.
   final Map<String, String> tags;
   final String? transitGatewayId;
@@ -40,14 +38,7 @@ class GetDirectConnectGatewayAttachmentResult {
     return <String, dynamic>{
       'arn': arn,
       'dxGatewayId': ?dxGatewayId,
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetDirectConnectGatewayAttachmentFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDirectConnectGatewayAttachmentFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'region': region,
       'tags': tags,
@@ -55,34 +46,16 @@ class GetDirectConnectGatewayAttachmentResult {
     };
   }
 
-  factory GetDirectConnectGatewayAttachmentResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDirectConnectGatewayAttachmentResult.fromMap(Map<String, dynamic> map) {
     return GetDirectConnectGatewayAttachmentResult(
       arn: map['arn'] as String,
-      dxGatewayId: (() {
-        final guardedValue = map['dxGatewayId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetDirectConnectGatewayAttachmentFilter>(
-          guardedValue,
-          (value) => GetDirectConnectGatewayAttachmentFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      dxGatewayId: (() { final guardedValue = map['dxGatewayId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDirectConnectGatewayAttachmentFilter>(guardedValue, (value) => GetDirectConnectGatewayAttachmentFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      transitGatewayId: (() {
-        final guardedValue = map['transitGatewayId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      transitGatewayId: (() { final guardedValue = map['transitGatewayId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

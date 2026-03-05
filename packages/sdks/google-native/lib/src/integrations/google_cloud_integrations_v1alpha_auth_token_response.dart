@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIntegrationsV1alphaAuthTokenResponse {
   /// The token for the auth type.
   final pulumi.Input<String> token;
-
   /// Authentication type, e.g. "Basic", "Bearer", etc.
   final pulumi.Input<String> type;
 
@@ -19,15 +18,17 @@ class GoogleCloudIntegrationsV1alphaAuthTokenResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'token': token, 'type': type};
+    return <String, dynamic>{
+      'token': token,
+      'type': type,
+    };
   }
 
-  factory GoogleCloudIntegrationsV1alphaAuthTokenResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIntegrationsV1alphaAuthTokenResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaAuthTokenResponse(
       token: pulumi.Input.fromValue(map['token'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

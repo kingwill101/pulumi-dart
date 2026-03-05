@@ -18,15 +18,10 @@ class AppLoggingSettingsConversationLoggingSettings {
     };
   }
 
-  factory AppLoggingSettingsConversationLoggingSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppLoggingSettingsConversationLoggingSettings.fromMap(Map<String, dynamic> map) {
     return AppLoggingSettingsConversationLoggingSettings(
-      disableConversationLogging: (() {
-        final guardedValue = map['disableConversationLogging'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disableConversationLogging: (() { final guardedValue = map['disableConversationLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

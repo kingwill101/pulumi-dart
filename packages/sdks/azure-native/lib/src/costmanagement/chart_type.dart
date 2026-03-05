@@ -18,3 +18,4 @@ enum ChartType {
     throw ArgumentError('Unknown ChartType value: $value');
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharingEnvironmentConfigResponse {
   /// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
   final pulumi.Input<Map<String, dynamic>> dcrExchangeConfig;
-
   /// Default Analytics Hub data exchange, used for secured data sharing.
   final pulumi.Input<Map<String, dynamic>> defaultExchangeConfig;
 
@@ -27,12 +26,9 @@ class SharingEnvironmentConfigResponse {
 
   factory SharingEnvironmentConfigResponse.fromMap(Map<String, dynamic> map) {
     return SharingEnvironmentConfigResponse(
-      dcrExchangeConfig: pulumi.Input.fromValue(
-        (map['dcrExchangeConfig']! as Map).cast<String, dynamic>(),
-      ),
-      defaultExchangeConfig: pulumi.Input.fromValue(
-        (map['defaultExchangeConfig']! as Map).cast<String, dynamic>(),
-      ),
+      dcrExchangeConfig: pulumi.Input.fromValue((map['dcrExchangeConfig']! as Map).cast<String, dynamic>()),
+      defaultExchangeConfig: pulumi.Input.fromValue((map['defaultExchangeConfig']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

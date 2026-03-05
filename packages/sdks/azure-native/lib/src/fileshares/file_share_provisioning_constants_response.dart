@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FileShareProvisioningConstantsResponse {
   /// Base IO per second.
   final pulumi.Input<int> baseIOPerSec;
-
   /// Base throughput in MiB per second.
   final pulumi.Input<int> baseThroughputMiBPerSec;
-
   /// Scalar IO per second.
   final pulumi.Input<double> scalarIOPerSec;
-
   /// Scalar throughput in MiB per second.
   final pulumi.Input<double> scalarThroughputMiBPerSec;
 
@@ -37,18 +34,13 @@ class FileShareProvisioningConstantsResponse {
     };
   }
 
-  factory FileShareProvisioningConstantsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FileShareProvisioningConstantsResponse.fromMap(Map<String, dynamic> map) {
     return FileShareProvisioningConstantsResponse(
       baseIOPerSec: pulumi.Input.fromValue(map['baseIOPerSec'] as int),
-      baseThroughputMiBPerSec: pulumi.Input.fromValue(
-        map['baseThroughputMiBPerSec'] as int,
-      ),
+      baseThroughputMiBPerSec: pulumi.Input.fromValue(map['baseThroughputMiBPerSec'] as int),
       scalarIOPerSec: pulumi.Input.fromValue(map['scalarIOPerSec'] as double),
-      scalarThroughputMiBPerSec: pulumi.Input.fromValue(
-        map['scalarThroughputMiBPerSec'] as double,
-      ),
+      scalarThroughputMiBPerSec: pulumi.Input.fromValue(map['scalarThroughputMiBPerSec'] as double),
     );
   }
 }
+

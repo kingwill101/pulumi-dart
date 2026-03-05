@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureADAdministratorArgs {
   /// The name of the Azure AD Administrator.
   final pulumi.Input<String>? administratorName;
-
   /// Type of the sever administrator.
   final pulumi.Input<String>? administratorType;
-
   /// The resource id of the identity used for AAD Authentication.
   final pulumi.Input<String>? identityResourceId;
-
   /// Login name of the server administrator.
   final pulumi.Input<String>? login;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the server.
   final pulumi.Input<String> serverName;
-
   /// SID (object ID) of the server administrator.
   final pulumi.Input<String>? sid;
-
   /// Tenant ID of the administrator.
   final pulumi.Input<String>? tenantId;
 
@@ -66,40 +59,15 @@ class AzureADAdministratorArgs {
 
   factory AzureADAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return AzureADAdministratorArgs(
-      administratorName: (() {
-        final guardedValue = map['administratorName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      administratorType: (() {
-        final guardedValue = map['administratorType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identityResourceId: (() {
-        final guardedValue = map['identityResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      login: (() {
-        final guardedValue = map['login'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      administratorName: (() { final guardedValue = map['administratorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      administratorType: (() { final guardedValue = map['administratorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identityResourceId: (() { final guardedValue = map['identityResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      login: (() { final guardedValue = map['login']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
-      sid: (() {
-        final guardedValue = map['sid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sid: (() { final guardedValue = map['sid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum InboundNATRuleProtocol {
     throw ArgumentError('Unknown InboundNATRuleProtocol value: $value');
   }
 }
+

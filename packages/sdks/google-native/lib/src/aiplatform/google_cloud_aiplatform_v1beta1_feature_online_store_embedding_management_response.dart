@@ -14,14 +14,15 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

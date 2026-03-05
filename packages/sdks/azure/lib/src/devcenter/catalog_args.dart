@@ -11,16 +11,12 @@ import 'catalog_catalog_github.dart';
 class CatalogArgs {
   /// A `catalog_adogit` block as defined below.
   final pulumi.Input<CatalogCatalogAdogit>? catalogAdogit;
-
   /// A `catalog_github` block as defined below.
   final pulumi.Input<CatalogCatalogGithub>? catalogGithub;
-
   /// Specifies the Dev Center Id within which this Dev Center Catalog should exist. Changing this forces a new Dev Center Catalog to be created.
   final pulumi.Input<String> devCenterId;
-
   /// Specifies the name of this Dev Center Catalog. Changing this forces a new Dev Center to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the name of the Resource Group within which this Dev Center Catalog should exist. Changing this forces a new Dev Center to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -40,16 +36,8 @@ class CatalogArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'catalogAdogit':
-          ?pulumi.Input.mapOptionalInputValue<
-            CatalogCatalogAdogit,
-            Map<String, dynamic>
-          >(catalogAdogit, (value) => value.toMap()),
-      'catalogGithub':
-          ?pulumi.Input.mapOptionalInputValue<
-            CatalogCatalogGithub,
-            Map<String, dynamic>
-          >(catalogGithub, (value) => value.toMap()),
+      'catalogAdogit': ?pulumi.Input.mapOptionalInputValue<CatalogCatalogAdogit, Map<String, dynamic>>(catalogAdogit, (value) => value.toMap()),
+      'catalogGithub': ?pulumi.Input.mapOptionalInputValue<CatalogCatalogGithub, Map<String, dynamic>>(catalogGithub, (value) => value.toMap()),
       'devCenterId': devCenterId,
       'name': ?name,
       'resourceGroupName': resourceGroupName,
@@ -58,33 +46,12 @@ class CatalogArgs {
 
   factory CatalogArgs.fromMap(Map<String, dynamic> map) {
     return CatalogArgs(
-      catalogAdogit: (() {
-        final guardedValue = map['catalogAdogit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CatalogCatalogAdogit.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      catalogGithub: (() {
-        final guardedValue = map['catalogGithub'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CatalogCatalogGithub.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      catalogAdogit: (() { final guardedValue = map['catalogAdogit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CatalogCatalogAdogit.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      catalogGithub: (() { final guardedValue = map['catalogGithub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CatalogCatalogGithub.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       devCenterId: pulumi.Input.fromValue(map['devCenterId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

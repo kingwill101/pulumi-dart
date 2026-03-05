@@ -149,28 +149,20 @@ import 'upload_state.dart';
 class Upload extends pulumi.CustomResource {
   /// The Amazon Resource Name of this upload.
   late final pulumi.Output<String> arn;
-
   /// The upload's category.
   late final pulumi.Output<String> category;
-
   /// The upload's content type (for example, application/octet-stream).
   late final pulumi.Output<String?> contentType;
-
   /// The upload's metadata. For example, for Android, this contains information that is parsed from the manifest and is displayed in the AWS Device Farm console after the associated app is uploaded.
   late final pulumi.Output<String> metadata;
-
   /// The upload's file name. The name should not contain any forward slashes (/). If you are uploading an iOS app, the file name must end with the .ipa extension. If you are uploading an Android app, the file name must end with the .apk extension. For all others, the file name must end with the .zip file extension.
   late final pulumi.Output<String> name;
-
   /// The ARN of the project for the upload.
   late final pulumi.Output<String> projectArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The upload's upload type. See [AWS Docs](https://docs.aws.amazon.com/devicefarm/latest/APIReference/API_CreateUpload.html#API_CreateUpload_RequestSyntax) for valid list of values.
   late final pulumi.Output<String> type;
-
   /// The presigned Amazon S3 URL that was used to store a file using a PUT request.
   late final pulumi.Output<String> url;
 
@@ -178,13 +170,16 @@ class Upload extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Upload]. {@macro pulumi_devicefarm_upload_upload_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Upload(String name, {UploadArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:devicefarm/upload:Upload',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Upload(
+    String name, {
+    UploadArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:devicefarm/upload:Upload',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     category = registerOutput<String>('category');
     contentType = registerOutput<String?>('contentType');
@@ -214,11 +209,11 @@ class Upload extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:devicefarm/upload:Upload',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:devicefarm/upload:Upload',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     category = registerOutput<String>('category');
     contentType = registerOutput<String?>('contentType');

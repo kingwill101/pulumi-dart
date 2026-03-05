@@ -8,46 +8,32 @@ import 'system_data_response.dart';
 class GetDomainResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The location where the Domains resource data is stored at rest.
   final String dataLocation;
-
   /// Describes how a Domains resource is being managed.
   final String domainManagement;
-
   /// P2 sender domain that is displayed to the email recipients [RFC 5322].
   final String fromSenderDomain;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// P1 sender domain that is present on the email envelope [RFC 5321].
   final String mailFromSenderDomain;
-
   /// The name of the resource
   final String name;
-
   /// Provisioning state of the resource.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Describes whether user engagement tracking is enabled or disabled.
   final String? userEngagementTracking;
-
   /// List of DnsRecord
   final DomainPropertiesResponseVerificationRecords verificationRecords;
-
   /// List of VerificationStatusRecord
   final DomainPropertiesResponseVerificationStates verificationStates;
 
@@ -116,26 +102,13 @@ class GetDomainResult {
       mailFromSenderDomain: map['mailFromSenderDomain'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      userEngagementTracking: (() {
-        final guardedValue = map['userEngagementTracking'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      verificationRecords: DomainPropertiesResponseVerificationRecords.fromMap(
-        (map['verificationRecords']! as Map).cast<String, dynamic>(),
-      ),
-      verificationStates: DomainPropertiesResponseVerificationStates.fromMap(
-        (map['verificationStates']! as Map).cast<String, dynamic>(),
-      ),
+      userEngagementTracking: (() { final guardedValue = map['userEngagementTracking']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      verificationRecords: DomainPropertiesResponseVerificationRecords.fromMap((map['verificationRecords']! as Map).cast<String, dynamic>()),
+      verificationStates: DomainPropertiesResponseVerificationStates.fromMap((map['verificationStates']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -7,10 +7,8 @@ import 'arm_template_mapping_rule_profile_response.dart';
 class AzureCoreArmTemplateDeployMappingRuleProfileResponse {
   /// The application enablement.
   final pulumi.Input<String>? applicationEnablement;
-
   /// The template mapping rule profile.
-  final pulumi.Input<ArmTemplateMappingRuleProfileResponse>?
-  templateMappingRuleProfile;
+  final pulumi.Input<ArmTemplateMappingRuleProfileResponse>? templateMappingRuleProfile;
 
   /// Creates a new [AzureCoreArmTemplateDeployMappingRuleProfileResponse].
   /// [applicationEnablement] The application enablement.
@@ -23,32 +21,15 @@ class AzureCoreArmTemplateDeployMappingRuleProfileResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationEnablement': ?applicationEnablement,
-      'templateMappingRuleProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            ArmTemplateMappingRuleProfileResponse,
-            Map<String, dynamic>
-          >(templateMappingRuleProfile, (value) => value.toMap()),
+      'templateMappingRuleProfile': ?pulumi.Input.mapOptionalInputValue<ArmTemplateMappingRuleProfileResponse, Map<String, dynamic>>(templateMappingRuleProfile, (value) => value.toMap()),
     };
   }
 
-  factory AzureCoreArmTemplateDeployMappingRuleProfileResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureCoreArmTemplateDeployMappingRuleProfileResponse.fromMap(Map<String, dynamic> map) {
     return AzureCoreArmTemplateDeployMappingRuleProfileResponse(
-      applicationEnablement: (() {
-        final guardedValue = map['applicationEnablement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      templateMappingRuleProfile: (() {
-        final guardedValue = map['templateMappingRuleProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ArmTemplateMappingRuleProfileResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      applicationEnablement: (() { final guardedValue = map['applicationEnablement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      templateMappingRuleProfile: (() { final guardedValue = map['templateMappingRuleProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ArmTemplateMappingRuleProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

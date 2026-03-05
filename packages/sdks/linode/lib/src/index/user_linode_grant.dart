@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserLinodeGrant {
   /// The ID of the entity this grant applies to.
   final pulumi.Input<int> id;
-
   /// The level of access this User has to this entity. If null, this User has no access.
   final pulumi.Input<String> permissions;
 
   /// Creates a new [UserLinodeGrant].
   /// [id] The ID of the entity this grant applies to.
   /// [permissions] The level of access this User has to this entity. If null, this User has no access.
-  UserLinodeGrant({required this.id, required this.permissions});
+  UserLinodeGrant({
+    required this.id,
+    required this.permissions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'permissions': permissions};
+    return <String, dynamic>{
+      'id': id,
+      'permissions': permissions,
+    };
   }
 
   factory UserLinodeGrant.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class UserLinodeGrant {
     );
   }
 }
+

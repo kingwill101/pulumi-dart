@@ -365,19 +365,14 @@ import 'api_operation_policy_state.dart';
 class ApiOperationPolicy extends pulumi.CustomResource {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// The name of the API within the API Management Service where the Operation exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiName;
-
   /// The operation identifier within an API. Must be unique in the current API Management service instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> operationId;
-
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The XML Content for this Policy.
   late final pulumi.Output<String> xmlContent;
-
   /// A link to a Policy XML Document, which must be publicly available.
   late final pulumi.Output<String?> xmlLink;
 
@@ -390,11 +385,11 @@ class ApiOperationPolicy extends pulumi.CustomResource {
     ApiOperationPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiOperationPolicy:ApiOperationPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiOperationPolicy:ApiOperationPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
     operationId = registerOutput<String>('operationId');
@@ -421,11 +416,11 @@ class ApiOperationPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiOperationPolicy:ApiOperationPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiOperationPolicy:ApiOperationPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
     operationId = registerOutput<String>('operationId');

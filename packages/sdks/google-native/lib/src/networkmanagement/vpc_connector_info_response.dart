@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcConnectorInfoResponse {
   /// Name of a VPC connector.
   final pulumi.Input<String> displayName;
-
   /// Location in which the VPC connector is deployed.
   final pulumi.Input<String> location;
-
   /// URI of a VPC connector.
   final pulumi.Input<String> uri;
 
@@ -39,3 +37,4 @@ class VpcConnectorInfoResponse {
     );
   }
 }
+

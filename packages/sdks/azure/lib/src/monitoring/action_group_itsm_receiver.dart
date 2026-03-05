@@ -5,18 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActionGroupItsmReceiver {
   /// The unique connection identifier of the ITSM connection.
   final pulumi.Input<String> connectionId;
-
   /// The name of the ITSM receiver.
   final pulumi.Input<String> name;
-
   /// The region of the workspace.
   ///
   /// &gt; **Note:** `ticket_configuration` should be JSON blob with `PayloadRevision` and `WorkItemType` keys (e.g., `ticket_configuration="{\"PayloadRevision\":0,\"WorkItemType\":\"Incident\"}"`), and `ticket_configuration="{}"` will return an error, see more at this [REST API issue](https://github.com/Azure/azure-rest-api-specs/issues/20488)
   final pulumi.Input<String> region;
-
   /// A JSON blob for the configurations of the ITSM action. CreateMultipleWorkItems option will be part of this blob as well.
   final pulumi.Input<String> ticketConfiguration;
-
   /// The Azure Log Analytics workspace ID where this connection is defined. Format is `&lt;subscription id&gt;|&lt;workspace id&gt;`, for example `00000000-0000-0000-0000-000000000000|00000000-0000-0000-0000-000000000000`.
   final pulumi.Input<String> workspaceId;
 
@@ -49,10 +45,9 @@ class ActionGroupItsmReceiver {
       connectionId: pulumi.Input.fromValue(map['connectionId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       region: pulumi.Input.fromValue(map['region'] as String),
-      ticketConfiguration: pulumi.Input.fromValue(
-        map['ticketConfiguration'] as String,
-      ),
+      ticketConfiguration: pulumi.Input.fromValue(map['ticketConfiguration'] as String),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
+

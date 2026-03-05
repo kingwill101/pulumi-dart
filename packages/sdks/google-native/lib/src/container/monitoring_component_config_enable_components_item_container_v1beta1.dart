@@ -12,22 +12,16 @@ enum MonitoringComponentConfigEnableComponentsItemContainerV1beta1 {
   deployment("DEPLOYMENT"),
   statefulset("STATEFULSET");
 
-  const MonitoringComponentConfigEnableComponentsItemContainerV1beta1(
-    this.wireValue,
-  );
+  const MonitoringComponentConfigEnableComponentsItemContainerV1beta1(this.wireValue);
   final String wireValue;
 
-  static MonitoringComponentConfigEnableComponentsItemContainerV1beta1
-  fromValue(String value) {
-    for (final item
-        in MonitoringComponentConfigEnableComponentsItemContainerV1beta1
-            .values) {
+  static MonitoringComponentConfigEnableComponentsItemContainerV1beta1 fromValue(String value) {
+    for (final item in MonitoringComponentConfigEnableComponentsItemContainerV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown MonitoringComponentConfigEnableComponentsItemContainerV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown MonitoringComponentConfigEnableComponentsItemContainerV1beta1 value: $value');
   }
 }
+

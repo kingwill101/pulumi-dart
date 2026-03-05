@@ -14,14 +14,15 @@ class GoogleCloudDatalabelingV1beta1BigQuerySourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'inputUri': inputUri};
+    return <String, dynamic>{
+      'inputUri': inputUri,
+    };
   }
 
-  factory GoogleCloudDatalabelingV1beta1BigQuerySourceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatalabelingV1beta1BigQuerySourceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1BigQuerySourceResponse(
       inputUri: pulumi.Input.fromValue(map['inputUri'] as String),
     );
   }
 }
+

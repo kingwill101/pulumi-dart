@@ -29,22 +29,17 @@ import 'service_perimeter_egress_policy_state.dart';
 class ServicePerimeterEgressPolicy extends pulumi.CustomResource {
   /// The name of the Access Policy this resource belongs to.
   late final pulumi.Output<String> accessPolicyId;
-
   /// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
   /// Structure is documented below.
   late final pulumi.Output<ServicePerimeterEgressPolicyEgressFrom?> egressFrom;
-
   /// Defines the conditions on the `ApiOperation` and destination resources that
   /// cause this `EgressPolicy` to apply.
   /// Structure is documented below.
   late final pulumi.Output<ServicePerimeterEgressPolicyEgressTo?> egressTo;
-
   /// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
   late final pulumi.Output<String> etag;
-
   /// The name of the Service Perimeter to add this resource to.
   late final pulumi.Output<String> perimeter;
-
   /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
   late final pulumi.Output<String?> title;
 
@@ -57,32 +52,14 @@ class ServicePerimeterEgressPolicy extends pulumi.CustomResource {
     ServicePerimeterEgressPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
-    egressFrom = registerOutput<ServicePerimeterEgressPolicyEgressFrom?>(
-      'egressFrom',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServicePerimeterEgressPolicyEgressFrom.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    egressTo = registerOutput<ServicePerimeterEgressPolicyEgressTo?>(
-      'egressTo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServicePerimeterEgressPolicyEgressTo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    egressFrom = registerOutput<ServicePerimeterEgressPolicyEgressFrom?>('egressFrom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterEgressPolicyEgressFrom.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    egressTo = registerOutput<ServicePerimeterEgressPolicyEgressTo?>('egressTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterEgressPolicyEgressTo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     perimeter = registerOutput<String>('perimeter');
     title = registerOutput<String?>('title');
@@ -106,32 +83,14 @@ class ServicePerimeterEgressPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
-    egressFrom = registerOutput<ServicePerimeterEgressPolicyEgressFrom?>(
-      'egressFrom',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServicePerimeterEgressPolicyEgressFrom.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    egressTo = registerOutput<ServicePerimeterEgressPolicyEgressTo?>(
-      'egressTo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServicePerimeterEgressPolicyEgressTo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    egressFrom = registerOutput<ServicePerimeterEgressPolicyEgressFrom?>('egressFrom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterEgressPolicyEgressFrom.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    egressTo = registerOutput<ServicePerimeterEgressPolicyEgressTo?>('egressTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterEgressPolicyEgressTo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     perimeter = registerOutput<String>('perimeter');
     title = registerOutput<String?>('title');

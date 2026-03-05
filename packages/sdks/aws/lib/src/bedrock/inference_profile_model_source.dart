@@ -8,10 +8,14 @@ class InferenceProfileModelSource {
 
   /// Creates a new [InferenceProfileModelSource].
   /// [copyFrom] The Amazon Resource Name (ARN) of the model.
-  InferenceProfileModelSource({required this.copyFrom});
+  InferenceProfileModelSource({
+    required this.copyFrom,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'copyFrom': copyFrom};
+    return <String, dynamic>{
+      'copyFrom': copyFrom,
+    };
   }
 
   factory InferenceProfileModelSource.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class InferenceProfileModelSource {
     );
   }
 }
+

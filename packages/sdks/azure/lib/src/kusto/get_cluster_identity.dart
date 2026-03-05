@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterIdentity {
   /// A list of User Assigned Managed Identity IDs to be assigned to this Kusto Cluster.
   final pulumi.Input<List<String>> identityIds;
-
   /// The Principal ID associated with this System Assigned Managed Service Identity.
   final pulumi.Input<String> principalId;
-
   /// The Tenant ID associated with this System Assigned Managed Service Identity.
   final pulumi.Input<String> tenantId;
-
   /// The type of Managed Service Identity that is configured on this Kusto Cluster.
   final pulumi.Input<String> type;
 
@@ -38,12 +35,11 @@ class GetClusterIdentity {
 
   factory GetClusterIdentity.fromMap(Map<String, dynamic> map) {
     return GetClusterIdentity(
-      identityIds: pulumi.Input.fromValue(
-        (map['identityIds'] as List).cast<String>(),
-      ),
+      identityIds: pulumi.Input.fromValue((map['identityIds'] as List).cast<String>()),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

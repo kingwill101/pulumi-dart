@@ -313,28 +313,20 @@ import 'workload_classifier_args.dart';
 class WorkloadClassifier extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The workload classifier context.
   late final pulumi.Output<String?> context;
-
   /// The workload classifier end time for classification.
   late final pulumi.Output<String?> endTime;
-
   /// The workload classifier importance.
   late final pulumi.Output<String?> importance;
-
   /// The workload classifier label.
   late final pulumi.Output<String?> label;
-
   /// The workload classifier member name.
   late final pulumi.Output<String> memberName;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The workload classifier start time for classification.
   late final pulumi.Output<String?> startTime;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -347,11 +339,11 @@ class WorkloadClassifier extends pulumi.CustomResource {
     WorkloadClassifierArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:WorkloadClassifier',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:WorkloadClassifier',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     context = registerOutput<String?>('context');
     endTime = registerOutput<String?>('endTime');

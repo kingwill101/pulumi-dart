@@ -181,77 +181,56 @@ import 'control_policy_state.dart';
 class ControlPolicy extends pulumi.CustomResource {
   /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
   late final pulumi.Output<String> aclAction;
-
   /// (Available since v1.148.0) The unique ID of the access control policy.
   late final pulumi.Output<String> aclUuid;
-
   /// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
   /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
   late final pulumi.Output<String?> applicationName;
-
   /// The application types supported by the access control policy.
   /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
   late final pulumi.Output<List<String>?> applicationNameLists;
-
   /// (Available since v1.232.0) The time when the access control policy was created.
   late final pulumi.Output<String> createTime;
-
   /// The description of the access control policy.
   late final pulumi.Output<String> description;
-
   /// The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
   late final pulumi.Output<String> destPort;
-
   /// The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
   late final pulumi.Output<String?> destPortGroup;
-
   /// The type of the destination port in the access control policy. Valid values: `port`, `group`.
   late final pulumi.Output<String> destPortType;
-
   /// The destination address in the access control policy.
   late final pulumi.Output<String> destination;
-
   /// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
   late final pulumi.Output<String> destinationType;
-
   /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
   late final pulumi.Output<String> direction;
-
   /// The domain name resolution method of the access control policy. Valid values:
   /// - `FQDN`: Fully qualified domain name (FQDN)-based resolution.
   /// - `DNS`: DNS-based dynamic resolution.
   /// - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
   late final pulumi.Output<String?> domainResolveType;
-
   /// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
   /// &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
   late final pulumi.Output<int?> endTime;
-
   /// The IP version supported by the access control policy. Default value: `4`. Valid values:
   late final pulumi.Output<String> ipVersion;
-
   /// The language of the content within the request and response. Valid values: `zh`, `en`.
   late final pulumi.Output<String?> lang;
-
   /// The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
   late final pulumi.Output<String> proto;
-
   /// The status of the access control policy. Valid values: `true`, `false`.
   late final pulumi.Output<String> release;
-
   /// The days of a week or of a month on which the access control policy takes effect. Valid values:
   /// - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
   /// - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
   /// &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
   late final pulumi.Output<List<int>?> repeatDays;
-
   /// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
   /// &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
   late final pulumi.Output<String?> repeatEndTime;
-
   /// The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
   late final pulumi.Output<String?> repeatStartTime;
-
   /// The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
   /// - `Permanent`: The policy always takes effect.
   /// - `None`: The policy takes effect for only once.
@@ -259,16 +238,12 @@ class ControlPolicy extends pulumi.CustomResource {
   /// - `Weekly`: The policy takes effect on a weekly basis.
   /// - `Monthly`: The policy takes effect on a monthly basis.
   late final pulumi.Output<String> repeatType;
-
   /// The source address in the access control policy.
   late final pulumi.Output<String> source;
-
   /// The source IP address of the request.
   late final pulumi.Output<String?> sourceIp;
-
   /// The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
   late final pulumi.Output<String> sourceType;
-
   /// The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
   late final pulumi.Output<int?> startTime;
 
@@ -281,17 +256,15 @@ class ControlPolicy extends pulumi.CustomResource {
     ControlPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/controlPolicy:ControlPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/controlPolicy:ControlPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclAction = registerOutput<String>('aclAction');
     aclUuid = registerOutput<String>('aclUuid');
     applicationName = registerOutput<String?>('applicationName');
-    applicationNameLists = registerOutput<List<String>?>(
-      'applicationNameLists',
-    );
+    applicationNameLists = registerOutput<List<String>?>('applicationNameLists');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     destPort = registerOutput<String>('destPort');
@@ -334,17 +307,15 @@ class ControlPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/controlPolicy:ControlPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/controlPolicy:ControlPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclAction = registerOutput<String>('aclAction');
     aclUuid = registerOutput<String>('aclUuid');
     applicationName = registerOutput<String?>('applicationName');
-    applicationNameLists = registerOutput<List<String>?>(
-      'applicationNameLists',
-    );
+    applicationNameLists = registerOutput<List<String>?>('applicationNameLists');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     destPort = registerOutput<String>('destPort');

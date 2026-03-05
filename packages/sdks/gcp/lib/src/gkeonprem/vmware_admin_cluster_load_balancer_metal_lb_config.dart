@@ -8,21 +8,20 @@ class VmwareAdminClusterLoadBalancerMetalLbConfig {
 
   /// Creates a new [VmwareAdminClusterLoadBalancerMetalLbConfig].
   /// [enabled] Metal LB is enabled.
-  VmwareAdminClusterLoadBalancerMetalLbConfig({this.enabled});
+  VmwareAdminClusterLoadBalancerMetalLbConfig({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory VmwareAdminClusterLoadBalancerMetalLbConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VmwareAdminClusterLoadBalancerMetalLbConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterLoadBalancerMetalLbConfig(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

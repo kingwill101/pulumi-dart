@@ -129,10 +129,8 @@ import 'vpc_endpoint_service_allowed_principle_state.dart';
 class VpcEndpointServiceAllowedPrinciple extends pulumi.CustomResource {
   /// The ARN of the principal to allow permissions.
   late final pulumi.Output<String> principalArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the VPC endpoint service to allow permission.
   late final pulumi.Output<String> vpcEndpointServiceId;
 
@@ -145,11 +143,11 @@ class VpcEndpointServiceAllowedPrinciple extends pulumi.CustomResource {
     VpcEndpointServiceAllowedPrincipleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcEndpointServiceAllowedPrinciple:VpcEndpointServiceAllowedPrinciple',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcEndpointServiceAllowedPrinciple:VpcEndpointServiceAllowedPrinciple',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     principalArn = registerOutput<String>('principalArn');
     region = registerOutput<String>('region');
     vpcEndpointServiceId = registerOutput<String>('vpcEndpointServiceId');
@@ -173,11 +171,11 @@ class VpcEndpointServiceAllowedPrinciple extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcEndpointServiceAllowedPrinciple:VpcEndpointServiceAllowedPrinciple',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcEndpointServiceAllowedPrinciple:VpcEndpointServiceAllowedPrinciple',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     principalArn = registerOutput<String>('principalArn');
     region = registerOutput<String>('region');
     vpcEndpointServiceId = registerOutput<String>('vpcEndpointServiceId');

@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsFunctionAppBackupSchedule {
   /// How often the backup is executed.
   final pulumi.Input<int> frequencyInterval;
-
   /// The unit of time the backup should take place.
   final pulumi.Input<String> frequencyUnit;
-
   /// Should the service keep at least one backup.
   final pulumi.Input<bool> keepAtLeastOneBackup;
-
   /// The time the backup was last attempted.
   final pulumi.Input<String> lastExecutionTime;
-
   /// After how many days backups is deleted.
   final pulumi.Input<int> retentionPeriodDays;
-
   /// When the schedule should start working in RFC-3339 format.
   final pulumi.Input<String> startTime;
 
@@ -48,24 +43,15 @@ class GetWindowsFunctionAppBackupSchedule {
     };
   }
 
-  factory GetWindowsFunctionAppBackupSchedule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWindowsFunctionAppBackupSchedule.fromMap(Map<String, dynamic> map) {
     return GetWindowsFunctionAppBackupSchedule(
-      frequencyInterval: pulumi.Input.fromValue(
-        map['frequencyInterval'] as int,
-      ),
+      frequencyInterval: pulumi.Input.fromValue(map['frequencyInterval'] as int),
       frequencyUnit: pulumi.Input.fromValue(map['frequencyUnit'] as String),
-      keepAtLeastOneBackup: pulumi.Input.fromValue(
-        map['keepAtLeastOneBackup'] as bool,
-      ),
-      lastExecutionTime: pulumi.Input.fromValue(
-        map['lastExecutionTime'] as String,
-      ),
-      retentionPeriodDays: pulumi.Input.fromValue(
-        map['retentionPeriodDays'] as int,
-      ),
+      keepAtLeastOneBackup: pulumi.Input.fromValue(map['keepAtLeastOneBackup'] as bool),
+      lastExecutionTime: pulumi.Input.fromValue(map['lastExecutionTime'] as String),
+      retentionPeriodDays: pulumi.Input.fromValue(map['retentionPeriodDays'] as int),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
+

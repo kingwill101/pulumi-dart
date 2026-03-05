@@ -7,10 +7,8 @@ import 'exec_step_config_response_osconfig_v1beta.dart';
 class ExecStepResponseOsconfigV1beta {
   /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
   final pulumi.Input<ExecStepConfigResponseOsconfigV1beta> linuxExecStepConfig;
-
   /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-  final pulumi.Input<ExecStepConfigResponseOsconfigV1beta>
-  windowsExecStepConfig;
+  final pulumi.Input<ExecStepConfigResponseOsconfigV1beta> windowsExecStepConfig;
 
   /// Creates a new [ExecStepResponseOsconfigV1beta].
   /// [linuxExecStepConfig] The ExecStepConfig for all Linux VMs targeted by the PatchJob.
@@ -22,31 +20,16 @@ class ExecStepResponseOsconfigV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'linuxExecStepConfig':
-          pulumi.Input.mapInputValue<
-            ExecStepConfigResponseOsconfigV1beta,
-            Map<String, dynamic>
-          >(linuxExecStepConfig, (value) => value.toMap()),
-      'windowsExecStepConfig':
-          pulumi.Input.mapInputValue<
-            ExecStepConfigResponseOsconfigV1beta,
-            Map<String, dynamic>
-          >(windowsExecStepConfig, (value) => value.toMap()),
+      'linuxExecStepConfig': pulumi.Input.mapInputValue<ExecStepConfigResponseOsconfigV1beta, Map<String, dynamic>>(linuxExecStepConfig, (value) => value.toMap()),
+      'windowsExecStepConfig': pulumi.Input.mapInputValue<ExecStepConfigResponseOsconfigV1beta, Map<String, dynamic>>(windowsExecStepConfig, (value) => value.toMap()),
     };
   }
 
   factory ExecStepResponseOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return ExecStepResponseOsconfigV1beta(
-      linuxExecStepConfig: pulumi.Input.fromValue(
-        ExecStepConfigResponseOsconfigV1beta.fromMap(
-          (map['linuxExecStepConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      windowsExecStepConfig: pulumi.Input.fromValue(
-        ExecStepConfigResponseOsconfigV1beta.fromMap(
-          (map['windowsExecStepConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      linuxExecStepConfig: pulumi.Input.fromValue(ExecStepConfigResponseOsconfigV1beta.fromMap((map['linuxExecStepConfig']! as Map).cast<String, dynamic>())),
+      windowsExecStepConfig: pulumi.Input.fromValue(ExecStepConfigResponseOsconfigV1beta.fromMap((map['windowsExecStepConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

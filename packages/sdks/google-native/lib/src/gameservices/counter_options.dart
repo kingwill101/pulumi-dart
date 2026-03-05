@@ -7,10 +7,8 @@ import 'custom_field.dart';
 class CounterOptions {
   /// Custom fields.
   final pulumi.Input<List<CustomField>>? customFields;
-
   /// The field value to attribute.
   final pulumi.Input<String>? field;
-
   /// The metric to update.
   final pulumi.Input<String>? metric;
 
@@ -18,22 +16,15 @@ class CounterOptions {
   /// [customFields] Custom fields.
   /// [field] The field value to attribute.
   /// [metric] The metric to update.
-  CounterOptions({this.customFields, this.field, this.metric});
+  CounterOptions({
+    this.customFields,
+    this.field,
+    this.metric,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customFields':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CustomField>,
-            List<Map<String, dynamic>>
-          >(
-            customFields,
-            (value) =>
-                pulumi.Input.encodeList<CustomField, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'customFields': ?pulumi.Input.mapOptionalInputValue<List<CustomField>, List<Map<String, dynamic>>>(customFields, (value) => pulumi.Input.encodeList<CustomField, Map<String, dynamic>>(value, (value) => value.toMap())),
       'field': ?field,
       'metric': ?metric,
     };
@@ -41,27 +32,10 @@ class CounterOptions {
 
   factory CounterOptions.fromMap(Map<String, dynamic> map) {
     return CounterOptions(
-      customFields: (() {
-        final guardedValue = map['customFields'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CustomField>(
-            guardedValue,
-            (value) =>
-                CustomField.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      field: (() {
-        final guardedValue = map['field'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metric: (() {
-        final guardedValue = map['metric'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customFields: (() { final guardedValue = map['customFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CustomField>(guardedValue, (value) => CustomField.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      field: (() { final guardedValue = map['field']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metric: (() { final guardedValue = map['metric']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

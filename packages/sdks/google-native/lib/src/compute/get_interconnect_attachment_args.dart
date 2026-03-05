@@ -31,15 +31,10 @@ class GetInterconnectAttachmentArgs {
 
   factory GetInterconnectAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetInterconnectAttachmentArgs(
-      interconnectAttachment: pulumi.Input.fromValue(
-        map['interconnectAttachment'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      interconnectAttachment: pulumi.Input.fromValue(map['interconnectAttachment'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

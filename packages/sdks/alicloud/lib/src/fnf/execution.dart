@@ -352,13 +352,10 @@ import 'execution_state.dart';
 class Execution extends pulumi.CustomResource {
   /// The name of the execution.
   late final pulumi.Output<String> executionName;
-
   /// The name of the flow.
   late final pulumi.Output<String> flowName;
-
   /// The Input information for this execution.
   late final pulumi.Output<String?> input;
-
   /// The status of the resource. Valid values: `Stopped`.
   late final pulumi.Output<String> status;
 
@@ -371,11 +368,11 @@ class Execution extends pulumi.CustomResource {
     ExecutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fnf/execution:Execution',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fnf/execution:Execution',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     executionName = registerOutput<String>('executionName');
     flowName = registerOutput<String>('flowName');
     input = registerOutput<String?>('input');
@@ -400,11 +397,11 @@ class Execution extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fnf/execution:Execution',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fnf/execution:Execution',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     executionName = registerOutput<String>('executionName');
     flowName = registerOutput<String>('flowName');
     input = registerOutput<String?>('input');

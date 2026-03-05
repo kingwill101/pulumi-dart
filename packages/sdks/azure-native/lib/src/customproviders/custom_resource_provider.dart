@@ -204,28 +204,20 @@ import 'custom_resource_provider_args.dart';
 class CustomResourceProvider extends pulumi.CustomResource {
   /// A list of actions that the custom resource provider implements.
   late final pulumi.Output<List<Map<String, dynamic>>?> actions;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource location
   late final pulumi.Output<String> location;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the resource provider.
   late final pulumi.Output<String> provisioningState;
-
   /// A list of resource types that the custom resource provider implements.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceTypes;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type
   late final pulumi.Output<String> type;
-
   /// A list of validations to run on the custom resource provider's requests.
   late final pulumi.Output<List<Map<String, dynamic>>?> validations;
 
@@ -238,19 +230,17 @@ class CustomResourceProvider extends pulumi.CustomResource {
     CustomResourceProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:customproviders:CustomResourceProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:customproviders:CustomResourceProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>?>('actions');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    resourceTypes = registerOutput<List<Map<String, dynamic>>?>(
-      'resourceTypes',
-    );
+    resourceTypes = registerOutput<List<Map<String, dynamic>>?>('resourceTypes');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     validations = registerOutput<List<Map<String, dynamic>>?>('validations');

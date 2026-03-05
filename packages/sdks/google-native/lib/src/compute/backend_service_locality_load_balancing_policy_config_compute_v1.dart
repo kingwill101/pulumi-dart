@@ -6,14 +6,8 @@ import 'backend_service_locality_load_balancing_policy_config_policy_compute_v1.
 
 /// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
 class BackendServiceLocalityLoadBalancingPolicyConfigComputeV1 {
-  final pulumi.Input<
-    BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1
-  >?
-  customPolicy;
-  final pulumi.Input<
-    BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeV1
-  >?
-  policy;
+  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1>? customPolicy;
+  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeV1>? policy;
 
   /// Creates a new [BackendServiceLocalityLoadBalancingPolicyConfigComputeV1].
   /// [customPolicy] Optional.
@@ -25,41 +19,16 @@ class BackendServiceLocalityLoadBalancingPolicyConfigComputeV1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1,
-            Map<String, dynamic>
-          >(customPolicy, (value) => value.toMap()),
-      'policy':
-          ?pulumi.Input.mapOptionalInputValue<
-            BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeV1,
-            Map<String, dynamic>
-          >(policy, (value) => value.toMap()),
+      'customPolicy': ?pulumi.Input.mapOptionalInputValue<BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1, Map<String, dynamic>>(customPolicy, (value) => value.toMap()),
+      'policy': ?pulumi.Input.mapOptionalInputValue<BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeV1, Map<String, dynamic>>(policy, (value) => value.toMap()),
     };
   }
 
-  factory BackendServiceLocalityLoadBalancingPolicyConfigComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackendServiceLocalityLoadBalancingPolicyConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return BackendServiceLocalityLoadBalancingPolicyConfigComputeV1(
-      customPolicy: (() {
-        final guardedValue = map['customPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeV1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      customPolicy: (() { final guardedValue = map['customPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

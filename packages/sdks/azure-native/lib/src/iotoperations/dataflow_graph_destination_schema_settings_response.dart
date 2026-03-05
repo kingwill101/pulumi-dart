@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataflowGraphDestinationSchemaSettingsResponse {
   /// Reference to the schema that describes the output of the transformation.
   final pulumi.Input<String>? schemaRef;
-
   /// The format of the output data.
   final pulumi.Input<String> serializationFormat;
 
@@ -25,18 +24,11 @@ class DataflowGraphDestinationSchemaSettingsResponse {
     };
   }
 
-  factory DataflowGraphDestinationSchemaSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataflowGraphDestinationSchemaSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DataflowGraphDestinationSchemaSettingsResponse(
-      schemaRef: (() {
-        final guardedValue = map['schemaRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serializationFormat: pulumi.Input.fromValue(
-        map['serializationFormat'] as String,
-      ),
+      schemaRef: (() { final guardedValue = map['schemaRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serializationFormat: pulumi.Input.fromValue(map['serializationFormat'] as String),
     );
   }
 }
+

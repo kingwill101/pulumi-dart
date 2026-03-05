@@ -14,8 +14,7 @@ enum PerformanceConfigDumpParallelLevel {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PerformanceConfigDumpParallelLevel value: $value',
-    );
+    throw ArgumentError('Unknown PerformanceConfigDumpParallelLevel value: $value');
   }
 }
+

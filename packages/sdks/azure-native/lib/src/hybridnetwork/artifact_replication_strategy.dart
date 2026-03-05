@@ -15,3 +15,4 @@ enum ArtifactReplicationStrategy {
     throw ArgumentError('Unknown ArtifactReplicationStrategy value: $value');
   }
 }
+

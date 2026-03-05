@@ -15,23 +15,18 @@ class TransitRouteTableAggregationArgs {
   ///
   /// &gt; **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
   final pulumi.Input<String> transitRouteTableAggregationCidr;
-
   /// The list of propagation ranges of the aggregation route.
   ///
   /// &gt; **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
   final pulumi.Input<String>? transitRouteTableAggregationDescription;
-
   /// The name of the aggregate route.
   /// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
   final pulumi.Input<String>? transitRouteTableAggregationName;
-
   /// The scope of networks that you want to advertise the aggregate route.
   /// The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
   final pulumi.Input<String>? transitRouteTableAggregationScope;
-
   /// Aggregation Route Scopes
   final pulumi.Input<List<String>>? transitRouteTableAggregationScopeLists;
-
   /// The list of route table IDs of the Enterprise Edition transit router.
   final pulumi.Input<String> transitRouteTableId;
 
@@ -54,44 +49,23 @@ class TransitRouteTableAggregationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'transitRouteTableAggregationCidr': transitRouteTableAggregationCidr,
-      'transitRouteTableAggregationDescription':
-          ?transitRouteTableAggregationDescription,
+      'transitRouteTableAggregationDescription': ?transitRouteTableAggregationDescription,
       'transitRouteTableAggregationName': ?transitRouteTableAggregationName,
       'transitRouteTableAggregationScope': ?transitRouteTableAggregationScope,
-      'transitRouteTableAggregationScopeLists':
-          ?transitRouteTableAggregationScopeLists,
+      'transitRouteTableAggregationScopeLists': ?transitRouteTableAggregationScopeLists,
       'transitRouteTableId': transitRouteTableId,
     };
   }
 
   factory TransitRouteTableAggregationArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouteTableAggregationArgs(
-      transitRouteTableAggregationCidr: pulumi.Input.fromValue(
-        map['transitRouteTableAggregationCidr'] as String,
-      ),
-      transitRouteTableAggregationDescription: (() {
-        final guardedValue = map['transitRouteTableAggregationDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouteTableAggregationName: (() {
-        final guardedValue = map['transitRouteTableAggregationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouteTableAggregationScope: (() {
-        final guardedValue = map['transitRouteTableAggregationScope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouteTableAggregationScopeLists: (() {
-        final guardedValue = map['transitRouteTableAggregationScopeLists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      transitRouteTableId: pulumi.Input.fromValue(
-        map['transitRouteTableId'] as String,
-      ),
+      transitRouteTableAggregationCidr: pulumi.Input.fromValue(map['transitRouteTableAggregationCidr'] as String),
+      transitRouteTableAggregationDescription: (() { final guardedValue = map['transitRouteTableAggregationDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouteTableAggregationName: (() { final guardedValue = map['transitRouteTableAggregationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouteTableAggregationScope: (() { final guardedValue = map['transitRouteTableAggregationScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouteTableAggregationScopeLists: (() { final guardedValue = map['transitRouteTableAggregationScopeLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      transitRouteTableId: pulumi.Input.fromValue(map['transitRouteTableId'] as String),
     );
   }
 }
+

@@ -12,8 +12,7 @@ enum VirtualNetworkEncryptionEnforcement {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown VirtualNetworkEncryptionEnforcement value: $value',
-    );
+    throw ArgumentError('Unknown VirtualNetworkEncryptionEnforcement value: $value');
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudApiPortalCustomDomainState {
   /// The name which should be used for this Spring Cloud API Portal Domain. Changing this forces a new Spring Cloud API Portal Domain to be created.
   final pulumi.Input<String>? name;
-
   /// The ID of the Spring Cloud API Portal. Changing this forces a new Spring Cloud API Portal Domain to be created.
   final pulumi.Input<String>? springCloudApiPortalId;
-
   /// Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud API Portal Domain.
   final pulumi.Input<String>? thumbprint;
 
@@ -31,25 +29,12 @@ class SpringCloudApiPortalCustomDomainState {
     };
   }
 
-  factory SpringCloudApiPortalCustomDomainState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpringCloudApiPortalCustomDomainState.fromMap(Map<String, dynamic> map) {
     return SpringCloudApiPortalCustomDomainState(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      springCloudApiPortalId: (() {
-        final guardedValue = map['springCloudApiPortalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      thumbprint: (() {
-        final guardedValue = map['thumbprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      springCloudApiPortalId: (() { final guardedValue = map['springCloudApiPortalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

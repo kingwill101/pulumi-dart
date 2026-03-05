@@ -10,7 +10,6 @@ class GetDatabaseBackupsResult {
   final int databaseId;
   final String databaseType;
   final List<GetDatabaseBackupsFilter>? filters;
-
   /// The ID of the database backup object.
   final int id;
   final bool? latest;
@@ -39,21 +38,10 @@ class GetDatabaseBackupsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backups':
-          pulumi.Input.encodeList<
-            GetDatabaseBackupsBackup,
-            Map<String, dynamic>
-          >(backups, (value) => value.toMap()),
+      'backups': pulumi.Input.encodeList<GetDatabaseBackupsBackup, Map<String, dynamic>>(backups, (value) => value.toMap()),
       'databaseId': databaseId,
       'databaseType': databaseType,
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetDatabaseBackupsFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDatabaseBackupsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'latest': ?latest,
       'order': ?order,
@@ -63,40 +51,15 @@ class GetDatabaseBackupsResult {
 
   factory GetDatabaseBackupsResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseBackupsResult(
-      backups: pulumi.Input.decodeList<GetDatabaseBackupsBackup>(
-        map['backups']!,
-        (value) => GetDatabaseBackupsBackup.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      backups: pulumi.Input.decodeList<GetDatabaseBackupsBackup>(map['backups']!, (value) => GetDatabaseBackupsBackup.fromMap((value as Map).cast<String, dynamic>())),
       databaseId: map['databaseId'] as int,
       databaseType: map['databaseType'] as String,
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetDatabaseBackupsFilter>(
-          guardedValue,
-          (value) => GetDatabaseBackupsFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatabaseBackupsFilter>(guardedValue, (value) => GetDatabaseBackupsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as int,
-      latest: (() {
-        final guardedValue = map['latest'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      order: (() {
-        final guardedValue = map['order'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      orderBy: (() {
-        final guardedValue = map['orderBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      latest: (() { final guardedValue = map['latest']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -119,22 +119,13 @@ class OrganizationsAccess extends pulumi.CustomResource {
     OrganizationsAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:notifications/organizationsAccess:OrganizationsAccess',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:notifications/organizationsAccess:OrganizationsAccess',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool>('enabled');
-    timeouts = registerOutput<OrganizationsAccessTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OrganizationsAccessTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<OrganizationsAccessTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationsAccessTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [OrganizationsAccess] resource's state with the given [name] and [id].
@@ -155,21 +146,12 @@ class OrganizationsAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:notifications/organizationsAccess:OrganizationsAccess',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:notifications/organizationsAccess:OrganizationsAccess',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool>('enabled');
-    timeouts = registerOutput<OrganizationsAccessTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OrganizationsAccessTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<OrganizationsAccessTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationsAccessTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

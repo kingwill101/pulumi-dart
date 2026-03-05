@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContentItemArgs {
   /// Content item identifier.
   final pulumi.Input<String>? contentItemId;
-
   /// Content type identifier.
   final pulumi.Input<String> contentTypeId;
-
   /// Properties of the content item.
   final pulumi.Input<dynamic>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -48,21 +44,12 @@ class ContentItemArgs {
 
   factory ContentItemArgs.fromMap(Map<String, dynamic> map) {
     return ContentItemArgs(
-      contentItemId: (() {
-        final guardedValue = map['contentItemId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      contentItemId: (() { final guardedValue = map['contentItemId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       contentTypeId: pulumi.Input.fromValue(map['contentTypeId'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

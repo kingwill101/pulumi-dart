@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMpaAccountScopeArgs {
   /// The Billing Account Name of the MPA account.
   final pulumi.Input<String> billingAccountName;
-
   /// The Customer Name in the above Billing Account.
   final pulumi.Input<String> customerName;
 
@@ -30,10 +29,9 @@ class GetMpaAccountScopeArgs {
 
   factory GetMpaAccountScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetMpaAccountScopeArgs(
-      billingAccountName: pulumi.Input.fromValue(
-        map['billingAccountName'] as String,
-      ),
+      billingAccountName: pulumi.Input.fromValue(map['billingAccountName'] as String),
       customerName: pulumi.Input.fromValue(map['customerName'] as String),
     );
   }
 }
+

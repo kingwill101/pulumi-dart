@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWatcherArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The watcher name.
   final pulumi.Input<String> watcherName;
 
@@ -36,13 +34,10 @@ class GetWatcherArgs {
 
   factory GetWatcherArgs.fromMap(Map<String, dynamic> map) {
     return GetWatcherArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       watcherName: pulumi.Input.fromValue(map['watcherName'] as String),
     );
   }
 }
+

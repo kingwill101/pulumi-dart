@@ -16,3 +16,4 @@ enum SoftDeleteState {
     throw ArgumentError('Unknown SoftDeleteState value: $value');
   }
 }
+

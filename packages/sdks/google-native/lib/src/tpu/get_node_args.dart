@@ -15,7 +15,11 @@ class GetNodeArgs {
   /// [location] Required.
   /// [nodeId] Required.
   /// [project] Optional.
-  GetNodeArgs({required this.location, required this.nodeId, this.project});
+  GetNodeArgs({
+    required this.location,
+    required this.nodeId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,11 +33,8 @@ class GetNodeArgs {
     return GetNodeArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

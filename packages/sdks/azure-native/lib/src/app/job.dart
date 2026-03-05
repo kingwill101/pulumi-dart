@@ -444,49 +444,34 @@ import 'system_data_response.dart';
 class Job extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Container Apps Job configuration properties.
   late final pulumi.Output<JobConfigurationResponse?> configuration;
-
   /// Resource ID of environment.
   late final pulumi.Output<String?> environmentId;
-
   /// The endpoint of the eventstream of the container apps job.
   late final pulumi.Output<String> eventStreamEndpoint;
-
   /// The complex type of the extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Outbound IP Addresses of a container apps job.
   late final pulumi.Output<List<String>> outboundIpAddresses;
-
   /// Provisioning state of the Container Apps Job.
   late final pulumi.Output<String> provisioningState;
-
   /// Current running state of the job
   late final pulumi.Output<String> runningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Container Apps job definition.
   late final pulumi.Output<JobTemplateResponse?> template;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Workload profile name to pin for container apps job execution.
   late final pulumi.Output<String?> workloadProfileName;
 
@@ -494,72 +479,30 @@ class Job extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Job]. {@macro pulumi_app_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Job(String name, {JobArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:app:Job',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Job(
+    String name, {
+    JobArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:app:Job',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    configuration = registerOutput<JobConfigurationResponse?>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    configuration = registerOutput<JobConfigurationResponse?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     environmentId = registerOutput<String?>('environmentId');
     eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     outboundIpAddresses = registerOutput<List<String>>('outboundIpAddresses');
     provisioningState = registerOutput<String>('provisioningState');
     runningState = registerOutput<String>('runningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    template = registerOutput<JobTemplateResponse?>(
-      'template',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobTemplateResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    template = registerOutput<JobTemplateResponse?>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobTemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     workloadProfileName = registerOutput<String?>('workloadProfileName');
   }

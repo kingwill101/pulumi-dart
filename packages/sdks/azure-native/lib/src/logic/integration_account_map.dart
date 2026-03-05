@@ -561,43 +561,28 @@ import 'integration_account_map_properties_response_parameters_schema.dart';
 class IntegrationAccountMap extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The changed time.
   late final pulumi.Output<String> changedTime;
-
   /// The content.
   late final pulumi.Output<String?> content;
-
   /// The content link.
   late final pulumi.Output<ContentLinkResponse> contentLink;
-
   /// The content type.
   late final pulumi.Output<String?> contentType;
-
   /// The created time.
   late final pulumi.Output<String> createdTime;
-
   /// The resource location.
   late final pulumi.Output<String?> location;
-
   /// The map type.
   late final pulumi.Output<String> mapType;
-
   /// The metadata.
   late final pulumi.Output<dynamic> metadata;
-
   /// Gets the resource name.
   late final pulumi.Output<String> name;
-
   /// The parameters schema of integration account map.
-  late final pulumi.Output<
-    IntegrationAccountMapPropertiesResponseParametersSchema?
-  >
-  parametersSchema;
-
+  late final pulumi.Output<IntegrationAccountMapPropertiesResponseParametersSchema?> parametersSchema;
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -610,43 +595,22 @@ class IntegrationAccountMap extends pulumi.CustomResource {
     IntegrationAccountMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:logic:IntegrationAccountMap',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:logic:IntegrationAccountMap',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     changedTime = registerOutput<String>('changedTime');
     content = registerOutput<String?>('content');
-    contentLink = registerOutput<ContentLinkResponse>(
-      'contentLink',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContentLinkResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    contentLink = registerOutput<ContentLinkResponse>('contentLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContentLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contentType = registerOutput<String?>('contentType');
     createdTime = registerOutput<String>('createdTime');
     location = registerOutput<String?>('location');
     mapType = registerOutput<String>('mapType');
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
-    parametersSchema =
-        registerOutput<
-          IntegrationAccountMapPropertiesResponseParametersSchema?
-        >(
-          'parametersSchema',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return IntegrationAccountMapPropertiesResponseParametersSchema.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    parametersSchema = registerOutput<IntegrationAccountMapPropertiesResponseParametersSchema?>('parametersSchema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountMapPropertiesResponseParametersSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

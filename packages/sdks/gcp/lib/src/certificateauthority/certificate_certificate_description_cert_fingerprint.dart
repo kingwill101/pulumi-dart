@@ -9,21 +9,20 @@ class CertificateCertificateDescriptionCertFingerprint {
 
   /// Creates a new [CertificateCertificateDescriptionCertFingerprint].
   /// [sha256Hash] (Output)
-  CertificateCertificateDescriptionCertFingerprint({this.sha256Hash});
+  CertificateCertificateDescriptionCertFingerprint({
+    this.sha256Hash,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sha256Hash': ?sha256Hash};
+    return <String, dynamic>{
+      'sha256Hash': ?sha256Hash,
+    };
   }
 
-  factory CertificateCertificateDescriptionCertFingerprint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CertificateCertificateDescriptionCertFingerprint.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionCertFingerprint(
-      sha256Hash: (() {
-        final guardedValue = map['sha256Hash'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sha256Hash: (() { final guardedValue = map['sha256Hash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

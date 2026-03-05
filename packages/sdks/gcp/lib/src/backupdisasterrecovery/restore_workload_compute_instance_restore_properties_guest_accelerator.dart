@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator {
   /// Optional. The number of the guest accelerator cards exposed to this instance.
   final pulumi.Input<int>? acceleratorCount;
-
   /// Optional. Full or partial URL of the accelerator type resource.
   final pulumi.Input<String>? acceleratorType;
 
@@ -24,20 +23,11 @@ class RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator(
-      acceleratorCount: (() {
-        final guardedValue = map['acceleratorCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      acceleratorType: (() {
-        final guardedValue = map['acceleratorType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      acceleratorCount: (() { final guardedValue = map['acceleratorCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      acceleratorType: (() { final guardedValue = map['acceleratorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

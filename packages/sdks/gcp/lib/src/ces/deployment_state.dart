@@ -7,40 +7,31 @@ import 'deployment_channel_profile.dart';
 class DeploymentState {
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? app;
-
   /// The resource name of the app version to deploy.
   /// Format:
   /// projects/{project}/locations/{location}/apps/{app}/versions/{version}
   final pulumi.Input<String>? appVersion;
-
   /// A ChannelProfile configures the agent's behavior for a specific communication
   /// channel, such as web UI or telephony.
   /// Structure is documented below.
   final pulumi.Input<DeploymentChannelProfile>? channelProfile;
-
   /// Timestamp when this deployment was created.
   final pulumi.Input<String>? createTime;
-
   /// Display name of the deployment.
   final pulumi.Input<String>? displayName;
-
   /// Etag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
   final pulumi.Input<String>? etag;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
-
   /// Identifier. The resource name of the deployment.
   /// Format:
   /// projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Timestamp when this deployment was last updated.
   final pulumi.Input<String>? updateTime;
 
@@ -72,11 +63,7 @@ class DeploymentState {
     return <String, dynamic>{
       'app': ?app,
       'appVersion': ?appVersion,
-      'channelProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeploymentChannelProfile,
-            Map<String, dynamic>
-          >(channelProfile, (value) => value.toMap()),
+      'channelProfile': ?pulumi.Input.mapOptionalInputValue<DeploymentChannelProfile, Map<String, dynamic>>(channelProfile, (value) => value.toMap()),
       'createTime': ?createTime,
       'displayName': ?displayName,
       'etag': ?etag,
@@ -89,60 +76,17 @@ class DeploymentState {
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      app: (() {
-        final guardedValue = map['app'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      appVersion: (() {
-        final guardedValue = map['appVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      channelProfile: (() {
-        final guardedValue = map['channelProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeploymentChannelProfile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      app: (() { final guardedValue = map['app']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      appVersion: (() { final guardedValue = map['appVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      channelProfile: (() { final guardedValue = map['channelProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentChannelProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

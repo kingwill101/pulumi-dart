@@ -259,28 +259,20 @@ import 'load_balancer_state.dart';
 class LoadBalancer extends pulumi.CustomResource {
   /// The list of backend servers. See `backend_servers` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> backendServers;
-
   /// The creation Time (UTC) of the load balancing instance.
   late final pulumi.Output<String> createTime;
-
   /// The ID of the ENS node.
   late final pulumi.Output<String> ensRegionId;
-
   /// Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
   late final pulumi.Output<String?> loadBalancerName;
-
   /// Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
   late final pulumi.Output<String> loadBalancerSpec;
-
   /// The network ID of the created edge load balancing (ELB) instance.
   late final pulumi.Output<String> networkId;
-
   /// Server Load Balancer Instance Payment Type. Value:PayAsYouGo
   late final pulumi.Output<String> paymentType;
-
   /// The status of the SLB instance.
   late final pulumi.Output<String> status;
-
   /// The ID of the vSwitch to which the VPC instance belongs.
   late final pulumi.Output<String> vswitchId;
 
@@ -293,14 +285,12 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ens/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backendServers = registerOutput<List<Map<String, dynamic>>?>(
-      'backendServers',
-    );
+          'alicloud:ens/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backendServers = registerOutput<List<Map<String, dynamic>>?>('backendServers');
     createTime = registerOutput<String>('createTime');
     ensRegionId = registerOutput<String>('ensRegionId');
     loadBalancerName = registerOutput<String?>('loadBalancerName');
@@ -329,14 +319,12 @@ class LoadBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ens/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backendServers = registerOutput<List<Map<String, dynamic>>?>(
-      'backendServers',
-    );
+          'alicloud:ens/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backendServers = registerOutput<List<Map<String, dynamic>>?>('backendServers');
     createTime = registerOutput<String>('createTime');
     ensRegionId = registerOutput<String>('ensRegionId');
     loadBalancerName = registerOutput<String?>('loadBalancerName');

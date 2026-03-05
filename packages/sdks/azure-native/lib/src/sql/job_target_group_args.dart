@@ -10,16 +10,12 @@ import 'job_target.dart';
 class JobTargetGroupArgs {
   /// The name of the job agent.
   final pulumi.Input<String> jobAgentName;
-
   /// Members of the target group.
   final pulumi.Input<List<JobTarget>> members;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the server.
   final pulumi.Input<String> serverName;
-
   /// The name of the target group.
   final pulumi.Input<String>? targetGroupName;
 
@@ -40,15 +36,7 @@ class JobTargetGroupArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'jobAgentName': jobAgentName,
-      'members':
-          pulumi
-              .Input.mapInputValue<List<JobTarget>, List<Map<String, dynamic>>>(
-            members,
-            (value) => pulumi.Input.encodeList<JobTarget, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'members': pulumi.Input.mapInputValue<List<JobTarget>, List<Map<String, dynamic>>>(members, (value) => pulumi.Input.encodeList<JobTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceGroupName': resourceGroupName,
       'serverName': serverName,
       'targetGroupName': ?targetGroupName,
@@ -58,21 +46,11 @@ class JobTargetGroupArgs {
   factory JobTargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return JobTargetGroupArgs(
       jobAgentName: pulumi.Input.fromValue(map['jobAgentName'] as String),
-      members: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<JobTarget>(
-          map['members']!,
-          (value) => JobTarget.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      members: pulumi.Input.fromValue(pulumi.Input.decodeList<JobTarget>(map['members']!, (value) => JobTarget.fromMap((value as Map).cast<String, dynamic>()))),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
-      targetGroupName: (() {
-        final guardedValue = map['targetGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      targetGroupName: (() { final guardedValue = map['targetGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,31 +6,22 @@ import 'system_data_response.dart';
 class GetNetworkGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// A description of the network group.
   final String? description;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
-
   /// Resource ID.
   final String id;
-
   /// The type of the group member.
   final String? memberType;
-
   /// Resource name.
   final String name;
-
   /// The provisioning state of the scope assignment resource.
   final String provisioningState;
-
   /// Unique identifier for this resource.
   final String resourceGuid;
-
   /// The system metadata related to this resource.
   final SystemDataResponse systemData;
-
   /// Resource type.
   final String type;
 
@@ -76,25 +67,16 @@ class GetNetworkGroupResult {
   factory GetNetworkGroupResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: map['etag'] as String,
       id: map['id'] as String,
-      memberType: (() {
-        final guardedValue = map['memberType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      memberType: (() { final guardedValue = map['memberType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

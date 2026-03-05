@@ -12,7 +12,6 @@ class IPGroupCIDRArgs {
   ///
   /// &gt; **Note:** The AzureRM Terraform provider provides cidr support via this standalone resource and in-line within azure.network.IPGroup using the `cidrs` property. You cannot use both methods simultaneously. If cidrs are set via this resource then `ignore_changes` should be used in the resource `azure.network.IPGroupCIDR` configuration.
   final pulumi.Input<String> cidr;
-
   /// The ID of the destination IP Group.
   /// Changing this forces a new IP Group CIDR to be created.
   final pulumi.Input<String> ipGroupId;
@@ -20,10 +19,16 @@ class IPGroupCIDRArgs {
   /// Creates a new [IPGroupCIDRArgs].
   /// [cidr] The `CIDR` that should be added to the IP Group.
   /// [ipGroupId] The ID of the destination IP Group.
-  IPGroupCIDRArgs({required this.cidr, required this.ipGroupId});
+  IPGroupCIDRArgs({
+    required this.cidr,
+    required this.ipGroupId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cidr': cidr, 'ipGroupId': ipGroupId};
+    return <String, dynamic>{
+      'cidr': cidr,
+      'ipGroupId': ipGroupId,
+    };
   }
 
   factory IPGroupCIDRArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +38,4 @@ class IPGroupCIDRArgs {
     );
   }
 }
+

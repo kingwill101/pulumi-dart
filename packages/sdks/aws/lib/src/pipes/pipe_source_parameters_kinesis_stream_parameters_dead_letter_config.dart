@@ -8,21 +8,20 @@ class PipeSourceParametersKinesisStreamParametersDeadLetterConfig {
 
   /// Creates a new [PipeSourceParametersKinesisStreamParametersDeadLetterConfig].
   /// [arn] ARN of this pipe.
-  PipeSourceParametersKinesisStreamParametersDeadLetterConfig({this.arn});
+  PipeSourceParametersKinesisStreamParametersDeadLetterConfig({
+    this.arn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': ?arn};
+    return <String, dynamic>{
+      'arn': ?arn,
+    };
   }
 
-  factory PipeSourceParametersKinesisStreamParametersDeadLetterConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeSourceParametersKinesisStreamParametersDeadLetterConfig.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersKinesisStreamParametersDeadLetterConfig(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

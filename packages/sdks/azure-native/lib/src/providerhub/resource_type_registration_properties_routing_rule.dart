@@ -9,21 +9,20 @@ class ResourceTypeRegistrationPropertiesRoutingRule {
 
   /// Creates a new [ResourceTypeRegistrationPropertiesRoutingRule].
   /// [hostResourceType] Hosted resource type.
-  ResourceTypeRegistrationPropertiesRoutingRule({this.hostResourceType});
+  ResourceTypeRegistrationPropertiesRoutingRule({
+    this.hostResourceType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hostResourceType': ?hostResourceType};
+    return <String, dynamic>{
+      'hostResourceType': ?hostResourceType,
+    };
   }
 
-  factory ResourceTypeRegistrationPropertiesRoutingRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceTypeRegistrationPropertiesRoutingRule.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesRoutingRule(
-      hostResourceType: (() {
-        final guardedValue = map['hostResourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      hostResourceType: (() { final guardedValue = map['hostResourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

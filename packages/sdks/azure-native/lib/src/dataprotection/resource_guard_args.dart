@@ -10,19 +10,14 @@ import 'resource_guard_dataprotection.dart';
 class ResourceGuardArgs {
   /// Optional ETag.
   final pulumi.Input<String>? eTag;
-
   /// Resource location.
   final pulumi.Input<String>? location;
-
   /// ResourceGuardResource properties
   final pulumi.Input<ResourceGuardDataprotection>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of ResourceGuard
   final pulumi.Input<String>? resourceGuardsName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -55,38 +50,13 @@ class ResourceGuardArgs {
 
   factory ResourceGuardArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGuardArgs(
-      eTag: (() {
-        final guardedValue = map['eTag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          guardedValue as ResourceGuardDataprotection,
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      resourceGuardsName: (() {
-        final guardedValue = map['resourceGuardsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as ResourceGuardDataprotection); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      resourceGuardsName: (() { final guardedValue = map['resourceGuardsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

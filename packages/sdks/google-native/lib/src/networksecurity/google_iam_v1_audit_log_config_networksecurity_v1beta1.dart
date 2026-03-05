@@ -7,10 +7,8 @@ import 'google_iam_v1_audit_log_config_log_type_networksecurity_v1beta1.dart';
 class GoogleIamV1AuditLogConfigNetworksecurityV1beta1 {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final pulumi.Input<List<String>>? exemptedMembers;
-
   /// The log type that this config enables.
-  final pulumi.Input<GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1>?
-  logType;
+  final pulumi.Input<GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1>? logType;
 
   /// Creates a new [GoogleIamV1AuditLogConfigNetworksecurityV1beta1].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -23,32 +21,15 @@ class GoogleIamV1AuditLogConfigNetworksecurityV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'exemptedMembers': ?exemptedMembers,
-      'logType':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1,
-            String
-          >(logType, (value) => value.wireValue),
+      'logType': ?pulumi.Input.mapOptionalInputValue<GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1, String>(logType, (value) => value.wireValue),
     };
   }
 
-  factory GoogleIamV1AuditLogConfigNetworksecurityV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleIamV1AuditLogConfigNetworksecurityV1beta1.fromMap(Map<String, dynamic> map) {
     return GoogleIamV1AuditLogConfigNetworksecurityV1beta1(
-      exemptedMembers: (() {
-        final guardedValue = map['exemptedMembers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      logType: (() {
-        final guardedValue = map['logType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      exemptedMembers: (() { final guardedValue = map['exemptedMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      logType: (() { final guardedValue = map['logType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

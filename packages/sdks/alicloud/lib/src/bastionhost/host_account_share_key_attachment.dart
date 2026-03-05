@@ -504,10 +504,8 @@ import 'host_account_share_key_attachment_state.dart';
 class HostAccountShareKeyAttachment extends pulumi.CustomResource {
   /// The ID list of the host account.
   late final pulumi.Output<String> hostAccountId;
-
   /// The ID of the host shared key.
   late final pulumi.Output<String> hostShareKeyId;
-
   /// The ID of the Bastion machine instance.
   late final pulumi.Output<String> instanceId;
 
@@ -520,11 +518,11 @@ class HostAccountShareKeyAttachment extends pulumi.CustomResource {
     HostAccountShareKeyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hostAccountId = registerOutput<String>('hostAccountId');
     hostShareKeyId = registerOutput<String>('hostShareKeyId');
     instanceId = registerOutput<String>('instanceId');
@@ -548,11 +546,11 @@ class HostAccountShareKeyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hostAccountId = registerOutput<String>('hostAccountId');
     hostShareKeyId = registerOutput<String>('hostShareKeyId');
     instanceId = registerOutput<String>('instanceId');

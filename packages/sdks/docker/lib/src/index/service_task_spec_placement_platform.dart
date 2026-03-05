@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceTaskSpecPlacementPlatform {
   /// The architecture, e.g. `amd64`
   final pulumi.Input<String> architecture;
-
   /// The operation system, e.g. `linux`
   final pulumi.Input<String> os;
 
@@ -18,7 +17,10 @@ class ServiceTaskSpecPlacementPlatform {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'architecture': architecture, 'os': os};
+    return <String, dynamic>{
+      'architecture': architecture,
+      'os': os,
+    };
   }
 
   factory ServiceTaskSpecPlacementPlatform.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class ServiceTaskSpecPlacementPlatform {
     );
   }
 }
+

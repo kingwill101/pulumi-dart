@@ -641,7 +641,6 @@ import 'backup_vault_customer_managed_key_state.dart';
 class BackupVaultCustomerManagedKey extends pulumi.CustomResource {
   /// The ID of the Backup Vault. Changing this forces a new resource to be created.
   late final pulumi.Output<String> dataProtectionBackupVaultId;
-
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Backup Vault.
   late final pulumi.Output<String> keyVaultKeyId;
 
@@ -654,14 +653,12 @@ class BackupVaultCustomerManagedKey extends pulumi.CustomResource {
     BackupVaultCustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupVaultCustomerManagedKey:BackupVaultCustomerManagedKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    dataProtectionBackupVaultId = registerOutput<String>(
-      'dataProtectionBackupVaultId',
-    );
+          'azure:dataprotection/backupVaultCustomerManagedKey:BackupVaultCustomerManagedKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    dataProtectionBackupVaultId = registerOutput<String>('dataProtectionBackupVaultId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
   }
 
@@ -683,14 +680,12 @@ class BackupVaultCustomerManagedKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupVaultCustomerManagedKey:BackupVaultCustomerManagedKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    dataProtectionBackupVaultId = registerOutput<String>(
-      'dataProtectionBackupVaultId',
-    );
+          'azure:dataprotection/backupVaultCustomerManagedKey:BackupVaultCustomerManagedKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    dataProtectionBackupVaultId = registerOutput<String>('dataProtectionBackupVaultId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
   }
 }

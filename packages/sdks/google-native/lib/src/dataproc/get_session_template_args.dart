@@ -32,14 +32,9 @@ class GetSessionTemplateArgs {
   factory GetSessionTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetSessionTemplateArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sessionTemplateId: pulumi.Input.fromValue(
-        map['sessionTemplateId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sessionTemplateId: pulumi.Input.fromValue(map['sessionTemplateId'] as String),
     );
   }
 }
+

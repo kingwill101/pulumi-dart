@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TlsRouteRuleMatch {
   /// ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sniHost and alpn is required. Up to 5 alpns across all matches can be set.
   final pulumi.Input<List<String>>? alpns;
-
   /// SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com.
   /// Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sniHost and alpn is required. Up to 5 sni hosts across all matches can be set.
   final pulumi.Input<List<String>>? sniHosts;
@@ -13,24 +12,23 @@ class TlsRouteRuleMatch {
   /// Creates a new [TlsRouteRuleMatch].
   /// [alpns] ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sniHost and alpn is required. Up to 5 alpns across all matches can be set.
   /// [sniHosts] SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com.
-  TlsRouteRuleMatch({this.alpns, this.sniHosts});
+  TlsRouteRuleMatch({
+    this.alpns,
+    this.sniHosts,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'alpns': ?alpns, 'sniHosts': ?sniHosts};
+    return <String, dynamic>{
+      'alpns': ?alpns,
+      'sniHosts': ?sniHosts,
+    };
   }
 
   factory TlsRouteRuleMatch.fromMap(Map<String, dynamic> map) {
     return TlsRouteRuleMatch(
-      alpns: (() {
-        final guardedValue = map['alpns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      sniHosts: (() {
-        final guardedValue = map['sniHosts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      alpns: (() { final guardedValue = map['alpns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      sniHosts: (() { final guardedValue = map['sniHosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

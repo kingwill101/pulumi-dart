@@ -5,40 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSslVpnServersServer {
   /// The encryption algorithm used.
   final pulumi.Input<String> cipher;
-
   /// The IP address pool of the client.
   final pulumi.Input<String> clientIpPool;
-
   /// Whether to compress.
   final pulumi.Input<bool> compress;
-
   /// The number of current connections.
   final pulumi.Input<int> connections;
-
   /// The time of creation.
   final pulumi.Input<String> createTime;
-
   /// The ID of the SSL-VPN server.
   final pulumi.Input<String> id;
-
   /// The public IP.
   final pulumi.Input<String> internetIp;
-
   /// The local subnet of the VPN connection.
   final pulumi.Input<String> localSubnet;
-
   /// The maximum number of connections.
   final pulumi.Input<int> maxConnections;
-
   /// The name of the SSL-VPN server.
   final pulumi.Input<String> name;
-
   /// The port used by the SSL-VPN server.
   final pulumi.Input<int> port;
-
   /// The protocol used by the SSL-VPN server.
   final pulumi.Input<String> proto;
-
   /// Use the VPN gateway ID as the search key.
   final pulumi.Input<String> vpnGatewayId;
 
@@ -108,3 +96,4 @@ class GetSslVpnServersServer {
     );
   }
 }
+

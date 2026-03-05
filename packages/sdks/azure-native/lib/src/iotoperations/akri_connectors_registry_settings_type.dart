@@ -12,8 +12,7 @@ enum AkriConnectorsRegistrySettingsType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AkriConnectorsRegistrySettingsType value: $value',
-    );
+    throw ArgumentError('Unknown AkriConnectorsRegistrySettingsType value: $value');
   }
 }
+

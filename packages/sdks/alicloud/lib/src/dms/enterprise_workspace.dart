@@ -232,13 +232,10 @@ import 'enterprise_workspace_state.dart';
 class EnterpriseWorkspace extends pulumi.CustomResource {
   /// The description of the Workspace.
   late final pulumi.Output<String> description;
-
   /// The region ID of the resource.
   late final pulumi.Output<String> regionId;
-
   /// The ID of the VPC.
   late final pulumi.Output<String> vpcId;
-
   /// The name of the Workspace.
   late final pulumi.Output<String> workspaceName;
 
@@ -251,11 +248,11 @@ class EnterpriseWorkspace extends pulumi.CustomResource {
     EnterpriseWorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String>('description');
     regionId = registerOutput<String>('regionId');
     vpcId = registerOutput<String>('vpcId');
@@ -280,11 +277,11 @@ class EnterpriseWorkspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String>('description');
     regionId = registerOutput<String>('regionId');
     vpcId = registerOutput<String>('vpcId');

@@ -8,21 +8,20 @@ class LinuxProfilePropertiesResponsePublicKeys {
 
   /// Creates a new [LinuxProfilePropertiesResponsePublicKeys].
   /// [keyData] KeyData - Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
-  LinuxProfilePropertiesResponsePublicKeys({this.keyData});
+  LinuxProfilePropertiesResponsePublicKeys({
+    this.keyData,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyData': ?keyData};
+    return <String, dynamic>{
+      'keyData': ?keyData,
+    };
   }
 
-  factory LinuxProfilePropertiesResponsePublicKeys.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LinuxProfilePropertiesResponsePublicKeys.fromMap(Map<String, dynamic> map) {
     return LinuxProfilePropertiesResponsePublicKeys(
-      keyData: (() {
-        final guardedValue = map['keyData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyData: (() { final guardedValue = map['keyData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -17,3 +17,4 @@ enum RaiPolicyMode {
     throw ArgumentError('Unknown RaiPolicyMode value: $value');
   }
 }
+

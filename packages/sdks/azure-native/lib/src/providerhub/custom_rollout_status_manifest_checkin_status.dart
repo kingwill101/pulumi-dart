@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomRolloutStatusManifestCheckinStatus {
   /// The commit id.
   final pulumi.Input<String>? commitId;
-
   /// Whether the manifest is checked in.
   final pulumi.Input<bool> isCheckedIn;
-
   /// The pull request.
   final pulumi.Input<String>? pullRequest;
-
   /// The status message.
   final pulumi.Input<String> statusMessage;
 
@@ -37,22 +34,13 @@ class CustomRolloutStatusManifestCheckinStatus {
     };
   }
 
-  factory CustomRolloutStatusManifestCheckinStatus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomRolloutStatusManifestCheckinStatus.fromMap(Map<String, dynamic> map) {
     return CustomRolloutStatusManifestCheckinStatus(
-      commitId: (() {
-        final guardedValue = map['commitId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      commitId: (() { final guardedValue = map['commitId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isCheckedIn: pulumi.Input.fromValue(map['isCheckedIn'] as bool),
-      pullRequest: (() {
-        final guardedValue = map['pullRequest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pullRequest: (() { final guardedValue = map['pullRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       statusMessage: pulumi.Input.fromValue(map['statusMessage'] as String),
     );
   }
 }
+

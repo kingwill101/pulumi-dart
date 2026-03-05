@@ -9,17 +9,20 @@ class NetworkPolicyConfigResponseContainerV1beta1 {
 
   /// Creates a new [NetworkPolicyConfigResponseContainerV1beta1].
   /// [disabled] Whether NetworkPolicy is enabled for this cluster.
-  NetworkPolicyConfigResponseContainerV1beta1({required this.disabled});
+  NetworkPolicyConfigResponseContainerV1beta1({
+    required this.disabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disabled': disabled};
+    return <String, dynamic>{
+      'disabled': disabled,
+    };
   }
 
-  factory NetworkPolicyConfigResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkPolicyConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyConfigResponseContainerV1beta1(
       disabled: pulumi.Input.fromValue(map['disabled'] as bool),
     );
   }
 }
+

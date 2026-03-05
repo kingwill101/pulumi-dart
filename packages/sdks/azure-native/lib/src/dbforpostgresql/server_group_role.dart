@@ -141,24 +141,18 @@ import 'system_data_response.dart';
 class ServerGroupRole extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// A type definition that refers the id to an Azure Resource Manager resource.
   late final pulumi.Output<String> objectId;
   late final pulumi.Output<String> principalType;
-
   /// Provisioning state of the role
   late final pulumi.Output<String> provisioningState;
   late final pulumi.Output<String?> roleType;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// A type definition that refers the id to an Azure Resource Manager resource.
   late final pulumi.Output<String?> tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -171,27 +165,18 @@ class ServerGroupRole extends pulumi.CustomResource {
     ServerGroupRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:dbforpostgresql:ServerGroupRole',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:dbforpostgresql:ServerGroupRole',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     objectId = registerOutput<String>('objectId');
     principalType = registerOutput<String>('principalType');
     provisioningState = registerOutput<String>('provisioningState');
     roleType = registerOutput<String?>('roleType');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');
   }

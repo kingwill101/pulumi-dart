@@ -9,19 +9,20 @@ class TpmSupportValuesEnumValue {
 
   /// Creates a new [TpmSupportValuesEnumValue].
   /// [value] Property value
-  TpmSupportValuesEnumValue({this.value});
+  TpmSupportValuesEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory TpmSupportValuesEnumValue.fromMap(Map<String, dynamic> map) {
     return TpmSupportValuesEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup {
   /// The key of the application execution property key-value map.
   final pulumi.Input<String> propertyGroupId;
-
   /// Application execution property key-value map.
   final pulumi.Input<Map<String, String>> propertyMap;
 
@@ -24,14 +23,11 @@ class ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup {
     };
   }
 
-  factory ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup(
       propertyGroupId: pulumi.Input.fromValue(map['propertyGroupId'] as String),
-      propertyMap: pulumi.Input.fromValue(
-        (map['propertyMap'] as Map).cast<String, String>(),
-      ),
+      propertyMap: pulumi.Input.fromValue((map['propertyMap'] as Map).cast<String, String>()),
     );
   }
 }
+

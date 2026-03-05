@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayCustomBgpIpAddressIpConfigurationResponse {
   /// The custom BgpPeeringAddress which belongs to IpconfigurationId.
   final pulumi.Input<String> customBgpIpAddress;
-
   /// The IpconfigurationId of ipconfiguration which belongs to gateway.
   final pulumi.Input<String> ipConfigurationId;
 
@@ -25,16 +24,11 @@ class GatewayCustomBgpIpAddressIpConfigurationResponse {
     };
   }
 
-  factory GatewayCustomBgpIpAddressIpConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GatewayCustomBgpIpAddressIpConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return GatewayCustomBgpIpAddressIpConfigurationResponse(
-      customBgpIpAddress: pulumi.Input.fromValue(
-        map['customBgpIpAddress'] as String,
-      ),
-      ipConfigurationId: pulumi.Input.fromValue(
-        map['ipConfigurationId'] as String,
-      ),
+      customBgpIpAddress: pulumi.Input.fromValue(map['customBgpIpAddress'] as String),
+      ipConfigurationId: pulumi.Input.fromValue(map['ipConfigurationId'] as String),
     );
   }
 }
+

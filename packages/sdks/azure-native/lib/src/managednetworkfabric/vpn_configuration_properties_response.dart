@@ -8,17 +8,12 @@ import 'vpn_configuration_properties_response_option_aproperties.dart';
 class VpnConfigurationPropertiesResponse {
   /// Administrative state of the resource.
   final pulumi.Input<String> administrativeState;
-
   /// ARM Resource ID of the Network To Network Interconnect.
   final pulumi.Input<String>? networkToNetworkInterconnectId;
-
   /// option A properties
-  final pulumi.Input<VpnConfigurationPropertiesResponseOptionAProperties>?
-  optionAProperties;
-
+  final pulumi.Input<VpnConfigurationPropertiesResponseOptionAProperties>? optionAProperties;
   /// option B properties
   final pulumi.Input<FabricOptionBPropertiesResponse>? optionBProperties;
-
   /// Peering option list.
   final pulumi.Input<String> peeringOption;
 
@@ -40,49 +35,20 @@ class VpnConfigurationPropertiesResponse {
     return <String, dynamic>{
       'administrativeState': administrativeState,
       'networkToNetworkInterconnectId': ?networkToNetworkInterconnectId,
-      'optionAProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            VpnConfigurationPropertiesResponseOptionAProperties,
-            Map<String, dynamic>
-          >(optionAProperties, (value) => value.toMap()),
-      'optionBProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            FabricOptionBPropertiesResponse,
-            Map<String, dynamic>
-          >(optionBProperties, (value) => value.toMap()),
+      'optionAProperties': ?pulumi.Input.mapOptionalInputValue<VpnConfigurationPropertiesResponseOptionAProperties, Map<String, dynamic>>(optionAProperties, (value) => value.toMap()),
+      'optionBProperties': ?pulumi.Input.mapOptionalInputValue<FabricOptionBPropertiesResponse, Map<String, dynamic>>(optionBProperties, (value) => value.toMap()),
       'peeringOption': peeringOption,
     };
   }
 
   factory VpnConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VpnConfigurationPropertiesResponse(
-      administrativeState: pulumi.Input.fromValue(
-        map['administrativeState'] as String,
-      ),
-      networkToNetworkInterconnectId: (() {
-        final guardedValue = map['networkToNetworkInterconnectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      optionAProperties: (() {
-        final guardedValue = map['optionAProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VpnConfigurationPropertiesResponseOptionAProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      optionBProperties: (() {
-        final guardedValue = map['optionBProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FabricOptionBPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      administrativeState: pulumi.Input.fromValue(map['administrativeState'] as String),
+      networkToNetworkInterconnectId: (() { final guardedValue = map['networkToNetworkInterconnectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      optionAProperties: (() { final guardedValue = map['optionAProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VpnConfigurationPropertiesResponseOptionAProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      optionBProperties: (() { final guardedValue = map['optionBProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FabricOptionBPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       peeringOption: pulumi.Input.fromValue(map['peeringOption'] as String),
     );
   }
 }
+

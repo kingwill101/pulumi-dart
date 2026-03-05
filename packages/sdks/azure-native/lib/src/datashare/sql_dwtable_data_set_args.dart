@@ -9,29 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlDWTableDataSetArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
-
   /// The name of the dataSet.
   final pulumi.Input<String>? dataSetName;
-
   /// DataWarehouse name of the source data set
   final pulumi.Input<String> dataWarehouseName;
-
   /// Kind of data set.
   /// Expected value is 'SqlDWTable'.
   final pulumi.Input<String> kind;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// Schema of the table. Default value is dbo.
   final pulumi.Input<String> schemaName;
-
   /// The name of the share to add the data set to.
   final pulumi.Input<String> shareName;
-
   /// Resource id of SQL server
   final pulumi.Input<String> sqlServerResourceId;
-
   /// SQL DW table name.
   final pulumi.Input<String> tableName;
 
@@ -74,24 +66,15 @@ class SqlDWTableDataSetArgs {
   factory SqlDWTableDataSetArgs.fromMap(Map<String, dynamic> map) {
     return SqlDWTableDataSetArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      dataSetName: (() {
-        final guardedValue = map['dataSetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataWarehouseName: pulumi.Input.fromValue(
-        map['dataWarehouseName'] as String,
-      ),
+      dataSetName: (() { final guardedValue = map['dataSetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataWarehouseName: pulumi.Input.fromValue(map['dataWarehouseName'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       schemaName: pulumi.Input.fromValue(map['schemaName'] as String),
       shareName: pulumi.Input.fromValue(map['shareName'] as String),
-      sqlServerResourceId: pulumi.Input.fromValue(
-        map['sqlServerResourceId'] as String,
-      ),
+      sqlServerResourceId: pulumi.Input.fromValue(map['sqlServerResourceId'] as String),
       tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
+

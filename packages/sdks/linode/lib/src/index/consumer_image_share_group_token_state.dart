@@ -6,31 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConsumerImageShareGroupTokenState {
   /// When the token was created.
   final pulumi.Input<String>? created;
-
   /// When the token will expire.
   final pulumi.Input<String>? expiry;
-
   /// A label for the token.
   final pulumi.Input<String>? label;
-
   /// The label of the Image Share Group that the token is for.
   final pulumi.Input<String>? sharegroupLabel;
-
   /// The UUID of the Image Share Group that the token is for.
   final pulumi.Input<String>? sharegroupUuid;
-
   /// The status of the token.
   final pulumi.Input<String>? status;
-
   /// The one-time-use token to be provided to the Image Share Group Producer.
   final pulumi.Input<String>? token;
-
   /// The UUID of the token.
   final pulumi.Input<String>? tokenUuid;
-
   /// When the token was last updated.
   final pulumi.Input<String>? updated;
-
   /// The UUID of the Image Share Group for which to create a token.
   final pulumi.Input<String>? validForSharegroupUuid;
 
@@ -75,56 +66,17 @@ class ConsumerImageShareGroupTokenState {
 
   factory ConsumerImageShareGroupTokenState.fromMap(Map<String, dynamic> map) {
     return ConsumerImageShareGroupTokenState(
-      created: (() {
-        final guardedValue = map['created'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expiry: (() {
-        final guardedValue = map['expiry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sharegroupLabel: (() {
-        final guardedValue = map['sharegroupLabel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sharegroupUuid: (() {
-        final guardedValue = map['sharegroupUuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      token: (() {
-        final guardedValue = map['token'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tokenUuid: (() {
-        final guardedValue = map['tokenUuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updated: (() {
-        final guardedValue = map['updated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      validForSharegroupUuid: (() {
-        final guardedValue = map['validForSharegroupUuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expiry: (() { final guardedValue = map['expiry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sharegroupLabel: (() { final guardedValue = map['sharegroupLabel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sharegroupUuid: (() { final guardedValue = map['sharegroupUuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      token: (() { final guardedValue = map['token']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tokenUuid: (() { final guardedValue = map['tokenUuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updated: (() { final guardedValue = map['updated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      validForSharegroupUuid: (() { final guardedValue = map['validForSharegroupUuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

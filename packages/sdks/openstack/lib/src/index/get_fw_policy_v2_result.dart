@@ -1,32 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getFwPolicyV2.
 class GetFwPolicyV2Result {
   /// The audit status of the firewall policy.
   final bool audited;
   final String? description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// See Argument Reference above.
   final String? name;
-
   /// See Argument Reference above.
   final String? policyId;
-
   /// See Argument Reference above.
   final String projectId;
-
   /// See Argument Reference above.
   final String region;
-
   /// The array of one or more firewall rules that comprise the policy.
   final List<String> rules;
-
   /// The sharing status of the firewall policy.
   final bool shared;
-
   /// See Argument Reference above.
   final String tenantId;
 
@@ -72,22 +65,10 @@ class GetFwPolicyV2Result {
   factory GetFwPolicyV2Result.fromMap(Map<String, dynamic> map) {
     return GetFwPolicyV2Result(
       audited: map['audited'] as bool,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      policyId: (() {
-        final guardedValue = map['policyId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       projectId: map['projectId'] as String,
       region: map['region'] as String,
       rules: (map['rules'] as List).cast<String>(),
@@ -96,3 +77,4 @@ class GetFwPolicyV2Result {
     );
   }
 }
+

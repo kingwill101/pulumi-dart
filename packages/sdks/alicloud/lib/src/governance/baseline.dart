@@ -354,10 +354,8 @@ class Baseline extends pulumi.CustomResource {
   ///
   /// You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baseline_items` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> baselineItems;
-
   /// Baseline Name.
   late final pulumi.Output<String?> baselineName;
-
   /// Baseline Description.
   late final pulumi.Output<String?> description;
 
@@ -370,14 +368,12 @@ class Baseline extends pulumi.CustomResource {
     BaselineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:governance/baseline:Baseline',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    baselineItems = registerOutput<List<Map<String, dynamic>>?>(
-      'baselineItems',
-    );
+          'alicloud:governance/baseline:Baseline',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    baselineItems = registerOutput<List<Map<String, dynamic>>?>('baselineItems');
     baselineName = registerOutput<String?>('baselineName');
     description = registerOutput<String?>('description');
   }
@@ -400,14 +396,12 @@ class Baseline extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:governance/baseline:Baseline',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    baselineItems = registerOutput<List<Map<String, dynamic>>?>(
-      'baselineItems',
-    );
+          'alicloud:governance/baseline:Baseline',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    baselineItems = registerOutput<List<Map<String, dynamic>>?>('baselineItems');
     baselineName = registerOutput<String?>('baselineName');
     description = registerOutput<String?>('description');
   }

@@ -238,46 +238,32 @@ import 'system_metadata_response.dart';
 class DiskPool extends pulumi.CustomResource {
   /// List of additional capabilities for Disk Pool.
   late final pulumi.Output<List<String>?> additionalCapabilities;
-
   /// Logical zone for Disk Pool resource; example: ["1"].
   late final pulumi.Output<List<String>> availabilityZones;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// List of Azure Managed Disks to attach to a Disk Pool.
   late final pulumi.Output<List<Map<String, dynamic>>?> disks;
-
   /// The geo-location where the resource lives.
   late final pulumi.Output<String> location;
-
   /// Azure resource id. Indicates if this resource is managed by another Azure resource.
   late final pulumi.Output<String> managedBy;
-
   /// List of Azure resource ids that manage this resource.
   late final pulumi.Output<List<String>> managedByExtended;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// State of the operation on the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Operational status of the Disk Pool.
   late final pulumi.Output<String> status;
-
   /// Azure Resource ID of a Subnet for the Disk Pool.
   late final pulumi.Output<String> subnetId;
-
   /// Resource metadata required by ARM RPC
   late final pulumi.Output<SystemMetadataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Sku tier
   late final pulumi.Output<String?> tier;
-
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
 
@@ -290,14 +276,12 @@ class DiskPool extends pulumi.CustomResource {
     DiskPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:storagepool:DiskPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalCapabilities = registerOutput<List<String>?>(
-      'additionalCapabilities',
-    );
+          'azure-native:storagepool:DiskPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalCapabilities = registerOutput<List<String>?>('additionalCapabilities');
     availabilityZones = registerOutput<List<String>>('availabilityZones');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     disks = registerOutput<List<Map<String, dynamic>>?>('disks');
@@ -308,16 +292,7 @@ class DiskPool extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
     subnetId = registerOutput<String>('subnetId');
-    systemData = registerOutput<SystemMetadataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemMetadataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemMetadataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tier = registerOutput<String?>('tier');
     type = registerOutput<String>('type');

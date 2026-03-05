@@ -8,19 +8,20 @@ class RuleGroupRuleGroupRuleVariablesIpSetIpSet {
 
   /// Creates a new [RuleGroupRuleGroupRuleVariablesIpSetIpSet].
   /// [definitions] Set of IP addresses and address ranges, in CIDR notation.
-  RuleGroupRuleGroupRuleVariablesIpSetIpSet({required this.definitions});
+  RuleGroupRuleGroupRuleVariablesIpSetIpSet({
+    required this.definitions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'definitions': definitions};
+    return <String, dynamic>{
+      'definitions': definitions,
+    };
   }
 
-  factory RuleGroupRuleGroupRuleVariablesIpSetIpSet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleGroupRuleVariablesIpSetIpSet.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRuleVariablesIpSetIpSet(
-      definitions: pulumi.Input.fromValue(
-        (map['definitions'] as List).cast<String>(),
-      ),
+      definitions: pulumi.Input.fromValue((map['definitions'] as List).cast<String>()),
     );
   }
 }
+

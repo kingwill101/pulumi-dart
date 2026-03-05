@@ -10,19 +10,20 @@ class ManagedIdentitySettings {
 
   /// Creates a new [ManagedIdentitySettings].
   /// [resource] The Resource indicating the App ID URI of the target resource.
-  ManagedIdentitySettings({this.resource});
+  ManagedIdentitySettings({
+    this.resource,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resource': ?resource};
+    return <String, dynamic>{
+      'resource': ?resource,
+    };
   }
 
   factory ManagedIdentitySettings.fromMap(Map<String, dynamic> map) {
     return ManagedIdentitySettings(
-      resource: (() {
-        final guardedValue = map['resource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,10 +8,14 @@ class GetFunctionDeadLetterConfig {
 
   /// Creates a new [GetFunctionDeadLetterConfig].
   /// [targetArn] ARN of an SNS topic or SQS queue to notify when an invocation fails.
-  GetFunctionDeadLetterConfig({required this.targetArn});
+  GetFunctionDeadLetterConfig({
+    required this.targetArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'targetArn': targetArn};
+    return <String, dynamic>{
+      'targetArn': targetArn,
+    };
   }
 
   factory GetFunctionDeadLetterConfig.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetFunctionDeadLetterConfig {
     );
   }
 }
+

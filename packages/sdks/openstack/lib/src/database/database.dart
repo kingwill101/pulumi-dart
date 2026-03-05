@@ -112,10 +112,8 @@ import 'database_state.dart';
 class Database extends pulumi.CustomResource {
   /// The ID for the database instance.
   late final pulumi.Output<String> instanceId;
-
   /// A unique name for the resource.
   late final pulumi.Output<String> name;
-
   /// The region in which to create the database. Changing
   /// this creates a new database.
   late final pulumi.Output<String> region;
@@ -129,11 +127,11 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:database/database:Database',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:database/database:Database',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -157,11 +155,11 @@ class Database extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:database/database:Database',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:database/database:Database',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

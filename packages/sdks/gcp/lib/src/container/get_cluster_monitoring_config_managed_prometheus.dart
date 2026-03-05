@@ -5,11 +5,7 @@ import 'get_cluster_monitoring_config_managed_prometheus_auto_monitoring_config.
 
 class GetClusterMonitoringConfigManagedPrometheus {
   /// Configuration for GKE Workload Auto-Monitoring.
-  final pulumi.Input<
-    List<GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig>
-  >
-  autoMonitoringConfigs;
-
+  final pulumi.Input<List<GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig>> autoMonitoringConfigs;
   /// Whether or not the managed collection is enabled.
   final pulumi.Input<bool> enabled;
 
@@ -23,40 +19,16 @@ class GetClusterMonitoringConfigManagedPrometheus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoMonitoringConfigs':
-          pulumi.Input.mapInputValue<
-            List<
-              GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig
-            >,
-            List<Map<String, dynamic>>
-          >(
-            autoMonitoringConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'autoMonitoringConfigs': pulumi.Input.mapInputValue<List<GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig>, List<Map<String, dynamic>>>(autoMonitoringConfigs, (value) => pulumi.Input.encodeList<GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enabled': enabled,
     };
   }
 
-  factory GetClusterMonitoringConfigManagedPrometheus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterMonitoringConfigManagedPrometheus.fromMap(Map<String, dynamic> map) {
     return GetClusterMonitoringConfigManagedPrometheus(
-      autoMonitoringConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig
-        >(
-          map['autoMonitoringConfigs']!,
-          (value) =>
-              GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      autoMonitoringConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig>(map['autoMonitoringConfigs']!, (value) => GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig.fromMap((value as Map).cast<String, dynamic>()))),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

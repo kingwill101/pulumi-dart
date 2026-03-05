@@ -9,28 +9,20 @@ import 'domain_devices_memorydev_target.dart';
 class DomainDevicesMemorydev {
   /// Sets the access mode for the memory device, controlling how the memory can be utilized.
   final pulumi.Input<String>? access;
-
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
   final pulumi.Input<DomainDevicesMemorydevAcpi>? acpi;
-
   /// Specifies the memory address for the persistent storage device in the guest's address space.
   final pulumi.Input<Map<String, dynamic>>? address;
-
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
   final pulumi.Input<DomainDevicesMemorydevAlias>? alias;
-
   /// Configures the discard attribute for the memory device, indicating whether memory should be freed.
   final pulumi.Input<String>? discard;
-
   /// Sets the model for the memory device, determining its type and capabilities.
   final pulumi.Input<String> model;
-
   /// Defines the source configuration for the memory device, indicating the memory backing.
   final pulumi.Input<DomainDevicesMemorydevSource>? source;
-
   /// Configures the target settings for the memory device, defining how it connects to the guest.
   final pulumi.Input<DomainDevicesMemorydevTarget>? target;
-
   /// Sets the universally unique identifier for the memory device.
   final pulumi.Input<String>? uuid;
 
@@ -59,94 +51,29 @@ class DomainDevicesMemorydev {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'access': ?access,
-      'acpi':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesMemorydevAcpi,
-            Map<String, dynamic>
-          >(acpi, (value) => value.toMap()),
+      'acpi': ?pulumi.Input.mapOptionalInputValue<DomainDevicesMemorydevAcpi, Map<String, dynamic>>(acpi, (value) => value.toMap()),
       'address': ?address,
-      'alias':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesMemorydevAlias,
-            Map<String, dynamic>
-          >(alias, (value) => value.toMap()),
+      'alias': ?pulumi.Input.mapOptionalInputValue<DomainDevicesMemorydevAlias, Map<String, dynamic>>(alias, (value) => value.toMap()),
       'discard': ?discard,
       'model': model,
-      'source':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesMemorydevSource,
-            Map<String, dynamic>
-          >(source, (value) => value.toMap()),
-      'target':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesMemorydevTarget,
-            Map<String, dynamic>
-          >(target, (value) => value.toMap()),
+      'source': ?pulumi.Input.mapOptionalInputValue<DomainDevicesMemorydevSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'target': ?pulumi.Input.mapOptionalInputValue<DomainDevicesMemorydevTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
       'uuid': ?uuid,
     };
   }
 
   factory DomainDevicesMemorydev.fromMap(Map<String, dynamic> map) {
     return DomainDevicesMemorydev(
-      access: (() {
-        final guardedValue = map['access'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      acpi: (() {
-        final guardedValue = map['acpi'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesMemorydevAcpi.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      address: (() {
-        final guardedValue = map['address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      alias: (() {
-        final guardedValue = map['alias'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesMemorydevAlias.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      discard: (() {
-        final guardedValue = map['discard'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      access: (() { final guardedValue = map['access']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      acpi: (() { final guardedValue = map['acpi']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesMemorydevAcpi.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesMemorydevAlias.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      discard: (() { final guardedValue = map['discard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       model: pulumi.Input.fromValue(map['model'] as String),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesMemorydevSource.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      target: (() {
-        final guardedValue = map['target'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesMemorydevTarget.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      uuid: (() {
-        final guardedValue = map['uuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesMemorydevSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesMemorydevTarget.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

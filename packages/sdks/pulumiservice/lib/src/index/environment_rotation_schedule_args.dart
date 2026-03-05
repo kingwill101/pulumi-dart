@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentRotationScheduleArgs {
   /// Environment name.
   final pulumi.Input<String> environment;
-
   /// Organization name.
   final pulumi.Input<String> organization;
-
   /// Project name.
   final pulumi.Input<String> project;
-
   /// Cron expression for recurring scheduled rotations. If you are supplying this, do not supply timestamp.
   final pulumi.Input<String>? scheduleCron;
-
   /// The time at which the rotation should run, in ISO 8601 format. Eg: 2020-01-01T00:00:00Z. If you are supplying this, do not supply scheduleCron.
   final pulumi.Input<String>? timestamp;
 
@@ -51,16 +47,9 @@ class EnvironmentRotationScheduleArgs {
       environment: pulumi.Input.fromValue(map['environment'] as String),
       organization: pulumi.Input.fromValue(map['organization'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),
-      scheduleCron: (() {
-        final guardedValue = map['scheduleCron'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timestamp: (() {
-        final guardedValue = map['timestamp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      scheduleCron: (() { final guardedValue = map['scheduleCron']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timestamp: (() { final guardedValue = map['timestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric {
   /// Metric name for Read Pool Auto Scale.
   final pulumi.Input<String>? metric;
-
   /// Target value for Read Pool Auto Scale.
   final pulumi.Input<double>? targetValue;
 
@@ -18,23 +17,17 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metric': ?metric, 'targetValue': ?targetValue};
+    return <String, dynamic>{
+      'metric': ?metric,
+      'targetValue': ?targetValue,
+    };
   }
 
-  factory DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric(
-      metric: (() {
-        final guardedValue = map['metric'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetValue: (() {
-        final guardedValue = map['targetValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      metric: (() { final guardedValue = map['metric']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetValue: (() { final guardedValue = map['targetValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

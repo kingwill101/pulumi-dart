@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressRouteAuthorizationState {
   /// The ID of the Azure VMware Solution ExpressRoute Circuit Authorization.
   final pulumi.Input<String>? expressRouteAuthorizationId;
-
   /// The key of the Azure VMware Solution ExpressRoute Circuit Authorization.
   final pulumi.Input<String>? expressRouteAuthorizationKey;
-
   /// The name which should be used for this Azure VMware Solution ExpressRoute Circuit Authorization. Changing this forces a new Azure VMware Solution ExpressRoute Circuit Authorization to be created.
   final pulumi.Input<String>? name;
-
   /// The ID of the Azure VMware Solution Private Cloud in which to create this Azure VMware Solution ExpressRoute Circuit Authorization. Changing this forces a new Azure VMware Solution ExpressRoute Circuit Authorization to be created.
   final pulumi.Input<String>? privateCloudId;
 
@@ -39,26 +36,11 @@ class ExpressRouteAuthorizationState {
 
   factory ExpressRouteAuthorizationState.fromMap(Map<String, dynamic> map) {
     return ExpressRouteAuthorizationState(
-      expressRouteAuthorizationId: (() {
-        final guardedValue = map['expressRouteAuthorizationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expressRouteAuthorizationKey: (() {
-        final guardedValue = map['expressRouteAuthorizationKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateCloudId: (() {
-        final guardedValue = map['privateCloudId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expressRouteAuthorizationId: (() { final guardedValue = map['expressRouteAuthorizationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expressRouteAuthorizationKey: (() { final guardedValue = map['expressRouteAuthorizationKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateCloudId: (() { final guardedValue = map['privateCloudId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

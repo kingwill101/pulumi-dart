@@ -19,64 +19,42 @@ import 'deployment_group_trigger_configuration.dart';
 class DeploymentGroupArgs {
   /// Configuration block of alarms associated with the deployment group (documented below).
   final pulumi.Input<DeploymentGroupAlarmConfiguration>? alarmConfiguration;
-
   /// The name of the application.
   final pulumi.Input<String> appName;
-
   /// Configuration block of the automatic rollback configuration associated with the deployment group (documented below).
-  final pulumi.Input<DeploymentGroupAutoRollbackConfiguration>?
-  autoRollbackConfiguration;
-
+  final pulumi.Input<DeploymentGroupAutoRollbackConfiguration>? autoRollbackConfiguration;
   /// Autoscaling groups associated with the deployment group.
   final pulumi.Input<List<String>>? autoscalingGroups;
-
   /// Configuration block of the blue/green deployment options for a deployment group (documented below).
-  final pulumi.Input<DeploymentGroupBlueGreenDeploymentConfig>?
-  blueGreenDeploymentConfig;
-
+  final pulumi.Input<DeploymentGroupBlueGreenDeploymentConfig>? blueGreenDeploymentConfig;
   /// The name of the group's deployment config. The default is "CodeDeployDefault.OneAtATime".
   final pulumi.Input<String>? deploymentConfigName;
-
   /// The name of the deployment group.
   final pulumi.Input<String> deploymentGroupName;
-
   /// Configuration block of the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer (documented below).
   final pulumi.Input<DeploymentGroupDeploymentStyle>? deploymentStyle;
-
   /// Tag filters associated with the deployment group. See the AWS docs for details.
   final pulumi.Input<List<DeploymentGroupEc2TagFilter>>? ec2TagFilters;
-
   /// Configuration block(s) of Tag filters associated with the deployment group, which are also referred to as tag groups (documented below). See the AWS docs for details.
   final pulumi.Input<List<DeploymentGroupEc2TagSet>>? ec2TagSets;
-
   /// Configuration block(s) of the ECS services for a deployment group (documented below).
   final pulumi.Input<DeploymentGroupEcsService>? ecsService;
-
   /// Single configuration block of the load balancer to use in a blue/green deployment (documented below).
   final pulumi.Input<DeploymentGroupLoadBalancerInfo>? loadBalancerInfo;
-
   /// On premise tag filters associated with the group. See the AWS docs for details.
-  final pulumi.Input<List<DeploymentGroupOnPremisesInstanceTagFilter>>?
-  onPremisesInstanceTagFilters;
-
+  final pulumi.Input<List<DeploymentGroupOnPremisesInstanceTagFilter>>? onPremisesInstanceTagFilters;
   /// Configuration block of Indicates what happens when new Amazon EC2 instances are launched mid-deployment and do not receive the deployed application revision. Valid values are `UPDATE` and `IGNORE`. Defaults to `UPDATE`.
   final pulumi.Input<String>? outdatedInstancesStrategy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The service role ARN that allows deployments.
   final pulumi.Input<String> serviceRoleArn;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Indicates whether the deployment group was configured to have CodeDeploy install a termination hook into an Auto Scaling group.
   final pulumi.Input<bool>? terminationHookEnabled;
-
   /// Configuration block(s) of the triggers for the deployment group (documented below).
-  final pulumi.Input<List<DeploymentGroupTriggerConfiguration>>?
-  triggerConfigurations;
+  final pulumi.Input<List<DeploymentGroupTriggerConfiguration>>? triggerConfigurations;
 
   /// Creates a new [DeploymentGroupArgs].
   /// [alarmConfiguration] Configuration block of alarms associated with the deployment group (documented below).
@@ -122,237 +100,50 @@ class DeploymentGroupArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alarmConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeploymentGroupAlarmConfiguration,
-            Map<String, dynamic>
-          >(alarmConfiguration, (value) => value.toMap()),
+      'alarmConfiguration': ?pulumi.Input.mapOptionalInputValue<DeploymentGroupAlarmConfiguration, Map<String, dynamic>>(alarmConfiguration, (value) => value.toMap()),
       'appName': appName,
-      'autoRollbackConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeploymentGroupAutoRollbackConfiguration,
-            Map<String, dynamic>
-          >(autoRollbackConfiguration, (value) => value.toMap()),
+      'autoRollbackConfiguration': ?pulumi.Input.mapOptionalInputValue<DeploymentGroupAutoRollbackConfiguration, Map<String, dynamic>>(autoRollbackConfiguration, (value) => value.toMap()),
       'autoscalingGroups': ?autoscalingGroups,
-      'blueGreenDeploymentConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeploymentGroupBlueGreenDeploymentConfig,
-            Map<String, dynamic>
-          >(blueGreenDeploymentConfig, (value) => value.toMap()),
+      'blueGreenDeploymentConfig': ?pulumi.Input.mapOptionalInputValue<DeploymentGroupBlueGreenDeploymentConfig, Map<String, dynamic>>(blueGreenDeploymentConfig, (value) => value.toMap()),
       'deploymentConfigName': ?deploymentConfigName,
       'deploymentGroupName': deploymentGroupName,
-      'deploymentStyle':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeploymentGroupDeploymentStyle,
-            Map<String, dynamic>
-          >(deploymentStyle, (value) => value.toMap()),
-      'ec2TagFilters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DeploymentGroupEc2TagFilter>,
-            List<Map<String, dynamic>>
-          >(
-            ec2TagFilters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DeploymentGroupEc2TagFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'ec2TagSets':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DeploymentGroupEc2TagSet>,
-            List<Map<String, dynamic>>
-          >(
-            ec2TagSets,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DeploymentGroupEc2TagSet,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'ecsService':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeploymentGroupEcsService,
-            Map<String, dynamic>
-          >(ecsService, (value) => value.toMap()),
-      'loadBalancerInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeploymentGroupLoadBalancerInfo,
-            Map<String, dynamic>
-          >(loadBalancerInfo, (value) => value.toMap()),
-      'onPremisesInstanceTagFilters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DeploymentGroupOnPremisesInstanceTagFilter>,
-            List<Map<String, dynamic>>
-          >(
-            onPremisesInstanceTagFilters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DeploymentGroupOnPremisesInstanceTagFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'deploymentStyle': ?pulumi.Input.mapOptionalInputValue<DeploymentGroupDeploymentStyle, Map<String, dynamic>>(deploymentStyle, (value) => value.toMap()),
+      'ec2TagFilters': ?pulumi.Input.mapOptionalInputValue<List<DeploymentGroupEc2TagFilter>, List<Map<String, dynamic>>>(ec2TagFilters, (value) => pulumi.Input.encodeList<DeploymentGroupEc2TagFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ec2TagSets': ?pulumi.Input.mapOptionalInputValue<List<DeploymentGroupEc2TagSet>, List<Map<String, dynamic>>>(ec2TagSets, (value) => pulumi.Input.encodeList<DeploymentGroupEc2TagSet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ecsService': ?pulumi.Input.mapOptionalInputValue<DeploymentGroupEcsService, Map<String, dynamic>>(ecsService, (value) => value.toMap()),
+      'loadBalancerInfo': ?pulumi.Input.mapOptionalInputValue<DeploymentGroupLoadBalancerInfo, Map<String, dynamic>>(loadBalancerInfo, (value) => value.toMap()),
+      'onPremisesInstanceTagFilters': ?pulumi.Input.mapOptionalInputValue<List<DeploymentGroupOnPremisesInstanceTagFilter>, List<Map<String, dynamic>>>(onPremisesInstanceTagFilters, (value) => pulumi.Input.encodeList<DeploymentGroupOnPremisesInstanceTagFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'outdatedInstancesStrategy': ?outdatedInstancesStrategy,
       'region': ?region,
       'serviceRoleArn': serviceRoleArn,
       'tags': ?tags,
       'terminationHookEnabled': ?terminationHookEnabled,
-      'triggerConfigurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DeploymentGroupTriggerConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            triggerConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DeploymentGroupTriggerConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'triggerConfigurations': ?pulumi.Input.mapOptionalInputValue<List<DeploymentGroupTriggerConfiguration>, List<Map<String, dynamic>>>(triggerConfigurations, (value) => pulumi.Input.encodeList<DeploymentGroupTriggerConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DeploymentGroupArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupArgs(
-      alarmConfiguration: (() {
-        final guardedValue = map['alarmConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeploymentGroupAlarmConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      alarmConfiguration: (() { final guardedValue = map['alarmConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentGroupAlarmConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       appName: pulumi.Input.fromValue(map['appName'] as String),
-      autoRollbackConfiguration: (() {
-        final guardedValue = map['autoRollbackConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeploymentGroupAutoRollbackConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      autoscalingGroups: (() {
-        final guardedValue = map['autoscalingGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      blueGreenDeploymentConfig: (() {
-        final guardedValue = map['blueGreenDeploymentConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeploymentGroupBlueGreenDeploymentConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      deploymentConfigName: (() {
-        final guardedValue = map['deploymentConfigName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deploymentGroupName: pulumi.Input.fromValue(
-        map['deploymentGroupName'] as String,
-      ),
-      deploymentStyle: (() {
-        final guardedValue = map['deploymentStyle'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeploymentGroupDeploymentStyle.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      ec2TagFilters: (() {
-        final guardedValue = map['ec2TagFilters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DeploymentGroupEc2TagFilter>(
-            guardedValue,
-            (value) => DeploymentGroupEc2TagFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      ec2TagSets: (() {
-        final guardedValue = map['ec2TagSets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DeploymentGroupEc2TagSet>(
-            guardedValue,
-            (value) => DeploymentGroupEc2TagSet.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      ecsService: (() {
-        final guardedValue = map['ecsService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeploymentGroupEcsService.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      loadBalancerInfo: (() {
-        final guardedValue = map['loadBalancerInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeploymentGroupLoadBalancerInfo.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      onPremisesInstanceTagFilters: (() {
-        final guardedValue = map['onPremisesInstanceTagFilters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DeploymentGroupOnPremisesInstanceTagFilter>(
-            guardedValue,
-            (value) => DeploymentGroupOnPremisesInstanceTagFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      outdatedInstancesStrategy: (() {
-        final guardedValue = map['outdatedInstancesStrategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autoRollbackConfiguration: (() { final guardedValue = map['autoRollbackConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentGroupAutoRollbackConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      autoscalingGroups: (() { final guardedValue = map['autoscalingGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      blueGreenDeploymentConfig: (() { final guardedValue = map['blueGreenDeploymentConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentGroupBlueGreenDeploymentConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deploymentConfigName: (() { final guardedValue = map['deploymentConfigName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deploymentGroupName: pulumi.Input.fromValue(map['deploymentGroupName'] as String),
+      deploymentStyle: (() { final guardedValue = map['deploymentStyle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentGroupDeploymentStyle.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ec2TagFilters: (() { final guardedValue = map['ec2TagFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeploymentGroupEc2TagFilter>(guardedValue, (value) => DeploymentGroupEc2TagFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ec2TagSets: (() { final guardedValue = map['ec2TagSets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeploymentGroupEc2TagSet>(guardedValue, (value) => DeploymentGroupEc2TagSet.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ecsService: (() { final guardedValue = map['ecsService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentGroupEcsService.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      loadBalancerInfo: (() { final guardedValue = map['loadBalancerInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentGroupLoadBalancerInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      onPremisesInstanceTagFilters: (() { final guardedValue = map['onPremisesInstanceTagFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeploymentGroupOnPremisesInstanceTagFilter>(guardedValue, (value) => DeploymentGroupOnPremisesInstanceTagFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      outdatedInstancesStrategy: (() { final guardedValue = map['outdatedInstancesStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceRoleArn: pulumi.Input.fromValue(map['serviceRoleArn'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      terminationHookEnabled: (() {
-        final guardedValue = map['terminationHookEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      triggerConfigurations: (() {
-        final guardedValue = map['triggerConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DeploymentGroupTriggerConfiguration>(
-            guardedValue,
-            (value) => DeploymentGroupTriggerConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      terminationHookEnabled: (() { final guardedValue = map['terminationHookEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      triggerConfigurations: (() { final guardedValue = map['triggerConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeploymentGroupTriggerConfiguration>(guardedValue, (value) => DeploymentGroupTriggerConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

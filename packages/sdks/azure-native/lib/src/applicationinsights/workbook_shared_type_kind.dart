@@ -14,3 +14,4 @@ enum WorkbookSharedTypeKind {
     throw ArgumentError('Unknown WorkbookSharedTypeKind value: $value');
   }
 }
+

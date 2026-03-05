@@ -149,19 +149,14 @@ import 'ssh_key_state.dart';
 class SshKey extends pulumi.CustomResource {
   /// Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use `SSH`. To retrieve the public key in PEM format, use `PEM`.
   late final pulumi.Output<String> encoding;
-
   /// The MD5 message digest of the SSH public key.
   late final pulumi.Output<String> fingerprint;
-
   /// The SSH public key. The public key must be encoded in ssh-rsa format or PEM format.
   late final pulumi.Output<String> publicKey;
-
   /// The unique identifier for the SSH public key.
   late final pulumi.Output<String> sshPublicKeyId;
-
   /// The status to assign to the SSH public key. Active means the key can be used for authentication with an AWS CodeCommit repository. Inactive means the key cannot be used. Default is `active`.
   late final pulumi.Output<String> status;
-
   /// The name of the IAM user to associate the SSH public key with.
   late final pulumi.Output<String> username;
 
@@ -169,13 +164,16 @@ class SshKey extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [SshKey]. {@macro pulumi_iam_ssh_key_ssh_key_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  SshKey(String name, {SshKeyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:iam/sshKey:SshKey',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  SshKey(
+    String name, {
+    SshKeyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:iam/sshKey:SshKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     encoding = registerOutput<String>('encoding');
     fingerprint = registerOutput<String>('fingerprint');
     publicKey = registerOutput<String>('publicKey');
@@ -202,11 +200,11 @@ class SshKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/sshKey:SshKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/sshKey:SshKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     encoding = registerOutput<String>('encoding');
     fingerprint = registerOutput<String>('fingerprint');
     publicKey = registerOutput<String>('publicKey');

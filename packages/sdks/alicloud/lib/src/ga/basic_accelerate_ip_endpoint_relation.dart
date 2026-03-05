@@ -582,13 +582,10 @@ import 'basic_accelerate_ip_endpoint_relation_state.dart';
 class BasicAccelerateIpEndpointRelation extends pulumi.CustomResource {
   /// The ID of the Basic Accelerate IP.
   late final pulumi.Output<String> accelerateIpId;
-
   /// The ID of the Basic GA instance.
   late final pulumi.Output<String> acceleratorId;
-
   /// The ID of the Basic Endpoint.
   late final pulumi.Output<String> endpointId;
-
   /// The status of the Basic Accelerate Ip Endpoint Relation.
   late final pulumi.Output<String> status;
 
@@ -601,11 +598,11 @@ class BasicAccelerateIpEndpointRelation extends pulumi.CustomResource {
     BasicAccelerateIpEndpointRelationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accelerateIpId = registerOutput<String>('accelerateIpId');
     acceleratorId = registerOutput<String>('acceleratorId');
     endpointId = registerOutput<String>('endpointId');
@@ -630,11 +627,11 @@ class BasicAccelerateIpEndpointRelation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accelerateIpId = registerOutput<String>('accelerateIpId');
     acceleratorId = registerOutput<String>('acceleratorId');
     endpointId = registerOutput<String>('endpointId');

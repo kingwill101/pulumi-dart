@@ -10,10 +10,14 @@ class ResponsePolicyNetwork {
 
   /// Creates a new [ResponsePolicyNetwork].
   /// [networkUrl] The fully qualified URL of the VPC network to bind to.
-  ResponsePolicyNetwork({required this.networkUrl});
+  ResponsePolicyNetwork({
+    required this.networkUrl,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'networkUrl': networkUrl};
+    return <String, dynamic>{
+      'networkUrl': networkUrl,
+    };
   }
 
   factory ResponsePolicyNetwork.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class ResponsePolicyNetwork {
     );
   }
 }
+

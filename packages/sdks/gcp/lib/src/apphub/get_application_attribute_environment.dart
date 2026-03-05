@@ -8,10 +8,14 @@ class GetApplicationAttributeEnvironment {
 
   /// Creates a new [GetApplicationAttributeEnvironment].
   /// [type] Environment type. Possible values: ["PRODUCTION", "STAGING", "TEST", "DEVELOPMENT"]
-  GetApplicationAttributeEnvironment({required this.type});
+  GetApplicationAttributeEnvironment({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory GetApplicationAttributeEnvironment.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetApplicationAttributeEnvironment {
     );
   }
 }
+

@@ -10,41 +10,28 @@ import 'system_data_response.dart';
 class GetAnalyticsConnectorResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Data destination configuration for Analytics Connector.
-  final AnalyticsConnectorDataLakeDataDestinationResponse
-  dataDestinationConfiguration;
-
+  final AnalyticsConnectorDataLakeDataDestinationResponse dataDestinationConfiguration;
   /// Data mapping configuration for Analytics Connector.
   final AnalyticsConnectorFhirToParquetMappingResponse dataMappingConfiguration;
-
   /// Data source for Analytics Connector.
   final AnalyticsConnectorFhirServiceDataSourceResponse dataSourceConfiguration;
-
   /// An etag associated with the resource, used for optimistic concurrency when editing it.
   final String? etag;
-
   /// The resource identifier.
   final String id;
-
   /// Setting indicating whether the service has a managed identity associated with it.
   final ServiceManagedIdentityResponseIdentity? identity;
-
   /// The resource location.
   final String? location;
-
   /// The resource name.
   final String name;
-
   /// The provisioning state.
   final String provisioningState;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The resource type.
   final String type;
 
@@ -99,48 +86,19 @@ class GetAnalyticsConnectorResult {
   factory GetAnalyticsConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetAnalyticsConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dataDestinationConfiguration:
-          AnalyticsConnectorDataLakeDataDestinationResponse.fromMap(
-            (map['dataDestinationConfiguration']! as Map)
-                .cast<String, dynamic>(),
-          ),
-      dataMappingConfiguration:
-          AnalyticsConnectorFhirToParquetMappingResponse.fromMap(
-            (map['dataMappingConfiguration']! as Map).cast<String, dynamic>(),
-          ),
-      dataSourceConfiguration:
-          AnalyticsConnectorFhirServiceDataSourceResponse.fromMap(
-            (map['dataSourceConfiguration']! as Map).cast<String, dynamic>(),
-          ),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      dataDestinationConfiguration: AnalyticsConnectorDataLakeDataDestinationResponse.fromMap((map['dataDestinationConfiguration']! as Map).cast<String, dynamic>()),
+      dataMappingConfiguration: AnalyticsConnectorFhirToParquetMappingResponse.fromMap((map['dataMappingConfiguration']! as Map).cast<String, dynamic>()),
+      dataSourceConfiguration: AnalyticsConnectorFhirServiceDataSourceResponse.fromMap((map['dataSourceConfiguration']! as Map).cast<String, dynamic>()),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return ServiceManagedIdentityResponseIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ServiceManagedIdentityResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

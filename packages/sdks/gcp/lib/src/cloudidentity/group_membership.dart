@@ -526,33 +526,24 @@ import 'group_membership_state.dart';
 class GroupMembership extends pulumi.CustomResource {
   /// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
   late final pulumi.Output<bool?> createIgnoreAlreadyExists;
-
   /// The time when the Membership was created.
   late final pulumi.Output<String> createTime;
-
   /// The name of the Group to create this membership in.
   late final pulumi.Output<String> group;
-
   /// EntityKey of the member.
   /// Structure is documented below.
   late final pulumi.Output<GroupMembershipMemberKey> memberKey;
-
   /// The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
   late final pulumi.Output<String> name;
-
   /// EntityKey of the member.
   /// Structure is documented below.
-  late final pulumi.Output<GroupMembershipPreferredMemberKey>
-  preferredMemberKey;
-
+  late final pulumi.Output<GroupMembershipPreferredMemberKey> preferredMemberKey;
   /// The MembershipRoles that apply to the Membership.
   /// Must not contain duplicate MembershipRoles with the same name.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> roles;
-
   /// The type of the membership.
   late final pulumi.Output<String> type;
-
   /// The time when the Membership was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -565,37 +556,17 @@ class GroupMembership extends pulumi.CustomResource {
     GroupMembershipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:cloudidentity/groupMembership:GroupMembership',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    createIgnoreAlreadyExists = registerOutput<bool?>(
-      'createIgnoreAlreadyExists',
-    );
+          'gcp:cloudidentity/groupMembership:GroupMembership',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
     createTime = registerOutput<String>('createTime');
     group = registerOutput<String>('group');
-    memberKey = registerOutput<GroupMembershipMemberKey>(
-      'memberKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupMembershipMemberKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    memberKey = registerOutput<GroupMembershipMemberKey>('memberKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupMembershipMemberKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    preferredMemberKey = registerOutput<GroupMembershipPreferredMemberKey>(
-      'preferredMemberKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupMembershipPreferredMemberKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    preferredMemberKey = registerOutput<GroupMembershipPreferredMemberKey>('preferredMemberKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupMembershipPreferredMemberKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     roles = registerOutput<List<Map<String, dynamic>>>('roles');
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');
@@ -619,37 +590,17 @@ class GroupMembership extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:cloudidentity/groupMembership:GroupMembership',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    createIgnoreAlreadyExists = registerOutput<bool?>(
-      'createIgnoreAlreadyExists',
-    );
+          'gcp:cloudidentity/groupMembership:GroupMembership',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
     createTime = registerOutput<String>('createTime');
     group = registerOutput<String>('group');
-    memberKey = registerOutput<GroupMembershipMemberKey>(
-      'memberKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupMembershipMemberKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    memberKey = registerOutput<GroupMembershipMemberKey>('memberKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupMembershipMemberKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    preferredMemberKey = registerOutput<GroupMembershipPreferredMemberKey>(
-      'preferredMemberKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupMembershipPreferredMemberKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    preferredMemberKey = registerOutput<GroupMembershipPreferredMemberKey>('preferredMemberKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupMembershipPreferredMemberKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     roles = registerOutput<List<Map<String, dynamic>>>('roles');
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');

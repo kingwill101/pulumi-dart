@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionBackendServiceTlsSettingSubjectAltName {
   /// The SAN specified as a DNS Name.
   final pulumi.Input<String> dnsName;
-
   /// The SAN specified as a URI.
   final pulumi.Input<String> uniformResourceIdentifier;
 
@@ -24,14 +23,11 @@ class GetRegionBackendServiceTlsSettingSubjectAltName {
     };
   }
 
-  factory GetRegionBackendServiceTlsSettingSubjectAltName.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionBackendServiceTlsSettingSubjectAltName.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceTlsSettingSubjectAltName(
       dnsName: pulumi.Input.fromValue(map['dnsName'] as String),
-      uniformResourceIdentifier: pulumi.Input.fromValue(
-        map['uniformResourceIdentifier'] as String,
-      ),
+      uniformResourceIdentifier: pulumi.Input.fromValue(map['uniformResourceIdentifier'] as String),
     );
   }
 }
+

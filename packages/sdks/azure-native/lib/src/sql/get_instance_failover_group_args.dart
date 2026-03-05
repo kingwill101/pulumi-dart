@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceFailoverGroupArgs {
   /// The name of the failover group.
   final pulumi.Input<String> failoverGroupName;
-
   /// The name of the region where the resource is located.
   final pulumi.Input<String> locationName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetInstanceFailoverGroupArgs {
 
   factory GetInstanceFailoverGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceFailoverGroupArgs(
-      failoverGroupName: pulumi.Input.fromValue(
-        map['failoverGroupName'] as String,
-      ),
+      failoverGroupName: pulumi.Input.fromValue(map['failoverGroupName'] as String),
       locationName: pulumi.Input.fromValue(map['locationName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

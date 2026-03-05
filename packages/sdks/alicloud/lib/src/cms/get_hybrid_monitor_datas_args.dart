@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHybridMonitorDatasArgs {
   /// The timestamp that specifies the end of the time range to query.
   final pulumi.Input<String> end;
-
   /// The name of the namespace.
   final pulumi.Input<String> namespace;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The interval at which monitoring data is collected. Unit: seconds.
   final pulumi.Input<String>? period;
-
   /// The name of the metric. Note PromQL statements are supported.
   final pulumi.Input<String> promSql;
-
   /// The timestamp that specifies the beginning of the time range to query.
   final pulumi.Input<String> start;
 
@@ -56,18 +51,11 @@ class GetHybridMonitorDatasArgs {
     return GetHybridMonitorDatasArgs(
       end: pulumi.Input.fromValue(map['end'] as String),
       namespace: pulumi.Input.fromValue(map['namespace'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      period: (() {
-        final guardedValue = map['period'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       promSql: pulumi.Input.fromValue(map['promSql'] as String),
       start: pulumi.Input.fromValue(map['start'] as String),
     );
   }
 }
+

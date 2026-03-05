@@ -261,28 +261,20 @@ import 'cluster_principal_assignment_state.dart';
 class ClusterPrincipalAssignment extends pulumi.CustomResource {
   /// The name of the cluster in which to create the resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterName;
-
   /// The name of the Kusto cluster principal assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The object id of the principal. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalId;
-
   /// The name of the principal.
   late final pulumi.Output<String> principalName;
-
   /// The type of the principal. Valid values include `App`, `Group`, `User`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalType;
-
   /// The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The cluster role assigned to the principal. Valid values include `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> role;
-
   /// The tenant id in which the principal resides. Changing this forces a new resource to be created.
   late final pulumi.Output<String> tenantId;
-
   /// The name of the tenant.
   late final pulumi.Output<String> tenantName;
 
@@ -295,11 +287,11 @@ class ClusterPrincipalAssignment extends pulumi.CustomResource {
     ClusterPrincipalAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/clusterPrincipalAssignment:ClusterPrincipalAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:kusto/clusterPrincipalAssignment:ClusterPrincipalAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterName = registerOutput<String>('clusterName');
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');
@@ -329,11 +321,11 @@ class ClusterPrincipalAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/clusterPrincipalAssignment:ClusterPrincipalAssignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:kusto/clusterPrincipalAssignment:ClusterPrincipalAssignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterName = registerOutput<String>('clusterName');
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');

@@ -8,30 +8,22 @@ class RoutineRouteState {
   /// - on: Open
   /// - off: off
   final pulumi.Input<String>? bypass;
-
   /// Config Id
   final pulumi.Input<int>? configId;
-
   /// Spare
   final pulumi.Input<String>? fallback;
-
   /// Routing switch. Value range:
   /// - on: Open
   /// - off: off
   final pulumi.Input<String>? routeEnable;
-
   /// The route name.
   final pulumi.Input<String>? routeName;
-
   /// The edge function Routine name.
   final pulumi.Input<String>? routineName;
-
   /// The rule content.
   final pulumi.Input<String>? rule;
-
   /// Rule execution order.
   final pulumi.Input<int>? sequence;
-
   /// Site Id
   final pulumi.Input<String>? siteId;
 
@@ -73,51 +65,16 @@ class RoutineRouteState {
 
   factory RoutineRouteState.fromMap(Map<String, dynamic> map) {
     return RoutineRouteState(
-      bypass: (() {
-        final guardedValue = map['bypass'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      configId: (() {
-        final guardedValue = map['configId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      fallback: (() {
-        final guardedValue = map['fallback'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routeEnable: (() {
-        final guardedValue = map['routeEnable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routeName: (() {
-        final guardedValue = map['routeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routineName: (() {
-        final guardedValue = map['routineName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rule: (() {
-        final guardedValue = map['rule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sequence: (() {
-        final guardedValue = map['sequence'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      siteId: (() {
-        final guardedValue = map['siteId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bypass: (() { final guardedValue = map['bypass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      configId: (() { final guardedValue = map['configId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fallback: (() { final guardedValue = map['fallback']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routeEnable: (() { final guardedValue = map['routeEnable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routeName: (() { final guardedValue = map['routeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routineName: (() { final guardedValue = map['routineName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rule: (() { final guardedValue = map['rule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sequence: (() { final guardedValue = map['sequence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -343,31 +343,22 @@ import 'spring_cloud_app_cosmos_dbassociation_state.dart';
 class SpringCloudAppCosmosDBAssociation extends pulumi.CustomResource {
   /// Specifies the API type which should be used when connecting to the CosmosDB Account. Possible values are `cassandra`, `gremlin`, `mongo`, `sql` or `table`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiType;
-
   /// Specifies the CosmosDB Account access key.
   late final pulumi.Output<String> cosmosdbAccessKey;
-
   /// Specifies the ID of the CosmosDB Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cosmosdbAccountId;
-
   /// Specifies the name of the Cassandra Keyspace which the Spring Cloud App should be associated with. Should only be set when `api_type` is `cassandra`.
   late final pulumi.Output<String?> cosmosdbCassandraKeyspaceName;
-
   /// Specifies the name of the Gremlin Database which the Spring Cloud App should be associated with. Should only be set when `api_type` is `gremlin`.
   late final pulumi.Output<String?> cosmosdbGremlinDatabaseName;
-
   /// Specifies the name of the Gremlin Graph which the Spring Cloud App should be associated with. Should only be set when `api_type` is `gremlin`.
   late final pulumi.Output<String?> cosmosdbGremlinGraphName;
-
   /// Specifies the name of the Mongo Database which the Spring Cloud App should be associated with. Should only be set when `api_type` is `mongo`.
   late final pulumi.Output<String?> cosmosdbMongoDatabaseName;
-
   /// Specifies the name of the SQL Database which the Spring Cloud App should be associated with. Should only be set when `api_type` is `sql`.
   late final pulumi.Output<String?> cosmosdbSqlDatabaseName;
-
   /// Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the ID of the Spring Cloud Application where this Association is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudAppId;
 
@@ -380,29 +371,19 @@ class SpringCloudAppCosmosDBAssociation extends pulumi.CustomResource {
     SpringCloudAppCosmosDBAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudAppCosmosDBAssociation:SpringCloudAppCosmosDBAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudAppCosmosDBAssociation:SpringCloudAppCosmosDBAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiType = registerOutput<String>('apiType');
     cosmosdbAccessKey = registerOutput<String>('cosmosdbAccessKey');
     cosmosdbAccountId = registerOutput<String>('cosmosdbAccountId');
-    cosmosdbCassandraKeyspaceName = registerOutput<String?>(
-      'cosmosdbCassandraKeyspaceName',
-    );
-    cosmosdbGremlinDatabaseName = registerOutput<String?>(
-      'cosmosdbGremlinDatabaseName',
-    );
-    cosmosdbGremlinGraphName = registerOutput<String?>(
-      'cosmosdbGremlinGraphName',
-    );
-    cosmosdbMongoDatabaseName = registerOutput<String?>(
-      'cosmosdbMongoDatabaseName',
-    );
-    cosmosdbSqlDatabaseName = registerOutput<String?>(
-      'cosmosdbSqlDatabaseName',
-    );
+    cosmosdbCassandraKeyspaceName = registerOutput<String?>('cosmosdbCassandraKeyspaceName');
+    cosmosdbGremlinDatabaseName = registerOutput<String?>('cosmosdbGremlinDatabaseName');
+    cosmosdbGremlinGraphName = registerOutput<String?>('cosmosdbGremlinGraphName');
+    cosmosdbMongoDatabaseName = registerOutput<String?>('cosmosdbMongoDatabaseName');
+    cosmosdbSqlDatabaseName = registerOutput<String?>('cosmosdbSqlDatabaseName');
     this.name = registerOutput<String>('name');
     springCloudAppId = registerOutput<String>('springCloudAppId');
   }
@@ -425,29 +406,19 @@ class SpringCloudAppCosmosDBAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudAppCosmosDBAssociation:SpringCloudAppCosmosDBAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudAppCosmosDBAssociation:SpringCloudAppCosmosDBAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiType = registerOutput<String>('apiType');
     cosmosdbAccessKey = registerOutput<String>('cosmosdbAccessKey');
     cosmosdbAccountId = registerOutput<String>('cosmosdbAccountId');
-    cosmosdbCassandraKeyspaceName = registerOutput<String?>(
-      'cosmosdbCassandraKeyspaceName',
-    );
-    cosmosdbGremlinDatabaseName = registerOutput<String?>(
-      'cosmosdbGremlinDatabaseName',
-    );
-    cosmosdbGremlinGraphName = registerOutput<String?>(
-      'cosmosdbGremlinGraphName',
-    );
-    cosmosdbMongoDatabaseName = registerOutput<String?>(
-      'cosmosdbMongoDatabaseName',
-    );
-    cosmosdbSqlDatabaseName = registerOutput<String?>(
-      'cosmosdbSqlDatabaseName',
-    );
+    cosmosdbCassandraKeyspaceName = registerOutput<String?>('cosmosdbCassandraKeyspaceName');
+    cosmosdbGremlinDatabaseName = registerOutput<String?>('cosmosdbGremlinDatabaseName');
+    cosmosdbGremlinGraphName = registerOutput<String?>('cosmosdbGremlinGraphName');
+    cosmosdbMongoDatabaseName = registerOutput<String?>('cosmosdbMongoDatabaseName');
+    cosmosdbSqlDatabaseName = registerOutput<String?>('cosmosdbSqlDatabaseName');
     this.name = registerOutput<String>('name');
     springCloudAppId = registerOutput<String>('springCloudAppId');
   }

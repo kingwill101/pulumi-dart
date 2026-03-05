@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterEnterpriseConfig {
   /// Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
   final pulumi.Input<String> clusterTier;
-
   /// Indicates the desired cluster tier. Available options include STANDARD and ENTERPRISE.
   final pulumi.Input<String> desiredTier;
 
@@ -31,3 +30,4 @@ class GetClusterEnterpriseConfig {
     );
   }
 }
+

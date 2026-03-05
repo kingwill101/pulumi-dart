@@ -63,6 +63,8 @@ class GoogleNativeConfig {
   }
 
   bool get zoneIsSecret => _isSecret('zone');
+
 }
 
 final config = GoogleNativeConfig();
+

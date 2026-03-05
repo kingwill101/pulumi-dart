@@ -7,16 +7,11 @@ import 'delivery_pipeline_condition_targets_type_condition.dart';
 
 class DeliveryPipelineCondition {
   /// Details around the Pipeline's overall status.
-  final pulumi.Input<List<DeliveryPipelineConditionPipelineReadyCondition>>?
-  pipelineReadyConditions;
-
+  final pulumi.Input<List<DeliveryPipelineConditionPipelineReadyCondition>>? pipelineReadyConditions;
   /// Details around targets enumerated in the pipeline.
-  final pulumi.Input<List<DeliveryPipelineConditionTargetsPresentCondition>>?
-  targetsPresentConditions;
-
+  final pulumi.Input<List<DeliveryPipelineConditionTargetsPresentCondition>>? targetsPresentConditions;
   /// Details on the whether the targets enumerated in the pipeline are of the same type.
-  final pulumi.Input<List<DeliveryPipelineConditionTargetsTypeCondition>>?
-  targetsTypeConditions;
+  final pulumi.Input<List<DeliveryPipelineConditionTargetsTypeCondition>>? targetsTypeConditions;
 
   /// Creates a new [DeliveryPipelineCondition].
   /// [pipelineReadyConditions] Details around the Pipeline's overall status.
@@ -30,88 +25,18 @@ class DeliveryPipelineCondition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pipelineReadyConditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DeliveryPipelineConditionPipelineReadyCondition>,
-            List<Map<String, dynamic>>
-          >(
-            pipelineReadyConditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DeliveryPipelineConditionPipelineReadyCondition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'targetsPresentConditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DeliveryPipelineConditionTargetsPresentCondition>,
-            List<Map<String, dynamic>>
-          >(
-            targetsPresentConditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DeliveryPipelineConditionTargetsPresentCondition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'targetsTypeConditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DeliveryPipelineConditionTargetsTypeCondition>,
-            List<Map<String, dynamic>>
-          >(
-            targetsTypeConditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DeliveryPipelineConditionTargetsTypeCondition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'pipelineReadyConditions': ?pulumi.Input.mapOptionalInputValue<List<DeliveryPipelineConditionPipelineReadyCondition>, List<Map<String, dynamic>>>(pipelineReadyConditions, (value) => pulumi.Input.encodeList<DeliveryPipelineConditionPipelineReadyCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetsPresentConditions': ?pulumi.Input.mapOptionalInputValue<List<DeliveryPipelineConditionTargetsPresentCondition>, List<Map<String, dynamic>>>(targetsPresentConditions, (value) => pulumi.Input.encodeList<DeliveryPipelineConditionTargetsPresentCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetsTypeConditions': ?pulumi.Input.mapOptionalInputValue<List<DeliveryPipelineConditionTargetsTypeCondition>, List<Map<String, dynamic>>>(targetsTypeConditions, (value) => pulumi.Input.encodeList<DeliveryPipelineConditionTargetsTypeCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DeliveryPipelineCondition.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineCondition(
-      pipelineReadyConditions: (() {
-        final guardedValue = map['pipelineReadyConditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            DeliveryPipelineConditionPipelineReadyCondition
-          >(
-            guardedValue,
-            (value) => DeliveryPipelineConditionPipelineReadyCondition.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      targetsPresentConditions: (() {
-        final guardedValue = map['targetsPresentConditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            DeliveryPipelineConditionTargetsPresentCondition
-          >(
-            guardedValue,
-            (value) => DeliveryPipelineConditionTargetsPresentCondition.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      targetsTypeConditions: (() {
-        final guardedValue = map['targetsTypeConditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi
-              .Input.decodeList<DeliveryPipelineConditionTargetsTypeCondition>(
-            guardedValue,
-            (value) => DeliveryPipelineConditionTargetsTypeCondition.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      pipelineReadyConditions: (() { final guardedValue = map['pipelineReadyConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeliveryPipelineConditionPipelineReadyCondition>(guardedValue, (value) => DeliveryPipelineConditionPipelineReadyCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      targetsPresentConditions: (() { final guardedValue = map['targetsPresentConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeliveryPipelineConditionTargetsPresentCondition>(guardedValue, (value) => DeliveryPipelineConditionTargetsPresentCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      targetsTypeConditions: (() { final guardedValue = map['targetsTypeConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeliveryPipelineConditionTargetsTypeCondition>(guardedValue, (value) => DeliveryPipelineConditionTargetsTypeCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

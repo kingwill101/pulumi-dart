@@ -6,23 +6,17 @@ import 'get_file_systems_system.dart';
 /// Result data returned by getFileSystems.
 class GetFileSystemsResult {
   final String? descriptionRegex;
-
   /// A list of FileSystem descriptions.
   final List<String> descriptions;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of FileSystem Id.
   final List<String> ids;
   final String? outputFile;
-
   /// ProtocolType block of the FileSystem
   final String? protocolType;
-
   /// StorageType block of the FileSystem.
   final String? storageType;
-
   /// A list of VPCs. Each element contains the following attributes:
   final List<GetFileSystemsSystem> systems;
 
@@ -55,45 +49,21 @@ class GetFileSystemsResult {
       'outputFile': ?outputFile,
       'protocolType': ?protocolType,
       'storageType': ?storageType,
-      'systems':
-          pulumi.Input.encodeList<GetFileSystemsSystem, Map<String, dynamic>>(
-            systems,
-            (value) => value.toMap(),
-          ),
+      'systems': pulumi.Input.encodeList<GetFileSystemsSystem, Map<String, dynamic>>(systems, (value) => value.toMap()),
     };
   }
 
   factory GetFileSystemsResult.fromMap(Map<String, dynamic> map) {
     return GetFileSystemsResult(
-      descriptionRegex: (() {
-        final guardedValue = map['descriptionRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      descriptionRegex: (() { final guardedValue = map['descriptionRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       descriptions: (map['descriptions'] as List).cast<String>(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      protocolType: (() {
-        final guardedValue = map['protocolType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      storageType: (() {
-        final guardedValue = map['storageType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systems: pulumi.Input.decodeList<GetFileSystemsSystem>(
-        map['systems']!,
-        (value) => GetFileSystemsSystem.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      protocolType: (() { final guardedValue = map['protocolType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systems: pulumi.Input.decodeList<GetFileSystemsSystem>(map['systems']!, (value) => GetFileSystemsSystem.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

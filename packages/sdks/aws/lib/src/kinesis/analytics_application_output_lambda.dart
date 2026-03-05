@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnalyticsApplicationOutputLambda {
   /// The ARN of the Lambda function.
   final pulumi.Input<String> resourceArn;
-
   /// The ARN of the IAM Role used to access the Lambda function.
   final pulumi.Input<String> roleArn;
 
@@ -18,7 +17,10 @@ class AnalyticsApplicationOutputLambda {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceArn': resourceArn, 'roleArn': roleArn};
+    return <String, dynamic>{
+      'resourceArn': resourceArn,
+      'roleArn': roleArn,
+    };
   }
 
   factory AnalyticsApplicationOutputLambda.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class AnalyticsApplicationOutputLambda {
     );
   }
 }
+

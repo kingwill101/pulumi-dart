@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExecutionsExecution {
   /// The name of the execution.
   final pulumi.Input<String> executionName;
-
   /// The name of the flow.
   final pulumi.Input<String> flowName;
-
   /// The ID of the Execution. The value formats as `&lt;flow_name&gt;:&lt;execution_name&gt;`.
   final pulumi.Input<String> id;
-
   /// The Input information for this execution.
   final pulumi.Input<String> input;
-
   /// The output of the execution.
   final pulumi.Input<String> output;
-
   /// The started time of the execution.
   final pulumi.Input<String> startedTime;
-
   /// The status of the resource.
   final pulumi.Input<String> status;
-
   /// The stopped time of the execution.
   final pulumi.Input<String> stoppedTime;
 
@@ -73,3 +66,4 @@ class GetExecutionsExecution {
     );
   }
 }
+

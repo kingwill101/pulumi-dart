@@ -173,25 +173,18 @@ import 'member_state.dart';
 class Member extends pulumi.CustomResource {
   /// AWS account ID for member account.
   late final pulumi.Output<String> accountId;
-
   /// The detector ID of the GuardDuty account where you want to create member accounts.
   late final pulumi.Output<String> detectorId;
-
   /// Boolean whether an email notification is sent to the accounts. Defaults to `false`.
   late final pulumi.Output<bool?> disableEmailNotification;
-
   /// Email address for member account.
   late final pulumi.Output<String> email;
-
   /// Message for invitation.
   late final pulumi.Output<String?> invitationMessage;
-
   /// Boolean whether to invite the account to GuardDuty as a member. Defaults to `false`. To detect if an invitation needs to be (re-)sent, the this provider state value is `true` based on a `relationship_status` of `Disabled`, `Enabled`, `Invited`, or `EmailVerificationInProgress`.
   late final pulumi.Output<bool?> invite;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The status of the relationship between the member account and its primary account. More information can be found in [Amazon GuardDuty API Reference](https://docs.aws.amazon.com/guardduty/latest/ug/get-members.html).
   late final pulumi.Output<String> relationshipStatus;
 
@@ -199,18 +192,19 @@ class Member extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Member]. {@macro pulumi_guardduty_member_member_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Member(String name, {MemberArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:guardduty/member:Member',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Member(
+    String name, {
+    MemberArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:guardduty/member:Member',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     detectorId = registerOutput<String>('detectorId');
-    disableEmailNotification = registerOutput<bool?>(
-      'disableEmailNotification',
-    );
+    disableEmailNotification = registerOutput<bool?>('disableEmailNotification');
     email = registerOutput<String>('email');
     invitationMessage = registerOutput<String?>('invitationMessage');
     invite = registerOutput<bool?>('invite');
@@ -236,16 +230,14 @@ class Member extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:guardduty/member:Member',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:guardduty/member:Member',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     detectorId = registerOutput<String>('detectorId');
-    disableEmailNotification = registerOutput<bool?>(
-      'disableEmailNotification',
-    );
+    disableEmailNotification = registerOutput<bool?>('disableEmailNotification');
     email = registerOutput<String>('email');
     invitationMessage = registerOutput<String?>('invitationMessage');
     invite = registerOutput<bool?>('invite');

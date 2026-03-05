@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPackagesPackage {
   /// Client specified annotations.
   final pulumi.Input<Map<String, String>> annotations;
-
   /// The time, as a RFC 3339 string, this package was created.
   final pulumi.Input<String> createTime;
-
   /// The display name of the package.
   final pulumi.Input<String> displayName;
-
   /// The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped.
   final pulumi.Input<String> name;
-
   /// The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
   final pulumi.Input<String> updateTime;
 
@@ -44,9 +40,7 @@ class GetPackagesPackage {
 
   factory GetPackagesPackage.fromMap(Map<String, dynamic> map) {
     return GetPackagesPackage(
-      annotations: pulumi.Input.fromValue(
-        (map['annotations'] as Map).cast<String, String>(),
-      ),
+      annotations: pulumi.Input.fromValue((map['annotations'] as Map).cast<String, String>()),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -54,3 +48,4 @@ class GetPackagesPackage {
     );
   }
 }
+

@@ -8,13 +8,10 @@ import 'node_response.dart';
 class NodeSpecResponse {
   /// Optional. Fields to specify in case of multi-node request.
   final pulumi.Input<MultiNodeParamsResponse> multiNodeParams;
-
   /// The node.
   final pulumi.Input<NodeResponse> node;
-
   /// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multi-node requests, multi_node_params must be populated instead. It's an error to specify both node_id and multi_node_params.
   final pulumi.Input<String> nodeId;
-
   /// The parent resource name.
   final pulumi.Input<String> parent;
 
@@ -32,15 +29,8 @@ class NodeSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'multiNodeParams':
-          pulumi.Input.mapInputValue<
-            MultiNodeParamsResponse,
-            Map<String, dynamic>
-          >(multiNodeParams, (value) => value.toMap()),
-      'node': pulumi.Input.mapInputValue<NodeResponse, Map<String, dynamic>>(
-        node,
-        (value) => value.toMap(),
-      ),
+      'multiNodeParams': pulumi.Input.mapInputValue<MultiNodeParamsResponse, Map<String, dynamic>>(multiNodeParams, (value) => value.toMap()),
+      'node': pulumi.Input.mapInputValue<NodeResponse, Map<String, dynamic>>(node, (value) => value.toMap()),
       'nodeId': nodeId,
       'parent': parent,
     };
@@ -48,16 +38,11 @@ class NodeSpecResponse {
 
   factory NodeSpecResponse.fromMap(Map<String, dynamic> map) {
     return NodeSpecResponse(
-      multiNodeParams: pulumi.Input.fromValue(
-        MultiNodeParamsResponse.fromMap(
-          (map['multiNodeParams']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      node: pulumi.Input.fromValue(
-        NodeResponse.fromMap((map['node']! as Map).cast<String, dynamic>()),
-      ),
+      multiNodeParams: pulumi.Input.fromValue(MultiNodeParamsResponse.fromMap((map['multiNodeParams']! as Map).cast<String, dynamic>())),
+      node: pulumi.Input.fromValue(NodeResponse.fromMap((map['node']! as Map).cast<String, dynamic>())),
       nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
       parent: pulumi.Input.fromValue(map['parent'] as String),
     );
   }
 }
+

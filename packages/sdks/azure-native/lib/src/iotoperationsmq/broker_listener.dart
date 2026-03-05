@@ -501,49 +501,34 @@ import 'tls_cert_method_response.dart';
 class BrokerListener extends pulumi.CustomResource {
   /// The flag for enabling Authentication rules on Listener Port.
   late final pulumi.Output<bool?> authenticationEnabled;
-
   /// The flag for enabling Authorization policies on Listener Port. false - AllowAll, true - Use Authorization resource rules if present.
   late final pulumi.Output<bool?> authorizationEnabled;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The k8s cr/resource reference of mq/broker.
   late final pulumi.Output<String> brokerRef;
-
   /// Extended Location
   late final pulumi.Output<ExtendedLocationPropertyResponse> extendedLocation;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The node port to use on the Host node.
   late final pulumi.Output<int?> nodePort;
-
   /// The port to start Listening for connections on.
   late final pulumi.Output<int> port;
-
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
-
   /// The service name to expose Listener port on.
   late final pulumi.Output<String?> serviceName;
-
   /// The Kubernetes Service type to deploy for Listener.
   late final pulumi.Output<String?> serviceType;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Defines configuration of a TLS server certificate. NOTE Enum - Only one TLS Cert method is supported
   late final pulumi.Output<TlsCertMethodResponse?> tls;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -556,25 +541,16 @@ class BrokerListener extends pulumi.CustomResource {
     BrokerListenerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:iotoperationsmq:BrokerListener',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:iotoperationsmq:BrokerListener',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationEnabled = registerOutput<bool?>('authenticationEnabled');
     authorizationEnabled = registerOutput<bool?>('authorizationEnabled');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     brokerRef = registerOutput<String>('brokerRef');
-    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     nodePort = registerOutput<int?>('nodePort');
@@ -582,27 +558,9 @@ class BrokerListener extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     serviceName = registerOutput<String?>('serviceName');
     serviceType = registerOutput<String?>('serviceType');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    tls = registerOutput<TlsCertMethodResponse?>(
-      'tls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TlsCertMethodResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tls = registerOutput<TlsCertMethodResponse?>('tls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TlsCertMethodResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

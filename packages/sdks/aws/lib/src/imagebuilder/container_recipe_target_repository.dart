@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerRecipeTargetRepository {
   /// The name of the container repository where the output container image is stored. This name is prefixed by the repository location.
   final pulumi.Input<String> repositoryName;
-
   /// The service in which this image is registered. Valid values: `ECR`.
   final pulumi.Input<String> service;
 
@@ -31,3 +30,4 @@ class ContainerRecipeTargetRepository {
     );
   }
 }
+

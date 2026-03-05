@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OpenIdConnectConfig {
   /// The endpoint to be used to make an authorization request.
   final pulumi.Input<String>? authorizationEndpoint;
-
   /// The endpoint that provides the keys necessary to validate the token.
   final pulumi.Input<String>? certificationUri;
-
   /// The endpoint that issues the token.
   final pulumi.Input<String>? issuer;
-
   /// The endpoint to be used to request a token.
   final pulumi.Input<String>? tokenEndpoint;
-
   /// The endpoint that contains all the configuration endpoints for the provider.
   final pulumi.Input<String>? wellKnownOpenIdConfiguration;
 
@@ -45,31 +41,12 @@ class OpenIdConnectConfig {
 
   factory OpenIdConnectConfig.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectConfig(
-      authorizationEndpoint: (() {
-        final guardedValue = map['authorizationEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certificationUri: (() {
-        final guardedValue = map['certificationUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      issuer: (() {
-        final guardedValue = map['issuer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tokenEndpoint: (() {
-        final guardedValue = map['tokenEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      wellKnownOpenIdConfiguration: (() {
-        final guardedValue = map['wellKnownOpenIdConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authorizationEndpoint: (() { final guardedValue = map['authorizationEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificationUri: (() { final guardedValue = map['certificationUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      issuer: (() { final guardedValue = map['issuer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tokenEndpoint: (() { final guardedValue = map['tokenEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      wellKnownOpenIdConfiguration: (() { final guardedValue = map['wellKnownOpenIdConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

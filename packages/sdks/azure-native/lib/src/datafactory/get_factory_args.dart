@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFactoryArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetFactoryArgs].
   /// [factoryName] The factory name.
   /// [resourceGroupName] The resource group name.
-  GetFactoryArgs({required this.factoryName, required this.resourceGroupName});
+  GetFactoryArgs({
+    required this.factoryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetFactoryArgs {
   factory GetFactoryArgs.fromMap(Map<String, dynamic> map) {
     return GetFactoryArgs(
       factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

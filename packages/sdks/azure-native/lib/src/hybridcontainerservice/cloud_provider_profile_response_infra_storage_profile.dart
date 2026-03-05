@@ -9,21 +9,20 @@ class CloudProviderProfileResponseInfraStorageProfile {
 
   /// Creates a new [CloudProviderProfileResponseInfraStorageProfile].
   /// [storageSpaceIds] Reference to azure resource corresponding to the new HybridAKSStorage object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/storageSpaces/{storageSpaceName}
-  CloudProviderProfileResponseInfraStorageProfile({this.storageSpaceIds});
+  CloudProviderProfileResponseInfraStorageProfile({
+    this.storageSpaceIds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'storageSpaceIds': ?storageSpaceIds};
+    return <String, dynamic>{
+      'storageSpaceIds': ?storageSpaceIds,
+    };
   }
 
-  factory CloudProviderProfileResponseInfraStorageProfile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudProviderProfileResponseInfraStorageProfile.fromMap(Map<String, dynamic> map) {
     return CloudProviderProfileResponseInfraStorageProfile(
-      storageSpaceIds: (() {
-        final guardedValue = map['storageSpaceIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      storageSpaceIds: (() { final guardedValue = map['storageSpaceIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

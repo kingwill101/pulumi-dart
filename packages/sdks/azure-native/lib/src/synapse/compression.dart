@@ -15,3 +15,4 @@ enum Compression {
     throw ArgumentError('Unknown Compression value: $value');
   }
 }
+

@@ -16,3 +16,4 @@ enum PartitionKind {
     throw ArgumentError('Unknown PartitionKind value: $value');
   }
 }
+

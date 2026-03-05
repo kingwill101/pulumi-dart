@@ -15,3 +15,4 @@ enum WorkloadType {
     throw ArgumentError('Unknown WorkloadType value: $value');
   }
 }
+

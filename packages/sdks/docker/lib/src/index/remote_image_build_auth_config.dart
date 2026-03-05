@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemoteImageBuildAuthConfig {
   /// the auth token
   final pulumi.Input<String>? auth;
-
   /// the user emal
   final pulumi.Input<String>? email;
-
   /// hostname of the registry
   final pulumi.Input<String> hostName;
-
   /// the identity token
   final pulumi.Input<String>? identityToken;
-
   /// the registry password
   final pulumi.Input<String>? password;
-
   /// the registry token
   final pulumi.Input<String>? registryToken;
-
   /// the server address
   final pulumi.Input<String>? serverAddress;
-
   /// the registry user name
   final pulumi.Input<String>? userName;
 
@@ -62,42 +55,15 @@ class RemoteImageBuildAuthConfig {
 
   factory RemoteImageBuildAuthConfig.fromMap(Map<String, dynamic> map) {
     return RemoteImageBuildAuthConfig(
-      auth: (() {
-        final guardedValue = map['auth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      auth: (() { final guardedValue = map['auth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
-      identityToken: (() {
-        final guardedValue = map['identityToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      registryToken: (() {
-        final guardedValue = map['registryToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverAddress: (() {
-        final guardedValue = map['serverAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identityToken: (() { final guardedValue = map['identityToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      registryToken: (() { final guardedValue = map['registryToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverAddress: (() { final guardedValue = map['serverAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

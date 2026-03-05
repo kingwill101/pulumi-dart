@@ -9,19 +9,20 @@ class BuildpackProperties {
 
   /// Creates a new [BuildpackProperties].
   /// [id] Id of the buildpack
-  BuildpackProperties({this.id});
+  BuildpackProperties({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory BuildpackProperties.fromMap(Map<String, dynamic> map) {
     return BuildpackProperties(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

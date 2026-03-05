@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdditionalUnattendContentResponse {
   /// The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
   final pulumi.Input<String>? componentName;
-
   /// Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted.
   final pulumi.Input<String>? content;
-
   /// The pass name. Currently, the only allowable value is OobeSystem.
   final pulumi.Input<String>? passName;
-
   /// Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
   final pulumi.Input<String>? settingName;
 
@@ -39,26 +36,11 @@ class AdditionalUnattendContentResponse {
 
   factory AdditionalUnattendContentResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalUnattendContentResponse(
-      componentName: (() {
-        final guardedValue = map['componentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      passName: (() {
-        final guardedValue = map['passName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      settingName: (() {
-        final guardedValue = map['settingName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      componentName: (() { final guardedValue = map['componentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      passName: (() { final guardedValue = map['passName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      settingName: (() { final guardedValue = map['settingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

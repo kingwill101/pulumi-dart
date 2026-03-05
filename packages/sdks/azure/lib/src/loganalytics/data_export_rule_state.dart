@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataExportRuleState {
   /// The destination resource ID. It should be a storage account, an event hub namespace or an event hub. If the destination is an event hub namespace, an event hub would be created for each table automatically.
   final pulumi.Input<String>? destinationResourceId;
-
   /// Is this Log Analytics Data Export Rule enabled? Possible values include `true` or `false`. Defaults to `false`.
   final pulumi.Input<bool>? enabled;
-
   /// The ID of the created Data Export Rule.
   final pulumi.Input<String>? exportRuleId;
-
   /// The name of the Log Analytics Data Export Rule. Changing this forces a new Log Analytics Data Export Rule to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the Resource Group where the Log Analytics Data Export should exist. Changing this forces a new Log Analytics Data Export Rule to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// A list of table names to export to the destination resource, for example: `["Heartbeat", "SecurityEvent"]`.
   final pulumi.Input<List<String>>? tableNames;
-
   /// The resource ID of the workspace. Changing this forces a new Log Analytics Data Export Rule to be created.
   final pulumi.Input<String>? workspaceResourceId;
 
@@ -57,41 +51,14 @@ class DataExportRuleState {
 
   factory DataExportRuleState.fromMap(Map<String, dynamic> map) {
     return DataExportRuleState(
-      destinationResourceId: (() {
-        final guardedValue = map['destinationResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      exportRuleId: (() {
-        final guardedValue = map['exportRuleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tableNames: (() {
-        final guardedValue = map['tableNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      workspaceResourceId: (() {
-        final guardedValue = map['workspaceResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      destinationResourceId: (() { final guardedValue = map['destinationResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      exportRuleId: (() { final guardedValue = map['exportRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tableNames: (() { final guardedValue = map['tableNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      workspaceResourceId: (() { final guardedValue = map['workspaceResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

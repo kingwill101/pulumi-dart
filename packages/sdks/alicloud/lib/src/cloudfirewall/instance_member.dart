@@ -203,19 +203,14 @@ import 'instance_member_state.dart';
 class InstanceMember extends pulumi.CustomResource {
   /// When the cloud firewall member account was added.&gt; use second-level timestamp format.
   late final pulumi.Output<int> createTime;
-
   /// Remarks of cloud firewall member accounts.
   late final pulumi.Output<String?> memberDesc;
-
   /// The name of the cloud firewall member account.
   late final pulumi.Output<String> memberDisplayName;
-
   /// The UID of the cloud firewall member account.
   late final pulumi.Output<String> memberUid;
-
   /// The last modification time of the cloud firewall member account.&gt; use second-level timestamp format.
   late final pulumi.Output<int> modifyTime;
-
   /// The resource attribute field that represents the resource status.
   late final pulumi.Output<String> status;
 
@@ -228,11 +223,11 @@ class InstanceMember extends pulumi.CustomResource {
     InstanceMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/instanceMember:InstanceMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/instanceMember:InstanceMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
     memberDesc = registerOutput<String?>('memberDesc');
     memberDisplayName = registerOutput<String>('memberDisplayName');
@@ -259,11 +254,11 @@ class InstanceMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/instanceMember:InstanceMember',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/instanceMember:InstanceMember',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
     memberDesc = registerOutput<String?>('memberDesc');
     memberDisplayName = registerOutput<String>('memberDisplayName');

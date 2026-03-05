@@ -611,40 +611,28 @@ import 'alert_condition_state.dart';
 class AlertCondition extends pulumi.CustomResource {
   /// `application` or `instance`.  Choose `application` for most scenarios.  If you are using the JVM plugin in New Relic, the `instance` setting allows your condition to trigger [for specific app instances](https://docs.newrelic.com/docs/alerts/new-relic-alerts/defining-conditions/scope-alert-thresholds-specific-instances).
   late final pulumi.Output<String?> conditionScope;
-
   /// Whether the condition is enabled or not. Defaults to true.
   late final pulumi.Output<bool?> enabled;
-
   /// The instance IDs associated with this condition.
   late final pulumi.Output<List<String>> entities;
-
   /// The unique entity identifier of the condition in New Relic.
   late final pulumi.Output<String> entityGuid;
-
   /// A valid Garbage Collection metric e.g. `GC/G1 Young Generation`.
   late final pulumi.Output<String?> gcMetric;
-
   /// The metric field accepts parameters based on the `type` set. One of these metrics based on `type`:
   late final pulumi.Output<String> metric;
-
   /// The title of the condition. Must be between 1 and 64 characters, inclusive.
   late final pulumi.Output<String> name;
-
   /// The ID of the policy where this condition should be used.
   late final pulumi.Output<String> policyId;
-
   /// Runbook URL to display in notifications.
   late final pulumi.Output<String?> runbookUrl;
-
   /// A list of terms for this condition. See Terms below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> terms;
-
   /// The type of condition. One of: `apm_app_metric`, `apm_jvm_metric`, `apm_kt_metric`, `browser_metric`, `mobile_metric`
   late final pulumi.Output<String> type;
-
   /// A custom metric to be evaluated.
   late final pulumi.Output<String?> userDefinedMetric;
-
   /// One of: `average`, `min`, `max`, `total`, `sample_size`, `rate` or `percent`.
   ///
   /// &gt; **NOTE:** The `user_defined_value_function` can have `rate` or `percent` only when the `type` is `mobile_metric`.
@@ -653,7 +641,6 @@ class AlertCondition extends pulumi.CustomResource {
   /// Warning: This resource will use the account ID linked to your API key. At the moment it is not possible to dynamically set the account ID.
   /// ```
   late final pulumi.Output<String?> userDefinedValueFunction;
-
   /// Automatically close instance-based incidents, including JVM health metric incidents, after the number of hours specified. Must be between 1 and 720 hours. Must be specified in the following two cases, to prevent drift:
   /// * when `type` = `apm_app_metric` and `condition_scope` = `instance`
   /// * when `type` = `apm_jvm_metric`
@@ -668,11 +655,11 @@ class AlertCondition extends pulumi.CustomResource {
     AlertConditionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/alertCondition:AlertCondition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/alertCondition:AlertCondition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     conditionScope = registerOutput<String?>('conditionScope');
     enabled = registerOutput<bool?>('enabled');
     entities = registerOutput<List<String>>('entities');
@@ -685,9 +672,7 @@ class AlertCondition extends pulumi.CustomResource {
     terms = registerOutput<List<Map<String, dynamic>>>('terms');
     type = registerOutput<String>('type');
     userDefinedMetric = registerOutput<String?>('userDefinedMetric');
-    userDefinedValueFunction = registerOutput<String?>(
-      'userDefinedValueFunction',
-    );
+    userDefinedValueFunction = registerOutput<String?>('userDefinedValueFunction');
     violationCloseTimer = registerOutput<int?>('violationCloseTimer');
   }
 
@@ -709,11 +694,11 @@ class AlertCondition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/alertCondition:AlertCondition',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/alertCondition:AlertCondition',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     conditionScope = registerOutput<String?>('conditionScope');
     enabled = registerOutput<bool?>('enabled');
     entities = registerOutput<List<String>>('entities');
@@ -726,9 +711,7 @@ class AlertCondition extends pulumi.CustomResource {
     terms = registerOutput<List<Map<String, dynamic>>>('terms');
     type = registerOutput<String>('type');
     userDefinedMetric = registerOutput<String?>('userDefinedMetric');
-    userDefinedValueFunction = registerOutput<String?>(
-      'userDefinedValueFunction',
-    );
+    userDefinedValueFunction = registerOutput<String?>('userDefinedValueFunction');
     violationCloseTimer = registerOutput<int?>('violationCloseTimer');
   }
 }

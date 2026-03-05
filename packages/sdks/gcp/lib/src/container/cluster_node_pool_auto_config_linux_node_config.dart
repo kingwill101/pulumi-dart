@@ -10,12 +10,8 @@ class ClusterNodePoolAutoConfigLinuxNodeConfig {
   /// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
   /// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
   final pulumi.Input<String>? cgroupMode;
-
   /// Settings for kernel module loading. Structure is documented below.
-  final pulumi.Input<
-    ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading
-  >?
-  nodeKernelModuleLoading;
+  final pulumi.Input<ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading>? nodeKernelModuleLoading;
 
   /// Creates a new [ClusterNodePoolAutoConfigLinuxNodeConfig].
   /// [cgroupMode] Possible cgroup modes that can be used.
@@ -28,32 +24,15 @@ class ClusterNodePoolAutoConfigLinuxNodeConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cgroupMode': ?cgroupMode,
-      'nodeKernelModuleLoading':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading,
-            Map<String, dynamic>
-          >(nodeKernelModuleLoading, (value) => value.toMap()),
+      'nodeKernelModuleLoading': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading, Map<String, dynamic>>(nodeKernelModuleLoading, (value) => value.toMap()),
     };
   }
 
-  factory ClusterNodePoolAutoConfigLinuxNodeConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterNodePoolAutoConfigLinuxNodeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolAutoConfigLinuxNodeConfig(
-      cgroupMode: (() {
-        final guardedValue = map['cgroupMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeKernelModuleLoading: (() {
-        final guardedValue = map['nodeKernelModuleLoading'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      cgroupMode: (() { final guardedValue = map['cgroupMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeKernelModuleLoading: (() { final guardedValue = map['nodeKernelModuleLoading']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -348,50 +348,38 @@ class SiteDeliveryTask extends pulumi.CustomResource {
   /// Real-time log type. Valid values:
   /// - `dcdn_log_access_l1 (default)`: access log.
   late final pulumi.Output<String> businessType;
-
   /// Data Center. Values:
   late final pulumi.Output<String> dataCenter;
-
   /// Delivery Type:
   late final pulumi.Output<String> deliveryType;
-
   /// If the discard rate is not filled, the default value is 0.
   late final pulumi.Output<double?> discardRate;
-
   /// The list of delivery fields to be modified, separated by commas.
   late final pulumi.Output<String> fieldName;
-
   /// HTTP delivery configuration parameters. See `http_delivery` below.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<SiteDeliveryTaskHttpDelivery?> httpDelivery;
-
   /// Kafka delivery configuration parameters. See `kafka_delivery` below.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<SiteDeliveryTaskKafkaDelivery?> kafkaDelivery;
-
   /// OSS delivery configuration. See `oss_delivery` below.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<SiteDeliveryTaskOssDelivery?> ossDelivery;
-
   /// S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<SiteDeliveryTaskS3Delivery?> s3Delivery;
-
   /// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
   late final pulumi.Output<String> siteId;
-
   /// SLS delivery configuration. See `sls_delivery` below.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<SiteDeliveryTaskSlsDelivery?> slsDelivery;
-
   /// Task status, value:
   late final pulumi.Output<String> status;
-
   /// The task name.
   late final pulumi.Output<String> taskName;
 
@@ -404,67 +392,22 @@ class SiteDeliveryTask extends pulumi.CustomResource {
     SiteDeliveryTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/siteDeliveryTask:SiteDeliveryTask',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/siteDeliveryTask:SiteDeliveryTask',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     businessType = registerOutput<String>('businessType');
     dataCenter = registerOutput<String>('dataCenter');
     deliveryType = registerOutput<String>('deliveryType');
     discardRate = registerOutput<double?>('discardRate');
     fieldName = registerOutput<String>('fieldName');
-    httpDelivery = registerOutput<SiteDeliveryTaskHttpDelivery?>(
-      'httpDelivery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteDeliveryTaskHttpDelivery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    kafkaDelivery = registerOutput<SiteDeliveryTaskKafkaDelivery?>(
-      'kafkaDelivery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteDeliveryTaskKafkaDelivery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ossDelivery = registerOutput<SiteDeliveryTaskOssDelivery?>(
-      'ossDelivery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteDeliveryTaskOssDelivery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    s3Delivery = registerOutput<SiteDeliveryTaskS3Delivery?>(
-      's3Delivery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteDeliveryTaskS3Delivery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    httpDelivery = registerOutput<SiteDeliveryTaskHttpDelivery?>('httpDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteDeliveryTaskHttpDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kafkaDelivery = registerOutput<SiteDeliveryTaskKafkaDelivery?>('kafkaDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteDeliveryTaskKafkaDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ossDelivery = registerOutput<SiteDeliveryTaskOssDelivery?>('ossDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteDeliveryTaskOssDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    s3Delivery = registerOutput<SiteDeliveryTaskS3Delivery?>('s3Delivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteDeliveryTaskS3Delivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     siteId = registerOutput<String>('siteId');
-    slsDelivery = registerOutput<SiteDeliveryTaskSlsDelivery?>(
-      'slsDelivery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteDeliveryTaskSlsDelivery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    slsDelivery = registerOutput<SiteDeliveryTaskSlsDelivery?>('slsDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteDeliveryTaskSlsDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     taskName = registerOutput<String>('taskName');
   }
@@ -487,67 +430,22 @@ class SiteDeliveryTask extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/siteDeliveryTask:SiteDeliveryTask',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/siteDeliveryTask:SiteDeliveryTask',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     businessType = registerOutput<String>('businessType');
     dataCenter = registerOutput<String>('dataCenter');
     deliveryType = registerOutput<String>('deliveryType');
     discardRate = registerOutput<double?>('discardRate');
     fieldName = registerOutput<String>('fieldName');
-    httpDelivery = registerOutput<SiteDeliveryTaskHttpDelivery?>(
-      'httpDelivery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteDeliveryTaskHttpDelivery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    kafkaDelivery = registerOutput<SiteDeliveryTaskKafkaDelivery?>(
-      'kafkaDelivery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteDeliveryTaskKafkaDelivery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ossDelivery = registerOutput<SiteDeliveryTaskOssDelivery?>(
-      'ossDelivery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteDeliveryTaskOssDelivery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    s3Delivery = registerOutput<SiteDeliveryTaskS3Delivery?>(
-      's3Delivery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteDeliveryTaskS3Delivery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    httpDelivery = registerOutput<SiteDeliveryTaskHttpDelivery?>('httpDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteDeliveryTaskHttpDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kafkaDelivery = registerOutput<SiteDeliveryTaskKafkaDelivery?>('kafkaDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteDeliveryTaskKafkaDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ossDelivery = registerOutput<SiteDeliveryTaskOssDelivery?>('ossDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteDeliveryTaskOssDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    s3Delivery = registerOutput<SiteDeliveryTaskS3Delivery?>('s3Delivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteDeliveryTaskS3Delivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     siteId = registerOutput<String>('siteId');
-    slsDelivery = registerOutput<SiteDeliveryTaskSlsDelivery?>(
-      'slsDelivery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteDeliveryTaskSlsDelivery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    slsDelivery = registerOutput<SiteDeliveryTaskSlsDelivery?>('slsDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteDeliveryTaskSlsDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     taskName = registerOutput<String>('taskName');
   }

@@ -181,21 +181,15 @@ import 'connection_args.dart';
 class Connection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource ETag
   late final pulumi.Output<String?> etag;
-
   /// Resource location
   late final pulumi.Output<String?> location;
-
   /// Resource name
   late final pulumi.Output<String> name;
-  late final pulumi.Output<ApiConnectionDefinitionResponseProperties>
-  properties;
-
+  late final pulumi.Output<ApiConnectionDefinitionResponseProperties> properties;
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -208,25 +202,16 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String?>('etag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ApiConnectionDefinitionResponseProperties>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiConnectionDefinitionResponseProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ApiConnectionDefinitionResponseProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiConnectionDefinitionResponseProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

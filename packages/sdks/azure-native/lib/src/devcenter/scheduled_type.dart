@@ -14,3 +14,4 @@ enum ScheduledType {
     throw ArgumentError('Unknown ScheduledType value: $value');
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketLoggingResponse {
   /// The destination bucket where the current bucket's logs should be placed.
   final pulumi.Input<String> logBucket;
-
   /// A prefix for log object names.
   final pulumi.Input<String> logObjectPrefix;
 
@@ -32,3 +31,4 @@ class BucketLoggingResponse {
     );
   }
 }
+

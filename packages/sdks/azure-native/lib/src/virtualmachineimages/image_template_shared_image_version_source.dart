@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageTemplateSharedImageVersionSource {
   /// ARM resource id of the image version. When image version name is 'latest', the version is evaluated when the image build takes place.
   final pulumi.Input<String> imageVersionId;
-
   /// Specifies the type of source image you want to start with.
   /// Expected value is 'SharedImageVersion'.
   final pulumi.Input<String> type;
@@ -20,15 +19,17 @@ class ImageTemplateSharedImageVersionSource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'imageVersionId': imageVersionId, 'type': type};
+    return <String, dynamic>{
+      'imageVersionId': imageVersionId,
+      'type': type,
+    };
   }
 
-  factory ImageTemplateSharedImageVersionSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ImageTemplateSharedImageVersionSource.fromMap(Map<String, dynamic> map) {
     return ImageTemplateSharedImageVersionSource(
       imageVersionId: pulumi.Input.fromValue(map['imageVersionId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

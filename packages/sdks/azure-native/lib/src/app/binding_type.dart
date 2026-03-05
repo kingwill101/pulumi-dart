@@ -16,3 +16,4 @@ enum BindingType {
     throw ArgumentError('Unknown BindingType value: $value');
   }
 }
+

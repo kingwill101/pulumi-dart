@@ -166,30 +166,22 @@ import 'volume_state.dart';
 class Volume extends pulumi.CustomResource {
   /// Automount the volume upon attaching it (server_id must be provided).
   late final pulumi.Output<bool?> automount;
-
   /// Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
   ///
   /// **Note:** When you want to attach multiple volumes to a server, please use the `hcloud.VolumeAttachment` resource and the `location` argument instead of the `server_id` argument.
   late final pulumi.Output<bool?> deleteProtection;
-
   /// Format volume after creation. `xfs` or `ext4`
   late final pulumi.Output<String?> format;
-
   /// User-defined labels (key-value pairs).
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// (string) Device path on the file system for the Volume.
   late final pulumi.Output<String> linuxDevice;
-
   /// The location name of the volume to create, not allowed if server_id argument is passed. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   late final pulumi.Output<String> location;
-
   /// Name of the volume to create (must be unique per project).
   late final pulumi.Output<String> name;
-
   /// Server to attach the Volume to, not allowed if location argument is passed.
   late final pulumi.Output<int> serverId;
-
   /// Size of the volume (in GB).
   late final pulumi.Output<int> size;
 
@@ -197,13 +189,16 @@ class Volume extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_index_volume_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'hcloud:index/volume:Volume',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Volume(
+    String name, {
+    VolumeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'hcloud:index/volume:Volume',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automount = registerOutput<bool?>('automount');
     deleteProtection = registerOutput<bool?>('deleteProtection');
     format = registerOutput<String?>('format');
@@ -233,11 +228,11 @@ class Volume extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/volume:Volume',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/volume:Volume',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automount = registerOutput<bool?>('automount');
     deleteProtection = registerOutput<bool?>('deleteProtection');
     format = registerOutput<String?>('format');

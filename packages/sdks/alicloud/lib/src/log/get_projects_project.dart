@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectsProject {
   /// The description of the project.
   final pulumi.Input<String> description;
-
   /// The ID of the project.
   final pulumi.Input<String> id;
-
   /// The last modify time of project.
   final pulumi.Input<String> lastModifyTime;
-
   /// The owner of project.
   final pulumi.Input<String> owner;
-
   /// The policy of project.
   final pulumi.Input<String> policy;
-
   /// The name of the project.
   final pulumi.Input<String> projectName;
-
   /// The region of project.
   final pulumi.Input<String> region;
-
   /// The status of project.
   final pulumi.Input<String> status;
 
@@ -73,3 +66,4 @@ class GetProjectsProject {
     );
   }
 }
+

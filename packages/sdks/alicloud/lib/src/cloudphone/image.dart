@@ -279,10 +279,8 @@ import 'image_state.dart';
 class Image extends pulumi.CustomResource {
   /// The image name.
   late final pulumi.Output<String> imageName;
-
   /// The instance ID.
   late final pulumi.Output<String> instanceId;
-
   /// The status of the mirror.
   late final pulumi.Output<String> status;
 
@@ -290,20 +288,27 @@ class Image extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Image]. {@macro pulumi_cloudphone_image_image_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Image(String name, {ImageArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:cloudphone/image:Image',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Image(
+    String name, {
+    ImageArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:cloudphone/image:Image',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     imageName = registerOutput<String>('imageName');
     instanceId = registerOutput<String>('instanceId');
     status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Image] resource's state with the given [name] and [id].
-  static Image get(String name, pulumi.Input<String> id, {ImageState? state}) {
+  static Image get(
+    String name,
+    pulumi.Input<String> id, {
+    ImageState? state,
+  }) {
     return Image._get(
       name,
       state: state?.toMap(),
@@ -316,11 +321,11 @@ class Image extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudphone/image:Image',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudphone/image:Image',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     imageName = registerOutput<String>('imageName');
     instanceId = registerOutput<String>('instanceId');
     status = registerOutput<String>('status');

@@ -10,84 +10,58 @@ import 'get_ecs_disks_operation_lock.dart';
 class GetEcsDisksArgs {
   /// Other attribute values. Currently, only the incoming value of IOPS is supported, which means to query the IOPS upper limit of the current disk.
   final pulumi.Input<List<String>>? additionalAttributes;
-
   /// Query cloud disks based on the automatic snapshot policy ID.
   final pulumi.Input<String>? autoSnapshotPolicyId;
-
   /// Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
   final pulumi.Input<String>? availabilityZone;
-
   /// Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
   final pulumi.Input<String>? category;
-
   /// Indicates whether the automatic snapshot is deleted when the disk is released.
   final pulumi.Input<bool>? deleteAutoSnapshot;
-
   /// Indicates whether the disk is released together with the instance.
   final pulumi.Input<bool>? deleteWithInstance;
-
   /// The disk name.
   final pulumi.Input<String>? diskName;
-
   /// The disk type. Valid values: `system`, `data`, `all`.
   final pulumi.Input<String>? diskType;
-
   /// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
   final pulumi.Input<bool>? dryRun;
-
   /// Indicates whether the automatic snapshot is deleted when the disk is released.
   final pulumi.Input<bool>? enableAutoSnapshot;
-
   /// Whether the cloud disk has an automatic snapshot policy
   final pulumi.Input<bool>? enableAutomatedSnapshotPolicy;
-
   /// Whether it is shared block storage.
   final pulumi.Input<bool>? enableShared;
-
   /// Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
   final pulumi.Input<String>? encrypted;
-
   /// A list of Disk IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// Filter the results by the specified ECS instance ID.
   final pulumi.Input<String>? instanceId;
-
   /// The kms key id.
   final pulumi.Input<String>? kmsKeyId;
-
   /// A regex string to filter results by Disk name.
   final pulumi.Input<String>? nameRegex;
-
   /// The reasons why the disk was locked. See `operation_locks` below for details.
   final pulumi.Input<List<GetEcsDisksOperationLock>>? operationLocks;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
   final pulumi.Input<int>? pageNumber;
   final pulumi.Input<int>? pageSize;
-
   /// Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
   final pulumi.Input<String>? paymentType;
-
   /// Whether the cloud disk or local disk supports uninstallation.
   final pulumi.Input<bool>? portable;
-
   /// The Id of resource group which the disk belongs.
   final pulumi.Input<String>? resourceGroupId;
-
   /// The source snapshot id.
   final pulumi.Input<String>? snapshotId;
-
   /// The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
   final pulumi.Input<String>? status;
-
   /// A map of tags assigned to the disks.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
   final pulumi.Input<String>? type;
-
   /// ID of the free zone to which the disk belongs.
   final pulumi.Input<String>? zoneId;
 
@@ -172,18 +146,7 @@ class GetEcsDisksArgs {
       'instanceId': ?instanceId,
       'kmsKeyId': ?kmsKeyId,
       'nameRegex': ?nameRegex,
-      'operationLocks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetEcsDisksOperationLock>,
-            List<Map<String, dynamic>>
-          >(
-            operationLocks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetEcsDisksOperationLock,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'operationLocks': ?pulumi.Input.mapOptionalInputValue<List<GetEcsDisksOperationLock>, List<Map<String, dynamic>>>(operationLocks, (value) => pulumi.Input.encodeList<GetEcsDisksOperationLock, Map<String, dynamic>>(value, (value) => value.toMap())),
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
@@ -200,160 +163,36 @@ class GetEcsDisksArgs {
 
   factory GetEcsDisksArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsDisksArgs(
-      additionalAttributes: (() {
-        final guardedValue = map['additionalAttributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      autoSnapshotPolicyId: (() {
-        final guardedValue = map['autoSnapshotPolicyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      availabilityZone: (() {
-        final guardedValue = map['availabilityZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      category: (() {
-        final guardedValue = map['category'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deleteAutoSnapshot: (() {
-        final guardedValue = map['deleteAutoSnapshot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      deleteWithInstance: (() {
-        final guardedValue = map['deleteWithInstance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      diskName: (() {
-        final guardedValue = map['diskName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      diskType: (() {
-        final guardedValue = map['diskType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableAutoSnapshot: (() {
-        final guardedValue = map['enableAutoSnapshot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableAutomatedSnapshotPolicy: (() {
-        final guardedValue = map['enableAutomatedSnapshotPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableShared: (() {
-        final guardedValue = map['enableShared'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      encrypted: (() {
-        final guardedValue = map['encrypted'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsKeyId: (() {
-        final guardedValue = map['kmsKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operationLocks: (() {
-        final guardedValue = map['operationLocks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetEcsDisksOperationLock>(
-            guardedValue,
-            (value) => GetEcsDisksOperationLock.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      paymentType: (() {
-        final guardedValue = map['paymentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      portable: (() {
-        final guardedValue = map['portable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      snapshotId: (() {
-        final guardedValue = map['snapshotId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zoneId: (() {
-        final guardedValue = map['zoneId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalAttributes: (() { final guardedValue = map['additionalAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      autoSnapshotPolicyId: (() { final guardedValue = map['autoSnapshotPolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deleteAutoSnapshot: (() { final guardedValue = map['deleteAutoSnapshot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deleteWithInstance: (() { final guardedValue = map['deleteWithInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      diskName: (() { final guardedValue = map['diskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableAutoSnapshot: (() { final guardedValue = map['enableAutoSnapshot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableAutomatedSnapshotPolicy: (() { final guardedValue = map['enableAutomatedSnapshotPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableShared: (() { final guardedValue = map['enableShared']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      encrypted: (() { final guardedValue = map['encrypted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operationLocks: (() { final guardedValue = map['operationLocks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetEcsDisksOperationLock>(guardedValue, (value) => GetEcsDisksOperationLock.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      paymentType: (() { final guardedValue = map['paymentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      portable: (() { final guardedValue = map['portable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      snapshotId: (() { final guardedValue = map['snapshotId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

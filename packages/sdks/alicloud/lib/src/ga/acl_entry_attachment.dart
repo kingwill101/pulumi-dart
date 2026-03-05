@@ -178,13 +178,10 @@ import 'acl_entry_attachment_state.dart';
 class AclEntryAttachment extends pulumi.CustomResource {
   /// The ID of the Acl.
   late final pulumi.Output<String> aclId;
-
   /// The entry (IP address or CIDR block) that you want to add.
   late final pulumi.Output<String> entry;
-
   /// The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
   late final pulumi.Output<String?> entryDescription;
-
   /// The status of the Acl Entry Attachment.
   late final pulumi.Output<String> status;
 
@@ -197,11 +194,11 @@ class AclEntryAttachment extends pulumi.CustomResource {
     AclEntryAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/aclEntryAttachment:AclEntryAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/aclEntryAttachment:AclEntryAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclId = registerOutput<String>('aclId');
     entry = registerOutput<String>('entry');
     entryDescription = registerOutput<String?>('entryDescription');
@@ -226,11 +223,11 @@ class AclEntryAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/aclEntryAttachment:AclEntryAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/aclEntryAttachment:AclEntryAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclId = registerOutput<String>('aclId');
     entry = registerOutput<String>('entry');
     entryDescription = registerOutput<String?>('entryDescription');

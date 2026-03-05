@@ -475,43 +475,33 @@ import 'wire_group_wire_properties.dart';
 class WireGroup extends pulumi.CustomResource {
   /// Indicates whether the wire group is administratively enabled.
   late final pulumi.Output<bool?> adminEnabled;
-
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// Required cross site network to which wire group belongs.
   late final pulumi.Output<String> crossSiteNetwork;
-
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
-
   /// Endpoints grouped by location, each mapping to interconnect configurations.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> endpoints;
-
   /// Name of the resource. Provided by the client when the resource is created. The name must be
   /// 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?` which means the first
   /// character must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Topology details for the wire group configuration.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> topologies;
-
   /// Properties specific to the wire group.
   /// Structure is documented below.
   late final pulumi.Output<WireGroupWireGroupProperties?> wireGroupProperties;
-
   /// Default properties for wires within the group.
   /// Structure is documented below.
   late final pulumi.Output<WireGroupWireProperties?> wireProperties;
-
   /// The single/redundant wire(s) managed by the wire group.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> wires;
@@ -525,11 +515,11 @@ class WireGroup extends pulumi.CustomResource {
     WireGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/wireGroup:WireGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/wireGroup:WireGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminEnabled = registerOutput<bool?>('adminEnabled');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     crossSiteNetwork = registerOutput<String>('crossSiteNetwork');
@@ -538,26 +528,8 @@ class WireGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     topologies = registerOutput<List<Map<String, dynamic>>>('topologies');
-    wireGroupProperties = registerOutput<WireGroupWireGroupProperties?>(
-      'wireGroupProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WireGroupWireGroupProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    wireProperties = registerOutput<WireGroupWireProperties?>(
-      'wireProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WireGroupWireProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    wireGroupProperties = registerOutput<WireGroupWireGroupProperties?>('wireGroupProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WireGroupWireGroupProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    wireProperties = registerOutput<WireGroupWireProperties?>('wireProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WireGroupWireProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     wires = registerOutput<List<Map<String, dynamic>>>('wires');
   }
 
@@ -579,11 +551,11 @@ class WireGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/wireGroup:WireGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/wireGroup:WireGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminEnabled = registerOutput<bool?>('adminEnabled');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     crossSiteNetwork = registerOutput<String>('crossSiteNetwork');
@@ -592,26 +564,8 @@ class WireGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     topologies = registerOutput<List<Map<String, dynamic>>>('topologies');
-    wireGroupProperties = registerOutput<WireGroupWireGroupProperties?>(
-      'wireGroupProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WireGroupWireGroupProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    wireProperties = registerOutput<WireGroupWireProperties?>(
-      'wireProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WireGroupWireProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    wireGroupProperties = registerOutput<WireGroupWireGroupProperties?>('wireGroupProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WireGroupWireGroupProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    wireProperties = registerOutput<WireGroupWireProperties?>('wireProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WireGroupWireProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     wires = registerOutput<List<Map<String, dynamic>>>('wires');
   }
 }

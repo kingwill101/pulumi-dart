@@ -10,13 +10,10 @@ import 'fqdn_outbound_rule.dart';
 class ManagedNetworkSettingsRuleArgs {
   /// Outbound Rule for the managed network of a machine learning workspace.
   final pulumi.Input<FqdnOutboundRule> properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the workspace managed network outbound rule
   final pulumi.Input<String>? ruleName;
-
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -34,11 +31,7 @@ class ManagedNetworkSettingsRuleArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties':
-          pulumi.Input.mapInputValue<FqdnOutboundRule, Map<String, dynamic>>(
-            properties,
-            (value) => value.toMap(),
-          ),
+      'properties': pulumi.Input.mapInputValue<FqdnOutboundRule, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'ruleName': ?ruleName,
       'workspaceName': workspaceName,
@@ -47,20 +40,11 @@ class ManagedNetworkSettingsRuleArgs {
 
   factory ManagedNetworkSettingsRuleArgs.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkSettingsRuleArgs(
-      properties: pulumi.Input.fromValue(
-        FqdnOutboundRule.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      ruleName: (() {
-        final guardedValue = map['ruleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      properties: pulumi.Input.fromValue(FqdnOutboundRule.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualNetworkPeeringArgs {
   /// The name of this virtual network peering.
   final pulumi.Input<String> name;
-
   /// The resource ID of the virtual network.
   final pulumi.Input<String> virtualNetworkId;
 
@@ -31,9 +30,8 @@ class GetVirtualNetworkPeeringArgs {
   factory GetVirtualNetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkPeeringArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      virtualNetworkId: pulumi.Input.fromValue(
-        map['virtualNetworkId'] as String,
-      ),
+      virtualNetworkId: pulumi.Input.fromValue(map['virtualNetworkId'] as String),
     );
   }
 }
+

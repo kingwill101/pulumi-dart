@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkPolicyArgs {
   /// Location of the resource.
   final pulumi.Input<String> location;
-
   /// Name of the resource.
   final pulumi.Input<String> name;
   final pulumi.Input<String>? project;
@@ -36,11 +35,8 @@ class GetNetworkPolicyArgs {
     return GetNetworkPolicyArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

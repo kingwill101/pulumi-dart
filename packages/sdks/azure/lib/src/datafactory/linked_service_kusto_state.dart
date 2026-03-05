@@ -8,44 +8,32 @@ class LinkedServiceKustoState {
   ///
   /// The following supported arguments are specific to Azure Kusto Linked Service:
   final pulumi.Input<Map<String, String>>? additionalProperties;
-
   /// List of tags that can be used for describing the Data Factory Linked Service.
   final pulumi.Input<List<String>>? annotations;
-
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String>? dataFactoryId;
-
   /// The description for the Data Factory Linked Service.
   final pulumi.Input<String>? description;
-
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   final pulumi.Input<String>? integrationRuntimeName;
-
   /// The Kusto Database Name.
   final pulumi.Input<String>? kustoDatabaseName;
-
   /// The URI of the Kusto Cluster endpoint.
   final pulumi.Input<String>? kustoEndpoint;
-
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
-
   /// A map of parameters to associate with the Data Factory Linked Service.
   final pulumi.Input<Map<String, String>>? parameters;
-
   /// The service principal id in which to authenticate against the Kusto Database.
   final pulumi.Input<String>? servicePrincipalId;
-
   /// The service principal key in which to authenticate against the Kusto Database.
   final pulumi.Input<String>? servicePrincipalKey;
-
   /// The service principal tenant id or name in which to authenticate against the Kusto Database.
   ///
   /// &gt; **Note:** If `service_principal_id` is used, `service_principal_key` and `tenant` is also required.
   ///
   /// &gt; **Note:** One of Managed Identity authentication and Service Principal authentication must be set.
   final pulumi.Input<String>? tenant;
-
   /// Whether to use the Data Factory's managed identity to authenticate against the Kusto Database.
   final pulumi.Input<bool>? useManagedIdentity;
 
@@ -99,75 +87,20 @@ class LinkedServiceKustoState {
 
   factory LinkedServiceKustoState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceKustoState(
-      additionalProperties: (() {
-        final guardedValue = map['additionalProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      dataFactoryId: (() {
-        final guardedValue = map['dataFactoryId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      integrationRuntimeName: (() {
-        final guardedValue = map['integrationRuntimeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kustoDatabaseName: (() {
-        final guardedValue = map['kustoDatabaseName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kustoEndpoint: (() {
-        final guardedValue = map['kustoEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      servicePrincipalId: (() {
-        final guardedValue = map['servicePrincipalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      servicePrincipalKey: (() {
-        final guardedValue = map['servicePrincipalKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenant: (() {
-        final guardedValue = map['tenant'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      useManagedIdentity: (() {
-        final guardedValue = map['useManagedIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      additionalProperties: (() { final guardedValue = map['additionalProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      dataFactoryId: (() { final guardedValue = map['dataFactoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      integrationRuntimeName: (() { final guardedValue = map['integrationRuntimeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kustoDatabaseName: (() { final guardedValue = map['kustoDatabaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kustoEndpoint: (() { final guardedValue = map['kustoEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      servicePrincipalId: (() { final guardedValue = map['servicePrincipalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      servicePrincipalKey: (() { final guardedValue = map['servicePrincipalKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenant: (() { final guardedValue = map['tenant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      useManagedIdentity: (() { final guardedValue = map['useManagedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

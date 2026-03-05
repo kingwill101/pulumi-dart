@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlManagedInstanceArgs {
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of SQL Managed Instance
   final pulumi.Input<String> sqlManagedInstanceName;
 
@@ -30,12 +29,9 @@ class GetSqlManagedInstanceArgs {
 
   factory GetSqlManagedInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlManagedInstanceArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sqlManagedInstanceName: pulumi.Input.fromValue(
-        map['sqlManagedInstanceName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sqlManagedInstanceName: pulumi.Input.fromValue(map['sqlManagedInstanceName'] as String),
     );
   }
 }
+

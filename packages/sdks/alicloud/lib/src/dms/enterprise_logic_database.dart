@@ -136,31 +136,22 @@ import 'enterprise_logic_database_state.dart';
 class EnterpriseLogicDatabase extends pulumi.CustomResource {
   /// Logical Library alias.
   late final pulumi.Output<String> alias;
-
   /// Sub-Database ID
   late final pulumi.Output<List<String>> databaseIds;
-
   /// Database type.
   late final pulumi.Output<String> dbType;
-
   /// Environment type, return value is as follows:-product: production environment-dev: development environment-pre: Advance Environment-test: test environment-sit:SIT environment-uat:UAT environment-pet: Pressure measurement environment-stag:STAG environment
   late final pulumi.Output<String> envType;
-
   /// Whether it is a logical Library, the return value is true.
   late final pulumi.Output<bool> logic;
-
   /// The ID of the logical Library.
   late final pulumi.Output<String> logicDatabaseId;
-
   /// The user ID list of the logical library Owner.
   late final pulumi.Output<List<String>> ownerIdLists;
-
   /// The nickname list of the logical library Owner.
   late final pulumi.Output<List<String>> ownerNameLists;
-
   /// Logical Library name.
   late final pulumi.Output<String> schemaName;
-
   /// Logical library search name.
   late final pulumi.Output<String> searchName;
 
@@ -173,11 +164,11 @@ class EnterpriseLogicDatabase extends pulumi.CustomResource {
     EnterpriseLogicDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String>('alias');
     databaseIds = registerOutput<List<String>>('databaseIds');
     dbType = registerOutput<String>('dbType');
@@ -208,11 +199,11 @@ class EnterpriseLogicDatabase extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String>('alias');
     databaseIds = registerOutput<List<String>>('databaseIds');
     dbType = registerOutput<String>('dbType');

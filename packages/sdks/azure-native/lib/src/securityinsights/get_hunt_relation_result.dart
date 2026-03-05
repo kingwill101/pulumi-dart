@@ -6,34 +6,24 @@ import 'system_data_response.dart';
 class GetHuntRelationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Etag of the azure resource
   final String? etag;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// List of labels relevant to this hunt
   final List<String>? labels;
-
   /// The name of the resource
   final String name;
-
   /// The id of the related resource
   final String relatedResourceId;
-
   /// The resource that the relation is related to
   final String relatedResourceKind;
-
   /// The name of the related resource
   final String relatedResourceName;
-
   /// The type of the hunt relation
   final String relationType;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -82,26 +72,17 @@ class GetHuntRelationResult {
   factory GetHuntRelationResult.fromMap(Map<String, dynamic> map) {
     return GetHuntRelationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       name: map['name'] as String,
       relatedResourceId: map['relatedResourceId'] as String,
       relatedResourceKind: map['relatedResourceKind'] as String,
       relatedResourceName: map['relatedResourceName'] as String,
       relationType: map['relationType'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

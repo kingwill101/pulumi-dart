@@ -8,7 +8,6 @@ import 'active_directory_connector_domain_details.dart';
 class ActiveDirectoryConnectorSpec {
   /// null
   final pulumi.Input<ActiveDirectoryConnectorDomainDetails> activeDirectory;
-
   /// null
   final pulumi.Input<ActiveDirectoryConnectorDNSDetails> dns;
 
@@ -22,31 +21,16 @@ class ActiveDirectoryConnectorSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeDirectory':
-          pulumi.Input.mapInputValue<
-            ActiveDirectoryConnectorDomainDetails,
-            Map<String, dynamic>
-          >(activeDirectory, (value) => value.toMap()),
-      'dns':
-          pulumi.Input.mapInputValue<
-            ActiveDirectoryConnectorDNSDetails,
-            Map<String, dynamic>
-          >(dns, (value) => value.toMap()),
+      'activeDirectory': pulumi.Input.mapInputValue<ActiveDirectoryConnectorDomainDetails, Map<String, dynamic>>(activeDirectory, (value) => value.toMap()),
+      'dns': pulumi.Input.mapInputValue<ActiveDirectoryConnectorDNSDetails, Map<String, dynamic>>(dns, (value) => value.toMap()),
     };
   }
 
   factory ActiveDirectoryConnectorSpec.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorSpec(
-      activeDirectory: pulumi.Input.fromValue(
-        ActiveDirectoryConnectorDomainDetails.fromMap(
-          (map['activeDirectory']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      dns: pulumi.Input.fromValue(
-        ActiveDirectoryConnectorDNSDetails.fromMap(
-          (map['dns']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      activeDirectory: pulumi.Input.fromValue(ActiveDirectoryConnectorDomainDetails.fromMap((map['activeDirectory']! as Map).cast<String, dynamic>())),
+      dns: pulumi.Input.fromValue(ActiveDirectoryConnectorDNSDetails.fromMap((map['dns']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

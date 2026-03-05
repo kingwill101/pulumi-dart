@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Nfs3TargetResponse {
   /// IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
   final pulumi.Input<String>? target;
-
   /// Identifies the StorageCache usage model to be used for this storage target.
   final pulumi.Input<String>? usageModel;
-
   /// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
   final pulumi.Input<int>? verificationTimer;
-
   /// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
   final pulumi.Input<int>? writeBackTimer;
 
@@ -39,26 +36,11 @@ class Nfs3TargetResponse {
 
   factory Nfs3TargetResponse.fromMap(Map<String, dynamic> map) {
     return Nfs3TargetResponse(
-      target: (() {
-        final guardedValue = map['target'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      usageModel: (() {
-        final guardedValue = map['usageModel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      verificationTimer: (() {
-        final guardedValue = map['verificationTimer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      writeBackTimer: (() {
-        final guardedValue = map['writeBackTimer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      usageModel: (() { final guardedValue = map['usageModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      verificationTimer: (() { final guardedValue = map['verificationTimer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      writeBackTimer: (() { final guardedValue = map['writeBackTimer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

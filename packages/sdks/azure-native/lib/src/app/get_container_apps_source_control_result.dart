@@ -7,30 +7,22 @@ import 'system_data_response.dart';
 class GetContainerAppsSourceControlResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The branch which will trigger the auto deployment
   final String? branch;
-
   /// Container App Revision Template with all possible settings and the
   /// defaults if user did not provide them. The defaults are populated
   /// as they were at the creation time
   final GithubActionConfigurationResponse? githubActionConfiguration;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Current provisioning State of the operation
   final String operationState;
-
   /// The repo url which will be integrated to ContainerApp.
   final String? repoUrl;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -70,35 +62,18 @@ class GetContainerAppsSourceControlResult {
     };
   }
 
-  factory GetContainerAppsSourceControlResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetContainerAppsSourceControlResult.fromMap(Map<String, dynamic> map) {
     return GetContainerAppsSourceControlResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      branch: (() {
-        final guardedValue = map['branch'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      githubActionConfiguration: (() {
-        final guardedValue = map['githubActionConfiguration'];
-        if (guardedValue == null) return null;
-        return GithubActionConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      branch: (() { final guardedValue = map['branch']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      githubActionConfiguration: (() { final guardedValue = map['githubActionConfiguration']; if (guardedValue == null) return null; return GithubActionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       name: map['name'] as String,
       operationState: map['operationState'] as String,
-      repoUrl: (() {
-        final guardedValue = map['repoUrl'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      repoUrl: (() { final guardedValue = map['repoUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

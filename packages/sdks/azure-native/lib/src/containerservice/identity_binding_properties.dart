@@ -10,25 +10,20 @@ class IdentityBindingProperties {
 
   /// Creates a new [IdentityBindingProperties].
   /// [managedIdentity] Managed identity profile for the identity binding.
-  IdentityBindingProperties({required this.managedIdentity});
+  IdentityBindingProperties({
+    required this.managedIdentity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'managedIdentity':
-          pulumi.Input.mapInputValue<
-            IdentityBindingManagedIdentityProfile,
-            Map<String, dynamic>
-          >(managedIdentity, (value) => value.toMap()),
+      'managedIdentity': pulumi.Input.mapInputValue<IdentityBindingManagedIdentityProfile, Map<String, dynamic>>(managedIdentity, (value) => value.toMap()),
     };
   }
 
   factory IdentityBindingProperties.fromMap(Map<String, dynamic> map) {
     return IdentityBindingProperties(
-      managedIdentity: pulumi.Input.fromValue(
-        IdentityBindingManagedIdentityProfile.fromMap(
-          (map['managedIdentity']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      managedIdentity: pulumi.Input.fromValue(IdentityBindingManagedIdentityProfile.fromMap((map['managedIdentity']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

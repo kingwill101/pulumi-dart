@@ -10,27 +10,29 @@ class GetScopeIamPolicyArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> scopeId;
 
   /// Creates a new [GetScopeIamPolicyArgs].
   /// [project] The ID of the project in which the resource belongs.
   /// [scopeId] Used to find the parent resource to bind the IAM policy to
-  GetScopeIamPolicyArgs({this.project, required this.scopeId});
+  GetScopeIamPolicyArgs({
+    this.project,
+    required this.scopeId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'scopeId': scopeId};
+    return <String, dynamic>{
+      'project': ?project,
+      'scopeId': scopeId,
+    };
   }
 
   factory GetScopeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeIamPolicyArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scopeId: pulumi.Input.fromValue(map['scopeId'] as String),
     );
   }
 }
+

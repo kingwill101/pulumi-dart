@@ -7,52 +7,29 @@ import 'service_oci_artifact_entry.dart';
 class ServiceAcrConfigurationInfo {
   /// The list of the ACR login servers.
   final pulumi.Input<List<String>>? loginServers;
-
   /// The list of Open Container Initiative (OCI) artifacts.
   final pulumi.Input<List<ServiceOciArtifactEntry>>? ociArtifacts;
 
   /// Creates a new [ServiceAcrConfigurationInfo].
   /// [loginServers] The list of the ACR login servers.
   /// [ociArtifacts] The list of Open Container Initiative (OCI) artifacts.
-  ServiceAcrConfigurationInfo({this.loginServers, this.ociArtifacts});
+  ServiceAcrConfigurationInfo({
+    this.loginServers,
+    this.ociArtifacts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'loginServers': ?loginServers,
-      'ociArtifacts':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ServiceOciArtifactEntry>,
-            List<Map<String, dynamic>>
-          >(
-            ociArtifacts,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ServiceOciArtifactEntry,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ociArtifacts': ?pulumi.Input.mapOptionalInputValue<List<ServiceOciArtifactEntry>, List<Map<String, dynamic>>>(ociArtifacts, (value) => pulumi.Input.encodeList<ServiceOciArtifactEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ServiceAcrConfigurationInfo.fromMap(Map<String, dynamic> map) {
     return ServiceAcrConfigurationInfo(
-      loginServers: (() {
-        final guardedValue = map['loginServers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      ociArtifacts: (() {
-        final guardedValue = map['ociArtifacts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ServiceOciArtifactEntry>(
-            guardedValue,
-            (value) => ServiceOciArtifactEntry.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      loginServers: (() { final guardedValue = map['loginServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      ociArtifacts: (() { final guardedValue = map['ociArtifacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceOciArtifactEntry>(guardedValue, (value) => ServiceOciArtifactEntry.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

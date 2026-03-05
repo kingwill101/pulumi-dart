@@ -16,3 +16,4 @@ enum VirtualNetworkFunctionNFVIType {
     throw ArgumentError('Unknown VirtualNetworkFunctionNFVIType value: $value');
   }
 }
+

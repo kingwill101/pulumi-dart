@@ -196,10 +196,8 @@ import 'mover_project_state.dart';
 class MoverProject extends pulumi.CustomResource {
   /// Specifies a description for this Storage Mover Project.
   late final pulumi.Output<String?> description;
-
   /// Specifies the name which should be used for this Storage Mover Project. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the ID of the storage mover for this Storage Mover Project. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageMoverId;
 
@@ -212,11 +210,11 @@ class MoverProject extends pulumi.CustomResource {
     MoverProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/moverProject:MoverProject',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/moverProject:MoverProject',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     storageMoverId = registerOutput<String>('storageMoverId');
@@ -240,11 +238,11 @@ class MoverProject extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/moverProject:MoverProject',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/moverProject:MoverProject',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     storageMoverId = registerOutput<String>('storageMoverId');

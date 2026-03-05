@@ -5,34 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpamIpamScopesScope {
   /// The creation time of the resource.
   final pulumi.Input<String> createTime;
-
   /// The ID of the resource supplied above.
   final pulumi.Input<String> id;
-
   /// The id of the Ipam instance.
   final pulumi.Input<String> ipamId;
-
   /// The description of the IPAM's scope of action.It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
   final pulumi.Input<String> ipamScopeDescription;
-
   /// The first ID of the resource.
   final pulumi.Input<String> ipamScopeId;
-
   /// The name of the resource.
   final pulumi.Input<String> ipamScopeName;
-
   /// IPAM scope of action type:**private**.&gt; Currently, only the role scope of the private network is supported.
   final pulumi.Input<String> ipamScopeType;
-
   /// The region ID of the resource.
   final pulumi.Input<String> regionId;
-
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
-
   /// The status of the resource.
   final pulumi.Input<String> status;
-
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>> tags;
 
@@ -83,9 +73,7 @@ class GetIpamIpamScopesScope {
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       ipamId: pulumi.Input.fromValue(map['ipamId'] as String),
-      ipamScopeDescription: pulumi.Input.fromValue(
-        map['ipamScopeDescription'] as String,
-      ),
+      ipamScopeDescription: pulumi.Input.fromValue(map['ipamScopeDescription'] as String),
       ipamScopeId: pulumi.Input.fromValue(map['ipamScopeId'] as String),
       ipamScopeName: pulumi.Input.fromValue(map['ipamScopeName'] as String),
       ipamScopeType: pulumi.Input.fromValue(map['ipamScopeType'] as String),
@@ -96,3 +84,4 @@ class GetIpamIpamScopesScope {
     );
   }
 }
+

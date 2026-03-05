@@ -307,40 +307,28 @@ import 'target_args.dart';
 class Target extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A list of components.
   late final pulumi.Output<List<Map<String, dynamic>>?> components;
-
   /// Edge location of the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
-
   /// Reconciliation Policy.
   late final pulumi.Output<ReconciliationPolicyResponse?> reconciliationPolicy;
-
   /// Deployment scope (such as Kubernetes namespace).
   late final pulumi.Output<String?> scope;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Defines the device topology for a target or instance.
   late final pulumi.Output<List<Map<String, dynamic>>?> topologies;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Version of the particular resource.
   late final pulumi.Output<String?> version;
 
@@ -348,49 +336,25 @@ class Target extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Target]. {@macro pulumi_iotoperationsorchestrator_target_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Target(String name, {TargetArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:iotoperationsorchestrator:Target',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Target(
+    String name, {
+    TargetArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:iotoperationsorchestrator:Target',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     components = registerOutput<List<Map<String, dynamic>>?>('components');
-    extendedLocation = registerOutput<ExtendedLocationResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    reconciliationPolicy = registerOutput<ReconciliationPolicyResponse?>(
-      'reconciliationPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReconciliationPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    reconciliationPolicy = registerOutput<ReconciliationPolicyResponse?>('reconciliationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReconciliationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scope = registerOutput<String?>('scope');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     topologies = registerOutput<List<Map<String, dynamic>>?>('topologies');
     type = registerOutput<String>('type');

@@ -516,13 +516,10 @@ import 'static_web_app_custom_domain_state.dart';
 class StaticWebAppCustomDomain extends pulumi.CustomResource {
   /// The Domain Name which should be associated with this Static Site. Changing this forces a new Static Site Custom Domain to be created.
   late final pulumi.Output<String> domainName;
-
   /// The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
   late final pulumi.Output<String> staticWebAppId;
-
   /// Token to be used with `dns-txt-token` validation.
   late final pulumi.Output<String> validationToken;
-
   /// One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
   ///
   /// &gt; **Note:** Apex domains must use `dns-txt-token` validation.
@@ -539,11 +536,11 @@ class StaticWebAppCustomDomain extends pulumi.CustomResource {
     StaticWebAppCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/staticWebAppCustomDomain:StaticWebAppCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/staticWebAppCustomDomain:StaticWebAppCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     staticWebAppId = registerOutput<String>('staticWebAppId');
     validationToken = registerOutput<String>('validationToken');
@@ -568,11 +565,11 @@ class StaticWebAppCustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/staticWebAppCustomDomain:StaticWebAppCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/staticWebAppCustomDomain:StaticWebAppCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     staticWebAppId = registerOutput<String>('staticWebAppId');
     validationToken = registerOutput<String>('validationToken');

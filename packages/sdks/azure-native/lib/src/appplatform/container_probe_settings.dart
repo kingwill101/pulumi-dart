@@ -9,19 +9,20 @@ class ContainerProbeSettings {
 
   /// Creates a new [ContainerProbeSettings].
   /// [disableProbe] Indicates whether disable the liveness and readiness probe
-  ContainerProbeSettings({this.disableProbe});
+  ContainerProbeSettings({
+    this.disableProbe,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disableProbe': ?disableProbe};
+    return <String, dynamic>{
+      'disableProbe': ?disableProbe,
+    };
   }
 
   factory ContainerProbeSettings.fromMap(Map<String, dynamic> map) {
     return ContainerProbeSettings(
-      disableProbe: (() {
-        final guardedValue = map['disableProbe'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disableProbe: (() { final guardedValue = map['disableProbe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

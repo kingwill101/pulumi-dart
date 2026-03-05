@@ -9,10 +9,14 @@ class KeyVaultReferenceResponse {
 
   /// Creates a new [KeyVaultReferenceResponse].
   /// [id] Azure resource ID of the Key Vault.
-  KeyVaultReferenceResponse({required this.id});
+  KeyVaultReferenceResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory KeyVaultReferenceResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class KeyVaultReferenceResponse {
     );
   }
 }
+

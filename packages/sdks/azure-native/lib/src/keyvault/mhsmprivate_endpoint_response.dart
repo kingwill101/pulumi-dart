@@ -9,10 +9,14 @@ class MHSMPrivateEndpointResponse {
 
   /// Creates a new [MHSMPrivateEndpointResponse].
   /// [id] Full identifier of the private endpoint resource.
-  MHSMPrivateEndpointResponse({required this.id});
+  MHSMPrivateEndpointResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory MHSMPrivateEndpointResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class MHSMPrivateEndpointResponse {
     );
   }
 }
+

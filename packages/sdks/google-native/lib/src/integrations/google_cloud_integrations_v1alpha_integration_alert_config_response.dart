@@ -7,33 +7,22 @@ import 'google_cloud_integrations_v1alpha_integration_alert_config_threshold_val
 class GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse {
   /// The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week). For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
   final pulumi.Input<String> aggregationPeriod;
-
   /// For how many contiguous aggregation periods should the expected min or max be violated for the alert to be fired.
   final pulumi.Input<int> alertThreshold;
-
   /// Set to false by default. When set to true, the metrics are not aggregated or pushed to Monarch for this integration alert.
   final pulumi.Input<bool> disableAlert;
-
   /// Name of the alert. This will be displayed in the alert subject. If set, this name should be unique within the scope of the integration.
   final pulumi.Input<String> displayName;
-
   /// Should be specified only for *AVERAGE_DURATION and *PERCENTILE_DURATION metrics. This member should be used to specify what duration value the metrics should exceed for the alert to trigger.
   final pulumi.Input<String> durationThreshold;
-
   /// The type of metric.
   final pulumi.Input<String> metricType;
-
   /// For either events or tasks, depending on the type of alert, count only final attempts, not retries.
   final pulumi.Input<bool> onlyFinalAttempt;
-
   /// The threshold type, whether lower(expected_min) or upper(expected_max), for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
   final pulumi.Input<String> thresholdType;
-
   /// The metric value, above or below which the alert should be triggered.
-  final pulumi.Input<
-    GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse
-  >
-  thresholdValue;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse> thresholdValue;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse].
   /// [aggregationPeriod] The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week). For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
@@ -67,35 +56,22 @@ class GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse {
       'metricType': metricType,
       'onlyFinalAttempt': onlyFinalAttempt,
       'thresholdType': thresholdType,
-      'thresholdValue':
-          pulumi.Input.mapInputValue<
-            GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse,
-            Map<String, dynamic>
-          >(thresholdValue, (value) => value.toMap()),
+      'thresholdValue': pulumi.Input.mapInputValue<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse, Map<String, dynamic>>(thresholdValue, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse(
-      aggregationPeriod: pulumi.Input.fromValue(
-        map['aggregationPeriod'] as String,
-      ),
+      aggregationPeriod: pulumi.Input.fromValue(map['aggregationPeriod'] as String),
       alertThreshold: pulumi.Input.fromValue(map['alertThreshold'] as int),
       disableAlert: pulumi.Input.fromValue(map['disableAlert'] as bool),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      durationThreshold: pulumi.Input.fromValue(
-        map['durationThreshold'] as String,
-      ),
+      durationThreshold: pulumi.Input.fromValue(map['durationThreshold'] as String),
       metricType: pulumi.Input.fromValue(map['metricType'] as String),
       onlyFinalAttempt: pulumi.Input.fromValue(map['onlyFinalAttempt'] as bool),
       thresholdType: pulumi.Input.fromValue(map['thresholdType'] as String),
-      thresholdValue: pulumi.Input.fromValue(
-        GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse.fromMap(
-          (map['thresholdValue']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      thresholdValue: pulumi.Input.fromValue(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse.fromMap((map['thresholdValue']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

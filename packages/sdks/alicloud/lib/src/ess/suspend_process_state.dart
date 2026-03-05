@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SuspendProcessState {
   /// Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
   final pulumi.Input<String>? process;
-
   /// ID of the scaling group.
   final pulumi.Input<String>? scalingGroupId;
 
   /// Creates a new [SuspendProcessState].
   /// [process] Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
   /// [scalingGroupId] ID of the scaling group.
-  SuspendProcessState({this.process, this.scalingGroupId});
+  SuspendProcessState({
+    this.process,
+    this.scalingGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class SuspendProcessState {
 
   factory SuspendProcessState.fromMap(Map<String, dynamic> map) {
     return SuspendProcessState(
-      process: (() {
-        final guardedValue = map['process'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scalingGroupId: (() {
-        final guardedValue = map['scalingGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      process: (() { final guardedValue = map['process']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scalingGroupId: (() { final guardedValue = map['scalingGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

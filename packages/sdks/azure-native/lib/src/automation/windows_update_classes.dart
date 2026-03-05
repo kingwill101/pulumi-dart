@@ -22,3 +22,4 @@ enum WindowsUpdateClasses {
     throw ArgumentError('Unknown WindowsUpdateClasses value: $value');
   }
 }
+

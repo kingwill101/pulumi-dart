@@ -5,10 +5,7 @@ import 'channel_encoder_settings_output_group_output_output_settings_hls_output_
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings {
   final pulumi.Input<String>? audioRenditionSets;
-  final pulumi.Input<
-    ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings
-  >
-  m3u8Settings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings> m3u8Settings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings].
   /// [audioRenditionSets] Optional.
@@ -21,28 +18,15 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'audioRenditionSets': ?audioRenditionSets,
-      'm3u8Settings':
-          pulumi.Input.mapInputValue<
-            ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings,
-            Map<String, dynamic>
-          >(m3u8Settings, (value) => value.toMap()),
+      'm3u8Settings': pulumi.Input.mapInputValue<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings, Map<String, dynamic>>(m3u8Settings, (value) => value.toMap()),
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings(
-      audioRenditionSets: (() {
-        final guardedValue = map['audioRenditionSets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      m3u8Settings: pulumi.Input.fromValue(
-        ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings.fromMap(
-          (map['m3u8Settings']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      audioRenditionSets: (() { final guardedValue = map['audioRenditionSets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      m3u8Settings: pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings.fromMap((map['m3u8Settings']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

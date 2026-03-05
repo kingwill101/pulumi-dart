@@ -6,13 +6,8 @@ import 'get_application_gateway_private_link_configuration_ip_configuration.dart
 class GetApplicationGatewayPrivateLinkConfiguration {
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String> id;
-
   /// One or more `ip_configuration` blocks as defined below.
-  final pulumi.Input<
-    List<GetApplicationGatewayPrivateLinkConfigurationIpConfiguration>
-  >
-  ipConfigurations;
-
+  final pulumi.Input<List<GetApplicationGatewayPrivateLinkConfigurationIpConfiguration>> ipConfigurations;
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
 
@@ -29,39 +24,17 @@ class GetApplicationGatewayPrivateLinkConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'ipConfigurations':
-          pulumi.Input.mapInputValue<
-            List<GetApplicationGatewayPrivateLinkConfigurationIpConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            ipConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetApplicationGatewayPrivateLinkConfigurationIpConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ipConfigurations': pulumi.Input.mapInputValue<List<GetApplicationGatewayPrivateLinkConfigurationIpConfiguration>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<GetApplicationGatewayPrivateLinkConfigurationIpConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
-  factory GetApplicationGatewayPrivateLinkConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationGatewayPrivateLinkConfiguration.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayPrivateLinkConfiguration(
       id: pulumi.Input.fromValue(map['id'] as String),
-      ipConfigurations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetApplicationGatewayPrivateLinkConfigurationIpConfiguration
-        >(
-          map['ipConfigurations']!,
-          (value) =>
-              GetApplicationGatewayPrivateLinkConfigurationIpConfiguration.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      ipConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetApplicationGatewayPrivateLinkConfigurationIpConfiguration>(map['ipConfigurations']!, (value) => GetApplicationGatewayPrivateLinkConfigurationIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

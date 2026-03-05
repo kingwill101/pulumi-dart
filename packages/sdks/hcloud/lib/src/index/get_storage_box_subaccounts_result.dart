@@ -7,11 +7,9 @@ import 'get_storage_box_subaccounts_subaccount.dart';
 class GetStorageBoxSubaccountsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// ID of the Storage Box.
   final int storageBoxId;
   final List<GetStorageBoxSubaccountsSubaccount> subaccounts;
-
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   final String? withSelector;
 
@@ -31,11 +29,7 @@ class GetStorageBoxSubaccountsResult {
     return <String, dynamic>{
       'id': id,
       'storageBoxId': storageBoxId,
-      'subaccounts':
-          pulumi.Input.encodeList<
-            GetStorageBoxSubaccountsSubaccount,
-            Map<String, dynamic>
-          >(subaccounts, (value) => value.toMap()),
+      'subaccounts': pulumi.Input.encodeList<GetStorageBoxSubaccountsSubaccount, Map<String, dynamic>>(subaccounts, (value) => value.toMap()),
       'withSelector': ?withSelector,
     };
   }
@@ -44,17 +38,9 @@ class GetStorageBoxSubaccountsResult {
     return GetStorageBoxSubaccountsResult(
       id: map['id'] as String,
       storageBoxId: map['storageBoxId'] as int,
-      subaccounts: pulumi.Input.decodeList<GetStorageBoxSubaccountsSubaccount>(
-        map['subaccounts']!,
-        (value) => GetStorageBoxSubaccountsSubaccount.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      withSelector: (() {
-        final guardedValue = map['withSelector'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      subaccounts: pulumi.Input.decodeList<GetStorageBoxSubaccountsSubaccount>(map['subaccounts']!, (value) => GetStorageBoxSubaccountsSubaccount.fromMap((value as Map).cast<String, dynamic>())),
+      withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

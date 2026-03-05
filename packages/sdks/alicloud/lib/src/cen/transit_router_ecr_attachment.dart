@@ -333,28 +333,20 @@ import 'transit_router_ecr_attachment_state.dart';
 class TransitRouterEcrAttachment extends pulumi.CustomResource {
   /// CenId
   late final pulumi.Output<String?> cenId;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// EcrId
   late final pulumi.Output<String> ecrId;
-
   /// EcrOwnerId
   late final pulumi.Output<int?> ecrOwnerId;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// TransitRouterAttachmentDescription
   late final pulumi.Output<String?> transitRouterAttachmentDescription;
-
   /// TransitRouterAttachmentName
   late final pulumi.Output<String?> transitRouterEcrAttachmentName;
-
   /// TransitRouterId
   late final pulumi.Output<String?> transitRouterId;
 
@@ -367,23 +359,19 @@ class TransitRouterEcrAttachment extends pulumi.CustomResource {
     TransitRouterEcrAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenId = registerOutput<String?>('cenId');
     createTime = registerOutput<String>('createTime');
     ecrId = registerOutput<String>('ecrId');
     ecrOwnerId = registerOutput<int?>('ecrOwnerId');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    transitRouterAttachmentDescription = registerOutput<String?>(
-      'transitRouterAttachmentDescription',
-    );
-    transitRouterEcrAttachmentName = registerOutput<String?>(
-      'transitRouterEcrAttachmentName',
-    );
+    transitRouterAttachmentDescription = registerOutput<String?>('transitRouterAttachmentDescription');
+    transitRouterEcrAttachmentName = registerOutput<String?>('transitRouterEcrAttachmentName');
     transitRouterId = registerOutput<String?>('transitRouterId');
   }
 
@@ -405,23 +393,19 @@ class TransitRouterEcrAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenId = registerOutput<String?>('cenId');
     createTime = registerOutput<String>('createTime');
     ecrId = registerOutput<String>('ecrId');
     ecrOwnerId = registerOutput<int?>('ecrOwnerId');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    transitRouterAttachmentDescription = registerOutput<String?>(
-      'transitRouterAttachmentDescription',
-    );
-    transitRouterEcrAttachmentName = registerOutput<String?>(
-      'transitRouterEcrAttachmentName',
-    );
+    transitRouterAttachmentDescription = registerOutput<String?>('transitRouterAttachmentDescription');
+    transitRouterEcrAttachmentName = registerOutput<String?>('transitRouterEcrAttachmentName');
     transitRouterId = registerOutput<String?>('transitRouterId');
   }
 }

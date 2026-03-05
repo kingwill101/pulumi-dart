@@ -41,23 +41,16 @@ class ResourceDescriptorResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory ResourceDescriptorResponseContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceDescriptorResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return ResourceDescriptorResponseContaineranalysisV1alpha1(
-      annotations: pulumi.Input.fromValue(
-        (map['annotations'] as Map).cast<String, String>(),
-      ),
+      annotations: pulumi.Input.fromValue((map['annotations'] as Map).cast<String, String>()),
       content: pulumi.Input.fromValue(map['content'] as String),
-      digest: pulumi.Input.fromValue(
-        (map['digest'] as Map).cast<String, String>(),
-      ),
-      downloadLocation: pulumi.Input.fromValue(
-        map['downloadLocation'] as String,
-      ),
+      digest: pulumi.Input.fromValue((map['digest'] as Map).cast<String, String>()),
+      downloadLocation: pulumi.Input.fromValue(map['downloadLocation'] as String),
       mediaType: pulumi.Input.fromValue(map['mediaType'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

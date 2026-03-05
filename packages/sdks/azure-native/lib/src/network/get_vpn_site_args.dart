@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpnSiteArgs {
   /// The resource group name of the VpnSite.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the VpnSite being retrieved.
   final pulumi.Input<String> vpnSiteName;
 
   /// Creates a new [GetVpnSiteArgs].
   /// [resourceGroupName] The resource group name of the VpnSite.
   /// [vpnSiteName] The name of the VpnSite being retrieved.
-  GetVpnSiteArgs({required this.resourceGroupName, required this.vpnSiteName});
+  GetVpnSiteArgs({
+    required this.resourceGroupName,
+    required this.vpnSiteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,10 +29,9 @@ class GetVpnSiteArgs {
 
   factory GetVpnSiteArgs.fromMap(Map<String, dynamic> map) {
     return GetVpnSiteArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vpnSiteName: pulumi.Input.fromValue(map['vpnSiteName'] as String),
     );
   }
 }
+

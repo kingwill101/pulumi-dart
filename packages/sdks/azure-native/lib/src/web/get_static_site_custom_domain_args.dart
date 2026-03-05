@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStaticSiteCustomDomainArgs {
   /// The custom domain name.
   final pulumi.Input<String> domainName;
-
   /// Name of the static site resource to search in.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetStaticSiteCustomDomainArgs {
     return GetStaticSiteCustomDomainArgs(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

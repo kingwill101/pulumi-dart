@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetControlPoliciesPolicy {
   /// The count of policy attachment.
   final pulumi.Input<int> attachmentCount;
-
   /// The name of policy.
   final pulumi.Input<String> controlPolicyName;
-
   /// The description of policy.
   final pulumi.Input<String> description;
-
   /// The effect scope.
   final pulumi.Input<String> effectScope;
-
   /// The ID of the Control Policy.
   final pulumi.Input<String> id;
-
   /// The policy document.
   final pulumi.Input<String> policyDocument;
-
   /// The ID of policy.
   final pulumi.Input<String> policyId;
-
   /// The type of policy.
   final pulumi.Input<String> policyType;
 
@@ -63,9 +56,7 @@ class GetControlPoliciesPolicy {
   factory GetControlPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetControlPoliciesPolicy(
       attachmentCount: pulumi.Input.fromValue(map['attachmentCount'] as int),
-      controlPolicyName: pulumi.Input.fromValue(
-        map['controlPolicyName'] as String,
-      ),
+      controlPolicyName: pulumi.Input.fromValue(map['controlPolicyName'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       effectScope: pulumi.Input.fromValue(map['effectScope'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -75,3 +66,4 @@ class GetControlPoliciesPolicy {
     );
   }
 }
+

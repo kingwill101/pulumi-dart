@@ -9,19 +9,20 @@ class VirtualNetworkConfiguration {
 
   /// Creates a new [VirtualNetworkConfiguration].
   /// [subnetResourceId] The full resource ID of a subnet in a virtual network to deploy the API Management service in.
-  VirtualNetworkConfiguration({this.subnetResourceId});
+  VirtualNetworkConfiguration({
+    this.subnetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'subnetResourceId': ?subnetResourceId};
+    return <String, dynamic>{
+      'subnetResourceId': ?subnetResourceId,
+    };
   }
 
   factory VirtualNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkConfiguration(
-      subnetResourceId: (() {
-        final guardedValue = map['subnetResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subnetResourceId: (() { final guardedValue = map['subnetResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

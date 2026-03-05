@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetAssessmentArmIds {
   /// ARM ID for Azure Kubernetes Service assessment.
   final pulumi.Input<String>? aks;
-
   /// ARM ID for Azure App Service assessment.
   final pulumi.Input<String>? azureAppService;
-
   /// ARM ID for Azure App Service Container assessment.
   final pulumi.Input<String>? azureAppServiceContainer;
 
@@ -33,21 +31,10 @@ class TargetAssessmentArmIds {
 
   factory TargetAssessmentArmIds.fromMap(Map<String, dynamic> map) {
     return TargetAssessmentArmIds(
-      aks: (() {
-        final guardedValue = map['aks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      azureAppService: (() {
-        final guardedValue = map['azureAppService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      azureAppServiceContainer: (() {
-        final guardedValue = map['azureAppServiceContainer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      aks: (() { final guardedValue = map['aks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureAppService: (() { final guardedValue = map['azureAppService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureAppServiceContainer: (() { final guardedValue = map['azureAppServiceContainer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

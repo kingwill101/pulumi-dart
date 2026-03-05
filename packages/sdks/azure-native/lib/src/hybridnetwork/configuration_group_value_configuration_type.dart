@@ -13,8 +13,7 @@ enum ConfigurationGroupValueConfigurationType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ConfigurationGroupValueConfigurationType value: $value',
-    );
+    throw ArgumentError('Unknown ConfigurationGroupValueConfigurationType value: $value');
   }
 }
+

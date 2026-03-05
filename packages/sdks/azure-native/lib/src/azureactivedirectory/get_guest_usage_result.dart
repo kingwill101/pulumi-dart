@@ -6,25 +6,18 @@ import 'system_data_response.dart';
 class GetGuestUsageResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// An identifier that represents the Guest Usages resource.
   final String id;
-
   /// Location of the Guest Usages resource.
   final String? location;
-
   /// The name of the Guest Usages resource.
   final String name;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// Key-value pairs of additional resource provisioning properties.
   final Map<String, String>? tags;
-
   /// An identifier for the tenant for which the resource is being created
   final String? tenantId;
-
   /// The type of the Guest Usages resource.
   final String type;
 
@@ -65,26 +58,13 @@ class GetGuestUsageResult {
     return GetGuestUsageResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

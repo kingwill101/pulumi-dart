@@ -10,22 +10,16 @@ import 'broken_links_monitor_tag.dart';
 class BrokenLinksMonitorArgs {
   /// The account in which the Synthetics monitor will be created.
   final pulumi.Input<String>? accountId;
-
   /// The location the monitor will run from. Accepts a list of private location GUIDs. At least one of either `locations_public` or `locations_private` is required.
   final pulumi.Input<List<String>>? locationsPrivates;
-
   /// The location the monitor will run from. Check out [this page](https://docs.newrelic.com/docs/synthetics/synthetic-monitoring/administration/synthetic-public-minion-ips/) for a list of valid public locations. You don't need the `AWS_` prefix as the provider uses NerdGraph. At least one of either `locations_public` or `location_private` is required.
   final pulumi.Input<List<String>>? locationsPublics;
-
   /// The name for the monitor.
   final pulumi.Input<String>? name;
-
   /// The interval at which this monitor should run. Valid values are `EVERY_MINUTE`, `EVERY_5_MINUTES`, `EVERY_10_MINUTES`, `EVERY_15_MINUTES`, `EVERY_30_MINUTES`, `EVERY_HOUR`, `EVERY_6_HOURS`, `EVERY_12_HOURS`, or `EVERY_DAY`.
   final pulumi.Input<String> period;
-
   /// The runtime that the monitor will use to run jobs (`NODE_API`).
   final pulumi.Input<String>? runtimeType_;
-
   /// The specific version of the runtime type selected (`16.10`).
   ///
   /// &gt; **WARNING:**  The &lt;b style="color:red;"&gt;end-of-life&lt;/b&gt; of the **Synthetics Legacy Runtime** took effect on &lt;b style="color:red;"&gt;October 22, 2024&lt;/b&gt;, implying that support for using the deprecated Synthetics Legacy Runtime with **new and existing** Synthetic monitors &lt;b style="color:maroon;"&gt;officially ended as of October 22, 2024&lt;/b&gt;. As a consequence of this API change, all requests associated with Synthetic Monitors (except Ping Monitors) going out of the New Relic Terraform Provider will be blocked by an API error if they include values corresponding to the legacy runtime or blank runtime values.
@@ -36,16 +30,12 @@ class BrokenLinksMonitorArgs {
   /// &lt;br&gt;&lt;br&gt;
   /// You would not be affected by the EOL if your Synthetic monitors' Terraform configuration comprises new runtime values.
   final pulumi.Input<String>? runtimeTypeVersion;
-
   /// The run state of the monitor. (`ENABLED` or `DISABLED`).
   final pulumi.Input<String> status;
-
   /// The tags that will be associated with the monitor. See Nested tag blocks below for details
   final pulumi.Input<List<BrokenLinksMonitorTag>>? tags;
-
   /// The URI the monitor runs against.
   final pulumi.Input<String> uri;
-
   /// A boolean attribute to be set true by the customer, if they would like to use the unsupported legacy runtime of Synthetic Monitors by means of an exemption given until the October 22, 2024 Legacy Runtime EOL. Setting this attribute to true would allow skipping validation performed by the the New Relic Terraform Provider starting v3.43.0 to disallow using the legacy runtime with new monitors. This would, hence, allow creation of monitors in the legacy runtime until the October 22, 2024 Legacy Runtime EOL, if exempt by the API.
   final pulumi.Input<bool>? useUnsupportedLegacyRuntime;
 
@@ -85,18 +75,7 @@ class BrokenLinksMonitorArgs {
       'runtimeType': ?runtimeType_,
       'runtimeTypeVersion': ?runtimeTypeVersion,
       'status': status,
-      'tags':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BrokenLinksMonitorTag>,
-            List<Map<String, dynamic>>
-          >(
-            tags,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BrokenLinksMonitorTag,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<BrokenLinksMonitorTag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<BrokenLinksMonitorTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'uri': uri,
       'useUnsupportedLegacyRuntime': ?useUnsupportedLegacyRuntime,
     };
@@ -104,56 +83,18 @@ class BrokenLinksMonitorArgs {
 
   factory BrokenLinksMonitorArgs.fromMap(Map<String, dynamic> map) {
     return BrokenLinksMonitorArgs(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      locationsPrivates: (() {
-        final guardedValue = map['locationsPrivates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      locationsPublics: (() {
-        final guardedValue = map['locationsPublics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      locationsPrivates: (() { final guardedValue = map['locationsPrivates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      locationsPublics: (() { final guardedValue = map['locationsPublics']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       period: pulumi.Input.fromValue(map['period'] as String),
-      runtimeType_: (() {
-        final guardedValue = map['runtimeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      runtimeTypeVersion: (() {
-        final guardedValue = map['runtimeTypeVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      runtimeType_: (() { final guardedValue = map['runtimeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      runtimeTypeVersion: (() { final guardedValue = map['runtimeTypeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BrokenLinksMonitorTag>(
-            guardedValue,
-            (value) => BrokenLinksMonitorTag.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BrokenLinksMonitorTag>(guardedValue, (value) => BrokenLinksMonitorTag.fromMap((value as Map).cast<String, dynamic>()))); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
-      useUnsupportedLegacyRuntime: (() {
-        final guardedValue = map['useUnsupportedLegacyRuntime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      useUnsupportedLegacyRuntime: (() { final guardedValue = map['useUnsupportedLegacyRuntime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

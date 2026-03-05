@@ -16,16 +16,12 @@ import 'app_service_plan_route_for_vnet_args.dart';
 class AppServicePlanRouteForVnet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The ending address for this route. If the start address is specified in CIDR notation, this must be omitted.
   late final pulumi.Output<String?> endAddress;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// The type of route this is:
   /// DEFAULT - By default, every app has routes to the local address ranges specified by RFC1918
   /// INHERITED - Routes inherited from the real Virtual Network routes
@@ -33,10 +29,8 @@ class AppServicePlanRouteForVnet extends pulumi.CustomResource {
   ///
   /// These values will be used for syncing an app's routes with those from a Virtual Network.
   late final pulumi.Output<String?> routeType;
-
   /// The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
   late final pulumi.Output<String?> startAddress;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -49,11 +43,11 @@ class AppServicePlanRouteForVnet extends pulumi.CustomResource {
     AppServicePlanRouteForVnetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:AppServicePlanRouteForVnet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:AppServicePlanRouteForVnet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     endAddress = registerOutput<String?>('endAddress');
     kind = registerOutput<String?>('kind');

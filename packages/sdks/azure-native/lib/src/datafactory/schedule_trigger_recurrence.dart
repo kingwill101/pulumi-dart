@@ -7,19 +7,14 @@ import 'recurrence_schedule.dart';
 class ScheduleTriggerRecurrence {
   /// The end time.
   final pulumi.Input<String>? endTime;
-
   /// The frequency.
   final pulumi.Input<String>? frequency;
-
   /// The interval.
   final pulumi.Input<int>? interval;
-
   /// The recurrence schedule.
   final pulumi.Input<RecurrenceSchedule>? schedule;
-
   /// The start time.
   final pulumi.Input<String>? startTime;
-
   /// The time zone.
   final pulumi.Input<String>? timeZone;
 
@@ -44,11 +39,7 @@ class ScheduleTriggerRecurrence {
       'endTime': ?endTime,
       'frequency': ?frequency,
       'interval': ?interval,
-      'schedule':
-          ?pulumi.Input.mapOptionalInputValue<
-            RecurrenceSchedule,
-            Map<String, dynamic>
-          >(schedule, (value) => value.toMap()),
+      'schedule': ?pulumi.Input.mapOptionalInputValue<RecurrenceSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
       'startTime': ?startTime,
       'timeZone': ?timeZone,
     };
@@ -56,40 +47,13 @@ class ScheduleTriggerRecurrence {
 
   factory ScheduleTriggerRecurrence.fromMap(Map<String, dynamic> map) {
     return ScheduleTriggerRecurrence(
-      endTime: (() {
-        final guardedValue = map['endTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      frequency: (() {
-        final guardedValue = map['frequency'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      interval: (() {
-        final guardedValue = map['interval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      schedule: (() {
-        final guardedValue = map['schedule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RecurrenceSchedule.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecurrenceSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

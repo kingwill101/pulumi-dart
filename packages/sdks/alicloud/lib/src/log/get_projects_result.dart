@@ -39,11 +39,7 @@ class GetProjectsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'projects':
-          pulumi.Input.encodeList<GetProjectsProject, Map<String, dynamic>>(
-            projects,
-            (value) => value.toMap(),
-          ),
+      'projects': pulumi.Input.encodeList<GetProjectsProject, Map<String, dynamic>>(projects, (value) => value.toMap()),
       'status': ?status,
     };
   }
@@ -52,27 +48,12 @@ class GetProjectsResult {
     return GetProjectsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      projects: pulumi.Input.decodeList<GetProjectsProject>(
-        map['projects']!,
-        (value) =>
-            GetProjectsProject.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      projects: pulumi.Input.decodeList<GetProjectsProject>(map['projects']!, (value) => GetProjectsProject.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

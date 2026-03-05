@@ -16,3 +16,4 @@ enum ResourceCreationOptions {
     throw ArgumentError('Unknown ResourceCreationOptions value: $value');
   }
 }
+

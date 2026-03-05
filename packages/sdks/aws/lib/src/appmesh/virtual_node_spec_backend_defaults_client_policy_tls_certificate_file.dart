@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateFile {
   /// Certificate trust chain for a certificate stored on the file system of the mesh endpoint that the proxy is running on. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> certificateChain;
-
   /// Private key for a certificate stored on the file system of the virtual node that the proxy is running on. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> privateKey;
 
@@ -24,14 +23,11 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateFile {
     };
   }
 
-  factory VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateFile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateFile.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateFile(
-      certificateChain: pulumi.Input.fromValue(
-        map['certificateChain'] as String,
-      ),
+      certificateChain: pulumi.Input.fromValue(map['certificateChain'] as String),
       privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
     );
   }
 }
+

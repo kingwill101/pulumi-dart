@@ -372,10 +372,8 @@ class HostingSite extends pulumi.CustomResource {
   /// Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
   /// associated with the Hosting site.
   late final pulumi.Output<String?> appId;
-
   /// The default URL for the site in the form of https://{name}.web.app
   late final pulumi.Output<String> defaultUrl;
-
   /// Output only. The fully-qualified resource name of the Hosting site, in
   /// the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
   /// Firebase project's
@@ -384,16 +382,13 @@ class HostingSite extends pulumi.CustomResource {
   /// Learn more about using project identifiers in Google's
   /// [AIP 2510 standard](https://google.aip.dev/cloud/2510).
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
   /// used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid
   /// domain name label.
   late final pulumi.Output<String?> siteId;
-
   /// The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
   late final pulumi.Output<String> type;
 
@@ -406,11 +401,11 @@ class HostingSite extends pulumi.CustomResource {
     HostingSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firebase/hostingSite:HostingSite',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:firebase/hostingSite:HostingSite',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String?>('appId');
     defaultUrl = registerOutput<String>('defaultUrl');
     this.name = registerOutput<String>('name');
@@ -437,11 +432,11 @@ class HostingSite extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firebase/hostingSite:HostingSite',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:firebase/hostingSite:HostingSite',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String?>('appId');
     defaultUrl = registerOutput<String>('defaultUrl');
     this.name = registerOutput<String>('name');

@@ -12,10 +12,14 @@ class GetCryptoKeyIamPolicyArgs {
 
   /// Creates a new [GetCryptoKeyIamPolicyArgs].
   /// [cryptoKeyId] The crypto key ID, in the form
-  GetCryptoKeyIamPolicyArgs({required this.cryptoKeyId});
+  GetCryptoKeyIamPolicyArgs({
+    required this.cryptoKeyId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cryptoKeyId': cryptoKeyId};
+    return <String, dynamic>{
+      'cryptoKeyId': cryptoKeyId,
+    };
   }
 
   factory GetCryptoKeyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetCryptoKeyIamPolicyArgs {
     );
   }
 }
+

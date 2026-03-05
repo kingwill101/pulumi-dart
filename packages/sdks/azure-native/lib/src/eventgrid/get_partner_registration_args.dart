@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPartnerRegistrationArgs {
   /// Name of the partner registration.
   final pulumi.Input<String> partnerRegistrationName;
-
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetPartnerRegistrationArgs {
 
   factory GetPartnerRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerRegistrationArgs(
-      partnerRegistrationName: pulumi.Input.fromValue(
-        map['partnerRegistrationName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      partnerRegistrationName: pulumi.Input.fromValue(map['partnerRegistrationName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

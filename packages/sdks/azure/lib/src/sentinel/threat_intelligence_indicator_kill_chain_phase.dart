@@ -8,21 +8,20 @@ class ThreatIntelligenceIndicatorKillChainPhase {
 
   /// Creates a new [ThreatIntelligenceIndicatorKillChainPhase].
   /// [name] The name which should be used for the Lockheed Martin cyber kill chain phase.
-  ThreatIntelligenceIndicatorKillChainPhase({this.name});
+  ThreatIntelligenceIndicatorKillChainPhase({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory ThreatIntelligenceIndicatorKillChainPhase.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ThreatIntelligenceIndicatorKillChainPhase.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceIndicatorKillChainPhase(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

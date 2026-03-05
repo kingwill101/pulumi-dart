@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentAddonsConfigArgs {
   /// Flag to enable/disable Analytics.
   final pulumi.Input<bool>? analyticsEnabled;
-
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
   final pulumi.Input<String> envId;
@@ -17,7 +16,10 @@ class EnvironmentAddonsConfigArgs {
   /// Creates a new [EnvironmentAddonsConfigArgs].
   /// [analyticsEnabled] Flag to enable/disable Analytics.
   /// [envId] The Apigee environment group associated with the Apigee environment,
-  EnvironmentAddonsConfigArgs({this.analyticsEnabled, required this.envId});
+  EnvironmentAddonsConfigArgs({
+    this.analyticsEnabled,
+    required this.envId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,12 +30,9 @@ class EnvironmentAddonsConfigArgs {
 
   factory EnvironmentAddonsConfigArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentAddonsConfigArgs(
-      analyticsEnabled: (() {
-        final guardedValue = map['analyticsEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      analyticsEnabled: (() { final guardedValue = map['analyticsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       envId: pulumi.Input.fromValue(map['envId'] as String),
     );
   }
 }
+

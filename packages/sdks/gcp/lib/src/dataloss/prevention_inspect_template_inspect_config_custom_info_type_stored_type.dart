@@ -14,14 +14,15 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

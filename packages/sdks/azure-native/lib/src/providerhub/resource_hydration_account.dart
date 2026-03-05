@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceHydrationAccount {
   /// The account name.
   final pulumi.Input<String>? accountName;
-
   /// The encrypted key.
   final pulumi.Input<String>? encryptedKey;
-
   /// The max child resource consistency job limit.
   final pulumi.Input<double>? maxChildResourceConsistencyJobLimit;
-
   /// The subscription id.
   final pulumi.Input<String>? subscriptionId;
 
@@ -31,34 +28,18 @@ class ResourceHydrationAccount {
     return <String, dynamic>{
       'accountName': ?accountName,
       'encryptedKey': ?encryptedKey,
-      'maxChildResourceConsistencyJobLimit':
-          ?maxChildResourceConsistencyJobLimit,
+      'maxChildResourceConsistencyJobLimit': ?maxChildResourceConsistencyJobLimit,
       'subscriptionId': ?subscriptionId,
     };
   }
 
   factory ResourceHydrationAccount.fromMap(Map<String, dynamic> map) {
     return ResourceHydrationAccount(
-      accountName: (() {
-        final guardedValue = map['accountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encryptedKey: (() {
-        final guardedValue = map['encryptedKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxChildResourceConsistencyJobLimit: (() {
-        final guardedValue = map['maxChildResourceConsistencyJobLimit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptedKey: (() { final guardedValue = map['encryptedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxChildResourceConsistencyJobLimit: (() { final guardedValue = map['maxChildResourceConsistencyJobLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

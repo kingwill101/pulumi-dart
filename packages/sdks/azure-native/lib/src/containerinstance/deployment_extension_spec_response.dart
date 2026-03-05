@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentExtensionSpecResponse {
   /// Type of extension to be added.
   final pulumi.Input<String> extensionType;
-
   /// Name of the extension.
   final pulumi.Input<String> name;
-
   /// Protected settings for the extension.
   final pulumi.Input<dynamic>? protectedSettings;
-
   /// Settings for the extension.
   final pulumi.Input<dynamic>? settings;
-
   /// Version of the extension being used.
   final pulumi.Input<String> version;
 
@@ -47,17 +43,10 @@ class DeploymentExtensionSpecResponse {
     return DeploymentExtensionSpecResponse(
       extensionType: pulumi.Input.fromValue(map['extensionType'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      protectedSettings: (() {
-        final guardedValue = map['protectedSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      settings: (() {
-        final guardedValue = map['settings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      protectedSettings: (() { final guardedValue = map['protectedSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

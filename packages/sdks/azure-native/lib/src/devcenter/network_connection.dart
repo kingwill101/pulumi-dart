@@ -171,46 +171,32 @@ import 'system_data_response.dart';
 class NetworkConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// AAD Join type.
   late final pulumi.Output<String> domainJoinType;
-
   /// Active Directory domain name
   late final pulumi.Output<String?> domainName;
-
   /// The password for the account used to join domain
   late final pulumi.Output<String?> domainPassword;
-
   /// The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com.
   late final pulumi.Output<String?> domainUsername;
-
   /// Overall health status of the network connection. Health checks are run on creation, update, and periodically to validate the network connection.
   late final pulumi.Output<String> healthCheckStatus;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The name for resource group where NICs will be placed.
   late final pulumi.Output<String?> networkingResourceGroupName;
-
   /// Active Directory domain Organization Unit (OU)
   late final pulumi.Output<String?> organizationUnit;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The subnet to attach Virtual Machines to
   late final pulumi.Output<String> subnetId;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -223,11 +209,11 @@ class NetworkConnection extends pulumi.CustomResource {
     NetworkConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devcenter:NetworkConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:devcenter:NetworkConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     domainJoinType = registerOutput<String>('domainJoinType');
     domainName = registerOutput<String?>('domainName');
@@ -236,22 +222,11 @@ class NetworkConnection extends pulumi.CustomResource {
     healthCheckStatus = registerOutput<String>('healthCheckStatus');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkingResourceGroupName = registerOutput<String?>(
-      'networkingResourceGroupName',
-    );
+    networkingResourceGroupName = registerOutput<String?>('networkingResourceGroupName');
     organizationUnit = registerOutput<String?>('organizationUnit');
     provisioningState = registerOutput<String>('provisioningState');
     subnetId = registerOutput<String>('subnetId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -19,41 +19,16 @@ class SlsaProvenanceV1ContaineranalysisV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buildDefinition':
-          ?pulumi.Input.mapOptionalInputValue<
-            BuildDefinitionContaineranalysisV1alpha1,
-            Map<String, dynamic>
-          >(buildDefinition, (value) => value.toMap()),
-      'runDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            RunDetailsContaineranalysisV1alpha1,
-            Map<String, dynamic>
-          >(runDetails, (value) => value.toMap()),
+      'buildDefinition': ?pulumi.Input.mapOptionalInputValue<BuildDefinitionContaineranalysisV1alpha1, Map<String, dynamic>>(buildDefinition, (value) => value.toMap()),
+      'runDetails': ?pulumi.Input.mapOptionalInputValue<RunDetailsContaineranalysisV1alpha1, Map<String, dynamic>>(runDetails, (value) => value.toMap()),
     };
   }
 
-  factory SlsaProvenanceV1ContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SlsaProvenanceV1ContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceV1ContaineranalysisV1alpha1(
-      buildDefinition: (() {
-        final guardedValue = map['buildDefinition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BuildDefinitionContaineranalysisV1alpha1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      runDetails: (() {
-        final guardedValue = map['runDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RunDetailsContaineranalysisV1alpha1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      buildDefinition: (() { final guardedValue = map['buildDefinition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BuildDefinitionContaineranalysisV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      runDetails: (() { final guardedValue = map['runDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RunDetailsContaineranalysisV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

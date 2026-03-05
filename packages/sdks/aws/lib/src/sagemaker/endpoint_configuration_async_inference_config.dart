@@ -6,12 +6,9 @@ import 'endpoint_configuration_async_inference_config_output_config.dart';
 
 class EndpointConfigurationAsyncInferenceConfig {
   /// Configures the behavior of the client used by SageMaker AI to interact with the model container during asynchronous inference.
-  final pulumi.Input<EndpointConfigurationAsyncInferenceConfigClientConfig>?
-  clientConfig;
-
+  final pulumi.Input<EndpointConfigurationAsyncInferenceConfigClientConfig>? clientConfig;
   /// Configuration for asynchronous inference invocation outputs.
-  final pulumi.Input<EndpointConfigurationAsyncInferenceConfigOutputConfig>
-  outputConfig;
+  final pulumi.Input<EndpointConfigurationAsyncInferenceConfigOutputConfig> outputConfig;
 
   /// Creates a new [EndpointConfigurationAsyncInferenceConfig].
   /// [clientConfig] Configures the behavior of the client used by SageMaker AI to interact with the model container during asynchronous inference.
@@ -23,37 +20,16 @@ class EndpointConfigurationAsyncInferenceConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clientConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            EndpointConfigurationAsyncInferenceConfigClientConfig,
-            Map<String, dynamic>
-          >(clientConfig, (value) => value.toMap()),
-      'outputConfig':
-          pulumi.Input.mapInputValue<
-            EndpointConfigurationAsyncInferenceConfigOutputConfig,
-            Map<String, dynamic>
-          >(outputConfig, (value) => value.toMap()),
+      'clientConfig': ?pulumi.Input.mapOptionalInputValue<EndpointConfigurationAsyncInferenceConfigClientConfig, Map<String, dynamic>>(clientConfig, (value) => value.toMap()),
+      'outputConfig': pulumi.Input.mapInputValue<EndpointConfigurationAsyncInferenceConfigOutputConfig, Map<String, dynamic>>(outputConfig, (value) => value.toMap()),
     };
   }
 
-  factory EndpointConfigurationAsyncInferenceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointConfigurationAsyncInferenceConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationAsyncInferenceConfig(
-      clientConfig: (() {
-        final guardedValue = map['clientConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EndpointConfigurationAsyncInferenceConfigClientConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      outputConfig: pulumi.Input.fromValue(
-        EndpointConfigurationAsyncInferenceConfigOutputConfig.fromMap(
-          (map['outputConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      clientConfig: (() { final guardedValue = map['clientConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointConfigurationAsyncInferenceConfigClientConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      outputConfig: pulumi.Input.fromValue(EndpointConfigurationAsyncInferenceConfigOutputConfig.fromMap((map['outputConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

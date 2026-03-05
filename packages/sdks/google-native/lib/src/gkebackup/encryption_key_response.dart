@@ -9,17 +9,20 @@ class EncryptionKeyResponse {
 
   /// Creates a new [EncryptionKeyResponse].
   /// [gcpKmsEncryptionKey] Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
-  EncryptionKeyResponse({required this.gcpKmsEncryptionKey});
+  EncryptionKeyResponse({
+    required this.gcpKmsEncryptionKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'gcpKmsEncryptionKey': gcpKmsEncryptionKey};
+    return <String, dynamic>{
+      'gcpKmsEncryptionKey': gcpKmsEncryptionKey,
+    };
   }
 
   factory EncryptionKeyResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionKeyResponse(
-      gcpKmsEncryptionKey: pulumi.Input.fromValue(
-        map['gcpKmsEncryptionKey'] as String,
-      ),
+      gcpKmsEncryptionKey: pulumi.Input.fromValue(map['gcpKmsEncryptionKey'] as String),
     );
   }
 }
+

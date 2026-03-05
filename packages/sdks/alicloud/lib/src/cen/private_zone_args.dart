@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateZoneArgs {
   /// The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
   final pulumi.Input<String> accessRegionId;
-
   /// The ID of the CEN instance.
   final pulumi.Input<String> cenId;
-
   /// The ID of the region where PrivateZone is deployed.
   ///
   /// -&gt;**NOTE:** The resource `alicloud.cen.PrivateZone` depends on the resource `alicloud.cen.InstanceAttachment`.
   final pulumi.Input<String> hostRegionId;
-
   /// The ID of the VPC that is associated with PrivateZone.
   final pulumi.Input<String> hostVpcId;
 
@@ -51,3 +48,4 @@ class PrivateZoneArgs {
     );
   }
 }
+

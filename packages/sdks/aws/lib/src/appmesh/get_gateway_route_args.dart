@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayRouteArgs {
   /// Name of the service mesh in which the virtual gateway exists.
   final pulumi.Input<String> meshName;
-
   /// AWS account ID of the service mesh's owner.
   final pulumi.Input<String>? meshOwner;
-
   /// Name of the gateway route.
   final pulumi.Input<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Name of the virtual gateway in which the route exists.
   final pulumi.Input<String> virtualGatewayName;
 
@@ -55,27 +50,12 @@ class GetGatewayRouteArgs {
   factory GetGatewayRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteArgs(
       meshName: pulumi.Input.fromValue(map['meshName'] as String),
-      meshOwner: (() {
-        final guardedValue = map['meshOwner'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      meshOwner: (() { final guardedValue = map['meshOwner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      virtualGatewayName: pulumi.Input.fromValue(
-        map['virtualGatewayName'] as String,
-      ),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      virtualGatewayName: pulumi.Input.fromValue(map['virtualGatewayName'] as String),
     );
   }
 }
+

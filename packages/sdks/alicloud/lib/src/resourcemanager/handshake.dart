@@ -133,32 +133,23 @@ import 'handshake_state.dart';
 class Handshake extends pulumi.CustomResource {
   /// The time when the invitation was created. The time is displayed in UTC.
   late final pulumi.Output<String> createTime;
-
   /// The time when the invitation expires. The time is displayed in UTC.
   late final pulumi.Output<String> expireTime;
-
   /// The ID of the management account of the resource directory.
   late final pulumi.Output<String> masterAccountId;
-
   /// The name of the management account of the resource directory.
   late final pulumi.Output<String> masterAccountName;
-
   /// The time when the invitation was modified. The time is displayed in UTC.
   late final pulumi.Output<String> modifyTime;
-
   /// The description of the invitation.
   /// The description can be up to 1,024 characters in length.
   late final pulumi.Output<String?> note;
-
   /// The ID of the resource directory.
   late final pulumi.Output<String> resourceDirectoryId;
-
   /// The status of the invitation.
   late final pulumi.Output<String> status;
-
   /// The ID or logon email address of the account that you want to invite.
   late final pulumi.Output<String> targetEntity;
-
   /// The type of the invited account. Valid values:
   ///
   /// - Account: indicates the ID of the account.
@@ -174,11 +165,11 @@ class Handshake extends pulumi.CustomResource {
     HandshakeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/handshake:Handshake',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/handshake:Handshake',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     expireTime = registerOutput<String>('expireTime');
     masterAccountId = registerOutput<String>('masterAccountId');
@@ -209,11 +200,11 @@ class Handshake extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/handshake:Handshake',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/handshake:Handshake',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     expireTime = registerOutput<String>('expireTime');
     masterAccountId = registerOutput<String>('masterAccountId');

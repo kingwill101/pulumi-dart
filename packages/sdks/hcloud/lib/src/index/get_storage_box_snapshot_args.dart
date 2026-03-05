@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStorageBoxSnapshotArgs {
   /// ID of the Storage Box Snapshot.
   final pulumi.Input<int>? id;
-
   /// Name of the Storage Box Snapshot.
   final pulumi.Input<String>? name;
-
   /// ID of the Storage Box.
   final pulumi.Input<int> storageBoxId;
-
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
   final pulumi.Input<String>? withSelector;
 
@@ -42,22 +39,11 @@ class GetStorageBoxSnapshotArgs {
 
   factory GetStorageBoxSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxSnapshotArgs(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageBoxId: pulumi.Input.fromValue(map['storageBoxId'] as int),
-      withSelector: (() {
-        final guardedValue = map['withSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -452,19 +452,14 @@ import 'policy_state.dart';
 class Policy extends pulumi.CustomResource {
   /// Network Rules in JSON struct.
   late final pulumi.Output<String> accessControlRules;
-
   /// Description.
   late final pulumi.Output<String?> description;
-
   /// KMS instance .
   late final pulumi.Output<String> kmsInstanceId;
-
   /// Allowed permissions (RBAC)Optional values:"RbacPermission/Template/CryptoServiceKeyUser" and "RbacPermission/Template/CryptoServiceSecretUser".
   late final pulumi.Output<List<String>> permissions;
-
   /// Policy Name.
   late final pulumi.Output<String> policyName;
-
   /// The resources that the permission policy allows to access.Use "key/${KeyId}" or "key/*"  to specify a key or all keys.Use "secret/${SecretName}" or "secret/*" to specify a secret or all secrets.
   late final pulumi.Output<List<String>> resources;
 
@@ -472,13 +467,16 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_kms_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:kms/policy:Policy',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Policy(
+    String name, {
+    PolicyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:kms/policy:Policy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessControlRules = registerOutput<String>('accessControlRules');
     description = registerOutput<String?>('description');
     kmsInstanceId = registerOutput<String>('kmsInstanceId');
@@ -505,11 +503,11 @@ class Policy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kms/policy:Policy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kms/policy:Policy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessControlRules = registerOutput<String>('accessControlRules');
     description = registerOutput<String?>('description');
     kmsInstanceId = registerOutput<String>('kmsInstanceId');

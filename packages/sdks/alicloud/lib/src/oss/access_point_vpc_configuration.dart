@@ -8,19 +8,20 @@ class AccessPointVpcConfiguration {
 
   /// Creates a new [AccessPointVpcConfiguration].
   /// [vpcId] The vpc ID is required only when the value of NetworkOrigin is VPC.
-  AccessPointVpcConfiguration({this.vpcId});
+  AccessPointVpcConfiguration({
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vpcId': ?vpcId};
+    return <String, dynamic>{
+      'vpcId': ?vpcId,
+    };
   }
 
   factory AccessPointVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return AccessPointVpcConfiguration(
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

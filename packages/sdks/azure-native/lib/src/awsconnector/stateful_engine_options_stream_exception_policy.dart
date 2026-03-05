@@ -13,8 +13,7 @@ enum StatefulEngineOptionsStreamExceptionPolicy {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown StatefulEngineOptionsStreamExceptionPolicy value: $value',
-    );
+    throw ArgumentError('Unknown StatefulEngineOptionsStreamExceptionPolicy value: $value');
   }
 }
+

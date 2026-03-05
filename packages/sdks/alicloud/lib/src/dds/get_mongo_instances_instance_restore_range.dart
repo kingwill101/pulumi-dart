@@ -25,15 +25,12 @@ class GetMongoInstancesInstanceRestoreRange {
     };
   }
 
-  factory GetMongoInstancesInstanceRestoreRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMongoInstancesInstanceRestoreRange.fromMap(Map<String, dynamic> map) {
     return GetMongoInstancesInstanceRestoreRange(
-      restoreBeginTime: pulumi.Input.fromValue(
-        map['restoreBeginTime'] as String,
-      ),
+      restoreBeginTime: pulumi.Input.fromValue(map['restoreBeginTime'] as String),
       restoreEndTime: pulumi.Input.fromValue(map['restoreEndTime'] as String),
       restoreType: pulumi.Input.fromValue(map['restoreType'] as String),
     );
   }
 }
+

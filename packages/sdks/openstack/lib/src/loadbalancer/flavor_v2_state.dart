@@ -7,19 +7,15 @@ class FlavorV2State {
   /// The description of the flavor. Changing this
   /// updates the existing flavor.
   final pulumi.Input<String>? description;
-
   /// Whether the flavor is enabled or not. Defaults to `true`.
   /// Changing this updates the existing flavor.
   final pulumi.Input<bool>? enabled;
-
   /// The flavor_profile_id that the flavor
   /// will use. Changing this creates a new flavor.
   final pulumi.Input<String>? flavorProfileId;
-
   /// Name of the flavor. Changing this updates the existing
   /// flavor.
   final pulumi.Input<String>? name;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create an LB member. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
@@ -52,31 +48,12 @@ class FlavorV2State {
 
   factory FlavorV2State.fromMap(Map<String, dynamic> map) {
     return FlavorV2State(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      flavorProfileId: (() {
-        final guardedValue = map['flavorProfileId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      flavorProfileId: (() { final guardedValue = map['flavorProfileId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

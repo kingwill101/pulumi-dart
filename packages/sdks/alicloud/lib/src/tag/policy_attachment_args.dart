@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyAttachmentArgs {
   /// The ID of the tag policy.
   final pulumi.Input<String> policyId;
-
   /// The ID of the object.
   final pulumi.Input<String> targetId;
-
   /// The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
   final pulumi.Input<String> targetType;
 
@@ -42,3 +40,4 @@ class PolicyAttachmentArgs {
     );
   }
 }
+

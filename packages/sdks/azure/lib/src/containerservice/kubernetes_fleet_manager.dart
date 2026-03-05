@@ -161,16 +161,12 @@ import 'kubernetes_fleet_manager_state.dart';
 /// * Where `{fleetName}` is the name of the Fleet. For example `fleetValue`.
 class KubernetesFleetManager extends pulumi.CustomResource {
   late final pulumi.Output<KubernetesFleetManagerHubProfile?> hubProfile;
-
   /// The Azure Region where the Kubernetes Fleet Manager should exist. Changing this forces a new Kubernetes Fleet Manager to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of this Kubernetes Fleet Manager. Changing this forces a new Kubernetes Fleet Manager to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the Resource Group within which this Kubernetes Fleet Manager should exist. Changing this forces a new Kubernetes Fleet Manager to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Kubernetes Fleet Manager.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -183,21 +179,12 @@ class KubernetesFleetManager extends pulumi.CustomResource {
     KubernetesFleetManagerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/kubernetesFleetManager:KubernetesFleetManager',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    hubProfile = registerOutput<KubernetesFleetManagerHubProfile?>(
-      'hubProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KubernetesFleetManagerHubProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:containerservice/kubernetesFleetManager:KubernetesFleetManager',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    hubProfile = registerOutput<KubernetesFleetManagerHubProfile?>('hubProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesFleetManagerHubProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -222,21 +209,12 @@ class KubernetesFleetManager extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/kubernetesFleetManager:KubernetesFleetManager',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    hubProfile = registerOutput<KubernetesFleetManagerHubProfile?>(
-      'hubProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KubernetesFleetManagerHubProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:containerservice/kubernetesFleetManager:KubernetesFleetManager',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    hubProfile = registerOutput<KubernetesFleetManagerHubProfile?>('hubProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesFleetManagerHubProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

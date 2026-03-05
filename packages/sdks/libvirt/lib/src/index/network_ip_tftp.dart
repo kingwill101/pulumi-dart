@@ -8,19 +8,20 @@ class NetworkIpTftp {
 
   /// Creates a new [NetworkIpTftp].
   /// [root] Defines the root directory for TFTP services provided by the network.
-  NetworkIpTftp({this.root});
+  NetworkIpTftp({
+    this.root,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'root': ?root};
+    return <String, dynamic>{
+      'root': ?root,
+    };
   }
 
   factory NetworkIpTftp.fromMap(Map<String, dynamic> map) {
     return NetworkIpTftp(
-      root: (() {
-        final guardedValue = map['root'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      root: (() { final guardedValue = map['root']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

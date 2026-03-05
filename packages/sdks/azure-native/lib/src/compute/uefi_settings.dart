@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UefiSettings {
   /// Specifies whether secure boot should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
   final pulumi.Input<bool>? secureBootEnabled;
-
   /// Specifies whether vTPM should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
   final pulumi.Input<bool>? vTpmEnabled;
 
   /// Creates a new [UefiSettings].
   /// [secureBootEnabled] Specifies whether secure boot should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
   /// [vTpmEnabled] Specifies whether vTPM should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
-  UefiSettings({this.secureBootEnabled, this.vTpmEnabled});
+  UefiSettings({
+    this.secureBootEnabled,
+    this.vTpmEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class UefiSettings {
 
   factory UefiSettings.fromMap(Map<String, dynamic> map) {
     return UefiSettings(
-      secureBootEnabled: (() {
-        final guardedValue = map['secureBootEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      vTpmEnabled: (() {
-        final guardedValue = map['vTpmEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      secureBootEnabled: (() { final guardedValue = map['secureBootEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      vTpmEnabled: (() { final guardedValue = map['vTpmEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

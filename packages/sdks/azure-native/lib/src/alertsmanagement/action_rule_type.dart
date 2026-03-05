@@ -16,3 +16,4 @@ enum ActionRuleType {
     throw ArgumentError('Unknown ActionRuleType value: $value');
   }
 }
+

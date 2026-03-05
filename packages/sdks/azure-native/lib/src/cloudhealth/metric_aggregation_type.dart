@@ -19,3 +19,4 @@ enum MetricAggregationType {
     throw ArgumentError('Unknown MetricAggregationType value: $value');
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataflowEndpointFabricOneLakeNamesResponse {
   /// Lakehouse name.
   final pulumi.Input<String> lakehouseName;
-
   /// Workspace name.
   final pulumi.Input<String> workspaceName;
 
@@ -25,12 +24,11 @@ class DataflowEndpointFabricOneLakeNamesResponse {
     };
   }
 
-  factory DataflowEndpointFabricOneLakeNamesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataflowEndpointFabricOneLakeNamesResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointFabricOneLakeNamesResponse(
       lakehouseName: pulumi.Input.fromValue(map['lakehouseName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

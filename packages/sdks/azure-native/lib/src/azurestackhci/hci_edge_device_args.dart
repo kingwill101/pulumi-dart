@@ -10,14 +10,11 @@ import 'hci_edge_device_properties.dart';
 class HciEdgeDeviceArgs {
   /// Name of Device
   final pulumi.Input<String>? edgeDeviceName;
-
   /// Edge device kind.
   /// Expected value is 'HCI'.
   final pulumi.Input<String> kind;
-
   /// properties for Arc-enabled edge device with HCI OS.
   final pulumi.Input<HciEdgeDeviceProperties>? properties;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -37,33 +34,18 @@ class HciEdgeDeviceArgs {
     return <String, dynamic>{
       'edgeDeviceName': ?edgeDeviceName,
       'kind': kind,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            HciEdgeDeviceProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<HciEdgeDeviceProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceUri': resourceUri,
     };
   }
 
   factory HciEdgeDeviceArgs.fromMap(Map<String, dynamic> map) {
     return HciEdgeDeviceArgs(
-      edgeDeviceName: (() {
-        final guardedValue = map['edgeDeviceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      edgeDeviceName: (() { final guardedValue = map['edgeDeviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HciEdgeDeviceProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HciEdgeDeviceProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
+

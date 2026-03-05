@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FhirServiceAuthentication {
   /// The intended audience to receive authentication tokens for the service.
   final pulumi.Input<String> audience;
-
   /// The Azure Active Directory (tenant) that serves as the authentication authority to access the service. The default authority is the Directory defined in the authentication scheme in use when running Terraform.
   /// Authority must be registered to Azure AD and in the following format: &lt;https://{Azure-AD-endpoint}/{tenant-id&gt;}.
   final pulumi.Input<String> authority;
-
   /// Whether smart proxy is enabled.
   final pulumi.Input<bool>? smartProxyEnabled;
 
@@ -35,11 +33,8 @@ class FhirServiceAuthentication {
     return FhirServiceAuthentication(
       audience: pulumi.Input.fromValue(map['audience'] as String),
       authority: pulumi.Input.fromValue(map['authority'] as String),
-      smartProxyEnabled: (() {
-        final guardedValue = map['smartProxyEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      smartProxyEnabled: (() { final guardedValue = map['smartProxyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

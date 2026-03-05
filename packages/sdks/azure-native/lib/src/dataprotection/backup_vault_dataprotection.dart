@@ -950,28 +950,20 @@ import 'system_data_response.dart';
 class BackupVaultDataprotection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Optional ETag.
   late final pulumi.Output<String?> eTag;
-
   /// Input Managed Identity Details
   late final pulumi.Output<DppIdentityDetailsResponse?> identity;
-
   /// Resource location.
   late final pulumi.Output<String> location;
-
   /// Resource name associated with the resource.
   late final pulumi.Output<String> name;
-
   /// BackupVaultResource properties
   late final pulumi.Output<BackupVaultResponse> properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   late final pulumi.Output<String> type;
 
@@ -984,45 +976,18 @@ class BackupVaultDataprotection extends pulumi.CustomResource {
     BackupVaultArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:dataprotection:BackupVault',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:dataprotection:BackupVault',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eTag = registerOutput<String?>('eTag');
-    identity = registerOutput<DppIdentityDetailsResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DppIdentityDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<DppIdentityDetailsResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DppIdentityDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<BackupVaultResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupVaultResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<BackupVaultResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupVaultResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

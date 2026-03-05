@@ -8,17 +8,20 @@ class BucketCustomPlacementConfig {
 
   /// Creates a new [BucketCustomPlacementConfig].
   /// [dataLocations] The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
-  BucketCustomPlacementConfig({required this.dataLocations});
+  BucketCustomPlacementConfig({
+    required this.dataLocations,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dataLocations': dataLocations};
+    return <String, dynamic>{
+      'dataLocations': dataLocations,
+    };
   }
 
   factory BucketCustomPlacementConfig.fromMap(Map<String, dynamic> map) {
     return BucketCustomPlacementConfig(
-      dataLocations: pulumi.Input.fromValue(
-        (map['dataLocations'] as List).cast<String>(),
-      ),
+      dataLocations: pulumi.Input.fromValue((map['dataLocations'] as List).cast<String>()),
     );
   }
 }
+

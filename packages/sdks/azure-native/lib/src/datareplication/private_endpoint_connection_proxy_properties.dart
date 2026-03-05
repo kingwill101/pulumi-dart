@@ -10,31 +10,20 @@ class PrivateEndpointConnectionProxyProperties {
 
   /// Creates a new [PrivateEndpointConnectionProxyProperties].
   /// [remotePrivateEndpoint] Represent remote private endpoint information for the private endpoint connection proxy.
-  PrivateEndpointConnectionProxyProperties({this.remotePrivateEndpoint});
+  PrivateEndpointConnectionProxyProperties({
+    this.remotePrivateEndpoint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'remotePrivateEndpoint':
-          ?pulumi.Input.mapOptionalInputValue<
-            RemotePrivateEndpoint,
-            Map<String, dynamic>
-          >(remotePrivateEndpoint, (value) => value.toMap()),
+      'remotePrivateEndpoint': ?pulumi.Input.mapOptionalInputValue<RemotePrivateEndpoint, Map<String, dynamic>>(remotePrivateEndpoint, (value) => value.toMap()),
     };
   }
 
-  factory PrivateEndpointConnectionProxyProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrivateEndpointConnectionProxyProperties.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionProxyProperties(
-      remotePrivateEndpoint: (() {
-        final guardedValue = map['remotePrivateEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RemotePrivateEndpoint.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      remotePrivateEndpoint: (() { final guardedValue = map['remotePrivateEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RemotePrivateEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

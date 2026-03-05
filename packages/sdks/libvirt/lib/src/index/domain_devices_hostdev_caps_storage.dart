@@ -9,29 +9,20 @@ class DomainDevicesHostdevCapsStorage {
 
   /// Creates a new [DomainDevicesHostdevCapsStorage].
   /// [source] Sets the source attributes for the host device's storage capabilities.
-  DomainDevicesHostdevCapsStorage({this.source});
+  DomainDevicesHostdevCapsStorage({
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'source':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesHostdevCapsStorageSource,
-            Map<String, dynamic>
-          >(source, (value) => value.toMap()),
+      'source': ?pulumi.Input.mapOptionalInputValue<DomainDevicesHostdevCapsStorageSource, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesHostdevCapsStorage.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevCapsStorage(
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesHostdevCapsStorageSource.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesHostdevCapsStorageSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

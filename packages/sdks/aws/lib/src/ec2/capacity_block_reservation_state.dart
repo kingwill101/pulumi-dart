@@ -7,55 +7,38 @@ import 'capacity_block_reservation_timeouts.dart';
 class CapacityBlockReservationState {
   /// The ARN of the reservation.
   final pulumi.Input<String>? arn;
-
   /// The Availability Zone in which to create the Capacity Block Reservation.
   final pulumi.Input<String>? availabilityZone;
-
   /// The Capacity Block Reservation ID.
   final pulumi.Input<String>? capacityBlockOfferingId;
-
   /// The date and time at which the Capacity Block Reservation was created.
   final pulumi.Input<String>? createdDate;
-
   /// Indicates whether the Capacity Reservation supports EBS-optimized instances.
   final pulumi.Input<bool>? ebsOptimized;
-
   /// The date and time at which the Capacity Block Reservation expires. When a Capacity Block Reservation expires, the reserved capacity is released and you can no longer launch instances into it. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   final pulumi.Input<String>? endDate;
-
   /// Indicates the way in which the Capacity Reservation ends.
   final pulumi.Input<String>? endDateType;
-
   /// The number of instances for which to reserve capacity.
   final pulumi.Input<int>? instanceCount;
-
   /// The type of operating system for which to reserve capacity. Valid options are `Linux/UNIX`, `Red Hat Enterprise Linux`, `SUSE Linux`, `Windows`, `Windows with SQL Server`, `Windows with SQL Server Enterprise`, `Windows with SQL Server Standard` or `Windows with SQL Server Web`.
   final pulumi.Input<String>? instancePlatform;
-
   /// The instance type for which to reserve capacity.
   final pulumi.Input<String>? instanceType;
-
   /// The ARN of the Outpost on which to create the Capacity Block Reservation.
   final pulumi.Input<String>? outpostArn;
-
   /// The ARN of the placement group in which to create the Capacity Block Reservation.
   final pulumi.Input<String>? placementGroupArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The type of Capacity Reservation.
   final pulumi.Input<String>? reservationType;
-
   /// The date and time at which the Capacity Block Reservation starts. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   final pulumi.Input<String>? startDate;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block
   final pulumi.Input<Map<String, String>>? tagsAll;
-
   /// Indicates the tenancy of the Capacity Block Reservation. Specify either `default` or `dedicated`.
   final pulumi.Input<String>? tenancy;
   final pulumi.Input<CapacityBlockReservationTimeouts>? timeouts;
@@ -122,119 +105,32 @@ class CapacityBlockReservationState {
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'tenancy': ?tenancy,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            CapacityBlockReservationTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<CapacityBlockReservationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory CapacityBlockReservationState.fromMap(Map<String, dynamic> map) {
     return CapacityBlockReservationState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      availabilityZone: (() {
-        final guardedValue = map['availabilityZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      capacityBlockOfferingId: (() {
-        final guardedValue = map['capacityBlockOfferingId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createdDate: (() {
-        final guardedValue = map['createdDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ebsOptimized: (() {
-        final guardedValue = map['ebsOptimized'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      endDate: (() {
-        final guardedValue = map['endDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endDateType: (() {
-        final guardedValue = map['endDateType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceCount: (() {
-        final guardedValue = map['instanceCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      instancePlatform: (() {
-        final guardedValue = map['instancePlatform'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outpostArn: (() {
-        final guardedValue = map['outpostArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      placementGroupArn: (() {
-        final guardedValue = map['placementGroupArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reservationType: (() {
-        final guardedValue = map['reservationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startDate: (() {
-        final guardedValue = map['startDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tenancy: (() {
-        final guardedValue = map['tenancy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CapacityBlockReservationTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      capacityBlockOfferingId: (() { final guardedValue = map['capacityBlockOfferingId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createdDate: (() { final guardedValue = map['createdDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ebsOptimized: (() { final guardedValue = map['ebsOptimized']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endDateType: (() { final guardedValue = map['endDateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instancePlatform: (() { final guardedValue = map['instancePlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outpostArn: (() { final guardedValue = map['outpostArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      placementGroupArn: (() { final guardedValue = map['placementGroupArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reservationType: (() { final guardedValue = map['reservationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tenancy: (() { final guardedValue = map['tenancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CapacityBlockReservationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

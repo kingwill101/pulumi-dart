@@ -424,28 +424,20 @@ import 'system_data_response.dart';
 class StartStopManagedInstanceSchedule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The description of the schedule.
   late final pulumi.Output<String?> description;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Timestamp when the next action will be executed in the corresponding schedule time zone.
   late final pulumi.Output<String> nextExecutionTime;
-
   /// Next action to be executed (Start or Stop)
   late final pulumi.Output<String> nextRunAction;
-
   /// Schedule list.
   late final pulumi.Output<List<Map<String, dynamic>>> scheduleList;
-
   /// System data of the scheduled resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The time zone of the schedule.
   late final pulumi.Output<String?> timeZoneId;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -458,27 +450,18 @@ class StartStopManagedInstanceSchedule extends pulumi.CustomResource {
     StartStopManagedInstanceScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:StartStopManagedInstanceSchedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:StartStopManagedInstanceSchedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     nextExecutionTime = registerOutput<String>('nextExecutionTime');
     nextRunAction = registerOutput<String>('nextRunAction');
     scheduleList = registerOutput<List<Map<String, dynamic>>>('scheduleList');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeZoneId = registerOutput<String?>('timeZoneId');
     type = registerOutput<String>('type');
   }

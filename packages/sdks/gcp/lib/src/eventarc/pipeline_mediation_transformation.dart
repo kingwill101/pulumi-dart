@@ -83,19 +83,20 @@ class PipelineMediationTransformation {
 
   /// Creates a new [PipelineMediationTransformation].
   /// [transformationTemplate] The CEL expression template to apply to transform messages.
-  PipelineMediationTransformation({this.transformationTemplate});
+  PipelineMediationTransformation({
+    this.transformationTemplate,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'transformationTemplate': ?transformationTemplate};
+    return <String, dynamic>{
+      'transformationTemplate': ?transformationTemplate,
+    };
   }
 
   factory PipelineMediationTransformation.fromMap(Map<String, dynamic> map) {
     return PipelineMediationTransformation(
-      transformationTemplate: (() {
-        final guardedValue = map['transformationTemplate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      transformationTemplate: (() { final guardedValue = map['transformationTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

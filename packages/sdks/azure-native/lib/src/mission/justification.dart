@@ -16,3 +16,4 @@ enum Justification {
     throw ArgumentError('Unknown Justification value: $value');
   }
 }
+

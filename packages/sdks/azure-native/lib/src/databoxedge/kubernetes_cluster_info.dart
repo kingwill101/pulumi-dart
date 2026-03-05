@@ -9,10 +9,14 @@ class KubernetesClusterInfo {
 
   /// Creates a new [KubernetesClusterInfo].
   /// [version] Kubernetes cluster version
-  KubernetesClusterInfo({required this.version});
+  KubernetesClusterInfo({
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'version': version};
+    return <String, dynamic>{
+      'version': version,
+    };
   }
 
   factory KubernetesClusterInfo.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class KubernetesClusterInfo {
     );
   }
 }
+

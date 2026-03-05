@@ -41,17 +41,10 @@ class GetDeveloperAppArgs {
     return GetDeveloperAppArgs(
       appId: pulumi.Input.fromValue(map['appId'] as String),
       developerId: pulumi.Input.fromValue(map['developerId'] as String),
-      entity: (() {
-        final guardedValue = map['entity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      entity: (() { final guardedValue = map['entity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
-      query: (() {
-        final guardedValue = map['query'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      query: (() { final guardedValue = map['query']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

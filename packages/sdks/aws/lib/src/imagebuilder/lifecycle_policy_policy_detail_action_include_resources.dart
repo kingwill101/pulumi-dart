@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LifecyclePolicyPolicyDetailActionIncludeResources {
   /// Specifies whether the lifecycle action should apply to distributed AMIs.
   final pulumi.Input<bool>? amis;
-
   /// Specifies whether the lifecycle action should apply to distributed containers.
   final pulumi.Input<bool>? containers;
-
   /// Specifies whether the lifecycle action should apply to snapshots associated with distributed AMIs.
   final pulumi.Input<bool>? snapshots;
 
@@ -30,25 +28,12 @@ class LifecyclePolicyPolicyDetailActionIncludeResources {
     };
   }
 
-  factory LifecyclePolicyPolicyDetailActionIncludeResources.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LifecyclePolicyPolicyDetailActionIncludeResources.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailActionIncludeResources(
-      amis: (() {
-        final guardedValue = map['amis'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      containers: (() {
-        final guardedValue = map['containers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      snapshots: (() {
-        final guardedValue = map['snapshots'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      amis: (() { final guardedValue = map['amis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      containers: (() { final guardedValue = map['containers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      snapshots: (() { final guardedValue = map['snapshots']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

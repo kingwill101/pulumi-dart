@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GitHubOwnerPropertiesResponse {
   /// Gets or sets internal GitHub id.
   final pulumi.Input<String> gitHubInternalId;
-
   /// Details about resource onboarding status across all connectors.
   ///
   /// OnboardedByOtherConnector - this resource has already been onboarded to another connector. This is only applicable to top-level resources.
@@ -14,10 +13,8 @@ class GitHubOwnerPropertiesResponse {
   /// NotOnboarded - this resource has not been onboarded to any connector.
   /// NotApplicable - the onboarding state is not applicable to the current endpoint.
   final pulumi.Input<String>? onboardingState;
-
   /// Gets or sets GitHub Owner url.
   final pulumi.Input<String> ownerUrl;
-
   /// The provisioning state of the resource.
   ///
   /// Pending - Provisioning pending.
@@ -28,10 +25,8 @@ class GitHubOwnerPropertiesResponse {
   /// DeletionSuccess - Deletion successful.
   /// DeletionFailure - Deletion failure.
   final pulumi.Input<String>? provisioningState;
-
   /// Gets or sets resource status message.
   final pulumi.Input<String> provisioningStatusMessage;
-
   /// Gets or sets time when resource was last checked.
   final pulumi.Input<String> provisioningStatusUpdateTimeUtc;
 
@@ -64,26 +59,13 @@ class GitHubOwnerPropertiesResponse {
 
   factory GitHubOwnerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GitHubOwnerPropertiesResponse(
-      gitHubInternalId: pulumi.Input.fromValue(
-        map['gitHubInternalId'] as String,
-      ),
-      onboardingState: (() {
-        final guardedValue = map['onboardingState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gitHubInternalId: pulumi.Input.fromValue(map['gitHubInternalId'] as String),
+      onboardingState: (() { final guardedValue = map['onboardingState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ownerUrl: pulumi.Input.fromValue(map['ownerUrl'] as String),
-      provisioningState: (() {
-        final guardedValue = map['provisioningState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningStatusMessage: pulumi.Input.fromValue(
-        map['provisioningStatusMessage'] as String,
-      ),
-      provisioningStatusUpdateTimeUtc: pulumi.Input.fromValue(
-        map['provisioningStatusUpdateTimeUtc'] as String,
-      ),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningStatusMessage: pulumi.Input.fromValue(map['provisioningStatusMessage'] as String),
+      provisioningStatusUpdateTimeUtc: pulumi.Input.fromValue(map['provisioningStatusUpdateTimeUtc'] as String),
     );
   }
 }
+

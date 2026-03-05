@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrafficMirrorFilterIngressRulesArgs {
   /// A list of Traffic Mirror Filter Ingress Rule IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
   final pulumi.Input<String>? status;
-
   /// The ID of the Traffic Mirror Filter.
   final pulumi.Input<String> trafficMirrorFilterId;
 
@@ -40,28 +37,13 @@ class GetTrafficMirrorFilterIngressRulesArgs {
     };
   }
 
-  factory GetTrafficMirrorFilterIngressRulesArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTrafficMirrorFilterIngressRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetTrafficMirrorFilterIngressRulesArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      trafficMirrorFilterId: pulumi.Input.fromValue(
-        map['trafficMirrorFilterId'] as String,
-      ),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      trafficMirrorFilterId: pulumi.Input.fromValue(map['trafficMirrorFilterId'] as String),
     );
   }
 }
+

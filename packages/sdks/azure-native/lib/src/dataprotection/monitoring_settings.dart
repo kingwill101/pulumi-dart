@@ -10,29 +10,20 @@ class MonitoringSettings {
 
   /// Creates a new [MonitoringSettings].
   /// [azureMonitorAlertSettings] Settings for Azure Monitor based alerts
-  MonitoringSettings({this.azureMonitorAlertSettings});
+  MonitoringSettings({
+    this.azureMonitorAlertSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureMonitorAlertSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureMonitorAlertSettings,
-            Map<String, dynamic>
-          >(azureMonitorAlertSettings, (value) => value.toMap()),
+      'azureMonitorAlertSettings': ?pulumi.Input.mapOptionalInputValue<AzureMonitorAlertSettings, Map<String, dynamic>>(azureMonitorAlertSettings, (value) => value.toMap()),
     };
   }
 
   factory MonitoringSettings.fromMap(Map<String, dynamic> map) {
     return MonitoringSettings(
-      azureMonitorAlertSettings: (() {
-        final guardedValue = map['azureMonitorAlertSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureMonitorAlertSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      azureMonitorAlertSettings: (() { final guardedValue = map['azureMonitorAlertSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureMonitorAlertSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

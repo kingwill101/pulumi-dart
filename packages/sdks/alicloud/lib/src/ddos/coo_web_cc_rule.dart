@@ -510,10 +510,8 @@ class CooWebCcRule extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
   late final pulumi.Output<String> domain;
-
   /// Rule name.
   late final pulumi.Output<String> name;
-
   /// Rule details.   See `rule_detail` below.
   late final pulumi.Output<CooWebCcRuleRuleDetail> ruleDetail;
 
@@ -526,23 +524,14 @@ class CooWebCcRule extends pulumi.CustomResource {
     CooWebCcRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ddos/cooWebCcRule:CooWebCcRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ddos/cooWebCcRule:CooWebCcRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domain = registerOutput<String>('domain');
     this.name = registerOutput<String>('name');
-    ruleDetail = registerOutput<CooWebCcRuleRuleDetail>(
-      'ruleDetail',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CooWebCcRuleRuleDetail.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ruleDetail = registerOutput<CooWebCcRuleRuleDetail>('ruleDetail', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CooWebCcRuleRuleDetail.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [CooWebCcRule] resource's state with the given [name] and [id].
@@ -563,22 +552,13 @@ class CooWebCcRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ddos/cooWebCcRule:CooWebCcRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ddos/cooWebCcRule:CooWebCcRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domain = registerOutput<String>('domain');
     this.name = registerOutput<String>('name');
-    ruleDetail = registerOutput<CooWebCcRuleRuleDetail>(
-      'ruleDetail',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CooWebCcRuleRuleDetail.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ruleDetail = registerOutput<CooWebCcRuleRuleDetail>('ruleDetail', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CooWebCcRuleRuleDetail.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

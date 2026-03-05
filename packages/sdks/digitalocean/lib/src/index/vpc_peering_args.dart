@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcPeeringArgs {
   /// A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
   final pulumi.Input<String>? name;
-
   /// A set of two VPC IDs to be peered.
   final pulumi.Input<List<String>> vpcIds;
 
   /// Creates a new [VpcPeeringArgs].
   /// [name] A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
   /// [vpcIds] A set of two VPC IDs to be peered.
-  VpcPeeringArgs({this.name, required this.vpcIds});
+  VpcPeeringArgs({
+    this.name,
+    required this.vpcIds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'vpcIds': vpcIds};
+    return <String, dynamic>{
+      'name': ?name,
+      'vpcIds': vpcIds,
+    };
   }
 
   factory VpcPeeringArgs.fromMap(Map<String, dynamic> map) {
     return VpcPeeringArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcIds: pulumi.Input.fromValue((map['vpcIds'] as List).cast<String>()),
     );
   }
 }
+

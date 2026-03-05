@@ -173,23 +173,16 @@ import 'user_args.dart';
 class User extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The password details.
-  late final pulumi.Output<AsymmetricEncryptedSecretResponse?>
-  encryptedPassword;
-
+  late final pulumi.Output<AsymmetricEncryptedSecretResponse?> encryptedPassword;
   /// The object name.
   late final pulumi.Output<String> name;
-
   /// List of shares that the user has rights on. This field should not be specified during user creation.
   late final pulumi.Output<List<Map<String, dynamic>>> shareAccessRights;
-
   /// Metadata pertaining to creation and last modification of User
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
-
   /// Type of the user.
   late final pulumi.Output<String> userType;
 
@@ -197,38 +190,21 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_databoxedge_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:databoxedge:User',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  User(
+    String name, {
+    UserArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:databoxedge:User',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    encryptedPassword = registerOutput<AsymmetricEncryptedSecretResponse?>(
-      'encryptedPassword',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AsymmetricEncryptedSecretResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptedPassword = registerOutput<AsymmetricEncryptedSecretResponse?>('encryptedPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AsymmetricEncryptedSecretResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    shareAccessRights = registerOutput<List<Map<String, dynamic>>>(
-      'shareAccessRights',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    shareAccessRights = registerOutput<List<Map<String, dynamic>>>('shareAccessRights');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     userType = registerOutput<String>('userType');
   }

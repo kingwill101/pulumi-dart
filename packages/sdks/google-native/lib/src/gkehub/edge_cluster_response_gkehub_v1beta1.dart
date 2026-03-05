@@ -9,10 +9,14 @@ class EdgeClusterResponseGkehubV1beta1 {
 
   /// Creates a new [EdgeClusterResponseGkehubV1beta1].
   /// [resourceLink] Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
-  EdgeClusterResponseGkehubV1beta1({required this.resourceLink});
+  EdgeClusterResponseGkehubV1beta1({
+    required this.resourceLink,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceLink': resourceLink};
+    return <String, dynamic>{
+      'resourceLink': resourceLink,
+    };
   }
 
   factory EdgeClusterResponseGkehubV1beta1.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class EdgeClusterResponseGkehubV1beta1 {
     );
   }
 }
+

@@ -277,22 +277,17 @@ import 'domain_mapping_state.dart';
 class DomainMapping extends pulumi.CustomResource {
   /// The location of the cloud run instance. eg us-central1
   late final pulumi.Output<String> location;
-
   /// Metadata associated with this DomainMapping.
   /// Structure is documented below.
   late final pulumi.Output<DomainMappingMetadata> metadata;
-
   /// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The spec for this DomainMapping.
   /// Structure is documented below.
   late final pulumi.Output<DomainMappingSpec> spec;
-
   /// (Output)
   /// Status of the condition, one of True, False, Unknown.
   late final pulumi.Output<List<Map<String, dynamic>>> statuses;
@@ -306,34 +301,16 @@ class DomainMapping extends pulumi.CustomResource {
     DomainMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:cloudrun/domainMapping:DomainMapping',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:cloudrun/domainMapping:DomainMapping',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
-    metadata = registerOutput<DomainMappingMetadata>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainMappingMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<DomainMappingMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    spec = registerOutput<DomainMappingSpec>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainMappingSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spec = registerOutput<DomainMappingSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
   }
 
@@ -355,34 +332,16 @@ class DomainMapping extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:cloudrun/domainMapping:DomainMapping',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:cloudrun/domainMapping:DomainMapping',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
-    metadata = registerOutput<DomainMappingMetadata>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainMappingMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<DomainMappingMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    spec = registerOutput<DomainMappingSpec>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainMappingSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spec = registerOutput<DomainMappingSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
   }
 }

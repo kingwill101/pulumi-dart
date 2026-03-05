@@ -11,17 +11,22 @@ class IpamIpamPoolCidrArgs {
   ///
   /// &gt; **NOTE:**  currently, only IPv4 address segments are supported.
   final pulumi.Input<String> cidr;
-
   /// The ID of the IPAM pool instance.
   final pulumi.Input<String> ipamPoolId;
 
   /// Creates a new [IpamIpamPoolCidrArgs].
   /// [cidr] The CIDR address segment to be preset.
   /// [ipamPoolId] The ID of the IPAM pool instance.
-  IpamIpamPoolCidrArgs({required this.cidr, required this.ipamPoolId});
+  IpamIpamPoolCidrArgs({
+    required this.cidr,
+    required this.ipamPoolId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cidr': cidr, 'ipamPoolId': ipamPoolId};
+    return <String, dynamic>{
+      'cidr': cidr,
+      'ipamPoolId': ipamPoolId,
+    };
   }
 
   factory IpamIpamPoolCidrArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +36,4 @@ class IpamIpamPoolCidrArgs {
     );
   }
 }
+

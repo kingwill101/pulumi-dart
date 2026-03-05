@@ -9,19 +9,20 @@ class TrustAnchor {
 
   /// Creates a new [TrustAnchor].
   /// [pemCertificate] PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB.
-  TrustAnchor({this.pemCertificate});
+  TrustAnchor({
+    this.pemCertificate,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pemCertificate': ?pemCertificate};
+    return <String, dynamic>{
+      'pemCertificate': ?pemCertificate,
+    };
   }
 
   factory TrustAnchor.fromMap(Map<String, dynamic> map) {
     return TrustAnchor(
-      pemCertificate: (() {
-        final guardedValue = map['pemCertificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pemCertificate: (() { final guardedValue = map['pemCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

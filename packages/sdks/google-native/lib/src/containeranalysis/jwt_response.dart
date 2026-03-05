@@ -8,10 +8,14 @@ class JwtResponse {
 
   /// Creates a new [JwtResponse].
   /// [compactJwt] The compact encoding of a JWS, which is always three base64 encoded strings joined by periods. For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1
-  JwtResponse({required this.compactJwt});
+  JwtResponse({
+    required this.compactJwt,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'compactJwt': compactJwt};
+    return <String, dynamic>{
+      'compactJwt': compactJwt,
+    };
   }
 
   factory JwtResponse.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class JwtResponse {
     );
   }
 }
+

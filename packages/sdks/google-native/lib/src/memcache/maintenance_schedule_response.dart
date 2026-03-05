@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaintenanceScheduleResponse {
   /// The end time of any upcoming scheduled maintenance for this instance.
   final pulumi.Input<String> endTime;
-
   /// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
   final pulumi.Input<String> scheduleDeadlineTime;
-
   /// The start time of any upcoming scheduled maintenance for this instance.
   final pulumi.Input<String> startTime;
 
@@ -34,10 +32,9 @@ class MaintenanceScheduleResponse {
   factory MaintenanceScheduleResponse.fromMap(Map<String, dynamic> map) {
     return MaintenanceScheduleResponse(
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
-      scheduleDeadlineTime: pulumi.Input.fromValue(
-        map['scheduleDeadlineTime'] as String,
-      ),
+      scheduleDeadlineTime: pulumi.Input.fromValue(map['scheduleDeadlineTime'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
+

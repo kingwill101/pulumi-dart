@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseKnowledgeGraphPropertiesResponse {
   /// The description of the EnterpriseKnowledgeGraph
   final pulumi.Input<String>? description;
-
   /// Specifies the metadata  of the resource.
   final pulumi.Input<dynamic>? metadata;
-
   /// The state of EnterpriseKnowledgeGraph provisioning
   final pulumi.Input<String>? provisioningState;
 
@@ -31,25 +29,12 @@ class EnterpriseKnowledgeGraphPropertiesResponse {
     };
   }
 
-  factory EnterpriseKnowledgeGraphPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseKnowledgeGraphPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseKnowledgeGraphPropertiesResponse(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      provisioningState: (() {
-        final guardedValue = map['provisioningState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

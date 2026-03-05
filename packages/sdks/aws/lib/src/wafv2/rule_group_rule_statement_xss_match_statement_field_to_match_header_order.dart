@@ -13,16 +13,15 @@ class RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderOrder {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'oversizeHandling': oversizeHandling};
+    return <String, dynamic>{
+      'oversizeHandling': oversizeHandling,
+    };
   }
 
-  factory RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderOrder.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderOrder.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderOrder(
-      oversizeHandling: pulumi.Input.fromValue(
-        map['oversizeHandling'] as String,
-      ),
+      oversizeHandling: pulumi.Input.fromValue(map['oversizeHandling'] as String),
     );
   }
 }
+

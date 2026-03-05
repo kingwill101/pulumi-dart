@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HoneyPotArgs {
   /// The image ID of the honeypot.
   final pulumi.Input<String> honeypotImageId;
-
   /// Honeypot mirror name.
   final pulumi.Input<String> honeypotImageName;
-
   /// Honeypot custom name.
   final pulumi.Input<String> honeypotName;
-
   /// The ID of the honeypot management node.
   final pulumi.Input<String> nodeId;
 
@@ -43,11 +40,10 @@ class HoneyPotArgs {
   factory HoneyPotArgs.fromMap(Map<String, dynamic> map) {
     return HoneyPotArgs(
       honeypotImageId: pulumi.Input.fromValue(map['honeypotImageId'] as String),
-      honeypotImageName: pulumi.Input.fromValue(
-        map['honeypotImageName'] as String,
-      ),
+      honeypotImageName: pulumi.Input.fromValue(map['honeypotImageName'] as String),
       honeypotName: pulumi.Input.fromValue(map['honeypotName'] as String),
       nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
     );
   }
 }
+

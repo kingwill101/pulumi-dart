@@ -10,19 +10,14 @@ import 'sql_container_resource.dart';
 class DatabaseAccountSqlContainerArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
-
   /// Cosmos DB container name.
   final pulumi.Input<String>? containerName;
-
   /// Cosmos DB database name.
   final pulumi.Input<String> databaseName;
-
   /// A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request.
   final pulumi.Input<Map<String, String>> options;
-
   /// The standard JSON format of a container
   final pulumi.Input<SqlContainerResource> resource;
-
   /// Name of an Azure resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -48,11 +43,7 @@ class DatabaseAccountSqlContainerArgs {
       'containerName': ?containerName,
       'databaseName': databaseName,
       'options': options,
-      'resource':
-          pulumi.Input.mapInputValue<
-            SqlContainerResource,
-            Map<String, dynamic>
-          >(resource, (value) => value.toMap()),
+      'resource': pulumi.Input.mapInputValue<SqlContainerResource, Map<String, dynamic>>(resource, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -60,23 +51,12 @@ class DatabaseAccountSqlContainerArgs {
   factory DatabaseAccountSqlContainerArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseAccountSqlContainerArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      containerName: (() {
-        final guardedValue = map['containerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      containerName: (() { final guardedValue = map['containerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      options: pulumi.Input.fromValue(
-        (map['options'] as Map).cast<String, String>(),
-      ),
-      resource: pulumi.Input.fromValue(
-        SqlContainerResource.fromMap(
-          (map['resource']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      options: pulumi.Input.fromValue((map['options'] as Map).cast<String, String>()),
+      resource: pulumi.Input.fromValue(SqlContainerResource.fromMap((map['resource']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -270,22 +270,16 @@ import 'mx_record_state.dart';
 class MxRecord extends pulumi.CustomResource {
   /// The FQDN of the DNS MX Record.
   late final pulumi.Output<String> fqdn;
-
   /// The name of the DNS MX Record. Changing this forces a new resource to be created. Default to '@' for root zone entry.
   late final pulumi.Output<String> name;
-
   /// One or more `record` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> records;
-
   /// Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Time To Live (TTL) of the DNS record in seconds.
   late final pulumi.Output<int> ttl;
-
   /// Specifies the Private DNS Zone where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> zoneName;
 
@@ -298,11 +292,11 @@ class MxRecord extends pulumi.CustomResource {
     MxRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/mxRecord:MxRecord',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/mxRecord:MxRecord',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
     records = registerOutput<List<Map<String, dynamic>>>('records');
@@ -330,11 +324,11 @@ class MxRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/mxRecord:MxRecord',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/mxRecord:MxRecord',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
     records = registerOutput<List<Map<String, dynamic>>>('records');

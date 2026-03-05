@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NumberLessThanOrEqualsFilter {
   /// The field/property in the event based on which you want to filter.
   final pulumi.Input<String>? key;
-
   /// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// Expected value is 'NumberLessThanOrEquals'.
   final pulumi.Input<String> operatorType;
-
   /// The filter value.
   final pulumi.Input<double>? value;
 
@@ -34,17 +32,10 @@ class NumberLessThanOrEqualsFilter {
 
   factory NumberLessThanOrEqualsFilter.fromMap(Map<String, dynamic> map) {
     return NumberLessThanOrEqualsFilter(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       operatorType: pulumi.Input.fromValue(map['operatorType'] as String),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BlobStorageClassTypePropertiesResponse {
   /// Azure Storage Account Key
   final pulumi.Input<String> azureStorageAccountKey;
-
   /// Azure Storage Account Name
   final pulumi.Input<String> azureStorageAccountName;
-
   /// Type of a storage class
   /// Expected value is 'Blob'.
   final pulumi.Input<String> type;
@@ -32,17 +30,12 @@ class BlobStorageClassTypePropertiesResponse {
     };
   }
 
-  factory BlobStorageClassTypePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BlobStorageClassTypePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BlobStorageClassTypePropertiesResponse(
-      azureStorageAccountKey: pulumi.Input.fromValue(
-        map['azureStorageAccountKey'] as String,
-      ),
-      azureStorageAccountName: pulumi.Input.fromValue(
-        map['azureStorageAccountName'] as String,
-      ),
+      azureStorageAccountKey: pulumi.Input.fromValue(map['azureStorageAccountKey'] as String),
+      azureStorageAccountName: pulumi.Input.fromValue(map['azureStorageAccountName'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

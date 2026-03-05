@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImagesImageImageSharingSharedWith {
   /// The number of sharegroups the private image is present in.
   final pulumi.Input<int> sharegroupCount;
-
   /// The GET api url to view the sharegroups in which the image is shared.
   final pulumi.Input<String> sharegroupListUrl;
 
@@ -24,14 +23,11 @@ class GetImagesImageImageSharingSharedWith {
     };
   }
 
-  factory GetImagesImageImageSharingSharedWith.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetImagesImageImageSharingSharedWith.fromMap(Map<String, dynamic> map) {
     return GetImagesImageImageSharingSharedWith(
       sharegroupCount: pulumi.Input.fromValue(map['sharegroupCount'] as int),
-      sharegroupListUrl: pulumi.Input.fromValue(
-        map['sharegroupListUrl'] as String,
-      ),
+      sharegroupListUrl: pulumi.Input.fromValue(map['sharegroupListUrl'] as String),
     );
   }
 }
+

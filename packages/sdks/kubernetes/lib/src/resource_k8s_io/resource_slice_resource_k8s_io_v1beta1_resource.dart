@@ -17,13 +17,10 @@ import 'resource_slice_spec_resource_k8s_io_v1beta1.dart';
 class ResourceSliceResourceK8sIoV1beta1Resource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String> apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String> kind;
-
   /// Standard object metadata
   late final pulumi.Output<ObjectMeta> metadata;
-
   /// Contains the information published by the driver.
   ///
   /// Changing the spec automatically increments the metadata.generation number.
@@ -38,32 +35,14 @@ class ResourceSliceResourceK8sIoV1beta1Resource extends pulumi.CustomResource {
     ResourceSliceResourceK8sIoV1beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'kubernetes:resource.k8s.io/v1beta1:ResourceSlice',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'kubernetes:resource.k8s.io/v1beta1:ResourceSlice',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMeta.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    spec = registerOutput<ResourceSliceSpecResourceK8sIoV1beta1>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceSliceSpecResourceK8sIoV1beta1.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ResourceSliceSpecResourceK8sIoV1beta1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSliceSpecResourceK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

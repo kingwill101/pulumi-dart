@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterExtensionIdentity {
   /// The Principal ID associated with this Managed Service Identity.
   final pulumi.Input<String>? principalId;
-
   /// The Tenant ID associated with this Managed Service Identity.
   final pulumi.Input<String>? tenantId;
-
   /// Specifies the type of Managed Service Identity. The only possible value is `SystemAssigned`. Changing this forces a new resource to be created.
   final pulumi.Input<String> type;
 
@@ -32,17 +30,10 @@ class ClusterExtensionIdentity {
 
   factory ClusterExtensionIdentity.fromMap(Map<String, dynamic> map) {
     return ClusterExtensionIdentity(
-      principalId: (() {
-        final guardedValue = map['principalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

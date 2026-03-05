@@ -9,17 +9,20 @@ class DeploymentNoteResponse {
 
   /// Creates a new [DeploymentNoteResponse].
   /// [resourceUri] Resource URI for the artifact being deployed.
-  DeploymentNoteResponse({required this.resourceUri});
+  DeploymentNoteResponse({
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceUri': resourceUri};
+    return <String, dynamic>{
+      'resourceUri': resourceUri,
+    };
   }
 
   factory DeploymentNoteResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentNoteResponse(
-      resourceUri: pulumi.Input.fromValue(
-        (map['resourceUri'] as List).cast<String>(),
-      ),
+      resourceUri: pulumi.Input.fromValue((map['resourceUri'] as List).cast<String>()),
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TunnelConnectionHealthResponse {
   /// Virtual Network Gateway connection status.
   final pulumi.Input<String> connectionStatus;
-
   /// The Egress Bytes Transferred in this connection.
   final pulumi.Input<double> egressBytesTransferred;
-
   /// The Ingress Bytes Transferred in this connection.
   final pulumi.Input<double> ingressBytesTransferred;
-
   /// The time at which connection was established in Utc format.
   final pulumi.Input<String> lastConnectionEstablishedUtcTime;
-
   /// Tunnel name.
   final pulumi.Input<String> tunnel;
 
@@ -45,19 +41,12 @@ class TunnelConnectionHealthResponse {
 
   factory TunnelConnectionHealthResponse.fromMap(Map<String, dynamic> map) {
     return TunnelConnectionHealthResponse(
-      connectionStatus: pulumi.Input.fromValue(
-        map['connectionStatus'] as String,
-      ),
-      egressBytesTransferred: pulumi.Input.fromValue(
-        map['egressBytesTransferred'] as double,
-      ),
-      ingressBytesTransferred: pulumi.Input.fromValue(
-        map['ingressBytesTransferred'] as double,
-      ),
-      lastConnectionEstablishedUtcTime: pulumi.Input.fromValue(
-        map['lastConnectionEstablishedUtcTime'] as String,
-      ),
+      connectionStatus: pulumi.Input.fromValue(map['connectionStatus'] as String),
+      egressBytesTransferred: pulumi.Input.fromValue(map['egressBytesTransferred'] as double),
+      ingressBytesTransferred: pulumi.Input.fromValue(map['ingressBytesTransferred'] as double),
+      lastConnectionEstablishedUtcTime: pulumi.Input.fromValue(map['lastConnectionEstablishedUtcTime'] as String),
       tunnel: pulumi.Input.fromValue(map['tunnel'] as String),
     );
   }
 }
+

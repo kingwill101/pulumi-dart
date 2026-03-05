@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FaceConfigArgs {
   /// Scene name.
   final pulumi.Input<String> bizName;
-
   /// Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
   final pulumi.Input<String> bizType;
 
   /// Creates a new [FaceConfigArgs].
   /// [bizName] Scene name.
   /// [bizType] Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
-  FaceConfigArgs({required this.bizName, required this.bizType});
+  FaceConfigArgs({
+    required this.bizName,
+    required this.bizType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bizName': bizName, 'bizType': bizType};
+    return <String, dynamic>{
+      'bizName': bizName,
+      'bizType': bizType,
+    };
   }
 
   factory FaceConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class FaceConfigArgs {
     );
   }
 }
+

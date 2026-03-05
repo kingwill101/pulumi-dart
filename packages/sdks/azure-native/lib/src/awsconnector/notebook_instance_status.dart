@@ -20,3 +20,4 @@ enum NotebookInstanceStatus {
     throw ArgumentError('Unknown NotebookInstanceStatus value: $value');
   }
 }
+

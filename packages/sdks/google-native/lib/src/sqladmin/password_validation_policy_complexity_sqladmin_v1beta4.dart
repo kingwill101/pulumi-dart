@@ -6,17 +6,13 @@ enum PasswordValidationPolicyComplexitySqladminV1beta4 {
   const PasswordValidationPolicyComplexitySqladminV1beta4(this.wireValue);
   final String wireValue;
 
-  static PasswordValidationPolicyComplexitySqladminV1beta4 fromValue(
-    String value,
-  ) {
-    for (final item
-        in PasswordValidationPolicyComplexitySqladminV1beta4.values) {
+  static PasswordValidationPolicyComplexitySqladminV1beta4 fromValue(String value) {
+    for (final item in PasswordValidationPolicyComplexitySqladminV1beta4.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PasswordValidationPolicyComplexitySqladminV1beta4 value: $value',
-    );
+    throw ArgumentError('Unknown PasswordValidationPolicyComplexitySqladminV1beta4 value: $value');
   }
 }
+

@@ -9,26 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReadWriteDatabaseArgs {
   /// The name of the database in the Kusto pool.
   final pulumi.Input<String>? databaseName;
-
   /// The time the data should be kept in cache for fast queries in TimeSpan.
   final pulumi.Input<String>? hotCachePeriod;
-
   /// Kind of the database
   /// Expected value is 'ReadWrite'.
   final pulumi.Input<String> kind;
-
   /// The name of the Kusto pool.
   final pulumi.Input<String> kustoPoolName;
-
   /// Resource location.
   final pulumi.Input<String>? location;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The time the data should be kept before it stops being accessible to queries in TimeSpan.
   final pulumi.Input<String>? softDeletePeriod;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -67,32 +60,15 @@ class ReadWriteDatabaseArgs {
 
   factory ReadWriteDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return ReadWriteDatabaseArgs(
-      databaseName: (() {
-        final guardedValue = map['databaseName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hotCachePeriod: (() {
-        final guardedValue = map['hotCachePeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hotCachePeriod: (() { final guardedValue = map['hotCachePeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       kustoPoolName: pulumi.Input.fromValue(map['kustoPoolName'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      softDeletePeriod: (() {
-        final guardedValue = map['softDeletePeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      softDeletePeriod: (() { final guardedValue = map['softDeletePeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

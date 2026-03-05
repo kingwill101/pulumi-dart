@@ -15,3 +15,4 @@ enum PackageKind {
     throw ArgumentError('Unknown PackageKind value: $value');
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcIpamPoolSourceResource {
   /// ID of the resource.
   final pulumi.Input<String> resourceId;
-
   /// Owner of the resource.
   final pulumi.Input<String> resourceOwner;
-
   /// Region where the resource exists. Must match the `locale` of the parent IPAM Pool.
   final pulumi.Input<String> resourceRegion;
-
   /// Type of the resource. (`vpc`)
   final pulumi.Input<String> resourceType;
 
@@ -45,3 +42,4 @@ class VpcIpamPoolSourceResource {
     );
   }
 }
+

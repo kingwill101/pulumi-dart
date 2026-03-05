@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings {
   /// Should output be redacted.
   final pulumi.Input<String>? contentRedactionOutput;
-
   /// ARN of the role used by AWS Transcribe to upload your post call analysis.
   final pulumi.Input<String> dataAccessRoleArn;
-
   /// ID of the KMS key used to encrypt the output.
   final pulumi.Input<String>? outputEncryptionKmsKeyId;
-
   /// The Amazon S3 location where you want your Call Analytics post-call transcription output stored.
   final pulumi.Input<String> outputLocation;
 
@@ -36,24 +33,13 @@ class MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProc
     };
   }
 
-  factory MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings(
-      contentRedactionOutput: (() {
-        final guardedValue = map['contentRedactionOutput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataAccessRoleArn: pulumi.Input.fromValue(
-        map['dataAccessRoleArn'] as String,
-      ),
-      outputEncryptionKmsKeyId: (() {
-        final guardedValue = map['outputEncryptionKmsKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      contentRedactionOutput: (() { final guardedValue = map['contentRedactionOutput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataAccessRoleArn: pulumi.Input.fromValue(map['dataAccessRoleArn'] as String),
+      outputEncryptionKmsKeyId: (() { final guardedValue = map['outputEncryptionKmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       outputLocation: pulumi.Input.fromValue(map['outputLocation'] as String),
     );
   }
 }
+

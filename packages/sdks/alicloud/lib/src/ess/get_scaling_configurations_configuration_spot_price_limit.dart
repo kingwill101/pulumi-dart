@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScalingConfigurationsConfigurationSpotPriceLimit {
   /// Resource type of an ECS instance.
   final pulumi.Input<String> instanceType;
-
   /// Price limit hourly of instance type.
   final pulumi.Input<double> priceLimit;
 
@@ -24,12 +23,11 @@ class GetScalingConfigurationsConfigurationSpotPriceLimit {
     };
   }
 
-  factory GetScalingConfigurationsConfigurationSpotPriceLimit.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetScalingConfigurationsConfigurationSpotPriceLimit.fromMap(Map<String, dynamic> map) {
     return GetScalingConfigurationsConfigurationSpotPriceLimit(
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       priceLimit: pulumi.Input.fromValue(map['priceLimit'] as double),
     );
   }
 }
+

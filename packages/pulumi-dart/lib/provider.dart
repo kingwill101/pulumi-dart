@@ -5,6 +5,12 @@
 /// This library exposes the provider-side contracts and gRPC server helpers
 /// used to implement custom Pulumi providers and component methods.
 ///
+/// ## Main entrypoints
+/// - [Provider]: implement CRUD operations and optional invokes.
+/// - [serve]: host the provider over the Pulumi provider RPC protocol.
+/// - [CreateResult], [ReadResult], [DiffResult], [CheckResult], [InvokeResult]:
+///   shape the responses sent back to the engine.
+///
 /// Quick start:
 ///
 /// ```dart
@@ -24,6 +30,9 @@
 ///
 /// See `example/provider_authoring_example.dart` in this package for a more
 /// complete provider implementation.
+///
+/// Most end users do not need this library. It is for authoring providers, not
+/// consuming them from Pulumi programs.
 library provider;
 
 export 'src/provider/internals.dart';

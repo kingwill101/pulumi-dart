@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OpenIdConnectClientCredentialResponse {
   /// The app setting that contains the client secret for the custom Open ID Connect provider.
   final pulumi.Input<String>? clientSecretSettingName;
-
   /// The method that should be used to authenticate the user.
   final pulumi.Input<String>? method;
 
@@ -25,20 +24,11 @@ class OpenIdConnectClientCredentialResponse {
     };
   }
 
-  factory OpenIdConnectClientCredentialResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OpenIdConnectClientCredentialResponse.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectClientCredentialResponse(
-      clientSecretSettingName: (() {
-        final guardedValue = map['clientSecretSettingName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      method: (() {
-        final guardedValue = map['method'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientSecretSettingName: (() { final guardedValue = map['clientSecretSettingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      method: (() { final guardedValue = map['method']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

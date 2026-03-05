@@ -11,12 +11,10 @@ class ResourceDirectoryArgs {
   /// - Enabled
   /// - Disabled
   final pulumi.Input<String>? memberAccountDisplayNameSyncStatus;
-
   /// The status of the member deletion feature. Valid values:
   /// - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
   /// - Disabled: The feature is disabled. You cannot delete members of the resource account type.
   final pulumi.Input<String>? memberDeletionStatus;
-
   /// ScpStatus
   final pulumi.Input<String>? status;
 
@@ -40,21 +38,10 @@ class ResourceDirectoryArgs {
 
   factory ResourceDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return ResourceDirectoryArgs(
-      memberAccountDisplayNameSyncStatus: (() {
-        final guardedValue = map['memberAccountDisplayNameSyncStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      memberDeletionStatus: (() {
-        final guardedValue = map['memberDeletionStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      memberAccountDisplayNameSyncStatus: (() { final guardedValue = map['memberAccountDisplayNameSyncStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memberDeletionStatus: (() { final guardedValue = map['memberDeletionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

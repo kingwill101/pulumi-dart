@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse {
   /// Cannot contain duplicates or the query term. Can specify up to 100 terms.
   final pulumi.Input<List<String>> doNotAssociateTerms;
-
   /// Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
   final pulumi.Input<List<String>> queryTerms;
-
   /// Will be [deprecated = true] post migration;
   final pulumi.Input<List<String>> terms;
 
@@ -31,17 +29,12 @@ class GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse {
     };
   }
 
-  factory GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse(
-      doNotAssociateTerms: pulumi.Input.fromValue(
-        (map['doNotAssociateTerms'] as List).cast<String>(),
-      ),
-      queryTerms: pulumi.Input.fromValue(
-        (map['queryTerms'] as List).cast<String>(),
-      ),
+      doNotAssociateTerms: pulumi.Input.fromValue((map['doNotAssociateTerms'] as List).cast<String>()),
+      queryTerms: pulumi.Input.fromValue((map['queryTerms'] as List).cast<String>()),
       terms: pulumi.Input.fromValue((map['terms'] as List).cast<String>()),
     );
   }
 }
+

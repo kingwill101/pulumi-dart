@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1Property {
   /// The property key
   final pulumi.Input<String>? name;
-
   /// The property value
   final pulumi.Input<String>? value;
 
   /// Creates a new [GoogleCloudApigeeV1Property].
   /// [name] The property key
   /// [value] The property value
-  GoogleCloudApigeeV1Property({this.name, this.value});
+  GoogleCloudApigeeV1Property({
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'value': ?value};
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory GoogleCloudApigeeV1Property.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1Property(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

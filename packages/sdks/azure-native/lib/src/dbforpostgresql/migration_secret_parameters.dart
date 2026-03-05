@@ -7,10 +7,8 @@ import 'admin_credentials.dart';
 class MigrationSecretParameters {
   /// Credentials of administrator users for source and target servers.
   final pulumi.Input<AdminCredentials> adminCredentials;
-
   /// Gets or sets the name of the user for the source server. This user doesn't need to be an administrator.
   final pulumi.Input<String>? sourceServerUsername;
-
   /// Gets or sets the name of the user for the target server. This user doesn't need to be an administrator.
   final pulumi.Input<String>? targetServerUsername;
 
@@ -26,11 +24,7 @@ class MigrationSecretParameters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminCredentials':
-          pulumi.Input.mapInputValue<AdminCredentials, Map<String, dynamic>>(
-            adminCredentials,
-            (value) => value.toMap(),
-          ),
+      'adminCredentials': pulumi.Input.mapInputValue<AdminCredentials, Map<String, dynamic>>(adminCredentials, (value) => value.toMap()),
       'sourceServerUsername': ?sourceServerUsername,
       'targetServerUsername': ?targetServerUsername,
     };
@@ -38,21 +32,10 @@ class MigrationSecretParameters {
 
   factory MigrationSecretParameters.fromMap(Map<String, dynamic> map) {
     return MigrationSecretParameters(
-      adminCredentials: pulumi.Input.fromValue(
-        AdminCredentials.fromMap(
-          (map['adminCredentials']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sourceServerUsername: (() {
-        final guardedValue = map['sourceServerUsername'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetServerUsername: (() {
-        final guardedValue = map['targetServerUsername'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      adminCredentials: pulumi.Input.fromValue(AdminCredentials.fromMap((map['adminCredentials']! as Map).cast<String, dynamic>())),
+      sourceServerUsername: (() { final guardedValue = map['sourceServerUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetServerUsername: (() { final guardedValue = map['targetServerUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

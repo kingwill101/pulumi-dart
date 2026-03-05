@@ -12,19 +12,20 @@ class GetCertificatesArgs {
 
   /// Creates a new [GetCertificatesArgs].
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetCertificatesArgs({this.withSelector});
+  GetCertificatesArgs({
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'withSelector': ?withSelector};
+    return <String, dynamic>{
+      'withSelector': ?withSelector,
+    };
   }
 
   factory GetCertificatesArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificatesArgs(
-      withSelector: (() {
-        final guardedValue = map['withSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -53,8 +53,7 @@ Future<GetDelegatedSubnetServiceDetailsResult> getDelegatedSubnetServiceDetails(
 /// Other available API versions: 2021-03-15, 2023-05-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native delegatednetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_delegatednetwork_get_orchestrator_instance_service_details_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrchestratorInstanceServiceDetailsResult>
-getOrchestratorInstanceServiceDetails(
+Future<GetOrchestratorInstanceServiceDetailsResult> getOrchestratorInstanceServiceDetails(
   GetOrchestratorInstanceServiceDetailsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

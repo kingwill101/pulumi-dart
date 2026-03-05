@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCryptoKeyLatestVersionPublicKey {
   /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
   final pulumi.Input<String> algorithm;
-
   /// The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
   final pulumi.Input<String> pem;
 
@@ -18,7 +17,10 @@ class GetCryptoKeyLatestVersionPublicKey {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'algorithm': algorithm, 'pem': pem};
+    return <String, dynamic>{
+      'algorithm': algorithm,
+      'pem': pem,
+    };
   }
 
   factory GetCryptoKeyLatestVersionPublicKey.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class GetCryptoKeyLatestVersionPublicKey {
     );
   }
 }
+

@@ -12,17 +12,13 @@ class ServiceConnectionPolicyPscConfig {
   /// and is either the ID or the number of the resource type. Format for each
   /// allowedGoogleProducersResourceHierarchyLevel value: 'projects/' or 'folders/' or 'organizations/' Eg.
   /// [projects/my-project-id, projects/567, folders/891, organizations/123]
-  final pulumi.Input<List<String>>?
-  allowedGoogleProducersResourceHierarchyLevels;
-
+  final pulumi.Input<List<String>>? allowedGoogleProducersResourceHierarchyLevels;
   /// Max number of PSC connections for this policy.
   final pulumi.Input<String>? limit;
-
   /// ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
   /// the Producer instance can be within.
   /// Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
   final pulumi.Input<String>? producerInstanceLocation;
-
   /// IDs of the subnetworks or fully qualified identifiers for the subnetworks
   final pulumi.Input<List<String>> subnetworks;
 
@@ -40,8 +36,7 @@ class ServiceConnectionPolicyPscConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedGoogleProducersResourceHierarchyLevels':
-          ?allowedGoogleProducersResourceHierarchyLevels,
+      'allowedGoogleProducersResourceHierarchyLevels': ?allowedGoogleProducersResourceHierarchyLevels,
       'limit': ?limit,
       'producerInstanceLocation': ?producerInstanceLocation,
       'subnetworks': subnetworks,
@@ -50,25 +45,11 @@ class ServiceConnectionPolicyPscConfig {
 
   factory ServiceConnectionPolicyPscConfig.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyPscConfig(
-      allowedGoogleProducersResourceHierarchyLevels: (() {
-        final guardedValue =
-            map['allowedGoogleProducersResourceHierarchyLevels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      limit: (() {
-        final guardedValue = map['limit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      producerInstanceLocation: (() {
-        final guardedValue = map['producerInstanceLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetworks: pulumi.Input.fromValue(
-        (map['subnetworks'] as List).cast<String>(),
-      ),
+      allowedGoogleProducersResourceHierarchyLevels: (() { final guardedValue = map['allowedGoogleProducersResourceHierarchyLevels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      producerInstanceLocation: (() { final guardedValue = map['producerInstanceLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetworks: pulumi.Input.fromValue((map['subnetworks'] as List).cast<String>()),
     );
   }
 }
+

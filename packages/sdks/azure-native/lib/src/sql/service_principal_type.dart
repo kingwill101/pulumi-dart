@@ -15,3 +15,4 @@ enum ServicePrincipalType {
     throw ArgumentError('Unknown ServicePrincipalType value: $value');
   }
 }
+

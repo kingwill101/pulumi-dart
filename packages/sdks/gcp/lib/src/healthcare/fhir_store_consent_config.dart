@@ -7,21 +7,15 @@ import 'fhir_store_consent_config_consent_header_handling.dart';
 class FhirStoreConsentConfig {
   /// Specifies how the server logs the consent-aware requests. If not specified, the AccessDeterminationLogConfig.LogLevel.MINIMUM option is used.
   /// Structure is documented below.
-  final pulumi.Input<FhirStoreConsentConfigAccessDeterminationLogConfig>?
-  accessDeterminationLogConfig;
-
+  final pulumi.Input<FhirStoreConsentConfigAccessDeterminationLogConfig>? accessDeterminationLogConfig;
   /// The default value is false. If set to true, when accessing FHIR resources, the consent headers will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
   final pulumi.Input<bool>? accessEnforced;
-
   /// Different options to configure the behaviour of the server when handling the X-Consent-Scope header.
   /// Structure is documented below.
-  final pulumi.Input<FhirStoreConsentConfigConsentHeaderHandling>?
-  consentHeaderHandling;
-
+  final pulumi.Input<FhirStoreConsentConfigConsentHeaderHandling>? consentHeaderHandling;
   /// (Output)
   /// The versioned names of the enforced admin Consent resource(s), in the format projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}/_history/{version_id}. For FHIR stores with disableResourceVersioning=true, the format is projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}. This field can only be updated using [fhirStores.applyAdminConsents][].
   final pulumi.Input<List<String>>? enforcedAdminConsents;
-
   /// Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either [fhirStores.create][] or [fhirStores.patch][]. After that, you must call [fhirStores.applyConsents][] to change the version.
   /// Possible values are: `CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED`, `V1`.
   final pulumi.Input<String> version;
@@ -42,17 +36,9 @@ class FhirStoreConsentConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessDeterminationLogConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            FhirStoreConsentConfigAccessDeterminationLogConfig,
-            Map<String, dynamic>
-          >(accessDeterminationLogConfig, (value) => value.toMap()),
+      'accessDeterminationLogConfig': ?pulumi.Input.mapOptionalInputValue<FhirStoreConsentConfigAccessDeterminationLogConfig, Map<String, dynamic>>(accessDeterminationLogConfig, (value) => value.toMap()),
       'accessEnforced': ?accessEnforced,
-      'consentHeaderHandling':
-          ?pulumi.Input.mapOptionalInputValue<
-            FhirStoreConsentConfigConsentHeaderHandling,
-            Map<String, dynamic>
-          >(consentHeaderHandling, (value) => value.toMap()),
+      'consentHeaderHandling': ?pulumi.Input.mapOptionalInputValue<FhirStoreConsentConfigConsentHeaderHandling, Map<String, dynamic>>(consentHeaderHandling, (value) => value.toMap()),
       'enforcedAdminConsents': ?enforcedAdminConsents,
       'version': version,
     };
@@ -60,35 +46,12 @@ class FhirStoreConsentConfig {
 
   factory FhirStoreConsentConfig.fromMap(Map<String, dynamic> map) {
     return FhirStoreConsentConfig(
-      accessDeterminationLogConfig: (() {
-        final guardedValue = map['accessDeterminationLogConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FhirStoreConsentConfigAccessDeterminationLogConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      accessEnforced: (() {
-        final guardedValue = map['accessEnforced'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      consentHeaderHandling: (() {
-        final guardedValue = map['consentHeaderHandling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FhirStoreConsentConfigConsentHeaderHandling.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      enforcedAdminConsents: (() {
-        final guardedValue = map['enforcedAdminConsents'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      accessDeterminationLogConfig: (() { final guardedValue = map['accessDeterminationLogConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FhirStoreConsentConfigAccessDeterminationLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      accessEnforced: (() { final guardedValue = map['accessEnforced']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      consentHeaderHandling: (() { final guardedValue = map['consentHeaderHandling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FhirStoreConsentConfigConsentHeaderHandling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      enforcedAdminConsents: (() { final guardedValue = map['enforcedAdminConsents']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

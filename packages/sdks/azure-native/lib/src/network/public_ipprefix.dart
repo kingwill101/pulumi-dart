@@ -313,59 +313,40 @@ import 'sub_resource_response.dart';
 class PublicIPPrefix extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The customIpPrefix that this prefix is associated with.
   late final pulumi.Output<SubResourceResponse?> customIPPrefix;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The extended location of the public ip address.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// The allocated Prefix.
   late final pulumi.Output<String> ipPrefix;
-
   /// The list of tags associated with the public IP prefix.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipTags;
-
   /// The reference to load balancer frontend IP configuration associated with the public IP prefix.
-  late final pulumi.Output<SubResourceResponse>
-  loadBalancerFrontendIpConfiguration;
-
+  late final pulumi.Output<SubResourceResponse> loadBalancerFrontendIpConfiguration;
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// NatGateway of Public IP Prefix.
   late final pulumi.Output<NatGatewayResponse?> natGateway;
-
   /// The Length of the Public IP Prefix.
   late final pulumi.Output<int?> prefixLength;
-
   /// The provisioning state of the public IP prefix resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The public IP address version.
   late final pulumi.Output<String?> publicIPAddressVersion;
-
   /// The list of all referenced PublicIPAddresses.
   late final pulumi.Output<List<Map<String, dynamic>>> publicIPAddresses;
-
   /// The resource GUID property of the public IP prefix resource.
   late final pulumi.Output<String> resourceGuid;
-
   /// The public IP prefix SKU.
   late final pulumi.Output<PublicIPPrefixSkuResponse?> sku;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// A list of availability zones denoting the IP allocated for the resource needs to come from.
   late final pulumi.Output<List<String>?> zones;
 
@@ -378,74 +359,27 @@ class PublicIPPrefix extends pulumi.CustomResource {
     PublicIPPrefixArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:PublicIPPrefix',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:PublicIPPrefix',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    customIPPrefix = registerOutput<SubResourceResponse?>(
-      'customIPPrefix',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customIPPrefix = registerOutput<SubResourceResponse?>('customIPPrefix', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipPrefix = registerOutput<String>('ipPrefix');
     ipTags = registerOutput<List<Map<String, dynamic>>?>('ipTags');
-    loadBalancerFrontendIpConfiguration = registerOutput<SubResourceResponse>(
-      'loadBalancerFrontendIpConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loadBalancerFrontendIpConfiguration = registerOutput<SubResourceResponse>('loadBalancerFrontendIpConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    natGateway = registerOutput<NatGatewayResponse?>(
-      'natGateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NatGatewayResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    natGateway = registerOutput<NatGatewayResponse?>('natGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NatGatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     prefixLength = registerOutput<int?>('prefixLength');
     provisioningState = registerOutput<String>('provisioningState');
     publicIPAddressVersion = registerOutput<String?>('publicIPAddressVersion');
-    publicIPAddresses = registerOutput<List<Map<String, dynamic>>>(
-      'publicIPAddresses',
-    );
+    publicIPAddresses = registerOutput<List<Map<String, dynamic>>>('publicIPAddresses');
     resourceGuid = registerOutput<String>('resourceGuid');
-    sku = registerOutput<PublicIPPrefixSkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PublicIPPrefixSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<PublicIPPrefixSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublicIPPrefixSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     zones = registerOutput<List<String>?>('zones');

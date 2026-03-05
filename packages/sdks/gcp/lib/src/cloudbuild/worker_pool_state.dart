@@ -12,44 +12,32 @@ class WorkerPoolState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// Output only. Time at which the request to create the `WorkerPool` was received.
   final pulumi.Input<String>? createTime;
-
   /// Output only. Time at which the request to delete the `WorkerPool` was received.
   final pulumi.Input<String>? deleteTime;
-
   /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
   final pulumi.Input<String>? displayName;
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
-
   /// The location for the resource
   final pulumi.Input<String>? location;
-
   /// User-defined name of the `WorkerPool`.
   ///
   ///
   /// - - -
   final pulumi.Input<String>? name;
-
   /// Network configuration for the `WorkerPool`. Structure is documented below.
   final pulumi.Input<WorkerPoolNetworkConfig>? networkConfig;
-
   /// Private Service Connect configuration for the pool.
   final pulumi.Input<WorkerPoolPrivateServiceConnect>? privateServiceConnect;
-
   /// The project for the resource
   final pulumi.Input<String>? project;
-
   /// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
   final pulumi.Input<String>? state;
-
   /// Output only. A unique identifier for the `WorkerPool`.
   final pulumi.Input<String>? uid;
-
   /// Output only. Time at which the request to update the `WorkerPool` was received.
   final pulumi.Input<String>? updateTime;
-
   /// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
   final pulumi.Input<WorkerPoolWorkerConfig>? workerConfig;
 
@@ -94,116 +82,33 @@ class WorkerPoolState {
       'effectiveAnnotations': ?effectiveAnnotations,
       'location': ?location,
       'name': ?name,
-      'networkConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            WorkerPoolNetworkConfig,
-            Map<String, dynamic>
-          >(networkConfig, (value) => value.toMap()),
-      'privateServiceConnect':
-          ?pulumi.Input.mapOptionalInputValue<
-            WorkerPoolPrivateServiceConnect,
-            Map<String, dynamic>
-          >(privateServiceConnect, (value) => value.toMap()),
+      'networkConfig': ?pulumi.Input.mapOptionalInputValue<WorkerPoolNetworkConfig, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
+      'privateServiceConnect': ?pulumi.Input.mapOptionalInputValue<WorkerPoolPrivateServiceConnect, Map<String, dynamic>>(privateServiceConnect, (value) => value.toMap()),
       'project': ?project,
       'state': ?state,
       'uid': ?uid,
       'updateTime': ?updateTime,
-      'workerConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            WorkerPoolWorkerConfig,
-            Map<String, dynamic>
-          >(workerConfig, (value) => value.toMap()),
+      'workerConfig': ?pulumi.Input.mapOptionalInputValue<WorkerPoolWorkerConfig, Map<String, dynamic>>(workerConfig, (value) => value.toMap()),
     };
   }
 
   factory WorkerPoolState.fromMap(Map<String, dynamic> map) {
     return WorkerPoolState(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deleteTime: (() {
-        final guardedValue = map['deleteTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      effectiveAnnotations: (() {
-        final guardedValue = map['effectiveAnnotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkConfig: (() {
-        final guardedValue = map['networkConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WorkerPoolNetworkConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      privateServiceConnect: (() {
-        final guardedValue = map['privateServiceConnect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WorkerPoolPrivateServiceConnect.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uid: (() {
-        final guardedValue = map['uid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workerConfig: (() {
-        final guardedValue = map['workerConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WorkerPoolWorkerConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      privateServiceConnect: (() { final guardedValue = map['privateServiceConnect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolPrivateServiceConnect.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workerConfig: (() { final guardedValue = map['workerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolWorkerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -14,13 +14,10 @@ import 'identity_pool_role_attachment_state.dart';
 class IdentityPoolRoleAttachment extends pulumi.CustomResource {
   /// An identity pool ID in the format `REGION_GUID`.
   late final pulumi.Output<String> identityPoolId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A List of Role Mapping.
   late final pulumi.Output<List<Map<String, dynamic>>?> roleMappings;
-
   /// The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.
   late final pulumi.Output<Map<String, String>> roles;
 
@@ -33,11 +30,11 @@ class IdentityPoolRoleAttachment extends pulumi.CustomResource {
     IdentityPoolRoleAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/identityPoolRoleAttachment:IdentityPoolRoleAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cognito/identityPoolRoleAttachment:IdentityPoolRoleAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     identityPoolId = registerOutput<String>('identityPoolId');
     region = registerOutput<String>('region');
     roleMappings = registerOutput<List<Map<String, dynamic>>?>('roleMappings');
@@ -62,11 +59,11 @@ class IdentityPoolRoleAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/identityPoolRoleAttachment:IdentityPoolRoleAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cognito/identityPoolRoleAttachment:IdentityPoolRoleAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     identityPoolId = registerOutput<String>('identityPoolId');
     region = registerOutput<String>('region');
     roleMappings = registerOutput<List<Map<String, dynamic>>?>('roleMappings');

@@ -16,3 +16,4 @@ enum CrossSubscriptionRestoreState {
     throw ArgumentError('Unknown CrossSubscriptionRestoreState value: $value');
   }
 }
+

@@ -8,10 +8,8 @@ class GetListenersResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
-
   /// The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
   final String? listenerProtocol;
-
   /// A list of Nlb Listeners. Each element contains the following attributes:
   final List<GetListenersListener> listeners;
   final List<String>? loadBalancerIds;
@@ -38,11 +36,7 @@ class GetListenersResult {
       'id': id,
       'ids': ids,
       'listenerProtocol': ?listenerProtocol,
-      'listeners':
-          pulumi.Input.encodeList<GetListenersListener, Map<String, dynamic>>(
-            listeners,
-            (value) => value.toMap(),
-          ),
+      'listeners': pulumi.Input.encodeList<GetListenersListener, Map<String, dynamic>>(listeners, (value) => value.toMap()),
       'loadBalancerIds': ?loadBalancerIds,
       'outputFile': ?outputFile,
     };
@@ -52,27 +46,11 @@ class GetListenersResult {
     return GetListenersResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      listenerProtocol: (() {
-        final guardedValue = map['listenerProtocol'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      listeners: pulumi.Input.decodeList<GetListenersListener>(
-        map['listeners']!,
-        (value) => GetListenersListener.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      loadBalancerIds: (() {
-        final guardedValue = map['loadBalancerIds'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      listenerProtocol: (() { final guardedValue = map['listenerProtocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      listeners: pulumi.Input.decodeList<GetListenersListener>(map['listeners']!, (value) => GetListenersListener.fromMap((value as Map).cast<String, dynamic>())),
+      loadBalancerIds: (() { final guardedValue = map['loadBalancerIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

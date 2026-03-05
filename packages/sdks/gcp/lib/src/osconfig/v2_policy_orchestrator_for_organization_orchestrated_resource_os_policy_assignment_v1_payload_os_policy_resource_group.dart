@@ -16,22 +16,11 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// If the list is empty, this resource group will be applied to the target
   /// VM unconditionally.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<
-      V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter
-    >
-  >?
-  inventoryFilters;
-
+  final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter>>? inventoryFilters;
   /// Required. List of resources configured for this resource group.
   /// The resources are executed in the exact order specified here.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<
-      V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource
-    >
-  >
-  resources;
+  final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource>> resources;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup].
   /// [inventoryFilters] List of inventory filters for the resource group.
@@ -43,67 +32,16 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inventoryFilters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter
-            >,
-            List<Map<String, dynamic>>
-          >(
-            inventoryFilters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'resources':
-          pulumi.Input.mapInputValue<
-            List<
-              V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource
-            >,
-            List<Map<String, dynamic>>
-          >(
-            resources,
-            (value) =>
-                pulumi.Input.encodeList<
-                  V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'inventoryFilters': ?pulumi.Input.mapOptionalInputValue<List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter>, List<Map<String, dynamic>>>(inventoryFilters, (value) => pulumi.Input.encodeList<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resources': pulumi.Input.mapInputValue<List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource>, List<Map<String, dynamic>>>(resources, (value) => pulumi.Input.encodeList<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup(
-      inventoryFilters: (() {
-        final guardedValue = map['inventoryFilters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter
-          >(
-            guardedValue,
-            (value) =>
-                V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      resources: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource
-        >(
-          map['resources']!,
-          (value) =>
-              V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      inventoryFilters: (() { final guardedValue = map['inventoryFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter>(guardedValue, (value) => V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      resources: pulumi.Input.fromValue(pulumi.Input.decodeList<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource>(map['resources']!, (value) => V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

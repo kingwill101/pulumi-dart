@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespacedGkeDeploymentTargetDataprocV1beta2 {
   /// Optional. A namespace within the GKE cluster to deploy into.
   final pulumi.Input<String>? clusterNamespace;
-
   /// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
   final pulumi.Input<String>? targetGkeCluster;
 
@@ -25,20 +24,11 @@ class NamespacedGkeDeploymentTargetDataprocV1beta2 {
     };
   }
 
-  factory NamespacedGkeDeploymentTargetDataprocV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NamespacedGkeDeploymentTargetDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return NamespacedGkeDeploymentTargetDataprocV1beta2(
-      clusterNamespace: (() {
-        final guardedValue = map['clusterNamespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetGkeCluster: (() {
-        final guardedValue = map['targetGkeCluster'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clusterNamespace: (() { final guardedValue = map['clusterNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetGkeCluster: (() { final guardedValue = map['targetGkeCluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

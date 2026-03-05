@@ -9,17 +9,20 @@ class StrataCloudManagerConfig {
 
   /// Creates a new [StrataCloudManagerConfig].
   /// [cloudManagerName] Strata Cloud Manager name which is intended to manage the policy for this firewall.
-  StrataCloudManagerConfig({required this.cloudManagerName});
+  StrataCloudManagerConfig({
+    required this.cloudManagerName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cloudManagerName': cloudManagerName};
+    return <String, dynamic>{
+      'cloudManagerName': cloudManagerName,
+    };
   }
 
   factory StrataCloudManagerConfig.fromMap(Map<String, dynamic> map) {
     return StrataCloudManagerConfig(
-      cloudManagerName: pulumi.Input.fromValue(
-        map['cloudManagerName'] as String,
-      ),
+      cloudManagerName: pulumi.Input.fromValue(map['cloudManagerName'] as String),
     );
   }
 }
+

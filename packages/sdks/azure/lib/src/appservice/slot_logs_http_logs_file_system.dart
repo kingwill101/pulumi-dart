@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SlotLogsHttpLogsFileSystem {
   /// The number of days to retain logs for.
   final pulumi.Input<int> retentionInDays;
-
   /// The maximum size in megabytes that HTTP log files can use before being removed.
   final pulumi.Input<int> retentionInMb;
 
@@ -31,3 +30,4 @@ class SlotLogsHttpLogsFileSystem {
     );
   }
 }
+

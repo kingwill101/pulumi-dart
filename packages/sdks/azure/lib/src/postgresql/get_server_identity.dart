@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerIdentity {
   /// The ID of the System Managed Service Principal assigned to the PostgreSQL Server.
   final pulumi.Input<String> principalId;
-
   /// The ID of the Tenant of the System Managed Service Principal assigned to the PostgreSQL Server.
   final pulumi.Input<String> tenantId;
-
   /// The identity type of the Managed Identity assigned to the PostgreSQL Server.
   final pulumi.Input<String> type;
 
@@ -38,3 +36,4 @@ class GetServerIdentity {
     );
   }
 }
+

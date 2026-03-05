@@ -9,19 +9,20 @@ class AssignmentPropertiesAdditionalData {
 
   /// Creates a new [AssignmentPropertiesAdditionalData].
   /// [exemptionCategory] Exemption category of this assignment
-  AssignmentPropertiesAdditionalData({this.exemptionCategory});
+  AssignmentPropertiesAdditionalData({
+    this.exemptionCategory,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exemptionCategory': ?exemptionCategory};
+    return <String, dynamic>{
+      'exemptionCategory': ?exemptionCategory,
+    };
   }
 
   factory AssignmentPropertiesAdditionalData.fromMap(Map<String, dynamic> map) {
     return AssignmentPropertiesAdditionalData(
-      exemptionCategory: (() {
-        final guardedValue = map['exemptionCategory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      exemptionCategory: (() { final guardedValue = map['exemptionCategory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

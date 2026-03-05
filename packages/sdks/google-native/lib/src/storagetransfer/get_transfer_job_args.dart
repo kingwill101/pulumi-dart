@@ -13,7 +13,10 @@ class GetTransferJobArgs {
   /// Creates a new [GetTransferJobArgs].
   /// [projectId] Required.
   /// [transferJobId] Required.
-  GetTransferJobArgs({required this.projectId, required this.transferJobId});
+  GetTransferJobArgs({
+    required this.projectId,
+    required this.transferJobId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetTransferJobArgs {
     );
   }
 }
+

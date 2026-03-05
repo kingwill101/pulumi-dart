@@ -9,17 +9,20 @@ class EdgeSitesPropertiesResponseGlobalCommunicationsSite {
 
   /// Creates a new [EdgeSitesPropertiesResponseGlobalCommunicationsSite].
   /// [id] Resource ID.
-  EdgeSitesPropertiesResponseGlobalCommunicationsSite({required this.id});
+  EdgeSitesPropertiesResponseGlobalCommunicationsSite({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
-  factory EdgeSitesPropertiesResponseGlobalCommunicationsSite.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EdgeSitesPropertiesResponseGlobalCommunicationsSite.fromMap(Map<String, dynamic> map) {
     return EdgeSitesPropertiesResponseGlobalCommunicationsSite(
       id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
+

@@ -120,34 +120,24 @@ import 'networking_ip_vpc_nat11.dart';
 class NetworkingIp extends pulumi.CustomResource {
   /// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
   late final pulumi.Output<String> address;
-
   /// The default gateway for this address.
   late final pulumi.Output<String> gateway;
-
   /// The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
   late final pulumi.Output<int> linodeId;
-
   /// The number of bits set in the subnet mask.
   late final pulumi.Output<int> prefix;
-
   /// Whether the IP address is public. Defaults to true.
   late final pulumi.Output<bool> public;
-
   /// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
   late final pulumi.Output<String> rdns;
-
   /// The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
   late final pulumi.Output<String> region;
-
   /// Whether the IPv4 address should be reserved.
   late final pulumi.Output<bool> reserved;
-
   /// The mask that separates host bits from network bits for this address.
   late final pulumi.Output<String> subnetMask;
-
   /// The type of IP address. (ipv4, ipv6, etc.)
   late final pulumi.Output<String> type;
-
   /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
   late final pulumi.Output<NetworkingIpVpcNat11> vpcNat11;
 
@@ -160,11 +150,11 @@ class NetworkingIp extends pulumi.CustomResource {
     NetworkingIpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/networkingIp:NetworkingIp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/networkingIp:NetworkingIp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     gateway = registerOutput<String>('gateway');
     linodeId = registerOutput<int>('linodeId');
@@ -175,16 +165,7 @@ class NetworkingIp extends pulumi.CustomResource {
     reserved = registerOutput<bool>('reserved');
     subnetMask = registerOutput<String>('subnetMask');
     type = registerOutput<String>('type');
-    vpcNat11 = registerOutput<NetworkingIpVpcNat11>(
-      'vpcNat11',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkingIpVpcNat11.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcNat11 = registerOutput<NetworkingIpVpcNat11>('vpcNat11', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkingIpVpcNat11.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [NetworkingIp] resource's state with the given [name] and [id].
@@ -205,11 +186,11 @@ class NetworkingIp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/networkingIp:NetworkingIp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/networkingIp:NetworkingIp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     gateway = registerOutput<String>('gateway');
     linodeId = registerOutput<int>('linodeId');
@@ -220,15 +201,6 @@ class NetworkingIp extends pulumi.CustomResource {
     reserved = registerOutput<bool>('reserved');
     subnetMask = registerOutput<String>('subnetMask');
     type = registerOutput<String>('type');
-    vpcNat11 = registerOutput<NetworkingIpVpcNat11>(
-      'vpcNat11',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkingIpVpcNat11.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcNat11 = registerOutput<NetworkingIpVpcNat11>('vpcNat11', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkingIpVpcNat11.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

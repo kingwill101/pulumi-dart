@@ -10,24 +10,23 @@ class ExternalDocumentation {
   /// Creates a new [ExternalDocumentation].
   /// [description] Optional.
   /// [url] Optional.
-  ExternalDocumentation({this.description, this.url});
+  ExternalDocumentation({
+    this.description,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'description': ?description, 'url': ?url};
+    return <String, dynamic>{
+      'description': ?description,
+      'url': ?url,
+    };
   }
 
   factory ExternalDocumentation.fromMap(Map<String, dynamic> map) {
     return ExternalDocumentation(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      url: (() {
-        final guardedValue = map['url'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

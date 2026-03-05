@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketRequestPaymentConfigurationV2Args {
   /// Name of the bucket.
   final pulumi.Input<String> bucket;
-
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
-
   /// Specifies who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
   final pulumi.Input<String> payer;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -40,22 +37,13 @@ class BucketRequestPaymentConfigurationV2Args {
     };
   }
 
-  factory BucketRequestPaymentConfigurationV2Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketRequestPaymentConfigurationV2Args.fromMap(Map<String, dynamic> map) {
     return BucketRequestPaymentConfigurationV2Args(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      expectedBucketOwner: (() {
-        final guardedValue = map['expectedBucketOwner'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expectedBucketOwner: (() { final guardedValue = map['expectedBucketOwner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       payer: pulumi.Input.fromValue(map['payer'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

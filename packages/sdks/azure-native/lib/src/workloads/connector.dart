@@ -149,35 +149,24 @@ import 'user_assigned_service_identity_response.dart';
 class Connector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Indicates any errors on the connector resource.
   late final pulumi.Output<ConnectorErrorDefinitionResponse> errors;
-
   /// Managed service identity (user assigned identities)
   late final pulumi.Output<UserAssignedServiceIdentityResponse?> identity;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Managed resource group configuration
-  late final pulumi.Output<ManagedRGConfigurationResponse?>
-  managedResourceGroupConfiguration;
-
+  late final pulumi.Output<ManagedRGConfigurationResponse?> managedResourceGroupConfiguration;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Defines the provisioning states.
   late final pulumi.Output<String> provisioningState;
-
   /// Defines the ID of the connector's source resource.
   late final pulumi.Output<String> sourceResourceId;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -190,57 +179,20 @@ class Connector extends pulumi.CustomResource {
     ConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:workloads:Connector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:workloads:Connector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    errors = registerOutput<ConnectorErrorDefinitionResponse>(
-      'errors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectorErrorDefinitionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<UserAssignedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserAssignedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    errors = registerOutput<ConnectorErrorDefinitionResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorErrorDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<UserAssignedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAssignedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    managedResourceGroupConfiguration =
-        registerOutput<ManagedRGConfigurationResponse?>(
-          'managedResourceGroupConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedRGConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    managedResourceGroupConfiguration = registerOutput<ManagedRGConfigurationResponse?>('managedResourceGroupConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedRGConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     sourceResourceId = registerOutput<String>('sourceResourceId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

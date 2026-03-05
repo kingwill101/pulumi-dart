@@ -9,44 +9,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskReplicaGroupArgs {
   /// The description of the consistent replication group.
   final pulumi.Input<String>? description;
-
   /// The ID of the region to which the disaster recovery site belongs.
   final pulumi.Input<String> destinationRegionId;
-
   /// The ID of the zone to which the disaster recovery site belongs.
   final pulumi.Input<String> destinationZoneId;
-
   /// Consistent replication group name.
   final pulumi.Input<String>? diskReplicaGroupName;
-
   /// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
   final pulumi.Input<String>? groupName;
-
   /// Whether to synchronize immediately. Value range:
   /// - true: Start data synchronization immediately.
   /// - false: Data Synchronization starts after the RPO time period.
   ///
   /// Default value: false.
   final pulumi.Input<bool>? oneShot;
-
   /// List of replication pair IDs contained in a consistent replication group.
   final pulumi.Input<List<String>>? pairIds;
-
   /// resource group ID of enterprise
   final pulumi.Input<String>? resourceGroupId;
-
   /// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
   final pulumi.Input<bool>? reverseReplicate;
-
   /// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
   final pulumi.Input<int>? rpo;
-
   /// The ID of the region to which the production site belongs.
   final pulumi.Input<String> sourceRegionId;
-
   /// The ID of the zone to which the production site belongs.
   final pulumi.Input<String> sourceZoneId;
-
   /// The status of the consistent replication group. Possible values:
   /// - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
   /// - creating: creating.
@@ -67,7 +55,6 @@ class DiskReplicaGroupArgs {
   /// - delete_failed: delete failed.
   /// - deleted: deleted.
   final pulumi.Input<String>? status;
-
   /// The tag of the resource
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -126,66 +113,21 @@ class DiskReplicaGroupArgs {
 
   factory DiskReplicaGroupArgs.fromMap(Map<String, dynamic> map) {
     return DiskReplicaGroupArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destinationRegionId: pulumi.Input.fromValue(
-        map['destinationRegionId'] as String,
-      ),
-      destinationZoneId: pulumi.Input.fromValue(
-        map['destinationZoneId'] as String,
-      ),
-      diskReplicaGroupName: (() {
-        final guardedValue = map['diskReplicaGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      groupName: (() {
-        final guardedValue = map['groupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oneShot: (() {
-        final guardedValue = map['oneShot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      pairIds: (() {
-        final guardedValue = map['pairIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reverseReplicate: (() {
-        final guardedValue = map['reverseReplicate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      rpo: (() {
-        final guardedValue = map['rpo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destinationRegionId: pulumi.Input.fromValue(map['destinationRegionId'] as String),
+      destinationZoneId: pulumi.Input.fromValue(map['destinationZoneId'] as String),
+      diskReplicaGroupName: (() { final guardedValue = map['diskReplicaGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      groupName: (() { final guardedValue = map['groupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oneShot: (() { final guardedValue = map['oneShot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      pairIds: (() { final guardedValue = map['pairIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reverseReplicate: (() { final guardedValue = map['reverseReplicate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      rpo: (() { final guardedValue = map['rpo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       sourceRegionId: pulumi.Input.fromValue(map['sourceRegionId'] as String),
       sourceZoneId: pulumi.Input.fromValue(map['sourceZoneId'] as String),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

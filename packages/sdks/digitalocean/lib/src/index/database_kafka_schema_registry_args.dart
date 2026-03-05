@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseKafkaSchemaRegistryArgs {
   /// The ID of the target Kafka cluster.
   final pulumi.Input<String> clusterId;
-
   /// The schema definition as a string.
   final pulumi.Input<String> schema;
-
   /// The schema type. Available values are: avro, json, or protobuf.
   final pulumi.Input<String> schemaType;
-
   /// The name of the schema subject.
   final pulumi.Input<String> subjectName;
 
@@ -49,3 +46,4 @@ class DatabaseKafkaSchemaRegistryArgs {
     );
   }
 }
+

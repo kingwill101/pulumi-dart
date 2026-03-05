@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalAdminApiServerArgument {
   /// The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
   final pulumi.Input<String> argument;
-
   /// The value of the arg as it will be passed to the API Server command line.
   final pulumi.Input<String> value;
 
@@ -19,7 +18,10 @@ class BareMetalAdminApiServerArgument {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'argument': argument, 'value': value};
+    return <String, dynamic>{
+      'argument': argument,
+      'value': value,
+    };
   }
 
   factory BareMetalAdminApiServerArgument.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class BareMetalAdminApiServerArgument {
     );
   }
 }
+

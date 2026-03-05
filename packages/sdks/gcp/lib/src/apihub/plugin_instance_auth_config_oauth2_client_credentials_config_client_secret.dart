@@ -14,14 +14,15 @@ class PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretVersion': secretVersion};
+    return <String, dynamic>{
+      'secretVersion': secretVersion,
+    };
   }
 
-  factory PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret.fromMap(Map<String, dynamic> map) {
     return PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret(
       secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
     );
   }
 }
+

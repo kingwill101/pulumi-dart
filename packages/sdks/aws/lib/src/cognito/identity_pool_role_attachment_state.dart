@@ -7,13 +7,10 @@ import 'identity_pool_role_attachment_role_mapping.dart';
 class IdentityPoolRoleAttachmentState {
   /// An identity pool ID in the format `REGION_GUID`.
   final pulumi.Input<String>? identityPoolId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A List of Role Mapping.
   final pulumi.Input<List<IdentityPoolRoleAttachmentRoleMapping>>? roleMappings;
-
   /// The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.
   final pulumi.Input<Map<String, String>>? roles;
 
@@ -33,53 +30,18 @@ class IdentityPoolRoleAttachmentState {
     return <String, dynamic>{
       'identityPoolId': ?identityPoolId,
       'region': ?region,
-      'roleMappings':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<IdentityPoolRoleAttachmentRoleMapping>,
-            List<Map<String, dynamic>>
-          >(
-            roleMappings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  IdentityPoolRoleAttachmentRoleMapping,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'roleMappings': ?pulumi.Input.mapOptionalInputValue<List<IdentityPoolRoleAttachmentRoleMapping>, List<Map<String, dynamic>>>(roleMappings, (value) => pulumi.Input.encodeList<IdentityPoolRoleAttachmentRoleMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
       'roles': ?roles,
     };
   }
 
   factory IdentityPoolRoleAttachmentState.fromMap(Map<String, dynamic> map) {
     return IdentityPoolRoleAttachmentState(
-      identityPoolId: (() {
-        final guardedValue = map['identityPoolId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleMappings: (() {
-        final guardedValue = map['roleMappings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMapping>(
-            guardedValue,
-            (value) => IdentityPoolRoleAttachmentRoleMapping.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      roles: (() {
-        final guardedValue = map['roles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      identityPoolId: (() { final guardedValue = map['identityPoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleMappings: (() { final guardedValue = map['roleMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMapping>(guardedValue, (value) => IdentityPoolRoleAttachmentRoleMapping.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

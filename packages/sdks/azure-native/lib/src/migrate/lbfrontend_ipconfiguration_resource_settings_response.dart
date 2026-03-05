@@ -7,17 +7,13 @@ import 'subnet_reference_response.dart';
 class LBFrontendIPConfigurationResourceSettingsResponse {
   /// Gets or sets the frontend IP configuration name.
   final pulumi.Input<String>? name;
-
   /// Gets or sets the IP address of the Load Balancer.This is only specified if a specific
   /// private IP address shall be allocated from the subnet specified in subnetRef.
   final pulumi.Input<String>? privateIpAddress;
-
   /// Gets or sets PrivateIP allocation method (Static/Dynamic).
   final pulumi.Input<String>? privateIpAllocationMethod;
-
   /// Defines reference to subnet.
   final pulumi.Input<SubnetReferenceResponse>? subnet;
-
   /// Gets or sets the csv list of zones.
   final pulumi.Input<String>? zones;
 
@@ -40,48 +36,19 @@ class LBFrontendIPConfigurationResourceSettingsResponse {
       'name': ?name,
       'privateIpAddress': ?privateIpAddress,
       'privateIpAllocationMethod': ?privateIpAllocationMethod,
-      'subnet':
-          ?pulumi.Input.mapOptionalInputValue<
-            SubnetReferenceResponse,
-            Map<String, dynamic>
-          >(subnet, (value) => value.toMap()),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<SubnetReferenceResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
       'zones': ?zones,
     };
   }
 
-  factory LBFrontendIPConfigurationResourceSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LBFrontendIPConfigurationResourceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return LBFrontendIPConfigurationResourceSettingsResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateIpAddress: (() {
-        final guardedValue = map['privateIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateIpAllocationMethod: (() {
-        final guardedValue = map['privateIpAllocationMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnet: (() {
-        final guardedValue = map['subnet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SubnetReferenceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      zones: (() {
-        final guardedValue = map['zones'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIpAllocationMethod: (() { final guardedValue = map['privateIpAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubnetReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

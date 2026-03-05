@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listUpgradableVersionDetails.
 class ListUpgradableVersionDetailsResult {
   /// Current version of the elastic monitor
   final String? currentVersion;
-
   /// Stack Versions that this version can upgrade to
   final List<String>? upgradableVersions;
 
@@ -25,16 +25,9 @@ class ListUpgradableVersionDetailsResult {
 
   factory ListUpgradableVersionDetailsResult.fromMap(Map<String, dynamic> map) {
     return ListUpgradableVersionDetailsResult(
-      currentVersion: (() {
-        final guardedValue = map['currentVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      upgradableVersions: (() {
-        final guardedValue = map['upgradableVersions'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      currentVersion: (() { final guardedValue = map['currentVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      upgradableVersions: (() { final guardedValue = map['upgradableVersions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }
+

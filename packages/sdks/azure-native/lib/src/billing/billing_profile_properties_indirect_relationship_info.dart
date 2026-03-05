@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BillingProfilePropertiesIndirectRelationshipInfo {
   /// The billing account name of the partner or the customer for an indirect motion.
   final pulumi.Input<String>? billingAccountName;
-
   /// The billing profile name of the partner or the customer for an indirect motion.
   final pulumi.Input<String>? billingProfileName;
-
   /// The display name of the partner or customer for an indirect motion.
   final pulumi.Input<String>? displayName;
 
@@ -31,25 +29,12 @@ class BillingProfilePropertiesIndirectRelationshipInfo {
     };
   }
 
-  factory BillingProfilePropertiesIndirectRelationshipInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BillingProfilePropertiesIndirectRelationshipInfo.fromMap(Map<String, dynamic> map) {
     return BillingProfilePropertiesIndirectRelationshipInfo(
-      billingAccountName: (() {
-        final guardedValue = map['billingAccountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      billingProfileName: (() {
-        final guardedValue = map['billingProfileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      billingAccountName: (() { final guardedValue = map['billingAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      billingProfileName: (() { final guardedValue = map['billingProfileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

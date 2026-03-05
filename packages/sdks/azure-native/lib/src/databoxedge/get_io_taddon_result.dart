@@ -7,38 +7,27 @@ import 'system_data_response.dart';
 class GetIoTAddonResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Host OS supported by the IoT addon.
   final String hostPlatform;
-
   /// Platform where the runtime is hosted.
   final String hostPlatformType;
-
   /// The path ID that uniquely identifies the object.
   final String id;
-
   /// IoT device metadata to which appliance needs to be connected.
   final IoTDeviceInfoResponse ioTDeviceDetails;
-
   /// IoT edge device to which the IoT Addon needs to be configured.
   final IoTDeviceInfoResponse ioTEdgeDeviceDetails;
-
   /// Addon type.
   /// Expected value is 'IotEdge'.
   final String kind;
-
   /// The object name.
   final String name;
-
   /// Addon Provisioning State
   final String provisioningState;
-
   /// Metadata pertaining to creation and last modification of Addon
   final SystemDataResponse systemData;
-
   /// The hierarchical type of the object.
   final String type;
-
   /// Version of IoT running on the appliance.
   final String version;
 
@@ -93,20 +82,15 @@ class GetIoTAddonResult {
       hostPlatform: map['hostPlatform'] as String,
       hostPlatformType: map['hostPlatformType'] as String,
       id: map['id'] as String,
-      ioTDeviceDetails: IoTDeviceInfoResponse.fromMap(
-        (map['ioTDeviceDetails']! as Map).cast<String, dynamic>(),
-      ),
-      ioTEdgeDeviceDetails: IoTDeviceInfoResponse.fromMap(
-        (map['ioTEdgeDeviceDetails']! as Map).cast<String, dynamic>(),
-      ),
+      ioTDeviceDetails: IoTDeviceInfoResponse.fromMap((map['ioTDeviceDetails']! as Map).cast<String, dynamic>()),
+      ioTEdgeDeviceDetails: IoTDeviceInfoResponse.fromMap((map['ioTEdgeDeviceDetails']! as Map).cast<String, dynamic>()),
       kind: map['kind'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       version: map['version'] as String,
     );
   }
 }
+

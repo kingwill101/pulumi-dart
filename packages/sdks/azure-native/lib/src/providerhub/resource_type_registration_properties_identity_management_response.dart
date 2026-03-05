@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceTypeRegistrationPropertiesIdentityManagementResponse {
   /// The application id.
   final pulumi.Input<String>? applicationId;
-
   /// The application ids.
   final pulumi.Input<List<String>>? applicationIds;
-
   /// The delegation app ids.
   final pulumi.Input<List<String>>? delegationAppIds;
-
   /// The type.
   final pulumi.Input<String>? type;
 
@@ -37,30 +34,13 @@ class ResourceTypeRegistrationPropertiesIdentityManagementResponse {
     };
   }
 
-  factory ResourceTypeRegistrationPropertiesIdentityManagementResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceTypeRegistrationPropertiesIdentityManagementResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesIdentityManagementResponse(
-      applicationId: (() {
-        final guardedValue = map['applicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      applicationIds: (() {
-        final guardedValue = map['applicationIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      delegationAppIds: (() {
-        final guardedValue = map['delegationAppIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      applicationIds: (() { final guardedValue = map['applicationIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      delegationAppIds: (() { final guardedValue = map['delegationAppIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

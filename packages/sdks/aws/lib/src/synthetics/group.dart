@@ -103,21 +103,16 @@ import 'group_state.dart';
 class Group extends pulumi.CustomResource {
   /// ARN of the Group.
   late final pulumi.Output<String> arn;
-
   /// ID of the Group.
   late final pulumi.Output<String> groupId;
-
   /// Name of the group.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -125,13 +120,16 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_synthetics_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:synthetics/group:Group',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Group(
+    String name, {
+    GroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:synthetics/group:Group',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     groupId = registerOutput<String>('groupId');
     this.name = registerOutput<String>('name');
@@ -141,7 +139,11 @@ class Group extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
+  static Group get(
+    String name,
+    pulumi.Input<String> id, {
+    GroupState? state,
+  }) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -154,11 +156,11 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:synthetics/group:Group',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:synthetics/group:Group',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     groupId = registerOutput<String>('groupId');
     this.name = registerOutput<String>('name');

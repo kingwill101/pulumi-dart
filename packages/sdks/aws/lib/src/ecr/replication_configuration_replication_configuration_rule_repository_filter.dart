@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter {
   /// The repository filter details.
   final pulumi.Input<String> filter;
-
   /// The repository filter type. The only supported value is `PREFIX_MATCH`, which is a repository name prefix specified with the filter parameter.
   final pulumi.Input<String> filterType;
 
@@ -18,15 +17,17 @@ class ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filter': filter, 'filterType': filterType};
+    return <String, dynamic>{
+      'filter': filter,
+      'filterType': filterType,
+    };
   }
 
-  factory ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter(
       filter: pulumi.Input.fromValue(map['filter'] as String),
       filterType: pulumi.Input.fromValue(map['filterType'] as String),
     );
   }
 }
+

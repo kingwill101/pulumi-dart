@@ -202,16 +202,12 @@ import 'local_rulestack_prefix_list_state.dart';
 class LocalRulestackPrefixList extends pulumi.CustomResource {
   /// The comment for Audit purposes.
   late final pulumi.Output<String?> auditComment;
-
   /// The description for the Prefix List.
   late final pulumi.Output<String?> description;
-
   /// The name which should be used for this Palo Alto Local Rulestack Prefix List.
   late final pulumi.Output<String> name;
-
   /// Specifies a list of Prefixes.
   late final pulumi.Output<List<String>> prefixLists;
-
   /// The ID of the Local Rulestack on which to create this Prefix List. Changing this forces a new Palo Alto Local Rulestack Prefix List to be created.
   late final pulumi.Output<String> rulestackId;
 
@@ -224,11 +220,11 @@ class LocalRulestackPrefixList extends pulumi.CustomResource {
     LocalRulestackPrefixListArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:paloalto/localRulestackPrefixList:LocalRulestackPrefixList',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:paloalto/localRulestackPrefixList:LocalRulestackPrefixList',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     auditComment = registerOutput<String?>('auditComment');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -254,11 +250,11 @@ class LocalRulestackPrefixList extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:paloalto/localRulestackPrefixList:LocalRulestackPrefixList',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:paloalto/localRulestackPrefixList:LocalRulestackPrefixList',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     auditComment = registerOutput<String?>('auditComment');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

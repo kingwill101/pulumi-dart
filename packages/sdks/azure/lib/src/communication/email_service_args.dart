@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmailServiceArgs {
   /// The location where the Email Communication service stores its data at rest. Possible values are `Africa`, `Asia Pacific`, `Australia`, `Brazil`, `Canada`, `Europe`, `France`, `Germany`, `India`, `Japan`, `Korea`, `Norway`, `Switzerland`, `UAE`, `UK` `usgov` and `United States`. Changing this forces a new Email Communication Service to be created.
   final pulumi.Input<String> dataLocation;
-
   /// The name of the Email Communication Service resource. Changing this forces a new Email Communication Service to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the Resource Group where the Email Communication Service should exist. Changing this forces a new Email Communication Service to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Email Communication Service.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -43,21 +40,10 @@ class EmailServiceArgs {
   factory EmailServiceArgs.fromMap(Map<String, dynamic> map) {
     return EmailServiceArgs(
       dataLocation: pulumi.Input.fromValue(map['dataLocation'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

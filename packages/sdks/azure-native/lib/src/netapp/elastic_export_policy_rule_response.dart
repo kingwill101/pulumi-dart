@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticExportPolicyRuleResponse {
   /// Client ingress specification for the export policy as list of IPv4 CIDRs, IPv4 host addresses and host names.
   final pulumi.Input<List<String>>? allowedClients;
-
   /// Allows clients to access the volume with the NFSv3 protocol. Enable only for NFSv3 type volumes
   final pulumi.Input<String>? nfsv3;
-
   /// Allows clients to access the volume with at least NFSv4.1 protocol.
   final pulumi.Input<String>? nfsv4;
-
   /// Indicates whether root access to the volume is granted to clients affected by this rule
   final pulumi.Input<String>? rootAccess;
-
   /// Controls the priority of the export policy rule. When connecting to the volume the rule with the lowest index that applies to the connecting client is used
   final pulumi.Input<int>? ruleIndex;
-
   /// Specifies the Unix file access level for the volume. It encompasses both read-only and read-write permissions. Additionally, NoAccess can be set to block all access to the volume
   final pulumi.Input<String>? unixAccessRule;
 
@@ -51,36 +46,13 @@ class ElasticExportPolicyRuleResponse {
 
   factory ElasticExportPolicyRuleResponse.fromMap(Map<String, dynamic> map) {
     return ElasticExportPolicyRuleResponse(
-      allowedClients: (() {
-        final guardedValue = map['allowedClients'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nfsv3: (() {
-        final guardedValue = map['nfsv3'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nfsv4: (() {
-        final guardedValue = map['nfsv4'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rootAccess: (() {
-        final guardedValue = map['rootAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ruleIndex: (() {
-        final guardedValue = map['ruleIndex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      unixAccessRule: (() {
-        final guardedValue = map['unixAccessRule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowedClients: (() { final guardedValue = map['allowedClients']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nfsv3: (() { final guardedValue = map['nfsv3']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nfsv4: (() { final guardedValue = map['nfsv4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rootAccess: (() { final guardedValue = map['rootAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleIndex: (() { final guardedValue = map['ruleIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      unixAccessRule: (() { final guardedValue = map['unixAccessRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

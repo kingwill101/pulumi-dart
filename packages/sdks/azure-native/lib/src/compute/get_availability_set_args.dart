@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAvailabilitySetArgs {
   /// The name of the availability set.
   final pulumi.Input<String> availabilitySetName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetAvailabilitySetArgs {
 
   factory GetAvailabilitySetArgs.fromMap(Map<String, dynamic> map) {
     return GetAvailabilitySetArgs(
-      availabilitySetName: pulumi.Input.fromValue(
-        map['availabilitySetName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      availabilitySetName: pulumi.Input.fromValue(map['availabilitySetName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

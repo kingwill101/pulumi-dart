@@ -9,10 +9,14 @@ class IosTestLoopResponse {
 
   /// Creates a new [IosTestLoopResponse].
   /// [bundleId] Bundle ID of the app.
-  IosTestLoopResponse({required this.bundleId});
+  IosTestLoopResponse({
+    required this.bundleId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bundleId': bundleId};
+    return <String, dynamic>{
+      'bundleId': bundleId,
+    };
   }
 
   factory IosTestLoopResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class IosTestLoopResponse {
     );
   }
 }
+

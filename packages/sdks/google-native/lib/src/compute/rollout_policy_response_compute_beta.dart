@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RolloutPolicyResponseComputeBeta {
   /// An optional RFC3339 timestamp on or after which the update is considered rolled out to any zone that is not explicitly stated.
   final pulumi.Input<String> defaultRolloutTime;
-
   /// Location based rollout policies to apply to the resource. Currently only zone names are supported and must be represented as valid URLs, like: zones/us-central1-a. The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
   final pulumi.Input<Map<String, String>> locationRolloutPolicies;
 
@@ -27,12 +26,9 @@ class RolloutPolicyResponseComputeBeta {
 
   factory RolloutPolicyResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return RolloutPolicyResponseComputeBeta(
-      defaultRolloutTime: pulumi.Input.fromValue(
-        map['defaultRolloutTime'] as String,
-      ),
-      locationRolloutPolicies: pulumi.Input.fromValue(
-        (map['locationRolloutPolicies'] as Map).cast<String, String>(),
-      ),
+      defaultRolloutTime: pulumi.Input.fromValue(map['defaultRolloutTime'] as String),
+      locationRolloutPolicies: pulumi.Input.fromValue((map['locationRolloutPolicies'] as Map).cast<String, String>()),
     );
   }
 }
+

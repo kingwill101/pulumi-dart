@@ -27,11 +27,10 @@ class GetDirectorySamlProperty {
 
   factory GetDirectorySamlProperty.fromMap(Map<String, dynamic> map) {
     return GetDirectorySamlProperty(
-      relayStateParameterName: pulumi.Input.fromValue(
-        map['relayStateParameterName'] as String,
-      ),
+      relayStateParameterName: pulumi.Input.fromValue(map['relayStateParameterName'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       userAccessUrl: pulumi.Input.fromValue(map['userAccessUrl'] as String),
     );
   }
 }
+

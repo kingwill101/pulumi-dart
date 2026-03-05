@@ -12,13 +12,20 @@ class GetRuleArgs {
 
   /// Creates a new [GetRuleArgs].
   /// [name] The name of the Role to lookup in the form `roles/{ROLE_NAME}`, `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}` or `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
-  GetRuleArgs({required this.name});
+  GetRuleArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetRuleArgs.fromMap(Map<String, dynamic> map) {
-    return GetRuleArgs(name: pulumi.Input.fromValue(map['name'] as String));
+    return GetRuleArgs(
+      name: pulumi.Input.fromValue(map['name'] as String),
+    );
   }
 }
+

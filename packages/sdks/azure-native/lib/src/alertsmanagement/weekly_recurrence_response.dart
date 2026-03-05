@@ -6,14 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WeeklyRecurrenceResponse {
   /// Specifies the values for weekly recurrence pattern.
   final pulumi.Input<List<String>> daysOfWeek;
-
   /// End time for recurrence.
   final pulumi.Input<String>? endTime;
-
   /// Specifies when the recurrence should be applied.
   /// Expected value is 'Weekly'.
   final pulumi.Input<String> recurrenceType;
-
   /// Start time for recurrence.
   final pulumi.Input<String>? startTime;
 
@@ -40,20 +37,11 @@ class WeeklyRecurrenceResponse {
 
   factory WeeklyRecurrenceResponse.fromMap(Map<String, dynamic> map) {
     return WeeklyRecurrenceResponse(
-      daysOfWeek: pulumi.Input.fromValue(
-        (map['daysOfWeek'] as List).cast<String>(),
-      ),
-      endTime: (() {
-        final guardedValue = map['endTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      daysOfWeek: pulumi.Input.fromValue((map['daysOfWeek'] as List).cast<String>()),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recurrenceType: pulumi.Input.fromValue(map['recurrenceType'] as String),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

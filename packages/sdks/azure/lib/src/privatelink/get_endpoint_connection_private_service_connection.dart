@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointConnectionPrivateServiceConnection {
   /// Specifies the Name of the private endpoint.
   final pulumi.Input<String> name;
-
   /// The private IP address associated with the private endpoint, note that you will have a private IP address assigned to the private endpoint even if the connection request was `Rejected`.
   final pulumi.Input<String> privateIpAddress;
-
   /// Possible values are as follows:
   /// Value | Meaning
   /// -- | --
@@ -16,7 +14,6 @@ class GetEndpointConnectionPrivateServiceConnection {
   /// `Deleted state` | The resource owner has `Rejected` the private endpoint connection request and has removed your private endpoint request from the remote resource.
   /// `request/response message` | If you submitted a manual private endpoint connection request, while in the `Pending` status the `request_response` will display the same text from your `request_message` in the `private_service_connection` block above. If the private endpoint connection request was `Rejected` by the owner of the remote resource, the text for the rejection will be displayed as the `request_response` text, if the private endpoint connection request was `Approved` by the owner of the remote resource, the text for the approval will be displayed as the `request_response` text
   final pulumi.Input<String> requestResponse;
-
   /// The current status of the private endpoint request, possible values will be `Pending`, `Approved`, `Rejected`, or `Disconnected`.
   final pulumi.Input<String> status;
 
@@ -41,16 +38,13 @@ class GetEndpointConnectionPrivateServiceConnection {
     };
   }
 
-  factory GetEndpointConnectionPrivateServiceConnection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEndpointConnectionPrivateServiceConnection.fromMap(Map<String, dynamic> map) {
     return GetEndpointConnectionPrivateServiceConnection(
       name: pulumi.Input.fromValue(map['name'] as String),
-      privateIpAddress: pulumi.Input.fromValue(
-        map['privateIpAddress'] as String,
-      ),
+      privateIpAddress: pulumi.Input.fromValue(map['privateIpAddress'] as String),
       requestResponse: pulumi.Input.fromValue(map['requestResponse'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

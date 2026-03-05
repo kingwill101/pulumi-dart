@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PredictionResponseGrades {
   /// Name of the grade.
   final pulumi.Input<String>? gradeName;
-
   /// Maximum score threshold.
   final pulumi.Input<int>? maxScoreThreshold;
-
   /// Minimum score threshold.
   final pulumi.Input<int>? minScoreThreshold;
 
@@ -33,21 +31,10 @@ class PredictionResponseGrades {
 
   factory PredictionResponseGrades.fromMap(Map<String, dynamic> map) {
     return PredictionResponseGrades(
-      gradeName: (() {
-        final guardedValue = map['gradeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxScoreThreshold: (() {
-        final guardedValue = map['maxScoreThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minScoreThreshold: (() {
-        final guardedValue = map['minScoreThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      gradeName: (() { final guardedValue = map['gradeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxScoreThreshold: (() { final guardedValue = map['maxScoreThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minScoreThreshold: (() { final guardedValue = map['minScoreThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

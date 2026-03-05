@@ -1063,62 +1063,40 @@ import 'system_data_response.dart';
 class Firewall extends pulumi.CustomResource {
   /// Associated Rulestack
   late final pulumi.Output<RulestackDetailsResponse?> associatedRulestack;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// DNS settings for Firewall
   late final pulumi.Output<DNSSettingsResponse> dnsSettings;
-
   /// Frontend settings for Firewall
   late final pulumi.Output<List<Map<String, dynamic>>?> frontEndSettings;
-
   /// The managed service identities assigned to this resource.
-  late final pulumi.Output<
-    AzureResourceManagerManagedIdentityPropertiesResponse?
-  >
-  identity;
-
+  late final pulumi.Output<AzureResourceManagerManagedIdentityPropertiesResponse?> identity;
   /// Panorama Managed: Default is False. Default will be CloudSec managed
   late final pulumi.Output<String?> isPanoramaManaged;
-
   /// Strata Cloud Managed: Default is False. Default will be CloudSec managed
   late final pulumi.Output<String?> isStrataCloudManaged;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Marketplace details
   late final pulumi.Output<MarketplaceDetailsResponse> marketplaceDetails;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Network settings
   late final pulumi.Output<NetworkProfileResponse> networkProfile;
-
   /// panEtag info
   late final pulumi.Output<String?> panEtag;
-
   /// Panorama Configuration
   late final pulumi.Output<PanoramaConfigResponse?> panoramaConfig;
-
   /// Billing plan information.
   late final pulumi.Output<PlanDataResponse> planData;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
-  late final pulumi.Output<StrataCloudManagerConfigResponse?>
-  strataCloudManagerConfig;
-
+  late final pulumi.Output<StrataCloudManagerConfigResponse?> strataCloudManagerConfig;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -1131,113 +1109,28 @@ class Firewall extends pulumi.CustomResource {
     FirewallArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cloudngfw:Firewall',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    associatedRulestack = registerOutput<RulestackDetailsResponse?>(
-      'associatedRulestack',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RulestackDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:cloudngfw:Firewall',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    associatedRulestack = registerOutput<RulestackDetailsResponse?>('associatedRulestack', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RulestackDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dnsSettings = registerOutput<DNSSettingsResponse>(
-      'dnsSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DNSSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    frontEndSettings = registerOutput<List<Map<String, dynamic>>?>(
-      'frontEndSettings',
-    );
-    identity =
-        registerOutput<AzureResourceManagerManagedIdentityPropertiesResponse?>(
-          'identity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AzureResourceManagerManagedIdentityPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    dnsSettings = registerOutput<DNSSettingsResponse>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DNSSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frontEndSettings = registerOutput<List<Map<String, dynamic>>?>('frontEndSettings');
+    identity = registerOutput<AzureResourceManagerManagedIdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureResourceManagerManagedIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isPanoramaManaged = registerOutput<String?>('isPanoramaManaged');
     isStrataCloudManaged = registerOutput<String?>('isStrataCloudManaged');
     location = registerOutput<String>('location');
-    marketplaceDetails = registerOutput<MarketplaceDetailsResponse>(
-      'marketplaceDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MarketplaceDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    marketplaceDetails = registerOutput<MarketplaceDetailsResponse>('marketplaceDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MarketplaceDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<NetworkProfileResponse>(
-      'networkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkProfile = registerOutput<NetworkProfileResponse>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     panEtag = registerOutput<String?>('panEtag');
-    panoramaConfig = registerOutput<PanoramaConfigResponse?>(
-      'panoramaConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PanoramaConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    planData = registerOutput<PlanDataResponse>(
-      'planData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlanDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    panoramaConfig = registerOutput<PanoramaConfigResponse?>('panoramaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PanoramaConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    planData = registerOutput<PlanDataResponse>('planData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    strataCloudManagerConfig =
-        registerOutput<StrataCloudManagerConfigResponse?>(
-          'strataCloudManagerConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return StrataCloudManagerConfigResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    strataCloudManagerConfig = registerOutput<StrataCloudManagerConfigResponse?>('strataCloudManagerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StrataCloudManagerConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

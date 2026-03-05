@@ -37,9 +37,7 @@ class GetDatabasePostgresqlConfigSharedBuffersPercentage {
     };
   }
 
-  factory GetDatabasePostgresqlConfigSharedBuffersPercentage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabasePostgresqlConfigSharedBuffersPercentage.fromMap(Map<String, dynamic> map) {
     return GetDatabasePostgresqlConfigSharedBuffersPercentage(
       description: pulumi.Input.fromValue(map['description'] as String),
       example: pulumi.Input.fromValue(map['example'] as double),
@@ -50,3 +48,4 @@ class GetDatabasePostgresqlConfigSharedBuffersPercentage {
     );
   }
 }
+

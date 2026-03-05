@@ -8,17 +8,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum].
   /// [name] Package name.
-  OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum({required this.name});
+  OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

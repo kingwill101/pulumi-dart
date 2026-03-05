@@ -10,39 +10,20 @@ class ElasticExportPolicy {
 
   /// Creates a new [ElasticExportPolicy].
   /// [rules] Export policy rule
-  ElasticExportPolicy({this.rules});
+  ElasticExportPolicy({
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ElasticExportPolicyRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ElasticExportPolicyRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<ElasticExportPolicyRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ElasticExportPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ElasticExportPolicy.fromMap(Map<String, dynamic> map) {
     return ElasticExportPolicy(
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ElasticExportPolicyRule>(
-            guardedValue,
-            (value) => ElasticExportPolicyRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ElasticExportPolicyRule>(guardedValue, (value) => ElasticExportPolicyRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

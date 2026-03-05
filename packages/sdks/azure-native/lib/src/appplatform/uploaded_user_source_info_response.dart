@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UploadedUserSourceInfoResponse {
   /// Relative path of the storage which stores the source
   final pulumi.Input<String>? relativePath;
-
   /// Type of the source uploaded
   /// Expected value is 'UploadedUserSourceInfo'.
   final pulumi.Input<String> type;
-
   /// Version of the source
   final pulumi.Input<String>? version;
 
@@ -34,17 +32,10 @@ class UploadedUserSourceInfoResponse {
 
   factory UploadedUserSourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return UploadedUserSourceInfoResponse(
-      relativePath: (() {
-        final guardedValue = map['relativePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      relativePath: (() { final guardedValue = map['relativePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

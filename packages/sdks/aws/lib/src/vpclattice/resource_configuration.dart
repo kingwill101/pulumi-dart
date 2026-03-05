@@ -686,55 +686,37 @@ import 'resource_configuration_timeouts.dart';
 class ResourceConfiguration extends pulumi.CustomResource {
   /// Allow or Deny the association of this resource to a shareable service network.
   late final pulumi.Output<bool> allowAssociationToShareableServiceNetwork;
-
   /// ARN of the resource gateway.
   late final pulumi.Output<String> arn;
-
   /// Custom domain name for your resource configuration. Additionally, provide a `domain_verification_id` to prove your ownership of a domain.
   late final pulumi.Output<String?> customDomainName;
-
   /// ARN of the domain verification.
   late final pulumi.Output<String> domainVerificationArn;
-
   /// The domain verification ID of your verified custom domain name. If you don't provide an ID, you must configure the DNS settings yourself.
   late final pulumi.Output<String> domainVerificationId;
-
   /// Domain verification status.
   late final pulumi.Output<String> domainVerificationStatus;
-
   /// Name for the Resource Configuration.
   late final pulumi.Output<String> name;
-
   /// Port ranges to access the Resource either single port `80` or range `80-81` range.
   late final pulumi.Output<List<String>> portRanges;
-
   /// Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if `resource_configuration_group_id` is not.
   late final pulumi.Output<String> protocol;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Details of the Resource Configuration. See `resource_configuration_definition` Block for details.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<
-    ResourceConfigurationResourceConfigurationDefinition?
-  >
-  resourceConfigurationDefinition;
-
+  late final pulumi.Output<ResourceConfigurationResourceConfigurationDefinition?> resourceConfigurationDefinition;
   /// ID of Resource Configuration where `type` is `CHILD`.
   late final pulumi.Output<String?> resourceConfigurationGroupId;
-
   /// ID of the Resource Gateway used to access the resource. MUST be specified if `resource_configuration_group_id` is not.
   late final pulumi.Output<String> resourceGatewayIdentifier;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ResourceConfigurationTimeouts?> timeouts;
-
   /// Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`.
   late final pulumi.Output<String> type;
 
@@ -747,54 +729,27 @@ class ResourceConfiguration extends pulumi.CustomResource {
     ResourceConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:vpclattice/resourceConfiguration:ResourceConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowAssociationToShareableServiceNetwork = registerOutput<bool>(
-      'allowAssociationToShareableServiceNetwork',
-    );
+          'aws:vpclattice/resourceConfiguration:ResourceConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowAssociationToShareableServiceNetwork = registerOutput<bool>('allowAssociationToShareableServiceNetwork');
     arn = registerOutput<String>('arn');
     customDomainName = registerOutput<String?>('customDomainName');
     domainVerificationArn = registerOutput<String>('domainVerificationArn');
     domainVerificationId = registerOutput<String>('domainVerificationId');
-    domainVerificationStatus = registerOutput<String>(
-      'domainVerificationStatus',
-    );
+    domainVerificationStatus = registerOutput<String>('domainVerificationStatus');
     this.name = registerOutput<String>('name');
     portRanges = registerOutput<List<String>>('portRanges');
     protocol = registerOutput<String>('protocol');
     region = registerOutput<String>('region');
-    resourceConfigurationDefinition =
-        registerOutput<ResourceConfigurationResourceConfigurationDefinition?>(
-          'resourceConfigurationDefinition',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ResourceConfigurationResourceConfigurationDefinition.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    resourceConfigurationGroupId = registerOutput<String?>(
-      'resourceConfigurationGroupId',
-    );
-    resourceGatewayIdentifier = registerOutput<String>(
-      'resourceGatewayIdentifier',
-    );
+    resourceConfigurationDefinition = registerOutput<ResourceConfigurationResourceConfigurationDefinition?>('resourceConfigurationDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceConfigurationResourceConfigurationDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceConfigurationGroupId = registerOutput<String?>('resourceConfigurationGroupId');
+    resourceGatewayIdentifier = registerOutput<String>('resourceGatewayIdentifier');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ResourceConfigurationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceConfigurationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ResourceConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 
@@ -816,54 +771,27 @@ class ResourceConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:vpclattice/resourceConfiguration:ResourceConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowAssociationToShareableServiceNetwork = registerOutput<bool>(
-      'allowAssociationToShareableServiceNetwork',
-    );
+          'aws:vpclattice/resourceConfiguration:ResourceConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowAssociationToShareableServiceNetwork = registerOutput<bool>('allowAssociationToShareableServiceNetwork');
     arn = registerOutput<String>('arn');
     customDomainName = registerOutput<String?>('customDomainName');
     domainVerificationArn = registerOutput<String>('domainVerificationArn');
     domainVerificationId = registerOutput<String>('domainVerificationId');
-    domainVerificationStatus = registerOutput<String>(
-      'domainVerificationStatus',
-    );
+    domainVerificationStatus = registerOutput<String>('domainVerificationStatus');
     this.name = registerOutput<String>('name');
     portRanges = registerOutput<List<String>>('portRanges');
     protocol = registerOutput<String>('protocol');
     region = registerOutput<String>('region');
-    resourceConfigurationDefinition =
-        registerOutput<ResourceConfigurationResourceConfigurationDefinition?>(
-          'resourceConfigurationDefinition',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ResourceConfigurationResourceConfigurationDefinition.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    resourceConfigurationGroupId = registerOutput<String?>(
-      'resourceConfigurationGroupId',
-    );
-    resourceGatewayIdentifier = registerOutput<String>(
-      'resourceGatewayIdentifier',
-    );
+    resourceConfigurationDefinition = registerOutput<ResourceConfigurationResourceConfigurationDefinition?>('resourceConfigurationDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceConfigurationResourceConfigurationDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceConfigurationGroupId = registerOutput<String?>('resourceConfigurationGroupId');
+    resourceGatewayIdentifier = registerOutput<String>('resourceGatewayIdentifier');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ResourceConfigurationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceConfigurationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ResourceConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCustomConnector.
 class GetCustomConnectorResult {
   /// Created time.
   final String createTime;
-
   /// Type of the custom connector.
   final String customConnectorType;
-
   /// Optional. Description of the resource.
   final String description;
-
   /// Optional. Display name.
   final String displayName;
-
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
   final Map<String, String> labels;
-
   /// Launch stage.
   final String launchStage;
-
   /// Optional. Logo of the resource.
   final String logo;
-
   /// Identifier. Resource name of the CustomConnector. Format: projects/{project}/locations/{location}/customConnectors/{connector}
   final String name;
-
   /// Updated time.
   final String updateTime;
 
@@ -79,3 +72,4 @@ class GetCustomConnectorResult {
     );
   }
 }
+

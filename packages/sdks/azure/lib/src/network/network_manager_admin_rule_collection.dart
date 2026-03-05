@@ -340,13 +340,10 @@ import 'network_manager_admin_rule_collection_state.dart';
 class NetworkManagerAdminRuleCollection extends pulumi.CustomResource {
   /// A description of the Network Manager Admin Rule Collection.
   late final pulumi.Output<String?> description;
-
   /// Specifies the name which should be used for this Network Manager Admin Rule Collection. Changing this forces a new Network Manager Admin Rule Collection to be created.
   late final pulumi.Output<String> name;
-
   /// A list of Network Group ID which this Network Manager Admin Rule Collection applies to.
   late final pulumi.Output<List<String>> networkGroupIds;
-
   /// Specifies the ID of the Network Manager Security Admin Configuration. Changing this forces a new Network Manager Admin Rule Collection to be created.
   late final pulumi.Output<String> securityAdminConfigurationId;
 
@@ -359,17 +356,15 @@ class NetworkManagerAdminRuleCollection extends pulumi.CustomResource {
     NetworkManagerAdminRuleCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerAdminRuleCollection:NetworkManagerAdminRuleCollection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerAdminRuleCollection:NetworkManagerAdminRuleCollection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     networkGroupIds = registerOutput<List<String>>('networkGroupIds');
-    securityAdminConfigurationId = registerOutput<String>(
-      'securityAdminConfigurationId',
-    );
+    securityAdminConfigurationId = registerOutput<String>('securityAdminConfigurationId');
   }
 
   /// Gets an existing [NetworkManagerAdminRuleCollection] resource's state with the given [name] and [id].
@@ -390,16 +385,14 @@ class NetworkManagerAdminRuleCollection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerAdminRuleCollection:NetworkManagerAdminRuleCollection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerAdminRuleCollection:NetworkManagerAdminRuleCollection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     networkGroupIds = registerOutput<List<String>>('networkGroupIds');
-    securityAdminConfigurationId = registerOutput<String>(
-      'securityAdminConfigurationId',
-    );
+    securityAdminConfigurationId = registerOutput<String>('securityAdminConfigurationId');
   }
 }

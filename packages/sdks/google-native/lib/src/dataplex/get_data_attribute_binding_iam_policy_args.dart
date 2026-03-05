@@ -33,24 +33,13 @@ class GetDataAttributeBindingIamPolicyArgs {
     };
   }
 
-  factory GetDataAttributeBindingIamPolicyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataAttributeBindingIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDataAttributeBindingIamPolicyArgs(
-      dataAttributeBindingId: pulumi.Input.fromValue(
-        map['dataAttributeBindingId'] as String,
-      ),
+      dataAttributeBindingId: pulumi.Input.fromValue(map['dataAttributeBindingId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

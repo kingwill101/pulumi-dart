@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerEndpointFilesNotSyncingErrorResponse {
   /// Error code (HResult)
   final pulumi.Input<int> errorCode;
-
   /// Count of persistent files not syncing with the specified error code
   final pulumi.Input<double> persistentCount;
-
   /// Count of transient files not syncing with the specified error code
   final pulumi.Input<double> transientCount;
 
@@ -31,9 +29,7 @@ class ServerEndpointFilesNotSyncingErrorResponse {
     };
   }
 
-  factory ServerEndpointFilesNotSyncingErrorResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServerEndpointFilesNotSyncingErrorResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointFilesNotSyncingErrorResponse(
       errorCode: pulumi.Input.fromValue(map['errorCode'] as int),
       persistentCount: pulumi.Input.fromValue(map['persistentCount'] as double),
@@ -41,3 +37,4 @@ class ServerEndpointFilesNotSyncingErrorResponse {
     );
   }
 }
+

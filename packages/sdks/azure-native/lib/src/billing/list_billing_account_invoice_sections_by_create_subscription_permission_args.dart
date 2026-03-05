@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs {
   /// The ID that uniquely identifies a billing account.
   final pulumi.Input<String> billingAccountName;
-
   /// The filter query option allows clients to filter a collection of resources that are addressed by a request URL.
   final pulumi.Input<String>? filter;
 
@@ -28,18 +27,11 @@ class ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs {
     };
   }
 
-  factory ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs.fromMap(Map<String, dynamic> map) {
     return ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs(
-      billingAccountName: pulumi.Input.fromValue(
-        map['billingAccountName'] as String,
-      ),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      billingAccountName: pulumi.Input.fromValue(map['billingAccountName'] as String),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

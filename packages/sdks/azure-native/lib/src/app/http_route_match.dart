@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpRouteMatch {
   /// path case sensitive, default is true
   final pulumi.Input<bool>? caseSensitive;
-
   /// match on exact path
   final pulumi.Input<String>? path;
-
   /// match on all prefix's. Not exact
   final pulumi.Input<String>? pathSeparatedPrefix;
-
   /// match on all prefix's. Not exact
   final pulumi.Input<String>? prefix;
 
@@ -39,26 +36,11 @@ class HttpRouteMatch {
 
   factory HttpRouteMatch.fromMap(Map<String, dynamic> map) {
     return HttpRouteMatch(
-      caseSensitive: (() {
-        final guardedValue = map['caseSensitive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pathSeparatedPrefix: (() {
-        final guardedValue = map['pathSeparatedPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      caseSensitive: (() { final guardedValue = map['caseSensitive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pathSeparatedPrefix: (() { final guardedValue = map['pathSeparatedPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -447,10 +447,8 @@ import 'log_tail_attachment_state.dart';
 class LogTailAttachment extends pulumi.CustomResource {
   /// The Logtail configuration name, which is unique in the same project.
   late final pulumi.Output<String> logtailConfigName;
-
   /// The machine group name, which is unique in the same project.
   late final pulumi.Output<String> machineGroupName;
-
   /// The project name to the log store belongs.
   late final pulumi.Output<String> project;
 
@@ -463,11 +461,11 @@ class LogTailAttachment extends pulumi.CustomResource {
     LogTailAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:log/logTailAttachment:LogTailAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:log/logTailAttachment:LogTailAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     logtailConfigName = registerOutput<String>('logtailConfigName');
     machineGroupName = registerOutput<String>('machineGroupName');
     project = registerOutput<String>('project');
@@ -491,11 +489,11 @@ class LogTailAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:log/logTailAttachment:LogTailAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:log/logTailAttachment:LogTailAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     logtailConfigName = registerOutput<String>('logtailConfigName');
     machineGroupName = registerOutput<String>('machineGroupName');
     project = registerOutput<String>('project');

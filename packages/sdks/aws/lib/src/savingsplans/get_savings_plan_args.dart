@@ -12,10 +12,14 @@ class GetSavingsPlanArgs {
 
   /// Creates a new [GetSavingsPlanArgs].
   /// [savingsPlanId] The ID of the Savings Plan.
-  GetSavingsPlanArgs({required this.savingsPlanId});
+  GetSavingsPlanArgs({
+    required this.savingsPlanId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'savingsPlanId': savingsPlanId};
+    return <String, dynamic>{
+      'savingsPlanId': savingsPlanId,
+    };
   }
 
   factory GetSavingsPlanArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetSavingsPlanArgs {
     );
   }
 }
+

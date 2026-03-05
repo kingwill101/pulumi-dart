@@ -14,18 +14,15 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'servingConfigId': ?servingConfigId};
+    return <String, dynamic>{
+      'servingConfigId': ?servingConfigId,
+    };
   }
 
-  factory GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate(
-      servingConfigId: (() {
-        final guardedValue = map['servingConfigId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      servingConfigId: (() { final guardedValue = map['servingConfigId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

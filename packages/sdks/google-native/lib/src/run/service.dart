@@ -9,21 +9,16 @@ import 'service_status_response.dart';
 class Service extends pulumi.CustomResource {
   /// The API version for this call. It must be "serving.knative.dev/v1".
   late final pulumi.Output<String> apiVersion;
-
   /// Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
   late final pulumi.Output<String?> dryRun;
-
   /// The kind of resource. It must be "Service".
   late final pulumi.Output<String> kind;
   late final pulumi.Output<String> location;
-
   /// Metadata associated with this Service, including name, namespace, labels, and annotations. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. The following Cloud Run-specific annotations are accepted in Service.metadata.annotations. * `run.googleapis.com/binary-authorization-breakglass` * `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` * `run.googleapis.com/description` * `run.googleapis.com/disable-default-url` * `run.googleapis.com/gc-traffic-tags` * `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
   late final pulumi.Output<ObjectMetaResponse> metadata;
   late final pulumi.Output<String> project;
-
   /// Holds the desired state of the Service (from the client).
   late final pulumi.Output<ServiceSpecResponse> spec;
-
   /// Communicates the system-controlled state of the Service.
   late final pulumi.Output<ServiceStatusResponse> status;
 
@@ -36,45 +31,18 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:run/v1:Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:run/v1:Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiVersion = registerOutput<String>('apiVersion');
     dryRun = registerOutput<String?>('dryRun');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
-    metadata = registerOutput<ObjectMetaResponse>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMetaResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<ObjectMetaResponse>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    spec = registerOutput<ServiceSpecResponse>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceSpecResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<ServiceStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spec = registerOutput<ServiceSpecResponse>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ServiceStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -6,10 +6,8 @@ import 'get_snapshot_ids_filter.dart';
 /// Result data returned by getSnapshotIds.
 class GetSnapshotIdsResult {
   final List<GetSnapshotIdsFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of EBS snapshot IDs, sorted by creation time in descending order.
   final List<String> ids;
   final List<String>? owners;
@@ -34,14 +32,7 @@ class GetSnapshotIdsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetSnapshotIdsFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSnapshotIdsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'ids': ids,
       'owners': ?owners,
@@ -52,29 +43,13 @@ class GetSnapshotIdsResult {
 
   factory GetSnapshotIdsResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotIdsResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetSnapshotIdsFilter>(
-          guardedValue,
-          (value) => GetSnapshotIdsFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSnapshotIdsFilter>(guardedValue, (value) => GetSnapshotIdsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      owners: (() {
-        final guardedValue = map['owners'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      owners: (() { final guardedValue = map['owners']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       region: map['region'] as String,
-      restorableByUserIds: (() {
-        final guardedValue = map['restorableByUserIds'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      restorableByUserIds: (() { final guardedValue = map['restorableByUserIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }
+

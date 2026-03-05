@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountArgs {
   /// The name of the Automation Account.
   final pulumi.Input<String> name;
-
   /// Specifies the name of the Resource Group where the Automation Account exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetAccountArgs].
   /// [name] The name of the Automation Account.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Automation Account exists.
-  GetAccountArgs({required this.name, required this.resourceGroupName});
+  GetAccountArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetAccountArgs {
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

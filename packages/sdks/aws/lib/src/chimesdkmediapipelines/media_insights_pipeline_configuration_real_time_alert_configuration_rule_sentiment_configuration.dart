@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration {
   /// Rule name.
   final pulumi.Input<String> ruleName;
-
   /// Sentiment type to match.
   final pulumi.Input<String> sentimentType;
-
   /// Analysis interval.
   final pulumi.Input<int> timePeriod;
 
@@ -30,9 +28,7 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentC
     };
   }
 
-  factory MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration(
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
       sentimentType: pulumi.Input.fromValue(map['sentimentType'] as String),
@@ -40,3 +36,4 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentC
     );
   }
 }
+

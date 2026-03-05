@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipeSourceParametersSelfManagedKafkaParametersCredentials {
   /// The ARN of the Secrets Manager secret containing the credentials.
   final pulumi.Input<String>? basicAuth;
-
   /// The ARN of the Secrets Manager secret containing the credentials.
   final pulumi.Input<String>? clientCertificateTlsAuth;
-
   /// The ARN of the Secrets Manager secret containing the credentials.
   final pulumi.Input<String>? saslScram256Auth;
-
   /// The ARN of the Secrets Manager secret containing the credentials.
   final pulumi.Input<String>? saslScram512Auth;
 
@@ -36,30 +33,13 @@ class PipeSourceParametersSelfManagedKafkaParametersCredentials {
     };
   }
 
-  factory PipeSourceParametersSelfManagedKafkaParametersCredentials.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeSourceParametersSelfManagedKafkaParametersCredentials.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersSelfManagedKafkaParametersCredentials(
-      basicAuth: (() {
-        final guardedValue = map['basicAuth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientCertificateTlsAuth: (() {
-        final guardedValue = map['clientCertificateTlsAuth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      saslScram256Auth: (() {
-        final guardedValue = map['saslScram256Auth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      saslScram512Auth: (() {
-        final guardedValue = map['saslScram512Auth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      basicAuth: (() { final guardedValue = map['basicAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientCertificateTlsAuth: (() { final guardedValue = map['clientCertificateTlsAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      saslScram256Auth: (() { final guardedValue = map['saslScram256Auth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      saslScram512Auth: (() { final guardedValue = map['saslScram512Auth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

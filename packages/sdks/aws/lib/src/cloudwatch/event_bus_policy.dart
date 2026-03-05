@@ -877,10 +877,8 @@ class EventBusPolicy extends pulumi.CustomResource {
   /// The name of the event bus to set the permissions on.
   /// If you omit this, the permissions are set on the `default` event bus.
   late final pulumi.Output<String?> eventBusName;
-
   /// The text of the policy.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -893,11 +891,11 @@ class EventBusPolicy extends pulumi.CustomResource {
     EventBusPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/eventBusPolicy:EventBusPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/eventBusPolicy:EventBusPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     eventBusName = registerOutput<String?>('eventBusName');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
@@ -921,11 +919,11 @@ class EventBusPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/eventBusPolicy:EventBusPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/eventBusPolicy:EventBusPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     eventBusName = registerOutput<String?>('eventBusName');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

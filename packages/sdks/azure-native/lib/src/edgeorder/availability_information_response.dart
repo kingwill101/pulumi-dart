@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AvailabilityInformationResponse {
   /// Current availability stage of the product.
   final pulumi.Input<String> availabilityStage;
-
   /// Reason why the product is disabled.
   final pulumi.Input<String> disabledReason;
-
   /// Message for why the product is disabled.
   final pulumi.Input<String> disabledReasonMessage;
 
@@ -33,13 +31,10 @@ class AvailabilityInformationResponse {
 
   factory AvailabilityInformationResponse.fromMap(Map<String, dynamic> map) {
     return AvailabilityInformationResponse(
-      availabilityStage: pulumi.Input.fromValue(
-        map['availabilityStage'] as String,
-      ),
+      availabilityStage: pulumi.Input.fromValue(map['availabilityStage'] as String),
       disabledReason: pulumi.Input.fromValue(map['disabledReason'] as String),
-      disabledReasonMessage: pulumi.Input.fromValue(
-        map['disabledReasonMessage'] as String,
-      ),
+      disabledReasonMessage: pulumi.Input.fromValue(map['disabledReasonMessage'] as String),
     );
   }
 }
+

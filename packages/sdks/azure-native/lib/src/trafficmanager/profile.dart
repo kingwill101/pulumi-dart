@@ -1640,40 +1640,28 @@ import 'profile_args.dart';
 class Profile extends pulumi.CustomResource {
   /// The list of allowed endpoint record types.
   late final pulumi.Output<List<String>?> allowedEndpointRecordTypes;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The DNS settings of the Traffic Manager profile.
   late final pulumi.Output<DnsConfigResponse?> dnsConfig;
-
   /// The list of endpoints in the Traffic Manager profile.
   late final pulumi.Output<List<Map<String, dynamic>>?> endpoints;
-
   /// The Azure Region where the resource lives
   late final pulumi.Output<String?> location;
-
   /// Maximum number of endpoints to be returned for MultiValue routing type.
   late final pulumi.Output<double?> maxReturn;
-
   /// The endpoint monitoring settings of the Traffic Manager profile.
   late final pulumi.Output<MonitorConfigResponse?> monitorConfig;
-
   /// The name of the resource
   late final pulumi.Output<String?> name;
-
   /// The status of the Traffic Manager profile.
   late final pulumi.Output<String?> profileStatus;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The traffic routing method of the Traffic Manager profile.
   late final pulumi.Output<String?> trafficRoutingMethod;
-
   /// Indicates whether Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null, indicates 'Disabled'. Enabling this feature will increase the cost of the Traffic Manage profile.
   late final pulumi.Output<String?> trafficViewEnrollmentStatus;
-
   /// The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
   late final pulumi.Output<String?> type;
 
@@ -1686,45 +1674,23 @@ class Profile extends pulumi.CustomResource {
     ProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:trafficmanager:Profile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowedEndpointRecordTypes = registerOutput<List<String>?>(
-      'allowedEndpointRecordTypes',
-    );
+          'azure-native:trafficmanager:Profile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowedEndpointRecordTypes = registerOutput<List<String>?>('allowedEndpointRecordTypes');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dnsConfig = registerOutput<DnsConfigResponse?>(
-      'dnsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DnsConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dnsConfig = registerOutput<DnsConfigResponse?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoints = registerOutput<List<Map<String, dynamic>>?>('endpoints');
     location = registerOutput<String?>('location');
     maxReturn = registerOutput<double?>('maxReturn');
-    monitorConfig = registerOutput<MonitorConfigResponse?>(
-      'monitorConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MonitorConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monitorConfig = registerOutput<MonitorConfigResponse?>('monitorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String?>('name');
     profileStatus = registerOutput<String?>('profileStatus');
     tags = registerOutput<Map<String, String>?>('tags');
     trafficRoutingMethod = registerOutput<String?>('trafficRoutingMethod');
-    trafficViewEnrollmentStatus = registerOutput<String?>(
-      'trafficViewEnrollmentStatus',
-    );
+    trafficViewEnrollmentStatus = registerOutput<String?>('trafficViewEnrollmentStatus');
     type = registerOutput<String?>('type');
   }
 }

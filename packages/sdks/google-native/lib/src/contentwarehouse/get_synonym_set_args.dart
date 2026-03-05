@@ -32,12 +32,9 @@ class GetSynonymSetArgs {
   factory GetSynonymSetArgs.fromMap(Map<String, dynamic> map) {
     return GetSynonymSetArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       synonymSetId: pulumi.Input.fromValue(map['synonymSetId'] as String),
     );
   }
 }
+

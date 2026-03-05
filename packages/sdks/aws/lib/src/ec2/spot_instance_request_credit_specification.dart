@@ -8,21 +8,20 @@ class SpotInstanceRequestCreditSpecification {
 
   /// Creates a new [SpotInstanceRequestCreditSpecification].
   /// [cpuCredits] Credit option for CPU usage. Valid values include `standard` or `unlimited`. T3 instances are launched as unlimited by default. T2 instances are launched as standard by default.
-  SpotInstanceRequestCreditSpecification({this.cpuCredits});
+  SpotInstanceRequestCreditSpecification({
+    this.cpuCredits,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpuCredits': ?cpuCredits};
+    return <String, dynamic>{
+      'cpuCredits': ?cpuCredits,
+    };
   }
 
-  factory SpotInstanceRequestCreditSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpotInstanceRequestCreditSpecification.fromMap(Map<String, dynamic> map) {
     return SpotInstanceRequestCreditSpecification(
-      cpuCredits: (() {
-        final guardedValue = map['cpuCredits'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cpuCredits: (() { final guardedValue = map['cpuCredits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

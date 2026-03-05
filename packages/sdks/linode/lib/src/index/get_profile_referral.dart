@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProfileReferral {
   /// The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
   final pulumi.Input<String> code;
-
   /// The number of completed signups with the referral code.
   final pulumi.Input<int> completed;
-
   /// The amount of account credit in US Dollars issued to the account through the referral program.
   final pulumi.Input<double> credit;
-
   /// The number of pending signups for the referral code. To receive credit the signups must be completed.
   final pulumi.Input<int> pending;
-
   /// The number of users who have signed up with the referral code.
   final pulumi.Input<int> total;
-
   /// The referral URL.
   final pulumi.Input<String> url;
 
@@ -59,3 +54,4 @@ class GetProfileReferral {
     );
   }
 }
+

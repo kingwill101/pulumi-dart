@@ -7,19 +7,20 @@ class LaunchTemplateImageOptions {
 
   /// Creates a new [LaunchTemplateImageOptions].
   /// [loginAsNonRoot] Optional.
-  LaunchTemplateImageOptions({this.loginAsNonRoot});
+  LaunchTemplateImageOptions({
+    this.loginAsNonRoot,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'loginAsNonRoot': ?loginAsNonRoot};
+    return <String, dynamic>{
+      'loginAsNonRoot': ?loginAsNonRoot,
+    };
   }
 
   factory LaunchTemplateImageOptions.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateImageOptions(
-      loginAsNonRoot: (() {
-        final guardedValue = map['loginAsNonRoot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      loginAsNonRoot: (() { final guardedValue = map['loginAsNonRoot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum SyncMode {
     throw ArgumentError('Unknown SyncMode value: $value');
   }
 }
+

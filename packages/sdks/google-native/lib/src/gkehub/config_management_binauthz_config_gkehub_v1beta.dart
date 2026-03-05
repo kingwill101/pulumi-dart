@@ -9,21 +9,20 @@ class ConfigManagementBinauthzConfigGkehubV1beta {
 
   /// Creates a new [ConfigManagementBinauthzConfigGkehubV1beta].
   /// [enabled] Whether binauthz is enabled in this cluster.
-  ConfigManagementBinauthzConfigGkehubV1beta({this.enabled});
+  ConfigManagementBinauthzConfigGkehubV1beta({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory ConfigManagementBinauthzConfigGkehubV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigManagementBinauthzConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ConfigManagementBinauthzConfigGkehubV1beta(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

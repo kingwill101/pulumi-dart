@@ -8,19 +8,20 @@ class RuntimeTemplateEncryptionSpec {
 
   /// Creates a new [RuntimeTemplateEncryptionSpec].
   /// [kmsKeyName] The Cloud KMS encryption key (customer-managed encryption key) used to protect the runtime.
-  RuntimeTemplateEncryptionSpec({this.kmsKeyName});
+  RuntimeTemplateEncryptionSpec({
+    this.kmsKeyName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyName': ?kmsKeyName};
+    return <String, dynamic>{
+      'kmsKeyName': ?kmsKeyName,
+    };
   }
 
   factory RuntimeTemplateEncryptionSpec.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateEncryptionSpec(
-      kmsKeyName: (() {
-        final guardedValue = map['kmsKeyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

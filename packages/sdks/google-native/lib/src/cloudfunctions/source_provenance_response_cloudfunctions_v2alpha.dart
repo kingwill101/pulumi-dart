@@ -8,14 +8,10 @@ import 'storage_source_response_cloudfunctions_v2alpha.dart';
 class SourceProvenanceResponseCloudfunctionsV2alpha {
   /// A copy of the build's `source.git_uri`, if exists, with any commits resolved.
   final pulumi.Input<String> gitUri;
-
   /// A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
-  final pulumi.Input<RepoSourceResponseCloudfunctionsV2alpha>
-  resolvedRepoSource;
-
+  final pulumi.Input<RepoSourceResponseCloudfunctionsV2alpha> resolvedRepoSource;
   /// A copy of the build's `source.storage_source`, if exists, with any generations resolved.
-  final pulumi.Input<StorageSourceResponseCloudfunctionsV2alpha>
-  resolvedStorageSource;
+  final pulumi.Input<StorageSourceResponseCloudfunctionsV2alpha> resolvedStorageSource;
 
   /// Creates a new [SourceProvenanceResponseCloudfunctionsV2alpha].
   /// [gitUri] A copy of the build's `source.git_uri`, if exists, with any commits resolved.
@@ -30,34 +26,17 @@ class SourceProvenanceResponseCloudfunctionsV2alpha {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'gitUri': gitUri,
-      'resolvedRepoSource':
-          pulumi.Input.mapInputValue<
-            RepoSourceResponseCloudfunctionsV2alpha,
-            Map<String, dynamic>
-          >(resolvedRepoSource, (value) => value.toMap()),
-      'resolvedStorageSource':
-          pulumi.Input.mapInputValue<
-            StorageSourceResponseCloudfunctionsV2alpha,
-            Map<String, dynamic>
-          >(resolvedStorageSource, (value) => value.toMap()),
+      'resolvedRepoSource': pulumi.Input.mapInputValue<RepoSourceResponseCloudfunctionsV2alpha, Map<String, dynamic>>(resolvedRepoSource, (value) => value.toMap()),
+      'resolvedStorageSource': pulumi.Input.mapInputValue<StorageSourceResponseCloudfunctionsV2alpha, Map<String, dynamic>>(resolvedStorageSource, (value) => value.toMap()),
     };
   }
 
-  factory SourceProvenanceResponseCloudfunctionsV2alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SourceProvenanceResponseCloudfunctionsV2alpha.fromMap(Map<String, dynamic> map) {
     return SourceProvenanceResponseCloudfunctionsV2alpha(
       gitUri: pulumi.Input.fromValue(map['gitUri'] as String),
-      resolvedRepoSource: pulumi.Input.fromValue(
-        RepoSourceResponseCloudfunctionsV2alpha.fromMap(
-          (map['resolvedRepoSource']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resolvedStorageSource: pulumi.Input.fromValue(
-        StorageSourceResponseCloudfunctionsV2alpha.fromMap(
-          (map['resolvedStorageSource']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      resolvedRepoSource: pulumi.Input.fromValue(RepoSourceResponseCloudfunctionsV2alpha.fromMap((map['resolvedRepoSource']! as Map).cast<String, dynamic>())),
+      resolvedStorageSource: pulumi.Input.fromValue(StorageSourceResponseCloudfunctionsV2alpha.fromMap((map['resolvedStorageSource']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -5,8 +5,7 @@ import 'get_virtual_node_spec_listener_tl_certificate.dart';
 import 'get_virtual_node_spec_listener_tl_validation.dart';
 
 class GetVirtualNodeSpecListenerTl {
-  final pulumi.Input<List<GetVirtualNodeSpecListenerTlCertificate>>
-  certificates;
+  final pulumi.Input<List<GetVirtualNodeSpecListenerTlCertificate>> certificates;
   final pulumi.Input<String> mode;
   final pulumi.Input<List<GetVirtualNodeSpecListenerTlValidation>> validations;
 
@@ -22,53 +21,18 @@ class GetVirtualNodeSpecListenerTl {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificates':
-          pulumi.Input.mapInputValue<
-            List<GetVirtualNodeSpecListenerTlCertificate>,
-            List<Map<String, dynamic>>
-          >(
-            certificates,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetVirtualNodeSpecListenerTlCertificate,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'certificates': pulumi.Input.mapInputValue<List<GetVirtualNodeSpecListenerTlCertificate>, List<Map<String, dynamic>>>(certificates, (value) => pulumi.Input.encodeList<GetVirtualNodeSpecListenerTlCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
       'mode': mode,
-      'validations':
-          pulumi.Input.mapInputValue<
-            List<GetVirtualNodeSpecListenerTlValidation>,
-            List<Map<String, dynamic>>
-          >(
-            validations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetVirtualNodeSpecListenerTlValidation,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'validations': pulumi.Input.mapInputValue<List<GetVirtualNodeSpecListenerTlValidation>, List<Map<String, dynamic>>>(validations, (value) => pulumi.Input.encodeList<GetVirtualNodeSpecListenerTlValidation, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetVirtualNodeSpecListenerTl.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTl(
-      certificates: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetVirtualNodeSpecListenerTlCertificate>(
-          map['certificates']!,
-          (value) => GetVirtualNodeSpecListenerTlCertificate.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      certificates: pulumi.Input.fromValue(pulumi.Input.decodeList<GetVirtualNodeSpecListenerTlCertificate>(map['certificates']!, (value) => GetVirtualNodeSpecListenerTlCertificate.fromMap((value as Map).cast<String, dynamic>()))),
       mode: pulumi.Input.fromValue(map['mode'] as String),
-      validations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetVirtualNodeSpecListenerTlValidation>(
-          map['validations']!,
-          (value) => GetVirtualNodeSpecListenerTlValidation.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      validations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetVirtualNodeSpecListenerTlValidation>(map['validations']!, (value) => GetVirtualNodeSpecListenerTlValidation.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

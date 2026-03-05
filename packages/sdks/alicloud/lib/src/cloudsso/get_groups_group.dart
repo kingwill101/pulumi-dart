@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupsGroup {
   /// The Created Time of the Directory.
   final pulumi.Input<String> createTime;
-
   /// The Description of the Directory.
   final pulumi.Input<String> description;
-
   /// The ID of the Directory.
   final pulumi.Input<String> directoryId;
-
   /// The Group ID of the group.
   final pulumi.Input<String> groupId;
-
   /// The Name of the group.
   final pulumi.Input<String> groupName;
-
   /// The ID of the Group.
   final pulumi.Input<String> id;
-
   /// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
   final pulumi.Input<String> provisionType;
 
@@ -66,3 +60,4 @@ class GetGroupsGroup {
     );
   }
 }
+

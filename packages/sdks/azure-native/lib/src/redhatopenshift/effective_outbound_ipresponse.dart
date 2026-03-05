@@ -9,19 +9,20 @@ class EffectiveOutboundIPResponse {
 
   /// Creates a new [EffectiveOutboundIPResponse].
   /// [id] The fully qualified Azure resource id of an IP address resource.
-  EffectiveOutboundIPResponse({this.id});
+  EffectiveOutboundIPResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory EffectiveOutboundIPResponse.fromMap(Map<String, dynamic> map) {
     return EffectiveOutboundIPResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

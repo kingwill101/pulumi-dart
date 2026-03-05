@@ -12,10 +12,14 @@ class AccountAliasArgs {
 
   /// Creates a new [AccountAliasArgs].
   /// [accountAlias] The account alias
-  AccountAliasArgs({required this.accountAlias});
+  AccountAliasArgs({
+    required this.accountAlias,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accountAlias': accountAlias};
+    return <String, dynamic>{
+      'accountAlias': accountAlias,
+    };
   }
 
   factory AccountAliasArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class AccountAliasArgs {
     );
   }
 }
+

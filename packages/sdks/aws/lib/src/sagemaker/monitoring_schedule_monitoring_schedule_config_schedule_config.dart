@@ -13,16 +13,15 @@ class MonitoringScheduleMonitoringScheduleConfigScheduleConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scheduleExpression': scheduleExpression};
+    return <String, dynamic>{
+      'scheduleExpression': scheduleExpression,
+    };
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigScheduleConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitoringScheduleMonitoringScheduleConfigScheduleConfig.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigScheduleConfig(
-      scheduleExpression: pulumi.Input.fromValue(
-        map['scheduleExpression'] as String,
-      ),
+      scheduleExpression: pulumi.Input.fromValue(map['scheduleExpression'] as String),
     );
   }
 }
+

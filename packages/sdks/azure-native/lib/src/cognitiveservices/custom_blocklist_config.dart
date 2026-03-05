@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomBlocklistConfig {
   /// If blocking would occur.
   final pulumi.Input<bool>? blocking;
-
   /// Name of ContentFilter.
   final pulumi.Input<String>? blocklistName;
-
   /// Content source to apply the Content Filters.
   final pulumi.Input<String>? source;
 
@@ -17,7 +15,11 @@ class CustomBlocklistConfig {
   /// [blocking] If blocking would occur.
   /// [blocklistName] Name of ContentFilter.
   /// [source] Content source to apply the Content Filters.
-  CustomBlocklistConfig({this.blocking, this.blocklistName, this.source});
+  CustomBlocklistConfig({
+    this.blocking,
+    this.blocklistName,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class CustomBlocklistConfig {
 
   factory CustomBlocklistConfig.fromMap(Map<String, dynamic> map) {
     return CustomBlocklistConfig(
-      blocking: (() {
-        final guardedValue = map['blocking'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      blocklistName: (() {
-        final guardedValue = map['blocklistName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      blocking: (() { final guardedValue = map['blocking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      blocklistName: (() { final guardedValue = map['blocklistName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

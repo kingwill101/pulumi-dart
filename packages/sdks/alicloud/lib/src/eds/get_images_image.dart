@@ -5,37 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImagesImage {
   /// The creation time of the image.
   final pulumi.Input<String> createTime;
-
   /// The size of data disk of the image.
   final pulumi.Input<int> dataDiskSize;
-
   /// The description of the image.
   final pulumi.Input<String> description;
-
   /// The Gpu Category of the image.
   final pulumi.Input<bool> gpuCategory;
-
   /// The ID of the Image.
   final pulumi.Input<String> id;
-
   /// The image id of the image.
   final pulumi.Input<String> imageId;
-
   /// The image name.
   final pulumi.Input<String> imageName;
-
   /// The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
   final pulumi.Input<String> imageType;
-
   /// The os type of the image.
   final pulumi.Input<String> osType;
-
   /// The progress of the image.
   final pulumi.Input<String> progress;
-
   /// The size of the image.
   final pulumi.Input<int> size;
-
   /// The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
   final pulumi.Input<String> status;
 
@@ -101,3 +90,4 @@ class GetImagesImage {
     );
   }
 }
+

@@ -509,34 +509,27 @@ class AggregateRemediation extends pulumi.CustomResource {
   /// The account Group ID.
   /// For more information about how to obtain the account group ID, see ListAggregators.
   late final pulumi.Output<String> aggregatorId;
-
   /// The rule ID.
   /// For more information about how to obtain the rule ID, see [ListAggregateConfigRules].
   late final pulumi.Output<String> configRuleId;
-
   /// Correction of execution mode. Value:
   /// - NON_EXECUTION: Not executed.
   /// - AUTO_EXECUTION: Automatically executed.
   /// - MANUAL_EXECUTION: Execute manually.
   /// - NOT_CONFIG: Not set.
   late final pulumi.Output<String> invokeType;
-
   /// Multi-account remediation ID
   late final pulumi.Output<String> remediationId;
-
   /// Correct the parameters of the settings.
   /// For more information about how to obtain the parameters of remediation settings, see the parameter 'Template definition' in ListRemediationTemplates '.
   late final pulumi.Output<String> remediationOriginParams;
-
   /// The source of the template to perform the correction. Value:
   /// - ALIYUN (default): Official website template.
   /// - CUSTOM: CUSTOM template.
   /// - NONE: NONE.
   late final pulumi.Output<String?> remediationSourceType;
-
   /// The ID of the correction template.
   late final pulumi.Output<String> remediationTemplateId;
-
   /// Remediation type. Value:
   /// - OOS: Operation and maintenance orchestration (Template correction).
   /// - FC: Function Compute (custom correction).
@@ -551,11 +544,11 @@ class AggregateRemediation extends pulumi.CustomResource {
     AggregateRemediationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/aggregateRemediation:AggregateRemediation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cfg/aggregateRemediation:AggregateRemediation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aggregatorId = registerOutput<String>('aggregatorId');
     configRuleId = registerOutput<String>('configRuleId');
     invokeType = registerOutput<String>('invokeType');
@@ -584,11 +577,11 @@ class AggregateRemediation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/aggregateRemediation:AggregateRemediation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cfg/aggregateRemediation:AggregateRemediation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aggregatorId = registerOutput<String>('aggregatorId');
     configRuleId = registerOutput<String>('configRuleId');
     invokeType = registerOutput<String>('invokeType');

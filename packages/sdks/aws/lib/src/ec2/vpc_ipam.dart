@@ -268,47 +268,33 @@ import 'vpc_ipam_state.dart';
 class VpcIpam extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of IPAM
   late final pulumi.Output<String> arn;
-
   /// Enables you to quickly delete an IPAM, private scopes, pools in private scopes, and any allocations in the pools in private scopes.
   late final pulumi.Output<bool?> cascade;
-
   /// The IPAM's default resource discovery association ID.
   late final pulumi.Output<String> defaultResourceDiscoveryAssociationId;
-
   /// The IPAM's default resource discovery ID.
   late final pulumi.Output<String> defaultResourceDiscoveryId;
-
   /// A description for the IPAM.
   late final pulumi.Output<String?> description;
-
   /// Enable this option to use your own GUA ranges as private IPv6 addresses. Default: `false`.
   late final pulumi.Output<bool?> enablePrivateGua;
-
   /// AWS account that is charged for active IP addresses managed in IPAM. Valid values are `ipam-owner` (default) and `resource-owner`.
   late final pulumi.Output<String> meteredAccount;
-
   /// Determines which locales can be chosen when you create pools. Locale is the Region where you want to make an IPAM pool available for allocations. You can only create pools with locales that match the operating Regions of the IPAM. You can only create VPCs from a pool whose locale matches the VPC's Region. You specify a region using the region_name parameter. You **must** set your provider block region as an operating_region.
   late final pulumi.Output<List<Map<String, dynamic>>> operatingRegions;
-
   /// The ID of the IPAM's private scope. A scope is a top-level container in IPAM. Each scope represents an IP-independent network. Scopes enable you to represent networks where you have overlapping IP space. When you create an IPAM, IPAM automatically creates two scopes: public and private. The private scope is intended for private IP space. The public scope is intended for all internet-routable IP space.
   late final pulumi.Output<String> privateDefaultScopeId;
-
   /// The ID of the IPAM's public scope. A scope is a top-level container in IPAM. Each scope represents an IP-independent network. Scopes enable you to represent networks where you have overlapping IP space. When you create an IPAM, IPAM automatically creates two scopes: public and private. The private scope is intended for private
   /// IP space. The public scope is intended for all internet-routable IP space.
   late final pulumi.Output<String> publicDefaultScopeId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The number of scopes in the IPAM.
   late final pulumi.Output<int> scopeCount;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// specifies the IPAM tier. Valid options include `free` and `advanced`. Default is `advanced`.
   late final pulumi.Output<String?> tier;
 
@@ -321,25 +307,19 @@ class VpcIpam extends pulumi.CustomResource {
     VpcIpamArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcIpam:VpcIpam',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcIpam:VpcIpam',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     cascade = registerOutput<bool?>('cascade');
-    defaultResourceDiscoveryAssociationId = registerOutput<String>(
-      'defaultResourceDiscoveryAssociationId',
-    );
-    defaultResourceDiscoveryId = registerOutput<String>(
-      'defaultResourceDiscoveryId',
-    );
+    defaultResourceDiscoveryAssociationId = registerOutput<String>('defaultResourceDiscoveryAssociationId');
+    defaultResourceDiscoveryId = registerOutput<String>('defaultResourceDiscoveryId');
     description = registerOutput<String?>('description');
     enablePrivateGua = registerOutput<bool?>('enablePrivateGua');
     meteredAccount = registerOutput<String>('meteredAccount');
-    operatingRegions = registerOutput<List<Map<String, dynamic>>>(
-      'operatingRegions',
-    );
+    operatingRegions = registerOutput<List<Map<String, dynamic>>>('operatingRegions');
     privateDefaultScopeId = registerOutput<String>('privateDefaultScopeId');
     publicDefaultScopeId = registerOutput<String>('publicDefaultScopeId');
     region = registerOutput<String>('region');
@@ -367,25 +347,19 @@ class VpcIpam extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcIpam:VpcIpam',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcIpam:VpcIpam',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     cascade = registerOutput<bool?>('cascade');
-    defaultResourceDiscoveryAssociationId = registerOutput<String>(
-      'defaultResourceDiscoveryAssociationId',
-    );
-    defaultResourceDiscoveryId = registerOutput<String>(
-      'defaultResourceDiscoveryId',
-    );
+    defaultResourceDiscoveryAssociationId = registerOutput<String>('defaultResourceDiscoveryAssociationId');
+    defaultResourceDiscoveryId = registerOutput<String>('defaultResourceDiscoveryId');
     description = registerOutput<String?>('description');
     enablePrivateGua = registerOutput<bool?>('enablePrivateGua');
     meteredAccount = registerOutput<String>('meteredAccount');
-    operatingRegions = registerOutput<List<Map<String, dynamic>>>(
-      'operatingRegions',
-    );
+    operatingRegions = registerOutput<List<Map<String, dynamic>>>('operatingRegions');
     privateDefaultScopeId = registerOutput<String>('privateDefaultScopeId');
     publicDefaultScopeId = registerOutput<String>('publicDefaultScopeId');
     region = registerOutput<String>('region');

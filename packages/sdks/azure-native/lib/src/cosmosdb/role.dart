@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Role {
   /// The database name the role is applied.
   final pulumi.Input<String>? db;
-
   /// The role name.
   final pulumi.Input<String>? role;
 
   /// Creates a new [Role].
   /// [db] The database name the role is applied.
   /// [role] The role name.
-  Role({this.db, this.role});
+  Role({
+    this.db,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'db': ?db, 'role': ?role};
+    return <String, dynamic>{
+      'db': ?db,
+      'role': ?role,
+    };
   }
 
   factory Role.fromMap(Map<String, dynamic> map) {
     return Role(
-      db: (() {
-        final guardedValue = map['db'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      role: (() {
-        final guardedValue = map['role'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      db: (() { final guardedValue = map['db']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

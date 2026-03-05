@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppSitesControllerArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Site name
   final pulumi.Input<String> siteName;
-
   /// Web app site name.
   final pulumi.Input<String> webAppSiteName;
 
@@ -36,11 +34,10 @@ class GetWebAppSitesControllerArgs {
 
   factory GetWebAppSitesControllerArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppSitesControllerArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       siteName: pulumi.Input.fromValue(map['siteName'] as String),
       webAppSiteName: pulumi.Input.fromValue(map['webAppSiteName'] as String),
     );
   }
 }
+

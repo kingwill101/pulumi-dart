@@ -7,21 +7,20 @@ class WorkspaceConnectionSharedAccessSignature {
 
   /// Creates a new [WorkspaceConnectionSharedAccessSignature].
   /// [sas] Optional.
-  WorkspaceConnectionSharedAccessSignature({this.sas});
+  WorkspaceConnectionSharedAccessSignature({
+    this.sas,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sas': ?sas};
+    return <String, dynamic>{
+      'sas': ?sas,
+    };
   }
 
-  factory WorkspaceConnectionSharedAccessSignature.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkspaceConnectionSharedAccessSignature.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionSharedAccessSignature(
-      sas: (() {
-        final guardedValue = map['sas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sas: (() { final guardedValue = map['sas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

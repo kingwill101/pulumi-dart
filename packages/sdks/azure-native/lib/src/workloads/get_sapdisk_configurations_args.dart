@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSAPDiskConfigurationsArgs {
   /// The geo-location where the SAP resources will be created.
   final pulumi.Input<String> appLocation;
-
   /// The database type. Eg: HANA, DB2, etc
   final pulumi.Input<String> databaseType;
-
   /// The VM SKU for database instance.
   final pulumi.Input<String> dbVmSku;
-
   /// The deployment type. Eg: SingleServer/ThreeTier
   final pulumi.Input<String> deploymentType;
-
   /// Defines the environment type - Production/Non Production.
   final pulumi.Input<String> environment;
-
   /// The name of Azure region.
   final pulumi.Input<String> location;
-
   /// Defines the SAP Product type.
   final pulumi.Input<String> sapProduct;
 
@@ -70,3 +64,4 @@ class GetSAPDiskConfigurationsArgs {
     );
   }
 }
+

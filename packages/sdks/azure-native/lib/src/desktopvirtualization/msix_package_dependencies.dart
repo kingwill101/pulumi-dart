@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MsixPackageDependencies {
   /// Name of package dependency.
   final pulumi.Input<String>? dependencyName;
-
   /// Dependency version required.
   final pulumi.Input<String>? minVersion;
-
   /// Name of dependency publisher.
   final pulumi.Input<String>? publisher;
 
@@ -33,21 +31,10 @@ class MsixPackageDependencies {
 
   factory MsixPackageDependencies.fromMap(Map<String, dynamic> map) {
     return MsixPackageDependencies(
-      dependencyName: (() {
-        final guardedValue = map['dependencyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      minVersion: (() {
-        final guardedValue = map['minVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publisher: (() {
-        final guardedValue = map['publisher'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dependencyName: (() { final guardedValue = map['dependencyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minVersion: (() { final guardedValue = map['minVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publisher: (() { final guardedValue = map['publisher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,42 +5,24 @@ import 'get_v3_functions_function_oss_mount_config_mount_point.dart';
 
 class GetV3FunctionsFunctionOssMountConfig {
   /// OSS mount point list.
-  final pulumi.Input<List<GetV3FunctionsFunctionOssMountConfigMountPoint>>
-  mountPoints;
+  final pulumi.Input<List<GetV3FunctionsFunctionOssMountConfigMountPoint>> mountPoints;
 
   /// Creates a new [GetV3FunctionsFunctionOssMountConfig].
   /// [mountPoints] OSS mount point list.
-  GetV3FunctionsFunctionOssMountConfig({required this.mountPoints});
+  GetV3FunctionsFunctionOssMountConfig({
+    required this.mountPoints,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mountPoints':
-          pulumi.Input.mapInputValue<
-            List<GetV3FunctionsFunctionOssMountConfigMountPoint>,
-            List<Map<String, dynamic>>
-          >(
-            mountPoints,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetV3FunctionsFunctionOssMountConfigMountPoint,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'mountPoints': pulumi.Input.mapInputValue<List<GetV3FunctionsFunctionOssMountConfigMountPoint>, List<Map<String, dynamic>>>(mountPoints, (value) => pulumi.Input.encodeList<GetV3FunctionsFunctionOssMountConfigMountPoint, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetV3FunctionsFunctionOssMountConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetV3FunctionsFunctionOssMountConfig.fromMap(Map<String, dynamic> map) {
     return GetV3FunctionsFunctionOssMountConfig(
-      mountPoints: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetV3FunctionsFunctionOssMountConfigMountPoint>(
-          map['mountPoints']!,
-          (value) => GetV3FunctionsFunctionOssMountConfigMountPoint.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      mountPoints: pulumi.Input.fromValue(pulumi.Input.decodeList<GetV3FunctionsFunctionOssMountConfigMountPoint>(map['mountPoints']!, (value) => GetV3FunctionsFunctionOssMountConfigMountPoint.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

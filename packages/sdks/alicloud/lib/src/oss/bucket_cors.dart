@@ -275,10 +275,8 @@ import 'bucket_cors_state.dart';
 class BucketCors extends pulumi.CustomResource {
   /// The name of the Bucket.
   late final pulumi.Output<String> bucket;
-
   /// The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
   late final pulumi.Output<List<Map<String, dynamic>>> corsRules;
-
   /// Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
   late final pulumi.Output<bool> responseVary;
 
@@ -291,11 +289,11 @@ class BucketCors extends pulumi.CustomResource {
     BucketCorsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketCors:BucketCors',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketCors:BucketCors',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     corsRules = registerOutput<List<Map<String, dynamic>>>('corsRules');
     responseVary = registerOutput<bool>('responseVary');
@@ -319,11 +317,11 @@ class BucketCors extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketCors:BucketCors',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketCors:BucketCors',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     corsRules = registerOutput<List<Map<String, dynamic>>>('corsRules');
     responseVary = registerOutput<bool>('responseVary');

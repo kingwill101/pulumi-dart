@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BigQueryIODetailsResponse {
   /// Dataset accessed in the connection.
   final pulumi.Input<String> dataset;
-
   /// Project accessed in the connection.
   final pulumi.Input<String> project;
-
   /// Query used to access data in the connection.
   final pulumi.Input<String> query;
-
   /// Table accessed in the connection.
   final pulumi.Input<String> table;
 
@@ -46,3 +43,4 @@ class BigQueryIODetailsResponse {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceTypeRegistrationPropertiesResourceCache {
   /// Enable resource cache.
   final pulumi.Input<bool>? enableResourceCache;
-
   /// Resource cache expiration timespan. This is a TimeSpan property.
   final pulumi.Input<String>? resourceCacheExpirationTimespan;
 
@@ -25,20 +24,11 @@ class ResourceTypeRegistrationPropertiesResourceCache {
     };
   }
 
-  factory ResourceTypeRegistrationPropertiesResourceCache.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceTypeRegistrationPropertiesResourceCache.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceCache(
-      enableResourceCache: (() {
-        final guardedValue = map['enableResourceCache'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceCacheExpirationTimespan: (() {
-        final guardedValue = map['resourceCacheExpirationTimespan'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enableResourceCache: (() { final guardedValue = map['enableResourceCache']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceCacheExpirationTimespan: (() { final guardedValue = map['resourceCacheExpirationTimespan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

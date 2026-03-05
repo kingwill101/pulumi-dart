@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GovernanceRuleMetadataResponse {
   /// Governance rule Created by object id (GUID)
   final pulumi.Input<String> createdBy;
-
   /// Governance rule creation date
   final pulumi.Input<String> createdOn;
-
   /// Governance rule last updated by object id (GUID)
   final pulumi.Input<String> updatedBy;
-
   /// Governance rule last update date
   final pulumi.Input<String> updatedOn;
 
@@ -46,3 +43,4 @@ class GovernanceRuleMetadataResponse {
     );
   }
 }
+

@@ -8,17 +8,20 @@ class DomainDevicesTpmBackendEmulatorEncryption {
 
   /// Creates a new [DomainDevicesTpmBackendEmulatorEncryption].
   /// [secret] Sets the secret used for the encryption configuration for the emulator TPM backend.
-  DomainDevicesTpmBackendEmulatorEncryption({required this.secret});
+  DomainDevicesTpmBackendEmulatorEncryption({
+    required this.secret,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secret': secret};
+    return <String, dynamic>{
+      'secret': secret,
+    };
   }
 
-  factory DomainDevicesTpmBackendEmulatorEncryption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesTpmBackendEmulatorEncryption.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendEmulatorEncryption(
       secret: pulumi.Input.fromValue(map['secret'] as String),
     );
   }
 }
+

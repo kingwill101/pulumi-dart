@@ -9,19 +9,20 @@ class ComputeProperties {
 
   /// Creates a new [ComputeProperties].
   /// [tier] The compute tier to assign to the cluster, where each tier maps to a virtual-core and memory size. Example values: 'M30', 'M40'.
-  ComputeProperties({this.tier});
+  ComputeProperties({
+    this.tier,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tier': ?tier};
+    return <String, dynamic>{
+      'tier': ?tier,
+    };
   }
 
   factory ComputeProperties.fromMap(Map<String, dynamic> map) {
     return ComputeProperties(
-      tier: (() {
-        final guardedValue = map['tier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

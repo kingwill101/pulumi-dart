@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentArgs {
   /// The name of the environment.
   final pulumi.Input<String> environmentName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of Azure API Center service.
   final pulumi.Input<String> serviceName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -43,11 +40,10 @@ class GetEnvironmentArgs {
   factory GetEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentArgs(
       environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRemediationAtResourceArgs {
   /// The name of the remediation.
   final pulumi.Input<String> remediationName;
-
   /// Resource ID.
   final pulumi.Input<String> resourceId;
 
@@ -35,3 +34,4 @@ class GetRemediationAtResourceArgs {
     );
   }
 }
+

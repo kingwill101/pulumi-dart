@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GeoFilterResponse {
   /// Action of the geo filter, i.e. allow or block access.
   final pulumi.Input<String> action;
-
   /// Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US.
   final pulumi.Input<List<String>> countryCodes;
-
   /// Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.)
   final pulumi.Input<String> relativePath;
 
@@ -34,10 +32,9 @@ class GeoFilterResponse {
   factory GeoFilterResponse.fromMap(Map<String, dynamic> map) {
     return GeoFilterResponse(
       action: pulumi.Input.fromValue(map['action'] as String),
-      countryCodes: pulumi.Input.fromValue(
-        (map['countryCodes'] as List).cast<String>(),
-      ),
+      countryCodes: pulumi.Input.fromValue((map['countryCodes'] as List).cast<String>()),
       relativePath: pulumi.Input.fromValue(map['relativePath'] as String),
     );
   }
 }
+

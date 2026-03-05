@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlFilterResponse {
   /// This property is reserved for future use. An integer value showing the compatibility level, currently hard-coded to 20.
   final pulumi.Input<int>? compatibilityLevel;
-
   /// Value that indicates whether the rule action requires preprocessing.
   final pulumi.Input<bool>? requiresPreprocessing;
-
   /// The SQL expression. e.g. MyProperty='ABC'
   final pulumi.Input<String>? sqlExpression;
 
@@ -33,21 +31,10 @@ class SqlFilterResponse {
 
   factory SqlFilterResponse.fromMap(Map<String, dynamic> map) {
     return SqlFilterResponse(
-      compatibilityLevel: (() {
-        final guardedValue = map['compatibilityLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      requiresPreprocessing: (() {
-        final guardedValue = map['requiresPreprocessing'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sqlExpression: (() {
-        final guardedValue = map['sqlExpression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      compatibilityLevel: (() { final guardedValue = map['compatibilityLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      requiresPreprocessing: (() { final guardedValue = map['requiresPreprocessing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sqlExpression: (() { final guardedValue = map['sqlExpression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

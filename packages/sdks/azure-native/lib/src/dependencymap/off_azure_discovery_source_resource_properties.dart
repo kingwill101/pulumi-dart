@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OffAzureDiscoverySourceResourceProperties {
   /// Source ArmId of Discovery Source resource
   final pulumi.Input<String> sourceId;
-
   /// Source type of the discoverySource
   /// Expected value is 'OffAzure'.
   final pulumi.Input<String> sourceType;
@@ -20,15 +19,17 @@ class OffAzureDiscoverySourceResourceProperties {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sourceId': sourceId, 'sourceType': sourceType};
+    return <String, dynamic>{
+      'sourceId': sourceId,
+      'sourceType': sourceType,
+    };
   }
 
-  factory OffAzureDiscoverySourceResourceProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OffAzureDiscoverySourceResourceProperties.fromMap(Map<String, dynamic> map) {
     return OffAzureDiscoverySourceResourceProperties(
       sourceId: pulumi.Input.fromValue(map['sourceId'] as String),
       sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
     );
   }
 }
+

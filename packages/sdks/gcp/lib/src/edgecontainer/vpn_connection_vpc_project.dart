@@ -8,19 +8,20 @@ class VpnConnectionVpcProject {
 
   /// Creates a new [VpnConnectionVpcProject].
   /// [projectId] The project of the VPC to connect to. If not specified, it is the same as the cluster project.
-  VpnConnectionVpcProject({this.projectId});
+  VpnConnectionVpcProject({
+    this.projectId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'projectId': ?projectId};
+    return <String, dynamic>{
+      'projectId': ?projectId,
+    };
   }
 
   factory VpnConnectionVpcProject.fromMap(Map<String, dynamic> map) {
     return VpnConnectionVpcProject(
-      projectId: (() {
-        final guardedValue = map['projectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

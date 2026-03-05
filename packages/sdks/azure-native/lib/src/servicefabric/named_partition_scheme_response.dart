@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamedPartitionSchemeResponse {
   /// Array for the names of the partitions.
   final pulumi.Input<List<String>> names;
-
   /// Enumerates the ways that a service can be partitioned.
   /// Expected value is 'Named'.
   final pulumi.Input<String> partitionScheme;
@@ -33,3 +32,4 @@ class NamedPartitionSchemeResponse {
     );
   }
 }
+

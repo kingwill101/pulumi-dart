@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Step {
   /// The kind of step in the Cloud Dataflow job.
   final pulumi.Input<String>? kind;
-
   /// The name that identifies the step. This must be unique for each step with respect to all other steps in the Cloud Dataflow job.
   final pulumi.Input<String>? name;
-
   /// Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
   final pulumi.Input<Map<String, String>>? properties;
 
@@ -17,7 +15,11 @@ class Step {
   /// [kind] The kind of step in the Cloud Dataflow job.
   /// [name] The name that identifies the step. This must be unique for each step with respect to all other steps in the Cloud Dataflow job.
   /// [properties] Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
-  Step({this.kind, this.name, this.properties});
+  Step({
+    this.kind,
+    this.name,
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,23 +31,10 @@ class Step {
 
   factory Step.fromMap(Map<String, dynamic> map) {
     return Step(
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

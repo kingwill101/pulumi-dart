@@ -10,36 +10,24 @@ class CxPageFormParameterAdvancedSettings {
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final pulumi.Input<CxPageFormParameterAdvancedSettingsDtmfSettings>?
-  dtmfSettings;
+  final pulumi.Input<CxPageFormParameterAdvancedSettingsDtmfSettings>? dtmfSettings;
 
   /// Creates a new [CxPageFormParameterAdvancedSettings].
   /// [dtmfSettings] Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
-  CxPageFormParameterAdvancedSettings({this.dtmfSettings});
+  CxPageFormParameterAdvancedSettings({
+    this.dtmfSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dtmfSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxPageFormParameterAdvancedSettingsDtmfSettings,
-            Map<String, dynamic>
-          >(dtmfSettings, (value) => value.toMap()),
+      'dtmfSettings': ?pulumi.Input.mapOptionalInputValue<CxPageFormParameterAdvancedSettingsDtmfSettings, Map<String, dynamic>>(dtmfSettings, (value) => value.toMap()),
     };
   }
 
-  factory CxPageFormParameterAdvancedSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxPageFormParameterAdvancedSettings.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterAdvancedSettings(
-      dtmfSettings: (() {
-        final guardedValue = map['dtmfSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxPageFormParameterAdvancedSettingsDtmfSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      dtmfSettings: (() { final guardedValue = map['dtmfSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxPageFormParameterAdvancedSettingsDtmfSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -11,8 +11,7 @@ enum RequestSchemeMatchConditionParametersOperator {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RequestSchemeMatchConditionParametersOperator value: $value',
-    );
+    throw ArgumentError('Unknown RequestSchemeMatchConditionParametersOperator value: $value');
   }
 }
+

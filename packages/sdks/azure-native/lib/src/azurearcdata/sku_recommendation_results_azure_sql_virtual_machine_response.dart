@@ -8,16 +8,11 @@ import 'sku_recommendation_results_monthly_cost_response.dart';
 class SkuRecommendationResultsAzureSqlVirtualMachineResponse {
   /// The Monthly cost of the particular SKU.
   final pulumi.Input<SkuRecommendationResultsMonthlyCostResponse>? monthlyCost;
-
   /// Number of blocker issues to fix before migrating to the target platform.
   final pulumi.Input<int>? numberOfServerBlockerIssues;
-
   /// The target recommendation Status for this database.
   final pulumi.Input<String>? recommendationStatus;
-  final pulumi.Input<
-    SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku
-  >?
-  targetSku;
+  final pulumi.Input<SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku>? targetSku;
 
   /// Creates a new [SkuRecommendationResultsAzureSqlVirtualMachineResponse].
   /// [monthlyCost] The Monthly cost of the particular SKU.
@@ -33,53 +28,20 @@ class SkuRecommendationResultsAzureSqlVirtualMachineResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'monthlyCost':
-          ?pulumi.Input.mapOptionalInputValue<
-            SkuRecommendationResultsMonthlyCostResponse,
-            Map<String, dynamic>
-          >(monthlyCost, (value) => value.toMap()),
+      'monthlyCost': ?pulumi.Input.mapOptionalInputValue<SkuRecommendationResultsMonthlyCostResponse, Map<String, dynamic>>(monthlyCost, (value) => value.toMap()),
       'numberOfServerBlockerIssues': ?numberOfServerBlockerIssues,
       'recommendationStatus': ?recommendationStatus,
-      'targetSku':
-          ?pulumi.Input.mapOptionalInputValue<
-            SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku,
-            Map<String, dynamic>
-          >(targetSku, (value) => value.toMap()),
+      'targetSku': ?pulumi.Input.mapOptionalInputValue<SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku, Map<String, dynamic>>(targetSku, (value) => value.toMap()),
     };
   }
 
-  factory SkuRecommendationResultsAzureSqlVirtualMachineResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SkuRecommendationResultsAzureSqlVirtualMachineResponse.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationResultsAzureSqlVirtualMachineResponse(
-      monthlyCost: (() {
-        final guardedValue = map['monthlyCost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SkuRecommendationResultsMonthlyCostResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      numberOfServerBlockerIssues: (() {
-        final guardedValue = map['numberOfServerBlockerIssues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      recommendationStatus: (() {
-        final guardedValue = map['recommendationStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetSku: (() {
-        final guardedValue = map['targetSku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      monthlyCost: (() { final guardedValue = map['monthlyCost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SkuRecommendationResultsMonthlyCostResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      numberOfServerBlockerIssues: (() { final guardedValue = map['numberOfServerBlockerIssues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recommendationStatus: (() { final guardedValue = map['recommendationStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetSku: (() { final guardedValue = map['targetSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

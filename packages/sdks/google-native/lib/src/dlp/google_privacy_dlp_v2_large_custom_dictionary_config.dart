@@ -9,11 +9,8 @@ import 'google_privacy_dlp_v2_cloud_storage_path.dart';
 class GooglePrivacyDlpV2LargeCustomDictionaryConfig {
   /// Field in a BigQuery table where each cell represents a dictionary phrase.
   final pulumi.Input<GooglePrivacyDlpV2BigQueryField>? bigQueryField;
-
   /// Set of files containing newline-delimited lists of dictionary phrases.
-  final pulumi.Input<GooglePrivacyDlpV2CloudStorageFileSet>?
-  cloudStorageFileSet;
-
+  final pulumi.Input<GooglePrivacyDlpV2CloudStorageFileSet>? cloudStorageFileSet;
   /// Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
   final pulumi.Input<GooglePrivacyDlpV2CloudStoragePath>? outputPath;
 
@@ -29,55 +26,18 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigQueryField':
-          ?pulumi.Input.mapOptionalInputValue<
-            GooglePrivacyDlpV2BigQueryField,
-            Map<String, dynamic>
-          >(bigQueryField, (value) => value.toMap()),
-      'cloudStorageFileSet':
-          ?pulumi.Input.mapOptionalInputValue<
-            GooglePrivacyDlpV2CloudStorageFileSet,
-            Map<String, dynamic>
-          >(cloudStorageFileSet, (value) => value.toMap()),
-      'outputPath':
-          ?pulumi.Input.mapOptionalInputValue<
-            GooglePrivacyDlpV2CloudStoragePath,
-            Map<String, dynamic>
-          >(outputPath, (value) => value.toMap()),
+      'bigQueryField': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2BigQueryField, Map<String, dynamic>>(bigQueryField, (value) => value.toMap()),
+      'cloudStorageFileSet': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2CloudStorageFileSet, Map<String, dynamic>>(cloudStorageFileSet, (value) => value.toMap()),
+      'outputPath': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2CloudStoragePath, Map<String, dynamic>>(outputPath, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2LargeCustomDictionaryConfig(
-      bigQueryField: (() {
-        final guardedValue = map['bigQueryField'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GooglePrivacyDlpV2BigQueryField.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      cloudStorageFileSet: (() {
-        final guardedValue = map['cloudStorageFileSet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GooglePrivacyDlpV2CloudStorageFileSet.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      outputPath: (() {
-        final guardedValue = map['outputPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GooglePrivacyDlpV2CloudStoragePath.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      bigQueryField: (() { final guardedValue = map['bigQueryField']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GooglePrivacyDlpV2BigQueryField.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      cloudStorageFileSet: (() { final guardedValue = map['cloudStorageFileSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GooglePrivacyDlpV2CloudStorageFileSet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      outputPath: (() { final guardedValue = map['outputPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GooglePrivacyDlpV2CloudStoragePath.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions {
   /// The destination bucket that stores the generated inventory reports.
   final pulumi.Input<String> bucket;
-
   /// The path within the destination bucket to store generated inventory reports.
   final pulumi.Input<String>? destinationPath;
 
@@ -24,16 +23,11 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions {
     };
   }
 
-  factory InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions.fromMap(Map<String, dynamic> map) {
     return InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      destinationPath: (() {
-        final guardedValue = map['destinationPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      destinationPath: (() { final guardedValue = map['destinationPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointInfoResponse {
   /// The assigned URL for the node JSON-RPC API endpoint.
   final pulumi.Input<String> jsonRpcApiEndpoint;
-
   /// The assigned URL for the node WebSockets API endpoint.
   final pulumi.Input<String> websocketsApiEndpoint;
 
@@ -27,12 +26,9 @@ class EndpointInfoResponse {
 
   factory EndpointInfoResponse.fromMap(Map<String, dynamic> map) {
     return EndpointInfoResponse(
-      jsonRpcApiEndpoint: pulumi.Input.fromValue(
-        map['jsonRpcApiEndpoint'] as String,
-      ),
-      websocketsApiEndpoint: pulumi.Input.fromValue(
-        map['websocketsApiEndpoint'] as String,
-      ),
+      jsonRpcApiEndpoint: pulumi.Input.fromValue(map['jsonRpcApiEndpoint'] as String),
+      websocketsApiEndpoint: pulumi.Input.fromValue(map['websocketsApiEndpoint'] as String),
     );
   }
 }
+

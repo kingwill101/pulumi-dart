@@ -9,10 +9,14 @@ class TcpExporterResponse {
 
   /// Creates a new [TcpExporterResponse].
   /// [url] TCP url to export.
-  TcpExporterResponse({required this.url});
+  TcpExporterResponse({
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'url': url};
+    return <String, dynamic>{
+      'url': url,
+    };
   }
 
   factory TcpExporterResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class TcpExporterResponse {
     );
   }
 }
+

@@ -9,19 +9,20 @@ class ResourceProviderEndpointFeaturesRule {
 
   /// Creates a new [ResourceProviderEndpointFeaturesRule].
   /// [requiredFeaturesPolicy] The required feature policy.
-  ResourceProviderEndpointFeaturesRule({required this.requiredFeaturesPolicy});
+  ResourceProviderEndpointFeaturesRule({
+    required this.requiredFeaturesPolicy,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'requiredFeaturesPolicy': requiredFeaturesPolicy};
+    return <String, dynamic>{
+      'requiredFeaturesPolicy': requiredFeaturesPolicy,
+    };
   }
 
-  factory ResourceProviderEndpointFeaturesRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceProviderEndpointFeaturesRule.fromMap(Map<String, dynamic> map) {
     return ResourceProviderEndpointFeaturesRule(
-      requiredFeaturesPolicy: pulumi.Input.fromValue(
-        map['requiredFeaturesPolicy'] as String,
-      ),
+      requiredFeaturesPolicy: pulumi.Input.fromValue(map['requiredFeaturesPolicy'] as String),
     );
   }
 }
+

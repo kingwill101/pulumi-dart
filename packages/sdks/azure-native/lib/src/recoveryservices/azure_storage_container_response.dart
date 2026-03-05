@@ -6,41 +6,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureStorageContainerResponse {
   /// Whether storage account lock is to be acquired for this container or not.
   final pulumi.Input<String>? acquireStorageAccountLock;
-
   /// Type of backup management for the container.
   final pulumi.Input<String>? backupManagementType;
-
   /// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
   /// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
   /// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
   /// Backup is VMAppContainer
   /// Expected value is 'StorageContainer'.
   final pulumi.Input<String> containerType;
-
   /// Friendly name of the container.
   final pulumi.Input<String>? friendlyName;
-
   /// Status of health of the container.
   final pulumi.Input<String>? healthStatus;
-
   /// Re-Do Operation
   final pulumi.Input<String>? operationType;
-
   /// Type of the protectable object associated with this container
   final pulumi.Input<String>? protectableObjectType;
-
   /// Number of items backed up in this container.
   final pulumi.Input<double>? protectedItemCount;
-
   /// Status of registration of the container with the Recovery Services Vault.
   final pulumi.Input<String>? registrationStatus;
-
   /// Resource group name of Recovery Services Vault.
   final pulumi.Input<String>? resourceGroup;
-
   /// Fully qualified ARM url.
   final pulumi.Input<String>? sourceResourceId;
-
   /// Storage account version.
   final pulumi.Input<String>? storageAccountVersion;
 
@@ -91,62 +80,19 @@ class AzureStorageContainerResponse {
 
   factory AzureStorageContainerResponse.fromMap(Map<String, dynamic> map) {
     return AzureStorageContainerResponse(
-      acquireStorageAccountLock: (() {
-        final guardedValue = map['acquireStorageAccountLock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      backupManagementType: (() {
-        final guardedValue = map['backupManagementType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      acquireStorageAccountLock: (() { final guardedValue = map['acquireStorageAccountLock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backupManagementType: (() { final guardedValue = map['backupManagementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       containerType: pulumi.Input.fromValue(map['containerType'] as String),
-      friendlyName: (() {
-        final guardedValue = map['friendlyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      healthStatus: (() {
-        final guardedValue = map['healthStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operationType: (() {
-        final guardedValue = map['operationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protectableObjectType: (() {
-        final guardedValue = map['protectableObjectType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protectedItemCount: (() {
-        final guardedValue = map['protectedItemCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      registrationStatus: (() {
-        final guardedValue = map['registrationStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroup: (() {
-        final guardedValue = map['resourceGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceResourceId: (() {
-        final guardedValue = map['sourceResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountVersion: (() {
-        final guardedValue = map['storageAccountVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      healthStatus: (() { final guardedValue = map['healthStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operationType: (() { final guardedValue = map['operationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protectableObjectType: (() { final guardedValue = map['protectableObjectType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protectedItemCount: (() { final guardedValue = map['protectedItemCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      registrationStatus: (() { final guardedValue = map['registrationStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroup: (() { final guardedValue = map['resourceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceResourceId: (() { final guardedValue = map['sourceResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountVersion: (() { final guardedValue = map['storageAccountVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

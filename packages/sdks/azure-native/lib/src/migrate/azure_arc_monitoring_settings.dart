@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureArcMonitoringSettings {
   /// Number of alert rules settings.
   final pulumi.Input<int> alertRulesCount;
-
   /// Logs volume settings.
   final pulumi.Input<double> logsVolumeInGB;
 
@@ -32,3 +31,4 @@ class AzureArcMonitoringSettings {
     );
   }
 }
+

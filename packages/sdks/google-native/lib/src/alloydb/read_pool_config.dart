@@ -9,19 +9,20 @@ class ReadPoolConfig {
 
   /// Creates a new [ReadPoolConfig].
   /// [nodeCount] Read capacity, i.e. number of nodes in a read pool instance.
-  ReadPoolConfig({this.nodeCount});
+  ReadPoolConfig({
+    this.nodeCount,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nodeCount': ?nodeCount};
+    return <String, dynamic>{
+      'nodeCount': ?nodeCount,
+    };
   }
 
   factory ReadPoolConfig.fromMap(Map<String, dynamic> map) {
     return ReadPoolConfig(
-      nodeCount: (() {
-        final guardedValue = map['nodeCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

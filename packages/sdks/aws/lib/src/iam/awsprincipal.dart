@@ -9,13 +9,20 @@ class AWSPrincipal {
 
   /// Creates a new [AWSPrincipal].
   /// [aWS] AWS account identifier or ARN.
-  AWSPrincipal({required this.aWS});
+  AWSPrincipal({
+    required this.aWS,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'AWS': aWS};
+    return <String, dynamic>{
+      'AWS': aWS,
+    };
   }
 
   factory AWSPrincipal.fromMap(Map<String, dynamic> map) {
-    return AWSPrincipal(aWS: pulumi.Input.fromValue(map['AWS'] as String));
+    return AWSPrincipal(
+      aWS: pulumi.Input.fromValue(map['AWS'] as String),
+    );
   }
 }
+

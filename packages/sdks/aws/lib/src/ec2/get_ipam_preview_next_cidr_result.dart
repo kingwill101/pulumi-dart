@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getIpamPreviewNextCidr.
 class GetIpamPreviewNextCidrResult {
   /// Previewed CIDR from the pool.
   final String cidr;
   final List<String>? disallowedCidrs;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipamPoolId;
@@ -42,19 +42,12 @@ class GetIpamPreviewNextCidrResult {
   factory GetIpamPreviewNextCidrResult.fromMap(Map<String, dynamic> map) {
     return GetIpamPreviewNextCidrResult(
       cidr: map['cidr'] as String,
-      disallowedCidrs: (() {
-        final guardedValue = map['disallowedCidrs'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      disallowedCidrs: (() { final guardedValue = map['disallowedCidrs']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       id: map['id'] as String,
       ipamPoolId: map['ipamPoolId'] as String,
-      netmaskLength: (() {
-        final guardedValue = map['netmaskLength'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      netmaskLength: (() { final guardedValue = map['netmaskLength']; if (guardedValue == null) return null; return guardedValue as int; })(),
       region: map['region'] as String,
     );
   }
 }
+

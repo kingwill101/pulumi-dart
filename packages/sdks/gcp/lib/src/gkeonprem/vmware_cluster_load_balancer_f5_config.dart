@@ -5,12 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareClusterLoadBalancerF5Config {
   /// The load balancer's IP address.
   final pulumi.Input<String>? address;
-
   /// he preexisting partition to be used by the load balancer. T
   /// his partition is usually created for the admin cluster for example:
   /// 'my-f5-admin-partition'.
   final pulumi.Input<String>? partition;
-
   /// The pool name. Only necessary, if using SNAT.
   final pulumi.Input<String>? snatPool;
 
@@ -34,21 +32,10 @@ class VMwareClusterLoadBalancerF5Config {
 
   factory VMwareClusterLoadBalancerF5Config.fromMap(Map<String, dynamic> map) {
     return VMwareClusterLoadBalancerF5Config(
-      address: (() {
-        final guardedValue = map['address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partition: (() {
-        final guardedValue = map['partition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      snatPool: (() {
-        final guardedValue = map['snatPool'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partition: (() { final guardedValue = map['partition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      snatPool: (() { final guardedValue = map['snatPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

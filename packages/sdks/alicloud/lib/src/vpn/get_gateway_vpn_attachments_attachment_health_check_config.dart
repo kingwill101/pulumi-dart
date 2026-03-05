@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
   /// Target IP.
   final pulumi.Input<String> dip;
-
   /// Whether health check is enabled:-**false**: not enabled. -**true**: enabled.
   final pulumi.Input<bool> enable;
-
   /// The health check retry interval, in seconds.
   final pulumi.Input<int> interval;
-
   /// Whether to revoke the published route when the health check fails- **revoke_route**(default): withdraws published routes.- **reserve_route**: does not withdraw published routes.
   final pulumi.Input<String> policy;
-
   /// Number of retries for health check.
   final pulumi.Input<int> retry;
-
   /// SOURCE IP.
   final pulumi.Input<String> sip;
-
   /// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
   final pulumi.Input<String> status;
 
@@ -54,9 +48,7 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
     };
   }
 
-  factory GetGatewayVpnAttachmentsAttachmentHealthCheckConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGatewayVpnAttachmentsAttachmentHealthCheckConfig.fromMap(Map<String, dynamic> map) {
     return GetGatewayVpnAttachmentsAttachmentHealthCheckConfig(
       dip: pulumi.Input.fromValue(map['dip'] as String),
       enable: pulumi.Input.fromValue(map['enable'] as bool),
@@ -68,3 +60,4 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
     );
   }
 }
+

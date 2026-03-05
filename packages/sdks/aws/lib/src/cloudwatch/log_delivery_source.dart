@@ -118,25 +118,18 @@ import 'log_delivery_source_state.dart';
 class LogDeliverySource extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the delivery source.
   late final pulumi.Output<String> arn;
-
   /// The type of log that the source is sending. For Amazon Bedrock, the valid value is `APPLICATION_LOGS`. For Amazon CodeWhisperer, the valid value is `EVENT_LOGS`. For IAM Identity Center, the valid value is `ERROR_LOGS`. For Amazon WorkMail, the valid values are `ACCESS_CONTROL_LOGS`, `AUTHENTICATION_LOGS`, `WORKMAIL_AVAILABILITY_PROVIDER_LOGS`, and `WORKMAIL_MAILBOX_ACCESS_LOGS`.
   late final pulumi.Output<String> logType;
-
   /// The name for this delivery source.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ARN of the AWS resource that is generating and sending logs.
   late final pulumi.Output<String> resourceArn;
-
   /// The AWS service that is sending logs.
   late final pulumi.Output<String> service;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -149,11 +142,11 @@ class LogDeliverySource extends pulumi.CustomResource {
     LogDeliverySourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/logDeliverySource:LogDeliverySource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/logDeliverySource:LogDeliverySource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     logType = registerOutput<String>('logType');
     this.name = registerOutput<String>('name');
@@ -182,11 +175,11 @@ class LogDeliverySource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/logDeliverySource:LogDeliverySource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/logDeliverySource:LogDeliverySource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     logType = registerOutput<String>('logType');
     this.name = registerOutput<String>('name');

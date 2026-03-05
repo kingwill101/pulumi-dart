@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggerBuildArtifactsPythonPackage {
   /// Path globs used to match files in the build's workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.
   final pulumi.Input<List<String>>? paths;
-
   /// Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY"
   /// Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
   final pulumi.Input<String>? repository;
@@ -13,24 +12,23 @@ class TriggerBuildArtifactsPythonPackage {
   /// Creates a new [TriggerBuildArtifactsPythonPackage].
   /// [paths] Path globs used to match files in the build's workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.
   /// [repository] Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY"
-  TriggerBuildArtifactsPythonPackage({this.paths, this.repository});
+  TriggerBuildArtifactsPythonPackage({
+    this.paths,
+    this.repository,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'paths': ?paths, 'repository': ?repository};
+    return <String, dynamic>{
+      'paths': ?paths,
+      'repository': ?repository,
+    };
   }
 
   factory TriggerBuildArtifactsPythonPackage.fromMap(Map<String, dynamic> map) {
     return TriggerBuildArtifactsPythonPackage(
-      paths: (() {
-        final guardedValue = map['paths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      repository: (() {
-        final guardedValue = map['repository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      paths: (() { final guardedValue = map['paths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      repository: (() { final guardedValue = map['repository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

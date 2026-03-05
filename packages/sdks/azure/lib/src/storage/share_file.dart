@@ -242,36 +242,27 @@ import 'share_file_state.dart';
 class ShareFile extends pulumi.CustomResource {
   /// Sets the file’s Content-Disposition header.
   late final pulumi.Output<String?> contentDisposition;
-
   /// Specifies which content encodings have been applied to the file.
   late final pulumi.Output<String?> contentEncoding;
-
   /// The length in bytes of the file content
   late final pulumi.Output<int> contentLength;
-
   /// The MD5 sum of the file contents. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This property is intended to be used with the Terraform internal filemd5 and md5 functions when `source` is defined.
   late final pulumi.Output<String?> contentMd5;
-
   /// The content type of the share file. Defaults to `application/octet-stream`.
   late final pulumi.Output<String?> contentType;
-
   /// A mapping of metadata to assign to this file.
   late final pulumi.Output<Map<String, String>?> metadata;
-
   /// The name (or path) of the File that should be created within this File Share. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The storage share directory that you would like the file placed into. Changing this forces a new resource to be created. Defaults to `""`.
   late final pulumi.Output<String?> path;
-
   /// An absolute path to a file on the local system. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The file specified with `source` can not be empty.
   late final pulumi.Output<String?> source;
   late final pulumi.Output<String> storageShareId;
-
   /// The Storage Share URL in which this file will be placed into. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageShareUrl;
 
@@ -284,11 +275,11 @@ class ShareFile extends pulumi.CustomResource {
     ShareFileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/shareFile:ShareFile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/shareFile:ShareFile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     contentDisposition = registerOutput<String?>('contentDisposition');
     contentEncoding = registerOutput<String?>('contentEncoding');
     contentLength = registerOutput<int>('contentLength');
@@ -320,11 +311,11 @@ class ShareFile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/shareFile:ShareFile',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/shareFile:ShareFile',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     contentDisposition = registerOutput<String?>('contentDisposition');
     contentEncoding = registerOutput<String?>('contentEncoding');
     contentLength = registerOutput<int>('contentLength');

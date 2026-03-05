@@ -10,16 +10,13 @@ enum GoogleCloudChannelV1RenewalSettingsPaymentPlan {
   const GoogleCloudChannelV1RenewalSettingsPaymentPlan(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudChannelV1RenewalSettingsPaymentPlan fromValue(
-    String value,
-  ) {
+  static GoogleCloudChannelV1RenewalSettingsPaymentPlan fromValue(String value) {
     for (final item in GoogleCloudChannelV1RenewalSettingsPaymentPlan.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudChannelV1RenewalSettingsPaymentPlan value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudChannelV1RenewalSettingsPaymentPlan value: $value');
   }
 }
+

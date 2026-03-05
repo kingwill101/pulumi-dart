@@ -12,8 +12,7 @@ enum EntityTypeAutoExpansionModeDialogflowV3 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EntityTypeAutoExpansionModeDialogflowV3 value: $value',
-    );
+    throw ArgumentError('Unknown EntityTypeAutoExpansionModeDialogflowV3 value: $value');
   }
 }
+

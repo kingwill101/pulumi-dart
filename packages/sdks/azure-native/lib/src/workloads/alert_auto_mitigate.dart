@@ -15,3 +15,4 @@ enum AlertAutoMitigate {
     throw ArgumentError('Unknown AlertAutoMitigate value: $value');
   }
 }
+

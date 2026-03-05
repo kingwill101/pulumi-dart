@@ -9,21 +9,20 @@ class GatewayCustomDomainPropertiesResponse {
 
   /// Creates a new [GatewayCustomDomainPropertiesResponse].
   /// [thumbprint] The thumbprint of bound certificate.
-  GatewayCustomDomainPropertiesResponse({this.thumbprint});
+  GatewayCustomDomainPropertiesResponse({
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'thumbprint': ?thumbprint};
+    return <String, dynamic>{
+      'thumbprint': ?thumbprint,
+    };
   }
 
-  factory GatewayCustomDomainPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GatewayCustomDomainPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GatewayCustomDomainPropertiesResponse(
-      thumbprint: (() {
-        final guardedValue = map['thumbprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

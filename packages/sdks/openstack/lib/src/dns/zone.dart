@@ -136,43 +136,33 @@ class Zone extends pulumi.CustomResource {
   /// Attributes for the DNS Service scheduler.
   /// Changing this creates a new zone.
   late final pulumi.Output<Map<String, String>?> attributes;
-
   /// A description of the zone.
   late final pulumi.Output<String?> description;
-
   /// Disable wait for zone to reach ACTIVE
   /// status. The check is enabled by default. If this argument is true, zone
   /// will be considered as created/updated if OpenStack request returned success.
   late final pulumi.Output<bool?> disableStatusCheck;
-
   /// The email contact for the zone record.
   late final pulumi.Output<String?> email;
-
   /// An array of master DNS servers. For when `type` is
   /// `SECONDARY`.
   late final pulumi.Output<List<String>?> masters;
-
   /// The name of the zone. Note the `.` at the end of the name.
   /// Changing this creates a new DNS zone.
   late final pulumi.Output<String> name;
-
   /// The ID of the project DNS zone is created
   /// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
   /// user role in target project).
   late final pulumi.Output<String> projectId;
-
   /// The region in which to obtain the V2 DNS client.
   /// If omitted, the `region` argument of the provider is used.
   /// Changing this creates a new DNS zone.
   late final pulumi.Output<String> region;
-
   /// The time to live (TTL) of the zone.
   late final pulumi.Output<int> ttl;
-
   /// The type of zone. Can either be `PRIMARY` or `SECONDARY`.
   /// Changing this creates a new zone.
   late final pulumi.Output<String> type;
-
   /// Map of additional options. Changing this creates a
   /// new zone.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
@@ -181,13 +171,16 @@ class Zone extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Zone]. {@macro pulumi_dns_zone_zone_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Zone(String name, {ZoneArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'openstack:dns/zone:Zone',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Zone(
+    String name, {
+    ZoneArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'openstack:dns/zone:Zone',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributes = registerOutput<Map<String, String>?>('attributes');
     description = registerOutput<String?>('description');
     disableStatusCheck = registerOutput<bool?>('disableStatusCheck');
@@ -202,7 +195,11 @@ class Zone extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Zone] resource's state with the given [name] and [id].
-  static Zone get(String name, pulumi.Input<String> id, {ZoneState? state}) {
+  static Zone get(
+    String name,
+    pulumi.Input<String> id, {
+    ZoneState? state,
+  }) {
     return Zone._get(
       name,
       state: state?.toMap(),
@@ -215,11 +212,11 @@ class Zone extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:dns/zone:Zone',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:dns/zone:Zone',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributes = registerOutput<Map<String, String>?>('attributes');
     description = registerOutput<String?>('description');
     disableStatusCheck = registerOutput<bool?>('disableStatusCheck');

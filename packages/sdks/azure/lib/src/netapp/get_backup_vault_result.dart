@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getBackupVault.
 class GetBackupVaultResult {
   final String accountName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -49,3 +49,4 @@ class GetBackupVaultResult {
     );
   }
 }
+

@@ -321,73 +321,50 @@ import 'encryption_identity_response.dart';
 class Account extends pulumi.CustomResource {
   /// The unique identifier associated with this Data Lake Store account.
   late final pulumi.Output<String> accountId;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The account creation time.
   late final pulumi.Output<String> creationTime;
-
   /// The commitment tier in use for the current month.
   late final pulumi.Output<String> currentTier;
-
   /// The default owner group for all new folders and files created in the Data Lake Store account.
   late final pulumi.Output<String> defaultGroup;
-
   /// The Key Vault encryption configuration.
   late final pulumi.Output<EncryptionConfigResponse> encryptionConfig;
-
   /// The current state of encryption provisioning for this Data Lake Store account.
   late final pulumi.Output<String> encryptionProvisioningState;
-
   /// The current state of encryption for this Data Lake Store account.
   late final pulumi.Output<String> encryptionState;
-
   /// The full CName endpoint for this account.
   late final pulumi.Output<String> endpoint;
-
   /// The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
   late final pulumi.Output<String> firewallAllowAzureIps;
-
   /// The list of firewall rules associated with this Data Lake Store account.
   late final pulumi.Output<List<Map<String, dynamic>>> firewallRules;
-
   /// The current state of the IP address firewall for this Data Lake Store account.
   late final pulumi.Output<String> firewallState;
-
   /// The Key Vault encryption identity, if any.
   late final pulumi.Output<EncryptionIdentityResponse> identity;
-
   /// The account last modified time.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// The resource location.
   late final pulumi.Output<String> location;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// The commitment tier to use for next month.
   late final pulumi.Output<String> newTier;
-
   /// The provisioning status of the Data Lake Store account.
   late final pulumi.Output<String> provisioningState;
-
   /// The state of the Data Lake Store account.
   late final pulumi.Output<String> state;
-
   /// The resource tags.
   late final pulumi.Output<Map<String, String>> tags;
-
   /// The current state of the trusted identity provider feature for this Data Lake Store account.
   late final pulumi.Output<String> trustedIdProviderState;
-
   /// The list of trusted identity providers associated with this Data Lake Store account.
   late final pulumi.Output<List<Map<String, dynamic>>> trustedIdProviders;
-
   /// The resource type.
   late final pulumi.Output<String> type;
-
   /// The list of virtual network rules associated with this Data Lake Store account.
   late final pulumi.Output<List<Map<String, dynamic>>> virtualNetworkRules;
 
@@ -400,44 +377,24 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datalakestore:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datalakestore:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String>('creationTime');
     currentTier = registerOutput<String>('currentTier');
     defaultGroup = registerOutput<String>('defaultGroup');
-    encryptionConfig = registerOutput<EncryptionConfigResponse>(
-      'encryptionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptionProvisioningState = registerOutput<String>(
-      'encryptionProvisioningState',
-    );
+    encryptionConfig = registerOutput<EncryptionConfigResponse>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionProvisioningState = registerOutput<String>('encryptionProvisioningState');
     encryptionState = registerOutput<String>('encryptionState');
     endpoint = registerOutput<String>('endpoint');
     firewallAllowAzureIps = registerOutput<String>('firewallAllowAzureIps');
     firewallRules = registerOutput<List<Map<String, dynamic>>>('firewallRules');
     firewallState = registerOutput<String>('firewallState');
-    identity = registerOutput<EncryptionIdentityResponse>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<EncryptionIdentityResponse>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -446,12 +403,8 @@ class Account extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>>('tags');
     trustedIdProviderState = registerOutput<String>('trustedIdProviderState');
-    trustedIdProviders = registerOutput<List<Map<String, dynamic>>>(
-      'trustedIdProviders',
-    );
+    trustedIdProviders = registerOutput<List<Map<String, dynamic>>>('trustedIdProviders');
     type = registerOutput<String>('type');
-    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>>(
-      'virtualNetworkRules',
-    );
+    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>>('virtualNetworkRules');
   }
 }

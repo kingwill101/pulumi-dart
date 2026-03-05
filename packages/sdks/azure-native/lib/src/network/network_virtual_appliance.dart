@@ -194,85 +194,54 @@ import 'virtual_appliance_sku_properties_response.dart';
 class NetworkVirtualAppliance extends pulumi.CustomResource {
   /// Details required for Additional Network Interface.
   late final pulumi.Output<List<Map<String, dynamic>>?> additionalNics;
-
   /// Address Prefix.
   late final pulumi.Output<String> addressPrefix;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// BootStrapConfigurationBlobs storage URLs.
   late final pulumi.Output<List<String>?> bootStrapConfigurationBlobs;
-
   /// CloudInitConfiguration string in plain text.
   late final pulumi.Output<String?> cloudInitConfiguration;
-
   /// CloudInitConfigurationBlob storage URLs.
   late final pulumi.Output<List<String>?> cloudInitConfigurationBlobs;
-
   /// The delegation for the Virtual Appliance
   late final pulumi.Output<DelegationPropertiesResponse?> delegation;
-
   /// The deployment type. PartnerManaged for the SaaS NVA
   late final pulumi.Output<String> deploymentType;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The service principal that has read access to cloud-init and config blob.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// List of references to InboundSecurityRules.
   late final pulumi.Output<List<Map<String, dynamic>>> inboundSecurityRules;
-
   /// List of Resource Uri of Public IPs for Internet Ingress Scenario.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  internetIngressPublicIps;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> internetIngressPublicIps;
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Network Profile containing configurations for Public and Private NIC.
-  late final pulumi.Output<
-    NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile?
-  >
-  networkProfile;
-
+  late final pulumi.Output<NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile?> networkProfile;
   /// Network Virtual Appliance SKU.
   late final pulumi.Output<VirtualApplianceSkuPropertiesResponse?> nvaSku;
-
   /// The delegation for the Virtual Appliance
-  late final pulumi.Output<PartnerManagedResourcePropertiesResponse?>
-  partnerManagedResource;
-
+  late final pulumi.Output<PartnerManagedResourcePropertiesResponse?> partnerManagedResource;
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Public key for SSH login.
   late final pulumi.Output<String?> sshPublicKey;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
   late final pulumi.Output<double?> virtualApplianceAsn;
-
   /// List of references to VirtualApplianceConnections.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  virtualApplianceConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> virtualApplianceConnections;
   /// List of Virtual Appliance Network Interfaces.
   late final pulumi.Output<List<Map<String, dynamic>>> virtualApplianceNics;
-
   /// List of references to VirtualApplianceSite.
   late final pulumi.Output<List<Map<String, dynamic>>> virtualApplianceSites;
-
   /// The Virtual Hub where Network Virtual Appliance is being deployed.
   late final pulumi.Output<SubResourceResponse?> virtualHub;
 
@@ -285,110 +254,36 @@ class NetworkVirtualAppliance extends pulumi.CustomResource {
     NetworkVirtualApplianceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:NetworkVirtualAppliance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalNics = registerOutput<List<Map<String, dynamic>>?>(
-      'additionalNics',
-    );
+          'azure-native:network:NetworkVirtualAppliance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalNics = registerOutput<List<Map<String, dynamic>>?>('additionalNics');
     addressPrefix = registerOutput<String>('addressPrefix');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    bootStrapConfigurationBlobs = registerOutput<List<String>?>(
-      'bootStrapConfigurationBlobs',
-    );
+    bootStrapConfigurationBlobs = registerOutput<List<String>?>('bootStrapConfigurationBlobs');
     cloudInitConfiguration = registerOutput<String?>('cloudInitConfiguration');
-    cloudInitConfigurationBlobs = registerOutput<List<String>?>(
-      'cloudInitConfigurationBlobs',
-    );
-    delegation = registerOutput<DelegationPropertiesResponse?>(
-      'delegation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DelegationPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cloudInitConfigurationBlobs = registerOutput<List<String>?>('cloudInitConfigurationBlobs');
+    delegation = registerOutput<DelegationPropertiesResponse?>('delegation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DelegationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deploymentType = registerOutput<String>('deploymentType');
     etag = registerOutput<String>('etag');
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    inboundSecurityRules = registerOutput<List<Map<String, dynamic>>>(
-      'inboundSecurityRules',
-    );
-    internetIngressPublicIps = registerOutput<List<Map<String, dynamic>>?>(
-      'internetIngressPublicIps',
-    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inboundSecurityRules = registerOutput<List<Map<String, dynamic>>>('inboundSecurityRules');
+    internetIngressPublicIps = registerOutput<List<Map<String, dynamic>>?>('internetIngressPublicIps');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    networkProfile =
-        registerOutput<
-          NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile?
-        >(
-          'networkProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    nvaSku = registerOutput<VirtualApplianceSkuPropertiesResponse?>(
-      'nvaSku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualApplianceSkuPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    partnerManagedResource =
-        registerOutput<PartnerManagedResourcePropertiesResponse?>(
-          'partnerManagedResource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return PartnerManagedResourcePropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    networkProfile = registerOutput<NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nvaSku = registerOutput<VirtualApplianceSkuPropertiesResponse?>('nvaSku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualApplianceSkuPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    partnerManagedResource = registerOutput<PartnerManagedResourcePropertiesResponse?>('partnerManagedResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PartnerManagedResourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     sshPublicKey = registerOutput<String?>('sshPublicKey');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     virtualApplianceAsn = registerOutput<double?>('virtualApplianceAsn');
-    virtualApplianceConnections = registerOutput<List<Map<String, dynamic>>>(
-      'virtualApplianceConnections',
-    );
-    virtualApplianceNics = registerOutput<List<Map<String, dynamic>>>(
-      'virtualApplianceNics',
-    );
-    virtualApplianceSites = registerOutput<List<Map<String, dynamic>>>(
-      'virtualApplianceSites',
-    );
-    virtualHub = registerOutput<SubResourceResponse?>(
-      'virtualHub',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualApplianceConnections = registerOutput<List<Map<String, dynamic>>>('virtualApplianceConnections');
+    virtualApplianceNics = registerOutput<List<Map<String, dynamic>>>('virtualApplianceNics');
+    virtualApplianceSites = registerOutput<List<Map<String, dynamic>>>('virtualApplianceSites');
+    virtualHub = registerOutput<SubResourceResponse?>('virtualHub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

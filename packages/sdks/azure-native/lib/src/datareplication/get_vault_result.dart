@@ -7,23 +7,17 @@ import 'vault_model_response_system_data.dart';
 class GetVaultResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets or sets the Id of the resource.
   final String id;
-
   /// Gets or sets the location of the vault.
   final String location;
-
   /// Gets or sets the name of the resource.
   final String name;
-
   /// Vault properties.
   final VaultModelPropertiesResponse properties;
   final VaultModelResponseSystemData systemData;
-
   /// Gets or sets the resource tags.
   final Map<String, String>? tags;
-
   /// Gets or sets the type of the resource.
   final String type;
 
@@ -66,18 +60,11 @@ class GetVaultResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: VaultModelPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: VaultModelResponseSystemData.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: VaultModelPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: VaultModelResponseSystemData.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

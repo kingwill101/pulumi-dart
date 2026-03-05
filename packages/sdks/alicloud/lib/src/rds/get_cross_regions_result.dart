@@ -7,11 +7,9 @@ import 'get_cross_regions_region.dart';
 class GetCrossRegionsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of region IDs.
   final List<String> ids;
   final String? outputFile;
-
   /// The list of destination regions that support cross-region backup. Each element contains the following attributes:
   final List<GetCrossRegionsRegion> regions;
 
@@ -32,11 +30,7 @@ class GetCrossRegionsResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'regions':
-          pulumi.Input.encodeList<GetCrossRegionsRegion, Map<String, dynamic>>(
-            regions,
-            (value) => value.toMap(),
-          ),
+      'regions': pulumi.Input.encodeList<GetCrossRegionsRegion, Map<String, dynamic>>(regions, (value) => value.toMap()),
     };
   }
 
@@ -44,17 +38,9 @@ class GetCrossRegionsResult {
     return GetCrossRegionsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      regions: pulumi.Input.decodeList<GetCrossRegionsRegion>(
-        map['regions']!,
-        (value) => GetCrossRegionsRegion.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      regions: pulumi.Input.decodeList<GetCrossRegionsRegion>(map['regions']!, (value) => GetCrossRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

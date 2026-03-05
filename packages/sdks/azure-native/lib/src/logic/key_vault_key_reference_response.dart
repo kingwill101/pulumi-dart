@@ -7,10 +7,8 @@ import 'key_vault_key_reference_response_key_vault.dart';
 class KeyVaultKeyReferenceResponse {
   /// The private key name in key vault.
   final pulumi.Input<String> keyName;
-
   /// The key vault reference.
   final pulumi.Input<KeyVaultKeyReferenceResponseKeyVault> keyVault;
-
   /// The private key version in key vault.
   final pulumi.Input<String>? keyVersion;
 
@@ -27,11 +25,7 @@ class KeyVaultKeyReferenceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keyName': keyName,
-      'keyVault':
-          pulumi.Input.mapInputValue<
-            KeyVaultKeyReferenceResponseKeyVault,
-            Map<String, dynamic>
-          >(keyVault, (value) => value.toMap()),
+      'keyVault': pulumi.Input.mapInputValue<KeyVaultKeyReferenceResponseKeyVault, Map<String, dynamic>>(keyVault, (value) => value.toMap()),
       'keyVersion': ?keyVersion,
     };
   }
@@ -39,16 +33,9 @@ class KeyVaultKeyReferenceResponse {
   factory KeyVaultKeyReferenceResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultKeyReferenceResponse(
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
-      keyVault: pulumi.Input.fromValue(
-        KeyVaultKeyReferenceResponseKeyVault.fromMap(
-          (map['keyVault']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      keyVersion: (() {
-        final guardedValue = map['keyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyVault: pulumi.Input.fromValue(KeyVaultKeyReferenceResponseKeyVault.fromMap((map['keyVault']! as Map).cast<String, dynamic>())),
+      keyVersion: (() { final guardedValue = map['keyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

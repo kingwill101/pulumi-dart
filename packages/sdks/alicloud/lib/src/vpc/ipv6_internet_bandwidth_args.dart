@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Ipv6InternetBandwidthArgs {
   /// The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internet_charge_type` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
   final pulumi.Input<int> bandwidth;
-
   /// The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
   final pulumi.Input<String>? internetChargeType;
-
   /// The ID of the IPv6 address instance.
   final pulumi.Input<String> ipv6AddressId;
-
   /// The ID of the IPv6 gateway to which the IPv6 address belongs.
   final pulumi.Input<String> ipv6GatewayId;
 
@@ -43,13 +40,10 @@ class Ipv6InternetBandwidthArgs {
   factory Ipv6InternetBandwidthArgs.fromMap(Map<String, dynamic> map) {
     return Ipv6InternetBandwidthArgs(
       bandwidth: pulumi.Input.fromValue(map['bandwidth'] as int),
-      internetChargeType: (() {
-        final guardedValue = map['internetChargeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      internetChargeType: (() { final guardedValue = map['internetChargeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv6AddressId: pulumi.Input.fromValue(map['ipv6AddressId'] as String),
       ipv6GatewayId: pulumi.Input.fromValue(map['ipv6GatewayId'] as String),
     );
   }
 }
+

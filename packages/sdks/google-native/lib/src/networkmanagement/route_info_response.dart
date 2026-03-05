@@ -6,49 +6,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteInfoResponse {
   /// Destination IP range of the route.
   final pulumi.Input<String> destIpRange;
-
   /// Destination port ranges of the route. Policy based routes only.
   final pulumi.Input<List<String>> destPortRanges;
-
   /// Name of a route.
   final pulumi.Input<String> displayName;
-
   /// Instance tags of the route.
   final pulumi.Input<List<String>> instanceTags;
-
   /// URI of a NCC Hub. NCC_HUB routes only.
   final pulumi.Input<String> nccHubUri;
-
   /// URI of a NCC Spoke. NCC_HUB routes only.
   final pulumi.Input<String> nccSpokeUri;
-
   /// URI of a Compute Engine network. NETWORK routes only.
   final pulumi.Input<String> networkUri;
-
   /// Next hop of the route.
   final pulumi.Input<String> nextHop;
-
   /// Type of next hop.
   final pulumi.Input<String> nextHopType;
-
   /// Priority of the route.
   final pulumi.Input<int> priority;
-
   /// Protocols of the route. Policy based routes only.
   final pulumi.Input<List<String>> protocols;
-
   /// Indicates where route is applicable.
   final pulumi.Input<String> routeScope;
-
   /// Type of route.
   final pulumi.Input<String> routeType;
-
   /// Source IP address range of the route. Policy based routes only.
   final pulumi.Input<String> srcIpRange;
-
   /// Source port ranges of the route. Policy based routes only.
   final pulumi.Input<List<String>> srcPortRanges;
-
   /// URI of a route. Dynamic, peering static and peering dynamic routes do not have an URI. Advertised route from Google Cloud VPC to on-premises network also does not have an URI.
   final pulumi.Input<String> uri;
 
@@ -112,29 +97,22 @@ class RouteInfoResponse {
   factory RouteInfoResponse.fromMap(Map<String, dynamic> map) {
     return RouteInfoResponse(
       destIpRange: pulumi.Input.fromValue(map['destIpRange'] as String),
-      destPortRanges: pulumi.Input.fromValue(
-        (map['destPortRanges'] as List).cast<String>(),
-      ),
+      destPortRanges: pulumi.Input.fromValue((map['destPortRanges'] as List).cast<String>()),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      instanceTags: pulumi.Input.fromValue(
-        (map['instanceTags'] as List).cast<String>(),
-      ),
+      instanceTags: pulumi.Input.fromValue((map['instanceTags'] as List).cast<String>()),
       nccHubUri: pulumi.Input.fromValue(map['nccHubUri'] as String),
       nccSpokeUri: pulumi.Input.fromValue(map['nccSpokeUri'] as String),
       networkUri: pulumi.Input.fromValue(map['networkUri'] as String),
       nextHop: pulumi.Input.fromValue(map['nextHop'] as String),
       nextHopType: pulumi.Input.fromValue(map['nextHopType'] as String),
       priority: pulumi.Input.fromValue(map['priority'] as int),
-      protocols: pulumi.Input.fromValue(
-        (map['protocols'] as List).cast<String>(),
-      ),
+      protocols: pulumi.Input.fromValue((map['protocols'] as List).cast<String>()),
       routeScope: pulumi.Input.fromValue(map['routeScope'] as String),
       routeType: pulumi.Input.fromValue(map['routeType'] as String),
       srcIpRange: pulumi.Input.fromValue(map['srcIpRange'] as String),
-      srcPortRanges: pulumi.Input.fromValue(
-        (map['srcPortRanges'] as List).cast<String>(),
-      ),
+      srcPortRanges: pulumi.Input.fromValue((map['srcPortRanges'] as List).cast<String>()),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

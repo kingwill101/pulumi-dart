@@ -148,67 +148,46 @@ import 'profile_tcp_state.dart';
 class ProfileTcp extends pulumi.CustomResource {
   /// Specifies the number of seconds that a connection remains in a LAST-ACK state before quitting. A value of 0 represents a term of forever (or until the maxrtx of the FIN state). The default value is 5 seconds.
   late final pulumi.Output<int> closeWaitTimeout;
-
   /// Specifies the algorithm to use to share network resources among competing users to reduce congestion. The default is High Speed.
   late final pulumi.Output<String?> congestionControl;
-
   /// Specifies the profile that you want to use as the parent profile. Your new profile inherits all settings and values from the parent profile specified.
   late final pulumi.Output<String> defaultsFrom;
-
   /// Specifies, when enabled, that the system defers allocation of the connection chain context until the client response is received. This option is useful for dealing with 3-way handshake DOS attacks. The default value is disabled.
   late final pulumi.Output<String> deferredAccept;
-
   /// Specifies, when checked (enabled), that the system can send fewer than one ACK (acknowledgment) segment per data segment received. By default, this setting is enabled.
   late final pulumi.Output<String?> delayedAcks;
-
   /// Enabling this setting allows TCP to assume a packet is lost after fewer than the standard number of duplicate ACKs, if there is no way to send new data and generate more duplicate ACKs.
   late final pulumi.Output<String?> earlyRetransmit;
-
   /// When enabled, permits TCP Fast Open, allowing properly equipped TCP clients to send data with the SYN packet. Default is `enabled`. If `fast_open` set to `enabled`, argument `verified_accept` can't be set to `enabled`.
   late final pulumi.Output<String> fastOpen;
-
   /// Specifies the number of seconds that a connection is in the FIN-WAIT-2 state before quitting. The default value is 300 seconds. A value of 0 (zero) represents a term of forever (or until the maxrtx of the FIN state).
   late final pulumi.Output<int> finwait2timeout;
-
   /// Specifies the number of seconds that a connection is in the FIN-WAIT-1 or closing state before quitting. The default value is 5 seconds. A value of 0 (zero) represents a term of forever (or until the maxrtx of the FIN state). You can also specify immediate or indefinite.
   late final pulumi.Output<int> finwaitTimeout;
-
   /// Specifies the number of seconds that a connection is idle before the connection is eligible for deletion. The default value is 300 seconds.
   late final pulumi.Output<int> idleTimeout;
-
   /// Specifies the initial congestion window size for connections to this destination. Actual window size is this value multiplied by the MSS (Maximum Segment Size) for the same connection. The default is 10. Valid values range from 0 to 64.
   late final pulumi.Output<int?> initialCongestionWindowsize;
-
   /// Specifies the keep alive probe interval, in seconds. The default value is 1800 seconds.
   late final pulumi.Output<int> keepaliveInterval;
-
   /// Specifies whether the system applies Nagle's algorithm to reduce the number of short segments on the network.If you select Auto, the system determines whether to use Nagle's algorithm based on network conditions. By default, this setting is disabled.
   late final pulumi.Output<String?> nagle;
-
   /// Name of the LTM TCP Profile,name should be `full path`. The full path is the combination of the `partition + name` (example: /Common/my-pool ) or  `partition + directory + name` of the resource  (example: /Common/test/my-pool )
   late final pulumi.Output<String> name;
-
   /// name of partition
   late final pulumi.Output<String?> partition;
-
   /// Specifies the proxy buffer level, in bytes, at which the receive window is closed.
   late final pulumi.Output<int?> proxybufferHigh;
-
   /// Specifies the maximum advertised RECEIVE window size. This value represents the maximum number of bytes to which the RECEIVE window can scale. The default is 65535 bytes.
   late final pulumi.Output<int?> receiveWindowsize;
-
   /// Specifies the SEND window size. The default is 131072 bytes.
   late final pulumi.Output<int?> sendBuffersize;
-
   /// Enabling this setting allows TCP to send a probe segment to trigger fast recovery instead of recovering a loss via a retransmission timeout,By default, this setting is enabled.
   late final pulumi.Output<String?> taillossProbe;
-
   /// Using this setting enabled, the system can recycle a wait-state connection immediately upon receipt of a new connection request instead of having to wait until the connection times out of the wait state. By default, this setting is enabled.
   late final pulumi.Output<String?> timewaitRecycle;
-
   /// Specifies, when checked (enabled), that the system can actually communicate with the server before establishing a client connection. To determine this, the system sends the server a SYN packet before responding to the client's SYN with a SYN-ACK. When unchecked, the system accepts the client connection before selecting a server to talk to. By default, this setting is `disabled`.
   late final pulumi.Output<String?> verifiedAccept;
-
   /// Specifies the timeout in milliseconds for terminating a connection with an effective zero length TCP transmit window.
   late final pulumi.Output<int?> zerowindowTimeout;
 
@@ -221,11 +200,11 @@ class ProfileTcp extends pulumi.CustomResource {
     ProfileTcpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileTcp:ProfileTcp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileTcp:ProfileTcp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     closeWaitTimeout = registerOutput<int>('closeWaitTimeout');
     congestionControl = registerOutput<String?>('congestionControl');
     defaultsFrom = registerOutput<String>('defaultsFrom');
@@ -236,9 +215,7 @@ class ProfileTcp extends pulumi.CustomResource {
     finwait2timeout = registerOutput<int>('finwait2timeout');
     finwaitTimeout = registerOutput<int>('finwaitTimeout');
     idleTimeout = registerOutput<int>('idleTimeout');
-    initialCongestionWindowsize = registerOutput<int?>(
-      'initialCongestionWindowsize',
-    );
+    initialCongestionWindowsize = registerOutput<int?>('initialCongestionWindowsize');
     keepaliveInterval = registerOutput<int>('keepaliveInterval');
     nagle = registerOutput<String?>('nagle');
     this.name = registerOutput<String>('name');
@@ -270,11 +247,11 @@ class ProfileTcp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileTcp:ProfileTcp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileTcp:ProfileTcp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     closeWaitTimeout = registerOutput<int>('closeWaitTimeout');
     congestionControl = registerOutput<String?>('congestionControl');
     defaultsFrom = registerOutput<String>('defaultsFrom');
@@ -285,9 +262,7 @@ class ProfileTcp extends pulumi.CustomResource {
     finwait2timeout = registerOutput<int>('finwait2timeout');
     finwaitTimeout = registerOutput<int>('finwaitTimeout');
     idleTimeout = registerOutput<int>('idleTimeout');
-    initialCongestionWindowsize = registerOutput<int?>(
-      'initialCongestionWindowsize',
-    );
+    initialCongestionWindowsize = registerOutput<int?>('initialCongestionWindowsize');
     keepaliveInterval = registerOutput<int>('keepaliveInterval');
     nagle = registerOutput<String?>('nagle');
     this.name = registerOutput<String>('name');

@@ -9,10 +9,16 @@ class GetTablesTableDefinedColumn {
   /// Creates a new [GetTablesTableDefinedColumn].
   /// [name] Required.
   /// [type] Required.
-  GetTablesTableDefinedColumn({required this.name, required this.type});
+  GetTablesTableDefinedColumn({
+    required this.name,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+    };
   }
 
   factory GetTablesTableDefinedColumn.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class GetTablesTableDefinedColumn {
     );
   }
 }
+

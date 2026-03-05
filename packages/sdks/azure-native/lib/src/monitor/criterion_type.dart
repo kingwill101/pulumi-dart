@@ -15,3 +15,4 @@ enum CriterionType {
     throw ArgumentError('Unknown CriterionType value: $value');
   }
 }
+

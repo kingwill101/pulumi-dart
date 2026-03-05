@@ -812,59 +812,40 @@ import 'agentcore_gateway_timeouts.dart';
 /// ```
 class AgentcoreGateway extends pulumi.CustomResource {
   /// Configuration for request authorization. Required when `authorizer_type` is set to `CUSTOM_JWT`. See `authorizer_configuration` below.
-  late final pulumi.Output<AgentcoreGatewayAuthorizerConfiguration?>
-  authorizerConfiguration;
-
+  late final pulumi.Output<AgentcoreGatewayAuthorizerConfiguration?> authorizerConfiguration;
   /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizer_configuration` block is required.
   late final pulumi.Output<String> authorizerType;
-
   /// Description of the gateway.
   late final pulumi.Output<String?> description;
-
   /// Exception level for the gateway. Valid values: `INFO`, `WARN`, `ERROR`.
   late final pulumi.Output<String?> exceptionLevel;
-
   /// ARN of the Gateway.
   late final pulumi.Output<String> gatewayArn;
-
   /// Unique identifier of the Gateway.
   late final pulumi.Output<String> gatewayId;
-
   /// URL endpoint for the gateway.
   late final pulumi.Output<String> gatewayUrl;
-
   /// List of interceptor configurations for the gateway. Minimum of 1, maximum of 2. See `interceptor_configuration` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  interceptorConfigurations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> interceptorConfigurations;
   /// ARN of the KMS key used to encrypt the gateway data.
   late final pulumi.Output<String?> kmsKeyArn;
-
   /// Name of the gateway.
   late final pulumi.Output<String> name;
-
   /// Protocol-specific configuration for the gateway. See `protocol_configuration` below.
-  late final pulumi.Output<AgentcoreGatewayProtocolConfiguration?>
-  protocolConfiguration;
-
+  late final pulumi.Output<AgentcoreGatewayProtocolConfiguration?> protocolConfiguration;
   /// Protocol type for the gateway. Valid values: `MCP`.
   late final pulumi.Output<String> protocolType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the IAM role that the gateway assumes to access AWS services.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> roleArn;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreGatewayTimeouts?> timeouts;
-
   /// Workload identity details for the gateway. See `workload_identity_details` below.
   late final pulumi.Output<List<Map<String, dynamic>>> workloadIdentityDetails;
 
@@ -877,62 +858,29 @@ class AgentcoreGateway extends pulumi.CustomResource {
     AgentcoreGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentcoreGateway:AgentcoreGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authorizerConfiguration =
-        registerOutput<AgentcoreGatewayAuthorizerConfiguration?>(
-          'authorizerConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreGatewayAuthorizerConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:bedrock/agentcoreGateway:AgentcoreGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authorizerConfiguration = registerOutput<AgentcoreGatewayAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorizerType = registerOutput<String>('authorizerType');
     description = registerOutput<String?>('description');
     exceptionLevel = registerOutput<String?>('exceptionLevel');
     gatewayArn = registerOutput<String>('gatewayArn');
     gatewayId = registerOutput<String>('gatewayId');
     gatewayUrl = registerOutput<String>('gatewayUrl');
-    interceptorConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'interceptorConfigurations',
-    );
+    interceptorConfigurations = registerOutput<List<Map<String, dynamic>>?>('interceptorConfigurations');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
-    protocolConfiguration =
-        registerOutput<AgentcoreGatewayProtocolConfiguration?>(
-          'protocolConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreGatewayProtocolConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    protocolConfiguration = registerOutput<AgentcoreGatewayProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protocolType = registerOutput<String>('protocolType');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentcoreGatewayTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentcoreGatewayTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    workloadIdentityDetails = registerOutput<List<Map<String, dynamic>>>(
-      'workloadIdentityDetails',
-    );
+    timeouts = registerOutput<AgentcoreGatewayTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadIdentityDetails = registerOutput<List<Map<String, dynamic>>>('workloadIdentityDetails');
   }
 
   /// Gets an existing [AgentcoreGateway] resource's state with the given [name] and [id].
@@ -953,61 +901,28 @@ class AgentcoreGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentcoreGateway:AgentcoreGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authorizerConfiguration =
-        registerOutput<AgentcoreGatewayAuthorizerConfiguration?>(
-          'authorizerConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreGatewayAuthorizerConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:bedrock/agentcoreGateway:AgentcoreGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authorizerConfiguration = registerOutput<AgentcoreGatewayAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorizerType = registerOutput<String>('authorizerType');
     description = registerOutput<String?>('description');
     exceptionLevel = registerOutput<String?>('exceptionLevel');
     gatewayArn = registerOutput<String>('gatewayArn');
     gatewayId = registerOutput<String>('gatewayId');
     gatewayUrl = registerOutput<String>('gatewayUrl');
-    interceptorConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'interceptorConfigurations',
-    );
+    interceptorConfigurations = registerOutput<List<Map<String, dynamic>>?>('interceptorConfigurations');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
-    protocolConfiguration =
-        registerOutput<AgentcoreGatewayProtocolConfiguration?>(
-          'protocolConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreGatewayProtocolConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    protocolConfiguration = registerOutput<AgentcoreGatewayProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protocolType = registerOutput<String>('protocolType');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentcoreGatewayTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentcoreGatewayTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    workloadIdentityDetails = registerOutput<List<Map<String, dynamic>>>(
-      'workloadIdentityDetails',
-    );
+    timeouts = registerOutput<AgentcoreGatewayTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadIdentityDetails = registerOutput<List<Map<String, dynamic>>>('workloadIdentityDetails');
   }
 }

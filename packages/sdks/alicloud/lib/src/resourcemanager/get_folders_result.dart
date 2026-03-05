@@ -6,19 +6,15 @@ import 'get_folders_folder.dart';
 /// Result data returned by getFolders.
 class GetFoldersResult {
   final bool? enableDetails;
-
   /// A list of Folder. Each element contains the following attributes:
   final List<GetFoldersFolder> folders;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of Folder names.
   final List<String> names;
   final String? outputFile;
-
   /// (Available since v1.114.0) The ID of the parent folder. **Note:** `parent_folder_id` takes effect only if `enable_details` is set to `true`.
   final String? parentFolderId;
   final String? queryKeyword;
@@ -48,11 +44,7 @@ class GetFoldersResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enableDetails': ?enableDetails,
-      'folders':
-          pulumi.Input.encodeList<GetFoldersFolder, Map<String, dynamic>>(
-            folders,
-            (value) => value.toMap(),
-          ),
+      'folders': pulumi.Input.encodeList<GetFoldersFolder, Map<String, dynamic>>(folders, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -65,39 +57,16 @@ class GetFoldersResult {
 
   factory GetFoldersResult.fromMap(Map<String, dynamic> map) {
     return GetFoldersResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      folders: pulumi.Input.decodeList<GetFoldersFolder>(
-        map['folders']!,
-        (value) =>
-            GetFoldersFolder.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      folders: pulumi.Input.decodeList<GetFoldersFolder>(map['folders']!, (value) => GetFoldersFolder.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      parentFolderId: (() {
-        final guardedValue = map['parentFolderId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      queryKeyword: (() {
-        final guardedValue = map['queryKeyword'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parentFolderId: (() { final guardedValue = map['parentFolderId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      queryKeyword: (() { final guardedValue = map['queryKeyword']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

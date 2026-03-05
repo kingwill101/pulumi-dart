@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PostgresqlProfile {
   /// Database for the PostgreSQL connection.
   final pulumi.Input<String> database;
-
   /// Hostname for the PostgreSQL connection.
   final pulumi.Input<String> hostname;
-
   /// Password for the PostgreSQL connection.
   final pulumi.Input<String> password;
-
   /// Port for the PostgreSQL connection, default value is 5432.
   final pulumi.Input<int>? port;
-
   /// Username for the PostgreSQL connection.
   final pulumi.Input<String> username;
 
@@ -48,12 +44,9 @@ class PostgresqlProfile {
       database: pulumi.Input.fromValue(map['database'] as String),
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

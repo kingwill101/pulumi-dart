@@ -9,21 +9,20 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue {
 
   /// Creates a new [GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue].
   /// [plainText] Input only. The plain text of the client secret value. For security reasons, this field is only used for input and will never be populated in any response.
-  GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue({this.plainText});
+  GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue({
+    this.plainText,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'plainText': ?plainText};
+    return <String, dynamic>{
+      'plainText': ?plainText,
+    };
   }
 
-  factory GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue.fromMap(Map<String, dynamic> map) {
     return GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue(
-      plainText: (() {
-        final guardedValue = map['plainText'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      plainText: (() { final guardedValue = map['plainText']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

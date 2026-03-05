@@ -9,10 +9,14 @@ class ContactParametersContactProfile {
 
   /// Creates a new [ContactParametersContactProfile].
   /// [id] Resource ID.
-  ContactParametersContactProfile({required this.id});
+  ContactParametersContactProfile({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory ContactParametersContactProfile.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ContactParametersContactProfile {
     );
   }
 }
+

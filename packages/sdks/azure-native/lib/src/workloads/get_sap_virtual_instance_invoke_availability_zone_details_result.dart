@@ -16,31 +16,14 @@ class GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availabilityZonePairs': ?(() {
-        final guardedValue = availabilityZonePairs;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          SAPAvailabilityZonePairResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'availabilityZonePairs': ?(() { final guardedValue = availabilityZonePairs; if (guardedValue == null) return null; return pulumi.Input.encodeList<SAPAvailabilityZonePairResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
-  factory GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult(
-      availabilityZonePairs: (() {
-        final guardedValue = map['availabilityZonePairs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<SAPAvailabilityZonePairResponse>(
-          guardedValue,
-          (value) => SAPAvailabilityZonePairResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      availabilityZonePairs: (() { final guardedValue = map['availabilityZonePairs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SAPAvailabilityZonePairResponse>(guardedValue, (value) => SAPAvailabilityZonePairResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -280,47 +280,32 @@ import 'provisioned_cluster_state.dart';
 class ProvisionedCluster extends pulumi.CustomResource {
   /// The version of the agent running on the cluster resource.
   late final pulumi.Output<String> agentVersion;
-
   /// Whether the Arc agents will be upgraded automatically to the latest version. Defaults to `true`.
   late final pulumi.Output<bool?> arcAgentAutoUpgradeEnabled;
-
   /// The version of the Arc agents to be installed on the cluster.
   late final pulumi.Output<String?> arcAgentDesiredVersion;
-
   /// An `azure_active_directory` block as defined below.
-  late final pulumi.Output<ProvisionedClusterAzureActiveDirectory?>
-  azureActiveDirectory;
-
+  late final pulumi.Output<ProvisionedClusterAzureActiveDirectory?> azureActiveDirectory;
   /// The distribution running on this Arc Kubernetes Provisioned Cluster.
   late final pulumi.Output<String> distribution;
-
   /// An `identity` block as defined below. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   late final pulumi.Output<ProvisionedClusterIdentity> identity;
-
   /// The infrastructure on which the Arc Kubernetes Provisioned Cluster is running on.
   late final pulumi.Output<String> infrastructure;
-
   /// The Kubernetes version of the cluster resource.
   late final pulumi.Output<String> kubernetesVersion;
-
   /// The Azure Region where the Arc Kubernetes Provisioned Cluster should exist. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Arc Kubernetes Provisioned Cluster. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   late final pulumi.Output<String> name;
-
   /// The cluster offering.
   late final pulumi.Output<String> offering;
-
   /// The name of the Resource Group where the Arc Kubernetes Provisioned Cluster should exist. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Arc Kubernetes Provisioned Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The number of CPU cores present in the cluster resource.
   late final pulumi.Output<int> totalCoreCount;
-
   /// The number of nodes present in the cluster resource.
   late final pulumi.Output<int> totalNodeCount;
 
@@ -333,38 +318,17 @@ class ProvisionedCluster extends pulumi.CustomResource {
     ProvisionedClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:arckubernetes/provisionedCluster:ProvisionedCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:arckubernetes/provisionedCluster:ProvisionedCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentVersion = registerOutput<String>('agentVersion');
-    arcAgentAutoUpgradeEnabled = registerOutput<bool?>(
-      'arcAgentAutoUpgradeEnabled',
-    );
+    arcAgentAutoUpgradeEnabled = registerOutput<bool?>('arcAgentAutoUpgradeEnabled');
     arcAgentDesiredVersion = registerOutput<String?>('arcAgentDesiredVersion');
-    azureActiveDirectory =
-        registerOutput<ProvisionedClusterAzureActiveDirectory?>(
-          'azureActiveDirectory',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ProvisionedClusterAzureActiveDirectory.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    azureActiveDirectory = registerOutput<ProvisionedClusterAzureActiveDirectory?>('azureActiveDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisionedClusterAzureActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     distribution = registerOutput<String>('distribution');
-    identity = registerOutput<ProvisionedClusterIdentity>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProvisionedClusterIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ProvisionedClusterIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisionedClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     infrastructure = registerOutput<String>('infrastructure');
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');
@@ -394,38 +358,17 @@ class ProvisionedCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:arckubernetes/provisionedCluster:ProvisionedCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:arckubernetes/provisionedCluster:ProvisionedCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentVersion = registerOutput<String>('agentVersion');
-    arcAgentAutoUpgradeEnabled = registerOutput<bool?>(
-      'arcAgentAutoUpgradeEnabled',
-    );
+    arcAgentAutoUpgradeEnabled = registerOutput<bool?>('arcAgentAutoUpgradeEnabled');
     arcAgentDesiredVersion = registerOutput<String?>('arcAgentDesiredVersion');
-    azureActiveDirectory =
-        registerOutput<ProvisionedClusterAzureActiveDirectory?>(
-          'azureActiveDirectory',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ProvisionedClusterAzureActiveDirectory.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    azureActiveDirectory = registerOutput<ProvisionedClusterAzureActiveDirectory?>('azureActiveDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisionedClusterAzureActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     distribution = registerOutput<String>('distribution');
-    identity = registerOutput<ProvisionedClusterIdentity>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProvisionedClusterIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ProvisionedClusterIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisionedClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     infrastructure = registerOutput<String>('infrastructure');
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');

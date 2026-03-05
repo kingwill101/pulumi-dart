@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AS2MdnSettingsResponse {
   /// The disposition notification to header value.
   final pulumi.Input<String>? dispositionNotificationTo;
-
   /// The MDN text.
   final pulumi.Input<String>? mdnText;
-
   /// The signing or hashing algorithm.
   final pulumi.Input<String> micHashingAlgorithm;
-
   /// The value indicating whether to send or request a MDN.
   final pulumi.Input<bool> needMDN;
-
   /// The receipt delivery URL.
   final pulumi.Input<String>? receiptDeliveryUrl;
-
   /// The value indicating whether to send inbound MDN to message box.
   final pulumi.Input<bool> sendInboundMDNToMessageBox;
-
   /// The value indicating whether to send the asynchronous MDN.
   final pulumi.Input<bool> sendMDNAsynchronously;
-
   /// The value indicating whether the MDN needs to be signed or not.
   final pulumi.Input<bool> signMDN;
-
   /// The value indicating whether to sign the outbound MDN if optional.
   final pulumi.Input<bool> signOutboundMDNIfOptional;
 
@@ -69,35 +61,16 @@ class AS2MdnSettingsResponse {
 
   factory AS2MdnSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AS2MdnSettingsResponse(
-      dispositionNotificationTo: (() {
-        final guardedValue = map['dispositionNotificationTo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mdnText: (() {
-        final guardedValue = map['mdnText'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      micHashingAlgorithm: pulumi.Input.fromValue(
-        map['micHashingAlgorithm'] as String,
-      ),
+      dispositionNotificationTo: (() { final guardedValue = map['dispositionNotificationTo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mdnText: (() { final guardedValue = map['mdnText']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      micHashingAlgorithm: pulumi.Input.fromValue(map['micHashingAlgorithm'] as String),
       needMDN: pulumi.Input.fromValue(map['needMDN'] as bool),
-      receiptDeliveryUrl: (() {
-        final guardedValue = map['receiptDeliveryUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sendInboundMDNToMessageBox: pulumi.Input.fromValue(
-        map['sendInboundMDNToMessageBox'] as bool,
-      ),
-      sendMDNAsynchronously: pulumi.Input.fromValue(
-        map['sendMDNAsynchronously'] as bool,
-      ),
+      receiptDeliveryUrl: (() { final guardedValue = map['receiptDeliveryUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sendInboundMDNToMessageBox: pulumi.Input.fromValue(map['sendInboundMDNToMessageBox'] as bool),
+      sendMDNAsynchronously: pulumi.Input.fromValue(map['sendMDNAsynchronously'] as bool),
       signMDN: pulumi.Input.fromValue(map['signMDN'] as bool),
-      signOutboundMDNIfOptional: pulumi.Input.fromValue(
-        map['signOutboundMDNIfOptional'] as bool,
-      ),
+      signOutboundMDNIfOptional: pulumi.Input.fromValue(map['signOutboundMDNIfOptional'] as bool),
     );
   }
 }
+

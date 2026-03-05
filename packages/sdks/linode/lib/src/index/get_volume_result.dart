@@ -1,37 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVolume.
 class GetVolumeResult {
   /// When this Volume was created.
   final String created;
-
   /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
   final String encryption;
-
   /// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
   final String filesystemPath;
-
   /// The unique ID of this Volume.
   final int id;
-
   /// This Volume's label is for display purposes only.
   final String label;
-
   /// If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
   final int linodeId;
-
   /// The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
   final String region;
-
   /// The Volume's size, in GiB.
   final int size;
-
   /// The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
   final String status;
-
   /// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   final List<String> tags;
-
   /// When this Volume was last updated.
   final String updated;
 
@@ -93,3 +84,4 @@ class GetVolumeResult {
     );
   }
 }
+

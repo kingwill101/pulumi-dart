@@ -16,3 +16,4 @@ enum ManagedRuleSetActionType {
     throw ArgumentError('Unknown ManagedRuleSetActionType value: $value');
   }
 }
+

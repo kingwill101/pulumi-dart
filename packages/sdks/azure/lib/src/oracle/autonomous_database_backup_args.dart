@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutonomousDatabaseBackupArgs {
   /// The azureId of the Autonomous Database that this backup is for. Changing this forces a new resource to be created.
   final pulumi.Input<String> autonomousDatabaseId;
-
   /// The display name of the Autonomous Database Backup. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// (Updatable) The number of days to retain the backup. Must be between 90 and 3650 days.
   final pulumi.Input<int> retentionPeriodInDays;
-
   /// The type of backup to create.Currently, only `LongTerm` backup operations are supported through the Oracle database At azure service. Defaults to `LongTerm`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? type;
 
@@ -42,22 +39,11 @@ class AutonomousDatabaseBackupArgs {
 
   factory AutonomousDatabaseBackupArgs.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabaseBackupArgs(
-      autonomousDatabaseId: pulumi.Input.fromValue(
-        map['autonomousDatabaseId'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retentionPeriodInDays: pulumi.Input.fromValue(
-        map['retentionPeriodInDays'] as int,
-      ),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autonomousDatabaseId: pulumi.Input.fromValue(map['autonomousDatabaseId'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retentionPeriodInDays: pulumi.Input.fromValue(map['retentionPeriodInDays'] as int),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

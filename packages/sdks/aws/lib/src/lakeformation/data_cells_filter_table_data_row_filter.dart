@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataCellsFilterTableDataRowFilter {
   /// (Optional) A wildcard that matches all rows. Required when applying column-level filtering without row-level filtering. Use an empty block: `all_rows_wildcard {}`.
   final pulumi.Input<Map<String, dynamic>>? allRowsWildcard;
-
   /// (Optional) A PartiQL predicate expression for row-level filtering.
   final pulumi.Input<String>? filterExpression;
 
@@ -26,18 +25,9 @@ class DataCellsFilterTableDataRowFilter {
 
   factory DataCellsFilterTableDataRowFilter.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterTableDataRowFilter(
-      allRowsWildcard: (() {
-        final guardedValue = map['allRowsWildcard'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      filterExpression: (() {
-        final guardedValue = map['filterExpression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allRowsWildcard: (() { final guardedValue = map['allRowsWildcard']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      filterExpression: (() { final guardedValue = map['filterExpression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

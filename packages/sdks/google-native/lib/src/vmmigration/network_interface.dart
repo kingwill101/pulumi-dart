@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterface {
   /// The external IP to define in the NIC.
   final pulumi.Input<String>? externalIp;
-
   /// The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
   final pulumi.Input<String>? internalIp;
-
   /// The network to connect the NIC to.
   final pulumi.Input<String>? network;
-
   /// The subnetwork to connect the NIC to.
   final pulumi.Input<String>? subnetwork;
 
@@ -39,26 +36,11 @@ class NetworkInterface {
 
   factory NetworkInterface.fromMap(Map<String, dynamic> map) {
     return NetworkInterface(
-      externalIp: (() {
-        final guardedValue = map['externalIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      internalIp: (() {
-        final guardedValue = map['internalIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetwork: (() {
-        final guardedValue = map['subnetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      externalIp: (() { final guardedValue = map['externalIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      internalIp: (() { final guardedValue = map['internalIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

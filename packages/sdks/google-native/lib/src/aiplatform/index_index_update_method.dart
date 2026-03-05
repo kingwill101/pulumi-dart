@@ -16,3 +16,4 @@ enum IndexIndexUpdateMethod {
     throw ArgumentError('Unknown IndexIndexUpdateMethod value: $value');
   }
 }
+

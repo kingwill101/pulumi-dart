@@ -15,34 +15,24 @@ import 'hci_cluster_state.dart';
 class HciCluster extends pulumi.CustomResource {
   /// The ID of the Automanage Configuration assigned to the Azure Stack HCI Cluster.
   late final pulumi.Output<String?> automanageConfigurationId;
-
   /// The Client ID of the Azure Active Directory Application which is used by the Azure Stack HCI Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> clientId;
-
   /// An immutable UUID for the Azure Stack HCI Cluster.
   late final pulumi.Output<String> cloudId;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<HciClusterIdentity?> identity;
-
   /// The Azure Region where the Azure Stack HCI Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Azure Stack HCI Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Azure Stack HCI Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The object ID of the Resource Provider Service Principal.
   late final pulumi.Output<String> resourceProviderObjectId;
-
   /// The region specific Data Path Endpoint of the Azure Stack HCI Cluster.
   late final pulumi.Output<String> serviceEndpoint;
-
   /// A mapping of tags which should be assigned to the Azure Stack HCI Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Tenant ID of the Azure Active Directory which is used by the Azure Stack HCI Cluster. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If unspecified the Tenant ID of the Provider will be used.
@@ -57,32 +47,19 @@ class HciCluster extends pulumi.CustomResource {
     HciClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:stack/hciCluster:HciCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    automanageConfigurationId = registerOutput<String?>(
-      'automanageConfigurationId',
-    );
+          'azure:stack/hciCluster:HciCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    automanageConfigurationId = registerOutput<String?>('automanageConfigurationId');
     clientId = registerOutput<String?>('clientId');
     cloudId = registerOutput<String>('cloudId');
-    identity = registerOutput<HciClusterIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HciClusterIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<HciClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HciClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    resourceProviderObjectId = registerOutput<String>(
-      'resourceProviderObjectId',
-    );
+    resourceProviderObjectId = registerOutput<String>('resourceProviderObjectId');
     serviceEndpoint = registerOutput<String>('serviceEndpoint');
     tags = registerOutput<Map<String, String>?>('tags');
     tenantId = registerOutput<String>('tenantId');
@@ -106,32 +83,19 @@ class HciCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:stack/hciCluster:HciCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    automanageConfigurationId = registerOutput<String?>(
-      'automanageConfigurationId',
-    );
+          'azure:stack/hciCluster:HciCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    automanageConfigurationId = registerOutput<String?>('automanageConfigurationId');
     clientId = registerOutput<String?>('clientId');
     cloudId = registerOutput<String>('cloudId');
-    identity = registerOutput<HciClusterIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HciClusterIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<HciClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HciClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    resourceProviderObjectId = registerOutput<String>(
-      'resourceProviderObjectId',
-    );
+    resourceProviderObjectId = registerOutput<String>('resourceProviderObjectId');
     serviceEndpoint = registerOutput<String>('serviceEndpoint');
     tags = registerOutput<Map<String, String>?>('tags');
     tenantId = registerOutput<String>('tenantId');

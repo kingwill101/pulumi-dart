@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogicalNetworkInterfaceResponse {
   /// Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
   final pulumi.Input<bool> defaultGateway;
-
   /// IP address in the network
   final pulumi.Input<String> ipAddress;
-
   /// Name of the network
   final pulumi.Input<String> network;
-
   /// Type of network.
   final pulumi.Input<String> networkType;
 
@@ -46,3 +43,4 @@ class LogicalNetworkInterfaceResponse {
     );
   }
 }
+

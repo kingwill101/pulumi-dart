@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RevisionAssetsAssetImportAssetsFromS3AssetSource {
   /// The name of the S3 bucket.
   final pulumi.Input<String> bucket;
-
   /// The key of the object in the S3 bucket.
   final pulumi.Input<String> key;
 
@@ -18,15 +17,17 @@ class RevisionAssetsAssetImportAssetsFromS3AssetSource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucket': bucket, 'key': key};
+    return <String, dynamic>{
+      'bucket': bucket,
+      'key': key,
+    };
   }
 
-  factory RevisionAssetsAssetImportAssetsFromS3AssetSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RevisionAssetsAssetImportAssetsFromS3AssetSource.fromMap(Map<String, dynamic> map) {
     return RevisionAssetsAssetImportAssetsFromS3AssetSource(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
+

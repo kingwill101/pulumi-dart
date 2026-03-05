@@ -18,3 +18,4 @@ enum TestIssueSeverity {
     throw ArgumentError('Unknown TestIssueSeverity value: $value');
   }
 }
+

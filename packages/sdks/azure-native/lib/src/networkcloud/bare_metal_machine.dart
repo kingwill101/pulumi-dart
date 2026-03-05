@@ -266,123 +266,82 @@ import 'system_data_response.dart';
 class BareMetalMachine extends pulumi.CustomResource {
   /// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
   late final pulumi.Output<List<String>> associatedResourceIds;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The connection string for the baseboard management controller including IP address and protocol.
   late final pulumi.Output<String> bmcConnectionString;
-
   /// The credentials of the baseboard management controller on this bare metal machine.
   late final pulumi.Output<AdministrativeCredentialsResponse> bmcCredentials;
-
   /// The MAC address of the BMC device.
   late final pulumi.Output<String> bmcMacAddress;
-
   /// The MAC address of a NIC connected to the PXE network.
   late final pulumi.Output<String> bootMacAddress;
-
   /// The resource ID of the cluster this bare metal machine is associated with.
   late final pulumi.Output<String> clusterId;
-
   /// The cordon status of the bare metal machine.
   late final pulumi.Output<String> cordonStatus;
-
   /// The more detailed status of the bare metal machine.
   late final pulumi.Output<String> detailedStatus;
-
   /// The descriptive message about the current detailed status.
   late final pulumi.Output<String> detailedStatusMessage;
-
   /// Resource ETag.
   late final pulumi.Output<String> etag;
-
   /// The extended location of the cluster associated with the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
-
   /// The hardware inventory, including information acquired from the model/sku information and from the ironic inspector.
   late final pulumi.Output<HardwareInventoryResponse> hardwareInventory;
-
   /// The details of the latest hardware validation performed for this bare metal machine.
-  late final pulumi.Output<HardwareValidationStatusResponse>
-  hardwareValidationStatus;
-
+  late final pulumi.Output<HardwareValidationStatusResponse> hardwareValidationStatus;
   /// Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.
   late final pulumi.Output<List<String>> hybridAksClustersAssociatedIds;
-
   /// The name of this machine represented by the host object in the Cluster's Kubernetes control plane.
   late final pulumi.Output<String> kubernetesNodeName;
-
   /// The version of Kubernetes running on this machine.
   late final pulumi.Output<String> kubernetesVersion;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The cluster version that has been applied to this machine during deployment or a version update.
   late final pulumi.Output<String?> machineClusterVersion;
-
   /// The custom details provided by the customer.
   late final pulumi.Output<String> machineDetails;
-
   /// The OS-level hostname assigned to this machine.
   late final pulumi.Output<String> machineName;
-
   /// The list of roles that are assigned to the cluster node running on this machine.
   late final pulumi.Output<List<String>> machineRoles;
-
   /// The unique internal identifier of the bare metal machine SKU.
   late final pulumi.Output<String> machineSkuId;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The IPv4 address that is assigned to the bare metal machine during the cluster deployment.
   late final pulumi.Output<String> oamIpv4Address;
-
   /// The IPv6 address that is assigned to the bare metal machine during the cluster deployment.
   late final pulumi.Output<String> oamIpv6Address;
-
   /// The image that is currently provisioned to the OS disk.
   late final pulumi.Output<String> osImage;
-
   /// The power state derived from the baseboard management controller.
   late final pulumi.Output<String> powerState;
-
   /// The provisioning state of the bare metal machine.
   late final pulumi.Output<String> provisioningState;
-
   /// The resource ID of the rack where this bare metal machine resides.
   late final pulumi.Output<String> rackId;
-
   /// The rack slot in which this bare metal machine is located, ordered from the bottom up i.e. the lowest slot is 1.
   late final pulumi.Output<double> rackSlot;
-
   /// The indicator of whether the bare metal machine is ready to receive workloads.
   late final pulumi.Output<String> readyState;
-
   /// The runtime protection status of the bare metal machine.
-  late final pulumi.Output<RuntimeProtectionStatusResponse>
-  runtimeProtectionStatus;
-
+  late final pulumi.Output<RuntimeProtectionStatusResponse> runtimeProtectionStatus;
   /// The list of statuses that represent secret rotation activity.
   late final pulumi.Output<List<Map<String, dynamic>>> secretRotationStatus;
-
   /// The serial number of the bare metal machine.
   late final pulumi.Output<String> serialNumber;
-
   /// The discovered value of the machine's service tag.
   late final pulumi.Output<String> serviceTag;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the VirtualMachines that are hosted on this bare metal machine.
   late final pulumi.Output<List<String>> virtualMachinesAssociatedIds;
 
@@ -395,26 +354,15 @@ class BareMetalMachine extends pulumi.CustomResource {
     BareMetalMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:networkcloud:BareMetalMachine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    associatedResourceIds = registerOutput<List<String>>(
-      'associatedResourceIds',
-    );
+          'azure-native:networkcloud:BareMetalMachine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    associatedResourceIds = registerOutput<List<String>>('associatedResourceIds');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     bmcConnectionString = registerOutput<String>('bmcConnectionString');
-    bmcCredentials = registerOutput<AdministrativeCredentialsResponse>(
-      'bmcCredentials',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AdministrativeCredentialsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    bmcCredentials = registerOutput<AdministrativeCredentialsResponse>('bmcCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdministrativeCredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bmcMacAddress = registerOutput<String>('bmcMacAddress');
     bootMacAddress = registerOutput<String>('bootMacAddress');
     clusterId = registerOutput<String>('clusterId');
@@ -422,39 +370,10 @@ class BareMetalMachine extends pulumi.CustomResource {
     detailedStatus = registerOutput<String>('detailedStatus');
     detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
     etag = registerOutput<String>('etag');
-    extendedLocation = registerOutput<ExtendedLocationResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    hardwareInventory = registerOutput<HardwareInventoryResponse>(
-      'hardwareInventory',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HardwareInventoryResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    hardwareValidationStatus = registerOutput<HardwareValidationStatusResponse>(
-      'hardwareValidationStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HardwareValidationStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    hybridAksClustersAssociatedIds = registerOutput<List<String>>(
-      'hybridAksClustersAssociatedIds',
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hardwareInventory = registerOutput<HardwareInventoryResponse>('hardwareInventory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HardwareInventoryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hardwareValidationStatus = registerOutput<HardwareValidationStatusResponse>('hardwareValidationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HardwareValidationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hybridAksClustersAssociatedIds = registerOutput<List<String>>('hybridAksClustersAssociatedIds');
     kubernetesNodeName = registerOutput<String>('kubernetesNodeName');
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');
@@ -472,35 +391,13 @@ class BareMetalMachine extends pulumi.CustomResource {
     rackId = registerOutput<String>('rackId');
     rackSlot = registerOutput<double>('rackSlot');
     readyState = registerOutput<String>('readyState');
-    runtimeProtectionStatus = registerOutput<RuntimeProtectionStatusResponse>(
-      'runtimeProtectionStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeProtectionStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    secretRotationStatus = registerOutput<List<Map<String, dynamic>>>(
-      'secretRotationStatus',
-    );
+    runtimeProtectionStatus = registerOutput<RuntimeProtectionStatusResponse>('runtimeProtectionStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeProtectionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secretRotationStatus = registerOutput<List<Map<String, dynamic>>>('secretRotationStatus');
     serialNumber = registerOutput<String>('serialNumber');
     serviceTag = registerOutput<String>('serviceTag');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualMachinesAssociatedIds = registerOutput<List<String>>(
-      'virtualMachinesAssociatedIds',
-    );
+    virtualMachinesAssociatedIds = registerOutput<List<String>>('virtualMachinesAssociatedIds');
   }
 }

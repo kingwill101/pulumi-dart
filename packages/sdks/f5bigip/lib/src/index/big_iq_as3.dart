@@ -145,25 +145,18 @@ import 'big_iq_as3_state.dart';
 class BigIqAs3 extends pulumi.CustomResource {
   /// Path/Filename of Declarative AS3 JSON which is a json file used with builtin ```file``` function
   late final pulumi.Output<String> as3Json;
-
   /// Address of the BIG-IQ to which your targer BIG-IP is attached
   late final pulumi.Output<String> bigiqAddress;
-
   /// BIGIQ Login reference for token authentication
   late final pulumi.Output<String?> bigiqLoginRef;
-
   /// Password of the BIG-IQ to which your targer BIG-IP is attached
   late final pulumi.Output<String> bigiqPassword;
-
   /// type `int`, BIGIQ License Manager Port number, specify if port is other than `443`
   late final pulumi.Output<String?> bigiqPort;
-
   /// type `bool`, if set to `true` enables Token based Authentication,default is `false`
   late final pulumi.Output<bool?> bigiqTokenAuth;
-
   /// User name  of the BIG-IQ to which your targer BIG-IP is attached
   late final pulumi.Output<String> bigiqUser;
-
   /// Set True if you want to ignore metadata changes during update. By default it is set to `true`
   ///
   /// * `bigiq_example.json` - Example  AS3 Declarative JSON file
@@ -222,7 +215,6 @@ class BigIqAs3 extends pulumi.CustomResource {
   ///
   /// &gt;  **Note:** This resource does not support `teanat_filter` parameter as BIG-IP As3 resource
   late final pulumi.Output<bool?> ignoreMetadata;
-
   /// Name of Tenant
   late final pulumi.Output<String> tenantList;
 
@@ -235,11 +227,11 @@ class BigIqAs3 extends pulumi.CustomResource {
     BigIqAs3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/bigIqAs3:BigIqAs3',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/bigIqAs3:BigIqAs3',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     as3Json = registerOutput<String>('as3Json');
     bigiqAddress = registerOutput<String>('bigiqAddress');
     bigiqLoginRef = registerOutput<String?>('bigiqLoginRef');
@@ -269,11 +261,11 @@ class BigIqAs3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/bigIqAs3:BigIqAs3',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/bigIqAs3:BigIqAs3',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     as3Json = registerOutput<String>('as3Json');
     bigiqAddress = registerOutput<String>('bigiqAddress');
     bigiqLoginRef = registerOutput<String?>('bigiqLoginRef');

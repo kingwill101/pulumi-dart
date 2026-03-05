@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
   /// The maximum scaling factor that the service will autoscale to. The default value is 6.0.
   final pulumi.Input<double> maxScalingFactor;
-
   /// The minimum scaling factor that the service will autoscale to. The default value is 0.1.
   final pulumi.Input<double> minScalingFactor;
 
@@ -24,16 +23,11 @@ class GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
     };
   }
 
-  factory GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig.fromMap(Map<String, dynamic> map) {
     return GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig(
-      maxScalingFactor: pulumi.Input.fromValue(
-        map['maxScalingFactor'] as double,
-      ),
-      minScalingFactor: pulumi.Input.fromValue(
-        map['minScalingFactor'] as double,
-      ),
+      maxScalingFactor: pulumi.Input.fromValue(map['maxScalingFactor'] as double),
+      minScalingFactor: pulumi.Input.fromValue(map['minScalingFactor'] as double),
     );
   }
 }
+

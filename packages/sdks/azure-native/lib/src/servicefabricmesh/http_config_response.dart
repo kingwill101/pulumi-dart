@@ -7,10 +7,8 @@ import 'http_host_config_response.dart';
 class HttpConfigResponse {
   /// description for routing.
   final pulumi.Input<List<HttpHostConfigResponse>> hosts;
-
   /// http gateway config name.
   final pulumi.Input<String> name;
-
   /// Specifies the port at which the service endpoint below needs to be exposed.
   final pulumi.Input<int> port;
 
@@ -26,18 +24,7 @@ class HttpConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hosts':
-          pulumi.Input.mapInputValue<
-            List<HttpHostConfigResponse>,
-            List<Map<String, dynamic>>
-          >(
-            hosts,
-            (value) =>
-                pulumi.Input.encodeList<
-                  HttpHostConfigResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'hosts': pulumi.Input.mapInputValue<List<HttpHostConfigResponse>, List<Map<String, dynamic>>>(hosts, (value) => pulumi.Input.encodeList<HttpHostConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'port': port,
     };
@@ -45,16 +32,10 @@ class HttpConfigResponse {
 
   factory HttpConfigResponse.fromMap(Map<String, dynamic> map) {
     return HttpConfigResponse(
-      hosts: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<HttpHostConfigResponse>(
-          map['hosts']!,
-          (value) => HttpHostConfigResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      hosts: pulumi.Input.fromValue(pulumi.Input.decodeList<HttpHostConfigResponse>(map['hosts']!, (value) => HttpHostConfigResponse.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
       port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
+

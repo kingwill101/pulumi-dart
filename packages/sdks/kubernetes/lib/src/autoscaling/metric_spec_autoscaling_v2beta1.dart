@@ -10,21 +10,15 @@ import 'resource_metric_source_autoscaling_v2beta1.dart';
 /// MetricSpec specifies how to scale based on a single metric (only `type` and one other matching field should be set at once).
 class MetricSpecAutoscalingV2beta1 {
   /// container resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod of the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. This is an alpha feature and can be enabled by the HPAContainerMetrics feature flag.
-  final pulumi.Input<ContainerResourceMetricSourceAutoscalingV2beta1>?
-  containerResource;
-
+  final pulumi.Input<ContainerResourceMetricSourceAutoscalingV2beta1>? containerResource;
   /// external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).
   final pulumi.Input<ExternalMetricSourceAutoscalingV2beta1>? external;
-
   /// object refers to a metric describing a single kubernetes object (for example, hits-per-second on an Ingress object).
   final pulumi.Input<ObjectMetricSourceAutoscalingV2beta1>? object_;
-
   /// pods refers to a metric describing each pod in the current scale target (for example, transactions-processed-per-second).  The values will be averaged together before being compared to the target value.
   final pulumi.Input<PodsMetricSourceAutoscalingV2beta1>? pods;
-
   /// resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
   final pulumi.Input<ResourceMetricSourceAutoscalingV2beta1>? resource;
-
   /// type is the type of metric source.  It should be one of "Object", "Pods" or "Resource", each mapping to a matching field in the object.
   final pulumi.Input<String> type;
 
@@ -46,83 +40,24 @@ class MetricSpecAutoscalingV2beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerResource':
-          ?pulumi.Input.mapOptionalInputValue<
-            ContainerResourceMetricSourceAutoscalingV2beta1,
-            Map<String, dynamic>
-          >(containerResource, (value) => value.toMap()),
-      'external':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExternalMetricSourceAutoscalingV2beta1,
-            Map<String, dynamic>
-          >(external, (value) => value.toMap()),
-      'object':
-          ?pulumi.Input.mapOptionalInputValue<
-            ObjectMetricSourceAutoscalingV2beta1,
-            Map<String, dynamic>
-          >(object_, (value) => value.toMap()),
-      'pods':
-          ?pulumi.Input.mapOptionalInputValue<
-            PodsMetricSourceAutoscalingV2beta1,
-            Map<String, dynamic>
-          >(pods, (value) => value.toMap()),
-      'resource':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceMetricSourceAutoscalingV2beta1,
-            Map<String, dynamic>
-          >(resource, (value) => value.toMap()),
+      'containerResource': ?pulumi.Input.mapOptionalInputValue<ContainerResourceMetricSourceAutoscalingV2beta1, Map<String, dynamic>>(containerResource, (value) => value.toMap()),
+      'external': ?pulumi.Input.mapOptionalInputValue<ExternalMetricSourceAutoscalingV2beta1, Map<String, dynamic>>(external, (value) => value.toMap()),
+      'object': ?pulumi.Input.mapOptionalInputValue<ObjectMetricSourceAutoscalingV2beta1, Map<String, dynamic>>(object_, (value) => value.toMap()),
+      'pods': ?pulumi.Input.mapOptionalInputValue<PodsMetricSourceAutoscalingV2beta1, Map<String, dynamic>>(pods, (value) => value.toMap()),
+      'resource': ?pulumi.Input.mapOptionalInputValue<ResourceMetricSourceAutoscalingV2beta1, Map<String, dynamic>>(resource, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory MetricSpecAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return MetricSpecAutoscalingV2beta1(
-      containerResource: (() {
-        final guardedValue = map['containerResource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ContainerResourceMetricSourceAutoscalingV2beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      external: (() {
-        final guardedValue = map['external'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExternalMetricSourceAutoscalingV2beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      object_: (() {
-        final guardedValue = map['object'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ObjectMetricSourceAutoscalingV2beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      pods: (() {
-        final guardedValue = map['pods'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PodsMetricSourceAutoscalingV2beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resource: (() {
-        final guardedValue = map['resource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceMetricSourceAutoscalingV2beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      containerResource: (() { final guardedValue = map['containerResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerResourceMetricSourceAutoscalingV2beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      external: (() { final guardedValue = map['external']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExternalMetricSourceAutoscalingV2beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      object_: (() { final guardedValue = map['object']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMetricSourceAutoscalingV2beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      pods: (() { final guardedValue = map['pods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PodsMetricSourceAutoscalingV2beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceMetricSourceAutoscalingV2beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

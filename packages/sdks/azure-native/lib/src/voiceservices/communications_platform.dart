@@ -16,3 +16,4 @@ enum CommunicationsPlatform {
     throw ArgumentError('Unknown CommunicationsPlatform value: $value');
   }
 }
+

@@ -5,50 +5,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDedicatedBlockStorageClustersCluster {
   /// The available capacity of the dedicated block storage cluster. Unit: GiB.
   final pulumi.Input<String> availableCapacity;
-
   /// The type of cloud disk that can be created by a dedicated block storage cluster.
   final pulumi.Input<String> category;
-
   /// The creation time of the resource
   final pulumi.Input<String> createTime;
-
   /// The first ID of the resource
   final pulumi.Input<String> dedicatedBlockStorageClusterId;
-
   /// The name of the resource
   final pulumi.Input<String> dedicatedBlockStorageClusterName;
-
   /// Capacity to be delivered in GB.
   final pulumi.Input<String> deliveryCapacity;
-
   /// The description of the dedicated block storage cluster.
   final pulumi.Input<String> description;
-
   /// The expiration time of the dedicated block storage cluster, in the Unix timestamp format, in seconds.
   final pulumi.Input<String> expiredTime;
   final pulumi.Input<String> id;
-
   /// Cloud disk performance level, possible values:-PL0.-PL1.-PL2.-PL3.&gt; Only valid in SupportedCategory = cloud_essd.
   final pulumi.Input<String> performanceLevel;
-
   /// The ID of the resource group
   final pulumi.Input<String> resourceGroupId;
-
   /// The status of the resource
   final pulumi.Input<String> status;
-
   /// This parameter is not supported.
   final pulumi.Input<String> supportedCategory;
-
   /// The total capacity of the dedicated block storage cluster. Unit: GiB.
   final pulumi.Input<String> totalCapacity;
-
   /// The dedicated block storage cluster performance type. Possible values:-Standard: Basic type. This type of dedicated block storage cluster can create an ESSD PL0 cloud disk.-Premium: performance type. This type of dedicated block storage cluster can create an ESSD PL1 cloud disk.
   final pulumi.Input<String> type;
-
   /// The used (created disk) capacity of the current cluster, in GB
   final pulumi.Input<String> usedCapacity;
-
   /// The zone ID  of the resource
   final pulumi.Input<String> zoneId;
 
@@ -112,35 +97,21 @@ class GetDedicatedBlockStorageClustersCluster {
     };
   }
 
-  factory GetDedicatedBlockStorageClustersCluster.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDedicatedBlockStorageClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetDedicatedBlockStorageClustersCluster(
-      availableCapacity: pulumi.Input.fromValue(
-        map['availableCapacity'] as String,
-      ),
+      availableCapacity: pulumi.Input.fromValue(map['availableCapacity'] as String),
       category: pulumi.Input.fromValue(map['category'] as String),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
-      dedicatedBlockStorageClusterId: pulumi.Input.fromValue(
-        map['dedicatedBlockStorageClusterId'] as String,
-      ),
-      dedicatedBlockStorageClusterName: pulumi.Input.fromValue(
-        map['dedicatedBlockStorageClusterName'] as String,
-      ),
-      deliveryCapacity: pulumi.Input.fromValue(
-        map['deliveryCapacity'] as String,
-      ),
+      dedicatedBlockStorageClusterId: pulumi.Input.fromValue(map['dedicatedBlockStorageClusterId'] as String),
+      dedicatedBlockStorageClusterName: pulumi.Input.fromValue(map['dedicatedBlockStorageClusterName'] as String),
+      deliveryCapacity: pulumi.Input.fromValue(map['deliveryCapacity'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       expiredTime: pulumi.Input.fromValue(map['expiredTime'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      performanceLevel: pulumi.Input.fromValue(
-        map['performanceLevel'] as String,
-      ),
+      performanceLevel: pulumi.Input.fromValue(map['performanceLevel'] as String),
       resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      supportedCategory: pulumi.Input.fromValue(
-        map['supportedCategory'] as String,
-      ),
+      supportedCategory: pulumi.Input.fromValue(map['supportedCategory'] as String),
       totalCapacity: pulumi.Input.fromValue(map['totalCapacity'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
       usedCapacity: pulumi.Input.fromValue(map['usedCapacity'] as String),
@@ -148,3 +119,4 @@ class GetDedicatedBlockStorageClustersCluster {
     );
   }
 }
+

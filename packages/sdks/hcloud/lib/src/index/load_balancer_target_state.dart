@@ -7,23 +7,18 @@ class LoadBalancerTargetState {
   /// IP address for an IP Target. Required if
   /// `type` is `ip`.
   final pulumi.Input<String>? ip;
-
   /// Label Selector selecting targets
   /// for this Load Balancer. Required if `type` is `label_selector`.
   final pulumi.Input<String>? labelSelector;
-
   /// ID of the Load Balancer to which
   /// the target gets attached.
   final pulumi.Input<int>? loadBalancerId;
-
   /// ID of the server which should be a
   /// target for this Load Balancer. Required if `type` is `server`
   final pulumi.Input<int>? serverId;
-
   /// Type of the target. Possible values
   /// `server`, `label_selector`, `ip`.
   final pulumi.Input<String>? type;
-
   /// use the private IP to connect to
   /// Load Balancer targets. Only allowed if type is `server` or
   /// `label_selector`.
@@ -58,36 +53,13 @@ class LoadBalancerTargetState {
 
   factory LoadBalancerTargetState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerTargetState(
-      ip: (() {
-        final guardedValue = map['ip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labelSelector: (() {
-        final guardedValue = map['labelSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      loadBalancerId: (() {
-        final guardedValue = map['loadBalancerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      serverId: (() {
-        final guardedValue = map['serverId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      usePrivateIp: (() {
-        final guardedValue = map['usePrivateIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labelSelector: (() { final guardedValue = map['labelSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loadBalancerId: (() { final guardedValue = map['loadBalancerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      usePrivateIp: (() { final guardedValue = map['usePrivateIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

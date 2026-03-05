@@ -11,77 +11,56 @@ class GetPoolV2Result {
   /// The administrative state of the Pool, which is up (true)
   /// or down (false).
   final bool adminStateUp;
-
   /// A list of ALPN protocols.
   final List<String> alpnProtocols;
-
   /// The reference of the key manager service secret
   /// containing a PEM format CA certificate bundle for tls_enabled pools.
   final String caTlsContainerRef;
-
   /// The reference of the key manager service secret
   /// containing a PEM format CA revocation list file for tls_enabled pools.
   final String crlContainerRef;
-
   /// The description of the pool.
   final String description;
-
   /// The ID of associated health monitor.
   final String healthmonitorId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The load-balancer algorithm, which is round-robin,
   /// least-connections, and so on.
   final String lbMethod;
-
   /// A list of listeners objects IDs.
   final List<GetPoolV2Listener> listeners;
   final String loadbalancerId;
-
   /// A list of load balancer objects IDs.
   final List<GetPoolV2Loadbalancer> loadbalancers;
-
   /// A list of member objects IDs.
   final List<GetPoolV2Member> members;
-
   /// The name of the pool.
   final String name;
-
   /// The operating status of the pool.
   final String operatingStatus;
   final String poolId;
-
   /// The owner (project/tenant) ID of the pool.
   final String projectId;
-
   /// The protocol to loadbalance.
   final String protocol;
-
   /// The provisioning status of the pool.
   final String provisioningStatus;
   final String region;
-
   /// Indicates whether connections in the same session
   /// will be processed by the same Pool member or not.
   final List<GetPoolV2SessionPersistence> sessionPersistences;
-
   /// Tags is a list of resource tags.
   final List<String> tags;
-
   /// List of ciphers in OpenSSL format (colon-separated).
   final String tlsCiphers;
-
   /// The reference to the key manager service secret
   /// containing a PKCS12 format certificate/key bundle for tls_enabled pools for
   /// TLS client authentication to the member servers.
   final String tlsContainerRef;
-
   /// When true connections to backend member servers will use
   /// TLS encryption.
   final bool tlsEnabled;
-
   /// A list of TLS protocol versions.
   final List<String> tlsVersions;
 
@@ -149,21 +128,10 @@ class GetPoolV2Result {
       'healthmonitorId': healthmonitorId,
       'id': id,
       'lbMethod': lbMethod,
-      'listeners':
-          pulumi.Input.encodeList<GetPoolV2Listener, Map<String, dynamic>>(
-            listeners,
-            (value) => value.toMap(),
-          ),
+      'listeners': pulumi.Input.encodeList<GetPoolV2Listener, Map<String, dynamic>>(listeners, (value) => value.toMap()),
       'loadbalancerId': loadbalancerId,
-      'loadbalancers':
-          pulumi.Input.encodeList<GetPoolV2Loadbalancer, Map<String, dynamic>>(
-            loadbalancers,
-            (value) => value.toMap(),
-          ),
-      'members': pulumi.Input.encodeList<GetPoolV2Member, Map<String, dynamic>>(
-        members,
-        (value) => value.toMap(),
-      ),
+      'loadbalancers': pulumi.Input.encodeList<GetPoolV2Loadbalancer, Map<String, dynamic>>(loadbalancers, (value) => value.toMap()),
+      'members': pulumi.Input.encodeList<GetPoolV2Member, Map<String, dynamic>>(members, (value) => value.toMap()),
       'name': name,
       'operatingStatus': operatingStatus,
       'poolId': poolId,
@@ -171,11 +139,7 @@ class GetPoolV2Result {
       'protocol': protocol,
       'provisioningStatus': provisioningStatus,
       'region': region,
-      'sessionPersistences':
-          pulumi.Input.encodeList<
-            GetPoolV2SessionPersistence,
-            Map<String, dynamic>
-          >(sessionPersistences, (value) => value.toMap()),
+      'sessionPersistences': pulumi.Input.encodeList<GetPoolV2SessionPersistence, Map<String, dynamic>>(sessionPersistences, (value) => value.toMap()),
       'tags': tags,
       'tlsCiphers': tlsCiphers,
       'tlsContainerRef': tlsContainerRef,
@@ -194,23 +158,10 @@ class GetPoolV2Result {
       healthmonitorId: map['healthmonitorId'] as String,
       id: map['id'] as String,
       lbMethod: map['lbMethod'] as String,
-      listeners: pulumi.Input.decodeList<GetPoolV2Listener>(
-        map['listeners']!,
-        (value) =>
-            GetPoolV2Listener.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      listeners: pulumi.Input.decodeList<GetPoolV2Listener>(map['listeners']!, (value) => GetPoolV2Listener.fromMap((value as Map).cast<String, dynamic>())),
       loadbalancerId: map['loadbalancerId'] as String,
-      loadbalancers: pulumi.Input.decodeList<GetPoolV2Loadbalancer>(
-        map['loadbalancers']!,
-        (value) => GetPoolV2Loadbalancer.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      members: pulumi.Input.decodeList<GetPoolV2Member>(
-        map['members']!,
-        (value) =>
-            GetPoolV2Member.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      loadbalancers: pulumi.Input.decodeList<GetPoolV2Loadbalancer>(map['loadbalancers']!, (value) => GetPoolV2Loadbalancer.fromMap((value as Map).cast<String, dynamic>())),
+      members: pulumi.Input.decodeList<GetPoolV2Member>(map['members']!, (value) => GetPoolV2Member.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       operatingStatus: map['operatingStatus'] as String,
       poolId: map['poolId'] as String,
@@ -218,12 +169,7 @@ class GetPoolV2Result {
       protocol: map['protocol'] as String,
       provisioningStatus: map['provisioningStatus'] as String,
       region: map['region'] as String,
-      sessionPersistences: pulumi.Input.decodeList<GetPoolV2SessionPersistence>(
-        map['sessionPersistences']!,
-        (value) => GetPoolV2SessionPersistence.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      sessionPersistences: pulumi.Input.decodeList<GetPoolV2SessionPersistence>(map['sessionPersistences']!, (value) => GetPoolV2SessionPersistence.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as List).cast<String>(),
       tlsCiphers: map['tlsCiphers'] as String,
       tlsContainerRef: map['tlsContainerRef'] as String,
@@ -232,3 +178,4 @@ class GetPoolV2Result {
     );
   }
 }
+

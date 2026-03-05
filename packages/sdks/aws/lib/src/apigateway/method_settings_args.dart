@@ -10,16 +10,12 @@ import 'method_settings_settings.dart';
 class MethodSettingsArgs {
   /// Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*/*` for overriding all methods in the stage. Ensure to trim any leading forward slashes in the path (e.g., `trimprefix(aws_api_gateway_resource.example.path, "/")`).
   final pulumi.Input<String> methodPath;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID of the REST API
   final pulumi.Input<String> restApi;
-
   /// Settings block, see below.
   final pulumi.Input<MethodSettingsSettings> settings;
-
   /// Name of the stage
   final pulumi.Input<String> stageName;
 
@@ -42,11 +38,7 @@ class MethodSettingsArgs {
       'methodPath': methodPath,
       'region': ?region,
       'restApi': restApi,
-      'settings':
-          pulumi.Input.mapInputValue<
-            MethodSettingsSettings,
-            Map<String, dynamic>
-          >(settings, (value) => value.toMap()),
+      'settings': pulumi.Input.mapInputValue<MethodSettingsSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
       'stageName': stageName,
     };
   }
@@ -54,18 +46,11 @@ class MethodSettingsArgs {
   factory MethodSettingsArgs.fromMap(Map<String, dynamic> map) {
     return MethodSettingsArgs(
       methodPath: pulumi.Input.fromValue(map['methodPath'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       restApi: pulumi.Input.fromValue(map['restApi'] as String),
-      settings: pulumi.Input.fromValue(
-        MethodSettingsSettings.fromMap(
-          (map['settings']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      settings: pulumi.Input.fromValue(MethodSettingsSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())),
       stageName: pulumi.Input.fromValue(map['stageName'] as String),
     );
   }
 }
+

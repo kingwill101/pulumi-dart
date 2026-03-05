@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IssueProperties {
   /// The issue impact time (in UTC)
   final pulumi.Input<String> impactTime;
-
   /// The issue severity
   final pulumi.Input<String> severity;
-
   /// The issue status
   final pulumi.Input<String> status;
-
   /// The issue title
   final pulumi.Input<String> title;
 
@@ -46,3 +43,4 @@ class IssueProperties {
     );
   }
 }
+

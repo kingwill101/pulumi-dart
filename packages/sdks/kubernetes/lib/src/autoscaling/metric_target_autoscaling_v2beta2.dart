@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricTargetAutoscalingV2beta2 {
   /// averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type
   final pulumi.Input<int>? averageUtilization;
-
   /// averageValue is the target value of the average of the metric across all relevant pods (as a quantity)
   final pulumi.Input<String>? averageValue;
-
   /// type represents whether the metric type is Utilization, Value, or AverageValue
   final pulumi.Input<String> type;
-
   /// value is the target value of the metric (as a quantity).
   final pulumi.Input<String>? value;
 
@@ -39,22 +36,11 @@ class MetricTargetAutoscalingV2beta2 {
 
   factory MetricTargetAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return MetricTargetAutoscalingV2beta2(
-      averageUtilization: (() {
-        final guardedValue = map['averageUtilization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      averageValue: (() {
-        final guardedValue = map['averageValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      averageUtilization: (() { final guardedValue = map['averageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      averageValue: (() { final guardedValue = map['averageValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

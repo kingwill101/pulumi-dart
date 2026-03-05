@@ -10,34 +10,20 @@ class MetricCounterSet {
 
   /// Creates a new [MetricCounterSet].
   /// [counters] The counters that should be collected in this set.
-  MetricCounterSet({required this.counters});
+  MetricCounterSet({
+    required this.counters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'counters':
-          pulumi.Input.mapInputValue<
-            List<MetricCounter>,
-            List<Map<String, dynamic>>
-          >(
-            counters,
-            (value) =>
-                pulumi.Input.encodeList<MetricCounter, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'counters': pulumi.Input.mapInputValue<List<MetricCounter>, List<Map<String, dynamic>>>(counters, (value) => pulumi.Input.encodeList<MetricCounter, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MetricCounterSet.fromMap(Map<String, dynamic> map) {
     return MetricCounterSet(
-      counters: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<MetricCounter>(
-          map['counters']!,
-          (value) =>
-              MetricCounter.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      counters: pulumi.Input.fromValue(pulumi.Input.decodeList<MetricCounter>(map['counters']!, (value) => MetricCounter.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

@@ -36,11 +36,8 @@ class InstanceIamPolicyArgs {
     return InstanceIamPolicyArgs(
       instance: pulumi.Input.fromValue(map['instance'] as String),
       policyData: pulumi.Input.fromValue(map['policyData'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

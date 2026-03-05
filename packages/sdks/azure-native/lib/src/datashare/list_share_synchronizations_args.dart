@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListShareSynchronizationsArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
-
   /// Filters the results using OData syntax.
   final pulumi.Input<String>? filter;
-
   /// Sorts the results using OData syntax.
   final pulumi.Input<String>? orderby;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the share.
   final pulumi.Input<String> shareName;
-
   /// Continuation token
   final pulumi.Input<String>? skipToken;
 
@@ -55,25 +50,12 @@ class ListShareSynchronizationsArgs {
   factory ListShareSynchronizationsArgs.fromMap(Map<String, dynamic> map) {
     return ListShareSynchronizationsArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      orderby: (() {
-        final guardedValue = map['orderby'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orderby: (() { final guardedValue = map['orderby']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       shareName: pulumi.Input.fromValue(map['shareName'] as String),
-      skipToken: (() {
-        final guardedValue = map['skipToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      skipToken: (() { final guardedValue = map['skipToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

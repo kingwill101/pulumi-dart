@@ -7,13 +7,10 @@ import 'text_mapping.dart';
 class TextStream {
   /// The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
   final pulumi.Input<String>? codec;
-
   /// The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
   final pulumi.Input<String>? displayName;
-
   /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
   final pulumi.Input<String>? languageCode;
-
   /// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
   final pulumi.Input<List<TextMapping>>? mapping;
 
@@ -22,56 +19,29 @@ class TextStream {
   /// [displayName] The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
   /// [languageCode] The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
   /// [mapping] The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
-  TextStream({this.codec, this.displayName, this.languageCode, this.mapping});
+  TextStream({
+    this.codec,
+    this.displayName,
+    this.languageCode,
+    this.mapping,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'codec': ?codec,
       'displayName': ?displayName,
       'languageCode': ?languageCode,
-      'mapping':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TextMapping>,
-            List<Map<String, dynamic>>
-          >(
-            mapping,
-            (value) =>
-                pulumi.Input.encodeList<TextMapping, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'mapping': ?pulumi.Input.mapOptionalInputValue<List<TextMapping>, List<Map<String, dynamic>>>(mapping, (value) => pulumi.Input.encodeList<TextMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TextStream.fromMap(Map<String, dynamic> map) {
     return TextStream(
-      codec: (() {
-        final guardedValue = map['codec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      languageCode: (() {
-        final guardedValue = map['languageCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mapping: (() {
-        final guardedValue = map['mapping'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TextMapping>(
-            guardedValue,
-            (value) =>
-                TextMapping.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      codec: (() { final guardedValue = map['codec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      languageCode: (() { final guardedValue = map['languageCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mapping: (() { final guardedValue = map['mapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TextMapping>(guardedValue, (value) => TextMapping.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

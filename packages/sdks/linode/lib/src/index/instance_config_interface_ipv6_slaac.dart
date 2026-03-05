@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceConfigInterfaceIpv6Slaac {
   /// The SLAAC address chosen for this interface.
   final pulumi.Input<String>? address;
-
   /// The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
   final pulumi.Input<String>? assignedRange;
-
   /// A SLAAC prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
   final pulumi.Input<String>? range;
 
@@ -32,21 +30,10 @@ class InstanceConfigInterfaceIpv6Slaac {
 
   factory InstanceConfigInterfaceIpv6Slaac.fromMap(Map<String, dynamic> map) {
     return InstanceConfigInterfaceIpv6Slaac(
-      address: (() {
-        final guardedValue = map['address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      assignedRange: (() {
-        final guardedValue = map['assignedRange'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      range: (() {
-        final guardedValue = map['range'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      assignedRange: (() { final guardedValue = map['assignedRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      range: (() { final guardedValue = map['range']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

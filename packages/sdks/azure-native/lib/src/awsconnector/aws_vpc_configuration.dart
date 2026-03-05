@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsVpcConfiguration {
   /// Whether the task's elastic network interface receives a public IP address. The default value is ``DISABLED``.
   final pulumi.Input<String>? assignPublicIp;
-
   /// The IDs of the security groups associated with the task or service. If you don't specify a security group, the default security group for the VPC is used. There's a limit of 5 security groups that can be specified per ``AwsVpcConfiguration``.  All specified security groups must be from the same VPC.
   final pulumi.Input<List<String>>? securityGroups;
-
   /// The IDs of the subnets associated with the task or service. There's a limit of 16 subnets that can be specified per ``AwsVpcConfiguration``.  All specified subnets must be from the same VPC.
   final pulumi.Input<List<String>>? subnets;
 
@@ -17,7 +15,11 @@ class AwsVpcConfiguration {
   /// [assignPublicIp] Whether the task's elastic network interface receives a public IP address. The default value is ``DISABLED``.
   /// [securityGroups] The IDs of the security groups associated with the task or service. If you don't specify a security group, the default security group for the VPC is used. There's a limit of 5 security groups that can be specified per ``AwsVpcConfiguration``.  All specified security groups must be from the same VPC.
   /// [subnets] The IDs of the subnets associated with the task or service. There's a limit of 16 subnets that can be specified per ``AwsVpcConfiguration``.  All specified subnets must be from the same VPC.
-  AwsVpcConfiguration({this.assignPublicIp, this.securityGroups, this.subnets});
+  AwsVpcConfiguration({
+    this.assignPublicIp,
+    this.securityGroups,
+    this.subnets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class AwsVpcConfiguration {
 
   factory AwsVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return AwsVpcConfiguration(
-      assignPublicIp: (() {
-        final guardedValue = map['assignPublicIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securityGroups: (() {
-        final guardedValue = map['securityGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      subnets: (() {
-        final guardedValue = map['subnets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      assignPublicIp: (() { final guardedValue = map['assignPublicIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityGroups: (() { final guardedValue = map['securityGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      subnets: (() { final guardedValue = map['subnets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

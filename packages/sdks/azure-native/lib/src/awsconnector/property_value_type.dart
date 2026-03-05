@@ -15,3 +15,4 @@ enum PropertyValueType {
     throw ArgumentError('Unknown PropertyValueType value: $value');
   }
 }
+

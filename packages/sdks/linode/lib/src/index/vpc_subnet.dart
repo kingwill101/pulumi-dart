@@ -313,24 +313,18 @@ import 'vpc_subnet_state.dart';
 class VpcSubnet extends pulumi.CustomResource {
   /// The date and time when the VPC was created.
   late final pulumi.Output<String> created;
-
   /// The IPv4 range of this subnet in CIDR format.
   ///
   /// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
   late final pulumi.Output<String?> ipv4;
-
   /// The IPv6 ranges of this subnet.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipv6s;
-
   /// The label of the VPC. Only contains ASCII letters, digits and dashes.
   late final pulumi.Output<String> label;
-
   /// A list of Linode that added to this subnet.
   late final pulumi.Output<List<Map<String, dynamic>>> linodes;
-
   /// The date and time when the VPC was last updated.
   late final pulumi.Output<String> updated;
-
   /// The id of the parent VPC for this VPC subnet.
   late final pulumi.Output<int> vpcId;
 
@@ -343,11 +337,11 @@ class VpcSubnet extends pulumi.CustomResource {
     VpcSubnetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/vpcSubnet:VpcSubnet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/vpcSubnet:VpcSubnet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     created = registerOutput<String>('created');
     ipv4 = registerOutput<String?>('ipv4');
     ipv6s = registerOutput<List<Map<String, dynamic>>?>('ipv6s');
@@ -375,11 +369,11 @@ class VpcSubnet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/vpcSubnet:VpcSubnet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/vpcSubnet:VpcSubnet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     created = registerOutput<String>('created');
     ipv4 = registerOutput<String?>('ipv4');
     ipv6s = registerOutput<List<Map<String, dynamic>>?>('ipv6s');

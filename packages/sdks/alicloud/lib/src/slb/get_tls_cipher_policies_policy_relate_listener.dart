@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTlsCipherPoliciesPolicyRelateListener {
   /// The ID of SLB instance.
   final pulumi.Input<String> loadBalancerId;
-
   /// Listening port. Valid value: 1 to 65535.
   final pulumi.Input<int> port;
-
   /// Snooping protocols. Valid values: `TCP`, `UDP`, `HTTP`, or `HTTPS`.
   final pulumi.Input<String> protocol;
 
@@ -30,9 +28,7 @@ class GetTlsCipherPoliciesPolicyRelateListener {
     };
   }
 
-  factory GetTlsCipherPoliciesPolicyRelateListener.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTlsCipherPoliciesPolicyRelateListener.fromMap(Map<String, dynamic> map) {
     return GetTlsCipherPoliciesPolicyRelateListener(
       loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
       port: pulumi.Input.fromValue(map['port'] as int),
@@ -40,3 +36,4 @@ class GetTlsCipherPoliciesPolicyRelateListener {
     );
   }
 }
+

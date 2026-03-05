@@ -7,42 +7,29 @@ import 'audit_log_config_log_type_datamigration_v1beta1.dart';
 class AuditLogConfigDatamigrationV1beta1 {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final pulumi.Input<List<String>>? exemptedMembers;
-
   /// The log type that this config enables.
   final pulumi.Input<AuditLogConfigLogTypeDatamigrationV1beta1>? logType;
 
   /// Creates a new [AuditLogConfigDatamigrationV1beta1].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigDatamigrationV1beta1({this.exemptedMembers, this.logType});
+  AuditLogConfigDatamigrationV1beta1({
+    this.exemptedMembers,
+    this.logType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'exemptedMembers': ?exemptedMembers,
-      'logType':
-          ?pulumi.Input.mapOptionalInputValue<
-            AuditLogConfigLogTypeDatamigrationV1beta1,
-            String
-          >(logType, (value) => value.wireValue),
+      'logType': ?pulumi.Input.mapOptionalInputValue<AuditLogConfigLogTypeDatamigrationV1beta1, String>(logType, (value) => value.wireValue),
     };
   }
 
   factory AuditLogConfigDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigDatamigrationV1beta1(
-      exemptedMembers: (() {
-        final guardedValue = map['exemptedMembers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      logType: (() {
-        final guardedValue = map['logType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AuditLogConfigLogTypeDatamigrationV1beta1.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      exemptedMembers: (() { final guardedValue = map['exemptedMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      logType: (() { final guardedValue = map['logType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AuditLogConfigLogTypeDatamigrationV1beta1.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

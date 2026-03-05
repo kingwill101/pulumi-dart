@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppleRegistrationResponse {
   /// The Client ID of the app used for login.
   final pulumi.Input<String>? clientId;
-
   /// The app setting name that contains the client secret.
   final pulumi.Input<String>? clientSecretSettingName;
 
   /// Creates a new [AppleRegistrationResponse].
   /// [clientId] The Client ID of the app used for login.
   /// [clientSecretSettingName] The app setting name that contains the client secret.
-  AppleRegistrationResponse({this.clientId, this.clientSecretSettingName});
+  AppleRegistrationResponse({
+    this.clientId,
+    this.clientSecretSettingName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class AppleRegistrationResponse {
 
   factory AppleRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return AppleRegistrationResponse(
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientSecretSettingName: (() {
-        final guardedValue = map['clientSecretSettingName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientSecretSettingName: (() { final guardedValue = map['clientSecretSettingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -12,51 +12,24 @@ class WorkloadIdentityPoolInlineTrustConfig {
   /// `additional_trust_bundles` map, those trust anchors will be *appended to* the Trust Bundle
   /// automatically derived from your `InlineCertificateIssuanceConfig`'s `ca_pools`.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>
-  >?
-  additionalTrustBundles;
+  final pulumi.Input<List<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>>? additionalTrustBundles;
 
   /// Creates a new [WorkloadIdentityPoolInlineTrustConfig].
   /// [additionalTrustBundles] Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
-  WorkloadIdentityPoolInlineTrustConfig({this.additionalTrustBundles});
+  WorkloadIdentityPoolInlineTrustConfig({
+    this.additionalTrustBundles,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalTrustBundles':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>,
-            List<Map<String, dynamic>>
-          >(
-            additionalTrustBundles,
-            (value) =>
-                pulumi.Input.encodeList<
-                  WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'additionalTrustBundles': ?pulumi.Input.mapOptionalInputValue<List<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>, List<Map<String, dynamic>>>(additionalTrustBundles, (value) => pulumi.Input.encodeList<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory WorkloadIdentityPoolInlineTrustConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkloadIdentityPoolInlineTrustConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolInlineTrustConfig(
-      additionalTrustBundles: (() {
-        final guardedValue = map['additionalTrustBundles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle
-          >(
-            guardedValue,
-            (value) =>
-                WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      additionalTrustBundles: (() { final guardedValue = map['additionalTrustBundles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>(guardedValue, (value) => WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

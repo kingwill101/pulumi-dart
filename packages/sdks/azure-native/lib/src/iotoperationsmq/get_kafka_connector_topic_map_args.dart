@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKafkaConnectorTopicMapArgs {
   /// Name of MQ kafkaConnector resource
   final pulumi.Input<String> kafkaConnectorName;
-
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of MQ kafka/topicMap resource
   final pulumi.Input<String> topicMapName;
 
@@ -42,14 +39,11 @@ class GetKafkaConnectorTopicMapArgs {
 
   factory GetKafkaConnectorTopicMapArgs.fromMap(Map<String, dynamic> map) {
     return GetKafkaConnectorTopicMapArgs(
-      kafkaConnectorName: pulumi.Input.fromValue(
-        map['kafkaConnectorName'] as String,
-      ),
+      kafkaConnectorName: pulumi.Input.fromValue(map['kafkaConnectorName'] as String),
       mqName: pulumi.Input.fromValue(map['mqName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       topicMapName: pulumi.Input.fromValue(map['topicMapName'] as String),
     );
   }
 }
+

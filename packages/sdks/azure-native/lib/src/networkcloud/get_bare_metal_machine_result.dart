@@ -13,124 +13,84 @@ import 'system_data_response.dart';
 class GetBareMetalMachineResult {
   /// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
   final List<String> associatedResourceIds;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The connection string for the baseboard management controller including IP address and protocol.
   final String bmcConnectionString;
-
   /// The credentials of the baseboard management controller on this bare metal machine.
   final AdministrativeCredentialsResponse bmcCredentials;
-
   /// The MAC address of the BMC device.
   final String bmcMacAddress;
-
   /// The MAC address of a NIC connected to the PXE network.
   final String bootMacAddress;
-
   /// The resource ID of the cluster this bare metal machine is associated with.
   final String clusterId;
-
   /// The cordon status of the bare metal machine.
   final String cordonStatus;
-
   /// The more detailed status of the bare metal machine.
   final String detailedStatus;
-
   /// The descriptive message about the current detailed status.
   final String detailedStatusMessage;
-
   /// Resource ETag.
   final String etag;
-
   /// The extended location of the cluster associated with the resource.
   final ExtendedLocationResponse extendedLocation;
-
   /// The hardware inventory, including information acquired from the model/sku information and from the ironic inspector.
   final HardwareInventoryResponse hardwareInventory;
-
   /// The details of the latest hardware validation performed for this bare metal machine.
   final HardwareValidationStatusResponse hardwareValidationStatus;
-
   /// Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.
   final List<String> hybridAksClustersAssociatedIds;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of this machine represented by the host object in the Cluster's Kubernetes control plane.
   final String kubernetesNodeName;
-
   /// The version of Kubernetes running on this machine.
   final String kubernetesVersion;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The cluster version that has been applied to this machine during deployment or a version update.
   final String? machineClusterVersion;
-
   /// The custom details provided by the customer.
   final String machineDetails;
-
   /// The OS-level hostname assigned to this machine.
   final String machineName;
-
   /// The list of roles that are assigned to the cluster node running on this machine.
   final List<String> machineRoles;
-
   /// The unique internal identifier of the bare metal machine SKU.
   final String machineSkuId;
-
   /// The name of the resource
   final String name;
-
   /// The IPv4 address that is assigned to the bare metal machine during the cluster deployment.
   final String oamIpv4Address;
-
   /// The IPv6 address that is assigned to the bare metal machine during the cluster deployment.
   final String oamIpv6Address;
-
   /// The image that is currently provisioned to the OS disk.
   final String osImage;
-
   /// The power state derived from the baseboard management controller.
   final String powerState;
-
   /// The provisioning state of the bare metal machine.
   final String provisioningState;
-
   /// The resource ID of the rack where this bare metal machine resides.
   final String rackId;
-
   /// The rack slot in which this bare metal machine is located, ordered from the bottom up i.e. the lowest slot is 1.
   final double rackSlot;
-
   /// The indicator of whether the bare metal machine is ready to receive workloads.
   final String readyState;
-
   /// The runtime protection status of the bare metal machine.
   final RuntimeProtectionStatusResponse runtimeProtectionStatus;
-
   /// The list of statuses that represent secret rotation activity.
   final List<SecretRotationStatusResponse> secretRotationStatus;
-
   /// The serial number of the bare metal machine.
   final String serialNumber;
-
   /// The discovered value of the machine's service tag.
   final String serviceTag;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the VirtualMachines that are hosted on this bare metal machine.
   final List<String> virtualMachinesAssociatedIds;
 
@@ -256,11 +216,7 @@ class GetBareMetalMachineResult {
       'rackSlot': rackSlot,
       'readyState': readyState,
       'runtimeProtectionStatus': runtimeProtectionStatus.toMap(),
-      'secretRotationStatus':
-          pulumi.Input.encodeList<
-            SecretRotationStatusResponse,
-            Map<String, dynamic>
-          >(secretRotationStatus, (value) => value.toMap()),
+      'secretRotationStatus': pulumi.Input.encodeList<SecretRotationStatusResponse, Map<String, dynamic>>(secretRotationStatus, (value) => value.toMap()),
       'serialNumber': serialNumber,
       'serviceTag': serviceTag,
       'systemData': systemData.toMap(),
@@ -272,13 +228,10 @@ class GetBareMetalMachineResult {
 
   factory GetBareMetalMachineResult.fromMap(Map<String, dynamic> map) {
     return GetBareMetalMachineResult(
-      associatedResourceIds: (map['associatedResourceIds'] as List)
-          .cast<String>(),
+      associatedResourceIds: (map['associatedResourceIds'] as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       bmcConnectionString: map['bmcConnectionString'] as String,
-      bmcCredentials: AdministrativeCredentialsResponse.fromMap(
-        (map['bmcCredentials']! as Map).cast<String, dynamic>(),
-      ),
+      bmcCredentials: AdministrativeCredentialsResponse.fromMap((map['bmcCredentials']! as Map).cast<String, dynamic>()),
       bmcMacAddress: map['bmcMacAddress'] as String,
       bootMacAddress: map['bootMacAddress'] as String,
       clusterId: map['clusterId'] as String,
@@ -286,26 +239,15 @@ class GetBareMetalMachineResult {
       detailedStatus: map['detailedStatus'] as String,
       detailedStatusMessage: map['detailedStatusMessage'] as String,
       etag: map['etag'] as String,
-      extendedLocation: ExtendedLocationResponse.fromMap(
-        (map['extendedLocation']! as Map).cast<String, dynamic>(),
-      ),
-      hardwareInventory: HardwareInventoryResponse.fromMap(
-        (map['hardwareInventory']! as Map).cast<String, dynamic>(),
-      ),
-      hardwareValidationStatus: HardwareValidationStatusResponse.fromMap(
-        (map['hardwareValidationStatus']! as Map).cast<String, dynamic>(),
-      ),
-      hybridAksClustersAssociatedIds:
-          (map['hybridAksClustersAssociatedIds'] as List).cast<String>(),
+      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
+      hardwareInventory: HardwareInventoryResponse.fromMap((map['hardwareInventory']! as Map).cast<String, dynamic>()),
+      hardwareValidationStatus: HardwareValidationStatusResponse.fromMap((map['hardwareValidationStatus']! as Map).cast<String, dynamic>()),
+      hybridAksClustersAssociatedIds: (map['hybridAksClustersAssociatedIds'] as List).cast<String>(),
       id: map['id'] as String,
       kubernetesNodeName: map['kubernetesNodeName'] as String,
       kubernetesVersion: map['kubernetesVersion'] as String,
       location: map['location'] as String,
-      machineClusterVersion: (() {
-        final guardedValue = map['machineClusterVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      machineClusterVersion: (() { final guardedValue = map['machineClusterVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       machineDetails: map['machineDetails'] as String,
       machineName: map['machineName'] as String,
       machineRoles: (map['machineRoles'] as List).cast<String>(),
@@ -319,29 +261,15 @@ class GetBareMetalMachineResult {
       rackId: map['rackId'] as String,
       rackSlot: map['rackSlot'] as double,
       readyState: map['readyState'] as String,
-      runtimeProtectionStatus: RuntimeProtectionStatusResponse.fromMap(
-        (map['runtimeProtectionStatus']! as Map).cast<String, dynamic>(),
-      ),
-      secretRotationStatus:
-          pulumi.Input.decodeList<SecretRotationStatusResponse>(
-            map['secretRotationStatus']!,
-            (value) => SecretRotationStatusResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      runtimeProtectionStatus: RuntimeProtectionStatusResponse.fromMap((map['runtimeProtectionStatus']! as Map).cast<String, dynamic>()),
+      secretRotationStatus: pulumi.Input.decodeList<SecretRotationStatusResponse>(map['secretRotationStatus']!, (value) => SecretRotationStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
       serialNumber: map['serialNumber'] as String,
       serviceTag: map['serviceTag'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      virtualMachinesAssociatedIds:
-          (map['virtualMachinesAssociatedIds'] as List).cast<String>(),
+      virtualMachinesAssociatedIds: (map['virtualMachinesAssociatedIds'] as List).cast<String>(),
     );
   }
 }
+

@@ -8,43 +8,30 @@ import 'vvp_instance_storage.dart';
 class VvpInstanceState {
   /// The creation time of the resource.
   final pulumi.Input<String>? createTime;
-
   /// The number of subscription periods. If the payment type is PRE, this parameter is required.
   final pulumi.Input<int>? duration;
-
   /// The payment type of the resource.
   final pulumi.Input<String>? paymentType;
-
   /// The subscription period. If the payment type is PRE, this parameter is required.
   final pulumi.Input<String>? pricingCycle;
-
   /// The resource group to which the newly purchased instance belongs.
   final pulumi.Input<String>? resourceGroupId;
-
   /// (Available since v1.264.0) The ID of the K8s cluster.
   final pulumi.Input<String>? resourceId;
-
   /// Resource specifications. See `resource_spec` below.
   final pulumi.Input<VvpInstanceResourceSpec>? resourceSpec;
-
   /// The status of the resource.
   final pulumi.Input<String>? status;
-
   /// Store information. See `storage` below.
   final pulumi.Input<VvpInstanceStorage>? storage;
-
   /// The tags of the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The VPC ID of the user.
   final pulumi.Input<String>? vpcId;
-
   /// Virtual Switch ID.
   final pulumi.Input<List<String>>? vswitchIds;
-
   /// The name of the workspace.
   final pulumi.Input<String>? vvpInstanceName;
-
   /// The zone ID of the resource.
   final pulumi.Input<String>? zoneId;
 
@@ -88,17 +75,9 @@ class VvpInstanceState {
       'pricingCycle': ?pricingCycle,
       'resourceGroupId': ?resourceGroupId,
       'resourceId': ?resourceId,
-      'resourceSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            VvpInstanceResourceSpec,
-            Map<String, dynamic>
-          >(resourceSpec, (value) => value.toMap()),
+      'resourceSpec': ?pulumi.Input.mapOptionalInputValue<VvpInstanceResourceSpec, Map<String, dynamic>>(resourceSpec, (value) => value.toMap()),
       'status': ?status,
-      'storage':
-          ?pulumi.Input.mapOptionalInputValue<
-            VvpInstanceStorage,
-            Map<String, dynamic>
-          >(storage, (value) => value.toMap()),
+      'storage': ?pulumi.Input.mapOptionalInputValue<VvpInstanceStorage, Map<String, dynamic>>(storage, (value) => value.toMap()),
       'tags': ?tags,
       'vpcId': ?vpcId,
       'vswitchIds': ?vswitchIds,
@@ -109,86 +88,21 @@ class VvpInstanceState {
 
   factory VvpInstanceState.fromMap(Map<String, dynamic> map) {
     return VvpInstanceState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      duration: (() {
-        final guardedValue = map['duration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      paymentType: (() {
-        final guardedValue = map['paymentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pricingCycle: (() {
-        final guardedValue = map['pricingCycle'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceSpec: (() {
-        final guardedValue = map['resourceSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VvpInstanceResourceSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storage: (() {
-        final guardedValue = map['storage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VvpInstanceStorage.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vswitchIds: (() {
-        final guardedValue = map['vswitchIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      vvpInstanceName: (() {
-        final guardedValue = map['vvpInstanceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zoneId: (() {
-        final guardedValue = map['zoneId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      paymentType: (() { final guardedValue = map['paymentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pricingCycle: (() { final guardedValue = map['pricingCycle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceSpec: (() { final guardedValue = map['resourceSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VvpInstanceResourceSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VvpInstanceStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vswitchIds: (() { final guardedValue = map['vswitchIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      vvpInstanceName: (() { final guardedValue = map['vvpInstanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

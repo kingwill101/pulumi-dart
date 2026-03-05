@@ -9,26 +9,23 @@ class ThingGroupMetadataRootToParentGroup {
   /// Creates a new [ThingGroupMetadataRootToParentGroup].
   /// [groupArn] Optional.
   /// [groupName] Optional.
-  ThingGroupMetadataRootToParentGroup({this.groupArn, this.groupName});
+  ThingGroupMetadataRootToParentGroup({
+    this.groupArn,
+    this.groupName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupArn': ?groupArn, 'groupName': ?groupName};
+    return <String, dynamic>{
+      'groupArn': ?groupArn,
+      'groupName': ?groupName,
+    };
   }
 
-  factory ThingGroupMetadataRootToParentGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ThingGroupMetadataRootToParentGroup.fromMap(Map<String, dynamic> map) {
     return ThingGroupMetadataRootToParentGroup(
-      groupArn: (() {
-        final guardedValue = map['groupArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      groupName: (() {
-        final guardedValue = map['groupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      groupArn: (() { final guardedValue = map['groupArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      groupName: (() { final guardedValue = map['groupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

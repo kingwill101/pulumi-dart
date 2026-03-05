@@ -14,3 +14,4 @@ enum OsDiskDeleteOption {
     throw ArgumentError('Unknown OsDiskDeleteOption value: $value');
   }
 }
+

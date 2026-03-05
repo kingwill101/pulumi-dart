@@ -8,21 +8,20 @@ class ConfigSmsRegionConfigAllowByDefault {
 
   /// Creates a new [ConfigSmsRegionConfigAllowByDefault].
   /// [disallowedRegions] Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
-  ConfigSmsRegionConfigAllowByDefault({this.disallowedRegions});
+  ConfigSmsRegionConfigAllowByDefault({
+    this.disallowedRegions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disallowedRegions': ?disallowedRegions};
+    return <String, dynamic>{
+      'disallowedRegions': ?disallowedRegions,
+    };
   }
 
-  factory ConfigSmsRegionConfigAllowByDefault.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigSmsRegionConfigAllowByDefault.fromMap(Map<String, dynamic> map) {
     return ConfigSmsRegionConfigAllowByDefault(
-      disallowedRegions: (() {
-        final guardedValue = map['disallowedRegions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      disallowedRegions: (() { final guardedValue = map['disallowedRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

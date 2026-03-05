@@ -15,3 +15,4 @@ enum ActionRuleStatus {
     throw ArgumentError('Unknown ActionRuleStatus value: $value');
   }
 }
+

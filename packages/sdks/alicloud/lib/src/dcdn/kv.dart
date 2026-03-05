@@ -217,10 +217,8 @@ import 'kv_state.dart';
 class Kv extends pulumi.CustomResource {
   /// The name of the key to Put, the longest 512, cannot contain spaces.
   late final pulumi.Output<String> key;
-
   /// The name specified when the customer calls PutDcdnKvNamespace.
   late final pulumi.Output<String> namespace;
-
   /// The content of key, up to 2M(2*1000*1000).
   late final pulumi.Output<String> value;
 
@@ -228,20 +226,27 @@ class Kv extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Kv]. {@macro pulumi_dcdn_kv_kv_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Kv(String name, {KvArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:dcdn/kv:Kv',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Kv(
+    String name, {
+    KvArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:dcdn/kv:Kv',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     key = registerOutput<String>('key');
     namespace = registerOutput<String>('namespace');
     value = registerOutput<String>('value');
   }
 
   /// Gets an existing [Kv] resource's state with the given [name] and [id].
-  static Kv get(String name, pulumi.Input<String> id, {KvState? state}) {
+  static Kv get(
+    String name,
+    pulumi.Input<String> id, {
+    KvState? state,
+  }) {
     return Kv._get(
       name,
       state: state?.toMap(),
@@ -254,11 +259,11 @@ class Kv extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dcdn/kv:Kv',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dcdn/kv:Kv',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     key = registerOutput<String>('key');
     namespace = registerOutput<String>('namespace');
     value = registerOutput<String>('value');

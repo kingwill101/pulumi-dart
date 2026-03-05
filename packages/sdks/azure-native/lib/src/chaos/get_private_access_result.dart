@@ -8,31 +8,22 @@ import 'system_data_response.dart';
 class GetPrivateAccessResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// A readonly collection of private endpoint connection. Currently only one endpoint connection is supported.
   final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
-
   /// Most recent provisioning state for the given privateAccess resource.
   final String provisioningState;
-
   /// Public Network Access Control for PrivateAccess resource.
   final String? publicNetworkAccess;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -66,11 +57,7 @@ class GetPrivateAccessResult {
       'id': id,
       'location': location,
       'name': name,
-      'privateEndpointConnections':
-          pulumi.Input.encodeList<
-            PrivateEndpointConnectionResponse,
-            Map<String, dynamic>
-          >(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'systemData': systemData.toMap(),
@@ -85,28 +72,13 @@ class GetPrivateAccessResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      privateEndpointConnections:
-          pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
-            map['privateEndpointConnections']!,
-            (value) => PrivateEndpointConnectionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

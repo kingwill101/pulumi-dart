@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse {
   /// The alias in the form of `processor_version` resource name.
   final pulumi.Input<String> alias;
-
   /// The resource name of aliased processor version.
   final pulumi.Input<String> processorVersion;
 
@@ -25,14 +24,11 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse {
     };
   }
 
-  factory GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse(
       alias: pulumi.Input.fromValue(map['alias'] as String),
-      processorVersion: pulumi.Input.fromValue(
-        map['processorVersion'] as String,
-      ),
+      processorVersion: pulumi.Input.fromValue(map['processorVersion'] as String),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkAssociationArgs {
   /// ID of the device.
   final pulumi.Input<String> deviceId;
-
   /// ID of the global network.
   final pulumi.Input<String> globalNetworkId;
-
   /// ID of the link.
   final pulumi.Input<String> linkId;
 
@@ -42,3 +40,4 @@ class LinkAssociationArgs {
     );
   }
 }
+

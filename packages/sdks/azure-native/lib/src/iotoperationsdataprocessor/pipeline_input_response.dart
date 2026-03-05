@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipelineInputResponse {
   /// Description for stage.
   final pulumi.Input<String>? description;
-
   /// Next stage in the pipeline.
   final pulumi.Input<List<String>> next;
-
   /// ARM resource type.
   final pulumi.Input<String> type;
 
@@ -33,13 +31,10 @@ class PipelineInputResponse {
 
   factory PipelineInputResponse.fromMap(Map<String, dynamic> map) {
     return PipelineInputResponse(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       next: pulumi.Input.fromValue((map['next'] as List).cast<String>()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -6,20 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HyperVReplicaAzurePolicyInput {
   /// The interval (in hours) at which Hyper-V Replica should create an application consistent snapshot within the VM.
   final pulumi.Input<int>? applicationConsistentSnapshotFrequencyInHours;
-
   /// The class type.
   /// Expected value is 'HyperVReplicaAzure'.
   final pulumi.Input<String> instanceType;
-
   /// The scheduled start time for the initial replication. If this parameter is Null, the initial replication starts immediately.
   final pulumi.Input<String>? onlineReplicationStartTime;
-
   /// The duration (in hours) to which point the recovery history needs to be maintained.
   final pulumi.Input<int>? recoveryPointHistoryDuration;
-
   /// The replication interval.
   final pulumi.Input<int>? replicationInterval;
-
   /// The list of storage accounts to which the VMs in the primary cloud can replicate to.
   final pulumi.Input<List<String>>? storageAccounts;
 
@@ -41,8 +36,7 @@ class HyperVReplicaAzurePolicyInput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationConsistentSnapshotFrequencyInHours':
-          ?applicationConsistentSnapshotFrequencyInHours,
+      'applicationConsistentSnapshotFrequencyInHours': ?applicationConsistentSnapshotFrequencyInHours,
       'instanceType': instanceType,
       'onlineReplicationStartTime': ?onlineReplicationStartTime,
       'recoveryPointHistoryDuration': ?recoveryPointHistoryDuration,
@@ -53,33 +47,13 @@ class HyperVReplicaAzurePolicyInput {
 
   factory HyperVReplicaAzurePolicyInput.fromMap(Map<String, dynamic> map) {
     return HyperVReplicaAzurePolicyInput(
-      applicationConsistentSnapshotFrequencyInHours: (() {
-        final guardedValue =
-            map['applicationConsistentSnapshotFrequencyInHours'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      applicationConsistentSnapshotFrequencyInHours: (() { final guardedValue = map['applicationConsistentSnapshotFrequencyInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      onlineReplicationStartTime: (() {
-        final guardedValue = map['onlineReplicationStartTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recoveryPointHistoryDuration: (() {
-        final guardedValue = map['recoveryPointHistoryDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      replicationInterval: (() {
-        final guardedValue = map['replicationInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      storageAccounts: (() {
-        final guardedValue = map['storageAccounts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      onlineReplicationStartTime: (() { final guardedValue = map['onlineReplicationStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recoveryPointHistoryDuration: (() { final guardedValue = map['recoveryPointHistoryDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicationInterval: (() { final guardedValue = map['replicationInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageAccounts: (() { final guardedValue = map['storageAccounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

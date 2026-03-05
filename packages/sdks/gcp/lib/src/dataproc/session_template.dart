@@ -1237,52 +1237,39 @@ import 'session_template_state.dart';
 class SessionTemplate extends pulumi.CustomResource {
   /// The time when the session template was created.
   late final pulumi.Output<String> createTime;
-
   /// The email address of the user who created the session template.
   late final pulumi.Output<String> creator;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Environment configuration for the session execution.
   /// Structure is documented below.
   late final pulumi.Output<SessionTemplateEnvironmentConfig?> environmentConfig;
-
   /// Jupyter configuration for an interactive session.
   /// Structure is documented below.
   late final pulumi.Output<SessionTemplateJupyterSession?> jupyterSession;
-
   /// The labels to associate with this session template.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location in which the session template will be created in.
   late final pulumi.Output<String?> location;
-
   /// The resource name of the session template in the following format:
   /// projects/{project}/locations/{location}/sessionTemplates/{template_id}
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Runtime configuration for the session template.
   /// Structure is documented below.
   late final pulumi.Output<SessionTemplateRuntimeConfig?> runtimeConfig;
-
   /// Spark connect configuration for an interactive session.
   late final pulumi.Output<Map<String, dynamic>?> sparkConnectSession;
-
   /// The time when the session template was updated.
   late final pulumi.Output<String> updateTime;
-
   /// A session template UUID (Unique Universal Identifier). The service generates this value when it creates the session template.
   late final pulumi.Output<String> uuid;
 
@@ -1295,52 +1282,23 @@ class SessionTemplate extends pulumi.CustomResource {
     SessionTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataproc/sessionTemplate:SessionTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataproc/sessionTemplate:SessionTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    environmentConfig = registerOutput<SessionTemplateEnvironmentConfig?>(
-      'environmentConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SessionTemplateEnvironmentConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    jupyterSession = registerOutput<SessionTemplateJupyterSession?>(
-      'jupyterSession',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SessionTemplateJupyterSession.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    environmentConfig = registerOutput<SessionTemplateEnvironmentConfig?>('environmentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jupyterSession = registerOutput<SessionTemplateJupyterSession?>('jupyterSession', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateJupyterSession.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    runtimeConfig = registerOutput<SessionTemplateRuntimeConfig?>(
-      'runtimeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SessionTemplateRuntimeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sparkConnectSession = registerOutput<Map<String, dynamic>?>(
-      'sparkConnectSession',
-    );
+    runtimeConfig = registerOutput<SessionTemplateRuntimeConfig?>('runtimeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateRuntimeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sparkConnectSession = registerOutput<Map<String, dynamic>?>('sparkConnectSession');
     updateTime = registerOutput<String>('updateTime');
     uuid = registerOutput<String>('uuid');
   }
@@ -1363,52 +1321,23 @@ class SessionTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataproc/sessionTemplate:SessionTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataproc/sessionTemplate:SessionTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    environmentConfig = registerOutput<SessionTemplateEnvironmentConfig?>(
-      'environmentConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SessionTemplateEnvironmentConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    jupyterSession = registerOutput<SessionTemplateJupyterSession?>(
-      'jupyterSession',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SessionTemplateJupyterSession.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    environmentConfig = registerOutput<SessionTemplateEnvironmentConfig?>('environmentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jupyterSession = registerOutput<SessionTemplateJupyterSession?>('jupyterSession', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateJupyterSession.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    runtimeConfig = registerOutput<SessionTemplateRuntimeConfig?>(
-      'runtimeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SessionTemplateRuntimeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sparkConnectSession = registerOutput<Map<String, dynamic>?>(
-      'sparkConnectSession',
-    );
+    runtimeConfig = registerOutput<SessionTemplateRuntimeConfig?>('runtimeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateRuntimeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sparkConnectSession = registerOutput<Map<String, dynamic>?>('sparkConnectSession');
     updateTime = registerOutput<String>('updateTime');
     uuid = registerOutput<String>('uuid');
   }

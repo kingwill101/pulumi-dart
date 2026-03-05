@@ -2129,42 +2129,30 @@ import 'connection_state.dart';
 class Connection extends pulumi.CustomResource {
   /// ARN of the Glue Connection.
   late final pulumi.Output<String> arn;
-
   /// Map of key-value pairs used as connection properties specific to the Athena compute environment.
   late final pulumi.Output<Map<String, String>?> athenaProperties;
-
   /// ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default.
   late final pulumi.Output<String> catalogId;
-
   /// Map of key-value pairs used as parameters for this connection. For more information, see the [AWS Documentation](https://docs.aws.amazon.com/glue/latest/dg/connection-properties.html).
   ///
   /// **Note:** Some connection types require the `SparkProperties` property with a JSON document that contains the actual connection properties. For specific examples, refer to Example Usage.
   late final pulumi.Output<Map<String, String>?> connectionProperties;
-
   /// Type of the connection. Valid values: `AZURECOSMOS`, `AZURESQL`, `BIGQUERY`, `CUSTOM`, `DYNAMODB`, `JDBC`, `KAFKA`, `MARKETPLACE`, `MONGODB`, `NETWORK`, `OPENSEARCH`, `SNOWFLAKE`. Defaults to `JDBC`.
   late final pulumi.Output<String?> connectionType;
-
   /// Description of the connection.
   late final pulumi.Output<String?> description;
-
   /// List of criteria that can be used in selecting this connection.
   late final pulumi.Output<List<String>?> matchCriterias;
-
   /// Name of the connection.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Map of physical connection requirements, such as VPC and SecurityGroup. See `physical_connection_requirements` Block for details.
-  late final pulumi.Output<ConnectionPhysicalConnectionRequirements?>
-  physicalConnectionRequirements;
-
+  late final pulumi.Output<ConnectionPhysicalConnectionRequirements?> physicalConnectionRequirements;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -2177,32 +2165,20 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:glue/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:glue/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     athenaProperties = registerOutput<Map<String, String>?>('athenaProperties');
     catalogId = registerOutput<String>('catalogId');
-    connectionProperties = registerOutput<Map<String, String>?>(
-      'connectionProperties',
-    );
+    connectionProperties = registerOutput<Map<String, String>?>('connectionProperties');
     connectionType = registerOutput<String?>('connectionType');
     description = registerOutput<String?>('description');
     matchCriterias = registerOutput<List<String>?>('matchCriterias');
     this.name = registerOutput<String>('name');
-    physicalConnectionRequirements =
-        registerOutput<ConnectionPhysicalConnectionRequirements?>(
-          'physicalConnectionRequirements',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ConnectionPhysicalConnectionRequirements.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    physicalConnectionRequirements = registerOutput<ConnectionPhysicalConnectionRequirements?>('physicalConnectionRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionPhysicalConnectionRequirements.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -2226,32 +2202,20 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:glue/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:glue/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     athenaProperties = registerOutput<Map<String, String>?>('athenaProperties');
     catalogId = registerOutput<String>('catalogId');
-    connectionProperties = registerOutput<Map<String, String>?>(
-      'connectionProperties',
-    );
+    connectionProperties = registerOutput<Map<String, String>?>('connectionProperties');
     connectionType = registerOutput<String?>('connectionType');
     description = registerOutput<String?>('description');
     matchCriterias = registerOutput<List<String>?>('matchCriterias');
     this.name = registerOutput<String>('name');
-    physicalConnectionRequirements =
-        registerOutput<ConnectionPhysicalConnectionRequirements?>(
-          'physicalConnectionRequirements',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ConnectionPhysicalConnectionRequirements.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    physicalConnectionRequirements = registerOutput<ConnectionPhysicalConnectionRequirements?>('physicalConnectionRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionPhysicalConnectionRequirements.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

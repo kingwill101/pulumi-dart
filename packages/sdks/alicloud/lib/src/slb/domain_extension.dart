@@ -740,16 +740,12 @@ import 'domain_extension_state.dart';
 class DomainExtension extends pulumi.CustomResource {
   /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
   late final pulumi.Output<bool?> deleteProtectionValidation;
-
   /// The domain name.
   late final pulumi.Output<String> domain;
-
   /// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
   late final pulumi.Output<int> frontendPort;
-
   /// The ID of the SLB instance.
   late final pulumi.Output<String> loadBalancerId;
-
   /// The ID of the certificate used by the domain name.
   late final pulumi.Output<String> serverCertificateId;
 
@@ -762,14 +758,12 @@ class DomainExtension extends pulumi.CustomResource {
     DomainExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:slb/domainExtension:DomainExtension',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deleteProtectionValidation = registerOutput<bool?>(
-      'deleteProtectionValidation',
-    );
+          'alicloud:slb/domainExtension:DomainExtension',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
     domain = registerOutput<String>('domain');
     frontendPort = registerOutput<int>('frontendPort');
     loadBalancerId = registerOutput<String>('loadBalancerId');
@@ -794,14 +788,12 @@ class DomainExtension extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:slb/domainExtension:DomainExtension',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deleteProtectionValidation = registerOutput<bool?>(
-      'deleteProtectionValidation',
-    );
+          'alicloud:slb/domainExtension:DomainExtension',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
     domain = registerOutput<String>('domain');
     frontendPort = registerOutput<int>('frontendPort');
     loadBalancerId = registerOutput<String>('loadBalancerId');

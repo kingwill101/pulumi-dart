@@ -7,25 +7,18 @@ import 'secret_response.dart';
 class Oauth2AuthCodeFlowResponse {
   /// Authorization code to be exchanged for access and refresh tokens.
   final pulumi.Input<String> authCode;
-
   /// Auth URL for Authorization Code Flow
   final pulumi.Input<String> authUri;
-
   /// Client ID for user-provided OAuth app.
   final pulumi.Input<String> clientId;
-
   /// Client secret for user-provided OAuth app.
   final pulumi.Input<SecretResponse> clientSecret;
-
   /// Whether to enable PKCE when the user performs the auth code flow.
   final pulumi.Input<bool> enablePkce;
-
   /// PKCE verifier to be used during the auth code exchange.
   final pulumi.Input<String> pkceVerifier;
-
   /// Redirect URI to be provided during the auth code exchange.
   final pulumi.Input<String> redirectUri;
-
   /// Scopes the connection will request when the user performs the auth code flow.
   final pulumi.Input<List<String>> scopes;
 
@@ -54,11 +47,7 @@ class Oauth2AuthCodeFlowResponse {
       'authCode': authCode,
       'authUri': authUri,
       'clientId': clientId,
-      'clientSecret':
-          pulumi.Input.mapInputValue<SecretResponse, Map<String, dynamic>>(
-            clientSecret,
-            (value) => value.toMap(),
-          ),
+      'clientSecret': pulumi.Input.mapInputValue<SecretResponse, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
       'enablePkce': enablePkce,
       'pkceVerifier': pkceVerifier,
       'redirectUri': redirectUri,
@@ -71,11 +60,7 @@ class Oauth2AuthCodeFlowResponse {
       authCode: pulumi.Input.fromValue(map['authCode'] as String),
       authUri: pulumi.Input.fromValue(map['authUri'] as String),
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
-      clientSecret: pulumi.Input.fromValue(
-        SecretResponse.fromMap(
-          (map['clientSecret']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      clientSecret: pulumi.Input.fromValue(SecretResponse.fromMap((map['clientSecret']! as Map).cast<String, dynamic>())),
       enablePkce: pulumi.Input.fromValue(map['enablePkce'] as bool),
       pkceVerifier: pulumi.Input.fromValue(map['pkceVerifier'] as String),
       redirectUri: pulumi.Input.fromValue(map['redirectUri'] as String),
@@ -83,3 +68,4 @@ class Oauth2AuthCodeFlowResponse {
     );
   }
 }
+

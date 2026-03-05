@@ -7,26 +7,18 @@ import 'google_cloud_dataplex_v1_task_infrastructure_spec.dart';
 class GoogleCloudDataplexV1TaskSparkTaskConfig {
   /// Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
   final pulumi.Input<List<String>>? archiveUris;
-
   /// Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
   final pulumi.Input<List<String>>? fileUris;
-
   /// Optional. Infrastructure specification for the execution.
-  final pulumi.Input<GoogleCloudDataplexV1TaskInfrastructureSpec>?
-  infrastructureSpec;
-
+  final pulumi.Input<GoogleCloudDataplexV1TaskInfrastructureSpec>? infrastructureSpec;
   /// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris. The execution args are passed in as a sequence of named process arguments (--key=value).
   final pulumi.Input<String>? mainClass;
-
   /// The Cloud Storage URI of the jar file that contains the main class. The execution args are passed in as a sequence of named process arguments (--key=value).
   final pulumi.Input<String>? mainJarFileUri;
-
   /// The Gcloud Storage URI of the main Python file to use as the driver. Must be a .py file. The execution args are passed in as a sequence of named process arguments (--key=value).
   final pulumi.Input<String>? pythonScriptFile;
-
   /// The query text. The execution args are used to declare a set of script variables (set key="value";).
   final pulumi.Input<String>? sqlScript;
-
   /// A reference to a query file. This can be the Cloud Storage URI of the query file or it can the path to a SqlScript Content. The execution args are used to declare a set of script variables (set key="value";).
   final pulumi.Input<String>? sqlScriptFile;
 
@@ -54,11 +46,7 @@ class GoogleCloudDataplexV1TaskSparkTaskConfig {
     return <String, dynamic>{
       'archiveUris': ?archiveUris,
       'fileUris': ?fileUris,
-      'infrastructureSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDataplexV1TaskInfrastructureSpec,
-            Map<String, dynamic>
-          >(infrastructureSpec, (value) => value.toMap()),
+      'infrastructureSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDataplexV1TaskInfrastructureSpec, Map<String, dynamic>>(infrastructureSpec, (value) => value.toMap()),
       'mainClass': ?mainClass,
       'mainJarFileUri': ?mainJarFileUri,
       'pythonScriptFile': ?pythonScriptFile,
@@ -67,54 +55,17 @@ class GoogleCloudDataplexV1TaskSparkTaskConfig {
     };
   }
 
-  factory GoogleCloudDataplexV1TaskSparkTaskConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1TaskSparkTaskConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1TaskSparkTaskConfig(
-      archiveUris: (() {
-        final guardedValue = map['archiveUris'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      fileUris: (() {
-        final guardedValue = map['fileUris'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      infrastructureSpec: (() {
-        final guardedValue = map['infrastructureSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDataplexV1TaskInfrastructureSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      mainClass: (() {
-        final guardedValue = map['mainClass'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mainJarFileUri: (() {
-        final guardedValue = map['mainJarFileUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pythonScriptFile: (() {
-        final guardedValue = map['pythonScriptFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sqlScript: (() {
-        final guardedValue = map['sqlScript'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sqlScriptFile: (() {
-        final guardedValue = map['sqlScriptFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      archiveUris: (() { final guardedValue = map['archiveUris']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      fileUris: (() { final guardedValue = map['fileUris']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      infrastructureSpec: (() { final guardedValue = map['infrastructureSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDataplexV1TaskInfrastructureSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      mainClass: (() { final guardedValue = map['mainClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mainJarFileUri: (() { final guardedValue = map['mainJarFileUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pythonScriptFile: (() { final guardedValue = map['pythonScriptFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sqlScript: (() { final guardedValue = map['sqlScript']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sqlScriptFile: (() { final guardedValue = map['sqlScriptFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

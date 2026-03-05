@@ -321,10 +321,8 @@ import 'principal_portfolio_association_state.dart';
 class PrincipalPortfolioAssociation extends pulumi.CustomResource {
   /// Product Portfolio ID
   late final pulumi.Output<String> portfolioId;
-
   /// RAM entity ID
   late final pulumi.Output<String> principalId;
-
   /// RAM entity type
   late final pulumi.Output<String> principalType;
 
@@ -337,11 +335,11 @@ class PrincipalPortfolioAssociation extends pulumi.CustomResource {
     PrincipalPortfolioAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     portfolioId = registerOutput<String>('portfolioId');
     principalId = registerOutput<String>('principalId');
     principalType = registerOutput<String>('principalType');
@@ -365,11 +363,11 @@ class PrincipalPortfolioAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     portfolioId = registerOutput<String>('portfolioId');
     principalId = registerOutput<String>('principalId');
     principalType = registerOutput<String>('principalType');

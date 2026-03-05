@@ -9,17 +9,20 @@ class BayesianSamplingAlgorithm {
 
   /// Creates a new [BayesianSamplingAlgorithm].
   /// [samplingAlgorithmType] Expected value is 'Bayesian'.
-  BayesianSamplingAlgorithm({required this.samplingAlgorithmType});
+  BayesianSamplingAlgorithm({
+    required this.samplingAlgorithmType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'samplingAlgorithmType': samplingAlgorithmType};
+    return <String, dynamic>{
+      'samplingAlgorithmType': samplingAlgorithmType,
+    };
   }
 
   factory BayesianSamplingAlgorithm.fromMap(Map<String, dynamic> map) {
     return BayesianSamplingAlgorithm(
-      samplingAlgorithmType: pulumi.Input.fromValue(
-        map['samplingAlgorithmType'] as String,
-      ),
+      samplingAlgorithmType: pulumi.Input.fromValue(map['samplingAlgorithmType'] as String),
     );
   }
 }
+

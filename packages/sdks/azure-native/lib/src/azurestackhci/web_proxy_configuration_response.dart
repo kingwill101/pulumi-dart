@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebProxyConfigurationResponse {
   /// Bypass list for the web proxy.
   final pulumi.Input<List<String>>? bypassList;
-
   /// Connection URI of the web proxy.
   final pulumi.Input<String>? connectionUri;
-
   /// Port of the web proxy.
   final pulumi.Input<String>? port;
 
@@ -33,21 +31,10 @@ class WebProxyConfigurationResponse {
 
   factory WebProxyConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return WebProxyConfigurationResponse(
-      bypassList: (() {
-        final guardedValue = map['bypassList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      connectionUri: (() {
-        final guardedValue = map['connectionUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bypassList: (() { final guardedValue = map['bypassList']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      connectionUri: (() { final guardedValue = map['connectionUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

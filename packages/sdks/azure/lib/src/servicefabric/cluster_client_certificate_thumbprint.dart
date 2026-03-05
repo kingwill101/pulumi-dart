@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterClientCertificateThumbprint {
   /// Does the Client Certificate have Admin Access to the cluster? Non-admin clients can only perform read only operations on the cluster.
   final pulumi.Input<bool> isAdmin;
-
   /// The Thumbprint associated with the Client Certificate.
   final pulumi.Input<String> thumbprint;
 
@@ -18,7 +17,10 @@ class ClusterClientCertificateThumbprint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'isAdmin': isAdmin, 'thumbprint': thumbprint};
+    return <String, dynamic>{
+      'isAdmin': isAdmin,
+      'thumbprint': thumbprint,
+    };
   }
 
   factory ClusterClientCertificateThumbprint.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class ClusterClientCertificateThumbprint {
     );
   }
 }
+

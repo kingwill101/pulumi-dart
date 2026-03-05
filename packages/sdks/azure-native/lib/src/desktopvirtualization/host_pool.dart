@@ -355,106 +355,71 @@ import 'system_data_response.dart';
 class HostPool extends pulumi.CustomResource {
   /// The session host configuration for updating agent, monitoring agent, and stack component.
   late final pulumi.Output<AgentUpdatePropertiesResponse?> agentUpdate;
-
   /// List of App Attach Package links.
   late final pulumi.Output<List<String>> appAttachPackageReferences;
-
   /// List of applicationGroup links.
   late final pulumi.Output<List<String>> applicationGroupReferences;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Is cloud pc resource.
   late final pulumi.Output<bool> cloudPcResource;
-
   /// Custom rdp property of HostPool.
   late final pulumi.Output<String?> customRdpProperty;
-
   /// Description of HostPool.
   late final pulumi.Output<String?> description;
-
   /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> etag;
-
   /// Friendly name of HostPool.
   late final pulumi.Output<String?> friendlyName;
-
   /// HostPool type for desktop.
   late final pulumi.Output<String> hostPoolType;
-  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponseIdentity?>
-  identity;
-
+  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponseIdentity?> identity;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
-
   /// The type of the load balancer.
   late final pulumi.Output<String> loadBalancerType;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
   late final pulumi.Output<String?> managedBy;
-
   /// The max session limit of HostPool.
   late final pulumi.Output<int?> maxSessionLimit;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// ObjectId of HostPool. (internal use)
   late final pulumi.Output<String> objectId;
-
   /// PersonalDesktopAssignment type for HostPool.
   late final pulumi.Output<String?> personalDesktopAssignmentType;
-  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponsePlan?>
-  plan;
-
+  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponsePlan?> plan;
   /// The type of preferred application group type, default to Desktop Application Group
   late final pulumi.Output<String> preferredAppGroupType;
-
   /// List of private endpoint connection associated with the specified resource
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// The registration info of HostPool.
   late final pulumi.Output<RegistrationInfoResponse?> registrationInfo;
-
   /// The ring number of HostPool.
   late final pulumi.Output<int?> ring;
   late final pulumi.Output<ResourceModelWithAllowedPropertySetResponseSku?> sku;
-
   /// ClientId for the registered Relying Party used to issue WVD SSO certificates.
   late final pulumi.Output<String?> ssoClientId;
-
   /// Path to Azure KeyVault storing the secret used for communication to ADFS.
   late final pulumi.Output<String?> ssoClientSecretKeyVaultPath;
-
   /// The type of single sign on Secret Type.
   late final pulumi.Output<String?> ssoSecretType;
-
   /// URL to customer ADFS server for signing WVD SSO certificates.
   late final pulumi.Output<String?> ssoadfsAuthority;
-
   /// The flag to turn on/off StartVMOnConnect feature.
   late final pulumi.Output<bool?> startVMOnConnect;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Is validation environment.
   late final pulumi.Output<bool?> validationEnvironment;
-
   /// VM template for sessionhosts configuration within hostpool.
   late final pulumi.Output<String?> vmTemplate;
 
@@ -467,27 +432,14 @@ class HostPool extends pulumi.CustomResource {
     HostPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:desktopvirtualization:HostPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    agentUpdate = registerOutput<AgentUpdatePropertiesResponse?>(
-      'agentUpdate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentUpdatePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    appAttachPackageReferences = registerOutput<List<String>>(
-      'appAttachPackageReferences',
-    );
-    applicationGroupReferences = registerOutput<List<String>>(
-      'applicationGroupReferences',
-    );
+          'azure-native:desktopvirtualization:HostPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    agentUpdate = registerOutput<AgentUpdatePropertiesResponse?>('agentUpdate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentUpdatePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    appAttachPackageReferences = registerOutput<List<String>>('appAttachPackageReferences');
+    applicationGroupReferences = registerOutput<List<String>>('applicationGroupReferences');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cloudPcResource = registerOutput<bool>('cloudPcResource');
     customRdpProperty = registerOutput<String?>('customRdpProperty');
@@ -495,17 +447,7 @@ class HostPool extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     friendlyName = registerOutput<String?>('friendlyName');
     hostPoolType = registerOutput<String>('hostPoolType');
-    identity =
-        registerOutput<ResourceModelWithAllowedPropertySetResponseIdentity?>(
-          'identity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ResourceModelWithAllowedPropertySetResponseIdentity.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    identity = registerOutput<ResourceModelWithAllowedPropertySetResponseIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     loadBalancerType = registerOutput<String>('loadBalancerType');
     location = registerOutput<String>('location');
@@ -513,62 +455,20 @@ class HostPool extends pulumi.CustomResource {
     maxSessionLimit = registerOutput<int?>('maxSessionLimit');
     this.name = registerOutput<String>('name');
     objectId = registerOutput<String>('objectId');
-    personalDesktopAssignmentType = registerOutput<String?>(
-      'personalDesktopAssignmentType',
-    );
-    plan = registerOutput<ResourceModelWithAllowedPropertySetResponsePlan?>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceModelWithAllowedPropertySetResponsePlan.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    personalDesktopAssignmentType = registerOutput<String?>('personalDesktopAssignmentType');
+    plan = registerOutput<ResourceModelWithAllowedPropertySetResponsePlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponsePlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preferredAppGroupType = registerOutput<String>('preferredAppGroupType');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    registrationInfo = registerOutput<RegistrationInfoResponse?>(
-      'registrationInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RegistrationInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    registrationInfo = registerOutput<RegistrationInfoResponse?>('registrationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistrationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ring = registerOutput<int?>('ring');
-    sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceModelWithAllowedPropertySetResponseSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ssoClientId = registerOutput<String?>('ssoClientId');
-    ssoClientSecretKeyVaultPath = registerOutput<String?>(
-      'ssoClientSecretKeyVaultPath',
-    );
+    ssoClientSecretKeyVaultPath = registerOutput<String?>('ssoClientSecretKeyVaultPath');
     ssoSecretType = registerOutput<String?>('ssoSecretType');
     ssoadfsAuthority = registerOutput<String?>('ssoadfsAuthority');
     startVMOnConnect = registerOutput<bool?>('startVMOnConnect');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     validationEnvironment = registerOutput<bool?>('validationEnvironment');

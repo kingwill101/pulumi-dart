@@ -8,10 +8,8 @@ import 'cmk_key_vault_properties.dart';
 class VaultPropertiesEncryption {
   /// Enabling/Disabling the Double Encryption state
   final pulumi.Input<String>? infrastructureEncryption;
-
   /// The details of the identity used for CMK
   final pulumi.Input<CmkKekIdentity>? kekIdentity;
-
   /// The properties of the Key Vault which hosts CMK
   final pulumi.Input<CmkKeyVaultProperties>? keyVaultProperties;
 
@@ -28,42 +26,17 @@ class VaultPropertiesEncryption {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'infrastructureEncryption': ?infrastructureEncryption,
-      'kekIdentity':
-          ?pulumi.Input.mapOptionalInputValue<
-            CmkKekIdentity,
-            Map<String, dynamic>
-          >(kekIdentity, (value) => value.toMap()),
-      'keyVaultProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            CmkKeyVaultProperties,
-            Map<String, dynamic>
-          >(keyVaultProperties, (value) => value.toMap()),
+      'kekIdentity': ?pulumi.Input.mapOptionalInputValue<CmkKekIdentity, Map<String, dynamic>>(kekIdentity, (value) => value.toMap()),
+      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<CmkKeyVaultProperties, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
     };
   }
 
   factory VaultPropertiesEncryption.fromMap(Map<String, dynamic> map) {
     return VaultPropertiesEncryption(
-      infrastructureEncryption: (() {
-        final guardedValue = map['infrastructureEncryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kekIdentity: (() {
-        final guardedValue = map['kekIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CmkKekIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      keyVaultProperties: (() {
-        final guardedValue = map['keyVaultProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CmkKeyVaultProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      infrastructureEncryption: (() { final guardedValue = map['infrastructureEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kekIdentity: (() { final guardedValue = map['kekIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CmkKekIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      keyVaultProperties: (() { final guardedValue = map['keyVaultProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CmkKeyVaultProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -6,16 +6,13 @@ enum InstanceGroupManagerListManagedInstancesResults {
   const InstanceGroupManagerListManagedInstancesResults(this.wireValue);
   final String wireValue;
 
-  static InstanceGroupManagerListManagedInstancesResults fromValue(
-    String value,
-  ) {
+  static InstanceGroupManagerListManagedInstancesResults fromValue(String value) {
     for (final item in InstanceGroupManagerListManagedInstancesResults.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InstanceGroupManagerListManagedInstancesResults value: $value',
-    );
+    throw ArgumentError('Unknown InstanceGroupManagerListManagedInstancesResults value: $value');
   }
 }
+

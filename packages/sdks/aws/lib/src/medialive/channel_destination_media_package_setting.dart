@@ -8,17 +8,20 @@ class ChannelDestinationMediaPackageSetting {
 
   /// Creates a new [ChannelDestinationMediaPackageSetting].
   /// [channelId] ID of the channel in MediaPackage that is the destination for this output group.
-  ChannelDestinationMediaPackageSetting({required this.channelId});
+  ChannelDestinationMediaPackageSetting({
+    required this.channelId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'channelId': channelId};
+    return <String, dynamic>{
+      'channelId': channelId,
+    };
   }
 
-  factory ChannelDestinationMediaPackageSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelDestinationMediaPackageSetting.fromMap(Map<String, dynamic> map) {
     return ChannelDestinationMediaPackageSetting(
       channelId: pulumi.Input.fromValue(map['channelId'] as String),
     );
   }
 }
+

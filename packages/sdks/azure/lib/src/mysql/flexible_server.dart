@@ -464,18 +464,14 @@ import 'flexible_server_storage.dart';
 class FlexibleServer extends pulumi.CustomResource {
   /// The Administrator login for the MySQL Flexible Server. Required when `create_mode` is `Default`. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String> administratorLogin;
-
   /// The Password associated with the `administrator_login` for the MySQL Flexible Server.
   late final pulumi.Output<String?> administratorPassword;
-
   /// An integer value used to trigger an update for `administrator_password_wo`. This property should be incremented when updating `administrator_password_wo`.
   ///
   /// &gt; **Note:** Either `administrator_password` or `administrator_password_wo` is required when `create_mode` is `Default`.
   late final pulumi.Output<int?> administratorPasswordWoVersion;
-
   /// The backup retention days for the MySQL Flexible Server. Possible values are between `1` and `35` days. Defaults to `7`.
   late final pulumi.Output<int?> backupRetentionDays;
-
   /// The creation mode which can be used to restore or replicate existing servers. Possible values are `Default`, `PointInTimeRestore`, `GeoRestore`, and `Replica`. Changing this forces a new MySQL Flexible Server to be created.
   ///
   /// &gt; **Note:** Creating a `GeoRestore` server requires the source server with `geo_redundant_backup_enabled` enabled.
@@ -484,81 +480,59 @@ class FlexibleServer extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** When importing a MySQL Flexible Server, `create_mode` is not returned by the api so you will see a diff if `create_mode` is specified in your config. To prevent recreation, use the `ignore_changes` lifecycle meta-argument.
   late final pulumi.Output<String?> createMode;
-
   /// A `customer_managed_key` block as defined below.
   ///
   /// &gt; **Note:** `identity` is required when `customer_managed_key` is specified.
-  late final pulumi.Output<FlexibleServerCustomerManagedKey?>
-  customerManagedKey;
-
+  late final pulumi.Output<FlexibleServerCustomerManagedKey?> customerManagedKey;
   /// The ID of the virtual network subnet to create the MySQL Flexible Server. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String?> delegatedSubnetId;
-
   /// The fully qualified domain name of the MySQL Flexible Server.
   late final pulumi.Output<String> fqdn;
-
   /// Should geo redundant backup enabled? Defaults to `false`. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<bool?> geoRedundantBackupEnabled;
-
   /// A `high_availability` block as defined below.
   late final pulumi.Output<FlexibleServerHighAvailability?> highAvailability;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<FlexibleServerIdentity?> identity;
-
   /// The Azure Region where the MySQL Flexible Server should exist. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String> location;
-
   /// A `maintenance_window` block as defined below.
   late final pulumi.Output<FlexibleServerMaintenanceWindow?> maintenanceWindow;
-
   /// The name which should be used for this MySQL Flexible Server. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String> name;
-
   /// The point in time to restore from `creation_source_server_id` when `create_mode` is `PointInTimeRestore`. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String?> pointInTimeRestoreTimeInUtc;
-
   /// The ID of the private DNS zone to create the MySQL Flexible Server. Changing this forces a new MySQL Flexible Server to be created.
   ///
   /// &gt; **Note:** The `private_dns_zone_id` is required when setting a `delegated_subnet_id`. The `azure.privatedns.Zone` should end with suffix `.mysql.database.azure.com`.
   late final pulumi.Output<String?> privateDnsZoneId;
-
   /// Whether approved public traffic is allowed through the firewall to this server. Possible values are `Enabled` and `Disabled`.
   ///
   /// &gt; **Note:** `public_network_access` is automatically set to `Disabled` if the server is created with VNet Integration (i.e. values are provided for `delegated_subnet_id` and `private_dns_zone_id`").
   late final pulumi.Output<String> publicNetworkAccess;
   late final pulumi.Output<bool> publicNetworkAccessEnabled;
-
   /// The maximum number of replicas that a primary MySQL Flexible Server can have.
   late final pulumi.Output<int> replicaCapacity;
-
   /// The replication role. Possible value is `None`.
   ///
   /// &gt; **Note:** The `replication_role` cannot be set while creating and only can be updated from `Replica` to `None`.
   late final pulumi.Output<String> replicationRole;
-
   /// The name of the Resource Group where the MySQL Flexible Server should exist. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The SKU Name for the MySQL Flexible Server.
   ///
   /// &gt; **Note:** `sku_name` should start with SKU tier `B (Burstable)`, `GP (General Purpose)`, `MO (Memory Optimized)` like `B_Standard_B1ms`.
   late final pulumi.Output<String> skuName;
-
   /// The resource ID of the source MySQL Flexible Server to be restored. Required when `create_mode` is `PointInTimeRestore`, `GeoRestore`, and `Replica`. Changing this forces a new MySQL Flexible Server to be created.
   ///
   /// &gt; **Note:** The replica server is always created in the same resource group and subscription as the source server.
   late final pulumi.Output<String?> sourceServerId;
-
   /// A `storage` block as defined below.
   late final pulumi.Output<FlexibleServerStorage> storage;
-
   /// A mapping of tags which should be assigned to the MySQL Flexible Server.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The version of the MySQL Flexible Server to use. Possible values are `5.7`, `8.0.21` and `8.4`.
   late final pulumi.Output<String> version;
-
   /// Specifies the Availability Zone in which this MySQL Flexible Server should be located. Possible values are `1`, `2` and `3`.
   ///
   /// &gt; **Note:** Azure will automatically assign an Availability Zone if one is not specified. If the MySQL Flexible Server fails-over to the Standby Availability Zone, the `zone` will be updated to reflect the current Primary Availability Zone. You can use Terraform's `ignore_changes` functionality to ignore changes to the `zone` and `high_availability[0].standby_availability_zone` fields should you wish for Terraform to not migrate the MySQL Flexible Server back to it's primary Availability Zone after a fail-over.
@@ -575,88 +549,35 @@ class FlexibleServer extends pulumi.CustomResource {
     FlexibleServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mysql/flexibleServer:FlexibleServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mysql/flexibleServer:FlexibleServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administratorLogin = registerOutput<String>('administratorLogin');
     administratorPassword = registerOutput<String?>('administratorPassword');
-    administratorPasswordWoVersion = registerOutput<int?>(
-      'administratorPasswordWoVersion',
-    );
+    administratorPasswordWoVersion = registerOutput<int?>('administratorPasswordWoVersion');
     backupRetentionDays = registerOutput<int?>('backupRetentionDays');
     createMode = registerOutput<String?>('createMode');
-    customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>(
-      'customerManagedKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerCustomerManagedKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     delegatedSubnetId = registerOutput<String?>('delegatedSubnetId');
     fqdn = registerOutput<String>('fqdn');
-    geoRedundantBackupEnabled = registerOutput<bool?>(
-      'geoRedundantBackupEnabled',
-    );
-    highAvailability = registerOutput<FlexibleServerHighAvailability?>(
-      'highAvailability',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerHighAvailability.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<FlexibleServerIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    geoRedundantBackupEnabled = registerOutput<bool?>('geoRedundantBackupEnabled');
+    highAvailability = registerOutput<FlexibleServerHighAvailability?>('highAvailability', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerHighAvailability.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<FlexibleServerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>(
-      'maintenanceWindow',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerMaintenanceWindow.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    pointInTimeRestoreTimeInUtc = registerOutput<String?>(
-      'pointInTimeRestoreTimeInUtc',
-    );
+    pointInTimeRestoreTimeInUtc = registerOutput<String?>('pointInTimeRestoreTimeInUtc');
     privateDnsZoneId = registerOutput<String?>('privateDnsZoneId');
     publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
-    publicNetworkAccessEnabled = registerOutput<bool>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool>('publicNetworkAccessEnabled');
     replicaCapacity = registerOutput<int>('replicaCapacity');
     replicationRole = registerOutput<String>('replicationRole');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     sourceServerId = registerOutput<String?>('sourceServerId');
-    storage = registerOutput<FlexibleServerStorage>(
-      'storage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerStorage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storage = registerOutput<FlexibleServerStorage>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     version = registerOutput<String>('version');
     zone = registerOutput<String>('zone');
@@ -680,88 +601,35 @@ class FlexibleServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mysql/flexibleServer:FlexibleServer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mysql/flexibleServer:FlexibleServer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administratorLogin = registerOutput<String>('administratorLogin');
     administratorPassword = registerOutput<String?>('administratorPassword');
-    administratorPasswordWoVersion = registerOutput<int?>(
-      'administratorPasswordWoVersion',
-    );
+    administratorPasswordWoVersion = registerOutput<int?>('administratorPasswordWoVersion');
     backupRetentionDays = registerOutput<int?>('backupRetentionDays');
     createMode = registerOutput<String?>('createMode');
-    customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>(
-      'customerManagedKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerCustomerManagedKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     delegatedSubnetId = registerOutput<String?>('delegatedSubnetId');
     fqdn = registerOutput<String>('fqdn');
-    geoRedundantBackupEnabled = registerOutput<bool?>(
-      'geoRedundantBackupEnabled',
-    );
-    highAvailability = registerOutput<FlexibleServerHighAvailability?>(
-      'highAvailability',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerHighAvailability.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<FlexibleServerIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    geoRedundantBackupEnabled = registerOutput<bool?>('geoRedundantBackupEnabled');
+    highAvailability = registerOutput<FlexibleServerHighAvailability?>('highAvailability', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerHighAvailability.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<FlexibleServerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>(
-      'maintenanceWindow',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerMaintenanceWindow.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    pointInTimeRestoreTimeInUtc = registerOutput<String?>(
-      'pointInTimeRestoreTimeInUtc',
-    );
+    pointInTimeRestoreTimeInUtc = registerOutput<String?>('pointInTimeRestoreTimeInUtc');
     privateDnsZoneId = registerOutput<String?>('privateDnsZoneId');
     publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
-    publicNetworkAccessEnabled = registerOutput<bool>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool>('publicNetworkAccessEnabled');
     replicaCapacity = registerOutput<int>('replicaCapacity');
     replicationRole = registerOutput<String>('replicationRole');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     sourceServerId = registerOutput<String?>('sourceServerId');
-    storage = registerOutput<FlexibleServerStorage>(
-      'storage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlexibleServerStorage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storage = registerOutput<FlexibleServerStorage>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     version = registerOutput<String>('version');
     zone = registerOutput<String>('zone');

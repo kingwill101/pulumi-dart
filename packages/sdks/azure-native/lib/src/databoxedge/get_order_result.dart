@@ -11,46 +11,32 @@ import 'tracking_info_response.dart';
 class GetOrderResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The contact details.
   final ContactDetailsResponse contactInformation;
-
   /// Current status of the order.
   final OrderStatusResponse currentStatus;
-
   /// Tracking information for the package delivered to the customer whether it has an original or a replacement device.
   final List<TrackingInfoResponse> deliveryTrackingInfo;
-
   /// The path ID that uniquely identifies the object.
   final String id;
-
   /// It specify the order api version.
   final String kind;
-
   /// The object name.
   final String name;
-
   /// List of status changes in the order.
   final List<OrderStatusResponse> orderHistory;
-
   /// It specify the order resource id.
   final String orderId;
-
   /// Tracking information for the package returned from the customer whether it has an original or a replacement device.
   final List<TrackingInfoResponse> returnTrackingInfo;
-
   /// Serial number of the device.
   final String serialNumber;
-
   /// ShipmentType of the order
   final String? shipmentType;
-
   /// The shipping address.
   final AddressResponse? shippingAddress;
-
   /// Metadata pertaining to creation and last modification of Order
   final SystemDataResponse systemData;
-
   /// The hierarchical type of the object.
   final String type;
 
@@ -93,25 +79,13 @@ class GetOrderResult {
       'azureApiVersion': azureApiVersion,
       'contactInformation': contactInformation.toMap(),
       'currentStatus': currentStatus.toMap(),
-      'deliveryTrackingInfo':
-          pulumi.Input.encodeList<TrackingInfoResponse, Map<String, dynamic>>(
-            deliveryTrackingInfo,
-            (value) => value.toMap(),
-          ),
+      'deliveryTrackingInfo': pulumi.Input.encodeList<TrackingInfoResponse, Map<String, dynamic>>(deliveryTrackingInfo, (value) => value.toMap()),
       'id': id,
       'kind': kind,
       'name': name,
-      'orderHistory':
-          pulumi.Input.encodeList<OrderStatusResponse, Map<String, dynamic>>(
-            orderHistory,
-            (value) => value.toMap(),
-          ),
+      'orderHistory': pulumi.Input.encodeList<OrderStatusResponse, Map<String, dynamic>>(orderHistory, (value) => value.toMap()),
       'orderId': orderId,
-      'returnTrackingInfo':
-          pulumi.Input.encodeList<TrackingInfoResponse, Map<String, dynamic>>(
-            returnTrackingInfo,
-            (value) => value.toMap(),
-          ),
+      'returnTrackingInfo': pulumi.Input.encodeList<TrackingInfoResponse, Map<String, dynamic>>(returnTrackingInfo, (value) => value.toMap()),
       'serialNumber': serialNumber,
       'shipmentType': ?shipmentType,
       'shippingAddress': ?shippingAddress?.toMap(),
@@ -123,50 +97,21 @@ class GetOrderResult {
   factory GetOrderResult.fromMap(Map<String, dynamic> map) {
     return GetOrderResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      contactInformation: ContactDetailsResponse.fromMap(
-        (map['contactInformation']! as Map).cast<String, dynamic>(),
-      ),
-      currentStatus: OrderStatusResponse.fromMap(
-        (map['currentStatus']! as Map).cast<String, dynamic>(),
-      ),
-      deliveryTrackingInfo: pulumi.Input.decodeList<TrackingInfoResponse>(
-        map['deliveryTrackingInfo']!,
-        (value) => TrackingInfoResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      contactInformation: ContactDetailsResponse.fromMap((map['contactInformation']! as Map).cast<String, dynamic>()),
+      currentStatus: OrderStatusResponse.fromMap((map['currentStatus']! as Map).cast<String, dynamic>()),
+      deliveryTrackingInfo: pulumi.Input.decodeList<TrackingInfoResponse>(map['deliveryTrackingInfo']!, (value) => TrackingInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      orderHistory: pulumi.Input.decodeList<OrderStatusResponse>(
-        map['orderHistory']!,
-        (value) =>
-            OrderStatusResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      orderHistory: pulumi.Input.decodeList<OrderStatusResponse>(map['orderHistory']!, (value) => OrderStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
       orderId: map['orderId'] as String,
-      returnTrackingInfo: pulumi.Input.decodeList<TrackingInfoResponse>(
-        map['returnTrackingInfo']!,
-        (value) => TrackingInfoResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      returnTrackingInfo: pulumi.Input.decodeList<TrackingInfoResponse>(map['returnTrackingInfo']!, (value) => TrackingInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
       serialNumber: map['serialNumber'] as String,
-      shipmentType: (() {
-        final guardedValue = map['shipmentType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      shippingAddress: (() {
-        final guardedValue = map['shippingAddress'];
-        if (guardedValue == null) return null;
-        return AddressResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      shipmentType: (() { final guardedValue = map['shipmentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      shippingAddress: (() { final guardedValue = map['shippingAddress']; if (guardedValue == null) return null; return AddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

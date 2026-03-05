@@ -15,3 +15,4 @@ enum SocketAddrOperator {
     throw ArgumentError('Unknown SocketAddrOperator value: $value');
   }
 }
+

@@ -188,16 +188,12 @@ import 'image_lib_state.dart';
 class ImageLib extends pulumi.CustomResource {
   /// List of business scenarios. For example: ["bizTypeA", "bizTypeB", "bizTypeC"]
   late final pulumi.Output<List<String>?> bizTypes;
-
   /// The category of the image library. Valid values: BLACK: a blacklist, WHITE: a whitelist, REVIEW: a review list
   late final pulumi.Output<String> category;
-
   /// Specifies whether to enable the image library. Valid values: true: Enable the image library. This is the default value. false: Disable the image library.
   late final pulumi.Output<bool> enable;
-
   /// The name of the image library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
   late final pulumi.Output<String> imageLibName;
-
   /// The moderation scenario to which the custom image library applies. Valid values: PORN: pornography detection, AD: ad detection, ILLEGAL: terrorist content detection
   late final pulumi.Output<String> scene;
 
@@ -210,11 +206,11 @@ class ImageLib extends pulumi.CustomResource {
     ImageLibArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:aligreen/imageLib:ImageLib',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:aligreen/imageLib:ImageLib',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bizTypes = registerOutput<List<String>?>('bizTypes');
     category = registerOutput<String>('category');
     enable = registerOutput<bool>('enable');
@@ -240,11 +236,11 @@ class ImageLib extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:aligreen/imageLib:ImageLib',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:aligreen/imageLib:ImageLib',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bizTypes = registerOutput<List<String>?>('bizTypes');
     category = registerOutput<String>('category');
     enable = registerOutput<bool>('enable');

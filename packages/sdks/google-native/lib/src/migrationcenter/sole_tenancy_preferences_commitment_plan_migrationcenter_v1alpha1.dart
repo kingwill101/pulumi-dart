@@ -5,22 +5,16 @@ enum SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1 {
   commitment1Year("COMMITMENT_1_YEAR"),
   commitment3Year("COMMITMENT_3_YEAR");
 
-  const SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1(
-    this.wireValue,
-  );
+  const SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1(this.wireValue);
   final String wireValue;
 
-  static SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1.values) {
+  static SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1 fromValue(String value) {
+    for (final item in SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1 value: $value',
-    );
+    throw ArgumentError('Unknown SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1 value: $value');
   }
 }
+

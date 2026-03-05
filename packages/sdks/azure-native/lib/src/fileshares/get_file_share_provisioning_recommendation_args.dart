@@ -10,7 +10,6 @@ import 'file_share_provisioning_recommendation_input.dart';
 class GetFileShareProvisioningRecommendationArgs {
   /// The name of the Azure region.
   final pulumi.Input<String> location;
-
   /// The properties of the file share provisioning recommendation input.
   final pulumi.Input<FileShareProvisioningRecommendationInput> properties;
 
@@ -25,24 +24,15 @@ class GetFileShareProvisioningRecommendationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': location,
-      'properties':
-          pulumi.Input.mapInputValue<
-            FileShareProvisioningRecommendationInput,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<FileShareProvisioningRecommendationInput, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
-  factory GetFileShareProvisioningRecommendationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFileShareProvisioningRecommendationArgs.fromMap(Map<String, dynamic> map) {
     return GetFileShareProvisioningRecommendationArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      properties: pulumi.Input.fromValue(
-        FileShareProvisioningRecommendationInput.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      properties: pulumi.Input.fromValue(FileShareProvisioningRecommendationInput.fromMap((map['properties']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

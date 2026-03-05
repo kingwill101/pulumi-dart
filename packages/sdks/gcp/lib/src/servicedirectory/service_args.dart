@@ -12,10 +12,8 @@ class ServiceArgs {
   /// up to 2000 characters, spread across all key-value pairs.
   /// Metadata that goes beyond any these limits will be rejected.
   final pulumi.Input<Map<String, String>>? metadata;
-
   /// The resource name of the namespace this service will belong to.
   final pulumi.Input<String> namespace;
-
   /// The Resource ID must be 1-63 characters long, including digits,
   /// lowercase letters or the hyphen character.
   final pulumi.Input<String> serviceId;
@@ -40,15 +38,10 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       namespace: pulumi.Input.fromValue(map['namespace'] as String),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
     );
   }
 }
+

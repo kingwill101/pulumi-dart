@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateLinkServicesForEDMUploadArgs {
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the service instance.
   final pulumi.Input<String> resourceName;
 
@@ -28,14 +27,11 @@ class GetPrivateLinkServicesForEDMUploadArgs {
     };
   }
 
-  factory GetPrivateLinkServicesForEDMUploadArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPrivateLinkServicesForEDMUploadArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkServicesForEDMUploadArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

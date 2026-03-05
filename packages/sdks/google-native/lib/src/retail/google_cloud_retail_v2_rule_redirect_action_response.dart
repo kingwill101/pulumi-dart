@@ -9,17 +9,20 @@ class GoogleCloudRetailV2RuleRedirectActionResponse {
 
   /// Creates a new [GoogleCloudRetailV2RuleRedirectActionResponse].
   /// [redirectUri] URL must have length equal or less than 2000 characters.
-  GoogleCloudRetailV2RuleRedirectActionResponse({required this.redirectUri});
+  GoogleCloudRetailV2RuleRedirectActionResponse({
+    required this.redirectUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'redirectUri': redirectUri};
+    return <String, dynamic>{
+      'redirectUri': redirectUri,
+    };
   }
 
-  factory GoogleCloudRetailV2RuleRedirectActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2RuleRedirectActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2RuleRedirectActionResponse(
       redirectUri: pulumi.Input.fromValue(map['redirectUri'] as String),
     );
   }
 }
+

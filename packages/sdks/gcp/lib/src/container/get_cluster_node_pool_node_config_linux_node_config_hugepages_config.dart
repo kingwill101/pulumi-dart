@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
   /// Amount of 1G hugepages.
   final pulumi.Input<int> hugepageSize1g;
-
   /// Amount of 2M hugepages.
   final pulumi.Input<int> hugepageSize2m;
 
@@ -24,12 +23,11 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
     };
   }
 
-  factory GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig(
       hugepageSize1g: pulumi.Input.fromValue(map['hugepageSize1g'] as int),
       hugepageSize2m: pulumi.Input.fromValue(map['hugepageSize2m'] as int),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceAttachmentArgs {
   /// The name of the OTS instance.
   final pulumi.Input<String> instanceName;
-
   /// The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
   final pulumi.Input<String> vpcName;
-
   /// The ID of attaching VSwitch to instance.
   final pulumi.Input<String> vswitchId;
 
@@ -42,3 +40,4 @@ class InstanceAttachmentArgs {
     );
   }
 }
+

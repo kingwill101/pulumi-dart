@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrationConfigurationResponse {
   /// Gets or sets the key vault resource Id.
   final pulumi.Input<String>? keyVaultResourceId;
-
   /// Gets or sets the migration solution resource Id.
   final pulumi.Input<String>? migrationSolutionResourceId;
-
   /// Gets or sets the storage account resource Id.
   final pulumi.Input<String>? storageAccountResourceId;
 
@@ -33,21 +31,10 @@ class MigrationConfigurationResponse {
 
   factory MigrationConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return MigrationConfigurationResponse(
-      keyVaultResourceId: (() {
-        final guardedValue = map['keyVaultResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      migrationSolutionResourceId: (() {
-        final guardedValue = map['migrationSolutionResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountResourceId: (() {
-        final guardedValue = map['storageAccountResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyVaultResourceId: (() { final guardedValue = map['keyVaultResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      migrationSolutionResourceId: (() { final guardedValue = map['migrationSolutionResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountResourceId: (() { final guardedValue = map['storageAccountResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

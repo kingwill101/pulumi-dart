@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration {
   /// The token claim that you want Verified Permissions to interpret as group membership. For example, `groups`.
   final pulumi.Input<String> groupClaim;
-
   /// The name of the schema entity type that's mapped to the user pool group. Defaults to `AWS::CognitoGroup`.
   final pulumi.Input<String> groupEntityType;
 
@@ -24,12 +23,11 @@ class IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration {
     };
   }
 
-  factory IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration.fromMap(Map<String, dynamic> map) {
     return IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration(
       groupClaim: pulumi.Input.fromValue(map['groupClaim'] as String),
       groupEntityType: pulumi.Input.fromValue(map['groupEntityType'] as String),
     );
   }
 }
+

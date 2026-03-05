@@ -289,16 +289,12 @@ import 'spring_cloud_configuration_service_state.dart';
 class SpringCloudConfigurationService extends pulumi.CustomResource {
   /// The generation of the Spring Cloud Configuration Service. Possible values are `Gen1` and `Gen2`.
   late final pulumi.Output<String?> generation;
-
   /// The name which should be used for this Spring Cloud Configuration Service. The only possible value is `default`. Changing this forces a new Spring Cloud Configuration Service to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies how often to check repository updates. Minimum value is 0.
   late final pulumi.Output<int?> refreshIntervalInSeconds;
-
   /// One or more `repository` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> repositories;
-
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Configuration Service to be created.
   late final pulumi.Output<String> springCloudServiceId;
 
@@ -311,11 +307,11 @@ class SpringCloudConfigurationService extends pulumi.CustomResource {
     SpringCloudConfigurationServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudConfigurationService:SpringCloudConfigurationService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudConfigurationService:SpringCloudConfigurationService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     generation = registerOutput<String?>('generation');
     this.name = registerOutput<String>('name');
     refreshIntervalInSeconds = registerOutput<int?>('refreshIntervalInSeconds');
@@ -341,11 +337,11 @@ class SpringCloudConfigurationService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudConfigurationService:SpringCloudConfigurationService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudConfigurationService:SpringCloudConfigurationService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     generation = registerOutput<String?>('generation');
     this.name = registerOutput<String>('name');
     refreshIntervalInSeconds = registerOutput<int?>('refreshIntervalInSeconds');

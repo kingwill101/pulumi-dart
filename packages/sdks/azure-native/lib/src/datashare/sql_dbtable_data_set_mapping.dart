@@ -651,38 +651,27 @@ import 'system_data_response.dart';
 class SqlDBTableDataSetMapping extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The id of the source data set.
   late final pulumi.Output<String> dataSetId;
-
   /// Gets the status of the data set mapping.
   late final pulumi.Output<String> dataSetMappingStatus;
-
   /// DatabaseName name of the sink data set
   late final pulumi.Output<String> databaseName;
-
   /// Kind of data set mapping.
   /// Expected value is 'SqlDBTable'.
   late final pulumi.Output<String> kind;
-
   /// Name of the azure resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the data set mapping.
   late final pulumi.Output<String> provisioningState;
-
   /// Schema of the table. Default value is dbo.
   late final pulumi.Output<String> schemaName;
-
   /// Resource id of SQL server
   late final pulumi.Output<String> sqlServerResourceId;
-
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// SQL DB table name.
   late final pulumi.Output<String> tableName;
-
   /// Type of the azure resource
   late final pulumi.Output<String> type;
 
@@ -695,11 +684,11 @@ class SqlDBTableDataSetMapping extends pulumi.CustomResource {
     SqlDBTableDataSetMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datashare:SqlDBTableDataSetMapping',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datashare:SqlDBTableDataSetMapping',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dataSetId = registerOutput<String>('dataSetId');
     dataSetMappingStatus = registerOutput<String>('dataSetMappingStatus');
@@ -709,16 +698,7 @@ class SqlDBTableDataSetMapping extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     schemaName = registerOutput<String>('schemaName');
     sqlServerResourceId = registerOutput<String>('sqlServerResourceId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableName = registerOutput<String>('tableName');
     type = registerOutput<String>('type');
   }

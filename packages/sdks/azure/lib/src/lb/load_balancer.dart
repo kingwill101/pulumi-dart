@@ -233,42 +233,30 @@ import 'load_balancer_state.dart';
 class LoadBalancer extends pulumi.CustomResource {
   /// Specifies the Edge Zone within the Azure Region where this Load Balancer should exist. Changing this forces a new Load Balancer to be created.
   late final pulumi.Output<String?> edgeZone;
-
   /// One or more `frontend_ip_configuration` blocks as documented below.
   ///
   /// &gt; **Note:** Azure Load Balancer does not allow the complete removal of all previously attached frontend configurations. If you have previously applied with one or more `frontend_ip_configuration` arguments, the removal of them all will result in a replacement  (destroy/create) of the Load Balancer.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  frontendIpConfigurations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> frontendIpConfigurations;
   /// Specifies the supported Azure Region where the Load Balancer should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Load Balancer. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Private IP Address to assign to the Load Balancer.
   late final pulumi.Output<String> privateIpAddress;
-
   /// The list of private IP address assigned to the load balancer in `frontend_ip_configuration` blocks, if any.
   late final pulumi.Output<List<String>> privateIpAddresses;
-
   /// The ID of a Public IP Address which is associated with this Load Balancer.
   late final pulumi.Output<String> publicIpAddressId;
-
   /// The name of the Resource Group in which to create the Load Balancer. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The SKU of the Azure Load Balancer. Accepted values are `Basic`, `Standard` and `Gateway`. Defaults to `Standard`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `Microsoft.Network/AllowGatewayLoadBalancer` feature is required to be registered in order to use the `Gateway` SKU. The feature can only be registered by the Azure service team, please submit an [Azure support ticket](https://azure.microsoft.com/en-us/support/create-ticket/) for that.
   late final pulumi.Output<String?> sku;
-
   /// `sku_tier` - (Optional) The SKU tier of this Load Balancer. Possible values are `Global` and `Regional`. Defaults to `Regional`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> skuTier;
-
   /// The ID of the Subnet which is associated with the IP Configuration.
   late final pulumi.Output<String> subnetId;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -281,15 +269,13 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:lb/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:lb/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     edgeZone = registerOutput<String?>('edgeZone');
-    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'frontendIpConfigurations',
-    );
+    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>?>('frontendIpConfigurations');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateIpAddress = registerOutput<String>('privateIpAddress');
@@ -320,15 +306,13 @@ class LoadBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:lb/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:lb/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     edgeZone = registerOutput<String?>('edgeZone');
-    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'frontendIpConfigurations',
-    );
+    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>?>('frontendIpConfigurations');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateIpAddress = registerOutput<String>('privateIpAddress');

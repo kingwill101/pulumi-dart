@@ -248,7 +248,6 @@ import 'claims_mapping_policy_state.dart';
 class ClaimsMappingPolicy extends pulumi.CustomResource {
   /// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
   late final pulumi.Output<List<String>> definitions;
-
   /// The display name for this Claims Mapping Policy.
   late final pulumi.Output<String> displayName;
 
@@ -261,11 +260,11 @@ class ClaimsMappingPolicy extends pulumi.CustomResource {
     ClaimsMappingPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/claimsMappingPolicy:ClaimsMappingPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/claimsMappingPolicy:ClaimsMappingPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     definitions = registerOutput<List<String>>('definitions');
     displayName = registerOutput<String>('displayName');
   }
@@ -288,11 +287,11 @@ class ClaimsMappingPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/claimsMappingPolicy:ClaimsMappingPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/claimsMappingPolicy:ClaimsMappingPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     definitions = registerOutput<List<String>>('definitions');
     displayName = registerOutput<String>('displayName');
   }

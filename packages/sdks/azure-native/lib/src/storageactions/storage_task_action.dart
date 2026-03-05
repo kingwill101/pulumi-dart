@@ -8,41 +8,29 @@ import 'if_condition.dart';
 class StorageTaskAction {
   /// The else block of storage task operation
   final pulumi.Input<ElseCondition>? else_;
-
   /// The if block of storage task operation
   final pulumi.Input<IfCondition> if_;
 
   /// Creates a new [StorageTaskAction].
   /// [else_] The else block of storage task operation
   /// [if_] The if block of storage task operation
-  StorageTaskAction({this.else_, required this.if_});
+  StorageTaskAction({
+    this.else_,
+    required this.if_,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'else':
-          ?pulumi.Input.mapOptionalInputValue<
-            ElseCondition,
-            Map<String, dynamic>
-          >(else_, (value) => value.toMap()),
-      'if': pulumi.Input.mapInputValue<IfCondition, Map<String, dynamic>>(
-        if_,
-        (value) => value.toMap(),
-      ),
+      'else': ?pulumi.Input.mapOptionalInputValue<ElseCondition, Map<String, dynamic>>(else_, (value) => value.toMap()),
+      'if': pulumi.Input.mapInputValue<IfCondition, Map<String, dynamic>>(if_, (value) => value.toMap()),
     };
   }
 
   factory StorageTaskAction.fromMap(Map<String, dynamic> map) {
     return StorageTaskAction(
-      else_: (() {
-        final guardedValue = map['else'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ElseCondition.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      if_: pulumi.Input.fromValue(
-        IfCondition.fromMap((map['if']! as Map).cast<String, dynamic>()),
-      ),
+      else_: (() { final guardedValue = map['else']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ElseCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      if_: pulumi.Input.fromValue(IfCondition.fromMap((map['if']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

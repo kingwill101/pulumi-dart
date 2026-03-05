@@ -568,13 +568,10 @@ import 'load_balancer_intranet_state.dart';
 class LoadBalancerIntranet extends pulumi.CustomResource {
   /// The target application ID that needs to be bound to the SLB.
   late final pulumi.Output<String> appId;
-
   /// Use designated private network SLBs that have been purchased to support non-shared instances.
   late final pulumi.Output<String> intranetIp;
-
   /// The intranet SLB ID.
   late final pulumi.Output<String?> intranetSlbId;
-
   /// The bound private network SLB. See `intranet` below.
   late final pulumi.Output<List<Map<String, dynamic>>> intranets;
 
@@ -587,11 +584,11 @@ class LoadBalancerIntranet extends pulumi.CustomResource {
     LoadBalancerIntranetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     intranetIp = registerOutput<String>('intranetIp');
     intranetSlbId = registerOutput<String?>('intranetSlbId');
@@ -616,11 +613,11 @@ class LoadBalancerIntranet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     intranetIp = registerOutput<String>('intranetIp');
     intranetSlbId = registerOutput<String?>('intranetSlbId');

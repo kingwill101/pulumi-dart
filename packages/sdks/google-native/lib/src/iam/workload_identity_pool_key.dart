@@ -7,23 +7,18 @@ import 'workload_identity_pool_key_args.dart';
 class WorkloadIdentityPoolKey extends pulumi.CustomResource {
   /// Time after which the key will be permanently purged and cannot be recovered. Note that the key may get purged before this timestamp if the total limit of keys per provider is crossed.
   late final pulumi.Output<String> expireTime;
-
   /// Immutable. Public half of the asymmetric key.
   late final pulumi.Output<KeyDataResponse> keyData;
   late final pulumi.Output<String> location;
-
   /// The resource name of the key.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   late final pulumi.Output<String> providerId;
-
   /// The state of the key.
   late final pulumi.Output<String> state;
-
   /// The purpose of the key.
   late final pulumi.Output<String> use;
   late final pulumi.Output<String> workloadIdentityPoolId;
-
   /// Required. The ID to use for the key, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-].
   late final pulumi.Output<String> workloadIdentityPoolProviderKeyId;
 
@@ -36,22 +31,13 @@ class WorkloadIdentityPoolKey extends pulumi.CustomResource {
     WorkloadIdentityPoolKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:iam/v1:WorkloadIdentityPoolKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:iam/v1:WorkloadIdentityPoolKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     expireTime = registerOutput<String>('expireTime');
-    keyData = registerOutput<KeyDataResponse>(
-      'keyData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KeyDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    keyData = registerOutput<KeyDataResponse>('keyData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -59,8 +45,6 @@ class WorkloadIdentityPoolKey extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     use = registerOutput<String>('use');
     workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
-    workloadIdentityPoolProviderKeyId = registerOutput<String>(
-      'workloadIdentityPoolProviderKeyId',
-    );
+    workloadIdentityPoolProviderKeyId = registerOutput<String>('workloadIdentityPoolProviderKeyId');
   }
 }

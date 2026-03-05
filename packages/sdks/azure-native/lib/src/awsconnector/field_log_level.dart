@@ -16,3 +16,4 @@ enum FieldLogLevel {
     throw ArgumentError('Unknown FieldLogLevel value: $value');
   }
 }
+

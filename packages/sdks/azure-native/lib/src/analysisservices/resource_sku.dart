@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceSku {
   /// The number of instances in the read only query pool.
   final pulumi.Input<int>? capacity;
-
   /// Name of the SKU level.
   final pulumi.Input<String> name;
-
   /// The name of the Azure pricing tier to which the SKU applies.
   final pulumi.Input<String>? tier;
 
@@ -17,7 +15,11 @@ class ResourceSku {
   /// [capacity] The number of instances in the read only query pool.
   /// [name] Name of the SKU level.
   /// [tier] The name of the Azure pricing tier to which the SKU applies.
-  ResourceSku({this.capacity, required this.name, this.tier});
+  ResourceSku({
+    this.capacity,
+    required this.name,
+    this.tier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,17 +31,10 @@ class ResourceSku {
 
   factory ResourceSku.fromMap(Map<String, dynamic> map) {
     return ResourceSku(
-      capacity: (() {
-        final guardedValue = map['capacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      tier: (() {
-        final guardedValue = map['tier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

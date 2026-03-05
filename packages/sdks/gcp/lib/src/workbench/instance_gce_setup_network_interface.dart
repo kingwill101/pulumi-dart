@@ -9,17 +9,13 @@ class InstanceGceSetupNetworkInterface {
   /// instance will have an external internet access through an ephemeral
   /// external IP address.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceGceSetupNetworkInterfaceAccessConfig>>?
-  accessConfigs;
-
+  final pulumi.Input<List<InstanceGceSetupNetworkInterfaceAccessConfig>>? accessConfigs;
   /// Optional. The name of the VPC that this VM instance is in.
   final pulumi.Input<String>? network;
-
   /// Optional. The type of vNIC to be used on this interface. This
   /// may be gVNIC or VirtioNet.
   /// Possible values are: `VIRTIO_NET`, `GVNIC`.
   final pulumi.Input<String>? nicType;
-
   /// Optional. The name of the subnet that this VM instance is in.
   final pulumi.Input<String>? subnet;
 
@@ -37,18 +33,7 @@ class InstanceGceSetupNetworkInterface {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InstanceGceSetupNetworkInterfaceAccessConfig>,
-            List<Map<String, dynamic>>
-          >(
-            accessConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InstanceGceSetupNetworkInterfaceAccessConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'accessConfigs': ?pulumi.Input.mapOptionalInputValue<List<InstanceGceSetupNetworkInterfaceAccessConfig>, List<Map<String, dynamic>>>(accessConfigs, (value) => pulumi.Input.encodeList<InstanceGceSetupNetworkInterfaceAccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'network': ?network,
       'nicType': ?nicType,
       'subnet': ?subnet,
@@ -57,33 +42,11 @@ class InstanceGceSetupNetworkInterface {
 
   factory InstanceGceSetupNetworkInterface.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupNetworkInterface(
-      accessConfigs: (() {
-        final guardedValue = map['accessConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<InstanceGceSetupNetworkInterfaceAccessConfig>(
-            guardedValue,
-            (value) => InstanceGceSetupNetworkInterfaceAccessConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nicType: (() {
-        final guardedValue = map['nicType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnet: (() {
-        final guardedValue = map['subnet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessConfigs: (() { final guardedValue = map['accessConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGceSetupNetworkInterfaceAccessConfig>(guardedValue, (value) => InstanceGceSetupNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nicType: (() { final guardedValue = map['nicType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

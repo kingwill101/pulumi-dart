@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IpCommunityRuleResponse {
   /// Action to be taken on the configuration. Example: Permit | Deny.
   final pulumi.Input<String> action;
-
   /// List the community members of IP Community.
   final pulumi.Input<List<String>> communityMembers;
-
   /// Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
   final pulumi.Input<double> sequenceNumber;
-
   /// Supported well known Community List.
   final pulumi.Input<List<String>>? wellKnownCommunities;
 
@@ -40,15 +37,10 @@ class IpCommunityRuleResponse {
   factory IpCommunityRuleResponse.fromMap(Map<String, dynamic> map) {
     return IpCommunityRuleResponse(
       action: pulumi.Input.fromValue(map['action'] as String),
-      communityMembers: pulumi.Input.fromValue(
-        (map['communityMembers'] as List).cast<String>(),
-      ),
+      communityMembers: pulumi.Input.fromValue((map['communityMembers'] as List).cast<String>()),
       sequenceNumber: pulumi.Input.fromValue(map['sequenceNumber'] as double),
-      wellKnownCommunities: (() {
-        final guardedValue = map['wellKnownCommunities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      wellKnownCommunities: (() { final guardedValue = map['wellKnownCommunities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

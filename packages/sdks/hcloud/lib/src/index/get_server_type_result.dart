@@ -7,44 +7,31 @@ import 'get_server_type_location.dart';
 class GetServerTypeResult {
   /// Architecture of the cpu for a Server of this type.
   final String architecture;
-
   /// Category of the Server Type.
   final String category;
-
   /// Number of cpu cores for a Server of this type.
   final int cores;
-
   /// Type of cpu for a Server of this type.
   final String cpuType;
-
   /// Date of the Server Type deprecation announcement.
   final String deprecationAnnounced;
-
   /// Description of the Server Type.
   final String description;
-
   /// Disk size in GB for a Server of this type.
   final int disk;
-
   /// ID of the Server Type.
   final int? id;
   final int includedTraffic;
-
   /// Whether the Server Type is deprecated.
   final bool isDeprecated;
-
   /// List of supported Locations for this Server Type.
   final List<GetServerTypeLocation> locations;
-
   /// Memory in GB for a Server of this type.
   final int memory;
-
   /// Name of the Server Type.
   final String? name;
-
   /// Type of boot drive for a Server of this type.
   final String storageType;
-
   /// Date of the Server Type removal. After this date, the Server Type cannot be used anymore.
   final String unavailableAfter;
 
@@ -94,11 +81,7 @@ class GetServerTypeResult {
       'id': ?id,
       'includedTraffic': includedTraffic,
       'isDeprecated': isDeprecated,
-      'locations':
-          pulumi.Input.encodeList<GetServerTypeLocation, Map<String, dynamic>>(
-            locations,
-            (value) => value.toMap(),
-          ),
+      'locations': pulumi.Input.encodeList<GetServerTypeLocation, Map<String, dynamic>>(locations, (value) => value.toMap()),
       'memory': memory,
       'name': ?name,
       'storageType': storageType,
@@ -115,27 +98,15 @@ class GetServerTypeResult {
       deprecationAnnounced: map['deprecationAnnounced'] as String,
       description: map['description'] as String,
       disk: map['disk'] as int,
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as int; })(),
       includedTraffic: map['includedTraffic'] as int,
       isDeprecated: map['isDeprecated'] as bool,
-      locations: pulumi.Input.decodeList<GetServerTypeLocation>(
-        map['locations']!,
-        (value) => GetServerTypeLocation.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      locations: pulumi.Input.decodeList<GetServerTypeLocation>(map['locations']!, (value) => GetServerTypeLocation.fromMap((value as Map).cast<String, dynamic>())),
       memory: map['memory'] as int,
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageType: map['storageType'] as String,
       unavailableAfter: map['unavailableAfter'] as String,
     );
   }
 }
+

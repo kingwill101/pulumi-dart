@@ -1047,13 +1047,10 @@ import 'listener_additional_certificate_attachment_state.dart';
 class ListenerAdditionalCertificateAttachment extends pulumi.CustomResource {
   /// The Certificate ID.
   late final pulumi.Output<String> certificateId;
-
   /// The type of the certificate.
   late final pulumi.Output<String> certificateType;
-
   /// The ID of the ALB listener.
   late final pulumi.Output<String> listenerId;
-
   /// The status of the certificate.
   late final pulumi.Output<String> status;
 
@@ -1066,11 +1063,11 @@ class ListenerAdditionalCertificateAttachment extends pulumi.CustomResource {
     ListenerAdditionalCertificateAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateId = registerOutput<String>('certificateId');
     certificateType = registerOutput<String>('certificateType');
     listenerId = registerOutput<String>('listenerId');
@@ -1095,11 +1092,11 @@ class ListenerAdditionalCertificateAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateId = registerOutput<String>('certificateId');
     certificateType = registerOutput<String>('certificateType');
     listenerId = registerOutput<String>('listenerId');

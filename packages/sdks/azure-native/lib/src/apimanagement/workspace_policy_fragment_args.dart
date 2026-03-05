@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspacePolicyFragmentArgs {
   /// Policy fragment description.
   final pulumi.Input<String>? description;
-
   /// Format of the policy fragment content.
   final pulumi.Input<String>? format;
-
   /// A resource identifier.
   final pulumi.Input<String>? id;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
-
   /// Contents of the policy fragment.
   final pulumi.Input<String> value;
-
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 
@@ -60,27 +54,14 @@ class WorkspacePolicyFragmentArgs {
 
   factory WorkspacePolicyFragmentArgs.fromMap(Map<String, dynamic> map) {
     return WorkspacePolicyFragmentArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      format: (() {
-        final guardedValue = map['format'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
+

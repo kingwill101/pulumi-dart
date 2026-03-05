@@ -119,52 +119,36 @@ import 'job_template_state.dart';
 class JobTemplate extends pulumi.CustomResource {
   /// Queue Jobs, Is of the Form: 1-10:2.
   late final pulumi.Output<String?> arrayRequest;
-
   /// Job Maximum Run Time.
   late final pulumi.Output<String?> clockTime;
-
   /// Job Commands.
   late final pulumi.Output<String> commandLine;
-
   /// A Single Compute Node Using the GPU Number.Possible Values: 1~20000.
   late final pulumi.Output<int?> gpu;
-
   /// A Job Template Name.
   late final pulumi.Output<String> jobTemplateName;
-
   /// A Single Compute Node Maximum Memory.
   late final pulumi.Output<String?> mem;
-
   /// Submit a Task Is Required for Computing the Number of Data Nodes to Be. Possible Values: 1~5000 .
   late final pulumi.Output<int?> node;
-
   /// Job Commands the Directory.
   late final pulumi.Output<String?> packagePath;
-
   /// The Job Priority.
   late final pulumi.Output<int?> priority;
-
   /// The Job Queue.
   late final pulumi.Output<String?> queue;
-
   /// If the Job Is Support for the Re-Run.
   late final pulumi.Output<bool> reRunable;
-
   /// The name of the user who performed the job.
   late final pulumi.Output<String?> runasUser;
-
   /// Error Output Path.
   late final pulumi.Output<String?> stderrRedirectPath;
-
   /// Standard Output Path and.
   late final pulumi.Output<String?> stdoutRedirectPath;
-
   /// A Single Compute Node Required Number of Tasks. Possible Values: 1~20000 .
   late final pulumi.Output<int?> task;
-
   /// A Single Task and the Number of Required Threads.
   late final pulumi.Output<int?> thread;
-
   /// The Job of the Environment Variable.
   late final pulumi.Output<String?> variables;
 
@@ -177,11 +161,11 @@ class JobTemplate extends pulumi.CustomResource {
     JobTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ehpc/jobTemplate:JobTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ehpc/jobTemplate:JobTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arrayRequest = registerOutput<String?>('arrayRequest');
     clockTime = registerOutput<String?>('clockTime');
     commandLine = registerOutput<String>('commandLine');
@@ -219,11 +203,11 @@ class JobTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ehpc/jobTemplate:JobTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ehpc/jobTemplate:JobTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arrayRequest = registerOutput<String?>('arrayRequest');
     clockTime = registerOutput<String?>('clockTime');
     commandLine = registerOutput<String>('commandLine');

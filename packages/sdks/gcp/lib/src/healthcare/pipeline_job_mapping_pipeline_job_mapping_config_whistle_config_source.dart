@@ -6,7 +6,6 @@ class PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource {
   /// Directory path where all the Whistle files are located.
   /// Example: gs://{bucket-id}/{path/to/import-root/dir}
   final pulumi.Input<String> importUriPrefix;
-
   /// Main configuration file which has the entrypoint or the root function.
   /// Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
   final pulumi.Input<String> uri;
@@ -20,15 +19,17 @@ class PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'importUriPrefix': importUriPrefix, 'uri': uri};
+    return <String, dynamic>{
+      'importUriPrefix': importUriPrefix,
+      'uri': uri,
+    };
   }
 
-  factory PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource.fromMap(Map<String, dynamic> map) {
     return PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource(
       importUriPrefix: pulumi.Input.fromValue(map['importUriPrefix'] as String),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

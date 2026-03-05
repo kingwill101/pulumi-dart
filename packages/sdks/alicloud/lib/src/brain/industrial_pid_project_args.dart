@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IndustrialPidProjectArgs {
   /// The ID of Pid Organization.
   final pulumi.Input<String> pidOrganizationId;
-
   /// The description of Pid Project.
   final pulumi.Input<String>? pidProjectDesc;
-
   /// The name of Pid Project.
   final pulumi.Input<String> pidProjectName;
 
@@ -36,15 +34,10 @@ class IndustrialPidProjectArgs {
 
   factory IndustrialPidProjectArgs.fromMap(Map<String, dynamic> map) {
     return IndustrialPidProjectArgs(
-      pidOrganizationId: pulumi.Input.fromValue(
-        map['pidOrganizationId'] as String,
-      ),
-      pidProjectDesc: (() {
-        final guardedValue = map['pidProjectDesc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pidOrganizationId: pulumi.Input.fromValue(map['pidOrganizationId'] as String),
+      pidProjectDesc: (() { final guardedValue = map['pidProjectDesc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pidProjectName: pulumi.Input.fromValue(map['pidProjectName'] as String),
     );
   }
 }
+

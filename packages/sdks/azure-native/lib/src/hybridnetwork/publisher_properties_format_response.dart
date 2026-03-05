@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublisherPropertiesFormatResponse {
   /// The provisioning state of the publisher resource.
   final pulumi.Input<String> provisioningState;
-
   /// The publisher scope.
   final pulumi.Input<String>? scope;
 
@@ -27,14 +26,9 @@ class PublisherPropertiesFormatResponse {
 
   factory PublisherPropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
     return PublisherPropertiesFormatResponse(
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

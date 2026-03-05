@@ -9,17 +9,20 @@ class NetworkManagerRoutingGroupItemResponse {
 
   /// Creates a new [NetworkManagerRoutingGroupItemResponse].
   /// [networkGroupId] Network manager group Id.
-  NetworkManagerRoutingGroupItemResponse({required this.networkGroupId});
+  NetworkManagerRoutingGroupItemResponse({
+    required this.networkGroupId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'networkGroupId': networkGroupId};
+    return <String, dynamic>{
+      'networkGroupId': networkGroupId,
+    };
   }
 
-  factory NetworkManagerRoutingGroupItemResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkManagerRoutingGroupItemResponse.fromMap(Map<String, dynamic> map) {
     return NetworkManagerRoutingGroupItemResponse(
       networkGroupId: pulumi.Input.fromValue(map['networkGroupId'] as String),
     );
   }
 }
+

@@ -410,45 +410,33 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
   /// Format:
   /// https://iamscim.googleapis.com/{version}/{tenant_id}/
   late final pulumi.Output<String> baseUri;
-
   /// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
   late final pulumi.Output<Map<String, String>?> claimMapping;
-
   /// A user-specified description of the provider. Cannot exceed 256 characters.
   late final pulumi.Output<String?> description;
-
   /// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
   late final pulumi.Output<String?> displayName;
-
   /// Deletes the SCIM tenant immediately. This operation cannot be undone.
   late final pulumi.Output<bool?> hardDelete;
-
   /// The location for the resource.
   late final pulumi.Output<String> location;
-
   /// Identifier. The resource name of the scim tenant.
   /// Format: `locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}
   late final pulumi.Output<String> name;
-
   /// The ID of the provider.
   late final pulumi.Output<String> providerId;
-
   /// The timestamp that represents the time when the SCIM tenant is purged.
   late final pulumi.Output<String> purgeTime;
-
   /// The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
   late final pulumi.Output<String> scimTenantId;
-
   /// Service Agent created by SCIM Tenant API. SCIM tokens created under
   /// this tenant will be attached to this service agent.
   late final pulumi.Output<String> serviceAgent;
-
   /// The current state of the scim tenant.
   /// * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
   /// * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
   /// deleted after approximately 30 days.
   late final pulumi.Output<String> state;
-
   /// The ID of the workforce pool.
   late final pulumi.Output<String> workforcePoolId;
 
@@ -461,11 +449,11 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
     WorkforcePoolProviderScimTenantArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     baseUri = registerOutput<String>('baseUri');
     claimMapping = registerOutput<Map<String, String>?>('claimMapping');
     description = registerOutput<String?>('description');
@@ -499,11 +487,11 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     baseUri = registerOutput<String>('baseUri');
     claimMapping = registerOutput<Map<String, String>?>('claimMapping');
     description = registerOutput<String?>('description');

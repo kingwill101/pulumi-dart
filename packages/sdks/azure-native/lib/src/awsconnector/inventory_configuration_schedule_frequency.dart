@@ -12,8 +12,7 @@ enum InventoryConfigurationScheduleFrequency {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InventoryConfigurationScheduleFrequency value: $value',
-    );
+    throw ArgumentError('Unknown InventoryConfigurationScheduleFrequency value: $value');
   }
 }
+

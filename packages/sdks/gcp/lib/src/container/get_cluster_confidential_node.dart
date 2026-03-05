@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterConfidentialNode {
   /// Defines the type of technology used by the confidential node.
   final pulumi.Input<String> confidentialInstanceType;
-
   /// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
   final pulumi.Input<bool> enabled;
 
@@ -26,10 +25,9 @@ class GetClusterConfidentialNode {
 
   factory GetClusterConfidentialNode.fromMap(Map<String, dynamic> map) {
     return GetClusterConfidentialNode(
-      confidentialInstanceType: pulumi.Input.fromValue(
-        map['confidentialInstanceType'] as String,
-      ),
+      confidentialInstanceType: pulumi.Input.fromValue(map['confidentialInstanceType'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

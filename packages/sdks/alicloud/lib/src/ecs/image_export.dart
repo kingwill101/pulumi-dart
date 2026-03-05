@@ -489,10 +489,8 @@ import 'image_export_state.dart';
 class ImageExport extends pulumi.CustomResource {
   /// The source image ID.
   late final pulumi.Output<String> imageId;
-
   /// Save the exported OSS bucket.
   late final pulumi.Output<String> ossBucket;
-
   /// The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
   late final pulumi.Output<String?> ossPrefix;
 
@@ -505,11 +503,11 @@ class ImageExport extends pulumi.CustomResource {
     ImageExportArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/imageExport:ImageExport',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/imageExport:ImageExport',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     imageId = registerOutput<String>('imageId');
     ossBucket = registerOutput<String>('ossBucket');
     ossPrefix = registerOutput<String?>('ossPrefix');
@@ -533,11 +531,11 @@ class ImageExport extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/imageExport:ImageExport',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/imageExport:ImageExport',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     imageId = registerOutput<String>('imageId');
     ossBucket = registerOutput<String>('ossBucket');
     ossPrefix = registerOutput<String?>('ossPrefix');

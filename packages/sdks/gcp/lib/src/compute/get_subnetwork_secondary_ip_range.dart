@@ -6,7 +6,6 @@ class GetSubnetworkSecondaryIpRange {
   /// The range of IP addresses belonging to this subnetwork
   /// secondary range.
   final pulumi.Input<String> ipCidrRange;
-
   /// The name associated with this subnetwork secondary range, used
   /// when adding an alias IP range to a VM instance.
   final pulumi.Input<String> rangeName;
@@ -33,3 +32,4 @@ class GetSubnetworkSecondaryIpRange {
     );
   }
 }
+

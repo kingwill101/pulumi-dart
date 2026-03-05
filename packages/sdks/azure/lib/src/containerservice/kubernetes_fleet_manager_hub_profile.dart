@@ -28,16 +28,9 @@ class KubernetesFleetManagerHubProfile {
   factory KubernetesFleetManagerHubProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesFleetManagerHubProfile(
       dnsPrefix: pulumi.Input.fromValue(map['dnsPrefix'] as String),
-      fqdn: (() {
-        final guardedValue = map['fqdn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kubernetesVersion: (() {
-        final guardedValue = map['kubernetesVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kubernetesVersion: (() { final guardedValue = map['kubernetesVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

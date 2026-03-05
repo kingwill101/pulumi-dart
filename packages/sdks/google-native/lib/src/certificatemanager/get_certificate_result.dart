@@ -7,34 +7,24 @@ import 'self_managed_certificate_response.dart';
 class GetCertificateResult {
   /// The creation timestamp of a Certificate.
   final String createTime;
-
   /// One or more paragraphs of text description of a certificate.
   final String description;
-
   /// The expiry timestamp of a Certificate.
   final String expireTime;
-
   /// Set of labels associated with a Certificate.
   final Map<String, String> labels;
-
   /// If set, contains configuration and state of a managed certificate.
   final ManagedCertificateResponse managed;
-
   /// A user-defined name of the certificate. Certificate names must be unique globally and match pattern `projects/*/locations/*/certificates/*`.
   final String name;
-
   /// The PEM-encoded certificate chain.
   final String pemCertificate;
-
   /// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6). Managed certificates that haven't been provisioned yet have this field populated with a value of the managed.domains field.
   final List<String> sanDnsnames;
-
   /// Immutable. The scope of the certificate.
   final String scope;
-
   /// If set, defines data of a self-managed certificate.
   final SelfManagedCertificateResponse selfManaged;
-
   /// The last update timestamp of a Certificate.
   final String updateTime;
 
@@ -86,17 +76,14 @@ class GetCertificateResult {
       description: map['description'] as String,
       expireTime: map['expireTime'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      managed: ManagedCertificateResponse.fromMap(
-        (map['managed']! as Map).cast<String, dynamic>(),
-      ),
+      managed: ManagedCertificateResponse.fromMap((map['managed']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       pemCertificate: map['pemCertificate'] as String,
       sanDnsnames: (map['sanDnsnames'] as List).cast<String>(),
       scope: map['scope'] as String,
-      selfManaged: SelfManagedCertificateResponse.fromMap(
-        (map['selfManaged']! as Map).cast<String, dynamic>(),
-      ),
+      selfManaged: SelfManagedCertificateResponse.fromMap((map['selfManaged']! as Map).cast<String, dynamic>()),
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

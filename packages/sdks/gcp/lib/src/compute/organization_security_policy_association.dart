@@ -209,13 +209,10 @@ import 'organization_security_policy_association_state.dart';
 class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource {
   /// The resource that the security policy is attached to.
   late final pulumi.Output<String> attachmentId;
-
   /// The display name of the security policy of the association.
   late final pulumi.Output<String> displayName;
-
   /// The name for an association.
   late final pulumi.Output<String> name;
-
   /// The security policy ID of the association.
   late final pulumi.Output<String> policyId;
 
@@ -228,11 +225,11 @@ class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource {
     OrganizationSecurityPolicyAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachmentId = registerOutput<String>('attachmentId');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
@@ -257,11 +254,11 @@ class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachmentId = registerOutput<String>('attachmentId');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

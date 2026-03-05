@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMResponse {
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// Resource location.
   final pulumi.Input<String>? location;
-
   /// Resource name.
   final pulumi.Input<String> name;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Resource type.
   final pulumi.Input<String> type;
 
@@ -45,25 +41,12 @@ class VMResponse {
 
   factory VMResponse.fromMap(Map<String, dynamic> map) {
     return VMResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

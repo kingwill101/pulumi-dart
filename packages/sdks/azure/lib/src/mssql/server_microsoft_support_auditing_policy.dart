@@ -963,21 +963,16 @@ import 'server_microsoft_support_auditing_policy_state.dart';
 class ServerMicrosoftSupportAuditingPolicy extends pulumi.CustomResource {
   /// The blob storage endpoint (e.g. https://example.blob.core.windows.net). This blob storage will hold all Microsoft support auditing logs.
   late final pulumi.Output<String?> blobStorageEndpoint;
-
   /// Whether to enable the extended auditing policy. Possible values are `true` and `false`. Defaults to `true`.
   ///
   /// &gt; **Note:** If `enabled` is `true`, `blob_storage_endpoint` or `log_monitoring_enabled` are required.
   late final pulumi.Output<bool?> enabled;
-
   /// Enable audit events to Azure Monitor? To enable server audit events to Azure Monitor, please enable its main database audit events to Azure Monitor. Defaults to `true`.
   late final pulumi.Output<bool?> logMonitoringEnabled;
-
   /// The ID of the SQL Server to set the extended auditing policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
-
   /// The access key to use for the auditing storage account.
   late final pulumi.Output<String?> storageAccountAccessKey;
-
   /// The ID of the Subscription containing the Storage Account.
   late final pulumi.Output<String?> storageAccountSubscriptionId;
 
@@ -990,21 +985,17 @@ class ServerMicrosoftSupportAuditingPolicy extends pulumi.CustomResource {
     ServerMicrosoftSupportAuditingPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/serverMicrosoftSupportAuditingPolicy:ServerMicrosoftSupportAuditingPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/serverMicrosoftSupportAuditingPolicy:ServerMicrosoftSupportAuditingPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blobStorageEndpoint = registerOutput<String?>('blobStorageEndpoint');
     enabled = registerOutput<bool?>('enabled');
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     serverId = registerOutput<String>('serverId');
-    storageAccountAccessKey = registerOutput<String?>(
-      'storageAccountAccessKey',
-    );
-    storageAccountSubscriptionId = registerOutput<String?>(
-      'storageAccountSubscriptionId',
-    );
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId');
   }
 
   /// Gets an existing [ServerMicrosoftSupportAuditingPolicy] resource's state with the given [name] and [id].
@@ -1025,20 +1016,16 @@ class ServerMicrosoftSupportAuditingPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/serverMicrosoftSupportAuditingPolicy:ServerMicrosoftSupportAuditingPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/serverMicrosoftSupportAuditingPolicy:ServerMicrosoftSupportAuditingPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blobStorageEndpoint = registerOutput<String?>('blobStorageEndpoint');
     enabled = registerOutput<bool?>('enabled');
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     serverId = registerOutput<String>('serverId');
-    storageAccountAccessKey = registerOutput<String?>(
-      'storageAccountAccessKey',
-    );
-    storageAccountSubscriptionId = registerOutput<String?>(
-      'storageAccountSubscriptionId',
-    );
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId');
   }
 }

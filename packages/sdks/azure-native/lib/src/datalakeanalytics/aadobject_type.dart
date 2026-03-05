@@ -16,3 +16,4 @@ enum AADObjectType {
     throw ArgumentError('Unknown AADObjectType value: $value');
   }
 }
+

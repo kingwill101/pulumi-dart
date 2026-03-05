@@ -189,13 +189,10 @@ import 'waf_policy_state.dart';
 class WafPolicy extends pulumi.CustomResource {
   /// The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
   late final pulumi.Output<String> defenseScene;
-
   /// The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
   late final pulumi.Output<String> policyName;
-
   /// The type of the protection policy. Valid values: `default`, `custom`.
   late final pulumi.Output<String> policyType;
-
   /// The status of the resource. Valid values: `on`, `off`.
   late final pulumi.Output<String> status;
 
@@ -208,11 +205,11 @@ class WafPolicy extends pulumi.CustomResource {
     WafPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dcdn/wafPolicy:WafPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dcdn/wafPolicy:WafPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defenseScene = registerOutput<String>('defenseScene');
     policyName = registerOutput<String>('policyName');
     policyType = registerOutput<String>('policyType');
@@ -237,11 +234,11 @@ class WafPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dcdn/wafPolicy:WafPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dcdn/wafPolicy:WafPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defenseScene = registerOutput<String>('defenseScene');
     policyName = registerOutput<String>('policyName');
     policyType = registerOutput<String>('policyType');

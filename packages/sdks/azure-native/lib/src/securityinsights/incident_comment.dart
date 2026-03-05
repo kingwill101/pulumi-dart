@@ -148,28 +148,20 @@ import 'system_data_response.dart';
 class IncidentComment extends pulumi.CustomResource {
   /// Describes the client that created the comment
   late final pulumi.Output<ClientInfoResponse> author;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The time the comment was created
   late final pulumi.Output<String> createdTimeUtc;
-
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// The time the comment was updated
   late final pulumi.Output<String> lastModifiedTimeUtc;
-
   /// The comment message
   late final pulumi.Output<String> message;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -182,37 +174,19 @@ class IncidentComment extends pulumi.CustomResource {
     IncidentCommentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:IncidentComment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    author = registerOutput<ClientInfoResponse>(
-      'author',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClientInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:securityinsights:IncidentComment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    author = registerOutput<ClientInfoResponse>('author', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTimeUtc = registerOutput<String>('createdTimeUtc');
     etag = registerOutput<String?>('etag');
     lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
     message = registerOutput<String>('message');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

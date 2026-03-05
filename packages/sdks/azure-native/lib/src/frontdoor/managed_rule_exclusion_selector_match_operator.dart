@@ -15,8 +15,7 @@ enum ManagedRuleExclusionSelectorMatchOperator {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ManagedRuleExclusionSelectorMatchOperator value: $value',
-    );
+    throw ArgumentError('Unknown ManagedRuleExclusionSelectorMatchOperator value: $value');
   }
 }
+

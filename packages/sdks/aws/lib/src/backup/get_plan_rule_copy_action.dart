@@ -18,34 +18,15 @@ class GetPlanRuleCopyAction {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destinationVaultArn': destinationVaultArn,
-      'lifecycles':
-          pulumi.Input.mapInputValue<
-            List<GetPlanRuleCopyActionLifecycle>,
-            List<Map<String, dynamic>>
-          >(
-            lifecycles,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetPlanRuleCopyActionLifecycle,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'lifecycles': pulumi.Input.mapInputValue<List<GetPlanRuleCopyActionLifecycle>, List<Map<String, dynamic>>>(lifecycles, (value) => pulumi.Input.encodeList<GetPlanRuleCopyActionLifecycle, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetPlanRuleCopyAction.fromMap(Map<String, dynamic> map) {
     return GetPlanRuleCopyAction(
-      destinationVaultArn: pulumi.Input.fromValue(
-        map['destinationVaultArn'] as String,
-      ),
-      lifecycles: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetPlanRuleCopyActionLifecycle>(
-          map['lifecycles']!,
-          (value) => GetPlanRuleCopyActionLifecycle.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      destinationVaultArn: pulumi.Input.fromValue(map['destinationVaultArn'] as String),
+      lifecycles: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPlanRuleCopyActionLifecycle>(map['lifecycles']!, (value) => GetPlanRuleCopyActionLifecycle.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

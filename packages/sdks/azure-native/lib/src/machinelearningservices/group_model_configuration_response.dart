@@ -9,19 +9,20 @@ class GroupModelConfigurationResponse {
 
   /// Creates a new [GroupModelConfigurationResponse].
   /// [modelId] The URI path to the model.
-  GroupModelConfigurationResponse({this.modelId});
+  GroupModelConfigurationResponse({
+    this.modelId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'modelId': ?modelId};
+    return <String, dynamic>{
+      'modelId': ?modelId,
+    };
   }
 
   factory GroupModelConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return GroupModelConfigurationResponse(
-      modelId: (() {
-        final guardedValue = map['modelId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      modelId: (() { final guardedValue = map['modelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

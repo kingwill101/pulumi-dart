@@ -14,14 +14,15 @@ class GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'companyName': companyName};
+    return <String, dynamic>{
+      'companyName': companyName,
+    };
   }
 
-  factory GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse(
       companyName: pulumi.Input.fromValue(map['companyName'] as String),
     );
   }
 }
+

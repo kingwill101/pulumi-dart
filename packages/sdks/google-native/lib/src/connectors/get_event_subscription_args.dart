@@ -36,15 +36,10 @@ class GetEventSubscriptionArgs {
   factory GetEventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetEventSubscriptionArgs(
       connectionId: pulumi.Input.fromValue(map['connectionId'] as String),
-      eventSubscriptionId: pulumi.Input.fromValue(
-        map['eventSubscriptionId'] as String,
-      ),
+      eventSubscriptionId: pulumi.Input.fromValue(map['eventSubscriptionId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

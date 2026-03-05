@@ -10,29 +10,20 @@ class Monitoring {
 
   /// Creates a new [Monitoring].
   /// [state] &lt;p&gt;Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.&lt;/p&gt;
-  Monitoring({this.state});
+  Monitoring({
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'state':
-          ?pulumi.Input.mapOptionalInputValue<
-            MonitoringStateEnumValue,
-            Map<String, dynamic>
-          >(state, (value) => value.toMap()),
+      'state': ?pulumi.Input.mapOptionalInputValue<MonitoringStateEnumValue, Map<String, dynamic>>(state, (value) => value.toMap()),
     };
   }
 
   factory Monitoring.fromMap(Map<String, dynamic> map) {
     return Monitoring(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MonitoringStateEnumValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MonitoringStateEnumValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

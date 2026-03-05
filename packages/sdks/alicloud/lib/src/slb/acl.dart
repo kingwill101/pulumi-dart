@@ -143,16 +143,12 @@ import 'acl_state.dart';
 class Acl extends pulumi.CustomResource {
   /// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
   late final pulumi.Output<List<Map<String, dynamic>>> entryLists;
-
   /// The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
   late final pulumi.Output<String?> ipVersion;
-
   /// Name of the access control list.
   late final pulumi.Output<String> name;
-
   /// Resource group ID.
   late final pulumi.Output<String> resourceGroupId;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -160,13 +156,16 @@ class Acl extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Acl]. {@macro pulumi_slb_acl_acl_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Acl(String name, {AclArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:slb/acl:Acl',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Acl(
+    String name, {
+    AclArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:slb/acl:Acl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     entryLists = registerOutput<List<Map<String, dynamic>>>('entryLists');
     ipVersion = registerOutput<String?>('ipVersion');
     this.name = registerOutput<String>('name');
@@ -175,7 +174,11 @@ class Acl extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Acl] resource's state with the given [name] and [id].
-  static Acl get(String name, pulumi.Input<String> id, {AclState? state}) {
+  static Acl get(
+    String name,
+    pulumi.Input<String> id, {
+    AclState? state,
+  }) {
     return Acl._get(
       name,
       state: state?.toMap(),
@@ -188,11 +191,11 @@ class Acl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:slb/acl:Acl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:slb/acl:Acl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     entryLists = registerOutput<List<Map<String, dynamic>>>('entryLists');
     ipVersion = registerOutput<String?>('ipVersion');
     this.name = registerOutput<String>('name');

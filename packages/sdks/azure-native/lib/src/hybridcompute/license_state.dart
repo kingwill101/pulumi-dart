@@ -15,3 +15,4 @@ enum LicenseState {
     throw ArgumentError('Unknown LicenseState value: $value');
   }
 }
+

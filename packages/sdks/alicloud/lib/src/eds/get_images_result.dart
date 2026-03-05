@@ -6,7 +6,6 @@ import 'get_images_image.dart';
 /// Result data returned by getImages.
 class GetImagesResult {
   final String? desktopInstanceType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -48,10 +47,7 @@ class GetImagesResult {
       'id': id,
       'ids': ids,
       'imageType': ?imageType,
-      'images': pulumi.Input.encodeList<GetImagesImage, Map<String, dynamic>>(
-        images,
-        (value) => value.toMap(),
-      ),
+      'images': pulumi.Input.encodeList<GetImagesImage, Map<String, dynamic>>(images, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'names': names,
       'osType': ?osType,
@@ -62,44 +58,17 @@ class GetImagesResult {
 
   factory GetImagesResult.fromMap(Map<String, dynamic> map) {
     return GetImagesResult(
-      desktopInstanceType: (() {
-        final guardedValue = map['desktopInstanceType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      desktopInstanceType: (() { final guardedValue = map['desktopInstanceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      imageType: (() {
-        final guardedValue = map['imageType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      images: pulumi.Input.decodeList<GetImagesImage>(
-        map['images']!,
-        (value) =>
-            GetImagesImage.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      imageType: (() { final guardedValue = map['imageType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      images: pulumi.Input.decodeList<GetImagesImage>(map['images']!, (value) => GetImagesImage.fromMap((value as Map).cast<String, dynamic>())),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      osType: (() {
-        final guardedValue = map['osType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

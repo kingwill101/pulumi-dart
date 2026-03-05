@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OracleColumnDatastreamV1alpha1 {
   /// Column name.
   final pulumi.Input<String>? columnName;
-
   /// The Oracle data type.
   final pulumi.Input<String>? dataType;
-
   /// Column encoding.
   final pulumi.Input<String>? encoding;
-
   /// Column length.
   final pulumi.Input<int>? length;
-
   /// Whether or not the column can accept a null value.
   final pulumi.Input<bool>? nullable;
-
   /// The ordinal position of the column in the table.
   final pulumi.Input<int>? ordinalPosition;
-
   /// Column precision.
   final pulumi.Input<int>? precision;
-
   /// Whether or not the column represents a primary key.
   final pulumi.Input<bool>? primaryKey;
-
   /// Column scale.
   final pulumi.Input<int>? scale;
 
@@ -69,51 +61,16 @@ class OracleColumnDatastreamV1alpha1 {
 
   factory OracleColumnDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleColumnDatastreamV1alpha1(
-      columnName: (() {
-        final guardedValue = map['columnName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataType: (() {
-        final guardedValue = map['dataType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encoding: (() {
-        final guardedValue = map['encoding'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      length: (() {
-        final guardedValue = map['length'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      nullable: (() {
-        final guardedValue = map['nullable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ordinalPosition: (() {
-        final guardedValue = map['ordinalPosition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      precision: (() {
-        final guardedValue = map['precision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      primaryKey: (() {
-        final guardedValue = map['primaryKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      scale: (() {
-        final guardedValue = map['scale'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      columnName: (() { final guardedValue = map['columnName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataType: (() { final guardedValue = map['dataType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encoding: (() { final guardedValue = map['encoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      length: (() { final guardedValue = map['length']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nullable: (() { final guardedValue = map['nullable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ordinalPosition: (() { final guardedValue = map['ordinalPosition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      precision: (() { final guardedValue = map['precision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      scale: (() { final guardedValue = map['scale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

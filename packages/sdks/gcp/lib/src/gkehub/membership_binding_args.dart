@@ -12,20 +12,15 @@ class MembershipBindingArgs {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Location of the membership
   final pulumi.Input<String> location;
-
   /// The client-provided identifier of the membership binding.
   final pulumi.Input<String> membershipBindingId;
-
   /// Id of the membership
   final pulumi.Input<String> membershipId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A Workspace resource name in the format
   /// `projects/*/locations/*/scopes/*`.
   final pulumi.Input<String> scope;
@@ -59,24 +54,13 @@ class MembershipBindingArgs {
 
   factory MembershipBindingArgs.fromMap(Map<String, dynamic> map) {
     return MembershipBindingArgs(
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      membershipBindingId: pulumi.Input.fromValue(
-        map['membershipBindingId'] as String,
-      ),
+      membershipBindingId: pulumi.Input.fromValue(map['membershipBindingId'] as String),
       membershipId: pulumi.Input.fromValue(map['membershipId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

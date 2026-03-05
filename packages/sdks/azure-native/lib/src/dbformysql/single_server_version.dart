@@ -16,3 +16,4 @@ enum SingleServerVersion {
     throw ArgumentError('Unknown SingleServerVersion value: $value');
   }
 }
+

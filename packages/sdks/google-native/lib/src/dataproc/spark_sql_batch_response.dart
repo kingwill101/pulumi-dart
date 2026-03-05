@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SparkSqlBatchResponse {
   /// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
   final pulumi.Input<List<String>> jarFileUris;
-
   /// The HCFS URI of the script that contains Spark SQL queries to execute.
   final pulumi.Input<String> queryFileUri;
-
   /// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
   final pulumi.Input<Map<String, String>> queryVariables;
 
@@ -33,13 +31,10 @@ class SparkSqlBatchResponse {
 
   factory SparkSqlBatchResponse.fromMap(Map<String, dynamic> map) {
     return SparkSqlBatchResponse(
-      jarFileUris: pulumi.Input.fromValue(
-        (map['jarFileUris'] as List).cast<String>(),
-      ),
+      jarFileUris: pulumi.Input.fromValue((map['jarFileUris'] as List).cast<String>()),
       queryFileUri: pulumi.Input.fromValue(map['queryFileUri'] as String),
-      queryVariables: pulumi.Input.fromValue(
-        (map['queryVariables'] as Map).cast<String, String>(),
-      ),
+      queryVariables: pulumi.Input.fromValue((map['queryVariables'] as Map).cast<String, String>()),
     );
   }
 }
+

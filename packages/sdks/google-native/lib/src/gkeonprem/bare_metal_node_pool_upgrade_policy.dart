@@ -10,29 +10,20 @@ class BareMetalNodePoolUpgradePolicy {
 
   /// Creates a new [BareMetalNodePoolUpgradePolicy].
   /// [parallelUpgradeConfig] The parallel upgrade settings for worker node pools.
-  BareMetalNodePoolUpgradePolicy({this.parallelUpgradeConfig});
+  BareMetalNodePoolUpgradePolicy({
+    this.parallelUpgradeConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parallelUpgradeConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            BareMetalParallelUpgradeConfig,
-            Map<String, dynamic>
-          >(parallelUpgradeConfig, (value) => value.toMap()),
+      'parallelUpgradeConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalParallelUpgradeConfig, Map<String, dynamic>>(parallelUpgradeConfig, (value) => value.toMap()),
     };
   }
 
   factory BareMetalNodePoolUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolUpgradePolicy(
-      parallelUpgradeConfig: (() {
-        final guardedValue = map['parallelUpgradeConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BareMetalParallelUpgradeConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      parallelUpgradeConfig: (() { final guardedValue = map['parallelUpgradeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalParallelUpgradeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

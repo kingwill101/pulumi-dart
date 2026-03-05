@@ -9,10 +9,14 @@ class ClassItemResponse {
 
   /// Creates a new [ClassItemResponse].
   /// [value] The class item's value.
-  ClassItemResponse({required this.value});
+  ClassItemResponse({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory ClassItemResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ClassItemResponse {
     );
   }
 }
+

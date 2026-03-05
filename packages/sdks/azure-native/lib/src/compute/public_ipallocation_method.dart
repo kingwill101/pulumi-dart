@@ -15,3 +15,4 @@ enum PublicIPAllocationMethod {
     throw ArgumentError('Unknown PublicIPAllocationMethod value: $value');
   }
 }
+

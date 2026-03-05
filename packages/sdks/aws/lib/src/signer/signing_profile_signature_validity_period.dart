@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SigningProfileSignatureValidityPeriod {
   /// The time unit for signature validity. Valid values: `DAYS`, `MONTHS`, `YEARS`.
   final pulumi.Input<String> type;
-
   /// The numerical value of the time unit for signature validity.
   final pulumi.Input<int> value;
 
@@ -18,15 +17,17 @@ class SigningProfileSignatureValidityPeriod {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type, 'value': value};
+    return <String, dynamic>{
+      'type': type,
+      'value': value,
+    };
   }
 
-  factory SigningProfileSignatureValidityPeriod.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SigningProfileSignatureValidityPeriod.fromMap(Map<String, dynamic> map) {
     return SigningProfileSignatureValidityPeriod(
       type: pulumi.Input.fromValue(map['type'] as String),
       value: pulumi.Input.fromValue(map['value'] as int),
     );
   }
 }
+

@@ -363,73 +363,50 @@ import 'ecs_network_interface_state.dart';
 class EcsNetworkInterface extends pulumi.CustomResource {
   /// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
   late final pulumi.Output<String?> description;
-
   /// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
   late final pulumi.Output<String> instanceType;
-
   /// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
   late final pulumi.Output<int> ipv4PrefixCount;
-
   /// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
   late final pulumi.Output<List<String>> ipv4Prefixes;
-
   /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
   late final pulumi.Output<int> ipv6AddressCount;
-
   /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
   late final pulumi.Output<List<String>> ipv6Addresses;
-
   /// The MAC address of the ENI.
   late final pulumi.Output<String> mac;
-
   /// Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
   late final pulumi.Output<String> name;
-
   /// The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
   late final pulumi.Output<String> networkInterfaceName;
-
   /// The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
   late final pulumi.Output<String> networkInterfaceTrafficMode;
-
   /// The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
   late final pulumi.Output<String> primaryIpAddress;
-
   /// Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
   late final pulumi.Output<String> privateIp;
-
   /// Specifies secondary private IP address N of the ENI. This IP address must be an available IP address within the CIDR block of the VSwitch to which the ENI belongs.
   late final pulumi.Output<List<String>> privateIpAddresses;
-
   /// Field `private_ips` has been deprecated from provider version 1.123.1. New field `private_ip_addresses` instead
   late final pulumi.Output<List<String>> privateIps;
-
   /// Field `private_ips_count` has been deprecated from provider version 1.123.1. New field `secondary_private_ip_address_count` instead
   late final pulumi.Output<int> privateIpsCount;
-
   /// The queue number of the ENI.
   late final pulumi.Output<int> queueNumber;
-
   /// The resource group id.
   late final pulumi.Output<String?> resourceGroupId;
-
   /// The number of private IP addresses that can be automatically created by ECS.
   late final pulumi.Output<int> secondaryPrivateIpAddressCount;
-
   /// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
   late final pulumi.Output<List<String>> securityGroupIds;
-
   /// Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
   late final pulumi.Output<List<String>> securityGroups;
-
   /// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> sourceDestCheck;
-
   /// The status of the ENI.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
   late final pulumi.Output<String> vswitchId;
 
@@ -442,11 +419,11 @@ class EcsNetworkInterface extends pulumi.CustomResource {
     EcsNetworkInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     instanceType = registerOutput<String>('instanceType');
     ipv4PrefixCount = registerOutput<int>('ipv4PrefixCount');
@@ -456,9 +433,7 @@ class EcsNetworkInterface extends pulumi.CustomResource {
     mac = registerOutput<String>('mac');
     this.name = registerOutput<String>('name');
     networkInterfaceName = registerOutput<String>('networkInterfaceName');
-    networkInterfaceTrafficMode = registerOutput<String>(
-      'networkInterfaceTrafficMode',
-    );
+    networkInterfaceTrafficMode = registerOutput<String>('networkInterfaceTrafficMode');
     primaryIpAddress = registerOutput<String>('primaryIpAddress');
     privateIp = registerOutput<String>('privateIp');
     privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
@@ -466,9 +441,7 @@ class EcsNetworkInterface extends pulumi.CustomResource {
     privateIpsCount = registerOutput<int>('privateIpsCount');
     queueNumber = registerOutput<int>('queueNumber');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
-    secondaryPrivateIpAddressCount = registerOutput<int>(
-      'secondaryPrivateIpAddressCount',
-    );
+    secondaryPrivateIpAddressCount = registerOutput<int>('secondaryPrivateIpAddressCount');
     securityGroupIds = registerOutput<List<String>>('securityGroupIds');
     securityGroups = registerOutput<List<String>>('securityGroups');
     sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
@@ -495,11 +468,11 @@ class EcsNetworkInterface extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     instanceType = registerOutput<String>('instanceType');
     ipv4PrefixCount = registerOutput<int>('ipv4PrefixCount');
@@ -509,9 +482,7 @@ class EcsNetworkInterface extends pulumi.CustomResource {
     mac = registerOutput<String>('mac');
     this.name = registerOutput<String>('name');
     networkInterfaceName = registerOutput<String>('networkInterfaceName');
-    networkInterfaceTrafficMode = registerOutput<String>(
-      'networkInterfaceTrafficMode',
-    );
+    networkInterfaceTrafficMode = registerOutput<String>('networkInterfaceTrafficMode');
     primaryIpAddress = registerOutput<String>('primaryIpAddress');
     privateIp = registerOutput<String>('privateIp');
     privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
@@ -519,9 +490,7 @@ class EcsNetworkInterface extends pulumi.CustomResource {
     privateIpsCount = registerOutput<int>('privateIpsCount');
     queueNumber = registerOutput<int>('queueNumber');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
-    secondaryPrivateIpAddressCount = registerOutput<int>(
-      'secondaryPrivateIpAddressCount',
-    );
+    secondaryPrivateIpAddressCount = registerOutput<int>('secondaryPrivateIpAddressCount');
     securityGroupIds = registerOutput<List<String>>('securityGroupIds');
     securityGroups = registerOutput<List<String>>('securityGroups');
     sourceDestCheck = registerOutput<bool?>('sourceDestCheck');

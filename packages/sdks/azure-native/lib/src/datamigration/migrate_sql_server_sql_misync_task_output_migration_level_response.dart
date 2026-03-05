@@ -5,41 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse {
   /// Count of databases
   final pulumi.Input<int> databaseCount;
-
   /// Number of database level errors
   final pulumi.Input<int> databaseErrorCount;
-
   /// Migration end time
   final pulumi.Input<String> endedOn;
-
   /// Result identifier
   final pulumi.Input<String> id;
-
   /// Result type
   /// Expected value is 'MigrationLevelOutput'.
   final pulumi.Input<String> resultType;
-
   /// Source server brand version
   final pulumi.Input<String> sourceServerBrandVersion;
-
   /// Source server name
   final pulumi.Input<String> sourceServerName;
-
   /// Source server version
   final pulumi.Input<String> sourceServerVersion;
-
   /// Migration start time
   final pulumi.Input<String> startedOn;
-
   /// Current state of migration
   final pulumi.Input<String> state;
-
   /// Target server brand version
   final pulumi.Input<String> targetServerBrandVersion;
-
   /// Target server name
   final pulumi.Input<String> targetServerName;
-
   /// Target server version
   final pulumi.Input<String> targetServerVersion;
 
@@ -91,37 +79,22 @@ class MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse {
     };
   }
 
-  factory MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse(
       databaseCount: pulumi.Input.fromValue(map['databaseCount'] as int),
-      databaseErrorCount: pulumi.Input.fromValue(
-        map['databaseErrorCount'] as int,
-      ),
+      databaseErrorCount: pulumi.Input.fromValue(map['databaseErrorCount'] as int),
       endedOn: pulumi.Input.fromValue(map['endedOn'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       resultType: pulumi.Input.fromValue(map['resultType'] as String),
-      sourceServerBrandVersion: pulumi.Input.fromValue(
-        map['sourceServerBrandVersion'] as String,
-      ),
-      sourceServerName: pulumi.Input.fromValue(
-        map['sourceServerName'] as String,
-      ),
-      sourceServerVersion: pulumi.Input.fromValue(
-        map['sourceServerVersion'] as String,
-      ),
+      sourceServerBrandVersion: pulumi.Input.fromValue(map['sourceServerBrandVersion'] as String),
+      sourceServerName: pulumi.Input.fromValue(map['sourceServerName'] as String),
+      sourceServerVersion: pulumi.Input.fromValue(map['sourceServerVersion'] as String),
       startedOn: pulumi.Input.fromValue(map['startedOn'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
-      targetServerBrandVersion: pulumi.Input.fromValue(
-        map['targetServerBrandVersion'] as String,
-      ),
-      targetServerName: pulumi.Input.fromValue(
-        map['targetServerName'] as String,
-      ),
-      targetServerVersion: pulumi.Input.fromValue(
-        map['targetServerVersion'] as String,
-      ),
+      targetServerBrandVersion: pulumi.Input.fromValue(map['targetServerBrandVersion'] as String),
+      targetServerName: pulumi.Input.fromValue(map['targetServerName'] as String),
+      targetServerVersion: pulumi.Input.fromValue(map['targetServerVersion'] as String),
     );
   }
 }
+

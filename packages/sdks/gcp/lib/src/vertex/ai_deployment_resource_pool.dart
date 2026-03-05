@@ -228,19 +228,14 @@ import 'ai_deployment_resource_pool_state.dart';
 class AiDeploymentResourcePool extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
-
   /// The underlying dedicated resources that the deployment resource pool uses.
   /// Structure is documented below.
-  late final pulumi.Output<AiDeploymentResourcePoolDedicatedResources?>
-  dedicatedResources;
-
+  late final pulumi.Output<AiDeploymentResourcePoolDedicatedResources?> dedicatedResources;
   /// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The region of deployment resource pool. eg us-central1
   late final pulumi.Output<String?> region;
 
@@ -253,23 +248,13 @@ class AiDeploymentResourcePool extends pulumi.CustomResource {
     AiDeploymentResourcePoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    dedicatedResources =
-        registerOutput<AiDeploymentResourcePoolDedicatedResources?>(
-          'dedicatedResources',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiDeploymentResourcePoolDedicatedResources.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    dedicatedResources = registerOutput<AiDeploymentResourcePoolDedicatedResources?>('dedicatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiDeploymentResourcePoolDedicatedResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
@@ -293,23 +278,13 @@ class AiDeploymentResourcePool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    dedicatedResources =
-        registerOutput<AiDeploymentResourcePoolDedicatedResources?>(
-          'dedicatedResources',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiDeploymentResourcePoolDedicatedResources.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    dedicatedResources = registerOutput<AiDeploymentResourcePoolDedicatedResources?>('dedicatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiDeploymentResourcePoolDedicatedResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');

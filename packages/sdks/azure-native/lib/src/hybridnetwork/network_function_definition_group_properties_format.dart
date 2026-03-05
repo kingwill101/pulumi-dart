@@ -9,21 +9,20 @@ class NetworkFunctionDefinitionGroupPropertiesFormat {
 
   /// Creates a new [NetworkFunctionDefinitionGroupPropertiesFormat].
   /// [description] The network function definition group description.
-  NetworkFunctionDefinitionGroupPropertiesFormat({this.description});
+  NetworkFunctionDefinitionGroupPropertiesFormat({
+    this.description,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'description': ?description};
+    return <String, dynamic>{
+      'description': ?description,
+    };
   }
 
-  factory NetworkFunctionDefinitionGroupPropertiesFormat.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkFunctionDefinitionGroupPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return NetworkFunctionDefinitionGroupPropertiesFormat(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

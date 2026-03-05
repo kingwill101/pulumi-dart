@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTypesTypeAddonBackupPrice {
   /// The cost (in US dollars) per hour to add Backups service.
   final pulumi.Input<double> hourly;
-
   /// The cost (in US dollars) per month to add Backups service.
   final pulumi.Input<double> monthly;
 
@@ -18,15 +17,17 @@ class GetInstanceTypesTypeAddonBackupPrice {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hourly': hourly, 'monthly': monthly};
+    return <String, dynamic>{
+      'hourly': hourly,
+      'monthly': monthly,
+    };
   }
 
-  factory GetInstanceTypesTypeAddonBackupPrice.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceTypesTypeAddonBackupPrice.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesTypeAddonBackupPrice(
       hourly: pulumi.Input.fromValue(map['hourly'] as double),
       monthly: pulumi.Input.fromValue(map['monthly'] as double),
     );
   }
 }
+

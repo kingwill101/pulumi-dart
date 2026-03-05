@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ArchiveRuleset {
   /// Optional. Provides the multiplication value for an archive in total based on the initial object being validated. This value takes the root object size and multiplies it by this value to create a maximum. Once this maximum is exceeded, the archive is failed. Used to detect and block archives with suspiciously high compression (e.g., zip bombs).
   final pulumi.Input<double>? maximumCompressionRatioLimit;
-
   /// Optional. The maximum depth of nested archives that can be expanded. Limits how many layers of embedded archives will be processed. Archives exceeding the max limit will be denied for replication.
   final pulumi.Input<double>? maximumDepthLimit;
-
   /// Optional. The combined maximum size (in bytes) of all extracted files that an expanded archive is allowed to reach. Archives exceeding the max limit will be denied for replication.
   final pulumi.Input<double>? maximumExpansionSizeLimit;
-
   /// Optional. Default is 0. The minimum archive file size (in bytes) required to trigger expansion during replication. Any archive file size below the configured threshold will skip the rest of the configured rulesets for archives.
   final pulumi.Input<double>? minimumSizeForExpansion;
 
@@ -39,26 +36,11 @@ class ArchiveRuleset {
 
   factory ArchiveRuleset.fromMap(Map<String, dynamic> map) {
     return ArchiveRuleset(
-      maximumCompressionRatioLimit: (() {
-        final guardedValue = map['maximumCompressionRatioLimit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      maximumDepthLimit: (() {
-        final guardedValue = map['maximumDepthLimit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      maximumExpansionSizeLimit: (() {
-        final guardedValue = map['maximumExpansionSizeLimit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      minimumSizeForExpansion: (() {
-        final guardedValue = map['minimumSizeForExpansion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      maximumCompressionRatioLimit: (() { final guardedValue = map['maximumCompressionRatioLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maximumDepthLimit: (() { final guardedValue = map['maximumDepthLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maximumExpansionSizeLimit: (() { final guardedValue = map['maximumExpansionSizeLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      minimumSizeForExpansion: (() { final guardedValue = map['minimumSizeForExpansion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

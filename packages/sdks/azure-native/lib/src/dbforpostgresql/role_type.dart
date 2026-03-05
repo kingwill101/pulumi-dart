@@ -14,3 +14,4 @@ enum RoleType {
     throw ArgumentError('Unknown RoleType value: $value');
   }
 }
+

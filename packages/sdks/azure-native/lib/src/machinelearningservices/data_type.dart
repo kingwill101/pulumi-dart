@@ -16,3 +16,4 @@ enum DataType {
     throw ArgumentError('Unknown DataType value: $value');
   }
 }
+

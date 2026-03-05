@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LiteralJobInput {
   /// Description for the input.
   final pulumi.Input<String>? description;
-
   /// Enum to determine the Job Input Type.
   /// Expected value is 'literal'.
   final pulumi.Input<String> jobInputType;
-
   /// [Required] Literal value for the input.
   final pulumi.Input<String> value;
 
@@ -34,13 +32,10 @@ class LiteralJobInput {
 
   factory LiteralJobInput.fromMap(Map<String, dynamic> map) {
     return LiteralJobInput(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jobInputType: pulumi.Input.fromValue(map['jobInputType'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

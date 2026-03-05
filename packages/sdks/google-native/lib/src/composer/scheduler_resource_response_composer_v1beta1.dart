@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchedulerResourceResponseComposerV1beta1 {
   /// Optional. The number of schedulers.
   final pulumi.Input<int> count;
-
   /// Optional. CPU request and limit for a single Airflow scheduler replica.
   final pulumi.Input<double> cpu;
-
   /// Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
   final pulumi.Input<double> memoryGb;
-
   /// Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
   final pulumi.Input<double> storageGb;
 
@@ -37,9 +34,7 @@ class SchedulerResourceResponseComposerV1beta1 {
     };
   }
 
-  factory SchedulerResourceResponseComposerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SchedulerResourceResponseComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return SchedulerResourceResponseComposerV1beta1(
       count: pulumi.Input.fromValue(map['count'] as int),
       cpu: pulumi.Input.fromValue(map['cpu'] as double),
@@ -48,3 +43,4 @@ class SchedulerResourceResponseComposerV1beta1 {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationReferencePropertiesResponse {
   /// ArmId of Configuration resource
   final pulumi.Input<String>? configurationResourceId;
-
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
 
@@ -25,18 +24,11 @@ class ConfigurationReferencePropertiesResponse {
     };
   }
 
-  factory ConfigurationReferencePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigurationReferencePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationReferencePropertiesResponse(
-      configurationResourceId: (() {
-        final guardedValue = map['configurationResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      configurationResourceId: (() { final guardedValue = map['configurationResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReportConfigGrouping {
   /// The name of the column to group. This version supports subscription lowest possible grain.
   final pulumi.Input<String> name;
-
   /// Has type of the column to group.
   final pulumi.Input<String> type;
 
   /// Creates a new [ReportConfigGrouping].
   /// [name] The name of the column to group. This version supports subscription lowest possible grain.
   /// [type] Has type of the column to group.
-  ReportConfigGrouping({required this.name, required this.type});
+  ReportConfigGrouping({
+    required this.name,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+    };
   }
 
   factory ReportConfigGrouping.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ReportConfigGrouping {
     );
   }
 }
+

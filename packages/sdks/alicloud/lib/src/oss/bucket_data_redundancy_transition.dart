@@ -202,13 +202,10 @@ import 'bucket_data_redundancy_transition_state.dart';
 class BucketDataRedundancyTransition extends pulumi.CustomResource {
   /// Storage space name.
   late final pulumi.Output<String> bucket;
-
   /// Stores the creation time of the redundant transformation task.
   late final pulumi.Output<String> createTime;
-
   /// Stores the state of the redundant translation task. The values are as follows:  Queueing: in the queue.  Processing: In progress.  Finished: Finished.
   late final pulumi.Output<String> status;
-
   /// Unique identification of the storage redundancy conversion task.
   late final pulumi.Output<String> taskId;
 
@@ -221,11 +218,11 @@ class BucketDataRedundancyTransition extends pulumi.CustomResource {
     BucketDataRedundancyTransitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
     status = registerOutput<String>('status');
@@ -250,11 +247,11 @@ class BucketDataRedundancyTransition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
     status = registerOutput<String>('status');

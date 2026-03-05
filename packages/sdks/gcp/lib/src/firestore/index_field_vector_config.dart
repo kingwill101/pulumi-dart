@@ -6,33 +6,29 @@ class IndexFieldVectorConfig {
   /// The resulting index will only include vectors of this dimension, and can be used for vector search
   /// with the same dimension.
   final pulumi.Input<int>? dimension;
-
   /// Indicates the vector index is a flat index.
   final pulumi.Input<Map<String, dynamic>>? flat;
 
   /// Creates a new [IndexFieldVectorConfig].
   /// [dimension] The resulting index will only include vectors of this dimension, and can be used for vector search
   /// [flat] Indicates the vector index is a flat index.
-  IndexFieldVectorConfig({this.dimension, this.flat});
+  IndexFieldVectorConfig({
+    this.dimension,
+    this.flat,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dimension': ?dimension, 'flat': ?flat};
+    return <String, dynamic>{
+      'dimension': ?dimension,
+      'flat': ?flat,
+    };
   }
 
   factory IndexFieldVectorConfig.fromMap(Map<String, dynamic> map) {
     return IndexFieldVectorConfig(
-      dimension: (() {
-        final guardedValue = map['dimension'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      flat: (() {
-        final guardedValue = map['flat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      dimension: (() { final guardedValue = map['dimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      flat: (() { final guardedValue = map['flat']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AKSAssessmentDetailsResponse {
   /// Gets Confidence score.
   final pulumi.Input<double> confidenceRatingInPercentage;
-
   /// Gets date and time when assessment was created.
   final pulumi.Input<String> createdTimestamp;
-
   /// Gets the number of machines.
   final pulumi.Input<int> machineCount;
-
   /// Gets last time when rates were queried.
   final pulumi.Input<String> pricesTimestamp;
-
   /// Gets assessment status.
   final pulumi.Input<String> status;
-
   /// Gets the total monthly cost.
   final pulumi.Input<double> totalMonthlyCost;
-
   /// Gets date and time when assessment was last updated.
   final pulumi.Input<String> updatedTimestamp;
-
   /// Gets the number of web apps.
   final pulumi.Input<int> webAppCount;
-
   /// Gets the number of web servers.
   final pulumi.Input<int> webServerCount;
 
@@ -69,23 +61,16 @@ class AKSAssessmentDetailsResponse {
 
   factory AKSAssessmentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AKSAssessmentDetailsResponse(
-      confidenceRatingInPercentage: pulumi.Input.fromValue(
-        map['confidenceRatingInPercentage'] as double,
-      ),
-      createdTimestamp: pulumi.Input.fromValue(
-        map['createdTimestamp'] as String,
-      ),
+      confidenceRatingInPercentage: pulumi.Input.fromValue(map['confidenceRatingInPercentage'] as double),
+      createdTimestamp: pulumi.Input.fromValue(map['createdTimestamp'] as String),
       machineCount: pulumi.Input.fromValue(map['machineCount'] as int),
       pricesTimestamp: pulumi.Input.fromValue(map['pricesTimestamp'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      totalMonthlyCost: pulumi.Input.fromValue(
-        map['totalMonthlyCost'] as double,
-      ),
-      updatedTimestamp: pulumi.Input.fromValue(
-        map['updatedTimestamp'] as String,
-      ),
+      totalMonthlyCost: pulumi.Input.fromValue(map['totalMonthlyCost'] as double),
+      updatedTimestamp: pulumi.Input.fromValue(map['updatedTimestamp'] as String),
       webAppCount: pulumi.Input.fromValue(map['webAppCount'] as int),
       webServerCount: pulumi.Input.fromValue(map['webServerCount'] as int),
     );
   }
 }
+

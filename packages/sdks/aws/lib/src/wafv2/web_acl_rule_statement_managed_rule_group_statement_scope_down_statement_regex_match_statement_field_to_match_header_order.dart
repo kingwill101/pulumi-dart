@@ -13,16 +13,15 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchSt
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'oversizeHandling': oversizeHandling};
+    return <String, dynamic>{
+      'oversizeHandling': oversizeHandling,
+    };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderOrder.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderOrder.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchStatementFieldToMatchHeaderOrder(
-      oversizeHandling: pulumi.Input.fromValue(
-        map['oversizeHandling'] as String,
-      ),
+      oversizeHandling: pulumi.Input.fromValue(map['oversizeHandling'] as String),
     );
   }
 }
+

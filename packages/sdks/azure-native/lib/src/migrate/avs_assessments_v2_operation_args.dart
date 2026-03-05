@@ -10,13 +10,10 @@ import 'avs_assessment_properties_v2.dart';
 class AvsAssessmentsV2OperationArgs {
   /// AVS Assessment ARM name
   final pulumi.Input<String>? assessmentName;
-
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<AvsAssessmentPropertiesV2>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,35 +33,18 @@ class AvsAssessmentsV2OperationArgs {
     return <String, dynamic>{
       'assessmentName': ?assessmentName,
       'projectName': projectName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            AvsAssessmentPropertiesV2,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<AvsAssessmentPropertiesV2, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory AvsAssessmentsV2OperationArgs.fromMap(Map<String, dynamic> map) {
     return AvsAssessmentsV2OperationArgs(
-      assessmentName: (() {
-        final guardedValue = map['assessmentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      assessmentName: (() { final guardedValue = map['assessmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AvsAssessmentPropertiesV2.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AvsAssessmentPropertiesV2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

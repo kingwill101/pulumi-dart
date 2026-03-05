@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesAudioPulseAudioOutput {
   /// Sets the output latency for the PipeWire audio device.
   final pulumi.Input<double>? latency;
-
   /// Sets the name for the PipeWire audio output.
   final pulumi.Input<String>? name;
-
   /// Sets the stream name for the PipeWire audio output.
   final pulumi.Input<String>? streamName;
 
@@ -32,21 +30,10 @@ class DomainDevicesAudioPulseAudioOutput {
 
   factory DomainDevicesAudioPulseAudioOutput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioPulseAudioOutput(
-      latency: (() {
-        final guardedValue = map['latency'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      streamName: (() {
-        final guardedValue = map['streamName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      latency: (() { final guardedValue = map['latency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      streamName: (() { final guardedValue = map['streamName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

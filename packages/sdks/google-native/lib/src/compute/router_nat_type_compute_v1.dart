@@ -15,3 +15,4 @@ enum RouterNatTypeComputeV1 {
     throw ArgumentError('Unknown RouterNatTypeComputeV1 value: $value');
   }
 }
+

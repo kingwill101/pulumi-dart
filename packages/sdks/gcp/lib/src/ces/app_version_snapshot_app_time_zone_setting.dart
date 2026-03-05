@@ -9,21 +9,20 @@ class AppVersionSnapshotAppTimeZoneSetting {
 
   /// Creates a new [AppVersionSnapshotAppTimeZoneSetting].
   /// [timeZone] (Output)
-  AppVersionSnapshotAppTimeZoneSetting({this.timeZone});
+  AppVersionSnapshotAppTimeZoneSetting({
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'timeZone': ?timeZone};
+    return <String, dynamic>{
+      'timeZone': ?timeZone,
+    };
   }
 
-  factory AppVersionSnapshotAppTimeZoneSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotAppTimeZoneSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppTimeZoneSetting(
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

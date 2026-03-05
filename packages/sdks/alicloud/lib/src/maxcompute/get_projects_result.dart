@@ -7,15 +7,12 @@ import 'get_projects_project.dart';
 class GetProjectsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Project IDs.
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of name of Projects.
   final List<String> names;
   final String? outputFile;
-
   /// A list of Project Entries. Each element contains the following attributes:
   final List<GetProjectsProject> projects;
 
@@ -42,11 +39,7 @@ class GetProjectsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'projects':
-          pulumi.Input.encodeList<GetProjectsProject, Map<String, dynamic>>(
-            projects,
-            (value) => value.toMap(),
-          ),
+      'projects': pulumi.Input.encodeList<GetProjectsProject, Map<String, dynamic>>(projects, (value) => value.toMap()),
     };
   }
 
@@ -54,22 +47,11 @@ class GetProjectsResult {
     return GetProjectsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      projects: pulumi.Input.decodeList<GetProjectsProject>(
-        map['projects']!,
-        (value) =>
-            GetProjectsProject.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      projects: pulumi.Input.decodeList<GetProjectsProject>(map['projects']!, (value) => GetProjectsProject.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

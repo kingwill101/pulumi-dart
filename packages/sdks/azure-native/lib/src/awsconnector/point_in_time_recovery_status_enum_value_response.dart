@@ -9,21 +9,20 @@ class PointInTimeRecoveryStatusEnumValueResponse {
 
   /// Creates a new [PointInTimeRecoveryStatusEnumValueResponse].
   /// [value] Property value
-  PointInTimeRecoveryStatusEnumValueResponse({this.value});
+  PointInTimeRecoveryStatusEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory PointInTimeRecoveryStatusEnumValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PointInTimeRecoveryStatusEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return PointInTimeRecoveryStatusEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

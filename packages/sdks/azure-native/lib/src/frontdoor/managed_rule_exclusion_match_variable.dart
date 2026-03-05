@@ -15,8 +15,7 @@ enum ManagedRuleExclusionMatchVariable {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ManagedRuleExclusionMatchVariable value: $value',
-    );
+    throw ArgumentError('Unknown ManagedRuleExclusionMatchVariable value: $value');
   }
 }
+

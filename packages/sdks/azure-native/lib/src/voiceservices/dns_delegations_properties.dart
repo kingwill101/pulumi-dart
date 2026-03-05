@@ -10,39 +10,20 @@ class DnsDelegationsProperties {
 
   /// Creates a new [DnsDelegationsProperties].
   /// [delegations] DNS Domains to delegate for the creation of DNS Zones by the Azure Communications Gateway
-  DnsDelegationsProperties({this.delegations});
+  DnsDelegationsProperties({
+    this.delegations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'delegations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DnsDelegationProperties>,
-            List<Map<String, dynamic>>
-          >(
-            delegations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DnsDelegationProperties,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'delegations': ?pulumi.Input.mapOptionalInputValue<List<DnsDelegationProperties>, List<Map<String, dynamic>>>(delegations, (value) => pulumi.Input.encodeList<DnsDelegationProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DnsDelegationsProperties.fromMap(Map<String, dynamic> map) {
     return DnsDelegationsProperties(
-      delegations: (() {
-        final guardedValue = map['delegations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DnsDelegationProperties>(
-            guardedValue,
-            (value) => DnsDelegationProperties.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      delegations: (() { final guardedValue = map['delegations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DnsDelegationProperties>(guardedValue, (value) => DnsDelegationProperties.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

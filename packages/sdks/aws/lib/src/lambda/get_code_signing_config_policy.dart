@@ -8,7 +8,9 @@ class GetCodeSigningConfigPolicy {
 
   /// Creates a new [GetCodeSigningConfigPolicy].
   /// [untrustedArtifactOnDeployment] Code signing configuration policy for deployment validation failure. Valid values: `Warn`, `Enforce`.
-  GetCodeSigningConfigPolicy({required this.untrustedArtifactOnDeployment});
+  GetCodeSigningConfigPolicy({
+    required this.untrustedArtifactOnDeployment,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,9 +20,8 @@ class GetCodeSigningConfigPolicy {
 
   factory GetCodeSigningConfigPolicy.fromMap(Map<String, dynamic> map) {
     return GetCodeSigningConfigPolicy(
-      untrustedArtifactOnDeployment: pulumi.Input.fromValue(
-        map['untrustedArtifactOnDeployment'] as String,
-      ),
+      untrustedArtifactOnDeployment: pulumi.Input.fromValue(map['untrustedArtifactOnDeployment'] as String),
     );
   }
 }
+

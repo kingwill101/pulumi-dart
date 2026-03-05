@@ -8,10 +8,14 @@ class GetClusterVerticalPodAutoscaling {
 
   /// Creates a new [GetClusterVerticalPodAutoscaling].
   /// [enabled] Enables vertical pod autoscaling.
-  GetClusterVerticalPodAutoscaling({required this.enabled});
+  GetClusterVerticalPodAutoscaling({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory GetClusterVerticalPodAutoscaling.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetClusterVerticalPodAutoscaling {
     );
   }
 }
+

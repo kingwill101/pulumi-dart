@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenersListenerQuicConfig {
   /// The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
   final pulumi.Input<String> quicListenerId;
-
   /// Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
   final pulumi.Input<bool> quicUpgradeEnabled;
 
@@ -27,9 +26,8 @@ class GetListenersListenerQuicConfig {
   factory GetListenersListenerQuicConfig.fromMap(Map<String, dynamic> map) {
     return GetListenersListenerQuicConfig(
       quicListenerId: pulumi.Input.fromValue(map['quicListenerId'] as String),
-      quicUpgradeEnabled: pulumi.Input.fromValue(
-        map['quicUpgradeEnabled'] as bool,
-      ),
+      quicUpgradeEnabled: pulumi.Input.fromValue(map['quicUpgradeEnabled'] as bool),
     );
   }
 }
+

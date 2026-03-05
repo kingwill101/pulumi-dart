@@ -14,7 +14,6 @@ class ClusterTrustBundleSpec {
   ///
   /// List/watch requests for ClusterTrustBundles can filter on this field using a `spec.signerName=NAME` field selector.
   final pulumi.Input<String>? signerName;
-
   /// trustBundle contains the individual X.509 trust anchors for this bundle, as PEM bundle of PEM-wrapped, DER-formatted X.509 certificates.
   ///
   /// The data must consist only of PEM certificate blocks that parse as valid X.509 certificates.  Each certificate must include a basic constraints extension with the CA bit set.  The API server will reject objects that contain duplicate certificates, or that use PEM block headers.
@@ -25,7 +24,10 @@ class ClusterTrustBundleSpec {
   /// Creates a new [ClusterTrustBundleSpec].
   /// [signerName] signerName indicates the associated signer, if any.
   /// [trustBundle] trustBundle contains the individual X.509 trust anchors for this bundle, as PEM bundle of PEM-wrapped, DER-formatted X.509 certificates.
-  ClusterTrustBundleSpec({this.signerName, required this.trustBundle});
+  ClusterTrustBundleSpec({
+    this.signerName,
+    required this.trustBundle,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,12 +38,9 @@ class ClusterTrustBundleSpec {
 
   factory ClusterTrustBundleSpec.fromMap(Map<String, dynamic> map) {
     return ClusterTrustBundleSpec(
-      signerName: (() {
-        final guardedValue = map['signerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      signerName: (() { final guardedValue = map['signerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       trustBundle: pulumi.Input.fromValue(map['trustBundle'] as String),
     );
   }
 }
+

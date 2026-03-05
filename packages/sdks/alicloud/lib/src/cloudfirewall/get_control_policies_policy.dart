@@ -5,76 +5,52 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetControlPoliciesPolicy {
   /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
   final pulumi.Input<String> aclAction;
-
   /// The unique ID of the access control policy.
   final pulumi.Input<String> aclUuid;
-
   /// The application ID in the access control policy.
   final pulumi.Input<String> applicationId;
-
   /// The type of the application that the access control policy supports.
   final pulumi.Input<String> applicationName;
-
   /// The description of the access control policy.
   final pulumi.Input<String> description;
-
   /// The destination port in the access control policy.
   final pulumi.Input<String> destPort;
-
   /// The name of the destination port address book in the access control policy.
   final pulumi.Input<String> destPortGroup;
-
   /// The ports in the destination port address book.
   final pulumi.Input<List<String>> destPortGroupPorts;
-
   /// The type of the destination port in the access control policy.
   final pulumi.Input<String> destPortType;
-
   /// The destination address defined in the access control policy.
   final pulumi.Input<String> destination;
-
   /// The CIDR blocks in the destination address book.
   final pulumi.Input<List<String>> destinationGroupCidrs;
-
   /// The type of the destination address book in the access control policy.
   final pulumi.Input<String> destinationGroupType;
-
   /// The type of the destination address in the access control policy.
   final pulumi.Input<String> destinationType;
-
   /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
   final pulumi.Input<String> direction;
-
   /// The DNS resolution result.
   final pulumi.Input<String> dnsResult;
-
   /// The timestamp of the DNS resolution result.
   final pulumi.Input<String> dnsResultTime;
-
   /// The number of hits for the access control policy.
   final pulumi.Input<String> hitTimes;
-
   /// The ID of the Control Policy. It formats as `&lt;acl_uuid&gt;:&lt;direction&gt;`.
   final pulumi.Input<String> id;
-
   /// The priority of the access control policy.
   final pulumi.Input<int> order;
-
   /// The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
   final pulumi.Input<String> proto;
-
   /// Indicates whether the access control policy is enabled.
   final pulumi.Input<bool> release;
-
   /// The source address in the access control policy.
   final pulumi.Input<String> source;
-
   /// The CIDR blocks in the source address book.
   final pulumi.Input<List<String>> sourceGroupCidrs;
-
   /// The type of the source address book in the access control policy.
   final pulumi.Input<String> sourceGroupType;
-
   /// The type of the source address in the access control policy.
   final pulumi.Input<String> sourceType;
 
@@ -171,17 +147,11 @@ class GetControlPoliciesPolicy {
       description: pulumi.Input.fromValue(map['description'] as String),
       destPort: pulumi.Input.fromValue(map['destPort'] as String),
       destPortGroup: pulumi.Input.fromValue(map['destPortGroup'] as String),
-      destPortGroupPorts: pulumi.Input.fromValue(
-        (map['destPortGroupPorts'] as List).cast<String>(),
-      ),
+      destPortGroupPorts: pulumi.Input.fromValue((map['destPortGroupPorts'] as List).cast<String>()),
       destPortType: pulumi.Input.fromValue(map['destPortType'] as String),
       destination: pulumi.Input.fromValue(map['destination'] as String),
-      destinationGroupCidrs: pulumi.Input.fromValue(
-        (map['destinationGroupCidrs'] as List).cast<String>(),
-      ),
-      destinationGroupType: pulumi.Input.fromValue(
-        map['destinationGroupType'] as String,
-      ),
+      destinationGroupCidrs: pulumi.Input.fromValue((map['destinationGroupCidrs'] as List).cast<String>()),
+      destinationGroupType: pulumi.Input.fromValue(map['destinationGroupType'] as String),
       destinationType: pulumi.Input.fromValue(map['destinationType'] as String),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       dnsResult: pulumi.Input.fromValue(map['dnsResult'] as String),
@@ -192,11 +162,10 @@ class GetControlPoliciesPolicy {
       proto: pulumi.Input.fromValue(map['proto'] as String),
       release: pulumi.Input.fromValue(map['release'] as bool),
       source: pulumi.Input.fromValue(map['source'] as String),
-      sourceGroupCidrs: pulumi.Input.fromValue(
-        (map['sourceGroupCidrs'] as List).cast<String>(),
-      ),
+      sourceGroupCidrs: pulumi.Input.fromValue((map['sourceGroupCidrs'] as List).cast<String>()),
       sourceGroupType: pulumi.Input.fromValue(map['sourceGroupType'] as String),
       sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
     );
   }
 }
+

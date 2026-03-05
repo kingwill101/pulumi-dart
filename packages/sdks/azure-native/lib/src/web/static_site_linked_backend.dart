@@ -146,25 +146,18 @@ import 'static_site_linked_backend_args.dart';
 class StaticSiteLinkedBackend extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The resource id of the backend linked to the static site
   late final pulumi.Output<String?> backendResourceId;
-
   /// The date and time on which the backend was linked to the static site.
   late final pulumi.Output<String> createdOn;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the linking process.
   late final pulumi.Output<String> provisioningState;
-
   /// The region of the backend linked to the static site
   late final pulumi.Output<String?> region;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -177,11 +170,11 @@ class StaticSiteLinkedBackend extends pulumi.CustomResource {
     StaticSiteLinkedBackendArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:StaticSiteLinkedBackend',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:StaticSiteLinkedBackend',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     backendResourceId = registerOutput<String?>('backendResourceId');
     createdOn = registerOutput<String>('createdOn');

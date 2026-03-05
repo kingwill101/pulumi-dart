@@ -29,19 +29,12 @@ class GetAutoscalingPolicyDataprocV1beta2Args {
     };
   }
 
-  factory GetAutoscalingPolicyDataprocV1beta2Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAutoscalingPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetAutoscalingPolicyDataprocV1beta2Args(
-      autoscalingPolicyId: pulumi.Input.fromValue(
-        map['autoscalingPolicyId'] as String,
-      ),
+      autoscalingPolicyId: pulumi.Input.fromValue(map['autoscalingPolicyId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

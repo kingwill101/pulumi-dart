@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsGovcloudIntegrationsS3 {
   /// Determine if extra inventory data be collected or not. May affect total data collection time and contribute to the Cloud provider API rate limit.
   final pulumi.Input<bool>? fetchExtendedInventory;
-
   /// Specify if tags should be collected. May affect total data collection time and contribute to the Cloud provider API rate limit.
   final pulumi.Input<bool>? fetchTags;
-
   /// The data polling interval in seconds
   final pulumi.Input<int>? metricsPollingInterval;
-
   /// Specify a Tag key associated with the resources that you want to monitor. Filter values are case-sensitive.
   final pulumi.Input<String>? tagKey;
-
   /// Specify a Tag value associated with the resources that you want to monitor. Filter values are case-sensitive.
   final pulumi.Input<String>? tagValue;
 
@@ -44,31 +40,12 @@ class AwsGovcloudIntegrationsS3 {
 
   factory AwsGovcloudIntegrationsS3.fromMap(Map<String, dynamic> map) {
     return AwsGovcloudIntegrationsS3(
-      fetchExtendedInventory: (() {
-        final guardedValue = map['fetchExtendedInventory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      fetchTags: (() {
-        final guardedValue = map['fetchTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      metricsPollingInterval: (() {
-        final guardedValue = map['metricsPollingInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      tagKey: (() {
-        final guardedValue = map['tagKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tagValue: (() {
-        final guardedValue = map['tagValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fetchExtendedInventory: (() { final guardedValue = map['fetchExtendedInventory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      fetchTags: (() { final guardedValue = map['fetchTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      metricsPollingInterval: (() { final guardedValue = map['metricsPollingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tagKey: (() { final guardedValue = map['tagKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tagValue: (() { final guardedValue = map['tagValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -10,17 +10,13 @@ enum RegionBackendServiceLoadBalancingSchemeComputeBeta {
   const RegionBackendServiceLoadBalancingSchemeComputeBeta(this.wireValue);
   final String wireValue;
 
-  static RegionBackendServiceLoadBalancingSchemeComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in RegionBackendServiceLoadBalancingSchemeComputeBeta.values) {
+  static RegionBackendServiceLoadBalancingSchemeComputeBeta fromValue(String value) {
+    for (final item in RegionBackendServiceLoadBalancingSchemeComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RegionBackendServiceLoadBalancingSchemeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown RegionBackendServiceLoadBalancingSchemeComputeBeta value: $value');
   }
 }
+

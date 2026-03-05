@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublisherResponseContaineranalysisV1beta1 {
   /// Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.
   final pulumi.Input<String> issuingAuthority;
-
   /// Name of the publisher. Examples: 'Google', 'Google Cloud Platform'.
   final pulumi.Input<String> name;
-
   /// The context or namespace. Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. Example: https://csaf.io
   final pulumi.Input<String> publisherNamespace;
 
@@ -31,17 +29,12 @@ class PublisherResponseContaineranalysisV1beta1 {
     };
   }
 
-  factory PublisherResponseContaineranalysisV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PublisherResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return PublisherResponseContaineranalysisV1beta1(
-      issuingAuthority: pulumi.Input.fromValue(
-        map['issuingAuthority'] as String,
-      ),
+      issuingAuthority: pulumi.Input.fromValue(map['issuingAuthority'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      publisherNamespace: pulumi.Input.fromValue(
-        map['publisherNamespace'] as String,
-      ),
+      publisherNamespace: pulumi.Input.fromValue(map['publisherNamespace'] as String),
     );
   }
 }
+

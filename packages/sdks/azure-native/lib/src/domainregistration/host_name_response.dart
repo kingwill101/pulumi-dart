@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostNameResponse {
   /// Name of the Azure resource the hostname is assigned to. If it is assigned to a Traffic Manager then it will be the Traffic Manager name otherwise it will be the app name.
   final pulumi.Input<String>? azureResourceName;
-
   /// Type of the Azure resource the hostname is assigned to.
   final pulumi.Input<String>? azureResourceType;
-
   /// Type of the DNS record.
   final pulumi.Input<String>? customHostNameDnsRecordType;
-
   /// Type of the hostname.
   final pulumi.Input<String>? hostNameType;
-
   /// Name of the hostname.
   final pulumi.Input<String>? name;
-
   /// List of apps the hostname is assigned to. This list will have more than one app only if the hostname is pointing to a Traffic Manager.
   final pulumi.Input<List<String>>? siteNames;
 
@@ -51,36 +46,13 @@ class HostNameResponse {
 
   factory HostNameResponse.fromMap(Map<String, dynamic> map) {
     return HostNameResponse(
-      azureResourceName: (() {
-        final guardedValue = map['azureResourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      azureResourceType: (() {
-        final guardedValue = map['azureResourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customHostNameDnsRecordType: (() {
-        final guardedValue = map['customHostNameDnsRecordType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostNameType: (() {
-        final guardedValue = map['hostNameType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      siteNames: (() {
-        final guardedValue = map['siteNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      azureResourceName: (() { final guardedValue = map['azureResourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureResourceType: (() { final guardedValue = map['azureResourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customHostNameDnsRecordType: (() { final guardedValue = map['customHostNameDnsRecordType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostNameType: (() { final guardedValue = map['hostNameType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      siteNames: (() { final guardedValue = map['siteNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFleetStatus {
   /// Additional information about a compute fleet.
   final pulumi.Input<String> context;
-
   /// Message associated with the status of a compute fleet.
   final pulumi.Input<String> message;
-
   /// Status code of the compute fleet.
   final pulumi.Input<String> statusCode;
 
@@ -38,3 +36,4 @@ class GetFleetStatus {
     );
   }
 }
+

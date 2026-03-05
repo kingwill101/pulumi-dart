@@ -769,67 +769,48 @@ import 'io_thub_state.dart';
 /// ```
 class IoTHub extends pulumi.CustomResource {
   late final pulumi.Output<IoTHubCloudToDevice> cloudToDevice;
-
   /// An `endpoint` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
   late final pulumi.Output<List<Map<String, dynamic>>> enrichments;
-
   /// The EventHub compatible endpoint for events data
   late final pulumi.Output<String> eventHubEventsEndpoint;
-
   /// The EventHub namespace for events data
   late final pulumi.Output<String> eventHubEventsNamespace;
-
   /// The EventHub compatible path for events data
   late final pulumi.Output<String> eventHubEventsPath;
-
   /// The EventHub compatible endpoint for operational data
   late final pulumi.Output<String> eventHubOperationsEndpoint;
-
   /// The EventHub compatible path for operational data
   late final pulumi.Output<String> eventHubOperationsPath;
-
   /// The number of device-to-cloud partitions used by backing event hubs. Must be between `2` and `128`. Defaults to `4`.
   late final pulumi.Output<int?> eventHubPartitionCount;
-
   /// The event hub retention to use in days. Must be between `1` and `7`. Defaults to `1`.
   late final pulumi.Output<int?> eventHubRetentionInDays;
-
   /// A `fallback_route` block as defined below. If the fallback route is enabled, messages that don't match any of the supplied routes are automatically sent to this route. Defaults to messages/events.
   ///
   /// &gt; **Note:** If `fallback_route` isn't explicitly specified, the fallback route wouldn't be enabled by default.
   late final pulumi.Output<IoTHubFallbackRoute> fallbackRoute;
-
   /// A `file_upload` block as defined below.
   late final pulumi.Output<IoTHubFileUpload?> fileUpload;
-
   /// The hostname of the IotHub Resource.
   late final pulumi.Output<String> hostname;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<IoTHubIdentity?> identity;
-
   /// If false, SAS tokens with Iot hub scoped SAS keys cannot be used for authentication. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthenticationEnabled;
-
   /// Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   late final pulumi.Output<String?> minTlsVersion;
-
   /// Specifies the name of the IotHub resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A `network_rule_set` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> networkRuleSets;
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// The name of the resource group under which the IotHub resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   late final pulumi.Output<List<Map<String, dynamic>>> routes;
-
   /// One or more `shared_access_policy` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> sharedAccessPolicies;
-
   /// A `sku` block as defined below.
   late final pulumi.Output<IoTHubSku> sku;
   late final pulumi.Output<Map<String, String>?> tags;
@@ -839,90 +820,40 @@ class IoTHub extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [IoTHub]. {@macro pulumi_iot_io_thub_io_thub_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  IoTHub(String name, {IoTHubArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:iot/ioTHub:IoTHub',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    cloudToDevice = registerOutput<IoTHubCloudToDevice>(
-      'cloudToDevice',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IoTHubCloudToDevice.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  IoTHub(
+    String name, {
+    IoTHubArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:iot/ioTHub:IoTHub',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    cloudToDevice = registerOutput<IoTHubCloudToDevice>('cloudToDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubCloudToDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
     enrichments = registerOutput<List<Map<String, dynamic>>>('enrichments');
     eventHubEventsEndpoint = registerOutput<String>('eventHubEventsEndpoint');
     eventHubEventsNamespace = registerOutput<String>('eventHubEventsNamespace');
     eventHubEventsPath = registerOutput<String>('eventHubEventsPath');
-    eventHubOperationsEndpoint = registerOutput<String>(
-      'eventHubOperationsEndpoint',
-    );
+    eventHubOperationsEndpoint = registerOutput<String>('eventHubOperationsEndpoint');
     eventHubOperationsPath = registerOutput<String>('eventHubOperationsPath');
     eventHubPartitionCount = registerOutput<int?>('eventHubPartitionCount');
     eventHubRetentionInDays = registerOutput<int?>('eventHubRetentionInDays');
-    fallbackRoute = registerOutput<IoTHubFallbackRoute>(
-      'fallbackRoute',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IoTHubFallbackRoute.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fileUpload = registerOutput<IoTHubFileUpload?>(
-      'fileUpload',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IoTHubFileUpload.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    fallbackRoute = registerOutput<IoTHubFallbackRoute>('fallbackRoute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubFallbackRoute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fileUpload = registerOutput<IoTHubFileUpload?>('fileUpload', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubFileUpload.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hostname = registerOutput<String>('hostname');
-    identity = registerOutput<IoTHubIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IoTHubIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localAuthenticationEnabled = registerOutput<bool?>(
-      'localAuthenticationEnabled',
-    );
+    identity = registerOutput<IoTHubIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     minTlsVersion = registerOutput<String?>('minTlsVersion');
     this.name = registerOutput<String>('name');
-    networkRuleSets = registerOutput<List<Map<String, dynamic>>?>(
-      'networkRuleSets',
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    networkRuleSets = registerOutput<List<Map<String, dynamic>>?>('networkRuleSets');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     routes = registerOutput<List<Map<String, dynamic>>>('routes');
-    sharedAccessPolicies = registerOutput<List<Map<String, dynamic>>>(
-      'sharedAccessPolicies',
-    );
-    sku = registerOutput<IoTHubSku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IoTHubSku.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    sharedAccessPolicies = registerOutput<List<Map<String, dynamic>>>('sharedAccessPolicies');
+    sku = registerOutput<IoTHubSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }
@@ -945,88 +876,35 @@ class IoTHub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iot/ioTHub:IoTHub',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    cloudToDevice = registerOutput<IoTHubCloudToDevice>(
-      'cloudToDevice',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IoTHubCloudToDevice.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:iot/ioTHub:IoTHub',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    cloudToDevice = registerOutput<IoTHubCloudToDevice>('cloudToDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubCloudToDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
     enrichments = registerOutput<List<Map<String, dynamic>>>('enrichments');
     eventHubEventsEndpoint = registerOutput<String>('eventHubEventsEndpoint');
     eventHubEventsNamespace = registerOutput<String>('eventHubEventsNamespace');
     eventHubEventsPath = registerOutput<String>('eventHubEventsPath');
-    eventHubOperationsEndpoint = registerOutput<String>(
-      'eventHubOperationsEndpoint',
-    );
+    eventHubOperationsEndpoint = registerOutput<String>('eventHubOperationsEndpoint');
     eventHubOperationsPath = registerOutput<String>('eventHubOperationsPath');
     eventHubPartitionCount = registerOutput<int?>('eventHubPartitionCount');
     eventHubRetentionInDays = registerOutput<int?>('eventHubRetentionInDays');
-    fallbackRoute = registerOutput<IoTHubFallbackRoute>(
-      'fallbackRoute',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IoTHubFallbackRoute.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fileUpload = registerOutput<IoTHubFileUpload?>(
-      'fileUpload',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IoTHubFileUpload.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    fallbackRoute = registerOutput<IoTHubFallbackRoute>('fallbackRoute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubFallbackRoute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fileUpload = registerOutput<IoTHubFileUpload?>('fileUpload', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubFileUpload.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hostname = registerOutput<String>('hostname');
-    identity = registerOutput<IoTHubIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IoTHubIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localAuthenticationEnabled = registerOutput<bool?>(
-      'localAuthenticationEnabled',
-    );
+    identity = registerOutput<IoTHubIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     minTlsVersion = registerOutput<String?>('minTlsVersion');
     this.name = registerOutput<String>('name');
-    networkRuleSets = registerOutput<List<Map<String, dynamic>>?>(
-      'networkRuleSets',
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    networkRuleSets = registerOutput<List<Map<String, dynamic>>?>('networkRuleSets');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     routes = registerOutput<List<Map<String, dynamic>>>('routes');
-    sharedAccessPolicies = registerOutput<List<Map<String, dynamic>>>(
-      'sharedAccessPolicies',
-    );
-    sku = registerOutput<IoTHubSku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IoTHubSku.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    sharedAccessPolicies = registerOutput<List<Map<String, dynamic>>>('sharedAccessPolicies');
+    sku = registerOutput<IoTHubSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

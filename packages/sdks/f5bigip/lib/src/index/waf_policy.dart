@@ -346,86 +346,60 @@ import 'waf_policy_state.dart';
 class WafPolicy extends pulumi.CustomResource {
   /// The character encoding for the web application. The character encoding determines how the policy processes the character sets. The default is `utf-8`
   late final pulumi.Output<String?> applicationLanguage;
-
   /// Specifies whether the security policy treats microservice URLs, file types, URLs, and parameters as case sensitive or not. When this setting is enabled, the system stores these security policy elements in lowercase in the security policy configuration
   late final pulumi.Output<bool?> caseInsensitive;
-
   /// Specifies the description of the policy.
   late final pulumi.Output<String> description;
-
   /// Passive Mode allows the policy to be associated with a Performance L4 Virtual Server (using a FastL4 profile). With FastL4, traffic is analyzed but is not modified in any way.
   late final pulumi.Output<bool?> enablePassivemode;
-
   /// How the system processes a request that triggers a security policy violation
   late final pulumi.Output<String?> enforcementMode;
-
   /// `file_types` takes list of file-types options to be used for policy builder.
   /// See file types below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>?> fileTypes;
-
   /// `graphql_profiles` takes list of graphql profile options to be used for policy builder.
   /// See graphql profiles below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>?> graphqlProfiles;
-
   /// specify the list of host name that is used to access the application
   late final pulumi.Output<List<Map<String, dynamic>>?> hostNames;
-
   /// `ip_exceptions` takes list of IP address exception,An IP address exception is an IP address that you want the system to treat in a specific way for a security policy.For example, you can specify IP addresses from which the system should always trust traffic.
   /// See IP Exceptions below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipExceptions;
-
   /// the modifications section includes actions that modify the declarative policy as it is defined in the adjustments section. The modifications section is updated manually, with the changes generally driven by the learning suggestions provided by the BIG-IP.
   late final pulumi.Output<List<String>?> modifications;
-
   /// The unique user-given name of the policy. Policy names cannot contain spaces or special characters. Allowed characters are a-z, A-Z, 0-9, dot, dash (-), colon (:) and underscore (_).
   late final pulumi.Output<String> name;
-
   /// This section defines the Link for open api files on the policy.
   late final pulumi.Output<List<String>?> openApiFiles;
-
   /// This section defines parameters that the security policy permits in requests.
   late final pulumi.Output<List<String>?> parameters;
-
   /// Specifies the partition of the policy. Default is `Common`
   late final pulumi.Output<String?> partition;
-
   /// `policy_builder` block will provide `learning_mode` options to be used for policy builder.
   /// See policy builder below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>?> policyBuilders;
-
   /// Exported WAF policy deployed on BIGIP.
   late final pulumi.Output<String> policyExportJson;
-
   /// The id of the A.WAF Policy as it would be calculated on the BIG-IP.
   late final pulumi.Output<String> policyId;
-
   /// The payload of the WAF Policy to be used for IMPORT on to BIG-IP.
   late final pulumi.Output<String?> policyImportJson;
-
   /// When creating a security policy, you can determine whether a security policy differentiates between HTTP and HTTPS URLs. If enabled, the security policy differentiates between HTTP and HTTPS URLs. If disabled, the security policy configures URLs without specifying a specific protocol. This is useful for applications that behave the same for HTTP and HTTPS, and it keeps the security policy from including the same URL twice.
   late final pulumi.Output<bool?> protocolIndependent;
-
   /// The server technology is a server-side application, framework, web server or operating system type that is configured in the policy in order to adapt the policy to the checks needed for the respective technology.
   late final pulumi.Output<List<String>?> serverTechnologies;
-
   /// Defines behavior when signatures found within a signature-set are detected in a request. Settings are culmulative, so if a signature is found in any set with block enabled, that signature will have block enabled.
   late final pulumi.Output<List<String>?> signatureSets;
-
   /// This section defines the properties of a signature on the policy.
   late final pulumi.Output<List<String>?> signatures;
-
   /// bulk signature setting
   late final pulumi.Output<List<Map<String, dynamic>>?> signaturesSettings;
-
   /// Specifies the Link of the template used for the policy creation.
   late final pulumi.Output<String?> templateLink;
-
   /// Specifies the name of the template used for the policy creation.
   late final pulumi.Output<String> templateName;
-
   /// The type of policy you want to create. The default policy type is `security`.
   late final pulumi.Output<String?> type;
-
   /// In a security policy, you can manually specify the HTTP URLs that are allowed (or disallowed) in traffic to the web application being protected. If you are using automatic policy building (and the policy includes learning URLs), the system can determine which URLs to add, based on legitimate traffic.
   late final pulumi.Output<List<String>?> urls;
 
@@ -438,20 +412,18 @@ class WafPolicy extends pulumi.CustomResource {
     WafPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/wafPolicy:WafPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/wafPolicy:WafPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationLanguage = registerOutput<String?>('applicationLanguage');
     caseInsensitive = registerOutput<bool?>('caseInsensitive');
     description = registerOutput<String>('description');
     enablePassivemode = registerOutput<bool?>('enablePassivemode');
     enforcementMode = registerOutput<String?>('enforcementMode');
     fileTypes = registerOutput<List<Map<String, dynamic>>?>('fileTypes');
-    graphqlProfiles = registerOutput<List<Map<String, dynamic>>?>(
-      'graphqlProfiles',
-    );
+    graphqlProfiles = registerOutput<List<Map<String, dynamic>>?>('graphqlProfiles');
     hostNames = registerOutput<List<Map<String, dynamic>>?>('hostNames');
     ipExceptions = registerOutput<List<Map<String, dynamic>>?>('ipExceptions');
     modifications = registerOutput<List<String>?>('modifications');
@@ -459,9 +431,7 @@ class WafPolicy extends pulumi.CustomResource {
     openApiFiles = registerOutput<List<String>?>('openApiFiles');
     parameters = registerOutput<List<String>?>('parameters');
     partition = registerOutput<String?>('partition');
-    policyBuilders = registerOutput<List<Map<String, dynamic>>?>(
-      'policyBuilders',
-    );
+    policyBuilders = registerOutput<List<Map<String, dynamic>>?>('policyBuilders');
     policyExportJson = registerOutput<String>('policyExportJson');
     policyId = registerOutput<String>('policyId');
     policyImportJson = registerOutput<String?>('policyImportJson');
@@ -469,9 +439,7 @@ class WafPolicy extends pulumi.CustomResource {
     serverTechnologies = registerOutput<List<String>?>('serverTechnologies');
     signatureSets = registerOutput<List<String>?>('signatureSets');
     signatures = registerOutput<List<String>?>('signatures');
-    signaturesSettings = registerOutput<List<Map<String, dynamic>>?>(
-      'signaturesSettings',
-    );
+    signaturesSettings = registerOutput<List<Map<String, dynamic>>?>('signaturesSettings');
     templateLink = registerOutput<String?>('templateLink');
     templateName = registerOutput<String>('templateName');
     type = registerOutput<String?>('type');
@@ -496,20 +464,18 @@ class WafPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/wafPolicy:WafPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/wafPolicy:WafPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationLanguage = registerOutput<String?>('applicationLanguage');
     caseInsensitive = registerOutput<bool?>('caseInsensitive');
     description = registerOutput<String>('description');
     enablePassivemode = registerOutput<bool?>('enablePassivemode');
     enforcementMode = registerOutput<String?>('enforcementMode');
     fileTypes = registerOutput<List<Map<String, dynamic>>?>('fileTypes');
-    graphqlProfiles = registerOutput<List<Map<String, dynamic>>?>(
-      'graphqlProfiles',
-    );
+    graphqlProfiles = registerOutput<List<Map<String, dynamic>>?>('graphqlProfiles');
     hostNames = registerOutput<List<Map<String, dynamic>>?>('hostNames');
     ipExceptions = registerOutput<List<Map<String, dynamic>>?>('ipExceptions');
     modifications = registerOutput<List<String>?>('modifications');
@@ -517,9 +483,7 @@ class WafPolicy extends pulumi.CustomResource {
     openApiFiles = registerOutput<List<String>?>('openApiFiles');
     parameters = registerOutput<List<String>?>('parameters');
     partition = registerOutput<String?>('partition');
-    policyBuilders = registerOutput<List<Map<String, dynamic>>?>(
-      'policyBuilders',
-    );
+    policyBuilders = registerOutput<List<Map<String, dynamic>>?>('policyBuilders');
     policyExportJson = registerOutput<String>('policyExportJson');
     policyId = registerOutput<String>('policyId');
     policyImportJson = registerOutput<String?>('policyImportJson');
@@ -527,9 +491,7 @@ class WafPolicy extends pulumi.CustomResource {
     serverTechnologies = registerOutput<List<String>?>('serverTechnologies');
     signatureSets = registerOutput<List<String>?>('signatureSets');
     signatures = registerOutput<List<String>?>('signatures');
-    signaturesSettings = registerOutput<List<Map<String, dynamic>>?>(
-      'signaturesSettings',
-    );
+    signaturesSettings = registerOutput<List<Map<String, dynamic>>?>('signaturesSettings');
     templateLink = registerOutput<String?>('templateLink');
     templateName = registerOutput<String>('templateName');
     type = registerOutput<String?>('type');

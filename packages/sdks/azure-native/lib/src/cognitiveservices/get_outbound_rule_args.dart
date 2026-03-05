@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOutboundRuleArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
-
   /// Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
   final pulumi.Input<String> managedNetworkName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the cognitive services account managed network outbound rule
   final pulumi.Input<String> ruleName;
 
@@ -43,13 +40,10 @@ class GetOutboundRuleArgs {
   factory GetOutboundRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetOutboundRuleArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      managedNetworkName: pulumi.Input.fromValue(
-        map['managedNetworkName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      managedNetworkName: pulumi.Input.fromValue(map['managedNetworkName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
     );
   }
 }
+

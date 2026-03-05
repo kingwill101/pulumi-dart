@@ -305,7 +305,6 @@ import 'bucket_policy_state.dart';
 class BucketPolicy extends pulumi.CustomResource {
   /// The name of the Bucket.
   late final pulumi.Output<String> bucket;
-
   /// Json-formatted authorization policies for buckets.
   late final pulumi.Output<String> policy;
 
@@ -318,11 +317,11 @@ class BucketPolicy extends pulumi.CustomResource {
     BucketPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketPolicy:BucketPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketPolicy:BucketPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     policy = registerOutput<String>('policy');
   }
@@ -345,11 +344,11 @@ class BucketPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketPolicy:BucketPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketPolicy:BucketPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     policy = registerOutput<String>('policy');
   }

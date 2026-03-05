@@ -8,21 +8,20 @@ class DomainDevicesDiskMirrorSourceNetworkInitiatorIqn {
 
   /// Creates a new [DomainDevicesDiskMirrorSourceNetworkInitiatorIqn].
   /// [name] Sets a name attribute for the iSCSI initiator's IQN for identification purposes.
-  DomainDevicesDiskMirrorSourceNetworkInitiatorIqn({this.name});
+  DomainDevicesDiskMirrorSourceNetworkInitiatorIqn({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory DomainDevicesDiskMirrorSourceNetworkInitiatorIqn.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskMirrorSourceNetworkInitiatorIqn.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceNetworkInitiatorIqn(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -227,16 +227,12 @@ import 'machine_group_state.dart';
 class MachineGroup extends pulumi.CustomResource {
   /// The specific machine identification, which can be an IP address or user-defined identity.
   late final pulumi.Output<List<String>> identifyLists;
-
   /// The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
   late final pulumi.Output<String?> identifyType;
-
   /// The machine group name, which is unique in the same project.
   late final pulumi.Output<String> name;
-
   /// The project name to the machine group belongs.
   late final pulumi.Output<String> project;
-
   /// The topic of a machine group.
   late final pulumi.Output<String?> topic;
 
@@ -249,11 +245,11 @@ class MachineGroup extends pulumi.CustomResource {
     MachineGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:log/machineGroup:MachineGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:log/machineGroup:MachineGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     identifyLists = registerOutput<List<String>>('identifyLists');
     identifyType = registerOutput<String?>('identifyType');
     this.name = registerOutput<String>('name');
@@ -279,11 +275,11 @@ class MachineGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:log/machineGroup:MachineGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:log/machineGroup:MachineGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     identifyLists = registerOutput<List<String>>('identifyLists');
     identifyType = registerOutput<String?>('identifyType');
     this.name = registerOutput<String>('name');

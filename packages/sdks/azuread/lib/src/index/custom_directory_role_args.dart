@@ -10,19 +10,14 @@ import 'custom_directory_role_permission.dart';
 class CustomDirectoryRoleArgs {
   /// The description of the custom directory role.
   final pulumi.Input<String>? description;
-
   /// The display name of the custom directory role.
   final pulumi.Input<String> displayName;
-
   /// Indicates whether the role is enabled for assignment.
   final pulumi.Input<bool> enabled;
-
   /// A collection of `permissions` blocks as documented below.
   final pulumi.Input<List<CustomDirectoryRolePermission>> permissions;
-
   /// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
   final pulumi.Input<String>? templateId;
-
   /// The version of the role definition. This can be any arbitrary string between 1-128 characters.
   final pulumi.Input<String> version;
 
@@ -47,18 +42,7 @@ class CustomDirectoryRoleArgs {
       'description': ?description,
       'displayName': displayName,
       'enabled': enabled,
-      'permissions':
-          pulumi.Input.mapInputValue<
-            List<CustomDirectoryRolePermission>,
-            List<Map<String, dynamic>>
-          >(
-            permissions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CustomDirectoryRolePermission,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'permissions': pulumi.Input.mapInputValue<List<CustomDirectoryRolePermission>, List<Map<String, dynamic>>>(permissions, (value) => pulumi.Input.encodeList<CustomDirectoryRolePermission, Map<String, dynamic>>(value, (value) => value.toMap())),
       'templateId': ?templateId,
       'version': version,
     };
@@ -66,27 +50,13 @@ class CustomDirectoryRoleArgs {
 
   factory CustomDirectoryRoleArgs.fromMap(Map<String, dynamic> map) {
     return CustomDirectoryRoleArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      permissions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<CustomDirectoryRolePermission>(
-          map['permissions']!,
-          (value) => CustomDirectoryRolePermission.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      templateId: (() {
-        final guardedValue = map['templateId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      permissions: pulumi.Input.fromValue(pulumi.Input.decodeList<CustomDirectoryRolePermission>(map['permissions']!, (value) => CustomDirectoryRolePermission.fromMap((value as Map).cast<String, dynamic>()))),
+      templateId: (() { final guardedValue = map['templateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

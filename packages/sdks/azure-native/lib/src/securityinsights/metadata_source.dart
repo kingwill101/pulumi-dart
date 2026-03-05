@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetadataSource {
   /// Source type of the content
   final pulumi.Input<String> kind;
-
   /// Name of the content source.  The repo name, solution name, LA workspace name etc.
   final pulumi.Input<String>? name;
-
   /// ID of the content source.  The solution ID, workspace ID, etc
   final pulumi.Input<String>? sourceId;
 
@@ -17,7 +15,11 @@ class MetadataSource {
   /// [kind] Source type of the content
   /// [name] Name of the content source.  The repo name, solution name, LA workspace name etc.
   /// [sourceId] ID of the content source.  The solution ID, workspace ID, etc
-  MetadataSource({required this.kind, this.name, this.sourceId});
+  MetadataSource({
+    required this.kind,
+    this.name,
+    this.sourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,16 +32,9 @@ class MetadataSource {
   factory MetadataSource.fromMap(Map<String, dynamic> map) {
     return MetadataSource(
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceId: (() {
-        final guardedValue = map['sourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceId: (() { final guardedValue = map['sourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -385,26 +385,20 @@ import 'api_access_key_state.dart';
 class ApiAccessKey extends pulumi.CustomResource {
   /// The New Relic account ID where the API access key will be created.
   late final pulumi.Output<String?> accountId;
-
   /// Required if `key_type` is `INGEST`. Valid options are `BROWSER` or `LICENSE` (case-sensitive).
   late final pulumi.Output<String> ingestType;
-
   /// The actual API key.
   /// - It is important to exercise caution when exporting the value of `key`, as it is sensitive information. Avoid logging or exposing it inappropriately.
   late final pulumi.Output<String> key;
-
   /// The type of API key to create. Valid options are `INGEST` or `USER` (case-sensitive).
   /// - If `key_type` is `INGEST`, then `ingest_type` must be specified.
   /// - If `key_type` is `USER`, then `user_id` must be specified.
   late final pulumi.Output<String> keyType;
-
   /// The name of the API key.
   /// - **Note**: While `name` is optional, it is &lt;b style="color:red;"&gt;\*\*strongly recommended\*\*&lt;/b&gt; to provide a meaningful name for easier identification and management of keys. If a `name` is not provided, the API will assign a default name when processing the request to create the API key, which may cause unexpected drift in your Terraform state. To prevent this, it is best practice to always specify a `name`.
   late final pulumi.Output<String> name;
-
   /// Additional notes about the API access key.
   late final pulumi.Output<String> notes;
-
   /// Required if `key_type` is `USER`. The New Relic user ID for which the API access key will be created.
   late final pulumi.Output<String> userId;
 
@@ -417,11 +411,11 @@ class ApiAccessKey extends pulumi.CustomResource {
     ApiAccessKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/apiAccessKey:ApiAccessKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/apiAccessKey:ApiAccessKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String?>('accountId');
     ingestType = registerOutput<String>('ingestType');
     key = registerOutput<String>('key');
@@ -449,11 +443,11 @@ class ApiAccessKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/apiAccessKey:ApiAccessKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/apiAccessKey:ApiAccessKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String?>('accountId');
     ingestType = registerOutput<String>('ingestType');
     key = registerOutput<String>('key');

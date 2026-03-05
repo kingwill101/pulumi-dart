@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth {
   /// Mirror back-to-source source Station back-to-source AK
   final pulumi.Input<String>? accessKeyId;
-
   /// Mirroring back to the source station back to the source SK will be automatically desensitized when obtaining the configuration.
   final pulumi.Input<String>? accessKeySecret;
-
   /// Authentication type of mirror return Source
   final pulumi.Input<String>? authType;
-
   /// Signature Region
   final pulumi.Input<String>? region;
 
@@ -36,30 +33,13 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth {
     };
   }
 
-  factory BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth(
-      accessKeyId: (() {
-        final guardedValue = map['accessKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      accessKeySecret: (() {
-        final guardedValue = map['accessKeySecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      authType: (() {
-        final guardedValue = map['authType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessKeyId: (() { final guardedValue = map['accessKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accessKeySecret: (() { final guardedValue = map['accessKeySecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authType: (() { final guardedValue = map['authType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

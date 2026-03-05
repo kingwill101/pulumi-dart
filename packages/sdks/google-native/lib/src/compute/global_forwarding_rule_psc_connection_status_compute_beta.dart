@@ -9,17 +9,13 @@ enum GlobalForwardingRulePscConnectionStatusComputeBeta {
   const GlobalForwardingRulePscConnectionStatusComputeBeta(this.wireValue);
   final String wireValue;
 
-  static GlobalForwardingRulePscConnectionStatusComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in GlobalForwardingRulePscConnectionStatusComputeBeta.values) {
+  static GlobalForwardingRulePscConnectionStatusComputeBeta fromValue(String value) {
+    for (final item in GlobalForwardingRulePscConnectionStatusComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GlobalForwardingRulePscConnectionStatusComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown GlobalForwardingRulePscConnectionStatusComputeBeta value: $value');
   }
 }
+

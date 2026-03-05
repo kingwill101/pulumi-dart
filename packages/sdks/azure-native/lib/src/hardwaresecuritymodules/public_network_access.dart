@@ -14,3 +14,4 @@ enum PublicNetworkAccess {
     throw ArgumentError('Unknown PublicNetworkAccess value: $value');
   }
 }
+

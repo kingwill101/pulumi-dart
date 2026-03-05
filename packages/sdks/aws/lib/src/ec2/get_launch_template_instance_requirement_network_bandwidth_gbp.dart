@@ -15,15 +15,17 @@ class GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': max, 'min': min};
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp(
       max: pulumi.Input.fromValue(map['max'] as double),
       min: pulumi.Input.fromValue(map['min'] as double),
     );
   }
 }
+

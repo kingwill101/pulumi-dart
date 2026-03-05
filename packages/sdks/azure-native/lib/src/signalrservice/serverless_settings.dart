@@ -16,7 +16,9 @@ class ServerlessSettings {
 
   /// Creates a new [ServerlessSettings].
   /// [connectionTimeoutInSeconds] Gets or sets Client Connection Timeout. Optional to be set.
-  ServerlessSettings({this.connectionTimeoutInSeconds});
+  ServerlessSettings({
+    this.connectionTimeoutInSeconds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,11 +28,8 @@ class ServerlessSettings {
 
   factory ServerlessSettings.fromMap(Map<String, dynamic> map) {
     return ServerlessSettings(
-      connectionTimeoutInSeconds: (() {
-        final guardedValue = map['connectionTimeoutInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      connectionTimeoutInSeconds: (() { final guardedValue = map['connectionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

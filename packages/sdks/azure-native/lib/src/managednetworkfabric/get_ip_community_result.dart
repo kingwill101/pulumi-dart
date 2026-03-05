@@ -8,37 +8,26 @@ import 'system_data_response.dart';
 class GetIpCommunityResult {
   /// Administrative state of the resource.
   final String administrativeState;
-
   /// Switch configuration description.
   final String? annotation;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Configuration state of the resource.
   final String configurationState;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// List of IP Community Rules.
   final List<IpCommunityRuleResponse> ipCommunityRules;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// Provisioning state of the resource.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -77,11 +66,7 @@ class GetIpCommunityResult {
       'azureApiVersion': azureApiVersion,
       'configurationState': configurationState,
       'id': id,
-      'ipCommunityRules':
-          pulumi.Input.encodeList<
-            IpCommunityRuleResponse,
-            Map<String, dynamic>
-          >(ipCommunityRules, (value) => value.toMap()),
+      'ipCommunityRules': pulumi.Input.encodeList<IpCommunityRuleResponse, Map<String, dynamic>>(ipCommunityRules, (value) => value.toMap()),
       'location': location,
       'name': name,
       'provisioningState': provisioningState,
@@ -94,32 +79,18 @@ class GetIpCommunityResult {
   factory GetIpCommunityResult.fromMap(Map<String, dynamic> map) {
     return GetIpCommunityResult(
       administrativeState: map['administrativeState'] as String,
-      annotation: (() {
-        final guardedValue = map['annotation'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
       configurationState: map['configurationState'] as String,
       id: map['id'] as String,
-      ipCommunityRules: pulumi.Input.decodeList<IpCommunityRuleResponse>(
-        map['ipCommunityRules']!,
-        (value) => IpCommunityRuleResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      ipCommunityRules: pulumi.Input.decodeList<IpCommunityRuleResponse>(map['ipCommunityRules']!, (value) => IpCommunityRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

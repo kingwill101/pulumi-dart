@@ -10,31 +10,22 @@ import 'dataset_postgresql_schema_column.dart';
 class DatasetPostgresqlArgs {
   /// A map of additional properties to associate with the Data Factory Dataset PostgreSQL.
   final pulumi.Input<Map<String, String>>? additionalProperties;
-
   /// List of tags that can be used for describing the Data Factory Dataset PostgreSQL.
   final pulumi.Input<List<String>>? annotations;
-
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
-
   /// The description for the Data Factory Dataset PostgreSQL.
   final pulumi.Input<String>? description;
-
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   final pulumi.Input<String>? folder;
-
   /// The Data Factory Linked Service name in which to associate the Dataset with.
   final pulumi.Input<String> linkedServiceName;
-
   /// Specifies the name of the Data Factory Dataset PostgreSQL. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
-
   /// A map of parameters to associate with the Data Factory Dataset PostgreSQL.
   final pulumi.Input<Map<String, String>>? parameters;
-
   /// A `schema_column` block as defined below.
   final pulumi.Input<List<DatasetPostgresqlSchemaColumn>>? schemaColumns;
-
   /// The table name of the Data Factory Dataset PostgreSQL.
   final pulumi.Input<String>? tableName;
 
@@ -72,79 +63,24 @@ class DatasetPostgresqlArgs {
       'linkedServiceName': linkedServiceName,
       'name': ?name,
       'parameters': ?parameters,
-      'schemaColumns':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DatasetPostgresqlSchemaColumn>,
-            List<Map<String, dynamic>>
-          >(
-            schemaColumns,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DatasetPostgresqlSchemaColumn,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'schemaColumns': ?pulumi.Input.mapOptionalInputValue<List<DatasetPostgresqlSchemaColumn>, List<Map<String, dynamic>>>(schemaColumns, (value) => pulumi.Input.encodeList<DatasetPostgresqlSchemaColumn, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tableName': ?tableName,
     };
   }
 
   factory DatasetPostgresqlArgs.fromMap(Map<String, dynamic> map) {
     return DatasetPostgresqlArgs(
-      additionalProperties: (() {
-        final guardedValue = map['additionalProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      additionalProperties: (() { final guardedValue = map['additionalProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       dataFactoryId: pulumi.Input.fromValue(map['dataFactoryId'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      folder: (() {
-        final guardedValue = map['folder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      linkedServiceName: pulumi.Input.fromValue(
-        map['linkedServiceName'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      schemaColumns: (() {
-        final guardedValue = map['schemaColumns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DatasetPostgresqlSchemaColumn>(
-            guardedValue,
-            (value) => DatasetPostgresqlSchemaColumn.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      tableName: (() {
-        final guardedValue = map['tableName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      linkedServiceName: pulumi.Input.fromValue(map['linkedServiceName'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      schemaColumns: (() { final guardedValue = map['schemaColumns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DatasetPostgresqlSchemaColumn>(guardedValue, (value) => DatasetPostgresqlSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      tableName: (() { final guardedValue = map['tableName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

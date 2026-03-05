@@ -424,27 +424,20 @@ import 'scheduled_sql_state.dart';
 class ScheduledSql extends pulumi.CustomResource {
   /// Job description.
   late final pulumi.Output<String?> description;
-
   /// Task display name.
   late final pulumi.Output<String> displayName;
-
   /// A short description of struct.
   late final pulumi.Output<String> project;
-
   /// Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
   late final pulumi.Output<ScheduledSqlSchedule> schedule;
-
   /// Task configuration. See `scheduled_sql_configuration` below.
-  late final pulumi.Output<ScheduledSqlScheduledSqlConfiguration>
-  scheduledSqlConfiguration;
-
+  late final pulumi.Output<ScheduledSqlScheduledSqlConfiguration> scheduledSqlConfiguration;
   /// The job name. The naming rules are as follows:
   /// - Job names must be unique within the same project.
   /// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
   /// - The name must start and end with a lowercase letter or digit.
   /// - The length must be between 2 and 64 characters.
   late final pulumi.Output<String> scheduledSqlName;
-
   /// The status of the scheduled SQL job.
   late final pulumi.Output<String> status;
 
@@ -457,35 +450,16 @@ class ScheduledSql extends pulumi.CustomResource {
     ScheduledSqlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sls/scheduledSql:ScheduledSql',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sls/scheduledSql:ScheduledSql',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     project = registerOutput<String>('project');
-    schedule = registerOutput<ScheduledSqlSchedule>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduledSqlSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    scheduledSqlConfiguration =
-        registerOutput<ScheduledSqlScheduledSqlConfiguration>(
-          'scheduledSqlConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ScheduledSqlScheduledSqlConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    schedule = registerOutput<ScheduledSqlSchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledSqlSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduledSqlConfiguration = registerOutput<ScheduledSqlScheduledSqlConfiguration>('scheduledSqlConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledSqlScheduledSqlConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scheduledSqlName = registerOutput<String>('scheduledSqlName');
     status = registerOutput<String>('status');
   }
@@ -508,35 +482,16 @@ class ScheduledSql extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sls/scheduledSql:ScheduledSql',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sls/scheduledSql:ScheduledSql',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     project = registerOutput<String>('project');
-    schedule = registerOutput<ScheduledSqlSchedule>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduledSqlSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    scheduledSqlConfiguration =
-        registerOutput<ScheduledSqlScheduledSqlConfiguration>(
-          'scheduledSqlConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ScheduledSqlScheduledSqlConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    schedule = registerOutput<ScheduledSqlSchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledSqlSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduledSqlConfiguration = registerOutput<ScheduledSqlScheduledSqlConfiguration>('scheduledSqlConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledSqlScheduledSqlConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scheduledSqlName = registerOutput<String>('scheduledSqlName');
     status = registerOutput<String>('status');
   }

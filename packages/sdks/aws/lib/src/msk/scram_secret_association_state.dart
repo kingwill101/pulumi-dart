@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScramSecretAssociationState {
   /// Amazon Resource Name (ARN) of the MSK cluster.
   final pulumi.Input<String>? clusterArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// List of AWS Secrets Manager secret ARNs.
   final pulumi.Input<List<String>>? secretArnLists;
 
@@ -33,21 +31,10 @@ class ScramSecretAssociationState {
 
   factory ScramSecretAssociationState.fromMap(Map<String, dynamic> map) {
     return ScramSecretAssociationState(
-      clusterArn: (() {
-        final guardedValue = map['clusterArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretArnLists: (() {
-        final guardedValue = map['secretArnLists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      clusterArn: (() { final guardedValue = map['clusterArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretArnLists: (() { final guardedValue = map['secretArnLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

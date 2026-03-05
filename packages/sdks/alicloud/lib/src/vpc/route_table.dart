@@ -178,31 +178,22 @@ class RouteTable extends pulumi.CustomResource {
   /// - `VSwitch`: switch.
   /// - `Gateway`:IPv4 Gateway.
   late final pulumi.Output<String> associateType;
-
   /// The creation time of the routing table
   late final pulumi.Output<String> createTime;
-
   /// Description of the routing table.
   late final pulumi.Output<String?> description;
-
   /// . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
   late final pulumi.Output<String> name;
-
   /// Resource group ID.
   late final pulumi.Output<String> resourceGroupId;
-
   /// Route Table Receive Propagate Route State
   late final pulumi.Output<bool> routePropagationEnable;
-
   /// The name of the routing table.
   late final pulumi.Output<String> routeTableName;
-
   /// Routing table state
   late final pulumi.Output<String> status;
-
   /// The tag
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of VPC.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -217,11 +208,11 @@ class RouteTable extends pulumi.CustomResource {
     RouteTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/routeTable:RouteTable',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/routeTable:RouteTable',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     associateType = registerOutput<String>('associateType');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -252,11 +243,11 @@ class RouteTable extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/routeTable:RouteTable',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/routeTable:RouteTable',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     associateType = registerOutput<String>('associateType');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

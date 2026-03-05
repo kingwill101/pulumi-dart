@@ -16,3 +16,4 @@ enum PulumiOperation {
     throw ArgumentError('Unknown PulumiOperation value: $value');
   }
 }
+

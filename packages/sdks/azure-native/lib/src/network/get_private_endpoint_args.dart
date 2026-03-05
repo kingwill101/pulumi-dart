@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateEndpointArgs {
   /// Expands referenced resources.
   final pulumi.Input<String>? expand;
-
   /// The name of the private endpoint.
   final pulumi.Input<String> privateEndpointName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,17 +34,10 @@ class GetPrivateEndpointArgs {
 
   factory GetPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateEndpointName: pulumi.Input.fromValue(
-        map['privateEndpointName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateEndpointName: pulumi.Input.fromValue(map['privateEndpointName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

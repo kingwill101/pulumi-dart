@@ -6,19 +6,14 @@ import 'get_waf_rules_waf_rule_rate_limit_status.dart';
 class GetWafRulesWafRuleRateLimit {
   /// The statistical interval. Valid values: 5 to 1800. Unit: seconds.
   final pulumi.Input<int> interval;
-
   /// The information about the HTTP status code.
   final pulumi.Input<List<GetWafRulesWafRuleRateLimitStatus>> statuses;
-
   /// The subfield of the target field.
   final pulumi.Input<String> subKey;
-
   /// The statistical field for frequency control.
   final pulumi.Input<String> target;
-
   /// The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
   final pulumi.Input<int> threshold;
-
   /// The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
   final pulumi.Input<int> ttl;
 
@@ -41,18 +36,7 @@ class GetWafRulesWafRuleRateLimit {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'interval': interval,
-      'statuses':
-          pulumi.Input.mapInputValue<
-            List<GetWafRulesWafRuleRateLimitStatus>,
-            List<Map<String, dynamic>>
-          >(
-            statuses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetWafRulesWafRuleRateLimitStatus,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'statuses': pulumi.Input.mapInputValue<List<GetWafRulesWafRuleRateLimitStatus>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<GetWafRulesWafRuleRateLimitStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'subKey': subKey,
       'target': target,
       'threshold': threshold,
@@ -63,14 +47,7 @@ class GetWafRulesWafRuleRateLimit {
   factory GetWafRulesWafRuleRateLimit.fromMap(Map<String, dynamic> map) {
     return GetWafRulesWafRuleRateLimit(
       interval: pulumi.Input.fromValue(map['interval'] as int),
-      statuses: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetWafRulesWafRuleRateLimitStatus>(
-          map['statuses']!,
-          (value) => GetWafRulesWafRuleRateLimitStatus.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      statuses: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWafRulesWafRuleRateLimitStatus>(map['statuses']!, (value) => GetWafRulesWafRuleRateLimitStatus.fromMap((value as Map).cast<String, dynamic>()))),
       subKey: pulumi.Input.fromValue(map['subKey'] as String),
       target: pulumi.Input.fromValue(map['target'] as String),
       threshold: pulumi.Input.fromValue(map['threshold'] as int),
@@ -78,3 +55,4 @@ class GetWafRulesWafRuleRateLimit {
     );
   }
 }
+

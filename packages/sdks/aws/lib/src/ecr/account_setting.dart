@@ -307,10 +307,8 @@ import 'account_setting_state.dart';
 class AccountSetting extends pulumi.CustomResource {
   /// Name of the account setting. One of: `BASIC_SCAN_TYPE_VERSION`, `BLOB_MOUNTING`, `REGISTRY_POLICY_SCOPE`.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Setting value that is specified. Valid values are:
   /// * If `name` is specified as `BASIC_SCAN_TYPE_VERSION`, one of: `AWS_NATIVE`, `CLAIR`.
   /// * If `name` is specified as `BLOB_MOUNTING`, one of: `ENABLED`, `DISABLED`.
@@ -326,11 +324,11 @@ class AccountSetting extends pulumi.CustomResource {
     AccountSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ecr/accountSetting:AccountSetting',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ecr/accountSetting:AccountSetting',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     value = registerOutput<String>('value');
@@ -354,11 +352,11 @@ class AccountSetting extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ecr/accountSetting:AccountSetting',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ecr/accountSetting:AccountSetting',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     value = registerOutput<String>('value');

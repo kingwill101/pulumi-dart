@@ -48,11 +48,8 @@ class GetFhirArgs {
       fhirId1: pulumi.Input.fromValue(map['fhirId1'] as String),
       fhirStoreId: pulumi.Input.fromValue(map['fhirStoreId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

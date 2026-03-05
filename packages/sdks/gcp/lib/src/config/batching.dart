@@ -9,7 +9,10 @@ class Batching {
   /// Creates a new [Batching].
   /// [enableBatching] Optional.
   /// [sendAfter] Optional.
-  Batching({this.enableBatching, this.sendAfter});
+  Batching({
+    this.enableBatching,
+    this.sendAfter,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,16 +23,9 @@ class Batching {
 
   factory Batching.fromMap(Map<String, dynamic> map) {
     return Batching(
-      enableBatching: (() {
-        final guardedValue = map['enableBatching'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sendAfter: (() {
-        final guardedValue = map['sendAfter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enableBatching: (() { final guardedValue = map['enableBatching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sendAfter: (() { final guardedValue = map['sendAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

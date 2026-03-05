@@ -17,3 +17,4 @@ enum DataStoreContentConfig {
     throw ArgumentError('Unknown DataStoreContentConfig value: $value');
   }
 }
+

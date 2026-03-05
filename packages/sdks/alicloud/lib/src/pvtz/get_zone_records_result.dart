@@ -11,11 +11,9 @@ class GetZoneRecordsResult {
   final String? keyword;
   final String? lang;
   final String? outputFile;
-
   /// A list of Zone Record. Each element contains the following attributes:
   final List<GetZoneRecordsRecord> records;
   final String? searchMode;
-
   /// The state of the Private Zone Record.
   final String? status;
   final String? tag;
@@ -55,11 +53,7 @@ class GetZoneRecordsResult {
       'keyword': ?keyword,
       'lang': ?lang,
       'outputFile': ?outputFile,
-      'records':
-          pulumi.Input.encodeList<GetZoneRecordsRecord, Map<String, dynamic>>(
-            records,
-            (value) => value.toMap(),
-          ),
+      'records': pulumi.Input.encodeList<GetZoneRecordsRecord, Map<String, dynamic>>(records, (value) => value.toMap()),
       'searchMode': ?searchMode,
       'status': ?status,
       'tag': ?tag,
@@ -72,48 +66,16 @@ class GetZoneRecordsResult {
     return GetZoneRecordsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyword: (() {
-        final guardedValue = map['keyword'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      lang: (() {
-        final guardedValue = map['lang'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      records: pulumi.Input.decodeList<GetZoneRecordsRecord>(
-        map['records']!,
-        (value) => GetZoneRecordsRecord.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      searchMode: (() {
-        final guardedValue = map['searchMode'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tag: (() {
-        final guardedValue = map['tag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      userClientIp: (() {
-        final guardedValue = map['userClientIp'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      keyword: (() { final guardedValue = map['keyword']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lang: (() { final guardedValue = map['lang']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      records: pulumi.Input.decodeList<GetZoneRecordsRecord>(map['records']!, (value) => GetZoneRecordsRecord.fromMap((value as Map).cast<String, dynamic>())),
+      searchMode: (() { final guardedValue = map['searchMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userClientIp: (() { final guardedValue = map['userClientIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zoneId: map['zoneId'] as String,
     );
   }
 }
+

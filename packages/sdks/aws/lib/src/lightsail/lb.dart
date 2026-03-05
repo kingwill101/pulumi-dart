@@ -134,42 +134,30 @@ import 'lb_state.dart';
 class Lb extends pulumi.CustomResource {
   /// ARN of the Lightsail load balancer.
   late final pulumi.Output<String> arn;
-
   /// Timestamp when the load balancer was created.
   late final pulumi.Output<String> createdAt;
-
   /// DNS name of the load balancer.
   late final pulumi.Output<String> dnsName;
-
   /// Health check path of the load balancer. Default value `/`.
   late final pulumi.Output<String?> healthCheckPath;
-
   /// Instance port the load balancer will connect to.
   late final pulumi.Output<int> instancePort;
-
   /// IP address type of the load balancer. Valid values: `dualstack`, `ipv4`. Default value `dualstack`.
   late final pulumi.Output<String?> ipAddressType;
-
   /// Name of the Lightsail load balancer.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Protocol of the load balancer.
   late final pulumi.Output<String> protocol;
-
   /// Public ports of the load balancer.
   late final pulumi.Output<List<int>> publicPorts;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Support code for the load balancer. Include this code in your email to support when you have questions about a load balancer in Lightsail. This code enables our support team to look up your Lightsail information more easily.
   late final pulumi.Output<String> supportCode;
-
   /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -177,13 +165,16 @@ class Lb extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Lb]. {@macro pulumi_lightsail_lb_lb_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Lb(String name, {LbArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:lightsail/lb:Lb',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Lb(
+    String name, {
+    LbArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:lightsail/lb:Lb',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     dnsName = registerOutput<String>('dnsName');
@@ -200,7 +191,11 @@ class Lb extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Lb] resource's state with the given [name] and [id].
-  static Lb get(String name, pulumi.Input<String> id, {LbState? state}) {
+  static Lb get(
+    String name,
+    pulumi.Input<String> id, {
+    LbState? state,
+  }) {
     return Lb._get(
       name,
       state: state?.toMap(),
@@ -213,11 +208,11 @@ class Lb extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lightsail/lb:Lb',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lightsail/lb:Lb',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     dnsName = registerOutput<String>('dnsName');

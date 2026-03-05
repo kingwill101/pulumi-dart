@@ -33,11 +33,8 @@ class GetDatabaseArgs {
     return GetDatabaseArgs(
       database: pulumi.Input.fromValue(map['database'] as String),
       instance: pulumi.Input.fromValue(map['instance'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

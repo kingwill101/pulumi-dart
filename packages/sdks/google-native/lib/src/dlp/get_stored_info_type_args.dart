@@ -32,14 +32,9 @@ class GetStoredInfoTypeArgs {
   factory GetStoredInfoTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetStoredInfoTypeArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storedInfoTypeId: pulumi.Input.fromValue(
-        map['storedInfoTypeId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storedInfoTypeId: pulumi.Input.fromValue(map['storedInfoTypeId'] as String),
     );
   }
 }
+

@@ -8,21 +8,20 @@ class ResourceConcurrencyControlOptionResponse {
 
   /// Creates a new [ResourceConcurrencyControlOptionResponse].
   /// [policy] The policy.
-  ResourceConcurrencyControlOptionResponse({this.policy});
+  ResourceConcurrencyControlOptionResponse({
+    this.policy,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policy': ?policy};
+    return <String, dynamic>{
+      'policy': ?policy,
+    };
   }
 
-  factory ResourceConcurrencyControlOptionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceConcurrencyControlOptionResponse.fromMap(Map<String, dynamic> map) {
     return ResourceConcurrencyControlOptionResponse(
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

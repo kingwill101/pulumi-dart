@@ -213,59 +213,44 @@ import 'edge_container_app_state.dart';
 class EdgeContainerApp extends pulumi.CustomResource {
   /// The time when the application was created.
   late final pulumi.Output<String> createTime;
-
   /// The application name must start with a lowercase letter. Lowercase letters, numbers, and bars are supported. The length is limited to 6 to 128 characters.
   late final pulumi.Output<String> edgeContainerAppName;
-
   /// The number of consecutive successful health checks required for an application to be considered as healthy. Valid values: 1 to 10. Default value: 2.
   late final pulumi.Output<int?> healthCheckFailTimes;
-
   /// The health check type. By default, this parameter is left empty.
   ///
   /// Valid values:
   late final pulumi.Output<String?> healthCheckHost;
-
   /// The domain name that is used for health checks. This parameter is empty by default.
   late final pulumi.Output<String> healthCheckHttpCode;
-
   /// The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
   /// Valid values: `1` to `100`.
   /// Default value: `3`.
   late final pulumi.Output<int> healthCheckInterval;
-
   /// The HTTP status code returned for a successful health check. Valid values:
   ///
   /// - **http\_2xx** (default)
   /// - **http\_3xx**
   late final pulumi.Output<String> healthCheckMethod;
-
   /// The URI used for health checks. The URI must be `1` to `80` characters in length. Default value: "/".
   late final pulumi.Output<int> healthCheckPort;
-
   /// The interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `5`.
   late final pulumi.Output<int> healthCheckSuccTimes;
-
   /// The port used for health checks. Valid values: 1 to 65535. Default value: 80.
   late final pulumi.Output<int> healthCheckTimeout;
-
   /// The remarks. This parameter is empty by default.
   late final pulumi.Output<String> healthCheckType;
-
   /// The HTTP request method for health checks. Valid values:
   ///
   /// - `HEAD` (default): requests the headers of the resource.
   /// - `GET`: requests the specified resource and returns both the headers and entity body.
   late final pulumi.Output<String> healthCheckUri;
-
   /// The backend port, which is also the service port of the application. Valid values: 1 to 65535.
   late final pulumi.Output<String?> remarks;
-
   /// The name of the application. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name must be 6 to 128 characters in length.
   late final pulumi.Output<int> servicePort;
-
   /// The status of the application.
   late final pulumi.Output<String> status;
-
   /// The server port. Valid values: 1 to 65535.
   late final pulumi.Output<int> targetPort;
 
@@ -278,11 +263,11 @@ class EdgeContainerApp extends pulumi.CustomResource {
     EdgeContainerAppArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/edgeContainerApp:EdgeContainerApp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/edgeContainerApp:EdgeContainerApp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     edgeContainerAppName = registerOutput<String>('edgeContainerAppName');
     healthCheckFailTimes = registerOutput<int?>('healthCheckFailTimes');
@@ -319,11 +304,11 @@ class EdgeContainerApp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/edgeContainerApp:EdgeContainerApp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/edgeContainerApp:EdgeContainerApp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     edgeContainerAppName = registerOutput<String>('edgeContainerAppName');
     healthCheckFailTimes = registerOutput<int?>('healthCheckFailTimes');

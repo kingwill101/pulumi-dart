@@ -7,29 +7,20 @@ import 'google_cloud_integrations_v1alpha_value_type_response.dart';
 class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse {
   /// Type of the parameter.
   final pulumi.Input<String> dataType;
-
   /// Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaValueTypeResponse>
-  defaultValue;
-
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaValueTypeResponse> defaultValue;
   /// The name (without prefix) to be displayed in the UI for this parameter. E.g. if the key is "foo.bar.myName", then the name would be "myName".
   final pulumi.Input<String> displayName;
-
   /// Specifies the input/output type for the parameter.
   final pulumi.Input<String> inputOutputType;
-
   /// Whether this parameter is a transient parameter.
   final pulumi.Input<bool> isTransient;
-
   /// This schema will be used to validate runtime JSON-typed values of this parameter.
   final pulumi.Input<String> jsonSchema;
-
   /// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
   final pulumi.Input<String> key;
-
   /// The identifier of the node (TaskConfig/TriggerConfig) this parameter was produced by, if it is a transient param or a copy of an input param.
   final pulumi.Input<String> producer;
-
   /// Searchable in the execution log or not.
   final pulumi.Input<bool> searchable;
 
@@ -58,11 +49,7 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataType': dataType,
-      'defaultValue':
-          pulumi.Input.mapInputValue<
-            GoogleCloudIntegrationsV1alphaValueTypeResponse,
-            Map<String, dynamic>
-          >(defaultValue, (value) => value.toMap()),
+      'defaultValue': pulumi.Input.mapInputValue<GoogleCloudIntegrationsV1alphaValueTypeResponse, Map<String, dynamic>>(defaultValue, (value) => value.toMap()),
       'displayName': displayName,
       'inputOutputType': inputOutputType,
       'isTransient': isTransient,
@@ -73,16 +60,10 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaIntegrationParameterResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIntegrationsV1alphaIntegrationParameterResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaIntegrationParameterResponse(
       dataType: pulumi.Input.fromValue(map['dataType'] as String),
-      defaultValue: pulumi.Input.fromValue(
-        GoogleCloudIntegrationsV1alphaValueTypeResponse.fromMap(
-          (map['defaultValue']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      defaultValue: pulumi.Input.fromValue(GoogleCloudIntegrationsV1alphaValueTypeResponse.fromMap((map['defaultValue']! as Map).cast<String, dynamic>())),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       inputOutputType: pulumi.Input.fromValue(map['inputOutputType'] as String),
       isTransient: pulumi.Input.fromValue(map['isTransient'] as bool),
@@ -93,3 +74,4 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse {
     );
   }
 }
+

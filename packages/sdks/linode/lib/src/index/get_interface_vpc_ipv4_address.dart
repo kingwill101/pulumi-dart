@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInterfaceVpcIpv4Address {
   /// The VPC IPv4 address.
   final pulumi.Input<String> address;
-
   /// The 1:1 NAT address for this VPC IPv4 address.
   final pulumi.Input<String> nat11Address;
-
   /// Whether this is the primary VPC IPv4 address.
   final pulumi.Input<bool> primary;
 
@@ -38,3 +36,4 @@ class GetInterfaceVpcIpv4Address {
     );
   }
 }
+

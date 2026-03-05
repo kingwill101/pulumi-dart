@@ -8,17 +8,20 @@ class CloudControlParameterSpecDefaultValueStringListValue {
 
   /// Creates a new [CloudControlParameterSpecDefaultValueStringListValue].
   /// [values] The strings in the list.
-  CloudControlParameterSpecDefaultValueStringListValue({required this.values});
+  CloudControlParameterSpecDefaultValueStringListValue({
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': values};
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
-  factory CloudControlParameterSpecDefaultValueStringListValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudControlParameterSpecDefaultValueStringListValue.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecDefaultValueStringListValue(
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

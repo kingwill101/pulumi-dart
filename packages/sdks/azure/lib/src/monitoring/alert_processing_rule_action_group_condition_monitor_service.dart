@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertProcessingRuleActionGroupConditionMonitorService {
   /// The operator for a given condition. Possible values are `Equals` and `NotEquals`.
   final pulumi.Input<String> operator;
-
   /// A list of values to match for a given condition. Possible values are `ActivityLog Administrative`, `ActivityLog Autoscale`, `ActivityLog Policy`, `ActivityLog Recommendation`, `ActivityLog Security`, `Application Insights`, `Azure Backup`, `Azure Stack Edge`, `Azure Stack Hub`, `Custom`, `Data Box Gateway`, `Health Platform`, `Log Alerts V2`, `Log Analytics`, `Platform`, `Prometheus`, `Resource Health`, `Smart Detector`, and `VM Insights - Health`.
   final pulumi.Input<List<String>> values;
 
@@ -18,15 +17,17 @@ class AlertProcessingRuleActionGroupConditionMonitorService {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'operator': operator, 'values': values};
+    return <String, dynamic>{
+      'operator': operator,
+      'values': values,
+    };
   }
 
-  factory AlertProcessingRuleActionGroupConditionMonitorService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertProcessingRuleActionGroupConditionMonitorService.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleActionGroupConditionMonitorService(
       operator: pulumi.Input.fromValue(map['operator'] as String),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

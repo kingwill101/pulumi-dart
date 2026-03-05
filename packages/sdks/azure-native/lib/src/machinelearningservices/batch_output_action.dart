@@ -15,3 +15,4 @@ enum BatchOutputAction {
     throw ArgumentError('Unknown BatchOutputAction value: $value');
   }
 }
+

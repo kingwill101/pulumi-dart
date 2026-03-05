@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicRuleDestinationVpcConfiguration {
   /// The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
   final pulumi.Input<String> roleArn;
-
   /// The security groups of the VPC destination.
   final pulumi.Input<List<String>>? securityGroups;
-
   /// The subnet IDs of the VPC destination.
   final pulumi.Input<List<String>> subnetIds;
-
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
 
@@ -36,20 +33,13 @@ class TopicRuleDestinationVpcConfiguration {
     };
   }
 
-  factory TopicRuleDestinationVpcConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TopicRuleDestinationVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return TopicRuleDestinationVpcConfiguration(
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
-      securityGroups: (() {
-        final guardedValue = map['securityGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      subnetIds: pulumi.Input.fromValue(
-        (map['subnetIds'] as List).cast<String>(),
-      ),
+      securityGroups: (() { final guardedValue = map['securityGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      subnetIds: pulumi.Input.fromValue((map['subnetIds'] as List).cast<String>()),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
+

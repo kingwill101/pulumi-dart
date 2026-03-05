@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig {
   /// The 'StorageIntelligence' edition that is applicable for the resource.
   final pulumi.Input<String> effectiveEdition;
-
   /// The Intelligence config resource that is applied for the target resource.
   final pulumi.Input<String> intelligenceConfig;
 
@@ -24,16 +23,11 @@ class GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig {
     };
   }
 
-  factory GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig.fromMap(Map<String, dynamic> map) {
     return GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig(
-      effectiveEdition: pulumi.Input.fromValue(
-        map['effectiveEdition'] as String,
-      ),
-      intelligenceConfig: pulumi.Input.fromValue(
-        map['intelligenceConfig'] as String,
-      ),
+      effectiveEdition: pulumi.Input.fromValue(map['effectiveEdition'] as String),
+      intelligenceConfig: pulumi.Input.fromValue(map['intelligenceConfig'] as String),
     );
   }
 }
+

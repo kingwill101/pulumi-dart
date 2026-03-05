@@ -13,16 +13,15 @@ class GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotCon
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'targetResourceCount': targetResourceCount};
+    return <String, dynamic>{
+      'targetResourceCount': targetResourceCount,
+    };
   }
 
-  factory GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap(Map<String, dynamic> map) {
     return GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration(
-      targetResourceCount: pulumi.Input.fromValue(
-        map['targetResourceCount'] as int,
-      ),
+      targetResourceCount: pulumi.Input.fromValue(map['targetResourceCount'] as int),
     );
   }
 }
+

@@ -1017,33 +1017,23 @@ import 'table_level_sharing_properties_response.dart';
 class KustoTableDataSet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Unique id for identifying a data set resource
   late final pulumi.Output<String> dataSetId;
-
   /// Kind of data set.
   /// Expected value is 'KustoTable'.
   late final pulumi.Output<String> kind;
-
   /// Resource id of the kusto database.
   late final pulumi.Output<String> kustoDatabaseResourceId;
-
   /// Location of the kusto cluster.
   late final pulumi.Output<String> location;
-
   /// Name of the azure resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the kusto table data set.
   late final pulumi.Output<String> provisioningState;
-
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Table level sharing properties for kusto database
-  late final pulumi.Output<TableLevelSharingPropertiesResponse>
-  tableLevelSharingProperties;
-
+  late final pulumi.Output<TableLevelSharingPropertiesResponse> tableLevelSharingProperties;
   /// Type of the azure resource
   late final pulumi.Output<String> type;
 
@@ -1056,11 +1046,11 @@ class KustoTableDataSet extends pulumi.CustomResource {
     KustoTableDataSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datashare:KustoTableDataSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datashare:KustoTableDataSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dataSetId = registerOutput<String>('dataSetId');
     kind = registerOutput<String>('kind');
@@ -1068,27 +1058,8 @@ class KustoTableDataSet extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    tableLevelSharingProperties =
-        registerOutput<TableLevelSharingPropertiesResponse>(
-          'tableLevelSharingProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return TableLevelSharingPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableLevelSharingProperties = registerOutput<TableLevelSharingPropertiesResponse>('tableLevelSharingProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableLevelSharingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

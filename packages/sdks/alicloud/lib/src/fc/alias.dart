@@ -209,16 +209,12 @@ import 'alias_state.dart';
 class Alias extends pulumi.CustomResource {
   /// Name for the alias you are creating.
   late final pulumi.Output<String> aliasName;
-
   /// Description of the alias.
   late final pulumi.Output<String?> description;
-
   /// The Function Compute alias' route configuration settings. See `routing_config` below.
   late final pulumi.Output<AliasRoutingConfig?> routingConfig;
-
   /// The Function Compute service name.
   late final pulumi.Output<String> serviceName;
-
   /// The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
   late final pulumi.Output<String> serviceVersion;
 
@@ -226,31 +222,29 @@ class Alias extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Alias]. {@macro pulumi_fc_alias_alias_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Alias(String name, {AliasArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:fc/alias:Alias',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Alias(
+    String name, {
+    AliasArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:fc/alias:Alias',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliasName = registerOutput<String>('aliasName');
     description = registerOutput<String?>('description');
-    routingConfig = registerOutput<AliasRoutingConfig?>(
-      'routingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AliasRoutingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routingConfig = registerOutput<AliasRoutingConfig?>('routingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AliasRoutingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceName = registerOutput<String>('serviceName');
     serviceVersion = registerOutput<String>('serviceVersion');
   }
 
   /// Gets an existing [Alias] resource's state with the given [name] and [id].
-  static Alias get(String name, pulumi.Input<String> id, {AliasState? state}) {
+  static Alias get(
+    String name,
+    pulumi.Input<String> id, {
+    AliasState? state,
+  }) {
     return Alias._get(
       name,
       state: state?.toMap(),
@@ -263,23 +257,14 @@ class Alias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/alias:Alias',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/alias:Alias',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliasName = registerOutput<String>('aliasName');
     description = registerOutput<String?>('description');
-    routingConfig = registerOutput<AliasRoutingConfig?>(
-      'routingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AliasRoutingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routingConfig = registerOutput<AliasRoutingConfig?>('routingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AliasRoutingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceName = registerOutput<String>('serviceName');
     serviceVersion = registerOutput<String>('serviceVersion');
   }

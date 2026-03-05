@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectedEnvironmentArgs {
   /// Name of the connectedEnvironment.
   final pulumi.Input<String> connectedEnvironmentName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetConnectedEnvironmentArgs {
 
   factory GetConnectedEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectedEnvironmentArgs(
-      connectedEnvironmentName: pulumi.Input.fromValue(
-        map['connectedEnvironmentName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      connectedEnvironmentName: pulumi.Input.fromValue(map['connectedEnvironmentName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

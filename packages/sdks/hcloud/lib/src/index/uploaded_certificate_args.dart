@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UploadedCertificateArgs {
   /// PEM encoded TLS certificate.
   final pulumi.Input<String> certificate;
-
   /// User-defined labels (key-value pairs) the
   /// certificate should be created with.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Name of the Certificate.
   final pulumi.Input<String>? name;
-
   /// PEM encoded private key belonging to the certificate.
   final pulumi.Input<String> privateKey;
 
@@ -44,19 +41,10 @@ class UploadedCertificateArgs {
   factory UploadedCertificateArgs.fromMap(Map<String, dynamic> map) {
     return UploadedCertificateArgs(
       certificate: pulumi.Input.fromValue(map['certificate'] as String),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
     );
   }
 }
+

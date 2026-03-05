@@ -291,16 +291,12 @@ import 'endpoint_acl_policy_state.dart';
 class EndpointAclPolicy extends pulumi.CustomResource {
   /// The description of the entry.
   late final pulumi.Output<String?> description;
-
   /// The type of endpoint. Valid values: `internet`.
   late final pulumi.Output<String> endpointType;
-
   /// The IP segment that allowed to access.
   late final pulumi.Output<String> entry;
-
   /// The ID of the CR Instance.
   late final pulumi.Output<String> instanceId;
-
   /// The module that needs to set the access policy. Valid values: `Registry`.
   late final pulumi.Output<String?> moduleName;
 
@@ -313,11 +309,11 @@ class EndpointAclPolicy extends pulumi.CustomResource {
     EndpointAclPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cr/endpointAclPolicy:EndpointAclPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cr/endpointAclPolicy:EndpointAclPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     endpointType = registerOutput<String>('endpointType');
     entry = registerOutput<String>('entry');
@@ -343,11 +339,11 @@ class EndpointAclPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cr/endpointAclPolicy:EndpointAclPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cr/endpointAclPolicy:EndpointAclPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     endpointType = registerOutput<String>('endpointType');
     entry = registerOutput<String>('entry');

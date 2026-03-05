@@ -31,13 +31,10 @@ class GetVpnTunnelComputeV1Args {
 
   factory GetVpnTunnelComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetVpnTunnelComputeV1Args(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
       vpnTunnel: pulumi.Input.fromValue(map['vpnTunnel'] as String),
     );
   }
 }
+

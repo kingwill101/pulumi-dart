@@ -8,19 +8,20 @@ class PoolTaskSchedulingPolicy {
 
   /// Creates a new [PoolTaskSchedulingPolicy].
   /// [nodeFillType] Supported values are "Pack" and "Spread". "Pack" means as many tasks as possible (taskSlotsPerNode) should be assigned to each node in the pool before any tasks are assigned to the next node in the pool. "Spread" means that tasks should be assigned evenly across all nodes in the pool.
-  PoolTaskSchedulingPolicy({this.nodeFillType});
+  PoolTaskSchedulingPolicy({
+    this.nodeFillType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nodeFillType': ?nodeFillType};
+    return <String, dynamic>{
+      'nodeFillType': ?nodeFillType,
+    };
   }
 
   factory PoolTaskSchedulingPolicy.fromMap(Map<String, dynamic> map) {
     return PoolTaskSchedulingPolicy(
-      nodeFillType: (() {
-        final guardedValue = map['nodeFillType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      nodeFillType: (() { final guardedValue = map['nodeFillType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

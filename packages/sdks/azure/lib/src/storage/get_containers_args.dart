@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainersArgs {
   /// A prefix match used for the Storage Container `name` field.
   final pulumi.Input<String>? namePrefix;
-
   /// The ID of the Storage Account that the Storage Containers reside in.
   final pulumi.Input<String> storageAccountId;
 
   /// Creates a new [GetContainersArgs].
   /// [namePrefix] A prefix match used for the Storage Container `name` field.
   /// [storageAccountId] The ID of the Storage Account that the Storage Containers reside in.
-  GetContainersArgs({this.namePrefix, required this.storageAccountId});
+  GetContainersArgs({
+    this.namePrefix,
+    required this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,14 +29,9 @@ class GetContainersArgs {
 
   factory GetContainersArgs.fromMap(Map<String, dynamic> map) {
     return GetContainersArgs(
-      namePrefix: (() {
-        final guardedValue = map['namePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountId: pulumi.Input.fromValue(
-        map['storageAccountId'] as String,
-      ),
+      namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountId: pulumi.Input.fromValue(map['storageAccountId'] as String),
     );
   }
 }
+

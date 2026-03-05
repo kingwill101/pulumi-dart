@@ -4,11 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedOnlineEndpointDeploymentResourceProperties {
   final pulumi.Input<String>? endpointComputeType;
-
   /// The failure reason if the creation failed.
   final pulumi.Input<String>? failureReason;
   final pulumi.Input<String>? model;
-
   /// Kind of the deployment.
   /// Expected value is 'managedOnlineEndpoint'.
   final pulumi.Input<String> type;
@@ -34,26 +32,13 @@ class ManagedOnlineEndpointDeploymentResourceProperties {
     };
   }
 
-  factory ManagedOnlineEndpointDeploymentResourceProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedOnlineEndpointDeploymentResourceProperties.fromMap(Map<String, dynamic> map) {
     return ManagedOnlineEndpointDeploymentResourceProperties(
-      endpointComputeType: (() {
-        final guardedValue = map['endpointComputeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      failureReason: (() {
-        final guardedValue = map['failureReason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      model: (() {
-        final guardedValue = map['model'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpointComputeType: (() { final guardedValue = map['endpointComputeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      failureReason: (() { final guardedValue = map['failureReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

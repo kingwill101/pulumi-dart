@@ -7,13 +7,10 @@ class AccessConnectorIdentity {
   ///
   /// &gt; **Note:** `identity_ids` are required when `type` is set to `UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
-
   /// The Principal ID of the System Assigned Managed Service Identity that is configured on this Access Connector.
   final pulumi.Input<String>? principalId;
-
   /// The Tenant ID of the System Assigned Managed Service Identity that is configured on this Access Connector.
   final pulumi.Input<String>? tenantId;
-
   /// Specifies the type of Managed Service Identity that should be configured on the Databricks Access Connector. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned`.
   final pulumi.Input<String> type;
 
@@ -40,22 +37,11 @@ class AccessConnectorIdentity {
 
   factory AccessConnectorIdentity.fromMap(Map<String, dynamic> map) {
     return AccessConnectorIdentity(
-      identityIds: (() {
-        final guardedValue = map['identityIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      principalId: (() {
-        final guardedValue = map['principalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identityIds: (() { final guardedValue = map['identityIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

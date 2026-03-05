@@ -336,85 +336,58 @@ import 'system_data_response.dart';
 class Device extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Type of compute roles configured.
   late final pulumi.Output<List<String>> configuredRoleTypes;
-
   /// The Data Box Edge/Gateway device culture.
   late final pulumi.Output<String> culture;
-
   /// The status of the Data Box Edge/Gateway device.
   late final pulumi.Output<String> dataBoxEdgeDeviceStatus;
-
   /// The details of data-residency related properties for this resource
   late final pulumi.Output<DataResidencyResponse?> dataResidency;
-
   /// The Description of the Data Box Edge/Gateway device.
   late final pulumi.Output<String> description;
-
   /// The device software version number of the device (eg: 1.2.18105.6).
   late final pulumi.Output<String> deviceHcsVersion;
-
   /// The Data Box Edge/Gateway device local capacity in MB.
   late final pulumi.Output<double> deviceLocalCapacity;
-
   /// The Data Box Edge/Gateway device model.
   late final pulumi.Output<String> deviceModel;
-
   /// The Data Box Edge/Gateway device software version.
   late final pulumi.Output<String> deviceSoftwareVersion;
-
   /// The type of the Data Box Edge/Gateway device.
   late final pulumi.Output<String> deviceType;
-
   /// The details of Edge Profile for this resource
   late final pulumi.Output<EdgeProfileResponse> edgeProfile;
-
   /// The etag for the devices.
   late final pulumi.Output<String?> etag;
-
   /// The Data Box Edge/Gateway device name.
   late final pulumi.Output<String> friendlyName;
-
   /// Msi identity of the resource
   late final pulumi.Output<ResourceIdentityResponse?> identity;
-
   /// The kind of the device.
   late final pulumi.Output<String> kind;
-
   /// Kubernetes Workload Profile
   late final pulumi.Output<String> kubernetesWorkloadProfile;
-
   /// The location of the device. This is a supported and registered Azure geographical region (for example, West US, East US, or Southeast Asia). The geographical region of a device cannot be changed once it is created, but if an identical geographical region is specified on update, the request will succeed.
   late final pulumi.Output<String> location;
-
   /// The description of the Data Box Edge/Gateway device model.
   late final pulumi.Output<String> modelDescription;
-
   /// The object name.
   late final pulumi.Output<String> name;
-
   /// The number of nodes in the cluster.
   late final pulumi.Output<int> nodeCount;
-
   /// The details of the move operation on this resource.
   late final pulumi.Output<ResourceMoveDetailsResponse> resourceMoveDetails;
-
   /// The Serial Number of Data Box Edge/Gateway device.
   late final pulumi.Output<String> serialNumber;
-
   /// The SKU type.
   late final pulumi.Output<SkuResponse?> sku;
-
   /// DataBoxEdge Resource
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The list of tags that describe the device. These tags can be used to view and group this device (across resource groups).
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Data Box Edge/Gateway device timezone.
   late final pulumi.Output<String> timeZone;
-
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -422,94 +395,41 @@ class Device extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Device]. {@macro pulumi_databoxedge_device_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Device(String name, {DeviceArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:databoxedge:Device',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Device(
+    String name, {
+    DeviceArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:databoxedge:Device',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     configuredRoleTypes = registerOutput<List<String>>('configuredRoleTypes');
     culture = registerOutput<String>('culture');
     dataBoxEdgeDeviceStatus = registerOutput<String>('dataBoxEdgeDeviceStatus');
-    dataResidency = registerOutput<DataResidencyResponse?>(
-      'dataResidency',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataResidencyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataResidency = registerOutput<DataResidencyResponse?>('dataResidency', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataResidencyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     deviceHcsVersion = registerOutput<String>('deviceHcsVersion');
     deviceLocalCapacity = registerOutput<double>('deviceLocalCapacity');
     deviceModel = registerOutput<String>('deviceModel');
     deviceSoftwareVersion = registerOutput<String>('deviceSoftwareVersion');
     deviceType = registerOutput<String>('deviceType');
-    edgeProfile = registerOutput<EdgeProfileResponse>(
-      'edgeProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EdgeProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    edgeProfile = registerOutput<EdgeProfileResponse>('edgeProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String?>('etag');
     friendlyName = registerOutput<String>('friendlyName');
-    identity = registerOutput<ResourceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
-    kubernetesWorkloadProfile = registerOutput<String>(
-      'kubernetesWorkloadProfile',
-    );
+    kubernetesWorkloadProfile = registerOutput<String>('kubernetesWorkloadProfile');
     location = registerOutput<String>('location');
     modelDescription = registerOutput<String>('modelDescription');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
-    resourceMoveDetails = registerOutput<ResourceMoveDetailsResponse>(
-      'resourceMoveDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceMoveDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceMoveDetails = registerOutput<ResourceMoveDetailsResponse>('resourceMoveDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceMoveDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serialNumber = registerOutput<String>('serialNumber');
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     timeZone = registerOutput<String>('timeZone');
     type = registerOutput<String>('type');

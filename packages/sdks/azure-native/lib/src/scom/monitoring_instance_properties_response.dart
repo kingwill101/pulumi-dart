@@ -14,36 +14,24 @@ import 'management_server_properties_response.dart';
 class MonitoringInstancePropertiesResponse {
   /// The properties to enable Azure Hybrid benefit for various SCOM infrastructure license.
   final pulumi.Input<AzureHybridBenefitPropertiesResponse>? azureHybridBenefit;
-
   /// The database instance where the SCOM Operational and Warehouse databases will be stored.
   final pulumi.Input<DatabaseInstancePropertiesResponse>? databaseInstance;
-
   /// Domain controller details
   final pulumi.Input<DomainControllerPropertiesResponse>? domainController;
-
   /// Domain user which will be used to join VMs to domain and login to VMs.
   final pulumi.Input<DomainUserCredentialsResponse>? domainUserCredentials;
-
   /// Gmsa Details for load balancer and vmss
   final pulumi.Input<GmsaDetailsResponse>? gmsaDetails;
-
   /// Details of Log Analytics workspace and data being ingested.
   final pulumi.Input<LogAnalyticsConfigurationResponse> logAnalyticsProperties;
-
   /// List of management server endpoints
-  final pulumi.Input<List<ManagementServerPropertiesResponse>>
-  managementEndpoints;
-
+  final pulumi.Input<List<ManagementServerPropertiesResponse>> managementEndpoints;
   /// Gets status of current and latest SCOM managed instance operations.
-  final pulumi.Input<List<ManagedInstanceOperationStatusResponse>>
-  operationsStatus;
-
+  final pulumi.Input<List<ManagedInstanceOperationStatusResponse>> operationsStatus;
   /// SCOM product version to be installed on instance
   final pulumi.Input<String> productVersion;
-
   /// Gets or sets the provisioning state.
   final pulumi.Input<String> provisioningState;
-
   /// Virtual Network subnet id on which Aquila instance will be provisioned
   final pulumi.Input<String>? vNetSubnetId;
 
@@ -75,145 +63,34 @@ class MonitoringInstancePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureHybridBenefit':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureHybridBenefitPropertiesResponse,
-            Map<String, dynamic>
-          >(azureHybridBenefit, (value) => value.toMap()),
-      'databaseInstance':
-          ?pulumi.Input.mapOptionalInputValue<
-            DatabaseInstancePropertiesResponse,
-            Map<String, dynamic>
-          >(databaseInstance, (value) => value.toMap()),
-      'domainController':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainControllerPropertiesResponse,
-            Map<String, dynamic>
-          >(domainController, (value) => value.toMap()),
-      'domainUserCredentials':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainUserCredentialsResponse,
-            Map<String, dynamic>
-          >(domainUserCredentials, (value) => value.toMap()),
-      'gmsaDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            GmsaDetailsResponse,
-            Map<String, dynamic>
-          >(gmsaDetails, (value) => value.toMap()),
-      'logAnalyticsProperties':
-          pulumi.Input.mapInputValue<
-            LogAnalyticsConfigurationResponse,
-            Map<String, dynamic>
-          >(logAnalyticsProperties, (value) => value.toMap()),
-      'managementEndpoints':
-          pulumi.Input.mapInputValue<
-            List<ManagementServerPropertiesResponse>,
-            List<Map<String, dynamic>>
-          >(
-            managementEndpoints,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ManagementServerPropertiesResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'operationsStatus':
-          pulumi.Input.mapInputValue<
-            List<ManagedInstanceOperationStatusResponse>,
-            List<Map<String, dynamic>>
-          >(
-            operationsStatus,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ManagedInstanceOperationStatusResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'azureHybridBenefit': ?pulumi.Input.mapOptionalInputValue<AzureHybridBenefitPropertiesResponse, Map<String, dynamic>>(azureHybridBenefit, (value) => value.toMap()),
+      'databaseInstance': ?pulumi.Input.mapOptionalInputValue<DatabaseInstancePropertiesResponse, Map<String, dynamic>>(databaseInstance, (value) => value.toMap()),
+      'domainController': ?pulumi.Input.mapOptionalInputValue<DomainControllerPropertiesResponse, Map<String, dynamic>>(domainController, (value) => value.toMap()),
+      'domainUserCredentials': ?pulumi.Input.mapOptionalInputValue<DomainUserCredentialsResponse, Map<String, dynamic>>(domainUserCredentials, (value) => value.toMap()),
+      'gmsaDetails': ?pulumi.Input.mapOptionalInputValue<GmsaDetailsResponse, Map<String, dynamic>>(gmsaDetails, (value) => value.toMap()),
+      'logAnalyticsProperties': pulumi.Input.mapInputValue<LogAnalyticsConfigurationResponse, Map<String, dynamic>>(logAnalyticsProperties, (value) => value.toMap()),
+      'managementEndpoints': pulumi.Input.mapInputValue<List<ManagementServerPropertiesResponse>, List<Map<String, dynamic>>>(managementEndpoints, (value) => pulumi.Input.encodeList<ManagementServerPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'operationsStatus': pulumi.Input.mapInputValue<List<ManagedInstanceOperationStatusResponse>, List<Map<String, dynamic>>>(operationsStatus, (value) => pulumi.Input.encodeList<ManagedInstanceOperationStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'productVersion': productVersion,
       'provisioningState': provisioningState,
       'vNetSubnetId': ?vNetSubnetId,
     };
   }
 
-  factory MonitoringInstancePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitoringInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringInstancePropertiesResponse(
-      azureHybridBenefit: (() {
-        final guardedValue = map['azureHybridBenefit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureHybridBenefitPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      databaseInstance: (() {
-        final guardedValue = map['databaseInstance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DatabaseInstancePropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      domainController: (() {
-        final guardedValue = map['domainController'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainControllerPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      domainUserCredentials: (() {
-        final guardedValue = map['domainUserCredentials'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainUserCredentialsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      gmsaDetails: (() {
-        final guardedValue = map['gmsaDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GmsaDetailsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      logAnalyticsProperties: pulumi.Input.fromValue(
-        LogAnalyticsConfigurationResponse.fromMap(
-          (map['logAnalyticsProperties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      managementEndpoints: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ManagementServerPropertiesResponse>(
-          map['managementEndpoints']!,
-          (value) => ManagementServerPropertiesResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      operationsStatus: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ManagedInstanceOperationStatusResponse>(
-          map['operationsStatus']!,
-          (value) => ManagedInstanceOperationStatusResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      azureHybridBenefit: (() { final guardedValue = map['azureHybridBenefit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureHybridBenefitPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      databaseInstance: (() { final guardedValue = map['databaseInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseInstancePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      domainController: (() { final guardedValue = map['domainController']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainControllerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      domainUserCredentials: (() { final guardedValue = map['domainUserCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainUserCredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      gmsaDetails: (() { final guardedValue = map['gmsaDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GmsaDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      logAnalyticsProperties: pulumi.Input.fromValue(LogAnalyticsConfigurationResponse.fromMap((map['logAnalyticsProperties']! as Map).cast<String, dynamic>())),
+      managementEndpoints: pulumi.Input.fromValue(pulumi.Input.decodeList<ManagementServerPropertiesResponse>(map['managementEndpoints']!, (value) => ManagementServerPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      operationsStatus: pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedInstanceOperationStatusResponse>(map['operationsStatus']!, (value) => ManagedInstanceOperationStatusResponse.fromMap((value as Map).cast<String, dynamic>()))),
       productVersion: pulumi.Input.fromValue(map['productVersion'] as String),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      vNetSubnetId: (() {
-        final guardedValue = map['vNetSubnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      vNetSubnetId: (() { final guardedValue = map['vNetSubnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

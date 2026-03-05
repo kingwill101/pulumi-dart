@@ -19,51 +19,36 @@ import 'telemetry_config.dart';
 class ServiceArgs {
   /// Immutable. The database type that the Metastore service stores its data.
   final pulumi.Input<ServiceDatabaseType>? databaseType;
-
   /// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
   final pulumi.Input<EncryptionConfig>? encryptionConfig;
-
   /// Configuration information specific to running Hive metastore software as the metastore service.
   final pulumi.Input<HiveMetastoreConfig>? hiveMetastoreConfig;
-
   /// User-defined labels for the metastore service.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
-
   /// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
   final pulumi.Input<MaintenanceWindow>? maintenanceWindow;
-
   /// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
   final pulumi.Input<MetadataIntegration>? metadataIntegration;
-
   /// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
   final pulumi.Input<String>? name;
-
   /// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
   final pulumi.Input<String>? network;
-
   /// The configuration specifying the network settings for the Dataproc Metastore service.
   final pulumi.Input<NetworkConfig>? networkConfig;
-
   /// The TCP port at which the metastore service is reached. Default: 9083.
   final pulumi.Input<int>? port;
   final pulumi.Input<String>? project;
-
   /// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
   final pulumi.Input<ServiceReleaseChannel>? releaseChannel;
-
   /// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
   final pulumi.Input<String>? requestId;
-
   /// Scaling configuration of the metastore service.
   final pulumi.Input<ScalingConfig>? scalingConfig;
-
   /// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
   final pulumi.Input<String> serviceId;
-
   /// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
   final pulumi.Input<TelemetryConfig>? telemetryConfig;
-
   /// The tier of the service.
   final pulumi.Input<ServiceTier>? tier;
 
@@ -109,186 +94,48 @@ class ServiceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databaseType':
-          ?pulumi.Input.mapOptionalInputValue<ServiceDatabaseType, String>(
-            databaseType,
-            (value) => value.wireValue,
-          ),
-      'encryptionConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            EncryptionConfig,
-            Map<String, dynamic>
-          >(encryptionConfig, (value) => value.toMap()),
-      'hiveMetastoreConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            HiveMetastoreConfig,
-            Map<String, dynamic>
-          >(hiveMetastoreConfig, (value) => value.toMap()),
+      'databaseType': ?pulumi.Input.mapOptionalInputValue<ServiceDatabaseType, String>(databaseType, (value) => value.wireValue),
+      'encryptionConfig': ?pulumi.Input.mapOptionalInputValue<EncryptionConfig, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
+      'hiveMetastoreConfig': ?pulumi.Input.mapOptionalInputValue<HiveMetastoreConfig, Map<String, dynamic>>(hiveMetastoreConfig, (value) => value.toMap()),
       'labels': ?labels,
       'location': ?location,
-      'maintenanceWindow':
-          ?pulumi.Input.mapOptionalInputValue<
-            MaintenanceWindow,
-            Map<String, dynamic>
-          >(maintenanceWindow, (value) => value.toMap()),
-      'metadataIntegration':
-          ?pulumi.Input.mapOptionalInputValue<
-            MetadataIntegration,
-            Map<String, dynamic>
-          >(metadataIntegration, (value) => value.toMap()),
+      'maintenanceWindow': ?pulumi.Input.mapOptionalInputValue<MaintenanceWindow, Map<String, dynamic>>(maintenanceWindow, (value) => value.toMap()),
+      'metadataIntegration': ?pulumi.Input.mapOptionalInputValue<MetadataIntegration, Map<String, dynamic>>(metadataIntegration, (value) => value.toMap()),
       'name': ?name,
       'network': ?network,
-      'networkConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkConfig,
-            Map<String, dynamic>
-          >(networkConfig, (value) => value.toMap()),
+      'networkConfig': ?pulumi.Input.mapOptionalInputValue<NetworkConfig, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
       'port': ?port,
       'project': ?project,
-      'releaseChannel':
-          ?pulumi.Input.mapOptionalInputValue<ServiceReleaseChannel, String>(
-            releaseChannel,
-            (value) => value.wireValue,
-          ),
+      'releaseChannel': ?pulumi.Input.mapOptionalInputValue<ServiceReleaseChannel, String>(releaseChannel, (value) => value.wireValue),
       'requestId': ?requestId,
-      'scalingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ScalingConfig,
-            Map<String, dynamic>
-          >(scalingConfig, (value) => value.toMap()),
+      'scalingConfig': ?pulumi.Input.mapOptionalInputValue<ScalingConfig, Map<String, dynamic>>(scalingConfig, (value) => value.toMap()),
       'serviceId': serviceId,
-      'telemetryConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            TelemetryConfig,
-            Map<String, dynamic>
-          >(telemetryConfig, (value) => value.toMap()),
-      'tier': ?pulumi.Input.mapOptionalInputValue<ServiceTier, String>(
-        tier,
-        (value) => value.wireValue,
-      ),
+      'telemetryConfig': ?pulumi.Input.mapOptionalInputValue<TelemetryConfig, Map<String, dynamic>>(telemetryConfig, (value) => value.toMap()),
+      'tier': ?pulumi.Input.mapOptionalInputValue<ServiceTier, String>(tier, (value) => value.wireValue),
     };
   }
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      databaseType: (() {
-        final guardedValue = map['databaseType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceDatabaseType.fromValue(guardedValue as String),
-        );
-      })(),
-      encryptionConfig: (() {
-        final guardedValue = map['encryptionConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EncryptionConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      hiveMetastoreConfig: (() {
-        final guardedValue = map['hiveMetastoreConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HiveMetastoreConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maintenanceWindow: (() {
-        final guardedValue = map['maintenanceWindow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MaintenanceWindow.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      metadataIntegration: (() {
-        final guardedValue = map['metadataIntegration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MetadataIntegration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkConfig: (() {
-        final guardedValue = map['networkConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      releaseChannel: (() {
-        final guardedValue = map['releaseChannel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceReleaseChannel.fromValue(guardedValue as String),
-        );
-      })(),
-      requestId: (() {
-        final guardedValue = map['requestId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scalingConfig: (() {
-        final guardedValue = map['scalingConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      databaseType: (() { final guardedValue = map['databaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceDatabaseType.fromValue(guardedValue as String)); })(),
+      encryptionConfig: (() { final guardedValue = map['encryptionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      hiveMetastoreConfig: (() { final guardedValue = map['hiveMetastoreConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HiveMetastoreConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      metadataIntegration: (() { final guardedValue = map['metadataIntegration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetadataIntegration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      releaseChannel: (() { final guardedValue = map['releaseChannel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceReleaseChannel.fromValue(guardedValue as String)); })(),
+      requestId: (() { final guardedValue = map['requestId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scalingConfig: (() { final guardedValue = map['scalingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
-      telemetryConfig: (() {
-        final guardedValue = map['telemetryConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TelemetryConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tier: (() {
-        final guardedValue = map['tier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceTier.fromValue(guardedValue as String),
-        );
-      })(),
+      telemetryConfig: (() { final guardedValue = map['telemetryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TelemetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTier.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

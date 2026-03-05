@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesRoleComputeResponse {
   /// Memory in bytes
   final pulumi.Input<double> memoryInBytes;
-
   /// Processor count
   final pulumi.Input<int> processorCount;
-
   /// VM profile
   final pulumi.Input<String> vmProfile;
 
@@ -39,3 +37,4 @@ class KubernetesRoleComputeResponse {
     );
   }
 }
+

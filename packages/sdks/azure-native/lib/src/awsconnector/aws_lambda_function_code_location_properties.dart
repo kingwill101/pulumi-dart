@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsLambdaFunctionCodeLocationProperties {
   /// &lt;p&gt;URI of a container image in the Amazon ECR registry.&lt;/p&gt;
   final pulumi.Input<String>? imageUri;
-
   /// &lt;p&gt;A presigned URL that you can use to download the deployment package.&lt;/p&gt;
   final pulumi.Input<String>? location;
-
   /// &lt;p&gt;The service that's hosting the file.&lt;/p&gt;
   final pulumi.Input<String>? repositoryType;
-
   /// &lt;p&gt;The resolved URI for the image.&lt;/p&gt;
   final pulumi.Input<String>? resolvedImageUri;
 
@@ -37,30 +34,13 @@ class AwsLambdaFunctionCodeLocationProperties {
     };
   }
 
-  factory AwsLambdaFunctionCodeLocationProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AwsLambdaFunctionCodeLocationProperties.fromMap(Map<String, dynamic> map) {
     return AwsLambdaFunctionCodeLocationProperties(
-      imageUri: (() {
-        final guardedValue = map['imageUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      repositoryType: (() {
-        final guardedValue = map['repositoryType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resolvedImageUri: (() {
-        final guardedValue = map['resolvedImageUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      imageUri: (() { final guardedValue = map['imageUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      repositoryType: (() { final guardedValue = map['repositoryType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resolvedImageUri: (() { final guardedValue = map['resolvedImageUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

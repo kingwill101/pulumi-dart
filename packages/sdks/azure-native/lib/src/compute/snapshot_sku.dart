@@ -9,19 +9,20 @@ class SnapshotSku {
 
   /// Creates a new [SnapshotSku].
   /// [name] The sku name.
-  SnapshotSku({this.name});
+  SnapshotSku({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory SnapshotSku.fromMap(Map<String, dynamic> map) {
     return SnapshotSku(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -10,29 +10,20 @@ class FirewallPolicyTransportSecurity {
 
   /// Creates a new [FirewallPolicyTransportSecurity].
   /// [certificateAuthority] The CA used for intermediate CA generation.
-  FirewallPolicyTransportSecurity({this.certificateAuthority});
+  FirewallPolicyTransportSecurity({
+    this.certificateAuthority,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateAuthority':
-          ?pulumi.Input.mapOptionalInputValue<
-            FirewallPolicyCertificateAuthority,
-            Map<String, dynamic>
-          >(certificateAuthority, (value) => value.toMap()),
+      'certificateAuthority': ?pulumi.Input.mapOptionalInputValue<FirewallPolicyCertificateAuthority, Map<String, dynamic>>(certificateAuthority, (value) => value.toMap()),
     };
   }
 
   factory FirewallPolicyTransportSecurity.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyTransportSecurity(
-      certificateAuthority: (() {
-        final guardedValue = map['certificateAuthority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FirewallPolicyCertificateAuthority.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      certificateAuthority: (() { final guardedValue = map['certificateAuthority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicyCertificateAuthority.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

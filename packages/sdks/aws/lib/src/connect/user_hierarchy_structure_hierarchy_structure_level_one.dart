@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserHierarchyStructureHierarchyStructureLevelOne {
   /// The Amazon Resource Name (ARN) of the hierarchy level.
   final pulumi.Input<String>? arn;
-
   /// The identifier of the hierarchy level.
   final pulumi.Input<String>? id;
-
   /// The name of the user hierarchy level. Must not be more than 50 characters.
   final pulumi.Input<String> name;
 
@@ -23,24 +21,19 @@ class UserHierarchyStructureHierarchyStructureLevelOne {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': ?arn, 'id': ?id, 'name': name};
+    return <String, dynamic>{
+      'arn': ?arn,
+      'id': ?id,
+      'name': name,
+    };
   }
 
-  factory UserHierarchyStructureHierarchyStructureLevelOne.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserHierarchyStructureHierarchyStructureLevelOne.fromMap(Map<String, dynamic> map) {
     return UserHierarchyStructureHierarchyStructureLevelOne(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

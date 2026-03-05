@@ -456,17 +456,13 @@ class GetPolicyRuleCondition {
       sslCert: pulumi.Input.fromValue(map['sslCert'] as bool),
       sslClientHello: pulumi.Input.fromValue(map['sslClientHello'] as bool),
       sslExtension: pulumi.Input.fromValue(map['sslExtension'] as bool),
-      sslServerHandshake: pulumi.Input.fromValue(
-        map['sslServerHandshake'] as bool,
-      ),
+      sslServerHandshake: pulumi.Input.fromValue(map['sslServerHandshake'] as bool),
       sslServerHello: pulumi.Input.fromValue(map['sslServerHello'] as bool),
       startsWith: pulumi.Input.fromValue(map['startsWith'] as bool),
       tcp: pulumi.Input.fromValue(map['tcp'] as bool),
       text: pulumi.Input.fromValue(map['text'] as bool),
       tmName: pulumi.Input.fromValue(map['tmName'] as String),
-      unnamedQueryParameter: pulumi.Input.fromValue(
-        map['unnamedQueryParameter'] as bool,
-      ),
+      unnamedQueryParameter: pulumi.Input.fromValue(map['unnamedQueryParameter'] as bool),
       userAgentToken: pulumi.Input.fromValue(map['userAgentToken'] as bool),
       username: pulumi.Input.fromValue(map['username'] as bool),
       value: pulumi.Input.fromValue(map['value'] as bool),
@@ -477,3 +473,4 @@ class GetPolicyRuleCondition {
     );
   }
 }
+

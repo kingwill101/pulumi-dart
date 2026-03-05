@@ -162,25 +162,18 @@ import 'tenant_template_deployment_state.dart';
 class TenantTemplateDeployment extends pulumi.CustomResource {
   /// The Debug Level which should be used for this Resource Group Template Deployment. Possible values are `none`, `requestContent`, `responseContent` and `requestContent, responseContent`.
   late final pulumi.Output<String?> debugLevel;
-
   /// The Azure Region where the Template should exist. Changing this forces a new Template to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Template. Changing this forces a new Template to be created.
   late final pulumi.Output<String> name;
-
   /// The JSON Content of the Outputs of the ARM Template Deployment.
   late final pulumi.Output<String> outputContent;
-
   /// The contents of the ARM Template parameters file - containing a JSON list of parameters.
   late final pulumi.Output<String> parametersContent;
-
   /// A mapping of tags which should be assigned to the Template.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `template_spec_version_id`.
   late final pulumi.Output<String> templateContent;
-
   /// The ID of the Template Spec Version to deploy. Cannot be specified with `template_content`.
   late final pulumi.Output<String?> templateSpecVersionId;
 
@@ -193,11 +186,11 @@ class TenantTemplateDeployment extends pulumi.CustomResource {
     TenantTemplateDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/tenantTemplateDeployment:TenantTemplateDeployment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/tenantTemplateDeployment:TenantTemplateDeployment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     debugLevel = registerOutput<String?>('debugLevel');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -226,11 +219,11 @@ class TenantTemplateDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/tenantTemplateDeployment:TenantTemplateDeployment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/tenantTemplateDeployment:TenantTemplateDeployment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     debugLevel = registerOutput<String?>('debugLevel');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

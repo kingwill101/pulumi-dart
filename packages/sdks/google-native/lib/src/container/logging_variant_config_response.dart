@@ -9,10 +9,14 @@ class LoggingVariantConfigResponse {
 
   /// Creates a new [LoggingVariantConfigResponse].
   /// [variant] Logging variant deployed on nodes.
-  LoggingVariantConfigResponse({required this.variant});
+  LoggingVariantConfigResponse({
+    required this.variant,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'variant': variant};
+    return <String, dynamic>{
+      'variant': variant,
+    };
   }
 
   factory LoggingVariantConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class LoggingVariantConfigResponse {
     );
   }
 }
+

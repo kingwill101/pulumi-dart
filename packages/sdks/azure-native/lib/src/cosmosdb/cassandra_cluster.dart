@@ -151,23 +151,16 @@ import 'managed_cassandra_managed_service_identity_response.dart';
 class CassandraCluster extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Identity for the resource.
-  late final pulumi.Output<ManagedCassandraManagedServiceIdentityResponse?>
-  identity;
-
+  late final pulumi.Output<ManagedCassandraManagedServiceIdentityResponse?> identity;
   /// The location of the resource group to which the resource belongs.
   late final pulumi.Output<String?> location;
-
   /// The name of the ARM resource.
   late final pulumi.Output<String> name;
-
   /// Properties of a managed Cassandra cluster.
   late final pulumi.Output<ClusterResourceResponseProperties> properties;
-
   /// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -180,34 +173,16 @@ class CassandraCluster extends pulumi.CustomResource {
     CassandraClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cosmosdb:CassandraCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cosmosdb:CassandraCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    identity = registerOutput<ManagedCassandraManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedCassandraManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ManagedCassandraManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedCassandraManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ClusterResourceResponseProperties>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterResourceResponseProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ClusterResourceResponseProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterResourceResponseProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

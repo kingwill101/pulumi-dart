@@ -19,3 +19,4 @@ enum DashboardFilterFilterType {
     throw ArgumentError('Unknown DashboardFilterFilterType value: $value');
   }
 }
+

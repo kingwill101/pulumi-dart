@@ -10,39 +10,20 @@ class LanguageExtensionsListResponse {
 
   /// Creates a new [LanguageExtensionsListResponse].
   /// [value] The list of language extensions.
-  LanguageExtensionsListResponse({this.value});
+  LanguageExtensionsListResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LanguageExtensionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            value,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LanguageExtensionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'value': ?pulumi.Input.mapOptionalInputValue<List<LanguageExtensionResponse>, List<Map<String, dynamic>>>(value, (value) => pulumi.Input.encodeList<LanguageExtensionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LanguageExtensionsListResponse.fromMap(Map<String, dynamic> map) {
     return LanguageExtensionsListResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LanguageExtensionResponse>(
-            guardedValue,
-            (value) => LanguageExtensionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LanguageExtensionResponse>(guardedValue, (value) => LanguageExtensionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

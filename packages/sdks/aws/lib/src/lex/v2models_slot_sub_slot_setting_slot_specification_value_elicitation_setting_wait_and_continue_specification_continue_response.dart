@@ -6,16 +6,10 @@ import 'v2models_slot_sub_slot_setting_slot_specification_value_elicitation_sett
 class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponse {
   /// Whether the user can interrupt a speech response from Amazon Lex.
   final pulumi.Input<bool>? allowInterrupt;
-
   /// Configuration blocks for responses that Amazon Lex can send to the user.
   /// Amazon Lex chooses the actual response to send at runtime.
   /// See `message_group`.
-  final pulumi.Input<
-    List<
-      V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroup
-    >
-  >?
-  messageGroups;
+  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroup>>? messageGroups;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponse].
   /// [allowInterrupt] Whether the user can interrupt a speech response from Amazon Lex.
@@ -28,47 +22,15 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndC
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowInterrupt': ?allowInterrupt,
-      'messageGroups':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroup
-            >,
-            List<Map<String, dynamic>>
-          >(
-            messageGroups,
-            (value) =>
-                pulumi.Input.encodeList<
-                  V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroup,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'messageGroups': ?pulumi.Input.mapOptionalInputValue<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroup>, List<Map<String, dynamic>>>(messageGroups, (value) => pulumi.Input.encodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponse.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponse(
-      allowInterrupt: (() {
-        final guardedValue = map['allowInterrupt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      messageGroups: (() {
-        final guardedValue = map['messageGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroup
-          >(
-            guardedValue,
-            (value) =>
-                V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroup.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      allowInterrupt: (() { final guardedValue = map['allowInterrupt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      messageGroups: (() { final guardedValue = map['messageGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroup>(guardedValue, (value) => V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

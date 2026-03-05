@@ -7,25 +7,20 @@ class GroupState {
   /// A user-assigned name for this group, used only for display
   /// purposes.
   final pulumi.Input<String>? displayName;
-
   /// The filter used to determine which monitored resources
   /// belong to this group.
   final pulumi.Input<String>? filter;
-
   /// If true, the members of this group are considered to be a
   /// cluster. The system can perform additional analysis on
   /// groups that are clusters.
   final pulumi.Input<bool>? isCluster;
-
   /// A unique identifier for this group. The format is
   /// "projects/{project_id_or_number}/groups/{group_id}".
   final pulumi.Input<String>? name;
-
   /// The name of the group's parent, if it has one. The format is
   /// "projects/{project_id_or_number}/groups/{group_id}". For
   /// groups with no parent, parentName is the empty string, "".
   final pulumi.Input<String>? parentName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -59,36 +54,13 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isCluster: (() {
-        final guardedValue = map['isCluster'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parentName: (() {
-        final guardedValue = map['parentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isCluster: (() { final guardedValue = map['isCluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parentName: (() { final guardedValue = map['parentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

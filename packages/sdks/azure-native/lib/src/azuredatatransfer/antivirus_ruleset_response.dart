@@ -9,19 +9,20 @@ class AntivirusRulesetResponse {
 
   /// Creates a new [AntivirusRulesetResponse].
   /// [avSolutions] Optional. The list of antiviruses to be used as a scanning solution for replicating data.
-  AntivirusRulesetResponse({this.avSolutions});
+  AntivirusRulesetResponse({
+    this.avSolutions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'avSolutions': ?avSolutions};
+    return <String, dynamic>{
+      'avSolutions': ?avSolutions,
+    };
   }
 
   factory AntivirusRulesetResponse.fromMap(Map<String, dynamic> map) {
     return AntivirusRulesetResponse(
-      avSolutions: (() {
-        final guardedValue = map['avSolutions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      avSolutions: (() { final guardedValue = map['avSolutions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

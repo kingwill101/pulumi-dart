@@ -10,17 +10,13 @@ import 'get_node_fqdn.dart';
 class GetNodeArgs {
   /// The address of the node.
   final pulumi.Input<String>? address;
-
   /// User defined description of the node.
   final pulumi.Input<String>? description;
   final pulumi.Input<GetNodeFqdn>? fqdn;
-
   /// Full path of the node (partition and name)
   final pulumi.Input<String>? fullPath;
-
   /// Name of the node.
   final pulumi.Input<String> name;
-
   /// partition of the node.
   final pulumi.Input<String> partition;
 
@@ -44,11 +40,7 @@ class GetNodeArgs {
     return <String, dynamic>{
       'address': ?address,
       'description': ?description,
-      'fqdn':
-          ?pulumi.Input.mapOptionalInputValue<
-            GetNodeFqdn,
-            Map<String, dynamic>
-          >(fqdn, (value) => value.toMap()),
+      'fqdn': ?pulumi.Input.mapOptionalInputValue<GetNodeFqdn, Map<String, dynamic>>(fqdn, (value) => value.toMap()),
       'fullPath': ?fullPath,
       'name': name,
       'partition': partition,
@@ -57,30 +49,13 @@ class GetNodeArgs {
 
   factory GetNodeArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeArgs(
-      address: (() {
-        final guardedValue = map['address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fqdn: (() {
-        final guardedValue = map['fqdn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GetNodeFqdn.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      fullPath: (() {
-        final guardedValue = map['fullPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetNodeFqdn.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      fullPath: (() { final guardedValue = map['fullPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       partition: pulumi.Input.fromValue(map['partition'] as String),
     );
   }
 }
+

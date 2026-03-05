@@ -6,7 +6,6 @@ import 'jit_network_access_request_port.dart';
 class JitNetworkAccessRequestVirtualMachine {
   /// Resource ID of the virtual machine that is linked to this policy
   final pulumi.Input<String> id;
-
   /// The ports that were opened for the virtual machine
   final pulumi.Input<List<JitNetworkAccessRequestPort>> ports;
 
@@ -21,34 +20,15 @@ class JitNetworkAccessRequestVirtualMachine {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'ports':
-          pulumi.Input.mapInputValue<
-            List<JitNetworkAccessRequestPort>,
-            List<Map<String, dynamic>>
-          >(
-            ports,
-            (value) =>
-                pulumi.Input.encodeList<
-                  JitNetworkAccessRequestPort,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ports': pulumi.Input.mapInputValue<List<JitNetworkAccessRequestPort>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<JitNetworkAccessRequestPort, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory JitNetworkAccessRequestVirtualMachine.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JitNetworkAccessRequestVirtualMachine.fromMap(Map<String, dynamic> map) {
     return JitNetworkAccessRequestVirtualMachine(
       id: pulumi.Input.fromValue(map['id'] as String),
-      ports: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<JitNetworkAccessRequestPort>(
-          map['ports']!,
-          (value) => JitNetworkAccessRequestPort.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      ports: pulumi.Input.fromValue(pulumi.Input.decodeList<JitNetworkAccessRequestPort>(map['ports']!, (value) => JitNetworkAccessRequestPort.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

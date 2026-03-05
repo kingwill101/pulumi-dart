@@ -27,21 +27,10 @@ class DomainCertificateConfig {
 
   factory DomainCertificateConfig.fromMap(Map<String, dynamic> map) {
     return DomainCertificateConfig(
-      privateKey: (() {
-        final guardedValue = map['privateKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverCertificate: (() {
-        final guardedValue = map['serverCertificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverCertificateStatus: (() {
-        final guardedValue = map['serverCertificateStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverCertificate: (() { final guardedValue = map['serverCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverCertificateStatus: (() { final guardedValue = map['serverCertificateStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

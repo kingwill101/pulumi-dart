@@ -102,11 +102,11 @@ class OutboundWebIdentityFederation extends pulumi.CustomResource {
     Map<String, dynamic>? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/outboundWebIdentityFederation:OutboundWebIdentityFederation',
-         name,
-         pulumi.Input.mapToInputs(args ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/outboundWebIdentityFederation:OutboundWebIdentityFederation',
+          name,
+          pulumi.Input.mapToInputs(args ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     issuerIdentifier = registerOutput<String>('issuerIdentifier');
   }
 
@@ -128,11 +128,11 @@ class OutboundWebIdentityFederation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/outboundWebIdentityFederation:OutboundWebIdentityFederation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/outboundWebIdentityFederation:OutboundWebIdentityFederation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     issuerIdentifier = registerOutput<String>('issuerIdentifier');
   }
 }

@@ -14,18 +14,15 @@ class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pemCertificate': ?pemCertificate};
+    return <String, dynamic>{
+      'pemCertificate': ?pemCertificate,
+    };
   }
 
-  factory WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa(
-      pemCertificate: (() {
-        final guardedValue = map['pemCertificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pemCertificate: (() { final guardedValue = map['pemCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

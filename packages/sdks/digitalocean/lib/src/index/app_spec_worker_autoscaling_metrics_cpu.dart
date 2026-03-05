@@ -8,10 +8,14 @@ class AppSpecWorkerAutoscalingMetricsCpu {
 
   /// Creates a new [AppSpecWorkerAutoscalingMetricsCpu].
   /// [percent] The average target CPU utilization for the component.
-  AppSpecWorkerAutoscalingMetricsCpu({required this.percent});
+  AppSpecWorkerAutoscalingMetricsCpu({
+    required this.percent,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'percent': percent};
+    return <String, dynamic>{
+      'percent': percent,
+    };
   }
 
   factory AppSpecWorkerAutoscalingMetricsCpu.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class AppSpecWorkerAutoscalingMetricsCpu {
     );
   }
 }
+

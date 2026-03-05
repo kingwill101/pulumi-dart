@@ -5,10 +5,7 @@ import 'data_quality_job_definition_data_quality_job_output_config_monitoring_ou
 
 class DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs {
   /// The Amazon S3 storage location where the results of a monitoring job are saved. Fields are documented below.
-  final pulumi.Input<
-    DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output
-  >
-  s3Output;
+  final pulumi.Input<DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output> s3Output;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs].
   /// [s3Output] The Amazon S3 storage location where the results of a monitoring job are saved. Fields are documented below.
@@ -18,23 +15,14 @@ class DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3Output':
-          pulumi.Input.mapInputValue<
-            DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output,
-            Map<String, dynamic>
-          >(s3Output, (value) => value.toMap()),
+      's3Output': pulumi.Input.mapInputValue<DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output, Map<String, dynamic>>(s3Output, (value) => value.toMap()),
     };
   }
 
-  factory DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs(
-      s3Output: pulumi.Input.fromValue(
-        DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output.fromMap(
-          (map['s3Output']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      s3Output: pulumi.Input.fromValue(DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output.fromMap((map['s3Output']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

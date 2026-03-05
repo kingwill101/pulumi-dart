@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FolderMembershipArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
-
   /// Identifier for the folder.
   final pulumi.Input<String> folderId;
-
   /// ID of the asset (the dashboard, analysis, or dataset).
   final pulumi.Input<String> memberId;
-
   /// Type of the member. Valid values are `ANALYSIS`, `DASHBOARD`, and `DATASET`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> memberType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -50,19 +46,12 @@ class FolderMembershipArgs {
 
   factory FolderMembershipArgs.fromMap(Map<String, dynamic> map) {
     return FolderMembershipArgs(
-      awsAccountId: (() {
-        final guardedValue = map['awsAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      awsAccountId: (() { final guardedValue = map['awsAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       folderId: pulumi.Input.fromValue(map['folderId'] as String),
       memberId: pulumi.Input.fromValue(map['memberId'] as String),
       memberType: pulumi.Input.fromValue(map['memberType'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

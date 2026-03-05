@@ -10,17 +10,13 @@ class GetSnapshotV3Args {
   /// Pick the most recently created snapshot if there
   /// are multiple results.
   final pulumi.Input<bool>? mostRecent;
-
   /// The name of the snapshot.
   final pulumi.Input<String>? name;
-
   /// The region in which to obtain the V3 Block Storage
   /// client. If omitted, the `region` argument of the provider is used.
   final pulumi.Input<String>? region;
-
   /// The status of the snapshot.
   final pulumi.Input<String>? status;
-
   /// The ID of the snapshot's volume.
   final pulumi.Input<String>? volumeId;
 
@@ -50,31 +46,12 @@ class GetSnapshotV3Args {
 
   factory GetSnapshotV3Args.fromMap(Map<String, dynamic> map) {
     return GetSnapshotV3Args(
-      mostRecent: (() {
-        final guardedValue = map['mostRecent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      volumeId: (() {
-        final guardedValue = map['volumeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      volumeId: (() { final guardedValue = map['volumeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

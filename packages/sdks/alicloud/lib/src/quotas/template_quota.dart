@@ -194,32 +194,24 @@ import 'template_quota_state.dart';
 class TemplateQuota extends pulumi.CustomResource {
   /// Quota application value.
   late final pulumi.Output<double> desireValue;
-
   /// The Quota Dimensions. See `dimensions` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> dimensions;
-
   /// The UTC time when the quota takes effect.
   late final pulumi.Output<String?> effectiveTime;
-
   /// The language of the quota alert notification. Value:
   /// - zh: Chinese.
   /// - en: English.
   late final pulumi.Output<String> envLanguage;
-
   /// The UTC time when the quota expires.
   late final pulumi.Output<String?> expireTime;
-
   /// Whether to notify the result of quota promotion application. Value:
   /// - 0: No.
   /// - 3: Yes.
   late final pulumi.Output<int> noticeType;
-
   /// The abbreviation of the cloud service name.
   late final pulumi.Output<String> productCode;
-
   /// The quota ID.
   late final pulumi.Output<String> quotaActionCode;
-
   /// Type of quota. Value:
   /// - CommonQuota : Generic quota.
   /// - WhiteListLabel: Equity quota.
@@ -235,11 +227,11 @@ class TemplateQuota extends pulumi.CustomResource {
     TemplateQuotaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:quotas/templateQuota:TemplateQuota',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:quotas/templateQuota:TemplateQuota',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     desireValue = registerOutput<double>('desireValue');
     dimensions = registerOutput<List<Map<String, dynamic>>?>('dimensions');
     effectiveTime = registerOutput<String?>('effectiveTime');
@@ -269,11 +261,11 @@ class TemplateQuota extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:quotas/templateQuota:TemplateQuota',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:quotas/templateQuota:TemplateQuota',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     desireValue = registerOutput<double>('desireValue');
     dimensions = registerOutput<List<Map<String, dynamic>>?>('dimensions');
     effectiveTime = registerOutput<String?>('effectiveTime');

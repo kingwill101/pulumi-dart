@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetV3FunctionsFunctionOssMountConfigMountPoint {
   /// OSS Bucket name.
   final pulumi.Input<String> bucketName;
-
   /// Path of the mounted OSS Bucket.
   final pulumi.Input<String> bucketPath;
-
   /// OSS access endpoint.
   final pulumi.Input<String> endpoint;
-
   /// Mount Directory.
   final pulumi.Input<String> mountDir;
-
   /// Read-only.
   final pulumi.Input<bool> readOnly;
 
@@ -42,9 +38,7 @@ class GetV3FunctionsFunctionOssMountConfigMountPoint {
     };
   }
 
-  factory GetV3FunctionsFunctionOssMountConfigMountPoint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetV3FunctionsFunctionOssMountConfigMountPoint.fromMap(Map<String, dynamic> map) {
     return GetV3FunctionsFunctionOssMountConfigMountPoint(
       bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
       bucketPath: pulumi.Input.fromValue(map['bucketPath'] as String),
@@ -54,3 +48,4 @@ class GetV3FunctionsFunctionOssMountConfigMountPoint {
     );
   }
 }
+

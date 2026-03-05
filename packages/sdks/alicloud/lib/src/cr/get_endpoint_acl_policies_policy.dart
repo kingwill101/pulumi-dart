@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointAclPoliciesPolicy {
   /// The description of the entry.
   final pulumi.Input<String> description;
-
   /// The type of endpoint.
   final pulumi.Input<String> endpointType;
-
   /// The IP segment that allowed to access.
   final pulumi.Input<String> entry;
-
   /// The ID of the Endpoint Acl Policy.
   final pulumi.Input<String> id;
-
   /// The ID of the CR Instance.
   final pulumi.Input<String> instanceId;
 
@@ -52,3 +48,4 @@ class GetEndpointAclPoliciesPolicy {
     );
   }
 }
+

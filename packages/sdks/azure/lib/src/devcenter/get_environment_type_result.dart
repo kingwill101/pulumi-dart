@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEnvironmentType.
 class GetEnvironmentTypeResult {
   final String devCenterId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// A mapping of tags assigned to the Dev Center Environment Type.
   final Map<String, String> tags;
 
@@ -41,3 +40,4 @@ class GetEnvironmentTypeResult {
     );
   }
 }
+

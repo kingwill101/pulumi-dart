@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureMembershipConfigmanagementHierarchyController {
   /// Whether hierarchical resource quota is enabled in this cluster.
   final pulumi.Input<bool>? enableHierarchicalResourceQuota;
-
   /// Whether pod tree labels are enabled in this cluster.
   final pulumi.Input<bool>? enablePodTreeLabels;
-
   /// Whether Hierarchy Controller is enabled in this cluster.
   final pulumi.Input<bool>? enabled;
 
@@ -30,25 +28,12 @@ class FeatureMembershipConfigmanagementHierarchyController {
     };
   }
 
-  factory FeatureMembershipConfigmanagementHierarchyController.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FeatureMembershipConfigmanagementHierarchyController.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipConfigmanagementHierarchyController(
-      enableHierarchicalResourceQuota: (() {
-        final guardedValue = map['enableHierarchicalResourceQuota'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enablePodTreeLabels: (() {
-        final guardedValue = map['enablePodTreeLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableHierarchicalResourceQuota: (() { final guardedValue = map['enableHierarchicalResourceQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enablePodTreeLabels: (() { final guardedValue = map['enablePodTreeLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -28,16 +28,9 @@ class InfraAlertConditionCritical {
   factory InfraAlertConditionCritical.fromMap(Map<String, dynamic> map) {
     return InfraAlertConditionCritical(
       duration: pulumi.Input.fromValue(map['duration'] as int),
-      timeFunction: (() {
-        final guardedValue = map['timeFunction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      timeFunction: (() { final guardedValue = map['timeFunction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLabArgs {
   /// Specify the $expand query. Example: 'properties($select=defaultStorageAccount)'
   final pulumi.Input<String>? expand;
-
   /// The name of the lab.
   final pulumi.Input<String> name;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,15 +34,10 @@ class GetLabArgs {
 
   factory GetLabArgs.fromMap(Map<String, dynamic> map) {
     return GetLabArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

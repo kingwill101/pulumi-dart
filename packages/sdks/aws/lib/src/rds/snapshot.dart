@@ -190,66 +190,46 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   /// Specifies the allocated storage size in gigabytes (GB).
   late final pulumi.Output<int> allocatedStorage;
-
   /// Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
   late final pulumi.Output<String> availabilityZone;
-
   /// The DB Instance Identifier from which to take the snapshot.
   late final pulumi.Output<String> dbInstanceIdentifier;
-
   /// The Amazon Resource Name (ARN) for the DB snapshot.
   late final pulumi.Output<String> dbSnapshotArn;
-
   /// The Identifier for the snapshot.
   late final pulumi.Output<String> dbSnapshotIdentifier;
-
   /// Specifies whether the DB snapshot is encrypted.
   late final pulumi.Output<bool> encrypted;
-
   /// Specifies the name of the database engine.
   late final pulumi.Output<String> engine;
-
   /// Specifies the version of the database engine.
   late final pulumi.Output<String> engineVersion;
-
   /// Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
   late final pulumi.Output<int> iops;
-
   /// The ARN for the KMS encryption key.
   late final pulumi.Output<String> kmsKeyId;
-
   /// License model information for the restored DB instance.
   late final pulumi.Output<String> licenseModel;
-
   /// Provides the option group name for the DB snapshot.
   late final pulumi.Output<String> optionGroupName;
   late final pulumi.Output<int> port;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   late final pulumi.Output<List<String>?> sharedAccounts;
   late final pulumi.Output<String> snapshotType;
-
   /// The DB snapshot Arn that the DB snapshot was copied from. It only has value in case of cross customer or cross region copy.
   late final pulumi.Output<String> sourceDbSnapshotIdentifier;
-
   /// The region that the DB snapshot was created in or copied from.
   late final pulumi.Output<String> sourceRegion;
-
   /// Specifies the status of this DB snapshot.
   late final pulumi.Output<String> status;
-
   /// Specifies the storage type associated with DB snapshot.
   late final pulumi.Output<String> storageType;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Provides the VPC ID associated with the DB snapshot.
   late final pulumi.Output<String> vpcId;
 
@@ -262,11 +242,11 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rds/snapshot:Snapshot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rds/snapshot:Snapshot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     availabilityZone = registerOutput<String>('availabilityZone');
     dbInstanceIdentifier = registerOutput<String>('dbInstanceIdentifier');
@@ -283,9 +263,7 @@ class Snapshot extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     sharedAccounts = registerOutput<List<String>?>('sharedAccounts');
     snapshotType = registerOutput<String>('snapshotType');
-    sourceDbSnapshotIdentifier = registerOutput<String>(
-      'sourceDbSnapshotIdentifier',
-    );
+    sourceDbSnapshotIdentifier = registerOutput<String>('sourceDbSnapshotIdentifier');
     sourceRegion = registerOutput<String>('sourceRegion');
     status = registerOutput<String>('status');
     storageType = registerOutput<String>('storageType');
@@ -312,11 +290,11 @@ class Snapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rds/snapshot:Snapshot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rds/snapshot:Snapshot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     availabilityZone = registerOutput<String>('availabilityZone');
     dbInstanceIdentifier = registerOutput<String>('dbInstanceIdentifier');
@@ -333,9 +311,7 @@ class Snapshot extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     sharedAccounts = registerOutput<List<String>?>('sharedAccounts');
     snapshotType = registerOutput<String>('snapshotType');
-    sourceDbSnapshotIdentifier = registerOutput<String>(
-      'sourceDbSnapshotIdentifier',
-    );
+    sourceDbSnapshotIdentifier = registerOutput<String>('sourceDbSnapshotIdentifier');
     sourceRegion = registerOutput<String>('sourceRegion');
     status = registerOutput<String>('status');
     storageType = registerOutput<String>('storageType');

@@ -17,3 +17,4 @@ enum ConfidentialVMEncryptionType {
     throw ArgumentError('Unknown ConfidentialVMEncryptionType value: $value');
   }
 }
+

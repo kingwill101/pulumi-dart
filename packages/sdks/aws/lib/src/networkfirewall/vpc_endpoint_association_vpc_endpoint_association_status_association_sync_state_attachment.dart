@@ -7,7 +7,6 @@ class VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAtta
   final pulumi.Input<String> endpointId;
   final pulumi.Input<String> status;
   final pulumi.Input<String> statusMessage;
-
   /// The unique identifier of the subnet that you've specified to be used for a VPC Endpoint Association endpoint.
   final pulumi.Input<String> subnetId;
 
@@ -32,9 +31,7 @@ class VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAtta
     };
   }
 
-  factory VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment.fromMap(Map<String, dynamic> map) {
     return VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment(
       endpointId: pulumi.Input.fromValue(map['endpointId'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
@@ -43,3 +40,4 @@ class VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAtta
     );
   }
 }
+

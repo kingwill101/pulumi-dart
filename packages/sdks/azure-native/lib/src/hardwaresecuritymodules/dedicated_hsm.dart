@@ -728,40 +728,28 @@ import 'system_data_response.dart';
 class DedicatedHsm extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Specifies the management network interfaces of the dedicated hsm.
   late final pulumi.Output<NetworkProfileResponse?> managementNetworkProfile;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Specifies the network interfaces of the dedicated hsm.
   late final pulumi.Output<NetworkProfileResponse?> networkProfile;
-
   /// Provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// SKU details
   late final pulumi.Output<SkuResponse> sku;
-
   /// This field will be used when RP does not support Availability zones.
   late final pulumi.Output<String?> stampId;
-
   /// Resource Status Message.
   late final pulumi.Output<String> statusMessage;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The Dedicated Hsm zones.
   late final pulumi.Output<List<String>?> zones;
 
@@ -774,57 +762,21 @@ class DedicatedHsm extends pulumi.CustomResource {
     DedicatedHsmArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:hardwaresecuritymodules:DedicatedHsm',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:hardwaresecuritymodules:DedicatedHsm',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
-    managementNetworkProfile = registerOutput<NetworkProfileResponse?>(
-      'managementNetworkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managementNetworkProfile = registerOutput<NetworkProfileResponse?>('managementNetworkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<NetworkProfileResponse?>(
-      'networkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<SkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     stampId = registerOutput<String?>('stampId');
     statusMessage = registerOutput<String>('statusMessage');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     zones = registerOutput<List<String>?>('zones');

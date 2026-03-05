@@ -231,22 +231,17 @@ import 'scheduler_rule_state.dart';
 class SchedulerRule extends pulumi.CustomResource {
   /// The cname is the traffic scheduler corresponding to rules.
   late final pulumi.Output<String> cname;
-
   /// The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
   late final pulumi.Output<String?> param;
-
   /// The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
   late final pulumi.Output<String?> resourceGroupId;
-
   /// The name of the rule.
   late final pulumi.Output<String> ruleName;
-
   /// The rule type. Valid values:
   /// `2`: tiered protection.
   /// `3`: globalization acceleration.
   /// `6`: Cloud product interaction.
   late final pulumi.Output<int> ruleType;
-
   /// The information about the scheduling rules. See `rules` below.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
 
@@ -259,11 +254,11 @@ class SchedulerRule extends pulumi.CustomResource {
     SchedulerRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ddos/schedulerRule:SchedulerRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ddos/schedulerRule:SchedulerRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cname = registerOutput<String>('cname');
     param = registerOutput<String?>('param');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
@@ -290,11 +285,11 @@ class SchedulerRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ddos/schedulerRule:SchedulerRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ddos/schedulerRule:SchedulerRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cname = registerOutput<String>('cname');
     param = registerOutput<String?>('param');
     resourceGroupId = registerOutput<String?>('resourceGroupId');

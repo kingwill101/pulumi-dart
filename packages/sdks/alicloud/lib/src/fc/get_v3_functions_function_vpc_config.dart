@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetV3FunctionsFunctionVpcConfig {
   /// Security group ID.
   final pulumi.Input<String> securityGroupId;
-
   /// VPC network ID.
   final pulumi.Input<String> vpcId;
-
   /// Switch List.
   final pulumi.Input<List<String>> vswitchIds;
 
@@ -34,9 +32,8 @@ class GetV3FunctionsFunctionVpcConfig {
     return GetV3FunctionsFunctionVpcConfig(
       securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
-      vswitchIds: pulumi.Input.fromValue(
-        (map['vswitchIds'] as List).cast<String>(),
-      ),
+      vswitchIds: pulumi.Input.fromValue((map['vswitchIds'] as List).cast<String>()),
     );
   }
 }
+

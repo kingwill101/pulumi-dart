@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterManagerArgs {
   /// The name of the cluster manager.
   final pulumi.Input<String> clusterManagerName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetClusterManagerArgs {
 
   factory GetClusterManagerArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterManagerArgs(
-      clusterManagerName: pulumi.Input.fromValue(
-        map['clusterManagerName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      clusterManagerName: pulumi.Input.fromValue(map['clusterManagerName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

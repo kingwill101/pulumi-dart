@@ -207,7 +207,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
 
     if (_decoder != null) {
       try {
-        final decoded = _decoder!(value);
+        final decoded = _decoder(value);
         if (decoded == null) {
           return null;
         }

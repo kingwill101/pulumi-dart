@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CpuUtilization {
   /// Period of time over which CPU utilization is calculated.
   final pulumi.Input<String>? aggregationWindowLength;
-
   /// Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
   final pulumi.Input<double>? targetUtilization;
 
   /// Creates a new [CpuUtilization].
   /// [aggregationWindowLength] Period of time over which CPU utilization is calculated.
   /// [targetUtilization] Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
-  CpuUtilization({this.aggregationWindowLength, this.targetUtilization});
+  CpuUtilization({
+    this.aggregationWindowLength,
+    this.targetUtilization,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class CpuUtilization {
 
   factory CpuUtilization.fromMap(Map<String, dynamic> map) {
     return CpuUtilization(
-      aggregationWindowLength: (() {
-        final guardedValue = map['aggregationWindowLength'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetUtilization: (() {
-        final guardedValue = map['targetUtilization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      aggregationWindowLength: (() { final guardedValue = map['aggregationWindowLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetUtilization: (() { final guardedValue = map['targetUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

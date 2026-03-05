@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutonomousDatabaseSourceConfig {
   /// This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
   final pulumi.Input<bool>? automaticBackupsReplicationEnabled;
-
   /// The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
   final pulumi.Input<String>? autonomousDatabase;
 
@@ -26,16 +25,9 @@ class AutonomousDatabaseSourceConfig {
 
   factory AutonomousDatabaseSourceConfig.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabaseSourceConfig(
-      automaticBackupsReplicationEnabled: (() {
-        final guardedValue = map['automaticBackupsReplicationEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      autonomousDatabase: (() {
-        final guardedValue = map['autonomousDatabase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      automaticBackupsReplicationEnabled: (() { final guardedValue = map['automaticBackupsReplicationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      autonomousDatabase: (() { final guardedValue = map['autonomousDatabase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

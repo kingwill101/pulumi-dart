@@ -12,24 +12,18 @@ import 'job_status.dart';
 class JobArgs {
   /// deploymentId
   final pulumi.Input<String>? deploymentId;
-
   /// Local variables See `local_variables` below.
   final pulumi.Input<List<JobLocalVariable>>? localVariables;
-
   /// namespace
   final pulumi.Input<String> namespace;
-
   /// workspace
   final pulumi.Input<String> resourceId;
-
   /// Resource Queue for Job Run
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? resourceQueueName;
-
   /// Restore strategy See `restore_strategy` below.
   final pulumi.Input<JobRestoreStrategy>? restoreStrategy;
-
   /// job status See `status` below.
   final pulumi.Input<JobStatus>? status;
   final pulumi.Input<String>? stopStrategy;
@@ -57,82 +51,27 @@ class JobArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deploymentId': ?deploymentId,
-      'localVariables':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<JobLocalVariable>,
-            List<Map<String, dynamic>>
-          >(
-            localVariables,
-            (value) =>
-                pulumi.Input.encodeList<JobLocalVariable, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'localVariables': ?pulumi.Input.mapOptionalInputValue<List<JobLocalVariable>, List<Map<String, dynamic>>>(localVariables, (value) => pulumi.Input.encodeList<JobLocalVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'namespace': namespace,
       'resourceId': resourceId,
       'resourceQueueName': ?resourceQueueName,
-      'restoreStrategy':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobRestoreStrategy,
-            Map<String, dynamic>
-          >(restoreStrategy, (value) => value.toMap()),
-      'status':
-          ?pulumi.Input.mapOptionalInputValue<JobStatus, Map<String, dynamic>>(
-            status,
-            (value) => value.toMap(),
-          ),
+      'restoreStrategy': ?pulumi.Input.mapOptionalInputValue<JobRestoreStrategy, Map<String, dynamic>>(restoreStrategy, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<JobStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
       'stopStrategy': ?stopStrategy,
     };
   }
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      deploymentId: (() {
-        final guardedValue = map['deploymentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      localVariables: (() {
-        final guardedValue = map['localVariables'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<JobLocalVariable>(
-            guardedValue,
-            (value) => JobLocalVariable.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      deploymentId: (() { final guardedValue = map['deploymentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localVariables: (() { final guardedValue = map['localVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobLocalVariable>(guardedValue, (value) => JobLocalVariable.fromMap((value as Map).cast<String, dynamic>()))); })(),
       namespace: pulumi.Input.fromValue(map['namespace'] as String),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
-      resourceQueueName: (() {
-        final guardedValue = map['resourceQueueName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      restoreStrategy: (() {
-        final guardedValue = map['restoreStrategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobRestoreStrategy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobStatus.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      stopStrategy: (() {
-        final guardedValue = map['stopStrategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceQueueName: (() { final guardedValue = map['resourceQueueName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      restoreStrategy: (() { final guardedValue = map['restoreStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobRestoreStrategy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      stopStrategy: (() { final guardedValue = map['stopStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

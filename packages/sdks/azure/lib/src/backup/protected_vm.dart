@@ -329,24 +329,18 @@ class ProtectedVM extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** When `protection_state` is set to `BackupsSuspended` or `ProtectionStopped`, the Azure API may not return `backup_policy_id`. To avoid a perpetual diff, use Terraform's ignore_changes argument.
   late final pulumi.Output<String?> backupPolicyId;
-
   /// A list of Disks' Logical Unit Numbers (LUN) to be excluded for VM Protection.
   late final pulumi.Output<List<int>?> excludeDiskLuns;
-
   /// A list of Disks' Logical Unit Numbers (LUN) to be included for VM Protection.
   late final pulumi.Output<List<int>?> includeDiskLuns;
-
   /// Specifies Protection state of the backup. Possible values are `Protected`, `BackupsSuspended`, and `ProtectionStopped`.
   ///
   /// &gt; **Note:** `protection_state` cannot be set to `BackupsSuspended` unless the `azure.recoveryservices.Vault` has `immutability` set to `Unlocked` or `Locked`.
   late final pulumi.Output<String> protectionState;
-
   /// Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;
-
   /// Specifies the name of the Resource Group **associated with** the Recovery Services Vault to use. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Specifies the ID of the virtual machine to back up. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** After creation, the `source_vm_id` property can be removed without forcing a new resource to be created; however, setting it to a different ID will create a new resource. This allows the source virtual machine to be deleted without having to remove the backup.
@@ -361,11 +355,11 @@ class ProtectedVM extends pulumi.CustomResource {
     ProtectedVMArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:backup/protectedVM:ProtectedVM',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:backup/protectedVM:ProtectedVM',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupPolicyId = registerOutput<String?>('backupPolicyId');
     excludeDiskLuns = registerOutput<List<int>?>('excludeDiskLuns');
     includeDiskLuns = registerOutput<List<int>?>('includeDiskLuns');
@@ -393,11 +387,11 @@ class ProtectedVM extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:backup/protectedVM:ProtectedVM',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:backup/protectedVM:ProtectedVM',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupPolicyId = registerOutput<String?>('backupPolicyId');
     excludeDiskLuns = registerOutput<List<int>?>('excludeDiskLuns');
     includeDiskLuns = registerOutput<List<int>?>('includeDiskLuns');

@@ -5,27 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceRootBlockDevice {
   /// If the root block device will be deleted on termination.
   final pulumi.Input<bool> deleteOnTermination;
-
   /// Physical name of the device.
   final pulumi.Input<String> deviceName;
-
   /// If the EBS volume is encrypted.
   final pulumi.Input<bool> encrypted;
-
   /// `0` If the volume is not a provisioned IOPS image, otherwise the supported IOPS count.
   final pulumi.Input<int> iops;
   final pulumi.Input<String> kmsKeyId;
-
   /// Map of tags assigned to the Instance.
   final pulumi.Input<Map<String, String>> tags;
-
   /// Throughput of the volume, in MiB/s.
   final pulumi.Input<int> throughput;
   final pulumi.Input<String> volumeId;
-
   /// Size of the volume, in GiB.
   final pulumi.Input<int> volumeSize;
-
   /// Type of the volume.
   final pulumi.Input<String> volumeType;
 
@@ -70,9 +63,7 @@ class GetInstanceRootBlockDevice {
 
   factory GetInstanceRootBlockDevice.fromMap(Map<String, dynamic> map) {
     return GetInstanceRootBlockDevice(
-      deleteOnTermination: pulumi.Input.fromValue(
-        map['deleteOnTermination'] as bool,
-      ),
+      deleteOnTermination: pulumi.Input.fromValue(map['deleteOnTermination'] as bool),
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
       iops: pulumi.Input.fromValue(map['iops'] as int),
@@ -85,3 +76,4 @@ class GetInstanceRootBlockDevice {
     );
   }
 }
+

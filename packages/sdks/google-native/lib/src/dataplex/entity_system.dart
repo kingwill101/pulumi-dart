@@ -16,3 +16,4 @@ enum EntitySystem {
     throw ArgumentError('Unknown EntitySystem value: $value');
   }
 }
+

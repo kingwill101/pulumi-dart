@@ -20,3 +20,4 @@ enum NodeSize {
     throw ArgumentError('Unknown NodeSize value: $value');
   }
 }
+

@@ -25,9 +25,7 @@ class GetDatabaseInstancesInstanceIpAddress {
     };
   }
 
-  factory GetDatabaseInstancesInstanceIpAddress.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstancesInstanceIpAddress.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceIpAddress(
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       timeToRetire: pulumi.Input.fromValue(map['timeToRetire'] as String),
@@ -35,3 +33,4 @@ class GetDatabaseInstancesInstanceIpAddress {
     );
   }
 }
+

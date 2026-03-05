@@ -10,10 +10,14 @@ class DiagnosticSettingEnabledMetric {
 
   /// Creates a new [DiagnosticSettingEnabledMetric].
   /// [category] The name of a Diagnostic Metric Category for this Resource.
-  DiagnosticSettingEnabledMetric({required this.category});
+  DiagnosticSettingEnabledMetric({
+    required this.category,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'category': category};
+    return <String, dynamic>{
+      'category': category,
+    };
   }
 
   factory DiagnosticSettingEnabledMetric.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class DiagnosticSettingEnabledMetric {
     );
   }
 }
+

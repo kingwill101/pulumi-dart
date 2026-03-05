@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listStorageAccountServiceSAS.
 class ListStorageAccountServiceSASResult {
   /// List service SAS credentials of specific resource.
@@ -7,10 +8,14 @@ class ListStorageAccountServiceSASResult {
 
   /// Creates a new [ListStorageAccountServiceSASResult].
   /// [serviceSasToken] List service SAS credentials of specific resource.
-  ListStorageAccountServiceSASResult({required this.serviceSasToken});
+  ListStorageAccountServiceSASResult({
+    required this.serviceSasToken,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serviceSasToken': serviceSasToken};
+    return <String, dynamic>{
+      'serviceSasToken': serviceSasToken,
+    };
   }
 
   factory ListStorageAccountServiceSASResult.fromMap(Map<String, dynamic> map) {
@@ -19,3 +24,4 @@ class ListStorageAccountServiceSASResult {
     );
   }
 }
+

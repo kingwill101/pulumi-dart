@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseMysqlV2PendingUpdate {
   /// The time when a mandatory update needs to be applied.
   final pulumi.Input<String> deadline;
-
   /// A description of the update.
   final pulumi.Input<String> description;
-
   /// The date and time a maintenance update will be applied.
   final pulumi.Input<String> plannedFor;
 
@@ -38,3 +36,4 @@ class GetDatabaseMysqlV2PendingUpdate {
     );
   }
 }
+

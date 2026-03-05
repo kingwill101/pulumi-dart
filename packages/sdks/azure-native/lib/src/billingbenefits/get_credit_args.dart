@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCreditArgs {
   /// Name of the credit
   final pulumi.Input<String> creditName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetCreditArgs].
   /// [creditName] Name of the credit
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCreditArgs({required this.creditName, required this.resourceGroupName});
+  GetCreditArgs({
+    required this.creditName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetCreditArgs {
   factory GetCreditArgs.fromMap(Map<String, dynamic> map) {
     return GetCreditArgs(
       creditName: pulumi.Input.fromValue(map['creditName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

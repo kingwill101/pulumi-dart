@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// List of CEN Bandwidth Package IDs in the specified CEN instance.
   final pulumi.Input<List<String>> cenBandwidthPackageIds;
-
   /// ID of the CEN instance.
   final pulumi.Input<String> cenId;
-
   /// Name of the CEN instance.
   final pulumi.Input<String> cenInstanceName;
-
   /// The creation time of the CEN Instance.
   final pulumi.Input<String> createTime;
-
   /// Description of the CEN instance.
   final pulumi.Input<String> description;
-
   /// ID of the CEN instance.
   final pulumi.Input<String> id;
-
   /// Name of the CEN instance.
   final pulumi.Input<String> name;
-
   /// Indicates the allowed level of CIDR block overlapping.
   final pulumi.Input<String> protectionLevel;
-
   /// The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
   final pulumi.Input<String> status;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
 
@@ -74,9 +65,7 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      cenBandwidthPackageIds: pulumi.Input.fromValue(
-        (map['cenBandwidthPackageIds'] as List).cast<String>(),
-      ),
+      cenBandwidthPackageIds: pulumi.Input.fromValue((map['cenBandwidthPackageIds'] as List).cast<String>()),
       cenId: pulumi.Input.fromValue(map['cenId'] as String),
       cenInstanceName: pulumi.Input.fromValue(map['cenInstanceName'] as String),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
@@ -89,3 +78,4 @@ class GetInstancesInstance {
     );
   }
 }
+

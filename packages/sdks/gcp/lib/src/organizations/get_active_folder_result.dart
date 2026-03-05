@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getActiveFolder.
 class GetActiveFolderResult {
   final String? apiMethod;
   final String displayName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The resource name of the Folder. This uniquely identifies the folder.
   final String name;
   final String parent;
@@ -38,11 +37,7 @@ class GetActiveFolderResult {
 
   factory GetActiveFolderResult.fromMap(Map<String, dynamic> map) {
     return GetActiveFolderResult(
-      apiMethod: (() {
-        final guardedValue = map['apiMethod'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      apiMethod: (() { final guardedValue = map['apiMethod']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
@@ -50,3 +45,4 @@ class GetActiveFolderResult {
     );
   }
 }
+

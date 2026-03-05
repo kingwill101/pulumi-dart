@@ -9,17 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TunnelDestGroupArgs {
   /// List of CIDRs that this group applies to.
   final pulumi.Input<List<String>>? cidrs;
-
   /// List of FQDNs that this group applies to.
   final pulumi.Input<List<String>>? fqdns;
-
   /// Unique tunnel destination group name.
   final pulumi.Input<String> groupName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region of the tunnel group. Must be the same as the network resources in the group.
   final pulumi.Input<String>? region;
 
@@ -49,27 +45,12 @@ class TunnelDestGroupArgs {
 
   factory TunnelDestGroupArgs.fromMap(Map<String, dynamic> map) {
     return TunnelDestGroupArgs(
-      cidrs: (() {
-        final guardedValue = map['cidrs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      fqdns: (() {
-        final guardedValue = map['fqdns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      cidrs: (() { final guardedValue = map['cidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      fqdns: (() { final guardedValue = map['fqdns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

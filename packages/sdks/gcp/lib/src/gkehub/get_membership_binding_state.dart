@@ -8,10 +8,14 @@ class GetMembershipBindingState {
 
   /// Creates a new [GetMembershipBindingState].
   /// [code] Code describes the state of a MembershipBinding resource.
-  GetMembershipBindingState({required this.code});
+  GetMembershipBindingState({
+    required this.code,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code};
+    return <String, dynamic>{
+      'code': code,
+    };
   }
 
   factory GetMembershipBindingState.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetMembershipBindingState {
     );
   }
 }
+

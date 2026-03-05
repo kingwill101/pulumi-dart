@@ -8,28 +8,20 @@ import 'predeploy_job_response.dart';
 class JobResponse {
   /// An advanceChildRollout Job.
   final pulumi.Input<Map<String, dynamic>> advanceChildRolloutJob;
-
   /// A createChildRollout Job.
   final pulumi.Input<Map<String, dynamic>> createChildRolloutJob;
-
   /// A deploy Job.
   final pulumi.Input<Map<String, dynamic>> deployJob;
-
   /// The name of the `JobRun` responsible for the most recent invocation of this Job.
   final pulumi.Input<String> jobRun;
-
   /// A postdeploy Job.
   final pulumi.Input<PostdeployJobResponse> postdeployJob;
-
   /// A predeploy Job.
   final pulumi.Input<PredeployJobResponse> predeployJob;
-
   /// Additional information on why the Job was skipped, if available.
   final pulumi.Input<String> skipMessage;
-
   /// The current state of the Job.
   final pulumi.Input<String> state;
-
   /// A verify Job.
   final pulumi.Input<Map<String, dynamic>> verifyJob;
 
@@ -61,16 +53,8 @@ class JobResponse {
       'createChildRolloutJob': createChildRolloutJob,
       'deployJob': deployJob,
       'jobRun': jobRun,
-      'postdeployJob':
-          pulumi.Input.mapInputValue<
-            PostdeployJobResponse,
-            Map<String, dynamic>
-          >(postdeployJob, (value) => value.toMap()),
-      'predeployJob':
-          pulumi.Input.mapInputValue<
-            PredeployJobResponse,
-            Map<String, dynamic>
-          >(predeployJob, (value) => value.toMap()),
+      'postdeployJob': pulumi.Input.mapInputValue<PostdeployJobResponse, Map<String, dynamic>>(postdeployJob, (value) => value.toMap()),
+      'predeployJob': pulumi.Input.mapInputValue<PredeployJobResponse, Map<String, dynamic>>(predeployJob, (value) => value.toMap()),
       'skipMessage': skipMessage,
       'state': state,
       'verifyJob': verifyJob,
@@ -79,31 +63,16 @@ class JobResponse {
 
   factory JobResponse.fromMap(Map<String, dynamic> map) {
     return JobResponse(
-      advanceChildRolloutJob: pulumi.Input.fromValue(
-        (map['advanceChildRolloutJob']! as Map).cast<String, dynamic>(),
-      ),
-      createChildRolloutJob: pulumi.Input.fromValue(
-        (map['createChildRolloutJob']! as Map).cast<String, dynamic>(),
-      ),
-      deployJob: pulumi.Input.fromValue(
-        (map['deployJob']! as Map).cast<String, dynamic>(),
-      ),
+      advanceChildRolloutJob: pulumi.Input.fromValue((map['advanceChildRolloutJob']! as Map).cast<String, dynamic>()),
+      createChildRolloutJob: pulumi.Input.fromValue((map['createChildRolloutJob']! as Map).cast<String, dynamic>()),
+      deployJob: pulumi.Input.fromValue((map['deployJob']! as Map).cast<String, dynamic>()),
       jobRun: pulumi.Input.fromValue(map['jobRun'] as String),
-      postdeployJob: pulumi.Input.fromValue(
-        PostdeployJobResponse.fromMap(
-          (map['postdeployJob']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      predeployJob: pulumi.Input.fromValue(
-        PredeployJobResponse.fromMap(
-          (map['predeployJob']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      postdeployJob: pulumi.Input.fromValue(PostdeployJobResponse.fromMap((map['postdeployJob']! as Map).cast<String, dynamic>())),
+      predeployJob: pulumi.Input.fromValue(PredeployJobResponse.fromMap((map['predeployJob']! as Map).cast<String, dynamic>())),
       skipMessage: pulumi.Input.fromValue(map['skipMessage'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
-      verifyJob: pulumi.Input.fromValue(
-        (map['verifyJob']! as Map).cast<String, dynamic>(),
-      ),
+      verifyJob: pulumi.Input.fromValue((map['verifyJob']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

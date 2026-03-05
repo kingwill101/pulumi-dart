@@ -19,10 +19,14 @@ class NodeTemplateServerBinding {
 
   /// Creates a new [NodeTemplateServerBinding].
   /// [type] Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
-  NodeTemplateServerBinding({required this.type});
+  NodeTemplateServerBinding({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory NodeTemplateServerBinding.fromMap(Map<String, dynamic> map) {
@@ -31,3 +35,4 @@ class NodeTemplateServerBinding {
     );
   }
 }
+

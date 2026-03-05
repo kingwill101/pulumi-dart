@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnalyzerConfigurationInternalAccessAnalysisRuleInclusion {
   /// List of AWS account IDs to apply to the internal access analysis rule criteria. Account IDs can only be applied to the analysis rule criteria for organization-level analyzers.
   final pulumi.Input<List<String>>? accountIds;
-
   /// List of resource ARNs to apply to the internal access analysis rule criteria. The analyzer will only generate findings for resources that match these ARNs.
   final pulumi.Input<List<String>>? resourceArns;
-
   /// List of resource types to apply to the internal access analysis rule criteria. The analyzer will only generate findings for resources of these types. Refer to [InternalAccessAnalysisRuleCriteria](https://docs.aws.amazon.com/access-analyzer/latest/APIReference/API_InternalAccessAnalysisRuleCriteria.html) in the AWS IAM Access Analyzer API Reference for valid values.
   final pulumi.Input<List<String>>? resourceTypes;
 
@@ -30,25 +28,12 @@ class AnalyzerConfigurationInternalAccessAnalysisRuleInclusion {
     };
   }
 
-  factory AnalyzerConfigurationInternalAccessAnalysisRuleInclusion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalyzerConfigurationInternalAccessAnalysisRuleInclusion.fromMap(Map<String, dynamic> map) {
     return AnalyzerConfigurationInternalAccessAnalysisRuleInclusion(
-      accountIds: (() {
-        final guardedValue = map['accountIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      resourceArns: (() {
-        final guardedValue = map['resourceArns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      resourceTypes: (() {
-        final guardedValue = map['resourceTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      accountIds: (() { final guardedValue = map['accountIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      resourceArns: (() { final guardedValue = map['resourceArns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      resourceTypes: (() { final guardedValue = map['resourceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

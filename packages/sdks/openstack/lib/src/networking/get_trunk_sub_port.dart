@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrunkSubPort {
   /// The ID of the trunk parent port.
   final pulumi.Input<String> portId;
-
   /// The numeric id of the subport segment.
   final pulumi.Input<int> segmentationId;
-
   /// The segmenation tecnology used, e.g., "vlan".
   final pulumi.Input<String> segmentationType;
 
@@ -34,9 +32,8 @@ class GetTrunkSubPort {
     return GetTrunkSubPort(
       portId: pulumi.Input.fromValue(map['portId'] as String),
       segmentationId: pulumi.Input.fromValue(map['segmentationId'] as int),
-      segmentationType: pulumi.Input.fromValue(
-        map['segmentationType'] as String,
-      ),
+      segmentationType: pulumi.Input.fromValue(map['segmentationType'] as String),
     );
   }
 }
+

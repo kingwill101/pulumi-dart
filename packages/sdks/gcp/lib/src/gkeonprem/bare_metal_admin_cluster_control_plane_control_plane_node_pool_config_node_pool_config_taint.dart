@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint {
   /// Available taint effects.
   final pulumi.Input<String>? effect;
-
   /// (Optional)
   final pulumi.Input<String>? key;
-
   /// (Optional)
   final pulumi.Input<String>? value;
 
@@ -23,28 +21,19 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigT
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'effect': ?effect, 'key': ?key, 'value': ?value};
+    return <String, dynamic>{
+      'effect': ?effect,
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
-  factory BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint(
-      effect: (() {
-        final guardedValue = map['effect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      effect: (() { final guardedValue = map['effect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

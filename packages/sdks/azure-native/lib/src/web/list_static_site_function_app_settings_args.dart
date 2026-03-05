@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListStaticSiteFunctionAppSettingsArgs {
   /// Name of the static site.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -28,14 +27,11 @@ class ListStaticSiteFunctionAppSettingsArgs {
     };
   }
 
-  factory ListStaticSiteFunctionAppSettingsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListStaticSiteFunctionAppSettingsArgs.fromMap(Map<String, dynamic> map) {
     return ListStaticSiteFunctionAppSettingsArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

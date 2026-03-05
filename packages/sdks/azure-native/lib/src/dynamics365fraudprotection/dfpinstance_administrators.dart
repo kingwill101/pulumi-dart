@@ -9,19 +9,20 @@ class DFPInstanceAdministrators {
 
   /// Creates a new [DFPInstanceAdministrators].
   /// [members] An array of administrator user identities.
-  DFPInstanceAdministrators({this.members});
+  DFPInstanceAdministrators({
+    this.members,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'members': ?members};
+    return <String, dynamic>{
+      'members': ?members,
+    };
   }
 
   factory DFPInstanceAdministrators.fromMap(Map<String, dynamic> map) {
     return DFPInstanceAdministrators(
-      members: (() {
-        final guardedValue = map['members'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

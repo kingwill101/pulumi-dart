@@ -208,13 +208,10 @@ import 'routine_related_record_state.dart';
 class RoutineRelatedRecord extends pulumi.CustomResource {
   /// The routine name.
   late final pulumi.Output<String> name;
-
   /// The record ID.
   late final pulumi.Output<int> recordId;
-
   /// The record name.
   late final pulumi.Output<String> recordName;
-
   /// The website ID.
   late final pulumi.Output<String> siteId;
 
@@ -227,11 +224,11 @@ class RoutineRelatedRecord extends pulumi.CustomResource {
     RoutineRelatedRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/routineRelatedRecord:RoutineRelatedRecord',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/routineRelatedRecord:RoutineRelatedRecord',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     recordId = registerOutput<int>('recordId');
     recordName = registerOutput<String>('recordName');
@@ -256,11 +253,11 @@ class RoutineRelatedRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/routineRelatedRecord:RoutineRelatedRecord',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/routineRelatedRecord:RoutineRelatedRecord',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     recordId = registerOutput<int>('recordId');
     recordName = registerOutput<String>('recordName');

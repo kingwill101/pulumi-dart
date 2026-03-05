@@ -12,8 +12,7 @@ enum InterconnectAttachmentEncryption {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InterconnectAttachmentEncryption value: $value',
-    );
+    throw ArgumentError('Unknown InterconnectAttachmentEncryption value: $value');
   }
 }
+

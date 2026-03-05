@@ -15,3 +15,4 @@ enum DevToolPortalFeatureState {
     throw ArgumentError('Unknown DevToolPortalFeatureState value: $value');
   }
 }
+

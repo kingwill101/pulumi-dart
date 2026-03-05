@@ -19,3 +19,4 @@ enum JobOutputType {
     throw ArgumentError('Unknown JobOutputType value: $value');
   }
 }
+

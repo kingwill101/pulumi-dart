@@ -10,10 +10,16 @@ class GroupResource {
   /// Creates a new [GroupResource].
   /// [group] Required.
   /// [resource] Required.
-  GroupResource({required this.group, required this.resource});
+  GroupResource({
+    required this.group,
+    required this.resource,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'group': group, 'resource': resource};
+    return <String, dynamic>{
+      'group': group,
+      'resource': resource,
+    };
   }
 
   factory GroupResource.fromMap(Map<String, dynamic> map) {
@@ -23,3 +29,4 @@ class GroupResource {
     );
   }
 }
+

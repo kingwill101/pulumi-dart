@@ -15,7 +15,11 @@ class GetModelArgs {
   /// [location] Required.
   /// [modelId] Required.
   /// [project] Optional.
-  GetModelArgs({required this.location, required this.modelId, this.project});
+  GetModelArgs({
+    required this.location,
+    required this.modelId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,11 +33,8 @@ class GetModelArgs {
     return GetModelArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       modelId: pulumi.Input.fromValue(map['modelId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

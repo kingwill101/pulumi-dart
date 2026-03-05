@@ -394,13 +394,10 @@ import 'event_stream_state.dart';
 class EventStream extends pulumi.CustomResource {
   /// The application ID.
   late final pulumi.Output<String> applicationId;
-
   /// The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
   late final pulumi.Output<String> destinationStreamArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
   late final pulumi.Output<String> roleArn;
 
@@ -413,11 +410,11 @@ class EventStream extends pulumi.CustomResource {
     EventStreamArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:pinpoint/eventStream:EventStream',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:pinpoint/eventStream:EventStream',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     destinationStreamArn = registerOutput<String>('destinationStreamArn');
     region = registerOutput<String>('region');
@@ -442,11 +439,11 @@ class EventStream extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:pinpoint/eventStream:EventStream',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:pinpoint/eventStream:EventStream',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     destinationStreamArn = registerOutput<String>('destinationStreamArn');
     region = registerOutput<String>('region');

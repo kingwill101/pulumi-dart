@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IngressPolicyState {
   /// The name of the Access Policy this resource belongs to.
   final pulumi.Input<String>? accessPolicyId;
-
   /// The name of the Service Perimeter to add this resource to.
   final pulumi.Input<String>? ingressPolicyName;
-
   /// A GCP resource that is inside of the service perimeter.
   final pulumi.Input<String>? resource;
 
@@ -33,21 +31,10 @@ class IngressPolicyState {
 
   factory IngressPolicyState.fromMap(Map<String, dynamic> map) {
     return IngressPolicyState(
-      accessPolicyId: (() {
-        final guardedValue = map['accessPolicyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ingressPolicyName: (() {
-        final guardedValue = map['ingressPolicyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resource: (() {
-        final guardedValue = map['resource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessPolicyId: (() { final guardedValue = map['accessPolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ingressPolicyName: (() { final guardedValue = map['ingressPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

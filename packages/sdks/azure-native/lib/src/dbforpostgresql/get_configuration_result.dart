@@ -6,49 +6,34 @@ import 'system_data_response.dart';
 class GetConfigurationResult {
   /// Allowed values of the configuration (also known as server parameter).
   final String allowedValues;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Data type of the configuration (also known as server parameter).
   final String dataType;
-
   /// Value assigned by default to the configuration (also known as server parameter).
   final String defaultValue;
-
   /// Description of the configuration (also known as server parameter).
   final String description;
-
   /// Link pointing to the documentation of the configuration (also known as server parameter).
   final String documentationLink;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Indicates if the value assigned to the configuration (also known as server parameter) is pending a server restart for it to take effect.
   final bool isConfigPendingRestart;
-
   /// Indicates if it's a dynamic (true) or static (false) configuration (also known as server parameter). Static server parameters require a server restart after changing the value assigned to them, for the change to take effect. Dynamic server parameters do not require a server restart after changing the value assigned to them, for the change to take effect.
   final bool isDynamicConfig;
-
   /// Indicates if it's a read-only (true) or modifiable (false) configuration (also known as server parameter).
   final bool isReadOnly;
-
   /// The name of the resource
   final String name;
-
   /// Source of the value assigned to the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
   final String? source;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Units in which the configuration (also known as server parameter) value is expressed.
   final String unit;
-
   /// Value of the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
   final String? value;
 
@@ -122,21 +107,12 @@ class GetConfigurationResult {
       isDynamicConfig: map['isDynamicConfig'] as bool,
       isReadOnly: map['isReadOnly'] as bool,
       name: map['name'] as String,
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       unit: map['unit'] as String,
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

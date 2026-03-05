@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetADCCatalogArgs {
   /// The name of the data catalog in the specified subscription and resource group.
   final pulumi.Input<String> catalogName;
-
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetADCCatalogArgs {
   factory GetADCCatalogArgs.fromMap(Map<String, dynamic> map) {
     return GetADCCatalogArgs(
       catalogName: pulumi.Input.fromValue(map['catalogName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

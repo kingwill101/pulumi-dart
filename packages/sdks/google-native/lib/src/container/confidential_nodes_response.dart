@@ -9,10 +9,14 @@ class ConfidentialNodesResponse {
 
   /// Creates a new [ConfidentialNodesResponse].
   /// [enabled] Whether Confidential Nodes feature is enabled.
-  ConfidentialNodesResponse({required this.enabled});
+  ConfidentialNodesResponse({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory ConfidentialNodesResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ConfidentialNodesResponse {
     );
   }
 }
+

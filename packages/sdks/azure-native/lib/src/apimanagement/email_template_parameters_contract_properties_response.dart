@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmailTemplateParametersContractPropertiesResponse {
   /// Template parameter description.
   final pulumi.Input<String>? description;
-
   /// Template parameter name.
   final pulumi.Input<String>? name;
-
   /// Template parameter title.
   final pulumi.Input<String>? title;
 
@@ -31,25 +29,12 @@ class EmailTemplateParametersContractPropertiesResponse {
     };
   }
 
-  factory EmailTemplateParametersContractPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EmailTemplateParametersContractPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EmailTemplateParametersContractPropertiesResponse(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      title: (() {
-        final guardedValue = map['title'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

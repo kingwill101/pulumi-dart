@@ -163,28 +163,20 @@ import 'firewall_vpc_firewall_cen_state.dart';
 class FirewallVpcFirewallCen extends pulumi.CustomResource {
   /// The ID of the CEN instance.
   late final pulumi.Output<String> cenId;
-
   /// Intercommunication type, value: expressconnect: Express Channel cen: Cloud Enterprise Network
   late final pulumi.Output<String> connectType;
-
   /// The language type of the requested and received messages. Valid values:
   late final pulumi.Output<String?> lang;
-
   /// The details of the VPC. See `local_vpc` below.
   late final pulumi.Output<FirewallVpcFirewallCenLocalVpc> localVpc;
-
   /// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
   late final pulumi.Output<String?> memberUid;
-
   /// Firewall switch status.
   late final pulumi.Output<String> status;
-
   /// VPC firewall ID
   late final pulumi.Output<String> vpcFirewallId;
-
   /// The name of the VPC firewall instance.
   late final pulumi.Output<String> vpcFirewallName;
-
   /// The ID of the region to which the VPC is created.
   late final pulumi.Output<String> vpcRegion;
 
@@ -197,24 +189,15 @@ class FirewallVpcFirewallCen extends pulumi.CustomResource {
     FirewallVpcFirewallCenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/firewallVpcFirewallCen:FirewallVpcFirewallCen',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/firewallVpcFirewallCen:FirewallVpcFirewallCen',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenId = registerOutput<String>('cenId');
     connectType = registerOutput<String>('connectType');
     lang = registerOutput<String?>('lang');
-    localVpc = registerOutput<FirewallVpcFirewallCenLocalVpc>(
-      'localVpc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FirewallVpcFirewallCenLocalVpc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    localVpc = registerOutput<FirewallVpcFirewallCenLocalVpc>('localVpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallVpcFirewallCenLocalVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memberUid = registerOutput<String?>('memberUid');
     status = registerOutput<String>('status');
     vpcFirewallId = registerOutput<String>('vpcFirewallId');
@@ -240,24 +223,15 @@ class FirewallVpcFirewallCen extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/firewallVpcFirewallCen:FirewallVpcFirewallCen',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/firewallVpcFirewallCen:FirewallVpcFirewallCen',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenId = registerOutput<String>('cenId');
     connectType = registerOutput<String>('connectType');
     lang = registerOutput<String?>('lang');
-    localVpc = registerOutput<FirewallVpcFirewallCenLocalVpc>(
-      'localVpc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FirewallVpcFirewallCenLocalVpc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    localVpc = registerOutput<FirewallVpcFirewallCenLocalVpc>('localVpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallVpcFirewallCenLocalVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memberUid = registerOutput<String?>('memberUid');
     status = registerOutput<String>('status');
     vpcFirewallId = registerOutput<String>('vpcFirewallId');

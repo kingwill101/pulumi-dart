@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterNodePoolNodeConfigBootDisk {
   /// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
   final pulumi.Input<String> diskType;
-
   /// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
   final pulumi.Input<int> provisionedIops;
-
   /// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
   final pulumi.Input<int> provisionedThroughput;
-
   /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
   final pulumi.Input<int> sizeGb;
 
@@ -36,16 +33,13 @@ class GetClusterNodePoolNodeConfigBootDisk {
     };
   }
 
-  factory GetClusterNodePoolNodeConfigBootDisk.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodePoolNodeConfigBootDisk.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigBootDisk(
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
       provisionedIops: pulumi.Input.fromValue(map['provisionedIops'] as int),
-      provisionedThroughput: pulumi.Input.fromValue(
-        map['provisionedThroughput'] as int,
-      ),
+      provisionedThroughput: pulumi.Input.fromValue(map['provisionedThroughput'] as int),
       sizeGb: pulumi.Input.fromValue(map['sizeGb'] as int),
     );
   }
 }
+

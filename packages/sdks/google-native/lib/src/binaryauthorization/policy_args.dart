@@ -10,11 +10,9 @@ import 'gke_policy.dart';
 class PolicyArgs {
   /// Optional. A description comment about the policy.
   final pulumi.Input<String>? description;
-
   /// Optional. GKE platform-specific policy.
   final pulumi.Input<GkePolicy>? gkePolicy;
   final pulumi.Input<String> platformId;
-
   /// Required. The platform policy ID.
   final pulumi.Input<String> policyId;
   final pulumi.Input<String>? project;
@@ -36,11 +34,7 @@ class PolicyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'gkePolicy':
-          ?pulumi.Input.mapOptionalInputValue<GkePolicy, Map<String, dynamic>>(
-            gkePolicy,
-            (value) => value.toMap(),
-          ),
+      'gkePolicy': ?pulumi.Input.mapOptionalInputValue<GkePolicy, Map<String, dynamic>>(gkePolicy, (value) => value.toMap()),
       'platformId': platformId,
       'policyId': policyId,
       'project': ?project,
@@ -49,25 +43,12 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      gkePolicy: (() {
-        final guardedValue = map['gkePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GkePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gkePolicy: (() { final guardedValue = map['gkePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GkePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       platformId: pulumi.Input.fromValue(map['platformId'] as String),
       policyId: pulumi.Input.fromValue(map['policyId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

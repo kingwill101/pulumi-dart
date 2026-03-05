@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPlanArgs {
   /// The name of the devcenter plan.
   final pulumi.Input<String> planName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetPlanArgs].
   /// [planName] The name of the devcenter plan.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPlanArgs({required this.planName, required this.resourceGroupName});
+  GetPlanArgs({
+    required this.planName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetPlanArgs {
   factory GetPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetPlanArgs(
       planName: pulumi.Input.fromValue(map['planName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

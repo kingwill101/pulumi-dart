@@ -492,75 +492,53 @@ import 'nat_gateway_state.dart';
 class NatGateway extends pulumi.CustomResource {
   /// The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
   late final pulumi.Output<NatGatewayAccessMode> accessMode;
-
   /// Whether enable the deletion protection or not. Default value: `false`.
   /// - true: Enable deletion protection.
   /// - false: Disable deletion protection.
   late final pulumi.Output<bool> deletionProtection;
-
   /// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
   late final pulumi.Output<String?> description;
-
   /// Specifies whether to only precheck this request. Default value: `false`.
   late final pulumi.Output<bool?> dryRun;
-
   /// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
   /// - `MULTI_BINDED`: Multi EIP network card visible mode.
   /// - `NAT`: EIP normal mode, compatible with IPv4 gateway.
   late final pulumi.Output<String> eipBindMode;
-
   /// Specifies whether to forcefully delete the NAT gateway.
   late final pulumi.Output<bool?> force;
-
   /// The nat gateway will auto create a forward item.
   late final pulumi.Output<String> forwardTableIds;
-
   /// Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
   late final pulumi.Output<bool> icmpReplyEnabled;
-
   /// Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
   late final pulumi.Output<String> instanceChargeType;
-
   /// The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
   late final pulumi.Output<String> internetChargeType;
-
   /// Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
   late final pulumi.Output<String> name;
-
   /// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
   late final pulumi.Output<String> natGatewayName;
-
   /// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
   late final pulumi.Output<String> natType;
-
   /// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
   late final pulumi.Output<String> networkType;
-
   /// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
-
   /// The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
   /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
   late final pulumi.Output<int?> period;
-
   /// Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> privateLinkEnabled;
-
   /// The nat gateway will auto create a snat item.
   late final pulumi.Output<String> snatTableIds;
-
   /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
   late final pulumi.Output<String> specification;
-
   /// (Available since v1.121.0) The status of NAT gateway.
   late final pulumi.Output<String> status;
-
   /// The tags of NAT gateway.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The VPC ID.
   late final pulumi.Output<String> vpcId;
-
   /// The id of VSwitch.
   late final pulumi.Output<String?> vswitchId;
 
@@ -573,21 +551,12 @@ class NatGateway extends pulumi.CustomResource {
     NatGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/natGateway:NatGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessMode = registerOutput<NatGatewayAccessMode>(
-      'accessMode',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NatGatewayAccessMode.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:vpc/natGateway:NatGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessMode = registerOutput<NatGatewayAccessMode>('accessMode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NatGatewayAccessMode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionProtection = registerOutput<bool>('deletionProtection');
     description = registerOutput<String?>('description');
     dryRun = registerOutput<bool?>('dryRun');
@@ -630,21 +599,12 @@ class NatGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/natGateway:NatGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessMode = registerOutput<NatGatewayAccessMode>(
-      'accessMode',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NatGatewayAccessMode.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:vpc/natGateway:NatGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessMode = registerOutput<NatGatewayAccessMode>('accessMode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NatGatewayAccessMode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionProtection = registerOutput<bool>('deletionProtection');
     description = registerOutput<String?>('description');
     dryRun = registerOutput<bool?>('dryRun');

@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listNotificationHubKeys.
 class ListNotificationHubKeysResult {
   /// Gets or sets keyName of the created AuthorizationRule
   final String keyName;
-
   /// Gets or sets primaryConnectionString of the AuthorizationRule.
   final String primaryConnectionString;
-
   /// Gets or sets primaryKey of the created AuthorizationRule.
   final String primaryKey;
-
   /// Gets or sets secondaryConnectionString of the created
   /// AuthorizationRule
   final String secondaryConnectionString;
-
   /// Gets or sets secondaryKey of the created AuthorizationRule
   final String secondaryKey;
 
@@ -52,3 +49,4 @@ class ListNotificationHubKeysResult {
     );
   }
 }
+

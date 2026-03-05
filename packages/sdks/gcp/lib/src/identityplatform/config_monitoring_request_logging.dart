@@ -8,19 +8,20 @@ class ConfigMonitoringRequestLogging {
 
   /// Creates a new [ConfigMonitoringRequestLogging].
   /// [enabled] Whether logging is enabled for this project or not.
-  ConfigMonitoringRequestLogging({this.enabled});
+  ConfigMonitoringRequestLogging({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory ConfigMonitoringRequestLogging.fromMap(Map<String, dynamic> map) {
     return ConfigMonitoringRequestLogging(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

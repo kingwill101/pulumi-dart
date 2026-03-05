@@ -531,19 +531,14 @@ import 'certificate_binding_state.dart';
 class CertificateBinding extends pulumi.CustomResource {
   /// The name of the App Service to which the certificate was bound.
   late final pulumi.Output<String> appServiceName;
-
   /// The ID of the certificate to bind to the custom domain. Changing this forces a new App Service Certificate Binding to be created.
   late final pulumi.Output<String> certificateId;
-
   /// The hostname of the bound certificate.
   late final pulumi.Output<String> hostname;
-
   /// The ID of the Custom Domain/Hostname Binding. Changing this forces a new App Service Certificate Binding to be created.
   late final pulumi.Output<String> hostnameBindingId;
-
   /// The type of certificate binding. Allowed values are `IpBasedEnabled` or `SniEnabled`. Changing this forces a new App Service Certificate Binding to be created.
   late final pulumi.Output<String> sslState;
-
   /// The certificate thumbprint.
   late final pulumi.Output<String> thumbprint;
 
@@ -556,11 +551,11 @@ class CertificateBinding extends pulumi.CustomResource {
     CertificateBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/certificateBinding:CertificateBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/certificateBinding:CertificateBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceName = registerOutput<String>('appServiceName');
     certificateId = registerOutput<String>('certificateId');
     hostname = registerOutput<String>('hostname');
@@ -587,11 +582,11 @@ class CertificateBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/certificateBinding:CertificateBinding',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/certificateBinding:CertificateBinding',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceName = registerOutput<String>('appServiceName');
     certificateId = registerOutput<String>('certificateId');
     hostname = registerOutput<String>('hostname');

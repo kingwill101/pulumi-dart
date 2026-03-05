@@ -8,17 +8,20 @@ class GetKubernetesClusterLinuxProfileSshKey {
 
   /// Creates a new [GetKubernetesClusterLinuxProfileSshKey].
   /// [keyData] The Public SSH Key used to access the cluster.
-  GetKubernetesClusterLinuxProfileSshKey({required this.keyData});
+  GetKubernetesClusterLinuxProfileSshKey({
+    required this.keyData,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyData': keyData};
+    return <String, dynamic>{
+      'keyData': keyData,
+    };
   }
 
-  factory GetKubernetesClusterLinuxProfileSshKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetKubernetesClusterLinuxProfileSshKey.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterLinuxProfileSshKey(
       keyData: pulumi.Input.fromValue(map['keyData'] as String),
     );
   }
 }
+

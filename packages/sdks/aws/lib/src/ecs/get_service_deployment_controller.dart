@@ -8,10 +8,14 @@ class GetServiceDeploymentController {
 
   /// Creates a new [GetServiceDeploymentController].
   /// [type] Constraint type
-  GetServiceDeploymentController({required this.type});
+  GetServiceDeploymentController({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory GetServiceDeploymentController.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetServiceDeploymentController {
     );
   }
 }
+

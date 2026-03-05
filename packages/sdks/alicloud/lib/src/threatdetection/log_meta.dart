@@ -32,7 +32,6 @@ class LogMeta extends pulumi.CustomResource {
   /// - sas-filedetect-log: file detection log
   /// - sas-net-block: Network Defense Log
   late final pulumi.Output<String> logMetaName;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -45,11 +44,11 @@ class LogMeta extends pulumi.CustomResource {
     LogMetaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/logMeta:LogMeta',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/logMeta:LogMeta',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     logMetaName = registerOutput<String>('logMetaName');
     status = registerOutput<String>('status');
   }
@@ -72,11 +71,11 @@ class LogMeta extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/logMeta:LogMeta',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/logMeta:LogMeta',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     logMetaName = registerOutput<String>('logMetaName');
     status = registerOutput<String>('status');
   }

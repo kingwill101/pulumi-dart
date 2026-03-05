@@ -15,3 +15,4 @@ enum FilterFileType {
     throw ArgumentError('Unknown FilterFileType value: $value');
   }
 }
+

@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getIPv6FirewallRule.
 class GetIPv6FirewallRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpv6Address.
   final String? endIPv6Address;
-
   /// Resource ID.
   final String id;
-
   /// Resource name.
   final String? name;
-
   /// The start IP address of the firewall rule. Must be IPv6 format.
   final String? startIPv6Address;
-
   /// Resource type.
   final String type;
 
@@ -50,23 +46,12 @@ class GetIPv6FirewallRuleResult {
   factory GetIPv6FirewallRuleResult.fromMap(Map<String, dynamic> map) {
     return GetIPv6FirewallRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      endIPv6Address: (() {
-        final guardedValue = map['endIPv6Address'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      endIPv6Address: (() { final guardedValue = map['endIPv6Address']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      startIPv6Address: (() {
-        final guardedValue = map['startIPv6Address'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      startIPv6Address: (() { final guardedValue = map['startIPv6Address']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

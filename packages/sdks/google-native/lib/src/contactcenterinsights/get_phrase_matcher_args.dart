@@ -33,11 +33,8 @@ class GetPhraseMatcherArgs {
     return GetPhraseMatcherArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       phraseMatcherId: pulumi.Input.fromValue(map['phraseMatcherId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

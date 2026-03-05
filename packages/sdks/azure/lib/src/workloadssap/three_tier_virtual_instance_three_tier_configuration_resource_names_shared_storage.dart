@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage {
   /// The full name of the Shared Storage Account. Changing this forces a new resource to be created.
   final pulumi.Input<String>? accountName;
-
   /// The full name of Private Endpoint for the Shared Storage Account. Changing this forces a new resource to be created.
   final pulumi.Input<String>? privateEndpointName;
 
@@ -24,20 +23,11 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage {
     };
   }
 
-  factory ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage(
-      accountName: (() {
-        final guardedValue = map['accountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateEndpointName: (() {
-        final guardedValue = map['privateEndpointName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateEndpointName: (() { final guardedValue = map['privateEndpointName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

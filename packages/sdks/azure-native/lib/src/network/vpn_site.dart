@@ -335,49 +335,34 @@ import 'vpn_site_args.dart';
 class VpnSite extends pulumi.CustomResource {
   /// The AddressSpace that contains an array of IP address ranges.
   late final pulumi.Output<AddressSpaceResponse?> addressSpace;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The set of bgp properties.
   late final pulumi.Output<BgpSettingsResponse?> bgpProperties;
-
   /// The device properties.
   late final pulumi.Output<DevicePropertiesResponse?> deviceProperties;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The ip-address for the vpn-site.
   late final pulumi.Output<String?> ipAddress;
-
   /// IsSecuritySite flag.
   late final pulumi.Output<bool?> isSecuritySite;
-
   /// Resource location.
   late final pulumi.Output<String> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Office365 Policy.
   late final pulumi.Output<O365PolicyPropertiesResponse?> o365Policy;
-
   /// The provisioning state of the VPN site resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The key for vpn-site that can be used for connections.
   late final pulumi.Output<String?> siteKey;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// The VirtualWAN to which the vpnSite belongs.
   late final pulumi.Output<SubResourceResponse?> virtualWan;
-
   /// List of all vpn site links.
   late final pulumi.Output<List<Map<String, dynamic>>?> vpnSiteLinks;
 
@@ -390,71 +375,26 @@ class VpnSite extends pulumi.CustomResource {
     VpnSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:VpnSite',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    addressSpace = registerOutput<AddressSpaceResponse?>(
-      'addressSpace',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AddressSpaceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:network:VpnSite',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    addressSpace = registerOutput<AddressSpaceResponse?>('addressSpace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    bgpProperties = registerOutput<BgpSettingsResponse?>(
-      'bgpProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BgpSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    deviceProperties = registerOutput<DevicePropertiesResponse?>(
-      'deviceProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DevicePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    bgpProperties = registerOutput<BgpSettingsResponse?>('bgpProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BgpSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deviceProperties = registerOutput<DevicePropertiesResponse?>('deviceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevicePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     ipAddress = registerOutput<String?>('ipAddress');
     isSecuritySite = registerOutput<bool?>('isSecuritySite');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    o365Policy = registerOutput<O365PolicyPropertiesResponse?>(
-      'o365Policy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return O365PolicyPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    o365Policy = registerOutput<O365PolicyPropertiesResponse?>('o365Policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return O365PolicyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     siteKey = registerOutput<String?>('siteKey');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualWan = registerOutput<SubResourceResponse?>(
-      'virtualWan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualWan = registerOutput<SubResourceResponse?>('virtualWan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpnSiteLinks = registerOutput<List<Map<String, dynamic>>?>('vpnSiteLinks');
   }
 }

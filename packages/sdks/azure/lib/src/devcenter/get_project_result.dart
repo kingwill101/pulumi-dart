@@ -7,27 +7,20 @@ import 'get_project_identity.dart';
 class GetProjectResult {
   /// The description of the Dev Center Project.
   final String description;
-
   /// The ID of the associated Dev Center.
   final String devCenterId;
-
   /// The URI of the Dev Center.
   final String devCenterUri;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// An `identity` block as defined below.
   final List<GetProjectIdentity> identities;
-
   /// The Azure Region where the Dev Center Project exists.
   final String location;
-
   /// The maximum number of Dev Boxes a single user can create across all pools in the project.
   final int maximumDevBoxesPerUser;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the Dev Center Project.
   final Map<String, String> tags;
 
@@ -61,11 +54,7 @@ class GetProjectResult {
       'devCenterId': devCenterId,
       'devCenterUri': devCenterUri,
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetProjectIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
+      'identities': pulumi.Input.encodeList<GetProjectIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'location': location,
       'maximumDevBoxesPerUser': maximumDevBoxesPerUser,
       'name': name,
@@ -80,11 +69,7 @@ class GetProjectResult {
       devCenterId: map['devCenterId'] as String,
       devCenterUri: map['devCenterUri'] as String,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetProjectIdentity>(
-        map['identities']!,
-        (value) =>
-            GetProjectIdentity.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      identities: pulumi.Input.decodeList<GetProjectIdentity>(map['identities']!, (value) => GetProjectIdentity.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       maximumDevBoxesPerUser: map['maximumDevBoxesPerUser'] as int,
       name: map['name'] as String,
@@ -93,3 +78,4 @@ class GetProjectResult {
     );
   }
 }
+

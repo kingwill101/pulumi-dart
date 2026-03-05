@@ -6,11 +6,9 @@ import 'app_variable_declaration_schema.dart';
 class AppVariableDeclaration {
   /// The description of the variable.
   final pulumi.Input<String> description;
-
   /// The name of the variable. The name must start with a letter or underscore
   /// and contain only letters, numbers, or underscores.
   final pulumi.Input<String> name;
-
   /// Represents a select subset of an OpenAPI 3.0 schema object.
   /// Structure is documented below.
   final pulumi.Input<AppVariableDeclarationSchema> schema;
@@ -29,11 +27,7 @@ class AppVariableDeclaration {
     return <String, dynamic>{
       'description': description,
       'name': name,
-      'schema':
-          pulumi.Input.mapInputValue<
-            AppVariableDeclarationSchema,
-            Map<String, dynamic>
-          >(schema, (value) => value.toMap()),
+      'schema': pulumi.Input.mapInputValue<AppVariableDeclarationSchema, Map<String, dynamic>>(schema, (value) => value.toMap()),
     };
   }
 
@@ -41,11 +35,8 @@ class AppVariableDeclaration {
     return AppVariableDeclaration(
       description: pulumi.Input.fromValue(map['description'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      schema: pulumi.Input.fromValue(
-        AppVariableDeclarationSchema.fromMap(
-          (map['schema']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      schema: pulumi.Input.fromValue(AppVariableDeclarationSchema.fromMap((map['schema']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

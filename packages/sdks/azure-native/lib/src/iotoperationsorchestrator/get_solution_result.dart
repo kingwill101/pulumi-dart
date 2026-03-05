@@ -9,34 +9,24 @@ import 'system_data_response.dart';
 class GetSolutionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// A list of components
   final List<ComponentPropertiesResponse>? components;
-
   /// Edge location of the resource.
   final ExtendedLocationResponse extendedLocation;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The status of the last operation.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Version of the particular resource.
   final String? version;
 
@@ -69,14 +59,7 @@ class GetSolutionResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'components': ?(() {
-        final guardedValue = components;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          ComponentPropertiesResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'components': ?(() { final guardedValue = components; if (guardedValue == null) return null; return pulumi.Input.encodeList<ComponentPropertiesResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'extendedLocation': extendedLocation.toMap(),
       'id': id,
       'location': location,
@@ -92,37 +75,17 @@ class GetSolutionResult {
   factory GetSolutionResult.fromMap(Map<String, dynamic> map) {
     return GetSolutionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      components: (() {
-        final guardedValue = map['components'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<ComponentPropertiesResponse>(
-          guardedValue,
-          (value) => ComponentPropertiesResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      extendedLocation: ExtendedLocationResponse.fromMap(
-        (map['extendedLocation']! as Map).cast<String, dynamic>(),
-      ),
+      components: (() { final guardedValue = map['components']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ComponentPropertiesResponse>(guardedValue, (value) => ComponentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

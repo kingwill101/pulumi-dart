@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnalysisSourceEntitySourceTemplateDataSetReference {
   /// Dataset Amazon Resource Name (ARN).
   final pulumi.Input<String> dataSetArn;
-
   /// Dataset placeholder.
   final pulumi.Input<String> dataSetPlaceholder;
 
@@ -24,14 +23,11 @@ class AnalysisSourceEntitySourceTemplateDataSetReference {
     };
   }
 
-  factory AnalysisSourceEntitySourceTemplateDataSetReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalysisSourceEntitySourceTemplateDataSetReference.fromMap(Map<String, dynamic> map) {
     return AnalysisSourceEntitySourceTemplateDataSetReference(
       dataSetArn: pulumi.Input.fromValue(map['dataSetArn'] as String),
-      dataSetPlaceholder: pulumi.Input.fromValue(
-        map['dataSetPlaceholder'] as String,
-      ),
+      dataSetPlaceholder: pulumi.Input.fromValue(map['dataSetPlaceholder'] as String),
     );
   }
 }
+

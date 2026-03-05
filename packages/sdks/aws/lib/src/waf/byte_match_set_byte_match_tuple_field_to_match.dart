@@ -6,7 +6,6 @@ class ByteMatchSetByteMatchTupleFieldToMatch {
   /// When `type` is `HEADER`, enter the name of the header that you want to search, e.g., `User-Agent` or `Referer`.
   /// If `type` is any other value, omit this field.
   final pulumi.Input<String>? data;
-
   /// The part of the web request that you want AWS WAF to search for a specified string.
   /// e.g., `HEADER`, `METHOD` or `BODY`.
   /// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
@@ -16,22 +15,23 @@ class ByteMatchSetByteMatchTupleFieldToMatch {
   /// Creates a new [ByteMatchSetByteMatchTupleFieldToMatch].
   /// [data] When `type` is `HEADER`, enter the name of the header that you want to search, e.g., `User-Agent` or `Referer`.
   /// [type] The part of the web request that you want AWS WAF to search for a specified string.
-  ByteMatchSetByteMatchTupleFieldToMatch({this.data, required this.type});
+  ByteMatchSetByteMatchTupleFieldToMatch({
+    this.data,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'data': ?data, 'type': type};
+    return <String, dynamic>{
+      'data': ?data,
+      'type': type,
+    };
   }
 
-  factory ByteMatchSetByteMatchTupleFieldToMatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ByteMatchSetByteMatchTupleFieldToMatch.fromMap(Map<String, dynamic> map) {
     return ByteMatchSetByteMatchTupleFieldToMatch(
-      data: (() {
-        final guardedValue = map['data'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

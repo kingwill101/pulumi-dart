@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkMonitorArgs {
   /// Name of the Network Monitor.
   final pulumi.Input<String> networkMonitorName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetNetworkMonitorArgs {
 
   factory GetNetworkMonitorArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkMonitorArgs(
-      networkMonitorName: pulumi.Input.fromValue(
-        map['networkMonitorName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      networkMonitorName: pulumi.Input.fromValue(map['networkMonitorName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -44,9 +44,8 @@ class GetStorageBundlesBundle {
       id: pulumi.Input.fromValue(map['id'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       storageBundleId: pulumi.Input.fromValue(map['storageBundleId'] as String),
-      storageBundleName: pulumi.Input.fromValue(
-        map['storageBundleName'] as String,
-      ),
+      storageBundleName: pulumi.Input.fromValue(map['storageBundleName'] as String),
     );
   }
 }
+

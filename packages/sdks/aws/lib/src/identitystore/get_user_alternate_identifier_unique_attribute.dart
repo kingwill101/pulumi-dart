@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserAlternateIdentifierUniqueAttribute {
   /// Attribute path that is used to specify which attribute name to search. For example: `UserName`. Refer to the [User data type](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html).
   final pulumi.Input<String> attributePath;
-
   /// Value for an attribute.
   final pulumi.Input<String> attributeValue;
 
@@ -24,12 +23,11 @@ class GetUserAlternateIdentifierUniqueAttribute {
     };
   }
 
-  factory GetUserAlternateIdentifierUniqueAttribute.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetUserAlternateIdentifierUniqueAttribute.fromMap(Map<String, dynamic> map) {
     return GetUserAlternateIdentifierUniqueAttribute(
       attributePath: pulumi.Input.fromValue(map['attributePath'] as String),
       attributeValue: pulumi.Input.fromValue(map['attributeValue'] as String),
     );
   }
 }
+

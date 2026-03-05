@@ -9,29 +9,20 @@ class WebAclDefaultActionBlock {
 
   /// Creates a new [WebAclDefaultActionBlock].
   /// [customResponse] Defines a custom response for the web request. See `custom_response` below for details.
-  WebAclDefaultActionBlock({this.customResponse});
+  WebAclDefaultActionBlock({
+    this.customResponse,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customResponse':
-          ?pulumi.Input.mapOptionalInputValue<
-            WebAclDefaultActionBlockCustomResponse,
-            Map<String, dynamic>
-          >(customResponse, (value) => value.toMap()),
+      'customResponse': ?pulumi.Input.mapOptionalInputValue<WebAclDefaultActionBlockCustomResponse, Map<String, dynamic>>(customResponse, (value) => value.toMap()),
     };
   }
 
   factory WebAclDefaultActionBlock.fromMap(Map<String, dynamic> map) {
     return WebAclDefaultActionBlock(
-      customResponse: (() {
-        final guardedValue = map['customResponse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WebAclDefaultActionBlockCustomResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      customResponse: (() { final guardedValue = map['customResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclDefaultActionBlockCustomResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

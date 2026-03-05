@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MeshIstioResponse {
   /// Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric label in Istio metrics.
   final pulumi.Input<String> meshUid;
-
   /// The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics.
   final pulumi.Input<String> serviceName;
-
   /// The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics.
   final pulumi.Input<String> serviceNamespace;
 
@@ -35,9 +33,8 @@ class MeshIstioResponse {
     return MeshIstioResponse(
       meshUid: pulumi.Input.fromValue(map['meshUid'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
-      serviceNamespace: pulumi.Input.fromValue(
-        map['serviceNamespace'] as String,
-      ),
+      serviceNamespace: pulumi.Input.fromValue(map['serviceNamespace'] as String),
     );
   }
 }
+

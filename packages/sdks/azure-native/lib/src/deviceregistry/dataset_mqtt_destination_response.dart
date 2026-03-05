@@ -7,7 +7,6 @@ import 'mqtt_destination_configuration_response.dart';
 class DatasetMqttDestinationResponse {
   /// The MQTT destination configuration.
   final pulumi.Input<MqttDestinationConfigurationResponse> configuration;
-
   /// The set of supported dataset destinations for an asset.
   /// Expected value is 'Mqtt'.
   final pulumi.Input<String> target;
@@ -22,23 +21,16 @@ class DatasetMqttDestinationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration':
-          pulumi.Input.mapInputValue<
-            MqttDestinationConfigurationResponse,
-            Map<String, dynamic>
-          >(configuration, (value) => value.toMap()),
+      'configuration': pulumi.Input.mapInputValue<MqttDestinationConfigurationResponse, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'target': target,
     };
   }
 
   factory DatasetMqttDestinationResponse.fromMap(Map<String, dynamic> map) {
     return DatasetMqttDestinationResponse(
-      configuration: pulumi.Input.fromValue(
-        MqttDestinationConfigurationResponse.fromMap(
-          (map['configuration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      configuration: pulumi.Input.fromValue(MqttDestinationConfigurationResponse.fromMap((map['configuration']! as Map).cast<String, dynamic>())),
       target: pulumi.Input.fromValue(map['target'] as String),
     );
   }
 }
+

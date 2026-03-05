@@ -192,8 +192,10 @@ Future<GetFirewallRuleResult> getFirewallRule(
 ///
 /// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
-Future<GetGetPrivateDnsZoneSuffixExecuteResult>
-getGetPrivateDnsZoneSuffixExecute({pulumi.InvokeOptions? options}) async {
+Future<GetGetPrivateDnsZoneSuffixExecuteResult> getGetPrivateDnsZoneSuffixExecute(
+  {
+  pulumi.InvokeOptions? options,
+}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'azure-native:dbforpostgresql:getGetPrivateDnsZoneSuffixExecute',
@@ -229,7 +231,8 @@ Future<GetMigrationResult> getMigration(
 ///
 /// Other available API versions: 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
-Future<GetPrivateDnsZoneSuffixResult> getPrivateDnsZoneSuffix({
+Future<GetPrivateDnsZoneSuffixResult> getPrivateDnsZoneSuffix(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -328,8 +331,7 @@ Future<GetServerGroupFirewallRuleResult> getServerGroupFirewallRule(
 /// Other available API versions: 2022-11-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dbforpostgresql_get_server_group_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServerGroupPrivateEndpointConnectionResult>
-getServerGroupPrivateEndpointConnection(
+Future<GetServerGroupPrivateEndpointConnectionResult> getServerGroupPrivateEndpointConnection(
   GetServerGroupPrivateEndpointConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -439,8 +441,7 @@ Future<GetSingleServerFirewallRuleResult> getSingleServerFirewallRule(
 /// Uses Azure REST API version 2017-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dbforpostgresql_get_single_server_server_administrator_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSingleServerServerAdministratorResult>
-getSingleServerServerAdministrator(
+Future<GetSingleServerServerAdministratorResult> getSingleServerServerAdministrator(
   GetSingleServerServerAdministratorArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -458,8 +459,7 @@ getSingleServerServerAdministrator(
 /// Uses Azure REST API version 2017-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dbforpostgresql_get_single_server_server_security_alert_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSingleServerServerSecurityAlertPolicyResult>
-getSingleServerServerSecurityAlertPolicy(
+Future<GetSingleServerServerSecurityAlertPolicyResult> getSingleServerServerSecurityAlertPolicy(
   GetSingleServerServerSecurityAlertPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -477,8 +477,7 @@ getSingleServerServerSecurityAlertPolicy(
 /// Uses Azure REST API version 2017-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dbforpostgresql_get_single_server_virtual_network_rule_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSingleServerVirtualNetworkRuleResult>
-getSingleServerVirtualNetworkRule(
+Future<GetSingleServerVirtualNetworkRuleResult> getSingleServerVirtualNetworkRule(
   GetSingleServerVirtualNetworkRuleArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

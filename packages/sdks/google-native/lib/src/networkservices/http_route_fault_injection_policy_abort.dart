@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpRouteFaultInjectionPolicyAbort {
   /// The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
   final pulumi.Input<int>? httpStatus;
-
   /// The percentage of traffic which will be aborted. The value must be between [0, 100]
   final pulumi.Input<int>? percentage;
 
   /// Creates a new [HttpRouteFaultInjectionPolicyAbort].
   /// [httpStatus] The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
   /// [percentage] The percentage of traffic which will be aborted. The value must be between [0, 100]
-  HttpRouteFaultInjectionPolicyAbort({this.httpStatus, this.percentage});
+  HttpRouteFaultInjectionPolicyAbort({
+    this.httpStatus,
+    this.percentage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class HttpRouteFaultInjectionPolicyAbort {
 
   factory HttpRouteFaultInjectionPolicyAbort.fromMap(Map<String, dynamic> map) {
     return HttpRouteFaultInjectionPolicyAbort(
-      httpStatus: (() {
-        final guardedValue = map['httpStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      percentage: (() {
-        final guardedValue = map['percentage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      httpStatus: (() { final guardedValue = map['httpStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      percentage: (() { final guardedValue = map['percentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

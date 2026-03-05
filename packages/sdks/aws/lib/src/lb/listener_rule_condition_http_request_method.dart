@@ -7,17 +7,20 @@ class ListenerRuleConditionHttpRequestMethod {
 
   /// Creates a new [ListenerRuleConditionHttpRequestMethod].
   /// [values] Required.
-  ListenerRuleConditionHttpRequestMethod({required this.values});
+  ListenerRuleConditionHttpRequestMethod({
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': values};
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
-  factory ListenerRuleConditionHttpRequestMethod.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListenerRuleConditionHttpRequestMethod.fromMap(Map<String, dynamic> map) {
     return ListenerRuleConditionHttpRequestMethod(
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSlsGroupsGroupSlsGroupConfig {
   /// The name of the Log Store.
   final pulumi.Input<String> slsLogstore;
-
   /// The name of the Project.
   final pulumi.Input<String> slsProject;
-
   /// The Sls Region.
   final pulumi.Input<String> slsRegion;
-
   /// The ID of the Sls User.
   final pulumi.Input<String> slsUserId;
 
@@ -45,3 +42,4 @@ class GetSlsGroupsGroupSlsGroupConfig {
     );
   }
 }
+

@@ -12,7 +12,6 @@ class ServicePerimeterIngressPolicyIngressFromSource {
   /// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
   /// If * is specified, then all IngressSources will be allowed.
   final pulumi.Input<String>? accessLevel;
-
   /// A Google Cloud resource that is allowed to ingress the perimeter.
   /// Requests from these resources will be allowed to access perimeter data.
   /// Currently only projects and VPCs are allowed.
@@ -39,20 +38,11 @@ class ServicePerimeterIngressPolicyIngressFromSource {
     };
   }
 
-  factory ServicePerimeterIngressPolicyIngressFromSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServicePerimeterIngressPolicyIngressFromSource.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterIngressPolicyIngressFromSource(
-      accessLevel: (() {
-        final guardedValue = map['accessLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resource: (() {
-        final guardedValue = map['resource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessLevel: (() { final guardedValue = map['accessLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

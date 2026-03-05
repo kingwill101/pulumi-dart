@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOperatorApiConnectionArgs {
   /// Azure Programmable Connectivity (APC) Operator API Connection Name.
   final pulumi.Input<String> operatorApiConnectionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetOperatorApiConnectionArgs {
 
   factory GetOperatorApiConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetOperatorApiConnectionArgs(
-      operatorApiConnectionName: pulumi.Input.fromValue(
-        map['operatorApiConnectionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      operatorApiConnectionName: pulumi.Input.fromValue(map['operatorApiConnectionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

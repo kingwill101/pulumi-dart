@@ -329,34 +329,24 @@ import 'system_data_response.dart';
 class Alert extends pulumi.CustomResource {
   /// Describes the properties of an alert.
   late final pulumi.Output<AlertRulePropertiesResponse?> alertRuleProperties;
-
   /// ID of the alert rule resource created.
   late final pulumi.Output<String> alertRuleResourceId;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Defines the alert instance errors.
   late final pulumi.Output<ErrorDetailResponse> errors;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Name of provider instances associated with the alert.
   late final pulumi.Output<List<String>?> providerNames;
-
   /// The provider type for alert. For example, the value can be SapHana.
   late final pulumi.Output<String?> providerType;
-
   /// State of provisioning of the alert instance
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Name of the alert template from which it was created.
   late final pulumi.Output<String?> templateName;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -364,49 +354,25 @@ class Alert extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Alert]. {@macro pulumi_workloads_alert_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Alert(String name, {AlertArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:workloads:Alert',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    alertRuleProperties = registerOutput<AlertRulePropertiesResponse?>(
-      'alertRuleProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertRulePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Alert(
+    String name, {
+    AlertArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:workloads:Alert',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    alertRuleProperties = registerOutput<AlertRulePropertiesResponse?>('alertRuleProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertRulePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     alertRuleResourceId = registerOutput<String>('alertRuleResourceId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    errors = registerOutput<ErrorDetailResponse>(
-      'errors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ErrorDetailResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    errors = registerOutput<ErrorDetailResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     providerNames = registerOutput<List<String>?>('providerNames');
     providerType = registerOutput<String?>('providerType');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     templateName = registerOutput<String?>('templateName');
     type = registerOutput<String>('type');
   }

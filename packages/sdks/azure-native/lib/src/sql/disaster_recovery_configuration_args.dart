@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DisasterRecoveryConfigurationArgs {
   /// The name of the disaster recovery configuration to be created/updated.
   final pulumi.Input<String>? disasterRecoveryConfigurationName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -36,15 +34,10 @@ class DisasterRecoveryConfigurationArgs {
 
   factory DisasterRecoveryConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DisasterRecoveryConfigurationArgs(
-      disasterRecoveryConfigurationName: (() {
-        final guardedValue = map['disasterRecoveryConfigurationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      disasterRecoveryConfigurationName: (() { final guardedValue = map['disasterRecoveryConfigurationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
+

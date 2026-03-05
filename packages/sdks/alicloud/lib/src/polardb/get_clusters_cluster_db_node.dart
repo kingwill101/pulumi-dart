@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClustersClusterDbNode {
   /// The create_time of the db_nodes.
   final pulumi.Input<String> createTime;
-
   /// The db_node_class of the db_nodes.
   final pulumi.Input<String> dbNodeClass;
-
   /// The db_node_id of the db_nodes.
   final pulumi.Input<String> dbNodeId;
-
   /// The db_node_role of the db_nodes.
   final pulumi.Input<String> dbNodeRole;
-
   /// The db_node_status of the db_nodes.
   final pulumi.Input<String> dbNodeStatus;
-
   /// The max_connections of the db_nodes.
   final pulumi.Input<int> maxConnections;
-
   /// The max_iops of the db_nodes.
   final pulumi.Input<int> maxIops;
-
   /// The region_id of the db_nodes.
   final pulumi.Input<String> regionId;
-
   /// The zone_id of the db_nodes.
   final pulumi.Input<String> zoneId;
 
@@ -80,3 +72,4 @@ class GetClustersClusterDbNode {
     );
   }
 }
+

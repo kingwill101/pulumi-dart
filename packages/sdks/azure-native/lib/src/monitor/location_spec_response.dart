@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocationSpecResponse {
   /// Name of location.
   final pulumi.Input<String>? location;
-
   /// The resource provisioning state in this location.
   final pulumi.Input<String>? provisioningStatus;
 
   /// Creates a new [LocationSpecResponse].
   /// [location] Name of location.
   /// [provisioningStatus] The resource provisioning state in this location.
-  LocationSpecResponse({this.location, this.provisioningStatus});
+  LocationSpecResponse({
+    this.location,
+    this.provisioningStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,16 +25,9 @@ class LocationSpecResponse {
 
   factory LocationSpecResponse.fromMap(Map<String, dynamic> map) {
     return LocationSpecResponse(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningStatus: (() {
-        final guardedValue = map['provisioningStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningStatus: (() { final guardedValue = map['provisioningStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

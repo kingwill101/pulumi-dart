@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomerMetadataResponse {
   /// Customer billing account id
   final pulumi.Input<String> billingAccountId;
-
   /// Customer billing profile id
   final pulumi.Input<String> billingProfileId;
 
@@ -27,12 +26,9 @@ class CustomerMetadataResponse {
 
   factory CustomerMetadataResponse.fromMap(Map<String, dynamic> map) {
     return CustomerMetadataResponse(
-      billingAccountId: pulumi.Input.fromValue(
-        map['billingAccountId'] as String,
-      ),
-      billingProfileId: pulumi.Input.fromValue(
-        map['billingProfileId'] as String,
-      ),
+      billingAccountId: pulumi.Input.fromValue(map['billingAccountId'] as String),
+      billingProfileId: pulumi.Input.fromValue(map['billingProfileId'] as String),
     );
   }
 }
+

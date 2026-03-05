@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateMapGclbTargetIpConfig {
   /// An external IP address
   final pulumi.Input<String> ipAddress;
-
   /// A list of ports
   final pulumi.Input<List<int>> ports;
 
@@ -18,15 +17,17 @@ class GetCertificateMapGclbTargetIpConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipAddress': ipAddress, 'ports': ports};
+    return <String, dynamic>{
+      'ipAddress': ipAddress,
+      'ports': ports,
+    };
   }
 
-  factory GetCertificateMapGclbTargetIpConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCertificateMapGclbTargetIpConfig.fromMap(Map<String, dynamic> map) {
     return GetCertificateMapGclbTargetIpConfig(
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       ports: pulumi.Input.fromValue((map['ports'] as List).cast<int>()),
     );
   }
 }
+

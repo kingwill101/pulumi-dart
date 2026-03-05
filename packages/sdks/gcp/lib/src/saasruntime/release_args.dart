@@ -18,31 +18,24 @@ class ReleaseArgs {
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   final pulumi.Input<ReleaseBlueprint>? blueprint;
-
   /// Mapping of input variables to default values. Maximum 100
   /// Structure is documented below.
   final pulumi.Input<List<ReleaseInputVariableDefault>>? inputVariableDefaults;
-
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The ID value for the new release.
   final pulumi.Input<String> releaseId;
-
   /// Set of requirements to be fulfilled on the Unit when using this Release.
   /// Structure is documented below.
   final pulumi.Input<ReleaseReleaseRequirements>? releaseRequirements;
-
   /// Reference to the UnitKind this Release corresponds to (required and
   /// immutable once created).
   final pulumi.Input<String> unitKind;
@@ -72,90 +65,29 @@ class ReleaseArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'blueprint':
-          ?pulumi.Input.mapOptionalInputValue<
-            ReleaseBlueprint,
-            Map<String, dynamic>
-          >(blueprint, (value) => value.toMap()),
-      'inputVariableDefaults':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ReleaseInputVariableDefault>,
-            List<Map<String, dynamic>>
-          >(
-            inputVariableDefaults,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReleaseInputVariableDefault,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'blueprint': ?pulumi.Input.mapOptionalInputValue<ReleaseBlueprint, Map<String, dynamic>>(blueprint, (value) => value.toMap()),
+      'inputVariableDefaults': ?pulumi.Input.mapOptionalInputValue<List<ReleaseInputVariableDefault>, List<Map<String, dynamic>>>(inputVariableDefaults, (value) => pulumi.Input.encodeList<ReleaseInputVariableDefault, Map<String, dynamic>>(value, (value) => value.toMap())),
       'labels': ?labels,
       'location': location,
       'project': ?project,
       'releaseId': releaseId,
-      'releaseRequirements':
-          ?pulumi.Input.mapOptionalInputValue<
-            ReleaseReleaseRequirements,
-            Map<String, dynamic>
-          >(releaseRequirements, (value) => value.toMap()),
+      'releaseRequirements': ?pulumi.Input.mapOptionalInputValue<ReleaseReleaseRequirements, Map<String, dynamic>>(releaseRequirements, (value) => value.toMap()),
       'unitKind': unitKind,
     };
   }
 
   factory ReleaseArgs.fromMap(Map<String, dynamic> map) {
     return ReleaseArgs(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      blueprint: (() {
-        final guardedValue = map['blueprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ReleaseBlueprint.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      inputVariableDefaults: (() {
-        final guardedValue = map['inputVariableDefaults'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ReleaseInputVariableDefault>(
-            guardedValue,
-            (value) => ReleaseInputVariableDefault.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      blueprint: (() { final guardedValue = map['blueprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReleaseBlueprint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      inputVariableDefaults: (() { final guardedValue = map['inputVariableDefaults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReleaseInputVariableDefault>(guardedValue, (value) => ReleaseInputVariableDefault.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       releaseId: pulumi.Input.fromValue(map['releaseId'] as String),
-      releaseRequirements: (() {
-        final guardedValue = map['releaseRequirements'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ReleaseReleaseRequirements.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      releaseRequirements: (() { final guardedValue = map['releaseRequirements']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReleaseReleaseRequirements.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       unitKind: pulumi.Input.fromValue(map['unitKind'] as String),
     );
   }
 }
+

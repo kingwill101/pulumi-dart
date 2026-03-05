@@ -10,7 +10,6 @@ class GetConfigsArgs {
   /// A list of Config IDs.
   final pulumi.Input<List<String>>? ids;
   final pulumi.Input<String>? lang;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -18,7 +17,11 @@ class GetConfigsArgs {
   /// [ids] A list of Config IDs.
   /// [lang] Optional.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetConfigsArgs({this.ids, this.lang, this.outputFile});
+  GetConfigsArgs({
+    this.ids,
+    this.lang,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,21 +33,10 @@ class GetConfigsArgs {
 
   factory GetConfigsArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigsArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      lang: (() {
-        final guardedValue = map['lang'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      lang: (() { final guardedValue = map['lang']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

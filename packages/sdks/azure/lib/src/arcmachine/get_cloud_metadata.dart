@@ -8,10 +8,14 @@ class GetCloudMetadata {
 
   /// Creates a new [GetCloudMetadata].
   /// [provider] Specifies the cloud provider. For example `Azure`, `AWS` and `GCP`.
-  GetCloudMetadata({required this.provider});
+  GetCloudMetadata({
+    required this.provider,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'provider': provider};
+    return <String, dynamic>{
+      'provider': provider,
+    };
   }
 
   factory GetCloudMetadata.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetCloudMetadata {
     );
   }
 }
+

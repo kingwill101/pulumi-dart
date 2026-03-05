@@ -15,3 +15,4 @@ enum PermissionModel {
     throw ArgumentError('Unknown PermissionModel value: $value');
   }
 }
+

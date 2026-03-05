@@ -11,10 +11,8 @@ class GetAlertRuleAnomalyArgs {
   ///
   /// &gt; **Note:** One of `name` or `display_name` must be specified.
   final pulumi.Input<String>? displayName;
-
   /// The ID of the Log Analytics Workspace.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
-
   /// The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
   final pulumi.Input<String>? name;
 
@@ -38,19 +36,10 @@ class GetAlertRuleAnomalyArgs {
 
   factory GetAlertRuleAnomalyArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleAnomalyArgs(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
-        map['logAnalyticsWorkspaceId'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(map['logAnalyticsWorkspaceId'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

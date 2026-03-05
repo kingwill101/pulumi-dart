@@ -39,8 +39,7 @@ Future<GetCaPoolResult> getCaPool(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_privateca_v1_get_ca_pool_certificate_authority_certificate_revocation_list_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult>
-getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy(
+Future<GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult> getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy(
   GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -50,9 +49,7 @@ getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult.fromMap(
-    result,
-  );
+  return GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult.fromMap(result);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -138,8 +135,7 @@ Future<GetCertificateTemplateIamPolicyResult> getCertificateTemplateIamPolicy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_privateca_v1beta1_get_certificate_authority_certificate_revocation_list_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCertificateAuthorityCertificateRevocationListIamPolicyResult>
-getCertificateAuthorityCertificateRevocationListIamPolicy(
+Future<GetCertificateAuthorityCertificateRevocationListIamPolicyResult> getCertificateAuthorityCertificateRevocationListIamPolicy(
   GetCertificateAuthorityCertificateRevocationListIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -149,9 +145,7 @@ getCertificateAuthorityCertificateRevocationListIamPolicy(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetCertificateAuthorityCertificateRevocationListIamPolicyResult.fromMap(
-    result,
-  );
+  return GetCertificateAuthorityCertificateRevocationListIamPolicyResult.fromMap(result);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.

@@ -147,31 +147,22 @@ import 'system_data_response.dart';
 class DisasterRecoveryConfig extends pulumi.CustomResource {
   /// Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
   late final pulumi.Output<String?> alternateName;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
   late final pulumi.Output<String?> partnerNamespace;
-
   /// Number of entities pending to be replicated.
   late final pulumi.Output<double> pendingReplicationOperationsCount;
-
   /// Provisioning state of the Alias(Disaster Recovery configuration) - possible values 'Accepted' or 'Succeeded' or 'Failed'
   late final pulumi.Output<String> provisioningState;
-
   /// role of namespace in GEO DR - possible values 'Primary' or 'PrimaryNotReplicating' or 'Secondary'
   late final pulumi.Output<String> role;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   late final pulumi.Output<String> type;
 
@@ -184,31 +175,20 @@ class DisasterRecoveryConfig extends pulumi.CustomResource {
     DisasterRecoveryConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:servicebus:DisasterRecoveryConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:servicebus:DisasterRecoveryConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alternateName = registerOutput<String?>('alternateName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     partnerNamespace = registerOutput<String?>('partnerNamespace');
-    pendingReplicationOperationsCount = registerOutput<double>(
-      'pendingReplicationOperationsCount',
-    );
+    pendingReplicationOperationsCount = registerOutput<double>('pendingReplicationOperationsCount');
     provisioningState = registerOutput<String>('provisioningState');
     role = registerOutput<String>('role');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

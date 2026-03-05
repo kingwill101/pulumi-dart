@@ -132,34 +132,24 @@ import 'disaster_recovery_configuration_args.dart';
 class DisasterRecoveryConfiguration extends pulumi.CustomResource {
   /// Whether or not failover can be done automatically.
   late final pulumi.Output<String> autoFailover;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// How aggressive the automatic failover should be.
   late final pulumi.Output<String> failoverPolicy;
-
   /// Location of the server that contains this disaster recovery configuration.
   late final pulumi.Output<String> location;
-
   /// Logical name of the server.
   late final pulumi.Output<String> logicalServerName;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Logical name of the partner server.
   late final pulumi.Output<String> partnerLogicalServerName;
-
   /// Id of the partner server.
   late final pulumi.Output<String> partnerServerId;
-
   /// The role of the current server in the disaster recovery configuration.
   late final pulumi.Output<String> role;
-
   /// The status of the disaster recovery configuration.
   late final pulumi.Output<String> status;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -172,20 +162,18 @@ class DisasterRecoveryConfiguration extends pulumi.CustomResource {
     DisasterRecoveryConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:DisasterRecoveryConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:DisasterRecoveryConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoFailover = registerOutput<String>('autoFailover');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     failoverPolicy = registerOutput<String>('failoverPolicy');
     location = registerOutput<String>('location');
     logicalServerName = registerOutput<String>('logicalServerName');
     this.name = registerOutput<String>('name');
-    partnerLogicalServerName = registerOutput<String>(
-      'partnerLogicalServerName',
-    );
+    partnerLogicalServerName = registerOutput<String>('partnerLogicalServerName');
     partnerServerId = registerOutput<String>('partnerServerId');
     role = registerOutput<String>('role');
     status = registerOutput<String>('status');

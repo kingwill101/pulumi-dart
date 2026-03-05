@@ -194,47 +194,36 @@ import 'document_classifier_vpc_config.dart';
 class DocumentClassifier extends pulumi.CustomResource {
   /// ARN of the Document Classifier version.
   late final pulumi.Output<String> arn;
-
   /// The ARN for an IAM Role which allows Comprehend to read the training and testing data.
   late final pulumi.Output<String> dataAccessRoleArn;
-
   /// Configuration for the training and testing data.
   /// See the `input_data_config` Configuration Block section below.
   late final pulumi.Output<DocumentClassifierInputDataConfig> inputDataConfig;
-
   /// Two-letter language code for the language.
   /// One of `en`, `es`, `fr`, `it`, `de`, or `pt`.
   late final pulumi.Output<String> languageCode;
-
   /// The document classification mode.
   /// One of `MULTI_CLASS` or `MULTI_LABEL`.
   /// `MULTI_CLASS` is also known as "Single Label" in the AWS Console.
   late final pulumi.Output<String?> mode;
-
   /// KMS Key used to encrypt trained Document Classifiers.
   /// Can be a KMS Key ID or a KMS Key ARN.
   late final pulumi.Output<String?> modelKmsKeyId;
-
   /// Name for the Document Classifier.
   /// Has a maximum length of 63 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Configuration for the output results of training.
   /// See the `output_data_config` Configuration Block section below.
   late final pulumi.Output<DocumentClassifierOutputDataConfig> outputDataConfig;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` Configuration Block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Name for the version of the Document Classifier.
   /// Each version must have a unique name within the Document Classifier.
   /// If omitted, the provider will assign a random, unique version name.
@@ -243,17 +232,14 @@ class DocumentClassifier extends pulumi.CustomResource {
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
   /// Conflicts with `version_name_prefix`.
   late final pulumi.Output<String> versionName;
-
   /// Creates a unique version name beginning with the specified prefix.
   /// Has a maximum length of 37 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
   /// Conflicts with `version_name`.
   late final pulumi.Output<String> versionNamePrefix;
-
   /// KMS Key used to encrypt storage volumes during job processing.
   /// Can be a KMS Key ID or a KMS Key ARN.
   late final pulumi.Output<String?> volumeKmsKeyId;
-
   /// Configuration parameters for VPC to contain Document Classifier resources.
   /// See the `vpc_config` Configuration Block section below.
   late final pulumi.Output<DocumentClassifierVpcConfig?> vpcConfig;
@@ -267,53 +253,26 @@ class DocumentClassifier extends pulumi.CustomResource {
     DocumentClassifierArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:comprehend/documentClassifier:DocumentClassifier',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:comprehend/documentClassifier:DocumentClassifier',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');
-    inputDataConfig = registerOutput<DocumentClassifierInputDataConfig>(
-      'inputDataConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DocumentClassifierInputDataConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    inputDataConfig = registerOutput<DocumentClassifierInputDataConfig>('inputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentClassifierInputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     languageCode = registerOutput<String>('languageCode');
     mode = registerOutput<String?>('mode');
     modelKmsKeyId = registerOutput<String?>('modelKmsKeyId');
     this.name = registerOutput<String>('name');
-    outputDataConfig = registerOutput<DocumentClassifierOutputDataConfig>(
-      'outputDataConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DocumentClassifierOutputDataConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    outputDataConfig = registerOutput<DocumentClassifierOutputDataConfig>('outputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentClassifierOutputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     versionName = registerOutput<String>('versionName');
     versionNamePrefix = registerOutput<String>('versionNamePrefix');
     volumeKmsKeyId = registerOutput<String?>('volumeKmsKeyId');
-    vpcConfig = registerOutput<DocumentClassifierVpcConfig?>(
-      'vpcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DocumentClassifierVpcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcConfig = registerOutput<DocumentClassifierVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentClassifierVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [DocumentClassifier] resource's state with the given [name] and [id].
@@ -334,52 +293,25 @@ class DocumentClassifier extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:comprehend/documentClassifier:DocumentClassifier',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:comprehend/documentClassifier:DocumentClassifier',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');
-    inputDataConfig = registerOutput<DocumentClassifierInputDataConfig>(
-      'inputDataConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DocumentClassifierInputDataConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    inputDataConfig = registerOutput<DocumentClassifierInputDataConfig>('inputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentClassifierInputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     languageCode = registerOutput<String>('languageCode');
     mode = registerOutput<String?>('mode');
     modelKmsKeyId = registerOutput<String?>('modelKmsKeyId');
     this.name = registerOutput<String>('name');
-    outputDataConfig = registerOutput<DocumentClassifierOutputDataConfig>(
-      'outputDataConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DocumentClassifierOutputDataConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    outputDataConfig = registerOutput<DocumentClassifierOutputDataConfig>('outputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentClassifierOutputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     versionName = registerOutput<String>('versionName');
     versionNamePrefix = registerOutput<String>('versionNamePrefix');
     volumeKmsKeyId = registerOutput<String?>('volumeKmsKeyId');
-    vpcConfig = registerOutput<DocumentClassifierVpcConfig?>(
-      'vpcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DocumentClassifierVpcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcConfig = registerOutput<DocumentClassifierVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentClassifierVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

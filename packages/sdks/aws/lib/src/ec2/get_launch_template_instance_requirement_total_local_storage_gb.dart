@@ -15,15 +15,17 @@ class GetLaunchTemplateInstanceRequirementTotalLocalStorageGb {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': max, 'min': min};
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory GetLaunchTemplateInstanceRequirementTotalLocalStorageGb.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLaunchTemplateInstanceRequirementTotalLocalStorageGb.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceRequirementTotalLocalStorageGb(
       max: pulumi.Input.fromValue(map['max'] as double),
       min: pulumi.Input.fromValue(map['min'] as double),
     );
   }
 }
+

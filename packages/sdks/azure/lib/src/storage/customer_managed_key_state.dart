@@ -8,16 +8,13 @@ class CustomerManagedKeyState {
   final pulumi.Input<String>? federatedIdentityClientId;
   final pulumi.Input<String>? keyName;
   final pulumi.Input<String>? keyVaultId;
-
   /// The ID of the Key Vault Key.
   final pulumi.Input<String>? keyVaultKeyId;
   final pulumi.Input<String>? keyVaultUri;
   final pulumi.Input<String>? keyVersion;
   final pulumi.Input<String>? managedHsmKeyId;
-
   /// The ID of the Storage Account. Changing this forces a new resource to be created.
   final pulumi.Input<String>? storageAccountId;
-
   /// The ID of a user assigned identity.
   final pulumi.Input<String>? userAssignedIdentityId;
 
@@ -59,51 +56,16 @@ class CustomerManagedKeyState {
 
   factory CustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return CustomerManagedKeyState(
-      federatedIdentityClientId: (() {
-        final guardedValue = map['federatedIdentityClientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyName: (() {
-        final guardedValue = map['keyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultId: (() {
-        final guardedValue = map['keyVaultId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultKeyId: (() {
-        final guardedValue = map['keyVaultKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultUri: (() {
-        final guardedValue = map['keyVaultUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVersion: (() {
-        final guardedValue = map['keyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedHsmKeyId: (() {
-        final guardedValue = map['managedHsmKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountId: (() {
-        final guardedValue = map['storageAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentityId: (() {
-        final guardedValue = map['userAssignedIdentityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      federatedIdentityClientId: (() { final guardedValue = map['federatedIdentityClientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultId: (() { final guardedValue = map['keyVaultId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultKeyId: (() { final guardedValue = map['keyVaultKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultUri: (() { final guardedValue = map['keyVaultUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVersion: (() { final guardedValue = map['keyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedHsmKeyId: (() { final guardedValue = map['managedHsmKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentityId: (() { final guardedValue = map['userAssignedIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

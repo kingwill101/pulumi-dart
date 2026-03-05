@@ -9,19 +9,20 @@ class TmpfsOptions {
 
   /// Creates a new [TmpfsOptions].
   /// [size] Mention the Tmpfs size
-  TmpfsOptions({this.size});
+  TmpfsOptions({
+    this.size,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'size': ?size};
+    return <String, dynamic>{
+      'size': ?size,
+    };
   }
 
   factory TmpfsOptions.fromMap(Map<String, dynamic> map) {
     return TmpfsOptions(
-      size: (() {
-        final guardedValue = map['size'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

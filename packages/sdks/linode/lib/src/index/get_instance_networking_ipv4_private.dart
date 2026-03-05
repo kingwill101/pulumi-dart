@@ -6,34 +6,24 @@ import 'get_instance_networking_ipv4_private_vpc_nat11.dart';
 class GetInstanceNetworkingIpv4Private {
   /// The address.
   final pulumi.Input<String> address;
-
   /// The default gateway for this address.
   final pulumi.Input<String> gateway;
-
   /// The globally general API entity identifier for the Linode interface.
   final pulumi.Input<int> interfaceId;
-
   /// The Linode instance's ID.
   final pulumi.Input<int> linodeId;
-
   /// The network prefix.
   final pulumi.Input<int> prefix;
-
   /// Whether this is a public or private IP address.
   final pulumi.Input<bool> public;
-
   /// The reverse DNS assigned to this address.
   final pulumi.Input<String> rdns;
-
   /// (Filterable) The Region this address resides in.
   final pulumi.Input<String> region;
-
   /// The subnet mask.
   final pulumi.Input<String> subnetMask;
-
   /// The type of address this is.
   final pulumi.Input<String> type;
-
   /// IPv4 address configured as a 1:1 NAT for this Interface.
   final pulumi.Input<GetInstanceNetworkingIpv4PrivateVpcNat11> vpcNat11;
 
@@ -75,11 +65,7 @@ class GetInstanceNetworkingIpv4Private {
       'region': region,
       'subnetMask': subnetMask,
       'type': type,
-      'vpcNat11':
-          pulumi.Input.mapInputValue<
-            GetInstanceNetworkingIpv4PrivateVpcNat11,
-            Map<String, dynamic>
-          >(vpcNat11, (value) => value.toMap()),
+      'vpcNat11': pulumi.Input.mapInputValue<GetInstanceNetworkingIpv4PrivateVpcNat11, Map<String, dynamic>>(vpcNat11, (value) => value.toMap()),
     };
   }
 
@@ -95,11 +81,8 @@ class GetInstanceNetworkingIpv4Private {
       region: pulumi.Input.fromValue(map['region'] as String),
       subnetMask: pulumi.Input.fromValue(map['subnetMask'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
-      vpcNat11: pulumi.Input.fromValue(
-        GetInstanceNetworkingIpv4PrivateVpcNat11.fromMap(
-          (map['vpcNat11']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      vpcNat11: pulumi.Input.fromValue(GetInstanceNetworkingIpv4PrivateVpcNat11.fromMap((map['vpcNat11']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

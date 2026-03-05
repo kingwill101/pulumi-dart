@@ -196,19 +196,14 @@ import 'system_data_response.dart';
 class ServiceTask extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// HTTP strong entity tag value. This is ignored if submitted.
   late final pulumi.Output<String?> etag;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Custom task properties
   late final pulumi.Output<ConnectToMongoDbTaskPropertiesResponse> properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -221,34 +216,16 @@ class ServiceTask extends pulumi.CustomResource {
     ServiceTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datamigration:ServiceTask',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datamigration:ServiceTask',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String?>('etag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ConnectToMongoDbTaskPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectToMongoDbTaskPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ConnectToMongoDbTaskPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectToMongoDbTaskPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

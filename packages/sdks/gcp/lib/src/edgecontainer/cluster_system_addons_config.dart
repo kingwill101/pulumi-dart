@@ -12,29 +12,20 @@ class ClusterSystemAddonsConfig {
 
   /// Creates a new [ClusterSystemAddonsConfig].
   /// [ingress] Config for the Ingress add-on which allows customers to create an Ingress
-  ClusterSystemAddonsConfig({this.ingress});
+  ClusterSystemAddonsConfig({
+    this.ingress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ingress':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterSystemAddonsConfigIngress,
-            Map<String, dynamic>
-          >(ingress, (value) => value.toMap()),
+      'ingress': ?pulumi.Input.mapOptionalInputValue<ClusterSystemAddonsConfigIngress, Map<String, dynamic>>(ingress, (value) => value.toMap()),
     };
   }
 
   factory ClusterSystemAddonsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterSystemAddonsConfig(
-      ingress: (() {
-        final guardedValue = map['ingress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterSystemAddonsConfigIngress.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      ingress: (() { final guardedValue = map['ingress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterSystemAddonsConfigIngress.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResolverForwardingRuleArgs {
   /// ID of the Private DNS Resolver Forwarding Ruleset.
   final pulumi.Input<String> dnsForwardingRulesetId;
-
   /// Name of the Private DNS Resolver Forwarding Rule.
   final pulumi.Input<String> name;
 
@@ -30,10 +29,9 @@ class GetResolverForwardingRuleArgs {
 
   factory GetResolverForwardingRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverForwardingRuleArgs(
-      dnsForwardingRulesetId: pulumi.Input.fromValue(
-        map['dnsForwardingRulesetId'] as String,
-      ),
+      dnsForwardingRulesetId: pulumi.Input.fromValue(map['dnsForwardingRulesetId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

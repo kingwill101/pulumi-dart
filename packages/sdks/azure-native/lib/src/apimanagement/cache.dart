@@ -158,22 +158,16 @@ import 'cache_args.dart';
 class Cache extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Runtime connection string to cache
   late final pulumi.Output<String> connectionString;
-
   /// Cache description
   late final pulumi.Output<String?> description;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Original uri of entity in external system cache points to
   late final pulumi.Output<String?> resourceId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Location identifier to use cache from (should be either 'default' or valid Azure region identifier)
   late final pulumi.Output<String> useFromLocation;
 
@@ -181,13 +175,16 @@ class Cache extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Cache]. {@macro pulumi_apimanagement_cache_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Cache(String name, {CacheArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:apimanagement:Cache',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Cache(
+    String name, {
+    CacheArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:apimanagement:Cache',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectionString = registerOutput<String>('connectionString');
     description = registerOutput<String?>('description');

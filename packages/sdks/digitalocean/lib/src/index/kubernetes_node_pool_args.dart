@@ -10,31 +10,22 @@ import 'kubernetes_node_pool_taint.dart';
 class KubernetesNodePoolArgs {
   /// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
   final pulumi.Input<bool>? autoScale;
-
   /// The ID of the Kubernetes cluster to which the node pool is associated.
   final pulumi.Input<String> clusterId;
-
   /// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
   final pulumi.Input<Map<String, String>>? labels;
-
   /// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
   final pulumi.Input<int>? maxNodes;
-
   /// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
   final pulumi.Input<int>? minNodes;
-
   /// A name for the node pool.
   final pulumi.Input<String>? name;
-
   /// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
   final pulumi.Input<int>? nodeCount;
-
   /// The slug identifier for the type of Droplet to be used as workers in the node pool.
   final pulumi.Input<String> size;
-
   /// A list of tag names to be applied to the Kubernetes cluster.
   final pulumi.Input<List<String>>? tags;
-
   /// A list of taints applied to all nodes in the pool.
   ///
   /// This resource supports customized create timeouts. The default timeout is 30 minutes.
@@ -75,74 +66,23 @@ class KubernetesNodePoolArgs {
       'nodeCount': ?nodeCount,
       'size': size,
       'tags': ?tags,
-      'taints':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<KubernetesNodePoolTaint>,
-            List<Map<String, dynamic>>
-          >(
-            taints,
-            (value) =>
-                pulumi.Input.encodeList<
-                  KubernetesNodePoolTaint,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'taints': ?pulumi.Input.mapOptionalInputValue<List<KubernetesNodePoolTaint>, List<Map<String, dynamic>>>(taints, (value) => pulumi.Input.encodeList<KubernetesNodePoolTaint, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory KubernetesNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesNodePoolArgs(
-      autoScale: (() {
-        final guardedValue = map['autoScale'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      autoScale: (() { final guardedValue = map['autoScale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      maxNodes: (() {
-        final guardedValue = map['maxNodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minNodes: (() {
-        final guardedValue = map['minNodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeCount: (() {
-        final guardedValue = map['nodeCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      maxNodes: (() { final guardedValue = map['maxNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minNodes: (() { final guardedValue = map['minNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       size: pulumi.Input.fromValue(map['size'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      taints: (() {
-        final guardedValue = map['taints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<KubernetesNodePoolTaint>(
-            guardedValue,
-            (value) => KubernetesNodePoolTaint.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      taints: (() { final guardedValue = map['taints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KubernetesNodePoolTaint>(guardedValue, (value) => KubernetesNodePoolTaint.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

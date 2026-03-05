@@ -7,10 +7,8 @@ import 'custom_field_response_gameservices_v1beta.dart';
 class CounterOptionsResponseGameservicesV1beta {
   /// Custom fields.
   final pulumi.Input<List<CustomFieldResponseGameservicesV1beta>> customFields;
-
   /// The field value to attribute.
   final pulumi.Input<String> field;
-
   /// The metric to update.
   final pulumi.Input<String> metric;
 
@@ -26,37 +24,18 @@ class CounterOptionsResponseGameservicesV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customFields':
-          pulumi.Input.mapInputValue<
-            List<CustomFieldResponseGameservicesV1beta>,
-            List<Map<String, dynamic>>
-          >(
-            customFields,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CustomFieldResponseGameservicesV1beta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'customFields': pulumi.Input.mapInputValue<List<CustomFieldResponseGameservicesV1beta>, List<Map<String, dynamic>>>(customFields, (value) => pulumi.Input.encodeList<CustomFieldResponseGameservicesV1beta, Map<String, dynamic>>(value, (value) => value.toMap())),
       'field': field,
       'metric': metric,
     };
   }
 
-  factory CounterOptionsResponseGameservicesV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CounterOptionsResponseGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return CounterOptionsResponseGameservicesV1beta(
-      customFields: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<CustomFieldResponseGameservicesV1beta>(
-          map['customFields']!,
-          (value) => CustomFieldResponseGameservicesV1beta.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      customFields: pulumi.Input.fromValue(pulumi.Input.decodeList<CustomFieldResponseGameservicesV1beta>(map['customFields']!, (value) => CustomFieldResponseGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))),
       field: pulumi.Input.fromValue(map['field'] as String),
       metric: pulumi.Input.fromValue(map['metric'] as String),
     );
   }
 }
+

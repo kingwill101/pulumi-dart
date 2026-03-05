@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
   /// The key may be used to sign certificates.
   final pulumi.Input<bool> certSign;
-
   /// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
   final pulumi.Input<bool> contentCommitment;
-
   /// The key may be used sign certificate revocation lists.
   final pulumi.Input<bool> crlSign;
-
   /// The key may be used to encipher data.
   final pulumi.Input<bool> dataEncipherment;
-
   /// The key may be used to decipher only.
   final pulumi.Input<bool> decipherOnly;
-
   /// The key may be used for digital signatures.
   final pulumi.Input<bool> digitalSignature;
-
   /// The key may be used to encipher only.
   final pulumi.Input<bool> encipherOnly;
-
   /// The key may be used in a key agreement protocol.
   final pulumi.Input<bool> keyAgreement;
-
   /// The key may be used to encipher other keys.
   final pulumi.Input<bool> keyEncipherment;
 
@@ -66,14 +58,10 @@ class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
     };
   }
 
-  factory GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage.fromMap(Map<String, dynamic> map) {
     return GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage(
       certSign: pulumi.Input.fromValue(map['certSign'] as bool),
-      contentCommitment: pulumi.Input.fromValue(
-        map['contentCommitment'] as bool,
-      ),
+      contentCommitment: pulumi.Input.fromValue(map['contentCommitment'] as bool),
       crlSign: pulumi.Input.fromValue(map['crlSign'] as bool),
       dataEncipherment: pulumi.Input.fromValue(map['dataEncipherment'] as bool),
       decipherOnly: pulumi.Input.fromValue(map['decipherOnly'] as bool),
@@ -84,3 +72,4 @@ class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
     );
   }
 }
+

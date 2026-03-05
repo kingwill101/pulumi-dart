@@ -9,28 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeviceGroupArgs {
   /// Flag to define if the user allows for crash dump collection.
   final pulumi.Input<String>? allowCrashDumpsCollection;
-
   /// Name of catalog
   final pulumi.Input<String> catalogName;
-
   /// Description of the device group.
   final pulumi.Input<String>? description;
-
   /// Name of device group.
   final pulumi.Input<String>? deviceGroupName;
-
   /// Operating system feed type of the device group.
   final pulumi.Input<String>? osFeedType;
-
   /// Name of product.
   final pulumi.Input<String> productName;
-
   /// Regional data boundary for the device group.
   final pulumi.Input<String>? regionalDataBoundary;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Update policy of the device group.
   final pulumi.Input<String>? updatePolicy;
 
@@ -72,41 +64,16 @@ class DeviceGroupArgs {
 
   factory DeviceGroupArgs.fromMap(Map<String, dynamic> map) {
     return DeviceGroupArgs(
-      allowCrashDumpsCollection: (() {
-        final guardedValue = map['allowCrashDumpsCollection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowCrashDumpsCollection: (() { final guardedValue = map['allowCrashDumpsCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       catalogName: pulumi.Input.fromValue(map['catalogName'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deviceGroupName: (() {
-        final guardedValue = map['deviceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      osFeedType: (() {
-        final guardedValue = map['osFeedType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deviceGroupName: (() { final guardedValue = map['deviceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osFeedType: (() { final guardedValue = map['osFeedType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       productName: pulumi.Input.fromValue(map['productName'] as String),
-      regionalDataBoundary: (() {
-        final guardedValue = map['regionalDataBoundary'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      updatePolicy: (() {
-        final guardedValue = map['updatePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      regionalDataBoundary: (() { final guardedValue = map['regionalDataBoundary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      updatePolicy: (() { final guardedValue = map['updatePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

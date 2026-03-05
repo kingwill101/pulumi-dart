@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnConnectionTunnel1LogOptionsCloudwatchLogOptions {
   /// Enable or disable BGP logging feature. The default is `false`.
   final pulumi.Input<bool>? bgpLogEnabled;
-
   /// The Amazon Resource Name (ARN) of the CloudWatch log group to send BGP logs to.
   final pulumi.Input<String>? bgpLogGroupArn;
-
   /// Set BGP log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
   final pulumi.Input<String>? bgpLogOutputFormat;
-
   /// Enable or disable VPN tunnel logging feature. The default is `false`.
   final pulumi.Input<bool>? logEnabled;
-
   /// The Amazon Resource Name (ARN) of the CloudWatch log group to send logs to.
   final pulumi.Input<String>? logGroupArn;
-
   /// Set log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
   final pulumi.Input<String>? logOutputFormat;
 
@@ -48,40 +43,15 @@ class VpnConnectionTunnel1LogOptionsCloudwatchLogOptions {
     };
   }
 
-  factory VpnConnectionTunnel1LogOptionsCloudwatchLogOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VpnConnectionTunnel1LogOptionsCloudwatchLogOptions.fromMap(Map<String, dynamic> map) {
     return VpnConnectionTunnel1LogOptionsCloudwatchLogOptions(
-      bgpLogEnabled: (() {
-        final guardedValue = map['bgpLogEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      bgpLogGroupArn: (() {
-        final guardedValue = map['bgpLogGroupArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bgpLogOutputFormat: (() {
-        final guardedValue = map['bgpLogOutputFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logEnabled: (() {
-        final guardedValue = map['logEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      logGroupArn: (() {
-        final guardedValue = map['logGroupArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logOutputFormat: (() {
-        final guardedValue = map['logOutputFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bgpLogEnabled: (() { final guardedValue = map['bgpLogEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      bgpLogGroupArn: (() { final guardedValue = map['bgpLogGroupArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bgpLogOutputFormat: (() { final guardedValue = map['bgpLogOutputFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logEnabled: (() { final guardedValue = map['logEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      logGroupArn: (() { final guardedValue = map['logGroupArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logOutputFormat: (() { final guardedValue = map['logOutputFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

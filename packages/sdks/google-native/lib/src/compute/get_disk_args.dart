@@ -15,21 +15,26 @@ class GetDiskArgs {
   /// [disk] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetDiskArgs({required this.disk, this.project, required this.zone});
+  GetDiskArgs({
+    required this.disk,
+    this.project,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disk': disk, 'project': ?project, 'zone': zone};
+    return <String, dynamic>{
+      'disk': disk,
+      'project': ?project,
+      'zone': zone,
+    };
   }
 
   factory GetDiskArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskArgs(
       disk: pulumi.Input.fromValue(map['disk'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
+

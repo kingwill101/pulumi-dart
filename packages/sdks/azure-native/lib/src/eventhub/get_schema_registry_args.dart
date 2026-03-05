@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSchemaRegistryArgs {
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
-
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
-
   /// The Schema Group name
   final pulumi.Input<String> schemaGroupName;
 
@@ -37,10 +35,9 @@ class GetSchemaRegistryArgs {
   factory GetSchemaRegistryArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaRegistryArgs(
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       schemaGroupName: pulumi.Input.fromValue(map['schemaGroupName'] as String),
     );
   }
 }
+

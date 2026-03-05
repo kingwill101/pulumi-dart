@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlPoolWorkloadGroupArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// SQL pool name
   final pulumi.Input<String> sqlPoolName;
-
   /// The name of the workload group.
   final pulumi.Input<String> workloadGroupName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -42,14 +39,11 @@ class GetSqlPoolWorkloadGroupArgs {
 
   factory GetSqlPoolWorkloadGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlPoolWorkloadGroupArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sqlPoolName: pulumi.Input.fromValue(map['sqlPoolName'] as String),
-      workloadGroupName: pulumi.Input.fromValue(
-        map['workloadGroupName'] as String,
-      ),
+      workloadGroupName: pulumi.Input.fromValue(map['workloadGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

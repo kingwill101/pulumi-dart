@@ -10,29 +10,20 @@ class RestorePointSourceMetadata {
 
   /// Creates a new [RestorePointSourceMetadata].
   /// [storageProfile] Gets the storage profile.
-  RestorePointSourceMetadata({this.storageProfile});
+  RestorePointSourceMetadata({
+    this.storageProfile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'storageProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            RestorePointSourceVMStorageProfile,
-            Map<String, dynamic>
-          >(storageProfile, (value) => value.toMap()),
+      'storageProfile': ?pulumi.Input.mapOptionalInputValue<RestorePointSourceVMStorageProfile, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
     };
   }
 
   factory RestorePointSourceMetadata.fromMap(Map<String, dynamic> map) {
     return RestorePointSourceMetadata(
-      storageProfile: (() {
-        final guardedValue = map['storageProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RestorePointSourceVMStorageProfile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      storageProfile: (() { final guardedValue = map['storageProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RestorePointSourceVMStorageProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

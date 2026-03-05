@@ -8,21 +8,20 @@ class ClusterAutomatedBackupPolicyQuantityBasedRetention {
 
   /// Creates a new [ClusterAutomatedBackupPolicyQuantityBasedRetention].
   /// [count] The number of backups to retain.
-  ClusterAutomatedBackupPolicyQuantityBasedRetention({this.count});
+  ClusterAutomatedBackupPolicyQuantityBasedRetention({
+    this.count,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'count': ?count};
+    return <String, dynamic>{
+      'count': ?count,
+    };
   }
 
-  factory ClusterAutomatedBackupPolicyQuantityBasedRetention.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterAutomatedBackupPolicyQuantityBasedRetention.fromMap(Map<String, dynamic> map) {
     return ClusterAutomatedBackupPolicyQuantityBasedRetention(
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

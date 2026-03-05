@@ -450,16 +450,13 @@ import 'access_level_condition_state.dart';
 class AccessLevelCondition extends pulumi.CustomResource {
   /// The name of the Access Level to add this condition to.
   late final pulumi.Output<String> accessLevel;
-
   /// The name of the Access Policy this resource belongs to.
   late final pulumi.Output<String> accessPolicyId;
-
   /// Device specific restrictions, all restrictions must hold for
   /// the Condition to be true. If not specified, all devices are
   /// allowed.
   /// Structure is documented below.
   late final pulumi.Output<AccessLevelConditionDevicePolicy?> devicePolicy;
-
   /// A list of CIDR block IP subnetwork specification. May be IPv4
   /// or IPv6.
   /// Note that for a CIDR IP address block, the specified IP address
@@ -471,7 +468,6 @@ class AccessLevelCondition extends pulumi.CustomResource {
   /// listed subnets in order for this Condition to be true.
   /// If empty, all IP addresses are allowed.
   late final pulumi.Output<List<String>?> ipSubnetworks;
-
   /// An allowed list of members (users, service accounts).
   /// Using groups is not supported yet.
   /// The signed-in user originating the request must be a part of one
@@ -480,24 +476,20 @@ class AccessLevelCondition extends pulumi.CustomResource {
   /// groups, etc.).
   /// Formats: `user:{emailid}`, `serviceAccount:{emailid}`
   late final pulumi.Output<List<String>?> members;
-
   /// Whether to negate the Condition. If true, the Condition becomes
   /// a NAND over its non-empty fields, each field must be false for
   /// the Condition overall to be satisfied. Defaults to false.
   late final pulumi.Output<bool?> negate;
-
   /// The request must originate from one of the provided
   /// countries/regions.
   /// Format: A valid ISO 3166-1 alpha-2 code.
   late final pulumi.Output<List<String>?> regions;
-
   /// A list of other access levels defined in the same Policy,
   /// referenced by resource name. Referencing an AccessLevel which
   /// does not exist is an error. All access levels listed must be
   /// granted for the Condition to be true.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
   late final pulumi.Output<List<String>?> requiredAccessLevels;
-
   /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> vpcNetworkSources;
@@ -511,33 +503,20 @@ class AccessLevelCondition extends pulumi.CustomResource {
     AccessLevelConditionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessLevel = registerOutput<String>('accessLevel');
     accessPolicyId = registerOutput<String>('accessPolicyId');
-    devicePolicy = registerOutput<AccessLevelConditionDevicePolicy?>(
-      'devicePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessLevelConditionDevicePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    devicePolicy = registerOutput<AccessLevelConditionDevicePolicy?>('devicePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelConditionDevicePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipSubnetworks = registerOutput<List<String>?>('ipSubnetworks');
     members = registerOutput<List<String>?>('members');
     negate = registerOutput<bool?>('negate');
     regions = registerOutput<List<String>?>('regions');
-    requiredAccessLevels = registerOutput<List<String>?>(
-      'requiredAccessLevels',
-    );
-    vpcNetworkSources = registerOutput<List<Map<String, dynamic>>?>(
-      'vpcNetworkSources',
-    );
+    requiredAccessLevels = registerOutput<List<String>?>('requiredAccessLevels');
+    vpcNetworkSources = registerOutput<List<Map<String, dynamic>>?>('vpcNetworkSources');
   }
 
   /// Gets an existing [AccessLevelCondition] resource's state with the given [name] and [id].
@@ -558,32 +537,19 @@ class AccessLevelCondition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessLevel = registerOutput<String>('accessLevel');
     accessPolicyId = registerOutput<String>('accessPolicyId');
-    devicePolicy = registerOutput<AccessLevelConditionDevicePolicy?>(
-      'devicePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessLevelConditionDevicePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    devicePolicy = registerOutput<AccessLevelConditionDevicePolicy?>('devicePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelConditionDevicePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipSubnetworks = registerOutput<List<String>?>('ipSubnetworks');
     members = registerOutput<List<String>?>('members');
     negate = registerOutput<bool?>('negate');
     regions = registerOutput<List<String>?>('regions');
-    requiredAccessLevels = registerOutput<List<String>?>(
-      'requiredAccessLevels',
-    );
-    vpcNetworkSources = registerOutput<List<Map<String, dynamic>>?>(
-      'vpcNetworkSources',
-    );
+    requiredAccessLevels = registerOutput<List<String>?>('requiredAccessLevels');
+    vpcNetworkSources = registerOutput<List<Map<String, dynamic>>?>('vpcNetworkSources');
   }
 }

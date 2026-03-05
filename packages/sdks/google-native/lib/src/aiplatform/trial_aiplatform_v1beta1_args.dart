@@ -31,17 +31,10 @@ class TrialAiplatformV1beta1Args {
 
   factory TrialAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return TrialAiplatformV1beta1Args(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       studyId: pulumi.Input.fromValue(map['studyId'] as String),
     );
   }
 }
+

@@ -10,38 +10,26 @@ import 'product_provisioning_artifact_parameters.dart';
 class ProductArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   final pulumi.Input<String>? acceptLanguage;
-
   /// Description of the product.
   final pulumi.Input<String>? description;
-
   /// Distributor (i.e., vendor) of the product.
   final pulumi.Input<String>? distributor;
-
   /// Name of the product.
   final pulumi.Input<String>? name;
-
   /// Owner of the product.
   final pulumi.Input<String> owner;
-
   /// Configuration block for provisioning artifact (i.e., version) parameters. See `provisioning_artifact_parameters` Block for details.
-  final pulumi.Input<ProductProvisioningArtifactParameters>
-  provisioningArtifactParameters;
-
+  final pulumi.Input<ProductProvisioningArtifactParameters> provisioningArtifactParameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Support information about the product.
   final pulumi.Input<String>? supportDescription;
-
   /// Contact email for product support.
   final pulumi.Input<String>? supportEmail;
-
   /// Contact URL for product support.
   final pulumi.Input<String>? supportUrl;
-
   /// Tags to apply to the product. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Type of product. See [AWS Docs](https://docs.aws.amazon.com/servicecatalog/latest/dg/API_CreateProduct.html#API_CreateProduct_RequestSyntax) for valid list of values.
   ///
   /// The following arguments are optional:
@@ -82,11 +70,7 @@ class ProductArgs {
       'distributor': ?distributor,
       'name': ?name,
       'owner': owner,
-      'provisioningArtifactParameters':
-          pulumi.Input.mapInputValue<
-            ProductProvisioningArtifactParameters,
-            Map<String, dynamic>
-          >(provisioningArtifactParameters, (value) => value.toMap()),
+      'provisioningArtifactParameters': pulumi.Input.mapInputValue<ProductProvisioningArtifactParameters, Map<String, dynamic>>(provisioningArtifactParameters, (value) => value.toMap()),
       'region': ?region,
       'supportDescription': ?supportDescription,
       'supportEmail': ?supportEmail,
@@ -98,61 +82,19 @@ class ProductArgs {
 
   factory ProductArgs.fromMap(Map<String, dynamic> map) {
     return ProductArgs(
-      acceptLanguage: (() {
-        final guardedValue = map['acceptLanguage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      distributor: (() {
-        final guardedValue = map['distributor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      acceptLanguage: (() { final guardedValue = map['acceptLanguage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      distributor: (() { final guardedValue = map['distributor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       owner: pulumi.Input.fromValue(map['owner'] as String),
-      provisioningArtifactParameters: pulumi.Input.fromValue(
-        ProductProvisioningArtifactParameters.fromMap(
-          (map['provisioningArtifactParameters']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      supportDescription: (() {
-        final guardedValue = map['supportDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      supportEmail: (() {
-        final guardedValue = map['supportEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      supportUrl: (() {
-        final guardedValue = map['supportUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      provisioningArtifactParameters: pulumi.Input.fromValue(ProductProvisioningArtifactParameters.fromMap((map['provisioningArtifactParameters']! as Map).cast<String, dynamic>())),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      supportDescription: (() { final guardedValue = map['supportDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      supportEmail: (() { final guardedValue = map['supportEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      supportUrl: (() { final guardedValue = map['supportUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

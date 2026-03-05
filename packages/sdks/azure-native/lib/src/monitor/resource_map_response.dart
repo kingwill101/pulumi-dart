@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceMapResponse {
   /// Resource Map Key.
   final pulumi.Input<String> from;
-
   /// Resource Map Value.
   final pulumi.Input<String> to;
 
   /// Creates a new [ResourceMapResponse].
   /// [from] Resource Map Key.
   /// [to] Resource Map Value.
-  ResourceMapResponse({required this.from, required this.to});
+  ResourceMapResponse({
+    required this.from,
+    required this.to,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'from': from, 'to': to};
+    return <String, dynamic>{
+      'from': from,
+      'to': to,
+    };
   }
 
   factory ResourceMapResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ResourceMapResponse {
     );
   }
 }
+

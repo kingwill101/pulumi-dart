@@ -470,25 +470,18 @@ import 'linked_service_state.dart';
 class LinkedService extends pulumi.CustomResource {
   /// A map of additional properties to associate with the Synapse Linked Service.
   late final pulumi.Output<Map<String, String>?> additionalProperties;
-
   /// List of tags that can be used for describing the Synapse Linked Service.
   late final pulumi.Output<List<String>?> annotations;
-
   /// The description for the Synapse Linked Service.
   late final pulumi.Output<String?> description;
-
   /// A `integration_runtime` block as defined below.
   late final pulumi.Output<LinkedServiceIntegrationRuntime?> integrationRuntime;
-
   /// The name which should be used for this Synapse Linked Service. Changing this forces a new Synapse Linked Service to be created.
   late final pulumi.Output<String> name;
-
   /// A map of parameters to associate with the Synapse Linked Service.
   late final pulumi.Output<Map<String, String>?> parameters;
-
   /// The Synapse Workspace ID in which to associate the Linked Service with. Changing this forces a new Synapse Linked Service to be created.
   late final pulumi.Output<String> synapseWorkspaceId;
-
   /// The type of data stores that will be connected to Synapse. Valid Values include `AmazonMWS`, `AmazonRdsForOracle`, `AmazonRdsForSqlServer`, `AmazonRedshift`, `AmazonS3`, `AzureBatch`. Changing this forces a new resource to be created.
   /// `AzureBlobFS`, `AzureBlobStorage`, `AzureDataExplorer`, `AzureDataLakeAnalytics`, `AzureDataLakeStore`, `AzureDatabricks`, `AzureDatabricksDeltaLake`, `AzureFileStorage`, `AzureFunction`,
   /// `AzureKeyVault`, `AzureML`, `AzureMLService`, `AzureMariaDB`, `AzureMySql`, `AzurePostgreSql`, `AzureSqlDW`, `AzureSqlDatabase`, `AzureSqlMI`, `AzureSearch`, `AzureStorage`,
@@ -499,7 +492,6 @@ class LinkedService extends pulumi.CustomResource {
   /// `Responsys`, `RestService`, `SqlServer`, `Salesforce`, `SalesforceMarketingCloud`, `SalesforceServiceCloud`, `SapBW`, `SapCloudForCustomer`, `SapEcc`, `SapHana`, `SapOpenHub`,
   /// `SapTable`, `ServiceNow`, `Sftp`, `SharePointOnlineList`, `Shopify`, `Snowflake`, `Spark`, `Square`, `Sybase`, `Teradata`, `Vertica`, `Web`, `Xero`, `Zoho`.
   late final pulumi.Output<String> type;
-
   /// A JSON object that contains the properties of the Synapse Linked Service.
   late final pulumi.Output<String> typePropertiesJson;
 
@@ -512,26 +504,15 @@ class LinkedService extends pulumi.CustomResource {
     LinkedServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/linkedService:LinkedService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+          'azure:synapse/linkedService:LinkedService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     description = registerOutput<String?>('description');
-    integrationRuntime = registerOutput<LinkedServiceIntegrationRuntime?>(
-      'integrationRuntime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinkedServiceIntegrationRuntime.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    integrationRuntime = registerOutput<LinkedServiceIntegrationRuntime?>('integrationRuntime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceIntegrationRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
@@ -557,26 +538,15 @@ class LinkedService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/linkedService:LinkedService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+          'azure:synapse/linkedService:LinkedService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     description = registerOutput<String?>('description');
-    integrationRuntime = registerOutput<LinkedServiceIntegrationRuntime?>(
-      'integrationRuntime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinkedServiceIntegrationRuntime.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    integrationRuntime = registerOutput<LinkedServiceIntegrationRuntime?>('integrationRuntime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceIntegrationRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');

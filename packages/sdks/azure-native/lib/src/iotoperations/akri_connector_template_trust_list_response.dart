@@ -9,19 +9,20 @@ class AkriConnectorTemplateTrustListResponse {
 
   /// Creates a new [AkriConnectorTemplateTrustListResponse].
   /// [trustListSecretRef] The secret reference for certificates to trust.
-  AkriConnectorTemplateTrustListResponse({required this.trustListSecretRef});
+  AkriConnectorTemplateTrustListResponse({
+    required this.trustListSecretRef,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'trustListSecretRef': trustListSecretRef};
+    return <String, dynamic>{
+      'trustListSecretRef': trustListSecretRef,
+    };
   }
 
-  factory AkriConnectorTemplateTrustListResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AkriConnectorTemplateTrustListResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateTrustListResponse(
-      trustListSecretRef: pulumi.Input.fromValue(
-        map['trustListSecretRef'] as String,
-      ),
+      trustListSecretRef: pulumi.Input.fromValue(map['trustListSecretRef'] as String),
     );
   }
 }
+

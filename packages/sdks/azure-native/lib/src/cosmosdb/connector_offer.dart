@@ -14,3 +14,4 @@ enum ConnectorOffer {
     throw ArgumentError('Unknown ConnectorOffer value: $value');
   }
 }
+

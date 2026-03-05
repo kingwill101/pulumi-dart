@@ -9,21 +9,20 @@ class PrivateEndpointConnectionPropertiesPrivateEndpoint {
 
   /// Creates a new [PrivateEndpointConnectionPropertiesPrivateEndpoint].
   /// [id] The resource ID of the private endpoint resource from Microsoft.Network provider.
-  PrivateEndpointConnectionPropertiesPrivateEndpoint({this.id});
+  PrivateEndpointConnectionPropertiesPrivateEndpoint({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
-  factory PrivateEndpointConnectionPropertiesPrivateEndpoint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrivateEndpointConnectionPropertiesPrivateEndpoint.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionPropertiesPrivateEndpoint(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

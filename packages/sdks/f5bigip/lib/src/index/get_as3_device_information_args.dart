@@ -13,20 +13,23 @@ class GetAs3DeviceInformationArgs {
   /// Creates a new [GetAs3DeviceInformationArgs].
   /// [applications] Optional.
   /// [tenant] Required.
-  GetAs3DeviceInformationArgs({this.applications, required this.tenant});
+  GetAs3DeviceInformationArgs({
+    this.applications,
+    required this.tenant,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'applications': ?applications, 'tenant': tenant};
+    return <String, dynamic>{
+      'applications': ?applications,
+      'tenant': tenant,
+    };
   }
 
   factory GetAs3DeviceInformationArgs.fromMap(Map<String, dynamic> map) {
     return GetAs3DeviceInformationArgs(
-      applications: (() {
-        final guardedValue = map['applications'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      applications: (() { final guardedValue = map['applications']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tenant: pulumi.Input.fromValue(map['tenant'] as String),
     );
   }
 }
+

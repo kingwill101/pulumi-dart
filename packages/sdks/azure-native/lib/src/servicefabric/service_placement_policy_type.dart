@@ -18,3 +18,4 @@ enum ServicePlacementPolicyType {
     throw ArgumentError('Unknown ServicePlacementPolicyType value: $value');
   }
 }
+

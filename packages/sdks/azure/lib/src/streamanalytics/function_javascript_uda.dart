@@ -307,16 +307,12 @@ import 'function_javascript_uda_state.dart';
 class FunctionJavascriptUda extends pulumi.CustomResource {
   /// One or more `input` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> inputs;
-
   /// The name of the JavaScript UDA Function. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// An `output` block as defined below.
   late final pulumi.Output<FunctionJavascriptUdaOutput> output;
-
   /// The JavaScript of this UDA Function.
   late final pulumi.Output<String> script;
-
   /// The resource ID of the Stream Analytics Job where this Function should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobId;
 
@@ -329,23 +325,14 @@ class FunctionJavascriptUda extends pulumi.CustomResource {
     FunctionJavascriptUdaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/functionJavascriptUda:FunctionJavascriptUda',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/functionJavascriptUda:FunctionJavascriptUda',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     inputs = registerOutput<List<Map<String, dynamic>>>('inputs');
     this.name = registerOutput<String>('name');
-    output = registerOutput<FunctionJavascriptUdaOutput>(
-      'output',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionJavascriptUdaOutput.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    output = registerOutput<FunctionJavascriptUdaOutput>('output', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionJavascriptUdaOutput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     script = registerOutput<String>('script');
     streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
   }
@@ -368,23 +355,14 @@ class FunctionJavascriptUda extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/functionJavascriptUda:FunctionJavascriptUda',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/functionJavascriptUda:FunctionJavascriptUda',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     inputs = registerOutput<List<Map<String, dynamic>>>('inputs');
     this.name = registerOutput<String>('name');
-    output = registerOutput<FunctionJavascriptUdaOutput>(
-      'output',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionJavascriptUdaOutput.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    output = registerOutput<FunctionJavascriptUdaOutput>('output', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionJavascriptUdaOutput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     script = registerOutput<String>('script');
     streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
   }

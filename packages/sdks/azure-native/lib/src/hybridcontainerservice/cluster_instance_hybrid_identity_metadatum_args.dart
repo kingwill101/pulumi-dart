@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterInstanceHybridIdentityMetadatumArgs {
   /// The fully qualified Azure Resource Manager identifier of the connected cluster resource.
   final pulumi.Input<String> connectedClusterResourceUri;
-
   /// Onboarding public key for provisioning the Managed identity for the connected cluster.
   final pulumi.Input<String>? publicKey;
-
   /// Unique id of the parent provisioned cluster resource.
   final pulumi.Input<String>? resourceUid;
 
@@ -34,23 +32,12 @@ class ClusterInstanceHybridIdentityMetadatumArgs {
     };
   }
 
-  factory ClusterInstanceHybridIdentityMetadatumArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterInstanceHybridIdentityMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return ClusterInstanceHybridIdentityMetadatumArgs(
-      connectedClusterResourceUri: pulumi.Input.fromValue(
-        map['connectedClusterResourceUri'] as String,
-      ),
-      publicKey: (() {
-        final guardedValue = map['publicKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceUid: (() {
-        final guardedValue = map['resourceUid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectedClusterResourceUri: pulumi.Input.fromValue(map['connectedClusterResourceUri'] as String),
+      publicKey: (() { final guardedValue = map['publicKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceUid: (() { final guardedValue = map['resourceUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

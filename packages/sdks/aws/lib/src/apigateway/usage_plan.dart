@@ -16,31 +16,22 @@ import 'usage_plan_throttle_settings.dart';
 class UsagePlan extends pulumi.CustomResource {
   /// Associated API stages of the usage plan.
   late final pulumi.Output<List<Map<String, dynamic>>?> apiStages;
-
   /// ARN
   late final pulumi.Output<String> arn;
-
   /// Description of a usage plan.
   late final pulumi.Output<String?> description;
-
   /// Name of the usage plan.
   late final pulumi.Output<String> name;
-
   /// AWS Marketplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
   late final pulumi.Output<String?> productCode;
-
   /// The quota settings of the usage plan.
   late final pulumi.Output<UsagePlanQuotaSettings?> quotaSettings;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The throttling limits of the usage plan.
   late final pulumi.Output<UsagePlanThrottleSettings?> throttleSettings;
 
@@ -53,39 +44,21 @@ class UsagePlan extends pulumi.CustomResource {
     UsagePlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigateway/usagePlan:UsagePlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigateway/usagePlan:UsagePlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiStages = registerOutput<List<Map<String, dynamic>>?>('apiStages');
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     productCode = registerOutput<String?>('productCode');
-    quotaSettings = registerOutput<UsagePlanQuotaSettings?>(
-      'quotaSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UsagePlanQuotaSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    quotaSettings = registerOutput<UsagePlanQuotaSettings?>('quotaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UsagePlanQuotaSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    throttleSettings = registerOutput<UsagePlanThrottleSettings?>(
-      'throttleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UsagePlanThrottleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    throttleSettings = registerOutput<UsagePlanThrottleSettings?>('throttleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UsagePlanThrottleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [UsagePlan] resource's state with the given [name] and [id].
@@ -106,38 +79,20 @@ class UsagePlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigateway/usagePlan:UsagePlan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigateway/usagePlan:UsagePlan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiStages = registerOutput<List<Map<String, dynamic>>?>('apiStages');
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     productCode = registerOutput<String?>('productCode');
-    quotaSettings = registerOutput<UsagePlanQuotaSettings?>(
-      'quotaSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UsagePlanQuotaSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    quotaSettings = registerOutput<UsagePlanQuotaSettings?>('quotaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UsagePlanQuotaSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    throttleSettings = registerOutput<UsagePlanThrottleSettings?>(
-      'throttleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UsagePlanThrottleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    throttleSettings = registerOutput<UsagePlanThrottleSettings?>('throttleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UsagePlanThrottleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

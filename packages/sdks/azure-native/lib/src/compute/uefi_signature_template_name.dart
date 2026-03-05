@@ -1,9 +1,7 @@
 /// The name of the signature template that contains default UEFI keys.
 enum UefiSignatureTemplateName {
   noSignatureTemplate("NoSignatureTemplate"),
-  microsoftUefiCertificateAuthorityTemplate(
-    "MicrosoftUefiCertificateAuthorityTemplate",
-  ),
+  microsoftUefiCertificateAuthorityTemplate("MicrosoftUefiCertificateAuthorityTemplate"),
   microsoftWindowsTemplate("MicrosoftWindowsTemplate");
 
   const UefiSignatureTemplateName(this.wireValue);
@@ -18,3 +16,4 @@ enum UefiSignatureTemplateName {
     throw ArgumentError('Unknown UefiSignatureTemplateName value: $value');
   }
 }
+

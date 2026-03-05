@@ -355,52 +355,36 @@ import 'private_dns_state.dart';
 class PrivateDns extends pulumi.CustomResource {
   /// The id of Private DNS instance
   late final pulumi.Output<String> accessInstanceId;
-
   /// The name of Private DNS instance
   late final pulumi.Output<String> accessInstanceName;
-
   /// Private DNS domain name list
   late final pulumi.Output<List<String>?> domainNameLists;
-
   /// The type of firewall
   late final pulumi.Output<List<String>> firewallTypes;
-
   /// IP protocol
   late final pulumi.Output<String?> ipProtocol;
-
   /// The member Uid
   late final pulumi.Output<int?> memberUid;
-
   /// The Port of Private DNS instance
   late final pulumi.Output<int?> port;
-
   /// Primary DNS IP
   late final pulumi.Output<String?> primaryDns;
-
   /// Primary zone Switch ID
   late final pulumi.Output<String?> primaryVswitchId;
-
   /// Primary zone switch IP
   late final pulumi.Output<String?> primaryVswitchIp;
-
   /// The type of Private DNS instance
   late final pulumi.Output<String> privateDnsType;
-
   /// The region ID of Private DNS instance
   late final pulumi.Output<String> regionNo;
-
   /// Standby DNS IP
   late final pulumi.Output<String?> standbyDns;
-
   /// Standby zone switch ID
   late final pulumi.Output<String?> standbyVswitchId;
-
   /// Standby zone switch IP address
   late final pulumi.Output<String?> standbyVswitchIp;
-
   /// status
   late final pulumi.Output<String> status;
-
   /// The ID of the VPC.
   late final pulumi.Output<String> vpcId;
 
@@ -413,11 +397,11 @@ class PrivateDns extends pulumi.CustomResource {
     PrivateDnsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/privateDns:PrivateDns',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/privateDns:PrivateDns',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessInstanceId = registerOutput<String>('accessInstanceId');
     accessInstanceName = registerOutput<String>('accessInstanceName');
     domainNameLists = registerOutput<List<String>?>('domainNameLists');
@@ -455,11 +439,11 @@ class PrivateDns extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/privateDns:PrivateDns',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/privateDns:PrivateDns',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessInstanceId = registerOutput<String>('accessInstanceId');
     accessInstanceName = registerOutput<String>('accessInstanceName');
     domainNameLists = registerOutput<List<String>?>('domainNameLists');

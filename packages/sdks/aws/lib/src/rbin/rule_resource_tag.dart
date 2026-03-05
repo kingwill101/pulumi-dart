@@ -7,14 +7,16 @@ class RuleResourceTag {
   ///
   /// The following argument is optional:
   final pulumi.Input<String> resourceTagKey;
-
   /// Tag value.
   final pulumi.Input<String>? resourceTagValue;
 
   /// Creates a new [RuleResourceTag].
   /// [resourceTagKey] Tag key.
   /// [resourceTagValue] Tag value.
-  RuleResourceTag({required this.resourceTagKey, this.resourceTagValue});
+  RuleResourceTag({
+    required this.resourceTagKey,
+    this.resourceTagValue,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,11 +28,8 @@ class RuleResourceTag {
   factory RuleResourceTag.fromMap(Map<String, dynamic> map) {
     return RuleResourceTag(
       resourceTagKey: pulumi.Input.fromValue(map['resourceTagKey'] as String),
-      resourceTagValue: (() {
-        final guardedValue = map['resourceTagValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceTagValue: (() { final guardedValue = map['resourceTagValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Expression {
   /// Expression type.
   final pulumi.Input<String> type;
-
   /// Expression value.
   final pulumi.Input<String> value;
 
   /// Creates a new [Expression].
   /// [type] Expression type.
   /// [value] Expression value.
-  Expression({required this.type, required this.value});
+  Expression({
+    required this.type,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type, 'value': value};
+    return <String, dynamic>{
+      'type': type,
+      'value': value,
+    };
   }
 
   factory Expression.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class Expression {
     );
   }
 }
+

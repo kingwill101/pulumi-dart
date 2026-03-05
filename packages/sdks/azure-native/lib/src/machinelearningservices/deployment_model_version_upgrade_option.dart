@@ -13,8 +13,7 @@ enum DeploymentModelVersionUpgradeOption {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DeploymentModelVersionUpgradeOption value: $value',
-    );
+    throw ArgumentError('Unknown DeploymentModelVersionUpgradeOption value: $value');
   }
 }
+

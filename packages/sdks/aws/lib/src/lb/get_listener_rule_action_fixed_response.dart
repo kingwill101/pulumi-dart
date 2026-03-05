@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenerRuleActionFixedResponse {
   /// Content type of the response.
   final pulumi.Input<String> contentType;
-
   /// Message body of the response.
   final pulumi.Input<String> messageBody;
-
   /// The HTTP redirect code.
   final pulumi.Input<String> statusCode;
 
@@ -38,3 +36,4 @@ class GetListenerRuleActionFixedResponse {
     );
   }
 }
+

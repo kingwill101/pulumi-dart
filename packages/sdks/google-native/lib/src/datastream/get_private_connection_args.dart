@@ -32,14 +32,9 @@ class GetPrivateConnectionArgs {
   factory GetPrivateConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateConnectionArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      privateConnectionId: pulumi.Input.fromValue(
-        map['privateConnectionId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      privateConnectionId: pulumi.Input.fromValue(map['privateConnectionId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

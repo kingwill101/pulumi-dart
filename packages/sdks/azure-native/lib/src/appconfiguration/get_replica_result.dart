@@ -6,25 +6,18 @@ import 'system_data_response.dart';
 class GetReplicaResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The URI of the replica where the replica API will be available.
   final String endpoint;
-
   /// The resource ID.
   final String id;
-
   /// The location of the replica.
   final String? location;
-
   /// The name of the replica.
   final String name;
-
   /// The provisioning state of the replica.
   final String provisioningState;
-
   /// Resource system metadata.
   final SystemDataResponse systemData;
-
   /// The type of the resource.
   final String type;
 
@@ -66,17 +59,12 @@ class GetReplicaResult {
       azureApiVersion: map['azureApiVersion'] as String,
       endpoint: map['endpoint'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

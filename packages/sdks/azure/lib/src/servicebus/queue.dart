@@ -218,61 +218,44 @@ import 'queue_state.dart';
 class Queue extends pulumi.CustomResource {
   /// The ISO 8601 timespan duration of the idle interval after which the Queue is automatically deleted, minimum of 5 minutes.
   late final pulumi.Output<String> autoDeleteOnIdle;
-
   /// Boolean flag which controls whether server-side batched operations are enabled. Defaults to `true`.
   late final pulumi.Output<bool?> batchedOperationsEnabled;
-
   /// Boolean flag which controls whether the Queue has dead letter support when a message expires. Defaults to `false`.
   late final pulumi.Output<bool?> deadLetteringOnMessageExpiration;
-
   /// The ISO 8601 timespan duration of the TTL of messages sent to this queue. This is the default value used when TTL is not set on message itself.
   late final pulumi.Output<String> defaultMessageTtl;
-
   /// The ISO 8601 timespan duration during which duplicates can be detected. Defaults to `PT10M` (10 Minutes).
   late final pulumi.Output<String?> duplicateDetectionHistoryTimeWindow;
-
   /// Boolean flag which controls whether Express Entities are enabled. An express queue holds a message in memory temporarily before writing it to persistent storage. Defaults to `false` for Basic and Standard. For Premium, it MUST be set to `false`.
   ///
   /// &gt; **Note:** Service Bus Premium namespaces do not support Express Entities, so `express_enabled` MUST be set to `false`.
   late final pulumi.Output<bool?> expressEnabled;
-
   /// The name of a Queue or Topic to automatically forward dead lettered messages to.
   late final pulumi.Output<String?> forwardDeadLetteredMessagesTo;
-
   /// The name of a Queue or Topic to automatically forward messages to. Please [see the documentation](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-auto-forwarding) for more information.
   late final pulumi.Output<String?> forwardTo;
-
   /// The ISO 8601 timespan duration of a peek-lock; that is, the amount of time that the message is locked for other receivers. Maximum value is 5 minutes. Defaults to `PT1M` (1 Minute).
   late final pulumi.Output<String?> lockDuration;
-
   /// Integer value which controls when a message is automatically dead lettered. Defaults to `10`.
   late final pulumi.Output<int?> maxDeliveryCount;
-
   /// Integer value which controls the maximum size of a message allowed on the queue for Premium SKU. For supported values see the "Large messages support" section of [this document](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging#large-messages-support-preview).
   late final pulumi.Output<int> maxMessageSizeInKilobytes;
-
   /// Integer value which controls the size of memory allocated for the queue. For supported values see the "Queue or topic size" section of [Service Bus Quotas](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas).
   late final pulumi.Output<int> maxSizeInMegabytes;
-
   /// Specifies the name of the ServiceBus Queue resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the ServiceBus Namespace to create this queue in. Changing this forces a new resource to be created.
   late final pulumi.Output<String> namespaceId;
   late final pulumi.Output<String> namespaceName;
-
   /// Boolean flag which controls whether to enable the queue to be partitioned across multiple message brokers. Changing this forces a new resource to be created. Defaults to `false` for Basic and Standard.
   ///
   /// &gt; **Note:** Partitioning is available at entity creation for all queues and topics in Basic or Standard SKUs. For premium namespace, partitioning is available at namespace creation, and all queues and topics in the partitioned namespace will be partitioned, for the premium namespace that has `premium_messaging_partitions` sets to `1`, the namespace is not partitioned.
   late final pulumi.Output<bool?> partitioningEnabled;
-
   /// Boolean flag which controls whether the Queue requires duplicate detection. Changing this forces a new resource to be created. Defaults to `false`.
   late final pulumi.Output<bool?> requiresDuplicateDetection;
-
   /// Boolean flag which controls whether the Queue requires sessions. This will allow ordered handling of unbounded sequences of related messages. With sessions enabled a queue can guarantee first-in-first-out delivery of messages. Changing this forces a new resource to be created. Defaults to `false`.
   late final pulumi.Output<bool?> requiresSession;
   late final pulumi.Output<String> resourceGroupName;
-
   /// The status of the Queue. Possible values are `Active`, `Creating`, `Deleting`, `Disabled`, `ReceiveDisabled`, `Renaming`, `SendDisabled`, `Unknown`. Note that `Restoring` is not accepted. Defaults to `Active`.
   late final pulumi.Output<String?> status;
 
@@ -280,49 +263,44 @@ class Queue extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Queue]. {@macro pulumi_servicebus_queue_queue_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Queue(String name, {QueueArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:servicebus/queue:Queue',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Queue(
+    String name, {
+    QueueArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:servicebus/queue:Queue',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoDeleteOnIdle = registerOutput<String>('autoDeleteOnIdle');
-    batchedOperationsEnabled = registerOutput<bool?>(
-      'batchedOperationsEnabled',
-    );
-    deadLetteringOnMessageExpiration = registerOutput<bool?>(
-      'deadLetteringOnMessageExpiration',
-    );
+    batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');
+    deadLetteringOnMessageExpiration = registerOutput<bool?>('deadLetteringOnMessageExpiration');
     defaultMessageTtl = registerOutput<String>('defaultMessageTtl');
-    duplicateDetectionHistoryTimeWindow = registerOutput<String?>(
-      'duplicateDetectionHistoryTimeWindow',
-    );
+    duplicateDetectionHistoryTimeWindow = registerOutput<String?>('duplicateDetectionHistoryTimeWindow');
     expressEnabled = registerOutput<bool?>('expressEnabled');
-    forwardDeadLetteredMessagesTo = registerOutput<String?>(
-      'forwardDeadLetteredMessagesTo',
-    );
+    forwardDeadLetteredMessagesTo = registerOutput<String?>('forwardDeadLetteredMessagesTo');
     forwardTo = registerOutput<String?>('forwardTo');
     lockDuration = registerOutput<String?>('lockDuration');
     maxDeliveryCount = registerOutput<int?>('maxDeliveryCount');
-    maxMessageSizeInKilobytes = registerOutput<int>(
-      'maxMessageSizeInKilobytes',
-    );
+    maxMessageSizeInKilobytes = registerOutput<int>('maxMessageSizeInKilobytes');
     maxSizeInMegabytes = registerOutput<int>('maxSizeInMegabytes');
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
     namespaceName = registerOutput<String>('namespaceName');
     partitioningEnabled = registerOutput<bool?>('partitioningEnabled');
-    requiresDuplicateDetection = registerOutput<bool?>(
-      'requiresDuplicateDetection',
-    );
+    requiresDuplicateDetection = registerOutput<bool?>('requiresDuplicateDetection');
     requiresSession = registerOutput<bool?>('requiresSession');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     status = registerOutput<String?>('status');
   }
 
   /// Gets an existing [Queue] resource's state with the given [name] and [id].
-  static Queue get(String name, pulumi.Input<String> id, {QueueState? state}) {
+  static Queue get(
+    String name,
+    pulumi.Input<String> id, {
+    QueueState? state,
+  }) {
     return Queue._get(
       name,
       state: state?.toMap(),
@@ -335,40 +313,28 @@ class Queue extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:servicebus/queue:Queue',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:servicebus/queue:Queue',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoDeleteOnIdle = registerOutput<String>('autoDeleteOnIdle');
-    batchedOperationsEnabled = registerOutput<bool?>(
-      'batchedOperationsEnabled',
-    );
-    deadLetteringOnMessageExpiration = registerOutput<bool?>(
-      'deadLetteringOnMessageExpiration',
-    );
+    batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');
+    deadLetteringOnMessageExpiration = registerOutput<bool?>('deadLetteringOnMessageExpiration');
     defaultMessageTtl = registerOutput<String>('defaultMessageTtl');
-    duplicateDetectionHistoryTimeWindow = registerOutput<String?>(
-      'duplicateDetectionHistoryTimeWindow',
-    );
+    duplicateDetectionHistoryTimeWindow = registerOutput<String?>('duplicateDetectionHistoryTimeWindow');
     expressEnabled = registerOutput<bool?>('expressEnabled');
-    forwardDeadLetteredMessagesTo = registerOutput<String?>(
-      'forwardDeadLetteredMessagesTo',
-    );
+    forwardDeadLetteredMessagesTo = registerOutput<String?>('forwardDeadLetteredMessagesTo');
     forwardTo = registerOutput<String?>('forwardTo');
     lockDuration = registerOutput<String?>('lockDuration');
     maxDeliveryCount = registerOutput<int?>('maxDeliveryCount');
-    maxMessageSizeInKilobytes = registerOutput<int>(
-      'maxMessageSizeInKilobytes',
-    );
+    maxMessageSizeInKilobytes = registerOutput<int>('maxMessageSizeInKilobytes');
     maxSizeInMegabytes = registerOutput<int>('maxSizeInMegabytes');
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
     namespaceName = registerOutput<String>('namespaceName');
     partitioningEnabled = registerOutput<bool?>('partitioningEnabled');
-    requiresDuplicateDetection = registerOutput<bool?>(
-      'requiresDuplicateDetection',
-    );
+    requiresDuplicateDetection = registerOutput<bool?>('requiresDuplicateDetection');
     requiresSession = registerOutput<bool?>('requiresSession');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     status = registerOutput<String?>('status');

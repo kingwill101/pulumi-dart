@@ -11,42 +11,32 @@ import 'watchlist_watchlist_user_preferences.dart';
 class WatchlistArgs {
   /// Optional. Description of the watchlist.
   final pulumi.Input<String>? description;
-
   /// Required. Display name of the watchlist.
   /// Note that it must be at least one character and less than 63 characters
   /// (https://google.aip.dev/148).
   final pulumi.Input<String> displayName;
-
   /// Mechanism to populate entities in the watchlist.
   /// Structure is documented below.
-  final pulumi.Input<WatchlistEntityPopulationMechanism>
-  entityPopulationMechanism;
-
+  final pulumi.Input<WatchlistEntityPopulationMechanism> entityPopulationMechanism;
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   final pulumi.Input<String> instance;
-
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   final pulumi.Input<String> location;
-
   /// Optional. Weight applied to the risk score for entities
   /// in this watchlist.
   /// The default is 1.0 if it is not specified.
   final pulumi.Input<double>? multiplyingFactor;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Optional. The ID to use for the watchlist,
   /// which will become the final component of the watchlist's resource name.
   /// This value should be 4-63 characters, and valid characters
   /// are /a-z-/.
   final pulumi.Input<String>? watchlistId;
-
   /// A collection of user preferences for watchlist UI configuration.
   /// Structure is documented below.
-  final pulumi.Input<WatchlistWatchlistUserPreferences>?
-  watchlistUserPreferences;
+  final pulumi.Input<WatchlistWatchlistUserPreferences>? watchlistUserPreferences;
 
   /// Creates a new [WatchlistArgs].
   /// [description] Optional. Description of the watchlist.
@@ -74,63 +64,28 @@ class WatchlistArgs {
     return <String, dynamic>{
       'description': ?description,
       'displayName': displayName,
-      'entityPopulationMechanism':
-          pulumi.Input.mapInputValue<
-            WatchlistEntityPopulationMechanism,
-            Map<String, dynamic>
-          >(entityPopulationMechanism, (value) => value.toMap()),
+      'entityPopulationMechanism': pulumi.Input.mapInputValue<WatchlistEntityPopulationMechanism, Map<String, dynamic>>(entityPopulationMechanism, (value) => value.toMap()),
       'instance': instance,
       'location': location,
       'multiplyingFactor': ?multiplyingFactor,
       'project': ?project,
       'watchlistId': ?watchlistId,
-      'watchlistUserPreferences':
-          ?pulumi.Input.mapOptionalInputValue<
-            WatchlistWatchlistUserPreferences,
-            Map<String, dynamic>
-          >(watchlistUserPreferences, (value) => value.toMap()),
+      'watchlistUserPreferences': ?pulumi.Input.mapOptionalInputValue<WatchlistWatchlistUserPreferences, Map<String, dynamic>>(watchlistUserPreferences, (value) => value.toMap()),
     };
   }
 
   factory WatchlistArgs.fromMap(Map<String, dynamic> map) {
     return WatchlistArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      entityPopulationMechanism: pulumi.Input.fromValue(
-        WatchlistEntityPopulationMechanism.fromMap(
-          (map['entityPopulationMechanism']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      entityPopulationMechanism: pulumi.Input.fromValue(WatchlistEntityPopulationMechanism.fromMap((map['entityPopulationMechanism']! as Map).cast<String, dynamic>())),
       instance: pulumi.Input.fromValue(map['instance'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      multiplyingFactor: (() {
-        final guardedValue = map['multiplyingFactor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      watchlistId: (() {
-        final guardedValue = map['watchlistId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      watchlistUserPreferences: (() {
-        final guardedValue = map['watchlistUserPreferences'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WatchlistWatchlistUserPreferences.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      multiplyingFactor: (() { final guardedValue = map['multiplyingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      watchlistId: (() { final guardedValue = map['watchlistId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      watchlistUserPreferences: (() { final guardedValue = map['watchlistUserPreferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WatchlistWatchlistUserPreferences.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

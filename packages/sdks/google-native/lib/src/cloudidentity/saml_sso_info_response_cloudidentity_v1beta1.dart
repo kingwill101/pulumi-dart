@@ -14,16 +14,15 @@ class SamlSsoInfoResponseCloudidentityV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'inboundSamlSsoProfile': inboundSamlSsoProfile};
+    return <String, dynamic>{
+      'inboundSamlSsoProfile': inboundSamlSsoProfile,
+    };
   }
 
-  factory SamlSsoInfoResponseCloudidentityV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SamlSsoInfoResponseCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return SamlSsoInfoResponseCloudidentityV1beta1(
-      inboundSamlSsoProfile: pulumi.Input.fromValue(
-        map['inboundSamlSsoProfile'] as String,
-      ),
+      inboundSamlSsoProfile: pulumi.Input.fromValue(map['inboundSamlSsoProfile'] as String),
     );
   }
 }
+

@@ -9,21 +9,20 @@ class IntraNodeVisibilityConfigContainerV1beta1 {
 
   /// Creates a new [IntraNodeVisibilityConfigContainerV1beta1].
   /// [enabled] Enables intra node visibility for this cluster.
-  IntraNodeVisibilityConfigContainerV1beta1({this.enabled});
+  IntraNodeVisibilityConfigContainerV1beta1({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory IntraNodeVisibilityConfigContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IntraNodeVisibilityConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return IntraNodeVisibilityConfigContainerV1beta1(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

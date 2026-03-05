@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RosettaNetPipAcknowledgmentOfReceiptSettingsResponse {
   /// The non-repudiation is required or not.
   final pulumi.Input<bool> isNonRepudiationRequired;
-
   /// The time to acknowledge in seconds.
   final pulumi.Input<int> timeToAcknowledgeInSeconds;
 
@@ -25,16 +24,11 @@ class RosettaNetPipAcknowledgmentOfReceiptSettingsResponse {
     };
   }
 
-  factory RosettaNetPipAcknowledgmentOfReceiptSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RosettaNetPipAcknowledgmentOfReceiptSettingsResponse.fromMap(Map<String, dynamic> map) {
     return RosettaNetPipAcknowledgmentOfReceiptSettingsResponse(
-      isNonRepudiationRequired: pulumi.Input.fromValue(
-        map['isNonRepudiationRequired'] as bool,
-      ),
-      timeToAcknowledgeInSeconds: pulumi.Input.fromValue(
-        map['timeToAcknowledgeInSeconds'] as int,
-      ),
+      isNonRepudiationRequired: pulumi.Input.fromValue(map['isNonRepudiationRequired'] as bool),
+      timeToAcknowledgeInSeconds: pulumi.Input.fromValue(map['timeToAcknowledgeInSeconds'] as int),
     );
   }
 }
+

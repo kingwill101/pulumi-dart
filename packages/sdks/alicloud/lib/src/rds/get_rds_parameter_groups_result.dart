@@ -7,7 +7,6 @@ import 'get_rds_parameter_groups_group.dart';
 class GetRdsParameterGroupsResult {
   final bool? enableDetails;
   final List<GetRdsParameterGroupsGroup> groups;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -36,11 +35,7 @@ class GetRdsParameterGroupsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enableDetails': ?enableDetails,
-      'groups':
-          pulumi.Input.encodeList<
-            GetRdsParameterGroupsGroup,
-            Map<String, dynamic>
-          >(groups, (value) => value.toMap()),
+      'groups': pulumi.Input.encodeList<GetRdsParameterGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -51,30 +46,14 @@ class GetRdsParameterGroupsResult {
 
   factory GetRdsParameterGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetRdsParameterGroupsResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      groups: pulumi.Input.decodeList<GetRdsParameterGroupsGroup>(
-        map['groups']!,
-        (value) => GetRdsParameterGroupsGroup.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      groups: pulumi.Input.decodeList<GetRdsParameterGroupsGroup>(map['groups']!, (value) => GetRdsParameterGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -8,17 +8,20 @@ class WorkflowTemplateParameterValidationValues {
 
   /// Creates a new [WorkflowTemplateParameterValidationValues].
   /// [values] Required. List of allowed values for the parameter.
-  WorkflowTemplateParameterValidationValues({required this.values});
+  WorkflowTemplateParameterValidationValues({
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': values};
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
-  factory WorkflowTemplateParameterValidationValues.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowTemplateParameterValidationValues.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateParameterValidationValues(
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

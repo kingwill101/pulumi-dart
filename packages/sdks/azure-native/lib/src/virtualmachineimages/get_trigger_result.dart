@@ -7,25 +7,18 @@ import 'trigger_status_response.dart';
 class GetTriggerResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The kind of trigger.
   final String kind;
-
   /// The name of the resource
   final String name;
-
   /// Provisioning state of the resource
   final String provisioningState;
-
   /// Trigger status
   final TriggerStatusResponse status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -69,13 +62,10 @@ class GetTriggerResult {
       kind: map['kind'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      status: TriggerStatusResponse.fromMap(
-        (map['status']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      status: TriggerStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

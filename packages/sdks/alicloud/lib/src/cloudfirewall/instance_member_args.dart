@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceMemberArgs {
   /// Remarks of cloud firewall member accounts.
   final pulumi.Input<String>? memberDesc;
-
   /// The UID of the cloud firewall member account.
   final pulumi.Input<String> memberUid;
 
   /// Creates a new [InstanceMemberArgs].
   /// [memberDesc] Remarks of cloud firewall member accounts.
   /// [memberUid] The UID of the cloud firewall member account.
-  InstanceMemberArgs({this.memberDesc, required this.memberUid});
+  InstanceMemberArgs({
+    this.memberDesc,
+    required this.memberUid,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'memberDesc': ?memberDesc, 'memberUid': memberUid};
+    return <String, dynamic>{
+      'memberDesc': ?memberDesc,
+      'memberUid': memberUid,
+    };
   }
 
   factory InstanceMemberArgs.fromMap(Map<String, dynamic> map) {
     return InstanceMemberArgs(
-      memberDesc: (() {
-        final guardedValue = map['memberDesc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      memberDesc: (() { final guardedValue = map['memberDesc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       memberUid: pulumi.Input.fromValue(map['memberUid'] as String),
     );
   }
 }
+

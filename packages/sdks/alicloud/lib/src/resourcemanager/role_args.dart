@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleArgs {
   /// The content of the permissions strategy that plays a role.
   final pulumi.Input<String> assumeRolePolicyDocument;
-
   /// The description of the Resource Manager role.
   final pulumi.Input<String>? description;
-
   /// Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
   final pulumi.Input<int>? maxSessionDuration;
-
   /// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
   final pulumi.Input<String> roleName;
 
@@ -42,20 +39,11 @@ class RoleArgs {
 
   factory RoleArgs.fromMap(Map<String, dynamic> map) {
     return RoleArgs(
-      assumeRolePolicyDocument: pulumi.Input.fromValue(
-        map['assumeRolePolicyDocument'] as String,
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxSessionDuration: (() {
-        final guardedValue = map['maxSessionDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      assumeRolePolicyDocument: pulumi.Input.fromValue(map['assumeRolePolicyDocument'] as String),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxSessionDuration: (() { final guardedValue = map['maxSessionDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       roleName: pulumi.Input.fromValue(map['roleName'] as String),
     );
   }
 }
+

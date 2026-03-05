@@ -7,10 +7,8 @@ class TensorFlowResponse {
   /// Enum to determine the job distribution type.
   /// Expected value is 'TensorFlow'.
   final pulumi.Input<String> distributionType;
-
   /// Number of parameter server tasks.
   final pulumi.Input<int>? parameterServerCount;
-
   /// Number of workers. If not specified, will default to the instance count.
   final pulumi.Input<int>? workerCount;
 
@@ -34,19 +32,10 @@ class TensorFlowResponse {
 
   factory TensorFlowResponse.fromMap(Map<String, dynamic> map) {
     return TensorFlowResponse(
-      distributionType: pulumi.Input.fromValue(
-        map['distributionType'] as String,
-      ),
-      parameterServerCount: (() {
-        final guardedValue = map['parameterServerCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      workerCount: (() {
-        final guardedValue = map['workerCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      distributionType: pulumi.Input.fromValue(map['distributionType'] as String),
+      parameterServerCount: (() { final guardedValue = map['parameterServerCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      workerCount: (() { final guardedValue = map['workerCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

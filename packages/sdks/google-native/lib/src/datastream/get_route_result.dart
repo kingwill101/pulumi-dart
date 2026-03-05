@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRoute.
 class GetRouteResult {
   /// The create time of the resource.
   final String createTime;
-
   /// Destination address for connection
   final String destinationAddress;
-
   /// Destination port for connection
   final int destinationPort;
-
   /// Display name.
   final String displayName;
-
   /// Labels.
   final Map<String, String> labels;
-
   /// The resource's name.
   final String name;
-
   /// The update time of the resource.
   final String updateTime;
 
@@ -65,3 +60,4 @@ class GetRouteResult {
     );
   }
 }
+

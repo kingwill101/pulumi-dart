@@ -6,16 +6,12 @@ import 'replication_protection_cluster_properties_response.dart';
 class GetReplicationProtectionClusterResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The protection cluster Id.
   final String id;
-
   /// The name of the protection cluster.
   final String name;
-
   /// The custom data.
   final ReplicationProtectionClusterPropertiesResponse properties;
-
   /// The Type of the object.
   final String type;
 
@@ -43,17 +39,14 @@ class GetReplicationProtectionClusterResult {
     };
   }
 
-  factory GetReplicationProtectionClusterResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetReplicationProtectionClusterResult.fromMap(Map<String, dynamic> map) {
     return GetReplicationProtectionClusterResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: ReplicationProtectionClusterPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: ReplicationProtectionClusterPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

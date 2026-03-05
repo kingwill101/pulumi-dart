@@ -260,44 +260,32 @@ import 'flow_log_state.dart';
 class FlowLog extends pulumi.CustomResource {
   /// cen id
   late final pulumi.Output<String> cenId;
-
   /// CreateTime
   late final pulumi.Output<String> createTime;
-
   /// The description of the flowlog.
   late final pulumi.Output<String?> description;
-
   /// The name of the flowlog.
   late final pulumi.Output<String?> flowLogName;
-
   /// The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
   late final pulumi.Output<int?> interval;
-
   /// Log Format
   late final pulumi.Output<String?> logFormatString;
-
   /// The LogStore that stores the flowlog.
   late final pulumi.Output<String> logStoreName;
-
   /// The Project that stores the flowlog.
   late final pulumi.Output<String> projectName;
-
   /// region id
   late final pulumi.Output<String> regionId;
-
   /// The status of the flow log. Valid values:
   /// - `Active`: started.
   /// - `InActive`: not started.
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Cross-region Connection ID or VBR connection ID.
   ///
   /// &gt; **NOTE:**  This parameter is required.
   late final pulumi.Output<String?> transitRouterAttachmentId;
-
   /// Transit Router ID
   late final pulumi.Output<String?> transitRouterId;
 
@@ -310,11 +298,11 @@ class FlowLog extends pulumi.CustomResource {
     FlowLogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/flowLog:FlowLog',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/flowLog:FlowLog',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenId = registerOutput<String>('cenId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -326,9 +314,7 @@ class FlowLog extends pulumi.CustomResource {
     regionId = registerOutput<String>('regionId');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    transitRouterAttachmentId = registerOutput<String?>(
-      'transitRouterAttachmentId',
-    );
+    transitRouterAttachmentId = registerOutput<String?>('transitRouterAttachmentId');
     transitRouterId = registerOutput<String?>('transitRouterId');
   }
 
@@ -350,11 +336,11 @@ class FlowLog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/flowLog:FlowLog',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/flowLog:FlowLog',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenId = registerOutput<String>('cenId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -366,9 +352,7 @@ class FlowLog extends pulumi.CustomResource {
     regionId = registerOutput<String>('regionId');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    transitRouterAttachmentId = registerOutput<String?>(
-      'transitRouterAttachmentId',
-    );
+    transitRouterAttachmentId = registerOutput<String?>('transitRouterAttachmentId');
     transitRouterId = registerOutput<String?>('transitRouterId');
   }
 }

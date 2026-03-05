@@ -554,41 +554,29 @@ import 'security_group_rule_state.dart';
 class SecurityGroupRule extends pulumi.CustomResource {
   /// List of CIDR blocks. Cannot be specified with `source_security_group_id` or `self`.
   late final pulumi.Output<List<String>?> cidrBlocks;
-
   /// Description of the rule.
   late final pulumi.Output<String?> description;
-
   /// Start port (or ICMP type number if protocol is "icmp" or "icmpv6").
   late final pulumi.Output<int> fromPort;
-
   /// List of IPv6 CIDR blocks. Cannot be specified with `source_security_group_id` or `self`.
   late final pulumi.Output<List<String>?> ipv6CidrBlocks;
-
   /// List of Prefix List IDs.
   late final pulumi.Output<List<String>?> prefixListIds;
-
   /// Protocol. If not icmp, icmpv6, tcp, udp, or all use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
   late final pulumi.Output<String> protocol;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// &gt; **Note** Although `cidr_blocks`, `ipv6_cidr_blocks`, `prefix_list_ids`, and `source_security_group_id` are all marked as optional, you _must_ provide one of them in order to configure the source of the traffic.
   late final pulumi.Output<String> region;
-
   /// Security group to apply this rule to.
   late final pulumi.Output<String> securityGroupId;
-
   /// If the `aws.ec2.SecurityGroupRule` resource has a single source or destination then this is the AWS Security Group Rule resource ID. Otherwise it is empty.
   late final pulumi.Output<String> securityGroupRuleId;
-
   /// Whether the security group itself will be added as a source to this ingress rule. Cannot be specified with `cidr_blocks`, `ipv6_cidr_blocks`, or `source_security_group_id`.
   late final pulumi.Output<bool?> self;
-
   /// Security group id to allow access to/from, depending on the `type`. Cannot be specified with `cidr_blocks`, `ipv6_cidr_blocks`, or `self`.
   late final pulumi.Output<String> sourceSecurityGroupId;
-
   /// End port (or ICMP code if protocol is "icmp").
   late final pulumi.Output<int> toPort;
-
   /// Type of rule being created. Valid options are `ingress` (inbound)
   /// or `egress` (outbound).
   ///
@@ -604,11 +592,11 @@ class SecurityGroupRule extends pulumi.CustomResource {
     SecurityGroupRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/securityGroupRule:SecurityGroupRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/securityGroupRule:SecurityGroupRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidrBlocks = registerOutput<List<String>?>('cidrBlocks');
     description = registerOutput<String?>('description');
     fromPort = registerOutput<int>('fromPort');
@@ -642,11 +630,11 @@ class SecurityGroupRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/securityGroupRule:SecurityGroupRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/securityGroupRule:SecurityGroupRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidrBlocks = registerOutput<List<String>?>('cidrBlocks');
     description = registerOutput<String?>('description');
     fromPort = registerOutput<int>('fromPort');

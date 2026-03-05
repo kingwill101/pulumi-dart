@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionBitbucketCloudConfigReadAuthorizerCredential {
   /// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
   final pulumi.Input<String> userTokenSecretVersion;
-
   /// (Output)
   /// Output only. The username associated to this token.
   final pulumi.Input<String>? username;
@@ -25,18 +24,11 @@ class ConnectionBitbucketCloudConfigReadAuthorizerCredential {
     };
   }
 
-  factory ConnectionBitbucketCloudConfigReadAuthorizerCredential.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionBitbucketCloudConfigReadAuthorizerCredential.fromMap(Map<String, dynamic> map) {
     return ConnectionBitbucketCloudConfigReadAuthorizerCredential(
-      userTokenSecretVersion: pulumi.Input.fromValue(
-        map['userTokenSecretVersion'] as String,
-      ),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userTokenSecretVersion: pulumi.Input.fromValue(map['userTokenSecretVersion'] as String),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

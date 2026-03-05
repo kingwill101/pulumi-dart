@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGatewaySecurityPolicy.
 class GetGatewaySecurityPolicyNetworksecurityV1beta1Result {
   /// The timestamp when the resource was created.
   final String createTime;
-
   /// Optional. Free-text description of the resource.
   final String description;
-
   /// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy} gateway_security_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
   final String name;
-
   /// Optional. Name of a TLS Inspection Policy resource that defines how TLS inspection will be performed for any rule(s) which enables it.
   final String tlsInspectionPolicy;
-
   /// The timestamp when the resource was updated.
   final String updateTime;
 
@@ -41,9 +38,7 @@ class GetGatewaySecurityPolicyNetworksecurityV1beta1Result {
     };
   }
 
-  factory GetGatewaySecurityPolicyNetworksecurityV1beta1Result.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGatewaySecurityPolicyNetworksecurityV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetGatewaySecurityPolicyNetworksecurityV1beta1Result(
       createTime: map['createTime'] as String,
       description: map['description'] as String,
@@ -53,3 +48,4 @@ class GetGatewaySecurityPolicyNetworksecurityV1beta1Result {
     );
   }
 }
+

@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeliverInfoResponse {
   /// URI of the resource that the packet is delivered to.
   final pulumi.Input<String> resourceUri;
-
   /// Target type where the packet is delivered to.
   final pulumi.Input<String> target;
 
   /// Creates a new [DeliverInfoResponse].
   /// [resourceUri] URI of the resource that the packet is delivered to.
   /// [target] Target type where the packet is delivered to.
-  DeliverInfoResponse({required this.resourceUri, required this.target});
+  DeliverInfoResponse({
+    required this.resourceUri,
+    required this.target,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceUri': resourceUri, 'target': target};
+    return <String, dynamic>{
+      'resourceUri': resourceUri,
+      'target': target,
+    };
   }
 
   factory DeliverInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class DeliverInfoResponse {
     );
   }
 }
+

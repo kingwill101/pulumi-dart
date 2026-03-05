@@ -13,62 +13,29 @@ class GetServiceTemplate {
   /// connections for the revision, use the "run.googleapis.com/cloudsql-instances"
   /// annotation key.
   final pulumi.Input<List<GetServiceTemplateMetadata>> metadatas;
-
   /// RevisionSpec holds the desired state of the Revision (from the client).
   final pulumi.Input<List<GetServiceTemplateSpec>> specs;
 
   /// Creates a new [GetServiceTemplate].
   /// [metadatas] Optional metadata for this Revision, including labels and annotations.
   /// [specs] RevisionSpec holds the desired state of the Revision (from the client).
-  GetServiceTemplate({required this.metadatas, required this.specs});
+  GetServiceTemplate({
+    required this.metadatas,
+    required this.specs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadatas':
-          pulumi.Input.mapInputValue<
-            List<GetServiceTemplateMetadata>,
-            List<Map<String, dynamic>>
-          >(
-            metadatas,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetServiceTemplateMetadata,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'specs':
-          pulumi.Input.mapInputValue<
-            List<GetServiceTemplateSpec>,
-            List<Map<String, dynamic>>
-          >(
-            specs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetServiceTemplateSpec,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'metadatas': pulumi.Input.mapInputValue<List<GetServiceTemplateMetadata>, List<Map<String, dynamic>>>(metadatas, (value) => pulumi.Input.encodeList<GetServiceTemplateMetadata, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'specs': pulumi.Input.mapInputValue<List<GetServiceTemplateSpec>, List<Map<String, dynamic>>>(specs, (value) => pulumi.Input.encodeList<GetServiceTemplateSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetServiceTemplate.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplate(
-      metadatas: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetServiceTemplateMetadata>(
-          map['metadatas']!,
-          (value) => GetServiceTemplateMetadata.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      specs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetServiceTemplateSpec>(
-          map['specs']!,
-          (value) => GetServiceTemplateSpec.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      metadatas: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateMetadata>(map['metadatas']!, (value) => GetServiceTemplateMetadata.fromMap((value as Map).cast<String, dynamic>()))),
+      specs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSpec>(map['specs']!, (value) => GetServiceTemplateSpec.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

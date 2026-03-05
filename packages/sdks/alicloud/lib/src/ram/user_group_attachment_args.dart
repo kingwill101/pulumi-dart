@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserGroupAttachmentArgs {
   /// The name of group.
   final pulumi.Input<String> groupName;
-
   /// The name of user.
   final pulumi.Input<String> userName;
 
   /// Creates a new [UserGroupAttachmentArgs].
   /// [groupName] The name of group.
   /// [userName] The name of user.
-  UserGroupAttachmentArgs({required this.groupName, required this.userName});
+  UserGroupAttachmentArgs({
+    required this.groupName,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupName': groupName, 'userName': userName};
+    return <String, dynamic>{
+      'groupName': groupName,
+      'userName': userName,
+    };
   }
 
   factory UserGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class UserGroupAttachmentArgs {
     );
   }
 }
+

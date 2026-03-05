@@ -7,13 +7,10 @@ import 'linked_service_reference_response.dart';
 class AzureKeyVaultSecretReferenceResponse {
   /// The name of the secret in Azure Key Vault. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> secretName;
-
   /// The version of the secret in Azure Key Vault. The default value is the latest version of the secret. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? secretVersion;
-
   /// The Azure Key Vault linked service reference.
   final pulumi.Input<LinkedServiceReferenceResponse> store;
-
   /// Type of the secret.
   /// Expected value is 'AzureKeyVaultSecret'.
   final pulumi.Input<String> type;
@@ -34,31 +31,18 @@ class AzureKeyVaultSecretReferenceResponse {
     return <String, dynamic>{
       'secretName': secretName,
       'secretVersion': ?secretVersion,
-      'store':
-          pulumi.Input.mapInputValue<
-            LinkedServiceReferenceResponse,
-            Map<String, dynamic>
-          >(store, (value) => value.toMap()),
+      'store': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(store, (value) => value.toMap()),
       'type': type,
     };
   }
 
-  factory AzureKeyVaultSecretReferenceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureKeyVaultSecretReferenceResponse.fromMap(Map<String, dynamic> map) {
     return AzureKeyVaultSecretReferenceResponse(
       secretName: pulumi.Input.fromValue(map['secretName']),
-      secretVersion: (() {
-        final guardedValue = map['secretVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      store: pulumi.Input.fromValue(
-        LinkedServiceReferenceResponse.fromMap(
-          (map['store']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      secretVersion: (() { final guardedValue = map['secretVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      store: pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((map['store']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

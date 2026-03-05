@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig {
   /// Client key value or parameter name to pass it through.
   final pulumi.Input<String> clientKey;
-
   /// Issuer value or parameter name to pass it through.
   final pulumi.Input<String> issuer;
-
   /// Subject value or parameter name to pass it through.
   final pulumi.Input<String> subject;
 
@@ -30,9 +28,7 @@ class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig {
     };
   }
 
-  factory CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig(
       clientKey: pulumi.Input.fromValue(map['clientKey'] as String),
       issuer: pulumi.Input.fromValue(map['issuer'] as String),
@@ -40,3 +36,4 @@ class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig {
     );
   }
 }
+

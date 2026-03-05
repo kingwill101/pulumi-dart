@@ -40,16 +40,12 @@ import 'ai_rag_engine_config_state.dart';
 class AiRagEngineConfig extends pulumi.CustomResource {
   /// The resource name of the Dataset. This value is set by Google.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Required. The config of the RagManagedDb used by RagEngine.
   /// Structure is documented below.
-  late final pulumi.Output<AiRagEngineConfigRagManagedDbConfig>
-  ragManagedDbConfig;
-
+  late final pulumi.Output<AiRagEngineConfigRagManagedDbConfig> ragManagedDbConfig;
   /// The region of the RagEngineConfig. eg us-central1
   late final pulumi.Output<String> region;
 
@@ -62,23 +58,14 @@ class AiRagEngineConfig extends pulumi.CustomResource {
     AiRagEngineConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiRagEngineConfig:AiRagEngineConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vertex/aiRagEngineConfig:AiRagEngineConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    ragManagedDbConfig = registerOutput<AiRagEngineConfigRagManagedDbConfig>(
-      'ragManagedDbConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AiRagEngineConfigRagManagedDbConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ragManagedDbConfig = registerOutput<AiRagEngineConfigRagManagedDbConfig>('ragManagedDbConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiRagEngineConfigRagManagedDbConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
   }
 
@@ -100,23 +87,14 @@ class AiRagEngineConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiRagEngineConfig:AiRagEngineConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vertex/aiRagEngineConfig:AiRagEngineConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    ragManagedDbConfig = registerOutput<AiRagEngineConfigRagManagedDbConfig>(
-      'ragManagedDbConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AiRagEngineConfigRagManagedDbConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ragManagedDbConfig = registerOutput<AiRagEngineConfigRagManagedDbConfig>('ragManagedDbConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiRagEngineConfigRagManagedDbConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
   }
 }

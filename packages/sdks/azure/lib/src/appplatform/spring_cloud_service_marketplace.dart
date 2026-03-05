@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudServiceMarketplace {
   /// Specifies the plan ID of the 3rd Party Artifact that is being procured.
   final pulumi.Input<String> plan;
-
   /// Specifies the 3rd Party artifact that is being procured.
   final pulumi.Input<String> product;
-
   /// Specifies the publisher ID of the 3rd Party Artifact that is being procured.
   final pulumi.Input<String> publisher;
 
@@ -38,3 +36,4 @@ class SpringCloudServiceMarketplace {
     );
   }
 }
+

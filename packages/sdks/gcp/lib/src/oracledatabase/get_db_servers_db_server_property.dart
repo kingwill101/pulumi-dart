@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbServersDbServerProperty {
   /// Output only
   final pulumi.Input<List<String>> dbNodeIds;
-
   /// Output only
   final pulumi.Input<int> dbNodeStorageSizeGb;
-
   /// Output only
   final pulumi.Input<int> maxDbNodeStorageSizeGb;
-
   /// Output only
   final pulumi.Input<int> maxMemorySizeGb;
-
   /// Output only
   final pulumi.Input<int> maxOcpuCount;
-
   /// Output only
   final pulumi.Input<int> memorySizeGb;
-
   /// Output only
   final pulumi.Input<String> ocid;
-
   /// Output only
   final pulumi.Input<int> ocpuCount;
-
   /// Output only
   final pulumi.Input<String> state;
-
   /// Output only
   final pulumi.Input<int> vmCount;
 
@@ -74,15 +65,9 @@ class GetDbServersDbServerProperty {
 
   factory GetDbServersDbServerProperty.fromMap(Map<String, dynamic> map) {
     return GetDbServersDbServerProperty(
-      dbNodeIds: pulumi.Input.fromValue(
-        (map['dbNodeIds'] as List).cast<String>(),
-      ),
-      dbNodeStorageSizeGb: pulumi.Input.fromValue(
-        map['dbNodeStorageSizeGb'] as int,
-      ),
-      maxDbNodeStorageSizeGb: pulumi.Input.fromValue(
-        map['maxDbNodeStorageSizeGb'] as int,
-      ),
+      dbNodeIds: pulumi.Input.fromValue((map['dbNodeIds'] as List).cast<String>()),
+      dbNodeStorageSizeGb: pulumi.Input.fromValue(map['dbNodeStorageSizeGb'] as int),
+      maxDbNodeStorageSizeGb: pulumi.Input.fromValue(map['maxDbNodeStorageSizeGb'] as int),
       maxMemorySizeGb: pulumi.Input.fromValue(map['maxMemorySizeGb'] as int),
       maxOcpuCount: pulumi.Input.fromValue(map['maxOcpuCount'] as int),
       memorySizeGb: pulumi.Input.fromValue(map['memorySizeGb'] as int),
@@ -93,3 +78,4 @@ class GetDbServersDbServerProperty {
     );
   }
 }
+

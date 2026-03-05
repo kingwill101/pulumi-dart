@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigTemplateArgs {
   /// The name of the ConfigTemplate
   final pulumi.Input<String> configTemplateName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetConfigTemplateArgs {
 
   factory GetConfigTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigTemplateArgs(
-      configTemplateName: pulumi.Input.fromValue(
-        map['configTemplateName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      configTemplateName: pulumi.Input.fromValue(map['configTemplateName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

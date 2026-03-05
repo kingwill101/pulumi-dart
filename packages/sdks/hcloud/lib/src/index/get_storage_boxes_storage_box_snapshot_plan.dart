@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStorageBoxesStorageBoxSnapshotPlan {
   /// Day of the month when the Snapshot Plan is executed. Null means every day.
   final pulumi.Input<int> dayOfMonth;
-
   /// Day of the week when the Snapshot Plan is executed. Starts at 0 for Sunday til 6 for Saturday. Note that this differs from the API, which uses 1 (Monday) through 7 (Sunday). Null means every day.
   final pulumi.Input<int> dayOfWeek;
-
   /// Hour when the Snapshot Plan is executed (UTC).
   final pulumi.Input<int> hour;
-
   /// Maximum amount of Snapshots that will be created by this Snapshot Plan. Older Snapshots will be deleted.
   final pulumi.Input<int> maxSnapshots;
-
   /// Minute when the Snapshot Plan is executed (UTC).
   final pulumi.Input<int> minute;
 
@@ -42,9 +38,7 @@ class GetStorageBoxesStorageBoxSnapshotPlan {
     };
   }
 
-  factory GetStorageBoxesStorageBoxSnapshotPlan.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetStorageBoxesStorageBoxSnapshotPlan.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxesStorageBoxSnapshotPlan(
       dayOfMonth: pulumi.Input.fromValue(map['dayOfMonth'] as int),
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as int),
@@ -54,3 +48,4 @@ class GetStorageBoxesStorageBoxSnapshotPlan {
     );
   }
 }
+

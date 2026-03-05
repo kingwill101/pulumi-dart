@@ -18,13 +18,10 @@ class TableBucketReplicationRuleDestination {
     };
   }
 
-  factory TableBucketReplicationRuleDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TableBucketReplicationRuleDestination.fromMap(Map<String, dynamic> map) {
     return TableBucketReplicationRuleDestination(
-      destinationTableBucketArn: pulumi.Input.fromValue(
-        map['destinationTableBucketArn'] as String,
-      ),
+      destinationTableBucketArn: pulumi.Input.fromValue(map['destinationTableBucketArn'] as String),
     );
   }
 }
+

@@ -17,25 +17,16 @@ class GrafeasV1beta1IntotoArtifactResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hashes':
-          pulumi.Input.mapInputValue<
-            ArtifactHashesResponse,
-            Map<String, dynamic>
-          >(hashes, (value) => value.toMap()),
+      'hashes': pulumi.Input.mapInputValue<ArtifactHashesResponse, Map<String, dynamic>>(hashes, (value) => value.toMap()),
       'resourceUri': resourceUri,
     };
   }
 
-  factory GrafeasV1beta1IntotoArtifactResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GrafeasV1beta1IntotoArtifactResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1IntotoArtifactResponse(
-      hashes: pulumi.Input.fromValue(
-        ArtifactHashesResponse.fromMap(
-          (map['hashes']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      hashes: pulumi.Input.fromValue(ArtifactHashesResponse.fromMap((map['hashes']! as Map).cast<String, dynamic>())),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
+

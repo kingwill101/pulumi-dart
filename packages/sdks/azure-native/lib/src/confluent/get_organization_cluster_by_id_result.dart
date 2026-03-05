@@ -9,28 +9,20 @@ import 'system_data_response.dart';
 class GetOrganizationClusterByIdResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Type of cluster
   final String? kind;
-
   /// Metadata of the record
   final SCMetadataEntityResponse? metadata;
-
   /// The name of the resource
   final String name;
-
   /// Specification of the cluster
   final SCClusterSpecEntityResponse? spec;
-
   /// Specification of the cluster status
   final ClusterStatusEntityResponse? status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -74,37 +66,14 @@ class GetOrganizationClusterByIdResult {
     return GetOrganizationClusterByIdResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return SCMetadataEntityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return SCMetadataEntityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: map['name'] as String,
-      spec: (() {
-        final guardedValue = map['spec'];
-        if (guardedValue == null) return null;
-        return SCClusterSpecEntityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return ClusterStatusEntityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return SCClusterSpecEntityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return ClusterStatusEntityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

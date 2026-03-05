@@ -568,15 +568,12 @@ import 'service_custom_certificate_state.dart';
 class ServiceCustomCertificate extends pulumi.CustomResource {
   /// The certificate version of the SignalR Custom Certificate service.
   late final pulumi.Output<String> certificateVersion;
-
   /// The certificate id of the SignalR Custom Certificate service. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Self assigned certificate is not supported and the provisioning status will fail.
   late final pulumi.Output<String> customCertificateId;
-
   /// The name of the SignalR Custom Certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The SignalR ID of the SignalR Custom Certificate. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Custom Certificate is only available for SignalR Premium tier. Please enable managed identity in the corresponding SignalR Service and give the managed identity access to the key vault, the required permission is Get Certificate and Secret.
@@ -591,11 +588,11 @@ class ServiceCustomCertificate extends pulumi.CustomResource {
     ServiceCustomCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:signalr/serviceCustomCertificate:ServiceCustomCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:signalr/serviceCustomCertificate:ServiceCustomCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateVersion = registerOutput<String>('certificateVersion');
     customCertificateId = registerOutput<String>('customCertificateId');
     this.name = registerOutput<String>('name');
@@ -620,11 +617,11 @@ class ServiceCustomCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:signalr/serviceCustomCertificate:ServiceCustomCertificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:signalr/serviceCustomCertificate:ServiceCustomCertificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateVersion = registerOutput<String>('certificateVersion');
     customCertificateId = registerOutput<String>('customCertificateId');
     this.name = registerOutput<String>('name');

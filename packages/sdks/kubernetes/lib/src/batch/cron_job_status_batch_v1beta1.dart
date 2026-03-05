@@ -7,51 +7,29 @@ import '../core/object_reference.dart';
 class CronJobStatusBatchV1beta1 {
   /// A list of pointers to currently running jobs.
   final pulumi.Input<List<ObjectReference>>? active;
-
   /// Information when was the last time the job was successfully scheduled.
   final pulumi.Input<String>? lastScheduleTime;
 
   /// Creates a new [CronJobStatusBatchV1beta1].
   /// [active] A list of pointers to currently running jobs.
   /// [lastScheduleTime] Information when was the last time the job was successfully scheduled.
-  CronJobStatusBatchV1beta1({this.active, this.lastScheduleTime});
+  CronJobStatusBatchV1beta1({
+    this.active,
+    this.lastScheduleTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'active':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ObjectReference>,
-            List<Map<String, dynamic>>
-          >(
-            active,
-            (value) =>
-                pulumi.Input.encodeList<ObjectReference, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'active': ?pulumi.Input.mapOptionalInputValue<List<ObjectReference>, List<Map<String, dynamic>>>(active, (value) => pulumi.Input.encodeList<ObjectReference, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastScheduleTime': ?lastScheduleTime,
     };
   }
 
   factory CronJobStatusBatchV1beta1.fromMap(Map<String, dynamic> map) {
     return CronJobStatusBatchV1beta1(
-      active: (() {
-        final guardedValue = map['active'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ObjectReference>(
-            guardedValue,
-            (value) =>
-                ObjectReference.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      lastScheduleTime: (() {
-        final guardedValue = map['lastScheduleTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      active: (() { final guardedValue = map['active']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ObjectReference>(guardedValue, (value) => ObjectReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      lastScheduleTime: (() { final guardedValue = map['lastScheduleTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

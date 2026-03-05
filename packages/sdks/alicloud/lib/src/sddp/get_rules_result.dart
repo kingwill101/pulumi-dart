@@ -7,37 +7,28 @@ import 'get_rules_rule.dart';
 class GetRulesResult {
   /// Sensitive Data Identification Rules for the Type of.
   final int? category;
-
   /// The Content Classification.
   final String? contentCategory;
-
   /// Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
   final int? customType;
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? name;
   final String? nameRegex;
-
   /// A list of Rule names.
   final List<String> names;
   final String? outputFile;
-
   /// Product ID.
   final String? productId;
-
   /// Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
   final String? riskLevelId;
   final int? ruleType;
-
   /// A list of Sddp Rules. Each element contains the following attributes:
   final List<GetRulesRule> rules;
-
   /// Sensitive Data Identification Rules Detection State of.
   final String? status;
-
   /// The Level of Risk.
   final int? warnLevel;
 
@@ -92,10 +83,7 @@ class GetRulesResult {
       'productId': ?productId,
       'riskLevelId': ?riskLevelId,
       'ruleType': ?ruleType,
-      'rules': pulumi.Input.encodeList<GetRulesRule, Map<String, dynamic>>(
-        rules,
-        (value) => value.toMap(),
-      ),
+      'rules': pulumi.Input.encodeList<GetRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
       'status': ?status,
       'warnLevel': ?warnLevel,
     };
@@ -103,73 +91,23 @@ class GetRulesResult {
 
   factory GetRulesResult.fromMap(Map<String, dynamic> map) {
     return GetRulesResult(
-      category: (() {
-        final guardedValue = map['category'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      contentCategory: (() {
-        final guardedValue = map['contentCategory'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      customType: (() {
-        final guardedValue = map['customType'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      contentCategory: (() { final guardedValue = map['contentCategory']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customType: (() { final guardedValue = map['customType']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      productId: (() {
-        final guardedValue = map['productId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      riskLevelId: (() {
-        final guardedValue = map['riskLevelId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      ruleType: (() {
-        final guardedValue = map['ruleType'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      rules: pulumi.Input.decodeList<GetRulesRule>(
-        map['rules']!,
-        (value) => GetRulesRule.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      warnLevel: (() {
-        final guardedValue = map['warnLevel'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      productId: (() { final guardedValue = map['productId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      riskLevelId: (() { final guardedValue = map['riskLevelId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ruleType: (() { final guardedValue = map['ruleType']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      rules: pulumi.Input.decodeList<GetRulesRule>(map['rules']!, (value) => GetRulesRule.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      warnLevel: (() { final guardedValue = map['warnLevel']; if (guardedValue == null) return null; return guardedValue as int; })(),
     );
   }
 }
+

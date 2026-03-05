@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSolutionConfigArgs {
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> migrateProjectName;
-
   /// Name of the Azure Resource Group that migrate project is part of.
   final pulumi.Input<String> resourceGroupName;
-
   /// Unique name of a migration solution within a migrate project.
   final pulumi.Input<String> solutionName;
 
@@ -36,13 +34,10 @@ class GetSolutionConfigArgs {
 
   factory GetSolutionConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetSolutionConfigArgs(
-      migrateProjectName: pulumi.Input.fromValue(
-        map['migrateProjectName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      migrateProjectName: pulumi.Input.fromValue(map['migrateProjectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       solutionName: pulumi.Input.fromValue(map['solutionName'] as String),
     );
   }
 }
+

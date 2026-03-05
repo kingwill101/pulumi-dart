@@ -5,69 +5,48 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnterpriseInstancesInstance {
   /// The name of the data link for the database instance.
   final pulumi.Input<String> dataLinkName;
-
   /// The logon password of the database instance.
   final pulumi.Input<String> databasePassword;
-
   /// The logon username of the database instance.
   final pulumi.Input<String> databaseUser;
-
   /// The ID of the database administrator (DBA) of the database instance.
   final pulumi.Input<String> dbaId;
-
   /// The nickname of the DBA.
   final pulumi.Input<String> dbaNickName;
-
   /// Indicates whether the online data description language (DDL) service was enabled for the database instance.
   final pulumi.Input<int> ddlOnline;
-
   /// The ID of the Elastic Compute Service (ECS) instance to which the database instance belongs.
   final pulumi.Input<String> ecsInstanceId;
-
   /// The region where the database instance resides.
   final pulumi.Input<String> ecsRegion;
-
   /// The type of the environment to which the database instance belongs.
   final pulumi.Input<String> envType;
-
   /// The timeout period for exporting the database instance.
   final pulumi.Input<int> exportTimeout;
-
   /// The endpoint of the database instance.
   final pulumi.Input<String> host;
   final pulumi.Input<String> id;
-
   /// The alias of the database instance.
   final pulumi.Input<String> instanceAlias;
-
   /// The ID of the database instance.
   final pulumi.Input<String> instanceId;
   final pulumi.Input<String> instanceName;
-
   /// The source of the database instance.
   final pulumi.Input<String> instanceSource;
-
   /// The ID of the database instance.
   final pulumi.Input<String> instanceType;
-
   /// The connection port of the database instance.
   final pulumi.Input<int> port;
-
   /// The timeout period for querying the database instance.
   final pulumi.Input<int> queryTimeout;
-
   /// The ID of the security rule for the database instance.
   final pulumi.Input<String> safeRuleId;
-
   /// The system ID (SID) of the database instance.
   final pulumi.Input<String> sid;
-
   /// Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
   final pulumi.Input<String> status;
-
   /// Indicates whether cross-database query was enabled for the database instance.
   final pulumi.Input<int> useDsql;
-
   /// The ID of the Virtual Private Cloud (VPC) to which the database instance belongs.
   final pulumi.Input<String> vpcId;
 
@@ -155,9 +134,7 @@ class GetEnterpriseInstancesInstance {
   factory GetEnterpriseInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseInstancesInstance(
       dataLinkName: pulumi.Input.fromValue(map['dataLinkName'] as String),
-      databasePassword: pulumi.Input.fromValue(
-        map['databasePassword'] as String,
-      ),
+      databasePassword: pulumi.Input.fromValue(map['databasePassword'] as String),
       databaseUser: pulumi.Input.fromValue(map['databaseUser'] as String),
       dbaId: pulumi.Input.fromValue(map['dbaId'] as String),
       dbaNickName: pulumi.Input.fromValue(map['dbaNickName'] as String),
@@ -183,3 +160,4 @@ class GetEnterpriseInstancesInstance {
     );
   }
 }
+

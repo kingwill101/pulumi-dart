@@ -7,7 +7,6 @@ class EnvironmentCertificateCertificateKeyVault {
   ///
   /// &gt; **Note:** Please make sure [required permissions](https://learn.microsoft.com/en-us/azure/container-apps/key-vault-certificates-manage) are correctly configured for your Key Vault and managed identity.
   final pulumi.Input<String>? identity;
-
   /// The ID of the Key Vault Secret containing the certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String> keyVaultSecretId;
 
@@ -26,18 +25,11 @@ class EnvironmentCertificateCertificateKeyVault {
     };
   }
 
-  factory EnvironmentCertificateCertificateKeyVault.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnvironmentCertificateCertificateKeyVault.fromMap(Map<String, dynamic> map) {
     return EnvironmentCertificateCertificateKeyVault(
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultSecretId: pulumi.Input.fromValue(
-        map['keyVaultSecretId'] as String,
-      ),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultSecretId: pulumi.Input.fromValue(map['keyVaultSecretId'] as String),
     );
   }
 }
+

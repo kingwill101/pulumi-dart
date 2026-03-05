@@ -7,16 +7,12 @@ import 'get_spaces_key_grant.dart';
 class GetSpacesKeyResult {
   /// The access key ID of the Spaces key
   final String accessKey;
-
   /// The creation time of the Spaces key
   final String createdAt;
-
   /// The list of grants associated with the Spaces key.
   final List<GetSpacesKeyGrant> grants;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The name of the Spaces key
   final String name;
 
@@ -38,11 +34,7 @@ class GetSpacesKeyResult {
     return <String, dynamic>{
       'accessKey': accessKey,
       'createdAt': createdAt,
-      'grants':
-          pulumi.Input.encodeList<GetSpacesKeyGrant, Map<String, dynamic>>(
-            grants,
-            (value) => value.toMap(),
-          ),
+      'grants': pulumi.Input.encodeList<GetSpacesKeyGrant, Map<String, dynamic>>(grants, (value) => value.toMap()),
       'id': id,
       'name': name,
     };
@@ -52,13 +44,10 @@ class GetSpacesKeyResult {
     return GetSpacesKeyResult(
       accessKey: map['accessKey'] as String,
       createdAt: map['createdAt'] as String,
-      grants: pulumi.Input.decodeList<GetSpacesKeyGrant>(
-        map['grants']!,
-        (value) =>
-            GetSpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      grants: pulumi.Input.decodeList<GetSpacesKeyGrant>(map['grants']!, (value) => GetSpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
     );
   }
 }
+

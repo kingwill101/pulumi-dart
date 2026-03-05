@@ -9,17 +9,20 @@ class AccessDeterminationLogConfigResponse {
 
   /// Creates a new [AccessDeterminationLogConfigResponse].
   /// [logLevel] Optional. Controls the amount of detail to include as part of the audit logs.
-  AccessDeterminationLogConfigResponse({required this.logLevel});
+  AccessDeterminationLogConfigResponse({
+    required this.logLevel,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'logLevel': logLevel};
+    return <String, dynamic>{
+      'logLevel': logLevel,
+    };
   }
 
-  factory AccessDeterminationLogConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessDeterminationLogConfigResponse.fromMap(Map<String, dynamic> map) {
     return AccessDeterminationLogConfigResponse(
       logLevel: pulumi.Input.fromValue(map['logLevel'] as String),
     );
   }
 }
+

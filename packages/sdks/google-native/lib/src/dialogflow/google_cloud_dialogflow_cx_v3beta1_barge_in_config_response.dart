@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3beta1BargeInConfigResponse {
   /// Duration that is not eligible for barge-in at the beginning of the input audio.
   final pulumi.Input<String> noBargeInDuration;
-
   /// Total duration for the playback at the beginning of the input audio.
   final pulumi.Input<String> totalDuration;
 
@@ -25,14 +24,11 @@ class GoogleCloudDialogflowCxV3beta1BargeInConfigResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1BargeInConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3beta1BargeInConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1BargeInConfigResponse(
-      noBargeInDuration: pulumi.Input.fromValue(
-        map['noBargeInDuration'] as String,
-      ),
+      noBargeInDuration: pulumi.Input.fromValue(map['noBargeInDuration'] as String),
       totalDuration: pulumi.Input.fromValue(map['totalDuration'] as String),
     );
   }
 }
+

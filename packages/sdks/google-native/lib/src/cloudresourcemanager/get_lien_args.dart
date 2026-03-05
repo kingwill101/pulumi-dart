@@ -11,13 +11,20 @@ class GetLienArgs {
 
   /// Creates a new [GetLienArgs].
   /// [lienId] Required.
-  GetLienArgs({required this.lienId});
+  GetLienArgs({
+    required this.lienId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'lienId': lienId};
+    return <String, dynamic>{
+      'lienId': lienId,
+    };
   }
 
   factory GetLienArgs.fromMap(Map<String, dynamic> map) {
-    return GetLienArgs(lienId: pulumi.Input.fromValue(map['lienId'] as String));
+    return GetLienArgs(
+      lienId: pulumi.Input.fromValue(map['lienId'] as String),
+    );
   }
 }
+

@@ -42,12 +42,9 @@ class GetLineageEventArgs {
       lineageEventId: pulumi.Input.fromValue(map['lineageEventId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       processId: pulumi.Input.fromValue(map['processId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       runId: pulumi.Input.fromValue(map['runId'] as String),
     );
   }
 }
+

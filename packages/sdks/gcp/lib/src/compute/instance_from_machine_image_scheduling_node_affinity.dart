@@ -25,9 +25,7 @@ class InstanceFromMachineImageSchedulingNodeAffinity {
     };
   }
 
-  factory InstanceFromMachineImageSchedulingNodeAffinity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceFromMachineImageSchedulingNodeAffinity.fromMap(Map<String, dynamic> map) {
     return InstanceFromMachineImageSchedulingNodeAffinity(
       key: pulumi.Input.fromValue(map['key'] as String),
       operator: pulumi.Input.fromValue(map['operator'] as String),
@@ -35,3 +33,4 @@ class InstanceFromMachineImageSchedulingNodeAffinity {
     );
   }
 }
+

@@ -307,10 +307,8 @@ import 'application_redirect_uris_state.dart';
 class ApplicationRedirectUris extends pulumi.CustomResource {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
-
   /// A set of redirect URIs to assign to the application.
   late final pulumi.Output<List<String>> redirectUris;
-
   /// The type of redirect URIs to manage. Must be one of: `PublicClient`, `SPA`, or `Web`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
 
@@ -323,11 +321,11 @@ class ApplicationRedirectUris extends pulumi.CustomResource {
     ApplicationRedirectUrisArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationRedirectUris:ApplicationRedirectUris',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationRedirectUris:ApplicationRedirectUris',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     redirectUris = registerOutput<List<String>>('redirectUris');
     type = registerOutput<String>('type');
@@ -351,11 +349,11 @@ class ApplicationRedirectUris extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationRedirectUris:ApplicationRedirectUris',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationRedirectUris:ApplicationRedirectUris',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     redirectUris = registerOutput<List<String>>('redirectUris');
     type = registerOutput<String>('type');

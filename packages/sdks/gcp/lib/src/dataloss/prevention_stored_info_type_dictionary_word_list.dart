@@ -9,17 +9,20 @@ class PreventionStoredInfoTypeDictionaryWordList {
 
   /// Creates a new [PreventionStoredInfoTypeDictionaryWordList].
   /// [words] Words or phrases defining the dictionary. The dictionary must contain at least one
-  PreventionStoredInfoTypeDictionaryWordList({required this.words});
+  PreventionStoredInfoTypeDictionaryWordList({
+    required this.words,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'words': words};
+    return <String, dynamic>{
+      'words': words,
+    };
   }
 
-  factory PreventionStoredInfoTypeDictionaryWordList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionStoredInfoTypeDictionaryWordList.fromMap(Map<String, dynamic> map) {
     return PreventionStoredInfoTypeDictionaryWordList(
       words: pulumi.Input.fromValue((map['words'] as List).cast<String>()),
     );
   }
 }
+

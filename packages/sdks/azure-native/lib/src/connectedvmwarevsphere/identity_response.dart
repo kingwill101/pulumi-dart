@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityResponse {
   /// The principal id of managed service identity.
   final pulumi.Input<String> principalId;
-
   /// The tenant of managed service identity.
   final pulumi.Input<String> tenantId;
-
   /// The type of managed service identity.
   final pulumi.Input<String> type;
 
@@ -39,3 +37,4 @@ class IdentityResponse {
     );
   }
 }
+

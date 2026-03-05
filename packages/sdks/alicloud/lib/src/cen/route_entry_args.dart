@@ -13,10 +13,8 @@ class RouteEntryArgs {
   ///
   /// -&gt;**NOTE:** The "alicloud.cen.InstanceAttachment" resource should depend on the related "alicloud.vpc.Switch" resource.
   final pulumi.Input<String> cidrBlock;
-
   /// The ID of the CEN.
   final pulumi.Input<String> instanceId;
-
   /// The route table of the attached VBR or VPC.
   final pulumi.Input<String> routeTableId;
 
@@ -46,3 +44,4 @@ class RouteEntryArgs {
     );
   }
 }
+

@@ -15,15 +15,17 @@ class GetRouteSpecHttp2RouteRetryPolicyPerRetryTimeout {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'unit': unit, 'value': value};
+    return <String, dynamic>{
+      'unit': unit,
+      'value': value,
+    };
   }
 
-  factory GetRouteSpecHttp2RouteRetryPolicyPerRetryTimeout.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRouteSpecHttp2RouteRetryPolicyPerRetryTimeout.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttp2RouteRetryPolicyPerRetryTimeout(
       unit: pulumi.Input.fromValue(map['unit'] as String),
       value: pulumi.Input.fromValue(map['value'] as int),
     );
   }
 }
+

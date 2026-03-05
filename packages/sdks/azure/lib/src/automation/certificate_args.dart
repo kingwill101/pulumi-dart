@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateArgs {
   /// The name of the automation account in which the Certificate is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> automationAccountName;
-
   /// Base64 encoded value of the certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String> base64;
-
   /// The description of this Automation Certificate.
   final pulumi.Input<String>? description;
-
   /// The is exportable flag of the certificate.
   final pulumi.Input<bool>? exportable;
-
   /// Specifies the name of the Certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the resource group in which the Certificate is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -54,28 +49,13 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
       base64: pulumi.Input.fromValue(map['base64'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      exportable: (() {
-        final guardedValue = map['exportable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      exportable: (() { final guardedValue = map['exportable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

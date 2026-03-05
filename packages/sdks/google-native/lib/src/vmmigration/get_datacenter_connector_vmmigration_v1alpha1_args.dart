@@ -33,20 +33,13 @@ class GetDatacenterConnectorVmmigrationV1alpha1Args {
     };
   }
 
-  factory GetDatacenterConnectorVmmigrationV1alpha1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatacenterConnectorVmmigrationV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetDatacenterConnectorVmmigrationV1alpha1Args(
-      datacenterConnectorId: pulumi.Input.fromValue(
-        map['datacenterConnectorId'] as String,
-      ),
+      datacenterConnectorId: pulumi.Input.fromValue(map['datacenterConnectorId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceId: pulumi.Input.fromValue(map['sourceId'] as String),
     );
   }
 }
+

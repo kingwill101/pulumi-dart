@@ -10,7 +10,6 @@ import 'region_network_firewall_policy_with_rules_rule.dart';
 class RegionNetworkFirewallPolicyWithRulesArgs {
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
-
   /// User-provided name of the Network firewall policy.
   /// The name should be unique in the project in which the firewall policy is created.
   /// The name must be 1-63 characters long, and comply with RFC1035. Specifically,
@@ -18,20 +17,16 @@ class RegionNetworkFirewallPolicyWithRulesArgs {
   /// which means the first character must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a dash.
   final pulumi.Input<String>? name;
-
   /// Policy type is used to determine which resources (networks) the policy can be associated with.
   /// A policy can be associated with a network only if the network has the matching policyType in its network profile.
   /// Different policy types may support some of the Firewall Rules features.
   /// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
   final pulumi.Input<String>? policyType;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region of this resource.
   final pulumi.Input<String>? region;
-
   /// A list of firewall policy rules.
   /// Structure is documented below.
   final pulumi.Input<List<RegionNetworkFirewallPolicyWithRulesRule>> rules;
@@ -59,58 +54,19 @@ class RegionNetworkFirewallPolicyWithRulesArgs {
       'policyType': ?policyType,
       'project': ?project,
       'region': ?region,
-      'rules':
-          pulumi.Input.mapInputValue<
-            List<RegionNetworkFirewallPolicyWithRulesRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RegionNetworkFirewallPolicyWithRulesRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': pulumi.Input.mapInputValue<List<RegionNetworkFirewallPolicyWithRulesRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<RegionNetworkFirewallPolicyWithRulesRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory RegionNetworkFirewallPolicyWithRulesArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionNetworkFirewallPolicyWithRulesArgs.fromMap(Map<String, dynamic> map) {
     return RegionNetworkFirewallPolicyWithRulesArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policyType: (() {
-        final guardedValue = map['policyType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<RegionNetworkFirewallPolicyWithRulesRule>(
-          map['rules']!,
-          (value) => RegionNetworkFirewallPolicyWithRulesRule.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rules: pulumi.Input.fromValue(pulumi.Input.decodeList<RegionNetworkFirewallPolicyWithRulesRule>(map['rules']!, (value) => RegionNetworkFirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

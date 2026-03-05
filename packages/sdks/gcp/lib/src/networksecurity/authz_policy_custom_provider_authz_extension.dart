@@ -8,19 +8,20 @@ class AuthzPolicyCustomProviderAuthzExtension {
 
   /// Creates a new [AuthzPolicyCustomProviderAuthzExtension].
   /// [resources] A list of references to authorization extensions that will be invoked for requests matching this policy. Limited to 1 custom provider.
-  AuthzPolicyCustomProviderAuthzExtension({required this.resources});
+  AuthzPolicyCustomProviderAuthzExtension({
+    required this.resources,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resources': resources};
+    return <String, dynamic>{
+      'resources': resources,
+    };
   }
 
-  factory AuthzPolicyCustomProviderAuthzExtension.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AuthzPolicyCustomProviderAuthzExtension.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyCustomProviderAuthzExtension(
-      resources: pulumi.Input.fromValue(
-        (map['resources'] as List).cast<String>(),
-      ),
+      resources: pulumi.Input.fromValue((map['resources'] as List).cast<String>()),
     );
   }
 }
+

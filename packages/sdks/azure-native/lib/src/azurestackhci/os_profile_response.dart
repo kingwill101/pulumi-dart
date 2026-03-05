@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OsProfileResponse {
   /// Version of assembly present on device
   final pulumi.Input<String> assemblyVersion;
-
   /// OS Base Image Version
   final pulumi.Input<String> baseImageVersion;
-
   /// The boot type of the device. e.g. UEFI, Legacy etc
   final pulumi.Input<String> bootType;
-
   /// OS Build Number
   final pulumi.Input<String> buildNumber;
-
   /// OS Image Version
   final pulumi.Input<String> imageVersion;
-
   /// OS SKU (e.g., “ Microsoft Azure Linux ROE“, “Azure Stack HCI", "Microsoft Azure Linux 3.0")
   final pulumi.Input<String> osSku;
-
   /// OS type (“windows", “linux”)
   final pulumi.Input<String> osType;
-
   /// OS Version
   final pulumi.Input<String> osVersion;
 
@@ -64,9 +57,7 @@ class OsProfileResponse {
   factory OsProfileResponse.fromMap(Map<String, dynamic> map) {
     return OsProfileResponse(
       assemblyVersion: pulumi.Input.fromValue(map['assemblyVersion'] as String),
-      baseImageVersion: pulumi.Input.fromValue(
-        map['baseImageVersion'] as String,
-      ),
+      baseImageVersion: pulumi.Input.fromValue(map['baseImageVersion'] as String),
       bootType: pulumi.Input.fromValue(map['bootType'] as String),
       buildNumber: pulumi.Input.fromValue(map['buildNumber'] as String),
       imageVersion: pulumi.Input.fromValue(map['imageVersion'] as String),
@@ -76,3 +67,4 @@ class OsProfileResponse {
     );
   }
 }
+

@@ -1,29 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVolumeSnapshot.
 class GetVolumeSnapshotResult {
   /// The date and time the volume snapshot was created.
   final String createdAt;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
   final int minDiskSize;
   final bool? mostRecent;
   final String? name;
   final String? nameRegex;
   final String? region;
-
   /// A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
   final List<String> regions;
-
   /// The billable size of the volume snapshot in gigabytes.
   final double size;
-
   /// A list of the tags associated to the volume snapshot.
   final List<String> tags;
-
   /// The ID of the volume from which the volume snapshot originated.
   final String volumeId;
 
@@ -74,26 +69,10 @@ class GetVolumeSnapshotResult {
       createdAt: map['createdAt'] as String,
       id: map['id'] as String,
       minDiskSize: map['minDiskSize'] as int,
-      mostRecent: (() {
-        final guardedValue = map['mostRecent'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       regions: (map['regions'] as List).cast<String>(),
       size: map['size'] as double,
       tags: (map['tags'] as List).cast<String>(),
@@ -101,3 +80,4 @@ class GetVolumeSnapshotResult {
     );
   }
 }
+

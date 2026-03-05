@@ -153,30 +153,22 @@ import 'system_data_response.dart';
 class PermissionBinding extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the client group resource that the permission is bound to.
   /// The client group needs to be a resource under the same namespace the permission binding is a part of.
   late final pulumi.Output<String?> clientGroupName;
-
   /// Description for the Permission Binding resource.
   late final pulumi.Output<String?> description;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// The allowed permission.
   late final pulumi.Output<String?> permission;
-
   /// Provisioning state of the PermissionBinding resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The name of the Topic Space resource that the permission is bound to.
   /// The Topic space needs to be a resource under the same namespace the permission binding is a part of.
   late final pulumi.Output<String?> topicSpaceName;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -189,27 +181,18 @@ class PermissionBinding extends pulumi.CustomResource {
     PermissionBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventgrid:PermissionBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventgrid:PermissionBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientGroupName = registerOutput<String?>('clientGroupName');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     permission = registerOutput<String?>('permission');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     topicSpaceName = registerOutput<String?>('topicSpaceName');
     type = registerOutput<String>('type');
   }

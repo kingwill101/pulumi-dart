@@ -7,7 +7,6 @@ import 'source_vault_response.dart';
 class KeyVaultAndSecretReferenceResponse {
   /// Url pointing to a key or secret in KeyVault
   final pulumi.Input<String> secretUrl;
-
   /// Resource id of the KeyVault containing the key or secret
   final pulumi.Input<SourceVaultResponse> sourceVault;
 
@@ -22,22 +21,15 @@ class KeyVaultAndSecretReferenceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'secretUrl': secretUrl,
-      'sourceVault':
-          pulumi.Input.mapInputValue<SourceVaultResponse, Map<String, dynamic>>(
-            sourceVault,
-            (value) => value.toMap(),
-          ),
+      'sourceVault': pulumi.Input.mapInputValue<SourceVaultResponse, Map<String, dynamic>>(sourceVault, (value) => value.toMap()),
     };
   }
 
   factory KeyVaultAndSecretReferenceResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultAndSecretReferenceResponse(
       secretUrl: pulumi.Input.fromValue(map['secretUrl'] as String),
-      sourceVault: pulumi.Input.fromValue(
-        SourceVaultResponse.fromMap(
-          (map['sourceVault']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      sourceVault: pulumi.Input.fromValue(SourceVaultResponse.fromMap((map['sourceVault']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -130,24 +130,18 @@ import 'key_transaction_state.dart';
 class KeyTransaction extends pulumi.CustomResource {
   /// A decimal value, measuring user satisfaction with response times, ranging from 0 (frustrated) to 1 (satisfied).
   late final pulumi.Output<double> apdexIndex;
-
   /// The GUID of the APM Application comprising transactions, of which one would be made a key transaction.
   late final pulumi.Output<String> applicationGuid;
-
   /// A decimal value representing the response time threshold for satisfactory experience (e.g., 0.5 seconds).
   ///
   /// &gt; **NOTE:** It may be noted that the `metric_name` and `application_guid` of a Key Transaction _cannot_ be updated in a key transaction that has already been created; since this is not supported. As a consequence, altering the values of `application_guid` and/or `metric_name` of a `newrelic.KeyTransaction` resource created (to try updating these values) would result in `pulumi preview` prompting a forced destruction and re-creation of the resource.
   late final pulumi.Output<double> browserApdexTarget;
-
   /// The domain of the entity monitored by the key transaction.
   late final pulumi.Output<String> domain;
-
   /// The name of the underlying metric monitored by the key transaction to be created.
   late final pulumi.Output<String> metricName;
-
   /// The name of the key transaction.
   late final pulumi.Output<String> name;
-
   /// The type of the entity monitored by the key transaction.
   late final pulumi.Output<String> type;
 
@@ -160,11 +154,11 @@ class KeyTransaction extends pulumi.CustomResource {
     KeyTransactionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/keyTransaction:KeyTransaction',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/keyTransaction:KeyTransaction',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apdexIndex = registerOutput<double>('apdexIndex');
     applicationGuid = registerOutput<String>('applicationGuid');
     browserApdexTarget = registerOutput<double>('browserApdexTarget');
@@ -192,11 +186,11 @@ class KeyTransaction extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/keyTransaction:KeyTransaction',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/keyTransaction:KeyTransaction',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apdexIndex = registerOutput<double>('apdexIndex');
     applicationGuid = registerOutput<String>('applicationGuid');
     browserApdexTarget = registerOutput<double>('browserApdexTarget');

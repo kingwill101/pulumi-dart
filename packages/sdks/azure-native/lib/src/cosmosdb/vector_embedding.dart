@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VectorEmbedding {
   /// Indicates the data type of vector.
   final pulumi.Input<String> dataType;
-
   /// The number of dimensions in the vector.
   final pulumi.Input<int> dimensions;
-
   /// The distance function to use for distance calculation in between vectors.
   final pulumi.Input<String> distanceFunction;
-
   /// The path to the vector field in the document.
   final pulumi.Input<String> path;
 
@@ -41,10 +38,9 @@ class VectorEmbedding {
     return VectorEmbedding(
       dataType: pulumi.Input.fromValue(map['dataType'] as String),
       dimensions: pulumi.Input.fromValue(map['dimensions'] as int),
-      distanceFunction: pulumi.Input.fromValue(
-        map['distanceFunction'] as String,
-      ),
+      distanceFunction: pulumi.Input.fromValue(map['distanceFunction'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
+

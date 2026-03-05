@@ -10,39 +10,20 @@ class GoogleCloudApigeeV1Properties {
 
   /// Creates a new [GoogleCloudApigeeV1Properties].
   /// [property] List of all properties in the object
-  GoogleCloudApigeeV1Properties({this.property});
+  GoogleCloudApigeeV1Properties({
+    this.property,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'property':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudApigeeV1Property>,
-            List<Map<String, dynamic>>
-          >(
-            property,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudApigeeV1Property,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'property': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudApigeeV1Property>, List<Map<String, dynamic>>>(property, (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1Property, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GoogleCloudApigeeV1Properties.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1Properties(
-      property: (() {
-        final guardedValue = map['property'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GoogleCloudApigeeV1Property>(
-            guardedValue,
-            (value) => GoogleCloudApigeeV1Property.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      property: (() { final guardedValue = map['property']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudApigeeV1Property>(guardedValue, (value) => GoogleCloudApigeeV1Property.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

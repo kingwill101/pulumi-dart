@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegistryDataContainerArgs {
   /// Container name.
   final pulumi.Input<String> name;
-
   /// Name of Azure Machine Learning registry. This is case-insensitive
   final pulumi.Input<String> registryName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetRegistryDataContainerArgs {
     return GetRegistryDataContainerArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

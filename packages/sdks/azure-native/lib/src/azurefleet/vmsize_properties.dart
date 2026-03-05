@@ -10,7 +10,6 @@ class VMSizeProperties {
   /// virtual machine sizes in a
   /// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
   final pulumi.Input<int>? vCPUsAvailable;
-
   /// Specifies the vCPU to physical core ratio. When this property is not specified
   /// in the request body the default behavior is set to the value of vCPUsPerCore
   /// for the VM Size exposed in api response of [List all available virtual machine
@@ -22,7 +21,10 @@ class VMSizeProperties {
   /// Creates a new [VMSizeProperties].
   /// [vCPUsAvailable] Specifies the number of vCPUs available for the VM. When this property is not
   /// [vCPUsPerCore] Specifies the vCPU to physical core ratio. When this property is not specified
-  VMSizeProperties({this.vCPUsAvailable, this.vCPUsPerCore});
+  VMSizeProperties({
+    this.vCPUsAvailable,
+    this.vCPUsPerCore,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,16 +35,9 @@ class VMSizeProperties {
 
   factory VMSizeProperties.fromMap(Map<String, dynamic> map) {
     return VMSizeProperties(
-      vCPUsAvailable: (() {
-        final guardedValue = map['vCPUsAvailable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      vCPUsPerCore: (() {
-        final guardedValue = map['vCPUsPerCore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      vCPUsAvailable: (() { final guardedValue = map['vCPUsAvailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vCPUsPerCore: (() { final guardedValue = map['vCPUsPerCore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

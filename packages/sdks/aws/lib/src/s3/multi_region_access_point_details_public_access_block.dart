@@ -29,30 +29,13 @@ class MultiRegionAccessPointDetailsPublicAccessBlock {
     };
   }
 
-  factory MultiRegionAccessPointDetailsPublicAccessBlock.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MultiRegionAccessPointDetailsPublicAccessBlock.fromMap(Map<String, dynamic> map) {
     return MultiRegionAccessPointDetailsPublicAccessBlock(
-      blockPublicAcls: (() {
-        final guardedValue = map['blockPublicAcls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      blockPublicPolicy: (() {
-        final guardedValue = map['blockPublicPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ignorePublicAcls: (() {
-        final guardedValue = map['ignorePublicAcls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      restrictPublicBuckets: (() {
-        final guardedValue = map['restrictPublicBuckets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      blockPublicAcls: (() { final guardedValue = map['blockPublicAcls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      blockPublicPolicy: (() { final guardedValue = map['blockPublicPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ignorePublicAcls: (() { final guardedValue = map['ignorePublicAcls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      restrictPublicBuckets: (() { final guardedValue = map['restrictPublicBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

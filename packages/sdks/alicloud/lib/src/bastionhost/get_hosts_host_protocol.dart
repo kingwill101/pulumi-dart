@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHostsHostProtocol {
   /// Host fingerprint information, it is possible to uniquely identify a host.
   final pulumi.Input<String> hostFingerPrint;
-
   /// Host the service port of the RDS.
   final pulumi.Input<int> port;
-
   /// The host uses the protocol name.
   final pulumi.Input<String> protocolName;
 
@@ -38,3 +36,4 @@ class GetHostsHostProtocol {
     );
   }
 }
+

@@ -10,10 +10,8 @@ import 'workspaces.dart';
 class GetRemoteReferenceArgs {
   /// The remote backend hostname to connect to.
   final pulumi.Input<String>? hostname;
-
   /// The name of the organization containing the targeted workspace(s).
   final pulumi.Input<String> organization;
-
   /// The token used to authenticate with the remote backend.
   final pulumi.Input<String>? token;
   final pulumi.Input<Workspaces> workspaces;
@@ -35,30 +33,17 @@ class GetRemoteReferenceArgs {
       'hostname': ?hostname,
       'organization': organization,
       'token': ?token,
-      'workspaces':
-          pulumi.Input.mapInputValue<Workspaces, Map<String, dynamic>>(
-            workspaces,
-            (value) => value.toMap(),
-          ),
+      'workspaces': pulumi.Input.mapInputValue<Workspaces, Map<String, dynamic>>(workspaces, (value) => value.toMap()),
     };
   }
 
   factory GetRemoteReferenceArgs.fromMap(Map<String, dynamic> map) {
     return GetRemoteReferenceArgs(
-      hostname: (() {
-        final guardedValue = map['hostname'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organization: pulumi.Input.fromValue(map['organization'] as String),
-      token: (() {
-        final guardedValue = map['token'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workspaces: pulumi.Input.fromValue(
-        Workspaces.fromMap((map['workspaces']! as Map).cast<String, dynamic>()),
-      ),
+      token: (() { final guardedValue = map['token']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workspaces: pulumi.Input.fromValue(Workspaces.fromMap((map['workspaces']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

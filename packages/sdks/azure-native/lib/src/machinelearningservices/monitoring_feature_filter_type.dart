@@ -16,3 +16,4 @@ enum MonitoringFeatureFilterType {
     throw ArgumentError('Unknown MonitoringFeatureFilterType value: $value');
   }
 }
+

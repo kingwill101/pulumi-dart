@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubscriptionArgs {
   /// The namespace name
   final pulumi.Input<String> namespaceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The subscription name.
   final pulumi.Input<String> subscriptionName;
-
   /// The topic name.
   final pulumi.Input<String> topicName;
 
@@ -43,13 +40,10 @@ class GetSubscriptionArgs {
   factory GetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionArgs(
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      subscriptionName: pulumi.Input.fromValue(
-        map['subscriptionName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      subscriptionName: pulumi.Input.fromValue(map['subscriptionName'] as String),
       topicName: pulumi.Input.fromValue(map['topicName'] as String),
     );
   }
 }
+

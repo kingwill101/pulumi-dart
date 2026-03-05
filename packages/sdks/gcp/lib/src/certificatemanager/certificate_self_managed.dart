@@ -10,16 +10,13 @@ class CertificateSelfManaged {
   ///
   /// &gt; **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
   final pulumi.Input<String>? certificatePem;
-
   /// The certificate chain in PEM-encoded form.
   /// Leaf certificate comes first, followed by intermediate ones if any.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? pemCertificate;
-
   /// The private key of the leaf certificate in PEM-encoded form.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? pemPrivateKey;
-
   /// (Optional, Deprecated)
   /// The private key of the leaf certificate in PEM-encoded form.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -50,26 +47,11 @@ class CertificateSelfManaged {
 
   factory CertificateSelfManaged.fromMap(Map<String, dynamic> map) {
     return CertificateSelfManaged(
-      certificatePem: (() {
-        final guardedValue = map['certificatePem'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pemCertificate: (() {
-        final guardedValue = map['pemCertificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pemPrivateKey: (() {
-        final guardedValue = map['pemPrivateKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateKeyPem: (() {
-        final guardedValue = map['privateKeyPem'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certificatePem: (() { final guardedValue = map['certificatePem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pemCertificate: (() { final guardedValue = map['pemCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pemPrivateKey: (() { final guardedValue = map['pemPrivateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateKeyPem: (() { final guardedValue = map['privateKeyPem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

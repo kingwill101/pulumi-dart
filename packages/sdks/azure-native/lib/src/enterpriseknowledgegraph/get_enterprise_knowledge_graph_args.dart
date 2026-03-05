@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnterpriseKnowledgeGraphArgs {
   /// The name of the EnterpriseKnowledgeGraph resource group in the user subscription.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the EnterpriseKnowledgeGraph resource.
   final pulumi.Input<String> resourceName;
 
@@ -30,10 +29,9 @@ class GetEnterpriseKnowledgeGraphArgs {
 
   factory GetEnterpriseKnowledgeGraphArgs.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseKnowledgeGraphArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

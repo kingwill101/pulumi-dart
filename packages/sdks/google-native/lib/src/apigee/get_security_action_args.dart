@@ -33,9 +33,8 @@ class GetSecurityActionArgs {
     return GetSecurityActionArgs(
       environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
-      securityActionId: pulumi.Input.fromValue(
-        map['securityActionId'] as String,
-      ),
+      securityActionId: pulumi.Input.fromValue(map['securityActionId'] as String),
     );
   }
 }
+

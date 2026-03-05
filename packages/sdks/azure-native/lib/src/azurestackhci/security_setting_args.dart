@@ -9,20 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecuritySettingArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Secured Core Compliance Assignment
   final pulumi.Input<String>? securedCoreComplianceAssignment;
-
   /// Name of security setting
   final pulumi.Input<String>? securitySettingsName;
-
   /// SMB encryption for intra-cluster traffic Compliance Assignment
-  final pulumi.Input<String>?
-  smbEncryptionForIntraClusterTrafficComplianceAssignment;
-
+  final pulumi.Input<String>? smbEncryptionForIntraClusterTrafficComplianceAssignment;
   /// WDAC Compliance Assignment
   final pulumi.Input<String>? wdacComplianceAssignment;
 
@@ -48,8 +42,7 @@ class SecuritySettingArgs {
       'resourceGroupName': resourceGroupName,
       'securedCoreComplianceAssignment': ?securedCoreComplianceAssignment,
       'securitySettingsName': ?securitySettingsName,
-      'smbEncryptionForIntraClusterTrafficComplianceAssignment':
-          ?smbEncryptionForIntraClusterTrafficComplianceAssignment,
+      'smbEncryptionForIntraClusterTrafficComplianceAssignment': ?smbEncryptionForIntraClusterTrafficComplianceAssignment,
       'wdacComplianceAssignment': ?wdacComplianceAssignment,
     };
   }
@@ -57,30 +50,12 @@ class SecuritySettingArgs {
   factory SecuritySettingArgs.fromMap(Map<String, dynamic> map) {
     return SecuritySettingArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      securedCoreComplianceAssignment: (() {
-        final guardedValue = map['securedCoreComplianceAssignment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securitySettingsName: (() {
-        final guardedValue = map['securitySettingsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      smbEncryptionForIntraClusterTrafficComplianceAssignment: (() {
-        final guardedValue =
-            map['smbEncryptionForIntraClusterTrafficComplianceAssignment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      wdacComplianceAssignment: (() {
-        final guardedValue = map['wdacComplianceAssignment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      securedCoreComplianceAssignment: (() { final guardedValue = map['securedCoreComplianceAssignment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securitySettingsName: (() { final guardedValue = map['securitySettingsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      smbEncryptionForIntraClusterTrafficComplianceAssignment: (() { final guardedValue = map['smbEncryptionForIntraClusterTrafficComplianceAssignment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      wdacComplianceAssignment: (() { final guardedValue = map['wdacComplianceAssignment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

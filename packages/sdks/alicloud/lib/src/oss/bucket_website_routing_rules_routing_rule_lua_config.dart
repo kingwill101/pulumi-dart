@@ -8,21 +8,20 @@ class BucketWebsiteRoutingRulesRoutingRuleLuaConfig {
 
   /// Creates a new [BucketWebsiteRoutingRulesRoutingRuleLuaConfig].
   /// [script] The Lua script name.
-  BucketWebsiteRoutingRulesRoutingRuleLuaConfig({this.script});
+  BucketWebsiteRoutingRulesRoutingRuleLuaConfig({
+    this.script,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'script': ?script};
+    return <String, dynamic>{
+      'script': ?script,
+    };
   }
 
-  factory BucketWebsiteRoutingRulesRoutingRuleLuaConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketWebsiteRoutingRulesRoutingRuleLuaConfig.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleLuaConfig(
-      script: (() {
-        final guardedValue = map['script'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      script: (() { final guardedValue = map['script']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

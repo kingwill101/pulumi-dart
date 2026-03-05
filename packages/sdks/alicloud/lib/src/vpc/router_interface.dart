@@ -181,54 +181,38 @@ import 'router_interface_state.dart';
 class RouterInterface extends pulumi.CustomResource {
   /// It has been deprecated from version 1.11.0.
   late final pulumi.Output<String> accessPointId;
-
   /// Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
   late final pulumi.Output<String?> description;
-
   /// Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
   late final pulumi.Output<String?> healthCheckSourceIp;
-
   /// Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
   late final pulumi.Output<String?> healthCheckTargetIp;
-
   /// The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and opposite_region are the same.
   late final pulumi.Output<String?> instanceChargeType;
-
   /// Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
   /// If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
   late final pulumi.Output<String> name;
-
   /// It has been deprecated from version 1.11.0.
   late final pulumi.Output<String?> oppositeAccessPointId;
-
   /// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
   late final pulumi.Output<String> oppositeInterfaceId;
-
   /// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
   late final pulumi.Output<String> oppositeInterfaceOwnerId;
-
   /// The Region of peer side.
   late final pulumi.Output<String> oppositeRegion;
-
   /// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
   late final pulumi.Output<String> oppositeRouterId;
-
   /// It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
   late final pulumi.Output<String> oppositeRouterType;
-
   /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
   /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
   late final pulumi.Output<int?> period;
-
   /// The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
   late final pulumi.Output<String> role;
-
   /// The Router ID.
   late final pulumi.Output<String> routerId;
-
   /// Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
   late final pulumi.Output<String> routerType;
-
   /// Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
   late final pulumi.Output<String?> specification;
 
@@ -241,11 +225,11 @@ class RouterInterface extends pulumi.CustomResource {
     RouterInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/routerInterface:RouterInterface',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/routerInterface:RouterInterface',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPointId = registerOutput<String>('accessPointId');
     description = registerOutput<String?>('description');
     healthCheckSourceIp = registerOutput<String?>('healthCheckSourceIp');
@@ -254,9 +238,7 @@ class RouterInterface extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     oppositeAccessPointId = registerOutput<String?>('oppositeAccessPointId');
     oppositeInterfaceId = registerOutput<String>('oppositeInterfaceId');
-    oppositeInterfaceOwnerId = registerOutput<String>(
-      'oppositeInterfaceOwnerId',
-    );
+    oppositeInterfaceOwnerId = registerOutput<String>('oppositeInterfaceOwnerId');
     oppositeRegion = registerOutput<String>('oppositeRegion');
     oppositeRouterId = registerOutput<String>('oppositeRouterId');
     oppositeRouterType = registerOutput<String>('oppositeRouterType');
@@ -285,11 +267,11 @@ class RouterInterface extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/routerInterface:RouterInterface',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/routerInterface:RouterInterface',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPointId = registerOutput<String>('accessPointId');
     description = registerOutput<String?>('description');
     healthCheckSourceIp = registerOutput<String?>('healthCheckSourceIp');
@@ -298,9 +280,7 @@ class RouterInterface extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     oppositeAccessPointId = registerOutput<String?>('oppositeAccessPointId');
     oppositeInterfaceId = registerOutput<String>('oppositeInterfaceId');
-    oppositeInterfaceOwnerId = registerOutput<String>(
-      'oppositeInterfaceOwnerId',
-    );
+    oppositeInterfaceOwnerId = registerOutput<String>('oppositeInterfaceOwnerId');
     oppositeRegion = registerOutput<String>('oppositeRegion');
     oppositeRouterId = registerOutput<String>('oppositeRouterId');
     oppositeRouterType = registerOutput<String>('oppositeRouterType');

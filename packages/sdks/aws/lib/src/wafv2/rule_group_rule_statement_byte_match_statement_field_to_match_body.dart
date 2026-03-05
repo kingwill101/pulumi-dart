@@ -12,18 +12,15 @@ class RuleGroupRuleStatementByteMatchStatementFieldToMatchBody {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'oversizeHandling': ?oversizeHandling};
+    return <String, dynamic>{
+      'oversizeHandling': ?oversizeHandling,
+    };
   }
 
-  factory RuleGroupRuleStatementByteMatchStatementFieldToMatchBody.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementByteMatchStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementByteMatchStatementFieldToMatchBody(
-      oversizeHandling: (() {
-        final guardedValue = map['oversizeHandling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      oversizeHandling: (() { final guardedValue = map['oversizeHandling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,17 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnsAuthorizationArgs {
   /// One or more paragraphs of text description of a DnsAuthorization.
   final pulumi.Input<String>? description;
-
   /// Required. A user-provided name of the dns authorization.
   final pulumi.Input<String> dnsAuthorizationId;
-
   /// Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
   final pulumi.Input<String> domain;
-
   /// Set of labels associated with a DnsAuthorization.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
-
   /// A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -56,37 +52,14 @@ class DnsAuthorizationArgs {
 
   factory DnsAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return DnsAuthorizationArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dnsAuthorizationId: pulumi.Input.fromValue(
-        map['dnsAuthorizationId'] as String,
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dnsAuthorizationId: pulumi.Input.fromValue(map['dnsAuthorizationId'] as String),
       domain: pulumi.Input.fromValue(map['domain'] as String),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

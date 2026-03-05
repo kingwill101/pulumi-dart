@@ -15,3 +15,4 @@ enum ConfigurationSource {
     throw ArgumentError('Unknown ConfigurationSource value: $value');
   }
 }
+

@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateArgs {
   /// The valid certificate file required for the transfer.
   final pulumi.Input<String> certificate;
-
   /// The optional list of certificate that make up the chain for the certificate that is being imported.
   final pulumi.Input<String>? certificateChain;
-
   /// A short description that helps identify the certificate.
   final pulumi.Input<String>? description;
-
   /// The private key associated with the certificate being imported.
   final pulumi.Input<String>? privateKey;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Specifies if a certificate is being used for signing or encryption. The valid values are SIGNING and ENCRYPTION.
   final pulumi.Input<String> usage;
 
@@ -61,34 +55,13 @@ class CertificateArgs {
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
       certificate: pulumi.Input.fromValue(map['certificate'] as String),
-      certificateChain: (() {
-        final guardedValue = map['certificateChain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateKey: (() {
-        final guardedValue = map['privateKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      certificateChain: (() { final guardedValue = map['certificateChain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       usage: pulumi.Input.fromValue(map['usage'] as String),
     );
   }
 }
+

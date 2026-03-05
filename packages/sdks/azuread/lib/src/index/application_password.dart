@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationPassword {
   /// A display name for the password. Changing this field forces a new resource to be created.
   final pulumi.Input<String> displayName;
-
   /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
   final pulumi.Input<String>? endDate;
-
   /// (Required) The unique key ID for the generated password.
   final pulumi.Input<String>? keyId;
-
   /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
   final pulumi.Input<String>? startDate;
-
   /// (Required) The generated password for the application.
   final pulumi.Input<String>? value;
 
@@ -45,26 +41,11 @@ class ApplicationPassword {
   factory ApplicationPassword.fromMap(Map<String, dynamic> map) {
     return ApplicationPassword(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      endDate: (() {
-        final guardedValue = map['endDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyId: (() {
-        final guardedValue = map['keyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startDate: (() {
-        final guardedValue = map['startDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyId: (() { final guardedValue = map['keyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

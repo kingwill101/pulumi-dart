@@ -9,17 +9,20 @@ class ConnectionAuthConfigOauth2JwtBearerClientKey {
 
   /// Creates a new [ConnectionAuthConfigOauth2JwtBearerClientKey].
   /// [secretVersion] The resource name of the secret version in the format,
-  ConnectionAuthConfigOauth2JwtBearerClientKey({required this.secretVersion});
+  ConnectionAuthConfigOauth2JwtBearerClientKey({
+    required this.secretVersion,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretVersion': secretVersion};
+    return <String, dynamic>{
+      'secretVersion': secretVersion,
+    };
   }
 
-  factory ConnectionAuthConfigOauth2JwtBearerClientKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionAuthConfigOauth2JwtBearerClientKey.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigOauth2JwtBearerClientKey(
       secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
     );
   }
 }
+

@@ -13,7 +13,10 @@ class GetEnvgroupArgs {
   /// Creates a new [GetEnvgroupArgs].
   /// [envgroupId] Required.
   /// [organizationId] Required.
-  GetEnvgroupArgs({required this.envgroupId, required this.organizationId});
+  GetEnvgroupArgs({
+    required this.envgroupId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetEnvgroupArgs {
     );
   }
 }
+

@@ -40,16 +40,11 @@ class GetServiceLevelObjectiveArgs {
   factory GetServiceLevelObjectiveArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceLevelObjectiveArgs(
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
-      serviceLevelObjectiveId: pulumi.Input.fromValue(
-        map['serviceLevelObjectiveId'] as String,
-      ),
+      serviceLevelObjectiveId: pulumi.Input.fromValue(map['serviceLevelObjectiveId'] as String),
       v3Id: pulumi.Input.fromValue(map['v3Id'] as String),
       v3Id1: pulumi.Input.fromValue(map['v3Id1'] as String),
-      view: (() {
-        final guardedValue = map['view'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      view: (() { final guardedValue = map['view']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

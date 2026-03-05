@@ -10,22 +10,20 @@ class ProvisionedClusterIdentity {
 
   /// Creates a new [ProvisionedClusterIdentity].
   /// [type] The type of identity used for the provisioned cluster. The type SystemAssigned, includes a system created identity. The type None means no identity is assigned to the provisioned cluster.
-  ProvisionedClusterIdentity({required this.type});
+  ProvisionedClusterIdentity({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': pulumi.Input.mapInputValue<ResourceIdentityType, String>(
-        type,
-        (value) => value.wireValue,
-      ),
+      'type': pulumi.Input.mapInputValue<ResourceIdentityType, String>(type, (value) => value.wireValue),
     };
   }
 
   factory ProvisionedClusterIdentity.fromMap(Map<String, dynamic> map) {
     return ProvisionedClusterIdentity(
-      type: pulumi.Input.fromValue(
-        ResourceIdentityType.fromValue(map['type']! as String),
-      ),
+      type: pulumi.Input.fromValue(ResourceIdentityType.fromValue(map['type']! as String)),
     );
   }
 }
+

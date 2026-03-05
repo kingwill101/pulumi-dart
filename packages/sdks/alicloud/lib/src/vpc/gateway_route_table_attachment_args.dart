@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayRouteTableAttachmentArgs {
   /// Specifies whether to only precheck this request. Default value: `false`.
   final pulumi.Input<bool>? dryRun;
-
   /// The ID of the IPv4 Gateway instance.
   final pulumi.Input<String> ipv4GatewayId;
-
   /// The ID of the Gateway route table to be bound.
   final pulumi.Input<String> routeTableId;
 
@@ -36,13 +34,10 @@ class GatewayRouteTableAttachmentArgs {
 
   factory GatewayRouteTableAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GatewayRouteTableAttachmentArgs(
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ipv4GatewayId: pulumi.Input.fromValue(map['ipv4GatewayId'] as String),
       routeTableId: pulumi.Input.fromValue(map['routeTableId'] as String),
     );
   }
 }
+

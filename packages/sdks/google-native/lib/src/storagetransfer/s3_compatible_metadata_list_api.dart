@@ -16,3 +16,4 @@ enum S3CompatibleMetadataListApi {
     throw ArgumentError('Unknown S3CompatibleMetadataListApi value: $value');
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityLabelArgs {
   /// The value of the security label.
   final pulumi.Input<String> label;
-
   /// The name of the provider with which this label is to be associated.
   final pulumi.Input<String> labelProvider;
-
   /// The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.
   final pulumi.Input<String> objectName;
-
   /// The PostgreSQL object type to apply this security label to.
   final pulumi.Input<String> objectType;
 
@@ -49,3 +46,4 @@ class SecurityLabelArgs {
     );
   }
 }
+

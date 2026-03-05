@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskAsyncReplicationSecondaryDisk {
   /// The secondary disk.
   final pulumi.Input<String> disk;
-
   /// Output-only. Status of replication on the secondary disk.
   ///
   /// - - -
@@ -14,20 +13,23 @@ class DiskAsyncReplicationSecondaryDisk {
   /// Creates a new [DiskAsyncReplicationSecondaryDisk].
   /// [disk] The secondary disk.
   /// [state] Output-only. Status of replication on the secondary disk.
-  DiskAsyncReplicationSecondaryDisk({required this.disk, this.state});
+  DiskAsyncReplicationSecondaryDisk({
+    required this.disk,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disk': disk, 'state': ?state};
+    return <String, dynamic>{
+      'disk': disk,
+      'state': ?state,
+    };
   }
 
   factory DiskAsyncReplicationSecondaryDisk.fromMap(Map<String, dynamic> map) {
     return DiskAsyncReplicationSecondaryDisk(
       disk: pulumi.Input.fromValue(map['disk'] as String),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

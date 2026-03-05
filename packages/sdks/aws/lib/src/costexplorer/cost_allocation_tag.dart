@@ -110,10 +110,8 @@ import 'cost_allocation_tag_state.dart';
 class CostAllocationTag extends pulumi.CustomResource {
   /// The status of a cost allocation tag. Valid values are `Active` and `Inactive`.
   late final pulumi.Output<String> status;
-
   /// The key for the cost allocation tag.
   late final pulumi.Output<String> tagKey;
-
   /// The type of cost allocation tag.
   late final pulumi.Output<String> type;
 
@@ -126,11 +124,11 @@ class CostAllocationTag extends pulumi.CustomResource {
     CostAllocationTagArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:costexplorer/costAllocationTag:CostAllocationTag',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:costexplorer/costAllocationTag:CostAllocationTag',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     status = registerOutput<String>('status');
     tagKey = registerOutput<String>('tagKey');
     type = registerOutput<String>('type');
@@ -154,11 +152,11 @@ class CostAllocationTag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:costexplorer/costAllocationTag:CostAllocationTag',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:costexplorer/costAllocationTag:CostAllocationTag',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     status = registerOutput<String>('status');
     tagKey = registerOutput<String>('tagKey');
     type = registerOutput<String>('type');

@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationAdminAccountState {
   /// The AWS account identifier of the account to designate as the Security Hub administrator account.
   final pulumi.Input<String>? adminAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [OrganizationAdminAccountState].
   /// [adminAccountId] The AWS account identifier of the account to designate as the Security Hub administrator account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  OrganizationAdminAccountState({this.adminAccountId, this.region});
+  OrganizationAdminAccountState({
+    this.adminAccountId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class OrganizationAdminAccountState {
 
   factory OrganizationAdminAccountState.fromMap(Map<String, dynamic> map) {
     return OrganizationAdminAccountState(
-      adminAccountId: (() {
-        final guardedValue = map['adminAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      adminAccountId: (() { final guardedValue = map['adminAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

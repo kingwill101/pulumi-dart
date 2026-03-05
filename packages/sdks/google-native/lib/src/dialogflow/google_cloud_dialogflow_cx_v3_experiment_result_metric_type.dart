@@ -10,17 +10,13 @@ enum GoogleCloudDialogflowCxV3ExperimentResultMetricType {
   const GoogleCloudDialogflowCxV3ExperimentResultMetricType(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudDialogflowCxV3ExperimentResultMetricType fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudDialogflowCxV3ExperimentResultMetricType.values) {
+  static GoogleCloudDialogflowCxV3ExperimentResultMetricType fromValue(String value) {
+    for (final item in GoogleCloudDialogflowCxV3ExperimentResultMetricType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudDialogflowCxV3ExperimentResultMetricType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3ExperimentResultMetricType value: $value');
   }
 }
+

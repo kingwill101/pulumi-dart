@@ -12,8 +12,7 @@ enum HTTPSHealthCheckProxyHeaderComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown HTTPSHealthCheckProxyHeaderComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown HTTPSHealthCheckProxyHeaderComputeV1 value: $value');
   }
 }
+

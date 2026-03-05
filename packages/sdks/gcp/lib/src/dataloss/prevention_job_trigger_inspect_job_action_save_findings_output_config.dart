@@ -14,24 +14,16 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig {
   /// Only for use with external storage.
   /// Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
   final pulumi.Input<String>? outputSchema;
-
   /// Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
   /// as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
   /// the naming convention &lt;job_id&gt;-&lt;shard_number&gt;, for example: my-job-id-2.
   /// Supported for InspectJobs. The bucket must not be the same as the bucket being inspected. If storing findings to
   /// Cloud Storage, the output schema field should not be set. If set, it will be ignored.
   /// Structure is documented below.
-  final pulumi.Input<
-    PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath
-  >?
-  storagePath;
-
+  final pulumi.Input<PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath>? storagePath;
   /// Information on the location of the target BigQuery Table.
   /// Structure is documented below.
-  final pulumi.Input<
-    PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable
-  >?
-  table;
+  final pulumi.Input<PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable>? table;
 
   /// Creates a new [PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig].
   /// [outputSchema] Schema used for writing the findings for Inspect jobs. This field is only used for
@@ -46,46 +38,17 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'outputSchema': ?outputSchema,
-      'storagePath':
-          ?pulumi.Input.mapOptionalInputValue<
-            PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath,
-            Map<String, dynamic>
-          >(storagePath, (value) => value.toMap()),
-      'table':
-          ?pulumi.Input.mapOptionalInputValue<
-            PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable,
-            Map<String, dynamic>
-          >(table, (value) => value.toMap()),
+      'storagePath': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath, Map<String, dynamic>>(storagePath, (value) => value.toMap()),
+      'table': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable, Map<String, dynamic>>(table, (value) => value.toMap()),
     };
   }
 
-  factory PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(
-      outputSchema: (() {
-        final guardedValue = map['outputSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storagePath: (() {
-        final guardedValue = map['storagePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      table: (() {
-        final guardedValue = map['table'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      outputSchema: (() { final guardedValue = map['outputSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storagePath: (() { final guardedValue = map['storagePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      table: (() { final guardedValue = map['table']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

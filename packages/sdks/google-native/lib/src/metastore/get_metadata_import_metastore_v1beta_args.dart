@@ -33,20 +33,13 @@ class GetMetadataImportMetastoreV1betaArgs {
     };
   }
 
-  factory GetMetadataImportMetastoreV1betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMetadataImportMetastoreV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetMetadataImportMetastoreV1betaArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      metadataImportId: pulumi.Input.fromValue(
-        map['metadataImportId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      metadataImportId: pulumi.Input.fromValue(map['metadataImportId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
     );
   }
 }
+

@@ -29,19 +29,12 @@ class GetDataLabelingJobAiplatformV1beta1Args {
     };
   }
 
-  factory GetDataLabelingJobAiplatformV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataLabelingJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetDataLabelingJobAiplatformV1beta1Args(
-      dataLabelingJobId: pulumi.Input.fromValue(
-        map['dataLabelingJobId'] as String,
-      ),
+      dataLabelingJobId: pulumi.Input.fromValue(map['dataLabelingJobId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig {
   /// The port on which to receive traffic.
   final pulumi.Input<int> port;
-
   /// The ID of the Public IP Address on which to receive traffic.
   ///
   /// &gt; **Note:** This must be an Azure Public IP address ID also specified in the `public_ip_address_ids` list.
@@ -26,14 +25,11 @@ class NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig {
     };
   }
 
-  factory NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig(
       port: pulumi.Input.fromValue(map['port'] as int),
-      publicIpAddressId: pulumi.Input.fromValue(
-        map['publicIpAddressId'] as String,
-      ),
+      publicIpAddressId: pulumi.Input.fromValue(map['publicIpAddressId'] as String),
     );
   }
 }
+

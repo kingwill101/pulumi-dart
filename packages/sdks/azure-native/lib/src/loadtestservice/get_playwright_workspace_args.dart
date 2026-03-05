@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPlaywrightWorkspaceArgs {
   /// The name of the PlaywrightWorkspace
   final pulumi.Input<String> playwrightWorkspaceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetPlaywrightWorkspaceArgs {
 
   factory GetPlaywrightWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetPlaywrightWorkspaceArgs(
-      playwrightWorkspaceName: pulumi.Input.fromValue(
-        map['playwrightWorkspaceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      playwrightWorkspaceName: pulumi.Input.fromValue(map['playwrightWorkspaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

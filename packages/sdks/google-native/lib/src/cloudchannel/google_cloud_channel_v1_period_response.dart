@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudChannelV1PeriodResponse {
   /// Total duration of Period Type defined.
   final pulumi.Input<int> duration;
-
   /// Period Type.
   final pulumi.Input<String> periodType;
 
@@ -19,7 +18,10 @@ class GoogleCloudChannelV1PeriodResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'duration': duration, 'periodType': periodType};
+    return <String, dynamic>{
+      'duration': duration,
+      'periodType': periodType,
+    };
   }
 
   factory GoogleCloudChannelV1PeriodResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class GoogleCloudChannelV1PeriodResponse {
     );
   }
 }
+

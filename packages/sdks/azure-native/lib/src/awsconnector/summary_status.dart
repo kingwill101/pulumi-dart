@@ -18,3 +18,4 @@ enum SummaryStatus {
     throw ArgumentError('Unknown SummaryStatus value: $value');
   }
 }
+

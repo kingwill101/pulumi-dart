@@ -6,7 +6,6 @@ import 'managed_integration_runtime_status_response.dart';
 class GetIntegrationRuntimeStatusResult {
   /// The integration runtime name.
   final String name;
-
   /// Integration runtime properties.
   final ManagedIntegrationRuntimeStatusResponse properties;
 
@@ -19,15 +18,17 @@ class GetIntegrationRuntimeStatusResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'properties': properties.toMap()};
+    return <String, dynamic>{
+      'name': name,
+      'properties': properties.toMap(),
+    };
   }
 
   factory GetIntegrationRuntimeStatusResult.fromMap(Map<String, dynamic> map) {
     return GetIntegrationRuntimeStatusResult(
       name: map['name'] as String,
-      properties: ManagedIntegrationRuntimeStatusResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: ManagedIntegrationRuntimeStatusResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

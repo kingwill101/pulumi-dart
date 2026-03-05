@@ -13,18 +13,15 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectI
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectIdPaths': ?objectIdPaths};
+    return <String, dynamic>{
+      'objectIdPaths': ?objectIdPaths,
+    };
   }
 
-  factory CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId(
-      objectIdPaths: (() {
-        final guardedValue = map['objectIdPaths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
+      objectIdPaths: (() { final guardedValue = map['objectIdPaths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
     );
   }
 }
+

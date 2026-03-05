@@ -6,15 +6,12 @@ class GetConnectivityTestRunReachabilityDetailTraceStep {
   /// (Output)
   /// If this step leads to the final state Drop.
   final pulumi.Input<bool> causesDrop;
-
   /// (Output)
   /// Description of the connectivity test step.
   final pulumi.Input<String> description;
-
   /// (Output)
   /// Project ID of the connectivity test step.
   final pulumi.Input<String> projectId;
-
   /// (Output)
   /// State of the connectivity test step.
   final pulumi.Input<String> state;
@@ -40,9 +37,7 @@ class GetConnectivityTestRunReachabilityDetailTraceStep {
     };
   }
 
-  factory GetConnectivityTestRunReachabilityDetailTraceStep.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetConnectivityTestRunReachabilityDetailTraceStep.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestRunReachabilityDetailTraceStep(
       causesDrop: pulumi.Input.fromValue(map['causesDrop'] as bool),
       description: pulumi.Input.fromValue(map['description'] as String),
@@ -51,3 +46,4 @@ class GetConnectivityTestRunReachabilityDetailTraceStep {
     );
   }
 }
+

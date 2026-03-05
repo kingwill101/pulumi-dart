@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseLogsinkOpensearchArgs {
   /// CA certificate for TLS verification in PEM format. Can be specified using `file()` function. This field is marked as sensitive.
   final pulumi.Input<String>? caCert;
-
   /// UUID of the source database cluster that will forward logs.
   final pulumi.Input<String> clusterId;
-
   /// HTTPS URL to the OpenSearch or Elasticsearch cluster (e.g., `https://host:port`). **Note**: Only HTTPS URLs are supported.
   final pulumi.Input<String> endpoint;
-
   /// Maximum number of days to retain indices. Must be 1 or greater.
   final pulumi.Input<int>? indexDaysMax;
-
   /// Prefix for the indices where logs will be stored.
   final pulumi.Input<String> indexPrefix;
-
   /// Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
   final pulumi.Input<String>? name;
-
   /// Request timeout for log deliveries in seconds. Must be 1 or greater.
   final pulumi.Input<int>? timeoutSeconds;
 
@@ -60,29 +54,14 @@ class DatabaseLogsinkOpensearchArgs {
 
   factory DatabaseLogsinkOpensearchArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseLogsinkOpensearchArgs(
-      caCert: (() {
-        final guardedValue = map['caCert'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      caCert: (() { final guardedValue = map['caCert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
-      indexDaysMax: (() {
-        final guardedValue = map['indexDaysMax'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      indexDaysMax: (() { final guardedValue = map['indexDaysMax']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       indexPrefix: pulumi.Input.fromValue(map['indexPrefix'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeoutSeconds: (() {
-        final guardedValue = map['timeoutSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

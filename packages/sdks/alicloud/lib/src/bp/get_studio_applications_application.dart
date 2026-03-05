@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStudioApplicationsApplication {
   /// The ID of the Application.
   final pulumi.Input<String> applicationId;
-
   /// The name of the Application.
   final pulumi.Input<String> applicationName;
-
   /// The creation time of the Application.
   final pulumi.Input<String> createTime;
-
   /// The ID of the Application.
   final pulumi.Input<String> id;
-
   /// The image url of the Application.
   final pulumi.Input<String> imageUrl;
-
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
-
   /// The status of the Application. Valid values: `success`, `release`.
   final pulumi.Input<String> status;
-
   /// The topo url of the Application.
   final pulumi.Input<String> topoUrl;
 
@@ -73,3 +66,4 @@ class GetStudioApplicationsApplication {
     );
   }
 }
+

@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1 {
   /// JSONPath is a simple JSON path (i.e. with array notation) which is evaluated against each custom resource to produce the value for this column.
   final pulumi.Input<String> jSONPath;
-
   /// description is a human readable description of this column.
   final pulumi.Input<String>? description;
-
   /// format is an optional OpenAPI type definition for this column. The 'name' format is applied to the primary identifier column to assist in clients identifying column is the resource name. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.
   final pulumi.Input<String>? format;
-
   /// name is a human readable name for the column.
   final pulumi.Input<String> name;
-
   /// priority is an integer defining the relative importance of this column compared to others. Lower numbers are considered higher priority. Columns that may be omitted in limited space scenarios should be given a priority greater than 0.
   final pulumi.Input<int>? priority;
-
   /// type is an OpenAPI type definition for this column. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.
   final pulumi.Input<String> type;
 
@@ -49,28 +44,15 @@ class CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1 {
     };
   }
 
-  factory CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1(
       jSONPath: pulumi.Input.fromValue(map['JSONPath'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      format: (() {
-        final guardedValue = map['format'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

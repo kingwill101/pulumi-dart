@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1EnvironmentEndpointsResponse {
   /// URI to serve notebook APIs
   final pulumi.Input<String> notebooks;
-
   /// URI to serve SQL APIs
   final pulumi.Input<String> sql;
 
@@ -19,15 +18,17 @@ class GoogleCloudDataplexV1EnvironmentEndpointsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'notebooks': notebooks, 'sql': sql};
+    return <String, dynamic>{
+      'notebooks': notebooks,
+      'sql': sql,
+    };
   }
 
-  factory GoogleCloudDataplexV1EnvironmentEndpointsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1EnvironmentEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1EnvironmentEndpointsResponse(
       notebooks: pulumi.Input.fromValue(map['notebooks'] as String),
       sql: pulumi.Input.fromValue(map['sql'] as String),
     );
   }
 }
+

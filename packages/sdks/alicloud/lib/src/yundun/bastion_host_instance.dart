@@ -31,18 +31,16 @@ class BastionHostInstance extends pulumi.CustomResource {
     BastionHostInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:yundun/bastionHostInstance:BastionHostInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:yundun/bastionHostInstance:BastionHostInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adAuthServers = registerOutput<List<Map<String, dynamic>>>('adAuthServers');
     bandwidth = registerOutput<String>('bandwidth');
     description = registerOutput<String>('description');
     enablePublicAccess = registerOutput<bool>('enablePublicAccess');
-    ldapAuthServers = registerOutput<List<Map<String, dynamic>>>(
-      'ldapAuthServers',
-    );
+    ldapAuthServers = registerOutput<List<Map<String, dynamic>>>('ldapAuthServers');
     licenseCode = registerOutput<String>('licenseCode');
     period = registerOutput<int?>('period');
     planCode = registerOutput<String>('planCode');
@@ -76,18 +74,16 @@ class BastionHostInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:yundun/bastionHostInstance:BastionHostInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:yundun/bastionHostInstance:BastionHostInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adAuthServers = registerOutput<List<Map<String, dynamic>>>('adAuthServers');
     bandwidth = registerOutput<String>('bandwidth');
     description = registerOutput<String>('description');
     enablePublicAccess = registerOutput<bool>('enablePublicAccess');
-    ldapAuthServers = registerOutput<List<Map<String, dynamic>>>(
-      'ldapAuthServers',
-    );
+    ldapAuthServers = registerOutput<List<Map<String, dynamic>>>('ldapAuthServers');
     licenseCode = registerOutput<String>('licenseCode');
     period = registerOutput<int?>('period');
     planCode = registerOutput<String>('planCode');

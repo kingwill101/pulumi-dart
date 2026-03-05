@@ -6,17 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JarUploadedUserSourceInfo {
   /// JVM parameter
   final pulumi.Input<String>? jvmOptions;
-
   /// Relative path of the storage which stores the source
   final pulumi.Input<String>? relativePath;
-
   /// Runtime version of the Jar file
   final pulumi.Input<String>? runtimeVersion;
-
   /// Type of the source uploaded
   /// Expected value is 'Jar'.
   final pulumi.Input<String> type;
-
   /// Version of the source
   final pulumi.Input<String>? version;
 
@@ -46,27 +42,12 @@ class JarUploadedUserSourceInfo {
 
   factory JarUploadedUserSourceInfo.fromMap(Map<String, dynamic> map) {
     return JarUploadedUserSourceInfo(
-      jvmOptions: (() {
-        final guardedValue = map['jvmOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      relativePath: (() {
-        final guardedValue = map['relativePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      runtimeVersion: (() {
-        final guardedValue = map['runtimeVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      jvmOptions: (() { final guardedValue = map['jvmOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      relativePath: (() { final guardedValue = map['relativePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      runtimeVersion: (() { final guardedValue = map['runtimeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

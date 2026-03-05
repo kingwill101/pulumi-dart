@@ -10,31 +10,22 @@ import 'runtime_notebook_runtime_template_ref.dart';
 class RuntimeArgs {
   /// Triggers an upgrade anytime the runtime is started if it is upgradable.
   final pulumi.Input<bool>? autoUpgrade;
-
   /// The description of the Runtime.
   final pulumi.Input<String>? description;
-
   /// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
   final pulumi.Input<String>? desiredState;
-
   /// Required. The display name of the Runtime.
   final pulumi.Input<String> displayName;
-
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   final pulumi.Input<String> location;
-
   /// The resource name of the Runtime
   final pulumi.Input<String>? name;
-
   /// 'Runtime specific information used for NotebookRuntime creation.'
   /// Structure is documented below.
-  final pulumi.Input<RuntimeNotebookRuntimeTemplateRef>?
-  notebookRuntimeTemplateRef;
-
+  final pulumi.Input<RuntimeNotebookRuntimeTemplateRef>? notebookRuntimeTemplateRef;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The user email of the NotebookRuntime.
   final pulumi.Input<String> runtimeUser;
 
@@ -68,11 +59,7 @@ class RuntimeArgs {
       'displayName': displayName,
       'location': location,
       'name': ?name,
-      'notebookRuntimeTemplateRef':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeNotebookRuntimeTemplateRef,
-            Map<String, dynamic>
-          >(notebookRuntimeTemplateRef, (value) => value.toMap()),
+      'notebookRuntimeTemplateRef': ?pulumi.Input.mapOptionalInputValue<RuntimeNotebookRuntimeTemplateRef, Map<String, dynamic>>(notebookRuntimeTemplateRef, (value) => value.toMap()),
       'project': ?project,
       'runtimeUser': runtimeUser,
     };
@@ -80,43 +67,16 @@ class RuntimeArgs {
 
   factory RuntimeArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeArgs(
-      autoUpgrade: (() {
-        final guardedValue = map['autoUpgrade'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      desiredState: (() {
-        final guardedValue = map['desiredState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autoUpgrade: (() { final guardedValue = map['autoUpgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      desiredState: (() { final guardedValue = map['desiredState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      notebookRuntimeTemplateRef: (() {
-        final guardedValue = map['notebookRuntimeTemplateRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuntimeNotebookRuntimeTemplateRef.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notebookRuntimeTemplateRef: (() { final guardedValue = map['notebookRuntimeTemplateRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeNotebookRuntimeTemplateRef.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       runtimeUser: pulumi.Input.fromValue(map['runtimeUser'] as String),
     );
   }
 }
+

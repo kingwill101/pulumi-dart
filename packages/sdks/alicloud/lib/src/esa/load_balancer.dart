@@ -428,52 +428,36 @@ import 'load_balancer_state.dart';
 class LoadBalancer extends pulumi.CustomResource {
   /// Cross-pool origin configuration. See `adaptive_routing` below.
   late final pulumi.Output<LoadBalancerAdaptiveRouting> adaptiveRouting;
-
   /// List of default pool IDs.
   late final pulumi.Output<List<int>> defaultPools;
-
   /// The detailed description of the load balancer for easy management and identification.
   late final pulumi.Output<String?> description;
-
   /// Whether the load balancer is enabled.
   late final pulumi.Output<bool?> enabled;
-
   /// The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
   late final pulumi.Output<int> fallbackPool;
-
   /// The unique identifier ID of the load balancer.
   late final pulumi.Output<int> loadBalancerId;
-
   /// The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
   late final pulumi.Output<String> loadBalancerName;
-
   /// Monitor configuration for health check. See `monitor` below.
   late final pulumi.Output<LoadBalancerMonitor> monitor;
-
   /// Weighted round-robin configuration, used to control the traffic distribution weights among different pools. See `random_steering` below.
   late final pulumi.Output<LoadBalancerRandomSteering?> randomSteering;
-
   /// Address pools corresponding to primary regions.
   late final pulumi.Output<String?> regionPools;
-
   /// Rule configuration list, used to define behavior under specific conditions. See `rules` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
-
   /// Session persistence. Valid values:
   late final pulumi.Output<String?> sessionAffinity;
-
   /// The site ID.
   late final pulumi.Output<String> siteId;
-
   /// The status of the load balancer.
   late final pulumi.Output<String> status;
-
   /// Load balancing policy.
   late final pulumi.Output<String> steeringPolicy;
-
   /// Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
   late final pulumi.Output<String?> subRegionPools;
-
   /// TTL value, the time-to-live for DNS records. The default value is 30. The value range is 10-600.
   late final pulumi.Output<int> ttl;
 
@@ -486,47 +470,20 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    adaptiveRouting = registerOutput<LoadBalancerAdaptiveRouting>(
-      'adaptiveRouting',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerAdaptiveRouting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:esa/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    adaptiveRouting = registerOutput<LoadBalancerAdaptiveRouting>('adaptiveRouting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAdaptiveRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultPools = registerOutput<List<int>>('defaultPools');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     fallbackPool = registerOutput<int>('fallbackPool');
     loadBalancerId = registerOutput<int>('loadBalancerId');
     loadBalancerName = registerOutput<String>('loadBalancerName');
-    monitor = registerOutput<LoadBalancerMonitor>(
-      'monitor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerMonitor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    randomSteering = registerOutput<LoadBalancerRandomSteering?>(
-      'randomSteering',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerRandomSteering.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monitor = registerOutput<LoadBalancerMonitor>('monitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    randomSteering = registerOutput<LoadBalancerRandomSteering?>('randomSteering', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerRandomSteering.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     regionPools = registerOutput<String?>('regionPools');
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
     sessionAffinity = registerOutput<String?>('sessionAffinity');
@@ -555,47 +512,20 @@ class LoadBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    adaptiveRouting = registerOutput<LoadBalancerAdaptiveRouting>(
-      'adaptiveRouting',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerAdaptiveRouting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:esa/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    adaptiveRouting = registerOutput<LoadBalancerAdaptiveRouting>('adaptiveRouting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAdaptiveRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultPools = registerOutput<List<int>>('defaultPools');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     fallbackPool = registerOutput<int>('fallbackPool');
     loadBalancerId = registerOutput<int>('loadBalancerId');
     loadBalancerName = registerOutput<String>('loadBalancerName');
-    monitor = registerOutput<LoadBalancerMonitor>(
-      'monitor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerMonitor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    randomSteering = registerOutput<LoadBalancerRandomSteering?>(
-      'randomSteering',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerRandomSteering.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monitor = registerOutput<LoadBalancerMonitor>('monitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    randomSteering = registerOutput<LoadBalancerRandomSteering?>('randomSteering', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerRandomSteering.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     regionPools = registerOutput<String?>('regionPools');
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
     sessionAffinity = registerOutput<String?>('sessionAffinity');

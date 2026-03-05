@@ -15,3 +15,4 @@ enum Kind {
     throw ArgumentError('Unknown Kind value: $value');
   }
 }
+

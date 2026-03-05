@@ -7,25 +7,18 @@ import 'system_data_response.dart';
 class GetAlertProcessingRuleByNameResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Azure resource Id
   final String id;
-
   /// Resource location
   final String location;
-
   /// Azure resource name
   final String name;
-
   /// Alert processing rule properties.
   final AlertProcessingRulePropertiesResponse properties;
-
   /// Alert processing rule system data.
   final SystemDataResponse systemData;
-
   /// Resource tags
   final Map<String, String>? tags;
-
   /// Azure resource type
   final String type;
 
@@ -68,18 +61,11 @@ class GetAlertProcessingRuleByNameResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: AlertProcessingRulePropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: AlertProcessingRulePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

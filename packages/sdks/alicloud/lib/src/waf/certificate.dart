@@ -173,19 +173,14 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// Certificate file content.
   late final pulumi.Output<String?> certificate;
-
   /// The certificate id is automatically generated when you upload your certificate content.**NOTE:** you can also use Certificate ID saved in SSL.
   late final pulumi.Output<String> certificateId;
-
   /// Certificate file name.
   late final pulumi.Output<String> certificateName;
-
   /// The domain that you want to add to WAF.
   late final pulumi.Output<String> domain;
-
   /// The ID of the WAF instance.
   late final pulumi.Output<String> instanceId;
-
   /// The private key.
   late final pulumi.Output<String?> privateKey;
 
@@ -198,11 +193,11 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:waf/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:waf/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificate = registerOutput<String?>('certificate');
     certificateId = registerOutput<String>('certificateId');
     certificateName = registerOutput<String>('certificateName');
@@ -229,11 +224,11 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:waf/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:waf/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificate = registerOutput<String?>('certificate');
     certificateId = registerOutput<String>('certificateId');
     certificateName = registerOutput<String>('certificateName');

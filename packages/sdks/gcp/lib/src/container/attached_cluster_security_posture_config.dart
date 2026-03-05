@@ -9,19 +9,20 @@ class AttachedClusterSecurityPostureConfig {
 
   /// Creates a new [AttachedClusterSecurityPostureConfig].
   /// [vulnerabilityMode] Sets the mode of the Kubernetes security posture API's workload vulnerability scanning.
-  AttachedClusterSecurityPostureConfig({required this.vulnerabilityMode});
+  AttachedClusterSecurityPostureConfig({
+    required this.vulnerabilityMode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vulnerabilityMode': vulnerabilityMode};
+    return <String, dynamic>{
+      'vulnerabilityMode': vulnerabilityMode,
+    };
   }
 
-  factory AttachedClusterSecurityPostureConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AttachedClusterSecurityPostureConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterSecurityPostureConfig(
-      vulnerabilityMode: pulumi.Input.fromValue(
-        map['vulnerabilityMode'] as String,
-      ),
+      vulnerabilityMode: pulumi.Input.fromValue(map['vulnerabilityMode'] as String),
     );
   }
 }
+

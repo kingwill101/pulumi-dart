@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateObjectGlobalRulestackArgs {
   /// GlobalRulestack resource name
   final pulumi.Input<String> globalRulestackName;
-
   /// certificate name
   final pulumi.Input<String> name;
 
@@ -28,14 +27,11 @@ class GetCertificateObjectGlobalRulestackArgs {
     };
   }
 
-  factory GetCertificateObjectGlobalRulestackArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCertificateObjectGlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateObjectGlobalRulestackArgs(
-      globalRulestackName: pulumi.Input.fromValue(
-        map['globalRulestackName'] as String,
-      ),
+      globalRulestackName: pulumi.Input.fromValue(map['globalRulestackName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

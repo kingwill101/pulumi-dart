@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesInterfacePortForwardRange {
   /// Specifies the ending port number in the forwarded range.
   final pulumi.Input<double>? end;
-
   /// Identifies any excluded ports from the forwarding range.
   final pulumi.Input<String>? exclude;
-
   /// Sets the starting port number for the forwarding range.
   final pulumi.Input<double> start;
-
   /// Specifies the target port to which traffic is forwarded.
   final pulumi.Input<double>? to;
 
@@ -36,26 +33,13 @@ class DomainDevicesInterfacePortForwardRange {
     };
   }
 
-  factory DomainDevicesInterfacePortForwardRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesInterfacePortForwardRange.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfacePortForwardRange(
-      end: (() {
-        final guardedValue = map['end'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      exclude: (() {
-        final guardedValue = map['exclude'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      end: (() { final guardedValue = map['end']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      exclude: (() { final guardedValue = map['exclude']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       start: pulumi.Input.fromValue(map['start'] as double),
-      to: (() {
-        final guardedValue = map['to'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      to: (() { final guardedValue = map['to']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

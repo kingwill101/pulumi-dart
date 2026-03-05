@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceObservabilityConfiguration {
   /// ARN of the observability configuration that is associated with the service. Specified only when `observability_enabled` is `true`.
   final pulumi.Input<String>? observabilityConfigurationArn;
-
   /// When `true`, an observability configuration resource is associated with the service.
   final pulumi.Input<bool> observabilityEnabled;
 
@@ -26,14 +25,9 @@ class ServiceObservabilityConfiguration {
 
   factory ServiceObservabilityConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceObservabilityConfiguration(
-      observabilityConfigurationArn: (() {
-        final guardedValue = map['observabilityConfigurationArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      observabilityEnabled: pulumi.Input.fromValue(
-        map['observabilityEnabled'] as bool,
-      ),
+      observabilityConfigurationArn: (() { final guardedValue = map['observabilityConfigurationArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      observabilityEnabled: pulumi.Input.fromValue(map['observabilityEnabled'] as bool),
     );
   }
 }
+

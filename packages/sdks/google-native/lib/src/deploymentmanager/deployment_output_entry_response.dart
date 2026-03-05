@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentOutputEntryResponse {
   /// Key of the output
   final pulumi.Input<String> key;
-
   /// Value of the label
   final pulumi.Input<String> value;
 
   /// Creates a new [DeploymentOutputEntryResponse].
   /// [key] Key of the output
   /// [value] Value of the label
-  DeploymentOutputEntryResponse({required this.key, required this.value});
+  DeploymentOutputEntryResponse({
+    required this.key,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory DeploymentOutputEntryResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class DeploymentOutputEntryResponse {
     );
   }
 }
+

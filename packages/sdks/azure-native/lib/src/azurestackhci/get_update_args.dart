@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUpdateArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Update
   final pulumi.Input<String> updateName;
 
@@ -37,10 +35,9 @@ class GetUpdateArgs {
   factory GetUpdateArgs.fromMap(Map<String, dynamic> map) {
     return GetUpdateArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       updateName: pulumi.Input.fromValue(map['updateName'] as String),
     );
   }
 }
+

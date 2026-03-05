@@ -5,16 +5,13 @@ import 'partition_args.dart';
 /// Auto-naming is currently not supported for this resource.
 class Partition extends pulumi.CustomResource {
   late final pulumi.Output<String> entityId;
-
   /// Optional. The etag for this partition.
   late final pulumi.Output<String> etag;
   late final pulumi.Output<String> lakeId;
   late final pulumi.Output<String> location;
-
   /// Partition values used in the HTTP URL must be double encoded. For example, url_encode(url_encode(value)) can be used to encode "US:CA/CA#Sunnyvale so that the request URL ends with "/partitions/US%253ACA/CA%2523Sunnyvale". The name field in the response retains the encoded format.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
   late final pulumi.Output<List<String>> values;
   late final pulumi.Output<String> zone;
@@ -28,11 +25,11 @@ class Partition extends pulumi.CustomResource {
     PartitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:dataplex/v1:Partition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:dataplex/v1:Partition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     entityId = registerOutput<String>('entityId');
     etag = registerOutput<String>('etag');
     lakeId = registerOutput<String>('lakeId');

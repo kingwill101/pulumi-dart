@@ -9,19 +9,20 @@ class DhcpOptionsResponse {
 
   /// Creates a new [DhcpOptionsResponse].
   /// [dnsServers] The list of DNS servers IP addresses.
-  DhcpOptionsResponse({this.dnsServers});
+  DhcpOptionsResponse({
+    this.dnsServers,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dnsServers': ?dnsServers};
+    return <String, dynamic>{
+      'dnsServers': ?dnsServers,
+    };
   }
 
   factory DhcpOptionsResponse.fromMap(Map<String, dynamic> map) {
     return DhcpOptionsResponse(
-      dnsServers: (() {
-        final guardedValue = map['dnsServers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      dnsServers: (() { final guardedValue = map['dnsServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

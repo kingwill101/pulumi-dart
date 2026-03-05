@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OptInResourceDataLfTagPolicy {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final pulumi.Input<String>? catalogId;
-
   /// If provided, permissions are granted to the Data Catalog resources whose assigned LF-Tags match the expression body of the saved expression under the provided ExpressionName .
   final pulumi.Input<String>? expressionName;
-
   /// List of LF-tag conditions or a saved expression that apply to the resource's LF-Tag policy.
   final pulumi.Input<List<String>>? expressions;
-
   /// Resource type for which the LF-tag policy applies.
   final pulumi.Input<String> resourceType;
 
@@ -38,22 +35,11 @@ class OptInResourceDataLfTagPolicy {
 
   factory OptInResourceDataLfTagPolicy.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataLfTagPolicy(
-      catalogId: (() {
-        final guardedValue = map['catalogId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expressionName: (() {
-        final guardedValue = map['expressionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expressions: (() {
-        final guardedValue = map['expressions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      catalogId: (() { final guardedValue = map['catalogId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expressionName: (() { final guardedValue = map['expressionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expressions: (() { final guardedValue = map['expressions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
+

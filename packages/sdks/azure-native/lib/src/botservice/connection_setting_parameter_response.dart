@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionSettingParameterResponse {
   /// Key for the Connection Setting Parameter.
   final pulumi.Input<String>? key;
-
   /// Value associated with the Connection Setting Parameter.
   final pulumi.Input<String>? value;
 
   /// Creates a new [ConnectionSettingParameterResponse].
   /// [key] Key for the Connection Setting Parameter.
   /// [value] Value associated with the Connection Setting Parameter.
-  ConnectionSettingParameterResponse({this.key, this.value});
+  ConnectionSettingParameterResponse({
+    this.key,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key, 'value': ?value};
+    return <String, dynamic>{
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
   factory ConnectionSettingParameterResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionSettingParameterResponse(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,36 +7,29 @@ import 'aggregation.dart';
 class RatioPart {
   /// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
   final pulumi.Input<Aggregation>? aggregation;
-
   /// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
   final pulumi.Input<String> filter;
 
   /// Creates a new [RatioPart].
   /// [aggregation] By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
   /// [filter] The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
-  RatioPart({this.aggregation, required this.filter});
+  RatioPart({
+    this.aggregation,
+    required this.filter,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aggregation':
-          ?pulumi.Input.mapOptionalInputValue<
-            Aggregation,
-            Map<String, dynamic>
-          >(aggregation, (value) => value.toMap()),
+      'aggregation': ?pulumi.Input.mapOptionalInputValue<Aggregation, Map<String, dynamic>>(aggregation, (value) => value.toMap()),
       'filter': filter,
     };
   }
 
   factory RatioPart.fromMap(Map<String, dynamic> map) {
     return RatioPart(
-      aggregation: (() {
-        final guardedValue = map['aggregation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Aggregation.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      aggregation: (() { final guardedValue = map['aggregation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Aggregation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       filter: pulumi.Input.fromValue(map['filter'] as String),
     );
   }
 }
+

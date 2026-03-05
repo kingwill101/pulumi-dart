@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEventHubArgs {
   /// The Event Hub name
   final pulumi.Input<String> eventHubName;
-
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
-
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetEventHubArgs {
     return GetEventHubArgs(
       eventHubName: pulumi.Input.fromValue(map['eventHubName'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

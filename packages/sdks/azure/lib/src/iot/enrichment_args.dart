@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnrichmentArgs {
   /// The list of endpoints which will be enriched.
   final pulumi.Input<List<String>> endpointNames;
-
   /// The IoTHub name of the enrichment. Changing this forces a new resource to be created.
   final pulumi.Input<String> iothubName;
-
   /// The key of the enrichment. Changing this forces a new resource to be created.
   final pulumi.Input<String> key;
-
   /// The name of the resource group under which the IoTHub resource is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The value of the enrichment. Value can be any static string, the name of the IoT hub sending the message (use `$iothubname`) or information from the device twin (ex: `$twin.tags.latitude`)
   final pulumi.Input<String> value;
 
@@ -48,15 +44,12 @@ class EnrichmentArgs {
 
   factory EnrichmentArgs.fromMap(Map<String, dynamic> map) {
     return EnrichmentArgs(
-      endpointNames: pulumi.Input.fromValue(
-        (map['endpointNames'] as List).cast<String>(),
-      ),
+      endpointNames: pulumi.Input.fromValue((map['endpointNames'] as List).cast<String>()),
       iothubName: pulumi.Input.fromValue(map['iothubName'] as String),
       key: pulumi.Input.fromValue(map['key'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

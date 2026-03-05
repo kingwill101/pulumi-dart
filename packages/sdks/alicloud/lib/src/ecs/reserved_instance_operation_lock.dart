@@ -8,19 +8,20 @@ class ReservedInstanceOperationLock {
 
   /// Creates a new [ReservedInstanceOperationLock].
   /// [lockReason] The reason why the reserved instance was locked.
-  ReservedInstanceOperationLock({this.lockReason});
+  ReservedInstanceOperationLock({
+    this.lockReason,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'lockReason': ?lockReason};
+    return <String, dynamic>{
+      'lockReason': ?lockReason,
+    };
   }
 
   factory ReservedInstanceOperationLock.fromMap(Map<String, dynamic> map) {
     return ReservedInstanceOperationLock(
-      lockReason: (() {
-        final guardedValue = map['lockReason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      lockReason: (() { final guardedValue = map['lockReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

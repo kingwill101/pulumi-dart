@@ -263,19 +263,14 @@ import 'firewall_policy_rule_collection_group_draft_args.dart';
 class FirewallPolicyRuleCollectionGroupDraft extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
-
   /// Priority of the Firewall Policy Rule Collection Group resource.
   late final pulumi.Output<int?> priority;
-
   /// Group of Firewall Policy rule collections.
   late final pulumi.Output<List<Map<String, dynamic>>?> ruleCollections;
-
   /// A read-only string that represents the size of the FirewallPolicyRuleCollectionGroupProperties in MB. (ex 1.2MB)
   late final pulumi.Output<String> size;
-
   /// Rule Group type.
   late final pulumi.Output<String> type;
 
@@ -288,17 +283,15 @@ class FirewallPolicyRuleCollectionGroupDraft extends pulumi.CustomResource {
     FirewallPolicyRuleCollectionGroupDraftArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:FirewallPolicyRuleCollectionGroupDraft',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:FirewallPolicyRuleCollectionGroupDraft',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String?>('name');
     priority = registerOutput<int?>('priority');
-    ruleCollections = registerOutput<List<Map<String, dynamic>>?>(
-      'ruleCollections',
-    );
+    ruleCollections = registerOutput<List<Map<String, dynamic>>?>('ruleCollections');
     size = registerOutput<String>('size');
     type = registerOutput<String>('type');
   }

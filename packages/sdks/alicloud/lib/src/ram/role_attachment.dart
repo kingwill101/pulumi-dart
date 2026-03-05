@@ -540,7 +540,6 @@ import 'role_attachment_state.dart';
 class RoleAttachment extends pulumi.CustomResource {
   /// The list of ECS instance's IDs.
   late final pulumi.Output<List<String>> instanceIds;
-
   /// The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
   late final pulumi.Output<String> roleName;
 
@@ -553,11 +552,11 @@ class RoleAttachment extends pulumi.CustomResource {
     RoleAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ram/roleAttachment:RoleAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ram/roleAttachment:RoleAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceIds = registerOutput<List<String>>('instanceIds');
     roleName = registerOutput<String>('roleName');
   }
@@ -580,11 +579,11 @@ class RoleAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ram/roleAttachment:RoleAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ram/roleAttachment:RoleAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceIds = registerOutput<List<String>>('instanceIds');
     roleName = registerOutput<String>('roleName');
   }

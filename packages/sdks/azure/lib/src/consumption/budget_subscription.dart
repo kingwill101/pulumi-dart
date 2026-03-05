@@ -488,27 +488,20 @@ import 'budget_subscription_time_period.dart';
 class BudgetSubscription extends pulumi.CustomResource {
   /// The total amount of cost to track with the budget.
   late final pulumi.Output<double> amount;
-
   /// (Optional) The ETag of the Subscription Consumption Budget.
   late final pulumi.Output<String> etag;
-
   /// A `filter` block as defined below.
   late final pulumi.Output<BudgetSubscriptionFilter?> filter;
-
   /// The name which should be used for this Subscription Consumption Budget. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// One or more `notification` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> notifications;
-
   /// The ID of the Subscription for which to create a Consumption Budget. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `subscription_id` property can accept a subscription ID e.g. `00000000-0000-0000-0000-000000000000` or the subscription resource ID e.g. `/subscriptions/00000000-0000-0000-0000-000000000000`. In version 3.0 this property will only accept the subscription resource ID.
   late final pulumi.Output<String> subscriptionId;
-
   /// The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> timeGrain;
-
   /// A `time_period` block as defined below.
   late final pulumi.Output<BudgetSubscriptionTimePeriod> timePeriod;
 
@@ -521,37 +514,19 @@ class BudgetSubscription extends pulumi.CustomResource {
     BudgetSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:consumption/budgetSubscription:BudgetSubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:consumption/budgetSubscription:BudgetSubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amount = registerOutput<double>('amount');
     etag = registerOutput<String>('etag');
-    filter = registerOutput<BudgetSubscriptionFilter?>(
-      'filter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BudgetSubscriptionFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    filter = registerOutput<BudgetSubscriptionFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetSubscriptionFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
     subscriptionId = registerOutput<String>('subscriptionId');
     timeGrain = registerOutput<String?>('timeGrain');
-    timePeriod = registerOutput<BudgetSubscriptionTimePeriod>(
-      'timePeriod',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BudgetSubscriptionTimePeriod.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timePeriod = registerOutput<BudgetSubscriptionTimePeriod>('timePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetSubscriptionTimePeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [BudgetSubscription] resource's state with the given [name] and [id].
@@ -572,36 +547,18 @@ class BudgetSubscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:consumption/budgetSubscription:BudgetSubscription',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:consumption/budgetSubscription:BudgetSubscription',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amount = registerOutput<double>('amount');
     etag = registerOutput<String>('etag');
-    filter = registerOutput<BudgetSubscriptionFilter?>(
-      'filter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BudgetSubscriptionFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    filter = registerOutput<BudgetSubscriptionFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetSubscriptionFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
     subscriptionId = registerOutput<String>('subscriptionId');
     timeGrain = registerOutput<String?>('timeGrain');
-    timePeriod = registerOutput<BudgetSubscriptionTimePeriod>(
-      'timePeriod',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BudgetSubscriptionTimePeriod.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timePeriod = registerOutput<BudgetSubscriptionTimePeriod>('timePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetSubscriptionTimePeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

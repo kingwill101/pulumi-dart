@@ -182,38 +182,27 @@ import 'sql_pool_sensitivity_label_args.dart';
 class SqlPoolSensitivityLabel extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The column name.
   late final pulumi.Output<String> columnName;
-
   /// The information type.
   late final pulumi.Output<String?> informationType;
-
   /// The information type ID.
   late final pulumi.Output<String?> informationTypeId;
-
   /// Is sensitivity recommendation disabled. Applicable for recommended sensitivity label only. Specifies whether the sensitivity recommendation on this column is disabled (dismissed) or not.
   late final pulumi.Output<bool> isDisabled;
-
   /// The label ID.
   late final pulumi.Output<String?> labelId;
-
   /// The label name.
   late final pulumi.Output<String?> labelName;
-
   /// managed by
   late final pulumi.Output<String> managedBy;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
   late final pulumi.Output<String?> rank;
-
   /// The schema name.
   late final pulumi.Output<String> schemaName;
-
   /// The table name.
   late final pulumi.Output<String> tableName;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -226,11 +215,11 @@ class SqlPoolSensitivityLabel extends pulumi.CustomResource {
     SqlPoolSensitivityLabelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:synapse:SqlPoolSensitivityLabel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:synapse:SqlPoolSensitivityLabel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     columnName = registerOutput<String>('columnName');
     informationType = registerOutput<String?>('informationType');

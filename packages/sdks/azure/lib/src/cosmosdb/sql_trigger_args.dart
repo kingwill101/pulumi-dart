@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlTriggerArgs {
   /// Body of the Trigger.
   final pulumi.Input<String> body;
-
   /// The id of the Cosmos DB SQL Container to create the SQL Trigger within. Changing this forces a new SQL Trigger to be created.
   final pulumi.Input<String> containerId;
-
   /// The name which should be used for this SQL Trigger. Changing this forces a new SQL Trigger to be created.
   final pulumi.Input<String>? name;
-
   /// The operation the trigger is associated with. Possible values are `All`, `Create`, `Update`, `Delete` and `Replace`.
   final pulumi.Input<String> operation;
-
   /// Type of the Trigger. Possible values are `Pre` and `Post`.
   final pulumi.Input<String> type;
 
@@ -50,13 +46,10 @@ class SqlTriggerArgs {
     return SqlTriggerArgs(
       body: pulumi.Input.fromValue(map['body'] as String),
       containerId: pulumi.Input.fromValue(map['containerId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       operation: pulumi.Input.fromValue(map['operation'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

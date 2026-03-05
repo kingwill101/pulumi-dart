@@ -7,16 +7,12 @@ import 'httpheader.dart';
 class HTTPGetAction {
   /// Not supported by Cloud Run.
   final pulumi.Input<String>? host;
-
   /// Custom headers to set in the request. HTTP allows repeated headers.
   final pulumi.Input<List<HTTPHeader>>? httpHeaders;
-
   /// Path to access on the HTTP server.
   final pulumi.Input<String>? path;
-
   /// Port number to access on the container. Number must be in the range 1 to 65535.
   final pulumi.Input<int>? port;
-
   /// Not supported by Cloud Run.
   final pulumi.Input<String>? scheme;
 
@@ -37,18 +33,7 @@ class HTTPGetAction {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'host': ?host,
-      'httpHeaders':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<HTTPHeader>,
-            List<Map<String, dynamic>>
-          >(
-            httpHeaders,
-            (value) =>
-                pulumi.Input.encodeList<HTTPHeader, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'httpHeaders': ?pulumi.Input.mapOptionalInputValue<List<HTTPHeader>, List<Map<String, dynamic>>>(httpHeaders, (value) => pulumi.Input.encodeList<HTTPHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'path': ?path,
       'port': ?port,
       'scheme': ?scheme,
@@ -57,37 +42,12 @@ class HTTPGetAction {
 
   factory HTTPGetAction.fromMap(Map<String, dynamic> map) {
     return HTTPGetAction(
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      httpHeaders: (() {
-        final guardedValue = map['httpHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<HTTPHeader>(
-            guardedValue,
-            (value) =>
-                HTTPHeader.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      scheme: (() {
-        final guardedValue = map['scheme'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      httpHeaders: (() { final guardedValue = map['httpHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HTTPHeader>(guardedValue, (value) => HTTPHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scheme: (() { final guardedValue = map['scheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

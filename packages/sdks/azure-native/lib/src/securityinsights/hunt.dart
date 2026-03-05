@@ -226,40 +226,28 @@ import 'system_data_response.dart';
 class Hunt extends pulumi.CustomResource {
   /// A list of mitre attack tactics the hunt is associated with
   late final pulumi.Output<List<String>?> attackTactics;
-
   /// A list of a mitre attack techniques the hunt is associated with
   late final pulumi.Output<List<String>?> attackTechniques;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The description of the hunt
   late final pulumi.Output<String> description;
-
   /// The display name of the hunt
   late final pulumi.Output<String> displayName;
-
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// The hypothesis status of the hunt.
   late final pulumi.Output<String?> hypothesisStatus;
-
   /// List of labels relevant to this hunt
   late final pulumi.Output<List<String>?> labels;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Describes a user that the hunt is assigned to
   late final pulumi.Output<HuntOwnerResponse?> owner;
-
   /// The status of the hunt.
   late final pulumi.Output<String?> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -267,13 +255,16 @@ class Hunt extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Hunt]. {@macro pulumi_securityinsights_hunt_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Hunt(String name, {HuntArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:securityinsights:Hunt',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Hunt(
+    String name, {
+    HuntArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:securityinsights:Hunt',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attackTactics = registerOutput<List<String>?>('attackTactics');
     attackTechniques = registerOutput<List<String>?>('attackTechniques');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -283,27 +274,9 @@ class Hunt extends pulumi.CustomResource {
     hypothesisStatus = registerOutput<String?>('hypothesisStatus');
     labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
-    owner = registerOutput<HuntOwnerResponse?>(
-      'owner',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HuntOwnerResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    owner = registerOutput<HuntOwnerResponse?>('owner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HuntOwnerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

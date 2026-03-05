@@ -16,3 +16,4 @@ enum KafkaAcks {
     throw ArgumentError('Unknown KafkaAcks value: $value');
   }
 }
+

@@ -116,12 +116,10 @@ class NatGatewayEipAssociation extends pulumi.CustomResource {
   /// The ID of the Elastic IP Allocation to associate with the NAT Gateway.
   late final pulumi.Output<String> allocationId;
   late final pulumi.Output<String> associationId;
-
   /// The ID of the NAT Gateway to associate the Elastic IP Allocation to.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> natGatewayId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<NatGatewayEipAssociationTimeouts?> timeouts;
@@ -135,25 +133,16 @@ class NatGatewayEipAssociation extends pulumi.CustomResource {
     NatGatewayEipAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/natGatewayEipAssociation:NatGatewayEipAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/natGatewayEipAssociation:NatGatewayEipAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allocationId = registerOutput<String>('allocationId');
     associationId = registerOutput<String>('associationId');
     natGatewayId = registerOutput<String>('natGatewayId');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<NatGatewayEipAssociationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NatGatewayEipAssociationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<NatGatewayEipAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NatGatewayEipAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [NatGatewayEipAssociation] resource's state with the given [name] and [id].
@@ -174,24 +163,15 @@ class NatGatewayEipAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/natGatewayEipAssociation:NatGatewayEipAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/natGatewayEipAssociation:NatGatewayEipAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allocationId = registerOutput<String>('allocationId');
     associationId = registerOutput<String>('associationId');
     natGatewayId = registerOutput<String>('natGatewayId');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<NatGatewayEipAssociationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NatGatewayEipAssociationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<NatGatewayEipAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NatGatewayEipAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

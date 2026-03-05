@@ -8,7 +8,6 @@ class GetLicenseGrantsResult {
   /// List of all the license grant ARNs found.
   final List<String> arns;
   final List<GetLicenseGrantsFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -28,14 +27,7 @@ class GetLicenseGrantsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arns': arns,
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetLicenseGrantsFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLicenseGrantsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'region': region,
     };
@@ -44,18 +36,10 @@ class GetLicenseGrantsResult {
   factory GetLicenseGrantsResult.fromMap(Map<String, dynamic> map) {
     return GetLicenseGrantsResult(
       arns: (map['arns'] as List).cast<String>(),
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetLicenseGrantsFilter>(
-          guardedValue,
-          (value) => GetLicenseGrantsFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLicenseGrantsFilter>(guardedValue, (value) => GetLicenseGrantsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
+

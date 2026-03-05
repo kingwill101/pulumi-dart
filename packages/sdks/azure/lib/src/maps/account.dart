@@ -181,39 +181,28 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// A `cors` block as defined below
   late final pulumi.Output<AccountCors?> cors;
-
   /// One or more `data_store` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> dataStores;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<AccountIdentity?> identity;
-
   /// Is local authentication enabled for this Azure Maps Account? When `false`, all authentication to the Azure Maps data-plane REST API is disabled, except Azure AD authentication. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthenticationEnabled;
-
   /// The Location in which the Azure Maps Account should be provisioned. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the Azure Maps Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The primary key used to authenticate and authorize access to the Maps REST APIs.
   late final pulumi.Output<String> primaryAccessKey;
-
   /// The name of the Resource Group in which the Azure Maps Account should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The secondary key used to authenticate and authorize access to the Maps REST APIs.
   late final pulumi.Output<String> secondaryAccessKey;
-
   /// The SKU of the Azure Maps Account. Possible values are `S0`, `S1` and `G2`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Gen1 SKUs (`S0` and `S1`) are deprecated and can no longer be used for new deployments, which should instead use a Gen2 SKU (`G2`) - more information can be found [in the Azure documentation](https://learn.microsoft.com/azure/azure-maps/how-to-manage-pricing-tier).
   late final pulumi.Output<String> skuName;
-
   /// A mapping of tags to assign to the Azure Maps Account.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A unique identifier for the Maps Account.
   late final pulumi.Output<String> xMsClientId;
 
@@ -226,35 +215,15 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:maps/account:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    cors = registerOutput<AccountCors?>(
-      'cors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountCors.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:maps/account:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    cors = registerOutput<AccountCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataStores = registerOutput<List<Map<String, dynamic>>?>('dataStores');
-    identity = registerOutput<AccountIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localAuthenticationEnabled = registerOutput<bool?>(
-      'localAuthenticationEnabled',
-    );
+    identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     primaryAccessKey = registerOutput<String>('primaryAccessKey');
@@ -283,35 +252,15 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:maps/account:Account',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    cors = registerOutput<AccountCors?>(
-      'cors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountCors.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:maps/account:Account',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    cors = registerOutput<AccountCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataStores = registerOutput<List<Map<String, dynamic>>?>('dataStores');
-    identity = registerOutput<AccountIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localAuthenticationEnabled = registerOutput<bool?>(
-      'localAuthenticationEnabled',
-    );
+    identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     primaryAccessKey = registerOutput<String>('primaryAccessKey');

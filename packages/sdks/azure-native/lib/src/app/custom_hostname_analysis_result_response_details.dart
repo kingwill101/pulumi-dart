@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomHostnameAnalysisResultResponseDetails {
   /// Standardized string to programmatically identify the error.
   final pulumi.Input<String> code;
-
   /// Detailed error description and debugging information.
   final pulumi.Input<String> message;
-
   /// Detailed error description and debugging information.
   final pulumi.Input<String> target;
 
@@ -31,9 +29,7 @@ class CustomHostnameAnalysisResultResponseDetails {
     };
   }
 
-  factory CustomHostnameAnalysisResultResponseDetails.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomHostnameAnalysisResultResponseDetails.fromMap(Map<String, dynamic> map) {
     return CustomHostnameAnalysisResultResponseDetails(
       code: pulumi.Input.fromValue(map['code'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
@@ -41,3 +37,4 @@ class CustomHostnameAnalysisResultResponseDetails {
     );
   }
 }
+

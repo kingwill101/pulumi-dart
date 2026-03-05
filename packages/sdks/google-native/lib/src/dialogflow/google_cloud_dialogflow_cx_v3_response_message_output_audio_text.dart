@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText {
   /// The SSML text to be synthesized. For more information, see [SSML](/speech/text-to-speech/docs/ssml).
   final pulumi.Input<String>? ssml;
-
   /// The raw text to be synthesized.
   final pulumi.Input<String>? text;
 
@@ -19,23 +18,17 @@ class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ssml': ?ssml, 'text': ?text};
+    return <String, dynamic>{
+      'ssml': ?ssml,
+      'text': ?text,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText(
-      ssml: (() {
-        final guardedValue = map['ssml'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      text: (() {
-        final guardedValue = map['text'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ssml: (() { final guardedValue = map['ssml']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

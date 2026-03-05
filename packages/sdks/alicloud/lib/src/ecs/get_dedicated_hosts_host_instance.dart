@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDedicatedHostsHostInstance {
   /// The ID of the ECS instance.
   final pulumi.Input<String> instanceId;
-
   /// The ID of the ECS instance owner.
   final pulumi.Input<int> instanceOwnerId;
-
   /// The instance type of the ECS instance that was created on the dedicated host.
   final pulumi.Input<String> instanceType;
-
   /// The ID of the socket to which the ECS instance belongs.
   final pulumi.Input<String> socketId;
 
@@ -45,3 +42,4 @@ class GetDedicatedHostsHostInstance {
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyVersionState {
   /// Specifies whether to set the policy version as the default version. Default to `false`.
   final pulumi.Input<bool>? isDefaultVersion;
-
   /// The content of the policy. The content must be 1 to 2,048 characters in length.
   final pulumi.Input<String>? policyDocument;
-
   /// The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
   final pulumi.Input<String>? policyName;
 
@@ -33,21 +31,10 @@ class PolicyVersionState {
 
   factory PolicyVersionState.fromMap(Map<String, dynamic> map) {
     return PolicyVersionState(
-      isDefaultVersion: (() {
-        final guardedValue = map['isDefaultVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      policyDocument: (() {
-        final guardedValue = map['policyDocument'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policyName: (() {
-        final guardedValue = map['policyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      isDefaultVersion: (() { final guardedValue = map['isDefaultVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      policyDocument: (() { final guardedValue = map['policyDocument']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyName: (() { final guardedValue = map['policyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

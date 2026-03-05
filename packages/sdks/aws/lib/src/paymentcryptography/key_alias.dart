@@ -218,10 +218,8 @@ class KeyAlias extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> aliasName;
-
   /// ARN of the key.
   late final pulumi.Output<String?> keyArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -234,11 +232,11 @@ class KeyAlias extends pulumi.CustomResource {
     KeyAliasArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:paymentcryptography/keyAlias:KeyAlias',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:paymentcryptography/keyAlias:KeyAlias',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliasName = registerOutput<String>('aliasName');
     keyArn = registerOutput<String?>('keyArn');
     region = registerOutput<String>('region');
@@ -262,11 +260,11 @@ class KeyAlias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:paymentcryptography/keyAlias:KeyAlias',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:paymentcryptography/keyAlias:KeyAlias',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliasName = registerOutput<String>('aliasName');
     keyArn = registerOutput<String?>('keyArn');
     region = registerOutput<String>('region');

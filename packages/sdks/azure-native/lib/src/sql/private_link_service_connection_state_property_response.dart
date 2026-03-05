@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateLinkServiceConnectionStatePropertyResponse {
   /// The actions required for private link service connection.
   final pulumi.Input<String> actionsRequired;
-
   /// The private link service connection description.
   final pulumi.Input<String> description;
-
   /// The private link service connection status.
   final pulumi.Input<String> status;
 
@@ -30,9 +28,7 @@ class PrivateLinkServiceConnectionStatePropertyResponse {
     };
   }
 
-  factory PrivateLinkServiceConnectionStatePropertyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrivateLinkServiceConnectionStatePropertyResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnectionStatePropertyResponse(
       actionsRequired: pulumi.Input.fromValue(map['actionsRequired'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
@@ -40,3 +36,4 @@ class PrivateLinkServiceConnectionStatePropertyResponse {
     );
   }
 }
+

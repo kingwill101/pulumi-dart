@@ -1424,46 +1424,37 @@ class Database extends pulumi.CustomResource {
   /// The App Engine integration mode to use for this database.
   /// Possible values are: `ENABLED`, `DISABLED`.
   late final pulumi.Output<String> appEngineIntegrationMode;
-
   /// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
   /// database. If not present, the database is secured by the default Google
   /// encryption key.
   /// Structure is documented below.
   late final pulumi.Output<DatabaseCmekConfig?> cmekConfig;
-
   /// The concurrency control mode to use for this database.
   /// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
   late final pulumi.Output<String> concurrencyMode;
-
   /// Output only. The timestamp at which this database was created.
   late final pulumi.Output<String> createTime;
-
   /// The database edition.
   /// Possible values are: `STANDARD`, `ENTERPRISE`.
   late final pulumi.Output<String> databaseEdition;
   late final pulumi.Output<String> deleteProtectionState;
   late final pulumi.Output<String?> deletionPolicy;
-
   /// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
   /// This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> earliestVersionTime;
-
   /// Output only. This checksum is computed by the server based on the value of other fields,
   /// and may be sent on update and delete requests to ensure the client has an
   /// up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
-
   /// Output only. The keyPrefix for this database.
   /// This keyPrefix is used, in combination with the project id ("~") to construct the application id
   /// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
   /// This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
   late final pulumi.Output<String> keyPrefix;
-
   /// The location of the database. Available locations are listed at
   /// https://cloud.google.com/firestore/docs/locations.
   late final pulumi.Output<String> locationId;
-
   /// The ID to use for the database, which will become the final
   /// component of the database's resource name. This value should be 4-63
   /// characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -1471,7 +1462,6 @@ class Database extends pulumi.CustomResource {
   /// UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
   /// "(default)" database id is also valid.
   late final pulumi.Output<String> name;
-
   /// Whether to enable the PITR feature on this database.
   /// If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
   /// versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
@@ -1480,11 +1470,9 @@ class Database extends pulumi.CustomResource {
   /// Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
   /// Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
   late final pulumi.Output<String?> pointInTimeRecoveryEnablement;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Input only. A map of resource manager tags. Resource manager tag keys
   /// and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
@@ -1492,19 +1480,15 @@ class Database extends pulumi.CustomResource {
   /// resource replacement when mutated. To apply tags to an existing resource, see
   /// the `gcp.tags.TagValue` resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the database.
   /// See https://cloud.google.com/datastore/docs/firestore-or-datastore
   /// for information about how to choose.
   /// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
   late final pulumi.Output<String> type;
-
   /// Output only. The system-generated UUID4 for this Database.
   late final pulumi.Output<String> uid;
-
   /// Output only. The timestamp at which this database was most recently updated.
   late final pulumi.Output<String> updateTime;
-
   /// Output only. The period during which past versions of data are retained in the database.
   /// Any read or query can specify a readTime within this window, and will read the state of the database at that time.
   /// If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
@@ -1520,24 +1504,13 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firestore/database:Database',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    appEngineIntegrationMode = registerOutput<String>(
-      'appEngineIntegrationMode',
-    );
-    cmekConfig = registerOutput<DatabaseCmekConfig?>(
-      'cmekConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseCmekConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:firestore/database:Database',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    appEngineIntegrationMode = registerOutput<String>('appEngineIntegrationMode');
+    cmekConfig = registerOutput<DatabaseCmekConfig?>('cmekConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseCmekConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     concurrencyMode = registerOutput<String>('concurrencyMode');
     createTime = registerOutput<String>('createTime');
     databaseEdition = registerOutput<String>('databaseEdition');
@@ -1548,9 +1521,7 @@ class Database extends pulumi.CustomResource {
     keyPrefix = registerOutput<String>('keyPrefix');
     locationId = registerOutput<String>('locationId');
     this.name = registerOutput<String>('name');
-    pointInTimeRecoveryEnablement = registerOutput<String?>(
-      'pointInTimeRecoveryEnablement',
-    );
+    pointInTimeRecoveryEnablement = registerOutput<String?>('pointInTimeRecoveryEnablement');
     project = registerOutput<String>('project');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
@@ -1577,24 +1548,13 @@ class Database extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firestore/database:Database',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    appEngineIntegrationMode = registerOutput<String>(
-      'appEngineIntegrationMode',
-    );
-    cmekConfig = registerOutput<DatabaseCmekConfig?>(
-      'cmekConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseCmekConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:firestore/database:Database',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    appEngineIntegrationMode = registerOutput<String>('appEngineIntegrationMode');
+    cmekConfig = registerOutput<DatabaseCmekConfig?>('cmekConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseCmekConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     concurrencyMode = registerOutput<String>('concurrencyMode');
     createTime = registerOutput<String>('createTime');
     databaseEdition = registerOutput<String>('databaseEdition');
@@ -1605,9 +1565,7 @@ class Database extends pulumi.CustomResource {
     keyPrefix = registerOutput<String>('keyPrefix');
     locationId = registerOutput<String>('locationId');
     this.name = registerOutput<String>('name');
-    pointInTimeRecoveryEnablement = registerOutput<String?>(
-      'pointInTimeRecoveryEnablement',
-    );
+    pointInTimeRecoveryEnablement = registerOutput<String?>('pointInTimeRecoveryEnablement');
     project = registerOutput<String>('project');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

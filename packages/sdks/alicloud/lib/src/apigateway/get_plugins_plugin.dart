@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPluginsPlugin {
   /// The CreateTime of the resource.
   final pulumi.Input<String> createTime;
-
   /// The description of the plug-in, which cannot exceed 200 characters.
   final pulumi.Input<String> description;
-
   /// The ID of the Plugin.
   final pulumi.Input<String> id;
-
   /// The ModifiedTime of the resource.
   final pulumi.Input<String> modifiedTime;
-
   /// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
   final pulumi.Input<String> pluginData;
-
   /// The first ID of the resource.
   final pulumi.Input<String> pluginId;
-
   /// The name of the plug-in that you want to create.
   final pulumi.Input<String> pluginName;
-
   /// The type of the plug-in.
   final pulumi.Input<String> pluginType;
-
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>> tags;
 
@@ -80,3 +72,4 @@ class GetPluginsPlugin {
     );
   }
 }
+

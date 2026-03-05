@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVerifierWorkspaceArgs {
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// Workspace name.
   final pulumi.Input<String> workspaceName;
 
@@ -36,13 +34,10 @@ class GetVerifierWorkspaceArgs {
 
   factory GetVerifierWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetVerifierWorkspaceArgs(
-      networkManagerName: pulumi.Input.fromValue(
-        map['networkManagerName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

@@ -7,44 +7,29 @@ import 'available_contacts_response.dart';
 class ListSpacecraftAvailableContactsResult {
   /// The URL to get the next set of results.
   final String nextLink;
-
   /// A list of available contacts.
   final List<AvailableContactsResponse>? value;
 
   /// Creates a new [ListSpacecraftAvailableContactsResult].
   /// [nextLink] The URL to get the next set of results.
   /// [value] A list of available contacts.
-  ListSpacecraftAvailableContactsResult({required this.nextLink, this.value});
+  ListSpacecraftAvailableContactsResult({
+    required this.nextLink,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': nextLink,
-      'value': ?(() {
-        final guardedValue = value;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          AvailableContactsResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<AvailableContactsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
-  factory ListSpacecraftAvailableContactsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListSpacecraftAvailableContactsResult.fromMap(Map<String, dynamic> map) {
     return ListSpacecraftAvailableContactsResult(
       nextLink: map['nextLink'] as String,
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<AvailableContactsResponse>(
-          guardedValue,
-          (value) => AvailableContactsResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AvailableContactsResponse>(guardedValue, (value) => AvailableContactsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -14,18 +14,15 @@ class GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'adjacentIntervals': ?adjacentIntervals};
+    return <String, dynamic>{
+      'adjacentIntervals': ?adjacentIntervals,
+    };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig(
-      adjacentIntervals: (() {
-        final guardedValue = map['adjacentIntervals'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      adjacentIntervals: (() { final guardedValue = map['adjacentIntervals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNatGatewayArgs {
   /// Specifies the Name of the NAT Gateway.
   final pulumi.Input<String> name;
-
   /// A list of existing Public IP Address resource IDs which the NAT Gateway is using.
   final pulumi.Input<List<String>>? publicIpAddressIds;
-
   /// A list of existing Public IP Prefix resource IDs which the NAT Gateway is using.
   final pulumi.Input<List<String>>? publicIpPrefixIds;
-
   /// Specifies the name of the Resource Group where the NAT Gateway exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -43,19 +40,10 @@ class GetNatGatewayArgs {
   factory GetNatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetNatGatewayArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      publicIpAddressIds: (() {
-        final guardedValue = map['publicIpAddressIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      publicIpPrefixIds: (() {
-        final guardedValue = map['publicIpPrefixIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      publicIpAddressIds: (() { final guardedValue = map['publicIpAddressIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      publicIpPrefixIds: (() { final guardedValue = map['publicIpPrefixIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

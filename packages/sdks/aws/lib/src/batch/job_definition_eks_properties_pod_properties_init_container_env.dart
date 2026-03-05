@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobDefinitionEksPropertiesPodPropertiesInitContainerEnv {
   /// Name of the job definition.
   final pulumi.Input<String> name;
-
   /// Value of the environment variable.
   final pulumi.Input<String> value;
 
@@ -18,15 +17,17 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainerEnv {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory JobDefinitionEksPropertiesPodPropertiesInitContainerEnv.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobDefinitionEksPropertiesPodPropertiesInitContainerEnv.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesInitContainerEnv(
       name: pulumi.Input.fromValue(map['name'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

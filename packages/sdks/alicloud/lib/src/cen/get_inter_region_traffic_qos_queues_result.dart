@@ -7,18 +7,14 @@ import 'get_inter_region_traffic_qos_queues_queue.dart';
 class GetInterRegionTrafficQosQueuesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Inter Region Traffic Qos Queue IDs.
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of name of Inter Region Traffic Qos Queues.
   final List<String> names;
   final String? outputFile;
-
   /// A list of Inter Region Traffic Qos Queue Entries. Each element contains the following attributes:
   final List<GetInterRegionTrafficQosQueuesQueue> queues;
-
   /// The ID of the traffic scheduling policy.
   final String trafficQosPolicyId;
 
@@ -47,39 +43,21 @@ class GetInterRegionTrafficQosQueuesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'queues':
-          pulumi.Input.encodeList<
-            GetInterRegionTrafficQosQueuesQueue,
-            Map<String, dynamic>
-          >(queues, (value) => value.toMap()),
+      'queues': pulumi.Input.encodeList<GetInterRegionTrafficQosQueuesQueue, Map<String, dynamic>>(queues, (value) => value.toMap()),
       'trafficQosPolicyId': trafficQosPolicyId,
     };
   }
 
-  factory GetInterRegionTrafficQosQueuesResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInterRegionTrafficQosQueuesResult.fromMap(Map<String, dynamic> map) {
     return GetInterRegionTrafficQosQueuesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      queues: pulumi.Input.decodeList<GetInterRegionTrafficQosQueuesQueue>(
-        map['queues']!,
-        (value) => GetInterRegionTrafficQosQueuesQueue.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      queues: pulumi.Input.decodeList<GetInterRegionTrafficQosQueuesQueue>(map['queues']!, (value) => GetInterRegionTrafficQosQueuesQueue.fromMap((value as Map).cast<String, dynamic>())),
       trafficQosPolicyId: map['trafficQosPolicyId'] as String,
     );
   }
 }
+

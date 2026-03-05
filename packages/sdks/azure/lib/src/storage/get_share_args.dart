@@ -10,18 +10,14 @@ import 'get_share_acl.dart';
 class GetShareArgs {
   /// One or more acl blocks as defined below.
   final pulumi.Input<List<GetShareAcl>>? acls;
-
   /// A map of custom file share metadata.
   final pulumi.Input<Map<String, String>>? metadata;
-
   /// The name of the share.
   final pulumi.Input<String> name;
-
   /// The ID of the storage account in which the share exists.
   ///
   /// &gt; **Note:** One of `storage_account_name` or `storage_account_id` must be specified. When specifying `storage_account_id` the resource will use the Resource Manager API, rather than the Data Plane API.
   final pulumi.Input<String>? storageAccountId;
-
   /// The name of the storage account in which the share exists. This property is deprecated in favour of `storage_account_id`.
   final pulumi.Input<String>? storageAccountName;
 
@@ -41,18 +37,7 @@ class GetShareArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acls':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetShareAcl>,
-            List<Map<String, dynamic>>
-          >(
-            acls,
-            (value) =>
-                pulumi.Input.encodeList<GetShareAcl, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'acls': ?pulumi.Input.mapOptionalInputValue<List<GetShareAcl>, List<Map<String, dynamic>>>(acls, (value) => pulumi.Input.encodeList<GetShareAcl, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metadata': ?metadata,
       'name': name,
       'storageAccountId': ?storageAccountId,
@@ -62,35 +47,12 @@ class GetShareArgs {
 
   factory GetShareArgs.fromMap(Map<String, dynamic> map) {
     return GetShareArgs(
-      acls: (() {
-        final guardedValue = map['acls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetShareAcl>(
-            guardedValue,
-            (value) =>
-                GetShareAcl.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      acls: (() { final guardedValue = map['acls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetShareAcl>(guardedValue, (value) => GetShareAcl.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      storageAccountId: (() {
-        final guardedValue = map['storageAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountName: (() {
-        final guardedValue = map['storageAccountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

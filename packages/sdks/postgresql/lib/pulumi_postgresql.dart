@@ -52,12 +52,9 @@ class _IndexModuleNamespace {
   final GrantState = module_index.GrantState.new;
   final GrantStateArgs = module_index.GrantState.new;
   final PhysicalReplicationSlot = module_index.PhysicalReplicationSlot.new;
-  final PhysicalReplicationSlotArgs =
-      module_index.PhysicalReplicationSlotArgs.new;
-  final PhysicalReplicationSlotState =
-      module_index.PhysicalReplicationSlotState.new;
-  final PhysicalReplicationSlotStateArgs =
-      module_index.PhysicalReplicationSlotState.new;
+  final PhysicalReplicationSlotArgs = module_index.PhysicalReplicationSlotArgs.new;
+  final PhysicalReplicationSlotState = module_index.PhysicalReplicationSlotState.new;
+  final PhysicalReplicationSlotStateArgs = module_index.PhysicalReplicationSlotState.new;
   final ProviderClientcert = module_index.ProviderClientcert.new;
   final ProviderClientcertArgs = module_index.ProviderClientcert.new;
   final Publication = module_index.Publication.new;
@@ -104,10 +101,8 @@ class _ProvidersModuleNamespace {
   final Postgresql = module_providers.ProviderProvider.new;
   final PostgresqlArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
-  final ProviderTerraformConfigResult =
-      module_providers.ProviderTerraformConfigResult.new;
-  final ProviderTerraformConfigResultArgs =
-      module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResult = module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResultArgs = module_providers.ProviderTerraformConfigResult.new;
   final TerraformConfigArgs = module_providers.TerraformConfigArgs.new;
   final TerraformConfigResult = module_providers.TerraformConfigResult.new;
   final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;

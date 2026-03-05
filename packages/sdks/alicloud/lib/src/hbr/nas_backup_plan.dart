@@ -267,43 +267,31 @@ import 'nas_backup_plan_state.dart';
 class NasBackupPlan extends pulumi.CustomResource {
   /// Backup type. Valid values: `COMPLETE`.
   late final pulumi.Output<String> backupType;
-
   /// This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
   late final pulumi.Output<String> createTime;
-
   /// The role name created in the original account RAM backup by the cross account managed by the current account.
   ///
   /// &gt; **Note** `alicloud.hbr.NasBackupPlan` depends on the `alicloud.nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
   late final pulumi.Output<String?> crossAccountRoleName;
-
   /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
   late final pulumi.Output<String> crossAccountType;
-
   /// The original account ID of the cross account backup managed by the current account.
   late final pulumi.Output<int?> crossAccountUserId;
-
   /// Whether to disable the backup task. Valid values: `true`, `false`.
   late final pulumi.Output<bool> disabled;
-
   /// The File System ID of Nas.
   late final pulumi.Output<String> fileSystemId;
-
   /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
   late final pulumi.Output<String> nasBackupPlanName;
-
   /// This parameter specifies whether to use Windows VSS to define a backup path.
   late final pulumi.Output<String?> options;
-
   /// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
   late final pulumi.Output<List<String>> paths;
-
   /// Backup retention days, the minimum is 1.
   late final pulumi.Output<String> retention;
-
   /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
   /// * `startTime` Backup start time, UNIX time seconds.
   late final pulumi.Output<String> schedule;
-
   /// The ID of Backup vault.
   late final pulumi.Output<String> vaultId;
 
@@ -316,11 +304,11 @@ class NasBackupPlan extends pulumi.CustomResource {
     NasBackupPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/nasBackupPlan:NasBackupPlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/nasBackupPlan:NasBackupPlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupType = registerOutput<String>('backupType');
     createTime = registerOutput<String>('createTime');
     crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
@@ -354,11 +342,11 @@ class NasBackupPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/nasBackupPlan:NasBackupPlan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/nasBackupPlan:NasBackupPlan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupType = registerOutput<String>('backupType');
     createTime = registerOutput<String>('createTime');
     crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');

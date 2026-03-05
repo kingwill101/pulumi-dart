@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Onboarding {
   /// The location of the development portal
   final pulumi.Input<List<String>>? developerPortalUri;
-
   /// Onboarding guide.
   final pulumi.Input<String>? instructions;
 
   /// Creates a new [Onboarding].
   /// [developerPortalUri] The location of the development portal
   /// [instructions] Onboarding guide.
-  Onboarding({this.developerPortalUri, this.instructions});
+  Onboarding({
+    this.developerPortalUri,
+    this.instructions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class Onboarding {
 
   factory Onboarding.fromMap(Map<String, dynamic> map) {
     return Onboarding(
-      developerPortalUri: (() {
-        final guardedValue = map['developerPortalUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      instructions: (() {
-        final guardedValue = map['instructions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      developerPortalUri: (() { final guardedValue = map['developerPortalUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      instructions: (() { final guardedValue = map['instructions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

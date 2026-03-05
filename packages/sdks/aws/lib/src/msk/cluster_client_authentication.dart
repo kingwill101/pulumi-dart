@@ -7,10 +7,8 @@ import 'cluster_client_authentication_tls.dart';
 class ClusterClientAuthentication {
   /// Configuration block for specifying SASL client authentication. See client_authentication sasl Argument Reference below.
   final pulumi.Input<ClusterClientAuthenticationSasl>? sasl;
-
   /// Configuration block for specifying TLS client authentication. See client_authentication tls Argument Reference below.
   final pulumi.Input<ClusterClientAuthenticationTls>? tls;
-
   /// Enables unauthenticated access.
   final pulumi.Input<bool>? unauthenticated;
 
@@ -18,49 +16,26 @@ class ClusterClientAuthentication {
   /// [sasl] Configuration block for specifying SASL client authentication. See client_authentication sasl Argument Reference below.
   /// [tls] Configuration block for specifying TLS client authentication. See client_authentication tls Argument Reference below.
   /// [unauthenticated] Enables unauthenticated access.
-  ClusterClientAuthentication({this.sasl, this.tls, this.unauthenticated});
+  ClusterClientAuthentication({
+    this.sasl,
+    this.tls,
+    this.unauthenticated,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sasl':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterClientAuthenticationSasl,
-            Map<String, dynamic>
-          >(sasl, (value) => value.toMap()),
-      'tls':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterClientAuthenticationTls,
-            Map<String, dynamic>
-          >(tls, (value) => value.toMap()),
+      'sasl': ?pulumi.Input.mapOptionalInputValue<ClusterClientAuthenticationSasl, Map<String, dynamic>>(sasl, (value) => value.toMap()),
+      'tls': ?pulumi.Input.mapOptionalInputValue<ClusterClientAuthenticationTls, Map<String, dynamic>>(tls, (value) => value.toMap()),
       'unauthenticated': ?unauthenticated,
     };
   }
 
   factory ClusterClientAuthentication.fromMap(Map<String, dynamic> map) {
     return ClusterClientAuthentication(
-      sasl: (() {
-        final guardedValue = map['sasl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterClientAuthenticationSasl.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tls: (() {
-        final guardedValue = map['tls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterClientAuthenticationTls.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      unauthenticated: (() {
-        final guardedValue = map['unauthenticated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      sasl: (() { final guardedValue = map['sasl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClientAuthenticationSasl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClientAuthenticationTls.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      unauthenticated: (() { final guardedValue = map['unauthenticated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

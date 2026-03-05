@@ -10,29 +10,20 @@ class WorkstationConfigHost {
 
   /// Creates a new [WorkstationConfigHost].
   /// [gceInstance] A runtime using a Compute Engine instance.
-  WorkstationConfigHost({this.gceInstance});
+  WorkstationConfigHost({
+    this.gceInstance,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gceInstance':
-          ?pulumi.Input.mapOptionalInputValue<
-            WorkstationConfigHostGceInstance,
-            Map<String, dynamic>
-          >(gceInstance, (value) => value.toMap()),
+      'gceInstance': ?pulumi.Input.mapOptionalInputValue<WorkstationConfigHostGceInstance, Map<String, dynamic>>(gceInstance, (value) => value.toMap()),
     };
   }
 
   factory WorkstationConfigHost.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigHost(
-      gceInstance: (() {
-        final guardedValue = map['gceInstance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WorkstationConfigHostGceInstance.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      gceInstance: (() { final guardedValue = map['gceInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkstationConfigHostGceInstance.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

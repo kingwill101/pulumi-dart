@@ -19,13 +19,10 @@ class CloudAuditLoggingFeatureSpecResponse {
     };
   }
 
-  factory CloudAuditLoggingFeatureSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudAuditLoggingFeatureSpecResponse.fromMap(Map<String, dynamic> map) {
     return CloudAuditLoggingFeatureSpecResponse(
-      allowlistedServiceAccounts: pulumi.Input.fromValue(
-        (map['allowlistedServiceAccounts'] as List).cast<String>(),
-      ),
+      allowlistedServiceAccounts: pulumi.Input.fromValue((map['allowlistedServiceAccounts'] as List).cast<String>()),
     );
   }
 }
+

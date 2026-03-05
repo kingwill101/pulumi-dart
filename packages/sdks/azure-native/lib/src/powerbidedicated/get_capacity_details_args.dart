@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCapacityDetailsArgs {
   /// The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
   final pulumi.Input<String> dedicatedCapacityName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetCapacityDetailsArgs {
 
   factory GetCapacityDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityDetailsArgs(
-      dedicatedCapacityName: pulumi.Input.fromValue(
-        map['dedicatedCapacityName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      dedicatedCapacityName: pulumi.Input.fromValue(map['dedicatedCapacityName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -12,10 +12,14 @@ class GetOriginAccessControlArgs {
 
   /// Creates a new [GetOriginAccessControlArgs].
   /// [id] The identifier for the origin access control settings. For example: `E2T5VTFBZJ3BJB`.
-  GetOriginAccessControlArgs({required this.id});
+  GetOriginAccessControlArgs({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetOriginAccessControlArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetOriginAccessControlArgs {
     );
   }
 }
+

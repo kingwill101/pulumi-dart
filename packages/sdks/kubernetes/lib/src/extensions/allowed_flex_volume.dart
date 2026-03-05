@@ -9,10 +9,14 @@ class AllowedFlexVolume {
 
   /// Creates a new [AllowedFlexVolume].
   /// [driver] driver is the name of the Flexvolume driver.
-  AllowedFlexVolume({required this.driver});
+  AllowedFlexVolume({
+    required this.driver,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'driver': driver};
+    return <String, dynamic>{
+      'driver': driver,
+    };
   }
 
   factory AllowedFlexVolume.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class AllowedFlexVolume {
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DynamicConfigurationVersionPropertiesResponse {
   /// Provisioning state of resource
   final pulumi.Input<String> provisioningState;
-
   /// Schema Id for configuration
   final pulumi.Input<String> schemaId;
-
   /// Values of configuration version
   final pulumi.Input<String> values;
 
@@ -31,15 +29,12 @@ class DynamicConfigurationVersionPropertiesResponse {
     };
   }
 
-  factory DynamicConfigurationVersionPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DynamicConfigurationVersionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DynamicConfigurationVersionPropertiesResponse(
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       schemaId: pulumi.Input.fromValue(map['schemaId'] as String),
       values: pulumi.Input.fromValue(map['values'] as String),
     );
   }
 }
+

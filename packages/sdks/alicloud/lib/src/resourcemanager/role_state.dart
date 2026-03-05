@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleState {
   /// The resource descriptor of the role.
   final pulumi.Input<String>? arn;
-
   /// The content of the permissions strategy that plays a role.
   final pulumi.Input<String>? assumeRolePolicyDocument;
-
   /// The description of the Resource Manager role.
   final pulumi.Input<String>? description;
-
   /// Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
   final pulumi.Input<int>? maxSessionDuration;
-
   /// This ID of Resource Manager role. The value is set to `role_name`.
   final pulumi.Input<String>? roleId;
-
   /// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
   final pulumi.Input<String>? roleName;
-
   /// Role update time.
   final pulumi.Input<String>? updateDate;
 
@@ -57,41 +51,14 @@ class RoleState {
 
   factory RoleState.fromMap(Map<String, dynamic> map) {
     return RoleState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      assumeRolePolicyDocument: (() {
-        final guardedValue = map['assumeRolePolicyDocument'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxSessionDuration: (() {
-        final guardedValue = map['maxSessionDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      roleId: (() {
-        final guardedValue = map['roleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleName: (() {
-        final guardedValue = map['roleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateDate: (() {
-        final guardedValue = map['updateDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      assumeRolePolicyDocument: (() { final guardedValue = map['assumeRolePolicyDocument']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxSessionDuration: (() { final guardedValue = map['maxSessionDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      roleId: (() { final guardedValue = map['roleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleName: (() { final guardedValue = map['roleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateDate: (() { final guardedValue = map['updateDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

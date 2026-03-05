@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionBuildConfigSourceStorageSource {
   /// Google Cloud Storage bucket containing the source
   final pulumi.Input<String>? bucket;
-
   /// Google Cloud Storage generation for the object. If the generation
   /// is omitted, the latest generation will be used.
   final pulumi.Input<int>? generation;
-
   /// Google Cloud Storage object containing the source.
   final pulumi.Input<String>? object_;
 
@@ -31,25 +29,12 @@ class FunctionBuildConfigSourceStorageSource {
     };
   }
 
-  factory FunctionBuildConfigSourceStorageSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FunctionBuildConfigSourceStorageSource.fromMap(Map<String, dynamic> map) {
     return FunctionBuildConfigSourceStorageSource(
-      bucket: (() {
-        final guardedValue = map['bucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      generation: (() {
-        final guardedValue = map['generation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      object_: (() {
-        final guardedValue = map['object'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      object_: (() { final guardedValue = map['object']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

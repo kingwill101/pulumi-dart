@@ -7,13 +7,10 @@ import 'operation_status_response.dart';
 class ExtensionResponse {
   /// Property values associated with the extension.
   final pulumi.Input<dynamic>? additionalExtensionProperties;
-
   /// Indicates whether the extension is enabled.
   final pulumi.Input<String> isEnabled;
-
   /// The extension name. Supported values are: &lt;br&gt;&lt;br&gt;**AgentlessDiscoveryForKubernetes** - Provides zero footprint, API-based discovery of Kubernetes clusters, their configurations and deployments. The collected data is used to create a contextualized security graph for Kubernetes clusters, provide risk hunting capabilities, and visualize risks and threats to  Kubernetes environments and workloads.&lt;br&gt;Available for CloudPosture plan and Containers plan.&lt;br&gt;&lt;br&gt;**OnUploadMalwareScanning** - Limits the GB to be scanned per month for each storage account within the subscription. Once this limit reached on a given storage account, Blobs won't be scanned during current calendar month.&lt;br&gt;Available for StorageAccounts plan (DefenderForStorageV2 sub plans).&lt;br&gt;&lt;br&gt;**SensitiveDataDiscovery** - Sensitive data discovery identifies Blob storage container with sensitive data such as credentials, credit cards, and more, to help prioritize and investigate security events.&lt;br&gt;Available for StorageAccounts plan (DefenderForStorageV2 sub plan) and CloudPosture plan.&lt;br&gt;&lt;br&gt;**ContainerRegistriesVulnerabilityAssessments** - Provides vulnerability management for images stored in your container registries.&lt;br&gt;Available for CloudPosture plan and Containers plan.&lt;br&gt;&lt;br&gt;**MdeDesignatedSubscription** - Direct onboarding is a seamless integration between Defender for Endpoint and Defender for Cloud that doesn’t require extra software deployment on your servers. The onboarded resources will be presented under a designated Azure Subscription you configure&lt;br&gt;Available for VirtualMachines plan (P1 and P2 sub plans).&lt;br&gt;&lt;br&gt;**AgentlessVmScanning** - Scans your machines for installed software, vulnerabilities, malware and secret scanning without relying on agents or impacting machine performance. Learn more here https://learn.microsoft.com/en-us/azure/defender-for-cloud/concept-agentless-data-collection.&lt;br&gt;Available for CloudPosture plan, VirtualMachines plan (P2 sub plan) and Containers plan.&lt;br&gt;&lt;br&gt;**EntraPermissionsManagement** - Permissions Management provides Cloud Infrastructure Entitlement Management (CIEM) capabilities that helps organizations to manage and control user access and entitlements in their cloud infrastructure - important attack vector for cloud environments.&lt;br&gt;Permissions Management analyzes all permissions and active usage, and suggests recommendations to reduce permissions to enforce the principle of least privilege. Learn more here https://learn.microsoft.com/en-us/azure/defender-for-cloud/permissions-management.&lt;br&gt;Available for CloudPosture plan. &lt;br&gt;&lt;br&gt;**FileIntegrityMonitoring** - File integrity monitoring (FIM), examines operating system files.&lt;br&gt;Windows registries, Linux system files, in real time, for changes that might indicate an attack.&lt;br&gt;Available for VirtualMachines plan (P2 sub plan). &lt;br&gt;&lt;br&gt;**ContainerSensor** - The sensor is based on IG and provides a rich threat detection suite for Kubernetes clusters, nodes, and workloads, powered by Microsoft leading threat intelligence, provides mapping to MITRE ATT&CK framework.&lt;br&gt;Available for Containers plan. &lt;br&gt;&lt;br&gt;**AIPromptEvidence** - Exposes the prompts passed between the user and the AI model as alert evidence. This helps classify and triage the alerts with relevant user context. The prompt snippets will include only segments of the user prompt or model response that were deemed suspicious and relevant for security classifications. The prompt evidence will be available through Defender portal as part of each alert.&lt;br&gt;Available for AI plan. &lt;br&gt;&lt;br&gt;
   final pulumi.Input<String> name;
-
   /// Optional. A status describing the success/failure of the extension's enablement/disablement operation.
   final pulumi.Input<OperationStatusResponse> operationStatus;
 
@@ -34,28 +31,17 @@ class ExtensionResponse {
       'additionalExtensionProperties': ?additionalExtensionProperties,
       'isEnabled': isEnabled,
       'name': name,
-      'operationStatus':
-          pulumi.Input.mapInputValue<
-            OperationStatusResponse,
-            Map<String, dynamic>
-          >(operationStatus, (value) => value.toMap()),
+      'operationStatus': pulumi.Input.mapInputValue<OperationStatusResponse, Map<String, dynamic>>(operationStatus, (value) => value.toMap()),
     };
   }
 
   factory ExtensionResponse.fromMap(Map<String, dynamic> map) {
     return ExtensionResponse(
-      additionalExtensionProperties: (() {
-        final guardedValue = map['additionalExtensionProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      additionalExtensionProperties: (() { final guardedValue = map['additionalExtensionProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       isEnabled: pulumi.Input.fromValue(map['isEnabled'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      operationStatus: pulumi.Input.fromValue(
-        OperationStatusResponse.fromMap(
-          (map['operationStatus']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      operationStatus: pulumi.Input.fromValue(OperationStatusResponse.fromMap((map['operationStatus']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

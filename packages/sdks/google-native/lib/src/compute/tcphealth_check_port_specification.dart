@@ -13,8 +13,7 @@ enum TCPHealthCheckPortSpecification {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown TCPHealthCheckPortSpecification value: $value',
-    );
+    throw ArgumentError('Unknown TCPHealthCheckPortSpecification value: $value');
   }
 }
+

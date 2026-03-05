@@ -279,24 +279,18 @@ import 'route_service_state.dart';
 class RouteService extends pulumi.CustomResource {
   /// The region of the network instances that access the cloud services.
   late final pulumi.Output<String> accessRegionId;
-
   /// The ID of the CEN instance.
   late final pulumi.Output<String> cenId;
-
   /// The description of the cloud service.
   late final pulumi.Output<String?> description;
-
   /// The domain name or IP address of the cloud service.
   late final pulumi.Output<String> host;
-
   /// The region of the cloud service.
   late final pulumi.Output<String> hostRegionId;
-
   /// The VPC associated with the cloud service.
   ///
   /// &gt; **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
   late final pulumi.Output<String> hostVpcId;
-
   /// The status of the cloud service.
   late final pulumi.Output<String> status;
 
@@ -309,11 +303,11 @@ class RouteService extends pulumi.CustomResource {
     RouteServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/routeService:RouteService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/routeService:RouteService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessRegionId = registerOutput<String>('accessRegionId');
     cenId = registerOutput<String>('cenId');
     description = registerOutput<String?>('description');
@@ -341,11 +335,11 @@ class RouteService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/routeService:RouteService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/routeService:RouteService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessRegionId = registerOutput<String>('accessRegionId');
     cenId = registerOutput<String>('cenId');
     description = registerOutput<String?>('description');

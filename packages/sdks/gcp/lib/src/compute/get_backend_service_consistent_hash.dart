@@ -8,13 +8,10 @@ class GetBackendServiceConsistentHash {
   /// that will be used as the hash key for the consistent hash load
   /// balancer. If the cookie is not present, it will be generated.
   /// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
-  final pulumi.Input<List<GetBackendServiceConsistentHashHttpCooky>>
-  httpCookies;
-
+  final pulumi.Input<List<GetBackendServiceConsistentHashHttpCooky>> httpCookies;
   /// The hash based on the value of the specified header field.
   /// This field is applicable if the sessionAffinity is set to HEADER_FIELD.
   final pulumi.Input<String> httpHeaderName;
-
   /// The minimum number of virtual nodes to use for the hash ring.
   /// Larger ring sizes result in more granular load
   /// distributions. If the number of hosts in the load balancing pool
@@ -35,18 +32,7 @@ class GetBackendServiceConsistentHash {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'httpCookies':
-          pulumi.Input.mapInputValue<
-            List<GetBackendServiceConsistentHashHttpCooky>,
-            List<Map<String, dynamic>>
-          >(
-            httpCookies,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetBackendServiceConsistentHashHttpCooky,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'httpCookies': pulumi.Input.mapInputValue<List<GetBackendServiceConsistentHashHttpCooky>, List<Map<String, dynamic>>>(httpCookies, (value) => pulumi.Input.encodeList<GetBackendServiceConsistentHashHttpCooky, Map<String, dynamic>>(value, (value) => value.toMap())),
       'httpHeaderName': httpHeaderName,
       'minimumRingSize': minimumRingSize,
     };
@@ -54,16 +40,10 @@ class GetBackendServiceConsistentHash {
 
   factory GetBackendServiceConsistentHash.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceConsistentHash(
-      httpCookies: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetBackendServiceConsistentHashHttpCooky>(
-          map['httpCookies']!,
-          (value) => GetBackendServiceConsistentHashHttpCooky.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      httpCookies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBackendServiceConsistentHashHttpCooky>(map['httpCookies']!, (value) => GetBackendServiceConsistentHashHttpCooky.fromMap((value as Map).cast<String, dynamic>()))),
       httpHeaderName: pulumi.Input.fromValue(map['httpHeaderName'] as String),
       minimumRingSize: pulumi.Input.fromValue(map['minimumRingSize'] as int),
     );
   }
 }
+

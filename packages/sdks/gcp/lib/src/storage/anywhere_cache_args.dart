@@ -11,13 +11,10 @@ class AnywhereCacheArgs {
   /// Default value is `admit-on-first-miss`.
   /// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
   final pulumi.Input<String>? admissionPolicy;
-
   /// A reference to Bucket resource
   final pulumi.Input<String> bucket;
-
   /// The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
   final pulumi.Input<String>? ttl;
-
   /// The zone in which the cache instance needs to be created. For example, `us-central1-a.`
   final pulumi.Input<String> zone;
 
@@ -44,18 +41,11 @@ class AnywhereCacheArgs {
 
   factory AnywhereCacheArgs.fromMap(Map<String, dynamic> map) {
     return AnywhereCacheArgs(
-      admissionPolicy: (() {
-        final guardedValue = map['admissionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      admissionPolicy: (() { final guardedValue = map['admissionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      ttl: (() {
-        final guardedValue = map['ttl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
+

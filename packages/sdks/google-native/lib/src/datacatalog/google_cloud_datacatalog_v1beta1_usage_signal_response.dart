@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1beta1UsageSignalResponse {
   /// The timestamp of the end of the usage statistics duration.
   final pulumi.Input<String> updateTime;
-
   /// Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
   final pulumi.Input<Map<String, String>> usageWithinTimeRange;
 
@@ -25,14 +24,11 @@ class GoogleCloudDatacatalogV1beta1UsageSignalResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1beta1UsageSignalResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogV1beta1UsageSignalResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1beta1UsageSignalResponse(
       updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
-      usageWithinTimeRange: pulumi.Input.fromValue(
-        (map['usageWithinTimeRange'] as Map).cast<String, String>(),
-      ),
+      usageWithinTimeRange: pulumi.Input.fromValue((map['usageWithinTimeRange'] as Map).cast<String, String>()),
     );
   }
 }
+

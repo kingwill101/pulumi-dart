@@ -6,7 +6,6 @@ import 'get_access_rules_rule.dart';
 /// Result data returned by getAccessRules.
 class GetAccessRulesResult {
   final String accessGroupId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -33,11 +32,7 @@ class GetAccessRulesResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'rules':
-          pulumi.Input.encodeList<GetAccessRulesRule, Map<String, dynamic>>(
-            rules,
-            (value) => value.toMap(),
-          ),
+      'rules': pulumi.Input.encodeList<GetAccessRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
     };
   }
 
@@ -46,16 +41,9 @@ class GetAccessRulesResult {
       accessGroupId: map['accessGroupId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      rules: pulumi.Input.decodeList<GetAccessRulesRule>(
-        map['rules']!,
-        (value) =>
-            GetAccessRulesRule.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rules: pulumi.Input.decodeList<GetAccessRulesRule>(map['rules']!, (value) => GetAccessRulesRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WireGroupEndpointInterconnect {
   /// (Optional)
   final pulumi.Input<String>? interconnect;
-
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> interconnectName;
-
   /// VLAN tags for the interconnect.
   final pulumi.Input<List<int>>? vlanTags;
 
@@ -32,19 +30,10 @@ class WireGroupEndpointInterconnect {
 
   factory WireGroupEndpointInterconnect.fromMap(Map<String, dynamic> map) {
     return WireGroupEndpointInterconnect(
-      interconnect: (() {
-        final guardedValue = map['interconnect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      interconnectName: pulumi.Input.fromValue(
-        map['interconnectName'] as String,
-      ),
-      vlanTags: (() {
-        final guardedValue = map['vlanTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
+      interconnect: (() { final guardedValue = map['interconnect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interconnectName: pulumi.Input.fromValue(map['interconnectName'] as String),
+      vlanTags: (() { final guardedValue = map['vlanTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
     );
   }
 }
+

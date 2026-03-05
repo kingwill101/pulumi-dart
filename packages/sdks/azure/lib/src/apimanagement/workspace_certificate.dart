@@ -283,32 +283,24 @@ import 'workspace_certificate_state.dart';
 class WorkspaceCertificate extends pulumi.CustomResource {
   /// Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementWorkspaceId;
-
   /// Specifies the base64-encoded string containing the certificate in PKCS#12 (.pfx) format.
   ///
   /// &gt; **Note:** This is required when `password` is specified. Exactly one of `certificate_data_base64` or `key_vault_secret_id` must be specified.
   late final pulumi.Output<String?> certificateDataBase64;
-
   /// The expiration date of the API Management Workspace Certificate.
   late final pulumi.Output<String> expiration;
-
   /// Specifies the ID of the key vault secret.
   ///
   /// &gt; **Note:** This is required when `user_assigned_identity_client_id` is specified. Exactly one of `certificate_data_base64` or `key_vault_secret_id` must be specified.
   late final pulumi.Output<String?> keyVaultSecretId;
-
   /// Specifies the name of the API Management Workspace Certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the password used to access the `certificate_data_base64`.
   late final pulumi.Output<String?> password;
-
   /// The subject name of the API Management Workspace Certificate.
   late final pulumi.Output<String> subject;
-
   /// The thumbprint of the API Management Workspace Certificate.
   late final pulumi.Output<String> thumbprint;
-
   /// Specifies the client ID of user-assigned identity to be used for accessing the `key_vault_secret_id`.
   late final pulumi.Output<String?> userAssignedIdentityClientId;
 
@@ -321,14 +313,12 @@ class WorkspaceCertificate extends pulumi.CustomResource {
     WorkspaceCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/workspaceCertificate:WorkspaceCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    apiManagementWorkspaceId = registerOutput<String>(
-      'apiManagementWorkspaceId',
-    );
+          'azure:apimanagement/workspaceCertificate:WorkspaceCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
     certificateDataBase64 = registerOutput<String?>('certificateDataBase64');
     expiration = registerOutput<String>('expiration');
     keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
@@ -336,9 +326,7 @@ class WorkspaceCertificate extends pulumi.CustomResource {
     password = registerOutput<String?>('password');
     subject = registerOutput<String>('subject');
     thumbprint = registerOutput<String>('thumbprint');
-    userAssignedIdentityClientId = registerOutput<String?>(
-      'userAssignedIdentityClientId',
-    );
+    userAssignedIdentityClientId = registerOutput<String?>('userAssignedIdentityClientId');
   }
 
   /// Gets an existing [WorkspaceCertificate] resource's state with the given [name] and [id].
@@ -359,14 +347,12 @@ class WorkspaceCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/workspaceCertificate:WorkspaceCertificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    apiManagementWorkspaceId = registerOutput<String>(
-      'apiManagementWorkspaceId',
-    );
+          'azure:apimanagement/workspaceCertificate:WorkspaceCertificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
     certificateDataBase64 = registerOutput<String?>('certificateDataBase64');
     expiration = registerOutput<String>('expiration');
     keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
@@ -374,8 +360,6 @@ class WorkspaceCertificate extends pulumi.CustomResource {
     password = registerOutput<String?>('password');
     subject = registerOutput<String>('subject');
     thumbprint = registerOutput<String>('thumbprint');
-    userAssignedIdentityClientId = registerOutput<String?>(
-      'userAssignedIdentityClientId',
-    );
+    userAssignedIdentityClientId = registerOutput<String?>('userAssignedIdentityClientId');
   }
 }

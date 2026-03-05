@@ -10,6 +10,15 @@ typedef Inputs = Map<String, Input<dynamic>>;
 /// other resources. This preserves dependency information through the graph so
 /// the engine can plan operations correctly.
 ///
+/// In application code, most generated resource arguments are declared as
+/// `Input<T>` or nullable `Input<T>?`. This lets callers provide either:
+/// - plain Dart values such as `String`, `int`, `bool`, `Map`, and `List`
+/// - computed [Output] values from other resources
+/// - values already wrapped with [Input.fromValue] or [Input.fromOutput]
+///
+/// Use [Input] when you are describing desired infrastructure state. Use
+/// [Output] when you are consuming values produced by the engine.
+///
 /// ## Example
 /// ```dart
 /// final plain = Input.fromValue('prod');
@@ -23,6 +32,9 @@ typedef Inputs = Map<String, Input<dynamic>>;
 ///
 abstract class Input<T> {
   /// Converts this input to an [Output].
+  ///
+  /// This is the normalization boundary between "accept either plain values or
+  /// outputs" and "work with resolved output semantics".
   Output<T> toOutput();
 
   /// Wraps an existing [Output] as an [Input].
@@ -66,6 +78,8 @@ abstract class Input<T> {
   static Input<T> input<T>(Object? value) => asInput<T>(value);
 
   /// Converts [value] to an [Input] and then to an [Output].
+  ///
+  /// This is a convenience for APIs that want output semantics immediately.
   static Output<T> output<T>(Object? value) => asInput<T>(value).toOutput();
 
   /// Like [asInput], but returns `null` when [value] is `null`.
@@ -198,6 +212,11 @@ class _ValueInput<T> implements Input<T> {
 /// Ergonomic value/output conversions for Pulumi program code.
 extension PulumiInputOutputExtensions<T> on T {
   /// Converts this value into a Pulumi [Input].
+  ///
+  /// Example:
+  /// ```dart
+  /// final replicas = 3.input();
+  /// ```
   Input<T> input() => Input.asInput(this);
 
   /// Converts this value into a Pulumi [Output].

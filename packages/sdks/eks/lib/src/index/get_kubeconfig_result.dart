@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKubeconfig.
 class GetKubeconfigResult {
   /// The kubeconfig for the cluster.
@@ -7,13 +8,20 @@ class GetKubeconfigResult {
 
   /// Creates a new [GetKubeconfigResult].
   /// [result] The kubeconfig for the cluster.
-  GetKubeconfigResult({required this.result});
+  GetKubeconfigResult({
+    required this.result,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'result': result};
+    return <String, dynamic>{
+      'result': result,
+    };
   }
 
   factory GetKubeconfigResult.fromMap(Map<String, dynamic> map) {
-    return GetKubeconfigResult(result: map['result'] as String);
+    return GetKubeconfigResult(
+      result: map['result'] as String,
+    );
   }
 }
+

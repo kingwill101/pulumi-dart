@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiConstantParameter {
   /// The description of Constant parameter.
   final pulumi.Input<String>? description;
-
   /// Constant parameter location; values: 'HEAD' and 'QUERY'.
   final pulumi.Input<String> in_;
-
   /// Constant parameter name.
   final pulumi.Input<String> name;
-
   /// Constant parameter value.
   final pulumi.Input<String> value;
 
@@ -38,14 +35,11 @@ class ApiConstantParameter {
 
   factory ApiConstantParameter.fromMap(Map<String, dynamic> map) {
     return ApiConstantParameter(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       in_: pulumi.Input.fromValue(map['in'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

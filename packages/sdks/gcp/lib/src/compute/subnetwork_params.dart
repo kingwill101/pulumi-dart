@@ -13,21 +13,20 @@ class SubnetworkParams {
 
   /// Creates a new [SubnetworkParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the subnetwork. Tag keys and values have the
-  SubnetworkParams({this.resourceManagerTags});
+  SubnetworkParams({
+    this.resourceManagerTags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceManagerTags': ?resourceManagerTags};
+    return <String, dynamic>{
+      'resourceManagerTags': ?resourceManagerTags,
+    };
   }
 
   factory SubnetworkParams.fromMap(Map<String, dynamic> map) {
     return SubnetworkParams(
-      resourceManagerTags: (() {
-        final guardedValue = map['resourceManagerTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      resourceManagerTags: (() { final guardedValue = map['resourceManagerTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

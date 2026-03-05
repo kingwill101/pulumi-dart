@@ -10,26 +10,20 @@ class ListAccountKeysResult {
 
   /// Creates a new [ListAccountKeysResult].
   /// [value] Account keys
-  ListAccountKeysResult({required this.value});
+  ListAccountKeysResult({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value':
-          pulumi.Input.encodeList<KeyDescriptionResponse, Map<String, dynamic>>(
-            value,
-            (value) => value.toMap(),
-          ),
+      'value': pulumi.Input.encodeList<KeyDescriptionResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory ListAccountKeysResult.fromMap(Map<String, dynamic> map) {
     return ListAccountKeysResult(
-      value: pulumi.Input.decodeList<KeyDescriptionResponse>(
-        map['value']!,
-        (value) => KeyDescriptionResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      value: pulumi.Input.decodeList<KeyDescriptionResponse>(map['value']!, (value) => KeyDescriptionResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineKeyVaultCredential {
   /// The Azure Key Vault url. Changing this forces a new resource to be created.
   final pulumi.Input<String> keyVaultUrl;
-
   /// The credential name.
   final pulumi.Input<String> name;
-
   /// The service principal name to access key vault. Changing this forces a new resource to be created.
   final pulumi.Input<String> servicePrincipalName;
-
   /// The service principal name secret to access key vault. Changing this forces a new resource to be created.
   final pulumi.Input<String> servicePrincipalSecret;
 
@@ -40,12 +37,9 @@ class VirtualMachineKeyVaultCredential {
     return VirtualMachineKeyVaultCredential(
       keyVaultUrl: pulumi.Input.fromValue(map['keyVaultUrl'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      servicePrincipalName: pulumi.Input.fromValue(
-        map['servicePrincipalName'] as String,
-      ),
-      servicePrincipalSecret: pulumi.Input.fromValue(
-        map['servicePrincipalSecret'] as String,
-      ),
+      servicePrincipalName: pulumi.Input.fromValue(map['servicePrincipalName'] as String),
+      servicePrincipalSecret: pulumi.Input.fromValue(map['servicePrincipalSecret'] as String),
     );
   }
 }
+

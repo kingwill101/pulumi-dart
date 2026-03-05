@@ -7,16 +7,12 @@ import 'enterprise_crm_eventbus_stats_dimensions.dart';
 class EnterpriseCrmEventbusStats {
   /// Dimensions that these stats have been aggregated on.
   final pulumi.Input<EnterpriseCrmEventbusStatsDimensions>? dimensions;
-
   /// Average duration in seconds.
   final pulumi.Input<double>? durationInSeconds;
-
   /// Average error rate.
   final pulumi.Input<double>? errorRate;
-
   /// Queries per second.
   final pulumi.Input<double>? qps;
-
   /// Average warning rate.
   final pulumi.Input<double>? warningRate;
 
@@ -36,11 +32,7 @@ class EnterpriseCrmEventbusStats {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions':
-          ?pulumi.Input.mapOptionalInputValue<
-            EnterpriseCrmEventbusStatsDimensions,
-            Map<String, dynamic>
-          >(dimensions, (value) => value.toMap()),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<EnterpriseCrmEventbusStatsDimensions, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
       'durationInSeconds': ?durationInSeconds,
       'errorRate': ?errorRate,
       'qps': ?qps,
@@ -50,35 +42,12 @@ class EnterpriseCrmEventbusStats {
 
   factory EnterpriseCrmEventbusStats.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusStats(
-      dimensions: (() {
-        final guardedValue = map['dimensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EnterpriseCrmEventbusStatsDimensions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      durationInSeconds: (() {
-        final guardedValue = map['durationInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      errorRate: (() {
-        final guardedValue = map['errorRate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      qps: (() {
-        final guardedValue = map['qps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      warningRate: (() {
-        final guardedValue = map['warningRate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseCrmEventbusStatsDimensions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      durationInSeconds: (() { final guardedValue = map['durationInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      errorRate: (() { final guardedValue = map['errorRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      qps: (() { final guardedValue = map['qps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      warningRate: (() { final guardedValue = map['warningRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

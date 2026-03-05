@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlBackupFileInfoResponse {
   /// Copy Duration in seconds
   final pulumi.Input<int> copyDuration;
-
   /// Copy throughput in KBps
   final pulumi.Input<double> copyThroughput;
-
   /// Bytes read
   final pulumi.Input<double> dataRead;
-
   /// Bytes written
   final pulumi.Input<double> dataWritten;
-
   /// Media family sequence number
   final pulumi.Input<int> familySequenceNumber;
-
   /// File name.
   final pulumi.Input<String> fileName;
-
   /// Status of the file. (Initial, Uploading, Uploaded, Restoring, Restored or Skipped)
   final pulumi.Input<String> status;
-
   /// File size in bytes
   final pulumi.Input<double> totalSize;
 
@@ -67,12 +60,11 @@ class SqlBackupFileInfoResponse {
       copyThroughput: pulumi.Input.fromValue(map['copyThroughput'] as double),
       dataRead: pulumi.Input.fromValue(map['dataRead'] as double),
       dataWritten: pulumi.Input.fromValue(map['dataWritten'] as double),
-      familySequenceNumber: pulumi.Input.fromValue(
-        map['familySequenceNumber'] as int,
-      ),
+      familySequenceNumber: pulumi.Input.fromValue(map['familySequenceNumber'] as int),
       fileName: pulumi.Input.fromValue(map['fileName'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       totalSize: pulumi.Input.fromValue(map['totalSize'] as double),
     );
   }
 }
+

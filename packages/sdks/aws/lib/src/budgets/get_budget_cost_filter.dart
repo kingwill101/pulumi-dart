@@ -12,10 +12,16 @@ class GetBudgetCostFilter {
   /// Creates a new [GetBudgetCostFilter].
   /// [name] The name of a budget. Unique within accounts.
   /// [values] Required.
-  GetBudgetCostFilter({required this.name, required this.values});
+  GetBudgetCostFilter({
+    required this.name,
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'values': values};
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetBudgetCostFilter.fromMap(Map<String, dynamic> map) {
@@ -25,3 +31,4 @@ class GetBudgetCostFilter {
     );
   }
 }
+

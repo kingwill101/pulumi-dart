@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class XmlFilterRuleset {
   /// The default XML namespace used for schema validation.
   final pulumi.Input<String>? defaultNamespace;
-
   /// Defines the method for referencing the xml schema.
   final pulumi.Input<String>? reference;
-
   /// The inline XSD schema to be used for validation.
   final pulumi.Input<String>? schema;
 
@@ -17,7 +15,11 @@ class XmlFilterRuleset {
   /// [defaultNamespace] The default XML namespace used for schema validation.
   /// [reference] Defines the method for referencing the xml schema.
   /// [schema] The inline XSD schema to be used for validation.
-  XmlFilterRuleset({this.defaultNamespace, this.reference, this.schema});
+  XmlFilterRuleset({
+    this.defaultNamespace,
+    this.reference,
+    this.schema,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class XmlFilterRuleset {
 
   factory XmlFilterRuleset.fromMap(Map<String, dynamic> map) {
     return XmlFilterRuleset(
-      defaultNamespace: (() {
-        final guardedValue = map['defaultNamespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reference: (() {
-        final guardedValue = map['reference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schema: (() {
-        final guardedValue = map['schema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      defaultNamespace: (() { final guardedValue = map['defaultNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reference: (() { final guardedValue = map['reference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

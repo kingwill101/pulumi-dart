@@ -7,44 +7,31 @@ import 'get_elasticsearch_log.dart';
 class GetElasticsearchResult {
   /// The ID of the Deployment within Elastic Cloud.
   final String elasticCloudDeploymentId;
-
   /// The Email Address which is associated with this Elasticsearch account.
   final String elasticCloudEmailAddress;
-
   /// The Default URL used for Single Sign On (SSO) to Elastic Cloud.
   final String elasticCloudSsoDefaultUrl;
-
   /// The ID of the User Account within Elastic Cloud.
   final String elasticCloudUserId;
-
   /// The URL to the Elasticsearch Service associated with this Elasticsearch.
   final String elasticsearchServiceUrl;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The URL to the Kibana Dashboard associated with this Elasticsearch.
   final String kibanaServiceUrl;
-
   /// The URI used for SSO to the Kibana Dashboard associated with this Elasticsearch.
   final String kibanaSsoUri;
-
   /// The Azure Region in which this Elasticsearch exists.
   final String location;
-
   /// A `logs` block as defined below.
   final List<GetElasticsearchLog> logs;
-
   /// Specifies if monitoring is enabled on this Elasticsearch or not.
   final bool monitoringEnabled;
-
   /// The name (key) of the Tag which should be filtered.
   final String name;
   final String resourceGroupName;
-
   /// The name of the SKU used for this Elasticsearch.
   final String skuName;
-
   /// A mapping of tags assigned to the Elasticsearch.
   final Map<String, String> tags;
 
@@ -93,11 +80,7 @@ class GetElasticsearchResult {
       'kibanaServiceUrl': kibanaServiceUrl,
       'kibanaSsoUri': kibanaSsoUri,
       'location': location,
-      'logs':
-          pulumi.Input.encodeList<GetElasticsearchLog, Map<String, dynamic>>(
-            logs,
-            (value) => value.toMap(),
-          ),
+      'logs': pulumi.Input.encodeList<GetElasticsearchLog, Map<String, dynamic>>(logs, (value) => value.toMap()),
       'monitoringEnabled': monitoringEnabled,
       'name': name,
       'resourceGroupName': resourceGroupName,
@@ -117,11 +100,7 @@ class GetElasticsearchResult {
       kibanaServiceUrl: map['kibanaServiceUrl'] as String,
       kibanaSsoUri: map['kibanaSsoUri'] as String,
       location: map['location'] as String,
-      logs: pulumi.Input.decodeList<GetElasticsearchLog>(
-        map['logs']!,
-        (value) =>
-            GetElasticsearchLog.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      logs: pulumi.Input.decodeList<GetElasticsearchLog>(map['logs']!, (value) => GetElasticsearchLog.fromMap((value as Map).cast<String, dynamic>())),
       monitoringEnabled: map['monitoringEnabled'] as bool,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
@@ -130,3 +109,4 @@ class GetElasticsearchResult {
     );
   }
 }
+

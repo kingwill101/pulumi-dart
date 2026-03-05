@@ -7,17 +7,13 @@ enum HDInsightOndemandClusterResourceGroupAuthenticationType {
   const HDInsightOndemandClusterResourceGroupAuthenticationType(this.wireValue);
   final String wireValue;
 
-  static HDInsightOndemandClusterResourceGroupAuthenticationType fromValue(
-    String value,
-  ) {
-    for (final item
-        in HDInsightOndemandClusterResourceGroupAuthenticationType.values) {
+  static HDInsightOndemandClusterResourceGroupAuthenticationType fromValue(String value) {
+    for (final item in HDInsightOndemandClusterResourceGroupAuthenticationType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown HDInsightOndemandClusterResourceGroupAuthenticationType value: $value',
-    );
+    throw ArgumentError('Unknown HDInsightOndemandClusterResourceGroupAuthenticationType value: $value');
   }
 }
+

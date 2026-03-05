@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MysqlColumnResponseDatastreamV1alpha1 {
   /// Column collation.
   final pulumi.Input<String> collation;
-
   /// Column name.
   final pulumi.Input<String> columnName;
-
   /// The MySQL data type. Full data types list can be found here: https://dev.mysql.com/doc/refman/8.0/en/data-types.html
   final pulumi.Input<String> dataType;
-
   /// Column length.
   final pulumi.Input<int> length;
-
   /// Whether or not the column can accept a null value.
   final pulumi.Input<bool> nullable;
-
   /// The ordinal position of the column in the table.
   final pulumi.Input<int> ordinalPosition;
-
   /// Whether or not the column represents a primary key.
   final pulumi.Input<bool> primaryKey;
 
@@ -55,9 +49,7 @@ class MysqlColumnResponseDatastreamV1alpha1 {
     };
   }
 
-  factory MysqlColumnResponseDatastreamV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MysqlColumnResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return MysqlColumnResponseDatastreamV1alpha1(
       collation: pulumi.Input.fromValue(map['collation'] as String),
       columnName: pulumi.Input.fromValue(map['columnName'] as String),
@@ -69,3 +61,4 @@ class MysqlColumnResponseDatastreamV1alpha1 {
     );
   }
 }
+

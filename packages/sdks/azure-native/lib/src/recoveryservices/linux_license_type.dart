@@ -16,3 +16,4 @@ enum LinuxLicenseType {
     throw ArgumentError('Unknown LinuxLicenseType value: $value');
   }
 }
+

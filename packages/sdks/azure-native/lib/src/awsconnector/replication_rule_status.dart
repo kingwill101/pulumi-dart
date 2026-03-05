@@ -15,3 +15,4 @@ enum ReplicationRuleStatus {
     throw ArgumentError('Unknown ReplicationRuleStatus value: $value');
   }
 }
+

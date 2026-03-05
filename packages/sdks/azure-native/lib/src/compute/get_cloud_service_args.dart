@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCloudServiceArgs {
   /// Name of the cloud service.
   final pulumi.Input<String> cloudServiceName;
-
   /// Name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetCloudServiceArgs {
 
   factory GetCloudServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudServiceArgs(
-      cloudServiceName: pulumi.Input.fromValue(
-        map['cloudServiceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      cloudServiceName: pulumi.Input.fromValue(map['cloudServiceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -13,18 +13,15 @@ class ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
-  factory ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration.fromMap(Map<String, dynamic> map) {
     return ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

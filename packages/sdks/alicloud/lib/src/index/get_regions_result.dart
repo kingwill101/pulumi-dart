@@ -6,15 +6,12 @@ import 'get_regions_region.dart';
 /// Result data returned by getRegions.
 class GetRegionsResult {
   final bool current;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of region IDs.
   final List<String> ids;
   final String name;
   final String? outputFile;
-
   /// A list of regions. Each element contains the following attributes:
   final List<GetRegionsRegion> regions;
 
@@ -41,11 +38,7 @@ class GetRegionsResult {
       'ids': ids,
       'name': name,
       'outputFile': ?outputFile,
-      'regions':
-          pulumi.Input.encodeList<GetRegionsRegion, Map<String, dynamic>>(
-            regions,
-            (value) => value.toMap(),
-          ),
+      'regions': pulumi.Input.encodeList<GetRegionsRegion, Map<String, dynamic>>(regions, (value) => value.toMap()),
     };
   }
 
@@ -55,16 +48,9 @@ class GetRegionsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       name: map['name'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      regions: pulumi.Input.decodeList<GetRegionsRegion>(
-        map['regions']!,
-        (value) =>
-            GetRegionsRegion.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      regions: pulumi.Input.decodeList<GetRegionsRegion>(map['regions']!, (value) => GetRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

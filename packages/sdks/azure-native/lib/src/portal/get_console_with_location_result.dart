@@ -6,7 +6,6 @@ import 'console_properties_response.dart';
 class GetConsoleWithLocationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Cloud shell console properties.
   final ConsolePropertiesResponse properties;
 
@@ -28,9 +27,8 @@ class GetConsoleWithLocationResult {
   factory GetConsoleWithLocationResult.fromMap(Map<String, dynamic> map) {
     return GetConsoleWithLocationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      properties: ConsolePropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: ConsolePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

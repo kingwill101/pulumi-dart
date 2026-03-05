@@ -16,3 +16,4 @@ enum SchemaType {
     throw ArgumentError('Unknown SchemaType value: $value');
   }
 }
+

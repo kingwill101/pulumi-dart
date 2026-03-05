@@ -9,25 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransferRequestArgs {
   /// A description of the zone tranfer request.
   final pulumi.Input<String>? description;
-
   /// Disable wait for zone to reach ACTIVE
   /// status. The check is enabled by default. If this argument is true, zone
   /// will be considered as created/updated if OpenStack request returned success.
   final pulumi.Input<bool>? disableStatusCheck;
   final pulumi.Input<String>? key;
-
   /// The region in which to obtain the V2 DNS client.
   /// If omitted, the `region` argument of the provider is used.
   /// Changing this creates a new DNS zone zone transfer accept.
   final pulumi.Input<String>? region;
-
   /// The target Project ID to transfer to.
   final pulumi.Input<String>? targetProjectId;
-
   /// Map of additional options. Changing this creates a
   /// new transfer request.
   final pulumi.Input<Map<String, String>>? valueSpecs;
-
   /// The ID of the zone for which to create the transfer
   /// request.
   final pulumi.Input<String> zoneId;
@@ -64,39 +59,14 @@ class TransferRequestArgs {
 
   factory TransferRequestArgs.fromMap(Map<String, dynamic> map) {
     return TransferRequestArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disableStatusCheck: (() {
-        final guardedValue = map['disableStatusCheck'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetProjectId: (() {
-        final guardedValue = map['targetProjectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      valueSpecs: (() {
-        final guardedValue = map['valueSpecs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disableStatusCheck: (() { final guardedValue = map['disableStatusCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetProjectId: (() { final guardedValue = map['targetProjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      valueSpecs: (() { final guardedValue = map['valueSpecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
+

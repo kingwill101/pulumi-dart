@@ -9,13 +9,20 @@ class NetAppVolume {
 
   /// Creates a new [NetAppVolume].
   /// [id] Azure resource ID of the NetApp volume
-  NetAppVolume({required this.id});
+  NetAppVolume({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory NetAppVolume.fromMap(Map<String, dynamic> map) {
-    return NetAppVolume(id: pulumi.Input.fromValue(map['id'] as String));
+    return NetAppVolume(
+      id: pulumi.Input.fromValue(map['id'] as String),
+    );
   }
 }
+

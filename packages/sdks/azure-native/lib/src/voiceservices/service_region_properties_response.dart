@@ -7,7 +7,6 @@ import 'primary_region_properties_response.dart';
 class ServiceRegionPropertiesResponse {
   /// The name of the region in which the resources needed for Teams Calling will be deployed.
   final pulumi.Input<String> name;
-
   /// The configuration used in this region as primary, and other regions as backup.
   final pulumi.Input<PrimaryRegionPropertiesResponse> primaryRegionProperties;
 
@@ -22,22 +21,15 @@ class ServiceRegionPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'primaryRegionProperties':
-          pulumi.Input.mapInputValue<
-            PrimaryRegionPropertiesResponse,
-            Map<String, dynamic>
-          >(primaryRegionProperties, (value) => value.toMap()),
+      'primaryRegionProperties': pulumi.Input.mapInputValue<PrimaryRegionPropertiesResponse, Map<String, dynamic>>(primaryRegionProperties, (value) => value.toMap()),
     };
   }
 
   factory ServiceRegionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ServiceRegionPropertiesResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      primaryRegionProperties: pulumi.Input.fromValue(
-        PrimaryRegionPropertiesResponse.fromMap(
-          (map['primaryRegionProperties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      primaryRegionProperties: pulumi.Input.fromValue(PrimaryRegionPropertiesResponse.fromMap((map['primaryRegionProperties']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

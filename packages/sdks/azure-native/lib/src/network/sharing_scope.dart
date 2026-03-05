@@ -15,3 +15,4 @@ enum SharingScope {
     throw ArgumentError('Unknown SharingScope value: $value');
   }
 }
+

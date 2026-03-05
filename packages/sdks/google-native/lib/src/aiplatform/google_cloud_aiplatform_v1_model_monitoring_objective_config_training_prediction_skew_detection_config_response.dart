@@ -7,11 +7,8 @@ import 'google_cloud_aiplatform_v1_threshold_config_response.dart';
 class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse {
   /// Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
   final pulumi.Input<Map<String, String>> attributionScoreSkewThresholds;
-
   /// Skew anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
-  final pulumi.Input<GoogleCloudAiplatformV1ThresholdConfigResponse>
-  defaultSkewThreshold;
-
+  final pulumi.Input<GoogleCloudAiplatformV1ThresholdConfigResponse> defaultSkewThreshold;
   /// Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
   final pulumi.Input<Map<String, String>> skewThresholds;
 
@@ -28,30 +25,17 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSke
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attributionScoreSkewThresholds': attributionScoreSkewThresholds,
-      'defaultSkewThreshold':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAiplatformV1ThresholdConfigResponse,
-            Map<String, dynamic>
-          >(defaultSkewThreshold, (value) => value.toMap()),
+      'defaultSkewThreshold': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1ThresholdConfigResponse, Map<String, dynamic>>(defaultSkewThreshold, (value) => value.toMap()),
       'skewThresholds': skewThresholds,
     };
   }
 
-  factory GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse(
-      attributionScoreSkewThresholds: pulumi.Input.fromValue(
-        (map['attributionScoreSkewThresholds'] as Map).cast<String, String>(),
-      ),
-      defaultSkewThreshold: pulumi.Input.fromValue(
-        GoogleCloudAiplatformV1ThresholdConfigResponse.fromMap(
-          (map['defaultSkewThreshold']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      skewThresholds: pulumi.Input.fromValue(
-        (map['skewThresholds'] as Map).cast<String, String>(),
-      ),
+      attributionScoreSkewThresholds: pulumi.Input.fromValue((map['attributionScoreSkewThresholds'] as Map).cast<String, String>()),
+      defaultSkewThreshold: pulumi.Input.fromValue(GoogleCloudAiplatformV1ThresholdConfigResponse.fromMap((map['defaultSkewThreshold']! as Map).cast<String, dynamic>())),
+      skewThresholds: pulumi.Input.fromValue((map['skewThresholds'] as Map).cast<String, String>()),
     );
   }
 }
+

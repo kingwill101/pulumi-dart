@@ -8,50 +8,29 @@ import 'google_privacy_dlp_v2_word_list.dart';
 class GooglePrivacyDlpV2Dictionary {
   /// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
   final pulumi.Input<GooglePrivacyDlpV2CloudStoragePath>? cloudStoragePath;
-
   /// List of words or phrases to search for.
   final pulumi.Input<GooglePrivacyDlpV2WordList>? wordList;
 
   /// Creates a new [GooglePrivacyDlpV2Dictionary].
   /// [cloudStoragePath] Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
   /// [wordList] List of words or phrases to search for.
-  GooglePrivacyDlpV2Dictionary({this.cloudStoragePath, this.wordList});
+  GooglePrivacyDlpV2Dictionary({
+    this.cloudStoragePath,
+    this.wordList,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudStoragePath':
-          ?pulumi.Input.mapOptionalInputValue<
-            GooglePrivacyDlpV2CloudStoragePath,
-            Map<String, dynamic>
-          >(cloudStoragePath, (value) => value.toMap()),
-      'wordList':
-          ?pulumi.Input.mapOptionalInputValue<
-            GooglePrivacyDlpV2WordList,
-            Map<String, dynamic>
-          >(wordList, (value) => value.toMap()),
+      'cloudStoragePath': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2CloudStoragePath, Map<String, dynamic>>(cloudStoragePath, (value) => value.toMap()),
+      'wordList': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2WordList, Map<String, dynamic>>(wordList, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2Dictionary.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Dictionary(
-      cloudStoragePath: (() {
-        final guardedValue = map['cloudStoragePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GooglePrivacyDlpV2CloudStoragePath.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      wordList: (() {
-        final guardedValue = map['wordList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GooglePrivacyDlpV2WordList.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      cloudStoragePath: (() { final guardedValue = map['cloudStoragePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GooglePrivacyDlpV2CloudStoragePath.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      wordList: (() { final guardedValue = map['wordList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GooglePrivacyDlpV2WordList.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

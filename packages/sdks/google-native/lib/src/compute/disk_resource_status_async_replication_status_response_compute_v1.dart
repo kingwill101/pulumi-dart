@@ -12,14 +12,15 @@ class DiskResourceStatusAsyncReplicationStatusResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': state};
+    return <String, dynamic>{
+      'state': state,
+    };
   }
 
-  factory DiskResourceStatusAsyncReplicationStatusResponseComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiskResourceStatusAsyncReplicationStatusResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return DiskResourceStatusAsyncReplicationStatusResponseComputeV1(
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

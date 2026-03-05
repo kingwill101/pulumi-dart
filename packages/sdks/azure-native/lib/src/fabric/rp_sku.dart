@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RpSku {
   /// The name of the SKU level.
   final pulumi.Input<String> name;
-
   /// The name of the Azure pricing tier to which the SKU applies.
   final pulumi.Input<String> tier;
 
   /// Creates a new [RpSku].
   /// [name] The name of the SKU level.
   /// [tier] The name of the Azure pricing tier to which the SKU applies.
-  RpSku({required this.name, required this.tier});
+  RpSku({
+    required this.name,
+    required this.tier,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'tier': tier};
+    return <String, dynamic>{
+      'name': name,
+      'tier': tier,
+    };
   }
 
   factory RpSku.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class RpSku {
     );
   }
 }
+

@@ -151,7 +151,6 @@ class TenantRoleUserAttachment extends pulumi.CustomResource {
   /// 3. If the user is a RAM role, the AccountId format is v4_UID.
   /// Example: v4_300007628597555555
   late final pulumi.Output<String> accountId;
-
   /// Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
   late final pulumi.Output<String> tenantRole;
 
@@ -164,11 +163,11 @@ class TenantRoleUserAttachment extends pulumi.CustomResource {
     TenantRoleUserAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     tenantRole = registerOutput<String>('tenantRole');
   }
@@ -191,11 +190,11 @@ class TenantRoleUserAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     tenantRole = registerOutput<String>('tenantRole');
   }

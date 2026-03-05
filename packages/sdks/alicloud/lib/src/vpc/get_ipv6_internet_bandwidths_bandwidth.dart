@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpv6InternetBandwidthsBandwidth {
   /// The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`.
   final pulumi.Input<int> bandwidth;
-
   /// The ID of the Ipv6 Internet Bandwidth.
   final pulumi.Input<String> id;
-
   /// The metering method of the Internet bandwidth resources of the IPv6 gateway.
   final pulumi.Input<String> internetChargeType;
-
   /// The ID of the IPv6 address.
   final pulumi.Input<String> ipv6AddressId;
-
   /// The ID of the IPv6 gateway.
   final pulumi.Input<String> ipv6GatewayId;
-
   /// The ID of the Ipv6 Internet Bandwidth.
   final pulumi.Input<String> ipv6InternetBandwidthId;
-
   /// The payment type of the resource.
   final pulumi.Input<String> paymentType;
-
   /// The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
   final pulumi.Input<String> status;
 
@@ -64,16 +57,13 @@ class GetIpv6InternetBandwidthsBandwidth {
     return GetIpv6InternetBandwidthsBandwidth(
       bandwidth: pulumi.Input.fromValue(map['bandwidth'] as int),
       id: pulumi.Input.fromValue(map['id'] as String),
-      internetChargeType: pulumi.Input.fromValue(
-        map['internetChargeType'] as String,
-      ),
+      internetChargeType: pulumi.Input.fromValue(map['internetChargeType'] as String),
       ipv6AddressId: pulumi.Input.fromValue(map['ipv6AddressId'] as String),
       ipv6GatewayId: pulumi.Input.fromValue(map['ipv6GatewayId'] as String),
-      ipv6InternetBandwidthId: pulumi.Input.fromValue(
-        map['ipv6InternetBandwidthId'] as String,
-      ),
+      ipv6InternetBandwidthId: pulumi.Input.fromValue(map['ipv6InternetBandwidthId'] as String),
       paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

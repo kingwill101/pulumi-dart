@@ -112,10 +112,8 @@ import 'working_storage_state.dart';
 class WorkingStorage extends pulumi.CustomResource {
   /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
   late final pulumi.Output<String> diskId;
-
   /// The Amazon Resource Name (ARN) of the gateway.
   late final pulumi.Output<String> gatewayArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -128,11 +126,11 @@ class WorkingStorage extends pulumi.CustomResource {
     WorkingStorageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:storagegateway/workingStorage:WorkingStorage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:storagegateway/workingStorage:WorkingStorage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     diskId = registerOutput<String>('diskId');
     gatewayArn = registerOutput<String>('gatewayArn');
     region = registerOutput<String>('region');
@@ -156,11 +154,11 @@ class WorkingStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:storagegateway/workingStorage:WorkingStorage',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:storagegateway/workingStorage:WorkingStorage',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     diskId = registerOutput<String>('diskId');
     gatewayArn = registerOutput<String>('gatewayArn');
     region = registerOutput<String>('region');

@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceMetricAlarmRulesArgs {
   /// The monitoring dimensions of the specified resource.
   final pulumi.Input<String>? dimensions;
-
   /// A list of Metric Alarm Rule IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// The name of the metric.
   final pulumi.Input<String>? metricName;
-
   /// The namespace of the cloud service.
   final pulumi.Input<String>? namespace;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The name of the alert rule.
   final pulumi.Input<String>? ruleName;
-
   /// Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
   final pulumi.Input<bool>? status;
 
@@ -60,41 +54,14 @@ class GetServiceMetricAlarmRulesArgs {
 
   factory GetServiceMetricAlarmRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceMetricAlarmRulesArgs(
-      dimensions: (() {
-        final guardedValue = map['dimensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      metricName: (() {
-        final guardedValue = map['metricName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ruleName: (() {
-        final guardedValue = map['ruleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      metricName: (() { final guardedValue = map['metricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

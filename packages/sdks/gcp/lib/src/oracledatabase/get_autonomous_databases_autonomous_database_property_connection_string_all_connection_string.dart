@@ -6,11 +6,9 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringAllConnect
   /// The database service provides the highest level of resources to each SQL
   /// statement.
   final pulumi.Input<String> high;
-
   /// The database service provides the least level of resources to each SQL
   /// statement.
   final pulumi.Input<String> low;
-
   /// The database service provides a lower level of resources to each SQL
   /// statement.
   final pulumi.Input<String> medium;
@@ -26,12 +24,14 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringAllConnect
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'high': high, 'low': low, 'medium': medium};
+    return <String, dynamic>{
+      'high': high,
+      'low': low,
+      'medium': medium,
+    };
   }
 
-  factory GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringAllConnectionString.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringAllConnectionString.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringAllConnectionString(
       high: pulumi.Input.fromValue(map['high'] as String),
       low: pulumi.Input.fromValue(map['low'] as String),
@@ -39,3 +39,4 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringAllConnect
     );
   }
 }
+

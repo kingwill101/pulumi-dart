@@ -110,10 +110,8 @@ import 'gateway_state.dart';
 class Gateway extends pulumi.CustomResource {
   /// The description of Gateway.
   late final pulumi.Output<String?> gatewayDesc;
-
   /// The name of the Gateway.
   late final pulumi.Output<String> gatewayName;
-
   /// The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
   late final pulumi.Output<String> status;
 
@@ -126,11 +124,11 @@ class Gateway extends pulumi.CustomResource {
     GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:databasegateway/gateway:Gateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:databasegateway/gateway:Gateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     gatewayDesc = registerOutput<String?>('gatewayDesc');
     gatewayName = registerOutput<String>('gatewayName');
     status = registerOutput<String>('status');
@@ -154,11 +152,11 @@ class Gateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:databasegateway/gateway:Gateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:databasegateway/gateway:Gateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     gatewayDesc = registerOutput<String?>('gatewayDesc');
     gatewayName = registerOutput<String>('gatewayName');
     status = registerOutput<String>('status');

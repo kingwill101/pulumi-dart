@@ -10,19 +10,14 @@ import 'rule_target.dart';
 class RuleArgs {
   /// The description of the event rule.
   final pulumi.Input<String>? description;
-
   /// The name of the event bus.
   final pulumi.Input<String> eventBusName;
-
   /// The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
   final pulumi.Input<String> filterPattern;
-
   /// The name of the event rule.
   final pulumi.Input<String> ruleName;
-
   /// The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
   final pulumi.Input<String>? status;
-
   /// The targets of rule. See `targets` below.
   final pulumi.Input<List<RuleTarget>> targets;
 
@@ -49,42 +44,19 @@ class RuleArgs {
       'filterPattern': filterPattern,
       'ruleName': ruleName,
       'status': ?status,
-      'targets':
-          pulumi.Input.mapInputValue<
-            List<RuleTarget>,
-            List<Map<String, dynamic>>
-          >(
-            targets,
-            (value) =>
-                pulumi.Input.encodeList<RuleTarget, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'targets': pulumi.Input.mapInputValue<List<RuleTarget>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<RuleTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       eventBusName: pulumi.Input.fromValue(map['eventBusName'] as String),
       filterPattern: pulumi.Input.fromValue(map['filterPattern'] as String),
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targets: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<RuleTarget>(
-          map['targets']!,
-          (value) => RuleTarget.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targets: pulumi.Input.fromValue(pulumi.Input.decodeList<RuleTarget>(map['targets']!, (value) => RuleTarget.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

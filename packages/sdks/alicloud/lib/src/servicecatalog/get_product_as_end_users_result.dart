@@ -7,14 +7,12 @@ import 'get_product_as_end_users_user.dart';
 class GetProductAsEndUsersResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Product As End User IDs.
   final List<String> ids;
   final String? nameRegex;
   final String? outputFile;
   final String? sortBy;
   final String? sortOrder;
-
   /// A list of Product As End User Entries. Each element contains the following attributes:
   final List<GetProductAsEndUsersUser> users;
 
@@ -44,11 +42,7 @@ class GetProductAsEndUsersResult {
       'outputFile': ?outputFile,
       'sortBy': ?sortBy,
       'sortOrder': ?sortOrder,
-      'users':
-          pulumi.Input.encodeList<
-            GetProductAsEndUsersUser,
-            Map<String, dynamic>
-          >(users, (value) => value.toMap()),
+      'users': pulumi.Input.encodeList<GetProductAsEndUsersUser, Map<String, dynamic>>(users, (value) => value.toMap()),
     };
   }
 
@@ -56,32 +50,12 @@ class GetProductAsEndUsersResult {
     return GetProductAsEndUsersResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sortBy: (() {
-        final guardedValue = map['sortBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sortOrder: (() {
-        final guardedValue = map['sortOrder'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      users: pulumi.Input.decodeList<GetProductAsEndUsersUser>(
-        map['users']!,
-        (value) => GetProductAsEndUsersUser.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sortBy: (() { final guardedValue = map['sortBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sortOrder: (() { final guardedValue = map['sortOrder']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      users: pulumi.Input.decodeList<GetProductAsEndUsersUser>(map['users']!, (value) => GetProductAsEndUsersUser.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

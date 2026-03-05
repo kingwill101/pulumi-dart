@@ -9,7 +9,10 @@ class ProviderBatching {
   /// Creates a new [ProviderBatching].
   /// [enableBatching] Optional.
   /// [sendAfter] Optional.
-  ProviderBatching({this.enableBatching, this.sendAfter});
+  ProviderBatching({
+    this.enableBatching,
+    this.sendAfter,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,16 +23,9 @@ class ProviderBatching {
 
   factory ProviderBatching.fromMap(Map<String, dynamic> map) {
     return ProviderBatching(
-      enableBatching: (() {
-        final guardedValue = map['enableBatching'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sendAfter: (() {
-        final guardedValue = map['sendAfter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enableBatching: (() { final guardedValue = map['enableBatching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sendAfter: (() { final guardedValue = map['sendAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

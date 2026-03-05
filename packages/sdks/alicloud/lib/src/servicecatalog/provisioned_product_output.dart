@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProvisionedProductOutput {
   /// Description of the output value defined in the template.
   final pulumi.Input<String>? description;
-
   /// The name of the output value defined in the template.
   final pulumi.Input<String>? outputKey;
-
   /// The content of the output value defined in the template.
   final pulumi.Input<String>? outputValue;
 
@@ -32,21 +30,10 @@ class ProvisionedProductOutput {
 
   factory ProvisionedProductOutput.fromMap(Map<String, dynamic> map) {
     return ProvisionedProductOutput(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputKey: (() {
-        final guardedValue = map['outputKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputValue: (() {
-        final guardedValue = map['outputValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputKey: (() { final guardedValue = map['outputKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputValue: (() { final guardedValue = map['outputValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

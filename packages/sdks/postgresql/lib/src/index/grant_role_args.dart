@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GrantRoleArgs {
   /// The name of the role that is added to `role`.
   final pulumi.Input<String> grantRole;
-
   /// The name of the role that is granted a new membership.
   final pulumi.Input<String> role;
-
   /// Giving ability to grant membership to others or not for `role`. (Default: false)
   final pulumi.Input<bool>? withAdminOption;
 
@@ -38,11 +36,8 @@ class GrantRoleArgs {
     return GrantRoleArgs(
       grantRole: pulumi.Input.fromValue(map['grantRole'] as String),
       role: pulumi.Input.fromValue(map['role'] as String),
-      withAdminOption: (() {
-        final guardedValue = map['withAdminOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      withAdminOption: (() { final guardedValue = map['withAdminOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

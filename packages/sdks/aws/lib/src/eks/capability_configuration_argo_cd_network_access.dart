@@ -8,21 +8,20 @@ class CapabilityConfigurationArgoCdNetworkAccess {
 
   /// Creates a new [CapabilityConfigurationArgoCdNetworkAccess].
   /// [vpceIds] VPC Endpoint IDs.
-  CapabilityConfigurationArgoCdNetworkAccess({this.vpceIds});
+  CapabilityConfigurationArgoCdNetworkAccess({
+    this.vpceIds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vpceIds': ?vpceIds};
+    return <String, dynamic>{
+      'vpceIds': ?vpceIds,
+    };
   }
 
-  factory CapabilityConfigurationArgoCdNetworkAccess.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CapabilityConfigurationArgoCdNetworkAccess.fromMap(Map<String, dynamic> map) {
     return CapabilityConfigurationArgoCdNetworkAccess(
-      vpceIds: (() {
-        final guardedValue = map['vpceIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      vpceIds: (() { final guardedValue = map['vpceIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

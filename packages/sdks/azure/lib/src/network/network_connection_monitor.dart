@@ -916,28 +916,20 @@ import 'network_connection_monitor_state.dart';
 class NetworkConnectionMonitor extends pulumi.CustomResource {
   /// A `endpoint` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
-
   /// The Azure Region where the Network Connection Monitor should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Network Connection Monitor. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Network Watcher. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkWatcherId;
-
   /// The description of the Network Connection Monitor.
   late final pulumi.Output<String?> notes;
-
   /// A list of IDs of the Log Analytics Workspace which will accept the output from the Network Connection Monitor.
   late final pulumi.Output<List<String>?> outputWorkspaceResourceIds;
-
   /// A mapping of tags which should be assigned to the Network Connection Monitor.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A `test_configuration` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> testConfigurations;
-
   /// A `test_group` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> testGroups;
 
@@ -950,23 +942,19 @@ class NetworkConnectionMonitor extends pulumi.CustomResource {
     NetworkConnectionMonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkConnectionMonitor:NetworkConnectionMonitor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkConnectionMonitor:NetworkConnectionMonitor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkWatcherId = registerOutput<String>('networkWatcherId');
     notes = registerOutput<String?>('notes');
-    outputWorkspaceResourceIds = registerOutput<List<String>?>(
-      'outputWorkspaceResourceIds',
-    );
+    outputWorkspaceResourceIds = registerOutput<List<String>?>('outputWorkspaceResourceIds');
     tags = registerOutput<Map<String, String>?>('tags');
-    testConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'testConfigurations',
-    );
+    testConfigurations = registerOutput<List<Map<String, dynamic>>>('testConfigurations');
     testGroups = registerOutput<List<Map<String, dynamic>>>('testGroups');
   }
 
@@ -988,23 +976,19 @@ class NetworkConnectionMonitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkConnectionMonitor:NetworkConnectionMonitor',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkConnectionMonitor:NetworkConnectionMonitor',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkWatcherId = registerOutput<String>('networkWatcherId');
     notes = registerOutput<String?>('notes');
-    outputWorkspaceResourceIds = registerOutput<List<String>?>(
-      'outputWorkspaceResourceIds',
-    );
+    outputWorkspaceResourceIds = registerOutput<List<String>?>('outputWorkspaceResourceIds');
     tags = registerOutput<Map<String, String>?>('tags');
-    testConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'testConfigurations',
-    );
+    testConfigurations = registerOutput<List<Map<String, dynamic>>>('testConfigurations');
     testGroups = registerOutput<List<Map<String, dynamic>>>('testGroups');
   }
 }

@@ -202,7 +202,6 @@ import 'organization_admin_account_state.dart';
 class OrganizationAdminAccount extends pulumi.CustomResource {
   /// The AWS account identifier of the account to designate as the Security Hub administrator account.
   late final pulumi.Output<String> adminAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -215,11 +214,11 @@ class OrganizationAdminAccount extends pulumi.CustomResource {
     OrganizationAdminAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securityhub/organizationAdminAccount:OrganizationAdminAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securityhub/organizationAdminAccount:OrganizationAdminAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminAccountId = registerOutput<String>('adminAccountId');
     region = registerOutput<String>('region');
   }
@@ -242,11 +241,11 @@ class OrganizationAdminAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securityhub/organizationAdminAccount:OrganizationAdminAccount',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securityhub/organizationAdminAccount:OrganizationAdminAccount',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminAccountId = registerOutput<String>('adminAccountId');
     region = registerOutput<String>('region');
   }

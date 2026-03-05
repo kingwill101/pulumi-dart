@@ -489,28 +489,20 @@ import 'grant_state.dart';
 class Grant extends pulumi.CustomResource {
   /// The database to grant privileges on.
   late final pulumi.Output<String> database;
-
   /// Whether to also give the user privileges to grant the same privileges to other users.
   late final pulumi.Output<bool?> grant;
-
   /// The source host of the user. Defaults to "localhost". Conflicts with `role`.
   late final pulumi.Output<String?> host;
-
   /// A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
   late final pulumi.Output<List<String>?> privileges;
-
   /// The role to grant `privileges` to. Conflicts with `user` and `host`.
   late final pulumi.Output<String?> role;
-
   /// A list of rols to grant to the user. Conflicts with `privileges`.
   late final pulumi.Output<List<String>?> roles;
-
   /// Which table to grant `privileges` on. Defaults to `*`, which is all tables.
   late final pulumi.Output<String?> table;
-
   /// An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
   late final pulumi.Output<String?> tlsOption;
-
   /// The name of the user. Conflicts with `role`.
   late final pulumi.Output<String?> user;
 
@@ -518,13 +510,16 @@ class Grant extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Grant]. {@macro pulumi_index_grant_grant_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Grant(String name, {GrantArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'mysql:index/grant:Grant',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Grant(
+    String name, {
+    GrantArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'mysql:index/grant:Grant',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     database = registerOutput<String>('database');
     grant = registerOutput<bool?>('grant');
     host = registerOutput<String?>('host');
@@ -537,7 +532,11 @@ class Grant extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Grant] resource's state with the given [name] and [id].
-  static Grant get(String name, pulumi.Input<String> id, {GrantState? state}) {
+  static Grant get(
+    String name,
+    pulumi.Input<String> id, {
+    GrantState? state,
+  }) {
     return Grant._get(
       name,
       state: state?.toMap(),
@@ -550,11 +549,11 @@ class Grant extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'mysql:index/grant:Grant',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'mysql:index/grant:Grant',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     database = registerOutput<String>('database');
     grant = registerOutput<bool?>('grant');
     host = registerOutput<String?>('host');

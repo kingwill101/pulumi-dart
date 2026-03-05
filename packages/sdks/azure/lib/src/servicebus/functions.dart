@@ -390,8 +390,7 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
 /// * `Microsoft.ServiceBus` - 2024-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicebus_get_namespace_disaster_recovery_config_get_namespace_disaster_recovery_config_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNamespaceDisasterRecoveryConfigResult>
-getNamespaceDisasterRecoveryConfig(
+Future<GetNamespaceDisasterRecoveryConfigResult> getNamespaceDisasterRecoveryConfig(
   GetNamespaceDisasterRecoveryConfigArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

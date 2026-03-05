@@ -6,7 +6,6 @@ class ControlFolderIntelligenceConfigEffectiveIntelligenceConfig {
   /// (Output)
   /// The `StorageIntelligence` edition that is applicable for the resource.
   final pulumi.Input<String>? effectiveEdition;
-
   /// (Output)
   /// The Intelligence config resource that is applied for the target resource.
   final pulumi.Input<String>? intelligenceConfig;
@@ -26,20 +25,11 @@ class ControlFolderIntelligenceConfigEffectiveIntelligenceConfig {
     };
   }
 
-  factory ControlFolderIntelligenceConfigEffectiveIntelligenceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ControlFolderIntelligenceConfigEffectiveIntelligenceConfig.fromMap(Map<String, dynamic> map) {
     return ControlFolderIntelligenceConfigEffectiveIntelligenceConfig(
-      effectiveEdition: (() {
-        final guardedValue = map['effectiveEdition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      intelligenceConfig: (() {
-        final guardedValue = map['intelligenceConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      effectiveEdition: (() { final guardedValue = map['effectiveEdition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      intelligenceConfig: (() { final guardedValue = map['intelligenceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

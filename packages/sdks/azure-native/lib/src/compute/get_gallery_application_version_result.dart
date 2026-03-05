@@ -9,34 +9,24 @@ import 'system_data_response.dart';
 class GetGalleryApplicationVersionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The provisioning state, which only appears in the response.
   final String provisioningState;
-
   /// The publishing profile of a gallery image version.
   final GalleryApplicationVersionPublishingProfileResponse publishingProfile;
-
   /// This is the replication status of the gallery image version.
   final ReplicationStatusResponse replicationStatus;
-
   /// The safety profile of the Gallery Application Version.
   final GalleryApplicationVersionSafetyProfileResponse? safetyProfile;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -89,29 +79,13 @@ class GetGalleryApplicationVersionResult {
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      publishingProfile:
-          GalleryApplicationVersionPublishingProfileResponse.fromMap(
-            (map['publishingProfile']! as Map).cast<String, dynamic>(),
-          ),
-      replicationStatus: ReplicationStatusResponse.fromMap(
-        (map['replicationStatus']! as Map).cast<String, dynamic>(),
-      ),
-      safetyProfile: (() {
-        final guardedValue = map['safetyProfile'];
-        if (guardedValue == null) return null;
-        return GalleryApplicationVersionSafetyProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      publishingProfile: GalleryApplicationVersionPublishingProfileResponse.fromMap((map['publishingProfile']! as Map).cast<String, dynamic>()),
+      replicationStatus: ReplicationStatusResponse.fromMap((map['replicationStatus']! as Map).cast<String, dynamic>()),
+      safetyProfile: (() { final guardedValue = map['safetyProfile']; if (guardedValue == null) return null; return GalleryApplicationVersionSafetyProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

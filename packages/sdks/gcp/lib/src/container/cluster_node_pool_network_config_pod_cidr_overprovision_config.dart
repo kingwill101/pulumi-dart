@@ -15,14 +15,15 @@ class ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disabled': disabled};
+    return <String, dynamic>{
+      'disabled': disabled,
+    };
   }
 
-  factory ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig(
       disabled: pulumi.Input.fromValue(map['disabled'] as bool),
     );
   }
 }
+

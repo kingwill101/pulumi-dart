@@ -16,3 +16,4 @@ enum CVSSv3AvailabilityImpact {
     throw ArgumentError('Unknown CVSSv3AvailabilityImpact value: $value');
   }
 }
+

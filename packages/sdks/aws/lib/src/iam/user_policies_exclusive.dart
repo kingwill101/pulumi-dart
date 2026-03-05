@@ -222,7 +222,6 @@ import 'user_policies_exclusive_state.dart';
 class UserPoliciesExclusive extends pulumi.CustomResource {
   /// A list of inline policy names to be assigned to the user. Policies attached to this user but not configured in this argument will be removed.
   late final pulumi.Output<List<String>> policyNames;
-
   /// IAM user name.
   late final pulumi.Output<String> userName;
 
@@ -235,11 +234,11 @@ class UserPoliciesExclusive extends pulumi.CustomResource {
     UserPoliciesExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/userPoliciesExclusive:UserPoliciesExclusive',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/userPoliciesExclusive:UserPoliciesExclusive',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyNames = registerOutput<List<String>>('policyNames');
     userName = registerOutput<String>('userName');
   }
@@ -262,11 +261,11 @@ class UserPoliciesExclusive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/userPoliciesExclusive:UserPoliciesExclusive',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/userPoliciesExclusive:UserPoliciesExclusive',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyNames = registerOutput<List<String>>('policyNames');
     userName = registerOutput<String>('userName');
   }

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FactoryGlobalParameter {
   /// Specifies the global parameter name.
   final pulumi.Input<String> name;
-
   /// Specifies the global parameter type. Possible Values are `Array`, `Bool`, `Float`, `Int`, `Object` or `String`.
   final pulumi.Input<String> type;
-
   /// Specifies the global parameter value.
   ///
   /// &gt; **Note:** For type `Array` and `Object` it is recommended to use `jsonencode()` for the value
@@ -25,7 +23,11 @@ class FactoryGlobalParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+      'value': value,
+    };
   }
 
   factory FactoryGlobalParameter.fromMap(Map<String, dynamic> map) {
@@ -36,3 +38,4 @@ class FactoryGlobalParameter {
     );
   }
 }
+

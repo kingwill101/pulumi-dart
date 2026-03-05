@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackendAddressPoolArgs {
   /// The ID of the Load Balancer in which the Backend Address Pool exists.
   final pulumi.Input<String> loadbalancerId;
-
   /// Specifies the name of the Backend Address Pool.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetBackendAddressPoolArgs].
   /// [loadbalancerId] The ID of the Load Balancer in which the Backend Address Pool exists.
   /// [name] Specifies the name of the Backend Address Pool.
-  GetBackendAddressPoolArgs({required this.loadbalancerId, required this.name});
+  GetBackendAddressPoolArgs({
+    required this.loadbalancerId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'loadbalancerId': loadbalancerId, 'name': name};
+    return <String, dynamic>{
+      'loadbalancerId': loadbalancerId,
+      'name': name,
+    };
   }
 
   factory GetBackendAddressPoolArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetBackendAddressPoolArgs {
     );
   }
 }
+

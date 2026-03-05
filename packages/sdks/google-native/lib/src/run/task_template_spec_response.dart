@@ -10,23 +10,20 @@ class TaskTemplateSpecResponse {
 
   /// Creates a new [TaskTemplateSpecResponse].
   /// [spec] Optional. Specification of the desired behavior of the task.
-  TaskTemplateSpecResponse({required this.spec});
+  TaskTemplateSpecResponse({
+    required this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'spec':
-          pulumi.Input.mapInputValue<TaskSpecResponse, Map<String, dynamic>>(
-            spec,
-            (value) => value.toMap(),
-          ),
+      'spec': pulumi.Input.mapInputValue<TaskSpecResponse, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
   factory TaskTemplateSpecResponse.fromMap(Map<String, dynamic> map) {
     return TaskTemplateSpecResponse(
-      spec: pulumi.Input.fromValue(
-        TaskSpecResponse.fromMap((map['spec']! as Map).cast<String, dynamic>()),
-      ),
+      spec: pulumi.Input.fromValue(TaskSpecResponse.fromMap((map['spec']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

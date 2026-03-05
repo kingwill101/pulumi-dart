@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebhookArgs {
   /// Report Name.
   final pulumi.Input<String> reportName;
-
   /// Webhook Name.
   final pulumi.Input<String> webhookName;
 
   /// Creates a new [GetWebhookArgs].
   /// [reportName] Report Name.
   /// [webhookName] Webhook Name.
-  GetWebhookArgs({required this.reportName, required this.webhookName});
+  GetWebhookArgs({
+    required this.reportName,
+    required this.webhookName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,3 +34,4 @@ class GetWebhookArgs {
     );
   }
 }
+

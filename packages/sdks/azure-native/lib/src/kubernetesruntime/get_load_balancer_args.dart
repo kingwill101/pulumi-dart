@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLoadBalancerArgs {
   /// The name of the LoadBalancer
   final pulumi.Input<String> loadBalancerName;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -30,10 +29,9 @@ class GetLoadBalancerArgs {
 
   factory GetLoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerArgs(
-      loadBalancerName: pulumi.Input.fromValue(
-        map['loadBalancerName'] as String,
-      ),
+      loadBalancerName: pulumi.Input.fromValue(map['loadBalancerName'] as String),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
+

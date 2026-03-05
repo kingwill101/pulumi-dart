@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupInfoResponse {
   /// Name of the backup.
   final pulumi.Input<String> backup;
-
   /// This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
   final pulumi.Input<String> endTime;
-
   /// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
   final pulumi.Input<String> sourceBackup;
-
   /// Name of the table the backup was created from.
   final pulumi.Input<String> sourceTable;
-
   /// The time that the backup was started. Row data in the backup will be no older than this timestamp.
   final pulumi.Input<String> startTime;
 
@@ -53,3 +49,4 @@ class BackupInfoResponse {
     );
   }
 }
+

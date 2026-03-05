@@ -8,55 +8,38 @@ import 'system_data_response.dart';
 class GetSourceControlConfigurationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Compliance Status of the Configuration
   final ComplianceStatusResponse complianceStatus;
-
   /// Name-value pairs of protected configuration settings for the configuration
   final Map<String, String>? configurationProtectedSettings;
-
   /// Option to enable Helm Operator for this git configuration.
   final bool? enableHelmOperator;
-
   /// Properties for Helm operator.
   final HelmOperatorPropertiesResponse? helmOperatorProperties;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Instance name of the operator - identifying the specific configuration.
   final String? operatorInstanceName;
-
   /// The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only.
   final String? operatorNamespace;
-
   /// Any Parameters for the Operator instance in string format.
   final String? operatorParams;
-
   /// Scope at which the operator will be installed.
   final String? operatorScope;
-
   /// Type of the operator
   final String? operatorType;
-
   /// The provisioning state of the resource provider.
   final String provisioningState;
-
   /// Public Key associated with this SourceControl configuration (either generated within the cluster or provided by the user).
   final String repositoryPublicKey;
-
   /// Url of the SourceControl Repository.
   final String? repositoryUrl;
-
   /// Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
   final String? sshKnownHostsContents;
-
   /// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -123,74 +106,27 @@ class GetSourceControlConfigurationResult {
     };
   }
 
-  factory GetSourceControlConfigurationResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSourceControlConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetSourceControlConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      complianceStatus: ComplianceStatusResponse.fromMap(
-        (map['complianceStatus']! as Map).cast<String, dynamic>(),
-      ),
-      configurationProtectedSettings: (() {
-        final guardedValue = map['configurationProtectedSettings'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      enableHelmOperator: (() {
-        final guardedValue = map['enableHelmOperator'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      helmOperatorProperties: (() {
-        final guardedValue = map['helmOperatorProperties'];
-        if (guardedValue == null) return null;
-        return HelmOperatorPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      complianceStatus: ComplianceStatusResponse.fromMap((map['complianceStatus']! as Map).cast<String, dynamic>()),
+      configurationProtectedSettings: (() { final guardedValue = map['configurationProtectedSettings']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      enableHelmOperator: (() { final guardedValue = map['enableHelmOperator']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      helmOperatorProperties: (() { final guardedValue = map['helmOperatorProperties']; if (guardedValue == null) return null; return HelmOperatorPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      operatorInstanceName: (() {
-        final guardedValue = map['operatorInstanceName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      operatorNamespace: (() {
-        final guardedValue = map['operatorNamespace'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      operatorParams: (() {
-        final guardedValue = map['operatorParams'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      operatorScope: (() {
-        final guardedValue = map['operatorScope'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      operatorType: (() {
-        final guardedValue = map['operatorType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      operatorInstanceName: (() { final guardedValue = map['operatorInstanceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      operatorNamespace: (() { final guardedValue = map['operatorNamespace']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      operatorParams: (() { final guardedValue = map['operatorParams']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      operatorScope: (() { final guardedValue = map['operatorScope']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      operatorType: (() { final guardedValue = map['operatorType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
       repositoryPublicKey: map['repositoryPublicKey'] as String,
-      repositoryUrl: (() {
-        final guardedValue = map['repositoryUrl'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sshKnownHostsContents: (() {
-        final guardedValue = map['sshKnownHostsContents'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      repositoryUrl: (() { final guardedValue = map['repositoryUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sshKnownHostsContents: (() { final guardedValue = map['sshKnownHostsContents']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

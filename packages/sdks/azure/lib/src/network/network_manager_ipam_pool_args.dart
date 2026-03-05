@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagerIpamPoolArgs {
   /// Specifies a list of IPv4 or IPv6 IP address prefixes. Changing this forces a new Network Manager IPAM Pool to be created.
   final pulumi.Input<List<String>> addressPrefixes;
-
   /// The description of the Network Manager IPAM Pool.
   final pulumi.Input<String>? description;
-
   /// The display name for the Network Manager IPAM Pool.
   final pulumi.Input<String>? displayName;
-
   /// The Azure Region where the Network Manager IPAM Pool should exist. Changing this forces a new Network Manager IPAM Pool to be created.
   final pulumi.Input<String>? location;
-
   /// The name which should be used for this Network Manager IPAM Pool. Changing this forces a new Network Manager IPAM Pool to be created.
   final pulumi.Input<String>? name;
-
   /// The ID of the parent Network Manager. Changing this forces a new Network Manager IPAM Pool to be created.
   final pulumi.Input<String> networkManagerId;
-
   /// The name of the parent IPAM Pool. Changing this forces a new Network Manager IPAM Pool to be created.
   final pulumi.Input<String>? parentPoolName;
-
   /// A mapping of tags which should be assigned to the Network Manager IPAM Pool.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -66,44 +59,15 @@ class NetworkManagerIpamPoolArgs {
 
   factory NetworkManagerIpamPoolArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerIpamPoolArgs(
-      addressPrefixes: pulumi.Input.fromValue(
-        (map['addressPrefixes'] as List).cast<String>(),
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkManagerId: pulumi.Input.fromValue(
-        map['networkManagerId'] as String,
-      ),
-      parentPoolName: (() {
-        final guardedValue = map['parentPoolName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      addressPrefixes: pulumi.Input.fromValue((map['addressPrefixes'] as List).cast<String>()),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkManagerId: pulumi.Input.fromValue(map['networkManagerId'] as String),
+      parentPoolName: (() { final guardedValue = map['parentPoolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

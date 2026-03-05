@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPackageCatalogState {
   /// The description of the access package catalog.
   final pulumi.Input<String>? description;
-
   /// The display name of the access package catalog.
   final pulumi.Input<String>? displayName;
-
   /// Whether the access packages in this catalog can be requested by users outside the tenant.
   final pulumi.Input<bool>? externallyVisible;
-
   /// Whether the access packages in this catalog are available for management.
   final pulumi.Input<bool>? published;
 
@@ -39,26 +36,11 @@ class AccessPackageCatalogState {
 
   factory AccessPackageCatalogState.fromMap(Map<String, dynamic> map) {
     return AccessPackageCatalogState(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      externallyVisible: (() {
-        final guardedValue = map['externallyVisible'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      published: (() {
-        final guardedValue = map['published'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      externallyVisible: (() { final guardedValue = map['externallyVisible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      published: (() { final guardedValue = map['published']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -197,46 +197,32 @@ import 'system_data_response.dart';
 class Extension extends pulumi.CustomResource {
   /// Aggregate state of Arc Extensions across the nodes in this HCI cluster.
   late final pulumi.Output<String> aggregateState;
-
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   late final pulumi.Output<bool?> autoUpgradeMinorVersion;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
   late final pulumi.Output<bool?> enableAutomaticUpgrade;
-
   /// How the extension handler should be forced to update even if the extension configuration has not changed.
   late final pulumi.Output<String?> forceUpdateTag;
-
   /// Indicates if the extension is managed by azure or the user.
   late final pulumi.Output<String> managedBy;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// State of Arc Extension in each of the nodes.
   late final pulumi.Output<List<Map<String, dynamic>>> perNodeExtensionDetails;
-
   /// Protected settings (may contain secrets).
   late final pulumi.Output<dynamic> protectedSettings;
-
   /// Provisioning state of the Extension proxy resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The name of the extension handler publisher.
   late final pulumi.Output<String?> publisher;
-
   /// Json formatted public settings for the extension.
   late final pulumi.Output<dynamic> settings;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Specifies the version of the script handler. Latest version would be used if not specified.
   late final pulumi.Output<String?> typeHandlerVersion;
 
@@ -249,11 +235,11 @@ class Extension extends pulumi.CustomResource {
     ExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azurestackhci:Extension',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azurestackhci:Extension',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aggregateState = registerOutput<String>('aggregateState');
     autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -261,23 +247,12 @@ class Extension extends pulumi.CustomResource {
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     managedBy = registerOutput<String>('managedBy');
     this.name = registerOutput<String>('name');
-    perNodeExtensionDetails = registerOutput<List<Map<String, dynamic>>>(
-      'perNodeExtensionDetails',
-    );
+    perNodeExtensionDetails = registerOutput<List<Map<String, dynamic>>>('perNodeExtensionDetails');
     protectedSettings = registerOutput<dynamic>('protectedSettings');
     provisioningState = registerOutput<String>('provisioningState');
     publisher = registerOutput<String?>('publisher');
     settings = registerOutput<dynamic>('settings');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
   }

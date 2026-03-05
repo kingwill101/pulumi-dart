@@ -1059,43 +1059,30 @@ import 'integration_account_agreement_args.dart';
 class IntegrationAccountAgreement extends pulumi.CustomResource {
   /// The agreement type.
   late final pulumi.Output<String> agreementType;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The changed time.
   late final pulumi.Output<String> changedTime;
-
   /// The agreement content.
   late final pulumi.Output<AgreementContentResponse> content;
-
   /// The created time.
   late final pulumi.Output<String> createdTime;
-
   /// The business identity of the guest partner.
   late final pulumi.Output<BusinessIdentityResponse> guestIdentity;
-
   /// The integration account partner that is set as guest partner for this agreement.
   late final pulumi.Output<String> guestPartner;
-
   /// The business identity of the host partner.
   late final pulumi.Output<BusinessIdentityResponse> hostIdentity;
-
   /// The integration account partner that is set as host partner for this agreement.
   late final pulumi.Output<String> hostPartner;
-
   /// The resource location.
   late final pulumi.Output<String?> location;
-
   /// The metadata.
   late final pulumi.Output<dynamic> metadata;
-
   /// Gets the resource name.
   late final pulumi.Output<String> name;
-
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -1108,46 +1095,19 @@ class IntegrationAccountAgreement extends pulumi.CustomResource {
     IntegrationAccountAgreementArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:logic:IntegrationAccountAgreement',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:logic:IntegrationAccountAgreement',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agreementType = registerOutput<String>('agreementType');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     changedTime = registerOutput<String>('changedTime');
-    content = registerOutput<AgreementContentResponse>(
-      'content',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgreementContentResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    content = registerOutput<AgreementContentResponse>('content', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgreementContentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdTime = registerOutput<String>('createdTime');
-    guestIdentity = registerOutput<BusinessIdentityResponse>(
-      'guestIdentity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BusinessIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    guestIdentity = registerOutput<BusinessIdentityResponse>('guestIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BusinessIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     guestPartner = registerOutput<String>('guestPartner');
-    hostIdentity = registerOutput<BusinessIdentityResponse>(
-      'hostIdentity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BusinessIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hostIdentity = registerOutput<BusinessIdentityResponse>('hostIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BusinessIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hostPartner = registerOutput<String>('hostPartner');
     location = registerOutput<String?>('location');
     metadata = registerOutput<dynamic>('metadata');

@@ -10,13 +10,10 @@ import 'monitoring_tag_rules_properties.dart';
 class TagRuleArgs {
   /// Monitor resource name
   final pulumi.Input<String> monitorName;
-
   /// Properties of the monitoring tag rules.
   final pulumi.Input<MonitoringTagRulesProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Tag Rule Set resource name
   final pulumi.Input<String>? ruleSetName;
 
@@ -35,11 +32,7 @@ class TagRuleArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'monitorName': monitorName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            MonitoringTagRulesProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<MonitoringTagRulesProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'ruleSetName': ?ruleSetName,
     };
@@ -48,23 +41,10 @@ class TagRuleArgs {
   factory TagRuleArgs.fromMap(Map<String, dynamic> map) {
     return TagRuleArgs(
       monitorName: pulumi.Input.fromValue(map['monitorName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MonitoringTagRulesProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      ruleSetName: (() {
-        final guardedValue = map['ruleSetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MonitoringTagRulesProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      ruleSetName: (() { final guardedValue = map['ruleSetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

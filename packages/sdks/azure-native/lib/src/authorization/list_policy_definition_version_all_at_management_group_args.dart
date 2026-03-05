@@ -17,16 +17,15 @@ class ListPolicyDefinitionVersionAllAtManagementGroupArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'managementGroupName': managementGroupName};
+    return <String, dynamic>{
+      'managementGroupName': managementGroupName,
+    };
   }
 
-  factory ListPolicyDefinitionVersionAllAtManagementGroupArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListPolicyDefinitionVersionAllAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return ListPolicyDefinitionVersionAllAtManagementGroupArgs(
-      managementGroupName: pulumi.Input.fromValue(
-        map['managementGroupName'] as String,
-      ),
+      managementGroupName: pulumi.Input.fromValue(map['managementGroupName'] as String),
     );
   }
 }
+

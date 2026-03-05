@@ -9,24 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventHubAuthorizationRuleArgs {
   /// Specifies the name of the EventHub. Changing this forces a new resource to be created.
   final pulumi.Input<String> eventhubName;
-
   /// Does this Authorization Rule have permissions to Listen to the Event Hub? Defaults to `false`.
   final pulumi.Input<bool>? listen;
-
   /// Does this Authorization Rule have permissions to Manage to the Event Hub? When this property is `true` - both `listen` and `send` must be too. Defaults to `false`.
   final pulumi.Input<bool>? manage;
-
   /// Specifies the name of the EventHub Authorization Rule resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the name of the grandparent EventHub Namespace. Changing this forces a new resource to be created.
   final pulumi.Input<String> namespaceName;
-
   /// The name of the resource group in which the EventHub Namespace exists. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** At least one of the 3 permissions below needs to be set.
   final pulumi.Input<String> resourceGroupName;
-
   /// Does this Authorization Rule have permissions to Send to the Event Hub? Defaults to `false`.
   final pulumi.Input<bool>? send;
 
@@ -63,30 +57,13 @@ class EventHubAuthorizationRuleArgs {
   factory EventHubAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return EventHubAuthorizationRuleArgs(
       eventhubName: pulumi.Input.fromValue(map['eventhubName'] as String),
-      listen: (() {
-        final guardedValue = map['listen'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      manage: (() {
-        final guardedValue = map['manage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      listen: (() { final guardedValue = map['listen']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      manage: (() { final guardedValue = map['manage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      send: (() {
-        final guardedValue = map['send'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      send: (() { final guardedValue = map['send']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -17,3 +17,4 @@ enum SimpleCriterionKeyForJob {
     throw ArgumentError('Unknown SimpleCriterionKeyForJob value: $value');
   }
 }
+

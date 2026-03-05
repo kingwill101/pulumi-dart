@@ -8,20 +8,13 @@ import 'agentcore_gateway_target_target_configuration_mcp_smithy_model.dart';
 
 class AgentcoreGatewayTargetTargetConfigurationMcp {
   /// Lambda function target configuration. See `lambda` below.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambda>?
-  lambda;
-
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambda>? lambda;
   /// MCP server target configuration. See `mcp_server` below.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpMcpServer>?
-  mcpServer;
-
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpMcpServer>? mcpServer;
   /// OpenAPI schema-based target configuration. See `api_schema_configuration` below.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema>?
-  openApiSchema;
-
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema>? openApiSchema;
   /// Smithy model-based target configuration. See `api_schema_configuration` below.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel>?
-  smithyModel;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel>? smithyModel;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcp].
   /// [lambda] Lambda function target configuration. See `lambda` below.
@@ -37,69 +30,20 @@ class AgentcoreGatewayTargetTargetConfigurationMcp {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lambda':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentcoreGatewayTargetTargetConfigurationMcpLambda,
-            Map<String, dynamic>
-          >(lambda, (value) => value.toMap()),
-      'mcpServer':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentcoreGatewayTargetTargetConfigurationMcpMcpServer,
-            Map<String, dynamic>
-          >(mcpServer, (value) => value.toMap()),
-      'openApiSchema':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema,
-            Map<String, dynamic>
-          >(openApiSchema, (value) => value.toMap()),
-      'smithyModel':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel,
-            Map<String, dynamic>
-          >(smithyModel, (value) => value.toMap()),
+      'lambda': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayTargetTargetConfigurationMcpLambda, Map<String, dynamic>>(lambda, (value) => value.toMap()),
+      'mcpServer': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayTargetTargetConfigurationMcpMcpServer, Map<String, dynamic>>(mcpServer, (value) => value.toMap()),
+      'openApiSchema': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema, Map<String, dynamic>>(openApiSchema, (value) => value.toMap()),
+      'smithyModel': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel, Map<String, dynamic>>(smithyModel, (value) => value.toMap()),
     };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcp.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcp.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcp(
-      lambda: (() {
-        final guardedValue = map['lambda'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentcoreGatewayTargetTargetConfigurationMcpLambda.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      mcpServer: (() {
-        final guardedValue = map['mcpServer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentcoreGatewayTargetTargetConfigurationMcpMcpServer.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      openApiSchema: (() {
-        final guardedValue = map['openApiSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      smithyModel: (() {
-        final guardedValue = map['smithyModel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      lambda: (() { final guardedValue = map['lambda']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreGatewayTargetTargetConfigurationMcpLambda.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      mcpServer: (() { final guardedValue = map['mcpServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreGatewayTargetTargetConfigurationMcpMcpServer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      openApiSchema: (() { final guardedValue = map['openApiSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      smithyModel: (() { final guardedValue = map['smithyModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -6,8 +6,7 @@ import 'google_cloud_identitytoolkit_admin_v2_custom_strength_options.dart';
 /// The strength attributes for the password policy on the project.
 class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion {
   /// The custom strength options enforced by the password policy.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions>?
-  customStrengthOptions;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions>? customStrengthOptions;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion].
   /// [customStrengthOptions] The custom strength options enforced by the password policy.
@@ -17,27 +16,14 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customStrengthOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions,
-            Map<String, dynamic>
-          >(customStrengthOptions, (value) => value.toMap()),
+      'customStrengthOptions': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions, Map<String, dynamic>>(customStrengthOptions, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion(
-      customStrengthOptions: (() {
-        final guardedValue = map['customStrengthOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      customStrengthOptions: (() { final guardedValue = map['customStrengthOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

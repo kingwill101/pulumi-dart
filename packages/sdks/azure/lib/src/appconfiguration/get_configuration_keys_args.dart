@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationKeysArgs {
   /// Specifies the id of the App Configuration.
   final pulumi.Input<String> configurationStoreId;
-
   /// The name of the App Configuration Keys to look up.
   final pulumi.Input<String>? key;
-
   /// The label of the App Configuration Keys tp look up.
   final pulumi.Input<String>? label;
 
@@ -36,19 +34,10 @@ class GetConfigurationKeysArgs {
 
   factory GetConfigurationKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationKeysArgs(
-      configurationStoreId: pulumi.Input.fromValue(
-        map['configurationStoreId'] as String,
-      ),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      configurationStoreId: pulumi.Input.fromValue(map['configurationStoreId'] as String),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

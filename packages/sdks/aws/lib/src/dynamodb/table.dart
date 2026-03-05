@@ -1942,100 +1942,70 @@ import 'table_warm_throughput.dart';
 class Table extends pulumi.CustomResource {
   /// ARN of the table
   late final pulumi.Output<String> arn;
-
   /// Set of nested attribute definitions. Only required for `hash_key` and `range_key` attributes. See below.
   late final pulumi.Output<List<Map<String, dynamic>>> attributes;
-
   /// Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
   late final pulumi.Output<String?> billingMode;
-
   /// Enables deletion protection for table. Defaults to `false`.
   late final pulumi.Output<bool?> deletionProtectionEnabled;
-
   /// Describe a GSI for the table; subject to the normal limits on the number of GSIs, projected attributes, etc. See below.
   late final pulumi.Output<List<Map<String, dynamic>>> globalSecondaryIndexes;
-
   /// Witness Region in a Multi-Region Strong Consistency deployment. **Note** This must be used alongside a single `replica` with `consistency_mode` set to `STRONG`. Other combinations will fail to provision. See below.
   late final pulumi.Output<TableGlobalTableWitness> globalTableWitness;
-
   /// Attribute to use as the hash (partition) key. Must also be defined as an `attribute`. See below.
   late final pulumi.Output<String> hashKey;
-
   /// Import Amazon S3 data into a new table. See below.
   late final pulumi.Output<TableImportTable?> importTable;
-
   /// Describe an LSI on the table; these can only be allocated _at creation_ so you cannot change this definition after you have created the resource. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> localSecondaryIndexes;
-
   /// Unique within a region name of the table.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Sets the maximum number of read and write units for the specified on-demand table. See below.
   late final pulumi.Output<TableOnDemandThroughput?> onDemandThroughput;
-
   /// Enable point-in-time recovery options. See below.
   late final pulumi.Output<TablePointInTimeRecovery> pointInTimeRecovery;
-
   /// Attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
   late final pulumi.Output<String?> rangeKey;
-
   /// Number of read units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
   late final pulumi.Output<int> readCapacity;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block(s) with [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) replication configurations. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> replicas;
-
   /// Time of the point-in-time recovery point to restore.
   late final pulumi.Output<String?> restoreDateTime;
-
   /// Name of the table to restore. Must match the name of an existing table.
   late final pulumi.Output<String?> restoreSourceName;
-
   /// ARN of the source table to restore. Must be supplied for cross-region restores.
   late final pulumi.Output<String?> restoreSourceTableArn;
-
   /// If set, restores table to the most recent point-in-time recovery point.
   late final pulumi.Output<bool?> restoreToLatestTime;
-
   /// Encryption at rest options. AWS DynamoDB tables are automatically encrypted at rest with an AWS-owned Customer Master Key if this argument isn't specified. Must be supplied for cross-region restores. See below.
   late final pulumi.Output<TableServerSideEncryption> serverSideEncryption;
-
   /// ARN of the Table Stream. Only available when `stream_enabled = true`
   late final pulumi.Output<String> streamArn;
-
   /// Whether Streams are enabled.
   late final pulumi.Output<bool?> streamEnabled;
-
   /// Timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `stream_enabled = true`.
   late final pulumi.Output<String> streamLabel;
-
   /// When an item in the table is modified, StreamViewType determines what information is written to the table's stream.
   /// Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
   /// Only valid when `stream_enabled` is true.
   late final pulumi.Output<String> streamViewType;
-
   /// Storage class of the table.
   /// Valid values are `STANDARD` and `STANDARD_INFREQUENT_ACCESS`.
   /// Default value is `STANDARD`.
   late final pulumi.Output<String?> tableClass;
-
   /// A map of tags to populate on the created table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Configuration block for TTL. See below.
   late final pulumi.Output<TableTtl> ttl;
-
   /// Sets the number of warm read and write units for the specified table. See below.
   late final pulumi.Output<TableWarmThroughput> warmThroughput;
-
   /// Number of write units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
   late final pulumi.Output<int> writeCapacity;
 
@@ -2043,67 +2013,28 @@ class Table extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Table]. {@macro pulumi_dynamodb_table_table_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Table(String name, {TableArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:dynamodb/table:Table',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Table(
+    String name, {
+    TableArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:dynamodb/table:Table',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
     billingMode = registerOutput<String?>('billingMode');
-    deletionProtectionEnabled = registerOutput<bool?>(
-      'deletionProtectionEnabled',
-    );
-    globalSecondaryIndexes = registerOutput<List<Map<String, dynamic>>>(
-      'globalSecondaryIndexes',
-    );
-    globalTableWitness = registerOutput<TableGlobalTableWitness>(
-      'globalTableWitness',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableGlobalTableWitness.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
+    globalSecondaryIndexes = registerOutput<List<Map<String, dynamic>>>('globalSecondaryIndexes');
+    globalTableWitness = registerOutput<TableGlobalTableWitness>('globalTableWitness', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableGlobalTableWitness.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hashKey = registerOutput<String>('hashKey');
-    importTable = registerOutput<TableImportTable?>(
-      'importTable',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableImportTable.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localSecondaryIndexes = registerOutput<List<Map<String, dynamic>>?>(
-      'localSecondaryIndexes',
-    );
+    importTable = registerOutput<TableImportTable?>('importTable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableImportTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localSecondaryIndexes = registerOutput<List<Map<String, dynamic>>?>('localSecondaryIndexes');
     this.name = registerOutput<String>('name');
-    onDemandThroughput = registerOutput<TableOnDemandThroughput?>(
-      'onDemandThroughput',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableOnDemandThroughput.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>(
-      'pointInTimeRecovery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TablePointInTimeRecovery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    onDemandThroughput = registerOutput<TableOnDemandThroughput?>('onDemandThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableOnDemandThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>('pointInTimeRecovery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TablePointInTimeRecovery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rangeKey = registerOutput<String?>('rangeKey');
     readCapacity = registerOutput<int>('readCapacity');
     region = registerOutput<String>('region');
@@ -2112,16 +2043,7 @@ class Table extends pulumi.CustomResource {
     restoreSourceName = registerOutput<String?>('restoreSourceName');
     restoreSourceTableArn = registerOutput<String?>('restoreSourceTableArn');
     restoreToLatestTime = registerOutput<bool?>('restoreToLatestTime');
-    serverSideEncryption = registerOutput<TableServerSideEncryption>(
-      'serverSideEncryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableServerSideEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serverSideEncryption = registerOutput<TableServerSideEncryption>('serverSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     streamArn = registerOutput<String>('streamArn');
     streamEnabled = registerOutput<bool?>('streamEnabled');
     streamLabel = registerOutput<String>('streamLabel');
@@ -2129,29 +2051,17 @@ class Table extends pulumi.CustomResource {
     tableClass = registerOutput<String?>('tableClass');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    ttl = registerOutput<TableTtl>(
-      'ttl',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableTtl.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
-    warmThroughput = registerOutput<TableWarmThroughput>(
-      'warmThroughput',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableWarmThroughput.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ttl = registerOutput<TableTtl>('ttl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableTtl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    warmThroughput = registerOutput<TableWarmThroughput>('warmThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableWarmThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     writeCapacity = registerOutput<int>('writeCapacity');
   }
 
   /// Gets an existing [Table] resource's state with the given [name] and [id].
-  static Table get(String name, pulumi.Input<String> id, {TableState? state}) {
+  static Table get(
+    String name,
+    pulumi.Input<String> id, {
+    TableState? state,
+  }) {
     return Table._get(
       name,
       state: state?.toMap(),
@@ -2164,65 +2074,23 @@ class Table extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dynamodb/table:Table',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dynamodb/table:Table',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
     billingMode = registerOutput<String?>('billingMode');
-    deletionProtectionEnabled = registerOutput<bool?>(
-      'deletionProtectionEnabled',
-    );
-    globalSecondaryIndexes = registerOutput<List<Map<String, dynamic>>>(
-      'globalSecondaryIndexes',
-    );
-    globalTableWitness = registerOutput<TableGlobalTableWitness>(
-      'globalTableWitness',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableGlobalTableWitness.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
+    globalSecondaryIndexes = registerOutput<List<Map<String, dynamic>>>('globalSecondaryIndexes');
+    globalTableWitness = registerOutput<TableGlobalTableWitness>('globalTableWitness', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableGlobalTableWitness.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hashKey = registerOutput<String>('hashKey');
-    importTable = registerOutput<TableImportTable?>(
-      'importTable',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableImportTable.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localSecondaryIndexes = registerOutput<List<Map<String, dynamic>>?>(
-      'localSecondaryIndexes',
-    );
+    importTable = registerOutput<TableImportTable?>('importTable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableImportTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localSecondaryIndexes = registerOutput<List<Map<String, dynamic>>?>('localSecondaryIndexes');
     this.name = registerOutput<String>('name');
-    onDemandThroughput = registerOutput<TableOnDemandThroughput?>(
-      'onDemandThroughput',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableOnDemandThroughput.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>(
-      'pointInTimeRecovery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TablePointInTimeRecovery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    onDemandThroughput = registerOutput<TableOnDemandThroughput?>('onDemandThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableOnDemandThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>('pointInTimeRecovery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TablePointInTimeRecovery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rangeKey = registerOutput<String?>('rangeKey');
     readCapacity = registerOutput<int>('readCapacity');
     region = registerOutput<String>('region');
@@ -2231,16 +2099,7 @@ class Table extends pulumi.CustomResource {
     restoreSourceName = registerOutput<String?>('restoreSourceName');
     restoreSourceTableArn = registerOutput<String?>('restoreSourceTableArn');
     restoreToLatestTime = registerOutput<bool?>('restoreToLatestTime');
-    serverSideEncryption = registerOutput<TableServerSideEncryption>(
-      'serverSideEncryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableServerSideEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serverSideEncryption = registerOutput<TableServerSideEncryption>('serverSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     streamArn = registerOutput<String>('streamArn');
     streamEnabled = registerOutput<bool?>('streamEnabled');
     streamLabel = registerOutput<String>('streamLabel');
@@ -2248,24 +2107,8 @@ class Table extends pulumi.CustomResource {
     tableClass = registerOutput<String?>('tableClass');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    ttl = registerOutput<TableTtl>(
-      'ttl',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableTtl.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
-    warmThroughput = registerOutput<TableWarmThroughput>(
-      'warmThroughput',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableWarmThroughput.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ttl = registerOutput<TableTtl>('ttl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableTtl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    warmThroughput = registerOutput<TableWarmThroughput>('warmThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableWarmThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     writeCapacity = registerOutput<int>('writeCapacity');
   }
 }

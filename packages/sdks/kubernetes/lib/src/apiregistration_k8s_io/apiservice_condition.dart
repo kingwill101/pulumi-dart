@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class APIServiceCondition {
   /// Last time the condition transitioned from one status to another.
   final pulumi.Input<String>? lastTransitionTime;
-
   /// Human-readable message indicating details about last transition.
   final pulumi.Input<String>? message;
-
   /// Unique, one-word, CamelCase reason for the condition's last transition.
   final pulumi.Input<String>? reason;
-
   /// Status is the status of the condition. Can be True, False, Unknown.
   final pulumi.Input<String> status;
-
   /// Type is the type of the condition.
   final pulumi.Input<String> type;
 
@@ -45,23 +41,12 @@ class APIServiceCondition {
 
   factory APIServiceCondition.fromMap(Map<String, dynamic> map) {
     return APIServiceCondition(
-      lastTransitionTime: (() {
-        final guardedValue = map['lastTransitionTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reason: (() {
-        final guardedValue = map['reason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      lastTransitionTime: (() { final guardedValue = map['lastTransitionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

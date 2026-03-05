@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScaleSetOsProfileSecretVaultCertificate {
   /// (Required, on windows machines) Specifies the certificate store on the Virtual Machine where the certificate should be added to.
   final pulumi.Input<String>? certificateStore;
-
   /// It is the Base64 encoding of a JSON Object that which is encoded in UTF-8 of which the contents need to be `data`, `dataType` and `password`.
   final pulumi.Input<String> certificateUrl;
 
@@ -24,16 +23,11 @@ class ScaleSetOsProfileSecretVaultCertificate {
     };
   }
 
-  factory ScaleSetOsProfileSecretVaultCertificate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScaleSetOsProfileSecretVaultCertificate.fromMap(Map<String, dynamic> map) {
     return ScaleSetOsProfileSecretVaultCertificate(
-      certificateStore: (() {
-        final guardedValue = map['certificateStore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certificateStore: (() { final guardedValue = map['certificateStore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       certificateUrl: pulumi.Input.fromValue(map['certificateUrl'] as String),
     );
   }
 }
+

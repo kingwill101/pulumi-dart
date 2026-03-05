@@ -17,10 +17,8 @@ import 'assignment_dynamic_scope_state.dart';
 class AssignmentDynamicScope extends pulumi.CustomResource {
   /// A `filter` block as defined below.
   late final pulumi.Output<AssignmentDynamicScopeFilter> filter;
-
   /// The ID of the Maintenance Configuration Resource. Changing this forces a new Dynamic Maintenance Assignment to be created.
   late final pulumi.Output<String> maintenanceConfigurationId;
-
   /// The name which should be used for this Dynamic Maintenance Assignment. Changing this forces a new Dynamic Maintenance Assignment to be created.
   ///
   /// &gt; **Note:** The `name` must be unique per subscription.
@@ -35,24 +33,13 @@ class AssignmentDynamicScope extends pulumi.CustomResource {
     AssignmentDynamicScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:maintenance/assignmentDynamicScope:AssignmentDynamicScope',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    filter = registerOutput<AssignmentDynamicScopeFilter>(
-      'filter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AssignmentDynamicScopeFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    maintenanceConfigurationId = registerOutput<String>(
-      'maintenanceConfigurationId',
-    );
+          'azure:maintenance/assignmentDynamicScope:AssignmentDynamicScope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    filter = registerOutput<AssignmentDynamicScopeFilter>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentDynamicScopeFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');
     this.name = registerOutput<String>('name');
   }
 
@@ -74,24 +61,13 @@ class AssignmentDynamicScope extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:maintenance/assignmentDynamicScope:AssignmentDynamicScope',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    filter = registerOutput<AssignmentDynamicScopeFilter>(
-      'filter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AssignmentDynamicScopeFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    maintenanceConfigurationId = registerOutput<String>(
-      'maintenanceConfigurationId',
-    );
+          'azure:maintenance/assignmentDynamicScope:AssignmentDynamicScope',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    filter = registerOutput<AssignmentDynamicScopeFilter>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentDynamicScopeFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');
     this.name = registerOutput<String>('name');
   }
 }

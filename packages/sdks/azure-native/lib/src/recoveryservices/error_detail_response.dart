@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ErrorDetailResponse {
   /// Error code.
   final pulumi.Input<String> code;
-
   /// Error Message related to the Code.
   final pulumi.Input<String> message;
-
   /// List of recommendation strings.
   final pulumi.Input<List<String>> recommendations;
 
@@ -35,9 +33,8 @@ class ErrorDetailResponse {
     return ErrorDetailResponse(
       code: pulumi.Input.fromValue(map['code'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
-      recommendations: pulumi.Input.fromValue(
-        (map['recommendations'] as List).cast<String>(),
-      ),
+      recommendations: pulumi.Input.fromValue((map['recommendations'] as List).cast<String>()),
     );
   }
 }
+

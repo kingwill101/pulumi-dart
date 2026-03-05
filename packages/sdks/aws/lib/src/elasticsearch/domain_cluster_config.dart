@@ -7,35 +7,24 @@ import 'domain_cluster_config_zone_awareness_config.dart';
 class DomainClusterConfig {
   /// Configuration block containing cold storage configuration. Detailed below.
   final pulumi.Input<DomainClusterConfigColdStorageOptions>? coldStorageOptions;
-
   /// Number of dedicated main nodes in the cluster.
   final pulumi.Input<int>? dedicatedMasterCount;
-
   /// Whether dedicated main nodes are enabled for the cluster.
   final pulumi.Input<bool>? dedicatedMasterEnabled;
-
   /// Instance type of the dedicated main nodes in the cluster.
   final pulumi.Input<String>? dedicatedMasterType;
-
   /// Number of instances in the cluster.
   final pulumi.Input<int>? instanceCount;
-
   /// Instance type of data nodes in the cluster.
   final pulumi.Input<String>? instanceType;
-
   /// Number of warm nodes in the cluster. Valid values are between `2` and `150`. `warm_count` can be only and must be set when `warm_enabled` is set to `true`.
   final pulumi.Input<int>? warmCount;
-
   /// Whether to enable warm storage.
   final pulumi.Input<bool>? warmEnabled;
-
   /// Instance type for the Elasticsearch cluster's warm nodes. Valid values are `ultrawarm1.medium.elasticsearch`, `ultrawarm1.large.elasticsearch` and `ultrawarm1.xlarge.elasticsearch`. `warm_type` can be only and must be set when `warm_enabled` is set to `true`.
   final pulumi.Input<String>? warmType;
-
   /// Configuration block containing zone awareness settings. Detailed below.
-  final pulumi.Input<DomainClusterConfigZoneAwarenessConfig>?
-  zoneAwarenessConfig;
-
+  final pulumi.Input<DomainClusterConfigZoneAwarenessConfig>? zoneAwarenessConfig;
   /// Whether zone awareness is enabled, set to `true` for multi-az deployment. To enable awareness with three Availability Zones, the `availability_zone_count` within the `zone_awareness_config` must be set to `3`.
   final pulumi.Input<bool>? zoneAwarenessEnabled;
 
@@ -67,11 +56,7 @@ class DomainClusterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'coldStorageOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainClusterConfigColdStorageOptions,
-            Map<String, dynamic>
-          >(coldStorageOptions, (value) => value.toMap()),
+      'coldStorageOptions': ?pulumi.Input.mapOptionalInputValue<DomainClusterConfigColdStorageOptions, Map<String, dynamic>>(coldStorageOptions, (value) => value.toMap()),
       'dedicatedMasterCount': ?dedicatedMasterCount,
       'dedicatedMasterEnabled': ?dedicatedMasterEnabled,
       'dedicatedMasterType': ?dedicatedMasterType,
@@ -80,80 +65,25 @@ class DomainClusterConfig {
       'warmCount': ?warmCount,
       'warmEnabled': ?warmEnabled,
       'warmType': ?warmType,
-      'zoneAwarenessConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainClusterConfigZoneAwarenessConfig,
-            Map<String, dynamic>
-          >(zoneAwarenessConfig, (value) => value.toMap()),
+      'zoneAwarenessConfig': ?pulumi.Input.mapOptionalInputValue<DomainClusterConfigZoneAwarenessConfig, Map<String, dynamic>>(zoneAwarenessConfig, (value) => value.toMap()),
       'zoneAwarenessEnabled': ?zoneAwarenessEnabled,
     };
   }
 
   factory DomainClusterConfig.fromMap(Map<String, dynamic> map) {
     return DomainClusterConfig(
-      coldStorageOptions: (() {
-        final guardedValue = map['coldStorageOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainClusterConfigColdStorageOptions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      dedicatedMasterCount: (() {
-        final guardedValue = map['dedicatedMasterCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      dedicatedMasterEnabled: (() {
-        final guardedValue = map['dedicatedMasterEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      dedicatedMasterType: (() {
-        final guardedValue = map['dedicatedMasterType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceCount: (() {
-        final guardedValue = map['instanceCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      warmCount: (() {
-        final guardedValue = map['warmCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      warmEnabled: (() {
-        final guardedValue = map['warmEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      warmType: (() {
-        final guardedValue = map['warmType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zoneAwarenessConfig: (() {
-        final guardedValue = map['zoneAwarenessConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainClusterConfigZoneAwarenessConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      zoneAwarenessEnabled: (() {
-        final guardedValue = map['zoneAwarenessEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      coldStorageOptions: (() { final guardedValue = map['coldStorageOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainClusterConfigColdStorageOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dedicatedMasterCount: (() { final guardedValue = map['dedicatedMasterCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dedicatedMasterEnabled: (() { final guardedValue = map['dedicatedMasterEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      dedicatedMasterType: (() { final guardedValue = map['dedicatedMasterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      warmCount: (() { final guardedValue = map['warmCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      warmEnabled: (() { final guardedValue = map['warmEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      warmType: (() { final guardedValue = map['warmType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneAwarenessConfig: (() { final guardedValue = map['zoneAwarenessConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainClusterConfigZoneAwarenessConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      zoneAwarenessEnabled: (() { final guardedValue = map['zoneAwarenessEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

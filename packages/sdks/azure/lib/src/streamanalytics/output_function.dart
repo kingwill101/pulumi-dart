@@ -440,25 +440,18 @@ import 'output_function_state.dart';
 class OutputFunction extends pulumi.CustomResource {
   /// The API key for the Function.
   late final pulumi.Output<String> apiKey;
-
   /// The maximum number of events in each batch that's sent to the function. Defaults to `100`.
   late final pulumi.Output<int?> batchMaxCount;
-
   /// The maximum batch size in bytes that's sent to the function. Defaults to `262144` (256 kB).
   late final pulumi.Output<int?> batchMaxInBytes;
-
   /// The name of the Function App.
   late final pulumi.Output<String> functionApp;
-
   /// The name of the function in the Function App.
   late final pulumi.Output<String> functionName;
-
   /// The name which should be used for this Stream Analytics Output. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Stream Analytics Output should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;
 
@@ -471,11 +464,11 @@ class OutputFunction extends pulumi.CustomResource {
     OutputFunctionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/outputFunction:OutputFunction',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/outputFunction:OutputFunction',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiKey = registerOutput<String>('apiKey');
     batchMaxCount = registerOutput<int?>('batchMaxCount');
     batchMaxInBytes = registerOutput<int?>('batchMaxInBytes');
@@ -504,11 +497,11 @@ class OutputFunction extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/outputFunction:OutputFunction',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/outputFunction:OutputFunction',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiKey = registerOutput<String>('apiKey');
     batchMaxCount = registerOutput<int?>('batchMaxCount');
     batchMaxInBytes = registerOutput<int?>('batchMaxInBytes');

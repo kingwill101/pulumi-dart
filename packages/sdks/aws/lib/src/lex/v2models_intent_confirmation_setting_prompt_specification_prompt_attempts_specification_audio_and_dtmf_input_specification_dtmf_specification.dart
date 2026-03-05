@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification {
   /// DTMF character that clears the accumulated DTMF digits and immediately ends the input.
   final pulumi.Input<String> deletionCharacter;
-
   /// DTMF character that immediately ends input. If the user does not press this character, the input ends after the end timeout.
   final pulumi.Input<String> endCharacter;
-
   /// How long the bot should wait after the last DTMF character input before assuming that the input has concluded.
   final pulumi.Input<int> endTimeoutMs;
-
   /// Maximum number of DTMF digits allowed in an utterance.
   final pulumi.Input<int> maxLength;
 
@@ -36,16 +33,13 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
     };
   }
 
-  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification(
-      deletionCharacter: pulumi.Input.fromValue(
-        map['deletionCharacter'] as String,
-      ),
+      deletionCharacter: pulumi.Input.fromValue(map['deletionCharacter'] as String),
       endCharacter: pulumi.Input.fromValue(map['endCharacter'] as String),
       endTimeoutMs: pulumi.Input.fromValue(map['endTimeoutMs'] as int),
       maxLength: pulumi.Input.fromValue(map['maxLength'] as int),
     );
   }
 }
+

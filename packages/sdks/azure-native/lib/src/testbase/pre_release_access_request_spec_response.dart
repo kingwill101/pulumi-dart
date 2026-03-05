@@ -49,55 +49,18 @@ class PreReleaseAccessRequestSpecResponse {
     };
   }
 
-  factory PreReleaseAccessRequestSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreReleaseAccessRequestSpecResponse.fromMap(Map<String, dynamic> map) {
     return PreReleaseAccessRequestSpecResponse(
-      city: (() {
-        final guardedValue = map['city'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      companyWebsite: (() {
-        final guardedValue = map['companyWebsite'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      countryAndRegion: (() {
-        final guardedValue = map['countryAndRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      engagements: (() {
-        final guardedValue = map['engagements'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      organizationName: (() {
-        final guardedValue = map['organizationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stateOrProvince: (() {
-        final guardedValue = map['stateOrProvince'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      streetAddress: (() {
-        final guardedValue = map['streetAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zipCode: (() {
-        final guardedValue = map['zipCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      city: (() { final guardedValue = map['city']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      companyWebsite: (() { final guardedValue = map['companyWebsite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      countryAndRegion: (() { final guardedValue = map['countryAndRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      engagements: (() { final guardedValue = map['engagements']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      organizationName: (() { final guardedValue = map['organizationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stateOrProvince: (() { final guardedValue = map['stateOrProvince']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      streetAddress: (() { final guardedValue = map['streetAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zipCode: (() { final guardedValue = map['zipCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

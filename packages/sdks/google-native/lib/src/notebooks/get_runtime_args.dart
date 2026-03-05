@@ -32,12 +32,9 @@ class GetRuntimeArgs {
   factory GetRuntimeArgs.fromMap(Map<String, dynamic> map) {
     return GetRuntimeArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       runtimeId: pulumi.Input.fromValue(map['runtimeId'] as String),
     );
   }
 }
+

@@ -8,25 +8,18 @@ import 'google_type_time_of_day_response.dart';
 class GooglePrivacyDlpV2ValueResponse {
   /// boolean
   final pulumi.Input<bool> booleanValue;
-
   /// date
   final pulumi.Input<GoogleTypeDateResponse> dateValue;
-
   /// day of week
   final pulumi.Input<String> dayOfWeekValue;
-
   /// float
   final pulumi.Input<double> floatValue;
-
   /// integer
   final pulumi.Input<String> integerValue;
-
   /// string
   final pulumi.Input<String> stringValue;
-
   /// time of day
   final pulumi.Input<GoogleTypeTimeOfDayResponse> timeValue;
-
   /// timestamp
   final pulumi.Input<String> timestampValue;
 
@@ -53,20 +46,12 @@ class GooglePrivacyDlpV2ValueResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'booleanValue': booleanValue,
-      'dateValue':
-          pulumi.Input.mapInputValue<
-            GoogleTypeDateResponse,
-            Map<String, dynamic>
-          >(dateValue, (value) => value.toMap()),
+      'dateValue': pulumi.Input.mapInputValue<GoogleTypeDateResponse, Map<String, dynamic>>(dateValue, (value) => value.toMap()),
       'dayOfWeekValue': dayOfWeekValue,
       'floatValue': floatValue,
       'integerValue': integerValue,
       'stringValue': stringValue,
-      'timeValue':
-          pulumi.Input.mapInputValue<
-            GoogleTypeTimeOfDayResponse,
-            Map<String, dynamic>
-          >(timeValue, (value) => value.toMap()),
+      'timeValue': pulumi.Input.mapInputValue<GoogleTypeTimeOfDayResponse, Map<String, dynamic>>(timeValue, (value) => value.toMap()),
       'timestampValue': timestampValue,
     };
   }
@@ -74,21 +59,14 @@ class GooglePrivacyDlpV2ValueResponse {
   factory GooglePrivacyDlpV2ValueResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ValueResponse(
       booleanValue: pulumi.Input.fromValue(map['booleanValue'] as bool),
-      dateValue: pulumi.Input.fromValue(
-        GoogleTypeDateResponse.fromMap(
-          (map['dateValue']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      dateValue: pulumi.Input.fromValue(GoogleTypeDateResponse.fromMap((map['dateValue']! as Map).cast<String, dynamic>())),
       dayOfWeekValue: pulumi.Input.fromValue(map['dayOfWeekValue'] as String),
       floatValue: pulumi.Input.fromValue(map['floatValue'] as double),
       integerValue: pulumi.Input.fromValue(map['integerValue'] as String),
       stringValue: pulumi.Input.fromValue(map['stringValue'] as String),
-      timeValue: pulumi.Input.fromValue(
-        GoogleTypeTimeOfDayResponse.fromMap(
-          (map['timeValue']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      timeValue: pulumi.Input.fromValue(GoogleTypeTimeOfDayResponse.fromMap((map['timeValue']! as Map).cast<String, dynamic>())),
       timestampValue: pulumi.Input.fromValue(map['timestampValue'] as String),
     );
   }
 }
+

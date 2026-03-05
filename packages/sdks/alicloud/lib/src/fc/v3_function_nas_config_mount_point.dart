@@ -6,7 +6,6 @@ class V3FunctionNasConfigMountPoint {
   /// Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
   final pulumi.Input<bool>? enableTls;
   final pulumi.Input<String>? mountDir;
-
   /// NAS server address
   final pulumi.Input<String>? serverAddr;
 
@@ -30,21 +29,10 @@ class V3FunctionNasConfigMountPoint {
 
   factory V3FunctionNasConfigMountPoint.fromMap(Map<String, dynamic> map) {
     return V3FunctionNasConfigMountPoint(
-      enableTls: (() {
-        final guardedValue = map['enableTls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      mountDir: (() {
-        final guardedValue = map['mountDir'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverAddr: (() {
-        final guardedValue = map['serverAddr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enableTls: (() { final guardedValue = map['enableTls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      mountDir: (() { final guardedValue = map['mountDir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverAddr: (() { final guardedValue = map['serverAddr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

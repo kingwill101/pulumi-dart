@@ -17,3 +17,4 @@ enum X12CharacterSet {
     throw ArgumentError('Unknown X12CharacterSet value: $value');
   }
 }
+

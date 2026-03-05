@@ -13,14 +13,15 @@ class WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'namespace': namespace};
+    return <String, dynamic>{
+      'namespace': namespace,
+    };
   }
 
-  factory WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace(
       namespace: pulumi.Input.fromValue(map['namespace'] as String),
     );
   }
 }
+

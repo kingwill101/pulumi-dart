@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContactArgs {
   /// Contact name.
   final pulumi.Input<String> contactName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Spacecraft ID.
   final pulumi.Input<String> spacecraftName;
 
@@ -37,10 +35,9 @@ class GetContactArgs {
   factory GetContactArgs.fromMap(Map<String, dynamic> map) {
     return GetContactArgs(
       contactName: pulumi.Input.fromValue(map['contactName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       spacecraftName: pulumi.Input.fromValue(map['spacecraftName'] as String),
     );
   }
 }
+

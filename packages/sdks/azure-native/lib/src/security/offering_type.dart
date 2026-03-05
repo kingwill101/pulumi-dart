@@ -32,3 +32,4 @@ enum OfferingType {
     throw ArgumentError('Unknown OfferingType value: $value');
   }
 }
+

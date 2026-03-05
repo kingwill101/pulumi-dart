@@ -9,29 +9,20 @@ class ThemeConfigurationSheetTile {
 
   /// Creates a new [ThemeConfigurationSheetTile].
   /// [border] The border around a tile. See border.
-  ThemeConfigurationSheetTile({this.border});
+  ThemeConfigurationSheetTile({
+    this.border,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'border':
-          ?pulumi.Input.mapOptionalInputValue<
-            ThemeConfigurationSheetTileBorder,
-            Map<String, dynamic>
-          >(border, (value) => value.toMap()),
+      'border': ?pulumi.Input.mapOptionalInputValue<ThemeConfigurationSheetTileBorder, Map<String, dynamic>>(border, (value) => value.toMap()),
     };
   }
 
   factory ThemeConfigurationSheetTile.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationSheetTile(
-      border: (() {
-        final guardedValue = map['border'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ThemeConfigurationSheetTileBorder.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      border: (() { final guardedValue = map['border']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ThemeConfigurationSheetTileBorder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

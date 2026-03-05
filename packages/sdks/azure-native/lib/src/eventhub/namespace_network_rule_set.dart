@@ -380,31 +380,22 @@ import 'system_data_response.dart';
 class NamespaceNetworkRuleSet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Default Action for Network Rule Set
   late final pulumi.Output<String?> defaultAction;
-
   /// List of IpRules
   late final pulumi.Output<List<Map<String, dynamic>>?> ipRules;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Value that indicates whether Trusted Service Access is Enabled or not.
   late final pulumi.Output<bool?> trustedServiceAccessEnabled;
-
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   late final pulumi.Output<String> type;
-
   /// List VirtualNetwork Rules
   late final pulumi.Output<List<Map<String, dynamic>>?> virtualNetworkRules;
 
@@ -417,33 +408,20 @@ class NamespaceNetworkRuleSet extends pulumi.CustomResource {
     NamespaceNetworkRuleSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventhub:NamespaceNetworkRuleSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventhub:NamespaceNetworkRuleSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     defaultAction = registerOutput<String?>('defaultAction');
     ipRules = registerOutput<List<Map<String, dynamic>>?>('ipRules');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    trustedServiceAccessEnabled = registerOutput<bool?>(
-      'trustedServiceAccessEnabled',
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trustedServiceAccessEnabled = registerOutput<bool?>('trustedServiceAccessEnabled');
     type = registerOutput<String>('type');
-    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>?>(
-      'virtualNetworkRules',
-    );
+    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>?>('virtualNetworkRules');
   }
 }

@@ -16,3 +16,4 @@ enum NotificationMode {
     throw ArgumentError('Unknown NotificationMode value: $value');
   }
 }
+

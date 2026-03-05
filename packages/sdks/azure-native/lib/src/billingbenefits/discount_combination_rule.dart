@@ -15,3 +15,4 @@ enum DiscountCombinationRule {
     throw ArgumentError('Unknown DiscountCombinationRule value: $value');
   }
 }
+

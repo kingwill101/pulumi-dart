@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkManagedServiceManagedS3BackupAccess {
   final pulumi.Input<List<String>> ipv4Addresses;
-
   /// The status of the network resource.
   final pulumi.Input<String> status;
 
@@ -17,17 +16,17 @@ class NetworkManagedServiceManagedS3BackupAccess {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipv4Addresses': ipv4Addresses, 'status': status};
+    return <String, dynamic>{
+      'ipv4Addresses': ipv4Addresses,
+      'status': status,
+    };
   }
 
-  factory NetworkManagedServiceManagedS3BackupAccess.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkManagedServiceManagedS3BackupAccess.fromMap(Map<String, dynamic> map) {
     return NetworkManagedServiceManagedS3BackupAccess(
-      ipv4Addresses: pulumi.Input.fromValue(
-        (map['ipv4Addresses'] as List).cast<String>(),
-      ),
+      ipv4Addresses: pulumi.Input.fromValue((map['ipv4Addresses'] as List).cast<String>()),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

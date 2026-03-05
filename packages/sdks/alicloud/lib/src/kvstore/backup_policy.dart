@@ -378,10 +378,8 @@ import 'backup_policy_state.dart';
 class BackupPolicy extends pulumi.CustomResource {
   /// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
   late final pulumi.Output<List<String>> backupPeriods;
-
   /// Backup time, in the format of HH:mmZ- HH:mm Z.
   late final pulumi.Output<String?> backupTime;
-
   /// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
   late final pulumi.Output<String> instanceId;
 
@@ -394,11 +392,11 @@ class BackupPolicy extends pulumi.CustomResource {
     BackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kvstore/backupPolicy:BackupPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kvstore/backupPolicy:BackupPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupPeriods = registerOutput<List<String>>('backupPeriods');
     backupTime = registerOutput<String?>('backupTime');
     instanceId = registerOutput<String>('instanceId');
@@ -422,11 +420,11 @@ class BackupPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kvstore/backupPolicy:BackupPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kvstore/backupPolicy:BackupPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupPeriods = registerOutput<List<String>>('backupPeriods');
     backupTime = registerOutput<String?>('backupTime');
     instanceId = registerOutput<String>('instanceId');

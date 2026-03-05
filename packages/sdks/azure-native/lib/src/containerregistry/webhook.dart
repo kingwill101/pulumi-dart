@@ -203,31 +203,22 @@ import 'webhook_args.dart';
 class Webhook extends pulumi.CustomResource {
   /// The list of actions that trigger the webhook to post notifications.
   late final pulumi.Output<List<String>> actions;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The location of the resource. This cannot be changed after the resource is created.
   late final pulumi.Output<String> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the webhook at the time the operation was called.
   late final pulumi.Output<String> provisioningState;
-
   /// The scope of repositories where the event can be triggered. For example, 'foo:*' means events for all tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to 'foo:latest'. Empty means all events.
   late final pulumi.Output<String?> scope;
-
   /// The status of the webhook at the time the operation was called.
   late final pulumi.Output<String?> status;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -240,11 +231,11 @@ class Webhook extends pulumi.CustomResource {
     WebhookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerregistry:Webhook',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:containerregistry:Webhook',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<String>>('actions');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
@@ -252,16 +243,7 @@ class Webhook extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     scope = registerOutput<String?>('scope');
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -15,7 +15,6 @@ class BudgetFilterPropertiesResponse {
   /// - ReservationId
   /// - ReservedResourceType
   final pulumi.Input<BudgetComparisonExpressionResponse>? dimensions;
-
   /// Has comparison expression for a tag.
   ///
   /// Supported for CategoryType(s): Cost.
@@ -24,43 +23,23 @@ class BudgetFilterPropertiesResponse {
   /// Creates a new [BudgetFilterPropertiesResponse].
   /// [dimensions] Has comparison expression for a dimension.
   /// [tags] Has comparison expression for a tag.
-  BudgetFilterPropertiesResponse({this.dimensions, this.tags});
+  BudgetFilterPropertiesResponse({
+    this.dimensions,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions':
-          ?pulumi.Input.mapOptionalInputValue<
-            BudgetComparisonExpressionResponse,
-            Map<String, dynamic>
-          >(dimensions, (value) => value.toMap()),
-      'tags':
-          ?pulumi.Input.mapOptionalInputValue<
-            BudgetComparisonExpressionResponse,
-            Map<String, dynamic>
-          >(tags, (value) => value.toMap()),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<BudgetComparisonExpressionResponse, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<BudgetComparisonExpressionResponse, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
   factory BudgetFilterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BudgetFilterPropertiesResponse(
-      dimensions: (() {
-        final guardedValue = map['dimensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BudgetComparisonExpressionResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BudgetComparisonExpressionResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BudgetComparisonExpressionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BudgetComparisonExpressionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

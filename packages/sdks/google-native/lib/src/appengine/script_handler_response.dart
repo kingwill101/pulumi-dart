@@ -9,10 +9,14 @@ class ScriptHandlerResponse {
 
   /// Creates a new [ScriptHandlerResponse].
   /// [scriptPath] Path to the script from the application root directory.
-  ScriptHandlerResponse({required this.scriptPath});
+  ScriptHandlerResponse({
+    required this.scriptPath,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scriptPath': scriptPath};
+    return <String, dynamic>{
+      'scriptPath': scriptPath,
+    };
   }
 
   factory ScriptHandlerResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ScriptHandlerResponse {
     );
   }
 }
+

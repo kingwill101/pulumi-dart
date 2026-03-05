@@ -8,7 +8,6 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio {
   ///
   /// &lt;a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"&gt;&lt;/a&gt;The `mixed_audio` block contains:
   final pulumi.Input<bool>? allowPlaybackInterruption;
-
   /// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
   final pulumi.Input<String> audioUri;
 
@@ -27,16 +26,11 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio {
     };
   }
 
-  factory CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio.fromMap(Map<String, dynamic> map) {
     return CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio(
-      allowPlaybackInterruption: (() {
-        final guardedValue = map['allowPlaybackInterruption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      allowPlaybackInterruption: (() { final guardedValue = map['allowPlaybackInterruption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       audioUri: pulumi.Input.fromValue(map['audioUri'] as String),
     );
   }
 }
+

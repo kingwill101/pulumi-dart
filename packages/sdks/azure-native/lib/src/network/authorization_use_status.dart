@@ -15,3 +15,4 @@ enum AuthorizationUseStatus {
     throw ArgumentError('Unknown AuthorizationUseStatus value: $value');
   }
 }
+

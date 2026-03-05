@@ -48,11 +48,7 @@ class GetSecurityPoliciesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'policies':
-          pulumi.Input.encodeList<
-            GetSecurityPoliciesPolicy,
-            Map<String, dynamic>
-          >(policies, (value) => value.toMap()),
+      'policies': pulumi.Input.encodeList<GetSecurityPoliciesPolicy, Map<String, dynamic>>(policies, (value) => value.toMap()),
       'resourceGroupId': ?resourceGroupId,
       'securityPolicyNames': ?securityPolicyNames,
       'status': ?status,
@@ -64,43 +60,15 @@ class GetSecurityPoliciesResult {
     return GetSecurityPoliciesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      policies: pulumi.Input.decodeList<GetSecurityPoliciesPolicy>(
-        map['policies']!,
-        (value) => GetSecurityPoliciesPolicy.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      securityPolicyNames: (() {
-        final guardedValue = map['securityPolicyNames'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policies: pulumi.Input.decodeList<GetSecurityPoliciesPolicy>(map['policies']!, (value) => GetSecurityPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      securityPolicyNames: (() { final guardedValue = map['securityPolicyNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum MqttBridgeRouteDirection {
     throw ArgumentError('Unknown MqttBridgeRouteDirection value: $value');
   }
 }
+

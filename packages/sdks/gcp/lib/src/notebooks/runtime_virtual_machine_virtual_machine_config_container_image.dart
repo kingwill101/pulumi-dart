@@ -6,7 +6,6 @@ class RuntimeVirtualMachineVirtualMachineConfigContainerImage {
   /// The path to the container image repository.
   /// For example: gcr.io/{project_id}/{imageName}
   final pulumi.Input<String> repository;
-
   /// The tag of the container image. If not specified, this defaults to the latest tag.
   final pulumi.Input<String>? tag;
 
@@ -19,19 +18,17 @@ class RuntimeVirtualMachineVirtualMachineConfigContainerImage {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'repository': repository, 'tag': ?tag};
+    return <String, dynamic>{
+      'repository': repository,
+      'tag': ?tag,
+    };
   }
 
-  factory RuntimeVirtualMachineVirtualMachineConfigContainerImage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuntimeVirtualMachineVirtualMachineConfigContainerImage.fromMap(Map<String, dynamic> map) {
     return RuntimeVirtualMachineVirtualMachineConfigContainerImage(
       repository: pulumi.Input.fromValue(map['repository'] as String),
-      tag: (() {
-        final guardedValue = map['tag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

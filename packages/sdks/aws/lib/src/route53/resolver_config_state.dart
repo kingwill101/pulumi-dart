@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResolverConfigState {
   /// Indicates whether or not the Resolver will create autodefined rules for reverse DNS lookups. Valid values: `ENABLE`, `DISABLE`.
   final pulumi.Input<String>? autodefinedReverseFlag;
-
   /// The AWS account ID of the owner of the VPC that this resolver configuration applies to.
   final pulumi.Input<String>? ownerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the VPC that the configuration is for.
   final pulumi.Input<String>? resourceId;
 
@@ -39,26 +36,11 @@ class ResolverConfigState {
 
   factory ResolverConfigState.fromMap(Map<String, dynamic> map) {
     return ResolverConfigState(
-      autodefinedReverseFlag: (() {
-        final guardedValue = map['autodefinedReverseFlag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ownerId: (() {
-        final guardedValue = map['ownerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autodefinedReverseFlag: (() { final guardedValue = map['autodefinedReverseFlag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

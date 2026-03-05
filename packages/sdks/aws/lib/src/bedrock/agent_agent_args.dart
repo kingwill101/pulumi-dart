@@ -13,50 +13,34 @@ import 'agent_agent_timeouts.dart';
 class AgentAgentArgs {
   /// Agents collaboration role. Valid values: `SUPERVISOR`, `SUPERVISOR_ROUTER`, `DISABLED`.
   final pulumi.Input<String>? agentCollaboration;
-
   /// Name of the agent.
   final pulumi.Input<String> agentName;
-
   /// ARN of the IAM role with permissions to invoke API operations on the agent.
   final pulumi.Input<String> agentResourceRoleArn;
-
   /// ARN of the AWS KMS key that encrypts the agent.
   final pulumi.Input<String>? customerEncryptionKeyArn;
-
   /// Description of the agent.
   final pulumi.Input<String>? description;
-
   /// Foundation model used for orchestration by the agent.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> foundationModel;
-
   /// Details about the guardrail associated with the agent. See `guardrail_configuration` Block for details.
-  final pulumi.Input<List<AgentAgentGuardrailConfiguration>>?
-  guardrailConfigurations;
-
+  final pulumi.Input<List<AgentAgentGuardrailConfiguration>>? guardrailConfigurations;
   /// Number of seconds for which Amazon Bedrock keeps information about a user's conversation with the agent. A user interaction remains active for the amount of time specified. If no conversation occurs during this time, the session expires and Amazon Bedrock deletes any data provided before the timeout.
   final pulumi.Input<int>? idleSessionTtlInSeconds;
-
   /// Instructions that tell the agent what it should do and how it should interact with users. If `prepare_agent` is `true` this argument is required. The valid range is 40 - 20000 characters.
   final pulumi.Input<String>? instruction;
-
   /// Configurations for the agent's ability to retain the conversational context.
   final pulumi.Input<List<AgentAgentMemoryConfiguration>>? memoryConfigurations;
-
   /// Whether to prepare the agent after creation or modification. Defaults to `true`.
   final pulumi.Input<bool>? prepareAgent;
-
   /// Configurations to override prompt templates in different parts of an agent sequence. For more information, see [Advanced prompts](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html). See `prompt_override_configuration` Block for details.
-  final pulumi.Input<List<AgentAgentPromptOverrideConfiguration>>?
-  promptOverrideConfigurations;
-
+  final pulumi.Input<List<AgentAgentPromptOverrideConfiguration>>? promptOverrideConfigurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Whether the in-use check is skipped when deleting the agent.
   final pulumi.Input<bool>? skipResourceInUseCheck;
-
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<AgentAgentTimeouts>? timeouts;
@@ -105,155 +89,38 @@ class AgentAgentArgs {
       'customerEncryptionKeyArn': ?customerEncryptionKeyArn,
       'description': ?description,
       'foundationModel': foundationModel,
-      'guardrailConfigurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AgentAgentGuardrailConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            guardrailConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AgentAgentGuardrailConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'guardrailConfigurations': ?pulumi.Input.mapOptionalInputValue<List<AgentAgentGuardrailConfiguration>, List<Map<String, dynamic>>>(guardrailConfigurations, (value) => pulumi.Input.encodeList<AgentAgentGuardrailConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'idleSessionTtlInSeconds': ?idleSessionTtlInSeconds,
       'instruction': ?instruction,
-      'memoryConfigurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AgentAgentMemoryConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            memoryConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AgentAgentMemoryConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'memoryConfigurations': ?pulumi.Input.mapOptionalInputValue<List<AgentAgentMemoryConfiguration>, List<Map<String, dynamic>>>(memoryConfigurations, (value) => pulumi.Input.encodeList<AgentAgentMemoryConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'prepareAgent': ?prepareAgent,
-      'promptOverrideConfigurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AgentAgentPromptOverrideConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            promptOverrideConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AgentAgentPromptOverrideConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'promptOverrideConfigurations': ?pulumi.Input.mapOptionalInputValue<List<AgentAgentPromptOverrideConfiguration>, List<Map<String, dynamic>>>(promptOverrideConfigurations, (value) => pulumi.Input.encodeList<AgentAgentPromptOverrideConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
       'skipResourceInUseCheck': ?skipResourceInUseCheck,
       'tags': ?tags,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentAgentTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<AgentAgentTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory AgentAgentArgs.fromMap(Map<String, dynamic> map) {
     return AgentAgentArgs(
-      agentCollaboration: (() {
-        final guardedValue = map['agentCollaboration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      agentCollaboration: (() { final guardedValue = map['agentCollaboration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       agentName: pulumi.Input.fromValue(map['agentName'] as String),
-      agentResourceRoleArn: pulumi.Input.fromValue(
-        map['agentResourceRoleArn'] as String,
-      ),
-      customerEncryptionKeyArn: (() {
-        final guardedValue = map['customerEncryptionKeyArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      agentResourceRoleArn: pulumi.Input.fromValue(map['agentResourceRoleArn'] as String),
+      customerEncryptionKeyArn: (() { final guardedValue = map['customerEncryptionKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       foundationModel: pulumi.Input.fromValue(map['foundationModel'] as String),
-      guardrailConfigurations: (() {
-        final guardedValue = map['guardrailConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AgentAgentGuardrailConfiguration>(
-            guardedValue,
-            (value) => AgentAgentGuardrailConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      idleSessionTtlInSeconds: (() {
-        final guardedValue = map['idleSessionTtlInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      instruction: (() {
-        final guardedValue = map['instruction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      memoryConfigurations: (() {
-        final guardedValue = map['memoryConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AgentAgentMemoryConfiguration>(
-            guardedValue,
-            (value) => AgentAgentMemoryConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      prepareAgent: (() {
-        final guardedValue = map['prepareAgent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      promptOverrideConfigurations: (() {
-        final guardedValue = map['promptOverrideConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AgentAgentPromptOverrideConfiguration>(
-            guardedValue,
-            (value) => AgentAgentPromptOverrideConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      skipResourceInUseCheck: (() {
-        final guardedValue = map['skipResourceInUseCheck'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentAgentTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      guardrailConfigurations: (() { final guardedValue = map['guardrailConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentAgentGuardrailConfiguration>(guardedValue, (value) => AgentAgentGuardrailConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      idleSessionTtlInSeconds: (() { final guardedValue = map['idleSessionTtlInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instruction: (() { final guardedValue = map['instruction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memoryConfigurations: (() { final guardedValue = map['memoryConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentAgentMemoryConfiguration>(guardedValue, (value) => AgentAgentMemoryConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      prepareAgent: (() { final guardedValue = map['prepareAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      promptOverrideConfigurations: (() { final guardedValue = map['promptOverrideConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentAgentPromptOverrideConfiguration>(guardedValue, (value) => AgentAgentPromptOverrideConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      skipResourceInUseCheck: (() { final guardedValue = map['skipResourceInUseCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentAgentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

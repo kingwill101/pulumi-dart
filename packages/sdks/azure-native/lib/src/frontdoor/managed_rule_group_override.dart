@@ -8,10 +8,8 @@ import 'managed_rule_override.dart';
 class ManagedRuleGroupOverride {
   /// Describes the exclusions that are applied to all rules in the group.
   final pulumi.Input<List<ManagedRuleExclusion>>? exclusions;
-
   /// Describes the managed rule group to override.
   final pulumi.Input<String> ruleGroupName;
-
   /// List of rules that will be disabled. If none specified, all rules in the group will be disabled.
   final pulumi.Input<List<ManagedRuleOverride>>? rules;
 
@@ -27,61 +25,18 @@ class ManagedRuleGroupOverride {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exclusions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ManagedRuleExclusion>,
-            List<Map<String, dynamic>>
-          >(
-            exclusions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ManagedRuleExclusion,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'exclusions': ?pulumi.Input.mapOptionalInputValue<List<ManagedRuleExclusion>, List<Map<String, dynamic>>>(exclusions, (value) => pulumi.Input.encodeList<ManagedRuleExclusion, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ruleGroupName': ruleGroupName,
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ManagedRuleOverride>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ManagedRuleOverride,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<ManagedRuleOverride>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ManagedRuleOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ManagedRuleGroupOverride.fromMap(Map<String, dynamic> map) {
     return ManagedRuleGroupOverride(
-      exclusions: (() {
-        final guardedValue = map['exclusions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ManagedRuleExclusion>(
-            guardedValue,
-            (value) => ManagedRuleExclusion.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      exclusions: (() { final guardedValue = map['exclusions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedRuleExclusion>(guardedValue, (value) => ManagedRuleExclusion.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ruleGroupName: pulumi.Input.fromValue(map['ruleGroupName'] as String),
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ManagedRuleOverride>(
-            guardedValue,
-            (value) => ManagedRuleOverride.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedRuleOverride>(guardedValue, (value) => ManagedRuleOverride.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

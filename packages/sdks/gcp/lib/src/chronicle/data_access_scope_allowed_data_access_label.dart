@@ -7,10 +7,8 @@ class DataAccessScopeAllowedDataAccessLabel {
   /// The asset namespace configured in the forwarder
   /// of the customer's events.
   final pulumi.Input<String>? assetNamespace;
-
   /// The name of the data access label.
   final pulumi.Input<String>? dataAccessLabel;
-
   /// (Output)
   /// Output only. The display name of the label.
   /// Data access label and log types's name
@@ -18,12 +16,9 @@ class DataAccessScopeAllowedDataAccessLabel {
   /// The asset namespace will match the namespace itself.
   /// The ingestion key value pair will match the key of the tuple.
   final pulumi.Input<String>? displayName;
-
   /// Representation of an ingestion label type.
   /// Structure is documented below.
-  final pulumi.Input<DataAccessScopeAllowedDataAccessLabelIngestionLabel>?
-  ingestionLabel;
-
+  final pulumi.Input<DataAccessScopeAllowedDataAccessLabelIngestionLabel>? ingestionLabel;
   /// The name of the log type.
   final pulumi.Input<String>? logType;
 
@@ -46,48 +41,19 @@ class DataAccessScopeAllowedDataAccessLabel {
       'assetNamespace': ?assetNamespace,
       'dataAccessLabel': ?dataAccessLabel,
       'displayName': ?displayName,
-      'ingestionLabel':
-          ?pulumi.Input.mapOptionalInputValue<
-            DataAccessScopeAllowedDataAccessLabelIngestionLabel,
-            Map<String, dynamic>
-          >(ingestionLabel, (value) => value.toMap()),
+      'ingestionLabel': ?pulumi.Input.mapOptionalInputValue<DataAccessScopeAllowedDataAccessLabelIngestionLabel, Map<String, dynamic>>(ingestionLabel, (value) => value.toMap()),
       'logType': ?logType,
     };
   }
 
-  factory DataAccessScopeAllowedDataAccessLabel.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataAccessScopeAllowedDataAccessLabel.fromMap(Map<String, dynamic> map) {
     return DataAccessScopeAllowedDataAccessLabel(
-      assetNamespace: (() {
-        final guardedValue = map['assetNamespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataAccessLabel: (() {
-        final guardedValue = map['dataAccessLabel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ingestionLabel: (() {
-        final guardedValue = map['ingestionLabel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DataAccessScopeAllowedDataAccessLabelIngestionLabel.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      logType: (() {
-        final guardedValue = map['logType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      assetNamespace: (() { final guardedValue = map['assetNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataAccessLabel: (() { final guardedValue = map['dataAccessLabel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ingestionLabel: (() { final guardedValue = map['ingestionLabel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataAccessScopeAllowedDataAccessLabelIngestionLabel.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      logType: (() { final guardedValue = map['logType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

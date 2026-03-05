@@ -257,22 +257,16 @@ import 'scheduled_preload_execution_state.dart';
 class ScheduledPreloadExecution extends pulumi.CustomResource {
   /// The end time of the prefetch plan.
   late final pulumi.Output<String?> endTime;
-
   /// The time interval between each batch execution. Unit: seconds.
   late final pulumi.Output<int> interval;
-
   /// The ID of the prefetch plan.
   late final pulumi.Output<String> scheduledPreloadExecutionId;
-
   /// The ID of the prefetch task.
   late final pulumi.Output<String> scheduledPreloadJobId;
-
   /// The number of URLs prefetched in each batch.
   late final pulumi.Output<int> sliceLen;
-
   /// The start time of the prefetch plan.
   late final pulumi.Output<String?> startTime;
-
   /// The status of the prefetch plan, including the following statuses.
   late final pulumi.Output<String> status;
 
@@ -285,16 +279,14 @@ class ScheduledPreloadExecution extends pulumi.CustomResource {
     ScheduledPreloadExecutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endTime = registerOutput<String?>('endTime');
     interval = registerOutput<int>('interval');
-    scheduledPreloadExecutionId = registerOutput<String>(
-      'scheduledPreloadExecutionId',
-    );
+    scheduledPreloadExecutionId = registerOutput<String>('scheduledPreloadExecutionId');
     scheduledPreloadJobId = registerOutput<String>('scheduledPreloadJobId');
     sliceLen = registerOutput<int>('sliceLen');
     startTime = registerOutput<String?>('startTime');
@@ -319,16 +311,14 @@ class ScheduledPreloadExecution extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endTime = registerOutput<String?>('endTime');
     interval = registerOutput<int>('interval');
-    scheduledPreloadExecutionId = registerOutput<String>(
-      'scheduledPreloadExecutionId',
-    );
+    scheduledPreloadExecutionId = registerOutput<String>('scheduledPreloadExecutionId');
     scheduledPreloadJobId = registerOutput<String>('scheduledPreloadJobId');
     sliceLen = registerOutput<int>('sliceLen');
     startTime = registerOutput<String?>('startTime');

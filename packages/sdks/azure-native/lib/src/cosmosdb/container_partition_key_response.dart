@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerPartitionKeyResponse {
   /// Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
   final pulumi.Input<String>? kind;
-
   /// List of paths using which data within the container can be partitioned
   final pulumi.Input<List<String>>? paths;
-
   /// Indicates if the container is using a system generated partition key
   final pulumi.Input<bool> systemKey;
-
   /// Indicates the version of the partition key definition
   final pulumi.Input<int>? version;
 
@@ -39,22 +36,11 @@ class ContainerPartitionKeyResponse {
 
   factory ContainerPartitionKeyResponse.fromMap(Map<String, dynamic> map) {
     return ContainerPartitionKeyResponse(
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      paths: (() {
-        final guardedValue = map['paths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      paths: (() { final guardedValue = map['paths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       systemKey: pulumi.Input.fromValue(map['systemKey'] as bool),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

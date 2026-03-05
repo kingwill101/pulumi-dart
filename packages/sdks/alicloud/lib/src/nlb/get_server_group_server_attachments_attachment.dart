@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerGroupServerAttachmentsAttachment {
   /// The description of the backend server.
   final pulumi.Input<String> description;
-
   /// The ID of the server group. The value is formulated as `&lt;server_group_id&gt;:&lt;server_id&gt;:&lt;server_type&gt;:&lt;port&gt;`.
   final pulumi.Input<String> id;
-
   /// The port used by the backend server.
   final pulumi.Input<int> port;
-
   /// The ID of the server group.
   final pulumi.Input<String> serverGroupId;
-
   /// The ID of the server.
   final pulumi.Input<String> serverId;
-
   /// The IP address of the backend server.
   final pulumi.Input<String> serverIp;
-
   /// The type of the backend server.
   final pulumi.Input<String> serverType;
-
   /// Indicates the status of the backend server.
   final pulumi.Input<String> status;
-
   /// The weight of the backend server.
   final pulumi.Input<int> weight;
-
   /// The zone ID of the server.
   final pulumi.Input<String> zoneId;
 
@@ -72,9 +63,7 @@ class GetServerGroupServerAttachmentsAttachment {
     };
   }
 
-  factory GetServerGroupServerAttachmentsAttachment.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServerGroupServerAttachmentsAttachment.fromMap(Map<String, dynamic> map) {
     return GetServerGroupServerAttachmentsAttachment(
       description: pulumi.Input.fromValue(map['description'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -89,3 +78,4 @@ class GetServerGroupServerAttachmentsAttachment {
     );
   }
 }
+

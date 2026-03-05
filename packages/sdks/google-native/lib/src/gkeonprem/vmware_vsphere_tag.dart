@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareVsphereTag {
   /// The Vsphere tag category.
   final pulumi.Input<String>? category;
-
   /// The Vsphere tag name.
   final pulumi.Input<String>? tag;
 
   /// Creates a new [VmwareVsphereTag].
   /// [category] The Vsphere tag category.
   /// [tag] The Vsphere tag name.
-  VmwareVsphereTag({this.category, this.tag});
+  VmwareVsphereTag({
+    this.category,
+    this.tag,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'category': ?category, 'tag': ?tag};
+    return <String, dynamic>{
+      'category': ?category,
+      'tag': ?tag,
+    };
   }
 
   factory VmwareVsphereTag.fromMap(Map<String, dynamic> map) {
     return VmwareVsphereTag(
-      category: (() {
-        final guardedValue = map['category'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tag: (() {
-        final guardedValue = map['tag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

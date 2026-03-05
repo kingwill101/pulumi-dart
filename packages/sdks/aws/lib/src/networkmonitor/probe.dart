@@ -168,35 +168,25 @@ import 'probe_state.dart';
 /// ```
 class Probe extends pulumi.CustomResource {
   late final pulumi.Output<String> addressFamily;
-
   /// The ARN of the attachment.
   late final pulumi.Output<String> arn;
-
   /// The destination IP address. This must be either IPV4 or IPV6.
   late final pulumi.Output<String> destination;
-
   /// The port associated with the destination. This is required only if the protocol is TCP and must be a number between 1 and 65536.
   late final pulumi.Output<int?> destinationPort;
-
   /// The name of the monitor.
   late final pulumi.Output<String> monitorName;
-
   /// The size of the packets sent between the source and destination. This must be a number between 56 and 8500.
   late final pulumi.Output<int> packetSize;
   late final pulumi.Output<String> probeId;
-
   /// The protocol used for the network traffic between the source and destination. This must be either TCP or ICMP.
   late final pulumi.Output<String> protocol;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ARN of the subnet.
   late final pulumi.Output<String> sourceArn;
-
   /// Key-value tags for the monitor. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> vpcId;
@@ -205,13 +195,16 @@ class Probe extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Probe]. {@macro pulumi_networkmonitor_probe_probe_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Probe(String name, {ProbeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:networkmonitor/probe:Probe',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Probe(
+    String name, {
+    ProbeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:networkmonitor/probe:Probe',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressFamily = registerOutput<String>('addressFamily');
     arn = registerOutput<String>('arn');
     destination = registerOutput<String>('destination');
@@ -228,7 +221,11 @@ class Probe extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Probe] resource's state with the given [name] and [id].
-  static Probe get(String name, pulumi.Input<String> id, {ProbeState? state}) {
+  static Probe get(
+    String name,
+    pulumi.Input<String> id, {
+    ProbeState? state,
+  }) {
     return Probe._get(
       name,
       state: state?.toMap(),
@@ -241,11 +238,11 @@ class Probe extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkmonitor/probe:Probe',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkmonitor/probe:Probe',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressFamily = registerOutput<String>('addressFamily');
     arn = registerOutput<String>('arn');
     destination = registerOutput<String>('destination');

@@ -9,19 +9,20 @@ class BigQueryDatasetSource {
 
   /// Creates a new [BigQueryDatasetSource].
   /// [dataset] Resource name of the dataset source for this listing. e.g. `projects/myproject/datasets/123`
-  BigQueryDatasetSource({this.dataset});
+  BigQueryDatasetSource({
+    this.dataset,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dataset': ?dataset};
+    return <String, dynamic>{
+      'dataset': ?dataset,
+    };
   }
 
   factory BigQueryDatasetSource.fromMap(Map<String, dynamic> map) {
     return BigQueryDatasetSource(
-      dataset: (() {
-        final guardedValue = map['dataset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataset: (() { final guardedValue = map['dataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

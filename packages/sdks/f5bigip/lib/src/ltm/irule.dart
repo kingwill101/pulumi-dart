@@ -199,7 +199,6 @@ import 'irule_state.dart';
 class IRule extends pulumi.CustomResource {
   /// Body of the iRule
   late final pulumi.Output<String> irule;
-
   /// Name of the iRule
   late final pulumi.Output<String> name;
 
@@ -207,19 +206,26 @@ class IRule extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [IRule]. {@macro pulumi_ltm_i_rule_irule_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  IRule(String name, {IRuleArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'f5bigip:ltm/iRule:IRule',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  IRule(
+    String name, {
+    IRuleArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'f5bigip:ltm/iRule:IRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     irule = registerOutput<String>('irule');
     this.name = registerOutput<String>('name');
   }
 
   /// Gets an existing [IRule] resource's state with the given [name] and [id].
-  static IRule get(String name, pulumi.Input<String> id, {IRuleState? state}) {
+  static IRule get(
+    String name,
+    pulumi.Input<String> id, {
+    IRuleState? state,
+  }) {
     return IRule._get(
       name,
       state: state?.toMap(),
@@ -232,11 +238,11 @@ class IRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/iRule:IRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/iRule:IRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     irule = registerOutput<String>('irule');
     this.name = registerOutput<String>('name');
   }

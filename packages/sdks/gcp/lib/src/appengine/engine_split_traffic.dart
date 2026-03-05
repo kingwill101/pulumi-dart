@@ -530,14 +530,11 @@ import 'engine_split_traffic_state.dart';
 class EngineSplitTraffic extends pulumi.CustomResource {
   /// If set to true traffic will be migrated to this version.
   late final pulumi.Output<bool?> migrateTraffic;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The name of the service these settings apply to.
   late final pulumi.Output<String> service;
-
   /// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
   /// Structure is documented below.
   late final pulumi.Output<EngineSplitTrafficSplit> split;
@@ -551,24 +548,15 @@ class EngineSplitTraffic extends pulumi.CustomResource {
     EngineSplitTrafficArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:appengine/engineSplitTraffic:EngineSplitTraffic',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:appengine/engineSplitTraffic:EngineSplitTraffic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     migrateTraffic = registerOutput<bool?>('migrateTraffic');
     project = registerOutput<String>('project');
     service = registerOutput<String>('service');
-    split = registerOutput<EngineSplitTrafficSplit>(
-      'split',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EngineSplitTrafficSplit.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    split = registerOutput<EngineSplitTrafficSplit>('split', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EngineSplitTrafficSplit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [EngineSplitTraffic] resource's state with the given [name] and [id].
@@ -589,23 +577,14 @@ class EngineSplitTraffic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:appengine/engineSplitTraffic:EngineSplitTraffic',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:appengine/engineSplitTraffic:EngineSplitTraffic',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     migrateTraffic = registerOutput<bool?>('migrateTraffic');
     project = registerOutput<String>('project');
     service = registerOutput<String>('service');
-    split = registerOutput<EngineSplitTrafficSplit>(
-      'split',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EngineSplitTrafficSplit.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    split = registerOutput<EngineSplitTrafficSplit>('split', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EngineSplitTrafficSplit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

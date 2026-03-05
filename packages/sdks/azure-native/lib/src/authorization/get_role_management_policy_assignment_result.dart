@@ -8,28 +8,20 @@ import 'role_management_policy_approval_rule_response.dart';
 class GetRoleManagementPolicyAssignmentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The readonly computed rule applied to the policy.
   final List<RoleManagementPolicyApprovalRuleResponse> effectiveRules;
-
   /// The role management policy Id.
   final String id;
-
   /// The role management policy name.
   final String name;
-
   /// Additional properties of scope, role definition and policy
   final PolicyAssignmentPropertiesResponse policyAssignmentProperties;
-
   /// The policy id role management policy assignment.
   final String? policyId;
-
   /// The role definition of management policy assignment.
   final String? roleDefinitionId;
-
   /// The role management policy scope.
   final String? scope;
-
   /// The role management policy type.
   final String type;
 
@@ -58,11 +50,7 @@ class GetRoleManagementPolicyAssignmentResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'effectiveRules':
-          pulumi.Input.encodeList<
-            RoleManagementPolicyApprovalRuleResponse,
-            Map<String, dynamic>
-          >(effectiveRules, (value) => value.toMap()),
+      'effectiveRules': pulumi.Input.encodeList<RoleManagementPolicyApprovalRuleResponse, Map<String, dynamic>>(effectiveRules, (value) => value.toMap()),
       'id': id,
       'name': name,
       'policyAssignmentProperties': policyAssignmentProperties.toMap(),
@@ -73,39 +61,18 @@ class GetRoleManagementPolicyAssignmentResult {
     };
   }
 
-  factory GetRoleManagementPolicyAssignmentResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRoleManagementPolicyAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetRoleManagementPolicyAssignmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      effectiveRules:
-          pulumi.Input.decodeList<RoleManagementPolicyApprovalRuleResponse>(
-            map['effectiveRules']!,
-            (value) => RoleManagementPolicyApprovalRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      effectiveRules: pulumi.Input.decodeList<RoleManagementPolicyApprovalRuleResponse>(map['effectiveRules']!, (value) => RoleManagementPolicyApprovalRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
-      policyAssignmentProperties: PolicyAssignmentPropertiesResponse.fromMap(
-        (map['policyAssignmentProperties']! as Map).cast<String, dynamic>(),
-      ),
-      policyId: (() {
-        final guardedValue = map['policyId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      roleDefinitionId: (() {
-        final guardedValue = map['roleDefinitionId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      policyAssignmentProperties: PolicyAssignmentPropertiesResponse.fromMap((map['policyAssignmentProperties']! as Map).cast<String, dynamic>()),
+      policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      roleDefinitionId: (() { final guardedValue = map['roleDefinitionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

@@ -230,50 +230,34 @@ import 'sub_resource_response.dart';
 class LoadBalancerBackendAddressPool extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// An array of references to IP addresses defined in network interfaces.
   late final pulumi.Output<List<Map<String, dynamic>>> backendIPConfigurations;
-
   /// Amount of seconds Load Balancer waits for before sending RESET to client and backend address.
   late final pulumi.Output<int?> drainPeriodInSeconds;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// An array of references to inbound NAT rules that use this backend address pool.
   late final pulumi.Output<List<Map<String, dynamic>>> inboundNatRules;
-
   /// An array of backend addresses.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  loadBalancerBackendAddresses;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> loadBalancerBackendAddresses;
   /// An array of references to load balancing rules that use this backend address pool.
   late final pulumi.Output<List<Map<String, dynamic>>> loadBalancingRules;
-
   /// The location of the backend address pool.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource that is unique within the set of backend address pools used by the load balancer. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
-
   /// A reference to an outbound rule that uses this backend address pool.
   late final pulumi.Output<SubResourceResponse> outboundRule;
-
   /// An array of references to outbound rules that use this backend address pool.
   late final pulumi.Output<List<Map<String, dynamic>>> outboundRules;
-
   /// The provisioning state of the backend address pool resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Backend address synchronous mode for the backend pool
   late final pulumi.Output<String?> syncMode;
-
   /// An array of gateway load balancer tunnel interfaces.
   late final pulumi.Output<List<Map<String, dynamic>>?> tunnelInterfaces;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
-
   /// A reference to a virtual network.
   late final pulumi.Output<SubResourceResponse?> virtualNetwork;
 
@@ -286,54 +270,26 @@ class LoadBalancerBackendAddressPool extends pulumi.CustomResource {
     LoadBalancerBackendAddressPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:LoadBalancerBackendAddressPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:LoadBalancerBackendAddressPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    backendIPConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'backendIPConfigurations',
-    );
+    backendIPConfigurations = registerOutput<List<Map<String, dynamic>>>('backendIPConfigurations');
     drainPeriodInSeconds = registerOutput<int?>('drainPeriodInSeconds');
     etag = registerOutput<String>('etag');
-    inboundNatRules = registerOutput<List<Map<String, dynamic>>>(
-      'inboundNatRules',
-    );
-    loadBalancerBackendAddresses = registerOutput<List<Map<String, dynamic>>?>(
-      'loadBalancerBackendAddresses',
-    );
-    loadBalancingRules = registerOutput<List<Map<String, dynamic>>>(
-      'loadBalancingRules',
-    );
+    inboundNatRules = registerOutput<List<Map<String, dynamic>>>('inboundNatRules');
+    loadBalancerBackendAddresses = registerOutput<List<Map<String, dynamic>>?>('loadBalancerBackendAddresses');
+    loadBalancingRules = registerOutput<List<Map<String, dynamic>>>('loadBalancingRules');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String?>('name');
-    outboundRule = registerOutput<SubResourceResponse>(
-      'outboundRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    outboundRule = registerOutput<SubResourceResponse>('outboundRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outboundRules = registerOutput<List<Map<String, dynamic>>>('outboundRules');
     provisioningState = registerOutput<String>('provisioningState');
     syncMode = registerOutput<String?>('syncMode');
-    tunnelInterfaces = registerOutput<List<Map<String, dynamic>>?>(
-      'tunnelInterfaces',
-    );
+    tunnelInterfaces = registerOutput<List<Map<String, dynamic>>?>('tunnelInterfaces');
     type = registerOutput<String>('type');
-    virtualNetwork = registerOutput<SubResourceResponse?>(
-      'virtualNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualNetwork = registerOutput<SubResourceResponse?>('virtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

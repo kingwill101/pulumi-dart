@@ -8,10 +8,14 @@ class GetListenersListenerCertificate {
 
   /// Creates a new [GetListenersListenerCertificate].
   /// [certificateId] The ID of the Certificate.
-  GetListenersListenerCertificate({required this.certificateId});
+  GetListenersListenerCertificate({
+    required this.certificateId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'certificateId': certificateId};
+    return <String, dynamic>{
+      'certificateId': certificateId,
+    };
   }
 
   factory GetListenersListenerCertificate.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetListenersListenerCertificate {
     );
   }
 }
+

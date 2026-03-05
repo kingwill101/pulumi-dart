@@ -10,51 +10,37 @@ class GetVirtualNetworkGatewayVpnClientConfiguration {
   /// This setting is incompatible with the use of
   /// `root_certificate` and `revoked_certificate`, `radius_server_address`, and `radius_server_secret`.
   final pulumi.Input<String> aadAudience;
-
   /// The STS url for your tenant
   /// This setting is incompatible with the use of
   /// `root_certificate` and `revoked_certificate`, `radius_server_address`, and `radius_server_secret`.
   final pulumi.Input<String> aadIssuer;
-
   /// AzureAD Tenant URL
   /// This setting is incompatible with the use of
   /// `root_certificate` and `revoked_certificate`, `radius_server_address`, and `radius_server_secret`.
   final pulumi.Input<String> aadTenant;
-
   /// The address space out of which IP addresses for
   /// vpn clients will be taken. You can provide more than one address space, e.g.
   /// in CIDR notation.
   final pulumi.Input<List<String>> addressSpaces;
-
   /// The address of the Radius server.
   /// This setting is incompatible with the use of
   /// `aad_tenant`, `aad_audience`, `aad_issuer`, `root_certificate` and `revoked_certificate`.
   final pulumi.Input<String> radiusServerAddress;
-
   /// The secret used by the Radius server.
   /// This setting is incompatible with the use of
   /// `aad_tenant`, `aad_audience`, `aad_issuer`, `root_certificate` and `revoked_certificate`.
   final pulumi.Input<String> radiusServerSecret;
-
   /// One or more `revoked_certificate` blocks which
   /// are defined below.
   /// This setting is incompatible with the use of
   /// `aad_tenant`, `aad_audience`, `aad_issuer`, `radius_server_address`, and `radius_server_secret`.
-  final pulumi.Input<
-    List<GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate>
-  >
-  revokedCertificates;
-
+  final pulumi.Input<List<GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate>> revokedCertificates;
   /// One or more `root_certificate` blocks which are
   /// defined below. These root certificates are used to sign the client certificate
   /// used by the VPN clients to connect to the gateway.
   /// This setting is incompatible with the use of
   /// `aad_tenant`, `aad_audience`, `aad_issuer`, `radius_server_address`, and `radius_server_secret`.
-  final pulumi.Input<
-    List<GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate>
-  >
-  rootCertificates;
-
+  final pulumi.Input<List<GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate>> rootCertificates;
   /// List of the protocols supported by the vpn client.
   /// The supported values are `SSTP`, `IkeV2` and `OpenVPN`.
   final pulumi.Input<List<String>> vpnClientProtocols;
@@ -89,77 +75,24 @@ class GetVirtualNetworkGatewayVpnClientConfiguration {
       'addressSpaces': addressSpaces,
       'radiusServerAddress': radiusServerAddress,
       'radiusServerSecret': radiusServerSecret,
-      'revokedCertificates':
-          pulumi.Input.mapInputValue<
-            List<
-              GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate
-            >,
-            List<Map<String, dynamic>>
-          >(
-            revokedCertificates,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'rootCertificates':
-          pulumi.Input.mapInputValue<
-            List<GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate>,
-            List<Map<String, dynamic>>
-          >(
-            rootCertificates,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'revokedCertificates': pulumi.Input.mapInputValue<List<GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate>, List<Map<String, dynamic>>>(revokedCertificates, (value) => pulumi.Input.encodeList<GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rootCertificates': pulumi.Input.mapInputValue<List<GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate>, List<Map<String, dynamic>>>(rootCertificates, (value) => pulumi.Input.encodeList<GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpnClientProtocols': vpnClientProtocols,
     };
   }
 
-  factory GetVirtualNetworkGatewayVpnClientConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualNetworkGatewayVpnClientConfiguration.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayVpnClientConfiguration(
       aadAudience: pulumi.Input.fromValue(map['aadAudience'] as String),
       aadIssuer: pulumi.Input.fromValue(map['aadIssuer'] as String),
       aadTenant: pulumi.Input.fromValue(map['aadTenant'] as String),
-      addressSpaces: pulumi.Input.fromValue(
-        (map['addressSpaces'] as List).cast<String>(),
-      ),
-      radiusServerAddress: pulumi.Input.fromValue(
-        map['radiusServerAddress'] as String,
-      ),
-      radiusServerSecret: pulumi.Input.fromValue(
-        map['radiusServerSecret'] as String,
-      ),
-      revokedCertificates: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate
-        >(
-          map['revokedCertificates']!,
-          (value) =>
-              GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      rootCertificates: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate
-        >(
-          map['rootCertificates']!,
-          (value) =>
-              GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      vpnClientProtocols: pulumi.Input.fromValue(
-        (map['vpnClientProtocols'] as List).cast<String>(),
-      ),
+      addressSpaces: pulumi.Input.fromValue((map['addressSpaces'] as List).cast<String>()),
+      radiusServerAddress: pulumi.Input.fromValue(map['radiusServerAddress'] as String),
+      radiusServerSecret: pulumi.Input.fromValue(map['radiusServerSecret'] as String),
+      revokedCertificates: pulumi.Input.fromValue(pulumi.Input.decodeList<GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate>(map['revokedCertificates']!, (value) => GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate.fromMap((value as Map).cast<String, dynamic>()))),
+      rootCertificates: pulumi.Input.fromValue(pulumi.Input.decodeList<GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate>(map['rootCertificates']!, (value) => GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate.fromMap((value as Map).cast<String, dynamic>()))),
+      vpnClientProtocols: pulumi.Input.fromValue((map['vpnClientProtocols'] as List).cast<String>()),
     );
   }
 }
+

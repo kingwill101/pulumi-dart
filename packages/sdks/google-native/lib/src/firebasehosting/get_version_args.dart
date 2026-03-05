@@ -15,7 +15,11 @@ class GetVersionArgs {
   /// [project] Optional.
   /// [siteId] Required.
   /// [versionId] Required.
-  GetVersionArgs({this.project, required this.siteId, required this.versionId});
+  GetVersionArgs({
+    this.project,
+    required this.siteId,
+    required this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,13 +31,10 @@ class GetVersionArgs {
 
   factory GetVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
       versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );
   }
 }
+

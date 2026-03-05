@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFleetTierArgs {
   /// Name of the database fleet.
   final pulumi.Input<String> fleetName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the tier.
   final pulumi.Input<String> tierName;
 
@@ -37,10 +35,9 @@ class GetFleetTierArgs {
   factory GetFleetTierArgs.fromMap(Map<String, dynamic> map) {
     return GetFleetTierArgs(
       fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tierName: pulumi.Input.fromValue(map['tierName'] as String),
     );
   }
 }
+

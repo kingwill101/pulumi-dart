@@ -13,25 +13,18 @@ import 'type_provider_label_entry.dart';
 class TypeProviderArgs {
   /// Allows resource handling overrides for specific collections
   final pulumi.Input<List<CollectionOverride>>? collectionOverrides;
-
   /// Credential used when interacting with this type.
   final pulumi.Input<Credential>? credential;
-
   /// List of up to 2 custom certificate authority roots to use for TLS authentication when making calls on behalf of this type provider. If set, TLS authentication will exclusively use these roots instead of relying on publicly trusted certificate authorities when validating TLS certificate authenticity. The certificates must be in base64-encoded PEM format. The maximum size of each certificate must not exceed 10KB.
   final pulumi.Input<List<String>>? customCertificateAuthorityRoots;
-
   /// An optional textual description of the resource; provided by the client when the resource is created.
   final pulumi.Input<String>? description;
-
   /// Descriptor Url for the this type provider.
   final pulumi.Input<String>? descriptorUrl;
-
   /// Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
   final pulumi.Input<List<TypeProviderLabelEntry>>? labels;
-
   /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   final pulumi.Input<String>? name;
-
   /// Options to apply when handling any resources in this service.
   final pulumi.Input<Options>? options;
   final pulumi.Input<String>? project;
@@ -60,113 +53,30 @@ class TypeProviderArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'collectionOverrides':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CollectionOverride>,
-            List<Map<String, dynamic>>
-          >(
-            collectionOverrides,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CollectionOverride,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'credential':
-          ?pulumi.Input.mapOptionalInputValue<Credential, Map<String, dynamic>>(
-            credential,
-            (value) => value.toMap(),
-          ),
+      'collectionOverrides': ?pulumi.Input.mapOptionalInputValue<List<CollectionOverride>, List<Map<String, dynamic>>>(collectionOverrides, (value) => pulumi.Input.encodeList<CollectionOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'credential': ?pulumi.Input.mapOptionalInputValue<Credential, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'customCertificateAuthorityRoots': ?customCertificateAuthorityRoots,
       'description': ?description,
       'descriptorUrl': ?descriptorUrl,
-      'labels':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TypeProviderLabelEntry>,
-            List<Map<String, dynamic>>
-          >(
-            labels,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TypeProviderLabelEntry,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'labels': ?pulumi.Input.mapOptionalInputValue<List<TypeProviderLabelEntry>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<TypeProviderLabelEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
-      'options':
-          ?pulumi.Input.mapOptionalInputValue<Options, Map<String, dynamic>>(
-            options,
-            (value) => value.toMap(),
-          ),
+      'options': ?pulumi.Input.mapOptionalInputValue<Options, Map<String, dynamic>>(options, (value) => value.toMap()),
       'project': ?project,
     };
   }
 
   factory TypeProviderArgs.fromMap(Map<String, dynamic> map) {
     return TypeProviderArgs(
-      collectionOverrides: (() {
-        final guardedValue = map['collectionOverrides'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CollectionOverride>(
-            guardedValue,
-            (value) => CollectionOverride.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      credential: (() {
-        final guardedValue = map['credential'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Credential.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      customCertificateAuthorityRoots: (() {
-        final guardedValue = map['customCertificateAuthorityRoots'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      descriptorUrl: (() {
-        final guardedValue = map['descriptorUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TypeProviderLabelEntry>(
-            guardedValue,
-            (value) => TypeProviderLabelEntry.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      options: (() {
-        final guardedValue = map['options'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Options.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      collectionOverrides: (() { final guardedValue = map['collectionOverrides']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CollectionOverride>(guardedValue, (value) => CollectionOverride.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      credential: (() { final guardedValue = map['credential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Credential.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      customCertificateAuthorityRoots: (() { final guardedValue = map['customCertificateAuthorityRoots']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      descriptorUrl: (() { final guardedValue = map['descriptorUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TypeProviderLabelEntry>(guardedValue, (value) => TypeProviderLabelEntry.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Options.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

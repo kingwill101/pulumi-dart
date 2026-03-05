@@ -13,20 +13,23 @@ class GetTestMatrixArgs {
   /// Creates a new [GetTestMatrixArgs].
   /// [project] Optional.
   /// [testMatrixId] Required.
-  GetTestMatrixArgs({this.project, required this.testMatrixId});
+  GetTestMatrixArgs({
+    this.project,
+    required this.testMatrixId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'testMatrixId': testMatrixId};
+    return <String, dynamic>{
+      'project': ?project,
+      'testMatrixId': testMatrixId,
+    };
   }
 
   factory GetTestMatrixArgs.fromMap(Map<String, dynamic> map) {
     return GetTestMatrixArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       testMatrixId: pulumi.Input.fromValue(map['testMatrixId'] as String),
     );
   }
 }
+

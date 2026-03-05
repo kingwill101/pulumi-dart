@@ -7,26 +7,19 @@ import 'evaluation_rule.dart';
 class PrometheusMetricsSignalDefinitionProperties {
   /// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
   final pulumi.Input<String>? dataUnit;
-
   /// Display name
   final pulumi.Input<String>? displayName;
-
   /// Evaluation rules for the signal definition
   final pulumi.Input<EvaluationRule> evaluationRules;
-
   /// Query text in PromQL syntax
   final pulumi.Input<String> queryText;
-
   /// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
   final pulumi.Input<String>? refreshInterval;
-
   /// Supported signal kinds as discriminator
   /// Expected value is 'PrometheusMetricsQuery'.
   final pulumi.Input<String> signalKind;
-
   /// Optional set of labels (key-value pairs)
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Time range of signal. ISO duration format like PT10M.
   final pulumi.Input<String>? timeGrain;
 
@@ -54,11 +47,7 @@ class PrometheusMetricsSignalDefinitionProperties {
     return <String, dynamic>{
       'dataUnit': ?dataUnit,
       'displayName': ?displayName,
-      'evaluationRules':
-          pulumi.Input.mapInputValue<EvaluationRule, Map<String, dynamic>>(
-            evaluationRules,
-            (value) => value.toMap(),
-          ),
+      'evaluationRules': pulumi.Input.mapInputValue<EvaluationRule, Map<String, dynamic>>(evaluationRules, (value) => value.toMap()),
       'queryText': queryText,
       'refreshInterval': ?refreshInterval,
       'signalKind': signalKind,
@@ -67,44 +56,17 @@ class PrometheusMetricsSignalDefinitionProperties {
     };
   }
 
-  factory PrometheusMetricsSignalDefinitionProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrometheusMetricsSignalDefinitionProperties.fromMap(Map<String, dynamic> map) {
     return PrometheusMetricsSignalDefinitionProperties(
-      dataUnit: (() {
-        final guardedValue = map['dataUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      evaluationRules: pulumi.Input.fromValue(
-        EvaluationRule.fromMap(
-          (map['evaluationRules']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      dataUnit: (() { final guardedValue = map['dataUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      evaluationRules: pulumi.Input.fromValue(EvaluationRule.fromMap((map['evaluationRules']! as Map).cast<String, dynamic>())),
       queryText: pulumi.Input.fromValue(map['queryText'] as String),
-      refreshInterval: (() {
-        final guardedValue = map['refreshInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      refreshInterval: (() { final guardedValue = map['refreshInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       signalKind: pulumi.Input.fromValue(map['signalKind'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      timeGrain: (() {
-        final guardedValue = map['timeGrain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      timeGrain: (() { final guardedValue = map['timeGrain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

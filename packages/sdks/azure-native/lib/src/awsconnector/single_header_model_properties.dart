@@ -9,19 +9,20 @@ class SingleHeaderModelProperties {
 
   /// Creates a new [SingleHeaderModelProperties].
   /// [name] The name of the query header to inspect.
-  SingleHeaderModelProperties({this.name});
+  SingleHeaderModelProperties({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory SingleHeaderModelProperties.fromMap(Map<String, dynamic> map) {
     return SingleHeaderModelProperties(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

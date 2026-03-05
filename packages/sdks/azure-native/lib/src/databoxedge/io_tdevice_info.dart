@@ -7,13 +7,10 @@ import 'authentication.dart';
 class IoTDeviceInfo {
   /// Encrypted IoT device/IoT edge device connection string.
   final pulumi.Input<Authentication>? authentication;
-
   /// ID of the IoT device/edge device.
   final pulumi.Input<String> deviceId;
-
   /// Host name for the IoT hub associated to the device.
   final pulumi.Input<String> ioTHostHub;
-
   /// Id for the IoT hub associated to the device.
   final pulumi.Input<String>? ioTHostHubId;
 
@@ -31,11 +28,7 @@ class IoTDeviceInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication':
-          ?pulumi.Input.mapOptionalInputValue<
-            Authentication,
-            Map<String, dynamic>
-          >(authentication, (value) => value.toMap()),
+      'authentication': ?pulumi.Input.mapOptionalInputValue<Authentication, Map<String, dynamic>>(authentication, (value) => value.toMap()),
       'deviceId': deviceId,
       'ioTHostHub': ioTHostHub,
       'ioTHostHubId': ?ioTHostHubId,
@@ -44,20 +37,11 @@ class IoTDeviceInfo {
 
   factory IoTDeviceInfo.fromMap(Map<String, dynamic> map) {
     return IoTDeviceInfo(
-      authentication: (() {
-        final guardedValue = map['authentication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Authentication.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Authentication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deviceId: pulumi.Input.fromValue(map['deviceId'] as String),
       ioTHostHub: pulumi.Input.fromValue(map['ioTHostHub'] as String),
-      ioTHostHubId: (() {
-        final guardedValue = map['ioTHostHubId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ioTHostHubId: (() { final guardedValue = map['ioTHostHubId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

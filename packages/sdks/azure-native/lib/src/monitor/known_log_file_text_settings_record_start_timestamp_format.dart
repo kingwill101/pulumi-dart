@@ -13,17 +13,13 @@ enum KnownLogFileTextSettingsRecordStartTimestampFormat {
   const KnownLogFileTextSettingsRecordStartTimestampFormat(this.wireValue);
   final String wireValue;
 
-  static KnownLogFileTextSettingsRecordStartTimestampFormat fromValue(
-    String value,
-  ) {
-    for (final item
-        in KnownLogFileTextSettingsRecordStartTimestampFormat.values) {
+  static KnownLogFileTextSettingsRecordStartTimestampFormat fromValue(String value) {
+    for (final item in KnownLogFileTextSettingsRecordStartTimestampFormat.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown KnownLogFileTextSettingsRecordStartTimestampFormat value: $value',
-    );
+    throw ArgumentError('Unknown KnownLogFileTextSettingsRecordStartTimestampFormat value: $value');
   }
 }
+

@@ -9,50 +9,34 @@ import 'get_connections_connection_vpn_bgp_config.dart';
 
 class GetConnectionsConnection {
   final pulumi.Input<String> createTime;
-
   /// Use the VPN customer gateway ID as the search key.
   final pulumi.Input<String> customerGatewayId;
   final pulumi.Input<bool> effectImmediately;
-
   /// Wether enable Dpd detection.
   final pulumi.Input<bool> enableDpd;
-
   /// enable nat traversal.
   final pulumi.Input<bool> enableNatTraversal;
-
   /// Enable tunnel bgp.
   final pulumi.Input<bool> enableTunnelsBgp;
-
   /// ID of the VPN connection.
   final pulumi.Input<String> id;
-
   /// The ike_config mapping supports the following:
   final pulumi.Input<List<GetConnectionsConnectionIkeConfig>>? ikeConfigs;
-
   /// The ipsec_config mapping supports the following:
   final pulumi.Input<List<GetConnectionsConnectionIpsecConfig>>? ipsecConfigs;
-
   /// The local subnet of the VPN connection.
   final pulumi.Input<String> localSubnet;
-
   /// The name of the VPN connection.
   final pulumi.Input<String> name;
-
   /// The remote subnet of the VPN connection.
   final pulumi.Input<String> remoteSubnet;
-
   /// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
   final pulumi.Input<String> status;
-
   /// The tunnel_options_specification supports the following:
-  final pulumi.Input<List<GetConnectionsConnectionTunnelOptionsSpecification>>
-  tunnelOptionsSpecifications;
-  final pulumi.Input<List<GetConnectionsConnectionVcoHealthCheck>>?
-  vcoHealthChecks;
-
+  final pulumi.Input<List<GetConnectionsConnectionTunnelOptionsSpecification>> tunnelOptionsSpecifications;
+  final pulumi.Input<List<GetConnectionsConnectionVcoHealthCheck>>? vcoHealthChecks;
   /// The vpn_bgp_config mapping supports the following:
   final pulumi.Input<List<GetConnectionsConnectionVpnBgpConfig>>? vpnBgpConfigs;
-
   /// Use the VPN gateway ID as the search key.
   final pulumi.Input<String> vpnGatewayId;
 
@@ -103,70 +87,15 @@ class GetConnectionsConnection {
       'enableNatTraversal': enableNatTraversal,
       'enableTunnelsBgp': enableTunnelsBgp,
       'id': id,
-      'ikeConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetConnectionsConnectionIkeConfig>,
-            List<Map<String, dynamic>>
-          >(
-            ikeConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetConnectionsConnectionIkeConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'ipsecConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetConnectionsConnectionIpsecConfig>,
-            List<Map<String, dynamic>>
-          >(
-            ipsecConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetConnectionsConnectionIpsecConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ikeConfigs': ?pulumi.Input.mapOptionalInputValue<List<GetConnectionsConnectionIkeConfig>, List<Map<String, dynamic>>>(ikeConfigs, (value) => pulumi.Input.encodeList<GetConnectionsConnectionIkeConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipsecConfigs': ?pulumi.Input.mapOptionalInputValue<List<GetConnectionsConnectionIpsecConfig>, List<Map<String, dynamic>>>(ipsecConfigs, (value) => pulumi.Input.encodeList<GetConnectionsConnectionIpsecConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'localSubnet': localSubnet,
       'name': name,
       'remoteSubnet': remoteSubnet,
       'status': status,
-      'tunnelOptionsSpecifications':
-          pulumi.Input.mapInputValue<
-            List<GetConnectionsConnectionTunnelOptionsSpecification>,
-            List<Map<String, dynamic>>
-          >(
-            tunnelOptionsSpecifications,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetConnectionsConnectionTunnelOptionsSpecification,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'vcoHealthChecks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetConnectionsConnectionVcoHealthCheck>,
-            List<Map<String, dynamic>>
-          >(
-            vcoHealthChecks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetConnectionsConnectionVcoHealthCheck,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'vpnBgpConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetConnectionsConnectionVpnBgpConfig>,
-            List<Map<String, dynamic>>
-          >(
-            vpnBgpConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetConnectionsConnectionVpnBgpConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'tunnelOptionsSpecifications': pulumi.Input.mapInputValue<List<GetConnectionsConnectionTunnelOptionsSpecification>, List<Map<String, dynamic>>>(tunnelOptionsSpecifications, (value) => pulumi.Input.encodeList<GetConnectionsConnectionTunnelOptionsSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vcoHealthChecks': ?pulumi.Input.mapOptionalInputValue<List<GetConnectionsConnectionVcoHealthCheck>, List<Map<String, dynamic>>>(vcoHealthChecks, (value) => pulumi.Input.encodeList<GetConnectionsConnectionVcoHealthCheck, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vpnBgpConfigs': ?pulumi.Input.mapOptionalInputValue<List<GetConnectionsConnectionVpnBgpConfig>, List<Map<String, dynamic>>>(vpnBgpConfigs, (value) => pulumi.Input.encodeList<GetConnectionsConnectionVpnBgpConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpnGatewayId': vpnGatewayId,
     };
   }
@@ -174,81 +103,23 @@ class GetConnectionsConnection {
   factory GetConnectionsConnection.fromMap(Map<String, dynamic> map) {
     return GetConnectionsConnection(
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
-      customerGatewayId: pulumi.Input.fromValue(
-        map['customerGatewayId'] as String,
-      ),
-      effectImmediately: pulumi.Input.fromValue(
-        map['effectImmediately'] as bool,
-      ),
+      customerGatewayId: pulumi.Input.fromValue(map['customerGatewayId'] as String),
+      effectImmediately: pulumi.Input.fromValue(map['effectImmediately'] as bool),
       enableDpd: pulumi.Input.fromValue(map['enableDpd'] as bool),
-      enableNatTraversal: pulumi.Input.fromValue(
-        map['enableNatTraversal'] as bool,
-      ),
+      enableNatTraversal: pulumi.Input.fromValue(map['enableNatTraversal'] as bool),
       enableTunnelsBgp: pulumi.Input.fromValue(map['enableTunnelsBgp'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),
-      ikeConfigs: (() {
-        final guardedValue = map['ikeConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetConnectionsConnectionIkeConfig>(
-            guardedValue,
-            (value) => GetConnectionsConnectionIkeConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      ipsecConfigs: (() {
-        final guardedValue = map['ipsecConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetConnectionsConnectionIpsecConfig>(
-            guardedValue,
-            (value) => GetConnectionsConnectionIpsecConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      ikeConfigs: (() { final guardedValue = map['ikeConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetConnectionsConnectionIkeConfig>(guardedValue, (value) => GetConnectionsConnectionIkeConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ipsecConfigs: (() { final guardedValue = map['ipsecConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetConnectionsConnectionIpsecConfig>(guardedValue, (value) => GetConnectionsConnectionIpsecConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       localSubnet: pulumi.Input.fromValue(map['localSubnet'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       remoteSubnet: pulumi.Input.fromValue(map['remoteSubnet'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      tunnelOptionsSpecifications: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetConnectionsConnectionTunnelOptionsSpecification
-        >(
-          map['tunnelOptionsSpecifications']!,
-          (value) => GetConnectionsConnectionTunnelOptionsSpecification.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      vcoHealthChecks: (() {
-        final guardedValue = map['vcoHealthChecks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetConnectionsConnectionVcoHealthCheck>(
-            guardedValue,
-            (value) => GetConnectionsConnectionVcoHealthCheck.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      vpnBgpConfigs: (() {
-        final guardedValue = map['vpnBgpConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetConnectionsConnectionVpnBgpConfig>(
-            guardedValue,
-            (value) => GetConnectionsConnectionVpnBgpConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      tunnelOptionsSpecifications: pulumi.Input.fromValue(pulumi.Input.decodeList<GetConnectionsConnectionTunnelOptionsSpecification>(map['tunnelOptionsSpecifications']!, (value) => GetConnectionsConnectionTunnelOptionsSpecification.fromMap((value as Map).cast<String, dynamic>()))),
+      vcoHealthChecks: (() { final guardedValue = map['vcoHealthChecks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetConnectionsConnectionVcoHealthCheck>(guardedValue, (value) => GetConnectionsConnectionVcoHealthCheck.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      vpnBgpConfigs: (() { final guardedValue = map['vpnBgpConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetConnectionsConnectionVpnBgpConfig>(guardedValue, (value) => GetConnectionsConnectionVpnBgpConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vpnGatewayId: pulumi.Input.fromValue(map['vpnGatewayId'] as String),
     );
   }
 }
+

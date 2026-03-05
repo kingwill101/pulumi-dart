@@ -10,16 +10,13 @@ enum CVSSAvailabilityImpactContaineranalysisV1alpha1 {
   const CVSSAvailabilityImpactContaineranalysisV1alpha1(this.wireValue);
   final String wireValue;
 
-  static CVSSAvailabilityImpactContaineranalysisV1alpha1 fromValue(
-    String value,
-  ) {
+  static CVSSAvailabilityImpactContaineranalysisV1alpha1 fromValue(String value) {
     for (final item in CVSSAvailabilityImpactContaineranalysisV1alpha1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown CVSSAvailabilityImpactContaineranalysisV1alpha1 value: $value',
-    );
+    throw ArgumentError('Unknown CVSSAvailabilityImpactContaineranalysisV1alpha1 value: $value');
   }
 }
+

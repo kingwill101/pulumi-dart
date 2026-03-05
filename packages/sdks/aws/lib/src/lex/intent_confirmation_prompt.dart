@@ -22,18 +22,7 @@ class IntentConfirmationPrompt {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'maxAttempts': maxAttempts,
-      'messages':
-          pulumi.Input.mapInputValue<
-            List<IntentConfirmationPromptMessage>,
-            List<Map<String, dynamic>>
-          >(
-            messages,
-            (value) =>
-                pulumi.Input.encodeList<
-                  IntentConfirmationPromptMessage,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'messages': pulumi.Input.mapInputValue<List<IntentConfirmationPromptMessage>, List<Map<String, dynamic>>>(messages, (value) => pulumi.Input.encodeList<IntentConfirmationPromptMessage, Map<String, dynamic>>(value, (value) => value.toMap())),
       'responseCard': ?responseCard,
     };
   }
@@ -41,19 +30,9 @@ class IntentConfirmationPrompt {
   factory IntentConfirmationPrompt.fromMap(Map<String, dynamic> map) {
     return IntentConfirmationPrompt(
       maxAttempts: pulumi.Input.fromValue(map['maxAttempts'] as int),
-      messages: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<IntentConfirmationPromptMessage>(
-          map['messages']!,
-          (value) => IntentConfirmationPromptMessage.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      responseCard: (() {
-        final guardedValue = map['responseCard'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      messages: pulumi.Input.fromValue(pulumi.Input.decodeList<IntentConfirmationPromptMessage>(map['messages']!, (value) => IntentConfirmationPromptMessage.fromMap((value as Map).cast<String, dynamic>()))),
+      responseCard: (() { final guardedValue = map['responseCard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

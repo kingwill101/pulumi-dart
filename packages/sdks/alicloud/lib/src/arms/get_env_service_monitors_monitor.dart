@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvServiceMonitorsMonitor {
   /// The YAML configuration string.
   final pulumi.Input<String> configYaml;
-
   /// The name of the ServiceMonitor.
   final pulumi.Input<String> envServiceMonitorName;
-
   /// The environment ID.
   final pulumi.Input<String> environmentId;
-
   /// The ID of the ServiceMonitor. It formats as `&lt;environment_id&gt;:&lt;namespace&gt;:&lt;env_service_monitor_name&gt;`.
   final pulumi.Input<String> id;
-
   /// The namespace.
   final pulumi.Input<String> namespace;
-
   /// The region ID.
   final pulumi.Input<String> regionId;
-
   /// The status of the ServiceMonitor.
   final pulumi.Input<String> status;
 
@@ -57,9 +51,7 @@ class GetEnvServiceMonitorsMonitor {
   factory GetEnvServiceMonitorsMonitor.fromMap(Map<String, dynamic> map) {
     return GetEnvServiceMonitorsMonitor(
       configYaml: pulumi.Input.fromValue(map['configYaml'] as String),
-      envServiceMonitorName: pulumi.Input.fromValue(
-        map['envServiceMonitorName'] as String,
-      ),
+      envServiceMonitorName: pulumi.Input.fromValue(map['envServiceMonitorName'] as String),
       environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       namespace: pulumi.Input.fromValue(map['namespace'] as String),
@@ -68,3 +60,4 @@ class GetEnvServiceMonitorsMonitor {
     );
   }
 }
+

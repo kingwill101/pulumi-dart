@@ -7,28 +7,20 @@ import 'stateful_set_condition_apps_v1beta2.dart';
 class StatefulSetStatusAppsV1beta2 {
   /// collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.
   final pulumi.Input<int>? collisionCount;
-
   /// Represents the latest available observations of a statefulset's current state.
   final pulumi.Input<List<StatefulSetConditionAppsV1beta2>>? conditions;
-
   /// currentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by currentRevision.
   final pulumi.Input<int>? currentReplicas;
-
   /// currentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [0,currentReplicas).
   final pulumi.Input<String>? currentRevision;
-
   /// observedGeneration is the most recent generation observed for this StatefulSet. It corresponds to the StatefulSet's generation, which is updated on mutation by the API Server.
   final pulumi.Input<int>? observedGeneration;
-
   /// readyReplicas is the number of Pods created by the StatefulSet controller that have a Ready Condition.
   final pulumi.Input<int>? readyReplicas;
-
   /// replicas is the number of Pods created by the StatefulSet controller.
   final pulumi.Input<int> replicas;
-
   /// updateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)
   final pulumi.Input<String>? updateRevision;
-
   /// updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.
   final pulumi.Input<int>? updatedReplicas;
 
@@ -57,18 +49,7 @@ class StatefulSetStatusAppsV1beta2 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'collisionCount': ?collisionCount,
-      'conditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<StatefulSetConditionAppsV1beta2>,
-            List<Map<String, dynamic>>
-          >(
-            conditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  StatefulSetConditionAppsV1beta2,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<StatefulSetConditionAppsV1beta2>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<StatefulSetConditionAppsV1beta2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'currentReplicas': ?currentReplicas,
       'currentRevision': ?currentRevision,
       'observedGeneration': ?observedGeneration,
@@ -81,54 +62,16 @@ class StatefulSetStatusAppsV1beta2 {
 
   factory StatefulSetStatusAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return StatefulSetStatusAppsV1beta2(
-      collisionCount: (() {
-        final guardedValue = map['collisionCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      conditions: (() {
-        final guardedValue = map['conditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<StatefulSetConditionAppsV1beta2>(
-            guardedValue,
-            (value) => StatefulSetConditionAppsV1beta2.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      currentReplicas: (() {
-        final guardedValue = map['currentReplicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      currentRevision: (() {
-        final guardedValue = map['currentRevision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      observedGeneration: (() {
-        final guardedValue = map['observedGeneration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      readyReplicas: (() {
-        final guardedValue = map['readyReplicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      collisionCount: (() { final guardedValue = map['collisionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StatefulSetConditionAppsV1beta2>(guardedValue, (value) => StatefulSetConditionAppsV1beta2.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      currentReplicas: (() { final guardedValue = map['currentReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      currentRevision: (() { final guardedValue = map['currentRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      readyReplicas: (() { final guardedValue = map['readyReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       replicas: pulumi.Input.fromValue(map['replicas'] as int),
-      updateRevision: (() {
-        final guardedValue = map['updateRevision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updatedReplicas: (() {
-        final guardedValue = map['updatedReplicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      updateRevision: (() { final guardedValue = map['updateRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updatedReplicas: (() { final guardedValue = map['updatedReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

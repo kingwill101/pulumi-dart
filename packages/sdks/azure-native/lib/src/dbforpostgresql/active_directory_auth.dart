@@ -14,3 +14,4 @@ enum ActiveDirectoryAuth {
     throw ArgumentError('Unknown ActiveDirectoryAuth value: $value');
   }
 }
+

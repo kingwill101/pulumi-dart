@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocationPreferenceResponse {
   /// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
   final pulumi.Input<String> followGaeApplication;
-
   /// This is always `sql#locationPreference`.
   final pulumi.Input<String> kind;
-
   /// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). To disable this field, set it to 'no_secondary_zone'.
   final pulumi.Input<String> secondaryZone;
-
   /// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
   final pulumi.Input<String> zone;
 
@@ -39,12 +36,11 @@ class LocationPreferenceResponse {
 
   factory LocationPreferenceResponse.fromMap(Map<String, dynamic> map) {
     return LocationPreferenceResponse(
-      followGaeApplication: pulumi.Input.fromValue(
-        map['followGaeApplication'] as String,
-      ),
+      followGaeApplication: pulumi.Input.fromValue(map['followGaeApplication'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       secondaryZone: pulumi.Input.fromValue(map['secondaryZone'] as String),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
+

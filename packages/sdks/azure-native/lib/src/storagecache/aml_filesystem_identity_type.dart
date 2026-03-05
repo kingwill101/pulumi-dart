@@ -15,3 +15,4 @@ enum AmlFilesystemIdentityType {
     throw ArgumentError('Unknown AmlFilesystemIdentityType value: $value');
   }
 }
+

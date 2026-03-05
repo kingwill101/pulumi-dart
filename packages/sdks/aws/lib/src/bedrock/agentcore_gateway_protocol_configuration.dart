@@ -9,31 +9,20 @@ class AgentcoreGatewayProtocolConfiguration {
 
   /// Creates a new [AgentcoreGatewayProtocolConfiguration].
   /// [mcp] Model Context Protocol (MCP) configuration block. See `mcp` below.
-  AgentcoreGatewayProtocolConfiguration({this.mcp});
+  AgentcoreGatewayProtocolConfiguration({
+    this.mcp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mcp':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentcoreGatewayProtocolConfigurationMcp,
-            Map<String, dynamic>
-          >(mcp, (value) => value.toMap()),
+      'mcp': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayProtocolConfigurationMcp, Map<String, dynamic>>(mcp, (value) => value.toMap()),
     };
   }
 
-  factory AgentcoreGatewayProtocolConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreGatewayProtocolConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayProtocolConfiguration(
-      mcp: (() {
-        final guardedValue = map['mcp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentcoreGatewayProtocolConfigurationMcp.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      mcp: (() { final guardedValue = map['mcp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreGatewayProtocolConfigurationMcp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

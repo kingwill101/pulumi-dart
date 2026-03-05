@@ -13,14 +13,15 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sasToken': sasToken};
+    return <String, dynamic>{
+      'sasToken': sasToken,
+    };
   }
 
-  factory TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials(
       sasToken: pulumi.Input.fromValue(map['sasToken'] as String),
     );
   }
 }
+

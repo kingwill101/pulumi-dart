@@ -110,8 +110,7 @@ import 'get_log_groups_result.dart';
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudwatch_get_contributor_managed_insight_rules_get_contributor_managed_insight_rules_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetContributorManagedInsightRulesResult>
-getContributorManagedInsightRules(
+Future<GetContributorManagedInsightRulesResult> getContributorManagedInsightRules(
   GetContributorManagedInsightRulesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -892,8 +891,7 @@ Future<GetEventSourceResult> getEventSource(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudwatch_get_log_data_protection_policy_document_get_log_data_protection_policy_document_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetLogDataProtectionPolicyDocumentResult>
-getLogDataProtectionPolicyDocument(
+Future<GetLogDataProtectionPolicyDocumentResult> getLogDataProtectionPolicyDocument(
   GetLogDataProtectionPolicyDocumentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -7,25 +7,13 @@ import 'get_security_gateway_proxy_protocol_config_contextual_header_user_info.d
 
 class GetSecurityGatewayProxyProtocolConfigContextualHeader {
   /// Device info configuration.
-  final pulumi.Input<
-    List<GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo>
-  >
-  deviceInfos;
-
+  final pulumi.Input<List<GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo>> deviceInfos;
   /// Group info configuration.
-  final pulumi.Input<
-    List<GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo>
-  >
-  groupInfos;
-
+  final pulumi.Input<List<GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo>> groupInfos;
   /// Default output type for all enabled headers. Possible values: ["PROTOBUF", "JSON", "NONE"]
   final pulumi.Input<String> outputType;
-
   /// User info configuration.
-  final pulumi.Input<
-    List<GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo>
-  >
-  userInfos;
+  final pulumi.Input<List<GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo>> userInfos;
 
   /// Creates a new [GetSecurityGatewayProxyProtocolConfigContextualHeader].
   /// [deviceInfos] Device info configuration.
@@ -41,88 +29,20 @@ class GetSecurityGatewayProxyProtocolConfigContextualHeader {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deviceInfos':
-          pulumi.Input.mapInputValue<
-            List<
-              GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo
-            >,
-            List<Map<String, dynamic>>
-          >(
-            deviceInfos,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'groupInfos':
-          pulumi.Input.mapInputValue<
-            List<
-              GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo
-            >,
-            List<Map<String, dynamic>>
-          >(
-            groupInfos,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'deviceInfos': pulumi.Input.mapInputValue<List<GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo>, List<Map<String, dynamic>>>(deviceInfos, (value) => pulumi.Input.encodeList<GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'groupInfos': pulumi.Input.mapInputValue<List<GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo>, List<Map<String, dynamic>>>(groupInfos, (value) => pulumi.Input.encodeList<GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'outputType': outputType,
-      'userInfos':
-          pulumi.Input.mapInputValue<
-            List<GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo>,
-            List<Map<String, dynamic>>
-          >(
-            userInfos,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'userInfos': pulumi.Input.mapInputValue<List<GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo>, List<Map<String, dynamic>>>(userInfos, (value) => pulumi.Input.encodeList<GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetSecurityGatewayProxyProtocolConfigContextualHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSecurityGatewayProxyProtocolConfigContextualHeader.fromMap(Map<String, dynamic> map) {
     return GetSecurityGatewayProxyProtocolConfigContextualHeader(
-      deviceInfos: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo
-        >(
-          map['deviceInfos']!,
-          (value) =>
-              GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      groupInfos: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo
-        >(
-          map['groupInfos']!,
-          (value) =>
-              GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      deviceInfos: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo>(map['deviceInfos']!, (value) => GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo.fromMap((value as Map).cast<String, dynamic>()))),
+      groupInfos: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo>(map['groupInfos']!, (value) => GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo.fromMap((value as Map).cast<String, dynamic>()))),
       outputType: pulumi.Input.fromValue(map['outputType'] as String),
-      userInfos: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo
-        >(
-          map['userInfos']!,
-          (value) =>
-              GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      userInfos: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo>(map['userInfos']!, (value) => GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

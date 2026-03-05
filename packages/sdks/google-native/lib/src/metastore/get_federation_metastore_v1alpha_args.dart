@@ -33,11 +33,8 @@ class GetFederationMetastoreV1alphaArgs {
     return GetFederationMetastoreV1alphaArgs(
       federationId: pulumi.Input.fromValue(map['federationId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

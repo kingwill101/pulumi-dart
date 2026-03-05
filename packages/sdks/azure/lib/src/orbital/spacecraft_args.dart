@@ -10,25 +10,18 @@ import 'spacecraft_link.dart';
 class SpacecraftArgs {
   /// A `links` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<SpacecraftLink>> links;
-
   /// The location where the Spacecraft exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// The name of the Spacecraft. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// NORAD ID of the Spacecraft.
   final pulumi.Input<String> noradId;
-
   /// The name of the Resource Group where the Spacecraft exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Title of the two line elements (TLE).
   final pulumi.Input<String> titleLine;
-
   /// A list of the two line elements (TLE), the first string being the first of the TLE, the second string being the second line of the TLE. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>> twoLineElements;
 
@@ -54,18 +47,7 @@ class SpacecraftArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'links':
-          pulumi.Input.mapInputValue<
-            List<SpacecraftLink>,
-            List<Map<String, dynamic>>
-          >(
-            links,
-            (value) =>
-                pulumi.Input.encodeList<SpacecraftLink, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'links': pulumi.Input.mapInputValue<List<SpacecraftLink>, List<Map<String, dynamic>>>(links, (value) => pulumi.Input.encodeList<SpacecraftLink, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
       'name': ?name,
       'noradId': noradId,
@@ -78,38 +60,15 @@ class SpacecraftArgs {
 
   factory SpacecraftArgs.fromMap(Map<String, dynamic> map) {
     return SpacecraftArgs(
-      links: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<SpacecraftLink>(
-          map['links']!,
-          (value) =>
-              SpacecraftLink.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      links: pulumi.Input.fromValue(pulumi.Input.decodeList<SpacecraftLink>(map['links']!, (value) => SpacecraftLink.fromMap((value as Map).cast<String, dynamic>()))),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       noradId: pulumi.Input.fromValue(map['noradId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       titleLine: pulumi.Input.fromValue(map['titleLine'] as String),
-      twoLineElements: pulumi.Input.fromValue(
-        (map['twoLineElements'] as List).cast<String>(),
-      ),
+      twoLineElements: pulumi.Input.fromValue((map['twoLineElements'] as List).cast<String>()),
     );
   }
 }
+

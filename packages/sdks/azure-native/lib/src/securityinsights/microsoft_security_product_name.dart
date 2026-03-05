@@ -3,9 +3,7 @@ enum MicrosoftSecurityProductName {
   valueMicrosoftCloudAppSecurity("Microsoft Cloud App Security"),
   valueAzureSecurityCenter("Azure Security Center"),
   valueAzureAdvancedThreatProtection("Azure Advanced Threat Protection"),
-  valueAzureActiveDirectoryIdentityProtection(
-    "Azure Active Directory Identity Protection",
-  ),
+  valueAzureActiveDirectoryIdentityProtection("Azure Active Directory Identity Protection"),
   valueAzureSecurityCenterForIoT("Azure Security Center for IoT");
 
   const MicrosoftSecurityProductName(this.wireValue);
@@ -20,3 +18,4 @@ enum MicrosoftSecurityProductName {
     throw ArgumentError('Unknown MicrosoftSecurityProductName value: $value');
   }
 }
+

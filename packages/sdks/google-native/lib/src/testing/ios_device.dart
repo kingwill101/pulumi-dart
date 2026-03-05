@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IosDevice {
   /// The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
   final pulumi.Input<String> iosModelId;
-
   /// The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
   final pulumi.Input<String> iosVersionId;
-
   /// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
   final pulumi.Input<String> locale;
-
   /// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
   final pulumi.Input<String> orientation;
 
@@ -46,3 +43,4 @@ class IosDevice {
     );
   }
 }
+

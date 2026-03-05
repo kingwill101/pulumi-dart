@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDomainIdentityResponse {
   /// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
   final pulumi.Input<String>? type;
-
   /// The user identity associated with the resource.
   final pulumi.Input<String>? userAssignedIdentity;
 
   /// Creates a new [CustomDomainIdentityResponse].
   /// [type] The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
   /// [userAssignedIdentity] The user identity associated with the resource.
-  CustomDomainIdentityResponse({this.type, this.userAssignedIdentity});
+  CustomDomainIdentityResponse({
+    this.type,
+    this.userAssignedIdentity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class CustomDomainIdentityResponse {
 
   factory CustomDomainIdentityResponse.fromMap(Map<String, dynamic> map) {
     return CustomDomainIdentityResponse(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentity: (() {
-        final guardedValue = map['userAssignedIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentity: (() { final guardedValue = map['userAssignedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

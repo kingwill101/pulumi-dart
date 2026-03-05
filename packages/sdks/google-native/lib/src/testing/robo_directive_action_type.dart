@@ -17,3 +17,4 @@ enum RoboDirectiveActionType {
     throw ArgumentError('Unknown RoboDirectiveActionType value: $value');
   }
 }
+

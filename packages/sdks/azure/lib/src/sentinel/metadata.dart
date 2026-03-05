@@ -367,64 +367,44 @@ import 'metadata_support.dart';
 class Metadata extends pulumi.CustomResource {
   /// An `author` blocks as defined below.
   late final pulumi.Output<MetadataAuthor?> author;
-
   /// A `category` block as defined below.
   late final pulumi.Output<MetadataCategory?> category;
-
   /// The ID of the content. Used to identify dependencies and content from solutions or community.
   late final pulumi.Output<String> contentId;
-
   /// Schema version of the content. Can be used to distinguish between flow based on the schema version.
   late final pulumi.Output<String?> contentSchemaVersion;
-
   /// The Custom version of the content.
   late final pulumi.Output<String?> customVersion;
-
   /// A JSON formatted `dependency` block as defined below. Dependency for the content item, what other content items it requires to work.
   late final pulumi.Output<String?> dependency;
-
   /// The first publish date of solution content item.
   late final pulumi.Output<String?> firstPublishDate;
-
   /// The ID of the icon, this id can be fetched from the solution template.
   late final pulumi.Output<String?> iconId;
-
   /// The kind of content the metadata is for. Possible values are `AnalyticsRule`, `AnalyticsRuleTemplate`, `AutomationRule`, `AzureFunction`, `DataConnector`, `DataType`, `HuntingQuery`, `InvestigationQuery`, `LogicAppsCustomConnector`, `Parser`, `Playbook`, `PlaybookTemplate`, `Solution`, `Watchlist`, `WatchlistTemplate`, `Workbook` and `WorkbookTemplate`.
   late final pulumi.Output<String> kind;
-
   /// The last publish date of solution content item.
   late final pulumi.Output<String?> lastPublishDate;
-
   /// The name which should be used for this Sentinel Metadata. Changing this forces a new Sentinel Metadata to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the parent resource ID of the content item, which the metadata belongs to.
   late final pulumi.Output<String> parentId;
-
   /// Specifies a list of preview image file names. These will be taken from solution artifacts.
   late final pulumi.Output<List<String>?> previewImages;
-
   /// Specifies a list of preview image file names used for dark theme. These will be taken from solution artifacts.
   late final pulumi.Output<List<String>?> previewImagesDarks;
-
   /// Specifies a list of providers for the solution content item.
   late final pulumi.Output<List<String>?> providers;
-
   /// A `source` block as defined below.
   late final pulumi.Output<MetadataSource> source;
-
   /// A `support` block as defined below.
   late final pulumi.Output<MetadataSupport?> support;
-
   /// Specifies a list of tactics the resource covers. Possible values are `Reconnaissance`, `ResourceDevelopment`, `InitialAccess`, `Execution`, `Persistence`, `PrivilegeEscalation`, `DefenseEvasion`, `CredentialAccess`, `Discovery`, `LateralMovement`, `Collection`, `CommandAndControl`, `Exfiltration`, `Impact`, `ImpairProcessControl` and `InhibitResponseFunction`.
   late final pulumi.Output<List<String>?> threatAnalysisTactics;
-
   /// Specifies a list of techniques the resource covers.
   late final pulumi.Output<List<String>?> threatAnalysisTechniques;
-
   /// Version of the content.
   late final pulumi.Output<String?> version;
-
   /// The ID of the Log Analytics Workspace. Changing this forces a new Sentinel Metadata to be created.
   late final pulumi.Output<String> workspaceId;
 
@@ -437,31 +417,13 @@ class Metadata extends pulumi.CustomResource {
     MetadataArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/metadata:Metadata',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    author = registerOutput<MetadataAuthor?>(
-      'author',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetadataAuthor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    category = registerOutput<MetadataCategory?>(
-      'category',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetadataCategory.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:sentinel/metadata:Metadata',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    author = registerOutput<MetadataAuthor?>('author', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataAuthor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    category = registerOutput<MetadataCategory?>('category', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataCategory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contentId = registerOutput<String>('contentId');
     contentSchemaVersion = registerOutput<String?>('contentSchemaVersion');
     customVersion = registerOutput<String?>('customVersion');
@@ -475,32 +437,10 @@ class Metadata extends pulumi.CustomResource {
     previewImages = registerOutput<List<String>?>('previewImages');
     previewImagesDarks = registerOutput<List<String>?>('previewImagesDarks');
     providers = registerOutput<List<String>?>('providers');
-    source = registerOutput<MetadataSource>(
-      'source',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetadataSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    support = registerOutput<MetadataSupport?>(
-      'support',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetadataSupport.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    threatAnalysisTactics = registerOutput<List<String>?>(
-      'threatAnalysisTactics',
-    );
-    threatAnalysisTechniques = registerOutput<List<String>?>(
-      'threatAnalysisTechniques',
-    );
+    source = registerOutput<MetadataSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    support = registerOutput<MetadataSupport?>('support', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataSupport.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    threatAnalysisTactics = registerOutput<List<String>?>('threatAnalysisTactics');
+    threatAnalysisTechniques = registerOutput<List<String>?>('threatAnalysisTechniques');
     version = registerOutput<String?>('version');
     workspaceId = registerOutput<String>('workspaceId');
   }
@@ -523,31 +463,13 @@ class Metadata extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/metadata:Metadata',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    author = registerOutput<MetadataAuthor?>(
-      'author',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetadataAuthor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    category = registerOutput<MetadataCategory?>(
-      'category',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetadataCategory.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:sentinel/metadata:Metadata',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    author = registerOutput<MetadataAuthor?>('author', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataAuthor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    category = registerOutput<MetadataCategory?>('category', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataCategory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contentId = registerOutput<String>('contentId');
     contentSchemaVersion = registerOutput<String?>('contentSchemaVersion');
     customVersion = registerOutput<String?>('customVersion');
@@ -561,32 +483,10 @@ class Metadata extends pulumi.CustomResource {
     previewImages = registerOutput<List<String>?>('previewImages');
     previewImagesDarks = registerOutput<List<String>?>('previewImagesDarks');
     providers = registerOutput<List<String>?>('providers');
-    source = registerOutput<MetadataSource>(
-      'source',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetadataSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    support = registerOutput<MetadataSupport?>(
-      'support',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetadataSupport.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    threatAnalysisTactics = registerOutput<List<String>?>(
-      'threatAnalysisTactics',
-    );
-    threatAnalysisTechniques = registerOutput<List<String>?>(
-      'threatAnalysisTechniques',
-    );
+    source = registerOutput<MetadataSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    support = registerOutput<MetadataSupport?>('support', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataSupport.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    threatAnalysisTactics = registerOutput<List<String>?>('threatAnalysisTactics');
+    threatAnalysisTechniques = registerOutput<List<String>?>('threatAnalysisTechniques');
     version = registerOutput<String?>('version');
     workspaceId = registerOutput<String>('workspaceId');
   }

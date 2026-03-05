@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotState {
   /// Description of the snapshot.
   final pulumi.Input<String>? description;
-
   /// User-defined labels (key-value pairs) should be created with.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Server to the snapshot should be created from.
   final pulumi.Input<int>? serverId;
 
@@ -17,7 +15,11 @@ class SnapshotState {
   /// [description] Description of the snapshot.
   /// [labels] User-defined labels (key-value pairs) should be created with.
   /// [serverId] Server to the snapshot should be created from.
-  SnapshotState({this.description, this.labels, this.serverId});
+  SnapshotState({
+    this.description,
+    this.labels,
+    this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,23 +31,10 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      serverId: (() {
-        final guardedValue = map['serverId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

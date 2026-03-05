@@ -14,44 +14,26 @@ class GetRegionsResult {
   /// [filters] Optional.
   /// [id] Required.
   /// [regions] Required.
-  GetRegionsResult({this.filters, required this.id, required this.regions});
+  GetRegionsResult({
+    this.filters,
+    required this.id,
+    required this.regions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<GetRegionsFilter, Map<String, dynamic>>(
-          guardedValue,
-          (value) => value.toMap(),
-        );
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
-      'regions':
-          pulumi.Input.encodeList<GetRegionsRegion, Map<String, dynamic>>(
-            regions,
-            (value) => value.toMap(),
-          ),
+      'regions': pulumi.Input.encodeList<GetRegionsRegion, Map<String, dynamic>>(regions, (value) => value.toMap()),
     };
   }
 
   factory GetRegionsResult.fromMap(Map<String, dynamic> map) {
     return GetRegionsResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetRegionsFilter>(
-          guardedValue,
-          (value) =>
-              GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>()),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionsFilter>(guardedValue, (value) => GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      regions: pulumi.Input.decodeList<GetRegionsRegion>(
-        map['regions']!,
-        (value) =>
-            GetRegionsRegion.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      regions: pulumi.Input.decodeList<GetRegionsRegion>(map['regions']!, (value) => GetRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

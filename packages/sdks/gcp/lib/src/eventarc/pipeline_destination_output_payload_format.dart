@@ -8,10 +8,8 @@ class PipelineDestinationOutputPayloadFormat {
   /// The format of an AVRO message payload.
   /// Structure is documented below.
   final pulumi.Input<PipelineDestinationOutputPayloadFormatAvro>? avro;
-
   /// The format of a JSON message payload.
   final pulumi.Input<Map<String, dynamic>>? json;
-
   /// The format of a Protobuf message payload.
   /// Structure is documented below.
   final pulumi.Input<PipelineDestinationOutputPayloadFormatProtobuf>? protobuf;
@@ -20,53 +18,26 @@ class PipelineDestinationOutputPayloadFormat {
   /// [avro] The format of an AVRO message payload.
   /// [json] The format of a JSON message payload.
   /// [protobuf] The format of a Protobuf message payload.
-  PipelineDestinationOutputPayloadFormat({this.avro, this.json, this.protobuf});
+  PipelineDestinationOutputPayloadFormat({
+    this.avro,
+    this.json,
+    this.protobuf,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'avro':
-          ?pulumi.Input.mapOptionalInputValue<
-            PipelineDestinationOutputPayloadFormatAvro,
-            Map<String, dynamic>
-          >(avro, (value) => value.toMap()),
+      'avro': ?pulumi.Input.mapOptionalInputValue<PipelineDestinationOutputPayloadFormatAvro, Map<String, dynamic>>(avro, (value) => value.toMap()),
       'json': ?json,
-      'protobuf':
-          ?pulumi.Input.mapOptionalInputValue<
-            PipelineDestinationOutputPayloadFormatProtobuf,
-            Map<String, dynamic>
-          >(protobuf, (value) => value.toMap()),
+      'protobuf': ?pulumi.Input.mapOptionalInputValue<PipelineDestinationOutputPayloadFormatProtobuf, Map<String, dynamic>>(protobuf, (value) => value.toMap()),
     };
   }
 
-  factory PipelineDestinationOutputPayloadFormat.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipelineDestinationOutputPayloadFormat.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationOutputPayloadFormat(
-      avro: (() {
-        final guardedValue = map['avro'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PipelineDestinationOutputPayloadFormatAvro.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      json: (() {
-        final guardedValue = map['json'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      protobuf: (() {
-        final guardedValue = map['protobuf'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PipelineDestinationOutputPayloadFormatProtobuf.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      avro: (() { final guardedValue = map['avro']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineDestinationOutputPayloadFormatAvro.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      json: (() { final guardedValue = map['json']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      protobuf: (() { final guardedValue = map['protobuf']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineDestinationOutputPayloadFormatProtobuf.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

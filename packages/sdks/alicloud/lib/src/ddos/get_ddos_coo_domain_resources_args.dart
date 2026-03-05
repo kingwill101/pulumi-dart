@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDdosCooDomainResourcesArgs {
   /// A list of Domain Resource IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// A ID list of Ddoscoo instance.
   final pulumi.Input<List<String>>? instanceIds;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// Match the pattern.
   final pulumi.Input<String>? queryDomainPattern;
 
@@ -42,26 +39,11 @@ class GetDdosCooDomainResourcesArgs {
 
   factory GetDdosCooDomainResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetDdosCooDomainResourcesArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      instanceIds: (() {
-        final guardedValue = map['instanceIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      queryDomainPattern: (() {
-        final guardedValue = map['queryDomainPattern'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      instanceIds: (() { final guardedValue = map['instanceIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      queryDomainPattern: (() { final guardedValue = map['queryDomainPattern']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

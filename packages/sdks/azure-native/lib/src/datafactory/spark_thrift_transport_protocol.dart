@@ -16,3 +16,4 @@ enum SparkThriftTransportProtocol {
     throw ArgumentError('Unknown SparkThriftTransportProtocol value: $value');
   }
 }
+

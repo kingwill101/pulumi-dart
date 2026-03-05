@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlPoolTransparentDataEncryptionArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// SQL pool name
   final pulumi.Input<String> sqlPoolName;
-
   /// The name of the transparent data encryption configuration.
   final pulumi.Input<String> transparentDataEncryptionName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -40,18 +37,13 @@ class GetSqlPoolTransparentDataEncryptionArgs {
     };
   }
 
-  factory GetSqlPoolTransparentDataEncryptionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSqlPoolTransparentDataEncryptionArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlPoolTransparentDataEncryptionArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sqlPoolName: pulumi.Input.fromValue(map['sqlPoolName'] as String),
-      transparentDataEncryptionName: pulumi.Input.fromValue(
-        map['transparentDataEncryptionName'] as String,
-      ),
+      transparentDataEncryptionName: pulumi.Input.fromValue(map['transparentDataEncryptionName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

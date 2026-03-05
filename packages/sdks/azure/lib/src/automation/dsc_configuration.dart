@@ -214,26 +214,19 @@ import 'dsc_configuration_state.dart';
 class DscConfiguration extends pulumi.CustomResource {
   /// The name of the automation account in which the DSC Configuration is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
-
   /// The PowerShell DSC Configuration script.
   late final pulumi.Output<String> contentEmbedded;
-
   /// Description to go with DSC Configuration.
   late final pulumi.Output<String?> description;
-
   /// Must be the same location as the Automation Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Verbose log option.
   late final pulumi.Output<bool?> logVerbose;
-
   /// Specifies the name of the DSC Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which the DSC Configuration is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   late final pulumi.Output<String> state;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -246,11 +239,11 @@ class DscConfiguration extends pulumi.CustomResource {
     DscConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/dscConfiguration:DscConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/dscConfiguration:DscConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     contentEmbedded = registerOutput<String>('contentEmbedded');
     description = registerOutput<String?>('description');
@@ -280,11 +273,11 @@ class DscConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/dscConfiguration:DscConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/dscConfiguration:DscConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     contentEmbedded = registerOutput<String>('contentEmbedded');
     description = registerOutput<String?>('description');

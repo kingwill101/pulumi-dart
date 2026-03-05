@@ -5,27 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheDns {
   /// The DNS search domain for the HPC Cache.
   final pulumi.Input<String>? searchDomain;
-
   /// A list of DNS servers for the HPC Cache. At most three IP(s) are allowed to set.
   final pulumi.Input<List<String>> servers;
 
   /// Creates a new [CacheDns].
   /// [searchDomain] The DNS search domain for the HPC Cache.
   /// [servers] A list of DNS servers for the HPC Cache. At most three IP(s) are allowed to set.
-  CacheDns({this.searchDomain, required this.servers});
+  CacheDns({
+    this.searchDomain,
+    required this.servers,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'searchDomain': ?searchDomain, 'servers': servers};
+    return <String, dynamic>{
+      'searchDomain': ?searchDomain,
+      'servers': servers,
+    };
   }
 
   factory CacheDns.fromMap(Map<String, dynamic> map) {
     return CacheDns(
-      searchDomain: (() {
-        final guardedValue = map['searchDomain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      searchDomain: (() { final guardedValue = map['searchDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       servers: pulumi.Input.fromValue((map['servers'] as List).cast<String>()),
     );
   }
 }
+

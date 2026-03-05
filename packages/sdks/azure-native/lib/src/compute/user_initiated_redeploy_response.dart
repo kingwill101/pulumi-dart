@@ -9,19 +9,20 @@ class UserInitiatedRedeployResponse {
 
   /// Creates a new [UserInitiatedRedeployResponse].
   /// [automaticallyApprove] Specifies Redeploy Scheduled Event related configurations.
-  UserInitiatedRedeployResponse({this.automaticallyApprove});
+  UserInitiatedRedeployResponse({
+    this.automaticallyApprove,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'automaticallyApprove': ?automaticallyApprove};
+    return <String, dynamic>{
+      'automaticallyApprove': ?automaticallyApprove,
+    };
   }
 
   factory UserInitiatedRedeployResponse.fromMap(Map<String, dynamic> map) {
     return UserInitiatedRedeployResponse(
-      automaticallyApprove: (() {
-        final guardedValue = map['automaticallyApprove'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      automaticallyApprove: (() { final guardedValue = map['automaticallyApprove']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

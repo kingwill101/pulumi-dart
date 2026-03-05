@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedHardwareSecurityModuleRoleDefinitionArgs {
   /// The ID of the Key Vault Managed Hardware Security Module.
   final pulumi.Input<String> managedHsmId;
-
   /// The name in UUID notation of this Key Vault Managed Hardware Security Module Role Definition.
   final pulumi.Input<String> name;
 
@@ -22,15 +21,17 @@ class GetManagedHardwareSecurityModuleRoleDefinitionArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'managedHsmId': managedHsmId, 'name': name};
+    return <String, dynamic>{
+      'managedHsmId': managedHsmId,
+      'name': name,
+    };
   }
 
-  factory GetManagedHardwareSecurityModuleRoleDefinitionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedHardwareSecurityModuleRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedHardwareSecurityModuleRoleDefinitionArgs(
       managedHsmId: pulumi.Input.fromValue(map['managedHsmId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

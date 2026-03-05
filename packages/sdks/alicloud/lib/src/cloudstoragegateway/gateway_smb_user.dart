@@ -444,10 +444,8 @@ import 'gateway_smb_user_state.dart';
 class GatewaySmbUser extends pulumi.CustomResource {
   /// The Gateway ID of the Gateway SMB User.
   late final pulumi.Output<String> gatewayId;
-
   /// The password of the Gateway SMB User.
   late final pulumi.Output<String> password;
-
   /// The username of the Gateway SMB User.
   late final pulumi.Output<String> username;
 
@@ -460,11 +458,11 @@ class GatewaySmbUser extends pulumi.CustomResource {
     GatewaySmbUserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     gatewayId = registerOutput<String>('gatewayId');
     password = registerOutput<String>('password');
     username = registerOutput<String>('username');
@@ -488,11 +486,11 @@ class GatewaySmbUser extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     gatewayId = registerOutput<String>('gatewayId');
     password = registerOutput<String>('password');
     username = registerOutput<String>('username');

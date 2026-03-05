@@ -164,16 +164,12 @@ import 'suppression_state.dart';
 class Suppression extends pulumi.CustomResource {
   /// The Name which should be used for this Advisor suppression. Changing this forces a new Advisor suppression to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Advisor recommendation to suppress. Changing this forces a new Advisor suppression to be created.
   late final pulumi.Output<String> recommendationId;
-
   /// The ID of the Resource to suppress the Advisor recommendation for. Changing this forces a new Advisor suppression to be created.
   late final pulumi.Output<String> resourceId;
-
   /// The GUID of the suppression.
   late final pulumi.Output<String> suppressionId;
-
   /// A optional time to live value. If omitted, the suppression will not expire. Changing this forces a new Advisor suppression to be created.
   late final pulumi.Output<String?> ttl;
 
@@ -186,11 +182,11 @@ class Suppression extends pulumi.CustomResource {
     SuppressionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:advisor/suppression:Suppression',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:advisor/suppression:Suppression',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     recommendationId = registerOutput<String>('recommendationId');
     resourceId = registerOutput<String>('resourceId');
@@ -216,11 +212,11 @@ class Suppression extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:advisor/suppression:Suppression',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:advisor/suppression:Suppression',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     recommendationId = registerOutput<String>('recommendationId');
     resourceId = registerOutput<String>('resourceId');

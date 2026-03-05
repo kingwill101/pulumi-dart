@@ -16,23 +16,14 @@ class ConnectToSourcePostgreSqlSyncTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceConnectionInfo':
-          pulumi.Input.mapInputValue<
-            PostgreSqlConnectionInfoResponse,
-            Map<String, dynamic>
-          >(sourceConnectionInfo, (value) => value.toMap()),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<PostgreSqlConnectionInfoResponse, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
     };
   }
 
-  factory ConnectToSourcePostgreSqlSyncTaskInputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectToSourcePostgreSqlSyncTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return ConnectToSourcePostgreSqlSyncTaskInputResponse(
-      sourceConnectionInfo: pulumi.Input.fromValue(
-        PostgreSqlConnectionInfoResponse.fromMap(
-          (map['sourceConnectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      sourceConnectionInfo: pulumi.Input.fromValue(PostgreSqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

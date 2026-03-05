@@ -6,17 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AmazonS3CompatibleLocationResponse {
   /// Specify the bucketName of Amazon S3 Compatible. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? bucketName;
-
   /// Specify the file name of dataset. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileName;
-
   /// Specify the folder path of dataset. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? folderPath;
-
   /// Type of dataset storage location.
   /// Expected value is 'AmazonS3CompatibleLocation'.
   final pulumi.Input<String> type;
-
   /// Specify the version of Amazon S3 Compatible. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? version;
 
@@ -46,27 +42,12 @@ class AmazonS3CompatibleLocationResponse {
 
   factory AmazonS3CompatibleLocationResponse.fromMap(Map<String, dynamic> map) {
     return AmazonS3CompatibleLocationResponse(
-      bucketName: (() {
-        final guardedValue = map['bucketName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      fileName: (() {
-        final guardedValue = map['fileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      folderPath: (() {
-        final guardedValue = map['folderPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      bucketName: (() { final guardedValue = map['bucketName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      fileName: (() { final guardedValue = map['fileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      folderPath: (() { final guardedValue = map['folderPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

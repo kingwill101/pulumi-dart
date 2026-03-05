@@ -32,17 +32,10 @@ class SslCertSqladminV1beta4Args {
 
   factory SslCertSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
     return SslCertSqladminV1beta4Args(
-      commonName: (() {
-        final guardedValue = map['commonName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      commonName: (() { final guardedValue = map['commonName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance: pulumi.Input.fromValue(map['instance'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

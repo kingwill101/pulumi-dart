@@ -185,22 +185,16 @@ import 'virtual_appliance_site_args.dart';
 class VirtualApplianceSite extends pulumi.CustomResource {
   /// Address Prefix.
   late final pulumi.Output<String?> addressPrefix;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Name of the virtual appliance site.
   late final pulumi.Output<String?> name;
-
   /// Office 365 Policy.
   late final pulumi.Output<Office365PolicyPropertiesResponse?> o365Policy;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Site type.
   late final pulumi.Output<String> type;
 
@@ -213,25 +207,16 @@ class VirtualApplianceSite extends pulumi.CustomResource {
     VirtualApplianceSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:VirtualApplianceSite',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:VirtualApplianceSite',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressPrefix = registerOutput<String?>('addressPrefix');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    o365Policy = registerOutput<Office365PolicyPropertiesResponse?>(
-      'o365Policy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return Office365PolicyPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    o365Policy = registerOutput<Office365PolicyPropertiesResponse?>('o365Policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Office365PolicyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
   }

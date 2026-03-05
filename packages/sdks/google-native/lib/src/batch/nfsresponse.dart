@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NFSResponse {
   /// Remote source path exported from the NFS, e.g., "/share".
   final pulumi.Input<String> remotePath;
-
   /// The IP address of the NFS.
   final pulumi.Input<String> server;
 
   /// Creates a new [NFSResponse].
   /// [remotePath] Remote source path exported from the NFS, e.g., "/share".
   /// [server] The IP address of the NFS.
-  NFSResponse({required this.remotePath, required this.server});
+  NFSResponse({
+    required this.remotePath,
+    required this.server,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'remotePath': remotePath, 'server': server};
+    return <String, dynamic>{
+      'remotePath': remotePath,
+      'server': server,
+    };
   }
 
   factory NFSResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class NFSResponse {
     );
   }
 }
+

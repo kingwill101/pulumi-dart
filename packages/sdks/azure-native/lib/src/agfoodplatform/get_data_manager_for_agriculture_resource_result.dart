@@ -10,40 +10,28 @@ import 'system_data_response.dart';
 class GetDataManagerForAgricultureResourceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Identity for the resource.
   final IdentityResponse? identity;
-
   /// Uri of the Data Manager For Agriculture instance.
   final String instanceUri;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// Private endpoints.
   final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
-
   /// Data Manager For Agriculture instance provisioning state.
   final String provisioningState;
-
   /// Property to allow or block public traffic for an Azure Data Manager For Agriculture resource.
   final String? publicNetworkAccess;
-
   /// Sensor integration request model.
   final SensorIntegrationResponse? sensorIntegration;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -85,11 +73,7 @@ class GetDataManagerForAgricultureResourceResult {
       'instanceUri': instanceUri,
       'location': location,
       'name': name,
-      'privateEndpointConnections':
-          pulumi.Input.encodeList<
-            PrivateEndpointConnectionResponse,
-            Map<String, dynamic>
-          >(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'sensorIntegration': ?sensorIntegration?.toMap(),
@@ -99,51 +83,22 @@ class GetDataManagerForAgricultureResourceResult {
     };
   }
 
-  factory GetDataManagerForAgricultureResourceResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataManagerForAgricultureResourceResult.fromMap(Map<String, dynamic> map) {
     return GetDataManagerForAgricultureResourceResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       instanceUri: map['instanceUri'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      privateEndpointConnections:
-          pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
-            map['privateEndpointConnections']!,
-            (value) => PrivateEndpointConnectionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sensorIntegration: (() {
-        final guardedValue = map['sensorIntegration'];
-        if (guardedValue == null) return null;
-        return SensorIntegrationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sensorIntegration: (() { final guardedValue = map['sensorIntegration']; if (guardedValue == null) return null; return SensorIntegrationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

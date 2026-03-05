@@ -21,28 +21,20 @@ import 'web_app_auth_settings_v2_args.dart';
 class WebAppAuthSettingsV2 extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
   late final pulumi.Output<GlobalValidationResponse?> globalValidation;
-
   /// The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
   late final pulumi.Output<HttpSettingsResponse?> httpSettings;
-
   /// The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
   late final pulumi.Output<IdentityProvidersResponse?> identityProviders;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// The configuration settings of the login flow of users using App Service Authentication/Authorization.
   late final pulumi.Output<LoginResponse?> login;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// The configuration settings of the platform of App Service Authentication/Authorization.
   late final pulumi.Output<AuthPlatformResponse?> platform;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -55,64 +47,19 @@ class WebAppAuthSettingsV2 extends pulumi.CustomResource {
     WebAppAuthSettingsV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppAuthSettingsV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppAuthSettingsV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    globalValidation = registerOutput<GlobalValidationResponse?>(
-      'globalValidation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GlobalValidationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    httpSettings = registerOutput<HttpSettingsResponse?>(
-      'httpSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HttpSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identityProviders = registerOutput<IdentityProvidersResponse?>(
-      'identityProviders',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityProvidersResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    globalValidation = registerOutput<GlobalValidationResponse?>('globalValidation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalValidationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpSettings = registerOutput<HttpSettingsResponse?>('httpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identityProviders = registerOutput<IdentityProvidersResponse?>('identityProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityProvidersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
-    login = registerOutput<LoginResponse?>(
-      'login',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoginResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    login = registerOutput<LoginResponse?>('login', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoginResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    platform = registerOutput<AuthPlatformResponse?>(
-      'platform',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AuthPlatformResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    platform = registerOutput<AuthPlatformResponse?>('platform', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthPlatformResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

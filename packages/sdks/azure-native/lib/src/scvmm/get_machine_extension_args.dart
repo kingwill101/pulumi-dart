@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMachineExtensionArgs {
   /// The name of the machine extension.
   final pulumi.Input<String> extensionName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the machine where the extension should be created or updated.
   final pulumi.Input<String> virtualMachineName;
 
@@ -37,12 +35,9 @@ class GetMachineExtensionArgs {
   factory GetMachineExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineExtensionArgs(
       extensionName: pulumi.Input.fromValue(map['extensionName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualMachineName: pulumi.Input.fromValue(
-        map['virtualMachineName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualMachineName: pulumi.Input.fromValue(map['virtualMachineName'] as String),
     );
   }
 }
+

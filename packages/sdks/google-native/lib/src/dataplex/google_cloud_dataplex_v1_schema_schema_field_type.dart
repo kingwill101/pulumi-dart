@@ -26,8 +26,7 @@ enum GoogleCloudDataplexV1SchemaSchemaFieldType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudDataplexV1SchemaSchemaFieldType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudDataplexV1SchemaSchemaFieldType value: $value');
   }
 }
+

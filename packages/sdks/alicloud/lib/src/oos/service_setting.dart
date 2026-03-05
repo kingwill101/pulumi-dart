@@ -240,16 +240,12 @@ import 'service_setting_state.dart';
 class ServiceSetting extends pulumi.CustomResource {
   /// The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
   late final pulumi.Output<String?> deliveryOssBucketName;
-
   /// Is the recording function for the OSS delivery template enabled.
   late final pulumi.Output<bool?> deliveryOssEnabled;
-
   /// The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
   late final pulumi.Output<String?> deliveryOssKeyPrefix;
-
   /// Is the execution record function to SLS delivery Template turned on.
   late final pulumi.Output<bool?> deliverySlsEnabled;
-
   /// The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
   late final pulumi.Output<String?> deliverySlsProjectName;
 
@@ -262,11 +258,11 @@ class ServiceSetting extends pulumi.CustomResource {
     ServiceSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oos/serviceSetting:ServiceSetting',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oos/serviceSetting:ServiceSetting',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deliveryOssBucketName = registerOutput<String?>('deliveryOssBucketName');
     deliveryOssEnabled = registerOutput<bool?>('deliveryOssEnabled');
     deliveryOssKeyPrefix = registerOutput<String?>('deliveryOssKeyPrefix');
@@ -292,11 +288,11 @@ class ServiceSetting extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oos/serviceSetting:ServiceSetting',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oos/serviceSetting:ServiceSetting',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deliveryOssBucketName = registerOutput<String?>('deliveryOssBucketName');
     deliveryOssEnabled = registerOutput<bool?>('deliveryOssEnabled');
     deliveryOssKeyPrefix = registerOutput<String?>('deliveryOssKeyPrefix');

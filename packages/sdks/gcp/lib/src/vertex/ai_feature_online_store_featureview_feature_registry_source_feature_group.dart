@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup {
   /// Identifier of the feature group.
   final pulumi.Input<String> featureGroupId;
-
   /// Identifiers of features under the feature group.
   final pulumi.Input<List<String>> featureIds;
 
@@ -24,14 +23,11 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup {
     };
   }
 
-  factory AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup(
       featureGroupId: pulumi.Input.fromValue(map['featureGroupId'] as String),
-      featureIds: pulumi.Input.fromValue(
-        (map['featureIds'] as List).cast<String>(),
-      ),
+      featureIds: pulumi.Input.fromValue((map['featureIds'] as List).cast<String>()),
     );
   }
 }
+

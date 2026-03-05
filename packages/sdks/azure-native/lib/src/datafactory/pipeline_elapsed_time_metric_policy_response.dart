@@ -9,21 +9,20 @@ class PipelineElapsedTimeMetricPolicyResponse {
 
   /// Creates a new [PipelineElapsedTimeMetricPolicyResponse].
   /// [duration] TimeSpan value, after which an Azure Monitoring Metric is fired.
-  PipelineElapsedTimeMetricPolicyResponse({this.duration});
+  PipelineElapsedTimeMetricPolicyResponse({
+    this.duration,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'duration': ?duration};
+    return <String, dynamic>{
+      'duration': ?duration,
+    };
   }
 
-  factory PipelineElapsedTimeMetricPolicyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipelineElapsedTimeMetricPolicyResponse.fromMap(Map<String, dynamic> map) {
     return PipelineElapsedTimeMetricPolicyResponse(
-      duration: (() {
-        final guardedValue = map['duration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

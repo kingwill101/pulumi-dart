@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2BigQueryRegexResponse {
   /// If unset, this property matches all datasets.
   final pulumi.Input<String> datasetIdRegex;
-
   /// For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
   final pulumi.Input<String> projectIdRegex;
-
   /// If unset, this property matches all tables.
   final pulumi.Input<String> tableIdRegex;
 
@@ -31,9 +29,7 @@ class GooglePrivacyDlpV2BigQueryRegexResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2BigQueryRegexResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2BigQueryRegexResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryRegexResponse(
       datasetIdRegex: pulumi.Input.fromValue(map['datasetIdRegex'] as String),
       projectIdRegex: pulumi.Input.fromValue(map['projectIdRegex'] as String),
@@ -41,3 +37,4 @@ class GooglePrivacyDlpV2BigQueryRegexResponse {
     );
   }
 }
+

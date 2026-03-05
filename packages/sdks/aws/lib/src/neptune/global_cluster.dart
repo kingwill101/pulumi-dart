@@ -533,32 +533,23 @@ import 'global_cluster_state.dart';
 class GlobalCluster extends pulumi.CustomResource {
   /// Global Cluster ARN
   late final pulumi.Output<String> arn;
-
   /// If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
   late final pulumi.Output<bool?> deletionProtection;
-
   /// Name of the database engine to be used for this DB cluster. The provider will only perform drift detection if a configuration value is provided. Current Valid values: `neptune`. Conflicts with `source_db_cluster_identifier`.
   late final pulumi.Output<String> engine;
-
   /// Engine version of the global database. Upgrading the engine version will result in all cluster members being immediately updated and will.
   late final pulumi.Output<String> engineVersion;
-
   /// Global cluster identifier.
   late final pulumi.Output<String> globalClusterIdentifier;
-
   /// Set of objects containing Global Cluster members.
   late final pulumi.Output<List<Map<String, dynamic>>> globalClusterMembers;
-
   /// AWS Region-unique, immutable identifier for the global database cluster. This identifier is found in AWS CloudTrail log entries whenever the AWS KMS key for the DB cluster is accessed.
   late final pulumi.Output<String> globalClusterResourceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN to use as the primary DB Cluster of the Global Cluster on creation. Pulumi cannot perform drift detection of this value.
   late final pulumi.Output<String> sourceDbClusterIdentifier;
   late final pulumi.Output<String> status;
-
   /// Whether the DB cluster is encrypted. The default is `false` unless `source_db_cluster_identifier` is specified and encrypted. Pulumi will only perform drift detection if a configuration value is provided.
   late final pulumi.Output<bool> storageEncrypted;
 
@@ -571,24 +562,20 @@ class GlobalCluster extends pulumi.CustomResource {
     GlobalClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:neptune/globalCluster:GlobalCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:neptune/globalCluster:GlobalCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     engine = registerOutput<String>('engine');
     engineVersion = registerOutput<String>('engineVersion');
     globalClusterIdentifier = registerOutput<String>('globalClusterIdentifier');
-    globalClusterMembers = registerOutput<List<Map<String, dynamic>>>(
-      'globalClusterMembers',
-    );
+    globalClusterMembers = registerOutput<List<Map<String, dynamic>>>('globalClusterMembers');
     globalClusterResourceId = registerOutput<String>('globalClusterResourceId');
     region = registerOutput<String>('region');
-    sourceDbClusterIdentifier = registerOutput<String>(
-      'sourceDbClusterIdentifier',
-    );
+    sourceDbClusterIdentifier = registerOutput<String>('sourceDbClusterIdentifier');
     status = registerOutput<String>('status');
     storageEncrypted = registerOutput<bool>('storageEncrypted');
   }
@@ -611,24 +598,20 @@ class GlobalCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:neptune/globalCluster:GlobalCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:neptune/globalCluster:GlobalCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     engine = registerOutput<String>('engine');
     engineVersion = registerOutput<String>('engineVersion');
     globalClusterIdentifier = registerOutput<String>('globalClusterIdentifier');
-    globalClusterMembers = registerOutput<List<Map<String, dynamic>>>(
-      'globalClusterMembers',
-    );
+    globalClusterMembers = registerOutput<List<Map<String, dynamic>>>('globalClusterMembers');
     globalClusterResourceId = registerOutput<String>('globalClusterResourceId');
     region = registerOutput<String>('region');
-    sourceDbClusterIdentifier = registerOutput<String>(
-      'sourceDbClusterIdentifier',
-    );
+    sourceDbClusterIdentifier = registerOutput<String>('sourceDbClusterIdentifier');
     status = registerOutput<String>('status');
     storageEncrypted = registerOutput<bool>('storageEncrypted');
   }

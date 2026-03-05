@@ -4,10 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountGeoLocation {
   final pulumi.Input<int> failoverPriority;
-
   /// The ID of the virtual network subnet.
   final pulumi.Input<String> id;
-
   /// The name of the Azure region hosting replicated data.
   final pulumi.Input<String> location;
 
@@ -37,3 +35,4 @@ class GetAccountGeoLocation {
     );
   }
 }
+

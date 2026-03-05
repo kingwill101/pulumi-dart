@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachinePlan {
   /// Specifies the name of the image from the marketplace.
   final pulumi.Input<String> name;
-
   /// Specifies the product of the image from the marketplace.
   final pulumi.Input<String> product;
-
   /// Specifies the publisher of the image.
   final pulumi.Input<String> publisher;
 
@@ -38,3 +36,4 @@ class VirtualMachinePlan {
     );
   }
 }
+

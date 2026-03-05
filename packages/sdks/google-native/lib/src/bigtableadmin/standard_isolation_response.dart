@@ -9,10 +9,14 @@ class StandardIsolationResponse {
 
   /// Creates a new [StandardIsolationResponse].
   /// [priority] The priority of requests sent using this app profile.
-  StandardIsolationResponse({required this.priority});
+  StandardIsolationResponse({
+    required this.priority,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'priority': priority};
+    return <String, dynamic>{
+      'priority': priority,
+    };
   }
 
   factory StandardIsolationResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class StandardIsolationResponse {
     );
   }
 }
+

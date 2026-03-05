@@ -10,19 +10,20 @@ class ImageFeatures {
 
   /// Creates a new [ImageFeatures].
   /// [nvmeSupport] Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
-  ImageFeatures({this.nvmeSupport});
+  ImageFeatures({
+    this.nvmeSupport,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nvmeSupport': ?nvmeSupport};
+    return <String, dynamic>{
+      'nvmeSupport': ?nvmeSupport,
+    };
   }
 
   factory ImageFeatures.fromMap(Map<String, dynamic> map) {
     return ImageFeatures(
-      nvmeSupport: (() {
-        final guardedValue = map['nvmeSupport'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      nvmeSupport: (() { final guardedValue = map['nvmeSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

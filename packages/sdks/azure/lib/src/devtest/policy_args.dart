@@ -9,28 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyArgs {
   /// A description for the Policy.
   final pulumi.Input<String>? description;
-
   /// The Evaluation Type used for this Policy. Possible values include: 'AllowedValuesPolicy', 'MaxValuePolicy'. Changing this forces a new resource to be created.
   final pulumi.Input<String> evaluatorType;
-
   /// The Fact Data for this Policy.
   final pulumi.Input<String>? factData;
-
   /// Specifies the name of the Dev Test Lab in which the Policy should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> labName;
-
   /// Specifies the name of the Dev Test Policy. Possible values are `GalleryImage`, `LabPremiumVmCount`, `LabTargetCost`, `LabVmCount`, `LabVmSize`, `UserOwnedLabPremiumVmCount`, `UserOwnedLabVmCount` and `UserOwnedLabVmCountInSubnet`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the name of the Policy Set within the Dev Test Lab where this policy should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> policySetName;
-
   /// The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The Threshold for this Policy.
   final pulumi.Input<String> threshold;
 
@@ -72,35 +64,16 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       evaluatorType: pulumi.Input.fromValue(map['evaluatorType'] as String),
-      factData: (() {
-        final guardedValue = map['factData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      factData: (() { final guardedValue = map['factData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labName: pulumi.Input.fromValue(map['labName'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policySetName: pulumi.Input.fromValue(map['policySetName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       threshold: pulumi.Input.fromValue(map['threshold'] as String),
     );
   }
 }
+

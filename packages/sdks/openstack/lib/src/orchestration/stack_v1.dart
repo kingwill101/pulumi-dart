@@ -235,67 +235,51 @@ import 'stack_v1_state.dart';
 class StackV1 extends pulumi.CustomResource {
   /// A list of stack outputs.
   late final pulumi.Output<List<Map<String, dynamic>>> stackOutputs;
-
   /// List of stack capabilities for stack.
   late final pulumi.Output<List<String>> capabilities;
-
   /// The date and time when the resource was created. The date
   /// and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
   /// For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
   /// is the time zone as an offset from UTC.
   late final pulumi.Output<String> creationTime;
-
   /// The description of the stack resource.
   late final pulumi.Output<String> description;
-
   /// Enables or disables deletion of all stack
   /// resources when a stack creation fails. Default is true, meaning all
   /// resources are not deleted when stack creation fails.
   late final pulumi.Output<bool> disableRollback;
-
   /// Environment key/value pairs to associate with
   /// the stack which contains details for the environment of the stack.
   /// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
   /// Environment Opts.
   late final pulumi.Output<Map<String, String>?> environmentOpts;
-
   /// A unique name for the stack. It must start with an
   /// alphabetic character. Changing this updates the stack's name.
   late final pulumi.Output<String> name;
-
   /// List of notification topics for stack.
   late final pulumi.Output<List<String>> notificationTopics;
-
   /// User-defined key/value pairs as parameters to pass
   /// to the template. Changing this updates the existing stack parameters.
   late final pulumi.Output<Map<String, String>?> parameters;
-
   /// The region in which to create the stack. If
   /// omitted, the `region` argument of the provider is used. Changing this
   /// creates a new stack.
   late final pulumi.Output<String> region;
-
   /// The status of the stack.
   late final pulumi.Output<String> status;
-
   /// The reason for the current status of the stack.
   late final pulumi.Output<String> statusReason;
-
   /// A list of tags to assosciate with the Stack
   late final pulumi.Output<List<String>> tags;
-
   /// The description of the stack template.
   late final pulumi.Output<String> templateDescription;
-
   /// Template key/value pairs to associate with the
   /// stack which contains either the template file or url.
   /// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
   /// Template Opts.
   late final pulumi.Output<Map<String, String>> templateOpts;
-
   /// The timeout for stack action in minutes.
   late final pulumi.Output<int> timeout;
-
   /// The date and time when the resource was updated. The date
   /// and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
   /// For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
@@ -311,11 +295,11 @@ class StackV1 extends pulumi.CustomResource {
     StackV1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:orchestration/stackV1:StackV1',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:orchestration/stackV1:StackV1',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     stackOutputs = registerOutput<List<Map<String, dynamic>>>('StackOutputs');
     capabilities = registerOutput<List<String>>('capabilities');
     creationTime = registerOutput<String>('creationTime');
@@ -353,11 +337,11 @@ class StackV1 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:orchestration/stackV1:StackV1',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:orchestration/stackV1:StackV1',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     stackOutputs = registerOutput<List<Map<String, dynamic>>>('StackOutputs');
     capabilities = registerOutput<List<String>>('capabilities');
     creationTime = registerOutput<String>('creationTime');

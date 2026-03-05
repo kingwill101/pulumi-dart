@@ -9,10 +9,14 @@ class ApplicationDeploymentPolicy {
 
   /// Creates a new [ApplicationDeploymentPolicy].
   /// [deploymentMode] The managed application deployment mode.
-  ApplicationDeploymentPolicy({required this.deploymentMode});
+  ApplicationDeploymentPolicy({
+    required this.deploymentMode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'deploymentMode': deploymentMode};
+    return <String, dynamic>{
+      'deploymentMode': deploymentMode,
+    };
   }
 
   factory ApplicationDeploymentPolicy.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ApplicationDeploymentPolicy {
     );
   }
 }
+

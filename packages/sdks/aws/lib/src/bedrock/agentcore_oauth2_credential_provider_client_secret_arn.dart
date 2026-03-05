@@ -8,17 +8,20 @@ class AgentcoreOauth2CredentialProviderClientSecretArn {
 
   /// Creates a new [AgentcoreOauth2CredentialProviderClientSecretArn].
   /// [secretArn] ARN of the secret in AWS Secrets Manager.
-  AgentcoreOauth2CredentialProviderClientSecretArn({required this.secretArn});
+  AgentcoreOauth2CredentialProviderClientSecretArn({
+    required this.secretArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretArn': secretArn};
+    return <String, dynamic>{
+      'secretArn': secretArn,
+    };
   }
 
-  factory AgentcoreOauth2CredentialProviderClientSecretArn.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreOauth2CredentialProviderClientSecretArn.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderClientSecretArn(
       secretArn: pulumi.Input.fromValue(map['secretArn'] as String),
     );
   }
 }
+

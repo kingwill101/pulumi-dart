@@ -218,31 +218,20 @@ import 'application_insights_component_analytics_item_properties_response.dart';
 class AnalyticsItem extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The content of this item
   late final pulumi.Output<String?> content;
-
   /// The user-defined name of the item.
   late final pulumi.Output<String?> name;
-
   /// A set of properties that can be defined in the context of a specific item type. Each type may have its own properties.
-  late final pulumi.Output<
-    ApplicationInsightsComponentAnalyticsItemPropertiesResponse
-  >
-  properties;
-
+  late final pulumi.Output<ApplicationInsightsComponentAnalyticsItemPropertiesResponse> properties;
   /// Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
   late final pulumi.Output<String?> scope;
-
   /// Date and time in UTC when this item was created.
   late final pulumi.Output<String> timeCreated;
-
   /// Date and time in UTC of the last modification that was made to this item.
   late final pulumi.Output<String> timeModified;
-
   /// Enum indicating the type of the Analytics item.
   late final pulumi.Output<String?> type;
-
   /// This instance's version of the data model. This can change as new features are added.
   late final pulumi.Output<String> version;
 
@@ -255,27 +244,15 @@ class AnalyticsItem extends pulumi.CustomResource {
     AnalyticsItemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:applicationinsights:AnalyticsItem',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:applicationinsights:AnalyticsItem',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     content = registerOutput<String?>('content');
     this.name = registerOutput<String?>('name');
-    properties =
-        registerOutput<
-          ApplicationInsightsComponentAnalyticsItemPropertiesResponse
-        >(
-          'properties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ApplicationInsightsComponentAnalyticsItemPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    properties = registerOutput<ApplicationInsightsComponentAnalyticsItemPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationInsightsComponentAnalyticsItemPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scope = registerOutput<String?>('scope');
     timeCreated = registerOutput<String>('timeCreated');
     timeModified = registerOutput<String>('timeModified');

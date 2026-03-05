@@ -29,19 +29,12 @@ class GetWorkstationClusterWorkstationsV1betaArgs {
     };
   }
 
-  factory GetWorkstationClusterWorkstationsV1betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWorkstationClusterWorkstationsV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkstationClusterWorkstationsV1betaArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workstationClusterId: pulumi.Input.fromValue(
-        map['workstationClusterId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workstationClusterId: pulumi.Input.fromValue(map['workstationClusterId'] as String),
     );
   }
 }
+

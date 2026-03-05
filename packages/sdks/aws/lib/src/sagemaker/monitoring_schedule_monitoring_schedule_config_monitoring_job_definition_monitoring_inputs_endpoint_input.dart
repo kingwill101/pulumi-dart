@@ -5,34 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput {
   /// Monitoring jobs subtract this time from the end time.
   final pulumi.Input<String>? endTimeOffset;
-
   /// Endpoint in customer's account which has enabled `DataCaptureConfig`.
   final pulumi.Input<String> endpointName;
-
   /// Attributes of the input data to exclude from the analysis.
   final pulumi.Input<String>? excludeFeaturesAttribute;
-
   /// Attributes of the input data that are the input features.
   final pulumi.Input<String>? featuresAttribute;
-
   /// Attribute of the input data that represents the ground truth label.
   final pulumi.Input<String>? inferenceAttribute;
-
   /// Path to the filesystem where the endpoint data is available to the container.
   final pulumi.Input<String> localPath;
-
   /// In a classification problem, the attribute that represents the class probability.
   final pulumi.Input<String>? probabilityAttribute;
-
   /// Threshold for the class probability to be evaluated as a positive result.
   final pulumi.Input<double>? probabilityThresholdAttribute;
-
   /// Whether input data distributed in Amazon S3 is fully replicated or sharded by an S3 key. Valid values: `FullyReplicated`, `ShardedByS3Key`.
   final pulumi.Input<String>? s3DataDistributionType;
-
   /// Input mode for transferring data for the monitoring job. Valid values: `Pipe`, `File`.
   final pulumi.Input<String>? s3InputMode;
-
   /// Monitoring jobs subtract this time from the start time.
   final pulumi.Input<String>? startTimeOffset;
 
@@ -78,57 +68,20 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
     };
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput(
-      endTimeOffset: (() {
-        final guardedValue = map['endTimeOffset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endTimeOffset: (() { final guardedValue = map['endTimeOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
-      excludeFeaturesAttribute: (() {
-        final guardedValue = map['excludeFeaturesAttribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      featuresAttribute: (() {
-        final guardedValue = map['featuresAttribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      inferenceAttribute: (() {
-        final guardedValue = map['inferenceAttribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      excludeFeaturesAttribute: (() { final guardedValue = map['excludeFeaturesAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      featuresAttribute: (() { final guardedValue = map['featuresAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      inferenceAttribute: (() { final guardedValue = map['inferenceAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       localPath: pulumi.Input.fromValue(map['localPath'] as String),
-      probabilityAttribute: (() {
-        final guardedValue = map['probabilityAttribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      probabilityThresholdAttribute: (() {
-        final guardedValue = map['probabilityThresholdAttribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      s3DataDistributionType: (() {
-        final guardedValue = map['s3DataDistributionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      s3InputMode: (() {
-        final guardedValue = map['s3InputMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startTimeOffset: (() {
-        final guardedValue = map['startTimeOffset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      probabilityAttribute: (() { final guardedValue = map['probabilityAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      probabilityThresholdAttribute: (() { final guardedValue = map['probabilityThresholdAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      s3DataDistributionType: (() { final guardedValue = map['s3DataDistributionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s3InputMode: (() { final guardedValue = map['s3InputMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startTimeOffset: (() { final guardedValue = map['startTimeOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

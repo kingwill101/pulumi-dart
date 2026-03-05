@@ -5,64 +5,44 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExecutionsExecution {
   /// The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
   final pulumi.Input<String> category;
-
   /// The counters of OOS Execution.
   final pulumi.Input<String> counters;
-
   /// The time when the execution was created.
   final pulumi.Input<String> createDate;
-
   /// The time when the execution was ended.
   final pulumi.Input<String> endDate;
-
   /// The user who execute the template.
   final pulumi.Input<String> executedBy;
-
   /// ID of the OOS Executions.
   final pulumi.Input<String> executionId;
-
   /// ID of the OOS Executions.
   final pulumi.Input<String> id;
-
   /// Whether to include subtasks.
   final pulumi.Input<bool> isParent;
-
   /// The mode of OOS Execution. Valid: `Automatic`, `Debug`.
   final pulumi.Input<String> mode;
-
   /// The outputs of OOS Executions.
   final pulumi.Input<String> outputs;
-
   /// The parameters required by the template
   final pulumi.Input<String> parameters;
-
   /// The id of parent OOS Execution.
   final pulumi.Input<String> parentExecutionId;
-
   /// The role that executes the current template.
   final pulumi.Input<String> ramRole;
-
   /// The time when the template was started.
   final pulumi.Input<String> startDate;
-
   /// The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
   final pulumi.Input<String> status;
-
   /// The message of status.
   final pulumi.Input<String> statusMessage;
-
   /// The reason of status.
   final pulumi.Input<String> statusReason;
-
   /// The id of execution template.
   final pulumi.Input<String> templateId;
-
   /// The name of execution template.
   final pulumi.Input<String> templateName;
-
   /// The version of execution template.
   final pulumi.Input<String> templateVersion;
-
   /// The time when the template was updated.
   final pulumi.Input<String> updateDate;
 
@@ -151,9 +131,7 @@ class GetExecutionsExecution {
       mode: pulumi.Input.fromValue(map['mode'] as String),
       outputs: pulumi.Input.fromValue(map['outputs'] as String),
       parameters: pulumi.Input.fromValue(map['parameters'] as String),
-      parentExecutionId: pulumi.Input.fromValue(
-        map['parentExecutionId'] as String,
-      ),
+      parentExecutionId: pulumi.Input.fromValue(map['parentExecutionId'] as String),
       ramRole: pulumi.Input.fromValue(map['ramRole'] as String),
       startDate: pulumi.Input.fromValue(map['startDate'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
@@ -166,3 +144,4 @@ class GetExecutionsExecution {
     );
   }
 }
+

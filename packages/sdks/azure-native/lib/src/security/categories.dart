@@ -18,3 +18,4 @@ enum Categories {
     throw ArgumentError('Unknown Categories value: $value');
   }
 }
+

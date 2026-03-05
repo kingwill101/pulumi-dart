@@ -10,10 +10,8 @@ import 'insight_properties.dart';
 class InsightArgs {
   /// Name of the insight
   final pulumi.Input<String>? insightName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<InsightProperties>? properties;
-
   /// workloadImpact resource
   final pulumi.Input<String> workloadImpactName;
 
@@ -30,34 +28,17 @@ class InsightArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'insightName': ?insightName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            InsightProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<InsightProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'workloadImpactName': workloadImpactName,
     };
   }
 
   factory InsightArgs.fromMap(Map<String, dynamic> map) {
     return InsightArgs(
-      insightName: (() {
-        final guardedValue = map['insightName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InsightProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      workloadImpactName: pulumi.Input.fromValue(
-        map['workloadImpactName'] as String,
-      ),
+      insightName: (() { final guardedValue = map['insightName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InsightProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      workloadImpactName: pulumi.Input.fromValue(map['workloadImpactName'] as String),
     );
   }
 }
+

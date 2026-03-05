@@ -7,7 +7,6 @@ import 'my_sql_connection_info_response.dart';
 class GetUserTablesMySqlTaskInputResponse {
   /// Connection information for SQL Server
   final pulumi.Input<MySqlConnectionInfoResponse> connectionInfo;
-
   /// List of database names to collect tables for
   final pulumi.Input<List<String>> selectedDatabases;
 
@@ -21,27 +20,16 @@ class GetUserTablesMySqlTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionInfo':
-          pulumi.Input.mapInputValue<
-            MySqlConnectionInfoResponse,
-            Map<String, dynamic>
-          >(connectionInfo, (value) => value.toMap()),
+      'connectionInfo': pulumi.Input.mapInputValue<MySqlConnectionInfoResponse, Map<String, dynamic>>(connectionInfo, (value) => value.toMap()),
       'selectedDatabases': selectedDatabases,
     };
   }
 
-  factory GetUserTablesMySqlTaskInputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetUserTablesMySqlTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return GetUserTablesMySqlTaskInputResponse(
-      connectionInfo: pulumi.Input.fromValue(
-        MySqlConnectionInfoResponse.fromMap(
-          (map['connectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      selectedDatabases: pulumi.Input.fromValue(
-        (map['selectedDatabases'] as List).cast<String>(),
-      ),
+      connectionInfo: pulumi.Input.fromValue(MySqlConnectionInfoResponse.fromMap((map['connectionInfo']! as Map).cast<String, dynamic>())),
+      selectedDatabases: pulumi.Input.fromValue((map['selectedDatabases'] as List).cast<String>()),
     );
   }
 }
+

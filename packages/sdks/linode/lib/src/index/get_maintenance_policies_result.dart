@@ -22,43 +22,18 @@ class GetMaintenancePoliciesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetMaintenancePoliciesFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetMaintenancePoliciesFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
-      'maintenancePolicies':
-          pulumi.Input.encodeList<
-            GetMaintenancePoliciesMaintenancePolicy,
-            Map<String, dynamic>
-          >(maintenancePolicies, (value) => value.toMap()),
+      'maintenancePolicies': pulumi.Input.encodeList<GetMaintenancePoliciesMaintenancePolicy, Map<String, dynamic>>(maintenancePolicies, (value) => value.toMap()),
     };
   }
 
   factory GetMaintenancePoliciesResult.fromMap(Map<String, dynamic> map) {
     return GetMaintenancePoliciesResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetMaintenancePoliciesFilter>(
-          guardedValue,
-          (value) => GetMaintenancePoliciesFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMaintenancePoliciesFilter>(guardedValue, (value) => GetMaintenancePoliciesFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      maintenancePolicies:
-          pulumi.Input.decodeList<GetMaintenancePoliciesMaintenancePolicy>(
-            map['maintenancePolicies']!,
-            (value) => GetMaintenancePoliciesMaintenancePolicy.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      maintenancePolicies: pulumi.Input.decodeList<GetMaintenancePoliciesMaintenancePolicy>(map['maintenancePolicies']!, (value) => GetMaintenancePoliciesMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

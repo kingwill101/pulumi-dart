@@ -159,31 +159,22 @@ import 'system_data_response.dart';
 class SharedPrivateLinkResource extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The DNS zone segment to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances, and must be omitted for SQL logical servers and key vaults. The value is the second segment of the host FQDN name of the resource that the shared private link resource is for. For example: if the host name is 'adx-cluster-21187695.eastus.kusto.windows.net', then the value is 'eastus'; if the host name is 'sql-mi-23961134.767d5869f605.database.windows.net', then the value is '767d5869f605'.
   late final pulumi.Output<String?> dnsZone;
-
   /// The group id from the provider of resource the shared private link resource is for.
   late final pulumi.Output<String> groupId;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The resource ID of the resource the shared private link resource is for.
   late final pulumi.Output<String> privateLinkResourceId;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The request message for requesting approval of the shared private link resource.
   late final pulumi.Output<String> requestMessage;
-
   /// Status of the shared private link resource. Can be Pending, Approved, Rejected or Disconnected.
   late final pulumi.Output<String> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -196,11 +187,11 @@ class SharedPrivateLinkResource extends pulumi.CustomResource {
     SharedPrivateLinkResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:databasewatcher:SharedPrivateLinkResource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:databasewatcher:SharedPrivateLinkResource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dnsZone = registerOutput<String?>('dnsZone');
     groupId = registerOutput<String>('groupId');
@@ -209,16 +200,7 @@ class SharedPrivateLinkResource extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     requestMessage = registerOutput<String>('requestMessage');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

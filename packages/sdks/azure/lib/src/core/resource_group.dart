@@ -114,13 +114,10 @@ import 'resource_group_state.dart';
 class ResourceGroup extends pulumi.CustomResource {
   /// The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created.
   late final pulumi.Output<String> location;
-
   /// The ID of the resource or application that manages this Resource Group.
   late final pulumi.Output<String?> managedBy;
-
   /// The Name which should be used for this Resource Group. Changing this forces a new Resource Group to be created.
   late final pulumi.Output<String> name;
-
   /// A mapping of tags which should be assigned to the Resource Group.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -133,11 +130,11 @@ class ResourceGroup extends pulumi.CustomResource {
     ResourceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/resourceGroup:ResourceGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/resourceGroup:ResourceGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     managedBy = registerOutput<String?>('managedBy');
     this.name = registerOutput<String>('name');
@@ -162,11 +159,11 @@ class ResourceGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/resourceGroup:ResourceGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/resourceGroup:ResourceGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     managedBy = registerOutput<String?>('managedBy');
     this.name = registerOutput<String>('name');

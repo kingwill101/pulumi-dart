@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScopeConnectionArgs {
   /// A description of the scope connection.
   final pulumi.Input<String>? description;
-
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource ID.
   final pulumi.Input<String>? resourceId;
-
   /// Name for the cross-tenant connection.
   final pulumi.Input<String>? scopeConnectionName;
-
   /// Tenant ID.
   final pulumi.Input<String>? tenantId;
 
@@ -54,32 +49,13 @@ class ScopeConnectionArgs {
 
   factory ScopeConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ScopeConnectionArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkManagerName: pulumi.Input.fromValue(
-        map['networkManagerName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scopeConnectionName: (() {
-        final guardedValue = map['scopeConnectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scopeConnectionName: (() { final guardedValue = map['scopeConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

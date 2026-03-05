@@ -10,25 +10,20 @@ class PolicyPropertiesResponse {
 
   /// Creates a new [PolicyPropertiesResponse].
   /// [scope] Details of the resource scope
-  PolicyPropertiesResponse({required this.scope});
+  PolicyPropertiesResponse({
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'scope':
-          pulumi.Input.mapInputValue<
-            PolicyPropertiesResponseScope,
-            Map<String, dynamic>
-          >(scope, (value) => value.toMap()),
+      'scope': pulumi.Input.mapInputValue<PolicyPropertiesResponseScope, Map<String, dynamic>>(scope, (value) => value.toMap()),
     };
   }
 
   factory PolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PolicyPropertiesResponse(
-      scope: pulumi.Input.fromValue(
-        PolicyPropertiesResponseScope.fromMap(
-          (map['scope']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      scope: pulumi.Input.fromValue(PolicyPropertiesResponseScope.fromMap((map['scope']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

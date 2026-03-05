@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NFSMountConfigurationResponse {
   /// These are 'net use' options in Windows and 'mount' options in Linux.
   final pulumi.Input<String>? mountOptions;
-
   /// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
   final pulumi.Input<String> relativeMountPath;
-
   /// The URI of the file system to mount.
   final pulumi.Input<String> source;
 
@@ -33,15 +31,10 @@ class NFSMountConfigurationResponse {
 
   factory NFSMountConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NFSMountConfigurationResponse(
-      mountOptions: (() {
-        final guardedValue = map['mountOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      relativeMountPath: pulumi.Input.fromValue(
-        map['relativeMountPath'] as String,
-      ),
+      mountOptions: (() { final guardedValue = map['mountOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      relativeMountPath: pulumi.Input.fromValue(map['relativeMountPath'] as String),
       source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
+

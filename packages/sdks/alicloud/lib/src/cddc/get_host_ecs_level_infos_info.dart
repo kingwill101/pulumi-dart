@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHostEcsLevelInfosInfo {
   /// The description of the host ecs level info.
   final pulumi.Input<String> description;
-
   /// The instance family of the host ecs level info.
   final pulumi.Input<String> ecsClass;
-
   /// The Elastic Compute Service (ECS) instance type.
   final pulumi.Input<String> ecsClassCode;
-
   /// The ApsaraDB RDS instance type of the host ecs level info.
   final pulumi.Input<String> resClassCode;
 
@@ -45,3 +42,4 @@ class GetHostEcsLevelInfosInfo {
     );
   }
 }
+

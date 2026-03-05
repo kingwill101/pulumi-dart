@@ -11,33 +11,24 @@ import 'scheduling_config.dart';
 class NodeArgs {
   /// The type of hardware accelerators associated with this node.
   final pulumi.Input<String> acceleratorType;
-
   /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
   final pulumi.Input<String>? cidrBlock;
-
   /// The user-supplied description of the TPU. Maximum of 512 characters.
   final pulumi.Input<String>? description;
-
   /// The health status of the TPU node.
   final pulumi.Input<NodeHealth>? health;
-
   /// Resource labels to represent user-provided metadata.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
-
   /// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
   final pulumi.Input<String>? network;
-
   /// The unqualified resource name.
   final pulumi.Input<String>? nodeId;
   final pulumi.Input<String>? project;
-
   /// The scheduling options for this node.
   final pulumi.Input<SchedulingConfig>? schedulingConfig;
-
   /// The version of Tensorflow running in the Node.
   final pulumi.Input<String> tensorflowVersion;
-
   /// Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.
   final pulumi.Input<bool>? useServiceNetworking;
 
@@ -74,20 +65,13 @@ class NodeArgs {
       'acceleratorType': acceleratorType,
       'cidrBlock': ?cidrBlock,
       'description': ?description,
-      'health': ?pulumi.Input.mapOptionalInputValue<NodeHealth, String>(
-        health,
-        (value) => value.wireValue,
-      ),
+      'health': ?pulumi.Input.mapOptionalInputValue<NodeHealth, String>(health, (value) => value.wireValue),
       'labels': ?labels,
       'location': ?location,
       'network': ?network,
       'nodeId': ?nodeId,
       'project': ?project,
-      'schedulingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            SchedulingConfig,
-            Map<String, dynamic>
-          >(schedulingConfig, (value) => value.toMap()),
+      'schedulingConfig': ?pulumi.Input.mapOptionalInputValue<SchedulingConfig, Map<String, dynamic>>(schedulingConfig, (value) => value.toMap()),
       'tensorflowVersion': tensorflowVersion,
       'useServiceNetworking': ?useServiceNetworking,
     };
@@ -96,67 +80,18 @@ class NodeArgs {
   factory NodeArgs.fromMap(Map<String, dynamic> map) {
     return NodeArgs(
       acceleratorType: pulumi.Input.fromValue(map['acceleratorType'] as String),
-      cidrBlock: (() {
-        final guardedValue = map['cidrBlock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      health: (() {
-        final guardedValue = map['health'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodeHealth.fromValue(guardedValue as String),
-        );
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeId: (() {
-        final guardedValue = map['nodeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schedulingConfig: (() {
-        final guardedValue = map['schedulingConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SchedulingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tensorflowVersion: pulumi.Input.fromValue(
-        map['tensorflowVersion'] as String,
-      ),
-      useServiceNetworking: (() {
-        final guardedValue = map['useServiceNetworking'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      cidrBlock: (() { final guardedValue = map['cidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      health: (() { final guardedValue = map['health']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeHealth.fromValue(guardedValue as String)); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeId: (() { final guardedValue = map['nodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schedulingConfig: (() { final guardedValue = map['schedulingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SchedulingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tensorflowVersion: pulumi.Input.fromValue(map['tensorflowVersion'] as String),
+      useServiceNetworking: (() { final guardedValue = map['useServiceNetworking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

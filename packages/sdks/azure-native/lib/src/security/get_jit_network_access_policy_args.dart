@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJitNetworkAccessPolicyArgs {
   /// The location where ASC stores the data of the subscription. can be retrieved from Get locations
   final pulumi.Input<String> ascLocation;
-
   /// Name of a Just-in-Time access configuration policy.
   final pulumi.Input<String> jitNetworkAccessPolicyName;
-
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetJitNetworkAccessPolicyArgs {
   factory GetJitNetworkAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetJitNetworkAccessPolicyArgs(
       ascLocation: pulumi.Input.fromValue(map['ascLocation'] as String),
-      jitNetworkAccessPolicyName: pulumi.Input.fromValue(
-        map['jitNetworkAccessPolicyName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      jitNetworkAccessPolicyName: pulumi.Input.fromValue(map['jitNetworkAccessPolicyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

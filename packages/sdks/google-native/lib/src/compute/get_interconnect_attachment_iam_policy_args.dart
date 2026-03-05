@@ -33,22 +33,13 @@ class GetInterconnectAttachmentIamPolicyArgs {
     };
   }
 
-  factory GetInterconnectAttachmentIamPolicyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInterconnectAttachmentIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetInterconnectAttachmentIamPolicyArgs(
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
       resource: pulumi.Input.fromValue(map['resource'] as String),
     );
   }
 }
+

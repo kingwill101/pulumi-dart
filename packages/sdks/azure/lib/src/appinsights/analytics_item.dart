@@ -222,28 +222,20 @@ import 'analytics_item_state.dart';
 class AnalyticsItem extends pulumi.CustomResource {
   /// The ID of the Application Insights component on which the Analytics Item exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationInsightsId;
-
   /// The content for the Analytics Item, for example the query text if `type` is `query`.
   late final pulumi.Output<String> content;
-
   /// The alias to use for the function. Required when `type` is `function`.
   late final pulumi.Output<String?> functionAlias;
-
   /// Specifies the name of the Application Insights Analytics Item. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The scope for the Analytics Item. Can be `shared` or `user`. Changing this forces a new resource to be created. Must be `shared` for functions.
   late final pulumi.Output<String> scope;
-
   /// A string containing the time the Analytics Item was created.
   late final pulumi.Output<String> timeCreated;
-
   /// A string containing the time the Analytics Item was last modified.
   late final pulumi.Output<String> timeModified;
-
   /// The type of Analytics Item to create. Can be one of `query`, `function`, `folder`, `recent`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
-
   /// A string indicating the version of the query format
   late final pulumi.Output<String> version;
 
@@ -256,11 +248,11 @@ class AnalyticsItem extends pulumi.CustomResource {
     AnalyticsItemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appinsights/analyticsItem:AnalyticsItem',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appinsights/analyticsItem:AnalyticsItem',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     content = registerOutput<String>('content');
     functionAlias = registerOutput<String?>('functionAlias');
@@ -290,11 +282,11 @@ class AnalyticsItem extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appinsights/analyticsItem:AnalyticsItem',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appinsights/analyticsItem:AnalyticsItem',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     content = registerOutput<String>('content');
     functionAlias = registerOutput<String?>('functionAlias');

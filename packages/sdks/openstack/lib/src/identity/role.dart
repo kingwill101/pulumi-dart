@@ -105,10 +105,8 @@ import 'role_state.dart';
 class Role extends pulumi.CustomResource {
   /// The domain the role belongs to.
   late final pulumi.Output<String> domainId;
-
   /// The name of the role.
   late final pulumi.Output<String> name;
-
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new Role.
@@ -118,20 +116,27 @@ class Role extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Role]. {@macro pulumi_identity_role_role_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Role(String name, {RoleArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'openstack:identity/role:Role',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Role(
+    String name, {
+    RoleArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'openstack:identity/role:Role',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainId = registerOutput<String>('domainId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
   }
 
   /// Gets an existing [Role] resource's state with the given [name] and [id].
-  static Role get(String name, pulumi.Input<String> id, {RoleState? state}) {
+  static Role get(
+    String name,
+    pulumi.Input<String> id, {
+    RoleState? state,
+  }) {
     return Role._get(
       name,
       state: state?.toMap(),
@@ -144,11 +149,11 @@ class Role extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:identity/role:Role',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:identity/role:Role',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainId = registerOutput<String>('domainId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OpenIdAuthenticationSettingsContract {
   /// How to send token to the server.
   final pulumi.Input<List<String>>? bearerTokenSendingMethods;
-
   /// OAuth authorization server identifier.
   final pulumi.Input<String>? openidProviderId;
 
@@ -25,20 +24,11 @@ class OpenIdAuthenticationSettingsContract {
     };
   }
 
-  factory OpenIdAuthenticationSettingsContract.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OpenIdAuthenticationSettingsContract.fromMap(Map<String, dynamic> map) {
     return OpenIdAuthenticationSettingsContract(
-      bearerTokenSendingMethods: (() {
-        final guardedValue = map['bearerTokenSendingMethods'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      openidProviderId: (() {
-        final guardedValue = map['openidProviderId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bearerTokenSendingMethods: (() { final guardedValue = map['bearerTokenSendingMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      openidProviderId: (() { final guardedValue = map['openidProviderId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

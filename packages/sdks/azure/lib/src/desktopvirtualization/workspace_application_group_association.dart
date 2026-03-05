@@ -290,7 +290,6 @@ import 'workspace_application_group_association_state.dart';
 class WorkspaceApplicationGroupAssociation extends pulumi.CustomResource {
   /// The resource ID for the Virtual Desktop Application Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationGroupId;
-
   /// The resource ID for the Virtual Desktop Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> workspaceId;
 
@@ -303,11 +302,11 @@ class WorkspaceApplicationGroupAssociation extends pulumi.CustomResource {
     WorkspaceApplicationGroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:desktopvirtualization/workspaceApplicationGroupAssociation:WorkspaceApplicationGroupAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:desktopvirtualization/workspaceApplicationGroupAssociation:WorkspaceApplicationGroupAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationGroupId = registerOutput<String>('applicationGroupId');
     workspaceId = registerOutput<String>('workspaceId');
   }
@@ -330,11 +329,11 @@ class WorkspaceApplicationGroupAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:desktopvirtualization/workspaceApplicationGroupAssociation:WorkspaceApplicationGroupAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:desktopvirtualization/workspaceApplicationGroupAssociation:WorkspaceApplicationGroupAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationGroupId = registerOutput<String>('applicationGroupId');
     workspaceId = registerOutput<String>('workspaceId');
   }

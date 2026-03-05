@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGenaiAgentsAgentTemplateModelVersion {
   /// Major version of the model
   final pulumi.Input<int>? major;
-
   /// Minor version of the model
   final pulumi.Input<int>? minor;
-
   /// Patch version of the model
   final pulumi.Input<int>? patch;
 
@@ -16,31 +14,26 @@ class GetGenaiAgentsAgentTemplateModelVersion {
   /// [major] Major version of the model
   /// [minor] Minor version of the model
   /// [patch] Patch version of the model
-  GetGenaiAgentsAgentTemplateModelVersion({this.major, this.minor, this.patch});
+  GetGenaiAgentsAgentTemplateModelVersion({
+    this.major,
+    this.minor,
+    this.patch,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'major': ?major, 'minor': ?minor, 'patch': ?patch};
+    return <String, dynamic>{
+      'major': ?major,
+      'minor': ?minor,
+      'patch': ?patch,
+    };
   }
 
-  factory GetGenaiAgentsAgentTemplateModelVersion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGenaiAgentsAgentTemplateModelVersion.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentsAgentTemplateModelVersion(
-      major: (() {
-        final guardedValue = map['major'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minor: (() {
-        final guardedValue = map['minor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      patch: (() {
-        final guardedValue = map['patch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      major: (() { final guardedValue = map['major']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minor: (() { final guardedValue = map['minor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      patch: (() { final guardedValue = map['patch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -8,7 +8,6 @@ class GetInstanceZoneDistributionConfig {
   /// MULTI_ZONE
   /// SINGLE_ZONE Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
   final pulumi.Input<String> mode;
-
   /// Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
   /// Ignored for MULTI_ZONE mode.
   final pulumi.Input<String> zone;
@@ -16,10 +15,16 @@ class GetInstanceZoneDistributionConfig {
   /// Creates a new [GetInstanceZoneDistributionConfig].
   /// [mode] Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
   /// [zone] Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
-  GetInstanceZoneDistributionConfig({required this.mode, required this.zone});
+  GetInstanceZoneDistributionConfig({
+    required this.mode,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode, 'zone': zone};
+    return <String, dynamic>{
+      'mode': mode,
+      'zone': zone,
+    };
   }
 
   factory GetInstanceZoneDistributionConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetInstanceZoneDistributionConfig {
     );
   }
 }
+

@@ -8,19 +8,20 @@ class DomainOsNvRamSourceVhostUserDbus {
 
   /// Creates a new [DomainOsNvRamSourceVhostUserDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainOsNvRamSourceVhostUserDbus({this.channel});
+  DomainOsNvRamSourceVhostUserDbus({
+    this.channel,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'channel': ?channel};
+    return <String, dynamic>{
+      'channel': ?channel,
+    };
   }
 
   factory DomainOsNvRamSourceVhostUserDbus.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceVhostUserDbus(
-      channel: (() {
-        final guardedValue = map['channel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      channel: (() { final guardedValue = map['channel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

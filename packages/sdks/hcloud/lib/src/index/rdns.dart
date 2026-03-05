@@ -593,19 +593,14 @@ import 'rdns_state.dart';
 class Rdns extends pulumi.CustomResource {
   /// The DNS address the `ip_address` should resolve to.
   late final pulumi.Output<String> dnsPtr;
-
   /// The Floating IP the `ip_address` belongs to.
   late final pulumi.Output<int?> floatingIpId;
-
   /// The IP address that should point to `dns_ptr`.
   late final pulumi.Output<String> ipAddress;
-
   /// The Load Balancer the `ip_address` belongs to.
   late final pulumi.Output<int?> loadBalancerId;
-
   /// The Primary IP the `ip_address` belongs to.
   late final pulumi.Output<int?> primaryIpId;
-
   /// The server the `ip_address` belongs to.
   late final pulumi.Output<int?> serverId;
 
@@ -613,13 +608,16 @@ class Rdns extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rdns]. {@macro pulumi_index_rdns_rdns_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rdns(String name, {RdnsArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'hcloud:index/rdns:Rdns',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Rdns(
+    String name, {
+    RdnsArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'hcloud:index/rdns:Rdns',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dnsPtr = registerOutput<String>('dnsPtr');
     floatingIpId = registerOutput<int?>('floatingIpId');
     ipAddress = registerOutput<String>('ipAddress');
@@ -629,7 +627,11 @@ class Rdns extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Rdns] resource's state with the given [name] and [id].
-  static Rdns get(String name, pulumi.Input<String> id, {RdnsState? state}) {
+  static Rdns get(
+    String name,
+    pulumi.Input<String> id, {
+    RdnsState? state,
+  }) {
     return Rdns._get(
       name,
       state: state?.toMap(),
@@ -642,11 +644,11 @@ class Rdns extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/rdns:Rdns',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/rdns:Rdns',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dnsPtr = registerOutput<String>('dnsPtr');
     floatingIpId = registerOutput<int?>('floatingIpId');
     ipAddress = registerOutput<String>('ipAddress');

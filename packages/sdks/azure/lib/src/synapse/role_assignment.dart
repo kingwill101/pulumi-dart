@@ -403,24 +403,20 @@ import 'role_assignment_state.dart';
 class RoleAssignment extends pulumi.CustomResource {
   /// The ID of the Principal (User, Group or Service Principal) to assign the Synapse Role Definition to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalId;
-
   /// The Type of the Principal. One of `User`, `Group` or `ServicePrincipal`. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** While `principal_type` is optional, it's still recommended to set this value, as some Synapse use-cases may not work correctly if this is not specified. Service Principals for example can't run SQL statements using `Entra ID` authentication if `principal_type` is not set to `ServicePrincipal`.
   late final pulumi.Output<String?> principalType;
-
   /// The Role Name of the Synapse Built-In Role. Possible values are `Apache Spark Administrator`, `Synapse Administrator`, `Synapse Artifact Publisher`, `Synapse Artifact User`, `Synapse Compute Operator`, `Synapse Contributor`, `Synapse Credential User`, `Synapse Linked Data Manager`, `Synapse Monitoring Operator`, `Synapse SQL Administrator` and `Synapse User`. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** Currently, the Synapse built-in roles are `Apache Spark Administrator`, `Synapse Administrator`, `Synapse Artifact Publisher`, `Synapse Artifact User`, `Synapse Compute Operator`, `Synapse Contributor`, `Synapse Credential User`, `Synapse Linked Data Manager`, `Synapse Monitoring Operator`, `Synapse SQL Administrator` and `Synapse User`.
   ///
   /// &gt; **NOTE:** Old roles are still supported: `Workspace Admin`, `Apache Spark Admin`, `Sql Admin`. These values will be removed in the next Major Version 3.0.
   late final pulumi.Output<String> roleName;
-
   /// The Synapse Spark Pool which the Synapse Role Assignment applies to. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** A Synapse firewall rule including local IP is needed to allow access. Only one of `synapse_workspace_id`, `synapse_spark_pool_id` must be set.
   late final pulumi.Output<String?> synapseSparkPoolId;
-
   /// The Synapse Workspace which the Synapse Role Assignment applies to. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> synapseWorkspaceId;
 
@@ -433,11 +429,11 @@ class RoleAssignment extends pulumi.CustomResource {
     RoleAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/roleAssignment:RoleAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:synapse/roleAssignment:RoleAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     principalId = registerOutput<String>('principalId');
     principalType = registerOutput<String?>('principalType');
     roleName = registerOutput<String>('roleName');
@@ -463,11 +459,11 @@ class RoleAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/roleAssignment:RoleAssignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:synapse/roleAssignment:RoleAssignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     principalId = registerOutput<String>('principalId');
     principalType = registerOutput<String?>('principalType');
     roleName = registerOutput<String>('roleName');

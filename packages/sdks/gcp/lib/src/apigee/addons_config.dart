@@ -712,7 +712,6 @@ class AddonsConfig extends pulumi.CustomResource {
   /// Addon configurations of the Apigee organization.
   /// Structure is documented below.
   late final pulumi.Output<AddonsConfigAddonsConfig?> addonsConfig;
-
   /// Name of the Apigee organization.
   late final pulumi.Output<String> org;
 
@@ -725,21 +724,12 @@ class AddonsConfig extends pulumi.CustomResource {
     AddonsConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/addonsConfig:AddonsConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    addonsConfig = registerOutput<AddonsConfigAddonsConfig?>(
-      'addonsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AddonsConfigAddonsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:apigee/addonsConfig:AddonsConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    addonsConfig = registerOutput<AddonsConfigAddonsConfig?>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddonsConfigAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     org = registerOutput<String>('org');
   }
 
@@ -761,21 +751,12 @@ class AddonsConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/addonsConfig:AddonsConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    addonsConfig = registerOutput<AddonsConfigAddonsConfig?>(
-      'addonsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AddonsConfigAddonsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:apigee/addonsConfig:AddonsConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    addonsConfig = registerOutput<AddonsConfigAddonsConfig?>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddonsConfigAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     org = registerOutput<String>('org');
   }
 }

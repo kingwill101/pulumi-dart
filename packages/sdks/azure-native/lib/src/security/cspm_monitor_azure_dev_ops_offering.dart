@@ -10,10 +10,14 @@ class CspmMonitorAzureDevOpsOffering {
 
   /// Creates a new [CspmMonitorAzureDevOpsOffering].
   /// [offeringType] The type of the security offering.
-  CspmMonitorAzureDevOpsOffering({required this.offeringType});
+  CspmMonitorAzureDevOpsOffering({
+    required this.offeringType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'offeringType': offeringType};
+    return <String, dynamic>{
+      'offeringType': offeringType,
+    };
   }
 
   factory CspmMonitorAzureDevOpsOffering.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class CspmMonitorAzureDevOpsOffering {
     );
   }
 }
+

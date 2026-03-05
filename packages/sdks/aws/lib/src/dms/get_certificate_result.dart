@@ -1,37 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCertificate.
 class GetCertificateResult {
   /// The Amazon Resource Name (ARN) for the certificate.
   final String certificateArn;
-
   /// The date that the certificate was created.
   final String certificateCreationDate;
   final String certificateId;
-
   /// The owner of the certificate.
   final String certificateOwner;
-
   /// The contents of a .pem file, which contains an X.509 certificate.
   final String certificatePem;
-
   /// The owner of the certificate.
   final String certificateWallet;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The key length of the cryptographic algorithm being used.
   final int keyLength;
   final String region;
-
   /// The algorithm for the certificate.
   final String signingAlgorithm;
   final Map<String, String> tags;
-
   /// The beginning date that the certificate is valid.
   final String validFromDate;
-
   /// The final date that the certificate is valid.
   final String validToDate;
 
@@ -101,3 +93,4 @@ class GetCertificateResult {
     );
   }
 }
+

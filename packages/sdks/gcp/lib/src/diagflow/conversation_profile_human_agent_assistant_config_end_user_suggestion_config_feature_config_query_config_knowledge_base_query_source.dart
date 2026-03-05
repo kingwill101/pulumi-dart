@@ -13,16 +13,15 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'knowledgeBases': knowledgeBases};
+    return <String, dynamic>{
+      'knowledgeBases': knowledgeBases,
+    };
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource(
-      knowledgeBases: pulumi.Input.fromValue(
-        (map['knowledgeBases'] as List).cast<String>(),
-      ),
+      knowledgeBases: pulumi.Input.fromValue((map['knowledgeBases'] as List).cast<String>()),
     );
   }
 }
+

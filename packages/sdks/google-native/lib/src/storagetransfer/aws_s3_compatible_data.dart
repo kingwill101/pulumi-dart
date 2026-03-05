@@ -7,16 +7,12 @@ import 's3_compatible_metadata.dart';
 class AwsS3CompatibleData {
   /// Specifies the name of the bucket.
   final pulumi.Input<String> bucketName;
-
   /// Specifies the endpoint of the storage service.
   final pulumi.Input<String> endpoint;
-
   /// Specifies the root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
   final pulumi.Input<String>? path;
-
   /// Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
   final pulumi.Input<String>? region;
-
   /// A S3 compatible metadata.
   final pulumi.Input<S3CompatibleMetadata>? s3Metadata;
 
@@ -40,11 +36,7 @@ class AwsS3CompatibleData {
       'endpoint': endpoint,
       'path': ?path,
       'region': ?region,
-      's3Metadata':
-          ?pulumi.Input.mapOptionalInputValue<
-            S3CompatibleMetadata,
-            Map<String, dynamic>
-          >(s3Metadata, (value) => value.toMap()),
+      's3Metadata': ?pulumi.Input.mapOptionalInputValue<S3CompatibleMetadata, Map<String, dynamic>>(s3Metadata, (value) => value.toMap()),
     };
   }
 
@@ -52,25 +44,10 @@ class AwsS3CompatibleData {
     return AwsS3CompatibleData(
       bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      s3Metadata: (() {
-        final guardedValue = map['s3Metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          S3CompatibleMetadata.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s3Metadata: (() { final guardedValue = map['s3Metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(S3CompatibleMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

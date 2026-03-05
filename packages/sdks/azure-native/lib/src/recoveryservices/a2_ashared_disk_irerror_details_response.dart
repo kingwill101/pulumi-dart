@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class A2ASharedDiskIRErrorDetailsResponse {
   /// The error code.
   final pulumi.Input<String> errorCode;
-
   /// The error code enum.
   final pulumi.Input<String> errorCodeEnum;
-
   /// The error message.
   final pulumi.Input<String> errorMessage;
-
   /// The possible causes.
   final pulumi.Input<String> possibleCauses;
-
   /// The recommended action.
   final pulumi.Input<String> recommendedAction;
 
@@ -43,17 +39,14 @@ class A2ASharedDiskIRErrorDetailsResponse {
     };
   }
 
-  factory A2ASharedDiskIRErrorDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory A2ASharedDiskIRErrorDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2ASharedDiskIRErrorDetailsResponse(
       errorCode: pulumi.Input.fromValue(map['errorCode'] as String),
       errorCodeEnum: pulumi.Input.fromValue(map['errorCodeEnum'] as String),
       errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
       possibleCauses: pulumi.Input.fromValue(map['possibleCauses'] as String),
-      recommendedAction: pulumi.Input.fromValue(
-        map['recommendedAction'] as String,
-      ),
+      recommendedAction: pulumi.Input.fromValue(map['recommendedAction'] as String),
     );
   }
 }
+

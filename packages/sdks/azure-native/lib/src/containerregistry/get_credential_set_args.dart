@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCredentialSetArgs {
   /// The name of the credential set.
   final pulumi.Input<String> credentialSetName;
-
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetCredentialSetArgs {
 
   factory GetCredentialSetArgs.fromMap(Map<String, dynamic> map) {
     return GetCredentialSetArgs(
-      credentialSetName: pulumi.Input.fromValue(
-        map['credentialSetName'] as String,
-      ),
+      credentialSetName: pulumi.Input.fromValue(map['credentialSetName'] as String),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -9,19 +9,20 @@ class PublicIPAddressArmReference {
 
   /// Creates a new [PublicIPAddressArmReference].
   /// [resourceId] The Azure Resource ID of a Public IP resource
-  PublicIPAddressArmReference({this.resourceId});
+  PublicIPAddressArmReference({
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceId': ?resourceId};
+    return <String, dynamic>{
+      'resourceId': ?resourceId,
+    };
   }
 
   factory PublicIPAddressArmReference.fromMap(Map<String, dynamic> map) {
     return PublicIPAddressArmReference(
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

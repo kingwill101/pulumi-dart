@@ -12,8 +12,7 @@ enum DiscoveryRuleRecommendedSignalsBehavior {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DiscoveryRuleRecommendedSignalsBehavior value: $value',
-    );
+    throw ArgumentError('Unknown DiscoveryRuleRecommendedSignalsBehavior value: $value');
   }
 }
+

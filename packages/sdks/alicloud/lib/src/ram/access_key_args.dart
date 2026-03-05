@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessKeyArgs {
   /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
   final pulumi.Input<String>? pgpKey;
-
   /// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
   final pulumi.Input<String>? secretFile;
-
   /// The status of the AccessKey. Value:
   /// - Active: Activated.
   /// - Inactive: Disabled.
   final pulumi.Input<String>? status;
-
   /// The RAM user name.
   final pulumi.Input<String>? userName;
 
@@ -26,7 +23,12 @@ class AccessKeyArgs {
   /// [secretFile] The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
   /// [status] The status of the AccessKey. Value:
   /// [userName] The RAM user name.
-  AccessKeyArgs({this.pgpKey, this.secretFile, this.status, this.userName});
+  AccessKeyArgs({
+    this.pgpKey,
+    this.secretFile,
+    this.status,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,26 +41,11 @@ class AccessKeyArgs {
 
   factory AccessKeyArgs.fromMap(Map<String, dynamic> map) {
     return AccessKeyArgs(
-      pgpKey: (() {
-        final guardedValue = map['pgpKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretFile: (() {
-        final guardedValue = map['secretFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pgpKey: (() { final guardedValue = map['pgpKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretFile: (() { final guardedValue = map['secretFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

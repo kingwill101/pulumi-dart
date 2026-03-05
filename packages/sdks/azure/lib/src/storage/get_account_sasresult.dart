@@ -9,13 +9,11 @@ class GetAccountSASResult {
   final String connectionString;
   final String expiry;
   final bool? httpsOnly;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? ipAddresses;
   final GetAccountSASPermissions permissions;
   final GetAccountSASResourceTypes resourceTypes;
-
   /// The computed Account Shared Access Signature (SAS).
   final String sas;
   final GetAccountSASServices services;
@@ -68,33 +66,16 @@ class GetAccountSASResult {
     return GetAccountSASResult(
       connectionString: map['connectionString'] as String,
       expiry: map['expiry'] as String,
-      httpsOnly: (() {
-        final guardedValue = map['httpsOnly'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      httpsOnly: (() { final guardedValue = map['httpsOnly']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
-      ipAddresses: (() {
-        final guardedValue = map['ipAddresses'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      permissions: GetAccountSASPermissions.fromMap(
-        (map['permissions']! as Map).cast<String, dynamic>(),
-      ),
-      resourceTypes: GetAccountSASResourceTypes.fromMap(
-        (map['resourceTypes']! as Map).cast<String, dynamic>(),
-      ),
+      ipAddresses: (() { final guardedValue = map['ipAddresses']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      permissions: GetAccountSASPermissions.fromMap((map['permissions']! as Map).cast<String, dynamic>()),
+      resourceTypes: GetAccountSASResourceTypes.fromMap((map['resourceTypes']! as Map).cast<String, dynamic>()),
       sas: map['sas'] as String,
-      services: GetAccountSASServices.fromMap(
-        (map['services']! as Map).cast<String, dynamic>(),
-      ),
-      signedVersion: (() {
-        final guardedValue = map['signedVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      services: GetAccountSASServices.fromMap((map['services']! as Map).cast<String, dynamic>()),
+      signedVersion: (() { final guardedValue = map['signedVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       start: map['start'] as String,
     );
   }
 }
+

@@ -7,22 +7,16 @@ import 'git_file_source_repo_type.dart';
 class GitFileSource {
   /// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
   final pulumi.Input<String>? bitbucketServerConfig;
-
   /// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
   final pulumi.Input<String>? githubEnterpriseConfig;
-
   /// The path of the file, with the repo root as the root of the path.
   final pulumi.Input<String>? path;
-
   /// See RepoType above.
   final pulumi.Input<GitFileSourceRepoType>? repoType;
-
   /// The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
   final pulumi.Input<String>? repository;
-
   /// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
   final pulumi.Input<String>? revision;
-
   /// The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
   final pulumi.Input<String>? uri;
 
@@ -49,11 +43,7 @@ class GitFileSource {
       'bitbucketServerConfig': ?bitbucketServerConfig,
       'githubEnterpriseConfig': ?githubEnterpriseConfig,
       'path': ?path,
-      'repoType':
-          ?pulumi.Input.mapOptionalInputValue<GitFileSourceRepoType, String>(
-            repoType,
-            (value) => value.wireValue,
-          ),
+      'repoType': ?pulumi.Input.mapOptionalInputValue<GitFileSourceRepoType, String>(repoType, (value) => value.wireValue),
       'repository': ?repository,
       'revision': ?revision,
       'uri': ?uri,
@@ -62,43 +52,14 @@ class GitFileSource {
 
   factory GitFileSource.fromMap(Map<String, dynamic> map) {
     return GitFileSource(
-      bitbucketServerConfig: (() {
-        final guardedValue = map['bitbucketServerConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      githubEnterpriseConfig: (() {
-        final guardedValue = map['githubEnterpriseConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      repoType: (() {
-        final guardedValue = map['repoType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GitFileSourceRepoType.fromValue(guardedValue as String),
-        );
-      })(),
-      repository: (() {
-        final guardedValue = map['repository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      revision: (() {
-        final guardedValue = map['revision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bitbucketServerConfig: (() { final guardedValue = map['bitbucketServerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      githubEnterpriseConfig: (() { final guardedValue = map['githubEnterpriseConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      repoType: (() { final guardedValue = map['repoType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GitFileSourceRepoType.fromValue(guardedValue as String)); })(),
+      repository: (() { final guardedValue = map['repository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

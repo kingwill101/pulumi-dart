@@ -12,11 +12,7 @@ class OrganizationKajPolicyConfigArgs {
   /// created in this organization. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  final pulumi.Input<
-    OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy
-  >?
-  defaultKeyAccessJustificationPolicy;
-
+  final pulumi.Input<OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy>? defaultKeyAccessJustificationPolicy;
   /// The organization number for which to retrieve config.
   final pulumi.Input<String> organization;
 
@@ -30,27 +26,16 @@ class OrganizationKajPolicyConfigArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultKeyAccessJustificationPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy,
-            Map<String, dynamic>
-          >(defaultKeyAccessJustificationPolicy, (value) => value.toMap()),
+      'defaultKeyAccessJustificationPolicy': ?pulumi.Input.mapOptionalInputValue<OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy, Map<String, dynamic>>(defaultKeyAccessJustificationPolicy, (value) => value.toMap()),
       'organization': organization,
     };
   }
 
   factory OrganizationKajPolicyConfigArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationKajPolicyConfigArgs(
-      defaultKeyAccessJustificationPolicy: (() {
-        final guardedValue = map['defaultKeyAccessJustificationPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      defaultKeyAccessJustificationPolicy: (() { final guardedValue = map['defaultKeyAccessJustificationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       organization: pulumi.Input.fromValue(map['organization'] as String),
     );
   }
 }
+

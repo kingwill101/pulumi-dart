@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RedriveAllowPolicyState {
   /// The URL of the SQS Queue to which to attach the policy
   final pulumi.Input<String>? queueUrl;
-
   /// The JSON redrive allow policy for the SQS queue. Learn more in the [Amazon SQS dead-letter queues documentation](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html).
   final pulumi.Input<String>? redriveAllowPolicy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -33,21 +31,10 @@ class RedriveAllowPolicyState {
 
   factory RedriveAllowPolicyState.fromMap(Map<String, dynamic> map) {
     return RedriveAllowPolicyState(
-      queueUrl: (() {
-        final guardedValue = map['queueUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      redriveAllowPolicy: (() {
-        final guardedValue = map['redriveAllowPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      queueUrl: (() { final guardedValue = map['queueUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redriveAllowPolicy: (() { final guardedValue = map['redriveAllowPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

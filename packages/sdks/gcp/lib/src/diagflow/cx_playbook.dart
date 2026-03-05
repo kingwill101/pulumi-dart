@@ -1008,45 +1008,33 @@ class CxPlaybook extends pulumi.CustomResource {
   /// The timestamp of initial playbook creation.
   /// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
   late final pulumi.Output<String> createTime;
-
   /// The human-readable name of the playbook, unique within an agent.
   late final pulumi.Output<String> displayName;
-
   /// High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
   late final pulumi.Output<String> goal;
-
   /// Instruction to accomplish target goal.
   /// Structure is documented below.
   late final pulumi.Output<CxPlaybookInstruction?> instruction;
-
   /// Llm model settings for the playbook.
   /// Structure is documented below.
   late final pulumi.Output<CxPlaybookLlmModelSettings?> llmModelSettings;
-
   /// The unique identifier of the Playbook.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/playbooks/&lt;Playbook ID&gt;.
   late final pulumi.Output<String> name;
-
   /// The agent to create a Playbook for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   late final pulumi.Output<String?> parent;
-
   /// Type of the playbook.
   /// Possible values are: `PLAYBOOK_TYPE_UNSPECIFIED`, `TASK`, `ROUTINE`.
   late final pulumi.Output<String?> playbookType;
-
   /// The resource name of flows referenced by the current playbook in the instructions.
   late final pulumi.Output<List<String>> referencedFlows;
-
   /// The resource name of other playbooks referenced by the current playbook in the instructions.
   late final pulumi.Output<List<String>> referencedPlaybooks;
-
   /// The resource name of tools referenced by the current playbook in the instructions. If not provided explicitly, they are will be implied using the tool being referenced in goal and steps.
   late final pulumi.Output<List<String>?> referencedTools;
-
   /// Estimated number of tokes current playbook takes when sent to the LLM.
   late final pulumi.Output<String> tokenCount;
-
   /// Last time the playbook version was updated.
   /// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
   late final pulumi.Output<String> updateTime;
@@ -1060,34 +1048,16 @@ class CxPlaybook extends pulumi.CustomResource {
     CxPlaybookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxPlaybook:CxPlaybook',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:diagflow/cxPlaybook:CxPlaybook',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     goal = registerOutput<String>('goal');
-    instruction = registerOutput<CxPlaybookInstruction?>(
-      'instruction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxPlaybookInstruction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    llmModelSettings = registerOutput<CxPlaybookLlmModelSettings?>(
-      'llmModelSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxPlaybookLlmModelSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    instruction = registerOutput<CxPlaybookInstruction?>('instruction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPlaybookInstruction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    llmModelSettings = registerOutput<CxPlaybookLlmModelSettings?>('llmModelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPlaybookLlmModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
     playbookType = registerOutput<String?>('playbookType');
@@ -1116,34 +1086,16 @@ class CxPlaybook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxPlaybook:CxPlaybook',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:diagflow/cxPlaybook:CxPlaybook',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     goal = registerOutput<String>('goal');
-    instruction = registerOutput<CxPlaybookInstruction?>(
-      'instruction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxPlaybookInstruction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    llmModelSettings = registerOutput<CxPlaybookLlmModelSettings?>(
-      'llmModelSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxPlaybookLlmModelSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    instruction = registerOutput<CxPlaybookInstruction?>('instruction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPlaybookInstruction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    llmModelSettings = registerOutput<CxPlaybookLlmModelSettings?>('llmModelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPlaybookLlmModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
     playbookType = registerOutput<String?>('playbookType');

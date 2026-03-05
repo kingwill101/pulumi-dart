@@ -15,3 +15,4 @@ enum CustomizedAcceleratorType {
     throw ArgumentError('Unknown CustomizedAcceleratorType value: $value');
   }
 }
+

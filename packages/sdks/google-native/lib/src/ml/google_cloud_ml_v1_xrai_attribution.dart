@@ -9,19 +9,20 @@ class GoogleCloudMlV1XraiAttribution {
 
   /// Creates a new [GoogleCloudMlV1XraiAttribution].
   /// [numIntegralSteps] Number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is met within the desired error range.
-  GoogleCloudMlV1XraiAttribution({this.numIntegralSteps});
+  GoogleCloudMlV1XraiAttribution({
+    this.numIntegralSteps,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'numIntegralSteps': ?numIntegralSteps};
+    return <String, dynamic>{
+      'numIntegralSteps': ?numIntegralSteps,
+    };
   }
 
   factory GoogleCloudMlV1XraiAttribution.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1XraiAttribution(
-      numIntegralSteps: (() {
-        final guardedValue = map['numIntegralSteps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      numIntegralSteps: (() { final guardedValue = map['numIntegralSteps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

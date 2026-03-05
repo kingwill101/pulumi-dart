@@ -15,3 +15,4 @@ enum FirewallPolicyVpcNetworkScope {
     throw ArgumentError('Unknown FirewallPolicyVpcNetworkScope value: $value');
   }
 }
+

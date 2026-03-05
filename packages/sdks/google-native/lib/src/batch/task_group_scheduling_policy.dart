@@ -16,3 +16,4 @@ enum TaskGroupSchedulingPolicy {
     throw ArgumentError('Unknown TaskGroupSchedulingPolicy value: $value');
   }
 }
+

@@ -15,7 +15,11 @@ class GetJobRunV2Args {
   /// [jobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetJobRunV2Args({required this.jobId, required this.location, this.project});
+  GetJobRunV2Args({
+    required this.jobId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,11 +33,8 @@ class GetJobRunV2Args {
     return GetJobRunV2Args(
       jobId: pulumi.Input.fromValue(map['jobId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

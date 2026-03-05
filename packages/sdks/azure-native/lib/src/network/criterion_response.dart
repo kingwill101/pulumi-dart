@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CriterionResponse {
   /// List of AS paths which this criteria matches.
   final pulumi.Input<List<String>>? asPath;
-
   /// List of BGP communities which this criteria matches.
   final pulumi.Input<List<String>>? community;
-
   /// Match condition to apply RouteMap rules.
   final pulumi.Input<String>? matchCondition;
-
   /// List of route prefixes which this criteria matches.
   final pulumi.Input<List<String>>? routePrefix;
 
@@ -39,26 +36,11 @@ class CriterionResponse {
 
   factory CriterionResponse.fromMap(Map<String, dynamic> map) {
     return CriterionResponse(
-      asPath: (() {
-        final guardedValue = map['asPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      community: (() {
-        final guardedValue = map['community'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      matchCondition: (() {
-        final guardedValue = map['matchCondition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routePrefix: (() {
-        final guardedValue = map['routePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      asPath: (() { final guardedValue = map['asPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      community: (() { final guardedValue = map['community']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      matchCondition: (() { final guardedValue = map['matchCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routePrefix: (() { final guardedValue = map['routePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

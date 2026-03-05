@@ -13,12 +13,10 @@ class GetAccountBlobContainerSASResult {
   final String? contentType;
   final String expiry;
   final bool? httpsOnly;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? ipAddress;
   final GetAccountBlobContainerSASPermissions permissions;
-
   /// The computed Blob Container Shared Access Signature (SAS). The delimiter character ('?') for the query string is the prefix of `sas`.
   final String sas;
   final String start;
@@ -76,50 +74,21 @@ class GetAccountBlobContainerSASResult {
 
   factory GetAccountBlobContainerSASResult.fromMap(Map<String, dynamic> map) {
     return GetAccountBlobContainerSASResult(
-      cacheControl: (() {
-        final guardedValue = map['cacheControl'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      cacheControl: (() { final guardedValue = map['cacheControl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       connectionString: map['connectionString'] as String,
       containerName: map['containerName'] as String,
-      contentDisposition: (() {
-        final guardedValue = map['contentDisposition'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      contentEncoding: (() {
-        final guardedValue = map['contentEncoding'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      contentLanguage: (() {
-        final guardedValue = map['contentLanguage'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      contentType: (() {
-        final guardedValue = map['contentType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      contentDisposition: (() { final guardedValue = map['contentDisposition']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      contentEncoding: (() { final guardedValue = map['contentEncoding']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      contentLanguage: (() { final guardedValue = map['contentLanguage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       expiry: map['expiry'] as String,
-      httpsOnly: (() {
-        final guardedValue = map['httpsOnly'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      httpsOnly: (() { final guardedValue = map['httpsOnly']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
-      ipAddress: (() {
-        final guardedValue = map['ipAddress'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      permissions: GetAccountBlobContainerSASPermissions.fromMap(
-        (map['permissions']! as Map).cast<String, dynamic>(),
-      ),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      permissions: GetAccountBlobContainerSASPermissions.fromMap((map['permissions']! as Map).cast<String, dynamic>()),
       sas: map['sas'] as String,
       start: map['start'] as String,
     );
   }
 }
+

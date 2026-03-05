@@ -8,17 +8,20 @@ class AgentFlowDefinitionNodeConfigurationLambdaFunction {
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationLambdaFunction].
   /// [lambdaArn] The Amazon Resource Name (ARN) of the Lambda function to invoke.
-  AgentFlowDefinitionNodeConfigurationLambdaFunction({required this.lambdaArn});
+  AgentFlowDefinitionNodeConfigurationLambdaFunction({
+    required this.lambdaArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'lambdaArn': lambdaArn};
+    return <String, dynamic>{
+      'lambdaArn': lambdaArn,
+    };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationLambdaFunction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentFlowDefinitionNodeConfigurationLambdaFunction.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationLambdaFunction(
       lambdaArn: pulumi.Input.fromValue(map['lambdaArn'] as String),
     );
   }
 }
+

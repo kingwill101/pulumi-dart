@@ -208,22 +208,16 @@ import 'arecord_state.dart';
 class ARecord extends pulumi.CustomResource {
   /// The FQDN of the DNS A Record.
   late final pulumi.Output<String> fqdn;
-
   /// The name of the DNS A Record. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// List of IPv4 Addresses.
   late final pulumi.Output<List<String>> records;
-
   /// Specifies the resource group where the Private DNS Zone exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Time To Live (TTL) of the DNS record in seconds.
   late final pulumi.Output<int> ttl;
-
   /// Specifies the Private DNS Zone where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> zoneName;
 
@@ -236,11 +230,11 @@ class ARecord extends pulumi.CustomResource {
     ARecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/aRecord:ARecord',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/aRecord:ARecord',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
     records = registerOutput<List<String>>('records');
@@ -268,11 +262,11 @@ class ARecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/aRecord:ARecord',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/aRecord:ARecord',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
     records = registerOutput<List<String>>('records');

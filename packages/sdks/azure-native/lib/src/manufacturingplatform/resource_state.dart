@@ -15,3 +15,4 @@ enum ResourceState {
     throw ArgumentError('Unknown ResourceState value: $value');
   }
 }
+

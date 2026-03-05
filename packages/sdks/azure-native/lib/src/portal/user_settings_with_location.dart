@@ -214,7 +214,6 @@ import 'user_settings_with_location_args.dart';
 class UserSettingsWithLocation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The cloud shell user settings properties.
   late final pulumi.Output<UserPropertiesResponse> properties;
 
@@ -227,21 +226,12 @@ class UserSettingsWithLocation extends pulumi.CustomResource {
     UserSettingsWithLocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:portal:UserSettingsWithLocation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:portal:UserSettingsWithLocation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    properties = registerOutput<UserPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<UserPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

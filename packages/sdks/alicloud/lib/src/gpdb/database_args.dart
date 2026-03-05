@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseArgs {
   /// Character set, default value is UTF8
   final pulumi.Input<String>? characterSetName;
-
   /// Database locale parameters, specifying string comparison/collation
   final pulumi.Input<String>? collate;
-
   /// Database locale parameters, specifying character classification/case conversion rules
   final pulumi.Input<String>? ctype;
-
   /// Database Name
   final pulumi.Input<String> databaseName;
-
   /// Instance ID
   final pulumi.Input<String> dbInstanceId;
-
   /// Database Description
   final pulumi.Input<String>? description;
-
   /// Data Sheet owner
   final pulumi.Input<String> owner;
 
@@ -60,29 +54,14 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      characterSetName: (() {
-        final guardedValue = map['characterSetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      collate: (() {
-        final guardedValue = map['collate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ctype: (() {
-        final guardedValue = map['ctype'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      characterSetName: (() { final guardedValue = map['characterSetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      collate: (() { final guardedValue = map['collate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ctype: (() { final guardedValue = map['ctype']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
       dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       owner: pulumi.Input.fromValue(map['owner'] as String),
     );
   }
 }
+

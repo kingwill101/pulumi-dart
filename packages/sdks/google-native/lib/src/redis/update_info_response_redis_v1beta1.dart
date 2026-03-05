@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UpdateInfoResponseRedisV1beta1 {
   /// Target number of replica nodes per shard.
   final pulumi.Input<int> targetReplicaCount;
-
   /// Target number of shards for redis cluster
   final pulumi.Input<int> targetShardCount;
 
@@ -27,10 +26,9 @@ class UpdateInfoResponseRedisV1beta1 {
 
   factory UpdateInfoResponseRedisV1beta1.fromMap(Map<String, dynamic> map) {
     return UpdateInfoResponseRedisV1beta1(
-      targetReplicaCount: pulumi.Input.fromValue(
-        map['targetReplicaCount'] as int,
-      ),
+      targetReplicaCount: pulumi.Input.fromValue(map['targetReplicaCount'] as int),
       targetShardCount: pulumi.Input.fromValue(map['targetShardCount'] as int),
     );
   }
 }
+

@@ -5,37 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseInstanceReplicaConfiguration {
   /// PEM representation of the trusted CA's x509 certificate.
   final pulumi.Input<String> caCertificate;
-
   /// Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
   final pulumi.Input<bool> cascadableReplica;
-
   /// PEM representation of the replica's x509 certificate.
   final pulumi.Input<String> clientCertificate;
-
   /// PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
   final pulumi.Input<String> clientKey;
-
   /// The number of seconds between connect retries. MySQL's default is 60 seconds.
   final pulumi.Input<int> connectRetryInterval;
-
   /// Path to a SQL file in Google Cloud Storage from which replica instances are created. Format is gs://bucket/filename.
   final pulumi.Input<String> dumpFilePath;
-
   /// Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. If the master instance fails, the replica instance will be promoted as the new master instance. Not supported for Postgres
   final pulumi.Input<bool> failoverTarget;
-
   /// Time in ms between replication heartbeats.
   final pulumi.Input<int> masterHeartbeatPeriod;
-
   /// Password for the replication connection.
   final pulumi.Input<String> password;
-
   /// Permissible ciphers for use in SSL encryption.
   final pulumi.Input<String> sslCipher;
-
   /// Username for replication connection.
   final pulumi.Input<String> username;
-
   /// True if the master's common name value is checked during the SSL handshake.
   final pulumi.Input<bool> verifyServerCertificate;
 
@@ -84,32 +73,21 @@ class GetDatabaseInstanceReplicaConfiguration {
     };
   }
 
-  factory GetDatabaseInstanceReplicaConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstanceReplicaConfiguration.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceReplicaConfiguration(
       caCertificate: pulumi.Input.fromValue(map['caCertificate'] as String),
-      cascadableReplica: pulumi.Input.fromValue(
-        map['cascadableReplica'] as bool,
-      ),
-      clientCertificate: pulumi.Input.fromValue(
-        map['clientCertificate'] as String,
-      ),
+      cascadableReplica: pulumi.Input.fromValue(map['cascadableReplica'] as bool),
+      clientCertificate: pulumi.Input.fromValue(map['clientCertificate'] as String),
       clientKey: pulumi.Input.fromValue(map['clientKey'] as String),
-      connectRetryInterval: pulumi.Input.fromValue(
-        map['connectRetryInterval'] as int,
-      ),
+      connectRetryInterval: pulumi.Input.fromValue(map['connectRetryInterval'] as int),
       dumpFilePath: pulumi.Input.fromValue(map['dumpFilePath'] as String),
       failoverTarget: pulumi.Input.fromValue(map['failoverTarget'] as bool),
-      masterHeartbeatPeriod: pulumi.Input.fromValue(
-        map['masterHeartbeatPeriod'] as int,
-      ),
+      masterHeartbeatPeriod: pulumi.Input.fromValue(map['masterHeartbeatPeriod'] as int),
       password: pulumi.Input.fromValue(map['password'] as String),
       sslCipher: pulumi.Input.fromValue(map['sslCipher'] as String),
       username: pulumi.Input.fromValue(map['username'] as String),
-      verifyServerCertificate: pulumi.Input.fromValue(
-        map['verifyServerCertificate'] as bool,
-      ),
+      verifyServerCertificate: pulumi.Input.fromValue(map['verifyServerCertificate'] as bool),
     );
   }
 }
+

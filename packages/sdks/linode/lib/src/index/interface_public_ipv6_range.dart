@@ -8,10 +8,14 @@ class InterfacePublicIpv6Range {
 
   /// Creates a new [InterfacePublicIpv6Range].
   /// [range] The IPv6 range.
-  InterfacePublicIpv6Range({required this.range});
+  InterfacePublicIpv6Range({
+    required this.range,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'range': range};
+    return <String, dynamic>{
+      'range': range,
+    };
   }
 
   factory InterfacePublicIpv6Range.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class InterfacePublicIpv6Range {
     );
   }
 }
+

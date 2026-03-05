@@ -7,7 +7,6 @@ import 'get_tag_values_value.dart';
 class GetTagValuesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The resource name of the new TagValue's parent TagKey. Must be of the form tagKeys/{tag_key_id}.
   final String parent;
   final List<GetTagValuesValue> values;
@@ -26,11 +25,7 @@ class GetTagValuesResult {
     return <String, dynamic>{
       'id': id,
       'parent': parent,
-      'values':
-          pulumi.Input.encodeList<GetTagValuesValue, Map<String, dynamic>>(
-            values,
-            (value) => value.toMap(),
-          ),
+      'values': pulumi.Input.encodeList<GetTagValuesValue, Map<String, dynamic>>(values, (value) => value.toMap()),
     };
   }
 
@@ -38,11 +33,8 @@ class GetTagValuesResult {
     return GetTagValuesResult(
       id: map['id'] as String,
       parent: map['parent'] as String,
-      values: pulumi.Input.decodeList<GetTagValuesValue>(
-        map['values']!,
-        (value) =>
-            GetTagValuesValue.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      values: pulumi.Input.decodeList<GetTagValuesValue>(map['values']!, (value) => GetTagValuesValue.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

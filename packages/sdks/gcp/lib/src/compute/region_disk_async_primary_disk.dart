@@ -8,10 +8,14 @@ class RegionDiskAsyncPrimaryDisk {
 
   /// Creates a new [RegionDiskAsyncPrimaryDisk].
   /// [disk] Primary disk for asynchronous disk replication.
-  RegionDiskAsyncPrimaryDisk({required this.disk});
+  RegionDiskAsyncPrimaryDisk({
+    required this.disk,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disk': disk};
+    return <String, dynamic>{
+      'disk': disk,
+    };
   }
 
   factory RegionDiskAsyncPrimaryDisk.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class RegionDiskAsyncPrimaryDisk {
     );
   }
 }
+

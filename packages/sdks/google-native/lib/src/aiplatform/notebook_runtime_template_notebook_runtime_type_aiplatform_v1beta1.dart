@@ -4,22 +4,16 @@ enum NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1 {
   userDefined("USER_DEFINED"),
   oneClick("ONE_CLICK");
 
-  const NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1(
-    this.wireValue,
-  );
+  const NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1(this.wireValue);
   final String wireValue;
 
-  static NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1.values) {
+  static NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1 fromValue(String value) {
+    for (final item in NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1 value: $value');
   }
 }
+

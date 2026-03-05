@@ -14,10 +14,14 @@ class GetServiceArgs {
 
   /// Creates a new [GetServiceArgs].
   /// [enable] Setting the value to `On` to enable the service. Valid values: `On` or `Off`.
-  GetServiceArgs({required this.enable});
+  GetServiceArgs({
+    required this.enable,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enable': enable};
+    return <String, dynamic>{
+      'enable': enable,
+    };
   }
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
@@ -26,3 +30,4 @@ class GetServiceArgs {
     );
   }
 }
+

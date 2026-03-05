@@ -9,68 +9,47 @@ class SavingsPlanState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? commitment;
-
   /// The currency of the Savings Plan (e.g., `USD`).
   final pulumi.Input<String>? currency;
-
   /// The description.
   final pulumi.Input<String>? description;
-
   /// The EC2 instance family for the Savings Plan (only applicable to EC2 Instance Savings Plans).
   final pulumi.Input<String>? ec2InstanceFamily;
-
   /// The end time of the Savings Plan in RFC3339 format.
   final pulumi.Input<String>? end;
-
   /// The ID of the offering.
   final pulumi.Input<String>? offeringId;
-
   /// The payment option for the Savings Plan (e.g., `All Upfront`, `Partial Upfront`, `No Upfront`).
   final pulumi.Input<String>? paymentOption;
-
   /// The product types.
   final pulumi.Input<List<String>>? productTypes;
-
   /// The time at which to purchase the Savings Plan, in UTC format (YYYY-MM-DDTHH:MM:SSZ). If not specified, the plan is purchased immediately. Plans with a future purchase time are placed in `queued` state and can be deleted before they become active.
   final pulumi.Input<String>? purchaseTime;
-
   /// The recurring payment amount.
   final pulumi.Input<String>? recurringPaymentAmount;
-
   /// The AWS Region.
   final pulumi.Input<String>? region;
-
   /// The recurring payment amount.
   final pulumi.Input<String>? returnableUntil;
-
   /// The ARN of the Savings Plan.
   final pulumi.Input<String>? savingsPlanArn;
-
   /// The ID of the Savings Plan.
   final pulumi.Input<String>? savingsPlanId;
-
   /// The unique ID of a Savings Plan offering. You can find available offerings using the `aws savingsplans describe-savings-plans-offerings` CLI command.
   final pulumi.Input<String>? savingsPlanOfferingId;
-
   /// The type of Savings Plan (e.g., `Compute`, `EC2Instance`).
   final pulumi.Input<String>? savingsPlanType;
-
   /// The start time of the Savings Plan in RFC3339 format.
   final pulumi.Input<String>? start;
-
   /// The current state of the Savings Plan (e.g., `active`, `queued`, `retired`).
   final pulumi.Input<String>? state;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-
   /// The duration of the term, in seconds.
   final pulumi.Input<int>? termDurationInSeconds;
   final pulumi.Input<SavingsPlanTimeouts>? timeouts;
-
   /// The up-front payment amount.
   final pulumi.Input<String>? upfrontPaymentAmount;
 
@@ -147,140 +126,37 @@ class SavingsPlanState {
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'termDurationInSeconds': ?termDurationInSeconds,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            SavingsPlanTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<SavingsPlanTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
       'upfrontPaymentAmount': ?upfrontPaymentAmount,
     };
   }
 
   factory SavingsPlanState.fromMap(Map<String, dynamic> map) {
     return SavingsPlanState(
-      commitment: (() {
-        final guardedValue = map['commitment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      currency: (() {
-        final guardedValue = map['currency'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ec2InstanceFamily: (() {
-        final guardedValue = map['ec2InstanceFamily'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      end: (() {
-        final guardedValue = map['end'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      offeringId: (() {
-        final guardedValue = map['offeringId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      paymentOption: (() {
-        final guardedValue = map['paymentOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      productTypes: (() {
-        final guardedValue = map['productTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      purchaseTime: (() {
-        final guardedValue = map['purchaseTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recurringPaymentAmount: (() {
-        final guardedValue = map['recurringPaymentAmount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      returnableUntil: (() {
-        final guardedValue = map['returnableUntil'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      savingsPlanArn: (() {
-        final guardedValue = map['savingsPlanArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      savingsPlanId: (() {
-        final guardedValue = map['savingsPlanId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      savingsPlanOfferingId: (() {
-        final guardedValue = map['savingsPlanOfferingId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      savingsPlanType: (() {
-        final guardedValue = map['savingsPlanType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      start: (() {
-        final guardedValue = map['start'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      termDurationInSeconds: (() {
-        final guardedValue = map['termDurationInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SavingsPlanTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      upfrontPaymentAmount: (() {
-        final guardedValue = map['upfrontPaymentAmount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      commitment: (() { final guardedValue = map['commitment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ec2InstanceFamily: (() { final guardedValue = map['ec2InstanceFamily']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      end: (() { final guardedValue = map['end']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      offeringId: (() { final guardedValue = map['offeringId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      paymentOption: (() { final guardedValue = map['paymentOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      productTypes: (() { final guardedValue = map['productTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      purchaseTime: (() { final guardedValue = map['purchaseTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recurringPaymentAmount: (() { final guardedValue = map['recurringPaymentAmount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      returnableUntil: (() { final guardedValue = map['returnableUntil']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      savingsPlanArn: (() { final guardedValue = map['savingsPlanArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      savingsPlanId: (() { final guardedValue = map['savingsPlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      savingsPlanOfferingId: (() { final guardedValue = map['savingsPlanOfferingId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      savingsPlanType: (() { final guardedValue = map['savingsPlanType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      termDurationInSeconds: (() { final guardedValue = map['termDurationInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SavingsPlanTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      upfrontPaymentAmount: (() { final guardedValue = map['upfrontPaymentAmount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

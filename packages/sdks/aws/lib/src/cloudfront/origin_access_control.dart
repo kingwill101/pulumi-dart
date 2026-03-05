@@ -132,22 +132,16 @@ import 'origin_access_control_state.dart';
 class OriginAccessControl extends pulumi.CustomResource {
   /// The Origin Access Control ARN.
   late final pulumi.Output<String> arn;
-
   /// The description of the Origin Access Control. Defaults to "Managed by Pulumi" if omitted.
   late final pulumi.Output<String?> description;
-
   /// The current version of this Origin Access Control.
   late final pulumi.Output<String> etag;
-
   /// A name that identifies the Origin Access Control.
   late final pulumi.Output<String> name;
-
   /// The type of origin that this Origin Access Control is for. Valid values are `lambda`, `mediapackagev2`, `mediastore`, and `s3`.
   late final pulumi.Output<String> originAccessControlOriginType;
-
   /// Specifies which requests CloudFront signs. Specify `always` for the most common use case. Allowed values: `always`, `never`, and `no-override`.
   late final pulumi.Output<String> signingBehavior;
-
   /// Determines how CloudFront signs (authenticates) requests. The only valid value is `sigv4`.
   late final pulumi.Output<String> signingProtocol;
 
@@ -160,18 +154,16 @@ class OriginAccessControl extends pulumi.CustomResource {
     OriginAccessControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/originAccessControl:OriginAccessControl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/originAccessControl:OriginAccessControl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    originAccessControlOriginType = registerOutput<String>(
-      'originAccessControlOriginType',
-    );
+    originAccessControlOriginType = registerOutput<String>('originAccessControlOriginType');
     signingBehavior = registerOutput<String>('signingBehavior');
     signingProtocol = registerOutput<String>('signingProtocol');
   }
@@ -194,18 +186,16 @@ class OriginAccessControl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/originAccessControl:OriginAccessControl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/originAccessControl:OriginAccessControl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    originAccessControlOriginType = registerOutput<String>(
-      'originAccessControlOriginType',
-    );
+    originAccessControlOriginType = registerOutput<String>('originAccessControlOriginType');
     signingBehavior = registerOutput<String>('signingBehavior');
     signingProtocol = registerOutput<String>('signingProtocol');
   }

@@ -7,44 +7,29 @@ import 'nfs_access_rule_response.dart';
 class NfsAccessPolicyResponse {
   /// The set of rules describing client accesses allowed under this policy.
   final pulumi.Input<List<NfsAccessRuleResponse>> accessRules;
-
   /// Name identifying this policy. Access Policy names are not case sensitive.
   final pulumi.Input<String> name;
 
   /// Creates a new [NfsAccessPolicyResponse].
   /// [accessRules] The set of rules describing client accesses allowed under this policy.
   /// [name] Name identifying this policy. Access Policy names are not case sensitive.
-  NfsAccessPolicyResponse({required this.accessRules, required this.name});
+  NfsAccessPolicyResponse({
+    required this.accessRules,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessRules':
-          pulumi.Input.mapInputValue<
-            List<NfsAccessRuleResponse>,
-            List<Map<String, dynamic>>
-          >(
-            accessRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NfsAccessRuleResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'accessRules': pulumi.Input.mapInputValue<List<NfsAccessRuleResponse>, List<Map<String, dynamic>>>(accessRules, (value) => pulumi.Input.encodeList<NfsAccessRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
   factory NfsAccessPolicyResponse.fromMap(Map<String, dynamic> map) {
     return NfsAccessPolicyResponse(
-      accessRules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<NfsAccessRuleResponse>(
-          map['accessRules']!,
-          (value) => NfsAccessRuleResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      accessRules: pulumi.Input.fromValue(pulumi.Input.decodeList<NfsAccessRuleResponse>(map['accessRules']!, (value) => NfsAccessRuleResponse.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

@@ -15,15 +15,17 @@ class GetNetworkInsightsAnalysisReturnPathComponentAclRulePortRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'from': from, 'to': to};
+    return <String, dynamic>{
+      'from': from,
+      'to': to,
+    };
   }
 
-  factory GetNetworkInsightsAnalysisReturnPathComponentAclRulePortRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInsightsAnalysisReturnPathComponentAclRulePortRange.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisReturnPathComponentAclRulePortRange(
       from: pulumi.Input.fromValue(map['from'] as int),
       to: pulumi.Input.fromValue(map['to'] as int),
     );
   }
 }
+

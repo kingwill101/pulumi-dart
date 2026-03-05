@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureActiveDirectoryLogin {
   /// &lt;code&gt;true&lt;/code&gt; if the www-authenticate provider should be omitted from the request; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final pulumi.Input<bool>? disableWWWAuthenticate;
-
   /// Login parameters to send to the OpenID Connect authorization endpoint when
   /// a user logs in. Each parameter must be in the form "key=value".
   final pulumi.Input<List<String>>? loginParameters;
@@ -28,16 +27,9 @@ class AzureActiveDirectoryLogin {
 
   factory AzureActiveDirectoryLogin.fromMap(Map<String, dynamic> map) {
     return AzureActiveDirectoryLogin(
-      disableWWWAuthenticate: (() {
-        final guardedValue = map['disableWWWAuthenticate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      loginParameters: (() {
-        final guardedValue = map['loginParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      disableWWWAuthenticate: (() { final guardedValue = map['disableWWWAuthenticate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      loginParameters: (() { final guardedValue = map['loginParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

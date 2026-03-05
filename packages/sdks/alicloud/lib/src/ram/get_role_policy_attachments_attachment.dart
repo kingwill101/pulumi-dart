@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRolePolicyAttachmentsAttachment {
   /// The time when the role was attached to the policy.
   final pulumi.Input<String> attachDate;
-
   /// The policy description.
   final pulumi.Input<String> description;
-
   /// The ID of the resource supplied above. The value is formulated as `role:&lt;policy_name&gt;:&lt;policy_type&gt;:&lt;role_name&gt;`.
   final pulumi.Input<String> id;
-
   /// The name of the policy.
   final pulumi.Input<String> policyName;
-
   /// Policy type.- Custom: Custom policy.- System: System policy.
   final pulumi.Input<String> policyType;
 
@@ -52,3 +48,4 @@ class GetRolePolicyAttachmentsAttachment {
     );
   }
 }
+

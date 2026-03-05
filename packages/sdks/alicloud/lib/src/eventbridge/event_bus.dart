@@ -130,7 +130,6 @@ import 'event_bus_state.dart';
 class EventBus extends pulumi.CustomResource {
   /// The description of event bus.
   late final pulumi.Output<String?> description;
-
   /// The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
   late final pulumi.Output<String> eventBusName;
 
@@ -143,11 +142,11 @@ class EventBus extends pulumi.CustomResource {
     EventBusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eventbridge/eventBus:EventBus',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eventbridge/eventBus:EventBus',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     eventBusName = registerOutput<String>('eventBusName');
   }
@@ -170,11 +169,11 @@ class EventBus extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eventbridge/eventBus:EventBus',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eventbridge/eventBus:EventBus',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     eventBusName = registerOutput<String>('eventBusName');
   }

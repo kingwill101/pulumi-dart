@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAuthorityArgs {
   /// The ID of the authority
   final pulumi.Input<String> authorityName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetAuthorityArgs {
   factory GetAuthorityArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorityArgs(
       authorityName: pulumi.Input.fromValue(map['authorityName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

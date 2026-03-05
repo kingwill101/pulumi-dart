@@ -5,22 +5,16 @@ enum RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeDnsV1beta2 {
   regionalL4ilb("regionalL4ilb"),
   regionalL7ilb("regionalL7ilb");
 
-  const RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeDnsV1beta2(
-    this.wireValue,
-  );
+  const RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeDnsV1beta2(this.wireValue);
   final String wireValue;
 
-  static RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeDnsV1beta2
-  fromValue(String value) {
-    for (final item
-        in RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeDnsV1beta2
-            .values) {
+  static RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeDnsV1beta2 fromValue(String value) {
+    for (final item in RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeDnsV1beta2.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeDnsV1beta2 value: $value',
-    );
+    throw ArgumentError('Unknown RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeDnsV1beta2 value: $value');
   }
 }
+

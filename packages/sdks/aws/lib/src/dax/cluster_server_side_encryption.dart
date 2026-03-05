@@ -8,19 +8,20 @@ class ClusterServerSideEncryption {
 
   /// Creates a new [ClusterServerSideEncryption].
   /// [enabled] Whether to enable encryption at rest. Defaults to `false`.
-  ClusterServerSideEncryption({this.enabled});
+  ClusterServerSideEncryption({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory ClusterServerSideEncryption.fromMap(Map<String, dynamic> map) {
     return ClusterServerSideEncryption(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

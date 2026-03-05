@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TlsRouteRouteDestinationResponse {
   /// The URL of a BackendService to route traffic to.
   final pulumi.Input<String> serviceName;
-
   /// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
   final pulumi.Input<int> weight;
 
@@ -19,7 +18,10 @@ class TlsRouteRouteDestinationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serviceName': serviceName, 'weight': weight};
+    return <String, dynamic>{
+      'serviceName': serviceName,
+      'weight': weight,
+    };
   }
 
   factory TlsRouteRouteDestinationResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class TlsRouteRouteDestinationResponse {
     );
   }
 }
+

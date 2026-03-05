@@ -10,25 +10,20 @@ class IPAddressSpec {
 
   /// Creates a new [IPAddressSpec].
   /// [parentRef] ParentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.
-  IPAddressSpec({required this.parentRef});
+  IPAddressSpec({
+    required this.parentRef,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parentRef':
-          pulumi.Input.mapInputValue<ParentReference, Map<String, dynamic>>(
-            parentRef,
-            (value) => value.toMap(),
-          ),
+      'parentRef': pulumi.Input.mapInputValue<ParentReference, Map<String, dynamic>>(parentRef, (value) => value.toMap()),
     };
   }
 
   factory IPAddressSpec.fromMap(Map<String, dynamic> map) {
     return IPAddressSpec(
-      parentRef: pulumi.Input.fromValue(
-        ParentReference.fromMap(
-          (map['parentRef']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      parentRef: pulumi.Input.fromValue(ParentReference.fromMap((map['parentRef']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

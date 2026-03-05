@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountRaiPolicyContentFilter {
   /// Whether the filter should block content. Possible values are `true` or `false`.
   final pulumi.Input<bool> blockEnabled;
-
   /// Whether the filter is enabled. Possible values are `true` or `false`.
   final pulumi.Input<bool> filterEnabled;
-
   /// The name of the content filter.
   final pulumi.Input<String> name;
-
   /// The severity threshold for the filter. Possible values are `Low`, `Medium` or `High`.
   final pulumi.Input<String> severityThreshold;
-
   /// Content source to apply the content filter. Possible values are `Prompt` or `Completion`.
   final pulumi.Input<String> source;
 
@@ -47,10 +43,9 @@ class AccountRaiPolicyContentFilter {
       blockEnabled: pulumi.Input.fromValue(map['blockEnabled'] as bool),
       filterEnabled: pulumi.Input.fromValue(map['filterEnabled'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
-      severityThreshold: pulumi.Input.fromValue(
-        map['severityThreshold'] as String,
-      ),
+      severityThreshold: pulumi.Input.fromValue(map['severityThreshold'] as String),
       source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
+

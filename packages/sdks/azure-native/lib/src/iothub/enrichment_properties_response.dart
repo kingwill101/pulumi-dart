@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnrichmentPropertiesResponse {
   /// The list of endpoints for which the enrichment is applied to the message.
   final pulumi.Input<List<String>> endpointNames;
-
   /// The key or name for the enrichment property.
   final pulumi.Input<String> key;
-
   /// The value for the enrichment property.
   final pulumi.Input<String> value;
 
@@ -33,11 +31,10 @@ class EnrichmentPropertiesResponse {
 
   factory EnrichmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EnrichmentPropertiesResponse(
-      endpointNames: pulumi.Input.fromValue(
-        (map['endpointNames'] as List).cast<String>(),
-      ),
+      endpointNames: pulumi.Input.fromValue((map['endpointNames'] as List).cast<String>()),
       key: pulumi.Input.fromValue(map['key'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

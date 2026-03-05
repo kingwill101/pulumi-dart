@@ -181,32 +181,22 @@ import 'system_data_response.dart';
 class ResourceSyncRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Priority represents a priority of the Resource Sync Rule
   late final pulumi.Output<int?> priority;
-
   /// Provisioning State for the Resource Sync Rule.
   late final pulumi.Output<String> provisioningState;
-
   /// A label selector is composed of two parts, matchLabels and matchExpressions. The first part, matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is 'key', the operator is 'In', and the values array contains only 'value'. The second part, matchExpressions is a list of resource selector requirements. Valid operators include In, NotIn, Exists, and DoesNotExist. The values set must be non-empty in the case of In and NotIn. The values set must be empty in the case of Exists and DoesNotExist. All of the requirements, from both matchLabels and matchExpressions must all be satisfied in order to match.
-  late final pulumi.Output<ResourceSyncRulePropertiesResponseSelector?>
-  selector;
-
+  late final pulumi.Output<ResourceSyncRulePropertiesResponseSelector?> selector;
   /// Metadata pertaining to creation and last modification of the resource
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// For an unmapped custom resource, its labels will be used to find matching resource sync rules. If this resource sync rule is one of the matching rules with highest priority, then the unmapped custom resource will be projected to the target resource group associated with this resource sync rule. The user creating this resource sync rule should have write permissions on the target resource group and this write permission will be validated when creating the resource sync rule.
   late final pulumi.Output<String?> targetResourceGroup;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -219,36 +209,18 @@ class ResourceSyncRule extends pulumi.CustomResource {
     ResourceSyncRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:extendedlocation:ResourceSyncRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:extendedlocation:ResourceSyncRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int?>('priority');
     provisioningState = registerOutput<String>('provisioningState');
-    selector = registerOutput<ResourceSyncRulePropertiesResponseSelector?>(
-      'selector',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceSyncRulePropertiesResponseSelector.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    selector = registerOutput<ResourceSyncRulePropertiesResponseSelector?>('selector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSyncRulePropertiesResponseSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     targetResourceGroup = registerOutput<String?>('targetResourceGroup');
     type = registerOutput<String>('type');

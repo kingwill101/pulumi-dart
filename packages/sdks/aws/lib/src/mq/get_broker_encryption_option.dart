@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBrokerEncryptionOption {
   /// Amazon Resource Name (ARN) of Key Management Service (KMS) Customer Master Key (CMK) to use for encryption at rest.
   final pulumi.Input<String> kmsKeyId;
-
   /// Whether to enable an AWS-owned KMS CMK that is not in your account.
   final pulumi.Input<bool> useAwsOwnedKey;
 
@@ -31,3 +30,4 @@ class GetBrokerEncryptionOption {
     );
   }
 }
+

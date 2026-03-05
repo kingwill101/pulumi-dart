@@ -16,16 +16,12 @@ import 'zone_record_state.dart';
 class ZoneRecord extends pulumi.CustomResource {
   /// Comment of the Zone Record.
   late final pulumi.Output<String> comment;
-
   /// Name of the Zone Record.
   late final pulumi.Output<String> name;
-
   /// Type of the Zone Record.
   late final pulumi.Output<String> type;
-
   /// Value of the Zone Record.
   late final pulumi.Output<String> value;
-
   /// ID or Name of the parent Zone.
   late final pulumi.Output<String> zone;
 
@@ -38,11 +34,11 @@ class ZoneRecord extends pulumi.CustomResource {
     ZoneRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/zoneRecord:ZoneRecord',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/zoneRecord:ZoneRecord',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     comment = registerOutput<String>('comment');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
@@ -68,11 +64,11 @@ class ZoneRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/zoneRecord:ZoneRecord',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/zoneRecord:ZoneRecord',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     comment = registerOutput<String>('comment');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');

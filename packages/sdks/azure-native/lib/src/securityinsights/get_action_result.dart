@@ -6,25 +6,18 @@ import 'system_data_response.dart';
 class GetActionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// ETag of the action.
   final String? etag;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
   final String logicAppResourceId;
-
   /// The name of the resource
   final String name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// The name of the logic app's workflow.
   final String? workflowId;
 
@@ -64,23 +57,14 @@ class GetActionResult {
   factory GetActionResult.fromMap(Map<String, dynamic> map) {
     return GetActionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       logicAppResourceId: map['logicAppResourceId'] as String,
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      workflowId: (() {
-        final guardedValue = map['workflowId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      workflowId: (() { final guardedValue = map['workflowId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

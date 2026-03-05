@@ -7,36 +7,26 @@ import 'get_vpc_attachment_filter.dart';
 class GetVpcAttachmentResult {
   /// Whether Appliance Mode support is enabled.
   final String applianceModeSupport;
-
   /// ARN of the attachment.
   final String arn;
-
   /// Whether DNS support is enabled.
   final String dnsSupport;
   final List<GetVpcAttachmentFilter>? filters;
-
   /// EC2 Transit Gateway VPC Attachment identifier
   final String id;
-
   /// Whether IPv6 support is enabled.
   final String ipv6Support;
   final String region;
-
   /// Whether Security Group Referencing Support is enabled.
   final String securityGroupReferencingSupport;
-
   /// Identifiers of EC2 Subnets.
   final List<String> subnetIds;
-
   /// Key-value tags for the EC2 Transit Gateway VPC Attachment
   final Map<String, String> tags;
-
   /// EC2 Transit Gateway identifier
   final String transitGatewayId;
-
   /// Identifier of EC2 VPC.
   final String vpcId;
-
   /// Identifier of the AWS account that owns the EC2 VPC.
   final String vpcOwnerId;
 
@@ -75,14 +65,7 @@ class GetVpcAttachmentResult {
       'applianceModeSupport': applianceModeSupport,
       'arn': arn,
       'dnsSupport': dnsSupport,
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetVpcAttachmentFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVpcAttachmentFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'ipv6Support': ipv6Support,
       'region': region,
@@ -100,21 +83,11 @@ class GetVpcAttachmentResult {
       applianceModeSupport: map['applianceModeSupport'] as String,
       arn: map['arn'] as String,
       dnsSupport: map['dnsSupport'] as String,
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetVpcAttachmentFilter>(
-          guardedValue,
-          (value) => GetVpcAttachmentFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVpcAttachmentFilter>(guardedValue, (value) => GetVpcAttachmentFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       ipv6Support: map['ipv6Support'] as String,
       region: map['region'] as String,
-      securityGroupReferencingSupport:
-          map['securityGroupReferencingSupport'] as String,
+      securityGroupReferencingSupport: map['securityGroupReferencingSupport'] as String,
       subnetIds: (map['subnetIds'] as List).cast<String>(),
       tags: (map['tags'] as Map).cast<String, String>(),
       transitGatewayId: map['transitGatewayId'] as String,
@@ -123,3 +96,4 @@ class GetVpcAttachmentResult {
     );
   }
 }
+

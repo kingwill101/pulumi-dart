@@ -9,19 +9,20 @@ class BasicLoginInformationResponse {
 
   /// Creates a new [BasicLoginInformationResponse].
   /// [username] Login username.
-  BasicLoginInformationResponse({this.username});
+  BasicLoginInformationResponse({
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'username': ?username};
+    return <String, dynamic>{
+      'username': ?username,
+    };
   }
 
   factory BasicLoginInformationResponse.fromMap(Map<String, dynamic> map) {
     return BasicLoginInformationResponse(
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -196,37 +196,26 @@ import 'experiment_args.dart';
 class Experiment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The description of the details or intents of the Experiment
   late final pulumi.Output<String?> description;
-
   /// The state of the Experiment
   late final pulumi.Output<String?> enabledState;
-
   /// The endpoint A of an experiment
   late final pulumi.Output<EndpointResponse?> endpointA;
-
   /// The endpoint B of an experiment
   late final pulumi.Output<EndpointResponse?> endpointB;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Resource status.
   late final pulumi.Output<String> resourceState;
-
   /// The uri to the Script used in the Experiment
   late final pulumi.Output<String> scriptFileUri;
-
   /// The description of Experiment status from the server side
   late final pulumi.Output<String> status;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -239,34 +228,16 @@ class Experiment extends pulumi.CustomResource {
     ExperimentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:frontdoor:Experiment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:frontdoor:Experiment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     enabledState = registerOutput<String?>('enabledState');
-    endpointA = registerOutput<EndpointResponse?>(
-      'endpointA',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    endpointB = registerOutput<EndpointResponse?>(
-      'endpointB',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    endpointA = registerOutput<EndpointResponse?>('endpointA', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpointB = registerOutput<EndpointResponse?>('endpointB', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     resourceState = registerOutput<String>('resourceState');

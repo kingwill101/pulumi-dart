@@ -23,16 +23,9 @@ class FeaturesAppConfiguration {
 
   factory FeaturesAppConfiguration.fromMap(Map<String, dynamic> map) {
     return FeaturesAppConfiguration(
-      purgeSoftDeleteOnDestroy: (() {
-        final guardedValue = map['purgeSoftDeleteOnDestroy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      recoverSoftDeleted: (() {
-        final guardedValue = map['recoverSoftDeleted'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      purgeSoftDeleteOnDestroy: (() { final guardedValue = map['purgeSoftDeleteOnDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      recoverSoftDeleted: (() { final guardedValue = map['recoverSoftDeleted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

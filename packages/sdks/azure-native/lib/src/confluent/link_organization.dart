@@ -9,10 +9,14 @@ class LinkOrganization {
 
   /// Creates a new [LinkOrganization].
   /// [token] User auth token
-  LinkOrganization({required this.token});
+  LinkOrganization({
+    required this.token,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'token': token};
+    return <String, dynamic>{
+      'token': token,
+    };
   }
 
   factory LinkOrganization.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class LinkOrganization {
     );
   }
 }
+

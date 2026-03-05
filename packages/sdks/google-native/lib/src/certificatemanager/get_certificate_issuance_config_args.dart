@@ -31,15 +31,10 @@ class GetCertificateIssuanceConfigArgs {
 
   factory GetCertificateIssuanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateIssuanceConfigArgs(
-      certificateIssuanceConfigId: pulumi.Input.fromValue(
-        map['certificateIssuanceConfigId'] as String,
-      ),
+      certificateIssuanceConfigId: pulumi.Input.fromValue(map['certificateIssuanceConfigId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -1,30 +1,20 @@
 /// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
 enum VirtualMachinePreferencesSizingOptimizationStrategy {
-  sizingOptimizationStrategyUnspecified(
-    "SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED",
-  ),
-  sizingOptimizationStrategySameAsSource(
-    "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
-  ),
+  sizingOptimizationStrategyUnspecified("SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED"),
+  sizingOptimizationStrategySameAsSource("SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE"),
   sizingOptimizationStrategyModerate("SIZING_OPTIMIZATION_STRATEGY_MODERATE"),
-  sizingOptimizationStrategyAggressive(
-    "SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE",
-  );
+  sizingOptimizationStrategyAggressive("SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE");
 
   const VirtualMachinePreferencesSizingOptimizationStrategy(this.wireValue);
   final String wireValue;
 
-  static VirtualMachinePreferencesSizingOptimizationStrategy fromValue(
-    String value,
-  ) {
-    for (final item
-        in VirtualMachinePreferencesSizingOptimizationStrategy.values) {
+  static VirtualMachinePreferencesSizingOptimizationStrategy fromValue(String value) {
+    for (final item in VirtualMachinePreferencesSizingOptimizationStrategy.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown VirtualMachinePreferencesSizingOptimizationStrategy value: $value',
-    );
+    throw ArgumentError('Unknown VirtualMachinePreferencesSizingOptimizationStrategy value: $value');
   }
 }
+

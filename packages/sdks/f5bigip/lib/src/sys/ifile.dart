@@ -22,19 +22,14 @@ import 'ifile_state.dart';
 class Ifile extends pulumi.CustomResource {
   /// MD5 checksum of the iFile content, automatically calculated by BIG-IP.
   late final pulumi.Output<String> checksum;
-
   /// The content of the iFile. This can be inline text, file content loaded with `file()`, or dynamically generated content. This field is marked as sensitive.
   late final pulumi.Output<String> content;
-
   /// Name of the system iFile to be created on BIG-IP. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Partition where the iFile will be stored. Defaults to `Common`.
   late final pulumi.Output<String?> partition;
-
   /// Size of the iFile content in bytes.
   late final pulumi.Output<int> size;
-
   /// Subdirectory within the partition for organizing iFiles hierarchically.
   late final pulumi.Output<String?> subPath;
 
@@ -42,13 +37,16 @@ class Ifile extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Ifile]. {@macro pulumi_sys_ifile_ifile_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Ifile(String name, {IfileArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'f5bigip:sys/ifile:Ifile',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Ifile(
+    String name, {
+    IfileArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'f5bigip:sys/ifile:Ifile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     checksum = registerOutput<String>('checksum');
     content = registerOutput<String>('content');
     this.name = registerOutput<String>('name');
@@ -58,7 +56,11 @@ class Ifile extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Ifile] resource's state with the given [name] and [id].
-  static Ifile get(String name, pulumi.Input<String> id, {IfileState? state}) {
+  static Ifile get(
+    String name,
+    pulumi.Input<String> id, {
+    IfileState? state,
+  }) {
     return Ifile._get(
       name,
       state: state?.toMap(),
@@ -71,11 +73,11 @@ class Ifile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:sys/ifile:Ifile',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:sys/ifile:Ifile',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     checksum = registerOutput<String>('checksum');
     content = registerOutput<String>('content');
     this.name = registerOutput<String>('name');

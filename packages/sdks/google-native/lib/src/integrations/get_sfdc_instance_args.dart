@@ -37,12 +37,9 @@ class GetSfdcInstanceArgs {
     return GetSfdcInstanceArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       productId: pulumi.Input.fromValue(map['productId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sfdcInstanceId: pulumi.Input.fromValue(map['sfdcInstanceId'] as String),
     );
   }
 }
+

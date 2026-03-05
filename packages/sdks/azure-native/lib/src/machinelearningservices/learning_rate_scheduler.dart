@@ -16,3 +16,4 @@ enum LearningRateScheduler {
     throw ArgumentError('Unknown LearningRateScheduler value: $value');
   }
 }
+

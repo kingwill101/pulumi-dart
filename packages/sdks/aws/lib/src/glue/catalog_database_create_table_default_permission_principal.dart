@@ -18,15 +18,10 @@ class CatalogDatabaseCreateTableDefaultPermissionPrincipal {
     };
   }
 
-  factory CatalogDatabaseCreateTableDefaultPermissionPrincipal.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CatalogDatabaseCreateTableDefaultPermissionPrincipal.fromMap(Map<String, dynamic> map) {
     return CatalogDatabaseCreateTableDefaultPermissionPrincipal(
-      dataLakePrincipalIdentifier: (() {
-        final guardedValue = map['dataLakePrincipalIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataLakePrincipalIdentifier: (() { final guardedValue = map['dataLakePrincipalIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

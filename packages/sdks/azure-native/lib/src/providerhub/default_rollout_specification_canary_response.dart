@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultRolloutSpecificationCanaryResponse {
   /// The regions.
   final pulumi.Input<List<String>>? regions;
-
   /// The skip regions.
   final pulumi.Input<List<String>>? skipRegions;
 
   /// Creates a new [DefaultRolloutSpecificationCanaryResponse].
   /// [regions] The regions.
   /// [skipRegions] The skip regions.
-  DefaultRolloutSpecificationCanaryResponse({this.regions, this.skipRegions});
+  DefaultRolloutSpecificationCanaryResponse({
+    this.regions,
+    this.skipRegions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'regions': ?regions, 'skipRegions': ?skipRegions};
+    return <String, dynamic>{
+      'regions': ?regions,
+      'skipRegions': ?skipRegions,
+    };
   }
 
-  factory DefaultRolloutSpecificationCanaryResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefaultRolloutSpecificationCanaryResponse.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutSpecificationCanaryResponse(
-      regions: (() {
-        final guardedValue = map['regions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      skipRegions: (() {
-        final guardedValue = map['skipRegions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      skipRegions: (() { final guardedValue = map['skipRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

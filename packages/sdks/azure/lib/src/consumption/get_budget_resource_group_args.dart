@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBudgetResourceGroupArgs {
   /// The name of this Consumption Budget.
   final pulumi.Input<String> name;
-
   /// The ID of the subscription.
   final pulumi.Input<String> resourceGroupId;
 
@@ -22,7 +21,10 @@ class GetBudgetResourceGroupArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'resourceGroupId': resourceGroupId};
+    return <String, dynamic>{
+      'name': name,
+      'resourceGroupId': resourceGroupId,
+    };
   }
 
   factory GetBudgetResourceGroupArgs.fromMap(Map<String, dynamic> map) {
@@ -32,3 +34,4 @@ class GetBudgetResourceGroupArgs {
     );
   }
 }
+

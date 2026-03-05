@@ -17,3 +17,4 @@ enum ColumnDataTypeHintEnum {
     throw ArgumentError('Unknown ColumnDataTypeHintEnum value: $value');
   }
 }
+

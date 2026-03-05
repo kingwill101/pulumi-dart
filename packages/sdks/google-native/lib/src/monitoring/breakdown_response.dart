@@ -7,13 +7,10 @@ import 'aggregation_function_response.dart';
 class BreakdownResponse {
   /// The Aggregation function is applied across all data in each breakdown created.
   final pulumi.Input<AggregationFunctionResponse> aggregationFunction;
-
   /// The name of the column in the dataset containing the breakdown values.
   final pulumi.Input<String> column;
-
   /// A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field.
   final pulumi.Input<int> limit;
-
   /// The sort order is applied to the values of the breakdown column.
   final pulumi.Input<String> sortOrder;
 
@@ -31,11 +28,7 @@ class BreakdownResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aggregationFunction':
-          pulumi.Input.mapInputValue<
-            AggregationFunctionResponse,
-            Map<String, dynamic>
-          >(aggregationFunction, (value) => value.toMap()),
+      'aggregationFunction': pulumi.Input.mapInputValue<AggregationFunctionResponse, Map<String, dynamic>>(aggregationFunction, (value) => value.toMap()),
       'column': column,
       'limit': limit,
       'sortOrder': sortOrder,
@@ -44,14 +37,11 @@ class BreakdownResponse {
 
   factory BreakdownResponse.fromMap(Map<String, dynamic> map) {
     return BreakdownResponse(
-      aggregationFunction: pulumi.Input.fromValue(
-        AggregationFunctionResponse.fromMap(
-          (map['aggregationFunction']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      aggregationFunction: pulumi.Input.fromValue(AggregationFunctionResponse.fromMap((map['aggregationFunction']! as Map).cast<String, dynamic>())),
       column: pulumi.Input.fromValue(map['column'] as String),
       limit: pulumi.Input.fromValue(map['limit'] as int),
       sortOrder: pulumi.Input.fromValue(map['sortOrder'] as String),
     );
   }
 }
+

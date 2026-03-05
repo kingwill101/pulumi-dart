@@ -10,16 +10,12 @@ import 'fleet_database_properties.dart';
 class FleetDatabaseArgs {
   /// Name of the database.
   final pulumi.Input<String>? databaseName;
-
   /// Name of the database fleet.
   final pulumi.Input<String> fleetName;
-
   /// Name of the fleetspace.
   final pulumi.Input<String> fleetspaceName;
-
   /// Fleet database properties.
   final pulumi.Input<FleetDatabaseProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,36 +38,19 @@ class FleetDatabaseArgs {
       'databaseName': ?databaseName,
       'fleetName': fleetName,
       'fleetspaceName': fleetspaceName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            FleetDatabaseProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<FleetDatabaseProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory FleetDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return FleetDatabaseArgs(
-      databaseName: (() {
-        final guardedValue = map['databaseName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
       fleetspaceName: pulumi.Input.fromValue(map['fleetspaceName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FleetDatabaseProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FleetDatabaseProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

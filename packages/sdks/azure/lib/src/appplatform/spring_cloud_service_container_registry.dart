@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudServiceContainerRegistry {
   /// Specifies the name of the container registry.
   final pulumi.Input<String> name;
-
   /// Specifies the password of the container registry.
   final pulumi.Input<String> password;
-
   /// Specifies the login server of the container registry.
   final pulumi.Input<String> server;
-
   /// Specifies the username of the container registry.
   final pulumi.Input<String> username;
 
@@ -36,9 +33,7 @@ class SpringCloudServiceContainerRegistry {
     };
   }
 
-  factory SpringCloudServiceContainerRegistry.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpringCloudServiceContainerRegistry.fromMap(Map<String, dynamic> map) {
     return SpringCloudServiceContainerRegistry(
       name: pulumi.Input.fromValue(map['name'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
@@ -47,3 +42,4 @@ class SpringCloudServiceContainerRegistry {
     );
   }
 }
+

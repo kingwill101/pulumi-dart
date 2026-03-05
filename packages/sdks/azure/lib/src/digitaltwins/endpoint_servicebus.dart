@@ -332,16 +332,12 @@ import 'endpoint_servicebus_state.dart';
 class EndpointServicebus extends pulumi.CustomResource {
   /// The storage secret of the dead-lettering, whose format is `https://&lt;storageAccountname&gt;.blob.core.windows.net/&lt;containerName&gt;?&lt;SASToken&gt;`. When an endpoint can't deliver an event within a certain time period or after trying to deliver the event a certain number of times, it can send the undelivered event to a storage account.
   late final pulumi.Output<String?> deadLetterStorageSecret;
-
   /// The ID of the Digital Twins Instance. Changing this forces a new Digital Twins Service Bus Endpoint to be created.
   late final pulumi.Output<String> digitalTwinsId;
-
   /// The name which should be used for this Digital Twins Service Bus Endpoint. Changing this forces a new Digital Twins Service Bus Endpoint to be created.
   late final pulumi.Output<String> name;
-
   /// The primary connection string of the Service Bus Topic Authorization Rule with a minimum of `send` permission. .
   late final pulumi.Output<String> servicebusPrimaryConnectionString;
-
   /// The secondary connection string of the Service Bus Topic Authorization Rule with a minimum of `send` permission.
   late final pulumi.Output<String> servicebusSecondaryConnectionString;
 
@@ -354,22 +350,16 @@ class EndpointServicebus extends pulumi.CustomResource {
     EndpointServicebusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:digitaltwins/endpointServicebus:EndpointServicebus',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deadLetterStorageSecret = registerOutput<String?>(
-      'deadLetterStorageSecret',
-    );
+          'azure:digitaltwins/endpointServicebus:EndpointServicebus',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
     digitalTwinsId = registerOutput<String>('digitalTwinsId');
     this.name = registerOutput<String>('name');
-    servicebusPrimaryConnectionString = registerOutput<String>(
-      'servicebusPrimaryConnectionString',
-    );
-    servicebusSecondaryConnectionString = registerOutput<String>(
-      'servicebusSecondaryConnectionString',
-    );
+    servicebusPrimaryConnectionString = registerOutput<String>('servicebusPrimaryConnectionString');
+    servicebusSecondaryConnectionString = registerOutput<String>('servicebusSecondaryConnectionString');
   }
 
   /// Gets an existing [EndpointServicebus] resource's state with the given [name] and [id].
@@ -390,21 +380,15 @@ class EndpointServicebus extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:digitaltwins/endpointServicebus:EndpointServicebus',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deadLetterStorageSecret = registerOutput<String?>(
-      'deadLetterStorageSecret',
-    );
+          'azure:digitaltwins/endpointServicebus:EndpointServicebus',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
     digitalTwinsId = registerOutput<String>('digitalTwinsId');
     this.name = registerOutput<String>('name');
-    servicebusPrimaryConnectionString = registerOutput<String>(
-      'servicebusPrimaryConnectionString',
-    );
-    servicebusSecondaryConnectionString = registerOutput<String>(
-      'servicebusSecondaryConnectionString',
-    );
+    servicebusPrimaryConnectionString = registerOutput<String>('servicebusPrimaryConnectionString');
+    servicebusSecondaryConnectionString = registerOutput<String>('servicebusSecondaryConnectionString');
   }
 }

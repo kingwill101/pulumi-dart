@@ -9,21 +9,20 @@ class PlacementGroupStrategyEnumValueResponse {
 
   /// Creates a new [PlacementGroupStrategyEnumValueResponse].
   /// [value] Property value
-  PlacementGroupStrategyEnumValueResponse({this.value});
+  PlacementGroupStrategyEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory PlacementGroupStrategyEnumValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PlacementGroupStrategyEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return PlacementGroupStrategyEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

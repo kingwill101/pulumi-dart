@@ -19,25 +19,18 @@ import 'web_app_diagnostic_logs_configuration_slot_args.dart';
 class WebAppDiagnosticLogsConfigurationSlot extends pulumi.CustomResource {
   /// Application logs configuration.
   late final pulumi.Output<ApplicationLogsConfigResponse?> applicationLogs;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Detailed error messages configuration.
   late final pulumi.Output<EnabledConfigResponse?> detailedErrorMessages;
-
   /// Failed requests tracing configuration.
   late final pulumi.Output<EnabledConfigResponse?> failedRequestsTracing;
-
   /// HTTP logs configuration.
   late final pulumi.Output<HttpLogsConfigResponse?> httpLogs;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -50,52 +43,16 @@ class WebAppDiagnosticLogsConfigurationSlot extends pulumi.CustomResource {
     WebAppDiagnosticLogsConfigurationSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppDiagnosticLogsConfigurationSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationLogs = registerOutput<ApplicationLogsConfigResponse?>(
-      'applicationLogs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationLogsConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:web:WebAppDiagnosticLogsConfigurationSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationLogs = registerOutput<ApplicationLogsConfigResponse?>('applicationLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationLogsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    detailedErrorMessages = registerOutput<EnabledConfigResponse?>(
-      'detailedErrorMessages',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnabledConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    failedRequestsTracing = registerOutput<EnabledConfigResponse?>(
-      'failedRequestsTracing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnabledConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    httpLogs = registerOutput<HttpLogsConfigResponse?>(
-      'httpLogs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HttpLogsConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    detailedErrorMessages = registerOutput<EnabledConfigResponse?>('detailedErrorMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnabledConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    failedRequestsTracing = registerOutput<EnabledConfigResponse?>('failedRequestsTracing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnabledConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpLogs = registerOutput<HttpLogsConfigResponse?>('httpLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpLogsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VPNTunnelCipherSuitePhase1 {
   /// Diffie-Hellman groups.
   final pulumi.Input<List<String>>? dhs;
-
   /// Encryption algorithms.
   final pulumi.Input<List<String>>? encryptions;
-
   /// Integrity algorithms.
   final pulumi.Input<List<String>>? integrities;
-
   /// Pseudo-random functions.
   final pulumi.Input<List<String>>? prves;
 
@@ -38,26 +35,11 @@ class VPNTunnelCipherSuitePhase1 {
 
   factory VPNTunnelCipherSuitePhase1.fromMap(Map<String, dynamic> map) {
     return VPNTunnelCipherSuitePhase1(
-      dhs: (() {
-        final guardedValue = map['dhs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      encryptions: (() {
-        final guardedValue = map['encryptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      integrities: (() {
-        final guardedValue = map['integrities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      prves: (() {
-        final guardedValue = map['prves'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      dhs: (() { final guardedValue = map['dhs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      encryptions: (() { final guardedValue = map['encryptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      integrities: (() { final guardedValue = map['integrities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      prves: (() { final guardedValue = map['prves']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

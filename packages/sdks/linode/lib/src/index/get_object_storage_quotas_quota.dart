@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetObjectStorageQuotasQuota {
   /// The description of the Object Storage quota.
   final pulumi.Input<String> description;
-
   /// The type of the S3 endpoint of the Object Storage.
   final pulumi.Input<String> endpointType;
-
   /// The ID of the Object Storage quota.
   final pulumi.Input<String> quotaId;
-
   /// The maximum quantity of the `resource_metric` allowed by the quota.
   final pulumi.Input<int> quotaLimit;
-
   /// The name of the Object Storage quota.
   final pulumi.Input<String> quotaName;
-
   /// The specific Object Storage resource for the quota.
   final pulumi.Input<String> resourceMetric;
-
   /// The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
   final pulumi.Input<String> s3Endpoint;
 
@@ -66,3 +60,4 @@ class GetObjectStorageQuotasQuota {
     );
   }
 }
+

@@ -333,19 +333,14 @@ import 'backup_policy_disk_state.dart';
 class BackupPolicyDisk extends pulumi.CustomResource {
   /// Specifies a list of repeating time interval. It should follow `ISO 8601` repeating time interval . Changing this forces a new Backup Policy Disk to be created.
   late final pulumi.Output<List<String>> backupRepeatingTimeIntervals;
-
   /// The duration of default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Disk to be created.
   late final pulumi.Output<String> defaultRetentionDuration;
-
   /// The name which should be used for this Backup Policy Disk. Changing this forces a new Backup Policy Disk to be created.
   late final pulumi.Output<String> name;
-
   /// One or more `retention_rule` blocks as defined below. Changing this forces a new Backup Policy Disk to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> retentionRules;
-
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Disk to be created.
   late final pulumi.Output<String?> timeZone;
-
   /// The ID of the Backup Vault within which the Backup Policy Disk should exist. Changing this forces a new Backup Policy Disk to be created.
   late final pulumi.Output<String> vaultId;
 
@@ -358,21 +353,15 @@ class BackupPolicyDisk extends pulumi.CustomResource {
     BackupPolicyDiskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupPolicyDisk:BackupPolicyDisk',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backupRepeatingTimeIntervals = registerOutput<List<String>>(
-      'backupRepeatingTimeIntervals',
-    );
-    defaultRetentionDuration = registerOutput<String>(
-      'defaultRetentionDuration',
-    );
+          'azure:dataprotection/backupPolicyDisk:BackupPolicyDisk',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backupRepeatingTimeIntervals = registerOutput<List<String>>('backupRepeatingTimeIntervals');
+    defaultRetentionDuration = registerOutput<String>('defaultRetentionDuration');
     this.name = registerOutput<String>('name');
-    retentionRules = registerOutput<List<Map<String, dynamic>>?>(
-      'retentionRules',
-    );
+    retentionRules = registerOutput<List<Map<String, dynamic>>?>('retentionRules');
     timeZone = registerOutput<String?>('timeZone');
     vaultId = registerOutput<String>('vaultId');
   }
@@ -395,21 +384,15 @@ class BackupPolicyDisk extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupPolicyDisk:BackupPolicyDisk',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backupRepeatingTimeIntervals = registerOutput<List<String>>(
-      'backupRepeatingTimeIntervals',
-    );
-    defaultRetentionDuration = registerOutput<String>(
-      'defaultRetentionDuration',
-    );
+          'azure:dataprotection/backupPolicyDisk:BackupPolicyDisk',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backupRepeatingTimeIntervals = registerOutput<List<String>>('backupRepeatingTimeIntervals');
+    defaultRetentionDuration = registerOutput<String>('defaultRetentionDuration');
     this.name = registerOutput<String>('name');
-    retentionRules = registerOutput<List<Map<String, dynamic>>?>(
-      'retentionRules',
-    );
+    retentionRules = registerOutput<List<Map<String, dynamic>>?>('retentionRules');
     timeZone = registerOutput<String?>('timeZone');
     vaultId = registerOutput<String>('vaultId');
   }

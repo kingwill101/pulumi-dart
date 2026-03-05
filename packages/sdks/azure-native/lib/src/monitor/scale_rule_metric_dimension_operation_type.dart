@@ -12,8 +12,7 @@ enum ScaleRuleMetricDimensionOperationType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ScaleRuleMetricDimensionOperationType value: $value',
-    );
+    throw ArgumentError('Unknown ScaleRuleMetricDimensionOperationType value: $value');
   }
 }
+

@@ -10,22 +10,16 @@ import 'firewall_policy_filter_rule.dart';
 class FirewallPolicyRuleGroupArgs {
   /// The name of the Firewall Policy.
   final pulumi.Input<String> firewallPolicyName;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final pulumi.Input<String>? name;
-
   /// Priority of the Firewall Policy Rule Group resource.
   final pulumi.Input<int>? priority;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the FirewallPolicyRuleGroup.
   final pulumi.Input<String>? ruleGroupName;
-
   /// Group of Firewall Policy rules.
   final pulumi.Input<List<FirewallPolicyFilterRule>>? rules;
 
@@ -55,61 +49,20 @@ class FirewallPolicyRuleGroupArgs {
       'priority': ?priority,
       'resourceGroupName': resourceGroupName,
       'ruleGroupName': ?ruleGroupName,
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<FirewallPolicyFilterRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  FirewallPolicyFilterRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<FirewallPolicyFilterRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<FirewallPolicyFilterRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory FirewallPolicyRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleGroupArgs(
-      firewallPolicyName: pulumi.Input.fromValue(
-        map['firewallPolicyName'] as String,
-      ),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      ruleGroupName: (() {
-        final guardedValue = map['ruleGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<FirewallPolicyFilterRule>(
-            guardedValue,
-            (value) => FirewallPolicyFilterRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      firewallPolicyName: pulumi.Input.fromValue(map['firewallPolicyName'] as String),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      ruleGroupName: (() { final guardedValue = map['ruleGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FirewallPolicyFilterRule>(guardedValue, (value) => FirewallPolicyFilterRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

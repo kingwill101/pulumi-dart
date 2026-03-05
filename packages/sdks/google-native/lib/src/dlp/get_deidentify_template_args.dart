@@ -31,15 +31,10 @@ class GetDeidentifyTemplateArgs {
 
   factory GetDeidentifyTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetDeidentifyTemplateArgs(
-      deidentifyTemplateId: pulumi.Input.fromValue(
-        map['deidentifyTemplateId'] as String,
-      ),
+      deidentifyTemplateId: pulumi.Input.fromValue(map['deidentifyTemplateId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

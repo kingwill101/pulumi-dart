@@ -7,16 +7,12 @@ import 'test_base_account_skucapability_response.dart';
 class TestBaseAccountSKUResponse {
   /// The capabilities of a SKU.
   final pulumi.Input<List<TestBaseAccountSKUCapabilityResponse>> capabilities;
-
   /// The locations that the SKU is available.
   final pulumi.Input<List<String>>? locations;
-
   /// The name of the SKU. This is typically a letter + number code, such as B0 or S0.
   final pulumi.Input<String> name;
-
   /// The type of resource the SKU applies to.
   final pulumi.Input<String>? resourceType;
-
   /// The tier of this particular SKU.
   final pulumi.Input<String> tier;
 
@@ -36,18 +32,7 @@ class TestBaseAccountSKUResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capabilities':
-          pulumi.Input.mapInputValue<
-            List<TestBaseAccountSKUCapabilityResponse>,
-            List<Map<String, dynamic>>
-          >(
-            capabilities,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TestBaseAccountSKUCapabilityResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'capabilities': pulumi.Input.mapInputValue<List<TestBaseAccountSKUCapabilityResponse>, List<Map<String, dynamic>>>(capabilities, (value) => pulumi.Input.encodeList<TestBaseAccountSKUCapabilityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'locations': ?locations,
       'name': name,
       'resourceType': ?resourceType,
@@ -57,26 +42,12 @@ class TestBaseAccountSKUResponse {
 
   factory TestBaseAccountSKUResponse.fromMap(Map<String, dynamic> map) {
     return TestBaseAccountSKUResponse(
-      capabilities: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<TestBaseAccountSKUCapabilityResponse>(
-          map['capabilities']!,
-          (value) => TestBaseAccountSKUCapabilityResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      locations: (() {
-        final guardedValue = map['locations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      capabilities: pulumi.Input.fromValue(pulumi.Input.decodeList<TestBaseAccountSKUCapabilityResponse>(map['capabilities']!, (value) => TestBaseAccountSKUCapabilityResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      locations: (() { final guardedValue = map['locations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceType: (() {
-        final guardedValue = map['resourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tier: pulumi.Input.fromValue(map['tier'] as String),
     );
   }
 }
+

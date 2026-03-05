@@ -16,3 +16,4 @@ enum SparkServerType {
     throw ArgumentError('Unknown SparkServerType value: $value');
   }
 }
+

@@ -12,28 +12,20 @@ import 'access_review_scope.dart';
 class ScopeAccessReviewHistoryDefinitionByIdArgs {
   /// Collection of review decisions which the history data should be filtered on. For example if Approve and Deny are supplied the data will only contain review results in which the decision maker approved or denied a review request.
   final pulumi.Input<List<String>>? decisions;
-
   /// The display name for the history definition.
   final pulumi.Input<String>? displayName;
-
   /// The id of the access review history definition.
   final pulumi.Input<String>? historyDefinitionId;
-
   /// Set of access review history instances for this history definition.
   final pulumi.Input<List<AccessReviewHistoryInstance>>? instances;
-
   /// The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
   final pulumi.Input<int>? interval;
-
   /// Access Review History Definition recurrence settings.
   final pulumi.Input<AccessReviewRecurrenceRange>? range;
-
   /// The scope of the resource.
   final pulumi.Input<String> scope;
-
   /// A collection of scopes used when selecting review history data
   final pulumi.Input<List<AccessReviewScope>>? scopes;
-
   /// The recurrence type : weekly, monthly, etc.
   final pulumi.Input<String>? type;
 
@@ -64,104 +56,27 @@ class ScopeAccessReviewHistoryDefinitionByIdArgs {
       'decisions': ?decisions,
       'displayName': ?displayName,
       'historyDefinitionId': ?historyDefinitionId,
-      'instances':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AccessReviewHistoryInstance>,
-            List<Map<String, dynamic>>
-          >(
-            instances,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AccessReviewHistoryInstance,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'instances': ?pulumi.Input.mapOptionalInputValue<List<AccessReviewHistoryInstance>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<AccessReviewHistoryInstance, Map<String, dynamic>>(value, (value) => value.toMap())),
       'interval': ?interval,
-      'range':
-          ?pulumi.Input.mapOptionalInputValue<
-            AccessReviewRecurrenceRange,
-            Map<String, dynamic>
-          >(range, (value) => value.toMap()),
+      'range': ?pulumi.Input.mapOptionalInputValue<AccessReviewRecurrenceRange, Map<String, dynamic>>(range, (value) => value.toMap()),
       'scope': scope,
-      'scopes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AccessReviewScope>,
-            List<Map<String, dynamic>>
-          >(
-            scopes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AccessReviewScope,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'scopes': ?pulumi.Input.mapOptionalInputValue<List<AccessReviewScope>, List<Map<String, dynamic>>>(scopes, (value) => pulumi.Input.encodeList<AccessReviewScope, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': ?type,
     };
   }
 
-  factory ScopeAccessReviewHistoryDefinitionByIdArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScopeAccessReviewHistoryDefinitionByIdArgs.fromMap(Map<String, dynamic> map) {
     return ScopeAccessReviewHistoryDefinitionByIdArgs(
-      decisions: (() {
-        final guardedValue = map['decisions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      historyDefinitionId: (() {
-        final guardedValue = map['historyDefinitionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instances: (() {
-        final guardedValue = map['instances'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AccessReviewHistoryInstance>(
-            guardedValue,
-            (value) => AccessReviewHistoryInstance.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      interval: (() {
-        final guardedValue = map['interval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      range: (() {
-        final guardedValue = map['range'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AccessReviewRecurrenceRange.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      decisions: (() { final guardedValue = map['decisions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      historyDefinitionId: (() { final guardedValue = map['historyDefinitionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessReviewHistoryInstance>(guardedValue, (value) => AccessReviewHistoryInstance.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      range: (() { final guardedValue = map['range']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessReviewRecurrenceRange.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scope: pulumi.Input.fromValue(map['scope'] as String),
-      scopes: (() {
-        final guardedValue = map['scopes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AccessReviewScope>(
-            guardedValue,
-            (value) => AccessReviewScope.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      scopes: (() { final guardedValue = map['scopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessReviewScope>(guardedValue, (value) => AccessReviewScope.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listNamespaceKeys.
 class ListNamespaceKeysResult {
   /// Primary connection string of the alias if GEO DR is enabled
   final String aliasPrimaryConnectionString;
-
   /// Secondary  connection string of the alias if GEO DR is enabled
   final String aliasSecondaryConnectionString;
-
   /// A string that describes the AuthorizationRule.
   final String keyName;
-
   /// Primary connection string of the created namespace AuthorizationRule.
   final String primaryConnectionString;
-
   /// A base64-encoded 256-bit primary key for signing and validating the SAS token.
   final String primaryKey;
-
   /// Secondary connection string of the created namespace AuthorizationRule.
   final String secondaryConnectionString;
-
   /// A base64-encoded 256-bit primary key for signing and validating the SAS token.
   final String secondaryKey;
 
@@ -55,10 +50,8 @@ class ListNamespaceKeysResult {
 
   factory ListNamespaceKeysResult.fromMap(Map<String, dynamic> map) {
     return ListNamespaceKeysResult(
-      aliasPrimaryConnectionString:
-          map['aliasPrimaryConnectionString'] as String,
-      aliasSecondaryConnectionString:
-          map['aliasSecondaryConnectionString'] as String,
+      aliasPrimaryConnectionString: map['aliasPrimaryConnectionString'] as String,
+      aliasSecondaryConnectionString: map['aliasSecondaryConnectionString'] as String,
       keyName: map['keyName'] as String,
       primaryConnectionString: map['primaryConnectionString'] as String,
       primaryKey: map['primaryKey'] as String,
@@ -67,3 +60,4 @@ class ListNamespaceKeysResult {
     );
   }
 }
+

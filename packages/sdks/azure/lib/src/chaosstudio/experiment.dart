@@ -745,19 +745,14 @@ import 'experiment_state.dart';
 class Experiment extends pulumi.CustomResource {
   /// A `identity` block as defined below.
   late final pulumi.Output<ExperimentIdentity?> identity;
-
   /// The Azure Region where the Chaos Studio Experiment should exist. Changing this forces a new Chaos Studio Experiment to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Chaos Studio Experiment. Changing this forces a new Chaos Studio Experiment to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Chaos Studio Experiment should exist. Changing this forces a new Chaos Studio Experiment to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// One or more `selectors` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> selectors;
-
   /// One or more `steps` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> steps;
 
@@ -770,21 +765,12 @@ class Experiment extends pulumi.CustomResource {
     ExperimentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:chaosstudio/experiment:Experiment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    identity = registerOutput<ExperimentIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExperimentIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:chaosstudio/experiment:Experiment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    identity = registerOutput<ExperimentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -810,21 +796,12 @@ class Experiment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:chaosstudio/experiment:Experiment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    identity = registerOutput<ExperimentIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExperimentIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:chaosstudio/experiment:Experiment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    identity = registerOutput<ExperimentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

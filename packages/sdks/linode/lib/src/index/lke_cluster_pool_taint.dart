@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LkeClusterPoolTaint {
   /// The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
   final pulumi.Input<String> effect;
-
   /// The Kubernetes taint key.
   final pulumi.Input<String> key;
-
   /// The Kubernetes taint value.
   ///
   /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
@@ -25,7 +23,11 @@ class LkeClusterPoolTaint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'effect': effect, 'key': key, 'value': value};
+    return <String, dynamic>{
+      'effect': effect,
+      'key': key,
+      'value': value,
+    };
   }
 
   factory LkeClusterPoolTaint.fromMap(Map<String, dynamic> map) {
@@ -36,3 +38,4 @@ class LkeClusterPoolTaint {
     );
   }
 }
+

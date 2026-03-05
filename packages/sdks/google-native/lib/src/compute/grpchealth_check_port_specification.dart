@@ -13,8 +13,7 @@ enum GRPCHealthCheckPortSpecification {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GRPCHealthCheckPortSpecification value: $value',
-    );
+    throw ArgumentError('Unknown GRPCHealthCheckPortSpecification value: $value');
   }
 }
+

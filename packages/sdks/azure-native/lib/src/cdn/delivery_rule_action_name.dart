@@ -22,3 +22,4 @@ enum DeliveryRuleActionName {
     throw ArgumentError('Unknown DeliveryRuleActionName value: $value');
   }
 }
+

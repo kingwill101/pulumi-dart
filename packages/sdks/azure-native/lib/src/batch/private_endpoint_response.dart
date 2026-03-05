@@ -9,10 +9,14 @@ class PrivateEndpointResponse {
 
   /// Creates a new [PrivateEndpointResponse].
   /// [id] The ARM resource identifier of the private endpoint. This is of the form /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/privateEndpoints/{privateEndpoint}.
-  PrivateEndpointResponse({required this.id});
+  PrivateEndpointResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory PrivateEndpointResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class PrivateEndpointResponse {
     );
   }
 }
+

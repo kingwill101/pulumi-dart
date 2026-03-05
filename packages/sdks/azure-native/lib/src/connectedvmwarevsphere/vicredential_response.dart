@@ -9,19 +9,20 @@ class VICredentialResponse {
 
   /// Creates a new [VICredentialResponse].
   /// [username] Gets or sets username to connect with the vCenter.
-  VICredentialResponse({this.username});
+  VICredentialResponse({
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'username': ?username};
+    return <String, dynamic>{
+      'username': ?username,
+    };
   }
 
   factory VICredentialResponse.fromMap(Map<String, dynamic> map) {
     return VICredentialResponse(
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

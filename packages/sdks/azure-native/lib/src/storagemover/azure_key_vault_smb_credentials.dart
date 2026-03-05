@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureKeyVaultSmbCredentials {
   /// The Azure Key Vault secret URI which stores the password. Use empty string to clean-up existing value.
   final pulumi.Input<String>? passwordUri;
-
   /// The Credentials type.
   /// Expected value is 'AzureKeyVaultSmb'.
   final pulumi.Input<String> type;
-
   /// The Azure Key Vault secret URI which stores the username. Use empty string to clean-up existing value.
   final pulumi.Input<String>? usernameUri;
 
@@ -34,17 +32,10 @@ class AzureKeyVaultSmbCredentials {
 
   factory AzureKeyVaultSmbCredentials.fromMap(Map<String, dynamic> map) {
     return AzureKeyVaultSmbCredentials(
-      passwordUri: (() {
-        final guardedValue = map['passwordUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      passwordUri: (() { final guardedValue = map['passwordUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      usernameUri: (() {
-        final guardedValue = map['usernameUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      usernameUri: (() { final guardedValue = map['usernameUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

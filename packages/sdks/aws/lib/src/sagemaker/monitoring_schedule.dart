@@ -132,20 +132,14 @@ import 'monitoring_schedule_state.dart';
 class MonitoringSchedule extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) assigned by AWS to this monitoring schedule.
   late final pulumi.Output<String> arn;
-
   /// The configuration object that specifies the monitoring schedule and defines the monitoring job. Fields are documented below.
-  late final pulumi.Output<MonitoringScheduleMonitoringScheduleConfig>
-  monitoringScheduleConfig;
-
+  late final pulumi.Output<MonitoringScheduleMonitoringScheduleConfig> monitoringScheduleConfig;
   /// The name of the monitoring schedule. The name must be unique within an AWS Region within an AWS account. If omitted, the provider will assign a random, unique name.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -158,23 +152,13 @@ class MonitoringSchedule extends pulumi.CustomResource {
     MonitoringScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/monitoringSchedule:MonitoringSchedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/monitoringSchedule:MonitoringSchedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    monitoringScheduleConfig =
-        registerOutput<MonitoringScheduleMonitoringScheduleConfig>(
-          'monitoringScheduleConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MonitoringScheduleMonitoringScheduleConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    monitoringScheduleConfig = registerOutput<MonitoringScheduleMonitoringScheduleConfig>('monitoringScheduleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitoringScheduleMonitoringScheduleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -199,23 +183,13 @@ class MonitoringSchedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/monitoringSchedule:MonitoringSchedule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/monitoringSchedule:MonitoringSchedule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    monitoringScheduleConfig =
-        registerOutput<MonitoringScheduleMonitoringScheduleConfig>(
-          'monitoringScheduleConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MonitoringScheduleMonitoringScheduleConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    monitoringScheduleConfig = registerOutput<MonitoringScheduleMonitoringScheduleConfig>('monitoringScheduleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitoringScheduleMonitoringScheduleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

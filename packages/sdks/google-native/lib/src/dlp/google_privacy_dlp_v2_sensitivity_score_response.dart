@@ -9,17 +9,20 @@ class GooglePrivacyDlpV2SensitivityScoreResponse {
 
   /// Creates a new [GooglePrivacyDlpV2SensitivityScoreResponse].
   /// [score] The sensitivity score applied to the resource.
-  GooglePrivacyDlpV2SensitivityScoreResponse({required this.score});
+  GooglePrivacyDlpV2SensitivityScoreResponse({
+    required this.score,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'score': score};
+    return <String, dynamic>{
+      'score': score,
+    };
   }
 
-  factory GooglePrivacyDlpV2SensitivityScoreResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2SensitivityScoreResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2SensitivityScoreResponse(
       score: pulumi.Input.fromValue(map['score'] as String),
     );
   }
 }
+

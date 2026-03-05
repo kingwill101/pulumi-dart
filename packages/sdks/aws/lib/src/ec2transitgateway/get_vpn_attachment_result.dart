@@ -6,11 +6,9 @@ import 'get_vpn_attachment_filter.dart';
 /// Result data returned by getVpnAttachment.
 class GetVpnAttachmentResult {
   final List<GetVpnAttachmentFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// Key-value tags for the EC2 Transit Gateway VPN Attachment
   final Map<String, String> tags;
   final String? transitGatewayId;
@@ -34,14 +32,7 @@ class GetVpnAttachmentResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetVpnAttachmentFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVpnAttachmentFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'region': region,
       'tags': tags,
@@ -52,29 +43,13 @@ class GetVpnAttachmentResult {
 
   factory GetVpnAttachmentResult.fromMap(Map<String, dynamic> map) {
     return GetVpnAttachmentResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetVpnAttachmentFilter>(
-          guardedValue,
-          (value) => GetVpnAttachmentFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVpnAttachmentFilter>(guardedValue, (value) => GetVpnAttachmentFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      transitGatewayId: (() {
-        final guardedValue = map['transitGatewayId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vpnConnectionId: (() {
-        final guardedValue = map['vpnConnectionId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      transitGatewayId: (() { final guardedValue = map['transitGatewayId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpnConnectionId: (() { final guardedValue = map['vpnConnectionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -11,8 +11,7 @@ enum GatewayListDebugCredentialsContractPurpose {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GatewayListDebugCredentialsContractPurpose value: $value',
-    );
+    throw ArgumentError('Unknown GatewayListDebugCredentialsContractPurpose value: $value');
   }
 }
+

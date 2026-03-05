@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listServiceGloballyEnabledApms.
 class ListServiceGloballyEnabledApmsResult {
   /// Collection of the globally enabled APMs
@@ -7,21 +8,20 @@ class ListServiceGloballyEnabledApmsResult {
 
   /// Creates a new [ListServiceGloballyEnabledApmsResult].
   /// [value] Collection of the globally enabled APMs
-  ListServiceGloballyEnabledApmsResult({this.value});
+  ListServiceGloballyEnabledApmsResult({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory ListServiceGloballyEnabledApmsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListServiceGloballyEnabledApmsResult.fromMap(Map<String, dynamic> map) {
     return ListServiceGloballyEnabledApmsResult(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }
+

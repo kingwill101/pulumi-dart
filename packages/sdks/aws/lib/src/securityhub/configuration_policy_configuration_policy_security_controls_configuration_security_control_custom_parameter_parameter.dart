@@ -12,56 +12,23 @@ import 'configuration_policy_configuration_policy_security_controls_configuratio
 
 class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter {
   /// The bool `value` for a Boolean-typed Security Hub Control Parameter.
-  final pulumi.Input<
-    ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBool
-  >?
-  bool_;
-
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBool>? bool_;
   /// The float `value` for a Double-typed Security Hub Control Parameter.
-  final pulumi.Input<
-    ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterDouble
-  >?
-  double_;
-
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterDouble>? double_;
   /// The string `value` for a Enum-typed Security Hub Control Parameter.
-  final pulumi.Input<
-    ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnum
-  >?
-  enum_;
-
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnum>? enum_;
   /// The string list `value` for a EnumList-typed Security Hub Control Parameter.
-  final pulumi.Input<
-    ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumList
-  >?
-  enumList;
-
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumList>? enumList;
   /// The int `value` for a Int-typed Security Hub Control Parameter.
-  final pulumi.Input<
-    ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterInt
-  >?
-  int_;
-
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterInt>? int_;
   /// The int list `value` for a IntList-typed Security Hub Control Parameter.
-  final pulumi.Input<
-    ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList
-  >?
-  intList;
-
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList>? intList;
   /// The name of the control parameter. For more information see the [Security Hub controls reference] documentation.
   final pulumi.Input<String> name;
-
   /// The string `value` for a String-typed Security Hub Control Parameter.
-  final pulumi.Input<
-    ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterString
-  >?
-  string_;
-
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterString>? string_;
   /// The string list `value` for a StringList-typed Security Hub Control Parameter.
-  final pulumi.Input<
-    ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterStringList
-  >?
-  stringList;
-
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterStringList>? stringList;
   /// Identifies whether a control parameter uses a custom user-defined value or subscribes to the default Security Hub behavior. Valid values: `DEFAULT`, `CUSTOM`.
   final pulumi.Input<String> valueType;
 
@@ -91,129 +58,32 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurit
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bool':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBool,
-            Map<String, dynamic>
-          >(bool_, (value) => value.toMap()),
-      'double':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterDouble,
-            Map<String, dynamic>
-          >(double_, (value) => value.toMap()),
-      'enum':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnum,
-            Map<String, dynamic>
-          >(enum_, (value) => value.toMap()),
-      'enumList':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumList,
-            Map<String, dynamic>
-          >(enumList, (value) => value.toMap()),
-      'int':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterInt,
-            Map<String, dynamic>
-          >(int_, (value) => value.toMap()),
-      'intList':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList,
-            Map<String, dynamic>
-          >(intList, (value) => value.toMap()),
+      'bool': ?pulumi.Input.mapOptionalInputValue<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBool, Map<String, dynamic>>(bool_, (value) => value.toMap()),
+      'double': ?pulumi.Input.mapOptionalInputValue<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterDouble, Map<String, dynamic>>(double_, (value) => value.toMap()),
+      'enum': ?pulumi.Input.mapOptionalInputValue<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnum, Map<String, dynamic>>(enum_, (value) => value.toMap()),
+      'enumList': ?pulumi.Input.mapOptionalInputValue<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumList, Map<String, dynamic>>(enumList, (value) => value.toMap()),
+      'int': ?pulumi.Input.mapOptionalInputValue<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterInt, Map<String, dynamic>>(int_, (value) => value.toMap()),
+      'intList': ?pulumi.Input.mapOptionalInputValue<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList, Map<String, dynamic>>(intList, (value) => value.toMap()),
       'name': name,
-      'string':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterString,
-            Map<String, dynamic>
-          >(string_, (value) => value.toMap()),
-      'stringList':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterStringList,
-            Map<String, dynamic>
-          >(stringList, (value) => value.toMap()),
+      'string': ?pulumi.Input.mapOptionalInputValue<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterString, Map<String, dynamic>>(string_, (value) => value.toMap()),
+      'stringList': ?pulumi.Input.mapOptionalInputValue<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterStringList, Map<String, dynamic>>(stringList, (value) => value.toMap()),
       'valueType': valueType,
     };
   }
 
-  factory ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter.fromMap(Map<String, dynamic> map) {
     return ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter(
-      bool_: (() {
-        final guardedValue = map['bool'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBool.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      double_: (() {
-        final guardedValue = map['double'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterDouble.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      enum_: (() {
-        final guardedValue = map['enum'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnum.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      enumList: (() {
-        final guardedValue = map['enumList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumList.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      int_: (() {
-        final guardedValue = map['int'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterInt.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      intList: (() {
-        final guardedValue = map['intList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      bool_: (() { final guardedValue = map['bool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBool.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      double_: (() { final guardedValue = map['double']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterDouble.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      enum_: (() { final guardedValue = map['enum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnum.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      enumList: (() { final guardedValue = map['enumList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumList.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      int_: (() { final guardedValue = map['int']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterInt.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      intList: (() { final guardedValue = map['intList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      string_: (() {
-        final guardedValue = map['string'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterString.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      stringList: (() {
-        final guardedValue = map['stringList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterStringList.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      string_: (() { final guardedValue = map['string']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterString.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      stringList: (() { final guardedValue = map['stringList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterStringList.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       valueType: pulumi.Input.fromValue(map['valueType'] as String),
     );
   }
 }
+

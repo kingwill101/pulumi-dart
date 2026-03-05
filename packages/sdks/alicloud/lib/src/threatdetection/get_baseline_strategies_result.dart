@@ -9,14 +9,11 @@ class GetBaselineStrategiesResult {
   /// * **common**: standard policy
   /// * **custom**: custom policy
   final String? customType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Baseline Strategy IDs.
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of name of Baseline Strategys.
   final List<String> names;
   final String? outputFile;
@@ -51,46 +48,22 @@ class GetBaselineStrategiesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'strategies':
-          pulumi.Input.encodeList<
-            GetBaselineStrategiesStrategy,
-            Map<String, dynamic>
-          >(strategies, (value) => value.toMap()),
+      'strategies': pulumi.Input.encodeList<GetBaselineStrategiesStrategy, Map<String, dynamic>>(strategies, (value) => value.toMap()),
       'strategyIds': ?strategyIds,
     };
   }
 
   factory GetBaselineStrategiesResult.fromMap(Map<String, dynamic> map) {
     return GetBaselineStrategiesResult(
-      customType: (() {
-        final guardedValue = map['customType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      customType: (() { final guardedValue = map['customType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      strategies: pulumi.Input.decodeList<GetBaselineStrategiesStrategy>(
-        map['strategies']!,
-        (value) => GetBaselineStrategiesStrategy.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      strategyIds: (() {
-        final guardedValue = map['strategyIds'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      strategies: pulumi.Input.decodeList<GetBaselineStrategiesStrategy>(map['strategies']!, (value) => GetBaselineStrategiesStrategy.fromMap((value as Map).cast<String, dynamic>())),
+      strategyIds: (() { final guardedValue = map['strategyIds']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

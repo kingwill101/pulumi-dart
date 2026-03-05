@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainOwnershipIdentifierArgs {
   /// Name of domain.
   final pulumi.Input<String> domainName;
-
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-
   /// Name of identifier.
   final pulumi.Input<String>? name;
-
   /// Ownership Id.
   final pulumi.Input<String>? ownershipId;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -49,24 +45,11 @@ class DomainOwnershipIdentifierArgs {
   factory DomainOwnershipIdentifierArgs.fromMap(Map<String, dynamic> map) {
     return DomainOwnershipIdentifierArgs(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ownershipId: (() {
-        final guardedValue = map['ownershipId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ownershipId: (() { final guardedValue = map['ownershipId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClustersClusterInstanceModel {
   /// The health status of the instance.
   final pulumi.Input<String> healthStatus;
-
   /// (Deprecated from version 1.232.0)
   final pulumi.Input<String> instanceType;
-
   /// The public IP address.
   final pulumi.Input<String> internetIp;
-
   /// The IP address of the instance.
   final pulumi.Input<String> ip;
-
   /// The name of the pod.
   final pulumi.Input<String> podName;
-
   /// The role.
   final pulumi.Input<String> role;
-
   /// The single-thread IP address.
   final pulumi.Input<String> singleTunnelVip;
-
   /// (Deprecated from version 1.232.0)
   final pulumi.Input<String> vip;
 
@@ -73,3 +66,4 @@ class GetClustersClusterInstanceModel {
     );
   }
 }
+

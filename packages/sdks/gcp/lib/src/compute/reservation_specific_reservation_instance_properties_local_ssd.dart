@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReservationSpecificReservationInstancePropertiesLocalSsd {
   /// The size of the disk in base-2 GB.
   final pulumi.Input<int> diskSizeGb;
-
   /// The disk interface to use for attaching this disk.
   /// Default value is `SCSI`.
   /// Possible values are: `SCSI`, `NVME`.
@@ -20,19 +19,17 @@ class ReservationSpecificReservationInstancePropertiesLocalSsd {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'diskSizeGb': diskSizeGb, 'interface': ?interface};
+    return <String, dynamic>{
+      'diskSizeGb': diskSizeGb,
+      'interface': ?interface,
+    };
   }
 
-  factory ReservationSpecificReservationInstancePropertiesLocalSsd.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReservationSpecificReservationInstancePropertiesLocalSsd.fromMap(Map<String, dynamic> map) {
     return ReservationSpecificReservationInstancePropertiesLocalSsd(
       diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
-      interface: (() {
-        final guardedValue = map['interface'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      interface: (() { final guardedValue = map['interface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

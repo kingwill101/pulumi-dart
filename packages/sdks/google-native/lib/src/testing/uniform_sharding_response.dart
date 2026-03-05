@@ -9,10 +9,14 @@ class UniformShardingResponse {
 
   /// Creates a new [UniformShardingResponse].
   /// [numShards] The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be &lt;= 50. When you select one or more ARM virtual devices, it must be &lt;= 200. When you select only x86 virtual devices, it must be &lt;= 500.
-  UniformShardingResponse({required this.numShards});
+  UniformShardingResponse({
+    required this.numShards,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'numShards': numShards};
+    return <String, dynamic>{
+      'numShards': numShards,
+    };
   }
 
   factory UniformShardingResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class UniformShardingResponse {
     );
   }
 }
+

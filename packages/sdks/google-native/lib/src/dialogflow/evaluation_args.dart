@@ -9,14 +9,11 @@ import 'google_cloud_dialogflow_v2_evaluation_config.dart';
 /// {@macro pulumi_dialogflow_v2_evaluation_args_doc}
 class EvaluationArgs {
   final pulumi.Input<String> conversationModelId;
-
   /// Optional. The display name of the model evaluation. At most 64 bytes long.
   final pulumi.Input<String>? displayName;
-
   /// Optional. The configuration of the evaluation task.
   final pulumi.Input<GoogleCloudDialogflowV2EvaluationConfig>? evaluationConfig;
   final pulumi.Input<String>? location;
-
   /// The resource name of the evaluation. Format: `projects//conversationModels//evaluations/`
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -41,11 +38,7 @@ class EvaluationArgs {
     return <String, dynamic>{
       'conversationModelId': conversationModelId,
       'displayName': ?displayName,
-      'evaluationConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowV2EvaluationConfig,
-            Map<String, dynamic>
-          >(evaluationConfig, (value) => value.toMap()),
+      'evaluationConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2EvaluationConfig, Map<String, dynamic>>(evaluationConfig, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'project': ?project,
@@ -54,38 +47,13 @@ class EvaluationArgs {
 
   factory EvaluationArgs.fromMap(Map<String, dynamic> map) {
     return EvaluationArgs(
-      conversationModelId: pulumi.Input.fromValue(
-        map['conversationModelId'] as String,
-      ),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      evaluationConfig: (() {
-        final guardedValue = map['evaluationConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowV2EvaluationConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      conversationModelId: pulumi.Input.fromValue(map['conversationModelId'] as String),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      evaluationConfig: (() { final guardedValue = map['evaluationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowV2EvaluationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchedulingNodeAffinityResponseComputeV1 {
   /// Corresponds to the label key of Node resource.
   final pulumi.Input<String> key;
-
   /// Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
   final pulumi.Input<String> operator;
-
   /// Corresponds to the label values of Node resource.
   final pulumi.Input<List<String>> values;
 
@@ -31,9 +29,7 @@ class SchedulingNodeAffinityResponseComputeV1 {
     };
   }
 
-  factory SchedulingNodeAffinityResponseComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SchedulingNodeAffinityResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return SchedulingNodeAffinityResponseComputeV1(
       key: pulumi.Input.fromValue(map['key'] as String),
       operator: pulumi.Input.fromValue(map['operator'] as String),
@@ -41,3 +37,4 @@ class SchedulingNodeAffinityResponseComputeV1 {
     );
   }
 }
+

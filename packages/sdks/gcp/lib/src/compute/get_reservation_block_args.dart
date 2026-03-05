@@ -9,16 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReservationBlockArgs {
   /// The name of the reservation block.
   final pulumi.Input<String> name;
-
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The name of the parent reservation.
   ///
   /// - - -
   final pulumi.Input<String> reservation;
-
   /// The zone where the reservation block resides.
   final pulumi.Input<String>? zone;
 
@@ -46,17 +43,10 @@ class GetReservationBlockArgs {
   factory GetReservationBlockArgs.fromMap(Map<String, dynamic> map) {
     return GetReservationBlockArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reservation: pulumi.Input.fromValue(map['reservation'] as String),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFileServicePropertiesArgs {
   /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String> accountName;
-
   /// The name of the file Service within the specified storage account. File Service Name must be "default"
   final pulumi.Input<String> fileServicesName;
-
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetFileServicePropertiesArgs {
   factory GetFileServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return GetFileServicePropertiesArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      fileServicesName: pulumi.Input.fromValue(
-        map['fileServicesName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      fileServicesName: pulumi.Input.fromValue(map['fileServicesName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

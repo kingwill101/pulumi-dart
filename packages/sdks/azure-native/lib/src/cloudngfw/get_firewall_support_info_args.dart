@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFirewallSupportInfoArgs {
   /// email address on behalf of which this API called
   final pulumi.Input<String>? email;
-
   /// Firewall resource name
   final pulumi.Input<String> firewallName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,15 +34,10 @@ class GetFirewallSupportInfoArgs {
 
   factory GetFirewallSupportInfoArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallSupportInfoArgs(
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firewallName: pulumi.Input.fromValue(map['firewallName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

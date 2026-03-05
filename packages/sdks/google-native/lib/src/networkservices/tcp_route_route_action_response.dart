@@ -7,7 +7,6 @@ import 'tcp_route_route_destination_response.dart';
 class TcpRouteRouteActionResponse {
   /// Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
   final pulumi.Input<List<TcpRouteRouteDestinationResponse>> destinations;
-
   /// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
   final pulumi.Input<bool> originalDestination;
 
@@ -21,35 +20,16 @@ class TcpRouteRouteActionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinations':
-          pulumi.Input.mapInputValue<
-            List<TcpRouteRouteDestinationResponse>,
-            List<Map<String, dynamic>>
-          >(
-            destinations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TcpRouteRouteDestinationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'destinations': pulumi.Input.mapInputValue<List<TcpRouteRouteDestinationResponse>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<TcpRouteRouteDestinationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'originalDestination': originalDestination,
     };
   }
 
   factory TcpRouteRouteActionResponse.fromMap(Map<String, dynamic> map) {
     return TcpRouteRouteActionResponse(
-      destinations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<TcpRouteRouteDestinationResponse>(
-          map['destinations']!,
-          (value) => TcpRouteRouteDestinationResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      originalDestination: pulumi.Input.fromValue(
-        map['originalDestination'] as bool,
-      ),
+      destinations: pulumi.Input.fromValue(pulumi.Input.decodeList<TcpRouteRouteDestinationResponse>(map['destinations']!, (value) => TcpRouteRouteDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      originalDestination: pulumi.Input.fromValue(map['originalDestination'] as bool),
     );
   }
 }
+

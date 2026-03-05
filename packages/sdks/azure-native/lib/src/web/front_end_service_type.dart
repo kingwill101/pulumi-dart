@@ -14,3 +14,4 @@ enum FrontEndServiceType {
     throw ArgumentError('Unknown FrontEndServiceType value: $value');
   }
 }
+

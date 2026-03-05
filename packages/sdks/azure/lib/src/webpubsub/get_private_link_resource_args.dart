@@ -12,10 +12,14 @@ class GetPrivateLinkResourceArgs {
 
   /// Creates a new [GetPrivateLinkResourceArgs].
   /// [webPubsubId] The ID of an existing Web Pubsub Resource which Private Link Resource should be retrieved for.
-  GetPrivateLinkResourceArgs({required this.webPubsubId});
+  GetPrivateLinkResourceArgs({
+    required this.webPubsubId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'webPubsubId': webPubsubId};
+    return <String, dynamic>{
+      'webPubsubId': webPubsubId,
+    };
   }
 
   factory GetPrivateLinkResourceArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetPrivateLinkResourceArgs {
     );
   }
 }
+

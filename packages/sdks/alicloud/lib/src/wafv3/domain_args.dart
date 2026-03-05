@@ -10,22 +10,16 @@ import 'domain_redirect.dart';
 /// {@macro pulumi_wafv3_domain_domain_args_doc}
 class DomainArgs {
   final pulumi.Input<String>? accessType;
-
   /// The name of the domain name to query.
   final pulumi.Input<String> domain;
-
   /// The ID of the Web Application Firewall (WAF) instance.
   final pulumi.Input<String> instanceId;
-
   /// Configure listening information. See `listen` below.
   final pulumi.Input<DomainListen> listen;
-
   /// Configure forwarding information. See `redirect` below.
   final pulumi.Input<DomainRedirect> redirect;
-
   /// The ID of the Alibaba Cloud resource group.
   final pulumi.Input<String>? resourceManagerResourceGroupId;
-
   /// The tags. You can specify up to 20 tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -52,15 +46,8 @@ class DomainArgs {
       'accessType': ?accessType,
       'domain': domain,
       'instanceId': instanceId,
-      'listen': pulumi.Input.mapInputValue<DomainListen, Map<String, dynamic>>(
-        listen,
-        (value) => value.toMap(),
-      ),
-      'redirect':
-          pulumi.Input.mapInputValue<DomainRedirect, Map<String, dynamic>>(
-            redirect,
-            (value) => value.toMap(),
-          ),
+      'listen': pulumi.Input.mapInputValue<DomainListen, Map<String, dynamic>>(listen, (value) => value.toMap()),
+      'redirect': pulumi.Input.mapInputValue<DomainRedirect, Map<String, dynamic>>(redirect, (value) => value.toMap()),
       'resourceManagerResourceGroupId': ?resourceManagerResourceGroupId,
       'tags': ?tags,
     };
@@ -68,33 +55,14 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      accessType: (() {
-        final guardedValue = map['accessType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessType: (() { final guardedValue = map['accessType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domain: pulumi.Input.fromValue(map['domain'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      listen: pulumi.Input.fromValue(
-        DomainListen.fromMap((map['listen']! as Map).cast<String, dynamic>()),
-      ),
-      redirect: pulumi.Input.fromValue(
-        DomainRedirect.fromMap(
-          (map['redirect']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceManagerResourceGroupId: (() {
-        final guardedValue = map['resourceManagerResourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      listen: pulumi.Input.fromValue(DomainListen.fromMap((map['listen']! as Map).cast<String, dynamic>())),
+      redirect: pulumi.Input.fromValue(DomainRedirect.fromMap((map['redirect']! as Map).cast<String, dynamic>())),
+      resourceManagerResourceGroupId: (() { final guardedValue = map['resourceManagerResourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

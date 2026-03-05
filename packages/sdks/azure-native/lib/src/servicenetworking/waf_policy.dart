@@ -9,13 +9,20 @@ class WafPolicy {
 
   /// Creates a new [WafPolicy].
   /// [id] Resource ID of the WAF
-  WafPolicy({required this.id});
+  WafPolicy({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory WafPolicy.fromMap(Map<String, dynamic> map) {
-    return WafPolicy(id: pulumi.Input.fromValue(map['id'] as String));
+    return WafPolicy(
+      id: pulumi.Input.fromValue(map['id'] as String),
+    );
   }
 }
+

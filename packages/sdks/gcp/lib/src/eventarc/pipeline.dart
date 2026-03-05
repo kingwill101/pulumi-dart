@@ -1837,77 +1837,61 @@ class Pipeline extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// The creation time.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
   /// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
   /// "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
-
   /// Resource name of a KMS crypto key (managed by the user) used to
   /// encrypt/decrypt the event data. If not set, an internal Google-owned key
   /// will be used to encrypt messages. It must match the pattern
   /// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
   late final pulumi.Output<String?> cryptoKeyName;
-
   /// List of destinations to which messages will be forwarded. Currently,
   /// exactly one destination is supported per Pipeline.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> destinations;
-
   /// Display name of resource.
   late final pulumi.Output<String?> displayName;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// This checksum is computed by the server based on the value of
   /// other fields, and might be sent only on create requests to ensure that the
   /// client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
-
   /// Represents the format of message data.
   /// Structure is documented below.
   late final pulumi.Output<PipelineInputPayloadFormat?> inputPayloadFormat;
-
   /// User labels attached to the Pipeline that can be used to group
   /// resources. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1.3kg", "count": "3" }.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
-
   /// The configuration for Platform Telemetry logging for Eventarc Advanced
   /// resources.
   /// Structure is documented below.
   late final pulumi.Output<PipelineLoggingConfig> loggingConfig;
-
   /// List of mediation operations to be performed on the message. Currently,
   /// only one Transformation operation is allowed in each Pipeline.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> mediations;
-
   /// The resource name of the Pipeline. Must be unique within the
   /// location of the project and must be in
   /// `projects/{project}/locations/{location}/pipelines/{pipeline}` format.
   late final pulumi.Output<String> name;
-
   /// The user-provided ID to be assigned to the Pipeline. It should match the
   /// format `^a-z?$`.
   late final pulumi.Output<String> pipelineId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The retry policy configuration for the Pipeline. The pipeline
   /// exponentially backs off in case the destination is non responsive or
   /// returns a retryable error code. The default semantics are as follows:
@@ -1918,12 +1902,10 @@ class Pipeline extends pulumi.CustomResource {
   /// to the same value this will make the duration between retries constant.
   /// Structure is documented below.
   late final pulumi.Output<PipelineRetryPolicy> retryPolicy;
-
   /// Server-assigned unique identifier for the Pipeline. The value
   /// is a UUID4 string and guaranteed to remain unchanged until the resource is
   /// deleted.
   late final pulumi.Output<String> uid;
-
   /// The last-modified time.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
   /// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
@@ -1939,58 +1921,29 @@ class Pipeline extends pulumi.CustomResource {
     PipelineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:eventarc/pipeline:Pipeline',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:eventarc/pipeline:Pipeline',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     cryptoKeyName = registerOutput<String?>('cryptoKeyName');
     destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
-    inputPayloadFormat = registerOutput<PipelineInputPayloadFormat?>(
-      'inputPayloadFormat',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineInputPayloadFormat.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    inputPayloadFormat = registerOutput<PipelineInputPayloadFormat?>('inputPayloadFormat', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineInputPayloadFormat.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    loggingConfig = registerOutput<PipelineLoggingConfig>(
-      'loggingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineLoggingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loggingConfig = registerOutput<PipelineLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mediations = registerOutput<List<Map<String, dynamic>>?>('mediations');
     this.name = registerOutput<String>('name');
     pipelineId = registerOutput<String>('pipelineId');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    retryPolicy = registerOutput<PipelineRetryPolicy>(
-      'retryPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineRetryPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retryPolicy = registerOutput<PipelineRetryPolicy>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -2013,58 +1966,29 @@ class Pipeline extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:eventarc/pipeline:Pipeline',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:eventarc/pipeline:Pipeline',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     cryptoKeyName = registerOutput<String?>('cryptoKeyName');
     destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
-    inputPayloadFormat = registerOutput<PipelineInputPayloadFormat?>(
-      'inputPayloadFormat',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineInputPayloadFormat.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    inputPayloadFormat = registerOutput<PipelineInputPayloadFormat?>('inputPayloadFormat', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineInputPayloadFormat.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    loggingConfig = registerOutput<PipelineLoggingConfig>(
-      'loggingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineLoggingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loggingConfig = registerOutput<PipelineLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mediations = registerOutput<List<Map<String, dynamic>>?>('mediations');
     this.name = registerOutput<String>('name');
     pipelineId = registerOutput<String>('pipelineId');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    retryPolicy = registerOutput<PipelineRetryPolicy>(
-      'retryPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineRetryPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retryPolicy = registerOutput<PipelineRetryPolicy>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

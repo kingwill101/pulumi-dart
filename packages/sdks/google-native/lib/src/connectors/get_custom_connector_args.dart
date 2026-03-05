@@ -13,7 +13,10 @@ class GetCustomConnectorArgs {
   /// Creates a new [GetCustomConnectorArgs].
   /// [customConnectorId] Required.
   /// [project] Optional.
-  GetCustomConnectorArgs({required this.customConnectorId, this.project});
+  GetCustomConnectorArgs({
+    required this.customConnectorId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,14 +27,9 @@ class GetCustomConnectorArgs {
 
   factory GetCustomConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomConnectorArgs(
-      customConnectorId: pulumi.Input.fromValue(
-        map['customConnectorId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customConnectorId: pulumi.Input.fromValue(map['customConnectorId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

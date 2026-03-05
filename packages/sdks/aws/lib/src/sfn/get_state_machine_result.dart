@@ -1,28 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getStateMachine.
 class GetStateMachineResult {
   /// Set to the arn of the state function.
   final String arn;
-
   /// Date the state machine was created.
   final String creationDate;
-
   /// Set to the state machine definition.
   final String definition;
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
-
   /// The revision identifier for the state machine.
   final String revisionId;
-
   /// Set to the role_arn used by the state function.
   final String roleArn;
-
   /// Set to the current status of the state machine.
   final String status;
 
@@ -80,3 +75,4 @@ class GetStateMachineResult {
     );
   }
 }
+

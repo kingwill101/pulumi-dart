@@ -15,3 +15,4 @@ enum DataResidencyBoundary {
     throw ArgumentError('Unknown DataResidencyBoundary value: $value');
   }
 }
+

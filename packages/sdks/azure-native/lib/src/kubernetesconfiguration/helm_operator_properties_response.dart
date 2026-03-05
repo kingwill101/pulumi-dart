@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HelmOperatorPropertiesResponse {
   /// Values override for the operator Helm chart.
   final pulumi.Input<String>? chartValues;
-
   /// Version of the operator Helm chart.
   final pulumi.Input<String>? chartVersion;
 
   /// Creates a new [HelmOperatorPropertiesResponse].
   /// [chartValues] Values override for the operator Helm chart.
   /// [chartVersion] Version of the operator Helm chart.
-  HelmOperatorPropertiesResponse({this.chartValues, this.chartVersion});
+  HelmOperatorPropertiesResponse({
+    this.chartValues,
+    this.chartVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class HelmOperatorPropertiesResponse {
 
   factory HelmOperatorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HelmOperatorPropertiesResponse(
-      chartValues: (() {
-        final guardedValue = map['chartValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      chartVersion: (() {
-        final guardedValue = map['chartVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      chartValues: (() { final guardedValue = map['chartValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      chartVersion: (() { final guardedValue = map['chartVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

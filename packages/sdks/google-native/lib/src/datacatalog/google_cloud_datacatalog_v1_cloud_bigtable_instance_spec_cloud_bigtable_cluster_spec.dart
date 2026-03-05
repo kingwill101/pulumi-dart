@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec {
   /// Name of the cluster.
   final pulumi.Input<String>? displayName;
-
   /// A link back to the parent resource, in this case Instance.
   final pulumi.Input<String>? linkedResource;
-
   /// Location of the cluster, typically a Cloud zone.
   final pulumi.Input<String>? location;
-
   /// Type of the resource. For a cluster this would be "CLUSTER".
   final pulumi.Input<String>? type;
 
@@ -37,30 +34,13 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec 
     };
   }
 
-  factory GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      linkedResource: (() {
-        final guardedValue = map['linkedResource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      linkedResource: (() { final guardedValue = map['linkedResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

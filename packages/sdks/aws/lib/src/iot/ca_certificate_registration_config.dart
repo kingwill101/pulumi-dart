@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CaCertificateRegistrationConfig {
   /// The ARN of the role.
   final pulumi.Input<String>? roleArn;
-
   /// The template body.
   final pulumi.Input<String>? templateBody;
-
   /// The name of the provisioning template.
   final pulumi.Input<String>? templateName;
 
@@ -32,21 +30,10 @@ class CaCertificateRegistrationConfig {
 
   factory CaCertificateRegistrationConfig.fromMap(Map<String, dynamic> map) {
     return CaCertificateRegistrationConfig(
-      roleArn: (() {
-        final guardedValue = map['roleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      templateBody: (() {
-        final guardedValue = map['templateBody'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      templateName: (() {
-        final guardedValue = map['templateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      templateBody: (() { final guardedValue = map['templateBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      templateName: (() { final guardedValue = map['templateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

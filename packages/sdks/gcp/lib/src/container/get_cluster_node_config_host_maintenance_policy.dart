@@ -13,16 +13,15 @@ class GetClusterNodeConfigHostMaintenancePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maintenanceInterval': maintenanceInterval};
+    return <String, dynamic>{
+      'maintenanceInterval': maintenanceInterval,
+    };
   }
 
-  factory GetClusterNodeConfigHostMaintenancePolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodeConfigHostMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigHostMaintenancePolicy(
-      maintenanceInterval: pulumi.Input.fromValue(
-        map['maintenanceInterval'] as String,
-      ),
+      maintenanceInterval: pulumi.Input.fromValue(map['maintenanceInterval'] as String),
     );
   }
 }
+

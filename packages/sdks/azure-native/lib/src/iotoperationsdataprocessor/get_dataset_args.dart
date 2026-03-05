@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatasetArgs {
   /// Name of dataset.
   final pulumi.Input<String> datasetName;
-
   /// Name of instance.
   final pulumi.Input<String> instanceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetDatasetArgs {
     return GetDatasetArgs(
       datasetName: pulumi.Input.fromValue(map['datasetName'] as String),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

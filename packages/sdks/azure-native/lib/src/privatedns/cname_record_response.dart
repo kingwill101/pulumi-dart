@@ -9,19 +9,20 @@ class CnameRecordResponse {
 
   /// Creates a new [CnameRecordResponse].
   /// [cname] The canonical name for this CNAME record.
-  CnameRecordResponse({this.cname});
+  CnameRecordResponse({
+    this.cname,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cname': ?cname};
+    return <String, dynamic>{
+      'cname': ?cname,
+    };
   }
 
   factory CnameRecordResponse.fromMap(Map<String, dynamic> map) {
     return CnameRecordResponse(
-      cname: (() {
-        final guardedValue = map['cname'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cname: (() { final guardedValue = map['cname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

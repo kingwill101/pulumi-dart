@@ -216,15 +216,12 @@ import 'route_table_association_state.dart';
 class RouteTableAssociation extends pulumi.CustomResource {
   /// The gateway ID to create an association. Conflicts with `subnet_id`.
   late final pulumi.Output<String?> gatewayId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the routing table to associate with.
   ///
   /// &gt; **NOTE:** Please note that one of either `subnet_id` or `gateway_id` is required.
   late final pulumi.Output<String> routeTableId;
-
   /// The subnet ID to create an association. Conflicts with `gateway_id`.
   late final pulumi.Output<String?> subnetId;
 
@@ -237,11 +234,11 @@ class RouteTableAssociation extends pulumi.CustomResource {
     RouteTableAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/routeTableAssociation:RouteTableAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/routeTableAssociation:RouteTableAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     gatewayId = registerOutput<String?>('gatewayId');
     region = registerOutput<String>('region');
     routeTableId = registerOutput<String>('routeTableId');
@@ -266,11 +263,11 @@ class RouteTableAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/routeTableAssociation:RouteTableAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/routeTableAssociation:RouteTableAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     gatewayId = registerOutput<String?>('gatewayId');
     region = registerOutput<String>('region');
     routeTableId = registerOutput<String>('routeTableId');

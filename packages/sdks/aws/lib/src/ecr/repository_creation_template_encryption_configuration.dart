@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepositoryCreationTemplateEncryptionConfiguration {
   /// The encryption type to use for any created repositories. Valid values are `AES256` or `KMS`. Defaults to `AES256`.
   final pulumi.Input<String>? encryptionType;
-
   /// The ARN of the KMS key to use when `encryption_type` is `KMS`. If not specified, uses the default AWS managed key for ECR.
   final pulumi.Input<String>? kmsKey;
 
@@ -24,20 +23,11 @@ class RepositoryCreationTemplateEncryptionConfiguration {
     };
   }
 
-  factory RepositoryCreationTemplateEncryptionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RepositoryCreationTemplateEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return RepositoryCreationTemplateEncryptionConfiguration(
-      encryptionType: (() {
-        final guardedValue = map['encryptionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsKey: (() {
-        final guardedValue = map['kmsKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      encryptionType: (() { final guardedValue = map['encryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

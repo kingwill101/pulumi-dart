@@ -1368,70 +1368,51 @@ import 'security_profile_url_filtering_profile.dart';
 class SecurityProfile extends pulumi.CustomResource {
   /// Time the security profile was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// The configuration for defining the Intercept Endpoint Group used to
   /// intercept traffic to third-party firewall appliances.
   /// Structure is documented below.
-  late final pulumi.Output<SecurityProfileCustomInterceptProfile?>
-  customInterceptProfile;
-
+  late final pulumi.Output<SecurityProfileCustomInterceptProfile?> customInterceptProfile;
   /// The configuration for defining the Mirroring Endpoint Group used to
   /// mirror traffic to third-party collectors.
   /// Structure is documented below.
-  late final pulumi.Output<SecurityProfileCustomMirroringProfile?>
-  customMirroringProfile;
-
+  late final pulumi.Output<SecurityProfileCustomMirroringProfile?> customMirroringProfile;
   /// An optional description of the security profile. The Max length is 512 characters.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// This checksum is computed by the server based on the value of other fields,
   /// and may be sent on update and delete requests to ensure the client has an up-to-date
   /// value before proceeding.
   late final pulumi.Output<String> etag;
-
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location of the security profile.
   /// The default value is `global`.
   late final pulumi.Output<String?> location;
-
   /// The name of the security profile resource.
   late final pulumi.Output<String> name;
-
   /// The name of the parent this security profile belongs to.
   /// Format: organizations/{organization_id}.
   late final pulumi.Output<String?> parent;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Server-defined URL of this resource.
   late final pulumi.Output<String> selfLink;
-
   /// The threat prevention configuration for the security profile.
   /// Structure is documented below.
-  late final pulumi.Output<SecurityProfileThreatPreventionProfile?>
-  threatPreventionProfile;
-
+  late final pulumi.Output<SecurityProfileThreatPreventionProfile?> threatPreventionProfile;
   /// The type of security profile.
   /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
   late final pulumi.Output<String> type;
-
   /// Time the security profile was updated in UTC.
   late final pulumi.Output<String> updateTime;
-
   /// The url filtering configuration for the security profile.
   /// Structure is documented below.
-  late final pulumi.Output<SecurityProfileUrlFilteringProfile?>
-  urlFilteringProfile;
+  late final pulumi.Output<SecurityProfileUrlFilteringProfile?> urlFilteringProfile;
 
   /// Creates a new [SecurityProfile].
   /// [name] The Pulumi resource name.
@@ -1442,34 +1423,14 @@ class SecurityProfile extends pulumi.CustomResource {
     SecurityProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networksecurity/securityProfile:SecurityProfile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networksecurity/securityProfile:SecurityProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    customInterceptProfile =
-        registerOutput<SecurityProfileCustomInterceptProfile?>(
-          'customInterceptProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecurityProfileCustomInterceptProfile.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    customMirroringProfile =
-        registerOutput<SecurityProfileCustomMirroringProfile?>(
-          'customMirroringProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecurityProfileCustomMirroringProfile.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    customInterceptProfile = registerOutput<SecurityProfileCustomInterceptProfile?>('customInterceptProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileCustomInterceptProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customMirroringProfile = registerOutput<SecurityProfileCustomMirroringProfile?>('customMirroringProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileCustomMirroringProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
@@ -1479,29 +1440,10 @@ class SecurityProfile extends pulumi.CustomResource {
     parent = registerOutput<String?>('parent');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     selfLink = registerOutput<String>('selfLink');
-    threatPreventionProfile =
-        registerOutput<SecurityProfileThreatPreventionProfile?>(
-          'threatPreventionProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecurityProfileThreatPreventionProfile.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    threatPreventionProfile = registerOutput<SecurityProfileThreatPreventionProfile?>('threatPreventionProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileThreatPreventionProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');
-    urlFilteringProfile = registerOutput<SecurityProfileUrlFilteringProfile?>(
-      'urlFilteringProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityProfileUrlFilteringProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    urlFilteringProfile = registerOutput<SecurityProfileUrlFilteringProfile?>('urlFilteringProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileUrlFilteringProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [SecurityProfile] resource's state with the given [name] and [id].
@@ -1522,34 +1464,14 @@ class SecurityProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networksecurity/securityProfile:SecurityProfile',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networksecurity/securityProfile:SecurityProfile',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    customInterceptProfile =
-        registerOutput<SecurityProfileCustomInterceptProfile?>(
-          'customInterceptProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecurityProfileCustomInterceptProfile.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    customMirroringProfile =
-        registerOutput<SecurityProfileCustomMirroringProfile?>(
-          'customMirroringProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecurityProfileCustomMirroringProfile.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    customInterceptProfile = registerOutput<SecurityProfileCustomInterceptProfile?>('customInterceptProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileCustomInterceptProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customMirroringProfile = registerOutput<SecurityProfileCustomMirroringProfile?>('customMirroringProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileCustomMirroringProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
@@ -1559,28 +1481,9 @@ class SecurityProfile extends pulumi.CustomResource {
     parent = registerOutput<String?>('parent');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     selfLink = registerOutput<String>('selfLink');
-    threatPreventionProfile =
-        registerOutput<SecurityProfileThreatPreventionProfile?>(
-          'threatPreventionProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecurityProfileThreatPreventionProfile.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    threatPreventionProfile = registerOutput<SecurityProfileThreatPreventionProfile?>('threatPreventionProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileThreatPreventionProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');
-    urlFilteringProfile = registerOutput<SecurityProfileUrlFilteringProfile?>(
-      'urlFilteringProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityProfileUrlFilteringProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    urlFilteringProfile = registerOutput<SecurityProfileUrlFilteringProfile?>('urlFilteringProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileUrlFilteringProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

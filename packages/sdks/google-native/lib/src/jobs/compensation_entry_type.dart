@@ -22,3 +22,4 @@ enum CompensationEntryType {
     throw ArgumentError('Unknown CompensationEntryType value: $value');
   }
 }
+

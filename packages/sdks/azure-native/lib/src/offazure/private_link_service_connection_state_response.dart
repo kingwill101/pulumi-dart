@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateLinkServiceConnectionStateResponse {
   /// actions required
   final pulumi.Input<String>? actionsRequired;
-
   /// description string
   final pulumi.Input<String>? description;
-
   /// state status
   final pulumi.Input<String>? status;
 
@@ -31,25 +29,12 @@ class PrivateLinkServiceConnectionStateResponse {
     };
   }
 
-  factory PrivateLinkServiceConnectionStateResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrivateLinkServiceConnectionStateResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnectionStateResponse(
-      actionsRequired: (() {
-        final guardedValue = map['actionsRequired'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      actionsRequired: (() { final guardedValue = map['actionsRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

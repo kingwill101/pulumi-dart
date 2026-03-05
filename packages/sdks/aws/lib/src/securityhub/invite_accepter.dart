@@ -185,10 +185,8 @@ import 'invite_accepter_state.dart';
 class InviteAccepter extends pulumi.CustomResource {
   /// The ID of the invitation.
   late final pulumi.Output<String> invitationId;
-
   /// The account ID of the master Security Hub account whose invitation you're accepting.
   late final pulumi.Output<String> masterId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -201,11 +199,11 @@ class InviteAccepter extends pulumi.CustomResource {
     InviteAccepterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securityhub/inviteAccepter:InviteAccepter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securityhub/inviteAccepter:InviteAccepter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     invitationId = registerOutput<String>('invitationId');
     masterId = registerOutput<String>('masterId');
     region = registerOutput<String>('region');
@@ -229,11 +227,11 @@ class InviteAccepter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securityhub/inviteAccepter:InviteAccepter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securityhub/inviteAccepter:InviteAccepter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     invitationId = registerOutput<String>('invitationId');
     masterId = registerOutput<String>('masterId');
     region = registerOutput<String>('region');

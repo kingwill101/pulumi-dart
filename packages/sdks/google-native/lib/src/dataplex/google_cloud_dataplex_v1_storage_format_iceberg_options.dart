@@ -9,21 +9,20 @@ class GoogleCloudDataplexV1StorageFormatIcebergOptions {
 
   /// Creates a new [GoogleCloudDataplexV1StorageFormatIcebergOptions].
   /// [metadataLocation] Optional. The location of where the iceberg metadata is present, must be within the table path
-  GoogleCloudDataplexV1StorageFormatIcebergOptions({this.metadataLocation});
+  GoogleCloudDataplexV1StorageFormatIcebergOptions({
+    this.metadataLocation,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metadataLocation': ?metadataLocation};
+    return <String, dynamic>{
+      'metadataLocation': ?metadataLocation,
+    };
   }
 
-  factory GoogleCloudDataplexV1StorageFormatIcebergOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1StorageFormatIcebergOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1StorageFormatIcebergOptions(
-      metadataLocation: (() {
-        final guardedValue = map['metadataLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      metadataLocation: (() { final guardedValue = map['metadataLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

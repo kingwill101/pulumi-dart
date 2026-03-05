@@ -12,19 +12,20 @@ class EntryBigqueryTableSpecTableSpec {
 
   /// Creates a new [EntryBigqueryTableSpecTableSpec].
   /// [groupedEntry] (Output)
-  EntryBigqueryTableSpecTableSpec({this.groupedEntry});
+  EntryBigqueryTableSpecTableSpec({
+    this.groupedEntry,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupedEntry': ?groupedEntry};
+    return <String, dynamic>{
+      'groupedEntry': ?groupedEntry,
+    };
   }
 
   factory EntryBigqueryTableSpecTableSpec.fromMap(Map<String, dynamic> map) {
     return EntryBigqueryTableSpecTableSpec(
-      groupedEntry: (() {
-        final guardedValue = map['groupedEntry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      groupedEntry: (() { final guardedValue = map['groupedEntry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

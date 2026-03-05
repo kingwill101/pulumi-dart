@@ -17,3 +17,4 @@ enum MaterializationStoreType {
     throw ArgumentError('Unknown MaterializationStoreType value: $value');
   }
 }
+

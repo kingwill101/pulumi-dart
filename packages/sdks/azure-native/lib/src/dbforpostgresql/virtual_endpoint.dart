@@ -153,22 +153,16 @@ import 'virtual_endpoint_args.dart';
 class VirtualEndpoint extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Type of endpoint for the virtual endpoints.
   late final pulumi.Output<String?> endpointType;
-
   /// List of servers that one of the virtual endpoints can refer to.
   late final pulumi.Output<List<String>?> members;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// List of virtual endpoints for a server.
   late final pulumi.Output<List<String>> virtualEndpoints;
 
@@ -181,25 +175,16 @@ class VirtualEndpoint extends pulumi.CustomResource {
     VirtualEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:dbforpostgresql:VirtualEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:dbforpostgresql:VirtualEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     endpointType = registerOutput<String?>('endpointType');
     members = registerOutput<List<String>?>('members');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     virtualEndpoints = registerOutput<List<String>>('virtualEndpoints');
   }

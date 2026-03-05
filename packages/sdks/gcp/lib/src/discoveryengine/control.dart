@@ -354,58 +354,44 @@ class Control extends pulumi.CustomResource {
   /// Changes the returned order of results.
   /// Structure is documented below.
   late final pulumi.Output<ControlBoostAction?> boostAction;
-
   /// The collection ID. Currently only accepts "default_collection".
   late final pulumi.Output<String?> collectionId;
-
   /// The conditions under which the control is active.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> conditions;
-
   /// The unique id of the control.
   late final pulumi.Output<String> controlId;
-
   /// The display name of the control. This field must be a UTF-8 encoded
   /// string with a length limit of 128 characters.
   late final pulumi.Output<String> displayName;
-
   /// The engine to add the control to.
   late final pulumi.Output<String> engineId;
-
   /// Removes entries from returned results.
   /// Structure is documented below.
   late final pulumi.Output<ControlFilterAction?> filterAction;
-
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   late final pulumi.Output<String> location;
-
   /// The unique full resource name of the control. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/controls/{control_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Promotes a specified link for a query.
   /// Structure is documented below.
   late final pulumi.Output<ControlPromoteAction?> promoteAction;
-
   /// Redirects to a specified URI.
   /// Structure is documented below.
   late final pulumi.Output<ControlRedirectAction?> redirectAction;
-
   /// The solution type that the control belongs to.
   /// Possible values are: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
   late final pulumi.Output<String> solutionType;
-
   /// Associates queries with each other.
   /// Structure is documented below.
   late final pulumi.Output<ControlSynonymsAction?> synonymsAction;
-
   /// The use cases that the control is used for.
   /// Each value may be one of: `SEARCH_USE_CASE_SEARCH`, `SEARCH_USE_CASE_BROWSE`.
   late final pulumi.Output<List<String>?> useCases;
@@ -419,70 +405,25 @@ class Control extends pulumi.CustomResource {
     ControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:discoveryengine/control:Control',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    boostAction = registerOutput<ControlBoostAction?>(
-      'boostAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ControlBoostAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:discoveryengine/control:Control',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    boostAction = registerOutput<ControlBoostAction?>('boostAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlBoostAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     collectionId = registerOutput<String?>('collectionId');
     conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
     controlId = registerOutput<String>('controlId');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
-    filterAction = registerOutput<ControlFilterAction?>(
-      'filterAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ControlFilterAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    filterAction = registerOutput<ControlFilterAction?>('filterAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlFilterAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    promoteAction = registerOutput<ControlPromoteAction?>(
-      'promoteAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ControlPromoteAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    redirectAction = registerOutput<ControlRedirectAction?>(
-      'redirectAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ControlRedirectAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    promoteAction = registerOutput<ControlPromoteAction?>('promoteAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlPromoteAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redirectAction = registerOutput<ControlRedirectAction?>('redirectAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlRedirectAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     solutionType = registerOutput<String>('solutionType');
-    synonymsAction = registerOutput<ControlSynonymsAction?>(
-      'synonymsAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ControlSynonymsAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    synonymsAction = registerOutput<ControlSynonymsAction?>('synonymsAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlSynonymsAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     useCases = registerOutput<List<String>?>('useCases');
   }
 
@@ -504,70 +445,25 @@ class Control extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:discoveryengine/control:Control',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    boostAction = registerOutput<ControlBoostAction?>(
-      'boostAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ControlBoostAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:discoveryengine/control:Control',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    boostAction = registerOutput<ControlBoostAction?>('boostAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlBoostAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     collectionId = registerOutput<String?>('collectionId');
     conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
     controlId = registerOutput<String>('controlId');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
-    filterAction = registerOutput<ControlFilterAction?>(
-      'filterAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ControlFilterAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    filterAction = registerOutput<ControlFilterAction?>('filterAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlFilterAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    promoteAction = registerOutput<ControlPromoteAction?>(
-      'promoteAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ControlPromoteAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    redirectAction = registerOutput<ControlRedirectAction?>(
-      'redirectAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ControlRedirectAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    promoteAction = registerOutput<ControlPromoteAction?>('promoteAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlPromoteAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redirectAction = registerOutput<ControlRedirectAction?>('redirectAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlRedirectAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     solutionType = registerOutput<String>('solutionType');
-    synonymsAction = registerOutput<ControlSynonymsAction?>(
-      'synonymsAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ControlSynonymsAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    synonymsAction = registerOutput<ControlSynonymsAction?>('synonymsAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlSynonymsAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     useCases = registerOutput<List<String>?>('useCases');
   }
 }

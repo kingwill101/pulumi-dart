@@ -7,42 +7,29 @@ import 'named_resources_filter.dart';
 class ResourceFilter {
   /// DriverName is the name used by the DRA driver kubelet plugin.
   final pulumi.Input<String>? driverName;
-
   /// NamedResources describes a resource filter using the named resources model.
   final pulumi.Input<NamedResourcesFilter>? namedResources;
 
   /// Creates a new [ResourceFilter].
   /// [driverName] DriverName is the name used by the DRA driver kubelet plugin.
   /// [namedResources] NamedResources describes a resource filter using the named resources model.
-  ResourceFilter({this.driverName, this.namedResources});
+  ResourceFilter({
+    this.driverName,
+    this.namedResources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'driverName': ?driverName,
-      'namedResources':
-          ?pulumi.Input.mapOptionalInputValue<
-            NamedResourcesFilter,
-            Map<String, dynamic>
-          >(namedResources, (value) => value.toMap()),
+      'namedResources': ?pulumi.Input.mapOptionalInputValue<NamedResourcesFilter, Map<String, dynamic>>(namedResources, (value) => value.toMap()),
     };
   }
 
   factory ResourceFilter.fromMap(Map<String, dynamic> map) {
     return ResourceFilter(
-      driverName: (() {
-        final guardedValue = map['driverName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namedResources: (() {
-        final guardedValue = map['namedResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NamedResourcesFilter.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      driverName: (() { final guardedValue = map['driverName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namedResources: (() { final guardedValue = map['namedResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NamedResourcesFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

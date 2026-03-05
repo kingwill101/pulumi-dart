@@ -7,16 +7,13 @@ enum BuildConfigDockerRegistryCloudfunctionsV2alpha {
   const BuildConfigDockerRegistryCloudfunctionsV2alpha(this.wireValue);
   final String wireValue;
 
-  static BuildConfigDockerRegistryCloudfunctionsV2alpha fromValue(
-    String value,
-  ) {
+  static BuildConfigDockerRegistryCloudfunctionsV2alpha fromValue(String value) {
     for (final item in BuildConfigDockerRegistryCloudfunctionsV2alpha.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown BuildConfigDockerRegistryCloudfunctionsV2alpha value: $value',
-    );
+    throw ArgumentError('Unknown BuildConfigDockerRegistryCloudfunctionsV2alpha value: $value');
   }
 }
+

@@ -12,8 +12,7 @@ enum L3NetworkConfigurationIpamEnabled {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown L3NetworkConfigurationIpamEnabled value: $value',
-    );
+    throw ArgumentError('Unknown L3NetworkConfigurationIpamEnabled value: $value');
   }
 }
+

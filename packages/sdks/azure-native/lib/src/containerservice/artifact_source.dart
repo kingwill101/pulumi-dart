@@ -15,3 +15,4 @@ enum ArtifactSource {
     throw ArgumentError('Unknown ArtifactSource value: $value');
   }
 }
+

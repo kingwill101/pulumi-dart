@@ -8,19 +8,12 @@ import 'postgre_sql_connection_info_response.dart';
 class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse {
   /// encrypted key for secure fields
   final pulumi.Input<String>? encryptedKeyForSecureFields;
-
   /// Databases to migrate
-  final pulumi.Input<
-    List<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse>
-  >
-  selectedDatabases;
-
+  final pulumi.Input<List<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse>> selectedDatabases;
   /// Connection information for source PostgreSQL
   final pulumi.Input<PostgreSqlConnectionInfoResponse> sourceConnectionInfo;
-
   /// Migration start time
   final pulumi.Input<String> startedOn;
-
   /// Connection information for target Azure Database for PostgreSQL
   final pulumi.Input<PostgreSqlConnectionInfoResponse> targetConnectionInfo;
 
@@ -41,65 +34,21 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'encryptedKeyForSecureFields': ?encryptedKeyForSecureFields,
-      'selectedDatabases':
-          pulumi.Input.mapInputValue<
-            List<
-              MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse
-            >,
-            List<Map<String, dynamic>>
-          >(
-            selectedDatabases,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'sourceConnectionInfo':
-          pulumi.Input.mapInputValue<
-            PostgreSqlConnectionInfoResponse,
-            Map<String, dynamic>
-          >(sourceConnectionInfo, (value) => value.toMap()),
+      'selectedDatabases': pulumi.Input.mapInputValue<List<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse>, List<Map<String, dynamic>>>(selectedDatabases, (value) => pulumi.Input.encodeList<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<PostgreSqlConnectionInfoResponse, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
       'startedOn': startedOn,
-      'targetConnectionInfo':
-          pulumi.Input.mapInputValue<
-            PostgreSqlConnectionInfoResponse,
-            Map<String, dynamic>
-          >(targetConnectionInfo, (value) => value.toMap()),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<PostgreSqlConnectionInfoResponse, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
-  factory MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse(
-      encryptedKeyForSecureFields: (() {
-        final guardedValue = map['encryptedKeyForSecureFields'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      selectedDatabases: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse
-        >(
-          map['selectedDatabases']!,
-          (value) =>
-              MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      sourceConnectionInfo: pulumi.Input.fromValue(
-        PostgreSqlConnectionInfoResponse.fromMap(
-          (map['sourceConnectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      encryptedKeyForSecureFields: (() { final guardedValue = map['encryptedKeyForSecureFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      selectedDatabases: pulumi.Input.fromValue(pulumi.Input.decodeList<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse>(map['selectedDatabases']!, (value) => MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      sourceConnectionInfo: pulumi.Input.fromValue(PostgreSqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo']! as Map).cast<String, dynamic>())),
       startedOn: pulumi.Input.fromValue(map['startedOn'] as String),
-      targetConnectionInfo: pulumi.Input.fromValue(
-        PostgreSqlConnectionInfoResponse.fromMap(
-          (map['targetConnectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      targetConnectionInfo: pulumi.Input.fromValue(PostgreSqlConnectionInfoResponse.fromMap((map['targetConnectionInfo']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteTableAssociationArgs {
   /// The gateway ID to create an association. Conflicts with `subnet_id`.
   final pulumi.Input<String>? gatewayId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the routing table to associate with.
   ///
   /// &gt; **NOTE:** Please note that one of either `subnet_id` or `gateway_id` is required.
   final pulumi.Input<String> routeTableId;
-
   /// The subnet ID to create an association. Conflicts with `gateway_id`.
   final pulumi.Input<String>? subnetId;
 
@@ -44,22 +41,11 @@ class RouteTableAssociationArgs {
 
   factory RouteTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RouteTableAssociationArgs(
-      gatewayId: (() {
-        final guardedValue = map['gatewayId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gatewayId: (() { final guardedValue = map['gatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routeTableId: pulumi.Input.fromValue(map['routeTableId'] as String),
-      subnetId: (() {
-        final guardedValue = map['subnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

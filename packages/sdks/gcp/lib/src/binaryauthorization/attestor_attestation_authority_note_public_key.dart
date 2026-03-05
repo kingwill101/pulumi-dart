@@ -14,10 +14,8 @@ class AttestorAttestationAuthorityNotePublicKey {
   /// upper-case hex. If id is provided by the caller, it will
   /// be overwritten by the API-calculated ID.
   final pulumi.Input<String>? asciiArmoredPgpPublicKey;
-
   /// A descriptive comment. This field may be updated.
   final pulumi.Input<String>? comment;
-
   /// The ID of this public key. Signatures verified by BinAuthz
   /// must include the ID of the public key that can be used to
   /// verify them, and that ID must match the contents of this
@@ -25,15 +23,13 @@ class AttestorAttestationAuthorityNotePublicKey {
   /// be imposed based on which public key type is encapsulated.
   /// See the documentation on publicKey cases below for details.
   final pulumi.Input<String>? id;
-
   /// A raw PKIX SubjectPublicKeyInfo format public key.
   /// NOTE: id may be explicitly provided by the caller when using this
   /// type of public key, but it MUST be a valid RFC3986 URI. If id is left
   /// blank, a default one will be computed based on the digest of the DER
   /// encoding of the public key.
   /// Structure is documented below.
-  final pulumi.Input<AttestorAttestationAuthorityNotePublicKeyPkixPublicKey>?
-  pkixPublicKey;
+  final pulumi.Input<AttestorAttestationAuthorityNotePublicKeyPkixPublicKey>? pkixPublicKey;
 
   /// Creates a new [AttestorAttestationAuthorityNotePublicKey].
   /// [asciiArmoredPgpPublicKey] ASCII-armored representation of a PGP public key, as the
@@ -52,42 +48,17 @@ class AttestorAttestationAuthorityNotePublicKey {
       'asciiArmoredPgpPublicKey': ?asciiArmoredPgpPublicKey,
       'comment': ?comment,
       'id': ?id,
-      'pkixPublicKey':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttestorAttestationAuthorityNotePublicKeyPkixPublicKey,
-            Map<String, dynamic>
-          >(pkixPublicKey, (value) => value.toMap()),
+      'pkixPublicKey': ?pulumi.Input.mapOptionalInputValue<AttestorAttestationAuthorityNotePublicKeyPkixPublicKey, Map<String, dynamic>>(pkixPublicKey, (value) => value.toMap()),
     };
   }
 
-  factory AttestorAttestationAuthorityNotePublicKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AttestorAttestationAuthorityNotePublicKey.fromMap(Map<String, dynamic> map) {
     return AttestorAttestationAuthorityNotePublicKey(
-      asciiArmoredPgpPublicKey: (() {
-        final guardedValue = map['asciiArmoredPgpPublicKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      comment: (() {
-        final guardedValue = map['comment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pkixPublicKey: (() {
-        final guardedValue = map['pkixPublicKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AttestorAttestationAuthorityNotePublicKeyPkixPublicKey.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      asciiArmoredPgpPublicKey: (() { final guardedValue = map['asciiArmoredPgpPublicKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pkixPublicKey: (() { final guardedValue = map['pkixPublicKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AttestorAttestationAuthorityNotePublicKeyPkixPublicKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

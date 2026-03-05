@@ -18,15 +18,10 @@ class ClusterNodePoolAutoConfigNodeKubeletConfig {
     };
   }
 
-  factory ClusterNodePoolAutoConfigNodeKubeletConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterNodePoolAutoConfigNodeKubeletConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolAutoConfigNodeKubeletConfig(
-      insecureKubeletReadonlyPortEnabled: (() {
-        final guardedValue = map['insecureKubeletReadonlyPortEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      insecureKubeletReadonlyPortEnabled: (() { final guardedValue = map['insecureKubeletReadonlyPortEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

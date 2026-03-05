@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyDataResponse {
   /// The format of the key.
   final pulumi.Input<String> format;
-
   /// The key data. The format of the key is represented by the format field.
   final pulumi.Input<String> key;
-
   /// The specifications for the key.
   final pulumi.Input<String> keySpec;
-
   /// Latest timestamp when this key is valid. Attempts to use this key after this time will fail. Only present if the key data represents a X.509 certificate.
   final pulumi.Input<String> notAfterTime;
-
   /// Earliest timestamp when this key is valid. Attempts to use this key before this time will fail. Only present if the key data represents a X.509 certificate.
   final pulumi.Input<String> notBeforeTime;
 
@@ -53,3 +49,4 @@ class KeyDataResponse {
     );
   }
 }
+

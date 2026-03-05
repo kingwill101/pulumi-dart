@@ -491,25 +491,18 @@ import 'monitor_config_state.dart';
 class MonitorConfig extends pulumi.CustomResource {
   /// The ID of the address pool.
   late final pulumi.Output<String> addrPoolId;
-
   /// The number of consecutive times of failed health check attempts. Valid values: `1`, `2`, `3`.
   late final pulumi.Output<int> evaluationCount;
-
   /// The health check interval. Unit: seconds. Valid values: `60`.
   late final pulumi.Output<int> interval;
-
   /// The Monitoring node. See `isp_city_node` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> ispCityNodes;
-
   /// The lang.
   late final pulumi.Output<String?> lang;
-
   /// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
   late final pulumi.Output<String> monitorExtendInfo;
-
   /// The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
   late final pulumi.Output<String> protocolType;
-
   /// The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
   late final pulumi.Output<int> timeout;
 
@@ -522,11 +515,11 @@ class MonitorConfig extends pulumi.CustomResource {
     MonitorConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dns/monitorConfig:MonitorConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dns/monitorConfig:MonitorConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addrPoolId = registerOutput<String>('addrPoolId');
     evaluationCount = registerOutput<int>('evaluationCount');
     interval = registerOutput<int>('interval');
@@ -555,11 +548,11 @@ class MonitorConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dns/monitorConfig:MonitorConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dns/monitorConfig:MonitorConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addrPoolId = registerOutput<String>('addrPoolId');
     evaluationCount = registerOutput<int>('evaluationCount');
     interval = registerOutput<int>('interval');

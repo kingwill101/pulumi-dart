@@ -11,7 +11,11 @@ class VolumeAttachment {
   /// [device] Optional.
   /// [id] Optional.
   /// [instanceId] Optional.
-  VolumeAttachment({this.device, this.id, this.instanceId});
+  VolumeAttachment({
+    this.device,
+    this.id,
+    this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,21 +27,10 @@ class VolumeAttachment {
 
   factory VolumeAttachment.fromMap(Map<String, dynamic> map) {
     return VolumeAttachment(
-      device: (() {
-        final guardedValue = map['device'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      device: (() { final guardedValue = map['device']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

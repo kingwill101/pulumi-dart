@@ -174,37 +174,26 @@ import 'cluster_sku_response.dart';
 class Cluster extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Represents the number of streaming units currently being used on the cluster.
   late final pulumi.Output<int> capacityAllocated;
-
   /// Represents the sum of the SUs of all streaming jobs associated with the cluster. If all of the jobs were running, this would be the capacity allocated.
   late final pulumi.Output<int> capacityAssigned;
-
   /// Unique identifier for the cluster.
   late final pulumi.Output<String> clusterId;
-
   /// The date this cluster was created.
   late final pulumi.Output<String> createdDate;
-
   /// The current entity tag for the cluster. This is an opaque string. You can use it to detect whether the resource has changed between requests. You can also use it in the If-Match or If-None-Match headers for write operations for optimistic concurrency.
   late final pulumi.Output<String> etag;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the cluster provisioning. The three terminal states are: Succeeded, Failed and Canceled
   late final pulumi.Output<String> provisioningState;
-
   /// The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
   late final pulumi.Output<ClusterSkuResponse?> sku;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
 
@@ -217,11 +206,11 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:streamanalytics:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:streamanalytics:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     capacityAllocated = registerOutput<int>('capacityAllocated');
     capacityAssigned = registerOutput<int>('capacityAssigned');
@@ -231,16 +220,7 @@ class Cluster extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<ClusterSkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<ClusterSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

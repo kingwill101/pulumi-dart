@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRedisLinkedServerArgs {
   /// The name of the linked server.
   final pulumi.Input<String> linkedServerName;
-
   /// The name of the redis cache.
   final pulumi.Input<String> name;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetRedisLinkedServerArgs {
 
   factory GetRedisLinkedServerArgs.fromMap(Map<String, dynamic> map) {
     return GetRedisLinkedServerArgs(
-      linkedServerName: pulumi.Input.fromValue(
-        map['linkedServerName'] as String,
-      ),
+      linkedServerName: pulumi.Input.fromValue(map['linkedServerName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImpactDetails {
   /// Time at which impact was ended according to reported impact.
   final pulumi.Input<String>? endTime;
-
   /// Azure Id of the impact.
   final pulumi.Input<String> impactId;
-
   /// List of impacted Azure resources.
   final pulumi.Input<String> impactedResourceId;
-
   /// Time at which impact was started according to reported impact.
   final pulumi.Input<String> startTime;
 
@@ -39,16 +36,11 @@ class ImpactDetails {
 
   factory ImpactDetails.fromMap(Map<String, dynamic> map) {
     return ImpactDetails(
-      endTime: (() {
-        final guardedValue = map['endTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       impactId: pulumi.Input.fromValue(map['impactId'] as String),
-      impactedResourceId: pulumi.Input.fromValue(
-        map['impactedResourceId'] as String,
-      ),
+      impactedResourceId: pulumi.Input.fromValue(map['impactedResourceId'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
+

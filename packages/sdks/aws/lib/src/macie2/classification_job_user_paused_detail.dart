@@ -20,29 +20,17 @@ class ClassificationJobUserPausedDetail {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'jobExpiresAt': ?jobExpiresAt,
-      'jobImminentExpirationHealthEventArn':
-          ?jobImminentExpirationHealthEventArn,
+      'jobImminentExpirationHealthEventArn': ?jobImminentExpirationHealthEventArn,
       'jobPausedAt': ?jobPausedAt,
     };
   }
 
   factory ClassificationJobUserPausedDetail.fromMap(Map<String, dynamic> map) {
     return ClassificationJobUserPausedDetail(
-      jobExpiresAt: (() {
-        final guardedValue = map['jobExpiresAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      jobImminentExpirationHealthEventArn: (() {
-        final guardedValue = map['jobImminentExpirationHealthEventArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      jobPausedAt: (() {
-        final guardedValue = map['jobPausedAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      jobExpiresAt: (() { final guardedValue = map['jobExpiresAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      jobImminentExpirationHealthEventArn: (() { final guardedValue = map['jobImminentExpirationHealthEventArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      jobPausedAt: (() { final guardedValue = map['jobPausedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -11,39 +11,20 @@ class MonitorTagRuleMetric {
 
   /// Creates a new [MonitorTagRuleMetric].
   /// [filters] A `filter` block as defined below.
-  MonitorTagRuleMetric({this.filters});
+  MonitorTagRuleMetric({
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<MonitorTagRuleMetricFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MonitorTagRuleMetricFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<MonitorTagRuleMetricFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<MonitorTagRuleMetricFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MonitorTagRuleMetric.fromMap(Map<String, dynamic> map) {
     return MonitorTagRuleMetric(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<MonitorTagRuleMetricFilter>(
-            guardedValue,
-            (value) => MonitorTagRuleMetricFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MonitorTagRuleMetricFilter>(guardedValue, (value) => MonitorTagRuleMetricFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

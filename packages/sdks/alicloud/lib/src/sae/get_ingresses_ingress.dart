@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIngressesIngress {
   /// Cert Id.
   final pulumi.Input<String> certId;
-
   /// Default Rule.
   final pulumi.Input<String> defaultRule;
-
   /// Description.
   final pulumi.Input<String> description;
-
   /// The ID of the Ingress.
   final pulumi.Input<String> id;
-
   /// The first ID of the resource.
   final pulumi.Input<String> ingressId;
-
   /// SLB listening port.
   final pulumi.Input<int> listenerPort;
-
   /// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
   final pulumi.Input<String> namespaceId;
-
   /// SLB ID.
   final pulumi.Input<String> slbId;
 
@@ -73,3 +66,4 @@ class GetIngressesIngress {
     );
   }
 }
+

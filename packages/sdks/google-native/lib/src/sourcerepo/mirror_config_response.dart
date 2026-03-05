@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MirrorConfigResponse {
   /// ID of the SSH deploy key at the other hosting service. Removing this key from the other service would deauthorize Google Cloud Source Repositories from mirroring.
   final pulumi.Input<String> deployKeyId;
-
   /// URL of the main repository at the other hosting service.
   final pulumi.Input<String> url;
-
   /// ID of the webhook listening to updates to trigger mirroring. Removing this webhook from the other hosting service will stop Google Cloud Source Repositories from receiving notifications, and thereby disabling mirroring.
   final pulumi.Input<String> webhookId;
 
@@ -39,3 +37,4 @@ class MirrorConfigResponse {
     );
   }
 }
+

@@ -336,15 +336,12 @@ import 'mongo_role_definition_state.dart';
 class MongoRoleDefinition extends pulumi.CustomResource {
   /// The resource ID of the Mongo DB. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cosmosMongoDatabaseId;
-
   /// A list of Mongo Roles which are inherited to the Mongo Role Definition.
   ///
   /// &gt; **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmos_mongo_database_id`.
   late final pulumi.Output<List<String>?> inheritedRoleNames;
-
   /// A `privilege` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> privileges;
-
   /// The user-friendly name for the Mongo Role Definition. It must be unique for the database account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleName;
 
@@ -357,11 +354,11 @@ class MongoRoleDefinition extends pulumi.CustomResource {
     MongoRoleDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/mongoRoleDefinition:MongoRoleDefinition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/mongoRoleDefinition:MongoRoleDefinition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');
     inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames');
     privileges = registerOutput<List<Map<String, dynamic>>?>('privileges');
@@ -386,11 +383,11 @@ class MongoRoleDefinition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/mongoRoleDefinition:MongoRoleDefinition',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/mongoRoleDefinition:MongoRoleDefinition',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');
     inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames');
     privileges = registerOutput<List<Map<String, dynamic>>?>('privileges');

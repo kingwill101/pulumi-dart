@@ -275,28 +275,20 @@ import 'lifecycle_hook_state.dart';
 class LifecycleHook extends pulumi.CustomResource {
   /// Name of the Auto Scaling group to which you want to assign the lifecycle hook
   late final pulumi.Output<String> autoscalingGroupName;
-
   /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. The value for this parameter can be either CONTINUE or ABANDON. The default value for this parameter is ABANDON.
   late final pulumi.Output<String> defaultResult;
-
   /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the DefaultResult parameter
   late final pulumi.Output<int?> heartbeatTimeout;
-
   /// Instance state to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see [describe-lifecycle-hook-types](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/describe-lifecycle-hook-types.html#examples)
   late final pulumi.Output<String> lifecycleTransition;
-
   /// Name of the lifecycle hook.
   late final pulumi.Output<String> name;
-
   /// Contains additional information that you want to include any time Auto Scaling sends a message to the notification target.
   late final pulumi.Output<String?> notificationMetadata;
-
   /// ARN of the notification target that Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This ARN target can be either an SQS queue, an SNS topic, or a Lambda function.
   late final pulumi.Output<String?> notificationTargetArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.
   late final pulumi.Output<String?> roleArn;
 
@@ -309,11 +301,11 @@ class LifecycleHook extends pulumi.CustomResource {
     LifecycleHookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:autoscaling/lifecycleHook:LifecycleHook',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:autoscaling/lifecycleHook:LifecycleHook',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     defaultResult = registerOutput<String>('defaultResult');
     heartbeatTimeout = registerOutput<int?>('heartbeatTimeout');
@@ -343,11 +335,11 @@ class LifecycleHook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:autoscaling/lifecycleHook:LifecycleHook',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:autoscaling/lifecycleHook:LifecycleHook',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     defaultResult = registerOutput<String>('defaultResult');
     heartbeatTimeout = registerOutput<int?>('heartbeatTimeout');

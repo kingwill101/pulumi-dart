@@ -641,31 +641,24 @@ import 'workload_identity_pool_state.dart';
 class WorkloadIdentityPool extends pulumi.CustomResource {
   /// A description of the pool. Cannot exceed 256 characters.
   late final pulumi.Output<String?> description;
-
   /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
   /// existing tokens to access resources. If the pool is re-enabled, existing tokens grant
   /// access again.
   late final pulumi.Output<bool?> disabled;
-
   /// A display name for the pool. Cannot exceed 32 characters.
   late final pulumi.Output<String?> displayName;
-
   /// Represents configuration for generating mutual TLS (mTLS) certificates for the identities
   /// within this pool. Defines the Certificate Authority (CA) pool resources and configurations
   /// required for issuance and rotation of mTLS workload certificates.
   /// Structure is documented below.
-  late final pulumi.Output<WorkloadIdentityPoolInlineCertificateIssuanceConfig?>
-  inlineCertificateIssuanceConfig;
-
+  late final pulumi.Output<WorkloadIdentityPoolInlineCertificateIssuanceConfig?> inlineCertificateIssuanceConfig;
   /// Represents config to add additional trusted trust domains. Defines configuration for extending
   /// trust to additional trust domains. By establishing trust with another domain, the current
   /// domain will recognize and accept certificates issued by entities within the trusted domains.
   /// Note that a trust domain automatically trusts itself, eliminating the need for explicit
   /// configuration.
   /// Structure is documented below.
-  late final pulumi.Output<WorkloadIdentityPoolInlineTrustConfig?>
-  inlineTrustConfig;
-
+  late final pulumi.Output<WorkloadIdentityPoolInlineTrustConfig?> inlineTrustConfig;
   /// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
   /// are in `FEDERATION_ONLY` mode.
   ///
@@ -685,15 +678,12 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
   /// mode pools.
   /// Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
   late final pulumi.Output<String?> mode;
-
   /// The resource name of the pool as
   /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The state of the pool.
   /// * `STATE_UNSPECIFIED`: State unspecified.
   /// * `ACTIVE`: The pool is active, and may be used in Google Cloud policies.
@@ -704,7 +694,6 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
   /// use existing tokens to access resources. If the pool is undeleted, existing tokens grant
   /// access again.
   late final pulumi.Output<String> state;
-
   /// The ID to use for the pool, which becomes the final component of the resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
@@ -719,35 +708,16 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
     WorkloadIdentityPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/workloadIdentityPool:WorkloadIdentityPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:iam/workloadIdentityPool:WorkloadIdentityPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
-    inlineCertificateIssuanceConfig =
-        registerOutput<WorkloadIdentityPoolInlineCertificateIssuanceConfig?>(
-          'inlineCertificateIssuanceConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    inlineTrustConfig = registerOutput<WorkloadIdentityPoolInlineTrustConfig?>(
-      'inlineTrustConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadIdentityPoolInlineTrustConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    inlineCertificateIssuanceConfig = registerOutput<WorkloadIdentityPoolInlineCertificateIssuanceConfig?>('inlineCertificateIssuanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inlineTrustConfig = registerOutput<WorkloadIdentityPoolInlineTrustConfig?>('inlineTrustConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolInlineTrustConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -773,35 +743,16 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/workloadIdentityPool:WorkloadIdentityPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:iam/workloadIdentityPool:WorkloadIdentityPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
-    inlineCertificateIssuanceConfig =
-        registerOutput<WorkloadIdentityPoolInlineCertificateIssuanceConfig?>(
-          'inlineCertificateIssuanceConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    inlineTrustConfig = registerOutput<WorkloadIdentityPoolInlineTrustConfig?>(
-      'inlineTrustConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadIdentityPoolInlineTrustConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    inlineCertificateIssuanceConfig = registerOutput<WorkloadIdentityPoolInlineCertificateIssuanceConfig?>('inlineCertificateIssuanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inlineTrustConfig = registerOutput<WorkloadIdentityPoolInlineTrustConfig?>('inlineTrustConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolInlineTrustConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -221,14 +221,11 @@ import 'alert_rule_fusion_state.dart';
 class AlertRuleFusion extends pulumi.CustomResource {
   /// The GUID of the alert rule template which is used for this Sentinel Fusion Alert Rule. Changing this forces a new Sentinel Fusion Alert Rule to be created.
   late final pulumi.Output<String> alertRuleTemplateGuid;
-
   /// Should this Sentinel Fusion Alert Rule be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// The ID of the Log Analytics Workspace this Sentinel Fusion Alert Rule belongs to. Changing this forces a new Sentinel Fusion Alert Rule to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
   late final pulumi.Output<String> name;
-
   /// One or more `source` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> sources;
 
@@ -241,11 +238,11 @@ class AlertRuleFusion extends pulumi.CustomResource {
     AlertRuleFusionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/alertRuleFusion:AlertRuleFusion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/alertRuleFusion:AlertRuleFusion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
     enabled = registerOutput<bool?>('enabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
@@ -271,11 +268,11 @@ class AlertRuleFusion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/alertRuleFusion:AlertRuleFusion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/alertRuleFusion:AlertRuleFusion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
     enabled = registerOutput<bool?>('enabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');

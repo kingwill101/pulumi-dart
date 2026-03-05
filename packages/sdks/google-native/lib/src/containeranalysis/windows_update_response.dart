@@ -8,22 +8,16 @@ import 'identity_response.dart';
 class WindowsUpdateResponse {
   /// The list of categories to which the update belongs.
   final pulumi.Input<List<CategoryResponse>> categories;
-
   /// The localized description of the update.
   final pulumi.Input<String> description;
-
   /// Required - The unique identifier for the update.
   final pulumi.Input<IdentityResponse> identity;
-
   /// The Microsoft Knowledge Base article IDs that are associated with the update.
   final pulumi.Input<List<String>> kbArticleIds;
-
   /// The last published timestamp of the update.
   final pulumi.Input<String> lastPublishedTimestamp;
-
   /// The hyperlink to the support information for the update.
   final pulumi.Input<String> supportUrl;
-
   /// The localized title of the update.
   final pulumi.Input<String> title;
 
@@ -47,24 +41,9 @@ class WindowsUpdateResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'categories':
-          pulumi.Input.mapInputValue<
-            List<CategoryResponse>,
-            List<Map<String, dynamic>>
-          >(
-            categories,
-            (value) =>
-                pulumi.Input.encodeList<CategoryResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'categories': pulumi.Input.mapInputValue<List<CategoryResponse>, List<Map<String, dynamic>>>(categories, (value) => pulumi.Input.encodeList<CategoryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': description,
-      'identity':
-          pulumi.Input.mapInputValue<IdentityResponse, Map<String, dynamic>>(
-            identity,
-            (value) => value.toMap(),
-          ),
+      'identity': pulumi.Input.mapInputValue<IdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'kbArticleIds': kbArticleIds,
       'lastPublishedTimestamp': lastPublishedTimestamp,
       'supportUrl': supportUrl,
@@ -74,27 +53,14 @@ class WindowsUpdateResponse {
 
   factory WindowsUpdateResponse.fromMap(Map<String, dynamic> map) {
     return WindowsUpdateResponse(
-      categories: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<CategoryResponse>(
-          map['categories']!,
-          (value) =>
-              CategoryResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      categories: pulumi.Input.fromValue(pulumi.Input.decodeList<CategoryResponse>(map['categories']!, (value) => CategoryResponse.fromMap((value as Map).cast<String, dynamic>()))),
       description: pulumi.Input.fromValue(map['description'] as String),
-      identity: pulumi.Input.fromValue(
-        IdentityResponse.fromMap(
-          (map['identity']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      kbArticleIds: pulumi.Input.fromValue(
-        (map['kbArticleIds'] as List).cast<String>(),
-      ),
-      lastPublishedTimestamp: pulumi.Input.fromValue(
-        map['lastPublishedTimestamp'] as String,
-      ),
+      identity: pulumi.Input.fromValue(IdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())),
+      kbArticleIds: pulumi.Input.fromValue((map['kbArticleIds'] as List).cast<String>()),
+      lastPublishedTimestamp: pulumi.Input.fromValue(map['lastPublishedTimestamp'] as String),
       supportUrl: pulumi.Input.fromValue(map['supportUrl'] as String),
       title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
+

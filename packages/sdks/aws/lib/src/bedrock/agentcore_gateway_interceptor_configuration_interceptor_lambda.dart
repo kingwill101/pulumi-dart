@@ -13,14 +13,15 @@ class AgentcoreGatewayInterceptorConfigurationInterceptorLambda {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': arn};
+    return <String, dynamic>{
+      'arn': arn,
+    };
   }
 
-  factory AgentcoreGatewayInterceptorConfigurationInterceptorLambda.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreGatewayInterceptorConfigurationInterceptorLambda.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayInterceptorConfigurationInterceptorLambda(
       arn: pulumi.Input.fromValue(map['arn'] as String),
     );
   }
 }
+

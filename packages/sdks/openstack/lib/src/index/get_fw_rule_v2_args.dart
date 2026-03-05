@@ -9,56 +9,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFwRuleV2Args {
   /// Action to be taken when the firewall rule matches.
   final pulumi.Input<String>? action;
-
   /// The description of the firewall rule.
   final pulumi.Input<String>? description;
-
   /// The destination IP address on which the
   /// firewall rule operates.
   final pulumi.Input<String>? destinationIpAddress;
-
   /// The destination port on which the firewall
   /// rule operates.
   final pulumi.Input<String>? destinationPort;
-
   /// Enabled status for the firewall rule.
   final pulumi.Input<bool>? enabled;
-
   /// The ID of the firewall policy the rule belongs to.
   final pulumi.Input<List<String>>? firewallPolicyIds;
-
   /// IP version, either 4 (default) or 6.
   final pulumi.Input<int>? ipVersion;
-
   /// The name of the firewall rule.
   final pulumi.Input<String>? name;
-
   /// This argument conflicts and is interchangeable
   /// with `tenant_id`. The owner of the firewall rule.
   final pulumi.Input<String>? projectId;
-
   /// The protocol type on which the firewall rule operates.
   final pulumi.Input<String>? protocol;
-
   /// The region in which to obtain the V2 Neutron client.
   /// A Neutron client is needed to retrieve firewall policy ids. If omitted, the
   /// `region` argument of the provider is used.
   final pulumi.Input<String>? region;
-
   /// The ID of the firewall rule.
   final pulumi.Input<String>? ruleId;
-
   /// The sharing status of the firewall policy.
   final pulumi.Input<bool>? shared;
-
   /// The source IP address on which the firewall
   /// rule operates.
   final pulumi.Input<String>? sourceIpAddress;
-
   /// The source port on which the firewall
   /// rule operates.
   final pulumi.Input<String>? sourcePort;
-
   /// This argument conflicts and is interchangeable
   /// with `project_id`. The owner of the firewall rule.
   final pulumi.Input<String>? tenantId;
@@ -122,86 +107,23 @@ class GetFwRuleV2Args {
 
   factory GetFwRuleV2Args.fromMap(Map<String, dynamic> map) {
     return GetFwRuleV2Args(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destinationIpAddress: (() {
-        final guardedValue = map['destinationIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destinationPort: (() {
-        final guardedValue = map['destinationPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      firewallPolicyIds: (() {
-        final guardedValue = map['firewallPolicyIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      ipVersion: (() {
-        final guardedValue = map['ipVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      projectId: (() {
-        final guardedValue = map['projectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ruleId: (() {
-        final guardedValue = map['ruleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      shared: (() {
-        final guardedValue = map['shared'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sourceIpAddress: (() {
-        final guardedValue = map['sourceIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourcePort: (() {
-        final guardedValue = map['sourcePort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destinationIpAddress: (() { final guardedValue = map['destinationIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      firewallPolicyIds: (() { final guardedValue = map['firewallPolicyIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      ipVersion: (() { final guardedValue = map['ipVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shared: (() { final guardedValue = map['shared']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sourceIpAddress: (() { final guardedValue = map['sourceIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourcePort: (() { final guardedValue = map['sourcePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -1,29 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVirtualNetworkPeering.
 class GetVirtualNetworkPeeringResult {
   /// Controls if forwarded traffic from VMs in the remote virtual network is allowed.
   final bool allowForwardedTraffic;
-
   /// Controls gatewayLinks can be used in the remote virtual network’s link to the local virtual network.
   final bool allowGatewayTransit;
-
   /// Controls if the traffic from the local virtual network can reach the remote virtual network.
   final bool allowVirtualNetworkAccess;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// Specifies whether only IPv6 address space is peered for Subnet peering.
   final bool onlyIpv6PeeringEnabled;
-
   /// Specifies whether complete Virtual Network address space is peered.
   final bool peerCompleteVirtualNetworksEnabled;
-
   /// The full Azure resource ID of the remote virtual network.
   final String remoteVirtualNetworkId;
-
   /// Controls if remote gateways can be used on the local virtual network.
   final bool useRemoteGateways;
   final String virtualNetworkId;
@@ -75,11 +69,11 @@ class GetVirtualNetworkPeeringResult {
       id: map['id'] as String,
       name: map['name'] as String,
       onlyIpv6PeeringEnabled: map['onlyIpv6PeeringEnabled'] as bool,
-      peerCompleteVirtualNetworksEnabled:
-          map['peerCompleteVirtualNetworksEnabled'] as bool,
+      peerCompleteVirtualNetworksEnabled: map['peerCompleteVirtualNetworksEnabled'] as bool,
       remoteVirtualNetworkId: map['remoteVirtualNetworkId'] as String,
       useRemoteGateways: map['useRemoteGateways'] as bool,
       virtualNetworkId: map['virtualNetworkId'] as String,
     );
   }
 }
+

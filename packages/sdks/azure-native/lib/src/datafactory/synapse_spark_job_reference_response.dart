@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SynapseSparkJobReferenceResponse {
   /// Reference spark job name. Expression with resultType string.
   final pulumi.Input<dynamic> referenceName;
-
   /// Synapse spark job reference type.
   final pulumi.Input<String> type;
 
@@ -19,7 +18,10 @@ class SynapseSparkJobReferenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'referenceName': referenceName, 'type': type};
+    return <String, dynamic>{
+      'referenceName': referenceName,
+      'type': type,
+    };
   }
 
   factory SynapseSparkJobReferenceResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class SynapseSparkJobReferenceResponse {
     );
   }
 }
+

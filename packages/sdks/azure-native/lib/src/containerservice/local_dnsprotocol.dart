@@ -15,3 +15,4 @@ enum LocalDNSProtocol {
     throw ArgumentError('Unknown LocalDNSProtocol value: $value');
   }
 }
+

@@ -35,15 +35,12 @@ class GetInstanceTypeNetworkCard {
 
   factory GetInstanceTypeNetworkCard.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeNetworkCard(
-      baselineBandwidth: pulumi.Input.fromValue(
-        map['baselineBandwidth'] as double,
-      ),
+      baselineBandwidth: pulumi.Input.fromValue(map['baselineBandwidth'] as double),
       index: pulumi.Input.fromValue(map['index'] as int),
-      maximumInterfaces: pulumi.Input.fromValue(
-        map['maximumInterfaces'] as int,
-      ),
+      maximumInterfaces: pulumi.Input.fromValue(map['maximumInterfaces'] as int),
       peakBandwidth: pulumi.Input.fromValue(map['peakBandwidth'] as double),
       performance: pulumi.Input.fromValue(map['performance'] as String),
     );
   }
 }
+

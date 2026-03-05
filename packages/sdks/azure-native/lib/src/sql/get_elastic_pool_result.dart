@@ -7,49 +7,34 @@ import 'sku_response.dart';
 class GetElasticPoolResult {
   /// Time in minutes after which elastic pool is automatically paused. A value of -1 means that automatic pause is disabled
   final int? autoPauseDelay;
-
   /// Specifies the availability zone the pool's primary replica is pinned to.
   final String? availabilityZone;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The creation date of the elastic pool (ISO8601 format).
   final String creationDate;
-
   /// The number of secondary replicas associated with the Business Critical, Premium, or Hyperscale edition elastic pool that are used to provide high availability. Applicable only to Hyperscale elastic pools.
   final int? highAvailabilityReplicaCount;
-
   /// Resource ID.
   final String id;
-
   /// Kind of elastic pool. This is metadata used for the Azure portal experience.
   final String kind;
-
   /// The license type to apply for this elastic pool.
   final String? licenseType;
-
   /// Resource location.
   final String location;
-
   /// Maintenance configuration id assigned to the elastic pool. This configuration defines the period when the maintenance updates will will occur.
   final String? maintenanceConfigurationId;
-
   /// The storage limit for the database elastic pool in bytes.
   final double? maxSizeBytes;
-
   /// Minimal capacity that serverless pool will not shrink below, if not paused
   final double? minCapacity;
-
   /// Resource name.
   final String name;
-
   /// The per database settings for the elastic pool.
   final ElasticPoolPerDatabaseSettingsResponse? perDatabaseSettings;
-
   /// Type of enclave requested on the elastic pool.
   final String? preferredEnclaveType;
-
   /// The elastic pool SKU.
   ///
   /// The list of SKUs may vary by region and support offer. To determine the SKUs (including the SKU name, tier/edition, family, and capacity) that are available to your subscription in an Azure region, use the `Capabilities_ListByLocation` REST API or the following command:
@@ -58,16 +43,12 @@ class GetElasticPoolResult {
   /// az sql elastic-pool list-editions -l <location> -o table
   /// ````
   final SkuResponse? sku;
-
   /// The state of the elastic pool.
   final String state;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Resource type.
   final String type;
-
   /// Whether or not this elastic pool is zone redundant, which means the replicas of this elastic pool will be spread across multiple availability zones.
   final bool? zoneRedundant;
 
@@ -142,78 +123,27 @@ class GetElasticPoolResult {
 
   factory GetElasticPoolResult.fromMap(Map<String, dynamic> map) {
     return GetElasticPoolResult(
-      autoPauseDelay: (() {
-        final guardedValue = map['autoPauseDelay'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      availabilityZone: (() {
-        final guardedValue = map['availabilityZone'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      autoPauseDelay: (() { final guardedValue = map['autoPauseDelay']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
       creationDate: map['creationDate'] as String,
-      highAvailabilityReplicaCount: (() {
-        final guardedValue = map['highAvailabilityReplicaCount'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      highAvailabilityReplicaCount: (() { final guardedValue = map['highAvailabilityReplicaCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
       id: map['id'] as String,
       kind: map['kind'] as String,
-      licenseType: (() {
-        final guardedValue = map['licenseType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: map['location'] as String,
-      maintenanceConfigurationId: (() {
-        final guardedValue = map['maintenanceConfigurationId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      maxSizeBytes: (() {
-        final guardedValue = map['maxSizeBytes'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
-      minCapacity: (() {
-        final guardedValue = map['minCapacity'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
+      maintenanceConfigurationId: (() { final guardedValue = map['maintenanceConfigurationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maxSizeBytes: (() { final guardedValue = map['maxSizeBytes']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      minCapacity: (() { final guardedValue = map['minCapacity']; if (guardedValue == null) return null; return guardedValue as double; })(),
       name: map['name'] as String,
-      perDatabaseSettings: (() {
-        final guardedValue = map['perDatabaseSettings'];
-        if (guardedValue == null) return null;
-        return ElasticPoolPerDatabaseSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      preferredEnclaveType: (() {
-        final guardedValue = map['preferredEnclaveType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      perDatabaseSettings: (() { final guardedValue = map['perDatabaseSettings']; if (guardedValue == null) return null; return ElasticPoolPerDatabaseSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      preferredEnclaveType: (() { final guardedValue = map['preferredEnclaveType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       state: map['state'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      zoneRedundant: (() {
-        final guardedValue = map['zoneRedundant'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      zoneRedundant: (() { final guardedValue = map['zoneRedundant']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }
+

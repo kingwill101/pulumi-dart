@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmployeePropertiesResponse {
   /// Age of employee
   final pulumi.Input<int>? age;
-
   /// City of employee
   final pulumi.Input<String>? city;
-
   /// Profile of employee
   final pulumi.Input<String>? profile;
-
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
 
@@ -39,24 +36,11 @@ class EmployeePropertiesResponse {
 
   factory EmployeePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EmployeePropertiesResponse(
-      age: (() {
-        final guardedValue = map['age'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      city: (() {
-        final guardedValue = map['city'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      profile: (() {
-        final guardedValue = map['profile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      age: (() { final guardedValue = map['age']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      city: (() { final guardedValue = map['city']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

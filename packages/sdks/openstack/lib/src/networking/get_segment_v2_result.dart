@@ -1,38 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSegmentV2.
 class GetSegmentV2Result {
   /// The date and time when the network segment was created.
   final String createdAt;
-
   /// See Argument Reference above.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// See Argument Reference above.
   final String name;
-
   /// See Argument Reference above.
   final String networkId;
-
   /// See Argument Reference above.
   final String networkType;
-
   /// See Argument Reference above.
   final String physicalNetwork;
   final String region;
-
   /// See Argument Reference above.
   final int revisionNumber;
-
   /// See Argument Reference above.
   final String segmentId;
-
   /// See Argument Reference above.
   final int segmentationId;
-
   /// The date and time when the network segment was last updated.
   final String updatedAt;
 
@@ -98,3 +89,4 @@ class GetSegmentV2Result {
     );
   }
 }
+

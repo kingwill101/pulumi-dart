@@ -16,3 +16,4 @@ enum PhraseMatcherType {
     throw ArgumentError('Unknown PhraseMatcherType value: $value');
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserProfileUserSettingsKernelGatewayAppSettingsCustomImage {
   /// The name of the App Image Config.
   final pulumi.Input<String> appImageConfigName;
-
   /// The name of the Custom Image.
   final pulumi.Input<String> imageName;
-
   /// The version number of the Custom Image.
   final pulumi.Input<int>? imageVersionNumber;
 
@@ -30,19 +28,12 @@ class UserProfileUserSettingsKernelGatewayAppSettingsCustomImage {
     };
   }
 
-  factory UserProfileUserSettingsKernelGatewayAppSettingsCustomImage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserProfileUserSettingsKernelGatewayAppSettingsCustomImage.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsKernelGatewayAppSettingsCustomImage(
-      appImageConfigName: pulumi.Input.fromValue(
-        map['appImageConfigName'] as String,
-      ),
+      appImageConfigName: pulumi.Input.fromValue(map['appImageConfigName'] as String),
       imageName: pulumi.Input.fromValue(map['imageName'] as String),
-      imageVersionNumber: (() {
-        final guardedValue = map['imageVersionNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      imageVersionNumber: (() { final guardedValue = map['imageVersionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

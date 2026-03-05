@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeDevicePatch {
   /// devicePath is the path inside of the container that the device will be mapped to.
   final pulumi.Input<String>? devicePath;
-
   /// name must match the name of a persistentVolumeClaim in the pod
   final pulumi.Input<String>? name;
 
   /// Creates a new [VolumeDevicePatch].
   /// [devicePath] devicePath is the path inside of the container that the device will be mapped to.
   /// [name] name must match the name of a persistentVolumeClaim in the pod
-  VolumeDevicePatch({this.devicePath, this.name});
+  VolumeDevicePatch({
+    this.devicePath,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'devicePath': ?devicePath, 'name': ?name};
+    return <String, dynamic>{
+      'devicePath': ?devicePath,
+      'name': ?name,
+    };
   }
 
   factory VolumeDevicePatch.fromMap(Map<String, dynamic> map) {
     return VolumeDevicePatch(
-      devicePath: (() {
-        final guardedValue = map['devicePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      devicePath: (() { final guardedValue = map['devicePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

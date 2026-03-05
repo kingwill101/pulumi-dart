@@ -18,3 +18,4 @@ enum ManagedDatabaseCreateMode {
     throw ArgumentError('Unknown ManagedDatabaseCreateMode value: $value');
   }
 }
+

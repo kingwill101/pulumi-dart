@@ -432,36 +432,26 @@ import 'lifecycle_policy_state.dart';
 class LifecyclePolicy extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the lifecycle policy.
   late final pulumi.Output<String> arn;
-
   /// description for the lifecycle policy.
   late final pulumi.Output<String?> description;
-
   /// The Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to run lifecycle actions. More information about this role can be found [`here`](https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-lifecycle-prerequisites.html#image-lifecycle-prereq-role).
   late final pulumi.Output<String> executionRole;
-
   /// The name of the lifecycle policy to create.
   late final pulumi.Output<String> name;
-
   /// Configuration block with policy details. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>> policyDetails;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Selection criteria for the resources that the lifecycle policy applies to. Detailed below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<LifecyclePolicyResourceSelection> resourceSelection;
-
   /// The type of Image Builder resource that the lifecycle policy applies to. Valid values: `AMI_IMAGE` or `CONTAINER_IMAGE`.
   late final pulumi.Output<String> resourceType;
-
   /// The status of the lifecycle policy.
   late final pulumi.Output<String> status;
-
   /// Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -474,27 +464,18 @@ class LifecyclePolicy extends pulumi.CustomResource {
     LifecyclePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:imagebuilder/lifecyclePolicy:LifecyclePolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:imagebuilder/lifecyclePolicy:LifecyclePolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     executionRole = registerOutput<String>('executionRole');
     this.name = registerOutput<String>('name');
     policyDetails = registerOutput<List<Map<String, dynamic>>>('policyDetails');
     region = registerOutput<String>('region');
-    resourceSelection = registerOutput<LifecyclePolicyResourceSelection>(
-      'resourceSelection',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LifecyclePolicyResourceSelection.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceSelection = registerOutput<LifecyclePolicyResourceSelection>('resourceSelection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LifecyclePolicyResourceSelection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceType = registerOutput<String>('resourceType');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -519,27 +500,18 @@ class LifecyclePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:imagebuilder/lifecyclePolicy:LifecyclePolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:imagebuilder/lifecyclePolicy:LifecyclePolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     executionRole = registerOutput<String>('executionRole');
     this.name = registerOutput<String>('name');
     policyDetails = registerOutput<List<Map<String, dynamic>>>('policyDetails');
     region = registerOutput<String>('region');
-    resourceSelection = registerOutput<LifecyclePolicyResourceSelection>(
-      'resourceSelection',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LifecyclePolicyResourceSelection.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceSelection = registerOutput<LifecyclePolicyResourceSelection>('resourceSelection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LifecyclePolicyResourceSelection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceType = registerOutput<String>('resourceType');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');

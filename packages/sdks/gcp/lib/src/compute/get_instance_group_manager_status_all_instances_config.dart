@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceGroupManagerStatusAllInstancesConfig {
   /// Current all-instances configuration revision. This value is in RFC3339 text format.
   final pulumi.Input<String> currentRevision;
-
   /// A bit indicating whether this configuration has been applied to all managed instances in the group.
   final pulumi.Input<bool> effective;
 
@@ -24,12 +23,11 @@ class GetInstanceGroupManagerStatusAllInstancesConfig {
     };
   }
 
-  factory GetInstanceGroupManagerStatusAllInstancesConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceGroupManagerStatusAllInstancesConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerStatusAllInstancesConfig(
       currentRevision: pulumi.Input.fromValue(map['currentRevision'] as String),
       effective: pulumi.Input.fromValue(map['effective'] as bool),
     );
   }
 }
+

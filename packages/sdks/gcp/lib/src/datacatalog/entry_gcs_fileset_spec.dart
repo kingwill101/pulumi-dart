@@ -16,56 +16,34 @@ class EntryGcsFilesetSpec {
   /// * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
   /// * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
   final pulumi.Input<List<String>> filePatterns;
-
   /// (Output)
   /// Sample files contained in this fileset, not all files contained in this fileset are represented here.
   /// Structure is documented below.
   ///
   ///
   /// &lt;a name="nested_gcs_fileset_spec_sample_gcs_file_specs"&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
-  final pulumi.Input<List<EntryGcsFilesetSpecSampleGcsFileSpec>>?
-  sampleGcsFileSpecs;
+  final pulumi.Input<List<EntryGcsFilesetSpecSampleGcsFileSpec>>? sampleGcsFileSpecs;
 
   /// Creates a new [EntryGcsFilesetSpec].
   /// [filePatterns] Patterns to identify a set of files in Google Cloud Storage.
   /// [sampleGcsFileSpecs] (Output)
-  EntryGcsFilesetSpec({required this.filePatterns, this.sampleGcsFileSpecs});
+  EntryGcsFilesetSpec({
+    required this.filePatterns,
+    this.sampleGcsFileSpecs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filePatterns': filePatterns,
-      'sampleGcsFileSpecs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EntryGcsFilesetSpecSampleGcsFileSpec>,
-            List<Map<String, dynamic>>
-          >(
-            sampleGcsFileSpecs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EntryGcsFilesetSpecSampleGcsFileSpec,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'sampleGcsFileSpecs': ?pulumi.Input.mapOptionalInputValue<List<EntryGcsFilesetSpecSampleGcsFileSpec>, List<Map<String, dynamic>>>(sampleGcsFileSpecs, (value) => pulumi.Input.encodeList<EntryGcsFilesetSpecSampleGcsFileSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EntryGcsFilesetSpec.fromMap(Map<String, dynamic> map) {
     return EntryGcsFilesetSpec(
-      filePatterns: pulumi.Input.fromValue(
-        (map['filePatterns'] as List).cast<String>(),
-      ),
-      sampleGcsFileSpecs: (() {
-        final guardedValue = map['sampleGcsFileSpecs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EntryGcsFilesetSpecSampleGcsFileSpec>(
-            guardedValue,
-            (value) => EntryGcsFilesetSpecSampleGcsFileSpec.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      filePatterns: pulumi.Input.fromValue((map['filePatterns'] as List).cast<String>()),
+      sampleGcsFileSpecs: (() { final guardedValue = map['sampleGcsFileSpecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EntryGcsFilesetSpecSampleGcsFileSpec>(guardedValue, (value) => EntryGcsFilesetSpecSampleGcsFileSpec.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

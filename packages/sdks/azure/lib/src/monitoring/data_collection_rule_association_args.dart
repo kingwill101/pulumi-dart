@@ -9,20 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataCollectionRuleAssociationArgs {
   /// The ID of the Data Collection Endpoint which will be associated to the target resource.
   final pulumi.Input<String>? dataCollectionEndpointId;
-
   /// The ID of the Data Collection Rule which will be associated to the target resource.
   ///
   /// &gt; **Note:** Exactly one of `data_collection_endpoint_id` and `data_collection_rule_id` blocks must be specified.
   final pulumi.Input<String>? dataCollectionRuleId;
-
   /// The description of the Data Collection Rule Association.
   final pulumi.Input<String>? description;
-
   /// The name which should be used for this Data Collection Rule Association. Changing this forces a new Data Collection Rule Association to be created. Defaults to `configurationAccessEndpoint`.
   ///
   /// &gt; **Note:** `name` is required when `data_collection_rule_id` is specified. And when `data_collection_endpoint_id` is specified, the `name` is populated with `configurationAccessEndpoint`.
   final pulumi.Input<String>? name;
-
   /// The ID of the Azure Resource which to associate to a Data Collection Rule or a Data Collection Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String> targetResourceId;
 
@@ -52,29 +48,12 @@ class DataCollectionRuleAssociationArgs {
 
   factory DataCollectionRuleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleAssociationArgs(
-      dataCollectionEndpointId: (() {
-        final guardedValue = map['dataCollectionEndpointId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataCollectionRuleId: (() {
-        final guardedValue = map['dataCollectionRuleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetResourceId: pulumi.Input.fromValue(
-        map['targetResourceId'] as String,
-      ),
+      dataCollectionEndpointId: (() { final guardedValue = map['dataCollectionEndpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataCollectionRuleId: (() { final guardedValue = map['dataCollectionRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetResourceId: pulumi.Input.fromValue(map['targetResourceId'] as String),
     );
   }
 }
+

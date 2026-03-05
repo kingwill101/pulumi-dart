@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiscoveredAssetArgs {
   /// Discovered Asset name parameter.
   final pulumi.Input<String> discoveredAssetName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetDiscoveredAssetArgs {
 
   factory GetDiscoveredAssetArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredAssetArgs(
-      discoveredAssetName: pulumi.Input.fromValue(
-        map['discoveredAssetName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      discoveredAssetName: pulumi.Input.fromValue(map['discoveredAssetName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

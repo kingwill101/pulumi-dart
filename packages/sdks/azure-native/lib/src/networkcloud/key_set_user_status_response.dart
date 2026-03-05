@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeySetUserStatusResponse {
   /// The user name that will be used for access.
   final pulumi.Input<String> azureUserName;
-
   /// The indicator of whether the user is currently deployed for access.
   final pulumi.Input<String> status;
-
   /// The additional information describing the current status of this user, if any available.
   final pulumi.Input<String> statusMessage;
 
@@ -38,3 +36,4 @@ class KeySetUserStatusResponse {
     );
   }
 }
+

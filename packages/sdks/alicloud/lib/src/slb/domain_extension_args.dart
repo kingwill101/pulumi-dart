@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainExtensionArgs {
   /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
   final pulumi.Input<bool>? deleteProtectionValidation;
-
   /// The domain name.
   final pulumi.Input<String> domain;
-
   /// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
   final pulumi.Input<int> frontendPort;
-
   /// The ID of the SLB instance.
   final pulumi.Input<String> loadBalancerId;
-
   /// The ID of the certificate used by the domain name.
   final pulumi.Input<String> serverCertificateId;
 
@@ -48,17 +44,12 @@ class DomainExtensionArgs {
 
   factory DomainExtensionArgs.fromMap(Map<String, dynamic> map) {
     return DomainExtensionArgs(
-      deleteProtectionValidation: (() {
-        final guardedValue = map['deleteProtectionValidation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      deleteProtectionValidation: (() { final guardedValue = map['deleteProtectionValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       domain: pulumi.Input.fromValue(map['domain'] as String),
       frontendPort: pulumi.Input.fromValue(map['frontendPort'] as int),
       loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
-      serverCertificateId: pulumi.Input.fromValue(
-        map['serverCertificateId'] as String,
-      ),
+      serverCertificateId: pulumi.Input.fromValue(map['serverCertificateId'] as String),
     );
   }
 }
+

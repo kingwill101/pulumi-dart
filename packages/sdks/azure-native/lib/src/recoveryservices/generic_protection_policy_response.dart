@@ -8,19 +8,14 @@ class GenericProtectionPolicyResponse {
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'GenericProtectionPolicy'.
   final pulumi.Input<String> backupManagementType;
-
   /// Name of this policy's fabric.
   final pulumi.Input<String>? fabricName;
-
   /// Number of items associated with this policy.
   final pulumi.Input<int>? protectedItemsCount;
-
   /// ResourceGuard Operation Requests
   final pulumi.Input<List<String>>? resourceGuardOperationRequests;
-
   /// List of sub-protection policies which includes schedule and retention
   final pulumi.Input<List<SubProtectionPolicyResponse>>? subProtectionPolicy;
-
   /// TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
   final pulumi.Input<String>? timeZone;
 
@@ -46,59 +41,20 @@ class GenericProtectionPolicyResponse {
       'fabricName': ?fabricName,
       'protectedItemsCount': ?protectedItemsCount,
       'resourceGuardOperationRequests': ?resourceGuardOperationRequests,
-      'subProtectionPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SubProtectionPolicyResponse>,
-            List<Map<String, dynamic>>
-          >(
-            subProtectionPolicy,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SubProtectionPolicyResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'subProtectionPolicy': ?pulumi.Input.mapOptionalInputValue<List<SubProtectionPolicyResponse>, List<Map<String, dynamic>>>(subProtectionPolicy, (value) => pulumi.Input.encodeList<SubProtectionPolicyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeZone': ?timeZone,
     };
   }
 
   factory GenericProtectionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return GenericProtectionPolicyResponse(
-      backupManagementType: pulumi.Input.fromValue(
-        map['backupManagementType'] as String,
-      ),
-      fabricName: (() {
-        final guardedValue = map['fabricName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protectedItemsCount: (() {
-        final guardedValue = map['protectedItemsCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      resourceGuardOperationRequests: (() {
-        final guardedValue = map['resourceGuardOperationRequests'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      subProtectionPolicy: (() {
-        final guardedValue = map['subProtectionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SubProtectionPolicyResponse>(
-            guardedValue,
-            (value) => SubProtectionPolicyResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backupManagementType: pulumi.Input.fromValue(map['backupManagementType'] as String),
+      fabricName: (() { final guardedValue = map['fabricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protectedItemsCount: (() { final guardedValue = map['protectedItemsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      resourceGuardOperationRequests: (() { final guardedValue = map['resourceGuardOperationRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      subProtectionPolicy: (() { final guardedValue = map['subProtectionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubProtectionPolicyResponse>(guardedValue, (value) => SubProtectionPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,29 +9,20 @@ class PipelineTriggerPropertiesResponse {
 
   /// Creates a new [PipelineTriggerPropertiesResponse].
   /// [sourceTrigger] The source trigger properties of the pipeline.
-  PipelineTriggerPropertiesResponse({this.sourceTrigger});
+  PipelineTriggerPropertiesResponse({
+    this.sourceTrigger,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceTrigger':
-          ?pulumi.Input.mapOptionalInputValue<
-            PipelineSourceTriggerPropertiesResponse,
-            Map<String, dynamic>
-          >(sourceTrigger, (value) => value.toMap()),
+      'sourceTrigger': ?pulumi.Input.mapOptionalInputValue<PipelineSourceTriggerPropertiesResponse, Map<String, dynamic>>(sourceTrigger, (value) => value.toMap()),
     };
   }
 
   factory PipelineTriggerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PipelineTriggerPropertiesResponse(
-      sourceTrigger: (() {
-        final guardedValue = map['sourceTrigger'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PipelineSourceTriggerPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      sourceTrigger: (() { final guardedValue = map['sourceTrigger']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineSourceTriggerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

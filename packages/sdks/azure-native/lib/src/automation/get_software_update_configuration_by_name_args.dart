@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSoftwareUpdateConfigurationByNameArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the software update configuration to be created.
   final pulumi.Input<String> softwareUpdateConfigurationName;
 
@@ -34,19 +32,12 @@ class GetSoftwareUpdateConfigurationByNameArgs {
     };
   }
 
-  factory GetSoftwareUpdateConfigurationByNameArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSoftwareUpdateConfigurationByNameArgs.fromMap(Map<String, dynamic> map) {
     return GetSoftwareUpdateConfigurationByNameArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      softwareUpdateConfigurationName: pulumi.Input.fromValue(
-        map['softwareUpdateConfigurationName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      softwareUpdateConfigurationName: pulumi.Input.fromValue(map['softwareUpdateConfigurationName'] as String),
     );
   }
 }
+

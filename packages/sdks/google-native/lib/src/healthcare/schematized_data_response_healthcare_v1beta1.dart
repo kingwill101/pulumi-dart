@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchematizedDataResponseHealthcareV1beta1 {
   /// JSON output of the parser.
   final pulumi.Input<String> data;
-
   /// The error output of the parser.
   final pulumi.Input<String> error;
 
@@ -19,15 +18,17 @@ class SchematizedDataResponseHealthcareV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'data': data, 'error': error};
+    return <String, dynamic>{
+      'data': data,
+      'error': error,
+    };
   }
 
-  factory SchematizedDataResponseHealthcareV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SchematizedDataResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return SchematizedDataResponseHealthcareV1beta1(
       data: pulumi.Input.fromValue(map['data'] as String),
       error: pulumi.Input.fromValue(map['error'] as String),
     );
   }
 }
+

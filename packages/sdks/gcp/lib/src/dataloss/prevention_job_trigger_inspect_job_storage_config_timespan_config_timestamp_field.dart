@@ -18,14 +18,15 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

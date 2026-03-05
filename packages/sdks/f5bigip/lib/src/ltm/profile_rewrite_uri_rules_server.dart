@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProfileRewriteUriRulesServer {
   /// Host part of the uri, e.g. `www.foo.com`.
   final pulumi.Input<String> host;
-
   /// Path part of the uri, must always end with `/`. Default value is: `/`
   final pulumi.Input<String>? path;
-
   /// Port part of the uri. Default value is: `none`
   final pulumi.Input<String>? port;
-
   /// Scheme part of the uri, e.g. `https`, `ftp`.
   final pulumi.Input<String> scheme;
 
@@ -39,17 +36,10 @@ class ProfileRewriteUriRulesServer {
   factory ProfileRewriteUriRulesServer.fromMap(Map<String, dynamic> map) {
     return ProfileRewriteUriRulesServer(
       host: pulumi.Input.fromValue(map['host'] as String),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scheme: pulumi.Input.fromValue(map['scheme'] as String),
     );
   }
 }
+

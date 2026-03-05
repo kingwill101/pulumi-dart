@@ -36,15 +36,10 @@ class GetProviderArgs {
   factory GetProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetProviderArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       providerId: pulumi.Input.fromValue(map['providerId'] as String),
-      workloadIdentityPoolId: pulumi.Input.fromValue(
-        map['workloadIdentityPoolId'] as String,
-      ),
+      workloadIdentityPoolId: pulumi.Input.fromValue(map['workloadIdentityPoolId'] as String),
     );
   }
 }
+

@@ -17,3 +17,4 @@ enum NamespaceStatus {
     throw ArgumentError('Unknown NamespaceStatus value: $value');
   }
 }
+

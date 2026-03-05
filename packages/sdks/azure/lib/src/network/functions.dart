@@ -1901,8 +1901,7 @@ Future<GetNetworkManagerResult> getNetworkManager(
 /// * `Microsoft.Network` - 2025-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_network_manager_connectivity_configuration_get_network_manager_connectivity_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkManagerConnectivityConfigurationResult>
-getNetworkManagerConnectivityConfiguration(
+Future<GetNetworkManagerConnectivityConfigurationResult> getNetworkManagerConnectivityConfiguration(
   GetNetworkManagerConnectivityConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2915,8 +2914,7 @@ Future<GetNetworkSecurityPerimeterResult> getNetworkSecurityPerimeter(
 /// * `Microsoft.Network` - 2025-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_network_security_perimeter_profile_get_network_security_perimeter_profile_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkSecurityPerimeterProfileResult>
-getNetworkSecurityPerimeterProfile(
+Future<GetNetworkSecurityPerimeterProfileResult> getNetworkSecurityPerimeterProfile(
   GetNetworkSecurityPerimeterProfileArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

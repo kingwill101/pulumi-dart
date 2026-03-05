@@ -17,3 +17,4 @@ enum DigitalTwinsIdentityType {
     throw ArgumentError('Unknown DigitalTwinsIdentityType value: $value');
   }
 }
+

@@ -176,20 +176,14 @@ import 'cassandra_resource_cassandra_keyspace_args.dart';
 class CassandraResourceCassandraKeyspace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The location of the resource group to which the resource belongs.
   late final pulumi.Output<String?> location;
-
   /// The name of the ARM resource.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<CassandraKeyspaceGetPropertiesResponseOptions?>
-  options;
-  late final pulumi.Output<CassandraKeyspaceGetPropertiesResponseResource?>
-  resource;
-
+  late final pulumi.Output<CassandraKeyspaceGetPropertiesResponseOptions?> options;
+  late final pulumi.Output<CassandraKeyspaceGetPropertiesResponseResource?> resource;
   /// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -202,35 +196,16 @@ class CassandraResourceCassandraKeyspace extends pulumi.CustomResource {
     CassandraResourceCassandraKeyspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cosmosdb:CassandraResourceCassandraKeyspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cosmosdb:CassandraResourceCassandraKeyspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.options =
-        registerOutput<CassandraKeyspaceGetPropertiesResponseOptions?>(
-          'options',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CassandraKeyspaceGetPropertiesResponseOptions.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    resource = registerOutput<CassandraKeyspaceGetPropertiesResponseResource?>(
-      'resource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CassandraKeyspaceGetPropertiesResponseResource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    this.options = registerOutput<CassandraKeyspaceGetPropertiesResponseOptions?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraKeyspaceGetPropertiesResponseOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resource = registerOutput<CassandraKeyspaceGetPropertiesResponseResource?>('resource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraKeyspaceGetPropertiesResponseResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

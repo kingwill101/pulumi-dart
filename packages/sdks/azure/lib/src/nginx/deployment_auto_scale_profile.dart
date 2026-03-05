@@ -7,10 +7,8 @@ class DeploymentAutoScaleProfile {
   ///
   /// &gt; **Note:** If you're using autoscaling with deployments created before v4.0, you may need to use Terraform's `ignore_changes` functionality to ignore changes to the `capacity` field.
   final pulumi.Input<int> maxCapacity;
-
   /// Specify the minimum number of NGINX capacity units for this NGINX Deployment.
   final pulumi.Input<int> minCapacity;
-
   /// Specify the name of the autoscaling profile.
   final pulumi.Input<String> name;
 
@@ -40,3 +38,4 @@ class DeploymentAutoScaleProfile {
     );
   }
 }
+

@@ -251,54 +251,40 @@ class SharedImageVersion extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** `blob_uri` and `storage_account_id` must be specified together
   late final pulumi.Output<String?> blobUri;
-
   /// Specifies whether this Shared Image Version can be deleted from the Azure Regions this is replicated to. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> deletionOfReplicatedLocationsEnabled;
-
   /// The end of life date in RFC3339 format of the Image Version.
   late final pulumi.Output<String?> endOfLifeDate;
-
   /// Should this Image Version be excluded from the `latest` filter? If set to `true` this Image Version won't be returned for the `latest` version. Defaults to `false`.
   late final pulumi.Output<bool?> excludeFromLatest;
-
   /// The name of the Shared Image Gallery in which the Shared Image exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> galleryName;
-
   /// The name of the Shared Image within the Shared Image Gallery in which this Version should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> imageName;
-
   /// The Azure Region in which the Shared Image Gallery exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The ID of the Managed Image or Virtual Machine ID which should be used for this Shared Image Version. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** The ID can be sourced from the `azure.compute.Image` data source or resource
   ///
   /// &gt; **NOTE:** You must specify exact one of `blob_uri`, `managed_image_id` and `os_disk_snapshot_id`.
   late final pulumi.Output<String?> managedImageId;
-
   /// The version number for this Image Version, such as `1.0.0`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the OS disk snapshot which should be used for this Shared Image Version. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** You must specify exact one of `blob_uri`, `managed_image_id` and `os_disk_snapshot_id`.
   late final pulumi.Output<String?> osDiskSnapshotId;
-
   /// Mode to be used for replication. Possible values are `Full` and `Shallow`. Defaults to `Full`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> replicationMode;
-
   /// The name of the Resource Group in which the Shared Image Gallery exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The ID of the Storage Account where the Blob exists. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** `blob_uri` and `storage_account_id` must be specified together
   late final pulumi.Output<String?> storageAccountId;
-
   /// A collection of tags which should be applied to this resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// One or more `target_region` blocks as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> targetRegions;
 
@@ -311,15 +297,13 @@ class SharedImageVersion extends pulumi.CustomResource {
     SharedImageVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/sharedImageVersion:SharedImageVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/sharedImageVersion:SharedImageVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blobUri = registerOutput<String?>('blobUri');
-    deletionOfReplicatedLocationsEnabled = registerOutput<bool?>(
-      'deletionOfReplicatedLocationsEnabled',
-    );
+    deletionOfReplicatedLocationsEnabled = registerOutput<bool?>('deletionOfReplicatedLocationsEnabled');
     endOfLifeDate = registerOutput<String?>('endOfLifeDate');
     excludeFromLatest = registerOutput<bool?>('excludeFromLatest');
     galleryName = registerOutput<String>('galleryName');
@@ -353,15 +337,13 @@ class SharedImageVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/sharedImageVersion:SharedImageVersion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/sharedImageVersion:SharedImageVersion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blobUri = registerOutput<String?>('blobUri');
-    deletionOfReplicatedLocationsEnabled = registerOutput<bool?>(
-      'deletionOfReplicatedLocationsEnabled',
-    );
+    deletionOfReplicatedLocationsEnabled = registerOutput<bool?>('deletionOfReplicatedLocationsEnabled');
     endOfLifeDate = registerOutput<String?>('endOfLifeDate');
     excludeFromLatest = registerOutput<bool?>('excludeFromLatest');
     galleryName = registerOutput<String>('galleryName');

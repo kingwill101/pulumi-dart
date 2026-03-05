@@ -4,38 +4,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_performance_config_total_egress_bandwidth_tier_compute_beta.dart';
 
 class NetworkPerformanceConfigComputeBeta {
-  final pulumi.Input<
-    NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta
-  >?
-  totalEgressBandwidthTier;
+  final pulumi.Input<NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta>? totalEgressBandwidthTier;
 
   /// Creates a new [NetworkPerformanceConfigComputeBeta].
   /// [totalEgressBandwidthTier] Optional.
-  NetworkPerformanceConfigComputeBeta({this.totalEgressBandwidthTier});
+  NetworkPerformanceConfigComputeBeta({
+    this.totalEgressBandwidthTier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'totalEgressBandwidthTier':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta,
-            String
-          >(totalEgressBandwidthTier, (value) => value.wireValue),
+      'totalEgressBandwidthTier': ?pulumi.Input.mapOptionalInputValue<NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta, String>(totalEgressBandwidthTier, (value) => value.wireValue),
     };
   }
 
-  factory NetworkPerformanceConfigComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkPerformanceConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return NetworkPerformanceConfigComputeBeta(
-      totalEgressBandwidthTier: (() {
-        final guardedValue = map['totalEgressBandwidthTier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      totalEgressBandwidthTier: (() { final guardedValue = map['totalEgressBandwidthTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

@@ -16,47 +16,32 @@ import 'domain_os_nv_ram_source_reservations_source_unix.dart';
 class DomainOsNvRamSourceReservationsSource {
   /// Configures the DBus source for the EGD backend.
   final pulumi.Input<DomainOsNvRamSourceReservationsSourceDbus>? dbus;
-
   /// Defines the device path for the source of the EGD backend.
   final pulumi.Input<DomainOsNvRamSourceReservationsSourceDev>? dev;
-
   /// Defines a file source for the RNG EGD backend.
   final pulumi.Input<DomainOsNvRamSourceReservationsSourceFile>? file;
-
   /// Configures the NMDM (null modem) device source for the EGD backend.
   final pulumi.Input<DomainOsNvRamSourceReservationsSourceNmdm>? nmdm;
-
   /// Configures settings for a null device used in reservations for storage.
   final pulumi.Input<bool>? null_;
-
   /// Defines a pipe source for the EGD backend.
   final pulumi.Input<DomainOsNvRamSourceReservationsSourcePipe>? pipe;
-
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
   final pulumi.Input<DomainOsNvRamSourceReservationsSourcePty>? pty;
-
   /// Configures the QEMU guest agent for the random number generator backend.
-  final pulumi.Input<DomainOsNvRamSourceReservationsSourceQemuvdAgent>?
-  qemuvdAgent;
-
+  final pulumi.Input<DomainOsNvRamSourceReservationsSourceQemuvdAgent>? qemuvdAgent;
   /// Configures the SPICE port settings for the random number generator backend.
   final pulumi.Input<DomainOsNvRamSourceReservationsSourceSpicePort>? spicePort;
-
   /// Configures settings for the SPICE VMC used in reservations related to disk mirroring.
   final pulumi.Input<bool>? spiceVmc;
-
   /// Manages standard I/O settings for the reservations in disk mirroring.
   final pulumi.Input<bool>? stdIo;
-
   /// Configures TCP settings for the random number generator backend.
   final pulumi.Input<DomainOsNvRamSourceReservationsSourceTcp>? tcp;
-
   /// Configures UDP settings for the random number generator backend.
   final pulumi.Input<DomainOsNvRamSourceReservationsSourceUdp>? udp;
-
   /// Configures UNIX domain socket settings for the random number generator backend.
   final pulumi.Input<DomainOsNvRamSourceReservationsSourceUnix>? unix;
-
   /// Configures settings for the VC source in the backing store for disk mirroring reservations.
   final pulumi.Input<bool>? vc;
 
@@ -96,191 +81,42 @@ class DomainOsNvRamSourceReservationsSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dbus':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainOsNvRamSourceReservationsSourceDbus,
-            Map<String, dynamic>
-          >(dbus, (value) => value.toMap()),
-      'dev':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainOsNvRamSourceReservationsSourceDev,
-            Map<String, dynamic>
-          >(dev, (value) => value.toMap()),
-      'file':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainOsNvRamSourceReservationsSourceFile,
-            Map<String, dynamic>
-          >(file, (value) => value.toMap()),
-      'nmdm':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainOsNvRamSourceReservationsSourceNmdm,
-            Map<String, dynamic>
-          >(nmdm, (value) => value.toMap()),
+      'dbus': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceDbus, Map<String, dynamic>>(dbus, (value) => value.toMap()),
+      'dev': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceDev, Map<String, dynamic>>(dev, (value) => value.toMap()),
+      'file': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceFile, Map<String, dynamic>>(file, (value) => value.toMap()),
+      'nmdm': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceNmdm, Map<String, dynamic>>(nmdm, (value) => value.toMap()),
       'null': ?null_,
-      'pipe':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainOsNvRamSourceReservationsSourcePipe,
-            Map<String, dynamic>
-          >(pipe, (value) => value.toMap()),
-      'pty':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainOsNvRamSourceReservationsSourcePty,
-            Map<String, dynamic>
-          >(pty, (value) => value.toMap()),
-      'qemuvdAgent':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainOsNvRamSourceReservationsSourceQemuvdAgent,
-            Map<String, dynamic>
-          >(qemuvdAgent, (value) => value.toMap()),
-      'spicePort':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainOsNvRamSourceReservationsSourceSpicePort,
-            Map<String, dynamic>
-          >(spicePort, (value) => value.toMap()),
+      'pipe': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourcePipe, Map<String, dynamic>>(pipe, (value) => value.toMap()),
+      'pty': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourcePty, Map<String, dynamic>>(pty, (value) => value.toMap()),
+      'qemuvdAgent': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceQemuvdAgent, Map<String, dynamic>>(qemuvdAgent, (value) => value.toMap()),
+      'spicePort': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceSpicePort, Map<String, dynamic>>(spicePort, (value) => value.toMap()),
       'spiceVmc': ?spiceVmc,
       'stdIo': ?stdIo,
-      'tcp':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainOsNvRamSourceReservationsSourceTcp,
-            Map<String, dynamic>
-          >(tcp, (value) => value.toMap()),
-      'udp':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainOsNvRamSourceReservationsSourceUdp,
-            Map<String, dynamic>
-          >(udp, (value) => value.toMap()),
-      'unix':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainOsNvRamSourceReservationsSourceUnix,
-            Map<String, dynamic>
-          >(unix, (value) => value.toMap()),
+      'tcp': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceTcp, Map<String, dynamic>>(tcp, (value) => value.toMap()),
+      'udp': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceUdp, Map<String, dynamic>>(udp, (value) => value.toMap()),
+      'unix': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceUnix, Map<String, dynamic>>(unix, (value) => value.toMap()),
       'vc': ?vc,
     };
   }
 
-  factory DomainOsNvRamSourceReservationsSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainOsNvRamSourceReservationsSource.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceReservationsSource(
-      dbus: (() {
-        final guardedValue = map['dbus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainOsNvRamSourceReservationsSourceDbus.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      dev: (() {
-        final guardedValue = map['dev'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainOsNvRamSourceReservationsSourceDev.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      file: (() {
-        final guardedValue = map['file'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainOsNvRamSourceReservationsSourceFile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      nmdm: (() {
-        final guardedValue = map['nmdm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainOsNvRamSourceReservationsSourceNmdm.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      null_: (() {
-        final guardedValue = map['null'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      pipe: (() {
-        final guardedValue = map['pipe'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainOsNvRamSourceReservationsSourcePipe.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      pty: (() {
-        final guardedValue = map['pty'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainOsNvRamSourceReservationsSourcePty.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      qemuvdAgent: (() {
-        final guardedValue = map['qemuvdAgent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainOsNvRamSourceReservationsSourceQemuvdAgent.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      spicePort: (() {
-        final guardedValue = map['spicePort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainOsNvRamSourceReservationsSourceSpicePort.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      spiceVmc: (() {
-        final guardedValue = map['spiceVmc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      stdIo: (() {
-        final guardedValue = map['stdIo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      tcp: (() {
-        final guardedValue = map['tcp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainOsNvRamSourceReservationsSourceTcp.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      udp: (() {
-        final guardedValue = map['udp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainOsNvRamSourceReservationsSourceUdp.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      unix: (() {
-        final guardedValue = map['unix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainOsNvRamSourceReservationsSourceUnix.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      vc: (() {
-        final guardedValue = map['vc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dbus: (() { final guardedValue = map['dbus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceReservationsSourceDbus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dev: (() { final guardedValue = map['dev']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceReservationsSourceDev.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      file: (() { final guardedValue = map['file']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceReservationsSourceFile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      nmdm: (() { final guardedValue = map['nmdm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceReservationsSourceNmdm.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      null_: (() { final guardedValue = map['null']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      pipe: (() { final guardedValue = map['pipe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceReservationsSourcePipe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      pty: (() { final guardedValue = map['pty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceReservationsSourcePty.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      qemuvdAgent: (() { final guardedValue = map['qemuvdAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceReservationsSourceQemuvdAgent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spicePort: (() { final guardedValue = map['spicePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceReservationsSourceSpicePort.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spiceVmc: (() { final guardedValue = map['spiceVmc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      stdIo: (() { final guardedValue = map['stdIo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tcp: (() { final guardedValue = map['tcp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceReservationsSourceTcp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      udp: (() { final guardedValue = map['udp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceReservationsSourceUdp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      unix: (() { final guardedValue = map['unix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceReservationsSourceUnix.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      vc: (() { final guardedValue = map['vc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

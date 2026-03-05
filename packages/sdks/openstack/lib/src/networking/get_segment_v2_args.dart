@@ -9,31 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSegmentV2Args {
   /// Human-readable description of the network segment.
   final pulumi.Input<String>? description;
-
   /// The name of the network segment.
   final pulumi.Input<String>? name;
-
   /// The ID of the network.
   final pulumi.Input<String>? networkId;
-
   /// The type of the network, such as `vlan`, `vxlan`,
   /// `flat`, `gre`, `geneve`, or `local`.
   final pulumi.Input<String>? networkType;
-
   /// The name of the physical network.
   final pulumi.Input<String>? physicalNetwork;
-
   /// The region in which to obtain the V2 Neutron client.
   /// A Neutron client is needed to retrieve networks ids. If omitted, the
   /// `region` argument of the provider is used.
   final pulumi.Input<String>? region;
-
   /// See Argument Reference above.
   final pulumi.Input<int>? revisionNumber;
-
   /// The ID of the network segment
   final pulumi.Input<String>? segmentId;
-
   /// The segmentation ID of the network segment.
   final pulumi.Input<int>? segmentationId;
 
@@ -75,51 +67,16 @@ class GetSegmentV2Args {
 
   factory GetSegmentV2Args.fromMap(Map<String, dynamic> map) {
     return GetSegmentV2Args(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkId: (() {
-        final guardedValue = map['networkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkType: (() {
-        final guardedValue = map['networkType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      physicalNetwork: (() {
-        final guardedValue = map['physicalNetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      revisionNumber: (() {
-        final guardedValue = map['revisionNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      segmentId: (() {
-        final guardedValue = map['segmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      segmentationId: (() {
-        final guardedValue = map['segmentationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      physicalNetwork: (() { final guardedValue = map['physicalNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      revisionNumber: (() { final guardedValue = map['revisionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      segmentId: (() { final guardedValue = map['segmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      segmentationId: (() { final guardedValue = map['segmentationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

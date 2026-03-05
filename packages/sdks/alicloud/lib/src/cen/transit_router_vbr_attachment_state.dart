@@ -6,45 +6,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitRouterVbrAttachmentState {
   /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
   final pulumi.Input<bool>? autoPublishRouteEnabled;
-
   /// The ID of the CEN.
   final pulumi.Input<String>? cenId;
-
   /// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
   final pulumi.Input<bool>? dryRun;
-
   /// The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
   final pulumi.Input<String>? resourceType;
-
   /// Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
   final pulumi.Input<bool>? routeTableAssociationEnabled;
-
   /// Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
   ///
   /// -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
   final pulumi.Input<bool>? routeTablePropagationEnabled;
-
   /// The status of the Transit Router VBR Attachment.
   final pulumi.Input<String>? status;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The description of the transit router vbr attachment.
   final pulumi.Input<String>? transitRouterAttachmentDescription;
-
   /// The ID of the VBR connection.
   final pulumi.Input<String>? transitRouterAttachmentId;
-
   /// The name of the transit router vbr attachment.
   final pulumi.Input<String>? transitRouterAttachmentName;
-
   /// The ID of the transit router.
   final pulumi.Input<String>? transitRouterId;
-
   /// The ID of the VBR.
   final pulumi.Input<String>? vbrId;
-
   /// The owner id of the vbr.
   final pulumi.Input<String>? vbrOwnerId;
 
@@ -101,78 +88,21 @@ class TransitRouterVbrAttachmentState {
 
   factory TransitRouterVbrAttachmentState.fromMap(Map<String, dynamic> map) {
     return TransitRouterVbrAttachmentState(
-      autoPublishRouteEnabled: (() {
-        final guardedValue = map['autoPublishRouteEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      cenId: (() {
-        final guardedValue = map['cenId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceType: (() {
-        final guardedValue = map['resourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routeTableAssociationEnabled: (() {
-        final guardedValue = map['routeTableAssociationEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      routeTablePropagationEnabled: (() {
-        final guardedValue = map['routeTablePropagationEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      transitRouterAttachmentDescription: (() {
-        final guardedValue = map['transitRouterAttachmentDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouterAttachmentId: (() {
-        final guardedValue = map['transitRouterAttachmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouterAttachmentName: (() {
-        final guardedValue = map['transitRouterAttachmentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouterId: (() {
-        final guardedValue = map['transitRouterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vbrId: (() {
-        final guardedValue = map['vbrId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vbrOwnerId: (() {
-        final guardedValue = map['vbrOwnerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autoPublishRouteEnabled: (() { final guardedValue = map['autoPublishRouteEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      cenId: (() { final guardedValue = map['cenId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routeTableAssociationEnabled: (() { final guardedValue = map['routeTableAssociationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      routeTablePropagationEnabled: (() { final guardedValue = map['routeTablePropagationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      transitRouterAttachmentDescription: (() { final guardedValue = map['transitRouterAttachmentDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouterAttachmentId: (() { final guardedValue = map['transitRouterAttachmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouterAttachmentName: (() { final guardedValue = map['transitRouterAttachmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouterId: (() { final guardedValue = map['transitRouterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vbrId: (() { final guardedValue = map['vbrId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vbrOwnerId: (() { final guardedValue = map['vbrOwnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

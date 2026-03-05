@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReportByDepartmentArgs {
   /// Department ID
   final pulumi.Input<String> departmentId;
-
   /// Report Name.
   final pulumi.Input<String> reportName;
 
@@ -35,3 +34,4 @@ class GetReportByDepartmentArgs {
     );
   }
 }
+

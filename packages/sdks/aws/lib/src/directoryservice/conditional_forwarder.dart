@@ -133,13 +133,10 @@ import 'conditional_forwarder_state.dart';
 class ConditionalForwarder extends pulumi.CustomResource {
   /// ID of directory.
   late final pulumi.Output<String> directoryId;
-
   /// A list of forwarder IP addresses.
   late final pulumi.Output<List<String>> dnsIps;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The fully qualified domain name of the remote domain for which forwarders will be used.
   late final pulumi.Output<String> remoteDomainName;
 
@@ -152,11 +149,11 @@ class ConditionalForwarder extends pulumi.CustomResource {
     ConditionalForwarderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:directoryservice/conditionalForwarder:ConditionalForwarder',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:directoryservice/conditionalForwarder:ConditionalForwarder',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     directoryId = registerOutput<String>('directoryId');
     dnsIps = registerOutput<List<String>>('dnsIps');
     region = registerOutput<String>('region');
@@ -181,11 +178,11 @@ class ConditionalForwarder extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:directoryservice/conditionalForwarder:ConditionalForwarder',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:directoryservice/conditionalForwarder:ConditionalForwarder',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     directoryId = registerOutput<String>('directoryId');
     dnsIps = registerOutput<List<String>>('dnsIps');
     region = registerOutput<String>('region');

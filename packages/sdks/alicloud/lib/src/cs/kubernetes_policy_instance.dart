@@ -427,19 +427,14 @@ import 'kubernetes_policy_instance_state.dart';
 class KubernetesPolicyInstance extends pulumi.CustomResource {
   /// Policy Governance Implementation Actions
   late final pulumi.Output<String?> action;
-
   /// Target cluster ID
   late final pulumi.Output<String> clusterId;
-
   /// Rule Instance Name
   late final pulumi.Output<String> instanceName;
-
   /// Limits the namespace of the policy implementation. Empty indicates all namespaces.
   late final pulumi.Output<List<String>?> namespaces;
-
   /// The parameter configuration of the current rule instance. For more information about the parameters supported by each policy rule, see [Container Security Policy Rule Base Description](https://www.alibabacloud.com/help/doc-detail/359819.html).
   late final pulumi.Output<Map<String, String>?> parameters;
-
   /// Policy Name
   late final pulumi.Output<String> policyName;
 
@@ -452,11 +447,11 @@ class KubernetesPolicyInstance extends pulumi.CustomResource {
     KubernetesPolicyInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/kubernetesPolicyInstance:KubernetesPolicyInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/kubernetesPolicyInstance:KubernetesPolicyInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String?>('action');
     clusterId = registerOutput<String>('clusterId');
     instanceName = registerOutput<String>('instanceName');
@@ -483,11 +478,11 @@ class KubernetesPolicyInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/kubernetesPolicyInstance:KubernetesPolicyInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/kubernetesPolicyInstance:KubernetesPolicyInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String?>('action');
     clusterId = registerOutput<String>('clusterId');
     instanceName = registerOutput<String>('instanceName');

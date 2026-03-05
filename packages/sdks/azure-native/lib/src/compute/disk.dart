@@ -3906,133 +3906,88 @@ import 'system_data_response.dart';
 class Disk extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks.
   late final pulumi.Output<bool?> burstingEnabled;
-
   /// Latest time when bursting was last enabled on a disk.
   late final pulumi.Output<String> burstingEnabledTime;
-
   /// Percentage complete for the background copy when a resource is created via the CopyStart operation.
   late final pulumi.Output<double?> completionPercent;
-
   /// Disk source information. CreationData information cannot be changed after the disk has been created.
   late final pulumi.Output<CreationDataResponse> creationData;
-
   /// Additional authentication requirements when exporting or uploading to a disk or snapshot.
   late final pulumi.Output<String?> dataAccessAuthMode;
-
   /// ARM id of the DiskAccess resource for using private endpoints on disks.
   late final pulumi.Output<String?> diskAccessId;
-
   /// The total number of IOPS that will be allowed across all VMs mounting the shared disk as ReadOnly. One operation can transfer between 4k and 256k bytes.
   late final pulumi.Output<double?> diskIOPSReadOnly;
-
   /// The number of IOPS allowed for this disk; only settable for UltraSSD disks. One operation can transfer between 4k and 256k bytes.
   late final pulumi.Output<double?> diskIOPSReadWrite;
-
   /// The total throughput (MBps) that will be allowed across all VMs mounting the shared disk as ReadOnly. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
   late final pulumi.Output<double?> diskMBpsReadOnly;
-
   /// The bandwidth allowed for this disk; only settable for UltraSSD disks. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
   late final pulumi.Output<double?> diskMBpsReadWrite;
-
   /// The size of the disk in bytes. This field is read only.
   late final pulumi.Output<double> diskSizeBytes;
-
   /// If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
   late final pulumi.Output<int?> diskSizeGB;
-
   /// The state of the disk.
   late final pulumi.Output<String> diskState;
-
   /// Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys.
   late final pulumi.Output<EncryptionResponse?> encryption;
-
   /// Encryption settings collection used for Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot.
-  late final pulumi.Output<EncryptionSettingsCollectionResponse?>
-  encryptionSettingsCollection;
-
+  late final pulumi.Output<EncryptionSettingsCollectionResponse?> encryptionSettingsCollection;
   /// The extended location where the disk will be created. Extended location cannot be changed.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
   late final pulumi.Output<String?> hyperVGeneration;
-
   /// The UTC time when the ownership state of the disk was last changed i.e., the time the disk was last attached or detached from a VM or the time when the VM to which the disk was attached was deallocated or started.
   late final pulumi.Output<String> lastOwnershipUpdateTime;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// A relative URI containing the ID of the VM that has the disk attached.
   late final pulumi.Output<String> managedBy;
-
   /// List of relative URIs containing the IDs of the VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs.
   late final pulumi.Output<List<String>> managedByExtended;
-
   /// The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time.
   late final pulumi.Output<int?> maxShares;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Policy for accessing the disk via network.
   late final pulumi.Output<String?> networkAccessPolicy;
-
   /// Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine.
   late final pulumi.Output<bool?> optimizedForFrequentAttach;
-
   /// The Operating System type.
   late final pulumi.Output<String?> osType;
-
   /// Properties of the disk for which update is pending.
-  late final pulumi.Output<PropertyUpdatesInProgressResponse>
-  propertyUpdatesInProgress;
-
+  late final pulumi.Output<PropertyUpdatesInProgressResponse> propertyUpdatesInProgress;
   /// The disk provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Policy for controlling export on the disk.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer}
   late final pulumi.Output<DiskPurchasePlanResponse?> purchasePlan;
-
   /// Contains the security related information for the resource.
   late final pulumi.Output<DiskSecurityProfileResponse?> securityProfile;
-
   /// Details of the list of all VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs.
   late final pulumi.Output<List<Map<String, dynamic>>> shareInfo;
-
   /// The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS.
   late final pulumi.Output<DiskSkuResponse?> sku;
-
   /// List of supported capabilities for the image from which the OS disk was created.
-  late final pulumi.Output<SupportedCapabilitiesResponse?>
-  supportedCapabilities;
-
+  late final pulumi.Output<SupportedCapabilitiesResponse?> supportedCapabilities;
   /// Indicates the OS on a disk supports hibernation.
   late final pulumi.Output<bool?> supportsHibernation;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks.
   late final pulumi.Output<String?> tier;
-
   /// The time when the disk was created.
   late final pulumi.Output<String> timeCreated;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Unique Guid identifying the resource.
   late final pulumi.Output<String> uniqueId;
-
   /// The Logical zone list for Disk.
   late final pulumi.Output<List<String>?> zones;
 
@@ -4040,27 +3995,21 @@ class Disk extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Disk]. {@macro pulumi_compute_disk_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Disk(String name, {DiskArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:compute:Disk',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Disk(
+    String name, {
+    DiskArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:compute:Disk',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     burstingEnabled = registerOutput<bool?>('burstingEnabled');
     burstingEnabledTime = registerOutput<String>('burstingEnabledTime');
     completionPercent = registerOutput<double?>('completionPercent');
-    creationData = registerOutput<CreationDataResponse>(
-      'creationData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CreationDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    creationData = registerOutput<CreationDataResponse>('creationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CreationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataAccessAuthMode = registerOutput<String?>('dataAccessAuthMode');
     diskAccessId = registerOutput<String?>('diskAccessId');
     diskIOPSReadOnly = registerOutput<double?>('diskIOPSReadOnly');
@@ -4070,37 +4019,9 @@ class Disk extends pulumi.CustomResource {
     diskSizeBytes = registerOutput<double>('diskSizeBytes');
     diskSizeGB = registerOutput<int?>('diskSizeGB');
     diskState = registerOutput<String>('diskState');
-    encryption = registerOutput<EncryptionResponse?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptionSettingsCollection =
-        registerOutput<EncryptionSettingsCollectionResponse?>(
-          'encryptionSettingsCollection',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EncryptionSettingsCollectionResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<EncryptionResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionSettingsCollection = registerOutput<EncryptionSettingsCollectionResponse?>('encryptionSettingsCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionSettingsCollectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
     lastOwnershipUpdateTime = registerOutput<String>('lastOwnershipUpdateTime');
     location = registerOutput<String>('location');
@@ -4109,75 +4030,18 @@ class Disk extends pulumi.CustomResource {
     maxShares = registerOutput<int?>('maxShares');
     this.name = registerOutput<String>('name');
     networkAccessPolicy = registerOutput<String?>('networkAccessPolicy');
-    optimizedForFrequentAttach = registerOutput<bool?>(
-      'optimizedForFrequentAttach',
-    );
+    optimizedForFrequentAttach = registerOutput<bool?>('optimizedForFrequentAttach');
     osType = registerOutput<String?>('osType');
-    propertyUpdatesInProgress =
-        registerOutput<PropertyUpdatesInProgressResponse>(
-          'propertyUpdatesInProgress',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return PropertyUpdatesInProgressResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    propertyUpdatesInProgress = registerOutput<PropertyUpdatesInProgressResponse>('propertyUpdatesInProgress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PropertyUpdatesInProgressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    purchasePlan = registerOutput<DiskPurchasePlanResponse?>(
-      'purchasePlan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiskPurchasePlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    securityProfile = registerOutput<DiskSecurityProfileResponse?>(
-      'securityProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiskSecurityProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    purchasePlan = registerOutput<DiskPurchasePlanResponse?>('purchasePlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskPurchasePlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityProfile = registerOutput<DiskSecurityProfileResponse?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskSecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     shareInfo = registerOutput<List<Map<String, dynamic>>>('shareInfo');
-    sku = registerOutput<DiskSkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiskSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    supportedCapabilities = registerOutput<SupportedCapabilitiesResponse?>(
-      'supportedCapabilities',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SupportedCapabilitiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<DiskSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportedCapabilities = registerOutput<SupportedCapabilitiesResponse?>('supportedCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SupportedCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportsHibernation = registerOutput<bool?>('supportsHibernation');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tier = registerOutput<String?>('tier');
     timeCreated = registerOutput<String>('timeCreated');

@@ -31,17 +31,10 @@ class GetResponsePolicyArgs {
 
   factory GetResponsePolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetResponsePolicyArgs(
-      clientOperationId: (() {
-        final guardedValue = map['clientOperationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientOperationId: (() { final guardedValue = map['clientOperationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       responsePolicy: pulumi.Input.fromValue(map['responsePolicy'] as String),
     );
   }
 }
+

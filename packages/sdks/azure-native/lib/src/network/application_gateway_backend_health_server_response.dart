@@ -7,13 +7,10 @@ import 'network_interface_ipconfiguration_response.dart';
 class ApplicationGatewayBackendHealthServerResponse {
   /// IP address or FQDN of backend server.
   final pulumi.Input<String>? address;
-
   /// Health of backend server.
   final pulumi.Input<String>? health;
-
   /// Health Probe Log.
   final pulumi.Input<String>? healthProbeLog;
-
   /// Reference to IP configuration of backend server.
   final pulumi.Input<NetworkInterfaceIPConfigurationResponse>? ipConfiguration;
 
@@ -34,42 +31,17 @@ class ApplicationGatewayBackendHealthServerResponse {
       'address': ?address,
       'health': ?health,
       'healthProbeLog': ?healthProbeLog,
-      'ipConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkInterfaceIPConfigurationResponse,
-            Map<String, dynamic>
-          >(ipConfiguration, (value) => value.toMap()),
+      'ipConfiguration': ?pulumi.Input.mapOptionalInputValue<NetworkInterfaceIPConfigurationResponse, Map<String, dynamic>>(ipConfiguration, (value) => value.toMap()),
     };
   }
 
-  factory ApplicationGatewayBackendHealthServerResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationGatewayBackendHealthServerResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendHealthServerResponse(
-      address: (() {
-        final guardedValue = map['address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      health: (() {
-        final guardedValue = map['health'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      healthProbeLog: (() {
-        final guardedValue = map['healthProbeLog'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipConfiguration: (() {
-        final guardedValue = map['ipConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkInterfaceIPConfigurationResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      health: (() { final guardedValue = map['health']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      healthProbeLog: (() { final guardedValue = map['healthProbeLog']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipConfiguration: (() { final guardedValue = map['ipConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkInterfaceIPConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOuContainerArgs {
   /// The name of the domain service.
   final pulumi.Input<String> domainServiceName;
-
   /// The name of the OuContainer.
   final pulumi.Input<String> ouContainerName;
-
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetOuContainerArgs {
 
   factory GetOuContainerArgs.fromMap(Map<String, dynamic> map) {
     return GetOuContainerArgs(
-      domainServiceName: pulumi.Input.fromValue(
-        map['domainServiceName'] as String,
-      ),
+      domainServiceName: pulumi.Input.fromValue(map['domainServiceName'] as String),
       ouContainerName: pulumi.Input.fromValue(map['ouContainerName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

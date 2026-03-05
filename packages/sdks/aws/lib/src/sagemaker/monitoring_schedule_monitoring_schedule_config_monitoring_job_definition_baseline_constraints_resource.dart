@@ -13,18 +13,15 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineC
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'s3Uri': ?s3Uri};
+    return <String, dynamic>{
+      's3Uri': ?s3Uri,
+    };
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource(
-      s3Uri: (() {
-        final guardedValue = map['s3Uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      s3Uri: (() { final guardedValue = map['s3Uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

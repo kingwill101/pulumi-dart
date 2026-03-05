@@ -141,16 +141,12 @@ import 'storage_box_snapshot_state.dart';
 class StorageBoxSnapshot extends pulumi.CustomResource {
   /// Description of the Storage Box Snapshot.
   late final pulumi.Output<String> description;
-
   /// Whether the Storage Box Snapshot was created automatically.
   late final pulumi.Output<bool> isAutomatic;
-
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   late final pulumi.Output<Map<String, String>> labels;
-
   /// Name of the Storage Box Snapshot.
   late final pulumi.Output<String> name;
-
   /// ID of the Storage Box.
   late final pulumi.Output<int> storageBoxId;
 
@@ -163,11 +159,11 @@ class StorageBoxSnapshot extends pulumi.CustomResource {
     StorageBoxSnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/storageBoxSnapshot:StorageBoxSnapshot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/storageBoxSnapshot:StorageBoxSnapshot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String>('description');
     isAutomatic = registerOutput<bool>('isAutomatic');
     labels = registerOutput<Map<String, String>>('labels');
@@ -193,11 +189,11 @@ class StorageBoxSnapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/storageBoxSnapshot:StorageBoxSnapshot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/storageBoxSnapshot:StorageBoxSnapshot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String>('description');
     isAutomatic = registerOutput<bool>('isAutomatic');
     labels = registerOutput<Map<String, String>>('labels');

@@ -5,17 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPortBinding {
   /// The ID of the host, which has the allocatee port.
   final pulumi.Input<String> hostId;
-
   /// A JSON string containing the binding profile information.
   final pulumi.Input<String> profile;
-
   /// A map of JSON strings containing additional details for this
   /// specific binding.
   final pulumi.Input<Map<String, String>> vifDetails;
-
   /// The VNIC type of the port binding.
   final pulumi.Input<String> vifType;
-
   /// VNIC type for the port.
   final pulumi.Input<String> vnicType;
 
@@ -47,11 +43,10 @@ class GetPortBinding {
     return GetPortBinding(
       hostId: pulumi.Input.fromValue(map['hostId'] as String),
       profile: pulumi.Input.fromValue(map['profile'] as String),
-      vifDetails: pulumi.Input.fromValue(
-        (map['vifDetails'] as Map).cast<String, String>(),
-      ),
+      vifDetails: pulumi.Input.fromValue((map['vifDetails'] as Map).cast<String, String>()),
       vifType: pulumi.Input.fromValue(map['vifType'] as String),
       vnicType: pulumi.Input.fromValue(map['vnicType'] as String),
     );
   }
 }
+

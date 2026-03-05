@@ -9,43 +9,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleArgs {
   /// The content type of the sensitive data detection rule. Valid values:
   final pulumi.Input<int> category;
-
   /// The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
   final pulumi.Input<String> content;
-
   /// The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
   final pulumi.Input<String>? contentCategory;
-
   /// The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
   final pulumi.Input<String>? description;
-
   /// The language of the content within the request and response. Default value: `zh`. Valid values:
   final pulumi.Input<String>? lang;
-
   /// The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
   final pulumi.Input<String>? productCode;
-
   /// The ID of the service to which the data asset belongs. Valid values:
   final pulumi.Input<String>? productId;
-
   /// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
   final pulumi.Input<String>? riskLevelId;
-
   /// The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
   final pulumi.Input<String> ruleName;
-
   /// The type of the sensitive data detection rule. Valid values:
   final pulumi.Input<int>? ruleType;
-
   /// The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
   final pulumi.Input<String>? statExpress;
-
   /// Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
   final pulumi.Input<int>? status;
-
   /// The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
   final pulumi.Input<String>? target;
-
   /// The risk level of the alert that is triggered. Valid values:
   final pulumi.Input<int>? warnLevel;
 
@@ -104,62 +91,19 @@ class RuleArgs {
     return RuleArgs(
       category: pulumi.Input.fromValue(map['category'] as int),
       content: pulumi.Input.fromValue(map['content'] as String),
-      contentCategory: (() {
-        final guardedValue = map['contentCategory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lang: (() {
-        final guardedValue = map['lang'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      productCode: (() {
-        final guardedValue = map['productCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      productId: (() {
-        final guardedValue = map['productId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      riskLevelId: (() {
-        final guardedValue = map['riskLevelId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      contentCategory: (() { final guardedValue = map['contentCategory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lang: (() { final guardedValue = map['lang']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      productCode: (() { final guardedValue = map['productCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      productId: (() { final guardedValue = map['productId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      riskLevelId: (() { final guardedValue = map['riskLevelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
-      ruleType: (() {
-        final guardedValue = map['ruleType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      statExpress: (() {
-        final guardedValue = map['statExpress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      target: (() {
-        final guardedValue = map['target'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      warnLevel: (() {
-        final guardedValue = map['warnLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      ruleType: (() { final guardedValue = map['ruleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      statExpress: (() { final guardedValue = map['statExpress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      warnLevel: (() { final guardedValue = map['warnLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

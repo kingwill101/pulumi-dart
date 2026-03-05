@@ -21,12 +21,11 @@ class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule {
     };
   }
 
-  factory LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule(
       interval: pulumi.Input.fromValue(map['interval'] as int),
       intervalUnit: pulumi.Input.fromValue(map['intervalUnit'] as String),
     );
   }
 }
+

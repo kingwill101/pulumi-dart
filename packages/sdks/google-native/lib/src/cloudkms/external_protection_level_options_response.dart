@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExternalProtectionLevelOptionsResponse {
   /// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
   final pulumi.Input<String> ekmConnectionKeyPath;
-
   /// The URI for an external resource that this CryptoKeyVersion represents.
   final pulumi.Input<String> externalKeyUri;
 
@@ -25,14 +24,11 @@ class ExternalProtectionLevelOptionsResponse {
     };
   }
 
-  factory ExternalProtectionLevelOptionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExternalProtectionLevelOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ExternalProtectionLevelOptionsResponse(
-      ekmConnectionKeyPath: pulumi.Input.fromValue(
-        map['ekmConnectionKeyPath'] as String,
-      ),
+      ekmConnectionKeyPath: pulumi.Input.fromValue(map['ekmConnectionKeyPath'] as String),
       externalKeyUri: pulumi.Input.fromValue(map['externalKeyUri'] as String),
     );
   }
 }
+

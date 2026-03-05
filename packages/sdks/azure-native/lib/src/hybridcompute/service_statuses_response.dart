@@ -7,7 +7,6 @@ import 'service_status_response.dart';
 class ServiceStatusesResponse {
   /// The state of the extension service on the Arc-enabled machine.
   final pulumi.Input<ServiceStatusResponse>? extensionService;
-
   /// The state of the guest configuration service on the Arc-enabled machine.
   final pulumi.Input<ServiceStatusResponse>? guestConfigurationService;
 
@@ -21,39 +20,16 @@ class ServiceStatusesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extensionService':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServiceStatusResponse,
-            Map<String, dynamic>
-          >(extensionService, (value) => value.toMap()),
-      'guestConfigurationService':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServiceStatusResponse,
-            Map<String, dynamic>
-          >(guestConfigurationService, (value) => value.toMap()),
+      'extensionService': ?pulumi.Input.mapOptionalInputValue<ServiceStatusResponse, Map<String, dynamic>>(extensionService, (value) => value.toMap()),
+      'guestConfigurationService': ?pulumi.Input.mapOptionalInputValue<ServiceStatusResponse, Map<String, dynamic>>(guestConfigurationService, (value) => value.toMap()),
     };
   }
 
   factory ServiceStatusesResponse.fromMap(Map<String, dynamic> map) {
     return ServiceStatusesResponse(
-      extensionService: (() {
-        final guardedValue = map['extensionService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceStatusResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      guestConfigurationService: (() {
-        final guardedValue = map['guestConfigurationService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceStatusResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      extensionService: (() { final guardedValue = map['extensionService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      guestConfigurationService: (() { final guardedValue = map['guestConfigurationService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

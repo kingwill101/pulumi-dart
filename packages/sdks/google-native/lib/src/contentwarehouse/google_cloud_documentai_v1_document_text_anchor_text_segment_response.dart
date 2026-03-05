@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponse {
   /// TextSegment half open end UTF-8 char index in the Document.text.
   final pulumi.Input<String> endIndex;
-
   /// TextSegment start UTF-8 char index in the Document.text.
   final pulumi.Input<String> startIndex;
 
@@ -19,15 +18,17 @@ class GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'endIndex': endIndex, 'startIndex': startIndex};
+    return <String, dynamic>{
+      'endIndex': endIndex,
+      'startIndex': startIndex,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponse(
       endIndex: pulumi.Input.fromValue(map['endIndex'] as String),
       startIndex: pulumi.Input.fromValue(map['startIndex'] as String),
     );
   }
 }
+

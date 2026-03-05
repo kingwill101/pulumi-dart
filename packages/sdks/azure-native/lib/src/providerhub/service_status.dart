@@ -15,3 +15,4 @@ enum ServiceStatus {
     throw ArgumentError('Unknown ServiceStatus value: $value');
   }
 }
+

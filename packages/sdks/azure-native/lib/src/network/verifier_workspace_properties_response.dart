@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of Verifier Workspace resource.
 class VerifierWorkspacePropertiesResponse {
   final pulumi.Input<String>? description;
-
   /// Provisioning states of a resource.
   final pulumi.Input<String> provisioningState;
 
@@ -24,18 +23,11 @@ class VerifierWorkspacePropertiesResponse {
     };
   }
 
-  factory VerifierWorkspacePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VerifierWorkspacePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VerifierWorkspacePropertiesResponse(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

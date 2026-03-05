@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableEncryptionConfiguration {
   /// The self link or full name of a key which should be used to encrypt this table. Note that the default bigquery service account will need to have encrypt/decrypt permissions on this key - you may want to see the gcp.bigquery.getDefaultServiceAccount datasource and the gcp.kms.CryptoKeyIAMBinding resource.
   final pulumi.Input<String> kmsKeyName;
-
   /// The self link or full name of the kms key version used to encrypt this table.
   final pulumi.Input<String> kmsKeyVersion;
 
@@ -31,3 +30,4 @@ class GetTableEncryptionConfiguration {
     );
   }
 }
+

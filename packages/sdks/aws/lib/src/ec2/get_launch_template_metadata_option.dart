@@ -36,16 +36,11 @@ class GetLaunchTemplateMetadataOption {
   factory GetLaunchTemplateMetadataOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateMetadataOption(
       httpEndpoint: pulumi.Input.fromValue(map['httpEndpoint'] as String),
-      httpProtocolIpv6: pulumi.Input.fromValue(
-        map['httpProtocolIpv6'] as String,
-      ),
-      httpPutResponseHopLimit: pulumi.Input.fromValue(
-        map['httpPutResponseHopLimit'] as int,
-      ),
+      httpProtocolIpv6: pulumi.Input.fromValue(map['httpProtocolIpv6'] as String),
+      httpPutResponseHopLimit: pulumi.Input.fromValue(map['httpPutResponseHopLimit'] as int),
       httpTokens: pulumi.Input.fromValue(map['httpTokens'] as String),
-      instanceMetadataTags: pulumi.Input.fromValue(
-        map['instanceMetadataTags'] as String,
-      ),
+      instanceMetadataTags: pulumi.Input.fromValue(map['instanceMetadataTags'] as String),
     );
   }
 }
+

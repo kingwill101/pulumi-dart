@@ -38,34 +38,26 @@ class KeyRingImportJob extends pulumi.CustomResource {
   /// Only present if the chosen ImportMethod is one with a protection level of HSM.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> attestations;
-
   /// The time at which this resource is scheduled for expiration and can no longer be used.
   /// This is in RFC3339 text format.
   late final pulumi.Output<String> expireTime;
-
   /// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
   late final pulumi.Output<String> importJobId;
-
   /// The wrapping method to be used for incoming key material.
   /// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
   late final pulumi.Output<String> importMethod;
-
   /// The KeyRing that this import job belongs to.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
   late final pulumi.Output<String> keyRing;
-
   /// The resource name for this ImportJob in the format projects/*/locations/*/keyRings/*/importJobs/*.
   late final pulumi.Output<String> name;
-
   /// The protection level of the ImportJob. This must match the protectionLevel of the
   /// versionTemplate on the CryptoKey you attempt to import into.
   /// Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
   late final pulumi.Output<String> protectionLevel;
-
   /// The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> publicKeys;
-
   /// The current state of the ImportJob, indicating if it can be used.
   late final pulumi.Output<String> state;
 
@@ -78,11 +70,11 @@ class KeyRingImportJob extends pulumi.CustomResource {
     KeyRingImportJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:kms/keyRingImportJob:KeyRingImportJob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:kms/keyRingImportJob:KeyRingImportJob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attestations = registerOutput<List<Map<String, dynamic>>>('attestations');
     expireTime = registerOutput<String>('expireTime');
     importJobId = registerOutput<String>('importJobId');
@@ -112,11 +104,11 @@ class KeyRingImportJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:kms/keyRingImportJob:KeyRingImportJob',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:kms/keyRingImportJob:KeyRingImportJob',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attestations = registerOutput<List<Map<String, dynamic>>>('attestations');
     expireTime = registerOutput<String>('expireTime');
     importJobId = registerOutput<String>('importJobId');

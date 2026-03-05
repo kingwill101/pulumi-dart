@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointEventHubState {
   /// The storage secret of the dead-lettering, whose format is `https://&lt;storageAccountname&gt;.blob.core.windows.net/&lt;containerName&gt;?&lt;SASToken&gt;`. When an endpoint can't deliver an event within a certain time period or after trying to deliver the event a certain number of times, it can send the undelivered event to a storage account.
   final pulumi.Input<String>? deadLetterStorageSecret;
-
   /// The resource ID of the Digital Twins Instance. Changing this forces a new Digital Twins Event Hub Endpoint to be created.
   final pulumi.Input<String>? digitalTwinsId;
-
   /// The primary connection string of the Event Hub Authorization Rule with a minimum of `send` permission.
   final pulumi.Input<String>? eventhubPrimaryConnectionString;
-
   /// The secondary connection string of the Event Hub Authorization Rule with a minimum of `send` permission.
   final pulumi.Input<String>? eventhubSecondaryConnectionString;
-
   /// The name which should be used for this Digital Twins Event Hub Endpoint. Changing this forces a new Digital Twins Event Hub Endpoint to be created.
   final pulumi.Input<String>? name;
 
@@ -45,31 +41,12 @@ class EndpointEventHubState {
 
   factory EndpointEventHubState.fromMap(Map<String, dynamic> map) {
     return EndpointEventHubState(
-      deadLetterStorageSecret: (() {
-        final guardedValue = map['deadLetterStorageSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      digitalTwinsId: (() {
-        final guardedValue = map['digitalTwinsId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventhubPrimaryConnectionString: (() {
-        final guardedValue = map['eventhubPrimaryConnectionString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventhubSecondaryConnectionString: (() {
-        final guardedValue = map['eventhubSecondaryConnectionString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deadLetterStorageSecret: (() { final guardedValue = map['deadLetterStorageSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      digitalTwinsId: (() { final guardedValue = map['digitalTwinsId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventhubPrimaryConnectionString: (() { final guardedValue = map['eventhubPrimaryConnectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventhubSecondaryConnectionString: (() { final guardedValue = map['eventhubSecondaryConnectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

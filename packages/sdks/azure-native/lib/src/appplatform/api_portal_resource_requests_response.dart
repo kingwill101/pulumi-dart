@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiPortalResourceRequestsResponse {
   /// Cpu allocated to each API portal instance
   final pulumi.Input<String> cpu;
-
   /// Memory allocated to each API portal instance
   final pulumi.Input<String> memory;
 
   /// Creates a new [ApiPortalResourceRequestsResponse].
   /// [cpu] Cpu allocated to each API portal instance
   /// [memory] Memory allocated to each API portal instance
-  ApiPortalResourceRequestsResponse({required this.cpu, required this.memory});
+  ApiPortalResourceRequestsResponse({
+    required this.cpu,
+    required this.memory,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpu': cpu, 'memory': memory};
+    return <String, dynamic>{
+      'cpu': cpu,
+      'memory': memory,
+    };
   }
 
   factory ApiPortalResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ApiPortalResourceRequestsResponse {
     );
   }
 }
+

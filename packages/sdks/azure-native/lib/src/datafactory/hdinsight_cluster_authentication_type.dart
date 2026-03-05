@@ -13,8 +13,7 @@ enum HDInsightClusterAuthenticationType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown HDInsightClusterAuthenticationType value: $value',
-    );
+    throw ArgumentError('Unknown HDInsightClusterAuthenticationType value: $value');
   }
 }
+

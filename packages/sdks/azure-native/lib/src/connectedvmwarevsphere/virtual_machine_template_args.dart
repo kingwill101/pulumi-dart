@@ -10,29 +10,21 @@ import 'extended_location.dart';
 class VirtualMachineTemplateArgs {
   /// Gets or sets the extended location.
   final pulumi.Input<ExtendedLocation>? extendedLocation;
-
   /// Gets or sets the inventory Item ID for the virtual machine template.
   final pulumi.Input<String>? inventoryItemId;
-
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   final pulumi.Input<String>? kind;
-
   /// Gets or sets the location.
   final pulumi.Input<String>? location;
-
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machine
   /// template.
   final pulumi.Input<String>? moRefId;
-
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
-
   /// Gets or sets the Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Gets or sets the ARM Id of the vCenter resource in which this template resides.
   final pulumi.Input<String>? vCenterId;
-
   /// Name of the virtual machine template resource.
   final pulumi.Input<String>? virtualMachineTemplateName;
 
@@ -60,11 +52,7 @@ class VirtualMachineTemplateArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extendedLocation':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExtendedLocation,
-            Map<String, dynamic>
-          >(extendedLocation, (value) => value.toMap()),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'inventoryItemId': ?inventoryItemId,
       'kind': ?kind,
       'location': ?location,
@@ -78,55 +66,16 @@ class VirtualMachineTemplateArgs {
 
   factory VirtualMachineTemplateArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineTemplateArgs(
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExtendedLocation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      inventoryItemId: (() {
-        final guardedValue = map['inventoryItemId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      moRefId: (() {
-        final guardedValue = map['moRefId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      vCenterId: (() {
-        final guardedValue = map['vCenterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualMachineTemplateName: (() {
-        final guardedValue = map['virtualMachineTemplateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      inventoryItemId: (() { final guardedValue = map['inventoryItemId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      moRefId: (() { final guardedValue = map['moRefId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      vCenterId: (() { final guardedValue = map['vCenterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualMachineTemplateName: (() { final guardedValue = map['virtualMachineTemplateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

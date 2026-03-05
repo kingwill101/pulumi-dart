@@ -8,22 +8,16 @@ import 'system_data_response.dart';
 class GetVendorResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The provisioning state of the vendor resource.
   final String provisioningState;
-
   /// A list of IDs of the vendor skus offered by the vendor.
   final List<SubResourceResponse> skus;
-
   /// The system meta data relating to this resource.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -51,11 +45,7 @@ class GetVendorResult {
       'id': id,
       'name': name,
       'provisioningState': provisioningState,
-      'skus':
-          pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(
-            skus,
-            (value) => value.toMap(),
-          ),
+      'skus': pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(skus, (value) => value.toMap()),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -67,15 +57,10 @@ class GetVendorResult {
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      skus: pulumi.Input.decodeList<SubResourceResponse>(
-        map['skus']!,
-        (value) =>
-            SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      skus: pulumi.Input.decodeList<SubResourceResponse>(map['skus']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

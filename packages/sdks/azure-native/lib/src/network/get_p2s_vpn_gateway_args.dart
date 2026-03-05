@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetP2sVpnGatewayArgs {
   /// The name of the gateway.
   final pulumi.Input<String> gatewayName;
-
   /// The resource group name of the P2SVpnGateway.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetP2sVpnGatewayArgs {
   factory GetP2sVpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetP2sVpnGatewayArgs(
       gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

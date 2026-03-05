@@ -36,15 +36,10 @@ class GetRbacrolebindingArgs {
   factory GetRbacrolebindingArgs.fromMap(Map<String, dynamic> map) {
     return GetRbacrolebindingArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rbacrolebindingId: pulumi.Input.fromValue(
-        map['rbacrolebindingId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rbacrolebindingId: pulumi.Input.fromValue(map['rbacrolebindingId'] as String),
       scopeId: pulumi.Input.fromValue(map['scopeId'] as String),
     );
   }
 }
+

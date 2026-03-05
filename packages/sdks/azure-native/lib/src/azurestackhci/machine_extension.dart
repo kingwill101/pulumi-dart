@@ -174,44 +174,30 @@ import 'system_data_response.dart';
 class MachineExtension extends pulumi.CustomResource {
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   late final pulumi.Output<bool?> autoUpgradeMinorVersion;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// How the extension handler should be forced to update even if the extension configuration has not changed.
   late final pulumi.Output<String?> forceUpdateTag;
-
   /// The machine extension instance view.
-  late final pulumi.Output<MachineExtensionPropertiesResponseInstanceView?>
-  instanceView;
-
+  late final pulumi.Output<MachineExtensionPropertiesResponseInstanceView?> instanceView;
   /// The location.
   late final pulumi.Output<String?> location;
-
   /// The name.
   late final pulumi.Output<String> name;
-
   /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
   late final pulumi.Output<dynamic> protectedSettings;
-
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
-
   /// The name of the extension handler publisher.
   late final pulumi.Output<String?> publisher;
-
   /// Json formatted public settings for the extension.
   late final pulumi.Output<dynamic> settings;
-
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// Specifies the version of the script handler.
   late final pulumi.Output<String?> typeHandlerVersion;
 
@@ -224,41 +210,22 @@ class MachineExtension extends pulumi.CustomResource {
     MachineExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azurestackhci:MachineExtension',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azurestackhci:MachineExtension',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
-    instanceView =
-        registerOutput<MachineExtensionPropertiesResponseInstanceView?>(
-          'instanceView',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MachineExtensionPropertiesResponseInstanceView.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    instanceView = registerOutput<MachineExtensionPropertiesResponseInstanceView?>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MachineExtensionPropertiesResponseInstanceView.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     protectedSettings = registerOutput<dynamic>('protectedSettings');
     provisioningState = registerOutput<String>('provisioningState');
     publisher = registerOutput<String?>('publisher');
     settings = registerOutput<dynamic>('settings');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');

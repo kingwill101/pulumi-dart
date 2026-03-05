@@ -7,21 +7,16 @@ import 'get_elasticity_assurances_assurance.dart';
 class GetElasticityAssurancesResult {
   /// A list of Elasticity Assurance Entries. Each element contains the following attributes:
   final List<GetElasticityAssurancesAssurance> assurances;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Elasticity Assurance IDs.
   final List<String> ids;
   final String? outputFile;
   final List<String>? privatePoolOptionsIds;
-
   /// The ID of the resource group.
   final String? resourceGroupId;
-
   /// The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
   final String? status;
-
   /// A mapping of tags to assign to the Capacity Reservation.
   final Map<String, String>? tags;
 
@@ -47,11 +42,7 @@ class GetElasticityAssurancesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assurances':
-          pulumi.Input.encodeList<
-            GetElasticityAssurancesAssurance,
-            Map<String, dynamic>
-          >(assurances, (value) => value.toMap()),
+      'assurances': pulumi.Input.encodeList<GetElasticityAssurancesAssurance, Map<String, dynamic>>(assurances, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
@@ -64,39 +55,15 @@ class GetElasticityAssurancesResult {
 
   factory GetElasticityAssurancesResult.fromMap(Map<String, dynamic> map) {
     return GetElasticityAssurancesResult(
-      assurances: pulumi.Input.decodeList<GetElasticityAssurancesAssurance>(
-        map['assurances']!,
-        (value) => GetElasticityAssurancesAssurance.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      assurances: pulumi.Input.decodeList<GetElasticityAssurancesAssurance>(map['assurances']!, (value) => GetElasticityAssurancesAssurance.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      privatePoolOptionsIds: (() {
-        final guardedValue = map['privatePoolOptionsIds'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privatePoolOptionsIds: (() { final guardedValue = map['privatePoolOptionsIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

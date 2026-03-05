@@ -15,3 +15,4 @@ enum ExpeditedRolloutIntent {
     throw ArgumentError('Unknown ExpeditedRolloutIntent value: $value');
   }
 }
+

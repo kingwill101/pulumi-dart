@@ -11,19 +11,20 @@ class RegionNetworkEndpointGroupPscData {
 
   /// Creates a new [RegionNetworkEndpointGroupPscData].
   /// [producerPort] The PSC producer port to use when consumer PSC NEG connects to a producer. If
-  RegionNetworkEndpointGroupPscData({this.producerPort});
+  RegionNetworkEndpointGroupPscData({
+    this.producerPort,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'producerPort': ?producerPort};
+    return <String, dynamic>{
+      'producerPort': ?producerPort,
+    };
   }
 
   factory RegionNetworkEndpointGroupPscData.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointGroupPscData(
-      producerPort: (() {
-        final guardedValue = map['producerPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      producerPort: (() { final guardedValue = map['producerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

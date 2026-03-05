@@ -5,40 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBgpGroupsGroup {
   /// The key used by the BGP group.
   final pulumi.Input<String> authKey;
-
   /// The name of the BGP group.
   final pulumi.Input<String> bgpGroupName;
-
   /// Description of the BGP group.
   final pulumi.Input<String> description;
-
   /// The hold time to wait for the incoming BGP message. If no message has been passed in after the hold time, the BGP neighbor is considered disconnected.
   final pulumi.Input<String> hold;
-
   /// The ID of the Bgp Group.
   final pulumi.Input<String> id;
-
   /// IP version.
   final pulumi.Input<String> ipVersion;
-
   /// Whether the AS number is false.
   final pulumi.Input<bool> isFakeAsn;
-
   /// The keepalive time.
   final pulumi.Input<String> keepalive;
-
   /// The local AS number.
   final pulumi.Input<int> localAsn;
-
   /// The autonomous system (AS) number of the BGP peer.
   final pulumi.Input<int> peerAsn;
-
   /// Routing limits.
   final pulumi.Input<String> routeLimit;
-
   /// The ID of the VBR.
   final pulumi.Input<String> routerId;
-
   /// The status of the resource.
   final pulumi.Input<String> status;
 
@@ -108,3 +96,4 @@ class GetBgpGroupsGroup {
     );
   }
 }
+

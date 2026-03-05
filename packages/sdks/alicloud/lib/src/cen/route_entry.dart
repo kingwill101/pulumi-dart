@@ -549,10 +549,8 @@ class RouteEntry extends pulumi.CustomResource {
   ///
   /// -&gt;**NOTE:** The "alicloud.cen.InstanceAttachment" resource should depend on the related "alicloud.vpc.Switch" resource.
   late final pulumi.Output<String> cidrBlock;
-
   /// The ID of the CEN.
   late final pulumi.Output<String> instanceId;
-
   /// The route table of the attached VBR or VPC.
   late final pulumi.Output<String> routeTableId;
 
@@ -565,11 +563,11 @@ class RouteEntry extends pulumi.CustomResource {
     RouteEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/routeEntry:RouteEntry',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/routeEntry:RouteEntry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     instanceId = registerOutput<String>('instanceId');
     routeTableId = registerOutput<String>('routeTableId');
@@ -593,11 +591,11 @@ class RouteEntry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/routeEntry:RouteEntry',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/routeEntry:RouteEntry',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     instanceId = registerOutput<String>('instanceId');
     routeTableId = registerOutput<String>('routeTableId');

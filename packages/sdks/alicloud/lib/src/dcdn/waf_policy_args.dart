@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WafPolicyArgs {
   /// The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
   final pulumi.Input<String> defenseScene;
-
   /// The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
   final pulumi.Input<String> policyName;
-
   /// The type of the protection policy. Valid values: `default`, `custom`.
   final pulumi.Input<String> policyType;
-
   /// The status of the resource. Valid values: `on`, `off`.
   final pulumi.Input<String> status;
 
@@ -49,3 +46,4 @@ class WafPolicyArgs {
     );
   }
 }
+

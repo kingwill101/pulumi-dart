@@ -1,30 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSecret.
 class GetSecretResult {
   /// ARN of the secret.
   final String arn;
-
   /// Created date of the secret in UTC.
   final String createdDate;
-
   /// Description of the secret.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Key Management Service (KMS) Customer Master Key (CMK) associated with the secret.
   final String kmsKeyId;
-
   /// Last updated date of the secret in UTC.
   final String lastChangedDate;
   final String name;
-
   /// Resource-based policy document that's attached to the secret.
   final String policy;
   final String region;
-
   /// Tags of the secret.
   final Map<String, String> tags;
 
@@ -82,3 +76,4 @@ class GetSecretResult {
     );
   }
 }
+

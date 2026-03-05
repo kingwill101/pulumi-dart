@@ -8,21 +8,20 @@ class RuleRuleConditionResponseStatusCodeConfig {
 
   /// Creates a new [RuleRuleConditionResponseStatusCodeConfig].
   /// [values] Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-  RuleRuleConditionResponseStatusCodeConfig({this.values});
+  RuleRuleConditionResponseStatusCodeConfig({
+    this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': ?values};
+    return <String, dynamic>{
+      'values': ?values,
+    };
   }
 
-  factory RuleRuleConditionResponseStatusCodeConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleRuleConditionResponseStatusCodeConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleConditionResponseStatusCodeConfig(
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

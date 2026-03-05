@@ -8,19 +8,14 @@ import 'relationship_origin_information_response.dart';
 class DependencyOfRelationshipPropertiesResponse {
   /// Metadata about the relationship.
   final pulumi.Input<RelationshipMetadataResponse> metadata;
-
   /// Information about the origin of the relationship.
   final pulumi.Input<RelationshipOriginInformationResponse> originInformation;
-
   /// The provisioning state of the relationship.
   final pulumi.Input<String> provisioningState;
-
   /// The relationship source resource id.
   final pulumi.Input<String> sourceId;
-
   /// The relationship target resource id.
   final pulumi.Input<String> targetId;
-
   /// The relationship target tenant id.
   final pulumi.Input<String>? targetTenant;
 
@@ -42,16 +37,8 @@ class DependencyOfRelationshipPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata':
-          pulumi.Input.mapInputValue<
-            RelationshipMetadataResponse,
-            Map<String, dynamic>
-          >(metadata, (value) => value.toMap()),
-      'originInformation':
-          pulumi.Input.mapInputValue<
-            RelationshipOriginInformationResponse,
-            Map<String, dynamic>
-          >(originInformation, (value) => value.toMap()),
+      'metadata': pulumi.Input.mapInputValue<RelationshipMetadataResponse, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'originInformation': pulumi.Input.mapInputValue<RelationshipOriginInformationResponse, Map<String, dynamic>>(originInformation, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'sourceId': sourceId,
       'targetId': targetId,
@@ -59,30 +46,15 @@ class DependencyOfRelationshipPropertiesResponse {
     };
   }
 
-  factory DependencyOfRelationshipPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DependencyOfRelationshipPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DependencyOfRelationshipPropertiesResponse(
-      metadata: pulumi.Input.fromValue(
-        RelationshipMetadataResponse.fromMap(
-          (map['metadata']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      originInformation: pulumi.Input.fromValue(
-        RelationshipOriginInformationResponse.fromMap(
-          (map['originInformation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      metadata: pulumi.Input.fromValue(RelationshipMetadataResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>())),
+      originInformation: pulumi.Input.fromValue(RelationshipOriginInformationResponse.fromMap((map['originInformation']! as Map).cast<String, dynamic>())),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       sourceId: pulumi.Input.fromValue(map['sourceId'] as String),
       targetId: pulumi.Input.fromValue(map['targetId'] as String),
-      targetTenant: (() {
-        final guardedValue = map['targetTenant'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      targetTenant: (() { final guardedValue = map['targetTenant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

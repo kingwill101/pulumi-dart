@@ -172,40 +172,30 @@ class BackupVault extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** The `cross_region_restore_enabled` can only be specified when `redundancy` is specified for `GeoRedundant`. Once `cross_region_restore_enabled` is enabled, it cannot be disabled.
   late final pulumi.Output<bool?> crossRegionRestoreEnabled;
-
   /// Specifies the type of the data store. Possible values are `ArchiveStore`, `OperationalStore`, `SnapshotStore` and `VaultStore`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `SnapshotStore` will be removed in version 4.0 as it has been replaced by `OperationalStore`.
   late final pulumi.Output<String> datastoreType;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<BackupVaultIdentity?> identity;
-
   /// The state of immutability for this Backup Vault. Possible values are `Disabled`, `Locked`, and `Unlocked`. Defaults to `Disabled`.
   late final pulumi.Output<String?> immutability;
-
   /// The Azure Region where the Backup Vault should exist. Changing this forces a new Backup Vault to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Backup Vault. Changing this forces a new Backup Vault to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the backup storage redundancy. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Changing this forces a new Backup Vault to be created.
   late final pulumi.Output<String> redundancy;
-
   /// The name of the Resource Group where the Backup Vault should exist. Changing this forces a new Backup Vault to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The soft delete retention duration for this Backup Vault. Possible values are between `14` and `180`. Defaults to `14`.
   ///
   /// &gt; **Note:** The `retention_duration_in_days` is the number of days for which deleted data is retained before being permanently deleted. Retention period till 14 days are free of cost, however, retention beyond 14 days may incur additional charges. The `retention_duration_in_days` is required when the `soft_delete` is set to `On`.
   late final pulumi.Output<double?> retentionDurationInDays;
-
   /// The state of soft delete for this Backup Vault. Possible values are `AlwaysOn`, `Off`, and `On`. Defaults to `On`.
   ///
   /// &gt; **Note:** Once the `soft_delete` is set to `AlwaysOn`, the setting cannot be changed.
   late final pulumi.Output<String?> softDelete;
-
   /// A mapping of tags which should be assigned to the Backup Vault.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -218,33 +208,20 @@ class BackupVault extends pulumi.CustomResource {
     BackupVaultArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupVault:BackupVault',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    crossRegionRestoreEnabled = registerOutput<bool?>(
-      'crossRegionRestoreEnabled',
-    );
+          'azure:dataprotection/backupVault:BackupVault',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    crossRegionRestoreEnabled = registerOutput<bool?>('crossRegionRestoreEnabled');
     datastoreType = registerOutput<String>('datastoreType');
-    identity = registerOutput<BackupVaultIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupVaultIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<BackupVaultIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupVaultIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     immutability = registerOutput<String?>('immutability');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     redundancy = registerOutput<String>('redundancy');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retentionDurationInDays = registerOutput<double?>(
-      'retentionDurationInDays',
-    );
+    retentionDurationInDays = registerOutput<double?>('retentionDurationInDays');
     softDelete = registerOutput<String?>('softDelete');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -267,33 +244,20 @@ class BackupVault extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupVault:BackupVault',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    crossRegionRestoreEnabled = registerOutput<bool?>(
-      'crossRegionRestoreEnabled',
-    );
+          'azure:dataprotection/backupVault:BackupVault',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    crossRegionRestoreEnabled = registerOutput<bool?>('crossRegionRestoreEnabled');
     datastoreType = registerOutput<String>('datastoreType');
-    identity = registerOutput<BackupVaultIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupVaultIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<BackupVaultIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupVaultIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     immutability = registerOutput<String?>('immutability');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     redundancy = registerOutput<String>('redundancy');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retentionDurationInDays = registerOutput<double?>(
-      'retentionDurationInDays',
-    );
+    retentionDurationInDays = registerOutput<double?>('retentionDurationInDays');
     softDelete = registerOutput<String?>('softDelete');
     tags = registerOutput<Map<String, String>?>('tags');
   }

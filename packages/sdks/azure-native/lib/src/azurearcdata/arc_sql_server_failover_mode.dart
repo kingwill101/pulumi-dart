@@ -17,3 +17,4 @@ enum ArcSqlServerFailoverMode {
     throw ArgumentError('Unknown ArcSqlServerFailoverMode value: $value');
   }
 }
+

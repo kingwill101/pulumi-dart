@@ -14,3 +14,4 @@ enum SupportedKeyType {
     throw ArgumentError('Unknown SupportedKeyType value: $value');
   }
 }
+

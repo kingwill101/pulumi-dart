@@ -32,14 +32,9 @@ class GetOsPolicyAssignmentArgs {
   factory GetOsPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetOsPolicyAssignmentArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      osPolicyAssignmentId: pulumi.Input.fromValue(
-        map['osPolicyAssignmentId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      osPolicyAssignmentId: pulumi.Input.fromValue(map['osPolicyAssignmentId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

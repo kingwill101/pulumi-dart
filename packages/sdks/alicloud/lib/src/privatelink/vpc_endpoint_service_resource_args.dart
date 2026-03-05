@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointServiceResourceArgs {
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   final pulumi.Input<bool>? dryRun;
-
   /// The service resource ID.
   final pulumi.Input<String> resourceId;
-
   /// Service resource type, value:
   final pulumi.Input<String> resourceType;
-
   /// The endpoint service ID.
   final pulumi.Input<String> serviceId;
-
   /// The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
   final pulumi.Input<String>? zoneId;
 
@@ -48,19 +44,12 @@ class VpcEndpointServiceResourceArgs {
 
   factory VpcEndpointServiceResourceArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceResourceArgs(
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
-      zoneId: (() {
-        final guardedValue = map['zoneId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

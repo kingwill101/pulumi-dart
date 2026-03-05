@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInfrastructureResourceArgs {
   /// The name of the infrastructure resource in the space.
   final pulumi.Input<String> infrastructureResourceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the space
   final pulumi.Input<String> spaceName;
 
@@ -36,13 +34,10 @@ class GetInfrastructureResourceArgs {
 
   factory GetInfrastructureResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetInfrastructureResourceArgs(
-      infrastructureResourceName: pulumi.Input.fromValue(
-        map['infrastructureResourceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      infrastructureResourceName: pulumi.Input.fromValue(map['infrastructureResourceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       spaceName: pulumi.Input.fromValue(map['spaceName'] as String),
     );
   }
 }
+

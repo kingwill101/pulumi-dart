@@ -7,7 +7,6 @@ import 'persistent_volume_claim_template_patch.dart';
 class EphemeralVolumeSourcePatch {
   /// Specifies a read-only configuration for the volume. Defaults to false (read/write).
   final pulumi.Input<bool>? readOnly;
-
   /// Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC, i.e. the PVC will be deleted together with the pod.  The name of the PVC will be `&lt;pod name&gt;-&lt;volume name&gt;` where `&lt;volume name&gt;` is the name from the `PodSpec.Volumes` array entry. Pod validation will reject the pod if the concatenated name is not valid for a PVC (for example, too long).
   ///
   /// An existing PVC with that name that is not owned by the pod will *not* be used for the pod to avoid using an unrelated volume by mistake. Starting the pod is then blocked until the unrelated PVC is removed. If such a pre-created PVC is meant to be used by the pod, the PVC has to updated with an owner reference to the pod once the pod exists. Normally this should not be necessary, but it may be useful when manually reconstructing a broken cluster.
@@ -20,35 +19,23 @@ class EphemeralVolumeSourcePatch {
   /// Creates a new [EphemeralVolumeSourcePatch].
   /// [readOnly] Specifies a read-only configuration for the volume. Defaults to false (read/write).
   /// [volumeClaimTemplate] Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC, i.e. the PVC will be deleted together with the pod.  The name of the PVC will be `&lt;pod name&gt;-&lt;volume name&gt;` where `&lt;volume name&gt;` is the name from the `PodSpec.Volumes` array entry. Pod validation will reject the pod if the concatenated name is not valid for a PVC (for example, too long).
-  EphemeralVolumeSourcePatch({this.readOnly, this.volumeClaimTemplate});
+  EphemeralVolumeSourcePatch({
+    this.readOnly,
+    this.volumeClaimTemplate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'readOnly': ?readOnly,
-      'volumeClaimTemplate':
-          ?pulumi.Input.mapOptionalInputValue<
-            PersistentVolumeClaimTemplatePatch,
-            Map<String, dynamic>
-          >(volumeClaimTemplate, (value) => value.toMap()),
+      'volumeClaimTemplate': ?pulumi.Input.mapOptionalInputValue<PersistentVolumeClaimTemplatePatch, Map<String, dynamic>>(volumeClaimTemplate, (value) => value.toMap()),
     };
   }
 
   factory EphemeralVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return EphemeralVolumeSourcePatch(
-      readOnly: (() {
-        final guardedValue = map['readOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      volumeClaimTemplate: (() {
-        final guardedValue = map['volumeClaimTemplate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PersistentVolumeClaimTemplatePatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      volumeClaimTemplate: (() { final guardedValue = map['volumeClaimTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PersistentVolumeClaimTemplatePatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

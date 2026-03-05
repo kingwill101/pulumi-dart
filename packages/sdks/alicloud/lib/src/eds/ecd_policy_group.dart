@@ -226,64 +226,43 @@ import 'ecd_policy_group_state.dart';
 /// ```
 class EcdPolicyGroup extends pulumi.CustomResource {
   /// The rule of authorize access rule. See `authorize_access_policy_rules` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  authorizeAccessPolicyRules;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> authorizeAccessPolicyRules;
   /// The policy rule. See `authorize_security_policy_rules` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  authorizeSecurityPolicyRules;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> authorizeSecurityPolicyRules;
   /// Whether to enable local camera redirection. Valid values: `on`, `off`.
   late final pulumi.Output<String> cameraRedirect;
-
   /// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
   late final pulumi.Output<String> clipboard;
-
   /// The list of domain.
   late final pulumi.Output<String?> domainList;
-
   /// The access of html5. Valid values: `off`, `on`.
   late final pulumi.Output<String> htmlAccess;
-
   /// The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
   late final pulumi.Output<String> htmlFileTransfer;
-
   /// Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
   late final pulumi.Output<String> localDrive;
-
   /// The name of policy group.
   late final pulumi.Output<String?> policyGroupName;
-
   /// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
   late final pulumi.Output<String> recording;
-
   /// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
   late final pulumi.Output<String?> recordingEndTime;
-
   /// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
   late final pulumi.Output<int> recordingExpires;
-
   /// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
   late final pulumi.Output<int> recordingFps;
-
   /// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
   late final pulumi.Output<String?> recordingStartTime;
-
   /// The status of policy.
   late final pulumi.Output<String> status;
-
   /// The usb redirect policy. Valid values: `off`, `on`.
   late final pulumi.Output<String> usbRedirect;
-
   /// The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
   late final pulumi.Output<String> visualQuality;
-
   /// The watermark policy. Valid values: `off`, `on`.
   late final pulumi.Output<String> watermark;
-
   /// The watermark transparency. Valid values: `DARK`, `LIGHT`, `MIDDLE`.
   late final pulumi.Output<String> watermarkTransparency;
-
   /// The type of watemark. Valid values: `EndUserId`, `HostName`.
   late final pulumi.Output<String> watermarkType;
 
@@ -296,17 +275,13 @@ class EcdPolicyGroup extends pulumi.CustomResource {
     EcdPolicyGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eds/ecdPolicyGroup:EcdPolicyGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authorizeAccessPolicyRules = registerOutput<List<Map<String, dynamic>>?>(
-      'authorizeAccessPolicyRules',
-    );
-    authorizeSecurityPolicyRules = registerOutput<List<Map<String, dynamic>>?>(
-      'authorizeSecurityPolicyRules',
-    );
+          'alicloud:eds/ecdPolicyGroup:EcdPolicyGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authorizeAccessPolicyRules = registerOutput<List<Map<String, dynamic>>?>('authorizeAccessPolicyRules');
+    authorizeSecurityPolicyRules = registerOutput<List<Map<String, dynamic>>?>('authorizeSecurityPolicyRules');
     cameraRedirect = registerOutput<String>('cameraRedirect');
     clipboard = registerOutput<String>('clipboard');
     domainList = registerOutput<String?>('domainList');
@@ -345,17 +320,13 @@ class EcdPolicyGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eds/ecdPolicyGroup:EcdPolicyGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authorizeAccessPolicyRules = registerOutput<List<Map<String, dynamic>>?>(
-      'authorizeAccessPolicyRules',
-    );
-    authorizeSecurityPolicyRules = registerOutput<List<Map<String, dynamic>>?>(
-      'authorizeSecurityPolicyRules',
-    );
+          'alicloud:eds/ecdPolicyGroup:EcdPolicyGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authorizeAccessPolicyRules = registerOutput<List<Map<String, dynamic>>?>('authorizeAccessPolicyRules');
+    authorizeSecurityPolicyRules = registerOutput<List<Map<String, dynamic>>?>('authorizeSecurityPolicyRules');
     cameraRedirect = registerOutput<String>('cameraRedirect');
     clipboard = registerOutput<String>('clipboard');
     domainList = registerOutput<String?>('domainList');

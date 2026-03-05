@@ -7,28 +7,20 @@ import 'post_build_definition.dart';
 class KustomizationDefinition {
   /// Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation.
   final pulumi.Input<List<String>>? dependsOn;
-
   /// Enable/disable re-creating Kubernetes resources on the cluster when patching fails due to an immutable field change.
   final pulumi.Input<bool>? force;
-
   /// The path in the source reference to reconcile on the cluster.
   final pulumi.Input<String>? path;
-
   /// Used for variable substitution for this Kustomization after kustomize build.
   final pulumi.Input<PostBuildDefinition>? postBuild;
-
   /// Enable/disable garbage collections of Kubernetes objects created by this Kustomization.
   final pulumi.Input<bool>? prune;
-
   /// The interval at which to re-reconcile the Kustomization on the cluster in the event of failure on reconciliation.
   final pulumi.Input<double>? retryIntervalInSeconds;
-
   /// The interval at which to re-reconcile the Kustomization on the cluster.
   final pulumi.Input<double>? syncIntervalInSeconds;
-
   /// The maximum time to attempt to reconcile the Kustomization on the cluster.
   final pulumi.Input<double>? timeoutInSeconds;
-
   /// Enable/disable health check for all Kubernetes objects created by this Kustomization.
   final pulumi.Input<bool>? wait;
 
@@ -59,11 +51,7 @@ class KustomizationDefinition {
       'dependsOn': ?dependsOn,
       'force': ?force,
       'path': ?path,
-      'postBuild':
-          ?pulumi.Input.mapOptionalInputValue<
-            PostBuildDefinition,
-            Map<String, dynamic>
-          >(postBuild, (value) => value.toMap()),
+      'postBuild': ?pulumi.Input.mapOptionalInputValue<PostBuildDefinition, Map<String, dynamic>>(postBuild, (value) => value.toMap()),
       'prune': ?prune,
       'retryIntervalInSeconds': ?retryIntervalInSeconds,
       'syncIntervalInSeconds': ?syncIntervalInSeconds,
@@ -74,55 +62,16 @@ class KustomizationDefinition {
 
   factory KustomizationDefinition.fromMap(Map<String, dynamic> map) {
     return KustomizationDefinition(
-      dependsOn: (() {
-        final guardedValue = map['dependsOn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      force: (() {
-        final guardedValue = map['force'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      postBuild: (() {
-        final guardedValue = map['postBuild'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PostBuildDefinition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      prune: (() {
-        final guardedValue = map['prune'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      retryIntervalInSeconds: (() {
-        final guardedValue = map['retryIntervalInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      syncIntervalInSeconds: (() {
-        final guardedValue = map['syncIntervalInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      timeoutInSeconds: (() {
-        final guardedValue = map['timeoutInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      wait: (() {
-        final guardedValue = map['wait'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      force: (() { final guardedValue = map['force']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      postBuild: (() { final guardedValue = map['postBuild']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PostBuildDefinition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      prune: (() { final guardedValue = map['prune']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      retryIntervalInSeconds: (() { final guardedValue = map['retryIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      syncIntervalInSeconds: (() { final guardedValue = map['syncIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      wait: (() { final guardedValue = map['wait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

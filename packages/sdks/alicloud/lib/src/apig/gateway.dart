@@ -17,45 +17,32 @@ import 'gateway_zone_config.dart';
 class Gateway extends pulumi.CustomResource {
   /// The creation timestamp. Unit: milliseconds.
   late final pulumi.Output<int> createTime;
-
   /// The name of the resource
   late final pulumi.Output<String?> gatewayName;
-
   /// Describes the gateway type, which is categorized into the following two types:
   /// - API: indicates an API gateway
   /// - AI: Indicates an AI gateway
   late final pulumi.Output<String> gatewayType;
-
   /// Log Configuration See `log_config` below.
   late final pulumi.Output<GatewayLogConfig?> logConfig;
-
   /// Network Access Configuration See `network_access_config` below.
   late final pulumi.Output<GatewayNetworkAccessConfig?> networkAccessConfig;
-
   /// The payment type of the resource
   late final pulumi.Output<String> paymentType;
-
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
-
   /// Gateway instance specifications
   late final pulumi.Output<String?> spec;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The VPC associated with the Gateway. See `vpc` below.
   late final pulumi.Output<GatewayVpc?> vpc;
-
   /// The virtual switch associated with the Gateway. See `vswitch` below.
   late final pulumi.Output<GatewayVswitch?> vswitch;
-
   /// Availability Zone Configuration See `zone_config` below.
   late final pulumi.Output<GatewayZoneConfig> zoneConfig;
-
   /// The List of zones associated with the Gateway. See `zones` below.
   late final pulumi.Output<List<Map<String, dynamic>>> zones;
 
@@ -68,69 +55,24 @@ class Gateway extends pulumi.CustomResource {
     GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apig/gateway:Gateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apig/gateway:Gateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
     gatewayName = registerOutput<String?>('gatewayName');
     gatewayType = registerOutput<String>('gatewayType');
-    logConfig = registerOutput<GatewayLogConfig?>(
-      'logConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayLogConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    networkAccessConfig = registerOutput<GatewayNetworkAccessConfig?>(
-      'networkAccessConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayNetworkAccessConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logConfig = registerOutput<GatewayLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkAccessConfig = registerOutput<GatewayNetworkAccessConfig?>('networkAccessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayNetworkAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     paymentType = registerOutput<String>('paymentType');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     spec = registerOutput<String?>('spec');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    vpc = registerOutput<GatewayVpc?>(
-      'vpc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayVpc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vswitch = registerOutput<GatewayVswitch?>(
-      'vswitch',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayVswitch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    zoneConfig = registerOutput<GatewayZoneConfig>(
-      'zoneConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayZoneConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpc = registerOutput<GatewayVpc?>('vpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vswitch = registerOutput<GatewayVswitch?>('vswitch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayVswitch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zoneConfig = registerOutput<GatewayZoneConfig>('zoneConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayZoneConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zones = registerOutput<List<Map<String, dynamic>>>('zones');
   }
 
@@ -152,69 +94,24 @@ class Gateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apig/gateway:Gateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apig/gateway:Gateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
     gatewayName = registerOutput<String?>('gatewayName');
     gatewayType = registerOutput<String>('gatewayType');
-    logConfig = registerOutput<GatewayLogConfig?>(
-      'logConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayLogConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    networkAccessConfig = registerOutput<GatewayNetworkAccessConfig?>(
-      'networkAccessConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayNetworkAccessConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logConfig = registerOutput<GatewayLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkAccessConfig = registerOutput<GatewayNetworkAccessConfig?>('networkAccessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayNetworkAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     paymentType = registerOutput<String>('paymentType');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     spec = registerOutput<String?>('spec');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    vpc = registerOutput<GatewayVpc?>(
-      'vpc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayVpc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vswitch = registerOutput<GatewayVswitch?>(
-      'vswitch',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayVswitch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    zoneConfig = registerOutput<GatewayZoneConfig>(
-      'zoneConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayZoneConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpc = registerOutput<GatewayVpc?>('vpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vswitch = registerOutput<GatewayVswitch?>('vswitch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayVswitch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zoneConfig = registerOutput<GatewayZoneConfig>('zoneConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayZoneConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zones = registerOutput<List<Map<String, dynamic>>>('zones');
   }
 }

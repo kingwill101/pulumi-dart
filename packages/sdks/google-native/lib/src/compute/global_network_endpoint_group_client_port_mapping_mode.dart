@@ -6,16 +6,13 @@ enum GlobalNetworkEndpointGroupClientPortMappingMode {
   const GlobalNetworkEndpointGroupClientPortMappingMode(this.wireValue);
   final String wireValue;
 
-  static GlobalNetworkEndpointGroupClientPortMappingMode fromValue(
-    String value,
-  ) {
+  static GlobalNetworkEndpointGroupClientPortMappingMode fromValue(String value) {
     for (final item in GlobalNetworkEndpointGroupClientPortMappingMode.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GlobalNetworkEndpointGroupClientPortMappingMode value: $value',
-    );
+    throw ArgumentError('Unknown GlobalNetworkEndpointGroupClientPortMappingMode value: $value');
   }
 }
+

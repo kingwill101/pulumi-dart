@@ -7,19 +7,20 @@ class LogAnalyticsConfigurationResponse {
 
   /// Creates a new [LogAnalyticsConfigurationResponse].
   /// [customerId] Optional.
-  LogAnalyticsConfigurationResponse({this.customerId});
+  LogAnalyticsConfigurationResponse({
+    this.customerId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'customerId': ?customerId};
+    return <String, dynamic>{
+      'customerId': ?customerId,
+    };
   }
 
   factory LogAnalyticsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsConfigurationResponse(
-      customerId: (() {
-        final guardedValue = map['customerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customerId: (() { final guardedValue = map['customerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

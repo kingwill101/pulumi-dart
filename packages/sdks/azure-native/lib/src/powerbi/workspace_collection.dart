@@ -13,18 +13,14 @@ import 'workspace_collection_args.dart';
 class WorkspaceCollection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Azure location
   late final pulumi.Output<String?> location;
-
   /// Workspace collection name
   late final pulumi.Output<String?> name;
-
   /// Properties
   late final pulumi.Output<dynamic> properties;
   late final pulumi.Output<AzureSkuResponse?> sku;
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type
   late final pulumi.Output<String?> type;
 
@@ -37,25 +33,16 @@ class WorkspaceCollection extends pulumi.CustomResource {
     WorkspaceCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:powerbi:WorkspaceCollection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:powerbi:WorkspaceCollection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String?>('name');
     properties = registerOutput<dynamic>('properties');
-    sku = registerOutput<AzureSkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<AzureSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String?>('type');
   }

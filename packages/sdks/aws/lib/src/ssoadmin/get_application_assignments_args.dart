@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationAssignmentsArgs {
   /// ARN of the application.
   final pulumi.Input<String> applicationArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetApplicationAssignmentsArgs].
   /// [applicationArn] ARN of the application.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetApplicationAssignmentsArgs({required this.applicationArn, this.region});
+  GetApplicationAssignmentsArgs({
+    required this.applicationArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,11 +30,8 @@ class GetApplicationAssignmentsArgs {
   factory GetApplicationAssignmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationAssignmentsArgs(
       applicationArn: pulumi.Input.fromValue(map['applicationArn'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

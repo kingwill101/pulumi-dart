@@ -153,27 +153,21 @@ import 'image_access_accept_state.dart';
 class ImageAccessAccept extends pulumi.CustomResource {
   /// The date the image membership was created.
   late final pulumi.Output<String> createdAt;
-
   /// The proposed image ID.
   late final pulumi.Output<String> imageId;
-
   /// The member ID, e.g. the target project ID. Optional
   /// for admin accounts. Defaults to the current scope project ID.
   late final pulumi.Output<String> memberId;
-
   /// The region in which to obtain the V2 Glance client.
   /// A Glance client is needed to manage Image memberships. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// membership.
   late final pulumi.Output<String> region;
-
   /// The membership schema.
   late final pulumi.Output<String> schema;
-
   /// The membership proposal status. Can either be
   /// `accepted`, `rejected` or `pending`.
   late final pulumi.Output<String> status;
-
   /// The date the image membership was last updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -186,11 +180,11 @@ class ImageAccessAccept extends pulumi.CustomResource {
     ImageAccessAcceptArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:images/imageAccessAccept:ImageAccessAccept',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:images/imageAccessAccept:ImageAccessAccept',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     imageId = registerOutput<String>('imageId');
     memberId = registerOutput<String>('memberId');
@@ -218,11 +212,11 @@ class ImageAccessAccept extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:images/imageAccessAccept:ImageAccessAccept',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:images/imageAccessAccept:ImageAccessAccept',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     imageId = registerOutput<String>('imageId');
     memberId = registerOutput<String>('memberId');

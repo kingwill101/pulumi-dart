@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerDnsAliasState {
   /// The fully qualified DNS record for alias.
   final pulumi.Input<String>? dnsRecord;
-
   /// The ID of the mssql server. Changing this forces a new MSSQL Server DNS Alias to be created.
   final pulumi.Input<String>? mssqlServerId;
-
   /// The name which should be used for this MSSQL Server DNS Alias. Changing this forces a new MSSQL Server DNS Alias to be created.
   final pulumi.Input<String>? name;
 
@@ -17,7 +15,11 @@ class ServerDnsAliasState {
   /// [dnsRecord] The fully qualified DNS record for alias.
   /// [mssqlServerId] The ID of the mssql server. Changing this forces a new MSSQL Server DNS Alias to be created.
   /// [name] The name which should be used for this MSSQL Server DNS Alias. Changing this forces a new MSSQL Server DNS Alias to be created.
-  ServerDnsAliasState({this.dnsRecord, this.mssqlServerId, this.name});
+  ServerDnsAliasState({
+    this.dnsRecord,
+    this.mssqlServerId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class ServerDnsAliasState {
 
   factory ServerDnsAliasState.fromMap(Map<String, dynamic> map) {
     return ServerDnsAliasState(
-      dnsRecord: (() {
-        final guardedValue = map['dnsRecord'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mssqlServerId: (() {
-        final guardedValue = map['mssqlServerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dnsRecord: (() { final guardedValue = map['dnsRecord']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mssqlServerId: (() { final guardedValue = map['mssqlServerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

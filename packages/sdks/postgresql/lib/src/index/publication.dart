@@ -128,25 +128,18 @@ import 'publication_state.dart';
 class Publication extends pulumi.CustomResource {
   /// Should be ALL TABLES added to the publication. Defaults to 'false'
   late final pulumi.Output<bool> allTables;
-
   /// Which database to create the publication on. Defaults to provider database.
   late final pulumi.Output<String> database;
-
   /// Should all subsequent resources of the publication be dropped. Defaults to 'false'
   late final pulumi.Output<bool?> dropCascade;
-
   /// The name of the publication.
   late final pulumi.Output<String> name;
-
   /// Who owns the publication. Defaults to provider user.
   late final pulumi.Output<String> owner;
-
   /// Which 'publish' options should be turned on. Default to 'insert','update','delete'
   late final pulumi.Output<List<String>> publishParams;
-
   /// Should be option 'publish_via_partition_root' be turned on. Default to 'false'
   late final pulumi.Output<bool?> publishViaPartitionRootParam;
-
   /// Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
   late final pulumi.Output<List<String>> tables;
 
@@ -159,20 +152,18 @@ class Publication extends pulumi.CustomResource {
     PublicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/publication:Publication',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/publication:Publication',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allTables = registerOutput<bool>('allTables');
     database = registerOutput<String>('database');
     dropCascade = registerOutput<bool?>('dropCascade');
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
     publishParams = registerOutput<List<String>>('publishParams');
-    publishViaPartitionRootParam = registerOutput<bool?>(
-      'publishViaPartitionRootParam',
-    );
+    publishViaPartitionRootParam = registerOutput<bool?>('publishViaPartitionRootParam');
     tables = registerOutput<List<String>>('tables');
   }
 
@@ -194,20 +185,18 @@ class Publication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/publication:Publication',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/publication:Publication',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allTables = registerOutput<bool>('allTables');
     database = registerOutput<String>('database');
     dropCascade = registerOutput<bool?>('dropCascade');
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
     publishParams = registerOutput<List<String>>('publishParams');
-    publishViaPartitionRootParam = registerOutput<bool?>(
-      'publishViaPartitionRootParam',
-    );
+    publishViaPartitionRootParam = registerOutput<bool?>('publishViaPartitionRootParam');
     tables = registerOutput<List<String>>('tables');
   }
 }

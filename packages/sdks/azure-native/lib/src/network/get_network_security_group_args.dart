@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkSecurityGroupArgs {
   /// Expands referenced resources.
   final pulumi.Input<String>? expand;
-
   /// The name of the network security group.
   final pulumi.Input<String> networkSecurityGroupName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,17 +34,10 @@ class GetNetworkSecurityGroupArgs {
 
   factory GetNetworkSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityGroupArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkSecurityGroupName: pulumi.Input.fromValue(
-        map['networkSecurityGroupName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkSecurityGroupName: pulumi.Input.fromValue(map['networkSecurityGroupName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

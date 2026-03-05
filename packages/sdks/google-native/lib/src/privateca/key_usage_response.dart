@@ -9,10 +9,8 @@ import 'object_id_response.dart';
 class KeyUsageResponse {
   /// Describes high-level ways in which a key may be used.
   final pulumi.Input<KeyUsageOptionsResponse> baseKeyUsage;
-
   /// Detailed scenarios in which a key may be used.
   final pulumi.Input<ExtendedKeyUsageOptionsResponse> extendedKeyUsage;
-
   /// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
   final pulumi.Input<List<ObjectIdResponse>> unknownExtendedKeyUsages;
 
@@ -28,50 +26,18 @@ class KeyUsageResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baseKeyUsage':
-          pulumi.Input.mapInputValue<
-            KeyUsageOptionsResponse,
-            Map<String, dynamic>
-          >(baseKeyUsage, (value) => value.toMap()),
-      'extendedKeyUsage':
-          pulumi.Input.mapInputValue<
-            ExtendedKeyUsageOptionsResponse,
-            Map<String, dynamic>
-          >(extendedKeyUsage, (value) => value.toMap()),
-      'unknownExtendedKeyUsages':
-          pulumi.Input.mapInputValue<
-            List<ObjectIdResponse>,
-            List<Map<String, dynamic>>
-          >(
-            unknownExtendedKeyUsages,
-            (value) =>
-                pulumi.Input.encodeList<ObjectIdResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'baseKeyUsage': pulumi.Input.mapInputValue<KeyUsageOptionsResponse, Map<String, dynamic>>(baseKeyUsage, (value) => value.toMap()),
+      'extendedKeyUsage': pulumi.Input.mapInputValue<ExtendedKeyUsageOptionsResponse, Map<String, dynamic>>(extendedKeyUsage, (value) => value.toMap()),
+      'unknownExtendedKeyUsages': pulumi.Input.mapInputValue<List<ObjectIdResponse>, List<Map<String, dynamic>>>(unknownExtendedKeyUsages, (value) => pulumi.Input.encodeList<ObjectIdResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory KeyUsageResponse.fromMap(Map<String, dynamic> map) {
     return KeyUsageResponse(
-      baseKeyUsage: pulumi.Input.fromValue(
-        KeyUsageOptionsResponse.fromMap(
-          (map['baseKeyUsage']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      extendedKeyUsage: pulumi.Input.fromValue(
-        ExtendedKeyUsageOptionsResponse.fromMap(
-          (map['extendedKeyUsage']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      unknownExtendedKeyUsages: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ObjectIdResponse>(
-          map['unknownExtendedKeyUsages']!,
-          (value) =>
-              ObjectIdResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      baseKeyUsage: pulumi.Input.fromValue(KeyUsageOptionsResponse.fromMap((map['baseKeyUsage']! as Map).cast<String, dynamic>())),
+      extendedKeyUsage: pulumi.Input.fromValue(ExtendedKeyUsageOptionsResponse.fromMap((map['extendedKeyUsage']! as Map).cast<String, dynamic>())),
+      unknownExtendedKeyUsages: pulumi.Input.fromValue(pulumi.Input.decodeList<ObjectIdResponse>(map['unknownExtendedKeyUsages']!, (value) => ObjectIdResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

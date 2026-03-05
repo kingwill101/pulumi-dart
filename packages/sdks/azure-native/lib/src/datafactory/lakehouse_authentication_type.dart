@@ -16,3 +16,4 @@ enum LakehouseAuthenticationType {
     throw ArgumentError('Unknown LakehouseAuthenticationType value: $value');
   }
 }
+

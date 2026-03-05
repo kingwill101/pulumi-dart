@@ -10,10 +10,14 @@ class AzureDevOpsScopeEnvironmentData {
 
   /// Creates a new [AzureDevOpsScopeEnvironmentData].
   /// [environmentType] The type of the environment data.
-  AzureDevOpsScopeEnvironmentData({required this.environmentType});
+  AzureDevOpsScopeEnvironmentData({
+    required this.environmentType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'environmentType': environmentType};
+    return <String, dynamic>{
+      'environmentType': environmentType,
+    };
   }
 
   factory AzureDevOpsScopeEnvironmentData.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class AzureDevOpsScopeEnvironmentData {
     );
   }
 }
+

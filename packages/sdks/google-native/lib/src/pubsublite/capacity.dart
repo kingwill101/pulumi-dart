@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Capacity {
   /// Publish throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.
   final pulumi.Input<int>? publishMibPerSec;
-
   /// Subscribe throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 32.
   final pulumi.Input<int>? subscribeMibPerSec;
 
   /// Creates a new [Capacity].
   /// [publishMibPerSec] Publish throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.
   /// [subscribeMibPerSec] Subscribe throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 32.
-  Capacity({this.publishMibPerSec, this.subscribeMibPerSec});
+  Capacity({
+    this.publishMibPerSec,
+    this.subscribeMibPerSec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class Capacity {
 
   factory Capacity.fromMap(Map<String, dynamic> map) {
     return Capacity(
-      publishMibPerSec: (() {
-        final guardedValue = map['publishMibPerSec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      subscribeMibPerSec: (() {
-        final guardedValue = map['subscribeMibPerSec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      publishMibPerSec: (() { final guardedValue = map['publishMibPerSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      subscribeMibPerSec: (() { final guardedValue = map['subscribeMibPerSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

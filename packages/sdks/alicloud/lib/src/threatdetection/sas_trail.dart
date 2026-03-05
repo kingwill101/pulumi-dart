@@ -120,7 +120,6 @@ import 'sas_trail_state.dart';
 class SasTrail extends pulumi.CustomResource {
   /// The service trace creation timestamp, in milliseconds.
   late final pulumi.Output<int> createTime;
-
   /// Service trace configuration information.
   late final pulumi.Output<SasTrailServiceTrail> serviceTrail;
 
@@ -133,22 +132,13 @@ class SasTrail extends pulumi.CustomResource {
     Map<String, dynamic>? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/sasTrail:SasTrail',
-         name,
-         pulumi.Input.mapToInputs(args ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/sasTrail:SasTrail',
+          name,
+          pulumi.Input.mapToInputs(args ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
-    serviceTrail = registerOutput<SasTrailServiceTrail>(
-      'serviceTrail',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SasTrailServiceTrail.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serviceTrail = registerOutput<SasTrailServiceTrail>('serviceTrail', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SasTrailServiceTrail.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [SasTrail] resource's state with the given [name] and [id].
@@ -169,21 +159,12 @@ class SasTrail extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/sasTrail:SasTrail',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/sasTrail:SasTrail',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
-    serviceTrail = registerOutput<SasTrailServiceTrail>(
-      'serviceTrail',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SasTrailServiceTrail.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serviceTrail = registerOutput<SasTrailServiceTrail>('serviceTrail', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SasTrailServiceTrail.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableTableConstraintForeignKeyColumnReference {
   /// The column in the primary key that are referenced by the referencingColumn.
   final pulumi.Input<String> referencedColumn;
-
   /// The column that composes the foreign key.
   final pulumi.Input<String> referencingColumn;
 
@@ -24,16 +23,11 @@ class GetTableTableConstraintForeignKeyColumnReference {
     };
   }
 
-  factory GetTableTableConstraintForeignKeyColumnReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTableTableConstraintForeignKeyColumnReference.fromMap(Map<String, dynamic> map) {
     return GetTableTableConstraintForeignKeyColumnReference(
-      referencedColumn: pulumi.Input.fromValue(
-        map['referencedColumn'] as String,
-      ),
-      referencingColumn: pulumi.Input.fromValue(
-        map['referencingColumn'] as String,
-      ),
+      referencedColumn: pulumi.Input.fromValue(map['referencedColumn'] as String),
+      referencingColumn: pulumi.Input.fromValue(map['referencingColumn'] as String),
     );
   }
 }
+

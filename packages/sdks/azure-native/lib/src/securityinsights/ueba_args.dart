@@ -9,17 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UebaArgs {
   /// The relevant data sources that enriched by ueba
   final pulumi.Input<List<String>>? dataSources;
-
   /// The kind of the setting
   /// Expected value is 'Ueba'.
   final pulumi.Input<String> kind;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
   final pulumi.Input<String>? settingsName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -49,21 +45,12 @@ class UebaArgs {
 
   factory UebaArgs.fromMap(Map<String, dynamic> map) {
     return UebaArgs(
-      dataSources: (() {
-        final guardedValue = map['dataSources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      dataSources: (() { final guardedValue = map['dataSources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      settingsName: (() {
-        final guardedValue = map['settingsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      settingsName: (() { final guardedValue = map['settingsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

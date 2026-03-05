@@ -136,16 +136,12 @@ import 'adm_channel_state.dart';
 class AdmChannel extends pulumi.CustomResource {
   /// The application ID.
   late final pulumi.Output<String> applicationId;
-
   /// Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
   late final pulumi.Output<String> clientId;
-
   /// Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
   late final pulumi.Output<String> clientSecret;
-
   /// Specifies whether to enable the channel. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -158,11 +154,11 @@ class AdmChannel extends pulumi.CustomResource {
     AdmChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:pinpoint/admChannel:AdmChannel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:pinpoint/admChannel:AdmChannel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');
@@ -188,11 +184,11 @@ class AdmChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:pinpoint/admChannel:AdmChannel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:pinpoint/admChannel:AdmChannel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');

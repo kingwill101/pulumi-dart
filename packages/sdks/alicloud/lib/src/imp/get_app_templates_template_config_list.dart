@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppTemplatesTemplateConfigList {
   /// Config key.
   final pulumi.Input<String> key;
-
   /// Config Value.
   final pulumi.Input<String> value;
 
   /// Creates a new [GetAppTemplatesTemplateConfigList].
   /// [key] Config key.
   /// [value] Config Value.
-  GetAppTemplatesTemplateConfigList({required this.key, required this.value});
+  GetAppTemplatesTemplateConfigList({
+    required this.key,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory GetAppTemplatesTemplateConfigList.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class GetAppTemplatesTemplateConfigList {
     );
   }
 }
+

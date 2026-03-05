@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BillingProfilePropertiesResponseCurrentPaymentTerm {
   /// The date on when the defined 'Payment Term' will end and is always in UTC.
   final pulumi.Input<String>? endDate;
-
   /// Indicates payment term is the standard payment term.
   final pulumi.Input<bool> isDefault;
-
   /// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
   final pulumi.Input<String>? startDate;
-
   /// Represents duration in netXX format. Always in days.
   final pulumi.Input<String>? term;
 
@@ -37,26 +34,13 @@ class BillingProfilePropertiesResponseCurrentPaymentTerm {
     };
   }
 
-  factory BillingProfilePropertiesResponseCurrentPaymentTerm.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BillingProfilePropertiesResponseCurrentPaymentTerm.fromMap(Map<String, dynamic> map) {
     return BillingProfilePropertiesResponseCurrentPaymentTerm(
-      endDate: (() {
-        final guardedValue = map['endDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isDefault: pulumi.Input.fromValue(map['isDefault'] as bool),
-      startDate: (() {
-        final guardedValue = map['startDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      term: (() {
-        final guardedValue = map['term'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      term: (() { final guardedValue = map['term']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

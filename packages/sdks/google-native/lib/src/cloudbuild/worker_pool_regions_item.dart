@@ -17,3 +17,4 @@ enum WorkerPoolRegionsItem {
     throw ArgumentError('Unknown WorkerPoolRegionsItem value: $value');
   }
 }
+

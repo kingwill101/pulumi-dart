@@ -11,19 +11,14 @@ import 'google_cloud_dialogflow_cx_v3beta1_text_input.dart';
 class GoogleCloudDialogflowCxV3beta1QueryInput {
   /// The natural language speech audio to be processed.
   final pulumi.Input<GoogleCloudDialogflowCxV3beta1AudioInput>? audio;
-
   /// The DTMF event to be handled.
   final pulumi.Input<GoogleCloudDialogflowCxV3beta1DtmfInput>? dtmf;
-
   /// The event to be triggered.
   final pulumi.Input<GoogleCloudDialogflowCxV3beta1EventInput>? event;
-
   /// The intent to be triggered.
   final pulumi.Input<GoogleCloudDialogflowCxV3beta1IntentInput>? intent;
-
   /// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
   final pulumi.Input<String> languageCode;
-
   /// The natural language text to be processed.
   final pulumi.Input<GoogleCloudDialogflowCxV3beta1TextInput>? text;
 
@@ -45,85 +40,24 @@ class GoogleCloudDialogflowCxV3beta1QueryInput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audio':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowCxV3beta1AudioInput,
-            Map<String, dynamic>
-          >(audio, (value) => value.toMap()),
-      'dtmf':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowCxV3beta1DtmfInput,
-            Map<String, dynamic>
-          >(dtmf, (value) => value.toMap()),
-      'event':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowCxV3beta1EventInput,
-            Map<String, dynamic>
-          >(event, (value) => value.toMap()),
-      'intent':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowCxV3beta1IntentInput,
-            Map<String, dynamic>
-          >(intent, (value) => value.toMap()),
+      'audio': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1AudioInput, Map<String, dynamic>>(audio, (value) => value.toMap()),
+      'dtmf': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1DtmfInput, Map<String, dynamic>>(dtmf, (value) => value.toMap()),
+      'event': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1EventInput, Map<String, dynamic>>(event, (value) => value.toMap()),
+      'intent': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1IntentInput, Map<String, dynamic>>(intent, (value) => value.toMap()),
       'languageCode': languageCode,
-      'text':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowCxV3beta1TextInput,
-            Map<String, dynamic>
-          >(text, (value) => value.toMap()),
+      'text': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1TextInput, Map<String, dynamic>>(text, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1QueryInput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3beta1QueryInput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1QueryInput(
-      audio: (() {
-        final guardedValue = map['audio'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowCxV3beta1AudioInput.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      dtmf: (() {
-        final guardedValue = map['dtmf'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowCxV3beta1DtmfInput.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      event: (() {
-        final guardedValue = map['event'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowCxV3beta1EventInput.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      intent: (() {
-        final guardedValue = map['intent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowCxV3beta1IntentInput.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      audio: (() { final guardedValue = map['audio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowCxV3beta1AudioInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dtmf: (() { final guardedValue = map['dtmf']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowCxV3beta1DtmfInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      event: (() { final guardedValue = map['event']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowCxV3beta1EventInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      intent: (() { final guardedValue = map['intent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowCxV3beta1IntentInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
-      text: (() {
-        final guardedValue = map['text'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowCxV3beta1TextInput.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowCxV3beta1TextInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

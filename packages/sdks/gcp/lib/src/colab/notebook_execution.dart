@@ -2336,49 +2336,33 @@ import 'notebook_execution_state.dart';
 class NotebookExecution extends pulumi.CustomResource {
   /// Compute configuration to use for an execution job
   /// Structure is documented below.
-  late final pulumi.Output<NotebookExecutionCustomEnvironmentSpec?>
-  customEnvironmentSpec;
-
+  late final pulumi.Output<NotebookExecutionCustomEnvironmentSpec?> customEnvironmentSpec;
   /// The Dataform Repository containing the input notebook.
   /// Structure is documented below.
-  late final pulumi.Output<NotebookExecutionDataformRepositorySource?>
-  dataformRepositorySource;
-
+  late final pulumi.Output<NotebookExecutionDataformRepositorySource?> dataformRepositorySource;
   /// The content of the input notebook in ipynb format.
   /// Structure is documented below.
-  late final pulumi.Output<NotebookExecutionDirectNotebookSource?>
-  directNotebookSource;
-
+  late final pulumi.Output<NotebookExecutionDirectNotebookSource?> directNotebookSource;
   /// Required. The display name of the Notebook Execution.
   late final pulumi.Output<String> displayName;
-
   /// Max running time of the execution job in seconds (default 86400s / 24 hrs).
   late final pulumi.Output<String?> executionTimeout;
-
   /// The user email to run the execution as.
   late final pulumi.Output<String?> executionUser;
-
   /// The Cloud Storage uri for the input notebook.
   /// Structure is documented below.
-  late final pulumi.Output<NotebookExecutionGcsNotebookSource?>
-  gcsNotebookSource;
-
+  late final pulumi.Output<NotebookExecutionGcsNotebookSource?> gcsNotebookSource;
   /// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
   late final pulumi.Output<String> gcsOutputUri;
-
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   late final pulumi.Output<String> location;
-
   /// User specified ID for the Notebook Execution Job
   late final pulumi.Output<String> notebookExecutionJobId;
-
   /// The NotebookRuntimeTemplate to source compute configuration from.
   late final pulumi.Output<String?> notebookRuntimeTemplateResourceName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The service account to run the execution as.
   late final pulumi.Output<String?> serviceAccount;
 
@@ -2391,63 +2375,22 @@ class NotebookExecution extends pulumi.CustomResource {
     NotebookExecutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:colab/notebookExecution:NotebookExecution',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customEnvironmentSpec =
-        registerOutput<NotebookExecutionCustomEnvironmentSpec?>(
-          'customEnvironmentSpec',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NotebookExecutionCustomEnvironmentSpec.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    dataformRepositorySource =
-        registerOutput<NotebookExecutionDataformRepositorySource?>(
-          'dataformRepositorySource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NotebookExecutionDataformRepositorySource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    directNotebookSource =
-        registerOutput<NotebookExecutionDirectNotebookSource?>(
-          'directNotebookSource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NotebookExecutionDirectNotebookSource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'gcp:colab/notebookExecution:NotebookExecution',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customEnvironmentSpec = registerOutput<NotebookExecutionCustomEnvironmentSpec?>('customEnvironmentSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionCustomEnvironmentSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataformRepositorySource = registerOutput<NotebookExecutionDataformRepositorySource?>('dataformRepositorySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionDataformRepositorySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    directNotebookSource = registerOutput<NotebookExecutionDirectNotebookSource?>('directNotebookSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionDirectNotebookSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
     executionTimeout = registerOutput<String?>('executionTimeout');
     executionUser = registerOutput<String?>('executionUser');
-    gcsNotebookSource = registerOutput<NotebookExecutionGcsNotebookSource?>(
-      'gcsNotebookSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotebookExecutionGcsNotebookSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gcsNotebookSource = registerOutput<NotebookExecutionGcsNotebookSource?>('gcsNotebookSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionGcsNotebookSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gcsOutputUri = registerOutput<String>('gcsOutputUri');
     location = registerOutput<String>('location');
     notebookExecutionJobId = registerOutput<String>('notebookExecutionJobId');
-    notebookRuntimeTemplateResourceName = registerOutput<String?>(
-      'notebookRuntimeTemplateResourceName',
-    );
+    notebookRuntimeTemplateResourceName = registerOutput<String?>('notebookRuntimeTemplateResourceName');
     project = registerOutput<String>('project');
     serviceAccount = registerOutput<String?>('serviceAccount');
   }
@@ -2470,63 +2413,22 @@ class NotebookExecution extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:colab/notebookExecution:NotebookExecution',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customEnvironmentSpec =
-        registerOutput<NotebookExecutionCustomEnvironmentSpec?>(
-          'customEnvironmentSpec',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NotebookExecutionCustomEnvironmentSpec.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    dataformRepositorySource =
-        registerOutput<NotebookExecutionDataformRepositorySource?>(
-          'dataformRepositorySource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NotebookExecutionDataformRepositorySource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    directNotebookSource =
-        registerOutput<NotebookExecutionDirectNotebookSource?>(
-          'directNotebookSource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NotebookExecutionDirectNotebookSource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'gcp:colab/notebookExecution:NotebookExecution',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customEnvironmentSpec = registerOutput<NotebookExecutionCustomEnvironmentSpec?>('customEnvironmentSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionCustomEnvironmentSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataformRepositorySource = registerOutput<NotebookExecutionDataformRepositorySource?>('dataformRepositorySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionDataformRepositorySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    directNotebookSource = registerOutput<NotebookExecutionDirectNotebookSource?>('directNotebookSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionDirectNotebookSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
     executionTimeout = registerOutput<String?>('executionTimeout');
     executionUser = registerOutput<String?>('executionUser');
-    gcsNotebookSource = registerOutput<NotebookExecutionGcsNotebookSource?>(
-      'gcsNotebookSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotebookExecutionGcsNotebookSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gcsNotebookSource = registerOutput<NotebookExecutionGcsNotebookSource?>('gcsNotebookSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionGcsNotebookSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gcsOutputUri = registerOutput<String>('gcsOutputUri');
     location = registerOutput<String>('location');
     notebookExecutionJobId = registerOutput<String>('notebookExecutionJobId');
-    notebookRuntimeTemplateResourceName = registerOutput<String?>(
-      'notebookRuntimeTemplateResourceName',
-    );
+    notebookRuntimeTemplateResourceName = registerOutput<String?>('notebookRuntimeTemplateResourceName');
     project = registerOutput<String>('project');
     serviceAccount = registerOutput<String?>('serviceAccount');
   }

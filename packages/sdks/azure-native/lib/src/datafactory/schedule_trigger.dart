@@ -8,16 +8,12 @@ import 'trigger_pipeline_reference.dart';
 class ScheduleTrigger {
   /// List of tags that can be used for describing the trigger.
   final pulumi.Input<List<dynamic>>? annotations;
-
   /// Trigger description.
   final pulumi.Input<String>? description;
-
   /// Pipelines that need to be started.
   final pulumi.Input<List<TriggerPipelineReference>>? pipelines;
-
   /// Recurrence schedule configuration.
   final pulumi.Input<ScheduleTriggerRecurrence> recurrence;
-
   /// Trigger type.
   /// Expected value is 'ScheduleTrigger'.
   final pulumi.Input<String> type;
@@ -40,57 +36,20 @@ class ScheduleTrigger {
     return <String, dynamic>{
       'annotations': ?annotations,
       'description': ?description,
-      'pipelines':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TriggerPipelineReference>,
-            List<Map<String, dynamic>>
-          >(
-            pipelines,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TriggerPipelineReference,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'recurrence':
-          pulumi.Input.mapInputValue<
-            ScheduleTriggerRecurrence,
-            Map<String, dynamic>
-          >(recurrence, (value) => value.toMap()),
+      'pipelines': ?pulumi.Input.mapOptionalInputValue<List<TriggerPipelineReference>, List<Map<String, dynamic>>>(pipelines, (value) => pulumi.Input.encodeList<TriggerPipelineReference, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'recurrence': pulumi.Input.mapInputValue<ScheduleTriggerRecurrence, Map<String, dynamic>>(recurrence, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory ScheduleTrigger.fromMap(Map<String, dynamic> map) {
     return ScheduleTrigger(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pipelines: (() {
-        final guardedValue = map['pipelines'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TriggerPipelineReference>(
-            guardedValue,
-            (value) => TriggerPipelineReference.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      recurrence: pulumi.Input.fromValue(
-        ScheduleTriggerRecurrence.fromMap(
-          (map['recurrence']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pipelines: (() { final guardedValue = map['pipelines']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TriggerPipelineReference>(guardedValue, (value) => TriggerPipelineReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      recurrence: pulumi.Input.fromValue(ScheduleTriggerRecurrence.fromMap((map['recurrence']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -8,17 +8,13 @@ enum ServiceConfigIngressSettingsCloudfunctionsV2beta {
   const ServiceConfigIngressSettingsCloudfunctionsV2beta(this.wireValue);
   final String wireValue;
 
-  static ServiceConfigIngressSettingsCloudfunctionsV2beta fromValue(
-    String value,
-  ) {
-    for (final item
-        in ServiceConfigIngressSettingsCloudfunctionsV2beta.values) {
+  static ServiceConfigIngressSettingsCloudfunctionsV2beta fromValue(String value) {
+    for (final item in ServiceConfigIngressSettingsCloudfunctionsV2beta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ServiceConfigIngressSettingsCloudfunctionsV2beta value: $value',
-    );
+    throw ArgumentError('Unknown ServiceConfigIngressSettingsCloudfunctionsV2beta value: $value');
   }
 }
+

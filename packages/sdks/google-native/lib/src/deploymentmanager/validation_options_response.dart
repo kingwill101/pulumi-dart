@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ValidationOptionsResponse {
   /// Customize how deployment manager will validate the resource against schema errors.
   final pulumi.Input<String> schemaValidation;
-
   /// Specify what to do with extra properties when executing a request.
   final pulumi.Input<String> undeclaredProperties;
 
@@ -27,12 +26,9 @@ class ValidationOptionsResponse {
 
   factory ValidationOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ValidationOptionsResponse(
-      schemaValidation: pulumi.Input.fromValue(
-        map['schemaValidation'] as String,
-      ),
-      undeclaredProperties: pulumi.Input.fromValue(
-        map['undeclaredProperties'] as String,
-      ),
+      schemaValidation: pulumi.Input.fromValue(map['schemaValidation'] as String),
+      undeclaredProperties: pulumi.Input.fromValue(map['undeclaredProperties'] as String),
     );
   }
 }
+

@@ -331,43 +331,30 @@ import 'sync_member_args.dart';
 class SyncMember extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Database name of the member database in the sync member.
   late final pulumi.Output<String?> databaseName;
-
   /// Database type of the sync member.
   late final pulumi.Output<String?> databaseType;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Private endpoint name of the sync member if use private link connection is enabled, for sync members in Azure.
   late final pulumi.Output<String> privateEndpointName;
-
   /// Server name of the member database in the sync member
   late final pulumi.Output<String?> serverName;
-
   /// SQL Server database id of the sync member.
   late final pulumi.Output<String?> sqlServerDatabaseId;
-
   /// ARM resource id of the sync agent in the sync member.
   late final pulumi.Output<String?> syncAgentId;
-
   /// Sync direction of the sync member.
   late final pulumi.Output<String?> syncDirection;
-
   /// ARM resource id of the sync member logical database, for sync members in Azure.
   late final pulumi.Output<String?> syncMemberAzureDatabaseResourceId;
-
   /// Sync state of the sync member.
   late final pulumi.Output<String> syncState;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// Whether to use private link connection.
   late final pulumi.Output<bool?> usePrivateLinkConnection;
-
   /// User name of the member database in the sync member.
   late final pulumi.Output<String?> userName;
 
@@ -380,11 +367,11 @@ class SyncMember extends pulumi.CustomResource {
     SyncMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:SyncMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:SyncMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     databaseName = registerOutput<String?>('databaseName');
     databaseType = registerOutput<String?>('databaseType');
@@ -394,14 +381,10 @@ class SyncMember extends pulumi.CustomResource {
     sqlServerDatabaseId = registerOutput<String?>('sqlServerDatabaseId');
     syncAgentId = registerOutput<String?>('syncAgentId');
     syncDirection = registerOutput<String?>('syncDirection');
-    syncMemberAzureDatabaseResourceId = registerOutput<String?>(
-      'syncMemberAzureDatabaseResourceId',
-    );
+    syncMemberAzureDatabaseResourceId = registerOutput<String?>('syncMemberAzureDatabaseResourceId');
     syncState = registerOutput<String>('syncState');
     type = registerOutput<String>('type');
-    usePrivateLinkConnection = registerOutput<bool?>(
-      'usePrivateLinkConnection',
-    );
+    usePrivateLinkConnection = registerOutput<bool?>('usePrivateLinkConnection');
     userName = registerOutput<String?>('userName');
   }
 }

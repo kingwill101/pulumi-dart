@@ -7,10 +7,8 @@ import 'auto_snapshot_add_on_response.dart';
 class AddOnResponse {
   /// The add-on type
   final pulumi.Input<String>? addOnType;
-
   /// An object that represents additional parameters when enabling or modifying the automatic snapshot add-on
   final pulumi.Input<AutoSnapshotAddOnResponse>? autoSnapshotAddOnRequest;
-
   /// Status of the Addon
   final pulumi.Input<String>? status;
 
@@ -18,41 +16,26 @@ class AddOnResponse {
   /// [addOnType] The add-on type
   /// [autoSnapshotAddOnRequest] An object that represents additional parameters when enabling or modifying the automatic snapshot add-on
   /// [status] Status of the Addon
-  AddOnResponse({this.addOnType, this.autoSnapshotAddOnRequest, this.status});
+  AddOnResponse({
+    this.addOnType,
+    this.autoSnapshotAddOnRequest,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addOnType': ?addOnType,
-      'autoSnapshotAddOnRequest':
-          ?pulumi.Input.mapOptionalInputValue<
-            AutoSnapshotAddOnResponse,
-            Map<String, dynamic>
-          >(autoSnapshotAddOnRequest, (value) => value.toMap()),
+      'autoSnapshotAddOnRequest': ?pulumi.Input.mapOptionalInputValue<AutoSnapshotAddOnResponse, Map<String, dynamic>>(autoSnapshotAddOnRequest, (value) => value.toMap()),
       'status': ?status,
     };
   }
 
   factory AddOnResponse.fromMap(Map<String, dynamic> map) {
     return AddOnResponse(
-      addOnType: (() {
-        final guardedValue = map['addOnType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      autoSnapshotAddOnRequest: (() {
-        final guardedValue = map['autoSnapshotAddOnRequest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AutoSnapshotAddOnResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addOnType: (() { final guardedValue = map['addOnType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      autoSnapshotAddOnRequest: (() { final guardedValue = map['autoSnapshotAddOnRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoSnapshotAddOnResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

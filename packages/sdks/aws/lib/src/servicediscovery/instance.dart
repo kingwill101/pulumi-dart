@@ -489,13 +489,10 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// A map contains the attributes of the instance. Check the [doc](https://docs.aws.amazon.com/cloud-map/latest/api/API_RegisterInstance.html#API_RegisterInstance_RequestSyntax) for the supported attributes and syntax.
   late final pulumi.Output<Map<String, String>> attributes;
-
   /// The ID of the service instance.
   late final pulumi.Output<String> instanceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the service that you want to use to create the instance.
   late final pulumi.Output<String> serviceId;
 
@@ -508,11 +505,11 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicediscovery/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicediscovery/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributes = registerOutput<Map<String, String>>('attributes');
     instanceId = registerOutput<String>('instanceId');
     region = registerOutput<String>('region');
@@ -537,11 +534,11 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicediscovery/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicediscovery/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributes = registerOutput<Map<String, String>>('attributes');
     instanceId = registerOutput<String>('instanceId');
     region = registerOutput<String>('region');

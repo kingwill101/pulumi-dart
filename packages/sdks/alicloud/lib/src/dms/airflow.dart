@@ -369,52 +369,36 @@ import 'airflow_state.dart';
 class Airflow extends pulumi.CustomResource {
   /// AirflowId
   late final pulumi.Output<String> airflowId;
-
   /// Name of the Airflow instance
   late final pulumi.Output<String> airflowName;
-
   /// Airflow instance specifications
   late final pulumi.Output<String> appSpec;
-
   /// Dag scan path
   late final pulumi.Output<String?> dagsDir;
-
   /// Description of the airflow instance
   late final pulumi.Output<String> description;
-
   /// OSS bucket name
   late final pulumi.Output<String> ossBucketName;
-
   /// OSS path
   late final pulumi.Output<String> ossPath;
-
   /// The path of the plugin scanned by the airflow instance.
   late final pulumi.Output<String?> pluginsDir;
-
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
-
   /// Path to installable package
   late final pulumi.Output<String?> requirementFile;
-
   /// Security group ID
   late final pulumi.Output<String> securityGroupId;
-
   /// Launch script for the airflow container
   late final pulumi.Output<String?> startupFile;
-
   /// Vpc id
   late final pulumi.Output<String> vpcId;
-
   /// Switch ID
   late final pulumi.Output<String> vswitchId;
-
   /// Worker Node extension
   late final pulumi.Output<int> workerServerlessReplicas;
-
   /// DMS workspace ID
   late final pulumi.Output<String> workspaceId;
-
   /// Zone ID in the region
   late final pulumi.Output<String> zoneId;
 
@@ -427,11 +411,11 @@ class Airflow extends pulumi.CustomResource {
     AirflowArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dms/airflow:Airflow',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dms/airflow:Airflow',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     airflowId = registerOutput<String>('airflowId');
     airflowName = registerOutput<String>('airflowName');
     appSpec = registerOutput<String>('appSpec');
@@ -469,11 +453,11 @@ class Airflow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dms/airflow:Airflow',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dms/airflow:Airflow',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     airflowId = registerOutput<String>('airflowId');
     airflowName = registerOutput<String>('airflowName');
     appSpec = registerOutput<String>('appSpec');

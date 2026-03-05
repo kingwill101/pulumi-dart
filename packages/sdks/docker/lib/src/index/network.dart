@@ -127,40 +127,28 @@ import 'network_state.dart';
 class Network extends pulumi.CustomResource {
   /// Enable manual container attachment to the network.
   late final pulumi.Output<bool?> attachable;
-
   /// Requests daemon to check for networks with same name.
   late final pulumi.Output<bool?> checkDuplicate;
-
   /// The driver of the Docker network. Possible values are `bridge`, `host`, `overlay`, `macvlan`. See [network docs](https://docs.docker.com/network/#network-drivers) for more details.
   late final pulumi.Output<String> driver;
-
   /// Create swarm routing-mesh network. Defaults to `false`.
   late final pulumi.Output<bool?> ingress;
-
   /// Whether the network is internal.
   late final pulumi.Output<bool> internal;
-
   /// The IPAM configuration options
   late final pulumi.Output<List<Map<String, dynamic>>> ipamConfigs;
-
   /// Driver used by the custom IP scheme of the network. Defaults to `default`
   late final pulumi.Output<String?> ipamDriver;
-
   /// Provide explicit options to the IPAM driver. Valid options vary with `ipam_driver` and refer to that driver's documentation for more details.
   late final pulumi.Output<Map<String, String>?> ipamOptions;
-
   /// Enable IPv6 networking. Defaults to `false`.
   late final pulumi.Output<bool?> ipv6;
-
   /// User-defined key/value metadata
   late final pulumi.Output<List<Map<String, dynamic>>?> labels;
-
   /// The name of the Docker network.
   late final pulumi.Output<String> name;
-
   /// Only available with bridge networks. See [bridge options docs](https://docs.docker.com/engine/reference/commandline/network_create/#bridge-driver-options) for more details.
   late final pulumi.Output<Map<String, String>> options;
-
   /// Scope of the network. One of `swarm`, `global`, or `local`.
   late final pulumi.Output<String> scope;
 
@@ -173,11 +161,11 @@ class Network extends pulumi.CustomResource {
     NetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'docker:index/network:Network',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'docker:index/network:Network',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachable = registerOutput<bool?>('attachable');
     checkDuplicate = registerOutput<bool?>('checkDuplicate');
     driver = registerOutput<String>('driver');
@@ -211,11 +199,11 @@ class Network extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'docker:index/network:Network',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'docker:index/network:Network',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachable = registerOutput<bool?>('attachable');
     checkDuplicate = registerOutput<bool?>('checkDuplicate');
     driver = registerOutput<String>('driver');

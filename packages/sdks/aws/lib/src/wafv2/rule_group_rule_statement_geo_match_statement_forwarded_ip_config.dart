@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleGroupRuleStatementGeoMatchStatementForwardedIpConfig {
   /// The match status to assign to the web request if the request doesn't have a valid IP address in the specified position. Valid values include: `MATCH` or `NO_MATCH`.
   final pulumi.Input<String> fallbackBehavior;
-
   /// The name of the HTTP header to use for the IP address.
   final pulumi.Input<String> headerName;
 
@@ -24,14 +23,11 @@ class RuleGroupRuleStatementGeoMatchStatementForwardedIpConfig {
     };
   }
 
-  factory RuleGroupRuleStatementGeoMatchStatementForwardedIpConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementGeoMatchStatementForwardedIpConfig.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementGeoMatchStatementForwardedIpConfig(
-      fallbackBehavior: pulumi.Input.fromValue(
-        map['fallbackBehavior'] as String,
-      ),
+      fallbackBehavior: pulumi.Input.fromValue(map['fallbackBehavior'] as String),
       headerName: pulumi.Input.fromValue(map['headerName'] as String),
     );
   }
 }
+

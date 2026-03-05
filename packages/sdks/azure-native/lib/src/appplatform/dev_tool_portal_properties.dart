@@ -8,10 +8,8 @@ import 'dev_tool_portal_sso_properties.dart';
 class DevToolPortalProperties {
   /// Settings for Dev Tool Portal
   final pulumi.Input<DevToolPortalFeatureSettings>? features;
-
   /// Indicates whether the resource exposes public endpoint
   final pulumi.Input<bool>? public;
-
   /// Single sign-on related configuration
   final pulumi.Input<DevToolPortalSsoProperties>? ssoProperties;
 
@@ -19,49 +17,26 @@ class DevToolPortalProperties {
   /// [features] Settings for Dev Tool Portal
   /// [public] Indicates whether the resource exposes public endpoint
   /// [ssoProperties] Single sign-on related configuration
-  DevToolPortalProperties({this.features, this.public, this.ssoProperties});
+  DevToolPortalProperties({
+    this.features,
+    this.public,
+    this.ssoProperties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'features':
-          ?pulumi.Input.mapOptionalInputValue<
-            DevToolPortalFeatureSettings,
-            Map<String, dynamic>
-          >(features, (value) => value.toMap()),
+      'features': ?pulumi.Input.mapOptionalInputValue<DevToolPortalFeatureSettings, Map<String, dynamic>>(features, (value) => value.toMap()),
       'public': ?public,
-      'ssoProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            DevToolPortalSsoProperties,
-            Map<String, dynamic>
-          >(ssoProperties, (value) => value.toMap()),
+      'ssoProperties': ?pulumi.Input.mapOptionalInputValue<DevToolPortalSsoProperties, Map<String, dynamic>>(ssoProperties, (value) => value.toMap()),
     };
   }
 
   factory DevToolPortalProperties.fromMap(Map<String, dynamic> map) {
     return DevToolPortalProperties(
-      features: (() {
-        final guardedValue = map['features'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DevToolPortalFeatureSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      public: (() {
-        final guardedValue = map['public'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ssoProperties: (() {
-        final guardedValue = map['ssoProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DevToolPortalSsoProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      features: (() { final guardedValue = map['features']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DevToolPortalFeatureSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      public: (() { final guardedValue = map['public']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ssoProperties: (() { final guardedValue = map['ssoProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DevToolPortalSsoProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

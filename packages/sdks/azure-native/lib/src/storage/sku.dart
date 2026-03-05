@@ -9,13 +9,20 @@ class Sku {
 
   /// Creates a new [Sku].
   /// [name] The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
-  Sku({required this.name});
+  Sku({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory Sku.fromMap(Map<String, dynamic> map) {
-    return Sku(name: pulumi.Input.fromValue(map['name'] as String));
+    return Sku(
+      name: pulumi.Input.fromValue(map['name'] as String),
+    );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FileResponse {
   /// Textual Content.
   final pulumi.Input<String> content;
-
   /// Fingerprint (e.g. github sha) associated with the `File`.
   final pulumi.Input<String> fingerprint;
-
   /// File name.
   final pulumi.Input<String> name;
 
@@ -39,3 +37,4 @@ class FileResponse {
     );
   }
 }
+

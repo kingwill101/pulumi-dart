@@ -18,3 +18,4 @@ enum RuleStatus {
     throw ArgumentError('Unknown RuleStatus value: $value');
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TokenRequestStorageK8sIoV1beta1 {
   /// Audience is the intended audience of the token in "TokenRequestSpec". It will default to the audiences of kube apiserver.
   final pulumi.Input<String> audience;
-
   /// ExpirationSeconds is the duration of validity of the token in "TokenRequestSpec". It has the same default value of "ExpirationSeconds" in "TokenRequestSpec"
   final pulumi.Input<int>? expirationSeconds;
 
@@ -28,11 +27,8 @@ class TokenRequestStorageK8sIoV1beta1 {
   factory TokenRequestStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return TokenRequestStorageK8sIoV1beta1(
       audience: pulumi.Input.fromValue(map['audience'] as String),
-      expirationSeconds: (() {
-        final guardedValue = map['expirationSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      expirationSeconds: (() { final guardedValue = map['expirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -9,7 +9,10 @@ class LogAnalyticsConfiguration {
   /// Creates a new [LogAnalyticsConfiguration].
   /// [customerId] Optional.
   /// [sharedKey] Optional.
-  LogAnalyticsConfiguration({this.customerId, this.sharedKey});
+  LogAnalyticsConfiguration({
+    this.customerId,
+    this.sharedKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,16 +23,9 @@ class LogAnalyticsConfiguration {
 
   factory LogAnalyticsConfiguration.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsConfiguration(
-      customerId: (() {
-        final guardedValue = map['customerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sharedKey: (() {
-        final guardedValue = map['sharedKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customerId: (() { final guardedValue = map['customerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sharedKey: (() { final guardedValue = map['sharedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

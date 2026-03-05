@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyAttachmentsAttachment {
   /// The time when the policy was attached.
   final pulumi.Input<String> attachDate;
-
   /// The description of the policy.
   final pulumi.Input<String> description;
-
   /// The ID of the Resource Manager Policy Attachment.
   final pulumi.Input<String> id;
-
   /// The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
   final pulumi.Input<String> policyName;
-
   /// The type of the policy. Valid values: `Custom` and `System`.
   final pulumi.Input<String> policyType;
-
   /// The name of the object to which the policy is attached.
   final pulumi.Input<String> principalName;
-
   /// The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
   final pulumi.Input<String> principalType;
-
   /// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
   final pulumi.Input<String> resourceGroupId;
 
@@ -73,3 +66,4 @@ class GetPolicyAttachmentsAttachment {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClientArgs {
   /// Name of the client.
   final pulumi.Input<String> clientName;
-
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
-
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetClientArgs {
     return GetClientArgs(
       clientName: pulumi.Input.fromValue(map['clientName'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum NniType {
     throw ArgumentError('Unknown NniType value: $value');
   }
 }
+

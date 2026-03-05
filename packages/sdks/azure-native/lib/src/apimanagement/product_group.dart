@@ -140,22 +140,16 @@ import 'product_group_args.dart';
 class ProductGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// true if the group is one of the three system groups (Administrators, Developers, or Guests); otherwise false.
   late final pulumi.Output<bool> builtIn;
-
   /// Group description. Can contain HTML formatting tags.
   late final pulumi.Output<String?> description;
-
   /// Group name.
   late final pulumi.Output<String> displayName;
-
   /// For external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://&lt;tenant&gt;.onmicrosoft.com/groups/&lt;group object id&gt;`; otherwise the value is null.
   late final pulumi.Output<String?> externalId;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -168,11 +162,11 @@ class ProductGroup extends pulumi.CustomResource {
     ProductGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:ProductGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:ProductGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     builtIn = registerOutput<bool>('builtIn');
     description = registerOutput<String?>('description');

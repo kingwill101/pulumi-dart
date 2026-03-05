@@ -12,55 +12,38 @@ import 'strong_id.dart';
 class ProfileArgs {
   /// The api entity set name. This becomes the odata entity set name for the entity Type being referred in this object.
   final pulumi.Input<String>? apiEntitySetName;
-
   /// The attributes for the Type.
   final pulumi.Input<Map<String, List<String>>>? attributes;
-
   /// Localized descriptions for the property.
   final pulumi.Input<Map<String, String>>? description;
-
   /// Localized display names for the property.
   final pulumi.Input<Map<String, String>>? displayName;
-
   /// Type of entity.
   final pulumi.Input<EntityTypes>? entityType;
-
   /// The properties of the Profile.
   final pulumi.Input<List<PropertyDefinition>>? fields;
-
   /// The name of the hub.
   final pulumi.Input<String> hubName;
-
   /// The instance count.
   final pulumi.Input<int>? instancesCount;
-
   /// Large Image associated with the Property or EntityType.
   final pulumi.Input<String>? largeImage;
-
   /// Any custom localized attributes for the Type.
   final pulumi.Input<Map<String, Map<String, String>>>? localizedAttributes;
-
   /// Medium Image associated with the Property or EntityType.
   final pulumi.Input<String>? mediumImage;
-
   /// The name of the profile.
   final pulumi.Input<String>? profileName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The schema org link. This helps ACI identify and suggest semantic models.
   final pulumi.Input<String>? schemaItemTypeLink;
-
   /// Small Image associated with the Property or EntityType.
   final pulumi.Input<String>? smallImage;
-
   /// The strong IDs.
   final pulumi.Input<List<StrongId>>? strongIds;
-
   /// The timestamp property name. Represents the time when the interaction or profile update happened.
   final pulumi.Input<String>? timestampFieldName;
-
   /// The name of the entity.
   final pulumi.Input<String>? typeName;
 
@@ -110,22 +93,8 @@ class ProfileArgs {
       'attributes': ?attributes,
       'description': ?description,
       'displayName': ?displayName,
-      'entityType': ?pulumi.Input.mapOptionalInputValue<EntityTypes, String>(
-        entityType,
-        (value) => value.wireValue,
-      ),
-      'fields':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<PropertyDefinition>,
-            List<Map<String, dynamic>>
-          >(
-            fields,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PropertyDefinition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'entityType': ?pulumi.Input.mapOptionalInputValue<EntityTypes, String>(entityType, (value) => value.wireValue),
+      'fields': ?pulumi.Input.mapOptionalInputValue<List<PropertyDefinition>, List<Map<String, dynamic>>>(fields, (value) => pulumi.Input.encodeList<PropertyDefinition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'hubName': hubName,
       'instancesCount': ?instancesCount,
       'largeImage': ?largeImage,
@@ -135,17 +104,7 @@ class ProfileArgs {
       'resourceGroupName': resourceGroupName,
       'schemaItemTypeLink': ?schemaItemTypeLink,
       'smallImage': ?smallImage,
-      'strongIds':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<StrongId>,
-            List<Map<String, dynamic>>
-          >(
-            strongIds,
-            (value) => pulumi.Input.encodeList<StrongId, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'strongIds': ?pulumi.Input.mapOptionalInputValue<List<StrongId>, List<Map<String, dynamic>>>(strongIds, (value) => pulumi.Input.encodeList<StrongId, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timestampFieldName': ?timestampFieldName,
       'typeName': ?typeName,
     };
@@ -153,112 +112,25 @@ class ProfileArgs {
 
   factory ProfileArgs.fromMap(Map<String, dynamic> map) {
     return ProfileArgs(
-      apiEntitySetName: (() {
-        final guardedValue = map['apiEntitySetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      attributes: (() {
-        final guardedValue = map['attributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, List<String>>(),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      entityType: (() {
-        final guardedValue = map['entityType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EntityTypes.fromValue(guardedValue as String),
-        );
-      })(),
-      fields: (() {
-        final guardedValue = map['fields'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<PropertyDefinition>(
-            guardedValue,
-            (value) => PropertyDefinition.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      apiEntitySetName: (() { final guardedValue = map['apiEntitySetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, List<String>>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      entityType: (() { final guardedValue = map['entityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntityTypes.fromValue(guardedValue as String)); })(),
+      fields: (() { final guardedValue = map['fields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PropertyDefinition>(guardedValue, (value) => PropertyDefinition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       hubName: pulumi.Input.fromValue(map['hubName'] as String),
-      instancesCount: (() {
-        final guardedValue = map['instancesCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      largeImage: (() {
-        final guardedValue = map['largeImage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      localizedAttributes: (() {
-        final guardedValue = map['localizedAttributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, Map<String, String>>(),
-        );
-      })(),
-      mediumImage: (() {
-        final guardedValue = map['mediumImage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      profileName: (() {
-        final guardedValue = map['profileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      schemaItemTypeLink: (() {
-        final guardedValue = map['schemaItemTypeLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      smallImage: (() {
-        final guardedValue = map['smallImage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      strongIds: (() {
-        final guardedValue = map['strongIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<StrongId>(
-            guardedValue,
-            (value) => StrongId.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      timestampFieldName: (() {
-        final guardedValue = map['timestampFieldName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      typeName: (() {
-        final guardedValue = map['typeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instancesCount: (() { final guardedValue = map['instancesCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      largeImage: (() { final guardedValue = map['largeImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localizedAttributes: (() { final guardedValue = map['localizedAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, Map<String, String>>()); })(),
+      mediumImage: (() { final guardedValue = map['mediumImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      profileName: (() { final guardedValue = map['profileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      schemaItemTypeLink: (() { final guardedValue = map['schemaItemTypeLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      smallImage: (() { final guardedValue = map['smallImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      strongIds: (() { final guardedValue = map['strongIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StrongId>(guardedValue, (value) => StrongId.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      timestampFieldName: (() { final guardedValue = map['timestampFieldName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      typeName: (() { final guardedValue = map['typeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

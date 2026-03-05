@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilterFileDetails {
   /// Path of the file that contains the details of all items to transfer.
   final pulumi.Input<String> filterFilePath;
-
   /// Type of the filter file.
   final pulumi.Input<String> filterFileType;
 
@@ -32,3 +31,4 @@ class FilterFileDetails {
     );
   }
 }
+

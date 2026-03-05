@@ -14,16 +14,15 @@ class GoogleCloudRetailV2ModelServingConfigListResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'servingConfigIds': servingConfigIds};
+    return <String, dynamic>{
+      'servingConfigIds': servingConfigIds,
+    };
   }
 
-  factory GoogleCloudRetailV2ModelServingConfigListResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2ModelServingConfigListResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2ModelServingConfigListResponse(
-      servingConfigIds: pulumi.Input.fromValue(
-        (map['servingConfigIds'] as List).cast<String>(),
-      ),
+      servingConfigIds: pulumi.Input.fromValue((map['servingConfigIds'] as List).cast<String>()),
     );
   }
 }
+

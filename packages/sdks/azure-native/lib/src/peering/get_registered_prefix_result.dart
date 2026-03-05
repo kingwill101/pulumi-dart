@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegisteredPrefix.
 class GetRegisteredPrefixResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The error message associated with the validation state, if any.
   final String errorMessage;
-
   /// The ID of the resource.
   final String id;
-
   /// The name of the resource.
   final String name;
-
   /// The peering service prefix key that is to be shared with the customer.
   final String peeringServicePrefixKey;
-
   /// The customer's prefix from which traffic originates.
   final String? prefix;
-
   /// The prefix validation state.
   final String prefixValidationState;
-
   /// The provisioning state of the resource.
   final String provisioningState;
-
   /// The type of the resource.
   final String type;
 
@@ -72,14 +65,11 @@ class GetRegisteredPrefixResult {
       id: map['id'] as String,
       name: map['name'] as String,
       peeringServicePrefixKey: map['peeringServicePrefixKey'] as String,
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
       prefixValidationState: map['prefixValidationState'] as String,
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
     );
   }
 }
+

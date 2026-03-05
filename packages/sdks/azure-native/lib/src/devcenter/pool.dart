@@ -407,59 +407,40 @@ import 'system_data_response.dart';
 class Pool extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Indicates the number of provisioned Dev Boxes in this pool.
   late final pulumi.Output<int> devBoxCount;
-
   /// Name of a Dev Box definition in parent Project of this Pool
   late final pulumi.Output<String> devBoxDefinitionName;
-
   /// The display name of the pool.
   late final pulumi.Output<String?> displayName;
-
   /// Overall health status of the Pool. Indicates whether or not the Pool is available to create Dev Boxes.
   late final pulumi.Output<String> healthStatus;
-
   /// Details on the Pool health status to help diagnose issues. This is only populated when the pool status indicates the pool is in a non-healthy state
   late final pulumi.Output<List<Map<String, dynamic>>> healthStatusDetails;
-
   /// Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
   late final pulumi.Output<String> licenseType;
-
   /// Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
   late final pulumi.Output<String> localAdministrator;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The regions of the managed virtual network (required when managedNetworkType is Managed).
   late final pulumi.Output<List<String>?> managedVirtualNetworkRegions;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Name of a Network Connection in parent Project of this Pool
   late final pulumi.Output<String> networkConnectionName;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Indicates whether Dev Boxes in this pool are created with single sign on enabled. The also requires that single sign on be enabled on the tenant.
   late final pulumi.Output<String?> singleSignOnStatus;
-
   /// Stop on disconnect configuration settings for Dev Boxes created in this pool.
-  late final pulumi.Output<StopOnDisconnectConfigurationResponse?>
-  stopOnDisconnect;
-
+  late final pulumi.Output<StopOnDisconnectConfigurationResponse?> stopOnDisconnect;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
   late final pulumi.Output<String?> virtualNetworkType;
 
@@ -467,51 +448,32 @@ class Pool extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Pool]. {@macro pulumi_devcenter_pool_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Pool(String name, {PoolArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:devcenter:Pool',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Pool(
+    String name, {
+    PoolArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:devcenter:Pool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     devBoxCount = registerOutput<int>('devBoxCount');
     devBoxDefinitionName = registerOutput<String>('devBoxDefinitionName');
     displayName = registerOutput<String?>('displayName');
     healthStatus = registerOutput<String>('healthStatus');
-    healthStatusDetails = registerOutput<List<Map<String, dynamic>>>(
-      'healthStatusDetails',
-    );
+    healthStatusDetails = registerOutput<List<Map<String, dynamic>>>('healthStatusDetails');
     licenseType = registerOutput<String>('licenseType');
     localAdministrator = registerOutput<String>('localAdministrator');
     location = registerOutput<String>('location');
-    managedVirtualNetworkRegions = registerOutput<List<String>?>(
-      'managedVirtualNetworkRegions',
-    );
+    managedVirtualNetworkRegions = registerOutput<List<String>?>('managedVirtualNetworkRegions');
     this.name = registerOutput<String>('name');
     networkConnectionName = registerOutput<String>('networkConnectionName');
     provisioningState = registerOutput<String>('provisioningState');
     singleSignOnStatus = registerOutput<String?>('singleSignOnStatus');
-    stopOnDisconnect = registerOutput<StopOnDisconnectConfigurationResponse?>(
-      'stopOnDisconnect',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StopOnDisconnectConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    stopOnDisconnect = registerOutput<StopOnDisconnectConfigurationResponse?>('stopOnDisconnect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StopOnDisconnectConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     virtualNetworkType = registerOutput<String?>('virtualNetworkType');

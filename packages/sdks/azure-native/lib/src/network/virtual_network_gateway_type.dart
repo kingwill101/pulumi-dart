@@ -16,3 +16,4 @@ enum VirtualNetworkGatewayType {
     throw ArgumentError('Unknown VirtualNetworkGatewayType value: $value');
   }
 }
+

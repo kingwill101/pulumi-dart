@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getLock.
 class GetLockResult {
   /// The ID of the locked entity.
   final int entityId;
-
   /// The label of the locked entity.
   final String entityLabel;
-
   /// The type of the locked entity.
   final String entityType;
-
   /// The URL of the locked entity.
   final String entityUrl;
   final int id;
-
   /// The type of lock.
   final String lockType;
 
@@ -56,3 +53,4 @@ class GetLockResult {
     );
   }
 }
+

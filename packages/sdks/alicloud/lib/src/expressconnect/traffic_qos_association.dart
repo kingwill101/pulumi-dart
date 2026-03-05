@@ -204,13 +204,10 @@ import 'traffic_qos_association_state.dart';
 class TrafficQosAssociation extends pulumi.CustomResource {
   /// The ID of the associated instance.
   late final pulumi.Output<String> instanceId;
-
   /// The type of the associated instance. Value: **physical connection** physical connection.
   late final pulumi.Output<String> instanceType;
-
   /// The QoS policy ID.
   late final pulumi.Output<String> qosId;
-
   /// The status of the associated instance. Value:
   late final pulumi.Output<String> status;
 
@@ -223,11 +220,11 @@ class TrafficQosAssociation extends pulumi.CustomResource {
     TrafficQosAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     instanceType = registerOutput<String>('instanceType');
     qosId = registerOutput<String>('qosId');
@@ -252,11 +249,11 @@ class TrafficQosAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     instanceType = registerOutput<String>('instanceType');
     qosId = registerOutput<String>('qosId');

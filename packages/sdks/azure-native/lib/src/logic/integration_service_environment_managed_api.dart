@@ -145,60 +145,38 @@ import 'resource_reference_response.dart';
 class IntegrationServiceEnvironmentManagedApi extends pulumi.CustomResource {
   /// The API definition.
   late final pulumi.Output<String> apiDefinitionUrl;
-
   /// The api definitions.
   late final pulumi.Output<ApiResourceDefinitionsResponse> apiDefinitions;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The backend service.
   late final pulumi.Output<ApiResourceBackendServiceResponse> backendService;
-
   /// The capabilities.
   late final pulumi.Output<List<String>> capabilities;
-
   /// The category.
   late final pulumi.Output<String> category;
-
   /// The connection parameters.
   late final pulumi.Output<Map<String, dynamic>> connectionParameters;
-
   /// The integration service environment managed api deployment parameters.
-  late final pulumi.Output<
-    IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse?
-  >
-  deploymentParameters;
-
+  late final pulumi.Output<IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse?> deploymentParameters;
   /// The api general information.
-  late final pulumi.Output<ApiResourceGeneralInformationResponse>
-  generalInformation;
-
+  late final pulumi.Output<ApiResourceGeneralInformationResponse> generalInformation;
   /// The integration service environment reference.
-  late final pulumi.Output<ResourceReferenceResponse?>
-  integrationServiceEnvironment;
-
+  late final pulumi.Output<ResourceReferenceResponse?> integrationServiceEnvironment;
   /// The resource location.
   late final pulumi.Output<String?> location;
-
   /// The metadata.
   late final pulumi.Output<ApiResourceMetadataResponse> metadata;
-
   /// Gets the resource name.
   late final pulumi.Output<String> name;
-
   /// The policies for the API.
   late final pulumi.Output<ApiResourcePoliciesResponse> policies;
-
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// The runtime urls.
   late final pulumi.Output<List<String>> runtimeUrls;
-
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -211,93 +189,25 @@ class IntegrationServiceEnvironmentManagedApi extends pulumi.CustomResource {
     IntegrationServiceEnvironmentManagedApiArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:logic:IntegrationServiceEnvironmentManagedApi',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:logic:IntegrationServiceEnvironmentManagedApi',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiDefinitionUrl = registerOutput<String>('apiDefinitionUrl');
-    apiDefinitions = registerOutput<ApiResourceDefinitionsResponse>(
-      'apiDefinitions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiResourceDefinitionsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    apiDefinitions = registerOutput<ApiResourceDefinitionsResponse>('apiDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiResourceDefinitionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    backendService = registerOutput<ApiResourceBackendServiceResponse>(
-      'backendService',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiResourceBackendServiceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    backendService = registerOutput<ApiResourceBackendServiceResponse>('backendService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiResourceBackendServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     capabilities = registerOutput<List<String>>('capabilities');
     category = registerOutput<String>('category');
-    connectionParameters = registerOutput<Map<String, dynamic>>(
-      'connectionParameters',
-    );
-    deploymentParameters =
-        registerOutput<
-          IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse?
-        >(
-          'deploymentParameters',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    generalInformation = registerOutput<ApiResourceGeneralInformationResponse>(
-      'generalInformation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiResourceGeneralInformationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    integrationServiceEnvironment = registerOutput<ResourceReferenceResponse?>(
-      'integrationServiceEnvironment',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceReferenceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connectionParameters = registerOutput<Map<String, dynamic>>('connectionParameters');
+    deploymentParameters = registerOutput<IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse?>('deploymentParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    generalInformation = registerOutput<ApiResourceGeneralInformationResponse>('generalInformation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiResourceGeneralInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    integrationServiceEnvironment = registerOutput<ResourceReferenceResponse?>('integrationServiceEnvironment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
-    metadata = registerOutput<ApiResourceMetadataResponse>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiResourceMetadataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<ApiResourceMetadataResponse>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiResourceMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    policies = registerOutput<ApiResourcePoliciesResponse>(
-      'policies',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiResourcePoliciesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    policies = registerOutput<ApiResourcePoliciesResponse>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiResourcePoliciesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     runtimeUrls = registerOutput<List<String>>('runtimeUrls');
     tags = registerOutput<Map<String, String>?>('tags');

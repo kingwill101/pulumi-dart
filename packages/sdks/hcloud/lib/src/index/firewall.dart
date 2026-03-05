@@ -264,13 +264,10 @@ import 'firewall_state.dart';
 class Firewall extends pulumi.CustomResource {
   /// Resources the firewall should be assigned to
   late final pulumi.Output<List<Map<String, dynamic>>> applyTos;
-
   /// User-defined labels (key-value pairs) should be created with.
   late final pulumi.Output<Map<String, String>> labels;
-
   /// Name of the Firewall.
   late final pulumi.Output<String> name;
-
   /// Configuration of a Rule from this Firewall.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
 
@@ -283,11 +280,11 @@ class Firewall extends pulumi.CustomResource {
     FirewallArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/firewall:Firewall',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/firewall:Firewall',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applyTos = registerOutput<List<Map<String, dynamic>>>('applyTos');
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
@@ -312,11 +309,11 @@ class Firewall extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/firewall:Firewall',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/firewall:Firewall',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applyTos = registerOutput<List<Map<String, dynamic>>>('applyTos');
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');

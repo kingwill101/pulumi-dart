@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesCryptoBackend {
   /// Configures the built-in backend type for the crypto device.
   final pulumi.Input<bool>? builtIn;
-
   /// Configures the LKCF backend option for the crypto device.
   final pulumi.Input<bool>? lkcf;
-
   /// Sets the number of queues available in the backend for the crypto device.
   final pulumi.Input<double>? queues;
 
@@ -16,7 +14,11 @@ class DomainDevicesCryptoBackend {
   /// [builtIn] Configures the built-in backend type for the crypto device.
   /// [lkcf] Configures the LKCF backend option for the crypto device.
   /// [queues] Sets the number of queues available in the backend for the crypto device.
-  DomainDevicesCryptoBackend({this.builtIn, this.lkcf, this.queues});
+  DomainDevicesCryptoBackend({
+    this.builtIn,
+    this.lkcf,
+    this.queues,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,21 +30,10 @@ class DomainDevicesCryptoBackend {
 
   factory DomainDevicesCryptoBackend.fromMap(Map<String, dynamic> map) {
     return DomainDevicesCryptoBackend(
-      builtIn: (() {
-        final guardedValue = map['builtIn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      lkcf: (() {
-        final guardedValue = map['lkcf'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      queues: (() {
-        final guardedValue = map['queues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      builtIn: (() { final guardedValue = map['builtIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      lkcf: (() { final guardedValue = map['lkcf']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      queues: (() { final guardedValue = map['queues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

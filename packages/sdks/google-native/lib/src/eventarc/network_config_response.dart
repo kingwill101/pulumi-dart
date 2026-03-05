@@ -9,17 +9,20 @@ class NetworkConfigResponse {
 
   /// Creates a new [NetworkConfigResponse].
   /// [networkAttachment] Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-  NetworkConfigResponse({required this.networkAttachment});
+  NetworkConfigResponse({
+    required this.networkAttachment,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'networkAttachment': networkAttachment};
+    return <String, dynamic>{
+      'networkAttachment': networkAttachment,
+    };
   }
 
   factory NetworkConfigResponse.fromMap(Map<String, dynamic> map) {
     return NetworkConfigResponse(
-      networkAttachment: pulumi.Input.fromValue(
-        map['networkAttachment'] as String,
-      ),
+      networkAttachment: pulumi.Input.fromValue(map['networkAttachment'] as String),
     );
   }
 }
+

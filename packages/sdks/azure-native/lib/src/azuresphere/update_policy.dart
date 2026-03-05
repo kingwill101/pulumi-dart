@@ -15,3 +15,4 @@ enum UpdatePolicy {
     throw ArgumentError('Unknown UpdatePolicy value: $value');
   }
 }
+

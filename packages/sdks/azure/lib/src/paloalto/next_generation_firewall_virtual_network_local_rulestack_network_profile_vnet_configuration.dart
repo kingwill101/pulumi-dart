@@ -4,13 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfiguration {
   final pulumi.Input<String>? ipOfTrustForUserDefinedRoutes;
-
   /// The ID of the Trust subnet.
   final pulumi.Input<String>? trustedSubnetId;
-
   /// The ID of the UnTrust subnet.
   final pulumi.Input<String>? untrustedSubnetId;
-
   /// The ID of the Virtual Network.
   final pulumi.Input<String> virtualNetworkId;
 
@@ -35,28 +32,13 @@ class NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfig
     };
   }
 
-  factory NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfiguration.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfiguration(
-      ipOfTrustForUserDefinedRoutes: (() {
-        final guardedValue = map['ipOfTrustForUserDefinedRoutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      trustedSubnetId: (() {
-        final guardedValue = map['trustedSubnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      untrustedSubnetId: (() {
-        final guardedValue = map['untrustedSubnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualNetworkId: pulumi.Input.fromValue(
-        map['virtualNetworkId'] as String,
-      ),
+      ipOfTrustForUserDefinedRoutes: (() { final guardedValue = map['ipOfTrustForUserDefinedRoutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      trustedSubnetId: (() { final guardedValue = map['trustedSubnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      untrustedSubnetId: (() { final guardedValue = map['untrustedSubnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualNetworkId: pulumi.Input.fromValue(map['virtualNetworkId'] as String),
     );
   }
 }
+

@@ -11,19 +11,14 @@ import 'sku.dart';
 class DeploymentArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
-
   /// The name of the deployment associated with the Cognitive Services Account
   final pulumi.Input<String>? deploymentName;
-
   /// Properties of Cognitive Services account deployment.
   final pulumi.Input<DeploymentProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The resource model definition representing SKU
   final pulumi.Input<Sku>? sku;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -47,16 +42,9 @@ class DeploymentArgs {
     return <String, dynamic>{
       'accountName': accountName,
       'deploymentName': ?deploymentName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeploymentProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<DeploymentProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(
-        sku,
-        (value) => value.toMap(),
-      ),
+      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
@@ -64,37 +52,12 @@ class DeploymentArgs {
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      deploymentName: (() {
-        final guardedValue = map['deploymentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeploymentProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Sku.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      deploymentName: (() { final guardedValue = map['deploymentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Sku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -9,19 +9,20 @@ class MigrateMISyncCompleteCommandInputResponse {
 
   /// Creates a new [MigrateMISyncCompleteCommandInputResponse].
   /// [sourceDatabaseName] Name of managed instance database
-  MigrateMISyncCompleteCommandInputResponse({required this.sourceDatabaseName});
+  MigrateMISyncCompleteCommandInputResponse({
+    required this.sourceDatabaseName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sourceDatabaseName': sourceDatabaseName};
+    return <String, dynamic>{
+      'sourceDatabaseName': sourceDatabaseName,
+    };
   }
 
-  factory MigrateMISyncCompleteCommandInputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MigrateMISyncCompleteCommandInputResponse.fromMap(Map<String, dynamic> map) {
     return MigrateMISyncCompleteCommandInputResponse(
-      sourceDatabaseName: pulumi.Input.fromValue(
-        map['sourceDatabaseName'] as String,
-      ),
+      sourceDatabaseName: pulumi.Input.fromValue(map['sourceDatabaseName'] as String),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitRouterMulticastDomainAssociationArgs {
   /// The ID of the VPC connection.
   final pulumi.Input<String> transitRouterAttachmentId;
-
   /// The ID of the multicast domain.
   final pulumi.Input<String> transitRouterMulticastDomainId;
-
   /// The ID of the vSwitch.
   final pulumi.Input<String> vswitchId;
 
@@ -34,17 +32,12 @@ class TransitRouterMulticastDomainAssociationArgs {
     };
   }
 
-  factory TransitRouterMulticastDomainAssociationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TransitRouterMulticastDomainAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainAssociationArgs(
-      transitRouterAttachmentId: pulumi.Input.fromValue(
-        map['transitRouterAttachmentId'] as String,
-      ),
-      transitRouterMulticastDomainId: pulumi.Input.fromValue(
-        map['transitRouterMulticastDomainId'] as String,
-      ),
+      transitRouterAttachmentId: pulumi.Input.fromValue(map['transitRouterAttachmentId'] as String),
+      transitRouterMulticastDomainId: pulumi.Input.fromValue(map['transitRouterMulticastDomainId'] as String),
       vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
+

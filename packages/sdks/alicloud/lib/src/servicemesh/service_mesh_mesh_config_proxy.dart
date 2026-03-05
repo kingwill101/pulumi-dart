@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceMeshMeshConfigProxy {
   /// Cluster domain name
   final pulumi.Input<String>? clusterDomain;
-
   /// Sidecar injector Pods on the throttle
   final pulumi.Input<String>? limitCpu;
-
   /// Sidecar injector Pods on the throttle
   final pulumi.Input<String>? limitMemory;
-
   /// Sidecar injector Pods on the requested resource
   final pulumi.Input<String>? requestCpu;
-
   /// Sidecar injector Pods on the requested resource
   final pulumi.Input<String>? requestMemory;
 
@@ -44,31 +40,12 @@ class ServiceMeshMeshConfigProxy {
 
   factory ServiceMeshMeshConfigProxy.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigProxy(
-      clusterDomain: (() {
-        final guardedValue = map['clusterDomain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      limitCpu: (() {
-        final guardedValue = map['limitCpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      limitMemory: (() {
-        final guardedValue = map['limitMemory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestCpu: (() {
-        final guardedValue = map['requestCpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestMemory: (() {
-        final guardedValue = map['requestMemory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clusterDomain: (() { final guardedValue = map['clusterDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      limitCpu: (() { final guardedValue = map['limitCpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      limitMemory: (() { final guardedValue = map['limitMemory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestCpu: (() { final guardedValue = map['requestCpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestMemory: (() { final guardedValue = map['requestMemory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

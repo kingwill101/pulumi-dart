@@ -9,13 +9,11 @@ import 'dicom_store_iam_member_condition.dart';
 /// {@macro pulumi_healthcare_dicom_store_iam_member_dicom_store_iam_member_args_doc}
 class DicomStoreIamMemberArgs {
   final pulumi.Input<DicomStoreIamMemberCondition>? condition;
-
   /// The DICOM store ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
   /// `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
   final pulumi.Input<String> dicomStoreId;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -25,7 +23,6 @@ class DicomStoreIamMemberArgs {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<String> member;
-
   /// The role that should be applied. Only one
   /// `gcp.healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -45,11 +42,7 @@ class DicomStoreIamMemberArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            DicomStoreIamMemberCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<DicomStoreIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'dicomStoreId': dicomStoreId,
       'member': member,
       'role': role,
@@ -58,18 +51,11 @@ class DicomStoreIamMemberArgs {
 
   factory DicomStoreIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return DicomStoreIamMemberArgs(
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DicomStoreIamMemberCondition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DicomStoreIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dicomStoreId: pulumi.Input.fromValue(map['dicomStoreId'] as String),
       member: pulumi.Input.fromValue(map['member'] as String),
       role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
+

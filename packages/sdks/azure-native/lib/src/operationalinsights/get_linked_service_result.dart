@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getLinkedService.
 class GetLinkedServiceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The provisioning state of the linked service.
   final String? provisioningState;
-
   /// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require read access
   final String? resourceId;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require write access
   final String? writeAccessResourceId;
 
@@ -64,27 +58,12 @@ class GetLinkedServiceResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      provisioningState: (() {
-        final guardedValue = map['provisioningState'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      writeAccessResourceId: (() {
-        final guardedValue = map['writeAccessResourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      writeAccessResourceId: (() { final guardedValue = map['writeAccessResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

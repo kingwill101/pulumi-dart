@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityOperatorArgs {
   /// name of the pricing configuration
   final pulumi.Input<String> pricingName;
-
   /// name of the securityOperator
   final pulumi.Input<String>? securityOperatorName;
 
   /// Creates a new [SecurityOperatorArgs].
   /// [pricingName] name of the pricing configuration
   /// [securityOperatorName] name of the securityOperator
-  SecurityOperatorArgs({required this.pricingName, this.securityOperatorName});
+  SecurityOperatorArgs({
+    required this.pricingName,
+    this.securityOperatorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,11 +30,8 @@ class SecurityOperatorArgs {
   factory SecurityOperatorArgs.fromMap(Map<String, dynamic> map) {
     return SecurityOperatorArgs(
       pricingName: pulumi.Input.fromValue(map['pricingName'] as String),
-      securityOperatorName: (() {
-        final guardedValue = map['securityOperatorName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      securityOperatorName: (() { final guardedValue = map['securityOperatorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

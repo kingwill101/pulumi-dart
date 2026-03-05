@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstanceConfigInterfaceIpv6Range {
   /// The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
   final pulumi.Input<String> assignedRange;
-
   /// A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
   final pulumi.Input<String>? range;
 
@@ -18,19 +17,17 @@ class GetInstancesInstanceConfigInterfaceIpv6Range {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'assignedRange': assignedRange, 'range': ?range};
+    return <String, dynamic>{
+      'assignedRange': assignedRange,
+      'range': ?range,
+    };
   }
 
-  factory GetInstancesInstanceConfigInterfaceIpv6Range.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstancesInstanceConfigInterfaceIpv6Range.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceConfigInterfaceIpv6Range(
       assignedRange: pulumi.Input.fromValue(map['assignedRange'] as String),
-      range: (() {
-        final guardedValue = map['range'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      range: (() { final guardedValue = map['range']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

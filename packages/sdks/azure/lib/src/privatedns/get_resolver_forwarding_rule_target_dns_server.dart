@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResolverForwardingRuleTargetDnsServer {
   /// The DNS server IP address.
   final pulumi.Input<String> ipAddress;
-
   /// The DNS server port.
   final pulumi.Input<int> port;
 
@@ -18,15 +17,17 @@ class GetResolverForwardingRuleTargetDnsServer {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipAddress': ipAddress, 'port': port};
+    return <String, dynamic>{
+      'ipAddress': ipAddress,
+      'port': port,
+    };
   }
 
-  factory GetResolverForwardingRuleTargetDnsServer.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetResolverForwardingRuleTargetDnsServer.fromMap(Map<String, dynamic> map) {
     return GetResolverForwardingRuleTargetDnsServer(
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
+

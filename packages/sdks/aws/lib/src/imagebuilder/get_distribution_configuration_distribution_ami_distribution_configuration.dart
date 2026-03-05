@@ -6,24 +6,14 @@ import 'get_distribution_configuration_distribution_ami_distribution_configurati
 class GetDistributionConfigurationDistributionAmiDistributionConfiguration {
   /// Key-value map of tags to apply to distributed AMI.
   final pulumi.Input<Map<String, String>> amiTags;
-
   /// Description of the container distribution configuration.
   final pulumi.Input<String> description;
-
   /// ARN of Key Management Service (KMS) Key to encrypt AMI.
   final pulumi.Input<String> kmsKeyId;
-
   /// Nested list of EC2 launch permissions.
-  final pulumi.Input<
-    List<
-      GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission
-    >
-  >
-  launchPermissions;
-
+  final pulumi.Input<List<GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission>> launchPermissions;
   /// Name of the distribution configuration.
   final pulumi.Input<String> name;
-
   /// Set of target AWS Account identifiers.
   final pulumi.Input<List<String>> targetAccountIds;
 
@@ -48,49 +38,21 @@ class GetDistributionConfigurationDistributionAmiDistributionConfiguration {
       'amiTags': amiTags,
       'description': description,
       'kmsKeyId': kmsKeyId,
-      'launchPermissions':
-          pulumi.Input.mapInputValue<
-            List<
-              GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission
-            >,
-            List<Map<String, dynamic>>
-          >(
-            launchPermissions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'launchPermissions': pulumi.Input.mapInputValue<List<GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission>, List<Map<String, dynamic>>>(launchPermissions, (value) => pulumi.Input.encodeList<GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'targetAccountIds': targetAccountIds,
     };
   }
 
-  factory GetDistributionConfigurationDistributionAmiDistributionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDistributionConfigurationDistributionAmiDistributionConfiguration.fromMap(Map<String, dynamic> map) {
     return GetDistributionConfigurationDistributionAmiDistributionConfiguration(
-      amiTags: pulumi.Input.fromValue(
-        (map['amiTags'] as Map).cast<String, String>(),
-      ),
+      amiTags: pulumi.Input.fromValue((map['amiTags'] as Map).cast<String, String>()),
       description: pulumi.Input.fromValue(map['description'] as String),
       kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
-      launchPermissions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission
-        >(
-          map['launchPermissions']!,
-          (value) =>
-              GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      launchPermissions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission>(map['launchPermissions']!, (value) => GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
-      targetAccountIds: pulumi.Input.fromValue(
-        (map['targetAccountIds'] as List).cast<String>(),
-      ),
+      targetAccountIds: pulumi.Input.fromValue((map['targetAccountIds'] as List).cast<String>()),
     );
   }
 }
+

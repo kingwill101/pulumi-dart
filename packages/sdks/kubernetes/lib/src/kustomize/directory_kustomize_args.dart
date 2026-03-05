@@ -12,10 +12,8 @@ class DirectoryKustomizeArgs {
   /// Example: ./helloWorld
   /// Example: https://github.com/kubernetes-sigs/kustomize/tree/master/examples/helloWorld
   final pulumi.Input<String> directory;
-
   /// An optional prefix for the auto-generated resource names. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   final pulumi.Input<String>? resourcePrefix;
-
   /// A set of transformations to apply to Kubernetes resource definitions before registering with engine.
   final pulumi.Input<List<dynamic>>? transformations_;
 
@@ -40,16 +38,9 @@ class DirectoryKustomizeArgs {
   factory DirectoryKustomizeArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryKustomizeArgs(
       directory: pulumi.Input.fromValue(map['directory'] as String),
-      resourcePrefix: (() {
-        final guardedValue = map['resourcePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transformations_: (() {
-        final guardedValue = map['transformations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
+      resourcePrefix: (() { final guardedValue = map['resourcePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transformations_: (() { final guardedValue = map['transformations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }
+

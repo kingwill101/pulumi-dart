@@ -15,3 +15,4 @@ enum LoginMode {
     throw ArgumentError('Unknown LoginMode value: $value');
   }
 }
+

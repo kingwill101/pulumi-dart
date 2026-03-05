@@ -7,42 +7,29 @@ import 'expr.dart';
 class GoogleCloudSecuritycenterV1Property {
   /// Name of the property for the custom output.
   final pulumi.Input<String>? name;
-
   /// The CEL expression for the custom output. A resource property can be specified to return the value of the property or a text string enclosed in quotation marks.
   final pulumi.Input<Expr>? valueExpression;
 
   /// Creates a new [GoogleCloudSecuritycenterV1Property].
   /// [name] Name of the property for the custom output.
   /// [valueExpression] The CEL expression for the custom output. A resource property can be specified to return the value of the property or a text string enclosed in quotation marks.
-  GoogleCloudSecuritycenterV1Property({this.name, this.valueExpression});
+  GoogleCloudSecuritycenterV1Property({
+    this.name,
+    this.valueExpression,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'valueExpression':
-          ?pulumi.Input.mapOptionalInputValue<Expr, Map<String, dynamic>>(
-            valueExpression,
-            (value) => value.toMap(),
-          ),
+      'valueExpression': ?pulumi.Input.mapOptionalInputValue<Expr, Map<String, dynamic>>(valueExpression, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudSecuritycenterV1Property.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudSecuritycenterV1Property.fromMap(Map<String, dynamic> map) {
     return GoogleCloudSecuritycenterV1Property(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      valueExpression: (() {
-        final guardedValue = map['valueExpression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Expr.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      valueExpression: (() { final guardedValue = map['valueExpression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Expr.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -9,10 +9,14 @@ class PostdeployJobResponse {
 
   /// Creates a new [PostdeployJobResponse].
   /// [actions] The custom actions that the postdeploy Job executes.
-  PostdeployJobResponse({required this.actions});
+  PostdeployJobResponse({
+    required this.actions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'actions': actions};
+    return <String, dynamic>{
+      'actions': actions,
+    };
   }
 
   factory PostdeployJobResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class PostdeployJobResponse {
     );
   }
 }
+

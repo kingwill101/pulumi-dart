@@ -19,7 +19,10 @@ class GetServiceConsumerIamPolicyArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'consumerId': consumerId, 'serviceId': serviceId};
+    return <String, dynamic>{
+      'consumerId': consumerId,
+      'serviceId': serviceId,
+    };
   }
 
   factory GetServiceConsumerIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +32,4 @@ class GetServiceConsumerIamPolicyArgs {
     );
   }
 }
+

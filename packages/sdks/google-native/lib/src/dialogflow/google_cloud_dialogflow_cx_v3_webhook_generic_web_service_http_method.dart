@@ -9,22 +9,16 @@ enum GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod {
   patch("PATCH"),
   options("OPTIONS");
 
-  const GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod(
-    this.wireValue,
-  );
+  const GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod.values) {
+  static GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod fromValue(String value) {
+    for (final item in GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod value: $value');
   }
 }
+

@@ -15,3 +15,4 @@ enum FirewallPolicyRuleType {
     throw ArgumentError('Unknown FirewallPolicyRuleType value: $value');
   }
 }
+

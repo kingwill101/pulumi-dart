@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppResiliencyArgs {
   /// Name of the Container App.
   final pulumi.Input<String> appName;
-
   /// Name of the resiliency policy.
   final pulumi.Input<String> name;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetAppResiliencyArgs {
     return GetAppResiliencyArgs(
       appName: pulumi.Input.fromValue(map['appName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

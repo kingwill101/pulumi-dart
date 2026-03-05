@@ -9,16 +9,10 @@ import 'user_subject_patch_flowcontrol_apiserver_k8s_io_v1beta2.dart';
 class SubjectPatchFlowcontrolApiserverK8sIoV1beta2 {
   /// `group` matches based on user group name.
   final pulumi.Input<GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta2>? group;
-
   /// `kind` indicates which one of the other fields is non-empty. Required
   final pulumi.Input<String>? kind;
-
   /// `serviceAccount` matches ServiceAccounts.
-  final pulumi.Input<
-    ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta2
-  >?
-  serviceAccount;
-
+  final pulumi.Input<ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta2>? serviceAccount;
   /// `user` matches based on username.
   final pulumi.Input<UserSubjectPatchFlowcontrolApiserverK8sIoV1beta2>? user;
 
@@ -36,61 +30,20 @@ class SubjectPatchFlowcontrolApiserverK8sIoV1beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'group':
-          ?pulumi.Input.mapOptionalInputValue<
-            GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta2,
-            Map<String, dynamic>
-          >(group, (value) => value.toMap()),
+      'group': ?pulumi.Input.mapOptionalInputValue<GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta2, Map<String, dynamic>>(group, (value) => value.toMap()),
       'kind': ?kind,
-      'serviceAccount':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta2,
-            Map<String, dynamic>
-          >(serviceAccount, (value) => value.toMap()),
-      'user':
-          ?pulumi.Input.mapOptionalInputValue<
-            UserSubjectPatchFlowcontrolApiserverK8sIoV1beta2,
-            Map<String, dynamic>
-          >(user, (value) => value.toMap()),
+      'serviceAccount': ?pulumi.Input.mapOptionalInputValue<ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta2, Map<String, dynamic>>(serviceAccount, (value) => value.toMap()),
+      'user': ?pulumi.Input.mapOptionalInputValue<UserSubjectPatchFlowcontrolApiserverK8sIoV1beta2, Map<String, dynamic>>(user, (value) => value.toMap()),
     };
   }
 
-  factory SubjectPatchFlowcontrolApiserverK8sIoV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SubjectPatchFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return SubjectPatchFlowcontrolApiserverK8sIoV1beta2(
-      group: (() {
-        final guardedValue = map['group'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta2.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceAccount: (() {
-        final guardedValue = map['serviceAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta2.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      user: (() {
-        final guardedValue = map['user'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UserSubjectPatchFlowcontrolApiserverK8sIoV1beta2.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserSubjectPatchFlowcontrolApiserverK8sIoV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

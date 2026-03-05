@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessUrlsResponse {
   /// The URL where this CertificateAuthority's CA certificate is published. This will only be set for CAs that have been activated.
   final pulumi.Input<String> caCertificateAccessUrl;
-
   /// The URLs where this CertificateAuthority's CRLs are published. This will only be set for CAs that have been activated.
   final pulumi.Input<List<String>> crlAccessUrls;
 
@@ -27,12 +26,9 @@ class AccessUrlsResponse {
 
   factory AccessUrlsResponse.fromMap(Map<String, dynamic> map) {
     return AccessUrlsResponse(
-      caCertificateAccessUrl: pulumi.Input.fromValue(
-        map['caCertificateAccessUrl'] as String,
-      ),
-      crlAccessUrls: pulumi.Input.fromValue(
-        (map['crlAccessUrls'] as List).cast<String>(),
-      ),
+      caCertificateAccessUrl: pulumi.Input.fromValue(map['caCertificateAccessUrl'] as String),
+      crlAccessUrls: pulumi.Input.fromValue((map['crlAccessUrls'] as List).cast<String>()),
     );
   }
 }
+

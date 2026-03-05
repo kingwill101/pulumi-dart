@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetArchifeArgs {
   /// The name of the archive resource.
   final pulumi.Input<String> archiveName;
-
   /// The type of the package resource.
   final pulumi.Input<String> packageType;
-
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -45,9 +42,8 @@ class GetArchifeArgs {
       archiveName: pulumi.Input.fromValue(map['archiveName'] as String),
       packageType: pulumi.Input.fromValue(map['packageType'] as String),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

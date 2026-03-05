@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesAudioPipeWireInput {
   /// Sets the output latency for the PipeWire audio device.
   final pulumi.Input<double>? latency;
-
   /// Sets the name for the PipeWire audio output.
   final pulumi.Input<String>? name;
-
   /// Sets the stream name for the PipeWire audio output.
   final pulumi.Input<String>? streamName;
 
@@ -16,7 +14,11 @@ class DomainDevicesAudioPipeWireInput {
   /// [latency] Sets the output latency for the PipeWire audio device.
   /// [name] Sets the name for the PipeWire audio output.
   /// [streamName] Sets the stream name for the PipeWire audio output.
-  DomainDevicesAudioPipeWireInput({this.latency, this.name, this.streamName});
+  DomainDevicesAudioPipeWireInput({
+    this.latency,
+    this.name,
+    this.streamName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,21 +30,10 @@ class DomainDevicesAudioPipeWireInput {
 
   factory DomainDevicesAudioPipeWireInput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioPipeWireInput(
-      latency: (() {
-        final guardedValue = map['latency'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      streamName: (() {
-        final guardedValue = map['streamName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      latency: (() { final guardedValue = map['latency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      streamName: (() { final guardedValue = map['streamName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

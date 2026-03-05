@@ -173,12 +173,10 @@ class VolumeTypeAccessV3 extends pulumi.CustomResource {
   /// ID of the project to give access to. Changing this
   /// creates a new resource.
   late final pulumi.Output<String> projectId;
-
   /// The region in which to create the volume. If
   /// omitted, the `region` argument of the provider is used. Changing this
   /// creates a new quotaset.
   late final pulumi.Output<String> region;
-
   /// ID of the volume type to give access to. Changing
   /// this creates a new resource.
   late final pulumi.Output<String> volumeTypeId;
@@ -192,11 +190,11 @@ class VolumeTypeAccessV3 extends pulumi.CustomResource {
     VolumeTypeAccessV3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     projectId = registerOutput<String>('projectId');
     region = registerOutput<String>('region');
     volumeTypeId = registerOutput<String>('volumeTypeId');
@@ -220,11 +218,11 @@ class VolumeTypeAccessV3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     projectId = registerOutput<String>('projectId');
     region = registerOutput<String>('region');
     volumeTypeId = registerOutput<String>('volumeTypeId');

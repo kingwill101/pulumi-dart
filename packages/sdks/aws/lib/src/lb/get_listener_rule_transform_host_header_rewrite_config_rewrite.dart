@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenerRuleTransformHostHeaderRewriteConfigRewrite {
   /// Regular expression to match in the input string.
   final pulumi.Input<String> regex;
-
   /// Replacement string to use when rewriting the matched input.
   final pulumi.Input<String> replace;
 
@@ -18,15 +17,17 @@ class GetListenerRuleTransformHostHeaderRewriteConfigRewrite {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'regex': regex, 'replace': replace};
+    return <String, dynamic>{
+      'regex': regex,
+      'replace': replace,
+    };
   }
 
-  factory GetListenerRuleTransformHostHeaderRewriteConfigRewrite.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetListenerRuleTransformHostHeaderRewriteConfigRewrite.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleTransformHostHeaderRewriteConfigRewrite(
       regex: pulumi.Input.fromValue(map['regex'] as String),
       replace: pulumi.Input.fromValue(map['replace'] as String),
     );
   }
 }
+

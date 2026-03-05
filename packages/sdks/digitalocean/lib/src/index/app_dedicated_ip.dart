@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppDedicatedIp {
   /// The ID of the app.
   final pulumi.Input<String>? id;
-
   /// The IP address of the dedicated egress IP.
   final pulumi.Input<String>? ip;
-
   /// The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
   final pulumi.Input<String>? status;
 
@@ -16,29 +14,26 @@ class AppDedicatedIp {
   /// [id] The ID of the app.
   /// [ip] The IP address of the dedicated egress IP.
   /// [status] The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
-  AppDedicatedIp({this.id, this.ip, this.status});
+  AppDedicatedIp({
+    this.id,
+    this.ip,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id, 'ip': ?ip, 'status': ?status};
+    return <String, dynamic>{
+      'id': ?id,
+      'ip': ?ip,
+      'status': ?status,
+    };
   }
 
   factory AppDedicatedIp.fromMap(Map<String, dynamic> map) {
     return AppDedicatedIp(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ip: (() {
-        final guardedValue = map['ip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

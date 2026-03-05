@@ -10,27 +10,20 @@ class NetworkingConfig {
 
   /// Creates a new [NetworkingConfig].
   /// [connectionType] Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
-  NetworkingConfig({this.connectionType});
+  NetworkingConfig({
+    this.connectionType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionType':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkingConfigConnectionType,
-            String
-          >(connectionType, (value) => value.wireValue),
+      'connectionType': ?pulumi.Input.mapOptionalInputValue<NetworkingConfigConnectionType, String>(connectionType, (value) => value.wireValue),
     };
   }
 
   factory NetworkingConfig.fromMap(Map<String, dynamic> map) {
     return NetworkingConfig(
-      connectionType: (() {
-        final guardedValue = map['connectionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkingConfigConnectionType.fromValue(guardedValue as String),
-        );
-      })(),
+      connectionType: (() { final guardedValue = map['connectionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkingConfigConnectionType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

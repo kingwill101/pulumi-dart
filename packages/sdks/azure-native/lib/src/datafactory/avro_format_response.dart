@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AvroFormatResponse {
   /// Deserializer. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? deserializer;
-
   /// Serializer. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? serializer;
-
   /// Type of dataset storage format.
   /// Expected value is 'AvroFormat'.
   final pulumi.Input<String> type;
@@ -18,7 +16,11 @@ class AvroFormatResponse {
   /// [deserializer] Deserializer. Type: string (or Expression with resultType string).
   /// [serializer] Serializer. Type: string (or Expression with resultType string).
   /// [type] Type of dataset storage format.
-  AvroFormatResponse({this.deserializer, this.serializer, required this.type});
+  AvroFormatResponse({
+    this.deserializer,
+    this.serializer,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,17 +32,10 @@ class AvroFormatResponse {
 
   factory AvroFormatResponse.fromMap(Map<String, dynamic> map) {
     return AvroFormatResponse(
-      deserializer: (() {
-        final guardedValue = map['deserializer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      serializer: (() {
-        final guardedValue = map['serializer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      deserializer: (() { final guardedValue = map['deserializer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      serializer: (() { final guardedValue = map['serializer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

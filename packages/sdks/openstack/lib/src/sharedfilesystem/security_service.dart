@@ -165,41 +165,31 @@ class SecurityService extends pulumi.CustomResource {
   /// The human-readable description for the security service.
   /// Changing this updates the description of the existing security service.
   late final pulumi.Output<String?> description;
-
   /// The security service DNS IP address that is used inside the
   /// tenant network.
   late final pulumi.Output<String?> dnsIp;
-
   /// The security service domain.
   late final pulumi.Output<String?> domain;
-
   /// The name of the security service. Changing this updates the name
   /// of the existing security service.
   late final pulumi.Output<String> name;
-
   /// The security service ou. An organizational unit can be added to
   /// specify where the share ends up. New in Manila microversion 2.44.
   late final pulumi.Output<String?> ou;
-
   /// The user password, if you specify a user.
   late final pulumi.Output<String?> password;
-
   /// The owner of the Security Service.
   late final pulumi.Output<String> projectId;
-
   /// The region in which to obtain the V2 Shared File System client.
   /// A Shared File System client is needed to create a security service. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// security service.
   late final pulumi.Output<String> region;
-
   /// The security service host name or IP address.
   late final pulumi.Output<String?> server;
-
   /// The security service type - can either be active\_directory,
   /// kerberos or ldap.  Changing this updates the existing security service.
   late final pulumi.Output<String> type;
-
   /// The security service user or group name that is used by the
   /// tenant.
   late final pulumi.Output<String?> user;
@@ -213,11 +203,11 @@ class SecurityService extends pulumi.CustomResource {
     SecurityServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:sharedfilesystem/securityService:SecurityService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:sharedfilesystem/securityService:SecurityService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     dnsIp = registerOutput<String?>('dnsIp');
     domain = registerOutput<String?>('domain');
@@ -249,11 +239,11 @@ class SecurityService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:sharedfilesystem/securityService:SecurityService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:sharedfilesystem/securityService:SecurityService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     dnsIp = registerOutput<String?>('dnsIp');
     domain = registerOutput<String?>('domain');

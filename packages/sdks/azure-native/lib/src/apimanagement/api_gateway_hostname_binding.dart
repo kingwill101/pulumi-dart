@@ -166,29 +166,20 @@ import 'system_data_response.dart';
 class ApiGatewayHostnameBinding extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The hostnames of the data-plane gateway to which requests can be sent.
-  late final pulumi.Output<GatewayHostnameBindingCertificateResponse>
-  certificate;
-
+  late final pulumi.Output<GatewayHostnameBindingCertificateResponse> certificate;
   /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> eTag;
-
   /// The default hostname of the data-plane gateway.
   late final pulumi.Output<String> hostname;
-
   /// The link to the API Management service workspace.
   late final pulumi.Output<GatewayHostnameBindingKeyVaultResponse> keyVault;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The current provisioning state of the API Management gateway hostname binding.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -201,46 +192,19 @@ class ApiGatewayHostnameBinding extends pulumi.CustomResource {
     ApiGatewayHostnameBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:ApiGatewayHostnameBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:ApiGatewayHostnameBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    certificate = registerOutput<GatewayHostnameBindingCertificateResponse>(
-      'certificate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayHostnameBindingCertificateResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    certificate = registerOutput<GatewayHostnameBindingCertificateResponse>('certificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayHostnameBindingCertificateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eTag = registerOutput<String>('eTag');
     hostname = registerOutput<String>('hostname');
-    keyVault = registerOutput<GatewayHostnameBindingKeyVaultResponse>(
-      'keyVault',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayHostnameBindingKeyVaultResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    keyVault = registerOutput<GatewayHostnameBindingKeyVaultResponse>('keyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayHostnameBindingKeyVaultResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

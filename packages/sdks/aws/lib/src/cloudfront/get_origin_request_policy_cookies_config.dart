@@ -18,34 +18,15 @@ class GetOriginRequestPolicyCookiesConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cookieBehavior': cookieBehavior,
-      'cookies':
-          pulumi.Input.mapInputValue<
-            List<GetOriginRequestPolicyCookiesConfigCookie>,
-            List<Map<String, dynamic>>
-          >(
-            cookies,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetOriginRequestPolicyCookiesConfigCookie,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'cookies': pulumi.Input.mapInputValue<List<GetOriginRequestPolicyCookiesConfigCookie>, List<Map<String, dynamic>>>(cookies, (value) => pulumi.Input.encodeList<GetOriginRequestPolicyCookiesConfigCookie, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetOriginRequestPolicyCookiesConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOriginRequestPolicyCookiesConfig.fromMap(Map<String, dynamic> map) {
     return GetOriginRequestPolicyCookiesConfig(
       cookieBehavior: pulumi.Input.fromValue(map['cookieBehavior'] as String),
-      cookies: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetOriginRequestPolicyCookiesConfigCookie>(
-          map['cookies']!,
-          (value) => GetOriginRequestPolicyCookiesConfigCookie.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      cookies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetOriginRequestPolicyCookiesConfigCookie>(map['cookies']!, (value) => GetOriginRequestPolicyCookiesConfigCookie.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

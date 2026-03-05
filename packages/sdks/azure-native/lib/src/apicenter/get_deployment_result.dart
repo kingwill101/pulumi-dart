@@ -7,37 +7,26 @@ import 'system_data_response.dart';
 class GetDeploymentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The custom metadata defined for API catalog entities.
   final dynamic customProperties;
-
   /// API center-scoped definition resource ID.
   final String? definitionId;
-
   /// Description of the deployment.
   final String? description;
-
   /// API center-scoped environment resource ID.
   final String? environmentId;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The deployment server
   final DeploymentServerResponse? server;
-
   /// State of API deployment.
   final String? state;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// API deployment title
   final String? title;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -89,49 +78,18 @@ class GetDeploymentResult {
   factory GetDeploymentResult.fromMap(Map<String, dynamic> map) {
     return GetDeploymentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customProperties: (() {
-        final guardedValue = map['customProperties'];
-        if (guardedValue == null) return null;
-        return guardedValue;
-      })(),
-      definitionId: (() {
-        final guardedValue = map['definitionId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      environmentId: (() {
-        final guardedValue = map['environmentId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      customProperties: (() { final guardedValue = map['customProperties']; if (guardedValue == null) return null; return guardedValue; })(),
+      definitionId: (() { final guardedValue = map['definitionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      server: (() {
-        final guardedValue = map['server'];
-        if (guardedValue == null) return null;
-        return DeploymentServerResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      title: (() {
-        final guardedValue = map['title'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      server: (() { final guardedValue = map['server']; if (guardedValue == null) return null; return DeploymentServerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

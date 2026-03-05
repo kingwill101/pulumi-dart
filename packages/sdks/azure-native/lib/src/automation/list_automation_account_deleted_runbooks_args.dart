@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListAutomationAccountDeletedRunbooksArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -28,16 +27,11 @@ class ListAutomationAccountDeletedRunbooksArgs {
     };
   }
 
-  factory ListAutomationAccountDeletedRunbooksArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListAutomationAccountDeletedRunbooksArgs.fromMap(Map<String, dynamic> map) {
     return ListAutomationAccountDeletedRunbooksArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

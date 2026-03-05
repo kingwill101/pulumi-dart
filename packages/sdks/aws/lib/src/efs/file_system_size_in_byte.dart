@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FileSystemSizeInByte {
   /// The latest known metered size (in bytes) of data stored in the file system.
   final pulumi.Input<int>? value;
-
   /// The latest known metered size (in bytes) of data stored in the Infrequent Access storage class.
   final pulumi.Input<int>? valueInIa;
-
   /// The latest known metered size (in bytes) of data stored in the Standard storage class.
   final pulumi.Input<int>? valueInStandard;
 
@@ -16,7 +14,11 @@ class FileSystemSizeInByte {
   /// [value] The latest known metered size (in bytes) of data stored in the file system.
   /// [valueInIa] The latest known metered size (in bytes) of data stored in the Infrequent Access storage class.
   /// [valueInStandard] The latest known metered size (in bytes) of data stored in the Standard storage class.
-  FileSystemSizeInByte({this.value, this.valueInIa, this.valueInStandard});
+  FileSystemSizeInByte({
+    this.value,
+    this.valueInIa,
+    this.valueInStandard,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,21 +30,10 @@ class FileSystemSizeInByte {
 
   factory FileSystemSizeInByte.fromMap(Map<String, dynamic> map) {
     return FileSystemSizeInByte(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      valueInIa: (() {
-        final guardedValue = map['valueInIa'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      valueInStandard: (() {
-        final guardedValue = map['valueInStandard'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      valueInIa: (() { final guardedValue = map['valueInIa']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      valueInStandard: (() { final guardedValue = map['valueInStandard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

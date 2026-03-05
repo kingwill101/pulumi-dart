@@ -290,10 +290,8 @@ import 'capability_state.dart';
 class Capability extends pulumi.CustomResource {
   /// The capability that should be applied to the Chaos Studio Target. For supported values please see this Chaos Studio [Fault Library](https://learn.microsoft.com/azure/chaos-studio/chaos-studio-fault-library). Changing this forces a new Chaos Studio Capability to be created.
   late final pulumi.Output<String> capabilityType;
-
   /// The Unique Resource Name of the Capability.
   late final pulumi.Output<String> capabilityUrn;
-
   /// The Chaos Studio Target that the capability should be applied to. Changing this forces a new Chaos Studio Capability to be created.
   late final pulumi.Output<String> chaosStudioTargetId;
 
@@ -306,11 +304,11 @@ class Capability extends pulumi.CustomResource {
     CapabilityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:chaosstudio/capability:Capability',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:chaosstudio/capability:Capability',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     capabilityType = registerOutput<String>('capabilityType');
     capabilityUrn = registerOutput<String>('capabilityUrn');
     chaosStudioTargetId = registerOutput<String>('chaosStudioTargetId');
@@ -334,11 +332,11 @@ class Capability extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:chaosstudio/capability:Capability',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:chaosstudio/capability:Capability',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     capabilityType = registerOutput<String>('capabilityType');
     capabilityUrn = registerOutput<String>('capabilityUrn');
     chaosStudioTargetId = registerOutput<String>('chaosStudioTargetId');

@@ -11,23 +11,18 @@ class CxToolOpenApiSpecAuthentication {
   /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
   final pulumi.Input<CxToolOpenApiSpecAuthenticationApiKeyConfig>? apiKeyConfig;
-
   /// Config for bearer token auth.
   /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxToolOpenApiSpecAuthenticationBearerTokenConfig>?
-  bearerTokenConfig;
-
+  final pulumi.Input<CxToolOpenApiSpecAuthenticationBearerTokenConfig>? bearerTokenConfig;
   /// Config for OAuth.
   /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
   final pulumi.Input<CxToolOpenApiSpecAuthenticationOauthConfig>? oauthConfig;
-
   /// Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
   /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig>?
-  serviceAgentAuthConfig;
+  final pulumi.Input<CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig>? serviceAgentAuthConfig;
 
   /// Creates a new [CxToolOpenApiSpecAuthentication].
   /// [apiKeyConfig] Config for API key auth.
@@ -43,67 +38,20 @@ class CxToolOpenApiSpecAuthentication {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiKeyConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxToolOpenApiSpecAuthenticationApiKeyConfig,
-            Map<String, dynamic>
-          >(apiKeyConfig, (value) => value.toMap()),
-      'bearerTokenConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxToolOpenApiSpecAuthenticationBearerTokenConfig,
-            Map<String, dynamic>
-          >(bearerTokenConfig, (value) => value.toMap()),
-      'oauthConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxToolOpenApiSpecAuthenticationOauthConfig,
-            Map<String, dynamic>
-          >(oauthConfig, (value) => value.toMap()),
-      'serviceAgentAuthConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig,
-            Map<String, dynamic>
-          >(serviceAgentAuthConfig, (value) => value.toMap()),
+      'apiKeyConfig': ?pulumi.Input.mapOptionalInputValue<CxToolOpenApiSpecAuthenticationApiKeyConfig, Map<String, dynamic>>(apiKeyConfig, (value) => value.toMap()),
+      'bearerTokenConfig': ?pulumi.Input.mapOptionalInputValue<CxToolOpenApiSpecAuthenticationBearerTokenConfig, Map<String, dynamic>>(bearerTokenConfig, (value) => value.toMap()),
+      'oauthConfig': ?pulumi.Input.mapOptionalInputValue<CxToolOpenApiSpecAuthenticationOauthConfig, Map<String, dynamic>>(oauthConfig, (value) => value.toMap()),
+      'serviceAgentAuthConfig': ?pulumi.Input.mapOptionalInputValue<CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig, Map<String, dynamic>>(serviceAgentAuthConfig, (value) => value.toMap()),
     };
   }
 
   factory CxToolOpenApiSpecAuthentication.fromMap(Map<String, dynamic> map) {
     return CxToolOpenApiSpecAuthentication(
-      apiKeyConfig: (() {
-        final guardedValue = map['apiKeyConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxToolOpenApiSpecAuthenticationApiKeyConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      bearerTokenConfig: (() {
-        final guardedValue = map['bearerTokenConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxToolOpenApiSpecAuthenticationBearerTokenConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      oauthConfig: (() {
-        final guardedValue = map['oauthConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxToolOpenApiSpecAuthenticationOauthConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      serviceAgentAuthConfig: (() {
-        final guardedValue = map['serviceAgentAuthConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      apiKeyConfig: (() { final guardedValue = map['apiKeyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxToolOpenApiSpecAuthenticationApiKeyConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      bearerTokenConfig: (() { final guardedValue = map['bearerTokenConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxToolOpenApiSpecAuthenticationBearerTokenConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      oauthConfig: (() { final guardedValue = map['oauthConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxToolOpenApiSpecAuthenticationOauthConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serviceAgentAuthConfig: (() { final guardedValue = map['serviceAgentAuthConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

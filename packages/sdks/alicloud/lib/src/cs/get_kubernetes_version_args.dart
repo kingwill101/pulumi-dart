@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesVersionArgs {
   /// The type of cluster. Its valid value are `Kubernetes` and `ManagedKubernetes`.
   final pulumi.Input<String> clusterType;
-
   /// The ACK released kubernetes version.
   final pulumi.Input<String>? kubernetesVersion;
-
   /// The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
   final pulumi.Input<String>? profile;
 
@@ -37,16 +35,9 @@ class GetKubernetesVersionArgs {
   factory GetKubernetesVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesVersionArgs(
       clusterType: pulumi.Input.fromValue(map['clusterType'] as String),
-      kubernetesVersion: (() {
-        final guardedValue = map['kubernetesVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      profile: (() {
-        final guardedValue = map['profile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kubernetesVersion: (() { final guardedValue = map['kubernetesVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

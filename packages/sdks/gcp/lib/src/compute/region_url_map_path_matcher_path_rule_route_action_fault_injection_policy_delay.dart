@@ -6,11 +6,7 @@ import 'region_url_map_path_matcher_path_rule_route_action_fault_injection_polic
 class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
   /// Specifies the value of the fixed delay interval.
   /// Structure is documented below.
-  final pulumi.Input<
-    RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay
-  >
-  fixedDelay;
-
+  final pulumi.Input<RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay> fixedDelay;
   /// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
   /// The value must be between 0.0 and 100.0 inclusive.
   final pulumi.Input<double> percentage;
@@ -25,25 +21,16 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fixedDelay':
-          pulumi.Input.mapInputValue<
-            RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay,
-            Map<String, dynamic>
-          >(fixedDelay, (value) => value.toMap()),
+      'fixedDelay': pulumi.Input.mapInputValue<RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay, Map<String, dynamic>>(fixedDelay, (value) => value.toMap()),
       'percentage': percentage,
     };
   }
 
-  factory RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay(
-      fixedDelay: pulumi.Input.fromValue(
-        RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay.fromMap(
-          (map['fixedDelay']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      fixedDelay: pulumi.Input.fromValue(RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay.fromMap((map['fixedDelay']! as Map).cast<String, dynamic>())),
       percentage: pulumi.Input.fromValue(map['percentage'] as double),
     );
   }
 }
+

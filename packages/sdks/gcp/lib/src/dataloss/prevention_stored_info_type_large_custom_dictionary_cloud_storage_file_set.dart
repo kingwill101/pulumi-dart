@@ -13,14 +13,15 @@ class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'url': url};
+    return <String, dynamic>{
+      'url': url,
+    };
   }
 
-  factory PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet.fromMap(Map<String, dynamic> map) {
     return PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet(
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
+

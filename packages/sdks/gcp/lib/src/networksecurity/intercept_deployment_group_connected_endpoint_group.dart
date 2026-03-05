@@ -11,21 +11,20 @@ class InterceptDeploymentGroupConnectedEndpointGroup {
 
   /// Creates a new [InterceptDeploymentGroupConnectedEndpointGroup].
   /// [name] (Output)
-  InterceptDeploymentGroupConnectedEndpointGroup({this.name});
+  InterceptDeploymentGroupConnectedEndpointGroup({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory InterceptDeploymentGroupConnectedEndpointGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InterceptDeploymentGroupConnectedEndpointGroup.fromMap(Map<String, dynamic> map) {
     return InterceptDeploymentGroupConnectedEndpointGroup(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

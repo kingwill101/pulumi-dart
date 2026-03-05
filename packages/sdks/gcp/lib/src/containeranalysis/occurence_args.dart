@@ -18,19 +18,15 @@ class OccurenceArgs {
   /// which authority this attestation was intended to sign.
   /// Structure is documented below.
   final pulumi.Input<OccurenceAttestation> attestation;
-
   /// The analysis note associated with this occurrence, in the form of
   /// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
   /// filter in list requests.
   final pulumi.Input<String> noteName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A description of actions that can be taken to remedy the note.
   final pulumi.Input<String>? remediation;
-
   /// Required. Immutable. A URI that represents the resource for which
   /// the occurrence applies. For example,
   /// https://gcr.io/project/image@sha256:123abc for a Docker image.
@@ -52,11 +48,7 @@ class OccurenceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attestation':
-          pulumi.Input.mapInputValue<
-            OccurenceAttestation,
-            Map<String, dynamic>
-          >(attestation, (value) => value.toMap()),
+      'attestation': pulumi.Input.mapInputValue<OccurenceAttestation, Map<String, dynamic>>(attestation, (value) => value.toMap()),
       'noteName': noteName,
       'project': ?project,
       'remediation': ?remediation,
@@ -66,23 +58,12 @@ class OccurenceArgs {
 
   factory OccurenceArgs.fromMap(Map<String, dynamic> map) {
     return OccurenceArgs(
-      attestation: pulumi.Input.fromValue(
-        OccurenceAttestation.fromMap(
-          (map['attestation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      attestation: pulumi.Input.fromValue(OccurenceAttestation.fromMap((map['attestation']! as Map).cast<String, dynamic>())),
       noteName: pulumi.Input.fromValue(map['noteName'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remediation: (() {
-        final guardedValue = map['remediation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remediation: (() { final guardedValue = map['remediation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
+

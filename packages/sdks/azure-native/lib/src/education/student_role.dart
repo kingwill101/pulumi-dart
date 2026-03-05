@@ -15,3 +15,4 @@ enum StudentRole {
     throw ArgumentError('Unknown StudentRole value: $value');
   }
 }
+

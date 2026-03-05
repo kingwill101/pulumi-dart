@@ -15,3 +15,4 @@ enum Capability {
     throw ArgumentError('Unknown Capability value: $value');
   }
 }
+

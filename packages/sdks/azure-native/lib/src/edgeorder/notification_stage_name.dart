@@ -15,3 +15,4 @@ enum NotificationStageName {
     throw ArgumentError('Unknown NotificationStageName value: $value');
   }
 }
+

@@ -8,7 +8,6 @@ import 'validation_error_response.dart';
 class QueryAnalysisValidationResultResponse {
   /// List of queries executed and it's execution results in source and target
   final pulumi.Input<QueryExecutionResultResponse>? queryResults;
-
   /// Errors that are part of the execution
   final pulumi.Input<ValidationErrorResponse>? validationErrors;
 
@@ -22,41 +21,16 @@ class QueryAnalysisValidationResultResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'queryResults':
-          ?pulumi.Input.mapOptionalInputValue<
-            QueryExecutionResultResponse,
-            Map<String, dynamic>
-          >(queryResults, (value) => value.toMap()),
-      'validationErrors':
-          ?pulumi.Input.mapOptionalInputValue<
-            ValidationErrorResponse,
-            Map<String, dynamic>
-          >(validationErrors, (value) => value.toMap()),
+      'queryResults': ?pulumi.Input.mapOptionalInputValue<QueryExecutionResultResponse, Map<String, dynamic>>(queryResults, (value) => value.toMap()),
+      'validationErrors': ?pulumi.Input.mapOptionalInputValue<ValidationErrorResponse, Map<String, dynamic>>(validationErrors, (value) => value.toMap()),
     };
   }
 
-  factory QueryAnalysisValidationResultResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory QueryAnalysisValidationResultResponse.fromMap(Map<String, dynamic> map) {
     return QueryAnalysisValidationResultResponse(
-      queryResults: (() {
-        final guardedValue = map['queryResults'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          QueryExecutionResultResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      validationErrors: (() {
-        final guardedValue = map['validationErrors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ValidationErrorResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      queryResults: (() { final guardedValue = map['queryResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QueryExecutionResultResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      validationErrors: (() { final guardedValue = map['validationErrors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ValidationErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

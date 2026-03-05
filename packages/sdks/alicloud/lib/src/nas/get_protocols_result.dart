@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getProtocols.
 class GetProtocolsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? outputFile;
-
   /// A list of supported protocol type..
   final List<String> protocols;
   final String type;
@@ -38,18 +38,11 @@ class GetProtocolsResult {
   factory GetProtocolsResult.fromMap(Map<String, dynamic> map) {
     return GetProtocolsResult(
       id: map['id'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       protocols: (map['protocols'] as List).cast<String>(),
       type: map['type'] as String,
-      zoneId: (() {
-        final guardedValue = map['zoneId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

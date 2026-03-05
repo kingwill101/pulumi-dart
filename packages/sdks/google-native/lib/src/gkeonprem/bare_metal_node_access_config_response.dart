@@ -9,10 +9,14 @@ class BareMetalNodeAccessConfigResponse {
 
   /// Creates a new [BareMetalNodeAccessConfigResponse].
   /// [loginUser] LoginUser is the user name used to access node machines. It defaults to "root" if not set.
-  BareMetalNodeAccessConfigResponse({required this.loginUser});
+  BareMetalNodeAccessConfigResponse({
+    required this.loginUser,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'loginUser': loginUser};
+    return <String, dynamic>{
+      'loginUser': loginUser,
+    };
   }
 
   factory BareMetalNodeAccessConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class BareMetalNodeAccessConfigResponse {
     );
   }
 }
+

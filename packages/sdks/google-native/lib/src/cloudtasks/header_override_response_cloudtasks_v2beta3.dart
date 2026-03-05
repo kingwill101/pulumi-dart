@@ -10,27 +10,20 @@ class HeaderOverrideResponseCloudtasksV2beta3 {
 
   /// Creates a new [HeaderOverrideResponseCloudtasksV2beta3].
   /// [header] header embodying a key and a value.
-  HeaderOverrideResponseCloudtasksV2beta3({required this.header});
+  HeaderOverrideResponseCloudtasksV2beta3({
+    required this.header,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'header':
-          pulumi.Input.mapInputValue<
-            HeaderResponseCloudtasksV2beta3,
-            Map<String, dynamic>
-          >(header, (value) => value.toMap()),
+      'header': pulumi.Input.mapInputValue<HeaderResponseCloudtasksV2beta3, Map<String, dynamic>>(header, (value) => value.toMap()),
     };
   }
 
-  factory HeaderOverrideResponseCloudtasksV2beta3.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HeaderOverrideResponseCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return HeaderOverrideResponseCloudtasksV2beta3(
-      header: pulumi.Input.fromValue(
-        HeaderResponseCloudtasksV2beta3.fromMap(
-          (map['header']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      header: pulumi.Input.fromValue(HeaderResponseCloudtasksV2beta3.fromMap((map['header']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

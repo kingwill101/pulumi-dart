@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSystemSecurityPoliciesPolicy {
   /// The supported cipher suites, which are determined by the TLS protocol version.
   final pulumi.Input<List<String>> ciphers;
-
   /// The ID of the Security Policy.
   final pulumi.Input<String> id;
-
   /// The first ID of the resource.
   final pulumi.Input<String> securityPolicyId;
-
   /// The TLS protocol versions are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
   final pulumi.Input<List<String>> tlsVersions;
 
@@ -40,12 +37,9 @@ class GetSystemSecurityPoliciesPolicy {
     return GetSystemSecurityPoliciesPolicy(
       ciphers: pulumi.Input.fromValue((map['ciphers'] as List).cast<String>()),
       id: pulumi.Input.fromValue(map['id'] as String),
-      securityPolicyId: pulumi.Input.fromValue(
-        map['securityPolicyId'] as String,
-      ),
-      tlsVersions: pulumi.Input.fromValue(
-        (map['tlsVersions'] as List).cast<String>(),
-      ),
+      securityPolicyId: pulumi.Input.fromValue(map['securityPolicyId'] as String),
+      tlsVersions: pulumi.Input.fromValue((map['tlsVersions'] as List).cast<String>()),
     );
   }
 }
+

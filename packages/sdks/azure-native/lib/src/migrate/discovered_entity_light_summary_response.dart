@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiscoveredEntityLightSummaryResponse {
   /// Gets or sets the number of machines.
   final pulumi.Input<int> numberOfMachines;
-
   /// Gets or sets the number of servers.
   final pulumi.Input<int> numberOfServers;
-
   /// Gets or sets the number of web apps.
   final pulumi.Input<int> numberOfWebApps;
 
@@ -31,9 +29,7 @@ class DiscoveredEntityLightSummaryResponse {
     };
   }
 
-  factory DiscoveredEntityLightSummaryResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiscoveredEntityLightSummaryResponse.fromMap(Map<String, dynamic> map) {
     return DiscoveredEntityLightSummaryResponse(
       numberOfMachines: pulumi.Input.fromValue(map['numberOfMachines'] as int),
       numberOfServers: pulumi.Input.fromValue(map['numberOfServers'] as int),
@@ -41,3 +37,4 @@ class DiscoveredEntityLightSummaryResponse {
     );
   }
 }
+

@@ -11,35 +11,25 @@ class AddonArgs {
   /// Name of the EKS add-on. The name must match one of
   /// the names returned by [describe-addon-versions](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-versions.html).
   final pulumi.Input<String> addonName;
-
   /// The version of the EKS add-on. The version must
   /// match one of the versions returned by [describe-addon-versions](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-versions.html).
   final pulumi.Input<String>? addonVersion;
-
   /// Name of the EKS Cluster.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> clusterName;
-
   /// custom configuration values for addons with single JSON string. This JSON string value must match the JSON schema derived from [describe-addon-configuration](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-configuration.html).
   final pulumi.Input<String>? configurationValues;
-
   /// Configuration block with EKS Pod Identity association settings. See `pod_identity_association` below for details.
-  final pulumi.Input<List<AddonPodIdentityAssociation>>?
-  podIdentityAssociations;
-
+  final pulumi.Input<List<AddonPodIdentityAssociation>>? podIdentityAssociations;
   /// Indicates if you want to preserve the created resources when deleting the EKS add-on.
   final pulumi.Input<bool>? preserve;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// How to resolve field value conflicts when migrating a self-managed add-on to an Amazon EKS add-on. Valid values are `NONE` and `OVERWRITE`. For more details see the [CreateAddon](https://docs.aws.amazon.com/eks/latest/APIReference/API_CreateAddon.html) API Documentation.
   final pulumi.Input<String>? resolveConflictsOnCreate;
-
   /// How to resolve field value conflicts for an Amazon EKS add-on if you've changed a value from the Amazon EKS default value. Valid values are `NONE`, `OVERWRITE`, and `PRESERVE`. For more details see the [UpdateAddon](https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateAddon.html) API Documentation.
   final pulumi.Input<String>? resolveConflictsOnUpdate;
-
   /// The Amazon Resource Name (ARN) of an
   /// existing IAM role to bind to the add-on's service account. The role must be
   /// assigned the IAM permissions required by the add-on. If you don't specify
@@ -52,7 +42,6 @@ class AddonArgs {
   /// for service accounts on your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
   /// in the Amazon EKS User Guide.
   final pulumi.Input<String>? serviceAccountRoleArn;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -88,18 +77,7 @@ class AddonArgs {
       'addonVersion': ?addonVersion,
       'clusterName': clusterName,
       'configurationValues': ?configurationValues,
-      'podIdentityAssociations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AddonPodIdentityAssociation>,
-            List<Map<String, dynamic>>
-          >(
-            podIdentityAssociations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AddonPodIdentityAssociation,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'podIdentityAssociations': ?pulumi.Input.mapOptionalInputValue<List<AddonPodIdentityAssociation>, List<Map<String, dynamic>>>(podIdentityAssociations, (value) => pulumi.Input.encodeList<AddonPodIdentityAssociation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'preserve': ?preserve,
       'region': ?region,
       'resolveConflictsOnCreate': ?resolveConflictsOnCreate,
@@ -112,61 +90,17 @@ class AddonArgs {
   factory AddonArgs.fromMap(Map<String, dynamic> map) {
     return AddonArgs(
       addonName: pulumi.Input.fromValue(map['addonName'] as String),
-      addonVersion: (() {
-        final guardedValue = map['addonVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addonVersion: (() { final guardedValue = map['addonVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      configurationValues: (() {
-        final guardedValue = map['configurationValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      podIdentityAssociations: (() {
-        final guardedValue = map['podIdentityAssociations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AddonPodIdentityAssociation>(
-            guardedValue,
-            (value) => AddonPodIdentityAssociation.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      preserve: (() {
-        final guardedValue = map['preserve'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resolveConflictsOnCreate: (() {
-        final guardedValue = map['resolveConflictsOnCreate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resolveConflictsOnUpdate: (() {
-        final guardedValue = map['resolveConflictsOnUpdate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceAccountRoleArn: (() {
-        final guardedValue = map['serviceAccountRoleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      configurationValues: (() { final guardedValue = map['configurationValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      podIdentityAssociations: (() { final guardedValue = map['podIdentityAssociations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AddonPodIdentityAssociation>(guardedValue, (value) => AddonPodIdentityAssociation.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      preserve: (() { final guardedValue = map['preserve']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resolveConflictsOnCreate: (() { final guardedValue = map['resolveConflictsOnCreate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resolveConflictsOnUpdate: (() { final guardedValue = map['resolveConflictsOnUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceAccountRoleArn: (() { final guardedValue = map['serviceAccountRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

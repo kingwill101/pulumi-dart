@@ -9,19 +9,20 @@ class ConnectionMonitorWorkspaceSettings {
 
   /// Creates a new [ConnectionMonitorWorkspaceSettings].
   /// [workspaceResourceId] Log analytics workspace resource ID.
-  ConnectionMonitorWorkspaceSettings({this.workspaceResourceId});
+  ConnectionMonitorWorkspaceSettings({
+    this.workspaceResourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'workspaceResourceId': ?workspaceResourceId};
+    return <String, dynamic>{
+      'workspaceResourceId': ?workspaceResourceId,
+    };
   }
 
   factory ConnectionMonitorWorkspaceSettings.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorWorkspaceSettings(
-      workspaceResourceId: (() {
-        final guardedValue = map['workspaceResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      workspaceResourceId: (() { final guardedValue = map['workspaceResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

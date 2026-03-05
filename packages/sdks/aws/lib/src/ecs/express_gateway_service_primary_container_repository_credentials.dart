@@ -13,16 +13,15 @@ class ExpressGatewayServicePrimaryContainerRepositoryCredentials {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'credentialsParameter': credentialsParameter};
+    return <String, dynamic>{
+      'credentialsParameter': credentialsParameter,
+    };
   }
 
-  factory ExpressGatewayServicePrimaryContainerRepositoryCredentials.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExpressGatewayServicePrimaryContainerRepositoryCredentials.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServicePrimaryContainerRepositoryCredentials(
-      credentialsParameter: pulumi.Input.fromValue(
-        map['credentialsParameter'] as String,
-      ),
+      credentialsParameter: pulumi.Input.fromValue(map['credentialsParameter'] as String),
     );
   }
 }
+

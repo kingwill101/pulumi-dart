@@ -172,10 +172,8 @@ import 'tag_state.dart';
 class Tag extends pulumi.CustomResource {
   /// Tag name.
   late final pulumi.Output<String> key;
-
   /// Id of the Organizations resource to tag.
   late final pulumi.Output<String> resourceId;
-
   /// Tag value.
   late final pulumi.Output<String> value;
 
@@ -183,20 +181,27 @@ class Tag extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Tag]. {@macro pulumi_organizations_tag_tag_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Tag(String name, {TagArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:organizations/tag:Tag',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Tag(
+    String name, {
+    TagArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:organizations/tag:Tag',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     key = registerOutput<String>('key');
     resourceId = registerOutput<String>('resourceId');
     value = registerOutput<String>('value');
   }
 
   /// Gets an existing [Tag] resource's state with the given [name] and [id].
-  static Tag get(String name, pulumi.Input<String> id, {TagState? state}) {
+  static Tag get(
+    String name,
+    pulumi.Input<String> id, {
+    TagState? state,
+  }) {
     return Tag._get(
       name,
       state: state?.toMap(),
@@ -209,11 +214,11 @@ class Tag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:organizations/tag:Tag',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:organizations/tag:Tag',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     key = registerOutput<String>('key');
     resourceId = registerOutput<String>('resourceId');
     value = registerOutput<String>('value');

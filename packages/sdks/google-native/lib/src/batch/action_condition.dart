@@ -9,19 +9,20 @@ class ActionCondition {
 
   /// Creates a new [ActionCondition].
   /// [exitCodes] Exit codes of a task execution. If there are more than 1 exit codes, when task executes with any of the exit code in the list, the condition is met and the action will be executed.
-  ActionCondition({this.exitCodes});
+  ActionCondition({
+    this.exitCodes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exitCodes': ?exitCodes};
+    return <String, dynamic>{
+      'exitCodes': ?exitCodes,
+    };
   }
 
   factory ActionCondition.fromMap(Map<String, dynamic> map) {
     return ActionCondition(
-      exitCodes: (() {
-        final guardedValue = map['exitCodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
+      exitCodes: (() { final guardedValue = map['exitCodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
     );
   }
 }
+

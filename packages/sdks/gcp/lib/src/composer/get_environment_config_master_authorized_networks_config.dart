@@ -5,11 +5,7 @@ import 'get_environment_config_master_authorized_networks_config_cidr_block.dart
 
 class GetEnvironmentConfigMasterAuthorizedNetworksConfig {
   /// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
-  final pulumi.Input<
-    List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>
-  >
-  cidrBlocks;
-
+  final pulumi.Input<List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>> cidrBlocks;
   /// Whether or not master authorized networks is enabled.
   final pulumi.Input<bool> enabled;
 
@@ -23,38 +19,16 @@ class GetEnvironmentConfigMasterAuthorizedNetworksConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cidrBlocks':
-          pulumi.Input.mapInputValue<
-            List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>,
-            List<Map<String, dynamic>>
-          >(
-            cidrBlocks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'cidrBlocks': pulumi.Input.mapInputValue<List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>, List<Map<String, dynamic>>>(cidrBlocks, (value) => pulumi.Input.encodeList<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enabled': enabled,
     };
   }
 
-  factory GetEnvironmentConfigMasterAuthorizedNetworksConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEnvironmentConfigMasterAuthorizedNetworksConfig.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigMasterAuthorizedNetworksConfig(
-      cidrBlocks: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock
-        >(
-          map['cidrBlocks']!,
-          (value) =>
-              GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      cidrBlocks: pulumi.Input.fromValue(pulumi.Input.decodeList<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>(map['cidrBlocks']!, (value) => GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock.fromMap((value as Map).cast<String, dynamic>()))),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

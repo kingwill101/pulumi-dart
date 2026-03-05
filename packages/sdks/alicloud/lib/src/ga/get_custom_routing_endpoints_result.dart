@@ -7,18 +7,13 @@ import 'get_custom_routing_endpoints_custom_routing_endpoint.dart';
 class GetCustomRoutingEndpointsResult {
   /// The ID of the GA instance with which the endpoint is associated.
   final String acceleratorId;
-
   /// A list of Custom Routing Endpoints. Each element contains the following attributes:
-  final List<GetCustomRoutingEndpointsCustomRoutingEndpoint>
-  customRoutingEndpoints;
-
+  final List<GetCustomRoutingEndpointsCustomRoutingEndpoint> customRoutingEndpoints;
   /// The ID of the Custom Routing Endpoint Group.
   final String? endpointGroupId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
-
   /// The ID of the listener with which the endpoint is associated.
   final String? listenerId;
   final String? outputFile;
@@ -50,11 +45,7 @@ class GetCustomRoutingEndpointsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acceleratorId': acceleratorId,
-      'customRoutingEndpoints':
-          pulumi.Input.encodeList<
-            GetCustomRoutingEndpointsCustomRoutingEndpoint,
-            Map<String, dynamic>
-          >(customRoutingEndpoints, (value) => value.toMap()),
+      'customRoutingEndpoints': pulumi.Input.encodeList<GetCustomRoutingEndpointsCustomRoutingEndpoint, Map<String, dynamic>>(customRoutingEndpoints, (value) => value.toMap()),
       'endpointGroupId': ?endpointGroupId,
       'id': id,
       'ids': ids,
@@ -68,41 +59,15 @@ class GetCustomRoutingEndpointsResult {
   factory GetCustomRoutingEndpointsResult.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingEndpointsResult(
       acceleratorId: map['acceleratorId'] as String,
-      customRoutingEndpoints:
-          pulumi
-              .Input.decodeList<GetCustomRoutingEndpointsCustomRoutingEndpoint>(
-            map['customRoutingEndpoints']!,
-            (value) => GetCustomRoutingEndpointsCustomRoutingEndpoint.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      endpointGroupId: (() {
-        final guardedValue = map['endpointGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      customRoutingEndpoints: pulumi.Input.decodeList<GetCustomRoutingEndpointsCustomRoutingEndpoint>(map['customRoutingEndpoints']!, (value) => GetCustomRoutingEndpointsCustomRoutingEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      endpointGroupId: (() { final guardedValue = map['endpointGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      listenerId: (() {
-        final guardedValue = map['listenerId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      listenerId: (() { final guardedValue = map['listenerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
     );
   }
 }
+

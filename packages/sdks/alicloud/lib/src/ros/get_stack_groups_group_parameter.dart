@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStackGroupsGroupParameter {
   /// The parameter key.
   final pulumi.Input<String> parameterKey;
-
   /// The parameter value.
   final pulumi.Input<String> parameterValue;
 
@@ -31,3 +30,4 @@ class GetStackGroupsGroupParameter {
     );
   }
 }
+

@@ -515,27 +515,20 @@ import 'alias_state.dart';
 class Alias extends pulumi.CustomResource {
   /// ARN identifying your Lambda function alias.
   late final pulumi.Output<String> arn;
-
   /// Description of the alias.
   late final pulumi.Output<String?> description;
-
   /// Name or ARN of the Lambda function.
   late final pulumi.Output<String> functionName;
-
   /// Lambda function version for which you are creating the alias. Pattern: `(\$LATEST|[0-9]+)`.
   late final pulumi.Output<String> functionVersion;
-
   /// ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`.
   late final pulumi.Output<String> invokeArn;
-
   /// Name for the alias. Pattern: `(?!^[0-9]+$)([a-zA-Z0-9-_]+)`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Lambda alias' route configuration settings. See below.
   late final pulumi.Output<AliasRoutingConfig?> routingConfig;
 
@@ -543,13 +536,16 @@ class Alias extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Alias]. {@macro pulumi_lambda_alias_alias_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Alias(String name, {AliasArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:lambda/alias:Alias',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Alias(
+    String name, {
+    AliasArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:lambda/alias:Alias',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     functionName = registerOutput<String>('functionName');
@@ -557,20 +553,15 @@ class Alias extends pulumi.CustomResource {
     invokeArn = registerOutput<String>('invokeArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routingConfig = registerOutput<AliasRoutingConfig?>(
-      'routingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AliasRoutingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routingConfig = registerOutput<AliasRoutingConfig?>('routingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AliasRoutingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Alias] resource's state with the given [name] and [id].
-  static Alias get(String name, pulumi.Input<String> id, {AliasState? state}) {
+  static Alias get(
+    String name,
+    pulumi.Input<String> id, {
+    AliasState? state,
+  }) {
     return Alias._get(
       name,
       state: state?.toMap(),
@@ -583,11 +574,11 @@ class Alias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lambda/alias:Alias',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lambda/alias:Alias',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     functionName = registerOutput<String>('functionName');
@@ -595,15 +586,6 @@ class Alias extends pulumi.CustomResource {
     invokeArn = registerOutput<String>('invokeArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routingConfig = registerOutput<AliasRoutingConfig?>(
-      'routingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AliasRoutingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routingConfig = registerOutput<AliasRoutingConfig?>('routingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AliasRoutingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

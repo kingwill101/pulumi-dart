@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogAnalyticsWorkspacePropertiesResponse {
   /// The list of connected agents.
   final pulumi.Input<List<String>> connectedAgents;
-
   /// The Workspace Key.
   final pulumi.Input<String> key;
-
   /// The Workspace ID.
   final pulumi.Input<String> workspaceID;
 
@@ -31,15 +29,12 @@ class LogAnalyticsWorkspacePropertiesResponse {
     };
   }
 
-  factory LogAnalyticsWorkspacePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogAnalyticsWorkspacePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsWorkspacePropertiesResponse(
-      connectedAgents: pulumi.Input.fromValue(
-        (map['connectedAgents'] as List).cast<String>(),
-      ),
+      connectedAgents: pulumi.Input.fromValue((map['connectedAgents'] as List).cast<String>()),
       key: pulumi.Input.fromValue(map['key'] as String),
       workspaceID: pulumi.Input.fromValue(map['workspaceID'] as String),
     );
   }
 }
+

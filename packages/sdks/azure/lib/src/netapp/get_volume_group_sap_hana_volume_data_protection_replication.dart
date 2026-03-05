@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeGroupSapHanaVolumeDataProtectionReplication {
   /// The endpoint type.
   final pulumi.Input<String> endpointType;
-
   /// Location of the primary volume.
   final pulumi.Input<String> remoteVolumeLocation;
-
   /// Resource ID of the primary volume.
   final pulumi.Input<String> remoteVolumeResourceId;
-
   /// Replication frequency.
   final pulumi.Input<String> replicationFrequency;
 
@@ -36,20 +33,13 @@ class GetVolumeGroupSapHanaVolumeDataProtectionReplication {
     };
   }
 
-  factory GetVolumeGroupSapHanaVolumeDataProtectionReplication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVolumeGroupSapHanaVolumeDataProtectionReplication.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupSapHanaVolumeDataProtectionReplication(
       endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
-      remoteVolumeLocation: pulumi.Input.fromValue(
-        map['remoteVolumeLocation'] as String,
-      ),
-      remoteVolumeResourceId: pulumi.Input.fromValue(
-        map['remoteVolumeResourceId'] as String,
-      ),
-      replicationFrequency: pulumi.Input.fromValue(
-        map['replicationFrequency'] as String,
-      ),
+      remoteVolumeLocation: pulumi.Input.fromValue(map['remoteVolumeLocation'] as String),
+      remoteVolumeResourceId: pulumi.Input.fromValue(map['remoteVolumeResourceId'] as String),
+      replicationFrequency: pulumi.Input.fromValue(map['replicationFrequency'] as String),
     );
   }
 }
+

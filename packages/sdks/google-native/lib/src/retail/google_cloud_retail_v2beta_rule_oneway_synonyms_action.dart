@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRetailV2betaRuleOnewaySynonymsAction {
   /// Will be [deprecated = true] post migration;
   final pulumi.Input<List<String>>? onewayTerms;
-
   /// Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms.
   final pulumi.Input<List<String>>? queryTerms;
-
   /// Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.
   final pulumi.Input<List<String>>? synonyms;
 
@@ -31,25 +29,12 @@ class GoogleCloudRetailV2betaRuleOnewaySynonymsAction {
     };
   }
 
-  factory GoogleCloudRetailV2betaRuleOnewaySynonymsAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2betaRuleOnewaySynonymsAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaRuleOnewaySynonymsAction(
-      onewayTerms: (() {
-        final guardedValue = map['onewayTerms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      queryTerms: (() {
-        final guardedValue = map['queryTerms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      synonyms: (() {
-        final guardedValue = map['synonyms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      onewayTerms: (() { final guardedValue = map['onewayTerms']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      queryTerms: (() { final guardedValue = map['queryTerms']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      synonyms: (() { final guardedValue = map['synonyms']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

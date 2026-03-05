@@ -13,8 +13,7 @@ enum PrivateEndpointServiceConnectionStatus {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PrivateEndpointServiceConnectionStatus value: $value',
-    );
+    throw ArgumentError('Unknown PrivateEndpointServiceConnectionStatus value: $value');
   }
 }
+

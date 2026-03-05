@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentScaleSettingsResponse {
   /// Deployment active capacity. This value might be different from `capacity` if customer recently updated `capacity`.
   final pulumi.Input<int> activeCapacity;
-
   /// Deployment capacity.
   final pulumi.Input<int>? capacity;
-
   /// Deployment scale type.
   final pulumi.Input<String>? scaleType;
 
@@ -34,16 +32,9 @@ class DeploymentScaleSettingsResponse {
   factory DeploymentScaleSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentScaleSettingsResponse(
       activeCapacity: pulumi.Input.fromValue(map['activeCapacity'] as int),
-      capacity: (() {
-        final guardedValue = map['capacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      scaleType: (() {
-        final guardedValue = map['scaleType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scaleType: (() { final guardedValue = map['scaleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

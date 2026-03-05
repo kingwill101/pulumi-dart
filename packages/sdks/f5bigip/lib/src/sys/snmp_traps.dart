@@ -119,43 +119,30 @@ import 'snmp_traps_state.dart';
 class SnmpTraps extends pulumi.CustomResource {
   /// Encrypted password
   late final pulumi.Output<String?> authPasswordencrypted;
-
   /// Specifies the protocol used to authenticate the user.
   late final pulumi.Output<String?> authProtocol;
-
   /// Specifies the community string used for this trap.
   late final pulumi.Output<String?> community;
-
   /// The port that the trap will be sent to.
   late final pulumi.Output<String?> description;
-
   /// Specifies the authoritative security engine for SNMPv3.
   late final pulumi.Output<String?> engineId;
-
   /// The host the trap will be sent to.
   late final pulumi.Output<String?> host;
-
   /// Name of the snmp trap.
   late final pulumi.Output<String?> name;
-
   /// User defined description.
   late final pulumi.Output<int?> port;
-
   /// Specifies the clear text password used to encrypt traffic. This field will not be displayed.
   late final pulumi.Output<String?> privacyPassword;
-
   /// Specifies the encrypted password used to encrypt traffic.
   late final pulumi.Output<String?> privacyPasswordEncrypted;
-
   /// Specifies the protocol used to encrypt traffic.
   late final pulumi.Output<String?> privacyProtocol;
-
   /// Specifies whether or not traffic is encrypted and whether or not authentication is required.
   late final pulumi.Output<String> securityLevel;
-
   /// Security name used in conjunction with SNMPv3.
   late final pulumi.Output<String?> securityName;
-
   /// SNMP version used for sending the trap.
   late final pulumi.Output<String> version;
 
@@ -168,11 +155,11 @@ class SnmpTraps extends pulumi.CustomResource {
     SnmpTrapsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:sys/snmpTraps:SnmpTraps',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:sys/snmpTraps:SnmpTraps',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authPasswordencrypted = registerOutput<String?>('authPasswordencrypted');
     authProtocol = registerOutput<String?>('authProtocol');
     community = registerOutput<String?>('community');
@@ -182,9 +169,7 @@ class SnmpTraps extends pulumi.CustomResource {
     this.name = registerOutput<String?>('name');
     port = registerOutput<int?>('port');
     privacyPassword = registerOutput<String?>('privacyPassword');
-    privacyPasswordEncrypted = registerOutput<String?>(
-      'privacyPasswordEncrypted',
-    );
+    privacyPasswordEncrypted = registerOutput<String?>('privacyPasswordEncrypted');
     privacyProtocol = registerOutput<String?>('privacyProtocol');
     securityLevel = registerOutput<String>('securityLevel');
     securityName = registerOutput<String?>('securityName');
@@ -209,11 +194,11 @@ class SnmpTraps extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:sys/snmpTraps:SnmpTraps',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:sys/snmpTraps:SnmpTraps',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authPasswordencrypted = registerOutput<String?>('authPasswordencrypted');
     authProtocol = registerOutput<String?>('authProtocol');
     community = registerOutput<String?>('community');
@@ -223,9 +208,7 @@ class SnmpTraps extends pulumi.CustomResource {
     this.name = registerOutput<String?>('name');
     port = registerOutput<int?>('port');
     privacyPassword = registerOutput<String?>('privacyPassword');
-    privacyPasswordEncrypted = registerOutput<String?>(
-      'privacyPasswordEncrypted',
-    );
+    privacyPasswordEncrypted = registerOutput<String?>('privacyPasswordEncrypted');
     privacyProtocol = registerOutput<String?>('privacyProtocol');
     securityLevel = registerOutput<String>('securityLevel');
     securityName = registerOutput<String?>('securityName');

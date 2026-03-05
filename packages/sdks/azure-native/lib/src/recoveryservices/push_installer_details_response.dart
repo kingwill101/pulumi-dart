@@ -7,28 +7,20 @@ import 'health_error_response.dart';
 class PushInstallerDetailsResponse {
   /// The push installer Bios Id.
   final pulumi.Input<String> biosId;
-
   /// The fabric object Id.
   final pulumi.Input<String> fabricObjectId;
-
   /// The push installer Fqdn.
   final pulumi.Input<String> fqdn;
-
   /// The health of the push installer.
   final pulumi.Input<String> health;
-
   /// The health errors.
   final pulumi.Input<List<HealthErrorResponse>> healthErrors;
-
   /// The push installer Id.
   final pulumi.Input<String> id;
-
   /// The last heartbeat received from the push installer.
   final pulumi.Input<String> lastHeartbeatUtc;
-
   /// The push installer name.
   final pulumi.Input<String> name;
-
   /// The version.
   final pulumi.Input<String> version;
 
@@ -60,18 +52,7 @@ class PushInstallerDetailsResponse {
       'fabricObjectId': fabricObjectId,
       'fqdn': fqdn,
       'health': health,
-      'healthErrors':
-          pulumi.Input.mapInputValue<
-            List<HealthErrorResponse>,
-            List<Map<String, dynamic>>
-          >(
-            healthErrors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  HealthErrorResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'healthErrors': pulumi.Input.mapInputValue<List<HealthErrorResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'lastHeartbeatUtc': lastHeartbeatUtc,
       'name': name,
@@ -85,20 +66,12 @@ class PushInstallerDetailsResponse {
       fabricObjectId: pulumi.Input.fromValue(map['fabricObjectId'] as String),
       fqdn: pulumi.Input.fromValue(map['fqdn'] as String),
       health: pulumi.Input.fromValue(map['health'] as String),
-      healthErrors: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<HealthErrorResponse>(
-          map['healthErrors']!,
-          (value) => HealthErrorResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      healthErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors']!, (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),
-      lastHeartbeatUtc: pulumi.Input.fromValue(
-        map['lastHeartbeatUtc'] as String,
-      ),
+      lastHeartbeatUtc: pulumi.Input.fromValue(map['lastHeartbeatUtc'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

@@ -18,3 +18,4 @@ enum TriggerOperation {
     throw ArgumentError('Unknown TriggerOperation value: $value');
   }
 }
+

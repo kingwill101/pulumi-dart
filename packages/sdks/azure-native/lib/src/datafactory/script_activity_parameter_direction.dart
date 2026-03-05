@@ -13,8 +13,7 @@ enum ScriptActivityParameterDirection {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ScriptActivityParameterDirection value: $value',
-    );
+    throw ArgumentError('Unknown ScriptActivityParameterDirection value: $value');
   }
 }
+

@@ -9,26 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TenantOauthIdpConfigArgs {
   /// The client id of an OAuth client.
   final pulumi.Input<String> clientId;
-
   /// The client secret of the OAuth client, to enable OIDC code flow.
   final pulumi.Input<String>? clientSecret;
-
   /// Human friendly display name.
   final pulumi.Input<String> displayName;
-
   /// If this config allows users to sign in with the provider.
   final pulumi.Input<bool>? enabled;
-
   /// For OIDC Idps, the issuer identifier.
   final pulumi.Input<String> issuer;
-
   /// The name of the OauthIdpConfig. Must start with `oidc.`.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The name of the tenant where this OIDC IDP configuration resource exists
   final pulumi.Input<String> tenant;
 
@@ -68,29 +61,14 @@ class TenantOauthIdpConfigArgs {
   factory TenantOauthIdpConfigArgs.fromMap(Map<String, dynamic> map) {
     return TenantOauthIdpConfigArgs(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
-      clientSecret: (() {
-        final guardedValue = map['clientSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       issuer: pulumi.Input.fromValue(map['issuer'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tenant: pulumi.Input.fromValue(map['tenant'] as String),
     );
   }
 }
+

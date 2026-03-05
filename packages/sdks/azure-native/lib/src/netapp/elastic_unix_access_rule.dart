@@ -16,3 +16,4 @@ enum ElasticUnixAccessRule {
     throw ArgumentError('Unknown ElasticUnixAccessRule value: $value');
   }
 }
+

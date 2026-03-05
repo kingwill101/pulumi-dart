@@ -174,67 +174,47 @@ import 'fast_udp_app_virtual_server.dart';
 class FastUdpApp extends pulumi.CustomResource {
   /// Name of the FAST UDP application.
   late final pulumi.Output<String> application;
-
   /// Enables use of FastL4 profiles.
   late final pulumi.Output<bool?> enableFastl4;
-
   /// Name of an existing BIG-IP UDP pool monitor. Monitors are used to determine the health of the application on each server.
   late final pulumi.Output<String?> existingMonitor;
-
   /// Name of an existing BIG-IP pool.
   late final pulumi.Output<String?> existingPool;
-
   /// Name of an existing BIG-IP FastL4 or UDP profile.
   late final pulumi.Output<String?> existingProfile;
-
   /// Name of an existing BIG-IP SNAT pool.
   late final pulumi.Output<String?> existingSnatPool;
-
   /// Type of fallback persistence record to be created for each new client connection.
   late final pulumi.Output<String?> fallbackPersistence;
-
   /// Json payload for FAST UDP application.
   late final pulumi.Output<String> fastUdpJson;
-
   /// Irules to attach to Virtual Server.
   late final pulumi.Output<List<String>?> irules;
-
   /// A `load balancing method` is an algorithm that the BIG-IP system uses to select a pool member for processing a request. F5 recommends the Least Connections load balancing method
   late final pulumi.Output<String?> loadBalancingMode;
-
   /// `monitor` block takes input for FAST-Generated Pool Monitor.
   /// See Pool Monitor below for more details.
   late final pulumi.Output<FastUdpAppMonitor?> monitor;
-
   /// Name of an existing BIG-IP persistence profile to be used.
   late final pulumi.Output<String?> persistenceProfile;
-
   /// Type of persistence profile to be created. Using this option will enable use of FAST generated persistence profiles.
   late final pulumi.Output<String?> persistenceType;
-
   /// `pool_members` block takes input for FAST-Generated Pool.
   /// See Pool Members below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>?> poolMembers;
-
   /// Existing security log profiles to enable.
   late final pulumi.Output<List<String>?> securityLogProfiles;
-
   /// Slow ramp temporarily throttles the number of connections to a new pool member. The recommended value is 300 seconds
   late final pulumi.Output<int?> slowRampTime;
-
   /// List of address to be used for FAST-Generated SNAT Pool.
   late final pulumi.Output<List<String>?> snatPoolAddresses;
-
   /// Name of the FAST UDP application tenant.
   late final pulumi.Output<String> tenant;
-
   /// `virtual_server` block will provide `ip` and `port` options to be used for virtual server.
   /// See virtual server below for more details.
   late final pulumi.Output<FastUdpAppVirtualServer?> virtualServer;
-
   /// Names of existing VLANs to allow.
   late final pulumi.Output<List<String>?> vlansAlloweds;
-
   /// Names of existing VLANs to reject.
   late final pulumi.Output<List<String>?> vlansRejecteds;
 
@@ -247,11 +227,11 @@ class FastUdpApp extends pulumi.CustomResource {
     FastUdpAppArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/fastUdpApp:FastUdpApp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/fastUdpApp:FastUdpApp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     application = registerOutput<String>('application');
     enableFastl4 = registerOutput<bool?>('enableFastl4');
     existingMonitor = registerOutput<String?>('existingMonitor');
@@ -262,16 +242,7 @@ class FastUdpApp extends pulumi.CustomResource {
     fastUdpJson = registerOutput<String>('fastUdpJson');
     irules = registerOutput<List<String>?>('irules');
     loadBalancingMode = registerOutput<String?>('loadBalancingMode');
-    monitor = registerOutput<FastUdpAppMonitor?>(
-      'monitor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FastUdpAppMonitor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monitor = registerOutput<FastUdpAppMonitor?>('monitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FastUdpAppMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     persistenceProfile = registerOutput<String?>('persistenceProfile');
     persistenceType = registerOutput<String?>('persistenceType');
     poolMembers = registerOutput<List<Map<String, dynamic>>?>('poolMembers');
@@ -279,16 +250,7 @@ class FastUdpApp extends pulumi.CustomResource {
     slowRampTime = registerOutput<int?>('slowRampTime');
     snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
     tenant = registerOutput<String>('tenant');
-    virtualServer = registerOutput<FastUdpAppVirtualServer?>(
-      'virtualServer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FastUdpAppVirtualServer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualServer = registerOutput<FastUdpAppVirtualServer?>('virtualServer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FastUdpAppVirtualServer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vlansAlloweds = registerOutput<List<String>?>('vlansAlloweds');
     vlansRejecteds = registerOutput<List<String>?>('vlansRejecteds');
   }
@@ -311,11 +273,11 @@ class FastUdpApp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/fastUdpApp:FastUdpApp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/fastUdpApp:FastUdpApp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     application = registerOutput<String>('application');
     enableFastl4 = registerOutput<bool?>('enableFastl4');
     existingMonitor = registerOutput<String?>('existingMonitor');
@@ -326,16 +288,7 @@ class FastUdpApp extends pulumi.CustomResource {
     fastUdpJson = registerOutput<String>('fastUdpJson');
     irules = registerOutput<List<String>?>('irules');
     loadBalancingMode = registerOutput<String?>('loadBalancingMode');
-    monitor = registerOutput<FastUdpAppMonitor?>(
-      'monitor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FastUdpAppMonitor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monitor = registerOutput<FastUdpAppMonitor?>('monitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FastUdpAppMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     persistenceProfile = registerOutput<String?>('persistenceProfile');
     persistenceType = registerOutput<String?>('persistenceType');
     poolMembers = registerOutput<List<Map<String, dynamic>>?>('poolMembers');
@@ -343,16 +296,7 @@ class FastUdpApp extends pulumi.CustomResource {
     slowRampTime = registerOutput<int?>('slowRampTime');
     snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
     tenant = registerOutput<String>('tenant');
-    virtualServer = registerOutput<FastUdpAppVirtualServer?>(
-      'virtualServer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FastUdpAppVirtualServer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualServer = registerOutput<FastUdpAppVirtualServer?>('virtualServer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FastUdpAppVirtualServer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vlansAlloweds = registerOutput<List<String>?>('vlansAlloweds');
     vlansRejecteds = registerOutput<List<String>?>('vlansRejecteds');
   }

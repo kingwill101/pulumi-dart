@@ -8,10 +8,8 @@ class JobTemplateConfigElementaryStream {
   /// Encoding of an audio stream.
   /// Structure is documented below.
   final pulumi.Input<JobTemplateConfigElementaryStreamAudioStream>? audioStream;
-
   /// A unique key for this atom.
   final pulumi.Input<String>? key;
-
   /// Encoding of a video stream.
   /// Structure is documented below.
   final pulumi.Input<JobTemplateConfigElementaryStreamVideoStream>? videoStream;
@@ -28,45 +26,18 @@ class JobTemplateConfigElementaryStream {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioStream':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobTemplateConfigElementaryStreamAudioStream,
-            Map<String, dynamic>
-          >(audioStream, (value) => value.toMap()),
+      'audioStream': ?pulumi.Input.mapOptionalInputValue<JobTemplateConfigElementaryStreamAudioStream, Map<String, dynamic>>(audioStream, (value) => value.toMap()),
       'key': ?key,
-      'videoStream':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobTemplateConfigElementaryStreamVideoStream,
-            Map<String, dynamic>
-          >(videoStream, (value) => value.toMap()),
+      'videoStream': ?pulumi.Input.mapOptionalInputValue<JobTemplateConfigElementaryStreamVideoStream, Map<String, dynamic>>(videoStream, (value) => value.toMap()),
     };
   }
 
   factory JobTemplateConfigElementaryStream.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigElementaryStream(
-      audioStream: (() {
-        final guardedValue = map['audioStream'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobTemplateConfigElementaryStreamAudioStream.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      videoStream: (() {
-        final guardedValue = map['videoStream'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobTemplateConfigElementaryStreamVideoStream.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      audioStream: (() { final guardedValue = map['audioStream']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobTemplateConfigElementaryStreamAudioStream.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      videoStream: (() { final guardedValue = map['videoStream']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobTemplateConfigElementaryStreamVideoStream.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

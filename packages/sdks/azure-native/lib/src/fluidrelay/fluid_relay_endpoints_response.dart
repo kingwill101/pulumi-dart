@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FluidRelayEndpointsResponse {
   /// The Fluid Relay Orderer endpoints.
   final pulumi.Input<List<String>> ordererEndpoints;
-
   /// The Fluid Relay service endpoints.
   final pulumi.Input<List<String>> serviceEndpoints;
-
   /// The Fluid Relay storage endpoints.
   final pulumi.Input<List<String>> storageEndpoints;
 
@@ -33,15 +31,10 @@ class FluidRelayEndpointsResponse {
 
   factory FluidRelayEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return FluidRelayEndpointsResponse(
-      ordererEndpoints: pulumi.Input.fromValue(
-        (map['ordererEndpoints'] as List).cast<String>(),
-      ),
-      serviceEndpoints: pulumi.Input.fromValue(
-        (map['serviceEndpoints'] as List).cast<String>(),
-      ),
-      storageEndpoints: pulumi.Input.fromValue(
-        (map['storageEndpoints'] as List).cast<String>(),
-      ),
+      ordererEndpoints: pulumi.Input.fromValue((map['ordererEndpoints'] as List).cast<String>()),
+      serviceEndpoints: pulumi.Input.fromValue((map['serviceEndpoints'] as List).cast<String>()),
+      storageEndpoints: pulumi.Input.fromValue((map['storageEndpoints'] as List).cast<String>()),
     );
   }
 }
+

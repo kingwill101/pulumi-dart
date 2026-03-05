@@ -16,3 +16,4 @@ enum AutoUpdateRingType {
     throw ArgumentError('Unknown AutoUpdateRingType value: $value');
   }
 }
+

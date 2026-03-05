@@ -8,13 +8,10 @@ import 'google_privacy_dlp_v2_or_conditions_response.dart';
 class GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse {
   /// BigQuery table must have been created after this date. Used to avoid backfilling.
   final pulumi.Input<String> createdAfter;
-
   /// At least one of the conditions must be true for a table to be scanned.
   final pulumi.Input<GooglePrivacyDlpV2OrConditionsResponse> orConditions;
-
   /// Restrict discovery to categories of table types.
   final pulumi.Input<String> typeCollection;
-
   /// Restrict discovery to specific table types.
   final pulumi.Input<GooglePrivacyDlpV2BigQueryTableTypesResponse> types;
 
@@ -33,36 +30,19 @@ class GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createdAfter': createdAfter,
-      'orConditions':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2OrConditionsResponse,
-            Map<String, dynamic>
-          >(orConditions, (value) => value.toMap()),
+      'orConditions': pulumi.Input.mapInputValue<GooglePrivacyDlpV2OrConditionsResponse, Map<String, dynamic>>(orConditions, (value) => value.toMap()),
       'typeCollection': typeCollection,
-      'types':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2BigQueryTableTypesResponse,
-            Map<String, dynamic>
-          >(types, (value) => value.toMap()),
+      'types': pulumi.Input.mapInputValue<GooglePrivacyDlpV2BigQueryTableTypesResponse, Map<String, dynamic>>(types, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse(
       createdAfter: pulumi.Input.fromValue(map['createdAfter'] as String),
-      orConditions: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2OrConditionsResponse.fromMap(
-          (map['orConditions']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      orConditions: pulumi.Input.fromValue(GooglePrivacyDlpV2OrConditionsResponse.fromMap((map['orConditions']! as Map).cast<String, dynamic>())),
       typeCollection: pulumi.Input.fromValue(map['typeCollection'] as String),
-      types: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2BigQueryTableTypesResponse.fromMap(
-          (map['types']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      types: pulumi.Input.fromValue(GooglePrivacyDlpV2BigQueryTableTypesResponse.fromMap((map['types']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

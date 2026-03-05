@@ -6,34 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdifactFramingSettingsResponse {
   /// The character encoding.
   final pulumi.Input<String>? characterEncoding;
-
   /// The EDIFACT frame setting characterSet.
   final pulumi.Input<String> characterSet;
-
   /// The component separator.
   final pulumi.Input<int> componentSeparator;
-
   /// The data element separator.
   final pulumi.Input<int> dataElementSeparator;
-
   /// The EDIFACT frame setting decimal indicator.
   final pulumi.Input<String> decimalPointIndicator;
-
   /// The protocol version.
   final pulumi.Input<int> protocolVersion;
-
   /// The release indicator.
   final pulumi.Input<int> releaseIndicator;
-
   /// The repetition separator.
   final pulumi.Input<int> repetitionSeparator;
-
   /// The segment terminator.
   final pulumi.Input<int> segmentTerminator;
-
   /// The EDIFACT frame setting segment terminator suffix.
   final pulumi.Input<String> segmentTerminatorSuffix;
-
   /// The service code list directory version.
   final pulumi.Input<String>? serviceCodeListDirectoryVersion;
 
@@ -81,37 +71,18 @@ class EdifactFramingSettingsResponse {
 
   factory EdifactFramingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return EdifactFramingSettingsResponse(
-      characterEncoding: (() {
-        final guardedValue = map['characterEncoding'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      characterEncoding: (() { final guardedValue = map['characterEncoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       characterSet: pulumi.Input.fromValue(map['characterSet'] as String),
-      componentSeparator: pulumi.Input.fromValue(
-        map['componentSeparator'] as int,
-      ),
-      dataElementSeparator: pulumi.Input.fromValue(
-        map['dataElementSeparator'] as int,
-      ),
-      decimalPointIndicator: pulumi.Input.fromValue(
-        map['decimalPointIndicator'] as String,
-      ),
+      componentSeparator: pulumi.Input.fromValue(map['componentSeparator'] as int),
+      dataElementSeparator: pulumi.Input.fromValue(map['dataElementSeparator'] as int),
+      decimalPointIndicator: pulumi.Input.fromValue(map['decimalPointIndicator'] as String),
       protocolVersion: pulumi.Input.fromValue(map['protocolVersion'] as int),
       releaseIndicator: pulumi.Input.fromValue(map['releaseIndicator'] as int),
-      repetitionSeparator: pulumi.Input.fromValue(
-        map['repetitionSeparator'] as int,
-      ),
-      segmentTerminator: pulumi.Input.fromValue(
-        map['segmentTerminator'] as int,
-      ),
-      segmentTerminatorSuffix: pulumi.Input.fromValue(
-        map['segmentTerminatorSuffix'] as String,
-      ),
-      serviceCodeListDirectoryVersion: (() {
-        final guardedValue = map['serviceCodeListDirectoryVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      repetitionSeparator: pulumi.Input.fromValue(map['repetitionSeparator'] as int),
+      segmentTerminator: pulumi.Input.fromValue(map['segmentTerminator'] as int),
+      segmentTerminatorSuffix: pulumi.Input.fromValue(map['segmentTerminatorSuffix'] as String),
+      serviceCodeListDirectoryVersion: (() { final guardedValue = map['serviceCodeListDirectoryVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

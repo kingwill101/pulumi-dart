@@ -9,17 +9,20 @@ class GetCloudExadataInfrastructurePropertyCustomerContact {
 
   /// Creates a new [GetCloudExadataInfrastructurePropertyCustomerContact].
   /// [email] The email address used by Oracle to send notifications regarding databases
-  GetCloudExadataInfrastructurePropertyCustomerContact({required this.email});
+  GetCloudExadataInfrastructurePropertyCustomerContact({
+    required this.email,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'email': email};
+    return <String, dynamic>{
+      'email': email,
+    };
   }
 
-  factory GetCloudExadataInfrastructurePropertyCustomerContact.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCloudExadataInfrastructurePropertyCustomerContact.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructurePropertyCustomerContact(
       email: pulumi.Input.fromValue(map['email'] as String),
     );
   }
 }
+

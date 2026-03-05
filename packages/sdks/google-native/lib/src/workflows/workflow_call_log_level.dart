@@ -17,3 +17,4 @@ enum WorkflowCallLogLevel {
     throw ArgumentError('Unknown WorkflowCallLogLevel value: $value');
   }
 }
+

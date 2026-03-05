@@ -176,36 +176,27 @@ class PluginInstance extends pulumi.CustomResource {
   /// The action status for the plugin instance.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> actions;
-
   /// AuthConfig represents the authentication information.
   /// Structure is documented below.
   late final pulumi.Output<PluginInstanceAuthConfig?> authConfig;
-
   /// Timestamp indicating when the plugin instance was created.
   late final pulumi.Output<String> createTime;
-
   /// The display name for this plugin instance. Max length is 255 characters.
   late final pulumi.Output<bool?> disable;
-
   /// The display name for this plugin instance. Max length is 255 characters.
   late final pulumi.Output<String> displayName;
-
   /// Error message describing the failure, if any, during Create, Delete or
   /// ApplyConfig operation corresponding to the plugin instance.This field will
   /// only be populated if the plugin instance is in the ERROR or FAILED state.
   late final pulumi.Output<String> errorMessage;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
-
   /// Identifier. The unique name of the plugin instance resource.
   /// Format:
   /// `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`
   late final pulumi.Output<String> name;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> plugin;
-
   /// The ID to use for the plugin instance, which will become the final
   /// component of the plugin instance's resource name. This field is optional.
   /// * If provided, the same will be used. The service will throw an error if
@@ -215,11 +206,9 @@ class PluginInstance extends pulumi.CustomResource {
   /// This value should be 4-63 characters, and valid characters
   /// are /a-z[0-9]-_/.
   late final pulumi.Output<String> pluginInstanceId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The current state of the plugin instance (e.g., enabled, disabled,
   /// provisioning).
   /// Possible values:
@@ -231,7 +220,6 @@ class PluginInstance extends pulumi.CustomResource {
   /// FAILED
   /// DELETING
   late final pulumi.Output<String> state;
-
   /// Timestamp indicating when the plugin instance was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -244,22 +232,13 @@ class PluginInstance extends pulumi.CustomResource {
     PluginInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apihub/pluginInstance:PluginInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apihub/pluginInstance:PluginInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
-    authConfig = registerOutput<PluginInstanceAuthConfig?>(
-      'authConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PluginInstanceAuthConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authConfig = registerOutput<PluginInstanceAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginInstanceAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     disable = registerOutput<bool?>('disable');
     displayName = registerOutput<String>('displayName');
@@ -291,22 +270,13 @@ class PluginInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apihub/pluginInstance:PluginInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apihub/pluginInstance:PluginInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
-    authConfig = registerOutput<PluginInstanceAuthConfig?>(
-      'authConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PluginInstanceAuthConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authConfig = registerOutput<PluginInstanceAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginInstanceAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     disable = registerOutput<bool?>('disable');
     displayName = registerOutput<String>('displayName');

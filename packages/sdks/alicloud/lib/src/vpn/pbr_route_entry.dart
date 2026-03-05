@@ -692,22 +692,16 @@ import 'pbr_route_entry_state.dart';
 class PbrRouteEntry extends pulumi.CustomResource {
   /// The next hop of the policy-based route.
   late final pulumi.Output<String> nextHop;
-
   /// Whether to issue the destination route to the VPC.
   late final pulumi.Output<bool> publishVpc;
-
   /// The destination CIDR block of the policy-based route.
   late final pulumi.Output<String> routeDest;
-
   /// The source CIDR block of the policy-based route.
   late final pulumi.Output<String> routeSource;
-
   /// The status of the vpn pbr route entry.
   late final pulumi.Output<String> status;
-
   /// The ID of the vpn gateway.
   late final pulumi.Output<String> vpnGatewayId;
-
   /// The weight of the policy-based route. Valid values: 0 and 100.
   late final pulumi.Output<int> weight;
 
@@ -720,11 +714,11 @@ class PbrRouteEntry extends pulumi.CustomResource {
     PbrRouteEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpn/pbrRouteEntry:PbrRouteEntry',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpn/pbrRouteEntry:PbrRouteEntry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     nextHop = registerOutput<String>('nextHop');
     publishVpc = registerOutput<bool>('publishVpc');
     routeDest = registerOutput<String>('routeDest');
@@ -752,11 +746,11 @@ class PbrRouteEntry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpn/pbrRouteEntry:PbrRouteEntry',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpn/pbrRouteEntry:PbrRouteEntry',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     nextHop = registerOutput<String>('nextHop');
     publishVpc = registerOutput<bool>('publishVpc');
     routeDest = registerOutput<String>('routeDest');

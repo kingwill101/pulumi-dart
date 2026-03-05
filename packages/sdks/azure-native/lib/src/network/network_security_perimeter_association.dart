@@ -178,31 +178,22 @@ import 'sub_resource_response.dart';
 class NetworkSecurityPerimeterAssociation extends pulumi.CustomResource {
   /// Access mode on the association.
   late final pulumi.Output<String?> accessMode;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Specifies if there are provisioning issues
   late final pulumi.Output<String> hasProvisioningIssues;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The PaaS resource to be associated.
   late final pulumi.Output<SubResourceResponse?> privateLinkResource;
-
   /// Profile id to which the PaaS resource is associated.
   late final pulumi.Output<SubResourceResponse?> profile;
-
   /// The provisioning state of the resource  association resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -215,36 +206,18 @@ class NetworkSecurityPerimeterAssociation extends pulumi.CustomResource {
     NetworkSecurityPerimeterAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:NetworkSecurityPerimeterAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:NetworkSecurityPerimeterAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessMode = registerOutput<String?>('accessMode');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     hasProvisioningIssues = registerOutput<String>('hasProvisioningIssues');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    privateLinkResource = registerOutput<SubResourceResponse?>(
-      'privateLinkResource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    profile = registerOutput<SubResourceResponse?>(
-      'profile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    privateLinkResource = registerOutput<SubResourceResponse?>('privateLinkResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    profile = registerOutput<SubResourceResponse?>('profile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

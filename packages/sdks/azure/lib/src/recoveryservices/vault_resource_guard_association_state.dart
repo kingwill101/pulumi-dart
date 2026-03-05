@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultResourceGuardAssociationState {
   /// ID of the Resource Guard which should be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGuardId;
-
   /// ID of the Recovery Services Vault which should be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String>? vaultId;
 
   /// Creates a new [VaultResourceGuardAssociationState].
   /// [resourceGuardId] ID of the Resource Guard which should be associated with. Changing this forces a new resource to be created.
   /// [vaultId] ID of the Recovery Services Vault which should be associated with. Changing this forces a new resource to be created.
-  VaultResourceGuardAssociationState({this.resourceGuardId, this.vaultId});
+  VaultResourceGuardAssociationState({
+    this.resourceGuardId,
+    this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class VaultResourceGuardAssociationState {
 
   factory VaultResourceGuardAssociationState.fromMap(Map<String, dynamic> map) {
     return VaultResourceGuardAssociationState(
-      resourceGuardId: (() {
-        final guardedValue = map['resourceGuardId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vaultId: (() {
-        final guardedValue = map['vaultId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGuardId: (() { final guardedValue = map['resourceGuardId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vaultId: (() { final guardedValue = map['vaultId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

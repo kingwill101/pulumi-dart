@@ -15,7 +15,6 @@ class AccessApprovalSettingsEnrolledService {
   /// pubsub.googleapis.com
   /// storage.googleapis.com
   final pulumi.Input<String> cloudProduct;
-
   /// The enrollment level of the service.
   /// Default value is `BLOCK_ALL`.
   /// Possible values are: `BLOCK_ALL`.
@@ -36,16 +35,11 @@ class AccessApprovalSettingsEnrolledService {
     };
   }
 
-  factory AccessApprovalSettingsEnrolledService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessApprovalSettingsEnrolledService.fromMap(Map<String, dynamic> map) {
     return AccessApprovalSettingsEnrolledService(
       cloudProduct: pulumi.Input.fromValue(map['cloudProduct'] as String),
-      enrollmentLevel: (() {
-        final guardedValue = map['enrollmentLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enrollmentLevel: (() { final guardedValue = map['enrollmentLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

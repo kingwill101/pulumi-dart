@@ -16,3 +16,4 @@ enum IPAllocationPolicyStackType {
     throw ArgumentError('Unknown IPAllocationPolicyStackType value: $value');
   }
 }
+

@@ -16,3 +16,4 @@ enum RetentionScheduleFormat {
     throw ArgumentError('Unknown RetentionScheduleFormat value: $value');
   }
 }
+

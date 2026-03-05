@@ -9,19 +9,20 @@ class ConnectionTypeAssociationProperty {
 
   /// Creates a new [ConnectionTypeAssociationProperty].
   /// [name] Gets or sets the name of the connection type.
-  ConnectionTypeAssociationProperty({this.name});
+  ConnectionTypeAssociationProperty({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory ConnectionTypeAssociationProperty.fromMap(Map<String, dynamic> map) {
     return ConnectionTypeAssociationProperty(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

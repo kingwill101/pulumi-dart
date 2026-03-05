@@ -14,22 +14,16 @@ import 'blob_type.dart';
 class Blob extends pulumi.CustomResource {
   /// The access tier of the storage blob. Only supported for standard storage accounts, not premium.
   late final pulumi.Output<BlobAccessTier?> accessTier;
-
   /// The MD5 sum of the blob contents.
   late final pulumi.Output<String?> contentMd5;
-
   /// The content type of the storage blob.
   late final pulumi.Output<String?> contentType;
-
   /// A map of custom blob metadata.
   late final pulumi.Output<Map<String, String>> metadata;
-
   /// The name of the storage blob.
   late final pulumi.Output<String> name;
-
   /// The type of the storage blob to be created.
   late final pulumi.Output<BlobType> type;
-
   /// The URL of the blob.
   late final pulumi.Output<String> url;
 
@@ -37,33 +31,22 @@ class Blob extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Blob]. {@macro pulumi_storage_blob_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Blob(String name, {BlobArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:storage:Blob',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    accessTier = registerOutput<BlobAccessTier?>(
-      'accessTier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BlobAccessTier.fromValue(guardedValue as String);
-      },
-    );
+  Blob(
+    String name, {
+    BlobArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:storage:Blob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessTier = registerOutput<BlobAccessTier?>('accessTier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlobAccessTier.fromValue(guardedValue as String); });
     contentMd5 = registerOutput<String?>('contentMd5');
     contentType = registerOutput<String?>('contentType');
     metadata = registerOutput<Map<String, String>>('metadata');
     this.name = registerOutput<String>('name');
-    type = registerOutput<BlobType>(
-      'type',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BlobType.fromValue(guardedValue as String);
-      },
-    );
+    type = registerOutput<BlobType>('type', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlobType.fromValue(guardedValue as String); });
     url = registerOutput<String>('url');
   }
 }

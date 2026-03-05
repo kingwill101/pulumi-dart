@@ -9,19 +9,20 @@ class NodeSwapStatusPatch {
 
   /// Creates a new [NodeSwapStatusPatch].
   /// [capacity] Total amount of swap memory in bytes.
-  NodeSwapStatusPatch({this.capacity});
+  NodeSwapStatusPatch({
+    this.capacity,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'capacity': ?capacity};
+    return <String, dynamic>{
+      'capacity': ?capacity,
+    };
   }
 
   factory NodeSwapStatusPatch.fromMap(Map<String, dynamic> map) {
     return NodeSwapStatusPatch(
-      capacity: (() {
-        final guardedValue = map['capacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

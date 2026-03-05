@@ -8,21 +8,20 @@ class DomainAimlOptionsNaturalLanguageQueryGenerationOptions {
 
   /// Creates a new [DomainAimlOptionsNaturalLanguageQueryGenerationOptions].
   /// [desiredState] The desired state of the natural language query generation feature. Valid values are `ENABLED` and `DISABLED`.
-  DomainAimlOptionsNaturalLanguageQueryGenerationOptions({this.desiredState});
+  DomainAimlOptionsNaturalLanguageQueryGenerationOptions({
+    this.desiredState,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'desiredState': ?desiredState};
+    return <String, dynamic>{
+      'desiredState': ?desiredState,
+    };
   }
 
-  factory DomainAimlOptionsNaturalLanguageQueryGenerationOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainAimlOptionsNaturalLanguageQueryGenerationOptions.fromMap(Map<String, dynamic> map) {
     return DomainAimlOptionsNaturalLanguageQueryGenerationOptions(
-      desiredState: (() {
-        final guardedValue = map['desiredState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      desiredState: (() { final guardedValue = map['desiredState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -371,46 +371,32 @@ import 'profile_rewrite_state.dart';
 class ProfileRewrite extends pulumi.CustomResource {
   /// Specifies a list of URIs to bypass inside a web page when the page is accessed using Portal Access.
   late final pulumi.Output<List<String>?> bypassLists;
-
   /// Specifies a CA against which to verify signed Java applets signatures. (name should be in full path which is combination of partition and CA file name )
   late final pulumi.Output<String> caFile;
-
   /// Specifies the type of Client caching. Valid choices are: `cache-css-js, cache-all, no-cache, cache-img-css-js`. Default value: `cache-img-css-js`
   late final pulumi.Output<String?> cacheType;
-
   /// Specifies the cookie rewrite rules. Block type. Each request is block type with following arguments.
   late final pulumi.Output<List<Map<String, dynamic>>?> cookieRules;
-
   /// Specifies a CRL against which to verify signed Java applets signature certificates. The default option is `none`.
   late final pulumi.Output<String?> crlFile;
-
   /// Specifies the profile from which this profile inherits settings. The default is the system-supplied `rewrite` profile.
   late final pulumi.Output<String?> defaultsFrom;
-
   /// Name of the rewrite profile. ( profile name should be in full path which is combination of partition and profile name )
   late final pulumi.Output<String> name;
-
   /// Block type. Each request is block type with following arguments.
   late final pulumi.Output<List<Map<String, dynamic>>> requests;
-
   /// Block type. Each request is block type with following arguments.
   late final pulumi.Output<List<Map<String, dynamic>>> responses;
-
   /// Specifies a list of URIs to rewrite inside a web page when the page is accessed using Portal Access.
   late final pulumi.Output<List<String>?> rewriteLists;
-
   /// Specifies the type of Client caching. Valid choices are: `portal, uri-translation`
   late final pulumi.Output<String> rewriteMode;
-
   /// Specifies a certificate to use for re-signing of signed Java applets after patching. (name should be in full path which is combination of partition and certificate name )
   late final pulumi.Output<String> signingCert;
-
   /// Specifies a certificate to use for re-signing of signed Java applets after patching. (name should be in full path which is combination of partition and key name )
   late final pulumi.Output<String> signingKey;
-
   /// Specifies a pass phrase to use for encrypting the private signing key. Since it's a sensitive entity idempotency will fail in the update call.
   late final pulumi.Output<String> signingKeyPassword;
-
   /// Specifies the type of Client caching. Valid choices are: `true, false`
   late final pulumi.Output<String> splitTunneling;
 
@@ -423,11 +409,11 @@ class ProfileRewrite extends pulumi.CustomResource {
     ProfileRewriteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileRewrite:ProfileRewrite',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileRewrite:ProfileRewrite',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bypassLists = registerOutput<List<String>?>('bypassLists');
     caFile = registerOutput<String>('caFile');
     cacheType = registerOutput<String?>('cacheType');
@@ -463,11 +449,11 @@ class ProfileRewrite extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileRewrite:ProfileRewrite',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileRewrite:ProfileRewrite',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bypassLists = registerOutput<List<String>?>('bypassLists');
     caFile = registerOutput<String>('caFile');
     cacheType = registerOutput<String?>('cacheType');

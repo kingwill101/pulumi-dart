@@ -9,19 +9,20 @@ class VmwareStorageConfig {
 
   /// Creates a new [VmwareStorageConfig].
   /// [vsphereCsiDisabled] Whether or not to deploy vSphere CSI components in the VMware user cluster. Enabled by default.
-  VmwareStorageConfig({this.vsphereCsiDisabled});
+  VmwareStorageConfig({
+    this.vsphereCsiDisabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vsphereCsiDisabled': ?vsphereCsiDisabled};
+    return <String, dynamic>{
+      'vsphereCsiDisabled': ?vsphereCsiDisabled,
+    };
   }
 
   factory VmwareStorageConfig.fromMap(Map<String, dynamic> map) {
     return VmwareStorageConfig(
-      vsphereCsiDisabled: (() {
-        final guardedValue = map['vsphereCsiDisabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      vsphereCsiDisabled: (() { final guardedValue = map['vsphereCsiDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

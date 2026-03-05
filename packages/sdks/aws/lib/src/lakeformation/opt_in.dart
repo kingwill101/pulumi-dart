@@ -84,17 +84,13 @@ import 'opt_in_state.dart';
 class OptIn extends pulumi.CustomResource {
   /// Lake Formation condition, which applies to permissions and opt-ins that contain an expression.
   late final pulumi.Output<List<Map<String, dynamic>>?> conditions;
-
   /// Last modified date and time of the record.
   late final pulumi.Output<String> lastModified;
   late final pulumi.Output<String> lastUpdatedBy;
-
   /// Lake Formation principal. Supported principals are IAM users or IAM roles. See Principal for more details.
   late final pulumi.Output<List<Map<String, dynamic>>?> principals;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Structure for the resource. See Resource for more details.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceDatas;
 
@@ -102,25 +98,30 @@ class OptIn extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [OptIn]. {@macro pulumi_lakeformation_opt_in_opt_in_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  OptIn(String name, {OptInArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:lakeformation/optIn:OptIn',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  OptIn(
+    String name, {
+    OptInArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:lakeformation/optIn:OptIn',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
     lastModified = registerOutput<String>('lastModified');
     lastUpdatedBy = registerOutput<String>('lastUpdatedBy');
     principals = registerOutput<List<Map<String, dynamic>>?>('principals');
     region = registerOutput<String>('region');
-    resourceDatas = registerOutput<List<Map<String, dynamic>>?>(
-      'resourceDatas',
-    );
+    resourceDatas = registerOutput<List<Map<String, dynamic>>?>('resourceDatas');
   }
 
   /// Gets an existing [OptIn] resource's state with the given [name] and [id].
-  static OptIn get(String name, pulumi.Input<String> id, {OptInState? state}) {
+  static OptIn get(
+    String name,
+    pulumi.Input<String> id, {
+    OptInState? state,
+  }) {
     return OptIn._get(
       name,
       state: state?.toMap(),
@@ -133,18 +134,16 @@ class OptIn extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lakeformation/optIn:OptIn',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lakeformation/optIn:OptIn',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
     lastModified = registerOutput<String>('lastModified');
     lastUpdatedBy = registerOutput<String>('lastUpdatedBy');
     principals = registerOutput<List<Map<String, dynamic>>?>('principals');
     region = registerOutput<String>('region');
-    resourceDatas = registerOutput<List<Map<String, dynamic>>?>(
-      'resourceDatas',
-    );
+    resourceDatas = registerOutput<List<Map<String, dynamic>>?>('resourceDatas');
   }
 }

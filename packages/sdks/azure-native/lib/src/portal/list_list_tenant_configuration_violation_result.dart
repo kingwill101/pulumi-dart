@@ -7,7 +7,6 @@ import 'violation_response.dart';
 class ListListTenantConfigurationViolationResult {
   /// The link to the next page of items
   final String? nextLink;
-
   /// The Violation items on this page
   final List<ViolationResponse> value;
 
@@ -22,27 +21,15 @@ class ListListTenantConfigurationViolationResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<ViolationResponse, Map<String, dynamic>>(
-        value,
-        (value) => value.toMap(),
-      ),
+      'value': pulumi.Input.encodeList<ViolationResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
-  factory ListListTenantConfigurationViolationResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListListTenantConfigurationViolationResult.fromMap(Map<String, dynamic> map) {
     return ListListTenantConfigurationViolationResult(
-      nextLink: (() {
-        final guardedValue = map['nextLink'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      value: pulumi.Input.decodeList<ViolationResponse>(
-        map['value']!,
-        (value) =>
-            ViolationResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      value: pulumi.Input.decodeList<ViolationResponse>(map['value']!, (value) => ViolationResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -147,16 +147,12 @@ import 'group_properties_response.dart';
 class Group extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// For optimistic concurrency control.
   late final pulumi.Output<String?> eTag;
-
   /// Name of the group.
   late final pulumi.Output<String> name;
-
   /// Properties of the group.
   late final pulumi.Output<GroupPropertiesResponse> properties;
-
   /// Type of the object = [Microsoft.Migrate/assessmentProjects/groups].
   late final pulumi.Output<String> type;
 
@@ -164,26 +160,20 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_migrate_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:migrate:Group',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Group(
+    String name, {
+    GroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:migrate:Group',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eTag = registerOutput<String?>('eTag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<GroupPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<GroupPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

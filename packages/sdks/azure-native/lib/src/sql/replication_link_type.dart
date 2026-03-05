@@ -16,3 +16,4 @@ enum ReplicationLinkType {
     throw ArgumentError('Unknown ReplicationLinkType value: $value');
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OneDashboardJsonState {
   /// Determines the New Relic account where the dashboard will be created. Defaults to the account associated with the API key used.
   final pulumi.Input<String>? accountId;
-
   /// The unique entity identifier of the dashboard in New Relic.
   final pulumi.Input<String>? guid;
-
   /// The JSON export of a dashboard. [The JSON can be exported from the UI](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/dashboards-charts-import-export-data/#dashboards)
   final pulumi.Input<String>? json;
-
   /// The URL for viewing the dashboard.
   final pulumi.Input<String>? permalink;
-
   /// The date and time when the dashboard was last updated.
   final pulumi.Input<String>? updatedAt;
 
@@ -45,31 +41,12 @@ class OneDashboardJsonState {
 
   factory OneDashboardJsonState.fromMap(Map<String, dynamic> map) {
     return OneDashboardJsonState(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      guid: (() {
-        final guardedValue = map['guid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      json: (() {
-        final guardedValue = map['json'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      permalink: (() {
-        final guardedValue = map['permalink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updatedAt: (() {
-        final guardedValue = map['updatedAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      guid: (() { final guardedValue = map['guid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      json: (() { final guardedValue = map['json']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      permalink: (() { final guardedValue = map['permalink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

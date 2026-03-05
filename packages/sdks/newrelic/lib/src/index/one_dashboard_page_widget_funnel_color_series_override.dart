@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OneDashboardPageWidgetFunnelColorSeriesOverride {
   /// (Optional) Choose a color to customize the color of your charts per series in area, bar, line, pie, and stacked bar charts. Accepted values are RGB, HEX, or HSL code.
   final pulumi.Input<String>? color;
-
   /// Series name
   final pulumi.Input<String>? seriesName;
 
@@ -18,23 +17,17 @@ class OneDashboardPageWidgetFunnelColorSeriesOverride {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'color': ?color, 'seriesName': ?seriesName};
+    return <String, dynamic>{
+      'color': ?color,
+      'seriesName': ?seriesName,
+    };
   }
 
-  factory OneDashboardPageWidgetFunnelColorSeriesOverride.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OneDashboardPageWidgetFunnelColorSeriesOverride.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetFunnelColorSeriesOverride(
-      color: (() {
-        final guardedValue = map['color'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      seriesName: (() {
-        final guardedValue = map['seriesName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      color: (() { final guardedValue = map['color']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      seriesName: (() { final guardedValue = map['seriesName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

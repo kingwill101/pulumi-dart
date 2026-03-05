@@ -13,14 +13,15 @@ class GdcSparkApplicationSparkSqlApplicationConfigQueryList {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'queries': queries};
+    return <String, dynamic>{
+      'queries': queries,
+    };
   }
 
-  factory GdcSparkApplicationSparkSqlApplicationConfigQueryList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GdcSparkApplicationSparkSqlApplicationConfigQueryList.fromMap(Map<String, dynamic> map) {
     return GdcSparkApplicationSparkSqlApplicationConfigQueryList(
       queries: pulumi.Input.fromValue((map['queries'] as List).cast<String>()),
     );
   }
 }
+

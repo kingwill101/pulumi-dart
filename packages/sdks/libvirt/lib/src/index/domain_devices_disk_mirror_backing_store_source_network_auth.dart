@@ -5,11 +5,7 @@ import 'domain_devices_disk_mirror_backing_store_source_network_auth_secret.dart
 
 class DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth {
   /// Specifies the secret used for authenticating the iSCSI connection.
-  final pulumi.Input<
-    DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthSecret
-  >?
-  secret;
-
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthSecret>? secret;
   /// Sets the username for iSCSI authentication.
   final pulumi.Input<String>? username;
 
@@ -23,33 +19,16 @@ class DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'secret':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthSecret,
-            Map<String, dynamic>
-          >(secret, (value) => value.toMap()),
+      'secret': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthSecret, Map<String, dynamic>>(secret, (value) => value.toMap()),
       'username': ?username,
     };
   }
 
-  factory DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth(
-      secret: (() {
-        final guardedValue = map['secret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthSecret.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      secret: (() { final guardedValue = map['secret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthSecret.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

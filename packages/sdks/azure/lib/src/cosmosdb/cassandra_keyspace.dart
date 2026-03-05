@@ -275,19 +275,14 @@ import 'cassandra_keyspace_state.dart';
 class CassandraKeyspace extends pulumi.CustomResource {
   /// The name of the Cosmos DB Cassandra KeySpace to create the table within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-
   /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
-  late final pulumi.Output<CassandraKeyspaceAutoscaleSettings?>
-  autoscaleSettings;
-
+  late final pulumi.Output<CassandraKeyspaceAutoscaleSettings?> autoscaleSettings;
   /// Specifies the name of the Cosmos DB Cassandra KeySpace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which the Cosmos DB Cassandra KeySpace is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The throughput of Cassandra KeySpace (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual resource destroy-apply.
   late final pulumi.Output<int> throughput;
 
@@ -300,22 +295,13 @@ class CassandraKeyspace extends pulumi.CustomResource {
     CassandraKeyspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/cassandraKeyspace:CassandraKeyspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/cassandraKeyspace:CassandraKeyspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
-    autoscaleSettings = registerOutput<CassandraKeyspaceAutoscaleSettings?>(
-      'autoscaleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CassandraKeyspaceAutoscaleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    autoscaleSettings = registerOutput<CassandraKeyspaceAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraKeyspaceAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     throughput = registerOutput<int>('throughput');
@@ -339,22 +325,13 @@ class CassandraKeyspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/cassandraKeyspace:CassandraKeyspace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/cassandraKeyspace:CassandraKeyspace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
-    autoscaleSettings = registerOutput<CassandraKeyspaceAutoscaleSettings?>(
-      'autoscaleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CassandraKeyspaceAutoscaleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    autoscaleSettings = registerOutput<CassandraKeyspaceAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraKeyspaceAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     throughput = registerOutput<int>('throughput');

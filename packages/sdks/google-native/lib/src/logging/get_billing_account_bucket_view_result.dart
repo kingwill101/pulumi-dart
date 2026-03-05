@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getBillingAccountBucketView.
 class GetBillingAccountBucketViewResult {
   /// The creation timestamp of the view.
   final String createTime;
-
   /// Describes this view.
   final String description;
-
   /// Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
   final String filter;
-
   /// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
   final String name;
-
   /// The last update timestamp of the view.
   final String updateTime;
 
@@ -51,3 +48,4 @@ class GetBillingAccountBucketViewResult {
     );
   }
 }
+

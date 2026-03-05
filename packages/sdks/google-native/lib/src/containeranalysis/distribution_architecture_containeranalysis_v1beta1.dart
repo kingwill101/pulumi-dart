@@ -7,17 +7,13 @@ enum DistributionArchitectureContaineranalysisV1beta1 {
   const DistributionArchitectureContaineranalysisV1beta1(this.wireValue);
   final String wireValue;
 
-  static DistributionArchitectureContaineranalysisV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in DistributionArchitectureContaineranalysisV1beta1.values) {
+  static DistributionArchitectureContaineranalysisV1beta1 fromValue(String value) {
+    for (final item in DistributionArchitectureContaineranalysisV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DistributionArchitectureContaineranalysisV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown DistributionArchitectureContaineranalysisV1beta1 value: $value');
   }
 }
+

@@ -9,19 +9,20 @@ class SettingsAccessSettingsCorsSettings {
 
   /// Creates a new [SettingsAccessSettingsCorsSettings].
   /// [allowHttpOptions] Configuration to allow HTTP OPTIONS calls to skip authorization.
-  SettingsAccessSettingsCorsSettings({this.allowHttpOptions});
+  SettingsAccessSettingsCorsSettings({
+    this.allowHttpOptions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowHttpOptions': ?allowHttpOptions};
+    return <String, dynamic>{
+      'allowHttpOptions': ?allowHttpOptions,
+    };
   }
 
   factory SettingsAccessSettingsCorsSettings.fromMap(Map<String, dynamic> map) {
     return SettingsAccessSettingsCorsSettings(
-      allowHttpOptions: (() {
-        final guardedValue = map['allowHttpOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      allowHttpOptions: (() { final guardedValue = map['allowHttpOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

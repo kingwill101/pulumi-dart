@@ -304,19 +304,14 @@ import 'application_group_state.dart';
 class ApplicationGroup extends pulumi.CustomResource {
   /// The name of the Application group.
   late final pulumi.Output<String> applicationGroupName;
-
   /// The name of the Application.
   late final pulumi.Output<String> applicationName;
-
   /// The region ID of the deployment.
   late final pulumi.Output<String> deployRegionId;
-
   /// Application group description information.
   late final pulumi.Output<String?> description;
-
   /// The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is app-{ApplicationName} (application name).
   late final pulumi.Output<String> importTagKey;
-
   /// The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is application group name.
   /// .
   late final pulumi.Output<String> importTagValue;
@@ -330,11 +325,11 @@ class ApplicationGroup extends pulumi.CustomResource {
     ApplicationGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oos/applicationGroup:ApplicationGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oos/applicationGroup:ApplicationGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationGroupName = registerOutput<String>('applicationGroupName');
     applicationName = registerOutput<String>('applicationName');
     deployRegionId = registerOutput<String>('deployRegionId');
@@ -361,11 +356,11 @@ class ApplicationGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oos/applicationGroup:ApplicationGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oos/applicationGroup:ApplicationGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationGroupName = registerOutput<String>('applicationGroupName');
     applicationName = registerOutput<String>('applicationName');
     deployRegionId = registerOutput<String>('deployRegionId');

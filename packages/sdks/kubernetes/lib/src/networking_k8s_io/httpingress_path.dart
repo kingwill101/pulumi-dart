@@ -7,10 +7,8 @@ import 'ingress_backend.dart';
 class HTTPIngressPath {
   /// backend defines the referenced service endpoint to which the traffic will be forwarded to.
   final pulumi.Input<IngressBackend> backend;
-
   /// path is matched against the path of an incoming request. Currently it can contain characters disallowed from the conventional "path" part of a URL as defined by RFC 3986. Paths must begin with a '/' and must be present when using PathType with value "Exact" or "Prefix".
   final pulumi.Input<String>? path;
-
   /// pathType determines the interpretation of the path matching. PathType can be one of the following values: * Exact: Matches the URL path exactly. * Prefix: Matches based on a URL path prefix split by '/'. Matching is
   /// done on a path element by element basis. A path element refers is the
   /// list of labels in the path split by the '/' separator. A request is a
@@ -28,15 +26,15 @@ class HTTPIngressPath {
   /// [backend] backend defines the referenced service endpoint to which the traffic will be forwarded to.
   /// [path] path is matched against the path of an incoming request. Currently it can contain characters disallowed from the conventional "path" part of a URL as defined by RFC 3986. Paths must begin with a '/' and must be present when using PathType with value "Exact" or "Prefix".
   /// [pathType] pathType determines the interpretation of the path matching. PathType can be one of the following values: * Exact: Matches the URL path exactly. * Prefix: Matches based on a URL path prefix split by '/'. Matching is
-  HTTPIngressPath({required this.backend, this.path, required this.pathType});
+  HTTPIngressPath({
+    required this.backend,
+    this.path,
+    required this.pathType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backend':
-          pulumi.Input.mapInputValue<IngressBackend, Map<String, dynamic>>(
-            backend,
-            (value) => value.toMap(),
-          ),
+      'backend': pulumi.Input.mapInputValue<IngressBackend, Map<String, dynamic>>(backend, (value) => value.toMap()),
       'path': ?path,
       'pathType': pathType,
     };
@@ -44,17 +42,10 @@ class HTTPIngressPath {
 
   factory HTTPIngressPath.fromMap(Map<String, dynamic> map) {
     return HTTPIngressPath(
-      backend: pulumi.Input.fromValue(
-        IngressBackend.fromMap(
-          (map['backend']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backend: pulumi.Input.fromValue(IngressBackend.fromMap((map['backend']! as Map).cast<String, dynamic>())),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pathType: pulumi.Input.fromValue(map['pathType'] as String),
     );
   }
 }
+

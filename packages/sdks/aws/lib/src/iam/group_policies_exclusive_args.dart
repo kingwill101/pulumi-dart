@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupPoliciesExclusiveArgs {
   /// IAM group name.
   final pulumi.Input<String> groupName;
-
   /// A list of inline policy names to be assigned to the group. Policies attached to this group but not configured in this argument will be removed.
   final pulumi.Input<List<String>> policyNames;
 
@@ -31,9 +30,8 @@ class GroupPoliciesExclusiveArgs {
   factory GroupPoliciesExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return GroupPoliciesExclusiveArgs(
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
-      policyNames: pulumi.Input.fromValue(
-        (map['policyNames'] as List).cast<String>(),
-      ),
+      policyNames: pulumi.Input.fromValue((map['policyNames'] as List).cast<String>()),
     );
   }
 }
+

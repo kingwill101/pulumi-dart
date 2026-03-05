@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodePoolNodeConfigContainerdConfigRegistryHostHostHeader {
   /// Configures the header key.
   final pulumi.Input<String> key;
-
   /// Configures the header value.
   final pulumi.Input<List<String>> values;
 
@@ -18,15 +17,17 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHostHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'values': values};
+    return <String, dynamic>{
+      'key': key,
+      'values': values,
+    };
   }
 
-  factory NodePoolNodeConfigContainerdConfigRegistryHostHostHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NodePoolNodeConfigContainerdConfigRegistryHostHostHeader.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigContainerdConfigRegistryHostHostHeader(
       key: pulumi.Input.fromValue(map['key'] as String),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

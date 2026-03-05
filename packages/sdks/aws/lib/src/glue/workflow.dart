@@ -266,25 +266,18 @@ import 'workflow_state.dart';
 class Workflow extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of Glue Workflow
   late final pulumi.Output<String> arn;
-
   /// A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
   late final pulumi.Output<Map<String, String>?> defaultRunProperties;
-
   /// Description of the workflow.
   late final pulumi.Output<String?> description;
-
   /// Prevents exceeding the maximum number of concurrent runs of any of the component jobs. If you leave this parameter blank, there is no limit to the number of concurrent workflow runs.
   late final pulumi.Output<int?> maxConcurrentRuns;
-
   /// The name you assign to this workflow.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -297,15 +290,13 @@ class Workflow extends pulumi.CustomResource {
     WorkflowArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:glue/workflow:Workflow',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:glue/workflow:Workflow',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    defaultRunProperties = registerOutput<Map<String, String>?>(
-      'defaultRunProperties',
-    );
+    defaultRunProperties = registerOutput<Map<String, String>?>('defaultRunProperties');
     description = registerOutput<String?>('description');
     maxConcurrentRuns = registerOutput<int?>('maxConcurrentRuns');
     this.name = registerOutput<String>('name');
@@ -332,15 +323,13 @@ class Workflow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:glue/workflow:Workflow',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:glue/workflow:Workflow',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    defaultRunProperties = registerOutput<Map<String, String>?>(
-      'defaultRunProperties',
-    );
+    defaultRunProperties = registerOutput<Map<String, String>?>('defaultRunProperties');
     description = registerOutput<String?>('description');
     maxConcurrentRuns = registerOutput<int?>('maxConcurrentRuns');
     this.name = registerOutput<String>('name');

@@ -9,21 +9,20 @@ class CredentialProviderTypeEnumValueResponse {
 
   /// Creates a new [CredentialProviderTypeEnumValueResponse].
   /// [value] Property value
-  CredentialProviderTypeEnumValueResponse({this.value});
+  CredentialProviderTypeEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory CredentialProviderTypeEnumValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CredentialProviderTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return CredentialProviderTypeEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

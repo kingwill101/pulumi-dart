@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGalleryScriptArgs {
   /// The name of the Shared Image Gallery.
   final pulumi.Input<String> galleryName;
-
   /// The name of the gallery Script Definition to be retrieved.
   final pulumi.Input<String> galleryScriptName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetGalleryScriptArgs {
   factory GetGalleryScriptArgs.fromMap(Map<String, dynamic> map) {
     return GetGalleryScriptArgs(
       galleryName: pulumi.Input.fromValue(map['galleryName'] as String),
-      galleryScriptName: pulumi.Input.fromValue(
-        map['galleryScriptName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      galleryScriptName: pulumi.Input.fromValue(map['galleryScriptName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

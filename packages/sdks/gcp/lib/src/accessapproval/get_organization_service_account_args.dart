@@ -12,10 +12,14 @@ class GetOrganizationServiceAccountArgs {
 
   /// Creates a new [GetOrganizationServiceAccountArgs].
   /// [organizationId] The organization ID the service account was created for.
-  GetOrganizationServiceAccountArgs({required this.organizationId});
+  GetOrganizationServiceAccountArgs({
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'organizationId': organizationId};
+    return <String, dynamic>{
+      'organizationId': organizationId,
+    };
   }
 
   factory GetOrganizationServiceAccountArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetOrganizationServiceAccountArgs {
     );
   }
 }
+

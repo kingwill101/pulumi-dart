@@ -10,21 +10,16 @@ import 'cluster_identity.dart';
 class ClusterArgs {
   /// An `identity` block as defined below. Changing this forces a new Log Analytics Cluster to be created.
   final pulumi.Input<ClusterIdentity> identity;
-
   /// The Azure Region where the Log Analytics Cluster should exist. Changing this forces a new Log Analytics Cluster to be created.
   final pulumi.Input<String>? location;
-
   /// The name which should be used for this Log Analytics Cluster. Changing this forces a new Log Analytics Cluster to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the Resource Group where the Log Analytics Cluster should exist. Changing this forces a new Log Analytics Cluster to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The capacity of the Log Analytics Cluster is specified in GB/day. Possible values include `100`, `200`, `300`, `400`, `500`, `1000`, `2000`, `5000`, `10000`, `25000`, or `50000`. Defaults to `100`.
   ///
   /// &gt; **Note:** The cluster capacity must start at 100 GB and can be set to 500, 1000, 2000 or 5000 GB/day. For more information on cluster costs, see [Dedicated clusters](https://docs.microsoft.com/en-us/azure/azure-monitor/logs/cost-logs#dedicated-clusters).
   final pulumi.Input<int>? sizeGb;
-
   /// A mapping of tags which should be assigned to the Log Analytics Cluster.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -46,11 +41,7 @@ class ClusterArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity':
-          pulumi.Input.mapInputValue<ClusterIdentity, Map<String, dynamic>>(
-            identity,
-            (value) => value.toMap(),
-          ),
+      'identity': pulumi.Input.mapInputValue<ClusterIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'resourceGroupName': resourceGroupName,
@@ -61,36 +52,13 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      identity: pulumi.Input.fromValue(
-        ClusterIdentity.fromMap(
-          (map['identity']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sizeGb: (() {
-        final guardedValue = map['sizeGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      identity: pulumi.Input.fromValue(ClusterIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

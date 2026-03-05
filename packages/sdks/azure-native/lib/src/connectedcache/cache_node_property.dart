@@ -7,18 +7,13 @@ import 'cache_node_entity.dart';
 /// Model representing an Mcc cache node connectedCache resource
 class CacheNodeProperty {
   /// Mcc cache node resource additional properties.
-  final pulumi.Input<AdditionalCacheNodeProperties>?
-  additionalCacheNodeProperties;
-
+  final pulumi.Input<AdditionalCacheNodeProperties>? additionalCacheNodeProperties;
   /// Mcc cache node resource (cache node entity).
   final pulumi.Input<CacheNodeEntity>? cacheNode;
-
   /// Mcc response status code.
   final pulumi.Input<String>? statusCode;
-
   /// Mcc response status details for retrieving response inner details.
   final pulumi.Input<String>? statusDetails;
-
   /// Mcc response status text as string for retrieving status details.
   final pulumi.Input<String>? statusText;
 
@@ -38,16 +33,8 @@ class CacheNodeProperty {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalCacheNodeProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            AdditionalCacheNodeProperties,
-            Map<String, dynamic>
-          >(additionalCacheNodeProperties, (value) => value.toMap()),
-      'cacheNode':
-          ?pulumi.Input.mapOptionalInputValue<
-            CacheNodeEntity,
-            Map<String, dynamic>
-          >(cacheNode, (value) => value.toMap()),
+      'additionalCacheNodeProperties': ?pulumi.Input.mapOptionalInputValue<AdditionalCacheNodeProperties, Map<String, dynamic>>(additionalCacheNodeProperties, (value) => value.toMap()),
+      'cacheNode': ?pulumi.Input.mapOptionalInputValue<CacheNodeEntity, Map<String, dynamic>>(cacheNode, (value) => value.toMap()),
       'statusCode': ?statusCode,
       'statusDetails': ?statusDetails,
       'statusText': ?statusText,
@@ -56,39 +43,12 @@ class CacheNodeProperty {
 
   factory CacheNodeProperty.fromMap(Map<String, dynamic> map) {
     return CacheNodeProperty(
-      additionalCacheNodeProperties: (() {
-        final guardedValue = map['additionalCacheNodeProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AdditionalCacheNodeProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      cacheNode: (() {
-        final guardedValue = map['cacheNode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CacheNodeEntity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      statusCode: (() {
-        final guardedValue = map['statusCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      statusDetails: (() {
-        final guardedValue = map['statusDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      statusText: (() {
-        final guardedValue = map['statusText'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalCacheNodeProperties: (() { final guardedValue = map['additionalCacheNodeProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AdditionalCacheNodeProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      cacheNode: (() { final guardedValue = map['cacheNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheNodeEntity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statusDetails: (() { final guardedValue = map['statusDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statusText: (() { final guardedValue = map['statusText']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

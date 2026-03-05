@@ -10,9 +10,7 @@ enum EventSource {
   valueSecureScoreControls("SecureScoreControls"),
   valueSecureScoreControlsSnapshot("SecureScoreControlsSnapshot"),
   valueRegulatoryComplianceAssessment("RegulatoryComplianceAssessment"),
-  valueRegulatoryComplianceAssessmentSnapshot(
-    "RegulatoryComplianceAssessmentSnapshot",
-  ),
+  valueRegulatoryComplianceAssessmentSnapshot("RegulatoryComplianceAssessmentSnapshot"),
   valueAttackPaths("AttackPaths"),
   valueAttackPathsSnapshot("AttackPathsSnapshot");
 
@@ -28,3 +26,4 @@ enum EventSource {
     throw ArgumentError('Unknown EventSource value: $value');
   }
 }
+

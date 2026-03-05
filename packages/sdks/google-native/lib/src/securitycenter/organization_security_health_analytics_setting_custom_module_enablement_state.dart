@@ -5,22 +5,16 @@ enum OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState {
   disabled("DISABLED"),
   inherited("INHERITED");
 
-  const OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState(
-    this.wireValue,
-  );
+  const OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState(this.wireValue);
   final String wireValue;
 
-  static OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState
-  fromValue(String value) {
-    for (final item
-        in OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState
-            .values) {
+  static OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState fromValue(String value) {
+    for (final item in OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState value: $value',
-    );
+    throw ArgumentError('Unknown OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState value: $value');
   }
 }
+

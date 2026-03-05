@@ -15,3 +15,4 @@ enum CertificateStoreNameOption {
     throw ArgumentError('Unknown CertificateStoreNameOption value: $value');
   }
 }
+

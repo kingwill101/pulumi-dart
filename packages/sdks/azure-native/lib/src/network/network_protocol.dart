@@ -17,3 +17,4 @@ enum NetworkProtocol {
     throw ArgumentError('Unknown NetworkProtocol value: $value');
   }
 }
+

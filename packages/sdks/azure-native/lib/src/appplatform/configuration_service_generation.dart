@@ -15,3 +15,4 @@ enum ConfigurationServiceGeneration {
     throw ArgumentError('Unknown ConfigurationServiceGeneration value: $value');
   }
 }
+

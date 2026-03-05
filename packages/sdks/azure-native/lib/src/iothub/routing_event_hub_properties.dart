@@ -7,28 +7,20 @@ import 'managed_identity.dart';
 class RoutingEventHubProperties {
   /// Method used to authenticate against the event hub endpoint
   final pulumi.Input<String>? authenticationType;
-
   /// The connection string of the event hub endpoint.
   final pulumi.Input<String>? connectionString;
-
   /// The url of the event hub endpoint. It must include the protocol sb://
   final pulumi.Input<String>? endpointUri;
-
   /// Event hub name on the event hub namespace
   final pulumi.Input<String>? entityPath;
-
   /// Id of the event hub endpoint
   final pulumi.Input<String>? id;
-
   /// Managed identity properties of routing event hub endpoint.
   final pulumi.Input<ManagedIdentity>? identity;
-
   /// The name that identifies this endpoint. The name can only include alphanumeric characters, periods, underscores, hyphens and has a maximum length of 64 characters. The following names are reserved:  events, fileNotifications, $default. Endpoint names must be unique across endpoint types.
   final pulumi.Input<String> name;
-
   /// The name of the resource group of the event hub endpoint.
   final pulumi.Input<String>? resourceGroup;
-
   /// The subscription identifier of the event hub endpoint.
   final pulumi.Input<String>? subscriptionId;
 
@@ -61,11 +53,7 @@ class RoutingEventHubProperties {
       'endpointUri': ?endpointUri,
       'entityPath': ?entityPath,
       'id': ?id,
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'name': name,
       'resourceGroup': ?resourceGroup,
       'subscriptionId': ?subscriptionId,
@@ -74,51 +62,16 @@ class RoutingEventHubProperties {
 
   factory RoutingEventHubProperties.fromMap(Map<String, dynamic> map) {
     return RoutingEventHubProperties(
-      authenticationType: (() {
-        final guardedValue = map['authenticationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectionString: (() {
-        final guardedValue = map['connectionString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpointUri: (() {
-        final guardedValue = map['endpointUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      entityPath: (() {
-        final guardedValue = map['entityPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectionString: (() { final guardedValue = map['connectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointUri: (() { final guardedValue = map['endpointUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      entityPath: (() { final guardedValue = map['entityPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroup: (() {
-        final guardedValue = map['resourceGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroup: (() { final guardedValue = map['resourceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

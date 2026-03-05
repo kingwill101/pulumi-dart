@@ -10,13 +10,10 @@ import 'dynamic_configuration_properties.dart';
 class DynamicConfigurationArgs {
   /// Name of the Configuration
   final pulumi.Input<String> configurationName;
-
   /// Name of the dynamic configuration
   final pulumi.Input<String>? dynamicConfigurationName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<DynamicConfigurationProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,37 +33,18 @@ class DynamicConfigurationArgs {
     return <String, dynamic>{
       'configurationName': configurationName,
       'dynamicConfigurationName': ?dynamicConfigurationName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            DynamicConfigurationProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<DynamicConfigurationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory DynamicConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DynamicConfigurationArgs(
-      configurationName: pulumi.Input.fromValue(
-        map['configurationName'] as String,
-      ),
-      dynamicConfigurationName: (() {
-        final guardedValue = map['dynamicConfigurationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DynamicConfigurationProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      configurationName: pulumi.Input.fromValue(map['configurationName'] as String),
+      dynamicConfigurationName: (() { final guardedValue = map['dynamicConfigurationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DynamicConfigurationProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

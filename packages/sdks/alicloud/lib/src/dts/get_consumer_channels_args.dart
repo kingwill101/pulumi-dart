@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConsumerChannelsArgs {
   /// Subscription instance ID.
   final pulumi.Input<String> dtsInstanceId;
-
   /// A list of Consumer Channel IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -37,16 +35,9 @@ class GetConsumerChannelsArgs {
   factory GetConsumerChannelsArgs.fromMap(Map<String, dynamic> map) {
     return GetConsumerChannelsArgs(
       dtsInstanceId: pulumi.Input.fromValue(map['dtsInstanceId'] as String),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

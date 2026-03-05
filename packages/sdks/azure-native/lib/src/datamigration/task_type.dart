@@ -8,16 +8,10 @@ enum TaskType {
   valueConnectToSourceOracleSync("ConnectToSource.Oracle.Sync"),
   valueConnectToTargetSqlDb("ConnectToTarget.SqlDb"),
   valueConnectToTargetSqlDbSync("ConnectToTarget.SqlDb.Sync"),
-  valueConnectToTargetAzureDbForPostgreSqlSync(
-    "ConnectToTarget.AzureDbForPostgreSql.Sync",
-  ),
-  valueConnectToTargetOracleAzureDbForPostgreSqlSync(
-    "ConnectToTarget.Oracle.AzureDbForPostgreSql.Sync",
-  ),
+  valueConnectToTargetAzureDbForPostgreSqlSync("ConnectToTarget.AzureDbForPostgreSql.Sync"),
+  valueConnectToTargetOracleAzureDbForPostgreSqlSync("ConnectToTarget.Oracle.AzureDbForPostgreSql.Sync"),
   valueConnectToTargetAzureSqlDbMI("ConnectToTarget.AzureSqlDbMI"),
-  valueConnectToTargetAzureSqlDbMISyncLRS(
-    "ConnectToTarget.AzureSqlDbMI.Sync.LRS",
-  ),
+  valueConnectToTargetAzureSqlDbMISyncLRS("ConnectToTarget.AzureSqlDbMI.Sync.LRS"),
   valueConnectToTargetAzureDbForMySql("ConnectToTarget.AzureDbForMySql"),
   valueGetUserTablesSql("GetUserTables.Sql"),
   valueGetUserTablesAzureSqlDbSync("GetUserTables.AzureSqlDb.Sync"),
@@ -26,32 +20,18 @@ enum TaskType {
   valueGetUserTablesMySql("GetUserTablesMySql"),
   valueMigrateMongoDb("Migrate.MongoDb"),
   valueMigrateSqlServerAzureSqlDbMI("Migrate.SqlServer.AzureSqlDbMI"),
-  valueMigrateSqlServerAzureSqlDbMISyncLRS(
-    "Migrate.SqlServer.AzureSqlDbMI.Sync.LRS",
-  ),
+  valueMigrateSqlServerAzureSqlDbMISyncLRS("Migrate.SqlServer.AzureSqlDbMI.Sync.LRS"),
   valueMigrateSqlServerSqlDb("Migrate.SqlServer.SqlDb"),
   valueMigrateSqlServerAzureSqlDbSync("Migrate.SqlServer.AzureSqlDb.Sync"),
   valueMigrateMySqlAzureDbForMySqlSync("Migrate.MySql.AzureDbForMySql.Sync"),
   valueMigrateMySqlAzureDbForMySql("Migrate.MySql.AzureDbForMySql"),
-  valueMigratePostgreSqlAzureDbForPostgreSqlSyncV2(
-    "Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2",
-  ),
-  valueMigrateOracleAzureDbForPostgreSqlSync(
-    "Migrate.Oracle.AzureDbForPostgreSql.Sync",
-  ),
-  valueValidateMigrationInputSqlServerSqlDbSync(
-    "ValidateMigrationInput.SqlServer.SqlDb.Sync",
-  ),
-  valueValidateMigrationInputSqlServerAzureSqlDbMI(
-    "ValidateMigrationInput.SqlServer.AzureSqlDbMI",
-  ),
-  valueValidateMigrationInputSqlServerAzureSqlDbMISyncLRS(
-    "ValidateMigrationInput.SqlServer.AzureSqlDbMI.Sync.LRS",
-  ),
+  valueMigratePostgreSqlAzureDbForPostgreSqlSyncV2("Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2"),
+  valueMigrateOracleAzureDbForPostgreSqlSync("Migrate.Oracle.AzureDbForPostgreSql.Sync"),
+  valueValidateMigrationInputSqlServerSqlDbSync("ValidateMigrationInput.SqlServer.SqlDb.Sync"),
+  valueValidateMigrationInputSqlServerAzureSqlDbMI("ValidateMigrationInput.SqlServer.AzureSqlDbMI"),
+  valueValidateMigrationInputSqlServerAzureSqlDbMISyncLRS("ValidateMigrationInput.SqlServer.AzureSqlDbMI.Sync.LRS"),
   valueValidateMongoDb("Validate.MongoDb"),
-  valueValidateOracleAzureDbPostgreSqlSync(
-    "Validate.Oracle.AzureDbPostgreSql.Sync",
-  ),
+  valueValidateOracleAzureDbPostgreSqlSync("Validate.Oracle.AzureDbPostgreSql.Sync"),
   valueGetTDECertificatesSql("GetTDECertificates.Sql"),
   valueMigrateSsis("Migrate.Ssis"),
   valueServiceCheckOCI("Service.Check.OCI"),
@@ -71,3 +51,4 @@ enum TaskType {
     throw ArgumentError('Unknown TaskType value: $value');
   }
 }
+

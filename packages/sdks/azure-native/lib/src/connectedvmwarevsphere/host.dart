@@ -173,67 +173,46 @@ import 'system_data_response.dart';
 class Host extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets the max CPU usage across all cores in MHz.
   late final pulumi.Output<double> cpuMhz;
-
   /// Gets the name of the corresponding resource in Kubernetes.
   late final pulumi.Output<String> customResourceName;
-
   /// Gets the datastore ARM ids.
   late final pulumi.Output<List<String>> datastoreIds;
-
   /// Gets or sets the extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// Gets or sets the inventory Item ID for the host.
   late final pulumi.Output<String?> inventoryItemId;
-
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
-
   /// Gets or sets the location.
   late final pulumi.Output<String> location;
-
   /// Gets the total amount of physical memory on the host in GB.
   late final pulumi.Output<double> memorySizeGB;
-
   /// Gets or sets the vCenter Managed Object name for the host.
   late final pulumi.Output<String> moName;
-
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the host.
   late final pulumi.Output<String?> moRefId;
-
   /// Gets or sets the name.
   late final pulumi.Output<String> name;
-
   /// Gets the network ARM ids.
   late final pulumi.Output<List<String>> networkIds;
-
   /// Gets the used CPU usage across all cores in MHz.
   late final pulumi.Output<double> overallCpuUsageMHz;
-
   /// Gets the used physical memory on the host in GB.
   late final pulumi.Output<double> overallMemoryUsageGB;
-
   /// Gets the provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// The resource status information.
   late final pulumi.Output<List<Map<String, dynamic>>> statuses;
-
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Gets or sets the Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
-
   /// Gets or sets a unique identifier for this resource.
   late final pulumi.Output<String> uuid;
-
   /// Gets or sets the ARM Id of the vCenter resource in which this host resides.
   late final pulumi.Output<String?> vCenterId;
 
@@ -241,27 +220,21 @@ class Host extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Host]. {@macro pulumi_connectedvmwarevsphere_host_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Host(String name, {HostArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:connectedvmwarevsphere:Host',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Host(
+    String name, {
+    HostArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:connectedvmwarevsphere:Host',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cpuMhz = registerOutput<double>('cpuMhz');
     customResourceName = registerOutput<String>('customResourceName');
     datastoreIds = registerOutput<List<String>>('datastoreIds');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inventoryItemId = registerOutput<String?>('inventoryItemId');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
@@ -274,16 +247,7 @@ class Host extends pulumi.CustomResource {
     overallMemoryUsageGB = registerOutput<double>('overallMemoryUsageGB');
     provisioningState = registerOutput<String>('provisioningState');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');

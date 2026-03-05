@@ -425,19 +425,14 @@ import 'vpc_endpoint_service_resource_state.dart';
 class VpcEndpointServiceResource extends pulumi.CustomResource {
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   late final pulumi.Output<bool?> dryRun;
-
   /// (Available since v1.235.0) The ID of the region where the service resource is deployed.
   late final pulumi.Output<String> regionId;
-
   /// The service resource ID.
   late final pulumi.Output<String> resourceId;
-
   /// Service resource type, value:
   late final pulumi.Output<String> resourceType;
-
   /// The endpoint service ID.
   late final pulumi.Output<String> serviceId;
-
   /// The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
   late final pulumi.Output<String> zoneId;
 
@@ -450,11 +445,11 @@ class VpcEndpointServiceResource extends pulumi.CustomResource {
     VpcEndpointServiceResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     regionId = registerOutput<String>('regionId');
     resourceId = registerOutput<String>('resourceId');
@@ -481,11 +476,11 @@ class VpcEndpointServiceResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     regionId = registerOutput<String>('regionId');
     resourceId = registerOutput<String>('resourceId');

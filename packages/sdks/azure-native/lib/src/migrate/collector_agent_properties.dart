@@ -8,29 +8,20 @@ class CollectorAgentProperties {
 
   /// Creates a new [CollectorAgentProperties].
   /// [spnDetails] Optional.
-  CollectorAgentProperties({this.spnDetails});
+  CollectorAgentProperties({
+    this.spnDetails,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'spnDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            CollectorBodyAgentSpnProperties,
-            Map<String, dynamic>
-          >(spnDetails, (value) => value.toMap()),
+      'spnDetails': ?pulumi.Input.mapOptionalInputValue<CollectorBodyAgentSpnProperties, Map<String, dynamic>>(spnDetails, (value) => value.toMap()),
     };
   }
 
   factory CollectorAgentProperties.fromMap(Map<String, dynamic> map) {
     return CollectorAgentProperties(
-      spnDetails: (() {
-        final guardedValue = map['spnDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CollectorBodyAgentSpnProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      spnDetails: (() { final guardedValue = map['spnDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CollectorBodyAgentSpnProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

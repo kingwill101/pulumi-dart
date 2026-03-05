@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilterFilterCriteriaResourceTag {
   /// (Required) The comparison operator. Valid values: `EQUALS`.
   final pulumi.Input<String> comparison;
-
   /// (Required) The key to filter on.
   final pulumi.Input<String> key;
-
   /// (Required) The value to filter on.
   final pulumi.Input<String> value;
 
@@ -38,3 +36,4 @@ class FilterFilterCriteriaResourceTag {
     );
   }
 }
+

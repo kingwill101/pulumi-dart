@@ -6,27 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssessmentDelegationState {
   /// Identifier for the assessment.
   final pulumi.Input<String>? assessmentId;
-
   /// Comment describing the delegation request.
   final pulumi.Input<String>? comment;
-
   /// Assessment control set name. This value is the control set name used during assessment creation (not the AWS-generated ID). The `_id` suffix on this attribute has been preserved to be consistent with the underlying AWS API.
   final pulumi.Input<String>? controlSetId;
-
   /// Unique identifier for the delegation.
   final pulumi.Input<String>? delegationId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Amazon Resource Name (ARN) of the IAM role.
   final pulumi.Input<String>? roleArn;
-
   /// Type of customer persona. For assessment delegation, type must always be `RESOURCE_OWNER`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? roleType;
-
   /// Status of the delegation.
   final pulumi.Input<String>? status;
 
@@ -65,46 +58,15 @@ class AssessmentDelegationState {
 
   factory AssessmentDelegationState.fromMap(Map<String, dynamic> map) {
     return AssessmentDelegationState(
-      assessmentId: (() {
-        final guardedValue = map['assessmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      comment: (() {
-        final guardedValue = map['comment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      controlSetId: (() {
-        final guardedValue = map['controlSetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      delegationId: (() {
-        final guardedValue = map['delegationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleArn: (() {
-        final guardedValue = map['roleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleType: (() {
-        final guardedValue = map['roleType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      assessmentId: (() { final guardedValue = map['assessmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      controlSetId: (() { final guardedValue = map['controlSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      delegationId: (() { final guardedValue = map['delegationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleType: (() { final guardedValue = map['roleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -12,17 +12,20 @@ class OrganizationDelegatedAdminAccountArgs {
 
   /// Creates a new [OrganizationDelegatedAdminAccountArgs].
   /// [accountId] An organization member account ID that you want to designate as a delegated administrator.
-  OrganizationDelegatedAdminAccountArgs({required this.accountId});
+  OrganizationDelegatedAdminAccountArgs({
+    required this.accountId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accountId': accountId};
+    return <String, dynamic>{
+      'accountId': accountId,
+    };
   }
 
-  factory OrganizationDelegatedAdminAccountArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OrganizationDelegatedAdminAccountArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationDelegatedAdminAccountArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
     );
   }
 }
+

@@ -7,16 +7,12 @@ import 'zone_attachment_vpc.dart';
 class ZoneAttachmentState {
   /// The language of code.
   final pulumi.Input<String>? lang;
-
   /// The user custom IP address.
   final pulumi.Input<String>? userClientIp;
-
   /// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
   final pulumi.Input<List<String>>? vpcIds;
-
   /// See `vpcs` below.Recommend to use `vpcs`.
   final pulumi.Input<List<ZoneAttachmentVpc>>? vpcs;
-
   /// The name of the Private Zone Record.
   final pulumi.Input<String>? zoneId;
 
@@ -39,56 +35,19 @@ class ZoneAttachmentState {
       'lang': ?lang,
       'userClientIp': ?userClientIp,
       'vpcIds': ?vpcIds,
-      'vpcs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ZoneAttachmentVpc>,
-            List<Map<String, dynamic>>
-          >(
-            vpcs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ZoneAttachmentVpc,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'vpcs': ?pulumi.Input.mapOptionalInputValue<List<ZoneAttachmentVpc>, List<Map<String, dynamic>>>(vpcs, (value) => pulumi.Input.encodeList<ZoneAttachmentVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
       'zoneId': ?zoneId,
     };
   }
 
   factory ZoneAttachmentState.fromMap(Map<String, dynamic> map) {
     return ZoneAttachmentState(
-      lang: (() {
-        final guardedValue = map['lang'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userClientIp: (() {
-        final guardedValue = map['userClientIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vpcIds: (() {
-        final guardedValue = map['vpcIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      vpcs: (() {
-        final guardedValue = map['vpcs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ZoneAttachmentVpc>(
-            guardedValue,
-            (value) => ZoneAttachmentVpc.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      zoneId: (() {
-        final guardedValue = map['zoneId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      lang: (() { final guardedValue = map['lang']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userClientIp: (() { final guardedValue = map['userClientIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vpcIds: (() { final guardedValue = map['vpcIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      vpcs: (() { final guardedValue = map['vpcs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ZoneAttachmentVpc>(guardedValue, (value) => ZoneAttachmentVpc.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

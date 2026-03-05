@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlexibleAppVersionResourcesVolume {
   /// Unique name for the volume.
   final pulumi.Input<String> name;
-
   /// Volume size in gigabytes.
   final pulumi.Input<int> sizeGb;
-
   /// Underlying volume type, e.g. 'tmpfs'.
   final pulumi.Input<String> volumeType;
 
@@ -38,3 +36,4 @@ class FlexibleAppVersionResourcesVolume {
     );
   }
 }
+

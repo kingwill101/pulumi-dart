@@ -7,42 +7,29 @@ import 'service_backend_port_patch.dart';
 class IngressServiceBackendPatch {
   /// name is the referenced service. The service must exist in the same namespace as the Ingress object.
   final pulumi.Input<String>? name;
-
   /// port of the referenced service. A port name or port number is required for a IngressServiceBackend.
   final pulumi.Input<ServiceBackendPortPatch>? port;
 
   /// Creates a new [IngressServiceBackendPatch].
   /// [name] name is the referenced service. The service must exist in the same namespace as the Ingress object.
   /// [port] port of the referenced service. A port name or port number is required for a IngressServiceBackend.
-  IngressServiceBackendPatch({this.name, this.port});
+  IngressServiceBackendPatch({
+    this.name,
+    this.port,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'port':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServiceBackendPortPatch,
-            Map<String, dynamic>
-          >(port, (value) => value.toMap()),
+      'port': ?pulumi.Input.mapOptionalInputValue<ServiceBackendPortPatch, Map<String, dynamic>>(port, (value) => value.toMap()),
     };
   }
 
   factory IngressServiceBackendPatch.fromMap(Map<String, dynamic> map) {
     return IngressServiceBackendPatch(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceBackendPortPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceBackendPortPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

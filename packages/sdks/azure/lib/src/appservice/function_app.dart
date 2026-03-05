@@ -922,90 +922,64 @@ import 'function_app_state.dart';
 class FunctionApp extends pulumi.CustomResource {
   /// The ID of the App Service Plan within which to create this Function App.
   late final pulumi.Output<String> appServicePlanId;
-
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
   ///
   /// &gt; **NOTE:** The values for `AzureWebJobsStorage` and `FUNCTIONS_EXTENSION_VERSION` will be filled by other input arguments and shouldn't be configured separately. `AzureWebJobsStorage` is filled based on `storage_account_name` and `storage_account_access_key`. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`.
   late final pulumi.Output<Map<String, String>> appSettings;
-
   /// A `auth_settings` block as defined below.
   late final pulumi.Output<FunctionAppAuthSettings> authSettings;
-
   /// The mode of the Function App's client certificates requirement for incoming requests. Possible values are `Required` and `Optional`.
   late final pulumi.Output<String?> clientCertMode;
-
   /// An `connection_string` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
-
   /// An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   late final pulumi.Output<String> customDomainVerificationId;
-
   /// The amount of memory in gigabyte-seconds that your application is allowed to consume per day. Setting this value only affects function apps under the consumption plan.
   late final pulumi.Output<int?> dailyMemoryTimeQuota;
-
   /// The default hostname associated with the Function App - such as `mysite.azurewebsites.net`
   late final pulumi.Output<String> defaultHostname;
-
   /// Should the built-in logging of this Function App be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enableBuiltinLogging;
-
   /// Is the Function App enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// Can the Function App only be accessed via HTTPS? Defaults to `false`.
   late final pulumi.Output<bool?> httpsOnly;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<FunctionAppIdentity?> identity;
-
   /// The User Assigned Identity Id used for looking up KeyVault secrets. The identity must be assigned to the application. See [Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity) for more information.
   late final pulumi.Output<String> keyVaultReferenceIdentityId;
-
   /// The Function App kind - such as `functionapp,linux,container`
   late final pulumi.Output<String> kind;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Function App. Changing this forces a new resource to be created. Limit the function name to 32 characters to avoid naming collisions. For more information about [Function App naming rule](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftweb).
   late final pulumi.Output<String> name;
-
   /// A string indicating the Operating System type for this function app. Possible values are `linux` and ``(empty string). Changing this forces a new resource to be created. Defaults to `""`.
   ///
   /// &gt; **NOTE:** This value will be `linux` for Linux derivatives, or an empty string for Windows (default). When set to `linux` you must also set `azure.appservice.Plan` arguments as `kind = "Linux"` and `reserved = true`
   late final pulumi.Output<String?> osType;
-
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`
   late final pulumi.Output<String> outboundIpAddresses;
-
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
   late final pulumi.Output<String> possibleOutboundIpAddresses;
-
   /// The name of the resource group in which to create the Function App. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `site_config` object as defined below.
   late final pulumi.Output<FunctionAppSiteConfig> siteConfig;
-
   /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service.
   late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
-
   /// A `source_control` block, as defined below.
   late final pulumi.Output<FunctionAppSourceControl> sourceControl;
-
   /// The access key which will be used to access the backend storage account for the Function App.
   ///
   /// &gt; **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of the application code for function app to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or python, etc), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
   ///
   /// &gt; **Note:**  When using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
   late final pulumi.Output<String> storageAccountAccessKey;
-
   /// The backend storage account name which will be used by this Function App (such as the dashboard, logs). Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The runtime version associated with the Function App. Defaults to `~1`.
   late final pulumi.Output<String?> version;
 
@@ -1018,80 +992,34 @@ class FunctionApp extends pulumi.CustomResource {
     FunctionAppArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/functionApp:FunctionApp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/functionApp:FunctionApp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
     appSettings = registerOutput<Map<String, String>>('appSettings');
-    authSettings = registerOutput<FunctionAppAuthSettings>(
-      'authSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionAppAuthSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authSettings = registerOutput<FunctionAppAuthSettings>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientCertMode = registerOutput<String?>('clientCertMode');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>>(
-      'connectionStrings',
-    );
-    customDomainVerificationId = registerOutput<String>(
-      'customDomainVerificationId',
-    );
+    connectionStrings = registerOutput<List<Map<String, dynamic>>>('connectionStrings');
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
     dailyMemoryTimeQuota = registerOutput<int?>('dailyMemoryTimeQuota');
     defaultHostname = registerOutput<String>('defaultHostname');
     enableBuiltinLogging = registerOutput<bool?>('enableBuiltinLogging');
     enabled = registerOutput<bool?>('enabled');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<FunctionAppIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionAppIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    keyVaultReferenceIdentityId = registerOutput<String>(
-      'keyVaultReferenceIdentityId',
-    );
+    identity = registerOutput<FunctionAppIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     osType = registerOutput<String?>('osType');
     outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    possibleOutboundIpAddresses = registerOutput<String>(
-      'possibleOutboundIpAddresses',
-    );
+    possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    siteConfig = registerOutput<FunctionAppSiteConfig>(
-      'siteConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionAppSiteConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>(
-      'siteCredentials',
-    );
-    sourceControl = registerOutput<FunctionAppSourceControl>(
-      'sourceControl',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionAppSourceControl.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    siteConfig = registerOutput<FunctionAppSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
+    sourceControl = registerOutput<FunctionAppSourceControl>('sourceControl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppSourceControl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey');
     storageAccountName = registerOutput<String>('storageAccountName');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1116,80 +1044,34 @@ class FunctionApp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/functionApp:FunctionApp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/functionApp:FunctionApp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
     appSettings = registerOutput<Map<String, String>>('appSettings');
-    authSettings = registerOutput<FunctionAppAuthSettings>(
-      'authSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionAppAuthSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authSettings = registerOutput<FunctionAppAuthSettings>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientCertMode = registerOutput<String?>('clientCertMode');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>>(
-      'connectionStrings',
-    );
-    customDomainVerificationId = registerOutput<String>(
-      'customDomainVerificationId',
-    );
+    connectionStrings = registerOutput<List<Map<String, dynamic>>>('connectionStrings');
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
     dailyMemoryTimeQuota = registerOutput<int?>('dailyMemoryTimeQuota');
     defaultHostname = registerOutput<String>('defaultHostname');
     enableBuiltinLogging = registerOutput<bool?>('enableBuiltinLogging');
     enabled = registerOutput<bool?>('enabled');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<FunctionAppIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionAppIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    keyVaultReferenceIdentityId = registerOutput<String>(
-      'keyVaultReferenceIdentityId',
-    );
+    identity = registerOutput<FunctionAppIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     osType = registerOutput<String?>('osType');
     outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    possibleOutboundIpAddresses = registerOutput<String>(
-      'possibleOutboundIpAddresses',
-    );
+    possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    siteConfig = registerOutput<FunctionAppSiteConfig>(
-      'siteConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionAppSiteConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>(
-      'siteCredentials',
-    );
-    sourceControl = registerOutput<FunctionAppSourceControl>(
-      'sourceControl',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionAppSourceControl.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    siteConfig = registerOutput<FunctionAppSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
+    sourceControl = registerOutput<FunctionAppSourceControl>('sourceControl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppSourceControl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey');
     storageAccountName = registerOutput<String>('storageAccountName');
     tags = registerOutput<Map<String, String>?>('tags');

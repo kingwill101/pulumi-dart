@@ -10,22 +10,16 @@ import 'managed_service_identity.dart';
 class StorageSyncServiceArgs {
   /// managed identities for the Storage Sync to interact with other Azure services without maintaining any secrets or credentials in code.
   final pulumi.Input<ManagedServiceIdentity>? identity;
-
   /// Incoming Traffic Policy
   final pulumi.Input<String>? incomingTrafficPolicy;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of Storage Sync Service resource.
   final pulumi.Input<String>? storageSyncServiceName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Use Identity authorization when customer have finished setup RBAC permissions.
   final pulumi.Input<bool>? useIdentity;
 
@@ -49,11 +43,7 @@ class StorageSyncServiceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedServiceIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'incomingTrafficPolicy': ?incomingTrafficPolicy,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
@@ -65,45 +55,14 @@ class StorageSyncServiceArgs {
 
   factory StorageSyncServiceArgs.fromMap(Map<String, dynamic> map) {
     return StorageSyncServiceArgs(
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedServiceIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      incomingTrafficPolicy: (() {
-        final guardedValue = map['incomingTrafficPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      storageSyncServiceName: (() {
-        final guardedValue = map['storageSyncServiceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      useIdentity: (() {
-        final guardedValue = map['useIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      incomingTrafficPolicy: (() { final guardedValue = map['incomingTrafficPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      storageSyncServiceName: (() { final guardedValue = map['storageSyncServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      useIdentity: (() { final guardedValue = map['useIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

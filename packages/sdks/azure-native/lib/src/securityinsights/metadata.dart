@@ -158,73 +158,50 @@ import 'system_data_response.dart';
 class Metadata extends pulumi.CustomResource {
   /// The creator of the content item.
   late final pulumi.Output<MetadataAuthorResponse?> author;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Categories for the solution content item
   late final pulumi.Output<MetadataCategoriesResponse?> categories;
-
   /// Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
   late final pulumi.Output<String?> contentId;
-
   /// Schema version of the content. Can be used to distinguish between different flow based on the schema version
   late final pulumi.Output<String?> contentSchemaVersion;
-
   /// The custom version of the content. A optional free text
   late final pulumi.Output<String?> customVersion;
-
   /// Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
   late final pulumi.Output<MetadataDependenciesResponse?> dependencies;
-
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// first publish date solution content item
   late final pulumi.Output<String?> firstPublishDate;
-
   /// the icon identifier. this id can later be fetched from the solution template
   late final pulumi.Output<String?> icon;
-
   /// The kind of content the metadata is for.
   late final pulumi.Output<String> kind;
-
   /// last publish date for the solution content item
   late final pulumi.Output<String?> lastPublishDate;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Full parent resource ID of the content item the metadata is for.  This is the full resource ID including the scope (subscription and resource group)
   late final pulumi.Output<String> parentId;
-
   /// preview image file names. These will be taken from the solution artifacts
   late final pulumi.Output<List<String>?> previewImages;
-
   /// preview image file names. These will be taken from the solution artifacts. used for dark theme support
   late final pulumi.Output<List<String>?> previewImagesDark;
-
   /// Providers for the solution content item
   late final pulumi.Output<List<String>?> providers;
-
   /// Source of the content.  This is where/how it was created.
   late final pulumi.Output<MetadataSourceResponse?> source;
-
   /// Support information for the metadata - type, name, contact information
   late final pulumi.Output<MetadataSupportResponse?> support;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// the tactics the resource covers
   late final pulumi.Output<List<String>?> threatAnalysisTactics;
-
   /// the techniques the resource covers, these have to be aligned with the tactics being used
   late final pulumi.Output<List<String>?> threatAnalysisTechniques;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices.  Can also be any string, but then we cannot guarantee any version checks
   late final pulumi.Output<String?> version;
 
@@ -237,45 +214,18 @@ class Metadata extends pulumi.CustomResource {
     MetadataArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:Metadata',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    author = registerOutput<MetadataAuthorResponse?>(
-      'author',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetadataAuthorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:securityinsights:Metadata',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    author = registerOutput<MetadataAuthorResponse?>('author', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataAuthorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    categories = registerOutput<MetadataCategoriesResponse?>(
-      'categories',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetadataCategoriesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    categories = registerOutput<MetadataCategoriesResponse?>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataCategoriesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contentId = registerOutput<String?>('contentId');
     contentSchemaVersion = registerOutput<String?>('contentSchemaVersion');
     customVersion = registerOutput<String?>('customVersion');
-    dependencies = registerOutput<MetadataDependenciesResponse?>(
-      'dependencies',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetadataDependenciesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dependencies = registerOutput<MetadataDependenciesResponse?>('dependencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataDependenciesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String?>('etag');
     firstPublishDate = registerOutput<String?>('firstPublishDate');
     icon = registerOutput<String?>('icon');
@@ -286,42 +236,11 @@ class Metadata extends pulumi.CustomResource {
     previewImages = registerOutput<List<String>?>('previewImages');
     previewImagesDark = registerOutput<List<String>?>('previewImagesDark');
     providers = registerOutput<List<String>?>('providers');
-    source = registerOutput<MetadataSourceResponse?>(
-      'source',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetadataSourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    support = registerOutput<MetadataSupportResponse?>(
-      'support',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetadataSupportResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    threatAnalysisTactics = registerOutput<List<String>?>(
-      'threatAnalysisTactics',
-    );
-    threatAnalysisTechniques = registerOutput<List<String>?>(
-      'threatAnalysisTechniques',
-    );
+    source = registerOutput<MetadataSourceResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    support = registerOutput<MetadataSupportResponse?>('support', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataSupportResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    threatAnalysisTactics = registerOutput<List<String>?>('threatAnalysisTactics');
+    threatAnalysisTechniques = registerOutput<List<String>?>('threatAnalysisTechniques');
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }

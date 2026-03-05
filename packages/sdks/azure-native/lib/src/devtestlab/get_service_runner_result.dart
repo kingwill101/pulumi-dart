@@ -6,22 +6,16 @@ import 'identity_properties_response.dart';
 class GetServiceRunnerResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The identifier of the resource.
   final String id;
-
   /// The identity of the resource.
   final IdentityPropertiesResponse? identity;
-
   /// The location of the resource.
   final String? location;
-
   /// The name of the resource.
   final String name;
-
   /// The tags of the resource.
   final Map<String, String>? tags;
-
   /// The type of the resource.
   final String type;
 
@@ -59,25 +53,12 @@ class GetServiceRunnerResult {
     return GetServiceRunnerResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return IdentityPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

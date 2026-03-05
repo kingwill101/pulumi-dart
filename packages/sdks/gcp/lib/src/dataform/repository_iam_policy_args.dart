@@ -36,17 +36,10 @@ class RepositoryIamPolicyArgs {
   factory RepositoryIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryIamPolicyArgs(
       policyData: pulumi.Input.fromValue(map['policyData'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repository: pulumi.Input.fromValue(map['repository'] as String),
     );
   }
 }
+

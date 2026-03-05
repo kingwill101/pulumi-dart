@@ -9,24 +9,23 @@ class ConnectionManagedIdentityResponse {
   /// Creates a new [ConnectionManagedIdentityResponse].
   /// [clientId] Optional.
   /// [resourceId] Optional.
-  ConnectionManagedIdentityResponse({this.clientId, this.resourceId});
+  ConnectionManagedIdentityResponse({
+    this.clientId,
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'clientId': ?clientId, 'resourceId': ?resourceId};
+    return <String, dynamic>{
+      'clientId': ?clientId,
+      'resourceId': ?resourceId,
+    };
   }
 
   factory ConnectionManagedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionManagedIdentityResponse(
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

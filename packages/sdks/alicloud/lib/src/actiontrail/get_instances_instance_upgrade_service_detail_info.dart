@@ -18,13 +18,10 @@ class GetInstancesInstanceUpgradeServiceDetailInfo {
     };
   }
 
-  factory GetInstancesInstanceUpgradeServiceDetailInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstancesInstanceUpgradeServiceDetailInfo.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceUpgradeServiceDetailInfo(
-      current2OpenSourceVersion: pulumi.Input.fromValue(
-        map['current2OpenSourceVersion'] as String,
-      ),
+      current2OpenSourceVersion: pulumi.Input.fromValue(map['current2OpenSourceVersion'] as String),
     );
   }
 }
+

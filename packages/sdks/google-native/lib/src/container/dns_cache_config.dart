@@ -9,19 +9,20 @@ class DnsCacheConfig {
 
   /// Creates a new [DnsCacheConfig].
   /// [enabled] Whether NodeLocal DNSCache is enabled for this cluster.
-  DnsCacheConfig({this.enabled});
+  DnsCacheConfig({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory DnsCacheConfig.fromMap(Map<String, dynamic> map) {
     return DnsCacheConfig(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

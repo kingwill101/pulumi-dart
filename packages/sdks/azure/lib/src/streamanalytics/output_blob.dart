@@ -351,43 +351,30 @@ import 'output_blob_state.dart';
 class OutputBlob extends pulumi.CustomResource {
   /// The authentication mode for the Stream Output. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.
   late final pulumi.Output<String?> authenticationMode;
-
   /// The maximum wait time per batch in `hh:mm:ss` e.g. `00:02:00` for two minutes.
   late final pulumi.Output<String?> batchMaxWaitTime;
-
   /// The minimum number of rows per batch (must be between `0` and `1000000`).
   late final pulumi.Output<int?> batchMinRows;
-
   /// Determines whether blob blocks are either committed automatically or appended. Possible values are `Append` and `Once`. Defaults to `Append`.
   late final pulumi.Output<String?> blobWriteMode;
-
   /// The date format. Wherever `{date}` appears in `path_pattern`, the value of this property is used as the date format instead.
   late final pulumi.Output<String> dateFormat;
-
   /// The name of the Stream Output. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine whether or not they should be included as input or output to the job.
   late final pulumi.Output<String> pathPattern;
-
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `serialization` block as defined below.
   late final pulumi.Output<OutputBlobSerialization> serialization;
-
   /// The Access Key which should be used to connect to this Storage Account.
   late final pulumi.Output<String?> storageAccountKey;
-
   /// The name of the Storage Account.
   late final pulumi.Output<String> storageAccountName;
-
   /// The name of the Container within the Storage Account.
   late final pulumi.Output<String> storageContainerName;
-
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;
-
   /// The time format. Wherever `{time}` appears in `path_pattern`, the value of this property is used as the time format instead.
   late final pulumi.Output<String> timeFormat;
 
@@ -400,11 +387,11 @@ class OutputBlob extends pulumi.CustomResource {
     OutputBlobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/outputBlob:OutputBlob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/outputBlob:OutputBlob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     batchMaxWaitTime = registerOutput<String?>('batchMaxWaitTime');
     batchMinRows = registerOutput<int?>('batchMinRows');
@@ -413,16 +400,7 @@ class OutputBlob extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     pathPattern = registerOutput<String>('pathPattern');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serialization = registerOutput<OutputBlobSerialization>(
-      'serialization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OutputBlobSerialization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serialization = registerOutput<OutputBlobSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutputBlobSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccountKey = registerOutput<String?>('storageAccountKey');
     storageAccountName = registerOutput<String>('storageAccountName');
     storageContainerName = registerOutput<String>('storageContainerName');
@@ -448,11 +426,11 @@ class OutputBlob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/outputBlob:OutputBlob',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/outputBlob:OutputBlob',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     batchMaxWaitTime = registerOutput<String?>('batchMaxWaitTime');
     batchMinRows = registerOutput<int?>('batchMinRows');
@@ -461,16 +439,7 @@ class OutputBlob extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     pathPattern = registerOutput<String>('pathPattern');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serialization = registerOutput<OutputBlobSerialization>(
-      'serialization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OutputBlobSerialization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serialization = registerOutput<OutputBlobSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutputBlobSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccountKey = registerOutput<String?>('storageAccountKey');
     storageAccountName = registerOutput<String>('storageAccountName');
     storageContainerName = registerOutput<String>('storageContainerName');

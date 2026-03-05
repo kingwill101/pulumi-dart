@@ -296,17 +296,13 @@ import 'server_group_state.dart';
 class ServerGroup extends pulumi.CustomResource {
   /// Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
   late final pulumi.Output<bool?> deleteProtectionValidation;
-
   /// The ID of the Server Load Balancer (SLB) instance.
   late final pulumi.Output<String> loadBalancerId;
-
   /// The name of the vServer group. Default value: `tf-server-group`.
   late final pulumi.Output<String> name;
-
   /// The list of backend servers to be added. See `servers` below.
   /// &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
   late final pulumi.Output<List<Map<String, dynamic>>> servers;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -319,14 +315,12 @@ class ServerGroup extends pulumi.CustomResource {
     ServerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:slb/serverGroup:ServerGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deleteProtectionValidation = registerOutput<bool?>(
-      'deleteProtectionValidation',
-    );
+          'alicloud:slb/serverGroup:ServerGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
     loadBalancerId = registerOutput<String>('loadBalancerId');
     this.name = registerOutput<String>('name');
     servers = registerOutput<List<Map<String, dynamic>>>('servers');
@@ -351,14 +345,12 @@ class ServerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:slb/serverGroup:ServerGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deleteProtectionValidation = registerOutput<bool?>(
-      'deleteProtectionValidation',
-    );
+          'alicloud:slb/serverGroup:ServerGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
     loadBalancerId = registerOutput<String>('loadBalancerId');
     this.name = registerOutput<String>('name');
     servers = registerOutput<List<Map<String, dynamic>>>('servers');

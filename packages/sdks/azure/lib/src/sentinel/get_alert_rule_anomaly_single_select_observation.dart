@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertRuleAnomalySingleSelectObservation {
   /// The description of the threshold observation.
   final pulumi.Input<String> description;
-
   /// The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
   final pulumi.Input<String> name;
-
   /// A list of supported values of the single select observation.
   final pulumi.Input<List<String>> supportedValues;
-
   /// The value of the threshold observation.
   final pulumi.Input<String> value;
 
@@ -36,16 +33,13 @@ class GetAlertRuleAnomalySingleSelectObservation {
     };
   }
 
-  factory GetAlertRuleAnomalySingleSelectObservation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAlertRuleAnomalySingleSelectObservation.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleAnomalySingleSelectObservation(
       description: pulumi.Input.fromValue(map['description'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      supportedValues: pulumi.Input.fromValue(
-        (map['supportedValues'] as List).cast<String>(),
-      ),
+      supportedValues: pulumi.Input.fromValue((map['supportedValues'] as List).cast<String>()),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

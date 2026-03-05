@@ -138,28 +138,20 @@ import 'dedicated_cloud_service_args.dart';
 class DedicatedCloudService extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// gateway Subnet for the account. It will collect the subnet address and always treat it as /28
   late final pulumi.Output<String> gatewaySubnet;
-
   /// indicates whether account onboarded or not in a given region
   late final pulumi.Output<String> isAccountOnboarded;
-
   /// Azure region
   late final pulumi.Output<String> location;
-
   /// {dedicatedCloudServiceName}
   late final pulumi.Output<String> name;
-
   /// total nodes purchased
   late final pulumi.Output<int> nodes;
-
   /// link to a service management web portal
   late final pulumi.Output<String> serviceURL;
-
   /// The list of tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// {resourceProviderNamespace}/{resourceType}
   late final pulumi.Output<String> type;
 
@@ -172,11 +164,11 @@ class DedicatedCloudService extends pulumi.CustomResource {
     DedicatedCloudServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:vmwarecloudsimple:DedicatedCloudService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:vmwarecloudsimple:DedicatedCloudService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     gatewaySubnet = registerOutput<String>('gatewaySubnet');
     isAccountOnboarded = registerOutput<String>('isAccountOnboarded');

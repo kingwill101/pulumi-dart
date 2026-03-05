@@ -8,10 +8,14 @@ class GetMapConfiguration {
 
   /// Creates a new [GetMapConfiguration].
   /// [style] The map style selected from an available data provider.
-  GetMapConfiguration({required this.style});
+  GetMapConfiguration({
+    required this.style,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'style': style};
+    return <String, dynamic>{
+      'style': style,
+    };
   }
 
   factory GetMapConfiguration.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetMapConfiguration {
     );
   }
 }
+

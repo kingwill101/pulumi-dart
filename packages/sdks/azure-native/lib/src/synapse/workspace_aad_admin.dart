@@ -152,22 +152,16 @@ import 'workspace_aad_admin_args.dart';
 class WorkspaceAadAdmin extends pulumi.CustomResource {
   /// Workspace active directory administrator type
   late final pulumi.Output<String?> administratorType;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Login of the workspace active directory administrator
   late final pulumi.Output<String?> login;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Object ID of the workspace active directory administrator
   late final pulumi.Output<String?> sid;
-
   /// Tenant ID of the workspace active directory administrator
   late final pulumi.Output<String?> tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -180,11 +174,11 @@ class WorkspaceAadAdmin extends pulumi.CustomResource {
     WorkspaceAadAdminArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:synapse:WorkspaceAadAdmin',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:synapse:WorkspaceAadAdmin',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administratorType = registerOutput<String?>('administratorType');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     login = registerOutput<String?>('login');

@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getManagedInstanceAdministrator.
 class GetManagedInstanceAdministratorResult {
   /// Type of the managed instance administrator.
   final String administratorType;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String id;
-
   /// Login name of the managed instance administrator.
   final String login;
-
   /// Resource name.
   final String name;
-
   /// SID (object ID) of the managed instance administrator.
   final String sid;
-
   /// Tenant ID of the managed instance administrator.
   final String? tenantId;
-
   /// Resource type.
   final String type;
 
@@ -59,9 +53,7 @@ class GetManagedInstanceAdministratorResult {
     };
   }
 
-  factory GetManagedInstanceAdministratorResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedInstanceAdministratorResult.fromMap(Map<String, dynamic> map) {
     return GetManagedInstanceAdministratorResult(
       administratorType: map['administratorType'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
@@ -69,12 +61,9 @@ class GetManagedInstanceAdministratorResult {
       login: map['login'] as String,
       name: map['name'] as String,
       sid: map['sid'] as String,
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

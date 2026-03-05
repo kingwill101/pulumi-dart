@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RelationshipPropertiesResponse {
   /// Resource name of the child entity
   final pulumi.Input<String> childEntityName;
-
   /// Date when the relationship was (soft-)deleted
   final pulumi.Input<String> deletionDate;
-
   /// Discovered by which discovery rule. If set, the relationship cannot be deleted manually.
   final pulumi.Input<String> discoveredBy;
-
   /// Display name
   final pulumi.Input<String>? displayName;
-
   /// Optional set of labels (key-value pairs)
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Resource name of the parent entity
   final pulumi.Input<String> parentEntityName;
-
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
 
@@ -60,24 +54,11 @@ class RelationshipPropertiesResponse {
       childEntityName: pulumi.Input.fromValue(map['childEntityName'] as String),
       deletionDate: pulumi.Input.fromValue(map['deletionDate'] as String),
       discoveredBy: pulumi.Input.fromValue(map['discoveredBy'] as String),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      parentEntityName: pulumi.Input.fromValue(
-        map['parentEntityName'] as String,
-      ),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      parentEntityName: pulumi.Input.fromValue(map['parentEntityName'] as String),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

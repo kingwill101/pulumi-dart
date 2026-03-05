@@ -16,3 +16,4 @@ enum VpnPolicyMemberAttributeType {
     throw ArgumentError('Unknown VpnPolicyMemberAttributeType value: $value');
   }
 }
+

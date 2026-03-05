@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PacketMirroringForwardingRuleInfoResponseComputeV1 {
   /// Unique identifier for the forwarding rule; defined by the server.
   final pulumi.Input<String> canonicalUrl;
-
   /// Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
   final pulumi.Input<String> url;
 
@@ -18,15 +17,17 @@ class PacketMirroringForwardingRuleInfoResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'canonicalUrl': canonicalUrl, 'url': url};
+    return <String, dynamic>{
+      'canonicalUrl': canonicalUrl,
+      'url': url,
+    };
   }
 
-  factory PacketMirroringForwardingRuleInfoResponseComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PacketMirroringForwardingRuleInfoResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return PacketMirroringForwardingRuleInfoResponseComputeV1(
       canonicalUrl: pulumi.Input.fromValue(map['canonicalUrl'] as String),
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
+

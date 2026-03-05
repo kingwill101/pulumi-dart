@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse {
   /// Indicates Ekm provisioning error if any.
   final pulumi.Input<String> ekmProvisioningErrorDomain;
-
   /// Detailed error message if Ekm provisioning fails
   final pulumi.Input<String> ekmProvisioningErrorMapping;
-
   /// Indicates Ekm enrollment Provisioning of a given workload.
   final pulumi.Input<String> ekmProvisioningState;
 
@@ -31,19 +29,12 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse 
     };
   }
 
-  factory GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse(
-      ekmProvisioningErrorDomain: pulumi.Input.fromValue(
-        map['ekmProvisioningErrorDomain'] as String,
-      ),
-      ekmProvisioningErrorMapping: pulumi.Input.fromValue(
-        map['ekmProvisioningErrorMapping'] as String,
-      ),
-      ekmProvisioningState: pulumi.Input.fromValue(
-        map['ekmProvisioningState'] as String,
-      ),
+      ekmProvisioningErrorDomain: pulumi.Input.fromValue(map['ekmProvisioningErrorDomain'] as String),
+      ekmProvisioningErrorMapping: pulumi.Input.fromValue(map['ekmProvisioningErrorMapping'] as String),
+      ekmProvisioningState: pulumi.Input.fromValue(map['ekmProvisioningState'] as String),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1BuiltInAlgorithmOutput {
   /// Framework on which the built-in algorithm was trained.
   final pulumi.Input<String>? framework;
-
   /// The Cloud Storage path to the `model/` directory where the training job saves the trained model. Only set for successful jobs that don't use hyperparameter tuning.
   final pulumi.Input<String>? modelPath;
-
   /// Python version on which the built-in algorithm was trained.
   final pulumi.Input<String>? pythonVersion;
-
   /// AI Platform runtime version on which the built-in algorithm was trained.
   final pulumi.Input<String>? runtimeVersion;
 
@@ -37,30 +34,13 @@ class GoogleCloudMlV1BuiltInAlgorithmOutput {
     };
   }
 
-  factory GoogleCloudMlV1BuiltInAlgorithmOutput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudMlV1BuiltInAlgorithmOutput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1BuiltInAlgorithmOutput(
-      framework: (() {
-        final guardedValue = map['framework'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      modelPath: (() {
-        final guardedValue = map['modelPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pythonVersion: (() {
-        final guardedValue = map['pythonVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      runtimeVersion: (() {
-        final guardedValue = map['runtimeVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      framework: (() { final guardedValue = map['framework']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      modelPath: (() { final guardedValue = map['modelPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pythonVersion: (() { final guardedValue = map['pythonVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      runtimeVersion: (() { final guardedValue = map['runtimeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMonitorPlan {
   /// Different billing cycles.
   final pulumi.Input<String> billingCycle;
-
   /// Date when plan was applied.
   final pulumi.Input<String> effectiveDate;
-
   /// Plan id as published by Dynatrace.
   final pulumi.Input<String> plan;
-
   /// Different usage type.
   final pulumi.Input<String> usageType;
 
@@ -45,3 +42,4 @@ class GetMonitorPlan {
     );
   }
 }
+

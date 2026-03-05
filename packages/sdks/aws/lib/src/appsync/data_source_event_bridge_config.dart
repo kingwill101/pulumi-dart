@@ -8,10 +8,14 @@ class DataSourceEventBridgeConfig {
 
   /// Creates a new [DataSourceEventBridgeConfig].
   /// [eventBusArn] ARN for the EventBridge bus.
-  DataSourceEventBridgeConfig({required this.eventBusArn});
+  DataSourceEventBridgeConfig({
+    required this.eventBusArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'eventBusArn': eventBusArn};
+    return <String, dynamic>{
+      'eventBusArn': eventBusArn,
+    };
   }
 
   factory DataSourceEventBridgeConfig.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DataSourceEventBridgeConfig {
     );
   }
 }
+

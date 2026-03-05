@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayTrustedRootCertificate {
   /// Certificate public data.
   final pulumi.Input<String>? data;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
   final pulumi.Input<String>? keyVaultSecretId;
-
   /// Name of the trusted root certificate that is unique within an Application Gateway.
   final pulumi.Input<String>? name;
 
@@ -37,30 +34,13 @@ class ApplicationGatewayTrustedRootCertificate {
     };
   }
 
-  factory ApplicationGatewayTrustedRootCertificate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationGatewayTrustedRootCertificate.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayTrustedRootCertificate(
-      data: (() {
-        final guardedValue = map['data'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultSecretId: (() {
-        final guardedValue = map['keyVaultSecretId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultSecretId: (() { final guardedValue = map['keyVaultSecretId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

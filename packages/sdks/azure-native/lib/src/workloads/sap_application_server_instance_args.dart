@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SapApplicationServerInstanceArgs {
   /// The name of SAP Application Server instance resource.
   final pulumi.Input<String>? applicationInstanceName;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Virtual Instances for SAP solutions resource
   final pulumi.Input<String> sapVirtualInstanceName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -48,29 +44,12 @@ class SapApplicationServerInstanceArgs {
 
   factory SapApplicationServerInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SapApplicationServerInstanceArgs(
-      applicationInstanceName: (() {
-        final guardedValue = map['applicationInstanceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sapVirtualInstanceName: pulumi.Input.fromValue(
-        map['sapVirtualInstanceName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      applicationInstanceName: (() { final guardedValue = map['applicationInstanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sapVirtualInstanceName: pulumi.Input.fromValue(map['sapVirtualInstanceName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -7,29 +7,21 @@ import 'system_data_response.dart';
 class GetASCDataConnectorResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The available data types for the connector.
   final AlertsDataTypeOfDataConnectorResponse? dataTypes;
-
   /// Etag of the azure resource
   final String? etag;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The kind of the data connector
   /// Expected value is 'AzureSecurityCenter'.
   final String kind;
-
   /// The name of the resource
   final String name;
-
   /// The subscription id to connect to, and get the data from.
   final String? subscriptionId;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -72,30 +64,15 @@ class GetASCDataConnectorResult {
   factory GetASCDataConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetASCDataConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dataTypes: (() {
-        final guardedValue = map['dataTypes'];
-        if (guardedValue == null) return null;
-        return AlertsDataTypeOfDataConnectorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      dataTypes: (() { final guardedValue = map['dataTypes']; if (guardedValue == null) return null; return AlertsDataTypeOfDataConnectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

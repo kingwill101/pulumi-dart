@@ -15,3 +15,4 @@ enum InitialUploadPolicy {
     throw ArgumentError('Unknown InitialUploadPolicy value: $value');
   }
 }
+

@@ -8,19 +8,20 @@ class LogTransformerTransformerConfigTrimString {
 
   /// Creates a new [LogTransformerTransformerConfigTrimString].
   /// [withKeys] Specifies the keys of the fields to trim.
-  LogTransformerTransformerConfigTrimString({required this.withKeys});
+  LogTransformerTransformerConfigTrimString({
+    required this.withKeys,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'withKeys': withKeys};
+    return <String, dynamic>{
+      'withKeys': withKeys,
+    };
   }
 
-  factory LogTransformerTransformerConfigTrimString.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogTransformerTransformerConfigTrimString.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigTrimString(
-      withKeys: pulumi.Input.fromValue(
-        (map['withKeys'] as List).cast<String>(),
-      ),
+      withKeys: pulumi.Input.fromValue((map['withKeys'] as List).cast<String>()),
     );
   }
 }
+

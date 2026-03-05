@@ -28,7 +28,6 @@ class GetLoadBalancerResult {
   final bool enableZonalShift;
   final String enforceSecurityGroupInboundRulesOnPrivateLinkTraffic;
   final List<GetLoadBalancerHealthCheckLog> healthCheckLogs;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final int idleTimeout;
@@ -130,11 +129,7 @@ class GetLoadBalancerResult {
       'arn': arn,
       'arnSuffix': arnSuffix,
       'clientKeepAlive': clientKeepAlive,
-      'connectionLogs':
-          pulumi.Input.encodeList<
-            GetLoadBalancerConnectionLog,
-            Map<String, dynamic>
-          >(connectionLogs, (value) => value.toMap()),
+      'connectionLogs': pulumi.Input.encodeList<GetLoadBalancerConnectionLog, Map<String, dynamic>>(connectionLogs, (value) => value.toMap()),
       'customerOwnedIpv4Pool': customerOwnedIpv4Pool,
       'desyncMitigationMode': desyncMitigationMode,
       'dnsName': dnsName,
@@ -143,38 +138,24 @@ class GetLoadBalancerResult {
       'enableCrossZoneLoadBalancing': enableCrossZoneLoadBalancing,
       'enableDeletionProtection': enableDeletionProtection,
       'enableHttp2': enableHttp2,
-      'enableTlsVersionAndCipherSuiteHeaders':
-          enableTlsVersionAndCipherSuiteHeaders,
+      'enableTlsVersionAndCipherSuiteHeaders': enableTlsVersionAndCipherSuiteHeaders,
       'enableWafFailOpen': enableWafFailOpen,
       'enableXffClientPort': enableXffClientPort,
       'enableZonalShift': enableZonalShift,
-      'enforceSecurityGroupInboundRulesOnPrivateLinkTraffic':
-          enforceSecurityGroupInboundRulesOnPrivateLinkTraffic,
-      'healthCheckLogs':
-          pulumi.Input.encodeList<
-            GetLoadBalancerHealthCheckLog,
-            Map<String, dynamic>
-          >(healthCheckLogs, (value) => value.toMap()),
+      'enforceSecurityGroupInboundRulesOnPrivateLinkTraffic': enforceSecurityGroupInboundRulesOnPrivateLinkTraffic,
+      'healthCheckLogs': pulumi.Input.encodeList<GetLoadBalancerHealthCheckLog, Map<String, dynamic>>(healthCheckLogs, (value) => value.toMap()),
       'id': id,
       'idleTimeout': idleTimeout,
       'internal': internal,
       'ipAddressType': ipAddressType,
-      'ipamPools':
-          pulumi.Input.encodeList<
-            GetLoadBalancerIpamPool,
-            Map<String, dynamic>
-          >(ipamPools, (value) => value.toMap()),
+      'ipamPools': pulumi.Input.encodeList<GetLoadBalancerIpamPool, Map<String, dynamic>>(ipamPools, (value) => value.toMap()),
       'loadBalancerType': loadBalancerType,
       'name': name,
       'preserveHostHeader': preserveHostHeader,
       'region': region,
       'secondaryIpsAutoAssignedPerSubnet': secondaryIpsAutoAssignedPerSubnet,
       'securityGroups': securityGroups,
-      'subnetMappings':
-          pulumi.Input.encodeList<
-            GetLoadBalancerSubnetMapping,
-            Map<String, dynamic>
-          >(subnetMappings, (value) => value.toMap()),
+      'subnetMappings': pulumi.Input.encodeList<GetLoadBalancerSubnetMapping, Map<String, dynamic>>(subnetMappings, (value) => value.toMap()),
       'subnets': subnets,
       'tags': tags,
       'vpcId': vpcId,
@@ -185,63 +166,37 @@ class GetLoadBalancerResult {
 
   factory GetLoadBalancerResult.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerResult(
-      accessLogs: GetLoadBalancerAccessLogs.fromMap(
-        (map['accessLogs']! as Map).cast<String, dynamic>(),
-      ),
+      accessLogs: GetLoadBalancerAccessLogs.fromMap((map['accessLogs']! as Map).cast<String, dynamic>()),
       arn: map['arn'] as String,
       arnSuffix: map['arnSuffix'] as String,
       clientKeepAlive: map['clientKeepAlive'] as int,
-      connectionLogs: pulumi.Input.decodeList<GetLoadBalancerConnectionLog>(
-        map['connectionLogs']!,
-        (value) => GetLoadBalancerConnectionLog.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      connectionLogs: pulumi.Input.decodeList<GetLoadBalancerConnectionLog>(map['connectionLogs']!, (value) => GetLoadBalancerConnectionLog.fromMap((value as Map).cast<String, dynamic>())),
       customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] as String,
       desyncMitigationMode: map['desyncMitigationMode'] as String,
       dnsName: map['dnsName'] as String,
-      dnsRecordClientRoutingPolicy:
-          map['dnsRecordClientRoutingPolicy'] as String,
+      dnsRecordClientRoutingPolicy: map['dnsRecordClientRoutingPolicy'] as String,
       dropInvalidHeaderFields: map['dropInvalidHeaderFields'] as bool,
       enableCrossZoneLoadBalancing: map['enableCrossZoneLoadBalancing'] as bool,
       enableDeletionProtection: map['enableDeletionProtection'] as bool,
       enableHttp2: map['enableHttp2'] as bool,
-      enableTlsVersionAndCipherSuiteHeaders:
-          map['enableTlsVersionAndCipherSuiteHeaders'] as bool,
+      enableTlsVersionAndCipherSuiteHeaders: map['enableTlsVersionAndCipherSuiteHeaders'] as bool,
       enableWafFailOpen: map['enableWafFailOpen'] as bool,
       enableXffClientPort: map['enableXffClientPort'] as bool,
       enableZonalShift: map['enableZonalShift'] as bool,
-      enforceSecurityGroupInboundRulesOnPrivateLinkTraffic:
-          map['enforceSecurityGroupInboundRulesOnPrivateLinkTraffic'] as String,
-      healthCheckLogs: pulumi.Input.decodeList<GetLoadBalancerHealthCheckLog>(
-        map['healthCheckLogs']!,
-        (value) => GetLoadBalancerHealthCheckLog.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      enforceSecurityGroupInboundRulesOnPrivateLinkTraffic: map['enforceSecurityGroupInboundRulesOnPrivateLinkTraffic'] as String,
+      healthCheckLogs: pulumi.Input.decodeList<GetLoadBalancerHealthCheckLog>(map['healthCheckLogs']!, (value) => GetLoadBalancerHealthCheckLog.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       idleTimeout: map['idleTimeout'] as int,
       internal: map['internal'] as bool,
       ipAddressType: map['ipAddressType'] as String,
-      ipamPools: pulumi.Input.decodeList<GetLoadBalancerIpamPool>(
-        map['ipamPools']!,
-        (value) => GetLoadBalancerIpamPool.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      ipamPools: pulumi.Input.decodeList<GetLoadBalancerIpamPool>(map['ipamPools']!, (value) => GetLoadBalancerIpamPool.fromMap((value as Map).cast<String, dynamic>())),
       loadBalancerType: map['loadBalancerType'] as String,
       name: map['name'] as String,
       preserveHostHeader: map['preserveHostHeader'] as bool,
       region: map['region'] as String,
-      secondaryIpsAutoAssignedPerSubnet:
-          map['secondaryIpsAutoAssignedPerSubnet'] as int,
+      secondaryIpsAutoAssignedPerSubnet: map['secondaryIpsAutoAssignedPerSubnet'] as int,
       securityGroups: (map['securityGroups'] as List).cast<String>(),
-      subnetMappings: pulumi.Input.decodeList<GetLoadBalancerSubnetMapping>(
-        map['subnetMappings']!,
-        (value) => GetLoadBalancerSubnetMapping.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      subnetMappings: pulumi.Input.decodeList<GetLoadBalancerSubnetMapping>(map['subnetMappings']!, (value) => GetLoadBalancerSubnetMapping.fromMap((value as Map).cast<String, dynamic>())),
       subnets: (map['subnets'] as List).cast<String>(),
       tags: (map['tags'] as Map).cast<String, String>(),
       vpcId: map['vpcId'] as String,
@@ -250,3 +205,4 @@ class GetLoadBalancerResult {
     );
   }
 }
+

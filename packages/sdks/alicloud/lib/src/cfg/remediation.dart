@@ -402,22 +402,16 @@ import 'remediation_state.dart';
 class Remediation extends pulumi.CustomResource {
   /// Rule ID.
   late final pulumi.Output<String> configRuleId;
-
   /// Execution type, valid values: `Manual`, `Automatic`.
   late final pulumi.Output<String> invokeType;
-
   /// Remediation parameter.
   late final pulumi.Output<String> params;
-
   /// Remediation ID.
   late final pulumi.Output<String> remediationId;
-
   /// Remediation resource type, valid values: `ALIYUN` , `CUSTOMER`.
   late final pulumi.Output<String> remediationSourceType;
-
   /// Remediation template ID.
   late final pulumi.Output<String> remediationTemplateId;
-
   /// Remediation type, valid values: `OOS`, `FC`.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -432,11 +426,11 @@ class Remediation extends pulumi.CustomResource {
     RemediationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/remediation:Remediation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cfg/remediation:Remediation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configRuleId = registerOutput<String>('configRuleId');
     invokeType = registerOutput<String>('invokeType');
     params = registerOutput<String>('params');
@@ -464,11 +458,11 @@ class Remediation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/remediation:Remediation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cfg/remediation:Remediation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configRuleId = registerOutput<String>('configRuleId');
     invokeType = registerOutput<String>('invokeType');
     params = registerOutput<String>('params');

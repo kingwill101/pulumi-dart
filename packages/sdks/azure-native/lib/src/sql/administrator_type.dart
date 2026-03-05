@@ -14,3 +14,4 @@ enum AdministratorType {
     throw ArgumentError('Unknown AdministratorType value: $value');
   }
 }
+

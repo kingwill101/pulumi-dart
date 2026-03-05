@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataCollectionEndpointResponseMetadata {
   /// Azure offering managing this resource on-behalf-of customer.
   final pulumi.Input<String> provisionedBy;
-
   /// Resource Id of azure offering managing this resource on-behalf-of customer.
   final pulumi.Input<String> provisionedByResourceId;
 
@@ -25,14 +24,11 @@ class DataCollectionEndpointResponseMetadata {
     };
   }
 
-  factory DataCollectionEndpointResponseMetadata.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataCollectionEndpointResponseMetadata.fromMap(Map<String, dynamic> map) {
     return DataCollectionEndpointResponseMetadata(
       provisionedBy: pulumi.Input.fromValue(map['provisionedBy'] as String),
-      provisionedByResourceId: pulumi.Input.fromValue(
-        map['provisionedByResourceId'] as String,
-      ),
+      provisionedByResourceId: pulumi.Input.fromValue(map['provisionedByResourceId'] as String),
     );
   }
 }
+

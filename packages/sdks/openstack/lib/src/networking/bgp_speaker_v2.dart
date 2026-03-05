@@ -219,41 +219,32 @@ class BgpSpeakerV2 extends pulumi.CustomResource {
   /// A boolean value indicating
   /// whether to advertise floating IP host routes. Defaults to `true`.
   late final pulumi.Output<bool> advertiseFloatingIpHostRoutes;
-
   /// A boolean value indicating whether to
   /// advertise tenant networks. Defaults to `true`.
   late final pulumi.Output<bool> advertiseTenantNetworks;
-
   /// A list of dictionaries containing the `destination` and
   /// `next_hop` for each route advertised by the BGP speaker. This attribute is
   /// only populated after the BGP speaker has been created and has established BGP
   /// sessions with its peers.
   late final pulumi.Output<List<Map<String, dynamic>>> advertisedRoutes;
-
   /// The IP version of the BGP speaker. Valid values are
   /// `4` or `6`. Defaults to `4`. Changing this creates a new BGP speaker.
   late final pulumi.Output<int?> ipVersion;
-
   /// The local autonomous system number (ASN) for the BGP
   /// speaker. This is a mandatory field and must be specified. Changing this
   /// creates a new BGP speaker.
   late final pulumi.Output<int> localAs;
-
   /// A name for the BGP speaker.
   late final pulumi.Output<String> name;
-
   /// A list of network IDs to associate with the BGP speaker.
   late final pulumi.Output<List<String>?> networks;
-
   /// A list of BGP peer IDs to associate with the BGP speaker.
   late final pulumi.Output<List<String>?> peers;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron network. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new BGP
   /// speaker.
   late final pulumi.Output<String> region;
-
   /// The tenant/project ID. Required if admin privileges
   /// are used. Changing this creates a new BGP speaker.
   late final pulumi.Output<String> tenantId;
@@ -267,18 +258,14 @@ class BgpSpeakerV2 extends pulumi.CustomResource {
     BgpSpeakerV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/bgpSpeakerV2:BgpSpeakerV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    advertiseFloatingIpHostRoutes = registerOutput<bool>(
-      'advertiseFloatingIpHostRoutes',
-    );
+          'openstack:networking/bgpSpeakerV2:BgpSpeakerV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    advertiseFloatingIpHostRoutes = registerOutput<bool>('advertiseFloatingIpHostRoutes');
     advertiseTenantNetworks = registerOutput<bool>('advertiseTenantNetworks');
-    advertisedRoutes = registerOutput<List<Map<String, dynamic>>>(
-      'advertisedRoutes',
-    );
+    advertisedRoutes = registerOutput<List<Map<String, dynamic>>>('advertisedRoutes');
     ipVersion = registerOutput<int?>('ipVersion');
     localAs = registerOutput<int>('localAs');
     this.name = registerOutput<String>('name');
@@ -306,18 +293,14 @@ class BgpSpeakerV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/bgpSpeakerV2:BgpSpeakerV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    advertiseFloatingIpHostRoutes = registerOutput<bool>(
-      'advertiseFloatingIpHostRoutes',
-    );
+          'openstack:networking/bgpSpeakerV2:BgpSpeakerV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    advertiseFloatingIpHostRoutes = registerOutput<bool>('advertiseFloatingIpHostRoutes');
     advertiseTenantNetworks = registerOutput<bool>('advertiseTenantNetworks');
-    advertisedRoutes = registerOutput<List<Map<String, dynamic>>>(
-      'advertisedRoutes',
-    );
+    advertisedRoutes = registerOutput<List<Map<String, dynamic>>>('advertisedRoutes');
     ipVersion = registerOutput<int?>('ipVersion');
     localAs = registerOutput<int>('localAs');
     this.name = registerOutput<String>('name');

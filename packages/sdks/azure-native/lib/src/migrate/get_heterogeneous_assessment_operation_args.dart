@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHeterogeneousAssessmentOperationArgs {
   /// Heterogeneous Assessment ARM name
   final pulumi.Input<String> assessmentName;
-
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,15 +32,12 @@ class GetHeterogeneousAssessmentOperationArgs {
     };
   }
 
-  factory GetHeterogeneousAssessmentOperationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetHeterogeneousAssessmentOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetHeterogeneousAssessmentOperationArgs(
       assessmentName: pulumi.Input.fromValue(map['assessmentName'] as String),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

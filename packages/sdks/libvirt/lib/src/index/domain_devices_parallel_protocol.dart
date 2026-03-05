@@ -8,10 +8,14 @@ class DomainDevicesParallelProtocol {
 
   /// Creates a new [DomainDevicesParallelProtocol].
   /// [type] Specifies the type of protocol used for the EGD source backend.
-  DomainDevicesParallelProtocol({required this.type});
+  DomainDevicesParallelProtocol({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory DomainDevicesParallelProtocol.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesParallelProtocol {
     );
   }
 }
+

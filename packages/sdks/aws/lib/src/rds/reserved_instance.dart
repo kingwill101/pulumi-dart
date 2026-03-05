@@ -171,60 +171,42 @@ import 'reserved_instance_state.dart';
 class ReservedInstance extends pulumi.CustomResource {
   /// ARN for the reserved DB instance.
   late final pulumi.Output<String> arn;
-
   /// Currency code for the reserved DB instance.
   late final pulumi.Output<String> currencyCode;
-
   /// DB instance class for the reserved DB instance.
   late final pulumi.Output<String> dbInstanceClass;
-
   /// Duration of the reservation in seconds.
   late final pulumi.Output<int> duration;
-
   /// Fixed price charged for this reserved DB instance.
   late final pulumi.Output<double> fixedPrice;
-
   /// Number of instances to reserve. Default value is `1`.
   late final pulumi.Output<int?> instanceCount;
-
   /// Unique identifier for the lease associated with the reserved DB instance. Amazon Web Services Support might request the lease ID for an issue related to a reserved DB instance.
   late final pulumi.Output<String> leaseId;
-
   /// Whether the reservation applies to Multi-AZ deployments.
   late final pulumi.Output<bool> multiAz;
-
   /// ID of the Reserved DB instance offering to purchase. To determine an `offering_id`, see the `aws.rds.getReservedInstanceOffering` data source.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> offeringId;
-
   /// Offering type of this reserved DB instance.
   late final pulumi.Output<String> offeringType;
-
   /// Description of the reserved DB instance.
   late final pulumi.Output<String> productDescription;
-
   /// Recurring price charged to run this reserved DB instance.
   late final pulumi.Output<List<Map<String, dynamic>>> recurringCharges;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Customer-specified identifier to track this reservation.
   late final pulumi.Output<String?> reservationId;
-
   /// Time the reservation started.
   late final pulumi.Output<String> startTime;
-
   /// State of the reserved DB instance.
   late final pulumi.Output<String> state;
-
   /// Map of tags to assign to the DB reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Hourly price charged for this reserved DB instance.
   late final pulumi.Output<double> usagePrice;
 
@@ -237,11 +219,11 @@ class ReservedInstance extends pulumi.CustomResource {
     ReservedInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rds/reservedInstance:ReservedInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rds/reservedInstance:ReservedInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     currencyCode = registerOutput<String>('currencyCode');
     dbInstanceClass = registerOutput<String>('dbInstanceClass');
@@ -253,9 +235,7 @@ class ReservedInstance extends pulumi.CustomResource {
     offeringId = registerOutput<String>('offeringId');
     offeringType = registerOutput<String>('offeringType');
     productDescription = registerOutput<String>('productDescription');
-    recurringCharges = registerOutput<List<Map<String, dynamic>>>(
-      'recurringCharges',
-    );
+    recurringCharges = registerOutput<List<Map<String, dynamic>>>('recurringCharges');
     region = registerOutput<String>('region');
     reservationId = registerOutput<String?>('reservationId');
     startTime = registerOutput<String>('startTime');
@@ -283,11 +263,11 @@ class ReservedInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rds/reservedInstance:ReservedInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rds/reservedInstance:ReservedInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     currencyCode = registerOutput<String>('currencyCode');
     dbInstanceClass = registerOutput<String>('dbInstanceClass');
@@ -299,9 +279,7 @@ class ReservedInstance extends pulumi.CustomResource {
     offeringId = registerOutput<String>('offeringId');
     offeringType = registerOutput<String>('offeringType');
     productDescription = registerOutput<String>('productDescription');
-    recurringCharges = registerOutput<List<Map<String, dynamic>>>(
-      'recurringCharges',
-    );
+    recurringCharges = registerOutput<List<Map<String, dynamic>>>('recurringCharges');
     region = registerOutput<String>('region');
     reservationId = registerOutput<String?>('reservationId');
     startTime = registerOutput<String>('startTime');

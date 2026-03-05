@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlMiSettingsV3Response {
   /// Gets or sets the azure PAAS SQL instance type.
   final pulumi.Input<String>? azureSqlInstanceType;
-
   /// Gets or sets the azure SQL service tier.
   final pulumi.Input<String>? azureSqlServiceTier;
 
@@ -27,16 +26,9 @@ class SqlMiSettingsV3Response {
 
   factory SqlMiSettingsV3Response.fromMap(Map<String, dynamic> map) {
     return SqlMiSettingsV3Response(
-      azureSqlInstanceType: (() {
-        final guardedValue = map['azureSqlInstanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      azureSqlServiceTier: (() {
-        final guardedValue = map['azureSqlServiceTier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      azureSqlInstanceType: (() { final guardedValue = map['azureSqlInstanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureSqlServiceTier: (() { final guardedValue = map['azureSqlServiceTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

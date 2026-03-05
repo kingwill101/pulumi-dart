@@ -351,56 +351,38 @@ import 'system_data_response.dart';
 class ElasticSan extends pulumi.CustomResource {
   /// Logical zone for Elastic San resource; example: ["1"].
   late final pulumi.Output<List<String>?> availabilityZones;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Base size of the Elastic San appliance in TiB.
   late final pulumi.Output<double> baseSizeTiB;
-
   /// Extended size of the Elastic San appliance in TiB.
   late final pulumi.Output<double> extendedCapacitySizeTiB;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The list of Private Endpoint Connections.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// State of the operation on the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// resource sku
   late final pulumi.Output<SkuResponse> sku;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Total Provisioned IOPS of the Elastic San appliance.
   late final pulumi.Output<double> totalIops;
-
   /// Total Provisioned MBps Elastic San appliance.
   late final pulumi.Output<double> totalMBps;
-
   /// Total size of the Elastic San appliance in TB.
   late final pulumi.Output<double> totalSizeTiB;
-
   /// Total size of the provisioned Volumes in GiB.
   late final pulumi.Output<double> totalVolumeSizeGiB;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Total number of volume groups in this Elastic San appliance.
   late final pulumi.Output<double> volumeGroupCount;
 
@@ -413,42 +395,22 @@ class ElasticSan extends pulumi.CustomResource {
     ElasticSanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:elasticsan:ElasticSan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:elasticsan:ElasticSan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     availabilityZones = registerOutput<List<String>?>('availabilityZones');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     baseSizeTiB = registerOutput<double>('baseSizeTiB');
     extendedCapacitySizeTiB = registerOutput<double>('extendedCapacitySizeTiB');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    sku = registerOutput<SkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     totalIops = registerOutput<double>('totalIops');
     totalMBps = registerOutput<double>('totalMBps');

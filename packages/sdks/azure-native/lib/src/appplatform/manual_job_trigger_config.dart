@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManualJobTriggerConfig {
   /// Number of parallel replicas of a job execution can run.
   final pulumi.Input<int>? parallelism;
-
   /// Maximum number of retries before failing the job.
   final pulumi.Input<int>? retryLimit;
-
   /// Maximum number of seconds an execution is allowed to run.
   final pulumi.Input<int>? timeoutInSeconds;
-
   /// Type of job trigger
   /// Expected value is 'Manual'.
   final pulumi.Input<String> triggerType;
@@ -40,22 +37,11 @@ class ManualJobTriggerConfig {
 
   factory ManualJobTriggerConfig.fromMap(Map<String, dynamic> map) {
     return ManualJobTriggerConfig(
-      parallelism: (() {
-        final guardedValue = map['parallelism'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      retryLimit: (() {
-        final guardedValue = map['retryLimit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timeoutInSeconds: (() {
-        final guardedValue = map['timeoutInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      parallelism: (() { final guardedValue = map['parallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retryLimit: (() { final guardedValue = map['retryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       triggerType: pulumi.Input.fromValue(map['triggerType'] as String),
     );
   }
 }
+

@@ -874,55 +874,42 @@ import 'cluster_v2_state.dart';
 class ClusterV2 extends pulumi.CustomResource {
   /// The cluster custom service component configuration. Only one component is supported. See `addons` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> addons;
-
   /// Specifies whether to enable auto scale-out for the cluster. Valid values:
   ///
   /// - true
   /// - false
   late final pulumi.Output<String> clientVersion;
-
   /// The cluster type. Valid values:
   ///
   /// - Standard
   /// - Serverless
   late final pulumi.Output<String?> clusterCategory;
-
   /// Security credentials for the cluster. See `cluster_credentials` below.
   late final pulumi.Output<ClusterV2ClusterCredentials> clusterCredentials;
-
   /// The deployment mode of the cluster. Valid values:
   ///
   /// - Integrated
   /// - Hybrid
   /// - Custom
   late final pulumi.Output<String?> clusterMode;
-
   /// The post-processing script of the cluster.
   late final pulumi.Output<String?> clusterName;
-
   /// The ID of the virtual private cloud (VPC) in which the cluster resides.
   late final pulumi.Output<String?> clusterVpcId;
-
   /// The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
   /// You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
   late final pulumi.Output<String?> clusterVswitchId;
-
   /// The time when the cluster was created.
   late final pulumi.Output<String> createTime;
-
   /// The idle duration of the compute nodes allowed by the cluster.
   late final pulumi.Output<bool?> deletionProtection;
-
   /// The configurations of the cluster management node. See `manager` below.
   late final pulumi.Output<ClusterV2Manager?> manager;
-
   /// The ID of the resource group to which the cluster belongs.
   /// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The security group ID.
   late final pulumi.Output<String?> securityGroupId;
-
   /// List of cluster shared storage configurations. See `shared_storages` below.
   late final pulumi.Output<List<Map<String, dynamic>>> sharedStorages;
 
@@ -935,45 +922,25 @@ class ClusterV2 extends pulumi.CustomResource {
     ClusterV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ehpc/clusterV2:ClusterV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ehpc/clusterV2:ClusterV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addons = registerOutput<List<Map<String, dynamic>>?>('addons');
     clientVersion = registerOutput<String>('clientVersion');
     clusterCategory = registerOutput<String?>('clusterCategory');
-    clusterCredentials = registerOutput<ClusterV2ClusterCredentials>(
-      'clusterCredentials',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterV2ClusterCredentials.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    clusterCredentials = registerOutput<ClusterV2ClusterCredentials>('clusterCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterV2ClusterCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterMode = registerOutput<String?>('clusterMode');
     clusterName = registerOutput<String?>('clusterName');
     clusterVpcId = registerOutput<String?>('clusterVpcId');
     clusterVswitchId = registerOutput<String?>('clusterVswitchId');
     createTime = registerOutput<String>('createTime');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    manager = registerOutput<ClusterV2Manager?>(
-      'manager',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterV2Manager.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    manager = registerOutput<ClusterV2Manager?>('manager', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterV2Manager.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupId = registerOutput<String>('resourceGroupId');
     securityGroupId = registerOutput<String?>('securityGroupId');
-    sharedStorages = registerOutput<List<Map<String, dynamic>>>(
-      'sharedStorages',
-    );
+    sharedStorages = registerOutput<List<Map<String, dynamic>>>('sharedStorages');
   }
 
   /// Gets an existing [ClusterV2] resource's state with the given [name] and [id].
@@ -994,44 +961,24 @@ class ClusterV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ehpc/clusterV2:ClusterV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ehpc/clusterV2:ClusterV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addons = registerOutput<List<Map<String, dynamic>>?>('addons');
     clientVersion = registerOutput<String>('clientVersion');
     clusterCategory = registerOutput<String?>('clusterCategory');
-    clusterCredentials = registerOutput<ClusterV2ClusterCredentials>(
-      'clusterCredentials',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterV2ClusterCredentials.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    clusterCredentials = registerOutput<ClusterV2ClusterCredentials>('clusterCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterV2ClusterCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterMode = registerOutput<String?>('clusterMode');
     clusterName = registerOutput<String?>('clusterName');
     clusterVpcId = registerOutput<String?>('clusterVpcId');
     clusterVswitchId = registerOutput<String?>('clusterVswitchId');
     createTime = registerOutput<String>('createTime');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    manager = registerOutput<ClusterV2Manager?>(
-      'manager',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterV2Manager.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    manager = registerOutput<ClusterV2Manager?>('manager', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterV2Manager.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupId = registerOutput<String>('resourceGroupId');
     securityGroupId = registerOutput<String?>('securityGroupId');
-    sharedStorages = registerOutput<List<Map<String, dynamic>>>(
-      'sharedStorages',
-    );
+    sharedStorages = registerOutput<List<Map<String, dynamic>>>('sharedStorages');
   }
 }

@@ -1,24 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkspace.
 class GetWorkspaceResult {
   /// The description for the Virtual Desktop Workspace.
   final String description;
-
   /// The friendly name for the Virtual Desktop Workspace.
   final String friendlyName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region where the Virtual Desktop Workspace exists.
   final String location;
   final String name;
-
   /// Is public network access enabled?
   final bool publicNetworkAccessEnabled;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the Virtual Desktop Workspace.
   final Map<String, String> tags;
 
@@ -68,3 +64,4 @@ class GetWorkspaceResult {
     );
   }
 }
+

@@ -239,13 +239,10 @@ import 'express_route_authorization_state.dart';
 class ExpressRouteAuthorization extends pulumi.CustomResource {
   /// The ID of the Azure VMware Solution ExpressRoute Circuit Authorization.
   late final pulumi.Output<String> expressRouteAuthorizationId;
-
   /// The key of the Azure VMware Solution ExpressRoute Circuit Authorization.
   late final pulumi.Output<String> expressRouteAuthorizationKey;
-
   /// The name which should be used for this Azure VMware Solution ExpressRoute Circuit Authorization. Changing this forces a new Azure VMware Solution ExpressRoute Circuit Authorization to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Azure VMware Solution Private Cloud in which to create this Azure VMware Solution ExpressRoute Circuit Authorization. Changing this forces a new Azure VMware Solution ExpressRoute Circuit Authorization to be created.
   late final pulumi.Output<String> privateCloudId;
 
@@ -258,17 +255,13 @@ class ExpressRouteAuthorization extends pulumi.CustomResource {
     ExpressRouteAuthorizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:avs/expressRouteAuthorization:ExpressRouteAuthorization',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    expressRouteAuthorizationId = registerOutput<String>(
-      'expressRouteAuthorizationId',
-    );
-    expressRouteAuthorizationKey = registerOutput<String>(
-      'expressRouteAuthorizationKey',
-    );
+          'azure:avs/expressRouteAuthorization:ExpressRouteAuthorization',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    expressRouteAuthorizationId = registerOutput<String>('expressRouteAuthorizationId');
+    expressRouteAuthorizationKey = registerOutput<String>('expressRouteAuthorizationKey');
     this.name = registerOutput<String>('name');
     privateCloudId = registerOutput<String>('privateCloudId');
   }
@@ -291,17 +284,13 @@ class ExpressRouteAuthorization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:avs/expressRouteAuthorization:ExpressRouteAuthorization',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    expressRouteAuthorizationId = registerOutput<String>(
-      'expressRouteAuthorizationId',
-    );
-    expressRouteAuthorizationKey = registerOutput<String>(
-      'expressRouteAuthorizationKey',
-    );
+          'azure:avs/expressRouteAuthorization:ExpressRouteAuthorization',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    expressRouteAuthorizationId = registerOutput<String>('expressRouteAuthorizationId');
+    expressRouteAuthorizationKey = registerOutput<String>('expressRouteAuthorizationKey');
     this.name = registerOutput<String>('name');
     privateCloudId = registerOutput<String>('privateCloudId');
   }

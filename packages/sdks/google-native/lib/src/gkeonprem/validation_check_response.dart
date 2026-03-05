@@ -7,10 +7,8 @@ import 'validation_check_status_response.dart';
 class ValidationCheckResponse {
   /// Options used for the validation check
   final pulumi.Input<String> option;
-
   /// The scenario when the preflight checks were run.
   final pulumi.Input<String> scenario;
-
   /// The detailed validation check status.
   final pulumi.Input<ValidationCheckStatusResponse> status;
 
@@ -28,11 +26,7 @@ class ValidationCheckResponse {
     return <String, dynamic>{
       'option': option,
       'scenario': scenario,
-      'status':
-          pulumi.Input.mapInputValue<
-            ValidationCheckStatusResponse,
-            Map<String, dynamic>
-          >(status, (value) => value.toMap()),
+      'status': pulumi.Input.mapInputValue<ValidationCheckStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
@@ -40,11 +34,8 @@ class ValidationCheckResponse {
     return ValidationCheckResponse(
       option: pulumi.Input.fromValue(map['option'] as String),
       scenario: pulumi.Input.fromValue(map['scenario'] as String),
-      status: pulumi.Input.fromValue(
-        ValidationCheckStatusResponse.fromMap(
-          (map['status']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      status: pulumi.Input.fromValue(ValidationCheckStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

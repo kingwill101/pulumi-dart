@@ -13,8 +13,7 @@ enum FileContentBufferFileTypeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FileContentBufferFileTypeComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown FileContentBufferFileTypeComputeV1 value: $value');
   }
 }
+

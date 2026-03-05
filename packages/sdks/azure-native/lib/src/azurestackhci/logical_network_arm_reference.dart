@@ -9,19 +9,20 @@ class LogicalNetworkArmReference {
 
   /// Creates a new [LogicalNetworkArmReference].
   /// [id] The Azure Resource ID for a Logical Network.
-  LogicalNetworkArmReference({this.id});
+  LogicalNetworkArmReference({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory LogicalNetworkArmReference.fromMap(Map<String, dynamic> map) {
     return LogicalNetworkArmReference(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

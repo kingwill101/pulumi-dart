@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipeTargetParametersRedshiftDataParameters {
   /// The name of the database. Required when authenticating using temporary credentials.
   final pulumi.Input<String> database;
-
   /// The database user name. Required when authenticating using temporary credentials.
   final pulumi.Input<String>? dbUser;
-
   /// The name or ARN of the secret that enables access to the database. Required when authenticating using Secrets Manager.
   final pulumi.Input<String>? secretManagerArn;
-
   /// List of SQL statements text to run, each of maximum length of 100,000.
   final pulumi.Input<List<String>> sqls;
-
   /// The name of the SQL statement. You can name the SQL statement when you create it to identify the query.
   final pulumi.Input<String>? statementName;
-
   /// Indicates whether to send an event back to EventBridge after the SQL statement runs.
   final pulumi.Input<bool>? withEvent;
 
@@ -48,32 +43,15 @@ class PipeTargetParametersRedshiftDataParameters {
     };
   }
 
-  factory PipeTargetParametersRedshiftDataParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeTargetParametersRedshiftDataParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersRedshiftDataParameters(
       database: pulumi.Input.fromValue(map['database'] as String),
-      dbUser: (() {
-        final guardedValue = map['dbUser'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretManagerArn: (() {
-        final guardedValue = map['secretManagerArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dbUser: (() { final guardedValue = map['dbUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretManagerArn: (() { final guardedValue = map['secretManagerArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sqls: pulumi.Input.fromValue((map['sqls'] as List).cast<String>()),
-      statementName: (() {
-        final guardedValue = map['statementName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      withEvent: (() {
-        final guardedValue = map['withEvent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      statementName: (() { final guardedValue = map['statementName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      withEvent: (() { final guardedValue = map['withEvent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

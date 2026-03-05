@@ -7,10 +7,14 @@ class ResourceSkuResponse {
 
   /// Creates a new [ResourceSkuResponse].
   /// [name] Required.
-  ResourceSkuResponse({required this.name});
+  ResourceSkuResponse({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory ResourceSkuResponse.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class ResourceSkuResponse {
     );
   }
 }
+

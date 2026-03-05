@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetNatGatewayAssociationState {
   /// The ID of the NAT Gateway which should be associated with the Subnet. Changing this forces a new resource to be created.
   final pulumi.Input<String>? natGatewayId;
-
   /// The ID of the Subnet. Changing this forces a new resource to be created.
   final pulumi.Input<String>? subnetId;
 
   /// Creates a new [SubnetNatGatewayAssociationState].
   /// [natGatewayId] The ID of the NAT Gateway which should be associated with the Subnet. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet. Changing this forces a new resource to be created.
-  SubnetNatGatewayAssociationState({this.natGatewayId, this.subnetId});
+  SubnetNatGatewayAssociationState({
+    this.natGatewayId,
+    this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class SubnetNatGatewayAssociationState {
 
   factory SubnetNatGatewayAssociationState.fromMap(Map<String, dynamic> map) {
     return SubnetNatGatewayAssociationState(
-      natGatewayId: (() {
-        final guardedValue = map['natGatewayId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetId: (() {
-        final guardedValue = map['subnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      natGatewayId: (() { final guardedValue = map['natGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

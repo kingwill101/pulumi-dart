@@ -16,3 +16,4 @@ enum SecurityAlertPolicyState {
     throw ArgumentError('Unknown SecurityAlertPolicyState value: $value');
   }
 }
+

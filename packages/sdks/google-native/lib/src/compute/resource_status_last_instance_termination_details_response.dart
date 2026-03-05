@@ -13,16 +13,15 @@ class ResourceStatusLastInstanceTerminationDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'terminationReason': terminationReason};
+    return <String, dynamic>{
+      'terminationReason': terminationReason,
+    };
   }
 
-  factory ResourceStatusLastInstanceTerminationDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceStatusLastInstanceTerminationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceStatusLastInstanceTerminationDetailsResponse(
-      terminationReason: pulumi.Input.fromValue(
-        map['terminationReason'] as String,
-      ),
+      terminationReason: pulumi.Input.fromValue(map['terminationReason'] as String),
     );
   }
 }
+

@@ -6,17 +6,13 @@ enum ServiceAttachmentTunnelingConfigEncapsulationProfile {
   const ServiceAttachmentTunnelingConfigEncapsulationProfile(this.wireValue);
   final String wireValue;
 
-  static ServiceAttachmentTunnelingConfigEncapsulationProfile fromValue(
-    String value,
-  ) {
-    for (final item
-        in ServiceAttachmentTunnelingConfigEncapsulationProfile.values) {
+  static ServiceAttachmentTunnelingConfigEncapsulationProfile fromValue(String value) {
+    for (final item in ServiceAttachmentTunnelingConfigEncapsulationProfile.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ServiceAttachmentTunnelingConfigEncapsulationProfile value: $value',
-    );
+    throw ArgumentError('Unknown ServiceAttachmentTunnelingConfigEncapsulationProfile value: $value');
   }
 }
+

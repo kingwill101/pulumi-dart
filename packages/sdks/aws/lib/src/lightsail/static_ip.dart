@@ -105,18 +105,14 @@ import 'static_ip_state.dart';
 class StaticIp extends pulumi.CustomResource {
   /// ARN of the Lightsail static IP.
   late final pulumi.Output<String> arn;
-
   /// Allocated static IP address.
   late final pulumi.Output<String> ipAddress;
-
   /// Name for the allocated static IP.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Support code for the static IP. Include this code in your email to support when you have questions about a static IP in Lightsail. This code enables our support team to look up your Lightsail information more easily.
   late final pulumi.Output<String> supportCode;
 
@@ -129,11 +125,11 @@ class StaticIp extends pulumi.CustomResource {
     StaticIpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lightsail/staticIp:StaticIp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lightsail/staticIp:StaticIp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     ipAddress = registerOutput<String>('ipAddress');
     this.name = registerOutput<String>('name');
@@ -159,11 +155,11 @@ class StaticIp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lightsail/staticIp:StaticIp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lightsail/staticIp:StaticIp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     ipAddress = registerOutput<String>('ipAddress');
     this.name = registerOutput<String>('name');

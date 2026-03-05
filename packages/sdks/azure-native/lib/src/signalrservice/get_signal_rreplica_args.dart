@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSignalRReplicaArgs {
   /// The name of the replica.
   final pulumi.Input<String> replicaName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the resource.
   final pulumi.Input<String> resourceName;
 
@@ -37,10 +35,9 @@ class GetSignalRReplicaArgs {
   factory GetSignalRReplicaArgs.fromMap(Map<String, dynamic> map) {
     return GetSignalRReplicaArgs(
       replicaName: pulumi.Input.fromValue(map['replicaName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

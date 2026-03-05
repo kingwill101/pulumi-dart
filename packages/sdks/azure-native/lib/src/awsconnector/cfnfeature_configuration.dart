@@ -6,12 +6,9 @@ import 'cfnfeature_additional_configuration.dart';
 /// Definition of CFNFeatureConfiguration
 class CFNFeatureConfiguration {
   /// Property additionalConfiguration
-  final pulumi.Input<List<CFNFeatureAdditionalConfiguration>>?
-  additionalConfiguration;
-
+  final pulumi.Input<List<CFNFeatureAdditionalConfiguration>>? additionalConfiguration;
   /// Property name
   final pulumi.Input<String>? name;
-
   /// Property status
   final pulumi.Input<String>? status;
 
@@ -27,18 +24,7 @@ class CFNFeatureConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CFNFeatureAdditionalConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            additionalConfiguration,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CFNFeatureAdditionalConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'additionalConfiguration': ?pulumi.Input.mapOptionalInputValue<List<CFNFeatureAdditionalConfiguration>, List<Map<String, dynamic>>>(additionalConfiguration, (value) => pulumi.Input.encodeList<CFNFeatureAdditionalConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'status': ?status,
     };
@@ -46,28 +32,10 @@ class CFNFeatureConfiguration {
 
   factory CFNFeatureConfiguration.fromMap(Map<String, dynamic> map) {
     return CFNFeatureConfiguration(
-      additionalConfiguration: (() {
-        final guardedValue = map['additionalConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CFNFeatureAdditionalConfiguration>(
-            guardedValue,
-            (value) => CFNFeatureAdditionalConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalConfiguration: (() { final guardedValue = map['additionalConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CFNFeatureAdditionalConfiguration>(guardedValue, (value) => CFNFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListIdentityProviderSecretsArgs {
   /// Identity Provider Type identifier.
   final pulumi.Input<String> identityProviderName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -36,13 +34,10 @@ class ListIdentityProviderSecretsArgs {
 
   factory ListIdentityProviderSecretsArgs.fromMap(Map<String, dynamic> map) {
     return ListIdentityProviderSecretsArgs(
-      identityProviderName: pulumi.Input.fromValue(
-        map['identityProviderName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      identityProviderName: pulumi.Input.fromValue(map['identityProviderName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

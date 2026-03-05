@@ -7,22 +7,16 @@ import 'call_rate_limit_response.dart';
 class DeploymentModelResponse {
   /// The call rate limit Cognitive Services account.
   final pulumi.Input<CallRateLimitResponse> callRateLimit;
-
   /// Deployment model format.
   final pulumi.Input<String>? format;
-
   /// Deployment model name.
   final pulumi.Input<String>? name;
-
   /// Deployment model publisher.
   final pulumi.Input<String>? publisher;
-
   /// Optional. Deployment model source ARM resource ID.
   final pulumi.Input<String>? source;
-
   /// Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID.
   final pulumi.Input<String>? sourceAccount;
-
   /// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
   final pulumi.Input<String>? version;
 
@@ -46,11 +40,7 @@ class DeploymentModelResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'callRateLimit':
-          pulumi.Input.mapInputValue<
-            CallRateLimitResponse,
-            Map<String, dynamic>
-          >(callRateLimit, (value) => value.toMap()),
+      'callRateLimit': pulumi.Input.mapInputValue<CallRateLimitResponse, Map<String, dynamic>>(callRateLimit, (value) => value.toMap()),
       'format': ?format,
       'name': ?name,
       'publisher': ?publisher,
@@ -62,41 +52,14 @@ class DeploymentModelResponse {
 
   factory DeploymentModelResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentModelResponse(
-      callRateLimit: pulumi.Input.fromValue(
-        CallRateLimitResponse.fromMap(
-          (map['callRateLimit']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      format: (() {
-        final guardedValue = map['format'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publisher: (() {
-        final guardedValue = map['publisher'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceAccount: (() {
-        final guardedValue = map['sourceAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      callRateLimit: pulumi.Input.fromValue(CallRateLimitResponse.fromMap((map['callRateLimit']! as Map).cast<String, dynamic>())),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publisher: (() { final guardedValue = map['publisher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceAccount: (() { final guardedValue = map['sourceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

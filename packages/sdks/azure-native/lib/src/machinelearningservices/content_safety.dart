@@ -8,17 +8,20 @@ class ContentSafety {
 
   /// Creates a new [ContentSafety].
   /// [contentSafetyStatus] [Required] Specifies the status of content safety.
-  ContentSafety({required this.contentSafetyStatus});
+  ContentSafety({
+    required this.contentSafetyStatus,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'contentSafetyStatus': contentSafetyStatus};
+    return <String, dynamic>{
+      'contentSafetyStatus': contentSafetyStatus,
+    };
   }
 
   factory ContentSafety.fromMap(Map<String, dynamic> map) {
     return ContentSafety(
-      contentSafetyStatus: pulumi.Input.fromValue(
-        map['contentSafetyStatus'] as String,
-      ),
+      contentSafetyStatus: pulumi.Input.fromValue(map['contentSafetyStatus'] as String),
     );
   }
 }
+

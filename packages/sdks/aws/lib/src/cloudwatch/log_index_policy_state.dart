@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogIndexPolicyState {
   /// Log group name to set the policy for.
   final pulumi.Input<String>? logGroupName;
-
   /// JSON policy document. This is a JSON formatted string.
   final pulumi.Input<String>? policyDocument;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -17,7 +15,11 @@ class LogIndexPolicyState {
   /// [logGroupName] Log group name to set the policy for.
   /// [policyDocument] JSON policy document. This is a JSON formatted string.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LogIndexPolicyState({this.logGroupName, this.policyDocument, this.region});
+  LogIndexPolicyState({
+    this.logGroupName,
+    this.policyDocument,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class LogIndexPolicyState {
 
   factory LogIndexPolicyState.fromMap(Map<String, dynamic> map) {
     return LogIndexPolicyState(
-      logGroupName: (() {
-        final guardedValue = map['logGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policyDocument: (() {
-        final guardedValue = map['policyDocument'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      logGroupName: (() { final guardedValue = map['logGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyDocument: (() { final guardedValue = map['policyDocument']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

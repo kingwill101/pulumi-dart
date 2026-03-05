@@ -8,23 +8,17 @@ class ScheduleBasedBackupCriteria {
   /// it contains absolute values like "AllBackup" / "FirstOfDay" / "FirstOfWeek" / "FirstOfMonth"
   /// and should be part of AbsoluteMarker enum
   final pulumi.Input<List<String>>? absoluteCriteria;
-
   /// This is day of the month from 1 to 28 other wise last of month
   final pulumi.Input<List<Day>>? daysOfMonth;
-
   /// It should be Sunday/Monday/T..../Saturday
   final pulumi.Input<List<String>>? daysOfTheWeek;
-
   /// It should be January/February/....../December
   final pulumi.Input<List<String>>? monthsOfYear;
-
   /// Type of the specific object - used for deserializing
   /// Expected value is 'ScheduleBasedBackupCriteria'.
   final pulumi.Input<String> objectType;
-
   /// List of schedule times for backup
   final pulumi.Input<List<String>>? scheduleTimes;
-
   /// It should be First/Second/Third/Fourth/Last
   final pulumi.Input<List<String>>? weeksOfTheMonth;
 
@@ -49,17 +43,7 @@ class ScheduleBasedBackupCriteria {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'absoluteCriteria': ?absoluteCriteria,
-      'daysOfMonth':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Day>,
-            List<Map<String, dynamic>>
-          >(
-            daysOfMonth,
-            (value) => pulumi.Input.encodeList<Day, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'daysOfMonth': ?pulumi.Input.mapOptionalInputValue<List<Day>, List<Map<String, dynamic>>>(daysOfMonth, (value) => pulumi.Input.encodeList<Day, Map<String, dynamic>>(value, (value) => value.toMap())),
       'daysOfTheWeek': ?daysOfTheWeek,
       'monthsOfYear': ?monthsOfYear,
       'objectType': objectType,
@@ -70,42 +54,14 @@ class ScheduleBasedBackupCriteria {
 
   factory ScheduleBasedBackupCriteria.fromMap(Map<String, dynamic> map) {
     return ScheduleBasedBackupCriteria(
-      absoluteCriteria: (() {
-        final guardedValue = map['absoluteCriteria'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      daysOfMonth: (() {
-        final guardedValue = map['daysOfMonth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Day>(
-            guardedValue,
-            (value) => Day.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      daysOfTheWeek: (() {
-        final guardedValue = map['daysOfTheWeek'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      monthsOfYear: (() {
-        final guardedValue = map['monthsOfYear'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      absoluteCriteria: (() { final guardedValue = map['absoluteCriteria']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      daysOfMonth: (() { final guardedValue = map['daysOfMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Day>(guardedValue, (value) => Day.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      daysOfTheWeek: (() { final guardedValue = map['daysOfTheWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      monthsOfYear: (() { final guardedValue = map['monthsOfYear']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       objectType: pulumi.Input.fromValue(map['objectType'] as String),
-      scheduleTimes: (() {
-        final guardedValue = map['scheduleTimes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      weeksOfTheMonth: (() {
-        final guardedValue = map['weeksOfTheMonth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      scheduleTimes: (() { final guardedValue = map['scheduleTimes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      weeksOfTheMonth: (() { final guardedValue = map['weeksOfTheMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

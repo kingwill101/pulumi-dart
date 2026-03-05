@@ -434,55 +434,36 @@ import 'spring_cloud_gateway_state.dart';
 class SpringCloudGateway extends pulumi.CustomResource {
   /// A `api_metadata` block as defined below.
   late final pulumi.Output<SpringCloudGatewayApiMetadata?> apiMetadata;
-
   /// Specifies a list of Spring Cloud Application Performance Monitoring IDs.
   late final pulumi.Output<List<String>?> applicationPerformanceMonitoringIds;
-
   /// Specifies a list of application performance monitoring types used in the Spring Cloud Gateway. The allowed values are `AppDynamics`, `ApplicationInsights`, `Dynatrace`, `ElasticAPM` and `NewRelic`.
   late final pulumi.Output<List<String>?> applicationPerformanceMonitoringTypes;
-
   /// A `client_authorization` block as defined below.
-  late final pulumi.Output<SpringCloudGatewayClientAuthorization?>
-  clientAuthorization;
-
+  late final pulumi.Output<SpringCloudGatewayClientAuthorization?> clientAuthorization;
   /// A `cors` block as defined below.
   late final pulumi.Output<SpringCloudGatewayCors?> cors;
-
   /// Specifies the environment variables of the Spring Cloud Gateway as a map of key-value pairs.
   late final pulumi.Output<Map<String, String>?> environmentVariables;
-
   /// is only https is allowed?
   late final pulumi.Output<bool?> httpsOnly;
-
   /// Specifies the required instance count of the Spring Cloud Gateway. Possible Values are between `1` and `500`. Defaults to `1` if not specified.
   late final pulumi.Output<int?> instanceCount;
-
   /// A `local_response_cache_per_instance` block as defined below. Only one of `local_response_cache_per_instance` or `local_response_cache_per_route` can be specified.
-  late final pulumi.Output<SpringCloudGatewayLocalResponseCachePerInstance?>
-  localResponseCachePerInstance;
-
+  late final pulumi.Output<SpringCloudGatewayLocalResponseCachePerInstance?> localResponseCachePerInstance;
   /// A `local_response_cache_per_route` block as defined below. Only one of `local_response_cache_per_instance` or `local_response_cache_per_route` can be specified.
-  late final pulumi.Output<SpringCloudGatewayLocalResponseCachePerRoute?>
-  localResponseCachePerRoute;
-
+  late final pulumi.Output<SpringCloudGatewayLocalResponseCachePerRoute?> localResponseCachePerRoute;
   /// The name which should be used for this Spring Cloud Gateway. Changing this forces a new Spring Cloud Gateway to be created. The only possible value is `default`.
   late final pulumi.Output<String> name;
-
   /// Indicates whether the Spring Cloud Gateway exposes endpoint.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// A `quota` block as defined below.
   late final pulumi.Output<SpringCloudGatewayQuota> quota;
-
   /// Specifies the sensitive environment variables of the Spring Cloud Gateway as a map of key-value pairs.
   late final pulumi.Output<Map<String, String>?> sensitiveEnvironmentVariables;
-
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Gateway to be created.
   late final pulumi.Output<String> springCloudServiceId;
-
   /// A `sso` block as defined below.
   late final pulumi.Output<SpringCloudGatewaySso?> sso;
-
   /// URL of the Spring Cloud Gateway, exposed when 'public_network_access_enabled' is true.
   late final pulumi.Output<String> url;
 
@@ -495,103 +476,27 @@ class SpringCloudGateway extends pulumi.CustomResource {
     SpringCloudGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudGateway:SpringCloudGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    apiMetadata = registerOutput<SpringCloudGatewayApiMetadata?>(
-      'apiMetadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudGatewayApiMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    applicationPerformanceMonitoringIds = registerOutput<List<String>?>(
-      'applicationPerformanceMonitoringIds',
-    );
-    applicationPerformanceMonitoringTypes = registerOutput<List<String>?>(
-      'applicationPerformanceMonitoringTypes',
-    );
-    clientAuthorization =
-        registerOutput<SpringCloudGatewayClientAuthorization?>(
-          'clientAuthorization',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SpringCloudGatewayClientAuthorization.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    cors = registerOutput<SpringCloudGatewayCors?>(
-      'cors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudGatewayCors.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    environmentVariables = registerOutput<Map<String, String>?>(
-      'environmentVariables',
-    );
+          'azure:appplatform/springCloudGateway:SpringCloudGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    apiMetadata = registerOutput<SpringCloudGatewayApiMetadata?>('apiMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudGatewayApiMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds');
+    applicationPerformanceMonitoringTypes = registerOutput<List<String>?>('applicationPerformanceMonitoringTypes');
+    clientAuthorization = registerOutput<SpringCloudGatewayClientAuthorization?>('clientAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudGatewayClientAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cors = registerOutput<SpringCloudGatewayCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudGatewayCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
     httpsOnly = registerOutput<bool?>('httpsOnly');
     instanceCount = registerOutput<int?>('instanceCount');
-    localResponseCachePerInstance =
-        registerOutput<SpringCloudGatewayLocalResponseCachePerInstance?>(
-          'localResponseCachePerInstance',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SpringCloudGatewayLocalResponseCachePerInstance.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    localResponseCachePerRoute =
-        registerOutput<SpringCloudGatewayLocalResponseCachePerRoute?>(
-          'localResponseCachePerRoute',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SpringCloudGatewayLocalResponseCachePerRoute.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    localResponseCachePerInstance = registerOutput<SpringCloudGatewayLocalResponseCachePerInstance?>('localResponseCachePerInstance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudGatewayLocalResponseCachePerInstance.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localResponseCachePerRoute = registerOutput<SpringCloudGatewayLocalResponseCachePerRoute?>('localResponseCachePerRoute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudGatewayLocalResponseCachePerRoute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
-    quota = registerOutput<SpringCloudGatewayQuota>(
-      'quota',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudGatewayQuota.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sensitiveEnvironmentVariables = registerOutput<Map<String, String>?>(
-      'sensitiveEnvironmentVariables',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    quota = registerOutput<SpringCloudGatewayQuota>('quota', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudGatewayQuota.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sensitiveEnvironmentVariables = registerOutput<Map<String, String>?>('sensitiveEnvironmentVariables');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    sso = registerOutput<SpringCloudGatewaySso?>(
-      'sso',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudGatewaySso.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sso = registerOutput<SpringCloudGatewaySso?>('sso', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudGatewaySso.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     url = registerOutput<String>('url');
   }
 
@@ -613,103 +518,27 @@ class SpringCloudGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudGateway:SpringCloudGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    apiMetadata = registerOutput<SpringCloudGatewayApiMetadata?>(
-      'apiMetadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudGatewayApiMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    applicationPerformanceMonitoringIds = registerOutput<List<String>?>(
-      'applicationPerformanceMonitoringIds',
-    );
-    applicationPerformanceMonitoringTypes = registerOutput<List<String>?>(
-      'applicationPerformanceMonitoringTypes',
-    );
-    clientAuthorization =
-        registerOutput<SpringCloudGatewayClientAuthorization?>(
-          'clientAuthorization',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SpringCloudGatewayClientAuthorization.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    cors = registerOutput<SpringCloudGatewayCors?>(
-      'cors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudGatewayCors.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    environmentVariables = registerOutput<Map<String, String>?>(
-      'environmentVariables',
-    );
+          'azure:appplatform/springCloudGateway:SpringCloudGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    apiMetadata = registerOutput<SpringCloudGatewayApiMetadata?>('apiMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudGatewayApiMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds');
+    applicationPerformanceMonitoringTypes = registerOutput<List<String>?>('applicationPerformanceMonitoringTypes');
+    clientAuthorization = registerOutput<SpringCloudGatewayClientAuthorization?>('clientAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudGatewayClientAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cors = registerOutput<SpringCloudGatewayCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudGatewayCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
     httpsOnly = registerOutput<bool?>('httpsOnly');
     instanceCount = registerOutput<int?>('instanceCount');
-    localResponseCachePerInstance =
-        registerOutput<SpringCloudGatewayLocalResponseCachePerInstance?>(
-          'localResponseCachePerInstance',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SpringCloudGatewayLocalResponseCachePerInstance.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    localResponseCachePerRoute =
-        registerOutput<SpringCloudGatewayLocalResponseCachePerRoute?>(
-          'localResponseCachePerRoute',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SpringCloudGatewayLocalResponseCachePerRoute.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    localResponseCachePerInstance = registerOutput<SpringCloudGatewayLocalResponseCachePerInstance?>('localResponseCachePerInstance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudGatewayLocalResponseCachePerInstance.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localResponseCachePerRoute = registerOutput<SpringCloudGatewayLocalResponseCachePerRoute?>('localResponseCachePerRoute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudGatewayLocalResponseCachePerRoute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
-    quota = registerOutput<SpringCloudGatewayQuota>(
-      'quota',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudGatewayQuota.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sensitiveEnvironmentVariables = registerOutput<Map<String, String>?>(
-      'sensitiveEnvironmentVariables',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    quota = registerOutput<SpringCloudGatewayQuota>('quota', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudGatewayQuota.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sensitiveEnvironmentVariables = registerOutput<Map<String, String>?>('sensitiveEnvironmentVariables');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    sso = registerOutput<SpringCloudGatewaySso?>(
-      'sso',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudGatewaySso.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sso = registerOutput<SpringCloudGatewaySso?>('sso', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudGatewaySso.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     url = registerOutput<String>('url');
   }
 }

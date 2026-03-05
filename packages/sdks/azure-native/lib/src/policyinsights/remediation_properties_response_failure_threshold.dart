@@ -9,21 +9,20 @@ class RemediationPropertiesResponseFailureThreshold {
 
   /// Creates a new [RemediationPropertiesResponseFailureThreshold].
   /// [percentage] A number between 0.0 to 1.0 representing the percentage failure threshold. The remediation will fail if the percentage of failed remediation operations (i.e. failed deployments) exceeds this threshold.
-  RemediationPropertiesResponseFailureThreshold({this.percentage});
+  RemediationPropertiesResponseFailureThreshold({
+    this.percentage,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'percentage': ?percentage};
+    return <String, dynamic>{
+      'percentage': ?percentage,
+    };
   }
 
-  factory RemediationPropertiesResponseFailureThreshold.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RemediationPropertiesResponseFailureThreshold.fromMap(Map<String, dynamic> map) {
     return RemediationPropertiesResponseFailureThreshold(
-      percentage: (() {
-        final guardedValue = map['percentage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      percentage: (() { final guardedValue = map['percentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

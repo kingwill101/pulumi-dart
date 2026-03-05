@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAdministrativeUnitArgs {
   /// Specifies the display name of the administrative unit.
   final pulumi.Input<String>? displayName;
-
   /// Specifies the object ID of the administrative unit.
   ///
   /// &gt; One of `display_name` or `object_id` must be specified.
@@ -18,7 +17,10 @@ class GetAdministrativeUnitArgs {
   /// Creates a new [GetAdministrativeUnitArgs].
   /// [displayName] Specifies the display name of the administrative unit.
   /// [objectId] Specifies the object ID of the administrative unit.
-  GetAdministrativeUnitArgs({this.displayName, this.objectId});
+  GetAdministrativeUnitArgs({
+    this.displayName,
+    this.objectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,16 +31,9 @@ class GetAdministrativeUnitArgs {
 
   factory GetAdministrativeUnitArgs.fromMap(Map<String, dynamic> map) {
     return GetAdministrativeUnitArgs(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      objectId: (() {
-        final guardedValue = map['objectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

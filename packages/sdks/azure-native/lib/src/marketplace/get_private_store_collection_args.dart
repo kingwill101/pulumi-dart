@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateStoreCollectionArgs {
   /// The collection ID
   final pulumi.Input<String> collectionId;
-
   /// The store ID - must use the tenant ID
   final pulumi.Input<String> privateStoreId;
 
@@ -35,3 +34,4 @@ class GetPrivateStoreCollectionArgs {
     );
   }
 }
+

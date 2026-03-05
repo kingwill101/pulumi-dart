@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getZone.
 class GetZoneResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Maximum number of Records in the zone.
   final int maxNumberOfRecordSets;
   final String name;
-
   /// A list of values that make up the NS record for the zone.
   final List<String> nameServers;
-
   /// The number of records already in the zone.
   final int numberOfRecordSets;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the DNS Zone.
   final Map<String, String> tags;
 
@@ -61,3 +58,4 @@ class GetZoneResult {
     );
   }
 }
+

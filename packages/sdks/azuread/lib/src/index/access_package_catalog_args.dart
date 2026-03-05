@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPackageCatalogArgs {
   /// The description of the access package catalog.
   final pulumi.Input<String> description;
-
   /// The display name of the access package catalog.
   final pulumi.Input<String> displayName;
-
   /// Whether the access packages in this catalog can be requested by users outside the tenant.
   final pulumi.Input<bool>? externallyVisible;
-
   /// Whether the access packages in this catalog are available for management.
   final pulumi.Input<bool>? published;
 
@@ -44,16 +41,9 @@ class AccessPackageCatalogArgs {
     return AccessPackageCatalogArgs(
       description: pulumi.Input.fromValue(map['description'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      externallyVisible: (() {
-        final guardedValue = map['externallyVisible'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      published: (() {
-        final guardedValue = map['published'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      externallyVisible: (() { final guardedValue = map['externallyVisible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      published: (() { final guardedValue = map['published']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

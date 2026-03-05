@@ -9,7 +9,6 @@ class GetCertificateMapResult {
   final String description;
   final Map<String, String> effectiveLabels;
   final List<GetCertificateMapGclbTarget> gclbTargets;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -47,11 +46,7 @@ class GetCertificateMapResult {
       'createTime': createTime,
       'description': description,
       'effectiveLabels': effectiveLabels,
-      'gclbTargets':
-          pulumi.Input.encodeList<
-            GetCertificateMapGclbTarget,
-            Map<String, dynamic>
-          >(gclbTargets, (value) => value.toMap()),
+      'gclbTargets': pulumi.Input.encodeList<GetCertificateMapGclbTarget, Map<String, dynamic>>(gclbTargets, (value) => value.toMap()),
       'id': id,
       'labels': labels,
       'name': name,
@@ -66,22 +61,14 @@ class GetCertificateMapResult {
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      gclbTargets: pulumi.Input.decodeList<GetCertificateMapGclbTarget>(
-        map['gclbTargets']!,
-        (value) => GetCertificateMapGclbTarget.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      gclbTargets: pulumi.Input.decodeList<GetCertificateMapGclbTarget>(map['gclbTargets']!, (value) => GetCertificateMapGclbTarget.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

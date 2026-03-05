@@ -157,13 +157,10 @@ import 'query_pack_state.dart';
 class QueryPack extends pulumi.CustomResource {
   /// The Azure Region where the Log Analytics Query Pack should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Log Analytics Query Pack. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Log Analytics Query Pack should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Log Analytics Query Pack.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -176,11 +173,11 @@ class QueryPack extends pulumi.CustomResource {
     QueryPackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/queryPack:QueryPack',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/queryPack:QueryPack',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -205,11 +202,11 @@ class QueryPack extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/queryPack:QueryPack',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/queryPack:QueryPack',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

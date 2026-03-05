@@ -7,33 +7,24 @@ import 'get_hci_cluster_identity.dart';
 class GetHciClusterResult {
   /// The ID of the Automanage Configuration assigned to the Azure Stack HCI Cluster.
   final String automanageConfigurationId;
-
   /// The Client ID of the Azure Active Directory used by the Azure Stack HCI Cluster.
   final String clientId;
-
   /// An immutable UUID for the Azure Stack HCI Cluster.
   final String cloudId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// An `identity` block as defined below.
   final List<GetHciClusterIdentity> identities;
-
   /// The Azure Region where the Azure Stack HCI Cluster exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// The object ID of the Resource Provider Service Principal.
   final String resourceProviderObjectId;
-
   /// The region specific Data Path Endpoint of the Azure Stack HCI Cluster.
   final String serviceEndpoint;
-
   /// A mapping of tags assigned to the Azure Stack HCI Cluster.
   final Map<String, String> tags;
-
   /// The Tenant ID associated with this Managed Service Identity.
   final String tenantId;
 
@@ -71,11 +62,7 @@ class GetHciClusterResult {
       'clientId': clientId,
       'cloudId': cloudId,
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetHciClusterIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
+      'identities': pulumi.Input.encodeList<GetHciClusterIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
@@ -92,12 +79,7 @@ class GetHciClusterResult {
       clientId: map['clientId'] as String,
       cloudId: map['cloudId'] as String,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetHciClusterIdentity>(
-        map['identities']!,
-        (value) => GetHciClusterIdentity.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      identities: pulumi.Input.decodeList<GetHciClusterIdentity>(map['identities']!, (value) => GetHciClusterIdentity.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
@@ -108,3 +90,4 @@ class GetHciClusterResult {
     );
   }
 }
+

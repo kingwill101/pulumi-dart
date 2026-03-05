@@ -738,23 +738,16 @@ import 'hybrid_monitor_sls_task_state.dart';
 class HybridMonitorSlsTask extends pulumi.CustomResource {
   /// The label of the monitoring task. See `attach_labels` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> attachLabels;
-
   /// The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
   late final pulumi.Output<int> collectInterval;
-
   /// The type of the collection target, enter the name of the Logstore group.
   late final pulumi.Output<String> collectTargetType;
-
   /// The description of the metric import task.
   late final pulumi.Output<String?> description;
-
   /// The name of the namespace.
   late final pulumi.Output<String> namespace;
-
   /// The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
-  late final pulumi.Output<HybridMonitorSlsTaskSlsProcessConfig>
-  slsProcessConfig;
-
+  late final pulumi.Output<HybridMonitorSlsTaskSlsProcessConfig> slsProcessConfig;
   /// The name of the metric import task, enter the name of the metric for logs imported from Log Service.
   late final pulumi.Output<String> taskName;
 
@@ -767,26 +760,17 @@ class HybridMonitorSlsTask extends pulumi.CustomResource {
     HybridMonitorSlsTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachLabels = registerOutput<List<Map<String, dynamic>>?>('attachLabels');
     collectInterval = registerOutput<int>('collectInterval');
     collectTargetType = registerOutput<String>('collectTargetType');
     description = registerOutput<String?>('description');
     namespace = registerOutput<String>('namespace');
-    slsProcessConfig = registerOutput<HybridMonitorSlsTaskSlsProcessConfig>(
-      'slsProcessConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HybridMonitorSlsTaskSlsProcessConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    slsProcessConfig = registerOutput<HybridMonitorSlsTaskSlsProcessConfig>('slsProcessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HybridMonitorSlsTaskSlsProcessConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     taskName = registerOutput<String>('taskName');
   }
 
@@ -808,26 +792,17 @@ class HybridMonitorSlsTask extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachLabels = registerOutput<List<Map<String, dynamic>>?>('attachLabels');
     collectInterval = registerOutput<int>('collectInterval');
     collectTargetType = registerOutput<String>('collectTargetType');
     description = registerOutput<String?>('description');
     namespace = registerOutput<String>('namespace');
-    slsProcessConfig = registerOutput<HybridMonitorSlsTaskSlsProcessConfig>(
-      'slsProcessConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HybridMonitorSlsTaskSlsProcessConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    slsProcessConfig = registerOutput<HybridMonitorSlsTaskSlsProcessConfig>('slsProcessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HybridMonitorSlsTaskSlsProcessConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     taskName = registerOutput<String>('taskName');
   }
 }

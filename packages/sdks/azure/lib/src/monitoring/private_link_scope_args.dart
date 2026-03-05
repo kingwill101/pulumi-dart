@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateLinkScopeArgs {
   /// The default ingestion access mode for the associated private endpoints in scope. Possible values are `Open` and `PrivateOnly`. Defaults to `Open`.
   final pulumi.Input<String>? ingestionAccessMode;
-
   /// The name of the Azure Monitor Private Link Scope. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The default query access mode for hte associated private endpoints in scope. Possible values are `Open` and `PrivateOnly`. Defaults to `Open`.
   final pulumi.Input<String>? queryAccessMode;
-
   /// The name of the Resource Group where the Azure Monitor Private Link Scope should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Azure Monitor Private Link Scope.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -48,31 +44,12 @@ class PrivateLinkScopeArgs {
 
   factory PrivateLinkScopeArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkScopeArgs(
-      ingestionAccessMode: (() {
-        final guardedValue = map['ingestionAccessMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      queryAccessMode: (() {
-        final guardedValue = map['queryAccessMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      ingestionAccessMode: (() { final guardedValue = map['ingestionAccessMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      queryAccessMode: (() { final guardedValue = map['queryAccessMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

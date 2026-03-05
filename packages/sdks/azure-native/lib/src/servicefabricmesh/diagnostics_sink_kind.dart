@@ -15,3 +15,4 @@ enum DiagnosticsSinkKind {
     throw ArgumentError('Unknown DiagnosticsSinkKind value: $value');
   }
 }
+

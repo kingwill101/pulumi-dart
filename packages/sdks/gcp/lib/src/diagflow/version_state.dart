@@ -6,17 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VersionState {
   /// The developer-provided description of this version.
   final pulumi.Input<String>? description;
-
   /// The unique identifier of this agent version.
   final pulumi.Input<String>? name;
-
   /// The Flow to create an Version for.
   /// Format: projects/&lt;Project ID&gt;/agent.
   final pulumi.Input<String>? parent;
-
   /// The status of this version.
   final pulumi.Input<String>? status;
-
   /// The sequential number of this version.
   final pulumi.Input<int>? versionNumber;
 
@@ -46,31 +42,12 @@ class VersionState {
 
   factory VersionState.fromMap(Map<String, dynamic> map) {
     return VersionState(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parent: (() {
-        final guardedValue = map['parent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      versionNumber: (() {
-        final guardedValue = map['versionNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      versionNumber: (() { final guardedValue = map['versionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

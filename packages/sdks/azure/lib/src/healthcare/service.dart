@@ -335,45 +335,32 @@ import 'service_state.dart';
 class Service extends pulumi.CustomResource {
   /// A set of Azure object IDs that are allowed to access the Service. If not configured, the default value is the object id of the service principal or user that is running Terraform.
   late final pulumi.Output<List<String>?> accessPolicyObjectIds;
-
   /// An `authentication_configuration` block as defined below.
-  late final pulumi.Output<ServiceAuthenticationConfiguration>
-  authenticationConfiguration;
-
+  late final pulumi.Output<ServiceAuthenticationConfiguration> authenticationConfiguration;
   /// Specifies the name of the storage account which the operation configuration information is exported to.
   late final pulumi.Output<String?> configurationExportStorageAccountName;
-
   /// A `cors_configuration` block as defined below.
   late final pulumi.Output<ServiceCorsConfiguration> corsConfiguration;
-
   /// A versionless Key Vault Key ID for CMK encryption of the backing database. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** In order to use a `Custom Key` from Key Vault for encryption you must grant Azure Cosmos DB Service access to your key vault. For instructions on how to configure your Key Vault correctly please refer to the [product documentation](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk#add-an-access-policy-to-your-azure-key-vault-instance)
   late final pulumi.Output<String?> cosmosdbKeyVaultKeyVersionlessId;
-
   /// The provisioned throughput for the backing database. Range of `400`-`100000`. Defaults to `1000`.
   late final pulumi.Output<int?> cosmosdbThroughput;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<ServiceIdentity?> identity;
-
   /// The type of the service. Values at time of publication are: `fhir`, `fhir-Stu3` and `fhir-R4`. Default value is `fhir`.
   late final pulumi.Output<String?> kind;
-
   /// Specifies the supported Azure Region where the Service should be created. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Not all locations support this resource. Some are `West US 2`, `North Central US`, and `UK West`.
   late final pulumi.Output<String> location;
-
   /// The name of the service instance. Used for service endpoint, must be unique within the audience. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Whether public network access is enabled or disabled for this service instance. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// The name of the Resource Group in which to create the Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -386,58 +373,22 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:healthcare/service:Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessPolicyObjectIds = registerOutput<List<String>?>(
-      'accessPolicyObjectIds',
-    );
-    authenticationConfiguration =
-        registerOutput<ServiceAuthenticationConfiguration>(
-          'authenticationConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ServiceAuthenticationConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    configurationExportStorageAccountName = registerOutput<String?>(
-      'configurationExportStorageAccountName',
-    );
-    corsConfiguration = registerOutput<ServiceCorsConfiguration>(
-      'corsConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceCorsConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    cosmosdbKeyVaultKeyVersionlessId = registerOutput<String?>(
-      'cosmosdbKeyVaultKeyVersionlessId',
-    );
+          'azure:healthcare/service:Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessPolicyObjectIds = registerOutput<List<String>?>('accessPolicyObjectIds');
+    authenticationConfiguration = registerOutput<ServiceAuthenticationConfiguration>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAuthenticationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configurationExportStorageAccountName = registerOutput<String?>('configurationExportStorageAccountName');
+    corsConfiguration = registerOutput<ServiceCorsConfiguration>('corsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceCorsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cosmosdbKeyVaultKeyVersionlessId = registerOutput<String?>('cosmosdbKeyVaultKeyVersionlessId');
     cosmosdbThroughput = registerOutput<int?>('cosmosdbThroughput');
-    identity = registerOutput<ServiceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -460,58 +411,22 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:healthcare/service:Service',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessPolicyObjectIds = registerOutput<List<String>?>(
-      'accessPolicyObjectIds',
-    );
-    authenticationConfiguration =
-        registerOutput<ServiceAuthenticationConfiguration>(
-          'authenticationConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ServiceAuthenticationConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    configurationExportStorageAccountName = registerOutput<String?>(
-      'configurationExportStorageAccountName',
-    );
-    corsConfiguration = registerOutput<ServiceCorsConfiguration>(
-      'corsConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceCorsConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    cosmosdbKeyVaultKeyVersionlessId = registerOutput<String?>(
-      'cosmosdbKeyVaultKeyVersionlessId',
-    );
+          'azure:healthcare/service:Service',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessPolicyObjectIds = registerOutput<List<String>?>('accessPolicyObjectIds');
+    authenticationConfiguration = registerOutput<ServiceAuthenticationConfiguration>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAuthenticationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configurationExportStorageAccountName = registerOutput<String?>('configurationExportStorageAccountName');
+    corsConfiguration = registerOutput<ServiceCorsConfiguration>('corsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceCorsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cosmosdbKeyVaultKeyVersionlessId = registerOutput<String?>('cosmosdbKeyVaultKeyVersionlessId');
     cosmosdbThroughput = registerOutput<int?>('cosmosdbThroughput');
-    identity = registerOutput<ServiceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }

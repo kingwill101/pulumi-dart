@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkServiceDesignVersionArgs {
   /// The name of the network service design group.
   final pulumi.Input<String> networkServiceDesignGroupName;
-
   /// The name of the network service design version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html.
   final pulumi.Input<String> networkServiceDesignVersionName;
-
   /// The name of the publisher.
   final pulumi.Input<String> publisherName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,16 +39,11 @@ class GetNetworkServiceDesignVersionArgs {
 
   factory GetNetworkServiceDesignVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkServiceDesignVersionArgs(
-      networkServiceDesignGroupName: pulumi.Input.fromValue(
-        map['networkServiceDesignGroupName'] as String,
-      ),
-      networkServiceDesignVersionName: pulumi.Input.fromValue(
-        map['networkServiceDesignVersionName'] as String,
-      ),
+      networkServiceDesignGroupName: pulumi.Input.fromValue(map['networkServiceDesignGroupName'] as String),
+      networkServiceDesignVersionName: pulumi.Input.fromValue(map['networkServiceDesignVersionName'] as String),
       publisherName: pulumi.Input.fromValue(map['publisherName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

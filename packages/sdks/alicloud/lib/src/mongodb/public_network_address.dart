@@ -270,7 +270,6 @@ import 'public_network_address_state.dart';
 class PublicNetworkAddress extends pulumi.CustomResource {
   /// The instance ID.
   late final pulumi.Output<String> dbInstanceId;
-
   /// Replica set instance information.
   late final pulumi.Output<List<Map<String, dynamic>>> replicaSets;
 
@@ -283,11 +282,11 @@ class PublicNetworkAddress extends pulumi.CustomResource {
     PublicNetworkAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbInstanceId = registerOutput<String>('dbInstanceId');
     replicaSets = registerOutput<List<Map<String, dynamic>>>('replicaSets');
   }
@@ -310,11 +309,11 @@ class PublicNetworkAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbInstanceId = registerOutput<String>('dbInstanceId');
     replicaSets = registerOutput<List<Map<String, dynamic>>>('replicaSets');
   }

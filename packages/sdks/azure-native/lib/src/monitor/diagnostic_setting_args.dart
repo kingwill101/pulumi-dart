@@ -11,34 +11,24 @@ import 'metric_settings.dart';
 class DiagnosticSettingArgs {
   /// The resource Id for the event hub authorization rule.
   final pulumi.Input<String>? eventHubAuthorizationRuleId;
-
   /// The name of the event hub. If none is specified, the default event hub will be selected.
   final pulumi.Input<String>? eventHubName;
-
   /// A string indicating whether the export to Log Analytics should use the default destination type, i.e. AzureDiagnostics, or use a destination type constructed as follows: &lt;normalized service identity&gt;_&lt;normalized category name&gt;. Possible values are: Dedicated and null (null is default.)
   final pulumi.Input<String>? logAnalyticsDestinationType;
-
   /// The list of logs settings.
   final pulumi.Input<List<LogSettings>>? logs;
-
   /// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
   final pulumi.Input<String>? marketplacePartnerId;
-
   /// The list of metric settings.
   final pulumi.Input<List<MetricSettings>>? metrics;
-
   /// The name of the diagnostic setting.
   final pulumi.Input<String>? name;
-
   /// The identifier of the resource.
   final pulumi.Input<String> resourceUri;
-
   /// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
   final pulumi.Input<String>? serviceBusRuleId;
-
   /// The resource ID of the storage account to which you would like to send Diagnostic Logs.
   final pulumi.Input<String>? storageAccountId;
-
   /// The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
   final pulumi.Input<String>? workspaceId;
 
@@ -73,31 +63,9 @@ class DiagnosticSettingArgs {
       'eventHubAuthorizationRuleId': ?eventHubAuthorizationRuleId,
       'eventHubName': ?eventHubName,
       'logAnalyticsDestinationType': ?logAnalyticsDestinationType,
-      'logs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LogSettings>,
-            List<Map<String, dynamic>>
-          >(
-            logs,
-            (value) =>
-                pulumi.Input.encodeList<LogSettings, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'logs': ?pulumi.Input.mapOptionalInputValue<List<LogSettings>, List<Map<String, dynamic>>>(logs, (value) => pulumi.Input.encodeList<LogSettings, Map<String, dynamic>>(value, (value) => value.toMap())),
       'marketplacePartnerId': ?marketplacePartnerId,
-      'metrics':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<MetricSettings>,
-            List<Map<String, dynamic>>
-          >(
-            metrics,
-            (value) =>
-                pulumi.Input.encodeList<MetricSettings, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'metrics': ?pulumi.Input.mapOptionalInputValue<List<MetricSettings>, List<Map<String, dynamic>>>(metrics, (value) => pulumi.Input.encodeList<MetricSettings, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'resourceUri': resourceUri,
       'serviceBusRuleId': ?serviceBusRuleId,
@@ -108,69 +76,18 @@ class DiagnosticSettingArgs {
 
   factory DiagnosticSettingArgs.fromMap(Map<String, dynamic> map) {
     return DiagnosticSettingArgs(
-      eventHubAuthorizationRuleId: (() {
-        final guardedValue = map['eventHubAuthorizationRuleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventHubName: (() {
-        final guardedValue = map['eventHubName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logAnalyticsDestinationType: (() {
-        final guardedValue = map['logAnalyticsDestinationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logs: (() {
-        final guardedValue = map['logs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LogSettings>(
-            guardedValue,
-            (value) =>
-                LogSettings.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      marketplacePartnerId: (() {
-        final guardedValue = map['marketplacePartnerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metrics: (() {
-        final guardedValue = map['metrics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<MetricSettings>(
-            guardedValue,
-            (value) =>
-                MetricSettings.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eventHubAuthorizationRuleId: (() { final guardedValue = map['eventHubAuthorizationRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventHubName: (() { final guardedValue = map['eventHubName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logAnalyticsDestinationType: (() { final guardedValue = map['logAnalyticsDestinationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logs: (() { final guardedValue = map['logs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LogSettings>(guardedValue, (value) => LogSettings.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      marketplacePartnerId: (() { final guardedValue = map['marketplacePartnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetricSettings>(guardedValue, (value) => MetricSettings.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
-      serviceBusRuleId: (() {
-        final guardedValue = map['serviceBusRuleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountId: (() {
-        final guardedValue = map['storageAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workspaceId: (() {
-        final guardedValue = map['workspaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serviceBusRuleId: (() { final guardedValue = map['serviceBusRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

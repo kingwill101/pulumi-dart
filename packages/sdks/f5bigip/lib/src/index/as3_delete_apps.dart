@@ -7,17 +7,22 @@ class As3DeleteApps {
   ///
   /// &gt; `delete_apps` cannot be used together with `as3_json`.
   final pulumi.Input<List<String>> apps;
-
   /// Name of the tenant containing the apps to delete.
   final pulumi.Input<String> tenantName;
 
   /// Creates a new [As3DeleteApps].
   /// [apps] List of application names to delete from the specified tenant.
   /// [tenantName] Name of the tenant containing the apps to delete.
-  As3DeleteApps({required this.apps, required this.tenantName});
+  As3DeleteApps({
+    required this.apps,
+    required this.tenantName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'apps': apps, 'tenantName': tenantName};
+    return <String, dynamic>{
+      'apps': apps,
+      'tenantName': tenantName,
+    };
   }
 
   factory As3DeleteApps.fromMap(Map<String, dynamic> map) {
@@ -27,3 +32,4 @@ class As3DeleteApps {
     );
   }
 }
+

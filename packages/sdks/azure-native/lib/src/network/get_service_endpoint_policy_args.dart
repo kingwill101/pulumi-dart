@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceEndpointPolicyArgs {
   /// Expands referenced resources.
   final pulumi.Input<String>? expand;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the service endpoint policy.
   final pulumi.Input<String> serviceEndpointPolicyName;
 
@@ -36,17 +34,10 @@ class GetServiceEndpointPolicyArgs {
 
   factory GetServiceEndpointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceEndpointPolicyArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      serviceEndpointPolicyName: pulumi.Input.fromValue(
-        map['serviceEndpointPolicyName'] as String,
-      ),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      serviceEndpointPolicyName: pulumi.Input.fromValue(map['serviceEndpointPolicyName'] as String),
     );
   }
 }
+

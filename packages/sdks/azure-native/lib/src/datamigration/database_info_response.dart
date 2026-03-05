@@ -9,17 +9,20 @@ class DatabaseInfoResponse {
 
   /// Creates a new [DatabaseInfoResponse].
   /// [sourceDatabaseName] Name of the database
-  DatabaseInfoResponse({required this.sourceDatabaseName});
+  DatabaseInfoResponse({
+    required this.sourceDatabaseName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sourceDatabaseName': sourceDatabaseName};
+    return <String, dynamic>{
+      'sourceDatabaseName': sourceDatabaseName,
+    };
   }
 
   factory DatabaseInfoResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseInfoResponse(
-      sourceDatabaseName: pulumi.Input.fromValue(
-        map['sourceDatabaseName'] as String,
-      ),
+      sourceDatabaseName: pulumi.Input.fromValue(map['sourceDatabaseName'] as String),
     );
   }
 }
+

@@ -13,8 +13,7 @@ enum CategoricalPredictionDriftMetric {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown CategoricalPredictionDriftMetric value: $value',
-    );
+    throw ArgumentError('Unknown CategoricalPredictionDriftMetric value: $value');
   }
 }
+

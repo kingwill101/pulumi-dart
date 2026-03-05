@@ -553,71 +553,46 @@ import 'system_data_response.dart';
 class InternalNetwork extends pulumi.CustomResource {
   /// Administrative state of the resource.
   late final pulumi.Output<String> administrativeState;
-
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// BGP configuration properties.
-  late final pulumi.Output<InternalNetworkPropertiesResponseBgpConfiguration?>
-  bgpConfiguration;
-
+  late final pulumi.Output<InternalNetworkPropertiesResponseBgpConfiguration?> bgpConfiguration;
   /// Configuration state of the resource.
   late final pulumi.Output<String> configurationState;
-
   /// List of Connected IPv4 Subnets.
   late final pulumi.Output<List<Map<String, dynamic>>?> connectedIPv4Subnets;
-
   /// List of connected IPv6 Subnets.
   late final pulumi.Output<List<Map<String, dynamic>>?> connectedIPv6Subnets;
-
   /// Egress Acl. ARM resource ID of Access Control Lists.
   late final pulumi.Output<String?> egressAclId;
-
   /// Export Route Policy either IPv4 or IPv6.
   late final pulumi.Output<ExportRoutePolicyResponse?> exportRoutePolicy;
-
   /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
   late final pulumi.Output<String?> exportRoutePolicyId;
-
   /// Extension. Example: NoExtension | NPB.
   late final pulumi.Output<String?> extension;
-
   /// Import Route Policy either IPv4 or IPv6.
   late final pulumi.Output<ImportRoutePolicyResponse?> importRoutePolicy;
-
   /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
   late final pulumi.Output<String?> importRoutePolicyId;
-
   /// Ingress Acl. ARM resource ID of Access Control Lists.
   late final pulumi.Output<String?> ingressAclId;
-
   /// To check whether monitoring of internal network is enabled or not.
   late final pulumi.Output<String?> isMonitoringEnabled;
-
   /// Maximum transmission unit. Default value is 1500.
   late final pulumi.Output<int?> mtu;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Static Route Configuration properties.
-  late final pulumi.Output<
-    InternalNetworkPropertiesResponseStaticRouteConfiguration?
-  >
-  staticRouteConfiguration;
-
+  late final pulumi.Output<InternalNetworkPropertiesResponseStaticRouteConfiguration?> staticRouteConfiguration;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Vlan identifier. Example: 1001.
   late final pulumi.Output<int> vlanId;
 
@@ -630,84 +605,31 @@ class InternalNetwork extends pulumi.CustomResource {
     InternalNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:managednetworkfabric:InternalNetwork',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:managednetworkfabric:InternalNetwork',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administrativeState = registerOutput<String>('administrativeState');
     annotation = registerOutput<String?>('annotation');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    bgpConfiguration =
-        registerOutput<InternalNetworkPropertiesResponseBgpConfiguration?>(
-          'bgpConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return InternalNetworkPropertiesResponseBgpConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    bgpConfiguration = registerOutput<InternalNetworkPropertiesResponseBgpConfiguration?>('bgpConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternalNetworkPropertiesResponseBgpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     configurationState = registerOutput<String>('configurationState');
-    connectedIPv4Subnets = registerOutput<List<Map<String, dynamic>>?>(
-      'connectedIPv4Subnets',
-    );
-    connectedIPv6Subnets = registerOutput<List<Map<String, dynamic>>?>(
-      'connectedIPv6Subnets',
-    );
+    connectedIPv4Subnets = registerOutput<List<Map<String, dynamic>>?>('connectedIPv4Subnets');
+    connectedIPv6Subnets = registerOutput<List<Map<String, dynamic>>?>('connectedIPv6Subnets');
     egressAclId = registerOutput<String?>('egressAclId');
-    exportRoutePolicy = registerOutput<ExportRoutePolicyResponse?>(
-      'exportRoutePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExportRoutePolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    exportRoutePolicy = registerOutput<ExportRoutePolicyResponse?>('exportRoutePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportRoutePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     exportRoutePolicyId = registerOutput<String?>('exportRoutePolicyId');
     extension = registerOutput<String?>('extension');
-    importRoutePolicy = registerOutput<ImportRoutePolicyResponse?>(
-      'importRoutePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ImportRoutePolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    importRoutePolicy = registerOutput<ImportRoutePolicyResponse?>('importRoutePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImportRoutePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     importRoutePolicyId = registerOutput<String?>('importRoutePolicyId');
     ingressAclId = registerOutput<String?>('ingressAclId');
     isMonitoringEnabled = registerOutput<String?>('isMonitoringEnabled');
     mtu = registerOutput<int?>('mtu');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    staticRouteConfiguration =
-        registerOutput<
-          InternalNetworkPropertiesResponseStaticRouteConfiguration?
-        >(
-          'staticRouteConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return InternalNetworkPropertiesResponseStaticRouteConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    staticRouteConfiguration = registerOutput<InternalNetworkPropertiesResponseStaticRouteConfiguration?>('staticRouteConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternalNetworkPropertiesResponseStaticRouteConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     vlanId = registerOutput<int>('vlanId');
   }

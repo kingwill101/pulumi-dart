@@ -32,17 +32,10 @@ class BackendServerBackendServer {
   factory BackendServerBackendServer.fromMap(Map<String, dynamic> map) {
     return BackendServerBackendServer(
       serverId: pulumi.Input.fromValue(map['serverId'] as String),
-      serverIp: (() {
-        final guardedValue = map['serverIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serverIp: (() { final guardedValue = map['serverIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
+

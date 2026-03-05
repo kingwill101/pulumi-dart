@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SelfManagedCertificate {
   /// Input only. The PEM-encoded certificate chain. Leaf certificate comes first, followed by intermediate ones if any.
   final pulumi.Input<String>? pemCertificate;
-
   /// Input only. The PEM-encoded private key of the leaf certificate.
   final pulumi.Input<String>? pemPrivateKey;
 
   /// Creates a new [SelfManagedCertificate].
   /// [pemCertificate] Input only. The PEM-encoded certificate chain. Leaf certificate comes first, followed by intermediate ones if any.
   /// [pemPrivateKey] Input only. The PEM-encoded private key of the leaf certificate.
-  SelfManagedCertificate({this.pemCertificate, this.pemPrivateKey});
+  SelfManagedCertificate({
+    this.pemCertificate,
+    this.pemPrivateKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class SelfManagedCertificate {
 
   factory SelfManagedCertificate.fromMap(Map<String, dynamic> map) {
     return SelfManagedCertificate(
-      pemCertificate: (() {
-        final guardedValue = map['pemCertificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pemPrivateKey: (() {
-        final guardedValue = map['pemPrivateKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pemCertificate: (() { final guardedValue = map['pemCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pemPrivateKey: (() { final guardedValue = map['pemPrivateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -12,8 +12,7 @@ enum VirtualMachineIsolateEmulatorThread {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown VirtualMachineIsolateEmulatorThread value: $value',
-    );
+    throw ArgumentError('Unknown VirtualMachineIsolateEmulatorThread value: $value');
   }
 }
+

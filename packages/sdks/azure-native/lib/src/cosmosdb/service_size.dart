@@ -16,3 +16,4 @@ enum ServiceSize {
     throw ArgumentError('Unknown ServiceSize value: $value');
   }
 }
+

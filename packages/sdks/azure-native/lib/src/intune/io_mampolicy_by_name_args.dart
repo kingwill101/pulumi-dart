@@ -19,20 +19,16 @@ class IoMAMPolicyByNameArgs {
   final pulumi.Input<String>? fileEncryptionLevel;
   final pulumi.Input<String>? fileSharingSaveAs;
   final pulumi.Input<String> friendlyName;
-
   /// Location hostName for the tenant
   final pulumi.Input<String> hostName;
-
   /// Resource Location
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? managedBrowser;
   final pulumi.Input<String>? offlineWipeTimeout;
   final pulumi.Input<String>? pin;
   final pulumi.Input<int>? pinNumRetry;
-
   /// Unique name for the policy
   final pulumi.Input<String>? policyName;
-
   /// Resource Tags
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<String>? touchId;
@@ -111,105 +107,28 @@ class IoMAMPolicyByNameArgs {
 
   factory IoMAMPolicyByNameArgs.fromMap(Map<String, dynamic> map) {
     return IoMAMPolicyByNameArgs(
-      accessRecheckOfflineTimeout: (() {
-        final guardedValue = map['accessRecheckOfflineTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      accessRecheckOnlineTimeout: (() {
-        final guardedValue = map['accessRecheckOnlineTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      appSharingFromLevel: (() {
-        final guardedValue = map['appSharingFromLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      appSharingToLevel: (() {
-        final guardedValue = map['appSharingToLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      authentication: (() {
-        final guardedValue = map['authentication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clipboardSharingLevel: (() {
-        final guardedValue = map['clipboardSharingLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataBackup: (() {
-        final guardedValue = map['dataBackup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deviceCompliance: (() {
-        final guardedValue = map['deviceCompliance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fileEncryptionLevel: (() {
-        final guardedValue = map['fileEncryptionLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fileSharingSaveAs: (() {
-        final guardedValue = map['fileSharingSaveAs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessRecheckOfflineTimeout: (() { final guardedValue = map['accessRecheckOfflineTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accessRecheckOnlineTimeout: (() { final guardedValue = map['accessRecheckOnlineTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      appSharingFromLevel: (() { final guardedValue = map['appSharingFromLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      appSharingToLevel: (() { final guardedValue = map['appSharingToLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clipboardSharingLevel: (() { final guardedValue = map['clipboardSharingLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataBackup: (() { final guardedValue = map['dataBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deviceCompliance: (() { final guardedValue = map['deviceCompliance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fileEncryptionLevel: (() { final guardedValue = map['fileEncryptionLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fileSharingSaveAs: (() { final guardedValue = map['fileSharingSaveAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       friendlyName: pulumi.Input.fromValue(map['friendlyName'] as String),
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedBrowser: (() {
-        final guardedValue = map['managedBrowser'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      offlineWipeTimeout: (() {
-        final guardedValue = map['offlineWipeTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pin: (() {
-        final guardedValue = map['pin'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pinNumRetry: (() {
-        final guardedValue = map['pinNumRetry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      policyName: (() {
-        final guardedValue = map['policyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      touchId: (() {
-        final guardedValue = map['touchId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedBrowser: (() { final guardedValue = map['managedBrowser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      offlineWipeTimeout: (() { final guardedValue = map['offlineWipeTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pin: (() { final guardedValue = map['pin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pinNumRetry: (() { final guardedValue = map['pinNumRetry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      policyName: (() { final guardedValue = map['policyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      touchId: (() { final guardedValue = map['touchId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

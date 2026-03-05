@@ -9,19 +9,20 @@ class CdnEndpointResponse {
 
   /// Creates a new [CdnEndpointResponse].
   /// [id] ARM Resource ID string.
-  CdnEndpointResponse({this.id});
+  CdnEndpointResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory CdnEndpointResponse.fromMap(Map<String, dynamic> map) {
     return CdnEndpointResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CspmMonitorGitLabOfferingResponse {
   /// The offering description.
   final pulumi.Input<String> description;
-
   /// The type of the security offering.
   /// Expected value is 'CspmMonitorGitLab'.
   final pulumi.Input<String> offeringType;
@@ -33,3 +32,4 @@ class CspmMonitorGitLabOfferingResponse {
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayCertificateAuthorityArgs {
   /// Identifier of the certificate entity. Must be unique in the current API Management service instance.
   final pulumi.Input<String> certificateId;
-
   /// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
   final pulumi.Input<String> gatewayId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -44,10 +41,9 @@ class GetGatewayCertificateAuthorityArgs {
     return GetGatewayCertificateAuthorityArgs(
       certificateId: pulumi.Input.fromValue(map['certificateId'] as String),
       gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

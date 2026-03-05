@@ -15,15 +15,17 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': password, 'username': username};
+    return <String, dynamic>{
+      'password': password,
+      'username': username,
+    };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake(
       password: pulumi.Input.fromValue(map['password'] as String),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

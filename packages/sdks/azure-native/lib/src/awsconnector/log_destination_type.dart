@@ -16,3 +16,4 @@ enum LogDestinationType {
     throw ArgumentError('Unknown LogDestinationType value: $value');
   }
 }
+

@@ -165,46 +165,32 @@ import 'update_summary_args.dart';
 class UpdateSummary extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Current OEM Version.
   late final pulumi.Output<String?> currentOemVersion;
-
   /// Current Sbe version of the stamp.
   late final pulumi.Output<String?> currentSbeVersion;
-
   /// Current Solution Bundle version of the stamp.
   late final pulumi.Output<String?> currentVersion;
-
   /// Name of the hardware model.
   late final pulumi.Output<String?> hardwareModel;
-
   /// Last time the package-specific checks were run.
   late final pulumi.Output<String?> healthCheckDate;
-
   /// Last time the update service successfully checked for updates
   late final pulumi.Output<String?> lastChecked;
-
   /// Last time an update installation completed successfully.
   late final pulumi.Output<String?> lastUpdated;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// OEM family name.
   late final pulumi.Output<String?> oemFamily;
-
   /// Provisioning state of the UpdateSummaries proxy resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Overall update state of the stamp.
   late final pulumi.Output<String?> state;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -217,11 +203,11 @@ class UpdateSummary extends pulumi.CustomResource {
     UpdateSummaryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azurestackhci:UpdateSummary',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azurestackhci:UpdateSummary',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     currentOemVersion = registerOutput<String?>('currentOemVersion');
     currentSbeVersion = registerOutput<String?>('currentSbeVersion');
@@ -235,16 +221,7 @@ class UpdateSummary extends pulumi.CustomResource {
     oemFamily = registerOutput<String?>('oemFamily');
     provisioningState = registerOutput<String>('provisioningState');
     state = registerOutput<String?>('state');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

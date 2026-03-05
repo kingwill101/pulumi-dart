@@ -8,19 +8,20 @@ class DomainDevicesInterfaceSourceVdpa {
 
   /// Creates a new [DomainDevicesInterfaceSourceVdpa].
   /// [device] Defines the specific vDPA device used for the network interface, facilitating optimized data paths.
-  DomainDevicesInterfaceSourceVdpa({this.device});
+  DomainDevicesInterfaceSourceVdpa({
+    this.device,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'device': ?device};
+    return <String, dynamic>{
+      'device': ?device,
+    };
   }
 
   factory DomainDevicesInterfaceSourceVdpa.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceVdpa(
-      device: (() {
-        final guardedValue = map['device'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      device: (() { final guardedValue = map['device']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

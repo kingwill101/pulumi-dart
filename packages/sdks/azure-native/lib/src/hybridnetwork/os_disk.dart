@@ -7,13 +7,10 @@ import 'virtual_hard_disk.dart';
 class OsDisk {
   /// Specifies the size of os disk in gigabytes. This is the fully expanded disk size needed of the VHD image on the ASE. This disk size should be greater than the size of the VHD provided in vhdUri.
   final pulumi.Input<int>? diskSizeGB;
-
   /// The VHD name.
   final pulumi.Input<String>? name;
-
   /// The OS type.
   final pulumi.Input<String>? osType;
-
   /// The virtual hard disk.
   final pulumi.Input<VirtualHardDisk>? vhd;
 
@@ -22,47 +19,29 @@ class OsDisk {
   /// [name] The VHD name.
   /// [osType] The OS type.
   /// [vhd] The virtual hard disk.
-  OsDisk({this.diskSizeGB, this.name, this.osType, this.vhd});
+  OsDisk({
+    this.diskSizeGB,
+    this.name,
+    this.osType,
+    this.vhd,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'diskSizeGB': ?diskSizeGB,
       'name': ?name,
       'osType': ?osType,
-      'vhd':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualHardDisk,
-            Map<String, dynamic>
-          >(vhd, (value) => value.toMap()),
+      'vhd': ?pulumi.Input.mapOptionalInputValue<VirtualHardDisk, Map<String, dynamic>>(vhd, (value) => value.toMap()),
     };
   }
 
   factory OsDisk.fromMap(Map<String, dynamic> map) {
     return OsDisk(
-      diskSizeGB: (() {
-        final guardedValue = map['diskSizeGB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      osType: (() {
-        final guardedValue = map['osType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vhd: (() {
-        final guardedValue = map['vhd'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualHardDisk.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vhd: (() { final guardedValue = map['vhd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualHardDisk.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

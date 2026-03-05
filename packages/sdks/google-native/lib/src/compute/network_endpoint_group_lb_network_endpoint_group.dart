@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkEndpointGroupLbNetworkEndpointGroup {
   /// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
   final pulumi.Input<int>? defaultPort;
-
   /// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
   final pulumi.Input<String>? network;
-
   /// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
   final pulumi.Input<String>? subnetwork;
 
@@ -31,25 +29,12 @@ class NetworkEndpointGroupLbNetworkEndpointGroup {
     };
   }
 
-  factory NetworkEndpointGroupLbNetworkEndpointGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkEndpointGroupLbNetworkEndpointGroup.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointGroupLbNetworkEndpointGroup(
-      defaultPort: (() {
-        final guardedValue = map['defaultPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetwork: (() {
-        final guardedValue = map['subnetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      defaultPort: (() { final guardedValue = map['defaultPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

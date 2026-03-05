@@ -5,11 +5,9 @@ import 'get_release_labels_filters.dart';
 /// Result data returned by getReleaseLabels.
 class GetReleaseLabelsResult {
   final GetReleaseLabelsFilters? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// Returned release labels.
   final List<String> releaseLabels;
 
@@ -36,16 +34,11 @@ class GetReleaseLabelsResult {
 
   factory GetReleaseLabelsResult.fromMap(Map<String, dynamic> map) {
     return GetReleaseLabelsResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return GetReleaseLabelsFilters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return GetReleaseLabelsFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       region: map['region'] as String,
       releaseLabels: (map['releaseLabels'] as List).cast<String>(),
     );
   }
 }
+

@@ -13,14 +13,15 @@ class GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'customAuthMode': customAuthMode};
+    return <String, dynamic>{
+      'customAuthMode': customAuthMode,
+    };
   }
 
-  factory GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow.fromMap(Map<String, dynamic> map) {
     return GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow(
       customAuthMode: pulumi.Input.fromValue(map['customAuthMode'] as String),
     );
   }
 }
+

@@ -17,8 +17,7 @@ enum SubscriptionFeatureRegistrationState {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SubscriptionFeatureRegistrationState value: $value',
-    );
+    throw ArgumentError('Unknown SubscriptionFeatureRegistrationState value: $value');
   }
 }
+

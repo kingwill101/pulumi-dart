@@ -6,13 +6,10 @@ class GetNetworksNetwork {
   /// CidrBlock of the CCN instance.
   final pulumi.Input<String> cidrBlock;
   final pulumi.Input<String> description;
-
   /// ID of the CCN instance.
   final pulumi.Input<String> id;
-
   /// IsDefault of the CCN instance.
   final pulumi.Input<bool> isDefault;
-
   /// Name of the CCN instance.
   final pulumi.Input<String> name;
 
@@ -50,3 +47,4 @@ class GetNetworksNetwork {
     );
   }
 }
+

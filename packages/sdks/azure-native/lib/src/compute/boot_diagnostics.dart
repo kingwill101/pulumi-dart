@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BootDiagnostics {
   /// Whether boot diagnostics should be enabled on the Virtual Machine.
   final pulumi.Input<bool>? enabled;
-
   /// Uri of the storage account to use for placing the console output and screenshot. If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
   final pulumi.Input<String>? storageUri;
 
   /// Creates a new [BootDiagnostics].
   /// [enabled] Whether boot diagnostics should be enabled on the Virtual Machine.
   /// [storageUri] Uri of the storage account to use for placing the console output and screenshot. If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
-  BootDiagnostics({this.enabled, this.storageUri});
+  BootDiagnostics({
+    this.enabled,
+    this.storageUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled, 'storageUri': ?storageUri};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'storageUri': ?storageUri,
+    };
   }
 
   factory BootDiagnostics.fromMap(Map<String, dynamic> map) {
     return BootDiagnostics(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      storageUri: (() {
-        final guardedValue = map['storageUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      storageUri: (() { final guardedValue = map['storageUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

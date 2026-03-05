@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualMachineScaleSetArgs {
   /// The expand expression to apply on the operation. 'UserData' retrieves the UserData property of the VM scale set that was provided by the user during the VM scale set Create/Update operation
   final pulumi.Input<String>? expand;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the VM scale set.
   final pulumi.Input<String> vmScaleSetName;
 
@@ -36,15 +34,10 @@ class GetVirtualMachineScaleSetArgs {
 
   factory GetVirtualMachineScaleSetArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineScaleSetArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vmScaleSetName: pulumi.Input.fromValue(map['vmScaleSetName'] as String),
     );
   }
 }
+

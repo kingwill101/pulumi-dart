@@ -13,18 +13,15 @@ class ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'invokeType': ?invokeType};
+    return <String, dynamic>{
+      'invokeType': ?invokeType,
+    };
   }
 
-  factory ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig(
-      invokeType: (() {
-        final guardedValue = map['invokeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      invokeType: (() { final guardedValue = map['invokeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

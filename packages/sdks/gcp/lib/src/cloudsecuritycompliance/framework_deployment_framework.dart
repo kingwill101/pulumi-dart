@@ -6,7 +6,6 @@ class FrameworkDeploymentFramework {
   /// In the format:
   /// organizations/{org}/locations/{location}/frameworks/{framework}
   final pulumi.Input<String> framework;
-
   /// Major revision id of the framework.
   final pulumi.Input<String> majorRevisionId;
 
@@ -32,3 +31,4 @@ class FrameworkDeploymentFramework {
     );
   }
 }
+

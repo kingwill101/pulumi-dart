@@ -20,17 +20,13 @@ import 'resource_slice_spec_patch_resource_k8s_io_v1alpha3.dart';
 /// For resources that are not local to a node, the node name is not set. Instead, the driver may use a node selector to specify where the devices are available.
 ///
 /// This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.
-class ResourceSlicePatchResourceK8sIoV1alpha3Resource
-    extends pulumi.CustomResource {
+class ResourceSlicePatchResourceK8sIoV1alpha3Resource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
-
   /// Standard object metadata
   late final pulumi.Output<ObjectMetaPatch?> metadata;
-
   /// Contains the information published by the driver.
   ///
   /// Changing the spec automatically increments the metadata.generation number.
@@ -45,32 +41,14 @@ class ResourceSlicePatchResourceK8sIoV1alpha3Resource
     ResourceSlicePatchResourceK8sIoV1alpha3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'kubernetes:resource.k8s.io/v1alpha3:ResourceSlicePatch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'kubernetes:resource.k8s.io/v1alpha3:ResourceSlicePatch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMetaPatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    spec = registerOutput<ResourceSliceSpecPatchResourceK8sIoV1alpha3?>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceSliceSpecPatchResourceK8sIoV1alpha3.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ResourceSliceSpecPatchResourceK8sIoV1alpha3?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSliceSpecPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

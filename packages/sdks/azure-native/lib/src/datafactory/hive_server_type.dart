@@ -16,3 +16,4 @@ enum HiveServerType {
     throw ArgumentError('Unknown HiveServerType value: $value');
   }
 }
+

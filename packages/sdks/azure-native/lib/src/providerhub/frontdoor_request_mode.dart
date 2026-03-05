@@ -15,3 +15,4 @@ enum FrontdoorRequestMode {
     throw ArgumentError('Unknown FrontdoorRequestMode value: $value');
   }
 }
+

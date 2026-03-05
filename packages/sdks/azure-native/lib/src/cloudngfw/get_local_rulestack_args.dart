@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLocalRulestackArgs {
   /// LocalRulestack resource name
   final pulumi.Input<String> localRulestackName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetLocalRulestackArgs {
 
   factory GetLocalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalRulestackArgs(
-      localRulestackName: pulumi.Input.fromValue(
-        map['localRulestackName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      localRulestackName: pulumi.Input.fromValue(map['localRulestackName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

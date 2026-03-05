@@ -10,19 +10,14 @@ import 'serial_port_state.dart';
 class SerialPortArgs {
   /// The resource name, or subordinate path, for the parent of the serial port. For example: the name of the virtual machine.
   final pulumi.Input<String> parentResource;
-
   /// The resource type of the parent resource.  For example: 'virtualMachines' or 'virtualMachineScaleSets'
   final pulumi.Input<String> parentResourceType;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The namespace of the resource provider.
   final pulumi.Input<String> resourceProviderNamespace;
-
   /// The name of the serial port to create.
   final pulumi.Input<String>? serialPort;
-
   /// Specifies whether the port is enabled for a serial console connection.
   final pulumi.Input<SerialPortState>? state;
 
@@ -49,37 +44,19 @@ class SerialPortArgs {
       'resourceGroupName': resourceGroupName,
       'resourceProviderNamespace': resourceProviderNamespace,
       'serialPort': ?serialPort,
-      'state': ?pulumi.Input.mapOptionalInputValue<SerialPortState, String>(
-        state,
-        (value) => value.wireValue,
-      ),
+      'state': ?pulumi.Input.mapOptionalInputValue<SerialPortState, String>(state, (value) => value.wireValue),
     };
   }
 
   factory SerialPortArgs.fromMap(Map<String, dynamic> map) {
     return SerialPortArgs(
       parentResource: pulumi.Input.fromValue(map['parentResource'] as String),
-      parentResourceType: pulumi.Input.fromValue(
-        map['parentResourceType'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      resourceProviderNamespace: pulumi.Input.fromValue(
-        map['resourceProviderNamespace'] as String,
-      ),
-      serialPort: (() {
-        final guardedValue = map['serialPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SerialPortState.fromValue(guardedValue as String),
-        );
-      })(),
+      parentResourceType: pulumi.Input.fromValue(map['parentResourceType'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      resourceProviderNamespace: pulumi.Input.fromValue(map['resourceProviderNamespace'] as String),
+      serialPort: (() { final guardedValue = map['serialPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SerialPortState.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

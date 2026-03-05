@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyResponse {
   /// Automation key name.
   final pulumi.Input<String> keyName;
-
   /// Automation key permissions.
   final pulumi.Input<String> permissions;
-
   /// Value of the Automation Key used for registration.
   final pulumi.Input<String> value;
 
@@ -39,3 +37,4 @@ class KeyResponse {
     );
   }
 }
+

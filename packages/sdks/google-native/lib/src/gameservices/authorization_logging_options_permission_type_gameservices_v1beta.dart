@@ -6,22 +6,16 @@ enum AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta {
   dataRead("DATA_READ"),
   dataWrite("DATA_WRITE");
 
-  const AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta(
-    this.wireValue,
-  );
+  const AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta(this.wireValue);
   final String wireValue;
 
-  static AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta fromValue(
-    String value,
-  ) {
-    for (final item
-        in AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta.values) {
+  static AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta fromValue(String value) {
+    for (final item in AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta value: $value',
-    );
+    throw ArgumentError('Unknown AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta value: $value');
   }
 }
+

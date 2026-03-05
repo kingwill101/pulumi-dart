@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKeyValueArgs {
   /// The name of the configuration store.
   final pulumi.Input<String> configStoreName;
-
   /// Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
   final pulumi.Input<String> keyValueName;
-
   /// The name of the resource group to which the container registry belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetKeyValueArgs {
     return GetKeyValueArgs(
       configStoreName: pulumi.Input.fromValue(map['configStoreName'] as String),
       keyValueName: pulumi.Input.fromValue(map['keyValueName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

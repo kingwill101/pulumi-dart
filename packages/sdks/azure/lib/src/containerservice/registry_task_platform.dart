@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryTaskPlatform {
   /// The OS architecture. Possible values are `amd64`, `x86`, `386`, `arm` and `arm64`.
   final pulumi.Input<String>? architecture;
-
   /// The operating system type required for the task. Possible values are `Windows` and `Linux`.
   final pulumi.Input<String> os;
-
   /// The variant of the CPU. Possible values are `v6`, `v7`, `v8`.
   final pulumi.Input<String>? variant;
 
@@ -16,7 +14,11 @@ class RegistryTaskPlatform {
   /// [architecture] The OS architecture. Possible values are `amd64`, `x86`, `386`, `arm` and `arm64`.
   /// [os] The operating system type required for the task. Possible values are `Windows` and `Linux`.
   /// [variant] The variant of the CPU. Possible values are `v6`, `v7`, `v8`.
-  RegistryTaskPlatform({this.architecture, required this.os, this.variant});
+  RegistryTaskPlatform({
+    this.architecture,
+    required this.os,
+    this.variant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,17 +30,10 @@ class RegistryTaskPlatform {
 
   factory RegistryTaskPlatform.fromMap(Map<String, dynamic> map) {
     return RegistryTaskPlatform(
-      architecture: (() {
-        final guardedValue = map['architecture'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      architecture: (() { final guardedValue = map['architecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       os: pulumi.Input.fromValue(map['os'] as String),
-      variant: (() {
-        final guardedValue = map['variant'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      variant: (() { final guardedValue = map['variant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

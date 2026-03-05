@@ -11,19 +11,14 @@ class GetResolverRulesArgs {
   /// The filtering is done locally, so could have a performance impact if the result is large.
   /// This argument should be used along with other arguments to limit the number of results returned.
   final pulumi.Input<String>? nameRegex;
-
   /// When the desired resolver rules are shared with another AWS account, the account ID of the account that the rules are shared with.
   final pulumi.Input<String>? ownerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID of the outbound resolver endpoint for the desired resolver rules.
   final pulumi.Input<String>? resolverEndpointId;
-
   /// Rule type of the desired resolver rules. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
   final pulumi.Input<String>? ruleType;
-
   /// Whether the desired resolver rules are shared and, if so, whether the current account is sharing the rules with another account, or another account is sharing the rules with the current account. Valid values are `NOT_SHARED`, `SHARED_BY_ME` or `SHARED_WITH_ME`
   final pulumi.Input<String>? shareStatus;
 
@@ -56,36 +51,13 @@ class GetResolverRulesArgs {
 
   factory GetResolverRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverRulesArgs(
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ownerId: (() {
-        final guardedValue = map['ownerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resolverEndpointId: (() {
-        final guardedValue = map['resolverEndpointId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ruleType: (() {
-        final guardedValue = map['ruleType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      shareStatus: (() {
-        final guardedValue = map['shareStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resolverEndpointId: (() { final guardedValue = map['resolverEndpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleType: (() { final guardedValue = map['ruleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shareStatus: (() { final guardedValue = map['shareStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

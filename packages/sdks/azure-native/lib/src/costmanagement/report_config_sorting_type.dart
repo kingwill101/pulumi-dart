@@ -15,3 +15,4 @@ enum ReportConfigSortingType {
     throw ArgumentError('Unknown ReportConfigSortingType value: $value');
   }
 }
+

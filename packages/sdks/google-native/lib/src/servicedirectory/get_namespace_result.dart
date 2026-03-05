@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNamespace.
 class GetNamespaceResult {
   /// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
   final Map<String, String> labels;
-
   /// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
   final String name;
-
   /// The globally unique identifier of the namespace in the UUID4 format.
   final String uid;
 
@@ -22,7 +21,11 @@ class GetNamespaceResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labels': labels, 'name': name, 'uid': uid};
+    return <String, dynamic>{
+      'labels': labels,
+      'name': name,
+      'uid': uid,
+    };
   }
 
   factory GetNamespaceResult.fromMap(Map<String, dynamic> map) {
@@ -33,3 +36,4 @@ class GetNamespaceResult {
     );
   }
 }
+

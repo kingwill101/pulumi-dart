@@ -9,17 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionNetworkFirewallPolicyAssociationArgs {
   /// The target that the firewall policy is attached to.
   final pulumi.Input<String> attachmentTarget;
-
   /// The firewall policy of the resource.
   final pulumi.Input<String> firewallPolicy;
-
   /// The name for an association.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The location of this resource.
   final pulumi.Input<String>? region;
 
@@ -47,29 +43,14 @@ class RegionNetworkFirewallPolicyAssociationArgs {
     };
   }
 
-  factory RegionNetworkFirewallPolicyAssociationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionNetworkFirewallPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RegionNetworkFirewallPolicyAssociationArgs(
-      attachmentTarget: pulumi.Input.fromValue(
-        map['attachmentTarget'] as String,
-      ),
+      attachmentTarget: pulumi.Input.fromValue(map['attachmentTarget'] as String),
       firewallPolicy: pulumi.Input.fromValue(map['firewallPolicy'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

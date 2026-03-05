@@ -16,3 +16,4 @@ enum SampleName {
     throw ArgumentError('Unknown SampleName value: $value');
   }
 }
+

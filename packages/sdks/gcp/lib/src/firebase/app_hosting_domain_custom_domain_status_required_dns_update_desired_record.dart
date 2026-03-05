@@ -6,7 +6,6 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord {
   /// (Output)
   /// The domain the record pertains to, e.g. `foo.bar.com.`.
   final pulumi.Input<String>? domainName;
-
   /// (Output)
   /// The data of the record. The meaning of the value depends on record type:
   /// - A and AAAA: IP addresses for the domain.
@@ -16,12 +15,10 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord {
   /// permission to act on the domain's behalf.
   /// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
   final pulumi.Input<String>? rdata;
-
   /// (Output)
   /// An enum that indicates which state(s) this DNS record applies to. Populated
   /// for all records with an `ADD` or `REMOVE` required action.
   final pulumi.Input<List<String>>? relevantStates;
-
   /// (Output)
   /// An enum that indicates the a required action for this record. Populated
   /// when the record is part of a required change in a  `DnsUpdates`
@@ -31,7 +28,6 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord {
   /// ADD
   /// REMOVE
   final pulumi.Input<String>? requiredAction;
-
   /// (Output)
   /// The record's type, which determines what data the record contains.
   /// Possible values:
@@ -66,35 +62,14 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord {
     };
   }
 
-  factory AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord(
-      domainName: (() {
-        final guardedValue = map['domainName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rdata: (() {
-        final guardedValue = map['rdata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      relevantStates: (() {
-        final guardedValue = map['relevantStates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      requiredAction: (() {
-        final guardedValue = map['requiredAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rdata: (() { final guardedValue = map['rdata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      relevantStates: (() { final guardedValue = map['relevantStates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      requiredAction: (() { final guardedValue = map['requiredAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

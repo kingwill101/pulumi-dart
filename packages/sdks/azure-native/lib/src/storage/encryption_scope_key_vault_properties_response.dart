@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionScopeKeyVaultPropertiesResponse {
   /// The object identifier of the current versioned Key Vault Key in use.
   final pulumi.Input<String> currentVersionedKeyIdentifier;
-
   /// The object identifier for a key vault key object. When applied, the encryption scope will use the key referenced by the identifier to enable customer-managed key support on this encryption scope.
   final pulumi.Input<String>? keyUri;
-
   /// Timestamp of last rotation of the Key Vault Key.
   final pulumi.Input<String> lastKeyRotationTimestamp;
 
@@ -31,21 +29,12 @@ class EncryptionScopeKeyVaultPropertiesResponse {
     };
   }
 
-  factory EncryptionScopeKeyVaultPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EncryptionScopeKeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionScopeKeyVaultPropertiesResponse(
-      currentVersionedKeyIdentifier: pulumi.Input.fromValue(
-        map['currentVersionedKeyIdentifier'] as String,
-      ),
-      keyUri: (() {
-        final guardedValue = map['keyUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastKeyRotationTimestamp: pulumi.Input.fromValue(
-        map['lastKeyRotationTimestamp'] as String,
-      ),
+      currentVersionedKeyIdentifier: pulumi.Input.fromValue(map['currentVersionedKeyIdentifier'] as String),
+      keyUri: (() { final guardedValue = map['keyUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastKeyRotationTimestamp: pulumi.Input.fromValue(map['lastKeyRotationTimestamp'] as String),
     );
   }
 }
+

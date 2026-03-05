@@ -38,11 +38,8 @@ class GetEntityTypeAiplatformV1beta1Args {
       entityTypeId: pulumi.Input.fromValue(map['entityTypeId'] as String),
       featurestoreId: pulumi.Input.fromValue(map['featurestoreId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,17 +8,20 @@ class SecurityGatewayApplicationUpstreamEgressPolicy {
 
   /// Creates a new [SecurityGatewayApplicationUpstreamEgressPolicy].
   /// [regions] Required. List of regions where the application sends traffic to.
-  SecurityGatewayApplicationUpstreamEgressPolicy({required this.regions});
+  SecurityGatewayApplicationUpstreamEgressPolicy({
+    required this.regions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'regions': regions};
+    return <String, dynamic>{
+      'regions': regions,
+    };
   }
 
-  factory SecurityGatewayApplicationUpstreamEgressPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityGatewayApplicationUpstreamEgressPolicy.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstreamEgressPolicy(
       regions: pulumi.Input.fromValue((map['regions'] as List).cast<String>()),
     );
   }
 }
+

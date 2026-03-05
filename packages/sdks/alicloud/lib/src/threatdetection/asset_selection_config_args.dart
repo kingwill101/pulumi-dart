@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssetSelectionConfigArgs {
   /// The first ID of the resource
   final pulumi.Input<String> businessType;
-
   /// The operating system type.
   final pulumi.Input<String>? platform;
-
   /// Target object type.
   final pulumi.Input<String> targetType;
 
@@ -37,12 +35,9 @@ class AssetSelectionConfigArgs {
   factory AssetSelectionConfigArgs.fromMap(Map<String, dynamic> map) {
     return AssetSelectionConfigArgs(
       businessType: pulumi.Input.fromValue(map['businessType'] as String),
-      platform: (() {
-        final guardedValue = map['platform'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      platform: (() { final guardedValue = map['platform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetType: pulumi.Input.fromValue(map['targetType'] as String),
     );
   }
 }
+

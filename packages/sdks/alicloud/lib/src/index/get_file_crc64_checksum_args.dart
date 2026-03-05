@@ -14,20 +14,23 @@ class GetFileCrc64ChecksumArgs {
   /// Creates a new [GetFileCrc64ChecksumArgs].
   /// [filename] The name of the file to be computed crc64 checksum.
   /// [outputFile] Optional.
-  GetFileCrc64ChecksumArgs({required this.filename, this.outputFile});
+  GetFileCrc64ChecksumArgs({
+    required this.filename,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filename': filename, 'outputFile': ?outputFile};
+    return <String, dynamic>{
+      'filename': filename,
+      'outputFile': ?outputFile,
+    };
   }
 
   factory GetFileCrc64ChecksumArgs.fromMap(Map<String, dynamic> map) {
     return GetFileCrc64ChecksumArgs(
       filename: pulumi.Input.fromValue(map['filename'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

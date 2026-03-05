@@ -10,35 +10,20 @@ class GetPartnerTopicEventSubscriptionDeliveryAttributesResult {
 
   /// Creates a new [GetPartnerTopicEventSubscriptionDeliveryAttributesResult].
   /// [value] A collection of DeliveryAttributeMapping
-  GetPartnerTopicEventSubscriptionDeliveryAttributesResult({this.value});
+  GetPartnerTopicEventSubscriptionDeliveryAttributesResult({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': ?(() {
-        final guardedValue = value;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          DynamicDeliveryAttributeMappingResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<DynamicDeliveryAttributeMappingResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
-  factory GetPartnerTopicEventSubscriptionDeliveryAttributesResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPartnerTopicEventSubscriptionDeliveryAttributesResult.fromMap(Map<String, dynamic> map) {
     return GetPartnerTopicEventSubscriptionDeliveryAttributesResult(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(
-          guardedValue,
-          (value) => DynamicDeliveryAttributeMappingResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(guardedValue, (value) => DynamicDeliveryAttributeMappingResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

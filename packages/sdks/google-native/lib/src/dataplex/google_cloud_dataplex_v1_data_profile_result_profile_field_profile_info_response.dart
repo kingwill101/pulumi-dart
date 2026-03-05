@@ -10,35 +10,16 @@ import 'google_cloud_dataplex_v1_data_profile_result_profile_field_profile_info_
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse {
   /// Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
   final pulumi.Input<double> distinctRatio;
-
   /// Double type field information.
-  final pulumi.Input<
-    GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse
-  >
-  doubleProfile;
-
+  final pulumi.Input<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse> doubleProfile;
   /// Integer type field information.
-  final pulumi.Input<
-    GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse
-  >
-  integerProfile;
-
+  final pulumi.Input<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse> integerProfile;
   /// Ratio of rows with null value against total scanned rows.
   final pulumi.Input<double> nullRatio;
-
   /// String type field information.
-  final pulumi.Input<
-    GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse
-  >
-  stringProfile;
-
+  final pulumi.Input<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse> stringProfile;
   /// The list of top N non-null values, frequency and ratio with which they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
-  final pulumi.Input<
-    List<
-      GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse
-    >
-  >
-  topNValues;
+  final pulumi.Input<List<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse>> topNValues;
 
   /// Creates a new [GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse].
   /// [distinctRatio] Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
@@ -59,71 +40,23 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'distinctRatio': distinctRatio,
-      'doubleProfile':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse,
-            Map<String, dynamic>
-          >(doubleProfile, (value) => value.toMap()),
-      'integerProfile':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse,
-            Map<String, dynamic>
-          >(integerProfile, (value) => value.toMap()),
+      'doubleProfile': pulumi.Input.mapInputValue<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse, Map<String, dynamic>>(doubleProfile, (value) => value.toMap()),
+      'integerProfile': pulumi.Input.mapInputValue<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse, Map<String, dynamic>>(integerProfile, (value) => value.toMap()),
       'nullRatio': nullRatio,
-      'stringProfile':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse,
-            Map<String, dynamic>
-          >(stringProfile, (value) => value.toMap()),
-      'topNValues':
-          pulumi.Input.mapInputValue<
-            List<
-              GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse
-            >,
-            List<Map<String, dynamic>>
-          >(
-            topNValues,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'stringProfile': pulumi.Input.mapInputValue<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse, Map<String, dynamic>>(stringProfile, (value) => value.toMap()),
+      'topNValues': pulumi.Input.mapInputValue<List<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse>, List<Map<String, dynamic>>>(topNValues, (value) => pulumi.Input.encodeList<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse(
       distinctRatio: pulumi.Input.fromValue(map['distinctRatio'] as double),
-      doubleProfile: pulumi.Input.fromValue(
-        GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse.fromMap(
-          (map['doubleProfile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      integerProfile: pulumi.Input.fromValue(
-        GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse.fromMap(
-          (map['integerProfile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      doubleProfile: pulumi.Input.fromValue(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse.fromMap((map['doubleProfile']! as Map).cast<String, dynamic>())),
+      integerProfile: pulumi.Input.fromValue(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse.fromMap((map['integerProfile']! as Map).cast<String, dynamic>())),
       nullRatio: pulumi.Input.fromValue(map['nullRatio'] as double),
-      stringProfile: pulumi.Input.fromValue(
-        GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse.fromMap(
-          (map['stringProfile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      topNValues: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse
-        >(
-          map['topNValues']!,
-          (value) =>
-              GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      stringProfile: pulumi.Input.fromValue(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse.fromMap((map['stringProfile']! as Map).cast<String, dynamic>())),
+      topNValues: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse>(map['topNValues']!, (value) => GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

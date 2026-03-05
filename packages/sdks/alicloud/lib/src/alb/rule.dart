@@ -729,25 +729,18 @@ class Rule extends pulumi.CustomResource {
   /// - `Request`: The forwarding rule is applied to the client requests received by ALB.
   /// - `Response`: The forwarding rule is applied to the responses returned by backend servers.
   late final pulumi.Output<String> direction;
-
   /// Specifies whether to precheck this request.
   late final pulumi.Output<bool?> dryRun;
-
   /// The ID of the listener to which the forwarding rule belongs.
   late final pulumi.Output<String> listenerId;
-
   /// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
   late final pulumi.Output<int> priority;
-
   /// The actions of the forwarding rules. See `rule_actions` below.
   late final pulumi.Output<List<Map<String, dynamic>>> ruleActions;
-
   /// The conditions of the forwarding rule. See `rule_conditions` below.
   late final pulumi.Output<List<Map<String, dynamic>>> ruleConditions;
-
   /// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
   late final pulumi.Output<String> ruleName;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -755,27 +748,32 @@ class Rule extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rule]. {@macro pulumi_alb_rule_rule_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rule(String name, {RuleArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:alb/rule:Rule',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Rule(
+    String name, {
+    RuleArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:alb/rule:Rule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     direction = registerOutput<String>('direction');
     dryRun = registerOutput<bool?>('dryRun');
     listenerId = registerOutput<String>('listenerId');
     priority = registerOutput<int>('priority');
     ruleActions = registerOutput<List<Map<String, dynamic>>>('ruleActions');
-    ruleConditions = registerOutput<List<Map<String, dynamic>>>(
-      'ruleConditions',
-    );
+    ruleConditions = registerOutput<List<Map<String, dynamic>>>('ruleConditions');
     ruleName = registerOutput<String>('ruleName');
     status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Rule] resource's state with the given [name] and [id].
-  static Rule get(String name, pulumi.Input<String> id, {RuleState? state}) {
+  static Rule get(
+    String name,
+    pulumi.Input<String> id, {
+    RuleState? state,
+  }) {
     return Rule._get(
       name,
       state: state?.toMap(),
@@ -788,19 +786,17 @@ class Rule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/rule:Rule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/rule:Rule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     direction = registerOutput<String>('direction');
     dryRun = registerOutput<bool?>('dryRun');
     listenerId = registerOutput<String>('listenerId');
     priority = registerOutput<int>('priority');
     ruleActions = registerOutput<List<Map<String, dynamic>>>('ruleActions');
-    ruleConditions = registerOutput<List<Map<String, dynamic>>>(
-      'ruleConditions',
-    );
+    ruleConditions = registerOutput<List<Map<String, dynamic>>>('ruleConditions');
     ruleName = registerOutput<String>('ruleName');
     status = registerOutput<String>('status');
   }

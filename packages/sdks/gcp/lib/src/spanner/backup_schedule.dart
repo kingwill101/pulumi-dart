@@ -611,33 +611,25 @@ import 'backup_schedule_state.dart';
 class BackupSchedule extends pulumi.CustomResource {
   /// The database to create the backup schedule on.
   late final pulumi.Output<String> database;
-
   /// Configuration for the encryption of the backup schedule.
   /// Structure is documented below.
   late final pulumi.Output<BackupScheduleEncryptionConfig> encryptionConfig;
-
   /// The schedule creates only full backups..
   late final pulumi.Output<Map<String, dynamic>?> fullBackupSpec;
-
   /// The schedule creates incremental backup chains.
   late final pulumi.Output<Map<String, dynamic>?> incrementalBackupSpec;
-
   /// The instance to create the database on.
   late final pulumi.Output<String> instance;
-
   /// A unique identifier for the backup schedule, which cannot be changed after
   /// the backup schedule is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
   /// You can set this to a value up to 366 days.
   late final pulumi.Output<String> retentionDuration;
-
   /// Defines specifications of the backup schedule.
   /// Structure is documented below.
   late final pulumi.Output<BackupScheduleSpec?> spec;
@@ -651,40 +643,20 @@ class BackupSchedule extends pulumi.CustomResource {
     BackupScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:spanner/backupSchedule:BackupSchedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:spanner/backupSchedule:BackupSchedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     database = registerOutput<String>('database');
-    encryptionConfig = registerOutput<BackupScheduleEncryptionConfig>(
-      'encryptionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupScheduleEncryptionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionConfig = registerOutput<BackupScheduleEncryptionConfig>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupScheduleEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fullBackupSpec = registerOutput<Map<String, dynamic>?>('fullBackupSpec');
-    incrementalBackupSpec = registerOutput<Map<String, dynamic>?>(
-      'incrementalBackupSpec',
-    );
+    incrementalBackupSpec = registerOutput<Map<String, dynamic>?>('incrementalBackupSpec');
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     retentionDuration = registerOutput<String>('retentionDuration');
-    spec = registerOutput<BackupScheduleSpec?>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupScheduleSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spec = registerOutput<BackupScheduleSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupScheduleSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [BackupSchedule] resource's state with the given [name] and [id].
@@ -705,39 +677,19 @@ class BackupSchedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:spanner/backupSchedule:BackupSchedule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:spanner/backupSchedule:BackupSchedule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     database = registerOutput<String>('database');
-    encryptionConfig = registerOutput<BackupScheduleEncryptionConfig>(
-      'encryptionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupScheduleEncryptionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionConfig = registerOutput<BackupScheduleEncryptionConfig>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupScheduleEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fullBackupSpec = registerOutput<Map<String, dynamic>?>('fullBackupSpec');
-    incrementalBackupSpec = registerOutput<Map<String, dynamic>?>(
-      'incrementalBackupSpec',
-    );
+    incrementalBackupSpec = registerOutput<Map<String, dynamic>?>('incrementalBackupSpec');
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     retentionDuration = registerOutput<String>('retentionDuration');
-    spec = registerOutput<BackupScheduleSpec?>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupScheduleSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spec = registerOutput<BackupScheduleSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupScheduleSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

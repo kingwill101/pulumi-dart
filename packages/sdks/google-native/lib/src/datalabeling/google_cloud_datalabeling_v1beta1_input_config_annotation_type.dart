@@ -18,17 +18,13 @@ enum GoogleCloudDatalabelingV1beta1InputConfigAnnotationType {
   const GoogleCloudDatalabelingV1beta1InputConfigAnnotationType(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudDatalabelingV1beta1InputConfigAnnotationType fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudDatalabelingV1beta1InputConfigAnnotationType.values) {
+  static GoogleCloudDatalabelingV1beta1InputConfigAnnotationType fromValue(String value) {
+    for (final item in GoogleCloudDatalabelingV1beta1InputConfigAnnotationType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudDatalabelingV1beta1InputConfigAnnotationType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudDatalabelingV1beta1InputConfigAnnotationType value: $value');
   }
 }
+

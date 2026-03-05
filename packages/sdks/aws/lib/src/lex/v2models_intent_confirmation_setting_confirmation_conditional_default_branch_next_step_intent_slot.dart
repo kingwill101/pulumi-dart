@@ -6,15 +6,10 @@ import 'v2models_intent_confirmation_setting_confirmation_conditional_default_br
 class V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntentSlot {
   /// Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
   final pulumi.Input<String> mapBlockKey;
-
   /// When the shape value is `List`, `values` contains a list of slot values. When the value is `Scalar`, `value` contains a single value.
   final pulumi.Input<String>? shape;
-
   /// Configuration block for the current value of the slot. See `value`.
-  final pulumi.Input<
-    V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntentSlotValue
-  >?
-  value;
+  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntentSlotValue>? value;
 
   /// Creates a new [V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntentSlot].
   /// [mapBlockKey] Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
@@ -30,33 +25,16 @@ class V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextS
     return <String, dynamic>{
       'mapBlockKey': mapBlockKey,
       'shape': ?shape,
-      'value':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntentSlotValue,
-            Map<String, dynamic>
-          >(value, (value) => value.toMap()),
+      'value': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntentSlotValue, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
-  factory V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntentSlot.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntentSlot.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntentSlot(
       mapBlockKey: pulumi.Input.fromValue(map['mapBlockKey'] as String),
-      shape: (() {
-        final guardedValue = map['shape'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntentSlotValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      shape: (() { final guardedValue = map['shape']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntentSlotValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

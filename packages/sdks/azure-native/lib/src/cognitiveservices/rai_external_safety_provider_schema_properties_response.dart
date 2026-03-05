@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RaiExternalSafetyProviderSchemaPropertiesResponse {
   /// Creation time of the safety provider.
   final pulumi.Input<String> createdAt;
-
   /// The Key Vault URI that contains the api key for safety provider urls.
   final pulumi.Input<String>? keyVaultUri;
-
   /// Last modified time of the safety provider.
   final pulumi.Input<String> lastModifiedAt;
-
   /// The managed identity to access the Key Vault.
   final pulumi.Input<String>? managedIdentity;
-
   /// Safety provider mode sync/async.
   final pulumi.Input<String>? mode;
-
   /// The unique identifier of the safety provider.
   final pulumi.Input<String>? providerId;
-
   /// Name of the safety provider.
   final pulumi.Input<String>? providerName;
-
   /// The name of the secret in Key Vault that contains the api key to access the webhook.
   final pulumi.Input<String>? secretName;
-
   /// Webhook URL for the safety provider.
   final pulumi.Input<String>? url;
 
@@ -67,47 +59,18 @@ class RaiExternalSafetyProviderSchemaPropertiesResponse {
     };
   }
 
-  factory RaiExternalSafetyProviderSchemaPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RaiExternalSafetyProviderSchemaPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RaiExternalSafetyProviderSchemaPropertiesResponse(
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
-      keyVaultUri: (() {
-        final guardedValue = map['keyVaultUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyVaultUri: (() { final guardedValue = map['keyVaultUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastModifiedAt: pulumi.Input.fromValue(map['lastModifiedAt'] as String),
-      managedIdentity: (() {
-        final guardedValue = map['managedIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mode: (() {
-        final guardedValue = map['mode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      providerId: (() {
-        final guardedValue = map['providerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      providerName: (() {
-        final guardedValue = map['providerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretName: (() {
-        final guardedValue = map['secretName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      url: (() {
-        final guardedValue = map['url'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      managedIdentity: (() { final guardedValue = map['managedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      providerId: (() { final guardedValue = map['providerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      providerName: (() { final guardedValue = map['providerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretName: (() { final guardedValue = map['secretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

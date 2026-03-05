@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HTTPHeader {
   /// The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.
   final pulumi.Input<String> name;
-
   /// The header field value
   final pulumi.Input<String> value;
 
   /// Creates a new [HTTPHeader].
   /// [name] The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.
   /// [value] The header field value
-  HTTPHeader({required this.name, required this.value});
+  HTTPHeader({
+    required this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory HTTPHeader.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class HTTPHeader {
     );
   }
 }
+

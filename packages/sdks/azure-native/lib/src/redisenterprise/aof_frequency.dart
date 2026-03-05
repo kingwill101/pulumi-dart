@@ -15,3 +15,4 @@ enum AofFrequency {
     throw ArgumentError('Unknown AofFrequency value: $value');
   }
 }
+

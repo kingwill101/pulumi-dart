@@ -6,22 +6,16 @@ import 'job_collection_properties_response.dart';
 class GetJobCollectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets the job collection resource identifier.
   final String id;
-
   /// Gets or sets the storage account location.
   final String? location;
-
   /// Gets or sets the job collection resource name.
   final String? name;
-
   /// Gets or sets the job collection properties.
   final JobCollectionPropertiesResponse properties;
-
   /// Gets or sets the tags.
   final Map<String, String>? tags;
-
   /// Gets the job collection resource type.
   final String type;
 
@@ -59,25 +53,12 @@ class GetJobCollectionResult {
     return GetJobCollectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      properties: JobCollectionPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: JobCollectionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

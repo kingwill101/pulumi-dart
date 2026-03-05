@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataflowSourceOperationSettingsResponse {
   /// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
   final pulumi.Input<String>? assetRef;
-
   /// List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +.
   final pulumi.Input<List<String>> dataSources;
-
   /// Reference to the Dataflow Endpoint resource. Can only be of Broker and Kafka type.
   final pulumi.Input<String> endpointRef;
-
   /// Schema CR reference. Data will be deserialized according to the schema, and dropped if it doesn't match.
   final pulumi.Input<String>? schemaRef;
-
   /// Content is a JSON Schema. Allowed: JSON Schema/draft-7.
   final pulumi.Input<String>? serializationFormat;
 
@@ -43,29 +39,14 @@ class DataflowSourceOperationSettingsResponse {
     };
   }
 
-  factory DataflowSourceOperationSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataflowSourceOperationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DataflowSourceOperationSettingsResponse(
-      assetRef: (() {
-        final guardedValue = map['assetRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataSources: pulumi.Input.fromValue(
-        (map['dataSources'] as List).cast<String>(),
-      ),
+      assetRef: (() { final guardedValue = map['assetRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataSources: pulumi.Input.fromValue((map['dataSources'] as List).cast<String>()),
       endpointRef: pulumi.Input.fromValue(map['endpointRef'] as String),
-      schemaRef: (() {
-        final guardedValue = map['schemaRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serializationFormat: (() {
-        final guardedValue = map['serializationFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      schemaRef: (() { final guardedValue = map['schemaRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serializationFormat: (() { final guardedValue = map['serializationFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

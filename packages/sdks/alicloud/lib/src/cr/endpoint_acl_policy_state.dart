@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointAclPolicyState {
   /// The description of the entry.
   final pulumi.Input<String>? description;
-
   /// The type of endpoint. Valid values: `internet`.
   final pulumi.Input<String>? endpointType;
-
   /// The IP segment that allowed to access.
   final pulumi.Input<String>? entry;
-
   /// The ID of the CR Instance.
   final pulumi.Input<String>? instanceId;
-
   /// The module that needs to set the access policy. Valid values: `Registry`.
   final pulumi.Input<String>? moduleName;
 
@@ -45,31 +41,12 @@ class EndpointAclPolicyState {
 
   factory EndpointAclPolicyState.fromMap(Map<String, dynamic> map) {
     return EndpointAclPolicyState(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpointType: (() {
-        final guardedValue = map['endpointType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      entry: (() {
-        final guardedValue = map['entry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      moduleName: (() {
-        final guardedValue = map['moduleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      entry: (() { final guardedValue = map['entry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      moduleName: (() { final guardedValue = map['moduleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

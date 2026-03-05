@@ -14,3 +14,4 @@ enum AutoScalingMetricKind {
     throw ArgumentError('Unknown AutoScalingMetricKind value: $value');
   }
 }
+

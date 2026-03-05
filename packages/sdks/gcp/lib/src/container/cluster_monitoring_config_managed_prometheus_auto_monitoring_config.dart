@@ -13,14 +13,15 @@ class ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scope': scope};
+    return <String, dynamic>{
+      'scope': scope,
+    };
   }
 
-  factory ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig(
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

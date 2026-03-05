@@ -1,47 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAutonomousDatabaseBackup.
 class GetAutonomousDatabaseBackupResult {
   final bool automatic;
-
   /// The backup OCID.
   final String autonomousDatabaseBackupOcid;
   final String autonomousDatabaseId;
-
   /// The OCID of the Autonomous Database OCID.
   final String autonomousDatabaseOcid;
   final double databaseBackupSizeInTbs;
   final String databaseVersion;
-
   /// The user-friendly name of the backup.
   final String displayName;
-
   /// The ID of the Autonomous Database Backup.
   final String id;
-
   /// Information about the current lifecycle state of the backup.
   final String lifecycleDetails;
-
   /// The current state of the backup.
   final String lifecycleState;
-
   /// `- The Azure Region where the Autonomous Database Backup exists.
   final String location;
   final String name;
-
   /// The current provisioning state of the Autonomous Database Backup.
   final String provisioningState;
   final bool restorable;
-
   /// The retention period in days for the Autonomous Database Backup.
   final int retentionPeriodInDays;
-
   /// The date and time the backup will become unusable.
   final String timeAvailableTil;
-
   /// The date and time the backup was completed.
   final String timeEnded;
-
   /// The date and time the backup started.
   final String timeStarted;
   final String type;
@@ -115,8 +104,7 @@ class GetAutonomousDatabaseBackupResult {
   factory GetAutonomousDatabaseBackupResult.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabaseBackupResult(
       automatic: map['automatic'] as bool,
-      autonomousDatabaseBackupOcid:
-          map['autonomousDatabaseBackupOcid'] as String,
+      autonomousDatabaseBackupOcid: map['autonomousDatabaseBackupOcid'] as String,
       autonomousDatabaseId: map['autonomousDatabaseId'] as String,
       autonomousDatabaseOcid: map['autonomousDatabaseOcid'] as String,
       databaseBackupSizeInTbs: map['databaseBackupSizeInTbs'] as double,
@@ -137,3 +125,4 @@ class GetAutonomousDatabaseBackupResult {
     );
   }
 }
+

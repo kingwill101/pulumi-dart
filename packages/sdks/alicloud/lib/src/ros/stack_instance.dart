@@ -330,29 +330,22 @@ import 'stack_instance_state.dart';
 class StackInstance extends pulumi.CustomResource {
   /// The operation description.
   late final pulumi.Output<String?> operationDescription;
-
   /// The operation preferences. The operation settings. The following fields are supported:
   /// * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
   /// * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
   /// * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
   /// * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
   late final pulumi.Output<String?> operationPreferences;
-
   /// ParameterOverrides. See the following `Block parameter_overrides`.
   late final pulumi.Output<List<Map<String, dynamic>>?> parameterOverrides;
-
   /// Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
   late final pulumi.Output<bool?> retainStacks;
-
   /// The name of the stack group.
   late final pulumi.Output<String> stackGroupName;
-
   /// The account to which the stack instance belongs.
   late final pulumi.Output<String> stackInstanceAccountId;
-
   /// The region of the stack instance.
   late final pulumi.Output<String> stackInstanceRegionId;
-
   /// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
   /// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
   /// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
@@ -360,7 +353,6 @@ class StackInstance extends pulumi.CustomResource {
   /// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
   /// * The create or update operation is not complete.
   late final pulumi.Output<String> status;
-
   /// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
   late final pulumi.Output<String?> timeoutInMinutes;
 
@@ -373,16 +365,14 @@ class StackInstance extends pulumi.CustomResource {
     StackInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ros/stackInstance:StackInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ros/stackInstance:StackInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     operationDescription = registerOutput<String?>('operationDescription');
     operationPreferences = registerOutput<String?>('operationPreferences');
-    parameterOverrides = registerOutput<List<Map<String, dynamic>>?>(
-      'parameterOverrides',
-    );
+    parameterOverrides = registerOutput<List<Map<String, dynamic>>?>('parameterOverrides');
     retainStacks = registerOutput<bool?>('retainStacks');
     stackGroupName = registerOutput<String>('stackGroupName');
     stackInstanceAccountId = registerOutput<String>('stackInstanceAccountId');
@@ -409,16 +399,14 @@ class StackInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ros/stackInstance:StackInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ros/stackInstance:StackInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     operationDescription = registerOutput<String?>('operationDescription');
     operationPreferences = registerOutput<String?>('operationPreferences');
-    parameterOverrides = registerOutput<List<Map<String, dynamic>>?>(
-      'parameterOverrides',
-    );
+    parameterOverrides = registerOutput<List<Map<String, dynamic>>?>('parameterOverrides');
     retainStacks = registerOutput<bool?>('retainStacks');
     stackGroupName = registerOutput<String>('stackGroupName');
     stackInstanceAccountId = registerOutput<String>('stackInstanceAccountId');

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessStrategiesStrategyFailoverAddrPool {
   /// The number of addresses in the address pool.
   final pulumi.Input<int> addrCount;
-
   /// The ID of the address pool.
   final pulumi.Input<String> addrPoolId;
-
   /// The weight of the address pool.
   final pulumi.Input<int> lbaWeight;
-
   /// The name of the address pool.
   final pulumi.Input<String> name;
 
@@ -36,9 +33,7 @@ class GetAccessStrategiesStrategyFailoverAddrPool {
     };
   }
 
-  factory GetAccessStrategiesStrategyFailoverAddrPool.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAccessStrategiesStrategyFailoverAddrPool.fromMap(Map<String, dynamic> map) {
     return GetAccessStrategiesStrategyFailoverAddrPool(
       addrCount: pulumi.Input.fromValue(map['addrCount'] as int),
       addrPoolId: pulumi.Input.fromValue(map['addrPoolId'] as String),
@@ -47,3 +42,4 @@ class GetAccessStrategiesStrategyFailoverAddrPool {
     );
   }
 }
+

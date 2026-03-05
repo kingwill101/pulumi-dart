@@ -176,24 +176,17 @@ import 's3_access_point_attachment_timeouts.dart';
 class S3AccessPointAttachment extends pulumi.CustomResource {
   /// Name of the S3 access point.
   late final pulumi.Output<String> name;
-
   /// Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfs_configuration` Block for details.
-  late final pulumi.Output<S3AccessPointAttachmentOpenzfsConfiguration>
-  openzfsConfiguration;
-
+  late final pulumi.Output<S3AccessPointAttachmentOpenzfsConfiguration> openzfsConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// S3 access point configuration. See `s3_access_point` Block for details.
   late final pulumi.Output<S3AccessPointAttachmentS3AccessPoint?> s3AccessPoint;
-
   /// S3 access point's alias.
   late final pulumi.Output<String> s3AccessPointAlias;
-
   /// S3 access point's ARN.
   late final pulumi.Output<String> s3AccessPointArn;
   late final pulumi.Output<S3AccessPointAttachmentTimeouts?> timeouts;
-
   /// Type of S3 access point. Valid values: `OpenZFS`.
   ///
   /// The following arguments are optional:
@@ -208,46 +201,18 @@ class S3AccessPointAttachment extends pulumi.CustomResource {
     S3AccessPointAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:fsx/s3AccessPointAttachment:S3AccessPointAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:fsx/s3AccessPointAttachment:S3AccessPointAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
-    openzfsConfiguration =
-        registerOutput<S3AccessPointAttachmentOpenzfsConfiguration>(
-          'openzfsConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return S3AccessPointAttachmentOpenzfsConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    openzfsConfiguration = registerOutput<S3AccessPointAttachmentOpenzfsConfiguration>('openzfsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3AccessPointAttachmentOpenzfsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    s3AccessPoint = registerOutput<S3AccessPointAttachmentS3AccessPoint?>(
-      's3AccessPoint',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return S3AccessPointAttachmentS3AccessPoint.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    s3AccessPoint = registerOutput<S3AccessPointAttachmentS3AccessPoint?>('s3AccessPoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3AccessPointAttachmentS3AccessPoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     s3AccessPointAlias = registerOutput<String>('s3AccessPointAlias');
     s3AccessPointArn = registerOutput<String>('s3AccessPointArn');
-    timeouts = registerOutput<S3AccessPointAttachmentTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return S3AccessPointAttachmentTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<S3AccessPointAttachmentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3AccessPointAttachmentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 
@@ -269,46 +234,18 @@ class S3AccessPointAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:fsx/s3AccessPointAttachment:S3AccessPointAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:fsx/s3AccessPointAttachment:S3AccessPointAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
-    openzfsConfiguration =
-        registerOutput<S3AccessPointAttachmentOpenzfsConfiguration>(
-          'openzfsConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return S3AccessPointAttachmentOpenzfsConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    openzfsConfiguration = registerOutput<S3AccessPointAttachmentOpenzfsConfiguration>('openzfsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3AccessPointAttachmentOpenzfsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    s3AccessPoint = registerOutput<S3AccessPointAttachmentS3AccessPoint?>(
-      's3AccessPoint',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return S3AccessPointAttachmentS3AccessPoint.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    s3AccessPoint = registerOutput<S3AccessPointAttachmentS3AccessPoint?>('s3AccessPoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3AccessPointAttachmentS3AccessPoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     s3AccessPointAlias = registerOutput<String>('s3AccessPointAlias');
     s3AccessPointArn = registerOutput<String>('s3AccessPointArn');
-    timeouts = registerOutput<S3AccessPointAttachmentTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return S3AccessPointAttachmentTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<S3AccessPointAttachmentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3AccessPointAttachmentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

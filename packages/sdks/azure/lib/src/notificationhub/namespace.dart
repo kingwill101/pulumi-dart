@@ -169,31 +169,22 @@ import 'namespace_state.dart';
 class Namespace extends pulumi.CustomResource {
   /// Is this Notification Hub Namespace enabled? Defaults to `true`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> enabled;
-
   /// The Azure Region in which this Notification Hub Namespace should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name to use for this Notification Hub Namespace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The Type of Namespace - possible values are `Messaging` or `NotificationHub`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> namespaceType;
-
   /// The allowed Replication Region for the Notification Hub Namespace. Possible values are `Default`, `None`, `AustraliaEast`, `BrazilSouth`, `NorthEurope`, `SouthAfricaNorth`, `SouthEastAsia`, `WestUs2`. Changing this forces a new resource to be created. Defaults to `Default`.
   late final pulumi.Output<String?> replicationRegion;
-
   /// The name of the Resource Group in which the Notification Hub Namespace should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The ServiceBus Endpoint for this Notification Hub Namespace.
   late final pulumi.Output<String> servicebusEndpoint;
-
   /// The name of the SKU to use for this Notification Hub Namespace. Possible values are `Free`, `Basic` or `Standard`.
   late final pulumi.Output<String> skuName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Is Zone Redundancy Enabled for the Notification Hub Namespace. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> zoneRedundancyEnabled;
 
@@ -206,11 +197,11 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:notificationhub/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:notificationhub/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -241,11 +232,11 @@ class Namespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:notificationhub/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:notificationhub/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

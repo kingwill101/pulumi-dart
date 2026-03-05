@@ -17,3 +17,4 @@ enum SignalRRequestType {
     throw ArgumentError('Unknown SignalRRequestType value: $value');
   }
 }
+

@@ -7,34 +7,29 @@ import 'source_vault.dart';
 class KeyVaultAndKeyReference {
   /// Url pointing to a key or secret in KeyVault
   final pulumi.Input<String> keyUrl;
-
   /// Resource id of the KeyVault containing the key or secret
   final pulumi.Input<SourceVault> sourceVault;
 
   /// Creates a new [KeyVaultAndKeyReference].
   /// [keyUrl] Url pointing to a key or secret in KeyVault
   /// [sourceVault] Resource id of the KeyVault containing the key or secret
-  KeyVaultAndKeyReference({required this.keyUrl, required this.sourceVault});
+  KeyVaultAndKeyReference({
+    required this.keyUrl,
+    required this.sourceVault,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keyUrl': keyUrl,
-      'sourceVault':
-          pulumi.Input.mapInputValue<SourceVault, Map<String, dynamic>>(
-            sourceVault,
-            (value) => value.toMap(),
-          ),
+      'sourceVault': pulumi.Input.mapInputValue<SourceVault, Map<String, dynamic>>(sourceVault, (value) => value.toMap()),
     };
   }
 
   factory KeyVaultAndKeyReference.fromMap(Map<String, dynamic> map) {
     return KeyVaultAndKeyReference(
       keyUrl: pulumi.Input.fromValue(map['keyUrl'] as String),
-      sourceVault: pulumi.Input.fromValue(
-        SourceVault.fromMap(
-          (map['sourceVault']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      sourceVault: pulumi.Input.fromValue(SourceVault.fromMap((map['sourceVault']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

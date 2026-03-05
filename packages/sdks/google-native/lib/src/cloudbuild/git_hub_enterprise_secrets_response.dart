@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GitHubEnterpriseSecretsResponse {
   /// The resource name for the OAuth client ID secret in Secret Manager.
   final pulumi.Input<String> oauthClientIdName;
-
   /// The resource name for the OAuth client ID secret version in Secret Manager.
   final pulumi.Input<String> oauthClientIdVersionName;
-
   /// The resource name for the OAuth secret in Secret Manager.
   final pulumi.Input<String> oauthSecretName;
-
   /// The resource name for the OAuth secret secret version in Secret Manager.
   final pulumi.Input<String> oauthSecretVersionName;
-
   /// The resource name for the private key secret.
   final pulumi.Input<String> privateKeyName;
-
   /// The resource name for the private key secret version.
   final pulumi.Input<String> privateKeyVersionName;
-
   /// The resource name for the webhook secret in Secret Manager.
   final pulumi.Input<String> webhookSecretName;
-
   /// The resource name for the webhook secret secret version in Secret Manager.
   final pulumi.Input<String> webhookSecretVersionName;
 
@@ -63,26 +56,15 @@ class GitHubEnterpriseSecretsResponse {
 
   factory GitHubEnterpriseSecretsResponse.fromMap(Map<String, dynamic> map) {
     return GitHubEnterpriseSecretsResponse(
-      oauthClientIdName: pulumi.Input.fromValue(
-        map['oauthClientIdName'] as String,
-      ),
-      oauthClientIdVersionName: pulumi.Input.fromValue(
-        map['oauthClientIdVersionName'] as String,
-      ),
+      oauthClientIdName: pulumi.Input.fromValue(map['oauthClientIdName'] as String),
+      oauthClientIdVersionName: pulumi.Input.fromValue(map['oauthClientIdVersionName'] as String),
       oauthSecretName: pulumi.Input.fromValue(map['oauthSecretName'] as String),
-      oauthSecretVersionName: pulumi.Input.fromValue(
-        map['oauthSecretVersionName'] as String,
-      ),
+      oauthSecretVersionName: pulumi.Input.fromValue(map['oauthSecretVersionName'] as String),
       privateKeyName: pulumi.Input.fromValue(map['privateKeyName'] as String),
-      privateKeyVersionName: pulumi.Input.fromValue(
-        map['privateKeyVersionName'] as String,
-      ),
-      webhookSecretName: pulumi.Input.fromValue(
-        map['webhookSecretName'] as String,
-      ),
-      webhookSecretVersionName: pulumi.Input.fromValue(
-        map['webhookSecretVersionName'] as String,
-      ),
+      privateKeyVersionName: pulumi.Input.fromValue(map['privateKeyVersionName'] as String),
+      webhookSecretName: pulumi.Input.fromValue(map['webhookSecretName'] as String),
+      webhookSecretVersionName: pulumi.Input.fromValue(map['webhookSecretVersionName'] as String),
     );
   }
 }
+

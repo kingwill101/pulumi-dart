@@ -294,28 +294,20 @@ import 'system_data_response.dart';
 class FqdnListGlobalRulestack extends pulumi.CustomResource {
   /// comment for this object
   late final pulumi.Output<String?> auditComment;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// fqdn object description
   late final pulumi.Output<String?> description;
-
   /// etag info
   late final pulumi.Output<String?> etag;
-
   /// fqdn list
   late final pulumi.Output<List<String>> fqdnList;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -328,11 +320,11 @@ class FqdnListGlobalRulestack extends pulumi.CustomResource {
     FqdnListGlobalRulestackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cloudngfw:FqdnListGlobalRulestack',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cloudngfw:FqdnListGlobalRulestack',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     auditComment = registerOutput<String?>('auditComment');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
@@ -340,16 +332,7 @@ class FqdnListGlobalRulestack extends pulumi.CustomResource {
     fqdnList = registerOutput<List<String>>('fqdnList');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -14,14 +14,15 @@ class BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseComputeBeta(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

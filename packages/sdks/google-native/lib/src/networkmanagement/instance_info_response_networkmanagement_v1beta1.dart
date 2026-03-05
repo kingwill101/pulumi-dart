@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceInfoResponseNetworkmanagementV1beta1 {
   /// Name of a Compute Engine instance.
   final pulumi.Input<String> displayName;
-
   /// External IP address of the network interface.
   final pulumi.Input<String> externalIp;
-
   /// Name of the network interface of a Compute Engine instance.
   final pulumi.Input<String> interface;
-
   /// Internal IP address of the network interface.
   final pulumi.Input<String> internalIp;
-
   /// Network tags configured on the instance.
   final pulumi.Input<List<String>> networkTags;
-
   /// URI of a Compute Engine network.
   final pulumi.Input<String> networkUri;
-
   /// Service account authorized for the instance.
   final pulumi.Input<String> serviceAccount;
-
   /// URI of a Compute Engine instance.
   final pulumi.Input<String> uri;
 
@@ -61,20 +54,17 @@ class InstanceInfoResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory InstanceInfoResponseNetworkmanagementV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return InstanceInfoResponseNetworkmanagementV1beta1(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       externalIp: pulumi.Input.fromValue(map['externalIp'] as String),
       interface: pulumi.Input.fromValue(map['interface'] as String),
       internalIp: pulumi.Input.fromValue(map['internalIp'] as String),
-      networkTags: pulumi.Input.fromValue(
-        (map['networkTags'] as List).cast<String>(),
-      ),
+      networkTags: pulumi.Input.fromValue((map['networkTags'] as List).cast<String>()),
       networkUri: pulumi.Input.fromValue(map['networkUri'] as String),
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

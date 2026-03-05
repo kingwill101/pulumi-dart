@@ -10,25 +10,18 @@ import 'azure_recovery_service_vault_protection_intent.dart';
 class ProtectionIntentArgs {
   /// Optional ETag.
   final pulumi.Input<String>? eTag;
-
   /// Fabric name associated with the backup item.
   final pulumi.Input<String> fabricName;
-
   /// Intent object name.
   final pulumi.Input<String>? intentObjectName;
-
   /// Resource location.
   final pulumi.Input<String>? location;
-
   /// ProtectionIntentResource properties
   final pulumi.Input<AzureRecoveryServiceVaultProtectionIntent>? properties;
-
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The name of the recovery services vault.
   final pulumi.Input<String> vaultName;
 
@@ -58,11 +51,7 @@ class ProtectionIntentArgs {
       'fabricName': fabricName,
       'intentObjectName': ?intentObjectName,
       'location': ?location,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureRecoveryServiceVaultProtectionIntent,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<AzureRecoveryServiceVaultProtectionIntent, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
       'vaultName': vaultName,
@@ -71,42 +60,15 @@ class ProtectionIntentArgs {
 
   factory ProtectionIntentArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionIntentArgs(
-      eTag: (() {
-        final guardedValue = map['eTag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
-      intentObjectName: (() {
-        final guardedValue = map['intentObjectName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureRecoveryServiceVaultProtectionIntent.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      intentObjectName: (() { final guardedValue = map['intentObjectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureRecoveryServiceVaultProtectionIntent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
+

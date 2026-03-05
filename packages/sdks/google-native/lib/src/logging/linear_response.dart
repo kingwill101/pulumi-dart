@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinearResponse {
   /// Must be greater than 0.
   final pulumi.Input<int> numFiniteBuckets;
-
   /// Lower bound of the first bucket.
   final pulumi.Input<double> offset;
-
   /// Must be greater than 0.
   final pulumi.Input<double> width;
 
@@ -39,3 +37,4 @@ class LinearResponse {
     );
   }
 }
+

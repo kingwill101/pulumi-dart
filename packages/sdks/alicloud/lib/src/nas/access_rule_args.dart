@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessRuleArgs {
   /// AccessGroupName.
   final pulumi.Input<String> accessGroupName;
-
   /// filesystem type. include standard, extreme.
   final pulumi.Input<String>? fileSystemType;
-
   /// Ipv6SourceCidrIp.
   final pulumi.Input<String>? ipv6SourceCidrIp;
-
   /// Priority.
   final pulumi.Input<int>? priority;
-
   /// RWAccess.
   final pulumi.Input<String>? rwAccessType;
-
   /// SourceCidrIp.
   final pulumi.Input<String>? sourceCidrIp;
-
   /// UserAccess.
   final pulumi.Input<String>? userAccessType;
 
@@ -61,36 +55,13 @@ class AccessRuleArgs {
   factory AccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return AccessRuleArgs(
       accessGroupName: pulumi.Input.fromValue(map['accessGroupName'] as String),
-      fileSystemType: (() {
-        final guardedValue = map['fileSystemType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipv6SourceCidrIp: (() {
-        final guardedValue = map['ipv6SourceCidrIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      rwAccessType: (() {
-        final guardedValue = map['rwAccessType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceCidrIp: (() {
-        final guardedValue = map['sourceCidrIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAccessType: (() {
-        final guardedValue = map['userAccessType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fileSystemType: (() { final guardedValue = map['fileSystemType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipv6SourceCidrIp: (() { final guardedValue = map['ipv6SourceCidrIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rwAccessType: (() { final guardedValue = map['rwAccessType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceCidrIp: (() { final guardedValue = map['sourceCidrIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAccessType: (() { final guardedValue = map['userAccessType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,21 +9,20 @@ class ConfigConnectorConfigContainerV1beta1 {
 
   /// Creates a new [ConfigConnectorConfigContainerV1beta1].
   /// [enabled] Whether Cloud Connector is enabled for this cluster.
-  ConfigConnectorConfigContainerV1beta1({this.enabled});
+  ConfigConnectorConfigContainerV1beta1({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory ConfigConnectorConfigContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigConnectorConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ConfigConnectorConfigContainerV1beta1(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

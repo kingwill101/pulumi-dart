@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountEncryptionArgs {
   /// The full resource ID of the cross-tenant key vault. This is recommended when using `federated_client_id` for cross-tenant scenarios to ensure proper validation by Azure APIs.
   final pulumi.Input<String>? crossTenantKeyVaultResourceId;
-
   /// Specify the versionless ID of the encryption key.
   final pulumi.Input<String> encryptionKey;
-
   /// The Client ID of the multi-tenant Entra ID application used to access cross-tenant key vaults. This is only required when accessing a key vault in a different tenant than the NetApp account.
   final pulumi.Input<String>? federatedClientId;
-
   /// The ID of the NetApp account where volume under it will have customer managed keys-based encryption enabled.
   final pulumi.Input<String> netappAccountId;
-
   /// The ID of the System Assigned Manged Identity. Conflicts with `user_assigned_identity_id`.
   final pulumi.Input<String>? systemAssignedIdentityPrincipalId;
-
   /// The ID of the User Assigned Managed Identity. Conflicts with `system_assigned_identity_principal_id`.
   final pulumi.Input<String>? userAssignedIdentityId;
 
@@ -54,28 +49,13 @@ class AccountEncryptionArgs {
 
   factory AccountEncryptionArgs.fromMap(Map<String, dynamic> map) {
     return AccountEncryptionArgs(
-      crossTenantKeyVaultResourceId: (() {
-        final guardedValue = map['crossTenantKeyVaultResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      crossTenantKeyVaultResourceId: (() { final guardedValue = map['crossTenantKeyVaultResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptionKey: pulumi.Input.fromValue(map['encryptionKey'] as String),
-      federatedClientId: (() {
-        final guardedValue = map['federatedClientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      federatedClientId: (() { final guardedValue = map['federatedClientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       netappAccountId: pulumi.Input.fromValue(map['netappAccountId'] as String),
-      systemAssignedIdentityPrincipalId: (() {
-        final guardedValue = map['systemAssignedIdentityPrincipalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentityId: (() {
-        final guardedValue = map['userAssignedIdentityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      systemAssignedIdentityPrincipalId: (() { final guardedValue = map['systemAssignedIdentityPrincipalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentityId: (() { final guardedValue = map['userAssignedIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

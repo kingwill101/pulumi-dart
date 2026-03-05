@@ -272,28 +272,20 @@ import 'system_data_response.dart';
 class PrefixListGlobalRulestack extends pulumi.CustomResource {
   /// comment for this object
   late final pulumi.Output<String?> auditComment;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// prefix description
   late final pulumi.Output<String?> description;
-
   /// etag info
   late final pulumi.Output<String?> etag;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// prefix list
   late final pulumi.Output<List<String>> prefixList;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -306,11 +298,11 @@ class PrefixListGlobalRulestack extends pulumi.CustomResource {
     PrefixListGlobalRulestackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cloudngfw:PrefixListGlobalRulestack',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cloudngfw:PrefixListGlobalRulestack',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     auditComment = registerOutput<String?>('auditComment');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
@@ -318,16 +310,7 @@ class PrefixListGlobalRulestack extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     prefixList = registerOutput<List<String>>('prefixList');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

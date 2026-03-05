@@ -6,7 +6,6 @@ class EntityRecognizerInputDataConfigDocuments {
   /// Specifies how the input files should be processed.
   /// One of `ONE_DOC_PER_LINE` or `ONE_DOC_PER_FILE`.
   final pulumi.Input<String>? inputFormat;
-
   /// Location of training documents.
   final pulumi.Input<String> s3Uri;
   final pulumi.Input<String>? testS3Uri;
@@ -29,21 +28,12 @@ class EntityRecognizerInputDataConfigDocuments {
     };
   }
 
-  factory EntityRecognizerInputDataConfigDocuments.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EntityRecognizerInputDataConfigDocuments.fromMap(Map<String, dynamic> map) {
     return EntityRecognizerInputDataConfigDocuments(
-      inputFormat: (() {
-        final guardedValue = map['inputFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      inputFormat: (() { final guardedValue = map['inputFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3Uri: pulumi.Input.fromValue(map['s3Uri'] as String),
-      testS3Uri: (() {
-        final guardedValue = map['testS3Uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      testS3Uri: (() { final guardedValue = map['testS3Uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

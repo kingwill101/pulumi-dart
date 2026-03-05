@@ -585,77 +585,54 @@ import 'virtual_network_gateway_vpn_client_configuration.dart';
 class VirtualNetworkGateway extends pulumi.CustomResource {
   /// If `true`, an active-active Virtual Network Gateway will be created. An active-active gateway requires a `HighPerformance` or an `UltraPerformance` SKU. If `false`, an active-standby gateway will be created. Defaults to `false`.
   late final pulumi.Output<bool> activeActive;
-
   /// Is BGP Route Translation for NAT enabled? Defaults to `false`.
   late final pulumi.Output<bool?> bgpRouteTranslationForNatEnabled;
-
   /// A `bgp_settings` block which is documented below. In this block the BGP specific settings can be defined.
   late final pulumi.Output<VirtualNetworkGatewayBgpSettings> bgpSettings;
-
   /// A `custom_route` block as defined below. Specifies a custom routes address space for a virtual network gateway and a VpnClient.
   late final pulumi.Output<VirtualNetworkGatewayCustomRoute?> customRoute;
-
   /// The ID of the local network gateway through which outbound Internet traffic from the virtual network in which the gateway is created will be routed (*forced tunnelling*). Refer to the [Azure documentation on forced tunnelling](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). If not specified, forced tunnelling is disabled.
   late final pulumi.Output<String?> defaultLocalNetworkGatewayId;
-
   /// Is DNS forwarding enabled?
   late final pulumi.Output<bool?> dnsForwardingEnabled;
-
   /// Specifies the Edge Zone within the Azure Region where this Virtual Network Gateway should exist. Changing this forces a new Virtual Network Gateway to be created.
   late final pulumi.Output<String?> edgeZone;
-
   /// If `true`, BGP (Border Gateway Protocol) will be enabled for this Virtual Network Gateway. Defaults to `false`.
   late final pulumi.Output<bool> enableBgp;
-
   /// The Generation of the Virtual Network gateway. Possible values include `Generation1`, `Generation2` or `None`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The available values depend on the `type` and `sku` arguments - where `Generation2` is only value for a `sku` larger than `VpnGw2` or `VpnGw2AZ`.
   late final pulumi.Output<String> generation;
-
   /// One or more (up to 3) `ip_configuration` blocks documented below. Changing this forces a new resource to be created. An active-standby gateway requires exactly one `ip_configuration` block, an active-active gateway requires exactly two `ip_configuration` blocks whereas an active-active zone redundant gateway with P2S configuration requires exactly three `ip_configuration` blocks.
   late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurations;
-
   /// Is IP Sec Replay Protection enabled? Defaults to `true`.
   late final pulumi.Output<bool?> ipSecReplayProtectionEnabled;
-
   /// The location/region where the Virtual Network Gateway is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the Virtual Network Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// One or more `policy_group` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> policyGroups;
-
   /// Should private IP be enabled on this gateway for connections? Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> privateIpAddressEnabled;
-
   /// Is remote vnet traffic that is used to configure this gateway to accept traffic from other Azure Virtual Networks enabled? Defaults to `false`.
   late final pulumi.Output<bool?> remoteVnetTrafficEnabled;
-
   /// The name of the resource group in which to create the Virtual Network Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Configuration of the size and capacity of the virtual network gateway. Valid options are `Basic`, `Standard`, `HighPerformance`, `UltraPerformance`, `ErGwScale`, `ErGw1AZ`, `ErGw2AZ`, `ErGw3AZ`, `VpnGw1`, `VpnGw2`, `VpnGw3`, `VpnGw4`,`VpnGw5`, `VpnGw1AZ`, `VpnGw2AZ`, `VpnGw3AZ`,`VpnGw4AZ` and `VpnGw5AZ` and depend on the `type`, `vpn_type` and `generation` arguments. A `PolicyBased` gateway only supports the `Basic` SKU. Further, the `UltraPerformance` and `ErGwScale` SKU is only supported by an `ExpressRoute` gateway.
   ///
   /// &gt; **Note:** To build a UltraPerformance ExpressRoute Virtual Network gateway, the associated Public IP needs to be SKU "Basic" not "Standard"
   ///
   /// &gt; **Note:** Not all SKUs (e.g. `ErGw1AZ`) are available in all regions. If you see `StatusCode=400 -- Original Error: Code="InvalidGatewaySkuSpecifiedForGatewayDeploymentType"` please try another region.
   late final pulumi.Output<String> sku;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the Virtual Network Gateway. Valid options are `Vpn` or `ExpressRoute`. Changing the type forces a new resource to be created.
   late final pulumi.Output<String> type;
-
   /// Is remote vnet traffic that is used to configure this gateway to accept traffic from remote Virtual WAN networks enabled? Defaults to `false`.
   late final pulumi.Output<bool?> virtualWanTrafficEnabled;
-
   /// A `vpn_client_configuration` block which is documented below. In this block the Virtual Network Gateway can be configured to accept IPSec point-to-site connections.
-  late final pulumi.Output<VirtualNetworkGatewayVpnClientConfiguration?>
-  vpnClientConfiguration;
-
+  late final pulumi.Output<VirtualNetworkGatewayVpnClientConfiguration?> vpnClientConfiguration;
   /// The routing type of the Virtual Network Gateway. Valid options are `RouteBased` or `PolicyBased`. Defaults to `RouteBased`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> vpnType;
 
@@ -668,73 +645,33 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
     VirtualNetworkGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualNetworkGateway:VirtualNetworkGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/virtualNetworkGateway:VirtualNetworkGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activeActive = registerOutput<bool>('activeActive');
-    bgpRouteTranslationForNatEnabled = registerOutput<bool?>(
-      'bgpRouteTranslationForNatEnabled',
-    );
-    bgpSettings = registerOutput<VirtualNetworkGatewayBgpSettings>(
-      'bgpSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualNetworkGatewayBgpSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    customRoute = registerOutput<VirtualNetworkGatewayCustomRoute?>(
-      'customRoute',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualNetworkGatewayCustomRoute.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    defaultLocalNetworkGatewayId = registerOutput<String?>(
-      'defaultLocalNetworkGatewayId',
-    );
+    bgpRouteTranslationForNatEnabled = registerOutput<bool?>('bgpRouteTranslationForNatEnabled');
+    bgpSettings = registerOutput<VirtualNetworkGatewayBgpSettings>('bgpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayBgpSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customRoute = registerOutput<VirtualNetworkGatewayCustomRoute?>('customRoute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayCustomRoute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultLocalNetworkGatewayId = registerOutput<String?>('defaultLocalNetworkGatewayId');
     dnsForwardingEnabled = registerOutput<bool?>('dnsForwardingEnabled');
     edgeZone = registerOutput<String?>('edgeZone');
     enableBgp = registerOutput<bool>('enableBgp');
     generation = registerOutput<String>('generation');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'ipConfigurations',
-    );
-    ipSecReplayProtectionEnabled = registerOutput<bool?>(
-      'ipSecReplayProtectionEnabled',
-    );
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
+    ipSecReplayProtectionEnabled = registerOutput<bool?>('ipSecReplayProtectionEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     policyGroups = registerOutput<List<Map<String, dynamic>>?>('policyGroups');
     privateIpAddressEnabled = registerOutput<bool?>('privateIpAddressEnabled');
-    remoteVnetTrafficEnabled = registerOutput<bool?>(
-      'remoteVnetTrafficEnabled',
-    );
+    remoteVnetTrafficEnabled = registerOutput<bool?>('remoteVnetTrafficEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualWanTrafficEnabled = registerOutput<bool?>(
-      'virtualWanTrafficEnabled',
-    );
-    vpnClientConfiguration =
-        registerOutput<VirtualNetworkGatewayVpnClientConfiguration?>(
-          'vpnClientConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualNetworkGatewayVpnClientConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    virtualWanTrafficEnabled = registerOutput<bool?>('virtualWanTrafficEnabled');
+    vpnClientConfiguration = registerOutput<VirtualNetworkGatewayVpnClientConfiguration?>('vpnClientConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayVpnClientConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpnType = registerOutput<String?>('vpnType');
   }
 
@@ -756,73 +693,33 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualNetworkGateway:VirtualNetworkGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/virtualNetworkGateway:VirtualNetworkGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activeActive = registerOutput<bool>('activeActive');
-    bgpRouteTranslationForNatEnabled = registerOutput<bool?>(
-      'bgpRouteTranslationForNatEnabled',
-    );
-    bgpSettings = registerOutput<VirtualNetworkGatewayBgpSettings>(
-      'bgpSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualNetworkGatewayBgpSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    customRoute = registerOutput<VirtualNetworkGatewayCustomRoute?>(
-      'customRoute',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualNetworkGatewayCustomRoute.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    defaultLocalNetworkGatewayId = registerOutput<String?>(
-      'defaultLocalNetworkGatewayId',
-    );
+    bgpRouteTranslationForNatEnabled = registerOutput<bool?>('bgpRouteTranslationForNatEnabled');
+    bgpSettings = registerOutput<VirtualNetworkGatewayBgpSettings>('bgpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayBgpSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customRoute = registerOutput<VirtualNetworkGatewayCustomRoute?>('customRoute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayCustomRoute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultLocalNetworkGatewayId = registerOutput<String?>('defaultLocalNetworkGatewayId');
     dnsForwardingEnabled = registerOutput<bool?>('dnsForwardingEnabled');
     edgeZone = registerOutput<String?>('edgeZone');
     enableBgp = registerOutput<bool>('enableBgp');
     generation = registerOutput<String>('generation');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'ipConfigurations',
-    );
-    ipSecReplayProtectionEnabled = registerOutput<bool?>(
-      'ipSecReplayProtectionEnabled',
-    );
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
+    ipSecReplayProtectionEnabled = registerOutput<bool?>('ipSecReplayProtectionEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     policyGroups = registerOutput<List<Map<String, dynamic>>?>('policyGroups');
     privateIpAddressEnabled = registerOutput<bool?>('privateIpAddressEnabled');
-    remoteVnetTrafficEnabled = registerOutput<bool?>(
-      'remoteVnetTrafficEnabled',
-    );
+    remoteVnetTrafficEnabled = registerOutput<bool?>('remoteVnetTrafficEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualWanTrafficEnabled = registerOutput<bool?>(
-      'virtualWanTrafficEnabled',
-    );
-    vpnClientConfiguration =
-        registerOutput<VirtualNetworkGatewayVpnClientConfiguration?>(
-          'vpnClientConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualNetworkGatewayVpnClientConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    virtualWanTrafficEnabled = registerOutput<bool?>('virtualWanTrafficEnabled');
+    vpnClientConfiguration = registerOutput<VirtualNetworkGatewayVpnClientConfiguration?>('vpnClientConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayVpnClientConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpnType = registerOutput<String?>('vpnType');
   }
 }

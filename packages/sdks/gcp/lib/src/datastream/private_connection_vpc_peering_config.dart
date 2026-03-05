@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateConnectionVpcPeeringConfig {
   /// A free subnet for peering. (CIDR of /29)
   final pulumi.Input<String> subnet;
-
   /// Fully qualified name of the VPC that Datastream will peer to.
   /// Format: projects/{project}/global/{networks}/{name}
   final pulumi.Input<String> vpc;
@@ -13,10 +12,16 @@ class PrivateConnectionVpcPeeringConfig {
   /// Creates a new [PrivateConnectionVpcPeeringConfig].
   /// [subnet] A free subnet for peering. (CIDR of /29)
   /// [vpc] Fully qualified name of the VPC that Datastream will peer to.
-  PrivateConnectionVpcPeeringConfig({required this.subnet, required this.vpc});
+  PrivateConnectionVpcPeeringConfig({
+    required this.subnet,
+    required this.vpc,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'subnet': subnet, 'vpc': vpc};
+    return <String, dynamic>{
+      'subnet': subnet,
+      'vpc': vpc,
+    };
   }
 
   factory PrivateConnectionVpcPeeringConfig.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class PrivateConnectionVpcPeeringConfig {
     );
   }
 }
+

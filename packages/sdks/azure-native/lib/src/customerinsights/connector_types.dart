@@ -19,3 +19,4 @@ enum ConnectorTypes {
     throw ArgumentError('Unknown ConnectorTypes value: $value');
   }
 }
+

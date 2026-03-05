@@ -603,114 +603,81 @@ import 'custom_system_disk.dart';
 class Custom extends pulumi.CustomResource {
   /// Represents the number of instances created
   late final pulumi.Output<int?> amount;
-
   /// Whether to pay automatically. Value range:
   late final pulumi.Output<bool?> autoPay;
-
   /// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
   late final pulumi.Output<bool?> autoRenew;
-
   /// Reserved parameters are not supported.
   late final pulumi.Output<String?> createExtraParam;
-
   /// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
   late final pulumi.Output<String?> createMode;
-
   /// Data disk See `data_disk` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
-
   /// The ID of the deployment set.
   late final pulumi.Output<String?> deploymentSetId;
-
   /// Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
   late final pulumi.Output<String?> description;
-
   /// Instance configuration type, value range:
   ///
   /// &gt; **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
   /// - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
   /// - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
   late final pulumi.Output<String?> direction;
-
   /// Whether to pre-check the operation of creating an instance. Valid values:
   late final pulumi.Output<bool?> dryRun;
-
   /// Whether to forcibly release the running instance. Value: true/false
   late final pulumi.Output<bool?> force;
-
   /// Whether to force shutdown. Value range:
   late final pulumi.Output<bool?> forceStop;
-
   /// The instance host name.
   late final pulumi.Output<String?> hostName;
-
   /// The ID of the image used by the instance.
   late final pulumi.Output<String?> imageId;
-
   /// The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
   late final pulumi.Output<String?> instanceChargeType;
-
   /// The type of the created RDS Custom dedicated host instance.
   late final pulumi.Output<String> instanceType;
-
   /// Reserved parameters are not supported.
   late final pulumi.Output<String?> internetChargeType;
-
   /// Reserved parameters are not supported.
   late final pulumi.Output<int?> internetMaxBandwidthOut;
-
   /// Reserved parameters are not supported.
   late final pulumi.Output<String?> ioOptimized;
-
   /// The key pair name. Only flyer names are supported.
   late final pulumi.Output<String?> keyPairName;
-
   /// The account and password of the instance.
   late final pulumi.Output<String?> password;
-
   /// Prepaid renewal duration, unit: Month/Year.
   late final pulumi.Output<int?> period;
-
   /// The unit of duration of the year-to-month billing method. Value range:
   /// - `Year`: Year
   /// - `Month` (default): Month
   late final pulumi.Output<String?> periodUnit;
-
   /// The region ID. Callable DescribeRegions to get.
   late final pulumi.Output<String> regionId;
-
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
-
   /// Reserved parameters are not supported.
   late final pulumi.Output<String?> securityEnhancementStrategy;
-
   /// Security group list
   late final pulumi.Output<List<String>?> securityGroupIds;
-
   /// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
   /// - `NoSpot`: normal pay-as-you-go instances.
   /// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
   ///
   /// Default value: **NoSpot * *.
   late final pulumi.Output<String?> spotStrategy;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
   late final pulumi.Output<String?> supportCase;
-
   /// System disk specifications. See `system_disk` below.
   late final pulumi.Output<CustomSystemDisk?> systemDisk;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
   /// The network type InstanceNetworkType must be VPC.
   late final pulumi.Output<String> vswitchId;
-
   /// The zone ID  of the resource
   late final pulumi.Output<String?> zoneId;
 
@@ -718,13 +685,16 @@ class Custom extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Custom]. {@macro pulumi_rds_custom_custom_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Custom(String name, {CustomArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:rds/custom:Custom',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Custom(
+    String name, {
+    CustomArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:rds/custom:Custom',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amount = registerOutput<int?>('amount');
     autoPay = registerOutput<bool?>('autoPay');
     autoRenew = registerOutput<bool?>('autoRenew');
@@ -750,23 +720,12 @@ class Custom extends pulumi.CustomResource {
     periodUnit = registerOutput<String?>('periodUnit');
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    securityEnhancementStrategy = registerOutput<String?>(
-      'securityEnhancementStrategy',
-    );
+    securityEnhancementStrategy = registerOutput<String?>('securityEnhancementStrategy');
     securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
     spotStrategy = registerOutput<String?>('spotStrategy');
     status = registerOutput<String>('status');
     supportCase = registerOutput<String?>('supportCase');
-    systemDisk = registerOutput<CustomSystemDisk?>(
-      'systemDisk',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomSystemDisk.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemDisk = registerOutput<CustomSystemDisk?>('systemDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomSystemDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     vswitchId = registerOutput<String>('vswitchId');
     zoneId = registerOutput<String?>('zoneId');
@@ -790,11 +749,11 @@ class Custom extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/custom:Custom',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/custom:Custom',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amount = registerOutput<int?>('amount');
     autoPay = registerOutput<bool?>('autoPay');
     autoRenew = registerOutput<bool?>('autoRenew');
@@ -820,23 +779,12 @@ class Custom extends pulumi.CustomResource {
     periodUnit = registerOutput<String?>('periodUnit');
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    securityEnhancementStrategy = registerOutput<String?>(
-      'securityEnhancementStrategy',
-    );
+    securityEnhancementStrategy = registerOutput<String?>('securityEnhancementStrategy');
     securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
     spotStrategy = registerOutput<String?>('spotStrategy');
     status = registerOutput<String>('status');
     supportCase = registerOutput<String?>('supportCase');
-    systemDisk = registerOutput<CustomSystemDisk?>(
-      'systemDisk',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomSystemDisk.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemDisk = registerOutput<CustomSystemDisk?>('systemDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomSystemDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     vswitchId = registerOutput<String>('vswitchId');
     zoneId = registerOutput<String?>('zoneId');

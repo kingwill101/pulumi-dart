@@ -9,19 +9,20 @@ class TcpConnectionPool {
 
   /// Creates a new [TcpConnectionPool].
   /// [maxConnections] Maximum number of tcp connections allowed
-  TcpConnectionPool({this.maxConnections});
+  TcpConnectionPool({
+    this.maxConnections,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maxConnections': ?maxConnections};
+    return <String, dynamic>{
+      'maxConnections': ?maxConnections,
+    };
   }
 
   factory TcpConnectionPool.fromMap(Map<String, dynamic> map) {
     return TcpConnectionPool(
-      maxConnections: (() {
-        final guardedValue = map['maxConnections'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxConnections: (() { final guardedValue = map['maxConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

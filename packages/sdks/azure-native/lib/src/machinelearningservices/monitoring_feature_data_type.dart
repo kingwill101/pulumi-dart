@@ -15,3 +15,4 @@ enum MonitoringFeatureDataType {
     throw ArgumentError('Unknown MonitoringFeatureDataType value: $value');
   }
 }
+

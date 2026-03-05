@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureResourceManagerCommonTypesExtendedLocationResponse {
   /// The name of the extended location.
   final pulumi.Input<String> name;
-
   /// The type of the extended location.
   final pulumi.Input<String> type;
 
@@ -19,15 +18,17 @@ class AzureResourceManagerCommonTypesExtendedLocationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+    };
   }
 
-  factory AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap(Map<String, dynamic> map) {
     return AzureResourceManagerCommonTypesExtendedLocationResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

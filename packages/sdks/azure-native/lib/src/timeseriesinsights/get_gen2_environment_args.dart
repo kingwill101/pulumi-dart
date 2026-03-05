@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGen2EnvironmentArgs {
   /// The name of the Time Series Insights environment associated with the specified resource group.
   final pulumi.Input<String> environmentName;
-
   /// Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service.
   final pulumi.Input<String>? expand;
-
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,14 +35,9 @@ class GetGen2EnvironmentArgs {
   factory GetGen2EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetGen2EnvironmentArgs(
       environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

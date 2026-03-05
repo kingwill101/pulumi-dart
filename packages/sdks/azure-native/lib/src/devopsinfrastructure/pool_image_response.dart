@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PoolImageResponse {
   /// List of aliases to reference the image by.
   final pulumi.Input<List<String>>? aliases;
-
   /// The percentage of the buffer to be allocated to this image.
   final pulumi.Input<String>? buffer;
-
   /// The ephemeral type of the image.
   final pulumi.Input<String>? ephemeralType;
-
   /// The resource id of the image.
   final pulumi.Input<String>? resourceId;
-
   /// The image to use from a well-known set of images made available to customers.
   final pulumi.Input<String>? wellKnownImageName;
 
@@ -45,31 +41,12 @@ class PoolImageResponse {
 
   factory PoolImageResponse.fromMap(Map<String, dynamic> map) {
     return PoolImageResponse(
-      aliases: (() {
-        final guardedValue = map['aliases'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      buffer: (() {
-        final guardedValue = map['buffer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ephemeralType: (() {
-        final guardedValue = map['ephemeralType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      wellKnownImageName: (() {
-        final guardedValue = map['wellKnownImageName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      aliases: (() { final guardedValue = map['aliases']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      buffer: (() { final guardedValue = map['buffer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ephemeralType: (() { final guardedValue = map['ephemeralType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      wellKnownImageName: (() { final guardedValue = map['wellKnownImageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

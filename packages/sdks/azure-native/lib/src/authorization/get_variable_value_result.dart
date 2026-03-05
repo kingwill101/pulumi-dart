@@ -8,19 +8,14 @@ import 'system_data_response.dart';
 class GetVariableValueResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The ID of the variable.
   final String id;
-
   /// The name of the variable.
   final String name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource (Microsoft.Authorization/variables/values).
   final String type;
-
   /// Variable value column value array.
   final List<PolicyVariableValueColumnValueResponse> values;
 
@@ -47,11 +42,7 @@ class GetVariableValueResult {
       'name': name,
       'systemData': systemData.toMap(),
       'type': type,
-      'values':
-          pulumi.Input.encodeList<
-            PolicyVariableValueColumnValueResponse,
-            Map<String, dynamic>
-          >(values, (value) => value.toMap()),
+      'values': pulumi.Input.encodeList<PolicyVariableValueColumnValueResponse, Map<String, dynamic>>(values, (value) => value.toMap()),
     };
   }
 
@@ -60,16 +51,10 @@ class GetVariableValueResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      values: pulumi.Input.decodeList<PolicyVariableValueColumnValueResponse>(
-        map['values']!,
-        (value) => PolicyVariableValueColumnValueResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      values: pulumi.Input.decodeList<PolicyVariableValueColumnValueResponse>(map['values']!, (value) => PolicyVariableValueColumnValueResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

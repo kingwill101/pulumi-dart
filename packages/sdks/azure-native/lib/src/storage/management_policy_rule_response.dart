@@ -7,13 +7,10 @@ import 'management_policy_definition_response.dart';
 class ManagementPolicyRuleResponse {
   /// An object that defines the Lifecycle rule.
   final pulumi.Input<ManagementPolicyDefinitionResponse> definition;
-
   /// Rule is enabled if set to true.
   final pulumi.Input<bool>? enabled;
-
   /// A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
   final pulumi.Input<String> name;
-
   /// The valid value is Lifecycle
   final pulumi.Input<String> type;
 
@@ -31,11 +28,7 @@ class ManagementPolicyRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'definition':
-          pulumi.Input.mapInputValue<
-            ManagementPolicyDefinitionResponse,
-            Map<String, dynamic>
-          >(definition, (value) => value.toMap()),
+      'definition': pulumi.Input.mapInputValue<ManagementPolicyDefinitionResponse, Map<String, dynamic>>(definition, (value) => value.toMap()),
       'enabled': ?enabled,
       'name': name,
       'type': type,
@@ -44,18 +37,11 @@ class ManagementPolicyRuleResponse {
 
   factory ManagementPolicyRuleResponse.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyRuleResponse(
-      definition: pulumi.Input.fromValue(
-        ManagementPolicyDefinitionResponse.fromMap(
-          (map['definition']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      definition: pulumi.Input.fromValue(ManagementPolicyDefinitionResponse.fromMap((map['definition']! as Map).cast<String, dynamic>())),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

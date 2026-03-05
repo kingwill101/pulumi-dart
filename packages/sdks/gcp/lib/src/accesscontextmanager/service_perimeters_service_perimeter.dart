@@ -8,16 +8,13 @@ class ServicePerimetersServicePerimeter {
   /// (Output)
   /// Time the AccessPolicy was created in UTC.
   final pulumi.Input<String>? createTime;
-
   /// Description of the ServicePerimeter and its use. Does not affect
   /// behavior.
   final pulumi.Input<String>? description;
-
   /// Resource name for the ServicePerimeter. The short_name component must
   /// begin with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
   final pulumi.Input<String> name;
-
   /// Specifies the type of the Perimeter. There are two types: regular and
   /// bridge. Regular Service Perimeter contains resources, access levels,
   /// and restricted services. Every resource can be in at most
@@ -35,27 +32,22 @@ class ServicePerimetersServicePerimeter {
   /// Default value is `PERIMETER_TYPE_REGULAR`.
   /// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
   final pulumi.Input<String>? perimeterType;
-
   /// Proposed (or dry run) ServicePerimeter configuration.
   /// This configuration allows to specify and test ServicePerimeter configuration
   /// without enforcing actual access restrictions. Only allowed to be set when
   /// the `useExplicitDryRunSpec` flag is set.
   /// Structure is documented below.
   final pulumi.Input<ServicePerimetersServicePerimeterSpec>? spec;
-
   /// ServicePerimeter configuration. Specifies sets of resources,
   /// restricted services and access levels that determine
   /// perimeter content and boundaries.
   /// Structure is documented below.
   final pulumi.Input<ServicePerimetersServicePerimeterStatus>? status;
-
   /// Human readable title. Must be unique within the Policy.
   final pulumi.Input<String> title;
-
   /// (Output)
   /// Time the AccessPolicy was updated in UTC.
   final pulumi.Input<String>? updateTime;
-
   /// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
   /// for all Service Perimeters, and that spec is identical to the status for those
   /// Service Perimeters. When this flag is set, it inhibits the generation of the
@@ -95,16 +87,8 @@ class ServicePerimetersServicePerimeter {
       'description': ?description,
       'name': name,
       'perimeterType': ?perimeterType,
-      'spec':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServicePerimetersServicePerimeterSpec,
-            Map<String, dynamic>
-          >(spec, (value) => value.toMap()),
-      'status':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServicePerimetersServicePerimeterStatus,
-            Map<String, dynamic>
-          >(status, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<ServicePerimetersServicePerimeterSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<ServicePerimetersServicePerimeterStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
       'title': title,
       'updateTime': ?updateTime,
       'useExplicitDryRunSpec': ?useExplicitDryRunSpec,
@@ -113,51 +97,16 @@ class ServicePerimetersServicePerimeter {
 
   factory ServicePerimetersServicePerimeter.fromMap(Map<String, dynamic> map) {
     return ServicePerimetersServicePerimeter(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      perimeterType: (() {
-        final guardedValue = map['perimeterType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      spec: (() {
-        final guardedValue = map['spec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServicePerimetersServicePerimeterSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServicePerimetersServicePerimeterStatus.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      perimeterType: (() { final guardedValue = map['perimeterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServicePerimetersServicePerimeterSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServicePerimetersServicePerimeterStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       title: pulumi.Input.fromValue(map['title'] as String),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      useExplicitDryRunSpec: (() {
-        final guardedValue = map['useExplicitDryRunSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      useExplicitDryRunSpec: (() { final guardedValue = map['useExplicitDryRunSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

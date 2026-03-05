@@ -10,10 +10,14 @@ class AllNodes {
 
   /// Creates a new [AllNodes].
   /// [nodesValueType] The enumerated types for the nodes value
-  AllNodes({required this.nodesValueType});
+  AllNodes({
+    required this.nodesValueType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nodesValueType': nodesValueType};
+    return <String, dynamic>{
+      'nodesValueType': nodesValueType,
+    };
   }
 
   factory AllNodes.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class AllNodes {
     );
   }
 }
+

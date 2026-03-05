@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationAssignmentArgs {
   /// ARN of the application.
   final pulumi.Input<String> applicationArn;
-
   /// An identifier for an object in IAM Identity Center, such as a user or group.
   final pulumi.Input<String> principalId;
-
   /// Entity type for which the assignment will be created. Valid values are `USER` or `GROUP`.
   final pulumi.Input<String> principalType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -45,11 +42,8 @@ class ApplicationAssignmentArgs {
       applicationArn: pulumi.Input.fromValue(map['applicationArn'] as String),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       principalType: pulumi.Input.fromValue(map['principalType'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

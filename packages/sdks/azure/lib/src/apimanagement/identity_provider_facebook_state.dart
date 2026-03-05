@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityProviderFacebookState {
   /// The Name of the API Management Service where this Facebook Identity Provider should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementName;
-
   /// App ID for Facebook.
   final pulumi.Input<String>? appId;
-
   /// App Secret for Facebook.
   final pulumi.Input<String>? appSecret;
-
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
 
@@ -39,26 +36,11 @@ class IdentityProviderFacebookState {
 
   factory IdentityProviderFacebookState.fromMap(Map<String, dynamic> map) {
     return IdentityProviderFacebookState(
-      apiManagementName: (() {
-        final guardedValue = map['apiManagementName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      appId: (() {
-        final guardedValue = map['appId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      appSecret: (() {
-        final guardedValue = map['appSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiManagementName: (() { final guardedValue = map['apiManagementName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      appId: (() { final guardedValue = map['appId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      appSecret: (() { final guardedValue = map['appSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -157,10 +157,8 @@ import 'private_link_state.dart';
 class PrivateLink extends pulumi.CustomResource {
   /// The Azure Region where the Resource Management Private Link should exist. Changing this forces a new Resource Management Private Link to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of this Resource Management Private Link. Changing this forces a new Resource Management Private Link to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the Resource Group within which this Resource Management Private Link should exist. Changing this forces a new Resource Management Private Link to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -173,11 +171,11 @@ class PrivateLink extends pulumi.CustomResource {
     PrivateLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:management/privateLink:PrivateLink',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:management/privateLink:PrivateLink',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -201,11 +199,11 @@ class PrivateLink extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:management/privateLink:PrivateLink',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:management/privateLink:PrivateLink',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

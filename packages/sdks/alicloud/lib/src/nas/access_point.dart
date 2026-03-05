@@ -463,40 +463,28 @@ import 'access_point_state.dart';
 class AccessPoint extends pulumi.CustomResource {
   /// The name of the permission group.
   late final pulumi.Output<String> accessGroup;
-
   /// The ID of the access point.
   late final pulumi.Output<String> accessPointId;
-
   /// The name of the access point.
   late final pulumi.Output<String?> accessPointName;
-
   /// The time when the access point was created.
   late final pulumi.Output<String> createTime;
-
   /// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> enabledRam;
-
   /// The ID of the file system.
   late final pulumi.Output<String> fileSystemId;
-
   /// The Posix user. See `posix_user` below.
   late final pulumi.Output<AccessPointPosixUser> posixUser;
-
   /// (Available since v1.254.0) The region ID.
   late final pulumi.Output<String> regionId;
-
   /// The root directory of the access point.
   late final pulumi.Output<String> rootPath;
-
   /// Root permissions. See `root_path_permission` below.
   late final pulumi.Output<AccessPointRootPathPermission> rootPathPermission;
-
   /// The status of the access point.
   late final pulumi.Output<String> status;
-
   /// The ID of the VPC.
   late final pulumi.Output<String> vpcId;
-
   /// The vSwitch ID.
   late final pulumi.Output<String> vswitchId;
 
@@ -509,39 +497,21 @@ class AccessPoint extends pulumi.CustomResource {
     AccessPointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nas/accessPoint:AccessPoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nas/accessPoint:AccessPoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessGroup = registerOutput<String>('accessGroup');
     accessPointId = registerOutput<String>('accessPointId');
     accessPointName = registerOutput<String?>('accessPointName');
     createTime = registerOutput<String>('createTime');
     enabledRam = registerOutput<bool?>('enabledRam');
     fileSystemId = registerOutput<String>('fileSystemId');
-    posixUser = registerOutput<AccessPointPosixUser>(
-      'posixUser',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessPointPosixUser.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    posixUser = registerOutput<AccessPointPosixUser>('posixUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointPosixUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     regionId = registerOutput<String>('regionId');
     rootPath = registerOutput<String>('rootPath');
-    rootPathPermission = registerOutput<AccessPointRootPathPermission>(
-      'rootPathPermission',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessPointRootPathPermission.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rootPathPermission = registerOutput<AccessPointRootPathPermission>('rootPathPermission', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointRootPathPermission.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     vpcId = registerOutput<String>('vpcId');
     vswitchId = registerOutput<String>('vswitchId');
@@ -565,39 +535,21 @@ class AccessPoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nas/accessPoint:AccessPoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nas/accessPoint:AccessPoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessGroup = registerOutput<String>('accessGroup');
     accessPointId = registerOutput<String>('accessPointId');
     accessPointName = registerOutput<String?>('accessPointName');
     createTime = registerOutput<String>('createTime');
     enabledRam = registerOutput<bool?>('enabledRam');
     fileSystemId = registerOutput<String>('fileSystemId');
-    posixUser = registerOutput<AccessPointPosixUser>(
-      'posixUser',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessPointPosixUser.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    posixUser = registerOutput<AccessPointPosixUser>('posixUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointPosixUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     regionId = registerOutput<String>('regionId');
     rootPath = registerOutput<String>('rootPath');
-    rootPathPermission = registerOutput<AccessPointRootPathPermission>(
-      'rootPathPermission',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessPointRootPathPermission.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rootPathPermission = registerOutput<AccessPointRootPathPermission>('rootPathPermission', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointRootPathPermission.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     vpcId = registerOutput<String>('vpcId');
     vswitchId = registerOutput<String>('vswitchId');

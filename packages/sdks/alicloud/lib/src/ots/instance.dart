@@ -210,22 +210,17 @@ class Instance extends pulumi.CustomResource {
   ///
   /// Default to "Any".
   late final pulumi.Output<String> accessedBy;
-
   /// The description of the instance. Currently, it does not support modifying.
   late final pulumi.Output<String?> description;
-
   /// The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
   late final pulumi.Output<String?> instanceType;
-
   /// The name of the instance.
   late final pulumi.Output<String> name;
-
   /// The set of request sources that are allowed access. Valid optional values:
   /// * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
   ///
   /// Default to ["TRUST_PROXY"].
   late final pulumi.Output<List<String>> networkSourceAcls;
-
   /// The set of network types that are allowed access. Valid optional values:
   /// * `CLASSIC` - Classic network.
   /// * `VPC` - VPC network.
@@ -233,11 +228,9 @@ class Instance extends pulumi.CustomResource {
   ///
   /// Default to ["VPC", "CLASSIC", "INTERNET"].
   late final pulumi.Output<List<String>> networkTypeAcls;
-
   /// The resource group the instance belongs to.
   /// Default to Alibaba Cloud default resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// A mapping of tags to assign to the instance.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -250,11 +243,11 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ots/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ots/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessedBy = registerOutput<String>('accessedBy');
     description = registerOutput<String?>('description');
     instanceType = registerOutput<String?>('instanceType');
@@ -283,11 +276,11 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ots/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ots/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessedBy = registerOutput<String>('accessedBy');
     description = registerOutput<String?>('description');
     instanceType = registerOutput<String?>('instanceType');

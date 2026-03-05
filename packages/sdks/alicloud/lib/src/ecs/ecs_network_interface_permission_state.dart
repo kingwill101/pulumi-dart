@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EcsNetworkInterfacePermissionState {
   /// Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
   final pulumi.Input<String>? accountId;
-
   /// Whether to force deletion of Network Interface Permission. Default value: `true`.
   final pulumi.Input<bool>? force;
-
   /// The ID of the network interface.
   final pulumi.Input<String>? networkInterfaceId;
-
   /// The permissions of the Network Interface. Valid values: `InstanceAttach`. `InstanceAttach`: Allows authorized users to mount your ENI to the other ECS instance. The ECS instance must be in the same zone as the ENI.
   final pulumi.Input<String>? permission;
-
   /// The Status of the Network Interface Permissions. Valid values: `Pending`, `Granted`, `Revoking`, `Revoked`.
   final pulumi.Input<String>? status;
 
@@ -45,31 +41,12 @@ class EcsNetworkInterfacePermissionState {
 
   factory EcsNetworkInterfacePermissionState.fromMap(Map<String, dynamic> map) {
     return EcsNetworkInterfacePermissionState(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      force: (() {
-        final guardedValue = map['force'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      networkInterfaceId: (() {
-        final guardedValue = map['networkInterfaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      permission: (() {
-        final guardedValue = map['permission'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      force: (() { final guardedValue = map['force']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      networkInterfaceId: (() { final guardedValue = map['networkInterfaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      permission: (() { final guardedValue = map['permission']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

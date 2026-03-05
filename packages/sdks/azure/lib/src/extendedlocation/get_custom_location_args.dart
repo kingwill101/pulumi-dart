@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomLocationArgs {
   /// The name of the Custom Location.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group where the Custom Location exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetCustomLocationArgs].
   /// [name] The name of the Custom Location.
   /// [resourceGroupName] The name of the Resource Group where the Custom Location exists.
-  GetCustomLocationArgs({required this.name, required this.resourceGroupName});
+  GetCustomLocationArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetCustomLocationArgs {
   factory GetCustomLocationArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomLocationArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

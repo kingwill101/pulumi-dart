@@ -7,23 +7,15 @@ import 'materialized_views_builder_regional_service_resource_response.dart';
 class MaterializedViewsBuilderServiceResourcePropertiesResponse {
   /// Time of the last state change (ISO-8601 format).
   final pulumi.Input<String> creationTime;
-
   /// Instance count for the service.
   final pulumi.Input<int>? instanceCount;
-
   /// Instance type for the service.
   final pulumi.Input<String>? instanceSize;
-
   /// An array that contains all of the locations for the service.
-  final pulumi.Input<
-    List<MaterializedViewsBuilderRegionalServiceResourceResponse>
-  >
-  locations;
-
+  final pulumi.Input<List<MaterializedViewsBuilderRegionalServiceResourceResponse>> locations;
   /// ServiceType for the service.
   /// Expected value is 'MaterializedViewsBuilder'.
   final pulumi.Input<String> serviceType;
-
   /// Describes the status of a service.
   final pulumi.Input<String> status;
 
@@ -48,51 +40,21 @@ class MaterializedViewsBuilderServiceResourcePropertiesResponse {
       'creationTime': creationTime,
       'instanceCount': ?instanceCount,
       'instanceSize': ?instanceSize,
-      'locations':
-          pulumi.Input.mapInputValue<
-            List<MaterializedViewsBuilderRegionalServiceResourceResponse>,
-            List<Map<String, dynamic>>
-          >(
-            locations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MaterializedViewsBuilderRegionalServiceResourceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'locations': pulumi.Input.mapInputValue<List<MaterializedViewsBuilderRegionalServiceResourceResponse>, List<Map<String, dynamic>>>(locations, (value) => pulumi.Input.encodeList<MaterializedViewsBuilderRegionalServiceResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceType': serviceType,
       'status': status,
     };
   }
 
-  factory MaterializedViewsBuilderServiceResourcePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MaterializedViewsBuilderServiceResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MaterializedViewsBuilderServiceResourcePropertiesResponse(
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
-      instanceCount: (() {
-        final guardedValue = map['instanceCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      instanceSize: (() {
-        final guardedValue = map['instanceSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      locations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          MaterializedViewsBuilderRegionalServiceResourceResponse
-        >(
-          map['locations']!,
-          (value) =>
-              MaterializedViewsBuilderRegionalServiceResourceResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceSize: (() { final guardedValue = map['instanceSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      locations: pulumi.Input.fromValue(pulumi.Input.decodeList<MaterializedViewsBuilderRegionalServiceResourceResponse>(map['locations']!, (value) => MaterializedViewsBuilderRegionalServiceResourceResponse.fromMap((value as Map).cast<String, dynamic>()))),
       serviceType: pulumi.Input.fromValue(map['serviceType'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

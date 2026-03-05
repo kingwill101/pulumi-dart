@@ -10,25 +10,20 @@ class MetadataIntegrationResponse {
 
   /// Creates a new [MetadataIntegrationResponse].
   /// [dataCatalogConfig] Optional. The integration config for the Data Catalog service.
-  MetadataIntegrationResponse({required this.dataCatalogConfig});
+  MetadataIntegrationResponse({
+    required this.dataCatalogConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataCatalogConfig':
-          pulumi.Input.mapInputValue<
-            DataCatalogConfigResponse,
-            Map<String, dynamic>
-          >(dataCatalogConfig, (value) => value.toMap()),
+      'dataCatalogConfig': pulumi.Input.mapInputValue<DataCatalogConfigResponse, Map<String, dynamic>>(dataCatalogConfig, (value) => value.toMap()),
     };
   }
 
   factory MetadataIntegrationResponse.fromMap(Map<String, dynamic> map) {
     return MetadataIntegrationResponse(
-      dataCatalogConfig: pulumi.Input.fromValue(
-        DataCatalogConfigResponse.fromMap(
-          (map['dataCatalogConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      dataCatalogConfig: pulumi.Input.fromValue(DataCatalogConfigResponse.fromMap((map['dataCatalogConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

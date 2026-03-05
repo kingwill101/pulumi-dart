@@ -8,7 +8,6 @@ import 'load_balancer_config_response.dart';
 class KubernetesRoleNetworkResponse {
   /// Cni configuration
   final pulumi.Input<CniConfigResponse> cniConfig;
-
   /// Load balancer configuration
   final pulumi.Input<LoadBalancerConfigResponse> loadBalancerConfig;
 
@@ -22,31 +21,16 @@ class KubernetesRoleNetworkResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cniConfig':
-          pulumi.Input.mapInputValue<CniConfigResponse, Map<String, dynamic>>(
-            cniConfig,
-            (value) => value.toMap(),
-          ),
-      'loadBalancerConfig':
-          pulumi.Input.mapInputValue<
-            LoadBalancerConfigResponse,
-            Map<String, dynamic>
-          >(loadBalancerConfig, (value) => value.toMap()),
+      'cniConfig': pulumi.Input.mapInputValue<CniConfigResponse, Map<String, dynamic>>(cniConfig, (value) => value.toMap()),
+      'loadBalancerConfig': pulumi.Input.mapInputValue<LoadBalancerConfigResponse, Map<String, dynamic>>(loadBalancerConfig, (value) => value.toMap()),
     };
   }
 
   factory KubernetesRoleNetworkResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesRoleNetworkResponse(
-      cniConfig: pulumi.Input.fromValue(
-        CniConfigResponse.fromMap(
-          (map['cniConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      loadBalancerConfig: pulumi.Input.fromValue(
-        LoadBalancerConfigResponse.fromMap(
-          (map['loadBalancerConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      cniConfig: pulumi.Input.fromValue(CniConfigResponse.fromMap((map['cniConfig']! as Map).cast<String, dynamic>())),
+      loadBalancerConfig: pulumi.Input.fromValue(LoadBalancerConfigResponse.fromMap((map['loadBalancerConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

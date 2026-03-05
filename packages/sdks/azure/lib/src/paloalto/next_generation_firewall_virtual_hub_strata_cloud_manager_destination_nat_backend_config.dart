@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatBackendConfig {
   /// The port number to send traffic to.
   final pulumi.Input<int> port;
-
   /// The public IP Address to send the traffic to.
   final pulumi.Input<String> publicIpAddress;
 
@@ -18,15 +17,17 @@ class NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatBackendCon
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': port, 'publicIpAddress': publicIpAddress};
+    return <String, dynamic>{
+      'port': port,
+      'publicIpAddress': publicIpAddress,
+    };
   }
 
-  factory NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatBackendConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatBackendConfig.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatBackendConfig(
       port: pulumi.Input.fromValue(map['port'] as int),
       publicIpAddress: pulumi.Input.fromValue(map['publicIpAddress'] as String),
     );
   }
 }
+

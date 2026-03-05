@@ -158,13 +158,10 @@ import 'assessment_target_state.dart';
 class AssessmentTarget extends pulumi.CustomResource {
   /// The target assessment ARN.
   late final pulumi.Output<String> arn;
-
   /// The name of the assessment target.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Inspector Resource Group Amazon Resource Name (ARN) stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
   late final pulumi.Output<String?> resourceGroupArn;
 
@@ -177,11 +174,11 @@ class AssessmentTarget extends pulumi.CustomResource {
     AssessmentTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:inspector/assessmentTarget:AssessmentTarget',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:inspector/assessmentTarget:AssessmentTarget',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -206,11 +203,11 @@ class AssessmentTarget extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:inspector/assessmentTarget:AssessmentTarget',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:inspector/assessmentTarget:AssessmentTarget',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

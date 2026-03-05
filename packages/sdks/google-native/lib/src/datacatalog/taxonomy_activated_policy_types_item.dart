@@ -11,8 +11,7 @@ enum TaxonomyActivatedPolicyTypesItem {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown TaxonomyActivatedPolicyTypesItem value: $value',
-    );
+    throw ArgumentError('Unknown TaxonomyActivatedPolicyTypesItem value: $value');
   }
 }
+

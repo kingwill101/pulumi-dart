@@ -12,14 +12,15 @@ class SecurityPolicyDdosProtectionConfigResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ddosProtection': ddosProtection};
+    return <String, dynamic>{
+      'ddosProtection': ddosProtection,
+    };
   }
 
-  factory SecurityPolicyDdosProtectionConfigResponseComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPolicyDdosProtectionConfigResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyDdosProtectionConfigResponseComputeV1(
       ddosProtection: pulumi.Input.fromValue(map['ddosProtection'] as String),
     );
   }
 }
+

@@ -10,16 +10,12 @@ import 'invitation_message.dart';
 class InvitationArgs {
   /// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
   final pulumi.Input<InvitationMessage>? message;
-
   /// The URL that the user should be redirected to once the invitation is redeemed.
   final pulumi.Input<String> redirectUrl;
-
   /// The display name of the user being invited.
   final pulumi.Input<String>? userDisplayName;
-
   /// The email address of the user being invited.
   final pulumi.Input<String> userEmailAddress;
-
   /// The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
   final pulumi.Input<String>? userType;
 
@@ -39,11 +35,7 @@ class InvitationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'message':
-          ?pulumi.Input.mapOptionalInputValue<
-            InvitationMessage,
-            Map<String, dynamic>
-          >(message, (value) => value.toMap()),
+      'message': ?pulumi.Input.mapOptionalInputValue<InvitationMessage, Map<String, dynamic>>(message, (value) => value.toMap()),
       'redirectUrl': redirectUrl,
       'userDisplayName': ?userDisplayName,
       'userEmailAddress': userEmailAddress,
@@ -53,29 +45,12 @@ class InvitationArgs {
 
   factory InvitationArgs.fromMap(Map<String, dynamic> map) {
     return InvitationArgs(
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InvitationMessage.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InvitationMessage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       redirectUrl: pulumi.Input.fromValue(map['redirectUrl'] as String),
-      userDisplayName: (() {
-        final guardedValue = map['userDisplayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userEmailAddress: pulumi.Input.fromValue(
-        map['userEmailAddress'] as String,
-      ),
-      userType: (() {
-        final guardedValue = map['userType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userDisplayName: (() { final guardedValue = map['userDisplayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userEmailAddress: pulumi.Input.fromValue(map['userEmailAddress'] as String),
+      userType: (() { final guardedValue = map['userType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

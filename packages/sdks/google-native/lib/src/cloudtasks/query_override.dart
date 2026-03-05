@@ -9,19 +9,20 @@ class QueryOverride {
 
   /// Creates a new [QueryOverride].
   /// [queryParams] The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
-  QueryOverride({this.queryParams});
+  QueryOverride({
+    this.queryParams,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'queryParams': ?queryParams};
+    return <String, dynamic>{
+      'queryParams': ?queryParams,
+    };
   }
 
   factory QueryOverride.fromMap(Map<String, dynamic> map) {
     return QueryOverride(
-      queryParams: (() {
-        final guardedValue = map['queryParams'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      queryParams: (() { final guardedValue = map['queryParams']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

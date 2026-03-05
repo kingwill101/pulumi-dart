@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceRestoreToPointInTime {
   /// The date and time to restore from. Value must be a time in Universal Coordinated Time (UTC) format and must be before the latest restorable time for the DB instance. Cannot be specified with `use_latest_restorable_time`.
   final pulumi.Input<String>? restoreTime;
-
   /// The ARN of the automated backup from which to restore. Required if `source_db_instance_identifier` or `source_dbi_resource_id` is not specified.
   final pulumi.Input<String>? sourceDbInstanceAutomatedBackupsArn;
-
   /// The identifier of the source DB instance from which to restore. Must match the identifier of an existing DB instance. Required if `source_db_instance_automated_backups_arn` or `source_dbi_resource_id` is not specified.
   final pulumi.Input<String>? sourceDbInstanceIdentifier;
-
   /// The resource ID of the source DB instance from which to restore. Required if `source_db_instance_identifier` or `source_db_instance_automated_backups_arn` is not specified.
   final pulumi.Input<String>? sourceDbiResourceId;
-
   /// A boolean value that indicates whether the DB instance is restored from the latest backup time. Defaults to `false`. Cannot be specified with `restore_time`.
   final pulumi.Input<bool>? useLatestRestorableTime;
 
@@ -35,8 +31,7 @@ class InstanceRestoreToPointInTime {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'restoreTime': ?restoreTime,
-      'sourceDbInstanceAutomatedBackupsArn':
-          ?sourceDbInstanceAutomatedBackupsArn,
+      'sourceDbInstanceAutomatedBackupsArn': ?sourceDbInstanceAutomatedBackupsArn,
       'sourceDbInstanceIdentifier': ?sourceDbInstanceIdentifier,
       'sourceDbiResourceId': ?sourceDbiResourceId,
       'useLatestRestorableTime': ?useLatestRestorableTime,
@@ -45,31 +40,12 @@ class InstanceRestoreToPointInTime {
 
   factory InstanceRestoreToPointInTime.fromMap(Map<String, dynamic> map) {
     return InstanceRestoreToPointInTime(
-      restoreTime: (() {
-        final guardedValue = map['restoreTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceDbInstanceAutomatedBackupsArn: (() {
-        final guardedValue = map['sourceDbInstanceAutomatedBackupsArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceDbInstanceIdentifier: (() {
-        final guardedValue = map['sourceDbInstanceIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceDbiResourceId: (() {
-        final guardedValue = map['sourceDbiResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      useLatestRestorableTime: (() {
-        final guardedValue = map['useLatestRestorableTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      restoreTime: (() { final guardedValue = map['restoreTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceDbInstanceAutomatedBackupsArn: (() { final guardedValue = map['sourceDbInstanceAutomatedBackupsArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceDbInstanceIdentifier: (() { final guardedValue = map['sourceDbInstanceIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceDbiResourceId: (() { final guardedValue = map['sourceDbiResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      useLatestRestorableTime: (() { final guardedValue = map['useLatestRestorableTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

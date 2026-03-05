@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppTemplateContainerEnv {
   /// The name of the Container App.
   final pulumi.Input<String> name;
-
   /// The name of the secret that contains the value for this environment variable.
   final pulumi.Input<String> secretName;
-
   /// The HTTP Header value.
   final pulumi.Input<String> value;
 
@@ -38,3 +36,4 @@ class GetAppTemplateContainerEnv {
     );
   }
 }
+

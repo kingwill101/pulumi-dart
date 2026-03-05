@@ -8,17 +8,20 @@ class GetGroupMembershipsGroupMembershipMemberId {
 
   /// Creates a new [GetGroupMembershipsGroupMembershipMemberId].
   /// [userId] User identifier of the group member.
-  GetGroupMembershipsGroupMembershipMemberId({required this.userId});
+  GetGroupMembershipsGroupMembershipMemberId({
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'userId': userId};
+    return <String, dynamic>{
+      'userId': userId,
+    };
   }
 
-  factory GetGroupMembershipsGroupMembershipMemberId.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGroupMembershipsGroupMembershipMemberId.fromMap(Map<String, dynamic> map) {
     return GetGroupMembershipsGroupMembershipMemberId(
       userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
+

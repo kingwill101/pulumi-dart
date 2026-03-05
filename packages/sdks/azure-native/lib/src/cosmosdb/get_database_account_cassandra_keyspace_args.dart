@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseAccountCassandraKeyspaceArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
-
   /// Cosmos DB keyspace name.
   final pulumi.Input<String> keyspaceName;
-
   /// Name of an Azure resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,15 +32,12 @@ class GetDatabaseAccountCassandraKeyspaceArgs {
     };
   }
 
-  factory GetDatabaseAccountCassandraKeyspaceArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseAccountCassandraKeyspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseAccountCassandraKeyspaceArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       keyspaceName: pulumi.Input.fromValue(map['keyspaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -10,16 +10,12 @@ import 'alias_routing_strategy.dart';
 class AliasArgs {
   /// Description of the alias.
   final pulumi.Input<String>? description;
-
   /// Name of the alias.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Specifies the fleet and/or routing type to use for the alias.
   final pulumi.Input<AliasRoutingStrategy> routingStrategy;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -42,44 +38,19 @@ class AliasArgs {
       'description': ?description,
       'name': ?name,
       'region': ?region,
-      'routingStrategy':
-          pulumi.Input.mapInputValue<
-            AliasRoutingStrategy,
-            Map<String, dynamic>
-          >(routingStrategy, (value) => value.toMap()),
+      'routingStrategy': pulumi.Input.mapInputValue<AliasRoutingStrategy, Map<String, dynamic>>(routingStrategy, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routingStrategy: pulumi.Input.fromValue(
-        AliasRoutingStrategy.fromMap(
-          (map['routingStrategy']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routingStrategy: pulumi.Input.fromValue(AliasRoutingStrategy.fromMap((map['routingStrategy']! as Map).cast<String, dynamic>())),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

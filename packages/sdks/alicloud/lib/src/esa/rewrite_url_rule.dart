@@ -330,36 +330,26 @@ import 'rewrite_url_rule_state.dart';
 class RewriteUrlRule extends pulumi.CustomResource {
   /// ConfigId
   late final pulumi.Output<int> configId;
-
   /// The desired query string to which you want to rewrite the query string in the original request.
   late final pulumi.Output<String?> queryString;
-
   /// Query string rewrite type. Value range:
   late final pulumi.Output<String?> rewriteQueryStringType;
-
   /// URI rewrite type. Value range:
   late final pulumi.Output<String?> rewriteUriType;
-
   /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   late final pulumi.Output<String?> rule;
-
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   /// ‒ on: open.
   /// ‒ off: close.
   late final pulumi.Output<String?> ruleEnable;
-
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   late final pulumi.Output<String?> ruleName;
-
   /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   late final pulumi.Output<int> sequence;
-
   /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
   late final pulumi.Output<String> siteId;
-
   /// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
   late final pulumi.Output<int?> siteVersion;
-
   /// The desired URI to which you want to rewrite the path in the original request.
   late final pulumi.Output<String?> uri;
 
@@ -372,11 +362,11 @@ class RewriteUrlRule extends pulumi.CustomResource {
     RewriteUrlRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/rewriteUrlRule:RewriteUrlRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/rewriteUrlRule:RewriteUrlRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configId = registerOutput<int>('configId');
     queryString = registerOutput<String?>('queryString');
     rewriteQueryStringType = registerOutput<String?>('rewriteQueryStringType');
@@ -408,11 +398,11 @@ class RewriteUrlRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/rewriteUrlRule:RewriteUrlRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/rewriteUrlRule:RewriteUrlRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configId = registerOutput<int>('configId');
     queryString = registerOutput<String?>('queryString');
     rewriteQueryStringType = registerOutput<String?>('rewriteQueryStringType');

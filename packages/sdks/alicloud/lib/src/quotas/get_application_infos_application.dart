@@ -63,18 +63,7 @@ class GetApplicationInfosApplication {
       'approveValue': approveValue,
       'auditReason': auditReason,
       'desireValue': desireValue,
-      'dimensions':
-          pulumi.Input.mapInputValue<
-            List<GetApplicationInfosApplicationDimension>,
-            List<Map<String, dynamic>>
-          >(
-            dimensions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetApplicationInfosApplicationDimension,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'dimensions': pulumi.Input.mapInputValue<List<GetApplicationInfosApplicationDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<GetApplicationInfosApplicationDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'effectiveTime': effectiveTime,
       'expireTime': expireTime,
       'id': id,
@@ -95,23 +84,14 @@ class GetApplicationInfosApplication {
       approveValue: pulumi.Input.fromValue(map['approveValue'] as String),
       auditReason: pulumi.Input.fromValue(map['auditReason'] as String),
       desireValue: pulumi.Input.fromValue(map['desireValue'] as double),
-      dimensions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetApplicationInfosApplicationDimension>(
-          map['dimensions']!,
-          (value) => GetApplicationInfosApplicationDimension.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      dimensions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetApplicationInfosApplicationDimension>(map['dimensions']!, (value) => GetApplicationInfosApplicationDimension.fromMap((value as Map).cast<String, dynamic>()))),
       effectiveTime: pulumi.Input.fromValue(map['effectiveTime'] as String),
       expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       noticeType: pulumi.Input.fromValue(map['noticeType'] as int),
       productCode: pulumi.Input.fromValue(map['productCode'] as String),
       quotaActionCode: pulumi.Input.fromValue(map['quotaActionCode'] as String),
-      quotaDescription: pulumi.Input.fromValue(
-        map['quotaDescription'] as String,
-      ),
+      quotaDescription: pulumi.Input.fromValue(map['quotaDescription'] as String),
       quotaName: pulumi.Input.fromValue(map['quotaName'] as String),
       quotaUnit: pulumi.Input.fromValue(map['quotaUnit'] as String),
       reason: pulumi.Input.fromValue(map['reason'] as String),
@@ -119,3 +99,4 @@ class GetApplicationInfosApplication {
     );
   }
 }
+

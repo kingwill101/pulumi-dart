@@ -6,16 +6,13 @@ import 'get_policy_versions_version.dart';
 /// Result data returned by getPolicyVersions.
 class GetPolicyVersionsResult {
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of policy version IDs.
   final List<String> ids;
   final String? outputFile;
   final String policyName;
   final String policyType;
-
   /// A list of policy versions. Each element contains the following attributes:
   final List<GetPolicyVersionsVersion> versions;
 
@@ -45,36 +42,20 @@ class GetPolicyVersionsResult {
       'outputFile': ?outputFile,
       'policyName': policyName,
       'policyType': policyType,
-      'versions':
-          pulumi.Input.encodeList<
-            GetPolicyVersionsVersion,
-            Map<String, dynamic>
-          >(versions, (value) => value.toMap()),
+      'versions': pulumi.Input.encodeList<GetPolicyVersionsVersion, Map<String, dynamic>>(versions, (value) => value.toMap()),
     };
   }
 
   factory GetPolicyVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyVersionsResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       policyName: map['policyName'] as String,
       policyType: map['policyType'] as String,
-      versions: pulumi.Input.decodeList<GetPolicyVersionsVersion>(
-        map['versions']!,
-        (value) => GetPolicyVersionsVersion.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      versions: pulumi.Input.decodeList<GetPolicyVersionsVersion>(map['versions']!, (value) => GetPolicyVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

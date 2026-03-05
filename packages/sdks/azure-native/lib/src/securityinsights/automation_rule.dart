@@ -135,41 +135,28 @@ import 'system_data_response.dart';
 class AutomationRule extends pulumi.CustomResource {
   /// The actions to execute when the automation rule is triggered.
   late final pulumi.Output<List<Map<String, dynamic>>> actions;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Information on the client (user or application) that made some action
   late final pulumi.Output<ClientInfoResponse> createdBy;
-
   /// The time the automation rule was created.
   late final pulumi.Output<String> createdTimeUtc;
-
   /// The display name of the automation rule.
   late final pulumi.Output<String> displayName;
-
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// Information on the client (user or application) that made some action
   late final pulumi.Output<ClientInfoResponse> lastModifiedBy;
-
   /// The last time the automation rule was updated.
   late final pulumi.Output<String> lastModifiedTimeUtc;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The order of execution of the automation rule.
   late final pulumi.Output<int> order;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Describes automation rule triggering logic.
-  late final pulumi.Output<AutomationRuleTriggeringLogicResponse>
-  triggeringLogic;
-
+  late final pulumi.Output<AutomationRuleTriggeringLogicResponse> triggeringLogic;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -182,59 +169,23 @@ class AutomationRule extends pulumi.CustomResource {
     AutomationRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:AutomationRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:securityinsights:AutomationRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    createdBy = registerOutput<ClientInfoResponse>(
-      'createdBy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClientInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    createdBy = registerOutput<ClientInfoResponse>('createdBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdTimeUtc = registerOutput<String>('createdTimeUtc');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String?>('etag');
-    lastModifiedBy = registerOutput<ClientInfoResponse>(
-      'lastModifiedBy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClientInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    lastModifiedBy = registerOutput<ClientInfoResponse>('lastModifiedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
     this.name = registerOutput<String>('name');
     order = registerOutput<int>('order');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    triggeringLogic = registerOutput<AutomationRuleTriggeringLogicResponse>(
-      'triggeringLogic',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutomationRuleTriggeringLogicResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    triggeringLogic = registerOutput<AutomationRuleTriggeringLogicResponse>('triggeringLogic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationRuleTriggeringLogicResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

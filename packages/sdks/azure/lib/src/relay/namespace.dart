@@ -179,31 +179,22 @@ import 'namespace_state.dart';
 class Namespace extends pulumi.CustomResource {
   /// Specifies the supported Azure location where the Azure Relay Namespace exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The Identifier for Azure Insights metrics.
   late final pulumi.Output<String> metricId;
-
   /// Specifies the name of the Azure Relay Namespace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The primary connection string for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> primaryConnectionString;
-
   /// The primary access key for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> primaryKey;
-
   /// The name of the resource group in which to create the Azure Relay Namespace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The secondary connection string for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> secondaryConnectionString;
-
   /// The secondary access key for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> secondaryKey;
-
   /// The name of the SKU to use. At this time the only supported value is `Standard`.
   late final pulumi.Output<String> skuName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -216,20 +207,18 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:relay/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:relay/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     metricId = registerOutput<String>('metricId');
     this.name = registerOutput<String>('name');
     primaryConnectionString = registerOutput<String>('primaryConnectionString');
     primaryKey = registerOutput<String>('primaryKey');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>(
-      'secondaryConnectionString',
-    );
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
     secondaryKey = registerOutput<String>('secondaryKey');
     skuName = registerOutput<String>('skuName');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -253,20 +242,18 @@ class Namespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:relay/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:relay/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     metricId = registerOutput<String>('metricId');
     this.name = registerOutput<String>('name');
     primaryConnectionString = registerOutput<String>('primaryConnectionString');
     primaryKey = registerOutput<String>('primaryKey');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>(
-      'secondaryConnectionString',
-    );
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
     secondaryKey = registerOutput<String>('secondaryKey');
     skuName = registerOutput<String>('skuName');
     tags = registerOutput<Map<String, String>?>('tags');

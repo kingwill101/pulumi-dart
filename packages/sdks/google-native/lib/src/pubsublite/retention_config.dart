@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RetentionConfig {
   /// The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.
   final pulumi.Input<String>? perPartitionBytes;
-
   /// How long a published message is retained. If unset, messages will be retained as long as the bytes retained for each partition is below `per_partition_bytes`.
   final pulumi.Input<String>? period;
 
   /// Creates a new [RetentionConfig].
   /// [perPartitionBytes] The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.
   /// [period] How long a published message is retained. If unset, messages will be retained as long as the bytes retained for each partition is below `per_partition_bytes`.
-  RetentionConfig({this.perPartitionBytes, this.period});
+  RetentionConfig({
+    this.perPartitionBytes,
+    this.period,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class RetentionConfig {
 
   factory RetentionConfig.fromMap(Map<String, dynamic> map) {
     return RetentionConfig(
-      perPartitionBytes: (() {
-        final guardedValue = map['perPartitionBytes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      period: (() {
-        final guardedValue = map['period'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      perPartitionBytes: (() { final guardedValue = map['perPartitionBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -10,31 +10,20 @@ class FleetObservabilityRoutingConfigGkehubV1alpha {
 
   /// Creates a new [FleetObservabilityRoutingConfigGkehubV1alpha].
   /// [mode] mode configures the logs routing mode.
-  FleetObservabilityRoutingConfigGkehubV1alpha({this.mode});
+  FleetObservabilityRoutingConfigGkehubV1alpha({
+    this.mode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mode':
-          ?pulumi.Input.mapOptionalInputValue<
-            FleetObservabilityRoutingConfigModeGkehubV1alpha,
-            String
-          >(mode, (value) => value.wireValue),
+      'mode': ?pulumi.Input.mapOptionalInputValue<FleetObservabilityRoutingConfigModeGkehubV1alpha, String>(mode, (value) => value.wireValue),
     };
   }
 
-  factory FleetObservabilityRoutingConfigGkehubV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FleetObservabilityRoutingConfigGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityRoutingConfigGkehubV1alpha(
-      mode: (() {
-        final guardedValue = map['mode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FleetObservabilityRoutingConfigModeGkehubV1alpha.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FleetObservabilityRoutingConfigModeGkehubV1alpha.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

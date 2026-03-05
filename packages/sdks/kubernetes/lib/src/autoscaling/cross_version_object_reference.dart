@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CrossVersionObjectReference {
   /// apiVersion is the API version of the referent
   final pulumi.Input<String>? apiVersion;
-
   /// kind is the kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String> kind;
-
   /// name is the name of the referent; More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   final pulumi.Input<String> name;
 
@@ -33,13 +31,10 @@ class CrossVersionObjectReference {
 
   factory CrossVersionObjectReference.fromMap(Map<String, dynamic> map) {
     return CrossVersionObjectReference(
-      apiVersion: (() {
-        final guardedValue = map['apiVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

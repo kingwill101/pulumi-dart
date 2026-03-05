@@ -13,14 +13,15 @@ class WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'action': action};
+    return <String, dynamic>{
+      'action': action,
+    };
   }
 
-  factory WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition.fromMap(Map<String, dynamic> map) {
     return WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition(
       action: pulumi.Input.fromValue(map['action'] as String),
     );
   }
 }
+

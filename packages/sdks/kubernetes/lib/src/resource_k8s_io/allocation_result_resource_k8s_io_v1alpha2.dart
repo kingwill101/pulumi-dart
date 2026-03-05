@@ -10,12 +10,10 @@ class AllocationResultResourceK8sIoV1alpha2 {
   ///
   /// Setting this field is optional. If null, the resource is available everywhere.
   final pulumi.Input<NodeSelector>? availableOnNodes;
-
   /// ResourceHandles contain the state associated with an allocation that should be maintained throughout the lifetime of a claim. Each ResourceHandle contains data that should be passed to a specific kubelet plugin once it lands on a node. This data is returned by the driver after a successful allocation and is opaque to Kubernetes. Driver documentation may explain to users how to interpret this data if needed.
   ///
   /// Setting this field is optional. It has a maximum size of 32 entries. If null (or empty), it is assumed this allocation will be processed by a single kubelet plugin with no ResourceHandle data attached. The name of the kubelet plugin invoked will match the DriverName set in the ResourceClaimStatus this AllocationResult is embedded in.
   final pulumi.Input<List<ResourceHandle>>? resourceHandles;
-
   /// Shareable determines whether the resource supports more than one consumer at a time.
   final pulumi.Input<bool>? shareable;
 
@@ -31,54 +29,18 @@ class AllocationResultResourceK8sIoV1alpha2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availableOnNodes':
-          ?pulumi.Input.mapOptionalInputValue<
-            NodeSelector,
-            Map<String, dynamic>
-          >(availableOnNodes, (value) => value.toMap()),
-      'resourceHandles':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ResourceHandle>,
-            List<Map<String, dynamic>>
-          >(
-            resourceHandles,
-            (value) =>
-                pulumi.Input.encodeList<ResourceHandle, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'availableOnNodes': ?pulumi.Input.mapOptionalInputValue<NodeSelector, Map<String, dynamic>>(availableOnNodes, (value) => value.toMap()),
+      'resourceHandles': ?pulumi.Input.mapOptionalInputValue<List<ResourceHandle>, List<Map<String, dynamic>>>(resourceHandles, (value) => pulumi.Input.encodeList<ResourceHandle, Map<String, dynamic>>(value, (value) => value.toMap())),
       'shareable': ?shareable,
     };
   }
 
-  factory AllocationResultResourceK8sIoV1alpha2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AllocationResultResourceK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
     return AllocationResultResourceK8sIoV1alpha2(
-      availableOnNodes: (() {
-        final guardedValue = map['availableOnNodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodeSelector.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      resourceHandles: (() {
-        final guardedValue = map['resourceHandles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ResourceHandle>(
-            guardedValue,
-            (value) =>
-                ResourceHandle.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      shareable: (() {
-        final guardedValue = map['shareable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      availableOnNodes: (() { final guardedValue = map['availableOnNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceHandles: (() { final guardedValue = map['resourceHandles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceHandle>(guardedValue, (value) => ResourceHandle.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      shareable: (() { final guardedValue = map['shareable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

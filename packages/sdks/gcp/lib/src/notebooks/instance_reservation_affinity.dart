@@ -6,10 +6,8 @@ class InstanceReservationAffinity {
   /// The type of Compute Reservation.
   /// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
   final pulumi.Input<String> consumeReservationType;
-
   /// Corresponds to the label key of reservation resource.
   final pulumi.Input<String>? key;
-
   /// Corresponds to the label values of reservation resource.
   final pulumi.Input<List<String>>? values;
 
@@ -33,19 +31,10 @@ class InstanceReservationAffinity {
 
   factory InstanceReservationAffinity.fromMap(Map<String, dynamic> map) {
     return InstanceReservationAffinity(
-      consumeReservationType: pulumi.Input.fromValue(
-        map['consumeReservationType'] as String,
-      ),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      consumeReservationType: pulumi.Input.fromValue(map['consumeReservationType'] as String),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

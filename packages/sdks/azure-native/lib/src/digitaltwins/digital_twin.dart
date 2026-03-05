@@ -253,41 +253,28 @@ import 'system_data_response.dart';
 class DigitalTwin extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Time when DigitalTwinsInstance was created.
   late final pulumi.Output<String> createdTime;
-
   /// Api endpoint to work with DigitalTwinsInstance.
   late final pulumi.Output<String> hostName;
-
   /// The managed identity for the DigitalTwinsInstance.
   late final pulumi.Output<DigitalTwinsIdentityResponse?> identity;
-
   /// Time when DigitalTwinsInstance was updated.
   late final pulumi.Output<String> lastUpdatedTime;
-
   /// The resource location.
   late final pulumi.Output<String> location;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// The private endpoint connections.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> privateEndpointConnections;
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Public network access for the DigitalTwinsInstance.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// Metadata pertaining to creation and last modification of the DigitalTwinsInstance.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -300,42 +287,22 @@ class DigitalTwin extends pulumi.CustomResource {
     DigitalTwinArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:digitaltwins:DigitalTwin',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:digitaltwins:DigitalTwin',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTime = registerOutput<String>('createdTime');
     hostName = registerOutput<String>('hostName');
-    identity = registerOutput<DigitalTwinsIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DigitalTwinsIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<DigitalTwinsIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DigitalTwinsIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

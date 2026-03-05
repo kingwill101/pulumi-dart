@@ -147,19 +147,14 @@ import 'web_app_discovery_site_data_sources_controller_args.dart';
 class WebAppDiscoverySiteDataSourcesController extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the discovery site Id.
   late final pulumi.Output<String?> discoverySiteId;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// provisioning state enum
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -172,25 +167,16 @@ class WebAppDiscoverySiteDataSourcesController extends pulumi.CustomResource {
     WebAppDiscoverySiteDataSourcesControllerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:offazure:WebAppDiscoverySiteDataSourcesController',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:offazure:WebAppDiscoverySiteDataSourcesController',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     discoverySiteId = registerOutput<String?>('discoverySiteId');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

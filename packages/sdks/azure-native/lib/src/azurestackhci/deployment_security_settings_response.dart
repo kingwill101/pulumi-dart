@@ -6,31 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentSecuritySettingsResponse {
   /// When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent.
   final pulumi.Input<bool>? bitlockerBootVolume;
-
   /// When set to true, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes.
   final pulumi.Input<bool>? bitlockerDataVolumes;
-
   /// When set to true, Credential Guard is enabled.
   final pulumi.Input<bool>? credentialGuardEnforced;
-
   /// When set to true, the security baseline is re-applied regularly.
   final pulumi.Input<bool>? driftControlEnforced;
-
   /// By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent.
   final pulumi.Input<bool>? drtmProtection;
-
   /// By default, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster.
   final pulumi.Input<bool>? hvciProtection;
-
   /// When set to true, all the side channel mitigations are enabled
   final pulumi.Input<bool>? sideChannelMitigationEnforced;
-
   /// When set to true, cluster east-west traffic is encrypted.
   final pulumi.Input<bool>? smbClusterEncryption;
-
   /// When set to true, the SMB default instance requires sign in for the client and server services.
   final pulumi.Input<bool>? smbSigningEnforced;
-
   /// WDAC is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster.
   final pulumi.Input<bool>? wdacEnforced;
 
@@ -75,56 +66,17 @@ class DeploymentSecuritySettingsResponse {
 
   factory DeploymentSecuritySettingsResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentSecuritySettingsResponse(
-      bitlockerBootVolume: (() {
-        final guardedValue = map['bitlockerBootVolume'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      bitlockerDataVolumes: (() {
-        final guardedValue = map['bitlockerDataVolumes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      credentialGuardEnforced: (() {
-        final guardedValue = map['credentialGuardEnforced'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      driftControlEnforced: (() {
-        final guardedValue = map['driftControlEnforced'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      drtmProtection: (() {
-        final guardedValue = map['drtmProtection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      hvciProtection: (() {
-        final guardedValue = map['hvciProtection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sideChannelMitigationEnforced: (() {
-        final guardedValue = map['sideChannelMitigationEnforced'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      smbClusterEncryption: (() {
-        final guardedValue = map['smbClusterEncryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      smbSigningEnforced: (() {
-        final guardedValue = map['smbSigningEnforced'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      wdacEnforced: (() {
-        final guardedValue = map['wdacEnforced'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      bitlockerBootVolume: (() { final guardedValue = map['bitlockerBootVolume']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      bitlockerDataVolumes: (() { final guardedValue = map['bitlockerDataVolumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      credentialGuardEnforced: (() { final guardedValue = map['credentialGuardEnforced']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      driftControlEnforced: (() { final guardedValue = map['driftControlEnforced']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      drtmProtection: (() { final guardedValue = map['drtmProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      hvciProtection: (() { final guardedValue = map['hvciProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sideChannelMitigationEnforced: (() { final guardedValue = map['sideChannelMitigationEnforced']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      smbClusterEncryption: (() { final guardedValue = map['smbClusterEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      smbSigningEnforced: (() { final guardedValue = map['smbSigningEnforced']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      wdacEnforced: (() { final guardedValue = map['wdacEnforced']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -434,10 +434,8 @@ import 'user_attachment_state.dart';
 class UserAttachment extends pulumi.CustomResource {
   /// Specifies the user group to add the user's bastion host ID of.
   late final pulumi.Output<String> instanceId;
-
   /// Specifies the user group to which you want to add the user ID.
   late final pulumi.Output<String> userGroupId;
-
   /// Specify that you want to add to the policy attached to the user group ID. This includes response parameters in a Json-formatted string supports up to set up 100 USER ID.
   late final pulumi.Output<String> userId;
 
@@ -450,11 +448,11 @@ class UserAttachment extends pulumi.CustomResource {
     UserAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:bastionhost/userAttachment:UserAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:bastionhost/userAttachment:UserAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     userGroupId = registerOutput<String>('userGroupId');
     userId = registerOutput<String>('userId');
@@ -478,11 +476,11 @@ class UserAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:bastionhost/userAttachment:UserAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:bastionhost/userAttachment:UserAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     userGroupId = registerOutput<String>('userGroupId');
     userId = registerOutput<String>('userId');

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInboundNatRuleArgs {
   /// Expands referenced resources.
   final pulumi.Input<String>? expand;
-
   /// The name of the inbound NAT rule.
   final pulumi.Input<String> inboundNatRuleName;
-
   /// The name of the load balancer.
   final pulumi.Input<String> loadBalancerName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,20 +39,11 @@ class GetInboundNatRuleArgs {
 
   factory GetInboundNatRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetInboundNatRuleArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      inboundNatRuleName: pulumi.Input.fromValue(
-        map['inboundNatRuleName'] as String,
-      ),
-      loadBalancerName: pulumi.Input.fromValue(
-        map['loadBalancerName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      inboundNatRuleName: pulumi.Input.fromValue(map['inboundNatRuleName'] as String),
+      loadBalancerName: pulumi.Input.fromValue(map['loadBalancerName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

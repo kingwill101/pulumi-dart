@@ -12,8 +12,7 @@ enum ApplicationGatewayFirewallRateLimitDuration {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ApplicationGatewayFirewallRateLimitDuration value: $value',
-    );
+    throw ArgumentError('Unknown ApplicationGatewayFirewallRateLimitDuration value: $value');
   }
 }
+

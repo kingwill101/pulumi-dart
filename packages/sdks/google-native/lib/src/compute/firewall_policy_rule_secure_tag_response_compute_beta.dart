@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallPolicyRuleSecureTagResponseComputeBeta {
   /// Name of the secure tag, created with TagManager's TagValue API.
   final pulumi.Input<String> name;
-
   /// State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
   final pulumi.Input<String> state;
 
@@ -18,15 +17,17 @@ class FirewallPolicyRuleSecureTagResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'state': state};
+    return <String, dynamic>{
+      'name': name,
+      'state': state,
+    };
   }
 
-  factory FirewallPolicyRuleSecureTagResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirewallPolicyRuleSecureTagResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleSecureTagResponseComputeBeta(
       name: pulumi.Input.fromValue(map['name'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

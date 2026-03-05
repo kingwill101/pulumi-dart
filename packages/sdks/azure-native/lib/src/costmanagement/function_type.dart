@@ -14,3 +14,4 @@ enum FunctionType {
     throw ArgumentError('Unknown FunctionType value: $value');
   }
 }
+

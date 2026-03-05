@@ -39,11 +39,7 @@ class GetAdConnectorOfficeSitesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'sites':
-          pulumi.Input.encodeList<
-            GetAdConnectorOfficeSitesSite,
-            Map<String, dynamic>
-          >(sites, (value) => value.toMap()),
+      'sites': pulumi.Input.encodeList<GetAdConnectorOfficeSitesSite, Map<String, dynamic>>(sites, (value) => value.toMap()),
       'status': ?status,
     };
   }
@@ -52,28 +48,12 @@ class GetAdConnectorOfficeSitesResult {
     return GetAdConnectorOfficeSitesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sites: pulumi.Input.decodeList<GetAdConnectorOfficeSitesSite>(
-        map['sites']!,
-        (value) => GetAdConnectorOfficeSitesSite.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sites: pulumi.Input.decodeList<GetAdConnectorOfficeSitesSite>(map['sites']!, (value) => GetAdConnectorOfficeSitesSite.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -10,31 +10,20 @@ class GooglePrivacyDlpV2DataProfilePubSubCondition {
 
   /// Creates a new [GooglePrivacyDlpV2DataProfilePubSubCondition].
   /// [expressions] An expression.
-  GooglePrivacyDlpV2DataProfilePubSubCondition({this.expressions});
+  GooglePrivacyDlpV2DataProfilePubSubCondition({
+    this.expressions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expressions':
-          ?pulumi.Input.mapOptionalInputValue<
-            GooglePrivacyDlpV2PubSubExpressions,
-            Map<String, dynamic>
-          >(expressions, (value) => value.toMap()),
+      'expressions': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2PubSubExpressions, Map<String, dynamic>>(expressions, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2DataProfilePubSubCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2DataProfilePubSubCondition.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DataProfilePubSubCondition(
-      expressions: (() {
-        final guardedValue = map['expressions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GooglePrivacyDlpV2PubSubExpressions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      expressions: (() { final guardedValue = map['expressions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GooglePrivacyDlpV2PubSubExpressions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

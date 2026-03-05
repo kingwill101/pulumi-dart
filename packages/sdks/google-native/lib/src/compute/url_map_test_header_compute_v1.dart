@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UrlMapTestHeaderComputeV1 {
   /// Header name.
   final pulumi.Input<String>? name;
-
   /// Header value.
   final pulumi.Input<String>? value;
 
   /// Creates a new [UrlMapTestHeaderComputeV1].
   /// [name] Header name.
   /// [value] Header value.
-  UrlMapTestHeaderComputeV1({this.name, this.value});
+  UrlMapTestHeaderComputeV1({
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'value': ?value};
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory UrlMapTestHeaderComputeV1.fromMap(Map<String, dynamic> map) {
     return UrlMapTestHeaderComputeV1(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

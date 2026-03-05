@@ -7,10 +7,8 @@ class EnvironmentVariableSetup {
   /// The type of custom setup.
   /// Expected value is 'EnvironmentVariableSetup'.
   final pulumi.Input<String> type;
-
   /// The name of the environment variable.
   final pulumi.Input<String> variableName;
-
   /// The value of the environment variable.
   final pulumi.Input<String> variableValue;
 
@@ -40,3 +38,4 @@ class EnvironmentVariableSetup {
     );
   }
 }
+

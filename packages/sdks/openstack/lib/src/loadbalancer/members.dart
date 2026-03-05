@@ -168,11 +168,9 @@ class Members extends pulumi.CustomResource {
   /// A set of dictionaries containing member parameters. The
   /// structure is described below.
   late final pulumi.Output<List<Map<String, dynamic>>?> members;
-
   /// The id of the pool that members will be assigned to.
   /// Changing this creates a new members resource.
   late final pulumi.Output<String> poolId;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create pool members. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
@@ -188,11 +186,11 @@ class Members extends pulumi.CustomResource {
     MembersArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:loadbalancer/members:Members',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:loadbalancer/members:Members',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     members = registerOutput<List<Map<String, dynamic>>?>('members');
     poolId = registerOutput<String>('poolId');
     region = registerOutput<String>('region');
@@ -216,11 +214,11 @@ class Members extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:loadbalancer/members:Members',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:loadbalancer/members:Members',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     members = registerOutput<List<Map<String, dynamic>>?>('members');
     poolId = registerOutput<String>('poolId');
     region = registerOutput<String>('region');

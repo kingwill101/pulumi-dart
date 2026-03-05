@@ -5,10 +5,7 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration_oidc_jwt_configu
 
 class TrustedTokenIssuerTrustedTokenIssuerConfiguration {
   /// A block that describes the settings for a trusted token issuer that works with OpenID Connect (OIDC) by using JSON Web Tokens (JWT). See Documented below below.
-  final pulumi.Input<
-    TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration
-  >
-  oidcJwtConfiguration;
+  final pulumi.Input<TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration> oidcJwtConfiguration;
 
   /// Creates a new [TrustedTokenIssuerTrustedTokenIssuerConfiguration].
   /// [oidcJwtConfiguration] A block that describes the settings for a trusted token issuer that works with OpenID Connect (OIDC) by using JSON Web Tokens (JWT). See Documented below below.
@@ -18,23 +15,14 @@ class TrustedTokenIssuerTrustedTokenIssuerConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oidcJwtConfiguration':
-          pulumi.Input.mapInputValue<
-            TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration,
-            Map<String, dynamic>
-          >(oidcJwtConfiguration, (value) => value.toMap()),
+      'oidcJwtConfiguration': pulumi.Input.mapInputValue<TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration, Map<String, dynamic>>(oidcJwtConfiguration, (value) => value.toMap()),
     };
   }
 
-  factory TrustedTokenIssuerTrustedTokenIssuerConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TrustedTokenIssuerTrustedTokenIssuerConfiguration.fromMap(Map<String, dynamic> map) {
     return TrustedTokenIssuerTrustedTokenIssuerConfiguration(
-      oidcJwtConfiguration: pulumi.Input.fromValue(
-        TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration.fromMap(
-          (map['oidcJwtConfiguration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      oidcJwtConfiguration: pulumi.Input.fromValue(TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration.fromMap((map['oidcJwtConfiguration']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

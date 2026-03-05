@@ -116,31 +116,22 @@ import 'endpoint_state.dart';
 class Endpoint extends pulumi.CustomResource {
   /// Type of access for the network connectivity. Valid values are `Private` or `CustomerOwnedIp`.
   late final pulumi.Output<String> accessType;
-
   /// Amazon Resource Name (ARN) of the endpoint.
   late final pulumi.Output<String> arn;
-
   /// VPC CIDR block of the endpoint.
   late final pulumi.Output<String> cidrBlock;
-
   /// UTC creation time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   late final pulumi.Output<String> creationTime;
-
   /// The ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).
   late final pulumi.Output<String?> customerOwnedIpv4Pool;
-
   /// Set of nested attributes for associated Elastic Network Interfaces (ENIs).
   late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
-
   /// Identifier of the Outpost to contain this endpoint.
   late final pulumi.Output<String> outpostId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Identifier of the EC2 Security Group.
   late final pulumi.Output<String> securityGroupId;
-
   /// Identifier of the EC2 Subnet.
   late final pulumi.Output<String> subnetId;
 
@@ -153,19 +144,17 @@ class Endpoint extends pulumi.CustomResource {
     EndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3outposts/endpoint:Endpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3outposts/endpoint:Endpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessType = registerOutput<String>('accessType');
     arn = registerOutput<String>('arn');
     cidrBlock = registerOutput<String>('cidrBlock');
     creationTime = registerOutput<String>('creationTime');
     customerOwnedIpv4Pool = registerOutput<String?>('customerOwnedIpv4Pool');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
-      'networkInterfaces',
-    );
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
     outpostId = registerOutput<String>('outpostId');
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
@@ -190,19 +179,17 @@ class Endpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3outposts/endpoint:Endpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3outposts/endpoint:Endpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessType = registerOutput<String>('accessType');
     arn = registerOutput<String>('arn');
     cidrBlock = registerOutput<String>('cidrBlock');
     creationTime = registerOutput<String>('creationTime');
     customerOwnedIpv4Pool = registerOutput<String?>('customerOwnedIpv4Pool');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
-      'networkInterfaces',
-    );
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
     outpostId = registerOutput<String>('outpostId');
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');

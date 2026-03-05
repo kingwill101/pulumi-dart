@@ -218,25 +218,19 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
   ///
   /// **Write-Only API Key (choose one approach):**
   late final pulumi.Output<String?> apiKey;
-
   /// ARN of the AWS Secrets Manager secret containing the API key.
   late final pulumi.Output<List<Map<String, dynamic>>> apiKeySecretArns;
-
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Write-only API key value. Cannot be used with `api_key`. Must be used together with `api_key_wo_version`.
   late final pulumi.Output<String?> apiKeyWo;
-
   /// Used together with `api_key_wo` to trigger an update. Increment this value when an update to `api_key_wo` is required.
   late final pulumi.Output<int?> apiKeyWoVersion;
-
   /// ARN of the API Key credential provider.
   late final pulumi.Output<String> credentialProviderArn;
-
   /// Name of the API Key credential provider. Forces replacement when changed.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ///
   /// **Standard API Key (choose one approach):**
@@ -251,15 +245,13 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
     AgentcoreApiKeyCredentialProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentcoreApiKeyCredentialProvider:AgentcoreApiKeyCredentialProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:bedrock/agentcoreApiKeyCredentialProvider:AgentcoreApiKeyCredentialProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiKey = registerOutput<String?>('apiKey');
-    apiKeySecretArns = registerOutput<List<Map<String, dynamic>>>(
-      'apiKeySecretArns',
-    );
+    apiKeySecretArns = registerOutput<List<Map<String, dynamic>>>('apiKeySecretArns');
     apiKeyWo = registerOutput<String?>('apiKeyWo');
     apiKeyWoVersion = registerOutput<int?>('apiKeyWoVersion');
     credentialProviderArn = registerOutput<String>('credentialProviderArn');
@@ -285,15 +277,13 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentcoreApiKeyCredentialProvider:AgentcoreApiKeyCredentialProvider',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:bedrock/agentcoreApiKeyCredentialProvider:AgentcoreApiKeyCredentialProvider',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiKey = registerOutput<String?>('apiKey');
-    apiKeySecretArns = registerOutput<List<Map<String, dynamic>>>(
-      'apiKeySecretArns',
-    );
+    apiKeySecretArns = registerOutput<List<Map<String, dynamic>>>('apiKeySecretArns');
     apiKeyWo = registerOutput<String?>('apiKeyWo');
     apiKeyWoVersion = registerOutput<int?>('apiKeyWoVersion');
     credentialProviderArn = registerOutput<String>('credentialProviderArn');

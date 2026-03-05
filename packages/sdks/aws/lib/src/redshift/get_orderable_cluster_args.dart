@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOrderableClusterArgs {
   /// Reshift Cluster typeE.g., `multi-node` or `single-node`
   final pulumi.Input<String>? clusterType;
-
   /// Redshift Cluster versionE.g., `1.0`
   final pulumi.Input<String>? clusterVersion;
-
   /// Redshift Cluster node typeE.g., `dc2.8xlarge`
   final pulumi.Input<String>? nodeType;
-
   /// Ordered list of preferred Redshift Cluster node types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
   final pulumi.Input<List<String>>? preferredNodeTypes;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -48,31 +44,12 @@ class GetOrderableClusterArgs {
 
   factory GetOrderableClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetOrderableClusterArgs(
-      clusterType: (() {
-        final guardedValue = map['clusterType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clusterVersion: (() {
-        final guardedValue = map['clusterVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeType: (() {
-        final guardedValue = map['nodeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      preferredNodeTypes: (() {
-        final guardedValue = map['preferredNodeTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clusterType: (() { final guardedValue = map['clusterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterVersion: (() { final guardedValue = map['clusterVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeType: (() { final guardedValue = map['nodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      preferredNodeTypes: (() { final guardedValue = map['preferredNodeTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

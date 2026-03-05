@@ -9,21 +9,20 @@ class RaiToolLabelPropertiesAccountScope {
 
   /// Creates a new [RaiToolLabelPropertiesAccountScope].
   /// [labelValues] Dictionary of label key-value pairs for the account scope.
-  RaiToolLabelPropertiesAccountScope({this.labelValues});
+  RaiToolLabelPropertiesAccountScope({
+    this.labelValues,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labelValues': ?labelValues};
+    return <String, dynamic>{
+      'labelValues': ?labelValues,
+    };
   }
 
   factory RaiToolLabelPropertiesAccountScope.fromMap(Map<String, dynamic> map) {
     return RaiToolLabelPropertiesAccountScope(
-      labelValues: (() {
-        final guardedValue = map['labelValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      labelValues: (() { final guardedValue = map['labelValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

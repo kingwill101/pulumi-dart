@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlternativeContactArgs {
   /// ID of the target account when managing member accounts. Will manage current user's account by default if omitted.
   final pulumi.Input<String>? accountId;
-
   /// Type of the alternate contact. Allowed values are: `BILLING`, `OPERATIONS`, `SECURITY`.
   final pulumi.Input<String> alternateContactType;
-
   /// An email address for the alternate contact.
   final pulumi.Input<String> emailAddress;
-
   /// Name of the alternate contact.
   final pulumi.Input<String>? name;
-
   /// Phone number for the alternate contact.
   final pulumi.Input<String> phoneNumber;
-
   /// Title for the alternate contact.
   final pulumi.Input<String> title;
 
@@ -54,22 +49,13 @@ class AlternativeContactArgs {
 
   factory AlternativeContactArgs.fromMap(Map<String, dynamic> map) {
     return AlternativeContactArgs(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      alternateContactType: pulumi.Input.fromValue(
-        map['alternateContactType'] as String,
-      ),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      alternateContactType: pulumi.Input.fromValue(map['alternateContactType'] as String),
       emailAddress: pulumi.Input.fromValue(map['emailAddress'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       phoneNumber: pulumi.Input.fromValue(map['phoneNumber'] as String),
       title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
+

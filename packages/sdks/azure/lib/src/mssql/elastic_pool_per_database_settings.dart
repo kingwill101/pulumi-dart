@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticPoolPerDatabaseSettings {
   /// The maximum capacity any one database can consume.
   final pulumi.Input<double> maxCapacity;
-
   /// The minimum capacity all databases are guaranteed.
   final pulumi.Input<double> minCapacity;
 
@@ -31,3 +30,4 @@ class ElasticPoolPerDatabaseSettings {
     );
   }
 }
+

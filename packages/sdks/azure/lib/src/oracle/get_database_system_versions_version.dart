@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseSystemVersionsVersion {
   /// Indicates if this version of the Oracle Database software is the latest version for a release.
   final pulumi.Input<bool> latestVersion;
-
   /// The name of the Oracle Database version.
   final pulumi.Input<String> name;
-
   /// Indicates if this version of the Oracle Database software supports pluggable databases.
   final pulumi.Input<bool> pluggableDatabaseSupported;
-
   /// The value of the Oracle Database version.
   final pulumi.Input<String> version;
 
@@ -40,10 +37,9 @@ class GetDatabaseSystemVersionsVersion {
     return GetDatabaseSystemVersionsVersion(
       latestVersion: pulumi.Input.fromValue(map['latestVersion'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
-      pluggableDatabaseSupported: pulumi.Input.fromValue(
-        map['pluggableDatabaseSupported'] as bool,
-      ),
+      pluggableDatabaseSupported: pulumi.Input.fromValue(map['pluggableDatabaseSupported'] as bool),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters {
   /// The column delimiter. For example, in a CSV format, a comma (`,`) is the typical column delimiter.
   final pulumi.Input<String> recordColumnDelimiter;
-
   /// The row delimiter. For example, in a CSV format, `\n` is the typical row delimiter.
   final pulumi.Input<String> recordRowDelimiter;
 
@@ -24,16 +23,11 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
     };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters(
-      recordColumnDelimiter: pulumi.Input.fromValue(
-        map['recordColumnDelimiter'] as String,
-      ),
-      recordRowDelimiter: pulumi.Input.fromValue(
-        map['recordRowDelimiter'] as String,
-      ),
+      recordColumnDelimiter: pulumi.Input.fromValue(map['recordColumnDelimiter'] as String),
+      recordRowDelimiter: pulumi.Input.fromValue(map['recordRowDelimiter'] as String),
     );
   }
 }
+

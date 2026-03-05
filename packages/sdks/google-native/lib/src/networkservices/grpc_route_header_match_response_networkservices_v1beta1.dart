@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GrpcRouteHeaderMatchResponseNetworkservicesV1beta1 {
   /// The key of the header.
   final pulumi.Input<String> key;
-
   /// Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT is used.
   final pulumi.Input<String> type;
-
   /// The value of the header.
   final pulumi.Input<String> value;
 
@@ -24,12 +22,14 @@ class GrpcRouteHeaderMatchResponseNetworkservicesV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'type': type, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'type': type,
+      'value': value,
+    };
   }
 
-  factory GrpcRouteHeaderMatchResponseNetworkservicesV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GrpcRouteHeaderMatchResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return GrpcRouteHeaderMatchResponseNetworkservicesV1beta1(
       key: pulumi.Input.fromValue(map['key'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
@@ -37,3 +37,4 @@ class GrpcRouteHeaderMatchResponseNetworkservicesV1beta1 {
     );
   }
 }
+

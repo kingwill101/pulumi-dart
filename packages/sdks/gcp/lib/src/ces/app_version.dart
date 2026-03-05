@@ -206,44 +206,34 @@ import 'app_version_state.dart';
 class AppVersion extends pulumi.CustomResource {
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> app;
-
   /// The ID to use for the app version, which will become the final component
   /// of the app version's resource name. If not provided, a unique ID will be
   /// automatically assigned for the app version.
   late final pulumi.Output<String> appVersionId;
-
   /// (Output)
   /// Timestamp when the toolset was created.
   late final pulumi.Output<String> createTime;
-
   /// Email of the user who created the app version.
   late final pulumi.Output<String> creator;
-
   /// The description of the app version.
   late final pulumi.Output<String?> description;
-
   /// The display name of the app version.
   late final pulumi.Output<String?> displayName;
-
   /// (Output)
   /// ETag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
   late final pulumi.Output<String> etag;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
-
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// A snapshot of the app.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> snapshots;
@@ -257,11 +247,11 @@ class AppVersion extends pulumi.CustomResource {
     AppVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:ces/appVersion:AppVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:ces/appVersion:AppVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     app = registerOutput<String>('app');
     appVersionId = registerOutput<String>('appVersionId');
     createTime = registerOutput<String>('createTime');
@@ -293,11 +283,11 @@ class AppVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:ces/appVersion:AppVersion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:ces/appVersion:AppVersion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     app = registerOutput<String>('app');
     appVersionId = registerOutput<String>('appVersionId');
     createTime = registerOutput<String>('createTime');

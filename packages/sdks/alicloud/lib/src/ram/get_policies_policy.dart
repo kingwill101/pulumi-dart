@@ -5,43 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPoliciesPolicy {
   /// The number of references to the policy.
   final pulumi.Input<int> attachmentCount;
-
   /// The time when the policy was created.
   final pulumi.Input<String> createDate;
-
   /// The default version of the policy.
   final pulumi.Input<String> defaultVersion;
-
   /// The description of the policy.
   final pulumi.Input<String> description;
-
   /// The document of the policy. **Note:** `document` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> document;
-
   /// (Available since v1.114.0) The ID of the Policy.
   final pulumi.Input<String> id;
-
   /// The name of the policy.
   final pulumi.Input<String> name;
-
   /// (Available since v1.114.0) The document of the policy. **Note:** `policy_document` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> policyDocument;
-
   /// (Available since v1.114.0) The name of the policy.
   final pulumi.Input<String> policyName;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// The type of the policy. Valid values: `System` and `Custom`.
   final pulumi.Input<String> type;
-
   /// The time when the policy was modified.
   final pulumi.Input<String> updateDate;
-
   /// The name of the RAM user.
   final pulumi.Input<String> userName;
-
   /// (Available since v1.114.0) The ID of the default policy version. **Note:** `version_id` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> versionId;
 
@@ -115,3 +102,4 @@ class GetPoliciesPolicy {
     );
   }
 }
+

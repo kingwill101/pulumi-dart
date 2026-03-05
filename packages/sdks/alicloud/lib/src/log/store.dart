@@ -709,55 +709,38 @@ import 'store_state.dart';
 class Store extends pulumi.CustomResource {
   /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
   late final pulumi.Output<bool?> appendMeta;
-
   /// Determines whether to automatically split a shard. Default to `false`.
   late final pulumi.Output<bool?> autoSplit;
-
   /// Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
   late final pulumi.Output<int> createTime;
-
   /// Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
   late final pulumi.Output<bool?> enableWebTracking;
-
   /// Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
   late final pulumi.Output<StoreEncryptConf> encryptConf;
-
   /// The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
   late final pulumi.Output<int?> hotTtl;
-
   /// Low frequency storage time
   late final pulumi.Output<int?> infrequentAccessTtl;
-
   /// The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
   late final pulumi.Output<String> logstoreName;
-
   /// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
   late final pulumi.Output<int?> maxSplitShardCount;
-
   /// Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
   late final pulumi.Output<String> meteringMode;
-
   /// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
   late final pulumi.Output<String> mode;
-
   /// . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
   late final pulumi.Output<String> name;
-
   /// . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
   late final pulumi.Output<String> project;
-
   /// The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
   late final pulumi.Output<String> projectName;
-
   /// The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
   late final pulumi.Output<int?> retentionPeriod;
-
   /// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
   late final pulumi.Output<int?> shardCount;
-
   /// The shard attribute.
   late final pulumi.Output<List<Map<String, dynamic>>> shards;
-
   /// Determines whether store type is metric. `Metrics` means metric store, empty means log store.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -767,27 +750,21 @@ class Store extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Store]. {@macro pulumi_log_store_store_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Store(String name, {StoreArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:log/store:Store',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Store(
+    String name, {
+    StoreArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:log/store:Store',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appendMeta = registerOutput<bool?>('appendMeta');
     autoSplit = registerOutput<bool?>('autoSplit');
     createTime = registerOutput<int>('createTime');
     enableWebTracking = registerOutput<bool?>('enableWebTracking');
-    encryptConf = registerOutput<StoreEncryptConf>(
-      'encryptConf',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StoreEncryptConf.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptConf = registerOutput<StoreEncryptConf>('encryptConf', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StoreEncryptConf.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hotTtl = registerOutput<int?>('hotTtl');
     infrequentAccessTtl = registerOutput<int?>('infrequentAccessTtl');
     logstoreName = registerOutput<String>('logstoreName');
@@ -804,7 +781,11 @@ class Store extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Store] resource's state with the given [name] and [id].
-  static Store get(String name, pulumi.Input<String> id, {StoreState? state}) {
+  static Store get(
+    String name,
+    pulumi.Input<String> id, {
+    StoreState? state,
+  }) {
     return Store._get(
       name,
       state: state?.toMap(),
@@ -817,25 +798,16 @@ class Store extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:log/store:Store',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:log/store:Store',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appendMeta = registerOutput<bool?>('appendMeta');
     autoSplit = registerOutput<bool?>('autoSplit');
     createTime = registerOutput<int>('createTime');
     enableWebTracking = registerOutput<bool?>('enableWebTracking');
-    encryptConf = registerOutput<StoreEncryptConf>(
-      'encryptConf',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StoreEncryptConf.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptConf = registerOutput<StoreEncryptConf>('encryptConf', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StoreEncryptConf.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hotTtl = registerOutput<int?>('hotTtl');
     infrequentAccessTtl = registerOutput<int?>('infrequentAccessTtl');
     logstoreName = registerOutput<String>('logstoreName');

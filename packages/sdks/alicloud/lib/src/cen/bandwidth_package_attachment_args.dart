@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BandwidthPackageAttachmentArgs {
   /// The ID of the bandwidth package.
   final pulumi.Input<String> bandwidthPackageId;
-
   /// The ID of the CEN.
   final pulumi.Input<String> instanceId;
 
@@ -30,10 +29,9 @@ class BandwidthPackageAttachmentArgs {
 
   factory BandwidthPackageAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return BandwidthPackageAttachmentArgs(
-      bandwidthPackageId: pulumi.Input.fromValue(
-        map['bandwidthPackageId'] as String,
-      ),
+      bandwidthPackageId: pulumi.Input.fromValue(map['bandwidthPackageId'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
+

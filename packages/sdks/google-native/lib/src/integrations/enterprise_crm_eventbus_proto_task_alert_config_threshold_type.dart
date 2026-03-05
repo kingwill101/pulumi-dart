@@ -7,17 +7,13 @@ enum EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType {
   const EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType(this.wireValue);
   final String wireValue;
 
-  static EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType fromValue(
-    String value,
-  ) {
-    for (final item
-        in EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType.values) {
+  static EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType fromValue(String value) {
+    for (final item in EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType value: $value',
-    );
+    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType value: $value');
   }
 }
+

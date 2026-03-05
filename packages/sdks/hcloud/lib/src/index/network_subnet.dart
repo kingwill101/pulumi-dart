@@ -154,19 +154,14 @@ import 'network_subnet_state.dart';
 /// ```
 class NetworkSubnet extends pulumi.CustomResource {
   late final pulumi.Output<String> gateway;
-
   /// Range to allocate IPs from. Must be a subnet of the ip_range of the Network and must not overlap with any other subnets or with any destinations in routes.
   late final pulumi.Output<String> ipRange;
-
   /// ID of the Network the subnet should be added to.
   late final pulumi.Output<int> networkId;
-
   /// Name of network zone.
   late final pulumi.Output<String> networkZone;
-
   /// Type of subnet. `server`, `cloud` or `vswitch`
   late final pulumi.Output<String> type;
-
   /// ID of the vswitch, Required if type is `vswitch`
   late final pulumi.Output<int?> vswitchId;
 
@@ -179,11 +174,11 @@ class NetworkSubnet extends pulumi.CustomResource {
     NetworkSubnetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/networkSubnet:NetworkSubnet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/networkSubnet:NetworkSubnet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     gateway = registerOutput<String>('gateway');
     ipRange = registerOutput<String>('ipRange');
     networkId = registerOutput<int>('networkId');
@@ -210,11 +205,11 @@ class NetworkSubnet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/networkSubnet:NetworkSubnet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/networkSubnet:NetworkSubnet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     gateway = registerOutput<String>('gateway');
     ipRange = registerOutput<String>('ipRange');
     networkId = registerOutput<int>('networkId');

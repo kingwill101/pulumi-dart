@@ -7,16 +7,12 @@ import 'datastore_nfs_datastore.dart';
 class DatastoreState {
   /// Clusters to which the datastore is attached.
   final pulumi.Input<List<String>>? clusters;
-
   /// Creation time of this resource.
   final pulumi.Input<String>? createTime;
-
   /// User-provided description for this datastore
   final pulumi.Input<String>? description;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
-
   /// The user-provided identifier of the datastore to be created.
   /// This identifier must be unique among each `Datastore` within the parent
   /// and becomes the final token in the name URI.
@@ -28,15 +24,12 @@ class DatastoreState {
   /// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
   /// (section 3.5)
   final pulumi.Input<String>? name;
-
   /// The NFS datastore configuration.
   /// Structure is documented below.
   final pulumi.Input<DatastoreNfsDatastore>? nfsDatastore;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The state of the Datastore.
   /// Possible values:
   /// CREATING
@@ -46,10 +39,8 @@ class DatastoreState {
   /// SOFT_DELETING
   /// SOFT_DELETED
   final pulumi.Input<String>? state;
-
   /// System-generated unique identifier for the resource.
   final pulumi.Input<String>? uid;
-
   /// Last update time of this resource.
   final pulumi.Input<String>? updateTime;
 
@@ -84,11 +75,7 @@ class DatastoreState {
       'description': ?description,
       'location': ?location,
       'name': ?name,
-      'nfsDatastore':
-          ?pulumi.Input.mapOptionalInputValue<
-            DatastoreNfsDatastore,
-            Map<String, dynamic>
-          >(nfsDatastore, (value) => value.toMap()),
+      'nfsDatastore': ?pulumi.Input.mapOptionalInputValue<DatastoreNfsDatastore, Map<String, dynamic>>(nfsDatastore, (value) => value.toMap()),
       'project': ?project,
       'state': ?state,
       'uid': ?uid,
@@ -98,60 +85,17 @@ class DatastoreState {
 
   factory DatastoreState.fromMap(Map<String, dynamic> map) {
     return DatastoreState(
-      clusters: (() {
-        final guardedValue = map['clusters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nfsDatastore: (() {
-        final guardedValue = map['nfsDatastore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DatastoreNfsDatastore.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uid: (() {
-        final guardedValue = map['uid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clusters: (() { final guardedValue = map['clusters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nfsDatastore: (() { final guardedValue = map['nfsDatastore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatastoreNfsDatastore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

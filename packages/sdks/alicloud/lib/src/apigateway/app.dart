@@ -113,10 +113,8 @@ import 'app_state.dart';
 class App extends pulumi.CustomResource {
   /// The description of the app. Defaults to null.
   late final pulumi.Output<String?> description;
-
   /// The name of the app.
   late final pulumi.Output<String> name;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -124,20 +122,27 @@ class App extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [App]. {@macro pulumi_apigateway_app_app_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  App(String name, {AppArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:apigateway/app:App',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  App(
+    String name, {
+    AppArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:apigateway/app:App',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [App] resource's state with the given [name] and [id].
-  static App get(String name, pulumi.Input<String> id, {AppState? state}) {
+  static App get(
+    String name,
+    pulumi.Input<String> id, {
+    AppState? state,
+  }) {
     return App._get(
       name,
       state: state?.toMap(),
@@ -150,11 +155,11 @@ class App extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apigateway/app:App',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apigateway/app:App',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');

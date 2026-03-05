@@ -7,17 +7,20 @@ class GetClusterAddonsConfigHorizontalPodAutoscaling {
 
   /// Creates a new [GetClusterAddonsConfigHorizontalPodAutoscaling].
   /// [disabled] Required.
-  GetClusterAddonsConfigHorizontalPodAutoscaling({required this.disabled});
+  GetClusterAddonsConfigHorizontalPodAutoscaling({
+    required this.disabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disabled': disabled};
+    return <String, dynamic>{
+      'disabled': disabled,
+    };
   }
 
-  factory GetClusterAddonsConfigHorizontalPodAutoscaling.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterAddonsConfigHorizontalPodAutoscaling.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigHorizontalPodAutoscaling(
       disabled: pulumi.Input.fromValue(map['disabled'] as bool),
     );
   }
 }
+

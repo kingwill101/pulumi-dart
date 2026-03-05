@@ -10,23 +10,16 @@ import 'regex_pattern_set_regular_expression.dart';
 class RegexPatternSetArgs {
   /// A friendly description of the regular expression pattern set.
   final pulumi.Input<String>? description;
-
   /// A friendly name of the regular expression pattern set. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final pulumi.Input<String>? name;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// One or more blocks of regular expression patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`. See Regular Expression below for details.
-  final pulumi.Input<List<RegexPatternSetRegularExpression>>?
-  regularExpressions;
-
+  final pulumi.Input<List<RegexPatternSetRegularExpression>>? regularExpressions;
   /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
   final pulumi.Input<String> scope;
-
   /// An array of key:value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -54,18 +47,7 @@ class RegexPatternSetArgs {
       'name': ?name,
       'namePrefix': ?namePrefix,
       'region': ?region,
-      'regularExpressions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<RegexPatternSetRegularExpression>,
-            List<Map<String, dynamic>>
-          >(
-            regularExpressions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RegexPatternSetRegularExpression,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'regularExpressions': ?pulumi.Input.mapOptionalInputValue<List<RegexPatternSetRegularExpression>, List<Map<String, dynamic>>>(regularExpressions, (value) => pulumi.Input.encodeList<RegexPatternSetRegularExpression, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scope': scope,
       'tags': ?tags,
     };
@@ -73,46 +55,14 @@ class RegexPatternSetArgs {
 
   factory RegexPatternSetArgs.fromMap(Map<String, dynamic> map) {
     return RegexPatternSetArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namePrefix: (() {
-        final guardedValue = map['namePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regularExpressions: (() {
-        final guardedValue = map['regularExpressions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<RegexPatternSetRegularExpression>(
-            guardedValue,
-            (value) => RegexPatternSetRegularExpression.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regularExpressions: (() { final guardedValue = map['regularExpressions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegexPatternSetRegularExpression>(guardedValue, (value) => RegexPatternSetRegularExpression.fromMap((value as Map).cast<String, dynamic>()))); })(),
       scope: pulumi.Input.fromValue(map['scope'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

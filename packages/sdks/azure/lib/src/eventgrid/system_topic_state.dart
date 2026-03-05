@@ -7,27 +7,20 @@ import 'system_topic_identity.dart';
 class SystemTopicState {
   /// An `identity` block as defined below.
   final pulumi.Input<SystemTopicIdentity>? identity;
-
   /// The Azure Region where the Event Grid System Topic should exist. Changing this forces a new Event Grid System Topic to be created.
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? metricArmResourceId;
-
   /// The Metric Resource ID of the Event Grid System Topic.
   final pulumi.Input<String>? metricResourceId;
-
   /// The name which should be used for this Event Grid System Topic. Changing this forces a new Event Grid System Topic to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the Resource Group where the Event Grid System Topic should exist. Changing this forces a new Event Grid System Topic to be created.
   final pulumi.Input<String>? resourceGroupName;
   final pulumi.Input<String>? sourceArmResourceId;
-
   /// The ID of the Event Grid System Topic ARM Source. Changing this forces a new Event Grid System Topic to be created.
   final pulumi.Input<String>? sourceResourceId;
-
   /// A mapping of tags which should be assigned to the Event Grid System Topic.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The Topic Type of the Event Grid System Topic. The topic type is validated by Azure and there may be additional topic types beyond the following: `Microsoft.AppConfiguration.ConfigurationStores`, `Microsoft.Communication.CommunicationServices`, `Microsoft.ContainerRegistry.Registries`, `Microsoft.Devices.IoTHubs`, `Microsoft.EventGrid.Domains`, `Microsoft.EventGrid.Topics`, `Microsoft.Eventhub.Namespaces`, `Microsoft.KeyVault.vaults`, `Microsoft.MachineLearningServices.Workspaces`, `Microsoft.Maps.Accounts`, `Microsoft.Media.MediaServices`, `Microsoft.Resources.ResourceGroups`, `Microsoft.Resources.Subscriptions`, `Microsoft.ServiceBus.Namespaces`, `Microsoft.SignalRService.SignalR`, `Microsoft.Storage.StorageAccounts`, `Microsoft.Web.ServerFarms` and `Microsoft.Web.Sites`. Changing this forces a new Event Grid System Topic to be created.
   ///
   /// &gt; **Note:** Some `topic_type`s (e.g. **Microsoft.Resources.Subscriptions**) requires location to be set to `Global` instead of a real location like `West US`.
@@ -61,11 +54,7 @@ class SystemTopicState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            SystemTopicIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<SystemTopicIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
       'metricArmResourceId': ?metricArmResourceId,
       'metricResourceId': ?metricResourceId,
@@ -80,62 +69,17 @@ class SystemTopicState {
 
   factory SystemTopicState.fromMap(Map<String, dynamic> map) {
     return SystemTopicState(
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SystemTopicIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metricArmResourceId: (() {
-        final guardedValue = map['metricArmResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metricResourceId: (() {
-        final guardedValue = map['metricResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceArmResourceId: (() {
-        final guardedValue = map['sourceArmResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceResourceId: (() {
-        final guardedValue = map['sourceResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      topicType: (() {
-        final guardedValue = map['topicType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SystemTopicIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metricArmResourceId: (() { final guardedValue = map['metricArmResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metricResourceId: (() { final guardedValue = map['metricResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceArmResourceId: (() { final guardedValue = map['sourceArmResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceResourceId: (() { final guardedValue = map['sourceResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      topicType: (() { final guardedValue = map['topicType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

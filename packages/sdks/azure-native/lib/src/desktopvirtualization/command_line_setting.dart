@@ -16,3 +16,4 @@ enum CommandLineSetting {
     throw ArgumentError('Unknown CommandLineSetting value: $value');
   }
 }
+

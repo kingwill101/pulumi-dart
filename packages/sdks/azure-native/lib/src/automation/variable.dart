@@ -158,25 +158,18 @@ import 'variable_args.dart';
 class Variable extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the creation time.
   late final pulumi.Output<String?> creationTime;
-
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
-
   /// Gets or sets the encrypted flag of the variable.
   late final pulumi.Output<bool?> isEncrypted;
-
   /// Gets or sets the last modified time.
   late final pulumi.Output<String?> lastModifiedTime;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// Gets or sets the value of the variable.
   late final pulumi.Output<String?> value;
 
@@ -189,11 +182,11 @@ class Variable extends pulumi.CustomResource {
     VariableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:automation:Variable',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:automation:Variable',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String?>('creationTime');
     description = registerOutput<String?>('description');

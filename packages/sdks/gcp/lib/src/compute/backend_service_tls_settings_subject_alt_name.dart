@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendServiceTlsSettingsSubjectAltName {
   /// The SAN specified as a DNS Name.
   final pulumi.Input<String>? dnsName;
-
   /// The SAN specified as a URI.
   final pulumi.Input<String>? uniformResourceIdentifier;
 
@@ -24,20 +23,11 @@ class BackendServiceTlsSettingsSubjectAltName {
     };
   }
 
-  factory BackendServiceTlsSettingsSubjectAltName.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackendServiceTlsSettingsSubjectAltName.fromMap(Map<String, dynamic> map) {
     return BackendServiceTlsSettingsSubjectAltName(
-      dnsName: (() {
-        final guardedValue = map['dnsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uniformResourceIdentifier: (() {
-        final guardedValue = map['uniformResourceIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uniformResourceIdentifier: (() { final guardedValue = map['uniformResourceIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

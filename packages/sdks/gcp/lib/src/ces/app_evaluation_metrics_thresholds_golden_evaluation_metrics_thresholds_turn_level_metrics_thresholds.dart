@@ -6,7 +6,6 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMe
   /// The success threshold for overall tool invocation correctness. Must be
   /// a float between 0 and 1. Default is 1.0.
   final pulumi.Input<double>? overallToolInvocationCorrectnessThreshold;
-
   /// The success threshold for semantic similarity. Must be an integer
   /// between 0 and 4. Default is &gt;= 3.
   final pulumi.Input<int>? semanticSimilaritySuccessThreshold;
@@ -21,26 +20,16 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMe
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'overallToolInvocationCorrectnessThreshold':
-          ?overallToolInvocationCorrectnessThreshold,
+      'overallToolInvocationCorrectnessThreshold': ?overallToolInvocationCorrectnessThreshold,
       'semanticSimilaritySuccessThreshold': ?semanticSimilaritySuccessThreshold,
     };
   }
 
-  factory AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds.fromMap(Map<String, dynamic> map) {
     return AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds(
-      overallToolInvocationCorrectnessThreshold: (() {
-        final guardedValue = map['overallToolInvocationCorrectnessThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      semanticSimilaritySuccessThreshold: (() {
-        final guardedValue = map['semanticSimilaritySuccessThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      overallToolInvocationCorrectnessThreshold: (() { final guardedValue = map['overallToolInvocationCorrectnessThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      semanticSimilaritySuccessThreshold: (() { final guardedValue = map['semanticSimilaritySuccessThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

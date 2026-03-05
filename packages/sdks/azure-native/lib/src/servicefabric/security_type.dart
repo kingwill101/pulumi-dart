@@ -15,3 +15,4 @@ enum SecurityType {
     throw ArgumentError('Unknown SecurityType value: $value');
   }
 }
+

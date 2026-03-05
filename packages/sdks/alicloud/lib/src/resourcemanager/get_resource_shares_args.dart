@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceSharesArgs {
   /// A list of Resource Share IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// A regex string to filter results by Resource Share name.
   final pulumi.Input<String>? nameRegex;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The name of resource share.
   final pulumi.Input<String>? resourceShareName;
-
   /// The owner of resource share, Valid values: `Self` and `OtherAccounts`.
   final pulumi.Input<String> resourceShareOwner;
-
   /// The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
   final pulumi.Input<String>? status;
 
@@ -54,34 +49,13 @@ class GetResourceSharesArgs {
 
   factory GetResourceSharesArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceSharesArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceShareName: (() {
-        final guardedValue = map['resourceShareName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceShareOwner: pulumi.Input.fromValue(
-        map['resourceShareOwner'] as String,
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceShareName: (() { final guardedValue = map['resourceShareName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceShareOwner: pulumi.Input.fromValue(map['resourceShareOwner'] as String),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

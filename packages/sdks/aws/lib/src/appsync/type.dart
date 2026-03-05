@@ -186,22 +186,16 @@ import 'type_state.dart';
 class Type extends pulumi.CustomResource {
   /// GraphQL API ID.
   late final pulumi.Output<String> apiId;
-
   /// The ARN of the type.
   late final pulumi.Output<String> arn;
-
   /// The type definition.
   late final pulumi.Output<String> definition;
-
   /// The type description.
   late final pulumi.Output<String> description;
-
   /// The type format: `SDL` or `JSON`.
   late final pulumi.Output<String> format;
-
   /// The type name.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -209,13 +203,16 @@ class Type extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Type]. {@macro pulumi_appsync_type_type_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Type(String name, {TypeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:appsync/type:Type',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Type(
+    String name, {
+    TypeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:appsync/type:Type',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');
     definition = registerOutput<String>('definition');
@@ -226,7 +223,11 @@ class Type extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Type] resource's state with the given [name] and [id].
-  static Type get(String name, pulumi.Input<String> id, {TypeState? state}) {
+  static Type get(
+    String name,
+    pulumi.Input<String> id, {
+    TypeState? state,
+  }) {
     return Type._get(
       name,
       state: state?.toMap(),
@@ -239,11 +240,11 @@ class Type extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appsync/type:Type',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appsync/type:Type',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');
     definition = registerOutput<String>('definition');

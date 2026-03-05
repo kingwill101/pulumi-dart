@@ -6,37 +6,26 @@ import 'git_hub_action_configuration_response.dart';
 class GetWebAppSourceControlSlotResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Name of branch to use for deployment.
   final String? branch;
-
   /// &lt;code&gt;true&lt;/code&gt; to enable deployment rollback; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final bool? deploymentRollbackEnabled;
-
   /// If GitHub Action is selected, than the associated configuration.
   final GitHubActionConfigurationResponse? gitHubActionConfiguration;
-
   /// Resource Id.
   final String id;
-
   /// &lt;code&gt;true&lt;/code&gt; if this is deployed via GitHub action.
   final bool? isGitHubAction;
-
   /// &lt;code&gt;true&lt;/code&gt; to limit to manual integration; &lt;code&gt;false&lt;/code&gt; to enable continuous integration (which configures webhooks into online repos like GitHub).
   final bool? isManualIntegration;
-
   /// &lt;code&gt;true&lt;/code&gt; for a Mercurial repository; &lt;code&gt;false&lt;/code&gt; for a Git repository.
   final bool? isMercurial;
-
   /// Kind of resource.
   final String? kind;
-
   /// Resource Name.
   final String name;
-
   /// Repository or source control URL.
   final String? repoUrl;
-
   /// Resource type.
   final String type;
 
@@ -88,51 +77,18 @@ class GetWebAppSourceControlSlotResult {
   factory GetWebAppSourceControlSlotResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppSourceControlSlotResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      branch: (() {
-        final guardedValue = map['branch'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      deploymentRollbackEnabled: (() {
-        final guardedValue = map['deploymentRollbackEnabled'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      gitHubActionConfiguration: (() {
-        final guardedValue = map['gitHubActionConfiguration'];
-        if (guardedValue == null) return null;
-        return GitHubActionConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      branch: (() { final guardedValue = map['branch']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deploymentRollbackEnabled: (() { final guardedValue = map['deploymentRollbackEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      gitHubActionConfiguration: (() { final guardedValue = map['gitHubActionConfiguration']; if (guardedValue == null) return null; return GitHubActionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      isGitHubAction: (() {
-        final guardedValue = map['isGitHubAction'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      isManualIntegration: (() {
-        final guardedValue = map['isManualIntegration'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      isMercurial: (() {
-        final guardedValue = map['isMercurial'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      isGitHubAction: (() { final guardedValue = map['isGitHubAction']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      isManualIntegration: (() { final guardedValue = map['isManualIntegration']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      isMercurial: (() { final guardedValue = map['isMercurial']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      repoUrl: (() {
-        final guardedValue = map['repoUrl'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      repoUrl: (() { final guardedValue = map['repoUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

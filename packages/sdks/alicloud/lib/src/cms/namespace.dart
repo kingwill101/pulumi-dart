@@ -119,10 +119,8 @@ import 'namespace_state.dart';
 class Namespace extends pulumi.CustomResource {
   /// The description of the namespace.
   late final pulumi.Output<String?> description;
-
   /// The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
   late final pulumi.Output<String> namespace;
-
   /// The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
   /// - `cms.s1.large`: Data storage duration is 15 days.
   /// - `cms.s1.xlarge`: Data storage duration is 32 days.
@@ -141,11 +139,11 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     namespace = registerOutput<String>('namespace');
     specification = registerOutput<String>('specification');
@@ -169,11 +167,11 @@ class Namespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     namespace = registerOutput<String>('namespace');
     specification = registerOutput<String>('specification');

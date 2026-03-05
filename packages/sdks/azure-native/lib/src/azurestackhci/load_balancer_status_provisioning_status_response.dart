@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the load balancer
   final pulumi.Input<String>? operationId;
-
   /// The status of the operation performed on the loadbalancer [Succeeded, Failed, InProgress]
   final pulumi.Input<String> status;
 
@@ -19,19 +18,17 @@ class LoadBalancerStatusProvisioningStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'operationId': ?operationId, 'status': status};
+    return <String, dynamic>{
+      'operationId': ?operationId,
+      'status': status,
+    };
   }
 
-  factory LoadBalancerStatusProvisioningStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoadBalancerStatusProvisioningStatusResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerStatusProvisioningStatusResponse(
-      operationId: (() {
-        final guardedValue = map['operationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      operationId: (() { final guardedValue = map['operationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

@@ -12,25 +12,18 @@ import 'web_application_firewall_custom_rule.dart';
 class WebApplicationFirewallPolicyArgs {
   /// The custom rules inside the policy.
   final pulumi.Input<List<WebApplicationFirewallCustomRule>>? customRules;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// Resource location.
   final pulumi.Input<String>? location;
-
   /// Describes the managedRules structure.
   final pulumi.Input<ManagedRulesDefinition> managedRules;
-
   /// The name of the policy.
   final pulumi.Input<String>? policyName;
-
   /// The PolicySettings for policy.
   final pulumi.Input<PolicySettings>? policySettings;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -56,31 +49,12 @@ class WebApplicationFirewallPolicyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<WebApplicationFirewallCustomRule>,
-            List<Map<String, dynamic>>
-          >(
-            customRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  WebApplicationFirewallCustomRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'customRules': ?pulumi.Input.mapOptionalInputValue<List<WebApplicationFirewallCustomRule>, List<Map<String, dynamic>>>(customRules, (value) => pulumi.Input.encodeList<WebApplicationFirewallCustomRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
       'location': ?location,
-      'managedRules':
-          pulumi.Input.mapInputValue<
-            ManagedRulesDefinition,
-            Map<String, dynamic>
-          >(managedRules, (value) => value.toMap()),
+      'managedRules': pulumi.Input.mapInputValue<ManagedRulesDefinition, Map<String, dynamic>>(managedRules, (value) => value.toMap()),
       'policyName': ?policyName,
-      'policySettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            PolicySettings,
-            Map<String, dynamic>
-          >(policySettings, (value) => value.toMap()),
+      'policySettings': ?pulumi.Input.mapOptionalInputValue<PolicySettings, Map<String, dynamic>>(policySettings, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -88,55 +62,15 @@ class WebApplicationFirewallPolicyArgs {
 
   factory WebApplicationFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return WebApplicationFirewallPolicyArgs(
-      customRules: (() {
-        final guardedValue = map['customRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<WebApplicationFirewallCustomRule>(
-            guardedValue,
-            (value) => WebApplicationFirewallCustomRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedRules: pulumi.Input.fromValue(
-        ManagedRulesDefinition.fromMap(
-          (map['managedRules']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      policyName: (() {
-        final guardedValue = map['policyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policySettings: (() {
-        final guardedValue = map['policySettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PolicySettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      customRules: (() { final guardedValue = map['customRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebApplicationFirewallCustomRule>(guardedValue, (value) => WebApplicationFirewallCustomRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedRules: pulumi.Input.fromValue(ManagedRulesDefinition.fromMap((map['managedRules']! as Map).cast<String, dynamic>())),
+      policyName: (() { final guardedValue = map['policyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policySettings: (() { final guardedValue = map['policySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicySettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

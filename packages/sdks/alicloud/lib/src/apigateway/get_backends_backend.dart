@@ -5,20 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackendsBackend {
   /// The id of the Backend.
   final pulumi.Input<String> backendId;
-
   /// The name of the Backend.
   final pulumi.Input<String> backendName;
-
   /// The type of the Backend.
   final pulumi.Input<String> backendType;
-
   /// The created time of the Backend.
   final pulumi.Input<String> createTime;
-
   /// The description of the Backend.
   final pulumi.Input<String> description;
   final pulumi.Input<String> id;
-
   /// The modified time of the Backend.
   final pulumi.Input<String> modifiedTime;
 
@@ -64,3 +59,4 @@ class GetBackendsBackend {
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GenericBlobSbsAuthModelResponse {
   /// Credentials for service bus namespace, keyvault uri for access key
   final pulumi.Input<Map<String, String>>? credentialsConfig;
-
   /// Credentials for storage account, keyvault uri for access key
   final pulumi.Input<Map<String, String>>? storageAccountCredentialsConfig;
-
   /// Type of paging
   /// Expected value is 'ServiceBus'.
   final pulumi.Input<String> type;
@@ -34,21 +32,10 @@ class GenericBlobSbsAuthModelResponse {
 
   factory GenericBlobSbsAuthModelResponse.fromMap(Map<String, dynamic> map) {
     return GenericBlobSbsAuthModelResponse(
-      credentialsConfig: (() {
-        final guardedValue = map['credentialsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      storageAccountCredentialsConfig: (() {
-        final guardedValue = map['storageAccountCredentialsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      credentialsConfig: (() { final guardedValue = map['credentialsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      storageAccountCredentialsConfig: (() { final guardedValue = map['storageAccountCredentialsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

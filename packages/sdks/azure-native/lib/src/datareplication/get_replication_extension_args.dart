@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationExtensionArgs {
   /// The replication extension name.
   final pulumi.Input<String> replicationExtensionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The vault name.
   final pulumi.Input<String> vaultName;
 
@@ -36,13 +34,10 @@ class GetReplicationExtensionArgs {
 
   factory GetReplicationExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationExtensionArgs(
-      replicationExtensionName: pulumi.Input.fromValue(
-        map['replicationExtensionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      replicationExtensionName: pulumi.Input.fromValue(map['replicationExtensionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
+

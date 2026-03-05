@@ -17,3 +17,4 @@ enum PatchModeTypes {
     throw ArgumentError('Unknown PatchModeTypes value: $value');
   }
 }
+

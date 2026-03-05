@@ -174,55 +174,37 @@ import 'workspace_args.dart';
 class Workspace extends pulumi.CustomResource {
   /// List of applicationGroup resource Ids.
   late final pulumi.Output<List<String>?> applicationGroupReferences;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Is cloud pc resource.
   late final pulumi.Output<bool> cloudPcResource;
-
   /// Description of Workspace.
   late final pulumi.Output<String?> description;
-
   /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> etag;
-
   /// Friendly name of Workspace.
   late final pulumi.Output<String?> friendlyName;
-  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponseIdentity?>
-  identity;
-
+  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponseIdentity?> identity;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
   late final pulumi.Output<String?> managedBy;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// ObjectId of Workspace. (internal use)
   late final pulumi.Output<String> objectId;
-  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponsePlan?>
-  plan;
-
+  late final pulumi.Output<ResourceModelWithAllowedPropertySetResponsePlan?> plan;
   /// List of private endpoint connection associated with the specified resource
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
   late final pulumi.Output<String?> publicNetworkAccess;
   late final pulumi.Output<ResourceModelWithAllowedPropertySetResponseSku?> sku;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -235,69 +217,28 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:desktopvirtualization:Workspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationGroupReferences = registerOutput<List<String>?>(
-      'applicationGroupReferences',
-    );
+          'azure-native:desktopvirtualization:Workspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationGroupReferences = registerOutput<List<String>?>('applicationGroupReferences');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cloudPcResource = registerOutput<bool>('cloudPcResource');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     friendlyName = registerOutput<String?>('friendlyName');
-    identity =
-        registerOutput<ResourceModelWithAllowedPropertySetResponseIdentity?>(
-          'identity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ResourceModelWithAllowedPropertySetResponseIdentity.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    identity = registerOutput<ResourceModelWithAllowedPropertySetResponseIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     managedBy = registerOutput<String?>('managedBy');
     this.name = registerOutput<String>('name');
     objectId = registerOutput<String>('objectId');
-    plan = registerOutput<ResourceModelWithAllowedPropertySetResponsePlan?>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceModelWithAllowedPropertySetResponsePlan.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    plan = registerOutput<ResourceModelWithAllowedPropertySetResponsePlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponsePlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceModelWithAllowedPropertySetResponseSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

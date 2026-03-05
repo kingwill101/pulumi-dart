@@ -16,3 +16,4 @@ enum DataflowEndpointKafkaAcks {
     throw ArgumentError('Unknown DataflowEndpointKafkaAcks value: $value');
   }
 }
+

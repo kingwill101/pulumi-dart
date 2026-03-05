@@ -9,19 +9,20 @@ class SourceContext {
 
   /// Creates a new [SourceContext].
   /// [fileName] The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`.
-  SourceContext({this.fileName});
+  SourceContext({
+    this.fileName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fileName': ?fileName};
+    return <String, dynamic>{
+      'fileName': ?fileName,
+    };
   }
 
   factory SourceContext.fromMap(Map<String, dynamic> map) {
     return SourceContext(
-      fileName: (() {
-        final guardedValue = map['fileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fileName: (() { final guardedValue = map['fileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -138,39 +138,26 @@ import 'directory_user_provisioning_configuration.dart';
 class Directory extends pulumi.CustomResource {
   /// CreateTime
   late final pulumi.Output<String> createTime;
-
   /// Directory Global Acceleration activation status
   late final pulumi.Output<String> directoryGlobalAccessStatus;
-
   /// DirectoryName
   late final pulumi.Output<String?> directoryName;
-
   /// Login preferences See `login_preference` below.
   late final pulumi.Output<DirectoryLoginPreference> loginPreference;
-
   /// Global MFA verification configuration. See `mfa_authentication_setting_info` below.
-  late final pulumi.Output<DirectoryMfaAuthenticationSettingInfo>
-  mfaAuthenticationSettingInfo;
-
+  late final pulumi.Output<DirectoryMfaAuthenticationSettingInfo> mfaAuthenticationSettingInfo;
   /// MFA Authentication Status
   late final pulumi.Output<String> mfaAuthenticationStatus;
-
   /// Password policy See `password_policy` below.
   late final pulumi.Output<DirectoryPasswordPolicy> passwordPolicy;
-
   /// Identity Provider (IDP) See `saml_identity_provider_configuration` below.
-  late final pulumi.Output<DirectorySamlIdentityProviderConfiguration>
-  samlIdentityProviderConfiguration;
-
+  late final pulumi.Output<DirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfiguration;
   /// SP information. See `saml_service_provider` below.
   late final pulumi.Output<DirectorySamlServiceProvider> samlServiceProvider;
-
   /// SCIM Synchronization Status
   late final pulumi.Output<String> scimSynchronizationStatus;
-
   /// User Provisioning configuration See `user_provisioning_configuration` below.
-  late final pulumi.Output<DirectoryUserProvisioningConfiguration>
-  userProvisioningConfiguration;
+  late final pulumi.Output<DirectoryUserProvisioningConfiguration> userProvisioningConfiguration;
 
   /// Creates a new [Directory].
   /// [name] The Pulumi resource name.
@@ -181,83 +168,22 @@ class Directory extends pulumi.CustomResource {
     DirectoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/directory:Directory',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/directory:Directory',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    directoryGlobalAccessStatus = registerOutput<String>(
-      'directoryGlobalAccessStatus',
-    );
+    directoryGlobalAccessStatus = registerOutput<String>('directoryGlobalAccessStatus');
     directoryName = registerOutput<String?>('directoryName');
-    loginPreference = registerOutput<DirectoryLoginPreference>(
-      'loginPreference',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DirectoryLoginPreference.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    mfaAuthenticationSettingInfo =
-        registerOutput<DirectoryMfaAuthenticationSettingInfo>(
-          'mfaAuthenticationSettingInfo',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DirectoryMfaAuthenticationSettingInfo.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    loginPreference = registerOutput<DirectoryLoginPreference>('loginPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryLoginPreference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mfaAuthenticationSettingInfo = registerOutput<DirectoryMfaAuthenticationSettingInfo>('mfaAuthenticationSettingInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryMfaAuthenticationSettingInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mfaAuthenticationStatus = registerOutput<String>('mfaAuthenticationStatus');
-    passwordPolicy = registerOutput<DirectoryPasswordPolicy>(
-      'passwordPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DirectoryPasswordPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    samlIdentityProviderConfiguration =
-        registerOutput<DirectorySamlIdentityProviderConfiguration>(
-          'samlIdentityProviderConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DirectorySamlIdentityProviderConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    samlServiceProvider = registerOutput<DirectorySamlServiceProvider>(
-      'samlServiceProvider',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DirectorySamlServiceProvider.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    scimSynchronizationStatus = registerOutput<String>(
-      'scimSynchronizationStatus',
-    );
-    userProvisioningConfiguration =
-        registerOutput<DirectoryUserProvisioningConfiguration>(
-          'userProvisioningConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DirectoryUserProvisioningConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    passwordPolicy = registerOutput<DirectoryPasswordPolicy>('passwordPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryPasswordPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    samlIdentityProviderConfiguration = registerOutput<DirectorySamlIdentityProviderConfiguration>('samlIdentityProviderConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectorySamlIdentityProviderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    samlServiceProvider = registerOutput<DirectorySamlServiceProvider>('samlServiceProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectorySamlServiceProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scimSynchronizationStatus = registerOutput<String>('scimSynchronizationStatus');
+    userProvisioningConfiguration = registerOutput<DirectoryUserProvisioningConfiguration>('userProvisioningConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryUserProvisioningConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Directory] resource's state with the given [name] and [id].
@@ -278,82 +204,21 @@ class Directory extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/directory:Directory',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/directory:Directory',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    directoryGlobalAccessStatus = registerOutput<String>(
-      'directoryGlobalAccessStatus',
-    );
+    directoryGlobalAccessStatus = registerOutput<String>('directoryGlobalAccessStatus');
     directoryName = registerOutput<String?>('directoryName');
-    loginPreference = registerOutput<DirectoryLoginPreference>(
-      'loginPreference',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DirectoryLoginPreference.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    mfaAuthenticationSettingInfo =
-        registerOutput<DirectoryMfaAuthenticationSettingInfo>(
-          'mfaAuthenticationSettingInfo',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DirectoryMfaAuthenticationSettingInfo.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    loginPreference = registerOutput<DirectoryLoginPreference>('loginPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryLoginPreference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mfaAuthenticationSettingInfo = registerOutput<DirectoryMfaAuthenticationSettingInfo>('mfaAuthenticationSettingInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryMfaAuthenticationSettingInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mfaAuthenticationStatus = registerOutput<String>('mfaAuthenticationStatus');
-    passwordPolicy = registerOutput<DirectoryPasswordPolicy>(
-      'passwordPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DirectoryPasswordPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    samlIdentityProviderConfiguration =
-        registerOutput<DirectorySamlIdentityProviderConfiguration>(
-          'samlIdentityProviderConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DirectorySamlIdentityProviderConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    samlServiceProvider = registerOutput<DirectorySamlServiceProvider>(
-      'samlServiceProvider',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DirectorySamlServiceProvider.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    scimSynchronizationStatus = registerOutput<String>(
-      'scimSynchronizationStatus',
-    );
-    userProvisioningConfiguration =
-        registerOutput<DirectoryUserProvisioningConfiguration>(
-          'userProvisioningConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DirectoryUserProvisioningConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    passwordPolicy = registerOutput<DirectoryPasswordPolicy>('passwordPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryPasswordPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    samlIdentityProviderConfiguration = registerOutput<DirectorySamlIdentityProviderConfiguration>('samlIdentityProviderConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectorySamlIdentityProviderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    samlServiceProvider = registerOutput<DirectorySamlServiceProvider>('samlServiceProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectorySamlServiceProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scimSynchronizationStatus = registerOutput<String>('scimSynchronizationStatus');
+    userProvisioningConfiguration = registerOutput<DirectoryUserProvisioningConfiguration>('userProvisioningConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryUserProvisioningConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

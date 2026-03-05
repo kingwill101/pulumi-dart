@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainAssociationSubDomain {
   /// Branch name setting for the subdomain.
   final pulumi.Input<String> branchName;
-
   /// DNS record for the subdomain in a space-prefixed and space-delimited format (` CNAME &lt;target&gt;`).
   final pulumi.Input<String>? dnsRecord;
-
   /// Prefix setting for the subdomain.
   final pulumi.Input<String> prefix;
-
   /// Verified status of the subdomain.
   final pulumi.Input<bool>? verified;
 
@@ -39,17 +36,10 @@ class DomainAssociationSubDomain {
   factory DomainAssociationSubDomain.fromMap(Map<String, dynamic> map) {
     return DomainAssociationSubDomain(
       branchName: pulumi.Input.fromValue(map['branchName'] as String),
-      dnsRecord: (() {
-        final guardedValue = map['dnsRecord'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dnsRecord: (() { final guardedValue = map['dnsRecord']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
-      verified: (() {
-        final guardedValue = map['verified'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      verified: (() { final guardedValue = map['verified']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

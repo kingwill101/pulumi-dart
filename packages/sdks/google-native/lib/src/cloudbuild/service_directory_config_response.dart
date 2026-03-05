@@ -9,10 +9,14 @@ class ServiceDirectoryConfigResponse {
 
   /// Creates a new [ServiceDirectoryConfigResponse].
   /// [service] The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-  ServiceDirectoryConfigResponse({required this.service});
+  ServiceDirectoryConfigResponse({
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'service': service};
+    return <String, dynamic>{
+      'service': service,
+    };
   }
 
   factory ServiceDirectoryConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ServiceDirectoryConfigResponse {
     );
   }
 }
+

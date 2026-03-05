@@ -7,15 +7,10 @@ import 'google_cloud_assuredworkloads_v1_workload_resource_settings_resource_typ
 class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
   /// User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
   final pulumi.Input<String>? displayName;
-
   /// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
   final pulumi.Input<String>? resourceId;
-
   /// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
-  final pulumi.Input<
-    GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType
-  >?
-  resourceType;
+  final pulumi.Input<GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType>? resourceType;
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1WorkloadResourceSettings].
   /// [displayName] User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
@@ -31,37 +26,16 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
     return <String, dynamic>{
       'displayName': ?displayName,
       'resourceId': ?resourceId,
-      'resourceType':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType,
-            String
-          >(resourceType, (value) => value.wireValue),
+      'resourceType': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType, String>(resourceType, (value) => value.wireValue),
     };
   }
 
-  factory GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1WorkloadResourceSettings(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceType: (() {
-        final guardedValue = map['resourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

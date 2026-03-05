@@ -9,17 +9,20 @@ class PrimaryConfigResponse {
 
   /// Creates a new [PrimaryConfigResponse].
   /// [secondaryClusterNames] Names of the clusters that are replicating from this cluster.
-  PrimaryConfigResponse({required this.secondaryClusterNames});
+  PrimaryConfigResponse({
+    required this.secondaryClusterNames,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secondaryClusterNames': secondaryClusterNames};
+    return <String, dynamic>{
+      'secondaryClusterNames': secondaryClusterNames,
+    };
   }
 
   factory PrimaryConfigResponse.fromMap(Map<String, dynamic> map) {
     return PrimaryConfigResponse(
-      secondaryClusterNames: pulumi.Input.fromValue(
-        (map['secondaryClusterNames'] as List).cast<String>(),
-      ),
+      secondaryClusterNames: pulumi.Input.fromValue((map['secondaryClusterNames'] as List).cast<String>()),
     );
   }
 }
+

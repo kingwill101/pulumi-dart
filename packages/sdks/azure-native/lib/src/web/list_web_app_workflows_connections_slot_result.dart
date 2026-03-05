@@ -6,19 +6,14 @@ import 'workflow_envelope_response_properties.dart';
 class ListWebAppWorkflowsConnectionsSlotResult {
   /// The resource id.
   final String id;
-
   /// The resource kind.
   final String? kind;
-
   /// The resource location.
   final String? location;
-
   /// Gets the resource name.
   final String name;
-
   /// Additional workflow properties.
   final WorkflowEnvelopeResponseProperties properties;
-
   /// Gets the resource type.
   final String type;
 
@@ -49,26 +44,15 @@ class ListWebAppWorkflowsConnectionsSlotResult {
     };
   }
 
-  factory ListWebAppWorkflowsConnectionsSlotResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListWebAppWorkflowsConnectionsSlotResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppWorkflowsConnectionsSlotResult(
       id: map['id'] as String,
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: WorkflowEnvelopeResponseProperties.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: WorkflowEnvelopeResponseProperties.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

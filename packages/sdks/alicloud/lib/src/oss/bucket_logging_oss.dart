@@ -217,13 +217,10 @@ import 'bucket_logging_state.dart';
 class BucketLoggingOss extends pulumi.CustomResource {
   /// The name of the bucket
   late final pulumi.Output<String> bucket;
-
   /// Authorization role used for bucket logging
   late final pulumi.Output<String?> loggingRole;
-
   /// The bucket that stores access logs.
   late final pulumi.Output<String> targetBucket;
-
   /// The prefix of the saved log objects. This element can be left empty.
   late final pulumi.Output<String?> targetPrefix;
 
@@ -236,11 +233,11 @@ class BucketLoggingOss extends pulumi.CustomResource {
     BucketLoggingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketLogging:BucketLogging',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketLogging:BucketLogging',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     loggingRole = registerOutput<String?>('loggingRole');
     targetBucket = registerOutput<String>('targetBucket');
@@ -265,11 +262,11 @@ class BucketLoggingOss extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketLogging:BucketLogging',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketLogging:BucketLogging',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     loggingRole = registerOutput<String?>('loggingRole');
     targetBucket = registerOutput<String>('targetBucket');

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAppHybridConnectionArgs {
   /// The hostname of the endpoint.
   final pulumi.Input<String> hostname;
-
   /// The port to use for the endpoint.
   final pulumi.Input<int> port;
-
   /// The ID of the Relay Hybrid Connection to use. Changing this forces a new resource to be created.
   final pulumi.Input<String> relayId;
-
   /// The name of the Relay key with `Send` permission to use. Defaults to `RootManageSharedAccessKey`
   final pulumi.Input<String>? sendKeyName;
-
   /// The ID of the Web App for this Hybrid Connection. Changing this forces a new resource to be created.
   final pulumi.Input<String> webAppId;
 
@@ -51,12 +47,9 @@ class WebAppHybridConnectionArgs {
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       port: pulumi.Input.fromValue(map['port'] as int),
       relayId: pulumi.Input.fromValue(map['relayId'] as String),
-      sendKeyName: (() {
-        final guardedValue = map['sendKeyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sendKeyName: (() { final guardedValue = map['sendKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       webAppId: pulumi.Input.fromValue(map['webAppId'] as String),
     );
   }
 }
+

@@ -9,43 +9,30 @@ import 'target_selector_properties_response.dart';
 class GetInstanceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Edge location of the resource.
   final ExtendedLocationResponse extendedLocation;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The status of the last operation.
   final String provisioningState;
-
   /// Reconciliation Policy.
   final ReconciliationPolicyResponse? reconciliationPolicy;
-
   /// Deployment scope (such as Kubernetes namespace).
   final String? scope;
-
   /// Name of the solution.
   final String? solution;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Defines the Target the Instance will deploy to.
   final TargetSelectorPropertiesResponse? target;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Version of the particular resource.
   final String? version;
 
@@ -103,51 +90,20 @@ class GetInstanceResult {
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: ExtendedLocationResponse.fromMap(
-        (map['extendedLocation']! as Map).cast<String, dynamic>(),
-      ),
+      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      reconciliationPolicy: (() {
-        final guardedValue = map['reconciliationPolicy'];
-        if (guardedValue == null) return null;
-        return ReconciliationPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      solution: (() {
-        final guardedValue = map['solution'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      target: (() {
-        final guardedValue = map['target'];
-        if (guardedValue == null) return null;
-        return TargetSelectorPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      reconciliationPolicy: (() { final guardedValue = map['reconciliationPolicy']; if (guardedValue == null) return null; return ReconciliationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      solution: (() { final guardedValue = map['solution']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return TargetSelectorPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       type: map['type'] as String,
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -7,19 +7,20 @@ class ServerGroupRules {
 
   /// Creates a new [ServerGroupRules].
   /// [maxServerPerHost] Optional.
-  ServerGroupRules({this.maxServerPerHost});
+  ServerGroupRules({
+    this.maxServerPerHost,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maxServerPerHost': ?maxServerPerHost};
+    return <String, dynamic>{
+      'maxServerPerHost': ?maxServerPerHost,
+    };
   }
 
   factory ServerGroupRules.fromMap(Map<String, dynamic> map) {
     return ServerGroupRules(
-      maxServerPerHost: (() {
-        final guardedValue = map['maxServerPerHost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxServerPerHost: (() { final guardedValue = map['maxServerPerHost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

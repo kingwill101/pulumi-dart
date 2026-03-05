@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFailoverGroupPartnerServer {
   /// The ID of the partner SQL server.
   final pulumi.Input<String> id;
-
   /// The location of the partner server.
   final pulumi.Input<String> location;
-
   /// The replication role of the partner server.
   final pulumi.Input<String> role;
 
@@ -23,7 +21,11 @@ class GetFailoverGroupPartnerServer {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'location': location, 'role': role};
+    return <String, dynamic>{
+      'id': id,
+      'location': location,
+      'role': role,
+    };
   }
 
   factory GetFailoverGroupPartnerServer.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class GetFailoverGroupPartnerServer {
     );
   }
 }
+

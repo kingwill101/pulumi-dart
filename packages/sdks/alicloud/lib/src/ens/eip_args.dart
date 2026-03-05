@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EipArgs {
   /// The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
   final pulumi.Input<int>? bandwidth;
-
   /// The description of the EIP.
   final pulumi.Input<String>? description;
-
   /// The name of the EIP.
   final pulumi.Input<String>? eipName;
-
   /// Ens node ID.
   final pulumi.Input<String> ensRegionId;
-
   /// The metering method of the EIP. Valid value: `95BandwidthByMonth`.
   final pulumi.Input<String> internetChargeType;
-
   /// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
   final pulumi.Input<String>? isp;
-
   /// The billing method of the EIP. Valid value: `PayAsYouGo`.
   final pulumi.Input<String> paymentType;
 
@@ -60,31 +54,14 @@ class EipArgs {
 
   factory EipArgs.fromMap(Map<String, dynamic> map) {
     return EipArgs(
-      bandwidth: (() {
-        final guardedValue = map['bandwidth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eipName: (() {
-        final guardedValue = map['eipName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bandwidth: (() { final guardedValue = map['bandwidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eipName: (() { final guardedValue = map['eipName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ensRegionId: pulumi.Input.fromValue(map['ensRegionId'] as String),
-      internetChargeType: pulumi.Input.fromValue(
-        map['internetChargeType'] as String,
-      ),
-      isp: (() {
-        final guardedValue = map['isp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      internetChargeType: pulumi.Input.fromValue(map['internetChargeType'] as String),
+      isp: (() { final guardedValue = map['isp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
     );
   }
 }
+

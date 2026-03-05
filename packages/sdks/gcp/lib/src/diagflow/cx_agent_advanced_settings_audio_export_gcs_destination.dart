@@ -9,21 +9,20 @@ class CxAgentAdvancedSettingsAudioExportGcsDestination {
 
   /// Creates a new [CxAgentAdvancedSettingsAudioExportGcsDestination].
   /// [uri] The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
-  CxAgentAdvancedSettingsAudioExportGcsDestination({this.uri});
+  CxAgentAdvancedSettingsAudioExportGcsDestination({
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': ?uri};
+    return <String, dynamic>{
+      'uri': ?uri,
+    };
   }
 
-  factory CxAgentAdvancedSettingsAudioExportGcsDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxAgentAdvancedSettingsAudioExportGcsDestination.fromMap(Map<String, dynamic> map) {
     return CxAgentAdvancedSettingsAudioExportGcsDestination(
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,31 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleRuleActionTrafficLimitConfig {
   /// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
   final pulumi.Input<int>? perIpQps;
-
   /// The Number of requests per second. Valid values: `1` to `100000`.
   final pulumi.Input<int>? qps;
 
   /// Creates a new [RuleRuleActionTrafficLimitConfig].
   /// [perIpQps] The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
   /// [qps] The Number of requests per second. Valid values: `1` to `100000`.
-  RuleRuleActionTrafficLimitConfig({this.perIpQps, this.qps});
+  RuleRuleActionTrafficLimitConfig({
+    this.perIpQps,
+    this.qps,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'perIpQps': ?perIpQps, 'qps': ?qps};
+    return <String, dynamic>{
+      'perIpQps': ?perIpQps,
+      'qps': ?qps,
+    };
   }
 
   factory RuleRuleActionTrafficLimitConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionTrafficLimitConfig(
-      perIpQps: (() {
-        final guardedValue = map['perIpQps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      qps: (() {
-        final guardedValue = map['qps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      perIpQps: (() { final guardedValue = map['perIpQps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      qps: (() { final guardedValue = map['qps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

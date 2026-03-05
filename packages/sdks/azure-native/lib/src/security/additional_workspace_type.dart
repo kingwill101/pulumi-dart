@@ -14,3 +14,4 @@ enum AdditionalWorkspaceType {
     throw ArgumentError('Unknown AdditionalWorkspaceType value: $value');
   }
 }
+

@@ -32,3 +32,4 @@ enum HeaderProtocol {
     throw ArgumentError('Unknown HeaderProtocol value: $value');
   }
 }
+

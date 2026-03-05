@@ -29,9 +29,7 @@ class GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout(
       description: pulumi.Input.fromValue(map['description'] as String),
       example: pulumi.Input.fromValue(map['example'] as bool),
@@ -40,3 +38,4 @@ class GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout {
     );
   }
 }
+

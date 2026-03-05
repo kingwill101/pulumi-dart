@@ -9,31 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QosCarArgs {
   /// The description of the QoS speed limiting rule.
   final pulumi.Input<String>? description;
-
   /// The speed limiting method. Valid values: `Absolute`, `Percent`.
   final pulumi.Input<String> limitType;
-
   /// The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
   final pulumi.Input<int>? maxBandwidthAbs;
-
   /// The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
   final pulumi.Input<int>? maxBandwidthPercent;
-
   /// The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
   final pulumi.Input<int>? minBandwidthAbs;
-
   /// The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
   final pulumi.Input<int>? minBandwidthPercent;
-
   /// The name of the QoS speed limiting rule..
   final pulumi.Input<String>? name;
-
   /// The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
   final pulumi.Input<String>? percentSourceType;
-
   /// The priority of the specified stream.
   final pulumi.Input<int> priority;
-
   /// The instance ID of the QoS.
   final pulumi.Input<String> qosId;
 
@@ -78,44 +69,17 @@ class QosCarArgs {
 
   factory QosCarArgs.fromMap(Map<String, dynamic> map) {
     return QosCarArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       limitType: pulumi.Input.fromValue(map['limitType'] as String),
-      maxBandwidthAbs: (() {
-        final guardedValue = map['maxBandwidthAbs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxBandwidthPercent: (() {
-        final guardedValue = map['maxBandwidthPercent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minBandwidthAbs: (() {
-        final guardedValue = map['minBandwidthAbs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minBandwidthPercent: (() {
-        final guardedValue = map['minBandwidthPercent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      percentSourceType: (() {
-        final guardedValue = map['percentSourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      maxBandwidthAbs: (() { final guardedValue = map['maxBandwidthAbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxBandwidthPercent: (() { final guardedValue = map['maxBandwidthPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minBandwidthAbs: (() { final guardedValue = map['minBandwidthAbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minBandwidthPercent: (() { final guardedValue = map['minBandwidthPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      percentSourceType: (() { final guardedValue = map['percentSourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       priority: pulumi.Input.fromValue(map['priority'] as int),
       qosId: pulumi.Input.fromValue(map['qosId'] as String),
     );
   }
 }
+

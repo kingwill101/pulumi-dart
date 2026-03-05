@@ -393,13 +393,10 @@ import 'account_privilege_state.dart';
 class AccountPrivilege extends pulumi.CustomResource {
   /// A specified account name.
   late final pulumi.Output<String> accountName;
-
   /// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
   late final pulumi.Output<String?> accountPrivilege;
-
   /// The Id of cluster in which account belongs.
   late final pulumi.Output<String> dbClusterId;
-
   /// List of specified database name.
   late final pulumi.Output<List<String>> dbNames;
 
@@ -412,11 +409,11 @@ class AccountPrivilege extends pulumi.CustomResource {
     AccountPrivilegeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/accountPrivilege:AccountPrivilege',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/accountPrivilege:AccountPrivilege',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     accountPrivilege = registerOutput<String?>('accountPrivilege');
     dbClusterId = registerOutput<String>('dbClusterId');
@@ -441,11 +438,11 @@ class AccountPrivilege extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/accountPrivilege:AccountPrivilege',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/accountPrivilege:AccountPrivilege',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     accountPrivilege = registerOutput<String?>('accountPrivilege');
     dbClusterId = registerOutput<String>('dbClusterId');

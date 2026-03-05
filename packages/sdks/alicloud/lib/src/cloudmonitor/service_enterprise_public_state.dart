@@ -9,19 +9,20 @@ class ServiceEnterprisePublicState {
 
   /// Creates a new [ServiceEnterprisePublicState].
   /// [createTime] The creation time of the resource.
-  ServiceEnterprisePublicState({this.createTime});
+  ServiceEnterprisePublicState({
+    this.createTime,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'createTime': ?createTime};
+    return <String, dynamic>{
+      'createTime': ?createTime,
+    };
   }
 
   factory ServiceEnterprisePublicState.fromMap(Map<String, dynamic> map) {
     return ServiceEnterprisePublicState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

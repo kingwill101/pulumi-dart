@@ -8,7 +8,6 @@ import 'max_count_rule_response.dart';
 class ApplicationVersionLifecycleConfigResponse {
   /// Specify a max age rule to restrict the length of time that application versions are retained for an application.
   final pulumi.Input<MaxAgeRuleResponse>? maxAgeRule;
-
   /// Specify a max count rule to restrict the number of application versions that are retained for an application.
   final pulumi.Input<MaxCountRuleResponse>? maxCountRule;
 
@@ -22,41 +21,16 @@ class ApplicationVersionLifecycleConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxAgeRule':
-          ?pulumi.Input.mapOptionalInputValue<
-            MaxAgeRuleResponse,
-            Map<String, dynamic>
-          >(maxAgeRule, (value) => value.toMap()),
-      'maxCountRule':
-          ?pulumi.Input.mapOptionalInputValue<
-            MaxCountRuleResponse,
-            Map<String, dynamic>
-          >(maxCountRule, (value) => value.toMap()),
+      'maxAgeRule': ?pulumi.Input.mapOptionalInputValue<MaxAgeRuleResponse, Map<String, dynamic>>(maxAgeRule, (value) => value.toMap()),
+      'maxCountRule': ?pulumi.Input.mapOptionalInputValue<MaxCountRuleResponse, Map<String, dynamic>>(maxCountRule, (value) => value.toMap()),
     };
   }
 
-  factory ApplicationVersionLifecycleConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationVersionLifecycleConfigResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationVersionLifecycleConfigResponse(
-      maxAgeRule: (() {
-        final guardedValue = map['maxAgeRule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MaxAgeRuleResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      maxCountRule: (() {
-        final guardedValue = map['maxCountRule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MaxCountRuleResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      maxAgeRule: (() { final guardedValue = map['maxAgeRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MaxAgeRuleResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      maxCountRule: (() { final guardedValue = map['maxCountRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MaxCountRuleResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

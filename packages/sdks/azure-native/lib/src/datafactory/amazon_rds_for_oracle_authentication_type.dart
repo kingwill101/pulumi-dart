@@ -11,8 +11,7 @@ enum AmazonRdsForOracleAuthenticationType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AmazonRdsForOracleAuthenticationType value: $value',
-    );
+    throw ArgumentError('Unknown AmazonRdsForOracleAuthenticationType value: $value');
   }
 }
+

@@ -36,8 +36,7 @@ enum KnownSyslogDataSourceFacilityNames {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown KnownSyslogDataSourceFacilityNames value: $value',
-    );
+    throw ArgumentError('Unknown KnownSyslogDataSourceFacilityNames value: $value');
   }
 }
+

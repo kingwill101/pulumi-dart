@@ -408,22 +408,16 @@ import 'site_origin_client_certificate_state.dart';
 class SiteOriginClientCertificate extends pulumi.CustomResource {
   /// The certificate content.
   late final pulumi.Output<String> certificate;
-
   /// The time when the certificate was created.
   late final pulumi.Output<String> createTime;
-
   /// The private key of the certificate.
   late final pulumi.Output<String> privateKey;
-
   /// Site ID.
   late final pulumi.Output<String> siteId;
-
   /// The certificate ID on ESA.
   late final pulumi.Output<String> siteOriginClientCertificateId;
-
   /// The certificate name.
   late final pulumi.Output<String?> siteOriginClientCertificateName;
-
   /// The status of the certificate.
   late final pulumi.Output<String> status;
 
@@ -436,21 +430,17 @@ class SiteOriginClientCertificate extends pulumi.CustomResource {
     SiteOriginClientCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificate = registerOutput<String>('certificate');
     createTime = registerOutput<String>('createTime');
     privateKey = registerOutput<String>('privateKey');
     siteId = registerOutput<String>('siteId');
-    siteOriginClientCertificateId = registerOutput<String>(
-      'siteOriginClientCertificateId',
-    );
-    siteOriginClientCertificateName = registerOutput<String?>(
-      'siteOriginClientCertificateName',
-    );
+    siteOriginClientCertificateId = registerOutput<String>('siteOriginClientCertificateId');
+    siteOriginClientCertificateName = registerOutput<String?>('siteOriginClientCertificateName');
     status = registerOutput<String>('status');
   }
 
@@ -472,21 +462,17 @@ class SiteOriginClientCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificate = registerOutput<String>('certificate');
     createTime = registerOutput<String>('createTime');
     privateKey = registerOutput<String>('privateKey');
     siteId = registerOutput<String>('siteId');
-    siteOriginClientCertificateId = registerOutput<String>(
-      'siteOriginClientCertificateId',
-    );
-    siteOriginClientCertificateName = registerOutput<String?>(
-      'siteOriginClientCertificateName',
-    );
+    siteOriginClientCertificateId = registerOutput<String>('siteOriginClientCertificateId');
+    siteOriginClientCertificateName = registerOutput<String?>('siteOriginClientCertificateName');
     status = registerOutput<String>('status');
   }
 }

@@ -236,72 +236,51 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// The number of multi account. It will be ignored when `cfw_account = false`.
   late final pulumi.Output<int?> accountNumber;
-
   /// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
   late final pulumi.Output<int?> bandWidth;
-
   /// Whether to use multi-account. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> cfwAccount;
-
   /// Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
   late final pulumi.Output<bool?> cfwLog;
-
   /// The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
   late final pulumi.Output<int?> cfwLogStorage;
-
   /// The creation time.
   late final pulumi.Output<String> createTime;
-
   /// The end time.
   late final pulumi.Output<String> endTime;
-
   /// The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
   late final pulumi.Output<int> fwVpcNumber;
-
   /// The number of assets.
   late final pulumi.Output<int?> instanceCount;
-
   /// The number of public IPs that can be protected. Valid values: 20 to 4000.
   late final pulumi.Output<int> ipNumber;
-
   /// The logistics.
   late final pulumi.Output<String?> logistics;
-
   /// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
   late final pulumi.Output<String?> modifyType;
-
   /// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
-
   /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
   late final pulumi.Output<int?> period;
-
   /// The release time.
   late final pulumi.Output<String> releaseTime;
-
   /// Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
   late final pulumi.Output<int> renewPeriod;
-
   /// Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
   /// **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
   late final pulumi.Output<int> renewalDuration;
-
   /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
   late final pulumi.Output<String?> renewalDurationUnit;
-
   /// Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
   /// - `AutoRenewal`: Auto renewal.
   /// - `ManualRenewal`: Manual renewal.
   /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
   /// **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
   late final pulumi.Output<String> renewalStatus;
-
   /// Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
   late final pulumi.Output<String> spec;
-
   /// The status of Cloud Firewall Instance.
   late final pulumi.Output<String> status;
-
   /// (Available since v1.232.0) The user status of Cloud Firewall Instance.
   late final pulumi.Output<bool> userStatus;
 
@@ -314,11 +293,11 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountNumber = registerOutput<int?>('accountNumber');
     bandWidth = registerOutput<int?>('bandWidth');
     cfwAccount = registerOutput<bool?>('cfwAccount');
@@ -361,11 +340,11 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountNumber = registerOutput<int?>('accountNumber');
     bandWidth = registerOutput<int?>('bandWidth');
     cfwAccount = registerOutput<bool?>('cfwAccount');

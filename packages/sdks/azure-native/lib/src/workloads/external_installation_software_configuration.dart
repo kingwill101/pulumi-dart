@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExternalInstallationSoftwareConfiguration {
   /// The resource ID of the virtual machine containing the central server instance.
   final pulumi.Input<String>? centralServerVmId;
-
   /// The SAP software installation Type.
   /// Expected value is 'External'.
   final pulumi.Input<String> softwareInstallationType;
@@ -26,18 +25,11 @@ class ExternalInstallationSoftwareConfiguration {
     };
   }
 
-  factory ExternalInstallationSoftwareConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExternalInstallationSoftwareConfiguration.fromMap(Map<String, dynamic> map) {
     return ExternalInstallationSoftwareConfiguration(
-      centralServerVmId: (() {
-        final guardedValue = map['centralServerVmId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      softwareInstallationType: pulumi.Input.fromValue(
-        map['softwareInstallationType'] as String,
-      ),
+      centralServerVmId: (() { final guardedValue = map['centralServerVmId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      softwareInstallationType: pulumi.Input.fromValue(map['softwareInstallationType'] as String),
     );
   }
 }
+

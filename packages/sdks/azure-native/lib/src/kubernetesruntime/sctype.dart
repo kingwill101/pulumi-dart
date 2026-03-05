@@ -18,3 +18,4 @@ enum SCType {
     throw ArgumentError('Unknown SCType value: $value');
   }
 }
+

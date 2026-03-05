@@ -14,54 +14,40 @@ class SharedImageVersionArgs {
   ///
   /// &gt; **NOTE:** `blob_uri` and `storage_account_id` must be specified together
   final pulumi.Input<String>? blobUri;
-
   /// Specifies whether this Shared Image Version can be deleted from the Azure Regions this is replicated to. Defaults to `false`. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? deletionOfReplicatedLocationsEnabled;
-
   /// The end of life date in RFC3339 format of the Image Version.
   final pulumi.Input<String>? endOfLifeDate;
-
   /// Should this Image Version be excluded from the `latest` filter? If set to `true` this Image Version won't be returned for the `latest` version. Defaults to `false`.
   final pulumi.Input<bool>? excludeFromLatest;
-
   /// The name of the Shared Image Gallery in which the Shared Image exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> galleryName;
-
   /// The name of the Shared Image within the Shared Image Gallery in which this Version should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> imageName;
-
   /// The Azure Region in which the Shared Image Gallery exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// The ID of the Managed Image or Virtual Machine ID which should be used for this Shared Image Version. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** The ID can be sourced from the `azure.compute.Image` data source or resource
   ///
   /// &gt; **NOTE:** You must specify exact one of `blob_uri`, `managed_image_id` and `os_disk_snapshot_id`.
   final pulumi.Input<String>? managedImageId;
-
   /// The version number for this Image Version, such as `1.0.0`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The ID of the OS disk snapshot which should be used for this Shared Image Version. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** You must specify exact one of `blob_uri`, `managed_image_id` and `os_disk_snapshot_id`.
   final pulumi.Input<String>? osDiskSnapshotId;
-
   /// Mode to be used for replication. Possible values are `Full` and `Shallow`. Defaults to `Full`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? replicationMode;
-
   /// The name of the Resource Group in which the Shared Image Gallery exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The ID of the Storage Account where the Blob exists. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** `blob_uri` and `storage_account_id` must be specified together
   final pulumi.Input<String>? storageAccountId;
-
   /// A collection of tags which should be applied to this resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// One or more `target_region` blocks as documented below.
   final pulumi.Input<List<SharedImageVersionTargetRegion>> targetRegions;
 
@@ -102,8 +88,7 @@ class SharedImageVersionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'blobUri': ?blobUri,
-      'deletionOfReplicatedLocationsEnabled':
-          ?deletionOfReplicatedLocationsEnabled,
+      'deletionOfReplicatedLocationsEnabled': ?deletionOfReplicatedLocationsEnabled,
       'endOfLifeDate': ?endOfLifeDate,
       'excludeFromLatest': ?excludeFromLatest,
       'galleryName': galleryName,
@@ -116,93 +101,28 @@ class SharedImageVersionArgs {
       'resourceGroupName': resourceGroupName,
       'storageAccountId': ?storageAccountId,
       'tags': ?tags,
-      'targetRegions':
-          pulumi.Input.mapInputValue<
-            List<SharedImageVersionTargetRegion>,
-            List<Map<String, dynamic>>
-          >(
-            targetRegions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SharedImageVersionTargetRegion,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'targetRegions': pulumi.Input.mapInputValue<List<SharedImageVersionTargetRegion>, List<Map<String, dynamic>>>(targetRegions, (value) => pulumi.Input.encodeList<SharedImageVersionTargetRegion, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SharedImageVersionArgs.fromMap(Map<String, dynamic> map) {
     return SharedImageVersionArgs(
-      blobUri: (() {
-        final guardedValue = map['blobUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deletionOfReplicatedLocationsEnabled: (() {
-        final guardedValue = map['deletionOfReplicatedLocationsEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      endOfLifeDate: (() {
-        final guardedValue = map['endOfLifeDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      excludeFromLatest: (() {
-        final guardedValue = map['excludeFromLatest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      blobUri: (() { final guardedValue = map['blobUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionOfReplicatedLocationsEnabled: (() { final guardedValue = map['deletionOfReplicatedLocationsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      endOfLifeDate: (() { final guardedValue = map['endOfLifeDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      excludeFromLatest: (() { final guardedValue = map['excludeFromLatest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       galleryName: pulumi.Input.fromValue(map['galleryName'] as String),
       imageName: pulumi.Input.fromValue(map['imageName'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedImageId: (() {
-        final guardedValue = map['managedImageId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      osDiskSnapshotId: (() {
-        final guardedValue = map['osDiskSnapshotId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      replicationMode: (() {
-        final guardedValue = map['replicationMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      storageAccountId: (() {
-        final guardedValue = map['storageAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      targetRegions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<SharedImageVersionTargetRegion>(
-          map['targetRegions']!,
-          (value) => SharedImageVersionTargetRegion.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedImageId: (() { final guardedValue = map['managedImageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osDiskSnapshotId: (() { final guardedValue = map['osDiskSnapshotId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replicationMode: (() { final guardedValue = map['replicationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      targetRegions: pulumi.Input.fromValue(pulumi.Input.decodeList<SharedImageVersionTargetRegion>(map['targetRegions']!, (value) => SharedImageVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

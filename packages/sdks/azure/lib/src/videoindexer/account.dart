@@ -245,22 +245,16 @@ import 'account_storage.dart';
 class Account extends pulumi.CustomResource {
   /// An `identity` block as defined below.
   late final pulumi.Output<AccountIdentity> identity;
-
   /// The Azure location where the Video Indexer Account exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the Video Indexer Account. Changing the name forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The public network access for the Video Indexer Account. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// The name of the Resource Group that the Video Indexer Account will be associated with. Changing the name forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `storage` block as defined below.
   late final pulumi.Output<AccountStorage> storage;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -273,35 +267,17 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:videoindexer/account:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    identity = registerOutput<AccountIdentity>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:videoindexer/account:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    identity = registerOutput<AccountIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    storage = registerOutput<AccountStorage>(
-      'storage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountStorage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storage = registerOutput<AccountStorage>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
@@ -323,35 +299,17 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:videoindexer/account:Account',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    identity = registerOutput<AccountIdentity>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:videoindexer/account:Account',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    identity = registerOutput<AccountIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    storage = registerOutput<AccountStorage>(
-      'storage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountStorage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storage = registerOutput<AccountStorage>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

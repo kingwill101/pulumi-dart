@@ -7,7 +7,6 @@ class ConnectionAuthConfigAdditionalVariableEncryptionKeyValue {
   /// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
   /// Will be empty string if google managed.
   final pulumi.Input<String>? kmsKeyName;
-
   /// Type of Encryption Key
   /// Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
   final pulumi.Input<String> type;
@@ -21,19 +20,17 @@ class ConnectionAuthConfigAdditionalVariableEncryptionKeyValue {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyName': ?kmsKeyName, 'type': type};
+    return <String, dynamic>{
+      'kmsKeyName': ?kmsKeyName,
+      'type': type,
+    };
   }
 
-  factory ConnectionAuthConfigAdditionalVariableEncryptionKeyValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionAuthConfigAdditionalVariableEncryptionKeyValue.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigAdditionalVariableEncryptionKeyValue(
-      kmsKeyName: (() {
-        final guardedValue = map['kmsKeyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -6,11 +6,9 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError {
   /// (Output)
   /// The status code, which should be an enum value of google.rpc.Code.
   final pulumi.Input<int>? code;
-
   /// (Output)
   /// A list of messages that carry the error details.
   final pulumi.Input<String>? details;
-
   /// (Output)
   /// A developer-facing error message, which should be in English. Any
   /// user-facing error message should be localized and sent in the
@@ -35,25 +33,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError {
     };
   }
 
-  factory AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError(
-      code: (() {
-        final guardedValue = map['code'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      details: (() {
-        final guardedValue = map['details'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

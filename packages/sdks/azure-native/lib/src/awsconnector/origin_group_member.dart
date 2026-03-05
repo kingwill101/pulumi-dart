@@ -9,19 +9,20 @@ class OriginGroupMember {
 
   /// Creates a new [OriginGroupMember].
   /// [originId] The ID for an origin in an origin group.
-  OriginGroupMember({this.originId});
+  OriginGroupMember({
+    this.originId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'originId': ?originId};
+    return <String, dynamic>{
+      'originId': ?originId,
+    };
   }
 
   factory OriginGroupMember.fromMap(Map<String, dynamic> map) {
     return OriginGroupMember(
-      originId: (() {
-        final guardedValue = map['originId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      originId: (() { final guardedValue = map['originId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -11,8 +11,7 @@ enum ManagedVirtualNetworkReferenceType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ManagedVirtualNetworkReferenceType value: $value',
-    );
+    throw ArgumentError('Unknown ManagedVirtualNetworkReferenceType value: $value');
   }
 }
+

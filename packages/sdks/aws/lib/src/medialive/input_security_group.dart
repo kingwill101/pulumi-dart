@@ -140,17 +140,13 @@ import 'input_security_group_state.dart';
 class InputSecurityGroup extends pulumi.CustomResource {
   /// ARN of the InputSecurityGroup.
   late final pulumi.Output<String> arn;
-
   /// The list of inputs currently using this InputSecurityGroup.
   late final pulumi.Output<List<String>> inputs;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the InputSecurityGroup. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Whitelist rules. See Whitelist Rules for more details.
   ///
   /// The following arguments are optional:
@@ -165,19 +161,17 @@ class InputSecurityGroup extends pulumi.CustomResource {
     InputSecurityGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:medialive/inputSecurityGroup:InputSecurityGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:medialive/inputSecurityGroup:InputSecurityGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     inputs = registerOutput<List<String>>('inputs');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    whitelistRules = registerOutput<List<Map<String, dynamic>>>(
-      'whitelistRules',
-    );
+    whitelistRules = registerOutput<List<Map<String, dynamic>>>('whitelistRules');
   }
 
   /// Gets an existing [InputSecurityGroup] resource's state with the given [name] and [id].
@@ -198,18 +192,16 @@ class InputSecurityGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:medialive/inputSecurityGroup:InputSecurityGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:medialive/inputSecurityGroup:InputSecurityGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     inputs = registerOutput<List<String>>('inputs');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    whitelistRules = registerOutput<List<Map<String, dynamic>>>(
-      'whitelistRules',
-    );
+    whitelistRules = registerOutput<List<Map<String, dynamic>>>('whitelistRules');
   }
 }

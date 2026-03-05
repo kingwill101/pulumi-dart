@@ -10,49 +10,34 @@ import 'tag_response.dart';
 class AwsEc2IpamPropertiesResponse {
   /// &lt;p&gt;The IPAM's default resource discovery association ID.&lt;/p&gt;
   final pulumi.Input<String>? defaultResourceDiscoveryAssociationId;
-
   /// &lt;p&gt;The IPAM's default resource discovery ID.&lt;/p&gt;
   final pulumi.Input<String>? defaultResourceDiscoveryId;
-
   /// &lt;p&gt;The description for the IPAM.&lt;/p&gt;
   final pulumi.Input<String>? description;
-
   /// &lt;p&gt;The Amazon Resource Name (ARN) of the IPAM.&lt;/p&gt;
   final pulumi.Input<String>? ipamArn;
-
   /// &lt;p&gt;The ID of the IPAM.&lt;/p&gt;
   final pulumi.Input<String>? ipamId;
-
   /// &lt;p&gt;The Amazon Web Services Region of the IPAM.&lt;/p&gt;
   final pulumi.Input<String>? ipamRegion;
-
   /// &lt;p&gt;The operating Regions for an IPAM. Operating Regions are Amazon Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the Amazon Web Services Regions you select as operating Regions.&lt;/p&gt; &lt;p&gt;For more information about operating Regions, see &lt;a href='https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html'&gt;Create an IPAM&lt;/a&gt; in the &lt;i&gt;Amazon VPC IPAM User Guide&lt;/i&gt;.&lt;/p&gt;
   final pulumi.Input<List<IpamOperatingRegionResponse>>? operatingRegions;
-
   /// &lt;p&gt;The Amazon Web Services account ID of the owner of the IPAM.&lt;/p&gt;
   final pulumi.Input<String>? ownerId;
-
   /// &lt;p&gt;The ID of the IPAM's default private scope.&lt;/p&gt;
   final pulumi.Input<String>? privateDefaultScopeId;
-
   /// &lt;p&gt;The ID of the IPAM's default public scope.&lt;/p&gt;
   final pulumi.Input<String>? publicDefaultScopeId;
-
   /// &lt;p&gt;The IPAM's resource discovery association count.&lt;/p&gt;
   final pulumi.Input<int>? resourceDiscoveryAssociationCount;
-
   /// &lt;p&gt;The number of scopes in the IPAM. The scope quota is 5. For more information on quotas, see &lt;a href='https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html'&gt;Quotas in IPAM&lt;/a&gt; in the &lt;i&gt;Amazon VPC IPAM User Guide&lt;/i&gt;. &lt;/p&gt;
   final pulumi.Input<int>? scopeCount;
-
   /// &lt;p&gt;The state of the IPAM.&lt;/p&gt;
   final pulumi.Input<IpamStateEnumValueResponse>? state;
-
   /// &lt;p&gt;The state message.&lt;/p&gt;
   final pulumi.Input<String>? stateMessage;
-
   /// &lt;p&gt;The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key &lt;code&gt;Owner&lt;/code&gt; and the value &lt;code&gt;TeamA&lt;/code&gt;, specify &lt;code&gt;tag:Owner&lt;/code&gt; for the filter name and &lt;code&gt;TeamA&lt;/code&gt; for the filter value.&lt;/p&gt;
   final pulumi.Input<List<TagResponse>>? tags;
-
   /// &lt;p&gt;IPAM is offered in a Free Tier and an Advanced Tier. For more information about the features available in each tier and the costs associated with the tiers, see &lt;a href='http://aws.amazon.com/vpc/pricing/'&gt;Amazon VPC pricing &gt; IPAM tab&lt;/a&gt;.&lt;/p&gt;
   final pulumi.Input<IpamTierEnumValueResponse>? tier;
 
@@ -94,159 +79,44 @@ class AwsEc2IpamPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultResourceDiscoveryAssociationId':
-          ?defaultResourceDiscoveryAssociationId,
+      'defaultResourceDiscoveryAssociationId': ?defaultResourceDiscoveryAssociationId,
       'defaultResourceDiscoveryId': ?defaultResourceDiscoveryId,
       'description': ?description,
       'ipamArn': ?ipamArn,
       'ipamId': ?ipamId,
       'ipamRegion': ?ipamRegion,
-      'operatingRegions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<IpamOperatingRegionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            operatingRegions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  IpamOperatingRegionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'operatingRegions': ?pulumi.Input.mapOptionalInputValue<List<IpamOperatingRegionResponse>, List<Map<String, dynamic>>>(operatingRegions, (value) => pulumi.Input.encodeList<IpamOperatingRegionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ownerId': ?ownerId,
       'privateDefaultScopeId': ?privateDefaultScopeId,
       'publicDefaultScopeId': ?publicDefaultScopeId,
       'resourceDiscoveryAssociationCount': ?resourceDiscoveryAssociationCount,
       'scopeCount': ?scopeCount,
-      'state':
-          ?pulumi.Input.mapOptionalInputValue<
-            IpamStateEnumValueResponse,
-            Map<String, dynamic>
-          >(state, (value) => value.toMap()),
+      'state': ?pulumi.Input.mapOptionalInputValue<IpamStateEnumValueResponse, Map<String, dynamic>>(state, (value) => value.toMap()),
       'stateMessage': ?stateMessage,
-      'tags':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TagResponse>,
-            List<Map<String, dynamic>>
-          >(
-            tags,
-            (value) =>
-                pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'tier':
-          ?pulumi.Input.mapOptionalInputValue<
-            IpamTierEnumValueResponse,
-            Map<String, dynamic>
-          >(tier, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tier': ?pulumi.Input.mapOptionalInputValue<IpamTierEnumValueResponse, Map<String, dynamic>>(tier, (value) => value.toMap()),
     };
   }
 
   factory AwsEc2IpamPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2IpamPropertiesResponse(
-      defaultResourceDiscoveryAssociationId: (() {
-        final guardedValue = map['defaultResourceDiscoveryAssociationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      defaultResourceDiscoveryId: (() {
-        final guardedValue = map['defaultResourceDiscoveryId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipamArn: (() {
-        final guardedValue = map['ipamArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipamId: (() {
-        final guardedValue = map['ipamId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipamRegion: (() {
-        final guardedValue = map['ipamRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operatingRegions: (() {
-        final guardedValue = map['operatingRegions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<IpamOperatingRegionResponse>(
-            guardedValue,
-            (value) => IpamOperatingRegionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      ownerId: (() {
-        final guardedValue = map['ownerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateDefaultScopeId: (() {
-        final guardedValue = map['privateDefaultScopeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicDefaultScopeId: (() {
-        final guardedValue = map['publicDefaultScopeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceDiscoveryAssociationCount: (() {
-        final guardedValue = map['resourceDiscoveryAssociationCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      scopeCount: (() {
-        final guardedValue = map['scopeCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IpamStateEnumValueResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      stateMessage: (() {
-        final guardedValue = map['stateMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TagResponse>(
-            guardedValue,
-            (value) =>
-                TagResponse.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      tier: (() {
-        final guardedValue = map['tier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IpamTierEnumValueResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      defaultResourceDiscoveryAssociationId: (() { final guardedValue = map['defaultResourceDiscoveryAssociationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultResourceDiscoveryId: (() { final guardedValue = map['defaultResourceDiscoveryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipamArn: (() { final guardedValue = map['ipamArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipamId: (() { final guardedValue = map['ipamId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipamRegion: (() { final guardedValue = map['ipamRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operatingRegions: (() { final guardedValue = map['operatingRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpamOperatingRegionResponse>(guardedValue, (value) => IpamOperatingRegionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateDefaultScopeId: (() { final guardedValue = map['privateDefaultScopeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicDefaultScopeId: (() { final guardedValue = map['publicDefaultScopeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceDiscoveryAssociationCount: (() { final guardedValue = map['resourceDiscoveryAssociationCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scopeCount: (() { final guardedValue = map['scopeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IpamStateEnumValueResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      stateMessage: (() { final guardedValue = map['stateMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TagResponse>(guardedValue, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IpamTierEnumValueResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

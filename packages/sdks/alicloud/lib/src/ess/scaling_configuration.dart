@@ -579,124 +579,84 @@ import 'scaling_configuration_state.dart';
 class ScalingConfiguration extends pulumi.CustomResource {
   /// Whether active current scaling configuration in the specified scaling group. Default to `false`.
   late final pulumi.Output<bool> active;
-
   /// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
   late final pulumi.Output<String?> creditSpecification;
-
   /// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> customPriorities;
-
   /// DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
-
   /// The ID of the dedicated host cluster.
   late final pulumi.Output<String?> dedicatedHostClusterId;
-
   /// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
   late final pulumi.Output<bool?> deletionProtection;
-
   /// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
   late final pulumi.Output<bool?> enable;
-
   /// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
   late final pulumi.Output<bool?> forceDelete;
-
   /// Hostname of an ECS instance.
   late final pulumi.Output<String?> hostName;
-
   /// Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
   late final pulumi.Output<String?> httpEndpoint;
-
   /// ID of an image file, indicating the image resource selected when an instance is enabled.
   late final pulumi.Output<String?> imageId;
-
   /// Name of an image file, indicating the image resource selected when an instance is enabled.
   late final pulumi.Output<String?> imageName;
-
   /// Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
   late final pulumi.Output<bool?> imageOptionsLoginAsNonRoot;
-
   /// The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
   late final pulumi.Output<String?> instanceDescription;
-
   /// It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
   late final pulumi.Output<List<String>?> instanceIds;
-
   /// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
   late final pulumi.Output<String?> instanceName;
-
   /// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> instancePatternInfos;
-
   /// Resource type of an ECS instance.
   late final pulumi.Output<String?> instanceType;
-
   /// specify the weight of instance type.  See `instance_type_override` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> instanceTypeOverrides;
-
   /// Resource types of an ECS instance.
   late final pulumi.Output<List<String>?> instanceTypes;
-
   /// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
   late final pulumi.Output<String?> internetChargeType;
-
   /// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
   late final pulumi.Output<int?> internetMaxBandwidthIn;
-
   /// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
   late final pulumi.Output<int?> internetMaxBandwidthOut;
-
   /// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
   late final pulumi.Output<String?> ioOptimized;
-
   /// Whether to use outdated instance type. Default to false.
   late final pulumi.Output<bool?> isOutdated;
-
   /// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
   late final pulumi.Output<String?> keyName;
-
   /// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
   late final pulumi.Output<String?> kmsEncryptedPassword;
-
   /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   late final pulumi.Output<Map<String, String>?> kmsEncryptionContext;
-
   /// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> networkInterfaces;
-
   /// Indicates whether to overwrite the existing data. Default to false.
   late final pulumi.Output<bool?> override;
-
   /// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
   late final pulumi.Output<String?> password;
-
   /// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
   late final pulumi.Output<bool?> passwordInherit;
-
   /// ID of resource group.
   late final pulumi.Output<String?> resourceGroupId;
-
   /// Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
   late final pulumi.Output<String?> roleName;
-
   /// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
   late final pulumi.Output<String> scalingConfigurationName;
-
   /// ID of the scaling group of a scaling configuration.
   late final pulumi.Output<String> scalingGroupId;
-
   /// Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
   late final pulumi.Output<String?> securityEnhancementStrategy;
-
   /// ID of the security group used to create new instance. It is conflict with `security_group_ids`.
   late final pulumi.Output<String?> securityGroupId;
-
   /// List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
   late final pulumi.Output<List<String>?> securityGroupIds;
-
   /// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
   late final pulumi.Output<int?> spotDuration;
-
   /// Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
   ///
   /// &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
@@ -713,48 +673,34 @@ class ScalingConfiguration extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
   late final pulumi.Output<List<Map<String, dynamic>>?> spotPriceLimits;
-
   /// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
   late final pulumi.Output<String?> spotStrategy;
-
   /// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
   late final pulumi.Output<String> substitute;
-
   /// The id of auto snapshot policy for system disk.
   late final pulumi.Output<String?> systemDiskAutoSnapshotPolicyId;
-
   /// Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
   late final pulumi.Output<String?> systemDiskCategory;
-
   /// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
   late final pulumi.Output<String?> systemDiskDescription;
-
   /// The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
   late final pulumi.Output<String?> systemDiskEncryptAlgorithm;
-
   /// Whether to encrypt the system disk.
   late final pulumi.Output<bool?> systemDiskEncrypted;
-
   /// The ID of the KMS key that you want to use to encrypt the system disk.
   late final pulumi.Output<String?> systemDiskKmsKeyId;
-
   /// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
   late final pulumi.Output<String?> systemDiskName;
-
   /// The performance level of the ESSD used as the system disk.
   late final pulumi.Output<String?> systemDiskPerformanceLevel;
-
   /// IOPS measures the number of read and write operations that an EBS device can process per second.
   late final pulumi.Output<int?> systemDiskProvisionedIops;
-
   /// Size of system disk, in GiB. Valid values: Basic disk: 20 to 500, ESSD: The valid values depend on the performance level (PL) of the system disk (PL0 ESSD: 1 to 2048, PL1 ESSD: 20 to 2048, PL2 ESSD: 461 to 2048, PL3 ESSD: 1261 to 2048) , ESSD AutoPL disk: 1 to 2048, Other disk categories: 20 to 2048. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
   late final pulumi.Output<int?> systemDiskSize;
-
   /// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
   late final pulumi.Output<String?> userData;
 
@@ -767,16 +713,14 @@ class ScalingConfiguration extends pulumi.CustomResource {
     ScalingConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/scalingConfiguration:ScalingConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/scalingConfiguration:ScalingConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     active = registerOutput<bool>('active');
     creditSpecification = registerOutput<String?>('creditSpecification');
-    customPriorities = registerOutput<List<Map<String, dynamic>>?>(
-      'customPriorities',
-    );
+    customPriorities = registerOutput<List<Map<String, dynamic>>?>('customPriorities');
     dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
     dedicatedHostClusterId = registerOutput<String?>('dedicatedHostClusterId');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -786,19 +730,13 @@ class ScalingConfiguration extends pulumi.CustomResource {
     httpEndpoint = registerOutput<String?>('httpEndpoint');
     imageId = registerOutput<String?>('imageId');
     imageName = registerOutput<String?>('imageName');
-    imageOptionsLoginAsNonRoot = registerOutput<bool?>(
-      'imageOptionsLoginAsNonRoot',
-    );
+    imageOptionsLoginAsNonRoot = registerOutput<bool?>('imageOptionsLoginAsNonRoot');
     instanceDescription = registerOutput<String?>('instanceDescription');
     instanceIds = registerOutput<List<String>?>('instanceIds');
     instanceName = registerOutput<String?>('instanceName');
-    instancePatternInfos = registerOutput<List<Map<String, dynamic>>?>(
-      'instancePatternInfos',
-    );
+    instancePatternInfos = registerOutput<List<Map<String, dynamic>>?>('instancePatternInfos');
     instanceType = registerOutput<String?>('instanceType');
-    instanceTypeOverrides = registerOutput<List<Map<String, dynamic>>?>(
-      'instanceTypeOverrides',
-    );
+    instanceTypeOverrides = registerOutput<List<Map<String, dynamic>>?>('instanceTypeOverrides');
     instanceTypes = registerOutput<List<String>?>('instanceTypes');
     internetChargeType = registerOutput<String?>('internetChargeType');
     internetMaxBandwidthIn = registerOutput<int?>('internetMaxBandwidthIn');
@@ -807,49 +745,31 @@ class ScalingConfiguration extends pulumi.CustomResource {
     isOutdated = registerOutput<bool?>('isOutdated');
     keyName = registerOutput<String?>('keyName');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>(
-      'networkInterfaces',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>('networkInterfaces');
     override = registerOutput<bool?>('override');
     password = registerOutput<String?>('password');
     passwordInherit = registerOutput<bool?>('passwordInherit');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
     roleName = registerOutput<String?>('roleName');
-    scalingConfigurationName = registerOutput<String>(
-      'scalingConfigurationName',
-    );
+    scalingConfigurationName = registerOutput<String>('scalingConfigurationName');
     scalingGroupId = registerOutput<String>('scalingGroupId');
-    securityEnhancementStrategy = registerOutput<String?>(
-      'securityEnhancementStrategy',
-    );
+    securityEnhancementStrategy = registerOutput<String?>('securityEnhancementStrategy');
     securityGroupId = registerOutput<String?>('securityGroupId');
     securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
     spotDuration = registerOutput<int?>('spotDuration');
-    spotPriceLimits = registerOutput<List<Map<String, dynamic>>?>(
-      'spotPriceLimits',
-    );
+    spotPriceLimits = registerOutput<List<Map<String, dynamic>>?>('spotPriceLimits');
     spotStrategy = registerOutput<String?>('spotStrategy');
     substitute = registerOutput<String>('substitute');
-    systemDiskAutoSnapshotPolicyId = registerOutput<String?>(
-      'systemDiskAutoSnapshotPolicyId',
-    );
+    systemDiskAutoSnapshotPolicyId = registerOutput<String?>('systemDiskAutoSnapshotPolicyId');
     systemDiskCategory = registerOutput<String?>('systemDiskCategory');
     systemDiskDescription = registerOutput<String?>('systemDiskDescription');
-    systemDiskEncryptAlgorithm = registerOutput<String?>(
-      'systemDiskEncryptAlgorithm',
-    );
+    systemDiskEncryptAlgorithm = registerOutput<String?>('systemDiskEncryptAlgorithm');
     systemDiskEncrypted = registerOutput<bool?>('systemDiskEncrypted');
     systemDiskKmsKeyId = registerOutput<String?>('systemDiskKmsKeyId');
     systemDiskName = registerOutput<String?>('systemDiskName');
-    systemDiskPerformanceLevel = registerOutput<String?>(
-      'systemDiskPerformanceLevel',
-    );
-    systemDiskProvisionedIops = registerOutput<int?>(
-      'systemDiskProvisionedIops',
-    );
+    systemDiskPerformanceLevel = registerOutput<String?>('systemDiskPerformanceLevel');
+    systemDiskProvisionedIops = registerOutput<int?>('systemDiskProvisionedIops');
     systemDiskSize = registerOutput<int?>('systemDiskSize');
     tags = registerOutput<Map<String, String>?>('tags');
     userData = registerOutput<String?>('userData');
@@ -873,16 +793,14 @@ class ScalingConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/scalingConfiguration:ScalingConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/scalingConfiguration:ScalingConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     active = registerOutput<bool>('active');
     creditSpecification = registerOutput<String?>('creditSpecification');
-    customPriorities = registerOutput<List<Map<String, dynamic>>?>(
-      'customPriorities',
-    );
+    customPriorities = registerOutput<List<Map<String, dynamic>>?>('customPriorities');
     dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
     dedicatedHostClusterId = registerOutput<String?>('dedicatedHostClusterId');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -892,19 +810,13 @@ class ScalingConfiguration extends pulumi.CustomResource {
     httpEndpoint = registerOutput<String?>('httpEndpoint');
     imageId = registerOutput<String?>('imageId');
     imageName = registerOutput<String?>('imageName');
-    imageOptionsLoginAsNonRoot = registerOutput<bool?>(
-      'imageOptionsLoginAsNonRoot',
-    );
+    imageOptionsLoginAsNonRoot = registerOutput<bool?>('imageOptionsLoginAsNonRoot');
     instanceDescription = registerOutput<String?>('instanceDescription');
     instanceIds = registerOutput<List<String>?>('instanceIds');
     instanceName = registerOutput<String?>('instanceName');
-    instancePatternInfos = registerOutput<List<Map<String, dynamic>>?>(
-      'instancePatternInfos',
-    );
+    instancePatternInfos = registerOutput<List<Map<String, dynamic>>?>('instancePatternInfos');
     instanceType = registerOutput<String?>('instanceType');
-    instanceTypeOverrides = registerOutput<List<Map<String, dynamic>>?>(
-      'instanceTypeOverrides',
-    );
+    instanceTypeOverrides = registerOutput<List<Map<String, dynamic>>?>('instanceTypeOverrides');
     instanceTypes = registerOutput<List<String>?>('instanceTypes');
     internetChargeType = registerOutput<String?>('internetChargeType');
     internetMaxBandwidthIn = registerOutput<int?>('internetMaxBandwidthIn');
@@ -913,49 +825,31 @@ class ScalingConfiguration extends pulumi.CustomResource {
     isOutdated = registerOutput<bool?>('isOutdated');
     keyName = registerOutput<String?>('keyName');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>(
-      'networkInterfaces',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>('networkInterfaces');
     override = registerOutput<bool?>('override');
     password = registerOutput<String?>('password');
     passwordInherit = registerOutput<bool?>('passwordInherit');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
     roleName = registerOutput<String?>('roleName');
-    scalingConfigurationName = registerOutput<String>(
-      'scalingConfigurationName',
-    );
+    scalingConfigurationName = registerOutput<String>('scalingConfigurationName');
     scalingGroupId = registerOutput<String>('scalingGroupId');
-    securityEnhancementStrategy = registerOutput<String?>(
-      'securityEnhancementStrategy',
-    );
+    securityEnhancementStrategy = registerOutput<String?>('securityEnhancementStrategy');
     securityGroupId = registerOutput<String?>('securityGroupId');
     securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
     spotDuration = registerOutput<int?>('spotDuration');
-    spotPriceLimits = registerOutput<List<Map<String, dynamic>>?>(
-      'spotPriceLimits',
-    );
+    spotPriceLimits = registerOutput<List<Map<String, dynamic>>?>('spotPriceLimits');
     spotStrategy = registerOutput<String?>('spotStrategy');
     substitute = registerOutput<String>('substitute');
-    systemDiskAutoSnapshotPolicyId = registerOutput<String?>(
-      'systemDiskAutoSnapshotPolicyId',
-    );
+    systemDiskAutoSnapshotPolicyId = registerOutput<String?>('systemDiskAutoSnapshotPolicyId');
     systemDiskCategory = registerOutput<String?>('systemDiskCategory');
     systemDiskDescription = registerOutput<String?>('systemDiskDescription');
-    systemDiskEncryptAlgorithm = registerOutput<String?>(
-      'systemDiskEncryptAlgorithm',
-    );
+    systemDiskEncryptAlgorithm = registerOutput<String?>('systemDiskEncryptAlgorithm');
     systemDiskEncrypted = registerOutput<bool?>('systemDiskEncrypted');
     systemDiskKmsKeyId = registerOutput<String?>('systemDiskKmsKeyId');
     systemDiskName = registerOutput<String?>('systemDiskName');
-    systemDiskPerformanceLevel = registerOutput<String?>(
-      'systemDiskPerformanceLevel',
-    );
-    systemDiskProvisionedIops = registerOutput<int?>(
-      'systemDiskProvisionedIops',
-    );
+    systemDiskPerformanceLevel = registerOutput<String?>('systemDiskPerformanceLevel');
+    systemDiskProvisionedIops = registerOutput<int?>('systemDiskProvisionedIops');
     systemDiskSize = registerOutput<int?>('systemDiskSize');
     tags = registerOutput<Map<String, String>?>('tags');
     userData = registerOutput<String?>('userData');

@@ -10,29 +10,20 @@ class BareMetalAdminNetworkConfig {
 
   /// Creates a new [BareMetalAdminNetworkConfig].
   /// [islandModeCidr] Configuration for Island mode CIDR.
-  BareMetalAdminNetworkConfig({this.islandModeCidr});
+  BareMetalAdminNetworkConfig({
+    this.islandModeCidr,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'islandModeCidr':
-          ?pulumi.Input.mapOptionalInputValue<
-            BareMetalAdminIslandModeCidrConfig,
-            Map<String, dynamic>
-          >(islandModeCidr, (value) => value.toMap()),
+      'islandModeCidr': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminIslandModeCidrConfig, Map<String, dynamic>>(islandModeCidr, (value) => value.toMap()),
     };
   }
 
   factory BareMetalAdminNetworkConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminNetworkConfig(
-      islandModeCidr: (() {
-        final guardedValue = map['islandModeCidr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BareMetalAdminIslandModeCidrConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      islandModeCidr: (() { final guardedValue = map['islandModeCidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalAdminIslandModeCidrConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

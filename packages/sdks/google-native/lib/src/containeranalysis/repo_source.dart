@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepoSource {
   /// Name of the branch to build.
   final pulumi.Input<String>? branchName;
-
   /// Explicit commit SHA to build.
   final pulumi.Input<String>? commitSha;
-
   /// ID of the project that owns the repo.
   final pulumi.Input<String>? project;
-
   /// Name of the repo.
   final pulumi.Input<String>? repoName;
-
   /// Name of the tag to build.
   final pulumi.Input<String>? tagName;
 
@@ -45,31 +41,12 @@ class RepoSource {
 
   factory RepoSource.fromMap(Map<String, dynamic> map) {
     return RepoSource(
-      branchName: (() {
-        final guardedValue = map['branchName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      commitSha: (() {
-        final guardedValue = map['commitSha'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      repoName: (() {
-        final guardedValue = map['repoName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tagName: (() {
-        final guardedValue = map['tagName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      branchName: (() { final guardedValue = map['branchName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      commitSha: (() { final guardedValue = map['commitSha']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      repoName: (() { final guardedValue = map['repoName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tagName: (() { final guardedValue = map['tagName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

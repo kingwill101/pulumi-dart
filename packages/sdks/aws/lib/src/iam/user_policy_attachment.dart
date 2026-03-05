@@ -173,7 +173,6 @@ import 'user_policy_attachment_state.dart';
 class UserPolicyAttachment extends pulumi.CustomResource {
   /// The ARN of the policy you want to apply
   late final pulumi.Output<String> policyArn;
-
   /// The user the policy should be applied to
   late final pulumi.Output<String> user;
 
@@ -186,11 +185,11 @@ class UserPolicyAttachment extends pulumi.CustomResource {
     UserPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/userPolicyAttachment:UserPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/userPolicyAttachment:UserPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyArn = registerOutput<String>('policyArn');
     user = registerOutput<String>('user');
   }
@@ -213,11 +212,11 @@ class UserPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/userPolicyAttachment:UserPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/userPolicyAttachment:UserPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyArn = registerOutput<String>('policyArn');
     user = registerOutput<String>('user');
   }

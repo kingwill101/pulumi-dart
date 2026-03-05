@@ -398,76 +398,50 @@ import 'sub_resource_response.dart';
 class ExpressRouteCircuit extends pulumi.CustomResource {
   /// Allow classic operations.
   late final pulumi.Output<bool?> allowClassicOperations;
-
   /// The authorizationKey.
   late final pulumi.Output<String?> authorizationKey;
-
   /// The authorization status of the Circuit.
   late final pulumi.Output<String> authorizationStatus;
-
   /// The list of authorizations.
   late final pulumi.Output<List<Map<String, dynamic>>?> authorizations;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
   late final pulumi.Output<double?> bandwidthInGbps;
-
   /// The CircuitProvisioningState state of the resource.
   late final pulumi.Output<String?> circuitProvisioningState;
-
   /// Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
   late final pulumi.Output<bool?> enableDirectPortRateLimit;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
   late final pulumi.Output<SubResourceResponse?> expressRoutePort;
-
   /// The GatewayManager Etag.
   late final pulumi.Output<String?> gatewayManagerEtag;
-
   /// Flag denoting global reach status.
   late final pulumi.Output<bool?> globalReachEnabled;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The list of peerings.
   late final pulumi.Output<List<Map<String, dynamic>>?> peerings;
-
   /// The provisioning state of the express route circuit resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The ServiceKey.
   late final pulumi.Output<String?> serviceKey;
-
   /// The ServiceProviderNotes.
   late final pulumi.Output<String?> serviceProviderNotes;
-
   /// The ServiceProviderProperties.
-  late final pulumi.Output<
-    ExpressRouteCircuitServiceProviderPropertiesResponse?
-  >
-  serviceProviderProperties;
-
+  late final pulumi.Output<ExpressRouteCircuitServiceProviderPropertiesResponse?> serviceProviderProperties;
   /// The ServiceProviderProvisioningState state of the resource.
   late final pulumi.Output<String?> serviceProviderProvisioningState;
-
   /// The SKU.
   late final pulumi.Output<ExpressRouteCircuitSkuResponse?> sku;
-
   /// The identifier of the circuit traffic. Outer tag for QinQ encapsulation.
   late final pulumi.Output<int> stag;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -480,36 +454,21 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
     ExpressRouteCircuitArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:ExpressRouteCircuit',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:ExpressRouteCircuit',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowClassicOperations = registerOutput<bool?>('allowClassicOperations');
     authorizationKey = registerOutput<String?>('authorizationKey');
     authorizationStatus = registerOutput<String>('authorizationStatus');
-    authorizations = registerOutput<List<Map<String, dynamic>>?>(
-      'authorizations',
-    );
+    authorizations = registerOutput<List<Map<String, dynamic>>?>('authorizations');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     bandwidthInGbps = registerOutput<double?>('bandwidthInGbps');
-    circuitProvisioningState = registerOutput<String?>(
-      'circuitProvisioningState',
-    );
-    enableDirectPortRateLimit = registerOutput<bool?>(
-      'enableDirectPortRateLimit',
-    );
+    circuitProvisioningState = registerOutput<String?>('circuitProvisioningState');
+    enableDirectPortRateLimit = registerOutput<bool?>('enableDirectPortRateLimit');
     etag = registerOutput<String>('etag');
-    expressRoutePort = registerOutput<SubResourceResponse?>(
-      'expressRoutePort',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    expressRoutePort = registerOutput<SubResourceResponse?>('expressRoutePort', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gatewayManagerEtag = registerOutput<String?>('gatewayManagerEtag');
     globalReachEnabled = registerOutput<bool?>('globalReachEnabled');
     location = registerOutput<String?>('location');
@@ -518,30 +477,9 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     serviceKey = registerOutput<String?>('serviceKey');
     serviceProviderNotes = registerOutput<String?>('serviceProviderNotes');
-    serviceProviderProperties =
-        registerOutput<ExpressRouteCircuitServiceProviderPropertiesResponse?>(
-          'serviceProviderProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ExpressRouteCircuitServiceProviderPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    serviceProviderProvisioningState = registerOutput<String?>(
-      'serviceProviderProvisioningState',
-    );
-    sku = registerOutput<ExpressRouteCircuitSkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExpressRouteCircuitSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serviceProviderProperties = registerOutput<ExpressRouteCircuitServiceProviderPropertiesResponse?>('serviceProviderProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteCircuitServiceProviderPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceProviderProvisioningState = registerOutput<String?>('serviceProviderProvisioningState');
+    sku = registerOutput<ExpressRouteCircuitSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteCircuitSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     stag = registerOutput<int>('stag');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

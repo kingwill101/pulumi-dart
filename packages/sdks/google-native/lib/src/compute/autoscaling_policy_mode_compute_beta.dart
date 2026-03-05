@@ -14,8 +14,7 @@ enum AutoscalingPolicyModeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AutoscalingPolicyModeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown AutoscalingPolicyModeComputeBeta value: $value');
   }
 }
+

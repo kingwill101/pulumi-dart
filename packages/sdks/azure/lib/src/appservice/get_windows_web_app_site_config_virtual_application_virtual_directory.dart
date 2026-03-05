@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsWebAppSiteConfigVirtualApplicationVirtualDirectory {
   /// The path on disk to the Virtual Directory
   final pulumi.Input<String> physicalPath;
-
   /// The Virtual Path of the Virtual Directory.
   final pulumi.Input<String> virtualPath;
 
@@ -24,12 +23,11 @@ class GetWindowsWebAppSiteConfigVirtualApplicationVirtualDirectory {
     };
   }
 
-  factory GetWindowsWebAppSiteConfigVirtualApplicationVirtualDirectory.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWindowsWebAppSiteConfigVirtualApplicationVirtualDirectory.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteConfigVirtualApplicationVirtualDirectory(
       physicalPath: pulumi.Input.fromValue(map['physicalPath'] as String),
       virtualPath: pulumi.Input.fromValue(map['virtualPath'] as String),
     );
   }
 }
+

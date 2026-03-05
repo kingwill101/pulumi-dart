@@ -8,19 +8,20 @@ class DomainDevicesAudioSdlOutput {
 
   /// Creates a new [DomainDevicesAudioSdlOutput].
   /// [bufferCount] Defines the number of output buffers in the SDL audio configuration.
-  DomainDevicesAudioSdlOutput({this.bufferCount});
+  DomainDevicesAudioSdlOutput({
+    this.bufferCount,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bufferCount': ?bufferCount};
+    return <String, dynamic>{
+      'bufferCount': ?bufferCount,
+    };
   }
 
   factory DomainDevicesAudioSdlOutput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioSdlOutput(
-      bufferCount: (() {
-        final guardedValue = map['bufferCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      bufferCount: (() { final guardedValue = map['bufferCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

@@ -7,16 +7,12 @@ import 'status_response.dart';
 class UpgradeStatusResponse {
   /// Provides details on the state of the upgrade operation in case of an error.
   final pulumi.Input<StatusResponse> error;
-
   /// The version from which we upgraded.
   final pulumi.Input<String> previousVersion;
-
   /// The time the operation was started.
   final pulumi.Input<String> startTime;
-
   /// The state of the upgradeAppliance operation.
   final pulumi.Input<String> state;
-
   /// The version to upgrade to.
   final pulumi.Input<String> version;
 
@@ -36,10 +32,7 @@ class UpgradeStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(
-        error,
-        (value) => value.toMap(),
-      ),
+      'error': pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'previousVersion': previousVersion,
       'startTime': startTime,
       'state': state,
@@ -49,9 +42,7 @@ class UpgradeStatusResponse {
 
   factory UpgradeStatusResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeStatusResponse(
-      error: pulumi.Input.fromValue(
-        StatusResponse.fromMap((map['error']! as Map).cast<String, dynamic>()),
-      ),
+      error: pulumi.Input.fromValue(StatusResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
       previousVersion: pulumi.Input.fromValue(map['previousVersion'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
@@ -59,3 +50,4 @@ class UpgradeStatusResponse {
     );
   }
 }
+

@@ -9,7 +9,9 @@ class LicenseConfigurationResponse {
 
   /// Creates a new [LicenseConfigurationResponse].
   /// [licenseConfigurationArn] &lt;p&gt;The Amazon Resource Name (ARN) of the license configuration.&lt;/p&gt;
-  LicenseConfigurationResponse({this.licenseConfigurationArn});
+  LicenseConfigurationResponse({
+    this.licenseConfigurationArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class LicenseConfigurationResponse {
 
   factory LicenseConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LicenseConfigurationResponse(
-      licenseConfigurationArn: (() {
-        final guardedValue = map['licenseConfigurationArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      licenseConfigurationArn: (() { final guardedValue = map['licenseConfigurationArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -15,15 +15,17 @@ class InsightFiltersResourceAwsS3BucketOwnerName {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comparison': comparison, 'value': value};
+    return <String, dynamic>{
+      'comparison': comparison,
+      'value': value,
+    };
   }
 
-  factory InsightFiltersResourceAwsS3BucketOwnerName.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InsightFiltersResourceAwsS3BucketOwnerName.fromMap(Map<String, dynamic> map) {
     return InsightFiltersResourceAwsS3BucketOwnerName(
       comparison: pulumi.Input.fromValue(map['comparison'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

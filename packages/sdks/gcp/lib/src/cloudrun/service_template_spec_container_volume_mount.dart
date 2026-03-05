@@ -6,10 +6,8 @@ class ServiceTemplateSpecContainerVolumeMount {
   /// Path within the container at which the volume should be mounted.  Must
   /// not contain ':'.
   final pulumi.Input<String> mountPath;
-
   /// This must match the Name of a Volume.
   final pulumi.Input<String> name;
-
   /// Path within the volume from which the container's volume should be mounted.
   final pulumi.Input<String>? subPath;
 
@@ -31,17 +29,12 @@ class ServiceTemplateSpecContainerVolumeMount {
     };
   }
 
-  factory ServiceTemplateSpecContainerVolumeMount.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceTemplateSpecContainerVolumeMount.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerVolumeMount(
       mountPath: pulumi.Input.fromValue(map['mountPath'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      subPath: (() {
-        final guardedValue = map['subPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subPath: (() { final guardedValue = map['subPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

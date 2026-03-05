@@ -14,8 +14,7 @@ enum ExecStepConfigInterpreterOsconfigV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ExecStepConfigInterpreterOsconfigV1beta value: $value',
-    );
+    throw ArgumentError('Unknown ExecStepConfigInterpreterOsconfigV1beta value: $value');
   }
 }
+

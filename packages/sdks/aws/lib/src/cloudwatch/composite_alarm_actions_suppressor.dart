@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CompositeAlarmActionsSuppressor {
   /// Can be an AlarmName or an Amazon Resource Name (ARN) from an existing alarm.
   final pulumi.Input<String> alarm;
-
   /// The maximum time in seconds that the composite alarm waits after suppressor alarm goes out of the `ALARM` state. After this time, the composite alarm performs its actions.
   final pulumi.Input<int> extensionPeriod;
-
   /// The maximum time in seconds that the composite alarm waits for the suppressor alarm to go into the `ALARM` state. After this time, the composite alarm performs its actions.
   final pulumi.Input<int> waitPeriod;
 
@@ -38,3 +36,4 @@ class CompositeAlarmActionsSuppressor {
     );
   }
 }
+

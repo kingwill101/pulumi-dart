@@ -6,14 +6,10 @@ import 'backend_circuit_breaker_rule_failure_condition.dart';
 class BackendCircuitBreakerRule {
   /// Specifies whether the circuit breaker should honor `Retry-After` requests. Defaults to `false`.
   final pulumi.Input<bool>? acceptRetryAfterEnabled;
-
   /// A `failure_condition` block as defined below.
-  final pulumi.Input<BackendCircuitBreakerRuleFailureCondition>
-  failureCondition;
-
+  final pulumi.Input<BackendCircuitBreakerRuleFailureCondition> failureCondition;
   /// The name of the circuit breaker rule.
   final pulumi.Input<String> name;
-
   /// Specifies the duration for which the circuit remains open before retrying, in ISO 8601 format.
   final pulumi.Input<String> tripDuration;
 
@@ -32,11 +28,7 @@ class BackendCircuitBreakerRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acceptRetryAfterEnabled': ?acceptRetryAfterEnabled,
-      'failureCondition':
-          pulumi.Input.mapInputValue<
-            BackendCircuitBreakerRuleFailureCondition,
-            Map<String, dynamic>
-          >(failureCondition, (value) => value.toMap()),
+      'failureCondition': pulumi.Input.mapInputValue<BackendCircuitBreakerRuleFailureCondition, Map<String, dynamic>>(failureCondition, (value) => value.toMap()),
       'name': name,
       'tripDuration': tripDuration,
     };
@@ -44,18 +36,11 @@ class BackendCircuitBreakerRule {
 
   factory BackendCircuitBreakerRule.fromMap(Map<String, dynamic> map) {
     return BackendCircuitBreakerRule(
-      acceptRetryAfterEnabled: (() {
-        final guardedValue = map['acceptRetryAfterEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      failureCondition: pulumi.Input.fromValue(
-        BackendCircuitBreakerRuleFailureCondition.fromMap(
-          (map['failureCondition']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      acceptRetryAfterEnabled: (() { final guardedValue = map['acceptRetryAfterEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      failureCondition: pulumi.Input.fromValue(BackendCircuitBreakerRuleFailureCondition.fromMap((map['failureCondition']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
       tripDuration: pulumi.Input.fromValue(map['tripDuration'] as String),
     );
   }
 }
+

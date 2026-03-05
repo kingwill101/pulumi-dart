@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchemaArgs {
   final pulumi.Input<String> collectionId;
   final pulumi.Input<String> dataStoreId;
-
   /// The JSON representation of the schema.
   final pulumi.Input<String>? jsonSchema;
   final pulumi.Input<String>? location;
-
   /// Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
-
   /// Required. The ID to use for the Schema, which will become the final component of the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
   final pulumi.Input<String> schemaId;
-
   /// The structured representation of the schema.
   final pulumi.Input<Map<String, String>>? structSchema;
 
@@ -61,34 +57,13 @@ class SchemaArgs {
     return SchemaArgs(
       collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
       dataStoreId: pulumi.Input.fromValue(map['dataStoreId'] as String),
-      jsonSchema: (() {
-        final guardedValue = map['jsonSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      jsonSchema: (() { final guardedValue = map['jsonSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schemaId: pulumi.Input.fromValue(map['schemaId'] as String),
-      structSchema: (() {
-        final guardedValue = map['structSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      structSchema: (() { final guardedValue = map['structSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

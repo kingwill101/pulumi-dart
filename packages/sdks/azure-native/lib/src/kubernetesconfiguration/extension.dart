@@ -415,66 +415,45 @@ import 'system_data_response.dart';
 /// ```
 class Extension extends pulumi.CustomResource {
   /// Identity of the Extension resource in an AKS cluster
-  late final pulumi.Output<ExtensionResponseAksAssignedIdentity?>
-  aksAssignedIdentity;
-
+  late final pulumi.Output<ExtensionResponseAksAssignedIdentity?> aksAssignedIdentity;
   /// Flag to note if this extension participates in auto upgrade of minor version, or not.
   late final pulumi.Output<bool?> autoUpgradeMinorVersion;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Configuration settings that are sensitive, as name-value pairs for configuring this extension.
   late final pulumi.Output<Map<String, String>?> configurationProtectedSettings;
-
   /// Configuration settings, as name-value pairs for configuring this extension.
   late final pulumi.Output<Map<String, String>?> configurationSettings;
-
   /// Currently installed version of the extension.
   late final pulumi.Output<String> currentVersion;
-
   /// Custom Location settings properties.
   late final pulumi.Output<Map<String, String>> customLocationSettings;
-
   /// Error information from the Agent - e.g. errors during installation.
   late final pulumi.Output<ErrorDetailResponse> errorInfo;
-
   /// Type of the Extension, of which this resource is an instance of.  It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
   late final pulumi.Output<String?> extensionType;
-
   /// Identity of the Extension resource
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// Flag to note if this extension is a system extension
   late final pulumi.Output<bool> isSystemExtension;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Uri of the Helm package
   late final pulumi.Output<String> packageUri;
-
   /// The plan information.
   late final pulumi.Output<PlanResponse?> plan;
-
   /// Status of installation of this extension.
   late final pulumi.Output<String> provisioningState;
-
   /// ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
   late final pulumi.Output<String?> releaseTrain;
-
   /// Scope at which the extension is installed.
   late final pulumi.Output<ScopeResponse?> scope;
-
   /// Status from this extension.
   late final pulumi.Output<List<Map<String, dynamic>>?> statuses;
-
   /// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'.
   late final pulumi.Output<String?> version;
 
@@ -487,90 +466,30 @@ class Extension extends pulumi.CustomResource {
     ExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:kubernetesconfiguration:Extension',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    aksAssignedIdentity = registerOutput<ExtensionResponseAksAssignedIdentity?>(
-      'aksAssignedIdentity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtensionResponseAksAssignedIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:kubernetesconfiguration:Extension',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    aksAssignedIdentity = registerOutput<ExtensionResponseAksAssignedIdentity?>('aksAssignedIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionResponseAksAssignedIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    configurationProtectedSettings = registerOutput<Map<String, String>?>(
-      'configurationProtectedSettings',
-    );
-    configurationSettings = registerOutput<Map<String, String>?>(
-      'configurationSettings',
-    );
+    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
+    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings');
     currentVersion = registerOutput<String>('currentVersion');
-    customLocationSettings = registerOutput<Map<String, String>>(
-      'customLocationSettings',
-    );
-    errorInfo = registerOutput<ErrorDetailResponse>(
-      'errorInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ErrorDetailResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customLocationSettings = registerOutput<Map<String, String>>('customLocationSettings');
+    errorInfo = registerOutput<ErrorDetailResponse>('errorInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     extensionType = registerOutput<String?>('extensionType');
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isSystemExtension = registerOutput<bool>('isSystemExtension');
     this.name = registerOutput<String>('name');
     packageUri = registerOutput<String>('packageUri');
-    plan = registerOutput<PlanResponse?>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     releaseTrain = registerOutput<String?>('releaseTrain');
-    scope = registerOutput<ScopeResponse?>(
-      'scope',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScopeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scope = registerOutput<ScopeResponse?>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statuses = registerOutput<List<Map<String, dynamic>>?>('statuses');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }

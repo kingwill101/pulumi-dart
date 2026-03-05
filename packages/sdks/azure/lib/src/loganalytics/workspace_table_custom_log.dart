@@ -233,37 +233,28 @@ import 'workspace_table_custom_log_state.dart';
 class WorkspaceTableCustomLog extends pulumi.CustomResource {
   /// One or more `column` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> columns;
-
   /// The description of the table.
   late final pulumi.Output<String?> description;
-
   /// The display name of the table.
   late final pulumi.Output<String?> displayName;
-
   /// Specifies the name of the Log Analytics Workspace Table Custom Log. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `name` must end with `_CL`.
   late final pulumi.Output<String> name;
-
   /// Specify the system how to handle and charge the logs ingested to the table. Possible values are `Analytics` and `Basic`. Defaults to `Analytics`.
   ///
   /// &gt; **Note:** Changing the table's `plan` is limited to once a week.
   late final pulumi.Output<String?> plan;
-
   /// The table's retention in days. Possible values range between `4` and `730`.
   ///
   /// &gt; **Note:** `retention_in_days` cannot be set when `plan` is set to `Basic` because the retention is fixed.
   late final pulumi.Output<int?> retentionInDays;
-
   /// A list of solutions associated with the table.
   late final pulumi.Output<List<String>> solutions;
-
   /// One or more `standard_column` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> standardColumns;
-
   /// The table's total retention in days. Possible values range between `4` and `730`; or `1095`, `1460`, `1826`, `2191`, `2556`, `2922`, `3288`, `3653`, `4018`, or `4383`.
   late final pulumi.Output<int?> totalRetentionInDays;
-
   /// The object ID of the Log Analytics Workspace that contains the table. Changing this forces a new resource to be created.
   late final pulumi.Output<String> workspaceId;
 
@@ -276,11 +267,11 @@ class WorkspaceTableCustomLog extends pulumi.CustomResource {
     WorkspaceTableCustomLogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/workspaceTableCustomLog:WorkspaceTableCustomLog',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/workspaceTableCustomLog:WorkspaceTableCustomLog',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     columns = registerOutput<List<Map<String, dynamic>>>('columns');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -288,9 +279,7 @@ class WorkspaceTableCustomLog extends pulumi.CustomResource {
     plan = registerOutput<String?>('plan');
     retentionInDays = registerOutput<int?>('retentionInDays');
     solutions = registerOutput<List<String>>('solutions');
-    standardColumns = registerOutput<List<Map<String, dynamic>>>(
-      'standardColumns',
-    );
+    standardColumns = registerOutput<List<Map<String, dynamic>>>('standardColumns');
     totalRetentionInDays = registerOutput<int?>('totalRetentionInDays');
     workspaceId = registerOutput<String>('workspaceId');
   }
@@ -313,11 +302,11 @@ class WorkspaceTableCustomLog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/workspaceTableCustomLog:WorkspaceTableCustomLog',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/workspaceTableCustomLog:WorkspaceTableCustomLog',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     columns = registerOutput<List<Map<String, dynamic>>>('columns');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -325,9 +314,7 @@ class WorkspaceTableCustomLog extends pulumi.CustomResource {
     plan = registerOutput<String?>('plan');
     retentionInDays = registerOutput<int?>('retentionInDays');
     solutions = registerOutput<List<String>>('solutions');
-    standardColumns = registerOutput<List<Map<String, dynamic>>>(
-      'standardColumns',
-    );
+    standardColumns = registerOutput<List<Map<String, dynamic>>>('standardColumns');
     totalRetentionInDays = registerOutput<int?>('totalRetentionInDays');
     workspaceId = registerOutput<String>('workspaceId');
   }

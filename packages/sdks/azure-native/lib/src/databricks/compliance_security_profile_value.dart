@@ -14,3 +14,4 @@ enum ComplianceSecurityProfileValue {
     throw ArgumentError('Unknown ComplianceSecurityProfileValue value: $value');
   }
 }
+

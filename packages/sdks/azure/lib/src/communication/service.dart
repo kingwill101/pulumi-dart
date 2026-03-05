@@ -157,28 +157,20 @@ import 'service_state.dart';
 class Service extends pulumi.CustomResource {
   /// The location where the Communication service stores its data at rest. Possible values are `Africa`, `Asia Pacific`, `Australia`, `Brazil`, `Canada`, `Europe`, `France`, `Germany`, `India`, `Japan`, `Korea`, `Norway`, `Switzerland`, `UAE`, `UK`, `usgov` and `United States`. Defaults to `United States`. Changing this forces a new Communication Service to be created.
   late final pulumi.Output<String?> dataLocation;
-
   /// The hostname of the Communication Service
   late final pulumi.Output<String> hostname;
-
   /// The name of the Communication Service resource. Changing this forces a new Communication Service to be created.
   late final pulumi.Output<String> name;
-
   /// The primary connection string of the Communication Service.
   late final pulumi.Output<String> primaryConnectionString;
-
   /// The primary key of the Communication Service.
   late final pulumi.Output<String> primaryKey;
-
   /// The name of the Resource Group where the Communication Service should exist. Changing this forces a new Communication Service to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The secondary connection string of the Communication Service.
   late final pulumi.Output<String> secondaryConnectionString;
-
   /// The secondary key of the Communication Service.
   late final pulumi.Output<String> secondaryKey;
-
   /// A mapping of tags which should be assigned to the Communication Service.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -191,20 +183,18 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:communication/service:Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:communication/service:Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataLocation = registerOutput<String?>('dataLocation');
     hostname = registerOutput<String>('hostname');
     this.name = registerOutput<String>('name');
     primaryConnectionString = registerOutput<String>('primaryConnectionString');
     primaryKey = registerOutput<String>('primaryKey');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>(
-      'secondaryConnectionString',
-    );
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
     secondaryKey = registerOutput<String>('secondaryKey');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -227,20 +217,18 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:communication/service:Service',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:communication/service:Service',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataLocation = registerOutput<String?>('dataLocation');
     hostname = registerOutput<String>('hostname');
     this.name = registerOutput<String>('name');
     primaryConnectionString = registerOutput<String>('primaryConnectionString');
     primaryKey = registerOutput<String>('primaryKey');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>(
-      'secondaryConnectionString',
-    );
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
     secondaryKey = registerOutput<String>('secondaryKey');
     tags = registerOutput<Map<String, String>?>('tags');
   }

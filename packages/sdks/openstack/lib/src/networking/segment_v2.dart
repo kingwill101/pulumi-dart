@@ -159,39 +159,30 @@ import 'segment_v2_state.dart';
 class SegmentV2 extends pulumi.CustomResource {
   /// Creation timestamp (RFC3339 format).
   late final pulumi.Output<String> createdAt;
-
   /// A description for the segment.
   late final pulumi.Output<String?> description;
-
   /// A name for the segment.
   late final pulumi.Output<String> name;
-
   /// The UUID of the network this segment belongs to.
   /// Changing this will create a new segment.
   late final pulumi.Output<String> networkId;
-
   /// The network type. Valid values depend on the
   /// backend (e.g., `vlan`, `vxlan`, `flat`, `gre`, `geneve`, `local`). Changing
   /// this will create a new segment.
   late final pulumi.Output<String> networkType;
-
   /// The name of the physical network. Changing this
   /// will create a new segment.
   late final pulumi.Output<String?> physicalNetwork;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron network. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// segment.
   late final pulumi.Output<String> region;
-
   /// The revision number of the segment.
   late final pulumi.Output<int> revisionNumber;
-
   /// A segmentation identifier. Changing is allowed
   /// only for `vlan`.
   late final pulumi.Output<int> segmentationId;
-
   /// Last update timestamp (RFC3339 format).
   late final pulumi.Output<String> updatedAt;
 
@@ -204,11 +195,11 @@ class SegmentV2 extends pulumi.CustomResource {
     SegmentV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/segmentV2:SegmentV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/segmentV2:SegmentV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -239,11 +230,11 @@ class SegmentV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/segmentV2:SegmentV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/segmentV2:SegmentV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

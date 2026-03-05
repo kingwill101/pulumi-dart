@@ -10,10 +10,8 @@ import 'load_balancer_intranet_intranet.dart';
 class LoadBalancerIntranetArgs {
   /// The target application ID that needs to be bound to the SLB.
   final pulumi.Input<String> appId;
-
   /// The intranet SLB ID.
   final pulumi.Input<String>? intranetSlbId;
-
   /// The bound private network SLB. See `intranet` below.
   final pulumi.Input<List<LoadBalancerIntranetIntranet>> intranets;
 
@@ -31,37 +29,16 @@ class LoadBalancerIntranetArgs {
     return <String, dynamic>{
       'appId': appId,
       'intranetSlbId': ?intranetSlbId,
-      'intranets':
-          pulumi.Input.mapInputValue<
-            List<LoadBalancerIntranetIntranet>,
-            List<Map<String, dynamic>>
-          >(
-            intranets,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LoadBalancerIntranetIntranet,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'intranets': pulumi.Input.mapInputValue<List<LoadBalancerIntranetIntranet>, List<Map<String, dynamic>>>(intranets, (value) => pulumi.Input.encodeList<LoadBalancerIntranetIntranet, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LoadBalancerIntranetArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerIntranetArgs(
       appId: pulumi.Input.fromValue(map['appId'] as String),
-      intranetSlbId: (() {
-        final guardedValue = map['intranetSlbId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      intranets: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<LoadBalancerIntranetIntranet>(
-          map['intranets']!,
-          (value) => LoadBalancerIntranetIntranet.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      intranetSlbId: (() { final guardedValue = map['intranetSlbId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      intranets: pulumi.Input.fromValue(pulumi.Input.decodeList<LoadBalancerIntranetIntranet>(map['intranets']!, (value) => LoadBalancerIntranetIntranet.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

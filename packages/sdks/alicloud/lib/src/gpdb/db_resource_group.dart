@@ -402,13 +402,10 @@ import 'db_resource_group_state.dart';
 class DbResourceGroup extends pulumi.CustomResource {
   /// The instance ID.&gt; You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
   late final pulumi.Output<String> dbInstanceId;
-
   /// Resource group configuration.
   late final pulumi.Output<String> resourceGroupConfig;
-
   /// Resource group name.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Role List
   late final pulumi.Output<List<String>?> roleLists;
 
@@ -421,11 +418,11 @@ class DbResourceGroup extends pulumi.CustomResource {
     DbResourceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/dbResourceGroup:DbResourceGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/dbResourceGroup:DbResourceGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbInstanceId = registerOutput<String>('dbInstanceId');
     resourceGroupConfig = registerOutput<String>('resourceGroupConfig');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -450,11 +447,11 @@ class DbResourceGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/dbResourceGroup:DbResourceGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/dbResourceGroup:DbResourceGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbInstanceId = registerOutput<String>('dbInstanceId');
     resourceGroupConfig = registerOutput<String>('resourceGroupConfig');
     resourceGroupName = registerOutput<String>('resourceGroupName');

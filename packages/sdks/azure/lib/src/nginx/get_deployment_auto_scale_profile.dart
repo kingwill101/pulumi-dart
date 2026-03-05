@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeploymentAutoScaleProfile {
   /// The maximum number of NGINX capacity units for this NGINX Deployment.
   final pulumi.Input<int> maxCapacity;
-
   /// The minimum number of NGINX capacity units for this NGINX Deployment.
   final pulumi.Input<int> minCapacity;
-
   /// The name of this NGINX Deployment.
   final pulumi.Input<String> name;
 
@@ -38,3 +36,4 @@ class GetDeploymentAutoScaleProfile {
     );
   }
 }
+

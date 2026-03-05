@@ -7,9 +7,7 @@ import 'classic_alert_settings_response.dart';
 /// Monitoring Settings of the vault
 class MonitoringSettingsResponse {
   /// Settings for Azure Monitor based alerts
-  final pulumi.Input<AzureMonitorAlertSettingsResponse>?
-  azureMonitorAlertSettings;
-
+  final pulumi.Input<AzureMonitorAlertSettingsResponse>? azureMonitorAlertSettings;
   /// Settings for classic alerts
   final pulumi.Input<ClassicAlertSettingsResponse>? classicAlertSettings;
 
@@ -23,39 +21,16 @@ class MonitoringSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureMonitorAlertSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureMonitorAlertSettingsResponse,
-            Map<String, dynamic>
-          >(azureMonitorAlertSettings, (value) => value.toMap()),
-      'classicAlertSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClassicAlertSettingsResponse,
-            Map<String, dynamic>
-          >(classicAlertSettings, (value) => value.toMap()),
+      'azureMonitorAlertSettings': ?pulumi.Input.mapOptionalInputValue<AzureMonitorAlertSettingsResponse, Map<String, dynamic>>(azureMonitorAlertSettings, (value) => value.toMap()),
+      'classicAlertSettings': ?pulumi.Input.mapOptionalInputValue<ClassicAlertSettingsResponse, Map<String, dynamic>>(classicAlertSettings, (value) => value.toMap()),
     };
   }
 
   factory MonitoringSettingsResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringSettingsResponse(
-      azureMonitorAlertSettings: (() {
-        final guardedValue = map['azureMonitorAlertSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureMonitorAlertSettingsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      classicAlertSettings: (() {
-        final guardedValue = map['classicAlertSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClassicAlertSettingsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      azureMonitorAlertSettings: (() { final guardedValue = map['azureMonitorAlertSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureMonitorAlertSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      classicAlertSettings: (() { final guardedValue = map['classicAlertSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClassicAlertSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

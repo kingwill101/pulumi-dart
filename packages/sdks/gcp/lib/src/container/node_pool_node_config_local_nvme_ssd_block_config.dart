@@ -8,17 +8,20 @@ class NodePoolNodeConfigLocalNvmeSsdBlockConfig {
 
   /// Creates a new [NodePoolNodeConfigLocalNvmeSsdBlockConfig].
   /// [localSsdCount] Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
-  NodePoolNodeConfigLocalNvmeSsdBlockConfig({required this.localSsdCount});
+  NodePoolNodeConfigLocalNvmeSsdBlockConfig({
+    required this.localSsdCount,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'localSsdCount': localSsdCount};
+    return <String, dynamic>{
+      'localSsdCount': localSsdCount,
+    };
   }
 
-  factory NodePoolNodeConfigLocalNvmeSsdBlockConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NodePoolNodeConfigLocalNvmeSsdBlockConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigLocalNvmeSsdBlockConfig(
       localSsdCount: pulumi.Input.fromValue(map['localSsdCount'] as int),
     );
   }
 }
+

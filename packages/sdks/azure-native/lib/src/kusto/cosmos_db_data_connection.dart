@@ -430,44 +430,31 @@ import 'cosmos_db_data_connection_args.dart';
 class CosmosDbDataConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The resource ID of the Cosmos DB account used to create the data connection.
   late final pulumi.Output<String> cosmosDbAccountResourceId;
-
   /// The name of an existing container in the Cosmos DB database.
   late final pulumi.Output<String> cosmosDbContainer;
-
   /// The name of an existing database in the Cosmos DB account.
   late final pulumi.Output<String> cosmosDbDatabase;
-
   /// Kind of the endpoint for the data connection
   /// Expected value is 'CosmosDb'.
   late final pulumi.Output<String> kind;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// The object ID of the managed identity resource.
   late final pulumi.Output<String> managedIdentityObjectId;
-
   /// The resource ID of a managed system or user-assigned identity. The identity is used to authenticate with Cosmos DB.
   late final pulumi.Output<String> managedIdentityResourceId;
-
   /// The name of an existing mapping rule to use when ingesting the retrieved data.
   late final pulumi.Output<String?> mappingRuleName;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Optional. If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date.
   late final pulumi.Output<String?> retrievalStartDate;
-
   /// The case-sensitive name of the existing target table in your cluster. Retrieved data is ingested into this table.
   late final pulumi.Output<String> tableName;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -480,23 +467,19 @@ class CosmosDbDataConnection extends pulumi.CustomResource {
     CosmosDbDataConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:kusto:CosmosDbDataConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:kusto:CosmosDbDataConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cosmosDbAccountResourceId = registerOutput<String>(
-      'cosmosDbAccountResourceId',
-    );
+    cosmosDbAccountResourceId = registerOutput<String>('cosmosDbAccountResourceId');
     cosmosDbContainer = registerOutput<String>('cosmosDbContainer');
     cosmosDbDatabase = registerOutput<String>('cosmosDbDatabase');
     kind = registerOutput<String>('kind');
     location = registerOutput<String?>('location');
     managedIdentityObjectId = registerOutput<String>('managedIdentityObjectId');
-    managedIdentityResourceId = registerOutput<String>(
-      'managedIdentityResourceId',
-    );
+    managedIdentityResourceId = registerOutput<String>('managedIdentityResourceId');
     mappingRuleName = registerOutput<String?>('mappingRuleName');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

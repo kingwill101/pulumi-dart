@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnServerConfigVpnClientRevokedCertificate {
   /// The certificate name.
   final pulumi.Input<String>? name;
-
   /// The revoked VPN client certificate thumbprint.
   final pulumi.Input<String>? thumbprint;
 
   /// Creates a new [VpnServerConfigVpnClientRevokedCertificate].
   /// [name] The certificate name.
   /// [thumbprint] The revoked VPN client certificate thumbprint.
-  VpnServerConfigVpnClientRevokedCertificate({this.name, this.thumbprint});
+  VpnServerConfigVpnClientRevokedCertificate({
+    this.name,
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'thumbprint': ?thumbprint};
+    return <String, dynamic>{
+      'name': ?name,
+      'thumbprint': ?thumbprint,
+    };
   }
 
-  factory VpnServerConfigVpnClientRevokedCertificate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VpnServerConfigVpnClientRevokedCertificate.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigVpnClientRevokedCertificate(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      thumbprint: (() {
-        final guardedValue = map['thumbprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

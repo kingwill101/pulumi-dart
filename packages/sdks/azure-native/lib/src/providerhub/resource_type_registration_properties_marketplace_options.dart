@@ -19,15 +19,10 @@ class ResourceTypeRegistrationPropertiesMarketplaceOptions {
     };
   }
 
-  factory ResourceTypeRegistrationPropertiesMarketplaceOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceTypeRegistrationPropertiesMarketplaceOptions.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesMarketplaceOptions(
-      addOnPlanConversionAllowed: (() {
-        final guardedValue = map['addOnPlanConversionAllowed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      addOnPlanConversionAllowed: (() { final guardedValue = map['addOnPlanConversionAllowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

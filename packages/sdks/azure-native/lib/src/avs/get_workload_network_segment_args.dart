@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkloadNetworkSegmentArgs {
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The ID of the NSX Segment
   final pulumi.Input<String> segmentId;
 
@@ -36,13 +34,10 @@ class GetWorkloadNetworkSegmentArgs {
 
   factory GetWorkloadNetworkSegmentArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadNetworkSegmentArgs(
-      privateCloudName: pulumi.Input.fromValue(
-        map['privateCloudName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      privateCloudName: pulumi.Input.fromValue(map['privateCloudName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       segmentId: pulumi.Input.fromValue(map['segmentId'] as String),
     );
   }
 }
+

@@ -7,44 +7,32 @@ import 'get_dedicated_host_filter.dart';
 class GetDedicatedHostResult {
   /// ARN of the Dedicated Host.
   final String arn;
-
   /// The ID of the Outpost hardware asset on which the Dedicated Host is allocated.
   final String assetId;
-
   /// Whether auto-placement is on or off.
   final String autoPlacement;
-
   /// Availability Zone of the Dedicated Host.
   final String availabilityZone;
-
   /// Number of cores on the Dedicated Host.
   final int cores;
   final List<GetDedicatedHostFilter>? filters;
   final String hostId;
-
   /// Whether host recovery is enabled or disabled for the Dedicated Host.
   final String hostRecovery;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Instance family supported by the Dedicated Host. For example, "m5".
   final String instanceFamily;
-
   /// Instance type supported by the Dedicated Host. For example, "m5.large". If the host supports multiple instance types, no instanceType is returned.
   final String instanceType;
-
   /// ARN of the AWS Outpost on which the Dedicated Host is allocated.
   final String outpostArn;
-
   /// ID of the AWS account that owns the Dedicated Host.
   final String ownerId;
   final String region;
-
   /// Number of sockets on the Dedicated Host.
   final int sockets;
   final Map<String, String> tags;
-
   /// Total number of vCPUs on the Dedicated Host.
   final int totalVcpus;
 
@@ -93,14 +81,7 @@ class GetDedicatedHostResult {
       'autoPlacement': autoPlacement,
       'availabilityZone': availabilityZone,
       'cores': cores,
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetDedicatedHostFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDedicatedHostFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'hostId': hostId,
       'hostRecovery': hostRecovery,
       'id': id,
@@ -122,16 +103,7 @@ class GetDedicatedHostResult {
       autoPlacement: map['autoPlacement'] as String,
       availabilityZone: map['availabilityZone'] as String,
       cores: map['cores'] as int,
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetDedicatedHostFilter>(
-          guardedValue,
-          (value) => GetDedicatedHostFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDedicatedHostFilter>(guardedValue, (value) => GetDedicatedHostFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       hostId: map['hostId'] as String,
       hostRecovery: map['hostRecovery'] as String,
       id: map['id'] as String,
@@ -146,3 +118,4 @@ class GetDedicatedHostResult {
     );
   }
 }
+

@@ -6,30 +6,21 @@ import 'ai_feature_online_store_featureview_vector_search_config_tree_ah_config.
 class AiFeatureOnlineStoreFeatureviewVectorSearchConfig {
   /// Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
   final pulumi.Input<Map<String, dynamic>>? bruteForceConfig;
-
   /// Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowdingAttribute.
   final pulumi.Input<String>? crowdingColumn;
-
   /// The distance measure used in nearest neighbor search.
   /// For details on allowed values, see the [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureOnlineStores.featureViews#DistanceMeasureType).
   /// Possible values are: `SQUARED_L2_DISTANCE`, `COSINE_DISTANCE`, `DOT_PRODUCT_DISTANCE`.
   final pulumi.Input<String>? distanceMeasureType;
-
   /// Column of embedding. This column contains the source data to create index for vector search.
   final pulumi.Input<String> embeddingColumn;
-
   /// The number of dimensions of the input embedding.
   final pulumi.Input<int>? embeddingDimension;
-
   /// Columns of features that are used to filter vector search results.
   final pulumi.Input<List<String>>? filterColumns;
-
   /// Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
   /// Structure is documented below.
-  final pulumi.Input<
-    AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig
-  >?
-  treeAhConfig;
+  final pulumi.Input<AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig>? treeAhConfig;
 
   /// Creates a new [AiFeatureOnlineStoreFeatureviewVectorSearchConfig].
   /// [bruteForceConfig] Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
@@ -57,55 +48,20 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfig {
       'embeddingColumn': embeddingColumn,
       'embeddingDimension': ?embeddingDimension,
       'filterColumns': ?filterColumns,
-      'treeAhConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig,
-            Map<String, dynamic>
-          >(treeAhConfig, (value) => value.toMap()),
+      'treeAhConfig': ?pulumi.Input.mapOptionalInputValue<AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig, Map<String, dynamic>>(treeAhConfig, (value) => value.toMap()),
     };
   }
 
-  factory AiFeatureOnlineStoreFeatureviewVectorSearchConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiFeatureOnlineStoreFeatureviewVectorSearchConfig.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewVectorSearchConfig(
-      bruteForceConfig: (() {
-        final guardedValue = map['bruteForceConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      crowdingColumn: (() {
-        final guardedValue = map['crowdingColumn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      distanceMeasureType: (() {
-        final guardedValue = map['distanceMeasureType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bruteForceConfig: (() { final guardedValue = map['bruteForceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      crowdingColumn: (() { final guardedValue = map['crowdingColumn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      distanceMeasureType: (() { final guardedValue = map['distanceMeasureType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       embeddingColumn: pulumi.Input.fromValue(map['embeddingColumn'] as String),
-      embeddingDimension: (() {
-        final guardedValue = map['embeddingDimension'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      filterColumns: (() {
-        final guardedValue = map['filterColumns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      treeAhConfig: (() {
-        final guardedValue = map['treeAhConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      embeddingDimension: (() { final guardedValue = map['embeddingDimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      filterColumns: (() { final guardedValue = map['filterColumns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      treeAhConfig: (() { final guardedValue = map['treeAhConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

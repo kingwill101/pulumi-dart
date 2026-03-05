@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MobilityServiceUpdateResponse {
   /// The OS type.
   final pulumi.Input<String>? osType;
-
   /// The reboot status of the update - whether it is required or not.
   final pulumi.Input<String>? rebootStatus;
-
   /// The version of the latest update.
   final pulumi.Input<String>? version;
 
@@ -17,7 +15,11 @@ class MobilityServiceUpdateResponse {
   /// [osType] The OS type.
   /// [rebootStatus] The reboot status of the update - whether it is required or not.
   /// [version] The version of the latest update.
-  MobilityServiceUpdateResponse({this.osType, this.rebootStatus, this.version});
+  MobilityServiceUpdateResponse({
+    this.osType,
+    this.rebootStatus,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class MobilityServiceUpdateResponse {
 
   factory MobilityServiceUpdateResponse.fromMap(Map<String, dynamic> map) {
     return MobilityServiceUpdateResponse(
-      osType: (() {
-        final guardedValue = map['osType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rebootStatus: (() {
-        final guardedValue = map['rebootStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rebootStatus: (() { final guardedValue = map['rebootStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

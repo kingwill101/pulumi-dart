@@ -7,16 +7,13 @@ enum ServiceMeshMembershipSpecManagementGkehubV1beta {
   const ServiceMeshMembershipSpecManagementGkehubV1beta(this.wireValue);
   final String wireValue;
 
-  static ServiceMeshMembershipSpecManagementGkehubV1beta fromValue(
-    String value,
-  ) {
+  static ServiceMeshMembershipSpecManagementGkehubV1beta fromValue(String value) {
     for (final item in ServiceMeshMembershipSpecManagementGkehubV1beta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ServiceMeshMembershipSpecManagementGkehubV1beta value: $value',
-    );
+    throw ArgumentError('Unknown ServiceMeshMembershipSpecManagementGkehubV1beta value: $value');
   }
 }
+

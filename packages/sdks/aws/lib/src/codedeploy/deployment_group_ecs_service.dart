@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentGroupEcsService {
   /// The name of the ECS cluster.
   final pulumi.Input<String> clusterName;
-
   /// The name of the ECS service.
   final pulumi.Input<String> serviceName;
 
@@ -31,3 +30,4 @@ class DeploymentGroupEcsService {
     );
   }
 }
+

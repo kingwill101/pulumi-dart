@@ -16,3 +16,4 @@ enum ResourceTypeRegistrationKind {
     throw ArgumentError('Unknown ResourceTypeRegistrationKind value: $value');
   }
 }
+

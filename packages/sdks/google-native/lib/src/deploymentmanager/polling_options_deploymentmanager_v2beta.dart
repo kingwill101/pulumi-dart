@@ -6,16 +6,12 @@ import 'diagnostic_deploymentmanager_v2beta.dart';
 class PollingOptionsDeploymentmanagerV2beta {
   /// An array of diagnostics to be collected by Deployment Manager, these diagnostics will be displayed to the user.
   final pulumi.Input<List<DiagnosticDeploymentmanagerV2beta>>? diagnostics;
-
   /// JsonPath expression that determines if the request failed.
   final pulumi.Input<String>? failCondition;
-
   /// JsonPath expression that determines if the request is completed.
   final pulumi.Input<String>? finishCondition;
-
   /// JsonPath expression that evaluates to string, it indicates where to poll.
   final pulumi.Input<String>? pollingLink;
-
   /// JsonPath expression, after polling is completed, indicates where to fetch the resource.
   final pulumi.Input<String>? targetLink;
 
@@ -35,18 +31,7 @@ class PollingOptionsDeploymentmanagerV2beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diagnostics':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DiagnosticDeploymentmanagerV2beta>,
-            List<Map<String, dynamic>>
-          >(
-            diagnostics,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DiagnosticDeploymentmanagerV2beta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'diagnostics': ?pulumi.Input.mapOptionalInputValue<List<DiagnosticDeploymentmanagerV2beta>, List<Map<String, dynamic>>>(diagnostics, (value) => pulumi.Input.encodeList<DiagnosticDeploymentmanagerV2beta, Map<String, dynamic>>(value, (value) => value.toMap())),
       'failCondition': ?failCondition,
       'finishCondition': ?finishCondition,
       'pollingLink': ?pollingLink,
@@ -54,42 +39,14 @@ class PollingOptionsDeploymentmanagerV2beta {
     };
   }
 
-  factory PollingOptionsDeploymentmanagerV2beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PollingOptionsDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return PollingOptionsDeploymentmanagerV2beta(
-      diagnostics: (() {
-        final guardedValue = map['diagnostics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DiagnosticDeploymentmanagerV2beta>(
-            guardedValue,
-            (value) => DiagnosticDeploymentmanagerV2beta.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      failCondition: (() {
-        final guardedValue = map['failCondition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      finishCondition: (() {
-        final guardedValue = map['finishCondition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pollingLink: (() {
-        final guardedValue = map['pollingLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetLink: (() {
-        final guardedValue = map['targetLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      diagnostics: (() { final guardedValue = map['diagnostics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DiagnosticDeploymentmanagerV2beta>(guardedValue, (value) => DiagnosticDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      failCondition: (() { final guardedValue = map['failCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      finishCondition: (() { final guardedValue = map['finishCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pollingLink: (() { final guardedValue = map['pollingLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetLink: (() { final guardedValue = map['targetLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,14 +6,10 @@ import 'kubernetes_cluster_default_node_pool_linux_os_config_sysctl_config.dart'
 class KubernetesClusterDefaultNodePoolLinuxOsConfig {
   /// Specifies the size of the swap file on each node in MB.
   final pulumi.Input<int>? swapFileSizeMb;
-
   /// A `sysctl_config` block as defined below.
-  final pulumi.Input<KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig>?
-  sysctlConfig;
-
+  final pulumi.Input<KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig>? sysctlConfig;
   /// Specifies the Transparent Huge Page configuration. Possible values are `always`, `madvise` and `never`.
   final pulumi.Input<String>? transparentHugePage;
-
   /// specifies the defrag configuration for Transparent Huge Page. Possible values are `always`, `defer`, `defer+madvise`, `madvise` and `never`.
   final pulumi.Input<String>? transparentHugePageDefrag;
   final pulumi.Input<String>? transparentHugePageEnabled;
@@ -35,50 +31,21 @@ class KubernetesClusterDefaultNodePoolLinuxOsConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'swapFileSizeMb': ?swapFileSizeMb,
-      'sysctlConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig,
-            Map<String, dynamic>
-          >(sysctlConfig, (value) => value.toMap()),
+      'sysctlConfig': ?pulumi.Input.mapOptionalInputValue<KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig, Map<String, dynamic>>(sysctlConfig, (value) => value.toMap()),
       'transparentHugePage': ?transparentHugePage,
       'transparentHugePageDefrag': ?transparentHugePageDefrag,
       'transparentHugePageEnabled': ?transparentHugePageEnabled,
     };
   }
 
-  factory KubernetesClusterDefaultNodePoolLinuxOsConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KubernetesClusterDefaultNodePoolLinuxOsConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterDefaultNodePoolLinuxOsConfig(
-      swapFileSizeMb: (() {
-        final guardedValue = map['swapFileSizeMb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      sysctlConfig: (() {
-        final guardedValue = map['sysctlConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      transparentHugePage: (() {
-        final guardedValue = map['transparentHugePage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transparentHugePageDefrag: (() {
-        final guardedValue = map['transparentHugePageDefrag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transparentHugePageEnabled: (() {
-        final guardedValue = map['transparentHugePageEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      swapFileSizeMb: (() { final guardedValue = map['swapFileSizeMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sysctlConfig: (() { final guardedValue = map['sysctlConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      transparentHugePage: (() { final guardedValue = map['transparentHugePage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transparentHugePageDefrag: (() { final guardedValue = map['transparentHugePageDefrag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transparentHugePageEnabled: (() { final guardedValue = map['transparentHugePageEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

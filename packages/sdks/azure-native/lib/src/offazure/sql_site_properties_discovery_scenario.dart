@@ -12,8 +12,7 @@ enum SqlSitePropertiesDiscoveryScenario {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SqlSitePropertiesDiscoveryScenario value: $value',
-    );
+    throw ArgumentError('Unknown SqlSitePropertiesDiscoveryScenario value: $value');
   }
 }
+

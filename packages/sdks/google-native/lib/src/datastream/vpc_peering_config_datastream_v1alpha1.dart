@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcPeeringConfigDatastreamV1alpha1 {
   /// A free subnet for peering. (CIDR of /29)
   final pulumi.Input<String> subnet;
-
   /// fully qualified name of the VPC Datastream will peer to.
   final pulumi.Input<String> vpcName;
 
@@ -19,7 +18,10 @@ class VpcPeeringConfigDatastreamV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'subnet': subnet, 'vpcName': vpcName};
+    return <String, dynamic>{
+      'subnet': subnet,
+      'vpcName': vpcName,
+    };
   }
 
   factory VpcPeeringConfigDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class VpcPeeringConfigDatastreamV1alpha1 {
     );
   }
 }
+

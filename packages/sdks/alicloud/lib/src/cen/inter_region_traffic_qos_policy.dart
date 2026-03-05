@@ -278,19 +278,14 @@ import 'inter_region_traffic_qos_policy_state.dart';
 class InterRegionTrafficQosPolicy extends pulumi.CustomResource {
   /// Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
   late final pulumi.Output<String> bandwidthGuaranteeMode;
-
   /// The description information of the traffic scheduling policy.
   late final pulumi.Output<String?> interRegionTrafficQosPolicyDescription;
-
   /// The name of the traffic scheduling policy.
   late final pulumi.Output<String?> interRegionTrafficQosPolicyName;
-
   /// The status of the traffic scheduling policy.
   late final pulumi.Output<String> status;
-
   /// Peer Attachment ID.
   late final pulumi.Output<String> transitRouterAttachmentId;
-
   /// The ID of the forwarding router instance.
   late final pulumi.Output<String> transitRouterId;
 
@@ -303,22 +298,16 @@ class InterRegionTrafficQosPolicy extends pulumi.CustomResource {
     InterRegionTrafficQosPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidthGuaranteeMode = registerOutput<String>('bandwidthGuaranteeMode');
-    interRegionTrafficQosPolicyDescription = registerOutput<String?>(
-      'interRegionTrafficQosPolicyDescription',
-    );
-    interRegionTrafficQosPolicyName = registerOutput<String?>(
-      'interRegionTrafficQosPolicyName',
-    );
+    interRegionTrafficQosPolicyDescription = registerOutput<String?>('interRegionTrafficQosPolicyDescription');
+    interRegionTrafficQosPolicyName = registerOutput<String?>('interRegionTrafficQosPolicyName');
     status = registerOutput<String>('status');
-    transitRouterAttachmentId = registerOutput<String>(
-      'transitRouterAttachmentId',
-    );
+    transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
     transitRouterId = registerOutput<String>('transitRouterId');
   }
 
@@ -340,22 +329,16 @@ class InterRegionTrafficQosPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidthGuaranteeMode = registerOutput<String>('bandwidthGuaranteeMode');
-    interRegionTrafficQosPolicyDescription = registerOutput<String?>(
-      'interRegionTrafficQosPolicyDescription',
-    );
-    interRegionTrafficQosPolicyName = registerOutput<String?>(
-      'interRegionTrafficQosPolicyName',
-    );
+    interRegionTrafficQosPolicyDescription = registerOutput<String?>('interRegionTrafficQosPolicyDescription');
+    interRegionTrafficQosPolicyName = registerOutput<String?>('interRegionTrafficQosPolicyName');
     status = registerOutput<String>('status');
-    transitRouterAttachmentId = registerOutput<String>(
-      'transitRouterAttachmentId',
-    );
+    transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
     transitRouterId = registerOutput<String>('transitRouterId');
   }
 }

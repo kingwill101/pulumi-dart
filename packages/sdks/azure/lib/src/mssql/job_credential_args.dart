@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobCredentialArgs {
   /// The ID of the Elastic Job Agent. Changing this forces a new Elastic Job Credential to be created.
   final pulumi.Input<String> jobAgentId;
-
   /// The name which should be used for this Elastic Job Credential. Changing this forces a new Elastic Job Credential to be created.
   final pulumi.Input<String>? name;
-
   /// The password to use for this Elastic Job credential.
   final pulumi.Input<String>? password;
-
   /// An integer value used to trigger an update for `password_wo`. This property should be incremented when updating `password_wo`.
   final pulumi.Input<int>? passwordWoVersion;
-
   /// The username to use for this Elastic Job credential.
   final pulumi.Input<String> username;
 
@@ -49,22 +45,11 @@ class JobCredentialArgs {
   factory JobCredentialArgs.fromMap(Map<String, dynamic> map) {
     return JobCredentialArgs(
       jobAgentId: pulumi.Input.fromValue(map['jobAgentId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      passwordWoVersion: (() {
-        final guardedValue = map['passwordWoVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      passwordWoVersion: (() { final guardedValue = map['passwordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

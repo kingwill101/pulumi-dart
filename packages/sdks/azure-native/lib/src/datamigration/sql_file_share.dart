@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlFileShare {
   /// Password for username to access file share location.
   final pulumi.Input<String>? password;
-
   /// Location as SMB share or local drive where backups are placed.
   final pulumi.Input<String>? path;
-
   /// Username to access the file share location for backups.
   final pulumi.Input<String>? username;
 
@@ -17,7 +15,11 @@ class SqlFileShare {
   /// [password] Password for username to access file share location.
   /// [path] Location as SMB share or local drive where backups are placed.
   /// [username] Username to access the file share location for backups.
-  SqlFileShare({this.password, this.path, this.username});
+  SqlFileShare({
+    this.password,
+    this.path,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class SqlFileShare {
 
   factory SqlFileShare.fromMap(Map<String, dynamic> map) {
     return SqlFileShare(
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

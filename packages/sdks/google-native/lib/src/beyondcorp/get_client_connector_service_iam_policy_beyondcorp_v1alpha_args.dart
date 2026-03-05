@@ -33,24 +33,13 @@ class GetClientConnectorServiceIamPolicyBeyondcorpV1alphaArgs {
     };
   }
 
-  factory GetClientConnectorServiceIamPolicyBeyondcorpV1alphaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClientConnectorServiceIamPolicyBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetClientConnectorServiceIamPolicyBeyondcorpV1alphaArgs(
-      clientConnectorServiceId: pulumi.Input.fromValue(
-        map['clientConnectorServiceId'] as String,
-      ),
+      clientConnectorServiceId: pulumi.Input.fromValue(map['clientConnectorServiceId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

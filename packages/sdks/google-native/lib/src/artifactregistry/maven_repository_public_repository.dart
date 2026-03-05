@@ -12,8 +12,7 @@ enum MavenRepositoryPublicRepository {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown MavenRepositoryPublicRepository value: $value',
-    );
+    throw ArgumentError('Unknown MavenRepositoryPublicRepository value: $value');
   }
 }
+

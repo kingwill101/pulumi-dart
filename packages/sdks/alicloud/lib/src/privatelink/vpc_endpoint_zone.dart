@@ -464,22 +464,16 @@ import 'vpc_endpoint_zone_state.dart';
 class VpcEndpointZone extends pulumi.CustomResource {
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   late final pulumi.Output<bool?> dryRun;
-
   /// The endpoint ID.
   late final pulumi.Output<String> endpointId;
-
   /// The IP address of the endpoint ENI.
   late final pulumi.Output<String> eniIp;
-
   /// (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
   late final pulumi.Output<String> regionId;
-
   /// The state of the zone.
   late final pulumi.Output<String> status;
-
   /// The ID of the vSwitch in the zone.
   late final pulumi.Output<String> vswitchId;
-
   /// The zone ID.
   late final pulumi.Output<String> zoneId;
 
@@ -492,11 +486,11 @@ class VpcEndpointZone extends pulumi.CustomResource {
     VpcEndpointZoneArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:privatelink/vpcEndpointZone:VpcEndpointZone',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:privatelink/vpcEndpointZone:VpcEndpointZone',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     endpointId = registerOutput<String>('endpointId');
     eniIp = registerOutput<String>('eniIp');
@@ -524,11 +518,11 @@ class VpcEndpointZone extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:privatelink/vpcEndpointZone:VpcEndpointZone',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:privatelink/vpcEndpointZone:VpcEndpointZone',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     endpointId = registerOutput<String>('endpointId');
     eniIp = registerOutput<String>('eniIp');

@@ -8,10 +8,14 @@ class BatchOperationsJobRewriteObject {
 
   /// Creates a new [BatchOperationsJobRewriteObject].
   /// [kmsKey] valid kms key
-  BatchOperationsJobRewriteObject({required this.kmsKey});
+  BatchOperationsJobRewriteObject({
+    required this.kmsKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKey': kmsKey};
+    return <String, dynamic>{
+      'kmsKey': kmsKey,
+    };
   }
 
   factory BatchOperationsJobRewriteObject.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class BatchOperationsJobRewriteObject {
     );
   }
 }
+

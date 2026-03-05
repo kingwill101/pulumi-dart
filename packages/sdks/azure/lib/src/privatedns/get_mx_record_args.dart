@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMxRecordArgs {
   /// The name of the Private DNS MX Record.
   final pulumi.Input<String>? name;
-
   /// Specifies the resource group where the Private DNS Zone (parent resource) exists.
   final pulumi.Input<String> resourceGroupName;
-
   /// Specifies the Private DNS Zone where the resource exists.
   final pulumi.Input<String> zoneName;
 
@@ -36,15 +34,10 @@ class GetMxRecordArgs {
 
   factory GetMxRecordArgs.fromMap(Map<String, dynamic> map) {
     return GetMxRecordArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       zoneName: pulumi.Input.fromValue(map['zoneName'] as String),
     );
   }
 }
+

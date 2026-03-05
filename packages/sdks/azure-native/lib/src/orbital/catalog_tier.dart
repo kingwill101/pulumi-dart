@@ -14,3 +14,4 @@ enum CatalogTier {
     throw ArgumentError('Unknown CatalogTier value: $value');
   }
 }
+

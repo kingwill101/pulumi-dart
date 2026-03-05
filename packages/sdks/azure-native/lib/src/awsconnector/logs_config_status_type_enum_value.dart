@@ -9,19 +9,20 @@ class LogsConfigStatusTypeEnumValue {
 
   /// Creates a new [LogsConfigStatusTypeEnumValue].
   /// [value] Property value
-  LogsConfigStatusTypeEnumValue({this.value});
+  LogsConfigStatusTypeEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory LogsConfigStatusTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return LogsConfigStatusTypeEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

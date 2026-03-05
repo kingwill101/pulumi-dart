@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerServicePrivateRegistryAccessEcrImagePullerRole {
   /// Whether to activate the role. Defaults to `false`.
   final pulumi.Input<bool>? isActive;
-
   /// Principal ARN of the container service. The principal ARN can be used to create a trust relationship between your standard AWS account and your Lightsail container service.
   final pulumi.Input<String>? principalArn;
 
@@ -24,20 +23,11 @@ class ContainerServicePrivateRegistryAccessEcrImagePullerRole {
     };
   }
 
-  factory ContainerServicePrivateRegistryAccessEcrImagePullerRole.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContainerServicePrivateRegistryAccessEcrImagePullerRole.fromMap(Map<String, dynamic> map) {
     return ContainerServicePrivateRegistryAccessEcrImagePullerRole(
-      isActive: (() {
-        final guardedValue = map['isActive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      principalArn: (() {
-        final guardedValue = map['principalArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      isActive: (() { final guardedValue = map['isActive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      principalArn: (() { final guardedValue = map['principalArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

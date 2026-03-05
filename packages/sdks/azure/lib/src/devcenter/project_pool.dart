@@ -532,33 +532,24 @@ import 'project_pool_state.dart';
 class ProjectPool extends pulumi.CustomResource {
   /// The name of the Dev Center Dev Box Definition.
   late final pulumi.Output<String> devBoxDefinitionName;
-
   /// The name of the Dev Center Attached Network in parent Project of the Dev Center Project Pool.
   late final pulumi.Output<String> devCenterAttachedNetworkName;
-
   /// The ID of the associated Dev Center Project. Changing this forces a new resource to be created.
   late final pulumi.Output<String> devCenterProjectId;
-
   /// Specifies whether owners of Dev Boxes in the Dev Center Project Pool are added as local administrators on the Dev Box.
   late final pulumi.Output<bool> localAdministratorEnabled;
-
   /// The Azure Region where the Dev Center Project Pool should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// A list of the regions of the managed Virtual Network. When specified, the Dev Center Project Pool will use a Microsoft managed network.
   ///
   /// &gt; **Note:** Currently only one region can be specified for `managed_virtual_network_regions`.
   late final pulumi.Output<String?> managedVirtualNetworkRegions;
-
   /// Specifies the name of this Dev Center Project Pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies whether Dev Boxes in the Pool will have SSO enabled or disabled. Defaults to `false`.
   late final pulumi.Output<bool?> singleSignOnEnabled;
-
   /// The specified time in minutes to wait before stopping a Dev Center Dev Box once disconnect is detected. Possible values are between `60` and `480`.
   late final pulumi.Output<int?> stopOnDisconnectGracePeriodMinutes;
-
   /// A mapping of tags which should be assigned to the Dev Center Project Pool.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -571,28 +562,20 @@ class ProjectPool extends pulumi.CustomResource {
     ProjectPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devcenter/projectPool:ProjectPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:devcenter/projectPool:ProjectPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     devBoxDefinitionName = registerOutput<String>('devBoxDefinitionName');
-    devCenterAttachedNetworkName = registerOutput<String>(
-      'devCenterAttachedNetworkName',
-    );
+    devCenterAttachedNetworkName = registerOutput<String>('devCenterAttachedNetworkName');
     devCenterProjectId = registerOutput<String>('devCenterProjectId');
-    localAdministratorEnabled = registerOutput<bool>(
-      'localAdministratorEnabled',
-    );
+    localAdministratorEnabled = registerOutput<bool>('localAdministratorEnabled');
     location = registerOutput<String>('location');
-    managedVirtualNetworkRegions = registerOutput<String?>(
-      'managedVirtualNetworkRegions',
-    );
+    managedVirtualNetworkRegions = registerOutput<String?>('managedVirtualNetworkRegions');
     this.name = registerOutput<String>('name');
     singleSignOnEnabled = registerOutput<bool?>('singleSignOnEnabled');
-    stopOnDisconnectGracePeriodMinutes = registerOutput<int?>(
-      'stopOnDisconnectGracePeriodMinutes',
-    );
+    stopOnDisconnectGracePeriodMinutes = registerOutput<int?>('stopOnDisconnectGracePeriodMinutes');
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
@@ -614,28 +597,20 @@ class ProjectPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devcenter/projectPool:ProjectPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:devcenter/projectPool:ProjectPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     devBoxDefinitionName = registerOutput<String>('devBoxDefinitionName');
-    devCenterAttachedNetworkName = registerOutput<String>(
-      'devCenterAttachedNetworkName',
-    );
+    devCenterAttachedNetworkName = registerOutput<String>('devCenterAttachedNetworkName');
     devCenterProjectId = registerOutput<String>('devCenterProjectId');
-    localAdministratorEnabled = registerOutput<bool>(
-      'localAdministratorEnabled',
-    );
+    localAdministratorEnabled = registerOutput<bool>('localAdministratorEnabled');
     location = registerOutput<String>('location');
-    managedVirtualNetworkRegions = registerOutput<String?>(
-      'managedVirtualNetworkRegions',
-    );
+    managedVirtualNetworkRegions = registerOutput<String?>('managedVirtualNetworkRegions');
     this.name = registerOutput<String>('name');
     singleSignOnEnabled = registerOutput<bool?>('singleSignOnEnabled');
-    stopOnDisconnectGracePeriodMinutes = registerOutput<int?>(
-      'stopOnDisconnectGracePeriodMinutes',
-    );
+    stopOnDisconnectGracePeriodMinutes = registerOutput<int?>('stopOnDisconnectGracePeriodMinutes');
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

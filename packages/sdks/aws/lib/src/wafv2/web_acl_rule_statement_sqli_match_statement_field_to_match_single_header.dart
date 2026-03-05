@@ -13,14 +13,15 @@ class WebAclRuleStatementSqliMatchStatementFieldToMatchSingleHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory WebAclRuleStatementSqliMatchStatementFieldToMatchSingleHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementSqliMatchStatementFieldToMatchSingleHeader.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementSqliMatchStatementFieldToMatchSingleHeader(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

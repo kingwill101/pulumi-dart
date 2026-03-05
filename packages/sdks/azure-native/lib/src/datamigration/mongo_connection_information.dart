@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MongoConnectionInformation {
   /// ConnectionString to connect to Mongo.
   final pulumi.Input<String>? connectionString;
-
   /// Host of mongo connection.
   final pulumi.Input<String>? host;
-
   /// Password to connect to Mongo.
   final pulumi.Input<String>? password;
-
   /// Port of mongo connection.
   final pulumi.Input<int>? port;
-
   /// Whether to UseSsl or UseTls to connect to Mongo. Default is true.
   final pulumi.Input<bool>? useSsl;
-
   /// User name to connect to Mongo.
   final pulumi.Input<String>? userName;
 
@@ -51,36 +46,13 @@ class MongoConnectionInformation {
 
   factory MongoConnectionInformation.fromMap(Map<String, dynamic> map) {
     return MongoConnectionInformation(
-      connectionString: (() {
-        final guardedValue = map['connectionString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      useSsl: (() {
-        final guardedValue = map['useSsl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectionString: (() { final guardedValue = map['connectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      useSsl: (() { final guardedValue = map['useSsl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

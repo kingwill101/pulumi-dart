@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentErrorResponse {
   /// Agent component where error message occured.
   final pulumi.Input<String> component;
-
   /// Agent error message.
   final pulumi.Input<String> message;
-
   /// Severity of the error message.
   final pulumi.Input<String> severity;
-
   /// The timestamp of error occured (UTC).
   final pulumi.Input<String> time;
 
@@ -46,3 +43,4 @@ class AgentErrorResponse {
     );
   }
 }
+

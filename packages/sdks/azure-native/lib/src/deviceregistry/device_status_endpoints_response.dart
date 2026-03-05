@@ -10,35 +10,20 @@ class DeviceStatusEndpointsResponse {
 
   /// Creates a new [DeviceStatusEndpointsResponse].
   /// [inbound] KeyValue pair representing status of inbound endpoints.
-  DeviceStatusEndpointsResponse({required this.inbound});
+  DeviceStatusEndpointsResponse({
+    required this.inbound,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inbound':
-          pulumi.Input.mapInputValue<
-            Map<String, DeviceStatusEndpointResponse>,
-            Map<String, Map<String, dynamic>>
-          >(
-            inbound,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  DeviceStatusEndpointResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'inbound': pulumi.Input.mapInputValue<Map<String, DeviceStatusEndpointResponse>, Map<String, Map<String, dynamic>>>(inbound, (value) => pulumi.Input.encodeMapValues<DeviceStatusEndpointResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DeviceStatusEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return DeviceStatusEndpointsResponse(
-      inbound: pulumi.Input.fromValue(
-        pulumi.Input.decodeMapValues<DeviceStatusEndpointResponse>(
-          map['inbound']!,
-          (value) => DeviceStatusEndpointResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      inbound: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<DeviceStatusEndpointResponse>(map['inbound']!, (value) => DeviceStatusEndpointResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

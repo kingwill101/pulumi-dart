@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationArgs {
   /// The ID of the Application Gateway's Backend Address Pool which this Network Interface which should be connected to. Changing this forces a new resource to be created.
   final pulumi.Input<String> backendAddressPoolId;
-
   /// The Name of the IP Configuration within the Network Interface which should be connected to the Backend Address Pool. Changing this forces a new resource to be created.
   final pulumi.Input<String> ipConfigurationName;
-
   /// The ID of the Network Interface. Changing this forces a new resource to be created.
   final pulumi.Input<String> networkInterfaceId;
 
@@ -34,19 +32,12 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationArgs {
     };
   }
 
-  factory NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationArgs(
-      backendAddressPoolId: pulumi.Input.fromValue(
-        map['backendAddressPoolId'] as String,
-      ),
-      ipConfigurationName: pulumi.Input.fromValue(
-        map['ipConfigurationName'] as String,
-      ),
-      networkInterfaceId: pulumi.Input.fromValue(
-        map['networkInterfaceId'] as String,
-      ),
+      backendAddressPoolId: pulumi.Input.fromValue(map['backendAddressPoolId'] as String),
+      ipConfigurationName: pulumi.Input.fromValue(map['ipConfigurationName'] as String),
+      networkInterfaceId: pulumi.Input.fromValue(map['networkInterfaceId'] as String),
     );
   }
 }
+

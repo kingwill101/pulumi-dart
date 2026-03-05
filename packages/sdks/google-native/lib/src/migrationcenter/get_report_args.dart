@@ -40,18 +40,11 @@ class GetReportArgs {
   factory GetReportArgs.fromMap(Map<String, dynamic> map) {
     return GetReportArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reportConfigId: pulumi.Input.fromValue(map['reportConfigId'] as String),
       reportId: pulumi.Input.fromValue(map['reportId'] as String),
-      view: (() {
-        final guardedValue = map['view'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      view: (() { final guardedValue = map['view']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

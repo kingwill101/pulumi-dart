@@ -16,3 +16,4 @@ enum TimeframeType {
     throw ArgumentError('Unknown TimeframeType value: $value');
   }
 }
+

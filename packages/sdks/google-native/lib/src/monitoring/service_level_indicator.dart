@@ -9,10 +9,8 @@ import 'windows_based_sli.dart';
 class ServiceLevelIndicator {
   /// Basic SLI on a well-known service type.
   final pulumi.Input<BasicSli>? basicSli;
-
   /// Request-based SLIs
   final pulumi.Input<RequestBasedSli>? requestBased;
-
   /// Windows-based SLIs
   final pulumi.Input<WindowsBasedSli>? windowsBased;
 
@@ -20,55 +18,26 @@ class ServiceLevelIndicator {
   /// [basicSli] Basic SLI on a well-known service type.
   /// [requestBased] Request-based SLIs
   /// [windowsBased] Windows-based SLIs
-  ServiceLevelIndicator({this.basicSli, this.requestBased, this.windowsBased});
+  ServiceLevelIndicator({
+    this.basicSli,
+    this.requestBased,
+    this.windowsBased,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicSli':
-          ?pulumi.Input.mapOptionalInputValue<BasicSli, Map<String, dynamic>>(
-            basicSli,
-            (value) => value.toMap(),
-          ),
-      'requestBased':
-          ?pulumi.Input.mapOptionalInputValue<
-            RequestBasedSli,
-            Map<String, dynamic>
-          >(requestBased, (value) => value.toMap()),
-      'windowsBased':
-          ?pulumi.Input.mapOptionalInputValue<
-            WindowsBasedSli,
-            Map<String, dynamic>
-          >(windowsBased, (value) => value.toMap()),
+      'basicSli': ?pulumi.Input.mapOptionalInputValue<BasicSli, Map<String, dynamic>>(basicSli, (value) => value.toMap()),
+      'requestBased': ?pulumi.Input.mapOptionalInputValue<RequestBasedSli, Map<String, dynamic>>(requestBased, (value) => value.toMap()),
+      'windowsBased': ?pulumi.Input.mapOptionalInputValue<WindowsBasedSli, Map<String, dynamic>>(windowsBased, (value) => value.toMap()),
     };
   }
 
   factory ServiceLevelIndicator.fromMap(Map<String, dynamic> map) {
     return ServiceLevelIndicator(
-      basicSli: (() {
-        final guardedValue = map['basicSli'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BasicSli.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      requestBased: (() {
-        final guardedValue = map['requestBased'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RequestBasedSli.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      windowsBased: (() {
-        final guardedValue = map['windowsBased'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WindowsBasedSli.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      basicSli: (() { final guardedValue = map['basicSli']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BasicSli.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      requestBased: (() { final guardedValue = map['requestBased']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RequestBasedSli.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      windowsBased: (() { final guardedValue = map['windowsBased']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsBasedSli.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

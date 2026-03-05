@@ -8,21 +8,13 @@ import 'google_cloud_dialogflow_cx_v3_experiment_result_metric_type.dart';
 /// Metric and corresponding confidence intervals.
 class GoogleCloudDialogflowCxV3ExperimentResultMetric {
   /// The probability that the treatment is better than all other treatments in the experiment
-  final pulumi.Input<
-    GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval
-  >?
-  confidenceInterval;
-
+  final pulumi.Input<GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval>? confidenceInterval;
   /// Count value of a metric.
   final pulumi.Input<double>? count;
-
   /// Count-based metric type. Only one of type or count_type is specified in each Metric.
-  final pulumi.Input<GoogleCloudDialogflowCxV3ExperimentResultMetricCountType>?
-  countType;
-
+  final pulumi.Input<GoogleCloudDialogflowCxV3ExperimentResultMetricCountType>? countType;
   /// Ratio value of a metric.
   final pulumi.Input<double>? ratio;
-
   /// Ratio-based metric type. Only one of type or count_type is specified in each Metric.
   final pulumi.Input<GoogleCloudDialogflowCxV3ExperimentResultMetricType>? type;
 
@@ -42,67 +34,22 @@ class GoogleCloudDialogflowCxV3ExperimentResultMetric {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'confidenceInterval':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval,
-            Map<String, dynamic>
-          >(confidenceInterval, (value) => value.toMap()),
+      'confidenceInterval': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval, Map<String, dynamic>>(confidenceInterval, (value) => value.toMap()),
       'count': ?count,
-      'countType':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowCxV3ExperimentResultMetricCountType,
-            String
-          >(countType, (value) => value.wireValue),
+      'countType': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3ExperimentResultMetricCountType, String>(countType, (value) => value.wireValue),
       'ratio': ?ratio,
-      'type':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowCxV3ExperimentResultMetricType,
-            String
-          >(type, (value) => value.wireValue),
+      'type': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3ExperimentResultMetricType, String>(type, (value) => value.wireValue),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3ExperimentResultMetric.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3ExperimentResultMetric.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ExperimentResultMetric(
-      confidenceInterval: (() {
-        final guardedValue = map['confidenceInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      countType: (() {
-        final guardedValue = map['countType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowCxV3ExperimentResultMetricCountType.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      ratio: (() {
-        final guardedValue = map['ratio'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowCxV3ExperimentResultMetricType.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      confidenceInterval: (() { final guardedValue = map['confidenceInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      countType: (() { final guardedValue = map['countType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowCxV3ExperimentResultMetricCountType.fromValue(guardedValue as String)); })(),
+      ratio: (() { final guardedValue = map['ratio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowCxV3ExperimentResultMetricType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

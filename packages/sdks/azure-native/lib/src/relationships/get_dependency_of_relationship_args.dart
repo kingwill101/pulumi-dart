@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDependencyOfRelationshipArgs {
   /// Name of dependencyOf relationship.
   final pulumi.Input<String> name;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -22,7 +21,10 @@ class GetDependencyOfRelationshipArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'resourceUri': resourceUri};
+    return <String, dynamic>{
+      'name': name,
+      'resourceUri': resourceUri,
+    };
   }
 
   factory GetDependencyOfRelationshipArgs.fromMap(Map<String, dynamic> map) {
@@ -32,3 +34,4 @@ class GetDependencyOfRelationshipArgs {
     );
   }
 }
+

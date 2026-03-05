@@ -257,60 +257,42 @@ import 'system_data_response.dart';
 class ScriptExecution extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Standard error output stream from the powershell execution
   late final pulumi.Output<List<String>> errors;
-
   /// Error message if the script was able to run, but if the script itself had
   /// errors or powershell threw an exception
   late final pulumi.Output<String?> failureReason;
-
   /// Time the script execution was finished
   late final pulumi.Output<String> finishedAt;
-
   /// Parameters that will be hidden/not visible to ARM, such as passwords and
   /// credentials
   late final pulumi.Output<List<Map<String, dynamic>>?> hiddenParameters;
-
   /// Standard information out stream from the powershell execution
   late final pulumi.Output<List<String>> information;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// User-defined dictionary.
   late final pulumi.Output<Map<String, dynamic>?> namedOutputs;
-
   /// Standard output stream from the powershell execution
   late final pulumi.Output<List<String>?> output;
-
   /// Parameters the script will accept
   late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
-
   /// The state of the script execution resource
   late final pulumi.Output<String> provisioningState;
-
   /// Time to live for the resource. If not provided, will be available for 60 days
   late final pulumi.Output<String?> retention;
-
   /// A reference to the script cmdlet resource if user is running a AVS script
   late final pulumi.Output<String?> scriptCmdletId;
-
   /// Time the script execution was started
   late final pulumi.Output<String> startedAt;
-
   /// Time the script execution was submitted
   late final pulumi.Output<String> submittedAt;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Time limit for execution
   late final pulumi.Output<String> timeout;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Standard warning out stream from the powershell execution
   late final pulumi.Output<List<String>> warnings;
 
@@ -323,18 +305,16 @@ class ScriptExecution extends pulumi.CustomResource {
     ScriptExecutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:avs:ScriptExecution',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:avs:ScriptExecution',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     errors = registerOutput<List<String>>('errors');
     failureReason = registerOutput<String?>('failureReason');
     finishedAt = registerOutput<String>('finishedAt');
-    hiddenParameters = registerOutput<List<Map<String, dynamic>>?>(
-      'hiddenParameters',
-    );
+    hiddenParameters = registerOutput<List<Map<String, dynamic>>?>('hiddenParameters');
     information = registerOutput<List<String>>('information');
     this.name = registerOutput<String>('name');
     namedOutputs = registerOutput<Map<String, dynamic>?>('namedOutputs');
@@ -345,16 +325,7 @@ class ScriptExecution extends pulumi.CustomResource {
     scriptCmdletId = registerOutput<String?>('scriptCmdletId');
     startedAt = registerOutput<String>('startedAt');
     submittedAt = registerOutput<String>('submittedAt');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeout = registerOutput<String>('timeout');
     type = registerOutput<String>('type');
     warnings = registerOutput<List<String>>('warnings');

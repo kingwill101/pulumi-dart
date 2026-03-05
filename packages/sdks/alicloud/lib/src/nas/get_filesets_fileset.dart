@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFilesetsFileset {
   /// The time when Fileset was created.
   final pulumi.Input<String> createTime;
-
   /// Description of Fileset.
   final pulumi.Input<String> description;
-
   /// The ID of the file system.
   final pulumi.Input<String> fileSystemId;
-
   /// The path of Fileset.
   final pulumi.Input<String> fileSystemPath;
-
   /// The first ID of the resource.
   final pulumi.Input<String> filesetId;
-
   /// The ID of the Fileset.
   final pulumi.Input<String> id;
-
   /// The status of the fileset.
   final pulumi.Input<String> status;
-
   /// The latest update time of Fileset.
   final pulumi.Input<String> updateTime;
 
@@ -73,3 +66,4 @@ class GetFilesetsFileset {
     );
   }
 }
+

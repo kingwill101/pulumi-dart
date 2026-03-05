@@ -10,26 +10,20 @@ class ListContainerAppSecretsResult {
 
   /// Creates a new [ListContainerAppSecretsResult].
   /// [value] Collection of resources.
-  ListContainerAppSecretsResult({required this.value});
+  ListContainerAppSecretsResult({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value':
-          pulumi.Input.encodeList<
-            ContainerAppSecretResponse,
-            Map<String, dynamic>
-          >(value, (value) => value.toMap()),
+      'value': pulumi.Input.encodeList<ContainerAppSecretResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory ListContainerAppSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListContainerAppSecretsResult(
-      value: pulumi.Input.decodeList<ContainerAppSecretResponse>(
-        map['value']!,
-        (value) => ContainerAppSecretResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      value: pulumi.Input.decodeList<ContainerAppSecretResponse>(map['value']!, (value) => ContainerAppSecretResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

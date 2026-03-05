@@ -9,10 +9,14 @@ class EventActionEventRevisionPublished {
 
   /// Creates a new [EventActionEventRevisionPublished].
   /// [dataSetId] The ID of the data set to monitor for revision publications.
-  EventActionEventRevisionPublished({required this.dataSetId});
+  EventActionEventRevisionPublished({
+    required this.dataSetId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dataSetId': dataSetId};
+    return <String, dynamic>{
+      'dataSetId': dataSetId,
+    };
   }
 
   factory EventActionEventRevisionPublished.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class EventActionEventRevisionPublished {
     );
   }
 }
+

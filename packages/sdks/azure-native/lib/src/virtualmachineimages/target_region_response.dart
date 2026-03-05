@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetRegionResponse {
   /// The name of the region.
   final pulumi.Input<String> name;
-
   /// The number of replicas of the Image Version to be created in this region. Omit to use the default (1).
   final pulumi.Input<int>? replicaCount;
-
   /// Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
   final pulumi.Input<String>? storageAccountType;
 
@@ -34,16 +32,9 @@ class TargetRegionResponse {
   factory TargetRegionResponse.fromMap(Map<String, dynamic> map) {
     return TargetRegionResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      replicaCount: (() {
-        final guardedValue = map['replicaCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      storageAccountType: (() {
-        final guardedValue = map['storageAccountType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

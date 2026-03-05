@@ -260,19 +260,14 @@ import 'nat_gateway_state.dart';
 class NatGateway extends pulumi.CustomResource {
   /// Creation time. UTC time, in the format of YYYY-MM-DDThh:mm:ssZ.
   late final pulumi.Output<String> createTime;
-
   /// The ID of the ENS node.
   late final pulumi.Output<String> ensRegionId;
-
   /// NAT specifications. Value: `enat.default`.
   late final pulumi.Output<String> instanceType;
-
   /// The name of the NAT gateway. The length is 1 to 128 characters, but it cannot start with 'http:// 'or 'https.
   late final pulumi.Output<String?> natName;
-
   /// The network ID.
   late final pulumi.Output<String> networkId;
-
   /// The vSwitch ID.
   late final pulumi.Output<String> vswitchId;
 
@@ -285,11 +280,11 @@ class NatGateway extends pulumi.CustomResource {
     NatGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ens/natGateway:NatGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ens/natGateway:NatGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     ensRegionId = registerOutput<String>('ensRegionId');
     instanceType = registerOutput<String>('instanceType');
@@ -316,11 +311,11 @@ class NatGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ens/natGateway:NatGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ens/natGateway:NatGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     ensRegionId = registerOutput<String>('ensRegionId');
     instanceType = registerOutput<String>('instanceType');

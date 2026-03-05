@@ -7,17 +7,20 @@ class FlowSourceFlowConfigSourceConnectorPropertiesMarketo {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesMarketo].
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesMarketo({required this.object_});
+  FlowSourceFlowConfigSourceConnectorPropertiesMarketo({
+    required this.object_,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'object': object_};
+    return <String, dynamic>{
+      'object': object_,
+    };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesMarketo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesMarketo.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesMarketo(
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
+

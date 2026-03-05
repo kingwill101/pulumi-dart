@@ -41,20 +41,15 @@ class GetSessionEntityTypeDialogflowV3beta1Args {
     };
   }
 
-  factory GetSessionEntityTypeDialogflowV3beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSessionEntityTypeDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return GetSessionEntityTypeDialogflowV3beta1Args(
       agentId: pulumi.Input.fromValue(map['agentId'] as String),
       entityTypeId: pulumi.Input.fromValue(map['entityTypeId'] as String),
       environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sessionId: pulumi.Input.fromValue(map['sessionId'] as String),
     );
   }
 }
+

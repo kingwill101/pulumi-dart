@@ -3,22 +3,16 @@ enum InstanceGroupManagerUpdatePolicyInstanceRedistributionType {
   none("NONE"),
   proactive("PROACTIVE");
 
-  const InstanceGroupManagerUpdatePolicyInstanceRedistributionType(
-    this.wireValue,
-  );
+  const InstanceGroupManagerUpdatePolicyInstanceRedistributionType(this.wireValue);
   final String wireValue;
 
-  static InstanceGroupManagerUpdatePolicyInstanceRedistributionType fromValue(
-    String value,
-  ) {
-    for (final item
-        in InstanceGroupManagerUpdatePolicyInstanceRedistributionType.values) {
+  static InstanceGroupManagerUpdatePolicyInstanceRedistributionType fromValue(String value) {
+    for (final item in InstanceGroupManagerUpdatePolicyInstanceRedistributionType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InstanceGroupManagerUpdatePolicyInstanceRedistributionType value: $value',
-    );
+    throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyInstanceRedistributionType value: $value');
   }
 }
+

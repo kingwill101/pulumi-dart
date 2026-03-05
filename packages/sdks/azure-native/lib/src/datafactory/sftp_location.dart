@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SftpLocation {
   /// Specify the file name of dataset. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileName;
-
   /// Specify the folder path of dataset. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? folderPath;
-
   /// Type of dataset storage location.
   /// Expected value is 'SftpLocation'.
   final pulumi.Input<String> type;
@@ -18,7 +16,11 @@ class SftpLocation {
   /// [fileName] Specify the file name of dataset. Type: string (or Expression with resultType string).
   /// [folderPath] Specify the folder path of dataset. Type: string (or Expression with resultType string)
   /// [type] Type of dataset storage location.
-  SftpLocation({this.fileName, this.folderPath, required this.type});
+  SftpLocation({
+    this.fileName,
+    this.folderPath,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,17 +32,10 @@ class SftpLocation {
 
   factory SftpLocation.fromMap(Map<String, dynamic> map) {
     return SftpLocation(
-      fileName: (() {
-        final guardedValue = map['fileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      folderPath: (() {
-        final guardedValue = map['folderPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      fileName: (() { final guardedValue = map['fileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      folderPath: (() { final guardedValue = map['folderPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

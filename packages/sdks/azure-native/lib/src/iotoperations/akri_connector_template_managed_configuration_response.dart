@@ -6,9 +6,7 @@ import 'akri_connector_template_runtime_image_configuration_response.dart';
 /// AkriConnectorTemplateManagedConfiguration properties.
 class AkriConnectorTemplateManagedConfigurationResponse {
   /// The managed configuration settings.
-  final pulumi.Input<AkriConnectorTemplateRuntimeImageConfigurationResponse>
-  managedConfigurationSettings;
-
+  final pulumi.Input<AkriConnectorTemplateRuntimeImageConfigurationResponse> managedConfigurationSettings;
   /// Runtime configuration types.
   /// Expected value is 'ManagedConfiguration'.
   final pulumi.Input<String> runtimeConfigurationType;
@@ -23,27 +21,16 @@ class AkriConnectorTemplateManagedConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'managedConfigurationSettings':
-          pulumi.Input.mapInputValue<
-            AkriConnectorTemplateRuntimeImageConfigurationResponse,
-            Map<String, dynamic>
-          >(managedConfigurationSettings, (value) => value.toMap()),
+      'managedConfigurationSettings': pulumi.Input.mapInputValue<AkriConnectorTemplateRuntimeImageConfigurationResponse, Map<String, dynamic>>(managedConfigurationSettings, (value) => value.toMap()),
       'runtimeConfigurationType': runtimeConfigurationType,
     };
   }
 
-  factory AkriConnectorTemplateManagedConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AkriConnectorTemplateManagedConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateManagedConfigurationResponse(
-      managedConfigurationSettings: pulumi.Input.fromValue(
-        AkriConnectorTemplateRuntimeImageConfigurationResponse.fromMap(
-          (map['managedConfigurationSettings']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      runtimeConfigurationType: pulumi.Input.fromValue(
-        map['runtimeConfigurationType'] as String,
-      ),
+      managedConfigurationSettings: pulumi.Input.fromValue(AkriConnectorTemplateRuntimeImageConfigurationResponse.fromMap((map['managedConfigurationSettings']! as Map).cast<String, dynamic>())),
+      runtimeConfigurationType: pulumi.Input.fromValue(map['runtimeConfigurationType'] as String),
     );
   }
 }
+

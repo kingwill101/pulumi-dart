@@ -1,19 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getQuicksightGroup.
 class GetQuicksightGroupResult {
   /// The Amazon Resource Name (ARN) for the group.
   final String arn;
   final String awsAccountId;
-
   /// The group description.
   final String description;
   final String groupName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? namespace;
-
   /// The principal ID of the group.
   final String principalId;
   final String region;
@@ -58,13 +56,10 @@ class GetQuicksightGroupResult {
       description: map['description'] as String,
       groupName: map['groupName'] as String,
       id: map['id'] as String,
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return guardedValue as String; })(),
       principalId: map['principalId'] as String,
       region: map['region'] as String,
     );
   }
 }
+

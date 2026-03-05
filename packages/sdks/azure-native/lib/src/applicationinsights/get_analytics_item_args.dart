@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAnalyticsItemArgs {
   /// The Id of a specific item defined in the Application Insights component
   final pulumi.Input<String>? id;
-
   /// The name of a specific item defined in the Application Insights component
   final pulumi.Input<String>? name;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Application Insights component resource.
   final pulumi.Input<String> resourceName;
-
   /// Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
   final pulumi.Input<String> scopePath;
 
@@ -48,21 +44,12 @@ class GetAnalyticsItemArgs {
 
   factory GetAnalyticsItemArgs.fromMap(Map<String, dynamic> map) {
     return GetAnalyticsItemArgs(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
       scopePath: pulumi.Input.fromValue(map['scopePath'] as String),
     );
   }
 }
+

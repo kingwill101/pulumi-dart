@@ -273,16 +273,12 @@ import 'chart_repository_state.dart';
 class ChartRepository extends pulumi.CustomResource {
   /// The ID of the Container Registry instance.
   late final pulumi.Output<String> instanceId;
-
   /// The name of the repository that you want to create.
   late final pulumi.Output<String> repoName;
-
   /// The namespace to which the repository belongs.
   late final pulumi.Output<String> repoNamespaceName;
-
   /// The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
   late final pulumi.Output<String> repoType;
-
   /// The summary about the repository.
   late final pulumi.Output<String?> summary;
 
@@ -295,11 +291,11 @@ class ChartRepository extends pulumi.CustomResource {
     ChartRepositoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cr/chartRepository:ChartRepository',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cr/chartRepository:ChartRepository',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     repoName = registerOutput<String>('repoName');
     repoNamespaceName = registerOutput<String>('repoNamespaceName');
@@ -325,11 +321,11 @@ class ChartRepository extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cr/chartRepository:ChartRepository',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cr/chartRepository:ChartRepository',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     repoName = registerOutput<String>('repoName');
     repoNamespaceName = registerOutput<String>('repoNamespaceName');

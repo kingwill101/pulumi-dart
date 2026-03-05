@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig {
   /// How many days data should be retained for. This field is supported for Cloud Composer environments in composer 3 and newer.
   final pulumi.Input<int> retentionDays;
-
   /// Whether database retention is enabled or not. This field is supported for Cloud Composer environments in composer 3 and newer.
   final pulumi.Input<String> retentionMode;
 
@@ -24,12 +23,11 @@ class GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig {
     };
   }
 
-  factory GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig(
       retentionDays: pulumi.Input.fromValue(map['retentionDays'] as int),
       retentionMode: pulumi.Input.fromValue(map['retentionMode'] as String),
     );
   }
 }
+

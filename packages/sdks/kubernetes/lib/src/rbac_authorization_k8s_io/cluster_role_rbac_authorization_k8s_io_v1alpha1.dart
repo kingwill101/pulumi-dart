@@ -8,18 +8,13 @@ import 'policy_rule_rbac_authorization_k8s_io_v1alpha1.dart';
 /// ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding. Deprecated in v1.17 in favor of rbac.authorization.k8s.io/v1 ClusterRole, and will no longer be served in v1.20.
 class ClusterRoleRbacAuthorizationK8sIoV1alpha1 {
   /// AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
-  final pulumi.Input<AggregationRuleRbacAuthorizationK8sIoV1alpha1>?
-  aggregationRule;
-
+  final pulumi.Input<AggregationRuleRbacAuthorizationK8sIoV1alpha1>? aggregationRule;
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
-
   /// Standard object's metadata.
   final pulumi.Input<ObjectMeta>? metadata;
-
   /// Rules holds all the PolicyRules for this ClusterRole
   final pulumi.Input<List<PolicyRuleRbacAuthorizationK8sIoV1alpha1>>? rules;
 
@@ -39,75 +34,22 @@ class ClusterRoleRbacAuthorizationK8sIoV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aggregationRule':
-          ?pulumi.Input.mapOptionalInputValue<
-            AggregationRuleRbacAuthorizationK8sIoV1alpha1,
-            Map<String, dynamic>
-          >(aggregationRule, (value) => value.toMap()),
+      'aggregationRule': ?pulumi.Input.mapOptionalInputValue<AggregationRuleRbacAuthorizationK8sIoV1alpha1, Map<String, dynamic>>(aggregationRule, (value) => value.toMap()),
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata':
-          ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(
-            metadata,
-            (value) => value.toMap(),
-          ),
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<PolicyRuleRbacAuthorizationK8sIoV1alpha1>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PolicyRuleRbacAuthorizationK8sIoV1alpha1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<PolicyRuleRbacAuthorizationK8sIoV1alpha1>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<PolicyRuleRbacAuthorizationK8sIoV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ClusterRoleRbacAuthorizationK8sIoV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterRoleRbacAuthorizationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ClusterRoleRbacAuthorizationK8sIoV1alpha1(
-      aggregationRule: (() {
-        final guardedValue = map['aggregationRule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AggregationRuleRbacAuthorizationK8sIoV1alpha1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      apiVersion: (() {
-        final guardedValue = map['apiVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<PolicyRuleRbacAuthorizationK8sIoV1alpha1>(
-            guardedValue,
-            (value) => PolicyRuleRbacAuthorizationK8sIoV1alpha1.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      aggregationRule: (() { final guardedValue = map['aggregationRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AggregationRuleRbacAuthorizationK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyRuleRbacAuthorizationK8sIoV1alpha1>(guardedValue, (value) => PolicyRuleRbacAuthorizationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

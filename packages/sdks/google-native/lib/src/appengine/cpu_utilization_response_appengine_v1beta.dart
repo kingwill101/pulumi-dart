@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CpuUtilizationResponseAppengineV1beta {
   /// Period of time over which CPU utilization is calculated.
   final pulumi.Input<String> aggregationWindowLength;
-
   /// Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
   final pulumi.Input<double> targetUtilization;
 
@@ -25,16 +24,11 @@ class CpuUtilizationResponseAppengineV1beta {
     };
   }
 
-  factory CpuUtilizationResponseAppengineV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CpuUtilizationResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return CpuUtilizationResponseAppengineV1beta(
-      aggregationWindowLength: pulumi.Input.fromValue(
-        map['aggregationWindowLength'] as String,
-      ),
-      targetUtilization: pulumi.Input.fromValue(
-        map['targetUtilization'] as double,
-      ),
+      aggregationWindowLength: pulumi.Input.fromValue(map['aggregationWindowLength'] as String),
+      targetUtilization: pulumi.Input.fromValue(map['targetUtilization'] as double),
     );
   }
 }
+

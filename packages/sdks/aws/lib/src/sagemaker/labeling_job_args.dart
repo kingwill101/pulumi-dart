@@ -14,35 +14,24 @@ import 'labeling_job_stopping_condition.dart';
 class LabelingJobArgs {
   /// Configuration information required for human workers to complete a labeling task. Fields are documented below.
   final pulumi.Input<LabelingJobHumanTaskConfig> humanTaskConfig;
-
   /// Input data for the labeling job. Fields are documented below.
   final pulumi.Input<LabelingJobInputConfig> inputConfig;
-
   /// Attribute name to use for the label in the output manifest file.
   final pulumi.Input<String> labelAttributeName;
-
   /// S3 URI of the file that defines the categories used to label the data objects.
   final pulumi.Input<String>? labelCategoryConfigS3Uri;
-
   /// Information required to perform automated data labeling.. Fields are documented below.
-  final pulumi.Input<LabelingJobLabelingJobAlgorithmsConfig>?
-  labelingJobAlgorithmsConfig;
-
+  final pulumi.Input<LabelingJobLabelingJobAlgorithmsConfig>? labelingJobAlgorithmsConfig;
   /// Name of the labeling job.
   final pulumi.Input<String> labelingJobName;
-
   /// Location of the output data. Fields are documented below.
   final pulumi.Input<LabelingJobOutputConfig> outputConfig;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ARN of IAM role that Amazon SageMaker assumes to perform tasks during data labeling.
   final pulumi.Input<String> roleArn;
-
   /// Conditions for stopping a labeling job. If any of the conditions are met, the job is automatically stopped. Fields are documented below.
   final pulumi.Input<List<LabelingJobStoppingCondition>>? stoppingConditions;
-
   /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -74,107 +63,34 @@ class LabelingJobArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'humanTaskConfig':
-          pulumi.Input.mapInputValue<
-            LabelingJobHumanTaskConfig,
-            Map<String, dynamic>
-          >(humanTaskConfig, (value) => value.toMap()),
-      'inputConfig':
-          pulumi.Input.mapInputValue<
-            LabelingJobInputConfig,
-            Map<String, dynamic>
-          >(inputConfig, (value) => value.toMap()),
+      'humanTaskConfig': pulumi.Input.mapInputValue<LabelingJobHumanTaskConfig, Map<String, dynamic>>(humanTaskConfig, (value) => value.toMap()),
+      'inputConfig': pulumi.Input.mapInputValue<LabelingJobInputConfig, Map<String, dynamic>>(inputConfig, (value) => value.toMap()),
       'labelAttributeName': labelAttributeName,
       'labelCategoryConfigS3Uri': ?labelCategoryConfigS3Uri,
-      'labelingJobAlgorithmsConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            LabelingJobLabelingJobAlgorithmsConfig,
-            Map<String, dynamic>
-          >(labelingJobAlgorithmsConfig, (value) => value.toMap()),
+      'labelingJobAlgorithmsConfig': ?pulumi.Input.mapOptionalInputValue<LabelingJobLabelingJobAlgorithmsConfig, Map<String, dynamic>>(labelingJobAlgorithmsConfig, (value) => value.toMap()),
       'labelingJobName': labelingJobName,
-      'outputConfig':
-          pulumi.Input.mapInputValue<
-            LabelingJobOutputConfig,
-            Map<String, dynamic>
-          >(outputConfig, (value) => value.toMap()),
+      'outputConfig': pulumi.Input.mapInputValue<LabelingJobOutputConfig, Map<String, dynamic>>(outputConfig, (value) => value.toMap()),
       'region': ?region,
       'roleArn': roleArn,
-      'stoppingConditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LabelingJobStoppingCondition>,
-            List<Map<String, dynamic>>
-          >(
-            stoppingConditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LabelingJobStoppingCondition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'stoppingConditions': ?pulumi.Input.mapOptionalInputValue<List<LabelingJobStoppingCondition>, List<Map<String, dynamic>>>(stoppingConditions, (value) => pulumi.Input.encodeList<LabelingJobStoppingCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
     };
   }
 
   factory LabelingJobArgs.fromMap(Map<String, dynamic> map) {
     return LabelingJobArgs(
-      humanTaskConfig: pulumi.Input.fromValue(
-        LabelingJobHumanTaskConfig.fromMap(
-          (map['humanTaskConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      inputConfig: pulumi.Input.fromValue(
-        LabelingJobInputConfig.fromMap(
-          (map['inputConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      labelAttributeName: pulumi.Input.fromValue(
-        map['labelAttributeName'] as String,
-      ),
-      labelCategoryConfigS3Uri: (() {
-        final guardedValue = map['labelCategoryConfigS3Uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labelingJobAlgorithmsConfig: (() {
-        final guardedValue = map['labelingJobAlgorithmsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LabelingJobLabelingJobAlgorithmsConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      humanTaskConfig: pulumi.Input.fromValue(LabelingJobHumanTaskConfig.fromMap((map['humanTaskConfig']! as Map).cast<String, dynamic>())),
+      inputConfig: pulumi.Input.fromValue(LabelingJobInputConfig.fromMap((map['inputConfig']! as Map).cast<String, dynamic>())),
+      labelAttributeName: pulumi.Input.fromValue(map['labelAttributeName'] as String),
+      labelCategoryConfigS3Uri: (() { final guardedValue = map['labelCategoryConfigS3Uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labelingJobAlgorithmsConfig: (() { final guardedValue = map['labelingJobAlgorithmsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LabelingJobLabelingJobAlgorithmsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       labelingJobName: pulumi.Input.fromValue(map['labelingJobName'] as String),
-      outputConfig: pulumi.Input.fromValue(
-        LabelingJobOutputConfig.fromMap(
-          (map['outputConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputConfig: pulumi.Input.fromValue(LabelingJobOutputConfig.fromMap((map['outputConfig']! as Map).cast<String, dynamic>())),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
-      stoppingConditions: (() {
-        final guardedValue = map['stoppingConditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LabelingJobStoppingCondition>(
-            guardedValue,
-            (value) => LabelingJobStoppingCondition.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      stoppingConditions: (() { final guardedValue = map['stoppingConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LabelingJobStoppingCondition>(guardedValue, (value) => LabelingJobStoppingCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

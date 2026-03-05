@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsResponse {
   /// Optional. The delimiter being used to separate values. This defaults to ','.
   final pulumi.Input<String> delimiter;
-
   /// Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
   final pulumi.Input<bool> disableTypeInference;
-
   /// Optional. The character encoding of the data. The default is UTF-8.
   final pulumi.Input<String> encoding;
-
   /// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
   final pulumi.Input<int> headerRows;
 
@@ -37,16 +34,13 @@ class GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsResponse {
     };
   }
 
-  factory GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsResponse(
       delimiter: pulumi.Input.fromValue(map['delimiter'] as String),
-      disableTypeInference: pulumi.Input.fromValue(
-        map['disableTypeInference'] as bool,
-      ),
+      disableTypeInference: pulumi.Input.fromValue(map['disableTypeInference'] as bool),
       encoding: pulumi.Input.fromValue(map['encoding'] as String),
       headerRows: pulumi.Input.fromValue(map['headerRows'] as int),
     );
   }
 }
+

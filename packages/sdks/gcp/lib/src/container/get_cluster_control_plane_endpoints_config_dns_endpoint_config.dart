@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterControlPlaneEndpointsConfigDnsEndpointConfig {
   /// Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
   final pulumi.Input<bool> allowExternalTraffic;
-
   /// Controls whether the k8s certs auth is allowed via dns.
   final pulumi.Input<bool> enableK8sCertsViaDns;
-
   /// Controls whether the k8s token auth is allowed via dns.
   final pulumi.Input<bool> enableK8sTokensViaDns;
-
   /// The cluster's DNS endpoint.
   final pulumi.Input<String> endpoint;
 
@@ -36,20 +33,13 @@ class GetClusterControlPlaneEndpointsConfigDnsEndpointConfig {
     };
   }
 
-  factory GetClusterControlPlaneEndpointsConfigDnsEndpointConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterControlPlaneEndpointsConfigDnsEndpointConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterControlPlaneEndpointsConfigDnsEndpointConfig(
-      allowExternalTraffic: pulumi.Input.fromValue(
-        map['allowExternalTraffic'] as bool,
-      ),
-      enableK8sCertsViaDns: pulumi.Input.fromValue(
-        map['enableK8sCertsViaDns'] as bool,
-      ),
-      enableK8sTokensViaDns: pulumi.Input.fromValue(
-        map['enableK8sTokensViaDns'] as bool,
-      ),
+      allowExternalTraffic: pulumi.Input.fromValue(map['allowExternalTraffic'] as bool),
+      enableK8sCertsViaDns: pulumi.Input.fromValue(map['enableK8sCertsViaDns'] as bool),
+      enableK8sTokensViaDns: pulumi.Input.fromValue(map['enableK8sTokensViaDns'] as bool),
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
     );
   }
 }
+

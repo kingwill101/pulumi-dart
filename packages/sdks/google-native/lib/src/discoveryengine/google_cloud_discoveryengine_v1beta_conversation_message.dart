@@ -8,7 +8,6 @@ import 'google_cloud_discoveryengine_v1beta_text_input.dart';
 class GoogleCloudDiscoveryengineV1betaConversationMessage {
   /// Search reply.
   final pulumi.Input<GoogleCloudDiscoveryengineV1betaReply>? reply;
-
   /// User text input.
   final pulumi.Input<GoogleCloudDiscoveryengineV1betaTextInput>? userInput;
 
@@ -22,41 +21,16 @@ class GoogleCloudDiscoveryengineV1betaConversationMessage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'reply':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDiscoveryengineV1betaReply,
-            Map<String, dynamic>
-          >(reply, (value) => value.toMap()),
-      'userInput':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDiscoveryengineV1betaTextInput,
-            Map<String, dynamic>
-          >(userInput, (value) => value.toMap()),
+      'reply': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDiscoveryengineV1betaReply, Map<String, dynamic>>(reply, (value) => value.toMap()),
+      'userInput': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDiscoveryengineV1betaTextInput, Map<String, dynamic>>(userInput, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1betaConversationMessage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDiscoveryengineV1betaConversationMessage.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1betaConversationMessage(
-      reply: (() {
-        final guardedValue = map['reply'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDiscoveryengineV1betaReply.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      userInput: (() {
-        final guardedValue = map['userInput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDiscoveryengineV1betaTextInput.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      reply: (() { final guardedValue = map['reply']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDiscoveryengineV1betaReply.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      userInput: (() { final guardedValue = map['userInput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDiscoveryengineV1betaTextInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

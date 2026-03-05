@@ -11,50 +11,35 @@ import 'system_data_response.dart';
 class GetRestApiPollerDataConnectorResult {
   /// The add on attributes. The key name will become attribute name (a column) and the value will become the attribute value in the payload.
   final Map<String, String>? addOnAttributes;
-
   /// The a authentication model.
   final AWSAuthModelResponse auth;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The connector definition name (the dataConnectorDefinition resource id).
   final String connectorDefinitionName;
-
   /// The Log Analytics table destination.
   final String? dataType;
-
   /// The DCR related properties.
   final DCRConfigurationResponse? dcrConfig;
-
   /// Etag of the azure resource
   final String? etag;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Indicates whether the connector is active or not.
   final bool? isActive;
-
   /// The kind of the data connector
   /// Expected value is 'RestApiPoller'.
   final String kind;
-
   /// The name of the resource
   final String name;
-
   /// The paging configuration.
   final RestApiPollerRequestPagingConfigResponse? paging;
-
   /// The request configuration.
   final RestApiPollerRequestConfigResponse request;
-
   /// The response configuration.
   final CcpResponseConfigResponse? response;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -115,66 +100,25 @@ class GetRestApiPollerDataConnectorResult {
     };
   }
 
-  factory GetRestApiPollerDataConnectorResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRestApiPollerDataConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetRestApiPollerDataConnectorResult(
-      addOnAttributes: (() {
-        final guardedValue = map['addOnAttributes'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      auth: AWSAuthModelResponse.fromMap(
-        (map['auth']! as Map).cast<String, dynamic>(),
-      ),
+      addOnAttributes: (() { final guardedValue = map['addOnAttributes']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      auth: AWSAuthModelResponse.fromMap((map['auth']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
       connectorDefinitionName: map['connectorDefinitionName'] as String,
-      dataType: (() {
-        final guardedValue = map['dataType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      dcrConfig: (() {
-        final guardedValue = map['dcrConfig'];
-        if (guardedValue == null) return null;
-        return DCRConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      dataType: (() { final guardedValue = map['dataType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dcrConfig: (() { final guardedValue = map['dcrConfig']; if (guardedValue == null) return null; return DCRConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      isActive: (() {
-        final guardedValue = map['isActive'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      isActive: (() { final guardedValue = map['isActive']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       kind: map['kind'] as String,
       name: map['name'] as String,
-      paging: (() {
-        final guardedValue = map['paging'];
-        if (guardedValue == null) return null;
-        return RestApiPollerRequestPagingConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      request: RestApiPollerRequestConfigResponse.fromMap(
-        (map['request']! as Map).cast<String, dynamic>(),
-      ),
-      response: (() {
-        final guardedValue = map['response'];
-        if (guardedValue == null) return null;
-        return CcpResponseConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      paging: (() { final guardedValue = map['paging']; if (guardedValue == null) return null; return RestApiPollerRequestPagingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      request: RestApiPollerRequestConfigResponse.fromMap((map['request']! as Map).cast<String, dynamic>()),
+      response: (() { final guardedValue = map['response']; if (guardedValue == null) return null; return CcpResponseConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

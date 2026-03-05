@@ -8,46 +8,29 @@ import 'management_policy_filter_response.dart';
 class ManagementPolicyDefinitionResponse {
   /// An object that defines the action set.
   final pulumi.Input<ManagementPolicyActionResponse> actions;
-
   /// An object that defines the filter set.
   final pulumi.Input<ManagementPolicyFilterResponse>? filters;
 
   /// Creates a new [ManagementPolicyDefinitionResponse].
   /// [actions] An object that defines the action set.
   /// [filters] An object that defines the filter set.
-  ManagementPolicyDefinitionResponse({required this.actions, this.filters});
+  ManagementPolicyDefinitionResponse({
+    required this.actions,
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions':
-          pulumi.Input.mapInputValue<
-            ManagementPolicyActionResponse,
-            Map<String, dynamic>
-          >(actions, (value) => value.toMap()),
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagementPolicyFilterResponse,
-            Map<String, dynamic>
-          >(filters, (value) => value.toMap()),
+      'actions': pulumi.Input.mapInputValue<ManagementPolicyActionResponse, Map<String, dynamic>>(actions, (value) => value.toMap()),
+      'filters': ?pulumi.Input.mapOptionalInputValue<ManagementPolicyFilterResponse, Map<String, dynamic>>(filters, (value) => value.toMap()),
     };
   }
 
   factory ManagementPolicyDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyDefinitionResponse(
-      actions: pulumi.Input.fromValue(
-        ManagementPolicyActionResponse.fromMap(
-          (map['actions']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagementPolicyFilterResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      actions: pulumi.Input.fromValue(ManagementPolicyActionResponse.fromMap((map['actions']! as Map).cast<String, dynamic>())),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagementPolicyFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

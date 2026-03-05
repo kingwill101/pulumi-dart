@@ -8,7 +8,9 @@ class DataLakeAnalyticsSchemaProperties {
 
   /// Creates a new [DataLakeAnalyticsSchemaProperties].
   /// [dataLakeStoreAccountName] DataLake Store Account Name
-  DataLakeAnalyticsSchemaProperties({this.dataLakeStoreAccountName});
+  DataLakeAnalyticsSchemaProperties({
+    this.dataLakeStoreAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,11 +20,8 @@ class DataLakeAnalyticsSchemaProperties {
 
   factory DataLakeAnalyticsSchemaProperties.fromMap(Map<String, dynamic> map) {
     return DataLakeAnalyticsSchemaProperties(
-      dataLakeStoreAccountName: (() {
-        final guardedValue = map['dataLakeStoreAccountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataLakeStoreAccountName: (() { final guardedValue = map['dataLakeStoreAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

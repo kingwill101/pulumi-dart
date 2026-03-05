@@ -5,37 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMscSubSubscriptionsSubscription {
   /// The channel the Subscription.
   final pulumi.Input<String> channel;
-
   /// The ids of subscribed contacts.
   final pulumi.Input<List<int>> contactIds;
-
   /// The description of the Subscription.
   final pulumi.Input<String> description;
-
   /// The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
   final pulumi.Input<int> emailStatus;
-
   /// The ID of the Subscription.
   final pulumi.Input<String> id;
-
   /// The ID of the Subscription.
   final pulumi.Input<String> itemId;
-
   /// The name of the Subscription.
   final pulumi.Input<String> itemName;
-
   /// The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
   final pulumi.Input<int> pmsgStatus;
-
   /// The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
   final pulumi.Input<int> smsStatus;
-
   /// The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
   final pulumi.Input<int> ttsStatus;
-
   /// The ids of subscribed webhooks.
   final pulumi.Input<List<int>> webhookIds;
-
   /// The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
   final pulumi.Input<int> webhookStatus;
 
@@ -87,9 +76,7 @@ class GetMscSubSubscriptionsSubscription {
   factory GetMscSubSubscriptionsSubscription.fromMap(Map<String, dynamic> map) {
     return GetMscSubSubscriptionsSubscription(
       channel: pulumi.Input.fromValue(map['channel'] as String),
-      contactIds: pulumi.Input.fromValue(
-        (map['contactIds'] as List).cast<int>(),
-      ),
+      contactIds: pulumi.Input.fromValue((map['contactIds'] as List).cast<int>()),
       description: pulumi.Input.fromValue(map['description'] as String),
       emailStatus: pulumi.Input.fromValue(map['emailStatus'] as int),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -98,10 +85,9 @@ class GetMscSubSubscriptionsSubscription {
       pmsgStatus: pulumi.Input.fromValue(map['pmsgStatus'] as int),
       smsStatus: pulumi.Input.fromValue(map['smsStatus'] as int),
       ttsStatus: pulumi.Input.fromValue(map['ttsStatus'] as int),
-      webhookIds: pulumi.Input.fromValue(
-        (map['webhookIds'] as List).cast<int>(),
-      ),
+      webhookIds: pulumi.Input.fromValue((map['webhookIds'] as List).cast<int>()),
       webhookStatus: pulumi.Input.fromValue(map['webhookStatus'] as int),
     );
   }
 }
+

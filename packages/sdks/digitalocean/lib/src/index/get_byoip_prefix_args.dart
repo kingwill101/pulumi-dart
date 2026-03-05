@@ -12,10 +12,14 @@ class GetByoipPrefixArgs {
 
   /// Creates a new [GetByoipPrefixArgs].
   /// [uuid] The UUID of the BYOIP prefix.
-  GetByoipPrefixArgs({required this.uuid});
+  GetByoipPrefixArgs({
+    required this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uuid': uuid};
+    return <String, dynamic>{
+      'uuid': uuid,
+    };
   }
 
   factory GetByoipPrefixArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetByoipPrefixArgs {
     );
   }
 }
+

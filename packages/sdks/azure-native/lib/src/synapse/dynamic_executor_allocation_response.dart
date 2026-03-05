@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DynamicExecutorAllocationResponse {
   /// Indicates whether Dynamic Executor Allocation is enabled or not.
   final pulumi.Input<bool>? enabled;
-
   /// The maximum number of executors alloted
   final pulumi.Input<int>? maxExecutors;
-
   /// The minimum number of executors alloted
   final pulumi.Input<int>? minExecutors;
 
@@ -33,21 +31,10 @@ class DynamicExecutorAllocationResponse {
 
   factory DynamicExecutorAllocationResponse.fromMap(Map<String, dynamic> map) {
     return DynamicExecutorAllocationResponse(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      maxExecutors: (() {
-        final guardedValue = map['maxExecutors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minExecutors: (() {
-        final guardedValue = map['minExecutors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      maxExecutors: (() { final guardedValue = map['maxExecutors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minExecutors: (() { final guardedValue = map['minExecutors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

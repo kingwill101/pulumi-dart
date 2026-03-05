@@ -192,10 +192,8 @@ import 'fleet_stack_association_state.dart';
 class FleetStackAssociation extends pulumi.CustomResource {
   /// Name of the fleet.
   late final pulumi.Output<String> fleetName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Name of the stack.
   late final pulumi.Output<String> stackName;
 
@@ -208,11 +206,11 @@ class FleetStackAssociation extends pulumi.CustomResource {
     FleetStackAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appstream/fleetStackAssociation:FleetStackAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appstream/fleetStackAssociation:FleetStackAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fleetName = registerOutput<String>('fleetName');
     region = registerOutput<String>('region');
     stackName = registerOutput<String>('stackName');
@@ -236,11 +234,11 @@ class FleetStackAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appstream/fleetStackAssociation:FleetStackAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appstream/fleetStackAssociation:FleetStackAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fleetName = registerOutput<String>('fleetName');
     region = registerOutput<String>('region');
     stackName = registerOutput<String>('stackName');

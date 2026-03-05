@@ -9,10 +9,16 @@ class PasswordResponse {
   /// Creates a new [PasswordResponse].
   /// [name] Required.
   /// [value] Required.
-  PasswordResponse({required this.name, required this.value});
+  PasswordResponse({
+    required this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory PasswordResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class PasswordResponse {
     );
   }
 }
+

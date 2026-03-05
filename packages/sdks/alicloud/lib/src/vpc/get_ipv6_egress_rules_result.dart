@@ -51,11 +51,7 @@ class GetIpv6EgressRulesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'rules':
-          pulumi.Input.encodeList<GetIpv6EgressRulesRule, Map<String, dynamic>>(
-            rules,
-            (value) => value.toMap(),
-          ),
+      'rules': pulumi.Input.encodeList<GetIpv6EgressRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
       'status': ?status,
     };
   }
@@ -64,39 +60,15 @@ class GetIpv6EgressRulesResult {
     return GetIpv6EgressRulesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      ipv6EgressRuleName: (() {
-        final guardedValue = map['ipv6EgressRuleName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipv6EgressRuleName: (() { final guardedValue = map['ipv6EgressRuleName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipv6GatewayId: map['ipv6GatewayId'] as String,
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      rules: pulumi.Input.decodeList<GetIpv6EgressRulesRule>(
-        map['rules']!,
-        (value) => GetIpv6EgressRulesRule.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rules: pulumi.Input.decodeList<GetIpv6EgressRulesRule>(map['rules']!, (value) => GetIpv6EgressRulesRule.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

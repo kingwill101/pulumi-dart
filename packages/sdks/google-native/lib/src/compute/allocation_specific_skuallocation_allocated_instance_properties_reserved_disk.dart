@@ -6,12 +6,8 @@ import 'allocation_specific_skuallocation_allocated_instance_properties_reserved
 class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk {
   /// Specifies the size of the disk in base-2 GB.
   final pulumi.Input<String>? diskSizeGb;
-
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
-  final pulumi.Input<
-    AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface
-  >?
-  interface;
+  final pulumi.Input<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface>? interface;
 
   /// Creates a new [AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk].
   /// [diskSizeGb] Specifies the size of the disk in base-2 GB.
@@ -24,32 +20,15 @@ class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'diskSizeGb': ?diskSizeGb,
-      'interface':
-          ?pulumi.Input.mapOptionalInputValue<
-            AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface,
-            String
-          >(interface, (value) => value.wireValue),
+      'interface': ?pulumi.Input.mapOptionalInputValue<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface, String>(interface, (value) => value.wireValue),
     };
   }
 
-  factory AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk.fromMap(Map<String, dynamic> map) {
     return AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk(
-      diskSizeGb: (() {
-        final guardedValue = map['diskSizeGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      interface: (() {
-        final guardedValue = map['interface'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interface: (() { final guardedValue = map['interface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

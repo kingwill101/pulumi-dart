@@ -9,8 +9,7 @@ import 'rrset_routing_policy_wrr_policy_response.dart';
 class RRSetRoutingPolicyResponse {
   final pulumi.Input<RRSetRoutingPolicyGeoPolicyResponse> geo;
   final pulumi.Input<String> kind;
-  final pulumi.Input<RRSetRoutingPolicyPrimaryBackupPolicyResponse>
-  primaryBackup;
+  final pulumi.Input<RRSetRoutingPolicyPrimaryBackupPolicyResponse> primaryBackup;
   final pulumi.Input<RRSetRoutingPolicyWrrPolicyResponse> wrr;
 
   /// Creates a new [RRSetRoutingPolicyResponse].
@@ -27,43 +26,20 @@ class RRSetRoutingPolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'geo':
-          pulumi.Input.mapInputValue<
-            RRSetRoutingPolicyGeoPolicyResponse,
-            Map<String, dynamic>
-          >(geo, (value) => value.toMap()),
+      'geo': pulumi.Input.mapInputValue<RRSetRoutingPolicyGeoPolicyResponse, Map<String, dynamic>>(geo, (value) => value.toMap()),
       'kind': kind,
-      'primaryBackup':
-          pulumi.Input.mapInputValue<
-            RRSetRoutingPolicyPrimaryBackupPolicyResponse,
-            Map<String, dynamic>
-          >(primaryBackup, (value) => value.toMap()),
-      'wrr':
-          pulumi.Input.mapInputValue<
-            RRSetRoutingPolicyWrrPolicyResponse,
-            Map<String, dynamic>
-          >(wrr, (value) => value.toMap()),
+      'primaryBackup': pulumi.Input.mapInputValue<RRSetRoutingPolicyPrimaryBackupPolicyResponse, Map<String, dynamic>>(primaryBackup, (value) => value.toMap()),
+      'wrr': pulumi.Input.mapInputValue<RRSetRoutingPolicyWrrPolicyResponse, Map<String, dynamic>>(wrr, (value) => value.toMap()),
     };
   }
 
   factory RRSetRoutingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyResponse(
-      geo: pulumi.Input.fromValue(
-        RRSetRoutingPolicyGeoPolicyResponse.fromMap(
-          (map['geo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      geo: pulumi.Input.fromValue(RRSetRoutingPolicyGeoPolicyResponse.fromMap((map['geo']! as Map).cast<String, dynamic>())),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      primaryBackup: pulumi.Input.fromValue(
-        RRSetRoutingPolicyPrimaryBackupPolicyResponse.fromMap(
-          (map['primaryBackup']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      wrr: pulumi.Input.fromValue(
-        RRSetRoutingPolicyWrrPolicyResponse.fromMap(
-          (map['wrr']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      primaryBackup: pulumi.Input.fromValue(RRSetRoutingPolicyPrimaryBackupPolicyResponse.fromMap((map['primaryBackup']! as Map).cast<String, dynamic>())),
+      wrr: pulumi.Input.fromValue(RRSetRoutingPolicyWrrPolicyResponse.fromMap((map['wrr']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

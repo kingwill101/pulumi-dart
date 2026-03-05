@@ -10,9 +10,7 @@ class SettingsAccessSettingsWorkforceIdentitySettings {
   ///
   ///
   /// &lt;a name="nested_access_settings_workforce_identity_settings_oauth2"&gt;&lt;/a&gt;The `oauth2` block supports:
-  final pulumi.Input<SettingsAccessSettingsWorkforceIdentitySettingsOauth2>?
-  oauth2;
-
+  final pulumi.Input<SettingsAccessSettingsWorkforceIdentitySettingsOauth2>? oauth2;
   /// The workforce pool resources. Only one workforce pool is accepted.
   final pulumi.Input<String>? workforcePools;
 
@@ -26,33 +24,16 @@ class SettingsAccessSettingsWorkforceIdentitySettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oauth2':
-          ?pulumi.Input.mapOptionalInputValue<
-            SettingsAccessSettingsWorkforceIdentitySettingsOauth2,
-            Map<String, dynamic>
-          >(oauth2, (value) => value.toMap()),
+      'oauth2': ?pulumi.Input.mapOptionalInputValue<SettingsAccessSettingsWorkforceIdentitySettingsOauth2, Map<String, dynamic>>(oauth2, (value) => value.toMap()),
       'workforcePools': ?workforcePools,
     };
   }
 
-  factory SettingsAccessSettingsWorkforceIdentitySettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SettingsAccessSettingsWorkforceIdentitySettings.fromMap(Map<String, dynamic> map) {
     return SettingsAccessSettingsWorkforceIdentitySettings(
-      oauth2: (() {
-        final guardedValue = map['oauth2'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SettingsAccessSettingsWorkforceIdentitySettingsOauth2.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      workforcePools: (() {
-        final guardedValue = map['workforcePools'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      oauth2: (() { final guardedValue = map['oauth2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SettingsAccessSettingsWorkforceIdentitySettingsOauth2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      workforcePools: (() { final guardedValue = map['workforcePools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParameterVersionArgs {
   /// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
   final pulumi.Input<bool>? disabled;
-
   /// Parameter Manager Parameter resource.
   final pulumi.Input<String> parameter;
-
   /// The Parameter data.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String> parameterData;
-
   /// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
   final pulumi.Input<String> parameterVersionId;
 
@@ -43,16 +40,11 @@ class ParameterVersionArgs {
 
   factory ParameterVersionArgs.fromMap(Map<String, dynamic> map) {
     return ParameterVersionArgs(
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       parameter: pulumi.Input.fromValue(map['parameter'] as String),
       parameterData: pulumi.Input.fromValue(map['parameterData'] as String),
-      parameterVersionId: pulumi.Input.fromValue(
-        map['parameterVersionId'] as String,
-      ),
+      parameterVersionId: pulumi.Input.fromValue(map['parameterVersionId'] as String),
     );
   }
 }
+

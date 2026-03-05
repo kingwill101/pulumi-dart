@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsWebAppSlotAuthSettingsTwitter {
   /// The OAuth 1.0a consumer key of the Twitter application used for sign-in.
   final pulumi.Input<String> consumerKey;
-
   /// The OAuth 1.0a consumer secret of the Twitter application used for sign-in. Cannot be specified with `consumer_secret_setting_name`.
   final pulumi.Input<String>? consumerSecret;
-
   /// The app setting name that contains the OAuth 1.0a consumer secret of the Twitter application used for sign-in. Cannot be specified with `consumer_secret`.
   final pulumi.Input<String>? consumerSecretSettingName;
 
@@ -30,21 +28,12 @@ class WindowsWebAppSlotAuthSettingsTwitter {
     };
   }
 
-  factory WindowsWebAppSlotAuthSettingsTwitter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WindowsWebAppSlotAuthSettingsTwitter.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotAuthSettingsTwitter(
       consumerKey: pulumi.Input.fromValue(map['consumerKey'] as String),
-      consumerSecret: (() {
-        final guardedValue = map['consumerSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      consumerSecretSettingName: (() {
-        final guardedValue = map['consumerSecretSettingName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      consumerSecret: (() { final guardedValue = map['consumerSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      consumerSecretSettingName: (() { final guardedValue = map['consumerSecretSettingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

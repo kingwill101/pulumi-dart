@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GkeWorkloadResponse {
   /// The name of the parent cluster.
   final pulumi.Input<String> clusterName;
-
   /// The location of the parent cluster. This may be a zone or region.
   final pulumi.Input<String> location;
-
   /// The name of the parent namespace.
   final pulumi.Input<String> namespaceName;
-
   /// The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
   final pulumi.Input<String> project;
-
   /// The name of this workload.
   final pulumi.Input<String> topLevelControllerName;
-
   /// The type of this workload (for example, "Deployment" or "DaemonSet")
   final pulumi.Input<String> topLevelControllerType;
 
@@ -55,12 +50,9 @@ class GkeWorkloadResponse {
       location: pulumi.Input.fromValue(map['location'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),
-      topLevelControllerName: pulumi.Input.fromValue(
-        map['topLevelControllerName'] as String,
-      ),
-      topLevelControllerType: pulumi.Input.fromValue(
-        map['topLevelControllerType'] as String,
-      ),
+      topLevelControllerName: pulumi.Input.fromValue(map['topLevelControllerName'] as String),
+      topLevelControllerType: pulumi.Input.fromValue(map['topLevelControllerType'] as String),
     );
   }
 }
+

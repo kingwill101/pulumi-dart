@@ -6,15 +6,12 @@ import 'get_ip_sets_set.dart';
 /// Result data returned by getIpSets.
 class GetIpSetsResult {
   final String acceleratorId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? outputFile;
-
   /// A list of Ga Ip Sets. Each element contains the following attributes:
   final List<GetIpSetsSet> sets;
-
   /// The status of the acceleration region.
   final String? status;
 
@@ -40,10 +37,7 @@ class GetIpSetsResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'sets': pulumi.Input.encodeList<GetIpSetsSet, Map<String, dynamic>>(
-        sets,
-        (value) => value.toMap(),
-      ),
+      'sets': pulumi.Input.encodeList<GetIpSetsSet, Map<String, dynamic>>(sets, (value) => value.toMap()),
       'status': ?status,
     };
   }
@@ -53,20 +47,10 @@ class GetIpSetsResult {
       acceleratorId: map['acceleratorId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sets: pulumi.Input.decodeList<GetIpSetsSet>(
-        map['sets']!,
-        (value) => GetIpSetsSet.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sets: pulumi.Input.decodeList<GetIpSetsSet>(map['sets']!, (value) => GetIpSetsSet.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

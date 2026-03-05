@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceMetricAlarmRulesRulePrometheusAnnotation {
   /// The subject of the alert notificaThe key of the annotation.
   final pulumi.Input<String> key;
-
   /// The value of the annotation.
   final pulumi.Input<String> value;
 
@@ -18,15 +17,17 @@ class GetServiceMetricAlarmRulesRulePrometheusAnnotation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory GetServiceMetricAlarmRulesRulePrometheusAnnotation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceMetricAlarmRulesRulePrometheusAnnotation.fromMap(Map<String, dynamic> map) {
     return GetServiceMetricAlarmRulesRulePrometheusAnnotation(
       key: pulumi.Input.fromValue(map['key'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

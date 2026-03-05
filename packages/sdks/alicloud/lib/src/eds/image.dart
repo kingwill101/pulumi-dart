@@ -443,13 +443,10 @@ import 'image_state.dart';
 class Image extends pulumi.CustomResource {
   /// The description of the image.
   late final pulumi.Output<String?> description;
-
   /// The desktop id of the desktop.
   late final pulumi.Output<String> desktopId;
-
   /// The name of the image.
   late final pulumi.Output<String?> imageName;
-
   /// The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
   late final pulumi.Output<String> status;
 
@@ -457,13 +454,16 @@ class Image extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Image]. {@macro pulumi_eds_image_image_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Image(String name, {ImageArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:eds/image:Image',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Image(
+    String name, {
+    ImageArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:eds/image:Image',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     desktopId = registerOutput<String>('desktopId');
     imageName = registerOutput<String?>('imageName');
@@ -471,7 +471,11 @@ class Image extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Image] resource's state with the given [name] and [id].
-  static Image get(String name, pulumi.Input<String> id, {ImageState? state}) {
+  static Image get(
+    String name,
+    pulumi.Input<String> id, {
+    ImageState? state,
+  }) {
     return Image._get(
       name,
       state: state?.toMap(),
@@ -484,11 +488,11 @@ class Image extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eds/image:Image',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eds/image:Image',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     desktopId = registerOutput<String>('desktopId');
     imageName = registerOutput<String?>('imageName');

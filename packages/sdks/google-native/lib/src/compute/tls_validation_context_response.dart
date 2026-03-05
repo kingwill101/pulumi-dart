@@ -7,10 +7,8 @@ import 'sds_config_response.dart';
 class TlsValidationContextResponse {
   /// The path to the file holding the CA certificate to validate the client or server certificate.
   final pulumi.Input<String> certificatePath;
-
   /// Specifies the config to retrieve certificates through SDS. This field is applicable only if tlsCertificateSource is set to USE_SDS.
   final pulumi.Input<SdsConfigResponse> sdsConfig;
-
   /// Defines how TLS certificates are obtained.
   final pulumi.Input<String> validationSource;
 
@@ -27,11 +25,7 @@ class TlsValidationContextResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certificatePath': certificatePath,
-      'sdsConfig':
-          pulumi.Input.mapInputValue<SdsConfigResponse, Map<String, dynamic>>(
-            sdsConfig,
-            (value) => value.toMap(),
-          ),
+      'sdsConfig': pulumi.Input.mapInputValue<SdsConfigResponse, Map<String, dynamic>>(sdsConfig, (value) => value.toMap()),
       'validationSource': validationSource,
     };
   }
@@ -39,14 +33,9 @@ class TlsValidationContextResponse {
   factory TlsValidationContextResponse.fromMap(Map<String, dynamic> map) {
     return TlsValidationContextResponse(
       certificatePath: pulumi.Input.fromValue(map['certificatePath'] as String),
-      sdsConfig: pulumi.Input.fromValue(
-        SdsConfigResponse.fromMap(
-          (map['sdsConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      validationSource: pulumi.Input.fromValue(
-        map['validationSource'] as String,
-      ),
+      sdsConfig: pulumi.Input.fromValue(SdsConfigResponse.fromMap((map['sdsConfig']! as Map).cast<String, dynamic>())),
+      validationSource: pulumi.Input.fromValue(map['validationSource'] as String),
     );
   }
 }
+

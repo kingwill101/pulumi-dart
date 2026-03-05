@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PluginActionsConfig {
   /// The description of the operation performed by the action.
   final pulumi.Input<String> description;
-
   /// The display name of the action.
   final pulumi.Input<String> displayName;
-
   /// The id of the action.
   final pulumi.Input<String> id;
-
   /// The trigger mode supported by the action.
   /// Possible values:
   /// TRIGGER_MODE_UNSPECIFIED
@@ -50,3 +47,4 @@ class PluginActionsConfig {
     );
   }
 }
+

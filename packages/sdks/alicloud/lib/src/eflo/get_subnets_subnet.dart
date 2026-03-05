@@ -5,40 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubnetsSubnet {
   /// Network segment
   final pulumi.Input<String> cidr;
-
   /// The creation time of the resource
   final pulumi.Input<String> createTime;
-
   /// Modification time
   final pulumi.Input<String> gmtModified;
-
   /// The ID of the resource.
   final pulumi.Input<String> id;
-
   /// Error message
   final pulumi.Input<String> message;
-
   /// Resource Group ID.
   final pulumi.Input<String> resourceGroupId;
-
   /// The status of the resource.
   final pulumi.Input<String> status;
-
   /// Primary key ID.
   final pulumi.Input<String> subnetId;
-
   /// The Subnet name.
   final pulumi.Input<String> subnetName;
-
   /// Eflo subnet usage type, optional value:
   /// - General type is not filled in
   /// - OOB:OOB type
   /// - LB: LB type
   final pulumi.Input<String> type;
-
   /// The Eflo VPD ID.
   final pulumi.Input<String> vpdId;
-
   /// The zone ID of the resource.
   final pulumi.Input<String> zoneId;
 
@@ -104,3 +93,4 @@ class GetSubnetsSubnet {
     );
   }
 }
+

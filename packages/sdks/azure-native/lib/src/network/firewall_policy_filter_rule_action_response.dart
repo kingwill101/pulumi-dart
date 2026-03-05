@@ -9,21 +9,20 @@ class FirewallPolicyFilterRuleActionResponse {
 
   /// Creates a new [FirewallPolicyFilterRuleActionResponse].
   /// [type] The type of action.
-  FirewallPolicyFilterRuleActionResponse({this.type});
+  FirewallPolicyFilterRuleActionResponse({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
-  factory FirewallPolicyFilterRuleActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirewallPolicyFilterRuleActionResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFilterRuleActionResponse(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

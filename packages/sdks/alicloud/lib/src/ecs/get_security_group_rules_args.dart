@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityGroupRulesArgs {
   /// Authorization direction. Valid values are: `ingress` or `egress`.
   final pulumi.Input<String>? direction;
-
   /// The ID of the security group that owns the rules.
   final pulumi.Input<String> groupId;
-
   /// The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
   final pulumi.Input<String>? ipProtocol;
-
   /// Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
   final pulumi.Input<String>? nicType;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
   final pulumi.Input<String>? policy;
 
@@ -54,32 +49,13 @@ class GetSecurityGroupRulesArgs {
 
   factory GetSecurityGroupRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupRulesArgs(
-      direction: (() {
-        final guardedValue = map['direction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       groupId: pulumi.Input.fromValue(map['groupId'] as String),
-      ipProtocol: (() {
-        final guardedValue = map['ipProtocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nicType: (() {
-        final guardedValue = map['nicType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipProtocol: (() { final guardedValue = map['ipProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nicType: (() { final guardedValue = map['nicType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

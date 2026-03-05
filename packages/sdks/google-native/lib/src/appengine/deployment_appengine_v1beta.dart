@@ -10,16 +10,12 @@ import 'zip_info_appengine_v1beta.dart';
 class DeploymentAppengineV1beta {
   /// Google Cloud Build build information. Only applicable for instances running in the App Engine flexible environment.
   final pulumi.Input<BuildInfo>? build;
-
   /// Options for any Google Cloud Build builds created as a part of this deployment.These options will only be used if a new build is created, such as when deploying to the App Engine flexible environment using files or zip.
   final pulumi.Input<CloudBuildOptionsAppengineV1beta>? cloudBuildOptions;
-
   /// The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
   final pulumi.Input<ContainerInfoAppengineV1beta>? container;
-
   /// Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
   final pulumi.Input<Map<String, String>>? files;
-
   /// The zip file for this deployment, if this is a zip deployment.
   final pulumi.Input<ZipInfoAppengineV1beta>? zip;
 
@@ -39,73 +35,22 @@ class DeploymentAppengineV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'build':
-          ?pulumi.Input.mapOptionalInputValue<BuildInfo, Map<String, dynamic>>(
-            build,
-            (value) => value.toMap(),
-          ),
-      'cloudBuildOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            CloudBuildOptionsAppengineV1beta,
-            Map<String, dynamic>
-          >(cloudBuildOptions, (value) => value.toMap()),
-      'container':
-          ?pulumi.Input.mapOptionalInputValue<
-            ContainerInfoAppengineV1beta,
-            Map<String, dynamic>
-          >(container, (value) => value.toMap()),
+      'build': ?pulumi.Input.mapOptionalInputValue<BuildInfo, Map<String, dynamic>>(build, (value) => value.toMap()),
+      'cloudBuildOptions': ?pulumi.Input.mapOptionalInputValue<CloudBuildOptionsAppengineV1beta, Map<String, dynamic>>(cloudBuildOptions, (value) => value.toMap()),
+      'container': ?pulumi.Input.mapOptionalInputValue<ContainerInfoAppengineV1beta, Map<String, dynamic>>(container, (value) => value.toMap()),
       'files': ?files,
-      'zip':
-          ?pulumi.Input.mapOptionalInputValue<
-            ZipInfoAppengineV1beta,
-            Map<String, dynamic>
-          >(zip, (value) => value.toMap()),
+      'zip': ?pulumi.Input.mapOptionalInputValue<ZipInfoAppengineV1beta, Map<String, dynamic>>(zip, (value) => value.toMap()),
     };
   }
 
   factory DeploymentAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return DeploymentAppengineV1beta(
-      build: (() {
-        final guardedValue = map['build'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BuildInfo.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      cloudBuildOptions: (() {
-        final guardedValue = map['cloudBuildOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CloudBuildOptionsAppengineV1beta.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      container: (() {
-        final guardedValue = map['container'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ContainerInfoAppengineV1beta.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      files: (() {
-        final guardedValue = map['files'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      zip: (() {
-        final guardedValue = map['zip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ZipInfoAppengineV1beta.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      build: (() { final guardedValue = map['build']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BuildInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      cloudBuildOptions: (() { final guardedValue = map['cloudBuildOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudBuildOptionsAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      container: (() { final guardedValue = map['container']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerInfoAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      files: (() { final guardedValue = map['files']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      zip: (() { final guardedValue = map['zip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZipInfoAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -6,8 +6,7 @@ import 'google_privacy_dlp_v2_large_custom_dictionary_stats_response.dart';
 /// Statistics for a StoredInfoType.
 class GooglePrivacyDlpV2StoredInfoTypeStatsResponse {
   /// StoredInfoType where findings are defined by a dictionary of phrases.
-  final pulumi.Input<GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse>
-  largeCustomDictionary;
+  final pulumi.Input<GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse> largeCustomDictionary;
 
   /// Creates a new [GooglePrivacyDlpV2StoredInfoTypeStatsResponse].
   /// [largeCustomDictionary] StoredInfoType where findings are defined by a dictionary of phrases.
@@ -17,23 +16,14 @@ class GooglePrivacyDlpV2StoredInfoTypeStatsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'largeCustomDictionary':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse,
-            Map<String, dynamic>
-          >(largeCustomDictionary, (value) => value.toMap()),
+      'largeCustomDictionary': pulumi.Input.mapInputValue<GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse, Map<String, dynamic>>(largeCustomDictionary, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2StoredInfoTypeStatsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2StoredInfoTypeStatsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2StoredInfoTypeStatsResponse(
-      largeCustomDictionary: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse.fromMap(
-          (map['largeCustomDictionary']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      largeCustomDictionary: pulumi.Input.fromValue(GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse.fromMap((map['largeCustomDictionary']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

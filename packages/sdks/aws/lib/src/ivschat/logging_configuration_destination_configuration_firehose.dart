@@ -13,16 +13,15 @@ class LoggingConfigurationDestinationConfigurationFirehose {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'deliveryStreamName': deliveryStreamName};
+    return <String, dynamic>{
+      'deliveryStreamName': deliveryStreamName,
+    };
   }
 
-  factory LoggingConfigurationDestinationConfigurationFirehose.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoggingConfigurationDestinationConfigurationFirehose.fromMap(Map<String, dynamic> map) {
     return LoggingConfigurationDestinationConfigurationFirehose(
-      deliveryStreamName: pulumi.Input.fromValue(
-        map['deliveryStreamName'] as String,
-      ),
+      deliveryStreamName: pulumi.Input.fromValue(map['deliveryStreamName'] as String),
     );
   }
 }
+

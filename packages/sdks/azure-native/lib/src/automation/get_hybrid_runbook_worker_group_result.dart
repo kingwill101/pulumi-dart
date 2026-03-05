@@ -7,22 +7,16 @@ import 'system_data_response.dart';
 class GetHybridRunbookWorkerGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Sets the credential of a worker group.
   final RunAsCredentialAssociationPropertyResponse? credential;
-
   /// Type of the HybridWorkerGroup.
   final String? groupType;
-
   /// Fully qualified resource Id for the resource
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Resource system metadata.
   final SystemDataResponse systemData;
-
   /// The type of the resource.
   final String type;
 
@@ -59,24 +53,13 @@ class GetHybridRunbookWorkerGroupResult {
   factory GetHybridRunbookWorkerGroupResult.fromMap(Map<String, dynamic> map) {
     return GetHybridRunbookWorkerGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      credential: (() {
-        final guardedValue = map['credential'];
-        if (guardedValue == null) return null;
-        return RunAsCredentialAssociationPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      groupType: (() {
-        final guardedValue = map['groupType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      credential: (() { final guardedValue = map['credential']; if (guardedValue == null) return null; return RunAsCredentialAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      groupType: (() { final guardedValue = map['groupType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

@@ -1699,42 +1699,30 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
   /// The deploy config to use for the deployment.
   /// Structure is documented below.
-  late final pulumi.Output<AiEndpointWithModelGardenDeploymentDeployConfig?>
-  deployConfig;
-
+  late final pulumi.Output<AiEndpointWithModelGardenDeploymentDeployConfig?> deployConfig;
   /// Output only. The display name assigned to the model deployed to the endpoint.
   /// This is not required to delete the resource but is used for debug logging.
   late final pulumi.Output<String> deployedModelDisplayName;
-
   /// Output only. The unique numeric ID that Vertex AI assigns to the model at the time it is deployed to the endpoint.
   /// It is required to undeploy the model from the endpoint during resource deletion as described in
   /// https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints/undeployModel.
   late final pulumi.Output<String> deployedModelId;
-
   /// Resource ID segment making up resource `endpoint`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> endpoint;
-
   /// The endpoint config to use for the deployment.
   /// Structure is documented below.
-  late final pulumi.Output<AiEndpointWithModelGardenDeploymentEndpointConfig?>
-  endpointConfig;
-
+  late final pulumi.Output<AiEndpointWithModelGardenDeploymentEndpointConfig?> endpointConfig;
   /// The Hugging Face model to deploy.
   /// Format: Hugging Face model ID like `google/gemma-2-2b-it`.
   late final pulumi.Output<String?> huggingFaceModelId;
-
   /// Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
-
   /// The model config to use for the deployment.
   /// Structure is documented below.
-  late final pulumi.Output<AiEndpointWithModelGardenDeploymentModelConfig?>
-  modelConfig;
-
+  late final pulumi.Output<AiEndpointWithModelGardenDeploymentModelConfig?> modelConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The Model Garden model to deploy.
   /// Format:
   /// `publishers/{publisher}/models/{publisher_model}@{version_id}`, or
@@ -1750,51 +1738,19 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
     AiEndpointWithModelGardenDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deployConfig =
-        registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>(
-          'deployConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deployedModelDisplayName = registerOutput<String>(
-      'deployedModelDisplayName',
-    );
+          'gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deployedModelDisplayName = registerOutput<String>('deployedModelDisplayName');
     deployedModelId = registerOutput<String>('deployedModelId');
     endpoint = registerOutput<String>('endpoint');
-    endpointConfig =
-        registerOutput<AiEndpointWithModelGardenDeploymentEndpointConfig?>(
-          'endpointConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    endpointConfig = registerOutput<AiEndpointWithModelGardenDeploymentEndpointConfig?>('endpointConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     huggingFaceModelId = registerOutput<String?>('huggingFaceModelId');
     location = registerOutput<String>('location');
-    modelConfig =
-        registerOutput<AiEndpointWithModelGardenDeploymentModelConfig?>(
-          'modelConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiEndpointWithModelGardenDeploymentModelConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    modelConfig = registerOutput<AiEndpointWithModelGardenDeploymentModelConfig?>('modelConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentModelConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     publisherModelName = registerOutput<String?>('publisherModelName');
   }
@@ -1817,51 +1773,19 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deployConfig =
-        registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>(
-          'deployConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deployedModelDisplayName = registerOutput<String>(
-      'deployedModelDisplayName',
-    );
+          'gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deployedModelDisplayName = registerOutput<String>('deployedModelDisplayName');
     deployedModelId = registerOutput<String>('deployedModelId');
     endpoint = registerOutput<String>('endpoint');
-    endpointConfig =
-        registerOutput<AiEndpointWithModelGardenDeploymentEndpointConfig?>(
-          'endpointConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    endpointConfig = registerOutput<AiEndpointWithModelGardenDeploymentEndpointConfig?>('endpointConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     huggingFaceModelId = registerOutput<String?>('huggingFaceModelId');
     location = registerOutput<String>('location');
-    modelConfig =
-        registerOutput<AiEndpointWithModelGardenDeploymentModelConfig?>(
-          'modelConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiEndpointWithModelGardenDeploymentModelConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    modelConfig = registerOutput<AiEndpointWithModelGardenDeploymentModelConfig?>('modelConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentModelConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     publisherModelName = registerOutput<String?>('publisherModelName');
   }

@@ -12,13 +12,10 @@ class DataDiskResponse {
   ///
   /// The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
   final pulumi.Input<String>? caching;
-
   /// The initial disk size in GB when creating new data disk.
   final pulumi.Input<int> diskSizeGB;
-
   /// The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
   final pulumi.Input<int> lun;
-
   /// If omitted, the default is "Standard_LRS". Values are:
   ///
   /// Standard_LRS - The data disk should use standard locally redundant storage.
@@ -48,18 +45,11 @@ class DataDiskResponse {
 
   factory DataDiskResponse.fromMap(Map<String, dynamic> map) {
     return DataDiskResponse(
-      caching: (() {
-        final guardedValue = map['caching'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskSizeGB: pulumi.Input.fromValue(map['diskSizeGB'] as int),
       lun: pulumi.Input.fromValue(map['lun'] as int),
-      storageAccountType: (() {
-        final guardedValue = map['storageAccountType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDevices.
 class GetDevicesResult {
   final String globalNetworkId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// IDs of the devices.
   final List<String> ids;
   final String? siteId;
@@ -41,16 +40,9 @@ class GetDevicesResult {
       globalNetworkId: map['globalNetworkId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      siteId: (() {
-        final guardedValue = map['siteId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

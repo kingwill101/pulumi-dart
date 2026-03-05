@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertProcessingRuleSuppressionConditionSeverity {
   /// The operator for a given condition. Possible values are `Equals` and `NotEquals`.
   final pulumi.Input<String> operator;
-
   /// Specifies list of values to match for a given condition. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3`, and `Sev4`.
   final pulumi.Input<List<String>> values;
 
@@ -18,15 +17,17 @@ class AlertProcessingRuleSuppressionConditionSeverity {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'operator': operator, 'values': values};
+    return <String, dynamic>{
+      'operator': operator,
+      'values': values,
+    };
   }
 
-  factory AlertProcessingRuleSuppressionConditionSeverity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertProcessingRuleSuppressionConditionSeverity.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleSuppressionConditionSeverity(
       operator: pulumi.Input.fromValue(map['operator'] as String),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

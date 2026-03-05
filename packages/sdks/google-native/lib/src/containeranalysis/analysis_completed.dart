@@ -8,19 +8,20 @@ class AnalysisCompleted {
 
   /// Creates a new [AnalysisCompleted].
   /// [analysisType] Optional.
-  AnalysisCompleted({this.analysisType});
+  AnalysisCompleted({
+    this.analysisType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'analysisType': ?analysisType};
+    return <String, dynamic>{
+      'analysisType': ?analysisType,
+    };
   }
 
   factory AnalysisCompleted.fromMap(Map<String, dynamic> map) {
     return AnalysisCompleted(
-      analysisType: (() {
-        final guardedValue = map['analysisType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      analysisType: (() { final guardedValue = map['analysisType']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

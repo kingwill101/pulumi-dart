@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventResponse {
   /// The count of the event.
   final pulumi.Input<int> count;
-
   /// The date-time of the earliest logged event.
   final pulumi.Input<String> firstTimestamp;
-
   /// The date-time of the latest logged event.
   final pulumi.Input<String> lastTimestamp;
-
   /// The event message.
   final pulumi.Input<String> message;
-
   /// The event name.
   final pulumi.Input<String> name;
-
   /// The event type.
   final pulumi.Input<String> type;
 
@@ -60,3 +55,4 @@ class EventResponse {
     );
   }
 }
+

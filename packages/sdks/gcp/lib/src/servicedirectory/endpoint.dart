@@ -495,28 +495,22 @@ import 'endpoint_state.dart';
 class Endpoint extends pulumi.CustomResource {
   /// IPv4 or IPv6 address of the endpoint.
   late final pulumi.Output<String?> address;
-
   /// The Resource ID must be 1-63 characters long, including digits,
   /// lowercase letters or the hyphen character.
   late final pulumi.Output<String> endpointId;
-
   /// Metadata for the endpoint. This data can be consumed
   /// by service clients. The entire metadata dictionary may contain
   /// up to 512 characters, spread across all key-value pairs.
   /// Metadata that goes beyond any these limits will be rejected.
   late final pulumi.Output<Map<String, String>?> metadata;
-
   /// The resource name for the endpoint in the format
   /// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
   late final pulumi.Output<String> name;
-
   /// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
   late final pulumi.Output<String?> network;
-
   /// Port that the endpoint is running on, must be in the
   /// range of [0, 65535]. If unspecified, the default is 0.
   late final pulumi.Output<int?> port;
-
   /// The resource name of the service that this endpoint provides.
   late final pulumi.Output<String> service;
 
@@ -529,11 +523,11 @@ class Endpoint extends pulumi.CustomResource {
     EndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:servicedirectory/endpoint:Endpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:servicedirectory/endpoint:Endpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String?>('address');
     endpointId = registerOutput<String>('endpointId');
     metadata = registerOutput<Map<String, String>?>('metadata');
@@ -561,11 +555,11 @@ class Endpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:servicedirectory/endpoint:Endpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:servicedirectory/endpoint:Endpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String?>('address');
     endpointId = registerOutput<String>('endpointId');
     metadata = registerOutput<Map<String, String>?>('metadata');

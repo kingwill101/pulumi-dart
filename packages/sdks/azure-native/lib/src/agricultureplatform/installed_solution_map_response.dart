@@ -7,34 +7,29 @@ import 'solution_response.dart';
 class InstalledSolutionMapResponse {
   /// The key representing the installed solution.
   final pulumi.Input<String> key;
-
   /// The installed solution value.
   final pulumi.Input<SolutionResponse> value;
 
   /// Creates a new [InstalledSolutionMapResponse].
   /// [key] The key representing the installed solution.
   /// [value] The installed solution value.
-  InstalledSolutionMapResponse({required this.key, required this.value});
+  InstalledSolutionMapResponse({
+    required this.key,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'key': key,
-      'value':
-          pulumi.Input.mapInputValue<SolutionResponse, Map<String, dynamic>>(
-            value,
-            (value) => value.toMap(),
-          ),
+      'value': pulumi.Input.mapInputValue<SolutionResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory InstalledSolutionMapResponse.fromMap(Map<String, dynamic> map) {
     return InstalledSolutionMapResponse(
       key: pulumi.Input.fromValue(map['key'] as String),
-      value: pulumi.Input.fromValue(
-        SolutionResponse.fromMap(
-          (map['value']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      value: pulumi.Input.fromValue(SolutionResponse.fromMap((map['value']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -187,16 +187,12 @@ import 'one_dashboard_json_state.dart';
 class OneDashboardJson extends pulumi.CustomResource {
   /// Determines the New Relic account where the dashboard will be created. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
-
   /// The unique entity identifier of the dashboard in New Relic.
   late final pulumi.Output<String> guid;
-
   /// The JSON export of a dashboard. [The JSON can be exported from the UI](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/dashboards-charts-import-export-data/#dashboards)
   late final pulumi.Output<String> json;
-
   /// The URL for viewing the dashboard.
   late final pulumi.Output<String> permalink;
-
   /// The date and time when the dashboard was last updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -209,11 +205,11 @@ class OneDashboardJson extends pulumi.CustomResource {
     OneDashboardJsonArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/oneDashboardJson:OneDashboardJson',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/oneDashboardJson:OneDashboardJson',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     guid = registerOutput<String>('guid');
     json = registerOutput<String>('json');
@@ -239,11 +235,11 @@ class OneDashboardJson extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/oneDashboardJson:OneDashboardJson',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/oneDashboardJson:OneDashboardJson',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     guid = registerOutput<String>('guid');
     json = registerOutput<String>('json');

@@ -14,3 +14,4 @@ enum Tier {
     throw ArgumentError('Unknown Tier value: $value');
   }
 }
+

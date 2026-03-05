@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiscoverySourceArgs {
   /// Maps resource name
   final pulumi.Input<String> mapName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// discovery source resource
   final pulumi.Input<String> sourceName;
 
@@ -37,10 +35,9 @@ class GetDiscoverySourceArgs {
   factory GetDiscoverySourceArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscoverySourceArgs(
       mapName: pulumi.Input.fromValue(map['mapName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sourceName: pulumi.Input.fromValue(map['sourceName'] as String),
     );
   }
 }
+

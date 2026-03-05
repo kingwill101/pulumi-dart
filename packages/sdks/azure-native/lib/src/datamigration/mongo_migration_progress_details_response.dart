@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MongoMigrationProgressDetailsResponse {
   /// Migration duration
   final pulumi.Input<int> durationInSeconds;
-
   /// Migration Error
   final pulumi.Input<String> migrationError;
-
   /// Migration Status
   final pulumi.Input<String> migrationStatus;
-
   /// Processed Document Count
   final pulumi.Input<double> processedDocumentCount;
-
   /// Source Document Count
   final pulumi.Input<double> sourceDocumentCount;
 
@@ -43,21 +39,14 @@ class MongoMigrationProgressDetailsResponse {
     };
   }
 
-  factory MongoMigrationProgressDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MongoMigrationProgressDetailsResponse.fromMap(Map<String, dynamic> map) {
     return MongoMigrationProgressDetailsResponse(
-      durationInSeconds: pulumi.Input.fromValue(
-        map['durationInSeconds'] as int,
-      ),
+      durationInSeconds: pulumi.Input.fromValue(map['durationInSeconds'] as int),
       migrationError: pulumi.Input.fromValue(map['migrationError'] as String),
       migrationStatus: pulumi.Input.fromValue(map['migrationStatus'] as String),
-      processedDocumentCount: pulumi.Input.fromValue(
-        map['processedDocumentCount'] as double,
-      ),
-      sourceDocumentCount: pulumi.Input.fromValue(
-        map['sourceDocumentCount'] as double,
-      ),
+      processedDocumentCount: pulumi.Input.fromValue(map['processedDocumentCount'] as double),
+      sourceDocumentCount: pulumi.Input.fromValue(map['sourceDocumentCount'] as double),
     );
   }
 }
+

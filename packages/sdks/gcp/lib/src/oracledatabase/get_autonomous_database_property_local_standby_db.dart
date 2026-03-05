@@ -6,19 +6,15 @@ class GetAutonomousDatabasePropertyLocalStandbyDb {
   /// The date and time the Autonomous Data Guard role was switched for the
   /// standby Autonomous Database.
   final pulumi.Input<String> dataGuardRoleChangedTime;
-
   /// The date and time the Disaster Recovery role was switched for the standby
   /// Autonomous Database.
   final pulumi.Input<String> disasterRecoveryRoleChangedTime;
-
   /// The amount of time, in seconds, that the data of the standby database lags
   /// in comparison to the data of the primary database.
   final pulumi.Input<String> lagTimeDuration;
-
   /// The additional details about the current lifecycle state of the
   /// Autonomous Database.
   final pulumi.Input<String> lifecycleDetails;
-
   /// Possible values:
   /// STATE_UNSPECIFIED
   /// PROVISIONING
@@ -68,21 +64,14 @@ class GetAutonomousDatabasePropertyLocalStandbyDb {
     };
   }
 
-  factory GetAutonomousDatabasePropertyLocalStandbyDb.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAutonomousDatabasePropertyLocalStandbyDb.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasePropertyLocalStandbyDb(
-      dataGuardRoleChangedTime: pulumi.Input.fromValue(
-        map['dataGuardRoleChangedTime'] as String,
-      ),
-      disasterRecoveryRoleChangedTime: pulumi.Input.fromValue(
-        map['disasterRecoveryRoleChangedTime'] as String,
-      ),
+      dataGuardRoleChangedTime: pulumi.Input.fromValue(map['dataGuardRoleChangedTime'] as String),
+      disasterRecoveryRoleChangedTime: pulumi.Input.fromValue(map['disasterRecoveryRoleChangedTime'] as String),
       lagTimeDuration: pulumi.Input.fromValue(map['lagTimeDuration'] as String),
-      lifecycleDetails: pulumi.Input.fromValue(
-        map['lifecycleDetails'] as String,
-      ),
+      lifecycleDetails: pulumi.Input.fromValue(map['lifecycleDetails'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

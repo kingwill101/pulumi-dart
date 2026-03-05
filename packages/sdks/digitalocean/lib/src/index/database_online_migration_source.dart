@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseOnlineMigrationSource {
   /// The name of the default database
   final pulumi.Input<String> dbName;
-
   /// The FQDN pointing to the database cluster's current primary node.
   final pulumi.Input<String> host;
-
   /// A randomly generated password for the default user.
   final pulumi.Input<String> password;
-
   /// The port on which the database cluster is listening.
   final pulumi.Input<int> port;
-
   /// The default user for the database.
   final pulumi.Input<String> username;
 
@@ -52,3 +48,4 @@ class DatabaseOnlineMigrationSource {
     );
   }
 }
+

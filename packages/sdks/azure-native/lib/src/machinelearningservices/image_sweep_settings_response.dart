@@ -7,7 +7,6 @@ import 'bandit_policy_response.dart';
 class ImageSweepSettingsResponse {
   /// Type of early termination policy.
   final pulumi.Input<BanditPolicyResponse>? earlyTermination;
-
   /// [Required] Type of the hyperparameter sampling algorithms.
   final pulumi.Input<String> samplingAlgorithm;
 
@@ -21,29 +20,16 @@ class ImageSweepSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'earlyTermination':
-          ?pulumi.Input.mapOptionalInputValue<
-            BanditPolicyResponse,
-            Map<String, dynamic>
-          >(earlyTermination, (value) => value.toMap()),
+      'earlyTermination': ?pulumi.Input.mapOptionalInputValue<BanditPolicyResponse, Map<String, dynamic>>(earlyTermination, (value) => value.toMap()),
       'samplingAlgorithm': samplingAlgorithm,
     };
   }
 
   factory ImageSweepSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ImageSweepSettingsResponse(
-      earlyTermination: (() {
-        final guardedValue = map['earlyTermination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BanditPolicyResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      samplingAlgorithm: pulumi.Input.fromValue(
-        map['samplingAlgorithm'] as String,
-      ),
+      earlyTermination: (() { final guardedValue = map['earlyTermination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BanditPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      samplingAlgorithm: pulumi.Input.fromValue(map['samplingAlgorithm'] as String),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualClusterArgs {
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the virtual cluster.
   final pulumi.Input<String> virtualClusterName;
 
@@ -30,12 +29,9 @@ class GetVirtualClusterArgs {
 
   factory GetVirtualClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualClusterArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualClusterName: pulumi.Input.fromValue(
-        map['virtualClusterName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualClusterName: pulumi.Input.fromValue(map['virtualClusterName'] as String),
     );
   }
 }
+

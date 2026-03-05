@@ -245,22 +245,17 @@ import 'port_state.dart';
 class Port extends pulumi.CustomResource {
   /// The port of the origin server. Valid values: `0` to `65535`.
   late final pulumi.Output<String?> backendPort;
-
   /// Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
   /// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
   late final pulumi.Output<PortConfig> config;
-
   /// The forwarding port to query. Valid values: `0` to `65535`.
   late final pulumi.Output<String> frontendPort;
-
   /// The type of the forwarding protocol to query. Valid values:
   late final pulumi.Output<String> frontendProtocol;
-
   /// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
   ///
   /// &gt; **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
   late final pulumi.Output<String> instanceId;
-
   /// List of source IP addresses
   late final pulumi.Output<List<String>> realServers;
 
@@ -268,24 +263,18 @@ class Port extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Port]. {@macro pulumi_ddos_port_port_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Port(String name, {PortArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:ddos/port:Port',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Port(
+    String name, {
+    PortArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:ddos/port:Port',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backendPort = registerOutput<String?>('backendPort');
-    config = registerOutput<PortConfig>(
-      'config',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PortConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    config = registerOutput<PortConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PortConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     frontendPort = registerOutput<String>('frontendPort');
     frontendProtocol = registerOutput<String>('frontendProtocol');
     instanceId = registerOutput<String>('instanceId');
@@ -293,7 +282,11 @@ class Port extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Port] resource's state with the given [name] and [id].
-  static Port get(String name, pulumi.Input<String> id, {PortState? state}) {
+  static Port get(
+    String name,
+    pulumi.Input<String> id, {
+    PortState? state,
+  }) {
     return Port._get(
       name,
       state: state?.toMap(),
@@ -306,22 +299,13 @@ class Port extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ddos/port:Port',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ddos/port:Port',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backendPort = registerOutput<String?>('backendPort');
-    config = registerOutput<PortConfig>(
-      'config',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PortConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    config = registerOutput<PortConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PortConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     frontendPort = registerOutput<String>('frontendPort');
     frontendProtocol = registerOutput<String>('frontendProtocol');
     instanceId = registerOutput<String>('instanceId');

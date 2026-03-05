@@ -8,7 +8,6 @@ import 'bare_metal_draining_machine_response.dart';
 class BareMetalMachineDrainStatusResponse {
   /// The list of drained machines.
   final pulumi.Input<List<BareMetalDrainedMachineResponse>> drainedMachines;
-
   /// The list of draning machines.
   final pulumi.Input<List<BareMetalDrainingMachineResponse>> drainingMachines;
 
@@ -22,53 +21,16 @@ class BareMetalMachineDrainStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'drainedMachines':
-          pulumi.Input.mapInputValue<
-            List<BareMetalDrainedMachineResponse>,
-            List<Map<String, dynamic>>
-          >(
-            drainedMachines,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BareMetalDrainedMachineResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'drainingMachines':
-          pulumi.Input.mapInputValue<
-            List<BareMetalDrainingMachineResponse>,
-            List<Map<String, dynamic>>
-          >(
-            drainingMachines,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BareMetalDrainingMachineResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'drainedMachines': pulumi.Input.mapInputValue<List<BareMetalDrainedMachineResponse>, List<Map<String, dynamic>>>(drainedMachines, (value) => pulumi.Input.encodeList<BareMetalDrainedMachineResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'drainingMachines': pulumi.Input.mapInputValue<List<BareMetalDrainingMachineResponse>, List<Map<String, dynamic>>>(drainingMachines, (value) => pulumi.Input.encodeList<BareMetalDrainingMachineResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory BareMetalMachineDrainStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalMachineDrainStatusResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalMachineDrainStatusResponse(
-      drainedMachines: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<BareMetalDrainedMachineResponse>(
-          map['drainedMachines']!,
-          (value) => BareMetalDrainedMachineResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      drainingMachines: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<BareMetalDrainingMachineResponse>(
-          map['drainingMachines']!,
-          (value) => BareMetalDrainingMachineResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      drainedMachines: pulumi.Input.fromValue(pulumi.Input.decodeList<BareMetalDrainedMachineResponse>(map['drainedMachines']!, (value) => BareMetalDrainedMachineResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      drainingMachines: pulumi.Input.fromValue(pulumi.Input.decodeList<BareMetalDrainingMachineResponse>(map['drainingMachines']!, (value) => BareMetalDrainingMachineResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

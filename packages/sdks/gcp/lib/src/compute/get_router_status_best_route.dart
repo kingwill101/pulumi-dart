@@ -7,25 +7,19 @@ import 'get_router_status_best_route_warning.dart';
 
 class GetRouterStatusBestRoute {
   final pulumi.Input<List<GetRouterStatusBestRouteAsPath>> asPaths;
-
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String> creationTimestamp;
-
   /// An optional description of this resource. Provide this property
   /// when you create the resource.
   final pulumi.Input<String> description;
-
   /// The destination range of outgoing packets that this route applies to.
   /// Only IPv4 is supported.
   final pulumi.Input<String> destRange;
-
   /// The name of the router.
   final pulumi.Input<String> name;
-
   /// The network name or resource link to the parent
   /// network of this subnetwork.
   final pulumi.Input<String> network;
-
   /// URL to a gateway that should handle matching packets.
   /// Currently, you can only specify the internet gateway, using a full or
   /// partial valid URL:
@@ -34,10 +28,8 @@ class GetRouterStatusBestRoute {
   /// * 'global/gateways/default-internet-gateway'
   /// * The string 'default-internet-gateway'.
   final pulumi.Input<String> nextHopGateway;
-
   /// The hub network that should handle matching packets, which should conform to RFC1035.
   final pulumi.Input<String> nextHopHub;
-
   /// The IP address or URL to a forwarding rule of type
   /// loadBalancingScheme=INTERNAL that should handle matching
   /// packets.
@@ -55,7 +47,6 @@ class GetRouterStatusBestRoute {
   /// Note that this can only be used when the destinationRange is
   /// a public (non-RFC 1918) IP CIDR range.
   final pulumi.Input<String> nextHopIlb;
-
   /// URL to an instance that should handle matching packets.
   /// You can specify this as a full or partial URL. For example:
   /// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
@@ -63,34 +54,24 @@ class GetRouterStatusBestRoute {
   /// * 'zones/zone/instances/instance'
   /// * Just the instance name, with the zone in 'next_hop_instance_zone'.
   final pulumi.Input<String> nextHopInstance;
-
   /// The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL.
   final pulumi.Input<String> nextHopInstanceZone;
-
   /// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
   final pulumi.Input<String> nextHopInterRegionCost;
-
   /// Network IP address of an instance that should handle matching packets.
   final pulumi.Input<String> nextHopIp;
-
   /// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
   final pulumi.Input<String> nextHopMed;
-
   /// URL to a Network that should handle matching packets.
   final pulumi.Input<String> nextHopNetwork;
-
   /// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
   final pulumi.Input<String> nextHopOrigin;
-
   /// The network peering name that should handle matching packets, which should conform to RFC1035.
   final pulumi.Input<String> nextHopPeering;
-
   /// URL to a VpnTunnel that should handle matching packets.
   final pulumi.Input<String> nextHopVpnTunnel;
-
   /// Additional params passed with the request, but not persisted as part of resource payload
   final pulumi.Input<List<GetRouterStatusBestRouteParam>> params;
-
   /// The priority of this route. Priority is used to break ties in cases
   /// where there is more than one matching route of equal prefix length.
   ///
@@ -99,16 +80,13 @@ class GetRouterStatusBestRoute {
   ///
   /// Default value is 1000. Valid range is 0 through 65535.
   final pulumi.Input<int> priority;
-
   /// The ID of the project in which the resource
   /// belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String> project;
-
   /// The status of the route, which can be one of the following values:
   /// - 'ACTIVE' for an active route
   /// - 'INACTIVE' for an inactive route
   final pulumi.Input<String> routeStatus;
-
   /// The type of this route, which can be one of the following values:
   /// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
   /// - 'SUBNET' for a route from a subnet of the VPC
@@ -116,10 +94,8 @@ class GetRouterStatusBestRoute {
   /// - 'STATIC' for a static route
   final pulumi.Input<String> routeType;
   final pulumi.Input<String> selfLink;
-
   /// A list of instance tags to which this route applies.
   final pulumi.Input<List<String>> tags;
-
   /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
   final pulumi.Input<List<GetRouterStatusBestRouteWarning>> warnings;
 
@@ -181,18 +157,7 @@ class GetRouterStatusBestRoute {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'asPaths':
-          pulumi.Input.mapInputValue<
-            List<GetRouterStatusBestRouteAsPath>,
-            List<Map<String, dynamic>>
-          >(
-            asPaths,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRouterStatusBestRouteAsPath,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'asPaths': pulumi.Input.mapInputValue<List<GetRouterStatusBestRouteAsPath>, List<Map<String, dynamic>>>(asPaths, (value) => pulumi.Input.encodeList<GetRouterStatusBestRouteAsPath, Map<String, dynamic>>(value, (value) => value.toMap())),
       'creationTimestamp': creationTimestamp,
       'description': description,
       'destRange': destRange,
@@ -210,52 +175,21 @@ class GetRouterStatusBestRoute {
       'nextHopOrigin': nextHopOrigin,
       'nextHopPeering': nextHopPeering,
       'nextHopVpnTunnel': nextHopVpnTunnel,
-      'params':
-          pulumi.Input.mapInputValue<
-            List<GetRouterStatusBestRouteParam>,
-            List<Map<String, dynamic>>
-          >(
-            params,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRouterStatusBestRouteParam,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'params': pulumi.Input.mapInputValue<List<GetRouterStatusBestRouteParam>, List<Map<String, dynamic>>>(params, (value) => pulumi.Input.encodeList<GetRouterStatusBestRouteParam, Map<String, dynamic>>(value, (value) => value.toMap())),
       'priority': priority,
       'project': project,
       'routeStatus': routeStatus,
       'routeType': routeType,
       'selfLink': selfLink,
       'tags': tags,
-      'warnings':
-          pulumi.Input.mapInputValue<
-            List<GetRouterStatusBestRouteWarning>,
-            List<Map<String, dynamic>>
-          >(
-            warnings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRouterStatusBestRouteWarning,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'warnings': pulumi.Input.mapInputValue<List<GetRouterStatusBestRouteWarning>, List<Map<String, dynamic>>>(warnings, (value) => pulumi.Input.encodeList<GetRouterStatusBestRouteWarning, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetRouterStatusBestRoute.fromMap(Map<String, dynamic> map) {
     return GetRouterStatusBestRoute(
-      asPaths: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetRouterStatusBestRouteAsPath>(
-          map['asPaths']!,
-          (value) => GetRouterStatusBestRouteAsPath.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      creationTimestamp: pulumi.Input.fromValue(
-        map['creationTimestamp'] as String,
-      ),
+      asPaths: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouterStatusBestRouteAsPath>(map['asPaths']!, (value) => GetRouterStatusBestRouteAsPath.fromMap((value as Map).cast<String, dynamic>()))),
+      creationTimestamp: pulumi.Input.fromValue(map['creationTimestamp'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       destRange: pulumi.Input.fromValue(map['destRange'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -264,42 +198,23 @@ class GetRouterStatusBestRoute {
       nextHopHub: pulumi.Input.fromValue(map['nextHopHub'] as String),
       nextHopIlb: pulumi.Input.fromValue(map['nextHopIlb'] as String),
       nextHopInstance: pulumi.Input.fromValue(map['nextHopInstance'] as String),
-      nextHopInstanceZone: pulumi.Input.fromValue(
-        map['nextHopInstanceZone'] as String,
-      ),
-      nextHopInterRegionCost: pulumi.Input.fromValue(
-        map['nextHopInterRegionCost'] as String,
-      ),
+      nextHopInstanceZone: pulumi.Input.fromValue(map['nextHopInstanceZone'] as String),
+      nextHopInterRegionCost: pulumi.Input.fromValue(map['nextHopInterRegionCost'] as String),
       nextHopIp: pulumi.Input.fromValue(map['nextHopIp'] as String),
       nextHopMed: pulumi.Input.fromValue(map['nextHopMed'] as String),
       nextHopNetwork: pulumi.Input.fromValue(map['nextHopNetwork'] as String),
       nextHopOrigin: pulumi.Input.fromValue(map['nextHopOrigin'] as String),
       nextHopPeering: pulumi.Input.fromValue(map['nextHopPeering'] as String),
-      nextHopVpnTunnel: pulumi.Input.fromValue(
-        map['nextHopVpnTunnel'] as String,
-      ),
-      params: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetRouterStatusBestRouteParam>(
-          map['params']!,
-          (value) => GetRouterStatusBestRouteParam.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      nextHopVpnTunnel: pulumi.Input.fromValue(map['nextHopVpnTunnel'] as String),
+      params: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouterStatusBestRouteParam>(map['params']!, (value) => GetRouterStatusBestRouteParam.fromMap((value as Map).cast<String, dynamic>()))),
       priority: pulumi.Input.fromValue(map['priority'] as int),
       project: pulumi.Input.fromValue(map['project'] as String),
       routeStatus: pulumi.Input.fromValue(map['routeStatus'] as String),
       routeType: pulumi.Input.fromValue(map['routeType'] as String),
       selfLink: pulumi.Input.fromValue(map['selfLink'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
-      warnings: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetRouterStatusBestRouteWarning>(
-          map['warnings']!,
-          (value) => GetRouterStatusBestRouteWarning.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      warnings: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouterStatusBestRouteWarning>(map['warnings']!, (value) => GetRouterStatusBestRouteWarning.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

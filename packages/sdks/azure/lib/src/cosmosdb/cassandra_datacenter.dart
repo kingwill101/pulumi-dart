@@ -20,40 +20,28 @@ import 'cassandra_datacenter_state.dart';
 class CassandraDatacenter extends pulumi.CustomResource {
   /// Determines whether availability zones are enabled. Defaults to `true`.
   late final pulumi.Output<bool?> availabilityZonesEnabled;
-
   /// The key URI of the customer key to use for the encryption of the backup Storage Account.
   late final pulumi.Output<String?> backupStorageCustomerKeyUri;
-
   /// The fragment of the cassandra.yaml configuration file to be included in the cassandra.yaml for all nodes in this Cassandra Datacenter. The fragment should be Base64 encoded and only a subset of keys is allowed.
   late final pulumi.Output<String?> base64EncodedYamlFragment;
-
   /// The ID of the Cassandra Cluster. Changing this forces a new Cassandra Datacenter to be created.
   late final pulumi.Output<String> cassandraClusterId;
-
   /// The ID of the delegated management subnet for this Cassandra Datacenter. Changing this forces a new Cassandra Datacenter to be created.
   late final pulumi.Output<String> delegatedManagementSubnetId;
-
   /// Determines the number of p30 disks that are attached to each node.
   late final pulumi.Output<int?> diskCount;
-
   /// The Disk SKU that is used for this Cassandra Datacenter. Defaults to `P30`.
   late final pulumi.Output<String?> diskSku;
-
   /// The Azure Region where the Cassandra Datacenter should exist. Changing this forces a new Cassandra Datacenter to be created.
   late final pulumi.Output<String> location;
-
   /// The key URI of the customer key to use for the encryption of the Managed Disk.
   late final pulumi.Output<String?> managedDiskCustomerKeyUri;
-
   /// The name which should be used for this Cassandra Datacenter. Changing this forces a new Cassandra Datacenter to be created.
   late final pulumi.Output<String> name;
-
   /// The number of nodes the Cassandra Datacenter should have. The number should be equal or greater than `3`. Defaults to `3`.
   late final pulumi.Output<int?> nodeCount;
-
   /// A list of IP Address for the seed nodes in this Cassandra Datacenter.
   late final pulumi.Output<List<String>> seedNodeIpAddresses;
-
   /// Determines the selected sku. Defaults to `Standard_E16s_v5`.
   ///
   /// &gt; **Note:** In v4.0 of the provider the `sku_name` will have a default value of `Standard_E16s_v5`.
@@ -68,30 +56,20 @@ class CassandraDatacenter extends pulumi.CustomResource {
     CassandraDatacenterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/cassandraDatacenter:CassandraDatacenter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    availabilityZonesEnabled = registerOutput<bool?>(
-      'availabilityZonesEnabled',
-    );
-    backupStorageCustomerKeyUri = registerOutput<String?>(
-      'backupStorageCustomerKeyUri',
-    );
-    base64EncodedYamlFragment = registerOutput<String?>(
-      'base64EncodedYamlFragment',
-    );
+          'azure:cosmosdb/cassandraDatacenter:CassandraDatacenter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    availabilityZonesEnabled = registerOutput<bool?>('availabilityZonesEnabled');
+    backupStorageCustomerKeyUri = registerOutput<String?>('backupStorageCustomerKeyUri');
+    base64EncodedYamlFragment = registerOutput<String?>('base64EncodedYamlFragment');
     cassandraClusterId = registerOutput<String>('cassandraClusterId');
-    delegatedManagementSubnetId = registerOutput<String>(
-      'delegatedManagementSubnetId',
-    );
+    delegatedManagementSubnetId = registerOutput<String>('delegatedManagementSubnetId');
     diskCount = registerOutput<int?>('diskCount');
     diskSku = registerOutput<String?>('diskSku');
     location = registerOutput<String>('location');
-    managedDiskCustomerKeyUri = registerOutput<String?>(
-      'managedDiskCustomerKeyUri',
-    );
+    managedDiskCustomerKeyUri = registerOutput<String?>('managedDiskCustomerKeyUri');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int?>('nodeCount');
     seedNodeIpAddresses = registerOutput<List<String>>('seedNodeIpAddresses');
@@ -116,30 +94,20 @@ class CassandraDatacenter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/cassandraDatacenter:CassandraDatacenter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    availabilityZonesEnabled = registerOutput<bool?>(
-      'availabilityZonesEnabled',
-    );
-    backupStorageCustomerKeyUri = registerOutput<String?>(
-      'backupStorageCustomerKeyUri',
-    );
-    base64EncodedYamlFragment = registerOutput<String?>(
-      'base64EncodedYamlFragment',
-    );
+          'azure:cosmosdb/cassandraDatacenter:CassandraDatacenter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    availabilityZonesEnabled = registerOutput<bool?>('availabilityZonesEnabled');
+    backupStorageCustomerKeyUri = registerOutput<String?>('backupStorageCustomerKeyUri');
+    base64EncodedYamlFragment = registerOutput<String?>('base64EncodedYamlFragment');
     cassandraClusterId = registerOutput<String>('cassandraClusterId');
-    delegatedManagementSubnetId = registerOutput<String>(
-      'delegatedManagementSubnetId',
-    );
+    delegatedManagementSubnetId = registerOutput<String>('delegatedManagementSubnetId');
     diskCount = registerOutput<int?>('diskCount');
     diskSku = registerOutput<String?>('diskSku');
     location = registerOutput<String>('location');
-    managedDiskCustomerKeyUri = registerOutput<String?>(
-      'managedDiskCustomerKeyUri',
-    );
+    managedDiskCustomerKeyUri = registerOutput<String?>('managedDiskCustomerKeyUri');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int?>('nodeCount');
     seedNodeIpAddresses = registerOutput<List<String>>('seedNodeIpAddresses');

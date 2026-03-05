@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNetworkDeviceStatus.
 class GetNetworkDeviceStatusResult {
   /// Primary or Secondary power end.
   final String operationalStatus;
-
   /// On or Off power cycle state.
   final String powerCycleState;
-
   /// The serial number of the device
   final String serialNumber;
 
@@ -37,3 +36,4 @@ class GetNetworkDeviceStatusResult {
     );
   }
 }
+

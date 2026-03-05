@@ -1,42 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getServicePlan.
 class GetServicePlanResult {
   /// The ID of the App Service Environment this Service Plan is part of.
   final String appServiceEnvironmentId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A string representing the Kind of Service Plan.
   final String kind;
-
   /// The Azure Region where the Service Plan exists.
   final String location;
-
   /// The maximum number of workers in use in an Elastic SKU Plan.
   final int maximumElasticWorkerCount;
   final String name;
-
   /// The O/S type for the App Services hosted in this plan.
   final String osType;
-
   /// Is Per Site Scaling be enabled?
   final bool perSiteScalingEnabled;
-
   /// Whether this is a reserved Service Plan Type. `true` if `os_type` is `Linux`, otherwise `false`.
   final bool reserved;
   final String resourceGroupName;
-
   /// The SKU for the Service Plan.
   final String skuName;
-
   /// A mapping of tags assigned to the Service Plan.
   final Map<String, String> tags;
-
   /// The number of Workers (instances) allocated.
   final int workerCount;
-
   /// Is the Service Plan balance across Availability Zones in the region?
   final bool zoneBalancingEnabled;
 
@@ -110,3 +100,4 @@ class GetServicePlanResult {
     );
   }
 }
+

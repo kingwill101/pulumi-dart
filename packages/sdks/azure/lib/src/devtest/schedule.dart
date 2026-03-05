@@ -290,37 +290,26 @@ import 'schedule_weekly_recurrence.dart';
 class Schedule extends pulumi.CustomResource {
   /// The properties of a daily schedule. If the schedule occurs once each day of the week, specify the daily recurrence. A `daily_recurrence` block as defined below.
   late final pulumi.Output<ScheduleDailyRecurrence?> dailyRecurrence;
-
   /// The properties of an hourly schedule. If the schedule occurs multiple times a day, specify the hourly recurrence. A `hourly_recurrence` block as defined below.
   late final pulumi.Output<ScheduleHourlyRecurrence?> hourlyRecurrence;
-
   /// The name of the dev test lab. Changing this forces a new resource to be created.
   late final pulumi.Output<String> labName;
-
   /// The location where the schedule is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the dev test lab schedule. Valid value for name depends on the `task_type`. For instance for task_type `LabVmsStartupTask` the name needs to be `LabVmAutoStart`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The notification setting of a schedule. A `notification_settings` block as defined below.
   late final pulumi.Output<ScheduleNotificationSettings> notificationSettings;
-
   /// The name of the resource group in which to create the dev test lab schedule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The status of this schedule. Possible values are `Enabled` and `Disabled`. Defaults to `Disabled`.
   late final pulumi.Output<String?> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The task type of the schedule. Possible values include `LabVmsShutdownTask` and `LabVmAutoStart`.
   late final pulumi.Output<String> taskType;
-
   /// The time zone ID (e.g. Pacific Standard time).
   late final pulumi.Output<String> timeZoneId;
-
   /// The properties of a weekly schedule. If the schedule occurs only some days of the week, specify the weekly recurrence. A `weekly_recurrence` block as defined below.
   late final pulumi.Output<ScheduleWeeklyRecurrence?> weeklyRecurrence;
 
@@ -333,59 +322,23 @@ class Schedule extends pulumi.CustomResource {
     ScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devtest/schedule:Schedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    dailyRecurrence = registerOutput<ScheduleDailyRecurrence?>(
-      'dailyRecurrence',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduleDailyRecurrence.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    hourlyRecurrence = registerOutput<ScheduleHourlyRecurrence?>(
-      'hourlyRecurrence',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduleHourlyRecurrence.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:devtest/schedule:Schedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    dailyRecurrence = registerOutput<ScheduleDailyRecurrence?>('dailyRecurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleDailyRecurrence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hourlyRecurrence = registerOutput<ScheduleHourlyRecurrence?>('hourlyRecurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleHourlyRecurrence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labName = registerOutput<String>('labName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notificationSettings = registerOutput<ScheduleNotificationSettings>(
-      'notificationSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduleNotificationSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notificationSettings = registerOutput<ScheduleNotificationSettings>('notificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     status = registerOutput<String?>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     taskType = registerOutput<String>('taskType');
     timeZoneId = registerOutput<String>('timeZoneId');
-    weeklyRecurrence = registerOutput<ScheduleWeeklyRecurrence?>(
-      'weeklyRecurrence',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduleWeeklyRecurrence.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    weeklyRecurrence = registerOutput<ScheduleWeeklyRecurrence?>('weeklyRecurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleWeeklyRecurrence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Schedule] resource's state with the given [name] and [id].
@@ -406,58 +359,22 @@ class Schedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devtest/schedule:Schedule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    dailyRecurrence = registerOutput<ScheduleDailyRecurrence?>(
-      'dailyRecurrence',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduleDailyRecurrence.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    hourlyRecurrence = registerOutput<ScheduleHourlyRecurrence?>(
-      'hourlyRecurrence',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduleHourlyRecurrence.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:devtest/schedule:Schedule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    dailyRecurrence = registerOutput<ScheduleDailyRecurrence?>('dailyRecurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleDailyRecurrence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hourlyRecurrence = registerOutput<ScheduleHourlyRecurrence?>('hourlyRecurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleHourlyRecurrence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labName = registerOutput<String>('labName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notificationSettings = registerOutput<ScheduleNotificationSettings>(
-      'notificationSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduleNotificationSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notificationSettings = registerOutput<ScheduleNotificationSettings>('notificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     status = registerOutput<String?>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     taskType = registerOutput<String>('taskType');
     timeZoneId = registerOutput<String>('timeZoneId');
-    weeklyRecurrence = registerOutput<ScheduleWeeklyRecurrence?>(
-      'weeklyRecurrence',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduleWeeklyRecurrence.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    weeklyRecurrence = registerOutput<ScheduleWeeklyRecurrence?>('weeklyRecurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleWeeklyRecurrence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

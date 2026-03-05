@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnrolledIntuneAppResponse {
   /// Intune app id.
   final pulumi.Input<String> appId;
-
   /// Intune app name.
   final pulumi.Input<String> appName;
-
   /// Intune app expected installation path.
   final pulumi.Input<String> expectedInstallationPath;
 
@@ -35,9 +33,8 @@ class EnrolledIntuneAppResponse {
     return EnrolledIntuneAppResponse(
       appId: pulumi.Input.fromValue(map['appId'] as String),
       appName: pulumi.Input.fromValue(map['appName'] as String),
-      expectedInstallationPath: pulumi.Input.fromValue(
-        map['expectedInstallationPath'] as String,
-      ),
+      expectedInstallationPath: pulumi.Input.fromValue(map['expectedInstallationPath'] as String),
     );
   }
 }
+

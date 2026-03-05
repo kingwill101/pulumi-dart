@@ -8,17 +8,20 @@ class GetAdbsNationalCharacterSetsCharacterSet {
 
   /// Creates a new [GetAdbsNationalCharacterSetsCharacterSet].
   /// [characterSet] A valid Oracle national character set.
-  GetAdbsNationalCharacterSetsCharacterSet({required this.characterSet});
+  GetAdbsNationalCharacterSetsCharacterSet({
+    required this.characterSet,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'characterSet': characterSet};
+    return <String, dynamic>{
+      'characterSet': characterSet,
+    };
   }
 
-  factory GetAdbsNationalCharacterSetsCharacterSet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAdbsNationalCharacterSetsCharacterSet.fromMap(Map<String, dynamic> map) {
     return GetAdbsNationalCharacterSetsCharacterSet(
       characterSet: pulumi.Input.fromValue(map['characterSet'] as String),
     );
   }
 }
+

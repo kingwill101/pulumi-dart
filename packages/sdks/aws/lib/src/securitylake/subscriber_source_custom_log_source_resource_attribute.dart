@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriberSourceCustomLogSourceResourceAttribute {
   /// The ARN of the AWS Glue crawler.
   final pulumi.Input<String> crawlerArn;
-
   /// The ARN of the AWS Glue database where results are written.
   final pulumi.Input<String> databaseArn;
-
   /// The ARN of the AWS Glue table.
   final pulumi.Input<String> tableArn;
 
@@ -30,9 +28,7 @@ class SubscriberSourceCustomLogSourceResourceAttribute {
     };
   }
 
-  factory SubscriberSourceCustomLogSourceResourceAttribute.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SubscriberSourceCustomLogSourceResourceAttribute.fromMap(Map<String, dynamic> map) {
     return SubscriberSourceCustomLogSourceResourceAttribute(
       crawlerArn: pulumi.Input.fromValue(map['crawlerArn'] as String),
       databaseArn: pulumi.Input.fromValue(map['databaseArn'] as String),
@@ -40,3 +36,4 @@ class SubscriberSourceCustomLogSourceResourceAttribute {
     );
   }
 }
+

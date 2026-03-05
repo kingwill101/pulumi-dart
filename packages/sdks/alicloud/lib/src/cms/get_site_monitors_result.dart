@@ -7,17 +7,13 @@ import 'get_site_monitors_monitor.dart';
 class GetSiteMonitorsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Site Monitor IDs.
   final List<String> ids;
-
   /// A list of Site Monitor Entries. Each element contains the following attributes:
   final List<GetSiteMonitorsMonitor> monitors;
   final String? outputFile;
-
   /// Task Id.
   final String? taskId;
-
   /// Task Type.
   final String? taskType;
 
@@ -41,11 +37,7 @@ class GetSiteMonitorsResult {
     return <String, dynamic>{
       'id': id,
       'ids': ids,
-      'monitors':
-          pulumi.Input.encodeList<GetSiteMonitorsMonitor, Map<String, dynamic>>(
-            monitors,
-            (value) => value.toMap(),
-          ),
+      'monitors': pulumi.Input.encodeList<GetSiteMonitorsMonitor, Map<String, dynamic>>(monitors, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'taskId': ?taskId,
       'taskType': ?taskType,
@@ -56,27 +48,11 @@ class GetSiteMonitorsResult {
     return GetSiteMonitorsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      monitors: pulumi.Input.decodeList<GetSiteMonitorsMonitor>(
-        map['monitors']!,
-        (value) => GetSiteMonitorsMonitor.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      taskId: (() {
-        final guardedValue = map['taskId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      taskType: (() {
-        final guardedValue = map['taskType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      monitors: pulumi.Input.decodeList<GetSiteMonitorsMonitor>(map['monitors']!, (value) => GetSiteMonitorsMonitor.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      taskId: (() { final guardedValue = map['taskId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      taskType: (() { final guardedValue = map['taskType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

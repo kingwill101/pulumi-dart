@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DhcpOptionsSetAssociateVpc {
   /// The status of the VPC associated with the DHCP option set.
   final pulumi.Input<String>? associateStatus;
-
   /// The ID of the VPC network that is associated with the DHCP options set.
   final pulumi.Input<String> vpcId;
 
   /// Creates a new [DhcpOptionsSetAssociateVpc].
   /// [associateStatus] The status of the VPC associated with the DHCP option set.
   /// [vpcId] The ID of the VPC network that is associated with the DHCP options set.
-  DhcpOptionsSetAssociateVpc({this.associateStatus, required this.vpcId});
+  DhcpOptionsSetAssociateVpc({
+    this.associateStatus,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,12 +25,9 @@ class DhcpOptionsSetAssociateVpc {
 
   factory DhcpOptionsSetAssociateVpc.fromMap(Map<String, dynamic> map) {
     return DhcpOptionsSetAssociateVpc(
-      associateStatus: (() {
-        final guardedValue = map['associateStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      associateStatus: (() { final guardedValue = map['associateStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
+

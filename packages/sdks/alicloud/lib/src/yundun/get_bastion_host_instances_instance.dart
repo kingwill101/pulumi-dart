@@ -70,15 +70,12 @@ class GetBastionHostInstancesInstance {
       licenseCode: pulumi.Input.fromValue(map['licenseCode'] as String),
       privateDomain: pulumi.Input.fromValue(map['privateDomain'] as String),
       publicDomain: pulumi.Input.fromValue(map['publicDomain'] as String),
-      publicNetworkAccess: pulumi.Input.fromValue(
-        map['publicNetworkAccess'] as bool,
-      ),
-      securityGroupIds: pulumi.Input.fromValue(
-        (map['securityGroupIds'] as List).cast<String>(),
-      ),
+      publicNetworkAccess: pulumi.Input.fromValue(map['publicNetworkAccess'] as bool),
+      securityGroupIds: pulumi.Input.fromValue((map['securityGroupIds'] as List).cast<String>()),
       storage: pulumi.Input.fromValue(map['storage'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       userVswitchId: pulumi.Input.fromValue(map['userVswitchId'] as String),
     );
   }
 }
+

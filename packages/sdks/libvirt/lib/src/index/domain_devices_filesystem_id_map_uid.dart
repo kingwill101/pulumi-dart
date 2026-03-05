@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesFilesystemIdMapUid {
   /// Specifies the number of group IDs to be mapped in the filesystem.
   final pulumi.Input<double> count;
-
   /// Sets the starting group ID for mapping in the filesystem.
   final pulumi.Input<double> start;
-
   /// Defines the target group ID for the mapping in the filesystem.
   final pulumi.Input<double> target;
 
@@ -23,7 +21,11 @@ class DomainDevicesFilesystemIdMapUid {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'count': count, 'start': start, 'target': target};
+    return <String, dynamic>{
+      'count': count,
+      'start': start,
+      'target': target,
+    };
   }
 
   factory DomainDevicesFilesystemIdMapUid.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class DomainDevicesFilesystemIdMapUid {
     );
   }
 }
+

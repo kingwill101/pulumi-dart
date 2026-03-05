@@ -265,16 +265,12 @@ import 'vpc_ipam_preview_next_cidr_state.dart';
 class VpcIpamPreviewNextCidr extends pulumi.CustomResource {
   /// The previewed CIDR from the pool.
   late final pulumi.Output<String> cidr;
-
   /// Exclude a particular CIDR range from being returned by the pool.
   late final pulumi.Output<List<String>?> disallowedCidrs;
-
   /// The ID of the pool to which you want to assign a CIDR.
   late final pulumi.Output<String> ipamPoolId;
-
   /// The netmask length of the CIDR you would like to preview from the IPAM pool.
   late final pulumi.Output<int?> netmaskLength;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -287,11 +283,11 @@ class VpcIpamPreviewNextCidr extends pulumi.CustomResource {
     VpcIpamPreviewNextCidrArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcIpamPreviewNextCidr:VpcIpamPreviewNextCidr',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcIpamPreviewNextCidr:VpcIpamPreviewNextCidr',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidr = registerOutput<String>('cidr');
     disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs');
     ipamPoolId = registerOutput<String>('ipamPoolId');
@@ -317,11 +313,11 @@ class VpcIpamPreviewNextCidr extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcIpamPreviewNextCidr:VpcIpamPreviewNextCidr',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcIpamPreviewNextCidr:VpcIpamPreviewNextCidr',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidr = registerOutput<String>('cidr');
     disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs');
     ipamPoolId = registerOutput<String>('ipamPoolId');

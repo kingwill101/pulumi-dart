@@ -5,34 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSitesSite {
   /// Access type. Value:-**NS**: Managed access via NS.-**CNAME**: access through CNAME.
   final pulumi.Input<String> accessType;
-
   /// Acceleration area
   final pulumi.Input<String> coverage;
-
   /// Creation time
   final pulumi.Input<String> createTime;
-
   /// The ID of the resource supplied above.
   final pulumi.Input<int> id;
-
   /// The ID of the associated package instance.
   final pulumi.Input<String> instanceId;
-
   /// Modification time
   final pulumi.Input<String> modifyTime;
-
   /// Site Resolution Name Server List
   final pulumi.Input<String> nameServerList;
-
   /// The ID of the resource group
   final pulumi.Input<String> resourceGroupId;
-
   /// Site ID
   final pulumi.Input<int> siteId;
-
   /// Site Name
   final pulumi.Input<String> siteName;
-
   /// The status of the resource
   final pulumi.Input<String> status;
 
@@ -94,3 +84,4 @@ class GetSitesSite {
     );
   }
 }
+

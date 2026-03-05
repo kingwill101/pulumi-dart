@@ -15,15 +15,17 @@ class GetVirtualNodeSpecListenerTimeoutHttp2Idle {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'unit': unit, 'value': value};
+    return <String, dynamic>{
+      'unit': unit,
+      'value': value,
+    };
   }
 
-  factory GetVirtualNodeSpecListenerTimeoutHttp2Idle.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualNodeSpecListenerTimeoutHttp2Idle.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTimeoutHttp2Idle(
       unit: pulumi.Input.fromValue(map['unit'] as String),
       value: pulumi.Input.fromValue(map['value'] as int),
     );
   }
 }
+

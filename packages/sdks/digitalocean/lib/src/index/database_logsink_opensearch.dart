@@ -644,25 +644,18 @@ import 'database_logsink_opensearch_state.dart';
 class DatabaseLogsinkOpensearch extends pulumi.CustomResource {
   /// CA certificate for TLS verification in PEM format. Can be specified using `file()` function. This field is marked as sensitive.
   late final pulumi.Output<String?> caCert;
-
   /// UUID of the source database cluster that will forward logs.
   late final pulumi.Output<String> clusterId;
-
   /// HTTPS URL to the OpenSearch or Elasticsearch cluster (e.g., `https://host:port`). **Note**: Only HTTPS URLs are supported.
   late final pulumi.Output<String> endpoint;
-
   /// Maximum number of days to retain indices. Must be 1 or greater.
   late final pulumi.Output<int?> indexDaysMax;
-
   /// Prefix for the indices where logs will be stored.
   late final pulumi.Output<String> indexPrefix;
-
   /// The unique identifier for the logsink as returned by the DigitalOcean API.
   late final pulumi.Output<String> logsinkId;
-
   /// Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
   late final pulumi.Output<String> name;
-
   /// Request timeout for log deliveries in seconds. Must be 1 or greater.
   late final pulumi.Output<int?> timeoutSeconds;
 
@@ -675,11 +668,11 @@ class DatabaseLogsinkOpensearch extends pulumi.CustomResource {
     DatabaseLogsinkOpensearchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     caCert = registerOutput<String?>('caCert');
     clusterId = registerOutput<String>('clusterId');
     endpoint = registerOutput<String>('endpoint');
@@ -708,11 +701,11 @@ class DatabaseLogsinkOpensearch extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     caCert = registerOutput<String?>('caCert');
     clusterId = registerOutput<String>('clusterId');
     endpoint = registerOutput<String>('endpoint');

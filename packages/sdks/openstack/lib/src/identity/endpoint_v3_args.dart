@@ -10,21 +10,16 @@ class EndpointV3Args {
   /// The endpoint region. The `region` and
   /// `endpoint_region` can be different.
   final pulumi.Input<String> endpointRegion;
-
   /// The endpoint interface. Valid values are `public`,
   /// `internal` and `admin`. Default value is `public`
   final pulumi.Input<String>? interface;
-
   /// The endpoint name.
   final pulumi.Input<String>? name;
-
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used.
   final pulumi.Input<String>? region;
-
   /// The endpoint service ID.
   final pulumi.Input<String> serviceId;
-
   /// The endpoint url.
   final pulumi.Input<String> url;
 
@@ -58,23 +53,12 @@ class EndpointV3Args {
   factory EndpointV3Args.fromMap(Map<String, dynamic> map) {
     return EndpointV3Args(
       endpointRegion: pulumi.Input.fromValue(map['endpointRegion'] as String),
-      interface: (() {
-        final guardedValue = map['interface'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      interface: (() { final guardedValue = map['interface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
+

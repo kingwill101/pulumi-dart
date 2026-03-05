@@ -16,3 +16,4 @@ enum ProviderRegistrationKind {
     throw ArgumentError('Unknown ProviderRegistrationKind value: $value');
   }
 }
+

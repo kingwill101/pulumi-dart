@@ -8,19 +8,20 @@ class LogTransformerTransformerConfigUpperCaseString {
 
   /// Creates a new [LogTransformerTransformerConfigUpperCaseString].
   /// [withKeys] Specifies the keys of the fields to convert to uppercase.
-  LogTransformerTransformerConfigUpperCaseString({required this.withKeys});
+  LogTransformerTransformerConfigUpperCaseString({
+    required this.withKeys,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'withKeys': withKeys};
+    return <String, dynamic>{
+      'withKeys': withKeys,
+    };
   }
 
-  factory LogTransformerTransformerConfigUpperCaseString.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogTransformerTransformerConfigUpperCaseString.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigUpperCaseString(
-      withKeys: pulumi.Input.fromValue(
-        (map['withKeys'] as List).cast<String>(),
-      ),
+      withKeys: pulumi.Input.fromValue((map['withKeys'] as List).cast<String>()),
     );
   }
 }
+

@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssociatedTenantPropertiesResponse {
   /// The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases.
   final pulumi.Input<String>? billingManagementState;
-
   /// The name of the associated tenant.
   final pulumi.Input<String>? displayName;
-
   /// The unique identifier for the billing request that is created when enabling provisioning for an associated tenant.
   final pulumi.Input<String> provisioningBillingRequestId;
-
   /// The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request.
   final pulumi.Input<String>? provisioningManagementState;
-
   /// The provisioning state of the resource during a long-running operation.
   final pulumi.Input<String> provisioningState;
-
   /// The ID that uniquely identifies a tenant.
   final pulumi.Input<String>? tenantId;
 
@@ -51,32 +46,13 @@ class AssociatedTenantPropertiesResponse {
 
   factory AssociatedTenantPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AssociatedTenantPropertiesResponse(
-      billingManagementState: (() {
-        final guardedValue = map['billingManagementState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningBillingRequestId: pulumi.Input.fromValue(
-        map['provisioningBillingRequestId'] as String,
-      ),
-      provisioningManagementState: (() {
-        final guardedValue = map['provisioningManagementState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      billingManagementState: (() { final guardedValue = map['billingManagementState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningBillingRequestId: pulumi.Input.fromValue(map['provisioningBillingRequestId'] as String),
+      provisioningManagementState: (() { final guardedValue = map['provisioningManagementState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -45,25 +45,16 @@ class GetApiVersionSpecArtifactIamPolicyArgs {
     };
   }
 
-  factory GetApiVersionSpecArtifactIamPolicyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApiVersionSpecArtifactIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetApiVersionSpecArtifactIamPolicyArgs(
       apiId: pulumi.Input.fromValue(map['apiId'] as String),
       artifactId: pulumi.Input.fromValue(map['artifactId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       specId: pulumi.Input.fromValue(map['specId'] as String),
       versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );
   }
 }
+

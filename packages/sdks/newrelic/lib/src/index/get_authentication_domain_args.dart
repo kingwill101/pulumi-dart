@@ -12,10 +12,14 @@ class GetAuthenticationDomainArgs {
 
   /// Creates a new [GetAuthenticationDomainArgs].
   /// [name] The name of the authentication domain to be searched for. An error is thrown, if no authentication domain is found with the specified name.
-  GetAuthenticationDomainArgs({required this.name});
+  GetAuthenticationDomainArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetAuthenticationDomainArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetAuthenticationDomainArgs {
     );
   }
 }
+

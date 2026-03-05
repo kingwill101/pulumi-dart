@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeviceArgs {
   /// The device name.
   final pulumi.Input<String> deviceName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetDeviceArgs].
   /// [deviceName] The device name.
   /// [resourceGroupName] The resource group name.
-  GetDeviceArgs({required this.deviceName, required this.resourceGroupName});
+  GetDeviceArgs({
+    required this.deviceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetDeviceArgs {
   factory GetDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceArgs(
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -339,34 +339,24 @@ import 'output_event_hub_state.dart';
 class OutputEventHub extends pulumi.CustomResource {
   /// The authentication mode for the Stream Output. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.
   late final pulumi.Output<String?> authenticationMode;
-
   /// The name of the Event Hub.
   late final pulumi.Output<String> eventhubName;
-
   /// The name of the Stream Output. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The column that is used for the Event Hub partition key.
   late final pulumi.Output<String?> partitionKey;
-
   /// A list of property columns to add to the Event Hub output.
   late final pulumi.Output<List<String>?> propertyColumns;
-
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `serialization` block as defined below.
   late final pulumi.Output<OutputEventHubSerialization> serialization;
-
   /// The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
   late final pulumi.Output<String> servicebusNamespace;
-
   /// The shared access policy key for the specified shared access policy. Required when `authentication_mode` is set to `ConnectionString`.
   late final pulumi.Output<String?> sharedAccessPolicyKey;
-
   /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required when `authentication_mode` is set to `ConnectionString`.
   late final pulumi.Output<String?> sharedAccessPolicyName;
-
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;
 
@@ -379,27 +369,18 @@ class OutputEventHub extends pulumi.CustomResource {
     OutputEventHubArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/outputEventHub:OutputEventHub',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/outputEventHub:OutputEventHub',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     eventhubName = registerOutput<String>('eventhubName');
     this.name = registerOutput<String>('name');
     partitionKey = registerOutput<String?>('partitionKey');
     propertyColumns = registerOutput<List<String>?>('propertyColumns');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serialization = registerOutput<OutputEventHubSerialization>(
-      'serialization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OutputEventHubSerialization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serialization = registerOutput<OutputEventHubSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutputEventHubSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     servicebusNamespace = registerOutput<String>('servicebusNamespace');
     sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
     sharedAccessPolicyName = registerOutput<String?>('sharedAccessPolicyName');
@@ -424,27 +405,18 @@ class OutputEventHub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/outputEventHub:OutputEventHub',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/outputEventHub:OutputEventHub',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     eventhubName = registerOutput<String>('eventhubName');
     this.name = registerOutput<String>('name');
     partitionKey = registerOutput<String?>('partitionKey');
     propertyColumns = registerOutput<List<String>?>('propertyColumns');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serialization = registerOutput<OutputEventHubSerialization>(
-      'serialization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OutputEventHubSerialization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serialization = registerOutput<OutputEventHubSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutputEventHubSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     servicebusNamespace = registerOutput<String>('servicebusNamespace');
     sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
     sharedAccessPolicyName = registerOutput<String?>('sharedAccessPolicyName');

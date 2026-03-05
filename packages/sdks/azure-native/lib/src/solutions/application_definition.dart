@@ -188,74 +188,48 @@ import 'system_data_response.dart';
 class ApplicationDefinition extends pulumi.CustomResource {
   /// The collection of managed application artifacts. The portal will use the files specified as artifacts to construct the user experience of creating a managed application from a managed application definition.
   late final pulumi.Output<List<Map<String, dynamic>>?> artifacts;
-
   /// The managed application provider authorizations.
   late final pulumi.Output<List<Map<String, dynamic>>?> authorizations;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The createUiDefinition json for the backing template with Microsoft.Solutions/applications resource. It can be a JObject or well-formed JSON string.
   late final pulumi.Output<dynamic> createUiDefinition;
-
   /// The managed application deployment policy.
-  late final pulumi.Output<ApplicationDeploymentPolicyResponse?>
-  deploymentPolicy;
-
+  late final pulumi.Output<ApplicationDeploymentPolicyResponse?> deploymentPolicy;
   /// The managed application definition description.
   late final pulumi.Output<String?> description;
-
   /// The managed application definition display name.
   late final pulumi.Output<String?> displayName;
-
   /// A value indicating whether the package is enabled or not.
   late final pulumi.Output<bool?> isEnabled;
-
   /// Resource location
   late final pulumi.Output<String?> location;
-
   /// The managed application lock level.
   late final pulumi.Output<String> lockLevel;
-
   /// The managed application locking policy.
-  late final pulumi.Output<ApplicationPackageLockingPolicyDefinitionResponse?>
-  lockingPolicy;
-
+  late final pulumi.Output<ApplicationPackageLockingPolicyDefinitionResponse?> lockingPolicy;
   /// The inline main template json which has resources to be provisioned. It can be a JObject or well-formed JSON string.
   late final pulumi.Output<dynamic> mainTemplate;
-
   /// ID of the resource that manages this resource.
   late final pulumi.Output<String?> managedBy;
-
   /// The managed application management policy that determines publisher's access to the managed resource group.
-  late final pulumi.Output<ApplicationManagementPolicyResponse?>
-  managementPolicy;
-
+  late final pulumi.Output<ApplicationManagementPolicyResponse?> managementPolicy;
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// The managed application notification policy.
-  late final pulumi.Output<ApplicationNotificationPolicyResponse?>
-  notificationPolicy;
-
+  late final pulumi.Output<ApplicationNotificationPolicyResponse?> notificationPolicy;
   /// The managed application definition package file Uri. Use this element
   late final pulumi.Output<String?> packageFileUri;
-
   /// The managed application provider policies.
   late final pulumi.Output<List<Map<String, dynamic>>?> policies;
-
   /// The SKU of the resource.
   late final pulumi.Output<SkuResponse?> sku;
-
   /// The storage account id for bring your own storage scenario.
   late final pulumi.Output<String?> storageAccountId;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -268,89 +242,32 @@ class ApplicationDefinition extends pulumi.CustomResource {
     ApplicationDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:solutions:ApplicationDefinition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:solutions:ApplicationDefinition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     artifacts = registerOutput<List<Map<String, dynamic>>?>('artifacts');
-    authorizations = registerOutput<List<Map<String, dynamic>>?>(
-      'authorizations',
-    );
+    authorizations = registerOutput<List<Map<String, dynamic>>?>('authorizations');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createUiDefinition = registerOutput<dynamic>('createUiDefinition');
-    deploymentPolicy = registerOutput<ApplicationDeploymentPolicyResponse?>(
-      'deploymentPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationDeploymentPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deploymentPolicy = registerOutput<ApplicationDeploymentPolicyResponse?>('deploymentPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationDeploymentPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     isEnabled = registerOutput<bool?>('isEnabled');
     location = registerOutput<String?>('location');
     lockLevel = registerOutput<String>('lockLevel');
-    lockingPolicy =
-        registerOutput<ApplicationPackageLockingPolicyDefinitionResponse?>(
-          'lockingPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ApplicationPackageLockingPolicyDefinitionResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    lockingPolicy = registerOutput<ApplicationPackageLockingPolicyDefinitionResponse?>('lockingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPackageLockingPolicyDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mainTemplate = registerOutput<dynamic>('mainTemplate');
     managedBy = registerOutput<String?>('managedBy');
-    managementPolicy = registerOutput<ApplicationManagementPolicyResponse?>(
-      'managementPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationManagementPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managementPolicy = registerOutput<ApplicationManagementPolicyResponse?>('managementPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationManagementPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    notificationPolicy = registerOutput<ApplicationNotificationPolicyResponse?>(
-      'notificationPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationNotificationPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notificationPolicy = registerOutput<ApplicationNotificationPolicyResponse?>('notificationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationNotificationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     packageFileUri = registerOutput<String?>('packageFileUri');
     policies = registerOutput<List<Map<String, dynamic>>?>('policies');
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccountId = registerOutput<String?>('storageAccountId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

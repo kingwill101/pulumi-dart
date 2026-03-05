@@ -7,16 +7,12 @@ import 'image_definition_build_task_response.dart';
 class ImageDefinitionBuildTaskGroupResponse {
   /// End time of the task group.
   final pulumi.Input<String> endTime;
-
   /// The name of the task group.
   final pulumi.Input<String> name;
-
   /// Start time of the task group.
   final pulumi.Input<String> startTime;
-
   /// The status of the task group.
   final pulumi.Input<String> status;
-
   /// The list of tasks executed during the task group.
   final pulumi.Input<List<ImageDefinitionBuildTaskResponse>> tasks;
 
@@ -40,37 +36,18 @@ class ImageDefinitionBuildTaskGroupResponse {
       'name': name,
       'startTime': startTime,
       'status': status,
-      'tasks':
-          pulumi.Input.mapInputValue<
-            List<ImageDefinitionBuildTaskResponse>,
-            List<Map<String, dynamic>>
-          >(
-            tasks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ImageDefinitionBuildTaskResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'tasks': pulumi.Input.mapInputValue<List<ImageDefinitionBuildTaskResponse>, List<Map<String, dynamic>>>(tasks, (value) => pulumi.Input.encodeList<ImageDefinitionBuildTaskResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ImageDefinitionBuildTaskGroupResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ImageDefinitionBuildTaskGroupResponse.fromMap(Map<String, dynamic> map) {
     return ImageDefinitionBuildTaskGroupResponse(
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      tasks: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ImageDefinitionBuildTaskResponse>(
-          map['tasks']!,
-          (value) => ImageDefinitionBuildTaskResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      tasks: pulumi.Input.fromValue(pulumi.Input.decodeList<ImageDefinitionBuildTaskResponse>(map['tasks']!, (value) => ImageDefinitionBuildTaskResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

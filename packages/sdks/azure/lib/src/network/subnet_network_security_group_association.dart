@@ -364,7 +364,6 @@ import 'subnet_network_security_group_association_state.dart';
 class SubnetNetworkSecurityGroupAssociation extends pulumi.CustomResource {
   /// The ID of the Network Security Group which should be associated with the Subnet. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkSecurityGroupId;
-
   /// The ID of the Subnet. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subnetId;
 
@@ -377,11 +376,11 @@ class SubnetNetworkSecurityGroupAssociation extends pulumi.CustomResource {
     SubnetNetworkSecurityGroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/subnetNetworkSecurityGroupAssociation:SubnetNetworkSecurityGroupAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/subnetNetworkSecurityGroupAssociation:SubnetNetworkSecurityGroupAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
     subnetId = registerOutput<String>('subnetId');
   }
@@ -404,11 +403,11 @@ class SubnetNetworkSecurityGroupAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/subnetNetworkSecurityGroupAssociation:SubnetNetworkSecurityGroupAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/subnetNetworkSecurityGroupAssociation:SubnetNetworkSecurityGroupAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
     subnetId = registerOutput<String>('subnetId');
   }

@@ -8,37 +8,26 @@ import 'system_data_response.dart';
 class GetGuestAgentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Username / Password Credentials to provision guest agent.
   final GuestCredentialResponse? credentials;
-
   /// Gets the name of the corresponding resource in Kubernetes.
   final String customResourceName;
-
   /// HTTP Proxy configuration for the VM.
   final HttpProxyConfigurationResponse? httpProxyConfig;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Gets or sets the guest agent provisioning action.
   final String? provisioningAction;
-
   /// Gets or sets the provisioning state.
   final String provisioningState;
-
   /// Gets or sets the guest agent status.
   final String status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Gets or sets a unique identifier for this resource.
   final String uuid;
 
@@ -90,35 +79,18 @@ class GetGuestAgentResult {
   factory GetGuestAgentResult.fromMap(Map<String, dynamic> map) {
     return GetGuestAgentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      credentials: (() {
-        final guardedValue = map['credentials'];
-        if (guardedValue == null) return null;
-        return GuestCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return GuestCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       customResourceName: map['customResourceName'] as String,
-      httpProxyConfig: (() {
-        final guardedValue = map['httpProxyConfig'];
-        if (guardedValue == null) return null;
-        return HttpProxyConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      httpProxyConfig: (() { final guardedValue = map['httpProxyConfig']; if (guardedValue == null) return null; return HttpProxyConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      provisioningAction: (() {
-        final guardedValue = map['provisioningAction'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      provisioningAction: (() { final guardedValue = map['provisioningAction']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       uuid: map['uuid'] as String,
     );
   }
 }
+

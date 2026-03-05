@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CompletenessResponse {
   /// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
   final pulumi.Input<bool> arguments;
-
   /// If true, the builder claims that recipe.environment is claimed to be complete.
   final pulumi.Input<bool> environment;
-
   /// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
   final pulumi.Input<bool> materials;
 
@@ -39,3 +37,4 @@ class CompletenessResponse {
     );
   }
 }
+

@@ -668,28 +668,20 @@ class InferenceCluster extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** When creating or attaching a cluster, if the cluster will be used for production (`cluster_purpose = "FastProd"`), then it must contain at least 12 virtual CPUs. The number of virtual CPUs can be calculated by multiplying the number of nodes in the cluster by the number of cores provided by the VM size selected. For example, if you use a VM size of "Standard_D3_v2", which has 4 virtual cores, then you should select 3 or greater as the number of nodes.
   late final pulumi.Output<String?> clusterPurpose;
-
   /// The description of the Machine Learning Inference Cluster. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<String?> description;
-
   /// An `identity` block as defined below. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<InferenceClusterIdentity?> identity;
-
   /// The ID of the Kubernetes Cluster. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<String> kubernetesClusterId;
-
   /// The Azure Region where the Machine Learning Inference Cluster should exist. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<String> location;
-
   /// The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<String> machineLearningWorkspaceId;
-
   /// The name which should be used for this Machine Learning Inference Cluster. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<String> name;
-
   /// A `ssl` block as defined below. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<InferenceClusterSsl?> ssl;
-
   /// A mapping of tags which should be assigned to the Machine Learning Inference Cluster. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -702,39 +694,19 @@ class InferenceCluster extends pulumi.CustomResource {
     InferenceClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:machinelearning/inferenceCluster:InferenceCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:machinelearning/inferenceCluster:InferenceCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterPurpose = registerOutput<String?>('clusterPurpose');
     description = registerOutput<String?>('description');
-    identity = registerOutput<InferenceClusterIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InferenceClusterIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<InferenceClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InferenceClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     location = registerOutput<String>('location');
-    machineLearningWorkspaceId = registerOutput<String>(
-      'machineLearningWorkspaceId',
-    );
+    machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
     this.name = registerOutput<String>('name');
-    ssl = registerOutput<InferenceClusterSsl?>(
-      'ssl',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InferenceClusterSsl.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ssl = registerOutput<InferenceClusterSsl?>('ssl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InferenceClusterSsl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
@@ -756,39 +728,19 @@ class InferenceCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:machinelearning/inferenceCluster:InferenceCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:machinelearning/inferenceCluster:InferenceCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterPurpose = registerOutput<String?>('clusterPurpose');
     description = registerOutput<String?>('description');
-    identity = registerOutput<InferenceClusterIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InferenceClusterIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<InferenceClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InferenceClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     location = registerOutput<String>('location');
-    machineLearningWorkspaceId = registerOutput<String>(
-      'machineLearningWorkspaceId',
-    );
+    machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
     this.name = registerOutput<String>('name');
-    ssl = registerOutput<InferenceClusterSsl?>(
-      'ssl',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InferenceClusterSsl.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ssl = registerOutput<InferenceClusterSsl?>('ssl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InferenceClusterSsl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

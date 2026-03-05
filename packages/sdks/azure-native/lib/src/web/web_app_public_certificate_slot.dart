@@ -16,22 +16,16 @@ import 'web_app_public_certificate_slot_args.dart';
 class WebAppPublicCertificateSlot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Public Certificate byte array
   late final pulumi.Output<String?> blob;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Public Certificate Location
   late final pulumi.Output<String?> publicCertificateLocation;
-
   /// Certificate Thumbprint
   late final pulumi.Output<String> thumbprint;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -44,18 +38,16 @@ class WebAppPublicCertificateSlot extends pulumi.CustomResource {
     WebAppPublicCertificateSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppPublicCertificateSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppPublicCertificateSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     blob = registerOutput<String?>('blob');
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    publicCertificateLocation = registerOutput<String?>(
-      'publicCertificateLocation',
-    );
+    publicCertificateLocation = registerOutput<String?>('publicCertificateLocation');
     thumbprint = registerOutput<String>('thumbprint');
     type = registerOutput<String>('type');
   }

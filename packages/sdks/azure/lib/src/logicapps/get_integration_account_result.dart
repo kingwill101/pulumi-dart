@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getIntegrationAccount.
 class GetIntegrationAccountResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region where the Logic App Integration Account exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// The SKU name of the Logic App Integration Account.
   final String skuName;
-
   /// A mapping of tags assigned to the Logic App Integration Account.
   final Map<String, String> tags;
 
@@ -54,3 +52,4 @@ class GetIntegrationAccountResult {
     );
   }
 }
+

@@ -1,49 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getConnector.
 class GetConnectorResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// ID of the connector.
   final int connectorId;
-
   /// Name of the connector.
   final String? connectorName;
-
   /// The connector properties.
   final Map<String, dynamic> connectorProperties;
-
   /// Type of connector.
   final String connectorType;
-
   /// The created time.
   final String created;
-
   /// Description of the connector.
   final String? description;
-
   /// Display name of the connector.
   final String? displayName;
-
   /// Resource ID.
   final String id;
-
   /// If this is an internal connector.
   final bool? isInternal;
-
   /// The last modified time.
   final String lastModified;
-
   /// Resource name.
   final String name;
-
   /// State of connector.
   final String state;
-
   /// The hub name.
   final String tenantId;
-
   /// Resource type.
   final String type;
 
@@ -105,31 +92,14 @@ class GetConnectorResult {
     return GetConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
       connectorId: map['connectorId'] as int,
-      connectorName: (() {
-        final guardedValue = map['connectorName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      connectorProperties: (map['connectorProperties'] as Map)
-          .cast<String, dynamic>(),
+      connectorName: (() { final guardedValue = map['connectorName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectorProperties: (map['connectorProperties'] as Map).cast<String, dynamic>(),
       connectorType: map['connectorType'] as String,
       created: map['created'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      isInternal: (() {
-        final guardedValue = map['isInternal'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      isInternal: (() { final guardedValue = map['isInternal']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       lastModified: map['lastModified'] as String,
       name: map['name'] as String,
       state: map['state'] as String,
@@ -138,3 +108,4 @@ class GetConnectorResult {
     );
   }
 }
+

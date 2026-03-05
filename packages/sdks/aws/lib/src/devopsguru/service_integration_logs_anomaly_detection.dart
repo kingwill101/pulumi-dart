@@ -8,21 +8,20 @@ class ServiceIntegrationLogsAnomalyDetection {
 
   /// Creates a new [ServiceIntegrationLogsAnomalyDetection].
   /// [optInStatus] Specifies if DevOps Guru is configured to perform log anomaly detection on CloudWatch log groups. Valid values are `DISABLED` and `ENABLED`.
-  ServiceIntegrationLogsAnomalyDetection({this.optInStatus});
+  ServiceIntegrationLogsAnomalyDetection({
+    this.optInStatus,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'optInStatus': ?optInStatus};
+    return <String, dynamic>{
+      'optInStatus': ?optInStatus,
+    };
   }
 
-  factory ServiceIntegrationLogsAnomalyDetection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceIntegrationLogsAnomalyDetection.fromMap(Map<String, dynamic> map) {
     return ServiceIntegrationLogsAnomalyDetection(
-      optInStatus: (() {
-        final guardedValue = map['optInStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optInStatus: (() { final guardedValue = map['optInStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

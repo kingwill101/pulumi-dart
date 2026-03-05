@@ -9,21 +9,20 @@ class GatewayRouteConfigOpenApiPropertiesResponse {
 
   /// Creates a new [GatewayRouteConfigOpenApiPropertiesResponse].
   /// [uri] The URI of OpenAPI specification.
-  GatewayRouteConfigOpenApiPropertiesResponse({this.uri});
+  GatewayRouteConfigOpenApiPropertiesResponse({
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': ?uri};
+    return <String, dynamic>{
+      'uri': ?uri,
+    };
   }
 
-  factory GatewayRouteConfigOpenApiPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GatewayRouteConfigOpenApiPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GatewayRouteConfigOpenApiPropertiesResponse(
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

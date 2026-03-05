@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout {
   /// (Optional)
   final pulumi.Input<int>? nanos;
-
   /// (Optional)
   final pulumi.Input<int>? seconds;
 
@@ -18,23 +17,17 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryT
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nanos': ?nanos, 'seconds': ?seconds};
+    return <String, dynamic>{
+      'nanos': ?nanos,
+      'seconds': ?seconds,
+    };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout(
-      nanos: (() {
-        final guardedValue = map['nanos'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      seconds: (() {
-        final guardedValue = map['seconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      seconds: (() { final guardedValue = map['seconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

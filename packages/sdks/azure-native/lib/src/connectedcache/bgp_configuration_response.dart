@@ -9,19 +9,20 @@ class BgpConfigurationResponse {
 
   /// Creates a new [BgpConfigurationResponse].
   /// [asnToIpAddressMapping] Asn to ip address mapping
-  BgpConfigurationResponse({this.asnToIpAddressMapping});
+  BgpConfigurationResponse({
+    this.asnToIpAddressMapping,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'asnToIpAddressMapping': ?asnToIpAddressMapping};
+    return <String, dynamic>{
+      'asnToIpAddressMapping': ?asnToIpAddressMapping,
+    };
   }
 
   factory BgpConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BgpConfigurationResponse(
-      asnToIpAddressMapping: (() {
-        final guardedValue = map['asnToIpAddressMapping'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      asnToIpAddressMapping: (() { final guardedValue = map['asnToIpAddressMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTaskDefinitionVolumeDockerVolumeConfiguration {
   /// If this value is `true`, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is `shared`.
   final pulumi.Input<bool> autoprovision;
-
   /// Docker volume driver to use. The driver value must match the driver name provided by Docker because it is used for task placement.
   final pulumi.Input<String> driver;
-
   /// Map of Docker driver specific options.
   final pulumi.Input<Map<String, String>> driverOpts;
-
   /// Map of custom metadata to add to your Docker volume.
   final pulumi.Input<Map<String, String>> labels;
-
   /// Scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are scoped as `shared` persist after the task stops.
   final pulumi.Input<String> scope;
 
@@ -42,19 +38,14 @@ class GetTaskDefinitionVolumeDockerVolumeConfiguration {
     };
   }
 
-  factory GetTaskDefinitionVolumeDockerVolumeConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTaskDefinitionVolumeDockerVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetTaskDefinitionVolumeDockerVolumeConfiguration(
       autoprovision: pulumi.Input.fromValue(map['autoprovision'] as bool),
       driver: pulumi.Input.fromValue(map['driver'] as String),
-      driverOpts: pulumi.Input.fromValue(
-        (map['driverOpts'] as Map).cast<String, String>(),
-      ),
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
+      driverOpts: pulumi.Input.fromValue((map['driverOpts'] as Map).cast<String, String>()),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

@@ -12,14 +12,15 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretName': secretName};
+    return <String, dynamic>{
+      'secretName': secretName,
+    };
   }
 
-  factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd(
       secretName: pulumi.Input.fromValue(map['secretName'] as String),
     );
   }
 }
+

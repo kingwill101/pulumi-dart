@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFabricArgs {
   /// Specifies the name of the Site Recovery Replication Fabric.
   final pulumi.Input<String> name;
-
   /// The name of the Recovery Services Vault that the Site Recovery Replication Fabric is associated witth.
   final pulumi.Input<String> recoveryVaultName;
-
   /// The name of the resource group in which the associated Recovery Services Vault resides.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetFabricArgs {
   factory GetFabricArgs.fromMap(Map<String, dynamic> map) {
     return GetFabricArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      recoveryVaultName: pulumi.Input.fromValue(
-        map['recoveryVaultName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      recoveryVaultName: pulumi.Input.fromValue(map['recoveryVaultName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

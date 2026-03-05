@@ -1167,26 +1167,18 @@ import 'web_acl_rule_group_association_timeouts.dart';
 /// ```
 class WebAclRuleGroupAssociation extends pulumi.CustomResource {
   /// Managed Rule Group configuration. One of `rule_group_reference` or `managed_rule_group` is required. Conflicts with `rule_group_reference`. See below.
-  late final pulumi.Output<WebAclRuleGroupAssociationManagedRuleGroup?>
-  managedRuleGroup;
-
+  late final pulumi.Output<WebAclRuleGroupAssociationManagedRuleGroup?> managedRuleGroup;
   /// Override action for the rule group. Valid values are `none` and `count`. Defaults to `none`. When set to `count`, the actions defined in the rule group rules are overridden to count matches instead of blocking or allowing requests.
   late final pulumi.Output<String> overrideAction;
-
   /// Priority of the rule within the Web ACL. Rules are evaluated in order of priority, with lower numbers evaluated first.
   late final pulumi.Output<int> priority;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Custom Rule Group reference configuration. One of `rule_group_reference` or `managed_rule_group` is required. Conflicts with `managed_rule_group`. See below.
-  late final pulumi.Output<WebAclRuleGroupAssociationRuleGroupReference?>
-  ruleGroupReference;
-
+  late final pulumi.Output<WebAclRuleGroupAssociationRuleGroupReference?> ruleGroupReference;
   /// Name of the rule to create in the Web ACL that references the rule group. Must be between 1 and 128 characters.
   late final pulumi.Output<String> ruleName;
   late final pulumi.Output<WebAclRuleGroupAssociationTimeouts?> timeouts;
-
   /// ARN of the Web ACL to associate the Rule Group with.
   ///
   /// The following arguments are optional:
@@ -1201,47 +1193,18 @@ class WebAclRuleGroupAssociation extends pulumi.CustomResource {
     WebAclRuleGroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:wafv2/webAclRuleGroupAssociation:WebAclRuleGroupAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    managedRuleGroup =
-        registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>(
-          'managedRuleGroup',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return WebAclRuleGroupAssociationManagedRuleGroup.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:wafv2/webAclRuleGroupAssociation:WebAclRuleGroupAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    managedRuleGroup = registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>('managedRuleGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleGroupAssociationManagedRuleGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     overrideAction = registerOutput<String>('overrideAction');
     priority = registerOutput<int>('priority');
     region = registerOutput<String>('region');
-    ruleGroupReference =
-        registerOutput<WebAclRuleGroupAssociationRuleGroupReference?>(
-          'ruleGroupReference',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return WebAclRuleGroupAssociationRuleGroupReference.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    ruleGroupReference = registerOutput<WebAclRuleGroupAssociationRuleGroupReference?>('ruleGroupReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleGroupAssociationRuleGroupReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ruleName = registerOutput<String>('ruleName');
-    timeouts = registerOutput<WebAclRuleGroupAssociationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WebAclRuleGroupAssociationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<WebAclRuleGroupAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleGroupAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webAclArn = registerOutput<String>('webAclArn');
   }
 
@@ -1263,47 +1226,18 @@ class WebAclRuleGroupAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:wafv2/webAclRuleGroupAssociation:WebAclRuleGroupAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    managedRuleGroup =
-        registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>(
-          'managedRuleGroup',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return WebAclRuleGroupAssociationManagedRuleGroup.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:wafv2/webAclRuleGroupAssociation:WebAclRuleGroupAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    managedRuleGroup = registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>('managedRuleGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleGroupAssociationManagedRuleGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     overrideAction = registerOutput<String>('overrideAction');
     priority = registerOutput<int>('priority');
     region = registerOutput<String>('region');
-    ruleGroupReference =
-        registerOutput<WebAclRuleGroupAssociationRuleGroupReference?>(
-          'ruleGroupReference',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return WebAclRuleGroupAssociationRuleGroupReference.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    ruleGroupReference = registerOutput<WebAclRuleGroupAssociationRuleGroupReference?>('ruleGroupReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleGroupAssociationRuleGroupReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ruleName = registerOutput<String>('ruleName');
-    timeouts = registerOutput<WebAclRuleGroupAssociationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WebAclRuleGroupAssociationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<WebAclRuleGroupAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleGroupAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webAclArn = registerOutput<String>('webAclArn');
   }
 }

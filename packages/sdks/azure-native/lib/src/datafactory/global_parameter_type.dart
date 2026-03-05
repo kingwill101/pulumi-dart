@@ -19,3 +19,4 @@ enum GlobalParameterType {
     throw ArgumentError('Unknown GlobalParameterType value: $value');
   }
 }
+

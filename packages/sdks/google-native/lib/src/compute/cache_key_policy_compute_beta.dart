@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheKeyPolicyComputeBeta {
   /// If true, requests to different hosts will be cached separately.
   final pulumi.Input<bool>? includeHost;
-
   /// Allows HTTP request headers (by name) to be used in the cache key.
   final pulumi.Input<List<String>>? includeHttpHeaders;
-
   /// Allows HTTP cookies (by name) to be used in the cache key. The name=value pair will be used in the cache key Cloud CDN generates.
   final pulumi.Input<List<String>>? includeNamedCookies;
-
   /// If true, http and https requests will be cached separately.
   final pulumi.Input<bool>? includeProtocol;
-
   /// If true, include query string parameters in the cache key according to query_string_whitelist and query_string_blacklist. If neither is set, the entire query string will be included. If false, the query string will be excluded from the cache key entirely.
   final pulumi.Input<bool>? includeQueryString;
-
   /// Names of query string parameters to exclude in cache keys. All other parameters will be included. Either specify query_string_whitelist or query_string_blacklist, not both. '&' and '=' will be percent encoded and not treated as delimiters.
   final pulumi.Input<List<String>>? queryStringBlacklist;
-
   /// Names of query string parameters to include in cache keys. All other parameters will be excluded. Either specify query_string_whitelist or query_string_blacklist, not both. '&' and '=' will be percent encoded and not treated as delimiters.
   final pulumi.Input<List<String>>? queryStringWhitelist;
 
@@ -57,41 +51,14 @@ class CacheKeyPolicyComputeBeta {
 
   factory CacheKeyPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return CacheKeyPolicyComputeBeta(
-      includeHost: (() {
-        final guardedValue = map['includeHost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      includeHttpHeaders: (() {
-        final guardedValue = map['includeHttpHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      includeNamedCookies: (() {
-        final guardedValue = map['includeNamedCookies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      includeProtocol: (() {
-        final guardedValue = map['includeProtocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      includeQueryString: (() {
-        final guardedValue = map['includeQueryString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      queryStringBlacklist: (() {
-        final guardedValue = map['queryStringBlacklist'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      queryStringWhitelist: (() {
-        final guardedValue = map['queryStringWhitelist'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      includeHost: (() { final guardedValue = map['includeHost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includeHttpHeaders: (() { final guardedValue = map['includeHttpHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      includeNamedCookies: (() { final guardedValue = map['includeNamedCookies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      includeProtocol: (() { final guardedValue = map['includeProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includeQueryString: (() { final guardedValue = map['includeQueryString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      queryStringBlacklist: (() { final guardedValue = map['queryStringBlacklist']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      queryStringWhitelist: (() { final guardedValue = map['queryStringWhitelist']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

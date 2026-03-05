@@ -239,20 +239,14 @@ import 'field_level_encryption_profile_state.dart';
 class FieldLevelEncryptionProfile extends pulumi.CustomResource {
   /// The Field Level Encryption Profile ARN.
   late final pulumi.Output<String> arn;
-
   /// Internal value used by CloudFront to allow future updates to the Field Level Encryption Profile.
   late final pulumi.Output<String> callerReference;
-
   /// An optional comment about the Field Level Encryption Profile.
   late final pulumi.Output<String?> comment;
-
   /// The encryption entities config block for field-level encryption profiles that contains an attribute `items` which includes the encryption key and field pattern specifications.
-  late final pulumi.Output<FieldLevelEncryptionProfileEncryptionEntities>
-  encryptionEntities;
-
+  late final pulumi.Output<FieldLevelEncryptionProfileEncryptionEntities> encryptionEntities;
   /// The current version of the Field Level Encryption Profile. For example: `E2QWRUHAPOMQZL`.
   late final pulumi.Output<String> etag;
-
   /// The name of the Field Level Encryption Profile.
   late final pulumi.Output<String> name;
 
@@ -265,25 +259,15 @@ class FieldLevelEncryptionProfile extends pulumi.CustomResource {
     FieldLevelEncryptionProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/fieldLevelEncryptionProfile:FieldLevelEncryptionProfile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/fieldLevelEncryptionProfile:FieldLevelEncryptionProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     callerReference = registerOutput<String>('callerReference');
     comment = registerOutput<String?>('comment');
-    encryptionEntities =
-        registerOutput<FieldLevelEncryptionProfileEncryptionEntities>(
-          'encryptionEntities',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FieldLevelEncryptionProfileEncryptionEntities.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    encryptionEntities = registerOutput<FieldLevelEncryptionProfileEncryptionEntities>('encryptionEntities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FieldLevelEncryptionProfileEncryptionEntities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
   }
@@ -306,25 +290,15 @@ class FieldLevelEncryptionProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/fieldLevelEncryptionProfile:FieldLevelEncryptionProfile',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/fieldLevelEncryptionProfile:FieldLevelEncryptionProfile',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     callerReference = registerOutput<String>('callerReference');
     comment = registerOutput<String?>('comment');
-    encryptionEntities =
-        registerOutput<FieldLevelEncryptionProfileEncryptionEntities>(
-          'encryptionEntities',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FieldLevelEncryptionProfileEncryptionEntities.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    encryptionEntities = registerOutput<FieldLevelEncryptionProfileEncryptionEntities>('encryptionEntities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FieldLevelEncryptionProfileEncryptionEntities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
   }

@@ -7,22 +7,16 @@ import 'key_vault_certificate_source_parameters_response_vault.dart';
 class CustomHttpsConfigurationResponse {
   /// Defines the source of the SSL certificate
   final pulumi.Input<String> certificateSource;
-
   /// Defines the type of the certificate used for secure connections to a frontendEndpoint
   final pulumi.Input<String>? certificateType;
-
   /// The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
   final pulumi.Input<String> minimumTlsVersion;
-
   /// Defines the TLS extension protocol that is used for secure delivery
   final pulumi.Input<String> protocolType;
-
   /// The name of the Key Vault secret representing the full certificate PFX
   final pulumi.Input<String>? secretName;
-
   /// The version of the Key Vault secret representing the full certificate PFX
   final pulumi.Input<String>? secretVersion;
-
   /// The Key Vault containing the SSL certificate
   final pulumi.Input<KeyVaultCertificateSourceParametersResponseVault>? vault;
 
@@ -52,47 +46,20 @@ class CustomHttpsConfigurationResponse {
       'protocolType': protocolType,
       'secretName': ?secretName,
       'secretVersion': ?secretVersion,
-      'vault':
-          ?pulumi.Input.mapOptionalInputValue<
-            KeyVaultCertificateSourceParametersResponseVault,
-            Map<String, dynamic>
-          >(vault, (value) => value.toMap()),
+      'vault': ?pulumi.Input.mapOptionalInputValue<KeyVaultCertificateSourceParametersResponseVault, Map<String, dynamic>>(vault, (value) => value.toMap()),
     };
   }
 
   factory CustomHttpsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CustomHttpsConfigurationResponse(
-      certificateSource: pulumi.Input.fromValue(
-        map['certificateSource'] as String,
-      ),
-      certificateType: (() {
-        final guardedValue = map['certificateType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      minimumTlsVersion: pulumi.Input.fromValue(
-        map['minimumTlsVersion'] as String,
-      ),
+      certificateSource: pulumi.Input.fromValue(map['certificateSource'] as String),
+      certificateType: (() { final guardedValue = map['certificateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minimumTlsVersion: pulumi.Input.fromValue(map['minimumTlsVersion'] as String),
       protocolType: pulumi.Input.fromValue(map['protocolType'] as String),
-      secretName: (() {
-        final guardedValue = map['secretName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretVersion: (() {
-        final guardedValue = map['secretVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vault: (() {
-        final guardedValue = map['vault'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KeyVaultCertificateSourceParametersResponseVault.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      secretName: (() { final guardedValue = map['secretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretVersion: (() { final guardedValue = map['secretVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vault: (() { final guardedValue = map['vault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyVaultCertificateSourceParametersResponseVault.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

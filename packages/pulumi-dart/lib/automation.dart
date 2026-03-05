@@ -7,6 +7,15 @@
 /// a [LocalWorkspace] that owns execution context and a [Stack] handle for
 /// lifecycle operations.
 ///
+/// ## Main entrypoints
+/// - [LocalWorkspace]: manage plugins, config, environment, and stack state.
+/// - [Stack]: run `preview`, `up`, `refresh`, `destroy`, and output queries.
+/// - [LocalProgramArgs]: target an existing Pulumi program on disk.
+/// - [InlineProgramArgs]: define a Pulumi program directly in Dart code.
+///
+/// Use this library when you want Pulumi to be one subsystem in a larger Dart
+/// application, CI coordinator, deployment service, or developer tool.
+///
 /// ## Example
 /// ```dart
 /// import 'package:pulumi/automation.dart' as automation;
@@ -28,6 +37,9 @@
 ///   await stack.preview();
 /// }
 /// ```
+///
+/// For normal infrastructure programs invoked by the Pulumi CLI, import
+/// `package:pulumi/pulumi.dart` instead.
 library automation;
 
 export 'src/automation/command.dart';

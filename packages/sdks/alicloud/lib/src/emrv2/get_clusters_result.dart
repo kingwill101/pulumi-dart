@@ -9,30 +9,23 @@ class GetClustersResult {
   final String? clusterName;
   final List<String>? clusterStates;
   final List<String>? clusterTypes;
-
   /// A list of Emr Clusters. Each element contains the following attributes:
   final List<GetClustersCluster> clusters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Cluster IDS.
   final List<String> ids;
   final int? maxResults;
   final String? nameRegex;
-
   /// A list of Cluster names.
   final List<String> names;
   final String? nextToken;
   final String? outputFile;
   final List<String>? paymentTypes;
-
   /// The resource group id of the resource.
   final String? resourceGroupId;
-
   /// A mapping of tags to assign to the resource.
   final Map<String, String>? tags;
-
   /// The total count of list clusters.
   final int totalCount;
 
@@ -75,11 +68,7 @@ class GetClustersResult {
       'clusterName': ?clusterName,
       'clusterStates': ?clusterStates,
       'clusterTypes': ?clusterTypes,
-      'clusters':
-          pulumi.Input.encodeList<GetClustersCluster, Map<String, dynamic>>(
-            clusters,
-            (value) => value.toMap(),
-          ),
+      'clusters': pulumi.Input.encodeList<GetClustersCluster, Map<String, dynamic>>(clusters, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'maxResults': ?maxResults,
@@ -96,65 +85,22 @@ class GetClustersResult {
 
   factory GetClustersResult.fromMap(Map<String, dynamic> map) {
     return GetClustersResult(
-      clusterName: (() {
-        final guardedValue = map['clusterName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      clusterStates: (() {
-        final guardedValue = map['clusterStates'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      clusterTypes: (() {
-        final guardedValue = map['clusterTypes'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      clusters: pulumi.Input.decodeList<GetClustersCluster>(
-        map['clusters']!,
-        (value) =>
-            GetClustersCluster.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      clusterName: (() { final guardedValue = map['clusterName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clusterStates: (() { final guardedValue = map['clusterStates']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      clusterTypes: (() { final guardedValue = map['clusterTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      clusters: pulumi.Input.decodeList<GetClustersCluster>(map['clusters']!, (value) => GetClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      maxResults: (() {
-        final guardedValue = map['maxResults'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      maxResults: (() { final guardedValue = map['maxResults']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      nextToken: (() {
-        final guardedValue = map['nextToken'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      paymentTypes: (() {
-        final guardedValue = map['paymentTypes'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      nextToken: (() { final guardedValue = map['nextToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      paymentTypes: (() { final guardedValue = map['paymentTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       totalCount: map['totalCount'] as int,
     );
   }
 }
+

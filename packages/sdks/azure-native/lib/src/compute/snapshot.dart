@@ -871,99 +871,66 @@ import 'system_data_response.dart';
 class Snapshot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Percentage complete for the background copy when a resource is created via the CopyStart operation.
   late final pulumi.Output<double?> completionPercent;
-
   /// Indicates the error details if the background copy of a resource created via the CopyStart operation fails.
   late final pulumi.Output<CopyCompletionErrorResponse?> copyCompletionError;
-
   /// Disk source information. CreationData information cannot be changed after the disk has been created.
   late final pulumi.Output<CreationDataResponse> creationData;
-
   /// Additional authentication requirements when exporting or uploading to a disk or snapshot.
   late final pulumi.Output<String?> dataAccessAuthMode;
-
   /// ARM id of the DiskAccess resource for using private endpoints on disks.
   late final pulumi.Output<String?> diskAccessId;
-
   /// The size of the disk in bytes. This field is read only.
   late final pulumi.Output<double> diskSizeBytes;
-
   /// If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
   late final pulumi.Output<int?> diskSizeGB;
-
   /// The state of the snapshot.
   late final pulumi.Output<String> diskState;
-
   /// Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys.
   late final pulumi.Output<EncryptionResponse?> encryption;
-
   /// Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot.
-  late final pulumi.Output<EncryptionSettingsCollectionResponse?>
-  encryptionSettingsCollection;
-
+  late final pulumi.Output<EncryptionSettingsCollectionResponse?> encryptionSettingsCollection;
   /// The extended location where the snapshot will be created. Extended location cannot be changed.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
   late final pulumi.Output<String?> hyperVGeneration;
-
   /// Whether a snapshot is incremental. Incremental snapshots on the same disk occupy less space than full snapshots and can be diffed.
   late final pulumi.Output<bool?> incremental;
-
   /// Incremental snapshots for a disk share an incremental snapshot family id. The Get Page Range Diff API can only be called on incremental snapshots with the same family id.
   late final pulumi.Output<String> incrementalSnapshotFamilyId;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Unused. Always Null.
   late final pulumi.Output<String> managedBy;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Policy for accessing the disk via network.
   late final pulumi.Output<String?> networkAccessPolicy;
-
   /// The Operating System type.
   late final pulumi.Output<String?> osType;
-
   /// The disk provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Policy for controlling export on the disk.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// Purchase plan information for the image from which the source disk for the snapshot was originally created.
   late final pulumi.Output<DiskPurchasePlanResponse?> purchasePlan;
-
   /// Contains the security related information for the resource.
   late final pulumi.Output<DiskSecurityProfileResponse?> securityProfile;
-
   /// The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot
   late final pulumi.Output<SnapshotSkuResponse?> sku;
-
   /// List of supported capabilities for the image from which the source disk from the snapshot was originally created.
-  late final pulumi.Output<SupportedCapabilitiesResponse?>
-  supportedCapabilities;
-
+  late final pulumi.Output<SupportedCapabilitiesResponse?> supportedCapabilities;
   /// Indicates the OS on a snapshot supports hibernation.
   late final pulumi.Output<bool?> supportsHibernation;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The time when the snapshot was created.
   late final pulumi.Output<String> timeCreated;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Unique Guid identifying the resource.
   late final pulumi.Output<String> uniqueId;
 
@@ -976,74 +943,26 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:compute:Snapshot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:compute:Snapshot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     completionPercent = registerOutput<double?>('completionPercent');
-    copyCompletionError = registerOutput<CopyCompletionErrorResponse?>(
-      'copyCompletionError',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CopyCompletionErrorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    creationData = registerOutput<CreationDataResponse>(
-      'creationData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CreationDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    copyCompletionError = registerOutput<CopyCompletionErrorResponse?>('copyCompletionError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CopyCompletionErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationData = registerOutput<CreationDataResponse>('creationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CreationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataAccessAuthMode = registerOutput<String?>('dataAccessAuthMode');
     diskAccessId = registerOutput<String?>('diskAccessId');
     diskSizeBytes = registerOutput<double>('diskSizeBytes');
     diskSizeGB = registerOutput<int?>('diskSizeGB');
     diskState = registerOutput<String>('diskState');
-    encryption = registerOutput<EncryptionResponse?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptionSettingsCollection =
-        registerOutput<EncryptionSettingsCollectionResponse?>(
-          'encryptionSettingsCollection',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EncryptionSettingsCollectionResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<EncryptionResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionSettingsCollection = registerOutput<EncryptionSettingsCollectionResponse?>('encryptionSettingsCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionSettingsCollectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
     incremental = registerOutput<bool?>('incremental');
-    incrementalSnapshotFamilyId = registerOutput<String>(
-      'incrementalSnapshotFamilyId',
-    );
+    incrementalSnapshotFamilyId = registerOutput<String>('incrementalSnapshotFamilyId');
     location = registerOutput<String>('location');
     managedBy = registerOutput<String>('managedBy');
     this.name = registerOutput<String>('name');
@@ -1051,57 +970,12 @@ class Snapshot extends pulumi.CustomResource {
     osType = registerOutput<String?>('osType');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    purchasePlan = registerOutput<DiskPurchasePlanResponse?>(
-      'purchasePlan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiskPurchasePlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    securityProfile = registerOutput<DiskSecurityProfileResponse?>(
-      'securityProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiskSecurityProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sku = registerOutput<SnapshotSkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SnapshotSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    supportedCapabilities = registerOutput<SupportedCapabilitiesResponse?>(
-      'supportedCapabilities',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SupportedCapabilitiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    purchasePlan = registerOutput<DiskPurchasePlanResponse?>('purchasePlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskPurchasePlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityProfile = registerOutput<DiskSecurityProfileResponse?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskSecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SnapshotSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportedCapabilities = registerOutput<SupportedCapabilitiesResponse?>('supportedCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SupportedCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportsHibernation = registerOutput<bool?>('supportsHibernation');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     timeCreated = registerOutput<String>('timeCreated');
     type = registerOutput<String>('type');

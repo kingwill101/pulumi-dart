@@ -14,3 +14,4 @@ enum IsDeviceMatchValue {
     throw ArgumentError('Unknown IsDeviceMatchValue value: $value');
   }
 }
+

@@ -150,13 +150,10 @@ import 'serial_port_args.dart';
 class SerialPort extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Specifies whether the port is enabled for a serial console connection.
   late final pulumi.Output<String?> state;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -169,11 +166,11 @@ class SerialPort extends pulumi.CustomResource {
     SerialPortArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:serialconsole:SerialPort',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:serialconsole:SerialPort',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     state = registerOutput<String?>('state');

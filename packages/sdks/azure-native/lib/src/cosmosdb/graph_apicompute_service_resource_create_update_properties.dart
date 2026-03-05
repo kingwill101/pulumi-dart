@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GraphAPIComputeServiceResourceCreateUpdateProperties {
   /// Instance count for the service.
   final pulumi.Input<int>? instanceCount;
-
   /// Instance type for the service.
   final pulumi.Input<String>? instanceSize;
-
   /// ServiceType for the service.
   /// Expected value is 'GraphAPICompute'.
   final pulumi.Input<String> serviceType;
@@ -32,21 +30,12 @@ class GraphAPIComputeServiceResourceCreateUpdateProperties {
     };
   }
 
-  factory GraphAPIComputeServiceResourceCreateUpdateProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GraphAPIComputeServiceResourceCreateUpdateProperties.fromMap(Map<String, dynamic> map) {
     return GraphAPIComputeServiceResourceCreateUpdateProperties(
-      instanceCount: (() {
-        final guardedValue = map['instanceCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      instanceSize: (() {
-        final guardedValue = map['instanceSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceSize: (() { final guardedValue = map['instanceSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceType: pulumi.Input.fromValue(map['serviceType'] as String),
     );
   }
 }
+

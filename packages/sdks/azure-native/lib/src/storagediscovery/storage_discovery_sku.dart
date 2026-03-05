@@ -15,3 +15,4 @@ enum StorageDiscoverySku {
     throw ArgumentError('Unknown StorageDiscoverySku value: $value');
   }
 }
+

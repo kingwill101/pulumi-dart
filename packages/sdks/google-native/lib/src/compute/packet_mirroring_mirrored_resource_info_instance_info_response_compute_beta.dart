@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeBeta {
   /// Unique identifier for the instance; defined by the server.
   final pulumi.Input<String> canonicalUrl;
-
   /// Resource URL to the virtual machine instance which is being mirrored.
   final pulumi.Input<String> url;
 
@@ -18,15 +17,17 @@ class PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'canonicalUrl': canonicalUrl, 'url': url};
+    return <String, dynamic>{
+      'canonicalUrl': canonicalUrl,
+      'url': url,
+    };
   }
 
-  factory PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeBeta(
       canonicalUrl: pulumi.Input.fromValue(map['canonicalUrl'] as String),
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentFlowDefinitionNodeConfigurationPromptGuardrailConfiguration {
   /// The unique identifier of the guardrail.
   final pulumi.Input<String> guardrailIdentifier;
-
   /// The version of the guardrail.
   final pulumi.Input<String> guardrailVersion;
 
@@ -24,16 +23,11 @@ class AgentFlowDefinitionNodeConfigurationPromptGuardrailConfiguration {
     };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationPromptGuardrailConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentFlowDefinitionNodeConfigurationPromptGuardrailConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPromptGuardrailConfiguration(
-      guardrailIdentifier: pulumi.Input.fromValue(
-        map['guardrailIdentifier'] as String,
-      ),
-      guardrailVersion: pulumi.Input.fromValue(
-        map['guardrailVersion'] as String,
-      ),
+      guardrailIdentifier: pulumi.Input.fromValue(map['guardrailIdentifier'] as String),
+      guardrailVersion: pulumi.Input.fromValue(map['guardrailVersion'] as String),
     );
   }
 }
+

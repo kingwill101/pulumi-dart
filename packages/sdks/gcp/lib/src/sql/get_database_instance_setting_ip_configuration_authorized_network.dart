@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork {
   final pulumi.Input<String> expirationTime;
-
   /// The name of the instance.
   final pulumi.Input<String> name;
   final pulumi.Input<String> value;
@@ -27,9 +26,7 @@ class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork {
     };
   }
 
-  factory GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork(
       expirationTime: pulumi.Input.fromValue(map['expirationTime'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -37,3 +34,4 @@ class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork {
     );
   }
 }
+

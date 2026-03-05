@@ -18,7 +18,11 @@ class GetSigningJobSourceS3 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucket': bucket, 'key': key, 'version': version};
+    return <String, dynamic>{
+      'bucket': bucket,
+      'key': key,
+      'version': version,
+    };
   }
 
   factory GetSigningJobSourceS3.fromMap(Map<String, dynamic> map) {
@@ -29,3 +33,4 @@ class GetSigningJobSourceS3 {
     );
   }
 }
+

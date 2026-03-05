@@ -11,18 +11,14 @@ class SharedResourceArgs {
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? permissionName;
-
   /// Associated resource ARN.
   ///
   /// &gt; **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
   final pulumi.Input<String>? resourceArn;
-
   /// The ID of the shared resource.
   final pulumi.Input<String>? resourceId;
-
   /// The ID of the resource share.
   final pulumi.Input<String> resourceShareId;
-
   /// The type of the shared resource.
   final pulumi.Input<String>? resourceType;
 
@@ -52,27 +48,12 @@ class SharedResourceArgs {
 
   factory SharedResourceArgs.fromMap(Map<String, dynamic> map) {
     return SharedResourceArgs(
-      permissionName: (() {
-        final guardedValue = map['permissionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceArn: (() {
-        final guardedValue = map['resourceArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      permissionName: (() { final guardedValue = map['permissionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceArn: (() { final guardedValue = map['resourceArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceShareId: pulumi.Input.fromValue(map['resourceShareId'] as String),
-      resourceType: (() {
-        final guardedValue = map['resourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

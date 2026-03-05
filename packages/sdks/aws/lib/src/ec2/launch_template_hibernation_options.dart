@@ -8,10 +8,14 @@ class LaunchTemplateHibernationOptions {
 
   /// Creates a new [LaunchTemplateHibernationOptions].
   /// [configured] If set to `true`, the launched EC2 instance will hibernation enabled.
-  LaunchTemplateHibernationOptions({required this.configured});
+  LaunchTemplateHibernationOptions({
+    required this.configured,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'configured': configured};
+    return <String, dynamic>{
+      'configured': configured,
+    };
   }
 
   factory LaunchTemplateHibernationOptions.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class LaunchTemplateHibernationOptions {
     );
   }
 }
+

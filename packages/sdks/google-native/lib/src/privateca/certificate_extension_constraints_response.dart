@@ -7,7 +7,6 @@ import 'object_id_response.dart';
 class CertificateExtensionConstraintsResponse {
   /// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
   final pulumi.Input<List<ObjectIdResponse>> additionalExtensions;
-
   /// Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
   final pulumi.Input<List<String>> knownExtensions;
 
@@ -21,36 +20,16 @@ class CertificateExtensionConstraintsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalExtensions':
-          pulumi.Input.mapInputValue<
-            List<ObjectIdResponse>,
-            List<Map<String, dynamic>>
-          >(
-            additionalExtensions,
-            (value) =>
-                pulumi.Input.encodeList<ObjectIdResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'additionalExtensions': pulumi.Input.mapInputValue<List<ObjectIdResponse>, List<Map<String, dynamic>>>(additionalExtensions, (value) => pulumi.Input.encodeList<ObjectIdResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'knownExtensions': knownExtensions,
     };
   }
 
-  factory CertificateExtensionConstraintsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CertificateExtensionConstraintsResponse.fromMap(Map<String, dynamic> map) {
     return CertificateExtensionConstraintsResponse(
-      additionalExtensions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ObjectIdResponse>(
-          map['additionalExtensions']!,
-          (value) =>
-              ObjectIdResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      knownExtensions: pulumi.Input.fromValue(
-        (map['knownExtensions'] as List).cast<String>(),
-      ),
+      additionalExtensions: pulumi.Input.fromValue(pulumi.Input.decodeList<ObjectIdResponse>(map['additionalExtensions']!, (value) => ObjectIdResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      knownExtensions: pulumi.Input.fromValue((map['knownExtensions'] as List).cast<String>()),
     );
   }
 }
+

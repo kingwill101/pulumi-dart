@@ -9,13 +9,10 @@ import 'scope.dart';
 class CheckSet {
   /// Optional. The checks to apply. The ultimate result of evaluating the check set will be "allow" if and only if every check in `checks` evaluates to "allow". If `checks` is empty, the default behavior is "always allow".
   final pulumi.Input<List<Check>>? checks;
-
   /// Optional. A user-provided name for this `CheckSet`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
   final pulumi.Input<String>? displayName;
-
   /// Optional. Images exempted from this `CheckSet`. If any of the patterns match the image being evaluated, no checks in the `CheckSet` will be evaluated.
   final pulumi.Input<ImageAllowlist>? imageAllowlist;
-
   /// Optional. The scope to which this `CheckSet` applies. If unset or an empty string (the default), applies to all namespaces and service accounts. See the `Scope` message documentation for details on scoping rules.
   final pulumi.Input<Scope>? scope;
 
@@ -24,65 +21,29 @@ class CheckSet {
   /// [displayName] Optional. A user-provided name for this `CheckSet`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
   /// [imageAllowlist] Optional. Images exempted from this `CheckSet`. If any of the patterns match the image being evaluated, no checks in the `CheckSet` will be evaluated.
   /// [scope] Optional. The scope to which this `CheckSet` applies. If unset or an empty string (the default), applies to all namespaces and service accounts. See the `Scope` message documentation for details on scoping rules.
-  CheckSet({this.checks, this.displayName, this.imageAllowlist, this.scope});
+  CheckSet({
+    this.checks,
+    this.displayName,
+    this.imageAllowlist,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'checks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Check>,
-            List<Map<String, dynamic>>
-          >(
-            checks,
-            (value) => pulumi.Input.encodeList<Check, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'checks': ?pulumi.Input.mapOptionalInputValue<List<Check>, List<Map<String, dynamic>>>(checks, (value) => pulumi.Input.encodeList<Check, Map<String, dynamic>>(value, (value) => value.toMap())),
       'displayName': ?displayName,
-      'imageAllowlist':
-          ?pulumi.Input.mapOptionalInputValue<
-            ImageAllowlist,
-            Map<String, dynamic>
-          >(imageAllowlist, (value) => value.toMap()),
-      'scope': ?pulumi.Input.mapOptionalInputValue<Scope, Map<String, dynamic>>(
-        scope,
-        (value) => value.toMap(),
-      ),
+      'imageAllowlist': ?pulumi.Input.mapOptionalInputValue<ImageAllowlist, Map<String, dynamic>>(imageAllowlist, (value) => value.toMap()),
+      'scope': ?pulumi.Input.mapOptionalInputValue<Scope, Map<String, dynamic>>(scope, (value) => value.toMap()),
     };
   }
 
   factory CheckSet.fromMap(Map<String, dynamic> map) {
     return CheckSet(
-      checks: (() {
-        final guardedValue = map['checks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Check>(
-            guardedValue,
-            (value) => Check.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      imageAllowlist: (() {
-        final guardedValue = map['imageAllowlist'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ImageAllowlist.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Scope.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      checks: (() { final guardedValue = map['checks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Check>(guardedValue, (value) => Check.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      imageAllowlist: (() { final guardedValue = map['imageAllowlist']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageAllowlist.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Scope.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

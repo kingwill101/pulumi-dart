@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceResponse {
   /// Source name for content indexed by the Indexing API.
   final pulumi.Input<String> name;
-
   /// Predefined content source for Google Apps.
   final pulumi.Input<String> predefinedSource;
 
   /// Creates a new [SourceResponse].
   /// [name] Source name for content indexed by the Indexing API.
   /// [predefinedSource] Predefined content source for Google Apps.
-  SourceResponse({required this.name, required this.predefinedSource});
+  SourceResponse({
+    required this.name,
+    required this.predefinedSource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +27,8 @@ class SourceResponse {
   factory SourceResponse.fromMap(Map<String, dynamic> map) {
     return SourceResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      predefinedSource: pulumi.Input.fromValue(
-        map['predefinedSource'] as String,
-      ),
+      predefinedSource: pulumi.Input.fromValue(map['predefinedSource'] as String),
     );
   }
 }
+

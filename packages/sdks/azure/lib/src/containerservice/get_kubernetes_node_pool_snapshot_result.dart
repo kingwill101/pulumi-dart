@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKubernetesNodePoolSnapshot.
 class GetKubernetesNodePoolSnapshotResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String resourceGroupName;
-
   /// The ID of the source Node Pool.
   final String sourceNodePoolId;
   final Map<String, String> tags;
@@ -35,9 +35,7 @@ class GetKubernetesNodePoolSnapshotResult {
     };
   }
 
-  factory GetKubernetesNodePoolSnapshotResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetKubernetesNodePoolSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetKubernetesNodePoolSnapshotResult(
       id: map['id'] as String,
       name: map['name'] as String,
@@ -47,3 +45,4 @@ class GetKubernetesNodePoolSnapshotResult {
     );
   }
 }
+

@@ -386,35 +386,26 @@ class DefenseRule extends pulumi.CustomResource {
   /// &gt; **NOTE:**  Depending on the specified **protection rule type**(`DefenseScene`), the specific parameters vary. For more information, see **Protection Rule Parameter Description**.
   /// See `config` below.
   late final pulumi.Output<DefenseRuleConfig> config;
-
   /// Sources of protection. Value:
   late final pulumi.Output<String?> defenseOrigin;
-
   /// The WAF protection scenario to be created.
   ///
   /// When the protection rule type `DefenseType` is set to `template`, the value is as follows:
   late final pulumi.Output<String> defenseScene;
-
   /// The protection rule type. Value:
   late final pulumi.Output<String> defenseType;
-
   /// The ID of the Web Application Firewall (WAF) instance.
   late final pulumi.Output<String> instanceId;
-
   /// The protection object corresponding to the rule to be queried.
   ///
   /// &gt; **NOTE:**  This parameter is required only when `DefenseType` is set to `resource`.
   late final pulumi.Output<String> resource;
-
   /// The protection rule ID.
   late final pulumi.Output<int> ruleId;
-
   /// The rule name.
   late final pulumi.Output<String> ruleName;
-
   /// Protection rule status.
   late final pulumi.Output<int?> ruleStatus;
-
   /// The protection template ID of the protection rule to be created.
   late final pulumi.Output<int?> templateId;
 
@@ -427,21 +418,12 @@ class DefenseRule extends pulumi.CustomResource {
     DefenseRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:wafv3/defenseRule:DefenseRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    config = registerOutput<DefenseRuleConfig>(
-      'config',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DefenseRuleConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:wafv3/defenseRule:DefenseRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    config = registerOutput<DefenseRuleConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DefenseRuleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defenseOrigin = registerOutput<String?>('defenseOrigin');
     defenseScene = registerOutput<String>('defenseScene');
     defenseType = registerOutput<String>('defenseType');
@@ -471,21 +453,12 @@ class DefenseRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:wafv3/defenseRule:DefenseRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    config = registerOutput<DefenseRuleConfig>(
-      'config',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DefenseRuleConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:wafv3/defenseRule:DefenseRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    config = registerOutput<DefenseRuleConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DefenseRuleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defenseOrigin = registerOutput<String?>('defenseOrigin');
     defenseScene = registerOutput<String>('defenseScene');
     defenseType = registerOutput<String>('defenseType');

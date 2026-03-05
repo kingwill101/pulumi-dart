@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvCustomJobState {
   /// The locale. The default is Chinese zh | en.
   final pulumi.Input<String>? aliyunLang;
-
   /// Yaml configuration string.
   final pulumi.Input<String>? configYaml;
-
   /// Custom job name.
   final pulumi.Input<String>? envCustomJobName;
-
   /// Environment id.
   final pulumi.Input<String>? environmentId;
-
   /// Status: run, stop.
   final pulumi.Input<String>? status;
 
@@ -45,31 +41,12 @@ class EnvCustomJobState {
 
   factory EnvCustomJobState.fromMap(Map<String, dynamic> map) {
     return EnvCustomJobState(
-      aliyunLang: (() {
-        final guardedValue = map['aliyunLang'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      configYaml: (() {
-        final guardedValue = map['configYaml'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      envCustomJobName: (() {
-        final guardedValue = map['envCustomJobName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      environmentId: (() {
-        final guardedValue = map['environmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      aliyunLang: (() { final guardedValue = map['aliyunLang']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      configYaml: (() { final guardedValue = map['configYaml']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      envCustomJobName: (() { final guardedValue = map['envCustomJobName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

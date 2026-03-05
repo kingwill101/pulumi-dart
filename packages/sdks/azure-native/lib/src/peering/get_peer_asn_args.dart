@@ -12,10 +12,14 @@ class GetPeerAsnArgs {
 
   /// Creates a new [GetPeerAsnArgs].
   /// [peerAsnName] The peer ASN name.
-  GetPeerAsnArgs({required this.peerAsnName});
+  GetPeerAsnArgs({
+    required this.peerAsnName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'peerAsnName': peerAsnName};
+    return <String, dynamic>{
+      'peerAsnName': peerAsnName,
+    };
   }
 
   factory GetPeerAsnArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetPeerAsnArgs {
     );
   }
 }
+

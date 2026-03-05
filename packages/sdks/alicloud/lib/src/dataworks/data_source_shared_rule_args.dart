@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceSharedRuleArgs {
   /// The ID of the data source, that is, the unique identifier of the data source.
   final pulumi.Input<int> dataSourceId;
-
   /// The environment type of the data source shared to the target project, such as Dev (Development Environment) and Prod (production environment).
   final pulumi.Input<String> envType;
-
   /// The target user of the data source permission policy, which is null to share to the project.
   final pulumi.Input<String>? sharedUser;
-
   /// The ID of the project to which the data source is shared.
   final pulumi.Input<int> targetProjectId;
 
@@ -44,12 +41,9 @@ class DataSourceSharedRuleArgs {
     return DataSourceSharedRuleArgs(
       dataSourceId: pulumi.Input.fromValue(map['dataSourceId'] as int),
       envType: pulumi.Input.fromValue(map['envType'] as String),
-      sharedUser: (() {
-        final guardedValue = map['sharedUser'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sharedUser: (() { final guardedValue = map['sharedUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetProjectId: pulumi.Input.fromValue(map['targetProjectId'] as int),
     );
   }
 }
+

@@ -10,25 +10,20 @@ class ManagedClusterStatusResponse {
 
   /// Creates a new [ManagedClusterStatusResponse].
   /// [provisioningError] The error details information of the managed cluster. Preserves the detailed info of failure. If there was no error, this field is omitted.
-  ManagedClusterStatusResponse({required this.provisioningError});
+  ManagedClusterStatusResponse({
+    required this.provisioningError,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'provisioningError':
-          pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(
-            provisioningError,
-            (value) => value.toMap(),
-          ),
+      'provisioningError': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(provisioningError, (value) => value.toMap()),
     };
   }
 
   factory ManagedClusterStatusResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterStatusResponse(
-      provisioningError: pulumi.Input.fromValue(
-        ErrorDetailResponse.fromMap(
-          (map['provisioningError']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      provisioningError: pulumi.Input.fromValue(ErrorDetailResponse.fromMap((map['provisioningError']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

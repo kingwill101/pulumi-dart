@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRetailV2betaImageResponse {
   /// Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
   final pulumi.Input<int> height;
-
   /// URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
   final pulumi.Input<String> uri;
-
   /// Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
   final pulumi.Input<int> width;
 
@@ -24,12 +22,14 @@ class GoogleCloudRetailV2betaImageResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'height': height, 'uri': uri, 'width': width};
+    return <String, dynamic>{
+      'height': height,
+      'uri': uri,
+      'width': width,
+    };
   }
 
-  factory GoogleCloudRetailV2betaImageResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2betaImageResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaImageResponse(
       height: pulumi.Input.fromValue(map['height'] as int),
       uri: pulumi.Input.fromValue(map['uri'] as String),
@@ -37,3 +37,4 @@ class GoogleCloudRetailV2betaImageResponse {
     );
   }
 }
+

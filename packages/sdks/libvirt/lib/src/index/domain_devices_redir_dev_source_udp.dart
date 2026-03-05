@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesRedirDevSourceUdp {
   /// Sets the bind host address for the UDP connection in the random number generator backend.
   final pulumi.Input<String> bindHost;
-
   /// Specifies the service attribute for binding in the UDP settings.
   final pulumi.Input<String> bindService;
-
   /// Configures the host address used for the connection in the UDP settings.
   final pulumi.Input<String> connectHost;
-
   /// Defines the service attribute for the connection in the UDP settings.
   final pulumi.Input<String> connectService;
 
@@ -45,3 +42,4 @@ class DomainDevicesRedirDevSourceUdp {
     );
   }
 }
+

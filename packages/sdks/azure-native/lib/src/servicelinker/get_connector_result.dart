@@ -12,43 +12,30 @@ import 'vnet_solution_response.dart';
 class GetConnectorResult {
   /// The authentication type.
   final AccessKeyInfoBaseResponse? authInfo;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The application client type
   final String? clientType;
-
   /// The connection information consumed by applications, including secrets, connection strings.
   final ConfigurationInfoResponse? configurationInfo;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The provisioning state.
   final String provisioningState;
-
   /// The network solution.
   final PublicNetworkSolutionResponse? publicNetworkSolution;
-
   /// connection scope in source service.
   final String? scope;
-
   /// An option to store secret value in secure place
   final SecretStoreResponse? secretStore;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The target service properties
   final AzureResourceResponse? targetService;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// The VNet solution.
   final VNetSolutionResponse? vNetSolution;
 
@@ -105,66 +92,21 @@ class GetConnectorResult {
 
   factory GetConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetConnectorResult(
-      authInfo: (() {
-        final guardedValue = map['authInfo'];
-        if (guardedValue == null) return null;
-        return AccessKeyInfoBaseResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      authInfo: (() { final guardedValue = map['authInfo']; if (guardedValue == null) return null; return AccessKeyInfoBaseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      clientType: (() {
-        final guardedValue = map['clientType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      configurationInfo: (() {
-        final guardedValue = map['configurationInfo'];
-        if (guardedValue == null) return null;
-        return ConfigurationInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      clientType: (() { final guardedValue = map['clientType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      configurationInfo: (() { final guardedValue = map['configurationInfo']; if (guardedValue == null) return null; return ConfigurationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      publicNetworkSolution: (() {
-        final guardedValue = map['publicNetworkSolution'];
-        if (guardedValue == null) return null;
-        return PublicNetworkSolutionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      secretStore: (() {
-        final guardedValue = map['secretStore'];
-        if (guardedValue == null) return null;
-        return SecretStoreResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      targetService: (() {
-        final guardedValue = map['targetService'];
-        if (guardedValue == null) return null;
-        return AzureResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      publicNetworkSolution: (() { final guardedValue = map['publicNetworkSolution']; if (guardedValue == null) return null; return PublicNetworkSolutionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secretStore: (() { final guardedValue = map['secretStore']; if (guardedValue == null) return null; return SecretStoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      targetService: (() { final guardedValue = map['targetService']; if (guardedValue == null) return null; return AzureResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       type: map['type'] as String,
-      vNetSolution: (() {
-        final guardedValue = map['vNetSolution'];
-        if (guardedValue == null) return null;
-        return VNetSolutionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      vNetSolution: (() { final guardedValue = map['vNetSolution']; if (guardedValue == null) return null; return VNetSolutionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum ProjectStatus {
     throw ArgumentError('Unknown ProjectStatus value: $value');
   }
 }
+

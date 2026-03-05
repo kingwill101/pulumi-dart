@@ -7,10 +7,8 @@ import 'encryption_settings_element.dart';
 class EncryptionSettingsCollection {
   /// Set this flag to true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable encryption. Set this flag to false and remove DiskEncryptionKey and KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the request object, the existing settings remain unchanged.
   final pulumi.Input<bool> enabled;
-
   /// A collection of encryption settings, one for each disk volume.
   final pulumi.Input<List<EncryptionSettingsElement>>? encryptionSettings;
-
   /// Describes what type of encryption is used for the disks. Once this field is set, it cannot be overwritten. '1.0' corresponds to Azure Disk Encryption with AAD app.'1.1' corresponds to Azure Disk Encryption.
   final pulumi.Input<String>? encryptionSettingsVersion;
 
@@ -27,18 +25,7 @@ class EncryptionSettingsCollection {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'encryptionSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EncryptionSettingsElement>,
-            List<Map<String, dynamic>>
-          >(
-            encryptionSettings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EncryptionSettingsElement,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'encryptionSettings': ?pulumi.Input.mapOptionalInputValue<List<EncryptionSettingsElement>, List<Map<String, dynamic>>>(encryptionSettings, (value) => pulumi.Input.encodeList<EncryptionSettingsElement, Map<String, dynamic>>(value, (value) => value.toMap())),
       'encryptionSettingsVersion': ?encryptionSettingsVersion,
     };
   }
@@ -46,23 +33,9 @@ class EncryptionSettingsCollection {
   factory EncryptionSettingsCollection.fromMap(Map<String, dynamic> map) {
     return EncryptionSettingsCollection(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      encryptionSettings: (() {
-        final guardedValue = map['encryptionSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EncryptionSettingsElement>(
-            guardedValue,
-            (value) => EncryptionSettingsElement.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      encryptionSettingsVersion: (() {
-        final guardedValue = map['encryptionSettingsVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      encryptionSettings: (() { final guardedValue = map['encryptionSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EncryptionSettingsElement>(guardedValue, (value) => EncryptionSettingsElement.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      encryptionSettingsVersion: (() { final guardedValue = map['encryptionSettingsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

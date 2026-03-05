@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListConnectedEnvironmentsDaprComponentSecretsArgs {
   /// Name of the Dapr Component.
   final pulumi.Input<String> componentName;
-
   /// Name of the connected environment.
   final pulumi.Input<String> connectedEnvironmentName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,17 +32,12 @@ class ListConnectedEnvironmentsDaprComponentSecretsArgs {
     };
   }
 
-  factory ListConnectedEnvironmentsDaprComponentSecretsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListConnectedEnvironmentsDaprComponentSecretsArgs.fromMap(Map<String, dynamic> map) {
     return ListConnectedEnvironmentsDaprComponentSecretsArgs(
       componentName: pulumi.Input.fromValue(map['componentName'] as String),
-      connectedEnvironmentName: pulumi.Input.fromValue(
-        map['connectedEnvironmentName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      connectedEnvironmentName: pulumi.Input.fromValue(map['connectedEnvironmentName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

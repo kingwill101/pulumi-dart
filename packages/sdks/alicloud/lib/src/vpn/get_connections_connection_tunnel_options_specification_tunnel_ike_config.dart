@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig {
   /// IKE auth Algorithm.
   final pulumi.Input<String> ikeAuthAlg;
-
   /// IKE encript algorithm.
   final pulumi.Input<String> ikeEncAlg;
-
   /// IKE lifetime.
   final pulumi.Input<int> ikeLifetime;
-
   /// IKE Mode.
   final pulumi.Input<String> ikeMode;
-
   /// DH Group.
   final pulumi.Input<String> ikePfs;
-
   /// IKE Version.
   final pulumi.Input<String> ikeVersion;
-
   /// The local Id.
   final pulumi.Input<String> localId;
-
   /// Preshared secret key.
   final pulumi.Input<String> psk;
-
   /// Remote ID.
   final pulumi.Input<String> remoteId;
 
@@ -66,9 +58,7 @@ class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig {
     };
   }
 
-  factory GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig.fromMap(Map<String, dynamic> map) {
     return GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig(
       ikeAuthAlg: pulumi.Input.fromValue(map['ikeAuthAlg'] as String),
       ikeEncAlg: pulumi.Input.fromValue(map['ikeEncAlg'] as String),
@@ -82,3 +72,4 @@ class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig {
     );
   }
 }
+

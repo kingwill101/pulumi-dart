@@ -548,71 +548,49 @@ import 'system_data_response.dart';
 class LocalRule extends pulumi.CustomResource {
   /// rule action
   late final pulumi.Output<String?> actionType;
-
   /// array of rule applications
   late final pulumi.Output<List<String>?> applications;
-
   /// rule comment
   late final pulumi.Output<String?> auditComment;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// rule category
   late final pulumi.Output<CategoryResponse?> category;
-
   /// enable or disable decryption
   late final pulumi.Output<String?> decryptionRuleType;
-
   /// rule description
   late final pulumi.Output<String?> description;
-
   /// destination address
   late final pulumi.Output<DestinationAddrResponse?> destination;
-
   /// enable or disable logging
   late final pulumi.Output<String?> enableLogging;
-
   /// etag info
   late final pulumi.Output<String?> etag;
-
   /// inbound Inspection Certificate
   late final pulumi.Output<String?> inboundInspectionCertificate;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// cidr should not be 'any'
   late final pulumi.Output<String?> negateDestination;
-
   /// cidr should not be 'any'
   late final pulumi.Output<String?> negateSource;
   late final pulumi.Output<int> priority;
-
   /// any, application-default, TCP:number, UDP:number
   late final pulumi.Output<String?> protocol;
-
   /// prot port list
   late final pulumi.Output<List<String>?> protocolPortList;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// rule name
   late final pulumi.Output<String> ruleName;
-
   /// state of this rule
   late final pulumi.Output<String?> ruleState;
-
   /// source address
   late final pulumi.Output<SourceAddrResponse?> source;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// tag for rule
   late final pulumi.Output<List<Map<String, dynamic>>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -625,42 +603,22 @@ class LocalRule extends pulumi.CustomResource {
     LocalRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cloudngfw:LocalRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cloudngfw:LocalRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actionType = registerOutput<String?>('actionType');
     applications = registerOutput<List<String>?>('applications');
     auditComment = registerOutput<String?>('auditComment');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    category = registerOutput<CategoryResponse?>(
-      'category',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CategoryResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    category = registerOutput<CategoryResponse?>('category', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CategoryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     decryptionRuleType = registerOutput<String?>('decryptionRuleType');
     description = registerOutput<String?>('description');
-    destination = registerOutput<DestinationAddrResponse?>(
-      'destination',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DestinationAddrResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    destination = registerOutput<DestinationAddrResponse?>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DestinationAddrResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enableLogging = registerOutput<String?>('enableLogging');
     etag = registerOutput<String?>('etag');
-    inboundInspectionCertificate = registerOutput<String?>(
-      'inboundInspectionCertificate',
-    );
+    inboundInspectionCertificate = registerOutput<String?>('inboundInspectionCertificate');
     this.name = registerOutput<String>('name');
     negateDestination = registerOutput<String?>('negateDestination');
     negateSource = registerOutput<String?>('negateSource');
@@ -670,26 +628,8 @@ class LocalRule extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     ruleName = registerOutput<String>('ruleName');
     ruleState = registerOutput<String?>('ruleState');
-    source = registerOutput<SourceAddrResponse?>(
-      'source',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SourceAddrResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    source = registerOutput<SourceAddrResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceAddrResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<List<Map<String, dynamic>>?>('tags');
     type = registerOutput<String>('type');
   }

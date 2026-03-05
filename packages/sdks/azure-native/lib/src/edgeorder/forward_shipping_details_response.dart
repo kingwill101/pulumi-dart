@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ForwardShippingDetailsResponse {
   /// Carrier Name for display purpose. Not to be used for any processing.
   final pulumi.Input<String> carrierDisplayName;
-
   /// Name of the carrier.
   final pulumi.Input<String> carrierName;
-
   /// TrackingId of the package.
   final pulumi.Input<String> trackingId;
-
   /// TrackingUrl of the package.
   final pulumi.Input<String> trackingUrl;
 
@@ -39,12 +36,11 @@ class ForwardShippingDetailsResponse {
 
   factory ForwardShippingDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ForwardShippingDetailsResponse(
-      carrierDisplayName: pulumi.Input.fromValue(
-        map['carrierDisplayName'] as String,
-      ),
+      carrierDisplayName: pulumi.Input.fromValue(map['carrierDisplayName'] as String),
       carrierName: pulumi.Input.fromValue(map['carrierName'] as String),
       trackingId: pulumi.Input.fromValue(map['trackingId'] as String),
       trackingUrl: pulumi.Input.fromValue(map['trackingUrl'] as String),
     );
   }
 }
+

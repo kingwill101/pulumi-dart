@@ -16,3 +16,4 @@ enum InstanceRoleType {
     throw ArgumentError('Unknown InstanceRoleType value: $value');
   }
 }
+

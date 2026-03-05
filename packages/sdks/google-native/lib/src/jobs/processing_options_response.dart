@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProcessingOptionsResponse {
   /// Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.
   final pulumi.Input<bool> disableStreetAddressResolution;
-
   /// Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
   final pulumi.Input<String> htmlSanitization;
 
@@ -27,12 +26,9 @@ class ProcessingOptionsResponse {
 
   factory ProcessingOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ProcessingOptionsResponse(
-      disableStreetAddressResolution: pulumi.Input.fromValue(
-        map['disableStreetAddressResolution'] as bool,
-      ),
-      htmlSanitization: pulumi.Input.fromValue(
-        map['htmlSanitization'] as String,
-      ),
+      disableStreetAddressResolution: pulumi.Input.fromValue(map['disableStreetAddressResolution'] as bool),
+      htmlSanitization: pulumi.Input.fromValue(map['htmlSanitization'] as String),
     );
   }
 }
+

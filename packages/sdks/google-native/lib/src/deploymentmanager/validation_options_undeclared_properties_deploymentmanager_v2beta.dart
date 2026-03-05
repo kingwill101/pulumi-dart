@@ -7,23 +7,16 @@ enum ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta {
   ignoreWithWarnings("IGNORE_WITH_WARNINGS"),
   fail("FAIL");
 
-  const ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta(
-    this.wireValue,
-  );
+  const ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta(this.wireValue);
   final String wireValue;
 
-  static ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta fromValue(
-    String value,
-  ) {
-    for (final item
-        in ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta
-            .values) {
+  static ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta fromValue(String value) {
+    for (final item in ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta value: $value',
-    );
+    throw ArgumentError('Unknown ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta value: $value');
   }
 }
+

@@ -241,28 +241,20 @@ import 'connection_state.dart';
 class Connection extends pulumi.CustomResource {
   /// The name of the Bot Resource this connection will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
-
   /// The Client ID that will be used to authenticate with the service provider.
   late final pulumi.Output<String> clientId;
-
   /// The Client Secret that will be used to authenticate with the service provider.
   late final pulumi.Output<String> clientSecret;
-
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Bot Connection. Changing this forces a new resource to be created. Must be globally unique.
   late final pulumi.Output<String> name;
-
   /// A map of additional parameters to apply to the connection.
   late final pulumi.Output<Map<String, String>?> parameters;
-
   /// The name of the resource group in which to create the Bot Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The Scopes at which the connection should be applied.
   late final pulumi.Output<String?> scopes;
-
   /// The name of the service provider that will be associated with this connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serviceProviderName;
 
@@ -275,11 +267,11 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:bot/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botName = registerOutput<String>('botName');
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');
@@ -309,11 +301,11 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:bot/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botName = registerOutput<String>('botName');
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');

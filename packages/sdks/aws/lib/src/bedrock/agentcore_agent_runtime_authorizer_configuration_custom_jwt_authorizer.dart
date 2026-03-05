@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer {
   /// Set of allowed audience values for JWT token validation.
   final pulumi.Input<List<String>>? allowedAudiences;
-
   /// Set of allowed client IDs for JWT token validation.
   final pulumi.Input<List<String>>? allowedClients;
-
   /// URL used to fetch OpenID Connect configuration or authorization server metadata. Must end with `.well-known/openid-configuration`.
   final pulumi.Input<String> discoveryUrl;
 
@@ -30,21 +28,12 @@ class AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer {
     };
   }
 
-  factory AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer(
-      allowedAudiences: (() {
-        final guardedValue = map['allowedAudiences'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      allowedClients: (() {
-        final guardedValue = map['allowedClients'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowedAudiences: (() { final guardedValue = map['allowedAudiences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      allowedClients: (() { final guardedValue = map['allowedClients']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       discoveryUrl: pulumi.Input.fromValue(map['discoveryUrl'] as String),
     );
   }
 }
+

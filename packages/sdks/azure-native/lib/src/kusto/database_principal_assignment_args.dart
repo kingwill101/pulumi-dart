@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabasePrincipalAssignmentArgs {
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
-
   /// The name of the database in the Kusto cluster.
   final pulumi.Input<String> databaseName;
-
   /// The name of the Kusto principalAssignment.
   final pulumi.Input<String>? principalAssignmentName;
-
   /// The principal ID assigned to the database principal. It can be a user email, application ID, or security group name.
   final pulumi.Input<String> principalId;
-
   /// Principal type.
   final pulumi.Input<String> principalType;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Database principal role.
   final pulumi.Input<String> role;
-
   /// The tenant id of the principal
   final pulumi.Input<String>? tenantId;
 
@@ -68,22 +61,13 @@ class DatabasePrincipalAssignmentArgs {
     return DatabasePrincipalAssignmentArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      principalAssignmentName: (() {
-        final guardedValue = map['principalAssignmentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      principalAssignmentName: (() { final guardedValue = map['principalAssignmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       principalType: pulumi.Input.fromValue(map['principalType'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       role: pulumi.Input.fromValue(map['role'] as String),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

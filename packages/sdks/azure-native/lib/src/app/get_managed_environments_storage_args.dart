@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedEnvironmentsStorageArgs {
   /// Name of the Environment.
   final pulumi.Input<String> environmentName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the storage.
   final pulumi.Input<String> storageName;
 
@@ -37,10 +35,9 @@ class GetManagedEnvironmentsStorageArgs {
   factory GetManagedEnvironmentsStorageArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedEnvironmentsStorageArgs(
       environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       storageName: pulumi.Input.fromValue(map['storageName'] as String),
     );
   }
 }
+

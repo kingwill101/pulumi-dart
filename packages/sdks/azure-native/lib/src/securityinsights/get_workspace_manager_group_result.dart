@@ -6,28 +6,20 @@ import 'system_data_response.dart';
 class GetWorkspaceManagerGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The description of the workspace manager group
   final String? description;
-
   /// The display name of the workspace manager group
   final String displayName;
-
   /// Resource Etag.
   final String etag;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The names of the workspace manager members participating in this group.
   final List<String> memberResourceNames;
-
   /// The name of the resource
   final String name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -70,20 +62,15 @@ class GetWorkspaceManagerGroupResult {
   factory GetWorkspaceManagerGroupResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceManagerGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: map['displayName'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
       memberResourceNames: (map['memberResourceNames'] as List).cast<String>(),
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

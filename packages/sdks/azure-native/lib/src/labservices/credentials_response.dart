@@ -9,10 +9,14 @@ class CredentialsResponse {
 
   /// Creates a new [CredentialsResponse].
   /// [username] The username to use when signing in to lab VMs.
-  CredentialsResponse({required this.username});
+  CredentialsResponse({
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'username': username};
+    return <String, dynamic>{
+      'username': username,
+    };
   }
 
   factory CredentialsResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class CredentialsResponse {
     );
   }
 }
+

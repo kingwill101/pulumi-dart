@@ -117,34 +117,24 @@ import 'partner_args.dart';
 class Partner extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// This is the DateTime when the partner was created.
   late final pulumi.Output<String?> createdTime;
-
   /// Type of the partner
   late final pulumi.Output<int?> etag;
-
   /// Name of the partner
   late final pulumi.Output<String> name;
-
   /// This is the object id.
   late final pulumi.Output<String?> objectId;
-
   /// This is the partner id
   late final pulumi.Output<String?> partnerId;
-
   /// This is the partner name
   late final pulumi.Output<String?> partnerName;
-
   /// This is the tenant id.
   late final pulumi.Output<String?> tenantId;
-
   /// Type of resource. "Microsoft.ManagementPartner/partners"
   late final pulumi.Output<String> type;
-
   /// This is the DateTime when the partner was updated.
   late final pulumi.Output<String?> updatedTime;
-
   /// This is the version.
   late final pulumi.Output<int?> version;
 
@@ -157,11 +147,11 @@ class Partner extends pulumi.CustomResource {
     PartnerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:managementpartner:Partner',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:managementpartner:Partner',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTime = registerOutput<String?>('createdTime');
     etag = registerOutput<int?>('etag');

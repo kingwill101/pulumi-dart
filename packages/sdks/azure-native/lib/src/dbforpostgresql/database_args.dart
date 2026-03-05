@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseArgs {
   /// Character set of the database.
   final pulumi.Input<String>? charset;
-
   /// Collation of the database.
   final pulumi.Input<String>? collation;
-
   /// Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server.
   final pulumi.Input<String>? databaseName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -48,25 +44,12 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      charset: (() {
-        final guardedValue = map['charset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      collation: (() {
-        final guardedValue = map['collation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      databaseName: (() {
-        final guardedValue = map['databaseName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      charset: (() { final guardedValue = map['charset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      collation: (() { final guardedValue = map['collation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
+

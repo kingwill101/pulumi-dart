@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppImageConfigKernelGatewayImageConfigKernelSpec {
   /// The display name of the kernel.
   final pulumi.Input<String>? displayName;
-
   /// The name of the kernel.
   final pulumi.Input<String> name;
 
@@ -18,19 +17,17 @@ class AppImageConfigKernelGatewayImageConfigKernelSpec {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'displayName': ?displayName, 'name': name};
+    return <String, dynamic>{
+      'displayName': ?displayName,
+      'name': name,
+    };
   }
 
-  factory AppImageConfigKernelGatewayImageConfigKernelSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppImageConfigKernelGatewayImageConfigKernelSpec.fromMap(Map<String, dynamic> map) {
     return AppImageConfigKernelGatewayImageConfigKernelSpec(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

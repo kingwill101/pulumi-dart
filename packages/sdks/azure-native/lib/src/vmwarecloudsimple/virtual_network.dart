@@ -9,13 +9,20 @@ class VirtualNetwork {
 
   /// Creates a new [VirtualNetwork].
   /// [id] virtual network id (privateCloudId:vsphereId)
-  VirtualNetwork({required this.id});
+  VirtualNetwork({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory VirtualNetwork.fromMap(Map<String, dynamic> map) {
-    return VirtualNetwork(id: pulumi.Input.fromValue(map['id'] as String));
+    return VirtualNetwork(
+      id: pulumi.Input.fromValue(map['id'] as String),
+    );
   }
 }
+

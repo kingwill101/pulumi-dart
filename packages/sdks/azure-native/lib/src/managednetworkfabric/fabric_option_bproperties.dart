@@ -7,10 +7,8 @@ import 'route_target_information.dart';
 class FabricOptionBProperties {
   /// Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.
   final pulumi.Input<List<String>>? exportRouteTargets;
-
   /// Route Targets to be applied for incoming routes into CE. This is for backward compatibility.
   final pulumi.Input<List<String>>? importRouteTargets;
-
   /// Route Targets to be applied.
   final pulumi.Input<RouteTargetInformation>? routeTargets;
 
@@ -28,35 +26,16 @@ class FabricOptionBProperties {
     return <String, dynamic>{
       'exportRouteTargets': ?exportRouteTargets,
       'importRouteTargets': ?importRouteTargets,
-      'routeTargets':
-          ?pulumi.Input.mapOptionalInputValue<
-            RouteTargetInformation,
-            Map<String, dynamic>
-          >(routeTargets, (value) => value.toMap()),
+      'routeTargets': ?pulumi.Input.mapOptionalInputValue<RouteTargetInformation, Map<String, dynamic>>(routeTargets, (value) => value.toMap()),
     };
   }
 
   factory FabricOptionBProperties.fromMap(Map<String, dynamic> map) {
     return FabricOptionBProperties(
-      exportRouteTargets: (() {
-        final guardedValue = map['exportRouteTargets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      importRouteTargets: (() {
-        final guardedValue = map['importRouteTargets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      routeTargets: (() {
-        final guardedValue = map['routeTargets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RouteTargetInformation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      exportRouteTargets: (() { final guardedValue = map['exportRouteTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      importRouteTargets: (() { final guardedValue = map['importRouteTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      routeTargets: (() { final guardedValue = map['routeTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouteTargetInformation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

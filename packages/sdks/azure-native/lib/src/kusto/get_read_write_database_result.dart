@@ -8,41 +8,29 @@ import 'suspension_details_response.dart';
 class GetReadWriteDatabaseResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The time the data should be kept in cache for fast queries in TimeSpan.
   final String? hotCachePeriod;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// Indicates whether the database is followed.
   final bool isFollowed;
-
   /// KeyVault properties for the database encryption.
   final KeyVaultPropertiesResponse? keyVaultProperties;
-
   /// Kind of the database
   /// Expected value is 'ReadWrite'.
   final String kind;
-
   /// Resource location.
   final String? location;
-
   /// The name of the resource
   final String name;
-
   /// The provisioned state of the resource.
   final String provisioningState;
-
   /// The time the data should be kept before it stops being accessible to queries in TimeSpan.
   final String? softDeletePeriod;
-
   /// The statistics of the database.
   final DatabaseStatisticsResponse statistics;
-
   /// The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
   final SuspensionDetailsResponse suspensionDetails;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -97,40 +85,19 @@ class GetReadWriteDatabaseResult {
   factory GetReadWriteDatabaseResult.fromMap(Map<String, dynamic> map) {
     return GetReadWriteDatabaseResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      hotCachePeriod: (() {
-        final guardedValue = map['hotCachePeriod'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      hotCachePeriod: (() { final guardedValue = map['hotCachePeriod']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       isFollowed: map['isFollowed'] as bool,
-      keyVaultProperties: (() {
-        final guardedValue = map['keyVaultProperties'];
-        if (guardedValue == null) return null;
-        return KeyVaultPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      keyVaultProperties: (() { final guardedValue = map['keyVaultProperties']; if (guardedValue == null) return null; return KeyVaultPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       kind: map['kind'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      softDeletePeriod: (() {
-        final guardedValue = map['softDeletePeriod'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      statistics: DatabaseStatisticsResponse.fromMap(
-        (map['statistics']! as Map).cast<String, dynamic>(),
-      ),
-      suspensionDetails: SuspensionDetailsResponse.fromMap(
-        (map['suspensionDetails']! as Map).cast<String, dynamic>(),
-      ),
+      softDeletePeriod: (() { final guardedValue = map['softDeletePeriod']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statistics: DatabaseStatisticsResponse.fromMap((map['statistics']! as Map).cast<String, dynamic>()),
+      suspensionDetails: SuspensionDetailsResponse.fromMap((map['suspensionDetails']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

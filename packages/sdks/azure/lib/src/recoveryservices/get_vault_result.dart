@@ -7,18 +7,14 @@ import 'get_vault_identity.dart';
 class GetVaultResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// (Optional) An `identity` block as defined below.
   final List<GetVaultIdentity> identities;
-
   /// The Azure location where the resource resides.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// The vault's current SKU.
   final String sku;
-
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -43,11 +39,7 @@ class GetVaultResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetVaultIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
+      'identities': pulumi.Input.encodeList<GetVaultIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
@@ -59,11 +51,7 @@ class GetVaultResult {
   factory GetVaultResult.fromMap(Map<String, dynamic> map) {
     return GetVaultResult(
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetVaultIdentity>(
-        map['identities']!,
-        (value) =>
-            GetVaultIdentity.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      identities: pulumi.Input.decodeList<GetVaultIdentity>(map['identities']!, (value) => GetVaultIdentity.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
@@ -72,3 +60,4 @@ class GetVaultResult {
     );
   }
 }
+

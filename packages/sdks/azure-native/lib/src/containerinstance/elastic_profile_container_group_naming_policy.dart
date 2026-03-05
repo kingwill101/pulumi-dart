@@ -9,31 +9,20 @@ class ElasticProfileContainerGroupNamingPolicy {
 
   /// Creates a new [ElasticProfileContainerGroupNamingPolicy].
   /// [guidNamingPolicy] Optional.
-  ElasticProfileContainerGroupNamingPolicy({this.guidNamingPolicy});
+  ElasticProfileContainerGroupNamingPolicy({
+    this.guidNamingPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'guidNamingPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ElasticProfileGuidNamingPolicy,
-            Map<String, dynamic>
-          >(guidNamingPolicy, (value) => value.toMap()),
+      'guidNamingPolicy': ?pulumi.Input.mapOptionalInputValue<ElasticProfileGuidNamingPolicy, Map<String, dynamic>>(guidNamingPolicy, (value) => value.toMap()),
     };
   }
 
-  factory ElasticProfileContainerGroupNamingPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ElasticProfileContainerGroupNamingPolicy.fromMap(Map<String, dynamic> map) {
     return ElasticProfileContainerGroupNamingPolicy(
-      guidNamingPolicy: (() {
-        final guardedValue = map['guidNamingPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ElasticProfileGuidNamingPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      guidNamingPolicy: (() { final guardedValue = map['guidNamingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ElasticProfileGuidNamingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

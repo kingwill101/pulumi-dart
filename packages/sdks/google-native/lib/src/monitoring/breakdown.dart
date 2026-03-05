@@ -8,13 +8,10 @@ import 'breakdown_sort_order.dart';
 class Breakdown {
   /// The Aggregation function is applied across all data in each breakdown created.
   final pulumi.Input<AggregationFunction> aggregationFunction;
-
   /// The name of the column in the dataset containing the breakdown values.
   final pulumi.Input<String> column;
-
   /// A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field.
   final pulumi.Input<int> limit;
-
   /// The sort order is applied to the values of the breakdown column.
   final pulumi.Input<BreakdownSortOrder> sortOrder;
 
@@ -32,32 +29,20 @@ class Breakdown {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aggregationFunction':
-          pulumi.Input.mapInputValue<AggregationFunction, Map<String, dynamic>>(
-            aggregationFunction,
-            (value) => value.toMap(),
-          ),
+      'aggregationFunction': pulumi.Input.mapInputValue<AggregationFunction, Map<String, dynamic>>(aggregationFunction, (value) => value.toMap()),
       'column': column,
       'limit': limit,
-      'sortOrder': pulumi.Input.mapInputValue<BreakdownSortOrder, String>(
-        sortOrder,
-        (value) => value.wireValue,
-      ),
+      'sortOrder': pulumi.Input.mapInputValue<BreakdownSortOrder, String>(sortOrder, (value) => value.wireValue),
     };
   }
 
   factory Breakdown.fromMap(Map<String, dynamic> map) {
     return Breakdown(
-      aggregationFunction: pulumi.Input.fromValue(
-        AggregationFunction.fromMap(
-          (map['aggregationFunction']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      aggregationFunction: pulumi.Input.fromValue(AggregationFunction.fromMap((map['aggregationFunction']! as Map).cast<String, dynamic>())),
       column: pulumi.Input.fromValue(map['column'] as String),
       limit: pulumi.Input.fromValue(map['limit'] as int),
-      sortOrder: pulumi.Input.fromValue(
-        BreakdownSortOrder.fromValue(map['sortOrder']! as String),
-      ),
+      sortOrder: pulumi.Input.fromValue(BreakdownSortOrder.fromValue(map['sortOrder']! as String)),
     );
   }
 }
+

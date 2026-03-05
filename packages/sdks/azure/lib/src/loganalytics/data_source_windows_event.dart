@@ -221,16 +221,12 @@ import 'data_source_windows_event_state.dart';
 class DataSourceWindowsEvent extends pulumi.CustomResource {
   /// Specifies the name of the Windows Event Log to collect events from.
   late final pulumi.Output<String> eventLogName;
-
   /// Specifies an array of event types applied to the specified event log. Possible values include `Error`, `Warning` and `Information`.
   late final pulumi.Output<List<String>> eventTypes;
-
   /// The name which should be used for this Log Analytics Windows Event DataSource. Changing this forces a new Log Analytics Windows Event DataSource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Log Analytics Windows Event DataSource should exist. Changing this forces a new Log Analytics Windows Event DataSource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The name of the Log Analytics Workspace where the Log Analytics Windows Event DataSource should exist. Changing this forces a new Log Analytics Windows Event DataSource to be created.
   late final pulumi.Output<String> workspaceName;
 
@@ -243,11 +239,11 @@ class DataSourceWindowsEvent extends pulumi.CustomResource {
     DataSourceWindowsEventArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/dataSourceWindowsEvent:DataSourceWindowsEvent',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/dataSourceWindowsEvent:DataSourceWindowsEvent',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     eventLogName = registerOutput<String>('eventLogName');
     eventTypes = registerOutput<List<String>>('eventTypes');
     this.name = registerOutput<String>('name');
@@ -273,11 +269,11 @@ class DataSourceWindowsEvent extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/dataSourceWindowsEvent:DataSourceWindowsEvent',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/dataSourceWindowsEvent:DataSourceWindowsEvent',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     eventLogName = registerOutput<String>('eventLogName');
     eventTypes = registerOutput<List<String>>('eventTypes');
     this.name = registerOutput<String>('name');

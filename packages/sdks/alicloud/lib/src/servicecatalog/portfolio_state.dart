@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PortfolioState {
   /// The creation time of the portfolio
   final pulumi.Input<String>? createTime;
-
   /// The description of the portfolio
   final pulumi.Input<String>? description;
-
   /// The ARN of the portfolio
   final pulumi.Input<String>? portfolioArn;
-
   /// The name of the portfolio
   final pulumi.Input<String>? portfolioName;
-
   /// The provider name of the portfolio
   final pulumi.Input<String>? providerName;
 
@@ -45,31 +41,12 @@ class PortfolioState {
 
   factory PortfolioState.fromMap(Map<String, dynamic> map) {
     return PortfolioState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      portfolioArn: (() {
-        final guardedValue = map['portfolioArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      portfolioName: (() {
-        final guardedValue = map['portfolioName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      providerName: (() {
-        final guardedValue = map['providerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      portfolioArn: (() { final guardedValue = map['portfolioArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      portfolioName: (() { final guardedValue = map['portfolioName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      providerName: (() { final guardedValue = map['providerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

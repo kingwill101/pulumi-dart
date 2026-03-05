@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSolutionStack.
 class GetSolutionStackResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? mostRecent;
-
   /// Name of the solution stack.
   final String name;
   final String nameRegex;
@@ -38,14 +38,11 @@ class GetSolutionStackResult {
   factory GetSolutionStackResult.fromMap(Map<String, dynamic> map) {
     return GetSolutionStackResult(
       id: map['id'] as String,
-      mostRecent: (() {
-        final guardedValue = map['mostRecent'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: map['name'] as String,
       nameRegex: map['nameRegex'] as String,
       region: map['region'] as String,
     );
   }
 }
+

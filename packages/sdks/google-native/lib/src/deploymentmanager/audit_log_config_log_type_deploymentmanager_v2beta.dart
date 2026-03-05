@@ -14,8 +14,7 @@ enum AuditLogConfigLogTypeDeploymentmanagerV2beta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AuditLogConfigLogTypeDeploymentmanagerV2beta value: $value',
-    );
+    throw ArgumentError('Unknown AuditLogConfigLogTypeDeploymentmanagerV2beta value: $value');
   }
 }
+

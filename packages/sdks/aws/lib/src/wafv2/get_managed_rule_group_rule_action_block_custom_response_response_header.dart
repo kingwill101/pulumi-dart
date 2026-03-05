@@ -16,15 +16,17 @@ class GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader(
       name: pulumi.Input.fromValue(map['name'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

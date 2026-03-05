@@ -18,3 +18,4 @@ enum ChannelPartnerLinkLinkState {
     throw ArgumentError('Unknown ChannelPartnerLinkLinkState value: $value');
   }
 }
+

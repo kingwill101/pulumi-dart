@@ -11,35 +11,21 @@ import 'get_rules_rule_rule_action_traffic_mirror_config.dart';
 
 class GetRulesRuleRuleAction {
   /// The configuration of the fixed response.
-  final pulumi.Input<List<GetRulesRuleRuleActionFixedResponseConfig>>
-  fixedResponseConfigs;
-
+  final pulumi.Input<List<GetRulesRuleRuleActionFixedResponseConfig>> fixedResponseConfigs;
   /// The configurations of the destination server groups.
-  final pulumi.Input<List<GetRulesRuleRuleActionForwardGroupConfig>>
-  forwardGroupConfigs;
-
+  final pulumi.Input<List<GetRulesRuleRuleActionForwardGroupConfig>> forwardGroupConfigs;
   /// The configuration of the inserted header field.
-  final pulumi.Input<List<GetRulesRuleRuleActionInsertHeaderConfig>>
-  insertHeaderConfigs;
-
+  final pulumi.Input<List<GetRulesRuleRuleActionInsertHeaderConfig>> insertHeaderConfigs;
   /// The order of the forwarding rule actions.
   final pulumi.Input<int> order;
-
   /// The configuration of the external redirect action.
-  final pulumi.Input<List<GetRulesRuleRuleActionRedirectConfig>>
-  redirectConfigs;
-
+  final pulumi.Input<List<GetRulesRuleRuleActionRedirectConfig>> redirectConfigs;
   /// The redirect action within ALB.
   final pulumi.Input<List<GetRulesRuleRuleActionRewriteConfig>> rewriteConfigs;
-
   /// The Flow speed limit.
-  final pulumi.Input<List<GetRulesRuleRuleActionTrafficLimitConfig>>
-  trafficLimitConfigs;
-
+  final pulumi.Input<List<GetRulesRuleRuleActionTrafficLimitConfig>> trafficLimitConfigs;
   /// The Traffic mirroring.
-  final pulumi.Input<List<GetRulesRuleRuleActionTrafficMirrorConfig>>
-  trafficMirrorConfigs;
-
+  final pulumi.Input<List<GetRulesRuleRuleActionTrafficMirrorConfig>> trafficMirrorConfigs;
   /// The type of the forwarding rule.
   final pulumi.Input<String> type;
 
@@ -67,155 +53,30 @@ class GetRulesRuleRuleAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fixedResponseConfigs':
-          pulumi.Input.mapInputValue<
-            List<GetRulesRuleRuleActionFixedResponseConfig>,
-            List<Map<String, dynamic>>
-          >(
-            fixedResponseConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRulesRuleRuleActionFixedResponseConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'forwardGroupConfigs':
-          pulumi.Input.mapInputValue<
-            List<GetRulesRuleRuleActionForwardGroupConfig>,
-            List<Map<String, dynamic>>
-          >(
-            forwardGroupConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRulesRuleRuleActionForwardGroupConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'insertHeaderConfigs':
-          pulumi.Input.mapInputValue<
-            List<GetRulesRuleRuleActionInsertHeaderConfig>,
-            List<Map<String, dynamic>>
-          >(
-            insertHeaderConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRulesRuleRuleActionInsertHeaderConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'fixedResponseConfigs': pulumi.Input.mapInputValue<List<GetRulesRuleRuleActionFixedResponseConfig>, List<Map<String, dynamic>>>(fixedResponseConfigs, (value) => pulumi.Input.encodeList<GetRulesRuleRuleActionFixedResponseConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'forwardGroupConfigs': pulumi.Input.mapInputValue<List<GetRulesRuleRuleActionForwardGroupConfig>, List<Map<String, dynamic>>>(forwardGroupConfigs, (value) => pulumi.Input.encodeList<GetRulesRuleRuleActionForwardGroupConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'insertHeaderConfigs': pulumi.Input.mapInputValue<List<GetRulesRuleRuleActionInsertHeaderConfig>, List<Map<String, dynamic>>>(insertHeaderConfigs, (value) => pulumi.Input.encodeList<GetRulesRuleRuleActionInsertHeaderConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'order': order,
-      'redirectConfigs':
-          pulumi.Input.mapInputValue<
-            List<GetRulesRuleRuleActionRedirectConfig>,
-            List<Map<String, dynamic>>
-          >(
-            redirectConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRulesRuleRuleActionRedirectConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'rewriteConfigs':
-          pulumi.Input.mapInputValue<
-            List<GetRulesRuleRuleActionRewriteConfig>,
-            List<Map<String, dynamic>>
-          >(
-            rewriteConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRulesRuleRuleActionRewriteConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'trafficLimitConfigs':
-          pulumi.Input.mapInputValue<
-            List<GetRulesRuleRuleActionTrafficLimitConfig>,
-            List<Map<String, dynamic>>
-          >(
-            trafficLimitConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRulesRuleRuleActionTrafficLimitConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'trafficMirrorConfigs':
-          pulumi.Input.mapInputValue<
-            List<GetRulesRuleRuleActionTrafficMirrorConfig>,
-            List<Map<String, dynamic>>
-          >(
-            trafficMirrorConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRulesRuleRuleActionTrafficMirrorConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'redirectConfigs': pulumi.Input.mapInputValue<List<GetRulesRuleRuleActionRedirectConfig>, List<Map<String, dynamic>>>(redirectConfigs, (value) => pulumi.Input.encodeList<GetRulesRuleRuleActionRedirectConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rewriteConfigs': pulumi.Input.mapInputValue<List<GetRulesRuleRuleActionRewriteConfig>, List<Map<String, dynamic>>>(rewriteConfigs, (value) => pulumi.Input.encodeList<GetRulesRuleRuleActionRewriteConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'trafficLimitConfigs': pulumi.Input.mapInputValue<List<GetRulesRuleRuleActionTrafficLimitConfig>, List<Map<String, dynamic>>>(trafficLimitConfigs, (value) => pulumi.Input.encodeList<GetRulesRuleRuleActionTrafficLimitConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'trafficMirrorConfigs': pulumi.Input.mapInputValue<List<GetRulesRuleRuleActionTrafficMirrorConfig>, List<Map<String, dynamic>>>(trafficMirrorConfigs, (value) => pulumi.Input.encodeList<GetRulesRuleRuleActionTrafficMirrorConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory GetRulesRuleRuleAction.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleRuleAction(
-      fixedResponseConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetRulesRuleRuleActionFixedResponseConfig>(
-          map['fixedResponseConfigs']!,
-          (value) => GetRulesRuleRuleActionFixedResponseConfig.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      forwardGroupConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetRulesRuleRuleActionForwardGroupConfig>(
-          map['forwardGroupConfigs']!,
-          (value) => GetRulesRuleRuleActionForwardGroupConfig.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      insertHeaderConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetRulesRuleRuleActionInsertHeaderConfig>(
-          map['insertHeaderConfigs']!,
-          (value) => GetRulesRuleRuleActionInsertHeaderConfig.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      fixedResponseConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRulesRuleRuleActionFixedResponseConfig>(map['fixedResponseConfigs']!, (value) => GetRulesRuleRuleActionFixedResponseConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      forwardGroupConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRulesRuleRuleActionForwardGroupConfig>(map['forwardGroupConfigs']!, (value) => GetRulesRuleRuleActionForwardGroupConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      insertHeaderConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRulesRuleRuleActionInsertHeaderConfig>(map['insertHeaderConfigs']!, (value) => GetRulesRuleRuleActionInsertHeaderConfig.fromMap((value as Map).cast<String, dynamic>()))),
       order: pulumi.Input.fromValue(map['order'] as int),
-      redirectConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetRulesRuleRuleActionRedirectConfig>(
-          map['redirectConfigs']!,
-          (value) => GetRulesRuleRuleActionRedirectConfig.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      rewriteConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetRulesRuleRuleActionRewriteConfig>(
-          map['rewriteConfigs']!,
-          (value) => GetRulesRuleRuleActionRewriteConfig.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      trafficLimitConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetRulesRuleRuleActionTrafficLimitConfig>(
-          map['trafficLimitConfigs']!,
-          (value) => GetRulesRuleRuleActionTrafficLimitConfig.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      trafficMirrorConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetRulesRuleRuleActionTrafficMirrorConfig>(
-          map['trafficMirrorConfigs']!,
-          (value) => GetRulesRuleRuleActionTrafficMirrorConfig.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      redirectConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRulesRuleRuleActionRedirectConfig>(map['redirectConfigs']!, (value) => GetRulesRuleRuleActionRedirectConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      rewriteConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRulesRuleRuleActionRewriteConfig>(map['rewriteConfigs']!, (value) => GetRulesRuleRuleActionRewriteConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      trafficLimitConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRulesRuleRuleActionTrafficLimitConfig>(map['trafficLimitConfigs']!, (value) => GetRulesRuleRuleActionTrafficLimitConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      trafficMirrorConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRulesRuleRuleActionTrafficMirrorConfig>(map['trafficMirrorConfigs']!, (value) => GetRulesRuleRuleActionTrafficMirrorConfig.fromMap((value as Map).cast<String, dynamic>()))),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

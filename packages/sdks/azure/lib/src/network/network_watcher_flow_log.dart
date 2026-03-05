@@ -434,39 +434,27 @@ import 'network_watcher_flow_log_traffic_analytics.dart';
 class NetworkWatcherFlowLog extends pulumi.CustomResource {
   /// Should Network Flow Logging be Enabled?
   late final pulumi.Output<bool> enabled;
-
   /// The location where the Network Watcher Flow Log resides. Changing this forces a new resource to be created. Defaults to the `location` of the Network Watcher.
   late final pulumi.Output<String> location;
-
   /// The name of the Network Watcher Flow Log. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> networkSecurityGroupId;
-
   /// The name of the Network Watcher. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkWatcherName;
-
   /// The name of the resource group in which the Network Watcher was deployed. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `retention_policy` block as documented below.
-  late final pulumi.Output<NetworkWatcherFlowLogRetentionPolicy>
-  retentionPolicy;
-
+  late final pulumi.Output<NetworkWatcherFlowLogRetentionPolicy> retentionPolicy;
   /// The ID of the Storage Account where flow logs are stored.
   late final pulumi.Output<String> storageAccountId;
-
   /// A mapping of tags which should be assigned to the Network Watcher Flow Log.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the Resource for which to enable flow logs for.
   ///
   /// &gt; **Note:** As of July 30, 2025, it is no longer possible to create new flow logs for Network Security Groups.
   late final pulumi.Output<String> targetResourceId;
-
   /// A `traffic_analytics` block as documented below.
-  late final pulumi.Output<NetworkWatcherFlowLogTrafficAnalytics?>
-  trafficAnalytics;
-
+  late final pulumi.Output<NetworkWatcherFlowLogTrafficAnalytics?> trafficAnalytics;
   /// The version (revision) of the flow log. Possible values are `1` and `2`. Defaults to `1`.
   late final pulumi.Output<int?> version;
 
@@ -479,40 +467,22 @@ class NetworkWatcherFlowLog extends pulumi.CustomResource {
     NetworkWatcherFlowLogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkWatcherFlowLog:NetworkWatcherFlowLog',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkWatcherFlowLog:NetworkWatcherFlowLog',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool>('enabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
     networkWatcherName = registerOutput<String>('networkWatcherName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retentionPolicy = registerOutput<NetworkWatcherFlowLogRetentionPolicy>(
-      'retentionPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkWatcherFlowLogRetentionPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionPolicy = registerOutput<NetworkWatcherFlowLogRetentionPolicy>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkWatcherFlowLogRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccountId = registerOutput<String>('storageAccountId');
     tags = registerOutput<Map<String, String>?>('tags');
     targetResourceId = registerOutput<String>('targetResourceId');
-    trafficAnalytics = registerOutput<NetworkWatcherFlowLogTrafficAnalytics?>(
-      'trafficAnalytics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkWatcherFlowLogTrafficAnalytics.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    trafficAnalytics = registerOutput<NetworkWatcherFlowLogTrafficAnalytics?>('trafficAnalytics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkWatcherFlowLogTrafficAnalytics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<int?>('version');
   }
 
@@ -534,40 +504,22 @@ class NetworkWatcherFlowLog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkWatcherFlowLog:NetworkWatcherFlowLog',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkWatcherFlowLog:NetworkWatcherFlowLog',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool>('enabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
     networkWatcherName = registerOutput<String>('networkWatcherName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retentionPolicy = registerOutput<NetworkWatcherFlowLogRetentionPolicy>(
-      'retentionPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkWatcherFlowLogRetentionPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionPolicy = registerOutput<NetworkWatcherFlowLogRetentionPolicy>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkWatcherFlowLogRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccountId = registerOutput<String>('storageAccountId');
     tags = registerOutput<Map<String, String>?>('tags');
     targetResourceId = registerOutput<String>('targetResourceId');
-    trafficAnalytics = registerOutput<NetworkWatcherFlowLogTrafficAnalytics?>(
-      'trafficAnalytics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkWatcherFlowLogTrafficAnalytics.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    trafficAnalytics = registerOutput<NetworkWatcherFlowLogTrafficAnalytics?>('trafficAnalytics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkWatcherFlowLogTrafficAnalytics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<int?>('version');
   }
 }

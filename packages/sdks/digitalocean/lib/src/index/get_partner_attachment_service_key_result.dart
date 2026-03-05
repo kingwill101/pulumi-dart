@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPartnerAttachmentServiceKey.
 class GetPartnerAttachmentServiceKeyResult {
   final String attachmentId;
   final String createdAt;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String state;
@@ -34,9 +34,7 @@ class GetPartnerAttachmentServiceKeyResult {
     };
   }
 
-  factory GetPartnerAttachmentServiceKeyResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPartnerAttachmentServiceKeyResult.fromMap(Map<String, dynamic> map) {
     return GetPartnerAttachmentServiceKeyResult(
       attachmentId: map['attachmentId'] as String,
       createdAt: map['createdAt'] as String,
@@ -46,3 +44,4 @@ class GetPartnerAttachmentServiceKeyResult {
     );
   }
 }
+

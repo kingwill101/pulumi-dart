@@ -18,3 +18,4 @@ enum CalculationWindowTypes {
     throw ArgumentError('Unknown CalculationWindowTypes value: $value');
   }
 }
+

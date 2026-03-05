@@ -50,21 +50,16 @@ class RouterNatAddress extends pulumi.CustomResource {
   /// A list of URLs of the IP resources to be drained. These IPs must be
   /// valid static external IPs that have been assigned to the NAT.
   late final pulumi.Output<List<String>?> drainNatIps;
-
   /// Self-links of NAT IPs to be used in a Nat service. Only valid if the referenced RouterNat
   /// natIpAllocateOption is set to MANUAL_ONLY.
   late final pulumi.Output<List<String>> natIps;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Region where the NAT service reside.
   late final pulumi.Output<String> region;
-
   /// The name of the Cloud Router in which the referenced NAT service is configured.
   late final pulumi.Output<String> router;
-
   /// The name of the Nat service in which this address will be configured.
   late final pulumi.Output<String> routerNat;
 
@@ -77,11 +72,11 @@ class RouterNatAddress extends pulumi.CustomResource {
     RouterNatAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/routerNatAddress:RouterNatAddress',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/routerNatAddress:RouterNatAddress',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     drainNatIps = registerOutput<List<String>?>('drainNatIps');
     natIps = registerOutput<List<String>>('natIps');
     project = registerOutput<String>('project');
@@ -108,11 +103,11 @@ class RouterNatAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/routerNatAddress:RouterNatAddress',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/routerNatAddress:RouterNatAddress',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     drainNatIps = registerOutput<List<String>?>('drainNatIps');
     natIps = registerOutput<List<String>>('natIps');
     project = registerOutput<String>('project');

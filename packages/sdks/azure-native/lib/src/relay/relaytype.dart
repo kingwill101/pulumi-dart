@@ -15,3 +15,4 @@ enum Relaytype {
     throw ArgumentError('Unknown Relaytype value: $value');
   }
 }
+

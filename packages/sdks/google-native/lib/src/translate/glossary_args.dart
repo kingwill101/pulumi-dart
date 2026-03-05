@@ -12,17 +12,13 @@ import 'language_codes_set.dart';
 class GlossaryArgs {
   /// Optional. The display name of the glossary.
   final pulumi.Input<String>? displayName;
-
   /// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
   final pulumi.Input<GlossaryInputConfig> inputConfig;
-
   /// Used with equivalent term set glossaries.
   final pulumi.Input<LanguageCodesSet>? languageCodesSet;
-
   /// Used with unidirectional glossaries.
   final pulumi.Input<LanguageCodePair>? languagePair;
   final pulumi.Input<String>? location;
-
   /// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -48,21 +44,9 @@ class GlossaryArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': ?displayName,
-      'inputConfig':
-          pulumi.Input.mapInputValue<GlossaryInputConfig, Map<String, dynamic>>(
-            inputConfig,
-            (value) => value.toMap(),
-          ),
-      'languageCodesSet':
-          ?pulumi.Input.mapOptionalInputValue<
-            LanguageCodesSet,
-            Map<String, dynamic>
-          >(languageCodesSet, (value) => value.toMap()),
-      'languagePair':
-          ?pulumi.Input.mapOptionalInputValue<
-            LanguageCodePair,
-            Map<String, dynamic>
-          >(languagePair, (value) => value.toMap()),
+      'inputConfig': pulumi.Input.mapInputValue<GlossaryInputConfig, Map<String, dynamic>>(inputConfig, (value) => value.toMap()),
+      'languageCodesSet': ?pulumi.Input.mapOptionalInputValue<LanguageCodesSet, Map<String, dynamic>>(languageCodesSet, (value) => value.toMap()),
+      'languagePair': ?pulumi.Input.mapOptionalInputValue<LanguageCodePair, Map<String, dynamic>>(languagePair, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'project': ?project,
@@ -71,49 +55,14 @@ class GlossaryArgs {
 
   factory GlossaryArgs.fromMap(Map<String, dynamic> map) {
     return GlossaryArgs(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      inputConfig: pulumi.Input.fromValue(
-        GlossaryInputConfig.fromMap(
-          (map['inputConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      languageCodesSet: (() {
-        final guardedValue = map['languageCodesSet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LanguageCodesSet.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      languagePair: (() {
-        final guardedValue = map['languagePair'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LanguageCodePair.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      inputConfig: pulumi.Input.fromValue(GlossaryInputConfig.fromMap((map['inputConfig']! as Map).cast<String, dynamic>())),
+      languageCodesSet: (() { final guardedValue = map['languageCodesSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LanguageCodesSet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      languagePair: (() { final guardedValue = map['languagePair']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LanguageCodePair.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

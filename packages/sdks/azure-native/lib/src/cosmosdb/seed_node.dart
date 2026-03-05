@@ -8,19 +8,20 @@ class SeedNode {
 
   /// Creates a new [SeedNode].
   /// [ipAddress] IP address of this seed node.
-  SeedNode({this.ipAddress});
+  SeedNode({
+    this.ipAddress,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipAddress': ?ipAddress};
+    return <String, dynamic>{
+      'ipAddress': ?ipAddress,
+    };
   }
 
   factory SeedNode.fromMap(Map<String, dynamic> map) {
     return SeedNode(
-      ipAddress: (() {
-        final guardedValue = map['ipAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

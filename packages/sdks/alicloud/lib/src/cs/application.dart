@@ -24,11 +24,11 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/application:Application',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/application:Application',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blueGreen = registerOutput<bool?>('blueGreen');
     blueGreenConfirm = registerOutput<bool?>('blueGreenConfirm');
     clusterName = registerOutput<String>('clusterName');
@@ -60,11 +60,11 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/application:Application',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/application:Application',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blueGreen = registerOutput<bool?>('blueGreen');
     blueGreenConfirm = registerOutput<bool?>('blueGreenConfirm');
     clusterName = registerOutput<String>('clusterName');

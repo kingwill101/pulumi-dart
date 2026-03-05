@@ -526,34 +526,24 @@ import 'network_manager_admin_rule_state.dart';
 class NetworkManagerAdminRule extends pulumi.CustomResource {
   /// Specifies the action allowed for this Network Manager Admin Rule. Possible values are `Allow`, `AlwaysAllow`, and `Deny`.
   late final pulumi.Output<String> action;
-
   /// Specifies the ID of the Network Manager Admin Rule Collection. Changing this forces a new Network Manager Admin Rule to be created.
   late final pulumi.Output<String> adminRuleCollectionId;
-
   /// A description of the Network Manager Admin Rule.
   late final pulumi.Output<String?> description;
-
   /// A list of string specifies the destination port ranges. Specify one or more single port number or port ranges such as `1024-65535`. Use `*` to specify any port.
   late final pulumi.Output<List<String>?> destinationPortRanges;
-
   /// One or more `destination` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> destinations;
-
   /// Indicates if the traffic matched against the rule in inbound or outbound. Possible values are `Inbound` and `Outbound`.
   late final pulumi.Output<String> direction;
-
   /// Specifies the name which should be used for this Network Manager Admin Rule. Changing this forces a new Network Manager Admin Rule to be created.
   late final pulumi.Output<String> name;
-
   /// The priority of the rule. Possible values are integers between `1` and `4096`. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
   late final pulumi.Output<int> priority;
-
   /// Specifies which network protocol this Network Manager Admin Rule applies to. Possible values are `Ah`, `Any`, `Esp`, `Icmp`, `Tcp`, and `Udp`.
   late final pulumi.Output<String> protocol;
-
   /// A list of string specifies the source port ranges. Specify one or more single port number or port ranges such as `1024-65535`. Use `*` to specify any port.
   late final pulumi.Output<List<String>?> sourcePortRanges;
-
   /// One or more `source` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> sources;
 
@@ -566,17 +556,15 @@ class NetworkManagerAdminRule extends pulumi.CustomResource {
     NetworkManagerAdminRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerAdminRule:NetworkManagerAdminRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerAdminRule:NetworkManagerAdminRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     adminRuleCollectionId = registerOutput<String>('adminRuleCollectionId');
     description = registerOutput<String?>('description');
-    destinationPortRanges = registerOutput<List<String>?>(
-      'destinationPortRanges',
-    );
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges');
     destinations = registerOutput<List<Map<String, dynamic>>?>('destinations');
     direction = registerOutput<String>('direction');
     this.name = registerOutput<String>('name');
@@ -604,17 +592,15 @@ class NetworkManagerAdminRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerAdminRule:NetworkManagerAdminRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerAdminRule:NetworkManagerAdminRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     adminRuleCollectionId = registerOutput<String>('adminRuleCollectionId');
     description = registerOutput<String?>('description');
-    destinationPortRanges = registerOutput<List<String>?>(
-      'destinationPortRanges',
-    );
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges');
     destinations = registerOutput<List<Map<String, dynamic>>?>('destinations');
     direction = registerOutput<String>('direction');
     this.name = registerOutput<String>('name');

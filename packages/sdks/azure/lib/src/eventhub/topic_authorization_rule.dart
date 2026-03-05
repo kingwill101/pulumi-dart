@@ -263,34 +263,24 @@ import 'topic_authorization_rule_state.dart';
 class TopicAuthorizationRule extends pulumi.CustomResource {
   /// Grants listen access to this this Authorization Rule. Defaults to `false`.
   late final pulumi.Output<bool?> listen;
-
   /// Grants manage access to this this Authorization Rule. When this property is `true` - both `listen` and `send` must be too. Defaults to `false`.
   late final pulumi.Output<bool?> manage;
-
   /// Specifies the name of the ServiceBus Topic Authorization Rule resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The Primary Connection String for the ServiceBus Topic authorization Rule.
   late final pulumi.Output<String> primaryConnectionString;
-
   /// The alias Primary Connection String for the ServiceBus Namespace, if the namespace is Geo DR paired.
   late final pulumi.Output<String> primaryConnectionStringAlias;
-
   /// The Primary Key for the ServiceBus Topic authorization Rule.
   late final pulumi.Output<String> primaryKey;
-
   /// The Secondary Connection String for the ServiceBus Topic authorization Rule.
   late final pulumi.Output<String> secondaryConnectionString;
-
   /// The alias Secondary Connection String for the ServiceBus Namespace
   late final pulumi.Output<String> secondaryConnectionStringAlias;
-
   /// The Secondary Key for the ServiceBus Topic authorization Rule.
   late final pulumi.Output<String> secondaryKey;
-
   /// Grants send access to this this Authorization Rule. Defaults to `false`.
   late final pulumi.Output<bool?> send;
-
   /// Specifies the ID of the ServiceBus Topic. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** At least one of the 3 permissions below needs to be set.
@@ -305,25 +295,19 @@ class TopicAuthorizationRule extends pulumi.CustomResource {
     TopicAuthorizationRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventhub/topicAuthorizationRule:TopicAuthorizationRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:eventhub/topicAuthorizationRule:TopicAuthorizationRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     listen = registerOutput<bool?>('listen');
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
     primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryConnectionStringAlias = registerOutput<String>(
-      'primaryConnectionStringAlias',
-    );
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
     primaryKey = registerOutput<String>('primaryKey');
-    secondaryConnectionString = registerOutput<String>(
-      'secondaryConnectionString',
-    );
-    secondaryConnectionStringAlias = registerOutput<String>(
-      'secondaryConnectionStringAlias',
-    );
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
     secondaryKey = registerOutput<String>('secondaryKey');
     send = registerOutput<bool?>('send');
     topicId = registerOutput<String>('topicId');
@@ -347,25 +331,19 @@ class TopicAuthorizationRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventhub/topicAuthorizationRule:TopicAuthorizationRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:eventhub/topicAuthorizationRule:TopicAuthorizationRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     listen = registerOutput<bool?>('listen');
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
     primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryConnectionStringAlias = registerOutput<String>(
-      'primaryConnectionStringAlias',
-    );
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
     primaryKey = registerOutput<String>('primaryKey');
-    secondaryConnectionString = registerOutput<String>(
-      'secondaryConnectionString',
-    );
-    secondaryConnectionStringAlias = registerOutput<String>(
-      'secondaryConnectionStringAlias',
-    );
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
     secondaryKey = registerOutput<String>('secondaryKey');
     send = registerOutput<bool?>('send');
     topicId = registerOutput<String>('topicId');

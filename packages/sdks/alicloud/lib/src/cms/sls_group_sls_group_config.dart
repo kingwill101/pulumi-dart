@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SlsGroupSlsGroupConfig {
   /// The name of the Log Store.
   final pulumi.Input<String> slsLogstore;
-
   /// The name of the Project.
   final pulumi.Input<String> slsProject;
-
   /// The Sls Region.
   final pulumi.Input<String> slsRegion;
-
   /// The ID of the Sls User.
   final pulumi.Input<String>? slsUserId;
 
@@ -41,11 +38,8 @@ class SlsGroupSlsGroupConfig {
       slsLogstore: pulumi.Input.fromValue(map['slsLogstore'] as String),
       slsProject: pulumi.Input.fromValue(map['slsProject'] as String),
       slsRegion: pulumi.Input.fromValue(map['slsRegion'] as String),
-      slsUserId: (() {
-        final guardedValue = map['slsUserId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      slsUserId: (() { final guardedValue = map['slsUserId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

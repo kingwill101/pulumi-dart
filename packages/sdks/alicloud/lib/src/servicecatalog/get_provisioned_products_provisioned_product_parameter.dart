@@ -21,12 +21,11 @@ class GetProvisionedProductsProvisionedProductParameter {
     };
   }
 
-  factory GetProvisionedProductsProvisionedProductParameter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetProvisionedProductsProvisionedProductParameter.fromMap(Map<String, dynamic> map) {
     return GetProvisionedProductsProvisionedProductParameter(
       parameterKey: pulumi.Input.fromValue(map['parameterKey'] as String),
       parameterValue: pulumi.Input.fromValue(map['parameterValue'] as String),
     );
   }
 }
+

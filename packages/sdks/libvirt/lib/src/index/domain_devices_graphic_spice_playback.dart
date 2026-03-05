@@ -8,10 +8,14 @@ class DomainDevicesGraphicSpicePlayback {
 
   /// Creates a new [DomainDevicesGraphicSpicePlayback].
   /// [compression] Sets compression options for audio and video playback over the Spice connection.
-  DomainDevicesGraphicSpicePlayback({required this.compression});
+  DomainDevicesGraphicSpicePlayback({
+    required this.compression,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'compression': compression};
+    return <String, dynamic>{
+      'compression': compression,
+    };
   }
 
   factory DomainDevicesGraphicSpicePlayback.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesGraphicSpicePlayback {
     );
   }
 }
+

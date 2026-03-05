@@ -6,34 +6,25 @@ import 'get_configuration_profile_validator.dart';
 /// Result data returned by getConfigurationProfile.
 class GetConfigurationProfileResult {
   final String applicationId;
-
   /// ARN of the Configuration Profile.
   final String arn;
   final String configurationProfileId;
-
   /// Description of the Configuration Profile.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String kmsKeyIdentifier;
-
   /// Location URI of the Configuration Profile.
   final String locationUri;
-
   /// Name of the Configuration Profile.
   final String name;
   final String region;
-
   /// ARN of an IAM role with permission to access the configuration at the specified location_uri.
   final String retrievalRoleArn;
-
   /// Map of tags for the resource.
   final Map<String, String> tags;
-
   /// Type of validator. Valid values: JSON_SCHEMA and LAMBDA.
   final String type;
-
   /// Nested list of methods for validating the configuration.
   final List<GetConfigurationProfileValidator> validators;
 
@@ -81,11 +72,7 @@ class GetConfigurationProfileResult {
       'retrievalRoleArn': retrievalRoleArn,
       'tags': tags,
       'type': type,
-      'validators':
-          pulumi.Input.encodeList<
-            GetConfigurationProfileValidator,
-            Map<String, dynamic>
-          >(validators, (value) => value.toMap()),
+      'validators': pulumi.Input.encodeList<GetConfigurationProfileValidator, Map<String, dynamic>>(validators, (value) => value.toMap()),
     };
   }
 
@@ -103,12 +90,8 @@ class GetConfigurationProfileResult {
       retrievalRoleArn: map['retrievalRoleArn'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
-      validators: pulumi.Input.decodeList<GetConfigurationProfileValidator>(
-        map['validators']!,
-        (value) => GetConfigurationProfileValidator.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      validators: pulumi.Input.decodeList<GetConfigurationProfileValidator>(map['validators']!, (value) => GetConfigurationProfileValidator.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

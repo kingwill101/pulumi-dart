@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessGroupArgs {
   /// The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
   final pulumi.Input<String> accessGroupName;
-
   /// The permission group description.  No more than 32 characters in length.
   final pulumi.Input<String>? description;
-
   /// The permission group type. Only VPC (VPC) is supported.
   final pulumi.Input<String> networkType;
 
@@ -37,12 +35,9 @@ class AccessGroupArgs {
   factory AccessGroupArgs.fromMap(Map<String, dynamic> map) {
     return AccessGroupArgs(
       accessGroupName: pulumi.Input.fromValue(map['accessGroupName'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkType: pulumi.Input.fromValue(map['networkType'] as String),
     );
   }
 }
+

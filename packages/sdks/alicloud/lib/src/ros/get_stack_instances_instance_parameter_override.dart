@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStackInstancesInstanceParameterOverride {
   /// The key of override parameter.
   final pulumi.Input<String> parameterKey;
-
   /// The value of override parameter.
   final pulumi.Input<String> parameterValue;
 
@@ -24,12 +23,11 @@ class GetStackInstancesInstanceParameterOverride {
     };
   }
 
-  factory GetStackInstancesInstanceParameterOverride.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetStackInstancesInstanceParameterOverride.fromMap(Map<String, dynamic> map) {
     return GetStackInstancesInstanceParameterOverride(
       parameterKey: pulumi.Input.fromValue(map['parameterKey'] as String),
       parameterValue: pulumi.Input.fromValue(map['parameterValue'] as String),
     );
   }
 }
+

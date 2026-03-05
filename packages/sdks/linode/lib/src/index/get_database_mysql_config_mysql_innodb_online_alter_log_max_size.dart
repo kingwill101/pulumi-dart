@@ -37,9 +37,7 @@ class GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize(
       description: pulumi.Input.fromValue(map['description'] as String),
       example: pulumi.Input.fromValue(map['example'] as int),
@@ -50,3 +48,4 @@ class GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize {
     );
   }
 }
+

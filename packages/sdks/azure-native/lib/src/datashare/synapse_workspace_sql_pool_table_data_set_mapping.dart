@@ -633,29 +633,21 @@ import 'system_data_response.dart';
 class SynapseWorkspaceSqlPoolTableDataSetMapping extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The id of the source data set.
   late final pulumi.Output<String> dataSetId;
-
   /// Gets the status of the data set mapping.
   late final pulumi.Output<String> dataSetMappingStatus;
-
   /// Kind of data set mapping.
   /// Expected value is 'SynapseWorkspaceSqlPoolTable'.
   late final pulumi.Output<String> kind;
-
   /// Name of the azure resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the data set mapping.
   late final pulumi.Output<String> provisioningState;
-
   /// Resource id of the Synapse Workspace SQL Pool Table
   late final pulumi.Output<String> synapseWorkspaceSqlPoolTableResourceId;
-
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Type of the azure resource
   late final pulumi.Output<String> type;
 
@@ -668,30 +660,19 @@ class SynapseWorkspaceSqlPoolTableDataSetMapping extends pulumi.CustomResource {
     SynapseWorkspaceSqlPoolTableDataSetMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datashare:SynapseWorkspaceSqlPoolTableDataSetMapping',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datashare:SynapseWorkspaceSqlPoolTableDataSetMapping',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dataSetId = registerOutput<String>('dataSetId');
     dataSetMappingStatus = registerOutput<String>('dataSetMappingStatus');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    synapseWorkspaceSqlPoolTableResourceId = registerOutput<String>(
-      'synapseWorkspaceSqlPoolTableResourceId',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    synapseWorkspaceSqlPoolTableResourceId = registerOutput<String>('synapseWorkspaceSqlPoolTableResourceId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

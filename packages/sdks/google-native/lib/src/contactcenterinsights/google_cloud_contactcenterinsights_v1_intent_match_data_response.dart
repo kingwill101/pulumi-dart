@@ -14,14 +14,15 @@ class GoogleCloudContactcenterinsightsV1IntentMatchDataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'intentUniqueId': intentUniqueId};
+    return <String, dynamic>{
+      'intentUniqueId': intentUniqueId,
+    };
   }
 
-  factory GoogleCloudContactcenterinsightsV1IntentMatchDataResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContactcenterinsightsV1IntentMatchDataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1IntentMatchDataResponse(
       intentUniqueId: pulumi.Input.fromValue(map['intentUniqueId'] as String),
     );
   }
 }
+

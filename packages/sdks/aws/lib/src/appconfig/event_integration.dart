@@ -152,25 +152,18 @@ import 'event_integration_state.dart';
 class EventIntegration extends pulumi.CustomResource {
   /// ARN of the Event Integration.
   late final pulumi.Output<String> arn;
-
   /// Description of the Event Integration.
   late final pulumi.Output<String?> description;
-
   /// Block that defines the configuration information for the event filter. The Event Filter block is documented below.
   late final pulumi.Output<EventIntegrationEventFilter> eventFilter;
-
   /// EventBridge bus.
   late final pulumi.Output<String> eventbridgeBus;
-
   /// Name of the Event Integration.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Tags to apply to the Event Integration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -183,23 +176,14 @@ class EventIntegration extends pulumi.CustomResource {
     EventIntegrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appconfig/eventIntegration:EventIntegration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appconfig/eventIntegration:EventIntegration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    eventFilter = registerOutput<EventIntegrationEventFilter>(
-      'eventFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventIntegrationEventFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eventFilter = registerOutput<EventIntegrationEventFilter>('eventFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventIntegrationEventFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventbridgeBus = registerOutput<String>('eventbridgeBus');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -225,23 +209,14 @@ class EventIntegration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appconfig/eventIntegration:EventIntegration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appconfig/eventIntegration:EventIntegration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    eventFilter = registerOutput<EventIntegrationEventFilter>(
-      'eventFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventIntegrationEventFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eventFilter = registerOutput<EventIntegrationEventFilter>('eventFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventIntegrationEventFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventbridgeBus = registerOutput<String>('eventbridgeBus');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

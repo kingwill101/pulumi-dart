@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OsProfileResponse {
   /// Specifies the host OS name of the Azure Large Instance.
   final pulumi.Input<String>? computerName;
-
   /// This property allows you to specify the type of the OS.
   final pulumi.Input<String>? osType;
-
   /// Specifies the SSH public key used to access the operating system.
   final pulumi.Input<String>? sshPublicKey;
-
   /// Specifies version of operating system.
   final pulumi.Input<String>? version;
 
@@ -39,26 +36,11 @@ class OsProfileResponse {
 
   factory OsProfileResponse.fromMap(Map<String, dynamic> map) {
     return OsProfileResponse(
-      computerName: (() {
-        final guardedValue = map['computerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      osType: (() {
-        final guardedValue = map['osType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sshPublicKey: (() {
-        final guardedValue = map['sshPublicKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      computerName: (() { final guardedValue = map['computerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sshPublicKey: (() { final guardedValue = map['sshPublicKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

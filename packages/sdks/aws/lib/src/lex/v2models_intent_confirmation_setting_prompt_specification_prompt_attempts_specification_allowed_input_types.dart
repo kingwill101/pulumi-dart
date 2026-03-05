@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes {
   /// Whether audio input is allowed.
   final pulumi.Input<bool> allowAudioInput;
-
   /// Whether DTMF input is allowed.
   final pulumi.Input<bool> allowDtmfInput;
 
@@ -24,12 +23,11 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
     };
   }
 
-  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes(
       allowAudioInput: pulumi.Input.fromValue(map['allowAudioInput'] as bool),
       allowDtmfInput: pulumi.Input.fromValue(map['allowDtmfInput'] as bool),
     );
   }
 }
+

@@ -111,9 +111,7 @@ import 'firewall_transit_gateway_attachment_accepter_timeouts.dart';
 class FirewallTransitGatewayAttachmentAccepter extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  late final pulumi.Output<FirewallTransitGatewayAttachmentAccepterTimeouts?>
-  timeouts;
-
+  late final pulumi.Output<FirewallTransitGatewayAttachmentAccepterTimeouts?> timeouts;
   /// The unique identifier of the transit gateway attachment to accept. This ID is returned in the response when creating a transit gateway-attached firewall.
   late final pulumi.Output<String> transitGatewayAttachmentId;
 
@@ -126,26 +124,14 @@ class FirewallTransitGatewayAttachmentAccepter extends pulumi.CustomResource {
     FirewallTransitGatewayAttachmentAccepterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkfirewall/firewallTransitGatewayAttachmentAccepter:FirewallTransitGatewayAttachmentAccepter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkfirewall/firewallTransitGatewayAttachmentAccepter:FirewallTransitGatewayAttachmentAccepter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
-    timeouts =
-        registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>(
-          'timeouts',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    transitGatewayAttachmentId = registerOutput<String>(
-      'transitGatewayAttachmentId',
-    );
+    timeouts = registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
   }
 
   /// Gets an existing [FirewallTransitGatewayAttachmentAccepter] resource's state with the given [name] and [id].
@@ -166,25 +152,13 @@ class FirewallTransitGatewayAttachmentAccepter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkfirewall/firewallTransitGatewayAttachmentAccepter:FirewallTransitGatewayAttachmentAccepter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkfirewall/firewallTransitGatewayAttachmentAccepter:FirewallTransitGatewayAttachmentAccepter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
-    timeouts =
-        registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>(
-          'timeouts',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    transitGatewayAttachmentId = registerOutput<String>(
-      'transitGatewayAttachmentId',
-    );
+    timeouts = registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
   }
 }

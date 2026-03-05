@@ -460,19 +460,14 @@ import 'db_node_state.dart';
 class DbNode extends pulumi.CustomResource {
   /// The specification information of the node.
   late final pulumi.Output<String> classCode;
-
   /// The Id of instance that can run database.
   late final pulumi.Output<String> dbInstanceId;
-
   /// The ID of the node.
   late final pulumi.Output<String> nodeId;
-
   /// The region ID of the node.
   late final pulumi.Output<String> nodeRegionId;
-
   /// The role of node.
   late final pulumi.Output<String> nodeRole;
-
   /// The zone ID of the node.
   late final pulumi.Output<String> zoneId;
 
@@ -480,13 +475,16 @@ class DbNode extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [DbNode]. {@macro pulumi_rds_db_node_db_node_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  DbNode(String name, {DbNodeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:rds/dbNode:DbNode',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  DbNode(
+    String name, {
+    DbNodeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:rds/dbNode:DbNode',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     classCode = registerOutput<String>('classCode');
     dbInstanceId = registerOutput<String>('dbInstanceId');
     nodeId = registerOutput<String>('nodeId');
@@ -513,11 +511,11 @@ class DbNode extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/dbNode:DbNode',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/dbNode:DbNode',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     classCode = registerOutput<String>('classCode');
     dbInstanceId = registerOutput<String>('dbInstanceId');
     nodeId = registerOutput<String>('nodeId');

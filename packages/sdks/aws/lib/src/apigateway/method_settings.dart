@@ -546,16 +546,12 @@ import 'method_settings_state.dart';
 class MethodSettings extends pulumi.CustomResource {
   /// Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*/*` for overriding all methods in the stage. Ensure to trim any leading forward slashes in the path (e.g., `trimprefix(aws_api_gateway_resource.example.path, "/")`).
   late final pulumi.Output<String> methodPath;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the REST API
   late final pulumi.Output<String> restApi;
-
   /// Settings block, see below.
   late final pulumi.Output<MethodSettingsSettings> settings;
-
   /// Name of the stage
   late final pulumi.Output<String> stageName;
 
@@ -568,24 +564,15 @@ class MethodSettings extends pulumi.CustomResource {
     MethodSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigateway/methodSettings:MethodSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigateway/methodSettings:MethodSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     methodPath = registerOutput<String>('methodPath');
     region = registerOutput<String>('region');
     restApi = registerOutput<String>('restApi');
-    settings = registerOutput<MethodSettingsSettings>(
-      'settings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MethodSettingsSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    settings = registerOutput<MethodSettingsSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MethodSettingsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     stageName = registerOutput<String>('stageName');
   }
 
@@ -607,24 +594,15 @@ class MethodSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigateway/methodSettings:MethodSettings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigateway/methodSettings:MethodSettings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     methodPath = registerOutput<String>('methodPath');
     region = registerOutput<String>('region');
     restApi = registerOutput<String>('restApi');
-    settings = registerOutput<MethodSettingsSettings>(
-      'settings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MethodSettingsSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    settings = registerOutput<MethodSettingsSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MethodSettingsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     stageName = registerOutput<String>('stageName');
   }
 }

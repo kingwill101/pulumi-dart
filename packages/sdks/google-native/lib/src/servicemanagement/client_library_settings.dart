@@ -15,34 +15,24 @@ import 'ruby_settings.dart';
 class ClientLibrarySettings {
   /// Settings for C++ client libraries.
   final pulumi.Input<CppSettings>? cppSettings;
-
   /// Settings for .NET client libraries.
   final pulumi.Input<DotnetSettings>? dotnetSettings;
-
   /// Settings for Go client libraries.
   final pulumi.Input<GoSettings>? goSettings;
-
   /// Settings for legacy Java features, supported in the Service YAML.
   final pulumi.Input<JavaSettings>? javaSettings;
-
   /// Launch stage of this version of the API.
   final pulumi.Input<ClientLibrarySettingsLaunchStage>? launchStage;
-
   /// Settings for Node client libraries.
   final pulumi.Input<NodeSettings>? nodeSettings;
-
   /// Settings for PHP client libraries.
   final pulumi.Input<PhpSettings>? phpSettings;
-
   /// Settings for Python client libraries.
   final pulumi.Input<PythonSettings>? pythonSettings;
-
   /// When using transport=rest, the client request will encode enums as numbers rather than strings.
   final pulumi.Input<bool>? restNumericEnums;
-
   /// Settings for Ruby client libraries.
   final pulumi.Input<RubySettings>? rubySettings;
-
   /// Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1".
   final pulumi.Input<String>? version;
 
@@ -74,131 +64,34 @@ class ClientLibrarySettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cppSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            CppSettings,
-            Map<String, dynamic>
-          >(cppSettings, (value) => value.toMap()),
-      'dotnetSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            DotnetSettings,
-            Map<String, dynamic>
-          >(dotnetSettings, (value) => value.toMap()),
-      'goSettings':
-          ?pulumi.Input.mapOptionalInputValue<GoSettings, Map<String, dynamic>>(
-            goSettings,
-            (value) => value.toMap(),
-          ),
-      'javaSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            JavaSettings,
-            Map<String, dynamic>
-          >(javaSettings, (value) => value.toMap()),
-      'launchStage':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClientLibrarySettingsLaunchStage,
-            String
-          >(launchStage, (value) => value.wireValue),
-      'nodeSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            NodeSettings,
-            Map<String, dynamic>
-          >(nodeSettings, (value) => value.toMap()),
-      'phpSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            PhpSettings,
-            Map<String, dynamic>
-          >(phpSettings, (value) => value.toMap()),
-      'pythonSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            PythonSettings,
-            Map<String, dynamic>
-          >(pythonSettings, (value) => value.toMap()),
+      'cppSettings': ?pulumi.Input.mapOptionalInputValue<CppSettings, Map<String, dynamic>>(cppSettings, (value) => value.toMap()),
+      'dotnetSettings': ?pulumi.Input.mapOptionalInputValue<DotnetSettings, Map<String, dynamic>>(dotnetSettings, (value) => value.toMap()),
+      'goSettings': ?pulumi.Input.mapOptionalInputValue<GoSettings, Map<String, dynamic>>(goSettings, (value) => value.toMap()),
+      'javaSettings': ?pulumi.Input.mapOptionalInputValue<JavaSettings, Map<String, dynamic>>(javaSettings, (value) => value.toMap()),
+      'launchStage': ?pulumi.Input.mapOptionalInputValue<ClientLibrarySettingsLaunchStage, String>(launchStage, (value) => value.wireValue),
+      'nodeSettings': ?pulumi.Input.mapOptionalInputValue<NodeSettings, Map<String, dynamic>>(nodeSettings, (value) => value.toMap()),
+      'phpSettings': ?pulumi.Input.mapOptionalInputValue<PhpSettings, Map<String, dynamic>>(phpSettings, (value) => value.toMap()),
+      'pythonSettings': ?pulumi.Input.mapOptionalInputValue<PythonSettings, Map<String, dynamic>>(pythonSettings, (value) => value.toMap()),
       'restNumericEnums': ?restNumericEnums,
-      'rubySettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            RubySettings,
-            Map<String, dynamic>
-          >(rubySettings, (value) => value.toMap()),
+      'rubySettings': ?pulumi.Input.mapOptionalInputValue<RubySettings, Map<String, dynamic>>(rubySettings, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory ClientLibrarySettings.fromMap(Map<String, dynamic> map) {
     return ClientLibrarySettings(
-      cppSettings: (() {
-        final guardedValue = map['cppSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CppSettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      dotnetSettings: (() {
-        final guardedValue = map['dotnetSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DotnetSettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      goSettings: (() {
-        final guardedValue = map['goSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoSettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      javaSettings: (() {
-        final guardedValue = map['javaSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JavaSettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      launchStage: (() {
-        final guardedValue = map['launchStage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClientLibrarySettingsLaunchStage.fromValue(guardedValue as String),
-        );
-      })(),
-      nodeSettings: (() {
-        final guardedValue = map['nodeSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      phpSettings: (() {
-        final guardedValue = map['phpSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PhpSettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      pythonSettings: (() {
-        final guardedValue = map['pythonSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PythonSettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      restNumericEnums: (() {
-        final guardedValue = map['restNumericEnums'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      rubySettings: (() {
-        final guardedValue = map['rubySettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RubySettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cppSettings: (() { final guardedValue = map['cppSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CppSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dotnetSettings: (() { final guardedValue = map['dotnetSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DotnetSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      goSettings: (() { final guardedValue = map['goSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      javaSettings: (() { final guardedValue = map['javaSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JavaSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      launchStage: (() { final guardedValue = map['launchStage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClientLibrarySettingsLaunchStage.fromValue(guardedValue as String)); })(),
+      nodeSettings: (() { final guardedValue = map['nodeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      phpSettings: (() { final guardedValue = map['phpSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PhpSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      pythonSettings: (() { final guardedValue = map['pythonSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PythonSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      restNumericEnums: (() { final guardedValue = map['restNumericEnums']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      rubySettings: (() { final guardedValue = map['rubySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RubySettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

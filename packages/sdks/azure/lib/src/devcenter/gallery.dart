@@ -311,10 +311,8 @@ import 'gallery_state.dart';
 class Gallery extends pulumi.CustomResource {
   /// Specifies the ID of the Dev Center within which this Dev Center Gallery should exist. Changing this forces a new Dev Center Gallery to be created.
   late final pulumi.Output<String> devCenterId;
-
   /// Specifies the name of this Dev Center Gallery. Changing this forces a new Dev Center Gallery to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Shared Gallery which should be connected to the Dev Center Gallery. Changing this forces a new Dev Center Gallery to be created.
   late final pulumi.Output<String> sharedGalleryId;
 
@@ -327,11 +325,11 @@ class Gallery extends pulumi.CustomResource {
     GalleryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devcenter/gallery:Gallery',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:devcenter/gallery:Gallery',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
     sharedGalleryId = registerOutput<String>('sharedGalleryId');
@@ -355,11 +353,11 @@ class Gallery extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devcenter/gallery:Gallery',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:devcenter/gallery:Gallery',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
     sharedGalleryId = registerOutput<String>('sharedGalleryId');

@@ -428,34 +428,24 @@ import 'email_identity_state.dart';
 class EmailIdentity extends pulumi.CustomResource {
   /// ARN of the Email Identity.
   late final pulumi.Output<String> arn;
-
   /// The configuration set to use by default when sending from this identity. Note that any configuration set defined in the email sending request takes precedence.
   late final pulumi.Output<String?> configurationSetName;
-
   /// The configuration of the DKIM authentication settings for an email domain identity.
-  late final pulumi.Output<EmailIdentityDkimSigningAttributes>
-  dkimSigningAttributes;
-
+  late final pulumi.Output<EmailIdentityDkimSigningAttributes> dkimSigningAttributes;
   /// The email address or domain to verify.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> emailIdentity;
-
   /// The email identity type. Valid values: `EMAIL_ADDRESS`, `DOMAIN`.
   late final pulumi.Output<String> identityType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The verification status of the identity. The status can be one of the following: `PENDING`, `SUCCESS`, `FAILED`, `TEMPORARY_FAILURE`, and `NOT_STARTED`.
   late final pulumi.Output<String> verificationStatus;
-
   /// Specifies whether or not the identity is verified.
   late final pulumi.Output<bool> verifiedForSendingStatus;
 
@@ -468,23 +458,14 @@ class EmailIdentity extends pulumi.CustomResource {
     EmailIdentityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sesv2/emailIdentity:EmailIdentity',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sesv2/emailIdentity:EmailIdentity',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     configurationSetName = registerOutput<String?>('configurationSetName');
-    dkimSigningAttributes = registerOutput<EmailIdentityDkimSigningAttributes>(
-      'dkimSigningAttributes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EmailIdentityDkimSigningAttributes.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dkimSigningAttributes = registerOutput<EmailIdentityDkimSigningAttributes>('dkimSigningAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EmailIdentityDkimSigningAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     emailIdentity = registerOutput<String>('emailIdentity');
     identityType = registerOutput<String>('identityType');
     region = registerOutput<String>('region');
@@ -512,23 +493,14 @@ class EmailIdentity extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sesv2/emailIdentity:EmailIdentity',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sesv2/emailIdentity:EmailIdentity',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     configurationSetName = registerOutput<String?>('configurationSetName');
-    dkimSigningAttributes = registerOutput<EmailIdentityDkimSigningAttributes>(
-      'dkimSigningAttributes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EmailIdentityDkimSigningAttributes.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dkimSigningAttributes = registerOutput<EmailIdentityDkimSigningAttributes>('dkimSigningAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EmailIdentityDkimSigningAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     emailIdentity = registerOutput<String>('emailIdentity');
     identityType = registerOutput<String>('identityType');
     region = registerOutput<String>('region');

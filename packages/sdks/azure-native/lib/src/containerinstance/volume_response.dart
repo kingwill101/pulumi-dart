@@ -8,19 +8,14 @@ import 'git_repo_volume_response.dart';
 class VolumeResponse {
   /// The Azure File volume.
   final pulumi.Input<AzureFileVolumeResponse>? azureFile;
-
   /// The empty directory volume.
   final pulumi.Input<dynamic>? emptyDir;
-
   /// The git repo volume.
   final pulumi.Input<GitRepoVolumeResponse>? gitRepo;
-
   /// The name of the volume.
   final pulumi.Input<String> name;
-
   /// The secret volume.
   final pulumi.Input<Map<String, String>>? secret;
-
   /// The secret reference volume.
   final pulumi.Input<Map<String, String>>? secretReference;
 
@@ -42,17 +37,9 @@ class VolumeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureFile':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureFileVolumeResponse,
-            Map<String, dynamic>
-          >(azureFile, (value) => value.toMap()),
+      'azureFile': ?pulumi.Input.mapOptionalInputValue<AzureFileVolumeResponse, Map<String, dynamic>>(azureFile, (value) => value.toMap()),
       'emptyDir': ?emptyDir,
-      'gitRepo':
-          ?pulumi.Input.mapOptionalInputValue<
-            GitRepoVolumeResponse,
-            Map<String, dynamic>
-          >(gitRepo, (value) => value.toMap()),
+      'gitRepo': ?pulumi.Input.mapOptionalInputValue<GitRepoVolumeResponse, Map<String, dynamic>>(gitRepo, (value) => value.toMap()),
       'name': name,
       'secret': ?secret,
       'secretReference': ?secretReference,
@@ -61,44 +48,13 @@ class VolumeResponse {
 
   factory VolumeResponse.fromMap(Map<String, dynamic> map) {
     return VolumeResponse(
-      azureFile: (() {
-        final guardedValue = map['azureFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureFileVolumeResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      emptyDir: (() {
-        final guardedValue = map['emptyDir'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      gitRepo: (() {
-        final guardedValue = map['gitRepo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GitRepoVolumeResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      azureFile: (() { final guardedValue = map['azureFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureFileVolumeResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      emptyDir: (() { final guardedValue = map['emptyDir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      gitRepo: (() { final guardedValue = map['gitRepo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GitRepoVolumeResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      secret: (() {
-        final guardedValue = map['secret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      secretReference: (() {
-        final guardedValue = map['secretReference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      secret: (() { final guardedValue = map['secret']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      secretReference: (() { final guardedValue = map['secretReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

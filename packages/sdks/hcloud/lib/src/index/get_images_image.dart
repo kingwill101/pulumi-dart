@@ -68,19 +68,14 @@ class GetImagesImage {
       deprecated: pulumi.Input.fromValue(map['deprecated'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       id: pulumi.Input.fromValue(map['id'] as int),
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       osFlavor: pulumi.Input.fromValue(map['osFlavor'] as String),
       osVersion: pulumi.Input.fromValue(map['osVersion'] as String),
       rapidDeploy: pulumi.Input.fromValue(map['rapidDeploy'] as bool),
-      selector: (() {
-        final guardedValue = map['selector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

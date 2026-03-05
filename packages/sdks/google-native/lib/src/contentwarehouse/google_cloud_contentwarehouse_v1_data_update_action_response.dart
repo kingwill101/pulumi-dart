@@ -14,16 +14,15 @@ class GoogleCloudContentwarehouseV1DataUpdateActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'entries': entries};
+    return <String, dynamic>{
+      'entries': entries,
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1DataUpdateActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1DataUpdateActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1DataUpdateActionResponse(
-      entries: pulumi.Input.fromValue(
-        (map['entries'] as Map).cast<String, String>(),
-      ),
+      entries: pulumi.Input.fromValue((map['entries'] as Map).cast<String, String>()),
     );
   }
 }
+

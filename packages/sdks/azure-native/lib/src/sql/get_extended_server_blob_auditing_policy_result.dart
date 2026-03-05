@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getExtendedServerBlobAuditingPolicy.
 class GetExtendedServerBlobAuditingPolicyResult {
   /// Specifies the Actions-Groups and Actions to audit.
@@ -64,13 +65,10 @@ class GetExtendedServerBlobAuditingPolicyResult {
   ///
   /// For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
   final List<String>? auditActionsAndGroups;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String id;
-
   /// Specifies whether audit events are sent to Azure Monitor.
   /// In order to send the events to Azure Monitor, specify 'State' as 'Enabled' and 'IsAzureMonitorTargetEnabled' as true.
   ///
@@ -83,7 +81,6 @@ class GetExtendedServerBlobAuditingPolicyResult {
   /// For more information, see [Diagnostic Settings REST API](https://go.microsoft.com/fwlink/?linkid=2033207)
   /// or [Diagnostic Settings PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
   final bool? isAzureMonitorTargetEnabled;
-
   /// Specifies the state of devops audit. If state is Enabled, devops logs will be sent to Azure Monitor.
   /// In order to send the events to Azure Monitor, specify 'State' as 'Enabled', 'IsAzureMonitorTargetEnabled' as true and 'IsDevopsAuditEnabled' as true
   ///
@@ -95,35 +92,25 @@ class GetExtendedServerBlobAuditingPolicyResult {
   /// For more information, see [Diagnostic Settings REST API](https://go.microsoft.com/fwlink/?linkid=2033207)
   /// or [Diagnostic Settings PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
   final bool? isDevopsAuditEnabled;
-
   /// Specifies whether Managed Identity is used to access blob storage
   final bool? isManagedIdentityInUse;
-
   /// Specifies whether storageAccountAccessKey value is the storage's secondary key.
   final bool? isStorageSecondaryKeyInUse;
-
   /// Resource name.
   final String name;
-
   /// Specifies condition of where clause when creating an audit.
   final String? predicateExpression;
-
   /// Specifies the amount of time in milliseconds that can elapse before audit actions are forced to be processed.
   /// The default minimum value is 1000 (1 second). The maximum is 2,147,483,647.
   final int? queueDelayMs;
-
   /// Specifies the number of days to keep in the audit logs in the storage account.
   final int? retentionDays;
-
   /// Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
   final String state;
-
   /// Specifies the blob storage subscription Id.
   final String? storageAccountSubscriptionId;
-
   /// Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required.
   final String? storageEndpoint;
-
   /// Resource type.
   final String type;
 
@@ -181,65 +168,24 @@ class GetExtendedServerBlobAuditingPolicyResult {
     };
   }
 
-  factory GetExtendedServerBlobAuditingPolicyResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetExtendedServerBlobAuditingPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetExtendedServerBlobAuditingPolicyResult(
-      auditActionsAndGroups: (() {
-        final guardedValue = map['auditActionsAndGroups'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      auditActionsAndGroups: (() { final guardedValue = map['auditActionsAndGroups']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      isAzureMonitorTargetEnabled: (() {
-        final guardedValue = map['isAzureMonitorTargetEnabled'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      isDevopsAuditEnabled: (() {
-        final guardedValue = map['isDevopsAuditEnabled'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      isManagedIdentityInUse: (() {
-        final guardedValue = map['isManagedIdentityInUse'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      isStorageSecondaryKeyInUse: (() {
-        final guardedValue = map['isStorageSecondaryKeyInUse'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      isAzureMonitorTargetEnabled: (() { final guardedValue = map['isAzureMonitorTargetEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      isDevopsAuditEnabled: (() { final guardedValue = map['isDevopsAuditEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      isManagedIdentityInUse: (() { final guardedValue = map['isManagedIdentityInUse']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      isStorageSecondaryKeyInUse: (() { final guardedValue = map['isStorageSecondaryKeyInUse']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: map['name'] as String,
-      predicateExpression: (() {
-        final guardedValue = map['predicateExpression'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      queueDelayMs: (() {
-        final guardedValue = map['queueDelayMs'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      retentionDays: (() {
-        final guardedValue = map['retentionDays'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      predicateExpression: (() { final guardedValue = map['predicateExpression']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      queueDelayMs: (() { final guardedValue = map['queueDelayMs']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return guardedValue as int; })(),
       state: map['state'] as String,
-      storageAccountSubscriptionId: (() {
-        final guardedValue = map['storageAccountSubscriptionId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      storageEndpoint: (() {
-        final guardedValue = map['storageEndpoint'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      storageAccountSubscriptionId: (() { final guardedValue = map['storageAccountSubscriptionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageEndpoint: (() { final guardedValue = map['storageEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

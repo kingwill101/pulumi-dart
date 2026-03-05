@@ -7,7 +7,6 @@ import 'get_vpc_flow_logs_log.dart';
 class GetVpcFlowLogsResult {
   final String? description;
   final String? flowLogName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -61,10 +60,7 @@ class GetVpcFlowLogsResult {
       'id': id,
       'ids': ids,
       'logStoreName': ?logStoreName,
-      'logs': pulumi.Input.encodeList<GetVpcFlowLogsLog, Map<String, dynamic>>(
-        logs,
-        (value) => value.toMap(),
-      ),
+      'logs': pulumi.Input.encodeList<GetVpcFlowLogsLog, Map<String, dynamic>>(logs, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -78,64 +74,21 @@ class GetVpcFlowLogsResult {
 
   factory GetVpcFlowLogsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcFlowLogsResult(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      flowLogName: (() {
-        final guardedValue = map['flowLogName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      flowLogName: (() { final guardedValue = map['flowLogName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      logStoreName: (() {
-        final guardedValue = map['logStoreName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      logs: pulumi.Input.decodeList<GetVpcFlowLogsLog>(
-        map['logs']!,
-        (value) =>
-            GetVpcFlowLogsLog.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      logStoreName: (() { final guardedValue = map['logStoreName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      logs: pulumi.Input.decodeList<GetVpcFlowLogsLog>(map['logs']!, (value) => GetVpcFlowLogsLog.fromMap((value as Map).cast<String, dynamic>())),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      projectName: (() {
-        final guardedValue = map['projectName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceType: (() {
-        final guardedValue = map['resourceType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      trafficType: (() {
-        final guardedValue = map['trafficType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      projectName: (() { final guardedValue = map['projectName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      trafficType: (() { final guardedValue = map['trafficType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum OperationNameFormat {
     throw ArgumentError('Unknown OperationNameFormat value: $value');
   }
 }
+

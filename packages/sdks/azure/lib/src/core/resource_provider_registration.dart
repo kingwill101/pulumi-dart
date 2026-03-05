@@ -237,7 +237,6 @@ class ResourceProviderRegistration extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** The `feature` block allows a Preview Feature to be explicitly Registered or Unregistered for this Resource Provider - once a Feature has been explicitly Registered or Unregistered, it must be specified in the Terraform Configuration (it's not possible to reset this to the default, unspecified, state).
   late final pulumi.Output<List<Map<String, dynamic>>?> features;
-
   /// The namespace of the Resource Provider which should be registered. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
 
@@ -250,11 +249,11 @@ class ResourceProviderRegistration extends pulumi.CustomResource {
     ResourceProviderRegistrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/resourceProviderRegistration:ResourceProviderRegistration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/resourceProviderRegistration:ResourceProviderRegistration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     features = registerOutput<List<Map<String, dynamic>>?>('features');
     this.name = registerOutput<String>('name');
   }
@@ -277,11 +276,11 @@ class ResourceProviderRegistration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/resourceProviderRegistration:ResourceProviderRegistration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/resourceProviderRegistration:ResourceProviderRegistration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     features = registerOutput<List<Map<String, dynamic>>?>('features');
     this.name = registerOutput<String>('name');
   }

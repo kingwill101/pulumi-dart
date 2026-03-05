@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getManagedMaintenanceWindowStatus.
 class GetManagedMaintenanceWindowStatusResult {
   /// If updates can be applied.
   final bool canApplyUpdates;
-
   /// Indicates if the region is ready to configure maintenance windows.
   final bool isRegionReady;
-
   /// If maintenance window is active.
   final bool isWindowActive;
-
   /// If maintenance window is enabled on this cluster.
   final bool isWindowEnabled;
-
   /// Last window end time in UTC.
   final String lastWindowEndTimeUTC;
-
   /// Last window start time in UTC.
   final String lastWindowStartTimeUTC;
-
   /// Last window update time in UTC.
   final String lastWindowStatusUpdateAtUTC;
 
@@ -53,9 +48,7 @@ class GetManagedMaintenanceWindowStatusResult {
     };
   }
 
-  factory GetManagedMaintenanceWindowStatusResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedMaintenanceWindowStatusResult.fromMap(Map<String, dynamic> map) {
     return GetManagedMaintenanceWindowStatusResult(
       canApplyUpdates: map['canApplyUpdates'] as bool,
       isRegionReady: map['isRegionReady'] as bool,
@@ -67,3 +60,4 @@ class GetManagedMaintenanceWindowStatusResult {
     );
   }
 }
+

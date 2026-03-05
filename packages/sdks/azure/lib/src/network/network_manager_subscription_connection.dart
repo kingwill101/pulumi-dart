@@ -257,16 +257,12 @@ import 'network_manager_subscription_connection_state.dart';
 class NetworkManagerSubscriptionConnection extends pulumi.CustomResource {
   /// The Connection state of the Network Manager Subscription Connection.
   late final pulumi.Output<String> connectionState;
-
   /// A description of the Network Manager Subscription Connection.
   late final pulumi.Output<String?> description;
-
   /// Specifies the name which should be used for this Network Subscription Network Manager Connection. Changing this forces a new Network Subscription Network Manager Connection to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the ID of the Network Manager which the Subscription is connected to.
   late final pulumi.Output<String> networkManagerId;
-
   /// Specifies the ID of the target Subscription. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subscriptionId;
 
@@ -279,11 +275,11 @@ class NetworkManagerSubscriptionConnection extends pulumi.CustomResource {
     NetworkManagerSubscriptionConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerSubscriptionConnection:NetworkManagerSubscriptionConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerSubscriptionConnection:NetworkManagerSubscriptionConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionState = registerOutput<String>('connectionState');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -309,11 +305,11 @@ class NetworkManagerSubscriptionConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerSubscriptionConnection:NetworkManagerSubscriptionConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerSubscriptionConnection:NetworkManagerSubscriptionConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionState = registerOutput<String>('connectionState');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

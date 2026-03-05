@@ -1167,75 +1167,49 @@ import 'deployment_group_state.dart';
 /// [1]: http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html
 class DeploymentGroup extends pulumi.CustomResource {
   /// Configuration block of alarms associated with the deployment group (documented below).
-  late final pulumi.Output<DeploymentGroupAlarmConfiguration?>
-  alarmConfiguration;
-
+  late final pulumi.Output<DeploymentGroupAlarmConfiguration?> alarmConfiguration;
   /// The name of the application.
   late final pulumi.Output<String> appName;
-
   /// The ARN of the CodeDeploy deployment group.
   late final pulumi.Output<String> arn;
-
   /// Configuration block of the automatic rollback configuration associated with the deployment group (documented below).
-  late final pulumi.Output<DeploymentGroupAutoRollbackConfiguration?>
-  autoRollbackConfiguration;
-
+  late final pulumi.Output<DeploymentGroupAutoRollbackConfiguration?> autoRollbackConfiguration;
   /// Autoscaling groups associated with the deployment group.
   late final pulumi.Output<List<String>?> autoscalingGroups;
-
   /// Configuration block of the blue/green deployment options for a deployment group (documented below).
-  late final pulumi.Output<DeploymentGroupBlueGreenDeploymentConfig>
-  blueGreenDeploymentConfig;
-
+  late final pulumi.Output<DeploymentGroupBlueGreenDeploymentConfig> blueGreenDeploymentConfig;
   /// The destination platform type for the deployment.
   late final pulumi.Output<String> computePlatform;
-
   /// The name of the group's deployment config. The default is "CodeDeployDefault.OneAtATime".
   late final pulumi.Output<String?> deploymentConfigName;
-
   /// The ID of the CodeDeploy deployment group.
   late final pulumi.Output<String> deploymentGroupId;
-
   /// The name of the deployment group.
   late final pulumi.Output<String> deploymentGroupName;
-
   /// Configuration block of the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer (documented below).
   late final pulumi.Output<DeploymentGroupDeploymentStyle?> deploymentStyle;
-
   /// Tag filters associated with the deployment group. See the AWS docs for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> ec2TagFilters;
-
   /// Configuration block(s) of Tag filters associated with the deployment group, which are also referred to as tag groups (documented below). See the AWS docs for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> ec2TagSets;
-
   /// Configuration block(s) of the ECS services for a deployment group (documented below).
   late final pulumi.Output<DeploymentGroupEcsService?> ecsService;
-
   /// Single configuration block of the load balancer to use in a blue/green deployment (documented below).
   late final pulumi.Output<DeploymentGroupLoadBalancerInfo?> loadBalancerInfo;
-
   /// On premise tag filters associated with the group. See the AWS docs for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  onPremisesInstanceTagFilters;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> onPremisesInstanceTagFilters;
   /// Configuration block of Indicates what happens when new Amazon EC2 instances are launched mid-deployment and do not receive the deployed application revision. Valid values are `UPDATE` and `IGNORE`. Defaults to `UPDATE`.
   late final pulumi.Output<String?> outdatedInstancesStrategy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The service role ARN that allows deployments.
   late final pulumi.Output<String> serviceRoleArn;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Indicates whether the deployment group was configured to have CodeDeploy install a termination hook into an Auto Scaling group.
   late final pulumi.Output<bool?> terminationHookEnabled;
-
   /// Configuration block(s) of the triggers for the deployment group (documented below).
   late final pulumi.Output<List<Map<String, dynamic>>?> triggerConfigurations;
 
@@ -1248,98 +1222,34 @@ class DeploymentGroup extends pulumi.CustomResource {
     DeploymentGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codedeploy/deploymentGroup:DeploymentGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    alarmConfiguration = registerOutput<DeploymentGroupAlarmConfiguration?>(
-      'alarmConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeploymentGroupAlarmConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:codedeploy/deploymentGroup:DeploymentGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    alarmConfiguration = registerOutput<DeploymentGroupAlarmConfiguration?>('alarmConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupAlarmConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     appName = registerOutput<String>('appName');
     arn = registerOutput<String>('arn');
-    autoRollbackConfiguration =
-        registerOutput<DeploymentGroupAutoRollbackConfiguration?>(
-          'autoRollbackConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DeploymentGroupAutoRollbackConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    autoRollbackConfiguration = registerOutput<DeploymentGroupAutoRollbackConfiguration?>('autoRollbackConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupAutoRollbackConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoscalingGroups = registerOutput<List<String>?>('autoscalingGroups');
-    blueGreenDeploymentConfig =
-        registerOutput<DeploymentGroupBlueGreenDeploymentConfig>(
-          'blueGreenDeploymentConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DeploymentGroupBlueGreenDeploymentConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    blueGreenDeploymentConfig = registerOutput<DeploymentGroupBlueGreenDeploymentConfig>('blueGreenDeploymentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupBlueGreenDeploymentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     computePlatform = registerOutput<String>('computePlatform');
     deploymentConfigName = registerOutput<String?>('deploymentConfigName');
     deploymentGroupId = registerOutput<String>('deploymentGroupId');
     deploymentGroupName = registerOutput<String>('deploymentGroupName');
-    deploymentStyle = registerOutput<DeploymentGroupDeploymentStyle?>(
-      'deploymentStyle',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeploymentGroupDeploymentStyle.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ec2TagFilters = registerOutput<List<Map<String, dynamic>>?>(
-      'ec2TagFilters',
-    );
+    deploymentStyle = registerOutput<DeploymentGroupDeploymentStyle?>('deploymentStyle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupDeploymentStyle.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ec2TagFilters = registerOutput<List<Map<String, dynamic>>?>('ec2TagFilters');
     ec2TagSets = registerOutput<List<Map<String, dynamic>>?>('ec2TagSets');
-    ecsService = registerOutput<DeploymentGroupEcsService?>(
-      'ecsService',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeploymentGroupEcsService.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    loadBalancerInfo = registerOutput<DeploymentGroupLoadBalancerInfo?>(
-      'loadBalancerInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeploymentGroupLoadBalancerInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    onPremisesInstanceTagFilters = registerOutput<List<Map<String, dynamic>>?>(
-      'onPremisesInstanceTagFilters',
-    );
-    outdatedInstancesStrategy = registerOutput<String?>(
-      'outdatedInstancesStrategy',
-    );
+    ecsService = registerOutput<DeploymentGroupEcsService?>('ecsService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupEcsService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loadBalancerInfo = registerOutput<DeploymentGroupLoadBalancerInfo?>('loadBalancerInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupLoadBalancerInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    onPremisesInstanceTagFilters = registerOutput<List<Map<String, dynamic>>?>('onPremisesInstanceTagFilters');
+    outdatedInstancesStrategy = registerOutput<String?>('outdatedInstancesStrategy');
     region = registerOutput<String>('region');
     serviceRoleArn = registerOutput<String>('serviceRoleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     terminationHookEnabled = registerOutput<bool?>('terminationHookEnabled');
-    triggerConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'triggerConfigurations',
-    );
+    triggerConfigurations = registerOutput<List<Map<String, dynamic>>?>('triggerConfigurations');
   }
 
   /// Gets an existing [DeploymentGroup] resource's state with the given [name] and [id].
@@ -1360,97 +1270,33 @@ class DeploymentGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codedeploy/deploymentGroup:DeploymentGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    alarmConfiguration = registerOutput<DeploymentGroupAlarmConfiguration?>(
-      'alarmConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeploymentGroupAlarmConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:codedeploy/deploymentGroup:DeploymentGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    alarmConfiguration = registerOutput<DeploymentGroupAlarmConfiguration?>('alarmConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupAlarmConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     appName = registerOutput<String>('appName');
     arn = registerOutput<String>('arn');
-    autoRollbackConfiguration =
-        registerOutput<DeploymentGroupAutoRollbackConfiguration?>(
-          'autoRollbackConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DeploymentGroupAutoRollbackConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    autoRollbackConfiguration = registerOutput<DeploymentGroupAutoRollbackConfiguration?>('autoRollbackConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupAutoRollbackConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoscalingGroups = registerOutput<List<String>?>('autoscalingGroups');
-    blueGreenDeploymentConfig =
-        registerOutput<DeploymentGroupBlueGreenDeploymentConfig>(
-          'blueGreenDeploymentConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DeploymentGroupBlueGreenDeploymentConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    blueGreenDeploymentConfig = registerOutput<DeploymentGroupBlueGreenDeploymentConfig>('blueGreenDeploymentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupBlueGreenDeploymentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     computePlatform = registerOutput<String>('computePlatform');
     deploymentConfigName = registerOutput<String?>('deploymentConfigName');
     deploymentGroupId = registerOutput<String>('deploymentGroupId');
     deploymentGroupName = registerOutput<String>('deploymentGroupName');
-    deploymentStyle = registerOutput<DeploymentGroupDeploymentStyle?>(
-      'deploymentStyle',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeploymentGroupDeploymentStyle.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ec2TagFilters = registerOutput<List<Map<String, dynamic>>?>(
-      'ec2TagFilters',
-    );
+    deploymentStyle = registerOutput<DeploymentGroupDeploymentStyle?>('deploymentStyle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupDeploymentStyle.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ec2TagFilters = registerOutput<List<Map<String, dynamic>>?>('ec2TagFilters');
     ec2TagSets = registerOutput<List<Map<String, dynamic>>?>('ec2TagSets');
-    ecsService = registerOutput<DeploymentGroupEcsService?>(
-      'ecsService',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeploymentGroupEcsService.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    loadBalancerInfo = registerOutput<DeploymentGroupLoadBalancerInfo?>(
-      'loadBalancerInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeploymentGroupLoadBalancerInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    onPremisesInstanceTagFilters = registerOutput<List<Map<String, dynamic>>?>(
-      'onPremisesInstanceTagFilters',
-    );
-    outdatedInstancesStrategy = registerOutput<String?>(
-      'outdatedInstancesStrategy',
-    );
+    ecsService = registerOutput<DeploymentGroupEcsService?>('ecsService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupEcsService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loadBalancerInfo = registerOutput<DeploymentGroupLoadBalancerInfo?>('loadBalancerInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupLoadBalancerInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    onPremisesInstanceTagFilters = registerOutput<List<Map<String, dynamic>>?>('onPremisesInstanceTagFilters');
+    outdatedInstancesStrategy = registerOutput<String?>('outdatedInstancesStrategy');
     region = registerOutput<String>('region');
     serviceRoleArn = registerOutput<String>('serviceRoleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     terminationHookEnabled = registerOutput<bool?>('terminationHookEnabled');
-    triggerConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'triggerConfigurations',
-    );
+    triggerConfigurations = registerOutput<List<Map<String, dynamic>>?>('triggerConfigurations');
   }
 }

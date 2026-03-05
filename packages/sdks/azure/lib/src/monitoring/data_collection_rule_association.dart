@@ -678,20 +678,16 @@ import 'data_collection_rule_association_state.dart';
 class DataCollectionRuleAssociation extends pulumi.CustomResource {
   /// The ID of the Data Collection Endpoint which will be associated to the target resource.
   late final pulumi.Output<String?> dataCollectionEndpointId;
-
   /// The ID of the Data Collection Rule which will be associated to the target resource.
   ///
   /// &gt; **Note:** Exactly one of `data_collection_endpoint_id` and `data_collection_rule_id` blocks must be specified.
   late final pulumi.Output<String?> dataCollectionRuleId;
-
   /// The description of the Data Collection Rule Association.
   late final pulumi.Output<String?> description;
-
   /// The name which should be used for this Data Collection Rule Association. Changing this forces a new Data Collection Rule Association to be created. Defaults to `configurationAccessEndpoint`.
   ///
   /// &gt; **Note:** `name` is required when `data_collection_rule_id` is specified. And when `data_collection_endpoint_id` is specified, the `name` is populated with `configurationAccessEndpoint`.
   late final pulumi.Output<String> name;
-
   /// The ID of the Azure Resource which to associate to a Data Collection Rule or a Data Collection Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetResourceId;
 
@@ -704,14 +700,12 @@ class DataCollectionRuleAssociation extends pulumi.CustomResource {
     DataCollectionRuleAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/dataCollectionRuleAssociation:DataCollectionRuleAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    dataCollectionEndpointId = registerOutput<String?>(
-      'dataCollectionEndpointId',
-    );
+          'azure:monitoring/dataCollectionRuleAssociation:DataCollectionRuleAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    dataCollectionEndpointId = registerOutput<String?>('dataCollectionEndpointId');
     dataCollectionRuleId = registerOutput<String?>('dataCollectionRuleId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -736,14 +730,12 @@ class DataCollectionRuleAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/dataCollectionRuleAssociation:DataCollectionRuleAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    dataCollectionEndpointId = registerOutput<String?>(
-      'dataCollectionEndpointId',
-    );
+          'azure:monitoring/dataCollectionRuleAssociation:DataCollectionRuleAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    dataCollectionEndpointId = registerOutput<String?>('dataCollectionEndpointId');
     dataCollectionRuleId = registerOutput<String?>('dataCollectionRuleId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

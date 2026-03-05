@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MixinResponse {
   /// The fully qualified name of the interface which is included.
   final pulumi.Input<String> name;
-
   /// If non-empty specifies a path under which inherited HTTP paths are rooted.
   final pulumi.Input<String> root;
 
   /// Creates a new [MixinResponse].
   /// [name] The fully qualified name of the interface which is included.
   /// [root] If non-empty specifies a path under which inherited HTTP paths are rooted.
-  MixinResponse({required this.name, required this.root});
+  MixinResponse({
+    required this.name,
+    required this.root,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'root': root};
+    return <String, dynamic>{
+      'name': name,
+      'root': root,
+    };
   }
 
   factory MixinResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class MixinResponse {
     );
   }
 }
+

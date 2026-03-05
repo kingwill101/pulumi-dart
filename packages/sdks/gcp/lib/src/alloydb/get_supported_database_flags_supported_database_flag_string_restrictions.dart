@@ -13,16 +13,15 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowedValues': allowedValues};
+    return <String, dynamic>{
+      'allowedValues': allowedValues,
+    };
   }
 
-  factory GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions.fromMap(Map<String, dynamic> map) {
     return GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions(
-      allowedValues: pulumi.Input.fromValue(
-        (map['allowedValues'] as List).cast<String>(),
-      ),
+      allowedValues: pulumi.Input.fromValue((map['allowedValues'] as List).cast<String>()),
     );
   }
 }
+

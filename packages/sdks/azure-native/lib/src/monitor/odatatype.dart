@@ -1,14 +1,8 @@
 /// specifies the type of the alert criteria.
 enum Odatatype {
-  valueMicrosoftAzureMonitorSingleResourceMultipleMetricCriteria(
-    "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
-  ),
-  valueMicrosoftAzureMonitorMultipleResourceMultipleMetricCriteria(
-    "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria",
-  ),
-  valueMicrosoftAzureMonitorWebtestLocationAvailabilityCriteria(
-    "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria",
-  );
+  valueMicrosoftAzureMonitorSingleResourceMultipleMetricCriteria("Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"),
+  valueMicrosoftAzureMonitorMultipleResourceMultipleMetricCriteria("Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"),
+  valueMicrosoftAzureMonitorWebtestLocationAvailabilityCriteria("Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria");
 
   const Odatatype(this.wireValue);
   final String wireValue;
@@ -22,3 +16,4 @@ enum Odatatype {
     throw ArgumentError('Unknown Odatatype value: $value');
   }
 }
+

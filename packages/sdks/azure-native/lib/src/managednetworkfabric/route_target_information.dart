@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteTargetInformation {
   /// Route Targets to be applied for outgoing routes into CE.
   final pulumi.Input<List<String>>? exportIpv4RouteTargets;
-
   /// Route Targets to be applied for outgoing routes from CE.
   final pulumi.Input<List<String>>? exportIpv6RouteTargets;
-
   /// Route Targets to be applied for incoming routes into CE.
   final pulumi.Input<List<String>>? importIpv4RouteTargets;
-
   /// Route Targets to be applied for incoming routes from CE.
   final pulumi.Input<List<String>>? importIpv6RouteTargets;
 
@@ -39,26 +36,11 @@ class RouteTargetInformation {
 
   factory RouteTargetInformation.fromMap(Map<String, dynamic> map) {
     return RouteTargetInformation(
-      exportIpv4RouteTargets: (() {
-        final guardedValue = map['exportIpv4RouteTargets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      exportIpv6RouteTargets: (() {
-        final guardedValue = map['exportIpv6RouteTargets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      importIpv4RouteTargets: (() {
-        final guardedValue = map['importIpv4RouteTargets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      importIpv6RouteTargets: (() {
-        final guardedValue = map['importIpv6RouteTargets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      exportIpv4RouteTargets: (() { final guardedValue = map['exportIpv4RouteTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      exportIpv6RouteTargets: (() { final guardedValue = map['exportIpv6RouteTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      importIpv4RouteTargets: (() { final guardedValue = map['importIpv4RouteTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      importIpv6RouteTargets: (() { final guardedValue = map['importIpv6RouteTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

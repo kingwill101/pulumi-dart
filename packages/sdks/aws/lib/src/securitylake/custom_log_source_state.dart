@@ -9,24 +9,18 @@ import 'custom_log_source_provider_detail.dart';
 class CustomLogSourceState {
   /// The attributes of a third-party custom source.
   final pulumi.Input<List<CustomLogSourceAttribute>>? attributes;
-
   /// The configuration for the third-party custom source.
   final pulumi.Input<CustomLogSourceConfiguration>? configuration;
-
   /// The Open Cybersecurity Schema Framework (OCSF) event classes which describes the type of data that the custom source will send to Security Lake.
   final pulumi.Input<List<String>>? eventClasses;
-
   /// The details of the log provider for a third-party custom source.
   final pulumi.Input<List<CustomLogSourceProviderDetail>>? providerDetails;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Specify the name for a third-party custom source.
   /// This must be a Regionally unique value.
   /// Has a maximum length of 20.
   final pulumi.Input<String>? sourceName;
-
   /// Specify the source version for the third-party custom source, to limit log collection to a specific version of custom data source.
   final pulumi.Input<String>? sourceVersion;
 
@@ -50,36 +44,10 @@ class CustomLogSourceState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CustomLogSourceAttribute>,
-            List<Map<String, dynamic>>
-          >(
-            attributes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CustomLogSourceAttribute,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'configuration':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomLogSourceConfiguration,
-            Map<String, dynamic>
-          >(configuration, (value) => value.toMap()),
+      'attributes': ?pulumi.Input.mapOptionalInputValue<List<CustomLogSourceAttribute>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<CustomLogSourceAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<CustomLogSourceConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'eventClasses': ?eventClasses,
-      'providerDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CustomLogSourceProviderDetail>,
-            List<Map<String, dynamic>>
-          >(
-            providerDetails,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CustomLogSourceProviderDetail,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'providerDetails': ?pulumi.Input.mapOptionalInputValue<List<CustomLogSourceProviderDetail>, List<Map<String, dynamic>>>(providerDetails, (value) => pulumi.Input.encodeList<CustomLogSourceProviderDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
       'sourceName': ?sourceName,
       'sourceVersion': ?sourceVersion,
@@ -88,59 +56,14 @@ class CustomLogSourceState {
 
   factory CustomLogSourceState.fromMap(Map<String, dynamic> map) {
     return CustomLogSourceState(
-      attributes: (() {
-        final guardedValue = map['attributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CustomLogSourceAttribute>(
-            guardedValue,
-            (value) => CustomLogSourceAttribute.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      configuration: (() {
-        final guardedValue = map['configuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomLogSourceConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      eventClasses: (() {
-        final guardedValue = map['eventClasses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      providerDetails: (() {
-        final guardedValue = map['providerDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CustomLogSourceProviderDetail>(
-            guardedValue,
-            (value) => CustomLogSourceProviderDetail.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceName: (() {
-        final guardedValue = map['sourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceVersion: (() {
-        final guardedValue = map['sourceVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CustomLogSourceAttribute>(guardedValue, (value) => CustomLogSourceAttribute.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomLogSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      eventClasses: (() { final guardedValue = map['eventClasses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      providerDetails: (() { final guardedValue = map['providerDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CustomLogSourceProviderDetail>(guardedValue, (value) => CustomLogSourceProviderDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceName: (() { final guardedValue = map['sourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceVersion: (() { final guardedValue = map['sourceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

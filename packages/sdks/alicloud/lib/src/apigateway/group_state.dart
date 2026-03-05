@@ -7,25 +7,18 @@ import 'group_user_log_config.dart';
 class GroupState {
   /// The base path of the api gateway group. Defaults to `/`.
   final pulumi.Input<String>? basePath;
-
   /// The description of the api gateway group. Defaults to null.
   final pulumi.Input<String>? description;
-
   /// The id of the api gateway.
   final pulumi.Input<String>? instanceId;
-
   /// The name of the api gateway group. Defaults to null.
   final pulumi.Input<String>? name;
-
   /// (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
   final pulumi.Input<String>? subDomain;
-
   /// user_log_config defines the config of user log of the group. See `user_log_config` below.
   final pulumi.Input<GroupUserLogConfig>? userLogConfig;
-
   /// (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
   final pulumi.Input<String>? vpcDomain;
-
   /// Whether to enable `vpc_domain`. Defaults to `false`.
   final pulumi.Input<bool>? vpcIntranetEnable;
 
@@ -56,11 +49,7 @@ class GroupState {
       'instanceId': ?instanceId,
       'name': ?name,
       'subDomain': ?subDomain,
-      'userLogConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GroupUserLogConfig,
-            Map<String, dynamic>
-          >(userLogConfig, (value) => value.toMap()),
+      'userLogConfig': ?pulumi.Input.mapOptionalInputValue<GroupUserLogConfig, Map<String, dynamic>>(userLogConfig, (value) => value.toMap()),
       'vpcDomain': ?vpcDomain,
       'vpcIntranetEnable': ?vpcIntranetEnable,
     };
@@ -68,50 +57,15 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      basePath: (() {
-        final guardedValue = map['basePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subDomain: (() {
-        final guardedValue = map['subDomain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userLogConfig: (() {
-        final guardedValue = map['userLogConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GroupUserLogConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      vpcDomain: (() {
-        final guardedValue = map['vpcDomain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vpcIntranetEnable: (() {
-        final guardedValue = map['vpcIntranetEnable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      basePath: (() { final guardedValue = map['basePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subDomain: (() { final guardedValue = map['subDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userLogConfig: (() { final guardedValue = map['userLogConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GroupUserLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      vpcDomain: (() { final guardedValue = map['vpcDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vpcIntranetEnable: (() { final guardedValue = map['vpcIntranetEnable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

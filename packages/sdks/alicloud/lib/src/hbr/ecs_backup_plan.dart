@@ -555,53 +555,37 @@ import 'ecs_backup_plan_state.dart';
 class EcsBackupPlan extends pulumi.CustomResource {
   /// Backup type. Valid values: `COMPLETE`.
   late final pulumi.Output<String> backupType;
-
   /// The role name created in the original account RAM backup by the cross account managed by the current account.
   late final pulumi.Output<String?> crossAccountRoleName;
-
   /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
   late final pulumi.Output<String> crossAccountType;
-
   /// The original account ID of the cross account backup managed by the current account.
   late final pulumi.Output<int?> crossAccountUserId;
-
   /// The detail of the backup plan.
   late final pulumi.Output<String?> detail;
-
   /// Whether to disable the backup task. Valid values: `true`, `false`.
   late final pulumi.Output<bool> disabled;
-
   /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
   late final pulumi.Output<String> ecsBackupPlanName;
-
   /// Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
   late final pulumi.Output<String?> exclude;
-
   /// Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
   late final pulumi.Output<String?> include;
-
   /// The ID of ECS instance. The ecs backup client must have been installed on the host.
   late final pulumi.Output<String> instanceId;
-
   /// Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
   late final pulumi.Output<String?> options;
-
   /// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
   late final pulumi.Output<List<String>?> paths;
-
   /// Backup retention days, the minimum is 1.
   late final pulumi.Output<String> retention;
-
   /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
   /// * `startTime` Backup start time, UNIX time seconds.
   late final pulumi.Output<String> schedule;
-
   /// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
   late final pulumi.Output<String?> speedLimit;
-
   /// Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
   late final pulumi.Output<bool?> updatePaths;
-
   /// The ID of Backup vault.
   late final pulumi.Output<String> vaultId;
 
@@ -614,11 +598,11 @@ class EcsBackupPlan extends pulumi.CustomResource {
     EcsBackupPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/ecsBackupPlan:EcsBackupPlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/ecsBackupPlan:EcsBackupPlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupType = registerOutput<String>('backupType');
     crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
     crossAccountType = registerOutput<String>('crossAccountType');
@@ -656,11 +640,11 @@ class EcsBackupPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/ecsBackupPlan:EcsBackupPlan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/ecsBackupPlan:EcsBackupPlan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupType = registerOutput<String>('backupType');
     crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
     crossAccountType = registerOutput<String>('crossAccountType');

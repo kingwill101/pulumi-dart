@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse {
   /// The reCAPTCHA Enterprise key resource name, e.g. "projects/{project}/keys/{key}"
   final pulumi.Input<String> key;
-
   /// The client's platform type.
   final pulumi.Input<String> type;
 
@@ -19,15 +18,17 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'type': type};
+    return <String, dynamic>{
+      'key': key,
+      'type': type,
+    };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse(
       key: pulumi.Input.fromValue(map['key'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

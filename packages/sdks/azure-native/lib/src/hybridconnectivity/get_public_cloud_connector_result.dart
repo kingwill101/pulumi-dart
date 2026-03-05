@@ -7,34 +7,24 @@ import 'system_data_response.dart';
 class GetPublicCloudConnectorResult {
   /// Cloud profile for AWS.
   final AwsCloudProfileResponse awsCloudProfile;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Connector primary identifier.
   final String connectorPrimaryIdentifier;
-
   /// Host cloud the public cloud connector.
   final String hostType;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The resource provisioning state.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -82,9 +72,7 @@ class GetPublicCloudConnectorResult {
 
   factory GetPublicCloudConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetPublicCloudConnectorResult(
-      awsCloudProfile: AwsCloudProfileResponse.fromMap(
-        (map['awsCloudProfile']! as Map).cast<String, dynamic>(),
-      ),
+      awsCloudProfile: AwsCloudProfileResponse.fromMap((map['awsCloudProfile']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
       connectorPrimaryIdentifier: map['connectorPrimaryIdentifier'] as String,
       hostType: map['hostType'] as String,
@@ -92,15 +80,10 @@ class GetPublicCloudConnectorResult {
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

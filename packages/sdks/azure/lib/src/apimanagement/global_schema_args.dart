@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlobalSchemaArgs {
   /// The Name of the API Management Service where the API exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
-
   /// The description of the schema.
   final pulumi.Input<String>? description;
-
   /// The Name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A unique identifier for this Schema. Changing this forces a new resource to be created.
   final pulumi.Input<String> schemaId;
-
   /// The content type of the Schema. Possible values are `xml` and `json`.
   final pulumi.Input<String> type;
-
   /// The string defining the document representing the Schema.
   final pulumi.Input<String> value;
 
@@ -54,20 +49,13 @@ class GlobalSchemaArgs {
 
   factory GlobalSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GlobalSchemaArgs(
-      apiManagementName: pulumi.Input.fromValue(
-        map['apiManagementName'] as String,
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      apiManagementName: pulumi.Input.fromValue(map['apiManagementName'] as String),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       schemaId: pulumi.Input.fromValue(map['schemaId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

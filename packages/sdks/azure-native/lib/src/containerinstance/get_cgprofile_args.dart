@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCGProfileArgs {
   /// ContainerGroupProfile name.
   final pulumi.Input<String> containerGroupProfileName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetCGProfileArgs {
 
   factory GetCGProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetCGProfileArgs(
-      containerGroupProfileName: pulumi.Input.fromValue(
-        map['containerGroupProfileName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      containerGroupProfileName: pulumi.Input.fromValue(map['containerGroupProfileName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -10,14 +10,13 @@ class Sku {
 
   /// Creates a new [Sku].
   /// [name] The name of the Azure Health Bot SKU
-  Sku({required this.name});
+  Sku({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'name': pulumi.Input.mapInputValue<SkuName, String>(
-        name,
-        (value) => value.wireValue,
-      ),
+      'name': pulumi.Input.mapInputValue<SkuName, String>(name, (value) => value.wireValue),
     };
   }
 
@@ -27,3 +26,4 @@ class Sku {
     );
   }
 }
+

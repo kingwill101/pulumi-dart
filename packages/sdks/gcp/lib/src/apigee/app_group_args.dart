@@ -11,23 +11,17 @@ class AppGroupArgs {
   /// A list of attributes
   /// Structure is documented below.
   final pulumi.Input<List<AppGroupAttribute>>? attributes;
-
   /// Channel identifier identifies the owner maintaining this grouping.
   final pulumi.Input<String>? channelId;
-
   /// A reference to the associated storefront/marketplace.
   final pulumi.Input<String>? channelUri;
-
   /// App group name displayed in the UI
   final pulumi.Input<String>? displayName;
-
   /// Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
   final pulumi.Input<String>? name;
-
   /// The Apigee Organization associated with the Apigee app group,
   /// in the format `organizations/{{org_name}}`.
   final pulumi.Input<String> orgId;
-
   /// Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
   /// Possible values are: `active`, `inactive`.
   final pulumi.Input<String>? status;
@@ -52,18 +46,7 @@ class AppGroupArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AppGroupAttribute>,
-            List<Map<String, dynamic>>
-          >(
-            attributes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AppGroupAttribute,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'attributes': ?pulumi.Input.mapOptionalInputValue<List<AppGroupAttribute>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<AppGroupAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'channelId': ?channelId,
       'channelUri': ?channelUri,
       'displayName': ?displayName,
@@ -75,44 +58,14 @@ class AppGroupArgs {
 
   factory AppGroupArgs.fromMap(Map<String, dynamic> map) {
     return AppGroupArgs(
-      attributes: (() {
-        final guardedValue = map['attributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AppGroupAttribute>(
-            guardedValue,
-            (value) => AppGroupAttribute.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      channelId: (() {
-        final guardedValue = map['channelId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      channelUri: (() {
-        final guardedValue = map['channelUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppGroupAttribute>(guardedValue, (value) => AppGroupAttribute.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      channelId: (() { final guardedValue = map['channelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      channelUri: (() { final guardedValue = map['channelUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orgId: pulumi.Input.fromValue(map['orgId'] as String),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

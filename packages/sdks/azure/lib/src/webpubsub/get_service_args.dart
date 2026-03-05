@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceArgs {
   /// Specifies the name of the Web Pubsub service.
   final pulumi.Input<String> name;
-
   /// Specifies the name of the resource group the Web Pubsub service is located in.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetServiceArgs].
   /// [name] Specifies the name of the Web Pubsub service.
   /// [resourceGroupName] Specifies the name of the resource group the Web Pubsub service is located in.
-  GetServiceArgs({required this.name, required this.resourceGroupName});
+  GetServiceArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetServiceArgs {
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

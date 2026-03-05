@@ -4,22 +4,16 @@ enum GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProduc
   singleContextProduct("SINGLE_CONTEXT_PRODUCT"),
   multipleContextProducts("MULTIPLE_CONTEXT_PRODUCTS");
 
-  const GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType(
-    this.wireValue,
-  );
+  const GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType
-  fromValue(String value) {
-    for (final item
-        in GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType
-            .values) {
+  static GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType fromValue(String value) {
+    for (final item in GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType value: $value');
   }
 }
+

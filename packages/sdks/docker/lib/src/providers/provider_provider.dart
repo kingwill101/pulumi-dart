@@ -9,19 +9,14 @@ import 'provider_terraform_config_result.dart';
 class ProviderProvider extends pulumi.ProviderResource {
   /// PEM-encoded content of Docker host CA certificate
   late final pulumi.Output<String?> caMaterial;
-
   /// PEM-encoded content of Docker client certificate
   late final pulumi.Output<String?> certMaterial;
-
   /// Path to directory with Docker TLS config
   late final pulumi.Output<String?> certPath;
-
   /// The name of the Docker context to use. Can also be set via `DOCKER_CONTEXT` environment variable. Overrides the `host` if set.
   late final pulumi.Output<String?> context;
-
   /// The Docker daemon address
   late final pulumi.Output<String?> host;
-
   /// PEM-encoded content of Docker client private key
   late final pulumi.Output<String?> keyMaterial;
 
@@ -34,11 +29,11 @@ class ProviderProvider extends pulumi.ProviderResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'docker',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'docker',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     caMaterial = registerOutput<String?>('caMaterial');
     certMaterial = registerOutput<String?>('certMaterial');
     certPath = registerOutput<String?>('certPath');

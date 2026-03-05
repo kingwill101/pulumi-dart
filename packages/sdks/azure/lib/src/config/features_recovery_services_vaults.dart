@@ -7,22 +7,20 @@ class FeaturesRecoveryServicesVaults {
 
   /// Creates a new [FeaturesRecoveryServicesVaults].
   /// [recoverSoftDeletedBackupProtectedVm] Optional.
-  FeaturesRecoveryServicesVaults({this.recoverSoftDeletedBackupProtectedVm});
+  FeaturesRecoveryServicesVaults({
+    this.recoverSoftDeletedBackupProtectedVm,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'recoverSoftDeletedBackupProtectedVm':
-          ?recoverSoftDeletedBackupProtectedVm,
+      'recoverSoftDeletedBackupProtectedVm': ?recoverSoftDeletedBackupProtectedVm,
     };
   }
 
   factory FeaturesRecoveryServicesVaults.fromMap(Map<String, dynamic> map) {
     return FeaturesRecoveryServicesVaults(
-      recoverSoftDeletedBackupProtectedVm: (() {
-        final guardedValue = map['recoverSoftDeletedBackupProtectedVm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      recoverSoftDeletedBackupProtectedVm: (() { final guardedValue = map['recoverSoftDeletedBackupProtectedVm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

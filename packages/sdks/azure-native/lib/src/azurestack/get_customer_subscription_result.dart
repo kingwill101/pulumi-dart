@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCustomerSubscription.
 class GetCustomerSubscriptionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The entity tag used for optimistic concurrency when modifying the resource.
   final String? etag;
-
   /// ID of the resource.
   final String id;
-
   /// Name of the resource.
   final String name;
-
   /// Tenant Id.
   final String? tenantId;
-
   /// Type of Resource.
   final String type;
 
@@ -50,19 +46,12 @@ class GetCustomerSubscriptionResult {
   factory GetCustomerSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetCustomerSubscriptionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

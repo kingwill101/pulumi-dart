@@ -9,13 +9,20 @@ class KeyVaultReference {
 
   /// Creates a new [KeyVaultReference].
   /// [id] Azure resource ID of the Key Vault.
-  KeyVaultReference({required this.id});
+  KeyVaultReference({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory KeyVaultReference.fromMap(Map<String, dynamic> map) {
-    return KeyVaultReference(id: pulumi.Input.fromValue(map['id'] as String));
+    return KeyVaultReference(
+      id: pulumi.Input.fromValue(map['id'] as String),
+    );
   }
 }
+

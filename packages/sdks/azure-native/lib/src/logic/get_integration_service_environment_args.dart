@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIntegrationServiceEnvironmentArgs {
   /// The integration service environment name.
   final pulumi.Input<String> integrationServiceEnvironmentName;
-
   /// The resource group.
   final pulumi.Input<String> resourceGroup;
 
@@ -28,14 +27,11 @@ class GetIntegrationServiceEnvironmentArgs {
     };
   }
 
-  factory GetIntegrationServiceEnvironmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetIntegrationServiceEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationServiceEnvironmentArgs(
-      integrationServiceEnvironmentName: pulumi.Input.fromValue(
-        map['integrationServiceEnvironmentName'] as String,
-      ),
+      integrationServiceEnvironmentName: pulumi.Input.fromValue(map['integrationServiceEnvironmentName'] as String),
       resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
     );
   }
 }
+

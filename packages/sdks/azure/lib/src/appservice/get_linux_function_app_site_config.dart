@@ -10,113 +10,75 @@ import 'get_linux_function_app_site_config_scm_ip_restriction.dart';
 class GetLinuxFunctionAppSiteConfig {
   /// If this Linux Web App is Always On enabled.
   final pulumi.Input<bool> alwaysOn;
-
   /// The URL of the API definition that describes this Linux Function App.
   final pulumi.Input<String> apiDefinitionUrl;
-
   /// The ID of the API Management API for this Linux Function App.
   final pulumi.Input<String> apiManagementApiId;
-
   /// The App command line that is launched.
   final pulumi.Input<String> appCommandLine;
-
   /// The number of workers this function app can scale out to.
   final pulumi.Input<int> appScaleLimit;
-
   /// An `app_service_logs` block as defined above.
-  final pulumi.Input<List<GetLinuxFunctionAppSiteConfigAppServiceLog>>
-  appServiceLogs;
-
+  final pulumi.Input<List<GetLinuxFunctionAppSiteConfigAppServiceLog>> appServiceLogs;
   /// The Connection String that links the Linux Function App to Application Insights.
   final pulumi.Input<String> applicationInsightsConnectionString;
-
   /// The Instrumentation Key that connects the Linux Function App to Application Insights.
   final pulumi.Input<String> applicationInsightsKey;
-
   /// An `application_stack` block as defined above.
-  final pulumi.Input<List<GetLinuxFunctionAppSiteConfigApplicationStack>>
-  applicationStacks;
-
+  final pulumi.Input<List<GetLinuxFunctionAppSiteConfigApplicationStack>> applicationStacks;
   /// The Client ID of the Managed Service Identity that is used for connections to the Azure Container Registry.
   final pulumi.Input<String> containerRegistryManagedIdentityClientId;
-
   /// Do connections for Azure Container Registry use Managed Identity?
   final pulumi.Input<bool> containerRegistryUseManagedIdentity;
-
   /// A `cors` block as defined above.
   final pulumi.Input<List<GetLinuxFunctionAppSiteConfigCor>> cors;
-
   /// A list of Default Documents for the Linux Web App.
   final pulumi.Input<List<String>> defaultDocuments;
   final pulumi.Input<bool> detailedErrorLoggingEnabled;
-
   /// The number of minimum instances for this Linux Function App.
   final pulumi.Input<int> elasticInstanceMinimum;
-
   /// State of FTP / FTPS service for this function app.
   final pulumi.Input<String> ftpsState;
-
   /// The amount of time in minutes that a node can be unhealthy before being removed from the load balancer.
   final pulumi.Input<int> healthCheckEvictionTimeInMin;
-
   /// The path that is checked for this function app health.
   final pulumi.Input<String> healthCheckPath;
-
   /// Is the HTTP2 protocol enabled?
   final pulumi.Input<bool> http2Enabled;
-
   /// The Default action for traffic that does not match any `ip_restriction` rule.
   final pulumi.Input<String> ipRestrictionDefaultAction;
-
   /// One or more `ip_restriction` blocks as defined above.
-  final pulumi.Input<List<GetLinuxFunctionAppSiteConfigIpRestriction>>
-  ipRestrictions;
+  final pulumi.Input<List<GetLinuxFunctionAppSiteConfigIpRestriction>> ipRestrictions;
   final pulumi.Input<String> linuxFxVersion;
-
   /// The Site load balancing mode.
   final pulumi.Input<String> loadBalancingMode;
-
   /// Managed pipeline mode.
   final pulumi.Input<String> managedPipelineMode;
-
   /// The minimum version of TLS required for SSL requests.
   final pulumi.Input<String> minimumTlsVersion;
-
   /// The number of pre-warmed instances for this function app.
   final pulumi.Input<int> preWarmedInstanceCount;
-
   /// Is Remote Debugging enabled?
   final pulumi.Input<bool> remoteDebuggingEnabled;
-
   /// The Remote Debugging Version.
   final pulumi.Input<String> remoteDebuggingVersion;
-
   /// Is Scale Monitoring of the Functions Runtime enabled?
   final pulumi.Input<bool> runtimeScaleMonitoringEnabled;
-
   /// The Default action for traffic that does not match any `scm_ip_restriction` rule.
   final pulumi.Input<String>? scmIpRestrictionDefaultAction;
-
   /// One or more `scm_ip_restriction` blocks as defined above.
-  final pulumi.Input<List<GetLinuxFunctionAppSiteConfigScmIpRestriction>>
-  scmIpRestrictions;
-
+  final pulumi.Input<List<GetLinuxFunctionAppSiteConfigScmIpRestriction>> scmIpRestrictions;
   /// The minimum version of TLS for SSL requests to the SCM site.
   final pulumi.Input<String> scmMinimumTlsVersion;
   final pulumi.Input<String> scmType;
-
   /// Is the Linux Function App `ip_restriction` configuration used for the SCM also?
   final pulumi.Input<bool> scmUseMainIpRestriction;
-
   /// Does the Linux Web App use a 32-bit worker process?
   final pulumi.Input<bool> use32BitWorker;
-
   /// Are all outbound traffic to NAT Gateways, Network Security Groups and User Defined Routes applied?
   final pulumi.Input<bool> vnetRouteAllEnabled;
-
   /// Are Web Sockets enabled?
   final pulumi.Input<bool> websocketsEnabled;
-
   /// The number of Workers for this Linux Function App.
   final pulumi.Input<int> workerCount;
 
@@ -207,49 +169,13 @@ class GetLinuxFunctionAppSiteConfig {
       'apiManagementApiId': apiManagementApiId,
       'appCommandLine': appCommandLine,
       'appScaleLimit': appScaleLimit,
-      'appServiceLogs':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppSiteConfigAppServiceLog>,
-            List<Map<String, dynamic>>
-          >(
-            appServiceLogs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppSiteConfigAppServiceLog,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'applicationInsightsConnectionString':
-          applicationInsightsConnectionString,
+      'appServiceLogs': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppSiteConfigAppServiceLog>, List<Map<String, dynamic>>>(appServiceLogs, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppSiteConfigAppServiceLog, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'applicationInsightsConnectionString': applicationInsightsConnectionString,
       'applicationInsightsKey': applicationInsightsKey,
-      'applicationStacks':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppSiteConfigApplicationStack>,
-            List<Map<String, dynamic>>
-          >(
-            applicationStacks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppSiteConfigApplicationStack,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'containerRegistryManagedIdentityClientId':
-          containerRegistryManagedIdentityClientId,
-      'containerRegistryUseManagedIdentity':
-          containerRegistryUseManagedIdentity,
-      'cors':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppSiteConfigCor>,
-            List<Map<String, dynamic>>
-          >(
-            cors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppSiteConfigCor,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'applicationStacks': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppSiteConfigApplicationStack>, List<Map<String, dynamic>>>(applicationStacks, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppSiteConfigApplicationStack, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'containerRegistryManagedIdentityClientId': containerRegistryManagedIdentityClientId,
+      'containerRegistryUseManagedIdentity': containerRegistryUseManagedIdentity,
+      'cors': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppSiteConfigCor>, List<Map<String, dynamic>>>(cors, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppSiteConfigCor, Map<String, dynamic>>(value, (value) => value.toMap())),
       'defaultDocuments': defaultDocuments,
       'detailedErrorLoggingEnabled': detailedErrorLoggingEnabled,
       'elasticInstanceMinimum': elasticInstanceMinimum,
@@ -258,18 +184,7 @@ class GetLinuxFunctionAppSiteConfig {
       'healthCheckPath': healthCheckPath,
       'http2Enabled': http2Enabled,
       'ipRestrictionDefaultAction': ipRestrictionDefaultAction,
-      'ipRestrictions':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppSiteConfigIpRestriction>,
-            List<Map<String, dynamic>>
-          >(
-            ipRestrictions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppSiteConfigIpRestriction,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ipRestrictions': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppSiteConfigIpRestriction>, List<Map<String, dynamic>>>(ipRestrictions, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppSiteConfigIpRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'linuxFxVersion': linuxFxVersion,
       'loadBalancingMode': loadBalancingMode,
       'managedPipelineMode': managedPipelineMode,
@@ -279,18 +194,7 @@ class GetLinuxFunctionAppSiteConfig {
       'remoteDebuggingVersion': remoteDebuggingVersion,
       'runtimeScaleMonitoringEnabled': runtimeScaleMonitoringEnabled,
       'scmIpRestrictionDefaultAction': ?scmIpRestrictionDefaultAction,
-      'scmIpRestrictions':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppSiteConfigScmIpRestriction>,
-            List<Map<String, dynamic>>
-          >(
-            scmIpRestrictions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppSiteConfigScmIpRestriction,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'scmIpRestrictions': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppSiteConfigScmIpRestriction>, List<Map<String, dynamic>>>(scmIpRestrictions, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppSiteConfigScmIpRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scmMinimumTlsVersion': scmMinimumTlsVersion,
       'scmType': scmType,
       'scmUseMainIpRestriction': scmUseMainIpRestriction,
@@ -304,126 +208,44 @@ class GetLinuxFunctionAppSiteConfig {
   factory GetLinuxFunctionAppSiteConfig.fromMap(Map<String, dynamic> map) {
     return GetLinuxFunctionAppSiteConfig(
       alwaysOn: pulumi.Input.fromValue(map['alwaysOn'] as bool),
-      apiDefinitionUrl: pulumi.Input.fromValue(
-        map['apiDefinitionUrl'] as String,
-      ),
-      apiManagementApiId: pulumi.Input.fromValue(
-        map['apiManagementApiId'] as String,
-      ),
+      apiDefinitionUrl: pulumi.Input.fromValue(map['apiDefinitionUrl'] as String),
+      apiManagementApiId: pulumi.Input.fromValue(map['apiManagementApiId'] as String),
       appCommandLine: pulumi.Input.fromValue(map['appCommandLine'] as String),
       appScaleLimit: pulumi.Input.fromValue(map['appScaleLimit'] as int),
-      appServiceLogs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigAppServiceLog>(
-          map['appServiceLogs']!,
-          (value) => GetLinuxFunctionAppSiteConfigAppServiceLog.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      applicationInsightsConnectionString: pulumi.Input.fromValue(
-        map['applicationInsightsConnectionString'] as String,
-      ),
-      applicationInsightsKey: pulumi.Input.fromValue(
-        map['applicationInsightsKey'] as String,
-      ),
-      applicationStacks: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigApplicationStack>(
-          map['applicationStacks']!,
-          (value) => GetLinuxFunctionAppSiteConfigApplicationStack.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      containerRegistryManagedIdentityClientId: pulumi.Input.fromValue(
-        map['containerRegistryManagedIdentityClientId'] as String,
-      ),
-      containerRegistryUseManagedIdentity: pulumi.Input.fromValue(
-        map['containerRegistryUseManagedIdentity'] as bool,
-      ),
-      cors: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigCor>(
-          map['cors']!,
-          (value) => GetLinuxFunctionAppSiteConfigCor.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      defaultDocuments: pulumi.Input.fromValue(
-        (map['defaultDocuments'] as List).cast<String>(),
-      ),
-      detailedErrorLoggingEnabled: pulumi.Input.fromValue(
-        map['detailedErrorLoggingEnabled'] as bool,
-      ),
-      elasticInstanceMinimum: pulumi.Input.fromValue(
-        map['elasticInstanceMinimum'] as int,
-      ),
+      appServiceLogs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigAppServiceLog>(map['appServiceLogs']!, (value) => GetLinuxFunctionAppSiteConfigAppServiceLog.fromMap((value as Map).cast<String, dynamic>()))),
+      applicationInsightsConnectionString: pulumi.Input.fromValue(map['applicationInsightsConnectionString'] as String),
+      applicationInsightsKey: pulumi.Input.fromValue(map['applicationInsightsKey'] as String),
+      applicationStacks: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigApplicationStack>(map['applicationStacks']!, (value) => GetLinuxFunctionAppSiteConfigApplicationStack.fromMap((value as Map).cast<String, dynamic>()))),
+      containerRegistryManagedIdentityClientId: pulumi.Input.fromValue(map['containerRegistryManagedIdentityClientId'] as String),
+      containerRegistryUseManagedIdentity: pulumi.Input.fromValue(map['containerRegistryUseManagedIdentity'] as bool),
+      cors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigCor>(map['cors']!, (value) => GetLinuxFunctionAppSiteConfigCor.fromMap((value as Map).cast<String, dynamic>()))),
+      defaultDocuments: pulumi.Input.fromValue((map['defaultDocuments'] as List).cast<String>()),
+      detailedErrorLoggingEnabled: pulumi.Input.fromValue(map['detailedErrorLoggingEnabled'] as bool),
+      elasticInstanceMinimum: pulumi.Input.fromValue(map['elasticInstanceMinimum'] as int),
       ftpsState: pulumi.Input.fromValue(map['ftpsState'] as String),
-      healthCheckEvictionTimeInMin: pulumi.Input.fromValue(
-        map['healthCheckEvictionTimeInMin'] as int,
-      ),
+      healthCheckEvictionTimeInMin: pulumi.Input.fromValue(map['healthCheckEvictionTimeInMin'] as int),
       healthCheckPath: pulumi.Input.fromValue(map['healthCheckPath'] as String),
       http2Enabled: pulumi.Input.fromValue(map['http2Enabled'] as bool),
-      ipRestrictionDefaultAction: pulumi.Input.fromValue(
-        map['ipRestrictionDefaultAction'] as String,
-      ),
-      ipRestrictions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigIpRestriction>(
-          map['ipRestrictions']!,
-          (value) => GetLinuxFunctionAppSiteConfigIpRestriction.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      ipRestrictionDefaultAction: pulumi.Input.fromValue(map['ipRestrictionDefaultAction'] as String),
+      ipRestrictions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigIpRestriction>(map['ipRestrictions']!, (value) => GetLinuxFunctionAppSiteConfigIpRestriction.fromMap((value as Map).cast<String, dynamic>()))),
       linuxFxVersion: pulumi.Input.fromValue(map['linuxFxVersion'] as String),
-      loadBalancingMode: pulumi.Input.fromValue(
-        map['loadBalancingMode'] as String,
-      ),
-      managedPipelineMode: pulumi.Input.fromValue(
-        map['managedPipelineMode'] as String,
-      ),
-      minimumTlsVersion: pulumi.Input.fromValue(
-        map['minimumTlsVersion'] as String,
-      ),
-      preWarmedInstanceCount: pulumi.Input.fromValue(
-        map['preWarmedInstanceCount'] as int,
-      ),
-      remoteDebuggingEnabled: pulumi.Input.fromValue(
-        map['remoteDebuggingEnabled'] as bool,
-      ),
-      remoteDebuggingVersion: pulumi.Input.fromValue(
-        map['remoteDebuggingVersion'] as String,
-      ),
-      runtimeScaleMonitoringEnabled: pulumi.Input.fromValue(
-        map['runtimeScaleMonitoringEnabled'] as bool,
-      ),
-      scmIpRestrictionDefaultAction: (() {
-        final guardedValue = map['scmIpRestrictionDefaultAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scmIpRestrictions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigScmIpRestriction>(
-          map['scmIpRestrictions']!,
-          (value) => GetLinuxFunctionAppSiteConfigScmIpRestriction.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      scmMinimumTlsVersion: pulumi.Input.fromValue(
-        map['scmMinimumTlsVersion'] as String,
-      ),
+      loadBalancingMode: pulumi.Input.fromValue(map['loadBalancingMode'] as String),
+      managedPipelineMode: pulumi.Input.fromValue(map['managedPipelineMode'] as String),
+      minimumTlsVersion: pulumi.Input.fromValue(map['minimumTlsVersion'] as String),
+      preWarmedInstanceCount: pulumi.Input.fromValue(map['preWarmedInstanceCount'] as int),
+      remoteDebuggingEnabled: pulumi.Input.fromValue(map['remoteDebuggingEnabled'] as bool),
+      remoteDebuggingVersion: pulumi.Input.fromValue(map['remoteDebuggingVersion'] as String),
+      runtimeScaleMonitoringEnabled: pulumi.Input.fromValue(map['runtimeScaleMonitoringEnabled'] as bool),
+      scmIpRestrictionDefaultAction: (() { final guardedValue = map['scmIpRestrictionDefaultAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scmIpRestrictions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigScmIpRestriction>(map['scmIpRestrictions']!, (value) => GetLinuxFunctionAppSiteConfigScmIpRestriction.fromMap((value as Map).cast<String, dynamic>()))),
+      scmMinimumTlsVersion: pulumi.Input.fromValue(map['scmMinimumTlsVersion'] as String),
       scmType: pulumi.Input.fromValue(map['scmType'] as String),
-      scmUseMainIpRestriction: pulumi.Input.fromValue(
-        map['scmUseMainIpRestriction'] as bool,
-      ),
+      scmUseMainIpRestriction: pulumi.Input.fromValue(map['scmUseMainIpRestriction'] as bool),
       use32BitWorker: pulumi.Input.fromValue(map['use32BitWorker'] as bool),
-      vnetRouteAllEnabled: pulumi.Input.fromValue(
-        map['vnetRouteAllEnabled'] as bool,
-      ),
-      websocketsEnabled: pulumi.Input.fromValue(
-        map['websocketsEnabled'] as bool,
-      ),
+      vnetRouteAllEnabled: pulumi.Input.fromValue(map['vnetRouteAllEnabled'] as bool),
+      websocketsEnabled: pulumi.Input.fromValue(map['websocketsEnabled'] as bool),
       workerCount: pulumi.Input.fromValue(map['workerCount'] as int),
     );
   }
 }
+

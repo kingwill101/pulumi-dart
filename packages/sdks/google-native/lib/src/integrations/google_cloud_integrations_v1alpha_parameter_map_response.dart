@@ -6,14 +6,9 @@ import 'google_cloud_integrations_v1alpha_parameter_map_entry_response.dart';
 /// A generic multi-map that holds key value pairs. They keys and values can be of any type, unless specified.
 class GoogleCloudIntegrationsV1alphaParameterMapResponse {
   /// A list of parameter map entries.
-  final pulumi.Input<
-    List<GoogleCloudIntegrationsV1alphaParameterMapEntryResponse>
-  >
-  entries;
-
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaParameterMapEntryResponse>> entries;
   /// Option to specify key type for all entries of the map. If provided then field types for all entries must conform to this.
   final pulumi.Input<String> keyType;
-
   /// Option to specify value type for all entries of the map. If provided then field types for all entries must conform to this.
   final pulumi.Input<String> valueType;
 
@@ -29,40 +24,18 @@ class GoogleCloudIntegrationsV1alphaParameterMapResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entries':
-          pulumi.Input.mapInputValue<
-            List<GoogleCloudIntegrationsV1alphaParameterMapEntryResponse>,
-            List<Map<String, dynamic>>
-          >(
-            entries,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudIntegrationsV1alphaParameterMapEntryResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'entries': pulumi.Input.mapInputValue<List<GoogleCloudIntegrationsV1alphaParameterMapEntryResponse>, List<Map<String, dynamic>>>(entries, (value) => pulumi.Input.encodeList<GoogleCloudIntegrationsV1alphaParameterMapEntryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'keyType': keyType,
       'valueType': valueType,
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaParameterMapResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIntegrationsV1alphaParameterMapResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaParameterMapResponse(
-      entries: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GoogleCloudIntegrationsV1alphaParameterMapEntryResponse
-        >(
-          map['entries']!,
-          (value) =>
-              GoogleCloudIntegrationsV1alphaParameterMapEntryResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      entries: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaParameterMapEntryResponse>(map['entries']!, (value) => GoogleCloudIntegrationsV1alphaParameterMapEntryResponse.fromMap((value as Map).cast<String, dynamic>()))),
       keyType: pulumi.Input.fromValue(map['keyType'] as String),
       valueType: pulumi.Input.fromValue(map['valueType'] as String),
     );
   }
 }
+

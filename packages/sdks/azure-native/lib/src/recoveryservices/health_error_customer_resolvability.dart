@@ -12,8 +12,7 @@ enum HealthErrorCustomerResolvability {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown HealthErrorCustomerResolvability value: $value',
-    );
+    throw ArgumentError('Unknown HealthErrorCustomerResolvability value: $value');
   }
 }
+

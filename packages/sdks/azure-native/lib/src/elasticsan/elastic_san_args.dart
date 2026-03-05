@@ -10,28 +10,20 @@ import 'sku.dart';
 class ElasticSanArgs {
   /// Logical zone for Elastic San resource; example: ["1"].
   final pulumi.Input<List<String>>? availabilityZones;
-
   /// Base size of the Elastic San appliance in TiB.
   final pulumi.Input<double> baseSizeTiB;
-
   /// The name of the ElasticSan.
   final pulumi.Input<String>? elasticSanName;
-
   /// Extended size of the Elastic San appliance in TiB.
   final pulumi.Input<double> extendedCapacitySizeTiB;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
   final pulumi.Input<String>? publicNetworkAccess;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// resource sku
   final pulumi.Input<Sku> sku;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -66,53 +58,23 @@ class ElasticSanArgs {
       'location': ?location,
       'publicNetworkAccess': ?publicNetworkAccess,
       'resourceGroupName': resourceGroupName,
-      'sku': pulumi.Input.mapInputValue<Sku, Map<String, dynamic>>(
-        sku,
-        (value) => value.toMap(),
-      ),
+      'sku': pulumi.Input.mapInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory ElasticSanArgs.fromMap(Map<String, dynamic> map) {
     return ElasticSanArgs(
-      availabilityZones: (() {
-        final guardedValue = map['availabilityZones'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      availabilityZones: (() { final guardedValue = map['availabilityZones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       baseSizeTiB: pulumi.Input.fromValue(map['baseSizeTiB'] as double),
-      elasticSanName: (() {
-        final guardedValue = map['elasticSanName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      extendedCapacitySizeTiB: pulumi.Input.fromValue(
-        map['extendedCapacitySizeTiB'] as double,
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sku: pulumi.Input.fromValue(
-        Sku.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      elasticSanName: (() { final guardedValue = map['elasticSanName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      extendedCapacitySizeTiB: pulumi.Input.fromValue(map['extendedCapacitySizeTiB'] as double),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sku: pulumi.Input.fromValue(Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

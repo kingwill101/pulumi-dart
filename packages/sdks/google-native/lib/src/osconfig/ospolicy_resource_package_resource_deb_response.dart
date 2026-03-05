@@ -7,7 +7,6 @@ import 'ospolicy_resource_file_response.dart';
 class OSPolicyResourcePackageResourceDebResponse {
   /// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
   final pulumi.Input<bool> pullDeps;
-
   /// A deb package.
   final pulumi.Input<OSPolicyResourceFileResponse> source;
 
@@ -22,24 +21,15 @@ class OSPolicyResourcePackageResourceDebResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'pullDeps': pullDeps,
-      'source':
-          pulumi.Input.mapInputValue<
-            OSPolicyResourceFileResponse,
-            Map<String, dynamic>
-          >(source, (value) => value.toMap()),
+      'source': pulumi.Input.mapInputValue<OSPolicyResourceFileResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
-  factory OSPolicyResourcePackageResourceDebResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OSPolicyResourcePackageResourceDebResponse.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceDebResponse(
       pullDeps: pulumi.Input.fromValue(map['pullDeps'] as bool),
-      source: pulumi.Input.fromValue(
-        OSPolicyResourceFileResponse.fromMap(
-          (map['source']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      source: pulumi.Input.fromValue(OSPolicyResourceFileResponse.fromMap((map['source']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

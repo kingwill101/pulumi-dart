@@ -8,22 +8,16 @@ import 'identity.dart';
 class WindowsUpdate {
   /// The list of categories to which the update belongs.
   final pulumi.Input<List<Category>>? categories;
-
   /// The localized description of the update.
   final pulumi.Input<String>? description;
-
   /// Required - The unique identifier for the update.
   final pulumi.Input<Identity>? identity;
-
   /// The Microsoft Knowledge Base article IDs that are associated with the update.
   final pulumi.Input<List<String>>? kbArticleIds;
-
   /// The last published timestamp of the update.
   final pulumi.Input<String>? lastPublishedTimestamp;
-
   /// The hyperlink to the support information for the update.
   final pulumi.Input<String>? supportUrl;
-
   /// The localized title of the update.
   final pulumi.Input<String>? title;
 
@@ -47,23 +41,9 @@ class WindowsUpdate {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'categories':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Category>,
-            List<Map<String, dynamic>>
-          >(
-            categories,
-            (value) => pulumi.Input.encodeList<Category, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'categories': ?pulumi.Input.mapOptionalInputValue<List<Category>, List<Map<String, dynamic>>>(categories, (value) => pulumi.Input.encodeList<Category, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<Identity, Map<String, dynamic>>(
-            identity,
-            (value) => value.toMap(),
-          ),
+      'identity': ?pulumi.Input.mapOptionalInputValue<Identity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'kbArticleIds': ?kbArticleIds,
       'lastPublishedTimestamp': ?lastPublishedTimestamp,
       'supportUrl': ?supportUrl,
@@ -73,48 +53,14 @@ class WindowsUpdate {
 
   factory WindowsUpdate.fromMap(Map<String, dynamic> map) {
     return WindowsUpdate(
-      categories: (() {
-        final guardedValue = map['categories'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Category>(
-            guardedValue,
-            (value) => Category.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Identity.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      kbArticleIds: (() {
-        final guardedValue = map['kbArticleIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      lastPublishedTimestamp: (() {
-        final guardedValue = map['lastPublishedTimestamp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      supportUrl: (() {
-        final guardedValue = map['supportUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      title: (() {
-        final guardedValue = map['title'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      categories: (() { final guardedValue = map['categories']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Category>(guardedValue, (value) => Category.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Identity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      kbArticleIds: (() { final guardedValue = map['kbArticleIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      lastPublishedTimestamp: (() { final guardedValue = map['lastPublishedTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      supportUrl: (() { final guardedValue = map['supportUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

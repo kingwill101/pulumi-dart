@@ -11,17 +11,13 @@ enum NetworkEndpointGroupNetworkEndpointTypeComputeBeta {
   const NetworkEndpointGroupNetworkEndpointTypeComputeBeta(this.wireValue);
   final String wireValue;
 
-  static NetworkEndpointGroupNetworkEndpointTypeComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in NetworkEndpointGroupNetworkEndpointTypeComputeBeta.values) {
+  static NetworkEndpointGroupNetworkEndpointTypeComputeBeta fromValue(String value) {
+    for (final item in NetworkEndpointGroupNetworkEndpointTypeComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown NetworkEndpointGroupNetworkEndpointTypeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown NetworkEndpointGroupNetworkEndpointTypeComputeBeta value: $value');
   }
 }
+

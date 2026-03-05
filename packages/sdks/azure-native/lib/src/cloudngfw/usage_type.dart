@@ -15,3 +15,4 @@ enum UsageType {
     throw ArgumentError('Unknown UsageType value: $value');
   }
 }
+

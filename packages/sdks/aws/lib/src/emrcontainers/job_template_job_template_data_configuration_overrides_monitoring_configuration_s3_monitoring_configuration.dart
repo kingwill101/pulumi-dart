@@ -13,14 +13,15 @@ class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3M
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'logUri': logUri};
+    return <String, dynamic>{
+      'logUri': logUri,
+    };
   }
 
-  factory JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration(
       logUri: pulumi.Input.fromValue(map['logUri'] as String),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DenyMaintenancePeriodSqladminV1beta4 {
   /// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
   final pulumi.Input<String>? endDate;
-
   /// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
   final pulumi.Input<String>? startDate;
-
   /// Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
   final pulumi.Input<String>? time;
 
@@ -31,25 +29,12 @@ class DenyMaintenancePeriodSqladminV1beta4 {
     };
   }
 
-  factory DenyMaintenancePeriodSqladminV1beta4.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DenyMaintenancePeriodSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return DenyMaintenancePeriodSqladminV1beta4(
-      endDate: (() {
-        final guardedValue = map['endDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startDate: (() {
-        final guardedValue = map['startDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      time: (() {
-        final guardedValue = map['time'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      time: (() { final guardedValue = map['time']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

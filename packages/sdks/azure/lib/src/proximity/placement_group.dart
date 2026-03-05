@@ -175,19 +175,14 @@ class PlacementGroup extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Removing `allowed_vm_sizes` after it is set forces a new resource to be created.
   late final pulumi.Output<List<String>?> allowedVmSizes;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the proximity placement group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the availability set. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the supported zone of the Proximity Placement Group. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `allowed_vm_sizes` must be set when `zone` is specified.
@@ -202,11 +197,11 @@ class PlacementGroup extends pulumi.CustomResource {
     PlacementGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:proximity/placementGroup:PlacementGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:proximity/placementGroup:PlacementGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedVmSizes = registerOutput<List<String>?>('allowedVmSizes');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -233,11 +228,11 @@ class PlacementGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:proximity/placementGroup:PlacementGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:proximity/placementGroup:PlacementGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedVmSizes = registerOutput<List<String>?>('allowedVmSizes');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

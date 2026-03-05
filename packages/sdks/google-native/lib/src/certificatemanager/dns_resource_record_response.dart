@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnsResourceRecordResponse {
   /// Data of the DNS Resource Record.
   final pulumi.Input<String> data;
-
   /// Fully qualified name of the DNS Resource Record. e.g. `_acme-challenge.example.com`
   final pulumi.Input<String> name;
-
   /// Type of the DNS Resource Record. Currently always set to "CNAME".
   final pulumi.Input<String> type;
 
@@ -24,7 +22,11 @@ class DnsResourceRecordResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'data': data, 'name': name, 'type': type};
+    return <String, dynamic>{
+      'data': data,
+      'name': name,
+      'type': type,
+    };
   }
 
   factory DnsResourceRecordResponse.fromMap(Map<String, dynamic> map) {
@@ -35,3 +37,4 @@ class DnsResourceRecordResponse {
     );
   }
 }
+

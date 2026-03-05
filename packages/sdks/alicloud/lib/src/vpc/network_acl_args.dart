@@ -12,29 +12,21 @@ import 'network_acl_resource.dart';
 class NetworkAclArgs {
   /// The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
   final pulumi.Input<String>? description;
-
   /// Out direction rule information. See `egress_acl_entries` below.
   final pulumi.Input<List<NetworkAclEgressAclEntry>>? egressAclEntries;
-
   /// Inward direction rule information. See `ingress_acl_entries` below.
   final pulumi.Input<List<NetworkAclIngressAclEntry>>? ingressAclEntries;
-
   /// . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
   final pulumi.Input<String>? name;
-
   /// The name of the network ACL.
   /// The name must be 1 to 128 characters in length and cannot start with http:// or https.
   final pulumi.Input<String>? networkAclName;
-
   /// The associated resource. See `resources` below.
   final pulumi.Input<List<NetworkAclResource>>? resources;
-
   /// SOURCE NetworkAcl specified by CopyNetworkAclEntries
   final pulumi.Input<String>? sourceNetworkAclId;
-
   /// The tags of this resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The ID of the associated VPC.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -65,44 +57,11 @@ class NetworkAclArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'egressAclEntries':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NetworkAclEgressAclEntry>,
-            List<Map<String, dynamic>>
-          >(
-            egressAclEntries,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NetworkAclEgressAclEntry,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'ingressAclEntries':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NetworkAclIngressAclEntry>,
-            List<Map<String, dynamic>>
-          >(
-            ingressAclEntries,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NetworkAclIngressAclEntry,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'egressAclEntries': ?pulumi.Input.mapOptionalInputValue<List<NetworkAclEgressAclEntry>, List<Map<String, dynamic>>>(egressAclEntries, (value) => pulumi.Input.encodeList<NetworkAclEgressAclEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ingressAclEntries': ?pulumi.Input.mapOptionalInputValue<List<NetworkAclIngressAclEntry>, List<Map<String, dynamic>>>(ingressAclEntries, (value) => pulumi.Input.encodeList<NetworkAclIngressAclEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'networkAclName': ?networkAclName,
-      'resources':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NetworkAclResource>,
-            List<Map<String, dynamic>>
-          >(
-            resources,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NetworkAclResource,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'resources': ?pulumi.Input.mapOptionalInputValue<List<NetworkAclResource>, List<Map<String, dynamic>>>(resources, (value) => pulumi.Input.encodeList<NetworkAclResource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sourceNetworkAclId': ?sourceNetworkAclId,
       'tags': ?tags,
       'vpcId': vpcId,
@@ -111,70 +70,16 @@ class NetworkAclArgs {
 
   factory NetworkAclArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAclArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      egressAclEntries: (() {
-        final guardedValue = map['egressAclEntries'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NetworkAclEgressAclEntry>(
-            guardedValue,
-            (value) => NetworkAclEgressAclEntry.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      ingressAclEntries: (() {
-        final guardedValue = map['ingressAclEntries'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NetworkAclIngressAclEntry>(
-            guardedValue,
-            (value) => NetworkAclIngressAclEntry.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkAclName: (() {
-        final guardedValue = map['networkAclName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resources: (() {
-        final guardedValue = map['resources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NetworkAclResource>(
-            guardedValue,
-            (value) => NetworkAclResource.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      sourceNetworkAclId: (() {
-        final guardedValue = map['sourceNetworkAclId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      egressAclEntries: (() { final guardedValue = map['egressAclEntries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkAclEgressAclEntry>(guardedValue, (value) => NetworkAclEgressAclEntry.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ingressAclEntries: (() { final guardedValue = map['ingressAclEntries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkAclIngressAclEntry>(guardedValue, (value) => NetworkAclIngressAclEntry.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkAclName: (() { final guardedValue = map['networkAclName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkAclResource>(guardedValue, (value) => NetworkAclResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      sourceNetworkAclId: (() { final guardedValue = map['sourceNetworkAclId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
+

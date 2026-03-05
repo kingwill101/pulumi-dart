@@ -26,9 +26,7 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter {
     };
   }
 
-  factory GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter.fromMap(Map<String, dynamic> map) {
     return GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter(
       operator: pulumi.Input.fromValue(map['operator'] as String),
       slsKeyName: pulumi.Input.fromValue(map['slsKeyName'] as String),
@@ -36,3 +34,4 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter {
     );
   }
 }
+

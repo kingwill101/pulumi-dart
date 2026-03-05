@@ -199,41 +199,29 @@ import 'vpc_nat_gateway_state.dart';
 class VpcNatGateway extends pulumi.CustomResource {
   /// Created at timestamp for the VPC NAT Gateway.
   late final pulumi.Output<String> createdAt;
-
   /// Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
   /// `public_gateways` embedding the reserved `ipv4` addresses.
   late final pulumi.Output<List<Map<String, dynamic>>> egresses;
-
   /// The egress timeout value for ICMP connections of the VPC NAT Gateway.
   late final pulumi.Output<int> icmpTimeoutSeconds;
-
   /// The name of the VPC NAT Gateway.
   late final pulumi.Output<String> name;
-
   /// ID of the project to which the VPC NAT Gateway will be assigned.
   late final pulumi.Output<String> projectId;
-
   /// The region for the VPC NAT Gateway.
   late final pulumi.Output<String> region;
-
   /// The size of the VPC NAT Gateway.
   late final pulumi.Output<int> size;
-
   /// State of the VPC NAT Gateway
   late final pulumi.Output<String> state;
-
   /// The egress timeout value for TCP connections of the VPC NAT Gateway.
   late final pulumi.Output<int> tcpTimeoutSeconds;
-
   /// The type of the VPC NAT Gateway.
   late final pulumi.Output<String> type;
-
   /// The egress timeout value for UDP connections of the VPC NAT Gateway.
   late final pulumi.Output<int> udpTimeoutSeconds;
-
   /// Updated at timestamp for the VPC NAT Gateway.
   late final pulumi.Output<String> updatedAt;
-
   /// The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
   /// documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> vpcs;
@@ -247,11 +235,11 @@ class VpcNatGateway extends pulumi.CustomResource {
     VpcNatGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/vpcNatGateway:VpcNatGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/vpcNatGateway:VpcNatGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     egresses = registerOutput<List<Map<String, dynamic>>>('egresses');
     icmpTimeoutSeconds = registerOutput<int>('icmpTimeoutSeconds');
@@ -285,11 +273,11 @@ class VpcNatGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/vpcNatGateway:VpcNatGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/vpcNatGateway:VpcNatGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     egresses = registerOutput<List<Map<String, dynamic>>>('egresses');
     icmpTimeoutSeconds = registerOutput<int>('icmpTimeoutSeconds');

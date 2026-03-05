@@ -8,34 +8,24 @@ import 'system_data_response.dart';
 class GetDeploymentSettingResult {
   /// Azure resource ids of Arc machines to be part of cluster.
   final List<String> arcNodeResourceIds;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Scale units will contains list of deployment data
   final DeploymentConfigurationResponse deploymentConfiguration;
-
   /// The deployment mode for cluster deployment.
   final String deploymentMode;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The intended operation for a cluster.
   final String? operationType;
-
   /// DeploymentSetting provisioning state
   final String provisioningState;
-
   /// Deployment Status reported from cluster.
   final EceReportedPropertiesResponse reportedProperties;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -85,25 +75,16 @@ class GetDeploymentSettingResult {
     return GetDeploymentSettingResult(
       arcNodeResourceIds: (map['arcNodeResourceIds'] as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
-      deploymentConfiguration: DeploymentConfigurationResponse.fromMap(
-        (map['deploymentConfiguration']! as Map).cast<String, dynamic>(),
-      ),
+      deploymentConfiguration: DeploymentConfigurationResponse.fromMap((map['deploymentConfiguration']! as Map).cast<String, dynamic>()),
       deploymentMode: map['deploymentMode'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      operationType: (() {
-        final guardedValue = map['operationType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      operationType: (() { final guardedValue = map['operationType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
-      reportedProperties: EceReportedPropertiesResponse.fromMap(
-        (map['reportedProperties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      reportedProperties: EceReportedPropertiesResponse.fromMap((map['reportedProperties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse {
   /// The alias kind.
   final pulumi.Input<String> kind;
-
   /// The alias name.
   final pulumi.Input<String> name;
 
@@ -19,15 +18,17 @@ class GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kind': kind, 'name': name};
+    return <String, dynamic>{
+      'kind': kind,
+      'name': name,
+    };
   }
 
-  factory GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse(
       kind: pulumi.Input.fromValue(map['kind'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

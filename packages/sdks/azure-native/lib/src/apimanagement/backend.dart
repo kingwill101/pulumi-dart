@@ -533,40 +533,28 @@ import 'backend_tls_properties_response.dart';
 class Backend extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Backend Circuit Breaker Configuration
   late final pulumi.Output<BackendCircuitBreakerResponse?> circuitBreaker;
-
   /// Backend Credentials Contract Properties
   late final pulumi.Output<BackendCredentialsContractResponse?> credentials;
-
   /// Backend Description.
   late final pulumi.Output<String?> description;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Backend Properties contract
   late final pulumi.Output<BackendPropertiesResponse> properties;
-
   /// Backend communication protocol.
   late final pulumi.Output<String> protocol;
-
   /// Backend gateway Contract Properties
   late final pulumi.Output<BackendProxyContractResponse?> proxy;
-
   /// Management Uri of the Resource in External System. This URL can be the Arm Resource Id of Logic Apps, Function Apps or API Apps.
   late final pulumi.Output<String?> resourceId;
-
   /// Backend Title.
   late final pulumi.Output<String?> title;
-
   /// Backend TLS Properties
   late final pulumi.Output<BackendTlsPropertiesResponse?> tls;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Runtime Url of the Backend.
   late final pulumi.Output<String> url;
 
@@ -579,67 +567,22 @@ class Backend extends pulumi.CustomResource {
     BackendArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:Backend',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:Backend',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    circuitBreaker = registerOutput<BackendCircuitBreakerResponse?>(
-      'circuitBreaker',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackendCircuitBreakerResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    credentials = registerOutput<BackendCredentialsContractResponse?>(
-      'credentials',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackendCredentialsContractResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    circuitBreaker = registerOutput<BackendCircuitBreakerResponse?>('circuitBreaker', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendCircuitBreakerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    credentials = registerOutput<BackendCredentialsContractResponse?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendCredentialsContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<BackendPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackendPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<BackendPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protocol = registerOutput<String>('protocol');
-    proxy = registerOutput<BackendProxyContractResponse?>(
-      'proxy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackendProxyContractResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    proxy = registerOutput<BackendProxyContractResponse?>('proxy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendProxyContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceId = registerOutput<String?>('resourceId');
     title = registerOutput<String?>('title');
-    tls = registerOutput<BackendTlsPropertiesResponse?>(
-      'tls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackendTlsPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tls = registerOutput<BackendTlsPropertiesResponse?>('tls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendTlsPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     url = registerOutput<String>('url');
   }

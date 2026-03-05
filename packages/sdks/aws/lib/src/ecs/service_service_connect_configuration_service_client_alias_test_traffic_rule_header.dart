@@ -6,12 +6,8 @@ import 'service_service_connect_configuration_service_client_alias_test_traffic_
 class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader {
   /// Name of the HTTP header to match.
   final pulumi.Input<String> name;
-
   /// Configuration block for header value matching criteria. See below.
-  final pulumi.Input<
-    ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue
-  >
-  value;
+  final pulumi.Input<ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue> value;
 
   /// Creates a new [ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader].
   /// [name] Name of the HTTP header to match.
@@ -24,24 +20,15 @@ class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'value':
-          pulumi.Input.mapInputValue<
-            ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue,
-            Map<String, dynamic>
-          >(value, (value) => value.toMap()),
+      'value': pulumi.Input.mapInputValue<ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
-  factory ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader(
       name: pulumi.Input.fromValue(map['name'] as String),
-      value: pulumi.Input.fromValue(
-        ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue.fromMap(
-          (map['value']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      value: pulumi.Input.fromValue(ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue.fromMap((map['value']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

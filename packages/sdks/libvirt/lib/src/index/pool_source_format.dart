@@ -8,10 +8,14 @@ class PoolSourceFormat {
 
   /// Creates a new [PoolSourceFormat].
   /// [type] Defines the specific type of format for the storage source.
-  PoolSourceFormat({required this.type});
+  PoolSourceFormat({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory PoolSourceFormat.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class PoolSourceFormat {
     );
   }
 }
+

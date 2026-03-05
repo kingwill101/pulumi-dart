@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentDefinitionErrorDetailsArgs {
   /// The name of the Catalog.
   final pulumi.Input<String> catalogName;
-
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
-
   /// The name of the Environment Definition.
   final pulumi.Input<String> environmentDefinitionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -40,18 +37,13 @@ class GetEnvironmentDefinitionErrorDetailsArgs {
     };
   }
 
-  factory GetEnvironmentDefinitionErrorDetailsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEnvironmentDefinitionErrorDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentDefinitionErrorDetailsArgs(
       catalogName: pulumi.Input.fromValue(map['catalogName'] as String),
       devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
-      environmentDefinitionName: pulumi.Input.fromValue(
-        map['environmentDefinitionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      environmentDefinitionName: pulumi.Input.fromValue(map['environmentDefinitionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

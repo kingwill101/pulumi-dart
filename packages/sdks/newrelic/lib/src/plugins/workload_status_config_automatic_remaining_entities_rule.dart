@@ -5,10 +5,7 @@ import 'workload_status_config_automatic_remaining_entities_rule_remaining_entit
 
 class WorkloadStatusConfigAutomaticRemainingEntitiesRule {
   /// The input object used to represent a rollup strategy.
-  final pulumi.Input<
-    WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollup
-  >
-  remainingEntitiesRuleRollup;
+  final pulumi.Input<WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollup> remainingEntitiesRuleRollup;
 
   /// Creates a new [WorkloadStatusConfigAutomaticRemainingEntitiesRule].
   /// [remainingEntitiesRuleRollup] The input object used to represent a rollup strategy.
@@ -18,23 +15,14 @@ class WorkloadStatusConfigAutomaticRemainingEntitiesRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'remainingEntitiesRuleRollup':
-          pulumi.Input.mapInputValue<
-            WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollup,
-            Map<String, dynamic>
-          >(remainingEntitiesRuleRollup, (value) => value.toMap()),
+      'remainingEntitiesRuleRollup': pulumi.Input.mapInputValue<WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollup, Map<String, dynamic>>(remainingEntitiesRuleRollup, (value) => value.toMap()),
     };
   }
 
-  factory WorkloadStatusConfigAutomaticRemainingEntitiesRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkloadStatusConfigAutomaticRemainingEntitiesRule.fromMap(Map<String, dynamic> map) {
     return WorkloadStatusConfigAutomaticRemainingEntitiesRule(
-      remainingEntitiesRuleRollup: pulumi.Input.fromValue(
-        WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollup.fromMap(
-          (map['remainingEntitiesRuleRollup']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      remainingEntitiesRuleRollup: pulumi.Input.fromValue(WorkloadStatusConfigAutomaticRemainingEntitiesRuleRemainingEntitiesRuleRollup.fromMap((map['remainingEntitiesRuleRollup']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum SftpAuthenticationType {
     throw ArgumentError('Unknown SftpAuthenticationType value: $value');
   }
 }
+

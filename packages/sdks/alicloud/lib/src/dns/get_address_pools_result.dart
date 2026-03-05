@@ -6,7 +6,6 @@ import 'get_address_pools_pool.dart';
 /// Result data returned by getAddressPools.
 class GetAddressPoolsResult {
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -45,40 +44,21 @@ class GetAddressPoolsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'pools':
-          pulumi.Input.encodeList<GetAddressPoolsPool, Map<String, dynamic>>(
-            pools,
-            (value) => value.toMap(),
-          ),
+      'pools': pulumi.Input.encodeList<GetAddressPoolsPool, Map<String, dynamic>>(pools, (value) => value.toMap()),
     };
   }
 
   factory GetAddressPoolsResult.fromMap(Map<String, dynamic> map) {
     return GetAddressPoolsResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pools: pulumi.Input.decodeList<GetAddressPoolsPool>(
-        map['pools']!,
-        (value) =>
-            GetAddressPoolsPool.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pools: pulumi.Input.decodeList<GetAddressPoolsPool>(map['pools']!, (value) => GetAddressPoolsPool.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -9,111 +9,79 @@ import 'get_listener_v2_pool.dart';
 class GetListenerV2Result {
   /// The administrative state of the Listener.
   final bool adminStateUp;
-
   /// A list of IPv4, IPv6 or mix of both CIDRs.
   final List<String> allowedCidrs;
-
   /// A list of ALPN protocols.
   final List<String> alpnProtocols;
-
   /// The TLS client authentication mode.
   final String clientAuthentication;
-
   /// The ref of the key manager service secret
   /// containing a PEM format client CA certificate bundle for TERMINATED_HTTPS listeners.
   final String clientCaTlsContainerRef;
-
   /// The URI of the key manager service secret
   /// containing a PEM format CA revocation list file for TERMINATED_HTTPS listeners.
   final String clientCrlContainerRef;
-
   /// The maximum number of connections allowed for the Loadbalancer.
   final int connectionLimit;
-
   /// The default pool with which the Listener is associated.
   final String defaultPool;
-
   /// The UUID of default pool.
   final String defaultPoolId;
-
   /// A reference to a Barbican container of TLS secrets.
   final String defaultTlsContainerRef;
-
   /// The description of the listener.
   final String description;
-
   /// Defines whether the includeSubDomains directive
   /// should be added to the Strict-Transport-Security HTTP response header.
   final bool hstsIncludeSubdomains;
-
   /// The value of the max_age directive for the
   /// Strict-Transport-Security HTTP response header.
   final int hstsMaxAge;
-
   /// Defines whether the preload directive should be added to the
   /// Strict-Transport-Security HTTP response header.
   final bool hstsPreload;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A dictionary of optional headers to insert into the request
   /// before it is sent to the backend member.
   final Map<String, String> insertHeaders;
-
   /// L7policies are the L7 policies which are part of this listener.
   final List<GetListenerV2L7policy> l7policies;
   final String listenerId;
   final String loadbalancerId;
-
   /// A list of load balancer IDs.
   final List<GetListenerV2Loadbalancer> loadbalancers;
-
   /// The name of the listener.
   final String name;
-
   /// The operating status of the resource.
   final String operatingStatus;
-
   /// Pools are the pools which are part of this listener.
   final List<GetListenerV2Pool> pools;
-
   /// The owner (project/tenant) ID of the listener.
   final String projectId;
-
   /// The protocol to loadbalance.
   final String protocol;
-
   /// The port on which to listen to client traffic that is
   /// associated with the Loadbalancer.
   final int protocolPort;
-
   /// The provisioning status of the Listener.
   final String provisioningStatus;
   final String region;
-
   /// The list of references to TLS secrets.
   final List<String> sniContainerRefs;
-
   /// Tags is a list of resource tags.
   final List<String> tags;
-
   /// Frontend client inactivity timeout in milliseconds.
   final int timeoutClientData;
-
   /// Backend member connection timeout in milliseconds.
   final int timeoutMemberConnect;
-
   /// Backend member inactivity timeout in milliseconds.
   final int timeoutMemberData;
-
   /// Time, in milliseconds, to wait for additional TCP
   /// packets for content inspection.
   final int timeoutTcpInspect;
-
   /// List of ciphers in OpenSSL format (colon-separated).
   final String tlsCiphers;
-
   /// A list of TLS protocol versions.
   final List<String> tlsVersions;
 
@@ -211,24 +179,13 @@ class GetListenerV2Result {
       'hstsPreload': hstsPreload,
       'id': id,
       'insertHeaders': insertHeaders,
-      'l7policies':
-          pulumi.Input.encodeList<GetListenerV2L7policy, Map<String, dynamic>>(
-            l7policies,
-            (value) => value.toMap(),
-          ),
+      'l7policies': pulumi.Input.encodeList<GetListenerV2L7policy, Map<String, dynamic>>(l7policies, (value) => value.toMap()),
       'listenerId': listenerId,
       'loadbalancerId': loadbalancerId,
-      'loadbalancers':
-          pulumi.Input.encodeList<
-            GetListenerV2Loadbalancer,
-            Map<String, dynamic>
-          >(loadbalancers, (value) => value.toMap()),
+      'loadbalancers': pulumi.Input.encodeList<GetListenerV2Loadbalancer, Map<String, dynamic>>(loadbalancers, (value) => value.toMap()),
       'name': name,
       'operatingStatus': operatingStatus,
-      'pools': pulumi.Input.encodeList<GetListenerV2Pool, Map<String, dynamic>>(
-        pools,
-        (value) => value.toMap(),
-      ),
+      'pools': pulumi.Input.encodeList<GetListenerV2Pool, Map<String, dynamic>>(pools, (value) => value.toMap()),
       'projectId': projectId,
       'protocol': protocol,
       'protocolPort': protocolPort,
@@ -263,27 +220,13 @@ class GetListenerV2Result {
       hstsPreload: map['hstsPreload'] as bool,
       id: map['id'] as String,
       insertHeaders: (map['insertHeaders'] as Map).cast<String, String>(),
-      l7policies: pulumi.Input.decodeList<GetListenerV2L7policy>(
-        map['l7policies']!,
-        (value) => GetListenerV2L7policy.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      l7policies: pulumi.Input.decodeList<GetListenerV2L7policy>(map['l7policies']!, (value) => GetListenerV2L7policy.fromMap((value as Map).cast<String, dynamic>())),
       listenerId: map['listenerId'] as String,
       loadbalancerId: map['loadbalancerId'] as String,
-      loadbalancers: pulumi.Input.decodeList<GetListenerV2Loadbalancer>(
-        map['loadbalancers']!,
-        (value) => GetListenerV2Loadbalancer.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      loadbalancers: pulumi.Input.decodeList<GetListenerV2Loadbalancer>(map['loadbalancers']!, (value) => GetListenerV2Loadbalancer.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       operatingStatus: map['operatingStatus'] as String,
-      pools: pulumi.Input.decodeList<GetListenerV2Pool>(
-        map['pools']!,
-        (value) =>
-            GetListenerV2Pool.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      pools: pulumi.Input.decodeList<GetListenerV2Pool>(map['pools']!, (value) => GetListenerV2Pool.fromMap((value as Map).cast<String, dynamic>())),
       projectId: map['projectId'] as String,
       protocol: map['protocol'] as String,
       protocolPort: map['protocolPort'] as int,
@@ -300,3 +243,4 @@ class GetListenerV2Result {
     );
   }
 }
+

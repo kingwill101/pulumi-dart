@@ -276,16 +276,12 @@ import 'linked_service_state.dart';
 class LinkedService extends pulumi.CustomResource {
   /// The generated name of the Linked Service. The format for this attribute is always `&lt;workspace name&gt;/&lt;linked service type&gt;`(e.g. `workspace1/Automation` or `workspace1/Cluster`)
   late final pulumi.Output<String> name;
-
   /// The ID of the readable Resource that will be linked to the workspace. This should be used for linking to an Automation Account resource.
   late final pulumi.Output<String> readAccessId;
-
   /// The name of the resource group in which the Log Analytics Linked Service is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The ID of the Log Analytics Workspace that will contain the Log Analytics Linked Service resource.
   late final pulumi.Output<String> workspaceId;
-
   /// The ID of the writable Resource that will be linked to the workspace. This should be used for linking to a Log Analytics Cluster resource.
   ///
   /// &gt; **Note:** You must define at least one of the above access resource id attributes (e.g. `read_access_id` or `write_access_id`).
@@ -300,11 +296,11 @@ class LinkedService extends pulumi.CustomResource {
     LinkedServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/linkedService:LinkedService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/linkedService:LinkedService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     readAccessId = registerOutput<String>('readAccessId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -330,11 +326,11 @@ class LinkedService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/linkedService:LinkedService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/linkedService:LinkedService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     readAccessId = registerOutput<String>('readAccessId');
     resourceGroupName = registerOutput<String>('resourceGroupName');

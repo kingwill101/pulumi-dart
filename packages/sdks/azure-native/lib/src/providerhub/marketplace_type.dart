@@ -17,3 +17,4 @@ enum MarketplaceType {
     throw ArgumentError('Unknown MarketplaceType value: $value');
   }
 }
+

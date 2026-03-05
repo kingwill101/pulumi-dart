@@ -20,31 +20,22 @@ import 'scaling_plan_state.dart';
 class ScalingPlan extends pulumi.CustomResource {
   /// A description of the Scaling Plan.
   late final pulumi.Output<String?> description;
-
   /// The name of the tag associated with the VMs you want to exclude from autoscaling.
   late final pulumi.Output<String?> exclusionTag;
-
   /// Friendly name of the Scaling Plan.
   late final pulumi.Output<String?> friendlyName;
-
   /// One or more `host_pool` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> hostPools;
-
   /// The Azure Region where the Virtual Desktop Scaling Plan should exist. Changing this forces a new Virtual Desktop Scaling Plan to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Virtual Desktop Scaling Plan . Changing this forces a new Virtual Desktop Scaling Plan to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Virtual Desktop Scaling Plan should exist. Changing this forces a new Virtual Desktop Scaling Plan to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// One or more `schedule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> schedules;
-
   /// A mapping of tags which should be assigned to the Virtual Desktop Scaling Plan .
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the Time Zone which should be used by the Scaling Plan for time based events, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
   late final pulumi.Output<String> timeZone;
 
@@ -57,11 +48,11 @@ class ScalingPlan extends pulumi.CustomResource {
     ScalingPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:desktopvirtualization/scalingPlan:ScalingPlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:desktopvirtualization/scalingPlan:ScalingPlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     exclusionTag = registerOutput<String?>('exclusionTag');
     friendlyName = registerOutput<String?>('friendlyName');
@@ -92,11 +83,11 @@ class ScalingPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:desktopvirtualization/scalingPlan:ScalingPlan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:desktopvirtualization/scalingPlan:ScalingPlan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     exclusionTag = registerOutput<String?>('exclusionTag');
     friendlyName = registerOutput<String?>('friendlyName');

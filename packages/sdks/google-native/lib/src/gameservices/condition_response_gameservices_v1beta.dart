@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConditionResponseGameservicesV1beta {
   /// Trusted attributes supplied by the IAM system.
   final pulumi.Input<String> iam;
-
   /// An operator to apply the subject with.
   final pulumi.Input<String> op;
-
   /// Trusted attributes discharged by the service.
   final pulumi.Input<String> svc;
-
   /// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
   final pulumi.Input<String> sys;
-
   /// The objects of the condition.
   final pulumi.Input<List<String>> values;
 
@@ -43,9 +39,7 @@ class ConditionResponseGameservicesV1beta {
     };
   }
 
-  factory ConditionResponseGameservicesV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConditionResponseGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return ConditionResponseGameservicesV1beta(
       iam: pulumi.Input.fromValue(map['iam'] as String),
       op: pulumi.Input.fromValue(map['op'] as String),
@@ -55,3 +49,4 @@ class ConditionResponseGameservicesV1beta {
     );
   }
 }
+

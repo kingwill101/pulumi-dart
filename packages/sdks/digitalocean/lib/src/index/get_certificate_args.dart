@@ -12,10 +12,14 @@ class GetCertificateArgs {
 
   /// Creates a new [GetCertificateArgs].
   /// [name] The name of certificate.
-  GetCertificateArgs({required this.name});
+  GetCertificateArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetCertificateArgs {
     );
   }
 }
+

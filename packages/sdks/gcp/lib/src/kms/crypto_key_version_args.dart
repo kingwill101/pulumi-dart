@@ -11,12 +11,9 @@ class CryptoKeyVersionArgs {
   /// The name of the cryptoKey associated with the CryptoKeyVersions.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
   final pulumi.Input<String> cryptoKey;
-
   /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
   /// Structure is documented below.
-  final pulumi.Input<CryptoKeyVersionExternalProtectionLevelOptions>?
-  externalProtectionLevelOptions;
-
+  final pulumi.Input<CryptoKeyVersionExternalProtectionLevelOptions>? externalProtectionLevelOptions;
   /// The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
   /// otherwise the value of this field is always retrieved automatically.
   /// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
@@ -35,11 +32,7 @@ class CryptoKeyVersionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cryptoKey': cryptoKey,
-      'externalProtectionLevelOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            CryptoKeyVersionExternalProtectionLevelOptions,
-            Map<String, dynamic>
-          >(externalProtectionLevelOptions, (value) => value.toMap()),
+      'externalProtectionLevelOptions': ?pulumi.Input.mapOptionalInputValue<CryptoKeyVersionExternalProtectionLevelOptions, Map<String, dynamic>>(externalProtectionLevelOptions, (value) => value.toMap()),
       'state': ?state,
     };
   }
@@ -47,20 +40,9 @@ class CryptoKeyVersionArgs {
   factory CryptoKeyVersionArgs.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionArgs(
       cryptoKey: pulumi.Input.fromValue(map['cryptoKey'] as String),
-      externalProtectionLevelOptions: (() {
-        final guardedValue = map['externalProtectionLevelOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CryptoKeyVersionExternalProtectionLevelOptions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      externalProtectionLevelOptions: (() { final guardedValue = map['externalProtectionLevelOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CryptoKeyVersionExternalProtectionLevelOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

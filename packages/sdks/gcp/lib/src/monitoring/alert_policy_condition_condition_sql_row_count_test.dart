@@ -13,7 +13,6 @@ class AlertPolicyConditionConditionSqlRowCountTest {
   /// COMPARISON_GT are supported currently.
   /// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
   final pulumi.Input<String> comparison;
-
   /// The value against which to compare the row count.
   final pulumi.Input<int> threshold;
 
@@ -26,15 +25,17 @@ class AlertPolicyConditionConditionSqlRowCountTest {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comparison': comparison, 'threshold': threshold};
+    return <String, dynamic>{
+      'comparison': comparison,
+      'threshold': threshold,
+    };
   }
 
-  factory AlertPolicyConditionConditionSqlRowCountTest.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertPolicyConditionConditionSqlRowCountTest.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlRowCountTest(
       comparison: pulumi.Input.fromValue(map['comparison'] as String),
       threshold: pulumi.Input.fromValue(map['threshold'] as int),
     );
   }
 }
+

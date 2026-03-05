@@ -9,19 +9,20 @@ class EncryptionConfiguration {
 
   /// Creates a new [EncryptionConfiguration].
   /// [kmsKeyName] The name of the KMS key used for encrypting BigQuery data.
-  EncryptionConfiguration({this.kmsKeyName});
+  EncryptionConfiguration({
+    this.kmsKeyName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyName': ?kmsKeyName};
+    return <String, dynamic>{
+      'kmsKeyName': ?kmsKeyName,
+    };
   }
 
   factory EncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return EncryptionConfiguration(
-      kmsKeyName: (() {
-        final guardedValue = map['kmsKeyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

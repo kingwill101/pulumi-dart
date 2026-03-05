@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class X12ValidationOverride {
   /// The value indicating whether to allow leading and trailing spaces and zeroes.
   final pulumi.Input<bool> allowLeadingAndTrailingSpacesAndZeroes;
-
   /// The message id on which the validation settings has to be applied.
   final pulumi.Input<String> messageId;
-
   /// The trailing separator policy.
   final pulumi.Input<String> trailingSeparatorPolicy;
-
   /// The value indicating whether to trim leading and trailing spaces and zeroes.
   final pulumi.Input<bool> trimLeadingAndTrailingSpacesAndZeroes;
-
   /// The value indicating whether to validate character Set.
   final pulumi.Input<bool> validateCharacterSet;
-
   /// The value indicating whether to validate EDI types.
   final pulumi.Input<bool> validateEDITypes;
-
   /// The value indicating whether to validate XSD types.
   final pulumi.Input<bool> validateXSDTypes;
 
@@ -45,12 +39,10 @@ class X12ValidationOverride {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowLeadingAndTrailingSpacesAndZeroes':
-          allowLeadingAndTrailingSpacesAndZeroes,
+      'allowLeadingAndTrailingSpacesAndZeroes': allowLeadingAndTrailingSpacesAndZeroes,
       'messageId': messageId,
       'trailingSeparatorPolicy': trailingSeparatorPolicy,
-      'trimLeadingAndTrailingSpacesAndZeroes':
-          trimLeadingAndTrailingSpacesAndZeroes,
+      'trimLeadingAndTrailingSpacesAndZeroes': trimLeadingAndTrailingSpacesAndZeroes,
       'validateCharacterSet': validateCharacterSet,
       'validateEDITypes': validateEDITypes,
       'validateXSDTypes': validateXSDTypes,
@@ -59,21 +51,14 @@ class X12ValidationOverride {
 
   factory X12ValidationOverride.fromMap(Map<String, dynamic> map) {
     return X12ValidationOverride(
-      allowLeadingAndTrailingSpacesAndZeroes: pulumi.Input.fromValue(
-        map['allowLeadingAndTrailingSpacesAndZeroes'] as bool,
-      ),
+      allowLeadingAndTrailingSpacesAndZeroes: pulumi.Input.fromValue(map['allowLeadingAndTrailingSpacesAndZeroes'] as bool),
       messageId: pulumi.Input.fromValue(map['messageId'] as String),
-      trailingSeparatorPolicy: pulumi.Input.fromValue(
-        map['trailingSeparatorPolicy'] as String,
-      ),
-      trimLeadingAndTrailingSpacesAndZeroes: pulumi.Input.fromValue(
-        map['trimLeadingAndTrailingSpacesAndZeroes'] as bool,
-      ),
-      validateCharacterSet: pulumi.Input.fromValue(
-        map['validateCharacterSet'] as bool,
-      ),
+      trailingSeparatorPolicy: pulumi.Input.fromValue(map['trailingSeparatorPolicy'] as String),
+      trimLeadingAndTrailingSpacesAndZeroes: pulumi.Input.fromValue(map['trimLeadingAndTrailingSpacesAndZeroes'] as bool),
+      validateCharacterSet: pulumi.Input.fromValue(map['validateCharacterSet'] as bool),
       validateEDITypes: pulumi.Input.fromValue(map['validateEDITypes'] as bool),
       validateXSDTypes: pulumi.Input.fromValue(map['validateXSDTypes'] as bool),
     );
   }
 }
+

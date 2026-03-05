@@ -10,28 +10,20 @@ import 'stream_input_iot_hub_serialization.dart';
 class StreamInputIotHubArgs {
   /// The IoT Hub endpoint to connect to (ie. messages/events, messages/operationsMonitoringEvents, etc.).
   final pulumi.Input<String> endpoint;
-
   /// The name of an Event Hub Consumer Group that should be used to read events from the Event Hub. Specifying distinct consumer group names for multiple inputs allows each of those inputs to receive the same events from the Event Hub.
   final pulumi.Input<String> eventhubConsumerGroupName;
-
   /// The name or the URI of the IoT Hub.
   final pulumi.Input<String> iothubNamespace;
-
   /// The name of the Stream Input IoTHub. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A `serialization` block as defined below.
   final pulumi.Input<StreamInputIotHubSerialization> serialization;
-
   /// The shared access policy key for the specified shared access policy. Changing this forces a new resource to be created.
   final pulumi.Input<String> sharedAccessPolicyKey;
-
   /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
   final pulumi.Input<String> sharedAccessPolicyName;
-
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobName;
 
@@ -64,11 +56,7 @@ class StreamInputIotHubArgs {
       'iothubNamespace': iothubNamespace,
       'name': ?name,
       'resourceGroupName': resourceGroupName,
-      'serialization':
-          pulumi.Input.mapInputValue<
-            StreamInputIotHubSerialization,
-            Map<String, dynamic>
-          >(serialization, (value) => value.toMap()),
+      'serialization': pulumi.Input.mapInputValue<StreamInputIotHubSerialization, Map<String, dynamic>>(serialization, (value) => value.toMap()),
       'sharedAccessPolicyKey': sharedAccessPolicyKey,
       'sharedAccessPolicyName': sharedAccessPolicyName,
       'streamAnalyticsJobName': streamAnalyticsJobName,
@@ -78,32 +66,15 @@ class StreamInputIotHubArgs {
   factory StreamInputIotHubArgs.fromMap(Map<String, dynamic> map) {
     return StreamInputIotHubArgs(
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
-      eventhubConsumerGroupName: pulumi.Input.fromValue(
-        map['eventhubConsumerGroupName'] as String,
-      ),
+      eventhubConsumerGroupName: pulumi.Input.fromValue(map['eventhubConsumerGroupName'] as String),
       iothubNamespace: pulumi.Input.fromValue(map['iothubNamespace'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      serialization: pulumi.Input.fromValue(
-        StreamInputIotHubSerialization.fromMap(
-          (map['serialization']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sharedAccessPolicyKey: pulumi.Input.fromValue(
-        map['sharedAccessPolicyKey'] as String,
-      ),
-      sharedAccessPolicyName: pulumi.Input.fromValue(
-        map['sharedAccessPolicyName'] as String,
-      ),
-      streamAnalyticsJobName: pulumi.Input.fromValue(
-        map['streamAnalyticsJobName'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      serialization: pulumi.Input.fromValue(StreamInputIotHubSerialization.fromMap((map['serialization']! as Map).cast<String, dynamic>())),
+      sharedAccessPolicyKey: pulumi.Input.fromValue(map['sharedAccessPolicyKey'] as String),
+      sharedAccessPolicyName: pulumi.Input.fromValue(map['sharedAccessPolicyName'] as String),
+      streamAnalyticsJobName: pulumi.Input.fromValue(map['streamAnalyticsJobName'] as String),
     );
   }
 }
+

@@ -10,19 +10,14 @@ import 'issue_properties.dart';
 class IssueArgs {
   /// The name of the Azure Monitor Workspace. The name is case insensitive
   final pulumi.Input<String> azureMonitorWorkspaceName;
-
   /// The name of the IssueResource
   final pulumi.Input<String>? issueName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<IssueProperties>? properties;
-
   /// Related resource or alert that is to be added to the issue (default: empty - the issue will be created without any related resources or alerts)
   final pulumi.Input<String>? related;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Whether to automatically start an investigation once the issue is created (default: false)
   final pulumi.Input<bool>? startInvestigation;
 
@@ -46,11 +41,7 @@ class IssueArgs {
     return <String, dynamic>{
       'azureMonitorWorkspaceName': azureMonitorWorkspaceName,
       'issueName': ?issueName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            IssueProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<IssueProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'related': ?related,
       'resourceGroupName': resourceGroupName,
       'startInvestigation': ?startInvestigation,
@@ -59,36 +50,13 @@ class IssueArgs {
 
   factory IssueArgs.fromMap(Map<String, dynamic> map) {
     return IssueArgs(
-      azureMonitorWorkspaceName: pulumi.Input.fromValue(
-        map['azureMonitorWorkspaceName'] as String,
-      ),
-      issueName: (() {
-        final guardedValue = map['issueName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IssueProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      related: (() {
-        final guardedValue = map['related'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      startInvestigation: (() {
-        final guardedValue = map['startInvestigation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      azureMonitorWorkspaceName: pulumi.Input.fromValue(map['azureMonitorWorkspaceName'] as String),
+      issueName: (() { final guardedValue = map['issueName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IssueProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      related: (() { final guardedValue = map['related']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      startInvestigation: (() { final guardedValue = map['startInvestigation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

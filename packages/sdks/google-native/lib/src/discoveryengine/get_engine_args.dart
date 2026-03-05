@@ -38,11 +38,8 @@ class GetEngineArgs {
       collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
       engineId: pulumi.Input.fromValue(map['engineId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

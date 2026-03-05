@@ -15,3 +15,4 @@ enum DataflowEndpointFabricPathType {
     throw ArgumentError('Unknown DataflowEndpointFabricPathType value: $value');
   }
 }
+

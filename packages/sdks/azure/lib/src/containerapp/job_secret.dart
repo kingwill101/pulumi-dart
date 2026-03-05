@@ -7,15 +7,12 @@ class JobSecret {
   ///
   /// !&gt; **Note:** `identity` must be used together with `key_vault_secret_id`
   final pulumi.Input<String>? identity;
-
   /// The ID of a Key Vault secret. This can be a versioned or version-less ID.
   ///
   /// !&gt; **Note:** When using `key_vault_secret_id`, `ignore_changes` should be used to ignore any changes to `value`.
   final pulumi.Input<String>? keyVaultSecretId;
-
   /// The secret name.
   final pulumi.Input<String> name;
-
   /// The value for this secret.
   ///
   /// !&gt; **Note:** `value` will be ignored if `key_vault_secret_id` and `identity` are provided.
@@ -44,22 +41,11 @@ class JobSecret {
 
   factory JobSecret.fromMap(Map<String, dynamic> map) {
     return JobSecret(
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultSecretId: (() {
-        final guardedValue = map['keyVaultSecretId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultSecretId: (() { final guardedValue = map['keyVaultSecretId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum NetworkPolicy {
     throw ArgumentError('Unknown NetworkPolicy value: $value');
   }
 }
+

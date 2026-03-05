@@ -16,23 +16,14 @@ class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'targetConnectionInfo':
-          pulumi.Input.mapInputValue<
-            PostgreSqlConnectionInfoResponse,
-            Map<String, dynamic>
-          >(targetConnectionInfo, (value) => value.toMap()),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<PostgreSqlConnectionInfoResponse, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
-  factory ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInputResponse(
-      targetConnectionInfo: pulumi.Input.fromValue(
-        PostgreSqlConnectionInfoResponse.fromMap(
-          (map['targetConnectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      targetConnectionInfo: pulumi.Input.fromValue(PostgreSqlConnectionInfoResponse.fromMap((map['targetConnectionInfo']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

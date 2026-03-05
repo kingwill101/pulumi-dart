@@ -1,18 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTag.
 class GetTagResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
-
   /// The name of the tag, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1`. If the package part contains slashes, the slashes are escaped.
   final String name;
   final String packageName;
   final String? project;
   final String repositoryId;
   final String tagName;
-
   /// The version of the tag.
   final String version;
 
@@ -55,14 +54,11 @@ class GetTagResult {
       location: map['location'] as String,
       name: map['name'] as String,
       packageName: map['packageName'] as String,
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       repositoryId: map['repositoryId'] as String,
       tagName: map['tagName'] as String,
       version: map['version'] as String,
     );
   }
 }
+

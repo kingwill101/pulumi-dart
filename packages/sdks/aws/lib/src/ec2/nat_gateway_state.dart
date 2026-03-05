@@ -8,64 +8,43 @@ import 'nat_gateway_regional_nat_gateway_address.dart';
 class NatGatewayState {
   /// The Allocation ID of the Elastic IP address for the NAT Gateway. Required when `connectivity_type` is set to `public` and `availability_mode` is set to `zonal`. When `availability_mode` is set to `regional`, this must not be set; instead, use the `availability_zone_address` block to specify EIPs for each AZ.
   final pulumi.Input<String>? allocationId;
-
   /// Association ID of the Elastic IP address.
   final pulumi.Input<String>? associationId;
-
   /// (regional NAT gateways only) Indicates whether AWS automatically manages AZ coverage.
   final pulumi.Input<String>? autoProvisionZones;
-
   /// (regional NAT gateways only) Indicates whether AWS automatically allocates additional Elastic IP addresses (EIPs) in an AZ when the NAT gateway needs more ports due to increased concurrent connections to a single destination from that AZ.
   final pulumi.Input<String>? autoScalingIps;
-
   /// Specifies whether to create a zonal (single-AZ) or regional (multi-AZ) NAT gateway. Valid values are `zonal` and `regional`. Defaults to `zonal`.
   final pulumi.Input<String>? availabilityMode;
-
   /// Repeatable configuration block for the Elastic IP addresses (EIPs) and availability zones for the regional NAT gateway. When not specified, the regional NAT gateway will automatically expand to new AZs and associate EIPs upon detection of an elastic network interface (auto mode). When specified, auto-expansion is disabled (manual mode). See `availability_zone_address` below for details.
-  final pulumi.Input<List<NatGatewayAvailabilityZoneAddress>>?
-  availabilityZoneAddresses;
-
+  final pulumi.Input<List<NatGatewayAvailabilityZoneAddress>>? availabilityZoneAddresses;
   /// Connectivity type for the NAT Gateway. Valid values are `private` and `public`. When `availability_mode` is set to `regional`, this must be set to `public`. Defaults to `public`.
   final pulumi.Input<String>? connectivityType;
-
   /// ID of the network interface.
   final pulumi.Input<String>? networkInterfaceId;
-
   /// The private IPv4 address to assign to the NAT Gateway. If you don't provide an address, a private IPv4 address will be automatically assigned.
   final pulumi.Input<String>? privateIp;
-
   /// Public IP address.
   final pulumi.Input<String>? publicIp;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// (regional NAT gateways only) Repeatable blocks for information about the IP addresses and network interface associated with the regional NAT gateway.
-  final pulumi.Input<List<NatGatewayRegionalNatGatewayAddress>>?
-  regionalNatGatewayAddresses;
+  final pulumi.Input<List<NatGatewayRegionalNatGatewayAddress>>? regionalNatGatewayAddresses;
   final pulumi.Input<String>? regionalNatGatewayAutoMode;
-
   /// (regional NAT gateways only) ID of the automatically created route table.
   final pulumi.Input<String>? routeTableId;
-
   /// A list of secondary allocation EIP IDs for this NAT Gateway. To remove all secondary allocations an empty list should be specified.
   final pulumi.Input<List<String>>? secondaryAllocationIds;
-
   /// The number of secondary private IPv4 addresses you want to assign to the NAT Gateway.
   final pulumi.Input<int>? secondaryPrivateIpAddressCount;
-
   /// A list of secondary private IPv4 addresses to assign to the NAT Gateway. To remove all secondary private addresses an empty list should be specified.
   final pulumi.Input<List<String>>? secondaryPrivateIpAddresses;
-
   /// The Subnet ID of the subnet in which to place the NAT Gateway. Required when `availability_mode` is set to `zonal`. Must not be set when `availability_mode` is set to `regional`.
   final pulumi.Input<String>? subnetId;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-
   /// VPC ID where this NAT Gateway will be created. Required when `availability_mode` is set to `regional`.
   final pulumi.Input<String>? vpcId;
 
@@ -122,35 +101,13 @@ class NatGatewayState {
       'autoProvisionZones': ?autoProvisionZones,
       'autoScalingIps': ?autoScalingIps,
       'availabilityMode': ?availabilityMode,
-      'availabilityZoneAddresses':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NatGatewayAvailabilityZoneAddress>,
-            List<Map<String, dynamic>>
-          >(
-            availabilityZoneAddresses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NatGatewayAvailabilityZoneAddress,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'availabilityZoneAddresses': ?pulumi.Input.mapOptionalInputValue<List<NatGatewayAvailabilityZoneAddress>, List<Map<String, dynamic>>>(availabilityZoneAddresses, (value) => pulumi.Input.encodeList<NatGatewayAvailabilityZoneAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'connectivityType': ?connectivityType,
       'networkInterfaceId': ?networkInterfaceId,
       'privateIp': ?privateIp,
       'publicIp': ?publicIp,
       'region': ?region,
-      'regionalNatGatewayAddresses':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NatGatewayRegionalNatGatewayAddress>,
-            List<Map<String, dynamic>>
-          >(
-            regionalNatGatewayAddresses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NatGatewayRegionalNatGatewayAddress,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'regionalNatGatewayAddresses': ?pulumi.Input.mapOptionalInputValue<List<NatGatewayRegionalNatGatewayAddress>, List<Map<String, dynamic>>>(regionalNatGatewayAddresses, (value) => pulumi.Input.encodeList<NatGatewayRegionalNatGatewayAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'regionalNatGatewayAutoMode': ?regionalNatGatewayAutoMode,
       'routeTableId': ?routeTableId,
       'secondaryAllocationIds': ?secondaryAllocationIds,
@@ -165,129 +122,28 @@ class NatGatewayState {
 
   factory NatGatewayState.fromMap(Map<String, dynamic> map) {
     return NatGatewayState(
-      allocationId: (() {
-        final guardedValue = map['allocationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      associationId: (() {
-        final guardedValue = map['associationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      autoProvisionZones: (() {
-        final guardedValue = map['autoProvisionZones'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      autoScalingIps: (() {
-        final guardedValue = map['autoScalingIps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      availabilityMode: (() {
-        final guardedValue = map['availabilityMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      availabilityZoneAddresses: (() {
-        final guardedValue = map['availabilityZoneAddresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NatGatewayAvailabilityZoneAddress>(
-            guardedValue,
-            (value) => NatGatewayAvailabilityZoneAddress.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      connectivityType: (() {
-        final guardedValue = map['connectivityType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkInterfaceId: (() {
-        final guardedValue = map['networkInterfaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateIp: (() {
-        final guardedValue = map['privateIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicIp: (() {
-        final guardedValue = map['publicIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regionalNatGatewayAddresses: (() {
-        final guardedValue = map['regionalNatGatewayAddresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NatGatewayRegionalNatGatewayAddress>(
-            guardedValue,
-            (value) => NatGatewayRegionalNatGatewayAddress.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      regionalNatGatewayAutoMode: (() {
-        final guardedValue = map['regionalNatGatewayAutoMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routeTableId: (() {
-        final guardedValue = map['routeTableId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryAllocationIds: (() {
-        final guardedValue = map['secondaryAllocationIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      secondaryPrivateIpAddressCount: (() {
-        final guardedValue = map['secondaryPrivateIpAddressCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      secondaryPrivateIpAddresses: (() {
-        final guardedValue = map['secondaryPrivateIpAddresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      subnetId: (() {
-        final guardedValue = map['subnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allocationId: (() { final guardedValue = map['allocationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      associationId: (() { final guardedValue = map['associationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      autoProvisionZones: (() { final guardedValue = map['autoProvisionZones']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      autoScalingIps: (() { final guardedValue = map['autoScalingIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      availabilityMode: (() { final guardedValue = map['availabilityMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      availabilityZoneAddresses: (() { final guardedValue = map['availabilityZoneAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NatGatewayAvailabilityZoneAddress>(guardedValue, (value) => NatGatewayAvailabilityZoneAddress.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      connectivityType: (() { final guardedValue = map['connectivityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkInterfaceId: (() { final guardedValue = map['networkInterfaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIp: (() { final guardedValue = map['privateIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicIp: (() { final guardedValue = map['publicIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionalNatGatewayAddresses: (() { final guardedValue = map['regionalNatGatewayAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NatGatewayRegionalNatGatewayAddress>(guardedValue, (value) => NatGatewayRegionalNatGatewayAddress.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      regionalNatGatewayAutoMode: (() { final guardedValue = map['regionalNatGatewayAutoMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routeTableId: (() { final guardedValue = map['routeTableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryAllocationIds: (() { final guardedValue = map['secondaryAllocationIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      secondaryPrivateIpAddressCount: (() { final guardedValue = map['secondaryPrivateIpAddressCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      secondaryPrivateIpAddresses: (() { final guardedValue = map['secondaryPrivateIpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

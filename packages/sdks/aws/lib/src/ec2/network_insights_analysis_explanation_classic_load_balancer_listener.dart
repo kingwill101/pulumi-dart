@@ -21,20 +21,11 @@ class NetworkInsightsAnalysisExplanationClassicLoadBalancerListener {
     };
   }
 
-  factory NetworkInsightsAnalysisExplanationClassicLoadBalancerListener.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkInsightsAnalysisExplanationClassicLoadBalancerListener.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisExplanationClassicLoadBalancerListener(
-      instancePort: (() {
-        final guardedValue = map['instancePort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      loadBalancerPort: (() {
-        final guardedValue = map['loadBalancerPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      instancePort: (() { final guardedValue = map['instancePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      loadBalancerPort: (() { final guardedValue = map['loadBalancerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

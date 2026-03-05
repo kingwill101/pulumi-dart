@@ -10,17 +10,12 @@ import 'security_policy_rule_matcher_versioned_expr_compute_beta.dart';
 class SecurityPolicyRuleMatcherComputeBeta {
   /// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
   final pulumi.Input<SecurityPolicyRuleMatcherConfigComputeBeta>? config;
-
   /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
   final pulumi.Input<ExprComputeBeta>? expr;
-
   /// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
-  final pulumi.Input<SecurityPolicyRuleMatcherExprOptionsComputeBeta>?
-  exprOptions;
-
+  final pulumi.Input<SecurityPolicyRuleMatcherExprOptionsComputeBeta>? exprOptions;
   /// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
-  final pulumi.Input<SecurityPolicyRuleMatcherVersionedExprComputeBeta>?
-  versionedExpr;
+  final pulumi.Input<SecurityPolicyRuleMatcherVersionedExprComputeBeta>? versionedExpr;
 
   /// Creates a new [SecurityPolicyRuleMatcherComputeBeta].
   /// [config] The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
@@ -36,69 +31,20 @@ class SecurityPolicyRuleMatcherComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecurityPolicyRuleMatcherConfigComputeBeta,
-            Map<String, dynamic>
-          >(config, (value) => value.toMap()),
-      'expr':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExprComputeBeta,
-            Map<String, dynamic>
-          >(expr, (value) => value.toMap()),
-      'exprOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecurityPolicyRuleMatcherExprOptionsComputeBeta,
-            Map<String, dynamic>
-          >(exprOptions, (value) => value.toMap()),
-      'versionedExpr':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecurityPolicyRuleMatcherVersionedExprComputeBeta,
-            String
-          >(versionedExpr, (value) => value.wireValue),
+      'config': ?pulumi.Input.mapOptionalInputValue<SecurityPolicyRuleMatcherConfigComputeBeta, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'expr': ?pulumi.Input.mapOptionalInputValue<ExprComputeBeta, Map<String, dynamic>>(expr, (value) => value.toMap()),
+      'exprOptions': ?pulumi.Input.mapOptionalInputValue<SecurityPolicyRuleMatcherExprOptionsComputeBeta, Map<String, dynamic>>(exprOptions, (value) => value.toMap()),
+      'versionedExpr': ?pulumi.Input.mapOptionalInputValue<SecurityPolicyRuleMatcherVersionedExprComputeBeta, String>(versionedExpr, (value) => value.wireValue),
     };
   }
 
-  factory SecurityPolicyRuleMatcherComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPolicyRuleMatcherComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleMatcherComputeBeta(
-      config: (() {
-        final guardedValue = map['config'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecurityPolicyRuleMatcherConfigComputeBeta.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      expr: (() {
-        final guardedValue = map['expr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExprComputeBeta.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      exprOptions: (() {
-        final guardedValue = map['exprOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecurityPolicyRuleMatcherExprOptionsComputeBeta.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      versionedExpr: (() {
-        final guardedValue = map['versionedExpr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecurityPolicyRuleMatcherVersionedExprComputeBeta.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyRuleMatcherConfigComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      expr: (() { final guardedValue = map['expr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExprComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      exprOptions: (() { final guardedValue = map['exprOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyRuleMatcherExprOptionsComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      versionedExpr: (() { final guardedValue = map['versionedExpr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyRuleMatcherVersionedExprComputeBeta.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

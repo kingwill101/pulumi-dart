@@ -173,32 +173,23 @@ import 'node_state.dart';
 class Node extends pulumi.CustomResource {
   /// IP or hostname of the node
   late final pulumi.Output<String> address;
-
   /// Specifies the maximum number of connections allowed for the node or node address.
   late final pulumi.Output<int> connectionLimit;
-
   /// User-defined description give ltm_node
   late final pulumi.Output<String?> description;
-
   /// Specifies the fixed ratio value used for a node during ratio load balancing.
   late final pulumi.Output<int> dynamicRatio;
   late final pulumi.Output<NodeFqdn?> fqdn;
-
   /// specifies the name of the monitor or monitor rule that you want to associate with the node.
   late final pulumi.Output<String?> monitor;
-
   /// Name of the node
   late final pulumi.Output<String> name;
-
   /// Specifies the maximum number of connections per second allowed for a node or node address. The default value is 'disabled'.
   late final pulumi.Output<String> rateLimit;
-
   /// Sets the ratio number for the node.
   late final pulumi.Output<int> ratio;
-
   /// Enables or disables the node for new sessions. The default value is user-enabled.
   late final pulumi.Output<String> session;
-
   /// Default is "user-up" you can set to "user-down" if you want to disable
   ///
   /// &gt; *NOTE* Below attributes needs to be configured under fqdn option.
@@ -208,25 +199,21 @@ class Node extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Node]. {@macro pulumi_ltm_node_node_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Node(String name, {NodeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'f5bigip:ltm/node:Node',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Node(
+    String name, {
+    NodeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'f5bigip:ltm/node:Node',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     connectionLimit = registerOutput<int>('connectionLimit');
     description = registerOutput<String?>('description');
     dynamicRatio = registerOutput<int>('dynamicRatio');
-    fqdn = registerOutput<NodeFqdn?>(
-      'fqdn',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeFqdn.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    fqdn = registerOutput<NodeFqdn?>('fqdn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeFqdn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitor = registerOutput<String?>('monitor');
     this.name = registerOutput<String>('name');
     rateLimit = registerOutput<String>('rateLimit');
@@ -236,7 +223,11 @@ class Node extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Node] resource's state with the given [name] and [id].
-  static Node get(String name, pulumi.Input<String> id, {NodeState? state}) {
+  static Node get(
+    String name,
+    pulumi.Input<String> id, {
+    NodeState? state,
+  }) {
     return Node._get(
       name,
       state: state?.toMap(),
@@ -249,23 +240,16 @@ class Node extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/node:Node',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/node:Node',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     connectionLimit = registerOutput<int>('connectionLimit');
     description = registerOutput<String?>('description');
     dynamicRatio = registerOutput<int>('dynamicRatio');
-    fqdn = registerOutput<NodeFqdn?>(
-      'fqdn',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeFqdn.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    fqdn = registerOutput<NodeFqdn?>('fqdn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeFqdn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitor = registerOutput<String?>('monitor');
     this.name = registerOutput<String>('name');
     rateLimit = registerOutput<String>('rateLimit');

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetNatGatewayAssociationArgs {
   /// The ID of the NAT Gateway which should be associated with the Subnet. Changing this forces a new resource to be created.
   final pulumi.Input<String> natGatewayId;
-
   /// The ID of the Subnet. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
 
@@ -35,3 +34,4 @@ class SubnetNatGatewayAssociationArgs {
     );
   }
 }
+

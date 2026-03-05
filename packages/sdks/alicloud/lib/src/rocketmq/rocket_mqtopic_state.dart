@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RocketMQTopicState {
   /// The creation time of the resource.
   final pulumi.Input<String>? createTime;
-
   /// Instance ID.
   final pulumi.Input<String>? instanceId;
-
   /// The maximum TPS for message sending.
   final pulumi.Input<int>? maxSendTps;
-
   /// Message type.
   final pulumi.Input<String>? messageType;
-
   /// (Available since v1.247.0) The region ID to which the instance belongs.
   final pulumi.Input<String>? regionId;
-
   /// Custom remarks.
   final pulumi.Input<String>? remark;
-
   /// The status of the resource.
   final pulumi.Input<String>? status;
-
   /// Topic name and identification.
   final pulumi.Input<String>? topicName;
 
@@ -63,46 +56,15 @@ class RocketMQTopicState {
 
   factory RocketMQTopicState.fromMap(Map<String, dynamic> map) {
     return RocketMQTopicState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxSendTps: (() {
-        final guardedValue = map['maxSendTps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      messageType: (() {
-        final guardedValue = map['messageType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regionId: (() {
-        final guardedValue = map['regionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remark: (() {
-        final guardedValue = map['remark'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      topicName: (() {
-        final guardedValue = map['topicName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxSendTps: (() { final guardedValue = map['maxSendTps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      messageType: (() { final guardedValue = map['messageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionId: (() { final guardedValue = map['regionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remark: (() { final guardedValue = map['remark']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      topicName: (() { final guardedValue = map['topicName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

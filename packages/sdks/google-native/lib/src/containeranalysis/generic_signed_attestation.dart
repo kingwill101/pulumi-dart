@@ -8,10 +8,8 @@ import 'signature_containeranalysis_v1beta1.dart';
 class GenericSignedAttestation {
   /// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
   final pulumi.Input<GenericSignedAttestationContentType>? contentType;
-
   /// The serialized payload that is verified by one or more `signatures`. The encoding and semantic meaning of this payload must match what is set in `content_type`.
   final pulumi.Input<String>? serializedPayload;
-
   /// One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification.
   final pulumi.Input<List<SignatureContaineranalysisV1beta1>>? signatures;
 
@@ -27,53 +25,18 @@ class GenericSignedAttestation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'contentType':
-          ?pulumi.Input.mapOptionalInputValue<
-            GenericSignedAttestationContentType,
-            String
-          >(contentType, (value) => value.wireValue),
+      'contentType': ?pulumi.Input.mapOptionalInputValue<GenericSignedAttestationContentType, String>(contentType, (value) => value.wireValue),
       'serializedPayload': ?serializedPayload,
-      'signatures':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SignatureContaineranalysisV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            signatures,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SignatureContaineranalysisV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'signatures': ?pulumi.Input.mapOptionalInputValue<List<SignatureContaineranalysisV1beta1>, List<Map<String, dynamic>>>(signatures, (value) => pulumi.Input.encodeList<SignatureContaineranalysisV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GenericSignedAttestation.fromMap(Map<String, dynamic> map) {
     return GenericSignedAttestation(
-      contentType: (() {
-        final guardedValue = map['contentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GenericSignedAttestationContentType.fromValue(guardedValue as String),
-        );
-      })(),
-      serializedPayload: (() {
-        final guardedValue = map['serializedPayload'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      signatures: (() {
-        final guardedValue = map['signatures'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SignatureContaineranalysisV1beta1>(
-            guardedValue,
-            (value) => SignatureContaineranalysisV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GenericSignedAttestationContentType.fromValue(guardedValue as String)); })(),
+      serializedPayload: (() { final guardedValue = map['serializedPayload']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      signatures: (() { final guardedValue = map['signatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SignatureContaineranalysisV1beta1>(guardedValue, (value) => SignatureContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

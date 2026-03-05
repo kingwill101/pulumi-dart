@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResolverInboundEndpointArgs {
   /// Name of the Private DNS Resolver Inbound Endpoint.
   final pulumi.Input<String> name;
-
   /// ID of the Private DNS Resolver.
   final pulumi.Input<String> privateDnsResolverId;
 
@@ -31,9 +30,8 @@ class GetResolverInboundEndpointArgs {
   factory GetResolverInboundEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverInboundEndpointArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      privateDnsResolverId: pulumi.Input.fromValue(
-        map['privateDnsResolverId'] as String,
-      ),
+      privateDnsResolverId: pulumi.Input.fromValue(map['privateDnsResolverId'] as String),
     );
   }
 }
+

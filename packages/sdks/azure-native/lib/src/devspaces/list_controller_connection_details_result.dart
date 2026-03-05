@@ -10,35 +10,20 @@ class ListControllerConnectionDetailsResult {
 
   /// Creates a new [ListControllerConnectionDetailsResult].
   /// [connectionDetailsList] List of Azure Dev Spaces Controller connection details.
-  ListControllerConnectionDetailsResult({this.connectionDetailsList});
+  ListControllerConnectionDetailsResult({
+    this.connectionDetailsList,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionDetailsList': ?(() {
-        final guardedValue = connectionDetailsList;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          ControllerConnectionDetailsResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'connectionDetailsList': ?(() { final guardedValue = connectionDetailsList; if (guardedValue == null) return null; return pulumi.Input.encodeList<ControllerConnectionDetailsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
-  factory ListControllerConnectionDetailsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListControllerConnectionDetailsResult.fromMap(Map<String, dynamic> map) {
     return ListControllerConnectionDetailsResult(
-      connectionDetailsList: (() {
-        final guardedValue = map['connectionDetailsList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<ControllerConnectionDetailsResponse>(
-          guardedValue,
-          (value) => ControllerConnectionDetailsResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      connectionDetailsList: (() { final guardedValue = map['connectionDetailsList']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControllerConnectionDetailsResponse>(guardedValue, (value) => ControllerConnectionDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

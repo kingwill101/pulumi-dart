@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLogBackupsLogbackup {
   /// The ID of the Master node of the instance.
   final pulumi.Input<String> dbInstanceId;
-
   /// The first ID of the resource
   final pulumi.Input<String> logBackupId;
-
   /// Log file name (OSS path).
   final pulumi.Input<String> logFileName;
-
   /// Size of the backup log file. Unit: Byte.
   final pulumi.Input<int> logFileSize;
-
   /// The log timestamp.
   final pulumi.Input<String> logTime;
-
   /// Total number of records.
   final pulumi.Input<int> recordTotal;
-
   /// The node name.
   final pulumi.Input<String> segmentName;
 
@@ -66,3 +60,4 @@ class GetLogBackupsLogbackup {
     );
   }
 }
+

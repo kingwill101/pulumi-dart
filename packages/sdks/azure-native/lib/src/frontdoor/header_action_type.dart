@@ -16,3 +16,4 @@ enum HeaderActionType {
     throw ArgumentError('Unknown HeaderActionType value: $value');
   }
 }
+

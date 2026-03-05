@@ -14,8 +14,7 @@ enum AppServingStatusAppengineV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AppServingStatusAppengineV1beta value: $value',
-    );
+    throw ArgumentError('Unknown AppServingStatusAppengineV1beta value: $value');
   }
 }
+

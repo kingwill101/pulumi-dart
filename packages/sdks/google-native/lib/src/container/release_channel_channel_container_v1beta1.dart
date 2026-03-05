@@ -14,8 +14,7 @@ enum ReleaseChannelChannelContainerV1beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ReleaseChannelChannelContainerV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown ReleaseChannelChannelContainerV1beta1 value: $value');
   }
 }
+

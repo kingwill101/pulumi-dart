@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CriticalJobHistoryDetailsResponse {
   /// The ARM Id of the job being executed.
   final pulumi.Input<String> jobId;
-
   /// The job name.
   final pulumi.Input<String> jobName;
-
   /// The job state.
   final pulumi.Input<String> jobStatus;
-
   /// The start time of the job.
   final pulumi.Input<String> startTime;
 
@@ -46,3 +43,4 @@ class CriticalJobHistoryDetailsResponse {
     );
   }
 }
+

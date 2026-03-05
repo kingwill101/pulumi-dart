@@ -338,10 +338,8 @@ import 'group_policy_attachment_state.dart';
 class GroupPolicyAttachment extends pulumi.CustomResource {
   /// The name of the group.
   late final pulumi.Output<String> groupName;
-
   /// The name of the policy.
   late final pulumi.Output<String> policyName;
-
   /// Policy type.
   /// - Custom: Custom policy.
   /// - System: System policy.
@@ -356,11 +354,11 @@ class GroupPolicyAttachment extends pulumi.CustomResource {
     GroupPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupName = registerOutput<String>('groupName');
     policyName = registerOutput<String>('policyName');
     policyType = registerOutput<String>('policyType');
@@ -384,11 +382,11 @@ class GroupPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupName = registerOutput<String>('groupName');
     policyName = registerOutput<String>('policyName');
     policyType = registerOutput<String>('policyType');

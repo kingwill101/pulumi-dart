@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceMoveDetailsResponse {
   /// Completion time in UTC of latest ResourceMove operation attempted. ISO 8601 format.
   final pulumi.Input<String>? completionTimeUtc;
-
   /// CorrelationId of latest ResourceMove operation attempted
   final pulumi.Input<String>? operationId;
-
   /// ARM resource path of source resource
   final pulumi.Input<String>? sourceResourcePath;
-
   /// Start time in UTC of latest ResourceMove operation attempted. ISO 8601 format.
   final pulumi.Input<String>? startTimeUtc;
-
   /// ARM resource path of target resource used in latest ResourceMove operation
   final pulumi.Input<String>? targetResourcePath;
 
@@ -45,31 +41,12 @@ class ResourceMoveDetailsResponse {
 
   factory ResourceMoveDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceMoveDetailsResponse(
-      completionTimeUtc: (() {
-        final guardedValue = map['completionTimeUtc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operationId: (() {
-        final guardedValue = map['operationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceResourcePath: (() {
-        final guardedValue = map['sourceResourcePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startTimeUtc: (() {
-        final guardedValue = map['startTimeUtc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetResourcePath: (() {
-        final guardedValue = map['targetResourcePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      completionTimeUtc: (() { final guardedValue = map['completionTimeUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operationId: (() { final guardedValue = map['operationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceResourcePath: (() { final guardedValue = map['sourceResourcePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startTimeUtc: (() { final guardedValue = map['startTimeUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetResourcePath: (() { final guardedValue = map['targetResourcePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

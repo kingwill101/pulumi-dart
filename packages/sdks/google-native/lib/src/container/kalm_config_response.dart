@@ -9,10 +9,14 @@ class KalmConfigResponse {
 
   /// Creates a new [KalmConfigResponse].
   /// [enabled] Whether KALM is enabled for this cluster.
-  KalmConfigResponse({required this.enabled});
+  KalmConfigResponse({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory KalmConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class KalmConfigResponse {
     );
   }
 }
+

@@ -10,7 +10,6 @@ class TopicMessageStoragePolicy {
   /// allowed regions. An empty list means that no regions are allowed,
   /// and is not a valid configuration.
   final pulumi.Input<List<String>> allowedPersistenceRegions;
-
   /// If true, `allowedPersistenceRegions` is also used to enforce in-transit
   /// guarantees for messages. That is, Pub/Sub will fail topics.publish
   /// operations on this topic and subscribe operations on any subscription
@@ -34,14 +33,9 @@ class TopicMessageStoragePolicy {
 
   factory TopicMessageStoragePolicy.fromMap(Map<String, dynamic> map) {
     return TopicMessageStoragePolicy(
-      allowedPersistenceRegions: pulumi.Input.fromValue(
-        (map['allowedPersistenceRegions'] as List).cast<String>(),
-      ),
-      enforceInTransit: (() {
-        final guardedValue = map['enforceInTransit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      allowedPersistenceRegions: pulumi.Input.fromValue((map['allowedPersistenceRegions'] as List).cast<String>()),
+      enforceInTransit: (() { final guardedValue = map['enforceInTransit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

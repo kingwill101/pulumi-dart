@@ -635,22 +635,16 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 class ManagedStorageAccountSasTokenDefinition extends pulumi.CustomResource {
   /// The ID of the Managed Storage Account.
   late final pulumi.Output<String> managedStorageAccountId;
-
   /// The name which should be used for this SAS Definition.
   late final pulumi.Output<String> name;
-
   /// The SAS definition token template signed with an arbitrary key. Tokens created according to the SAS definition will have the same properties as the template, but regenerated with a new validity period.
   late final pulumi.Output<String> sasTemplateUri;
-
   /// The type of SAS token the SAS definition will create. Possible values are `account` and `service`.
   late final pulumi.Output<String> sasType;
-
   /// The ID of the Secret that is created by Managed Storage Account SAS Definition.
   late final pulumi.Output<String> secretId;
-
   /// A mapping of tags which should be assigned to the SAS Definition. Changing this forces a new resource to be created.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Validity period of SAS token. Value needs to be in [ISO 8601 duration format](https://en.wikipedia.org/wiki/ISO_8601#Durations).
   late final pulumi.Output<String> validityPeriod;
 
@@ -663,11 +657,11 @@ class ManagedStorageAccountSasTokenDefinition extends pulumi.CustomResource {
     ManagedStorageAccountSasTokenDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:keyvault/managedStorageAccountSasTokenDefinition:ManagedStorageAccountSasTokenDefinition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:keyvault/managedStorageAccountSasTokenDefinition:ManagedStorageAccountSasTokenDefinition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     managedStorageAccountId = registerOutput<String>('managedStorageAccountId');
     this.name = registerOutput<String>('name');
     sasTemplateUri = registerOutput<String>('sasTemplateUri');
@@ -695,11 +689,11 @@ class ManagedStorageAccountSasTokenDefinition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:keyvault/managedStorageAccountSasTokenDefinition:ManagedStorageAccountSasTokenDefinition',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:keyvault/managedStorageAccountSasTokenDefinition:ManagedStorageAccountSasTokenDefinition',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     managedStorageAccountId = registerOutput<String>('managedStorageAccountId');
     this.name = registerOutput<String>('name');
     sasTemplateUri = registerOutput<String>('sasTemplateUri');

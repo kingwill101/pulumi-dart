@@ -10,28 +10,20 @@ import 'customer_metadata.dart';
 class MarkupRuleArgs {
   /// BillingAccount ID
   final pulumi.Input<String> billingAccountId;
-
   /// BillingProfile ID
   final pulumi.Input<String> billingProfileId;
-
   /// Customer information for the markup rule.
   final pulumi.Input<CustomerMetadata> customerDetails;
-
   /// The description of the markup rule.
   final pulumi.Input<String>? description;
-
   /// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
   final pulumi.Input<String>? eTag;
-
   /// Ending date of the markup rule.
   final pulumi.Input<String>? endDate;
-
   /// Markup rule name.
   final pulumi.Input<String>? name;
-
   /// The markup percentage of the rule.
   final pulumi.Input<double> percentage;
-
   /// Starting date of the markup rule.
   final pulumi.Input<String> startDate;
 
@@ -61,11 +53,7 @@ class MarkupRuleArgs {
     return <String, dynamic>{
       'billingAccountId': billingAccountId,
       'billingProfileId': billingProfileId,
-      'customerDetails':
-          pulumi.Input.mapInputValue<CustomerMetadata, Map<String, dynamic>>(
-            customerDetails,
-            (value) => value.toMap(),
-          ),
+      'customerDetails': pulumi.Input.mapInputValue<CustomerMetadata, Map<String, dynamic>>(customerDetails, (value) => value.toMap()),
       'description': ?description,
       'eTag': ?eTag,
       'endDate': ?endDate,
@@ -77,39 +65,16 @@ class MarkupRuleArgs {
 
   factory MarkupRuleArgs.fromMap(Map<String, dynamic> map) {
     return MarkupRuleArgs(
-      billingAccountId: pulumi.Input.fromValue(
-        map['billingAccountId'] as String,
-      ),
-      billingProfileId: pulumi.Input.fromValue(
-        map['billingProfileId'] as String,
-      ),
-      customerDetails: pulumi.Input.fromValue(
-        CustomerMetadata.fromMap(
-          (map['customerDetails']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eTag: (() {
-        final guardedValue = map['eTag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endDate: (() {
-        final guardedValue = map['endDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      billingAccountId: pulumi.Input.fromValue(map['billingAccountId'] as String),
+      billingProfileId: pulumi.Input.fromValue(map['billingProfileId'] as String),
+      customerDetails: pulumi.Input.fromValue(CustomerMetadata.fromMap((map['customerDetails']! as Map).cast<String, dynamic>())),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       percentage: pulumi.Input.fromValue(map['percentage'] as double),
       startDate: pulumi.Input.fromValue(map['startDate'] as String),
     );
   }
 }
+

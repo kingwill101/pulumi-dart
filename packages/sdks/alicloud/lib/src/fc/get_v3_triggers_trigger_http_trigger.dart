@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetV3TriggersTriggerHttpTrigger {
   /// The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
   final pulumi.Input<String> urlInternet;
-
   /// The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
   final pulumi.Input<String> urlIntranet;
 
@@ -31,3 +30,4 @@ class GetV3TriggersTriggerHttpTrigger {
     );
   }
 }
+

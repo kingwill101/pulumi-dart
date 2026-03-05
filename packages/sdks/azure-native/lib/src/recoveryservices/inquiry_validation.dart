@@ -9,19 +9,20 @@ class InquiryValidation {
 
   /// Creates a new [InquiryValidation].
   /// [status] Status for the Inquiry Validation.
-  InquiryValidation({this.status});
+  InquiryValidation({
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': ?status};
+    return <String, dynamic>{
+      'status': ?status,
+    };
   }
 
   factory InquiryValidation.fromMap(Map<String, dynamic> map) {
     return InquiryValidation(
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

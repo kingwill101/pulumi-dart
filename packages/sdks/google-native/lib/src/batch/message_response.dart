@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MessageResponse {
   /// The new job state.
   final pulumi.Input<String> newJobState;
-
   /// The new task state.
   final pulumi.Input<String> newTaskState;
-
   /// The message type.
   final pulumi.Input<String> type;
 
@@ -39,3 +37,4 @@ class MessageResponse {
     );
   }
 }
+

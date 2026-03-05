@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegionSslCertificate.
 class GetRegionSslCertificateResult {
   final String certificate;
@@ -7,7 +8,6 @@ class GetRegionSslCertificateResult {
   final String creationTimestamp;
   final String description;
   final String expireTime;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -73,17 +73,10 @@ class GetRegionSslCertificateResult {
       name: map['name'] as String,
       namePrefix: map['namePrefix'] as String,
       privateKey: map['privateKey'] as String,
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       selfLink: map['selfLink'] as String,
     );
   }
 }
+

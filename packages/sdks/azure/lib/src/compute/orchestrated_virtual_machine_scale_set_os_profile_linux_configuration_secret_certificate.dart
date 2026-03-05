@@ -15,14 +15,15 @@ class OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertifi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'url': url};
+    return <String, dynamic>{
+      'url': url,
+    };
   }
 
-  factory OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertificate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertificate.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertificate(
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
+

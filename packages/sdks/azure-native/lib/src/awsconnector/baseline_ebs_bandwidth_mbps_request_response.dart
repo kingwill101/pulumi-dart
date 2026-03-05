@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BaselineEbsBandwidthMbpsRequestResponse {
   /// The maximum value in Mbps.
   final pulumi.Input<int>? max;
-
   /// The minimum value in Mbps.
   final pulumi.Input<int>? min;
 
   /// Creates a new [BaselineEbsBandwidthMbpsRequestResponse].
   /// [max] The maximum value in Mbps.
   /// [min] The minimum value in Mbps.
-  BaselineEbsBandwidthMbpsRequestResponse({this.max, this.min});
+  BaselineEbsBandwidthMbpsRequestResponse({
+    this.max,
+    this.min,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': ?max, 'min': ?min};
+    return <String, dynamic>{
+      'max': ?max,
+      'min': ?min,
+    };
   }
 
-  factory BaselineEbsBandwidthMbpsRequestResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BaselineEbsBandwidthMbpsRequestResponse.fromMap(Map<String, dynamic> map) {
     return BaselineEbsBandwidthMbpsRequestResponse(
-      max: (() {
-        final guardedValue = map['max'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      min: (() {
-        final guardedValue = map['min'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

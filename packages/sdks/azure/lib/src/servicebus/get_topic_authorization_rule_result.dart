@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTopicAuthorizationRule.
 class GetTopicAuthorizationRuleResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -8,24 +9,18 @@ class GetTopicAuthorizationRuleResult {
   final bool manage;
   final String name;
   final String? namespaceName;
-
   /// The Primary Connection String for the ServiceBus Topic authorization Rule.
   final String primaryConnectionString;
-
   /// The alias Primary Connection String for the ServiceBus Namespace, if the namespace is Geo DR paired.
   final String primaryConnectionStringAlias;
-
   /// The Primary Key for the ServiceBus Topic authorization Rule.
   final String primaryKey;
   final String? queueName;
   final String? resourceGroupName;
-
   /// The Secondary Connection String for the ServiceBus Topic authorization Rule.
   final String secondaryConnectionString;
-
   /// The alias Secondary Connection String for the ServiceBus Namespace
   final String secondaryConnectionStringAlias;
-
   /// The Secondary Key for the ServiceBus Topic authorization Rule.
   final String secondaryKey;
   final bool send;
@@ -95,40 +90,19 @@ class GetTopicAuthorizationRuleResult {
       listen: map['listen'] as bool,
       manage: map['manage'] as bool,
       name: map['name'] as String,
-      namespaceName: (() {
-        final guardedValue = map['namespaceName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      namespaceName: (() { final guardedValue = map['namespaceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       primaryConnectionString: map['primaryConnectionString'] as String,
-      primaryConnectionStringAlias:
-          map['primaryConnectionStringAlias'] as String,
+      primaryConnectionStringAlias: map['primaryConnectionStringAlias'] as String,
       primaryKey: map['primaryKey'] as String,
-      queueName: (() {
-        final guardedValue = map['queueName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      queueName: (() { final guardedValue = map['queueName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       secondaryConnectionString: map['secondaryConnectionString'] as String,
-      secondaryConnectionStringAlias:
-          map['secondaryConnectionStringAlias'] as String,
+      secondaryConnectionStringAlias: map['secondaryConnectionStringAlias'] as String,
       secondaryKey: map['secondaryKey'] as String,
       send: map['send'] as bool,
-      topicId: (() {
-        final guardedValue = map['topicId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      topicName: (() {
-        final guardedValue = map['topicName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      topicId: (() { final guardedValue = map['topicId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      topicName: (() { final guardedValue = map['topicName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

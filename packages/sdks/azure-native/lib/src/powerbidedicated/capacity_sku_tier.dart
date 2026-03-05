@@ -16,3 +16,4 @@ enum CapacitySkuTier {
     throw ArgumentError('Unknown CapacitySkuTier value: $value');
   }
 }
+

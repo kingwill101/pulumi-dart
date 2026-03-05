@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getReservedCacheNodeOffering.
 class GetReservedCacheNodeOfferingResult {
   final String cacheNodeType;
   final String duration;
-
   /// Fixed price charged for this reserved cache node.
   final double fixedPrice;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Unique identifier for the reservation.
   final String offeringId;
   final String offeringType;
@@ -63,3 +61,4 @@ class GetReservedCacheNodeOfferingResult {
     );
   }
 }
+

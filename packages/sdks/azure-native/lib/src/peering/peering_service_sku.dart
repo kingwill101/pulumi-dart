@@ -9,19 +9,20 @@ class PeeringServiceSku {
 
   /// Creates a new [PeeringServiceSku].
   /// [name] The name of the peering service SKU.
-  PeeringServiceSku({this.name});
+  PeeringServiceSku({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory PeeringServiceSku.fromMap(Map<String, dynamic> map) {
     return PeeringServiceSku(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

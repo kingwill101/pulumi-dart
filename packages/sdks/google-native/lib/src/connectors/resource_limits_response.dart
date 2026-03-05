@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceLimitsResponse {
   /// CPU limit.
   final pulumi.Input<String> cpu;
-
   /// Memory limit.
   final pulumi.Input<String> memory;
 
   /// Creates a new [ResourceLimitsResponse].
   /// [cpu] CPU limit.
   /// [memory] Memory limit.
-  ResourceLimitsResponse({required this.cpu, required this.memory});
+  ResourceLimitsResponse({
+    required this.cpu,
+    required this.memory,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpu': cpu, 'memory': memory};
+    return <String, dynamic>{
+      'cpu': cpu,
+      'memory': memory,
+    };
   }
 
   factory ResourceLimitsResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ResourceLimitsResponse {
     );
   }
 }
+

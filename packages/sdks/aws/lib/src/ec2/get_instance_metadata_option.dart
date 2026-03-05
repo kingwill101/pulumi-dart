@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceMetadataOption {
   /// State of the metadata service: `enabled`, `disabled`.
   final pulumi.Input<String> httpEndpoint;
-
   /// Whether the IPv6 endpoint for the instance metadata service is `enabled` or `disabled`
   final pulumi.Input<String> httpProtocolIpv6;
-
   /// Desired HTTP PUT response hop limit for instance metadata requests.
   final pulumi.Input<int> httpPutResponseHopLimit;
-
   /// If session tokens are required: `optional`, `required`.
   final pulumi.Input<String> httpTokens;
-
   /// If access to instance tags is allowed from the metadata service: `enabled`, `disabled`.
   final pulumi.Input<String> instanceMetadataTags;
 
@@ -45,16 +41,11 @@ class GetInstanceMetadataOption {
   factory GetInstanceMetadataOption.fromMap(Map<String, dynamic> map) {
     return GetInstanceMetadataOption(
       httpEndpoint: pulumi.Input.fromValue(map['httpEndpoint'] as String),
-      httpProtocolIpv6: pulumi.Input.fromValue(
-        map['httpProtocolIpv6'] as String,
-      ),
-      httpPutResponseHopLimit: pulumi.Input.fromValue(
-        map['httpPutResponseHopLimit'] as int,
-      ),
+      httpProtocolIpv6: pulumi.Input.fromValue(map['httpProtocolIpv6'] as String),
+      httpPutResponseHopLimit: pulumi.Input.fromValue(map['httpPutResponseHopLimit'] as int),
       httpTokens: pulumi.Input.fromValue(map['httpTokens'] as String),
-      instanceMetadataTags: pulumi.Input.fromValue(
-        map['instanceMetadataTags'] as String,
-      ),
+      instanceMetadataTags: pulumi.Input.fromValue(map['instanceMetadataTags'] as String),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActionGroupArmRoleReceiver {
   /// Specifies the name of the Action Group.
   final pulumi.Input<String> name;
-
   /// The arm role id.
   final pulumi.Input<String> roleId;
-
   /// Indicates whether to use common alert schema.
   final pulumi.Input<bool> useCommonAlertSchema;
 
@@ -34,9 +32,8 @@ class GetActionGroupArmRoleReceiver {
     return GetActionGroupArmRoleReceiver(
       name: pulumi.Input.fromValue(map['name'] as String),
       roleId: pulumi.Input.fromValue(map['roleId'] as String),
-      useCommonAlertSchema: pulumi.Input.fromValue(
-        map['useCommonAlertSchema'] as bool,
-      ),
+      useCommonAlertSchema: pulumi.Input.fromValue(map['useCommonAlertSchema'] as bool),
     );
   }
 }
+

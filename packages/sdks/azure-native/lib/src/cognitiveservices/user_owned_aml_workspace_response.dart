@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserOwnedAmlWorkspaceResponse {
   /// Identity Client id of a AML workspace resource.
   final pulumi.Input<String>? identityClientId;
-
   /// Full resource id of a AML workspace resource.
   final pulumi.Input<String>? resourceId;
 
   /// Creates a new [UserOwnedAmlWorkspaceResponse].
   /// [identityClientId] Identity Client id of a AML workspace resource.
   /// [resourceId] Full resource id of a AML workspace resource.
-  UserOwnedAmlWorkspaceResponse({this.identityClientId, this.resourceId});
+  UserOwnedAmlWorkspaceResponse({
+    this.identityClientId,
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class UserOwnedAmlWorkspaceResponse {
 
   factory UserOwnedAmlWorkspaceResponse.fromMap(Map<String, dynamic> map) {
     return UserOwnedAmlWorkspaceResponse(
-      identityClientId: (() {
-        final guardedValue = map['identityClientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identityClientId: (() { final guardedValue = map['identityClientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

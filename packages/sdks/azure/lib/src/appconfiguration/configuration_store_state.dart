@@ -13,70 +13,50 @@ import 'configuration_store_secondary_write_key.dart';
 class ConfigurationStoreState {
   /// The data plane proxy authentication mode. Possible values are `Local` and `Pass-through`. Defaults to `Local`.
   final pulumi.Input<String>? dataPlaneProxyAuthenticationMode;
-
   /// Whether data plane proxy private link delegation is enabled. Defaults to `false`.
   ///
   /// &gt; **Note:** `data_plane_proxy_private_link_delegation_enabled` cannot be set to `true` when `data_plane_proxy_authentication_mode` is set to `Local`.
   final pulumi.Input<bool>? dataPlaneProxyPrivateLinkDelegationEnabled;
-
   /// An `encryption` block as defined below.
   final pulumi.Input<ConfigurationStoreEncryption>? encryption;
-
   /// The URL of the App Configuration Replica.
   final pulumi.Input<String>? endpoint;
-
   /// An `identity` block as defined below.
   final pulumi.Input<ConfigurationStoreIdentity>? identity;
-
   /// Whether local authentication methods is enabled. Defaults to `true`.
   final pulumi.Input<bool>? localAuthEnabled;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// Specifies the name of the App Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// A `primary_read_key` block as defined below containing the primary read access key.
   final pulumi.Input<List<ConfigurationStorePrimaryReadKey>>? primaryReadKeys;
-
   /// A `primary_write_key` block as defined below containing the primary write access key.
   final pulumi.Input<List<ConfigurationStorePrimaryWriteKey>>? primaryWriteKeys;
-
   /// The Public Network Access setting of the App Configuration. Possible values are `Enabled` and `Disabled`.
   ///
   /// &gt; **Note:** If `public_network_access` is not specified, the App Configuration will be created as  `Automatic`. However, once a different value is defined, can not be set again as automatic.
   final pulumi.Input<String>? publicNetworkAccess;
-
   /// Whether Purge Protection is enabled. This field only works for `standard` sku. Defaults to `false`.
   ///
   /// !&gt; **Note:** Once Purge Protection has been enabled it's not possible to disable it. Deleting the App Configuration with Purge Protection enabled will schedule the App Configuration to be deleted (which will happen by Azure in the configured number of days).
   final pulumi.Input<bool>? purgeProtectionEnabled;
-
   /// One or more `replica` blocks as defined below.
   final pulumi.Input<List<ConfigurationStoreReplica>>? replicas;
-
   /// The name of the resource group in which to create the App Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// A `secondary_read_key` block as defined below containing the secondary read access key.
-  final pulumi.Input<List<ConfigurationStoreSecondaryReadKey>>?
-  secondaryReadKeys;
-
+  final pulumi.Input<List<ConfigurationStoreSecondaryReadKey>>? secondaryReadKeys;
   /// A `secondary_write_key` block as defined below containing the secondary write access key.
-  final pulumi.Input<List<ConfigurationStoreSecondaryWriteKey>>?
-  secondaryWriteKeys;
-
+  final pulumi.Input<List<ConfigurationStoreSecondaryWriteKey>>? secondaryWriteKeys;
   /// The SKU name of the App Configuration. Possible values are `free`, `developer`, `standard` and `premium`. Defaults to `free`.
   ///
   /// &gt; **Note:** Azure does not support downgrading `sku` to a lower tier, except from `premium` to `standard`. Downgrading will force a new resource to be created.
   final pulumi.Input<String>? sku;
-
   /// The number of days that items should be retained for once soft-deleted. This field only works for `standard` sku. This value can be between `1` and `7` days. Defaults to `7`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If Purge Protection is enabled, this field can only be configured one time and cannot be updated.
   final pulumi.Input<int>? softDeleteRetentionDays;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -125,85 +105,21 @@ class ConfigurationStoreState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataPlaneProxyAuthenticationMode': ?dataPlaneProxyAuthenticationMode,
-      'dataPlaneProxyPrivateLinkDelegationEnabled':
-          ?dataPlaneProxyPrivateLinkDelegationEnabled,
-      'encryption':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigurationStoreEncryption,
-            Map<String, dynamic>
-          >(encryption, (value) => value.toMap()),
+      'dataPlaneProxyPrivateLinkDelegationEnabled': ?dataPlaneProxyPrivateLinkDelegationEnabled,
+      'encryption': ?pulumi.Input.mapOptionalInputValue<ConfigurationStoreEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'endpoint': ?endpoint,
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigurationStoreIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ConfigurationStoreIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'localAuthEnabled': ?localAuthEnabled,
       'location': ?location,
       'name': ?name,
-      'primaryReadKeys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConfigurationStorePrimaryReadKey>,
-            List<Map<String, dynamic>>
-          >(
-            primaryReadKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConfigurationStorePrimaryReadKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'primaryWriteKeys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConfigurationStorePrimaryWriteKey>,
-            List<Map<String, dynamic>>
-          >(
-            primaryWriteKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConfigurationStorePrimaryWriteKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'primaryReadKeys': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationStorePrimaryReadKey>, List<Map<String, dynamic>>>(primaryReadKeys, (value) => pulumi.Input.encodeList<ConfigurationStorePrimaryReadKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'primaryWriteKeys': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationStorePrimaryWriteKey>, List<Map<String, dynamic>>>(primaryWriteKeys, (value) => pulumi.Input.encodeList<ConfigurationStorePrimaryWriteKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'publicNetworkAccess': ?publicNetworkAccess,
       'purgeProtectionEnabled': ?purgeProtectionEnabled,
-      'replicas':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConfigurationStoreReplica>,
-            List<Map<String, dynamic>>
-          >(
-            replicas,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConfigurationStoreReplica,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'replicas': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationStoreReplica>, List<Map<String, dynamic>>>(replicas, (value) => pulumi.Input.encodeList<ConfigurationStoreReplica, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceGroupName': ?resourceGroupName,
-      'secondaryReadKeys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConfigurationStoreSecondaryReadKey>,
-            List<Map<String, dynamic>>
-          >(
-            secondaryReadKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConfigurationStoreSecondaryReadKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'secondaryWriteKeys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConfigurationStoreSecondaryWriteKey>,
-            List<Map<String, dynamic>>
-          >(
-            secondaryWriteKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConfigurationStoreSecondaryWriteKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'secondaryReadKeys': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationStoreSecondaryReadKey>, List<Map<String, dynamic>>>(secondaryReadKeys, (value) => pulumi.Input.encodeList<ConfigurationStoreSecondaryReadKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'secondaryWriteKeys': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationStoreSecondaryWriteKey>, List<Map<String, dynamic>>>(secondaryWriteKeys, (value) => pulumi.Input.encodeList<ConfigurationStoreSecondaryWriteKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sku': ?sku,
       'softDeleteRetentionDays': ?softDeleteRetentionDays,
       'tags': ?tags,
@@ -212,146 +128,26 @@ class ConfigurationStoreState {
 
   factory ConfigurationStoreState.fromMap(Map<String, dynamic> map) {
     return ConfigurationStoreState(
-      dataPlaneProxyAuthenticationMode: (() {
-        final guardedValue = map['dataPlaneProxyAuthenticationMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataPlaneProxyPrivateLinkDelegationEnabled: (() {
-        final guardedValue = map['dataPlaneProxyPrivateLinkDelegationEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      encryption: (() {
-        final guardedValue = map['encryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigurationStoreEncryption.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      endpoint: (() {
-        final guardedValue = map['endpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigurationStoreIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      localAuthEnabled: (() {
-        final guardedValue = map['localAuthEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      primaryReadKeys: (() {
-        final guardedValue = map['primaryReadKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ConfigurationStorePrimaryReadKey>(
-            guardedValue,
-            (value) => ConfigurationStorePrimaryReadKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      primaryWriteKeys: (() {
-        final guardedValue = map['primaryWriteKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ConfigurationStorePrimaryWriteKey>(
-            guardedValue,
-            (value) => ConfigurationStorePrimaryWriteKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      purgeProtectionEnabled: (() {
-        final guardedValue = map['purgeProtectionEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      replicas: (() {
-        final guardedValue = map['replicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ConfigurationStoreReplica>(
-            guardedValue,
-            (value) => ConfigurationStoreReplica.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryReadKeys: (() {
-        final guardedValue = map['secondaryReadKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ConfigurationStoreSecondaryReadKey>(
-            guardedValue,
-            (value) => ConfigurationStoreSecondaryReadKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      secondaryWriteKeys: (() {
-        final guardedValue = map['secondaryWriteKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ConfigurationStoreSecondaryWriteKey>(
-            guardedValue,
-            (value) => ConfigurationStoreSecondaryWriteKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      softDeleteRetentionDays: (() {
-        final guardedValue = map['softDeleteRetentionDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      dataPlaneProxyAuthenticationMode: (() { final guardedValue = map['dataPlaneProxyAuthenticationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataPlaneProxyPrivateLinkDelegationEnabled: (() { final guardedValue = map['dataPlaneProxyPrivateLinkDelegationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationStoreEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationStoreIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      localAuthEnabled: (() { final guardedValue = map['localAuthEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      primaryReadKeys: (() { final guardedValue = map['primaryReadKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationStorePrimaryReadKey>(guardedValue, (value) => ConfigurationStorePrimaryReadKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      primaryWriteKeys: (() { final guardedValue = map['primaryWriteKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationStorePrimaryWriteKey>(guardedValue, (value) => ConfigurationStorePrimaryWriteKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      purgeProtectionEnabled: (() { final guardedValue = map['purgeProtectionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationStoreReplica>(guardedValue, (value) => ConfigurationStoreReplica.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryReadKeys: (() { final guardedValue = map['secondaryReadKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationStoreSecondaryReadKey>(guardedValue, (value) => ConfigurationStoreSecondaryReadKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      secondaryWriteKeys: (() { final guardedValue = map['secondaryWriteKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationStoreSecondaryWriteKey>(guardedValue, (value) => ConfigurationStoreSecondaryWriteKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      softDeleteRetentionDays: (() { final guardedValue = map['softDeleteRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdministratorArgs {
   /// Object identifier of the Microsoft Entra principal.
   final pulumi.Input<String>? objectId;
-
   /// Name of the Microsoft Entra principal.
   final pulumi.Input<String>? principalName;
-
   /// The type of Microsoft Entra principal to which the server administrator is associated.
   final pulumi.Input<String>? principalType;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the server.
   final pulumi.Input<String> serverName;
-
   /// Identifier of the tenant in which the Microsoft Entra principal exists.
   final pulumi.Input<String>? tenantId;
 
@@ -54,30 +49,13 @@ class AdministratorArgs {
 
   factory AdministratorArgs.fromMap(Map<String, dynamic> map) {
     return AdministratorArgs(
-      objectId: (() {
-        final guardedValue = map['objectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      principalName: (() {
-        final guardedValue = map['principalName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      principalType: (() {
-        final guardedValue = map['principalType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principalName: (() { final guardedValue = map['principalName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principalType: (() { final guardedValue = map['principalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

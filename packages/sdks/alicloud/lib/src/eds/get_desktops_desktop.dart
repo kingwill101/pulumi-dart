@@ -5,49 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDesktopsDesktop {
   /// The number of CPUs.
   final pulumi.Input<int> cpu;
-
   /// The creation time of the Desktop.
   final pulumi.Input<String> createTime;
-
   /// The desktop id of the Desktop.
   final pulumi.Input<String> desktopId;
-
   /// The desktop name of the Desktop.
   final pulumi.Input<String> desktopName;
-
   /// The desktop type of the Desktop.
   final pulumi.Input<String> desktopType;
-
   /// The directory id of the Desktop.
   final pulumi.Input<String> directoryId;
-
   /// The desktop end user id of the Desktop.
   final pulumi.Input<List<String>> endUserIds;
-
   /// The expired time of the Desktop.
   final pulumi.Input<String> expiredTime;
-
   /// The ID of the Desktop.
   final pulumi.Input<String> id;
-
   /// The image id of the Desktop.
   final pulumi.Input<String> imageId;
-
   /// The memory of the Desktop.
   final pulumi.Input<String> memory;
-
   /// The network interface id of the Desktop.
   final pulumi.Input<String> networkInterfaceId;
-
   /// The payment type of the Desktop.
   final pulumi.Input<String> paymentType;
-
   /// The policy group id of the Desktop.
   final pulumi.Input<String> policyGroupId;
-
   /// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
   final pulumi.Input<String> status;
-
   /// The system disk size of the Desktop.
   final pulumi.Input<int> systemDiskSize;
 
@@ -116,16 +101,12 @@ class GetDesktopsDesktop {
       desktopName: pulumi.Input.fromValue(map['desktopName'] as String),
       desktopType: pulumi.Input.fromValue(map['desktopType'] as String),
       directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
-      endUserIds: pulumi.Input.fromValue(
-        (map['endUserIds'] as List).cast<String>(),
-      ),
+      endUserIds: pulumi.Input.fromValue((map['endUserIds'] as List).cast<String>()),
       expiredTime: pulumi.Input.fromValue(map['expiredTime'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       imageId: pulumi.Input.fromValue(map['imageId'] as String),
       memory: pulumi.Input.fromValue(map['memory'] as String),
-      networkInterfaceId: pulumi.Input.fromValue(
-        map['networkInterfaceId'] as String,
-      ),
+      networkInterfaceId: pulumi.Input.fromValue(map['networkInterfaceId'] as String),
       paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
       policyGroupId: pulumi.Input.fromValue(map['policyGroupId'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
@@ -133,3 +114,4 @@ class GetDesktopsDesktop {
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum WebHookActivityMethod {
     throw ArgumentError('Unknown WebHookActivityMethod value: $value');
   }
 }
+

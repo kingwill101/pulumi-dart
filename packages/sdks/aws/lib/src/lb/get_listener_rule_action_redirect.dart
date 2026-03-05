@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenerRuleActionRedirect {
   /// The hostname.
   final pulumi.Input<String> host;
-
   /// The absolute path, starting with `/`.
   final pulumi.Input<String> path;
-
   /// The port.
   final pulumi.Input<String> port;
-
   /// The protocol.
   final pulumi.Input<String> protocol;
-
   /// The query parameters.
   final pulumi.Input<String> query;
-
   /// The HTTP redirect code.
   final pulumi.Input<String> statusCode;
 
@@ -59,3 +54,4 @@ class GetListenerRuleActionRedirect {
     );
   }
 }
+

@@ -27,10 +27,9 @@ class GetOrganizationBigQueryExportArgs {
 
   factory GetOrganizationBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationBigQueryExportArgs(
-      bigQueryExportId: pulumi.Input.fromValue(
-        map['bigQueryExportId'] as String,
-      ),
+      bigQueryExportId: pulumi.Input.fromValue(map['bigQueryExportId'] as String),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
+

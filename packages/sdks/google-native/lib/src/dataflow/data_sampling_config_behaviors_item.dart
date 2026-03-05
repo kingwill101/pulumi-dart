@@ -13,8 +13,7 @@ enum DataSamplingConfigBehaviorsItem {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DataSamplingConfigBehaviorsItem value: $value',
-    );
+    throw ArgumentError('Unknown DataSamplingConfigBehaviorsItem value: $value');
   }
 }
+

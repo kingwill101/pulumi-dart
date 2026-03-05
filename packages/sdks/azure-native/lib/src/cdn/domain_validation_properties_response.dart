@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainValidationPropertiesResponse {
   /// The date time that the token expires
   final pulumi.Input<String> expirationDate;
-
   /// Challenge used for DNS TXT record or file based validation
   final pulumi.Input<String> validationToken;
 
@@ -32,3 +31,4 @@ class DomainValidationPropertiesResponse {
     );
   }
 }
+

@@ -12,8 +12,7 @@ enum LoggingConfigLogActionStatesItem {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown LoggingConfigLogActionStatesItem value: $value',
-    );
+    throw ArgumentError('Unknown LoggingConfigLogActionStatesItem value: $value');
   }
 }
+

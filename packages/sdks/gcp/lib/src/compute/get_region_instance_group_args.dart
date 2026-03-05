@@ -9,17 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionInstanceGroupArgs {
   /// The name of the instance group.  One of `name` or `self_link` must be provided.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If `self_link` is provided, this value is ignored.  If neither `self_link`
   /// nor `project` are provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region in which the resource belongs.  If `self_link`
   /// is provided, this value is ignored.  If neither `self_link` nor `region` are
   /// provided, the provider region is used.
   final pulumi.Input<String>? region;
-
   /// The link to the instance group.  One of `name` or `self_link` must be provided.
   ///
   /// - - -
@@ -48,26 +45,11 @@ class GetRegionInstanceGroupArgs {
 
   factory GetRegionInstanceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      selfLink: (() {
-        final guardedValue = map['selfLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

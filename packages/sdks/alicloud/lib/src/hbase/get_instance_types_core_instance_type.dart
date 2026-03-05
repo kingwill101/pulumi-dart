@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTypesCoreInstanceType {
   /// Name of the category, single or cluster.
   final pulumi.Input<String> category;
-
   /// Cpu size of the instance type.
   final pulumi.Input<int> cpuSize;
-
   /// The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
   final pulumi.Input<String> engine;
-
   /// The hbase instance type of create hbase cluster instance.
   final pulumi.Input<String> instanceType;
-
   /// Max count of the core instance nodes.
   final pulumi.Input<int> maxCoreCount;
-
   /// Mem size of the instance type.
   final pulumi.Input<int> memSize;
-
   /// Name of the storage type.
   final pulumi.Input<String> storageType;
-
   /// The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
   final pulumi.Input<String> version;
-
   /// Name of zone id.
   final pulumi.Input<String> zone;
 
@@ -80,3 +72,4 @@ class GetInstanceTypesCoreInstanceType {
     );
   }
 }
+

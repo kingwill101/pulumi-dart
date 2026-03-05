@@ -12,10 +12,8 @@ import 'quota_schedule_state.dart';
 class QuotaSchedule extends pulumi.CustomResource {
   /// The nickname of level-1 compute quota.
   late final pulumi.Output<String> nickname;
-
   /// schedule list See `schedule_list` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> scheduleLists;
-
   /// Time zone, reference value: UTC +8
   late final pulumi.Output<String> timezone;
 
@@ -28,15 +26,13 @@ class QuotaSchedule extends pulumi.CustomResource {
     QuotaScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:maxcompute/quotaSchedule:QuotaSchedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:maxcompute/quotaSchedule:QuotaSchedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     nickname = registerOutput<String>('nickname');
-    scheduleLists = registerOutput<List<Map<String, dynamic>>?>(
-      'scheduleLists',
-    );
+    scheduleLists = registerOutput<List<Map<String, dynamic>>?>('scheduleLists');
     timezone = registerOutput<String>('timezone');
   }
 
@@ -58,15 +54,13 @@ class QuotaSchedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:maxcompute/quotaSchedule:QuotaSchedule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:maxcompute/quotaSchedule:QuotaSchedule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     nickname = registerOutput<String>('nickname');
-    scheduleLists = registerOutput<List<Map<String, dynamic>>?>(
-      'scheduleLists',
-    );
+    scheduleLists = registerOutput<List<Map<String, dynamic>>?>('scheduleLists');
     timezone = registerOutput<String>('timezone');
   }
 }

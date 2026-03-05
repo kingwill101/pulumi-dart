@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRedisLinkedServer.
 class GetRedisLinkedServerResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String id;
-
   /// Fully qualified resourceId of the linked redis cache.
   final String linkedRedisCacheId;
-
   /// Location of the linked redis cache.
   final String linkedRedisCacheLocation;
-
   /// Resource name.
   final String name;
-
   /// Terminal state of the link between primary and secondary redis cache.
   final String provisioningState;
-
   /// Role of the linked server.
   final String serverRole;
-
   /// Resource type.
   final String type;
 
@@ -72,3 +66,4 @@ class GetRedisLinkedServerResult {
     );
   }
 }
+

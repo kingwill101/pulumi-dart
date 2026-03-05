@@ -6,40 +6,26 @@ import 'monitoring_schedule_monitoring_schedule_config_monitoring_job_definition
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput {
   /// Amazon S3 location being used to capture the data.
   final pulumi.Input<String> dataCapturedDestinationS3Uri;
-
   /// Dataset format for the batch transform job. Fields are documented below.
-  final pulumi.Input<
-    MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormat
-  >
-  datasetFormat;
-
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormat> datasetFormat;
   /// Monitoring jobs subtract this time from the end time.
   final pulumi.Input<String>? endTimeOffset;
-
   /// Attributes of the input data to exclude from the analysis.
   final pulumi.Input<String>? excludeFeaturesAttribute;
-
   /// Attributes of the input data that are the input features.
   final pulumi.Input<String>? featuresAttribute;
-
   /// Attribute of the input data that represents the ground truth label.
   final pulumi.Input<String>? inferenceAttribute;
-
   /// Path to the filesystem where the batch transform data is available to the container.
   final pulumi.Input<String> localPath;
-
   /// In a classification problem, the attribute that represents the class probability.
   final pulumi.Input<String>? probabilityAttribute;
-
   /// Threshold for the class probability to be evaluated as a positive result.
   final pulumi.Input<double>? probabilityThresholdAttribute;
-
   /// Whether input data distributed in Amazon S3 is fully replicated or sharded by an S3 key. Valid values: `FullyReplicated`, `ShardedByS3Key`.
   final pulumi.Input<String>? s3DataDistributionType;
-
   /// Input mode for transferring data for the monitoring job. Valid values: `Pipe`, `File`.
   final pulumi.Input<String>? s3InputMode;
-
   /// Monitoring jobs subtract this time from the start time.
   final pulumi.Input<String>? startTimeOffset;
 
@@ -74,11 +60,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataCapturedDestinationS3Uri': dataCapturedDestinationS3Uri,
-      'datasetFormat':
-          pulumi.Input.mapInputValue<
-            MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormat,
-            Map<String, dynamic>
-          >(datasetFormat, (value) => value.toMap()),
+      'datasetFormat': pulumi.Input.mapInputValue<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormat, Map<String, dynamic>>(datasetFormat, (value) => value.toMap()),
       'endTimeOffset': ?endTimeOffset,
       'excludeFeaturesAttribute': ?excludeFeaturesAttribute,
       'featuresAttribute': ?featuresAttribute,
@@ -92,64 +74,21 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
     };
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput(
-      dataCapturedDestinationS3Uri: pulumi.Input.fromValue(
-        map['dataCapturedDestinationS3Uri'] as String,
-      ),
-      datasetFormat: pulumi.Input.fromValue(
-        MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormat.fromMap(
-          (map['datasetFormat']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      endTimeOffset: (() {
-        final guardedValue = map['endTimeOffset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      excludeFeaturesAttribute: (() {
-        final guardedValue = map['excludeFeaturesAttribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      featuresAttribute: (() {
-        final guardedValue = map['featuresAttribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      inferenceAttribute: (() {
-        final guardedValue = map['inferenceAttribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataCapturedDestinationS3Uri: pulumi.Input.fromValue(map['dataCapturedDestinationS3Uri'] as String),
+      datasetFormat: pulumi.Input.fromValue(MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormat.fromMap((map['datasetFormat']! as Map).cast<String, dynamic>())),
+      endTimeOffset: (() { final guardedValue = map['endTimeOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      excludeFeaturesAttribute: (() { final guardedValue = map['excludeFeaturesAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      featuresAttribute: (() { final guardedValue = map['featuresAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      inferenceAttribute: (() { final guardedValue = map['inferenceAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       localPath: pulumi.Input.fromValue(map['localPath'] as String),
-      probabilityAttribute: (() {
-        final guardedValue = map['probabilityAttribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      probabilityThresholdAttribute: (() {
-        final guardedValue = map['probabilityThresholdAttribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      s3DataDistributionType: (() {
-        final guardedValue = map['s3DataDistributionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      s3InputMode: (() {
-        final guardedValue = map['s3InputMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startTimeOffset: (() {
-        final guardedValue = map['startTimeOffset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      probabilityAttribute: (() { final guardedValue = map['probabilityAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      probabilityThresholdAttribute: (() { final guardedValue = map['probabilityThresholdAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      s3DataDistributionType: (() { final guardedValue = map['s3DataDistributionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s3InputMode: (() { final guardedValue = map['s3InputMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startTimeOffset: (() { final guardedValue = map['startTimeOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

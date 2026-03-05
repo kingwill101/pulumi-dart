@@ -16,3 +16,4 @@ enum AuthorizedOrgsDescAssetType {
     throw ArgumentError('Unknown AuthorizedOrgsDescAssetType value: $value');
   }
 }
+

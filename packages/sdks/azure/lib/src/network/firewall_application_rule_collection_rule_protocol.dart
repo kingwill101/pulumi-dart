@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallApplicationRuleCollectionRuleProtocol {
   /// Specify a port for the connection.
   final pulumi.Input<int> port;
-
   /// Specifies the type of connection. Possible values are `Http`, `Https` and `Mssql`.
   final pulumi.Input<String> type;
 
@@ -18,15 +17,17 @@ class FirewallApplicationRuleCollectionRuleProtocol {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': port, 'type': type};
+    return <String, dynamic>{
+      'port': port,
+      'type': type,
+    };
   }
 
-  factory FirewallApplicationRuleCollectionRuleProtocol.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirewallApplicationRuleCollectionRuleProtocol.fromMap(Map<String, dynamic> map) {
     return FirewallApplicationRuleCollectionRuleProtocol(
       port: pulumi.Input.fromValue(map['port'] as int),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

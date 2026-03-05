@@ -9,19 +9,20 @@ class GoogleCloudMlV1ContainerPort {
 
   /// Creates a new [GoogleCloudMlV1ContainerPort].
   /// [containerPort] Number of the port to expose on the container. This must be a valid port number: 0 &lt; PORT_NUMBER &lt; 65536.
-  GoogleCloudMlV1ContainerPort({this.containerPort});
+  GoogleCloudMlV1ContainerPort({
+    this.containerPort,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'containerPort': ?containerPort};
+    return <String, dynamic>{
+      'containerPort': ?containerPort,
+    };
   }
 
   factory GoogleCloudMlV1ContainerPort.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1ContainerPort(
-      containerPort: (() {
-        final guardedValue = map['containerPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      containerPort: (() { final guardedValue = map['containerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

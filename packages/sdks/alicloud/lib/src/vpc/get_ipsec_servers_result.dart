@@ -8,18 +8,14 @@ class GetIpsecServersResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
-
   /// The name of the IPsec server.
   final String? ipsecServerName;
   final String? nameRegex;
-
   /// A list of Ipsec Server names.
   final List<String> names;
   final String? outputFile;
-
   /// A list of Vpn Ipsec Servers. Each element contains the following attributes:
   final List<GetIpsecServersServer> servers;
-
   /// The ID of the VPN gateway.
   final String? vpnGatewayId;
 
@@ -51,11 +47,7 @@ class GetIpsecServersResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'servers':
-          pulumi.Input.encodeList<GetIpsecServersServer, Map<String, dynamic>>(
-            servers,
-            (value) => value.toMap(),
-          ),
+      'servers': pulumi.Input.encodeList<GetIpsecServersServer, Map<String, dynamic>>(servers, (value) => value.toMap()),
       'vpnGatewayId': ?vpnGatewayId,
     };
   }
@@ -64,33 +56,13 @@ class GetIpsecServersResult {
     return GetIpsecServersResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      ipsecServerName: (() {
-        final guardedValue = map['ipsecServerName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      ipsecServerName: (() { final guardedValue = map['ipsecServerName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      servers: pulumi.Input.decodeList<GetIpsecServersServer>(
-        map['servers']!,
-        (value) => GetIpsecServersServer.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      vpnGatewayId: (() {
-        final guardedValue = map['vpnGatewayId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      servers: pulumi.Input.decodeList<GetIpsecServersServer>(map['servers']!, (value) => GetIpsecServersServer.fromMap((value as Map).cast<String, dynamic>())),
+      vpnGatewayId: (() { final guardedValue = map['vpnGatewayId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

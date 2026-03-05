@@ -13,33 +13,25 @@ class DeployPolicyArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// Description of the `DeployPolicy`. Max length is 255 characters.
   final pulumi.Input<String>? description;
-
   /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location for the resource
   final pulumi.Input<String> location;
-
   /// Name of the `DeployPolicy`.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Rules to apply. At least one rule must be present.
   /// Structure is documented below.
   final pulumi.Input<List<DeployPolicyRule>> rules;
-
   /// Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
   /// Structure is documented below.
   final pulumi.Input<List<DeployPolicySelector>> selectors;
-
   /// When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
   final pulumi.Input<bool>? suspended;
 
@@ -73,86 +65,24 @@ class DeployPolicyArgs {
       'location': location,
       'name': ?name,
       'project': ?project,
-      'rules':
-          pulumi.Input.mapInputValue<
-            List<DeployPolicyRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<DeployPolicyRule, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'selectors':
-          pulumi.Input.mapInputValue<
-            List<DeployPolicySelector>,
-            List<Map<String, dynamic>>
-          >(
-            selectors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DeployPolicySelector,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': pulumi.Input.mapInputValue<List<DeployPolicyRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<DeployPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'selectors': pulumi.Input.mapInputValue<List<DeployPolicySelector>, List<Map<String, dynamic>>>(selectors, (value) => pulumi.Input.encodeList<DeployPolicySelector, Map<String, dynamic>>(value, (value) => value.toMap())),
       'suspended': ?suspended,
     };
   }
 
   factory DeployPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DeployPolicyArgs(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<DeployPolicyRule>(
-          map['rules']!,
-          (value) =>
-              DeployPolicyRule.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      selectors: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<DeployPolicySelector>(
-          map['selectors']!,
-          (value) => DeployPolicySelector.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      suspended: (() {
-        final guardedValue = map['suspended'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rules: pulumi.Input.fromValue(pulumi.Input.decodeList<DeployPolicyRule>(map['rules']!, (value) => DeployPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
+      selectors: pulumi.Input.fromValue(pulumi.Input.decodeList<DeployPolicySelector>(map['selectors']!, (value) => DeployPolicySelector.fromMap((value as Map).cast<String, dynamic>()))),
+      suspended: (() { final guardedValue = map['suspended']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

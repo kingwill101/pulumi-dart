@@ -6,26 +6,19 @@ import 'get_ecs_prefix_lists_list_entry.dart';
 class GetEcsPrefixListsList {
   /// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
   final pulumi.Input<String> addressFamily;
-
   /// The amount of associated resources.
   final pulumi.Input<int> associationCount;
-
   /// The time when the prefix list was created.
   final pulumi.Input<String> createTime;
-
   /// The description of the prefix list.
   final pulumi.Input<String> description;
   final pulumi.Input<List<GetEcsPrefixListsListEntry>> entries;
-
   /// The ID of the prefix list.
   final pulumi.Input<String> id;
-
   /// The maximum number of entries that the prefix list supports.
   final pulumi.Input<int> maxEntries;
-
   /// The ID of the prefix list.
   final pulumi.Input<String> prefixListId;
-
   /// The name of the prefix list.
   final pulumi.Input<String> prefixListName;
 
@@ -57,18 +50,7 @@ class GetEcsPrefixListsList {
       'associationCount': associationCount,
       'createTime': createTime,
       'description': description,
-      'entries':
-          pulumi.Input.mapInputValue<
-            List<GetEcsPrefixListsListEntry>,
-            List<Map<String, dynamic>>
-          >(
-            entries,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetEcsPrefixListsListEntry,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'entries': pulumi.Input.mapInputValue<List<GetEcsPrefixListsListEntry>, List<Map<String, dynamic>>>(entries, (value) => pulumi.Input.encodeList<GetEcsPrefixListsListEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'maxEntries': maxEntries,
       'prefixListId': prefixListId,
@@ -82,14 +64,7 @@ class GetEcsPrefixListsList {
       associationCount: pulumi.Input.fromValue(map['associationCount'] as int),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      entries: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetEcsPrefixListsListEntry>(
-          map['entries']!,
-          (value) => GetEcsPrefixListsListEntry.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      entries: pulumi.Input.fromValue(pulumi.Input.decodeList<GetEcsPrefixListsListEntry>(map['entries']!, (value) => GetEcsPrefixListsListEntry.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),
       maxEntries: pulumi.Input.fromValue(map['maxEntries'] as int),
       prefixListId: pulumi.Input.fromValue(map['prefixListId'] as String),
@@ -97,3 +72,4 @@ class GetEcsPrefixListsList {
     );
   }
 }
+

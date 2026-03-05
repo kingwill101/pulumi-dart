@@ -16,3 +16,4 @@ enum ScaleDirection {
     throw ArgumentError('Unknown ScaleDirection value: $value');
   }
 }
+

@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationInfoResponse {
   /// Name of the configuration.
   final pulumi.Input<String> name;
-
   /// Version of the configuration.
   final pulumi.Input<String> version;
 
   /// Creates a new [ConfigurationInfoResponse].
   /// [name] Name of the configuration.
   /// [version] Version of the configuration.
-  ConfigurationInfoResponse({required this.name, required this.version});
+  ConfigurationInfoResponse({
+    required this.name,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'version': version};
+    return <String, dynamic>{
+      'name': name,
+      'version': version,
+    };
   }
 
   factory ConfigurationInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ConfigurationInfoResponse {
     );
   }
 }
+

@@ -14,14 +14,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'phoneNumber': phoneNumber};
+    return <String, dynamic>{
+      'phoneNumber': phoneNumber,
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial(
       phoneNumber: pulumi.Input.fromValue(map['phoneNumber'] as String),
     );
   }
 }
+

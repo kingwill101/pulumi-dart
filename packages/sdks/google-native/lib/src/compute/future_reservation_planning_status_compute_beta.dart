@@ -13,8 +13,7 @@ enum FutureReservationPlanningStatusComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FutureReservationPlanningStatusComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown FutureReservationPlanningStatusComputeBeta value: $value');
   }
 }
+

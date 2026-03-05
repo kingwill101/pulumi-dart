@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHealthModelArgs {
   /// The name of the Azure Monitor Workspace. The name is case insensitive
   final pulumi.Input<String> azureMonitorWorkspaceName;
-
   /// Name of health model resource
   final pulumi.Input<String> healthModelName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetHealthModelArgs {
 
   factory GetHealthModelArgs.fromMap(Map<String, dynamic> map) {
     return GetHealthModelArgs(
-      azureMonitorWorkspaceName: pulumi.Input.fromValue(
-        map['azureMonitorWorkspaceName'] as String,
-      ),
+      azureMonitorWorkspaceName: pulumi.Input.fromValue(map['azureMonitorWorkspaceName'] as String),
       healthModelName: pulumi.Input.fromValue(map['healthModelName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

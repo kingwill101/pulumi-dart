@@ -114,10 +114,8 @@ import 'source_code_token_state.dart';
 class SourceCodeToken extends pulumi.CustomResource {
   /// The OAuth access token.
   late final pulumi.Output<String> token;
-
   /// The OAuth access token secret.
   late final pulumi.Output<String?> tokenSecret;
-
   /// The source control type. Possible values are `BitBucket`, `Dropbox`, `GitHub` and `OneDrive`.
   late final pulumi.Output<String> type;
 
@@ -130,11 +128,11 @@ class SourceCodeToken extends pulumi.CustomResource {
     SourceCodeTokenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/sourceCodeToken:SourceCodeToken',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/sourceCodeToken:SourceCodeToken',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     token = registerOutput<String>('token');
     tokenSecret = registerOutput<String?>('tokenSecret');
     type = registerOutput<String>('type');
@@ -158,11 +156,11 @@ class SourceCodeToken extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/sourceCodeToken:SourceCodeToken',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/sourceCodeToken:SourceCodeToken',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     token = registerOutput<String>('token');
     tokenSecret = registerOutput<String?>('tokenSecret');
     type = registerOutput<String>('type');

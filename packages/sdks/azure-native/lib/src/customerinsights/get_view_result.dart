@@ -1,37 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getView.
 class GetViewResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Date time when view was last modified.
   final String changed;
-
   /// Date time when view was created.
   final String created;
-
   /// View definition.
   final String definition;
-
   /// Localized display name for the view.
   final Map<String, String>? displayName;
-
   /// Resource ID.
   final String id;
-
   /// Resource name.
   final String name;
-
   /// the hub name.
   final String tenantId;
-
   /// Resource type.
   final String type;
-
   /// the user ID.
   final String? userId;
-
   /// Name of the view.
   final String viewName;
 
@@ -83,21 +74,14 @@ class GetViewResult {
       changed: map['changed'] as String,
       created: map['created'] as String,
       definition: map['definition'] as String,
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       id: map['id'] as String,
       name: map['name'] as String,
       tenantId: map['tenantId'] as String,
       type: map['type'] as String,
-      userId: (() {
-        final guardedValue = map['userId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       viewName: map['viewName'] as String,
     );
   }
 }
+

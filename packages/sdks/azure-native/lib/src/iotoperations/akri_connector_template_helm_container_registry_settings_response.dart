@@ -6,9 +6,7 @@ import 'akri_connector_template_helm_auth_secret_ref_response.dart';
 /// AkriConnectorTemplateHelmContainerRegistrySettings properties.
 class AkriConnectorTemplateHelmContainerRegistrySettingsResponse {
   /// Optional reference to a secret in the same namespace to use for pulling the Helm chart.
-  final pulumi.Input<AkriConnectorTemplateHelmAuthSecretRefResponse>?
-  authSecretRef;
-
+  final pulumi.Input<AkriConnectorTemplateHelmAuthSecretRefResponse>? authSecretRef;
   /// The registry to use for the Helm chart.
   final pulumi.Input<String> registry;
 
@@ -22,29 +20,16 @@ class AkriConnectorTemplateHelmContainerRegistrySettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authSecretRef':
-          ?pulumi.Input.mapOptionalInputValue<
-            AkriConnectorTemplateHelmAuthSecretRefResponse,
-            Map<String, dynamic>
-          >(authSecretRef, (value) => value.toMap()),
+      'authSecretRef': ?pulumi.Input.mapOptionalInputValue<AkriConnectorTemplateHelmAuthSecretRefResponse, Map<String, dynamic>>(authSecretRef, (value) => value.toMap()),
       'registry': registry,
     };
   }
 
-  factory AkriConnectorTemplateHelmContainerRegistrySettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AkriConnectorTemplateHelmContainerRegistrySettingsResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateHelmContainerRegistrySettingsResponse(
-      authSecretRef: (() {
-        final guardedValue = map['authSecretRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AkriConnectorTemplateHelmAuthSecretRefResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      authSecretRef: (() { final guardedValue = map['authSecretRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AkriConnectorTemplateHelmAuthSecretRefResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       registry: pulumi.Input.fromValue(map['registry'] as String),
     );
   }
 }
+

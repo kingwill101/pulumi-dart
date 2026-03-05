@@ -17,18 +17,15 @@ class AppVersionSnapshotAppAudioProcessingConfigBargeInConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bargeInAwareness': ?bargeInAwareness};
+    return <String, dynamic>{
+      'bargeInAwareness': ?bargeInAwareness,
+    };
   }
 
-  factory AppVersionSnapshotAppAudioProcessingConfigBargeInConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotAppAudioProcessingConfigBargeInConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppAudioProcessingConfigBargeInConfig(
-      bargeInAwareness: (() {
-        final guardedValue = map['bargeInAwareness'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      bargeInAwareness: (() { final guardedValue = map['bargeInAwareness']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

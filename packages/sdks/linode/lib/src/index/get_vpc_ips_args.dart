@@ -10,7 +10,6 @@ import 'get_vpc_ips_filter.dart';
 class GetVpcIpsArgs {
   final pulumi.Input<List<GetVpcIpsFilter>>? filters;
   final pulumi.Input<bool>? ipv6;
-
   /// The id of the parent VPC for the list of VPC IPs.
   ///
   /// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
@@ -20,22 +19,15 @@ class GetVpcIpsArgs {
   /// [filters] Optional.
   /// [ipv6] Optional.
   /// [vpcId] The id of the parent VPC for the list of VPC IPs.
-  GetVpcIpsArgs({this.filters, this.ipv6, this.vpcId});
+  GetVpcIpsArgs({
+    this.filters,
+    this.ipv6,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetVpcIpsFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<GetVpcIpsFilter, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetVpcIpsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetVpcIpsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipv6': ?ipv6,
       'vpcId': ?vpcId,
     };
@@ -43,27 +35,10 @@ class GetVpcIpsArgs {
 
   factory GetVpcIpsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcIpsArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetVpcIpsFilter>(
-            guardedValue,
-            (value) =>
-                GetVpcIpsFilter.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      ipv6: (() {
-        final guardedValue = map['ipv6'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetVpcIpsFilter>(guardedValue, (value) => GetVpcIpsFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ipv6: (() { final guardedValue = map['ipv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

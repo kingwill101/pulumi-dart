@@ -37,9 +37,7 @@ class GetDatabaseMysqlConfigMysqlWaitTimeout {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlWaitTimeout.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseMysqlConfigMysqlWaitTimeout.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlWaitTimeout(
       description: pulumi.Input.fromValue(map['description'] as String),
       example: pulumi.Input.fromValue(map['example'] as int),
@@ -50,3 +48,4 @@ class GetDatabaseMysqlConfigMysqlWaitTimeout {
     );
   }
 }
+

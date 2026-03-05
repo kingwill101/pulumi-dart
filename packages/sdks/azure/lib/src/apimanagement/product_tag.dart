@@ -316,13 +316,10 @@ import 'product_tag_state.dart';
 class ProductTag extends pulumi.CustomResource {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// The name of the API Management product. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementProductId;
-
   /// The name which should be used for this API Management Tag. Changing this forces a new API Management Tag to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group in which the API Management Service should be exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -335,11 +332,11 @@ class ProductTag extends pulumi.CustomResource {
     ProductTagArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/productTag:ProductTag',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/productTag:ProductTag',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiManagementProductId = registerOutput<String>('apiManagementProductId');
     this.name = registerOutput<String>('name');
@@ -364,11 +361,11 @@ class ProductTag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/productTag:ProductTag',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/productTag:ProductTag',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiManagementProductId = registerOutput<String>('apiManagementProductId');
     this.name = registerOutput<String>('name');

@@ -7,19 +7,14 @@ import 'system_data_response.dart';
 class GetMarketplaceSubscriptionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// [Required] Additional attributes of the entity.
   final MarketplaceSubscriptionResponse marketplaceSubscriptionProperties;
-
   /// The name of the resource
   final String name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -43,8 +38,7 @@ class GetMarketplaceSubscriptionResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'id': id,
-      'marketplaceSubscriptionProperties': marketplaceSubscriptionProperties
-          .toMap(),
+      'marketplaceSubscriptionProperties': marketplaceSubscriptionProperties.toMap(),
       'name': name,
       'systemData': systemData.toMap(),
       'type': type,
@@ -55,16 +49,11 @@ class GetMarketplaceSubscriptionResult {
     return GetMarketplaceSubscriptionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      marketplaceSubscriptionProperties:
-          MarketplaceSubscriptionResponse.fromMap(
-            (map['marketplaceSubscriptionProperties']! as Map)
-                .cast<String, dynamic>(),
-          ),
+      marketplaceSubscriptionProperties: MarketplaceSubscriptionResponse.fromMap((map['marketplaceSubscriptionProperties']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

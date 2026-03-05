@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagByApiArgs {
   /// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
   final pulumi.Input<String> apiId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
-
   /// Tag identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? tagId;
 
@@ -43,15 +40,10 @@ class TagByApiArgs {
   factory TagByApiArgs.fromMap(Map<String, dynamic> map) {
     return TagByApiArgs(
       apiId: pulumi.Input.fromValue(map['apiId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
-      tagId: (() {
-        final guardedValue = map['tagId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tagId: (() { final guardedValue = map['tagId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

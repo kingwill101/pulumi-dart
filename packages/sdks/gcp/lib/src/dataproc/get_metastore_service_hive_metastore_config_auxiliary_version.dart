@@ -7,7 +7,6 @@ class GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
   /// If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
   final pulumi.Input<Map<String, String>> configOverrides;
   final pulumi.Input<String> key;
-
   /// The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
   final pulumi.Input<String> version;
 
@@ -29,15 +28,12 @@ class GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
     };
   }
 
-  factory GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion.fromMap(Map<String, dynamic> map) {
     return GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion(
-      configOverrides: pulumi.Input.fromValue(
-        (map['configOverrides'] as Map).cast<String, String>(),
-      ),
+      configOverrides: pulumi.Input.fromValue((map['configOverrides'] as Map).cast<String, String>()),
       key: pulumi.Input.fromValue(map['key'] as String),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

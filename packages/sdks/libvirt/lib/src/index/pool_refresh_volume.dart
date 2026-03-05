@@ -8,10 +8,14 @@ class PoolRefreshVolume {
 
   /// Creates a new [PoolRefreshVolume].
   /// [allocation] Defines how allocation amounts are calculated during the refresh operation for the volume.
-  PoolRefreshVolume({required this.allocation});
+  PoolRefreshVolume({
+    required this.allocation,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allocation': allocation};
+    return <String, dynamic>{
+      'allocation': allocation,
+    };
   }
 
   factory PoolRefreshVolume.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class PoolRefreshVolume {
     );
   }
 }
+

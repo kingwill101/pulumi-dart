@@ -188,22 +188,16 @@ import 'shared_image_gallery_state.dart';
 class SharedImageGallery extends pulumi.CustomResource {
   /// A description for this Shared Image Gallery.
   late final pulumi.Output<String?> description;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Shared Image Gallery. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the Shared Image Gallery. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `sharing` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<SharedImageGallerySharing?> sharing;
-
   /// A mapping of tags to assign to the Shared Image Gallery.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Unique Name for this Shared Image Gallery.
   late final pulumi.Output<String> uniqueName;
 
@@ -216,25 +210,16 @@ class SharedImageGallery extends pulumi.CustomResource {
     SharedImageGalleryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/sharedImageGallery:SharedImageGallery',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/sharedImageGallery:SharedImageGallery',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sharing = registerOutput<SharedImageGallerySharing?>(
-      'sharing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SharedImageGallerySharing.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sharing = registerOutput<SharedImageGallerySharing?>('sharing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharedImageGallerySharing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     uniqueName = registerOutput<String>('uniqueName');
   }
@@ -257,25 +242,16 @@ class SharedImageGallery extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/sharedImageGallery:SharedImageGallery',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/sharedImageGallery:SharedImageGallery',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sharing = registerOutput<SharedImageGallerySharing?>(
-      'sharing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SharedImageGallerySharing.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sharing = registerOutput<SharedImageGallerySharing?>('sharing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharedImageGallerySharing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     uniqueName = registerOutput<String>('uniqueName');
   }

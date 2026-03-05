@@ -249,21 +249,16 @@ import 'vpc_state.dart';
 class Vpc extends pulumi.CustomResource {
   /// The date and time when the VPC was created.
   late final pulumi.Output<String> created;
-
   /// The user-defined description of this VPC.
   ///
   /// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
   late final pulumi.Output<String> description;
-
   /// The IPv6 configuration of this VPC.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipv6s;
-
   /// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
   late final pulumi.Output<String> label;
-
   /// The region of the VPC.
   late final pulumi.Output<String> region;
-
   /// The date and time when the VPC was last updated.
   late final pulumi.Output<String> updated;
 
@@ -271,13 +266,16 @@ class Vpc extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Vpc]. {@macro pulumi_index_vpc_vpc_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Vpc(String name, {VpcArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'linode:index/vpc:Vpc',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Vpc(
+    String name, {
+    VpcArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'linode:index/vpc:Vpc',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     created = registerOutput<String>('created');
     description = registerOutput<String>('description');
     ipv6s = registerOutput<List<Map<String, dynamic>>?>('ipv6s');
@@ -287,7 +285,11 @@ class Vpc extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Vpc] resource's state with the given [name] and [id].
-  static Vpc get(String name, pulumi.Input<String> id, {VpcState? state}) {
+  static Vpc get(
+    String name,
+    pulumi.Input<String> id, {
+    VpcState? state,
+  }) {
     return Vpc._get(
       name,
       state: state?.toMap(),
@@ -300,11 +302,11 @@ class Vpc extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/vpc:Vpc',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/vpc:Vpc',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     created = registerOutput<String>('created');
     description = registerOutput<String>('description');
     ipv6s = registerOutput<List<Map<String, dynamic>>?>('ipv6s');

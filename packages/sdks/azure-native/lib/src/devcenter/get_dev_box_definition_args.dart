@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDevBoxDefinitionArgs {
   /// The name of the Dev Box definition.
   final pulumi.Input<String> devBoxDefinitionName;
-
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetDevBoxDefinitionArgs {
 
   factory GetDevBoxDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetDevBoxDefinitionArgs(
-      devBoxDefinitionName: pulumi.Input.fromValue(
-        map['devBoxDefinitionName'] as String,
-      ),
+      devBoxDefinitionName: pulumi.Input.fromValue(map['devBoxDefinitionName'] as String),
       devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

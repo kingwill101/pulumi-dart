@@ -363,19 +363,14 @@ import 'spring_cloud_app_mysql_association_state.dart';
 class SpringCloudAppMysqlAssociation extends pulumi.CustomResource {
   /// Specifies the name of the MySQL Database which the Spring Cloud App should be associated with.
   late final pulumi.Output<String> databaseName;
-
   /// Specifies the ID of the MySQL Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> mysqlServerId;
-
   /// Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the password which should be used when connecting to the MySQL Database from the Spring Cloud App.
   late final pulumi.Output<String> password;
-
   /// Specifies the ID of the Spring Cloud Application where this Association is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudAppId;
-
   /// Specifies the username which should be used when connecting to the MySQL Database from the Spring Cloud App.
   late final pulumi.Output<String> username;
 
@@ -388,11 +383,11 @@ class SpringCloudAppMysqlAssociation extends pulumi.CustomResource {
     SpringCloudAppMysqlAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudAppMysqlAssociation:SpringCloudAppMysqlAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudAppMysqlAssociation:SpringCloudAppMysqlAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     databaseName = registerOutput<String>('databaseName');
     mysqlServerId = registerOutput<String>('mysqlServerId');
     this.name = registerOutput<String>('name');
@@ -419,11 +414,11 @@ class SpringCloudAppMysqlAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudAppMysqlAssociation:SpringCloudAppMysqlAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudAppMysqlAssociation:SpringCloudAppMysqlAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     databaseName = registerOutput<String>('databaseName');
     mysqlServerId = registerOutput<String>('mysqlServerId');
     this.name = registerOutput<String>('name');

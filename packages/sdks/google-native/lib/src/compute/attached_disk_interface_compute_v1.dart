@@ -15,3 +15,4 @@ enum AttachedDiskInterfaceComputeV1 {
     throw ArgumentError('Unknown AttachedDiskInterfaceComputeV1 value: $value');
   }
 }
+

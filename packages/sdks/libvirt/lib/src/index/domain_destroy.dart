@@ -7,19 +7,20 @@ class DomainDestroy {
 
   /// Creates a new [DomainDestroy].
   /// [graceful] Optional.
-  DomainDestroy({this.graceful});
+  DomainDestroy({
+    this.graceful,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'graceful': ?graceful};
+    return <String, dynamic>{
+      'graceful': ?graceful,
+    };
   }
 
   factory DomainDestroy.fromMap(Map<String, dynamic> map) {
     return DomainDestroy(
-      graceful: (() {
-        final guardedValue = map['graceful'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      graceful: (() { final guardedValue = map['graceful']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

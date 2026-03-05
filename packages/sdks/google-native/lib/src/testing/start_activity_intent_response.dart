@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StartActivityIntentResponse {
   /// Action name. Required for START_ACTIVITY.
   final pulumi.Input<String> action;
-
   /// Intent categories to set on the intent.
   final pulumi.Input<List<String>> categories;
-
   /// URI for the action.
   final pulumi.Input<String> uri;
 
@@ -34,10 +32,9 @@ class StartActivityIntentResponse {
   factory StartActivityIntentResponse.fromMap(Map<String, dynamic> map) {
     return StartActivityIntentResponse(
       action: pulumi.Input.fromValue(map['action'] as String),
-      categories: pulumi.Input.fromValue(
-        (map['categories'] as List).cast<String>(),
-      ),
+      categories: pulumi.Input.fromValue((map['categories'] as List).cast<String>()),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

@@ -15,8 +15,7 @@ enum TemplateDeploymentPreflightOptions {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown TemplateDeploymentPreflightOptions value: $value',
-    );
+    throw ArgumentError('Unknown TemplateDeploymentPreflightOptions value: $value');
   }
 }
+

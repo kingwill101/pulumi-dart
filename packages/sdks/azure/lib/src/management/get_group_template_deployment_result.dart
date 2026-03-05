@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGroupTemplateDeployment.
 class GetGroupTemplateDeploymentResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String managementGroupId;
   final String name;
-
   /// The JSON Content of the Outputs of the ARM Template Deployment.
   final String outputContent;
 
@@ -40,3 +40,4 @@ class GetGroupTemplateDeploymentResult {
     );
   }
 }
+

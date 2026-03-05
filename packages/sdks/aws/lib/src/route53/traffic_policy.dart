@@ -183,21 +183,16 @@ import 'traffic_policy_state.dart';
 class TrafficPolicy extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the traffic policy.
   late final pulumi.Output<String> arn;
-
   /// Comment for the traffic policy.
   late final pulumi.Output<String?> comment;
-
   /// Policy document. This is a JSON formatted string. For more information about building Route53 traffic policy documents, see the [AWS Route53 Traffic Policy document format](https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html)
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> document;
-
   /// Name of the traffic policy.
   late final pulumi.Output<String> name;
-
   /// DNS type of the resource record sets that Amazon Route 53 creates when you use a traffic policy to create a traffic policy instance.
   late final pulumi.Output<String> type;
-
   /// Version number of the traffic policy. This value is automatically incremented by AWS after each update of this resource.
   late final pulumi.Output<int> version;
 
@@ -210,11 +205,11 @@ class TrafficPolicy extends pulumi.CustomResource {
     TrafficPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/trafficPolicy:TrafficPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/trafficPolicy:TrafficPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
     document = registerOutput<String>('document');
@@ -241,11 +236,11 @@ class TrafficPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/trafficPolicy:TrafficPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/trafficPolicy:TrafficPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
     document = registerOutput<String>('document');

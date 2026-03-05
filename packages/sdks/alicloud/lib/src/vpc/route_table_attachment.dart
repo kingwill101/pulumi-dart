@@ -284,10 +284,8 @@ import 'route_table_attachment_state.dart';
 class RouteTableAttachment extends pulumi.CustomResource {
   /// The ID of the route table to be bound to the switch.
   late final pulumi.Output<String> routeTableId;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// The ID of the switch to bind the route table.
   late final pulumi.Output<String> vswitchId;
 
@@ -300,11 +298,11 @@ class RouteTableAttachment extends pulumi.CustomResource {
     RouteTableAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/routeTableAttachment:RouteTableAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/routeTableAttachment:RouteTableAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     routeTableId = registerOutput<String>('routeTableId');
     status = registerOutput<String>('status');
     vswitchId = registerOutput<String>('vswitchId');
@@ -328,11 +326,11 @@ class RouteTableAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/routeTableAttachment:RouteTableAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/routeTableAttachment:RouteTableAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     routeTableId = registerOutput<String>('routeTableId');
     status = registerOutput<String>('status');
     vswitchId = registerOutput<String>('vswitchId');

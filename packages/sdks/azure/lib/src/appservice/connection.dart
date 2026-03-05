@@ -491,17 +491,14 @@ import 'connection_state.dart';
 class Connection extends pulumi.CustomResource {
   /// The ID of the data source web app. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServiceId;
-
   /// The authentication info. An `authentication` block as defined below.
   ///
   /// &gt; **Note:** If a Managed Identity is used, this will need to be configured on the App Service.
   late final pulumi.Output<ConnectionAuthentication> authentication;
   late final pulumi.Output<String?> clientType;
-
   /// The name of the service connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   late final pulumi.Output<ConnectionSecretStore?> secretStore;
-
   /// The ID of the target resource. Changing this forces a new resource to be created. Possible target resources are `Postgres`, `PostgresFlexible`, `Mysql`, `Sql`, `Redis`, `RedisEnterprise`, `CosmosCassandra`, `CosmosGremlin`, `CosmosMongo`, `CosmosSql`, `CosmosTable`, `StorageBlob`, `StorageQueue`, `StorageFile`, `StorageTable`, `AppConfig`, `EventHub`, `ServiceBus`, `SignalR`, `WebPubSub`, `ConfluentKafka`. The integration guide can be found [here](https://learn.microsoft.com/en-us/azure/service-connector/how-to-integrate-postgres).
   late final pulumi.Output<String> targetResourceId;
   late final pulumi.Output<String?> vnetSolution;
@@ -515,34 +512,16 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceId = registerOutput<String>('appServiceId');
-    authentication = registerOutput<ConnectionAuthentication>(
-      'authentication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionAuthentication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authentication = registerOutput<ConnectionAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientType = registerOutput<String?>('clientType');
     this.name = registerOutput<String>('name');
-    secretStore = registerOutput<ConnectionSecretStore?>(
-      'secretStore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionSecretStore.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    secretStore = registerOutput<ConnectionSecretStore?>('secretStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionSecretStore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetResourceId = registerOutput<String>('targetResourceId');
     vnetSolution = registerOutput<String?>('vnetSolution');
   }
@@ -565,34 +544,16 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceId = registerOutput<String>('appServiceId');
-    authentication = registerOutput<ConnectionAuthentication>(
-      'authentication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionAuthentication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authentication = registerOutput<ConnectionAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientType = registerOutput<String?>('clientType');
     this.name = registerOutput<String>('name');
-    secretStore = registerOutput<ConnectionSecretStore?>(
-      'secretStore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionSecretStore.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    secretStore = registerOutput<ConnectionSecretStore?>('secretStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionSecretStore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetResourceId = registerOutput<String>('targetResourceId');
     vnetSolution = registerOutput<String?>('vnetSolution');
   }

@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFactoryGithubConfiguration {
   /// The VSTS account name.
   final pulumi.Input<String> accountName;
-
   /// The branch of the repository to get code from.
   final pulumi.Input<String> branchName;
-
   /// The GitHub repository url.
   final pulumi.Input<String> gitUrl;
-
   /// The name of the git repository.
   final pulumi.Input<String> repositoryName;
-
   /// The root folder within the repository.
   final pulumi.Input<String> rootFolder;
 
@@ -52,3 +48,4 @@ class GetFactoryGithubConfiguration {
     );
   }
 }
+

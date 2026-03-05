@@ -8,19 +8,20 @@ class KubernetesClusterConfidentialComputing {
 
   /// Creates a new [KubernetesClusterConfidentialComputing].
   /// [sgxQuoteHelperEnabled] Should the SGX quote helper be enabled?
-  KubernetesClusterConfidentialComputing({required this.sgxQuoteHelperEnabled});
+  KubernetesClusterConfidentialComputing({
+    required this.sgxQuoteHelperEnabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sgxQuoteHelperEnabled': sgxQuoteHelperEnabled};
+    return <String, dynamic>{
+      'sgxQuoteHelperEnabled': sgxQuoteHelperEnabled,
+    };
   }
 
-  factory KubernetesClusterConfidentialComputing.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KubernetesClusterConfidentialComputing.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterConfidentialComputing(
-      sgxQuoteHelperEnabled: pulumi.Input.fromValue(
-        map['sgxQuoteHelperEnabled'] as bool,
-      ),
+      sgxQuoteHelperEnabled: pulumi.Input.fromValue(map['sgxQuoteHelperEnabled'] as bool),
     );
   }
 }
+

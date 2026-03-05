@@ -12,8 +12,7 @@ enum ControlSolutionTypesItemRetailV2beta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ControlSolutionTypesItemRetailV2beta value: $value',
-    );
+    throw ArgumentError('Unknown ControlSolutionTypesItemRetailV2beta value: $value');
   }
 }
+

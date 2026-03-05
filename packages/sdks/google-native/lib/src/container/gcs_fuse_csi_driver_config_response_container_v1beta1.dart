@@ -9,17 +9,20 @@ class GcsFuseCsiDriverConfigResponseContainerV1beta1 {
 
   /// Creates a new [GcsFuseCsiDriverConfigResponseContainerV1beta1].
   /// [enabled] Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
-  GcsFuseCsiDriverConfigResponseContainerV1beta1({required this.enabled});
+  GcsFuseCsiDriverConfigResponseContainerV1beta1({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GcsFuseCsiDriverConfigResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GcsFuseCsiDriverConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return GcsFuseCsiDriverConfigResponseContainerV1beta1(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

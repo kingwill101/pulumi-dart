@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionProfileResponse {
   /// The enabled access level for Client Access over RDP.
   final pulumi.Input<String>? clientRdpAccess;
-
   /// The enabled access level for Client Access over SSH.
   final pulumi.Input<String>? clientSshAccess;
-
   /// The enabled access level for Web Access over RDP.
   final pulumi.Input<String>? webRdpAccess;
-
   /// The enabled access level for Web Access over SSH.
   final pulumi.Input<String>? webSshAccess;
 
@@ -39,26 +36,11 @@ class ConnectionProfileResponse {
 
   factory ConnectionProfileResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileResponse(
-      clientRdpAccess: (() {
-        final guardedValue = map['clientRdpAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientSshAccess: (() {
-        final guardedValue = map['clientSshAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      webRdpAccess: (() {
-        final guardedValue = map['webRdpAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      webSshAccess: (() {
-        final guardedValue = map['webSshAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientRdpAccess: (() { final guardedValue = map['clientRdpAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientSshAccess: (() { final guardedValue = map['clientSshAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      webRdpAccess: (() { final guardedValue = map['webRdpAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      webSshAccess: (() { final guardedValue = map['webSshAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

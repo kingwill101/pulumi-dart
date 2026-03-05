@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayLocationData {
   /// The city or locality where the resource is located.
   final pulumi.Input<String> city;
-
   /// The district, state, or province where the resource is located.
   final pulumi.Input<String> district;
-
   /// The name of the API Management Gateway.
   final pulumi.Input<String> name;
   final pulumi.Input<String> region;
@@ -43,3 +41,4 @@ class GetGatewayLocationData {
     );
   }
 }
+

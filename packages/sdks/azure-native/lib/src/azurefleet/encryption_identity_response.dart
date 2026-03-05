@@ -10,7 +10,9 @@ class EncryptionIdentityResponse {
 
   /// Creates a new [EncryptionIdentityResponse].
   /// [userAssignedIdentityResourceId] Specifies ARM Resource ID of one of the user identities associated with the VM.
-  EncryptionIdentityResponse({this.userAssignedIdentityResourceId});
+  EncryptionIdentityResponse({
+    this.userAssignedIdentityResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,11 +22,8 @@ class EncryptionIdentityResponse {
 
   factory EncryptionIdentityResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionIdentityResponse(
-      userAssignedIdentityResourceId: (() {
-        final guardedValue = map['userAssignedIdentityResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userAssignedIdentityResourceId: (() { final guardedValue = map['userAssignedIdentityResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

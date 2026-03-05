@@ -12,14 +12,15 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicr
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'apiSecretKey': apiSecretKey};
+    return <String, dynamic>{
+      'apiSecretKey': apiSecretKey,
+    };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro(
       apiSecretKey: pulumi.Input.fromValue(map['apiSecretKey'] as String),
     );
   }
 }
+

@@ -9,35 +9,20 @@ class CustomModelValidationDataConfig {
 
   /// Creates a new [CustomModelValidationDataConfig].
   /// [validators] Information about the validators.
-  CustomModelValidationDataConfig({required this.validators});
+  CustomModelValidationDataConfig({
+    required this.validators,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'validators':
-          pulumi.Input.mapInputValue<
-            List<CustomModelValidationDataConfigValidator>,
-            List<Map<String, dynamic>>
-          >(
-            validators,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CustomModelValidationDataConfigValidator,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'validators': pulumi.Input.mapInputValue<List<CustomModelValidationDataConfigValidator>, List<Map<String, dynamic>>>(validators, (value) => pulumi.Input.encodeList<CustomModelValidationDataConfigValidator, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CustomModelValidationDataConfig.fromMap(Map<String, dynamic> map) {
     return CustomModelValidationDataConfig(
-      validators: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<CustomModelValidationDataConfigValidator>(
-          map['validators']!,
-          (value) => CustomModelValidationDataConfigValidator.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      validators: pulumi.Input.fromValue(pulumi.Input.decodeList<CustomModelValidationDataConfigValidator>(map['validators']!, (value) => CustomModelValidationDataConfigValidator.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

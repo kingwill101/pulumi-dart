@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActiveSessionsArgs {
   /// The name of the Bastion Host.
   final pulumi.Input<String> bastionHostName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetActiveSessionsArgs {
   factory GetActiveSessionsArgs.fromMap(Map<String, dynamic> map) {
     return GetActiveSessionsArgs(
       bastionHostName: pulumi.Input.fromValue(map['bastionHostName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

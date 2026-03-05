@@ -8,10 +8,14 @@ class CassandraTableSchemaPartitionKey {
 
   /// Creates a new [CassandraTableSchemaPartitionKey].
   /// [name] Name of the column to partition by.
-  CassandraTableSchemaPartitionKey({required this.name});
+  CassandraTableSchemaPartitionKey({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory CassandraTableSchemaPartitionKey.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class CassandraTableSchemaPartitionKey {
     );
   }
 }
+

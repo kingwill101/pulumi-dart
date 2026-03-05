@@ -6,13 +6,10 @@ import 'get_host_pool_scheduled_agent_update_schedule.dart';
 class GetHostPoolScheduledAgentUpdate {
   /// Are scheduled updates of the AVD agent components (RDAgent, Geneva Monitoring agent, and side-by-side stack) enabled on session hosts.
   final pulumi.Input<bool> enabled;
-
   /// A `schedule` block as defined below.
   final pulumi.Input<List<GetHostPoolScheduledAgentUpdateSchedule>> schedules;
-
   /// The time zone in which the agent update schedule will apply.
   final pulumi.Input<String> timezone;
-
   /// Specifies whether scheduled agent updates should be applied based on the timezone of the affected session host.
   final pulumi.Input<bool> useSessionHostTimezone;
 
@@ -31,18 +28,7 @@ class GetHostPoolScheduledAgentUpdate {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'schedules':
-          pulumi.Input.mapInputValue<
-            List<GetHostPoolScheduledAgentUpdateSchedule>,
-            List<Map<String, dynamic>>
-          >(
-            schedules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetHostPoolScheduledAgentUpdateSchedule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'schedules': pulumi.Input.mapInputValue<List<GetHostPoolScheduledAgentUpdateSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<GetHostPoolScheduledAgentUpdateSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timezone': timezone,
       'useSessionHostTimezone': useSessionHostTimezone,
     };
@@ -51,18 +37,10 @@ class GetHostPoolScheduledAgentUpdate {
   factory GetHostPoolScheduledAgentUpdate.fromMap(Map<String, dynamic> map) {
     return GetHostPoolScheduledAgentUpdate(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      schedules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetHostPoolScheduledAgentUpdateSchedule>(
-          map['schedules']!,
-          (value) => GetHostPoolScheduledAgentUpdateSchedule.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      schedules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetHostPoolScheduledAgentUpdateSchedule>(map['schedules']!, (value) => GetHostPoolScheduledAgentUpdateSchedule.fromMap((value as Map).cast<String, dynamic>()))),
       timezone: pulumi.Input.fromValue(map['timezone'] as String),
-      useSessionHostTimezone: pulumi.Input.fromValue(
-        map['useSessionHostTimezone'] as bool,
-      ),
+      useSessionHostTimezone: pulumi.Input.fromValue(map['useSessionHostTimezone'] as bool),
     );
   }
 }
+

@@ -6,19 +6,13 @@ import 'patch_deployment_patch_config_post_step_linux_exec_step_config_gcs_objec
 class PatchDeploymentPatchConfigPostStepLinuxExecStepConfig {
   /// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
   final pulumi.Input<List<int>>? allowedSuccessCodes;
-
   /// A Cloud Storage object containing the executable.
   /// Structure is documented below.
-  final pulumi.Input<
-    PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject
-  >?
-  gcsObject;
-
+  final pulumi.Input<PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject>? gcsObject;
   /// The script interpreter to use to run the script. If no interpreter is specified the script will
   /// be executed directly, which will likely only succeed for scripts with shebang lines.
   /// Possible values are: `SHELL`, `POWERSHELL`.
   final pulumi.Input<String>? interpreter;
-
   /// An absolute path to the executable on the VM.
   final pulumi.Input<String>? localPath;
 
@@ -37,44 +31,19 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedSuccessCodes': ?allowedSuccessCodes,
-      'gcsObject':
-          ?pulumi.Input.mapOptionalInputValue<
-            PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject,
-            Map<String, dynamic>
-          >(gcsObject, (value) => value.toMap()),
+      'gcsObject': ?pulumi.Input.mapOptionalInputValue<PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject, Map<String, dynamic>>(gcsObject, (value) => value.toMap()),
       'interpreter': ?interpreter,
       'localPath': ?localPath,
     };
   }
 
-  factory PatchDeploymentPatchConfigPostStepLinuxExecStepConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PatchDeploymentPatchConfigPostStepLinuxExecStepConfig.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentPatchConfigPostStepLinuxExecStepConfig(
-      allowedSuccessCodes: (() {
-        final guardedValue = map['allowedSuccessCodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
-      gcsObject: (() {
-        final guardedValue = map['gcsObject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      interpreter: (() {
-        final guardedValue = map['interpreter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      localPath: (() {
-        final guardedValue = map['localPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowedSuccessCodes: (() { final guardedValue = map['allowedSuccessCodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
+      gcsObject: (() { final guardedValue = map['gcsObject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      interpreter: (() { final guardedValue = map['interpreter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localPath: (() { final guardedValue = map['localPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

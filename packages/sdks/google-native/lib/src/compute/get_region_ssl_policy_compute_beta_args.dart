@@ -31,13 +31,10 @@ class GetRegionSslPolicyComputeBetaArgs {
 
   factory GetRegionSslPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionSslPolicyComputeBetaArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
       sslPolicy: pulumi.Input.fromValue(map['sslPolicy'] as String),
     );
   }
 }
+

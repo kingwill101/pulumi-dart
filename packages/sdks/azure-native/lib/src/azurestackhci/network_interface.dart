@@ -420,44 +420,30 @@ import 'system_data_response.dart';
 class NetworkInterface extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Boolean indicating whether this is a existing local network interface or if one should be created.
   late final pulumi.Output<bool?> createFromLocal;
-
   /// DNS Settings for the interface
   late final pulumi.Output<InterfaceDNSSettingsResponse?> dnsSettings;
-
   /// The extendedLocation of the resource.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// IPConfigurations - A list of IPConfigurations of the network interface.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// MacAddress - The MAC address of the network interface.
   late final pulumi.Output<String?> macAddress;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// NetworkSecurityGroup - Network Security Group attached to the network interface.
-  late final pulumi.Output<NetworkSecurityGroupArmReferenceResponse?>
-  networkSecurityGroup;
-
+  late final pulumi.Output<NetworkSecurityGroupArmReferenceResponse?> networkSecurityGroup;
   /// Provisioning state of the network interface.
   late final pulumi.Output<String> provisioningState;
-
   /// The observed state of network interfaces
   late final pulumi.Output<NetworkInterfaceStatusResponse> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -470,71 +456,23 @@ class NetworkInterface extends pulumi.CustomResource {
     NetworkInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azurestackhci:NetworkInterface',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azurestackhci:NetworkInterface',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createFromLocal = registerOutput<bool?>('createFromLocal');
-    dnsSettings = registerOutput<InterfaceDNSSettingsResponse?>(
-      'dnsSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InterfaceDNSSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'ipConfigurations',
-    );
+    dnsSettings = registerOutput<InterfaceDNSSettingsResponse?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterfaceDNSSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>('ipConfigurations');
     location = registerOutput<String>('location');
     macAddress = registerOutput<String?>('macAddress');
     this.name = registerOutput<String>('name');
-    networkSecurityGroup =
-        registerOutput<NetworkSecurityGroupArmReferenceResponse?>(
-          'networkSecurityGroup',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NetworkSecurityGroupArmReferenceResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    networkSecurityGroup = registerOutput<NetworkSecurityGroupArmReferenceResponse?>('networkSecurityGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkSecurityGroupArmReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    status = registerOutput<NetworkInterfaceStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkInterfaceStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    status = registerOutput<NetworkInterfaceStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinuxWebAppConnectionString {
   /// The name of this Linux Web App.
   final pulumi.Input<String> name;
-
   /// The Azure Storage Type.
   final pulumi.Input<String> type;
-
   /// The Connection String value.
   final pulumi.Input<String> value;
 
@@ -23,7 +21,11 @@ class GetLinuxWebAppConnectionString {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+      'value': value,
+    };
   }
 
   factory GetLinuxWebAppConnectionString.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class GetLinuxWebAppConnectionString {
     );
   }
 }
+

@@ -133,20 +133,15 @@ import 'model_card_export_job_timeouts.dart';
 class ModelCardExportJob extends pulumi.CustomResource {
   /// Exported model card artifacts.
   late final pulumi.Output<List<Map<String, dynamic>>> exportArtifacts;
-
   /// The Amazon Resource Name (ARN) of the model card export job.
   late final pulumi.Output<String> modelCardExportJobArn;
-
   /// Name of the model card export job.
   late final pulumi.Output<String> modelCardExportJobName;
-
   /// Name of the model card.
   late final pulumi.Output<String> modelCardName;
   late final pulumi.Output<int> modelCardVersion;
-
   /// Export output details. Fields are documented below.
   late final pulumi.Output<ModelCardExportJobOutputConfig> outputConfig;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration
   late final pulumi.Output<String> region;
   late final pulumi.Output<ModelCardExportJobTimeouts?> timeouts;
@@ -160,39 +155,19 @@ class ModelCardExportJob extends pulumi.CustomResource {
     ModelCardExportJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/modelCardExportJob:ModelCardExportJob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    exportArtifacts = registerOutput<List<Map<String, dynamic>>>(
-      'exportArtifacts',
-    );
+          'aws:sagemaker/modelCardExportJob:ModelCardExportJob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    exportArtifacts = registerOutput<List<Map<String, dynamic>>>('exportArtifacts');
     modelCardExportJobArn = registerOutput<String>('modelCardExportJobArn');
     modelCardExportJobName = registerOutput<String>('modelCardExportJobName');
     modelCardName = registerOutput<String>('modelCardName');
     modelCardVersion = registerOutput<int>('modelCardVersion');
-    outputConfig = registerOutput<ModelCardExportJobOutputConfig>(
-      'outputConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ModelCardExportJobOutputConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    outputConfig = registerOutput<ModelCardExportJobOutputConfig>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelCardExportJobOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    timeouts = registerOutput<ModelCardExportJobTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ModelCardExportJobTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ModelCardExportJobTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelCardExportJobTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [ModelCardExportJob] resource's state with the given [name] and [id].
@@ -213,38 +188,18 @@ class ModelCardExportJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/modelCardExportJob:ModelCardExportJob',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    exportArtifacts = registerOutput<List<Map<String, dynamic>>>(
-      'exportArtifacts',
-    );
+          'aws:sagemaker/modelCardExportJob:ModelCardExportJob',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    exportArtifacts = registerOutput<List<Map<String, dynamic>>>('exportArtifacts');
     modelCardExportJobArn = registerOutput<String>('modelCardExportJobArn');
     modelCardExportJobName = registerOutput<String>('modelCardExportJobName');
     modelCardName = registerOutput<String>('modelCardName');
     modelCardVersion = registerOutput<int>('modelCardVersion');
-    outputConfig = registerOutput<ModelCardExportJobOutputConfig>(
-      'outputConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ModelCardExportJobOutputConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    outputConfig = registerOutput<ModelCardExportJobOutputConfig>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelCardExportJobOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    timeouts = registerOutput<ModelCardExportJobTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ModelCardExportJobTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ModelCardExportJobTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelCardExportJobTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

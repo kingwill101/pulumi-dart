@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceParametersDatabricks {
   /// The host name of the Databricks data source.
   final pulumi.Input<String> host;
-
   /// The port for the Databricks data source.
   final pulumi.Input<int> port;
-
   /// The HTTP path of the Databricks data source.
   final pulumi.Input<String> sqlEndpointPath;
 
@@ -38,3 +36,4 @@ class DataSourceParametersDatabricks {
     );
   }
 }
+

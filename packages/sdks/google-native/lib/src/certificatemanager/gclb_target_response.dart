@@ -7,10 +7,8 @@ import 'ip_config_response.dart';
 class GclbTargetResponse {
   /// IP configurations for this Target Proxy where the Certificate Map is serving.
   final pulumi.Input<List<IpConfigResponse>> ipConfigs;
-
   /// This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetHttpsProxies/*`.
   final pulumi.Input<String> targetHttpsProxy;
-
   /// This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetSslProxies/*`.
   final pulumi.Input<String> targetSslProxy;
 
@@ -26,18 +24,7 @@ class GclbTargetResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipConfigs':
-          pulumi.Input.mapInputValue<
-            List<IpConfigResponse>,
-            List<Map<String, dynamic>>
-          >(
-            ipConfigs,
-            (value) =>
-                pulumi.Input.encodeList<IpConfigResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'ipConfigs': pulumi.Input.mapInputValue<List<IpConfigResponse>, List<Map<String, dynamic>>>(ipConfigs, (value) => pulumi.Input.encodeList<IpConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetHttpsProxy': targetHttpsProxy,
       'targetSslProxy': targetSslProxy,
     };
@@ -45,17 +32,10 @@ class GclbTargetResponse {
 
   factory GclbTargetResponse.fromMap(Map<String, dynamic> map) {
     return GclbTargetResponse(
-      ipConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<IpConfigResponse>(
-          map['ipConfigs']!,
-          (value) =>
-              IpConfigResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      targetHttpsProxy: pulumi.Input.fromValue(
-        map['targetHttpsProxy'] as String,
-      ),
+      ipConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<IpConfigResponse>(map['ipConfigs']!, (value) => IpConfigResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      targetHttpsProxy: pulumi.Input.fromValue(map['targetHttpsProxy'] as String),
       targetSslProxy: pulumi.Input.fromValue(map['targetSslProxy'] as String),
     );
   }
 }
+

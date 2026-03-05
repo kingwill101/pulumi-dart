@@ -7,19 +7,14 @@ import 'troubleshooting_additional_properties_response.dart';
 class TroubleshootingStatusResponse {
   /// End time in UTC timezone.
   final pulumi.Input<String> endTimeUtc;
-
   /// Last troubleshooting trigger time in UTC timezone
   final pulumi.Input<String> lastTriggerTimeUtc;
-
   /// Troubleshooting properties
   final pulumi.Input<TroubleshootingAdditionalPropertiesResponse> properties;
-
   /// Root cause of the issue
   final pulumi.Input<String> rootCause;
-
   /// Start time in UTC timezone.
   final pulumi.Input<String> startTimeUtc;
-
   /// SQL VM troubleshooting scenario.
   final pulumi.Input<String> troubleshootingScenario;
 
@@ -43,11 +38,7 @@ class TroubleshootingStatusResponse {
     return <String, dynamic>{
       'endTimeUtc': endTimeUtc,
       'lastTriggerTimeUtc': lastTriggerTimeUtc,
-      'properties':
-          pulumi.Input.mapInputValue<
-            TroubleshootingAdditionalPropertiesResponse,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<TroubleshootingAdditionalPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'rootCause': rootCause,
       'startTimeUtc': startTimeUtc,
       'troubleshootingScenario': troubleshootingScenario,
@@ -57,19 +48,12 @@ class TroubleshootingStatusResponse {
   factory TroubleshootingStatusResponse.fromMap(Map<String, dynamic> map) {
     return TroubleshootingStatusResponse(
       endTimeUtc: pulumi.Input.fromValue(map['endTimeUtc'] as String),
-      lastTriggerTimeUtc: pulumi.Input.fromValue(
-        map['lastTriggerTimeUtc'] as String,
-      ),
-      properties: pulumi.Input.fromValue(
-        TroubleshootingAdditionalPropertiesResponse.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      lastTriggerTimeUtc: pulumi.Input.fromValue(map['lastTriggerTimeUtc'] as String),
+      properties: pulumi.Input.fromValue(TroubleshootingAdditionalPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())),
       rootCause: pulumi.Input.fromValue(map['rootCause'] as String),
       startTimeUtc: pulumi.Input.fromValue(map['startTimeUtc'] as String),
-      troubleshootingScenario: pulumi.Input.fromValue(
-        map['troubleshootingScenario'] as String,
-      ),
+      troubleshootingScenario: pulumi.Input.fromValue(map['troubleshootingScenario'] as String),
     );
   }
 }
+

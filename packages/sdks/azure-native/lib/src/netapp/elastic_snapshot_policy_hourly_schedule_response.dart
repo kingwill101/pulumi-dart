@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticSnapshotPolicyHourlyScheduleResponse {
   /// Indicates which minute snapshot should be taken
   final pulumi.Input<int>? minute;
-
   /// Hourly snapshot count to keep
   final pulumi.Input<int>? snapshotsToKeep;
 
@@ -25,20 +24,11 @@ class ElasticSnapshotPolicyHourlyScheduleResponse {
     };
   }
 
-  factory ElasticSnapshotPolicyHourlyScheduleResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ElasticSnapshotPolicyHourlyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ElasticSnapshotPolicyHourlyScheduleResponse(
-      minute: (() {
-        final guardedValue = map['minute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      snapshotsToKeep: (() {
-        final guardedValue = map['snapshotsToKeep'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      minute: (() { final guardedValue = map['minute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      snapshotsToKeep: (() { final guardedValue = map['snapshotsToKeep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

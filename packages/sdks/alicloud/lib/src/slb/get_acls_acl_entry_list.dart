@@ -9,10 +9,16 @@ class GetAclsAclEntryList {
   /// Creates a new [GetAclsAclEntryList].
   /// [comment] Required.
   /// [entry] Required.
-  GetAclsAclEntryList({required this.comment, required this.entry});
+  GetAclsAclEntryList({
+    required this.comment,
+    required this.entry,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comment': comment, 'entry': entry};
+    return <String, dynamic>{
+      'comment': comment,
+      'entry': entry,
+    };
   }
 
   factory GetAclsAclEntryList.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class GetAclsAclEntryList {
     );
   }
 }
+

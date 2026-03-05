@@ -318,13 +318,10 @@ import 'backup_policy_state.dart';
 class BackupPolicy extends pulumi.CustomResource {
   /// Backup retention time.
   late final pulumi.Output<int> backupRetentionPeriod;
-
   /// The instance ID.
   late final pulumi.Output<String> dbInstanceId;
-
   /// Backup period.
   late final pulumi.Output<String> preferredBackupPeriod;
-
   /// Backup time.
   late final pulumi.Output<String> preferredBackupTime;
 
@@ -337,11 +334,11 @@ class BackupPolicy extends pulumi.CustomResource {
     BackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
     dbInstanceId = registerOutput<String>('dbInstanceId');
     preferredBackupPeriod = registerOutput<String>('preferredBackupPeriod');
@@ -366,11 +363,11 @@ class BackupPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
     dbInstanceId = registerOutput<String>('dbInstanceId');
     preferredBackupPeriod = registerOutput<String>('preferredBackupPeriod');

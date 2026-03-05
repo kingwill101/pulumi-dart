@@ -10,20 +10,16 @@ import 'etl_configuration.dart';
 class EtlArgs {
   /// Detailed configuration of the data processing task.   See `configuration` below.
   final pulumi.Input<EtlConfiguration> configuration;
-
   /// Description of the data processing task.
   final pulumi.Input<String>? description;
-
   /// The display name of the data processing task.
   final pulumi.Input<String> displayName;
-
   /// The job name. Naming rules are as follows:
   /// - Job names must be unique within the same project.
   /// - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
   /// - Must start and end with a lowercase letter or digit.
   /// - Must be 2 to 64 characters in length.
   final pulumi.Input<String> jobName;
-
   /// Project name.
   final pulumi.Input<String> project;
 
@@ -43,11 +39,7 @@ class EtlArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration':
-          pulumi.Input.mapInputValue<EtlConfiguration, Map<String, dynamic>>(
-            configuration,
-            (value) => value.toMap(),
-          ),
+      'configuration': pulumi.Input.mapInputValue<EtlConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'description': ?description,
       'displayName': displayName,
       'jobName': jobName,
@@ -57,19 +49,12 @@ class EtlArgs {
 
   factory EtlArgs.fromMap(Map<String, dynamic> map) {
     return EtlArgs(
-      configuration: pulumi.Input.fromValue(
-        EtlConfiguration.fromMap(
-          (map['configuration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      configuration: pulumi.Input.fromValue(EtlConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       jobName: pulumi.Input.fromValue(map['jobName'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
+

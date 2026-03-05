@@ -12,14 +12,15 @@ class GetGradientaiAgentsAgentParentAgentChatbotIdentifier {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'chatbotId': chatbotId};
+    return <String, dynamic>{
+      'chatbotId': chatbotId,
+    };
   }
 
-  factory GetGradientaiAgentsAgentParentAgentChatbotIdentifier.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGradientaiAgentsAgentParentAgentChatbotIdentifier.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsAgentParentAgentChatbotIdentifier(
       chatbotId: pulumi.Input.fromValue(map['chatbotId'] as String),
     );
   }
 }
+

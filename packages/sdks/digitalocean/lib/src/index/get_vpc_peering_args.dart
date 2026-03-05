@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcPeeringArgs {
   /// The unique identifier of an existing VPC Peering.
   final pulumi.Input<String>? id;
-
   /// The name of an existing VPC Peering.
   final pulumi.Input<String>? name;
-
   /// The list of VPC IDs involved in the peering.
   final pulumi.Input<List<String>>? vpcIds;
 
@@ -20,29 +18,26 @@ class GetVpcPeeringArgs {
   /// [id] The unique identifier of an existing VPC Peering.
   /// [name] The name of an existing VPC Peering.
   /// [vpcIds] The list of VPC IDs involved in the peering.
-  GetVpcPeeringArgs({this.id, this.name, this.vpcIds});
+  GetVpcPeeringArgs({
+    this.id,
+    this.name,
+    this.vpcIds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id, 'name': ?name, 'vpcIds': ?vpcIds};
+    return <String, dynamic>{
+      'id': ?id,
+      'name': ?name,
+      'vpcIds': ?vpcIds,
+    };
   }
 
   factory GetVpcPeeringArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcPeeringArgs(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vpcIds: (() {
-        final guardedValue = map['vpcIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vpcIds: (() { final guardedValue = map['vpcIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -7,22 +7,17 @@ import 'rest_api_put_timeouts.dart';
 class RestApiPutState {
   /// PUT request body containing external API definitions. Currently, only OpenAPI definition JSON/YAML files are supported. The maximum size of the API definition file is 6MB.
   final pulumi.Input<String>? body;
-
   /// Whether to rollback the API update when a warning is encountered. The default value is `false`.
   final pulumi.Input<bool>? failOnWarnings;
-
   /// Map of customizations for importing the specification in the `body` argument. For example, to exclude DocumentationParts from an imported API, use `ignore = "documentation"`. Additional documentation, including other parameters such as `basepath`, can be found in the [API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-import-api.html).
   final pulumi.Input<Map<String, String>>? parameters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Identifier of the associated REST API.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? restApiId;
   final pulumi.Input<RestApiPutTimeouts>? timeouts;
-
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment. To force a redeployment without changing these keys/values, use the `-replace` option with `pulumi preview` or `pulumi up`.
   final pulumi.Input<Map<String, String>>? triggers;
 
@@ -51,60 +46,21 @@ class RestApiPutState {
       'parameters': ?parameters,
       'region': ?region,
       'restApiId': ?restApiId,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            RestApiPutTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<RestApiPutTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
       'triggers': ?triggers,
     };
   }
 
   factory RestApiPutState.fromMap(Map<String, dynamic> map) {
     return RestApiPutState(
-      body: (() {
-        final guardedValue = map['body'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      failOnWarnings: (() {
-        final guardedValue = map['failOnWarnings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      restApiId: (() {
-        final guardedValue = map['restApiId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RestApiPutTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      triggers: (() {
-        final guardedValue = map['triggers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      body: (() { final guardedValue = map['body']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      failOnWarnings: (() { final guardedValue = map['failOnWarnings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      restApiId: (() { final guardedValue = map['restApiId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RestApiPutTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      triggers: (() { final guardedValue = map['triggers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

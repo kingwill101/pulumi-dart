@@ -7,22 +7,16 @@ import 'kafka_shared_subscription_properties_response.dart';
 class MqttToKafkaRoutesResponse {
   /// The kafka acks to use.
   final pulumi.Input<String> kafkaAcks;
-
   /// The kafka topic to publish to.
   final pulumi.Input<String> kafkaTopic;
-
   /// The mqtt topic to pull from.
   final pulumi.Input<String> mqttTopic;
-
   /// The name of the route.
   final pulumi.Input<String> name;
-
   /// The qos to use for mqtt.
   final pulumi.Input<int>? qos;
-
   /// The properties for shared subscription.
-  final pulumi.Input<KafkaSharedSubscriptionPropertiesResponse>?
-  sharedSubscription;
+  final pulumi.Input<KafkaSharedSubscriptionPropertiesResponse>? sharedSubscription;
 
   /// Creates a new [MqttToKafkaRoutesResponse].
   /// [kafkaAcks] The kafka acks to use.
@@ -47,11 +41,7 @@ class MqttToKafkaRoutesResponse {
       'mqttTopic': mqttTopic,
       'name': name,
       'qos': ?qos,
-      'sharedSubscription':
-          ?pulumi.Input.mapOptionalInputValue<
-            KafkaSharedSubscriptionPropertiesResponse,
-            Map<String, dynamic>
-          >(sharedSubscription, (value) => value.toMap()),
+      'sharedSubscription': ?pulumi.Input.mapOptionalInputValue<KafkaSharedSubscriptionPropertiesResponse, Map<String, dynamic>>(sharedSubscription, (value) => value.toMap()),
     };
   }
 
@@ -61,20 +51,9 @@ class MqttToKafkaRoutesResponse {
       kafkaTopic: pulumi.Input.fromValue(map['kafkaTopic'] as String),
       mqttTopic: pulumi.Input.fromValue(map['mqttTopic'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      qos: (() {
-        final guardedValue = map['qos'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      sharedSubscription: (() {
-        final guardedValue = map['sharedSubscription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KafkaSharedSubscriptionPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      qos: (() { final guardedValue = map['qos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sharedSubscription: (() { final guardedValue = map['sharedSubscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KafkaSharedSubscriptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

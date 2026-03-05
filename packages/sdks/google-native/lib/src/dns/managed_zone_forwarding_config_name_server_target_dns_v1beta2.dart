@@ -5,14 +5,9 @@ import 'managed_zone_forwarding_config_name_server_target_forwarding_path_dns_v1
 
 class ManagedZoneForwardingConfigNameServerTargetDnsV1beta2 {
   /// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
-  final pulumi.Input<
-    ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2
-  >?
-  forwardingPath;
-
+  final pulumi.Input<ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2>? forwardingPath;
   /// IPv4 address of a target name server.
   final pulumi.Input<String>? ipv4Address;
-
   /// IPv6 address of a target name server. Does not accept both fields (ipv4 & ipv6) being populated. Public preview as of November 2022.
   final pulumi.Input<String>? ipv6Address;
   final pulumi.Input<String>? kind;
@@ -31,45 +26,20 @@ class ManagedZoneForwardingConfigNameServerTargetDnsV1beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'forwardingPath':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2,
-            String
-          >(forwardingPath, (value) => value.wireValue),
+      'forwardingPath': ?pulumi.Input.mapOptionalInputValue<ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2, String>(forwardingPath, (value) => value.wireValue),
       'ipv4Address': ?ipv4Address,
       'ipv6Address': ?ipv6Address,
       'kind': ?kind,
     };
   }
 
-  factory ManagedZoneForwardingConfigNameServerTargetDnsV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedZoneForwardingConfigNameServerTargetDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZoneForwardingConfigNameServerTargetDnsV1beta2(
-      forwardingPath: (() {
-        final guardedValue = map['forwardingPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      ipv4Address: (() {
-        final guardedValue = map['ipv4Address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipv6Address: (() {
-        final guardedValue = map['ipv6Address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      forwardingPath: (() { final guardedValue = map['forwardingPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedZoneForwardingConfigNameServerTargetForwardingPathDnsV1beta2.fromValue(guardedValue as String)); })(),
+      ipv4Address: (() { final guardedValue = map['ipv4Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipv6Address: (() { final guardedValue = map['ipv6Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

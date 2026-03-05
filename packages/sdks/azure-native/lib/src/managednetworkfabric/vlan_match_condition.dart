@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VlanMatchCondition {
   /// List of inner vlans that need to be matched.
   final pulumi.Input<List<String>>? innerVlans;
-
   /// List of vlan group names that need to be matched.
   final pulumi.Input<List<String>>? vlanGroupNames;
-
   /// List of vlans that need to be matched.
   final pulumi.Input<List<String>>? vlans;
 
@@ -17,7 +15,11 @@ class VlanMatchCondition {
   /// [innerVlans] List of inner vlans that need to be matched.
   /// [vlanGroupNames] List of vlan group names that need to be matched.
   /// [vlans] List of vlans that need to be matched.
-  VlanMatchCondition({this.innerVlans, this.vlanGroupNames, this.vlans});
+  VlanMatchCondition({
+    this.innerVlans,
+    this.vlanGroupNames,
+    this.vlans,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class VlanMatchCondition {
 
   factory VlanMatchCondition.fromMap(Map<String, dynamic> map) {
     return VlanMatchCondition(
-      innerVlans: (() {
-        final guardedValue = map['innerVlans'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      vlanGroupNames: (() {
-        final guardedValue = map['vlanGroupNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      vlans: (() {
-        final guardedValue = map['vlans'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      innerVlans: (() { final guardedValue = map['innerVlans']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      vlanGroupNames: (() { final guardedValue = map['vlanGroupNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      vlans: (() { final guardedValue = map['vlans']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

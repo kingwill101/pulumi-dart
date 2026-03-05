@@ -23,3 +23,4 @@ enum RepositoryFormat {
     throw ArgumentError('Unknown RepositoryFormat value: $value');
   }
 }
+

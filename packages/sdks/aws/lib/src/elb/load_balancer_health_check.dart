@@ -5,19 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerHealthCheck {
   /// The number of checks before the instance is declared healthy.
   final pulumi.Input<int> healthyThreshold;
-
   /// The interval between checks.
   final pulumi.Input<int> interval;
-
   /// The target of the check. Valid pattern is "${PROTOCOL}:${PORT}${PATH}", where PROTOCOL
   /// values are:
   /// * `HTTP`, `HTTPS` - PORT and PATH are required
   /// * `TCP`, `SSL` - PORT is required, PATH is not supported
   final pulumi.Input<String> target;
-
   /// The length of time before the check times out.
   final pulumi.Input<int> timeout;
-
   /// The number of checks before the instance is declared unhealthy.
   final pulumi.Input<int> unhealthyThreshold;
 
@@ -51,9 +47,8 @@ class LoadBalancerHealthCheck {
       interval: pulumi.Input.fromValue(map['interval'] as int),
       target: pulumi.Input.fromValue(map['target'] as String),
       timeout: pulumi.Input.fromValue(map['timeout'] as int),
-      unhealthyThreshold: pulumi.Input.fromValue(
-        map['unhealthyThreshold'] as int,
-      ),
+      unhealthyThreshold: pulumi.Input.fromValue(map['unhealthyThreshold'] as int),
     );
   }
 }
+

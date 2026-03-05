@@ -11,43 +11,23 @@ class EnvironmentStorageConfiguration {
   /// Creates a new [EnvironmentStorageConfiguration].
   /// [efs] Optional.
   /// [fsx] Optional.
-  EnvironmentStorageConfiguration({this.efs, this.fsx});
+  EnvironmentStorageConfiguration({
+    this.efs,
+    this.fsx,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'efs':
-          ?pulumi.Input.mapOptionalInputValue<
-            EnvironmentStorageConfigurationEfs,
-            Map<String, dynamic>
-          >(efs, (value) => value.toMap()),
-      'fsx':
-          ?pulumi.Input.mapOptionalInputValue<
-            EnvironmentStorageConfigurationFsx,
-            Map<String, dynamic>
-          >(fsx, (value) => value.toMap()),
+      'efs': ?pulumi.Input.mapOptionalInputValue<EnvironmentStorageConfigurationEfs, Map<String, dynamic>>(efs, (value) => value.toMap()),
+      'fsx': ?pulumi.Input.mapOptionalInputValue<EnvironmentStorageConfigurationFsx, Map<String, dynamic>>(fsx, (value) => value.toMap()),
     };
   }
 
   factory EnvironmentStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return EnvironmentStorageConfiguration(
-      efs: (() {
-        final guardedValue = map['efs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EnvironmentStorageConfigurationEfs.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      fsx: (() {
-        final guardedValue = map['fsx'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EnvironmentStorageConfigurationFsx.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      efs: (() { final guardedValue = map['efs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentStorageConfigurationEfs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      fsx: (() { final guardedValue = map['fsx']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentStorageConfigurationFsx.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

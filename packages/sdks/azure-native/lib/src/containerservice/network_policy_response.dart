@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkPolicyResponse {
   /// The egress policy for the managed namespace.
   final pulumi.Input<String>? egress;
-
   /// The ingress policy for the managed namespace.
   final pulumi.Input<String>? ingress;
 
   /// Creates a new [NetworkPolicyResponse].
   /// [egress] The egress policy for the managed namespace.
   /// [ingress] The ingress policy for the managed namespace.
-  NetworkPolicyResponse({this.egress, this.ingress});
+  NetworkPolicyResponse({
+    this.egress,
+    this.ingress,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'egress': ?egress, 'ingress': ?ingress};
+    return <String, dynamic>{
+      'egress': ?egress,
+      'ingress': ?ingress,
+    };
   }
 
   factory NetworkPolicyResponse.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyResponse(
-      egress: (() {
-        final guardedValue = map['egress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ingress: (() {
-        final guardedValue = map['ingress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      egress: (() { final guardedValue = map['egress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ingress: (() { final guardedValue = map['ingress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -150,19 +150,14 @@ import 'namespace_ip_filter_rule_args.dart';
 class NamespaceIpFilterRule extends pulumi.CustomResource {
   /// The IP Filter Action
   late final pulumi.Output<String?> action;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// IP Filter name
   late final pulumi.Output<String?> filterName;
-
   /// IP Mask
   late final pulumi.Output<String?> ipMask;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -175,11 +170,11 @@ class NamespaceIpFilterRule extends pulumi.CustomResource {
     NamespaceIpFilterRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:servicebus:NamespaceIpFilterRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:servicebus:NamespaceIpFilterRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String?>('action');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     filterName = registerOutput<String?>('filterName');

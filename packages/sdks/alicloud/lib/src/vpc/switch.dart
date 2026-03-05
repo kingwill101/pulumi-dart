@@ -629,43 +629,30 @@ import 'switch_state.dart';
 class Switch extends pulumi.CustomResource {
   /// Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
   late final pulumi.Output<String> availabilityZone;
-
   /// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
   late final pulumi.Output<String> cidrBlock;
-
   /// The creation time of the VSwitch.
   late final pulumi.Output<String> createTime;
-
   /// The description of VSwitch.
   late final pulumi.Output<String?> description;
-
   /// Whether the IPv6 function is enabled in the switch. Value:
   late final pulumi.Output<bool?> enableIpv6;
-
   /// The IPv6 CIDR block of the VSwitch.
   late final pulumi.Output<String> ipv6CidrBlock;
-
   /// The IPv6 CIDR block of the VSwitch.
   late final pulumi.Output<int> ipv6CidrBlockMask;
-
   /// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> isDefault;
-
   /// Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
   late final pulumi.Output<String> name;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// The tags of VSwitch.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `vpc_id` is required.
   late final pulumi.Output<String> vpcId;
-
   /// The name of the VSwitch.
   late final pulumi.Output<String> vswitchName;
-
   /// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
   late final pulumi.Output<String> zoneId;
 
@@ -673,13 +660,16 @@ class Switch extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Switch]. {@macro pulumi_vpc_switch_switch_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Switch(String name, {SwitchArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:vpc/switch:Switch',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Switch(
+    String name, {
+    SwitchArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:vpc/switch:Switch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     availabilityZone = registerOutput<String>('availabilityZone');
     cidrBlock = registerOutput<String>('cidrBlock');
     createTime = registerOutput<String>('createTime');
@@ -714,11 +704,11 @@ class Switch extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/switch:Switch',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/switch:Switch',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     availabilityZone = registerOutput<String>('availabilityZone');
     cidrBlock = registerOutput<String>('cidrBlock');
     createTime = registerOutput<String>('createTime');

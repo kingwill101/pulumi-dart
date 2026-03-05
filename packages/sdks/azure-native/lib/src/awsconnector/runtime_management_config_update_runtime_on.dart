@@ -13,8 +13,7 @@ enum RuntimeManagementConfigUpdateRuntimeOn {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RuntimeManagementConfigUpdateRuntimeOn value: $value',
-    );
+    throw ArgumentError('Unknown RuntimeManagementConfigUpdateRuntimeOn value: $value');
   }
 }
+

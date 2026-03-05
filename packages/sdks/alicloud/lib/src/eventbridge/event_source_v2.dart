@@ -308,45 +308,27 @@ import 'event_source_v2_state.dart';
 class EventSourceV2 extends pulumi.CustomResource {
   /// The detail describe of event source
   late final pulumi.Output<String?> description;
-
   /// Name of the bus associated with the event source
   late final pulumi.Output<String> eventBusName;
-
   /// The code name of event source
   late final pulumi.Output<String> eventSourceName;
   late final pulumi.Output<bool?> linkedExternalSource;
-
   /// The request parameter SourceHttpEventParameters. See `source_http_event_parameters` below.
-  late final pulumi.Output<EventSourceV2SourceHttpEventParameters?>
-  sourceHttpEventParameters;
-
+  late final pulumi.Output<EventSourceV2SourceHttpEventParameters?> sourceHttpEventParameters;
   /// Kafka event source parameter. See `source_kafka_parameters` below.
-  late final pulumi.Output<EventSourceV2SourceKafkaParameters?>
-  sourceKafkaParameters;
-
+  late final pulumi.Output<EventSourceV2SourceKafkaParameters?> sourceKafkaParameters;
   /// Lightweight message queue (formerly MNS) event source parameter. See `source_mns_parameters` below.
-  late final pulumi.Output<EventSourceV2SourceMnsParameters?>
-  sourceMnsParameters;
-
+  late final pulumi.Output<EventSourceV2SourceMnsParameters?> sourceMnsParameters;
   /// OSS event source parameters See `source_oss_event_parameters` below.
-  late final pulumi.Output<EventSourceV2SourceOssEventParameters?>
-  sourceOssEventParameters;
-
+  late final pulumi.Output<EventSourceV2SourceOssEventParameters?> sourceOssEventParameters;
   /// The request parameter SourceRabbitMQParameters. See `source_rabbit_mq_parameters` below.
-  late final pulumi.Output<EventSourceV2SourceRabbitMqParameters?>
-  sourceRabbitMqParameters;
-
+  late final pulumi.Output<EventSourceV2SourceRabbitMqParameters?> sourceRabbitMqParameters;
   /// The request parameter SourceRocketMQParameters. See `source_rocketmq_parameters` below.
-  late final pulumi.Output<EventSourceV2SourceRocketmqParameters?>
-  sourceRocketmqParameters;
-
+  late final pulumi.Output<EventSourceV2SourceRocketmqParameters?> sourceRocketmqParameters;
   /// Time event source parameter. See `source_scheduled_event_parameters` below.
-  late final pulumi.Output<EventSourceV2SourceScheduledEventParameters?>
-  sourceScheduledEventParameters;
-
+  late final pulumi.Output<EventSourceV2SourceScheduledEventParameters?> sourceScheduledEventParameters;
   /// The request parameter SourceSLSParameters. See `source_sls_parameters` below.
-  late final pulumi.Output<EventSourceV2SourceSlsParameters?>
-  sourceSlsParameters;
+  late final pulumi.Output<EventSourceV2SourceSlsParameters?> sourceSlsParameters;
 
   /// Creates a new [EventSourceV2].
   /// [name] The Pulumi resource name.
@@ -357,100 +339,23 @@ class EventSourceV2 extends pulumi.CustomResource {
     EventSourceV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eventbridge/eventSourceV2:EventSourceV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eventbridge/eventSourceV2:EventSourceV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     eventBusName = registerOutput<String>('eventBusName');
     eventSourceName = registerOutput<String>('eventSourceName');
     linkedExternalSource = registerOutput<bool?>('linkedExternalSource');
-    sourceHttpEventParameters =
-        registerOutput<EventSourceV2SourceHttpEventParameters?>(
-          'sourceHttpEventParameters',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EventSourceV2SourceHttpEventParameters.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    sourceKafkaParameters = registerOutput<EventSourceV2SourceKafkaParameters?>(
-      'sourceKafkaParameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventSourceV2SourceKafkaParameters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sourceMnsParameters = registerOutput<EventSourceV2SourceMnsParameters?>(
-      'sourceMnsParameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventSourceV2SourceMnsParameters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sourceOssEventParameters =
-        registerOutput<EventSourceV2SourceOssEventParameters?>(
-          'sourceOssEventParameters',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EventSourceV2SourceOssEventParameters.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    sourceRabbitMqParameters =
-        registerOutput<EventSourceV2SourceRabbitMqParameters?>(
-          'sourceRabbitMqParameters',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EventSourceV2SourceRabbitMqParameters.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    sourceRocketmqParameters =
-        registerOutput<EventSourceV2SourceRocketmqParameters?>(
-          'sourceRocketmqParameters',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EventSourceV2SourceRocketmqParameters.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    sourceScheduledEventParameters =
-        registerOutput<EventSourceV2SourceScheduledEventParameters?>(
-          'sourceScheduledEventParameters',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EventSourceV2SourceScheduledEventParameters.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    sourceSlsParameters = registerOutput<EventSourceV2SourceSlsParameters?>(
-      'sourceSlsParameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventSourceV2SourceSlsParameters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sourceHttpEventParameters = registerOutput<EventSourceV2SourceHttpEventParameters?>('sourceHttpEventParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceHttpEventParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceKafkaParameters = registerOutput<EventSourceV2SourceKafkaParameters?>('sourceKafkaParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceKafkaParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceMnsParameters = registerOutput<EventSourceV2SourceMnsParameters?>('sourceMnsParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceMnsParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceOssEventParameters = registerOutput<EventSourceV2SourceOssEventParameters?>('sourceOssEventParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceOssEventParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceRabbitMqParameters = registerOutput<EventSourceV2SourceRabbitMqParameters?>('sourceRabbitMqParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceRabbitMqParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceRocketmqParameters = registerOutput<EventSourceV2SourceRocketmqParameters?>('sourceRocketmqParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceRocketmqParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceScheduledEventParameters = registerOutput<EventSourceV2SourceScheduledEventParameters?>('sourceScheduledEventParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceScheduledEventParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceSlsParameters = registerOutput<EventSourceV2SourceSlsParameters?>('sourceSlsParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceSlsParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [EventSourceV2] resource's state with the given [name] and [id].
@@ -471,99 +376,22 @@ class EventSourceV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eventbridge/eventSourceV2:EventSourceV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eventbridge/eventSourceV2:EventSourceV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     eventBusName = registerOutput<String>('eventBusName');
     eventSourceName = registerOutput<String>('eventSourceName');
     linkedExternalSource = registerOutput<bool?>('linkedExternalSource');
-    sourceHttpEventParameters =
-        registerOutput<EventSourceV2SourceHttpEventParameters?>(
-          'sourceHttpEventParameters',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EventSourceV2SourceHttpEventParameters.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    sourceKafkaParameters = registerOutput<EventSourceV2SourceKafkaParameters?>(
-      'sourceKafkaParameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventSourceV2SourceKafkaParameters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sourceMnsParameters = registerOutput<EventSourceV2SourceMnsParameters?>(
-      'sourceMnsParameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventSourceV2SourceMnsParameters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sourceOssEventParameters =
-        registerOutput<EventSourceV2SourceOssEventParameters?>(
-          'sourceOssEventParameters',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EventSourceV2SourceOssEventParameters.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    sourceRabbitMqParameters =
-        registerOutput<EventSourceV2SourceRabbitMqParameters?>(
-          'sourceRabbitMqParameters',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EventSourceV2SourceRabbitMqParameters.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    sourceRocketmqParameters =
-        registerOutput<EventSourceV2SourceRocketmqParameters?>(
-          'sourceRocketmqParameters',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EventSourceV2SourceRocketmqParameters.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    sourceScheduledEventParameters =
-        registerOutput<EventSourceV2SourceScheduledEventParameters?>(
-          'sourceScheduledEventParameters',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EventSourceV2SourceScheduledEventParameters.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    sourceSlsParameters = registerOutput<EventSourceV2SourceSlsParameters?>(
-      'sourceSlsParameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventSourceV2SourceSlsParameters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sourceHttpEventParameters = registerOutput<EventSourceV2SourceHttpEventParameters?>('sourceHttpEventParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceHttpEventParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceKafkaParameters = registerOutput<EventSourceV2SourceKafkaParameters?>('sourceKafkaParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceKafkaParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceMnsParameters = registerOutput<EventSourceV2SourceMnsParameters?>('sourceMnsParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceMnsParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceOssEventParameters = registerOutput<EventSourceV2SourceOssEventParameters?>('sourceOssEventParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceOssEventParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceRabbitMqParameters = registerOutput<EventSourceV2SourceRabbitMqParameters?>('sourceRabbitMqParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceRabbitMqParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceRocketmqParameters = registerOutput<EventSourceV2SourceRocketmqParameters?>('sourceRocketmqParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceRocketmqParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceScheduledEventParameters = registerOutput<EventSourceV2SourceScheduledEventParameters?>('sourceScheduledEventParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceScheduledEventParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceSlsParameters = registerOutput<EventSourceV2SourceSlsParameters?>('sourceSlsParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceV2SourceSlsParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -21,3 +21,4 @@ enum AddressPurpose {
     throw ArgumentError('Unknown AddressPurpose value: $value');
   }
 }
+

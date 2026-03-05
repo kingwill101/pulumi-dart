@@ -9,17 +9,20 @@ class GoogleCloudDialogflowV2InputDatasetResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2InputDatasetResponse].
   /// [dataset] ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
-  GoogleCloudDialogflowV2InputDatasetResponse({required this.dataset});
+  GoogleCloudDialogflowV2InputDatasetResponse({
+    required this.dataset,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dataset': dataset};
+    return <String, dynamic>{
+      'dataset': dataset,
+    };
   }
 
-  factory GoogleCloudDialogflowV2InputDatasetResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2InputDatasetResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2InputDatasetResponse(
       dataset: pulumi.Input.fromValue(map['dataset'] as String),
     );
   }
 }
+

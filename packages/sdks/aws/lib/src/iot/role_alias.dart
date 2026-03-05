@@ -44,22 +44,16 @@ import 'role_alias_state.dart';
 class RoleAlias extends pulumi.CustomResource {
   /// The name of the role alias.
   late final pulumi.Output<String> alias;
-
   /// The ARN assigned by AWS to this role alias.
   late final pulumi.Output<String> arn;
-
   /// The duration of the credential, in seconds. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 900 seconds (15 minutes) to 43200 seconds (12 hours).
   late final pulumi.Output<int?> credentialDuration;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The identity of the role to which the alias refers.
   late final pulumi.Output<String> roleArn;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -72,11 +66,11 @@ class RoleAlias extends pulumi.CustomResource {
     RoleAliasArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iot/roleAlias:RoleAlias',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iot/roleAlias:RoleAlias',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');
     credentialDuration = registerOutput<int?>('credentialDuration');
@@ -104,11 +98,11 @@ class RoleAlias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iot/roleAlias:RoleAlias',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iot/roleAlias:RoleAlias',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');
     credentialDuration = registerOutput<int?>('credentialDuration');

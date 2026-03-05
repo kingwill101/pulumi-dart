@@ -239,61 +239,42 @@ import 'infrastructure_configuration_state.dart';
 class InfrastructureConfiguration extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the configuration.
   late final pulumi.Output<String> arn;
-
   /// Date when the configuration was created.
   late final pulumi.Output<String> dateCreated;
-
   /// Date when the configuration was updated.
   late final pulumi.Output<String> dateUpdated;
-
   /// Description for the configuration.
   late final pulumi.Output<String?> description;
-
   /// Configuration block with instance metadata options for the HTTP requests that pipeline builds use to launch EC2 build and test instances. Detailed below.
-  late final pulumi.Output<InfrastructureConfigurationInstanceMetadataOptions?>
-  instanceMetadataOptions;
-
+  late final pulumi.Output<InfrastructureConfigurationInstanceMetadataOptions?> instanceMetadataOptions;
   /// Name of IAM Instance Profile.
   late final pulumi.Output<String> instanceProfileName;
-
   /// Set of EC2 Instance Types.
   late final pulumi.Output<List<String>?> instanceTypes;
-
   /// Name of EC2 Key Pair.
   late final pulumi.Output<String?> keyPair;
-
   /// Configuration block with logging settings. Detailed below.
   late final pulumi.Output<InfrastructureConfigurationLogging?> logging;
-
   /// Name for the configuration.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Configuration block with placement settings that define where the instances that are launched from your image will run. Detailed below.
   late final pulumi.Output<InfrastructureConfigurationPlacement?> placement;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags to assign to infrastructure created by the configuration.
   late final pulumi.Output<Map<String, String>?> resourceTags;
-
   /// Set of EC2 Security Group identifiers.
   late final pulumi.Output<List<String>?> securityGroupIds;
-
   /// Amazon Resource Name (ARN) of SNS Topic.
   late final pulumi.Output<String?> snsTopicArn;
-
   /// EC2 Subnet identifier. Also requires `security_group_ids` argument.
   late final pulumi.Output<String?> subnetId;
-
   /// Key-value map of resource tags to assign to the configuration. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Enable if the instance should be terminated when the pipeline fails. Defaults to `false`.
   late final pulumi.Output<bool?> terminateInstanceOnFailure;
 
@@ -306,50 +287,22 @@ class InfrastructureConfiguration extends pulumi.CustomResource {
     InfrastructureConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:imagebuilder/infrastructureConfiguration:InfrastructureConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:imagebuilder/infrastructureConfiguration:InfrastructureConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     dateCreated = registerOutput<String>('dateCreated');
     dateUpdated = registerOutput<String>('dateUpdated');
     description = registerOutput<String?>('description');
-    instanceMetadataOptions =
-        registerOutput<InfrastructureConfigurationInstanceMetadataOptions?>(
-          'instanceMetadataOptions',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return InfrastructureConfigurationInstanceMetadataOptions.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    instanceMetadataOptions = registerOutput<InfrastructureConfigurationInstanceMetadataOptions?>('instanceMetadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationInstanceMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceProfileName = registerOutput<String>('instanceProfileName');
     instanceTypes = registerOutput<List<String>?>('instanceTypes');
     keyPair = registerOutput<String?>('keyPair');
-    logging = registerOutput<InfrastructureConfigurationLogging?>(
-      'logging',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InfrastructureConfigurationLogging.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logging = registerOutput<InfrastructureConfigurationLogging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    placement = registerOutput<InfrastructureConfigurationPlacement?>(
-      'placement',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InfrastructureConfigurationPlacement.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    placement = registerOutput<InfrastructureConfigurationPlacement?>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationPlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     resourceTags = registerOutput<Map<String, String>?>('resourceTags');
     securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
@@ -357,9 +310,7 @@ class InfrastructureConfiguration extends pulumi.CustomResource {
     subnetId = registerOutput<String?>('subnetId');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    terminateInstanceOnFailure = registerOutput<bool?>(
-      'terminateInstanceOnFailure',
-    );
+    terminateInstanceOnFailure = registerOutput<bool?>('terminateInstanceOnFailure');
   }
 
   /// Gets an existing [InfrastructureConfiguration] resource's state with the given [name] and [id].
@@ -380,50 +331,22 @@ class InfrastructureConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:imagebuilder/infrastructureConfiguration:InfrastructureConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:imagebuilder/infrastructureConfiguration:InfrastructureConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     dateCreated = registerOutput<String>('dateCreated');
     dateUpdated = registerOutput<String>('dateUpdated');
     description = registerOutput<String?>('description');
-    instanceMetadataOptions =
-        registerOutput<InfrastructureConfigurationInstanceMetadataOptions?>(
-          'instanceMetadataOptions',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return InfrastructureConfigurationInstanceMetadataOptions.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    instanceMetadataOptions = registerOutput<InfrastructureConfigurationInstanceMetadataOptions?>('instanceMetadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationInstanceMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceProfileName = registerOutput<String>('instanceProfileName');
     instanceTypes = registerOutput<List<String>?>('instanceTypes');
     keyPair = registerOutput<String?>('keyPair');
-    logging = registerOutput<InfrastructureConfigurationLogging?>(
-      'logging',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InfrastructureConfigurationLogging.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logging = registerOutput<InfrastructureConfigurationLogging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    placement = registerOutput<InfrastructureConfigurationPlacement?>(
-      'placement',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InfrastructureConfigurationPlacement.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    placement = registerOutput<InfrastructureConfigurationPlacement?>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationPlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     resourceTags = registerOutput<Map<String, String>?>('resourceTags');
     securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
@@ -431,8 +354,6 @@ class InfrastructureConfiguration extends pulumi.CustomResource {
     subnetId = registerOutput<String?>('subnetId');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    terminateInstanceOnFailure = registerOutput<bool?>(
-      'terminateInstanceOnFailure',
-    );
+    terminateInstanceOnFailure = registerOutput<bool?>('terminateInstanceOnFailure');
   }
 }

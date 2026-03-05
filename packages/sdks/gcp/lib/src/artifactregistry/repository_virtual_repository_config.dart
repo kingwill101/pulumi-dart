@@ -7,46 +7,24 @@ class RepositoryVirtualRepositoryConfig {
   /// Policies that configure the upstream artifacts distributed by the Virtual
   /// Repository. Upstream policies cannot be set on a standard repository.
   /// Structure is documented below.
-  final pulumi.Input<List<RepositoryVirtualRepositoryConfigUpstreamPolicy>>?
-  upstreamPolicies;
+  final pulumi.Input<List<RepositoryVirtualRepositoryConfigUpstreamPolicy>>? upstreamPolicies;
 
   /// Creates a new [RepositoryVirtualRepositoryConfig].
   /// [upstreamPolicies] Policies that configure the upstream artifacts distributed by the Virtual
-  RepositoryVirtualRepositoryConfig({this.upstreamPolicies});
+  RepositoryVirtualRepositoryConfig({
+    this.upstreamPolicies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'upstreamPolicies':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<RepositoryVirtualRepositoryConfigUpstreamPolicy>,
-            List<Map<String, dynamic>>
-          >(
-            upstreamPolicies,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RepositoryVirtualRepositoryConfigUpstreamPolicy,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'upstreamPolicies': ?pulumi.Input.mapOptionalInputValue<List<RepositoryVirtualRepositoryConfigUpstreamPolicy>, List<Map<String, dynamic>>>(upstreamPolicies, (value) => pulumi.Input.encodeList<RepositoryVirtualRepositoryConfigUpstreamPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RepositoryVirtualRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryVirtualRepositoryConfig(
-      upstreamPolicies: (() {
-        final guardedValue = map['upstreamPolicies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            RepositoryVirtualRepositoryConfigUpstreamPolicy
-          >(
-            guardedValue,
-            (value) => RepositoryVirtualRepositoryConfigUpstreamPolicy.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      upstreamPolicies: (() { final guardedValue = map['upstreamPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RepositoryVirtualRepositoryConfigUpstreamPolicy>(guardedValue, (value) => RepositoryVirtualRepositoryConfigUpstreamPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

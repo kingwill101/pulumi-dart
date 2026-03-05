@@ -8,10 +8,14 @@ class EngineModelDefaultVersion {
 
   /// Creates a new [EngineModelDefaultVersion].
   /// [name] The name specified for the version when it was created.
-  EngineModelDefaultVersion({required this.name});
+  EngineModelDefaultVersion({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory EngineModelDefaultVersion.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class EngineModelDefaultVersion {
     );
   }
 }
+

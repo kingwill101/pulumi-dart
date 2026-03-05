@@ -7,10 +7,8 @@ class Cron {
   /// [Required] Specifies cron expression of schedule.
   /// The expression should follow NCronTab format.
   final pulumi.Input<String>? expression;
-
   /// The start time in yyyy-MM-ddTHH:mm:ss format.
   final pulumi.Input<String>? startTime;
-
   /// Specifies time zone in which the schedule runs.
   /// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
   final pulumi.Input<String>? timeZone;
@@ -19,7 +17,11 @@ class Cron {
   /// [expression] [Required] Specifies cron expression of schedule.
   /// [startTime] The start time in yyyy-MM-ddTHH:mm:ss format.
   /// [timeZone] Specifies time zone in which the schedule runs.
-  Cron({this.expression, this.startTime, this.timeZone});
+  Cron({
+    this.expression,
+    this.startTime,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,21 +33,10 @@ class Cron {
 
   factory Cron.fromMap(Map<String, dynamic> map) {
     return Cron(
-      expression: (() {
-        final guardedValue = map['expression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expression: (() { final guardedValue = map['expression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

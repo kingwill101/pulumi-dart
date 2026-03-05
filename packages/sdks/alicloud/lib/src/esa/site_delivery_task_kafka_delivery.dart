@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SiteDeliveryTaskKafkaDelivery {
   final pulumi.Input<String>? balancer;
   final pulumi.Input<List<String>>? brokers;
-
   /// The compression method. By default, data is not compressed.
   final pulumi.Input<String>? compress;
   final pulumi.Input<String>? machanismType;
@@ -49,46 +48,15 @@ class SiteDeliveryTaskKafkaDelivery {
 
   factory SiteDeliveryTaskKafkaDelivery.fromMap(Map<String, dynamic> map) {
     return SiteDeliveryTaskKafkaDelivery(
-      balancer: (() {
-        final guardedValue = map['balancer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      brokers: (() {
-        final guardedValue = map['brokers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      compress: (() {
-        final guardedValue = map['compress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      machanismType: (() {
-        final guardedValue = map['machanismType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      topic: (() {
-        final guardedValue = map['topic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAuth: (() {
-        final guardedValue = map['userAuth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      balancer: (() { final guardedValue = map['balancer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      brokers: (() { final guardedValue = map['brokers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      compress: (() { final guardedValue = map['compress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      machanismType: (() { final guardedValue = map['machanismType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      topic: (() { final guardedValue = map['topic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAuth: (() { final guardedValue = map['userAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

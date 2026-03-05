@@ -53,30 +53,19 @@ class GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute {
     };
   }
 
-  factory GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute(
       destinationCidr: pulumi.Input.fromValue(map['destinationCidr'] as String),
-      destinationPrefixListId: pulumi.Input.fromValue(
-        map['destinationPrefixListId'] as String,
-      ),
-      egressOnlyInternetGatewayId: pulumi.Input.fromValue(
-        map['egressOnlyInternetGatewayId'] as String,
-      ),
+      destinationPrefixListId: pulumi.Input.fromValue(map['destinationPrefixListId'] as String),
+      egressOnlyInternetGatewayId: pulumi.Input.fromValue(map['egressOnlyInternetGatewayId'] as String),
       gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       natGatewayId: pulumi.Input.fromValue(map['natGatewayId'] as String),
-      networkInterfaceId: pulumi.Input.fromValue(
-        map['networkInterfaceId'] as String,
-      ),
+      networkInterfaceId: pulumi.Input.fromValue(map['networkInterfaceId'] as String),
       origin: pulumi.Input.fromValue(map['origin'] as String),
-      transitGatewayId: pulumi.Input.fromValue(
-        map['transitGatewayId'] as String,
-      ),
-      vpcPeeringConnectionId: pulumi.Input.fromValue(
-        map['vpcPeeringConnectionId'] as String,
-      ),
+      transitGatewayId: pulumi.Input.fromValue(map['transitGatewayId'] as String),
+      vpcPeeringConnectionId: pulumi.Input.fromValue(map['vpcPeeringConnectionId'] as String),
     );
   }
 }
+

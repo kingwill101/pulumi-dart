@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeResourceResponse {
   /// Memory in GB
   final pulumi.Input<double> memoryInGB;
-
   /// Processor count
   final pulumi.Input<int> processorCount;
 
@@ -32,3 +31,4 @@ class ComputeResourceResponse {
     );
   }
 }
+

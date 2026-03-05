@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExportTimePeriodResponse {
   /// The start date for export data.
   final pulumi.Input<String> from;
-
   /// The end date for export data.
   final pulumi.Input<String> to;
 
   /// Creates a new [ExportTimePeriodResponse].
   /// [from] The start date for export data.
   /// [to] The end date for export data.
-  ExportTimePeriodResponse({required this.from, required this.to});
+  ExportTimePeriodResponse({
+    required this.from,
+    required this.to,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'from': from, 'to': to};
+    return <String, dynamic>{
+      'from': from,
+      'to': to,
+    };
   }
 
   factory ExportTimePeriodResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ExportTimePeriodResponse {
     );
   }
 }
+

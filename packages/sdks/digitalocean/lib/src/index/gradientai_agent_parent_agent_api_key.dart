@@ -8,19 +8,20 @@ class GradientaiAgentParentAgentApiKey {
 
   /// Creates a new [GradientaiAgentParentAgentApiKey].
   /// [apiKey] API Key value
-  GradientaiAgentParentAgentApiKey({this.apiKey});
+  GradientaiAgentParentAgentApiKey({
+    this.apiKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'apiKey': ?apiKey};
+    return <String, dynamic>{
+      'apiKey': ?apiKey,
+    };
   }
 
   factory GradientaiAgentParentAgentApiKey.fromMap(Map<String, dynamic> map) {
     return GradientaiAgentParentAgentApiKey(
-      apiKey: (() {
-        final guardedValue = map['apiKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiKey: (() { final guardedValue = map['apiKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

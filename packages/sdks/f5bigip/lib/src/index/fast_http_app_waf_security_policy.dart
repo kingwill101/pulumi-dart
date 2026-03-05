@@ -8,10 +8,14 @@ class FastHttpAppWafSecurityPolicy {
 
   /// Creates a new [FastHttpAppWafSecurityPolicy].
   /// [enable] Setting `true` will enable FAST to create WAF Security Policy.
-  FastHttpAppWafSecurityPolicy({required this.enable});
+  FastHttpAppWafSecurityPolicy({
+    required this.enable,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enable': enable};
+    return <String, dynamic>{
+      'enable': enable,
+    };
   }
 
   factory FastHttpAppWafSecurityPolicy.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class FastHttpAppWafSecurityPolicy {
     );
   }
 }
+

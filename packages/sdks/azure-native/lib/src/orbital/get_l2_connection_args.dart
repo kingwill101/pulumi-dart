@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetL2ConnectionArgs {
   /// L2 Connection name.
   final pulumi.Input<String> l2ConnectionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetL2ConnectionArgs {
 
   factory GetL2ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetL2ConnectionArgs(
-      l2ConnectionName: pulumi.Input.fromValue(
-        map['l2ConnectionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      l2ConnectionName: pulumi.Input.fromValue(map['l2ConnectionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -9,19 +9,20 @@ class DefaultActionEnumValue {
 
   /// Creates a new [DefaultActionEnumValue].
   /// [value] Property value
-  DefaultActionEnumValue({this.value});
+  DefaultActionEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory DefaultActionEnumValue.fromMap(Map<String, dynamic> map) {
     return DefaultActionEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

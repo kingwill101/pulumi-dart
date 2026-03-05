@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceArgs {
   /// Account name.
   final pulumi.Input<String> accountName;
-
   /// Instance name.
   final pulumi.Input<String> instanceName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetInstanceArgs {
     return GetInstanceArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

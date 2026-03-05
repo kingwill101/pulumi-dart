@@ -2001,38 +2001,28 @@ import 'cx_webhook_state.dart';
 class CxWebhook extends pulumi.CustomResource {
   /// Indicates whether the webhook is disabled.
   late final pulumi.Output<bool?> disabled;
-
   /// The human-readable name of the webhook, unique within the agent.
   late final pulumi.Output<String> displayName;
-
   /// Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
   late final pulumi.Output<bool?> enableSpellCorrection;
-
   /// Deprecated. Determines whether this agent should log conversation queries.
   late final pulumi.Output<bool?> enableStackdriverLogging;
-
   /// Represents configuration for a generic web service.
   /// Structure is documented below.
   late final pulumi.Output<CxWebhookGenericWebService?> genericWebService;
-
   /// The unique identifier of the webhook.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
   late final pulumi.Output<String> name;
-
   /// The agent to create a webhook for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   late final pulumi.Output<String?> parent;
-
   /// Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
   late final pulumi.Output<String?> securitySettings;
-
   /// Configuration for a Service Directory service.
   /// Structure is documented below.
   late final pulumi.Output<CxWebhookServiceDirectory?> serviceDirectory;
-
   /// Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
   late final pulumi.Output<String> startFlow;
-
   /// Webhook execution timeout.
   late final pulumi.Output<String?> timeout;
 
@@ -2045,40 +2035,20 @@ class CxWebhook extends pulumi.CustomResource {
     CxWebhookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxWebhook:CxWebhook',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:diagflow/cxWebhook:CxWebhook',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String>('displayName');
     enableSpellCorrection = registerOutput<bool?>('enableSpellCorrection');
-    enableStackdriverLogging = registerOutput<bool?>(
-      'enableStackdriverLogging',
-    );
-    genericWebService = registerOutput<CxWebhookGenericWebService?>(
-      'genericWebService',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxWebhookGenericWebService.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    enableStackdriverLogging = registerOutput<bool?>('enableStackdriverLogging');
+    genericWebService = registerOutput<CxWebhookGenericWebService?>('genericWebService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxWebhookGenericWebService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
     securitySettings = registerOutput<String?>('securitySettings');
-    serviceDirectory = registerOutput<CxWebhookServiceDirectory?>(
-      'serviceDirectory',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxWebhookServiceDirectory.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serviceDirectory = registerOutput<CxWebhookServiceDirectory?>('serviceDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxWebhookServiceDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startFlow = registerOutput<String>('startFlow');
     timeout = registerOutput<String?>('timeout');
   }
@@ -2101,40 +2071,20 @@ class CxWebhook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxWebhook:CxWebhook',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:diagflow/cxWebhook:CxWebhook',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String>('displayName');
     enableSpellCorrection = registerOutput<bool?>('enableSpellCorrection');
-    enableStackdriverLogging = registerOutput<bool?>(
-      'enableStackdriverLogging',
-    );
-    genericWebService = registerOutput<CxWebhookGenericWebService?>(
-      'genericWebService',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxWebhookGenericWebService.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    enableStackdriverLogging = registerOutput<bool?>('enableStackdriverLogging');
+    genericWebService = registerOutput<CxWebhookGenericWebService?>('genericWebService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxWebhookGenericWebService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
     securitySettings = registerOutput<String?>('securitySettings');
-    serviceDirectory = registerOutput<CxWebhookServiceDirectory?>(
-      'serviceDirectory',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxWebhookServiceDirectory.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serviceDirectory = registerOutput<CxWebhookServiceDirectory?>('serviceDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxWebhookServiceDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startFlow = registerOutput<String>('startFlow');
     timeout = registerOutput<String?>('timeout');
   }

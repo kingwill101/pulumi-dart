@@ -10,28 +10,20 @@ import 'scheduled_action_target_action.dart';
 class ScheduledActionArgs {
   /// The description of the scheduled action.
   final pulumi.Input<String>? description;
-
   /// Whether to enable the scheduled action. Default is `true` .
   final pulumi.Input<bool>? enable;
-
   /// The end time in UTC when the schedule is active, in UTC RFC3339 format(for example, YYYY-MM-DDTHH:MM:SSZ).
   final pulumi.Input<String>? endTime;
-
   /// The IAM role to assume to run the scheduled action.
   final pulumi.Input<String> iamRole;
-
   /// The scheduled action name.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The schedule of action. The schedule is defined format of "at expression" or "cron expression", for example `at(2016-03-04T17:27:00)` or `cron(0 10 ? * MON *)`. See [Scheduled Action](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ScheduledAction.html) for more information.
   final pulumi.Input<String> schedule;
-
   /// The start time in UTC when the schedule is active, in UTC RFC3339 format(for example, YYYY-MM-DDTHH:MM:SSZ).
   final pulumi.Input<String>? startTime;
-
   /// Target action. Documented below.
   final pulumi.Input<ScheduledActionTargetAction> targetAction;
 
@@ -67,53 +59,22 @@ class ScheduledActionArgs {
       'region': ?region,
       'schedule': schedule,
       'startTime': ?startTime,
-      'targetAction':
-          pulumi.Input.mapInputValue<
-            ScheduledActionTargetAction,
-            Map<String, dynamic>
-          >(targetAction, (value) => value.toMap()),
+      'targetAction': pulumi.Input.mapInputValue<ScheduledActionTargetAction, Map<String, dynamic>>(targetAction, (value) => value.toMap()),
     };
   }
 
   factory ScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledActionArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      endTime: (() {
-        final guardedValue = map['endTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       iamRole: pulumi.Input.fromValue(map['iamRole'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schedule: pulumi.Input.fromValue(map['schedule'] as String),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetAction: pulumi.Input.fromValue(
-        ScheduledActionTargetAction.fromMap(
-          (map['targetAction']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetAction: pulumi.Input.fromValue(ScheduledActionTargetAction.fromMap((map['targetAction']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

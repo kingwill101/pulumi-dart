@@ -15,3 +15,4 @@ enum AadAuthFailureMode {
     throw ArgumentError('Unknown AadAuthFailureMode value: $value');
   }
 }
+

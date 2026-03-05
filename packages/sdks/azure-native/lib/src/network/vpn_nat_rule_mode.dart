@@ -15,3 +15,4 @@ enum VpnNatRuleMode {
     throw ArgumentError('Unknown VpnNatRuleMode value: $value');
   }
 }
+

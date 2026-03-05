@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings {
   /// Maximum bitrate.
   final pulumi.Input<int>? maximumBitrate;
-
   /// Minimum bitrate.
   final pulumi.Input<int>? minimumBitrate;
-
   /// Priority value.
   final pulumi.Input<int>? priority;
 
@@ -30,25 +28,12 @@ class MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings {
     };
   }
 
-  factory MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings(
-      maximumBitrate: (() {
-        final guardedValue = map['maximumBitrate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minimumBitrate: (() {
-        final guardedValue = map['minimumBitrate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maximumBitrate: (() { final guardedValue = map['maximumBitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minimumBitrate: (() { final guardedValue = map['minimumBitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

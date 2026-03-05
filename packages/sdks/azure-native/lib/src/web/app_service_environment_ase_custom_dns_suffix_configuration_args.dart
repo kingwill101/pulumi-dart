@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs {
   /// The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.
   final pulumi.Input<String>? certificateUrl;
-
   /// The default custom domain suffix to use for all sites deployed on the ASE.
   final pulumi.Input<String>? dnsSuffix;
-
   /// The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
   final pulumi.Input<String>? keyVaultReferenceIdentity;
-
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-
   /// Name of the App Service Environment.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -52,34 +47,15 @@ class AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs {
     };
   }
 
-  factory AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs(
-      certificateUrl: (() {
-        final guardedValue = map['certificateUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dnsSuffix: (() {
-        final guardedValue = map['dnsSuffix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultReferenceIdentity: (() {
-        final guardedValue = map['keyVaultReferenceIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certificateUrl: (() { final guardedValue = map['certificateUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dnsSuffix: (() { final guardedValue = map['dnsSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultReferenceIdentity: (() { final guardedValue = map['keyVaultReferenceIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsFunctionAppConnectionString {
   /// The name which should be used for this Connection.
   final pulumi.Input<String> name;
-
   /// Type of database. Possible values include: `APIHub`, `Custom`, `DocDb`, `EventHub`, `MySQL`, `NotificationHub`, `PostgreSQL`, `RedisCache`, `ServiceBus`, `SQLAzure`, and `SQLServer`.
   final pulumi.Input<String> type;
-
   /// The connection string value.
   final pulumi.Input<String> value;
 
@@ -23,7 +21,11 @@ class WindowsFunctionAppConnectionString {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+      'value': value,
+    };
   }
 
   factory WindowsFunctionAppConnectionString.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class WindowsFunctionAppConnectionString {
     );
   }
 }
+

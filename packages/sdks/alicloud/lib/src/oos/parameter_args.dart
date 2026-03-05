@@ -13,22 +13,16 @@ class ParameterArgs {
   /// * `MinLength`: The minimum length of the common parameter.
   /// * `MaxLength`: The maximum length of the common parameter.
   final pulumi.Input<String>? constraints;
-
   /// The description of the common parameter. The description must be `1` to `200` characters in length.
   final pulumi.Input<String>? description;
-
   /// The name of the common parameter. The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
   final pulumi.Input<String> parameterName;
-
   /// The ID of the Resource Group.
   final pulumi.Input<String>? resourceGroupId;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The data type of the common parameter. Valid values: `String` and `StringList`.
   final pulumi.Input<String> type;
-
   /// The value of the common parameter. The value must be `1` to `4096` characters in length.
   final pulumi.Input<String> value;
 
@@ -64,31 +58,14 @@ class ParameterArgs {
 
   factory ParameterArgs.fromMap(Map<String, dynamic> map) {
     return ParameterArgs(
-      constraints: (() {
-        final guardedValue = map['constraints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      constraints: (() { final guardedValue = map['constraints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameterName: pulumi.Input.fromValue(map['parameterName'] as String),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

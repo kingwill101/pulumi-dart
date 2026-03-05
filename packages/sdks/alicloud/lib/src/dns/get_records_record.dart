@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRecordsRecord {
   /// The domain name associated to the records.
   final pulumi.Input<String> domainName;
-
   /// Host record of the domain.
   final pulumi.Input<String> hostRecord;
-
   /// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
   final pulumi.Input<String> line;
-
   /// Indicates whether the record is locked.
   final pulumi.Input<bool> locked;
-
   /// Priority of the `MX` record.
   final pulumi.Input<int> priority;
-
   /// ID of the record.
   final pulumi.Input<String> recordId;
-
   /// Record status. Valid items are `ENABLE` and `DISABLE`.
   final pulumi.Input<String> status;
-
   /// TTL of the record.
   final pulumi.Input<double> ttl;
-
   /// Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
   final pulumi.Input<String> type;
-
   /// Host record value of the domain.
   final pulumi.Input<String> value;
 
@@ -87,3 +78,4 @@ class GetRecordsRecord {
     );
   }
 }
+

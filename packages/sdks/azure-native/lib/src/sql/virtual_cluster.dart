@@ -148,25 +148,18 @@ import 'virtual_cluster_args.dart';
 class VirtualCluster extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// List of resources in this virtual cluster.
   late final pulumi.Output<List<String>> childResources_;
-
   /// Resource location.
   late final pulumi.Output<String> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Subnet resource ID for the virtual cluster.
   late final pulumi.Output<String> subnetId;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// Virtual cluster version.
   late final pulumi.Output<String?> version;
 
@@ -179,11 +172,11 @@ class VirtualCluster extends pulumi.CustomResource {
     VirtualClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:VirtualCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:VirtualCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     childResources_ = registerOutput<List<String>>('childResources');
     location = registerOutput<String>('location');

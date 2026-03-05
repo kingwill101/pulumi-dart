@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NWRuleSetIpRules {
   /// The IP Filter Action
   final pulumi.Input<String>? action;
-
   /// IP Mask
   final pulumi.Input<String>? ipMask;
 
   /// Creates a new [NWRuleSetIpRules].
   /// [action] The IP Filter Action
   /// [ipMask] IP Mask
-  NWRuleSetIpRules({this.action, this.ipMask});
+  NWRuleSetIpRules({
+    this.action,
+    this.ipMask,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'action': ?action, 'ipMask': ?ipMask};
+    return <String, dynamic>{
+      'action': ?action,
+      'ipMask': ?ipMask,
+    };
   }
 
   factory NWRuleSetIpRules.fromMap(Map<String, dynamic> map) {
     return NWRuleSetIpRules(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipMask: (() {
-        final guardedValue = map['ipMask'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipMask: (() { final guardedValue = map['ipMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

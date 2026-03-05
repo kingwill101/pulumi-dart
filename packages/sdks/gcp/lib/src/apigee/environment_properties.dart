@@ -10,39 +10,20 @@ class EnvironmentProperties {
 
   /// Creates a new [EnvironmentProperties].
   /// [properties] List of all properties in the object.
-  EnvironmentProperties({this.properties});
+  EnvironmentProperties({
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EnvironmentPropertiesProperty>,
-            List<Map<String, dynamic>>
-          >(
-            properties,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EnvironmentPropertiesProperty,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'properties': ?pulumi.Input.mapOptionalInputValue<List<EnvironmentPropertiesProperty>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<EnvironmentPropertiesProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EnvironmentProperties.fromMap(Map<String, dynamic> map) {
     return EnvironmentProperties(
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EnvironmentPropertiesProperty>(
-            guardedValue,
-            (value) => EnvironmentPropertiesProperty.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EnvironmentPropertiesProperty>(guardedValue, (value) => EnvironmentPropertiesProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -156,22 +156,16 @@ import 'compute_policy_args.dart';
 class ComputePolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The maximum degree of parallelism per job this user can use to submit jobs.
   late final pulumi.Output<int> maxDegreeOfParallelismPerJob;
-
   /// The minimum priority per job this user can use to submit jobs.
   late final pulumi.Output<int> minPriorityPerJob;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// The AAD object identifier for the entity to create a policy for.
   late final pulumi.Output<String> objectId;
-
   /// The type of AAD object the object identifier refers to.
   late final pulumi.Output<String> objectType;
-
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -184,15 +178,13 @@ class ComputePolicy extends pulumi.CustomResource {
     ComputePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datalakeanalytics:ComputePolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datalakeanalytics:ComputePolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    maxDegreeOfParallelismPerJob = registerOutput<int>(
-      'maxDegreeOfParallelismPerJob',
-    );
+    maxDegreeOfParallelismPerJob = registerOutput<int>('maxDegreeOfParallelismPerJob');
     minPriorityPerJob = registerOutput<int>('minPriorityPerJob');
     this.name = registerOutput<String>('name');
     objectId = registerOutput<String>('objectId');

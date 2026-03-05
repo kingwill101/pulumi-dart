@@ -9,19 +9,20 @@ class StorageConfiguration {
 
   /// Creates a new [StorageConfiguration].
   /// [partitionSize] Partition size.
-  StorageConfiguration({this.partitionSize});
+  StorageConfiguration({
+    this.partitionSize,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'partitionSize': ?partitionSize};
+    return <String, dynamic>{
+      'partitionSize': ?partitionSize,
+    };
   }
 
   factory StorageConfiguration.fromMap(Map<String, dynamic> map) {
     return StorageConfiguration(
-      partitionSize: (() {
-        final guardedValue = map['partitionSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      partitionSize: (() { final guardedValue = map['partitionSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -16,7 +16,11 @@ class VersionDialogflowV2beta1Args {
   /// [description] Optional. The developer-provided description of this version.
   /// [location] Optional.
   /// [project] Optional.
-  VersionDialogflowV2beta1Args({this.description, this.location, this.project});
+  VersionDialogflowV2beta1Args({
+    this.description,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,21 +32,10 @@ class VersionDialogflowV2beta1Args {
 
   factory VersionDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return VersionDialogflowV2beta1Args(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

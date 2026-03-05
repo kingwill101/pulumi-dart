@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNotificationHubAuthorizationRuleArgs {
   /// Authorization Rule Name
   final pulumi.Input<String> authorizationRuleName;
-
   /// Namespace name
   final pulumi.Input<String> namespaceName;
-
   /// Notification Hub name
   final pulumi.Input<String> notificationHubName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -40,20 +37,13 @@ class GetNotificationHubAuthorizationRuleArgs {
     };
   }
 
-  factory GetNotificationHubAuthorizationRuleArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNotificationHubAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationHubAuthorizationRuleArgs(
-      authorizationRuleName: pulumi.Input.fromValue(
-        map['authorizationRuleName'] as String,
-      ),
+      authorizationRuleName: pulumi.Input.fromValue(map['authorizationRuleName'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      notificationHubName: pulumi.Input.fromValue(
-        map['notificationHubName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      notificationHubName: pulumi.Input.fromValue(map['notificationHubName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

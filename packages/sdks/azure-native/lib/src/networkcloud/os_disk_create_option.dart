@@ -15,3 +15,4 @@ enum OsDiskCreateOption {
     throw ArgumentError('Unknown OsDiskCreateOption value: $value');
   }
 }
+

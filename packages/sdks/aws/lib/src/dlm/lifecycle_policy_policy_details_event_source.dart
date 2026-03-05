@@ -4,9 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lifecycle_policy_policy_details_event_source_parameters.dart';
 
 class LifecyclePolicyPolicyDetailsEventSource {
-  final pulumi.Input<LifecyclePolicyPolicyDetailsEventSourceParameters>
-  parameters;
-
+  final pulumi.Input<LifecyclePolicyPolicyDetailsEventSourceParameters> parameters;
   /// The source of the event. Currently only managed CloudWatch Events rules are supported. Valid values are `MANAGED_CWE`.
   final pulumi.Input<String> type;
 
@@ -20,25 +18,16 @@ class LifecyclePolicyPolicyDetailsEventSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters':
-          pulumi.Input.mapInputValue<
-            LifecyclePolicyPolicyDetailsEventSourceParameters,
-            Map<String, dynamic>
-          >(parameters, (value) => value.toMap()),
+      'parameters': pulumi.Input.mapInputValue<LifecyclePolicyPolicyDetailsEventSourceParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
       'type': type,
     };
   }
 
-  factory LifecyclePolicyPolicyDetailsEventSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LifecyclePolicyPolicyDetailsEventSource.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsEventSource(
-      parameters: pulumi.Input.fromValue(
-        LifecyclePolicyPolicyDetailsEventSourceParameters.fromMap(
-          (map['parameters']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      parameters: pulumi.Input.fromValue(LifecyclePolicyPolicyDetailsEventSourceParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

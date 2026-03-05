@@ -9,10 +9,14 @@ class ExclusionManagedRuleResponse {
 
   /// Creates a new [ExclusionManagedRuleResponse].
   /// [ruleId] Identifier for the managed rule.
-  ExclusionManagedRuleResponse({required this.ruleId});
+  ExclusionManagedRuleResponse({
+    required this.ruleId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ruleId': ruleId};
+    return <String, dynamic>{
+      'ruleId': ruleId,
+    };
   }
 
   factory ExclusionManagedRuleResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ExclusionManagedRuleResponse {
     );
   }
 }
+

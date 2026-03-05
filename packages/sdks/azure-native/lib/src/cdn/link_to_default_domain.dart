@@ -15,3 +15,4 @@ enum LinkToDefaultDomain {
     throw ArgumentError('Unknown LinkToDefaultDomain value: $value');
   }
 }
+

@@ -6,12 +6,8 @@ import 'domain_devices_disk_backing_store_source_reservations_source_dev_sec_lab
 class DomainDevicesDiskBackingStoreSourceReservationsSourceDev {
   /// Specifies the path to the device file for the EGD backend.
   final pulumi.Input<String> path;
-
   /// Configures the security label settings for the device source in the EGD backend.
-  final pulumi.Input<
-    List<DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel>
-  >?
-  secLabels;
+  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceReservationsSourceDev].
   /// [path] Specifies the path to the device file for the EGD backend.
@@ -24,43 +20,15 @@ class DomainDevicesDiskBackingStoreSourceReservationsSourceDev {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'path': path,
-      'secLabels':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel
-            >,
-            List<Map<String, dynamic>>
-          >(
-            secLabels,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory DomainDevicesDiskBackingStoreSourceReservationsSourceDev.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskBackingStoreSourceReservationsSourceDev.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceReservationsSourceDev(
       path: pulumi.Input.fromValue(map['path'] as String),
-      secLabels: (() {
-        final guardedValue = map['secLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel
-          >(
-            guardedValue,
-            (value) =>
-                DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      secLabels: (() { final guardedValue = map['secLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel>(guardedValue, (value) => DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

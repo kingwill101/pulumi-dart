@@ -11,19 +11,20 @@ class VmwareAdminClusterFleet {
 
   /// Creates a new [VmwareAdminClusterFleet].
   /// [membership] (Output)
-  VmwareAdminClusterFleet({this.membership});
+  VmwareAdminClusterFleet({
+    this.membership,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'membership': ?membership};
+    return <String, dynamic>{
+      'membership': ?membership,
+    };
   }
 
   factory VmwareAdminClusterFleet.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterFleet(
-      membership: (() {
-        final guardedValue = map['membership'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      membership: (() { final guardedValue = map['membership']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

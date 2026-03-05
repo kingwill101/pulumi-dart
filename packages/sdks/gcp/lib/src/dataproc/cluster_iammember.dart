@@ -794,10 +794,8 @@ class ClusterIAMMember extends pulumi.CustomResource {
   /// For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
   late final pulumi.Output<String> cluster;
   late final pulumi.Output<ClusterIAMMemberCondition?> condition;
-
   /// (Computed) The etag of the clusters's IAM policy.
   late final pulumi.Output<String> etag;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -807,15 +805,12 @@ class ClusterIAMMember extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<String> member;
-
   /// The project in which the cluster belongs. If it
   /// is not provided, the provider will use a default.
   late final pulumi.Output<String> project;
-
   /// The region in which the cluster belongs. If it
   /// is not provided, the provider will use a default.
   late final pulumi.Output<String> region;
-
   /// The role that should be applied. Only one
   /// `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -832,22 +827,13 @@ class ClusterIAMMember extends pulumi.CustomResource {
     ClusterIAMMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataproc/clusterIAMMember:ClusterIAMMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataproc/clusterIAMMember:ClusterIAMMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cluster = registerOutput<String>('cluster');
-    condition = registerOutput<ClusterIAMMemberCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterIAMMemberCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    condition = registerOutput<ClusterIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
     project = registerOutput<String>('project');
@@ -873,22 +859,13 @@ class ClusterIAMMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataproc/clusterIAMMember:ClusterIAMMember',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataproc/clusterIAMMember:ClusterIAMMember',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cluster = registerOutput<String>('cluster');
-    condition = registerOutput<ClusterIAMMemberCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterIAMMemberCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    condition = registerOutput<ClusterIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
     project = registerOutput<String>('project');

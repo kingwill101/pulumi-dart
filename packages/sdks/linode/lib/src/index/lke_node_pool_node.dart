@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LkeNodePoolNode {
   /// The ID of the node.
   final pulumi.Input<String> id;
-
   /// The ID of the underlying Linode instance.
   final pulumi.Input<int> instanceId;
-
   /// The status of the node. (`ready`, `not_ready`)
   final pulumi.Input<String> status;
 
@@ -38,3 +36,4 @@ class LkeNodePoolNode {
     );
   }
 }
+

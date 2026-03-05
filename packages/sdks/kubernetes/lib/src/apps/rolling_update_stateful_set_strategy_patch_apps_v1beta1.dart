@@ -9,21 +9,20 @@ class RollingUpdateStatefulSetStrategyPatchAppsV1beta1 {
 
   /// Creates a new [RollingUpdateStatefulSetStrategyPatchAppsV1beta1].
   /// [partition] Partition indicates the ordinal at which the StatefulSet should be partitioned.
-  RollingUpdateStatefulSetStrategyPatchAppsV1beta1({this.partition});
+  RollingUpdateStatefulSetStrategyPatchAppsV1beta1({
+    this.partition,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'partition': ?partition};
+    return <String, dynamic>{
+      'partition': ?partition,
+    };
   }
 
-  factory RollingUpdateStatefulSetStrategyPatchAppsV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RollingUpdateStatefulSetStrategyPatchAppsV1beta1.fromMap(Map<String, dynamic> map) {
     return RollingUpdateStatefulSetStrategyPatchAppsV1beta1(
-      partition: (() {
-        final guardedValue = map['partition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      partition: (() { final guardedValue = map['partition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

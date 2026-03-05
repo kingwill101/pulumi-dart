@@ -7,7 +7,6 @@ import 'node_monitoring_data_response.dart';
 class ListSqlMigrationServiceMonitoringDataResult {
   /// The name of Integration Runtime.
   final String name;
-
   /// Integration Runtime node monitoring data.
   final List<NodeMonitoringDataResponse> nodes;
 
@@ -22,25 +21,15 @@ class ListSqlMigrationServiceMonitoringDataResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'nodes':
-          pulumi.Input.encodeList<
-            NodeMonitoringDataResponse,
-            Map<String, dynamic>
-          >(nodes, (value) => value.toMap()),
+      'nodes': pulumi.Input.encodeList<NodeMonitoringDataResponse, Map<String, dynamic>>(nodes, (value) => value.toMap()),
     };
   }
 
-  factory ListSqlMigrationServiceMonitoringDataResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListSqlMigrationServiceMonitoringDataResult.fromMap(Map<String, dynamic> map) {
     return ListSqlMigrationServiceMonitoringDataResult(
       name: map['name'] as String,
-      nodes: pulumi.Input.decodeList<NodeMonitoringDataResponse>(
-        map['nodes']!,
-        (value) => NodeMonitoringDataResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      nodes: pulumi.Input.decodeList<NodeMonitoringDataResponse>(map['nodes']!, (value) => NodeMonitoringDataResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

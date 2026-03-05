@@ -340,64 +340,44 @@ import 'time_response.dart';
 class ScalingPlanPooledSchedule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Set of days of the week on which this schedule is active.
   late final pulumi.Output<List<String>?> daysOfWeek;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Load balancing algorithm for off-peak period.
   late final pulumi.Output<String?> offPeakLoadBalancingAlgorithm;
-
   /// Starting time for off-peak period.
   late final pulumi.Output<TimeResponse?> offPeakStartTime;
-
   /// Load balancing algorithm for peak period.
   late final pulumi.Output<String?> peakLoadBalancingAlgorithm;
-
   /// Starting time for peak period.
   late final pulumi.Output<TimeResponse?> peakStartTime;
-
   /// Capacity threshold for ramp down period.
   late final pulumi.Output<int?> rampDownCapacityThresholdPct;
-
   /// Should users be logged off forcefully from hosts.
   late final pulumi.Output<bool?> rampDownForceLogoffUsers;
-
   /// Load balancing algorithm for ramp down period.
   late final pulumi.Output<String?> rampDownLoadBalancingAlgorithm;
-
   /// Minimum host percentage for ramp down period.
   late final pulumi.Output<int?> rampDownMinimumHostsPct;
-
   /// Notification message for users during ramp down period.
   late final pulumi.Output<String?> rampDownNotificationMessage;
-
   /// Starting time for ramp down period.
   late final pulumi.Output<TimeResponse?> rampDownStartTime;
-
   /// Specifies when to stop hosts during ramp down period.
   late final pulumi.Output<String?> rampDownStopHostsWhen;
-
   /// Number of minutes to wait to stop hosts during ramp down period.
   late final pulumi.Output<int?> rampDownWaitTimeMinutes;
-
   /// Capacity threshold for ramp up period.
   late final pulumi.Output<int?> rampUpCapacityThresholdPct;
-
   /// Load balancing algorithm for ramp up period.
   late final pulumi.Output<String?> rampUpLoadBalancingAlgorithm;
-
   /// Minimum host percentage for ramp up period.
   late final pulumi.Output<int?> rampUpMinimumHostsPct;
-
   /// Starting time for ramp up period.
   late final pulumi.Output<TimeResponse?> rampUpStartTime;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -410,92 +390,31 @@ class ScalingPlanPooledSchedule extends pulumi.CustomResource {
     ScalingPlanPooledScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:desktopvirtualization:ScalingPlanPooledSchedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:desktopvirtualization:ScalingPlanPooledSchedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     daysOfWeek = registerOutput<List<String>?>('daysOfWeek');
     this.name = registerOutput<String>('name');
-    offPeakLoadBalancingAlgorithm = registerOutput<String?>(
-      'offPeakLoadBalancingAlgorithm',
-    );
-    offPeakStartTime = registerOutput<TimeResponse?>(
-      'offPeakStartTime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TimeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    peakLoadBalancingAlgorithm = registerOutput<String?>(
-      'peakLoadBalancingAlgorithm',
-    );
-    peakStartTime = registerOutput<TimeResponse?>(
-      'peakStartTime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TimeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    rampDownCapacityThresholdPct = registerOutput<int?>(
-      'rampDownCapacityThresholdPct',
-    );
-    rampDownForceLogoffUsers = registerOutput<bool?>(
-      'rampDownForceLogoffUsers',
-    );
-    rampDownLoadBalancingAlgorithm = registerOutput<String?>(
-      'rampDownLoadBalancingAlgorithm',
-    );
+    offPeakLoadBalancingAlgorithm = registerOutput<String?>('offPeakLoadBalancingAlgorithm');
+    offPeakStartTime = registerOutput<TimeResponse?>('offPeakStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    peakLoadBalancingAlgorithm = registerOutput<String?>('peakLoadBalancingAlgorithm');
+    peakStartTime = registerOutput<TimeResponse?>('peakStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rampDownCapacityThresholdPct = registerOutput<int?>('rampDownCapacityThresholdPct');
+    rampDownForceLogoffUsers = registerOutput<bool?>('rampDownForceLogoffUsers');
+    rampDownLoadBalancingAlgorithm = registerOutput<String?>('rampDownLoadBalancingAlgorithm');
     rampDownMinimumHostsPct = registerOutput<int?>('rampDownMinimumHostsPct');
-    rampDownNotificationMessage = registerOutput<String?>(
-      'rampDownNotificationMessage',
-    );
-    rampDownStartTime = registerOutput<TimeResponse?>(
-      'rampDownStartTime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TimeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rampDownNotificationMessage = registerOutput<String?>('rampDownNotificationMessage');
+    rampDownStartTime = registerOutput<TimeResponse?>('rampDownStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rampDownStopHostsWhen = registerOutput<String?>('rampDownStopHostsWhen');
     rampDownWaitTimeMinutes = registerOutput<int?>('rampDownWaitTimeMinutes');
-    rampUpCapacityThresholdPct = registerOutput<int?>(
-      'rampUpCapacityThresholdPct',
-    );
-    rampUpLoadBalancingAlgorithm = registerOutput<String?>(
-      'rampUpLoadBalancingAlgorithm',
-    );
+    rampUpCapacityThresholdPct = registerOutput<int?>('rampUpCapacityThresholdPct');
+    rampUpLoadBalancingAlgorithm = registerOutput<String?>('rampUpLoadBalancingAlgorithm');
     rampUpMinimumHostsPct = registerOutput<int?>('rampUpMinimumHostsPct');
-    rampUpStartTime = registerOutput<TimeResponse?>(
-      'rampUpStartTime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TimeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rampUpStartTime = registerOutput<TimeResponse?>('rampUpStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

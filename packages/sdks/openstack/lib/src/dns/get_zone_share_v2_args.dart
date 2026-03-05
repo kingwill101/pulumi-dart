@@ -11,24 +11,19 @@ class GetZoneShareV2Args {
   /// across all projects. If set to `false`, it will only search within the
   /// current project. Defaults to `false`.
   final pulumi.Input<String>? allProjects;
-
   /// The owner project ID. If omitted, it is derived
   /// from the zone share details.
   final pulumi.Input<String>? projectId;
-
   /// The region in which to obtain the V2 DNS client. If
   /// omitted, the `region` argument of the provider is used. Changing this creates
   /// a new DNS zone share data source.
   final pulumi.Input<String>? region;
-
   /// The ID of the DNS zone share to retrieve. If
   /// provided, the data source returns only the share with this ID.
   final pulumi.Input<String>? shareId;
-
   /// If provided, the data source returns the
   /// share with this target project ID.
   final pulumi.Input<String>? targetProjectId;
-
   /// The ID of the DNS zone for which to get share.
   final pulumi.Input<String> zoneId;
 
@@ -61,32 +56,13 @@ class GetZoneShareV2Args {
 
   factory GetZoneShareV2Args.fromMap(Map<String, dynamic> map) {
     return GetZoneShareV2Args(
-      allProjects: (() {
-        final guardedValue = map['allProjects'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      projectId: (() {
-        final guardedValue = map['projectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      shareId: (() {
-        final guardedValue = map['shareId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetProjectId: (() {
-        final guardedValue = map['targetProjectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allProjects: (() { final guardedValue = map['allProjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shareId: (() { final guardedValue = map['shareId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetProjectId: (() { final guardedValue = map['targetProjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
+

@@ -15,9 +15,7 @@ enum DataSourceKind {
   valueChangeTrackingCustomPath("ChangeTrackingCustomPath"),
   valueChangeTrackingPath("ChangeTrackingPath"),
   valueChangeTrackingServices("ChangeTrackingServices"),
-  valueChangeTrackingDataTypeConfiguration(
-    "ChangeTrackingDataTypeConfiguration",
-  ),
+  valueChangeTrackingDataTypeConfiguration("ChangeTrackingDataTypeConfiguration"),
   valueChangeTrackingDefaultRegistry("ChangeTrackingDefaultRegistry"),
   valueChangeTrackingRegistry("ChangeTrackingRegistry"),
   valueChangeTrackingLinuxPath("ChangeTrackingLinuxPath"),
@@ -25,18 +23,10 @@ enum DataSourceKind {
   valueChangeTrackingContentLocation("ChangeTrackingContentLocation"),
   valueWindowsTelemetry("WindowsTelemetry"),
   valueOffice365("Office365"),
-  valueSecurityWindowsBaselineConfiguration(
-    "SecurityWindowsBaselineConfiguration",
-  ),
-  valueSecurityCenterSecurityWindowsBaselineConfiguration(
-    "SecurityCenterSecurityWindowsBaselineConfiguration",
-  ),
-  valueSecurityEventCollectionConfiguration(
-    "SecurityEventCollectionConfiguration",
-  ),
-  valueSecurityInsightsSecurityEventCollectionConfiguration(
-    "SecurityInsightsSecurityEventCollectionConfiguration",
-  ),
+  valueSecurityWindowsBaselineConfiguration("SecurityWindowsBaselineConfiguration"),
+  valueSecurityCenterSecurityWindowsBaselineConfiguration("SecurityCenterSecurityWindowsBaselineConfiguration"),
+  valueSecurityEventCollectionConfiguration("SecurityEventCollectionConfiguration"),
+  valueSecurityInsightsSecurityEventCollectionConfiguration("SecurityInsightsSecurityEventCollectionConfiguration"),
   valueImportComputerGroup("ImportComputerGroup"),
   valueNetworkMonitoring("NetworkMonitoring"),
   valueItsm("Itsm"),
@@ -56,3 +46,4 @@ enum DataSourceKind {
     throw ArgumentError('Unknown DataSourceKind value: $value');
   }
 }
+

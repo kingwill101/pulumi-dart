@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FactoryVSTSConfigurationResponse {
   /// Account name.
   final pulumi.Input<String> accountName;
-
   /// Collaboration branch.
   final pulumi.Input<String> collaborationBranch;
-
   /// Disable manual publish operation in ADF studio to favor automated publish.
   final pulumi.Input<bool>? disablePublish;
-
   /// Last commit id.
   final pulumi.Input<String>? lastCommitId;
-
   /// VSTS project name.
   final pulumi.Input<String> projectName;
-
   /// Repository name.
   final pulumi.Input<String> repositoryName;
-
   /// Root folder.
   final pulumi.Input<String> rootFolder;
-
   /// VSTS tenant id.
   final pulumi.Input<String>? tenantId;
-
   /// Type of repo configuration.
   /// Expected value is 'FactoryVSTSConfiguration'.
   final pulumi.Input<String> type;
@@ -71,28 +63,15 @@ class FactoryVSTSConfigurationResponse {
   factory FactoryVSTSConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FactoryVSTSConfigurationResponse(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      collaborationBranch: pulumi.Input.fromValue(
-        map['collaborationBranch'] as String,
-      ),
-      disablePublish: (() {
-        final guardedValue = map['disablePublish'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      lastCommitId: (() {
-        final guardedValue = map['lastCommitId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      collaborationBranch: pulumi.Input.fromValue(map['collaborationBranch'] as String),
+      disablePublish: (() { final guardedValue = map['disablePublish']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      lastCommitId: (() { final guardedValue = map['lastCommitId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
       repositoryName: pulumi.Input.fromValue(map['repositoryName'] as String),
       rootFolder: pulumi.Input.fromValue(map['rootFolder'] as String),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

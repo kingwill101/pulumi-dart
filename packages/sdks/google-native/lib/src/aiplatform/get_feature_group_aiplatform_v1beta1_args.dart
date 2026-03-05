@@ -29,17 +29,12 @@ class GetFeatureGroupAiplatformV1beta1Args {
     };
   }
 
-  factory GetFeatureGroupAiplatformV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFeatureGroupAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetFeatureGroupAiplatformV1beta1Args(
       featureGroupId: pulumi.Input.fromValue(map['featureGroupId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

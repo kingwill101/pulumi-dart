@@ -177,34 +177,24 @@ import 'system_data_response.dart';
 class Account extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Time at which the account was created.
   late final pulumi.Output<String> createdAt;
-
   /// Identity Info on the Account
   late final pulumi.Output<IdentityResponse> identity;
-
   /// Location of the azure resource.
   late final pulumi.Output<String?> location;
-
   /// Name of the azure resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the Account
   late final pulumi.Output<String> provisioningState;
-
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Tags on the azure resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Type of the azure resource
   late final pulumi.Output<String> type;
-
   /// Email of the user who created the resource
   late final pulumi.Output<String> userEmail;
-
   /// Name of the user who created the resource
   late final pulumi.Output<String> userName;
 
@@ -217,36 +207,18 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datashare:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datashare:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdAt = registerOutput<String>('createdAt');
-    identity = registerOutput<IdentityResponse>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityResponse>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     userEmail = registerOutput<String>('userEmail');

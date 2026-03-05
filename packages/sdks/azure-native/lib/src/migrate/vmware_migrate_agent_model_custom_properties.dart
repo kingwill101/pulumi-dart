@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareMigrateAgentModelCustomProperties {
   /// Gets or sets the friendly name of the,of the MigrateAgent fabric.
   final pulumi.Input<String>? fabricFriendlyName;
-
   /// Gets or sets the instance type.
   /// Expected value is 'VMwareMigrateAgentModelCustomProperties'.
   final pulumi.Input<String> instanceType;
-
   /// Gets or sets the master Site Id of the Migrate Agent.
   final pulumi.Input<String>? vmwareSiteId;
 
@@ -32,21 +30,12 @@ class VMwareMigrateAgentModelCustomProperties {
     };
   }
 
-  factory VMwareMigrateAgentModelCustomProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VMwareMigrateAgentModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return VMwareMigrateAgentModelCustomProperties(
-      fabricFriendlyName: (() {
-        final guardedValue = map['fabricFriendlyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fabricFriendlyName: (() { final guardedValue = map['fabricFriendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      vmwareSiteId: (() {
-        final guardedValue = map['vmwareSiteId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      vmwareSiteId: (() { final guardedValue = map['vmwareSiteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

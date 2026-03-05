@@ -30,30 +30,13 @@ class LbCertificateDomainValidationRecord {
     };
   }
 
-  factory LbCertificateDomainValidationRecord.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LbCertificateDomainValidationRecord.fromMap(Map<String, dynamic> map) {
     return LbCertificateDomainValidationRecord(
-      domainName: (() {
-        final guardedValue = map['domainName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceRecordName: (() {
-        final guardedValue = map['resourceRecordName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceRecordType: (() {
-        final guardedValue = map['resourceRecordType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceRecordValue: (() {
-        final guardedValue = map['resourceRecordValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceRecordName: (() { final guardedValue = map['resourceRecordName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceRecordType: (() { final guardedValue = map['resourceRecordType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceRecordValue: (() { final guardedValue = map['resourceRecordValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

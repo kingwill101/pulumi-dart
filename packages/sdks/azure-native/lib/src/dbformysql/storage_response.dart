@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageResponse {
   /// Enable Storage Auto Grow or not.
   final pulumi.Input<String>? autoGrow;
-
   /// Enable IO Auto Scaling or not.
   final pulumi.Input<String>? autoIoScaling;
-
   /// Storage IOPS for a server.
   final pulumi.Input<int>? iops;
-
   /// Enable Log On Disk or not.
   final pulumi.Input<String>? logOnDisk;
-
   /// The redundant type of the server storage. The parameter is used for server creation.
   final pulumi.Input<String>? storageRedundancy;
-
   /// Max storage size allowed for a server.
   final pulumi.Input<int>? storageSizeGB;
-
   /// The sku name of the server storage.
   final pulumi.Input<String> storageSku;
 
@@ -57,37 +51,14 @@ class StorageResponse {
 
   factory StorageResponse.fromMap(Map<String, dynamic> map) {
     return StorageResponse(
-      autoGrow: (() {
-        final guardedValue = map['autoGrow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      autoIoScaling: (() {
-        final guardedValue = map['autoIoScaling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      iops: (() {
-        final guardedValue = map['iops'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      logOnDisk: (() {
-        final guardedValue = map['logOnDisk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageRedundancy: (() {
-        final guardedValue = map['storageRedundancy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageSizeGB: (() {
-        final guardedValue = map['storageSizeGB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      autoGrow: (() { final guardedValue = map['autoGrow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      autoIoScaling: (() { final guardedValue = map['autoIoScaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      logOnDisk: (() { final guardedValue = map['logOnDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageRedundancy: (() { final guardedValue = map['storageRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageSizeGB: (() { final guardedValue = map['storageSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       storageSku: pulumi.Input.fromValue(map['storageSku'] as String),
     );
   }
 }
+

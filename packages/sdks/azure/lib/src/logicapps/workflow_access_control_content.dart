@@ -8,7 +8,9 @@ class WorkflowAccessControlContent {
 
   /// Creates a new [WorkflowAccessControlContent].
   /// [allowedCallerIpAddressRanges] A list of the allowed caller IP address ranges.
-  WorkflowAccessControlContent({required this.allowedCallerIpAddressRanges});
+  WorkflowAccessControlContent({
+    required this.allowedCallerIpAddressRanges,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,9 +20,8 @@ class WorkflowAccessControlContent {
 
   factory WorkflowAccessControlContent.fromMap(Map<String, dynamic> map) {
     return WorkflowAccessControlContent(
-      allowedCallerIpAddressRanges: pulumi.Input.fromValue(
-        (map['allowedCallerIpAddressRanges'] as List).cast<String>(),
-      ),
+      allowedCallerIpAddressRanges: pulumi.Input.fromValue((map['allowedCallerIpAddressRanges'] as List).cast<String>()),
     );
   }
 }
+

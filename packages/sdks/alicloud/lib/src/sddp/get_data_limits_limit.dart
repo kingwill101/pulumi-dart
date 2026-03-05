@@ -5,34 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataLimitsLimit {
   /// Whether to enable the log auditing feature.
   final pulumi.Input<int> auditStatus;
-
   /// The status of the connectivity test between the data asset and SDDP.
   final pulumi.Input<int> checkStatus;
-
   /// The first ID of the resource.
   final pulumi.Input<String> dataLimitId;
-
   /// The type of the database.
   final pulumi.Input<String> engineType;
-
   /// The ID of the Data Limit.
   final pulumi.Input<String> id;
-
   /// The name of the service to which the data asset belongs.
   final pulumi.Input<String> localName;
-
   /// The retention period of raw logs after you enable the log auditing feature.
   final pulumi.Input<int> logStoreDay;
-
   /// The parent asset ID of the data asset.
   final pulumi.Input<String> parentId;
-
   /// The port that is used to connect to the database.
   final pulumi.Input<int> port;
-
   /// The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
   final pulumi.Input<String> resourceType;
-
   /// The name of the user who owns the data asset.
   final pulumi.Input<String> userName;
 
@@ -94,3 +84,4 @@ class GetDataLimitsLimit {
     );
   }
 }
+

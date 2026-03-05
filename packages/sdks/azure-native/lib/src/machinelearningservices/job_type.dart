@@ -18,3 +18,4 @@ enum JobType {
     throw ArgumentError('Unknown JobType value: $value');
   }
 }
+

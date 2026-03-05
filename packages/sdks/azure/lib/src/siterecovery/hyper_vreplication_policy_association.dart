@@ -287,10 +287,8 @@ import 'hyper_vreplication_policy_association_state.dart';
 class HyperVReplicationPolicyAssociation extends pulumi.CustomResource {
   /// The ID of the HyperV site to which the policy should be associated. Changing this forces a new association to be created.
   late final pulumi.Output<String> hypervSiteId;
-
   /// The name of the replication policy association. Changing this forces a new association to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the HyperV replication policy which to be associated. Changing this forces a new association to be created.
   late final pulumi.Output<String> policyId;
 
@@ -303,11 +301,11 @@ class HyperVReplicationPolicyAssociation extends pulumi.CustomResource {
     HyperVReplicationPolicyAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/hyperVReplicationPolicyAssociation:HyperVReplicationPolicyAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:siterecovery/hyperVReplicationPolicyAssociation:HyperVReplicationPolicyAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hypervSiteId = registerOutput<String>('hypervSiteId');
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');
@@ -331,11 +329,11 @@ class HyperVReplicationPolicyAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/hyperVReplicationPolicyAssociation:HyperVReplicationPolicyAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:siterecovery/hyperVReplicationPolicyAssociation:HyperVReplicationPolicyAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hypervSiteId = registerOutput<String>('hypervSiteId');
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');

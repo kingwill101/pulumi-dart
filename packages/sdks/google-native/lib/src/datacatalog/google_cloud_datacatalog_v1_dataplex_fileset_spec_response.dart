@@ -16,23 +16,14 @@ class GoogleCloudDatacatalogV1DataplexFilesetSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataplexSpec':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDatacatalogV1DataplexSpecResponse,
-            Map<String, dynamic>
-          >(dataplexSpec, (value) => value.toMap()),
+      'dataplexSpec': pulumi.Input.mapInputValue<GoogleCloudDatacatalogV1DataplexSpecResponse, Map<String, dynamic>>(dataplexSpec, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDatacatalogV1DataplexFilesetSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogV1DataplexFilesetSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DataplexFilesetSpecResponse(
-      dataplexSpec: pulumi.Input.fromValue(
-        GoogleCloudDatacatalogV1DataplexSpecResponse.fromMap(
-          (map['dataplexSpec']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      dataplexSpec: pulumi.Input.fromValue(GoogleCloudDatacatalogV1DataplexSpecResponse.fromMap((map['dataplexSpec']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

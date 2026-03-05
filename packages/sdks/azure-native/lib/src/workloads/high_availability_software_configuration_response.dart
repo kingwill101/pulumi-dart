@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HighAvailabilitySoftwareConfigurationResponse {
   /// The fencing client id.
   final pulumi.Input<String> fencingClientId;
-
   /// The fencing client id secret/password. The secret should never expire. This will be used pacemaker to start/stop the cluster VMs.
   final pulumi.Input<String> fencingClientPassword;
 
@@ -25,14 +24,11 @@ class HighAvailabilitySoftwareConfigurationResponse {
     };
   }
 
-  factory HighAvailabilitySoftwareConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HighAvailabilitySoftwareConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return HighAvailabilitySoftwareConfigurationResponse(
       fencingClientId: pulumi.Input.fromValue(map['fencingClientId'] as String),
-      fencingClientPassword: pulumi.Input.fromValue(
-        map['fencingClientPassword'] as String,
-      ),
+      fencingClientPassword: pulumi.Input.fromValue(map['fencingClientPassword'] as String),
     );
   }
 }
+

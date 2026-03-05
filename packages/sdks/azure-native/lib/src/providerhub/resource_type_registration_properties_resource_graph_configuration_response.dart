@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse {
   /// The api version.
   final pulumi.Input<String>? apiVersion;
-
   /// Whether it's enabled.
   final pulumi.Input<bool>? enabled;
 
@@ -19,23 +18,17 @@ class ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'apiVersion': ?apiVersion, 'enabled': ?enabled};
+    return <String, dynamic>{
+      'apiVersion': ?apiVersion,
+      'enabled': ?enabled,
+    };
   }
 
-  factory ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse(
-      apiVersion: (() {
-        final guardedValue = map['apiVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

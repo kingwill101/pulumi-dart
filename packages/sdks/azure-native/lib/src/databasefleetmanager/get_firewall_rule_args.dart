@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFirewallRuleArgs {
   /// Name of the firewall rule.
   final pulumi.Input<String> firewallRuleName;
-
   /// Name of the database fleet.
   final pulumi.Input<String> fleetName;
-
   /// Name of the fleetspace.
   final pulumi.Input<String> fleetspaceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,14 +39,11 @@ class GetFirewallRuleArgs {
 
   factory GetFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallRuleArgs(
-      firewallRuleName: pulumi.Input.fromValue(
-        map['firewallRuleName'] as String,
-      ),
+      firewallRuleName: pulumi.Input.fromValue(map['firewallRuleName'] as String),
       fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
       fleetspaceName: pulumi.Input.fromValue(map['fleetspaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

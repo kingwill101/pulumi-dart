@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthzPolicyHttpRuleFromNotSourceIpBlock {
   /// The length of the address range.
   final pulumi.Input<int> length;
-
   /// The address prefix.
   final pulumi.Input<String> prefix;
 
@@ -18,15 +17,17 @@ class AuthzPolicyHttpRuleFromNotSourceIpBlock {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'length': length, 'prefix': prefix};
+    return <String, dynamic>{
+      'length': length,
+      'prefix': prefix,
+    };
   }
 
-  factory AuthzPolicyHttpRuleFromNotSourceIpBlock.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AuthzPolicyHttpRuleFromNotSourceIpBlock.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleFromNotSourceIpBlock(
       length: pulumi.Input.fromValue(map['length'] as int),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
     );
   }
 }
+

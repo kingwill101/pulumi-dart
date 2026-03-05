@@ -10,17 +10,20 @@ class PluginInstanceActionCurationConfigCustomCuration {
 
   /// Creates a new [PluginInstanceActionCurationConfigCustomCuration].
   /// [curation] The unique name of the curation resource. This will be the name of the
-  PluginInstanceActionCurationConfigCustomCuration({required this.curation});
+  PluginInstanceActionCurationConfigCustomCuration({
+    required this.curation,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'curation': curation};
+    return <String, dynamic>{
+      'curation': curation,
+    };
   }
 
-  factory PluginInstanceActionCurationConfigCustomCuration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PluginInstanceActionCurationConfigCustomCuration.fromMap(Map<String, dynamic> map) {
     return PluginInstanceActionCurationConfigCustomCuration(
       curation: pulumi.Input.fromValue(map['curation'] as String),
     );
   }
 }
+

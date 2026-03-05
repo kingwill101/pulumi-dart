@@ -140,10 +140,8 @@ import 'routine_state.dart';
 class Routine extends pulumi.CustomResource {
   /// The time when the routine was created.
   late final pulumi.Output<String> createTime;
-
   /// The routine name, which must be unique in the same account.
   late final pulumi.Output<String?> description;
-
   /// Routine Name
   late final pulumi.Output<String> name;
 
@@ -156,11 +154,11 @@ class Routine extends pulumi.CustomResource {
     RoutineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/routine:Routine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/routine:Routine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -184,11 +182,11 @@ class Routine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/routine:Routine',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/routine:Routine',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

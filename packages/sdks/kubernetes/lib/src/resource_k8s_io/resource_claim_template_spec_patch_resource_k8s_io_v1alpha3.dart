@@ -8,7 +8,6 @@ import 'resource_claim_spec_patch_resource_k8s_io_v1alpha3.dart';
 class ResourceClaimTemplateSpecPatchResourceK8sIoV1alpha3 {
   /// ObjectMeta may contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
   final pulumi.Input<ObjectMetaPatch>? metadata;
-
   /// Spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here.
   final pulumi.Input<ResourceClaimSpecPatchResourceK8sIoV1alpha3>? spec;
 
@@ -22,41 +21,16 @@ class ResourceClaimTemplateSpecPatchResourceK8sIoV1alpha3 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata':
-          ?pulumi.Input.mapOptionalInputValue<
-            ObjectMetaPatch,
-            Map<String, dynamic>
-          >(metadata, (value) => value.toMap()),
-      'spec':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceClaimSpecPatchResourceK8sIoV1alpha3,
-            Map<String, dynamic>
-          >(spec, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<ResourceClaimSpecPatchResourceK8sIoV1alpha3, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
-  factory ResourceClaimTemplateSpecPatchResourceK8sIoV1alpha3.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceClaimTemplateSpecPatchResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return ResourceClaimTemplateSpecPatchResourceK8sIoV1alpha3(
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ObjectMetaPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      spec: (() {
-        final guardedValue = map['spec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceClaimSpecPatchResourceK8sIoV1alpha3.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceClaimSpecPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

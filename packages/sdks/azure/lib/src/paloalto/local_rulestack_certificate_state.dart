@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocalRulestackCertificateState {
   /// The comment for Audit purposes.
   final pulumi.Input<String>? auditComment;
-
   /// The description for the Certificate.
   final pulumi.Input<String>? description;
-
   /// The `versionles_id` of the Key Vault Certificate to use. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   final pulumi.Input<String>? keyVaultCertificateId;
-
   /// The name which should be used for this Palo Alto Networks Rulestack Certificate.
   final pulumi.Input<String>? name;
-
   /// The ID of the TODO. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   final pulumi.Input<String>? rulestackId;
-
   /// Should a Self Signed Certificate be used. Defaults to `false`. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   ///
   /// &gt; **Note:** One and only one of `self_signed` or `key_vault_certificate_id` must be specified.
@@ -53,36 +48,13 @@ class LocalRulestackCertificateState {
 
   factory LocalRulestackCertificateState.fromMap(Map<String, dynamic> map) {
     return LocalRulestackCertificateState(
-      auditComment: (() {
-        final guardedValue = map['auditComment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultCertificateId: (() {
-        final guardedValue = map['keyVaultCertificateId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rulestackId: (() {
-        final guardedValue = map['rulestackId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      selfSigned: (() {
-        final guardedValue = map['selfSigned'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      auditComment: (() { final guardedValue = map['auditComment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultCertificateId: (() { final guardedValue = map['keyVaultCertificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rulestackId: (() { final guardedValue = map['rulestackId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      selfSigned: (() { final guardedValue = map['selfSigned']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

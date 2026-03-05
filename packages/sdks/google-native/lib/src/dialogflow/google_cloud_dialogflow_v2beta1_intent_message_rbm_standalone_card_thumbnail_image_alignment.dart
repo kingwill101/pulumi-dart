@@ -4,22 +4,16 @@ enum GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAli
   left("LEFT"),
   right("RIGHT");
 
-  const GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment(
-    this.wireValue,
-  );
+  const GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment
-  fromValue(String value) {
-    for (final item
-        in GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment
-            .values) {
+  static GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment fromValue(String value) {
+    for (final item in GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment value: $value');
   }
 }
+

@@ -5,77 +5,53 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbInstancesInstance {
   /// The sum of cache size for every `PayAsYouGo` clusters in DBInstance.
   final pulumi.Input<int> cacheSizePostpaid;
-
   /// The sum of cache size for every `Subscription` clusters in DBInstance.
   final pulumi.Input<int> cacheSizePrepaid;
-
   /// The sum of cluster counts for `PayAsYouGo` clusters in DBInstance.
   final pulumi.Input<int> clusterCountPostpaid;
-
   /// The sum of cluster counts for `Subscription` clusters in DBInstance.
   final pulumi.Input<int> clusterCountPrepaid;
-
   /// The sum of cpu resource amount for every `PayAsYouGo` clusters in DBInstance.
   final pulumi.Input<int> cpuPostpaid;
-
   /// The sum of cpu resource amount for every `Subscription` clusters in DBInstance.
   final pulumi.Input<int> cpuPrepaid;
-
   /// The DBInstance description.
   final pulumi.Input<String> dbInstanceDescription;
-
   /// The instance ID.
   final pulumi.Input<String> dbInstanceId;
-
   /// The Engine of the DBInstance.
   final pulumi.Input<String> engine;
-
   /// The engine minor version of the DBInstance.
   final pulumi.Input<String> engineMinorVersion;
-
   /// The engine version of the DBInstance.
   final pulumi.Input<String> engineVersion;
-
   /// The time when DBInstance is created.
   final pulumi.Input<String> gmtCreated;
-
   /// The time when DBInstance will be expired. Available on `Subscription` DBInstance.
   final pulumi.Input<String> gmtExpired;
-
   /// The time when DBInstance is modified.
   final pulumi.Input<String> gmtModified;
   final pulumi.Input<String> id;
-
   /// The lock mode of the instance. Set the value to lock, which specifies that the instance is locked when it automatically expires or has an overdue payment.
   final pulumi.Input<String> lockMode;
-
   /// The reason why the instance is locked.
   final pulumi.Input<String> lockReason;
-
   /// The sum of memory resource amount offor every `PayAsYouGo` clusters in DBInstance.
   final pulumi.Input<int> memoryPostpaid;
-
   /// The sum of memory resource amount offor every `Subscription` clusters in DBInstance.
   final pulumi.Input<int> memoryPrepaid;
-
   /// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
   final pulumi.Input<String> paymentType;
-
   /// The ID of region for DBInstance.
   final pulumi.Input<String> regionId;
-
   /// The status of the DBInstance. Valid values: `ACTIVATION`,`CREATING`,`DELETING`,`RESTARTING`,`ORDER_PREPARING`.
   final pulumi.Input<String> status;
-
   /// The sub domain of DBInstance.
   final pulumi.Input<String> subDomain;
-
   /// The ID of the VPC for DBInstance.
   final pulumi.Input<String> vpcId;
-
   /// The ID of vswitch for DBInstance.
   final pulumi.Input<String> vswitchId;
-
   /// The ID of zone for DBInstance.
   final pulumi.Input<String> zoneId;
 
@@ -168,26 +144,16 @@ class GetDbInstancesInstance {
 
   factory GetDbInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetDbInstancesInstance(
-      cacheSizePostpaid: pulumi.Input.fromValue(
-        map['cacheSizePostpaid'] as int,
-      ),
+      cacheSizePostpaid: pulumi.Input.fromValue(map['cacheSizePostpaid'] as int),
       cacheSizePrepaid: pulumi.Input.fromValue(map['cacheSizePrepaid'] as int),
-      clusterCountPostpaid: pulumi.Input.fromValue(
-        map['clusterCountPostpaid'] as int,
-      ),
-      clusterCountPrepaid: pulumi.Input.fromValue(
-        map['clusterCountPrepaid'] as int,
-      ),
+      clusterCountPostpaid: pulumi.Input.fromValue(map['clusterCountPostpaid'] as int),
+      clusterCountPrepaid: pulumi.Input.fromValue(map['clusterCountPrepaid'] as int),
       cpuPostpaid: pulumi.Input.fromValue(map['cpuPostpaid'] as int),
       cpuPrepaid: pulumi.Input.fromValue(map['cpuPrepaid'] as int),
-      dbInstanceDescription: pulumi.Input.fromValue(
-        map['dbInstanceDescription'] as String,
-      ),
+      dbInstanceDescription: pulumi.Input.fromValue(map['dbInstanceDescription'] as String),
       dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
       engine: pulumi.Input.fromValue(map['engine'] as String),
-      engineMinorVersion: pulumi.Input.fromValue(
-        map['engineMinorVersion'] as String,
-      ),
+      engineMinorVersion: pulumi.Input.fromValue(map['engineMinorVersion'] as String),
       engineVersion: pulumi.Input.fromValue(map['engineVersion'] as String),
       gmtCreated: pulumi.Input.fromValue(map['gmtCreated'] as String),
       gmtExpired: pulumi.Input.fromValue(map['gmtExpired'] as String),
@@ -207,3 +173,4 @@ class GetDbInstancesInstance {
     );
   }
 }
+

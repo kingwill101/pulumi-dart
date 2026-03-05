@@ -6,11 +6,7 @@ import 'role_eligibility_schedule_request_properties_response_expiration.dart';
 /// Schedule info of the role eligibility schedule
 class RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo {
   /// Expiration of the role eligibility schedule
-  final pulumi.Input<
-    RoleEligibilityScheduleRequestPropertiesResponseExpiration
-  >?
-  expiration;
-
+  final pulumi.Input<RoleEligibilityScheduleRequestPropertiesResponseExpiration>? expiration;
   /// Start DateTime of the role eligibility schedule.
   final pulumi.Input<String>? startDateTime;
 
@@ -24,33 +20,16 @@ class RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expiration':
-          ?pulumi.Input.mapOptionalInputValue<
-            RoleEligibilityScheduleRequestPropertiesResponseExpiration,
-            Map<String, dynamic>
-          >(expiration, (value) => value.toMap()),
+      'expiration': ?pulumi.Input.mapOptionalInputValue<RoleEligibilityScheduleRequestPropertiesResponseExpiration, Map<String, dynamic>>(expiration, (value) => value.toMap()),
       'startDateTime': ?startDateTime,
     };
   }
 
-  factory RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo.fromMap(Map<String, dynamic> map) {
     return RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo(
-      expiration: (() {
-        final guardedValue = map['expiration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RoleEligibilityScheduleRequestPropertiesResponseExpiration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      startDateTime: (() {
-        final guardedValue = map['startDateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoleEligibilityScheduleRequestPropertiesResponseExpiration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      startDateTime: (() { final guardedValue = map['startDateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

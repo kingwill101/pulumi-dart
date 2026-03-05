@@ -9,17 +9,20 @@ class GethDetailsResponse {
 
   /// Creates a new [GethDetailsResponse].
   /// [garbageCollectionMode] Immutable. Blockchain garbage collection mode.
-  GethDetailsResponse({required this.garbageCollectionMode});
+  GethDetailsResponse({
+    required this.garbageCollectionMode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'garbageCollectionMode': garbageCollectionMode};
+    return <String, dynamic>{
+      'garbageCollectionMode': garbageCollectionMode,
+    };
   }
 
   factory GethDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GethDetailsResponse(
-      garbageCollectionMode: pulumi.Input.fromValue(
-        map['garbageCollectionMode'] as String,
-      ),
+      garbageCollectionMode: pulumi.Input.fromValue(map['garbageCollectionMode'] as String),
     );
   }
 }
+

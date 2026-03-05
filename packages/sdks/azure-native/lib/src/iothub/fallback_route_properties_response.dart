@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FallbackRoutePropertiesResponse {
   /// The condition which is evaluated in order to apply the fallback route. If the condition is not provided it will evaluate to true by default. For grammar, See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
   final pulumi.Input<String>? condition;
-
   /// The list of endpoints to which the messages that satisfy the condition are routed to. Currently only 1 endpoint is allowed.
   final pulumi.Input<List<String>> endpointNames;
-
   /// Used to specify whether the fallback route is enabled.
   final pulumi.Input<bool> isEnabled;
-
   /// The name of the route. The name can only include alphanumeric characters, periods, underscores, hyphens, has a maximum length of 64 characters, and must be unique.
   final pulumi.Input<String>? name;
-
   /// The source to which the routing rule is to be applied to. For example, DeviceMessages
   final pulumi.Input<String> source;
 
@@ -45,21 +41,12 @@ class FallbackRoutePropertiesResponse {
 
   factory FallbackRoutePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FallbackRoutePropertiesResponse(
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpointNames: pulumi.Input.fromValue(
-        (map['endpointNames'] as List).cast<String>(),
-      ),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointNames: pulumi.Input.fromValue((map['endpointNames'] as List).cast<String>()),
       isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
+

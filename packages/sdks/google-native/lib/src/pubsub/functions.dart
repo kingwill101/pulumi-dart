@@ -207,8 +207,7 @@ Future<GetSubscriptionPubsubV1beta2Result> getSubscriptionPubsubV1beta2(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_pubsub_v1beta2_get_subscription_iam_policy_pubsub_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSubscriptionIamPolicyPubsubV1beta2Result>
-getSubscriptionIamPolicyPubsubV1beta2(
+Future<GetSubscriptionIamPolicyPubsubV1beta2Result> getSubscriptionIamPolicyPubsubV1beta2(
   GetSubscriptionIamPolicyPubsubV1beta2Args args, {
   pulumi.InvokeOptions? options,
 }) async {

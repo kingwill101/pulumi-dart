@@ -786,90 +786,64 @@ class LoadBalancer extends pulumi.CustomResource {
   /// - **ipv4:** IPv4. This is the default value.
   /// - **DualStack:** dual stack.
   late final pulumi.Output<String> addressIpVersion;
-
   /// The type of IPv4 address used by the NLB instance. Valid values:
   /// - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
   /// - `Intranet`: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
   ///
   /// &gt; **NOTE:**   To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://www.alibabacloud.com/help/en/doc-detail/445878.html) operation.
   late final pulumi.Output<String> addressType;
-
   /// The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
   late final pulumi.Output<String> bandwidthPackageId;
-
   /// The speed limit of new connections per second processed by NLB instances in each VIP. Value range: `0` to `1000000`.
   ///
   /// - *0** means no speed limit.
   late final pulumi.Output<int?> cps;
-
   /// Resource creation time, using Greenwich Mean Time, formating' yyyy-MM-ddTHH:mm:ssZ '.
   late final pulumi.Output<String> createTime;
-
   /// Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
   late final pulumi.Output<bool> crossZoneEnabled;
-
   /// Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
-  late final pulumi.Output<LoadBalancerDeletionProtectionConfig>
-  deletionProtectionConfig;
-
+  late final pulumi.Output<LoadBalancerDeletionProtectionConfig> deletionProtectionConfig;
   /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
   late final pulumi.Output<bool> deletionProtectionEnabled;
-
   /// The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
   late final pulumi.Output<String> deletionProtectionReason;
-
   /// The domain name of the NLB instance.
   late final pulumi.Output<String> dnsName;
-
   /// The type of IPv6 address used by the NLB instance. Valid values:
   /// - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
   /// - `Intranet`: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
   late final pulumi.Output<String> ipv6AddressType;
-
   /// The business status of the NLB instance.
   late final pulumi.Output<String> loadBalancerBusinessStatus;
-
   /// The name of the NLB instance.
   /// The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
   late final pulumi.Output<String?> loadBalancerName;
-
   /// The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
   late final pulumi.Output<String> loadBalancerType;
-
   /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
-  late final pulumi.Output<LoadBalancerModificationProtectionConfig>
-  modificationProtectionConfig;
-
+  late final pulumi.Output<LoadBalancerModificationProtectionConfig> modificationProtectionConfig;
   /// The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
   late final pulumi.Output<String> modificationProtectionReason;
-
   /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
   /// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
   /// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
   late final pulumi.Output<String> modificationProtectionStatus;
-
   /// The payment type of the resource
   late final pulumi.Output<String> paymentType;
-
   /// The ID of the region where the NLB instance is deployed.
   late final pulumi.Output<String> regionId;
-
   /// The ID of the new resource group.
   /// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The security group to which the network-based SLB instance belongs.
   late final pulumi.Output<List<String>> securityGroupIds;
-
   /// Zone Status
   late final pulumi.Output<String> status;
-
   /// List of labels.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the VPC where the NLB instance is deployed.
   late final pulumi.Output<String> vpcId;
-
   /// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
   late final pulumi.Output<List<Map<String, dynamic>>> zoneMappings;
 
@@ -882,58 +856,28 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nlb/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nlb/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressIpVersion = registerOutput<String>('addressIpVersion');
     addressType = registerOutput<String>('addressType');
     bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
     cps = registerOutput<int?>('cps');
     createTime = registerOutput<String>('createTime');
     crossZoneEnabled = registerOutput<bool>('crossZoneEnabled');
-    deletionProtectionConfig =
-        registerOutput<LoadBalancerDeletionProtectionConfig>(
-          'deletionProtectionConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LoadBalancerDeletionProtectionConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deletionProtectionEnabled = registerOutput<bool>(
-      'deletionProtectionEnabled',
-    );
-    deletionProtectionReason = registerOutput<String>(
-      'deletionProtectionReason',
-    );
+    deletionProtectionConfig = registerOutput<LoadBalancerDeletionProtectionConfig>('deletionProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerDeletionProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
+    deletionProtectionReason = registerOutput<String>('deletionProtectionReason');
     dnsName = registerOutput<String>('dnsName');
     ipv6AddressType = registerOutput<String>('ipv6AddressType');
-    loadBalancerBusinessStatus = registerOutput<String>(
-      'loadBalancerBusinessStatus',
-    );
+    loadBalancerBusinessStatus = registerOutput<String>('loadBalancerBusinessStatus');
     loadBalancerName = registerOutput<String?>('loadBalancerName');
     loadBalancerType = registerOutput<String>('loadBalancerType');
-    modificationProtectionConfig =
-        registerOutput<LoadBalancerModificationProtectionConfig>(
-          'modificationProtectionConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LoadBalancerModificationProtectionConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    modificationProtectionReason = registerOutput<String>(
-      'modificationProtectionReason',
-    );
-    modificationProtectionStatus = registerOutput<String>(
-      'modificationProtectionStatus',
-    );
+    modificationProtectionConfig = registerOutput<LoadBalancerModificationProtectionConfig>('modificationProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerModificationProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    modificationProtectionReason = registerOutput<String>('modificationProtectionReason');
+    modificationProtectionStatus = registerOutput<String>('modificationProtectionStatus');
     paymentType = registerOutput<String>('paymentType');
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String>('resourceGroupId');
@@ -962,58 +906,28 @@ class LoadBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nlb/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nlb/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressIpVersion = registerOutput<String>('addressIpVersion');
     addressType = registerOutput<String>('addressType');
     bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
     cps = registerOutput<int?>('cps');
     createTime = registerOutput<String>('createTime');
     crossZoneEnabled = registerOutput<bool>('crossZoneEnabled');
-    deletionProtectionConfig =
-        registerOutput<LoadBalancerDeletionProtectionConfig>(
-          'deletionProtectionConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LoadBalancerDeletionProtectionConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deletionProtectionEnabled = registerOutput<bool>(
-      'deletionProtectionEnabled',
-    );
-    deletionProtectionReason = registerOutput<String>(
-      'deletionProtectionReason',
-    );
+    deletionProtectionConfig = registerOutput<LoadBalancerDeletionProtectionConfig>('deletionProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerDeletionProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
+    deletionProtectionReason = registerOutput<String>('deletionProtectionReason');
     dnsName = registerOutput<String>('dnsName');
     ipv6AddressType = registerOutput<String>('ipv6AddressType');
-    loadBalancerBusinessStatus = registerOutput<String>(
-      'loadBalancerBusinessStatus',
-    );
+    loadBalancerBusinessStatus = registerOutput<String>('loadBalancerBusinessStatus');
     loadBalancerName = registerOutput<String?>('loadBalancerName');
     loadBalancerType = registerOutput<String>('loadBalancerType');
-    modificationProtectionConfig =
-        registerOutput<LoadBalancerModificationProtectionConfig>(
-          'modificationProtectionConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LoadBalancerModificationProtectionConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    modificationProtectionReason = registerOutput<String>(
-      'modificationProtectionReason',
-    );
-    modificationProtectionStatus = registerOutput<String>(
-      'modificationProtectionStatus',
-    );
+    modificationProtectionConfig = registerOutput<LoadBalancerModificationProtectionConfig>('modificationProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerModificationProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    modificationProtectionReason = registerOutput<String>('modificationProtectionReason');
+    modificationProtectionStatus = registerOutput<String>('modificationProtectionStatus');
     paymentType = registerOutput<String>('paymentType');
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String>('resourceGroupId');

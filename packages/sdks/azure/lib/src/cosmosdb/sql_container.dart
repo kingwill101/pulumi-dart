@@ -357,48 +357,34 @@ import 'sql_container_state.dart';
 class SqlContainer extends pulumi.CustomResource {
   /// The name of the Cosmos DB Account to create the container within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-
   /// The default time to live of Analytical Storage for this SQL container. If present and the value is set to `-1`, it is equal to infinity, and items don’t expire by default. If present and the value is set to some number `n` – items will expire `n` seconds after their last modified time.
   late final pulumi.Output<int?> analyticalStorageTtl;
-
   /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   late final pulumi.Output<SqlContainerAutoscaleSettings?> autoscaleSettings;
-
   /// A `conflict_resolution_policy` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<SqlContainerConflictResolutionPolicy>
-  conflictResolutionPolicy;
-
+  late final pulumi.Output<SqlContainerConflictResolutionPolicy> conflictResolutionPolicy;
   /// The name of the Cosmos DB SQL Database to create the container within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseName;
-
   /// The default time to live of SQL container. If missing, items are not expired automatically. If present and the value is set to `-1`, it is equal to infinity, and items don’t expire by default. If present and the value is set to some number `n` – items will expire `n` seconds after their last modified time.
   late final pulumi.Output<int?> defaultTtl;
-
   /// An `indexing_policy` block as defined below.
   late final pulumi.Output<SqlContainerIndexingPolicy> indexingPolicy;
-
   /// Specifies the name of the Cosmos DB SQL Container. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Define a partition key kind. Possible values are `Hash` and `MultiHash`. Defaults to `Hash`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> partitionKeyKind;
-
   /// A list of partition key paths. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>> partitionKeyPaths;
-
   /// Define a partition key version. Possible values are `1`and `2`. This should be set to `2` in order to use large partition keys.
   ///
   /// &gt; **Note:** If `partition_key_version` is not specified when creating a new resource, you can update `partition_key_version` to `1`, updating to `2` forces a new resource to be created.
   late final pulumi.Output<int?> partitionKeyVersion;
-
   /// The name of the resource group in which the Cosmos DB SQL Container is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The throughput of SQL container (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon container creation otherwise it cannot be updated without a manual resource destroy-apply.
   late final pulumi.Output<int> throughput;
-
   /// One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> uniqueKeys;
 
@@ -411,46 +397,18 @@ class SqlContainer extends pulumi.CustomResource {
     SqlContainerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/sqlContainer:SqlContainer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/sqlContainer:SqlContainer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
-    autoscaleSettings = registerOutput<SqlContainerAutoscaleSettings?>(
-      'autoscaleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SqlContainerAutoscaleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    conflictResolutionPolicy =
-        registerOutput<SqlContainerConflictResolutionPolicy>(
-          'conflictResolutionPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SqlContainerConflictResolutionPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    autoscaleSettings = registerOutput<SqlContainerAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    conflictResolutionPolicy = registerOutput<SqlContainerConflictResolutionPolicy>('conflictResolutionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerConflictResolutionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     databaseName = registerOutput<String>('databaseName');
     defaultTtl = registerOutput<int?>('defaultTtl');
-    indexingPolicy = registerOutput<SqlContainerIndexingPolicy>(
-      'indexingPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SqlContainerIndexingPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    indexingPolicy = registerOutput<SqlContainerIndexingPolicy>('indexingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerIndexingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     partitionKeyKind = registerOutput<String?>('partitionKeyKind');
     partitionKeyPaths = registerOutput<List<String>>('partitionKeyPaths');
@@ -478,46 +436,18 @@ class SqlContainer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/sqlContainer:SqlContainer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/sqlContainer:SqlContainer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
-    autoscaleSettings = registerOutput<SqlContainerAutoscaleSettings?>(
-      'autoscaleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SqlContainerAutoscaleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    conflictResolutionPolicy =
-        registerOutput<SqlContainerConflictResolutionPolicy>(
-          'conflictResolutionPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SqlContainerConflictResolutionPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    autoscaleSettings = registerOutput<SqlContainerAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    conflictResolutionPolicy = registerOutput<SqlContainerConflictResolutionPolicy>('conflictResolutionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerConflictResolutionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     databaseName = registerOutput<String>('databaseName');
     defaultTtl = registerOutput<int?>('defaultTtl');
-    indexingPolicy = registerOutput<SqlContainerIndexingPolicy>(
-      'indexingPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SqlContainerIndexingPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    indexingPolicy = registerOutput<SqlContainerIndexingPolicy>('indexingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerIndexingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     partitionKeyKind = registerOutput<String?>('partitionKeyKind');
     partitionKeyPaths = registerOutput<List<String>>('partitionKeyPaths');

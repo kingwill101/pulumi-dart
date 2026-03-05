@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcEndpointConnectionsConnection {
   /// The Bandwidth.
   final pulumi.Input<int> bandwidth;
-
   /// The ID of the Vpc Endpoint.
   final pulumi.Input<String> endpointId;
-
   /// The ID of the Vpc Endpoint Connection.
   final pulumi.Input<String> id;
-
   /// The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
   final pulumi.Input<String> status;
 
@@ -36,9 +33,7 @@ class GetVpcEndpointConnectionsConnection {
     };
   }
 
-  factory GetVpcEndpointConnectionsConnection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVpcEndpointConnectionsConnection.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointConnectionsConnection(
       bandwidth: pulumi.Input.fromValue(map['bandwidth'] as int),
       endpointId: pulumi.Input.fromValue(map['endpointId'] as String),
@@ -47,3 +42,4 @@ class GetVpcEndpointConnectionsConnection {
     );
   }
 }
+

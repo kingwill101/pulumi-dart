@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomEntityStoreAssignmentArgs {
   /// Name of the custom entity store assignment. Generated name is GUID.
   final pulumi.Input<String> customEntityStoreAssignmentName;
-
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetCustomEntityStoreAssignmentArgs {
 
   factory GetCustomEntityStoreAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomEntityStoreAssignmentArgs(
-      customEntityStoreAssignmentName: pulumi.Input.fromValue(
-        map['customEntityStoreAssignmentName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      customEntityStoreAssignmentName: pulumi.Input.fromValue(map['customEntityStoreAssignmentName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

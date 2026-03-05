@@ -466,19 +466,14 @@ import 'command_state.dart';
 class Command extends pulumi.CustomResource {
   /// The Contents of the Script to Base64 Encoded Transmission.
   late final pulumi.Output<String> commandContent;
-
   /// The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
   late final pulumi.Output<String> commandType;
-
   /// That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
   late final pulumi.Output<String?> contentEncoding;
-
   /// The desktop id of the Desktop.
   late final pulumi.Output<String> desktopId;
-
   /// Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
   late final pulumi.Output<String> status;
-
   /// The timeout period for script execution the unit is seconds. Default to: `60`.
   late final pulumi.Output<String?> timeout;
 
@@ -491,11 +486,11 @@ class Command extends pulumi.CustomResource {
     CommandArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eds/command:Command',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eds/command:Command',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     commandContent = registerOutput<String>('commandContent');
     commandType = registerOutput<String>('commandType');
     contentEncoding = registerOutput<String?>('contentEncoding');
@@ -522,11 +517,11 @@ class Command extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eds/command:Command',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eds/command:Command',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     commandContent = registerOutput<String>('commandContent');
     commandType = registerOutput<String>('commandType');
     contentEncoding = registerOutput<String?>('contentEncoding');

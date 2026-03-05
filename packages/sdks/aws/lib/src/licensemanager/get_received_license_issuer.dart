@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReceivedLicenseIssuer {
   /// Issuer key fingerprint.
   final pulumi.Input<String> keyFingerprint;
-
   /// The key name.
   final pulumi.Input<String> name;
-
   /// Asymmetric KMS key from AWS Key Management Service. The KMS key must have a key usage of sign and verify, and support the RSASSA-PSS SHA-256 signing algorithm.
   final pulumi.Input<String> signKey;
 
@@ -38,3 +36,4 @@ class GetReceivedLicenseIssuer {
     );
   }
 }
+

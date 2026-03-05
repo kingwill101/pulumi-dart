@@ -9,17 +9,20 @@ class AwsCloudTrailDataConnectorDataTypesLogs {
 
   /// Creates a new [AwsCloudTrailDataConnectorDataTypesLogs].
   /// [state] Describe whether this data type connection is enabled or not.
-  AwsCloudTrailDataConnectorDataTypesLogs({required this.state});
+  AwsCloudTrailDataConnectorDataTypesLogs({
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': state};
+    return <String, dynamic>{
+      'state': state,
+    };
   }
 
-  factory AwsCloudTrailDataConnectorDataTypesLogs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AwsCloudTrailDataConnectorDataTypesLogs.fromMap(Map<String, dynamic> map) {
     return AwsCloudTrailDataConnectorDataTypesLogs(
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

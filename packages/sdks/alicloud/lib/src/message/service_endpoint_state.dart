@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceEndpointState {
   /// Specifies whether the endpoint is enabled. Valid values:
   final pulumi.Input<bool>? endpointEnabled;
-
   /// Access point type. Value:
   /// - public: indicates a public access point. (Currently only public is supported)
   final pulumi.Input<String>? endpointType;
@@ -14,7 +13,10 @@ class ServiceEndpointState {
   /// Creates a new [ServiceEndpointState].
   /// [endpointEnabled] Specifies whether the endpoint is enabled. Valid values:
   /// [endpointType] Access point type. Value:
-  ServiceEndpointState({this.endpointEnabled, this.endpointType});
+  ServiceEndpointState({
+    this.endpointEnabled,
+    this.endpointType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,16 +27,9 @@ class ServiceEndpointState {
 
   factory ServiceEndpointState.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointState(
-      endpointEnabled: (() {
-        final guardedValue = map['endpointEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      endpointType: (() {
-        final guardedValue = map['endpointType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpointEnabled: (() { final guardedValue = map['endpointEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

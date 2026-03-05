@@ -15,3 +15,4 @@ enum OAuth2GrantType {
     throw ArgumentError('Unknown OAuth2GrantType value: $value');
   }
 }
+

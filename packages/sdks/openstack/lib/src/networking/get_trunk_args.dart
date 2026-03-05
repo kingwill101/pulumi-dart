@@ -9,30 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrunkArgs {
   /// The administrative state of the trunk.
   final pulumi.Input<bool>? adminStateUp;
-
   /// Human-readable description of the trunk.
   final pulumi.Input<String>? description;
-
   /// The name of the trunk.
   final pulumi.Input<String>? name;
-
   /// The ID of the trunk parent port.
   final pulumi.Input<String>? portId;
-
   /// The owner of the trunk.
   final pulumi.Input<String>? projectId;
-
   /// The region in which to obtain the V2 Neutron client.
   /// A Neutron client is needed to retrieve trunk ids. If omitted, the
   /// `region` argument of the provider is used.
   final pulumi.Input<String>? region;
-
   /// The status of the trunk.
   final pulumi.Input<String>? status;
-
   /// The list of trunk tags to filter.
   final pulumi.Input<List<String>>? tags;
-
   /// The ID of the trunk.
   final pulumi.Input<String>? trunkId;
 
@@ -74,51 +66,16 @@ class GetTrunkArgs {
 
   factory GetTrunkArgs.fromMap(Map<String, dynamic> map) {
     return GetTrunkArgs(
-      adminStateUp: (() {
-        final guardedValue = map['adminStateUp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      portId: (() {
-        final guardedValue = map['portId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      projectId: (() {
-        final guardedValue = map['projectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      trunkId: (() {
-        final guardedValue = map['trunkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      adminStateUp: (() { final guardedValue = map['adminStateUp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      portId: (() { final guardedValue = map['portId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      trunkId: (() { final guardedValue = map['trunkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -10,19 +10,14 @@ import 'rai_policy_properties.dart';
 class ConnectionRaiPolicyArgs {
   /// Friendly name of the workspace connection
   final pulumi.Input<String> connectionName;
-
   /// Azure OpenAI Content Filters properties.
   final pulumi.Input<RaiPolicyProperties> properties;
-
   /// Api version used by proxy call
   final pulumi.Input<String>? proxyApiVersion;
-
   /// Name of the Rai Policy.
   final pulumi.Input<String>? raiPolicyName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
@@ -45,11 +40,7 @@ class ConnectionRaiPolicyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'connectionName': connectionName,
-      'properties':
-          pulumi.Input.mapInputValue<RaiPolicyProperties, Map<String, dynamic>>(
-            properties,
-            (value) => value.toMap(),
-          ),
+      'properties': pulumi.Input.mapInputValue<RaiPolicyProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'proxyApiVersion': ?proxyApiVersion,
       'raiPolicyName': ?raiPolicyName,
       'resourceGroupName': resourceGroupName,
@@ -60,25 +51,12 @@ class ConnectionRaiPolicyArgs {
   factory ConnectionRaiPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionRaiPolicyArgs(
       connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
-      properties: pulumi.Input.fromValue(
-        RaiPolicyProperties.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      proxyApiVersion: (() {
-        final guardedValue = map['proxyApiVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      raiPolicyName: (() {
-        final guardedValue = map['raiPolicyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: pulumi.Input.fromValue(RaiPolicyProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      proxyApiVersion: (() { final guardedValue = map['proxyApiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      raiPolicyName: (() { final guardedValue = map['raiPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

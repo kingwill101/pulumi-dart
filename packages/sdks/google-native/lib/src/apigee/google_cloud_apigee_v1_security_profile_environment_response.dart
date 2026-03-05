@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1SecurityProfileEnvironmentResponse {
   /// Time at which environment was attached to the security profile.
   final pulumi.Input<String> attachTime;
-
   /// Name of the environment.
   final pulumi.Input<String> environment;
 
@@ -25,12 +24,11 @@ class GoogleCloudApigeeV1SecurityProfileEnvironmentResponse {
     };
   }
 
-  factory GoogleCloudApigeeV1SecurityProfileEnvironmentResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudApigeeV1SecurityProfileEnvironmentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityProfileEnvironmentResponse(
       attachTime: pulumi.Input.fromValue(map['attachTime'] as String),
       environment: pulumi.Input.fromValue(map['environment'] as String),
     );
   }
 }
+

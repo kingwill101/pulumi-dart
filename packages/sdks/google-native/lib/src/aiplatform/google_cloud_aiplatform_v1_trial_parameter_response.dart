@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1TrialParameterResponse {
   /// The ID of the parameter. The parameter should be defined in StudySpec's Parameters.
   final pulumi.Input<String> parameterId;
-
   /// The value of the parameter. `number_value` will be set if a parameter defined in StudySpec is in type 'INTEGER', 'DOUBLE' or 'DISCRETE'. `string_value` will be set if a parameter defined in StudySpec is in type 'CATEGORICAL'.
   final pulumi.Input<dynamic> value;
 
@@ -19,15 +18,17 @@ class GoogleCloudAiplatformV1TrialParameterResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'parameterId': parameterId, 'value': value};
+    return <String, dynamic>{
+      'parameterId': parameterId,
+      'value': value,
+    };
   }
 
-  factory GoogleCloudAiplatformV1TrialParameterResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1TrialParameterResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1TrialParameterResponse(
       parameterId: pulumi.Input.fromValue(map['parameterId'] as String),
       value: pulumi.Input.fromValue(map['value']),
     );
   }
 }
+

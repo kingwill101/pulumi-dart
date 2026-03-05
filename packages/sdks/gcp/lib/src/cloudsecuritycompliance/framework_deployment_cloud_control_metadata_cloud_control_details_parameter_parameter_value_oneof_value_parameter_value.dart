@@ -6,17 +6,11 @@ import 'framework_deployment_cloud_control_metadata_cloud_control_details_parame
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue {
   /// Represents a boolean value.
   final pulumi.Input<bool>? boolValue;
-
   /// Represents a double value.
   final pulumi.Input<double>? numberValue;
-
   /// A list of strings.
   /// Structure is documented below.
-  final pulumi.Input<
-    FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue
-  >?
-  stringListValue;
-
+  final pulumi.Input<FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue>? stringListValue;
   /// Represents a string value.
   final pulumi.Input<String>? stringValue;
 
@@ -36,43 +30,18 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
     return <String, dynamic>{
       'boolValue': ?boolValue,
       'numberValue': ?numberValue,
-      'stringListValue':
-          ?pulumi.Input.mapOptionalInputValue<
-            FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue,
-            Map<String, dynamic>
-          >(stringListValue, (value) => value.toMap()),
+      'stringListValue': ?pulumi.Input.mapOptionalInputValue<FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue, Map<String, dynamic>>(stringListValue, (value) => value.toMap()),
       'stringValue': ?stringValue,
     };
   }
 
-  factory FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue(
-      boolValue: (() {
-        final guardedValue = map['boolValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      numberValue: (() {
-        final guardedValue = map['numberValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      stringListValue: (() {
-        final guardedValue = map['stringListValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      stringValue: (() {
-        final guardedValue = map['stringValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      boolValue: (() { final guardedValue = map['boolValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      numberValue: (() { final guardedValue = map['numberValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      stringListValue: (() { final guardedValue = map['stringListValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      stringValue: (() { final guardedValue = map['stringValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

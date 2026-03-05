@@ -9,10 +9,14 @@ class AutoSeasonalityResponse {
 
   /// Creates a new [AutoSeasonalityResponse].
   /// [mode] Forecasting seasonality mode.
-  AutoSeasonalityResponse({required this.mode});
+  AutoSeasonalityResponse({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
   factory AutoSeasonalityResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class AutoSeasonalityResponse {
     );
   }
 }
+

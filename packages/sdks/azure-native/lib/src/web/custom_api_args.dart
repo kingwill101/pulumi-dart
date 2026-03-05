@@ -10,19 +10,14 @@ import 'custom_api_properties_definition.dart';
 class CustomApiArgs {
   /// API name
   final pulumi.Input<String>? apiName;
-
   /// Resource location
   final pulumi.Input<String>? location;
-
   /// Custom API properties
   final pulumi.Input<CustomApiPropertiesDefinition>? properties;
-
   /// The resource group
   final pulumi.Input<String> resourceGroupName;
-
   /// Subscription Id
   final pulumi.Input<String>? subscriptionId;
-
   /// Resource tags
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -46,11 +41,7 @@ class CustomApiArgs {
     return <String, dynamic>{
       'apiName': ?apiName,
       'location': ?location,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomApiPropertiesDefinition,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<CustomApiPropertiesDefinition, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'subscriptionId': ?subscriptionId,
       'tags': ?tags,
@@ -59,40 +50,13 @@ class CustomApiArgs {
 
   factory CustomApiArgs.fromMap(Map<String, dynamic> map) {
     return CustomApiArgs(
-      apiName: (() {
-        final guardedValue = map['apiName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomApiPropertiesDefinition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      apiName: (() { final guardedValue = map['apiName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomApiPropertiesDefinition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

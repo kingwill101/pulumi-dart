@@ -15,3 +15,4 @@ enum Casing {
     throw ArgumentError('Unknown Casing value: $value');
   }
 }
+

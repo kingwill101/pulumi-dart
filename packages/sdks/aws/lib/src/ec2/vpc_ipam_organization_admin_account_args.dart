@@ -11,7 +11,9 @@ class VpcIpamOrganizationAdminAccountArgs {
 
   /// Creates a new [VpcIpamOrganizationAdminAccountArgs].
   /// [delegatedAdminAccountId] Required.
-  VpcIpamOrganizationAdminAccountArgs({required this.delegatedAdminAccountId});
+  VpcIpamOrganizationAdminAccountArgs({
+    required this.delegatedAdminAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,13 +21,10 @@ class VpcIpamOrganizationAdminAccountArgs {
     };
   }
 
-  factory VpcIpamOrganizationAdminAccountArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VpcIpamOrganizationAdminAccountArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpamOrganizationAdminAccountArgs(
-      delegatedAdminAccountId: pulumi.Input.fromValue(
-        map['delegatedAdminAccountId'] as String,
-      ),
+      delegatedAdminAccountId: pulumi.Input.fromValue(map['delegatedAdminAccountId'] as String),
     );
   }
 }
+

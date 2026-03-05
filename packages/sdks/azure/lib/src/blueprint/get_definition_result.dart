@@ -1,27 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDefinition.
 class GetDefinitionResult {
   /// The description of the Blueprint Definition.
   final String description;
-
   /// The display name of the Blueprint Definition.
   final String displayName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The timestamp of when this last modification was saved to the Blueprint Definition.
   final String lastModified;
   final String name;
   final String scopeId;
-
   /// The target scope.
   final String targetScope;
-
   /// The timestamp of when this Blueprint Definition was created.
   final String timeCreated;
-
   /// A list of versions published for this Blueprint Definition.
   final List<String> versions;
 
@@ -75,3 +70,4 @@ class GetDefinitionResult {
     );
   }
 }
+

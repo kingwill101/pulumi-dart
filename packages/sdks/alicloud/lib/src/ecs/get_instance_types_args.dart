@@ -9,59 +9,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTypesArgs {
   /// The zone where instance types are supported.
   final pulumi.Input<String>? availabilityZone;
-
   /// Filter the results to a specific number of cpu cores.
   final pulumi.Input<int>? cpuCoreCount;
-
   /// Filter the result whose network interface number is no more than `eni_amount`.
   final pulumi.Input<int>? eniAmount;
-
   /// The GPU amount of an instance type.
   final pulumi.Input<int>? gpuAmount;
-
   /// The GPU spec of an instance type.
   final pulumi.Input<String>? gpuSpec;
-
   /// The ID of the image.
   final pulumi.Input<String>? imageId;
-
   /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
   final pulumi.Input<String>? instanceChargeType;
-
   /// Instance specifications. For more information, see instance Specification Family, or you can call the describe instance types interface to get the latest specification table.
   final pulumi.Input<String>? instanceType;
-
   /// Filter the results based on their family name. For example: 'ecs.n4'.
   final pulumi.Input<String>? instanceTypeFamily;
-
   /// If true, outdated instance types are included in the results. Default to false.
   final pulumi.Input<bool>? isOutdated;
-
   /// Filter the result which is used to create a kubernetes cluster
   /// and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
   final pulumi.Input<String>? kubernetesNodeRole;
-
   /// Filter the results to a specific memory size in GB.
   final pulumi.Input<double>? memorySize;
-
   /// The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
   final pulumi.Input<int>? minimumEniIpv6AddressQuantity;
-
   /// The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
   final pulumi.Input<int>? minimumEniPrivateIpAddressQuantity;
-
   /// Filter the results by network type. Valid values: `Classic` and `Vpc`.
   final pulumi.Input<String>? networkType;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// Sort mode, valid values: `CPU`, `Memory`, `Price`.
   final pulumi.Input<String>? sortedBy;
-
   /// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
   final pulumi.Input<String>? spotStrategy;
-
   /// Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`.
   /// **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
   final pulumi.Input<String>? systemDiskCategory;
@@ -134,101 +116,26 @@ class GetInstanceTypesArgs {
 
   factory GetInstanceTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesArgs(
-      availabilityZone: (() {
-        final guardedValue = map['availabilityZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cpuCoreCount: (() {
-        final guardedValue = map['cpuCoreCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      eniAmount: (() {
-        final guardedValue = map['eniAmount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      gpuAmount: (() {
-        final guardedValue = map['gpuAmount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      gpuSpec: (() {
-        final guardedValue = map['gpuSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      imageId: (() {
-        final guardedValue = map['imageId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceChargeType: (() {
-        final guardedValue = map['instanceChargeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceTypeFamily: (() {
-        final guardedValue = map['instanceTypeFamily'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isOutdated: (() {
-        final guardedValue = map['isOutdated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      kubernetesNodeRole: (() {
-        final guardedValue = map['kubernetesNodeRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      memorySize: (() {
-        final guardedValue = map['memorySize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      minimumEniIpv6AddressQuantity: (() {
-        final guardedValue = map['minimumEniIpv6AddressQuantity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minimumEniPrivateIpAddressQuantity: (() {
-        final guardedValue = map['minimumEniPrivateIpAddressQuantity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      networkType: (() {
-        final guardedValue = map['networkType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sortedBy: (() {
-        final guardedValue = map['sortedBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      spotStrategy: (() {
-        final guardedValue = map['spotStrategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      systemDiskCategory: (() {
-        final guardedValue = map['systemDiskCategory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cpuCoreCount: (() { final guardedValue = map['cpuCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      eniAmount: (() { final guardedValue = map['eniAmount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      gpuAmount: (() { final guardedValue = map['gpuAmount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      gpuSpec: (() { final guardedValue = map['gpuSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      imageId: (() { final guardedValue = map['imageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceChargeType: (() { final guardedValue = map['instanceChargeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceTypeFamily: (() { final guardedValue = map['instanceTypeFamily']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isOutdated: (() { final guardedValue = map['isOutdated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      kubernetesNodeRole: (() { final guardedValue = map['kubernetesNodeRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memorySize: (() { final guardedValue = map['memorySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      minimumEniIpv6AddressQuantity: (() { final guardedValue = map['minimumEniIpv6AddressQuantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minimumEniPrivateIpAddressQuantity: (() { final guardedValue = map['minimumEniPrivateIpAddressQuantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sortedBy: (() { final guardedValue = map['sortedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      spotStrategy: (() { final guardedValue = map['spotStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      systemDiskCategory: (() { final guardedValue = map['systemDiskCategory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

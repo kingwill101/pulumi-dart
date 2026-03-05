@@ -7,105 +7,77 @@ class StoragePoolState {
   /// Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
   /// The policy needs to be in the same location as the storage pool.
   final pulumi.Input<String>? activeDirectory;
-
   /// Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
   /// Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
   final pulumi.Input<bool>? allowAutoTiering;
-
   /// Available throughput of the storage pool (in MiB/s).
   final pulumi.Input<double>? availableThroughputMibps;
-
   /// Capacity of the storage pool (in GiB).
   final pulumi.Input<String>? capacityGib;
-
   /// Total cold tier data rounded down to the nearest GiB used by the storage pool.
   final pulumi.Input<String>? coldTierSizeUsedGib;
-
   /// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
   final pulumi.Input<bool>? customPerformanceEnabled;
-
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
-
   /// Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
   /// The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
   final pulumi.Input<bool>? enableHotTierAutoResize;
-
   /// Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
   final pulumi.Input<String>? encryptionType;
-
   /// Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
   /// It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
   final pulumi.Input<String>? hotTierSizeGib;
-
   /// Total hot tier data rounded down to the nearest GiB used by the storage pool.
   final pulumi.Input<String>? hotTierSizeUsedGib;
-
   /// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
   /// The policy needs to be in the same location as the storage pool.
   final pulumi.Input<String>? kmsConfig;
-
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
   /// using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
   final pulumi.Input<bool>? ldapEnabled;
-
   /// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
   final pulumi.Input<String>? location;
-
   /// The resource name of the storage pool. Needs to be unique per location/region.
   final pulumi.Input<String>? name;
-
   /// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
   final pulumi.Input<String>? network;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
-
   /// QoS (Quality of Service) type of the storage pool.
   /// Possible values are: AUTO, MANUAL.
   /// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
   final pulumi.Input<String>? qosType;
-
   /// Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
   /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
   final pulumi.Input<String>? replicaZone;
-
   /// Service level of the storage pool.
   /// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
   final pulumi.Input<String>? serviceLevel;
-
   /// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
   final pulumi.Input<String>? totalIops;
-
   /// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
   final pulumi.Input<String>? totalThroughputMibps;
-
   /// Type of the storage pool.
   /// This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
   /// If not specified during creation, it defaults to FILE.
   /// Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
   final pulumi.Input<String>? type;
-
   /// Size allocated to volumes in the storage pool (in GiB).
   final pulumi.Input<String>? volumeCapacityGib;
-
   /// Number of volume in the storage pool.
   final pulumi.Input<int>? volumeCount;
-
   /// Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
   /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
   /// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
@@ -209,157 +181,36 @@ class StoragePoolState {
 
   factory StoragePoolState.fromMap(Map<String, dynamic> map) {
     return StoragePoolState(
-      activeDirectory: (() {
-        final guardedValue = map['activeDirectory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      allowAutoTiering: (() {
-        final guardedValue = map['allowAutoTiering'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      availableThroughputMibps: (() {
-        final guardedValue = map['availableThroughputMibps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      capacityGib: (() {
-        final guardedValue = map['capacityGib'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      coldTierSizeUsedGib: (() {
-        final guardedValue = map['coldTierSizeUsedGib'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customPerformanceEnabled: (() {
-        final guardedValue = map['customPerformanceEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      effectiveLabels: (() {
-        final guardedValue = map['effectiveLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      enableHotTierAutoResize: (() {
-        final guardedValue = map['enableHotTierAutoResize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      encryptionType: (() {
-        final guardedValue = map['encryptionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hotTierSizeGib: (() {
-        final guardedValue = map['hotTierSizeGib'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hotTierSizeUsedGib: (() {
-        final guardedValue = map['hotTierSizeUsedGib'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsConfig: (() {
-        final guardedValue = map['kmsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      ldapEnabled: (() {
-        final guardedValue = map['ldapEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pulumiLabels: (() {
-        final guardedValue = map['pulumiLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      qosType: (() {
-        final guardedValue = map['qosType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      replicaZone: (() {
-        final guardedValue = map['replicaZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceLevel: (() {
-        final guardedValue = map['serviceLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      totalIops: (() {
-        final guardedValue = map['totalIops'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      totalThroughputMibps: (() {
-        final guardedValue = map['totalThroughputMibps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      volumeCapacityGib: (() {
-        final guardedValue = map['volumeCapacityGib'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      volumeCount: (() {
-        final guardedValue = map['volumeCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      activeDirectory: (() { final guardedValue = map['activeDirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      allowAutoTiering: (() { final guardedValue = map['allowAutoTiering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      availableThroughputMibps: (() { final guardedValue = map['availableThroughputMibps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      capacityGib: (() { final guardedValue = map['capacityGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      coldTierSizeUsedGib: (() { final guardedValue = map['coldTierSizeUsedGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customPerformanceEnabled: (() { final guardedValue = map['customPerformanceEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      enableHotTierAutoResize: (() { final guardedValue = map['enableHotTierAutoResize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      encryptionType: (() { final guardedValue = map['encryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hotTierSizeGib: (() { final guardedValue = map['hotTierSizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hotTierSizeUsedGib: (() { final guardedValue = map['hotTierSizeUsedGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsConfig: (() { final guardedValue = map['kmsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      ldapEnabled: (() { final guardedValue = map['ldapEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      qosType: (() { final guardedValue = map['qosType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replicaZone: (() { final guardedValue = map['replicaZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceLevel: (() { final guardedValue = map['serviceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      totalIops: (() { final guardedValue = map['totalIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      totalThroughputMibps: (() { final guardedValue = map['totalThroughputMibps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      volumeCapacityGib: (() { final guardedValue = map['volumeCapacityGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      volumeCount: (() { final guardedValue = map['volumeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

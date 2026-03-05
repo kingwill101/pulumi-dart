@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceSecureLdap {
   final pulumi.Input<String> certificateExpiry;
   final pulumi.Input<String> certificateThumbprint;
-
   /// Whether secure LDAP is enabled for the managed domain.
   final pulumi.Input<bool> enabled;
-
   /// Whether external access to LDAPS over the Internet, is enabled.
   final pulumi.Input<bool> externalAccessEnabled;
   final pulumi.Input<String> publicCertificate;
@@ -39,19 +37,12 @@ class GetServiceSecureLdap {
 
   factory GetServiceSecureLdap.fromMap(Map<String, dynamic> map) {
     return GetServiceSecureLdap(
-      certificateExpiry: pulumi.Input.fromValue(
-        map['certificateExpiry'] as String,
-      ),
-      certificateThumbprint: pulumi.Input.fromValue(
-        map['certificateThumbprint'] as String,
-      ),
+      certificateExpiry: pulumi.Input.fromValue(map['certificateExpiry'] as String),
+      certificateThumbprint: pulumi.Input.fromValue(map['certificateThumbprint'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      externalAccessEnabled: pulumi.Input.fromValue(
-        map['externalAccessEnabled'] as bool,
-      ),
-      publicCertificate: pulumi.Input.fromValue(
-        map['publicCertificate'] as String,
-      ),
+      externalAccessEnabled: pulumi.Input.fromValue(map['externalAccessEnabled'] as bool),
+      publicCertificate: pulumi.Input.fromValue(map['publicCertificate'] as String),
     );
   }
 }
+

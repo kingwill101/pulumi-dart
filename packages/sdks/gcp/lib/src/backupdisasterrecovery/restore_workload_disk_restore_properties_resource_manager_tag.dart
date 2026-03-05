@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreWorkloadDiskRestorePropertiesResourceManagerTag {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> key;
-
   /// (Optional)
   final pulumi.Input<String>? value;
 
@@ -18,19 +17,17 @@ class RestoreWorkloadDiskRestorePropertiesResourceManagerTag {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': ?value};
+    return <String, dynamic>{
+      'key': key,
+      'value': ?value,
+    };
   }
 
-  factory RestoreWorkloadDiskRestorePropertiesResourceManagerTag.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestoreWorkloadDiskRestorePropertiesResourceManagerTag.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadDiskRestorePropertiesResourceManagerTag(
       key: pulumi.Input.fromValue(map['key'] as String),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

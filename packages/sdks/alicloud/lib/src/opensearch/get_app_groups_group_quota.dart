@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppGroupsGroupQuota {
   /// Computing resources. Unit: LCU.
   final pulumi.Input<String> computeResource;
-
   /// Storage Size. Unit: GB.
   final pulumi.Input<String> docSize;
-
   /// Specification. Valid values:
   /// * `opensearch.share.junior`: Entry-level.
   /// * `opensearch.share.common`: Shared universal.
@@ -45,3 +43,4 @@ class GetAppGroupsGroupQuota {
     );
   }
 }
+

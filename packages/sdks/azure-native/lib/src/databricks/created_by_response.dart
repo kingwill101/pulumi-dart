@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CreatedByResponse {
   /// The application ID of the application that initiated the creation of the workspace. For example, Azure Portal.
   final pulumi.Input<String> applicationId;
-
   /// The Object ID that created the workspace.
   final pulumi.Input<String> oid;
-
   /// The Personal Object ID corresponding to the object ID above
   final pulumi.Input<String> puid;
 
@@ -39,3 +37,4 @@ class CreatedByResponse {
     );
   }
 }
+

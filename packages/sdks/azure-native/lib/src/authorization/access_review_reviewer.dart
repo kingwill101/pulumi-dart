@@ -9,19 +9,20 @@ class AccessReviewReviewer {
 
   /// Creates a new [AccessReviewReviewer].
   /// [principalId] The id of the reviewer(user/servicePrincipal)
-  AccessReviewReviewer({this.principalId});
+  AccessReviewReviewer({
+    this.principalId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'principalId': ?principalId};
+    return <String, dynamic>{
+      'principalId': ?principalId,
+    };
   }
 
   factory AccessReviewReviewer.fromMap(Map<String, dynamic> map) {
     return AccessReviewReviewer(
-      principalId: (() {
-        final guardedValue = map['principalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

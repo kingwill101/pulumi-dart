@@ -6,10 +6,7 @@ import 'google_cloud_retail_v2_model_frequently_bought_together_features_config.
 /// Additional model features config.
 class GoogleCloudRetailV2ModelModelFeaturesConfig {
   /// Additional configs for frequently-bought-together models.
-  final pulumi.Input<
-    GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig
-  >?
-  frequentlyBoughtTogetherConfig;
+  final pulumi.Input<GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig>? frequentlyBoughtTogetherConfig;
 
   /// Creates a new [GoogleCloudRetailV2ModelModelFeaturesConfig].
   /// [frequentlyBoughtTogetherConfig] Additional configs for frequently-bought-together models.
@@ -19,27 +16,14 @@ class GoogleCloudRetailV2ModelModelFeaturesConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'frequentlyBoughtTogetherConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig,
-            Map<String, dynamic>
-          >(frequentlyBoughtTogetherConfig, (value) => value.toMap()),
+      'frequentlyBoughtTogetherConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig, Map<String, dynamic>>(frequentlyBoughtTogetherConfig, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudRetailV2ModelModelFeaturesConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2ModelModelFeaturesConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2ModelModelFeaturesConfig(
-      frequentlyBoughtTogetherConfig: (() {
-        final guardedValue = map['frequentlyBoughtTogetherConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      frequentlyBoughtTogetherConfig: (() { final guardedValue = map['frequentlyBoughtTogetherConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

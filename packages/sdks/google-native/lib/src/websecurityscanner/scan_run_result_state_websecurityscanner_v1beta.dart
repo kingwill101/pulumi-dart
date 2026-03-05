@@ -14,8 +14,7 @@ enum ScanRunResultStateWebsecurityscannerV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ScanRunResultStateWebsecurityscannerV1beta value: $value',
-    );
+    throw ArgumentError('Unknown ScanRunResultStateWebsecurityscannerV1beta value: $value');
   }
 }
+

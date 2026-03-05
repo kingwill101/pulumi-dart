@@ -163,34 +163,24 @@ import 'system_data_response.dart';
 class PlaywrightWorkspace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The workspace data plane service API URI.
   late final pulumi.Output<String> dataplaneUri;
-
   /// Enables the workspace to use local authentication through service access tokens for operations.
   late final pulumi.Output<String?> localAuth;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the last resource operation.
   late final pulumi.Output<String> provisioningState;
-
   /// Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created.
   late final pulumi.Output<String?> regionalAffinity;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The workspace ID in GUID format.
   late final pulumi.Output<String> workspaceId;
 
@@ -203,11 +193,11 @@ class PlaywrightWorkspace extends pulumi.CustomResource {
     PlaywrightWorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:loadtestservice:PlaywrightWorkspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:loadtestservice:PlaywrightWorkspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dataplaneUri = registerOutput<String>('dataplaneUri');
     localAuth = registerOutput<String?>('localAuth');
@@ -215,16 +205,7 @@ class PlaywrightWorkspace extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     regionalAffinity = registerOutput<String?>('regionalAffinity');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     workspaceId = registerOutput<String>('workspaceId');

@@ -29,9 +29,7 @@ class GetLoadBalancersBalancerBackendServer {
     };
   }
 
-  factory GetLoadBalancersBalancerBackendServer.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLoadBalancersBalancerBackendServer.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancerBackendServer(
       description: pulumi.Input.fromValue(map['description'] as String),
       serverId: pulumi.Input.fromValue(map['serverId'] as String),
@@ -40,3 +38,4 @@ class GetLoadBalancersBalancerBackendServer {
     );
   }
 }
+

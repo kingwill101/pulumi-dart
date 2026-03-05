@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageSource {
   /// Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   final pulumi.Input<String>? bucket;
-
   /// Google Cloud Storage generation for the object.
   final pulumi.Input<String>? generation;
-
   /// Google Cloud Storage object containing source.
   final pulumi.Input<String>? object_;
 
@@ -17,7 +15,11 @@ class StorageSource {
   /// [bucket] Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   /// [generation] Google Cloud Storage generation for the object.
   /// [object_] Google Cloud Storage object containing source.
-  StorageSource({this.bucket, this.generation, this.object_});
+  StorageSource({
+    this.bucket,
+    this.generation,
+    this.object_,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class StorageSource {
 
   factory StorageSource.fromMap(Map<String, dynamic> map) {
     return StorageSource(
-      bucket: (() {
-        final guardedValue = map['bucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      generation: (() {
-        final guardedValue = map['generation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      object_: (() {
-        final guardedValue = map['object'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      object_: (() { final guardedValue = map['object']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

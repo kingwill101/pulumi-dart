@@ -1393,67 +1393,44 @@ import 'data_set_state.dart';
 class DataSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the data set.
   late final pulumi.Output<String> arn;
-
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
-
   /// Groupings of columns that work together in certain Amazon QuickSight features. Currently, only geospatial hierarchy is supported. See column_groups.
   late final pulumi.Output<List<Map<String, dynamic>>?> columnGroups;
-
   /// A set of 1 or more definitions of a [ColumnLevelPermissionRule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColumnLevelPermissionRule.html). See column_level_permission_rules.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  columnLevelPermissionRules;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> columnLevelPermissionRules;
   /// Identifier for the data set.
   late final pulumi.Output<String> dataSetId;
-
   /// The usage configuration to apply to child datasets that reference this dataset as a source. See data_set_usage_configuration.
-  late final pulumi.Output<DataSetDataSetUsageConfiguration>
-  dataSetUsageConfiguration;
-
+  late final pulumi.Output<DataSetDataSetUsageConfiguration> dataSetUsageConfiguration;
   /// The folder that contains fields and nested subfolders for your dataset. See field_folders.
   late final pulumi.Output<List<Map<String, dynamic>>?> fieldFolders;
-
   /// Indicates whether you want to import the data into SPICE. Valid values are `SPICE` and `DIRECT_QUERY`.
   late final pulumi.Output<String> importMode;
-
   /// Configures the combination and transformation of the data from the physical tables. Maximum of 1 entry. See logical_table_map.
   late final pulumi.Output<List<Map<String, dynamic>>> logicalTableMaps;
-
   /// Display name for the dataset.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// The final set of columns available for use in analyses and dashboards after all data preparation and transformation steps have been applied within the data set.  See `output_columns` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>> outputColumns;
-
   /// A set of resource permissions on the data source. Maximum of 64 items. See permissions.
   late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
-
   /// Declares the physical tables that are available in the underlying data sources. See physical_table_map.
   late final pulumi.Output<List<Map<String, dynamic>>?> physicalTableMaps;
-
   /// The refresh properties for the data set. **NOTE**: Only valid when `import_mode` is set to `SPICE`. See refresh_properties.
   late final pulumi.Output<DataSetRefreshProperties?> refreshProperties;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The row-level security configuration for the data that you want to create. See row_level_permission_data_set.
-  late final pulumi.Output<DataSetRowLevelPermissionDataSet?>
-  rowLevelPermissionDataSet;
-
+  late final pulumi.Output<DataSetRowLevelPermissionDataSet?> rowLevelPermissionDataSet;
   /// The configuration of tags on a dataset to set row-level security. Row-level security tags are currently supported for anonymous embedding only. See row_level_permission_tag_configuration.
-  late final pulumi.Output<DataSetRowLevelPermissionTagConfiguration?>
-  rowLevelPermissionTagConfiguration;
-
+  late final pulumi.Output<DataSetRowLevelPermissionTagConfiguration?> rowLevelPermissionTagConfiguration;
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Specifies the purpose of the data set. The only valid value is `RLS_RULES`, which designates this data set as a Row Level Security (RLS) rules dataset. An RLS rules dataset is used to control access to data at the row level in QuickSight analyses and dashboards. See the [AWS documentation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateDataSet.html#API_CreateDataSet_RequestSyntax) for details.
   late final pulumi.Output<String?> useAs;
 
@@ -1466,73 +1443,28 @@ class DataSet extends pulumi.CustomResource {
     DataSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:quicksight/dataSet:DataSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:quicksight/dataSet:DataSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
     columnGroups = registerOutput<List<Map<String, dynamic>>?>('columnGroups');
-    columnLevelPermissionRules = registerOutput<List<Map<String, dynamic>>?>(
-      'columnLevelPermissionRules',
-    );
+    columnLevelPermissionRules = registerOutput<List<Map<String, dynamic>>?>('columnLevelPermissionRules');
     dataSetId = registerOutput<String>('dataSetId');
-    dataSetUsageConfiguration =
-        registerOutput<DataSetDataSetUsageConfiguration>(
-          'dataSetUsageConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataSetDataSetUsageConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    dataSetUsageConfiguration = registerOutput<DataSetDataSetUsageConfiguration>('dataSetUsageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSetDataSetUsageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fieldFolders = registerOutput<List<Map<String, dynamic>>?>('fieldFolders');
     importMode = registerOutput<String>('importMode');
-    logicalTableMaps = registerOutput<List<Map<String, dynamic>>>(
-      'logicalTableMaps',
-    );
+    logicalTableMaps = registerOutput<List<Map<String, dynamic>>>('logicalTableMaps');
     this.name = registerOutput<String>('name');
     outputColumns = registerOutput<List<Map<String, dynamic>>>('outputColumns');
     permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
-    physicalTableMaps = registerOutput<List<Map<String, dynamic>>?>(
-      'physicalTableMaps',
-    );
-    refreshProperties = registerOutput<DataSetRefreshProperties?>(
-      'refreshProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataSetRefreshProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    physicalTableMaps = registerOutput<List<Map<String, dynamic>>?>('physicalTableMaps');
+    refreshProperties = registerOutput<DataSetRefreshProperties?>('refreshProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSetRefreshProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    rowLevelPermissionDataSet =
-        registerOutput<DataSetRowLevelPermissionDataSet?>(
-          'rowLevelPermissionDataSet',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataSetRowLevelPermissionDataSet.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    rowLevelPermissionTagConfiguration =
-        registerOutput<DataSetRowLevelPermissionTagConfiguration?>(
-          'rowLevelPermissionTagConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataSetRowLevelPermissionTagConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    rowLevelPermissionDataSet = registerOutput<DataSetRowLevelPermissionDataSet?>('rowLevelPermissionDataSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSetRowLevelPermissionDataSet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rowLevelPermissionTagConfiguration = registerOutput<DataSetRowLevelPermissionTagConfiguration?>('rowLevelPermissionTagConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSetRowLevelPermissionTagConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     useAs = registerOutput<String?>('useAs');
@@ -1556,73 +1488,28 @@ class DataSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:quicksight/dataSet:DataSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:quicksight/dataSet:DataSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
     columnGroups = registerOutput<List<Map<String, dynamic>>?>('columnGroups');
-    columnLevelPermissionRules = registerOutput<List<Map<String, dynamic>>?>(
-      'columnLevelPermissionRules',
-    );
+    columnLevelPermissionRules = registerOutput<List<Map<String, dynamic>>?>('columnLevelPermissionRules');
     dataSetId = registerOutput<String>('dataSetId');
-    dataSetUsageConfiguration =
-        registerOutput<DataSetDataSetUsageConfiguration>(
-          'dataSetUsageConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataSetDataSetUsageConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    dataSetUsageConfiguration = registerOutput<DataSetDataSetUsageConfiguration>('dataSetUsageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSetDataSetUsageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fieldFolders = registerOutput<List<Map<String, dynamic>>?>('fieldFolders');
     importMode = registerOutput<String>('importMode');
-    logicalTableMaps = registerOutput<List<Map<String, dynamic>>>(
-      'logicalTableMaps',
-    );
+    logicalTableMaps = registerOutput<List<Map<String, dynamic>>>('logicalTableMaps');
     this.name = registerOutput<String>('name');
     outputColumns = registerOutput<List<Map<String, dynamic>>>('outputColumns');
     permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
-    physicalTableMaps = registerOutput<List<Map<String, dynamic>>?>(
-      'physicalTableMaps',
-    );
-    refreshProperties = registerOutput<DataSetRefreshProperties?>(
-      'refreshProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataSetRefreshProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    physicalTableMaps = registerOutput<List<Map<String, dynamic>>?>('physicalTableMaps');
+    refreshProperties = registerOutput<DataSetRefreshProperties?>('refreshProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSetRefreshProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    rowLevelPermissionDataSet =
-        registerOutput<DataSetRowLevelPermissionDataSet?>(
-          'rowLevelPermissionDataSet',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataSetRowLevelPermissionDataSet.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    rowLevelPermissionTagConfiguration =
-        registerOutput<DataSetRowLevelPermissionTagConfiguration?>(
-          'rowLevelPermissionTagConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataSetRowLevelPermissionTagConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    rowLevelPermissionDataSet = registerOutput<DataSetRowLevelPermissionDataSet?>('rowLevelPermissionDataSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSetRowLevelPermissionDataSet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rowLevelPermissionTagConfiguration = registerOutput<DataSetRowLevelPermissionTagConfiguration?>('rowLevelPermissionTagConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSetRowLevelPermissionTagConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     useAs = registerOutput<String?>('useAs');

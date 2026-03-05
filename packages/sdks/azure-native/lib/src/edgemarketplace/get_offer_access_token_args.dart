@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOfferAccessTokenArgs {
   /// Id of the offer
   final pulumi.Input<String> offerId;
-
   /// The name of the publisher.
   final pulumi.Input<String> requestId;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -42,3 +40,4 @@ class GetOfferAccessTokenArgs {
     );
   }
 }
+

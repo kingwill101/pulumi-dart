@@ -1,55 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDisk.
 class GetDiskResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The creation date of the disk.
   final String createdDate;
-
   /// When backed by a blob, the name of the VHD blob without extension.
   final String? diskBlobName;
-
   /// The size of the disk in Gibibytes.
   final int? diskSizeGiB;
-
   /// The storage type for the disk (i.e. Standard, Premium).
   final String? diskType;
-
   /// When backed by a blob, the URI of underlying blob.
   final String? diskUri;
-
   /// The host caching policy of the disk (i.e. None, ReadOnly, ReadWrite).
   final String? hostCaching;
-
   /// The identifier of the resource.
   final String id;
-
   /// The resource ID of the VM to which this disk is leased.
   final String? leasedByLabVmId;
-
   /// The location of the resource.
   final String? location;
-
   /// When backed by managed disk, this is the ID of the compute disk resource.
   final String? managedDiskId;
-
   /// The name of the resource.
   final String name;
-
   /// The provisioning status of the resource.
   final String provisioningState;
-
   /// When backed by a blob, the storage account where the blob is.
   final String? storageAccountId;
-
   /// The tags of the resource.
   final Map<String, String>? tags;
-
   /// The type of the resource.
   final String type;
-
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
 
@@ -117,61 +102,22 @@ class GetDiskResult {
     return GetDiskResult(
       azureApiVersion: map['azureApiVersion'] as String,
       createdDate: map['createdDate'] as String,
-      diskBlobName: (() {
-        final guardedValue = map['diskBlobName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      diskSizeGiB: (() {
-        final guardedValue = map['diskSizeGiB'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      diskType: (() {
-        final guardedValue = map['diskType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      diskUri: (() {
-        final guardedValue = map['diskUri'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      hostCaching: (() {
-        final guardedValue = map['hostCaching'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      diskBlobName: (() { final guardedValue = map['diskBlobName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      diskSizeGiB: (() { final guardedValue = map['diskSizeGiB']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      diskUri: (() { final guardedValue = map['diskUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostCaching: (() { final guardedValue = map['hostCaching']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      leasedByLabVmId: (() {
-        final guardedValue = map['leasedByLabVmId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      managedDiskId: (() {
-        final guardedValue = map['managedDiskId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      leasedByLabVmId: (() { final guardedValue = map['leasedByLabVmId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      managedDiskId: (() { final guardedValue = map['managedDiskId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      storageAccountId: (() {
-        final guardedValue = map['storageAccountId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
     );
   }
 }
+

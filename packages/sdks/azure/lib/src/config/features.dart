@@ -32,8 +32,7 @@ class Features {
   final pulumi.Input<FeaturesMachineLearning>? machineLearning;
   final pulumi.Input<FeaturesManagedDisk>? managedDisk;
   final pulumi.Input<FeaturesNetapp>? netapp;
-  final pulumi.Input<FeaturesPostgresqlFlexibleServer>?
-  postgresqlFlexibleServer;
+  final pulumi.Input<FeaturesPostgresqlFlexibleServer>? postgresqlFlexibleServer;
   final pulumi.Input<FeaturesRecoveryService>? recoveryService;
   final pulumi.Input<FeaturesRecoveryServicesVaults>? recoveryServicesVaults;
   final pulumi.Input<FeaturesResourceGroup>? resourceGroup;
@@ -87,275 +86,50 @@ class Features {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiManagement':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesApiManagement,
-            Map<String, dynamic>
-          >(apiManagement, (value) => value.toMap()),
-      'appConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesAppConfiguration,
-            Map<String, dynamic>
-          >(appConfiguration, (value) => value.toMap()),
-      'applicationInsights':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesApplicationInsights,
-            Map<String, dynamic>
-          >(applicationInsights, (value) => value.toMap()),
-      'cognitiveAccount':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesCognitiveAccount,
-            Map<String, dynamic>
-          >(cognitiveAccount, (value) => value.toMap()),
-      'databricksWorkspace':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesDatabricksWorkspace,
-            Map<String, dynamic>
-          >(databricksWorkspace, (value) => value.toMap()),
-      'keyVault':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesKeyVault,
-            Map<String, dynamic>
-          >(keyVault, (value) => value.toMap()),
-      'logAnalyticsWorkspace':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesLogAnalyticsWorkspace,
-            Map<String, dynamic>
-          >(logAnalyticsWorkspace, (value) => value.toMap()),
-      'machineLearning':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesMachineLearning,
-            Map<String, dynamic>
-          >(machineLearning, (value) => value.toMap()),
-      'managedDisk':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesManagedDisk,
-            Map<String, dynamic>
-          >(managedDisk, (value) => value.toMap()),
-      'netapp':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesNetapp,
-            Map<String, dynamic>
-          >(netapp, (value) => value.toMap()),
-      'postgresqlFlexibleServer':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesPostgresqlFlexibleServer,
-            Map<String, dynamic>
-          >(postgresqlFlexibleServer, (value) => value.toMap()),
-      'recoveryService':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesRecoveryService,
-            Map<String, dynamic>
-          >(recoveryService, (value) => value.toMap()),
-      'recoveryServicesVaults':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesRecoveryServicesVaults,
-            Map<String, dynamic>
-          >(recoveryServicesVaults, (value) => value.toMap()),
-      'resourceGroup':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesResourceGroup,
-            Map<String, dynamic>
-          >(resourceGroup, (value) => value.toMap()),
-      'storage':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesStorage,
-            Map<String, dynamic>
-          >(storage, (value) => value.toMap()),
-      'subscription':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesSubscription,
-            Map<String, dynamic>
-          >(subscription, (value) => value.toMap()),
-      'templateDeployment':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesTemplateDeployment,
-            Map<String, dynamic>
-          >(templateDeployment, (value) => value.toMap()),
-      'virtualMachine':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesVirtualMachine,
-            Map<String, dynamic>
-          >(virtualMachine, (value) => value.toMap()),
-      'virtualMachineScaleSet':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeaturesVirtualMachineScaleSet,
-            Map<String, dynamic>
-          >(virtualMachineScaleSet, (value) => value.toMap()),
+      'apiManagement': ?pulumi.Input.mapOptionalInputValue<FeaturesApiManagement, Map<String, dynamic>>(apiManagement, (value) => value.toMap()),
+      'appConfiguration': ?pulumi.Input.mapOptionalInputValue<FeaturesAppConfiguration, Map<String, dynamic>>(appConfiguration, (value) => value.toMap()),
+      'applicationInsights': ?pulumi.Input.mapOptionalInputValue<FeaturesApplicationInsights, Map<String, dynamic>>(applicationInsights, (value) => value.toMap()),
+      'cognitiveAccount': ?pulumi.Input.mapOptionalInputValue<FeaturesCognitiveAccount, Map<String, dynamic>>(cognitiveAccount, (value) => value.toMap()),
+      'databricksWorkspace': ?pulumi.Input.mapOptionalInputValue<FeaturesDatabricksWorkspace, Map<String, dynamic>>(databricksWorkspace, (value) => value.toMap()),
+      'keyVault': ?pulumi.Input.mapOptionalInputValue<FeaturesKeyVault, Map<String, dynamic>>(keyVault, (value) => value.toMap()),
+      'logAnalyticsWorkspace': ?pulumi.Input.mapOptionalInputValue<FeaturesLogAnalyticsWorkspace, Map<String, dynamic>>(logAnalyticsWorkspace, (value) => value.toMap()),
+      'machineLearning': ?pulumi.Input.mapOptionalInputValue<FeaturesMachineLearning, Map<String, dynamic>>(machineLearning, (value) => value.toMap()),
+      'managedDisk': ?pulumi.Input.mapOptionalInputValue<FeaturesManagedDisk, Map<String, dynamic>>(managedDisk, (value) => value.toMap()),
+      'netapp': ?pulumi.Input.mapOptionalInputValue<FeaturesNetapp, Map<String, dynamic>>(netapp, (value) => value.toMap()),
+      'postgresqlFlexibleServer': ?pulumi.Input.mapOptionalInputValue<FeaturesPostgresqlFlexibleServer, Map<String, dynamic>>(postgresqlFlexibleServer, (value) => value.toMap()),
+      'recoveryService': ?pulumi.Input.mapOptionalInputValue<FeaturesRecoveryService, Map<String, dynamic>>(recoveryService, (value) => value.toMap()),
+      'recoveryServicesVaults': ?pulumi.Input.mapOptionalInputValue<FeaturesRecoveryServicesVaults, Map<String, dynamic>>(recoveryServicesVaults, (value) => value.toMap()),
+      'resourceGroup': ?pulumi.Input.mapOptionalInputValue<FeaturesResourceGroup, Map<String, dynamic>>(resourceGroup, (value) => value.toMap()),
+      'storage': ?pulumi.Input.mapOptionalInputValue<FeaturesStorage, Map<String, dynamic>>(storage, (value) => value.toMap()),
+      'subscription': ?pulumi.Input.mapOptionalInputValue<FeaturesSubscription, Map<String, dynamic>>(subscription, (value) => value.toMap()),
+      'templateDeployment': ?pulumi.Input.mapOptionalInputValue<FeaturesTemplateDeployment, Map<String, dynamic>>(templateDeployment, (value) => value.toMap()),
+      'virtualMachine': ?pulumi.Input.mapOptionalInputValue<FeaturesVirtualMachine, Map<String, dynamic>>(virtualMachine, (value) => value.toMap()),
+      'virtualMachineScaleSet': ?pulumi.Input.mapOptionalInputValue<FeaturesVirtualMachineScaleSet, Map<String, dynamic>>(virtualMachineScaleSet, (value) => value.toMap()),
     };
   }
 
   factory Features.fromMap(Map<String, dynamic> map) {
     return Features(
-      apiManagement: (() {
-        final guardedValue = map['apiManagement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesApiManagement.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      appConfiguration: (() {
-        final guardedValue = map['appConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesAppConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      applicationInsights: (() {
-        final guardedValue = map['applicationInsights'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesApplicationInsights.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      cognitiveAccount: (() {
-        final guardedValue = map['cognitiveAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesCognitiveAccount.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      databricksWorkspace: (() {
-        final guardedValue = map['databricksWorkspace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesDatabricksWorkspace.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      keyVault: (() {
-        final guardedValue = map['keyVault'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesKeyVault.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      logAnalyticsWorkspace: (() {
-        final guardedValue = map['logAnalyticsWorkspace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesLogAnalyticsWorkspace.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      machineLearning: (() {
-        final guardedValue = map['machineLearning'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesMachineLearning.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      managedDisk: (() {
-        final guardedValue = map['managedDisk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesManagedDisk.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      netapp: (() {
-        final guardedValue = map['netapp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesNetapp.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      postgresqlFlexibleServer: (() {
-        final guardedValue = map['postgresqlFlexibleServer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesPostgresqlFlexibleServer.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      recoveryService: (() {
-        final guardedValue = map['recoveryService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesRecoveryService.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      recoveryServicesVaults: (() {
-        final guardedValue = map['recoveryServicesVaults'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesRecoveryServicesVaults.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroup: (() {
-        final guardedValue = map['resourceGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesResourceGroup.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      storage: (() {
-        final guardedValue = map['storage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesStorage.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      subscription: (() {
-        final guardedValue = map['subscription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesSubscription.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      templateDeployment: (() {
-        final guardedValue = map['templateDeployment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesTemplateDeployment.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      virtualMachine: (() {
-        final guardedValue = map['virtualMachine'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesVirtualMachine.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      virtualMachineScaleSet: (() {
-        final guardedValue = map['virtualMachineScaleSet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeaturesVirtualMachineScaleSet.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      apiManagement: (() { final guardedValue = map['apiManagement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesApiManagement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      appConfiguration: (() { final guardedValue = map['appConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesAppConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      applicationInsights: (() { final guardedValue = map['applicationInsights']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesApplicationInsights.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      cognitiveAccount: (() { final guardedValue = map['cognitiveAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesCognitiveAccount.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      databricksWorkspace: (() { final guardedValue = map['databricksWorkspace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesDatabricksWorkspace.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      keyVault: (() { final guardedValue = map['keyVault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      logAnalyticsWorkspace: (() { final guardedValue = map['logAnalyticsWorkspace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesLogAnalyticsWorkspace.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      machineLearning: (() { final guardedValue = map['machineLearning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesMachineLearning.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      managedDisk: (() { final guardedValue = map['managedDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesManagedDisk.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      netapp: (() { final guardedValue = map['netapp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesNetapp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      postgresqlFlexibleServer: (() { final guardedValue = map['postgresqlFlexibleServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesPostgresqlFlexibleServer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      recoveryService: (() { final guardedValue = map['recoveryService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesRecoveryService.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      recoveryServicesVaults: (() { final guardedValue = map['recoveryServicesVaults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesRecoveryServicesVaults.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroup: (() { final guardedValue = map['resourceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesResourceGroup.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      subscription: (() { final guardedValue = map['subscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesSubscription.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      templateDeployment: (() { final guardedValue = map['templateDeployment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesTemplateDeployment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      virtualMachine: (() { final guardedValue = map['virtualMachine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesVirtualMachine.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      virtualMachineScaleSet: (() { final guardedValue = map['virtualMachineScaleSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesVirtualMachineScaleSet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

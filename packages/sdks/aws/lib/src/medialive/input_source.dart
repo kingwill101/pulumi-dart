@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InputSource {
   /// The key used to extract the password from EC2 Parameter store.
   final pulumi.Input<String> passwordParam;
-
   /// The URL where the stream is pulled from.
   final pulumi.Input<String> url;
-
   /// The username for the input source.
   final pulumi.Input<String> username;
 
@@ -38,3 +36,4 @@ class InputSource {
     );
   }
 }
+

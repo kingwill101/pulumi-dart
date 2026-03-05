@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getUser.
 class GetUserAlloydbV1alphaResult {
   /// Optional. List of database roles this user has. The database role strings are subject to the PostgreSQL naming conventions.
   final List<String> databaseRoles;
-
   /// Name of the resource in the form of projects/{project}/locations/{location}/cluster/{cluster}/users/{user}.
   final String name;
-
   /// Input only. Password for the user.
   final String password;
-
   /// Optional. Type of this user.
   final String userType;
 
@@ -44,3 +42,4 @@ class GetUserAlloydbV1alphaResult {
     );
   }
 }
+

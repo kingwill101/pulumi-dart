@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OAuthConfigResponse {
   /// Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
   final pulumi.Input<String> clientId;
-
   /// Input only. Client secret from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
   final pulumi.Input<String> clientSecret;
 
   /// Creates a new [OAuthConfigResponse].
   /// [clientId] Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
   /// [clientSecret] Input only. Client secret from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
-  OAuthConfigResponse({required this.clientId, required this.clientSecret});
+  OAuthConfigResponse({
+    required this.clientId,
+    required this.clientSecret,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +31,4 @@ class OAuthConfigResponse {
     );
   }
 }
+

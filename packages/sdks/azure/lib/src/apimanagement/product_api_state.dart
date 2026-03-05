@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProductApiState {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementName;
-
   /// The Name of the API Management API within the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiName;
-
   /// The ID of the API Management Product within the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String>? productId;
-
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
 
@@ -39,26 +36,11 @@ class ProductApiState {
 
   factory ProductApiState.fromMap(Map<String, dynamic> map) {
     return ProductApiState(
-      apiManagementName: (() {
-        final guardedValue = map['apiManagementName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      apiName: (() {
-        final guardedValue = map['apiName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      productId: (() {
-        final guardedValue = map['productId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiManagementName: (() { final guardedValue = map['apiManagementName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      apiName: (() { final guardedValue = map['apiName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      productId: (() { final guardedValue = map['productId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -14,22 +14,13 @@ import 'custom_resource_definition_status_patch_apiextensions_k8s_io_v1beta1.dar
 class CustomResourceDefinitionPatchResource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
   late final pulumi.Output<ObjectMetaPatch?> metadata;
-
   /// spec describes how the user wants the resources to appear
-  late final pulumi.Output<
-    CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1?
-  >
-  spec;
-
+  late final pulumi.Output<CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1?> spec;
   /// status indicates the actual state of the CustomResourceDefinition
-  late final pulumi.Output<
-    CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1?
-  >
-  status;
+  late final pulumi.Output<CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1?> status;
 
   /// Creates a new [CustomResourceDefinitionPatchResource].
   /// [name] The Pulumi resource name.
@@ -40,48 +31,15 @@ class CustomResourceDefinitionPatchResource extends pulumi.CustomResource {
     CustomResourceDefinitionPatchApiextensionsK8sIoV1beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'kubernetes:apiextensions.k8s.io/v1beta1:CustomResourceDefinitionPatch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'kubernetes:apiextensions.k8s.io/v1beta1:CustomResourceDefinitionPatch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMetaPatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    spec =
-        registerOutput<
-          CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1?
-        >(
-          'spec',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    status =
-        registerOutput<
-          CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1?
-        >(
-          'status',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomResourceDefinitionSpecPatchApiextensionsK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

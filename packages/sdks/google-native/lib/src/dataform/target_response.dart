@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetResponse {
   /// The action's database (Google Cloud project ID) .
   final pulumi.Input<String> database;
-
   /// The action's name, within `database` and `schema`.
   final pulumi.Input<String> name;
-
   /// The action's schema (BigQuery dataset ID), within `database`.
   final pulumi.Input<String> schema;
 
@@ -39,3 +37,4 @@ class TargetResponse {
     );
   }
 }
+

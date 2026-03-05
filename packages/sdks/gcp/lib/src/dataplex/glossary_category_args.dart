@@ -9,28 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlossaryCategoryArgs {
   /// The category id for creation.
   final pulumi.Input<String>? categoryId;
-
   /// The user-mutable description of the GlossaryCategory.
   final pulumi.Input<String>? description;
-
   /// User friendly display name of the GlossaryCategory. This is user-mutable. This will be same as the categoryId, if not specified.
   final pulumi.Input<String>? displayName;
-
   /// The glossary id for creation.
   final pulumi.Input<String>? glossaryId;
-
   /// User-defined labels for the GlossaryCategory.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location where the glossary category should reside.
   final pulumi.Input<String> location;
-
   /// The immediate parent of the GlossaryCategory in the resource-hierarchy. It can either be a Glossary or a Category. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
   final pulumi.Input<String> parent;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -70,40 +63,15 @@ class GlossaryCategoryArgs {
 
   factory GlossaryCategoryArgs.fromMap(Map<String, dynamic> map) {
     return GlossaryCategoryArgs(
-      categoryId: (() {
-        final guardedValue = map['categoryId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      glossaryId: (() {
-        final guardedValue = map['glossaryId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      categoryId: (() { final guardedValue = map['categoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      glossaryId: (() { final guardedValue = map['glossaryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       parent: pulumi.Input.fromValue(map['parent'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

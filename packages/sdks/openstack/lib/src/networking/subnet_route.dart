@@ -223,17 +223,14 @@ class SubnetRoute extends pulumi.CustomResource {
   /// CIDR block to match on the packet’s destination IP. Changing
   /// this creates a new routing entry.
   late final pulumi.Output<String> destinationCidr;
-
   /// IP address of the next hop gateway.  Changing
   /// this creates a new routing entry.
   late final pulumi.Output<String> nextHop;
-
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to configure a routing entry on a subnet. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// routing entry.
   late final pulumi.Output<String> region;
-
   /// ID of the subnet this routing entry belongs to. Changing
   /// this creates a new routing entry.
   late final pulumi.Output<String> subnetId;
@@ -247,11 +244,11 @@ class SubnetRoute extends pulumi.CustomResource {
     SubnetRouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/subnetRoute:SubnetRoute',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/subnetRoute:SubnetRoute',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     destinationCidr = registerOutput<String>('destinationCidr');
     nextHop = registerOutput<String>('nextHop');
     region = registerOutput<String>('region');
@@ -276,11 +273,11 @@ class SubnetRoute extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/subnetRoute:SubnetRoute',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/subnetRoute:SubnetRoute',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     destinationCidr = registerOutput<String>('destinationCidr');
     nextHop = registerOutput<String>('nextHop');
     region = registerOutput<String>('region');

@@ -177,20 +177,16 @@ import 'login_profile_state.dart';
 class LoginProfile extends pulumi.CustomResource {
   /// Creation time.
   late final pulumi.Output<String> createTime;
-
   /// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
   /// - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
   /// - false (default): does not forcefully enable MFA for the RAM user.
   late final pulumi.Output<bool> mfaBindRequired;
-
   /// The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
   late final pulumi.Output<String> password;
-
   /// Whether the user must reset the password at the next logon. Value:
   /// - true
   /// - false (default)
   late final pulumi.Output<bool?> passwordResetRequired;
-
   /// The user name.
   late final pulumi.Output<String> userName;
 
@@ -203,11 +199,11 @@ class LoginProfile extends pulumi.CustomResource {
     LoginProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ram/loginProfile:LoginProfile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ram/loginProfile:LoginProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     mfaBindRequired = registerOutput<bool>('mfaBindRequired');
     password = registerOutput<String>('password');
@@ -233,11 +229,11 @@ class LoginProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ram/loginProfile:LoginProfile',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ram/loginProfile:LoginProfile',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     mfaBindRequired = registerOutput<bool>('mfaBindRequired');
     password = registerOutput<String>('password');

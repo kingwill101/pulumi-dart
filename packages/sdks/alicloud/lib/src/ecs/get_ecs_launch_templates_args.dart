@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsLaunchTemplatesArgs {
   /// Whether to query the detailed list of resource attributes. Default value: `false`.
   final pulumi.Input<bool>? enableDetails;
-
   /// A list of Launch Template IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// The name of the launch template.
   final pulumi.Input<String>? launchTemplateName;
-
   /// A regex string to filter results by Launch Template name.
   final pulumi.Input<String>? nameRegex;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The ID of the Resource Group.
   final pulumi.Input<String>? templateResourceGroupId;
-
   /// The tags of the launch template.
   final pulumi.Input<Map<String, String>>? templateTags;
 
@@ -60,43 +54,14 @@ class GetEcsLaunchTemplatesArgs {
 
   factory GetEcsLaunchTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsLaunchTemplatesArgs(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      launchTemplateName: (() {
-        final guardedValue = map['launchTemplateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      templateResourceGroupId: (() {
-        final guardedValue = map['templateResourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      templateTags: (() {
-        final guardedValue = map['templateTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      launchTemplateName: (() { final guardedValue = map['launchTemplateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      templateResourceGroupId: (() { final guardedValue = map['templateResourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      templateTags: (() { final guardedValue = map['templateTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

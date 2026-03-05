@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualMachineManagerInventoryItemsArgs {
   /// The inventory type of the System Center Virtual Machine Manager Inventory Item. Possible values are `Cloud`, `VirtualMachine`, `VirtualMachineTemplate` and `VirtualNetwork`.
   final pulumi.Input<String> inventoryType;
-
   /// The ID of the System Center Virtual Machine Manager Server.
   final pulumi.Input<String> systemCenterVirtualMachineManagerServerId;
 
@@ -24,19 +23,15 @@ class GetVirtualMachineManagerInventoryItemsArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'inventoryType': inventoryType,
-      'systemCenterVirtualMachineManagerServerId':
-          systemCenterVirtualMachineManagerServerId,
+      'systemCenterVirtualMachineManagerServerId': systemCenterVirtualMachineManagerServerId,
     };
   }
 
-  factory GetVirtualMachineManagerInventoryItemsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualMachineManagerInventoryItemsArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineManagerInventoryItemsArgs(
       inventoryType: pulumi.Input.fromValue(map['inventoryType'] as String),
-      systemCenterVirtualMachineManagerServerId: pulumi.Input.fromValue(
-        map['systemCenterVirtualMachineManagerServerId'] as String,
-      ),
+      systemCenterVirtualMachineManagerServerId: pulumi.Input.fromValue(map['systemCenterVirtualMachineManagerServerId'] as String),
     );
   }
 }
+

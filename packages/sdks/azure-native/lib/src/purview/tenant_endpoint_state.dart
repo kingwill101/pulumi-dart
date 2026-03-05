@@ -16,3 +16,4 @@ enum TenantEndpointState {
     throw ArgumentError('Unknown TenantEndpointState value: $value');
   }
 }
+

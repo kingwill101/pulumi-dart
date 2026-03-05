@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGroup.
 class GetGroupResult {
   /// The create time timestamp.
   final String createTime;
-
   /// User-provided description of the group.
   final String description;
-
   /// Display name is a user defined name for this group which can be updated.
   final String displayName;
-
   /// Immutable. The target type of this group.
   final String migrationTargetType;
-
   /// The Group name.
   final String name;
-
   /// The update time timestamp.
   final String updateTime;
 
@@ -58,3 +54,4 @@ class GetGroupResult {
     );
   }
 }
+

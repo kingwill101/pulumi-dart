@@ -11,28 +11,20 @@ import 'storage_box_snapshot_plan.dart';
 class StorageBoxArgs {
   /// Access settings of the Storage Box.
   final pulumi.Input<StorageBoxAccessSettings>? accessSettings;
-
   /// Prevent the Storage Box from being accidentally deleted outside of Terraform.
   final pulumi.Input<bool>? deleteProtection;
-
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Name of the Location.
   final pulumi.Input<String> location;
-
   /// Name of the Storage Box.
   final pulumi.Input<String>? name;
-
   /// Password of the Storage Box. For more details, see the [Storage Boxes password policy](https://docs.hetzner.cloud/reference/hetzner#storage-boxes-password-policy).
   final pulumi.Input<String> password;
-
   /// Details of the active snapshot plan.
   final pulumi.Input<StorageBoxSnapshotPlan>? snapshotPlan;
-
   /// SSH public keys in OpenSSH format to inject into the Storage Box. It is not possible to update the SSH Keys through the API, so changing this attribute forces a replace of the Storage Box.
   final pulumi.Input<List<String>>? sshKeys;
-
   /// Name of the Storage Box Type.
   final pulumi.Input<String> storageBoxType;
 
@@ -60,21 +52,13 @@ class StorageBoxArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            StorageBoxAccessSettings,
-            Map<String, dynamic>
-          >(accessSettings, (value) => value.toMap()),
+      'accessSettings': ?pulumi.Input.mapOptionalInputValue<StorageBoxAccessSettings, Map<String, dynamic>>(accessSettings, (value) => value.toMap()),
       'deleteProtection': ?deleteProtection,
       'labels': ?labels,
       'location': location,
       'name': ?name,
       'password': password,
-      'snapshotPlan':
-          ?pulumi.Input.mapOptionalInputValue<
-            StorageBoxSnapshotPlan,
-            Map<String, dynamic>
-          >(snapshotPlan, (value) => value.toMap()),
+      'snapshotPlan': ?pulumi.Input.mapOptionalInputValue<StorageBoxSnapshotPlan, Map<String, dynamic>>(snapshotPlan, (value) => value.toMap()),
       'sshKeys': ?sshKeys,
       'storageBoxType': storageBoxType,
     };
@@ -82,49 +66,16 @@ class StorageBoxArgs {
 
   factory StorageBoxArgs.fromMap(Map<String, dynamic> map) {
     return StorageBoxArgs(
-      accessSettings: (() {
-        final guardedValue = map['accessSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StorageBoxAccessSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      deleteProtection: (() {
-        final guardedValue = map['deleteProtection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      accessSettings: (() { final guardedValue = map['accessSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageBoxAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deleteProtection: (() { final guardedValue = map['deleteProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: pulumi.Input.fromValue(map['password'] as String),
-      snapshotPlan: (() {
-        final guardedValue = map['snapshotPlan'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StorageBoxSnapshotPlan.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sshKeys: (() {
-        final guardedValue = map['sshKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      snapshotPlan: (() { final guardedValue = map['snapshotPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageBoxSnapshotPlan.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sshKeys: (() { final guardedValue = map['sshKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       storageBoxType: pulumi.Input.fromValue(map['storageBoxType'] as String),
     );
   }
 }
+

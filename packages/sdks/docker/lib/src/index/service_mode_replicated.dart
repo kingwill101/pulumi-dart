@@ -8,19 +8,20 @@ class ServiceModeReplicated {
 
   /// Creates a new [ServiceModeReplicated].
   /// [replicas] The amount of replicas of the service. Defaults to `1`
-  ServiceModeReplicated({this.replicas});
+  ServiceModeReplicated({
+    this.replicas,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'replicas': ?replicas};
+    return <String, dynamic>{
+      'replicas': ?replicas,
+    };
   }
 
   factory ServiceModeReplicated.fromMap(Map<String, dynamic> map) {
     return ServiceModeReplicated(
-      replicas: (() {
-        final guardedValue = map['replicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -10,29 +10,20 @@ class DeviceClassConfiguration {
 
   /// Creates a new [DeviceClassConfiguration].
   /// [opaque] Opaque provides driver-specific configuration parameters.
-  DeviceClassConfiguration({this.opaque});
+  DeviceClassConfiguration({
+    this.opaque,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'opaque':
-          ?pulumi.Input.mapOptionalInputValue<
-            OpaqueDeviceConfiguration,
-            Map<String, dynamic>
-          >(opaque, (value) => value.toMap()),
+      'opaque': ?pulumi.Input.mapOptionalInputValue<OpaqueDeviceConfiguration, Map<String, dynamic>>(opaque, (value) => value.toMap()),
     };
   }
 
   factory DeviceClassConfiguration.fromMap(Map<String, dynamic> map) {
     return DeviceClassConfiguration(
-      opaque: (() {
-        final guardedValue = map['opaque'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OpaqueDeviceConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      opaque: (() { final guardedValue = map['opaque']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OpaqueDeviceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

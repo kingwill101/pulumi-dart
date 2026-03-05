@@ -14,8 +14,7 @@ enum ShareSettingsShareTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ShareSettingsShareTypeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown ShareSettingsShareTypeComputeBeta value: $value');
   }
 }
+

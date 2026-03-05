@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayTrustedRootCertificate {
   /// The contents of the Trusted Root Certificate which should be used. Required if `key_vault_secret_id` is not set.
   final pulumi.Input<String>? data;
-
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String>? id;
-
   /// The Secret ID of the (base-64 encoded unencrypted pfx) `Secret` or `Certificate` object stored in Azure KeyVault. You need to enable soft delete for the Key Vault to use this feature. Required if `data` is not set.
   ///
   /// &gt; **Note:** To implement certificate rotation, `versionless_secret_id` should be used, although `secret_id` is also supported.
@@ -17,7 +15,6 @@ class ApplicationGatewayTrustedRootCertificate {
   ///
   /// &gt; **Note:** For TLS termination with Key Vault certificates to work properly, an existing user-assigned managed identity, which Application Gateway uses to retrieve certificates from Key Vault, should be defined via `identity` block. Additionally, access policies in the Key Vault to allow the identity to be granted *get* access to the secret should be defined.
   final pulumi.Input<String>? keyVaultSecretId;
-
   /// The Name of the Trusted Root Certificate to use.
   final pulumi.Input<String> name;
 
@@ -42,26 +39,13 @@ class ApplicationGatewayTrustedRootCertificate {
     };
   }
 
-  factory ApplicationGatewayTrustedRootCertificate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationGatewayTrustedRootCertificate.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayTrustedRootCertificate(
-      data: (() {
-        final guardedValue = map['data'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultSecretId: (() {
-        final guardedValue = map['keyVaultSecretId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultSecretId: (() { final guardedValue = map['keyVaultSecretId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

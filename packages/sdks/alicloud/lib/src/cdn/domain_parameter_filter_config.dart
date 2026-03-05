@@ -9,24 +9,23 @@ class DomainParameterFilterConfig {
   /// Creates a new [DomainParameterFilterConfig].
   /// [enable] Optional.
   /// [hashKeyArgs] Optional.
-  DomainParameterFilterConfig({this.enable, this.hashKeyArgs});
+  DomainParameterFilterConfig({
+    this.enable,
+    this.hashKeyArgs,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enable': ?enable, 'hashKeyArgs': ?hashKeyArgs};
+    return <String, dynamic>{
+      'enable': ?enable,
+      'hashKeyArgs': ?hashKeyArgs,
+    };
   }
 
   factory DomainParameterFilterConfig.fromMap(Map<String, dynamic> map) {
     return DomainParameterFilterConfig(
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hashKeyArgs: (() {
-        final guardedValue = map['hashKeyArgs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hashKeyArgs: (() { final guardedValue = map['hashKeyArgs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

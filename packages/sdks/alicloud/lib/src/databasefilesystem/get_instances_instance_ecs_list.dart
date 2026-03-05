@@ -8,10 +8,14 @@ class GetInstancesInstanceEcsList {
 
   /// Creates a new [GetInstancesInstanceEcsList].
   /// [ecsId] The ID of the ECS instance.
-  GetInstancesInstanceEcsList({required this.ecsId});
+  GetInstancesInstanceEcsList({
+    required this.ecsId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ecsId': ecsId};
+    return <String, dynamic>{
+      'ecsId': ecsId,
+    };
   }
 
   factory GetInstancesInstanceEcsList.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetInstancesInstanceEcsList {
     );
   }
 }
+

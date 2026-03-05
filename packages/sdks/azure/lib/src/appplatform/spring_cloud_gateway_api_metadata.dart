@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudGatewayApiMetadata {
   /// Detailed description of the APIs available on the Gateway instance.
   final pulumi.Input<String>? description;
-
   /// Location of additional documentation for the APIs available on the Gateway instance.
   final pulumi.Input<String>? documentationUrl;
-
   /// Base URL that API consumers will use to access APIs on the Gateway instance.
   final pulumi.Input<String>? serverUrl;
-
   /// Specifies the title describing the context of the APIs available on the Gateway instance.
   final pulumi.Input<String>? title;
-
   /// Specifies the version of APIs available on this Gateway instance.
   final pulumi.Input<String>? version;
 
@@ -44,31 +40,12 @@ class SpringCloudGatewayApiMetadata {
 
   factory SpringCloudGatewayApiMetadata.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayApiMetadata(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      documentationUrl: (() {
-        final guardedValue = map['documentationUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverUrl: (() {
-        final guardedValue = map['serverUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      title: (() {
-        final guardedValue = map['title'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      documentationUrl: (() { final guardedValue = map['documentationUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverUrl: (() { final guardedValue = map['serverUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

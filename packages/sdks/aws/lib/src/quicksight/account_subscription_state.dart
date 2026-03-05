@@ -6,66 +6,46 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountSubscriptionState {
   /// Name of your Amazon QuickSight account. This name is unique over all of AWS, and it appears only when users sign in.
   final pulumi.Input<String>? accountName;
-
   /// Status of the Amazon QuickSight account's subscription.
   final pulumi.Input<String>? accountSubscriptionStatus;
-
   /// Name of your Active Directory. This field is required if `ACTIVE_DIRECTORY` is the selected authentication method of the new Amazon QuickSight account.
   final pulumi.Input<String>? activeDirectoryName;
-
   /// Admin group associated with your Active Directory or IAM Identity Center account. This field is required if `ACTIVE_DIRECTORY` or `IAM_IDENTITY_CENTER` is the selected authentication method of the new Amazon QuickSight account.
   final pulumi.Input<List<String>>? adminGroups;
-
   /// Admin PRO group associated with your Active Directory or IAM Identity Center account.
   final pulumi.Input<List<String>>? adminProGroups;
-
   /// Method that you want to use to authenticate your Amazon QuickSight account. Currently, the valid values for this parameter are `IAM_AND_QUICKSIGHT`, `IAM_ONLY`, `IAM_IDENTITY_CENTER`, and `ACTIVE_DIRECTORY`.
   final pulumi.Input<String>? authenticationMethod;
-
   /// Author group associated with your Active Directory or IAM Identity Center account.
   final pulumi.Input<List<String>>? authorGroups;
-
   /// Author PRO group associated with your Active Directory or IAM Identity Center account.
   final pulumi.Input<List<String>>? authorProGroups;
-
   /// AWS account ID. Defaults to automatically determined account ID of the Pulumi AWS provider.
   final pulumi.Input<String>? awsAccountId;
-
   /// A 10-digit phone number for the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   final pulumi.Input<String>? contactNumber;
-
   /// Active Directory ID that is associated with your Amazon QuickSight account.
   final pulumi.Input<String>? directoryId;
-
   /// Edition of Amazon QuickSight that you want your account to have. Currently, you can choose from `STANDARD`, `ENTERPRISE` or `ENTERPRISE_AND_Q`.
   final pulumi.Input<String>? edition;
-
   /// Email address of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   final pulumi.Input<String>? emailAddress;
-
   /// First name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   final pulumi.Input<String>? firstName;
-
   /// The Amazon Resource Name (ARN) for the IAM Identity Center instance.
   final pulumi.Input<String>? iamIdentityCenterInstanceArn;
-
   /// Last name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   final pulumi.Input<String>? lastName;
-
   /// Email address that you want Amazon QuickSight to send notifications to regarding your Amazon QuickSight account or Amazon QuickSight subscription.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? notificationEmail;
-
   /// Reader group associated with your Active Directory or IAM Identity Center account.
   final pulumi.Input<List<String>>? readerGroups;
-
   /// Reader PRO group associated with your Active Directory or IAM Identity Center account.
   final pulumi.Input<List<String>>? readerProGroups;
-
   /// Realm of the Active Directory that is associated with your Amazon QuickSight account.
   final pulumi.Input<String>? realm;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -143,111 +123,28 @@ class AccountSubscriptionState {
 
   factory AccountSubscriptionState.fromMap(Map<String, dynamic> map) {
     return AccountSubscriptionState(
-      accountName: (() {
-        final guardedValue = map['accountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      accountSubscriptionStatus: (() {
-        final guardedValue = map['accountSubscriptionStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      activeDirectoryName: (() {
-        final guardedValue = map['activeDirectoryName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      adminGroups: (() {
-        final guardedValue = map['adminGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      adminProGroups: (() {
-        final guardedValue = map['adminProGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      authenticationMethod: (() {
-        final guardedValue = map['authenticationMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      authorGroups: (() {
-        final guardedValue = map['authorGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      authorProGroups: (() {
-        final guardedValue = map['authorProGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      awsAccountId: (() {
-        final guardedValue = map['awsAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contactNumber: (() {
-        final guardedValue = map['contactNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      directoryId: (() {
-        final guardedValue = map['directoryId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      edition: (() {
-        final guardedValue = map['edition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      emailAddress: (() {
-        final guardedValue = map['emailAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      firstName: (() {
-        final guardedValue = map['firstName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      iamIdentityCenterInstanceArn: (() {
-        final guardedValue = map['iamIdentityCenterInstanceArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastName: (() {
-        final guardedValue = map['lastName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      notificationEmail: (() {
-        final guardedValue = map['notificationEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      readerGroups: (() {
-        final guardedValue = map['readerGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      readerProGroups: (() {
-        final guardedValue = map['readerProGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      realm: (() {
-        final guardedValue = map['realm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accountSubscriptionStatus: (() { final guardedValue = map['accountSubscriptionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      activeDirectoryName: (() { final guardedValue = map['activeDirectoryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      adminGroups: (() { final guardedValue = map['adminGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      adminProGroups: (() { final guardedValue = map['adminProGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      authenticationMethod: (() { final guardedValue = map['authenticationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authorGroups: (() { final guardedValue = map['authorGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      authorProGroups: (() { final guardedValue = map['authorProGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      awsAccountId: (() { final guardedValue = map['awsAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contactNumber: (() { final guardedValue = map['contactNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      directoryId: (() { final guardedValue = map['directoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      emailAddress: (() { final guardedValue = map['emailAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      firstName: (() { final guardedValue = map['firstName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      iamIdentityCenterInstanceArn: (() { final guardedValue = map['iamIdentityCenterInstanceArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastName: (() { final guardedValue = map['lastName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notificationEmail: (() { final guardedValue = map['notificationEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      readerGroups: (() { final guardedValue = map['readerGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      readerProGroups: (() { final guardedValue = map['readerProGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      realm: (() { final guardedValue = map['realm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

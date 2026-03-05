@@ -19,7 +19,6 @@ class GetRegionBackendServiceHaPolicy {
   /// forwarding rule IP address with that VM, and both new and in-flight packets
   /// are quickly delivered to that VM. Possible values: ["DISABLED", "GARP_RA"]
   final pulumi.Input<String> fastIpMove;
-
   /// Selects one of the network endpoints attached to the backend NEGs of this service as the
   /// active endpoint (the leader) that receives all traffic.
   final pulumi.Input<List<GetRegionBackendServiceHaPolicyLeader>> leaders;
@@ -35,32 +34,15 @@ class GetRegionBackendServiceHaPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fastIpMove': fastIpMove,
-      'leaders':
-          pulumi.Input.mapInputValue<
-            List<GetRegionBackendServiceHaPolicyLeader>,
-            List<Map<String, dynamic>>
-          >(
-            leaders,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRegionBackendServiceHaPolicyLeader,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'leaders': pulumi.Input.mapInputValue<List<GetRegionBackendServiceHaPolicyLeader>, List<Map<String, dynamic>>>(leaders, (value) => pulumi.Input.encodeList<GetRegionBackendServiceHaPolicyLeader, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetRegionBackendServiceHaPolicy.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceHaPolicy(
       fastIpMove: pulumi.Input.fromValue(map['fastIpMove'] as String),
-      leaders: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetRegionBackendServiceHaPolicyLeader>(
-          map['leaders']!,
-          (value) => GetRegionBackendServiceHaPolicyLeader.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      leaders: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionBackendServiceHaPolicyLeader>(map['leaders']!, (value) => GetRegionBackendServiceHaPolicyLeader.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

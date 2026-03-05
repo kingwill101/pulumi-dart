@@ -224,31 +224,22 @@ import 'user_secret_store_response.dart';
 class User extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The creation date of the user profile.
   late final pulumi.Output<String> createdDate;
-
   /// The identity of the user.
   late final pulumi.Output<UserIdentityResponse?> identity;
-
   /// The location of the resource.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The secret store of the user.
   late final pulumi.Output<UserSecretStoreResponse?> secretStore;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
 
@@ -256,38 +247,23 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_devtestlab_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:devtestlab:User',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  User(
+    String name, {
+    UserArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:devtestlab:User',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdDate = registerOutput<String>('createdDate');
-    identity = registerOutput<UserIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<UserIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    secretStore = registerOutput<UserSecretStoreResponse?>(
-      'secretStore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserSecretStoreResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    secretStore = registerOutput<UserSecretStoreResponse?>('secretStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserSecretStoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');

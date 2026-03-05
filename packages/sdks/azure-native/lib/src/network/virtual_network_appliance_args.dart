@@ -10,22 +10,16 @@ import 'subnet_network.dart';
 class VirtualNetworkApplianceArgs {
   /// Bandwidth of the VirtualNetworkAppliance resource in Gbps.
   final pulumi.Input<String>? bandwidthInGbps;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// Resource location.
   final pulumi.Input<String>? location;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The reference to the subnet resource.
   final pulumi.Input<SubnetNetwork>? subnet;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The name of the virtual network appliance.
   final pulumi.Input<String>? virtualNetworkApplianceName;
 
@@ -61,41 +55,14 @@ class VirtualNetworkApplianceArgs {
 
   factory VirtualNetworkApplianceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkApplianceArgs(
-      bandwidthInGbps: (() {
-        final guardedValue = map['bandwidthInGbps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      subnet: (() {
-        final guardedValue = map['subnet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as SubnetNetwork);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      virtualNetworkApplianceName: (() {
-        final guardedValue = map['virtualNetworkApplianceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bandwidthInGbps: (() { final guardedValue = map['bandwidthInGbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as SubnetNetwork); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      virtualNetworkApplianceName: (() { final guardedValue = map['virtualNetworkApplianceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

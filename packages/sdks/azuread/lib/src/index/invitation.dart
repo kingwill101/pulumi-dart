@@ -359,22 +359,16 @@ import 'invitation_state.dart';
 class Invitation extends pulumi.CustomResource {
   /// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
   late final pulumi.Output<InvitationMessage?> message;
-
   /// The URL the user can use to redeem their invitation.
   late final pulumi.Output<String> redeemUrl;
-
   /// The URL that the user should be redirected to once the invitation is redeemed.
   late final pulumi.Output<String> redirectUrl;
-
   /// The display name of the user being invited.
   late final pulumi.Output<String?> userDisplayName;
-
   /// The email address of the user being invited.
   late final pulumi.Output<String> userEmailAddress;
-
   /// Object ID of the invited user.
   late final pulumi.Output<String> userId;
-
   /// The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
   late final pulumi.Output<String?> userType;
 
@@ -387,21 +381,12 @@ class Invitation extends pulumi.CustomResource {
     InvitationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/invitation:Invitation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    message = registerOutput<InvitationMessage?>(
-      'message',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InvitationMessage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azuread:index/invitation:Invitation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    message = registerOutput<InvitationMessage?>('message', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvitationMessage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     redeemUrl = registerOutput<String>('redeemUrl');
     redirectUrl = registerOutput<String>('redirectUrl');
     userDisplayName = registerOutput<String?>('userDisplayName');
@@ -428,21 +413,12 @@ class Invitation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/invitation:Invitation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    message = registerOutput<InvitationMessage?>(
-      'message',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InvitationMessage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azuread:index/invitation:Invitation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    message = registerOutput<InvitationMessage?>('message', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvitationMessage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     redeemUrl = registerOutput<String>('redeemUrl');
     redirectUrl = registerOutput<String>('redirectUrl');
     userDisplayName = registerOutput<String?>('userDisplayName');

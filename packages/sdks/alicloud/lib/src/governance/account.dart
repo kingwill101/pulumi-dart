@@ -14,38 +14,30 @@ class Account extends pulumi.CustomResource {
   /// - If you are creating a new resource account, this parameter is not required.
   /// - If you are enrolling a existing account to account factory, this parameter is required.
   late final pulumi.Output<int> accountId;
-
   /// Account name prefix.
   /// - This parameter is required if you are creating a new resource account.
   /// - If the registration application is applied to an existing account, this parameter does not need to be filled in.
   late final pulumi.Output<String?> accountNamePrefix;
-
   /// The tags of the account See `account_tags` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> accountTags;
-
   /// The baseline ID.
   ///
   /// If it is left blank, the system default baseline is used by default.
   late final pulumi.Output<String> baselineId;
-
   /// The domain name is used to qualify the login name of RAM users and RAM roles.
   late final pulumi.Output<String?> defaultDomainName;
-
   /// The account display name.
   /// - This parameter is required if you are creating a new resource account.
   /// - If the registration application is applied to an existing account, this parameter does not need to be filled in.
   late final pulumi.Output<String?> displayName;
-
   /// The ID of the parent resource folder.
   ///
   /// If you want to create a new resource account and leave this parameter blank, the account is created in the Root folder by default.
   ///
   /// If the registration application is applied to an existing account, this parameter does not need to be filled in.
   late final pulumi.Output<String?> folderId;
-
   /// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
   late final pulumi.Output<int?> payerAccountId;
-
   /// Account registration status. Value:
   late final pulumi.Output<String> status;
 
@@ -58,11 +50,11 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:governance/account:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:governance/account:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<int>('accountId');
     accountNamePrefix = registerOutput<String?>('accountNamePrefix');
     accountTags = registerOutput<List<Map<String, dynamic>>?>('accountTags');
@@ -92,11 +84,11 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:governance/account:Account',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:governance/account:Account',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<int>('accountId');
     accountNamePrefix = registerOutput<String?>('accountNamePrefix');
     accountTags = registerOutput<List<Map<String, dynamic>>?>('accountTags');

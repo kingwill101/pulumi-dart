@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecuritySolutionAdditionalWorkspace {
   /// A list of data types which sent to workspace. Possible values are `Alerts` and `RawEvents`.
   final pulumi.Input<List<String>> dataTypes;
-
   /// The resource ID of the Log Analytics Workspace.
   final pulumi.Input<String> workspaceId;
 
@@ -24,14 +23,11 @@ class SecuritySolutionAdditionalWorkspace {
     };
   }
 
-  factory SecuritySolutionAdditionalWorkspace.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecuritySolutionAdditionalWorkspace.fromMap(Map<String, dynamic> map) {
     return SecuritySolutionAdditionalWorkspace(
-      dataTypes: pulumi.Input.fromValue(
-        (map['dataTypes'] as List).cast<String>(),
-      ),
+      dataTypes: pulumi.Input.fromValue((map['dataTypes'] as List).cast<String>()),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
+

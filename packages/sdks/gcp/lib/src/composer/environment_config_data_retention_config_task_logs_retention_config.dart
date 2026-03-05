@@ -13,18 +13,15 @@ class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'storageMode': ?storageMode};
+    return <String, dynamic>{
+      'storageMode': ?storageMode,
+    };
   }
 
-  factory EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig(
-      storageMode: (() {
-        final guardedValue = map['storageMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      storageMode: (() { final guardedValue = map['storageMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

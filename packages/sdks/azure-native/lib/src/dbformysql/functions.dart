@@ -113,8 +113,10 @@ Future<GetFirewallRuleResult> getFirewallRule(
 ///
 /// Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-12-01-preview, 2023-12-30, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
-Future<GetGetPrivateDnsZoneSuffixExecuteResult>
-getGetPrivateDnsZoneSuffixExecute({pulumi.InvokeOptions? options}) async {
+Future<GetGetPrivateDnsZoneSuffixExecuteResult> getGetPrivateDnsZoneSuffixExecute(
+  {
+  pulumi.InvokeOptions? options,
+}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'azure-native:dbformysql:getGetPrivateDnsZoneSuffixExecute',
@@ -259,8 +261,7 @@ Future<GetSingleServerFirewallRuleResult> getSingleServerFirewallRule(
 /// Uses Azure REST API version 2017-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dbformysql_get_single_server_server_administrator_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSingleServerServerAdministratorResult>
-getSingleServerServerAdministrator(
+Future<GetSingleServerServerAdministratorResult> getSingleServerServerAdministrator(
   GetSingleServerServerAdministratorArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -278,8 +279,7 @@ getSingleServerServerAdministrator(
 /// Uses Azure REST API version 2017-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dbformysql_get_single_server_virtual_network_rule_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSingleServerVirtualNetworkRuleResult>
-getSingleServerVirtualNetworkRule(
+Future<GetSingleServerVirtualNetworkRuleResult> getSingleServerVirtualNetworkRule(
   GetSingleServerVirtualNetworkRuleArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessControlRulesRoleResponse {
   /// The name of the role.
   final pulumi.Input<String> name;
-
   /// A list of privileges needed by this role.
   final pulumi.Input<List<String>> privileges;
 
@@ -19,15 +18,17 @@ class AccessControlRulesRoleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'privileges': privileges};
+    return <String, dynamic>{
+      'name': name,
+      'privileges': privileges,
+    };
   }
 
   factory AccessControlRulesRoleResponse.fromMap(Map<String, dynamic> map) {
     return AccessControlRulesRoleResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      privileges: pulumi.Input.fromValue(
-        (map['privileges'] as List).cast<String>(),
-      ),
+      privileges: pulumi.Input.fromValue((map['privileges'] as List).cast<String>()),
     );
   }
 }
+

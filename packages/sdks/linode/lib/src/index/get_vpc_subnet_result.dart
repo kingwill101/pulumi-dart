@@ -8,20 +8,15 @@ import 'get_vpc_subnet_linode.dart';
 class GetVpcSubnetResult {
   /// The date and time when the VPC Subnet was created.
   final String created;
-
   /// ID of the interface.
   final String id;
-
   /// The IPv4 range of this subnet in CIDR format.
   final String ipv4;
   final List<GetVpcSubnetIpv6> ipv6s;
-
   /// The label of the VPC subnet.
   final String label;
-
   /// A list of Linodes added to this subnet.
   final List<GetVpcSubnetLinode> linodes;
-
   /// The date and time when the VPC Subnet was last updated.
   final String updated;
   final int vpcId;
@@ -51,16 +46,9 @@ class GetVpcSubnetResult {
       'created': created,
       'id': id,
       'ipv4': ipv4,
-      'ipv6s': pulumi.Input.encodeList<GetVpcSubnetIpv6, Map<String, dynamic>>(
-        ipv6s,
-        (value) => value.toMap(),
-      ),
+      'ipv6s': pulumi.Input.encodeList<GetVpcSubnetIpv6, Map<String, dynamic>>(ipv6s, (value) => value.toMap()),
       'label': label,
-      'linodes':
-          pulumi.Input.encodeList<GetVpcSubnetLinode, Map<String, dynamic>>(
-            linodes,
-            (value) => value.toMap(),
-          ),
+      'linodes': pulumi.Input.encodeList<GetVpcSubnetLinode, Map<String, dynamic>>(linodes, (value) => value.toMap()),
       'updated': updated,
       'vpcId': vpcId,
     };
@@ -71,19 +59,12 @@ class GetVpcSubnetResult {
       created: map['created'] as String,
       id: map['id'] as String,
       ipv4: map['ipv4'] as String,
-      ipv6s: pulumi.Input.decodeList<GetVpcSubnetIpv6>(
-        map['ipv6s']!,
-        (value) =>
-            GetVpcSubnetIpv6.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      ipv6s: pulumi.Input.decodeList<GetVpcSubnetIpv6>(map['ipv6s']!, (value) => GetVpcSubnetIpv6.fromMap((value as Map).cast<String, dynamic>())),
       label: map['label'] as String,
-      linodes: pulumi.Input.decodeList<GetVpcSubnetLinode>(
-        map['linodes']!,
-        (value) =>
-            GetVpcSubnetLinode.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      linodes: pulumi.Input.decodeList<GetVpcSubnetLinode>(map['linodes']!, (value) => GetVpcSubnetLinode.fromMap((value as Map).cast<String, dynamic>())),
       updated: map['updated'] as String,
       vpcId: map['vpcId'] as int,
     );
   }
 }
+

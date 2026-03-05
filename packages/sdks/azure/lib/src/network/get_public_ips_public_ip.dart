@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPublicIPsPublicIp {
   /// The Domain Name Label of the Public IP Address
   final pulumi.Input<String> domainNameLabel;
-
   /// The FQDN of the Public IP Address
   final pulumi.Input<String> fqdn;
-
   /// The ID of the Public IP Address
   final pulumi.Input<String> id;
-
   /// The IP address of the Public IP Address
   final pulumi.Input<String> ipAddress;
-
   /// The Name of the Public IP Address
   final pulumi.Input<String> name;
 
@@ -52,3 +48,4 @@ class GetPublicIPsPublicIp {
     );
   }
 }
+

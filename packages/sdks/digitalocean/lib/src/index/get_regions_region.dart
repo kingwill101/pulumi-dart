@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionsRegion {
   /// A boolean value that represents whether new Droplets can be created in this region.
   final pulumi.Input<bool> available;
-
   /// A set of features available in this region.
   final pulumi.Input<List<String>> features;
-
   /// The display name of the region.
   final pulumi.Input<String> name;
-
   /// A set of identifying slugs for the Droplet sizes available in this region.
   final pulumi.Input<List<String>> sizes;
-
   /// A human-readable string that is used as a unique identifier for each region.
   final pulumi.Input<String> slug;
 
@@ -45,12 +41,11 @@ class GetRegionsRegion {
   factory GetRegionsRegion.fromMap(Map<String, dynamic> map) {
     return GetRegionsRegion(
       available: pulumi.Input.fromValue(map['available'] as bool),
-      features: pulumi.Input.fromValue(
-        (map['features'] as List).cast<String>(),
-      ),
+      features: pulumi.Input.fromValue((map['features'] as List).cast<String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       sizes: pulumi.Input.fromValue((map['sizes'] as List).cast<String>()),
       slug: pulumi.Input.fromValue(map['slug'] as String),
     );
   }
 }
+

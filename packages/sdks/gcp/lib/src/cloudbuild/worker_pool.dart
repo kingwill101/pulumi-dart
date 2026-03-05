@@ -518,45 +518,32 @@ class WorkerPool extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// Output only. Time at which the request to create the `WorkerPool` was received.
   late final pulumi.Output<String> createTime;
-
   /// Output only. Time at which the request to delete the `WorkerPool` was received.
   late final pulumi.Output<String> deleteTime;
-
   /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
   late final pulumi.Output<String?> displayName;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// The location for the resource
   late final pulumi.Output<String> location;
-
   /// User-defined name of the `WorkerPool`.
   ///
   ///
   /// - - -
   late final pulumi.Output<String> name;
-
   /// Network configuration for the `WorkerPool`. Structure is documented below.
   late final pulumi.Output<WorkerPoolNetworkConfig?> networkConfig;
-
   /// Private Service Connect configuration for the pool.
-  late final pulumi.Output<WorkerPoolPrivateServiceConnect?>
-  privateServiceConnect;
-
+  late final pulumi.Output<WorkerPoolPrivateServiceConnect?> privateServiceConnect;
   /// The project for the resource
   late final pulumi.Output<String> project;
-
   /// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
   late final pulumi.Output<String> state;
-
   /// Output only. A unique identifier for the `WorkerPool`.
   late final pulumi.Output<String> uid;
-
   /// Output only. Time at which the request to update the `WorkerPool` was received.
   late final pulumi.Output<String> updateTime;
-
   /// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
   late final pulumi.Output<WorkerPoolWorkerConfig> workerConfig;
 
@@ -569,54 +556,25 @@ class WorkerPool extends pulumi.CustomResource {
     WorkerPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:cloudbuild/workerPool:WorkerPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:cloudbuild/workerPool:WorkerPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<WorkerPoolNetworkConfig?>(
-      'networkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkerPoolNetworkConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateServiceConnect = registerOutput<WorkerPoolPrivateServiceConnect?>(
-      'privateServiceConnect',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkerPoolPrivateServiceConnect.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkConfig = registerOutput<WorkerPoolNetworkConfig?>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateServiceConnect = registerOutput<WorkerPoolPrivateServiceConnect?>('privateServiceConnect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolPrivateServiceConnect.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    workerConfig = registerOutput<WorkerPoolWorkerConfig>(
-      'workerConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkerPoolWorkerConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    workerConfig = registerOutput<WorkerPoolWorkerConfig>('workerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolWorkerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [WorkerPool] resource's state with the given [name] and [id].
@@ -637,53 +595,24 @@ class WorkerPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:cloudbuild/workerPool:WorkerPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:cloudbuild/workerPool:WorkerPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<WorkerPoolNetworkConfig?>(
-      'networkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkerPoolNetworkConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateServiceConnect = registerOutput<WorkerPoolPrivateServiceConnect?>(
-      'privateServiceConnect',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkerPoolPrivateServiceConnect.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkConfig = registerOutput<WorkerPoolNetworkConfig?>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateServiceConnect = registerOutput<WorkerPoolPrivateServiceConnect?>('privateServiceConnect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolPrivateServiceConnect.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    workerConfig = registerOutput<WorkerPoolWorkerConfig>(
-      'workerConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkerPoolWorkerConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    workerConfig = registerOutput<WorkerPoolWorkerConfig>('workerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolWorkerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

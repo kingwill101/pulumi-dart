@@ -10,7 +10,6 @@ class BrandArgs {
   /// Application name displayed on OAuth consent screen.
   final pulumi.Input<String>? applicationTitle;
   final pulumi.Input<String>? project;
-
   /// Support email displayed on the OAuth consent screen.
   final pulumi.Input<String>? supportEmail;
 
@@ -18,7 +17,11 @@ class BrandArgs {
   /// [applicationTitle] Application name displayed on OAuth consent screen.
   /// [project] Optional.
   /// [supportEmail] Support email displayed on the OAuth consent screen.
-  BrandArgs({this.applicationTitle, this.project, this.supportEmail});
+  BrandArgs({
+    this.applicationTitle,
+    this.project,
+    this.supportEmail,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,21 +33,10 @@ class BrandArgs {
 
   factory BrandArgs.fromMap(Map<String, dynamic> map) {
     return BrandArgs(
-      applicationTitle: (() {
-        final guardedValue = map['applicationTitle'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      supportEmail: (() {
-        final guardedValue = map['supportEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationTitle: (() { final guardedValue = map['applicationTitle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      supportEmail: (() { final guardedValue = map['supportEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

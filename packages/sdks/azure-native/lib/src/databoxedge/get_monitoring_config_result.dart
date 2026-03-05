@@ -8,19 +8,14 @@ import 'system_data_response.dart';
 class GetMonitoringConfigResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The path ID that uniquely identifies the object.
   final String id;
-
   /// The metrics configuration details
   final List<MetricConfigurationResponse> metricConfigurations;
-
   /// The object name.
   final String name;
-
   /// Metadata pertaining to creation and last modification of MonitoringConfiguration
   final SystemDataResponse systemData;
-
   /// The hierarchical type of the object.
   final String type;
 
@@ -44,11 +39,7 @@ class GetMonitoringConfigResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'id': id,
-      'metricConfigurations':
-          pulumi.Input.encodeList<
-            MetricConfigurationResponse,
-            Map<String, dynamic>
-          >(metricConfigurations, (value) => value.toMap()),
+      'metricConfigurations': pulumi.Input.encodeList<MetricConfigurationResponse, Map<String, dynamic>>(metricConfigurations, (value) => value.toMap()),
       'name': name,
       'systemData': systemData.toMap(),
       'type': type,
@@ -59,18 +50,11 @@ class GetMonitoringConfigResult {
     return GetMonitoringConfigResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      metricConfigurations:
-          pulumi.Input.decodeList<MetricConfigurationResponse>(
-            map['metricConfigurations']!,
-            (value) => MetricConfigurationResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      metricConfigurations: pulumi.Input.decodeList<MetricConfigurationResponse>(map['metricConfigurations']!, (value) => MetricConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

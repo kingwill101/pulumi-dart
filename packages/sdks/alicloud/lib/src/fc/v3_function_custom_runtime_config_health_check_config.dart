@@ -37,40 +37,15 @@ class V3FunctionCustomRuntimeConfigHealthCheckConfig {
     };
   }
 
-  factory V3FunctionCustomRuntimeConfigHealthCheckConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V3FunctionCustomRuntimeConfigHealthCheckConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionCustomRuntimeConfigHealthCheckConfig(
-      failureThreshold: (() {
-        final guardedValue = map['failureThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      httpGetUrl: (() {
-        final guardedValue = map['httpGetUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      initialDelaySeconds: (() {
-        final guardedValue = map['initialDelaySeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      periodSeconds: (() {
-        final guardedValue = map['periodSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      successThreshold: (() {
-        final guardedValue = map['successThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timeoutSeconds: (() {
-        final guardedValue = map['timeoutSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      httpGetUrl: (() { final guardedValue = map['httpGetUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      initialDelaySeconds: (() { final guardedValue = map['initialDelaySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      periodSeconds: (() { final guardedValue = map['periodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      successThreshold: (() { final guardedValue = map['successThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

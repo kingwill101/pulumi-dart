@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProviderInstanceArgs {
   /// Name of the SAP monitor resource.
   final pulumi.Input<String> monitorName;
-
   /// Name of the provider instance.
   final pulumi.Input<String> providerInstanceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetProviderInstanceArgs {
   factory GetProviderInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetProviderInstanceArgs(
       monitorName: pulumi.Input.fromValue(map['monitorName'] as String),
-      providerInstanceName: pulumi.Input.fromValue(
-        map['providerInstanceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      providerInstanceName: pulumi.Input.fromValue(map['providerInstanceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

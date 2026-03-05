@@ -8,14 +8,11 @@ import 'brand_args.dart';
 class Brand extends pulumi.CustomResource {
   /// Application name displayed on OAuth consent screen.
   late final pulumi.Output<String> applicationTitle;
-
   /// Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
   late final pulumi.Output<String> name;
-
   /// Whether the brand is only intended for usage inside the G Suite organization only.
   late final pulumi.Output<bool> orgInternalOnly;
   late final pulumi.Output<String> project;
-
   /// Support email displayed on the OAuth consent screen.
   late final pulumi.Output<String> supportEmail;
 
@@ -23,13 +20,16 @@ class Brand extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Brand]. {@macro pulumi_iap_v1_brand_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Brand(String name, {BrandArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'google-native:iap/v1:Brand',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Brand(
+    String name, {
+    BrandArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'google-native:iap/v1:Brand',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationTitle = registerOutput<String>('applicationTitle');
     this.name = registerOutput<String>('name');
     orgInternalOnly = registerOutput<bool>('orgInternalOnly');

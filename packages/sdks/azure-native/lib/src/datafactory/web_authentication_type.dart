@@ -16,3 +16,4 @@ enum WebAuthenticationType {
     throw ArgumentError('Unknown WebAuthenticationType value: $value');
   }
 }
+

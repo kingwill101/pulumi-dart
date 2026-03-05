@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListCatalogDeviceGroupsArgs {
   /// Name of catalog
   final pulumi.Input<String> catalogName;
-
   /// Device Group name.
   final pulumi.Input<String>? deviceGroupName;
-
   /// Filter the result list using the given expression
   final pulumi.Input<String>? filter;
-
   /// The maximum number of result items per page.
   final pulumi.Input<int>? maxpagesize;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The number of result items to skip.
   final pulumi.Input<int>? skip;
-
   /// The number of result items to return.
   final pulumi.Input<int>? top;
 
@@ -61,34 +55,13 @@ class ListCatalogDeviceGroupsArgs {
   factory ListCatalogDeviceGroupsArgs.fromMap(Map<String, dynamic> map) {
     return ListCatalogDeviceGroupsArgs(
       catalogName: pulumi.Input.fromValue(map['catalogName'] as String),
-      deviceGroupName: (() {
-        final guardedValue = map['deviceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxpagesize: (() {
-        final guardedValue = map['maxpagesize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      skip: (() {
-        final guardedValue = map['skip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      top: (() {
-        final guardedValue = map['top'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      deviceGroupName: (() { final guardedValue = map['deviceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxpagesize: (() { final guardedValue = map['maxpagesize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      skip: (() { final guardedValue = map['skip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

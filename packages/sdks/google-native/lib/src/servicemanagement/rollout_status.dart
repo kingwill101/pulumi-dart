@@ -20,3 +20,4 @@ enum RolloutStatus {
     throw ArgumentError('Unknown RolloutStatus value: $value');
   }
 }
+

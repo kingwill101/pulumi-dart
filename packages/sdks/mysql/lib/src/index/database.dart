@@ -110,7 +110,6 @@ class Database extends pulumi.CustomResource {
   /// a table is created without specifying an explicit character set. Defaults
   /// to "utf8".
   late final pulumi.Output<String?> defaultCharacterSet;
-
   /// The default collation to use when a table
   /// is created without specifying an explicit collation. Defaults to
   /// ``utf8_general_ci``. Each character set has its own set of collations, so
@@ -123,7 +122,6 @@ class Database extends pulumi.CustomResource {
   /// configuration and then set the ``default_character_set`` and
   /// ``default_collation`` to match.
   late final pulumi.Output<String?> defaultCollation;
-
   /// The name of the database. This must be unique within
   /// a given MySQL server and may or may not be case-sensitive depending on
   /// the operating system on which the MySQL server is running.
@@ -138,11 +136,11 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'mysql:index/database:Database',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'mysql:index/database:Database',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defaultCharacterSet = registerOutput<String?>('defaultCharacterSet');
     defaultCollation = registerOutput<String?>('defaultCollation');
     this.name = registerOutput<String>('name');
@@ -166,11 +164,11 @@ class Database extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'mysql:index/database:Database',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'mysql:index/database:Database',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defaultCharacterSet = registerOutput<String?>('defaultCharacterSet');
     defaultCollation = registerOutput<String?>('defaultCollation');
     this.name = registerOutput<String>('name');

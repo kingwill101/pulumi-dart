@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FabricNames {
   /// Fabric one lake house name.
   final pulumi.Input<String> lakehouseName;
-
   /// Fabric one lake workspace name.
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [FabricNames].
   /// [lakehouseName] Fabric one lake house name.
   /// [workspaceName] Fabric one lake workspace name.
-  FabricNames({required this.lakehouseName, required this.workspaceName});
+  FabricNames({
+    required this.lakehouseName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +31,4 @@ class FabricNames {
     );
   }
 }
+

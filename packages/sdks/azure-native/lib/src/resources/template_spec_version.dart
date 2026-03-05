@@ -188,34 +188,24 @@ import 'template_spec_version_args.dart';
 class TemplateSpecVersion extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Template Spec version description.
   late final pulumi.Output<String?> description;
-
   /// An array of linked template artifacts.
   late final pulumi.Output<List<Map<String, dynamic>>?> linkedTemplates;
-
   /// The location of the Template Spec Version. It must match the location of the parent Template Spec.
   late final pulumi.Output<String> location;
-
   /// The main Azure Resource Manager template content.
   late final pulumi.Output<dynamic> mainTemplate;
-
   /// The version metadata. Metadata is an open-ended object and is typically a collection of key-value pairs.
   late final pulumi.Output<dynamic> metadata;
-
   /// Name of this resource.
   late final pulumi.Output<String> name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Type of this resource.
   late final pulumi.Output<String> type;
-
   /// The Azure Resource Manager template UI definition content.
   late final pulumi.Output<dynamic> uiFormDefinition;
 
@@ -228,30 +218,19 @@ class TemplateSpecVersion extends pulumi.CustomResource {
     TemplateSpecVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:resources:TemplateSpecVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:resources:TemplateSpecVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
-    linkedTemplates = registerOutput<List<Map<String, dynamic>>?>(
-      'linkedTemplates',
-    );
+    linkedTemplates = registerOutput<List<Map<String, dynamic>>?>('linkedTemplates');
     location = registerOutput<String>('location');
     mainTemplate = registerOutput<dynamic>('mainTemplate');
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uiFormDefinition = registerOutput<dynamic>('uiFormDefinition');

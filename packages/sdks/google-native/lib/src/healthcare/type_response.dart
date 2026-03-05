@@ -7,10 +7,8 @@ import 'field_response.dart';
 class TypeResponse {
   /// The (sub) fields this type has (if not primitive).
   final pulumi.Input<List<FieldResponse>> fields;
-
   /// The name of this type. This would be the segment or datatype name. For example, "PID" or "XPN".
   final pulumi.Input<String> name;
-
   /// If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
   final pulumi.Input<String> primitive;
 
@@ -26,18 +24,7 @@ class TypeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fields':
-          pulumi.Input.mapInputValue<
-            List<FieldResponse>,
-            List<Map<String, dynamic>>
-          >(
-            fields,
-            (value) =>
-                pulumi.Input.encodeList<FieldResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'fields': pulumi.Input.mapInputValue<List<FieldResponse>, List<Map<String, dynamic>>>(fields, (value) => pulumi.Input.encodeList<FieldResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'primitive': primitive,
     };
@@ -45,15 +32,10 @@ class TypeResponse {
 
   factory TypeResponse.fromMap(Map<String, dynamic> map) {
     return TypeResponse(
-      fields: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<FieldResponse>(
-          map['fields']!,
-          (value) =>
-              FieldResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      fields: pulumi.Input.fromValue(pulumi.Input.decodeList<FieldResponse>(map['fields']!, (value) => FieldResponse.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
       primitive: pulumi.Input.fromValue(map['primitive'] as String),
     );
   }
 }
+

@@ -7,13 +7,9 @@ import 'cluster_upgrade_post_conditions_response_gkehub_v1beta.dart';
 /// **ClusterUpgrade**: The configuration for the fleet-level ClusterUpgrade feature.
 class ClusterUpgradeFleetSpecResponseGkehubV1beta {
   /// Allow users to override some properties of each GKE upgrade.
-  final pulumi.Input<List<ClusterUpgradeGKEUpgradeOverrideResponseGkehubV1beta>>
-  gkeUpgradeOverrides;
-
+  final pulumi.Input<List<ClusterUpgradeGKEUpgradeOverrideResponseGkehubV1beta>> gkeUpgradeOverrides;
   /// Post conditions to evaluate to mark an upgrade COMPLETE. Required.
-  final pulumi.Input<ClusterUpgradePostConditionsResponseGkehubV1beta>
-  postConditions;
-
+  final pulumi.Input<ClusterUpgradePostConditionsResponseGkehubV1beta> postConditions;
   /// This fleet consumes upgrades that have COMPLETE status code in the upstream fleets. See UpgradeStatus.Code for code definitions. The fleet name should be either fleet project number or id. This is defined as repeated for future proof reasons. Initial implementation will enforce at most one upstream fleet.
   final pulumi.Input<List<String>> upstreamFleets;
 
@@ -29,50 +25,18 @@ class ClusterUpgradeFleetSpecResponseGkehubV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gkeUpgradeOverrides':
-          pulumi.Input.mapInputValue<
-            List<ClusterUpgradeGKEUpgradeOverrideResponseGkehubV1beta>,
-            List<Map<String, dynamic>>
-          >(
-            gkeUpgradeOverrides,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ClusterUpgradeGKEUpgradeOverrideResponseGkehubV1beta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'postConditions':
-          pulumi.Input.mapInputValue<
-            ClusterUpgradePostConditionsResponseGkehubV1beta,
-            Map<String, dynamic>
-          >(postConditions, (value) => value.toMap()),
+      'gkeUpgradeOverrides': pulumi.Input.mapInputValue<List<ClusterUpgradeGKEUpgradeOverrideResponseGkehubV1beta>, List<Map<String, dynamic>>>(gkeUpgradeOverrides, (value) => pulumi.Input.encodeList<ClusterUpgradeGKEUpgradeOverrideResponseGkehubV1beta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'postConditions': pulumi.Input.mapInputValue<ClusterUpgradePostConditionsResponseGkehubV1beta, Map<String, dynamic>>(postConditions, (value) => value.toMap()),
       'upstreamFleets': upstreamFleets,
     };
   }
 
-  factory ClusterUpgradeFleetSpecResponseGkehubV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterUpgradeFleetSpecResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeFleetSpecResponseGkehubV1beta(
-      gkeUpgradeOverrides: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          ClusterUpgradeGKEUpgradeOverrideResponseGkehubV1beta
-        >(
-          map['gkeUpgradeOverrides']!,
-          (value) =>
-              ClusterUpgradeGKEUpgradeOverrideResponseGkehubV1beta.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      postConditions: pulumi.Input.fromValue(
-        ClusterUpgradePostConditionsResponseGkehubV1beta.fromMap(
-          (map['postConditions']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      upstreamFleets: pulumi.Input.fromValue(
-        (map['upstreamFleets'] as List).cast<String>(),
-      ),
+      gkeUpgradeOverrides: pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterUpgradeGKEUpgradeOverrideResponseGkehubV1beta>(map['gkeUpgradeOverrides']!, (value) => ClusterUpgradeGKEUpgradeOverrideResponseGkehubV1beta.fromMap((value as Map).cast<String, dynamic>()))),
+      postConditions: pulumi.Input.fromValue(ClusterUpgradePostConditionsResponseGkehubV1beta.fromMap((map['postConditions']! as Map).cast<String, dynamic>())),
+      upstreamFleets: pulumi.Input.fromValue((map['upstreamFleets'] as List).cast<String>()),
     );
   }
 }
+

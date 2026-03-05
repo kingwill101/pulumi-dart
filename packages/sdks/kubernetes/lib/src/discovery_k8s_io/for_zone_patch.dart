@@ -9,19 +9,20 @@ class ForZonePatch {
 
   /// Creates a new [ForZonePatch].
   /// [name] name represents the name of the zone.
-  ForZonePatch({this.name});
+  ForZonePatch({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory ForZonePatch.fromMap(Map<String, dynamic> map) {
     return ForZonePatch(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

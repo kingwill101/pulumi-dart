@@ -7,29 +7,20 @@ import 'frontdoor_routing_rule_redirect_configuration.dart';
 class FrontdoorRoutingRule {
   /// Protocol schemes to match for the Backend Routing Rule. Possible values are `Http` and `Https`.
   final pulumi.Input<List<String>> acceptedProtocols;
-
   /// `Enable` or `Disable` use of this Backend Routing Rule. Permitted values are `true` or `false`. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-
   /// A `forwarding_configuration` block as defined below.
-  final pulumi.Input<FrontdoorRoutingRuleForwardingConfiguration>?
-  forwardingConfiguration;
-
+  final pulumi.Input<FrontdoorRoutingRuleForwardingConfiguration>? forwardingConfiguration;
   /// The names of the `frontend_endpoint` blocks within this resource to associate with this `routing_rule`.
   final pulumi.Input<List<String>> frontendEndpoints;
-
   /// The ID of the FrontDoor.
   final pulumi.Input<String>? id;
-
   /// Specifies the name of the Routing Rule.
   final pulumi.Input<String> name;
-
   /// The route patterns for the Backend Routing Rule.
   final pulumi.Input<List<String>> patternsToMatches;
-
   /// A `redirect_configuration` block as defined below.
-  final pulumi.Input<FrontdoorRoutingRuleRedirectConfiguration>?
-  redirectConfiguration;
+  final pulumi.Input<FrontdoorRoutingRuleRedirectConfiguration>? redirectConfiguration;
 
   /// Creates a new [FrontdoorRoutingRule].
   /// [acceptedProtocols] Protocol schemes to match for the Backend Routing Rule. Possible values are `Http` and `Https`.
@@ -55,63 +46,26 @@ class FrontdoorRoutingRule {
     return <String, dynamic>{
       'acceptedProtocols': acceptedProtocols,
       'enabled': ?enabled,
-      'forwardingConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            FrontdoorRoutingRuleForwardingConfiguration,
-            Map<String, dynamic>
-          >(forwardingConfiguration, (value) => value.toMap()),
+      'forwardingConfiguration': ?pulumi.Input.mapOptionalInputValue<FrontdoorRoutingRuleForwardingConfiguration, Map<String, dynamic>>(forwardingConfiguration, (value) => value.toMap()),
       'frontendEndpoints': frontendEndpoints,
       'id': ?id,
       'name': name,
       'patternsToMatches': patternsToMatches,
-      'redirectConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            FrontdoorRoutingRuleRedirectConfiguration,
-            Map<String, dynamic>
-          >(redirectConfiguration, (value) => value.toMap()),
+      'redirectConfiguration': ?pulumi.Input.mapOptionalInputValue<FrontdoorRoutingRuleRedirectConfiguration, Map<String, dynamic>>(redirectConfiguration, (value) => value.toMap()),
     };
   }
 
   factory FrontdoorRoutingRule.fromMap(Map<String, dynamic> map) {
     return FrontdoorRoutingRule(
-      acceptedProtocols: pulumi.Input.fromValue(
-        (map['acceptedProtocols'] as List).cast<String>(),
-      ),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      forwardingConfiguration: (() {
-        final guardedValue = map['forwardingConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FrontdoorRoutingRuleForwardingConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      frontendEndpoints: pulumi.Input.fromValue(
-        (map['frontendEndpoints'] as List).cast<String>(),
-      ),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      acceptedProtocols: pulumi.Input.fromValue((map['acceptedProtocols'] as List).cast<String>()),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      forwardingConfiguration: (() { final guardedValue = map['forwardingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrontdoorRoutingRuleForwardingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      frontendEndpoints: pulumi.Input.fromValue((map['frontendEndpoints'] as List).cast<String>()),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      patternsToMatches: pulumi.Input.fromValue(
-        (map['patternsToMatches'] as List).cast<String>(),
-      ),
-      redirectConfiguration: (() {
-        final guardedValue = map['redirectConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FrontdoorRoutingRuleRedirectConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      patternsToMatches: pulumi.Input.fromValue((map['patternsToMatches'] as List).cast<String>()),
+      redirectConfiguration: (() { final guardedValue = map['redirectConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrontdoorRoutingRuleRedirectConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

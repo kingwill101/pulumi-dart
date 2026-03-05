@@ -13,16 +13,15 @@ class GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'autoUpgradeKubelet': autoUpgradeKubelet};
+    return <String, dynamic>{
+      'autoUpgradeKubelet': autoUpgradeKubelet,
+    };
   }
 
-  factory GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy(
-      autoUpgradeKubelet: pulumi.Input.fromValue(
-        map['autoUpgradeKubelet'] as bool,
-      ),
+      autoUpgradeKubelet: pulumi.Input.fromValue(map['autoUpgradeKubelet'] as bool),
     );
   }
 }
+

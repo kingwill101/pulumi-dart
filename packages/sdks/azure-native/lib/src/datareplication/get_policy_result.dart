@@ -7,17 +7,13 @@ import 'policy_model_response_system_data.dart';
 class GetPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets or sets the Id of the resource.
   final String id;
-
   /// Gets or sets the name of the resource.
   final String name;
-
   /// Policy model properties.
   final PolicyModelPropertiesResponse properties;
   final PolicyModelResponseSystemData systemData;
-
   /// Gets or sets the type of the resource.
   final String type;
 
@@ -53,13 +49,10 @@ class GetPolicyResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: PolicyModelPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: PolicyModelResponseSystemData.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      properties: PolicyModelPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: PolicyModelResponseSystemData.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

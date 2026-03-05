@@ -176,58 +176,39 @@ import 'system_data_response.dart';
 /// ```
 class DicomService extends pulumi.CustomResource {
   /// Dicom Service authentication configuration.
-  late final pulumi.Output<DicomServiceAuthenticationConfigurationResponse?>
-  authenticationConfiguration;
-
+  late final pulumi.Output<DicomServiceAuthenticationConfigurationResponse?> authenticationConfiguration;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Dicom Service Cors configuration.
   late final pulumi.Output<CorsConfigurationResponse?> corsConfiguration;
-
   /// If data partitions is enabled or not.
   late final pulumi.Output<bool?> enableDataPartitions;
-
   /// The encryption settings of the DICOM service
   late final pulumi.Output<EncryptionResponse?> encryption;
-
   /// An etag associated with the resource, used for optimistic concurrency when editing it.
   late final pulumi.Output<String?> etag;
-
   /// DICOM Service event support status.
   late final pulumi.Output<String> eventState;
-
   /// Setting indicating whether the service has a managed identity associated with it.
   late final pulumi.Output<ServiceManagedIdentityResponseIdentity?> identity;
-
   /// The resource location.
   late final pulumi.Output<String?> location;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// The list of private endpoint connections that are set up for this resource.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
   late final pulumi.Output<String> publicNetworkAccess;
-
   /// The url of the Dicom Services.
   late final pulumi.Output<String> serviceUrl;
-
   /// The configuration of external storage account
   late final pulumi.Output<StorageConfigurationResponse?> storageConfiguration;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -240,84 +221,27 @@ class DicomService extends pulumi.CustomResource {
     DicomServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:healthcareapis:DicomService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authenticationConfiguration =
-        registerOutput<DicomServiceAuthenticationConfigurationResponse?>(
-          'authenticationConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DicomServiceAuthenticationConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure-native:healthcareapis:DicomService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authenticationConfiguration = registerOutput<DicomServiceAuthenticationConfigurationResponse?>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DicomServiceAuthenticationConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    corsConfiguration = registerOutput<CorsConfigurationResponse?>(
-      'corsConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CorsConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    corsConfiguration = registerOutput<CorsConfigurationResponse?>('corsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CorsConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enableDataPartitions = registerOutput<bool?>('enableDataPartitions');
-    encryption = registerOutput<EncryptionResponse?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<EncryptionResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String?>('etag');
     eventState = registerOutput<String>('eventState');
-    identity = registerOutput<ServiceManagedIdentityResponseIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceManagedIdentityResponseIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ServiceManagedIdentityResponseIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceManagedIdentityResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
     serviceUrl = registerOutput<String>('serviceUrl');
-    storageConfiguration = registerOutput<StorageConfigurationResponse?>(
-      'storageConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StorageConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storageConfiguration = registerOutput<StorageConfigurationResponse?>('storageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

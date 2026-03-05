@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAggregateV2Args {
   /// List of Hypervisors contained in the Host Aggregate
   final pulumi.Input<List<String>>? hosts;
-
   /// Metadata of the Host Aggregate
   final pulumi.Input<Map<String, String>>? metadata;
-
   /// The name of the host aggregate.
   final pulumi.Input<String> name;
-
   /// The region in which to obtain the V2 Compute client.
   /// If omitted, the `region` argument of the provider is used.
   final pulumi.Input<String>? region;
@@ -43,24 +40,11 @@ class GetAggregateV2Args {
 
   factory GetAggregateV2Args.fromMap(Map<String, dynamic> map) {
     return GetAggregateV2Args(
-      hosts: (() {
-        final guardedValue = map['hosts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      hosts: (() { final guardedValue = map['hosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

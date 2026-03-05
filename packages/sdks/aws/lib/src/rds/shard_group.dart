@@ -224,39 +224,28 @@ import 'shard_group_timeouts.dart';
 class ShardGroup extends pulumi.CustomResource {
   /// ARN of the shard group.
   late final pulumi.Output<String> arn;
-
   /// Specifies whether to create standby DB shard groups for the DB shard group. Valid values are:
   late final pulumi.Output<int> computeRedundancy;
-
   /// The name of the primary DB cluster for the DB shard group.
   late final pulumi.Output<String> dbClusterIdentifier;
-
   /// The name of the DB shard group.
   late final pulumi.Output<String> dbShardGroupIdentifier;
-
   /// The AWS Region-unique, immutable identifier for the DB shard group.
   late final pulumi.Output<String> dbShardGroupResourceId;
-
   /// The connection endpoint for the DB shard group.
   late final pulumi.Output<String> endpoint;
-
   /// The maximum capacity of the DB shard group in Aurora capacity units (ACUs).
   late final pulumi.Output<double> maxAcu;
-
   /// The minimum capacity of the DB shard group in Aurora capacity units (ACUs).
   late final pulumi.Output<double> minAcu;
-
   /// Indicates whether the DB shard group is publicly accessible.
   late final pulumi.Output<bool> publiclyAccessible;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-shard-group.html).
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ShardGroupTimeouts?> timeouts;
@@ -270,11 +259,11 @@ class ShardGroup extends pulumi.CustomResource {
     ShardGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rds/shardGroup:ShardGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rds/shardGroup:ShardGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     computeRedundancy = registerOutput<int>('computeRedundancy');
     dbClusterIdentifier = registerOutput<String>('dbClusterIdentifier');
@@ -287,16 +276,7 @@ class ShardGroup extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ShardGroupTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ShardGroupTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ShardGroupTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ShardGroupTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [ShardGroup] resource's state with the given [name] and [id].
@@ -317,11 +297,11 @@ class ShardGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rds/shardGroup:ShardGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rds/shardGroup:ShardGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     computeRedundancy = registerOutput<int>('computeRedundancy');
     dbClusterIdentifier = registerOutput<String>('dbClusterIdentifier');
@@ -334,15 +314,6 @@ class ShardGroup extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ShardGroupTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ShardGroupTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ShardGroupTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ShardGroupTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

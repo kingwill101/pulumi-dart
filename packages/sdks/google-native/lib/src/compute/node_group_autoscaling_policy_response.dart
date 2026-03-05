@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeGroupAutoscalingPolicyResponse {
   /// The maximum number of nodes that the group should have. Must be set if autoscaling is enabled. Maximum value allowed is 100.
   final pulumi.Input<int> maxNodes;
-
   /// The minimum number of nodes that the group should have.
   final pulumi.Input<int> minNodes;
-
   /// The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see Autoscaler modes.
   final pulumi.Input<String> mode;
 
@@ -38,3 +36,4 @@ class NodeGroupAutoscalingPolicyResponse {
     );
   }
 }
+

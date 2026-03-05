@@ -1,9 +1,7 @@
 /// The additional options.
 enum AdditionalOptionsAsyncOperation {
   protectedAsyncOperationPolling("ProtectedAsyncOperationPolling"),
-  protectedAsyncOperationPollingAuditOnly(
-    "ProtectedAsyncOperationPollingAuditOnly",
-  );
+  protectedAsyncOperationPollingAuditOnly("ProtectedAsyncOperationPollingAuditOnly");
 
   const AdditionalOptionsAsyncOperation(this.wireValue);
   final String wireValue;
@@ -14,8 +12,7 @@ enum AdditionalOptionsAsyncOperation {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AdditionalOptionsAsyncOperation value: $value',
-    );
+    throw ArgumentError('Unknown AdditionalOptionsAsyncOperation value: $value');
   }
 }
+

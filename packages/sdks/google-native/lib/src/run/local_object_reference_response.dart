@@ -9,10 +9,14 @@ class LocalObjectReferenceResponse {
 
   /// Creates a new [LocalObjectReferenceResponse].
   /// [name] Name of the referent.
-  LocalObjectReferenceResponse({required this.name});
+  LocalObjectReferenceResponse({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory LocalObjectReferenceResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class LocalObjectReferenceResponse {
     );
   }
 }
+

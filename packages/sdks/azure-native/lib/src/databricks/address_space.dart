@@ -9,19 +9,20 @@ class AddressSpace {
 
   /// Creates a new [AddressSpace].
   /// [addressPrefixes] A list of address blocks reserved for this virtual network in CIDR notation.
-  AddressSpace({this.addressPrefixes});
+  AddressSpace({
+    this.addressPrefixes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'addressPrefixes': ?addressPrefixes};
+    return <String, dynamic>{
+      'addressPrefixes': ?addressPrefixes,
+    };
   }
 
   factory AddressSpace.fromMap(Map<String, dynamic> map) {
     return AddressSpace(
-      addressPrefixes: (() {
-        final guardedValue = map['addressPrefixes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      addressPrefixes: (() { final guardedValue = map['addressPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

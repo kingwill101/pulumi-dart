@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSandboxCustomImage.
 class GetSandboxCustomImageResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified.
   final String? baseImageName;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The language name, for example Python.
   final String language;
-
   /// The version of the language. Either this property or baseImageName should be specified.
   final String? languageVersion;
-
   /// The name of the resource
   final String name;
-
   /// The provisioned state of the resource.
   final String provisioningState;
-
   /// The requirements file content.
   final String? requirementsFileContent;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -68,26 +61,15 @@ class GetSandboxCustomImageResult {
   factory GetSandboxCustomImageResult.fromMap(Map<String, dynamic> map) {
     return GetSandboxCustomImageResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      baseImageName: (() {
-        final guardedValue = map['baseImageName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      baseImageName: (() { final guardedValue = map['baseImageName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       language: map['language'] as String,
-      languageVersion: (() {
-        final guardedValue = map['languageVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      languageVersion: (() { final guardedValue = map['languageVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      requirementsFileContent: (() {
-        final guardedValue = map['requirementsFileContent'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      requirementsFileContent: (() { final guardedValue = map['requirementsFileContent']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

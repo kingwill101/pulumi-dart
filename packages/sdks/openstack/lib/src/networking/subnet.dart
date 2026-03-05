@@ -145,7 +145,6 @@ class Subnet extends pulumi.CustomResource {
   /// The collection of ags assigned on the subnet, which have been
   /// explicitly and implicitly added.
   late final pulumi.Output<List<String>> allTags;
-
   /// A block declaring the start and end range of
   /// the IP addresses available for use with DHCP in this subnet. Multiple
   /// `allocation_pool` blocks can be declared, providing the subnet with more
@@ -153,91 +152,71 @@ class Subnet extends pulumi.CustomResource {
   /// must be from the same CIDR that the subnet is part of.
   /// The `allocation_pool` block is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> allocationPools;
-
   /// CIDR representing IP range for this subnet, based on IP
   /// version. You can omit this option if you are creating a subnet from a
   /// subnet pool.
   late final pulumi.Output<String> cidr;
-
   /// Human-readable description of the subnet. Changing this
   /// updates the name of the existing subnet.
   late final pulumi.Output<String?> description;
-
   /// An array of DNS name server names used by hosts
   /// in this subnet. Changing this updates the DNS name servers for the existing
   /// subnet.
   late final pulumi.Output<List<String>?> dnsNameservers;
-
   /// Whether to publish DNS records for IPs
   /// from this subnet. Defaults is false.
   late final pulumi.Output<bool?> dnsPublishFixedIp;
-
   /// The administrative state of the network.
   /// Acceptable values are "true" and "false". Changing this value enables or
   /// disables the DHCP capabilities of the existing subnet. Defaults to true.
   late final pulumi.Output<bool?> enableDhcp;
-
   /// Default gateway used by devices in this subnet.
   /// Leaving this blank and not setting `no_gateway` will cause a default
   /// gateway of `.1` to be used. Changing this updates the gateway IP of the
   /// existing subnet.
   late final pulumi.Output<String> gatewayIp;
-
   /// IP version, either 4 (default) or 6. Changing this creates a
   /// new subnet.
   late final pulumi.Output<int?> ipVersion;
-
   /// The IPv6 address mode. Valid values are
   /// `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
   late final pulumi.Output<String> ipv6AddressMode;
-
   /// The IPv6 Router Advertisement mode. Valid values
   /// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
   late final pulumi.Output<String> ipv6RaMode;
-
   /// The name of the subnet. Changing this updates the name of
   /// the existing subnet.
   late final pulumi.Output<String> name;
-
   /// The UUID of the parent network. Changing this
   /// creates a new subnet.
   late final pulumi.Output<String> networkId;
-
   /// Do not set a gateway IP on this subnet. Changing
   /// this removes or adds a default gateway IP of the existing subnet.
   late final pulumi.Output<bool?> noGateway;
-
   /// The prefix length to use when creating a subnet
   /// from a subnet pool. The default subnet pool prefix length that was defined
   /// when creating the subnet pool will be used if not provided. Changing this
   /// creates a new subnet.
   late final pulumi.Output<int?> prefixLength;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron subnet. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// subnet.
   late final pulumi.Output<String> region;
-
   /// The segment ID of the subnet. This is used to
   /// specify which segment the subnet belongs to when using Neutron's routed
   /// provider networks. Available when neutron segment extension is enabled.
   late final pulumi.Output<String?> segmentId;
-
   /// An array of service types used by the subnet.
   /// Changing this updates the service types for the existing subnet.
   late final pulumi.Output<List<String>> serviceTypes;
-
   /// The ID of the subnetpool associated with the subnet.
   late final pulumi.Output<String?> subnetpoolId;
-
   /// A set of string tags for the subnet.
   late final pulumi.Output<List<String>?> tags;
-
   /// The owner of the subnet. Required if admin wants to
   /// create a subnet for another tenant. Changing this creates a new subnet.
   late final pulumi.Output<String> tenantId;
-
   /// Map of additional options.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
 
@@ -245,17 +224,18 @@ class Subnet extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Subnet]. {@macro pulumi_networking_subnet_subnet_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Subnet(String name, {SubnetArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'openstack:networking/subnet:Subnet',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Subnet(
+    String name, {
+    SubnetArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'openstack:networking/subnet:Subnet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allTags = registerOutput<List<String>>('allTags');
-    allocationPools = registerOutput<List<Map<String, dynamic>>>(
-      'allocationPools',
-    );
+    allocationPools = registerOutput<List<Map<String, dynamic>>>('allocationPools');
     cidr = registerOutput<String>('cidr');
     description = registerOutput<String?>('description');
     dnsNameservers = registerOutput<List<String>?>('dnsNameservers');
@@ -296,15 +276,13 @@ class Subnet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/subnet:Subnet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/subnet:Subnet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allTags = registerOutput<List<String>>('allTags');
-    allocationPools = registerOutput<List<Map<String, dynamic>>>(
-      'allocationPools',
-    );
+    allocationPools = registerOutput<List<Map<String, dynamic>>>('allocationPools');
     cidr = registerOutput<String>('cidr');
     description = registerOutput<String?>('description');
     dnsNameservers = registerOutput<List<String>?>('dnsNameservers');

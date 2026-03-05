@@ -10,16 +10,12 @@ import 'reachability_analysis_intent_properties.dart';
 class ReachabilityAnalysisIntentArgs {
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
-
   /// Represents the Reachability Analysis Intent properties.
   final pulumi.Input<ReachabilityAnalysisIntentProperties> properties;
-
   /// Reachability Analysis Intent name.
   final pulumi.Input<String>? reachabilityAnalysisIntentName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// Workspace name.
   final pulumi.Input<String> workspaceName;
 
@@ -40,11 +36,7 @@ class ReachabilityAnalysisIntentArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'networkManagerName': networkManagerName,
-      'properties':
-          pulumi.Input.mapInputValue<
-            ReachabilityAnalysisIntentProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<ReachabilityAnalysisIntentProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'reachabilityAnalysisIntentName': ?reachabilityAnalysisIntentName,
       'resourceGroupName': resourceGroupName,
       'workspaceName': workspaceName,
@@ -53,23 +45,12 @@ class ReachabilityAnalysisIntentArgs {
 
   factory ReachabilityAnalysisIntentArgs.fromMap(Map<String, dynamic> map) {
     return ReachabilityAnalysisIntentArgs(
-      networkManagerName: pulumi.Input.fromValue(
-        map['networkManagerName'] as String,
-      ),
-      properties: pulumi.Input.fromValue(
-        ReachabilityAnalysisIntentProperties.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      reachabilityAnalysisIntentName: (() {
-        final guardedValue = map['reachabilityAnalysisIntentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
+      properties: pulumi.Input.fromValue(ReachabilityAnalysisIntentProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      reachabilityAnalysisIntentName: (() { final guardedValue = map['reachabilityAnalysisIntentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

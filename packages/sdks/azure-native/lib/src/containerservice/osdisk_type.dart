@@ -15,3 +15,4 @@ enum OSDiskType {
     throw ArgumentError('Unknown OSDiskType value: $value');
   }
 }
+

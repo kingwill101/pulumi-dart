@@ -7,17 +7,13 @@ enum RouterNatSourceSubnetworkIpRangesToNatComputeBeta {
   const RouterNatSourceSubnetworkIpRangesToNatComputeBeta(this.wireValue);
   final String wireValue;
 
-  static RouterNatSourceSubnetworkIpRangesToNatComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in RouterNatSourceSubnetworkIpRangesToNatComputeBeta.values) {
+  static RouterNatSourceSubnetworkIpRangesToNatComputeBeta fromValue(String value) {
+    for (final item in RouterNatSourceSubnetworkIpRangesToNatComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RouterNatSourceSubnetworkIpRangesToNatComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown RouterNatSourceSubnetworkIpRangesToNatComputeBeta value: $value');
   }
 }
+

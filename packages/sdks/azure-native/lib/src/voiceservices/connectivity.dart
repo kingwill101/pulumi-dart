@@ -14,3 +14,4 @@ enum Connectivity {
     throw ArgumentError('Unknown Connectivity value: $value');
   }
 }
+

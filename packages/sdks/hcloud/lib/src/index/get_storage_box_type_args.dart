@@ -9,31 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStorageBoxTypeArgs {
   /// ID of the Storage Box Type.
   final pulumi.Input<int>? id;
-
   /// Name of the Storage Box Type.
   final pulumi.Input<String>? name;
 
   /// Creates a new [GetStorageBoxTypeArgs].
   /// [id] ID of the Storage Box Type.
   /// [name] Name of the Storage Box Type.
-  GetStorageBoxTypeArgs({this.id, this.name});
+  GetStorageBoxTypeArgs({
+    this.id,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id, 'name': ?name};
+    return <String, dynamic>{
+      'id': ?id,
+      'name': ?name,
+    };
   }
 
   factory GetStorageBoxTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxTypeArgs(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

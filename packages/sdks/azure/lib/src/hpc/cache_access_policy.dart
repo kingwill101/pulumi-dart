@@ -343,10 +343,8 @@ import 'cache_access_policy_state.dart';
 class CacheAccessPolicy extends pulumi.CustomResource {
   /// One or more `access_rule` blocks (up to three) as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> accessRules;
-
   /// The ID of the HPC Cache that this HPC Cache Access Policy resides in. Changing this forces a new HPC Cache Access Policy to be created.
   late final pulumi.Output<String> hpcCacheId;
-
   /// The name which should be used for this HPC Cache Access Policy. Changing this forces a new HPC Cache Access Policy to be created.
   late final pulumi.Output<String> name;
 
@@ -359,11 +357,11 @@ class CacheAccessPolicy extends pulumi.CustomResource {
     CacheAccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:hpc/cacheAccessPolicy:CacheAccessPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:hpc/cacheAccessPolicy:CacheAccessPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessRules = registerOutput<List<Map<String, dynamic>>>('accessRules');
     hpcCacheId = registerOutput<String>('hpcCacheId');
     this.name = registerOutput<String>('name');
@@ -387,11 +385,11 @@ class CacheAccessPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:hpc/cacheAccessPolicy:CacheAccessPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:hpc/cacheAccessPolicy:CacheAccessPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessRules = registerOutput<List<Map<String, dynamic>>>('accessRules');
     hpcCacheId = registerOutput<String>('hpcCacheId');
     this.name = registerOutput<String>('name');

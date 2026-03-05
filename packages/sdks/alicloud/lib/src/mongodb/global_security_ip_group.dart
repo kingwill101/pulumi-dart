@@ -141,12 +141,10 @@ import 'global_security_ip_group_state.dart';
 class GlobalSecurityIpGroup extends pulumi.CustomResource {
   /// The name of the IP whitelist template.
   late final pulumi.Output<String> globalIgName;
-
   /// The IP address in the whitelist template.
   ///
   /// &gt; **NOTE:** Separate multiple IP addresses with commas (,). You can create up to 1000 IP addresses or CIDR blocks for all IP address whitelists.
   late final pulumi.Output<String> globalSecurityIpList;
-
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
 
@@ -159,11 +157,11 @@ class GlobalSecurityIpGroup extends pulumi.CustomResource {
     GlobalSecurityIpGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mongodb/globalSecurityIpGroup:GlobalSecurityIpGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mongodb/globalSecurityIpGroup:GlobalSecurityIpGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     globalIgName = registerOutput<String>('globalIgName');
     globalSecurityIpList = registerOutput<String>('globalSecurityIpList');
     regionId = registerOutput<String>('regionId');
@@ -187,11 +185,11 @@ class GlobalSecurityIpGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mongodb/globalSecurityIpGroup:GlobalSecurityIpGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mongodb/globalSecurityIpGroup:GlobalSecurityIpGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     globalIgName = registerOutput<String>('globalIgName');
     globalSecurityIpList = registerOutput<String>('globalSecurityIpList');
     regionId = registerOutput<String>('regionId');

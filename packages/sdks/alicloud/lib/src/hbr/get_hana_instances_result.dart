@@ -45,11 +45,7 @@ class GetHanaInstancesResult {
     return <String, dynamic>{
       'id': id,
       'ids': ids,
-      'instances':
-          pulumi.Input.encodeList<
-            GetHanaInstancesInstance,
-            Map<String, dynamic>
-          >(instances, (value) => value.toMap()),
+      'instances': pulumi.Input.encodeList<GetHanaInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -64,43 +60,15 @@ class GetHanaInstancesResult {
     return GetHanaInstancesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instances: pulumi.Input.decodeList<GetHanaInstancesInstance>(
-        map['instances']!,
-        (value) => GetHanaInstancesInstance.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      instances: pulumi.Input.decodeList<GetHanaInstancesInstance>(map['instances']!, (value) => GetHanaInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vaultId: (() {
-        final guardedValue = map['vaultId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vaultId: (() { final guardedValue = map['vaultId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

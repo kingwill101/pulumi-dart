@@ -10,16 +10,12 @@ import 'linked_workspace_props.dart';
 class LinkedWorkspaceArgs {
   /// Friendly name of the linked workspace
   final pulumi.Input<String>? linkName;
-
   /// Friendly name of the linked workspace
   final pulumi.Input<String>? name;
-
   /// LinkedWorkspace specific properties.
   final pulumi.Input<LinkedWorkspaceProps>? properties;
-
   /// Name of the resource group in which workspace is located.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -41,11 +37,7 @@ class LinkedWorkspaceArgs {
     return <String, dynamic>{
       'linkName': ?linkName,
       'name': ?name,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            LinkedWorkspaceProps,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<LinkedWorkspaceProps, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'workspaceName': workspaceName,
     };
@@ -53,29 +45,12 @@ class LinkedWorkspaceArgs {
 
   factory LinkedWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return LinkedWorkspaceArgs(
-      linkName: (() {
-        final guardedValue = map['linkName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LinkedWorkspaceProps.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      linkName: (() { final guardedValue = map['linkName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedWorkspaceProps.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

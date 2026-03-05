@@ -110,16 +110,12 @@ import 'metrics_destination_state.dart';
 class MetricsDestination extends pulumi.CustomResource {
   /// The name of the CloudWatch RUM app monitor that will send the metrics.
   late final pulumi.Output<String> appMonitorName;
-
   /// Defines the destination to send the metrics to. Valid values are `CloudWatch` and `Evidently`. If you specify `Evidently`, you must also specify the ARN of the CloudWatchEvidently experiment that is to be the destination and an IAM role that has permission to write to the experiment.
   late final pulumi.Output<String> destination;
-
   /// Use this parameter only if Destination is Evidently. This parameter specifies the ARN of the Evidently experiment that will receive the extended metrics.
   late final pulumi.Output<String?> destinationArn;
-
   /// This parameter is required if Destination is Evidently. If Destination is CloudWatch, do not use this parameter.
   late final pulumi.Output<String?> iamRoleArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -132,11 +128,11 @@ class MetricsDestination extends pulumi.CustomResource {
     MetricsDestinationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rum/metricsDestination:MetricsDestination',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rum/metricsDestination:MetricsDestination',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appMonitorName = registerOutput<String>('appMonitorName');
     destination = registerOutput<String>('destination');
     destinationArn = registerOutput<String?>('destinationArn');
@@ -162,11 +158,11 @@ class MetricsDestination extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rum/metricsDestination:MetricsDestination',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rum/metricsDestination:MetricsDestination',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appMonitorName = registerOutput<String>('appMonitorName');
     destination = registerOutput<String>('destination');
     destinationArn = registerOutput<String?>('destinationArn');

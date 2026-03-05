@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPoliciesPolicy {
   /// The number of times the policy is referenced.
   final pulumi.Input<int> attachmentCount;
-
   /// The default version of the policy.
   final pulumi.Input<String> defaultVersion;
-
   /// The description of the policy.
   final pulumi.Input<String> description;
-
   /// The ID of the policy.
   final pulumi.Input<String> id;
-
   /// The name of the policy.
   final pulumi.Input<String> policyName;
-
   /// The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
   final pulumi.Input<String> policyType;
-
   /// The time when the policy was updated.
   final pulumi.Input<String> updateDate;
 
@@ -66,3 +60,4 @@ class GetPoliciesPolicy {
     );
   }
 }
+

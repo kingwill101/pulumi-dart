@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionStatusResponse {
   /// Description.
   final pulumi.Input<String> description;
-
   /// State.
   final pulumi.Input<String> state;
-
   /// Status provides detailed information for the state.
   final pulumi.Input<String> status;
 
@@ -39,3 +37,4 @@ class ConnectionStatusResponse {
     );
   }
 }
+

@@ -450,58 +450,44 @@ class SearchEngine extends pulumi.CustomResource {
   /// This is the application type this engine resource represents.
   /// The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
   late final pulumi.Output<String?> appType;
-
   /// The collection ID.
   late final pulumi.Output<String> collectionId;
-
   /// Common config spec that specifies the metadata of the engine.
   /// Structure is documented below.
   late final pulumi.Output<SearchEngineCommonConfig?> commonConfig;
-
   /// Timestamp the Engine was created at.
   late final pulumi.Output<String> createTime;
-
   /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
   late final pulumi.Output<List<String>> dataStoreIds;
-
   /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
   late final pulumi.Output<String> displayName;
-
   /// Unique ID to use for Search Engine App.
   late final pulumi.Output<String> engineId;
-
   /// A map of the feature config for the engine to opt in or opt out of features.
   late final pulumi.Output<Map<String, String>?> features;
-
   /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
   /// Default value is `GENERIC`.
   /// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
   late final pulumi.Output<String?> industryVertical;
-
   /// The KMS key to be used to protect this Engine at creation time.
   /// Must be set for requests that need to comply with CMEK Org Policy
   /// protections.
   /// If this field is set and processed successfully, the Engine will be
   /// protected by the KMS key, as indicated in the cmek_config field.
   late final pulumi.Output<String?> kmsKeyName;
-
   /// Location.
   late final pulumi.Output<String> location;
-
   /// The unique full resource name of the search engine. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Configurations for a Search Engine.
   /// Structure is documented below.
   late final pulumi.Output<SearchEngineSearchEngineConfig> searchEngineConfig;
-
   /// Timestamp the Engine was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -514,23 +500,14 @@ class SearchEngine extends pulumi.CustomResource {
     SearchEngineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:discoveryengine/searchEngine:SearchEngine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:discoveryengine/searchEngine:SearchEngine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appType = registerOutput<String?>('appType');
     collectionId = registerOutput<String>('collectionId');
-    commonConfig = registerOutput<SearchEngineCommonConfig?>(
-      'commonConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SearchEngineCommonConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    commonConfig = registerOutput<SearchEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
     displayName = registerOutput<String>('displayName');
@@ -541,16 +518,7 @@ class SearchEngine extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    searchEngineConfig = registerOutput<SearchEngineSearchEngineConfig>(
-      'searchEngineConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SearchEngineSearchEngineConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    searchEngineConfig = registerOutput<SearchEngineSearchEngineConfig>('searchEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineSearchEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -572,23 +540,14 @@ class SearchEngine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:discoveryengine/searchEngine:SearchEngine',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:discoveryengine/searchEngine:SearchEngine',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appType = registerOutput<String?>('appType');
     collectionId = registerOutput<String>('collectionId');
-    commonConfig = registerOutput<SearchEngineCommonConfig?>(
-      'commonConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SearchEngineCommonConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    commonConfig = registerOutput<SearchEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
     displayName = registerOutput<String>('displayName');
@@ -599,16 +558,7 @@ class SearchEngine extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    searchEngineConfig = registerOutput<SearchEngineSearchEngineConfig>(
-      'searchEngineConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SearchEngineSearchEngineConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    searchEngineConfig = registerOutput<SearchEngineSearchEngineConfig>('searchEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineSearchEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

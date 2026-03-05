@@ -171,22 +171,16 @@ import 'project_properties_response.dart';
 class Project extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// For optimistic concurrency control.
   late final pulumi.Output<String?> eTag;
-
   /// Azure location in which project is created.
   late final pulumi.Output<String?> location;
-
   /// Name of the project.
   late final pulumi.Output<String> name;
-
   /// Properties of the project.
   late final pulumi.Output<ProjectPropertiesResponse> properties;
-
   /// Tags provided by Azure Tagging service.
   late final pulumi.Output<dynamic> tags;
-
   /// Type of the object = [Microsoft.Migrate/assessmentProjects].
   late final pulumi.Output<String> type;
 
@@ -199,25 +193,16 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:migrate:Project',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:migrate:Project',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eTag = registerOutput<String?>('eTag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ProjectPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ProjectPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<dynamic>('tags');
     type = registerOutput<String>('type');
   }

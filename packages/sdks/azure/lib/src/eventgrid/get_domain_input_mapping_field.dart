@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainInputMappingField {
   /// Specifies the default data version of the EventGrid Event associated with the domain.
   final pulumi.Input<String> dataVersion;
-
   /// Specifies the event time of the EventGrid Event associated with the domain.
   final pulumi.Input<String> eventTime;
-
   /// Specifies the default event type of the EventGrid Event associated with the domain.
   final pulumi.Input<String> eventType;
-
   /// Specifies the id of the EventGrid Event associated with the domain.
   final pulumi.Input<String> id;
-
   /// Specifies the default subject of the EventGrid Event associated with the domain.
   final pulumi.Input<String> subject;
-
   /// Specifies the topic of the EventGrid Event associated with the domain.
   final pulumi.Input<String> topic;
 
@@ -59,3 +54,4 @@ class GetDomainInputMappingField {
     );
   }
 }
+

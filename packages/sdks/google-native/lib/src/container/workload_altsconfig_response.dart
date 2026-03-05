@@ -9,10 +9,14 @@ class WorkloadALTSConfigResponse {
 
   /// Creates a new [WorkloadALTSConfigResponse].
   /// [enableAlts] enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
-  WorkloadALTSConfigResponse({required this.enableAlts});
+  WorkloadALTSConfigResponse({
+    required this.enableAlts,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableAlts': enableAlts};
+    return <String, dynamic>{
+      'enableAlts': enableAlts,
+    };
   }
 
   factory WorkloadALTSConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class WorkloadALTSConfigResponse {
     );
   }
 }
+

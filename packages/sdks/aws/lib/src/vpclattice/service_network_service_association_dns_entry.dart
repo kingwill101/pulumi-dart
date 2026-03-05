@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceNetworkServiceAssociationDnsEntry {
   /// The domain name of the service.
   final pulumi.Input<String>? domainName;
-
   /// The ID of the hosted zone.
   final pulumi.Input<String>? hostedZoneId;
 
@@ -24,20 +23,11 @@ class ServiceNetworkServiceAssociationDnsEntry {
     };
   }
 
-  factory ServiceNetworkServiceAssociationDnsEntry.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceNetworkServiceAssociationDnsEntry.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkServiceAssociationDnsEntry(
-      domainName: (() {
-        final guardedValue = map['domainName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostedZoneId: (() {
-        final guardedValue = map['hostedZoneId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostedZoneId: (() { final guardedValue = map['hostedZoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

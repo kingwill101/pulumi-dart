@@ -18,3 +18,4 @@ enum RolePredefinedRole {
     throw ArgumentError('Unknown RolePredefinedRole value: $value');
   }
 }
+

@@ -10,17 +10,20 @@ class LongTermSchedulePolicyResponse {
 
   /// Creates a new [LongTermSchedulePolicyResponse].
   /// [schedulePolicyType] This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
-  LongTermSchedulePolicyResponse({required this.schedulePolicyType});
+  LongTermSchedulePolicyResponse({
+    required this.schedulePolicyType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'schedulePolicyType': schedulePolicyType};
+    return <String, dynamic>{
+      'schedulePolicyType': schedulePolicyType,
+    };
   }
 
   factory LongTermSchedulePolicyResponse.fromMap(Map<String, dynamic> map) {
     return LongTermSchedulePolicyResponse(
-      schedulePolicyType: pulumi.Input.fromValue(
-        map['schedulePolicyType'] as String,
-      ),
+      schedulePolicyType: pulumi.Input.fromValue(map['schedulePolicyType'] as String),
     );
   }
 }
+

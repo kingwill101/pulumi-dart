@@ -338,10 +338,8 @@ import 'env_group_state.dart';
 class EnvGroup extends pulumi.CustomResource {
   /// Hostnames of the environment group.
   late final pulumi.Output<List<String>?> hostnames;
-
   /// The resource ID of the environment group.
   late final pulumi.Output<String> name;
-
   /// The Apigee Organization associated with the Apigee environment group,
   /// in the format `organizations/{{org_name}}`.
   late final pulumi.Output<String> orgId;
@@ -355,11 +353,11 @@ class EnvGroup extends pulumi.CustomResource {
     EnvGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/envGroup:EnvGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/envGroup:EnvGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hostnames = registerOutput<List<String>?>('hostnames');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
@@ -383,11 +381,11 @@ class EnvGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/envGroup:EnvGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/envGroup:EnvGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hostnames = registerOutput<List<String>?>('hostnames');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');

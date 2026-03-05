@@ -14,61 +14,42 @@ import 'system_data_response.dart';
 class GetContainerAppsSessionPoolResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The container type of the sessions.
   final String? containerType;
-
   /// The custom container configuration if the containerType is CustomContainer.
   final CustomContainerTemplateResponse? customContainerTemplate;
-
   /// The pool configuration if the poolManagementType is dynamic.
   final DynamicPoolConfigurationResponse? dynamicPoolConfiguration;
-
   /// Resource ID of the session pool's environment.
   final String? environmentId;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
   final ManagedServiceIdentityResponse? identity;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// Optional settings for a Managed Identity that is assigned to the Session pool.
   final List<ManagedIdentitySettingResponse>? managedIdentitySettings;
-
   /// The name of the resource
   final String name;
-
   /// The number of nodes the session pool is using.
   final int nodeCount;
-
   /// The endpoint to manage the pool.
   final String poolManagementEndpoint;
-
   /// The pool management type of the session pool.
   final String? poolManagementType;
-
   /// Provisioning state of the session pool.
   final String provisioningState;
-
   /// The scale configuration of the session pool.
   final ScaleConfigurationResponse? scaleConfiguration;
-
   /// The secrets of the session pool.
   final List<SessionPoolSecretResponse>? secrets;
-
   /// The network configuration of the sessions in the session pool.
   final SessionNetworkConfigurationResponse? sessionNetworkConfiguration;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -126,28 +107,14 @@ class GetContainerAppsSessionPoolResult {
       'id': id,
       'identity': ?identity?.toMap(),
       'location': location,
-      'managedIdentitySettings': ?(() {
-        final guardedValue = managedIdentitySettings;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          ManagedIdentitySettingResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'managedIdentitySettings': ?(() { final guardedValue = managedIdentitySettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<ManagedIdentitySettingResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'name': name,
       'nodeCount': nodeCount,
       'poolManagementEndpoint': poolManagementEndpoint,
       'poolManagementType': ?poolManagementType,
       'provisioningState': provisioningState,
       'scaleConfiguration': ?scaleConfiguration?.toMap(),
-      'secrets': ?(() {
-        final guardedValue = secrets;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          SessionPoolSecretResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'secrets': ?(() { final guardedValue = secrets; if (guardedValue == null) return null; return pulumi.Input.encodeList<SessionPoolSecretResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'sessionNetworkConfiguration': ?sessionNetworkConfiguration?.toMap(),
       'systemData': systemData.toMap(),
       'tags': ?tags,
@@ -158,91 +125,26 @@ class GetContainerAppsSessionPoolResult {
   factory GetContainerAppsSessionPoolResult.fromMap(Map<String, dynamic> map) {
     return GetContainerAppsSessionPoolResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      containerType: (() {
-        final guardedValue = map['containerType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      customContainerTemplate: (() {
-        final guardedValue = map['customContainerTemplate'];
-        if (guardedValue == null) return null;
-        return CustomContainerTemplateResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      dynamicPoolConfiguration: (() {
-        final guardedValue = map['dynamicPoolConfiguration'];
-        if (guardedValue == null) return null;
-        return DynamicPoolConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      environmentId: (() {
-        final guardedValue = map['environmentId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      containerType: (() { final guardedValue = map['containerType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customContainerTemplate: (() { final guardedValue = map['customContainerTemplate']; if (guardedValue == null) return null; return CustomContainerTemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      dynamicPoolConfiguration: (() { final guardedValue = map['dynamicPoolConfiguration']; if (guardedValue == null) return null; return DynamicPoolConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
-      managedIdentitySettings: (() {
-        final guardedValue = map['managedIdentitySettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<ManagedIdentitySettingResponse>(
-          guardedValue,
-          (value) => ManagedIdentitySettingResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      managedIdentitySettings: (() { final guardedValue = map['managedIdentitySettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedIdentitySettingResponse>(guardedValue, (value) => ManagedIdentitySettingResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       name: map['name'] as String,
       nodeCount: map['nodeCount'] as int,
       poolManagementEndpoint: map['poolManagementEndpoint'] as String,
-      poolManagementType: (() {
-        final guardedValue = map['poolManagementType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      poolManagementType: (() { final guardedValue = map['poolManagementType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
-      scaleConfiguration: (() {
-        final guardedValue = map['scaleConfiguration'];
-        if (guardedValue == null) return null;
-        return ScaleConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      secrets: (() {
-        final guardedValue = map['secrets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<SessionPoolSecretResponse>(
-          guardedValue,
-          (value) => SessionPoolSecretResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sessionNetworkConfiguration: (() {
-        final guardedValue = map['sessionNetworkConfiguration'];
-        if (guardedValue == null) return null;
-        return SessionNetworkConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      scaleConfiguration: (() { final guardedValue = map['scaleConfiguration']; if (guardedValue == null) return null; return ScaleConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SessionPoolSecretResponse>(guardedValue, (value) => SessionPoolSecretResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      sessionNetworkConfiguration: (() { final guardedValue = map['sessionNetworkConfiguration']; if (guardedValue == null) return null; return SessionNetworkConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

@@ -9,19 +9,20 @@ class ArtifactPackagingEnumValue {
 
   /// Creates a new [ArtifactPackagingEnumValue].
   /// [value] Property value
-  ArtifactPackagingEnumValue({this.value});
+  ArtifactPackagingEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory ArtifactPackagingEnumValue.fromMap(Map<String, dynamic> map) {
     return ArtifactPackagingEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

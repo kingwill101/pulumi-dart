@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OidcTokenCloudschedulerV1beta1 {
   /// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
   final pulumi.Input<String>? audience;
-
   /// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account.
   final pulumi.Input<String>? serviceAccountEmail;
 
   /// Creates a new [OidcTokenCloudschedulerV1beta1].
   /// [audience] Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
   /// [serviceAccountEmail] [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account.
-  OidcTokenCloudschedulerV1beta1({this.audience, this.serviceAccountEmail});
+  OidcTokenCloudschedulerV1beta1({
+    this.audience,
+    this.serviceAccountEmail,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class OidcTokenCloudschedulerV1beta1 {
 
   factory OidcTokenCloudschedulerV1beta1.fromMap(Map<String, dynamic> map) {
     return OidcTokenCloudschedulerV1beta1(
-      audience: (() {
-        final guardedValue = map['audience'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceAccountEmail: (() {
-        final guardedValue = map['serviceAccountEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      audience: (() { final guardedValue = map['audience']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceAccountEmail: (() { final guardedValue = map['serviceAccountEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

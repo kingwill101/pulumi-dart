@@ -10,27 +10,20 @@ class GoogleCloudDialogflowV2InputConfigResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2InputConfigResponse].
   /// [gcsSource] The Cloud Storage URI has the form gs:////agent*.json. Wildcards are allowed and will be expanded into all matched JSON files, which will be read as one conversation per file.
-  GoogleCloudDialogflowV2InputConfigResponse({required this.gcsSource});
+  GoogleCloudDialogflowV2InputConfigResponse({
+    required this.gcsSource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gcsSource':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDialogflowV2GcsSourcesResponse,
-            Map<String, dynamic>
-          >(gcsSource, (value) => value.toMap()),
+      'gcsSource': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2GcsSourcesResponse, Map<String, dynamic>>(gcsSource, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowV2InputConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2InputConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2InputConfigResponse(
-      gcsSource: pulumi.Input.fromValue(
-        GoogleCloudDialogflowV2GcsSourcesResponse.fromMap(
-          (map['gcsSource']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      gcsSource: pulumi.Input.fromValue(GoogleCloudDialogflowV2GcsSourcesResponse.fromMap((map['gcsSource']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

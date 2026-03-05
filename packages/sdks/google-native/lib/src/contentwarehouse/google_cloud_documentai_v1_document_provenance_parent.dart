@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1DocumentProvenanceParent {
   /// The id of the parent provenance.
   final pulumi.Input<int>? id;
-
   /// The index of the parent item in the corresponding item list (eg. list of entities, properties within entities, etc.) in the parent revision.
   final pulumi.Input<int>? index;
-
   /// The index of the index into current revision's parent_ids list.
   final pulumi.Input<int>? revision;
 
@@ -24,28 +22,19 @@ class GoogleCloudDocumentaiV1DocumentProvenanceParent {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id, 'index': ?index, 'revision': ?revision};
+    return <String, dynamic>{
+      'id': ?id,
+      'index': ?index,
+      'revision': ?revision,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentProvenanceParent.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1DocumentProvenanceParent.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentProvenanceParent(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      index: (() {
-        final guardedValue = map['index'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      revision: (() {
-        final guardedValue = map['revision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      index: (() { final guardedValue = map['index']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

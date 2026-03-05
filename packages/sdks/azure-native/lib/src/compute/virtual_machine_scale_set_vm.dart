@@ -2079,104 +2079,67 @@ import 'virtual_machine_scale_set_vmprotection_policy_response.dart';
 /// ```
 class VirtualMachineScaleSetVM extends pulumi.CustomResource {
   /// Specifies additional capabilities enabled or disabled on the virtual machine in the scale set. For instance: whether the virtual machine has the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
-  late final pulumi.Output<AdditionalCapabilitiesResponse?>
-  additionalCapabilities;
-
+  late final pulumi.Output<AdditionalCapabilitiesResponse?> additionalCapabilities;
   /// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
   late final pulumi.Output<SubResourceResponse?> availabilitySet;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
   late final pulumi.Output<DiagnosticsProfileResponse?> diagnosticsProfile;
-
   /// Etag is property returned in Update/Get response of the VMSS VM, so that customer can supply it in the header to ensure optimistic updates.
   late final pulumi.Output<String> etag;
-
   /// Specifies the hardware settings for the virtual machine.
   late final pulumi.Output<HardwareProfileResponse?> hardwareProfile;
-
   /// The identity of the virtual machine, if configured.
   late final pulumi.Output<VirtualMachineIdentityResponse?> identity;
-
   /// The virtual machine instance ID.
   late final pulumi.Output<String> instanceId;
-
   /// The virtual machine instance view.
-  late final pulumi.Output<VirtualMachineScaleSetVMInstanceViewResponse>
-  instanceView;
-
+  late final pulumi.Output<VirtualMachineScaleSetVMInstanceViewResponse> instanceView;
   /// Specifies whether the latest model has been applied to the virtual machine.
   late final pulumi.Output<bool> latestModelApplied;
-
   /// Specifies that the image or disk that is being used was licensed on-premises. &lt;br&gt;&lt;br&gt; Possible values for Windows Server operating system are: &lt;br&gt;&lt;br&gt; Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; Possible values for Linux Server operating system are: &lt;br&gt;&lt;br&gt; RHEL_BYOS (for RHEL) &lt;br&gt;&lt;br&gt; SLES_BYOS (for SUSE) &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) &lt;br&gt;&lt;br&gt; [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
   late final pulumi.Output<String?> licenseType;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Specifies whether the model applied to the virtual machine is the model of the virtual machine scale set or the customized model for the virtual machine.
   late final pulumi.Output<String> modelDefinitionApplied;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Specifies the network interfaces of the virtual machine.
   late final pulumi.Output<NetworkProfileResponse?> networkProfile;
-
   /// Specifies the network profile configuration of the virtual machine.
-  late final pulumi.Output<
-    VirtualMachineScaleSetVMNetworkProfileConfigurationResponse?
-  >
-  networkProfileConfiguration;
-
+  late final pulumi.Output<VirtualMachineScaleSetVMNetworkProfileConfigurationResponse?> networkProfileConfiguration;
   /// Specifies the operating system settings for the virtual machine.
   late final pulumi.Output<OSProfileResponse?> osProfile;
-
   /// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started -&gt;**. Enter any required information and then click **Save**.
   late final pulumi.Output<PlanResponse?> plan;
-
   /// Specifies the protection policy of the virtual machine.
-  late final pulumi.Output<VirtualMachineScaleSetVMProtectionPolicyResponse?>
-  protectionPolicy;
-
+  late final pulumi.Output<VirtualMachineScaleSetVMProtectionPolicyResponse?> protectionPolicy;
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
-
   /// Specifies the resilient VM deletion status for the virtual machine.
   late final pulumi.Output<String?> resilientVMDeletionStatus;
-
   /// The virtual machine child extension resources.
   late final pulumi.Output<List<Map<String, dynamic>>> resources;
-
   /// Specifies the Security related profile settings for the virtual machine.
   late final pulumi.Output<SecurityProfileResponse?> securityProfile;
-
   /// The virtual machine SKU.
   late final pulumi.Output<SkuResponse> sku;
-
   /// Specifies the storage settings for the virtual machine disks.
   late final pulumi.Output<StorageProfileResponse?> storageProfile;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the time at which the Virtual Machine resource was created. Minimum api-version: 2021-11-01.
   late final pulumi.Output<String> timeCreated;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01
   late final pulumi.Output<String?> userData;
-
   /// Azure VM unique ID.
   late final pulumi.Output<String> vmId;
-
   /// The virtual machine zones.
   late final pulumi.Output<List<String>> zones;
 
@@ -2189,178 +2152,37 @@ class VirtualMachineScaleSetVM extends pulumi.CustomResource {
     VirtualMachineScaleSetVMArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:compute:VirtualMachineScaleSetVM',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalCapabilities = registerOutput<AdditionalCapabilitiesResponse?>(
-      'additionalCapabilities',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AdditionalCapabilitiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    availabilitySet = registerOutput<SubResourceResponse?>(
-      'availabilitySet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:compute:VirtualMachineScaleSetVM',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalCapabilities = registerOutput<AdditionalCapabilitiesResponse?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdditionalCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availabilitySet = registerOutput<SubResourceResponse?>('availabilitySet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    diagnosticsProfile = registerOutput<DiagnosticsProfileResponse?>(
-      'diagnosticsProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiagnosticsProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    diagnosticsProfile = registerOutput<DiagnosticsProfileResponse?>('diagnosticsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiagnosticsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    hardwareProfile = registerOutput<HardwareProfileResponse?>(
-      'hardwareProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HardwareProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<VirtualMachineIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualMachineIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hardwareProfile = registerOutput<HardwareProfileResponse?>('hardwareProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HardwareProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<VirtualMachineIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');
-    instanceView = registerOutput<VirtualMachineScaleSetVMInstanceViewResponse>(
-      'instanceView',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualMachineScaleSetVMInstanceViewResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    instanceView = registerOutput<VirtualMachineScaleSetVMInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineScaleSetVMInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     latestModelApplied = registerOutput<bool>('latestModelApplied');
     licenseType = registerOutput<String?>('licenseType');
     location = registerOutput<String>('location');
     modelDefinitionApplied = registerOutput<String>('modelDefinitionApplied');
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<NetworkProfileResponse?>(
-      'networkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    networkProfileConfiguration =
-        registerOutput<
-          VirtualMachineScaleSetVMNetworkProfileConfigurationResponse?
-        >(
-          'networkProfileConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineScaleSetVMNetworkProfileConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    osProfile = registerOutput<OSProfileResponse?>(
-      'osProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OSProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    plan = registerOutput<PlanResponse?>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    protectionPolicy =
-        registerOutput<VirtualMachineScaleSetVMProtectionPolicyResponse?>(
-          'protectionPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineScaleSetVMProtectionPolicyResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkProfileConfiguration = registerOutput<VirtualMachineScaleSetVMNetworkProfileConfigurationResponse?>('networkProfileConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineScaleSetVMNetworkProfileConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osProfile = registerOutput<OSProfileResponse?>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OSProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    protectionPolicy = registerOutput<VirtualMachineScaleSetVMProtectionPolicyResponse?>('protectionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineScaleSetVMProtectionPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    resilientVMDeletionStatus = registerOutput<String?>(
-      'resilientVMDeletionStatus',
-    );
+    resilientVMDeletionStatus = registerOutput<String?>('resilientVMDeletionStatus');
     resources = registerOutput<List<Map<String, dynamic>>>('resources');
-    securityProfile = registerOutput<SecurityProfileResponse?>(
-      'securityProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sku = registerOutput<SkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storageProfile = registerOutput<StorageProfileResponse?>(
-      'storageProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StorageProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    securityProfile = registerOutput<SecurityProfileResponse?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     timeCreated = registerOutput<String>('timeCreated');
     type = registerOutput<String>('type');

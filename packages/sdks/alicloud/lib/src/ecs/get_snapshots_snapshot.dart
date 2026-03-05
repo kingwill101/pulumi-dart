@@ -4,59 +4,44 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSnapshotsSnapshot {
   final pulumi.Input<String> category;
-
   /// Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
   final pulumi.Input<String> creationTime;
-
   /// Description of the snapshot.
   final pulumi.Input<String> description;
   final pulumi.Input<String> diskId;
-
   /// Whether the snapshot is encrypted or not.
   final pulumi.Input<bool> encrypted;
-
   /// ID of the snapshot.
   final pulumi.Input<String> id;
   final pulumi.Input<bool> instantAccess;
   final pulumi.Input<int> instantAccessRetentionDays;
-
   /// Name of the snapshot.
   final pulumi.Input<String> name;
-
   /// Product code on the image market place.
   final pulumi.Input<String> productCode;
-
   /// Progress of snapshot creation, presented in percentage.
   final pulumi.Input<String> progress;
-
   /// The remaining time of a snapshot creation task, in seconds.
   final pulumi.Input<int> remainTime;
   final pulumi.Input<String> resourceGroupId;
-
   /// The number of days that an automatic snapshot retains in the console for your instance.
   final pulumi.Input<int> retentionDays;
   final pulumi.Input<String> snapshotId;
   final pulumi.Input<String> snapshotName;
   final pulumi.Input<String> snapshotSn;
   final pulumi.Input<String> snapshotType;
-
   /// Source disk ID, which is retained after the source disk of the snapshot is deleted.
   final pulumi.Input<String> sourceDiskId;
-
   /// Size of the source disk, measured in GB.
   final pulumi.Input<String> sourceDiskSize;
-
   /// Source disk attribute. Value range: `System`,`Data`.
   final pulumi.Input<String> sourceDiskType;
   final pulumi.Input<String> sourceStorageType;
-
   /// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
   final pulumi.Input<String> status;
-
   /// A map of tags assigned to the snapshot.
   final pulumi.Input<Map<String, String>> tags;
   final pulumi.Input<String> type;
-
   /// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
   final pulumi.Input<String> usage;
 
@@ -156,9 +141,7 @@ class GetSnapshotsSnapshot {
       encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),
       instantAccess: pulumi.Input.fromValue(map['instantAccess'] as bool),
-      instantAccessRetentionDays: pulumi.Input.fromValue(
-        map['instantAccessRetentionDays'] as int,
-      ),
+      instantAccessRetentionDays: pulumi.Input.fromValue(map['instantAccessRetentionDays'] as int),
       name: pulumi.Input.fromValue(map['name'] as String),
       productCode: pulumi.Input.fromValue(map['productCode'] as String),
       progress: pulumi.Input.fromValue(map['progress'] as String),
@@ -172,9 +155,7 @@ class GetSnapshotsSnapshot {
       sourceDiskId: pulumi.Input.fromValue(map['sourceDiskId'] as String),
       sourceDiskSize: pulumi.Input.fromValue(map['sourceDiskSize'] as String),
       sourceDiskType: pulumi.Input.fromValue(map['sourceDiskType'] as String),
-      sourceStorageType: pulumi.Input.fromValue(
-        map['sourceStorageType'] as String,
-      ),
+      sourceStorageType: pulumi.Input.fromValue(map['sourceStorageType'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       type: pulumi.Input.fromValue(map['type'] as String),
@@ -182,3 +163,4 @@ class GetSnapshotsSnapshot {
     );
   }
 }
+

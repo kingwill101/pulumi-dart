@@ -16,3 +16,4 @@ enum ScheduledActionStatus {
     throw ArgumentError('Unknown ScheduledActionStatus value: $value');
   }
 }
+

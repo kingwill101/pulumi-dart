@@ -478,16 +478,12 @@ import 'access_boundary_policy_state.dart';
 class AccessBoundaryPolicy extends pulumi.CustomResource {
   /// The display name of the rule.
   late final pulumi.Output<String?> displayName;
-
   /// The hash of the resource. Used internally during updates.
   late final pulumi.Output<String> etag;
-
   /// The name of the policy.
   late final pulumi.Output<String> name;
-
   /// The attachment point is identified by its URL-encoded full resource name.
   late final pulumi.Output<String> parent;
-
   /// Rules to be applied.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
@@ -501,11 +497,11 @@ class AccessBoundaryPolicy extends pulumi.CustomResource {
     AccessBoundaryPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String?>('displayName');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
@@ -531,11 +527,11 @@ class AccessBoundaryPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String?>('displayName');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');

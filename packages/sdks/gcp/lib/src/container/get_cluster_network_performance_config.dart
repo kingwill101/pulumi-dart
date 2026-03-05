@@ -8,7 +8,9 @@ class GetClusterNetworkPerformanceConfig {
 
   /// Creates a new [GetClusterNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for NodePools in the cluster.
-  GetClusterNetworkPerformanceConfig({required this.totalEgressBandwidthTier});
+  GetClusterNetworkPerformanceConfig({
+    required this.totalEgressBandwidthTier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,9 +20,8 @@ class GetClusterNetworkPerformanceConfig {
 
   factory GetClusterNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNetworkPerformanceConfig(
-      totalEgressBandwidthTier: pulumi.Input.fromValue(
-        map['totalEgressBandwidthTier'] as String,
-      ),
+      totalEgressBandwidthTier: pulumi.Input.fromValue(map['totalEgressBandwidthTier'] as String),
     );
   }
 }
+

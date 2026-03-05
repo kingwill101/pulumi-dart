@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse {
   /// The name of the app or site this chip is linking to.
   final pulumi.Input<String> destinationName;
-
   /// The URI of the app or site to open when the user taps the suggestion chip.
   final pulumi.Input<String> uri;
 
@@ -19,15 +18,17 @@ class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'destinationName': destinationName, 'uri': uri};
+    return <String, dynamic>{
+      'destinationName': destinationName,
+      'uri': uri,
+    };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse(
       destinationName: pulumi.Input.fromValue(map['destinationName'] as String),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

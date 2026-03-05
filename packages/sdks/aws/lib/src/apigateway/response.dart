@@ -171,19 +171,14 @@ import 'response_state.dart';
 class Response extends pulumi.CustomResource {
   /// Region where this resource will be managed. See the [AWS Documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for supported values. Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of parameters (paths, query strings and headers) of the Gateway Response.
   late final pulumi.Output<Map<String, String>?> responseParameters;
-
   /// Map of templates used to transform the response body.
   late final pulumi.Output<Map<String, String>?> responseTemplates;
-
   /// Response type of the associated GatewayResponse. See the [AWS Documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/supported-gateway-response-types.html) for supported values.
   late final pulumi.Output<String> responseType;
-
   /// String identifier of the associated REST API.
   late final pulumi.Output<String> restApiId;
-
   /// HTTP status code of the Gateway Response.
   late final pulumi.Output<String?> statusCode;
 
@@ -196,18 +191,14 @@ class Response extends pulumi.CustomResource {
     ResponseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigateway/response:Response',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigateway/response:Response',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
-    responseParameters = registerOutput<Map<String, String>?>(
-      'responseParameters',
-    );
-    responseTemplates = registerOutput<Map<String, String>?>(
-      'responseTemplates',
-    );
+    responseParameters = registerOutput<Map<String, String>?>('responseParameters');
+    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates');
     responseType = registerOutput<String>('responseType');
     restApiId = registerOutput<String>('restApiId');
     statusCode = registerOutput<String?>('statusCode');
@@ -231,18 +222,14 @@ class Response extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigateway/response:Response',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigateway/response:Response',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
-    responseParameters = registerOutput<Map<String, String>?>(
-      'responseParameters',
-    );
-    responseTemplates = registerOutput<Map<String, String>?>(
-      'responseTemplates',
-    );
+    responseParameters = registerOutput<Map<String, String>?>('responseParameters');
+    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates');
     responseType = registerOutput<String>('responseType');
     restApiId = registerOutput<String>('restApiId');
     statusCode = registerOutput<String?>('statusCode');

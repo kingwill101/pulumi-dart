@@ -8,19 +8,20 @@ class AwsIntegrationsHealth {
 
   /// Creates a new [AwsIntegrationsHealth].
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsHealth({this.metricsPollingInterval});
+  AwsIntegrationsHealth({
+    this.metricsPollingInterval,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metricsPollingInterval': ?metricsPollingInterval};
+    return <String, dynamic>{
+      'metricsPollingInterval': ?metricsPollingInterval,
+    };
   }
 
   factory AwsIntegrationsHealth.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsHealth(
-      metricsPollingInterval: (() {
-        final guardedValue = map['metricsPollingInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      metricsPollingInterval: (() { final guardedValue = map['metricsPollingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -6,47 +6,33 @@ import 'system_data_response.dart';
 class GetBlobDataSetMappingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Container that has the file path.
   final String containerName;
-
   /// The id of the source data set.
   final String dataSetId;
-
   /// Gets the status of the data set mapping.
   final String dataSetMappingStatus;
-
   /// File path within the source data set
   final String filePath;
-
   /// The resource id of the azure resource
   final String id;
-
   /// Kind of data set mapping.
   /// Expected value is 'Blob'.
   final String kind;
-
   /// Name of the azure resource
   final String name;
-
   /// File output type
   final String? outputType;
-
   /// Provisioning state of the data set mapping.
   final String provisioningState;
-
   /// Resource group of storage account.
   final String resourceGroup;
-
   /// Storage account name of the source data set.
   final String storageAccountName;
-
   /// Subscription id of storage account.
   final String subscriptionId;
-
   /// System Data of the Azure resource.
   final SystemDataResponse systemData;
-
   /// Type of the azure resource
   final String type;
 
@@ -114,19 +100,14 @@ class GetBlobDataSetMappingResult {
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      outputType: (() {
-        final guardedValue = map['outputType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputType: (() { final guardedValue = map['outputType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
       resourceGroup: map['resourceGroup'] as String,
       storageAccountName: map['storageAccountName'] as String,
       subscriptionId: map['subscriptionId'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

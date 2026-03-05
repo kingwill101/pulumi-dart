@@ -6,10 +6,8 @@ import 'monitoring_threshold.dart';
 class NumericalDataDriftMetricThreshold {
   /// Expected value is 'Numerical'.
   final pulumi.Input<String> dataType;
-
   /// [Required] The numerical data drift metric to calculate.
   final pulumi.Input<String> metric;
-
   /// The threshold value. If null, a default value will be set depending on the selected metric.
   final pulumi.Input<MonitoringThreshold>? threshold;
 
@@ -27,11 +25,7 @@ class NumericalDataDriftMetricThreshold {
     return <String, dynamic>{
       'dataType': dataType,
       'metric': metric,
-      'threshold':
-          ?pulumi.Input.mapOptionalInputValue<
-            MonitoringThreshold,
-            Map<String, dynamic>
-          >(threshold, (value) => value.toMap()),
+      'threshold': ?pulumi.Input.mapOptionalInputValue<MonitoringThreshold, Map<String, dynamic>>(threshold, (value) => value.toMap()),
     };
   }
 
@@ -39,15 +33,8 @@ class NumericalDataDriftMetricThreshold {
     return NumericalDataDriftMetricThreshold(
       dataType: pulumi.Input.fromValue(map['dataType'] as String),
       metric: pulumi.Input.fromValue(map['metric'] as String),
-      threshold: (() {
-        final guardedValue = map['threshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MonitoringThreshold.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MonitoringThreshold.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

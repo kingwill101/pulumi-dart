@@ -188,18 +188,14 @@ import 'group_state.dart';
 class Group extends pulumi.CustomResource {
   /// A friendly name for this Management Group. If not specified, this will be the same as the `name`.
   late final pulumi.Output<String> displayName;
-
   /// The name or UUID for this Management Group, which needs to be unique across your tenant. A new UUID will be generated if not provided. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Parent Management Group.
   late final pulumi.Output<String> parentManagementGroupId;
-
   /// A list of Subscription GUIDs which should be assigned to the Management Group.
   ///
   /// &gt; **Note:** To clear all Subscriptions from the Management Group set `subscription_ids` to an empty list
   late final pulumi.Output<List<String>> subscriptionIds;
-
   /// The Management Group ID with the Tenant ID prefix.
   late final pulumi.Output<String> tenantScopedId;
 
@@ -207,13 +203,16 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_management_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:management/group:Group',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Group(
+    String name, {
+    GroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:management/group:Group',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     parentManagementGroupId = registerOutput<String>('parentManagementGroupId');
@@ -222,7 +221,11 @@ class Group extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
+  static Group get(
+    String name,
+    pulumi.Input<String> id, {
+    GroupState? state,
+  }) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -235,11 +238,11 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:management/group:Group',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:management/group:Group',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     parentManagementGroupId = registerOutput<String>('parentManagementGroupId');

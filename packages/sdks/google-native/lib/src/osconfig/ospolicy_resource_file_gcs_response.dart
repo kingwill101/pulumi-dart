@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OSPolicyResourceFileGcsResponse {
   /// Bucket of the Cloud Storage object.
   final pulumi.Input<String> bucket;
-
   /// Generation number of the Cloud Storage object.
   final pulumi.Input<String> generation;
-
   /// Name of the Cloud Storage object.
   final pulumi.Input<String> object_;
 
@@ -39,3 +37,4 @@ class OSPolicyResourceFileGcsResponse {
     );
   }
 }
+

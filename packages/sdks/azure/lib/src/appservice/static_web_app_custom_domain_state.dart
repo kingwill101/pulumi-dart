@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticWebAppCustomDomainState {
   /// The Domain Name which should be associated with this Static Site. Changing this forces a new Static Site Custom Domain to be created.
   final pulumi.Input<String>? domainName;
-
   /// The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
   final pulumi.Input<String>? staticWebAppId;
-
   /// Token to be used with `dns-txt-token` validation.
   final pulumi.Input<String>? validationToken;
-
   /// One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
   ///
   /// &gt; **Note:** Apex domains must use `dns-txt-token` validation.
@@ -43,26 +40,11 @@ class StaticWebAppCustomDomainState {
 
   factory StaticWebAppCustomDomainState.fromMap(Map<String, dynamic> map) {
     return StaticWebAppCustomDomainState(
-      domainName: (() {
-        final guardedValue = map['domainName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      staticWebAppId: (() {
-        final guardedValue = map['staticWebAppId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      validationToken: (() {
-        final guardedValue = map['validationToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      validationType: (() {
-        final guardedValue = map['validationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      staticWebAppId: (() { final guardedValue = map['staticWebAppId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      validationToken: (() { final guardedValue = map['validationToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      validationType: (() { final guardedValue = map['validationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

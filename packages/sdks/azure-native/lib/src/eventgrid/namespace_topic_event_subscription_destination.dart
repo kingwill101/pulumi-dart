@@ -7,7 +7,6 @@ class NamespaceTopicEventSubscriptionDestination {
   /// Type of the endpoint for the event subscription destination.
   /// Expected value is 'NamespaceTopic'.
   final pulumi.Input<String> endpointType;
-
   /// The Azure resource Id that represents the endpoint of the Event Grid Namespace Topic destination of an event subscription.
   /// This field is required and the Namespace Topic resource listed must already exist.
   /// The resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.EventGrid/namespaces/{NamespaceName}/topics/{TopicName}.
@@ -28,16 +27,11 @@ class NamespaceTopicEventSubscriptionDestination {
     };
   }
 
-  factory NamespaceTopicEventSubscriptionDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NamespaceTopicEventSubscriptionDestination.fromMap(Map<String, dynamic> map) {
     return NamespaceTopicEventSubscriptionDestination(
       endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,16 +7,12 @@ import 'volume_response_appengine_v1beta.dart';
 class ResourcesResponseAppengineV1beta {
   /// Number of CPU cores needed.
   final pulumi.Input<double> cpu;
-
   /// Disk size (GB) needed.
   final pulumi.Input<double> diskGb;
-
   /// The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud Composer to encrypt the vm disk
   final pulumi.Input<String> kmsKeyReference;
-
   /// Memory (GB) needed.
   final pulumi.Input<double> memoryGb;
-
   /// User specified volumes.
   final pulumi.Input<List<VolumeResponseAppengineV1beta>> volumes;
 
@@ -40,18 +36,7 @@ class ResourcesResponseAppengineV1beta {
       'diskGb': diskGb,
       'kmsKeyReference': kmsKeyReference,
       'memoryGb': memoryGb,
-      'volumes':
-          pulumi.Input.mapInputValue<
-            List<VolumeResponseAppengineV1beta>,
-            List<Map<String, dynamic>>
-          >(
-            volumes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VolumeResponseAppengineV1beta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'volumes': pulumi.Input.mapInputValue<List<VolumeResponseAppengineV1beta>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<VolumeResponseAppengineV1beta, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -61,14 +46,8 @@ class ResourcesResponseAppengineV1beta {
       diskGb: pulumi.Input.fromValue(map['diskGb'] as double),
       kmsKeyReference: pulumi.Input.fromValue(map['kmsKeyReference'] as String),
       memoryGb: pulumi.Input.fromValue(map['memoryGb'] as double),
-      volumes: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<VolumeResponseAppengineV1beta>(
-          map['volumes']!,
-          (value) => VolumeResponseAppengineV1beta.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      volumes: pulumi.Input.fromValue(pulumi.Input.decodeList<VolumeResponseAppengineV1beta>(map['volumes']!, (value) => VolumeResponseAppengineV1beta.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse {
   /// Font size for the text.
   final pulumi.Input<double> size;
-
   /// Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
   final pulumi.Input<String> unit;
 
@@ -19,15 +18,17 @@ class GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'size': size, 'unit': unit};
+    return <String, dynamic>{
+      'size': size,
+      'unit': unit,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse(
       size: pulumi.Input.fromValue(map['size'] as double),
       unit: pulumi.Input.fromValue(map['unit'] as String),
     );
   }
 }
+

@@ -11,19 +11,20 @@ class GetDefaultTagsArgs {
 
   /// Creates a new [GetDefaultTagsArgs].
   /// [id] Optional.
-  GetDefaultTagsArgs({this.id});
+  GetDefaultTagsArgs({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory GetDefaultTagsArgs.fromMap(Map<String, dynamic> map) {
     return GetDefaultTagsArgs(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

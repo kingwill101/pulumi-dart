@@ -12,59 +12,40 @@ import 'system_data_response.dart';
 class GetConfigurationStoreResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The creation date of configuration store.
   final String creationDate;
-
   /// Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
   final DataPlaneProxyPropertiesResponse? dataPlaneProxy;
-
   /// Disables all authentication methods other than AAD authentication.
   final bool? disableLocalAuth;
-
   /// Property specifying whether protection against purge is enabled for this configuration store.
   final bool? enablePurgeProtection;
-
   /// The encryption settings of the configuration store.
   final EncryptionPropertiesResponse? encryption;
-
   /// The DNS endpoint where the configuration store API will be available.
   final String endpoint;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The managed identity information, if configured.
   final ResourceIdentityResponse? identity;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The list of private endpoint connections that are set up for this resource.
-  final List<PrivateEndpointConnectionReferenceResponse>
-  privateEndpointConnections;
-
+  final List<PrivateEndpointConnectionReferenceResponse> privateEndpointConnections;
   /// The provisioning state of the configuration store.
   final String provisioningState;
-
   /// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
   final String? publicNetworkAccess;
-
   /// The sku of the configuration store.
   final SkuResponse sku;
-
   /// The amount of time in days that the configuration store will be retained when it is soft deleted.
   final int? softDeleteRetentionInDays;
-
   /// Resource system metadata.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -123,11 +104,7 @@ class GetConfigurationStoreResult {
       'identity': ?identity?.toMap(),
       'location': location,
       'name': name,
-      'privateEndpointConnections':
-          pulumi.Input.encodeList<
-            PrivateEndpointConnectionReferenceResponse,
-            Map<String, dynamic>
-          >(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionReferenceResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'sku': sku.toMap(),
@@ -142,69 +119,24 @@ class GetConfigurationStoreResult {
     return GetConfigurationStoreResult(
       azureApiVersion: map['azureApiVersion'] as String,
       creationDate: map['creationDate'] as String,
-      dataPlaneProxy: (() {
-        final guardedValue = map['dataPlaneProxy'];
-        if (guardedValue == null) return null;
-        return DataPlaneProxyPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      disableLocalAuth: (() {
-        final guardedValue = map['disableLocalAuth'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      enablePurgeProtection: (() {
-        final guardedValue = map['enablePurgeProtection'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      encryption: (() {
-        final guardedValue = map['encryption'];
-        if (guardedValue == null) return null;
-        return EncryptionPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      dataPlaneProxy: (() { final guardedValue = map['dataPlaneProxy']; if (guardedValue == null) return null; return DataPlaneProxyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      disableLocalAuth: (() { final guardedValue = map['disableLocalAuth']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      enablePurgeProtection: (() { final guardedValue = map['enablePurgeProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return EncryptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       endpoint: map['endpoint'] as String,
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return ResourceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      privateEndpointConnections:
-          pulumi.Input.decodeList<PrivateEndpointConnectionReferenceResponse>(
-            map['privateEndpointConnections']!,
-            (value) => PrivateEndpointConnectionReferenceResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionReferenceResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      softDeleteRetentionInDays: (() {
-        final guardedValue = map['softDeleteRetentionInDays'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      softDeleteRetentionInDays: (() { final guardedValue = map['softDeleteRetentionInDays']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

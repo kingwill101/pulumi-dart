@@ -7,10 +7,14 @@ class UserProfileDetailIam {
 
   /// Creates a new [UserProfileDetailIam].
   /// [arn] Required.
-  UserProfileDetailIam({required this.arn});
+  UserProfileDetailIam({
+    required this.arn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': arn};
+    return <String, dynamic>{
+      'arn': arn,
+    };
   }
 
   factory UserProfileDetailIam.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class UserProfileDetailIam {
     );
   }
 }
+

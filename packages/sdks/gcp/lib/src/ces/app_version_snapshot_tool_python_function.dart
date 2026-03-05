@@ -5,13 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotToolPythonFunction {
   /// The description of the app version.
   final pulumi.Input<String>? description;
-
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
   final pulumi.Input<String>? name;
-
   /// (Output)
   /// The Python code to execute for the tool.
   final pulumi.Input<String>? pythonCode;
@@ -34,25 +32,12 @@ class AppVersionSnapshotToolPythonFunction {
     };
   }
 
-  factory AppVersionSnapshotToolPythonFunction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolPythonFunction.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolPythonFunction(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pythonCode: (() {
-        final guardedValue = map['pythonCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pythonCode: (() { final guardedValue = map['pythonCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

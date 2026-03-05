@@ -7,34 +7,24 @@ import 'system_data_response.dart';
 class GetLicenseResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// Describes the properties of a License.
   final LicenseDetailsResponse? licenseDetails;
-
   /// The type of the license resource.
   final String? licenseType;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The provisioning state, which only appears in the response.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Describes the tenant id.
   final String? tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -84,35 +74,16 @@ class GetLicenseResult {
     return GetLicenseResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      licenseDetails: (() {
-        final guardedValue = map['licenseDetails'];
-        if (guardedValue == null) return null;
-        return LicenseDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      licenseType: (() {
-        final guardedValue = map['licenseType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      licenseDetails: (() { final guardedValue = map['licenseDetails']; if (guardedValue == null) return null; return LicenseDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

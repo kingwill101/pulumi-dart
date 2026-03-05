@@ -103,8 +103,7 @@ Future<GetWebPubSubHubResult> getWebPubSubHub(
 /// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_webpubsub_get_web_pub_sub_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebPubSubPrivateEndpointConnectionResult>
-getWebPubSubPrivateEndpointConnection(
+Future<GetWebPubSubPrivateEndpointConnectionResult> getWebPubSubPrivateEndpointConnection(
   GetWebPubSubPrivateEndpointConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -144,8 +143,7 @@ Future<GetWebPubSubReplicaResult> getWebPubSubReplica(
 /// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_webpubsub_get_web_pub_sub_shared_private_link_resource_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebPubSubSharedPrivateLinkResourceResult>
-getWebPubSubSharedPrivateLinkResource(
+Future<GetWebPubSubSharedPrivateLinkResourceResult> getWebPubSubSharedPrivateLinkResource(
   GetWebPubSubSharedPrivateLinkResourceArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IDRange {
   /// max is the end of the range, inclusive.
   final pulumi.Input<int> max;
-
   /// min is the start of the range, inclusive.
   final pulumi.Input<int> min;
 
   /// Creates a new [IDRange].
   /// [max] max is the end of the range, inclusive.
   /// [min] min is the start of the range, inclusive.
-  IDRange({required this.max, required this.min});
+  IDRange({
+    required this.max,
+    required this.min,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': max, 'min': min};
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
   factory IDRange.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class IDRange {
     );
   }
 }
+

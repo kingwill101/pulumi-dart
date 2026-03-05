@@ -10,10 +10,8 @@ import 'route_server_propagation_timeouts.dart';
 class RouteServerPropagationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The unique identifier for the route server to be associated.
   final pulumi.Input<String> routeServerId;
-
   /// The ID of the route table to which route server will propagate routes.
   ///
   /// The following arguments are optional:
@@ -37,32 +35,17 @@ class RouteServerPropagationArgs {
       'region': ?region,
       'routeServerId': routeServerId,
       'routeTableId': routeTableId,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            RouteServerPropagationTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<RouteServerPropagationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory RouteServerPropagationArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerPropagationArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routeServerId: pulumi.Input.fromValue(map['routeServerId'] as String),
       routeTableId: pulumi.Input.fromValue(map['routeTableId'] as String),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RouteServerPropagationTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouteServerPropagationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

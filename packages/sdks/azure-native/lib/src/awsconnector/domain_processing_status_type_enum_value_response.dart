@@ -9,21 +9,20 @@ class DomainProcessingStatusTypeEnumValueResponse {
 
   /// Creates a new [DomainProcessingStatusTypeEnumValueResponse].
   /// [value] Property value
-  DomainProcessingStatusTypeEnumValueResponse({this.value});
+  DomainProcessingStatusTypeEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory DomainProcessingStatusTypeEnumValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainProcessingStatusTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return DomainProcessingStatusTypeEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

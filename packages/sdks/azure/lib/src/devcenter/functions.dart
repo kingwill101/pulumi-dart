@@ -136,7 +136,10 @@ import 'get_result.dart';
 /// * `Microsoft.DevCenter` - 2025-02-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_devcenter_get_get_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetResult> get(GetArgs args, {pulumi.InvokeOptions? options}) async {
+Future<GetResult> get(
+  GetArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'azure:devcenter/get:get',

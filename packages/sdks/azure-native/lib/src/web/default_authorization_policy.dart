@@ -7,7 +7,6 @@ import 'allowed_principals.dart';
 class DefaultAuthorizationPolicy {
   /// The configuration settings of the Azure Active Directory allowed applications.
   final pulumi.Input<List<String>>? allowedApplications;
-
   /// The configuration settings of the Azure Active Directory allowed principals.
   final pulumi.Input<AllowedPrincipals>? allowedPrincipals;
 
@@ -22,30 +21,15 @@ class DefaultAuthorizationPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedApplications': ?allowedApplications,
-      'allowedPrincipals':
-          ?pulumi.Input.mapOptionalInputValue<
-            AllowedPrincipals,
-            Map<String, dynamic>
-          >(allowedPrincipals, (value) => value.toMap()),
+      'allowedPrincipals': ?pulumi.Input.mapOptionalInputValue<AllowedPrincipals, Map<String, dynamic>>(allowedPrincipals, (value) => value.toMap()),
     };
   }
 
   factory DefaultAuthorizationPolicy.fromMap(Map<String, dynamic> map) {
     return DefaultAuthorizationPolicy(
-      allowedApplications: (() {
-        final guardedValue = map['allowedApplications'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      allowedPrincipals: (() {
-        final guardedValue = map['allowedPrincipals'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AllowedPrincipals.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      allowedApplications: (() { final guardedValue = map['allowedApplications']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      allowedPrincipals: (() { final guardedValue = map['allowedPrincipals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AllowedPrincipals.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

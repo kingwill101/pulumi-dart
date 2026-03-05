@@ -8,19 +8,20 @@ class ConnectionAccountKey {
 
   /// Creates a new [ConnectionAccountKey].
   /// [key] Optional.
-  ConnectionAccountKey({this.key});
+  ConnectionAccountKey({
+    this.key,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key};
+    return <String, dynamic>{
+      'key': ?key,
+    };
   }
 
   factory ConnectionAccountKey.fromMap(Map<String, dynamic> map) {
     return ConnectionAccountKey(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

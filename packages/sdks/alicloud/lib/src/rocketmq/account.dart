@@ -494,13 +494,10 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// The status of the account. Valid values: `DISABLE`, `ENABLE`.
   late final pulumi.Output<String> accountStatus;
-
   /// The instance ID.
   late final pulumi.Output<String> instanceId;
-
   /// The password of the account.
   late final pulumi.Output<String> password;
-
   /// The username of the account.
   late final pulumi.Output<String> username;
 
@@ -513,11 +510,11 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rocketmq/account:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rocketmq/account:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountStatus = registerOutput<String>('accountStatus');
     instanceId = registerOutput<String>('instanceId');
     password = registerOutput<String>('password');
@@ -542,11 +539,11 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rocketmq/account:Account',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rocketmq/account:Account',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountStatus = registerOutput<String>('accountStatus');
     instanceId = registerOutput<String>('instanceId');
     password = registerOutput<String>('password');

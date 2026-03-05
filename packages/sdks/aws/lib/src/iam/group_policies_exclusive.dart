@@ -222,7 +222,6 @@ import 'group_policies_exclusive_state.dart';
 class GroupPoliciesExclusive extends pulumi.CustomResource {
   /// IAM group name.
   late final pulumi.Output<String> groupName;
-
   /// A list of inline policy names to be assigned to the group. Policies attached to this group but not configured in this argument will be removed.
   late final pulumi.Output<List<String>> policyNames;
 
@@ -235,11 +234,11 @@ class GroupPoliciesExclusive extends pulumi.CustomResource {
     GroupPoliciesExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/groupPoliciesExclusive:GroupPoliciesExclusive',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/groupPoliciesExclusive:GroupPoliciesExclusive',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupName = registerOutput<String>('groupName');
     policyNames = registerOutput<List<String>>('policyNames');
   }
@@ -262,11 +261,11 @@ class GroupPoliciesExclusive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/groupPoliciesExclusive:GroupPoliciesExclusive',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/groupPoliciesExclusive:GroupPoliciesExclusive',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupName = registerOutput<String>('groupName');
     policyNames = registerOutput<List<String>>('policyNames');
   }

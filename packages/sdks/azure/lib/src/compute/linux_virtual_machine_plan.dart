@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxVirtualMachinePlan {
   /// Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
-
   /// Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
   final pulumi.Input<String> product;
-
   /// Specifies the Publisher of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
   final pulumi.Input<String> publisher;
 
@@ -38,3 +36,4 @@ class LinuxVirtualMachinePlan {
     );
   }
 }
+

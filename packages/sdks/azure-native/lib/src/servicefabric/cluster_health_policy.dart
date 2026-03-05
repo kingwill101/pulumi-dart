@@ -11,7 +11,6 @@ class ClusterHealthPolicy {
   /// This is calculated by dividing the number of unhealthy applications over the total number of application instances in the cluster, excluding applications of application types that are included in the ApplicationTypeHealthPolicyMap.
   /// The computation rounds up to tolerate one failure on small numbers of applications. Default percentage is zero.
   final pulumi.Input<int> maxPercentUnhealthyApplications;
-
   /// The maximum allowed percentage of unhealthy nodes before reporting an error. For example, to allow 10% of nodes to be unhealthy, this value would be 10.
   ///
   /// The percentage represents the maximum tolerated percentage of nodes that can be unhealthy before the cluster is considered in error.
@@ -39,12 +38,9 @@ class ClusterHealthPolicy {
 
   factory ClusterHealthPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterHealthPolicy(
-      maxPercentUnhealthyApplications: pulumi.Input.fromValue(
-        map['maxPercentUnhealthyApplications'] as int,
-      ),
-      maxPercentUnhealthyNodes: pulumi.Input.fromValue(
-        map['maxPercentUnhealthyNodes'] as int,
-      ),
+      maxPercentUnhealthyApplications: pulumi.Input.fromValue(map['maxPercentUnhealthyApplications'] as int),
+      maxPercentUnhealthyNodes: pulumi.Input.fromValue(map['maxPercentUnhealthyNodes'] as int),
     );
   }
 }
+

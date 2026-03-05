@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSshKey.
 class GetSshKeyResult {
   /// The date this key was added.
   final String created;
-
   /// The ID of the SSH Key
   final String? id;
   final String label;
-
   /// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
   final String sshKey;
 
@@ -36,13 +35,10 @@ class GetSshKeyResult {
   factory GetSshKeyResult.fromMap(Map<String, dynamic> map) {
     return GetSshKeyResult(
       created: map['created'] as String,
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       label: map['label'] as String,
       sshKey: map['sshKey'] as String,
     );
   }
 }
+

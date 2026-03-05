@@ -8,17 +8,20 @@ class GetSecurityPolicyRecaptchaOptionsConfig {
 
   /// Creates a new [GetSecurityPolicyRecaptchaOptionsConfig].
   /// [redirectSiteKey] A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
-  GetSecurityPolicyRecaptchaOptionsConfig({required this.redirectSiteKey});
+  GetSecurityPolicyRecaptchaOptionsConfig({
+    required this.redirectSiteKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'redirectSiteKey': redirectSiteKey};
+    return <String, dynamic>{
+      'redirectSiteKey': redirectSiteKey,
+    };
   }
 
-  factory GetSecurityPolicyRecaptchaOptionsConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSecurityPolicyRecaptchaOptionsConfig.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyRecaptchaOptionsConfig(
       redirectSiteKey: pulumi.Input.fromValue(map['redirectSiteKey'] as String),
     );
   }
 }
+

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouterGrantAssociationArgs {
   /// The ID of the associated Leased Line Gateway instance.
   final pulumi.Input<String> ecrId;
-
   /// The ID of the Alibaba Cloud account (primary account) to which the leased line gateway instance is authorized.
   final pulumi.Input<int> ecrOwnerAliUid;
-
   /// The ID of the network instance.
   final pulumi.Input<String> instanceId;
-
   /// The ID of the region where the authorized network instance is located.
   final pulumi.Input<String> instanceRegionId;
-
   /// The type of the network instance. Value:
   /// - `VBR`: the VBR instance.
   /// - `VPC`: VPC instance.
@@ -53,10 +49,9 @@ class RouterGrantAssociationArgs {
       ecrId: pulumi.Input.fromValue(map['ecrId'] as String),
       ecrOwnerAliUid: pulumi.Input.fromValue(map['ecrOwnerAliUid'] as int),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      instanceRegionId: pulumi.Input.fromValue(
-        map['instanceRegionId'] as String,
-      ),
+      instanceRegionId: pulumi.Input.fromValue(map['instanceRegionId'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualHubRoute {
   /// A list of Address Prefixes.
   final pulumi.Input<List<String>> addressPrefixes;
-
   /// The IP Address that Packets should be forwarded to as the Next Hop.
   final pulumi.Input<String> nextHopIpAddress;
 
@@ -26,12 +25,9 @@ class VirtualHubRoute {
 
   factory VirtualHubRoute.fromMap(Map<String, dynamic> map) {
     return VirtualHubRoute(
-      addressPrefixes: pulumi.Input.fromValue(
-        (map['addressPrefixes'] as List).cast<String>(),
-      ),
-      nextHopIpAddress: pulumi.Input.fromValue(
-        map['nextHopIpAddress'] as String,
-      ),
+      addressPrefixes: pulumi.Input.fromValue((map['addressPrefixes'] as List).cast<String>()),
+      nextHopIpAddress: pulumi.Input.fromValue(map['nextHopIpAddress'] as String),
     );
   }
 }
+

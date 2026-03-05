@@ -6,10 +6,7 @@ import 'table_bucket_maintenance_configuration_iceberg_unreferenced_file_removal
 class TableBucketMaintenanceConfiguration {
   /// A single Iceberg unreferenced file removal settings object.
   /// See `iceberg_unreferenced_file_removal` below.
-  final pulumi.Input<
-    TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval
-  >
-  icebergUnreferencedFileRemoval;
+  final pulumi.Input<TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval> icebergUnreferencedFileRemoval;
 
   /// Creates a new [TableBucketMaintenanceConfiguration].
   /// [icebergUnreferencedFileRemoval] A single Iceberg unreferenced file removal settings object.
@@ -19,24 +16,14 @@ class TableBucketMaintenanceConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'icebergUnreferencedFileRemoval':
-          pulumi.Input.mapInputValue<
-            TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval,
-            Map<String, dynamic>
-          >(icebergUnreferencedFileRemoval, (value) => value.toMap()),
+      'icebergUnreferencedFileRemoval': pulumi.Input.mapInputValue<TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval, Map<String, dynamic>>(icebergUnreferencedFileRemoval, (value) => value.toMap()),
     };
   }
 
-  factory TableBucketMaintenanceConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TableBucketMaintenanceConfiguration.fromMap(Map<String, dynamic> map) {
     return TableBucketMaintenanceConfiguration(
-      icebergUnreferencedFileRemoval: pulumi.Input.fromValue(
-        TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval.fromMap(
-          (map['icebergUnreferencedFileRemoval']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
+      icebergUnreferencedFileRemoval: pulumi.Input.fromValue(TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval.fromMap((map['icebergUnreferencedFileRemoval']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

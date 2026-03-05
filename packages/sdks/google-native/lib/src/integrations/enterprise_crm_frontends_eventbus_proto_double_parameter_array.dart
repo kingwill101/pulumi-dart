@@ -7,21 +7,20 @@ class EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray {
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray].
   /// [doubleValues] Optional.
-  EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray({this.doubleValues});
+  EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray({
+    this.doubleValues,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'doubleValues': ?doubleValues};
+    return <String, dynamic>{
+      'doubleValues': ?doubleValues,
+    };
   }
 
-  factory EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray(
-      doubleValues: (() {
-        final guardedValue = map['doubleValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<double>());
-      })(),
+      doubleValues: (() { final guardedValue = map['doubleValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<double>()); })(),
     );
   }
 }
+

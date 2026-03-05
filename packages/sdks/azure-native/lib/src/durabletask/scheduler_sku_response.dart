@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchedulerSkuResponse {
   /// The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy
   final pulumi.Input<int>? capacity;
-
   /// The name of the SKU
   final pulumi.Input<String> name;
-
   /// Indicates whether the current SKU configuration is zone redundant
   final pulumi.Input<String> redundancyState;
 
@@ -33,13 +31,10 @@ class SchedulerSkuResponse {
 
   factory SchedulerSkuResponse.fromMap(Map<String, dynamic> map) {
     return SchedulerSkuResponse(
-      capacity: (() {
-        final guardedValue = map['capacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       redundancyState: pulumi.Input.fromValue(map['redundancyState'] as String),
     );
   }
 }
+

@@ -11,10 +11,14 @@ class BucketOwnershipControlsRule {
 
   /// Creates a new [BucketOwnershipControlsRule].
   /// [objectOwnership] Object ownership. Valid values: `BucketOwnerPreferred`, `ObjectWriter` or `BucketOwnerEnforced`
-  BucketOwnershipControlsRule({required this.objectOwnership});
+  BucketOwnershipControlsRule({
+    required this.objectOwnership,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectOwnership': objectOwnership};
+    return <String, dynamic>{
+      'objectOwnership': objectOwnership,
+    };
   }
 
   factory BucketOwnershipControlsRule.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class BucketOwnershipControlsRule {
     );
   }
 }
+

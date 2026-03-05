@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceRequestsResponse {
   /// CPU request.
   final pulumi.Input<String> cpu;
-
   /// Memory request.
   final pulumi.Input<String> memory;
 
   /// Creates a new [ResourceRequestsResponse].
   /// [cpu] CPU request.
   /// [memory] Memory request.
-  ResourceRequestsResponse({required this.cpu, required this.memory});
+  ResourceRequestsResponse({
+    required this.cpu,
+    required this.memory,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpu': cpu, 'memory': memory};
+    return <String, dynamic>{
+      'cpu': cpu,
+      'memory': memory,
+    };
   }
 
   factory ResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ResourceRequestsResponse {
     );
   }
 }
+

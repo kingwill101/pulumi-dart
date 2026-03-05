@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmailIdentityPolicyArgs {
   /// The email identity.
   final pulumi.Input<String> emailIdentity;
-
   /// The text of the policy in JSON format.
   final pulumi.Input<String> policy;
-
   /// The name of the policy.
   final pulumi.Input<String> policyName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -45,11 +42,8 @@ class EmailIdentityPolicyArgs {
       emailIdentity: pulumi.Input.fromValue(map['emailIdentity'] as String),
       policy: pulumi.Input.fromValue(map['policy'] as String),
       policyName: pulumi.Input.fromValue(map['policyName'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,25 +9,20 @@ class InfrastructureConfigurationLogging {
 
   /// Creates a new [InfrastructureConfigurationLogging].
   /// [s3Logs] Configuration block with S3 logging settings. Detailed below.
-  InfrastructureConfigurationLogging({required this.s3Logs});
+  InfrastructureConfigurationLogging({
+    required this.s3Logs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3Logs':
-          pulumi.Input.mapInputValue<
-            InfrastructureConfigurationLoggingS3Logs,
-            Map<String, dynamic>
-          >(s3Logs, (value) => value.toMap()),
+      's3Logs': pulumi.Input.mapInputValue<InfrastructureConfigurationLoggingS3Logs, Map<String, dynamic>>(s3Logs, (value) => value.toMap()),
     };
   }
 
   factory InfrastructureConfigurationLogging.fromMap(Map<String, dynamic> map) {
     return InfrastructureConfigurationLogging(
-      s3Logs: pulumi.Input.fromValue(
-        InfrastructureConfigurationLoggingS3Logs.fromMap(
-          (map['s3Logs']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      s3Logs: pulumi.Input.fromValue(InfrastructureConfigurationLoggingS3Logs.fromMap((map['s3Logs']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

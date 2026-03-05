@@ -9,10 +9,14 @@ class BuildNote {
 
   /// Creates a new [BuildNote].
   /// [builderVersion] Immutable. Version of the builder which produced this build.
-  BuildNote({required this.builderVersion});
+  BuildNote({
+    required this.builderVersion,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'builderVersion': builderVersion};
+    return <String, dynamic>{
+      'builderVersion': builderVersion,
+    };
   }
 
   factory BuildNote.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class BuildNote {
     );
   }
 }
+

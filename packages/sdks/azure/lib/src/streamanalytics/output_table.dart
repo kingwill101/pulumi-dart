@@ -313,31 +313,22 @@ import 'output_table_state.dart';
 class OutputTable extends pulumi.CustomResource {
   /// The number of records for a batch operation. Must be between `1` and `100`.
   late final pulumi.Output<int> batchSize;
-
   /// A list of the column names to be removed from output event entities.
   late final pulumi.Output<List<String>?> columnsToRemoves;
-
   /// The name of the Stream Output. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the output column that contains the partition key.
   late final pulumi.Output<String> partitionKey;
-
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The name of the output column that contains the row key.
   late final pulumi.Output<String> rowKey;
-
   /// The Access Key which should be used to connect to this Storage Account.
   late final pulumi.Output<String> storageAccountKey;
-
   /// The name of the Storage Account.
   late final pulumi.Output<String> storageAccountName;
-
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;
-
   /// The name of the table where the stream should be output to.
   late final pulumi.Output<String> table;
 
@@ -350,11 +341,11 @@ class OutputTable extends pulumi.CustomResource {
     OutputTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/outputTable:OutputTable',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/outputTable:OutputTable',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     batchSize = registerOutput<int>('batchSize');
     columnsToRemoves = registerOutput<List<String>?>('columnsToRemoves');
     this.name = registerOutput<String>('name');
@@ -385,11 +376,11 @@ class OutputTable extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/outputTable:OutputTable',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/outputTable:OutputTable',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     batchSize = registerOutput<int>('batchSize');
     columnsToRemoves = registerOutput<List<String>?>('columnsToRemoves');
     this.name = registerOutput<String>('name');

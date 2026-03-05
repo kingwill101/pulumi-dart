@@ -16,3 +16,4 @@ enum MultiSubnetIntent {
     throw ArgumentError('Unknown MultiSubnetIntent value: $value');
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppServiceAuthSettingsFacebook {
   /// The App ID of the Facebook app used for login
   final pulumi.Input<String> appId;
-
   /// The App Secret of the Facebook app used for Facebook login.
   final pulumi.Input<String> appSecret;
-
   /// The OAuth 2.0 scopes that will be requested as part of Facebook login authentication. &lt;https://developers.facebook.com/docs/facebook-login&gt;
   final pulumi.Input<List<String>>? oauthScopes;
 
@@ -34,11 +32,8 @@ class AppServiceAuthSettingsFacebook {
     return AppServiceAuthSettingsFacebook(
       appId: pulumi.Input.fromValue(map['appId'] as String),
       appSecret: pulumi.Input.fromValue(map['appSecret'] as String),
-      oauthScopes: (() {
-        final guardedValue = map['oauthScopes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      oauthScopes: (() { final guardedValue = map['oauthScopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudBillingBudgetsV1ThresholdRuleResponse {
   /// Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
   final pulumi.Input<String> spendBasis;
-
   /// Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
   final pulumi.Input<double> thresholdPercent;
 
@@ -25,14 +24,11 @@ class GoogleCloudBillingBudgetsV1ThresholdRuleResponse {
     };
   }
 
-  factory GoogleCloudBillingBudgetsV1ThresholdRuleResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudBillingBudgetsV1ThresholdRuleResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBillingBudgetsV1ThresholdRuleResponse(
       spendBasis: pulumi.Input.fromValue(map['spendBasis'] as String),
-      thresholdPercent: pulumi.Input.fromValue(
-        map['thresholdPercent'] as double,
-      ),
+      thresholdPercent: pulumi.Input.fromValue(map['thresholdPercent'] as double),
     );
   }
 }
+

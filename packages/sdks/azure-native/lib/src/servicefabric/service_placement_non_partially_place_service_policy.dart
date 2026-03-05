@@ -10,17 +10,20 @@ class ServicePlacementNonPartiallyPlaceServicePolicy {
 
   /// Creates a new [ServicePlacementNonPartiallyPlaceServicePolicy].
   /// [type] The type of placement policy for a service fabric service. Following are the possible values.
-  ServicePlacementNonPartiallyPlaceServicePolicy({required this.type});
+  ServicePlacementNonPartiallyPlaceServicePolicy({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
-  factory ServicePlacementNonPartiallyPlaceServicePolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServicePlacementNonPartiallyPlaceServicePolicy.fromMap(Map<String, dynamic> map) {
     return ServicePlacementNonPartiallyPlaceServicePolicy(
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

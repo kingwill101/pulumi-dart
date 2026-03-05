@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitRouterEcrAttachmentState {
   /// CenId
   final pulumi.Input<String>? cenId;
-
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
-
   /// EcrId
   final pulumi.Input<String>? ecrId;
-
   /// EcrOwnerId
   final pulumi.Input<int>? ecrOwnerId;
-
   /// The status of the resource
   final pulumi.Input<String>? status;
-
   /// The tag of the resource
   final pulumi.Input<Map<String, String>>? tags;
-
   /// TransitRouterAttachmentDescription
   final pulumi.Input<String>? transitRouterAttachmentDescription;
-
   /// TransitRouterAttachmentName
   final pulumi.Input<String>? transitRouterEcrAttachmentName;
-
   /// TransitRouterId
   final pulumi.Input<String>? transitRouterId;
 
@@ -69,53 +61,16 @@ class TransitRouterEcrAttachmentState {
 
   factory TransitRouterEcrAttachmentState.fromMap(Map<String, dynamic> map) {
     return TransitRouterEcrAttachmentState(
-      cenId: (() {
-        final guardedValue = map['cenId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ecrId: (() {
-        final guardedValue = map['ecrId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ecrOwnerId: (() {
-        final guardedValue = map['ecrOwnerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      transitRouterAttachmentDescription: (() {
-        final guardedValue = map['transitRouterAttachmentDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouterEcrAttachmentName: (() {
-        final guardedValue = map['transitRouterEcrAttachmentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouterId: (() {
-        final guardedValue = map['transitRouterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cenId: (() { final guardedValue = map['cenId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ecrId: (() { final guardedValue = map['ecrId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ecrOwnerId: (() { final guardedValue = map['ecrOwnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      transitRouterAttachmentDescription: (() { final guardedValue = map['transitRouterAttachmentDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouterEcrAttachmentName: (() { final guardedValue = map['transitRouterEcrAttachmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouterId: (() { final guardedValue = map['transitRouterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

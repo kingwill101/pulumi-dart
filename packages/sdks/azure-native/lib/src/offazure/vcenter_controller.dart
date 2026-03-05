@@ -165,46 +165,32 @@ import 'vcenter_controller_args.dart';
 class VcenterController extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets the timestamp marking vCenter creation.
   late final pulumi.Output<String> createdTimestamp;
-
   /// Gets the errors.
   late final pulumi.Output<List<Map<String, dynamic>>> errors;
-
   /// Gets or sets the FQDN/IPAddress of the vCenter.
   late final pulumi.Output<String?> fqdn;
-
   /// Gets or sets the friendly name of the vCenter.
   late final pulumi.Output<String?> friendlyName;
-
   /// Gets the instance UUID of the vCenter.
   late final pulumi.Output<String> instanceUuid;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Gets the performance statistics enabled on the vCenter.
   late final pulumi.Output<String> perfStatisticsLevel;
-
   /// Gets or sets the port of the vCenter.
   late final pulumi.Output<String?> port;
-
   /// The status of the last operation.
   late final pulumi.Output<String?> provisioningState;
-
   /// Gets or sets the run as account ID of the vCenter.
   late final pulumi.Output<String?> runAsAccountId;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Gets the timestamp marking last updated on the vCenter.
   late final pulumi.Output<String> updatedTimestamp;
-
   /// Gets the version of the vCenter.
   late final pulumi.Output<String> version;
 
@@ -217,11 +203,11 @@ class VcenterController extends pulumi.CustomResource {
     VcenterControllerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:offazure:VcenterController',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:offazure:VcenterController',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTimestamp = registerOutput<String>('createdTimestamp');
     errors = registerOutput<List<Map<String, dynamic>>>('errors');
@@ -233,16 +219,7 @@ class VcenterController extends pulumi.CustomResource {
     port = registerOutput<String?>('port');
     provisioningState = registerOutput<String?>('provisioningState');
     runAsAccountId = registerOutput<String?>('runAsAccountId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updatedTimestamp = registerOutput<String>('updatedTimestamp');
     version = registerOutput<String>('version');

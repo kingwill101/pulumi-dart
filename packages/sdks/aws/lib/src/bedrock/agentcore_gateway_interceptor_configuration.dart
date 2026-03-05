@@ -6,17 +6,11 @@ import 'agentcore_gateway_interceptor_configuration_interceptor.dart';
 
 class AgentcoreGatewayInterceptorConfiguration {
   /// Input configuration for the interceptor. See `input_configuration` below.
-  final pulumi.Input<
-    AgentcoreGatewayInterceptorConfigurationInputConfiguration
-  >?
-  inputConfiguration;
-
+  final pulumi.Input<AgentcoreGatewayInterceptorConfigurationInputConfiguration>? inputConfiguration;
   /// Set of interception points. Valid values: `REQUEST`, `RESPONSE`.
   final pulumi.Input<List<String>> interceptionPoints;
-
   /// Interceptor infrastructure configuration. See `interceptor` below.
-  final pulumi.Input<AgentcoreGatewayInterceptorConfigurationInterceptor>?
-  interceptor;
+  final pulumi.Input<AgentcoreGatewayInterceptorConfigurationInterceptor>? interceptor;
 
   /// Creates a new [AgentcoreGatewayInterceptorConfiguration].
   /// [inputConfiguration] Input configuration for the interceptor. See `input_configuration` below.
@@ -30,45 +24,18 @@ class AgentcoreGatewayInterceptorConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inputConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentcoreGatewayInterceptorConfigurationInputConfiguration,
-            Map<String, dynamic>
-          >(inputConfiguration, (value) => value.toMap()),
+      'inputConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayInterceptorConfigurationInputConfiguration, Map<String, dynamic>>(inputConfiguration, (value) => value.toMap()),
       'interceptionPoints': interceptionPoints,
-      'interceptor':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentcoreGatewayInterceptorConfigurationInterceptor,
-            Map<String, dynamic>
-          >(interceptor, (value) => value.toMap()),
+      'interceptor': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayInterceptorConfigurationInterceptor, Map<String, dynamic>>(interceptor, (value) => value.toMap()),
     };
   }
 
-  factory AgentcoreGatewayInterceptorConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreGatewayInterceptorConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayInterceptorConfiguration(
-      inputConfiguration: (() {
-        final guardedValue = map['inputConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentcoreGatewayInterceptorConfigurationInputConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      interceptionPoints: pulumi.Input.fromValue(
-        (map['interceptionPoints'] as List).cast<String>(),
-      ),
-      interceptor: (() {
-        final guardedValue = map['interceptor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentcoreGatewayInterceptorConfigurationInterceptor.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      inputConfiguration: (() { final guardedValue = map['inputConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreGatewayInterceptorConfigurationInputConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      interceptionPoints: pulumi.Input.fromValue((map['interceptionPoints'] as List).cast<String>()),
+      interceptor: (() { final guardedValue = map['interceptor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreGatewayInterceptorConfigurationInterceptor.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -8,10 +8,14 @@ class GetAccountEncryption {
 
   /// Creates a new [GetAccountEncryption].
   /// [keyVaultKeyId] The full URL path of the Key Vault Key used to encrypt data for this Batch account.
-  GetAccountEncryption({required this.keyVaultKeyId});
+  GetAccountEncryption({
+    required this.keyVaultKeyId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyVaultKeyId': keyVaultKeyId};
+    return <String, dynamic>{
+      'keyVaultKeyId': keyVaultKeyId,
+    };
   }
 
   factory GetAccountEncryption.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetAccountEncryption {
     );
   }
 }
+

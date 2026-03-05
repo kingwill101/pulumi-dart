@@ -10,22 +10,16 @@ import 'report_template_report_scope.dart';
 class ReportTemplateArgs {
   /// Report Format
   final pulumi.Input<String>? reportFileFormats;
-
   /// Report Aggregation Granularity
   final pulumi.Input<String>? reportGranularity;
-
   /// This property does not have a description in the spec, please add it before generating code.
   final pulumi.Input<String>? reportLanguage;
-
   /// Report range, yes and logic between multiple sets of k-v pairs. See `report_scope` below.
   final pulumi.Input<List<ReportTemplateReportScope>>? reportScopes;
-
   /// Report Template Description
   final pulumi.Input<String>? reportTemplateDescription;
-
   /// Report Template Name
   final pulumi.Input<String> reportTemplateName;
-
   /// Report subscription frequency. If this field is not empty, it is a Cron expression in Quartz format triggered by the subscription notification.
   ///
   /// The format is: Seconds, time, day, month, week. The following are examples of commonly used Cron expressions:
@@ -66,18 +60,7 @@ class ReportTemplateArgs {
       'reportFileFormats': ?reportFileFormats,
       'reportGranularity': ?reportGranularity,
       'reportLanguage': ?reportLanguage,
-      'reportScopes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ReportTemplateReportScope>,
-            List<Map<String, dynamic>>
-          >(
-            reportScopes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReportTemplateReportScope,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'reportScopes': ?pulumi.Input.mapOptionalInputValue<List<ReportTemplateReportScope>, List<Map<String, dynamic>>>(reportScopes, (value) => pulumi.Input.encodeList<ReportTemplateReportScope, Map<String, dynamic>>(value, (value) => value.toMap())),
       'reportTemplateDescription': ?reportTemplateDescription,
       'reportTemplateName': reportTemplateName,
       'subscriptionFrequency': ?subscriptionFrequency,
@@ -86,46 +69,14 @@ class ReportTemplateArgs {
 
   factory ReportTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ReportTemplateArgs(
-      reportFileFormats: (() {
-        final guardedValue = map['reportFileFormats'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reportGranularity: (() {
-        final guardedValue = map['reportGranularity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reportLanguage: (() {
-        final guardedValue = map['reportLanguage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reportScopes: (() {
-        final guardedValue = map['reportScopes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ReportTemplateReportScope>(
-            guardedValue,
-            (value) => ReportTemplateReportScope.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      reportTemplateDescription: (() {
-        final guardedValue = map['reportTemplateDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reportTemplateName: pulumi.Input.fromValue(
-        map['reportTemplateName'] as String,
-      ),
-      subscriptionFrequency: (() {
-        final guardedValue = map['subscriptionFrequency'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      reportFileFormats: (() { final guardedValue = map['reportFileFormats']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reportGranularity: (() { final guardedValue = map['reportGranularity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reportLanguage: (() { final guardedValue = map['reportLanguage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reportScopes: (() { final guardedValue = map['reportScopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReportTemplateReportScope>(guardedValue, (value) => ReportTemplateReportScope.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      reportTemplateDescription: (() { final guardedValue = map['reportTemplateDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reportTemplateName: pulumi.Input.fromValue(map['reportTemplateName'] as String),
+      subscriptionFrequency: (() { final guardedValue = map['subscriptionFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

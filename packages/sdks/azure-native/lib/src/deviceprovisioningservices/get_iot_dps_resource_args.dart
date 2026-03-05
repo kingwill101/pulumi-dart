@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIotDpsResourceArgs {
   /// Name of the provisioning service to retrieve.
   final pulumi.Input<String> provisioningServiceName;
-
   /// Resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetIotDpsResourceArgs {
 
   factory GetIotDpsResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetIotDpsResourceArgs(
-      provisioningServiceName: pulumi.Input.fromValue(
-        map['provisioningServiceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      provisioningServiceName: pulumi.Input.fromValue(map['provisioningServiceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

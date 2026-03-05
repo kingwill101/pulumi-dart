@@ -8,10 +8,14 @@ class TxtRecordRecord {
 
   /// Creates a new [TxtRecordRecord].
   /// [value] The value of the TXT record. Max length: 1024 characters
-  TxtRecordRecord({required this.value});
+  TxtRecordRecord({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory TxtRecordRecord.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class TxtRecordRecord {
     );
   }
 }
+

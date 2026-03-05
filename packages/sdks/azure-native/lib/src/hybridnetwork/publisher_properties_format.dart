@@ -9,19 +9,20 @@ class PublisherPropertiesFormat {
 
   /// Creates a new [PublisherPropertiesFormat].
   /// [scope] The publisher scope.
-  PublisherPropertiesFormat({this.scope});
+  PublisherPropertiesFormat({
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scope': ?scope};
+    return <String, dynamic>{
+      'scope': ?scope,
+    };
   }
 
   factory PublisherPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return PublisherPropertiesFormat(
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

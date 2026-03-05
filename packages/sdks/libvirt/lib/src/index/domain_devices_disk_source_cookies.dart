@@ -9,39 +9,20 @@ class DomainDevicesDiskSourceCookies {
 
   /// Creates a new [DomainDevicesDiskSourceCookies].
   /// [cookies] Configures cookies for the backing store source, allowing additional parameters for storage.
-  DomainDevicesDiskSourceCookies({this.cookies});
+  DomainDevicesDiskSourceCookies({
+    this.cookies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cookies':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DomainDevicesDiskSourceCookiesCookie>,
-            List<Map<String, dynamic>>
-          >(
-            cookies,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DomainDevicesDiskSourceCookiesCookie,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'cookies': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskSourceCookiesCookie>, List<Map<String, dynamic>>>(cookies, (value) => pulumi.Input.encodeList<DomainDevicesDiskSourceCookiesCookie, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesDiskSourceCookies.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceCookies(
-      cookies: (() {
-        final guardedValue = map['cookies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DomainDevicesDiskSourceCookiesCookie>(
-            guardedValue,
-            (value) => DomainDevicesDiskSourceCookiesCookie.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      cookies: (() { final guardedValue = map['cookies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainDevicesDiskSourceCookiesCookie>(guardedValue, (value) => DomainDevicesDiskSourceCookiesCookie.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

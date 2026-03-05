@@ -9,20 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyValueArgs {
   /// The name of the configuration store.
   final pulumi.Input<String> configStoreName;
-
   /// The content type of the key-value's value.
   /// Providing a proper content-type can enable transformations of values when they are retrieved by applications.
   final pulumi.Input<String>? contentType;
-
   /// Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
   final pulumi.Input<String>? keyValueName;
-
   /// The name of the resource group to which the container registry belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// A dictionary of tags that can help identify what a key-value may be applicable for.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The value of the key-value.
   final pulumi.Input<String>? value;
 
@@ -56,31 +51,12 @@ class KeyValueArgs {
   factory KeyValueArgs.fromMap(Map<String, dynamic> map) {
     return KeyValueArgs(
       configStoreName: pulumi.Input.fromValue(map['configStoreName'] as String),
-      contentType: (() {
-        final guardedValue = map['contentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyValueName: (() {
-        final guardedValue = map['keyValueName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyValueName: (() { final guardedValue = map['keyValueName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

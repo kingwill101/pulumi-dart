@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionsRegion {
   /// The Region code of a given Region
   final pulumi.Input<String> regionName;
-
   /// The opt-in status of the region. Possible values are `ENABLED`, `ENABLING`, `DISABLING`, `DISABLED`, and `ENABLED_BY_DEFAULT`.
   final pulumi.Input<String> regionOptStatus;
 
   /// Creates a new [GetRegionsRegion].
   /// [regionName] The Region code of a given Region
   /// [regionOptStatus] The opt-in status of the region. Possible values are `ENABLED`, `ENABLING`, `DISABLING`, `DISABLED`, and `ENABLED_BY_DEFAULT`.
-  GetRegionsRegion({required this.regionName, required this.regionOptStatus});
+  GetRegionsRegion({
+    required this.regionName,
+    required this.regionOptStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,3 +30,4 @@ class GetRegionsRegion {
     );
   }
 }
+

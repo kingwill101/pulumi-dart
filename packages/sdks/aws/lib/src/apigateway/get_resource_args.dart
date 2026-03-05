@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceArgs {
   /// Full path of the resource.  If no path is found, an error will be returned.
   final pulumi.Input<String> path;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// REST API id that owns the resource. If no REST API is found, an error will be returned.
   final pulumi.Input<String> restApiId;
 
@@ -20,7 +18,11 @@ class GetResourceArgs {
   /// [path] Full path of the resource.  If no path is found, an error will be returned.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApiId] REST API id that owns the resource. If no REST API is found, an error will be returned.
-  GetResourceArgs({required this.path, this.region, required this.restApiId});
+  GetResourceArgs({
+    required this.path,
+    this.region,
+    required this.restApiId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,12 +35,9 @@ class GetResourceArgs {
   factory GetResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceArgs(
       path: pulumi.Input.fromValue(map['path'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       restApiId: pulumi.Input.fromValue(map['restApiId'] as String),
     );
   }
 }
+

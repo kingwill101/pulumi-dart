@@ -209,25 +209,18 @@ import 'product_version_state.dart';
 class ProductVersion extends pulumi.CustomResource {
   /// Whether the version is activated
   late final pulumi.Output<bool?> active;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// Version description
   late final pulumi.Output<String?> description;
-
   /// Administrator guidance
   late final pulumi.Output<String?> guidance;
-
   /// Product ID
   late final pulumi.Output<String> productId;
-
   /// The name of the resource
   late final pulumi.Output<String> productVersionName;
-
   /// Template Type
   late final pulumi.Output<String> templateType;
-
   /// Template URL
   late final pulumi.Output<String> templateUrl;
 
@@ -240,11 +233,11 @@ class ProductVersion extends pulumi.CustomResource {
     ProductVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:servicecatalog/productVersion:ProductVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:servicecatalog/productVersion:ProductVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     active = registerOutput<bool?>('active');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -273,11 +266,11 @@ class ProductVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:servicecatalog/productVersion:ProductVersion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:servicecatalog/productVersion:ProductVersion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     active = registerOutput<bool?>('active');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

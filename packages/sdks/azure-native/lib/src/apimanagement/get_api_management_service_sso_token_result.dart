@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getApiManagementServiceSsoToken.
 class GetApiManagementServiceSsoTokenResult {
   /// Redirect URL to the Publisher Portal containing the SSO token.
@@ -7,21 +8,20 @@ class GetApiManagementServiceSsoTokenResult {
 
   /// Creates a new [GetApiManagementServiceSsoTokenResult].
   /// [redirectUri] Redirect URL to the Publisher Portal containing the SSO token.
-  GetApiManagementServiceSsoTokenResult({this.redirectUri});
+  GetApiManagementServiceSsoTokenResult({
+    this.redirectUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'redirectUri': ?redirectUri};
+    return <String, dynamic>{
+      'redirectUri': ?redirectUri,
+    };
   }
 
-  factory GetApiManagementServiceSsoTokenResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApiManagementServiceSsoTokenResult.fromMap(Map<String, dynamic> map) {
     return GetApiManagementServiceSsoTokenResult(
-      redirectUri: (() {
-        final guardedValue = map['redirectUri'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      redirectUri: (() { final guardedValue = map['redirectUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

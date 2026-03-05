@@ -10,21 +10,16 @@ class IdentityProviderArgs {
   /// Identity provider details. The following list describes the provider detail keys for each identity provider type:
   /// * For Google and Login with Amazon:
   final pulumi.Input<Map<String, String>> identityProviderDetails;
-
   /// Identity provider name.
   final pulumi.Input<String> identityProviderName;
-
   /// Identity provider type. Valid values: `SAML`, `Facebook`, `Google`, `LoginWithAmazon`, `SignInWithApple`, `OIDC`.
   final pulumi.Input<String> identityProviderType;
-
   /// ARN of the web portal. Forces replacement if changed.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> portalArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -57,28 +52,13 @@ class IdentityProviderArgs {
 
   factory IdentityProviderArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderArgs(
-      identityProviderDetails: pulumi.Input.fromValue(
-        (map['identityProviderDetails'] as Map).cast<String, String>(),
-      ),
-      identityProviderName: pulumi.Input.fromValue(
-        map['identityProviderName'] as String,
-      ),
-      identityProviderType: pulumi.Input.fromValue(
-        map['identityProviderType'] as String,
-      ),
+      identityProviderDetails: pulumi.Input.fromValue((map['identityProviderDetails'] as Map).cast<String, String>()),
+      identityProviderName: pulumi.Input.fromValue(map['identityProviderName'] as String),
+      identityProviderType: pulumi.Input.fromValue(map['identityProviderType'] as String),
       portalArn: pulumi.Input.fromValue(map['portalArn'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

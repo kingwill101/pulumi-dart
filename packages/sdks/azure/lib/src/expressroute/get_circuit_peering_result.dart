@@ -1,37 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCircuitPeering.
 class GetCircuitPeeringResult {
   /// The ASN used by Azure for the peering.
   final int azureAsn;
   final String expressRouteCircuitName;
   final String gatewayManagerEtag;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Indicates if IPv4 is enabled.
   final bool ipv4Enabled;
   final int peerAsn;
-
   /// The type of the ExpressRoute Circuit Peering.
   final String peeringType;
-
   /// The primary port used by Azure for this peering.
   final String primaryAzurePort;
-
   /// The primary peer address prefix.
   final String primaryPeerAddressPrefix;
   final String resourceGroupName;
   final String routeFilterId;
-
   /// The secondary port used by Azure for this peering.
   final String secondaryAzurePort;
-
   /// The secondary peer address prefix.
   final String secondaryPeerAddressPrefix;
   final String sharedKey;
-
   /// The VLAN ID used for this peering.
   final int vlanId;
 
@@ -109,3 +102,4 @@ class GetCircuitPeeringResult {
     );
   }
 }
+

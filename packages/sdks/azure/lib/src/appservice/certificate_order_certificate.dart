@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateOrderCertificate {
   /// The name of the App Service Certificate.
   final pulumi.Input<String>? certificateName;
-
   /// Key Vault resource Id.
   final pulumi.Input<String>? keyVaultId;
-
   /// Key Vault secret name.
   final pulumi.Input<String>? keyVaultSecretName;
-
   /// Status of the Key Vault secret.
   final pulumi.Input<String>? provisioningState;
 
@@ -38,26 +35,11 @@ class CertificateOrderCertificate {
 
   factory CertificateOrderCertificate.fromMap(Map<String, dynamic> map) {
     return CertificateOrderCertificate(
-      certificateName: (() {
-        final guardedValue = map['certificateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultId: (() {
-        final guardedValue = map['keyVaultId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultSecretName: (() {
-        final guardedValue = map['keyVaultSecretName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: (() {
-        final guardedValue = map['provisioningState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certificateName: (() { final guardedValue = map['certificateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultId: (() { final guardedValue = map['keyVaultId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultSecretName: (() { final guardedValue = map['keyVaultSecretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

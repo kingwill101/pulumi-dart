@@ -9,17 +9,20 @@ class AutoUpgradeNodeImageSelectionResponse {
 
   /// Creates a new [AutoUpgradeNodeImageSelectionResponse].
   /// [type] The node image upgrade type.
-  AutoUpgradeNodeImageSelectionResponse({required this.type});
+  AutoUpgradeNodeImageSelectionResponse({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
-  factory AutoUpgradeNodeImageSelectionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutoUpgradeNodeImageSelectionResponse.fromMap(Map<String, dynamic> map) {
     return AutoUpgradeNodeImageSelectionResponse(
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

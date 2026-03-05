@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedImageIdentifier {
   /// The Offer Name for this Shared Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> offer;
-
   /// The Publisher Name for this Gallery Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> publisher;
-
   /// The Name of the SKU for this Gallery Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> sku;
 
@@ -38,3 +36,4 @@ class SharedImageIdentifier {
     );
   }
 }
+

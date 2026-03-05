@@ -9,17 +9,20 @@ class GoogleCloudRetailV2alphaRuleFilterActionResponse {
 
   /// Creates a new [GoogleCloudRetailV2alphaRuleFilterActionResponse].
   /// [filter] A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
-  GoogleCloudRetailV2alphaRuleFilterActionResponse({required this.filter});
+  GoogleCloudRetailV2alphaRuleFilterActionResponse({
+    required this.filter,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filter': filter};
+    return <String, dynamic>{
+      'filter': filter,
+    };
   }
 
-  factory GoogleCloudRetailV2alphaRuleFilterActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2alphaRuleFilterActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaRuleFilterActionResponse(
       filter: pulumi.Input.fromValue(map['filter'] as String),
     );
   }
 }
+

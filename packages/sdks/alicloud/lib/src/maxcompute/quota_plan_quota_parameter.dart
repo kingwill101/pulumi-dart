@@ -7,10 +7,8 @@ class QuotaPlanQuotaParameter {
   ///
   /// &gt; **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
   final pulumi.Input<int> elasticReservedCu;
-
   /// The value of maxCU in Reserved CUs.
   final pulumi.Input<int>? maxCu;
-
   /// The value of minCU in Reserved CUs.
   final pulumi.Input<int>? minCu;
 
@@ -34,19 +32,10 @@ class QuotaPlanQuotaParameter {
 
   factory QuotaPlanQuotaParameter.fromMap(Map<String, dynamic> map) {
     return QuotaPlanQuotaParameter(
-      elasticReservedCu: pulumi.Input.fromValue(
-        map['elasticReservedCu'] as int,
-      ),
-      maxCu: (() {
-        final guardedValue = map['maxCu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minCu: (() {
-        final guardedValue = map['minCu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      elasticReservedCu: pulumi.Input.fromValue(map['elasticReservedCu'] as int),
+      maxCu: (() { final guardedValue = map['maxCu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minCu: (() { final guardedValue = map['minCu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

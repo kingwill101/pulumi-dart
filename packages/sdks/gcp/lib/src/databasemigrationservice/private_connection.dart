@@ -224,42 +224,31 @@ import 'private_connection_vpc_peering_config.dart';
 class PrivateConnection extends pulumi.CustomResource {
   /// If set to true, will skip validations.
   late final pulumi.Output<bool?> createWithoutValidation;
-
   /// Display name.
   late final pulumi.Output<String> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The PrivateConnection error in case of failure.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> errors;
-
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The name of the location this private connection is located in.
   late final pulumi.Output<String> location;
-
   /// The resource's name.
   late final pulumi.Output<String> name;
-
   /// The private connectivity identifier.
   late final pulumi.Output<String> privateConnectionId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// State of the PrivateConnection.
   late final pulumi.Output<String> state;
-
   /// The VPC Peering configuration is used to create VPC peering
   /// between databasemigrationservice and the consumer's VPC.
   /// Structure is documented below.
@@ -274,11 +263,11 @@ class PrivateConnection extends pulumi.CustomResource {
     PrivateConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:databasemigrationservice/privateConnection:PrivateConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:databasemigrationservice/privateConnection:PrivateConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -290,16 +279,7 @@ class PrivateConnection extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     state = registerOutput<String>('state');
-    vpcPeeringConfig = registerOutput<PrivateConnectionVpcPeeringConfig>(
-      'vpcPeeringConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PrivateConnectionVpcPeeringConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcPeeringConfig = registerOutput<PrivateConnectionVpcPeeringConfig>('vpcPeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionVpcPeeringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [PrivateConnection] resource's state with the given [name] and [id].
@@ -320,11 +300,11 @@ class PrivateConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:databasemigrationservice/privateConnection:PrivateConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:databasemigrationservice/privateConnection:PrivateConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -336,15 +316,6 @@ class PrivateConnection extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.state = registerOutput<String>('state');
-    vpcPeeringConfig = registerOutput<PrivateConnectionVpcPeeringConfig>(
-      'vpcPeeringConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PrivateConnectionVpcPeeringConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcPeeringConfig = registerOutput<PrivateConnectionVpcPeeringConfig>('vpcPeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionVpcPeeringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

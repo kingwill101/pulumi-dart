@@ -10,25 +10,18 @@ import 'azure_backup_server_container.dart';
 class ProtectionContainerArgs {
   /// Name of the container to be registered.
   final pulumi.Input<String>? containerName;
-
   /// Optional ETag.
   final pulumi.Input<String>? eTag;
-
   /// Fabric name associated with the container.
   final pulumi.Input<String> fabricName;
-
   /// Resource location.
   final pulumi.Input<String>? location;
-
   /// ProtectionContainerResource properties
   final pulumi.Input<AzureBackupServerContainer>? properties;
-
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The name of the recovery services vault.
   final pulumi.Input<String> vaultName;
 
@@ -58,11 +51,7 @@ class ProtectionContainerArgs {
       'eTag': ?eTag,
       'fabricName': fabricName,
       'location': ?location,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureBackupServerContainer,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<AzureBackupServerContainer, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
       'vaultName': vaultName,
@@ -71,42 +60,15 @@ class ProtectionContainerArgs {
 
   factory ProtectionContainerArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionContainerArgs(
-      containerName: (() {
-        final guardedValue = map['containerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eTag: (() {
-        final guardedValue = map['eTag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      containerName: (() { final guardedValue = map['containerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureBackupServerContainer.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureBackupServerContainer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAnalyticsConnectorArgs {
   /// The name of Analytics Connector resource.
   final pulumi.Input<String> analyticsConnectorName;
-
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of workspace resource.
   final pulumi.Input<String> workspaceName;
 
@@ -36,13 +34,10 @@ class GetAnalyticsConnectorArgs {
 
   factory GetAnalyticsConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetAnalyticsConnectorArgs(
-      analyticsConnectorName: pulumi.Input.fromValue(
-        map['analyticsConnectorName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      analyticsConnectorName: pulumi.Input.fromValue(map['analyticsConnectorName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

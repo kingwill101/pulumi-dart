@@ -7,7 +7,6 @@ import 'uefi_key_signatures.dart';
 class GalleryImageVersionUefiSettings {
   /// Additional UEFI key signatures that will be added to the image in addition to the signature templates
   final pulumi.Input<UefiKeySignatures>? additionalSignatures;
-
   /// The name of the template(s) that contains default UEFI key signatures that will be added to the image.
   final pulumi.Input<List<String>>? signatureTemplateNames;
 
@@ -21,31 +20,16 @@ class GalleryImageVersionUefiSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalSignatures':
-          ?pulumi.Input.mapOptionalInputValue<
-            UefiKeySignatures,
-            Map<String, dynamic>
-          >(additionalSignatures, (value) => value.toMap()),
+      'additionalSignatures': ?pulumi.Input.mapOptionalInputValue<UefiKeySignatures, Map<String, dynamic>>(additionalSignatures, (value) => value.toMap()),
       'signatureTemplateNames': ?signatureTemplateNames,
     };
   }
 
   factory GalleryImageVersionUefiSettings.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersionUefiSettings(
-      additionalSignatures: (() {
-        final guardedValue = map['additionalSignatures'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UefiKeySignatures.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      signatureTemplateNames: (() {
-        final guardedValue = map['signatureTemplateNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      additionalSignatures: (() { final guardedValue = map['additionalSignatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UefiKeySignatures.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      signatureTemplateNames: (() { final guardedValue = map['signatureTemplateNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -10,29 +10,20 @@ class QueryContent {
 
   /// Creates a new [QueryContent].
   /// [iamPolicyAnalysisQuery] An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy RPC or the AssetService.AnalyzeIamPolicyLongrunning RPC.
-  QueryContent({this.iamPolicyAnalysisQuery});
+  QueryContent({
+    this.iamPolicyAnalysisQuery,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iamPolicyAnalysisQuery':
-          ?pulumi.Input.mapOptionalInputValue<
-            IamPolicyAnalysisQuery,
-            Map<String, dynamic>
-          >(iamPolicyAnalysisQuery, (value) => value.toMap()),
+      'iamPolicyAnalysisQuery': ?pulumi.Input.mapOptionalInputValue<IamPolicyAnalysisQuery, Map<String, dynamic>>(iamPolicyAnalysisQuery, (value) => value.toMap()),
     };
   }
 
   factory QueryContent.fromMap(Map<String, dynamic> map) {
     return QueryContent(
-      iamPolicyAnalysisQuery: (() {
-        final guardedValue = map['iamPolicyAnalysisQuery'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IamPolicyAnalysisQuery.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      iamPolicyAnalysisQuery: (() { final guardedValue = map['iamPolicyAnalysisQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IamPolicyAnalysisQuery.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

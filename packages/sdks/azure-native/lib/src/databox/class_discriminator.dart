@@ -17,3 +17,4 @@ enum ClassDiscriminator {
     throw ArgumentError('Unknown ClassDiscriminator value: $value');
   }
 }
+

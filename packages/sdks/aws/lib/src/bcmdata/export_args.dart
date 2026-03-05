@@ -11,7 +11,6 @@ import 'export_timeouts.dart';
 class ExportArgs {
   /// The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
   final pulumi.Input<ExportExport>? export;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ExportTimeouts>? timeouts;
@@ -20,47 +19,26 @@ class ExportArgs {
   /// [export] The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  ExportArgs({this.export, this.tags, this.timeouts});
+  ExportArgs({
+    this.export,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'export':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExportExport,
-            Map<String, dynamic>
-          >(export, (value) => value.toMap()),
+      'export': ?pulumi.Input.mapOptionalInputValue<ExportExport, Map<String, dynamic>>(export, (value) => value.toMap()),
       'tags': ?tags,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExportTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<ExportTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory ExportArgs.fromMap(Map<String, dynamic> map) {
     return ExportArgs(
-      export: (() {
-        final guardedValue = map['export'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExportExport.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExportTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      export: (() { final guardedValue = map['export']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExportExport.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExportTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

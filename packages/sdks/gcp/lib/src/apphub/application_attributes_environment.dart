@@ -9,10 +9,14 @@ class ApplicationAttributesEnvironment {
 
   /// Creates a new [ApplicationAttributesEnvironment].
   /// [type] Environment type.
-  ApplicationAttributesEnvironment({required this.type});
+  ApplicationAttributesEnvironment({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory ApplicationAttributesEnvironment.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ApplicationAttributesEnvironment {
     );
   }
 }
+

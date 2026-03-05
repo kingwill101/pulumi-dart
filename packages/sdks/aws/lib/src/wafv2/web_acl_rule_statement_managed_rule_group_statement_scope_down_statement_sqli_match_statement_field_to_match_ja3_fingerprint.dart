@@ -13,16 +13,15 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchSta
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fallbackBehavior': fallbackBehavior};
+    return <String, dynamic>{
+      'fallbackBehavior': fallbackBehavior,
+    };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchJa3Fingerprint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchJa3Fingerprint.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchJa3Fingerprint(
-      fallbackBehavior: pulumi.Input.fromValue(
-        map['fallbackBehavior'] as String,
-      ),
+      fallbackBehavior: pulumi.Input.fromValue(map['fallbackBehavior'] as String),
     );
   }
 }
+

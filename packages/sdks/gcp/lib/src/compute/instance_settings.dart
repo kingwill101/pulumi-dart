@@ -162,15 +162,12 @@ class InstanceSettings extends pulumi.CustomResource {
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
   late final pulumi.Output<String> fingerprint;
-
   /// The metadata key/value pairs assigned to all the instances in the corresponding scope.
   /// Structure is documented below.
   late final pulumi.Output<InstanceSettingsMetadata?> metadata;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// A reference to the zone where the machine resides.
   late final pulumi.Output<String> zone;
 
@@ -183,22 +180,13 @@ class InstanceSettings extends pulumi.CustomResource {
     InstanceSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/instanceSettings:InstanceSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/instanceSettings:InstanceSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fingerprint = registerOutput<String>('fingerprint');
-    metadata = registerOutput<InstanceSettingsMetadata?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceSettingsMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<InstanceSettingsMetadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceSettingsMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     zone = registerOutput<String>('zone');
   }
@@ -221,22 +209,13 @@ class InstanceSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/instanceSettings:InstanceSettings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/instanceSettings:InstanceSettings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fingerprint = registerOutput<String>('fingerprint');
-    metadata = registerOutput<InstanceSettingsMetadata?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceSettingsMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<InstanceSettingsMetadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceSettingsMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     zone = registerOutput<String>('zone');
   }

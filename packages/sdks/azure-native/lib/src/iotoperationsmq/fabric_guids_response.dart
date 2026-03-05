@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FabricGuidsResponse {
   /// Fabric one lake house guid.
   final pulumi.Input<String> lakehouseGuid;
-
   /// Fabric one lake workspace guid.
   final pulumi.Input<String> workspaceGuid;
 
@@ -32,3 +31,4 @@ class FabricGuidsResponse {
     );
   }
 }
+

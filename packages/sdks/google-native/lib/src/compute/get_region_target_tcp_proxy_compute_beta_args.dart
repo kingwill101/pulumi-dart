@@ -29,17 +29,12 @@ class GetRegionTargetTcpProxyComputeBetaArgs {
     };
   }
 
-  factory GetRegionTargetTcpProxyComputeBetaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionTargetTcpProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionTargetTcpProxyComputeBetaArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
       targetTcpProxy: pulumi.Input.fromValue(map['targetTcpProxy'] as String),
     );
   }
 }
+

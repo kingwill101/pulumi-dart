@@ -10,16 +10,12 @@ import 'application_properties.dart';
 class ApplicationArgs {
   /// The constant value for the application name.
   final pulumi.Input<String>? applicationName;
-
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// The properties of the application.
   final pulumi.Input<ApplicationProperties>? properties;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The tags for the application.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,11 +37,7 @@ class ApplicationArgs {
     return <String, dynamic>{
       'applicationName': ?applicationName,
       'clusterName': clusterName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApplicationProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<ApplicationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -53,31 +45,12 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationName: (() {
-        final guardedValue = map['applicationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationName: (() { final guardedValue = map['applicationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApplicationProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

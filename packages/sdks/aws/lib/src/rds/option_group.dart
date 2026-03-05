@@ -258,34 +258,24 @@ import 'option_group_state.dart';
 class OptionGroup extends pulumi.CustomResource {
   /// ARN of the DB option group.
   late final pulumi.Output<String> arn;
-
   /// Specifies the name of the engine that this option group should be associated with.
   late final pulumi.Output<String> engineName;
-
   /// Specifies the major version of the engine that this option group should be associated with.
   late final pulumi.Output<String> majorEngineVersion;
-
   /// Name of the option group. If omitted, the provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
   late final pulumi.Output<String> name;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
   late final pulumi.Output<String> namePrefix;
-
   /// Description of the option group. Defaults to "Managed by Pulumi".
   late final pulumi.Output<String> optionGroupDescription;
-
   /// The options to apply. See `option` Block below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>?> options;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Set to true if you do not wish the option group to be deleted at destroy time, and instead just remove the option group from the Pulumi state.
   late final pulumi.Output<bool?> skipDestroy;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -298,11 +288,11 @@ class OptionGroup extends pulumi.CustomResource {
     OptionGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rds/optionGroup:OptionGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rds/optionGroup:OptionGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     engineName = registerOutput<String>('engineName');
     majorEngineVersion = registerOutput<String>('majorEngineVersion');
@@ -334,11 +324,11 @@ class OptionGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rds/optionGroup:OptionGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rds/optionGroup:OptionGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     engineName = registerOutput<String>('engineName');
     majorEngineVersion = registerOutput<String>('majorEngineVersion');

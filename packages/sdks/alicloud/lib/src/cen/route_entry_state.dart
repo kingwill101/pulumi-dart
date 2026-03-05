@@ -10,10 +10,8 @@ class RouteEntryState {
   ///
   /// -&gt;**NOTE:** The "alicloud.cen.InstanceAttachment" resource should depend on the related "alicloud.vpc.Switch" resource.
   final pulumi.Input<String>? cidrBlock;
-
   /// The ID of the CEN.
   final pulumi.Input<String>? instanceId;
-
   /// The route table of the attached VBR or VPC.
   final pulumi.Input<String>? routeTableId;
 
@@ -21,7 +19,11 @@ class RouteEntryState {
   /// [cidrBlock] The destination CIDR block of the route entry to publish.
   /// [instanceId] The ID of the CEN.
   /// [routeTableId] The route table of the attached VBR or VPC.
-  RouteEntryState({this.cidrBlock, this.instanceId, this.routeTableId});
+  RouteEntryState({
+    this.cidrBlock,
+    this.instanceId,
+    this.routeTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,21 +35,10 @@ class RouteEntryState {
 
   factory RouteEntryState.fromMap(Map<String, dynamic> map) {
     return RouteEntryState(
-      cidrBlock: (() {
-        final guardedValue = map['cidrBlock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routeTableId: (() {
-        final guardedValue = map['routeTableId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cidrBlock: (() { final guardedValue = map['cidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routeTableId: (() { final guardedValue = map['routeTableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

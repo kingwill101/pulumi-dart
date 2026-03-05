@@ -30,28 +30,13 @@ class LifecyclePolicyPolicyDetailsScheduleFastRestoreRule {
     };
   }
 
-  factory LifecyclePolicyPolicyDetailsScheduleFastRestoreRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LifecyclePolicyPolicyDetailsScheduleFastRestoreRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleFastRestoreRule(
-      availabilityZones: pulumi.Input.fromValue(
-        (map['availabilityZones'] as List).cast<String>(),
-      ),
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      interval: (() {
-        final guardedValue = map['interval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      intervalUnit: (() {
-        final guardedValue = map['intervalUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      availabilityZones: pulumi.Input.fromValue((map['availabilityZones'] as List).cast<String>()),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      intervalUnit: (() { final guardedValue = map['intervalUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

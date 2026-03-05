@@ -11,32 +11,22 @@ import 'security_profile_response.dart';
 class RestorePointSourceMetadataResponse {
   /// Gets the diagnostics profile.
   final pulumi.Input<DiagnosticsProfileResponse> diagnosticsProfile;
-
   /// Gets the hardware profile.
   final pulumi.Input<HardwareProfileResponse> hardwareProfile;
-
   /// HyperVGeneration of the source VM for which restore point is captured.
   final pulumi.Input<String> hyperVGeneration;
-
   /// Gets the license type, which is for bring your own license scenario.
   final pulumi.Input<String> licenseType;
-
   /// Location of the VM from which the restore point was created.
   final pulumi.Input<String> location;
-
   /// Gets the OS profile.
   final pulumi.Input<OSProfileResponse> osProfile;
-
   /// Gets the security profile.
   final pulumi.Input<SecurityProfileResponse> securityProfile;
-
   /// Gets the storage profile.
-  final pulumi.Input<RestorePointSourceVMStorageProfileResponse>?
-  storageProfile;
-
+  final pulumi.Input<RestorePointSourceVMStorageProfileResponse>? storageProfile;
   /// UserData associated with the source VM for which restore point is captured, which is a base-64 encoded value.
   final pulumi.Input<String> userData;
-
   /// Gets the virtual machine unique id.
   final pulumi.Input<String> vmId;
 
@@ -66,34 +56,14 @@ class RestorePointSourceMetadataResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diagnosticsProfile':
-          pulumi.Input.mapInputValue<
-            DiagnosticsProfileResponse,
-            Map<String, dynamic>
-          >(diagnosticsProfile, (value) => value.toMap()),
-      'hardwareProfile':
-          pulumi.Input.mapInputValue<
-            HardwareProfileResponse,
-            Map<String, dynamic>
-          >(hardwareProfile, (value) => value.toMap()),
+      'diagnosticsProfile': pulumi.Input.mapInputValue<DiagnosticsProfileResponse, Map<String, dynamic>>(diagnosticsProfile, (value) => value.toMap()),
+      'hardwareProfile': pulumi.Input.mapInputValue<HardwareProfileResponse, Map<String, dynamic>>(hardwareProfile, (value) => value.toMap()),
       'hyperVGeneration': hyperVGeneration,
       'licenseType': licenseType,
       'location': location,
-      'osProfile':
-          pulumi.Input.mapInputValue<OSProfileResponse, Map<String, dynamic>>(
-            osProfile,
-            (value) => value.toMap(),
-          ),
-      'securityProfile':
-          pulumi.Input.mapInputValue<
-            SecurityProfileResponse,
-            Map<String, dynamic>
-          >(securityProfile, (value) => value.toMap()),
-      'storageProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            RestorePointSourceVMStorageProfileResponse,
-            Map<String, dynamic>
-          >(storageProfile, (value) => value.toMap()),
+      'osProfile': pulumi.Input.mapInputValue<OSProfileResponse, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
+      'securityProfile': pulumi.Input.mapInputValue<SecurityProfileResponse, Map<String, dynamic>>(securityProfile, (value) => value.toMap()),
+      'storageProfile': ?pulumi.Input.mapOptionalInputValue<RestorePointSourceVMStorageProfileResponse, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
       'userData': userData,
       'vmId': vmId,
     };
@@ -101,42 +71,17 @@ class RestorePointSourceMetadataResponse {
 
   factory RestorePointSourceMetadataResponse.fromMap(Map<String, dynamic> map) {
     return RestorePointSourceMetadataResponse(
-      diagnosticsProfile: pulumi.Input.fromValue(
-        DiagnosticsProfileResponse.fromMap(
-          (map['diagnosticsProfile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      hardwareProfile: pulumi.Input.fromValue(
-        HardwareProfileResponse.fromMap(
-          (map['hardwareProfile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      hyperVGeneration: pulumi.Input.fromValue(
-        map['hyperVGeneration'] as String,
-      ),
+      diagnosticsProfile: pulumi.Input.fromValue(DiagnosticsProfileResponse.fromMap((map['diagnosticsProfile']! as Map).cast<String, dynamic>())),
+      hardwareProfile: pulumi.Input.fromValue(HardwareProfileResponse.fromMap((map['hardwareProfile']! as Map).cast<String, dynamic>())),
+      hyperVGeneration: pulumi.Input.fromValue(map['hyperVGeneration'] as String),
       licenseType: pulumi.Input.fromValue(map['licenseType'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      osProfile: pulumi.Input.fromValue(
-        OSProfileResponse.fromMap(
-          (map['osProfile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      securityProfile: pulumi.Input.fromValue(
-        SecurityProfileResponse.fromMap(
-          (map['securityProfile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      storageProfile: (() {
-        final guardedValue = map['storageProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RestorePointSourceVMStorageProfileResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      osProfile: pulumi.Input.fromValue(OSProfileResponse.fromMap((map['osProfile']! as Map).cast<String, dynamic>())),
+      securityProfile: pulumi.Input.fromValue(SecurityProfileResponse.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())),
+      storageProfile: (() { final guardedValue = map['storageProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RestorePointSourceVMStorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       userData: pulumi.Input.fromValue(map['userData'] as String),
       vmId: pulumi.Input.fromValue(map['vmId'] as String),
     );
   }
 }
+

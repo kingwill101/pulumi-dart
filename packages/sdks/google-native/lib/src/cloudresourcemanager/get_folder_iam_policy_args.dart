@@ -11,10 +11,14 @@ class GetFolderIamPolicyArgs {
 
   /// Creates a new [GetFolderIamPolicyArgs].
   /// [folderId] Required.
-  GetFolderIamPolicyArgs({required this.folderId});
+  GetFolderIamPolicyArgs({
+    required this.folderId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'folderId': folderId};
+    return <String, dynamic>{
+      'folderId': folderId,
+    };
   }
 
   factory GetFolderIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetFolderIamPolicyArgs {
     );
   }
 }
+

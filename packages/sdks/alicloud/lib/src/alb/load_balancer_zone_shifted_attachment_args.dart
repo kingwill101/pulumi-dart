@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerZoneShiftedAttachmentArgs {
   /// The ID of the load balancing instance.
   final pulumi.Input<String> loadBalancerId;
-
   /// The VSwitch corresponding to the zone. By default, each zone uses one VSwitch and one subnet.
   final pulumi.Input<String> vswitchId;
-
   /// The ID of the zone.
   final pulumi.Input<String> zoneId;
 
@@ -34,9 +32,7 @@ class LoadBalancerZoneShiftedAttachmentArgs {
     };
   }
 
-  factory LoadBalancerZoneShiftedAttachmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoadBalancerZoneShiftedAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerZoneShiftedAttachmentArgs(
       loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
       vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
@@ -44,3 +40,4 @@ class LoadBalancerZoneShiftedAttachmentArgs {
     );
   }
 }
+

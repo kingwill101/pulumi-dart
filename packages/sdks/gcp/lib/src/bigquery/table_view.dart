@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableView {
   /// A query that BigQuery executes when the view is referenced.
   final pulumi.Input<String> query;
-
   /// Specifies whether to use BigQuery's legacy SQL for this view.
   /// If set to `false`, the view will use BigQuery's standard SQL. If set to
   /// `true`, the view will use BigQuery's legacy SQL. If unset, the API will
@@ -18,20 +17,23 @@ class TableView {
   /// Creates a new [TableView].
   /// [query] A query that BigQuery executes when the view is referenced.
   /// [useLegacySql] Specifies whether to use BigQuery's legacy SQL for this view.
-  TableView({required this.query, this.useLegacySql});
+  TableView({
+    required this.query,
+    this.useLegacySql,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'query': query, 'useLegacySql': ?useLegacySql};
+    return <String, dynamic>{
+      'query': query,
+      'useLegacySql': ?useLegacySql,
+    };
   }
 
   factory TableView.fromMap(Map<String, dynamic> map) {
     return TableView(
       query: pulumi.Input.fromValue(map['query'] as String),
-      useLegacySql: (() {
-        final guardedValue = map['useLegacySql'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      useLegacySql: (() { final guardedValue = map['useLegacySql']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -6,34 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotState {
   /// All of the Amazon Web Services accounts that have access to restore a snapshot to a provisioned cluster.
   final pulumi.Input<List<String>>? accountsWithProvisionedRestoreAccesses;
-
   /// All of the Amazon Web Services accounts that have access to restore a snapshot to a namespace.
   final pulumi.Input<List<String>>? accountsWithRestoreAccesses;
-
   /// The username of the database within a snapshot.
   final pulumi.Input<String>? adminUsername;
-
   /// The Amazon Resource Name (ARN) of the snapshot.
   final pulumi.Input<String>? arn;
-
   /// The unique identifier of the KMS key used to encrypt the snapshot.
   final pulumi.Input<String>? kmsKeyId;
-
   /// The Amazon Resource Name (ARN) of the namespace the snapshot was created from.
   final pulumi.Input<String>? namespaceArn;
-
   /// The namespace to create a snapshot for.
   final pulumi.Input<String>? namespaceName;
-
   /// The owner Amazon Web Services; account of the snapshot.
   final pulumi.Input<String>? ownerAccount;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// How long to retain the created snapshot. Default value is `-1`.
   final pulumi.Input<int>? retentionPeriod;
-
   /// The name of the snapshot.
   final pulumi.Input<String>? snapshotName;
 
@@ -65,8 +55,7 @@ class SnapshotState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountsWithProvisionedRestoreAccesses':
-          ?accountsWithProvisionedRestoreAccesses,
+      'accountsWithProvisionedRestoreAccesses': ?accountsWithProvisionedRestoreAccesses,
       'accountsWithRestoreAccesses': ?accountsWithRestoreAccesses,
       'adminUsername': ?adminUsername,
       'arn': ?arn,
@@ -82,61 +71,18 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      accountsWithProvisionedRestoreAccesses: (() {
-        final guardedValue = map['accountsWithProvisionedRestoreAccesses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      accountsWithRestoreAccesses: (() {
-        final guardedValue = map['accountsWithRestoreAccesses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      adminUsername: (() {
-        final guardedValue = map['adminUsername'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsKeyId: (() {
-        final guardedValue = map['kmsKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespaceArn: (() {
-        final guardedValue = map['namespaceArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespaceName: (() {
-        final guardedValue = map['namespaceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ownerAccount: (() {
-        final guardedValue = map['ownerAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retentionPeriod: (() {
-        final guardedValue = map['retentionPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      snapshotName: (() {
-        final guardedValue = map['snapshotName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountsWithProvisionedRestoreAccesses: (() { final guardedValue = map['accountsWithProvisionedRestoreAccesses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      accountsWithRestoreAccesses: (() { final guardedValue = map['accountsWithRestoreAccesses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      adminUsername: (() { final guardedValue = map['adminUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespaceArn: (() { final guardedValue = map['namespaceArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespaceName: (() { final guardedValue = map['namespaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ownerAccount: (() { final guardedValue = map['ownerAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retentionPeriod: (() { final guardedValue = map['retentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      snapshotName: (() { final guardedValue = map['snapshotName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

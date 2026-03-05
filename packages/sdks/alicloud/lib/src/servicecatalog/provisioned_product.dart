@@ -203,67 +203,46 @@ import 'provisioned_product_state.dart';
 class ProvisionedProduct extends pulumi.CustomResource {
   /// The creation time of the product instance
   late final pulumi.Output<String> createTime;
-
   /// The ID of the last instance operation task
   late final pulumi.Output<String> lastProvisioningTaskId;
-
   /// The ID of the last successful instance operation task
   late final pulumi.Output<String> lastSuccessfulProvisioningTaskId;
-
   /// The ID of the last task
   late final pulumi.Output<String> lastTaskId;
-
   /// The output value of the template.
   late final pulumi.Output<List<Map<String, dynamic>>> outputs;
-
   /// The RAM entity ID of the owner
   late final pulumi.Output<String> ownerPrincipalId;
-
   /// The RAM entity type of the owner
   late final pulumi.Output<String> ownerPrincipalType;
-
   /// Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
   late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
-
   /// Product mix ID.&gt; When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
   late final pulumi.Output<String?> portfolioId;
-
   /// Product ID.
   late final pulumi.Output<String> productId;
-
   /// The name of the product
   late final pulumi.Output<String> productName;
-
   /// Product version ID.
   late final pulumi.Output<String> productVersionId;
-
   /// The name of the product version
   late final pulumi.Output<String> productVersionName;
-
   /// The ARN of the product instance
   late final pulumi.Output<String> provisionedProductArn;
-
   /// The ID of the instance.
   late final pulumi.Output<String> provisionedProductId;
-
   /// The name of the instance.The length is 1~128 characters.
   late final pulumi.Output<String> provisionedProductName;
-
   /// Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
   late final pulumi.Output<String> provisionedProductType;
-
   /// The ID of the ROS stack
   late final pulumi.Output<String> stackId;
-
   /// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
   late final pulumi.Output<String> stackRegionId;
-
   /// Instance status
   late final pulumi.Output<String> status;
-
   /// The status message of the product instance
   late final pulumi.Output<String> statusMessage;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -276,16 +255,14 @@ class ProvisionedProduct extends pulumi.CustomResource {
     ProvisionedProductArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:servicecatalog/provisionedProduct:ProvisionedProduct',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:servicecatalog/provisionedProduct:ProvisionedProduct',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     lastProvisioningTaskId = registerOutput<String>('lastProvisioningTaskId');
-    lastSuccessfulProvisioningTaskId = registerOutput<String>(
-      'lastSuccessfulProvisioningTaskId',
-    );
+    lastSuccessfulProvisioningTaskId = registerOutput<String>('lastSuccessfulProvisioningTaskId');
     lastTaskId = registerOutput<String>('lastTaskId');
     outputs = registerOutput<List<Map<String, dynamic>>>('outputs');
     ownerPrincipalId = registerOutput<String>('ownerPrincipalId');
@@ -325,16 +302,14 @@ class ProvisionedProduct extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:servicecatalog/provisionedProduct:ProvisionedProduct',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:servicecatalog/provisionedProduct:ProvisionedProduct',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     lastProvisioningTaskId = registerOutput<String>('lastProvisioningTaskId');
-    lastSuccessfulProvisioningTaskId = registerOutput<String>(
-      'lastSuccessfulProvisioningTaskId',
-    );
+    lastSuccessfulProvisioningTaskId = registerOutput<String>('lastSuccessfulProvisioningTaskId');
     lastTaskId = registerOutput<String>('lastTaskId');
     outputs = registerOutput<List<Map<String, dynamic>>>('outputs');
     ownerPrincipalId = registerOutput<String>('ownerPrincipalId');

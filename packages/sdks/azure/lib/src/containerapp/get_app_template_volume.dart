@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppTemplateVolume {
   /// Mount options used while mounting the AzureFile.
   final pulumi.Input<String> mountOptions;
-
   /// The name of the Container App.
   final pulumi.Input<String> name;
-
   /// The name of the `AzureFile` storage.
   final pulumi.Input<String> storageName;
-
   /// The type of storage volume.
   final pulumi.Input<String> storageType;
 
@@ -45,3 +42,4 @@ class GetAppTemplateVolume {
     );
   }
 }
+

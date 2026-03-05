@@ -9,34 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PatchBaselineArgs {
   /// Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
   final pulumi.Input<String> approvalRules;
-
   /// Approved Patch.
   final pulumi.Input<List<String>>? approvedPatches;
-
   /// ApprovedPatchesEnableNonSecurity.
   final pulumi.Input<bool>? approvedPatchesEnableNonSecurity;
-
   /// Patches baseline description information.
   final pulumi.Input<String>? description;
-
   /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
   final pulumi.Input<String> operationSystem;
-
   /// The name of the patch baseline.
   final pulumi.Input<String> patchBaselineName;
-
   /// Reject patches.
   final pulumi.Input<List<String>>? rejectedPatches;
-
   /// Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
   final pulumi.Input<String>? rejectedPatchesAction;
-
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
-
   /// Source.
   final pulumi.Input<List<String>>? sources;
-
   /// Label.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -85,52 +75,17 @@ class PatchBaselineArgs {
   factory PatchBaselineArgs.fromMap(Map<String, dynamic> map) {
     return PatchBaselineArgs(
       approvalRules: pulumi.Input.fromValue(map['approvalRules'] as String),
-      approvedPatches: (() {
-        final guardedValue = map['approvedPatches'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      approvedPatchesEnableNonSecurity: (() {
-        final guardedValue = map['approvedPatchesEnableNonSecurity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      approvedPatches: (() { final guardedValue = map['approvedPatches']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      approvedPatchesEnableNonSecurity: (() { final guardedValue = map['approvedPatchesEnableNonSecurity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       operationSystem: pulumi.Input.fromValue(map['operationSystem'] as String),
-      patchBaselineName: pulumi.Input.fromValue(
-        map['patchBaselineName'] as String,
-      ),
-      rejectedPatches: (() {
-        final guardedValue = map['rejectedPatches'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      rejectedPatchesAction: (() {
-        final guardedValue = map['rejectedPatchesAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sources: (() {
-        final guardedValue = map['sources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      patchBaselineName: pulumi.Input.fromValue(map['patchBaselineName'] as String),
+      rejectedPatches: (() { final guardedValue = map['rejectedPatches']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      rejectedPatchesAction: (() { final guardedValue = map['rejectedPatchesAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sources: (() { final guardedValue = map['sources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

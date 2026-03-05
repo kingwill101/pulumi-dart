@@ -21,12 +21,11 @@ class UserPoolLambdaConfigPreTokenGenerationConfig {
     };
   }
 
-  factory UserPoolLambdaConfigPreTokenGenerationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserPoolLambdaConfigPreTokenGenerationConfig.fromMap(Map<String, dynamic> map) {
     return UserPoolLambdaConfigPreTokenGenerationConfig(
       lambdaArn: pulumi.Input.fromValue(map['lambdaArn'] as String),
       lambdaVersion: pulumi.Input.fromValue(map['lambdaVersion'] as String),
     );
   }
 }
+

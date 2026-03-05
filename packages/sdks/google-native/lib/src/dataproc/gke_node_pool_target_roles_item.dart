@@ -17,3 +17,4 @@ enum GkeNodePoolTargetRolesItem {
     throw ArgumentError('Unknown GkeNodePoolTargetRolesItem value: $value');
   }
 }
+

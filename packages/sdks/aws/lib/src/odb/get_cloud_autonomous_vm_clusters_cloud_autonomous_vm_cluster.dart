@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCloudAutonomousVmClustersCloudAutonomousVmCluster {
   /// The Amazon Resource Name (ARN) for the Exadata infrastructure.
   final pulumi.Input<String> arn;
-
   /// Cloud exadata infrastructure id associated with this cloud autonomous VM cluster.
   final pulumi.Input<String> cloudExadataInfrastructureId;
-
   /// The display name of the Autonomous VM cluster.
   final pulumi.Input<String> displayName;
-
   /// The unique identifier of the cloud autonomous vm cluster.
   final pulumi.Input<String> id;
-
   /// The name of the OCI resource anchor associated with this Autonomous VM cluster.
   final pulumi.Input<String> ociResourceAnchorName;
-
   /// The URL for accessing the OCI console page for this Autonomous VM cluster.
   final pulumi.Input<String> ociUrl;
-
   /// The Oracle Cloud Identifier (OCID) of the Autonomous VM cluster.
   final pulumi.Input<String> ocid;
-
   /// The unique identifier of the ODB network associated with this Autonomous VM cluster.
   final pulumi.Input<String> odbNetworkId;
 
@@ -60,22 +53,17 @@ class GetCloudAutonomousVmClustersCloudAutonomousVmCluster {
     };
   }
 
-  factory GetCloudAutonomousVmClustersCloudAutonomousVmCluster.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCloudAutonomousVmClustersCloudAutonomousVmCluster.fromMap(Map<String, dynamic> map) {
     return GetCloudAutonomousVmClustersCloudAutonomousVmCluster(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      cloudExadataInfrastructureId: pulumi.Input.fromValue(
-        map['cloudExadataInfrastructureId'] as String,
-      ),
+      cloudExadataInfrastructureId: pulumi.Input.fromValue(map['cloudExadataInfrastructureId'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      ociResourceAnchorName: pulumi.Input.fromValue(
-        map['ociResourceAnchorName'] as String,
-      ),
+      ociResourceAnchorName: pulumi.Input.fromValue(map['ociResourceAnchorName'] as String),
       ociUrl: pulumi.Input.fromValue(map['ociUrl'] as String),
       ocid: pulumi.Input.fromValue(map['ocid'] as String),
       odbNetworkId: pulumi.Input.fromValue(map['odbNetworkId'] as String),
     );
   }
 }
+

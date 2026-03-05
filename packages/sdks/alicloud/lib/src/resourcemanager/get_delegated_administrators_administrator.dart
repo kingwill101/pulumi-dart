@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDelegatedAdministratorsAdministrator {
   /// The ID of the member account.
   final pulumi.Input<String> accountId;
-
   /// The time when the member was specified as a delegated administrator account.
   final pulumi.Input<String> delegationEnabledTime;
-
   /// The ID of the Delegated Administrator.
   final pulumi.Input<String> id;
-
   /// The identity of the trusted service.
   final pulumi.Input<String> servicePrincipal;
 
@@ -36,18 +33,13 @@ class GetDelegatedAdministratorsAdministrator {
     };
   }
 
-  factory GetDelegatedAdministratorsAdministrator.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDelegatedAdministratorsAdministrator.fromMap(Map<String, dynamic> map) {
     return GetDelegatedAdministratorsAdministrator(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      delegationEnabledTime: pulumi.Input.fromValue(
-        map['delegationEnabledTime'] as String,
-      ),
+      delegationEnabledTime: pulumi.Input.fromValue(map['delegationEnabledTime'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      servicePrincipal: pulumi.Input.fromValue(
-        map['servicePrincipal'] as String,
-      ),
+      servicePrincipal: pulumi.Input.fromValue(map['servicePrincipal'] as String),
     );
   }
 }
+

@@ -9,29 +9,20 @@ class BucketObjectv2OverrideProvider {
 
   /// Creates a new [BucketObjectv2OverrideProvider].
   /// [defaultTags] Override the provider `default_tags` configuration block.
-  BucketObjectv2OverrideProvider({this.defaultTags});
+  BucketObjectv2OverrideProvider({
+    this.defaultTags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultTags':
-          ?pulumi.Input.mapOptionalInputValue<
-            BucketObjectv2OverrideProviderDefaultTags,
-            Map<String, dynamic>
-          >(defaultTags, (value) => value.toMap()),
+      'defaultTags': ?pulumi.Input.mapOptionalInputValue<BucketObjectv2OverrideProviderDefaultTags, Map<String, dynamic>>(defaultTags, (value) => value.toMap()),
     };
   }
 
   factory BucketObjectv2OverrideProvider.fromMap(Map<String, dynamic> map) {
     return BucketObjectv2OverrideProvider(
-      defaultTags: (() {
-        final guardedValue = map['defaultTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BucketObjectv2OverrideProviderDefaultTags.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      defaultTags: (() { final guardedValue = map['defaultTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BucketObjectv2OverrideProviderDefaultTags.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

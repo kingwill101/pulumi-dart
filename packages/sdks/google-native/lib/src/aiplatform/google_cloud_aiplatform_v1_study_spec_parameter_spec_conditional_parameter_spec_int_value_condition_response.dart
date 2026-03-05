@@ -14,14 +14,15 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntVa
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': values};
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
-  factory GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponse(
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

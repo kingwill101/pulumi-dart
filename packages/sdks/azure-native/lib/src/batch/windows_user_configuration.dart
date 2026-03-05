@@ -10,26 +10,20 @@ class WindowsUserConfiguration {
 
   /// Creates a new [WindowsUserConfiguration].
   /// [loginMode] Specifies login mode for the user. The default value is Interactive.
-  WindowsUserConfiguration({this.loginMode});
+  WindowsUserConfiguration({
+    this.loginMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'loginMode': ?pulumi.Input.mapOptionalInputValue<LoginMode, String>(
-        loginMode,
-        (value) => value.wireValue,
-      ),
+      'loginMode': ?pulumi.Input.mapOptionalInputValue<LoginMode, String>(loginMode, (value) => value.wireValue),
     };
   }
 
   factory WindowsUserConfiguration.fromMap(Map<String, dynamic> map) {
     return WindowsUserConfiguration(
-      loginMode: (() {
-        final guardedValue = map['loginMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LoginMode.fromValue(guardedValue as String),
-        );
-      })(),
+      loginMode: (() { final guardedValue = map['loginMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoginMode.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

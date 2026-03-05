@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReservedIpAssignmentArgs {
   /// The resulting IPv4 address.
   final pulumi.Input<String> address;
-
   /// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
   final pulumi.Input<bool>? applyImmediately;
-
   /// The ID of the Linode to allocate an IPv4 address for.
   final pulumi.Input<int> linodeId;
-
   /// Whether the IPv4 address is public or private.
   final pulumi.Input<bool>? public;
-
   /// The reverse DNS assigned to this address.
   final pulumi.Input<String>? rdns;
 
@@ -49,22 +45,11 @@ class ReservedIpAssignmentArgs {
   factory ReservedIpAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ReservedIpAssignmentArgs(
       address: pulumi.Input.fromValue(map['address'] as String),
-      applyImmediately: (() {
-        final guardedValue = map['applyImmediately'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      applyImmediately: (() { final guardedValue = map['applyImmediately']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       linodeId: pulumi.Input.fromValue(map['linodeId'] as int),
-      public: (() {
-        final guardedValue = map['public'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      rdns: (() {
-        final guardedValue = map['rdns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      public: (() { final guardedValue = map['public']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      rdns: (() { final guardedValue = map['rdns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeInstanceCreatedByResponse {
   /// Uniquely identifies the user within his/her organization.
   final pulumi.Input<String> userId;
-
   /// Name of the user.
   final pulumi.Input<String> userName;
-
   /// Uniquely identifies user' Azure Active Directory organization.
   final pulumi.Input<String> userOrgId;
 
@@ -39,3 +37,4 @@ class ComputeInstanceCreatedByResponse {
     );
   }
 }
+

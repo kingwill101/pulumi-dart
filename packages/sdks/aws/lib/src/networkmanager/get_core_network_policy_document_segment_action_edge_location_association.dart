@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation {
   /// The AWS Region code for the first edge location in the association (e.g., `us-east-1`).
   final pulumi.Input<String> edgeLocation;
-
   /// The AWS Region code for the second edge location in the association (e.g., `us-west-2`).
   final pulumi.Input<String> peerEdgeLocation;
-
   /// A set of routing policy names to apply to this edge location pair.
   final pulumi.Input<List<String>> routingPolicyNames;
 
@@ -30,17 +28,12 @@ class GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation {
     };
   }
 
-  factory GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation(
       edgeLocation: pulumi.Input.fromValue(map['edgeLocation'] as String),
-      peerEdgeLocation: pulumi.Input.fromValue(
-        map['peerEdgeLocation'] as String,
-      ),
-      routingPolicyNames: pulumi.Input.fromValue(
-        (map['routingPolicyNames'] as List).cast<String>(),
-      ),
+      peerEdgeLocation: pulumi.Input.fromValue(map['peerEdgeLocation'] as String),
+      routingPolicyNames: pulumi.Input.fromValue((map['routingPolicyNames'] as List).cast<String>()),
     );
   }
 }
+

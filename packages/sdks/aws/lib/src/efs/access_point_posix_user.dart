@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPointPosixUser {
   /// POSIX group ID used for all file system operations using this access point.
   final pulumi.Input<int> gid;
-
   /// Secondary POSIX group IDs used for all file system operations using this access point.
   final pulumi.Input<List<int>>? secondaryGids;
-
   /// POSIX user ID used for all file system operations using this access point.
   final pulumi.Input<int> uid;
 
@@ -33,12 +31,9 @@ class AccessPointPosixUser {
   factory AccessPointPosixUser.fromMap(Map<String, dynamic> map) {
     return AccessPointPosixUser(
       gid: pulumi.Input.fromValue(map['gid'] as int),
-      secondaryGids: (() {
-        final guardedValue = map['secondaryGids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
+      secondaryGids: (() { final guardedValue = map['secondaryGids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
       uid: pulumi.Input.fromValue(map['uid'] as int),
     );
   }
 }
+

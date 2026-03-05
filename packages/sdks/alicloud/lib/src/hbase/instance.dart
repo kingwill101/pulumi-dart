@@ -296,90 +296,63 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// The account of the cluster web ui. Size [0-128].
   late final pulumi.Output<String?> account;
-
   /// Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
   late final pulumi.Output<bool> autoRenew;
-
   /// 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
   late final pulumi.Output<int?> coldStorageSize;
-
   /// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
   /// - Custom storage space, value range: [20, 64000].
   /// - Cluster [400, 64000], step:40-GB increments.
   /// - Single [20-500GB], step:1-GB increments.
   late final pulumi.Output<int?> coreDiskSize;
-
   /// Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
   late final pulumi.Output<String?> coreDiskType;
-
   /// Default=2, [1-200]. If core_instance_quantity &gt; 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
   late final pulumi.Output<int?> coreInstanceQuantity;
-
   /// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
   late final pulumi.Output<String> coreInstanceType;
-
   /// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
   late final pulumi.Output<bool?> deletionProtection;
-
   /// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
   late final pulumi.Output<int> duration;
-
   /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
   late final pulumi.Output<String?> engine;
-
   /// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
   late final pulumi.Output<String> engineVersion;
-
   /// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
   late final pulumi.Output<bool?> immediateDeleteFlag;
-
   /// The white ip list of the cluster.
   late final pulumi.Output<String> ipWhite;
-
   /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
   late final pulumi.Output<String> maintainEndTime;
-
   /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
   late final pulumi.Output<String> maintainStartTime;
-
   /// Count nodes of the master node.
   late final pulumi.Output<int> masterInstanceQuantity;
-
   /// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
   late final pulumi.Output<String> masterInstanceType;
-
   /// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
   late final pulumi.Output<String> name;
-
   /// The password of the cluster web ui account. Size [0-128].
   late final pulumi.Output<String?> password;
-
   /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
   late final pulumi.Output<String?> payType;
-
   /// The security group resource of the cluster.
   late final pulumi.Output<List<String>> securityGroups;
-
   /// The slb service addresses of the cluster. See `slb_conn_addrs` below.
   ///
   /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
   late final pulumi.Output<List<Map<String, dynamic>>> slbConnAddrs;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
   late final pulumi.Output<List<Map<String, dynamic>>> uiProxyConnAddrs;
-
   /// The id of the VPC.
   late final pulumi.Output<String?> vpcId;
-
   /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
   late final pulumi.Output<String?> vswitchId;
-
   /// The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
   late final pulumi.Output<List<Map<String, dynamic>>> zkConnAddrs;
-
   /// The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
   late final pulumi.Output<String> zoneId;
 
@@ -392,11 +365,11 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbase/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbase/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     account = registerOutput<String?>('account');
     autoRenew = registerOutput<bool>('autoRenew');
     coldStorageSize = registerOutput<int?>('coldStorageSize');
@@ -420,9 +393,7 @@ class Instance extends pulumi.CustomResource {
     securityGroups = registerOutput<List<String>>('securityGroups');
     slbConnAddrs = registerOutput<List<Map<String, dynamic>>>('slbConnAddrs');
     tags = registerOutput<Map<String, String>?>('tags');
-    uiProxyConnAddrs = registerOutput<List<Map<String, dynamic>>>(
-      'uiProxyConnAddrs',
-    );
+    uiProxyConnAddrs = registerOutput<List<Map<String, dynamic>>>('uiProxyConnAddrs');
     vpcId = registerOutput<String?>('vpcId');
     vswitchId = registerOutput<String?>('vswitchId');
     zkConnAddrs = registerOutput<List<Map<String, dynamic>>>('zkConnAddrs');
@@ -447,11 +418,11 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbase/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbase/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     account = registerOutput<String?>('account');
     autoRenew = registerOutput<bool>('autoRenew');
     coldStorageSize = registerOutput<int?>('coldStorageSize');
@@ -475,9 +446,7 @@ class Instance extends pulumi.CustomResource {
     securityGroups = registerOutput<List<String>>('securityGroups');
     slbConnAddrs = registerOutput<List<Map<String, dynamic>>>('slbConnAddrs');
     tags = registerOutput<Map<String, String>?>('tags');
-    uiProxyConnAddrs = registerOutput<List<Map<String, dynamic>>>(
-      'uiProxyConnAddrs',
-    );
+    uiProxyConnAddrs = registerOutput<List<Map<String, dynamic>>>('uiProxyConnAddrs');
     vpcId = registerOutput<String?>('vpcId');
     vswitchId = registerOutput<String?>('vswitchId');
     zkConnAddrs = registerOutput<List<Map<String, dynamic>>>('zkConnAddrs');

@@ -33,11 +33,8 @@ class GetEndpointAiplatformV1beta1Args {
     return GetEndpointAiplatformV1beta1Args(
       endpointId: pulumi.Input.fromValue(map['endpointId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

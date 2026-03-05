@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesRuleBindVpc {
   /// The region ID of the vpc.
   final pulumi.Input<String> regionId;
-
   /// The Region Name of the vpc.
   final pulumi.Input<String> regionName;
-
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
-
   /// The Name of the VPC.
   final pulumi.Input<String> vpcName;
 
@@ -45,3 +42,4 @@ class GetRulesRuleBindVpc {
     );
   }
 }
+

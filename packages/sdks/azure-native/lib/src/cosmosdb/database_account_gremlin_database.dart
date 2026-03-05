@@ -160,25 +160,18 @@ import 'database_account_gremlin_database_args.dart';
 class DatabaseAccountGremlinDatabase extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A system generated property representing the resource etag required for optimistic concurrency control.
   late final pulumi.Output<String?> etag;
-
   /// The location of the resource group to which the resource belongs.
   late final pulumi.Output<String?> location;
-
   /// The name of the database account.
   late final pulumi.Output<String> name;
-
   /// A system generated property. A unique identifier.
   late final pulumi.Output<String?> rid;
-
   /// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A system generated property that denotes the last updated timestamp of the resource.
   late final pulumi.Output<dynamic> ts;
-
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -191,11 +184,11 @@ class DatabaseAccountGremlinDatabase extends pulumi.CustomResource {
     DatabaseAccountGremlinDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cosmosdb:DatabaseAccountGremlinDatabase',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cosmosdb:DatabaseAccountGremlinDatabase',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String?>('etag');
     location = registerOutput<String?>('location');

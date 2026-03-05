@@ -232,33 +232,26 @@ import 'event_hub_state.dart';
 class EventHub extends pulumi.CustomResource {
   /// A `capture_description` block as defined below.
   late final pulumi.Output<EventHubCaptureDescription?> captureDescription;
-
   /// Specifies the number of days to retain the events for this Event Hub.
   ///
   /// &gt; **Note:** When using a dedicated Event Hubs cluster, maximum value of `message_retention` is 90 days. When using a shared parent EventHub Namespace, maximum value is 7 days; or 1 day when using a Basic SKU for the shared parent EventHub Namespace.
   late final pulumi.Output<int> messageRetention;
-
   /// Specifies the name of the EventHub resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the ID of the EventHub Namespace.
   late final pulumi.Output<String> namespaceId;
   late final pulumi.Output<String> namespaceName;
-
   /// Specifies the current number of shards on the Event Hub.
   ///
   /// &gt; **Note:** When using a shared parent EventHub Namespace, `partition_count` cannot be changed unless the Eventhub Namespace SKU is `Premium`. When using a dedicated Event Hubs cluster, this restriction doesn't apply. In either case though, the `partition_count` cannot be decreased.
   ///
   /// &gt; **Note:** When using a dedicated Event Hubs cluster, maximum value of `partition_count` is 1024. When using a shared parent EventHub Namespace, maximum value is 32.
   late final pulumi.Output<int> partitionCount;
-
   /// The identifiers for partitions created for Event Hubs.
   late final pulumi.Output<List<String>> partitionIds;
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `retention_description` block as defined below.
   late final pulumi.Output<EventHubRetentionDescription> retentionDescription;
-
   /// Specifies the status of the Event Hub resource. Possible values are `Active`, `Disabled` and `SendDisabled`. Defaults to `Active`.
   late final pulumi.Output<String?> status;
 
@@ -271,21 +264,12 @@ class EventHub extends pulumi.CustomResource {
     EventHubArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventhub/eventHub:EventHub',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    captureDescription = registerOutput<EventHubCaptureDescription?>(
-      'captureDescription',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventHubCaptureDescription.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:eventhub/eventHub:EventHub',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    captureDescription = registerOutput<EventHubCaptureDescription?>('captureDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventHubCaptureDescription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     messageRetention = registerOutput<int>('messageRetention');
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
@@ -293,16 +277,7 @@ class EventHub extends pulumi.CustomResource {
     partitionCount = registerOutput<int>('partitionCount');
     partitionIds = registerOutput<List<String>>('partitionIds');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retentionDescription = registerOutput<EventHubRetentionDescription>(
-      'retentionDescription',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventHubRetentionDescription.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionDescription = registerOutput<EventHubRetentionDescription>('retentionDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventHubRetentionDescription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String?>('status');
   }
 
@@ -324,21 +299,12 @@ class EventHub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventhub/eventHub:EventHub',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    captureDescription = registerOutput<EventHubCaptureDescription?>(
-      'captureDescription',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventHubCaptureDescription.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:eventhub/eventHub:EventHub',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    captureDescription = registerOutput<EventHubCaptureDescription?>('captureDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventHubCaptureDescription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     messageRetention = registerOutput<int>('messageRetention');
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
@@ -346,16 +312,7 @@ class EventHub extends pulumi.CustomResource {
     partitionCount = registerOutput<int>('partitionCount');
     partitionIds = registerOutput<List<String>>('partitionIds');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retentionDescription = registerOutput<EventHubRetentionDescription>(
-      'retentionDescription',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventHubRetentionDescription.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionDescription = registerOutput<EventHubRetentionDescription>('retentionDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventHubRetentionDescription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String?>('status');
   }
 }

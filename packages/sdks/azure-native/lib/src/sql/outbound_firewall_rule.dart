@@ -134,13 +134,10 @@ import 'outbound_firewall_rule_args.dart';
 class OutboundFirewallRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The state of the outbound rule.
   late final pulumi.Output<String> provisioningState;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -153,11 +150,11 @@ class OutboundFirewallRule extends pulumi.CustomResource {
     OutboundFirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:OutboundFirewallRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:OutboundFirewallRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvFeaturesFeature {
   /// The language.
   final pulumi.Input<String> aliyunLang;
-
   /// The name of the feature.
   final pulumi.Input<String> envFeatureName;
-
   /// The ID of the environment instance.
   final pulumi.Input<String> environmentId;
-
   /// The version of the feature.
   final pulumi.Input<String> featureVersion;
-
   /// The ID of the Env Feature. It formats as `&lt;environment_id&gt;:&lt;env_feature_name&gt;`.
   final pulumi.Input<String> id;
-
   /// The status of the feature.
   final pulumi.Input<String> status;
 
@@ -59,3 +54,4 @@ class GetEnvFeaturesFeature {
     );
   }
 }
+

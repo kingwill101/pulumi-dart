@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResultStatisticsResponse {
   /// The number of rows that were returned by the search job.
   final pulumi.Input<int> ingestedRecords;
-
   /// Search job completion percentage.
   final pulumi.Input<double> progress;
-
   /// Search job: Amount of scanned data.
   final pulumi.Input<double> scannedGb;
 
@@ -39,3 +37,4 @@ class ResultStatisticsResponse {
     );
   }
 }
+

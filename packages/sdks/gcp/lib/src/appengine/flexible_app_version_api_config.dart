@@ -7,19 +7,15 @@ class FlexibleAppVersionApiConfig {
   /// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
   /// Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
   final pulumi.Input<String>? authFailAction;
-
   /// Level of login required to access this resource.
   /// Default value is `LOGIN_OPTIONAL`.
   /// Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
   final pulumi.Input<String>? login;
-
   /// Path to the script from the application root directory.
   final pulumi.Input<String> script;
-
   /// Security (HTTPS) enforcement for this URL.
   /// Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
   final pulumi.Input<String>? securityLevel;
-
   /// URL to serve the endpoint at.
   final pulumi.Input<String>? url;
 
@@ -49,27 +45,12 @@ class FlexibleAppVersionApiConfig {
 
   factory FlexibleAppVersionApiConfig.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionApiConfig(
-      authFailAction: (() {
-        final guardedValue = map['authFailAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      login: (() {
-        final guardedValue = map['login'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authFailAction: (() { final guardedValue = map['authFailAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      login: (() { final guardedValue = map['login']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       script: pulumi.Input.fromValue(map['script'] as String),
-      securityLevel: (() {
-        final guardedValue = map['securityLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      url: (() {
-        final guardedValue = map['url'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      securityLevel: (() { final guardedValue = map['securityLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

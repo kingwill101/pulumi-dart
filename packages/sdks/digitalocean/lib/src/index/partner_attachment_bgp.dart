@@ -31,26 +31,11 @@ class PartnerAttachmentBgp {
 
   factory PartnerAttachmentBgp.fromMap(Map<String, dynamic> map) {
     return PartnerAttachmentBgp(
-      authKey: (() {
-        final guardedValue = map['authKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      localRouterIp: (() {
-        final guardedValue = map['localRouterIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peerRouterAsn: (() {
-        final guardedValue = map['peerRouterAsn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      peerRouterIp: (() {
-        final guardedValue = map['peerRouterIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authKey: (() { final guardedValue = map['authKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localRouterIp: (() { final guardedValue = map['localRouterIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerRouterAsn: (() { final guardedValue = map['peerRouterAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      peerRouterIp: (() { final guardedValue = map['peerRouterIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

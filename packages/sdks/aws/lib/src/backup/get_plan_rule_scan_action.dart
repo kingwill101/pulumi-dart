@@ -9,7 +9,10 @@ class GetPlanRuleScanAction {
   /// Creates a new [GetPlanRuleScanAction].
   /// [malwareScanner] Required.
   /// [scanMode] Required.
-  GetPlanRuleScanAction({required this.malwareScanner, required this.scanMode});
+  GetPlanRuleScanAction({
+    required this.malwareScanner,
+    required this.scanMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,3 +28,4 @@ class GetPlanRuleScanAction {
     );
   }
 }
+

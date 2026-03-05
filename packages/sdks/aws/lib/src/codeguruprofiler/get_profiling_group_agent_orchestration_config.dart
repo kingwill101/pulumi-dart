@@ -7,17 +7,20 @@ class GetProfilingGroupAgentOrchestrationConfig {
 
   /// Creates a new [GetProfilingGroupAgentOrchestrationConfig].
   /// [profilingEnabled] Required.
-  GetProfilingGroupAgentOrchestrationConfig({required this.profilingEnabled});
+  GetProfilingGroupAgentOrchestrationConfig({
+    required this.profilingEnabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'profilingEnabled': profilingEnabled};
+    return <String, dynamic>{
+      'profilingEnabled': profilingEnabled,
+    };
   }
 
-  factory GetProfilingGroupAgentOrchestrationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetProfilingGroupAgentOrchestrationConfig.fromMap(Map<String, dynamic> map) {
     return GetProfilingGroupAgentOrchestrationConfig(
       profilingEnabled: pulumi.Input.fromValue(map['profilingEnabled'] as bool),
     );
   }
 }
+

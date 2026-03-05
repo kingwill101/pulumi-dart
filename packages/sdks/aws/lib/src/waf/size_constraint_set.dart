@@ -160,10 +160,8 @@ import 'size_constraint_set_state.dart';
 class SizeConstraintSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN).
   late final pulumi.Output<String> arn;
-
   /// Name or description of the Size Constraint Set.
   late final pulumi.Output<String> name;
-
   /// Parts of web requests that you want to inspect the size of.
   late final pulumi.Output<List<Map<String, dynamic>>?> sizeConstraints;
 
@@ -176,16 +174,14 @@ class SizeConstraintSet extends pulumi.CustomResource {
     SizeConstraintSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:waf/sizeConstraintSet:SizeConstraintSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:waf/sizeConstraintSet:SizeConstraintSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    sizeConstraints = registerOutput<List<Map<String, dynamic>>?>(
-      'sizeConstraints',
-    );
+    sizeConstraints = registerOutput<List<Map<String, dynamic>>?>('sizeConstraints');
   }
 
   /// Gets an existing [SizeConstraintSet] resource's state with the given [name] and [id].
@@ -206,15 +202,13 @@ class SizeConstraintSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:waf/sizeConstraintSet:SizeConstraintSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:waf/sizeConstraintSet:SizeConstraintSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    sizeConstraints = registerOutput<List<Map<String, dynamic>>?>(
-      'sizeConstraints',
-    );
+    sizeConstraints = registerOutput<List<Map<String, dynamic>>?>('sizeConstraints');
   }
 }

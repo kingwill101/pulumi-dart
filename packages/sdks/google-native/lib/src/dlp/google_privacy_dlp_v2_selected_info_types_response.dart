@@ -10,37 +10,20 @@ class GooglePrivacyDlpV2SelectedInfoTypesResponse {
 
   /// Creates a new [GooglePrivacyDlpV2SelectedInfoTypesResponse].
   /// [infoTypes] InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message.
-  GooglePrivacyDlpV2SelectedInfoTypesResponse({required this.infoTypes});
+  GooglePrivacyDlpV2SelectedInfoTypesResponse({
+    required this.infoTypes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'infoTypes':
-          pulumi.Input.mapInputValue<
-            List<GooglePrivacyDlpV2InfoTypeResponse>,
-            List<Map<String, dynamic>>
-          >(
-            infoTypes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GooglePrivacyDlpV2InfoTypeResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'infoTypes': pulumi.Input.mapInputValue<List<GooglePrivacyDlpV2InfoTypeResponse>, List<Map<String, dynamic>>>(infoTypes, (value) => pulumi.Input.encodeList<GooglePrivacyDlpV2InfoTypeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GooglePrivacyDlpV2SelectedInfoTypesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2SelectedInfoTypesResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2SelectedInfoTypesResponse(
-      infoTypes: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeResponse>(
-          map['infoTypes']!,
-          (value) => GooglePrivacyDlpV2InfoTypeResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      infoTypes: pulumi.Input.fromValue(pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeResponse>(map['infoTypes']!, (value) => GooglePrivacyDlpV2InfoTypeResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

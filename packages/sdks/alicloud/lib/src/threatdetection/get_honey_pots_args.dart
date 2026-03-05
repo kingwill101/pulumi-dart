@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHoneyPotsArgs {
   /// Honeypot ID.
   final pulumi.Input<String>? honeypotId;
-
   /// Honeypot custom name.
   final pulumi.Input<String>? honeypotName;
-
   /// A list of Honey Pot IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// A regex string to filter results by honey pot name.
   final pulumi.Input<String>? nameRegex;
-
   /// The ID of the honeypot management node.
   final pulumi.Input<String>? nodeId;
-
   /// The name of the honeypot management node.
   final pulumi.Input<String>? nodeName;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -60,41 +54,14 @@ class GetHoneyPotsArgs {
 
   factory GetHoneyPotsArgs.fromMap(Map<String, dynamic> map) {
     return GetHoneyPotsArgs(
-      honeypotId: (() {
-        final guardedValue = map['honeypotId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      honeypotName: (() {
-        final guardedValue = map['honeypotName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeId: (() {
-        final guardedValue = map['nodeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeName: (() {
-        final guardedValue = map['nodeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      honeypotId: (() { final guardedValue = map['honeypotId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      honeypotName: (() { final guardedValue = map['honeypotName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeId: (() { final guardedValue = map['nodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeName: (() { final guardedValue = map['nodeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

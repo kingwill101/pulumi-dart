@@ -15,3 +15,4 @@ enum BillingType {
     throw ArgumentError('Unknown BillingType value: $value');
   }
 }
+

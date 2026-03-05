@@ -173,19 +173,14 @@ import 'azure_traffic_collector_state.dart';
 class AzureTrafficCollector extends pulumi.CustomResource {
   /// The list of Resource IDs of collector policies.
   late final pulumi.Output<List<String>> collectorPolicyIds;
-
   /// Specifies the Azure Region where the Network Function Azure Traffic Collector should exist. Changing this forces a new Network Function Azure Traffic Collector to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name which should be used for this Network Function Azure Traffic Collector. Changing this forces a new Network Function Azure Traffic Collector to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the Resource Group where the Network Function Azure Traffic Collector should exist. Changing this forces a new Network Function Azure Traffic Collector to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Network Function Azure Traffic Collector.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Resource ID of virtual hub.
   late final pulumi.Output<List<String>> virtualHubIds;
 
@@ -198,11 +193,11 @@ class AzureTrafficCollector extends pulumi.CustomResource {
     AzureTrafficCollectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:networkfunction/azureTrafficCollector:AzureTrafficCollector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:networkfunction/azureTrafficCollector:AzureTrafficCollector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     collectorPolicyIds = registerOutput<List<String>>('collectorPolicyIds');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -229,11 +224,11 @@ class AzureTrafficCollector extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:networkfunction/azureTrafficCollector:AzureTrafficCollector',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:networkfunction/azureTrafficCollector:AzureTrafficCollector',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     collectorPolicyIds = registerOutput<List<String>>('collectorPolicyIds');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

@@ -9,19 +9,20 @@ class PrimaryConfigResponseAlloydbV1alpha {
 
   /// Creates a new [PrimaryConfigResponseAlloydbV1alpha].
   /// [secondaryClusterNames] Names of the clusters that are replicating from this cluster.
-  PrimaryConfigResponseAlloydbV1alpha({required this.secondaryClusterNames});
+  PrimaryConfigResponseAlloydbV1alpha({
+    required this.secondaryClusterNames,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secondaryClusterNames': secondaryClusterNames};
+    return <String, dynamic>{
+      'secondaryClusterNames': secondaryClusterNames,
+    };
   }
 
-  factory PrimaryConfigResponseAlloydbV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrimaryConfigResponseAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return PrimaryConfigResponseAlloydbV1alpha(
-      secondaryClusterNames: pulumi.Input.fromValue(
-        (map['secondaryClusterNames'] as List).cast<String>(),
-      ),
+      secondaryClusterNames: pulumi.Input.fromValue((map['secondaryClusterNames'] as List).cast<String>()),
     );
   }
 }
+

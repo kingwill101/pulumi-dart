@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrustedAccessRoleBindingArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the managed cluster resource.
   final pulumi.Input<String> resourceName;
-
   /// The name of trusted access role binding.
   final pulumi.Input<String> trustedAccessRoleBindingName;
 
@@ -36,13 +34,10 @@ class GetTrustedAccessRoleBindingArgs {
 
   factory GetTrustedAccessRoleBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetTrustedAccessRoleBindingArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
-      trustedAccessRoleBindingName: pulumi.Input.fromValue(
-        map['trustedAccessRoleBindingName'] as String,
-      ),
+      trustedAccessRoleBindingName: pulumi.Input.fromValue(map['trustedAccessRoleBindingName'] as String),
     );
   }
 }
+

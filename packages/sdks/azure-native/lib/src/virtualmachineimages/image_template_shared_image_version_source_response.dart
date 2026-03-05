@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageTemplateSharedImageVersionSourceResponse {
   /// Exact ARM resource id of the image version. This readonly field differs from the image version Id in 'imageVersionId' only if the version name specified in 'imageVersionId' field is 'latest'.
   final pulumi.Input<String> exactVersion;
-
   /// ARM resource id of the image version. When image version name is 'latest', the version is evaluated when the image build takes place.
   final pulumi.Input<String> imageVersionId;
-
   /// Specifies the type of source image you want to start with.
   /// Expected value is 'SharedImageVersion'.
   final pulumi.Input<String> type;
@@ -32,9 +30,7 @@ class ImageTemplateSharedImageVersionSourceResponse {
     };
   }
 
-  factory ImageTemplateSharedImageVersionSourceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ImageTemplateSharedImageVersionSourceResponse.fromMap(Map<String, dynamic> map) {
     return ImageTemplateSharedImageVersionSourceResponse(
       exactVersion: pulumi.Input.fromValue(map['exactVersion'] as String),
       imageVersionId: pulumi.Input.fromValue(map['imageVersionId'] as String),
@@ -42,3 +38,4 @@ class ImageTemplateSharedImageVersionSourceResponse {
     );
   }
 }
+

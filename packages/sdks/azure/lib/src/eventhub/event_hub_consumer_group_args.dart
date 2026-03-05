@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventHubConsumerGroupArgs {
   /// Specifies the name of the EventHub. Changing this forces a new resource to be created.
   final pulumi.Input<String> eventhubName;
-
   /// Specifies the name of the EventHub Consumer Group resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the name of the grandparent EventHub Namespace. Changing this forces a new resource to be created.
   final pulumi.Input<String> namespaceName;
-
   /// The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// Specifies the user metadata.
   final pulumi.Input<String>? userMetadata;
 
@@ -49,20 +45,11 @@ class EventHubConsumerGroupArgs {
   factory EventHubConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
     return EventHubConsumerGroupArgs(
       eventhubName: pulumi.Input.fromValue(map['eventhubName'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      userMetadata: (() {
-        final guardedValue = map['userMetadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      userMetadata: (() { final guardedValue = map['userMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

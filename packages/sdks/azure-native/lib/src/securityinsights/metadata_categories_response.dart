@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetadataCategoriesResponse {
   /// domain for the solution content item
   final pulumi.Input<List<String>>? domains;
-
   /// Industry verticals for the solution content item
   final pulumi.Input<List<String>>? verticals;
 
   /// Creates a new [MetadataCategoriesResponse].
   /// [domains] domain for the solution content item
   /// [verticals] Industry verticals for the solution content item
-  MetadataCategoriesResponse({this.domains, this.verticals});
+  MetadataCategoriesResponse({
+    this.domains,
+    this.verticals,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domains': ?domains, 'verticals': ?verticals};
+    return <String, dynamic>{
+      'domains': ?domains,
+      'verticals': ?verticals,
+    };
   }
 
   factory MetadataCategoriesResponse.fromMap(Map<String, dynamic> map) {
     return MetadataCategoriesResponse(
-      domains: (() {
-        final guardedValue = map['domains'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      verticals: (() {
-        final guardedValue = map['verticals'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      domains: (() { final guardedValue = map['domains']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      verticals: (() { final guardedValue = map['verticals']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

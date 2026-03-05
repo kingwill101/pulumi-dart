@@ -7,22 +7,16 @@ import 'replication_cycle_response.dart';
 class CutoverStepResponse {
   /// The time the step has ended.
   final pulumi.Input<String> endTime;
-
   /// Final sync step.
   final pulumi.Input<ReplicationCycleResponse> finalSync;
-
   /// Instantiating migrated VM step.
   final pulumi.Input<Map<String, dynamic>> instantiatingMigratedVm;
-
   /// Preparing VM disks step.
   final pulumi.Input<Map<String, dynamic>> preparingVmDisks;
-
   /// A replication cycle prior cutover step.
   final pulumi.Input<ReplicationCycleResponse> previousReplicationCycle;
-
   /// Shutting down VM step.
   final pulumi.Input<Map<String, dynamic>> shuttingDownSourceVm;
-
   /// The time the step has started.
   final pulumi.Input<String> startTime;
 
@@ -47,18 +41,10 @@ class CutoverStepResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endTime': endTime,
-      'finalSync':
-          pulumi.Input.mapInputValue<
-            ReplicationCycleResponse,
-            Map<String, dynamic>
-          >(finalSync, (value) => value.toMap()),
+      'finalSync': pulumi.Input.mapInputValue<ReplicationCycleResponse, Map<String, dynamic>>(finalSync, (value) => value.toMap()),
       'instantiatingMigratedVm': instantiatingMigratedVm,
       'preparingVmDisks': preparingVmDisks,
-      'previousReplicationCycle':
-          pulumi.Input.mapInputValue<
-            ReplicationCycleResponse,
-            Map<String, dynamic>
-          >(previousReplicationCycle, (value) => value.toMap()),
+      'previousReplicationCycle': pulumi.Input.mapInputValue<ReplicationCycleResponse, Map<String, dynamic>>(previousReplicationCycle, (value) => value.toMap()),
       'shuttingDownSourceVm': shuttingDownSourceVm,
       'startTime': startTime,
     };
@@ -67,26 +53,13 @@ class CutoverStepResponse {
   factory CutoverStepResponse.fromMap(Map<String, dynamic> map) {
     return CutoverStepResponse(
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
-      finalSync: pulumi.Input.fromValue(
-        ReplicationCycleResponse.fromMap(
-          (map['finalSync']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      instantiatingMigratedVm: pulumi.Input.fromValue(
-        (map['instantiatingMigratedVm']! as Map).cast<String, dynamic>(),
-      ),
-      preparingVmDisks: pulumi.Input.fromValue(
-        (map['preparingVmDisks']! as Map).cast<String, dynamic>(),
-      ),
-      previousReplicationCycle: pulumi.Input.fromValue(
-        ReplicationCycleResponse.fromMap(
-          (map['previousReplicationCycle']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      shuttingDownSourceVm: pulumi.Input.fromValue(
-        (map['shuttingDownSourceVm']! as Map).cast<String, dynamic>(),
-      ),
+      finalSync: pulumi.Input.fromValue(ReplicationCycleResponse.fromMap((map['finalSync']! as Map).cast<String, dynamic>())),
+      instantiatingMigratedVm: pulumi.Input.fromValue((map['instantiatingMigratedVm']! as Map).cast<String, dynamic>()),
+      preparingVmDisks: pulumi.Input.fromValue((map['preparingVmDisks']! as Map).cast<String, dynamic>()),
+      previousReplicationCycle: pulumi.Input.fromValue(ReplicationCycleResponse.fromMap((map['previousReplicationCycle']! as Map).cast<String, dynamic>())),
+      shuttingDownSourceVm: pulumi.Input.fromValue((map['shuttingDownSourceVm']! as Map).cast<String, dynamic>()),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
+

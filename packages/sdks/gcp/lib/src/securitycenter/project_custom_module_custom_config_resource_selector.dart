@@ -13,16 +13,15 @@ class ProjectCustomModuleCustomConfigResourceSelector {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceTypes': resourceTypes};
+    return <String, dynamic>{
+      'resourceTypes': resourceTypes,
+    };
   }
 
-  factory ProjectCustomModuleCustomConfigResourceSelector.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProjectCustomModuleCustomConfigResourceSelector.fromMap(Map<String, dynamic> map) {
     return ProjectCustomModuleCustomConfigResourceSelector(
-      resourceTypes: pulumi.Input.fromValue(
-        (map['resourceTypes'] as List).cast<String>(),
-      ),
+      resourceTypes: pulumi.Input.fromValue((map['resourceTypes'] as List).cast<String>()),
     );
   }
 }
+

@@ -9,19 +9,20 @@ class InstanceIpv6PrefixResponse {
 
   /// Creates a new [InstanceIpv6PrefixResponse].
   /// [ipv6Prefix] &lt;p&gt;One or more IPv6 prefixes assigned to the network interface.&lt;/p&gt;
-  InstanceIpv6PrefixResponse({this.ipv6Prefix});
+  InstanceIpv6PrefixResponse({
+    this.ipv6Prefix,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipv6Prefix': ?ipv6Prefix};
+    return <String, dynamic>{
+      'ipv6Prefix': ?ipv6Prefix,
+    };
   }
 
   factory InstanceIpv6PrefixResponse.fromMap(Map<String, dynamic> map) {
     return InstanceIpv6PrefixResponse(
-      ipv6Prefix: (() {
-        final guardedValue = map['ipv6Prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipv6Prefix: (() { final guardedValue = map['ipv6Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

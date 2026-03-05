@@ -270,28 +270,22 @@ import 'tenant_inbound_saml_config_state.dart';
 class TenantInboundSamlConfig extends pulumi.CustomResource {
   /// Human friendly display name.
   late final pulumi.Output<String> displayName;
-
   /// If this config allows users to sign in with the provider.
   late final pulumi.Output<bool?> enabled;
-
   /// SAML IdP configuration when the project acts as the relying party
   /// Structure is documented below.
   late final pulumi.Output<TenantInboundSamlConfigIdpConfig> idpConfig;
-
   /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
   /// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
   /// alphanumeric character, and have at least 2 characters.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
   /// and accept an authentication assertion issued by a SAML identity provider.
   /// Structure is documented below.
   late final pulumi.Output<TenantInboundSamlConfigSpConfig> spConfig;
-
   /// The name of the tenant where this inbound SAML config resource exists
   late final pulumi.Output<String> tenant;
 
@@ -304,35 +298,17 @@ class TenantInboundSamlConfig extends pulumi.CustomResource {
     TenantInboundSamlConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
-    idpConfig = registerOutput<TenantInboundSamlConfigIdpConfig>(
-      'idpConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TenantInboundSamlConfigIdpConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    idpConfig = registerOutput<TenantInboundSamlConfigIdpConfig>('idpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantInboundSamlConfigIdpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    spConfig = registerOutput<TenantInboundSamlConfigSpConfig>(
-      'spConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TenantInboundSamlConfigSpConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spConfig = registerOutput<TenantInboundSamlConfigSpConfig>('spConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantInboundSamlConfigSpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenant = registerOutput<String>('tenant');
   }
 
@@ -354,35 +330,17 @@ class TenantInboundSamlConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
-    idpConfig = registerOutput<TenantInboundSamlConfigIdpConfig>(
-      'idpConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TenantInboundSamlConfigIdpConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    idpConfig = registerOutput<TenantInboundSamlConfigIdpConfig>('idpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantInboundSamlConfigIdpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    spConfig = registerOutput<TenantInboundSamlConfigSpConfig>(
-      'spConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TenantInboundSamlConfigSpConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spConfig = registerOutput<TenantInboundSamlConfigSpConfig>('spConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantInboundSamlConfigSpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenant = registerOutput<String>('tenant');
   }
 }

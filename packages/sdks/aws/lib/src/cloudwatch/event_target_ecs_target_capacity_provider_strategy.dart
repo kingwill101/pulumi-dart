@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventTargetEcsTargetCapacityProviderStrategy {
   /// The base value designates how many tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined. Defaults to `0`.
   final pulumi.Input<int>? base;
-
   /// Short name of the capacity provider.
   final pulumi.Input<String> capacityProvider;
-
   /// The weight value designates the relative percentage of the total number of tasks launched that should use the specified capacity provider. The weight value is taken into consideration after the base value, if defined, is satisfied.
   final pulumi.Input<int>? weight;
 
@@ -30,23 +28,12 @@ class EventTargetEcsTargetCapacityProviderStrategy {
     };
   }
 
-  factory EventTargetEcsTargetCapacityProviderStrategy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventTargetEcsTargetCapacityProviderStrategy.fromMap(Map<String, dynamic> map) {
     return EventTargetEcsTargetCapacityProviderStrategy(
-      base: (() {
-        final guardedValue = map['base'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      capacityProvider: pulumi.Input.fromValue(
-        map['capacityProvider'] as String,
-      ),
-      weight: (() {
-        final guardedValue = map['weight'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      base: (() { final guardedValue = map['base']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacityProvider: pulumi.Input.fromValue(map['capacityProvider'] as String),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

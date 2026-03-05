@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChartNamespaceArgs {
   /// Specifies whether to automatically create repositories in the namespace. Valid values:
   final pulumi.Input<bool>? autoCreateRepo;
-
   /// DefaultRepoType. Valid values: `PRIVATE`, `PUBLIC`.
   final pulumi.Input<String>? defaultRepoType;
-
   /// The ID of the Container Registry instance.
   final pulumi.Input<String> instanceId;
-
   /// The name of the namespace that you want to create.
   final pulumi.Input<String> namespaceName;
 
@@ -42,18 +39,11 @@ class ChartNamespaceArgs {
 
   factory ChartNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return ChartNamespaceArgs(
-      autoCreateRepo: (() {
-        final guardedValue = map['autoCreateRepo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      defaultRepoType: (() {
-        final guardedValue = map['defaultRepoType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autoCreateRepo: (() { final guardedValue = map['autoCreateRepo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      defaultRepoType: (() { final guardedValue = map['defaultRepoType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
     );
   }
 }
+

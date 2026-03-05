@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceTemplateVolumeNf {
   /// Path that is exported by the NFS server.
   final pulumi.Input<String> path;
-
   /// If true, mount the NFS volume as read only
   final pulumi.Input<bool> readOnly;
-
   /// Hostname or IP address of the NFS server
   final pulumi.Input<String> server;
 
@@ -38,3 +36,4 @@ class GetServiceTemplateVolumeNf {
     );
   }
 }
+

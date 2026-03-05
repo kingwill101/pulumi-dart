@@ -6,39 +6,28 @@ import 'subnet_response.dart';
 class Connector extends pulumi.CustomResource {
   /// List of projects using the connector.
   late final pulumi.Output<List<String>> connectedProjects;
-
   /// Required. The ID to use for this connector.
   late final pulumi.Output<String> connectorId;
-
   /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
   late final pulumi.Output<String> ipCidrRange;
   late final pulumi.Output<String> location;
-
   /// Machine type of VM Instance underlying connector. Default is e2-micro
   late final pulumi.Output<String> machineType;
-
   /// Maximum value of instances in autoscaling group underlying the connector.
   late final pulumi.Output<int> maxInstances;
-
   /// Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If both max-throughput and max-instances are provided, max-instances takes precedence over max-throughput.
   late final pulumi.Output<int> maxThroughput;
-
   /// Minimum value of instances in autoscaling group underlying the connector.
   late final pulumi.Output<int> minInstances;
-
   /// Minimum throughput of the connector in Mbps. Default and min is 200. If both min-throughput and min-instances are provided, min-instances takes precedence over min-throughput.
   late final pulumi.Output<int> minThroughput;
-
   /// The resource name in the format `projects/*/locations/*/connectors/*`.
   late final pulumi.Output<String> name;
-
   /// Name of a VPC network.
   late final pulumi.Output<String> network;
   late final pulumi.Output<String> project;
-
   /// State of the VPC access connector.
   late final pulumi.Output<String> state;
-
   /// The subnet in which to house the VPC Access Connector.
   late final pulumi.Output<SubnetResponse> subnet;
 
@@ -51,11 +40,11 @@ class Connector extends pulumi.CustomResource {
     ConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:vpcaccess/v1:Connector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:vpcaccess/v1:Connector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectedProjects = registerOutput<List<String>>('connectedProjects');
     connectorId = registerOutput<String>('connectorId');
     ipCidrRange = registerOutput<String>('ipCidrRange');
@@ -69,15 +58,6 @@ class Connector extends pulumi.CustomResource {
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
-    subnet = registerOutput<SubnetResponse>(
-      'subnet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubnetResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    subnet = registerOutput<SubnetResponse>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

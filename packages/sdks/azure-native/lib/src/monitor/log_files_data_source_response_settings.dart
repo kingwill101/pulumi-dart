@@ -10,29 +10,20 @@ class LogFilesDataSourceResponseSettings {
 
   /// Creates a new [LogFilesDataSourceResponseSettings].
   /// [text] Text settings
-  LogFilesDataSourceResponseSettings({this.text});
+  LogFilesDataSourceResponseSettings({
+    this.text,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'text':
-          ?pulumi.Input.mapOptionalInputValue<
-            LogFileSettingsResponseText,
-            Map<String, dynamic>
-          >(text, (value) => value.toMap()),
+      'text': ?pulumi.Input.mapOptionalInputValue<LogFileSettingsResponseText, Map<String, dynamic>>(text, (value) => value.toMap()),
     };
   }
 
   factory LogFilesDataSourceResponseSettings.fromMap(Map<String, dynamic> map) {
     return LogFilesDataSourceResponseSettings(
-      text: (() {
-        final guardedValue = map['text'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LogFileSettingsResponseText.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LogFileSettingsResponseText.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

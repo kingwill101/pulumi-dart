@@ -15,3 +15,4 @@ enum ConsolidationType {
     throw ArgumentError('Unknown ConsolidationType value: $value');
   }
 }
+

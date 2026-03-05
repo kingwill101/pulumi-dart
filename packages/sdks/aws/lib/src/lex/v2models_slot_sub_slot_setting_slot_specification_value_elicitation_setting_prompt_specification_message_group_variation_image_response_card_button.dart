@@ -15,15 +15,17 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'text': text, 'value': value};
+    return <String, dynamic>{
+      'text': text,
+      'value': value,
+    };
   }
 
-  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCardButton.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCardButton.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCardButton(
       text: pulumi.Input.fromValue(map['text'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

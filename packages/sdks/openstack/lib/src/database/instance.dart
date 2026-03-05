@@ -169,42 +169,32 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// A list of IP addresses assigned to the instance.
   late final pulumi.Output<List<String>> addresses;
-
   /// Configuration ID to be attached to the instance. Database instance
   /// will be rebooted when configuration is detached.
   late final pulumi.Output<String?> configurationId;
-
   /// An array of database name, charset and collate. The database
   /// object structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> databases;
-
   /// An array of database engine type and version. The datastore
   /// object structure is documented below. Changing this creates a new instance.
   late final pulumi.Output<InstanceDatastore> datastore;
-
   /// The flavor ID of the desired flavor for the instance.
   /// Changing this creates new instance.
   late final pulumi.Output<String> flavorId;
-
   /// A unique name for the resource.
   late final pulumi.Output<String> name;
-
   /// An array of one or more networks to attach to the
   /// instance. The network object structure is documented below. Changing this
   /// creates a new instance.
   late final pulumi.Output<List<Map<String, dynamic>>?> networks;
-
   /// The region in which to create the db instance. Changing this
   /// creates a new instance.
   late final pulumi.Output<String> region;
-
   /// Specifies the volume size in GB. Changing this creates new instance.
   late final pulumi.Output<int> size;
-
   /// An array of username, password, host and databases. The user
   /// object structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> users;
-
   /// Specifies the volume type to use. If you want to
   /// specify a volume type, you must also specify a volume size. Changing this
   /// creates new instance.
@@ -219,24 +209,15 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:database/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:database/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addresses = registerOutput<List<String>>('addresses');
     configurationId = registerOutput<String?>('configurationId');
     databases = registerOutput<List<Map<String, dynamic>>?>('databases');
-    datastore = registerOutput<InstanceDatastore>(
-      'datastore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceDatastore.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    datastore = registerOutput<InstanceDatastore>('datastore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDatastore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     flavorId = registerOutput<String>('flavorId');
     this.name = registerOutput<String>('name');
     networks = registerOutput<List<Map<String, dynamic>>?>('networks');
@@ -264,24 +245,15 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:database/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:database/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addresses = registerOutput<List<String>>('addresses');
     configurationId = registerOutput<String?>('configurationId');
     databases = registerOutput<List<Map<String, dynamic>>?>('databases');
-    datastore = registerOutput<InstanceDatastore>(
-      'datastore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceDatastore.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    datastore = registerOutput<InstanceDatastore>('datastore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDatastore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     flavorId = registerOutput<String>('flavorId');
     this.name = registerOutput<String>('name');
     networks = registerOutput<List<Map<String, dynamic>>?>('networks');

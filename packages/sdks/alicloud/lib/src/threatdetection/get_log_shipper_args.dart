@@ -14,19 +14,20 @@ class GetLogShipperArgs {
 
   /// Creates a new [GetLogShipperArgs].
   /// [enable] Setting the value to `On` to enable the service. Valid values: `On` or `Off`. Default to `Off`.
-  GetLogShipperArgs({this.enable});
+  GetLogShipperArgs({
+    this.enable,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enable': ?enable};
+    return <String, dynamic>{
+      'enable': ?enable,
+    };
   }
 
   factory GetLogShipperArgs.fromMap(Map<String, dynamic> map) {
     return GetLogShipperArgs(
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

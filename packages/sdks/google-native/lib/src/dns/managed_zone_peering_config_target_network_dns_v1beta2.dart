@@ -6,7 +6,6 @@ class ManagedZonePeeringConfigTargetNetworkDnsV1beta2 {
   /// The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates that the peering connection is active. The producer network can deactivate a zone. The zone is automatically deactivated if the producer network that the zone targeted is deleted. Output only.
   final pulumi.Input<String>? deactivateTime;
   final pulumi.Input<String>? kind;
-
   /// The fully qualified URL of the VPC network to forward queries to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
   final pulumi.Input<String>? networkUrl;
 
@@ -28,25 +27,12 @@ class ManagedZonePeeringConfigTargetNetworkDnsV1beta2 {
     };
   }
 
-  factory ManagedZonePeeringConfigTargetNetworkDnsV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedZonePeeringConfigTargetNetworkDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZonePeeringConfigTargetNetworkDnsV1beta2(
-      deactivateTime: (() {
-        final guardedValue = map['deactivateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkUrl: (() {
-        final guardedValue = map['networkUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deactivateTime: (() { final guardedValue = map['deactivateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkUrl: (() { final guardedValue = map['networkUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

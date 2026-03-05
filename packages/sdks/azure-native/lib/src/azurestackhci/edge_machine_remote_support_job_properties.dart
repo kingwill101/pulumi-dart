@@ -6,17 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdgeMachineRemoteSupportJobProperties {
   /// Remote support access level.
   final pulumi.Input<String> accessLevel;
-
   /// Deployment mode to trigger job.
   final pulumi.Input<String>? deploymentMode;
-
   /// Remote support expiration timestamp.
   final pulumi.Input<String> expirationTimestamp;
-
   /// Job Type supported.
   /// Expected value is 'RemoteSupport'.
   final pulumi.Input<String> jobType;
-
   /// Remote support type.
   final pulumi.Input<String> type;
 
@@ -44,21 +40,14 @@ class EdgeMachineRemoteSupportJobProperties {
     };
   }
 
-  factory EdgeMachineRemoteSupportJobProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EdgeMachineRemoteSupportJobProperties.fromMap(Map<String, dynamic> map) {
     return EdgeMachineRemoteSupportJobProperties(
       accessLevel: pulumi.Input.fromValue(map['accessLevel'] as String),
-      deploymentMode: (() {
-        final guardedValue = map['deploymentMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expirationTimestamp: pulumi.Input.fromValue(
-        map['expirationTimestamp'] as String,
-      ),
+      deploymentMode: (() { final guardedValue = map['deploymentMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expirationTimestamp: pulumi.Input.fromValue(map['expirationTimestamp'] as String),
       jobType: pulumi.Input.fromValue(map['jobType'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

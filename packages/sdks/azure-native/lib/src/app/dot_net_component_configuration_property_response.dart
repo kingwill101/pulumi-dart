@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DotNetComponentConfigurationPropertyResponse {
   /// The name of the property
   final pulumi.Input<String>? propertyName;
-
   /// The value of the property
   final pulumi.Input<String>? value;
 
   /// Creates a new [DotNetComponentConfigurationPropertyResponse].
   /// [propertyName] The name of the property
   /// [value] The value of the property
-  DotNetComponentConfigurationPropertyResponse({this.propertyName, this.value});
+  DotNetComponentConfigurationPropertyResponse({
+    this.propertyName,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'propertyName': ?propertyName, 'value': ?value};
+    return <String, dynamic>{
+      'propertyName': ?propertyName,
+      'value': ?value,
+    };
   }
 
-  factory DotNetComponentConfigurationPropertyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DotNetComponentConfigurationPropertyResponse.fromMap(Map<String, dynamic> map) {
     return DotNetComponentConfigurationPropertyResponse(
-      propertyName: (() {
-        final guardedValue = map['propertyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      propertyName: (() { final guardedValue = map['propertyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

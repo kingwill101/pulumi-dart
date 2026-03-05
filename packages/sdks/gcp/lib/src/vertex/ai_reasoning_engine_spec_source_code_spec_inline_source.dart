@@ -10,21 +10,20 @@ class AiReasoningEngineSpecSourceCodeSpecInlineSource {
 
   /// Creates a new [AiReasoningEngineSpecSourceCodeSpecInlineSource].
   /// [sourceArchive] Required. Input only.
-  AiReasoningEngineSpecSourceCodeSpecInlineSource({this.sourceArchive});
+  AiReasoningEngineSpecSourceCodeSpecInlineSource({
+    this.sourceArchive,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sourceArchive': ?sourceArchive};
+    return <String, dynamic>{
+      'sourceArchive': ?sourceArchive,
+    };
   }
 
-  factory AiReasoningEngineSpecSourceCodeSpecInlineSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiReasoningEngineSpecSourceCodeSpecInlineSource.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecSourceCodeSpecInlineSource(
-      sourceArchive: (() {
-        final guardedValue = map['sourceArchive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sourceArchive: (() { final guardedValue = map['sourceArchive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

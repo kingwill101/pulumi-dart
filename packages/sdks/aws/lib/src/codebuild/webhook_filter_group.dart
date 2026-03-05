@@ -9,39 +9,20 @@ class WebhookFilterGroup {
 
   /// Creates a new [WebhookFilterGroup].
   /// [filters] A webhook filter for the group. See filter for details.
-  WebhookFilterGroup({this.filters});
+  WebhookFilterGroup({
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<WebhookFilterGroupFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  WebhookFilterGroupFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<WebhookFilterGroupFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<WebhookFilterGroupFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WebhookFilterGroup.fromMap(Map<String, dynamic> map) {
     return WebhookFilterGroup(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<WebhookFilterGroupFilter>(
-            guardedValue,
-            (value) => WebhookFilterGroupFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebhookFilterGroupFilter>(guardedValue, (value) => WebhookFilterGroupFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

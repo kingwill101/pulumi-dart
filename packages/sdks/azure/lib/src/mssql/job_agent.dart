@@ -260,19 +260,14 @@ import 'job_agent_state.dart';
 class JobAgent extends pulumi.CustomResource {
   /// The ID of the database to store metadata for this Elastic Job Agent. Changing this forces a new Elastic Job Agent to be created.
   late final pulumi.Output<String> databaseId;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<JobAgentIdentity?> identity;
-
   /// The Azure Region where this Elastic Job Agent should exist. Changing this forces a new Elastic Job Agent to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Elastic Job Agent. Changing this forces a new Elastic Job Agent to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the SKU to use for this Elastic Job Agent. Possible values are `JA100`, `JA200`, `JA400`, and `JA800`. Defaults to `JA100`.
   late final pulumi.Output<String?> sku;
-
   /// A mapping of tags which should be assigned to this Elastic Job Agent.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -285,22 +280,13 @@ class JobAgent extends pulumi.CustomResource {
     JobAgentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/jobAgent:JobAgent',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/jobAgent:JobAgent',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     databaseId = registerOutput<String>('databaseId');
-    identity = registerOutput<JobAgentIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobAgentIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<JobAgentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobAgentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     sku = registerOutput<String?>('sku');
@@ -325,22 +311,13 @@ class JobAgent extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/jobAgent:JobAgent',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/jobAgent:JobAgent',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     databaseId = registerOutput<String>('databaseId');
-    identity = registerOutput<JobAgentIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobAgentIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<JobAgentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobAgentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     sku = registerOutput<String?>('sku');

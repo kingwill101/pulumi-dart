@@ -20,18 +20,15 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuth
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serviceAccount': ?serviceAccount};
+    return <String, dynamic>{
+      'serviceAccount': ?serviceAccount,
+    };
   }
 
-  factory AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig(
-      serviceAccount: (() {
-        final guardedValue = map['serviceAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

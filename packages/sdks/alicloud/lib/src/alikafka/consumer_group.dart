@@ -161,22 +161,16 @@ import 'consumer_group_state.dart';
 class ConsumerGroup extends pulumi.CustomResource {
   /// ID of the consumer group.
   late final pulumi.Output<String> consumerId;
-
   /// (Available since v1.268.0) The timestamp of when the group was created.
   late final pulumi.Output<int> createTime;
-
   /// Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
   late final pulumi.Output<String> description;
-
   /// ID of the ALIKAFKA Instance that owns the groups.
   late final pulumi.Output<String> instanceId;
-
   /// (Available since v1.268.0) The region ID.
   late final pulumi.Output<String> regionId;
-
   /// The remark of the resource.
   late final pulumi.Output<String> remark;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -189,11 +183,11 @@ class ConsumerGroup extends pulumi.CustomResource {
     ConsumerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alikafka/consumerGroup:ConsumerGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alikafka/consumerGroup:ConsumerGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     consumerId = registerOutput<String>('consumerId');
     createTime = registerOutput<int>('createTime');
     description = registerOutput<String>('description');
@@ -221,11 +215,11 @@ class ConsumerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alikafka/consumerGroup:ConsumerGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alikafka/consumerGroup:ConsumerGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     consumerId = registerOutput<String>('consumerId');
     createTime = registerOutput<int>('createTime');
     description = registerOutput<String>('description');

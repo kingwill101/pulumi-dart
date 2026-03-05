@@ -9,19 +9,20 @@ class VirtualNIC {
 
   /// Creates a new [VirtualNIC].
   /// [enabled] Whether gVNIC features are enabled in the node pool.
-  VirtualNIC({this.enabled});
+  VirtualNIC({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory VirtualNIC.fromMap(Map<String, dynamic> map) {
     return VirtualNIC(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

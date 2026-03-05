@@ -6,32 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentitySourceResponse {
   /// The domain's NetBIOS name
   final pulumi.Input<String>? alias;
-
   /// The base distinguished name for groups
   final pulumi.Input<String>? baseGroupDN;
-
   /// The base distinguished name for users
   final pulumi.Input<String>? baseUserDN;
-
   /// The domain's DNS name
   final pulumi.Input<String>? domain;
-
   /// The name of the identity source
   final pulumi.Input<String>? name;
-
   /// The password of the Active Directory user with a minimum of read-only access to
   /// Base DN for users and groups.
   final pulumi.Input<String>? password;
-
   /// Primary server URL
   final pulumi.Input<String>? primaryServer;
-
   /// Secondary server URL
   final pulumi.Input<String>? secondaryServer;
-
   /// Protect LDAP communication using SSL certificate (LDAPS)
   final pulumi.Input<String>? ssl;
-
   /// The ID of an Active Directory user with a minimum of read-only access to Base
   /// DN for users and group
   final pulumi.Input<String>? username;
@@ -77,56 +68,17 @@ class IdentitySourceResponse {
 
   factory IdentitySourceResponse.fromMap(Map<String, dynamic> map) {
     return IdentitySourceResponse(
-      alias: (() {
-        final guardedValue = map['alias'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      baseGroupDN: (() {
-        final guardedValue = map['baseGroupDN'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      baseUserDN: (() {
-        final guardedValue = map['baseUserDN'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      domain: (() {
-        final guardedValue = map['domain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      primaryServer: (() {
-        final guardedValue = map['primaryServer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryServer: (() {
-        final guardedValue = map['secondaryServer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ssl: (() {
-        final guardedValue = map['ssl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      baseGroupDN: (() { final guardedValue = map['baseGroupDN']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      baseUserDN: (() { final guardedValue = map['baseUserDN']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      primaryServer: (() { final guardedValue = map['primaryServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryServer: (() { final guardedValue = map['secondaryServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ssl: (() { final guardedValue = map['ssl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

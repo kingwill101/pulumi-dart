@@ -36,17 +36,10 @@ class GetScopeIamPolicyGkehubV1alphaArgs {
   factory GetScopeIamPolicyGkehubV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeIamPolicyGkehubV1alphaArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scopeId: pulumi.Input.fromValue(map['scopeId'] as String),
     );
   }
 }
+

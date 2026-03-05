@@ -244,14 +244,11 @@ import 'cluster_peering_timeouts.dart';
 class ClusterPeering extends pulumi.CustomResource {
   /// List of DSQL Cluster ARNs to be peered to this cluster.
   late final pulumi.Output<List<String>> clusters;
-
   /// DSQL Cluster Identifier.
   late final pulumi.Output<String> identifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<ClusterPeeringTimeouts?> timeouts;
-
   /// Witness region for a multi-region cluster.
   late final pulumi.Output<String> witnessRegion;
 
@@ -264,24 +261,15 @@ class ClusterPeering extends pulumi.CustomResource {
     ClusterPeeringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dsql/clusterPeering:ClusterPeering',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dsql/clusterPeering:ClusterPeering',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusters = registerOutput<List<String>>('clusters');
     identifier = registerOutput<String>('identifier');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<ClusterPeeringTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterPeeringTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ClusterPeeringTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPeeringTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     witnessRegion = registerOutput<String>('witnessRegion');
   }
 
@@ -303,24 +291,15 @@ class ClusterPeering extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dsql/clusterPeering:ClusterPeering',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dsql/clusterPeering:ClusterPeering',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusters = registerOutput<List<String>>('clusters');
     identifier = registerOutput<String>('identifier');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<ClusterPeeringTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterPeeringTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ClusterPeeringTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPeeringTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     witnessRegion = registerOutput<String>('witnessRegion');
   }
 }

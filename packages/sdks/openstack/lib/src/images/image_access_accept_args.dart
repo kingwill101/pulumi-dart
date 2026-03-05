@@ -9,17 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageAccessAcceptArgs {
   /// The proposed image ID.
   final pulumi.Input<String> imageId;
-
   /// The member ID, e.g. the target project ID. Optional
   /// for admin accounts. Defaults to the current scope project ID.
   final pulumi.Input<String>? memberId;
-
   /// The region in which to obtain the V2 Glance client.
   /// A Glance client is needed to manage Image memberships. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// membership.
   final pulumi.Input<String>? region;
-
   /// The membership proposal status. Can either be
   /// `accepted`, `rejected` or `pending`.
   final pulumi.Input<String> status;
@@ -48,17 +45,10 @@ class ImageAccessAcceptArgs {
   factory ImageAccessAcceptArgs.fromMap(Map<String, dynamic> map) {
     return ImageAccessAcceptArgs(
       imageId: pulumi.Input.fromValue(map['imageId'] as String),
-      memberId: (() {
-        final guardedValue = map['memberId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      memberId: (() { final guardedValue = map['memberId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

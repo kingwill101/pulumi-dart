@@ -198,25 +198,18 @@ import 'schedule_association_property_response.dart';
 class JobSchedule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the id of job schedule.
   late final pulumi.Output<String?> jobScheduleId;
-
   /// Gets the name of the variable.
   late final pulumi.Output<String> name;
-
   /// Gets or sets the parameters of the job schedule.
   late final pulumi.Output<Map<String, String>?> parameters;
-
   /// Gets or sets the hybrid worker group that the scheduled job should run on.
   late final pulumi.Output<String?> runOn;
-
   /// Gets or sets the runbook.
   late final pulumi.Output<RunbookAssociationPropertyResponse?> runbook;
-
   /// Gets or sets the schedule.
   late final pulumi.Output<ScheduleAssociationPropertyResponse?> schedule;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -229,36 +222,18 @@ class JobSchedule extends pulumi.CustomResource {
     JobScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:automation:JobSchedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:automation:JobSchedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     jobScheduleId = registerOutput<String?>('jobScheduleId');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     runOn = registerOutput<String?>('runOn');
-    runbook = registerOutput<RunbookAssociationPropertyResponse?>(
-      'runbook',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RunbookAssociationPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    schedule = registerOutput<ScheduleAssociationPropertyResponse?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduleAssociationPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    runbook = registerOutput<RunbookAssociationPropertyResponse?>('runbook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunbookAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schedule = registerOutput<ScheduleAssociationPropertyResponse?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

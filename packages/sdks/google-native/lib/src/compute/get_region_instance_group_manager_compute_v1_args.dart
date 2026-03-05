@@ -29,19 +29,12 @@ class GetRegionInstanceGroupManagerComputeV1Args {
     };
   }
 
-  factory GetRegionInstanceGroupManagerComputeV1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionInstanceGroupManagerComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupManagerComputeV1Args(
-      instanceGroupManager: pulumi.Input.fromValue(
-        map['instanceGroupManager'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceGroupManager: pulumi.Input.fromValue(map['instanceGroupManager'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

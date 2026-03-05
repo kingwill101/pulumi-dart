@@ -358,10 +358,8 @@ import 'route_map_state.dart';
 class RouteMap extends pulumi.CustomResource {
   /// The name which should be used for this Route Map. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A `rule` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
-
   /// The resource ID of the Virtual Hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualHubId;
 
@@ -374,11 +372,11 @@ class RouteMap extends pulumi.CustomResource {
     RouteMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/routeMap:RouteMap',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/routeMap:RouteMap',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
     virtualHubId = registerOutput<String>('virtualHubId');
@@ -402,11 +400,11 @@ class RouteMap extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/routeMap:RouteMap',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/routeMap:RouteMap',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
     virtualHubId = registerOutput<String>('virtualHubId');

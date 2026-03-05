@@ -7,17 +7,13 @@ enum EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType {
   const EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType(this.wireValue);
   final String wireValue;
 
-  static EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType fromValue(
-    String value,
-  ) {
-    for (final item
-        in EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType.values) {
+  static EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType fromValue(String value) {
+    for (final item in EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType value: $value',
-    );
+    throw ArgumentError('Unknown EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType value: $value');
   }
 }
+

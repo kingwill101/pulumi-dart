@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayEndpointRouteTableAttachmentArgs {
   /// The ID of the gateway endpoint instance to which you want to associate the route table.
   final pulumi.Input<String> gatewayEndpointId;
-
   /// Routing table ID.
   final pulumi.Input<String> routeTableId;
 
@@ -28,14 +27,11 @@ class GatewayEndpointRouteTableAttachmentArgs {
     };
   }
 
-  factory GatewayEndpointRouteTableAttachmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GatewayEndpointRouteTableAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GatewayEndpointRouteTableAttachmentArgs(
-      gatewayEndpointId: pulumi.Input.fromValue(
-        map['gatewayEndpointId'] as String,
-      ),
+      gatewayEndpointId: pulumi.Input.fromValue(map['gatewayEndpointId'] as String),
       routeTableId: pulumi.Input.fromValue(map['routeTableId'] as String),
     );
   }
 }
+

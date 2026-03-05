@@ -409,32 +409,23 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// Access permissions string used for this user. See [Specifying Permissions Using an Access String](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html#Access-string) for more details.
   late final pulumi.Output<String> accessString;
-
   /// The ARN of the created ElastiCache User.
   late final pulumi.Output<String> arn;
-
   /// Denotes the user's authentication properties. Detailed below.
   late final pulumi.Output<UserAuthenticationMode> authenticationMode;
-
   /// The current supported values are `redis`, `valkey` (case insensitive).
   late final pulumi.Output<String> engine;
-
   /// Indicates a password is not required for this user.
   late final pulumi.Output<bool?> noPasswordRequired;
-
   /// Passwords used for this user. You can create up to two passwords for each user.
   late final pulumi.Output<List<String>?> passwords;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A list of tags to be added to this resource. A tag is a key-value pair.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The ID of the user.
   late final pulumi.Output<String> userId;
-
   /// The username of the user.
   ///
   /// The following arguments are optional:
@@ -444,25 +435,19 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_elasticache_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:elasticache/user:User',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  User(
+    String name, {
+    UserArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:elasticache/user:User',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessString = registerOutput<String>('accessString');
     arn = registerOutput<String>('arn');
-    authenticationMode = registerOutput<UserAuthenticationMode>(
-      'authenticationMode',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserAuthenticationMode.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authenticationMode = registerOutput<UserAuthenticationMode>('authenticationMode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAuthenticationMode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     engine = registerOutput<String>('engine');
     noPasswordRequired = registerOutput<bool?>('noPasswordRequired');
     passwords = registerOutput<List<String>?>('passwords');
@@ -474,7 +459,11 @@ class User extends pulumi.CustomResource {
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
+  static User get(
+    String name,
+    pulumi.Input<String> id, {
+    UserState? state,
+  }) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -487,23 +476,14 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elasticache/user:User',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:elasticache/user:User',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessString = registerOutput<String>('accessString');
     arn = registerOutput<String>('arn');
-    authenticationMode = registerOutput<UserAuthenticationMode>(
-      'authenticationMode',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserAuthenticationMode.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authenticationMode = registerOutput<UserAuthenticationMode>('authenticationMode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAuthenticationMode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     engine = registerOutput<String>('engine');
     noPasswordRequired = registerOutput<bool?>('noPasswordRequired');
     passwords = registerOutput<List<String>?>('passwords');

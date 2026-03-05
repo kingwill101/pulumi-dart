@@ -25,9 +25,7 @@ class GetDataSetColumnGroupGeoSpatialColumnGroup {
     };
   }
 
-  factory GetDataSetColumnGroupGeoSpatialColumnGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataSetColumnGroupGeoSpatialColumnGroup.fromMap(Map<String, dynamic> map) {
     return GetDataSetColumnGroupGeoSpatialColumnGroup(
       columns: pulumi.Input.fromValue((map['columns'] as List).cast<String>()),
       countryCode: pulumi.Input.fromValue(map['countryCode'] as String),
@@ -35,3 +33,4 @@ class GetDataSetColumnGroupGeoSpatialColumnGroup {
     );
   }
 }
+

@@ -9,60 +9,42 @@ import 'system_data_response.dart';
 class GetIacProfileResult {
   /// Determines the authorization status of requests.
   final String authStatus;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Repository Branch Name
   final String? branchName;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The status of the Pull Request submitted against the users repository.
   final String prStatus;
-
   /// The number associated with the submitted pull request.
   final int pullNumber;
-
   /// Repository Main Branch
   final String? repositoryMainBranch;
-
   /// Repository Name
   final String? repositoryName;
-
   /// Repository Owner
   final String? repositoryOwner;
   final List<StagePropertiesResponse>? stages;
-
   /// Terraform Storage Account Name
   final String? storageAccountName;
-
   /// Terraform Storage Account Resource Group
   final String? storageAccountResourceGroup;
-
   /// Terraform Storage Account Subscription
   final String? storageAccountSubscription;
-
   /// Terraform Container Name
   final String? storageContainerName;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
   final List<IacTemplatePropertiesResponse>? templates;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -126,28 +108,14 @@ class GetIacProfileResult {
       'repositoryMainBranch': ?repositoryMainBranch,
       'repositoryName': ?repositoryName,
       'repositoryOwner': ?repositoryOwner,
-      'stages': ?(() {
-        final guardedValue = stages;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          StagePropertiesResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'stages': ?(() { final guardedValue = stages; if (guardedValue == null) return null; return pulumi.Input.encodeList<StagePropertiesResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'storageAccountName': ?storageAccountName,
       'storageAccountResourceGroup': ?storageAccountResourceGroup,
       'storageAccountSubscription': ?storageAccountSubscription,
       'storageContainerName': ?storageContainerName,
       'systemData': systemData.toMap(),
       'tags': ?tags,
-      'templates': ?(() {
-        final guardedValue = templates;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          IacTemplatePropertiesResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'templates': ?(() { final guardedValue = templates; if (guardedValue == null) return null; return pulumi.Input.encodeList<IacTemplatePropertiesResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'type': type,
     };
   }
@@ -156,81 +124,26 @@ class GetIacProfileResult {
     return GetIacProfileResult(
       authStatus: map['authStatus'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      branchName: (() {
-        final guardedValue = map['branchName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      branchName: (() { final guardedValue = map['branchName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: map['etag'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       prStatus: map['prStatus'] as String,
       pullNumber: map['pullNumber'] as int,
-      repositoryMainBranch: (() {
-        final guardedValue = map['repositoryMainBranch'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      repositoryName: (() {
-        final guardedValue = map['repositoryName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      repositoryOwner: (() {
-        final guardedValue = map['repositoryOwner'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      stages: (() {
-        final guardedValue = map['stages'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<StagePropertiesResponse>(
-          guardedValue,
-          (value) => StagePropertiesResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      storageAccountName: (() {
-        final guardedValue = map['storageAccountName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      storageAccountResourceGroup: (() {
-        final guardedValue = map['storageAccountResourceGroup'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      storageAccountSubscription: (() {
-        final guardedValue = map['storageAccountSubscription'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      storageContainerName: (() {
-        final guardedValue = map['storageContainerName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      templates: (() {
-        final guardedValue = map['templates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<IacTemplatePropertiesResponse>(
-          guardedValue,
-          (value) => IacTemplatePropertiesResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      repositoryMainBranch: (() { final guardedValue = map['repositoryMainBranch']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      repositoryName: (() { final guardedValue = map['repositoryName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      repositoryOwner: (() { final guardedValue = map['repositoryOwner']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      stages: (() { final guardedValue = map['stages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<StagePropertiesResponse>(guardedValue, (value) => StagePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageAccountResourceGroup: (() { final guardedValue = map['storageAccountResourceGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageAccountSubscription: (() { final guardedValue = map['storageAccountSubscription']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageContainerName: (() { final guardedValue = map['storageContainerName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      templates: (() { final guardedValue = map['templates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<IacTemplatePropertiesResponse>(guardedValue, (value) => IacTemplatePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       type: map['type'] as String,
     );
   }
 }
+

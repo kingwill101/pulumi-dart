@@ -6,13 +6,10 @@ import 'network_virtual_appliance_connection_properties_response.dart';
 class GetNetworkVirtualApplianceConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String? id;
-
   /// The name of the resource.
   final String? name;
-
   /// Properties of the express route connection.
   final NetworkVirtualApplianceConnectionPropertiesResponse properties;
 
@@ -37,24 +34,13 @@ class GetNetworkVirtualApplianceConnectionResult {
     };
   }
 
-  factory GetNetworkVirtualApplianceConnectionResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkVirtualApplianceConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkVirtualApplianceConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      properties: NetworkVirtualApplianceConnectionPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: NetworkVirtualApplianceConnectionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

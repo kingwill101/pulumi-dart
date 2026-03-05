@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceSchedulingNodeAffinity {
   /// The key for the node affinity label.
   final pulumi.Input<String> key;
-
   /// The operator. Can be `IN` for node-affinities
   /// or `NOT_IN` for anti-affinities.
   final pulumi.Input<String> operator;
-
   /// The values for the node affinity label.
   final pulumi.Input<List<String>> values;
 
@@ -39,3 +37,4 @@ class InstanceSchedulingNodeAffinity {
     );
   }
 }
+

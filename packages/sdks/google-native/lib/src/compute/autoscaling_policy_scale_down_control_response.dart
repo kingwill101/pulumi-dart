@@ -7,7 +7,6 @@ import 'fixed_or_percent_response.dart';
 class AutoscalingPolicyScaleDownControlResponse {
   /// Maximum allowed number (or %) of VMs that can be deducted from the peak recommendation during the window autoscaler looks at when computing recommendations. Possibly all these VMs can be deleted at once so user service needs to be prepared to lose that many VMs in one step.
   final pulumi.Input<FixedOrPercentResponse> maxScaledDownReplicas;
-
   /// How far back autoscaling looks when computing recommendations to include directives regarding slower scale in, as described above.
   final pulumi.Input<int> timeWindowSec;
 
@@ -21,25 +20,16 @@ class AutoscalingPolicyScaleDownControlResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxScaledDownReplicas':
-          pulumi.Input.mapInputValue<
-            FixedOrPercentResponse,
-            Map<String, dynamic>
-          >(maxScaledDownReplicas, (value) => value.toMap()),
+      'maxScaledDownReplicas': pulumi.Input.mapInputValue<FixedOrPercentResponse, Map<String, dynamic>>(maxScaledDownReplicas, (value) => value.toMap()),
       'timeWindowSec': timeWindowSec,
     };
   }
 
-  factory AutoscalingPolicyScaleDownControlResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutoscalingPolicyScaleDownControlResponse.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyScaleDownControlResponse(
-      maxScaledDownReplicas: pulumi.Input.fromValue(
-        FixedOrPercentResponse.fromMap(
-          (map['maxScaledDownReplicas']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      maxScaledDownReplicas: pulumi.Input.fromValue(FixedOrPercentResponse.fromMap((map['maxScaledDownReplicas']! as Map).cast<String, dynamic>())),
       timeWindowSec: pulumi.Input.fromValue(map['timeWindowSec'] as int),
     );
   }
 }
+

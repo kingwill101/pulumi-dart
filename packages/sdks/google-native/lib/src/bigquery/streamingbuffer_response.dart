@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StreamingbufferResponse {
   /// A lower-bound estimate of the number of bytes currently in the streaming buffer.
   final pulumi.Input<String> estimatedBytes;
-
   /// A lower-bound estimate of the number of rows currently in the streaming buffer.
   final pulumi.Input<String> estimatedRows;
-
   /// Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
   final pulumi.Input<String> oldestEntryTime;
 
@@ -38,3 +36,4 @@ class StreamingbufferResponse {
     );
   }
 }
+

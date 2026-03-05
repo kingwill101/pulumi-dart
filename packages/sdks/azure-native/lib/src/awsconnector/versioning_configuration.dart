@@ -9,19 +9,20 @@ class VersioningConfiguration {
 
   /// Creates a new [VersioningConfiguration].
   /// [status] The versioning state of the bucket.
-  VersioningConfiguration({this.status});
+  VersioningConfiguration({
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': ?status};
+    return <String, dynamic>{
+      'status': ?status,
+    };
   }
 
   factory VersioningConfiguration.fromMap(Map<String, dynamic> map) {
     return VersioningConfiguration(
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -10,38 +10,29 @@ import 'console_create_properties.dart';
 class ConsoleArgs {
   /// The name of the console
   final pulumi.Input<String>? consoleName;
-
   /// Cloud shell properties for creating a console.
   final pulumi.Input<ConsoleCreateProperties> properties;
 
   /// Creates a new [ConsoleArgs].
   /// [consoleName] The name of the console
   /// [properties] Cloud shell properties for creating a console.
-  ConsoleArgs({this.consoleName, required this.properties});
+  ConsoleArgs({
+    this.consoleName,
+    required this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'consoleName': ?consoleName,
-      'properties':
-          pulumi.Input.mapInputValue<
-            ConsoleCreateProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<ConsoleCreateProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory ConsoleArgs.fromMap(Map<String, dynamic> map) {
     return ConsoleArgs(
-      consoleName: (() {
-        final guardedValue = map['consoleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: pulumi.Input.fromValue(
-        ConsoleCreateProperties.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      consoleName: (() { final guardedValue = map['consoleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: pulumi.Input.fromValue(ConsoleCreateProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

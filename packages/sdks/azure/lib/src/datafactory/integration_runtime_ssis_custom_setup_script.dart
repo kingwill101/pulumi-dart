@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationRuntimeSsisCustomSetupScript {
   /// The blob endpoint for the container which contains a custom setup script that will be run on every node on startup. See [https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup) for more information.
   final pulumi.Input<String> blobContainerUri;
-
   /// A container SAS token that gives access to the files. See [https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup) for more information.
   final pulumi.Input<String> sasToken;
 
@@ -24,14 +23,11 @@ class IntegrationRuntimeSsisCustomSetupScript {
     };
   }
 
-  factory IntegrationRuntimeSsisCustomSetupScript.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IntegrationRuntimeSsisCustomSetupScript.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisCustomSetupScript(
-      blobContainerUri: pulumi.Input.fromValue(
-        map['blobContainerUri'] as String,
-      ),
+      blobContainerUri: pulumi.Input.fromValue(map['blobContainerUri'] as String),
       sasToken: pulumi.Input.fromValue(map['sasToken'] as String),
     );
   }
 }
+

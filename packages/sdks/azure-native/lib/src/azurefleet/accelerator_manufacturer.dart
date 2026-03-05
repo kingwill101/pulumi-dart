@@ -16,3 +16,4 @@ enum AcceleratorManufacturer {
     throw ArgumentError('Unknown AcceleratorManufacturer value: $value');
   }
 }
+

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerGroupFirewallRuleArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// The end IP address of the cluster firewall rule. Must be IPv4 format.
   final pulumi.Input<String> endIpAddress;
-
   /// The name of the cluster firewall rule.
   final pulumi.Input<String>? firewallRuleName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The start IP address of the cluster firewall rule. Must be IPv4 format.
   final pulumi.Input<String> startIpAddress;
 
@@ -50,15 +46,10 @@ class ServerGroupFirewallRuleArgs {
     return ServerGroupFirewallRuleArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       endIpAddress: pulumi.Input.fromValue(map['endIpAddress'] as String),
-      firewallRuleName: (() {
-        final guardedValue = map['firewallRuleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      firewallRuleName: (() { final guardedValue = map['firewallRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       startIpAddress: pulumi.Input.fromValue(map['startIpAddress'] as String),
     );
   }
 }
+

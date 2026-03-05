@@ -7,13 +7,10 @@ import 'linux_web_app_slot_logs_http_logs.dart';
 class LinuxWebAppSlotLogs {
   /// A `application_logs` block as defined above.
   final pulumi.Input<LinuxWebAppSlotLogsApplicationLogs>? applicationLogs;
-
   /// Should detailed error messages be enabled?
   final pulumi.Input<bool>? detailedErrorMessages;
-
   /// Should the failed request tracing be enabled?
   final pulumi.Input<bool>? failedRequestTracing;
-
   /// An `http_logs` block as defined above.
   final pulumi.Input<LinuxWebAppSlotLogsHttpLogs>? httpLogs;
 
@@ -31,51 +28,20 @@ class LinuxWebAppSlotLogs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationLogs':
-          ?pulumi.Input.mapOptionalInputValue<
-            LinuxWebAppSlotLogsApplicationLogs,
-            Map<String, dynamic>
-          >(applicationLogs, (value) => value.toMap()),
+      'applicationLogs': ?pulumi.Input.mapOptionalInputValue<LinuxWebAppSlotLogsApplicationLogs, Map<String, dynamic>>(applicationLogs, (value) => value.toMap()),
       'detailedErrorMessages': ?detailedErrorMessages,
       'failedRequestTracing': ?failedRequestTracing,
-      'httpLogs':
-          ?pulumi.Input.mapOptionalInputValue<
-            LinuxWebAppSlotLogsHttpLogs,
-            Map<String, dynamic>
-          >(httpLogs, (value) => value.toMap()),
+      'httpLogs': ?pulumi.Input.mapOptionalInputValue<LinuxWebAppSlotLogsHttpLogs, Map<String, dynamic>>(httpLogs, (value) => value.toMap()),
     };
   }
 
   factory LinuxWebAppSlotLogs.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSlotLogs(
-      applicationLogs: (() {
-        final guardedValue = map['applicationLogs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LinuxWebAppSlotLogsApplicationLogs.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      detailedErrorMessages: (() {
-        final guardedValue = map['detailedErrorMessages'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      failedRequestTracing: (() {
-        final guardedValue = map['failedRequestTracing'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      httpLogs: (() {
-        final guardedValue = map['httpLogs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LinuxWebAppSlotLogsHttpLogs.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      applicationLogs: (() { final guardedValue = map['applicationLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinuxWebAppSlotLogsApplicationLogs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      detailedErrorMessages: (() { final guardedValue = map['detailedErrorMessages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      failedRequestTracing: (() { final guardedValue = map['failedRequestTracing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      httpLogs: (() { final guardedValue = map['httpLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinuxWebAppSlotLogsHttpLogs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

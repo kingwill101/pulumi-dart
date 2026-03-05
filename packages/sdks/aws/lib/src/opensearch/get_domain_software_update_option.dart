@@ -8,7 +8,9 @@ class GetDomainSoftwareUpdateOption {
 
   /// Creates a new [GetDomainSoftwareUpdateOption].
   /// [autoSoftwareUpdateEnabled] Enabled or disabled.
-  GetDomainSoftwareUpdateOption({required this.autoSoftwareUpdateEnabled});
+  GetDomainSoftwareUpdateOption({
+    required this.autoSoftwareUpdateEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,9 +20,8 @@ class GetDomainSoftwareUpdateOption {
 
   factory GetDomainSoftwareUpdateOption.fromMap(Map<String, dynamic> map) {
     return GetDomainSoftwareUpdateOption(
-      autoSoftwareUpdateEnabled: pulumi.Input.fromValue(
-        map['autoSoftwareUpdateEnabled'] as bool,
-      ),
+      autoSoftwareUpdateEnabled: pulumi.Input.fromValue(map['autoSoftwareUpdateEnabled'] as bool),
     );
   }
 }
+

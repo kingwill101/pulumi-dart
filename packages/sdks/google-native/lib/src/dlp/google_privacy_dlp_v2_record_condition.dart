@@ -10,29 +10,20 @@ class GooglePrivacyDlpV2RecordCondition {
 
   /// Creates a new [GooglePrivacyDlpV2RecordCondition].
   /// [expressions] An expression.
-  GooglePrivacyDlpV2RecordCondition({this.expressions});
+  GooglePrivacyDlpV2RecordCondition({
+    this.expressions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expressions':
-          ?pulumi.Input.mapOptionalInputValue<
-            GooglePrivacyDlpV2Expressions,
-            Map<String, dynamic>
-          >(expressions, (value) => value.toMap()),
+      'expressions': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2Expressions, Map<String, dynamic>>(expressions, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2RecordCondition.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2RecordCondition(
-      expressions: (() {
-        final guardedValue = map['expressions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GooglePrivacyDlpV2Expressions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      expressions: (() { final guardedValue = map['expressions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GooglePrivacyDlpV2Expressions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

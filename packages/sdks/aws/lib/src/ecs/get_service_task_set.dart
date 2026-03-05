@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceTaskSet {
   /// ARN of the task set
   final pulumi.Input<String> arn;
-
   /// Time when task set was created (RFC3339 format)
   final pulumi.Input<String> createdAt;
-
   /// Task set ID
   final pulumi.Input<String> id;
-
   /// Number of pending tasks
   final pulumi.Input<int> pendingCount;
-
   /// Number of running tasks
   final pulumi.Input<int> runningCount;
-
   /// Stability status of the task set
   final pulumi.Input<String> stabilityStatus;
-
   /// Task set status
   final pulumi.Input<String> status;
-
   /// Task definition ARN
   final pulumi.Input<String> taskDefinition;
-
   /// Time when task set was last updated (RFC3339 format)
   final pulumi.Input<String> updatedAt;
 
@@ -80,3 +72,4 @@ class GetServiceTaskSet {
     );
   }
 }
+

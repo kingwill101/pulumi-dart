@@ -9,17 +9,13 @@ enum GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType {
   const GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType.values) {
+  static GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType fromValue(String value) {
+    for (final item in GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType value: $value');
   }
 }
+

@@ -9,10 +9,14 @@ class OtlpReceiver {
 
   /// Creates a new [OtlpReceiver].
   /// [endpoint] OTLP GRPC endpoint definition. Example: 0.0.0.0:&lt;port&gt;.
-  OtlpReceiver({required this.endpoint});
+  OtlpReceiver({
+    required this.endpoint,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'endpoint': endpoint};
+    return <String, dynamic>{
+      'endpoint': endpoint,
+    };
   }
 
   factory OtlpReceiver.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class OtlpReceiver {
     );
   }
 }
+

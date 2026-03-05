@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb {
   /// Maximum.
   final pulumi.Input<double> max;
-
   /// Minimum.
   final pulumi.Input<double> min;
 
@@ -18,15 +17,17 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotal
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': max, 'min': min};
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb.fromMap(Map<String, dynamic> map) {
     return GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb(
       max: pulumi.Input.fromValue(map['max'] as double),
       min: pulumi.Input.fromValue(map['min'] as double),
     );
   }
 }
+

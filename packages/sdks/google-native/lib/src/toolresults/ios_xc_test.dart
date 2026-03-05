@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IosXcTest {
   /// Bundle ID of the app.
   final pulumi.Input<String>? bundleId;
-
   /// Xcode version that the test was run with.
   final pulumi.Input<String>? xcodeVersion;
 
   /// Creates a new [IosXcTest].
   /// [bundleId] Bundle ID of the app.
   /// [xcodeVersion] Xcode version that the test was run with.
-  IosXcTest({this.bundleId, this.xcodeVersion});
+  IosXcTest({
+    this.bundleId,
+    this.xcodeVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class IosXcTest {
 
   factory IosXcTest.fromMap(Map<String, dynamic> map) {
     return IosXcTest(
-      bundleId: (() {
-        final guardedValue = map['bundleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      xcodeVersion: (() {
-        final guardedValue = map['xcodeVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bundleId: (() { final guardedValue = map['bundleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      xcodeVersion: (() { final guardedValue = map['xcodeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

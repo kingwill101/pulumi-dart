@@ -6,20 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MachineReferenceWithHintsResponse {
   /// Last known display name.
   final pulumi.Input<String> displayNameHint;
-
   /// Resource URI.
   final pulumi.Input<String> id;
-
   /// Specifies the sub-class of the reference.
   /// Expected value is 'ref:machinewithhints'.
   final pulumi.Input<String> kind;
-
   /// Resource name.
   final pulumi.Input<String> name;
-
   /// Last known operating system family.
   final pulumi.Input<String> osFamilyHint;
-
   /// Resource type qualifier.
   final pulumi.Input<String> type;
 
@@ -61,3 +56,4 @@ class MachineReferenceWithHintsResponse {
     );
   }
 }
+

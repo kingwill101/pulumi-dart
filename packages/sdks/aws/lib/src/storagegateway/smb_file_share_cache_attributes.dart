@@ -10,7 +10,9 @@ class SmbFileShareCacheAttributes {
 
   /// Creates a new [SmbFileShareCacheAttributes].
   /// [cacheStaleTimeoutInSeconds] Refreshes a file share's cache by using Time To Live (TTL).
-  SmbFileShareCacheAttributes({this.cacheStaleTimeoutInSeconds});
+  SmbFileShareCacheAttributes({
+    this.cacheStaleTimeoutInSeconds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,11 +22,8 @@ class SmbFileShareCacheAttributes {
 
   factory SmbFileShareCacheAttributes.fromMap(Map<String, dynamic> map) {
     return SmbFileShareCacheAttributes(
-      cacheStaleTimeoutInSeconds: (() {
-        final guardedValue = map['cacheStaleTimeoutInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      cacheStaleTimeoutInSeconds: (() { final guardedValue = map['cacheStaleTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

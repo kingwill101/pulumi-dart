@@ -14,8 +14,7 @@ enum DeploymentTargetsAccountFilterType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DeploymentTargetsAccountFilterType value: $value',
-    );
+    throw ArgumentError('Unknown DeploymentTargetsAccountFilterType value: $value');
   }
 }
+

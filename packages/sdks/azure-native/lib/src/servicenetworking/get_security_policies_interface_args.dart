@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityPoliciesInterfaceArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// SecurityPolicy
   final pulumi.Input<String> securityPolicyName;
-
   /// traffic controller name for path
   final pulumi.Input<String> trafficControllerName;
 
@@ -36,15 +34,10 @@ class GetSecurityPoliciesInterfaceArgs {
 
   factory GetSecurityPoliciesInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityPoliciesInterfaceArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      securityPolicyName: pulumi.Input.fromValue(
-        map['securityPolicyName'] as String,
-      ),
-      trafficControllerName: pulumi.Input.fromValue(
-        map['trafficControllerName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      securityPolicyName: pulumi.Input.fromValue(map['securityPolicyName'] as String),
+      trafficControllerName: pulumi.Input.fromValue(map['trafficControllerName'] as String),
     );
   }
 }
+

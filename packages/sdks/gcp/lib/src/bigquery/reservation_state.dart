@@ -9,22 +9,17 @@ class ReservationState {
   /// The configuration parameters for the auto scaling feature.
   /// Structure is documented below.
   final pulumi.Input<ReservationAutoscale>? autoscale;
-
   /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
   final pulumi.Input<int>? concurrency;
-
   /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
   final pulumi.Input<String>? edition;
-
   /// If false, any query using this reservation will use idle slots from other reservations within
   /// the same admin project. If true, a query using this reservation will execute with the slot
   /// capacity specified above at most.
   final pulumi.Input<bool>? ignoreIdleSlots;
-
   /// The geographic location where the transfer config should reside.
   /// Examples: US, EU, asia-northeast1. The default value is US.
   final pulumi.Input<String>? location;
-
   /// The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
   /// (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
   /// more than the specified number of slots, even if there is demand and supply (from idle
@@ -58,23 +53,18 @@ class ReservationState {
   /// maxSlots to 0 and set scalingMode to SCALING_MODE_UNSPECIFIED to disable the maxSlots
   /// feature.
   final pulumi.Input<int>? maxSlots;
-
   /// The name of the reservation. This field must only contain alphanumeric characters or dash.
   final pulumi.Input<String>? name;
-
   /// The location where the reservation was originally created. This is set only during the
   /// failover reservation's creation. All billing charges for the failover reservation will be
   /// applied to this location.
   final pulumi.Input<String>? originalPrimaryLocation;
-
   /// The current location of the reservation's primary replica. This field is only set for
   /// reservations using the managed disaster recovery feature.
   final pulumi.Input<String>? primaryLocation;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The Disaster Recovery(DR) replication status of the reservation. This is only available for
   /// the primary replicas of DR/failover reservations and provides information about the both the
   /// staleness of the secondary and the last error encountered while trying to replicate changes
@@ -83,7 +73,6 @@ class ReservationState {
   /// operations on the reservation have succeeded.
   /// Structure is documented below.
   final pulumi.Input<List<ReservationReplicationStatus>>? replicationStatuses;
-
   /// The scaling mode for the reservation. If the field is present but maxSlots is not present,
   /// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
   /// Enum values:
@@ -118,13 +107,11 @@ class ReservationState {
   /// Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
   /// Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
   final pulumi.Input<String>? scalingMode;
-
   /// The current location of the reservation's secondary replica. This field is only set for
   /// reservations using the managed disaster recovery feature. Users can set this in create
   /// reservation calls to create a failover reservation or in update reservation calls to convert
   /// a non-failover reservation to a failover reservation(or vice versa).
   final pulumi.Input<String>? secondaryLocation;
-
   /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
   /// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
   final pulumi.Input<int>? slotCapacity;
@@ -163,11 +150,7 @@ class ReservationState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscale':
-          ?pulumi.Input.mapOptionalInputValue<
-            ReservationAutoscale,
-            Map<String, dynamic>
-          >(autoscale, (value) => value.toMap()),
+      'autoscale': ?pulumi.Input.mapOptionalInputValue<ReservationAutoscale, Map<String, dynamic>>(autoscale, (value) => value.toMap()),
       'concurrency': ?concurrency,
       'edition': ?edition,
       'ignoreIdleSlots': ?ignoreIdleSlots,
@@ -177,18 +160,7 @@ class ReservationState {
       'originalPrimaryLocation': ?originalPrimaryLocation,
       'primaryLocation': ?primaryLocation,
       'project': ?project,
-      'replicationStatuses':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ReservationReplicationStatus>,
-            List<Map<String, dynamic>>
-          >(
-            replicationStatuses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReservationReplicationStatus,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'replicationStatuses': ?pulumi.Input.mapOptionalInputValue<List<ReservationReplicationStatus>, List<Map<String, dynamic>>>(replicationStatuses, (value) => pulumi.Input.encodeList<ReservationReplicationStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scalingMode': ?scalingMode,
       'secondaryLocation': ?secondaryLocation,
       'slotCapacity': ?slotCapacity,
@@ -197,87 +169,21 @@ class ReservationState {
 
   factory ReservationState.fromMap(Map<String, dynamic> map) {
     return ReservationState(
-      autoscale: (() {
-        final guardedValue = map['autoscale'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ReservationAutoscale.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      concurrency: (() {
-        final guardedValue = map['concurrency'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      edition: (() {
-        final guardedValue = map['edition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ignoreIdleSlots: (() {
-        final guardedValue = map['ignoreIdleSlots'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxSlots: (() {
-        final guardedValue = map['maxSlots'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      originalPrimaryLocation: (() {
-        final guardedValue = map['originalPrimaryLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      primaryLocation: (() {
-        final guardedValue = map['primaryLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      replicationStatuses: (() {
-        final guardedValue = map['replicationStatuses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ReservationReplicationStatus>(
-            guardedValue,
-            (value) => ReservationReplicationStatus.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      scalingMode: (() {
-        final guardedValue = map['scalingMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryLocation: (() {
-        final guardedValue = map['secondaryLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      slotCapacity: (() {
-        final guardedValue = map['slotCapacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      autoscale: (() { final guardedValue = map['autoscale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReservationAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      concurrency: (() { final guardedValue = map['concurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ignoreIdleSlots: (() { final guardedValue = map['ignoreIdleSlots']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxSlots: (() { final guardedValue = map['maxSlots']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      originalPrimaryLocation: (() { final guardedValue = map['originalPrimaryLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      primaryLocation: (() { final guardedValue = map['primaryLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replicationStatuses: (() { final guardedValue = map['replicationStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReservationReplicationStatus>(guardedValue, (value) => ReservationReplicationStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      scalingMode: (() { final guardedValue = map['scalingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryLocation: (() { final guardedValue = map['secondaryLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      slotCapacity: (() { final guardedValue = map['slotCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

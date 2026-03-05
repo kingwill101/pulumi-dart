@@ -18,3 +18,4 @@ enum RouteNextHopType {
     throw ArgumentError('Unknown RouteNextHopType value: $value');
   }
 }
+

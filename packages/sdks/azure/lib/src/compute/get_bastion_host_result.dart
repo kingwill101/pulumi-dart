@@ -7,47 +7,33 @@ import 'get_bastion_host_ip_configuration.dart';
 class GetBastionHostResult {
   /// Is Copy/Paste feature enabled for the Bastion Host.
   final bool copyPasteEnabled;
-
   /// The FQDN for the Bastion Host.
   final String dnsName;
-
   /// Is File Copy feature enabled for the Bastion Host.
   final bool fileCopyEnabled;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A `ip_configuration` block as defined below.
   final List<GetBastionHostIpConfiguration> ipConfigurations;
-
   /// Is IP Connect feature enabled for the Bastion Host.
   final bool ipConnectEnabled;
-
   /// The Azure Region where the Bastion Host exists.
   final String location;
-
   /// The name of the IP configuration.
   final String name;
   final String resourceGroupName;
-
   /// The number of scale units provisioned for the Bastion Host.
   final int scaleUnits;
-
   /// Is Session Recording feature enabled for the Bastion Host.
   final bool sessionRecordingEnabled;
-
   /// Is Shareable Link feature enabled for the Bastion Host.
   final bool shareableLinkEnabled;
-
   /// The SKU of the Bastion Host.
   final String sku;
-
   /// A mapping of tags assigned to the Bastion Host.
   final Map<String, String> tags;
-
   /// Is Tunneling feature enabled for the Bastion Host.
   final bool tunnelingEnabled;
-
   /// A list of Availability Zones in which this Bastion Host is located.
   final List<String> zones;
 
@@ -93,11 +79,7 @@ class GetBastionHostResult {
       'dnsName': dnsName,
       'fileCopyEnabled': fileCopyEnabled,
       'id': id,
-      'ipConfigurations':
-          pulumi.Input.encodeList<
-            GetBastionHostIpConfiguration,
-            Map<String, dynamic>
-          >(ipConfigurations, (value) => value.toMap()),
+      'ipConfigurations': pulumi.Input.encodeList<GetBastionHostIpConfiguration, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
       'ipConnectEnabled': ipConnectEnabled,
       'location': location,
       'name': name,
@@ -118,12 +100,7 @@ class GetBastionHostResult {
       dnsName: map['dnsName'] as String,
       fileCopyEnabled: map['fileCopyEnabled'] as bool,
       id: map['id'] as String,
-      ipConfigurations: pulumi.Input.decodeList<GetBastionHostIpConfiguration>(
-        map['ipConfigurations']!,
-        (value) => GetBastionHostIpConfiguration.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      ipConfigurations: pulumi.Input.decodeList<GetBastionHostIpConfiguration>(map['ipConfigurations']!, (value) => GetBastionHostIpConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       ipConnectEnabled: map['ipConnectEnabled'] as bool,
       location: map['location'] as String,
       name: map['name'] as String,
@@ -138,3 +115,4 @@ class GetBastionHostResult {
     );
   }
 }
+

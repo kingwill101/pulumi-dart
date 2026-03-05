@@ -222,13 +222,10 @@ class FirewallRule extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
   late final pulumi.Output<String> endIpAddress;
-
   /// The name of the firewall rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The resource ID of the SQL Server on which to create the Firewall Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
-
   /// The starting IP address to allow through the firewall for this rule.
   late final pulumi.Output<String> startIpAddress;
 
@@ -241,11 +238,11 @@ class FirewallRule extends pulumi.CustomResource {
     FirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/firewallRule:FirewallRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/firewallRule:FirewallRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');
@@ -270,11 +267,11 @@ class FirewallRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/firewallRule:FirewallRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/firewallRule:FirewallRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');

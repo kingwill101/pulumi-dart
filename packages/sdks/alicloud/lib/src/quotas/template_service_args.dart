@@ -13,10 +13,14 @@ class TemplateServiceArgs {
 
   /// Creates a new [TemplateServiceArgs].
   /// [serviceStatus] Status of the quota template. Valid values:
-  TemplateServiceArgs({required this.serviceStatus});
+  TemplateServiceArgs({
+    required this.serviceStatus,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serviceStatus': serviceStatus};
+    return <String, dynamic>{
+      'serviceStatus': serviceStatus,
+    };
   }
 
   factory TemplateServiceArgs.fromMap(Map<String, dynamic> map) {
@@ -25,3 +29,4 @@ class TemplateServiceArgs {
     );
   }
 }
+

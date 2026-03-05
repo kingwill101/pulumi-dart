@@ -11,22 +11,16 @@ import 'billing_account_bucket_config_index_config.dart';
 class BillingAccountBucketConfigArgs {
   /// The parent resource that contains the logging bucket.
   final pulumi.Input<String> billingAccount;
-
   /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
   final pulumi.Input<String> bucketId;
-
   /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
   final pulumi.Input<BillingAccountBucketConfigCmekSettings>? cmekSettings;
-
   /// Describes this bucket.
   final pulumi.Input<String>? description;
-
   /// A list of indexed fields and related configuration data. Structure is documented below.
   final pulumi.Input<List<BillingAccountBucketConfigIndexConfig>>? indexConfigs;
-
   /// The location of the bucket.
   final pulumi.Input<String> location;
-
   /// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
   final pulumi.Input<int>? retentionDays;
 
@@ -52,24 +46,9 @@ class BillingAccountBucketConfigArgs {
     return <String, dynamic>{
       'billingAccount': billingAccount,
       'bucketId': bucketId,
-      'cmekSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            BillingAccountBucketConfigCmekSettings,
-            Map<String, dynamic>
-          >(cmekSettings, (value) => value.toMap()),
+      'cmekSettings': ?pulumi.Input.mapOptionalInputValue<BillingAccountBucketConfigCmekSettings, Map<String, dynamic>>(cmekSettings, (value) => value.toMap()),
       'description': ?description,
-      'indexConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BillingAccountBucketConfigIndexConfig>,
-            List<Map<String, dynamic>>
-          >(
-            indexConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BillingAccountBucketConfigIndexConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'indexConfigs': ?pulumi.Input.mapOptionalInputValue<List<BillingAccountBucketConfigIndexConfig>, List<Map<String, dynamic>>>(indexConfigs, (value) => pulumi.Input.encodeList<BillingAccountBucketConfigIndexConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': location,
       'retentionDays': ?retentionDays,
     };
@@ -79,38 +58,12 @@ class BillingAccountBucketConfigArgs {
     return BillingAccountBucketConfigArgs(
       billingAccount: pulumi.Input.fromValue(map['billingAccount'] as String),
       bucketId: pulumi.Input.fromValue(map['bucketId'] as String),
-      cmekSettings: (() {
-        final guardedValue = map['cmekSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BillingAccountBucketConfigCmekSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      indexConfigs: (() {
-        final guardedValue = map['indexConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BillingAccountBucketConfigIndexConfig>(
-            guardedValue,
-            (value) => BillingAccountBucketConfigIndexConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      cmekSettings: (() { final guardedValue = map['cmekSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BillingAccountBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      indexConfigs: (() { final guardedValue = map['indexConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BillingAccountBucketConfigIndexConfig>(guardedValue, (value) => BillingAccountBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      retentionDays: (() {
-        final guardedValue = map['retentionDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

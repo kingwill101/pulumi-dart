@@ -9,23 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduledSynchronizationSettingArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
-
   /// Kind of synchronization setting.
   /// Expected value is 'ScheduleBased'.
   final pulumi.Input<String> kind;
-
   /// Recurrence Interval
   final pulumi.Input<String> recurrenceInterval;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the share to add the synchronization setting to.
   final pulumi.Input<String> shareName;
-
   /// The name of the synchronizationSetting.
   final pulumi.Input<String>? synchronizationSettingName;
-
   /// Synchronization time
   final pulumi.Input<String> synchronizationTime;
 
@@ -59,27 +53,16 @@ class ScheduledSynchronizationSettingArgs {
     };
   }
 
-  factory ScheduledSynchronizationSettingArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScheduledSynchronizationSettingArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledSynchronizationSettingArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      recurrenceInterval: pulumi.Input.fromValue(
-        map['recurrenceInterval'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      recurrenceInterval: pulumi.Input.fromValue(map['recurrenceInterval'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       shareName: pulumi.Input.fromValue(map['shareName'] as String),
-      synchronizationSettingName: (() {
-        final guardedValue = map['synchronizationSettingName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      synchronizationTime: pulumi.Input.fromValue(
-        map['synchronizationTime'] as String,
-      ),
+      synchronizationSettingName: (() { final guardedValue = map['synchronizationSettingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      synchronizationTime: pulumi.Input.fromValue(map['synchronizationTime'] as String),
     );
   }
 }
+

@@ -199,29 +199,20 @@ import 'system_data_response.dart';
 class NamespaceTopicEventSubscription extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Information about the delivery configuration of the event subscription.
-  late final pulumi.Output<DeliveryConfigurationResponse?>
-  deliveryConfiguration;
-
+  late final pulumi.Output<DeliveryConfigurationResponse?> deliveryConfiguration;
   /// The event delivery schema for the event subscription.
   late final pulumi.Output<String?> eventDeliverySchema;
-
   /// Expiration time of the event subscription.
   late final pulumi.Output<String?> expirationTimeUtc;
-
   /// Information about the filter for the event subscription.
   late final pulumi.Output<FiltersConfigurationResponse?> filtersConfiguration;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the event subscription.
   late final pulumi.Output<String> provisioningState;
-
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -234,46 +225,19 @@ class NamespaceTopicEventSubscription extends pulumi.CustomResource {
     NamespaceTopicEventSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventgrid:NamespaceTopicEventSubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventgrid:NamespaceTopicEventSubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    deliveryConfiguration = registerOutput<DeliveryConfigurationResponse?>(
-      'deliveryConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeliveryConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deliveryConfiguration = registerOutput<DeliveryConfigurationResponse?>('deliveryConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeliveryConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
     expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
-    filtersConfiguration = registerOutput<FiltersConfigurationResponse?>(
-      'filtersConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FiltersConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    filtersConfiguration = registerOutput<FiltersConfigurationResponse?>('filtersConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FiltersConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

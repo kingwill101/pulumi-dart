@@ -488,13 +488,10 @@ class ManangementLock extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** `CanNotDelete` means authorized users are able to read and modify the resources, but not delete. `ReadOnly` means authorized users can only read from a resource, but they can't modify or delete it.
   late final pulumi.Output<String> lockLevel;
-
   /// Specifies the name of the Management Lock. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies some notes about the lock. Maximum of 512 characters. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> notes;
-
   /// Specifies the scope at which the Management Lock should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scope;
 
@@ -507,11 +504,11 @@ class ManangementLock extends pulumi.CustomResource {
     ManangementLockArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:managementresource/manangementLock:ManangementLock',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:managementresource/manangementLock:ManangementLock',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     lockLevel = registerOutput<String>('lockLevel');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');
@@ -536,11 +533,11 @@ class ManangementLock extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:managementresource/manangementLock:ManangementLock',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:managementresource/manangementLock:ManangementLock',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     lockLevel = registerOutput<String>('lockLevel');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');

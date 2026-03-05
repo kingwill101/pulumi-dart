@@ -16,3 +16,4 @@ enum SqlManagementMode {
     throw ArgumentError('Unknown SqlManagementMode value: $value');
   }
 }
+

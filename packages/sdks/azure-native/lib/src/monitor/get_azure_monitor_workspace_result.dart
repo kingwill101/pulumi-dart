@@ -10,44 +10,30 @@ import 'system_data_response.dart';
 class GetAzureMonitorWorkspaceResult {
   /// The immutable Id of the Azure Monitor Workspace. This property is read-only.
   final String accountId;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The Data Collection Rule and Endpoint used for ingestion by default.
-  final AzureMonitorWorkspaceResponseDefaultIngestionSettings
-  defaultIngestionSettings;
-
+  final AzureMonitorWorkspaceResponseDefaultIngestionSettings defaultIngestionSettings;
   /// Resource entity tag (ETag)
   final String etag;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// Properties related to the metrics container in the Azure Monitor Workspace
   final AzureMonitorWorkspaceResponseMetrics metrics;
-
   /// The name of the resource
   final String name;
-
   /// List of private endpoint connections
   final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
-
   /// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
   final String provisioningState;
-
   /// Gets or sets allow or disallow public network access to Azure Monitor Workspace
   final String? publicNetworkAccess;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -93,11 +79,7 @@ class GetAzureMonitorWorkspaceResult {
       'location': location,
       'metrics': metrics.toMap(),
       'name': name,
-      'privateEndpointConnections':
-          pulumi.Input.encodeList<
-            PrivateEndpointConnectionResponse,
-            Map<String, dynamic>
-          >(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'systemData': systemData.toMap(),
@@ -110,39 +92,19 @@ class GetAzureMonitorWorkspaceResult {
     return GetAzureMonitorWorkspaceResult(
       accountId: map['accountId'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      defaultIngestionSettings:
-          AzureMonitorWorkspaceResponseDefaultIngestionSettings.fromMap(
-            (map['defaultIngestionSettings']! as Map).cast<String, dynamic>(),
-          ),
+      defaultIngestionSettings: AzureMonitorWorkspaceResponseDefaultIngestionSettings.fromMap((map['defaultIngestionSettings']! as Map).cast<String, dynamic>()),
       etag: map['etag'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      metrics: AzureMonitorWorkspaceResponseMetrics.fromMap(
-        (map['metrics']! as Map).cast<String, dynamic>(),
-      ),
+      metrics: AzureMonitorWorkspaceResponseMetrics.fromMap((map['metrics']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      privateEndpointConnections:
-          pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
-            map['privateEndpointConnections']!,
-            (value) => PrivateEndpointConnectionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

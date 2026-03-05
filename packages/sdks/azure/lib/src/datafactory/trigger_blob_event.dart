@@ -414,39 +414,28 @@ import 'trigger_blob_event_state.dart';
 class TriggerBlobEvent extends pulumi.CustomResource {
   /// Specifies if the Data Factory Blob Event Trigger is activated. Defaults to `true`.
   late final pulumi.Output<bool?> activated;
-
   /// A map of additional properties to associate with the Data Factory Blob Event Trigger.
   late final pulumi.Output<Map<String, String>?> additionalProperties;
-
   /// List of tags that can be used for describing the Data Factory Blob Event Trigger.
   late final pulumi.Output<List<String>?> annotations;
-
   /// The pattern that blob path starts with for trigger to fire.
   late final pulumi.Output<String?> blobPathBeginsWith;
-
   /// The pattern that blob path ends with for trigger to fire.
   ///
   /// &gt; **Note:** At least one of `blob_path_begins_with` and `blob_path_ends_with` must be set.
   late final pulumi.Output<String?> blobPathEndsWith;
-
   /// The ID of Data Factory in which to associate the Trigger with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
-
   /// The description for the Data Factory Blob Event Trigger.
   late final pulumi.Output<String?> description;
-
   /// List of events that will fire this trigger. Possible values are `Microsoft.Storage.BlobCreated` and `Microsoft.Storage.BlobDeleted`.
   late final pulumi.Output<List<String>> events;
-
   /// are blobs with zero bytes ignored?
   late final pulumi.Output<bool?> ignoreEmptyBlobs;
-
   /// Specifies the name of the Data Factory Blob Event Trigger. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// One or more `pipeline` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> pipelines;
-
   /// The ID of Storage Account in which blob event will be listened. Changing this forces a new resource.
   late final pulumi.Output<String> storageAccountId;
 
@@ -459,15 +448,13 @@ class TriggerBlobEvent extends pulumi.CustomResource {
     TriggerBlobEventArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/triggerBlobEvent:TriggerBlobEvent',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datafactory/triggerBlobEvent:TriggerBlobEvent',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activated = registerOutput<bool?>('activated');
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     blobPathBeginsWith = registerOutput<String?>('blobPathBeginsWith');
     blobPathEndsWith = registerOutput<String?>('blobPathEndsWith');
@@ -498,15 +485,13 @@ class TriggerBlobEvent extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/triggerBlobEvent:TriggerBlobEvent',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datafactory/triggerBlobEvent:TriggerBlobEvent',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activated = registerOutput<bool?>('activated');
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     blobPathBeginsWith = registerOutput<String?>('blobPathBeginsWith');
     blobPathEndsWith = registerOutput<String?>('blobPathEndsWith');

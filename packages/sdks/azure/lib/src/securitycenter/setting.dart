@@ -121,7 +121,6 @@ import 'setting_state.dart';
 class Setting extends pulumi.CustomResource {
   /// Boolean flag to enable/disable data access.
   late final pulumi.Output<bool> enabled;
-
   /// The setting to manage. Possible values are `MCAS` , `WDATP`, `WDATP_EXCLUDE_LINUX_PUBLIC_PREVIEW`, `WDATP_UNIFIED_SOLUTION` and `Sentinel`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> settingName;
 
@@ -134,11 +133,11 @@ class Setting extends pulumi.CustomResource {
     SettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:securitycenter/setting:Setting',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:securitycenter/setting:Setting',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool>('enabled');
     settingName = registerOutput<String>('settingName');
   }
@@ -161,11 +160,11 @@ class Setting extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:securitycenter/setting:Setting',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:securitycenter/setting:Setting',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool>('enabled');
     settingName = registerOutput<String>('settingName');
   }

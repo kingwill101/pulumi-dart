@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListVpnServerConfigurationRadiusSecretsArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the VpnServerConfiguration.
   final pulumi.Input<String> vpnServerConfigurationName;
 
@@ -28,16 +27,11 @@ class ListVpnServerConfigurationRadiusSecretsArgs {
     };
   }
 
-  factory ListVpnServerConfigurationRadiusSecretsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListVpnServerConfigurationRadiusSecretsArgs.fromMap(Map<String, dynamic> map) {
     return ListVpnServerConfigurationRadiusSecretsArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      vpnServerConfigurationName: pulumi.Input.fromValue(
-        map['vpnServerConfigurationName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      vpnServerConfigurationName: pulumi.Input.fromValue(map['vpnServerConfigurationName'] as String),
     );
   }
 }
+

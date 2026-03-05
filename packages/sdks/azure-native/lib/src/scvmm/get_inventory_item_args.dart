@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInventoryItemArgs {
   /// Name of the inventoryItem.
   final pulumi.Input<String> inventoryItemName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the VMMServer.
   final pulumi.Input<String> vmmServerName;
 
@@ -36,13 +34,10 @@ class GetInventoryItemArgs {
 
   factory GetInventoryItemArgs.fromMap(Map<String, dynamic> map) {
     return GetInventoryItemArgs(
-      inventoryItemName: pulumi.Input.fromValue(
-        map['inventoryItemName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      inventoryItemName: pulumi.Input.fromValue(map['inventoryItemName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vmmServerName: pulumi.Input.fromValue(map['vmmServerName'] as String),
     );
   }
 }
+

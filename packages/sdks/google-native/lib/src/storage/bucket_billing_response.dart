@@ -9,10 +9,14 @@ class BucketBillingResponse {
 
   /// Creates a new [BucketBillingResponse].
   /// [requesterPays] When set to true, Requester Pays is enabled for this bucket.
-  BucketBillingResponse({required this.requesterPays});
+  BucketBillingResponse({
+    required this.requesterPays,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'requesterPays': requesterPays};
+    return <String, dynamic>{
+      'requesterPays': requesterPays,
+    };
   }
 
   factory BucketBillingResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class BucketBillingResponse {
     );
   }
 }
+

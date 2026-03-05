@@ -26,3 +26,4 @@ enum BudgetNotificationOperatorType {
     throw ArgumentError('Unknown BudgetNotificationOperatorType value: $value');
   }
 }
+

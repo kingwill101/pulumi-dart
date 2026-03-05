@@ -9,19 +9,20 @@ class CacheSku {
 
   /// Creates a new [CacheSku].
   /// [name] SKU name for this cache.
-  CacheSku({this.name});
+  CacheSku({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory CacheSku.fromMap(Map<String, dynamic> map) {
     return CacheSku(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

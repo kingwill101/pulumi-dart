@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInsightsAnalysisExplanationVpnGateway {
   /// ARN of the Network Insights Analysis.
   final pulumi.Input<String>? arn;
-
   /// ID of the Network Insights Analysis.
   final pulumi.Input<String>? id;
   final pulumi.Input<String>? name;
@@ -14,31 +13,26 @@ class NetworkInsightsAnalysisExplanationVpnGateway {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationVpnGateway({this.arn, this.id, this.name});
+  NetworkInsightsAnalysisExplanationVpnGateway({
+    this.arn,
+    this.id,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': ?arn, 'id': ?id, 'name': ?name};
+    return <String, dynamic>{
+      'arn': ?arn,
+      'id': ?id,
+      'name': ?name,
+    };
   }
 
-  factory NetworkInsightsAnalysisExplanationVpnGateway.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkInsightsAnalysisExplanationVpnGateway.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisExplanationVpnGateway(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

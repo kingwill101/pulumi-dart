@@ -6,7 +6,6 @@ import 'get_schedules_schedule.dart';
 /// Result data returned by getSchedules.
 class GetSchedulesResult {
   final String flowName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -45,11 +44,7 @@ class GetSchedulesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'schedules':
-          pulumi.Input.encodeList<GetSchedulesSchedule, Map<String, dynamic>>(
-            schedules,
-            (value) => value.toMap(),
-          ),
+      'schedules': pulumi.Input.encodeList<GetSchedulesSchedule, Map<String, dynamic>>(schedules, (value) => value.toMap()),
     };
   }
 
@@ -58,28 +53,12 @@ class GetSchedulesResult {
       flowName: map['flowName'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      limit: (() {
-        final guardedValue = map['limit'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      schedules: pulumi.Input.decodeList<GetSchedulesSchedule>(
-        map['schedules']!,
-        (value) => GetSchedulesSchedule.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      schedules: pulumi.Input.decodeList<GetSchedulesSchedule>(map['schedules']!, (value) => GetSchedulesSchedule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

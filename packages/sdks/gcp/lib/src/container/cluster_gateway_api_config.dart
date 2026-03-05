@@ -8,10 +8,14 @@ class ClusterGatewayApiConfig {
 
   /// Creates a new [ClusterGatewayApiConfig].
   /// [channel] Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
-  ClusterGatewayApiConfig({required this.channel});
+  ClusterGatewayApiConfig({
+    required this.channel,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'channel': channel};
+    return <String, dynamic>{
+      'channel': channel,
+    };
   }
 
   factory ClusterGatewayApiConfig.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class ClusterGatewayApiConfig {
     );
   }
 }
+

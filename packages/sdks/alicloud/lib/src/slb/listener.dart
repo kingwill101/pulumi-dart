@@ -538,7 +538,6 @@ class Listener extends pulumi.CustomResource {
   late final pulumi.Output<String?> stickySessionType;
   late final pulumi.Output<String?> tlsCipherPolicy;
   late final pulumi.Output<int?> unhealthyThreshold;
-
   /// Whether to set additional HTTP Header field "X-Forwarded-For".
   late final pulumi.Output<ListenerXForwardedFor> xForwardedFor;
 
@@ -551,11 +550,11 @@ class Listener extends pulumi.CustomResource {
     ListenerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:slb/listener:Listener',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:slb/listener:Listener',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclId = registerOutput<String>('aclId');
     aclIds = registerOutput<List<String>>('aclIds');
     aclStatus = registerOutput<String?>('aclStatus');
@@ -565,9 +564,7 @@ class Listener extends pulumi.CustomResource {
     caCertificateId = registerOutput<String?>('caCertificateId');
     cookie = registerOutput<String?>('cookie');
     cookieTimeout = registerOutput<int?>('cookieTimeout');
-    deleteProtectionValidation = registerOutput<bool?>(
-      'deleteProtectionValidation',
-    );
+    deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
     description = registerOutput<String?>('description');
     enableHttp2 = registerOutput<String?>('enableHttp2');
     establishedTimeout = registerOutput<int?>('establishedTimeout');
@@ -587,9 +584,7 @@ class Listener extends pulumi.CustomResource {
     idleTimeout = registerOutput<int?>('idleTimeout');
     listenerForward = registerOutput<String>('listenerForward');
     loadBalancerId = registerOutput<String>('loadBalancerId');
-    masterSlaveServerGroupId = registerOutput<String?>(
-      'masterSlaveServerGroupId',
-    );
+    masterSlaveServerGroupId = registerOutput<String?>('masterSlaveServerGroupId');
     persistenceTimeout = registerOutput<int?>('persistenceTimeout');
     protocol = registerOutput<String>('protocol');
     proxyProtocolV2Enabled = registerOutput<bool>('proxyProtocolV2Enabled');
@@ -602,16 +597,7 @@ class Listener extends pulumi.CustomResource {
     stickySessionType = registerOutput<String?>('stickySessionType');
     tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
     unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
-    xForwardedFor = registerOutput<ListenerXForwardedFor>(
-      'xForwardedFor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListenerXForwardedFor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    xForwardedFor = registerOutput<ListenerXForwardedFor>('xForwardedFor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListenerXForwardedFor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Listener] resource's state with the given [name] and [id].
@@ -632,11 +618,11 @@ class Listener extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:slb/listener:Listener',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:slb/listener:Listener',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclId = registerOutput<String>('aclId');
     aclIds = registerOutput<List<String>>('aclIds');
     aclStatus = registerOutput<String?>('aclStatus');
@@ -646,9 +632,7 @@ class Listener extends pulumi.CustomResource {
     caCertificateId = registerOutput<String?>('caCertificateId');
     cookie = registerOutput<String?>('cookie');
     cookieTimeout = registerOutput<int?>('cookieTimeout');
-    deleteProtectionValidation = registerOutput<bool?>(
-      'deleteProtectionValidation',
-    );
+    deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
     description = registerOutput<String?>('description');
     enableHttp2 = registerOutput<String?>('enableHttp2');
     establishedTimeout = registerOutput<int?>('establishedTimeout');
@@ -668,9 +652,7 @@ class Listener extends pulumi.CustomResource {
     idleTimeout = registerOutput<int?>('idleTimeout');
     listenerForward = registerOutput<String>('listenerForward');
     loadBalancerId = registerOutput<String>('loadBalancerId');
-    masterSlaveServerGroupId = registerOutput<String?>(
-      'masterSlaveServerGroupId',
-    );
+    masterSlaveServerGroupId = registerOutput<String?>('masterSlaveServerGroupId');
     persistenceTimeout = registerOutput<int?>('persistenceTimeout');
     protocol = registerOutput<String>('protocol');
     proxyProtocolV2Enabled = registerOutput<bool>('proxyProtocolV2Enabled');
@@ -683,15 +665,6 @@ class Listener extends pulumi.CustomResource {
     stickySessionType = registerOutput<String?>('stickySessionType');
     tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
     unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
-    xForwardedFor = registerOutput<ListenerXForwardedFor>(
-      'xForwardedFor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListenerXForwardedFor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    xForwardedFor = registerOutput<ListenerXForwardedFor>('xForwardedFor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListenerXForwardedFor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

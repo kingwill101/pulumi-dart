@@ -9,31 +9,20 @@ class VirtualGatewaySpecBackendDefaultsClientPolicy {
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicy].
   /// [tls] Transport Layer Security (TLS) client policy.
-  VirtualGatewaySpecBackendDefaultsClientPolicy({this.tls});
+  VirtualGatewaySpecBackendDefaultsClientPolicy({
+    this.tls,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'tls':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualGatewaySpecBackendDefaultsClientPolicyTls,
-            Map<String, dynamic>
-          >(tls, (value) => value.toMap()),
+      'tls': ?pulumi.Input.mapOptionalInputValue<VirtualGatewaySpecBackendDefaultsClientPolicyTls, Map<String, dynamic>>(tls, (value) => value.toMap()),
     };
   }
 
-  factory VirtualGatewaySpecBackendDefaultsClientPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualGatewaySpecBackendDefaultsClientPolicy.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecBackendDefaultsClientPolicy(
-      tls: (() {
-        final guardedValue = map['tls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualGatewaySpecBackendDefaultsClientPolicyTls.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualGatewaySpecBackendDefaultsClientPolicyTls.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

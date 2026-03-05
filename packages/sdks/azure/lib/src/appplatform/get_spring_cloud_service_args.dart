@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSpringCloudServiceArgs {
   /// Specifies The name of the Spring Cloud Service resource.
   final pulumi.Input<String> name;
-
   /// Specifies the name of the Resource Group where the Spring Cloud Service exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetSpringCloudServiceArgs {
   factory GetSpringCloudServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetSpringCloudServiceArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

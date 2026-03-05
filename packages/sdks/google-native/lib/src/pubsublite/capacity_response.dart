@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapacityResponse {
   /// Publish throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.
   final pulumi.Input<int> publishMibPerSec;
-
   /// Subscribe throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 32.
   final pulumi.Input<int> subscribeMibPerSec;
 
@@ -28,9 +27,8 @@ class CapacityResponse {
   factory CapacityResponse.fromMap(Map<String, dynamic> map) {
     return CapacityResponse(
       publishMibPerSec: pulumi.Input.fromValue(map['publishMibPerSec'] as int),
-      subscribeMibPerSec: pulumi.Input.fromValue(
-        map['subscribeMibPerSec'] as int,
-      ),
+      subscribeMibPerSec: pulumi.Input.fromValue(map['subscribeMibPerSec'] as int),
     );
   }
 }
+

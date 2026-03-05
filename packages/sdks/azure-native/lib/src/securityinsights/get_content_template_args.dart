@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContentTemplateArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// template Id
   final pulumi.Input<String> templateId;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -36,11 +34,10 @@ class GetContentTemplateArgs {
 
   factory GetContentTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetContentTemplateArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       templateId: pulumi.Input.fromValue(map['templateId'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

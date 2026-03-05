@@ -14,16 +14,15 @@ class ResourceProviderManifestPropertiesFeaturesRule {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'requiredFeaturesPolicy': requiredFeaturesPolicy};
+    return <String, dynamic>{
+      'requiredFeaturesPolicy': requiredFeaturesPolicy,
+    };
   }
 
-  factory ResourceProviderManifestPropertiesFeaturesRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceProviderManifestPropertiesFeaturesRule.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesFeaturesRule(
-      requiredFeaturesPolicy: pulumi.Input.fromValue(
-        map['requiredFeaturesPolicy'] as String,
-      ),
+      requiredFeaturesPolicy: pulumi.Input.fromValue(map['requiredFeaturesPolicy'] as String),
     );
   }
 }
+

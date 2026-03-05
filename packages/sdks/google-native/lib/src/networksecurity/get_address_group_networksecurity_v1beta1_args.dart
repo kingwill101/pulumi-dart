@@ -29,17 +29,12 @@ class GetAddressGroupNetworksecurityV1beta1Args {
     };
   }
 
-  factory GetAddressGroupNetworksecurityV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAddressGroupNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetAddressGroupNetworksecurityV1beta1Args(
       addressGroupId: pulumi.Input.fromValue(map['addressGroupId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

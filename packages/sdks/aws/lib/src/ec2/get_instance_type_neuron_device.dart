@@ -6,7 +6,6 @@ class GetInstanceTypeNeuronDevice {
   final pulumi.Input<int> coreCount;
   final pulumi.Input<int> coreVersion;
   final pulumi.Input<int> count;
-
   /// Size of the instance memory, in MiB.
   final pulumi.Input<int> memorySize;
   final pulumi.Input<String> name;
@@ -45,3 +44,4 @@ class GetInstanceTypeNeuronDevice {
     );
   }
 }
+

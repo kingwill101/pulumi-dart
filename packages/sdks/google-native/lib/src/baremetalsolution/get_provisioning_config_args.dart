@@ -32,14 +32,9 @@ class GetProvisioningConfigArgs {
   factory GetProvisioningConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetProvisioningConfigArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningConfigId: pulumi.Input.fromValue(
-        map['provisioningConfigId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningConfigId: pulumi.Input.fromValue(map['provisioningConfigId'] as String),
     );
   }
 }
+

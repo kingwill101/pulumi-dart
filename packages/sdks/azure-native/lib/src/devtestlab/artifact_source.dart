@@ -196,49 +196,34 @@ import 'artifact_source_args.dart';
 class ArtifactSource extends pulumi.CustomResource {
   /// The folder containing Azure Resource Manager templates.
   late final pulumi.Output<String?> armTemplateFolderPath;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The artifact source's branch reference.
   late final pulumi.Output<String?> branchRef;
-
   /// The artifact source's creation date.
   late final pulumi.Output<String> createdDate;
-
   /// The artifact source's display name.
   late final pulumi.Output<String?> displayName;
-
   /// The folder containing artifacts.
   late final pulumi.Output<String?> folderPath;
-
   /// The location of the resource.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The security token to authenticate to the artifact source.
   late final pulumi.Output<String?> securityToken;
-
   /// The artifact source's type.
   late final pulumi.Output<String?> sourceType;
-
   /// Indicates if the artifact source is enabled (values: Enabled, Disabled).
   late final pulumi.Output<String?> status;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
-
   /// The artifact source's URI.
   late final pulumi.Output<String?> uri;
 
@@ -251,11 +236,11 @@ class ArtifactSource extends pulumi.CustomResource {
     ArtifactSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devtestlab:ArtifactSource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:devtestlab:ArtifactSource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     armTemplateFolderPath = registerOutput<String?>('armTemplateFolderPath');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     branchRef = registerOutput<String?>('branchRef');

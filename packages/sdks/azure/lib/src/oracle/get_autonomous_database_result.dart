@@ -7,176 +7,119 @@ import 'get_autonomous_database_long_term_backup_schedule.dart';
 class GetAutonomousDatabaseResult {
   /// The current amount of storage in use for user and system data, in terabytes (TB).
   final double actualUsedDataStorageSizeInTbs;
-
   /// The amount of storage currently allocated for the database tables and billed for, rounded up. When auto-scaling is not enabled, this value is equal to the `dataStorageSizeInTBs` value. You can compare this value to the `actualUsedDataStorageSizeInTBs` value to determine if a manual shrink operation is appropriate for your allocated storage.
   final double allocatedStorageSizeInTbs;
-
   /// The client IP access control list (ACL). This feature is available for [Autonomous Database Serverless] (https://docs.oracle.com/en/cloud/paas/autonomous-database/index.html) and on Exadata Cloud@Customer. Only clients connecting from an IP address included in the ACL may access the Autonomous Database instance. If `arePrimaryWhitelistedIpsUsed` is 'TRUE' then Autonomous Database uses this primary's IP access control list (ACL) for the disaster recovery peer called `standbywhitelistedips`.
   final List<int> allowedIps;
-
   /// Indicates if auto scaling is enabled for the Autonomous Database CPU core count.
   final bool autoScalingEnabled;
-
   /// Indicates if auto scaling is enabled for the Autonomous Database storage.
   final bool autoScalingForStorageEnabled;
-
   /// The database [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
   final String autonomousDatabaseId;
-
   /// List of Oracle Database versions available for a database upgrade. If there are no version upgrades available, this list is empty.
   final List<String> availableUpgradeVersions;
-
   /// Retention period, in days, for backups.
   final int backupRetentionPeriodInDays;
-
   /// The character set for the autonomous database.
   final String characterSet;
-
   /// The compute amount (CPUs) available to the database.
   final double computeCount;
-
   /// The number of CPU cores to be made available to the database. When the ECPU is selected, the value for cpuCoreCount is 0. For Autonomous Database on Dedicated Exadata infrastructure, the maximum number of cores is determined by the infrastructure shape. See [Characteristics of Infrastructure Shapes](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/autonomous-database&id=ATPFG-GUID-B0F033C1-CC5A-42F0-B2E7-3CECFEDA1FD1) for shape details.
   final int cpuCoreCount;
-
   /// The quantity of data in the database, in gigabytes.
   final int dataStorageSizeInGbs;
-
   /// The maximum storage that can be allocated for the database, in terabytes.
   final int dataStorageSizeInTbs;
-
   /// The DB node storage size in, in gigabytes.
   final int dbNodeStorageSizeInGbs;
-
   /// A valid Oracle Database version for Autonomous Database.
   final String dbVersion;
-
   /// The user-friendly name for the Autonomous Database. The name does not have to be unique.
   final String displayName;
-
   /// Indicates the number of seconds of data loss for a Data Guard failover.
   final int failedDataRecoveryInSeconds;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The area assigned to In-Memory tables in Autonomous Database.
   final int inMemoryAreaInGbs;
-
   /// Information about the current lifecycle state.
   final String lifecycleDetails;
-
   /// Parameter that allows users to select an acceptable maximum data loss limit in seconds, up to which Automatic Failover will be triggered when necessary for a Local Autonomous Data Guard
   final int localAdgAutoFailoverMaxDataLossLimit;
-
   /// Indicates whether the Autonomous Database has local (in-region) Data Guard enabled. Not applicable to cross-region Autonomous Data Guard associations, or to Autonomous Databases using dedicated Exadata infrastructure or Exadata Cloud@Customer infrastructure.
   final bool localDataGuardEnabled;
-
   /// The Azure Region where the Autonomous Database exists.
   final String location;
-
   /// A `long_term_backup_schedule` block as defined below
-  final List<GetAutonomousDatabaseLongTermBackupSchedule>
-  longTermBackupSchedules;
-
+  final List<GetAutonomousDatabaseLongTermBackupSchedule> longTermBackupSchedules;
   /// The amount of memory (in GBs) enabled per ECPU or OCPU.
   final int memoryPerOracleComputeUnitInGbs;
-
   /// Specifies if the Autonomous Database requires mTLS connections.
   final bool mtlsConnectionRequired;
   final String name;
-
   /// The national character set for the autonomous database.  The default is AL16UTF16. Allowed values are: AL16UTF16 or UTF8.
   final String nationalCharacterSet;
-
   /// The date and time when the next long-term backup would be created.
   final String nextLongTermBackupTimeStamp;
-
   /// The URL of the resource in the OCI console.
   final String ociUrl;
-
   /// The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the autonomous database.
   final String ocid;
   final String peerDbId;
-
   /// The list of [OCIDs](https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of standby databases located in Autonomous Data Guard remote regions that are associated with the source database. Note that for Autonomous Database Serverless instances, standby databases located in the same region as the source primary database do not have OCIDs.
   final List<String> peerDbIds;
-
   /// Indicates if the Autonomous Database version is a preview version.
   final bool preview;
-
   /// Indicates if the Autonomous Database version is a preview version with service terms accepted.
   final bool previewVersionWithServiceTermsAccepted;
-
   /// The private endpoint for the resource.
   final String privateEndpoint;
-
   /// The private endpoint Ip address for the resource.
   final String privateEndpointIp;
-
   /// The private endpoint label for the resource.
   final String privateEndpointLabel;
-
   /// An array of CPU values that an Autonomous Database can be scaled to.
   final List<int> provisionableCpuses;
-
   /// Indicates whether the Autonomous Database has Cross Region Data Guard enabled. Not applicable to Autonomous Databases using dedicated Exadata infrastructure or Exadata Cloud@Customer infrastructure.
   final bool remoteDataGuardEnabled;
   final String resourceGroupName;
-
   /// The URL of the Service Console for the Autonomous Database.
   final String serviceConsoleUrl;
-
   /// The URL of the SQL web developer.
   final String sqlWebDeveloperUrl;
-
   /// The [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the subnet the resource is associated with.
   final String subnetId;
-
   /// The list of regions that support the creation of an Autonomous Database clone or an Autonomous Data Guard standby database.
   final List<String> supportedRegionsToCloneTos;
-
   /// A mapping of tags assigned to the Autonomous Database.
   final Map<String, String> tags;
-
   /// The date and time the Autonomous Database was created.
   final String timeCreated;
-
   /// The date and time the Autonomous Data Guard role was switched for the Autonomous Database. For databases that have standbys in both the primary Data Guard region and a remote Data Guard standby region, this is the latest timestamp of either the database using the "primary" role in the primary Data Guard region, or database located in the remote Data Guard standby region.
   final String timeDataGuardRoleChanged;
-
   /// The date and time the Always Free database will be automatically deleted because of inactivity. If the database is in the STOPPED state and without activity until this time, it will be deleted.
   final String timeDeletionOfFreeAutonomousDatabase;
-
   /// The date and time that Autonomous Data Guard was enabled for an Autonomous Database where the standby was provisioned in the same region as the primary database.
   final String timeLocalDataGuardEnabledOn;
-
   /// The date and time when maintenance will begin.
   final String timeMaintenanceBegin;
-
   /// The date and time when maintenance will end.
   final String timeMaintenanceEnd;
-
   /// The timestamp of the last failover operation.
   final String timeOfLastFailover;
-
   /// The date and time when last refresh happened.
   final String timeOfLastRefresh;
-
   /// The refresh point timestamp (UTC). The refresh point is the time to which the database was most recently refreshed. Data created after the refresh point is not included in the refresh.
   final String timeOfLastRefreshPoint;
-
   /// The timestamp of the last switchover operation for the Autonomous Database.
   final String timeOfLastSwitchover;
-
   /// The date and time the Always Free database will be stopped because of inactivity. If this time is reached without any database activity, the database will automatically be put into the STOPPED state.
   final String timeReclamationOfFreeAutonomousDatabase;
-
   /// The storage space consumed by Autonomous Database in GBs.
   final int usedDataStorageSizeInGbs;
-
   /// The amount of storage that has been used, in terabytes.
   final int usedDataStorageSizeInTbs;
-
   /// The ID to an Azure Resource Manager vnet resource.
   final String virtualNetworkId;
 
@@ -326,15 +269,10 @@ class GetAutonomousDatabaseResult {
       'id': id,
       'inMemoryAreaInGbs': inMemoryAreaInGbs,
       'lifecycleDetails': lifecycleDetails,
-      'localAdgAutoFailoverMaxDataLossLimit':
-          localAdgAutoFailoverMaxDataLossLimit,
+      'localAdgAutoFailoverMaxDataLossLimit': localAdgAutoFailoverMaxDataLossLimit,
       'localDataGuardEnabled': localDataGuardEnabled,
       'location': location,
-      'longTermBackupSchedules':
-          pulumi.Input.encodeList<
-            GetAutonomousDatabaseLongTermBackupSchedule,
-            Map<String, dynamic>
-          >(longTermBackupSchedules, (value) => value.toMap()),
+      'longTermBackupSchedules': pulumi.Input.encodeList<GetAutonomousDatabaseLongTermBackupSchedule, Map<String, dynamic>>(longTermBackupSchedules, (value) => value.toMap()),
       'memoryPerOracleComputeUnitInGbs': memoryPerOracleComputeUnitInGbs,
       'mtlsConnectionRequired': mtlsConnectionRequired,
       'name': name,
@@ -345,8 +283,7 @@ class GetAutonomousDatabaseResult {
       'peerDbId': peerDbId,
       'peerDbIds': peerDbIds,
       'preview': preview,
-      'previewVersionWithServiceTermsAccepted':
-          previewVersionWithServiceTermsAccepted,
+      'previewVersionWithServiceTermsAccepted': previewVersionWithServiceTermsAccepted,
       'privateEndpoint': privateEndpoint,
       'privateEndpointIp': privateEndpointIp,
       'privateEndpointLabel': privateEndpointLabel,
@@ -360,8 +297,7 @@ class GetAutonomousDatabaseResult {
       'tags': tags,
       'timeCreated': timeCreated,
       'timeDataGuardRoleChanged': timeDataGuardRoleChanged,
-      'timeDeletionOfFreeAutonomousDatabase':
-          timeDeletionOfFreeAutonomousDatabase,
+      'timeDeletionOfFreeAutonomousDatabase': timeDeletionOfFreeAutonomousDatabase,
       'timeLocalDataGuardEnabledOn': timeLocalDataGuardEnabledOn,
       'timeMaintenanceBegin': timeMaintenanceBegin,
       'timeMaintenanceEnd': timeMaintenanceEnd,
@@ -369,8 +305,7 @@ class GetAutonomousDatabaseResult {
       'timeOfLastRefresh': timeOfLastRefresh,
       'timeOfLastRefreshPoint': timeOfLastRefreshPoint,
       'timeOfLastSwitchover': timeOfLastSwitchover,
-      'timeReclamationOfFreeAutonomousDatabase':
-          timeReclamationOfFreeAutonomousDatabase,
+      'timeReclamationOfFreeAutonomousDatabase': timeReclamationOfFreeAutonomousDatabase,
       'usedDataStorageSizeInGbs': usedDataStorageSizeInGbs,
       'usedDataStorageSizeInTbs': usedDataStorageSizeInTbs,
       'virtualNetworkId': virtualNetworkId,
@@ -379,15 +314,13 @@ class GetAutonomousDatabaseResult {
 
   factory GetAutonomousDatabaseResult.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabaseResult(
-      actualUsedDataStorageSizeInTbs:
-          map['actualUsedDataStorageSizeInTbs'] as double,
+      actualUsedDataStorageSizeInTbs: map['actualUsedDataStorageSizeInTbs'] as double,
       allocatedStorageSizeInTbs: map['allocatedStorageSizeInTbs'] as double,
       allowedIps: (map['allowedIps'] as List).cast<int>(),
       autoScalingEnabled: map['autoScalingEnabled'] as bool,
       autoScalingForStorageEnabled: map['autoScalingForStorageEnabled'] as bool,
       autonomousDatabaseId: map['autonomousDatabaseId'] as String,
-      availableUpgradeVersions: (map['availableUpgradeVersions'] as List)
-          .cast<String>(),
+      availableUpgradeVersions: (map['availableUpgradeVersions'] as List).cast<String>(),
       backupRetentionPeriodInDays: map['backupRetentionPeriodInDays'] as int,
       characterSet: map['characterSet'] as String,
       computeCount: map['computeCount'] as double,
@@ -401,19 +334,11 @@ class GetAutonomousDatabaseResult {
       id: map['id'] as String,
       inMemoryAreaInGbs: map['inMemoryAreaInGbs'] as int,
       lifecycleDetails: map['lifecycleDetails'] as String,
-      localAdgAutoFailoverMaxDataLossLimit:
-          map['localAdgAutoFailoverMaxDataLossLimit'] as int,
+      localAdgAutoFailoverMaxDataLossLimit: map['localAdgAutoFailoverMaxDataLossLimit'] as int,
       localDataGuardEnabled: map['localDataGuardEnabled'] as bool,
       location: map['location'] as String,
-      longTermBackupSchedules:
-          pulumi.Input.decodeList<GetAutonomousDatabaseLongTermBackupSchedule>(
-            map['longTermBackupSchedules']!,
-            (value) => GetAutonomousDatabaseLongTermBackupSchedule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      memoryPerOracleComputeUnitInGbs:
-          map['memoryPerOracleComputeUnitInGbs'] as int,
+      longTermBackupSchedules: pulumi.Input.decodeList<GetAutonomousDatabaseLongTermBackupSchedule>(map['longTermBackupSchedules']!, (value) => GetAutonomousDatabaseLongTermBackupSchedule.fromMap((value as Map).cast<String, dynamic>())),
+      memoryPerOracleComputeUnitInGbs: map['memoryPerOracleComputeUnitInGbs'] as int,
       mtlsConnectionRequired: map['mtlsConnectionRequired'] as bool,
       name: map['name'] as String,
       nationalCharacterSet: map['nationalCharacterSet'] as String,
@@ -423,8 +348,7 @@ class GetAutonomousDatabaseResult {
       peerDbId: map['peerDbId'] as String,
       peerDbIds: (map['peerDbIds'] as List).cast<String>(),
       preview: map['preview'] as bool,
-      previewVersionWithServiceTermsAccepted:
-          map['previewVersionWithServiceTermsAccepted'] as bool,
+      previewVersionWithServiceTermsAccepted: map['previewVersionWithServiceTermsAccepted'] as bool,
       privateEndpoint: map['privateEndpoint'] as String,
       privateEndpointIp: map['privateEndpointIp'] as String,
       privateEndpointLabel: map['privateEndpointLabel'] as String,
@@ -434,13 +358,11 @@ class GetAutonomousDatabaseResult {
       serviceConsoleUrl: map['serviceConsoleUrl'] as String,
       sqlWebDeveloperUrl: map['sqlWebDeveloperUrl'] as String,
       subnetId: map['subnetId'] as String,
-      supportedRegionsToCloneTos: (map['supportedRegionsToCloneTos'] as List)
-          .cast<String>(),
+      supportedRegionsToCloneTos: (map['supportedRegionsToCloneTos'] as List).cast<String>(),
       tags: (map['tags'] as Map).cast<String, String>(),
       timeCreated: map['timeCreated'] as String,
       timeDataGuardRoleChanged: map['timeDataGuardRoleChanged'] as String,
-      timeDeletionOfFreeAutonomousDatabase:
-          map['timeDeletionOfFreeAutonomousDatabase'] as String,
+      timeDeletionOfFreeAutonomousDatabase: map['timeDeletionOfFreeAutonomousDatabase'] as String,
       timeLocalDataGuardEnabledOn: map['timeLocalDataGuardEnabledOn'] as String,
       timeMaintenanceBegin: map['timeMaintenanceBegin'] as String,
       timeMaintenanceEnd: map['timeMaintenanceEnd'] as String,
@@ -448,11 +370,11 @@ class GetAutonomousDatabaseResult {
       timeOfLastRefresh: map['timeOfLastRefresh'] as String,
       timeOfLastRefreshPoint: map['timeOfLastRefreshPoint'] as String,
       timeOfLastSwitchover: map['timeOfLastSwitchover'] as String,
-      timeReclamationOfFreeAutonomousDatabase:
-          map['timeReclamationOfFreeAutonomousDatabase'] as String,
+      timeReclamationOfFreeAutonomousDatabase: map['timeReclamationOfFreeAutonomousDatabase'] as String,
       usedDataStorageSizeInGbs: map['usedDataStorageSizeInGbs'] as int,
       usedDataStorageSizeInTbs: map['usedDataStorageSizeInTbs'] as int,
       virtualNetworkId: map['virtualNetworkId'] as String,
     );
   }
 }
+

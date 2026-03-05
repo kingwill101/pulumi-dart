@@ -157,43 +157,30 @@ import 'system_data_response.dart';
 class CapacityPoolBackup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// UUID v4 used to identify the Backup
   late final pulumi.Output<String> backupId;
-
   /// Type of backup Manual or Scheduled
   late final pulumi.Output<String> backupType;
-
   /// The creation date of the backup
   late final pulumi.Output<String> creationDate;
-
   /// Failure reason
   late final pulumi.Output<String> failureReason;
-
   /// Label for backup
   late final pulumi.Output<String?> label;
-
   /// Resource location
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
-
   /// Size of backup
   late final pulumi.Output<double> size;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
   late final pulumi.Output<bool?> useExistingSnapshot;
-
   /// Volume name
   late final pulumi.Output<String> volumeName;
 
@@ -206,11 +193,11 @@ class CapacityPoolBackup extends pulumi.CustomResource {
     CapacityPoolBackupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:netapp:CapacityPoolBackup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:netapp:CapacityPoolBackup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     backupId = registerOutput<String>('backupId');
     backupType = registerOutput<String>('backupType');
@@ -221,16 +208,7 @@ class CapacityPoolBackup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     size = registerOutput<double>('size');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     useExistingSnapshot = registerOutput<bool?>('useExistingSnapshot');
     volumeName = registerOutput<String>('volumeName');

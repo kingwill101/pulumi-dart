@@ -216,7 +216,6 @@ class AuthorizedOrgsDesc extends pulumi.CustomResource {
   /// "ASSET_TYPE_CREDENTIAL_STRENGTH".
   /// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
   late final pulumi.Output<String?> assetType;
-
   /// The direction of the authorization relationship between this organization
   /// and the organizations listed in the "orgs" field. The valid values for this
   /// field include the following:
@@ -233,29 +232,23 @@ class AuthorizedOrgsDesc extends pulumi.CustomResource {
   /// "AuthorizedOrgsDesc" resource.
   /// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
   late final pulumi.Output<String?> authorizationDirection;
-
   /// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
   /// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
   late final pulumi.Output<String?> authorizationType;
-
   /// Time the AuthorizedOrgsDesc was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// Resource name for the `AuthorizedOrgsDesc`. Format:
   /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
   /// The `authorized_orgs_desc` component must begin with a letter, followed by
   /// alphanumeric characters or `_`.
   /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
   late final pulumi.Output<String> name;
-
   /// The list of organization ids in this AuthorizedOrgsDesc.
   /// Format: `organizations/&lt;org_number&gt;`
   /// Example: `organizations/123456`
   late final pulumi.Output<List<String>?> orgs;
-
   /// Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
   late final pulumi.Output<String> parent;
-
   /// Time the AuthorizedOrgsDesc was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -268,11 +261,11 @@ class AuthorizedOrgsDesc extends pulumi.CustomResource {
     AuthorizedOrgsDescArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assetType = registerOutput<String?>('assetType');
     authorizationDirection = registerOutput<String?>('authorizationDirection');
     authorizationType = registerOutput<String?>('authorizationType');
@@ -301,11 +294,11 @@ class AuthorizedOrgsDesc extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assetType = registerOutput<String?>('assetType');
     authorizationDirection = registerOutput<String?>('authorizationDirection');
     authorizationType = registerOutput<String?>('authorizationType');

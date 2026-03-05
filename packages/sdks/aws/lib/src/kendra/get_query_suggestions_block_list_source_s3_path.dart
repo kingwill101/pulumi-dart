@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQuerySuggestionsBlockListSourceS3Path {
   /// Name of the S3 bucket that contains the file.
   final pulumi.Input<String> bucket;
-
   /// Name of the file.
   final pulumi.Input<String> key;
 
@@ -18,15 +17,17 @@ class GetQuerySuggestionsBlockListSourceS3Path {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucket': bucket, 'key': key};
+    return <String, dynamic>{
+      'bucket': bucket,
+      'key': key,
+    };
   }
 
-  factory GetQuerySuggestionsBlockListSourceS3Path.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetQuerySuggestionsBlockListSourceS3Path.fromMap(Map<String, dynamic> map) {
     return GetQuerySuggestionsBlockListSourceS3Path(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
+

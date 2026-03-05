@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointConfigurationShadowProductionVariantCoreDumpConfig {
   /// S3 bucket to send the core dump to.
   final pulumi.Input<String> destinationS3Uri;
-
   /// KMS key that SageMaker AI uses to encrypt the core dump data at rest using S3 server-side encryption.
   final pulumi.Input<String> kmsKeyId;
 
@@ -24,14 +23,11 @@ class EndpointConfigurationShadowProductionVariantCoreDumpConfig {
     };
   }
 
-  factory EndpointConfigurationShadowProductionVariantCoreDumpConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointConfigurationShadowProductionVariantCoreDumpConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationShadowProductionVariantCoreDumpConfig(
-      destinationS3Uri: pulumi.Input.fromValue(
-        map['destinationS3Uri'] as String,
-      ),
+      destinationS3Uri: pulumi.Input.fromValue(map['destinationS3Uri'] as String),
       kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
     );
   }
 }
+

@@ -8,17 +8,20 @@ class FluxConfigurationBlobStorageManagedIdentity {
 
   /// Creates a new [FluxConfigurationBlobStorageManagedIdentity].
   /// [clientId] Specifies the client ID for authenticating a Managed Identity.
-  FluxConfigurationBlobStorageManagedIdentity({required this.clientId});
+  FluxConfigurationBlobStorageManagedIdentity({
+    required this.clientId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'clientId': clientId};
+    return <String, dynamic>{
+      'clientId': clientId,
+    };
   }
 
-  factory FluxConfigurationBlobStorageManagedIdentity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FluxConfigurationBlobStorageManagedIdentity.fromMap(Map<String, dynamic> map) {
     return FluxConfigurationBlobStorageManagedIdentity(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
     );
   }
 }
+

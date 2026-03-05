@@ -178,32 +178,22 @@ import 'system_data_response.dart';
 class B2CTenant extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The billing configuration for the tenant.
-  late final pulumi.Output<B2CTenantResourcePropertiesResponseBillingConfig?>
-  billingConfig;
-
+  late final pulumi.Output<B2CTenantResourcePropertiesResponseBillingConfig?> billingConfig;
   /// Enable GoLocal add-on to store data at rest in the specific Geo. Refer to [aka.ms/B2CDataResidency](https://aka.ms/B2CDataResidency) to see local data residency options.
   late final pulumi.Output<bool?> isGoLocalTenant;
-
   /// The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia'. Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information.
   late final pulumi.Output<String> location;
-
   /// The name of the Azure AD B2C tenant resource.
   late final pulumi.Output<String> name;
-
   /// SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling).
   late final pulumi.Output<B2CResourceSKUResponse> sku;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource Tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// An identifier of the Azure AD B2C tenant.
   late final pulumi.Output<String?> tenantId;
-
   /// The type of the B2C tenant resource.
   late final pulumi.Output<String> type;
 
@@ -216,46 +206,18 @@ class B2CTenant extends pulumi.CustomResource {
     B2CTenantArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azureactivedirectory:B2CTenant',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azureactivedirectory:B2CTenant',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    billingConfig =
-        registerOutput<B2CTenantResourcePropertiesResponseBillingConfig?>(
-          'billingConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return B2CTenantResourcePropertiesResponseBillingConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    billingConfig = registerOutput<B2CTenantResourcePropertiesResponseBillingConfig?>('billingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return B2CTenantResourcePropertiesResponseBillingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isGoLocalTenant = registerOutput<bool?>('isGoLocalTenant');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    sku = registerOutput<B2CResourceSKUResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return B2CResourceSKUResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<B2CResourceSKUResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return B2CResourceSKUResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');

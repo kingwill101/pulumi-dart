@@ -7,23 +7,13 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_suggested_action_rbm_
 /// Rich Business Messaging (RBM) suggested client-side action that the user can choose from the card.
 class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionResponse {
   /// Suggested client side action: Dial a phone number
-  final pulumi.Input<
-    GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialResponse
-  >
-  dial;
-
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialResponse> dial;
   /// Suggested client side action: Open a URI on device
-  final pulumi.Input<
-    GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriResponse
-  >
-  openUrl;
-
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriResponse> openUrl;
   /// Opaque payload that the Dialogflow receives in a user event when the user taps the suggested action. This data will be also forwarded to webhook to allow performing custom business logic.
   final pulumi.Input<String> postbackData;
-
   /// Suggested client side action: Share user location
   final pulumi.Input<Map<String, dynamic>> shareLocation;
-
   /// Text to display alongside the action.
   final pulumi.Input<String> text;
 
@@ -43,41 +33,22 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dial':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialResponse,
-            Map<String, dynamic>
-          >(dial, (value) => value.toMap()),
-      'openUrl':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriResponse,
-            Map<String, dynamic>
-          >(openUrl, (value) => value.toMap()),
+      'dial': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialResponse, Map<String, dynamic>>(dial, (value) => value.toMap()),
+      'openUrl': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriResponse, Map<String, dynamic>>(openUrl, (value) => value.toMap()),
       'postbackData': postbackData,
       'shareLocation': shareLocation,
       'text': text,
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionResponse(
-      dial: pulumi.Input.fromValue(
-        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialResponse.fromMap(
-          (map['dial']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      openUrl: pulumi.Input.fromValue(
-        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriResponse.fromMap(
-          (map['openUrl']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      dial: pulumi.Input.fromValue(GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialResponse.fromMap((map['dial']! as Map).cast<String, dynamic>())),
+      openUrl: pulumi.Input.fromValue(GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriResponse.fromMap((map['openUrl']! as Map).cast<String, dynamic>())),
       postbackData: pulumi.Input.fromValue(map['postbackData'] as String),
-      shareLocation: pulumi.Input.fromValue(
-        (map['shareLocation']! as Map).cast<String, dynamic>(),
-      ),
+      shareLocation: pulumi.Input.fromValue((map['shareLocation']! as Map).cast<String, dynamic>()),
       text: pulumi.Input.fromValue(map['text'] as String),
     );
   }
 }
+

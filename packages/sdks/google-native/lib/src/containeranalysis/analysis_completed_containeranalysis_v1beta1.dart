@@ -8,21 +8,20 @@ class AnalysisCompletedContaineranalysisV1beta1 {
 
   /// Creates a new [AnalysisCompletedContaineranalysisV1beta1].
   /// [analysisType] Optional.
-  AnalysisCompletedContaineranalysisV1beta1({this.analysisType});
+  AnalysisCompletedContaineranalysisV1beta1({
+    this.analysisType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'analysisType': ?analysisType};
+    return <String, dynamic>{
+      'analysisType': ?analysisType,
+    };
   }
 
-  factory AnalysisCompletedContaineranalysisV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalysisCompletedContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return AnalysisCompletedContaineranalysisV1beta1(
-      analysisType: (() {
-        final guardedValue = map['analysisType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      analysisType: (() { final guardedValue = map['analysisType']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

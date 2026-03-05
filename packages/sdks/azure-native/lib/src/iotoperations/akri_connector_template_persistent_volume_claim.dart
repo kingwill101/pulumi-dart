@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AkriConnectorTemplatePersistentVolumeClaim {
   /// The name of the persistent volume claim.
   final pulumi.Input<String> claimName;
-
   /// The mount path for the persistent volume claim.
   final pulumi.Input<String> mountPath;
 
@@ -19,15 +18,17 @@ class AkriConnectorTemplatePersistentVolumeClaim {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'claimName': claimName, 'mountPath': mountPath};
+    return <String, dynamic>{
+      'claimName': claimName,
+      'mountPath': mountPath,
+    };
   }
 
-  factory AkriConnectorTemplatePersistentVolumeClaim.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AkriConnectorTemplatePersistentVolumeClaim.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplatePersistentVolumeClaim(
       claimName: pulumi.Input.fromValue(map['claimName'] as String),
       mountPath: pulumi.Input.fromValue(map['mountPath'] as String),
     );
   }
 }
+

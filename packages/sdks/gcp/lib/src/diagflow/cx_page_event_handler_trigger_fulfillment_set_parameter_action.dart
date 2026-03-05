@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxPageEventHandlerTriggerFulfillmentSetParameterAction {
   /// Display name of the parameter.
   final pulumi.Input<String>? parameter;
-
   /// The new JSON-encoded value of the parameter. A null value clears the parameter.
   final pulumi.Input<String>? value;
 
@@ -18,23 +17,17 @@ class CxPageEventHandlerTriggerFulfillmentSetParameterAction {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'parameter': ?parameter, 'value': ?value};
+    return <String, dynamic>{
+      'parameter': ?parameter,
+      'value': ?value,
+    };
   }
 
-  factory CxPageEventHandlerTriggerFulfillmentSetParameterAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxPageEventHandlerTriggerFulfillmentSetParameterAction.fromMap(Map<String, dynamic> map) {
     return CxPageEventHandlerTriggerFulfillmentSetParameterAction(
-      parameter: (() {
-        final guardedValue = map['parameter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      parameter: (() { final guardedValue = map['parameter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

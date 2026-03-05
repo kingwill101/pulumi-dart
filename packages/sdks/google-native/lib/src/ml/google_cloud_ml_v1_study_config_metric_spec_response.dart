@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1StudyConfigMetricSpecResponse {
   /// The optimization goal of the metric.
   final pulumi.Input<String> goal;
-
   /// The name of the metric.
   final pulumi.Input<String> metric;
 
@@ -19,15 +18,17 @@ class GoogleCloudMlV1StudyConfigMetricSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'goal': goal, 'metric': metric};
+    return <String, dynamic>{
+      'goal': goal,
+      'metric': metric,
+    };
   }
 
-  factory GoogleCloudMlV1StudyConfigMetricSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudMlV1StudyConfigMetricSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigMetricSpecResponse(
       goal: pulumi.Input.fromValue(map['goal'] as String),
       metric: pulumi.Input.fromValue(map['metric'] as String),
     );
   }
 }
+

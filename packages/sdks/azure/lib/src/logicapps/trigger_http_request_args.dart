@@ -9,20 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggerHttpRequestArgs {
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   final pulumi.Input<String> logicAppId;
-
   /// Specifies the HTTP Method which the request be using. Possible values include `DELETE`, `GET`, `PATCH`, `POST` or `PUT`.
   final pulumi.Input<String>? method;
-
   /// Specifies the name of the HTTP Request Trigger to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** This name must be unique across all Triggers within the Logic App Workflow.
   final pulumi.Input<String>? name;
-
   /// Specifies the Relative Path used for this Request.
   ///
   /// &gt; **NOTE:** When `relative_path` is set a `method` must also be set.
   final pulumi.Input<String>? relativePath;
-
   /// A JSON Blob defining the Schema of the incoming request. This needs to be valid JSON.
   final pulumi.Input<String> schema;
 
@@ -53,22 +49,11 @@ class TriggerHttpRequestArgs {
   factory TriggerHttpRequestArgs.fromMap(Map<String, dynamic> map) {
     return TriggerHttpRequestArgs(
       logicAppId: pulumi.Input.fromValue(map['logicAppId'] as String),
-      method: (() {
-        final guardedValue = map['method'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      relativePath: (() {
-        final guardedValue = map['relativePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      method: (() { final guardedValue = map['method']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      relativePath: (() { final guardedValue = map['relativePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schema: pulumi.Input.fromValue(map['schema'] as String),
     );
   }
 }
+

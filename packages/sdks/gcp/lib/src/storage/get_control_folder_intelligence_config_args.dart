@@ -12,17 +12,20 @@ class GetControlFolderIntelligenceConfigArgs {
 
   /// Creates a new [GetControlFolderIntelligenceConfigArgs].
   /// [name] The number of GCP folder.
-  GetControlFolderIntelligenceConfigArgs({required this.name});
+  GetControlFolderIntelligenceConfigArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory GetControlFolderIntelligenceConfigArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetControlFolderIntelligenceConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetControlFolderIntelligenceConfigArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

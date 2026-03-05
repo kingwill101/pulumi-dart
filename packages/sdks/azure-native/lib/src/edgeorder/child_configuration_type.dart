@@ -14,3 +14,4 @@ enum ChildConfigurationType {
     throw ArgumentError('Unknown ChildConfigurationType value: $value');
   }
 }
+

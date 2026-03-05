@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemoteAddressMatchConditionParameters {
   /// Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
   final pulumi.Input<List<String>>? matchValues;
-
   /// Describes if this is negate condition or not
   final pulumi.Input<bool>? negateCondition;
-
   /// Describes operator to be matched
   final pulumi.Input<String> operator;
-
   /// List of transforms
   final pulumi.Input<List<String>>? transforms;
-
   /// Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
   final pulumi.Input<String> typeName;
 
@@ -43,27 +39,14 @@ class RemoteAddressMatchConditionParameters {
     };
   }
 
-  factory RemoteAddressMatchConditionParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RemoteAddressMatchConditionParameters.fromMap(Map<String, dynamic> map) {
     return RemoteAddressMatchConditionParameters(
-      matchValues: (() {
-        final guardedValue = map['matchValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      negateCondition: (() {
-        final guardedValue = map['negateCondition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      matchValues: (() { final guardedValue = map['matchValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      negateCondition: (() { final guardedValue = map['negateCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       operator: pulumi.Input.fromValue(map['operator'] as String),
-      transforms: (() {
-        final guardedValue = map['transforms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      transforms: (() { final guardedValue = map['transforms']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       typeName: pulumi.Input.fromValue(map['typeName'] as String),
     );
   }
 }
+

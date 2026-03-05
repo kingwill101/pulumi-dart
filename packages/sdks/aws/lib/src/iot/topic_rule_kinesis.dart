@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicRuleKinesis {
   /// The partition key.
   final pulumi.Input<String>? partitionKey;
-
   /// The ARN of the IAM role that grants access to the Amazon Kinesis stream.
   final pulumi.Input<String> roleArn;
-
   /// The name of the Amazon Kinesis stream.
   final pulumi.Input<String> streamName;
 
@@ -32,13 +30,10 @@ class TopicRuleKinesis {
 
   factory TopicRuleKinesis.fromMap(Map<String, dynamic> map) {
     return TopicRuleKinesis(
-      partitionKey: (() {
-        final guardedValue = map['partitionKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      partitionKey: (() { final guardedValue = map['partitionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
       streamName: pulumi.Input.fromValue(map['streamName'] as String),
     );
   }
 }
+

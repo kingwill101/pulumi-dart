@@ -148,19 +148,14 @@ import 'human_task_uiui_template.dart';
 class HumanTaskUI extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) assigned by AWS to this Human Task UI.
   late final pulumi.Output<String> arn;
-
   /// The name of the Human Task UI.
   late final pulumi.Output<String> humanTaskUiName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The Liquid template for the worker user interface. See UI Template below.
   late final pulumi.Output<HumanTaskUIUiTemplate> uiTemplate;
 
@@ -173,26 +168,17 @@ class HumanTaskUI extends pulumi.CustomResource {
     HumanTaskUIArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/humanTaskUI:HumanTaskUI',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/humanTaskUI:HumanTaskUI',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     humanTaskUiName = registerOutput<String>('humanTaskUiName');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    uiTemplate = registerOutput<HumanTaskUIUiTemplate>(
-      'uiTemplate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HumanTaskUIUiTemplate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    uiTemplate = registerOutput<HumanTaskUIUiTemplate>('uiTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HumanTaskUIUiTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [HumanTaskUI] resource's state with the given [name] and [id].
@@ -213,25 +199,16 @@ class HumanTaskUI extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/humanTaskUI:HumanTaskUI',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/humanTaskUI:HumanTaskUI',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     humanTaskUiName = registerOutput<String>('humanTaskUiName');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    uiTemplate = registerOutput<HumanTaskUIUiTemplate>(
-      'uiTemplate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HumanTaskUIUiTemplate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    uiTemplate = registerOutput<HumanTaskUIUiTemplate>('uiTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HumanTaskUIUiTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

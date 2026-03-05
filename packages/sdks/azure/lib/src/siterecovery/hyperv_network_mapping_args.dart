@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HypervNetworkMappingArgs {
   /// The name of the HyperV network mapping. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The ID of the Recovery Services Vault where the HyperV network mapping should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> recoveryVaultId;
-
   /// The Name of the primary network. Changing this forces a new resource to be created.
   final pulumi.Input<String> sourceNetworkName;
-
   /// Specifies the name of source System Center Virtual Machine Manager where the source network exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> sourceSystemCenterVirtualMachineManagerName;
-
   /// The id of the recovery network. Changing this forces a new resource to be created.
   final pulumi.Input<String> targetNetworkId;
 
@@ -41,27 +37,19 @@ class HypervNetworkMappingArgs {
       'name': ?name,
       'recoveryVaultId': recoveryVaultId,
       'sourceNetworkName': sourceNetworkName,
-      'sourceSystemCenterVirtualMachineManagerName':
-          sourceSystemCenterVirtualMachineManagerName,
+      'sourceSystemCenterVirtualMachineManagerName': sourceSystemCenterVirtualMachineManagerName,
       'targetNetworkId': targetNetworkId,
     };
   }
 
   factory HypervNetworkMappingArgs.fromMap(Map<String, dynamic> map) {
     return HypervNetworkMappingArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recoveryVaultId: pulumi.Input.fromValue(map['recoveryVaultId'] as String),
-      sourceNetworkName: pulumi.Input.fromValue(
-        map['sourceNetworkName'] as String,
-      ),
-      sourceSystemCenterVirtualMachineManagerName: pulumi.Input.fromValue(
-        map['sourceSystemCenterVirtualMachineManagerName'] as String,
-      ),
+      sourceNetworkName: pulumi.Input.fromValue(map['sourceNetworkName'] as String),
+      sourceSystemCenterVirtualMachineManagerName: pulumi.Input.fromValue(map['sourceSystemCenterVirtualMachineManagerName'] as String),
       targetNetworkId: pulumi.Input.fromValue(map['targetNetworkId'] as String),
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum OnboardingResourceType {
     throw ArgumentError('Unknown OnboardingResourceType value: $value');
   }
 }
+

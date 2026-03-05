@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlRoleDefinitionArgs {
   /// The name of the Cosmos DB Account.
   final pulumi.Input<String> accountName;
-
   /// The name of the Resource Group in which the Cosmos DB SQL Role Definition is created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The GUID as the name of the Cosmos DB SQL Role Definition.
   final pulumi.Input<String> roleDefinitionId;
 
@@ -37,12 +35,9 @@ class GetSqlRoleDefinitionArgs {
   factory GetSqlRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlRoleDefinitionArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      roleDefinitionId: pulumi.Input.fromValue(
-        map['roleDefinitionId'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      roleDefinitionId: pulumi.Input.fromValue(map['roleDefinitionId'] as String),
     );
   }
 }
+

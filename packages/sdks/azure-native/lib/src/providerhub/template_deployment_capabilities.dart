@@ -15,3 +15,4 @@ enum TemplateDeploymentCapabilities {
     throw ArgumentError('Unknown TemplateDeploymentCapabilities value: $value');
   }
 }
+

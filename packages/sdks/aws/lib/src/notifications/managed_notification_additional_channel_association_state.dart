@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedNotificationAdditionalChannelAssociationState {
   /// ARN of the channel to associate with the managed notification.
   final pulumi.Input<String>? channelArn;
-
   /// ARN of the managed notification to associate the channel with.
   final pulumi.Input<String>? managedNotificationArn;
 
@@ -25,20 +24,11 @@ class ManagedNotificationAdditionalChannelAssociationState {
     };
   }
 
-  factory ManagedNotificationAdditionalChannelAssociationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedNotificationAdditionalChannelAssociationState.fromMap(Map<String, dynamic> map) {
     return ManagedNotificationAdditionalChannelAssociationState(
-      channelArn: (() {
-        final guardedValue = map['channelArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedNotificationArn: (() {
-        final guardedValue = map['managedNotificationArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      channelArn: (() { final guardedValue = map['channelArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedNotificationArn: (() { final guardedValue = map['managedNotificationArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

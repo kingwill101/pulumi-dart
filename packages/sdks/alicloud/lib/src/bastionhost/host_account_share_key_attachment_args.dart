@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostAccountShareKeyAttachmentArgs {
   /// The ID list of the host account.
   final pulumi.Input<String> hostAccountId;
-
   /// The ID of the host shared key.
   final pulumi.Input<String> hostShareKeyId;
-
   /// The ID of the Bastion machine instance.
   final pulumi.Input<String> instanceId;
 
@@ -42,3 +40,4 @@ class HostAccountShareKeyAttachmentArgs {
     );
   }
 }
+

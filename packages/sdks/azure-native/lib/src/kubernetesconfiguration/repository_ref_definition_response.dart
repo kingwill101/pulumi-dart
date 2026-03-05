@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepositoryRefDefinitionResponse {
   /// The git repository branch name to checkout.
   final pulumi.Input<String>? branch;
-
   /// The commit SHA to checkout. This value must be combined with the branch name to be valid. This takes precedence over semver.
   final pulumi.Input<String>? commit;
-
   /// The semver range used to match against git repository tags. This takes precedence over tag.
   final pulumi.Input<String>? semver;
-
   /// The git repository tag name to checkout. This takes precedence over branch.
   final pulumi.Input<String>? tag;
 
@@ -39,26 +36,11 @@ class RepositoryRefDefinitionResponse {
 
   factory RepositoryRefDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return RepositoryRefDefinitionResponse(
-      branch: (() {
-        final guardedValue = map['branch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      commit: (() {
-        final guardedValue = map['commit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      semver: (() {
-        final guardedValue = map['semver'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tag: (() {
-        final guardedValue = map['tag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      branch: (() { final guardedValue = map['branch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      commit: (() { final guardedValue = map['commit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      semver: (() { final guardedValue = map['semver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

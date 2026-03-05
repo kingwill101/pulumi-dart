@@ -59,9 +59,8 @@ class GetTargetGroupHealthCheck {
       port: pulumi.Input.fromValue(map['port'] as String),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       timeout: pulumi.Input.fromValue(map['timeout'] as int),
-      unhealthyThreshold: pulumi.Input.fromValue(
-        map['unhealthyThreshold'] as int,
-      ),
+      unhealthyThreshold: pulumi.Input.fromValue(map['unhealthyThreshold'] as int),
     );
   }
 }
+

@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkuTypeResponse {
   /// The name of the SKU
   final pulumi.Input<String> name;
-
   /// The tier of the SKU
   final pulumi.Input<String> tier;
 
   /// Creates a new [SkuTypeResponse].
   /// [name] The name of the SKU
   /// [tier] The tier of the SKU
-  SkuTypeResponse({required this.name, required this.tier});
+  SkuTypeResponse({
+    required this.name,
+    required this.tier,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'tier': tier};
+    return <String, dynamic>{
+      'name': name,
+      'tier': tier,
+    };
   }
 
   factory SkuTypeResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class SkuTypeResponse {
     );
   }
 }
+

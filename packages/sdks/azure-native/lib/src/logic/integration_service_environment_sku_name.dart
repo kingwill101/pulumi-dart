@@ -13,8 +13,7 @@ enum IntegrationServiceEnvironmentSkuName {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown IntegrationServiceEnvironmentSkuName value: $value',
-    );
+    throw ArgumentError('Unknown IntegrationServiceEnvironmentSkuName value: $value');
   }
 }
+

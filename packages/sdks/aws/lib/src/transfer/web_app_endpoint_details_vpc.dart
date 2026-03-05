@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAppEndpointDetailsVpc {
   /// List of security group IDs that control access to the web app endpoint. If not specified, the VPC's default security group is used.
   final pulumi.Input<List<String>>? securityGroupIds;
-
   /// List of subnet IDs within the VPC where the web app endpoint will be deployed. These subnets must be in the same VPC specified in the `vpc_id` parameter.
   final pulumi.Input<List<String>> subnetIds;
-
   /// ID of the VPC endpoint created for the web app.
   final pulumi.Input<String>? vpcEndpointId;
-
   /// ID of the VPC where the web app endpoint will be hosted. The VPC must be dual-stack, meaning it supports both IPv4 and IPv6 addressing.
   final pulumi.Input<String> vpcId;
 
@@ -38,20 +35,11 @@ class WebAppEndpointDetailsVpc {
 
   factory WebAppEndpointDetailsVpc.fromMap(Map<String, dynamic> map) {
     return WebAppEndpointDetailsVpc(
-      securityGroupIds: (() {
-        final guardedValue = map['securityGroupIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      subnetIds: pulumi.Input.fromValue(
-        (map['subnetIds'] as List).cast<String>(),
-      ),
-      vpcEndpointId: (() {
-        final guardedValue = map['vpcEndpointId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      securityGroupIds: (() { final guardedValue = map['securityGroupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      subnetIds: pulumi.Input.fromValue((map['subnetIds'] as List).cast<String>()),
+      vpcEndpointId: (() { final guardedValue = map['vpcEndpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
+

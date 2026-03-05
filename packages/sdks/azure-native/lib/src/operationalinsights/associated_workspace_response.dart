@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssociatedWorkspaceResponse {
   /// The time of workspace association.
   final pulumi.Input<String> associateDate;
-
   /// Associated workspace arm resource id, in the form of: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}.
   final pulumi.Input<String> resourceId;
-
   /// Associated workspace immutable id.
   final pulumi.Input<String> workspaceId;
-
   /// Associated workspace resource name.
   final pulumi.Input<String> workspaceName;
 
@@ -46,3 +43,4 @@ class AssociatedWorkspaceResponse {
     );
   }
 }
+

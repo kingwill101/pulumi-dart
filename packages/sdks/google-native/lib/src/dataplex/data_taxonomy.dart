@@ -6,36 +6,26 @@ import 'data_taxonomy_args.dart';
 class DataTaxonomy extends pulumi.CustomResource {
   /// The number of attributes in the DataTaxonomy.
   late final pulumi.Output<int> attributeCount;
-
   /// The number of classes in the DataTaxonomy.
   late final pulumi.Output<int> classCount;
-
   /// The time when the DataTaxonomy was created.
   late final pulumi.Output<String> createTime;
-
   /// Required. DataTaxonomy identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the Project.
   late final pulumi.Output<String> dataTaxonomyId;
-
   /// Optional. Description of the DataTaxonomy.
   late final pulumi.Output<String> description;
-
   /// Optional. User friendly display name.
   late final pulumi.Output<String> displayName;
-
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
-
   /// Optional. User-defined labels for the DataTaxonomy.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
-
   /// The relative resource name of the DataTaxonomy, of the form: projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// System generated globally unique ID for the dataTaxonomy. This ID will be different if the DataTaxonomy is deleted and re-created with the same name.
   late final pulumi.Output<String> uid;
-
   /// The time when the DataTaxonomy was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -48,11 +38,11 @@ class DataTaxonomy extends pulumi.CustomResource {
     DataTaxonomyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:dataplex/v1:DataTaxonomy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:dataplex/v1:DataTaxonomy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributeCount = registerOutput<int>('attributeCount');
     classCount = registerOutput<int>('classCount');
     createTime = registerOutput<String>('createTime');

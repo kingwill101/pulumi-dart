@@ -8,17 +8,20 @@ class GetCertificateCertificatePolicyIssuerParameter {
 
   /// Creates a new [GetCertificateCertificatePolicyIssuerParameter].
   /// [name] Specifies the name of the Key Vault Certificate.
-  GetCertificateCertificatePolicyIssuerParameter({required this.name});
+  GetCertificateCertificatePolicyIssuerParameter({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory GetCertificateCertificatePolicyIssuerParameter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCertificateCertificatePolicyIssuerParameter.fromMap(Map<String, dynamic> map) {
     return GetCertificateCertificatePolicyIssuerParameter(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

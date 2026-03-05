@@ -6,7 +6,6 @@ import 'get_access_groups_group.dart';
 /// Result data returned by getAccessGroups.
 class GetAccessGroupsResult {
   final List<GetAccessGroupsGroup> groups;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -44,11 +43,7 @@ class GetAccessGroupsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groups':
-          pulumi.Input.encodeList<GetAccessGroupsGroup, Map<String, dynamic>>(
-            groups,
-            (value) => value.toMap(),
-          ),
+      'groups': pulumi.Input.encodeList<GetAccessGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'limit': ?limit,
@@ -63,45 +58,17 @@ class GetAccessGroupsResult {
 
   factory GetAccessGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetAccessGroupsResult(
-      groups: pulumi.Input.decodeList<GetAccessGroupsGroup>(
-        map['groups']!,
-        (value) => GetAccessGroupsGroup.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      groups: pulumi.Input.decodeList<GetAccessGroupsGroup>(map['groups']!, (value) => GetAccessGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      limit: (() {
-        final guardedValue = map['limit'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      orderBy: (() {
-        final guardedValue = map['orderBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      orderType: (() {
-        final guardedValue = map['orderType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      startOffset: (() {
-        final guardedValue = map['startOffset'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      orderType: (() { final guardedValue = map['orderType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      startOffset: (() { final guardedValue = map['startOffset']; if (guardedValue == null) return null; return guardedValue as int; })(),
     );
   }
 }
+

@@ -673,31 +673,22 @@ import 'module_state.dart';
 class Module extends pulumi.CustomResource {
   /// The Azure Region where the Dedicated Hardware Security Module should exist. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<String> location;
-
   /// A `management_network_profile` block as defined below.
   ///
   /// &gt; **Note:** The `management_network_profile` should not be specified when `sku_name` is `SafeNet Luna Network HSM A790`.
-  late final pulumi.Output<ModuleManagementNetworkProfile?>
-  managementNetworkProfile;
-
+  late final pulumi.Output<ModuleManagementNetworkProfile?> managementNetworkProfile;
   /// The name which should be used for this Dedicated Hardware Security Module. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<String> name;
-
   /// A `network_profile` block as defined below.
   late final pulumi.Output<ModuleNetworkProfile> networkProfile;
-
   /// The name of the Resource Group where the Dedicated Hardware Security Module should exist. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The SKU name of the dedicated hardware security module. Possible values are `payShield10K_LMK1_CPS60`,`payShield10K_LMK1_CPS250`,`payShield10K_LMK1_CPS2500`,`payShield10K_LMK2_CPS60`,`payShield10K_LMK2_CPS250`,`payShield10K_LMK2_CPS2500` and `SafeNet Luna Network HSM A790`. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<String> skuName;
-
   /// The ID of the stamp. Possible values are `stamp1` or `stamp2`. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<String?> stampId;
-
   /// A mapping of tags which should be assigned to the Dedicated Hardware Security Module.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies a list of Availability Zones in which this Dedicated Hardware Security Module should be located. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<List<String>?> zones;
 
@@ -705,35 +696,20 @@ class Module extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Module]. {@macro pulumi_hsm_module_module_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Module(String name, {ModuleArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:hsm/module:Module',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Module(
+    String name, {
+    ModuleArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:hsm/module:Module',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
-    managementNetworkProfile = registerOutput<ModuleManagementNetworkProfile?>(
-      'managementNetworkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ModuleManagementNetworkProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managementNetworkProfile = registerOutput<ModuleManagementNetworkProfile?>('managementNetworkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleManagementNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<ModuleNetworkProfile>(
-      'networkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ModuleNetworkProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkProfile = registerOutput<ModuleNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     stampId = registerOutput<String?>('stampId');
@@ -759,33 +735,15 @@ class Module extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:hsm/module:Module',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:hsm/module:Module',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
-    managementNetworkProfile = registerOutput<ModuleManagementNetworkProfile?>(
-      'managementNetworkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ModuleManagementNetworkProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managementNetworkProfile = registerOutput<ModuleManagementNetworkProfile?>('managementNetworkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleManagementNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<ModuleNetworkProfile>(
-      'networkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ModuleNetworkProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkProfile = registerOutput<ModuleNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     stampId = registerOutput<String?>('stampId');

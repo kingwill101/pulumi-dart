@@ -12,17 +12,20 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfig {
 
   /// Creates a new [ClusterNodePoolNodeConfigWorkloadMetadataConfig].
   /// [mode] How to expose the node metadata to the workload running on the node.
-  ClusterNodePoolNodeConfigWorkloadMetadataConfig({required this.mode});
+  ClusterNodePoolNodeConfigWorkloadMetadataConfig({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
-  factory ClusterNodePoolNodeConfigWorkloadMetadataConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterNodePoolNodeConfigWorkloadMetadataConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigWorkloadMetadataConfig(
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
+

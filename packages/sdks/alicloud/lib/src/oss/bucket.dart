@@ -3470,72 +3470,49 @@ import 'bucket_website.dart';
 class Bucket extends pulumi.CustomResource {
   /// A access monitor status of a bucket. See `access_monitor` below.
   late final pulumi.Output<BucketAccessMonitor> accessMonitor;
-
   /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
   late final pulumi.Output<String> acl;
   late final pulumi.Output<String> bucket;
-
   /// A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> corsRules;
-
   /// The creation date of the bucket.
   late final pulumi.Output<String> creationDate;
-
   /// The extranet access endpoint of the bucket.
   late final pulumi.Output<String> extranetEndpoint;
-
   /// A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
   late final pulumi.Output<bool?> forceDestroy;
-
   /// The intranet access endpoint of the bucket.
   late final pulumi.Output<String> intranetEndpoint;
-
   /// A boolean that indicates lifecycle rules allow prefix overlap.
   late final pulumi.Output<bool?> lifecycleRuleAllowSameActionOverlap;
-
   /// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> lifecycleRules;
-
   /// The location of the bucket.
   late final pulumi.Output<String> location;
-
   /// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
   late final pulumi.Output<BucketLogging?> logging;
-
   /// The flag of using logging enable container. Defaults true.
   late final pulumi.Output<bool?> loggingIsenable;
-
   /// The bucket owner.
   late final pulumi.Output<String> owner;
-
   /// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketPolicy` instead.
   late final pulumi.Output<String?> policy;
-
   /// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
   late final pulumi.Output<String?> redundancyType;
-
   /// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `referer_config` below.
   late final pulumi.Output<BucketRefererConfig?> refererConfig;
-
   /// The ID of the resource group to which the bucket belongs.
   late final pulumi.Output<String> resourceGroupId;
-
   /// A configuration of server-side encryption. See `server_side_encryption_rule` below.
-  late final pulumi.Output<BucketServerSideEncryptionRule?>
-  serverSideEncryptionRule;
-
+  late final pulumi.Output<BucketServerSideEncryptionRule?> serverSideEncryptionRule;
   /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
   late final pulumi.Output<String?> storageClass;
-
   /// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A transfer acceleration status of a bucket. See `transfer_acceleration` below.
   late final pulumi.Output<BucketTransferAcceleration?> transferAcceleration;
-
   /// A state of versioning. See `versioning` below.
   late final pulumi.Output<BucketVersioning?> versioning;
-
   /// A website configuration. See `website` below.
   late final pulumi.Output<BucketWebsite?> website;
 
@@ -3543,23 +3520,17 @@ class Bucket extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Bucket]. {@macro pulumi_oss_bucket_bucket_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Bucket(String name, {BucketArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:oss/bucket:Bucket',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    accessMonitor = registerOutput<BucketAccessMonitor>(
-      'accessMonitor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketAccessMonitor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Bucket(
+    String name, {
+    BucketArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:oss/bucket:Bucket',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessMonitor = registerOutput<BucketAccessMonitor>('accessMonitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAccessMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     acl = registerOutput<String>('acl');
     bucket = registerOutput<String>('bucket');
     corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
@@ -3567,80 +3538,22 @@ class Bucket extends pulumi.CustomResource {
     extranetEndpoint = registerOutput<String>('extranetEndpoint');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     intranetEndpoint = registerOutput<String>('intranetEndpoint');
-    lifecycleRuleAllowSameActionOverlap = registerOutput<bool?>(
-      'lifecycleRuleAllowSameActionOverlap',
-    );
-    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>(
-      'lifecycleRules',
-    );
+    lifecycleRuleAllowSameActionOverlap = registerOutput<bool?>('lifecycleRuleAllowSameActionOverlap');
+    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>('lifecycleRules');
     location = registerOutput<String>('location');
-    logging = registerOutput<BucketLogging?>(
-      'logging',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketLogging.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logging = registerOutput<BucketLogging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     loggingIsenable = registerOutput<bool?>('loggingIsenable');
     owner = registerOutput<String>('owner');
     policy = registerOutput<String?>('policy');
     redundancyType = registerOutput<String?>('redundancyType');
-    refererConfig = registerOutput<BucketRefererConfig?>(
-      'refererConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketRefererConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    refererConfig = registerOutput<BucketRefererConfig?>('refererConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketRefererConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    serverSideEncryptionRule = registerOutput<BucketServerSideEncryptionRule?>(
-      'serverSideEncryptionRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketServerSideEncryptionRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serverSideEncryptionRule = registerOutput<BucketServerSideEncryptionRule?>('serverSideEncryptionRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketServerSideEncryptionRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageClass = registerOutput<String?>('storageClass');
     tags = registerOutput<Map<String, String>?>('tags');
-    transferAcceleration = registerOutput<BucketTransferAcceleration?>(
-      'transferAcceleration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketTransferAcceleration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    versioning = registerOutput<BucketVersioning?>(
-      'versioning',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketVersioning.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    website = registerOutput<BucketWebsite?>(
-      'website',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketWebsite.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    transferAcceleration = registerOutput<BucketTransferAcceleration?>('transferAcceleration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketTransferAcceleration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    versioning = registerOutput<BucketVersioning?>('versioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketVersioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    website = registerOutput<BucketWebsite?>('website', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Bucket] resource's state with the given [name] and [id].
@@ -3661,21 +3574,12 @@ class Bucket extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucket:Bucket',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessMonitor = registerOutput<BucketAccessMonitor>(
-      'accessMonitor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketAccessMonitor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:oss/bucket:Bucket',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessMonitor = registerOutput<BucketAccessMonitor>('accessMonitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAccessMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     acl = registerOutput<String>('acl');
     bucket = registerOutput<String>('bucket');
     corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
@@ -3683,79 +3587,21 @@ class Bucket extends pulumi.CustomResource {
     extranetEndpoint = registerOutput<String>('extranetEndpoint');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     intranetEndpoint = registerOutput<String>('intranetEndpoint');
-    lifecycleRuleAllowSameActionOverlap = registerOutput<bool?>(
-      'lifecycleRuleAllowSameActionOverlap',
-    );
-    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>(
-      'lifecycleRules',
-    );
+    lifecycleRuleAllowSameActionOverlap = registerOutput<bool?>('lifecycleRuleAllowSameActionOverlap');
+    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>('lifecycleRules');
     location = registerOutput<String>('location');
-    logging = registerOutput<BucketLogging?>(
-      'logging',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketLogging.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logging = registerOutput<BucketLogging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     loggingIsenable = registerOutput<bool?>('loggingIsenable');
     owner = registerOutput<String>('owner');
     policy = registerOutput<String?>('policy');
     redundancyType = registerOutput<String?>('redundancyType');
-    refererConfig = registerOutput<BucketRefererConfig?>(
-      'refererConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketRefererConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    refererConfig = registerOutput<BucketRefererConfig?>('refererConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketRefererConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    serverSideEncryptionRule = registerOutput<BucketServerSideEncryptionRule?>(
-      'serverSideEncryptionRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketServerSideEncryptionRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serverSideEncryptionRule = registerOutput<BucketServerSideEncryptionRule?>('serverSideEncryptionRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketServerSideEncryptionRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageClass = registerOutput<String?>('storageClass');
     tags = registerOutput<Map<String, String>?>('tags');
-    transferAcceleration = registerOutput<BucketTransferAcceleration?>(
-      'transferAcceleration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketTransferAcceleration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    versioning = registerOutput<BucketVersioning?>(
-      'versioning',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketVersioning.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    website = registerOutput<BucketWebsite?>(
-      'website',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketWebsite.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    transferAcceleration = registerOutput<BucketTransferAcceleration?>('transferAcceleration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketTransferAcceleration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    versioning = registerOutput<BucketVersioning?>('versioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketVersioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    website = registerOutput<BucketWebsite?>('website', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

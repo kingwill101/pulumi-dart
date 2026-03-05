@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskPurchasePlanResponse {
   /// The plan ID.
   final pulumi.Input<String> name;
-
   /// Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
   final pulumi.Input<String> product;
-
   /// The Offer Promotion Code.
   final pulumi.Input<String>? promotionCode;
-
   /// The publisher ID.
   final pulumi.Input<String> publisher;
 
@@ -41,12 +38,9 @@ class DiskPurchasePlanResponse {
     return DiskPurchasePlanResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
       product: pulumi.Input.fromValue(map['product'] as String),
-      promotionCode: (() {
-        final guardedValue = map['promotionCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      promotionCode: (() { final guardedValue = map['promotionCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publisher: pulumi.Input.fromValue(map['publisher'] as String),
     );
   }
 }
+

@@ -10,31 +10,20 @@ class VirtualNetworkGatewayAutoScaleConfigurationResponse {
 
   /// Creates a new [VirtualNetworkGatewayAutoScaleConfigurationResponse].
   /// [bounds] The bounds of the autoscale configuration
-  VirtualNetworkGatewayAutoScaleConfigurationResponse({this.bounds});
+  VirtualNetworkGatewayAutoScaleConfigurationResponse({
+    this.bounds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bounds':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualNetworkGatewayAutoScaleBoundsResponse,
-            Map<String, dynamic>
-          >(bounds, (value) => value.toMap()),
+      'bounds': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkGatewayAutoScaleBoundsResponse, Map<String, dynamic>>(bounds, (value) => value.toMap()),
     };
   }
 
-  factory VirtualNetworkGatewayAutoScaleConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNetworkGatewayAutoScaleConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayAutoScaleConfigurationResponse(
-      bounds: (() {
-        final guardedValue = map['bounds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualNetworkGatewayAutoScaleBoundsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      bounds: (() { final guardedValue = map['bounds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworkGatewayAutoScaleBoundsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

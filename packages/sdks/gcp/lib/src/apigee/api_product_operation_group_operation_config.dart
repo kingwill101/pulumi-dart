@@ -8,18 +8,13 @@ import 'api_product_operation_group_operation_config_quota.dart';
 class ApiProductOperationGroupOperationConfig {
   /// Required. Name of the API proxy with which the gRPC operation and quota are associated.
   final pulumi.Input<String>? apiSource;
-
   /// Custom attributes associated with the operation.
   /// Structure is documented below.
-  final pulumi.Input<List<ApiProductOperationGroupOperationConfigAttribute>>?
-  attributes;
-
+  final pulumi.Input<List<ApiProductOperationGroupOperationConfigAttribute>>? attributes;
   /// Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
   /// Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
   /// Structure is documented below.
-  final pulumi.Input<List<ApiProductOperationGroupOperationConfigOperation>>?
-  operations;
-
+  final pulumi.Input<List<ApiProductOperationGroupOperationConfigOperation>>? operations;
   /// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
   /// Structure is documented below.
   final pulumi.Input<ApiProductOperationGroupOperationConfigQuota>? quota;
@@ -39,84 +34,19 @@ class ApiProductOperationGroupOperationConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiSource': ?apiSource,
-      'attributes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ApiProductOperationGroupOperationConfigAttribute>,
-            List<Map<String, dynamic>>
-          >(
-            attributes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ApiProductOperationGroupOperationConfigAttribute,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'operations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ApiProductOperationGroupOperationConfigOperation>,
-            List<Map<String, dynamic>>
-          >(
-            operations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ApiProductOperationGroupOperationConfigOperation,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'quota':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApiProductOperationGroupOperationConfigQuota,
-            Map<String, dynamic>
-          >(quota, (value) => value.toMap()),
+      'attributes': ?pulumi.Input.mapOptionalInputValue<List<ApiProductOperationGroupOperationConfigAttribute>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<ApiProductOperationGroupOperationConfigAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'operations': ?pulumi.Input.mapOptionalInputValue<List<ApiProductOperationGroupOperationConfigOperation>, List<Map<String, dynamic>>>(operations, (value) => pulumi.Input.encodeList<ApiProductOperationGroupOperationConfigOperation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'quota': ?pulumi.Input.mapOptionalInputValue<ApiProductOperationGroupOperationConfigQuota, Map<String, dynamic>>(quota, (value) => value.toMap()),
     };
   }
 
-  factory ApiProductOperationGroupOperationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApiProductOperationGroupOperationConfig.fromMap(Map<String, dynamic> map) {
     return ApiProductOperationGroupOperationConfig(
-      apiSource: (() {
-        final guardedValue = map['apiSource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      attributes: (() {
-        final guardedValue = map['attributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            ApiProductOperationGroupOperationConfigAttribute
-          >(
-            guardedValue,
-            (value) => ApiProductOperationGroupOperationConfigAttribute.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      operations: (() {
-        final guardedValue = map['operations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            ApiProductOperationGroupOperationConfigOperation
-          >(
-            guardedValue,
-            (value) => ApiProductOperationGroupOperationConfigOperation.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      quota: (() {
-        final guardedValue = map['quota'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApiProductOperationGroupOperationConfigQuota.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      apiSource: (() { final guardedValue = map['apiSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApiProductOperationGroupOperationConfigAttribute>(guardedValue, (value) => ApiProductOperationGroupOperationConfigAttribute.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      operations: (() { final guardedValue = map['operations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApiProductOperationGroupOperationConfigOperation>(guardedValue, (value) => ApiProductOperationGroupOperationConfigOperation.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      quota: (() { final guardedValue = map['quota']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiProductOperationGroupOperationConfigQuota.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

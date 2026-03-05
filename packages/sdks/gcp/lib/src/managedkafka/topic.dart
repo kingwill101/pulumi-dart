@@ -292,26 +292,19 @@ import 'topic_state.dart';
 class Topic extends pulumi.CustomResource {
   /// The cluster name.
   late final pulumi.Output<String> cluster;
-
   /// Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
   late final pulumi.Output<Map<String, String>?> configs;
-
   /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   late final pulumi.Output<String> location;
-
   /// The name of the topic. The `topic` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/topics/TOPIC_ID`.
   late final pulumi.Output<String> name;
-
   /// The number of partitions in a topic. You can increase the partition count for a topic, but you cannot decrease it. Increasing partitions for a topic that uses a key might change how messages are distributed.
   late final pulumi.Output<int?> partitionCount;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
   late final pulumi.Output<int> replicationFactor;
-
   /// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
   late final pulumi.Output<String> topicId;
 
@@ -319,13 +312,16 @@ class Topic extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Topic]. {@macro pulumi_managedkafka_topic_topic_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Topic(String name, {TopicArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:managedkafka/topic:Topic',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Topic(
+    String name, {
+    TopicArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:managedkafka/topic:Topic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cluster = registerOutput<String>('cluster');
     configs = registerOutput<Map<String, String>?>('configs');
     location = registerOutput<String>('location');
@@ -337,7 +333,11 @@ class Topic extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Topic] resource's state with the given [name] and [id].
-  static Topic get(String name, pulumi.Input<String> id, {TopicState? state}) {
+  static Topic get(
+    String name,
+    pulumi.Input<String> id, {
+    TopicState? state,
+  }) {
     return Topic._get(
       name,
       state: state?.toMap(),
@@ -350,11 +350,11 @@ class Topic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:managedkafka/topic:Topic',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:managedkafka/topic:Topic',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cluster = registerOutput<String>('cluster');
     configs = registerOutput<Map<String, String>?>('configs');
     location = registerOutput<String>('location');

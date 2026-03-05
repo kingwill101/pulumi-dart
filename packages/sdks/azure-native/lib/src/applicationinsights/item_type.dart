@@ -17,3 +17,4 @@ enum ItemType {
     throw ArgumentError('Unknown ItemType value: $value');
   }
 }
+

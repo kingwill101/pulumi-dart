@@ -6,28 +6,20 @@ import 'system_data_response.dart';
 class GetBandwidthScheduleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The days of the week when this schedule is applicable.
   final List<String> days;
-
   /// The path ID that uniquely identifies the object.
   final String id;
-
   /// The object name.
   final String name;
-
   /// The bandwidth rate in Mbps.
   final int rateInMbps;
-
   /// The start time of the schedule in UTC.
   final String start;
-
   /// The stop time of the schedule in UTC.
   final String stop;
-
   /// Metadata pertaining to creation and last modification of BandwidthSchedule
   final SystemDataResponse systemData;
-
   /// The hierarchical type of the object.
   final String type;
 
@@ -76,10 +68,9 @@ class GetBandwidthScheduleResult {
       rateInMbps: map['rateInMbps'] as int,
       start: map['start'] as String,
       stop: map['stop'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

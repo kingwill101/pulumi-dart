@@ -10,31 +10,22 @@ import 'bucket_owner_access_enum_value.dart';
 class ProjectArtifacts {
   /// &lt;p&gt; An identifier for this artifact definition. &lt;/p&gt;
   final pulumi.Input<String>? artifactIdentifier;
-
   /// Property bucketOwnerAccess
   final pulumi.Input<BucketOwnerAccessEnumValue>? bucketOwnerAccess;
-
   /// &lt;p&gt; Set to true if you do not want your output artifacts encrypted. This option is valid only if your artifacts type is Amazon S3. If this is set with another artifacts type, an invalidInputException is thrown. &lt;/p&gt;
   final pulumi.Input<bool>? encryptionDisabled;
-
   /// &lt;p&gt;Information about the build output artifact location:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;CODEPIPELINE&lt;/code&gt;, CodePipeline ignores this value if specified. This is because CodePipeline manages its build output locations instead of CodeBuild.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;NO_ARTIFACTS&lt;/code&gt;, this value is ignored if specified, because no build output is produced.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;S3&lt;/code&gt;, this is the name of the output bucket.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   final pulumi.Input<String>? location;
-
   /// &lt;p&gt;Along with &lt;code&gt;path&lt;/code&gt; and &lt;code&gt;namespaceType&lt;/code&gt;, the pattern that CodeBuild uses to name and store the output artifact:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;CODEPIPELINE&lt;/code&gt;, CodePipeline ignores this value if specified. This is because CodePipeline manages its build output names instead of CodeBuild.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;NO_ARTIFACTS&lt;/code&gt;, this value is ignored if specified, because no build output is produced.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;S3&lt;/code&gt;, this is the name of the output artifact object. If you set the name to be a forward slash ('/'), the artifact is stored in the root of the output bucket.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; If &lt;code&gt;path&lt;/code&gt; is set to &lt;code&gt;MyArtifacts&lt;/code&gt;, &lt;code&gt;namespaceType&lt;/code&gt; is set to &lt;code&gt;BUILD_ID&lt;/code&gt;, and &lt;code&gt;name&lt;/code&gt; is set to &lt;code&gt;MyArtifact.zip&lt;/code&gt;, then the output artifact is stored in &lt;code&gt;MyArtifacts/&lt;build-ID&gt;/MyArtifact.zip&lt;/code&gt;. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; If &lt;code&gt;path&lt;/code&gt; is empty, &lt;code&gt;namespaceType&lt;/code&gt; is set to &lt;code&gt;NONE&lt;/code&gt;, and &lt;code&gt;name&lt;/code&gt; is set to '&lt;code&gt;/&lt;/code&gt;', the output artifact is stored in the root of the output bucket. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; If &lt;code&gt;path&lt;/code&gt; is set to &lt;code&gt;MyArtifacts&lt;/code&gt;, &lt;code&gt;namespaceType&lt;/code&gt; is set to &lt;code&gt;BUILD_ID&lt;/code&gt;, and &lt;code&gt;name&lt;/code&gt; is set to '&lt;code&gt;/&lt;/code&gt;', the output artifact is stored in &lt;code&gt;MyArtifacts/&lt;build-ID&gt;&lt;/code&gt;. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   final pulumi.Input<String>? name;
-
   /// &lt;p&gt;Along with &lt;code&gt;path&lt;/code&gt; and &lt;code&gt;name&lt;/code&gt;, the pattern that CodeBuild uses to determine the name and location to store the output artifact:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;CODEPIPELINE&lt;/code&gt;, CodePipeline ignores this value if specified. This is because CodePipeline manages its build output names instead of CodeBuild.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;NO_ARTIFACTS&lt;/code&gt;, this value is ignored if specified, because no build output is produced.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;S3&lt;/code&gt;, valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;BUILD_ID&lt;/code&gt;: Include the build ID in the location of the build output artifact.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NONE&lt;/code&gt;: Do not include the build ID. This is the default if &lt;code&gt;namespaceType&lt;/code&gt; is not specified.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For example, if &lt;code&gt;path&lt;/code&gt; is set to &lt;code&gt;MyArtifacts&lt;/code&gt;, &lt;code&gt;namespaceType&lt;/code&gt; is set to &lt;code&gt;BUILD_ID&lt;/code&gt;, and &lt;code&gt;name&lt;/code&gt; is set to &lt;code&gt;MyArtifact.zip&lt;/code&gt;, the output artifact is stored in &lt;code&gt;MyArtifacts/&lt;build-ID&gt;/MyArtifact.zip&lt;/code&gt;.&lt;/p&gt;
   final pulumi.Input<ArtifactNamespaceEnumValue>? namespaceType;
-
   /// &lt;p&gt; If this flag is set, a name specified in the buildspec file overrides the artifact name. The name specified in a buildspec file is calculated at build time and uses the Shell Command Language. For example, you can append a date and time to your artifact name so that it is always unique. &lt;/p&gt;
   final pulumi.Input<bool>? overrideArtifactName;
-
   /// &lt;p&gt;The type of build output artifact to create:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;CODEPIPELINE&lt;/code&gt;, CodePipeline ignores this value if specified. This is because CodePipeline manages its build output artifacts instead of CodeBuild.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;NO_ARTIFACTS&lt;/code&gt;, this value is ignored if specified, because no build output is produced.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;S3&lt;/code&gt;, valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NONE&lt;/code&gt;: CodeBuild creates in the output bucket a folder that contains the build output. This is the default if &lt;code&gt;packaging&lt;/code&gt; is not specified.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ZIP&lt;/code&gt;: CodeBuild creates in the output bucket a ZIP file that contains the build output.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt;
   final pulumi.Input<ArtifactPackagingEnumValue>? packaging;
-
   /// &lt;p&gt;Along with &lt;code&gt;namespaceType&lt;/code&gt; and &lt;code&gt;name&lt;/code&gt;, the pattern that CodeBuild uses to name and store the output artifact:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;CODEPIPELINE&lt;/code&gt;, CodePipeline ignores this value if specified. This is because CodePipeline manages its build output names instead of CodeBuild.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;NO_ARTIFACTS&lt;/code&gt;, this value is ignored if specified, because no build output is produced.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;S3&lt;/code&gt;, this is the path to the output artifact. If &lt;code&gt;path&lt;/code&gt; is not specified, &lt;code&gt;path&lt;/code&gt; is not used.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For example, if &lt;code&gt;path&lt;/code&gt; is set to &lt;code&gt;MyArtifacts&lt;/code&gt;, &lt;code&gt;namespaceType&lt;/code&gt; is set to &lt;code&gt;NONE&lt;/code&gt;, and &lt;code&gt;name&lt;/code&gt; is set to &lt;code&gt;MyArtifact.zip&lt;/code&gt;, the output artifact is stored in the output bucket at &lt;code&gt;MyArtifacts/MyArtifact.zip&lt;/code&gt;.&lt;/p&gt;
   final pulumi.Input<String>? path;
-
   /// &lt;p&gt;The type of build output artifact. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CODEPIPELINE&lt;/code&gt;: The build project has build output generated through CodePipeline. &lt;/p&gt; &lt;note&gt; &lt;p&gt;The &lt;code&gt;CODEPIPELINE&lt;/code&gt; type is not supported for &lt;code&gt;secondaryArtifacts&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NO_ARTIFACTS&lt;/code&gt;: The build project does not produce any build output.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;S3&lt;/code&gt;: The build project stores build output in Amazon S3.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   final pulumi.Input<ArtifactsTypeEnumValue>? type;
 
@@ -65,102 +56,31 @@ class ProjectArtifacts {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'artifactIdentifier': ?artifactIdentifier,
-      'bucketOwnerAccess':
-          ?pulumi.Input.mapOptionalInputValue<
-            BucketOwnerAccessEnumValue,
-            Map<String, dynamic>
-          >(bucketOwnerAccess, (value) => value.toMap()),
+      'bucketOwnerAccess': ?pulumi.Input.mapOptionalInputValue<BucketOwnerAccessEnumValue, Map<String, dynamic>>(bucketOwnerAccess, (value) => value.toMap()),
       'encryptionDisabled': ?encryptionDisabled,
       'location': ?location,
       'name': ?name,
-      'namespaceType':
-          ?pulumi.Input.mapOptionalInputValue<
-            ArtifactNamespaceEnumValue,
-            Map<String, dynamic>
-          >(namespaceType, (value) => value.toMap()),
+      'namespaceType': ?pulumi.Input.mapOptionalInputValue<ArtifactNamespaceEnumValue, Map<String, dynamic>>(namespaceType, (value) => value.toMap()),
       'overrideArtifactName': ?overrideArtifactName,
-      'packaging':
-          ?pulumi.Input.mapOptionalInputValue<
-            ArtifactPackagingEnumValue,
-            Map<String, dynamic>
-          >(packaging, (value) => value.toMap()),
+      'packaging': ?pulumi.Input.mapOptionalInputValue<ArtifactPackagingEnumValue, Map<String, dynamic>>(packaging, (value) => value.toMap()),
       'path': ?path,
-      'type':
-          ?pulumi.Input.mapOptionalInputValue<
-            ArtifactsTypeEnumValue,
-            Map<String, dynamic>
-          >(type, (value) => value.toMap()),
+      'type': ?pulumi.Input.mapOptionalInputValue<ArtifactsTypeEnumValue, Map<String, dynamic>>(type, (value) => value.toMap()),
     };
   }
 
   factory ProjectArtifacts.fromMap(Map<String, dynamic> map) {
     return ProjectArtifacts(
-      artifactIdentifier: (() {
-        final guardedValue = map['artifactIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bucketOwnerAccess: (() {
-        final guardedValue = map['bucketOwnerAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BucketOwnerAccessEnumValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      encryptionDisabled: (() {
-        final guardedValue = map['encryptionDisabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespaceType: (() {
-        final guardedValue = map['namespaceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ArtifactNamespaceEnumValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      overrideArtifactName: (() {
-        final guardedValue = map['overrideArtifactName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      packaging: (() {
-        final guardedValue = map['packaging'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ArtifactPackagingEnumValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ArtifactsTypeEnumValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      artifactIdentifier: (() { final guardedValue = map['artifactIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bucketOwnerAccess: (() { final guardedValue = map['bucketOwnerAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BucketOwnerAccessEnumValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      encryptionDisabled: (() { final guardedValue = map['encryptionDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespaceType: (() { final guardedValue = map['namespaceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ArtifactNamespaceEnumValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      overrideArtifactName: (() { final guardedValue = map['overrideArtifactName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      packaging: (() { final guardedValue = map['packaging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ArtifactPackagingEnumValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ArtifactsTypeEnumValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

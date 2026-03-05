@@ -16,18 +16,15 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowChangingZone': ?allowChangingZone};
+    return <String, dynamic>{
+      'allowChangingZone': ?allowChangingZone,
+    };
   }
 
-  factory RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair(
-      allowChangingZone: (() {
-        final guardedValue = map['allowChangingZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowChangingZone: (() { final guardedValue = map['allowChangingZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,40 +7,29 @@ import 'get_listener_default_action.dart';
 class GetListenerResult {
   /// ARN of the listener.
   final String arn;
-
   /// The date and time that the listener was created.
   final String createdAt;
-
   /// The actions for the default listener rule.
   final List<GetListenerDefaultAction> defaultActions;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The date and time the listener was last updated.
   final String lastUpdatedAt;
-
   /// The ID of the listener.
   final String listenerId;
   final String listenerIdentifier;
-
   /// The name of the listener.
   final String name;
-
   /// The listener port.
   final int port;
-
   /// The listener protocol. Either `HTTPS` or `HTTP`.
   final String protocol;
   final String region;
-
   /// The ARN of the service.
   final String serviceArn;
-
   /// The ID of the service.
   final String serviceId;
   final String serviceIdentifier;
-
   /// List of tags associated with the listener.
   final Map<String, String> tags;
 
@@ -82,11 +71,7 @@ class GetListenerResult {
     return <String, dynamic>{
       'arn': arn,
       'createdAt': createdAt,
-      'defaultActions':
-          pulumi.Input.encodeList<
-            GetListenerDefaultAction,
-            Map<String, dynamic>
-          >(defaultActions, (value) => value.toMap()),
+      'defaultActions': pulumi.Input.encodeList<GetListenerDefaultAction, Map<String, dynamic>>(defaultActions, (value) => value.toMap()),
       'id': id,
       'lastUpdatedAt': lastUpdatedAt,
       'listenerId': listenerId,
@@ -106,12 +91,7 @@ class GetListenerResult {
     return GetListenerResult(
       arn: map['arn'] as String,
       createdAt: map['createdAt'] as String,
-      defaultActions: pulumi.Input.decodeList<GetListenerDefaultAction>(
-        map['defaultActions']!,
-        (value) => GetListenerDefaultAction.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      defaultActions: pulumi.Input.decodeList<GetListenerDefaultAction>(map['defaultActions']!, (value) => GetListenerDefaultAction.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       lastUpdatedAt: map['lastUpdatedAt'] as String,
       listenerId: map['listenerId'] as String,
@@ -127,3 +107,4 @@ class GetListenerResult {
     );
   }
 }
+

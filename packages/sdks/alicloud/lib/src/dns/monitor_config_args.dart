@@ -10,25 +10,18 @@ import 'monitor_config_isp_city_node.dart';
 class MonitorConfigArgs {
   /// The ID of the address pool.
   final pulumi.Input<String> addrPoolId;
-
   /// The number of consecutive times of failed health check attempts. Valid values: `1`, `2`, `3`.
   final pulumi.Input<int> evaluationCount;
-
   /// The health check interval. Unit: seconds. Valid values: `60`.
   final pulumi.Input<int> interval;
-
   /// The Monitoring node. See `isp_city_node` below for details.
   final pulumi.Input<List<MonitorConfigIspCityNode>> ispCityNodes;
-
   /// The lang.
   final pulumi.Input<String>? lang;
-
   /// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
   final pulumi.Input<String> monitorExtendInfo;
-
   /// The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
   final pulumi.Input<String> protocolType;
-
   /// The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
   final pulumi.Input<int> timeout;
 
@@ -57,18 +50,7 @@ class MonitorConfigArgs {
       'addrPoolId': addrPoolId,
       'evaluationCount': evaluationCount,
       'interval': interval,
-      'ispCityNodes':
-          pulumi.Input.mapInputValue<
-            List<MonitorConfigIspCityNode>,
-            List<Map<String, dynamic>>
-          >(
-            ispCityNodes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MonitorConfigIspCityNode,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ispCityNodes': pulumi.Input.mapInputValue<List<MonitorConfigIspCityNode>, List<Map<String, dynamic>>>(ispCityNodes, (value) => pulumi.Input.encodeList<MonitorConfigIspCityNode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lang': ?lang,
       'monitorExtendInfo': monitorExtendInfo,
       'protocolType': protocolType,
@@ -81,24 +63,12 @@ class MonitorConfigArgs {
       addrPoolId: pulumi.Input.fromValue(map['addrPoolId'] as String),
       evaluationCount: pulumi.Input.fromValue(map['evaluationCount'] as int),
       interval: pulumi.Input.fromValue(map['interval'] as int),
-      ispCityNodes: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<MonitorConfigIspCityNode>(
-          map['ispCityNodes']!,
-          (value) => MonitorConfigIspCityNode.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      lang: (() {
-        final guardedValue = map['lang'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      monitorExtendInfo: pulumi.Input.fromValue(
-        map['monitorExtendInfo'] as String,
-      ),
+      ispCityNodes: pulumi.Input.fromValue(pulumi.Input.decodeList<MonitorConfigIspCityNode>(map['ispCityNodes']!, (value) => MonitorConfigIspCityNode.fromMap((value as Map).cast<String, dynamic>()))),
+      lang: (() { final guardedValue = map['lang']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      monitorExtendInfo: pulumi.Input.fromValue(map['monitorExtendInfo'] as String),
       protocolType: pulumi.Input.fromValue(map['protocolType'] as String),
       timeout: pulumi.Input.fromValue(map['timeout'] as int),
     );
   }
 }
+

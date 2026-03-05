@@ -15,8 +15,7 @@ enum SharedPrivateLinkResourceStatus {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SharedPrivateLinkResourceStatus value: $value',
-    );
+    throw ArgumentError('Unknown SharedPrivateLinkResourceStatus value: $value');
   }
 }
+

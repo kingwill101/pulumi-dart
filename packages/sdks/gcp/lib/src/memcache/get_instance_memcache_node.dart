@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceMemcacheNode {
   /// Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
   final pulumi.Input<String> host;
-
   /// Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
   final pulumi.Input<String> nodeId;
-
   /// The port number of the Memcached server on this node.
   final pulumi.Input<int> port;
-
   /// Current state of the Memcached node.
   final pulumi.Input<String> state;
-
   /// Location (GCP Zone) for the Memcached node.
   final pulumi.Input<String> zone;
 
@@ -52,3 +48,4 @@ class GetInstanceMemcacheNode {
     );
   }
 }
+

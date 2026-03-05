@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPlanState {
   /// Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
   final pulumi.Input<bool>? active;
-
   /// The backup cycle. Valid values: `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday`, `Wednesday`.
   final pulumi.Input<String>? backupPeriod;
-
   /// The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
   final pulumi.Input<String>? backupTime;
-
   /// The ID of the cluster for the backup.
   final pulumi.Input<String>? clusterId;
-
   /// The ID of the data center for the backup in the cluster.
   final pulumi.Input<String>? dataCenterId;
-
   /// The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
   final pulumi.Input<int>? retentionPeriod;
 
@@ -51,36 +46,13 @@ class BackupPlanState {
 
   factory BackupPlanState.fromMap(Map<String, dynamic> map) {
     return BackupPlanState(
-      active: (() {
-        final guardedValue = map['active'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      backupPeriod: (() {
-        final guardedValue = map['backupPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      backupTime: (() {
-        final guardedValue = map['backupTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clusterId: (() {
-        final guardedValue = map['clusterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataCenterId: (() {
-        final guardedValue = map['dataCenterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retentionPeriod: (() {
-        final guardedValue = map['retentionPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      active: (() { final guardedValue = map['active']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      backupPeriod: (() { final guardedValue = map['backupPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backupTime: (() { final guardedValue = map['backupTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterId: (() { final guardedValue = map['clusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataCenterId: (() { final guardedValue = map['dataCenterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retentionPeriod: (() { final guardedValue = map['retentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

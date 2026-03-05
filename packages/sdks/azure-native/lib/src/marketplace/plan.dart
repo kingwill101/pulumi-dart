@@ -8,19 +8,20 @@ class Plan {
 
   /// Creates a new [Plan].
   /// [accessibility] Plan accessibility
-  Plan({this.accessibility});
+  Plan({
+    this.accessibility,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accessibility': ?accessibility};
+    return <String, dynamic>{
+      'accessibility': ?accessibility,
+    };
   }
 
   factory Plan.fromMap(Map<String, dynamic> map) {
     return Plan(
-      accessibility: (() {
-        final guardedValue = map['accessibility'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessibility: (() { final guardedValue = map['accessibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

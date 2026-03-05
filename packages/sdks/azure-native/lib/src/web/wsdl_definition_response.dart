@@ -7,13 +7,10 @@ import 'wsdl_service_response.dart';
 class WsdlDefinitionResponse {
   /// The WSDL content
   final pulumi.Input<String>? content;
-
   /// The WSDL import method
   final pulumi.Input<String>? importMethod;
-
   /// The service with name and endpoint names
   final pulumi.Input<WsdlServiceResponse>? service;
-
   /// The WSDL URL
   final pulumi.Input<String>? url;
 
@@ -33,41 +30,18 @@ class WsdlDefinitionResponse {
     return <String, dynamic>{
       'content': ?content,
       'importMethod': ?importMethod,
-      'service':
-          ?pulumi.Input.mapOptionalInputValue<
-            WsdlServiceResponse,
-            Map<String, dynamic>
-          >(service, (value) => value.toMap()),
+      'service': ?pulumi.Input.mapOptionalInputValue<WsdlServiceResponse, Map<String, dynamic>>(service, (value) => value.toMap()),
       'url': ?url,
     };
   }
 
   factory WsdlDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return WsdlDefinitionResponse(
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      importMethod: (() {
-        final guardedValue = map['importMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      service: (() {
-        final guardedValue = map['service'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WsdlServiceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      url: (() {
-        final guardedValue = map['url'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      importMethod: (() { final guardedValue = map['importMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WsdlServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

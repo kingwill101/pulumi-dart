@@ -197,13 +197,10 @@ import 'table_state.dart';
 class Table extends pulumi.CustomResource {
   /// One or more `acl` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> acls;
-
   /// The name of the storage table. Only Alphanumeric characters allowed, starting with a letter. Must be unique within the storage account the table is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The Resource Manager ID of this Storage Table.
   late final pulumi.Output<String> resourceManagerId;
-
   /// Specifies the storage account in which to create the storage table. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountName;
 
@@ -211,13 +208,16 @@ class Table extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Table]. {@macro pulumi_storage_table_table_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Table(String name, {TableArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:storage/table:Table',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Table(
+    String name, {
+    TableArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:storage/table:Table',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acls = registerOutput<List<Map<String, dynamic>>?>('acls');
     this.name = registerOutput<String>('name');
     resourceManagerId = registerOutput<String>('resourceManagerId');
@@ -225,7 +225,11 @@ class Table extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Table] resource's state with the given [name] and [id].
-  static Table get(String name, pulumi.Input<String> id, {TableState? state}) {
+  static Table get(
+    String name,
+    pulumi.Input<String> id, {
+    TableState? state,
+  }) {
     return Table._get(
       name,
       state: state?.toMap(),
@@ -238,11 +242,11 @@ class Table extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/table:Table',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/table:Table',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acls = registerOutput<List<Map<String, dynamic>>?>('acls');
     this.name = registerOutput<String>('name');
     resourceManagerId = registerOutput<String>('resourceManagerId');

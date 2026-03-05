@@ -9,19 +9,20 @@ class LabVhdResponse {
 
   /// Creates a new [LabVhdResponse].
   /// [id] The URI to the VHD.
-  LabVhdResponse({this.id});
+  LabVhdResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory LabVhdResponse.fromMap(Map<String, dynamic> map) {
     return LabVhdResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

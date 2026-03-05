@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEncryptionScope.
 class GetEncryptionScopeResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The ID of the Key Vault Key.
   final String keyVaultKeyId;
   final String name;
-
   /// The source of the Storage Encryption Scope.
   final String source;
   final String storageAccountId;
@@ -47,3 +46,4 @@ class GetEncryptionScopeResult {
     );
   }
 }
+

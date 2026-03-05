@@ -8,10 +8,14 @@ class GlobalTableReplica {
 
   /// Creates a new [GlobalTableReplica].
   /// [regionName] AWS region name of replica DynamoDB TableE.g., `us-east-1`
-  GlobalTableReplica({required this.regionName});
+  GlobalTableReplica({
+    required this.regionName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'regionName': regionName};
+    return <String, dynamic>{
+      'regionName': regionName,
+    };
   }
 
   factory GlobalTableReplica.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GlobalTableReplica {
     );
   }
 }
+

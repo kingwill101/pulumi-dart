@@ -6,25 +6,18 @@ import 'scope_lifecycle_state_response_gkehub_v1beta.dart';
 class GetScopeGkehubV1betaResult {
   /// When the scope was created.
   final String createTime;
-
   /// When the scope was deleted.
   final String deleteTime;
-
   /// Optional. Labels for this Scope.
   final Map<String, String> labels;
-
   /// The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
   final String name;
-
   /// Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
   final Map<String, String> namespaceLabels;
-
   /// State of the scope resource.
   final ScopeLifecycleStateResponseGkehubV1beta state;
-
   /// Google-generated UUID for this resource. This is unique across all scope resources. If a scope resource is deleted and another resource with the same name is created, it gets a different uid.
   final String uid;
-
   /// When the scope was last updated.
   final String updateTime;
 
@@ -68,11 +61,10 @@ class GetScopeGkehubV1betaResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       namespaceLabels: (map['namespaceLabels'] as Map).cast<String, String>(),
-      state: ScopeLifecycleStateResponseGkehubV1beta.fromMap(
-        (map['state']! as Map).cast<String, dynamic>(),
-      ),
+      state: ScopeLifecycleStateResponseGkehubV1beta.fromMap((map['state']! as Map).cast<String, dynamic>()),
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

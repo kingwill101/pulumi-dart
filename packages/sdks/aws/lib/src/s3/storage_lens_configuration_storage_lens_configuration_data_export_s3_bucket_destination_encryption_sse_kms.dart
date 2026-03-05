@@ -13,14 +13,15 @@ class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinat
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyId': keyId};
+    return <String, dynamic>{
+      'keyId': keyId,
+    };
   }
 
-  factory StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms(
       keyId: pulumi.Input.fromValue(map['keyId'] as String),
     );
   }
 }
+

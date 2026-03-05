@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse {
   /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
   final pulumi.Input<double> confidence;
-
   /// Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
   final pulumi.Input<String> type;
 
@@ -19,15 +18,17 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectRespons
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'confidence': confidence, 'type': type};
+    return <String, dynamic>{
+      'confidence': confidence,
+      'type': type,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse(
       confidence: pulumi.Input.fromValue(map['confidence'] as double),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

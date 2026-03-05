@@ -11,10 +11,8 @@ class GetAlertRuleTemplateArgs {
   ///
   /// &gt; **Note:** As `display_name` is not unique, errors may occur when there are multiple Sentinel Alert Rule Template with same `display_name`.
   final pulumi.Input<String>? displayName;
-
   /// The ID of the Log Analytics Workspace.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
-
   /// The name of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
   final pulumi.Input<String>? name;
 
@@ -38,19 +36,10 @@ class GetAlertRuleTemplateArgs {
 
   factory GetAlertRuleTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleTemplateArgs(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
-        map['logAnalyticsWorkspaceId'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(map['logAnalyticsWorkspaceId'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

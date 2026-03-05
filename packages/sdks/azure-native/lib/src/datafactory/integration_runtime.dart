@@ -157,16 +157,12 @@ import 'managed_integration_runtime_response.dart';
 class IntegrationRuntime extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Etag identifies change in the resource.
   late final pulumi.Output<String> etag;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// Integration runtime properties.
   late final pulumi.Output<ManagedIntegrationRuntimeResponse> properties;
-
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -179,24 +175,15 @@ class IntegrationRuntime extends pulumi.CustomResource {
     IntegrationRuntimeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datafactory:IntegrationRuntime',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datafactory:IntegrationRuntime',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ManagedIntegrationRuntimeResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedIntegrationRuntimeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ManagedIntegrationRuntimeResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIntegrationRuntimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -9,19 +9,20 @@ class AssignedComponentItemResponse {
 
   /// Creates a new [AssignedComponentItemResponse].
   /// [key] unique key to a security assessment object
-  AssignedComponentItemResponse({this.key});
+  AssignedComponentItemResponse({
+    this.key,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key};
+    return <String, dynamic>{
+      'key': ?key,
+    };
   }
 
   factory AssignedComponentItemResponse.fromMap(Map<String, dynamic> map) {
     return AssignedComponentItemResponse(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

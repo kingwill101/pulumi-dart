@@ -16,3 +16,4 @@ enum BatchLoggingLevel {
     throw ArgumentError('Unknown BatchLoggingLevel value: $value');
   }
 }
+

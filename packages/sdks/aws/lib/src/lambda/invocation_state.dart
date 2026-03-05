@@ -6,28 +6,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InvocationState {
   /// Name of the Lambda function.
   final pulumi.Input<String>? functionName;
-
   /// JSON payload to the Lambda function.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? input;
-
   /// Lifecycle scope of the resource to manage. Valid values are `CREATE_ONLY` and `CRUD`. Defaults to `CREATE_ONLY`. `CREATE_ONLY` will invoke the function only on creation or replacement. `CRUD` will invoke the function on each lifecycle event, and augment the input JSON payload with additional lifecycle information.
   final pulumi.Input<String>? lifecycleScope;
-
   /// Qualifier (i.e., version) of the Lambda function. Defaults to `$LATEST`.
   final pulumi.Input<String>? qualifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// String result of the Lambda function invocation.
   final pulumi.Input<String>? result;
-
   /// Tenant Id to serve invocations from specified tenant.
   final pulumi.Input<String>? tenantId;
   final pulumi.Input<String>? terraformKey;
-
   /// Map of arbitrary keys and values that, when changed, will trigger a re-invocation.
   final pulumi.Input<Map<String, String>>? triggers;
 
@@ -69,53 +62,16 @@ class InvocationState {
 
   factory InvocationState.fromMap(Map<String, dynamic> map) {
     return InvocationState(
-      functionName: (() {
-        final guardedValue = map['functionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      input: (() {
-        final guardedValue = map['input'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lifecycleScope: (() {
-        final guardedValue = map['lifecycleScope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      qualifier: (() {
-        final guardedValue = map['qualifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      result: (() {
-        final guardedValue = map['result'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      terraformKey: (() {
-        final guardedValue = map['terraformKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      triggers: (() {
-        final guardedValue = map['triggers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      functionName: (() { final guardedValue = map['functionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      input: (() { final guardedValue = map['input']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lifecycleScope: (() { final guardedValue = map['lifecycleScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      qualifier: (() { final guardedValue = map['qualifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      result: (() { final guardedValue = map['result']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      terraformKey: (() { final guardedValue = map['terraformKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      triggers: (() { final guardedValue = map['triggers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

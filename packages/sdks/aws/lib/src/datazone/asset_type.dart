@@ -125,30 +125,22 @@ import 'asset_type_timeouts.dart';
 class AssetType extends pulumi.CustomResource {
   /// The timestamp when the custom asset type was created.
   late final pulumi.Output<String> createdAt;
-
   /// The user who created the custom asset type.
   late final pulumi.Output<String> createdBy;
-
   /// The description of the custom asset type.
   late final pulumi.Output<String?> description;
-
   /// The unique identifier of the Amazon DataZone domain where the custom asset type is being created.
   late final pulumi.Output<String> domainIdentifier;
-
   /// The metadata forms that are to be attached to the custom asset type.
   late final pulumi.Output<List<Map<String, dynamic>>?> formsInputs;
-
   /// The name of the custom asset type.
   late final pulumi.Output<String> name;
-
   /// The unique identifier of the Amazon DataZone project that owns the custom asset type.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> owningProjectIdentifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The revision of the asset type.
   late final pulumi.Output<String> revision;
   late final pulumi.Output<AssetTypeTimeouts?> timeouts;
@@ -162,11 +154,11 @@ class AssetType extends pulumi.CustomResource {
     AssetTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:datazone/assetType:AssetType',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:datazone/assetType:AssetType',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');
@@ -176,16 +168,7 @@ class AssetType extends pulumi.CustomResource {
     owningProjectIdentifier = registerOutput<String>('owningProjectIdentifier');
     region = registerOutput<String>('region');
     revision = registerOutput<String>('revision');
-    timeouts = registerOutput<AssetTypeTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AssetTypeTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<AssetTypeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetTypeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AssetType] resource's state with the given [name] and [id].
@@ -206,11 +189,11 @@ class AssetType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:datazone/assetType:AssetType',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:datazone/assetType:AssetType',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');
@@ -220,15 +203,6 @@ class AssetType extends pulumi.CustomResource {
     owningProjectIdentifier = registerOutput<String>('owningProjectIdentifier');
     region = registerOutput<String>('region');
     revision = registerOutput<String>('revision');
-    timeouts = registerOutput<AssetTypeTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AssetTypeTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<AssetTypeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetTypeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

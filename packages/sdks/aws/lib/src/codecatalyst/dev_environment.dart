@@ -194,30 +194,22 @@ import 'dev_environment_state.dart';
 /// ```
 class DevEnvironment extends pulumi.CustomResource {
   late final pulumi.Output<String?> alias;
-
   /// Information about the integrated development environment (IDE) configured for a Dev Environment.
   late final pulumi.Output<DevEnvironmentIdes> ides;
-
   /// The amount of time the Dev Environment will run without any activity detected before stopping, in minutes. Only whole integers are allowed. Dev Environments consume compute minutes when running.
   late final pulumi.Output<int?> inactivityTimeoutMinutes;
-
   /// The Amazon EC2 instace type to use for the Dev Environment. Valid values include dev.standard1.small,dev.standard1.medium,dev.standard1.large,dev.standard1.xlarge
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> instanceType;
-
   /// Information about the amount of storage allocated to the Dev Environment.
   late final pulumi.Output<DevEnvironmentPersistentStorage> persistentStorage;
-
   /// The name of the project in the space.
   late final pulumi.Output<String> projectName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The source repository that contains the branch to clone into the Dev Environment.
   late final pulumi.Output<List<Map<String, dynamic>>?> repositories;
-
   /// The name of the space.
   late final pulumi.Output<String> spaceName;
 
@@ -230,34 +222,16 @@ class DevEnvironment extends pulumi.CustomResource {
     DevEnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codecatalyst/devEnvironment:DevEnvironment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:codecatalyst/devEnvironment:DevEnvironment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String?>('alias');
-    ides = registerOutput<DevEnvironmentIdes>(
-      'ides',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DevEnvironmentIdes.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ides = registerOutput<DevEnvironmentIdes>('ides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevEnvironmentIdes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inactivityTimeoutMinutes = registerOutput<int?>('inactivityTimeoutMinutes');
     instanceType = registerOutput<String>('instanceType');
-    persistentStorage = registerOutput<DevEnvironmentPersistentStorage>(
-      'persistentStorage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DevEnvironmentPersistentStorage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    persistentStorage = registerOutput<DevEnvironmentPersistentStorage>('persistentStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevEnvironmentPersistentStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     projectName = registerOutput<String>('projectName');
     region = registerOutput<String>('region');
     repositories = registerOutput<List<Map<String, dynamic>>?>('repositories');
@@ -282,34 +256,16 @@ class DevEnvironment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codecatalyst/devEnvironment:DevEnvironment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:codecatalyst/devEnvironment:DevEnvironment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String?>('alias');
-    ides = registerOutput<DevEnvironmentIdes>(
-      'ides',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DevEnvironmentIdes.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ides = registerOutput<DevEnvironmentIdes>('ides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevEnvironmentIdes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inactivityTimeoutMinutes = registerOutput<int?>('inactivityTimeoutMinutes');
     instanceType = registerOutput<String>('instanceType');
-    persistentStorage = registerOutput<DevEnvironmentPersistentStorage>(
-      'persistentStorage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DevEnvironmentPersistentStorage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    persistentStorage = registerOutput<DevEnvironmentPersistentStorage>('persistentStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevEnvironmentPersistentStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     projectName = registerOutput<String>('projectName');
     region = registerOutput<String>('region');
     repositories = registerOutput<List<Map<String, dynamic>>?>('repositories');

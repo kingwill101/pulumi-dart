@@ -13,16 +13,15 @@ class CertificateTemplatePassthroughExtensionsAdditionalExtension {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectIdPaths': objectIdPaths};
+    return <String, dynamic>{
+      'objectIdPaths': objectIdPaths,
+    };
   }
 
-  factory CertificateTemplatePassthroughExtensionsAdditionalExtension.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CertificateTemplatePassthroughExtensionsAdditionalExtension.fromMap(Map<String, dynamic> map) {
     return CertificateTemplatePassthroughExtensionsAdditionalExtension(
-      objectIdPaths: pulumi.Input.fromValue(
-        (map['objectIdPaths'] as List).cast<int>(),
-      ),
+      objectIdPaths: pulumi.Input.fromValue((map['objectIdPaths'] as List).cast<int>()),
     );
   }
 }
+

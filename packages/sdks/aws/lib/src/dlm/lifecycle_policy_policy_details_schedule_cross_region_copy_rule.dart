@@ -7,17 +7,10 @@ import 'lifecycle_policy_policy_details_schedule_cross_region_copy_rule_retain_r
 class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule {
   final pulumi.Input<String>? cmkArn;
   final pulumi.Input<bool>? copyTags;
-  final pulumi.Input<
-    LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule
-  >?
-  deprecateRule;
+  final pulumi.Input<LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule>? deprecateRule;
   final pulumi.Input<bool> encrypted;
-  final pulumi.Input<
-    LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule
-  >?
-  retainRule;
+  final pulumi.Input<LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule>? retainRule;
   final pulumi.Input<String>? target;
-
   /// Use only for DLM policies of `policy_type=IMAGE_MANAGEMENT`. The target Region or the Amazon Resource Name (ARN) of the target Outpost for the snapshot copies.
   final pulumi.Input<String>? targetRegion;
 
@@ -43,65 +36,24 @@ class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule {
     return <String, dynamic>{
       'cmkArn': ?cmkArn,
       'copyTags': ?copyTags,
-      'deprecateRule':
-          ?pulumi.Input.mapOptionalInputValue<
-            LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule,
-            Map<String, dynamic>
-          >(deprecateRule, (value) => value.toMap()),
+      'deprecateRule': ?pulumi.Input.mapOptionalInputValue<LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule, Map<String, dynamic>>(deprecateRule, (value) => value.toMap()),
       'encrypted': encrypted,
-      'retainRule':
-          ?pulumi.Input.mapOptionalInputValue<
-            LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule,
-            Map<String, dynamic>
-          >(retainRule, (value) => value.toMap()),
+      'retainRule': ?pulumi.Input.mapOptionalInputValue<LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule, Map<String, dynamic>>(retainRule, (value) => value.toMap()),
       'target': ?target,
       'targetRegion': ?targetRegion,
     };
   }
 
-  factory LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule(
-      cmkArn: (() {
-        final guardedValue = map['cmkArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      copyTags: (() {
-        final guardedValue = map['copyTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      deprecateRule: (() {
-        final guardedValue = map['deprecateRule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      cmkArn: (() { final guardedValue = map['cmkArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      copyTags: (() { final guardedValue = map['copyTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deprecateRule: (() { final guardedValue = map['deprecateRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
-      retainRule: (() {
-        final guardedValue = map['retainRule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      target: (() {
-        final guardedValue = map['target'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetRegion: (() {
-        final guardedValue = map['targetRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      retainRule: (() { final guardedValue = map['retainRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetRegion: (() { final guardedValue = map['targetRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -16,37 +16,14 @@ class ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicIPPrefixes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ResourceReferenceResponse>,
-            List<Map<String, dynamic>>
-          >(
-            publicIPPrefixes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ResourceReferenceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'publicIPPrefixes': ?pulumi.Input.mapOptionalInputValue<List<ResourceReferenceResponse>, List<Map<String, dynamic>>>(publicIPPrefixes, (value) => pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes.fromMap(Map<String, dynamic> map) {
     return ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes(
-      publicIPPrefixes: (() {
-        final guardedValue = map['publicIPPrefixes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ResourceReferenceResponse>(
-            guardedValue,
-            (value) => ResourceReferenceResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      publicIPPrefixes: (() { final guardedValue = map['publicIPPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

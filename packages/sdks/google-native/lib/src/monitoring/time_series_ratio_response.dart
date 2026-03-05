@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TimeSeriesRatioResponse {
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying bad service, either demanded service that was not provided or demanded service that was of inadequate quality. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
   final pulumi.Input<String> badServiceFilter;
-
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying good service provided. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
   final pulumi.Input<String> goodServiceFilter;
-
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying total demanded service. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
   final pulumi.Input<String> totalServiceFilter;
 
@@ -33,15 +31,10 @@ class TimeSeriesRatioResponse {
 
   factory TimeSeriesRatioResponse.fromMap(Map<String, dynamic> map) {
     return TimeSeriesRatioResponse(
-      badServiceFilter: pulumi.Input.fromValue(
-        map['badServiceFilter'] as String,
-      ),
-      goodServiceFilter: pulumi.Input.fromValue(
-        map['goodServiceFilter'] as String,
-      ),
-      totalServiceFilter: pulumi.Input.fromValue(
-        map['totalServiceFilter'] as String,
-      ),
+      badServiceFilter: pulumi.Input.fromValue(map['badServiceFilter'] as String),
+      goodServiceFilter: pulumi.Input.fromValue(map['goodServiceFilter'] as String),
+      totalServiceFilter: pulumi.Input.fromValue(map['totalServiceFilter'] as String),
     );
   }
 }
+

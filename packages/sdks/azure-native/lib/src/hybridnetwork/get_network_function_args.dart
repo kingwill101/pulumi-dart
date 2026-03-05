@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkFunctionArgs {
   /// The name of the network function resource.
   final pulumi.Input<String> networkFunctionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetNetworkFunctionArgs {
 
   factory GetNetworkFunctionArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkFunctionArgs(
-      networkFunctionName: pulumi.Input.fromValue(
-        map['networkFunctionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      networkFunctionName: pulumi.Input.fromValue(map['networkFunctionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

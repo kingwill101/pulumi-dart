@@ -7,11 +7,8 @@ import 'managed_disk_encryption_key_vault_properties.dart';
 class ManagedDiskEncryption {
   /// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
   final pulumi.Input<String> keySource;
-
   /// Key Vault input properties for encryption.
-  final pulumi.Input<ManagedDiskEncryptionKeyVaultProperties>
-  keyVaultProperties;
-
+  final pulumi.Input<ManagedDiskEncryptionKeyVaultProperties> keyVaultProperties;
   /// Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
   final pulumi.Input<bool>? rotationToLatestKeyVersionEnabled;
 
@@ -28,11 +25,7 @@ class ManagedDiskEncryption {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keySource': keySource,
-      'keyVaultProperties':
-          pulumi.Input.mapInputValue<
-            ManagedDiskEncryptionKeyVaultProperties,
-            Map<String, dynamic>
-          >(keyVaultProperties, (value) => value.toMap()),
+      'keyVaultProperties': pulumi.Input.mapInputValue<ManagedDiskEncryptionKeyVaultProperties, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
       'rotationToLatestKeyVersionEnabled': ?rotationToLatestKeyVersionEnabled,
     };
   }
@@ -40,16 +33,9 @@ class ManagedDiskEncryption {
   factory ManagedDiskEncryption.fromMap(Map<String, dynamic> map) {
     return ManagedDiskEncryption(
       keySource: pulumi.Input.fromValue(map['keySource'] as String),
-      keyVaultProperties: pulumi.Input.fromValue(
-        ManagedDiskEncryptionKeyVaultProperties.fromMap(
-          (map['keyVaultProperties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      rotationToLatestKeyVersionEnabled: (() {
-        final guardedValue = map['rotationToLatestKeyVersionEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      keyVaultProperties: pulumi.Input.fromValue(ManagedDiskEncryptionKeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())),
+      rotationToLatestKeyVersionEnabled: (() { final guardedValue = map['rotationToLatestKeyVersionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

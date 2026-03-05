@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement {
   /// The type of resource to assign to a container. The supported resources include `GPU`, `MEMORY`, and `VCPU`.
   final pulumi.Input<String> type;
-
   /// The quantity of the specified resource to reserve for the container.
   final pulumi.Input<String> value;
 
@@ -18,15 +17,17 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type, 'value': value};
+    return <String, dynamic>{
+      'type': type,
+      'value': value,
+    };
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement(
       type: pulumi.Input.fromValue(map['type'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

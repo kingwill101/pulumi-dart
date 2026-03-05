@@ -8,29 +8,20 @@ class WafRuleSharedActions {
 
   /// Creates a new [WafRuleSharedActions].
   /// [response] Optional.
-  WafRuleSharedActions({this.response});
+  WafRuleSharedActions({
+    this.response,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'response':
-          ?pulumi.Input.mapOptionalInputValue<
-            WafRuleSharedActionsResponse,
-            Map<String, dynamic>
-          >(response, (value) => value.toMap()),
+      'response': ?pulumi.Input.mapOptionalInputValue<WafRuleSharedActionsResponse, Map<String, dynamic>>(response, (value) => value.toMap()),
     };
   }
 
   factory WafRuleSharedActions.fromMap(Map<String, dynamic> map) {
     return WafRuleSharedActions(
-      response: (() {
-        final guardedValue = map['response'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WafRuleSharedActionsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      response: (() { final guardedValue = map['response']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WafRuleSharedActionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

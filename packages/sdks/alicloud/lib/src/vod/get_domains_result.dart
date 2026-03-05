@@ -7,7 +7,6 @@ import 'get_domains_domain.dart';
 class GetDomainsResult {
   final String? domainSearchType;
   final List<GetDomainsDomain> domains;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -42,11 +41,7 @@ class GetDomainsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domainSearchType': ?domainSearchType,
-      'domains':
-          pulumi.Input.encodeList<GetDomainsDomain, Map<String, dynamic>>(
-            domains,
-            (value) => value.toMap(),
-          ),
+      'domains': pulumi.Input.encodeList<GetDomainsDomain, Map<String, dynamic>>(domains, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -59,39 +54,16 @@ class GetDomainsResult {
 
   factory GetDomainsResult.fromMap(Map<String, dynamic> map) {
     return GetDomainsResult(
-      domainSearchType: (() {
-        final guardedValue = map['domainSearchType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      domains: pulumi.Input.decodeList<GetDomainsDomain>(
-        map['domains']!,
-        (value) =>
-            GetDomainsDomain.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      domainSearchType: (() { final guardedValue = map['domainSearchType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      domains: pulumi.Input.decodeList<GetDomainsDomain>(map['domains']!, (value) => GetDomainsDomain.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'get_windows_web_app_backup_schedule.dart';
 class GetWindowsWebAppBackup {
   /// Is the Backup enabled?
   final pulumi.Input<bool> enabled;
-
   /// The name of this Windows Web App.
   final pulumi.Input<String> name;
-
   /// A `schedule` block as defined below.
   final pulumi.Input<List<GetWindowsWebAppBackupSchedule>> schedules;
-
   /// The SAS URL to the container.
   final pulumi.Input<String> storageAccountUrl;
 
@@ -32,18 +29,7 @@ class GetWindowsWebAppBackup {
     return <String, dynamic>{
       'enabled': enabled,
       'name': name,
-      'schedules':
-          pulumi.Input.mapInputValue<
-            List<GetWindowsWebAppBackupSchedule>,
-            List<Map<String, dynamic>>
-          >(
-            schedules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetWindowsWebAppBackupSchedule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'schedules': pulumi.Input.mapInputValue<List<GetWindowsWebAppBackupSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<GetWindowsWebAppBackupSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'storageAccountUrl': storageAccountUrl,
     };
   }
@@ -52,17 +38,9 @@ class GetWindowsWebAppBackup {
     return GetWindowsWebAppBackup(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
-      schedules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetWindowsWebAppBackupSchedule>(
-          map['schedules']!,
-          (value) => GetWindowsWebAppBackupSchedule.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      storageAccountUrl: pulumi.Input.fromValue(
-        map['storageAccountUrl'] as String,
-      ),
+      schedules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWindowsWebAppBackupSchedule>(map['schedules']!, (value) => GetWindowsWebAppBackupSchedule.fromMap((value as Map).cast<String, dynamic>()))),
+      storageAccountUrl: pulumi.Input.fromValue(map['storageAccountUrl'] as String),
     );
   }
 }
+

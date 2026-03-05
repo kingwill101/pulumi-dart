@@ -437,17 +437,13 @@ class Client extends pulumi.CustomResource {
   /// Cloud KMS config for AuthModule to encrypt/decrypt credentials.
   /// Structure is documented below.
   late final pulumi.Output<ClientCloudKmsConfig?> cloudKmsConfig;
-
   /// Indicates if sample integrations should be created along with provisioning.
   late final pulumi.Output<bool?> createSampleIntegrations;
-
   /// Location in which client needs to be provisioned.
   late final pulumi.Output<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// (Optional, Deprecated)
   /// User input run-as service account, if empty, will bring up a new default service account.
   ///
@@ -458,26 +454,18 @@ class Client extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Client]. {@macro pulumi_applicationintegration_client_client_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Client(String name, {ClientArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:applicationintegration/client:Client',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    cloudKmsConfig = registerOutput<ClientCloudKmsConfig?>(
-      'cloudKmsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClientCloudKmsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    createSampleIntegrations = registerOutput<bool?>(
-      'createSampleIntegrations',
-    );
+  Client(
+    String name, {
+    ClientArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:applicationintegration/client:Client',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    cloudKmsConfig = registerOutput<ClientCloudKmsConfig?>('cloudKmsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientCloudKmsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createSampleIntegrations = registerOutput<bool?>('createSampleIntegrations');
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
     runAsServiceAccount = registerOutput<String?>('runAsServiceAccount');
@@ -501,24 +489,13 @@ class Client extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:applicationintegration/client:Client',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    cloudKmsConfig = registerOutput<ClientCloudKmsConfig?>(
-      'cloudKmsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClientCloudKmsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    createSampleIntegrations = registerOutput<bool?>(
-      'createSampleIntegrations',
-    );
+          'gcp:applicationintegration/client:Client',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    cloudKmsConfig = registerOutput<ClientCloudKmsConfig?>('cloudKmsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientCloudKmsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createSampleIntegrations = registerOutput<bool?>('createSampleIntegrations');
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
     runAsServiceAccount = registerOutput<String?>('runAsServiceAccount');

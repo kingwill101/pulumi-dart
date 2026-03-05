@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGuestUsageArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The initial domain name of the Azure AD B2C tenant.
   final pulumi.Input<String> resourceName;
 
@@ -30,10 +29,9 @@ class GetGuestUsageArgs {
 
   factory GetGuestUsageArgs.fromMap(Map<String, dynamic> map) {
     return GetGuestUsageArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

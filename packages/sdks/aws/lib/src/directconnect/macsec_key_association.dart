@@ -291,24 +291,18 @@ import 'macsec_key_association_state.dart';
 class MacsecKeyAssociation extends pulumi.CustomResource {
   /// The MAC Security (MACsec) CAK to associate with the dedicated connection. The valid values are 64 hexadecimal characters (0-9, A-E). Required if using `ckn`.
   late final pulumi.Output<String?> cak;
-
   /// The MAC Security (MACsec) CKN to associate with the dedicated connection. The valid values are 64 hexadecimal characters (0-9, A-E). Required if using `cak`.
   late final pulumi.Output<String> ckn;
-
   /// The ID of the dedicated Direct Connect connection. The connection must be a dedicated connection in the `AVAILABLE` state.
   late final pulumi.Output<String> connectionId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key to associate with the dedicated connection.
   ///
   /// &gt; **Note:** `ckn` and `cak` are mutually exclusive with `secret_arn` - these arguments cannot be used together. If you use `ckn` and `cak`, you should not use `secret_arn`. If you use the `secret_arn` argument to reference an existing MAC Security (MACSec) secret key, you should not use `ckn` or `cak`.
   late final pulumi.Output<String> secretArn;
-
   /// The date in UTC format that the MAC Security (MACsec) secret key takes effect.
   late final pulumi.Output<String> startOn;
-
   /// The state of the MAC Security (MACsec) secret key. The possible values are: associating, associated, disassociating, disassociated. See [MacSecKey](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_MacSecKey.html#DX-Type-MacSecKey-state) for descriptions of each state.
   late final pulumi.Output<String> state;
 
@@ -321,11 +315,11 @@ class MacsecKeyAssociation extends pulumi.CustomResource {
     MacsecKeyAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:directconnect/macsecKeyAssociation:MacsecKeyAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:directconnect/macsecKeyAssociation:MacsecKeyAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cak = registerOutput<String?>('cak');
     ckn = registerOutput<String>('ckn');
     connectionId = registerOutput<String>('connectionId');
@@ -353,11 +347,11 @@ class MacsecKeyAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:directconnect/macsecKeyAssociation:MacsecKeyAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:directconnect/macsecKeyAssociation:MacsecKeyAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cak = registerOutput<String?>('cak');
     ckn = registerOutput<String>('ckn');
     connectionId = registerOutput<String>('connectionId');

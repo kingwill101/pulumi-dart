@@ -5,47 +5,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputTableLevelResponse {
   /// Number of applied deletes
   final pulumi.Input<double> cdcDeleteCounter;
-
   /// Number of applied inserts
   final pulumi.Input<double> cdcInsertCounter;
-
   /// Number of applied updates
   final pulumi.Input<double> cdcUpdateCounter;
-
   /// Number of data errors occurred
   final pulumi.Input<double> dataErrorsCounter;
-
   /// Name of the database
   final pulumi.Input<String> databaseName;
-
   /// Full load end time
   final pulumi.Input<String> fullLoadEndedOn;
-
   /// Estimate to finish full load
   final pulumi.Input<String> fullLoadEstFinishTime;
-
   /// Full load start time
   final pulumi.Input<String> fullLoadStartedOn;
-
   /// Number of rows applied in full load
   final pulumi.Input<double> fullLoadTotalRows;
-
   /// Result identifier
   final pulumi.Input<String> id;
-
   /// Last modified time on target
   final pulumi.Input<String> lastModifiedTime;
-
   /// Result type
   /// Expected value is 'TableLevelOutput'.
   final pulumi.Input<String> resultType;
-
   /// Current state of the table migration
   final pulumi.Input<String> state;
-
   /// Name of the table
   final pulumi.Input<String> tableName;
-
   /// Total number of applied changes
   final pulumi.Input<double> totalChangesApplied;
 
@@ -103,43 +89,24 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputTableLevelResponse {
     };
   }
 
-  factory MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputTableLevelResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputTableLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputTableLevelResponse(
-      cdcDeleteCounter: pulumi.Input.fromValue(
-        map['cdcDeleteCounter'] as double,
-      ),
-      cdcInsertCounter: pulumi.Input.fromValue(
-        map['cdcInsertCounter'] as double,
-      ),
-      cdcUpdateCounter: pulumi.Input.fromValue(
-        map['cdcUpdateCounter'] as double,
-      ),
-      dataErrorsCounter: pulumi.Input.fromValue(
-        map['dataErrorsCounter'] as double,
-      ),
+      cdcDeleteCounter: pulumi.Input.fromValue(map['cdcDeleteCounter'] as double),
+      cdcInsertCounter: pulumi.Input.fromValue(map['cdcInsertCounter'] as double),
+      cdcUpdateCounter: pulumi.Input.fromValue(map['cdcUpdateCounter'] as double),
+      dataErrorsCounter: pulumi.Input.fromValue(map['dataErrorsCounter'] as double),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
       fullLoadEndedOn: pulumi.Input.fromValue(map['fullLoadEndedOn'] as String),
-      fullLoadEstFinishTime: pulumi.Input.fromValue(
-        map['fullLoadEstFinishTime'] as String,
-      ),
-      fullLoadStartedOn: pulumi.Input.fromValue(
-        map['fullLoadStartedOn'] as String,
-      ),
-      fullLoadTotalRows: pulumi.Input.fromValue(
-        map['fullLoadTotalRows'] as double,
-      ),
+      fullLoadEstFinishTime: pulumi.Input.fromValue(map['fullLoadEstFinishTime'] as String),
+      fullLoadStartedOn: pulumi.Input.fromValue(map['fullLoadStartedOn'] as String),
+      fullLoadTotalRows: pulumi.Input.fromValue(map['fullLoadTotalRows'] as double),
       id: pulumi.Input.fromValue(map['id'] as String),
-      lastModifiedTime: pulumi.Input.fromValue(
-        map['lastModifiedTime'] as String,
-      ),
+      lastModifiedTime: pulumi.Input.fromValue(map['lastModifiedTime'] as String),
       resultType: pulumi.Input.fromValue(map['resultType'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
       tableName: pulumi.Input.fromValue(map['tableName'] as String),
-      totalChangesApplied: pulumi.Input.fromValue(
-        map['totalChangesApplied'] as double,
-      ),
+      totalChangesApplied: pulumi.Input.fromValue(map['totalChangesApplied'] as double),
     );
   }
 }
+

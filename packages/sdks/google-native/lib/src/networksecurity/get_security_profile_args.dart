@@ -33,9 +33,8 @@ class GetSecurityProfileArgs {
     return GetSecurityProfileArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
-      securityProfileId: pulumi.Input.fromValue(
-        map['securityProfileId'] as String,
-      ),
+      securityProfileId: pulumi.Input.fromValue(map['securityProfileId'] as String),
     );
   }
 }
+

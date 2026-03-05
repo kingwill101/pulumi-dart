@@ -6,26 +6,19 @@ import 'http_route_rule_match_header_range_match.dart';
 class HttpRouteRuleMatchHeader {
   /// The value of the header should match exactly the content of exactMatch.
   final pulumi.Input<String>? exactMatch;
-
   /// The name of the HTTP header to match against.
   final pulumi.Input<String>? header;
-
   /// If specified, the match result will be inverted before checking. Default value is set to false.
   final pulumi.Input<bool>? invertMatch;
-
   /// The value of the header must start with the contents of prefixMatch.
   final pulumi.Input<String>? prefixMatch;
-
   /// A header with headerName must exist. The match takes place whether or not the header has a value.
   final pulumi.Input<bool>? presentMatch;
-
   /// If specified, the rule will match if the request header value is within the range.
   /// Structure is documented below.
   final pulumi.Input<HttpRouteRuleMatchHeaderRangeMatch>? rangeMatch;
-
   /// The value of the header must match the regular expression specified in regexMatch.
   final pulumi.Input<String>? regexMatch;
-
   /// The value of the header must end with the contents of suffixMatch.
   final pulumi.Input<String>? suffixMatch;
 
@@ -56,11 +49,7 @@ class HttpRouteRuleMatchHeader {
       'invertMatch': ?invertMatch,
       'prefixMatch': ?prefixMatch,
       'presentMatch': ?presentMatch,
-      'rangeMatch':
-          ?pulumi.Input.mapOptionalInputValue<
-            HttpRouteRuleMatchHeaderRangeMatch,
-            Map<String, dynamic>
-          >(rangeMatch, (value) => value.toMap()),
+      'rangeMatch': ?pulumi.Input.mapOptionalInputValue<HttpRouteRuleMatchHeaderRangeMatch, Map<String, dynamic>>(rangeMatch, (value) => value.toMap()),
       'regexMatch': ?regexMatch,
       'suffixMatch': ?suffixMatch,
     };
@@ -68,50 +57,15 @@ class HttpRouteRuleMatchHeader {
 
   factory HttpRouteRuleMatchHeader.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleMatchHeader(
-      exactMatch: (() {
-        final guardedValue = map['exactMatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      header: (() {
-        final guardedValue = map['header'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      invertMatch: (() {
-        final guardedValue = map['invertMatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      prefixMatch: (() {
-        final guardedValue = map['prefixMatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      presentMatch: (() {
-        final guardedValue = map['presentMatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      rangeMatch: (() {
-        final guardedValue = map['rangeMatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HttpRouteRuleMatchHeaderRangeMatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      regexMatch: (() {
-        final guardedValue = map['regexMatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      suffixMatch: (() {
-        final guardedValue = map['suffixMatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      exactMatch: (() { final guardedValue = map['exactMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      header: (() { final guardedValue = map['header']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      invertMatch: (() { final guardedValue = map['invertMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      prefixMatch: (() { final guardedValue = map['prefixMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      presentMatch: (() { final guardedValue = map['presentMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      rangeMatch: (() { final guardedValue = map['rangeMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpRouteRuleMatchHeaderRangeMatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      regexMatch: (() { final guardedValue = map['regexMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      suffixMatch: (() { final guardedValue = map['suffixMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

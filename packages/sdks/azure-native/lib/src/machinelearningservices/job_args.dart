@@ -10,13 +10,10 @@ import 'auto_mljob.dart';
 class JobArgs {
   /// The name and identifier for the Job. This is case-sensitive.
   final pulumi.Input<String>? id;
-
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<AutoMLJob> jobBaseProperties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -35,11 +32,7 @@ class JobArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'jobBaseProperties':
-          pulumi.Input.mapInputValue<AutoMLJob, Map<String, dynamic>>(
-            jobBaseProperties,
-            (value) => value.toMap(),
-          ),
+      'jobBaseProperties': pulumi.Input.mapInputValue<AutoMLJob, Map<String, dynamic>>(jobBaseProperties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'workspaceName': workspaceName,
     };
@@ -47,20 +40,11 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      jobBaseProperties: pulumi.Input.fromValue(
-        AutoMLJob.fromMap(
-          (map['jobBaseProperties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      jobBaseProperties: pulumi.Input.fromValue(AutoMLJob.fromMap((map['jobBaseProperties']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

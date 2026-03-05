@@ -22,3 +22,4 @@ enum StreamStateDatastreamV1alpha1 {
     throw ArgumentError('Unknown StreamStateDatastreamV1alpha1 value: $value');
   }
 }
+

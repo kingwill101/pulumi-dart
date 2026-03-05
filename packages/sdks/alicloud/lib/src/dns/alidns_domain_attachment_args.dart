@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlidnsDomainAttachmentArgs {
   /// The domain names bound to the DNS instance.
   final pulumi.Input<List<String>> domainNames;
-
   /// The id of the DNS instance.
   final pulumi.Input<String> instanceId;
 
@@ -30,10 +29,9 @@ class AlidnsDomainAttachmentArgs {
 
   factory AlidnsDomainAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AlidnsDomainAttachmentArgs(
-      domainNames: pulumi.Input.fromValue(
-        (map['domainNames'] as List).cast<String>(),
-      ),
+      domainNames: pulumi.Input.fromValue((map['domainNames'] as List).cast<String>()),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
+

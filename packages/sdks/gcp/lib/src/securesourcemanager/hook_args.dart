@@ -11,32 +11,24 @@ class HookArgs {
   /// Determines if the hook disabled or not.
   /// Set to true to stop sending traffic.
   final pulumi.Input<bool>? disabled;
-
   /// The events that trigger hook on.
   /// Each value may be one of: `PUSH`, `PULL_REQUEST`.
   final pulumi.Input<List<String>>? events;
-
   /// The ID for the Hook.
   final pulumi.Input<String> hookId;
-
   /// The location for the Repository.
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The trigger option for push events.
   /// Structure is documented below.
   final pulumi.Input<HookPushOption>? pushOption;
-
   /// The ID for the Repository.
   final pulumi.Input<String> repositoryId;
-
   /// The sensitive query string to be appended to the target URI.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? sensitiveQueryString;
-
   /// The target URI to which the payloads will be delivered.
   final pulumi.Input<String> targetUri;
 
@@ -69,11 +61,7 @@ class HookArgs {
       'hookId': hookId,
       'location': location,
       'project': ?project,
-      'pushOption':
-          ?pulumi.Input.mapOptionalInputValue<
-            HookPushOption,
-            Map<String, dynamic>
-          >(pushOption, (value) => value.toMap()),
+      'pushOption': ?pulumi.Input.mapOptionalInputValue<HookPushOption, Map<String, dynamic>>(pushOption, (value) => value.toMap()),
       'repositoryId': repositoryId,
       'sensitiveQueryString': ?sensitiveQueryString,
       'targetUri': targetUri,
@@ -82,37 +70,16 @@ class HookArgs {
 
   factory HookArgs.fromMap(Map<String, dynamic> map) {
     return HookArgs(
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      events: (() {
-        final guardedValue = map['events'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      events: (() { final guardedValue = map['events']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       hookId: pulumi.Input.fromValue(map['hookId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pushOption: (() {
-        final guardedValue = map['pushOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HookPushOption.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pushOption: (() { final guardedValue = map['pushOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HookPushOption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
-      sensitiveQueryString: (() {
-        final guardedValue = map['sensitiveQueryString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sensitiveQueryString: (() { final guardedValue = map['sensitiveQueryString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetUri: pulumi.Input.fromValue(map['targetUri'] as String),
     );
   }
 }
+

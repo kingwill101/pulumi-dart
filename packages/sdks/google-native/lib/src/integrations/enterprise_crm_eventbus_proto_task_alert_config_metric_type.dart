@@ -9,17 +9,13 @@ enum EnterpriseCrmEventbusProtoTaskAlertConfigMetricType {
   const EnterpriseCrmEventbusProtoTaskAlertConfigMetricType(this.wireValue);
   final String wireValue;
 
-  static EnterpriseCrmEventbusProtoTaskAlertConfigMetricType fromValue(
-    String value,
-  ) {
-    for (final item
-        in EnterpriseCrmEventbusProtoTaskAlertConfigMetricType.values) {
+  static EnterpriseCrmEventbusProtoTaskAlertConfigMetricType fromValue(String value) {
+    for (final item in EnterpriseCrmEventbusProtoTaskAlertConfigMetricType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EnterpriseCrmEventbusProtoTaskAlertConfigMetricType value: $value',
-    );
+    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskAlertConfigMetricType value: $value');
   }
 }
+

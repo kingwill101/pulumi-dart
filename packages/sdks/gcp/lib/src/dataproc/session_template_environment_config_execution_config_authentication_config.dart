@@ -19,15 +19,10 @@ class SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig {
     };
   }
 
-  factory SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig.fromMap(Map<String, dynamic> map) {
     return SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig(
-      userWorkloadAuthenticationType: (() {
-        final guardedValue = map['userWorkloadAuthenticationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userWorkloadAuthenticationType: (() { final guardedValue = map['userWorkloadAuthenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

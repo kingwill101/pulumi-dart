@@ -9,19 +9,20 @@ class Explicit {
 
   /// Creates a new [Explicit].
   /// [bounds] The values must be monotonically increasing.
-  Explicit({this.bounds});
+  Explicit({
+    this.bounds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bounds': ?bounds};
+    return <String, dynamic>{
+      'bounds': ?bounds,
+    };
   }
 
   factory Explicit.fromMap(Map<String, dynamic> map) {
     return Explicit(
-      bounds: (() {
-        final guardedValue = map['bounds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<double>());
-      })(),
+      bounds: (() { final guardedValue = map['bounds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<double>()); })(),
     );
   }
 }
+

@@ -112,10 +112,8 @@ import 'cache_state.dart';
 class Cache extends pulumi.CustomResource {
   /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
   late final pulumi.Output<String> diskId;
-
   /// The Amazon Resource Name (ARN) of the gateway.
   late final pulumi.Output<String> gatewayArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -123,20 +121,27 @@ class Cache extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Cache]. {@macro pulumi_storagegateway_cache_cache_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Cache(String name, {CacheArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:storagegateway/cache:Cache',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Cache(
+    String name, {
+    CacheArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:storagegateway/cache:Cache',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     diskId = registerOutput<String>('diskId');
     gatewayArn = registerOutput<String>('gatewayArn');
     region = registerOutput<String>('region');
   }
 
   /// Gets an existing [Cache] resource's state with the given [name] and [id].
-  static Cache get(String name, pulumi.Input<String> id, {CacheState? state}) {
+  static Cache get(
+    String name,
+    pulumi.Input<String> id, {
+    CacheState? state,
+  }) {
     return Cache._get(
       name,
       state: state?.toMap(),
@@ -149,11 +154,11 @@ class Cache extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:storagegateway/cache:Cache',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:storagegateway/cache:Cache',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     diskId = registerOutput<String>('diskId');
     gatewayArn = registerOutput<String>('gatewayArn');
     region = registerOutput<String>('region');

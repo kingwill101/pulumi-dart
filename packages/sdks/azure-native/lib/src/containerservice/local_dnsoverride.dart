@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocalDNSOverride {
   /// Cache max TTL in seconds. See [cache plugin](https://coredns.io/plugins/cache) for more information.
   final pulumi.Input<int>? cacheDurationInSeconds;
-
   /// Destination server for DNS queries to be forwarded from localDNS.
   final pulumi.Input<String>? forwardDestination;
-
   /// Forward policy for selecting upstream DNS server. See [forward plugin](https://coredns.io/plugins/forward) for more information.
   final pulumi.Input<String>? forwardPolicy;
-
   /// Maximum number of concurrent queries. See [forward plugin](https://coredns.io/plugins/forward) for more information.
   final pulumi.Input<int>? maxConcurrent;
-
   /// Enforce TCP or prefer UDP protocol for connections from localDNS to upstream DNS server.
   final pulumi.Input<String>? protocol;
-
   /// Log level for DNS queries in localDNS.
   final pulumi.Input<String>? queryLogging;
-
   /// Policy for serving stale data. See [cache plugin](https://coredns.io/plugins/cache) for more information.
   final pulumi.Input<String>? serveStale;
-
   /// Serve stale duration in seconds. See [cache plugin](https://coredns.io/plugins/cache) for more information.
   final pulumi.Input<int>? serveStaleDurationInSeconds;
 
@@ -63,46 +56,15 @@ class LocalDNSOverride {
 
   factory LocalDNSOverride.fromMap(Map<String, dynamic> map) {
     return LocalDNSOverride(
-      cacheDurationInSeconds: (() {
-        final guardedValue = map['cacheDurationInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      forwardDestination: (() {
-        final guardedValue = map['forwardDestination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      forwardPolicy: (() {
-        final guardedValue = map['forwardPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxConcurrent: (() {
-        final guardedValue = map['maxConcurrent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      queryLogging: (() {
-        final guardedValue = map['queryLogging'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serveStale: (() {
-        final guardedValue = map['serveStale'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serveStaleDurationInSeconds: (() {
-        final guardedValue = map['serveStaleDurationInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      cacheDurationInSeconds: (() { final guardedValue = map['cacheDurationInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      forwardDestination: (() { final guardedValue = map['forwardDestination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      forwardPolicy: (() { final guardedValue = map['forwardPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxConcurrent: (() { final guardedValue = map['maxConcurrent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      queryLogging: (() { final guardedValue = map['queryLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serveStale: (() { final guardedValue = map['serveStale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serveStaleDurationInSeconds: (() { final guardedValue = map['serveStaleDurationInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

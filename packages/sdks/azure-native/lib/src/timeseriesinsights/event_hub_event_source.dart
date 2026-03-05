@@ -372,50 +372,35 @@ import 'local_timestamp_response.dart';
 class EventHubEventSource extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the event hub's consumer group that holds the partitions from which events will be read.
   late final pulumi.Output<String> consumerGroupName;
-
   /// The time the resource was created.
   late final pulumi.Output<String> creationTime;
-
   /// The name of the event hub.
   late final pulumi.Output<String> eventHubName;
-
   /// The resource id of the event source in Azure Resource Manager.
   late final pulumi.Output<String> eventSourceResourceId;
-
   /// The name of the SAS key that grants the Time Series Insights service access to the event hub. The shared access policies for this key must grant 'Listen' permissions to the event hub.
   late final pulumi.Output<String> keyName;
-
   /// The kind of the event source.
   /// Expected value is 'Microsoft.EventHub'.
   late final pulumi.Output<String> kind;
-
   /// An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events.
   late final pulumi.Output<LocalTimestampResponse?> localTimestamp;
-
   /// Resource location
   late final pulumi.Output<String> location;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The name of the service bus that contains the event hub.
   late final pulumi.Output<String> serviceBusNamespace;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// ISO8601 UTC datetime with seconds precision (milliseconds are optional), specifying the date and time that will be the starting point for Events to be consumed.
   late final pulumi.Output<String?> time;
-
   /// The event property that will be used as the event source's timestamp. If a value isn't specified for timestampPropertyName, or if null or empty-string is specified, the event creation time will be used.
   late final pulumi.Output<String?> timestampPropertyName;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -428,11 +413,11 @@ class EventHubEventSource extends pulumi.CustomResource {
     EventHubEventSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:timeseriesinsights:EventHubEventSource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:timeseriesinsights:EventHubEventSource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     consumerGroupName = registerOutput<String>('consumerGroupName');
     creationTime = registerOutput<String>('creationTime');
@@ -440,16 +425,7 @@ class EventHubEventSource extends pulumi.CustomResource {
     eventSourceResourceId = registerOutput<String>('eventSourceResourceId');
     keyName = registerOutput<String>('keyName');
     kind = registerOutput<String>('kind');
-    localTimestamp = registerOutput<LocalTimestampResponse?>(
-      'localTimestamp',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LocalTimestampResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    localTimestamp = registerOutput<LocalTimestampResponse?>('localTimestamp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalTimestampResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

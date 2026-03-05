@@ -8,7 +8,6 @@ import 'get_app_spec_ingress_rule_redirect.dart';
 
 class GetAppSpecIngressRule {
   final pulumi.Input<GetAppSpecIngressRuleComponent> component;
-
   /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
   final pulumi.Input<GetAppSpecIngressRuleCors> cors;
   final pulumi.Input<GetAppSpecIngressRuleMatch> match;
@@ -28,55 +27,20 @@ class GetAppSpecIngressRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'component':
-          pulumi.Input.mapInputValue<
-            GetAppSpecIngressRuleComponent,
-            Map<String, dynamic>
-          >(component, (value) => value.toMap()),
-      'cors':
-          pulumi.Input.mapInputValue<
-            GetAppSpecIngressRuleCors,
-            Map<String, dynamic>
-          >(cors, (value) => value.toMap()),
-      'match':
-          pulumi.Input.mapInputValue<
-            GetAppSpecIngressRuleMatch,
-            Map<String, dynamic>
-          >(match, (value) => value.toMap()),
-      'redirect':
-          ?pulumi.Input.mapOptionalInputValue<
-            GetAppSpecIngressRuleRedirect,
-            Map<String, dynamic>
-          >(redirect, (value) => value.toMap()),
+      'component': pulumi.Input.mapInputValue<GetAppSpecIngressRuleComponent, Map<String, dynamic>>(component, (value) => value.toMap()),
+      'cors': pulumi.Input.mapInputValue<GetAppSpecIngressRuleCors, Map<String, dynamic>>(cors, (value) => value.toMap()),
+      'match': pulumi.Input.mapInputValue<GetAppSpecIngressRuleMatch, Map<String, dynamic>>(match, (value) => value.toMap()),
+      'redirect': ?pulumi.Input.mapOptionalInputValue<GetAppSpecIngressRuleRedirect, Map<String, dynamic>>(redirect, (value) => value.toMap()),
     };
   }
 
   factory GetAppSpecIngressRule.fromMap(Map<String, dynamic> map) {
     return GetAppSpecIngressRule(
-      component: pulumi.Input.fromValue(
-        GetAppSpecIngressRuleComponent.fromMap(
-          (map['component']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      cors: pulumi.Input.fromValue(
-        GetAppSpecIngressRuleCors.fromMap(
-          (map['cors']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      match: pulumi.Input.fromValue(
-        GetAppSpecIngressRuleMatch.fromMap(
-          (map['match']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      redirect: (() {
-        final guardedValue = map['redirect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GetAppSpecIngressRuleRedirect.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      component: pulumi.Input.fromValue(GetAppSpecIngressRuleComponent.fromMap((map['component']! as Map).cast<String, dynamic>())),
+      cors: pulumi.Input.fromValue(GetAppSpecIngressRuleCors.fromMap((map['cors']! as Map).cast<String, dynamic>())),
+      match: pulumi.Input.fromValue(GetAppSpecIngressRuleMatch.fromMap((map['match']! as Map).cast<String, dynamic>())),
+      redirect: (() { final guardedValue = map['redirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetAppSpecIngressRuleRedirect.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

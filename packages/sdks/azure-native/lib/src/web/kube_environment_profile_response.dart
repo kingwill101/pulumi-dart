@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubeEnvironmentProfileResponse {
   /// Resource ID of the Kubernetes Environment.
   final pulumi.Input<String>? id;
-
   /// Name of the Kubernetes Environment.
   final pulumi.Input<String> name;
-
   /// Resource type of the Kubernetes Environment.
   final pulumi.Input<String> type;
 
@@ -24,18 +22,19 @@ class KubeEnvironmentProfileResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id, 'name': name, 'type': type};
+    return <String, dynamic>{
+      'id': ?id,
+      'name': name,
+      'type': type,
+    };
   }
 
   factory KubeEnvironmentProfileResponse.fromMap(Map<String, dynamic> map) {
     return KubeEnvironmentProfileResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -156,78 +156,54 @@ import 'lab_support_properties_response.dart';
 class Lab extends pulumi.CustomResource {
   /// The properties of any lab announcement associated with this lab
   late final pulumi.Output<LabAnnouncementPropertiesResponse?> announcement;
-
   /// The lab's artifact storage account.
   late final pulumi.Output<String> artifactsStorageAccount;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The creation date of the lab.
   late final pulumi.Output<String> createdDate;
-
   /// The lab's default premium storage account.
   late final pulumi.Output<String> defaultPremiumStorageAccount;
-
   /// The lab's default storage account.
   late final pulumi.Output<String> defaultStorageAccount;
-
   /// The access rights to be granted to the user when provisioning an environment
   late final pulumi.Output<String?> environmentPermission;
-
   /// Extended properties of the lab used for experimental features
   late final pulumi.Output<Map<String, String>?> extendedProperties;
-
   /// Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.
   late final pulumi.Output<String?> labStorageType;
-
   /// The load balancer used to for lab VMs that use shared IP address.
   late final pulumi.Output<String> loadBalancerId;
-
   /// The location of the resource.
   late final pulumi.Output<String?> location;
-
   /// The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user.
   late final pulumi.Output<List<String>?> mandatoryArtifactsResourceIdsLinux;
-
   /// The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user.
   late final pulumi.Output<List<String>?> mandatoryArtifactsResourceIdsWindows;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The Network Security Group attached to the lab VMs Network interfaces to restrict open ports.
   late final pulumi.Output<String> networkSecurityGroupId;
-
   /// The lab's premium data disk storage account.
   late final pulumi.Output<String> premiumDataDiskStorageAccount;
-
   /// The setting to enable usage of premium data disks.
   /// When its value is 'Enabled', creation of standard or premium data disks is allowed.
   /// When its value is 'Disabled', only creation of standard data disks is allowed.
   late final pulumi.Output<String?> premiumDataDisks;
-
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The public IP address for the lab's load balancer.
   late final pulumi.Output<String> publicIpId;
-
   /// The properties of any lab support message associated with this lab
   late final pulumi.Output<LabSupportPropertiesResponse?> support;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
-
   /// The lab's Key vault.
   late final pulumi.Output<String> vaultName;
-
   /// The resource group in which all new lab virtual machines will be created. To let DevTest Labs manage resource group creation, set this value to null.
   late final pulumi.Output<String> vmCreationResourceGroup;
 
@@ -235,61 +211,36 @@ class Lab extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Lab]. {@macro pulumi_devtestlab_lab_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Lab(String name, {LabArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:devtestlab:Lab',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    announcement = registerOutput<LabAnnouncementPropertiesResponse?>(
-      'announcement',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LabAnnouncementPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Lab(
+    String name, {
+    LabArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:devtestlab:Lab',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    announcement = registerOutput<LabAnnouncementPropertiesResponse?>('announcement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabAnnouncementPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     artifactsStorageAccount = registerOutput<String>('artifactsStorageAccount');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdDate = registerOutput<String>('createdDate');
-    defaultPremiumStorageAccount = registerOutput<String>(
-      'defaultPremiumStorageAccount',
-    );
+    defaultPremiumStorageAccount = registerOutput<String>('defaultPremiumStorageAccount');
     defaultStorageAccount = registerOutput<String>('defaultStorageAccount');
     environmentPermission = registerOutput<String?>('environmentPermission');
-    extendedProperties = registerOutput<Map<String, String>?>(
-      'extendedProperties',
-    );
+    extendedProperties = registerOutput<Map<String, String>?>('extendedProperties');
     labStorageType = registerOutput<String?>('labStorageType');
     loadBalancerId = registerOutput<String>('loadBalancerId');
     location = registerOutput<String?>('location');
-    mandatoryArtifactsResourceIdsLinux = registerOutput<List<String>?>(
-      'mandatoryArtifactsResourceIdsLinux',
-    );
-    mandatoryArtifactsResourceIdsWindows = registerOutput<List<String>?>(
-      'mandatoryArtifactsResourceIdsWindows',
-    );
+    mandatoryArtifactsResourceIdsLinux = registerOutput<List<String>?>('mandatoryArtifactsResourceIdsLinux');
+    mandatoryArtifactsResourceIdsWindows = registerOutput<List<String>?>('mandatoryArtifactsResourceIdsWindows');
     this.name = registerOutput<String>('name');
     networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
-    premiumDataDiskStorageAccount = registerOutput<String>(
-      'premiumDataDiskStorageAccount',
-    );
+    premiumDataDiskStorageAccount = registerOutput<String>('premiumDataDiskStorageAccount');
     premiumDataDisks = registerOutput<String?>('premiumDataDisks');
     provisioningState = registerOutput<String>('provisioningState');
     publicIpId = registerOutput<String>('publicIpId');
-    support = registerOutput<LabSupportPropertiesResponse?>(
-      'support',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LabSupportPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    support = registerOutput<LabSupportPropertiesResponse?>('support', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabSupportPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');

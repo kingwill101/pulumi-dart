@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceArgs {
   /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Azure AI Search service associated with the specified resource group.
   final pulumi.Input<String> searchServiceName;
 
@@ -30,12 +29,9 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      searchServiceName: pulumi.Input.fromValue(
-        map['searchServiceName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      searchServiceName: pulumi.Input.fromValue(map['searchServiceName'] as String),
     );
   }
 }
+

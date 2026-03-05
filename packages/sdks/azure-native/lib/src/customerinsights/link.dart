@@ -254,50 +254,34 @@ import 'link_args.dart';
 class Link extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Localized descriptions for the Link.
   late final pulumi.Output<Map<String, String>?> description;
-
   /// Localized display name for the Link.
   late final pulumi.Output<Map<String, String>?> displayName;
-
   /// The link name.
   late final pulumi.Output<String> linkName;
-
   /// The set of properties mappings between the source and target Types.
   late final pulumi.Output<List<Map<String, dynamic>>?> mappings;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only.
   late final pulumi.Output<String?> operationType;
-
   /// The properties that represent the participating profile.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  participantPropertyReferences;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> participantPropertyReferences;
   /// Provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Indicating whether the link is reference only link. This flag is ignored if the Mappings are defined. If the mappings are not defined and it is set to true, links processing will not create or update profiles.
   late final pulumi.Output<bool?> referenceOnly;
-
   /// Type of source entity.
   late final pulumi.Output<String> sourceEntityType;
-
   /// Name of the source Entity Type.
   late final pulumi.Output<String> sourceEntityTypeName;
-
   /// Type of target entity.
   late final pulumi.Output<String> targetEntityType;
-
   /// Name of the target Entity Type.
   late final pulumi.Output<String> targetEntityTypeName;
-
   /// The hub name.
   late final pulumi.Output<String> tenantId;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -305,13 +289,16 @@ class Link extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Link]. {@macro pulumi_customerinsights_link_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Link(String name, {LinkArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:customerinsights:Link',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Link(
+    String name, {
+    LinkArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:customerinsights:Link',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<Map<String, String>?>('description');
     displayName = registerOutput<Map<String, String>?>('displayName');
@@ -319,9 +306,7 @@ class Link extends pulumi.CustomResource {
     mappings = registerOutput<List<Map<String, dynamic>>?>('mappings');
     this.name = registerOutput<String>('name');
     operationType = registerOutput<String?>('operationType');
-    participantPropertyReferences = registerOutput<List<Map<String, dynamic>>>(
-      'participantPropertyReferences',
-    );
+    participantPropertyReferences = registerOutput<List<Map<String, dynamic>>>('participantPropertyReferences');
     provisioningState = registerOutput<String>('provisioningState');
     referenceOnly = registerOutput<bool?>('referenceOnly');
     sourceEntityType = registerOutput<String>('sourceEntityType');

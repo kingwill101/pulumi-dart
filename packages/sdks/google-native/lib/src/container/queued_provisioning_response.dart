@@ -9,10 +9,14 @@ class QueuedProvisioningResponse {
 
   /// Creates a new [QueuedProvisioningResponse].
   /// [enabled] Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
-  QueuedProvisioningResponse({required this.enabled});
+  QueuedProvisioningResponse({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory QueuedProvisioningResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class QueuedProvisioningResponse {
     );
   }
 }
+

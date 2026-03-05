@@ -6,52 +6,30 @@ import 'windows_web_app_logs_http_logs_file_system.dart';
 
 class WindowsWebAppLogsHttpLogs {
   /// A `azure_blob_storage_http` block as defined below.
-  final pulumi.Input<WindowsWebAppLogsHttpLogsAzureBlobStorage>?
-  azureBlobStorage;
-
+  final pulumi.Input<WindowsWebAppLogsHttpLogsAzureBlobStorage>? azureBlobStorage;
   /// A `file_system` block as defined above.
   final pulumi.Input<WindowsWebAppLogsHttpLogsFileSystem>? fileSystem;
 
   /// Creates a new [WindowsWebAppLogsHttpLogs].
   /// [azureBlobStorage] A `azure_blob_storage_http` block as defined below.
   /// [fileSystem] A `file_system` block as defined above.
-  WindowsWebAppLogsHttpLogs({this.azureBlobStorage, this.fileSystem});
+  WindowsWebAppLogsHttpLogs({
+    this.azureBlobStorage,
+    this.fileSystem,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureBlobStorage':
-          ?pulumi.Input.mapOptionalInputValue<
-            WindowsWebAppLogsHttpLogsAzureBlobStorage,
-            Map<String, dynamic>
-          >(azureBlobStorage, (value) => value.toMap()),
-      'fileSystem':
-          ?pulumi.Input.mapOptionalInputValue<
-            WindowsWebAppLogsHttpLogsFileSystem,
-            Map<String, dynamic>
-          >(fileSystem, (value) => value.toMap()),
+      'azureBlobStorage': ?pulumi.Input.mapOptionalInputValue<WindowsWebAppLogsHttpLogsAzureBlobStorage, Map<String, dynamic>>(azureBlobStorage, (value) => value.toMap()),
+      'fileSystem': ?pulumi.Input.mapOptionalInputValue<WindowsWebAppLogsHttpLogsFileSystem, Map<String, dynamic>>(fileSystem, (value) => value.toMap()),
     };
   }
 
   factory WindowsWebAppLogsHttpLogs.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppLogsHttpLogs(
-      azureBlobStorage: (() {
-        final guardedValue = map['azureBlobStorage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WindowsWebAppLogsHttpLogsAzureBlobStorage.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      fileSystem: (() {
-        final guardedValue = map['fileSystem'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WindowsWebAppLogsHttpLogsFileSystem.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      azureBlobStorage: (() { final guardedValue = map['azureBlobStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsWebAppLogsHttpLogsAzureBlobStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      fileSystem: (() { final guardedValue = map['fileSystem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsWebAppLogsHttpLogsFileSystem.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

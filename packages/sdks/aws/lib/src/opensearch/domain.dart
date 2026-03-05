@@ -1904,96 +1904,66 @@ import 'domain_vpc_options.dart';
 class Domain extends pulumi.CustomResource {
   /// IAM policy document specifying the access policies for the domain.
   late final pulumi.Output<String> accessPolicies;
-
   /// Key-value string pairs to specify advanced configuration options. Note that the values for these configuration options must be strings (wrapped in quotes) or they may be wrong and cause a perpetual diff, causing the provider to want to recreate your OpenSearch domain on every apply.
   late final pulumi.Output<Map<String, String>> advancedOptions;
-
   /// Configuration block for [fine-grained access control](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html). Detailed below.
-  late final pulumi.Output<DomainAdvancedSecurityOptions>
-  advancedSecurityOptions;
-
+  late final pulumi.Output<DomainAdvancedSecurityOptions> advancedSecurityOptions;
   /// Configuration block for parameters required to enable all machine learning features. Detailed below.
   late final pulumi.Output<DomainAimlOptions> aimlOptions;
-
   /// ARN of the domain.
   late final pulumi.Output<String> arn;
-
   /// Configuration block for the Auto-Tune options of the domain. Detailed below.
   late final pulumi.Output<DomainAutoTuneOptions> autoTuneOptions;
-
   /// Configuration block for the cluster of the domain. Detailed below.
   late final pulumi.Output<DomainClusterConfig> clusterConfig;
-
   /// Configuration block for authenticating dashboard with Cognito. Detailed below.
   late final pulumi.Output<DomainCognitoOptions?> cognitoOptions;
-
   /// Domain-specific endpoint for Dashboard without https scheme.
   late final pulumi.Output<String> dashboardEndpoint;
-
   /// V2 domain endpoint for Dashboard that works with both IPv4 and IPv6 addresses, without https scheme.
   late final pulumi.Output<String> dashboardEndpointV2;
-
   /// Configuration block for domain endpoint HTTP(S) related options. Detailed below.
   late final pulumi.Output<DomainDomainEndpointOptions> domainEndpointOptions;
-
   /// Dual stack hosted zone ID for the domain.
   late final pulumi.Output<String> domainEndpointV2HostedZoneId;
-
   /// Unique identifier for the domain.
   late final pulumi.Output<String> domainId;
-
   /// Name of the domain.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> domainName;
-
   /// Configuration block for EBS related options, may be required based on chosen [instance size](https://aws.amazon.com/opensearch-service/pricing/). Detailed below.
   late final pulumi.Output<DomainEbsOptions> ebsOptions;
-
   /// Configuration block for encrypt at rest options. Only available for [certain instance types](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/encryption-at-rest.html). Detailed below.
   late final pulumi.Output<DomainEncryptAtRest> encryptAtRest;
-
   /// Domain-specific endpoint used to submit index, search, and data upload requests.
   late final pulumi.Output<String> endpoint;
-
   /// V2 domain endpoint that works with both IPv4 and IPv6 addresses, used to submit index, search, and data upload requests.
   late final pulumi.Output<String> endpointV2;
-
   /// Either `Elasticsearch_X.Y` or `OpenSearch_X.Y` to specify the engine version for the Amazon OpenSearch Service domain. For example, `OpenSearch_1.0` or `Elasticsearch_7.9`.
   /// See [Creating and managing Amazon OpenSearch Service domains](http://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomains).
   /// Defaults to the lastest version of OpenSearch.
   late final pulumi.Output<String> engineVersion;
-
   /// Configuration block for enabling and managing IAM Identity Center integration within a domain. Detailed below.
   late final pulumi.Output<DomainIdentityCenterOptions?> identityCenterOptions;
-
   /// The IP address type for the endpoint. Valid values are `ipv4` and `dualstack`.
   late final pulumi.Output<String> ipAddressType;
-
   /// Configuration block for publishing slow and application logs to CloudWatch Logs. This block can be declared multiple times, for each log_type, within the same resource. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>?> logPublishingOptions;
-
   /// Configuration block for node-to-node encryption options. Detailed below.
   late final pulumi.Output<DomainNodeToNodeEncryption> nodeToNodeEncryption;
-
   /// Configuration to add Off Peak update options. ([documentation](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/off-peak.html)). Detailed below.
   late final pulumi.Output<DomainOffPeakWindowOptions> offPeakWindowOptions;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block for snapshot related options. Detailed below. DEPRECATED. For domains running OpenSearch 5.3 and later, Amazon OpenSearch takes hourly automated snapshots, making this setting irrelevant. For domains running earlier versions, OpenSearch takes daily automated snapshots.
   late final pulumi.Output<DomainSnapshotOptions?> snapshotOptions;
-
   /// Software update options for the domain. Detailed below.
   late final pulumi.Output<DomainSoftwareUpdateOptions> softwareUpdateOptions;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Configuration block for VPC related options. Adding or removing this configuration forces a new resource ([documentation](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html)). Detailed below.
   late final pulumi.Output<DomainVpcOptions?> vpcOptions;
 
@@ -2001,173 +1971,46 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_opensearch_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:opensearch/domain:Domain',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Domain(
+    String name, {
+    DomainArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:opensearch/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicies = registerOutput<String>('accessPolicies');
     advancedOptions = registerOutput<Map<String, String>>('advancedOptions');
-    advancedSecurityOptions = registerOutput<DomainAdvancedSecurityOptions>(
-      'advancedSecurityOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainAdvancedSecurityOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    aimlOptions = registerOutput<DomainAimlOptions>(
-      'aimlOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainAimlOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    advancedSecurityOptions = registerOutput<DomainAdvancedSecurityOptions>('advancedSecurityOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAdvancedSecurityOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    aimlOptions = registerOutput<DomainAimlOptions>('aimlOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAimlOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
-    autoTuneOptions = registerOutput<DomainAutoTuneOptions>(
-      'autoTuneOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainAutoTuneOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    clusterConfig = registerOutput<DomainClusterConfig>(
-      'clusterConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainClusterConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    cognitoOptions = registerOutput<DomainCognitoOptions?>(
-      'cognitoOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainCognitoOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    autoTuneOptions = registerOutput<DomainAutoTuneOptions>('autoTuneOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAutoTuneOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterConfig = registerOutput<DomainClusterConfig>('clusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cognitoOptions = registerOutput<DomainCognitoOptions?>('cognitoOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainCognitoOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dashboardEndpoint = registerOutput<String>('dashboardEndpoint');
     dashboardEndpointV2 = registerOutput<String>('dashboardEndpointV2');
-    domainEndpointOptions = registerOutput<DomainDomainEndpointOptions>(
-      'domainEndpointOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainDomainEndpointOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    domainEndpointV2HostedZoneId = registerOutput<String>(
-      'domainEndpointV2HostedZoneId',
-    );
+    domainEndpointOptions = registerOutput<DomainDomainEndpointOptions>('domainEndpointOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainDomainEndpointOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domainEndpointV2HostedZoneId = registerOutput<String>('domainEndpointV2HostedZoneId');
     domainId = registerOutput<String>('domainId');
     domainName = registerOutput<String>('domainName');
-    ebsOptions = registerOutput<DomainEbsOptions>(
-      'ebsOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainEbsOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptAtRest = registerOutput<DomainEncryptAtRest>(
-      'encryptAtRest',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainEncryptAtRest.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ebsOptions = registerOutput<DomainEbsOptions>('ebsOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainEbsOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptAtRest = registerOutput<DomainEncryptAtRest>('encryptAtRest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainEncryptAtRest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
     endpointV2 = registerOutput<String>('endpointV2');
     engineVersion = registerOutput<String>('engineVersion');
-    identityCenterOptions = registerOutput<DomainIdentityCenterOptions?>(
-      'identityCenterOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainIdentityCenterOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identityCenterOptions = registerOutput<DomainIdentityCenterOptions?>('identityCenterOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainIdentityCenterOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddressType = registerOutput<String>('ipAddressType');
-    logPublishingOptions = registerOutput<List<Map<String, dynamic>>?>(
-      'logPublishingOptions',
-    );
-    nodeToNodeEncryption = registerOutput<DomainNodeToNodeEncryption>(
-      'nodeToNodeEncryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainNodeToNodeEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    offPeakWindowOptions = registerOutput<DomainOffPeakWindowOptions>(
-      'offPeakWindowOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainOffPeakWindowOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logPublishingOptions = registerOutput<List<Map<String, dynamic>>?>('logPublishingOptions');
+    nodeToNodeEncryption = registerOutput<DomainNodeToNodeEncryption>('nodeToNodeEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNodeToNodeEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    offPeakWindowOptions = registerOutput<DomainOffPeakWindowOptions>('offPeakWindowOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainOffPeakWindowOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    snapshotOptions = registerOutput<DomainSnapshotOptions?>(
-      'snapshotOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainSnapshotOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    softwareUpdateOptions = registerOutput<DomainSoftwareUpdateOptions>(
-      'softwareUpdateOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainSoftwareUpdateOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    snapshotOptions = registerOutput<DomainSnapshotOptions?>('snapshotOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSnapshotOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    softwareUpdateOptions = registerOutput<DomainSoftwareUpdateOptions>('softwareUpdateOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSoftwareUpdateOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcOptions = registerOutput<DomainVpcOptions?>(
-      'vpcOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainVpcOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcOptions = registerOutput<DomainVpcOptions?>('vpcOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainVpcOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -2188,170 +2031,40 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:opensearch/domain:Domain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:opensearch/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicies = registerOutput<String>('accessPolicies');
     advancedOptions = registerOutput<Map<String, String>>('advancedOptions');
-    advancedSecurityOptions = registerOutput<DomainAdvancedSecurityOptions>(
-      'advancedSecurityOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainAdvancedSecurityOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    aimlOptions = registerOutput<DomainAimlOptions>(
-      'aimlOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainAimlOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    advancedSecurityOptions = registerOutput<DomainAdvancedSecurityOptions>('advancedSecurityOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAdvancedSecurityOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    aimlOptions = registerOutput<DomainAimlOptions>('aimlOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAimlOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
-    autoTuneOptions = registerOutput<DomainAutoTuneOptions>(
-      'autoTuneOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainAutoTuneOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    clusterConfig = registerOutput<DomainClusterConfig>(
-      'clusterConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainClusterConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    cognitoOptions = registerOutput<DomainCognitoOptions?>(
-      'cognitoOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainCognitoOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    autoTuneOptions = registerOutput<DomainAutoTuneOptions>('autoTuneOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAutoTuneOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterConfig = registerOutput<DomainClusterConfig>('clusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cognitoOptions = registerOutput<DomainCognitoOptions?>('cognitoOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainCognitoOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dashboardEndpoint = registerOutput<String>('dashboardEndpoint');
     dashboardEndpointV2 = registerOutput<String>('dashboardEndpointV2');
-    domainEndpointOptions = registerOutput<DomainDomainEndpointOptions>(
-      'domainEndpointOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainDomainEndpointOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    domainEndpointV2HostedZoneId = registerOutput<String>(
-      'domainEndpointV2HostedZoneId',
-    );
+    domainEndpointOptions = registerOutput<DomainDomainEndpointOptions>('domainEndpointOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainDomainEndpointOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domainEndpointV2HostedZoneId = registerOutput<String>('domainEndpointV2HostedZoneId');
     domainId = registerOutput<String>('domainId');
     domainName = registerOutput<String>('domainName');
-    ebsOptions = registerOutput<DomainEbsOptions>(
-      'ebsOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainEbsOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptAtRest = registerOutput<DomainEncryptAtRest>(
-      'encryptAtRest',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainEncryptAtRest.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ebsOptions = registerOutput<DomainEbsOptions>('ebsOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainEbsOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptAtRest = registerOutput<DomainEncryptAtRest>('encryptAtRest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainEncryptAtRest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
     endpointV2 = registerOutput<String>('endpointV2');
     engineVersion = registerOutput<String>('engineVersion');
-    identityCenterOptions = registerOutput<DomainIdentityCenterOptions?>(
-      'identityCenterOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainIdentityCenterOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identityCenterOptions = registerOutput<DomainIdentityCenterOptions?>('identityCenterOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainIdentityCenterOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddressType = registerOutput<String>('ipAddressType');
-    logPublishingOptions = registerOutput<List<Map<String, dynamic>>?>(
-      'logPublishingOptions',
-    );
-    nodeToNodeEncryption = registerOutput<DomainNodeToNodeEncryption>(
-      'nodeToNodeEncryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainNodeToNodeEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    offPeakWindowOptions = registerOutput<DomainOffPeakWindowOptions>(
-      'offPeakWindowOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainOffPeakWindowOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logPublishingOptions = registerOutput<List<Map<String, dynamic>>?>('logPublishingOptions');
+    nodeToNodeEncryption = registerOutput<DomainNodeToNodeEncryption>('nodeToNodeEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNodeToNodeEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    offPeakWindowOptions = registerOutput<DomainOffPeakWindowOptions>('offPeakWindowOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainOffPeakWindowOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    snapshotOptions = registerOutput<DomainSnapshotOptions?>(
-      'snapshotOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainSnapshotOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    softwareUpdateOptions = registerOutput<DomainSoftwareUpdateOptions>(
-      'softwareUpdateOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainSoftwareUpdateOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    snapshotOptions = registerOutput<DomainSnapshotOptions?>('snapshotOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSnapshotOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    softwareUpdateOptions = registerOutput<DomainSoftwareUpdateOptions>('softwareUpdateOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSoftwareUpdateOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcOptions = registerOutput<DomainVpcOptions?>(
-      'vpcOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainVpcOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcOptions = registerOutput<DomainVpcOptions?>('vpcOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainVpcOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -8,74 +8,58 @@ class GetCloudVmClustersCloudVmCluster {
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
   final pulumi.Input<String> backupOdbSubnet;
-
   /// CIDR range of the backup subnet.
   final pulumi.Input<String> backupSubnetCidr;
-
   /// Network settings. CIDR to use for cluster IP allocation.
   final pulumi.Input<String> cidr;
-
   /// The ID of the VM Cluster to create. This value is restricted
   /// to (^a-z?$) and must be a maximum of 63
   /// characters in length. The value must start with a letter and end with
   /// a letter or a number.
   final pulumi.Input<String> cloudVmClusterId;
-
   /// The date and time that the VM cluster was created.
   final pulumi.Input<String> createTime;
   final pulumi.Input<bool> deletionProtection;
-
   /// User friendly name for this resource.
   final pulumi.Input<String> displayName;
   final pulumi.Input<Map<String, String>> effectiveLabels;
-
   /// The name of the Exadata Infrastructure resource on which VM cluster
   /// resource is created, in the following format:
   /// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
   final pulumi.Input<String> exadataInfrastructure;
-
   /// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
   /// of Exadata infrastructure.
   final pulumi.Input<String> gcpOracleZone;
-
   /// Labels or tags associated with the VM Cluster.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>> labels;
-
   /// The location of the resource.
   ///
   /// - - -
   final pulumi.Input<String> location;
-
   /// Identifier. The name of the VM Cluster resource with the format:
   /// projects/{project}/locations/{region}/cloudVmClusters/{cloud_vm_cluster}
   final pulumi.Input<String> name;
-
   /// The name of the VPC network.
   /// Format: projects/{project}/global/networks/{network}
   final pulumi.Input<String> network;
-
   /// The name of the OdbNetwork associated with the VM Cluster.
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
   /// the odb_subnet and backup_odb_subnet.
   final pulumi.Input<String> odbNetwork;
-
   /// The name of the OdbSubnet associated with the VM Cluster for
   /// IP allocation. Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
   final pulumi.Input<String> odbSubnet;
-
   /// The project to which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String> project;
-
   /// Various properties and settings associated with Exadata VM cluster.
   final pulumi.Input<List<GetCloudVmClustersCloudVmClusterProperty>> properties;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>> pulumiLabels;
@@ -141,18 +125,7 @@ class GetCloudVmClustersCloudVmCluster {
       'odbNetwork': odbNetwork,
       'odbSubnet': odbSubnet,
       'project': project,
-      'properties':
-          pulumi.Input.mapInputValue<
-            List<GetCloudVmClustersCloudVmClusterProperty>,
-            List<Map<String, dynamic>>
-          >(
-            properties,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetCloudVmClustersCloudVmClusterProperty,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'properties': pulumi.Input.mapInputValue<List<GetCloudVmClustersCloudVmClusterProperty>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<GetCloudVmClustersCloudVmClusterProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
       'pulumiLabels': pulumiLabels,
     };
   }
@@ -160,45 +133,25 @@ class GetCloudVmClustersCloudVmCluster {
   factory GetCloudVmClustersCloudVmCluster.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClustersCloudVmCluster(
       backupOdbSubnet: pulumi.Input.fromValue(map['backupOdbSubnet'] as String),
-      backupSubnetCidr: pulumi.Input.fromValue(
-        map['backupSubnetCidr'] as String,
-      ),
+      backupSubnetCidr: pulumi.Input.fromValue(map['backupSubnetCidr'] as String),
       cidr: pulumi.Input.fromValue(map['cidr'] as String),
-      cloudVmClusterId: pulumi.Input.fromValue(
-        map['cloudVmClusterId'] as String,
-      ),
+      cloudVmClusterId: pulumi.Input.fromValue(map['cloudVmClusterId'] as String),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
-      deletionProtection: pulumi.Input.fromValue(
-        map['deletionProtection'] as bool,
-      ),
+      deletionProtection: pulumi.Input.fromValue(map['deletionProtection'] as bool),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      effectiveLabels: pulumi.Input.fromValue(
-        (map['effectiveLabels'] as Map).cast<String, String>(),
-      ),
-      exadataInfrastructure: pulumi.Input.fromValue(
-        map['exadataInfrastructure'] as String,
-      ),
+      effectiveLabels: pulumi.Input.fromValue((map['effectiveLabels'] as Map).cast<String, String>()),
+      exadataInfrastructure: pulumi.Input.fromValue(map['exadataInfrastructure'] as String),
       gcpOracleZone: pulumi.Input.fromValue(map['gcpOracleZone'] as String),
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       network: pulumi.Input.fromValue(map['network'] as String),
       odbNetwork: pulumi.Input.fromValue(map['odbNetwork'] as String),
       odbSubnet: pulumi.Input.fromValue(map['odbSubnet'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),
-      properties: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetCloudVmClustersCloudVmClusterProperty>(
-          map['properties']!,
-          (value) => GetCloudVmClustersCloudVmClusterProperty.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      pulumiLabels: pulumi.Input.fromValue(
-        (map['pulumiLabels'] as Map).cast<String, String>(),
-      ),
+      properties: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCloudVmClustersCloudVmClusterProperty>(map['properties']!, (value) => GetCloudVmClustersCloudVmClusterProperty.fromMap((value as Map).cast<String, dynamic>()))),
+      pulumiLabels: pulumi.Input.fromValue((map['pulumiLabels'] as Map).cast<String, String>()),
     );
   }
 }
+

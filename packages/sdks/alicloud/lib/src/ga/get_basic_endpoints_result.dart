@@ -7,26 +7,20 @@ import 'get_basic_endpoints_endpoint.dart';
 class GetBasicEndpointsResult {
   /// The ID of the Basic Endpoint Group.
   final String endpointGroupId;
-
   /// The ID of the Basic Endpoint.
   final String? endpointId;
-
   /// The type of the Basic Endpoint.
   final String? endpointType;
-
   /// A list of Global Accelerator Basic Endpoints. Each element contains the following attributes:
   final List<GetBasicEndpointsEndpoint> endpoints;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? name;
   final String? nameRegex;
-
   /// A list of Global Accelerator Basic Endpoint names.
   final List<String> names;
   final String? outputFile;
-
   /// The status of the Basic Endpoint.
   final String? status;
 
@@ -61,11 +55,7 @@ class GetBasicEndpointsResult {
       'endpointGroupId': endpointGroupId,
       'endpointId': ?endpointId,
       'endpointType': ?endpointType,
-      'endpoints':
-          pulumi.Input.encodeList<
-            GetBasicEndpointsEndpoint,
-            Map<String, dynamic>
-          >(endpoints, (value) => value.toMap()),
+      'endpoints': pulumi.Input.encodeList<GetBasicEndpointsEndpoint, Map<String, dynamic>>(endpoints, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'name': ?name,
@@ -79,45 +69,17 @@ class GetBasicEndpointsResult {
   factory GetBasicEndpointsResult.fromMap(Map<String, dynamic> map) {
     return GetBasicEndpointsResult(
       endpointGroupId: map['endpointGroupId'] as String,
-      endpointId: (() {
-        final guardedValue = map['endpointId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      endpointType: (() {
-        final guardedValue = map['endpointType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      endpoints: pulumi.Input.decodeList<GetBasicEndpointsEndpoint>(
-        map['endpoints']!,
-        (value) => GetBasicEndpointsEndpoint.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      endpointId: (() { final guardedValue = map['endpointId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpoints: pulumi.Input.decodeList<GetBasicEndpointsEndpoint>(map['endpoints']!, (value) => GetBasicEndpointsEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

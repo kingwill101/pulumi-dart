@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefinitionPlan {
   /// The plan name of the marketplace offer.
   final pulumi.Input<String> name;
-
   /// The product code of the plan.
   final pulumi.Input<String> product;
-
   /// The publisher ID of the plan.
   final pulumi.Input<String> publisher;
-
   /// The version of the plan.
   final pulumi.Input<String> version;
 
@@ -45,3 +42,4 @@ class DefinitionPlan {
     );
   }
 }
+

@@ -6,12 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OnlineRequestSettings {
   /// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
   final pulumi.Input<int>? maxConcurrentRequestsPerInstance;
-
   /// (Deprecated for Managed Online Endpoints) The maximum amount of time a request will stay in the queue in ISO 8601 format.
   /// Defaults to 500ms.
   /// (Now increase `request_timeout_ms` to account for any networking/queue delays)
   final pulumi.Input<String>? maxQueueWait;
-
   /// The scoring timeout in ISO 8601 format.
   /// Defaults to 5000ms.
   final pulumi.Input<String>? requestTimeout;
@@ -36,21 +34,10 @@ class OnlineRequestSettings {
 
   factory OnlineRequestSettings.fromMap(Map<String, dynamic> map) {
     return OnlineRequestSettings(
-      maxConcurrentRequestsPerInstance: (() {
-        final guardedValue = map['maxConcurrentRequestsPerInstance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxQueueWait: (() {
-        final guardedValue = map['maxQueueWait'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestTimeout: (() {
-        final guardedValue = map['requestTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      maxConcurrentRequestsPerInstance: (() { final guardedValue = map['maxConcurrentRequestsPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxQueueWait: (() { final guardedValue = map['maxQueueWait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestTimeout: (() { final guardedValue = map['requestTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

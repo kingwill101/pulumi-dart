@@ -19,3 +19,4 @@ enum AutoBackupDaysOfWeek {
     throw ArgumentError('Unknown AutoBackupDaysOfWeek value: $value');
   }
 }
+

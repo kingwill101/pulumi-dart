@@ -17,65 +17,44 @@ import 'vpc_config_response_response.dart';
 class AwsEksClusterPropertiesResponse {
   /// &lt;p&gt;The access configuration for the cluster.&lt;/p&gt;
   final pulumi.Input<AccessConfigResponseResponse>? accessConfig;
-
   /// &lt;p&gt;The Amazon Resource Name (ARN) of the cluster.&lt;/p&gt;
   final pulumi.Input<String>? arn;
-
   /// &lt;p&gt;The &lt;code&gt;certificate-authority-data&lt;/code&gt; for your cluster.&lt;/p&gt;
   final pulumi.Input<CertificateResponse>? certificateAuthority;
-
   /// &lt;p&gt;A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.&lt;/p&gt;
   final pulumi.Input<String>? clientRequestToken;
-
   /// &lt;p&gt;The configuration used to connect to a cluster for registration.&lt;/p&gt;
   final pulumi.Input<ConnectorConfigResponseResponse>? connectorConfig;
-
   /// &lt;p&gt;The Unix epoch timestamp at object creation.&lt;/p&gt;
   final pulumi.Input<String>? createdAt;
-
   /// &lt;p&gt;The encryption configuration for the cluster.&lt;/p&gt;
   final pulumi.Input<List<EncryptionConfigResponse>>? encryptionConfig;
-
   /// &lt;p&gt;The endpoint for your Kubernetes API server.&lt;/p&gt;
   final pulumi.Input<String>? endpoint;
-
   /// &lt;p&gt;An object representing the health of your local Amazon EKS cluster on an Amazon Web Services Outpost. This object isn't available for clusters on the Amazon Web Services cloud.&lt;/p&gt;
   final pulumi.Input<ClusterHealthResponse>? health;
-
   /// &lt;p&gt;The ID of your local Amazon EKS cluster on an Amazon Web Services Outpost. This property isn't available for an Amazon EKS cluster on the Amazon Web Services cloud.&lt;/p&gt;
   final pulumi.Input<String>? id;
-
   /// &lt;p&gt;The identity provider information for the cluster.&lt;/p&gt;
   final pulumi.Input<IdentityResponse>? identity;
-
   /// &lt;p&gt;The Kubernetes network configuration for the cluster.&lt;/p&gt;
-  final pulumi.Input<KubernetesNetworkConfigResponseResponse>?
-  kubernetesNetworkConfig;
-
+  final pulumi.Input<KubernetesNetworkConfigResponseResponse>? kubernetesNetworkConfig;
   /// &lt;p&gt;The logging configuration for your cluster.&lt;/p&gt;
   final pulumi.Input<LoggingResponse>? logging;
-
   /// &lt;p&gt;The name of your cluster.&lt;/p&gt;
   final pulumi.Input<String>? name;
-
   /// &lt;p&gt;An object representing the configuration of your local Amazon EKS cluster on an Amazon Web Services Outpost. This object isn't available for clusters on the Amazon Web Services cloud.&lt;/p&gt;
   final pulumi.Input<OutpostConfigResponseResponse>? outpostConfig;
-
   /// &lt;p&gt;The platform version of your Amazon EKS cluster. For more information about clusters deployed on the Amazon Web Services Cloud, see &lt;a href='https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html'&gt;Platform versions&lt;/a&gt; in the &lt;i&gt; &lt;i&gt;Amazon EKS User Guide&lt;/i&gt; &lt;/i&gt;. For more information about local clusters deployed on an Outpost, see &lt;a href='https://docs.aws.amazon.com/eks/latest/userguide/eks-outposts-platform-versions.html'&gt;Amazon EKS local cluster platform versions&lt;/a&gt; in the &lt;i&gt; &lt;i&gt;Amazon EKS User Guide&lt;/i&gt; &lt;/i&gt;.&lt;/p&gt;
   final pulumi.Input<String>? platformVersion;
-
   /// &lt;p&gt;The VPC configuration used by the cluster control plane. Amazon EKS VPC resources have specific requirements to work properly with Kubernetes. For more information, see &lt;a href='https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html'&gt;Cluster VPC considerations&lt;/a&gt; and &lt;a href='https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html'&gt;Cluster security group considerations&lt;/a&gt; in the &lt;i&gt;Amazon EKS User Guide&lt;/i&gt;.&lt;/p&gt;
   final pulumi.Input<VpcConfigResponseResponse>? resourcesVpcConfig;
-
   /// &lt;p&gt;The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to Amazon Web Services API operations on your behalf.&lt;/p&gt;
   final pulumi.Input<String>? roleArn;
-
   /// &lt;p&gt;The current status of the cluster.&lt;/p&gt;
   final pulumi.Input<ClusterStatusEnumValueResponse>? status;
-
   /// &lt;p&gt;Metadata that assists with categorization and organization. Each tag consists of a key and an optional value. You define both. Tags don't propagate to any other cluster or Amazon Web Services resources.&lt;/p&gt;
   final pulumi.Input<Map<String, String>>? tags;
-
   /// &lt;p&gt;The Kubernetes server version for the cluster.&lt;/p&gt;
   final pulumi.Input<String>? version;
 
@@ -127,76 +106,25 @@ class AwsEksClusterPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AccessConfigResponseResponse,
-            Map<String, dynamic>
-          >(accessConfig, (value) => value.toMap()),
+      'accessConfig': ?pulumi.Input.mapOptionalInputValue<AccessConfigResponseResponse, Map<String, dynamic>>(accessConfig, (value) => value.toMap()),
       'arn': ?arn,
-      'certificateAuthority':
-          ?pulumi.Input.mapOptionalInputValue<
-            CertificateResponse,
-            Map<String, dynamic>
-          >(certificateAuthority, (value) => value.toMap()),
+      'certificateAuthority': ?pulumi.Input.mapOptionalInputValue<CertificateResponse, Map<String, dynamic>>(certificateAuthority, (value) => value.toMap()),
       'clientRequestToken': ?clientRequestToken,
-      'connectorConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectorConfigResponseResponse,
-            Map<String, dynamic>
-          >(connectorConfig, (value) => value.toMap()),
+      'connectorConfig': ?pulumi.Input.mapOptionalInputValue<ConnectorConfigResponseResponse, Map<String, dynamic>>(connectorConfig, (value) => value.toMap()),
       'createdAt': ?createdAt,
-      'encryptionConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EncryptionConfigResponse>,
-            List<Map<String, dynamic>>
-          >(
-            encryptionConfig,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EncryptionConfigResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'encryptionConfig': ?pulumi.Input.mapOptionalInputValue<List<EncryptionConfigResponse>, List<Map<String, dynamic>>>(encryptionConfig, (value) => pulumi.Input.encodeList<EncryptionConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'endpoint': ?endpoint,
-      'health':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterHealthResponse,
-            Map<String, dynamic>
-          >(health, (value) => value.toMap()),
+      'health': ?pulumi.Input.mapOptionalInputValue<ClusterHealthResponse, Map<String, dynamic>>(health, (value) => value.toMap()),
       'id': ?id,
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            IdentityResponse,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
-      'kubernetesNetworkConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            KubernetesNetworkConfigResponseResponse,
-            Map<String, dynamic>
-          >(kubernetesNetworkConfig, (value) => value.toMap()),
-      'logging':
-          ?pulumi.Input.mapOptionalInputValue<
-            LoggingResponse,
-            Map<String, dynamic>
-          >(logging, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<IdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'kubernetesNetworkConfig': ?pulumi.Input.mapOptionalInputValue<KubernetesNetworkConfigResponseResponse, Map<String, dynamic>>(kubernetesNetworkConfig, (value) => value.toMap()),
+      'logging': ?pulumi.Input.mapOptionalInputValue<LoggingResponse, Map<String, dynamic>>(logging, (value) => value.toMap()),
       'name': ?name,
-      'outpostConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            OutpostConfigResponseResponse,
-            Map<String, dynamic>
-          >(outpostConfig, (value) => value.toMap()),
+      'outpostConfig': ?pulumi.Input.mapOptionalInputValue<OutpostConfigResponseResponse, Map<String, dynamic>>(outpostConfig, (value) => value.toMap()),
       'platformVersion': ?platformVersion,
-      'resourcesVpcConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            VpcConfigResponseResponse,
-            Map<String, dynamic>
-          >(resourcesVpcConfig, (value) => value.toMap()),
+      'resourcesVpcConfig': ?pulumi.Input.mapOptionalInputValue<VpcConfigResponseResponse, Map<String, dynamic>>(resourcesVpcConfig, (value) => value.toMap()),
       'roleArn': ?roleArn,
-      'status':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterStatusEnumValueResponse,
-            Map<String, dynamic>
-          >(status, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<ClusterStatusEnumValueResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
       'tags': ?tags,
       'version': ?version,
     };
@@ -204,160 +132,28 @@ class AwsEksClusterPropertiesResponse {
 
   factory AwsEksClusterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEksClusterPropertiesResponse(
-      accessConfig: (() {
-        final guardedValue = map['accessConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AccessConfigResponseResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certificateAuthority: (() {
-        final guardedValue = map['certificateAuthority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CertificateResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      clientRequestToken: (() {
-        final guardedValue = map['clientRequestToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectorConfig: (() {
-        final guardedValue = map['connectorConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConnectorConfigResponseResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      createdAt: (() {
-        final guardedValue = map['createdAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encryptionConfig: (() {
-        final guardedValue = map['encryptionConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EncryptionConfigResponse>(
-            guardedValue,
-            (value) => EncryptionConfigResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      endpoint: (() {
-        final guardedValue = map['endpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      health: (() {
-        final guardedValue = map['health'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterHealthResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IdentityResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      kubernetesNetworkConfig: (() {
-        final guardedValue = map['kubernetesNetworkConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KubernetesNetworkConfigResponseResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      logging: (() {
-        final guardedValue = map['logging'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LoggingResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outpostConfig: (() {
-        final guardedValue = map['outpostConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OutpostConfigResponseResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      platformVersion: (() {
-        final guardedValue = map['platformVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourcesVpcConfig: (() {
-        final guardedValue = map['resourcesVpcConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VpcConfigResponseResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      roleArn: (() {
-        final guardedValue = map['roleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterStatusEnumValueResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessConfig: (() { final guardedValue = map['accessConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessConfigResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificateAuthority: (() { final guardedValue = map['certificateAuthority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertificateResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      clientRequestToken: (() { final guardedValue = map['clientRequestToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectorConfig: (() { final guardedValue = map['connectorConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectorConfigResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptionConfig: (() { final guardedValue = map['encryptionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EncryptionConfigResponse>(guardedValue, (value) => EncryptionConfigResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      health: (() { final guardedValue = map['health']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterHealthResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      kubernetesNetworkConfig: (() { final guardedValue = map['kubernetesNetworkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesNetworkConfigResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      logging: (() { final guardedValue = map['logging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoggingResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outpostConfig: (() { final guardedValue = map['outpostConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OutpostConfigResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      platformVersion: (() { final guardedValue = map['platformVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourcesVpcConfig: (() { final guardedValue = map['resourcesVpcConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VpcConfigResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterStatusEnumValueResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

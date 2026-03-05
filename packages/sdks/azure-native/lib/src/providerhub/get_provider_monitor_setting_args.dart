@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProviderMonitorSettingArgs {
   /// The name of the provider monitor setting.
   final pulumi.Input<String> providerMonitorSettingName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetProviderMonitorSettingArgs {
 
   factory GetProviderMonitorSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetProviderMonitorSettingArgs(
-      providerMonitorSettingName: pulumi.Input.fromValue(
-        map['providerMonitorSettingName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      providerMonitorSettingName: pulumi.Input.fromValue(map['providerMonitorSettingName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

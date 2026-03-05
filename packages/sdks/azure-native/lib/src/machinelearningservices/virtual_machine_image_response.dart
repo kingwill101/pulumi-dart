@@ -9,10 +9,14 @@ class VirtualMachineImageResponse {
 
   /// Creates a new [VirtualMachineImageResponse].
   /// [id] Virtual Machine image path
-  VirtualMachineImageResponse({required this.id});
+  VirtualMachineImageResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory VirtualMachineImageResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class VirtualMachineImageResponse {
     );
   }
 }
+

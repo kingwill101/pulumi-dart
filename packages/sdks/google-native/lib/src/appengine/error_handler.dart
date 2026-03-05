@@ -7,10 +7,8 @@ import 'error_handler_error_code.dart';
 class ErrorHandler {
   /// Error condition this handler applies to.
   final pulumi.Input<ErrorHandlerErrorCode>? errorCode;
-
   /// MIME type of file. Defaults to text/html.
   final pulumi.Input<String>? mimeType;
-
   /// Static file content to be served for this error.
   final pulumi.Input<String>? staticFile;
 
@@ -18,15 +16,15 @@ class ErrorHandler {
   /// [errorCode] Error condition this handler applies to.
   /// [mimeType] MIME type of file. Defaults to text/html.
   /// [staticFile] Static file content to be served for this error.
-  ErrorHandler({this.errorCode, this.mimeType, this.staticFile});
+  ErrorHandler({
+    this.errorCode,
+    this.mimeType,
+    this.staticFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorCode':
-          ?pulumi.Input.mapOptionalInputValue<ErrorHandlerErrorCode, String>(
-            errorCode,
-            (value) => value.wireValue,
-          ),
+      'errorCode': ?pulumi.Input.mapOptionalInputValue<ErrorHandlerErrorCode, String>(errorCode, (value) => value.wireValue),
       'mimeType': ?mimeType,
       'staticFile': ?staticFile,
     };
@@ -34,23 +32,10 @@ class ErrorHandler {
 
   factory ErrorHandler.fromMap(Map<String, dynamic> map) {
     return ErrorHandler(
-      errorCode: (() {
-        final guardedValue = map['errorCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ErrorHandlerErrorCode.fromValue(guardedValue as String),
-        );
-      })(),
-      mimeType: (() {
-        final guardedValue = map['mimeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      staticFile: (() {
-        final guardedValue = map['staticFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      errorCode: (() { final guardedValue = map['errorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ErrorHandlerErrorCode.fromValue(guardedValue as String)); })(),
+      mimeType: (() { final guardedValue = map['mimeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      staticFile: (() { final guardedValue = map['staticFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

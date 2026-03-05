@@ -10,16 +10,12 @@ import 'user_role.dart';
 class UserArgs {
   /// The identity provider type for the Mongo Cluster User. The only possible value is `MicrosoftEntraID`. Changing this forces a new resource to be created.
   final pulumi.Input<String> identityProviderType;
-
   /// The ID of the Mongo Cluster where the User should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> mongoClusterId;
-
   /// The Object ID of the Entra ID User or Service Principal. Changing this forces a new resource to be created.
   final pulumi.Input<String> objectId;
-
   /// The principal type for the Mongo Cluster User. Possible values are `user` and `servicePrincipal`. Changing this forces a new resource to be created.
   final pulumi.Input<String> principalType;
-
   /// One or more `role` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<UserRole>> roles;
 
@@ -43,32 +39,18 @@ class UserArgs {
       'mongoClusterId': mongoClusterId,
       'objectId': objectId,
       'principalType': principalType,
-      'roles':
-          pulumi
-              .Input.mapInputValue<List<UserRole>, List<Map<String, dynamic>>>(
-            roles,
-            (value) => pulumi.Input.encodeList<UserRole, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'roles': pulumi.Input.mapInputValue<List<UserRole>, List<Map<String, dynamic>>>(roles, (value) => pulumi.Input.encodeList<UserRole, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      identityProviderType: pulumi.Input.fromValue(
-        map['identityProviderType'] as String,
-      ),
+      identityProviderType: pulumi.Input.fromValue(map['identityProviderType'] as String),
       mongoClusterId: pulumi.Input.fromValue(map['mongoClusterId'] as String),
       objectId: pulumi.Input.fromValue(map['objectId'] as String),
       principalType: pulumi.Input.fromValue(map['principalType'] as String),
-      roles: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<UserRole>(
-          map['roles']!,
-          (value) => UserRole.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      roles: pulumi.Input.fromValue(pulumi.Input.decodeList<UserRole>(map['roles']!, (value) => UserRole.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

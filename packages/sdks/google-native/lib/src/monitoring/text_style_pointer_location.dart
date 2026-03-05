@@ -26,3 +26,4 @@ enum TextStylePointerLocation {
     throw ArgumentError('Unknown TextStylePointerLocation value: $value');
   }
 }
+

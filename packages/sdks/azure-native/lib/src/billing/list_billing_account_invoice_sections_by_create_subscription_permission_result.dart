@@ -7,7 +7,6 @@ import 'invoice_section_with_create_sub_permission_response.dart';
 class ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult {
   /// The link (url) to the next page of results.
   final String nextLink;
-
   /// The list of resources.
   final List<InvoiceSectionWithCreateSubPermissionResponse> value;
 
@@ -22,27 +21,15 @@ class ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': nextLink,
-      'value':
-          pulumi.Input.encodeList<
-            InvoiceSectionWithCreateSubPermissionResponse,
-            Map<String, dynamic>
-          >(value, (value) => value.toMap()),
+      'value': pulumi.Input.encodeList<InvoiceSectionWithCreateSubPermissionResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
-  factory ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult.fromMap(Map<String, dynamic> map) {
     return ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult(
       nextLink: map['nextLink'] as String,
-      value:
-          pulumi
-              .Input.decodeList<InvoiceSectionWithCreateSubPermissionResponse>(
-            map['value']!,
-            (value) => InvoiceSectionWithCreateSubPermissionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      value: pulumi.Input.decodeList<InvoiceSectionWithCreateSubPermissionResponse>(map['value']!, (value) => InvoiceSectionWithCreateSubPermissionResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

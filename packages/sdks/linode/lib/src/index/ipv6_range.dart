@@ -149,22 +149,16 @@ import 'ipv6_range_state.dart';
 class Ipv6Range extends pulumi.CustomResource {
   /// Whether this IPv6 range is shared.
   late final pulumi.Output<bool> isBgp;
-
   /// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
   late final pulumi.Output<int?> linodeId;
-
   /// A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
   late final pulumi.Output<List<int>> linodes;
-
   /// The prefix length of the IPv6 range.
   late final pulumi.Output<int> prefixLength;
-
   /// The IPv6 range of addresses in this pool.
   late final pulumi.Output<String> range;
-
   /// The region for this range of IPv6 addresses.
   late final pulumi.Output<String> region;
-
   /// The IPv6 SLAAC address to assign this range to.
   late final pulumi.Output<String> routeTarget;
 
@@ -177,11 +171,11 @@ class Ipv6Range extends pulumi.CustomResource {
     Ipv6RangeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/ipv6Range:Ipv6Range',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/ipv6Range:Ipv6Range',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     isBgp = registerOutput<bool>('isBgp');
     linodeId = registerOutput<int?>('linodeId');
     linodes = registerOutput<List<int>>('linodes');
@@ -209,11 +203,11 @@ class Ipv6Range extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/ipv6Range:Ipv6Range',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/ipv6Range:Ipv6Range',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     isBgp = registerOutput<bool>('isBgp');
     linodeId = registerOutput<int?>('linodeId');
     linodes = registerOutput<List<int>>('linodes');

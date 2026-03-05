@@ -16,3 +16,4 @@ enum RecoveryMode {
     throw ArgumentError('Unknown RecoveryMode value: $value');
   }
 }
+

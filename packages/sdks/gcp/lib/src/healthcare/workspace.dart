@@ -199,23 +199,18 @@ class Workspace extends pulumi.CustomResource {
   /// Identifies the dataset addressed by this request. Must be in the format
   /// 'projects/{project}/locations/{location}/datasets/{dataset}'
   late final pulumi.Output<String> dataset;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
   late final pulumi.Output<String> name;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Settings associated with this workspace.
   /// Structure is documented below.
   late final pulumi.Output<WorkspaceSettings> settings;
@@ -229,26 +224,17 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:healthcare/workspace:Workspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:healthcare/workspace:Workspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataset = registerOutput<String>('dataset');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    settings = registerOutput<WorkspaceSettings>(
-      'settings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    settings = registerOutput<WorkspaceSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Workspace] resource's state with the given [name] and [id].
@@ -269,25 +255,16 @@ class Workspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:healthcare/workspace:Workspace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:healthcare/workspace:Workspace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataset = registerOutput<String>('dataset');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    settings = registerOutput<WorkspaceSettings>(
-      'settings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    settings = registerOutput<WorkspaceSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

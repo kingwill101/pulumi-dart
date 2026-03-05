@@ -3,22 +3,16 @@ enum AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInter
   nvme("NVME"),
   scsi("SCSI");
 
-  const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeBeta(
-    this.wireValue,
-  );
+  const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeBeta(this.wireValue);
   final String wireValue;
 
-  static AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeBeta
-  fromValue(String value) {
-    for (final item
-        in AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeBeta
-            .values) {
+  static AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeBeta fromValue(String value) {
+    for (final item in AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeBeta value: $value');
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudFunctionsV2StateMessageResponse {
   /// The message.
   final pulumi.Input<String> message;
-
   /// Severity of the state message.
   final pulumi.Input<String> severity;
-
   /// One-word CamelCase type of the state message.
   final pulumi.Input<String> type;
 
@@ -31,9 +29,7 @@ class GoogleCloudFunctionsV2StateMessageResponse {
     };
   }
 
-  factory GoogleCloudFunctionsV2StateMessageResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudFunctionsV2StateMessageResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudFunctionsV2StateMessageResponse(
       message: pulumi.Input.fromValue(map['message'] as String),
       severity: pulumi.Input.fromValue(map['severity'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudFunctionsV2StateMessageResponse {
     );
   }
 }
+

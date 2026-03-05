@@ -8,10 +8,8 @@ import 'domain_devices_tpm_backend_passthrough.dart';
 class DomainDevicesTpmBackend {
   /// Configures the emulator backend for the TPM device, which handles its operations.
   final pulumi.Input<DomainDevicesTpmBackendEmulator>? emulator;
-
   /// Configures external settings for the TPM backend to use an external TPM device.
   final pulumi.Input<DomainDevicesTpmBackendExternal>? external;
-
   /// Configures the backend for the TPM device to be in passthrough mode, allowing direct access to the host's TPM functionality.
   final pulumi.Input<DomainDevicesTpmBackendPassthrough>? passthrough;
 
@@ -19,57 +17,26 @@ class DomainDevicesTpmBackend {
   /// [emulator] Configures the emulator backend for the TPM device, which handles its operations.
   /// [external] Configures external settings for the TPM backend to use an external TPM device.
   /// [passthrough] Configures the backend for the TPM device to be in passthrough mode, allowing direct access to the host's TPM functionality.
-  DomainDevicesTpmBackend({this.emulator, this.external, this.passthrough});
+  DomainDevicesTpmBackend({
+    this.emulator,
+    this.external,
+    this.passthrough,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'emulator':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesTpmBackendEmulator,
-            Map<String, dynamic>
-          >(emulator, (value) => value.toMap()),
-      'external':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesTpmBackendExternal,
-            Map<String, dynamic>
-          >(external, (value) => value.toMap()),
-      'passthrough':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesTpmBackendPassthrough,
-            Map<String, dynamic>
-          >(passthrough, (value) => value.toMap()),
+      'emulator': ?pulumi.Input.mapOptionalInputValue<DomainDevicesTpmBackendEmulator, Map<String, dynamic>>(emulator, (value) => value.toMap()),
+      'external': ?pulumi.Input.mapOptionalInputValue<DomainDevicesTpmBackendExternal, Map<String, dynamic>>(external, (value) => value.toMap()),
+      'passthrough': ?pulumi.Input.mapOptionalInputValue<DomainDevicesTpmBackendPassthrough, Map<String, dynamic>>(passthrough, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesTpmBackend.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackend(
-      emulator: (() {
-        final guardedValue = map['emulator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesTpmBackendEmulator.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      external: (() {
-        final guardedValue = map['external'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesTpmBackendExternal.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      passthrough: (() {
-        final guardedValue = map['passthrough'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesTpmBackendPassthrough.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      emulator: (() { final guardedValue = map['emulator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesTpmBackendEmulator.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      external: (() { final guardedValue = map['external']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesTpmBackendExternal.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      passthrough: (() { final guardedValue = map['passthrough']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesTpmBackendPassthrough.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

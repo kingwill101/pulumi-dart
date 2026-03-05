@@ -28,11 +28,7 @@ class GetInstanceSpecificationsResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'specifications':
-          pulumi.Input.encodeList<
-            GetInstanceSpecificationsSpecification,
-            Map<String, dynamic>
-          >(specifications, (value) => value.toMap()),
+      'specifications': pulumi.Input.encodeList<GetInstanceSpecificationsSpecification, Map<String, dynamic>>(specifications, (value) => value.toMap()),
     };
   }
 
@@ -40,18 +36,9 @@ class GetInstanceSpecificationsResult {
     return GetInstanceSpecificationsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      specifications:
-          pulumi.Input.decodeList<GetInstanceSpecificationsSpecification>(
-            map['specifications']!,
-            (value) => GetInstanceSpecificationsSpecification.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      specifications: pulumi.Input.decodeList<GetInstanceSpecificationsSpecification>(map['specifications']!, (value) => GetInstanceSpecificationsSpecification.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

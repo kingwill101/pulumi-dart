@@ -10,7 +10,6 @@ class BackupArgs {
   /// Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
   final pulumi.Input<String> backupId;
   final pulumi.Input<String> domainId;
-
   /// Optional. Resource labels to represent user provided metadata.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? project;
@@ -40,18 +39,9 @@ class BackupArgs {
     return BackupArgs(
       backupId: pulumi.Input.fromValue(map['backupId'] as String),
       domainId: pulumi.Input.fromValue(map['domainId'] as String),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

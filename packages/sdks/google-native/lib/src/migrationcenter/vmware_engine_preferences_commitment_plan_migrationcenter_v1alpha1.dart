@@ -7,23 +7,16 @@ enum VmwareEnginePreferencesCommitmentPlanMigrationcenterV1alpha1 {
   commitment1YearUpfrontPayment("COMMITMENT_1_YEAR_UPFRONT_PAYMENT"),
   commitment3YearUpfrontPayment("COMMITMENT_3_YEAR_UPFRONT_PAYMENT");
 
-  const VmwareEnginePreferencesCommitmentPlanMigrationcenterV1alpha1(
-    this.wireValue,
-  );
+  const VmwareEnginePreferencesCommitmentPlanMigrationcenterV1alpha1(this.wireValue);
   final String wireValue;
 
-  static VmwareEnginePreferencesCommitmentPlanMigrationcenterV1alpha1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in VmwareEnginePreferencesCommitmentPlanMigrationcenterV1alpha1
-            .values) {
+  static VmwareEnginePreferencesCommitmentPlanMigrationcenterV1alpha1 fromValue(String value) {
+    for (final item in VmwareEnginePreferencesCommitmentPlanMigrationcenterV1alpha1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown VmwareEnginePreferencesCommitmentPlanMigrationcenterV1alpha1 value: $value',
-    );
+    throw ArgumentError('Unknown VmwareEnginePreferencesCommitmentPlanMigrationcenterV1alpha1 value: $value');
   }
 }
+

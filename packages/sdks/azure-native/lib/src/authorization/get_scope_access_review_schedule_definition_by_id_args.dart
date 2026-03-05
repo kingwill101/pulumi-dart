@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScopeAccessReviewScheduleDefinitionByIdArgs {
   /// The id of the access review schedule definition.
   final pulumi.Input<String> scheduleDefinitionId;
-
   /// The scope of the resource.
   final pulumi.Input<String> scope;
 
@@ -28,14 +27,11 @@ class GetScopeAccessReviewScheduleDefinitionByIdArgs {
     };
   }
 
-  factory GetScopeAccessReviewScheduleDefinitionByIdArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetScopeAccessReviewScheduleDefinitionByIdArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeAccessReviewScheduleDefinitionByIdArgs(
-      scheduleDefinitionId: pulumi.Input.fromValue(
-        map['scheduleDefinitionId'] as String,
-      ),
+      scheduleDefinitionId: pulumi.Input.fromValue(map['scheduleDefinitionId'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

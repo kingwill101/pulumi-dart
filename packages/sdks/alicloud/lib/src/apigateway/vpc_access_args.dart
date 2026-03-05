@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcAccessArgs {
   /// The ID of an ECS or SLB instance in the VPC.
   final pulumi.Input<String> instanceId;
-
   /// The name of the authorization. The name must be unique.
   final pulumi.Input<String>? name;
-
   /// The port number that corresponds to the instance.
   final pulumi.Input<int> port;
-
   /// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
   final pulumi.Input<String> vpcId;
 
@@ -43,13 +40,10 @@ class VpcAccessArgs {
   factory VpcAccessArgs.fromMap(Map<String, dynamic> map) {
     return VpcAccessArgs(
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       port: pulumi.Input.fromValue(map['port'] as int),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
+

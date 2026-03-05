@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQuickConnectQuickConnectConfigUserConfig {
   /// Identifier of the contact flow.
   final pulumi.Input<String> contactFlowId;
-
   /// Identifier for the user.
   final pulumi.Input<String> userId;
 
@@ -18,15 +17,17 @@ class GetQuickConnectQuickConnectConfigUserConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'contactFlowId': contactFlowId, 'userId': userId};
+    return <String, dynamic>{
+      'contactFlowId': contactFlowId,
+      'userId': userId,
+    };
   }
 
-  factory GetQuickConnectQuickConnectConfigUserConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetQuickConnectQuickConnectConfigUserConfig.fromMap(Map<String, dynamic> map) {
     return GetQuickConnectQuickConnectConfigUserConfig(
       contactFlowId: pulumi.Input.fromValue(map['contactFlowId'] as String),
       userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
+

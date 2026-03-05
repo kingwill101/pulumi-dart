@@ -10,16 +10,12 @@ import 'code_version_machinelearningservices.dart';
 class RegistryCodeVersionArgs {
   /// Container name.
   final pulumi.Input<String> codeName;
-
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<CodeVersionMachinelearningservices> codeVersionProperties;
-
   /// Name of Azure Machine Learning registry. This is case-insensitive
   final pulumi.Input<String> registryName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Version identifier.
   final pulumi.Input<String>? version;
 
@@ -50,18 +46,11 @@ class RegistryCodeVersionArgs {
   factory RegistryCodeVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegistryCodeVersionArgs(
       codeName: pulumi.Input.fromValue(map['codeName'] as String),
-      codeVersionProperties: pulumi.Input.fromValue(
-        map['codeVersionProperties'] as CodeVersionMachinelearningservices,
-      ),
+      codeVersionProperties: pulumi.Input.fromValue(map['codeVersionProperties'] as CodeVersionMachinelearningservices),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

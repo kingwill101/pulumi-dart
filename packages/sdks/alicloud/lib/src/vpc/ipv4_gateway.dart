@@ -220,37 +220,26 @@ import 'ipv4_gateway_state.dart';
 class Ipv4Gateway extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
   late final pulumi.Output<bool?> dryRun;
-
   /// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
   late final pulumi.Output<bool> enabled;
-
   /// The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
   late final pulumi.Output<String?> internetMode;
-
   /// The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
   late final pulumi.Output<String?> ipv4GatewayDescription;
-
   /// Resource primary key field.
   late final pulumi.Output<String> ipv4GatewayId;
-
   /// The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
   late final pulumi.Output<String?> ipv4GatewayName;
-
   /// ID of the route table associated with IPv4 Gateway
   late final pulumi.Output<String> ipv4GatewayRouteTableId;
-
   /// The ID of the resource group to which the instance belongs.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The tags of the current resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
   late final pulumi.Output<String> vpcId;
 
@@ -263,11 +252,11 @@ class Ipv4Gateway extends pulumi.CustomResource {
     Ipv4GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipv4Gateway:Ipv4Gateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/ipv4Gateway:Ipv4Gateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dryRun = registerOutput<bool?>('dryRun');
     enabled = registerOutput<bool>('enabled');
@@ -300,11 +289,11 @@ class Ipv4Gateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipv4Gateway:Ipv4Gateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/ipv4Gateway:Ipv4Gateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dryRun = registerOutput<bool?>('dryRun');
     enabled = registerOutput<bool>('enabled');

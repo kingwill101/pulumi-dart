@@ -7,14 +7,9 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType {
   /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
   /// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
   final pulumi.Input<String> name;
-
   /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
   /// Structure is documented below.
-  final pulumi.Input<
-    PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScore
-  >?
-  sensitivityScore;
-
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScore>? sensitivityScore;
   /// Version of the information type to use. By default, the version is set to stable.
   final pulumi.Input<String>? version;
 
@@ -31,34 +26,17 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'sensitivityScore':
-          ?pulumi.Input.mapOptionalInputValue<
-            PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScore,
-            Map<String, dynamic>
-          >(sensitivityScore, (value) => value.toMap()),
+      'sensitivityScore': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScore, Map<String, dynamic>>(sensitivityScore, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
-  factory PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType(
       name: pulumi.Input.fromValue(map['name'] as String),
-      sensitivityScore: (() {
-        final guardedValue = map['sensitivityScore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScore.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sensitivityScore: (() { final guardedValue = map['sensitivityScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

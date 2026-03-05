@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendAuthorizationHeaderCredentials {
   /// Authentication Parameter value.
   final pulumi.Input<String> parameter;
-
   /// Authentication Scheme name.
   final pulumi.Input<String> scheme;
 
@@ -19,15 +18,17 @@ class BackendAuthorizationHeaderCredentials {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'parameter': parameter, 'scheme': scheme};
+    return <String, dynamic>{
+      'parameter': parameter,
+      'scheme': scheme,
+    };
   }
 
-  factory BackendAuthorizationHeaderCredentials.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackendAuthorizationHeaderCredentials.fromMap(Map<String, dynamic> map) {
     return BackendAuthorizationHeaderCredentials(
       parameter: pulumi.Input.fromValue(map['parameter'] as String),
       scheme: pulumi.Input.fromValue(map['scheme'] as String),
     );
   }
 }
+

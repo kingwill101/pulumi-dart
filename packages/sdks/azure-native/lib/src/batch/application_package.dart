@@ -141,34 +141,24 @@ import 'system_data_response.dart';
 class ApplicationPackage extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The ETag of the resource, used for concurrency statements.
   late final pulumi.Output<String> etag;
-
   /// The format of the application package, if the package is active.
   late final pulumi.Output<String> format;
-
   /// The time at which the package was last activated, if the package is active.
   late final pulumi.Output<String> lastActivationTime;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The current state of the application package.
   late final pulumi.Output<String> state;
-
   /// The URL for the application package in Azure Storage.
   late final pulumi.Output<String> storageUrl;
-
   /// The UTC time at which the Azure Storage URL will expire.
   late final pulumi.Output<String> storageUrlExpiry;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -181,11 +171,11 @@ class ApplicationPackage extends pulumi.CustomResource {
     ApplicationPackageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:batch:ApplicationPackage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:batch:ApplicationPackage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     format = registerOutput<String>('format');
@@ -194,16 +184,7 @@ class ApplicationPackage extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     storageUrl = registerOutput<String>('storageUrl');
     storageUrlExpiry = registerOutput<String>('storageUrlExpiry');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

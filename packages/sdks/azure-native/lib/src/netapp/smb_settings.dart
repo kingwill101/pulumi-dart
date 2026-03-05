@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SmbSettings {
   /// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
   final pulumi.Input<String>? smbAccessBasedEnumeration;
-
   /// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
   final pulumi.Input<String>? smbEncryption;
-
   /// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
   final pulumi.Input<String>? smbNonBrowsable;
 
@@ -33,21 +31,10 @@ class SmbSettings {
 
   factory SmbSettings.fromMap(Map<String, dynamic> map) {
     return SmbSettings(
-      smbAccessBasedEnumeration: (() {
-        final guardedValue = map['smbAccessBasedEnumeration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      smbEncryption: (() {
-        final guardedValue = map['smbEncryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      smbNonBrowsable: (() {
-        final guardedValue = map['smbNonBrowsable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      smbAccessBasedEnumeration: (() { final guardedValue = map['smbAccessBasedEnumeration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      smbEncryption: (() { final guardedValue = map['smbEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      smbNonBrowsable: (() { final guardedValue = map['smbNonBrowsable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

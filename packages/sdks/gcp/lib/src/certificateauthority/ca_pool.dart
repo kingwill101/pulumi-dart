@@ -1132,17 +1132,14 @@ import 'ca_pool_state.dart';
 class CaPool extends pulumi.CustomResource {
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Used when customer would like to encrypt data at rest. The customer-provided key will be used
   /// to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
   /// customer data will remain unencrypted.
   /// Structure is documented below.
   late final pulumi.Output<CaPoolEncryptionSpec?> encryptionSpec;
-
   /// The IssuancePolicy to control how Certificates will be issued from this CaPool.
   /// Structure is documented below.
   late final pulumi.Output<CaPoolIssuancePolicy?> issuancePolicy;
-
   /// Labels with user-defined metadata.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
   /// "1.3kg", "count": "3" }.
@@ -1150,26 +1147,20 @@ class CaPool extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Location of the CaPool. A full list of valid locations can be found by
   /// running `gcloud privateca locations list`.
   late final pulumi.Output<String> location;
-
   /// The name for this CaPool.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
   /// Structure is documented below.
   late final pulumi.Output<CaPoolPublishingOptions?> publishingOptions;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The Tier of this CaPool.
   /// Possible values are: `ENTERPRISE`, `DEVOPS`.
   late final pulumi.Output<String> tier;
@@ -1178,48 +1169,24 @@ class CaPool extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [CaPool]. {@macro pulumi_certificateauthority_ca_pool_ca_pool_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  CaPool(String name, {CaPoolArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:certificateauthority/caPool:CaPool',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  CaPool(
+    String name, {
+    CaPoolArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:certificateauthority/caPool:CaPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    encryptionSpec = registerOutput<CaPoolEncryptionSpec?>(
-      'encryptionSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CaPoolEncryptionSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    issuancePolicy = registerOutput<CaPoolIssuancePolicy?>(
-      'issuancePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CaPoolIssuancePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionSpec = registerOutput<CaPoolEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    issuancePolicy = registerOutput<CaPoolIssuancePolicy?>('issuancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolIssuancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    publishingOptions = registerOutput<CaPoolPublishingOptions?>(
-      'publishingOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CaPoolPublishingOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    publishingOptions = registerOutput<CaPoolPublishingOptions?>('publishingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolPublishingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     tier = registerOutput<String>('tier');
   }
@@ -1242,46 +1209,19 @@ class CaPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:certificateauthority/caPool:CaPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:certificateauthority/caPool:CaPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    encryptionSpec = registerOutput<CaPoolEncryptionSpec?>(
-      'encryptionSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CaPoolEncryptionSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    issuancePolicy = registerOutput<CaPoolIssuancePolicy?>(
-      'issuancePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CaPoolIssuancePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionSpec = registerOutput<CaPoolEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    issuancePolicy = registerOutput<CaPoolIssuancePolicy?>('issuancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolIssuancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    publishingOptions = registerOutput<CaPoolPublishingOptions?>(
-      'publishingOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CaPoolPublishingOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    publishingOptions = registerOutput<CaPoolPublishingOptions?>('publishingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolPublishingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     tier = registerOutput<String>('tier');
   }

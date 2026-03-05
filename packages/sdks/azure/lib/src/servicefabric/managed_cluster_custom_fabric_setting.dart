@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterCustomFabricSetting {
   /// Parameter name.
   final pulumi.Input<String> parameter;
-
   /// Section name.
   final pulumi.Input<String> section;
-
   /// Parameter value.
   final pulumi.Input<String> value;
 
@@ -38,3 +36,4 @@ class ManagedClusterCustomFabricSetting {
     );
   }
 }
+

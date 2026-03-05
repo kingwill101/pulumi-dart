@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceAddr {
   /// special value 'any'
   final pulumi.Input<List<String>>? cidrs;
-
   /// list of countries
   final pulumi.Input<List<String>>? countries;
-
   /// list of feeds
   final pulumi.Input<List<String>>? feeds;
-
   /// prefix list
   final pulumi.Input<List<String>>? prefixLists;
 
@@ -21,7 +18,12 @@ class SourceAddr {
   /// [countries] list of countries
   /// [feeds] list of feeds
   /// [prefixLists] prefix list
-  SourceAddr({this.cidrs, this.countries, this.feeds, this.prefixLists});
+  SourceAddr({
+    this.cidrs,
+    this.countries,
+    this.feeds,
+    this.prefixLists,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,26 +36,11 @@ class SourceAddr {
 
   factory SourceAddr.fromMap(Map<String, dynamic> map) {
     return SourceAddr(
-      cidrs: (() {
-        final guardedValue = map['cidrs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      countries: (() {
-        final guardedValue = map['countries'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      feeds: (() {
-        final guardedValue = map['feeds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      prefixLists: (() {
-        final guardedValue = map['prefixLists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      cidrs: (() { final guardedValue = map['cidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      countries: (() { final guardedValue = map['countries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      feeds: (() { final guardedValue = map['feeds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      prefixLists: (() { final guardedValue = map['prefixLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

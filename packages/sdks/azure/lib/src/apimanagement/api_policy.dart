@@ -206,16 +206,12 @@ import 'api_policy_state.dart';
 class ApiPolicy extends pulumi.CustomResource {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// The ID of the API Management API within the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiName;
-
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The XML Content for this Policy as a string.
   late final pulumi.Output<String> xmlContent;
-
   /// A link to a Policy XML Document, which must be publicly available.
   late final pulumi.Output<String?> xmlLink;
 
@@ -228,11 +224,11 @@ class ApiPolicy extends pulumi.CustomResource {
     ApiPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiPolicy:ApiPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiPolicy:ApiPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -258,11 +254,11 @@ class ApiPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiPolicy:ApiPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiPolicy:ApiPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
     resourceGroupName = registerOutput<String>('resourceGroupName');

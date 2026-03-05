@@ -928,33 +928,25 @@ import 'prevention_deidentify_template_state.dart';
 class PreventionDeidentifyTemplate extends pulumi.CustomResource {
   /// The creation timestamp of an deidentifyTemplate. Set by the server.
   late final pulumi.Output<String> createTime;
-
   /// Configuration of the deidentify template
   /// Structure is documented below.
-  late final pulumi.Output<PreventionDeidentifyTemplateDeidentifyConfig>
-  deidentifyConfig;
-
+  late final pulumi.Output<PreventionDeidentifyTemplateDeidentifyConfig> deidentifyConfig;
   /// A description of the template.
   late final pulumi.Output<String?> description;
-
   /// User set display name of the template.
   late final pulumi.Output<String?> displayName;
-
   /// The resource name of the template. Set by the server.
   late final pulumi.Output<String> name;
-
   /// The parent of the template in any of the following formats:
   /// * `projects/{{project}}`
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
   late final pulumi.Output<String> parent;
-
   /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
   /// 100 characters. Can be empty to allow the system to generate one.
   late final pulumi.Output<String> templateId;
-
   /// The last update timestamp of an deidentifyTemplate. Set by the server.
   late final pulumi.Output<String> updateTime;
 
@@ -967,23 +959,13 @@ class PreventionDeidentifyTemplate extends pulumi.CustomResource {
     PreventionDeidentifyTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    deidentifyConfig =
-        registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>(
-          'deidentifyConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return PreventionDeidentifyTemplateDeidentifyConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    deidentifyConfig = registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>('deidentifyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionDeidentifyTemplateDeidentifyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
@@ -1010,23 +992,13 @@ class PreventionDeidentifyTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    deidentifyConfig =
-        registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>(
-          'deidentifyConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return PreventionDeidentifyTemplateDeidentifyConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    deidentifyConfig = registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>('deidentifyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionDeidentifyTemplateDeidentifyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');

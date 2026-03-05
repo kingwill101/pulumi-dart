@@ -8,7 +8,6 @@ class GetSshKeysResult {
   /// The ID of this resource.
   final String? id;
   final List<GetSshKeysSshKey> sshKeys;
-
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   final String? withSelector;
 
@@ -16,37 +15,26 @@ class GetSshKeysResult {
   /// [id] The ID of this resource.
   /// [sshKeys] Required.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetSshKeysResult({this.id, required this.sshKeys, this.withSelector});
+  GetSshKeysResult({
+    this.id,
+    required this.sshKeys,
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'sshKeys':
-          pulumi.Input.encodeList<GetSshKeysSshKey, Map<String, dynamic>>(
-            sshKeys,
-            (value) => value.toMap(),
-          ),
+      'sshKeys': pulumi.Input.encodeList<GetSshKeysSshKey, Map<String, dynamic>>(sshKeys, (value) => value.toMap()),
       'withSelector': ?withSelector,
     };
   }
 
   factory GetSshKeysResult.fromMap(Map<String, dynamic> map) {
     return GetSshKeysResult(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sshKeys: pulumi.Input.decodeList<GetSshKeysSshKey>(
-        map['sshKeys']!,
-        (value) =>
-            GetSshKeysSshKey.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      withSelector: (() {
-        final guardedValue = map['withSelector'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sshKeys: pulumi.Input.decodeList<GetSshKeysSshKey>(map['sshKeys']!, (value) => GetSshKeysSshKey.fromMap((value as Map).cast<String, dynamic>())),
+      withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

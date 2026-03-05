@@ -103,35 +103,15 @@ class GetLoadBalancerResult {
     return <String, dynamic>{
       'algorithm': algorithm,
       'disableLetsEncryptDnsRecords': disableLetsEncryptDnsRecords,
-      'domains':
-          pulumi.Input.encodeList<GetLoadBalancerDomain, Map<String, dynamic>>(
-            domains,
-            (value) => value.toMap(),
-          ),
+      'domains': pulumi.Input.encodeList<GetLoadBalancerDomain, Map<String, dynamic>>(domains, (value) => value.toMap()),
       'dropletIds': dropletIds,
       'dropletTag': dropletTag,
       'enableBackendKeepalive': enableBackendKeepalive,
       'enableProxyProtocol': enableProxyProtocol,
-      'firewalls':
-          pulumi.Input.encodeList<
-            GetLoadBalancerFirewall,
-            Map<String, dynamic>
-          >(firewalls, (value) => value.toMap()),
-      'forwardingRules':
-          pulumi.Input.encodeList<
-            GetLoadBalancerForwardingRule,
-            Map<String, dynamic>
-          >(forwardingRules, (value) => value.toMap()),
-      'glbSettings':
-          pulumi.Input.encodeList<
-            GetLoadBalancerGlbSetting,
-            Map<String, dynamic>
-          >(glbSettings, (value) => value.toMap()),
-      'healthchecks':
-          pulumi.Input.encodeList<
-            GetLoadBalancerHealthcheck,
-            Map<String, dynamic>
-          >(healthchecks, (value) => value.toMap()),
+      'firewalls': pulumi.Input.encodeList<GetLoadBalancerFirewall, Map<String, dynamic>>(firewalls, (value) => value.toMap()),
+      'forwardingRules': pulumi.Input.encodeList<GetLoadBalancerForwardingRule, Map<String, dynamic>>(forwardingRules, (value) => value.toMap()),
+      'glbSettings': pulumi.Input.encodeList<GetLoadBalancerGlbSetting, Map<String, dynamic>>(glbSettings, (value) => value.toMap()),
+      'healthchecks': pulumi.Input.encodeList<GetLoadBalancerHealthcheck, Map<String, dynamic>>(healthchecks, (value) => value.toMap()),
       'httpIdleTimeoutSeconds': httpIdleTimeoutSeconds,
       'id': ?id,
       'ip': ip,
@@ -145,11 +125,7 @@ class GetLoadBalancerResult {
       'size': size,
       'sizeUnit': sizeUnit,
       'status': status,
-      'stickySessions':
-          pulumi.Input.encodeList<
-            GetLoadBalancerStickySession,
-            Map<String, dynamic>
-          >(stickySessions, (value) => value.toMap()),
+      'stickySessions': pulumi.Input.encodeList<GetLoadBalancerStickySession, Map<String, dynamic>>(stickySessions, (value) => value.toMap()),
       'targetLoadBalancerIds': targetLoadBalancerIds,
       'type': type,
       'vpcUuid': vpcUuid,
@@ -160,54 +136,21 @@ class GetLoadBalancerResult {
     return GetLoadBalancerResult(
       algorithm: map['algorithm'] as String,
       disableLetsEncryptDnsRecords: map['disableLetsEncryptDnsRecords'] as bool,
-      domains: pulumi.Input.decodeList<GetLoadBalancerDomain>(
-        map['domains']!,
-        (value) => GetLoadBalancerDomain.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      domains: pulumi.Input.decodeList<GetLoadBalancerDomain>(map['domains']!, (value) => GetLoadBalancerDomain.fromMap((value as Map).cast<String, dynamic>())),
       dropletIds: (map['dropletIds'] as List).cast<int>(),
       dropletTag: map['dropletTag'] as String,
       enableBackendKeepalive: map['enableBackendKeepalive'] as bool,
       enableProxyProtocol: map['enableProxyProtocol'] as bool,
-      firewalls: pulumi.Input.decodeList<GetLoadBalancerFirewall>(
-        map['firewalls']!,
-        (value) => GetLoadBalancerFirewall.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      forwardingRules: pulumi.Input.decodeList<GetLoadBalancerForwardingRule>(
-        map['forwardingRules']!,
-        (value) => GetLoadBalancerForwardingRule.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      glbSettings: pulumi.Input.decodeList<GetLoadBalancerGlbSetting>(
-        map['glbSettings']!,
-        (value) => GetLoadBalancerGlbSetting.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      healthchecks: pulumi.Input.decodeList<GetLoadBalancerHealthcheck>(
-        map['healthchecks']!,
-        (value) => GetLoadBalancerHealthcheck.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      firewalls: pulumi.Input.decodeList<GetLoadBalancerFirewall>(map['firewalls']!, (value) => GetLoadBalancerFirewall.fromMap((value as Map).cast<String, dynamic>())),
+      forwardingRules: pulumi.Input.decodeList<GetLoadBalancerForwardingRule>(map['forwardingRules']!, (value) => GetLoadBalancerForwardingRule.fromMap((value as Map).cast<String, dynamic>())),
+      glbSettings: pulumi.Input.decodeList<GetLoadBalancerGlbSetting>(map['glbSettings']!, (value) => GetLoadBalancerGlbSetting.fromMap((value as Map).cast<String, dynamic>())),
+      healthchecks: pulumi.Input.decodeList<GetLoadBalancerHealthcheck>(map['healthchecks']!, (value) => GetLoadBalancerHealthcheck.fromMap((value as Map).cast<String, dynamic>())),
       httpIdleTimeoutSeconds: map['httpIdleTimeoutSeconds'] as int,
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ip: map['ip'] as String,
       ipv6: map['ipv6'] as String,
       loadBalancerUrn: map['loadBalancerUrn'] as String,
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       network: map['network'] as String,
       projectId: map['projectId'] as String,
       redirectHttpToHttps: map['redirectHttpToHttps'] as bool,
@@ -215,16 +158,11 @@ class GetLoadBalancerResult {
       size: map['size'] as String,
       sizeUnit: map['sizeUnit'] as int,
       status: map['status'] as String,
-      stickySessions: pulumi.Input.decodeList<GetLoadBalancerStickySession>(
-        map['stickySessions']!,
-        (value) => GetLoadBalancerStickySession.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      targetLoadBalancerIds: (map['targetLoadBalancerIds'] as List)
-          .cast<String>(),
+      stickySessions: pulumi.Input.decodeList<GetLoadBalancerStickySession>(map['stickySessions']!, (value) => GetLoadBalancerStickySession.fromMap((value as Map).cast<String, dynamic>())),
+      targetLoadBalancerIds: (map['targetLoadBalancerIds'] as List).cast<String>(),
       type: map['type'] as String,
       vpcUuid: map['vpcUuid'] as String,
     );
   }
 }
+

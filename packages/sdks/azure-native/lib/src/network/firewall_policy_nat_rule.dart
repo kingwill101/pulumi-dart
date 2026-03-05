@@ -8,23 +8,17 @@ import 'firewall_policy_nat_rule_action.dart';
 class FirewallPolicyNatRule {
   /// The action type of a Nat rule.
   final pulumi.Input<FirewallPolicyNatRuleAction>? action;
-
   /// The name of the rule.
   final pulumi.Input<String>? name;
-
   /// Priority of the Firewall Policy Rule resource.
   final pulumi.Input<int>? priority;
-
   /// The match conditions for incoming traffic.
   final pulumi.Input<ApplicationRuleCondition>? ruleCondition;
-
   /// The type of the rule.
   /// Expected value is 'FirewallPolicyNatRule'.
   final pulumi.Input<String> ruleType;
-
   /// The translated address for this NAT rule.
   final pulumi.Input<String>? translatedAddress;
-
   /// The translated port for this NAT rule.
   final pulumi.Input<String>? translatedPort;
 
@@ -48,18 +42,10 @@ class FirewallPolicyNatRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action':
-          ?pulumi.Input.mapOptionalInputValue<
-            FirewallPolicyNatRuleAction,
-            Map<String, dynamic>
-          >(action, (value) => value.toMap()),
+      'action': ?pulumi.Input.mapOptionalInputValue<FirewallPolicyNatRuleAction, Map<String, dynamic>>(action, (value) => value.toMap()),
       'name': ?name,
       'priority': ?priority,
-      'ruleCondition':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApplicationRuleCondition,
-            Map<String, dynamic>
-          >(ruleCondition, (value) => value.toMap()),
+      'ruleCondition': ?pulumi.Input.mapOptionalInputValue<ApplicationRuleCondition, Map<String, dynamic>>(ruleCondition, (value) => value.toMap()),
       'ruleType': ruleType,
       'translatedAddress': ?translatedAddress,
       'translatedPort': ?translatedPort,
@@ -68,45 +54,14 @@ class FirewallPolicyNatRule {
 
   factory FirewallPolicyNatRule.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyNatRule(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FirewallPolicyNatRuleAction.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ruleCondition: (() {
-        final guardedValue = map['ruleCondition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApplicationRuleCondition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicyNatRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ruleCondition: (() { final guardedValue = map['ruleCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationRuleCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
-      translatedAddress: (() {
-        final guardedValue = map['translatedAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      translatedPort: (() {
-        final guardedValue = map['translatedPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      translatedAddress: (() { final guardedValue = map['translatedAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      translatedPort: (() { final guardedValue = map['translatedPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

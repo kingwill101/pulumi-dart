@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationRecordersRecorder {
   /// The ID of the Alicloud account.
   final pulumi.Input<String> accountId;
-
   /// The ID of the Config Configuration Recorder. Value as the `account_id`.
   final pulumi.Input<String> id;
-
   /// Enterprise version configuration audit enabled status.
   final pulumi.Input<String> organizationEnableStatus;
-
   /// The ID of the Enterprise management account.
   final pulumi.Input<int> organizationMasterId;
-
   /// A list of resource types to be monitored.
   final pulumi.Input<List<String>> resourceTypes;
-
   /// Status of resource monitoring.
   final pulumi.Input<String> status;
 
@@ -52,16 +47,11 @@ class GetConfigurationRecordersRecorder {
     return GetConfigurationRecordersRecorder(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      organizationEnableStatus: pulumi.Input.fromValue(
-        map['organizationEnableStatus'] as String,
-      ),
-      organizationMasterId: pulumi.Input.fromValue(
-        map['organizationMasterId'] as int,
-      ),
-      resourceTypes: pulumi.Input.fromValue(
-        (map['resourceTypes'] as List).cast<String>(),
-      ),
+      organizationEnableStatus: pulumi.Input.fromValue(map['organizationEnableStatus'] as String),
+      organizationMasterId: pulumi.Input.fromValue(map['organizationMasterId'] as int),
+      resourceTypes: pulumi.Input.fromValue((map['resourceTypes'] as List).cast<String>()),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

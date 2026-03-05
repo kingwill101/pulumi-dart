@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressRouteCircuitAuthorizationResponse {
   /// The authorization key.
   final pulumi.Input<String>? authorizationKey;
-
   /// The authorization use status.
   final pulumi.Input<String>? authorizationUseStatus;
-
   /// The reference to the ExpressRoute connection resource using the authorization.
   final pulumi.Input<String> connectionResourceUri;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final pulumi.Input<String>? name;
-
   /// The provisioning state of the authorization resource.
   final pulumi.Input<String> provisioningState;
-
   /// Type of the resource.
   final pulumi.Input<String> type;
 
@@ -61,38 +54,17 @@ class ExpressRouteCircuitAuthorizationResponse {
     };
   }
 
-  factory ExpressRouteCircuitAuthorizationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExpressRouteCircuitAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitAuthorizationResponse(
-      authorizationKey: (() {
-        final guardedValue = map['authorizationKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      authorizationUseStatus: (() {
-        final guardedValue = map['authorizationUseStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectionResourceUri: pulumi.Input.fromValue(
-        map['connectionResourceUri'] as String,
-      ),
+      authorizationKey: (() { final guardedValue = map['authorizationKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authorizationUseStatus: (() { final guardedValue = map['authorizationUseStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectionResourceUri: pulumi.Input.fromValue(map['connectionResourceUri'] as String),
       etag: pulumi.Input.fromValue(map['etag'] as String),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

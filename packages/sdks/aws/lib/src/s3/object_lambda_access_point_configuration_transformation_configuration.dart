@@ -6,12 +6,8 @@ import 'object_lambda_access_point_configuration_transformation_configuration_co
 class ObjectLambdaAccessPointConfigurationTransformationConfiguration {
   /// The actions of an Object Lambda Access Point configuration. Valid values: `GetObject`.
   final pulumi.Input<List<String>> actions;
-
   /// The content transformation of an Object Lambda Access Point configuration. See Content Transformation below for more details.
-  final pulumi.Input<
-    ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation
-  >
-  contentTransformation;
+  final pulumi.Input<ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation> contentTransformation;
 
   /// Creates a new [ObjectLambdaAccessPointConfigurationTransformationConfiguration].
   /// [actions] The actions of an Object Lambda Access Point configuration. Valid values: `GetObject`.
@@ -24,24 +20,15 @@ class ObjectLambdaAccessPointConfigurationTransformationConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actions': actions,
-      'contentTransformation':
-          pulumi.Input.mapInputValue<
-            ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation,
-            Map<String, dynamic>
-          >(contentTransformation, (value) => value.toMap()),
+      'contentTransformation': pulumi.Input.mapInputValue<ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation, Map<String, dynamic>>(contentTransformation, (value) => value.toMap()),
     };
   }
 
-  factory ObjectLambdaAccessPointConfigurationTransformationConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ObjectLambdaAccessPointConfigurationTransformationConfiguration.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointConfigurationTransformationConfiguration(
       actions: pulumi.Input.fromValue((map['actions'] as List).cast<String>()),
-      contentTransformation: pulumi.Input.fromValue(
-        ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation.fromMap(
-          (map['contentTransformation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      contentTransformation: pulumi.Input.fromValue(ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation.fromMap((map['contentTransformation']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -5,12 +5,9 @@ import 'lake_account_account_privilege_privilege_object.dart';
 
 class LakeAccountAccountPrivilege {
   /// Object associated to privileges. See `privilege_object` below.
-  final pulumi.Input<LakeAccountAccountPrivilegePrivilegeObject>?
-  privilegeObject;
-
+  final pulumi.Input<LakeAccountAccountPrivilegePrivilegeObject>? privilegeObject;
   /// The type of privileges.
   final pulumi.Input<String>? privilegeType;
-
   /// privilege list.
   final pulumi.Input<List<String>>? privileges;
 
@@ -26,11 +23,7 @@ class LakeAccountAccountPrivilege {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'privilegeObject':
-          ?pulumi.Input.mapOptionalInputValue<
-            LakeAccountAccountPrivilegePrivilegeObject,
-            Map<String, dynamic>
-          >(privilegeObject, (value) => value.toMap()),
+      'privilegeObject': ?pulumi.Input.mapOptionalInputValue<LakeAccountAccountPrivilegePrivilegeObject, Map<String, dynamic>>(privilegeObject, (value) => value.toMap()),
       'privilegeType': ?privilegeType,
       'privileges': ?privileges,
     };
@@ -38,25 +31,10 @@ class LakeAccountAccountPrivilege {
 
   factory LakeAccountAccountPrivilege.fromMap(Map<String, dynamic> map) {
     return LakeAccountAccountPrivilege(
-      privilegeObject: (() {
-        final guardedValue = map['privilegeObject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LakeAccountAccountPrivilegePrivilegeObject.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      privilegeType: (() {
-        final guardedValue = map['privilegeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privileges: (() {
-        final guardedValue = map['privileges'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      privilegeObject: (() { final guardedValue = map['privilegeObject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LakeAccountAccountPrivilegePrivilegeObject.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      privilegeType: (() { final guardedValue = map['privilegeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privileges: (() { final guardedValue = map['privileges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

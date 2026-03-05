@@ -13,16 +13,15 @@ class FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'privateLinkVpceId': privateLinkVpceId};
+    return <String, dynamic>{
+      'privateLinkVpceId': privateLinkVpceId,
+    };
   }
 
-  factory FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration(
-      privateLinkVpceId: pulumi.Input.fromValue(
-        map['privateLinkVpceId'] as String,
-      ),
+      privateLinkVpceId: pulumi.Input.fromValue(map['privateLinkVpceId'] as String),
     );
   }
 }
+

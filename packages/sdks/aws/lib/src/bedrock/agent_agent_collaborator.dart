@@ -702,30 +702,22 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// $ pulumi import aws:bedrock/agentAgentCollaborator:AgentAgentCollaborator example 9LSJO0BFI8,DRAFT,AG3TN4RQIY
 /// ```
 class AgentAgentCollaborator extends pulumi.CustomResource {
-  late final pulumi.Output<AgentAgentCollaboratorAgentDescriptor>
-  agentDescriptor;
-
+  late final pulumi.Output<AgentAgentCollaboratorAgentDescriptor> agentDescriptor;
   /// ID if the agent to associate the collaborator.
   late final pulumi.Output<String> agentId;
   late final pulumi.Output<String> agentVersion;
-
   /// Instruction to give the collaborator.
   late final pulumi.Output<String> collaborationInstruction;
-
   /// ID of the Agent Collaborator.
   late final pulumi.Output<String> collaboratorId;
-
   /// Name of this collaborator.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> collaboratorName;
-
   /// Whether to prepare the agent after creation or modification. Defaults to `true`.
   late final pulumi.Output<bool> prepareAgent;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configure relaying the history to the collaborator.
   late final pulumi.Output<String> relayConversationHistory;
   late final pulumi.Output<AgentAgentCollaboratorTimeouts?> timeouts;
@@ -739,43 +731,21 @@ class AgentAgentCollaborator extends pulumi.CustomResource {
     AgentAgentCollaboratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentAgentCollaborator:AgentAgentCollaborator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    agentDescriptor = registerOutput<AgentAgentCollaboratorAgentDescriptor>(
-      'agentDescriptor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentAgentCollaboratorAgentDescriptor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:bedrock/agentAgentCollaborator:AgentAgentCollaborator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    agentDescriptor = registerOutput<AgentAgentCollaboratorAgentDescriptor>('agentDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentCollaboratorAgentDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     agentId = registerOutput<String>('agentId');
     agentVersion = registerOutput<String>('agentVersion');
-    collaborationInstruction = registerOutput<String>(
-      'collaborationInstruction',
-    );
+    collaborationInstruction = registerOutput<String>('collaborationInstruction');
     collaboratorId = registerOutput<String>('collaboratorId');
     collaboratorName = registerOutput<String>('collaboratorName');
     prepareAgent = registerOutput<bool>('prepareAgent');
     region = registerOutput<String>('region');
-    relayConversationHistory = registerOutput<String>(
-      'relayConversationHistory',
-    );
-    timeouts = registerOutput<AgentAgentCollaboratorTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentAgentCollaboratorTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    relayConversationHistory = registerOutput<String>('relayConversationHistory');
+    timeouts = registerOutput<AgentAgentCollaboratorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentCollaboratorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AgentAgentCollaborator] resource's state with the given [name] and [id].
@@ -796,42 +766,20 @@ class AgentAgentCollaborator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentAgentCollaborator:AgentAgentCollaborator',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    agentDescriptor = registerOutput<AgentAgentCollaboratorAgentDescriptor>(
-      'agentDescriptor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentAgentCollaboratorAgentDescriptor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:bedrock/agentAgentCollaborator:AgentAgentCollaborator',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    agentDescriptor = registerOutput<AgentAgentCollaboratorAgentDescriptor>('agentDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentCollaboratorAgentDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     agentId = registerOutput<String>('agentId');
     agentVersion = registerOutput<String>('agentVersion');
-    collaborationInstruction = registerOutput<String>(
-      'collaborationInstruction',
-    );
+    collaborationInstruction = registerOutput<String>('collaborationInstruction');
     collaboratorId = registerOutput<String>('collaboratorId');
     collaboratorName = registerOutput<String>('collaboratorName');
     prepareAgent = registerOutput<bool>('prepareAgent');
     region = registerOutput<String>('region');
-    relayConversationHistory = registerOutput<String>(
-      'relayConversationHistory',
-    );
-    timeouts = registerOutput<AgentAgentCollaboratorTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentAgentCollaboratorTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    relayConversationHistory = registerOutput<String>('relayConversationHistory');
+    timeouts = registerOutput<AgentAgentCollaboratorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentCollaboratorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -153,16 +153,12 @@ import 'ssh_public_key_state.dart';
 class SshPublicKey extends pulumi.CustomResource {
   /// The Azure Region where the SSH Public Key should exist. Changing this forces a new SSH Public Key to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this SSH Public Key. Changing this forces a new SSH Public Key to be created.
   late final pulumi.Output<String> name;
-
   /// SSH public key used to authenticate to a virtual machine through ssh. the provided public key needs to be at least 2048-bit and in ssh-rsa format.
   late final pulumi.Output<String> publicKey;
-
   /// The name of the Resource Group where the SSH Public Key should exist. Changing this forces a new SSH Public Key to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the SSH Public Key.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -175,11 +171,11 @@ class SshPublicKey extends pulumi.CustomResource {
     SshPublicKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/sshPublicKey:SshPublicKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/sshPublicKey:SshPublicKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     publicKey = registerOutput<String>('publicKey');
@@ -205,11 +201,11 @@ class SshPublicKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/sshPublicKey:SshPublicKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/sshPublicKey:SshPublicKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     publicKey = registerOutput<String>('publicKey');

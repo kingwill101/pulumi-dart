@@ -10,29 +10,20 @@ class LoggingConfigContainerV1beta1 {
 
   /// Creates a new [LoggingConfigContainerV1beta1].
   /// [componentConfig] Logging components configuration
-  LoggingConfigContainerV1beta1({this.componentConfig});
+  LoggingConfigContainerV1beta1({
+    this.componentConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'componentConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            LoggingComponentConfigContainerV1beta1,
-            Map<String, dynamic>
-          >(componentConfig, (value) => value.toMap()),
+      'componentConfig': ?pulumi.Input.mapOptionalInputValue<LoggingComponentConfigContainerV1beta1, Map<String, dynamic>>(componentConfig, (value) => value.toMap()),
     };
   }
 
   factory LoggingConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return LoggingConfigContainerV1beta1(
-      componentConfig: (() {
-        final guardedValue = map['componentConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LoggingComponentConfigContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      componentConfig: (() { final guardedValue = map['componentConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoggingComponentConfigContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

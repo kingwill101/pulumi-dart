@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PageState {
   /// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
   final pulumi.Input<String>? content;
-
   /// The Content-Type field in the HTTP header.
   final pulumi.Input<String>? contentType;
-
   /// The description of the custom error page.
   final pulumi.Input<String>? description;
-
   /// The name of the custom response page.
   final pulumi.Input<String>? pageName;
 
@@ -21,7 +18,12 @@ class PageState {
   /// [contentType] The Content-Type field in the HTTP header.
   /// [description] The description of the custom error page.
   /// [pageName] The name of the custom response page.
-  PageState({this.content, this.contentType, this.description, this.pageName});
+  PageState({
+    this.content,
+    this.contentType,
+    this.description,
+    this.pageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,26 +36,11 @@ class PageState {
 
   factory PageState.fromMap(Map<String, dynamic> map) {
     return PageState(
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contentType: (() {
-        final guardedValue = map['contentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pageName: (() {
-        final guardedValue = map['pageName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pageName: (() { final guardedValue = map['pageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

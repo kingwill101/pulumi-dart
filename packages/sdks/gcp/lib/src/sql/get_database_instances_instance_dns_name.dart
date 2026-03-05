@@ -25,9 +25,7 @@ class GetDatabaseInstancesInstanceDnsName {
     };
   }
 
-  factory GetDatabaseInstancesInstanceDnsName.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstancesInstanceDnsName.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceDnsName(
       connectionType: pulumi.Input.fromValue(map['connectionType'] as String),
       dnsScope: pulumi.Input.fromValue(map['dnsScope'] as String),
@@ -35,3 +33,4 @@ class GetDatabaseInstancesInstanceDnsName {
     );
   }
 }
+

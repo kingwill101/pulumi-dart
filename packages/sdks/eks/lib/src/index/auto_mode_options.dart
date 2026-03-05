@@ -9,10 +9,8 @@ import 'cluster_compute_config.dart';
 class AutoModeOptions {
   /// Compute configuration for EKS Auto Mode.
   final pulumi.Input<ClusterComputeConfig>? computeConfig;
-
   /// Whether to create an IAM role for the EKS Auto Mode node group if none is provided in `computeConfig`.
   final pulumi.Input<bool>? createNodeRole;
-
   /// Whether to enable EKS Auto Mode. If enabled, EKS will manage node pools, EBS volumes and Load Balancers for you.
   /// When enabled, the vpc-cni and kube-proxy will not be enabled by default because EKS Auto Mode includes pod networking capabilities.
   final pulumi.Input<bool> enabled;
@@ -29,11 +27,7 @@ class AutoModeOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterComputeConfig,
-            Map<String, dynamic>
-          >(computeConfig, (value) => value.toMap()),
+      'computeConfig': ?pulumi.Input.mapOptionalInputValue<ClusterComputeConfig, Map<String, dynamic>>(computeConfig, (value) => value.toMap()),
       'createNodeRole': ?createNodeRole,
       'enabled': enabled,
     };
@@ -41,21 +35,10 @@ class AutoModeOptions {
 
   factory AutoModeOptions.fromMap(Map<String, dynamic> map) {
     return AutoModeOptions(
-      computeConfig: (() {
-        final guardedValue = map['computeConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterComputeConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      createNodeRole: (() {
-        final guardedValue = map['createNodeRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      computeConfig: (() { final guardedValue = map['computeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterComputeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      createNodeRole: (() { final guardedValue = map['createNodeRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

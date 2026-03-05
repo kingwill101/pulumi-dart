@@ -8,21 +8,20 @@ class UserProfileUserSettingsCanvasAppSettingsDirectDeploySettings {
 
   /// Creates a new [UserProfileUserSettingsCanvasAppSettingsDirectDeploySettings].
   /// [status] Describes whether model deployment permissions are enabled or disabled in the Canvas application. Valid values are `ENABLED` and `DISABLED`.
-  UserProfileUserSettingsCanvasAppSettingsDirectDeploySettings({this.status});
+  UserProfileUserSettingsCanvasAppSettingsDirectDeploySettings({
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': ?status};
+    return <String, dynamic>{
+      'status': ?status,
+    };
   }
 
-  factory UserProfileUserSettingsCanvasAppSettingsDirectDeploySettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserProfileUserSettingsCanvasAppSettingsDirectDeploySettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCanvasAppSettingsDirectDeploySettings(
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

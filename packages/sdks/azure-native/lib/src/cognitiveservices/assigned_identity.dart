@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssignedIdentity {
   /// The client ID of the identity.
   final pulumi.Input<String> clientId;
-
   /// Specifies the kind of Entra identity described by this object.
   final pulumi.Input<String> kind;
-
   /// The principal ID of the identity.
   final pulumi.Input<String> principalId;
-
   /// The subject of this identity assignment.
   final pulumi.Input<String>? subject;
-
   /// The tenant ID of the identity.
   final pulumi.Input<String> tenantId;
-
   /// Enumeration of identity types, from the perspective of management.
   final pulumi.Input<String> type;
 
@@ -54,13 +49,10 @@ class AssignedIdentity {
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
-      subject: (() {
-        final guardedValue = map['subject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subject: (() { final guardedValue = map['subject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

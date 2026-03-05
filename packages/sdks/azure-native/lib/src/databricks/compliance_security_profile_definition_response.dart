@@ -23,20 +23,11 @@ class ComplianceSecurityProfileDefinitionResponse {
     };
   }
 
-  factory ComplianceSecurityProfileDefinitionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ComplianceSecurityProfileDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ComplianceSecurityProfileDefinitionResponse(
-      complianceStandards: (() {
-        final guardedValue = map['complianceStandards'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      complianceStandards: (() { final guardedValue = map['complianceStandards']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

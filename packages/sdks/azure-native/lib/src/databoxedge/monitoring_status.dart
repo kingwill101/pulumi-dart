@@ -15,3 +15,4 @@ enum MonitoringStatus {
     throw ArgumentError('Unknown MonitoringStatus value: $value');
   }
 }
+

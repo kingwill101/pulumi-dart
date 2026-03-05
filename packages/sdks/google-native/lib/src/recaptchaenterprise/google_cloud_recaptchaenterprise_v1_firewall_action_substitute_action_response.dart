@@ -14,14 +14,15 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path};
+    return <String, dynamic>{
+      'path': path,
+    };
   }
 
-  factory GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse(
       path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
+

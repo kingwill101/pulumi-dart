@@ -161,66 +161,40 @@ import 'data_collection_endpoint_response_network_acls.dart';
 class DataCollectionEndpoint extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The endpoint used by clients to access their configuration.
-  late final pulumi.Output<DataCollectionEndpointResponseConfigurationAccess?>
-  configurationAccess;
-
+  late final pulumi.Output<DataCollectionEndpointResponseConfigurationAccess?> configurationAccess;
   /// Description of the data collection endpoint.
   late final pulumi.Output<String?> description;
-
   /// Resource entity tag (ETag).
   late final pulumi.Output<String> etag;
-
   /// Failover configuration on this endpoint. This property is READ-ONLY.
-  late final pulumi.Output<DataCollectionEndpointResponseFailoverConfiguration>
-  failoverConfiguration;
-
+  late final pulumi.Output<DataCollectionEndpointResponseFailoverConfiguration> failoverConfiguration;
   /// Managed service identity of the resource.
-  late final pulumi.Output<DataCollectionEndpointResourceResponseIdentity?>
-  identity;
-
+  late final pulumi.Output<DataCollectionEndpointResourceResponseIdentity?> identity;
   /// The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
   late final pulumi.Output<String?> immutableId;
-
   /// The kind of the resource.
   late final pulumi.Output<String?> kind;
-
   /// The geo-location where the resource lives.
   late final pulumi.Output<String> location;
-
   /// The endpoint used by clients to ingest logs.
-  late final pulumi.Output<DataCollectionEndpointResponseLogsIngestion?>
-  logsIngestion;
-
+  late final pulumi.Output<DataCollectionEndpointResponseLogsIngestion?> logsIngestion;
   /// Metadata for the resource. This property is READ-ONLY.
   late final pulumi.Output<DataCollectionEndpointResponseMetadata> metadata;
-
   /// The endpoint used by clients to ingest metrics.
-  late final pulumi.Output<DataCollectionEndpointResponseMetricsIngestion?>
-  metricsIngestion;
-
+  late final pulumi.Output<DataCollectionEndpointResponseMetricsIngestion?> metricsIngestion;
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// Network access control rules for the endpoints.
-  late final pulumi.Output<DataCollectionEndpointResponseNetworkAcls?>
-  networkAcls;
-
+  late final pulumi.Output<DataCollectionEndpointResponseNetworkAcls?> networkAcls;
   /// List of Azure Monitor Private Link Scope Resources to which this data collection endpoint resource is associated. This property is READ-ONLY.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateLinkScopedResources;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateLinkScopedResources;
   /// The resource provisioning state. This property is READ-ONLY.
   late final pulumi.Output<String> provisioningState;
-
   /// Metadata pertaining to creation and last modification of the resource.
-  late final pulumi.Output<DataCollectionEndpointResourceResponseSystemData>
-  systemData;
-
+  late final pulumi.Output<DataCollectionEndpointResourceResponseSystemData> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -233,107 +207,28 @@ class DataCollectionEndpoint extends pulumi.CustomResource {
     DataCollectionEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:monitor:DataCollectionEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:monitor:DataCollectionEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    configurationAccess =
-        registerOutput<DataCollectionEndpointResponseConfigurationAccess?>(
-          'configurationAccess',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataCollectionEndpointResponseConfigurationAccess.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    configurationAccess = registerOutput<DataCollectionEndpointResponseConfigurationAccess?>('configurationAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResponseConfigurationAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
-    failoverConfiguration =
-        registerOutput<DataCollectionEndpointResponseFailoverConfiguration>(
-          'failoverConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataCollectionEndpointResponseFailoverConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    identity = registerOutput<DataCollectionEndpointResourceResponseIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataCollectionEndpointResourceResponseIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    failoverConfiguration = registerOutput<DataCollectionEndpointResponseFailoverConfiguration>('failoverConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResponseFailoverConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<DataCollectionEndpointResourceResponseIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResourceResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     immutableId = registerOutput<String?>('immutableId');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
-    logsIngestion =
-        registerOutput<DataCollectionEndpointResponseLogsIngestion?>(
-          'logsIngestion',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataCollectionEndpointResponseLogsIngestion.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    metadata = registerOutput<DataCollectionEndpointResponseMetadata>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataCollectionEndpointResponseMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    metricsIngestion =
-        registerOutput<DataCollectionEndpointResponseMetricsIngestion?>(
-          'metricsIngestion',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataCollectionEndpointResponseMetricsIngestion.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    logsIngestion = registerOutput<DataCollectionEndpointResponseLogsIngestion?>('logsIngestion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResponseLogsIngestion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadata = registerOutput<DataCollectionEndpointResponseMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResponseMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metricsIngestion = registerOutput<DataCollectionEndpointResponseMetricsIngestion?>('metricsIngestion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResponseMetricsIngestion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkAcls = registerOutput<DataCollectionEndpointResponseNetworkAcls?>(
-      'networkAcls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataCollectionEndpointResponseNetworkAcls.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateLinkScopedResources = registerOutput<List<Map<String, dynamic>>>(
-      'privateLinkScopedResources',
-    );
+    networkAcls = registerOutput<DataCollectionEndpointResponseNetworkAcls?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResponseNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateLinkScopedResources = registerOutput<List<Map<String, dynamic>>>('privateLinkScopedResources');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData =
-        registerOutput<DataCollectionEndpointResourceResponseSystemData>(
-          'systemData',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataCollectionEndpointResourceResponseSystemData.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    systemData = registerOutput<DataCollectionEndpointResourceResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResourceResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

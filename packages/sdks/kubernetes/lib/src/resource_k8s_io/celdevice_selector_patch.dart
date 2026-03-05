@@ -39,19 +39,20 @@ class CELDeviceSelectorPatch {
 
   /// Creates a new [CELDeviceSelectorPatch].
   /// [expression] Expression is a CEL expression which evaluates a single device. It must evaluate to true when the device under consideration satisfies the desired criteria, and false when it does not. Any other result is an error and causes allocation of devices to abort.
-  CELDeviceSelectorPatch({this.expression});
+  CELDeviceSelectorPatch({
+    this.expression,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'expression': ?expression};
+    return <String, dynamic>{
+      'expression': ?expression,
+    };
   }
 
   factory CELDeviceSelectorPatch.fromMap(Map<String, dynamic> map) {
     return CELDeviceSelectorPatch(
-      expression: (() {
-        final guardedValue = map['expression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expression: (() { final guardedValue = map['expression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

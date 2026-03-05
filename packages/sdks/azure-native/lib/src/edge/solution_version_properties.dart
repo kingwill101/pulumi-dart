@@ -9,10 +9,14 @@ class SolutionVersionProperties {
 
   /// Creates a new [SolutionVersionProperties].
   /// [specification] App components spec
-  SolutionVersionProperties({required this.specification});
+  SolutionVersionProperties({
+    required this.specification,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'specification': specification};
+    return <String, dynamic>{
+      'specification': specification,
+    };
   }
 
   factory SolutionVersionProperties.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class SolutionVersionProperties {
     );
   }
 }
+

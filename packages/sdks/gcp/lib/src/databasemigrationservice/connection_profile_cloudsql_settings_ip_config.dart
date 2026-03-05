@@ -6,18 +6,12 @@ import 'connection_profile_cloudsql_settings_ip_config_authorized_network.dart';
 class ConnectionProfileCloudsqlSettingsIpConfig {
   /// The list of external networks that are allowed to connect to the instance using the IP.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork>
-  >?
-  authorizedNetworks;
-
+  final pulumi.Input<List<ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork>>? authorizedNetworks;
   /// Whether the instance should be assigned an IPv4 address or not.
   final pulumi.Input<bool>? enableIpv4;
-
   /// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default.
   /// This setting can be updated, but it cannot be removed after it is set.
   final pulumi.Input<String>? privateNetwork;
-
   /// Whether SSL connections over IP should be enforced or not.
   final pulumi.Input<bool>? requireSsl;
 
@@ -35,58 +29,20 @@ class ConnectionProfileCloudsqlSettingsIpConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizedNetworks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork>,
-            List<Map<String, dynamic>>
-          >(
-            authorizedNetworks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'authorizedNetworks': ?pulumi.Input.mapOptionalInputValue<List<ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork>, List<Map<String, dynamic>>>(authorizedNetworks, (value) => pulumi.Input.encodeList<ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableIpv4': ?enableIpv4,
       'privateNetwork': ?privateNetwork,
       'requireSsl': ?requireSsl,
     };
   }
 
-  factory ConnectionProfileCloudsqlSettingsIpConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionProfileCloudsqlSettingsIpConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileCloudsqlSettingsIpConfig(
-      authorizedNetworks: (() {
-        final guardedValue = map['authorizedNetworks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork
-          >(
-            guardedValue,
-            (value) =>
-                ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      enableIpv4: (() {
-        final guardedValue = map['enableIpv4'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      privateNetwork: (() {
-        final guardedValue = map['privateNetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requireSsl: (() {
-        final guardedValue = map['requireSsl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      authorizedNetworks: (() { final guardedValue = map['authorizedNetworks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork>(guardedValue, (value) => ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      enableIpv4: (() { final guardedValue = map['enableIpv4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      privateNetwork: (() { final guardedValue = map['privateNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requireSsl: (() { final guardedValue = map['requireSsl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

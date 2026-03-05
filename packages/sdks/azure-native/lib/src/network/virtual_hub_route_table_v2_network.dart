@@ -263,19 +263,14 @@ import 'virtual_hub_route_table_v2_args.dart';
 class VirtualHubRouteTableV2Network extends pulumi.CustomResource {
   /// List of all connections attached to this route table v2.
   late final pulumi.Output<List<String>?> attachedConnections;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
-
   /// The provisioning state of the virtual hub route table v2 resource.
   late final pulumi.Output<String> provisioningState;
-
   /// List of all routes.
   late final pulumi.Output<List<Map<String, dynamic>>?> routes;
 
@@ -288,11 +283,11 @@ class VirtualHubRouteTableV2Network extends pulumi.CustomResource {
     VirtualHubRouteTableV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:VirtualHubRouteTableV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:VirtualHubRouteTableV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachedConnections = registerOutput<List<String>?>('attachedConnections');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');

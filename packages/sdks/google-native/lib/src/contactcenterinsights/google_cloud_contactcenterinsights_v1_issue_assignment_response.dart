@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContactcenterinsightsV1IssueAssignmentResponse {
   /// Immutable. Display name of the assigned issue. This field is set at time of analyis and immutable since then.
   final pulumi.Input<String> displayName;
-
   /// Resource name of the assigned issue.
   final pulumi.Input<String> issue;
-
   /// Score indicating the likelihood of the issue assignment. currently bounded on [0,1].
   final pulumi.Input<double> score;
 
@@ -31,9 +29,7 @@ class GoogleCloudContactcenterinsightsV1IssueAssignmentResponse {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1IssueAssignmentResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContactcenterinsightsV1IssueAssignmentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1IssueAssignmentResponse(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       issue: pulumi.Input.fromValue(map['issue'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudContactcenterinsightsV1IssueAssignmentResponse {
     );
   }
 }
+

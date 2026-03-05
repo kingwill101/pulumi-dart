@@ -17,7 +17,6 @@ class ProviderProvider extends pulumi.ProviderResource {
   late final pulumi.Output<String?> insightsInsertUrl;
   late final pulumi.Output<String?> insightsQueryUrl;
   late final pulumi.Output<String?> nerdgraphApiUrl;
-
   /// The data center for which your New Relic account is configured. Only one region per provider block is permitted.
   late final pulumi.Output<String?> region;
   late final pulumi.Output<String?> syntheticsApiUrl;
@@ -31,11 +30,11 @@ class ProviderProvider extends pulumi.ProviderResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String?>('accountId');
     adminApiKey = registerOutput<String?>('adminApiKey');
     apiKey = registerOutput<String?>('apiKey');

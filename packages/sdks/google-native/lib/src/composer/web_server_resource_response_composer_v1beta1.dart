@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebServerResourceResponseComposerV1beta1 {
   /// Optional. CPU request and limit for Airflow web server.
   final pulumi.Input<double> cpu;
-
   /// Optional. Memory (GB) request and limit for Airflow web server.
   final pulumi.Input<double> memoryGb;
-
   /// Optional. Storage (GB) request and limit for Airflow web server.
   final pulumi.Input<double> storageGb;
 
@@ -31,9 +29,7 @@ class WebServerResourceResponseComposerV1beta1 {
     };
   }
 
-  factory WebServerResourceResponseComposerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebServerResourceResponseComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return WebServerResourceResponseComposerV1beta1(
       cpu: pulumi.Input.fromValue(map['cpu'] as double),
       memoryGb: pulumi.Input.fromValue(map['memoryGb'] as double),
@@ -41,3 +37,4 @@ class WebServerResourceResponseComposerV1beta1 {
     );
   }
 }
+

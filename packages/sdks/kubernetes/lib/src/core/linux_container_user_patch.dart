@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxContainerUserPatch {
   /// GID is the primary gid initially attached to the first process in the container
   final pulumi.Input<int>? gid;
-
   /// SupplementalGroups are the supplemental groups initially attached to the first process in the container
   final pulumi.Input<List<int>>? supplementalGroups;
-
   /// UID is the primary uid initially attached to the first process in the container
   final pulumi.Input<int>? uid;
 
@@ -17,7 +15,11 @@ class LinuxContainerUserPatch {
   /// [gid] GID is the primary gid initially attached to the first process in the container
   /// [supplementalGroups] SupplementalGroups are the supplemental groups initially attached to the first process in the container
   /// [uid] UID is the primary uid initially attached to the first process in the container
-  LinuxContainerUserPatch({this.gid, this.supplementalGroups, this.uid});
+  LinuxContainerUserPatch({
+    this.gid,
+    this.supplementalGroups,
+    this.uid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class LinuxContainerUserPatch {
 
   factory LinuxContainerUserPatch.fromMap(Map<String, dynamic> map) {
     return LinuxContainerUserPatch(
-      gid: (() {
-        final guardedValue = map['gid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      supplementalGroups: (() {
-        final guardedValue = map['supplementalGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
-      uid: (() {
-        final guardedValue = map['uid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      gid: (() { final guardedValue = map['gid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      supplementalGroups: (() { final guardedValue = map['supplementalGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

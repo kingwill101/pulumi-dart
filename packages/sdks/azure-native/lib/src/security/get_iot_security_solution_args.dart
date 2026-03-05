@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIotSecuritySolutionArgs {
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the IoT Security solution.
   final pulumi.Input<String> solutionName;
 
@@ -30,10 +29,9 @@ class GetIotSecuritySolutionArgs {
 
   factory GetIotSecuritySolutionArgs.fromMap(Map<String, dynamic> map) {
     return GetIotSecuritySolutionArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       solutionName: pulumi.Input.fromValue(map['solutionName'] as String),
     );
   }
 }
+

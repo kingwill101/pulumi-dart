@@ -11,7 +11,9 @@ class PortalTenantConfigurationState {
 
   /// Creates a new [PortalTenantConfigurationState].
   /// [privateMarkdownStorageEnforced] Is the private tile markdown storage which used to display custom dynamic and static content enabled?
-  PortalTenantConfigurationState({this.privateMarkdownStorageEnforced});
+  PortalTenantConfigurationState({
+    this.privateMarkdownStorageEnforced,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,11 +23,8 @@ class PortalTenantConfigurationState {
 
   factory PortalTenantConfigurationState.fromMap(Map<String, dynamic> map) {
     return PortalTenantConfigurationState(
-      privateMarkdownStorageEnforced: (() {
-        final guardedValue = map['privateMarkdownStorageEnforced'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      privateMarkdownStorageEnforced: (() { final guardedValue = map['privateMarkdownStorageEnforced']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

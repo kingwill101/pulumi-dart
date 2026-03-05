@@ -15,3 +15,4 @@ enum PublicIPPrefixSkuTier {
     throw ArgumentError('Unknown PublicIPPrefixSkuTier value: $value');
   }
 }
+

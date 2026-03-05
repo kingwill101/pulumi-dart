@@ -11,10 +11,8 @@ class CellArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> cellName;
-
   /// List of cell arns to add as nested fault domains within this cell.
   final pulumi.Input<List<String>>? cells;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -22,7 +20,11 @@ class CellArgs {
   /// [cellName] Unique name describing the cell.
   /// [cells] List of cell arns to add as nested fault domains within this cell.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  CellArgs({required this.cellName, this.cells, this.tags});
+  CellArgs({
+    required this.cellName,
+    this.cells,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,18 +37,9 @@ class CellArgs {
   factory CellArgs.fromMap(Map<String, dynamic> map) {
     return CellArgs(
       cellName: pulumi.Input.fromValue(map['cellName'] as String),
-      cells: (() {
-        final guardedValue = map['cells'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      cells: (() { final guardedValue = map['cells']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

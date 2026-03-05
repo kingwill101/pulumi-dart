@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMonitoringConfigArgs {
   /// The device name.
   final pulumi.Input<String> deviceName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The role name.
   final pulumi.Input<String> roleName;
 
@@ -37,10 +35,9 @@ class GetMonitoringConfigArgs {
   factory GetMonitoringConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetMonitoringConfigArgs(
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       roleName: pulumi.Input.fromValue(map['roleName'] as String),
     );
   }
 }
+

@@ -963,13 +963,10 @@ import 'alert_channel_state.dart';
 class AlertChannel extends pulumi.CustomResource {
   /// Determines the New Relic account where the alert channel will be created. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
-
   /// A nested block that describes an alert channel configuration.  Only one config block is permitted per alert channel definition.  See Nested config blocks below for details.
   late final pulumi.Output<AlertChannelConfig?> config;
-
   /// The name of the channel.
   late final pulumi.Output<String> name;
-
   /// The type of channel.  One of: `email`, `slack`, `opsgenie`, `pagerduty`, `victorops`, or `webhook`.
   late final pulumi.Output<String> type;
 
@@ -982,22 +979,13 @@ class AlertChannel extends pulumi.CustomResource {
     AlertChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/alertChannel:AlertChannel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/alertChannel:AlertChannel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
-    config = registerOutput<AlertChannelConfig?>(
-      'config',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertChannelConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    config = registerOutput<AlertChannelConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertChannelConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
@@ -1020,22 +1008,13 @@ class AlertChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/alertChannel:AlertChannel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/alertChannel:AlertChannel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
-    config = registerOutput<AlertChannelConfig?>(
-      'config',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertChannelConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    config = registerOutput<AlertChannelConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertChannelConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }

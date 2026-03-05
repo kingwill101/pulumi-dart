@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration {
   /// Header name of the header configuration.
   final pulumi.Input<String> headerName;
-
   /// Header value of the header configuration.
   final pulumi.Input<String> headerValue;
 
@@ -24,12 +23,11 @@ class GetApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration {
     };
   }
 
-  factory GetApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration(
       headerName: pulumi.Input.fromValue(map['headerName'] as String),
       headerValue: pulumi.Input.fromValue(map['headerValue'] as String),
     );
   }
 }
+

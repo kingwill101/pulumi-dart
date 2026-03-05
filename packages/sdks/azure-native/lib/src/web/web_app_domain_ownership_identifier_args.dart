@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAppDomainOwnershipIdentifierArgs {
   /// Name of domain ownership identifier.
   final pulumi.Input<String>? domainOwnershipIdentifierName;
-
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-
   /// Name of the app.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// String representation of the identity.
   final pulumi.Input<String>? value;
 
@@ -46,29 +42,14 @@ class WebAppDomainOwnershipIdentifierArgs {
     };
   }
 
-  factory WebAppDomainOwnershipIdentifierArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAppDomainOwnershipIdentifierArgs.fromMap(Map<String, dynamic> map) {
     return WebAppDomainOwnershipIdentifierArgs(
-      domainOwnershipIdentifierName: (() {
-        final guardedValue = map['domainOwnershipIdentifierName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domainOwnershipIdentifierName: (() { final guardedValue = map['domainOwnershipIdentifierName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

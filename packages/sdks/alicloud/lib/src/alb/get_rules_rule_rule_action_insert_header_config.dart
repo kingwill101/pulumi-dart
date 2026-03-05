@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesRuleRuleActionInsertHeaderConfig {
   /// The key of the query string.
   final pulumi.Input<String> key;
-
   /// The value of the query string.
   final pulumi.Input<String> value;
-
   /// The value type of the inserted header field.
   final pulumi.Input<String> valueType;
 
@@ -30,9 +28,7 @@ class GetRulesRuleRuleActionInsertHeaderConfig {
     };
   }
 
-  factory GetRulesRuleRuleActionInsertHeaderConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRulesRuleRuleActionInsertHeaderConfig.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleRuleActionInsertHeaderConfig(
       key: pulumi.Input.fromValue(map['key'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
@@ -40,3 +36,4 @@ class GetRulesRuleRuleActionInsertHeaderConfig {
     );
   }
 }
+

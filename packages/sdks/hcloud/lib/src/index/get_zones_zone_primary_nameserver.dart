@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZonesZonePrimaryNameserver {
   /// Public IPv4 or IPv6 address of the primary nameserver.
   final pulumi.Input<String> address;
-
   /// Port of the primary nameserver.
   final pulumi.Input<int> port;
-
   /// Transaction signature (TSIG) algorithm used to generate the TSIG key.
   final pulumi.Input<String> tsigAlgorithm;
-
   /// Transaction signature (TSIG) key
   final pulumi.Input<String> tsigKey;
 
@@ -45,3 +42,4 @@ class GetZonesZonePrimaryNameserver {
     );
   }
 }
+

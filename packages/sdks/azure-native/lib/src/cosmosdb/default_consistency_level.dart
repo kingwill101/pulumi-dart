@@ -18,3 +18,4 @@ enum DefaultConsistencyLevel {
     throw ArgumentError('Unknown DefaultConsistencyLevel value: $value');
   }
 }
+

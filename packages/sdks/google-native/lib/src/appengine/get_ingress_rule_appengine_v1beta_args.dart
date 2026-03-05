@@ -19,7 +19,10 @@ class GetIngressRuleAppengineV1betaArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'appId': appId, 'ingressRuleId': ingressRuleId};
+    return <String, dynamic>{
+      'appId': appId,
+      'ingressRuleId': ingressRuleId,
+    };
   }
 
   factory GetIngressRuleAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +32,4 @@ class GetIngressRuleAppengineV1betaArgs {
     );
   }
 }
+

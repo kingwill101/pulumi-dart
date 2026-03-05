@@ -441,65 +441,44 @@ import 'profile_args.dart';
 class Profile extends pulumi.CustomResource {
   /// The api entity set name. This becomes the odata entity set name for the entity Type being referred in this object.
   late final pulumi.Output<String?> apiEntitySetName;
-
   /// The attributes for the Type.
   late final pulumi.Output<Map<String, List<String>>?> attributes;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Localized descriptions for the property.
   late final pulumi.Output<Map<String, String>?> description;
-
   /// Localized display names for the property.
   late final pulumi.Output<Map<String, String>?> displayName;
-
   /// Type of entity.
   late final pulumi.Output<String?> entityType;
-
   /// The properties of the Profile.
   late final pulumi.Output<List<Map<String, dynamic>>?> fields;
-
   /// The instance count.
   late final pulumi.Output<int?> instancesCount;
-
   /// Large Image associated with the Property or EntityType.
   late final pulumi.Output<String?> largeImage;
-
   /// The last changed time for the type definition.
   late final pulumi.Output<String> lastChangedUtc;
-
   /// Any custom localized attributes for the Type.
-  late final pulumi.Output<Map<String, Map<String, String>>?>
-  localizedAttributes;
-
+  late final pulumi.Output<Map<String, Map<String, String>>?> localizedAttributes;
   /// Medium Image associated with the Property or EntityType.
   late final pulumi.Output<String?> mediumImage;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// The schema org link. This helps ACI identify and suggest semantic models.
   late final pulumi.Output<String?> schemaItemTypeLink;
-
   /// Small Image associated with the Property or EntityType.
   late final pulumi.Output<String?> smallImage;
-
   /// The strong IDs.
   late final pulumi.Output<List<Map<String, dynamic>>?> strongIds;
-
   /// The hub name.
   late final pulumi.Output<String> tenantId;
-
   /// The timestamp property name. Represents the time when the interaction or profile update happened.
   late final pulumi.Output<String?> timestampFieldName;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// The name of the entity.
   late final pulumi.Output<String?> typeName;
 
@@ -512,11 +491,11 @@ class Profile extends pulumi.CustomResource {
     ProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:customerinsights:Profile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:customerinsights:Profile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiEntitySetName = registerOutput<String?>('apiEntitySetName');
     attributes = registerOutput<Map<String, List<String>>?>('attributes');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -527,9 +506,7 @@ class Profile extends pulumi.CustomResource {
     instancesCount = registerOutput<int?>('instancesCount');
     largeImage = registerOutput<String?>('largeImage');
     lastChangedUtc = registerOutput<String>('lastChangedUtc');
-    localizedAttributes = registerOutput<Map<String, Map<String, String>>?>(
-      'localizedAttributes',
-    );
+    localizedAttributes = registerOutput<Map<String, Map<String, String>>?>('localizedAttributes');
     mediumImage = registerOutput<String?>('mediumImage');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

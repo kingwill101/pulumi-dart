@@ -474,29 +474,21 @@ import 'attached_database_configuration_state.dart';
 class AttachedDatabaseConfiguration extends pulumi.CustomResource {
   /// The list of databases from the `cluster_resource_id` which are currently attached to the cluster.
   late final pulumi.Output<List<String>> attachedDatabaseNames;
-
   /// The resource id of the cluster where the databases you would like to attach reside.
   late final pulumi.Output<String> clusterId;
-
   /// Specifies the name of the Kusto Cluster for which the configuration will be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterName;
   late final pulumi.Output<String> clusterResourceId;
-
   /// The name of the database which you would like to attach, use * if you want to follow all current and future databases. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseName;
-
   /// The default principals modification kind. Valid values are: `None` (default), `Replace` and `Union`. Defaults to `None`.
   late final pulumi.Output<String?> defaultPrincipalModificationKind;
-
   /// Specifies the location of the Kusto Cluster for which the configuration will be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the Kusto Attached Database Configuration to create. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the resource group of the Kusto Cluster for which the configuration will be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `sharing` block as defined below.
   late final pulumi.Output<AttachedDatabaseConfigurationSharing?> sharing;
 
@@ -509,34 +501,21 @@ class AttachedDatabaseConfiguration extends pulumi.CustomResource {
     AttachedDatabaseConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/attachedDatabaseConfiguration:AttachedDatabaseConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    attachedDatabaseNames = registerOutput<List<String>>(
-      'attachedDatabaseNames',
-    );
+          'azure:kusto/attachedDatabaseConfiguration:AttachedDatabaseConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    attachedDatabaseNames = registerOutput<List<String>>('attachedDatabaseNames');
     clusterId = registerOutput<String>('clusterId');
     clusterName = registerOutput<String>('clusterName');
     clusterResourceId = registerOutput<String>('clusterResourceId');
     databaseName = registerOutput<String>('databaseName');
-    defaultPrincipalModificationKind = registerOutput<String?>(
-      'defaultPrincipalModificationKind',
-    );
+    defaultPrincipalModificationKind = registerOutput<String?>('defaultPrincipalModificationKind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sharing = registerOutput<AttachedDatabaseConfigurationSharing?>(
-      'sharing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedDatabaseConfigurationSharing.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sharing = registerOutput<AttachedDatabaseConfigurationSharing?>('sharing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedDatabaseConfigurationSharing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AttachedDatabaseConfiguration] resource's state with the given [name] and [id].
@@ -557,33 +536,20 @@ class AttachedDatabaseConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/attachedDatabaseConfiguration:AttachedDatabaseConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    attachedDatabaseNames = registerOutput<List<String>>(
-      'attachedDatabaseNames',
-    );
+          'azure:kusto/attachedDatabaseConfiguration:AttachedDatabaseConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    attachedDatabaseNames = registerOutput<List<String>>('attachedDatabaseNames');
     clusterId = registerOutput<String>('clusterId');
     clusterName = registerOutput<String>('clusterName');
     clusterResourceId = registerOutput<String>('clusterResourceId');
     databaseName = registerOutput<String>('databaseName');
-    defaultPrincipalModificationKind = registerOutput<String?>(
-      'defaultPrincipalModificationKind',
-    );
+    defaultPrincipalModificationKind = registerOutput<String?>('defaultPrincipalModificationKind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sharing = registerOutput<AttachedDatabaseConfigurationSharing?>(
-      'sharing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedDatabaseConfigurationSharing.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sharing = registerOutput<AttachedDatabaseConfigurationSharing?>('sharing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedDatabaseConfigurationSharing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

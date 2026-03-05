@@ -7,13 +7,10 @@ import 'status_event_response.dart';
 class JobStatusResponse {
   /// The duration of time that the Job spent in status RUNNING.
   final pulumi.Input<String> runDuration;
-
   /// Job state
   final pulumi.Input<String> state;
-
   /// Job status events
   final pulumi.Input<List<StatusEventResponse>> statusEvents;
-
   /// Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.
   final pulumi.Input<Map<String, String>> taskGroups;
 
@@ -33,18 +30,7 @@ class JobStatusResponse {
     return <String, dynamic>{
       'runDuration': runDuration,
       'state': state,
-      'statusEvents':
-          pulumi.Input.mapInputValue<
-            List<StatusEventResponse>,
-            List<Map<String, dynamic>>
-          >(
-            statusEvents,
-            (value) =>
-                pulumi.Input.encodeList<
-                  StatusEventResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'statusEvents': pulumi.Input.mapInputValue<List<StatusEventResponse>, List<Map<String, dynamic>>>(statusEvents, (value) => pulumi.Input.encodeList<StatusEventResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'taskGroups': taskGroups,
     };
   }
@@ -53,17 +39,9 @@ class JobStatusResponse {
     return JobStatusResponse(
       runDuration: pulumi.Input.fromValue(map['runDuration'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
-      statusEvents: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<StatusEventResponse>(
-          map['statusEvents']!,
-          (value) => StatusEventResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      taskGroups: pulumi.Input.fromValue(
-        (map['taskGroups'] as Map).cast<String, String>(),
-      ),
+      statusEvents: pulumi.Input.fromValue(pulumi.Input.decodeList<StatusEventResponse>(map['statusEvents']!, (value) => StatusEventResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      taskGroups: pulumi.Input.fromValue((map['taskGroups'] as Map).cast<String, String>()),
     );
   }
 }
+

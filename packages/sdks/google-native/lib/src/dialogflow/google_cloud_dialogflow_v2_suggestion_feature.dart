@@ -10,31 +10,20 @@ class GoogleCloudDialogflowV2SuggestionFeature {
 
   /// Creates a new [GoogleCloudDialogflowV2SuggestionFeature].
   /// [type] Type of Human Agent Assistant API feature to request.
-  GoogleCloudDialogflowV2SuggestionFeature({this.type});
+  GoogleCloudDialogflowV2SuggestionFeature({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowV2SuggestionFeatureType,
-            String
-          >(type, (value) => value.wireValue),
+      'type': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2SuggestionFeatureType, String>(type, (value) => value.wireValue),
     };
   }
 
-  factory GoogleCloudDialogflowV2SuggestionFeature.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2SuggestionFeature.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2SuggestionFeature(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowV2SuggestionFeatureType.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowV2SuggestionFeatureType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

@@ -9,21 +9,20 @@ class ComplianceSeverityEnumValueResponse {
 
   /// Creates a new [ComplianceSeverityEnumValueResponse].
   /// [value] Property value
-  ComplianceSeverityEnumValueResponse({this.value});
+  ComplianceSeverityEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory ComplianceSeverityEnumValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ComplianceSeverityEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ComplianceSeverityEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

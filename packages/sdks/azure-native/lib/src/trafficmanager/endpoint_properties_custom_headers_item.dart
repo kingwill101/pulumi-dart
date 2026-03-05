@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointPropertiesCustomHeadersItem {
   /// Header name.
   final pulumi.Input<String>? name;
-
   /// Header value.
   final pulumi.Input<String>? value;
 
   /// Creates a new [EndpointPropertiesCustomHeadersItem].
   /// [name] Header name.
   /// [value] Header value.
-  EndpointPropertiesCustomHeadersItem({this.name, this.value});
+  EndpointPropertiesCustomHeadersItem({
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'value': ?value};
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
-  factory EndpointPropertiesCustomHeadersItem.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointPropertiesCustomHeadersItem.fromMap(Map<String, dynamic> map) {
     return EndpointPropertiesCustomHeadersItem(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

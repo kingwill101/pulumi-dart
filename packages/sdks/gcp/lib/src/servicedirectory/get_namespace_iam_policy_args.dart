@@ -12,10 +12,14 @@ class GetNamespaceIamPolicyArgs {
 
   /// Creates a new [GetNamespaceIamPolicyArgs].
   /// [name] Used to find the parent resource to bind the IAM policy to
-  GetNamespaceIamPolicyArgs({required this.name});
+  GetNamespaceIamPolicyArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetNamespaceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetNamespaceIamPolicyArgs {
     );
   }
 }
+

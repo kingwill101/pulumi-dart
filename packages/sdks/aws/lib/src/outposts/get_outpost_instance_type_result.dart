@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getOutpostInstanceType.
 class GetOutpostInstanceTypeResult {
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceType;
@@ -39,12 +39,9 @@ class GetOutpostInstanceTypeResult {
       arn: map['arn'] as String,
       id: map['id'] as String,
       instanceType: map['instanceType'] as String,
-      preferredInstanceTypes: (() {
-        final guardedValue = map['preferredInstanceTypes'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      preferredInstanceTypes: (() { final guardedValue = map['preferredInstanceTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       region: map['region'] as String,
     );
   }
 }
+

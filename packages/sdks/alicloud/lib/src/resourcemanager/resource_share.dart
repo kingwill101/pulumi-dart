@@ -135,40 +135,30 @@ class ResourceShare extends pulumi.CustomResource {
   /// - false (default): Only sharing within the resource directory is allowed.
   /// - true: Allow sharing to any account.
   late final pulumi.Output<bool?> allowExternalTargets;
-
   /// The create time of resource share.
   late final pulumi.Output<String> createTime;
-
   /// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<List<String>?> permissionNames;
-
   /// ResourceArns
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<List<String>?> resourceArns;
-
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
-
   /// The name of resource share.
   late final pulumi.Output<String> resourceShareName;
-
   /// The owner of resource share,  `Self` and `OtherAccounts`.
   late final pulumi.Output<String> resourceShareOwner;
-
   /// List of shared resources. See `resources` below.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<List<Map<String, dynamic>>?> resources;
-
   /// The status of resource share.  `Active`,`Deleted` and `Deleting`.
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource user.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -183,11 +173,11 @@ class ResourceShare extends pulumi.CustomResource {
     ResourceShareArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/resourceShare:ResourceShare',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/resourceShare:ResourceShare',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowExternalTargets = registerOutput<bool?>('allowExternalTargets');
     createTime = registerOutput<String>('createTime');
     permissionNames = registerOutput<List<String>?>('permissionNames');
@@ -219,11 +209,11 @@ class ResourceShare extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/resourceShare:ResourceShare',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/resourceShare:ResourceShare',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowExternalTargets = registerOutput<bool?>('allowExternalTargets');
     createTime = registerOutput<String>('createTime');
     permissionNames = registerOutput<List<String>?>('permissionNames');

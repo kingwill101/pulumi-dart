@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDedicatedHostAccountsAccount {
   /// The name of the Dedicated host account.
   final pulumi.Input<String> accountName;
-
   /// The ID of the Dedicated host.
   final pulumi.Input<String> dedicatedHostId;
-
   /// The ID of the Dedicated Host Account. The value formats as `&lt;dedicated_host_id&gt;:&lt;account_name&gt;`.
   final pulumi.Input<String> id;
 
@@ -38,3 +36,4 @@ class GetDedicatedHostAccountsAccount {
     );
   }
 }
+

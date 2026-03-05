@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1ContextResponse {
   /// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
   final pulumi.Input<int> lifespanCount;
-
   /// The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
   final pulumi.Input<String> name;
-
   /// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
   final pulumi.Input<Map<String, String>> parameters;
 
@@ -31,15 +29,12 @@ class GoogleCloudDialogflowV2beta1ContextResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1ContextResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2beta1ContextResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1ContextResponse(
       lifespanCount: pulumi.Input.fromValue(map['lifespanCount'] as int),
       name: pulumi.Input.fromValue(map['name'] as String),
-      parameters: pulumi.Input.fromValue(
-        (map['parameters'] as Map).cast<String, String>(),
-      ),
+      parameters: pulumi.Input.fromValue((map['parameters'] as Map).cast<String, String>()),
     );
   }
 }
+

@@ -353,16 +353,12 @@ import 'p2s_vpn_server_configuration_args.dart';
 class P2sVpnServerConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
-
   /// Properties of the P2SVpnServer configuration.
-  late final pulumi.Output<P2SVpnServerConfigurationPropertiesResponse>
-  properties;
+  late final pulumi.Output<P2SVpnServerConfigurationPropertiesResponse> properties;
 
   /// Creates a new [P2sVpnServerConfiguration].
   /// [name] The Pulumi resource name.
@@ -373,23 +369,14 @@ class P2sVpnServerConfiguration extends pulumi.CustomResource {
     P2sVpnServerConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:P2sVpnServerConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:P2sVpnServerConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    properties = registerOutput<P2SVpnServerConfigurationPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return P2SVpnServerConfigurationPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<P2SVpnServerConfigurationPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return P2SVpnServerConfigurationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

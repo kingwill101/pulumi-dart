@@ -17,53 +17,30 @@ import 'v2models_intent_confirmation_setting_prompt_specification.dart';
 class V2modelsIntentConfirmationSetting {
   /// Whether the intent's confirmation is sent to the user. When this field is false, confirmation and declination responses aren't sent. If the active field isn't specified, the default is true.
   final pulumi.Input<bool>? active;
-
   /// Configuration block for the intent's confirmation step. The dialog code hook is triggered based on these invocation settings when the confirmation next step or declination next step or failure next step is `invoke_dialog_code_hook`.  See `code_hook`.
   final pulumi.Input<V2modelsIntentConfirmationSettingCodeHook>? codeHook;
-
   /// Configuration block for conditional branches to evaluate after the intent is closed. See `confirmation_conditional`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditional>?
-  confirmationConditional;
-
+  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditional>? confirmationConditional;
   /// Configuration block for the next step that the bot executes when the customer confirms the intent. See `confirmation_next_step`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationNextStep>?
-  confirmationNextStep;
-
+  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationNextStep>? confirmationNextStep;
   /// Configuration block for message groups that Amazon Lex uses to respond the user input. See `confirmation_response`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationResponse>?
-  confirmationResponse;
-
+  final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationResponse>? confirmationResponse;
   /// Configuration block for conditional branches to evaluate after the intent is declined. See `declination_conditional`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditional>?
-  declinationConditional;
-
+  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditional>? declinationConditional;
   /// Configuration block for the next step that the bot executes when the customer declines the intent. See `declination_next_step`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationNextStep>?
-  declinationNextStep;
-
+  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationNextStep>? declinationNextStep;
   /// Configuration block for when the user answers "no" to the question defined in `prompt_specification`, Amazon Lex responds with this response to acknowledge that the intent was canceled. See `declination_response`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationResponse>?
-  declinationResponse;
-
+  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationResponse>? declinationResponse;
   /// Configuration block for when the code hook is invoked during confirmation prompt retries. See `elicitation_code_hook`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingElicitationCodeHook>?
-  elicitationCodeHook;
-
+  final pulumi.Input<V2modelsIntentConfirmationSettingElicitationCodeHook>? elicitationCodeHook;
   /// Configuration block for conditional branches. Branches are evaluated in the order that they are entered in the list. The first branch with a condition that evaluates to true is executed. The last branch in the list is the default branch. The default branch should not have any condition expression. The default branch is executed if no other branch has a matching condition. See `failure_conditional`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingFailureConditional>?
-  failureConditional;
-
+  final pulumi.Input<V2modelsIntentConfirmationSettingFailureConditional>? failureConditional;
   /// Configuration block for the next step to take in the conversation if the confirmation step fails. See `failure_next_step`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingFailureNextStep>?
-  failureNextStep;
-
+  final pulumi.Input<V2modelsIntentConfirmationSettingFailureNextStep>? failureNextStep;
   /// Configuration block for message groups that Amazon Lex uses to respond the user input. See `failure_response`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingFailureResponse>?
-  failureResponse;
-
+  final pulumi.Input<V2modelsIntentConfirmationSettingFailureResponse>? failureResponse;
   /// Configuration block for prompting the user to confirm the intent. This question should have a yes or no answer. Amazon Lex uses this prompt to ensure that the user acknowledges that the intent is ready for fulfillment. See `prompt_specification`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingPromptSpecification>?
-  promptSpecification;
+  final pulumi.Input<V2modelsIntentConfirmationSettingPromptSpecification>? promptSpecification;
 
   /// Creates a new [V2modelsIntentConfirmationSetting].
   /// [active] Whether the intent's confirmation is sent to the user. When this field is false, confirmation and declination responses aren't sent. If the active field isn't specified, the default is true.
@@ -98,184 +75,37 @@ class V2modelsIntentConfirmationSetting {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'active': ?active,
-      'codeHook':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingCodeHook,
-            Map<String, dynamic>
-          >(codeHook, (value) => value.toMap()),
-      'confirmationConditional':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingConfirmationConditional,
-            Map<String, dynamic>
-          >(confirmationConditional, (value) => value.toMap()),
-      'confirmationNextStep':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingConfirmationNextStep,
-            Map<String, dynamic>
-          >(confirmationNextStep, (value) => value.toMap()),
-      'confirmationResponse':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingConfirmationResponse,
-            Map<String, dynamic>
-          >(confirmationResponse, (value) => value.toMap()),
-      'declinationConditional':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingDeclinationConditional,
-            Map<String, dynamic>
-          >(declinationConditional, (value) => value.toMap()),
-      'declinationNextStep':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingDeclinationNextStep,
-            Map<String, dynamic>
-          >(declinationNextStep, (value) => value.toMap()),
-      'declinationResponse':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingDeclinationResponse,
-            Map<String, dynamic>
-          >(declinationResponse, (value) => value.toMap()),
-      'elicitationCodeHook':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingElicitationCodeHook,
-            Map<String, dynamic>
-          >(elicitationCodeHook, (value) => value.toMap()),
-      'failureConditional':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingFailureConditional,
-            Map<String, dynamic>
-          >(failureConditional, (value) => value.toMap()),
-      'failureNextStep':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingFailureNextStep,
-            Map<String, dynamic>
-          >(failureNextStep, (value) => value.toMap()),
-      'failureResponse':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingFailureResponse,
-            Map<String, dynamic>
-          >(failureResponse, (value) => value.toMap()),
-      'promptSpecification':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingPromptSpecification,
-            Map<String, dynamic>
-          >(promptSpecification, (value) => value.toMap()),
+      'codeHook': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingCodeHook, Map<String, dynamic>>(codeHook, (value) => value.toMap()),
+      'confirmationConditional': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingConfirmationConditional, Map<String, dynamic>>(confirmationConditional, (value) => value.toMap()),
+      'confirmationNextStep': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingConfirmationNextStep, Map<String, dynamic>>(confirmationNextStep, (value) => value.toMap()),
+      'confirmationResponse': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingConfirmationResponse, Map<String, dynamic>>(confirmationResponse, (value) => value.toMap()),
+      'declinationConditional': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingDeclinationConditional, Map<String, dynamic>>(declinationConditional, (value) => value.toMap()),
+      'declinationNextStep': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingDeclinationNextStep, Map<String, dynamic>>(declinationNextStep, (value) => value.toMap()),
+      'declinationResponse': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingDeclinationResponse, Map<String, dynamic>>(declinationResponse, (value) => value.toMap()),
+      'elicitationCodeHook': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingElicitationCodeHook, Map<String, dynamic>>(elicitationCodeHook, (value) => value.toMap()),
+      'failureConditional': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingFailureConditional, Map<String, dynamic>>(failureConditional, (value) => value.toMap()),
+      'failureNextStep': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingFailureNextStep, Map<String, dynamic>>(failureNextStep, (value) => value.toMap()),
+      'failureResponse': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingFailureResponse, Map<String, dynamic>>(failureResponse, (value) => value.toMap()),
+      'promptSpecification': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingPromptSpecification, Map<String, dynamic>>(promptSpecification, (value) => value.toMap()),
     };
   }
 
   factory V2modelsIntentConfirmationSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSetting(
-      active: (() {
-        final guardedValue = map['active'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      codeHook: (() {
-        final guardedValue = map['codeHook'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingCodeHook.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      confirmationConditional: (() {
-        final guardedValue = map['confirmationConditional'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingConfirmationConditional.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      confirmationNextStep: (() {
-        final guardedValue = map['confirmationNextStep'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingConfirmationNextStep.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      confirmationResponse: (() {
-        final guardedValue = map['confirmationResponse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingConfirmationResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      declinationConditional: (() {
-        final guardedValue = map['declinationConditional'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingDeclinationConditional.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      declinationNextStep: (() {
-        final guardedValue = map['declinationNextStep'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingDeclinationNextStep.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      declinationResponse: (() {
-        final guardedValue = map['declinationResponse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingDeclinationResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      elicitationCodeHook: (() {
-        final guardedValue = map['elicitationCodeHook'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingElicitationCodeHook.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      failureConditional: (() {
-        final guardedValue = map['failureConditional'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingFailureConditional.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      failureNextStep: (() {
-        final guardedValue = map['failureNextStep'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingFailureNextStep.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      failureResponse: (() {
-        final guardedValue = map['failureResponse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingFailureResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      promptSpecification: (() {
-        final guardedValue = map['promptSpecification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingPromptSpecification.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      active: (() { final guardedValue = map['active']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      codeHook: (() { final guardedValue = map['codeHook']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingCodeHook.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      confirmationConditional: (() { final guardedValue = map['confirmationConditional']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingConfirmationConditional.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      confirmationNextStep: (() { final guardedValue = map['confirmationNextStep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingConfirmationNextStep.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      confirmationResponse: (() { final guardedValue = map['confirmationResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingConfirmationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      declinationConditional: (() { final guardedValue = map['declinationConditional']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingDeclinationConditional.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      declinationNextStep: (() { final guardedValue = map['declinationNextStep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingDeclinationNextStep.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      declinationResponse: (() { final guardedValue = map['declinationResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingDeclinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      elicitationCodeHook: (() { final guardedValue = map['elicitationCodeHook']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingElicitationCodeHook.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      failureConditional: (() { final guardedValue = map['failureConditional']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingFailureConditional.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      failureNextStep: (() { final guardedValue = map['failureNextStep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingFailureNextStep.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      failureResponse: (() { final guardedValue = map['failureResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingFailureResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      promptSpecification: (() { final guardedValue = map['promptSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingPromptSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -550,60 +550,43 @@ import 'registry_enterprise_sync_rule_state.dart';
 class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
   /// (Available since v1.240.0) The time when the synchronization rule was created.
   late final pulumi.Output<String> createTime;
-
   /// The ID of the Container Registry source instance.
   late final pulumi.Output<String> instanceId;
-
   /// Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
   late final pulumi.Output<String> name;
-
   /// The namespace name of the source instance.
   late final pulumi.Output<String> namespaceName;
-
   /// (Available since v1.240.0) The region ID of the source instance.
   late final pulumi.Output<String> regionId;
-
   /// The image repository name of the source instance.
   late final pulumi.Output<String?> repoName;
-
   /// (Available since v1.240.0) The ID of the synchronization rule.
   late final pulumi.Output<String> repoSyncRuleId;
-
   /// (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
   late final pulumi.Output<String> ruleId;
-
   /// The synchronization direction.
   late final pulumi.Output<String> syncDirection;
-
   /// The name of the sync rule.
   late final pulumi.Output<String> syncRuleName;
-
   /// The synchronization scope. Valid values:
   /// - `REPO`: Encrypts or decrypts data.
   /// - `NAMESPACE`: Generates or verifies a digital signature.
   /// &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
   late final pulumi.Output<String> syncScope;
-
   /// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
   /// - `INITIATIVE`: Manually triggers the synchronization rule.
   /// - `PASSIVE`: Automatically triggers the synchronization rule.
   late final pulumi.Output<String> syncTrigger;
-
   /// The regular expression used to filter image tags.
   late final pulumi.Output<String> tagFilter;
-
   /// The ID of the destination instance.
   late final pulumi.Output<String> targetInstanceId;
-
   /// The namespace name of the destination instance.
   late final pulumi.Output<String> targetNamespaceName;
-
   /// The region ID of the destination instance.
   late final pulumi.Output<String> targetRegionId;
-
   /// The image repository name of the destination instance.
   late final pulumi.Output<String?> targetRepoName;
-
   /// The UID of the account to which the target instance belongs.
   late final pulumi.Output<String?> targetUserId;
 
@@ -616,11 +599,11 @@ class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
     RegistryEnterpriseSyncRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
@@ -659,11 +642,11 @@ class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');

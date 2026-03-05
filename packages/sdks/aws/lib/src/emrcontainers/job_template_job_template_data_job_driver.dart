@@ -6,12 +6,9 @@ import 'job_template_job_template_data_job_driver_spark_submit_job_driver.dart';
 
 class JobTemplateJobTemplateDataJobDriver {
   /// The job driver for job type.
-  final pulumi.Input<JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver>?
-  sparkSqlJobDriver;
-
+  final pulumi.Input<JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver>? sparkSqlJobDriver;
   /// The job driver parameters specified for spark submit.
-  final pulumi.Input<JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver>?
-  sparkSubmitJobDriver;
+  final pulumi.Input<JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver>? sparkSubmitJobDriver;
 
   /// Creates a new [JobTemplateJobTemplateDataJobDriver].
   /// [sparkSqlJobDriver] The job driver for job type.
@@ -23,41 +20,16 @@ class JobTemplateJobTemplateDataJobDriver {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sparkSqlJobDriver':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver,
-            Map<String, dynamic>
-          >(sparkSqlJobDriver, (value) => value.toMap()),
-      'sparkSubmitJobDriver':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver,
-            Map<String, dynamic>
-          >(sparkSubmitJobDriver, (value) => value.toMap()),
+      'sparkSqlJobDriver': ?pulumi.Input.mapOptionalInputValue<JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver, Map<String, dynamic>>(sparkSqlJobDriver, (value) => value.toMap()),
+      'sparkSubmitJobDriver': ?pulumi.Input.mapOptionalInputValue<JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver, Map<String, dynamic>>(sparkSubmitJobDriver, (value) => value.toMap()),
     };
   }
 
-  factory JobTemplateJobTemplateDataJobDriver.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobTemplateJobTemplateDataJobDriver.fromMap(Map<String, dynamic> map) {
     return JobTemplateJobTemplateDataJobDriver(
-      sparkSqlJobDriver: (() {
-        final guardedValue = map['sparkSqlJobDriver'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sparkSubmitJobDriver: (() {
-        final guardedValue = map['sparkSubmitJobDriver'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      sparkSqlJobDriver: (() { final guardedValue = map['sparkSqlJobDriver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sparkSubmitJobDriver: (() { final guardedValue = map['sparkSubmitJobDriver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

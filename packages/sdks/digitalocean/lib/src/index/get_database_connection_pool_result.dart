@@ -1,40 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDatabaseConnectionPool.
 class GetDatabaseConnectionPoolResult {
   final String clusterId;
-
   /// Name of the connection pool's default database.
   final String dbName;
-
   /// Connection pool hostname.
   final String host;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The transaction mode for the connection pool.
   final String mode;
   final String name;
-
   /// Password for the connection pool's default user.
   final String password;
-
   /// Network port that the connection pool is listening on.
   final int port;
-
   /// Same as `host`, but only accessible from resources within the account and in the same region.
   final String privateHost;
-
   /// Same as `uri`, but only accessible from resources within the account and in the same region.
   final String privateUri;
-
   /// Size of the connection pool.
   final int size;
-
   /// The full URI for connecting to the database connection pool.
   final String uri;
-
   /// Username for the connection pool's default user.
   final String user;
 
@@ -104,3 +94,4 @@ class GetDatabaseConnectionPoolResult {
     );
   }
 }
+

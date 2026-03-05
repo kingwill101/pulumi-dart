@@ -162,10 +162,8 @@ import 'ip_set_state.dart';
 class IpSet extends pulumi.CustomResource {
   /// The ARN of the WAF IPSet.
   late final pulumi.Output<String> arn;
-
   /// One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR format) from which web requests originate.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipSetDescriptors;
-
   /// The name or description of the IPSet.
   late final pulumi.Output<String> name;
 
@@ -173,22 +171,27 @@ class IpSet extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [IpSet]. {@macro pulumi_waf_ip_set_ip_set_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  IpSet(String name, {IpSetArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:waf/ipSet:IpSet',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  IpSet(
+    String name, {
+    IpSetArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:waf/ipSet:IpSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    ipSetDescriptors = registerOutput<List<Map<String, dynamic>>?>(
-      'ipSetDescriptors',
-    );
+    ipSetDescriptors = registerOutput<List<Map<String, dynamic>>?>('ipSetDescriptors');
     this.name = registerOutput<String>('name');
   }
 
   /// Gets an existing [IpSet] resource's state with the given [name] and [id].
-  static IpSet get(String name, pulumi.Input<String> id, {IpSetState? state}) {
+  static IpSet get(
+    String name,
+    pulumi.Input<String> id, {
+    IpSetState? state,
+  }) {
     return IpSet._get(
       name,
       state: state?.toMap(),
@@ -201,15 +204,13 @@ class IpSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:waf/ipSet:IpSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:waf/ipSet:IpSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    ipSetDescriptors = registerOutput<List<Map<String, dynamic>>?>(
-      'ipSetDescriptors',
-    );
+    ipSetDescriptors = registerOutput<List<Map<String, dynamic>>?>('ipSetDescriptors');
     this.name = registerOutput<String>('name');
   }
 }

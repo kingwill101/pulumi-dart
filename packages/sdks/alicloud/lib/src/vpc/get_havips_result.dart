@@ -6,7 +6,6 @@ import 'get_havips_havip.dart';
 /// Result data returned by getHavips.
 class GetHavipsResult {
   final List<GetHavipsHavip> havips;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -35,10 +34,7 @@ class GetHavipsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'havips': pulumi.Input.encodeList<GetHavipsHavip, Map<String, dynamic>>(
-        havips,
-        (value) => value.toMap(),
-      ),
+      'havips': pulumi.Input.encodeList<GetHavipsHavip, Map<String, dynamic>>(havips, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -50,29 +46,14 @@ class GetHavipsResult {
 
   factory GetHavipsResult.fromMap(Map<String, dynamic> map) {
     return GetHavipsResult(
-      havips: pulumi.Input.decodeList<GetHavipsHavip>(
-        map['havips']!,
-        (value) =>
-            GetHavipsHavip.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      havips: pulumi.Input.decodeList<GetHavipsHavip>(map['havips']!, (value) => GetHavipsHavip.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

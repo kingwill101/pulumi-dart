@@ -17,3 +17,4 @@ enum AzureFileShareAccessTier {
     throw ArgumentError('Unknown AzureFileShareAccessTier value: $value');
   }
 }
+

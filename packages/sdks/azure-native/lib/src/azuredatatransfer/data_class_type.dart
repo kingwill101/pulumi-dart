@@ -19,3 +19,4 @@ enum DataClassType {
     throw ArgumentError('Unknown DataClassType value: $value');
   }
 }
+

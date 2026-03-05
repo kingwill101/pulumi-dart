@@ -29,17 +29,12 @@ class GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs {
     };
   }
 
-  factory GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs(
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
       partnerTenantId: pulumi.Input.fromValue(map['partnerTenantId'] as String),
     );
   }
 }
+

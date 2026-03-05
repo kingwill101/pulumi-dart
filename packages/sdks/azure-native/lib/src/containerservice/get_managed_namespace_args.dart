@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedNamespaceArgs {
   /// The name of the managed namespace.
   final pulumi.Input<String> managedNamespaceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the managed cluster resource.
   final pulumi.Input<String> resourceName;
 
@@ -36,13 +34,10 @@ class GetManagedNamespaceArgs {
 
   factory GetManagedNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedNamespaceArgs(
-      managedNamespaceName: pulumi.Input.fromValue(
-        map['managedNamespaceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      managedNamespaceName: pulumi.Input.fromValue(map['managedNamespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

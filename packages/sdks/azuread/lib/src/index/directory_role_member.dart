@@ -174,7 +174,6 @@ import 'directory_role_member_state.dart';
 class DirectoryRoleMember extends pulumi.CustomResource {
   /// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> memberObjectId;
-
   /// The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> roleObjectId;
 
@@ -187,11 +186,11 @@ class DirectoryRoleMember extends pulumi.CustomResource {
     DirectoryRoleMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/directoryRoleMember:DirectoryRoleMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/directoryRoleMember:DirectoryRoleMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     memberObjectId = registerOutput<String?>('memberObjectId');
     roleObjectId = registerOutput<String?>('roleObjectId');
   }
@@ -214,11 +213,11 @@ class DirectoryRoleMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/directoryRoleMember:DirectoryRoleMember',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/directoryRoleMember:DirectoryRoleMember',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     memberObjectId = registerOutput<String?>('memberObjectId');
     roleObjectId = registerOutput<String?>('roleObjectId');
   }

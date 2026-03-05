@@ -8,17 +8,20 @@ class StreamProcessorInputKinesisVideoStream {
 
   /// Creates a new [StreamProcessorInputKinesisVideoStream].
   /// [arn] ARN of the Kinesis video stream stream that streams the source video.
-  StreamProcessorInputKinesisVideoStream({required this.arn});
+  StreamProcessorInputKinesisVideoStream({
+    required this.arn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': arn};
+    return <String, dynamic>{
+      'arn': arn,
+    };
   }
 
-  factory StreamProcessorInputKinesisVideoStream.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StreamProcessorInputKinesisVideoStream.fromMap(Map<String, dynamic> map) {
     return StreamProcessorInputKinesisVideoStream(
       arn: pulumi.Input.fromValue(map['arn'] as String),
     );
   }
 }
+

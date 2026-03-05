@@ -3,22 +3,16 @@ enum PolicyAlternativeNameServerConfigTargetNameServerForwardingPath {
   default_("default"),
   private("private");
 
-  const PolicyAlternativeNameServerConfigTargetNameServerForwardingPath(
-    this.wireValue,
-  );
+  const PolicyAlternativeNameServerConfigTargetNameServerForwardingPath(this.wireValue);
   final String wireValue;
 
-  static PolicyAlternativeNameServerConfigTargetNameServerForwardingPath
-  fromValue(String value) {
-    for (final item
-        in PolicyAlternativeNameServerConfigTargetNameServerForwardingPath
-            .values) {
+  static PolicyAlternativeNameServerConfigTargetNameServerForwardingPath fromValue(String value) {
+    for (final item in PolicyAlternativeNameServerConfigTargetNameServerForwardingPath.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PolicyAlternativeNameServerConfigTargetNameServerForwardingPath value: $value',
-    );
+    throw ArgumentError('Unknown PolicyAlternativeNameServerConfigTargetNameServerForwardingPath value: $value');
   }
 }
+

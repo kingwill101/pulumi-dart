@@ -7,29 +7,20 @@ import 'log_delivery_s3_delivery_configuration.dart';
 class LogDeliveryState {
   /// The Amazon Resource Name (ARN) of the delivery.
   final pulumi.Input<String>? arn;
-
   /// The ARN of the delivery destination to use for this delivery.
   final pulumi.Input<String>? deliveryDestinationArn;
-
   /// The name of the delivery source to use for this delivery.
   final pulumi.Input<String>? deliverySourceName;
-
   /// The field delimiter to use between record fields when the final output format of a delivery is in `plain`, `w3c`, or `raw` format.
   final pulumi.Input<String>? fieldDelimiter;
-
   /// The list of record fields to be delivered to the destination, in order.
   final pulumi.Input<List<String>>? recordFields;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Parameters that are valid only when the delivery's delivery destination is an S3 bucket.
-  final pulumi.Input<List<LogDeliveryS3DeliveryConfiguration>>?
-  s3DeliveryConfigurations;
-
+  final pulumi.Input<List<LogDeliveryS3DeliveryConfiguration>>? s3DeliveryConfigurations;
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -63,18 +54,7 @@ class LogDeliveryState {
       'fieldDelimiter': ?fieldDelimiter,
       'recordFields': ?recordFields,
       'region': ?region,
-      's3DeliveryConfigurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LogDeliveryS3DeliveryConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            s3DeliveryConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LogDeliveryS3DeliveryConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      's3DeliveryConfigurations': ?pulumi.Input.mapOptionalInputValue<List<LogDeliveryS3DeliveryConfiguration>, List<Map<String, dynamic>>>(s3DeliveryConfigurations, (value) => pulumi.Input.encodeList<LogDeliveryS3DeliveryConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
       'tagsAll': ?tagsAll,
     };
@@ -82,62 +62,16 @@ class LogDeliveryState {
 
   factory LogDeliveryState.fromMap(Map<String, dynamic> map) {
     return LogDeliveryState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deliveryDestinationArn: (() {
-        final guardedValue = map['deliveryDestinationArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deliverySourceName: (() {
-        final guardedValue = map['deliverySourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fieldDelimiter: (() {
-        final guardedValue = map['fieldDelimiter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recordFields: (() {
-        final guardedValue = map['recordFields'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      s3DeliveryConfigurations: (() {
-        final guardedValue = map['s3DeliveryConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LogDeliveryS3DeliveryConfiguration>(
-            guardedValue,
-            (value) => LogDeliveryS3DeliveryConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deliveryDestinationArn: (() { final guardedValue = map['deliveryDestinationArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deliverySourceName: (() { final guardedValue = map['deliverySourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fieldDelimiter: (() { final guardedValue = map['fieldDelimiter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recordFields: (() { final guardedValue = map['recordFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s3DeliveryConfigurations: (() { final guardedValue = map['s3DeliveryConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LogDeliveryS3DeliveryConfiguration>(guardedValue, (value) => LogDeliveryS3DeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

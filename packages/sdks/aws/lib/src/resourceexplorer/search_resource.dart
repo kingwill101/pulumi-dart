@@ -6,22 +6,16 @@ import 'search_resource_property.dart';
 class SearchResource {
   /// Amazon resource name of resource.
   final pulumi.Input<String> arn;
-
   /// The date and time that the information about this resource property was last updated.
   final pulumi.Input<String> lastReportedAt;
-
   /// Amazon Web Services account that owns the resource.
   final pulumi.Input<String> owningAccountId;
-
   /// Structure with additional type-specific details about the resource.  See `properties` below.
   final pulumi.Input<List<SearchResourceProperty>> properties;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String> region;
-
   /// Type of the resource.
   final pulumi.Input<String> resourceType;
-
   /// Amazon Web Service that owns the resource and is responsible for creating and updating it.
   final pulumi.Input<String> service;
 
@@ -48,18 +42,7 @@ class SearchResource {
       'arn': arn,
       'lastReportedAt': lastReportedAt,
       'owningAccountId': owningAccountId,
-      'properties':
-          pulumi.Input.mapInputValue<
-            List<SearchResourceProperty>,
-            List<Map<String, dynamic>>
-          >(
-            properties,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SearchResourceProperty,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'properties': pulumi.Input.mapInputValue<List<SearchResourceProperty>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<SearchResourceProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': region,
       'resourceType': resourceType,
       'service': service,
@@ -71,17 +54,11 @@ class SearchResource {
       arn: pulumi.Input.fromValue(map['arn'] as String),
       lastReportedAt: pulumi.Input.fromValue(map['lastReportedAt'] as String),
       owningAccountId: pulumi.Input.fromValue(map['owningAccountId'] as String),
-      properties: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<SearchResourceProperty>(
-          map['properties']!,
-          (value) => SearchResourceProperty.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      properties: pulumi.Input.fromValue(pulumi.Input.decodeList<SearchResourceProperty>(map['properties']!, (value) => SearchResourceProperty.fromMap((value as Map).cast<String, dynamic>()))),
       region: pulumi.Input.fromValue(map['region'] as String),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
+

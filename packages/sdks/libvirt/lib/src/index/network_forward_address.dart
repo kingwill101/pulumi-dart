@@ -9,29 +9,20 @@ class NetworkForwardAddress {
 
   /// Creates a new [NetworkForwardAddress].
   /// [pci] Configures forwarding for PCI addresses.
-  NetworkForwardAddress({this.pci});
+  NetworkForwardAddress({
+    this.pci,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pci':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkForwardAddressPci,
-            Map<String, dynamic>
-          >(pci, (value) => value.toMap()),
+      'pci': ?pulumi.Input.mapOptionalInputValue<NetworkForwardAddressPci, Map<String, dynamic>>(pci, (value) => value.toMap()),
     };
   }
 
   factory NetworkForwardAddress.fromMap(Map<String, dynamic> map) {
     return NetworkForwardAddress(
-      pci: (() {
-        final guardedValue = map['pci'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkForwardAddressPci.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      pci: (() { final guardedValue = map['pci']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkForwardAddressPci.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

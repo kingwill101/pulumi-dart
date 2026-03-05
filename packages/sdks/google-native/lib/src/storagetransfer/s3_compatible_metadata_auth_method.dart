@@ -16,3 +16,4 @@ enum S3CompatibleMetadataAuthMethod {
     throw ArgumentError('Unknown S3CompatibleMetadataAuthMethod value: $value');
   }
 }
+

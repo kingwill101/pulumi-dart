@@ -195,7 +195,6 @@ import 'bandwidth_package_attachment_state.dart';
 class BandwidthPackageAttachment extends pulumi.CustomResource {
   /// The ID of the bandwidth package.
   late final pulumi.Output<String> bandwidthPackageId;
-
   /// The ID of the CEN.
   late final pulumi.Output<String> instanceId;
 
@@ -208,11 +207,11 @@ class BandwidthPackageAttachment extends pulumi.CustomResource {
     BandwidthPackageAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
     instanceId = registerOutput<String>('instanceId');
   }
@@ -235,11 +234,11 @@ class BandwidthPackageAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
     instanceId = registerOutput<String>('instanceId');
   }

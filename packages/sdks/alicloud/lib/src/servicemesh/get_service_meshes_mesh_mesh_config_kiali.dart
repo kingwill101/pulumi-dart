@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceMeshesMeshMeshConfigKiali {
   /// Whether to enable CNI.
   final pulumi.Input<bool> enabled;
-
   /// The service address of the Kiali.
   final pulumi.Input<String> url;
 
@@ -18,15 +17,17 @@ class GetServiceMeshesMeshMeshConfigKiali {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled, 'url': url};
+    return <String, dynamic>{
+      'enabled': enabled,
+      'url': url,
+    };
   }
 
-  factory GetServiceMeshesMeshMeshConfigKiali.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceMeshesMeshMeshConfigKiali.fromMap(Map<String, dynamic> map) {
     return GetServiceMeshesMeshMeshConfigKiali(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
+

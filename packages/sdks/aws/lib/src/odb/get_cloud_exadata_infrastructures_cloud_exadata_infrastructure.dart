@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
   /// The Amazon Resource Name (ARN) for the Exadata infrastructure.
   final pulumi.Input<String> arn;
-
   /// The display name of the Exadata infrastructure.
   final pulumi.Input<String> displayName;
-
   /// The unique identifier of the Exadata infrastructure.
   final pulumi.Input<String> id;
-
   /// The name of the OCI resource anchor for the Exadata infrastructure.
   final pulumi.Input<String> ociResourceAnchorName;
-
   /// The HTTPS link to the Exadata infrastructure in OCI.
   final pulumi.Input<String> ociUrl;
-
   /// The OCID of the Exadata infrastructure in OCI.
   final pulumi.Input<String> ocid;
 
@@ -48,18 +43,15 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
     };
   }
 
-  factory GetCloudExadataInfrastructuresCloudExadataInfrastructure.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCloudExadataInfrastructuresCloudExadataInfrastructure.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructuresCloudExadataInfrastructure(
       arn: pulumi.Input.fromValue(map['arn'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      ociResourceAnchorName: pulumi.Input.fromValue(
-        map['ociResourceAnchorName'] as String,
-      ),
+      ociResourceAnchorName: pulumi.Input.fromValue(map['ociResourceAnchorName'] as String),
       ociUrl: pulumi.Input.fromValue(map['ociUrl'] as String),
       ocid: pulumi.Input.fromValue(map['ocid'] as String),
     );
   }
 }
+

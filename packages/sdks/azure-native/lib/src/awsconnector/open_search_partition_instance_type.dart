@@ -113,8 +113,7 @@ enum OpenSearchPartitionInstanceType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown OpenSearchPartitionInstanceType value: $value',
-    );
+    throw ArgumentError('Unknown OpenSearchPartitionInstanceType value: $value');
   }
 }
+

@@ -10,38 +10,20 @@ class VectorEmbeddingPolicy {
 
   /// Creates a new [VectorEmbeddingPolicy].
   /// [vectorEmbeddings] List of vector embeddings
-  VectorEmbeddingPolicy({this.vectorEmbeddings});
+  VectorEmbeddingPolicy({
+    this.vectorEmbeddings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'vectorEmbeddings':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VectorEmbedding>,
-            List<Map<String, dynamic>>
-          >(
-            vectorEmbeddings,
-            (value) =>
-                pulumi.Input.encodeList<VectorEmbedding, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'vectorEmbeddings': ?pulumi.Input.mapOptionalInputValue<List<VectorEmbedding>, List<Map<String, dynamic>>>(vectorEmbeddings, (value) => pulumi.Input.encodeList<VectorEmbedding, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VectorEmbeddingPolicy.fromMap(Map<String, dynamic> map) {
     return VectorEmbeddingPolicy(
-      vectorEmbeddings: (() {
-        final guardedValue = map['vectorEmbeddings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VectorEmbedding>(
-            guardedValue,
-            (value) =>
-                VectorEmbedding.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      vectorEmbeddings: (() { final guardedValue = map['vectorEmbeddings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VectorEmbedding>(guardedValue, (value) => VectorEmbedding.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

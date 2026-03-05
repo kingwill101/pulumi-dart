@@ -10,19 +10,20 @@ class GoogleApiSourceLoggingConfig {
 
   /// Creates a new [GoogleApiSourceLoggingConfig].
   /// [logSeverity] The minimum severity of logs that will be sent to Stackdriver/Platform
-  GoogleApiSourceLoggingConfig({this.logSeverity});
+  GoogleApiSourceLoggingConfig({
+    this.logSeverity,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'logSeverity': ?logSeverity};
+    return <String, dynamic>{
+      'logSeverity': ?logSeverity,
+    };
   }
 
   factory GoogleApiSourceLoggingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleApiSourceLoggingConfig(
-      logSeverity: (() {
-        final guardedValue = map['logSeverity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      logSeverity: (() { final guardedValue = map['logSeverity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

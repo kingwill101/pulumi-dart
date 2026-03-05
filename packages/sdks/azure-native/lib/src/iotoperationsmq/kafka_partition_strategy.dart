@@ -17,3 +17,4 @@ enum KafkaPartitionStrategy {
     throw ArgumentError('Unknown KafkaPartitionStrategy value: $value');
   }
 }
+

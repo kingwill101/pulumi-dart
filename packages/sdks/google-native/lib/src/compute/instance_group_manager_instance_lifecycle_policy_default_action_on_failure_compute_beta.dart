@@ -4,22 +4,16 @@ enum InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureComputeBet
   doNothing("DO_NOTHING"),
   repair("REPAIR");
 
-  const InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureComputeBeta(
-    this.wireValue,
-  );
+  const InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureComputeBeta(this.wireValue);
   final String wireValue;
 
-  static InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureComputeBeta
-  fromValue(String value) {
-    for (final item
-        in InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureComputeBeta
-            .values) {
+  static InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureComputeBeta fromValue(String value) {
+    for (final item in InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureComputeBeta value: $value');
   }
 }
+

@@ -8,50 +8,29 @@ import 'device_taint_selector_patch.dart';
 class DeviceTaintRuleSpecPatch {
   /// DeviceSelector defines which device(s) the taint is applied to. All selector criteria must be satisfied for a device to match. The empty selector matches all devices. Without a selector, no devices are matches.
   final pulumi.Input<DeviceTaintSelectorPatch>? deviceSelector;
-
   /// The taint that gets applied to matching devices.
   final pulumi.Input<DeviceTaintPatchResourceK8sIoV1alpha3>? taint;
 
   /// Creates a new [DeviceTaintRuleSpecPatch].
   /// [deviceSelector] DeviceSelector defines which device(s) the taint is applied to. All selector criteria must be satisfied for a device to match. The empty selector matches all devices. Without a selector, no devices are matches.
   /// [taint] The taint that gets applied to matching devices.
-  DeviceTaintRuleSpecPatch({this.deviceSelector, this.taint});
+  DeviceTaintRuleSpecPatch({
+    this.deviceSelector,
+    this.taint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deviceSelector':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeviceTaintSelectorPatch,
-            Map<String, dynamic>
-          >(deviceSelector, (value) => value.toMap()),
-      'taint':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeviceTaintPatchResourceK8sIoV1alpha3,
-            Map<String, dynamic>
-          >(taint, (value) => value.toMap()),
+      'deviceSelector': ?pulumi.Input.mapOptionalInputValue<DeviceTaintSelectorPatch, Map<String, dynamic>>(deviceSelector, (value) => value.toMap()),
+      'taint': ?pulumi.Input.mapOptionalInputValue<DeviceTaintPatchResourceK8sIoV1alpha3, Map<String, dynamic>>(taint, (value) => value.toMap()),
     };
   }
 
   factory DeviceTaintRuleSpecPatch.fromMap(Map<String, dynamic> map) {
     return DeviceTaintRuleSpecPatch(
-      deviceSelector: (() {
-        final guardedValue = map['deviceSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeviceTaintSelectorPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      taint: (() {
-        final guardedValue = map['taint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeviceTaintPatchResourceK8sIoV1alpha3.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      deviceSelector: (() { final guardedValue = map['deviceSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeviceTaintSelectorPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      taint: (() { final guardedValue = map['taint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeviceTaintPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

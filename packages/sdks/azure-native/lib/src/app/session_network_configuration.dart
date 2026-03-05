@@ -9,19 +9,20 @@ class SessionNetworkConfiguration {
 
   /// Creates a new [SessionNetworkConfiguration].
   /// [status] Network status for the sessions.
-  SessionNetworkConfiguration({this.status});
+  SessionNetworkConfiguration({
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': ?status};
+    return <String, dynamic>{
+      'status': ?status,
+    };
   }
 
   factory SessionNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return SessionNetworkConfiguration(
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

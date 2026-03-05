@@ -7,16 +7,12 @@ import 'resource_info_status.dart';
 class ResourceInfo {
   /// Unique Id for the resource.
   final pulumi.Input<String> id;
-
   /// Specific details for the resource.
   final pulumi.Input<Map<String, String>>? resource;
-
   /// Overall health status. Overall status is derived based on the status of each sub level resources.
   final pulumi.Input<ResourceInfoStatus>? status;
-
   /// List of Info for the sub level resources.
   final pulumi.Input<List<ResourceInfo>>? sub;
-
   /// The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
   final pulumi.Input<String>? time;
 
@@ -38,22 +34,8 @@ class ResourceInfo {
     return <String, dynamic>{
       'id': id,
       'resource': ?resource,
-      'status': ?pulumi.Input.mapOptionalInputValue<ResourceInfoStatus, String>(
-        status,
-        (value) => value.wireValue,
-      ),
-      'sub':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ResourceInfo>,
-            List<Map<String, dynamic>>
-          >(
-            sub,
-            (value) =>
-                pulumi.Input.encodeList<ResourceInfo, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'status': ?pulumi.Input.mapOptionalInputValue<ResourceInfoStatus, String>(status, (value) => value.wireValue),
+      'sub': ?pulumi.Input.mapOptionalInputValue<List<ResourceInfo>, List<Map<String, dynamic>>>(sub, (value) => pulumi.Input.encodeList<ResourceInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'time': ?time,
     };
   }
@@ -61,36 +43,11 @@ class ResourceInfo {
   factory ResourceInfo.fromMap(Map<String, dynamic> map) {
     return ResourceInfo(
       id: pulumi.Input.fromValue(map['id'] as String),
-      resource: (() {
-        final guardedValue = map['resource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceInfoStatus.fromValue(guardedValue as String),
-        );
-      })(),
-      sub: (() {
-        final guardedValue = map['sub'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ResourceInfo>(
-            guardedValue,
-            (value) =>
-                ResourceInfo.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      time: (() {
-        final guardedValue = map['time'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceInfoStatus.fromValue(guardedValue as String)); })(),
+      sub: (() { final guardedValue = map['sub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceInfo>(guardedValue, (value) => ResourceInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      time: (() { final guardedValue = map['time']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

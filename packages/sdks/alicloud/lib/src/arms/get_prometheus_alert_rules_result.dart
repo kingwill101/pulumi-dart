@@ -6,7 +6,6 @@ import 'get_prometheus_alert_rules_rule.dart';
 /// Result data returned by getPrometheusAlertRules.
 class GetPrometheusAlertRulesResult {
   final String clusterId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -51,11 +50,7 @@ class GetPrometheusAlertRulesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'rules':
-          pulumi.Input.encodeList<
-            GetPrometheusAlertRulesRule,
-            Map<String, dynamic>
-          >(rules, (value) => value.toMap()),
+      'rules': pulumi.Input.encodeList<GetPrometheusAlertRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
       'status': ?status,
       'type': ?type,
     };
@@ -66,38 +61,14 @@ class GetPrometheusAlertRulesResult {
       clusterId: map['clusterId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      matchExpressions: (() {
-        final guardedValue = map['matchExpressions'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      matchExpressions: (() { final guardedValue = map['matchExpressions']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      rules: pulumi.Input.decodeList<GetPrometheusAlertRulesRule>(
-        map['rules']!,
-        (value) => GetPrometheusAlertRulesRule.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rules: pulumi.Input.decodeList<GetPrometheusAlertRulesRule>(map['rules']!, (value) => GetPrometheusAlertRulesRule.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

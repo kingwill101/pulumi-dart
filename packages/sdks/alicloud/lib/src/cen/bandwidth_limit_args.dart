@@ -11,10 +11,8 @@ class BandwidthLimitArgs {
   ///
   /// -&gt;**NOTE:** The `alicloud.cen.BandwidthLimit` resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
   final pulumi.Input<int> bandwidthLimit;
-
   /// The ID of the CEN.
   final pulumi.Input<String> instanceId;
-
   /// List of the two regions to interconnect. Must be two different regions.
   final pulumi.Input<List<String>> regionIds;
 
@@ -40,9 +38,8 @@ class BandwidthLimitArgs {
     return BandwidthLimitArgs(
       bandwidthLimit: pulumi.Input.fromValue(map['bandwidthLimit'] as int),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      regionIds: pulumi.Input.fromValue(
-        (map['regionIds'] as List).cast<String>(),
-      ),
+      regionIds: pulumi.Input.fromValue((map['regionIds'] as List).cast<String>()),
     );
   }
 }
+

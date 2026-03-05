@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceSharedIpsState {
   /// The set of IPs to share with the Linode.
   final pulumi.Input<List<String>>? addresses;
-
   /// The ID of the Linode to share the IPs to.
   final pulumi.Input<int>? linodeId;
 
   /// Creates a new [InstanceSharedIpsState].
   /// [addresses] The set of IPs to share with the Linode.
   /// [linodeId] The ID of the Linode to share the IPs to.
-  InstanceSharedIpsState({this.addresses, this.linodeId});
+  InstanceSharedIpsState({
+    this.addresses,
+    this.linodeId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'addresses': ?addresses, 'linodeId': ?linodeId};
+    return <String, dynamic>{
+      'addresses': ?addresses,
+      'linodeId': ?linodeId,
+    };
   }
 
   factory InstanceSharedIpsState.fromMap(Map<String, dynamic> map) {
     return InstanceSharedIpsState(
-      addresses: (() {
-        final guardedValue = map['addresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      linodeId: (() {
-        final guardedValue = map['linodeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      addresses: (() { final guardedValue = map['addresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      linodeId: (() { final guardedValue = map['linodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class A2AUnprotectedDiskDetailsResponse {
   /// A value indicating whether the disk auto protection is enabled.
   final pulumi.Input<String>? diskAutoProtectionStatus;
-
   /// The source lun Id for the data disk.
   final pulumi.Input<int>? diskLunId;
 
@@ -27,16 +26,9 @@ class A2AUnprotectedDiskDetailsResponse {
 
   factory A2AUnprotectedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2AUnprotectedDiskDetailsResponse(
-      diskAutoProtectionStatus: (() {
-        final guardedValue = map['diskAutoProtectionStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      diskLunId: (() {
-        final guardedValue = map['diskLunId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      diskAutoProtectionStatus: (() { final guardedValue = map['diskAutoProtectionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskLunId: (() { final guardedValue = map['diskLunId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

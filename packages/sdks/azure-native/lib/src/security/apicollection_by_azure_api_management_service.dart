@@ -132,40 +132,28 @@ import 'apicollection_by_azure_api_management_service_args.dart';
 class APICollectionByAzureApiManagementService extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The base URI for this API collection. All endpoints of this API collection extend this base URI.
   late final pulumi.Output<String> baseUrl;
-
   /// The resource Id of the resource from where this API collection was discovered.
   late final pulumi.Output<String> discoveredVia;
-
   /// The display name of the API collection.
   late final pulumi.Output<String> displayName;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// The number of API endpoints discovered in this API collection.
   late final pulumi.Output<double> numberOfApiEndpoints;
-
   /// The number of API endpoints in this API collection which are exposing sensitive data in their requests and/or responses.
   late final pulumi.Output<double> numberOfApiEndpointsWithSensitiveDataExposed;
-
   /// The number of API endpoints in this API collection for which API traffic from the internet was observed.
   late final pulumi.Output<double> numberOfExternalApiEndpoints;
-
   /// The number of API endpoints in this API collection that have not received any API traffic in the last 30 days.
   late final pulumi.Output<double> numberOfInactiveApiEndpoints;
-
   /// The number of API endpoints in this API collection that are unauthenticated.
   late final pulumi.Output<double> numberOfUnauthenticatedApiEndpoints;
-
   /// Gets the provisioning state of the API collection.
   late final pulumi.Output<String> provisioningState;
-
   /// The highest priority sensitivity label from Microsoft Purview in this API collection.
   late final pulumi.Output<String> sensitivityLabel;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -178,29 +166,21 @@ class APICollectionByAzureApiManagementService extends pulumi.CustomResource {
     APICollectionByAzureApiManagementServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:APICollectionByAzureApiManagementService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:security:APICollectionByAzureApiManagementService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     baseUrl = registerOutput<String>('baseUrl');
     discoveredVia = registerOutput<String>('discoveredVia');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     numberOfApiEndpoints = registerOutput<double>('numberOfApiEndpoints');
-    numberOfApiEndpointsWithSensitiveDataExposed = registerOutput<double>(
-      'numberOfApiEndpointsWithSensitiveDataExposed',
-    );
-    numberOfExternalApiEndpoints = registerOutput<double>(
-      'numberOfExternalApiEndpoints',
-    );
-    numberOfInactiveApiEndpoints = registerOutput<double>(
-      'numberOfInactiveApiEndpoints',
-    );
-    numberOfUnauthenticatedApiEndpoints = registerOutput<double>(
-      'numberOfUnauthenticatedApiEndpoints',
-    );
+    numberOfApiEndpointsWithSensitiveDataExposed = registerOutput<double>('numberOfApiEndpointsWithSensitiveDataExposed');
+    numberOfExternalApiEndpoints = registerOutput<double>('numberOfExternalApiEndpoints');
+    numberOfInactiveApiEndpoints = registerOutput<double>('numberOfInactiveApiEndpoints');
+    numberOfUnauthenticatedApiEndpoints = registerOutput<double>('numberOfUnauthenticatedApiEndpoints');
     provisioningState = registerOutput<String>('provisioningState');
     sensitivityLabel = registerOutput<String>('sensitivityLabel');
     type = registerOutput<String>('type');

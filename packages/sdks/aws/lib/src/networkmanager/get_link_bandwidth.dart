@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinkBandwidth {
   /// Download speed in Mbps.
   final pulumi.Input<int> downloadSpeed;
-
   /// Upload speed in Mbps.
   final pulumi.Input<int> uploadSpeed;
 
   /// Creates a new [GetLinkBandwidth].
   /// [downloadSpeed] Download speed in Mbps.
   /// [uploadSpeed] Upload speed in Mbps.
-  GetLinkBandwidth({required this.downloadSpeed, required this.uploadSpeed});
+  GetLinkBandwidth({
+    required this.downloadSpeed,
+    required this.uploadSpeed,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,3 +30,4 @@ class GetLinkBandwidth {
     );
   }
 }
+

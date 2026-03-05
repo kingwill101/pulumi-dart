@@ -14,19 +14,20 @@ class GetFlowLogServiceArgs {
 
   /// Creates a new [GetFlowLogServiceArgs].
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
-  GetFlowLogServiceArgs({this.enable});
+  GetFlowLogServiceArgs({
+    this.enable,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enable': ?enable};
+    return <String, dynamic>{
+      'enable': ?enable,
+    };
   }
 
   factory GetFlowLogServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetFlowLogServiceArgs(
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

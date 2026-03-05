@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UnitKindOutputVariableMappingFrom {
   /// Alias of the dependency that the outputVariable will pass its value to
   final pulumi.Input<String> dependency;
-
   /// Name of the outputVariable on the dependency
   final pulumi.Input<String> outputVariable;
 
@@ -31,3 +30,4 @@ class UnitKindOutputVariableMappingFrom {
     );
   }
 }
+

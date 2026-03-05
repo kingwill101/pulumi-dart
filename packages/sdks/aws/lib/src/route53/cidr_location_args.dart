@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CidrLocationArgs {
   /// CIDR blocks for the location.
   final pulumi.Input<List<String>> cidrBlocks;
-
   /// The ID of the CIDR collection to update.
   final pulumi.Input<String> cidrCollectionId;
-
   /// Name for the CIDR location.
   final pulumi.Input<String>? name;
 
@@ -36,17 +34,10 @@ class CidrLocationArgs {
 
   factory CidrLocationArgs.fromMap(Map<String, dynamic> map) {
     return CidrLocationArgs(
-      cidrBlocks: pulumi.Input.fromValue(
-        (map['cidrBlocks'] as List).cast<String>(),
-      ),
-      cidrCollectionId: pulumi.Input.fromValue(
-        map['cidrCollectionId'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cidrBlocks: pulumi.Input.fromValue((map['cidrBlocks'] as List).cast<String>()),
+      cidrCollectionId: pulumi.Input.fromValue(map['cidrCollectionId'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

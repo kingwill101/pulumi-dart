@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeTolerations {
   /// Toleration effect.
   final pulumi.Input<String> effect;
-
   /// Toleration key.
   final pulumi.Input<String> key;
-
   /// Toleration operator like 'Exists', 'Equal' etc.
   final pulumi.Input<String> operator;
-
   /// Toleration Value.
   final pulumi.Input<String> value;
 
@@ -46,3 +43,4 @@ class NodeTolerations {
     );
   }
 }
+

@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getMonitorDefaultApplicationKey.
 class GetMonitorDefaultApplicationKeyResult {
   /// The user that created the Application key.
   final String? createdBy;
-
   /// The value of the Application key.
   final String key;
-
   /// The name of the Application key.
   final String? name;
 
@@ -29,21 +28,12 @@ class GetMonitorDefaultApplicationKeyResult {
     };
   }
 
-  factory GetMonitorDefaultApplicationKeyResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMonitorDefaultApplicationKeyResult.fromMap(Map<String, dynamic> map) {
     return GetMonitorDefaultApplicationKeyResult(
-      createdBy: (() {
-        final guardedValue = map['createdBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       key: map['key'] as String,
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -344,49 +344,37 @@ class ExtensionsInstance extends pulumi.CustomResource {
   /// The current Config of the Extension Instance.
   /// Structure is documented below.
   late final pulumi.Output<ExtensionsInstanceConfig> config;
-
   /// The time at which the Extension Instance was created.
   late final pulumi.Output<String> createTime;
-
   /// If this Instance has `state: ERRORED`, the error messages
   /// will be found here.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> errorStatuses;
-
   /// A weak etag that is computed by the server based on other configuration
   /// values and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
-
   /// The ID to use for the Extension Instance, which will become the final
   /// component of the instance's name.
   late final pulumi.Output<String> instanceId;
-
   /// The name of the last operation that acted on this Extension
   /// Instance
   late final pulumi.Output<String> lastOperationName;
-
   /// The type of the last operation that acted on the Extension Instance.
   late final pulumi.Output<String> lastOperationType;
-
   /// The fully-qualified resource name of the Extension Instance.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Data set by the extension instance at runtime.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> runtimeDatas;
-
   /// The email of the service account to be used at runtime by compute resources
   /// created for the operation of the Extension instance.
   late final pulumi.Output<String> serviceAccountEmail;
-
   /// The processing state of the extension instance.
   late final pulumi.Output<String> state;
-
   /// The time at which the Extension Instance was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -399,21 +387,12 @@ class ExtensionsInstance extends pulumi.CustomResource {
     ExtensionsInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firebase/extensionsInstance:ExtensionsInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    config = registerOutput<ExtensionsInstanceConfig>(
-      'config',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtensionsInstanceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:firebase/extensionsInstance:ExtensionsInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    config = registerOutput<ExtensionsInstanceConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionsInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     errorStatuses = registerOutput<List<Map<String, dynamic>>>('errorStatuses');
     etag = registerOutput<String>('etag');
@@ -446,21 +425,12 @@ class ExtensionsInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firebase/extensionsInstance:ExtensionsInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    config = registerOutput<ExtensionsInstanceConfig>(
-      'config',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtensionsInstanceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:firebase/extensionsInstance:ExtensionsInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    config = registerOutput<ExtensionsInstanceConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionsInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     errorStatuses = registerOutput<List<Map<String, dynamic>>>('errorStatuses');
     etag = registerOutput<String>('etag');

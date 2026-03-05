@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeResponse {
   /// Unique name for the volume.
   final pulumi.Input<String> name;
-
   /// Volume size in gigabytes.
   final pulumi.Input<double> sizeGb;
-
   /// Underlying volume type, e.g. 'tmpfs'.
   final pulumi.Input<String> volumeType;
 
@@ -39,3 +37,4 @@ class VolumeResponse {
     );
   }
 }
+

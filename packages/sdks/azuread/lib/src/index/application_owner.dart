@@ -186,7 +186,6 @@ import 'application_owner_state.dart';
 class ApplicationOwner extends pulumi.CustomResource {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
-
   /// The object ID of the owner to assign to the application, typically a user or service principal. Changing this forces a new resource to be created.
   late final pulumi.Output<String> ownerObjectId;
 
@@ -199,11 +198,11 @@ class ApplicationOwner extends pulumi.CustomResource {
     ApplicationOwnerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationOwner:ApplicationOwner',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationOwner:ApplicationOwner',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     ownerObjectId = registerOutput<String>('ownerObjectId');
   }
@@ -226,11 +225,11 @@ class ApplicationOwner extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationOwner:ApplicationOwner',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationOwner:ApplicationOwner',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     ownerObjectId = registerOutput<String>('ownerObjectId');
   }

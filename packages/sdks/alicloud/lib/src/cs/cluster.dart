@@ -32,11 +32,11 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentVersion = registerOutput<String>('agentVersion');
     cidrBlock = registerOutput<String>('cidrBlock');
     diskCategory = registerOutput<String?>('diskCategory');
@@ -76,11 +76,11 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentVersion = registerOutput<String>('agentVersion');
     cidrBlock = registerOutput<String>('cidrBlock');
     diskCategory = registerOutput<String?>('diskCategory');

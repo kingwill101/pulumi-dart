@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TaskDefinitionRuntimePlatform {
   /// Must be set to either `X86_64` or `ARM64`; see [cpu architecture](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#runtime-platform)
   final pulumi.Input<String>? cpuArchitecture;
-
   /// If the `requires_compatibilities` is `FARGATE` this field is required; must be set to a valid option from the [operating system family in the runtime platform](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#runtime-platform) setting
   final pulumi.Input<String>? operatingSystemFamily;
 
@@ -26,16 +25,9 @@ class TaskDefinitionRuntimePlatform {
 
   factory TaskDefinitionRuntimePlatform.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionRuntimePlatform(
-      cpuArchitecture: (() {
-        final guardedValue = map['cpuArchitecture'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operatingSystemFamily: (() {
-        final guardedValue = map['operatingSystemFamily'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cpuArchitecture: (() { final guardedValue = map['cpuArchitecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operatingSystemFamily: (() { final guardedValue = map['operatingSystemFamily']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

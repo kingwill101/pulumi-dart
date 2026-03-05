@@ -278,13 +278,10 @@ import 'accelerator_spare_ip_attachment_state.dart';
 class AcceleratorSpareIpAttachment extends pulumi.CustomResource {
   /// The ID of the global acceleration instance.
   late final pulumi.Output<String> acceleratorId;
-
   /// The dry run.
   late final pulumi.Output<bool?> dryRun;
-
   /// The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
   late final pulumi.Output<String> spareIp;
-
   /// The status of the standby CNAME IP address.
   late final pulumi.Output<String> status;
 
@@ -297,11 +294,11 @@ class AcceleratorSpareIpAttachment extends pulumi.CustomResource {
     AcceleratorSpareIpAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorId = registerOutput<String>('acceleratorId');
     dryRun = registerOutput<bool?>('dryRun');
     spareIp = registerOutput<String>('spareIp');
@@ -326,11 +323,11 @@ class AcceleratorSpareIpAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorId = registerOutput<String>('acceleratorId');
     dryRun = registerOutput<bool?>('dryRun');
     spareIp = registerOutput<String>('spareIp');

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetByoipPrefixResourcesAddress {
   /// The timestamp when the IP was assigned.
   final pulumi.Input<String> assignedAt;
-
   /// The unique identifier of the IP address allocation.
   final pulumi.Input<int> id;
-
   /// The IP address.
   final pulumi.Input<String> ipAddress;
-
   /// The region where the IP is allocated.
   final pulumi.Input<String> region;
 
@@ -45,3 +42,4 @@ class GetByoipPrefixResourcesAddress {
     );
   }
 }
+

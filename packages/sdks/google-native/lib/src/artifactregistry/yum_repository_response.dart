@@ -6,32 +6,24 @@ import 'google_devtools_artifactregistry_v1_remote_repository_config_yum_reposit
 /// Configuration for a Yum remote repository.
 class YumRepositoryResponse {
   /// One of the publicly available Yum repositories supported by Artifact Registry.
-  final pulumi.Input<
-    GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse
-  >
-  publicRepository;
+  final pulumi.Input<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse> publicRepository;
 
   /// Creates a new [YumRepositoryResponse].
   /// [publicRepository] One of the publicly available Yum repositories supported by Artifact Registry.
-  YumRepositoryResponse({required this.publicRepository});
+  YumRepositoryResponse({
+    required this.publicRepository,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicRepository':
-          pulumi.Input.mapInputValue<
-            GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse,
-            Map<String, dynamic>
-          >(publicRepository, (value) => value.toMap()),
+      'publicRepository': pulumi.Input.mapInputValue<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse, Map<String, dynamic>>(publicRepository, (value) => value.toMap()),
     };
   }
 
   factory YumRepositoryResponse.fromMap(Map<String, dynamic> map) {
     return YumRepositoryResponse(
-      publicRepository: pulumi.Input.fromValue(
-        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse.fromMap(
-          (map['publicRepository']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      publicRepository: pulumi.Input.fromValue(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse.fromMap((map['publicRepository']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

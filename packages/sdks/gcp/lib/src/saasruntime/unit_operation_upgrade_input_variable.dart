@@ -9,10 +9,8 @@ class UnitOperationUpgradeInputVariable {
   /// INT
   /// BOOL
   final pulumi.Input<String>? type;
-
   /// String encoded value for the variable.
   final pulumi.Input<String>? value;
-
   /// Name of the variable from actuation configs.
   final pulumi.Input<String> variable;
 
@@ -36,17 +34,10 @@ class UnitOperationUpgradeInputVariable {
 
   factory UnitOperationUpgradeInputVariable.fromMap(Map<String, dynamic> map) {
     return UnitOperationUpgradeInputVariable(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       variable: pulumi.Input.fromValue(map['variable'] as String),
     );
   }
 }
+

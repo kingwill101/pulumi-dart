@@ -9,25 +9,20 @@ class RoutingRuleConditionMatchHeaders {
 
   /// Creates a new [RoutingRuleConditionMatchHeaders].
   /// [anyOf] Configuration of the headers to be matched. There is a match if any of the header name and header value globs are matched. See below.
-  RoutingRuleConditionMatchHeaders({required this.anyOf});
+  RoutingRuleConditionMatchHeaders({
+    required this.anyOf,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'anyOf':
-          pulumi.Input.mapInputValue<
-            RoutingRuleConditionMatchHeadersAnyOf,
-            Map<String, dynamic>
-          >(anyOf, (value) => value.toMap()),
+      'anyOf': pulumi.Input.mapInputValue<RoutingRuleConditionMatchHeadersAnyOf, Map<String, dynamic>>(anyOf, (value) => value.toMap()),
     };
   }
 
   factory RoutingRuleConditionMatchHeaders.fromMap(Map<String, dynamic> map) {
     return RoutingRuleConditionMatchHeaders(
-      anyOf: pulumi.Input.fromValue(
-        RoutingRuleConditionMatchHeadersAnyOf.fromMap(
-          (map['anyOf']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      anyOf: pulumi.Input.fromValue(RoutingRuleConditionMatchHeadersAnyOf.fromMap((map['anyOf']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

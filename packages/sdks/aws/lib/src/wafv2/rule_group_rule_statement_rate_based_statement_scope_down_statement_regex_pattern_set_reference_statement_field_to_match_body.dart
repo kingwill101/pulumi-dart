@@ -12,18 +12,15 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetR
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'oversizeHandling': ?oversizeHandling};
+    return <String, dynamic>{
+      'oversizeHandling': ?oversizeHandling,
+    };
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchBody.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchBody(
-      oversizeHandling: (() {
-        final guardedValue = map['oversizeHandling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      oversizeHandling: (() { final guardedValue = map['oversizeHandling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

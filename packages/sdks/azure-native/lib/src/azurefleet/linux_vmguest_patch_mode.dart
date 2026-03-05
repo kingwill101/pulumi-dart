@@ -20,3 +20,4 @@ enum LinuxVMGuestPatchMode {
     throw ArgumentError('Unknown LinuxVMGuestPatchMode value: $value');
   }
 }
+

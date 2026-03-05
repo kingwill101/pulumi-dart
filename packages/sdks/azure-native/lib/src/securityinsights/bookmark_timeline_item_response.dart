@@ -7,29 +7,21 @@ import 'user_info_response.dart';
 class BookmarkTimelineItemResponse {
   /// The bookmark azure resource id.
   final pulumi.Input<String> azureResourceId;
-
   /// Describes a user that created the bookmark
   final pulumi.Input<UserInfoResponse>? createdBy;
-
   /// The bookmark display name.
   final pulumi.Input<String>? displayName;
-
   /// The bookmark end time.
   final pulumi.Input<String>? endTimeUtc;
-
   /// The bookmark event time.
   final pulumi.Input<String>? eventTime;
-
   /// The entity query kind
   /// Expected value is 'Bookmark'.
   final pulumi.Input<String> kind;
-
   /// List of labels relevant to this bookmark
   final pulumi.Input<List<String>>? labels;
-
   /// The notes of the bookmark
   final pulumi.Input<String>? notes;
-
   /// The bookmark start time.
   final pulumi.Input<String>? startTimeUtc;
 
@@ -58,11 +50,7 @@ class BookmarkTimelineItemResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureResourceId': azureResourceId,
-      'createdBy':
-          ?pulumi.Input.mapOptionalInputValue<
-            UserInfoResponse,
-            Map<String, dynamic>
-          >(createdBy, (value) => value.toMap()),
+      'createdBy': ?pulumi.Input.mapOptionalInputValue<UserInfoResponse, Map<String, dynamic>>(createdBy, (value) => value.toMap()),
       'displayName': ?displayName,
       'endTimeUtc': ?endTimeUtc,
       'eventTime': ?eventTime,
@@ -76,46 +64,15 @@ class BookmarkTimelineItemResponse {
   factory BookmarkTimelineItemResponse.fromMap(Map<String, dynamic> map) {
     return BookmarkTimelineItemResponse(
       azureResourceId: pulumi.Input.fromValue(map['azureResourceId'] as String),
-      createdBy: (() {
-        final guardedValue = map['createdBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UserInfoResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endTimeUtc: (() {
-        final guardedValue = map['endTimeUtc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventTime: (() {
-        final guardedValue = map['eventTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endTimeUtc: (() { final guardedValue = map['endTimeUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventTime: (() { final guardedValue = map['eventTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      notes: (() {
-        final guardedValue = map['notes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startTimeUtc: (() {
-        final guardedValue = map['startTimeUtc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startTimeUtc: (() { final guardedValue = map['startTimeUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

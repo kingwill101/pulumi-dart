@@ -9,10 +9,14 @@ class EntityKeyResponse {
 
   /// Creates a new [EntityKeyResponse].
   /// [namespace] The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source}`.
-  EntityKeyResponse({required this.namespace});
+  EntityKeyResponse({
+    required this.namespace,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'namespace': namespace};
+    return <String, dynamic>{
+      'namespace': namespace,
+    };
   }
 
   factory EntityKeyResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class EntityKeyResponse {
     );
   }
 }
+

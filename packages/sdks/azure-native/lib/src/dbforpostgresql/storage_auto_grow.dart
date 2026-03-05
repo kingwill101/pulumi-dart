@@ -15,3 +15,4 @@ enum StorageAutoGrow {
     throw ArgumentError('Unknown StorageAutoGrow value: $value');
   }
 }
+

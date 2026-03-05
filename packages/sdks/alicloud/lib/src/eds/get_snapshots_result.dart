@@ -6,7 +6,6 @@ import 'get_snapshots_snapshot.dart';
 /// Result data returned by getSnapshots.
 class GetSnapshotsResult {
   final String? desktopId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -45,45 +44,21 @@ class GetSnapshotsResult {
       'names': names,
       'outputFile': ?outputFile,
       'snapshotId': ?snapshotId,
-      'snapshots':
-          pulumi.Input.encodeList<GetSnapshotsSnapshot, Map<String, dynamic>>(
-            snapshots,
-            (value) => value.toMap(),
-          ),
+      'snapshots': pulumi.Input.encodeList<GetSnapshotsSnapshot, Map<String, dynamic>>(snapshots, (value) => value.toMap()),
     };
   }
 
   factory GetSnapshotsResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsResult(
-      desktopId: (() {
-        final guardedValue = map['desktopId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      desktopId: (() { final guardedValue = map['desktopId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      snapshotId: (() {
-        final guardedValue = map['snapshotId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      snapshots: pulumi.Input.decodeList<GetSnapshotsSnapshot>(
-        map['snapshots']!,
-        (value) => GetSnapshotsSnapshot.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      snapshotId: (() { final guardedValue = map['snapshotId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      snapshots: pulumi.Input.decodeList<GetSnapshotsSnapshot>(map['snapshots']!, (value) => GetSnapshotsSnapshot.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

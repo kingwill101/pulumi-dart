@@ -8,10 +8,14 @@ class DomainDevicesGraphicSpiceImage {
 
   /// Creates a new [DomainDevicesGraphicSpiceImage].
   /// [compression] Sets the compression method for graphical images transmitted over the Spice connection.
-  DomainDevicesGraphicSpiceImage({required this.compression});
+  DomainDevicesGraphicSpiceImage({
+    required this.compression,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'compression': compression};
+    return <String, dynamic>{
+      'compression': compression,
+    };
   }
 
   factory DomainDevicesGraphicSpiceImage.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesGraphicSpiceImage {
     );
   }
 }
+

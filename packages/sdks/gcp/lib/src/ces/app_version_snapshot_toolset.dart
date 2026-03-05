@@ -7,38 +7,30 @@ class AppVersionSnapshotToolset {
   /// (Output)
   /// Timestamp when the toolset was created.
   final pulumi.Input<String>? createTime;
-
   /// The description of the app version.
   final pulumi.Input<String>? description;
-
   /// The display name of the app version.
   final pulumi.Input<String>? displayName;
-
   /// (Output)
   /// ETag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
   final pulumi.Input<String>? etag;
-
   /// (Output)
   /// Possible values:
   /// SYNCHRONOUS
   /// ASYNCHRONOUS
   final pulumi.Input<String>? executionType;
-
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
   final pulumi.Input<String>? name;
-
   /// (Output)
   /// A toolset that contains a list of tools that are defined by an OpenAPI
   /// schema.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolset>>?
-  openApiToolsets;
-
+  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolset>>? openApiToolsets;
   /// (Output)
   /// Timestamp when the toolset was last updated.
   final pulumi.Input<String>? updateTime;
@@ -71,71 +63,22 @@ class AppVersionSnapshotToolset {
       'etag': ?etag,
       'executionType': ?executionType,
       'name': ?name,
-      'openApiToolsets':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AppVersionSnapshotToolsetOpenApiToolset>,
-            List<Map<String, dynamic>>
-          >(
-            openApiToolsets,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AppVersionSnapshotToolsetOpenApiToolset,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'openApiToolsets': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotToolsetOpenApiToolset>, List<Map<String, dynamic>>>(openApiToolsets, (value) => pulumi.Input.encodeList<AppVersionSnapshotToolsetOpenApiToolset, Map<String, dynamic>>(value, (value) => value.toMap())),
       'updateTime': ?updateTime,
     };
   }
 
   factory AppVersionSnapshotToolset.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolset(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      executionType: (() {
-        final guardedValue = map['executionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      openApiToolsets: (() {
-        final guardedValue = map['openApiToolsets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AppVersionSnapshotToolsetOpenApiToolset>(
-            guardedValue,
-            (value) => AppVersionSnapshotToolsetOpenApiToolset.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      executionType: (() { final guardedValue = map['executionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      openApiToolsets: (() { final guardedValue = map['openApiToolsets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotToolsetOpenApiToolset>(guardedValue, (value) => AppVersionSnapshotToolsetOpenApiToolset.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -19,15 +19,10 @@ class StorageClassificationMappingPropertiesResponse {
     };
   }
 
-  factory StorageClassificationMappingPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageClassificationMappingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StorageClassificationMappingPropertiesResponse(
-      targetStorageClassificationId: (() {
-        final guardedValue = map['targetStorageClassificationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      targetStorageClassificationId: (() { final guardedValue = map['targetStorageClassificationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,17 +7,13 @@ enum ClusterUpdateDesiredDatapathProviderContainerV1beta1 {
   const ClusterUpdateDesiredDatapathProviderContainerV1beta1(this.wireValue);
   final String wireValue;
 
-  static ClusterUpdateDesiredDatapathProviderContainerV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in ClusterUpdateDesiredDatapathProviderContainerV1beta1.values) {
+  static ClusterUpdateDesiredDatapathProviderContainerV1beta1 fromValue(String value) {
+    for (final item in ClusterUpdateDesiredDatapathProviderContainerV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ClusterUpdateDesiredDatapathProviderContainerV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown ClusterUpdateDesiredDatapathProviderContainerV1beta1 value: $value');
   }
 }
+

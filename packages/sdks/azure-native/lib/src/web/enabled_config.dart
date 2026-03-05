@@ -9,19 +9,20 @@ class EnabledConfig {
 
   /// Creates a new [EnabledConfig].
   /// [enabled] True if configuration is enabled, false if it is disabled and null if configuration is not set.
-  EnabledConfig({this.enabled});
+  EnabledConfig({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory EnabledConfig.fromMap(Map<String, dynamic> map) {
     return EnabledConfig(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

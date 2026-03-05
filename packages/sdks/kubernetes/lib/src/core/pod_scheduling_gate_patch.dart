@@ -9,19 +9,20 @@ class PodSchedulingGatePatch {
 
   /// Creates a new [PodSchedulingGatePatch].
   /// [name] Name of the scheduling gate. Each scheduling gate must have a unique name field.
-  PodSchedulingGatePatch({this.name});
+  PodSchedulingGatePatch({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory PodSchedulingGatePatch.fromMap(Map<String, dynamic> map) {
     return PodSchedulingGatePatch(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

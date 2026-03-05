@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPolicyKubernetesClusterDefaultRetentionRuleLifeCycle {
   /// The type of data store. The only possible value is `OperationalStore`. Changing this forces a new resource to be created.
   final pulumi.Input<String> dataStoreType;
-
   /// The retention duration up to which the backups are to be retained in the data stores. It should follow `ISO 8601` duration format. Changing this forces a new resource to be created.
   final pulumi.Input<String> duration;
 
@@ -24,12 +23,11 @@ class BackupPolicyKubernetesClusterDefaultRetentionRuleLifeCycle {
     };
   }
 
-  factory BackupPolicyKubernetesClusterDefaultRetentionRuleLifeCycle.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackupPolicyKubernetesClusterDefaultRetentionRuleLifeCycle.fromMap(Map<String, dynamic> map) {
     return BackupPolicyKubernetesClusterDefaultRetentionRuleLifeCycle(
       dataStoreType: pulumi.Input.fromValue(map['dataStoreType'] as String),
       duration: pulumi.Input.fromValue(map['duration'] as String),
     );
   }
 }
+

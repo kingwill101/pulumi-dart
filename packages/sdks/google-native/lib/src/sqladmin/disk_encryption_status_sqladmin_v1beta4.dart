@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskEncryptionStatusSqladminV1beta4 {
   /// This is always `sql#diskEncryptionStatus`.
   final pulumi.Input<String>? kind;
-
   /// KMS key version used to encrypt the Cloud SQL instance resource
   final pulumi.Input<String>? kmsKeyVersionName;
 
   /// Creates a new [DiskEncryptionStatusSqladminV1beta4].
   /// [kind] This is always `sql#diskEncryptionStatus`.
   /// [kmsKeyVersionName] KMS key version used to encrypt the Cloud SQL instance resource
-  DiskEncryptionStatusSqladminV1beta4({this.kind, this.kmsKeyVersionName});
+  DiskEncryptionStatusSqladminV1beta4({
+    this.kind,
+    this.kmsKeyVersionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,20 +24,11 @@ class DiskEncryptionStatusSqladminV1beta4 {
     };
   }
 
-  factory DiskEncryptionStatusSqladminV1beta4.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiskEncryptionStatusSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionStatusSqladminV1beta4(
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsKeyVersionName: (() {
-        final guardedValue = map['kmsKeyVersionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsKeyVersionName: (() { final guardedValue = map['kmsKeyVersionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

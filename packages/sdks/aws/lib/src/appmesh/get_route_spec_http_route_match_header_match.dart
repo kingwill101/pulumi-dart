@@ -28,39 +28,20 @@ class GetRouteSpecHttpRouteMatchHeaderMatch {
     return <String, dynamic>{
       'exact': exact,
       'prefix': prefix,
-      'ranges':
-          pulumi.Input.mapInputValue<
-            List<GetRouteSpecHttpRouteMatchHeaderMatchRange>,
-            List<Map<String, dynamic>>
-          >(
-            ranges,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRouteSpecHttpRouteMatchHeaderMatchRange,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ranges': pulumi.Input.mapInputValue<List<GetRouteSpecHttpRouteMatchHeaderMatchRange>, List<Map<String, dynamic>>>(ranges, (value) => pulumi.Input.encodeList<GetRouteSpecHttpRouteMatchHeaderMatchRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'regex': regex,
       'suffix': suffix,
     };
   }
 
-  factory GetRouteSpecHttpRouteMatchHeaderMatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRouteSpecHttpRouteMatchHeaderMatch.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttpRouteMatchHeaderMatch(
       exact: pulumi.Input.fromValue(map['exact'] as String),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
-      ranges: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetRouteSpecHttpRouteMatchHeaderMatchRange>(
-          map['ranges']!,
-          (value) => GetRouteSpecHttpRouteMatchHeaderMatchRange.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      ranges: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouteSpecHttpRouteMatchHeaderMatchRange>(map['ranges']!, (value) => GetRouteSpecHttpRouteMatchHeaderMatchRange.fromMap((value as Map).cast<String, dynamic>()))),
       regex: pulumi.Input.fromValue(map['regex'] as String),
       suffix: pulumi.Input.fromValue(map['suffix'] as String),
     );
   }
 }
+

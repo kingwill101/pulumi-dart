@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDomainTopic.
 class GetDomainTopicResult {
   /// The EventGrid Domain Topic Domain name.
   final String domainName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -40,3 +40,4 @@ class GetDomainTopicResult {
     );
   }
 }
+

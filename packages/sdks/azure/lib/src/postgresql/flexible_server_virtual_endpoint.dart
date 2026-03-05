@@ -336,15 +336,12 @@ import 'flexible_server_virtual_endpoint_state.dart';
 class FlexibleServerVirtualEndpoint extends pulumi.CustomResource {
   /// The name of the Virtual Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The Resource ID of the *Replica* Postgres Flexible Server this should be associated with
   ///
   /// &gt; **Note:** If a fail-over has occurred, you will be unable to update `replica_server_id`. You can remove the resource from state and reimport it back in with `source_server_id` and `replica_server_id` flipped and then update `replica_server_id`.
   late final pulumi.Output<String> replicaServerId;
-
   /// The Resource ID of the *Source* Postgres Flexible Server this should be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourceServerId;
-
   /// The type of Virtual Endpoint. Currently only `ReadWrite` is supported. Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
 
@@ -357,11 +354,11 @@ class FlexibleServerVirtualEndpoint extends pulumi.CustomResource {
     FlexibleServerVirtualEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:postgresql/flexibleServerVirtualEndpoint:FlexibleServerVirtualEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:postgresql/flexibleServerVirtualEndpoint:FlexibleServerVirtualEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     replicaServerId = registerOutput<String>('replicaServerId');
     sourceServerId = registerOutput<String>('sourceServerId');
@@ -386,11 +383,11 @@ class FlexibleServerVirtualEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:postgresql/flexibleServerVirtualEndpoint:FlexibleServerVirtualEndpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:postgresql/flexibleServerVirtualEndpoint:FlexibleServerVirtualEndpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     replicaServerId = registerOutput<String>('replicaServerId');
     sourceServerId = registerOutput<String>('sourceServerId');

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GalleryApplicationCustomActionParameterResponse {
   /// The default value of the parameter.  Only applies to string types
   final pulumi.Input<String>? defaultValue;
-
   /// A description to help users understand what this parameter means
   final pulumi.Input<String>? description;
-
   /// The name of the custom action.  Must be unique within the Gallery Application Version.
   final pulumi.Input<String> name;
-
   /// Indicates whether this parameter must be passed when running the custom action.
   final pulumi.Input<bool>? required;
-
   /// Specifies the type of the custom action parameter. Possible values are: String, ConfigurationDataBlob or LogOutputBlob
   final pulumi.Input<String>? type;
 
@@ -43,31 +39,14 @@ class GalleryApplicationCustomActionParameterResponse {
     };
   }
 
-  factory GalleryApplicationCustomActionParameterResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GalleryApplicationCustomActionParameterResponse.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationCustomActionParameterResponse(
-      defaultValue: (() {
-        final guardedValue = map['defaultValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      defaultValue: (() { final guardedValue = map['defaultValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      required: (() {
-        final guardedValue = map['required'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      required: (() { final guardedValue = map['required']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -33,11 +33,8 @@ class GetPipelineArgs {
     return GetPipelineArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       pipelineId: pulumi.Input.fromValue(map['pipelineId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

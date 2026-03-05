@@ -5,76 +5,52 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayBlockVolumesVolume {
   /// The IP ADDRESS.
   final pulumi.Input<String> address;
-
   /// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
   final pulumi.Input<String> cacheMode;
-
   /// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
   final pulumi.Input<bool> chapEnabled;
-
   /// The Inbound CHAP user.**NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
   final pulumi.Input<String> chapInUser;
-
   /// The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
   final pulumi.Input<int> chunkSize;
-
   /// The cache disk ID.
   final pulumi.Input<String> diskId;
-
   /// The cache disk type.
   final pulumi.Input<String> diskType;
-
   /// Whether to enable Volume.
   final pulumi.Input<bool> enabled;
-
   /// The Block volume name.  The name must be 1 to 32 characters in length, and can contain lowercase letters, numbers.
   final pulumi.Input<String> gatewayBlockVolumeName;
-
   /// The Gateway ID.
   final pulumi.Input<String> gatewayId;
-
   /// The ID of the Gateway Block Volume. The value formats as `&lt;gateway_id&gt;:&lt;index_id&gt;`.
   final pulumi.Input<String> id;
-
   /// The ID of the index.
   final pulumi.Input<String> indexId;
-
   /// CThe Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
   final pulumi.Input<String> localPath;
-
   /// The Lun identifier.
   final pulumi.Input<int> lunId;
-
   /// The name of the OSS Bucket.
   final pulumi.Input<String> ossBucketName;
-
   /// Whether to enable SSL access your OSS Buckets. Default value: `true`.
   final pulumi.Input<bool> ossBucketSsl;
-
   /// The endpoint of the OSS Bucket.
   final pulumi.Input<String> ossEndpoint;
-
   /// The Port.
   final pulumi.Input<int> port;
-
   /// The Protocol.
   final pulumi.Input<String> protocol;
-
   /// The Volume size.
   final pulumi.Input<int> size;
-
   /// The Buffer status.
   final pulumi.Input<String> state;
-
   /// The status of volume.
   final pulumi.Input<int> status;
-
   /// The target.
   final pulumi.Input<String> target;
-
   /// The total amount of downloaded data. Unit: `B`.
   final pulumi.Input<int> totalDownload;
-
   /// The total amount of uploaded data. Unit: `B`.
   final pulumi.Input<int> totalUpload;
   final pulumi.Input<int> volumeState;
@@ -176,9 +152,7 @@ class GetGatewayBlockVolumesVolume {
       diskId: pulumi.Input.fromValue(map['diskId'] as String),
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      gatewayBlockVolumeName: pulumi.Input.fromValue(
-        map['gatewayBlockVolumeName'] as String,
-      ),
+      gatewayBlockVolumeName: pulumi.Input.fromValue(map['gatewayBlockVolumeName'] as String),
       gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       indexId: pulumi.Input.fromValue(map['indexId'] as String),
@@ -199,3 +173,4 @@ class GetGatewayBlockVolumesVolume {
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMulticastDomainMember {
   /// The IP address assigned to the transit gateway multicast group.
   final pulumi.Input<String> groupIpAddress;
-
   /// The group members' network interface ID.
   final pulumi.Input<String> networkInterfaceId;
 
@@ -27,9 +26,8 @@ class GetMulticastDomainMember {
   factory GetMulticastDomainMember.fromMap(Map<String, dynamic> map) {
     return GetMulticastDomainMember(
       groupIpAddress: pulumi.Input.fromValue(map['groupIpAddress'] as String),
-      networkInterfaceId: pulumi.Input.fromValue(
-        map['networkInterfaceId'] as String,
-      ),
+      networkInterfaceId: pulumi.Input.fromValue(map['networkInterfaceId'] as String),
     );
   }
 }
+

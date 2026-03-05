@@ -1,30 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getApplicationGroup.
 class GetApplicationGroupResult {
   /// The description of the Application Group.
   final String description;
-
   /// The friendly name of the Application Group.
   final String friendlyName;
-
   /// The Virtual Desktop Host Pool ID the Application Group is associated to.
   final String hostPoolId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region where the Application Group exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the Application Group.
   final Map<String, String> tags;
-
   /// The type of Application Group (`RemoteApp` or `Desktop`).
   final String type;
-
   /// The Virtual Desktop Workspace ID the Application Group is associated to.
   final String workspaceId;
 
@@ -82,3 +76,4 @@ class GetApplicationGroupResult {
     );
   }
 }
+

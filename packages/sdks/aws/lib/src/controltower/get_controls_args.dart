@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetControlsArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ARN of the organizational unit.
   final pulumi.Input<String> targetIdentifier;
 
   /// Creates a new [GetControlsArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetIdentifier] The ARN of the organizational unit.
-  GetControlsArgs({this.region, required this.targetIdentifier});
+  GetControlsArgs({
+    this.region,
+    required this.targetIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,14 +29,9 @@ class GetControlsArgs {
 
   factory GetControlsArgs.fromMap(Map<String, dynamic> map) {
     return GetControlsArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetIdentifier: pulumi.Input.fromValue(
-        map['targetIdentifier'] as String,
-      ),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetIdentifier: pulumi.Input.fromValue(map['targetIdentifier'] as String),
     );
   }
 }
+

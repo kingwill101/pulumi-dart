@@ -126,13 +126,10 @@ import 'pipeline_cloud_rule_state.dart';
 class PipelineCloudRule extends pulumi.CustomResource {
   /// The account ID where the Pipeline Cloud Rule will be created.
   late final pulumi.Output<String> accountId;
-
   /// Additional information about the rule.
   late final pulumi.Output<String?> description;
-
   /// The name of the rule. This must be unique within an account.
   late final pulumi.Output<String> name;
-
   /// The NRQL query that defines the data to be processed by this Pipeline Cloud Rule.
   late final pulumi.Output<String> nrql;
 
@@ -145,11 +142,11 @@ class PipelineCloudRule extends pulumi.CustomResource {
     PipelineCloudRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/pipelineCloudRule:PipelineCloudRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/pipelineCloudRule:PipelineCloudRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -174,11 +171,11 @@ class PipelineCloudRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/pipelineCloudRule:PipelineCloudRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/pipelineCloudRule:PipelineCloudRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

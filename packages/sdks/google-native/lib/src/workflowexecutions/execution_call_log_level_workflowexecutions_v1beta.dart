@@ -13,8 +13,7 @@ enum ExecutionCallLogLevelWorkflowexecutionsV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ExecutionCallLogLevelWorkflowexecutionsV1beta value: $value',
-    );
+    throw ArgumentError('Unknown ExecutionCallLogLevelWorkflowexecutionsV1beta value: $value');
   }
 }
+

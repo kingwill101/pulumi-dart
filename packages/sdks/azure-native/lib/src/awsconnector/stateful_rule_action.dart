@@ -17,3 +17,4 @@ enum StatefulRuleAction {
     throw ArgumentError('Unknown StatefulRuleAction value: $value');
   }
 }
+

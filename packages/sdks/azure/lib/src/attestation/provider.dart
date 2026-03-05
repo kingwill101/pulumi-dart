@@ -187,38 +187,28 @@ import 'provider_state.dart';
 class Provider extends pulumi.CustomResource {
   /// The URI of the Attestation Service.
   late final pulumi.Output<String> attestationUri;
-
   /// The Azure Region where the Attestation Provider should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Attestation Provider. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
   late final pulumi.Output<String?> openEnclavePolicyBase64;
-
   /// A valid X.509 certificate (Section 4 of [RFC4648](https://tools.ietf.org/html/rfc4648)). Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If the `policy_signing_certificate_data` argument contains more than one valid X.509 certificate only the first certificate will be used.
   late final pulumi.Output<String?> policySigningCertificateData;
-
   /// The name of the Resource Group where the attestation provider should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
   ///
   /// &gt; **Note:** [More information on the JWT Policies can be found in this article on `learn.microsoft.com`](https://learn.microsoft.com/azure/attestation/author-sign-policy).
   late final pulumi.Output<String?> sevSnpPolicyBase64;
-
   /// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
   late final pulumi.Output<String?> sgxEnclavePolicyBase64;
-
   /// A mapping of tags which should be assigned to the Attestation Provider.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
   late final pulumi.Output<String?> tpmPolicyBase64;
-
   /// Trust model used for the Attestation Service.
   late final pulumi.Output<String> trustModel;
 
@@ -231,20 +221,16 @@ class Provider extends pulumi.CustomResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:attestation/provider:Provider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:attestation/provider:Provider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attestationUri = registerOutput<String>('attestationUri');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    openEnclavePolicyBase64 = registerOutput<String?>(
-      'openEnclavePolicyBase64',
-    );
-    policySigningCertificateData = registerOutput<String?>(
-      'policySigningCertificateData',
-    );
+    openEnclavePolicyBase64 = registerOutput<String?>('openEnclavePolicyBase64');
+    policySigningCertificateData = registerOutput<String?>('policySigningCertificateData');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sevSnpPolicyBase64 = registerOutput<String?>('sevSnpPolicyBase64');
     sgxEnclavePolicyBase64 = registerOutput<String?>('sgxEnclavePolicyBase64');
@@ -271,20 +257,16 @@ class Provider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:attestation/provider:Provider',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:attestation/provider:Provider',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attestationUri = registerOutput<String>('attestationUri');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    openEnclavePolicyBase64 = registerOutput<String?>(
-      'openEnclavePolicyBase64',
-    );
-    policySigningCertificateData = registerOutput<String?>(
-      'policySigningCertificateData',
-    );
+    openEnclavePolicyBase64 = registerOutput<String?>('openEnclavePolicyBase64');
+    policySigningCertificateData = registerOutput<String?>('policySigningCertificateData');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sevSnpPolicyBase64 = registerOutput<String?>('sevSnpPolicyBase64');
     sgxEnclavePolicyBase64 = registerOutput<String?>('sgxEnclavePolicyBase64');

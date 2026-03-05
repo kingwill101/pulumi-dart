@@ -51,10 +51,7 @@ class GetEventRulesResult {
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
-      'rules': pulumi.Input.encodeList<GetEventRulesRule, Map<String, dynamic>>(
-        rules,
-        (value) => value.toMap(),
-      ),
+      'rules': pulumi.Input.encodeList<GetEventRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
       'status': ?status,
     };
   }
@@ -63,42 +60,15 @@ class GetEventRulesResult {
     return GetEventRulesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      namePrefix: (() {
-        final guardedValue = map['namePrefix'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      rules: pulumi.Input.decodeList<GetEventRulesRule>(
-        map['rules']!,
-        (value) =>
-            GetEventRulesRule.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      rules: pulumi.Input.decodeList<GetEventRulesRule>(map['rules']!, (value) => GetEventRulesRule.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

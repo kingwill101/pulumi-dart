@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PoolDataDisk {
   /// Values are: "none" - The caching mode for the disk is not enabled. "readOnly" - The caching mode for the disk is read only. "readWrite" - The caching mode for the disk is read and write. For information about the caching options see: &lt;https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/&gt;. Possible values are `None`, `ReadOnly` and `ReadWrite`. Defaults to `ReadOnly`.
   final pulumi.Input<String>? caching;
-
   /// The initial disk size in GB when creating new data disk.
   final pulumi.Input<int> diskSizeGb;
-
   /// The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
   final pulumi.Input<int> lun;
-
   /// The storage account type to be used for the data disk. Values are: Possible values are `Standard_LRS` - The data disk should use standard locally redundant storage. `Premium_LRS` - The data disk should use premium locally redundant storage. Defaults to `Standard_LRS`.
   final pulumi.Input<String>? storageAccountType;
 
@@ -38,18 +35,11 @@ class PoolDataDisk {
 
   factory PoolDataDisk.fromMap(Map<String, dynamic> map) {
     return PoolDataDisk(
-      caching: (() {
-        final guardedValue = map['caching'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
       lun: pulumi.Input.fromValue(map['lun'] as int),
-      storageAccountType: (() {
-        final guardedValue = map['storageAccountType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

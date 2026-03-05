@@ -10,27 +10,20 @@ class TestTiming {
 
   /// Creates a new [TestTiming].
   /// [testProcessDuration] How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
-  TestTiming({this.testProcessDuration});
+  TestTiming({
+    this.testProcessDuration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'testProcessDuration':
-          ?pulumi.Input.mapOptionalInputValue<Duration, Map<String, dynamic>>(
-            testProcessDuration,
-            (value) => value.toMap(),
-          ),
+      'testProcessDuration': ?pulumi.Input.mapOptionalInputValue<Duration, Map<String, dynamic>>(testProcessDuration, (value) => value.toMap()),
     };
   }
 
   factory TestTiming.fromMap(Map<String, dynamic> map) {
     return TestTiming(
-      testProcessDuration: (() {
-        final guardedValue = map['testProcessDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Duration.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      testProcessDuration: (() { final guardedValue = map['testProcessDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Duration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

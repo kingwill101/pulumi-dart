@@ -7,42 +7,29 @@ import 'kms_wrapped_crypto_key.dart';
 class DateShiftConfig {
   /// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
   final pulumi.Input<String>? cryptoKey;
-
   /// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
   final pulumi.Input<KmsWrappedCryptoKey>? kmsWrapped;
 
   /// Creates a new [DateShiftConfig].
   /// [cryptoKey] An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
   /// [kmsWrapped] KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
-  DateShiftConfig({this.cryptoKey, this.kmsWrapped});
+  DateShiftConfig({
+    this.cryptoKey,
+    this.kmsWrapped,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cryptoKey': ?cryptoKey,
-      'kmsWrapped':
-          ?pulumi.Input.mapOptionalInputValue<
-            KmsWrappedCryptoKey,
-            Map<String, dynamic>
-          >(kmsWrapped, (value) => value.toMap()),
+      'kmsWrapped': ?pulumi.Input.mapOptionalInputValue<KmsWrappedCryptoKey, Map<String, dynamic>>(kmsWrapped, (value) => value.toMap()),
     };
   }
 
   factory DateShiftConfig.fromMap(Map<String, dynamic> map) {
     return DateShiftConfig(
-      cryptoKey: (() {
-        final guardedValue = map['cryptoKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsWrapped: (() {
-        final guardedValue = map['kmsWrapped'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KmsWrappedCryptoKey.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      cryptoKey: (() { final guardedValue = map['cryptoKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsWrapped: (() { final guardedValue = map['kmsWrapped']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KmsWrappedCryptoKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

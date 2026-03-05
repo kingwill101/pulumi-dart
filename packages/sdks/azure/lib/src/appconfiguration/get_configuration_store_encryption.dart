@@ -23,12 +23,9 @@ class GetConfigurationStoreEncryption {
 
   factory GetConfigurationStoreEncryption.fromMap(Map<String, dynamic> map) {
     return GetConfigurationStoreEncryption(
-      identityClientId: pulumi.Input.fromValue(
-        map['identityClientId'] as String,
-      ),
-      keyVaultKeyIdentifier: pulumi.Input.fromValue(
-        map['keyVaultKeyIdentifier'] as String,
-      ),
+      identityClientId: pulumi.Input.fromValue(map['identityClientId'] as String),
+      keyVaultKeyIdentifier: pulumi.Input.fromValue(map['keyVaultKeyIdentifier'] as String),
     );
   }
 }
+

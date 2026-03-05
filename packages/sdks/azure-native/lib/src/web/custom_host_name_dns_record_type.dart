@@ -15,3 +15,4 @@ enum CustomHostNameDnsRecordType {
     throw ArgumentError('Unknown CustomHostNameDnsRecordType value: $value');
   }
 }
+

@@ -38,11 +38,8 @@ class GetCryptoKeyArgs {
       cryptoKeyId: pulumi.Input.fromValue(map['cryptoKeyId'] as String),
       keyRingId: pulumi.Input.fromValue(map['keyRingId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

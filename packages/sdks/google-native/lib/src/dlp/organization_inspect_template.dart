@@ -7,22 +7,16 @@ import 'organization_inspect_template_args.dart';
 class OrganizationInspectTemplate extends pulumi.CustomResource {
   /// The creation timestamp of an inspectTemplate.
   late final pulumi.Output<String> createTime;
-
   /// Short description (max 256 chars).
   late final pulumi.Output<String> description;
-
   /// Display name (max 256 chars).
   late final pulumi.Output<String> displayName;
-
   /// The core content of the template. Configuration of the scanning process.
-  late final pulumi.Output<GooglePrivacyDlpV2InspectConfigResponse>
-  inspectConfig;
+  late final pulumi.Output<GooglePrivacyDlpV2InspectConfigResponse> inspectConfig;
   late final pulumi.Output<String> location;
-
   /// The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
-
   /// The last update timestamp of an inspectTemplate.
   late final pulumi.Output<String> updateTime;
 
@@ -35,24 +29,15 @@ class OrganizationInspectTemplate extends pulumi.CustomResource {
     OrganizationInspectTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:dlp/v2:OrganizationInspectTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:dlp/v2:OrganizationInspectTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    inspectConfig = registerOutput<GooglePrivacyDlpV2InspectConfigResponse>(
-      'inspectConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GooglePrivacyDlpV2InspectConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    inspectConfig = registerOutput<GooglePrivacyDlpV2InspectConfigResponse>('inspectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GooglePrivacyDlpV2InspectConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');

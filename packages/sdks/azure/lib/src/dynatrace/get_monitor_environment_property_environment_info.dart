@@ -7,17 +7,20 @@ class GetMonitorEnvironmentPropertyEnvironmentInfo {
 
   /// Creates a new [GetMonitorEnvironmentPropertyEnvironmentInfo].
   /// [environmentId] Required.
-  GetMonitorEnvironmentPropertyEnvironmentInfo({required this.environmentId});
+  GetMonitorEnvironmentPropertyEnvironmentInfo({
+    required this.environmentId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'environmentId': environmentId};
+    return <String, dynamic>{
+      'environmentId': environmentId,
+    };
   }
 
-  factory GetMonitorEnvironmentPropertyEnvironmentInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMonitorEnvironmentPropertyEnvironmentInfo.fromMap(Map<String, dynamic> map) {
     return GetMonitorEnvironmentPropertyEnvironmentInfo(
       environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
     );
   }
 }
+

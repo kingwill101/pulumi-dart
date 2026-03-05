@@ -12,10 +12,14 @@ class GetTagValuesArgs {
 
   /// Creates a new [GetTagValuesArgs].
   /// [parent] The resource name of the parent tagKey in format `tagKey/{name}`.
-  GetTagValuesArgs({required this.parent});
+  GetTagValuesArgs({
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'parent': parent};
+    return <String, dynamic>{
+      'parent': parent,
+    };
   }
 
   factory GetTagValuesArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetTagValuesArgs {
     );
   }
 }
+

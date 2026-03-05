@@ -7,10 +7,8 @@ import 'hyperv_license.dart';
 class HypervVirtualizationManagementSettings {
   /// Licence and support list.
   final pulumi.Input<List<HypervLicense>> licenseAndSupportList;
-
   /// Number of physical cores per licence.
   final pulumi.Input<int> numberOfPhysicalCoresPerLicense;
-
   /// Software Assurance Cost.
   final pulumi.Input<double> softwareAssuranceCost;
 
@@ -26,40 +24,18 @@ class HypervVirtualizationManagementSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'licenseAndSupportList':
-          pulumi.Input.mapInputValue<
-            List<HypervLicense>,
-            List<Map<String, dynamic>>
-          >(
-            licenseAndSupportList,
-            (value) =>
-                pulumi.Input.encodeList<HypervLicense, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'licenseAndSupportList': pulumi.Input.mapInputValue<List<HypervLicense>, List<Map<String, dynamic>>>(licenseAndSupportList, (value) => pulumi.Input.encodeList<HypervLicense, Map<String, dynamic>>(value, (value) => value.toMap())),
       'numberOfPhysicalCoresPerLicense': numberOfPhysicalCoresPerLicense,
       'softwareAssuranceCost': softwareAssuranceCost,
     };
   }
 
-  factory HypervVirtualizationManagementSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HypervVirtualizationManagementSettings.fromMap(Map<String, dynamic> map) {
     return HypervVirtualizationManagementSettings(
-      licenseAndSupportList: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<HypervLicense>(
-          map['licenseAndSupportList']!,
-          (value) =>
-              HypervLicense.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      numberOfPhysicalCoresPerLicense: pulumi.Input.fromValue(
-        map['numberOfPhysicalCoresPerLicense'] as int,
-      ),
-      softwareAssuranceCost: pulumi.Input.fromValue(
-        map['softwareAssuranceCost'] as double,
-      ),
+      licenseAndSupportList: pulumi.Input.fromValue(pulumi.Input.decodeList<HypervLicense>(map['licenseAndSupportList']!, (value) => HypervLicense.fromMap((value as Map).cast<String, dynamic>()))),
+      numberOfPhysicalCoresPerLicense: pulumi.Input.fromValue(map['numberOfPhysicalCoresPerLicense'] as int),
+      softwareAssuranceCost: pulumi.Input.fromValue(map['softwareAssuranceCost'] as double),
     );
   }
 }
+

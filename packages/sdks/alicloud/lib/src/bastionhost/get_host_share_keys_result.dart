@@ -6,7 +6,6 @@ import 'get_host_share_keys_key.dart';
 /// Result data returned by getHostShareKeys.
 class GetHostShareKeysResult {
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -42,11 +41,7 @@ class GetHostShareKeysResult {
       'id': id,
       'ids': ids,
       'instanceId': instanceId,
-      'keys':
-          pulumi.Input.encodeList<GetHostShareKeysKey, Map<String, dynamic>>(
-            keys,
-            (value) => value.toMap(),
-          ),
+      'keys': pulumi.Input.encodeList<GetHostShareKeysKey, Map<String, dynamic>>(keys, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -55,30 +50,15 @@ class GetHostShareKeysResult {
 
   factory GetHostShareKeysResult.fromMap(Map<String, dynamic> map) {
     return GetHostShareKeysResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      keys: pulumi.Input.decodeList<GetHostShareKeysKey>(
-        map['keys']!,
-        (value) =>
-            GetHostShareKeysKey.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      keys: pulumi.Input.decodeList<GetHostShareKeysKey>(map['keys']!, (value) => GetHostShareKeysKey.fromMap((value as Map).cast<String, dynamic>())),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

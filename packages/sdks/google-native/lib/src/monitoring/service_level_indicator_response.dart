@@ -9,10 +9,8 @@ import 'windows_based_sli_response.dart';
 class ServiceLevelIndicatorResponse {
   /// Basic SLI on a well-known service type.
   final pulumi.Input<BasicSliResponse> basicSli;
-
   /// Request-based SLIs
   final pulumi.Input<RequestBasedSliResponse> requestBased;
-
   /// Windows-based SLIs
   final pulumi.Input<WindowsBasedSliResponse> windowsBased;
 
@@ -28,41 +26,18 @@ class ServiceLevelIndicatorResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicSli':
-          pulumi.Input.mapInputValue<BasicSliResponse, Map<String, dynamic>>(
-            basicSli,
-            (value) => value.toMap(),
-          ),
-      'requestBased':
-          pulumi.Input.mapInputValue<
-            RequestBasedSliResponse,
-            Map<String, dynamic>
-          >(requestBased, (value) => value.toMap()),
-      'windowsBased':
-          pulumi.Input.mapInputValue<
-            WindowsBasedSliResponse,
-            Map<String, dynamic>
-          >(windowsBased, (value) => value.toMap()),
+      'basicSli': pulumi.Input.mapInputValue<BasicSliResponse, Map<String, dynamic>>(basicSli, (value) => value.toMap()),
+      'requestBased': pulumi.Input.mapInputValue<RequestBasedSliResponse, Map<String, dynamic>>(requestBased, (value) => value.toMap()),
+      'windowsBased': pulumi.Input.mapInputValue<WindowsBasedSliResponse, Map<String, dynamic>>(windowsBased, (value) => value.toMap()),
     };
   }
 
   factory ServiceLevelIndicatorResponse.fromMap(Map<String, dynamic> map) {
     return ServiceLevelIndicatorResponse(
-      basicSli: pulumi.Input.fromValue(
-        BasicSliResponse.fromMap(
-          (map['basicSli']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      requestBased: pulumi.Input.fromValue(
-        RequestBasedSliResponse.fromMap(
-          (map['requestBased']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      windowsBased: pulumi.Input.fromValue(
-        WindowsBasedSliResponse.fromMap(
-          (map['windowsBased']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      basicSli: pulumi.Input.fromValue(BasicSliResponse.fromMap((map['basicSli']! as Map).cast<String, dynamic>())),
+      requestBased: pulumi.Input.fromValue(RequestBasedSliResponse.fromMap((map['requestBased']! as Map).cast<String, dynamic>())),
+      windowsBased: pulumi.Input.fromValue(WindowsBasedSliResponse.fromMap((map['windowsBased']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

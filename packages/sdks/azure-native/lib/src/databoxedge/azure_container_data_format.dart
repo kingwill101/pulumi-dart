@@ -16,3 +16,4 @@ enum AzureContainerDataFormat {
     throw ArgumentError('Unknown AzureContainerDataFormat value: $value');
   }
 }
+

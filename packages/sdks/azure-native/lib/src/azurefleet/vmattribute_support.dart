@@ -16,3 +16,4 @@ enum VMAttributeSupport {
     throw ArgumentError('Unknown VMAttributeSupport value: $value');
   }
 }
+

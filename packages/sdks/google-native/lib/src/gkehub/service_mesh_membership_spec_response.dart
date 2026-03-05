@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceMeshMembershipSpecResponse {
   /// Deprecated: use `management` instead Enables automatic control plane management.
   final pulumi.Input<String> controlPlane;
-
   /// Enables automatic Service Mesh management.
   final pulumi.Input<String> management;
 
@@ -32,3 +31,4 @@ class ServiceMeshMembershipSpecResponse {
     );
   }
 }
+

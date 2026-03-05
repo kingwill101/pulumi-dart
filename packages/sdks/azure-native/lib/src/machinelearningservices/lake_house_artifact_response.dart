@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LakeHouseArtifactResponse {
   /// [Required] OneLake artifact name
   final pulumi.Input<String> artifactName;
-
   /// Enum to determine OneLake artifact type.
   /// Expected value is 'LakeHouse'.
   final pulumi.Input<String> artifactType;
@@ -32,3 +31,4 @@ class LakeHouseArtifactResponse {
     );
   }
 }
+

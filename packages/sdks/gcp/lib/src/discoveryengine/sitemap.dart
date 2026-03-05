@@ -203,27 +203,21 @@ import 'sitemap_state.dart';
 class Sitemap extends pulumi.CustomResource {
   /// Timestamp when the sitemap was created.
   late final pulumi.Output<String> createTime;
-
   /// The unique id of the data store.
   late final pulumi.Output<String> dataStoreId;
-
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   late final pulumi.Output<String> location;
-
   /// The unique full resource name of the sitemap. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/siteSearchEngine/sitemaps/{sitemap_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The unique id of the sitemap.
   late final pulumi.Output<String> sitemapId;
-
   /// Public URI for the sitemap, e.g. "www.example.com/sitemap.xml".
   late final pulumi.Output<String?> uri;
 
@@ -236,11 +230,11 @@ class Sitemap extends pulumi.CustomResource {
     SitemapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:discoveryengine/sitemap:Sitemap',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:discoveryengine/sitemap:Sitemap',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dataStoreId = registerOutput<String>('dataStoreId');
     location = registerOutput<String>('location');
@@ -268,11 +262,11 @@ class Sitemap extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:discoveryengine/sitemap:Sitemap',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:discoveryengine/sitemap:Sitemap',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dataStoreId = registerOutput<String>('dataStoreId');
     location = registerOutput<String>('location');

@@ -7,16 +7,12 @@ import 'rule_forward_ip.dart';
 class RuleState {
   /// The ID of the Endpoint.
   final pulumi.Input<String>? endpointId;
-
   /// Forwarding target. See `forward_ips` below.
   final pulumi.Input<List<RuleForwardIp>>? forwardIps;
-
   /// The name of the resource.
   final pulumi.Input<String>? ruleName;
-
   /// The type of the rule. Valid values: `OUTBOUND`.
   final pulumi.Input<String>? type;
-
   /// The name of the forwarding zone.
   final pulumi.Input<String>? zoneName;
 
@@ -37,18 +33,7 @@ class RuleState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endpointId': ?endpointId,
-      'forwardIps':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<RuleForwardIp>,
-            List<Map<String, dynamic>>
-          >(
-            forwardIps,
-            (value) =>
-                pulumi.Input.encodeList<RuleForwardIp, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'forwardIps': ?pulumi.Input.mapOptionalInputValue<List<RuleForwardIp>, List<Map<String, dynamic>>>(forwardIps, (value) => pulumi.Input.encodeList<RuleForwardIp, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ruleName': ?ruleName,
       'type': ?type,
       'zoneName': ?zoneName,
@@ -57,37 +42,12 @@ class RuleState {
 
   factory RuleState.fromMap(Map<String, dynamic> map) {
     return RuleState(
-      endpointId: (() {
-        final guardedValue = map['endpointId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      forwardIps: (() {
-        final guardedValue = map['forwardIps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<RuleForwardIp>(
-            guardedValue,
-            (value) =>
-                RuleForwardIp.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      ruleName: (() {
-        final guardedValue = map['ruleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zoneName: (() {
-        final guardedValue = map['zoneName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpointId: (() { final guardedValue = map['endpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      forwardIps: (() { final guardedValue = map['forwardIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RuleForwardIp>(guardedValue, (value) => RuleForwardIp.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneName: (() { final guardedValue = map['zoneName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

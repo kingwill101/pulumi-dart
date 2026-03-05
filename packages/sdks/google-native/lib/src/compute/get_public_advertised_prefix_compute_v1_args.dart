@@ -25,18 +25,11 @@ class GetPublicAdvertisedPrefixComputeV1Args {
     };
   }
 
-  factory GetPublicAdvertisedPrefixComputeV1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPublicAdvertisedPrefixComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetPublicAdvertisedPrefixComputeV1Args(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicAdvertisedPrefix: pulumi.Input.fromValue(
-        map['publicAdvertisedPrefix'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicAdvertisedPrefix: pulumi.Input.fromValue(map['publicAdvertisedPrefix'] as String),
     );
   }
 }
+

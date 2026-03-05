@@ -9,28 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudConnectorArgs {
   /// Connector billing model
   final pulumi.Input<String>? billingModel;
-
   /// Connector Name.
   final pulumi.Input<String>? connectorName;
-
   /// Credentials authentication key (eg AWS ARN)
   final pulumi.Input<String>? credentialsKey;
-
   /// Credentials secret (eg AWS ExternalId)
   final pulumi.Input<String>? credentialsSecret;
-
   /// Default ManagementGroupId
   final pulumi.Input<String>? defaultManagementGroupId;
-
   /// Connector DisplayName
   final pulumi.Input<String>? displayName;
-
   /// Connector kind (eg aws)
   final pulumi.Input<String>? kind;
-
   /// Identifying source report. (For AWS this is a CUR report name, defined with Daily and with Resources)
   final pulumi.Input<String>? reportId;
-
   /// Billing SubscriptionId
   final pulumi.Input<String>? subscriptionId;
 
@@ -72,51 +64,16 @@ class CloudConnectorArgs {
 
   factory CloudConnectorArgs.fromMap(Map<String, dynamic> map) {
     return CloudConnectorArgs(
-      billingModel: (() {
-        final guardedValue = map['billingModel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectorName: (() {
-        final guardedValue = map['connectorName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      credentialsKey: (() {
-        final guardedValue = map['credentialsKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      credentialsSecret: (() {
-        final guardedValue = map['credentialsSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      defaultManagementGroupId: (() {
-        final guardedValue = map['defaultManagementGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reportId: (() {
-        final guardedValue = map['reportId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      billingModel: (() { final guardedValue = map['billingModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectorName: (() { final guardedValue = map['connectorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      credentialsKey: (() { final guardedValue = map['credentialsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      credentialsSecret: (() { final guardedValue = map['credentialsSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultManagementGroupId: (() { final guardedValue = map['defaultManagementGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reportId: (() { final guardedValue = map['reportId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

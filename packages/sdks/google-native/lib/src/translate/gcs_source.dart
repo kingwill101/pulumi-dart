@@ -9,10 +9,14 @@ class GcsSource {
 
   /// Creates a new [GcsSource].
   /// [inputUri] Source data URI. For example, `gs://my_bucket/my_object`.
-  GcsSource({required this.inputUri});
+  GcsSource({
+    required this.inputUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'inputUri': inputUri};
+    return <String, dynamic>{
+      'inputUri': inputUri,
+    };
   }
 
   factory GcsSource.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class GcsSource {
     );
   }
 }
+

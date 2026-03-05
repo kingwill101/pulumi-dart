@@ -16,3 +16,4 @@ enum ErrorManagementTypes {
     throw ArgumentError('Unknown ErrorManagementTypes value: $value');
   }
 }
+

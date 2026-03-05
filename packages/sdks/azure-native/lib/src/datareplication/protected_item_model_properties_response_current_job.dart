@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProtectedItemModelPropertiesResponseCurrentJob {
   /// Gets or sets the workflow friendly display name.
   final pulumi.Input<String> displayName;
-
   /// Gets or sets end time of the workflow.
   final pulumi.Input<String> endTime;
-
   /// Gets or sets workflow Id.
   final pulumi.Input<String> id;
-
   /// Gets or sets workflow name.
   final pulumi.Input<String> name;
-
   /// Gets or sets protection scenario name.
   final pulumi.Input<String> scenarioName;
-
   /// Gets or sets start time of the workflow.
   final pulumi.Input<String> startTime;
-
   /// Gets or sets workflow state.
   final pulumi.Input<String> state;
 
@@ -54,9 +48,7 @@ class ProtectedItemModelPropertiesResponseCurrentJob {
     };
   }
 
-  factory ProtectedItemModelPropertiesResponseCurrentJob.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProtectedItemModelPropertiesResponseCurrentJob.fromMap(Map<String, dynamic> map) {
     return ProtectedItemModelPropertiesResponseCurrentJob(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
@@ -68,3 +60,4 @@ class ProtectedItemModelPropertiesResponseCurrentJob {
     );
   }
 }
+

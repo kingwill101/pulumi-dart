@@ -151,22 +151,16 @@ import 'zone_state.dart';
 class Zone extends pulumi.CustomResource {
   /// Maximum number of Records in the zone.
   late final pulumi.Output<int> maxNumberOfRecordSets;
-
   /// The name of the DNS Zone. Must be a valid domain name. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A list of values that make up the NS record for the zone.
   late final pulumi.Output<List<String>> nameServers;
-
   /// The number of records already in the zone.
   late final pulumi.Output<int> numberOfRecordSets;
-
   /// Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `soa_record` block as defined below.
   late final pulumi.Output<ZoneSoaRecord> soaRecord;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -174,33 +168,31 @@ class Zone extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Zone]. {@macro pulumi_dns_zone_zone_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Zone(String name, {ZoneArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:dns/zone:Zone',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Zone(
+    String name, {
+    ZoneArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:dns/zone:Zone',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     maxNumberOfRecordSets = registerOutput<int>('maxNumberOfRecordSets');
     this.name = registerOutput<String>('name');
     nameServers = registerOutput<List<String>>('nameServers');
     numberOfRecordSets = registerOutput<int>('numberOfRecordSets');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    soaRecord = registerOutput<ZoneSoaRecord>(
-      'soaRecord',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ZoneSoaRecord.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    soaRecord = registerOutput<ZoneSoaRecord>('soaRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneSoaRecord.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Zone] resource's state with the given [name] and [id].
-  static Zone get(String name, pulumi.Input<String> id, {ZoneState? state}) {
+  static Zone get(
+    String name,
+    pulumi.Input<String> id, {
+    ZoneState? state,
+  }) {
     return Zone._get(
       name,
       state: state?.toMap(),
@@ -213,26 +205,17 @@ class Zone extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dns/zone:Zone',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:dns/zone:Zone',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     maxNumberOfRecordSets = registerOutput<int>('maxNumberOfRecordSets');
     this.name = registerOutput<String>('name');
     nameServers = registerOutput<List<String>>('nameServers');
     numberOfRecordSets = registerOutput<int>('numberOfRecordSets');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    soaRecord = registerOutput<ZoneSoaRecord>(
-      'soaRecord',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ZoneSoaRecord.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    soaRecord = registerOutput<ZoneSoaRecord>('soaRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneSoaRecord.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

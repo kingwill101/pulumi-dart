@@ -140,27 +140,22 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   late final pulumi.Output<String> category;
   late final pulumi.Output<String> createTime;
-
   /// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
   late final pulumi.Output<String?> description;
-
   /// The source disk ID.
   late final pulumi.Output<String> diskId;
   late final pulumi.Output<bool?> force;
   late final pulumi.Output<bool?> instantAccess;
   late final pulumi.Output<int?> instantAccessRetentionDays;
-
   /// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
   /// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> regionId;
-
   /// The ID of the resource group.
   late final pulumi.Output<String?> resourceGroupId;
   late final pulumi.Output<int?> retentionDays;
   late final pulumi.Output<String> snapshotName;
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -173,20 +168,18 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/snapshot:Snapshot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/snapshot:Snapshot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     category = registerOutput<String>('category');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     diskId = registerOutput<String>('diskId');
     force = registerOutput<bool?>('force');
     instantAccess = registerOutput<bool?>('instantAccess');
-    instantAccessRetentionDays = registerOutput<int?>(
-      'instantAccessRetentionDays',
-    );
+    instantAccessRetentionDays = registerOutput<int?>('instantAccessRetentionDays');
     this.name = registerOutput<String>('name');
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
@@ -214,20 +207,18 @@ class Snapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/snapshot:Snapshot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/snapshot:Snapshot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     category = registerOutput<String>('category');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     diskId = registerOutput<String>('diskId');
     force = registerOutput<bool?>('force');
     instantAccess = registerOutput<bool?>('instantAccess');
-    instantAccessRetentionDays = registerOutput<int?>(
-      'instantAccessRetentionDays',
-    );
+    instantAccessRetentionDays = registerOutput<int?>('instantAccessRetentionDays');
     this.name = registerOutput<String>('name');
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String?>('resourceGroupId');

@@ -7,23 +7,17 @@ import 'topic_args.dart';
 class Topic extends pulumi.CustomResource {
   /// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
   late final pulumi.Output<String> kmsKeyName;
-
   /// Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
   late final pulumi.Output<Map<String, String>> labels;
-
   /// Optional. Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
   late final pulumi.Output<String> messageRetentionDuration;
-
   /// Optional. Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
   late final pulumi.Output<MessageStoragePolicyResponse> messageStoragePolicy;
-
   /// The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Optional. Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
   late final pulumi.Output<bool> satisfiesPzs;
-
   /// Optional. Settings for validating messages published against a schema.
   late final pulumi.Output<SchemaSettingsResponse> schemaSettings;
   late final pulumi.Output<String> topicId;
@@ -32,41 +26,24 @@ class Topic extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Topic]. {@macro pulumi_pubsub_v1_topic_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Topic(String name, {TopicArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'google-native:pubsub/v1:Topic',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Topic(
+    String name, {
+    TopicArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'google-native:pubsub/v1:Topic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     kmsKeyName = registerOutput<String>('kmsKeyName');
     labels = registerOutput<Map<String, String>>('labels');
-    messageRetentionDuration = registerOutput<String>(
-      'messageRetentionDuration',
-    );
-    messageStoragePolicy = registerOutput<MessageStoragePolicyResponse>(
-      'messageStoragePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MessageStoragePolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    messageRetentionDuration = registerOutput<String>('messageRetentionDuration');
+    messageStoragePolicy = registerOutput<MessageStoragePolicyResponse>('messageStoragePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MessageStoragePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
-    schemaSettings = registerOutput<SchemaSettingsResponse>(
-      'schemaSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SchemaSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schemaSettings = registerOutput<SchemaSettingsResponse>('schemaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchemaSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     topicId = registerOutput<String>('topicId');
   }
 }

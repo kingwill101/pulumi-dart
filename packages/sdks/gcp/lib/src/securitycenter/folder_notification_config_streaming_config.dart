@@ -26,17 +26,20 @@ class FolderNotificationConfigStreamingConfig {
 
   /// Creates a new [FolderNotificationConfigStreamingConfig].
   /// [filter] Expression that defines the filter to apply across create/update
-  FolderNotificationConfigStreamingConfig({required this.filter});
+  FolderNotificationConfigStreamingConfig({
+    required this.filter,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filter': filter};
+    return <String, dynamic>{
+      'filter': filter,
+    };
   }
 
-  factory FolderNotificationConfigStreamingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FolderNotificationConfigStreamingConfig.fromMap(Map<String, dynamic> map) {
     return FolderNotificationConfigStreamingConfig(
       filter: pulumi.Input.fromValue(map['filter'] as String),
     );
   }
 }
+

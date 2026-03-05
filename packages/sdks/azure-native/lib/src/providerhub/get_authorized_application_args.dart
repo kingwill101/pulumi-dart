@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAuthorizedApplicationArgs {
   /// The application ID.
   final pulumi.Input<String> applicationId;
-
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
 
@@ -31,9 +30,8 @@ class GetAuthorizedApplicationArgs {
   factory GetAuthorizedApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizedApplicationArgs(
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
-      providerNamespace: pulumi.Input.fromValue(
-        map['providerNamespace'] as String,
-      ),
+      providerNamespace: pulumi.Input.fromValue(map['providerNamespace'] as String),
     );
   }
 }
+

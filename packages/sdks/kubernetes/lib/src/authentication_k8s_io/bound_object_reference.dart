@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BoundObjectReference {
   /// API version of the referent.
   final pulumi.Input<String>? apiVersion;
-
   /// Kind of the referent. Valid kinds are 'Pod' and 'Secret'.
   final pulumi.Input<String>? kind;
-
   /// Name of the referent.
   final pulumi.Input<String>? name;
-
   /// UID of the referent.
   final pulumi.Input<String>? uid;
 
@@ -21,7 +18,12 @@ class BoundObjectReference {
   /// [kind] Kind of the referent. Valid kinds are 'Pod' and 'Secret'.
   /// [name] Name of the referent.
   /// [uid] UID of the referent.
-  BoundObjectReference({this.apiVersion, this.kind, this.name, this.uid});
+  BoundObjectReference({
+    this.apiVersion,
+    this.kind,
+    this.name,
+    this.uid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,26 +36,11 @@ class BoundObjectReference {
 
   factory BoundObjectReference.fromMap(Map<String, dynamic> map) {
     return BoundObjectReference(
-      apiVersion: (() {
-        final guardedValue = map['apiVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uid: (() {
-        final guardedValue = map['uid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

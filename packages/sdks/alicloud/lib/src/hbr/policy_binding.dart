@@ -356,42 +356,30 @@ import 'policy_binding_state.dart';
 class PolicyBinding extends pulumi.CustomResource {
   /// Backup Advanced Options See `advanced_options` below.
   late final pulumi.Output<PolicyBindingAdvancedOptions> advancedOptions;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
   late final pulumi.Output<String?> crossAccountRoleName;
-
   /// Cross-account type, supported
   late final pulumi.Output<String> crossAccountType;
-
   /// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
   late final pulumi.Output<int?> crossAccountUserId;
-
   /// The data source ID.
   late final pulumi.Output<String> dataSourceId;
-
   /// Whether the policy is effective for the data source.
   /// - true: Pause
   /// - false: not paused
   late final pulumi.Output<bool?> disabled;
-
   /// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates a file type that does not need to be backed up. All files of this type are not backed up. A maximum of 255 characters is supported.
   late final pulumi.Output<String?> exclude;
-
   /// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates the file types to be backed up, and all files of these types are backed up. A maximum of 255 characters is supported.
   late final pulumi.Output<String?> include;
-
   /// Resource Description
   late final pulumi.Output<String?> policyBindingDescription;
-
   /// The policy ID.
   late final pulumi.Output<String> policyId;
-
   /// When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
   late final pulumi.Output<String?> source;
-
   /// Data source type, value range:
   /// - `UDM_ECS`: indicates the ECS instance backup.
   /// - `OSS`: indicates an OSS backup.
@@ -400,7 +388,6 @@ class PolicyBinding extends pulumi.CustomResource {
   /// - `File`: indicates a local File backup.
   /// - `OTS`: indicates the Tablestore backup.
   late final pulumi.Output<String> sourceType;
-
   /// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
   late final pulumi.Output<String?> speedLimit;
 
@@ -413,21 +400,12 @@ class PolicyBinding extends pulumi.CustomResource {
     PolicyBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/policyBinding:PolicyBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    advancedOptions = registerOutput<PolicyBindingAdvancedOptions>(
-      'advancedOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyBindingAdvancedOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:hbr/policyBinding:PolicyBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    advancedOptions = registerOutput<PolicyBindingAdvancedOptions>('advancedOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBindingAdvancedOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
     crossAccountType = registerOutput<String>('crossAccountType');
@@ -436,9 +414,7 @@ class PolicyBinding extends pulumi.CustomResource {
     disabled = registerOutput<bool?>('disabled');
     exclude = registerOutput<String?>('exclude');
     include = registerOutput<String?>('include');
-    policyBindingDescription = registerOutput<String?>(
-      'policyBindingDescription',
-    );
+    policyBindingDescription = registerOutput<String?>('policyBindingDescription');
     policyId = registerOutput<String>('policyId');
     source = registerOutput<String?>('source');
     sourceType = registerOutput<String>('sourceType');
@@ -463,21 +439,12 @@ class PolicyBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/policyBinding:PolicyBinding',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    advancedOptions = registerOutput<PolicyBindingAdvancedOptions>(
-      'advancedOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyBindingAdvancedOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:hbr/policyBinding:PolicyBinding',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    advancedOptions = registerOutput<PolicyBindingAdvancedOptions>('advancedOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBindingAdvancedOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
     crossAccountType = registerOutput<String>('crossAccountType');
@@ -486,9 +453,7 @@ class PolicyBinding extends pulumi.CustomResource {
     disabled = registerOutput<bool?>('disabled');
     exclude = registerOutput<String?>('exclude');
     include = registerOutput<String?>('include');
-    policyBindingDescription = registerOutput<String?>(
-      'policyBindingDescription',
-    );
+    policyBindingDescription = registerOutput<String?>('policyBindingDescription');
     policyId = registerOutput<String>('policyId');
     source = registerOutput<String?>('source');
     sourceType = registerOutput<String>('sourceType');

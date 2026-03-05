@@ -198,16 +198,12 @@ import 'network_interface_permission_timeouts.dart';
 class NetworkInterfacePermission extends pulumi.CustomResource {
   /// The Amazon Web Services account ID.
   late final pulumi.Output<String> awsAccountId;
-
   /// The ID of the network interface.
   late final pulumi.Output<String> networkInterfaceId;
-
   /// ENI permission ID.
   late final pulumi.Output<String> networkInterfacePermissionId;
-
   /// The type of permission to grant. Valid values are `INSTANCE-ATTACH` or `EIP-ASSOCIATE`.
   late final pulumi.Output<String> permission;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<NetworkInterfacePermissionTimeouts?> timeouts;
@@ -221,28 +217,17 @@ class NetworkInterfacePermission extends pulumi.CustomResource {
     NetworkInterfacePermissionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/networkInterfacePermission:NetworkInterfacePermission',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/networkInterfacePermission:NetworkInterfacePermission',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
-    networkInterfacePermissionId = registerOutput<String>(
-      'networkInterfacePermissionId',
-    );
+    networkInterfacePermissionId = registerOutput<String>('networkInterfacePermissionId');
     permission = registerOutput<String>('permission');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<NetworkInterfacePermissionTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkInterfacePermissionTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<NetworkInterfacePermissionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfacePermissionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [NetworkInterfacePermission] resource's state with the given [name] and [id].
@@ -263,27 +248,16 @@ class NetworkInterfacePermission extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/networkInterfacePermission:NetworkInterfacePermission',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/networkInterfacePermission:NetworkInterfacePermission',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
-    networkInterfacePermissionId = registerOutput<String>(
-      'networkInterfacePermissionId',
-    );
+    networkInterfacePermissionId = registerOutput<String>('networkInterfacePermissionId');
     permission = registerOutput<String>('permission');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<NetworkInterfacePermissionTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkInterfacePermissionTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<NetworkInterfacePermissionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfacePermissionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

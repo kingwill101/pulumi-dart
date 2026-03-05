@@ -449,8 +449,7 @@ Future<GetFeaturestoreResult> getFeaturestore(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1_get_featurestore_entity_type_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFeaturestoreEntityTypeIamPolicyResult>
-getFeaturestoreEntityTypeIamPolicy(
+Future<GetFeaturestoreEntityTypeIamPolicyResult> getFeaturestoreEntityTypeIamPolicy(
   GetFeaturestoreEntityTypeIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -610,8 +609,7 @@ Future<GetNotebookRuntimeTemplateResult> getNotebookRuntimeTemplate(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1_get_notebook_runtime_template_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNotebookRuntimeTemplateIamPolicyResult>
-getNotebookRuntimeTemplateIamPolicy(
+Future<GetNotebookRuntimeTemplateIamPolicyResult> getNotebookRuntimeTemplateIamPolicy(
   GetNotebookRuntimeTemplateIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -787,8 +785,7 @@ Future<GetArtifactAiplatformV1beta1Result> getArtifactAiplatformV1beta1(
 /// Gets a BatchPredictionJob
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_batch_prediction_job_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBatchPredictionJobAiplatformV1beta1Result>
-getBatchPredictionJobAiplatformV1beta1(
+Future<GetBatchPredictionJobAiplatformV1beta1Result> getBatchPredictionJobAiplatformV1beta1(
   GetBatchPredictionJobAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -836,8 +833,7 @@ Future<GetCustomJobAiplatformV1beta1Result> getCustomJobAiplatformV1beta1(
 /// Gets a DataLabelingJob.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_data_labeling_job_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDataLabelingJobAiplatformV1beta1Result>
-getDataLabelingJobAiplatformV1beta1(
+Future<GetDataLabelingJobAiplatformV1beta1Result> getDataLabelingJobAiplatformV1beta1(
   GetDataLabelingJobAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -869,8 +865,7 @@ Future<GetDatasetAiplatformV1beta1Result> getDatasetAiplatformV1beta1(
 /// Gets a Dataset version.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_dataset_version_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatasetVersionAiplatformV1beta1Result>
-getDatasetVersionAiplatformV1beta1(
+Future<GetDatasetVersionAiplatformV1beta1Result> getDatasetVersionAiplatformV1beta1(
   GetDatasetVersionAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -886,8 +881,7 @@ getDatasetVersionAiplatformV1beta1(
 /// Get a DeploymentResourcePool.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_deployment_resource_pool_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDeploymentResourcePoolAiplatformV1beta1Result>
-getDeploymentResourcePoolAiplatformV1beta1(
+Future<GetDeploymentResourcePoolAiplatformV1beta1Result> getDeploymentResourcePoolAiplatformV1beta1(
   GetDeploymentResourcePoolAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -999,8 +993,7 @@ Future<GetFeatureGroupAiplatformV1beta1Result> getFeatureGroupAiplatformV1beta1(
 /// Gets details of a single Feature.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_feature_group_feature_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFeatureGroupFeatureAiplatformV1beta1Result>
-getFeatureGroupFeatureAiplatformV1beta1(
+Future<GetFeatureGroupFeatureAiplatformV1beta1Result> getFeatureGroupFeatureAiplatformV1beta1(
   GetFeatureGroupFeatureAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1016,8 +1009,7 @@ getFeatureGroupFeatureAiplatformV1beta1(
 /// Gets details of a single FeatureOnlineStore.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_feature_online_store_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFeatureOnlineStoreAiplatformV1beta1Result>
-getFeatureOnlineStoreAiplatformV1beta1(
+Future<GetFeatureOnlineStoreAiplatformV1beta1Result> getFeatureOnlineStoreAiplatformV1beta1(
   GetFeatureOnlineStoreAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1033,8 +1025,7 @@ getFeatureOnlineStoreAiplatformV1beta1(
 /// Gets details of a single Feature.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_feature_store_feature_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFeatureStoreFeatureAiplatformV1beta1Result>
-getFeatureStoreFeatureAiplatformV1beta1(
+Future<GetFeatureStoreFeatureAiplatformV1beta1Result> getFeatureStoreFeatureAiplatformV1beta1(
   GetFeatureStoreFeatureAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1082,8 +1073,7 @@ Future<GetFeaturestoreAiplatformV1beta1Result> getFeaturestoreAiplatformV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_featurestore_entity_type_iam_policy_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFeaturestoreEntityTypeIamPolicyAiplatformV1beta1Result>
-getFeaturestoreEntityTypeIamPolicyAiplatformV1beta1(
+Future<GetFeaturestoreEntityTypeIamPolicyAiplatformV1beta1Result> getFeaturestoreEntityTypeIamPolicyAiplatformV1beta1(
   GetFeaturestoreEntityTypeIamPolicyAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1093,16 +1083,13 @@ getFeaturestoreEntityTypeIamPolicyAiplatformV1beta1(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetFeaturestoreEntityTypeIamPolicyAiplatformV1beta1Result.fromMap(
-    result,
-  );
+  return GetFeaturestoreEntityTypeIamPolicyAiplatformV1beta1Result.fromMap(result);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_featurestore_iam_policy_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFeaturestoreIamPolicyAiplatformV1beta1Result>
-getFeaturestoreIamPolicyAiplatformV1beta1(
+Future<GetFeaturestoreIamPolicyAiplatformV1beta1Result> getFeaturestoreIamPolicyAiplatformV1beta1(
   GetFeaturestoreIamPolicyAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1118,8 +1105,7 @@ getFeaturestoreIamPolicyAiplatformV1beta1(
 /// Gets a HyperparameterTuningJob
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_hyperparameter_tuning_job_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetHyperparameterTuningJobAiplatformV1beta1Result>
-getHyperparameterTuningJobAiplatformV1beta1(
+Future<GetHyperparameterTuningJobAiplatformV1beta1Result> getHyperparameterTuningJobAiplatformV1beta1(
   GetHyperparameterTuningJobAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1151,8 +1137,7 @@ Future<GetIndexAiplatformV1beta1Result> getIndexAiplatformV1beta1(
 /// Gets an IndexEndpoint.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_index_endpoint_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetIndexEndpointAiplatformV1beta1Result>
-getIndexEndpointAiplatformV1beta1(
+Future<GetIndexEndpointAiplatformV1beta1Result> getIndexEndpointAiplatformV1beta1(
   GetIndexEndpointAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1168,8 +1153,7 @@ getIndexEndpointAiplatformV1beta1(
 /// Retrieves a specific MetadataSchema.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_metadata_schema_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMetadataSchemaAiplatformV1beta1Result>
-getMetadataSchemaAiplatformV1beta1(
+Future<GetMetadataSchemaAiplatformV1beta1Result> getMetadataSchemaAiplatformV1beta1(
   GetMetadataSchemaAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1185,8 +1169,7 @@ getMetadataSchemaAiplatformV1beta1(
 /// Retrieves a specific MetadataStore.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_metadata_store_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMetadataStoreAiplatformV1beta1Result>
-getMetadataStoreAiplatformV1beta1(
+Future<GetMetadataStoreAiplatformV1beta1Result> getMetadataStoreAiplatformV1beta1(
   GetMetadataStoreAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1202,8 +1185,7 @@ getMetadataStoreAiplatformV1beta1(
 /// Gets a ModelDeploymentMonitoringJob.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_model_deployment_monitoring_job_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetModelDeploymentMonitoringJobAiplatformV1beta1Result>
-getModelDeploymentMonitoringJobAiplatformV1beta1(
+Future<GetModelDeploymentMonitoringJobAiplatformV1beta1Result> getModelDeploymentMonitoringJobAiplatformV1beta1(
   GetModelDeploymentMonitoringJobAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1251,8 +1233,7 @@ Future<GetNasJobAiplatformV1beta1Result> getNasJobAiplatformV1beta1(
 /// Gets a NotebookRuntimeTemplate.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_notebook_runtime_template_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNotebookRuntimeTemplateAiplatformV1beta1Result>
-getNotebookRuntimeTemplateAiplatformV1beta1(
+Future<GetNotebookRuntimeTemplateAiplatformV1beta1Result> getNotebookRuntimeTemplateAiplatformV1beta1(
   GetNotebookRuntimeTemplateAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1268,8 +1249,7 @@ getNotebookRuntimeTemplateAiplatformV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_notebook_runtime_template_iam_policy_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Result>
-getNotebookRuntimeTemplateIamPolicyAiplatformV1beta1(
+Future<GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Result> getNotebookRuntimeTemplateIamPolicyAiplatformV1beta1(
   GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1279,9 +1259,7 @@ getNotebookRuntimeTemplateIamPolicyAiplatformV1beta1(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Result.fromMap(
-    result,
-  );
+  return GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Result.fromMap(result);
 }
 
 /// Gets a PersistentResource.
@@ -1351,8 +1329,7 @@ Future<GetScheduleAiplatformV1beta1Result> getScheduleAiplatformV1beta1(
 /// Gets a SpecialistPool.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_specialist_pool_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSpecialistPoolAiplatformV1beta1Result>
-getSpecialistPoolAiplatformV1beta1(
+Future<GetSpecialistPoolAiplatformV1beta1Result> getSpecialistPoolAiplatformV1beta1(
   GetSpecialistPoolAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1416,8 +1393,7 @@ Future<GetTimeSeriesAiplatformV1beta1Result> getTimeSeriesAiplatformV1beta1(
 /// Gets a TrainingPipeline.
 /// [args] Arguments passed to this invoke. {@macro pulumi_aiplatform_v1beta1_get_training_pipeline_aiplatform_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTrainingPipelineAiplatformV1beta1Result>
-getTrainingPipelineAiplatformV1beta1(
+Future<GetTrainingPipelineAiplatformV1beta1Result> getTrainingPipelineAiplatformV1beta1(
   GetTrainingPipelineAiplatformV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

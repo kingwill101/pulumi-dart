@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetControlPolicyAttachmentsAttachment {
   /// The attach date.
   final pulumi.Input<String> attachDate;
-
   /// The description of policy.
   final pulumi.Input<String> description;
-
   /// The ID of the Control Policy Attachment.
   final pulumi.Input<String> id;
-
   /// The ID of policy.
   final pulumi.Input<String> policyId;
-
   /// The name of policy.
   final pulumi.Input<String> policyName;
-
   /// The type of policy.
   final pulumi.Input<String> policyType;
 
@@ -48,9 +43,7 @@ class GetControlPolicyAttachmentsAttachment {
     };
   }
 
-  factory GetControlPolicyAttachmentsAttachment.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetControlPolicyAttachmentsAttachment.fromMap(Map<String, dynamic> map) {
     return GetControlPolicyAttachmentsAttachment(
       attachDate: pulumi.Input.fromValue(map['attachDate'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
@@ -61,3 +54,4 @@ class GetControlPolicyAttachmentsAttachment {
     );
   }
 }
+

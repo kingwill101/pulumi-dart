@@ -5,22 +5,16 @@ enum GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType {
   out("OUT"),
   inOut("IN_OUT");
 
-  const GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType(
-    this.wireValue,
-  );
+  const GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType
-  fromValue(String value) {
-    for (final item
-        in GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType
-            .values) {
+  static GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType fromValue(String value) {
+    for (final item in GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType value: $value');
   }
 }
+

@@ -1973,93 +1973,63 @@ import 'cluster_zonal_shift_config.dart';
 class Cluster extends pulumi.CustomResource {
   /// Configuration block for the access config associated with your cluster, see [Amazon EKS Access Entries](https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html). Detailed below.
   late final pulumi.Output<ClusterAccessConfig> accessConfig;
-
   /// ARN of the cluster.
   late final pulumi.Output<String> arn;
-
   /// Install default unmanaged add-ons, such as `aws-cni`, `kube-proxy`, and CoreDNS during cluster creation. If `false`, you must manually install desired add-ons. Changing this value will force a new cluster to be created. Defaults to `true`.
   late final pulumi.Output<bool?> bootstrapSelfManagedAddons;
-
   /// Attribute block containing `certificate-authority-data` for your cluster. Detailed below.
   late final pulumi.Output<ClusterCertificateAuthority> certificateAuthority;
-
   /// The ID of your local Amazon EKS cluster on the AWS Outpost. This attribute isn't available for an AWS EKS cluster on AWS cloud.
   late final pulumi.Output<String> clusterId;
-
   /// Configuration block with compute configuration for EKS Auto Mode. Detailed below.
   late final pulumi.Output<ClusterComputeConfig> computeConfig;
-
   /// Configuration block for the control plane scaling tier. See [EKS Provisioned Control Plane](https://docs.aws.amazon.com/eks/latest/userguide/eks-provisioned-control-plane-getting-started.html) for more information. Detailed below.
-  late final pulumi.Output<ClusterControlPlaneScalingConfig>
-  controlPlaneScalingConfig;
-
+  late final pulumi.Output<ClusterControlPlaneScalingConfig> controlPlaneScalingConfig;
   /// Unix epoch timestamp in seconds for when the cluster was created.
   late final pulumi.Output<String> createdAt;
   late final pulumi.Output<List<String>?> defaultAddonsToRemoves;
-
   /// Whether to enable deletion protection for the cluster. When enabled, the cluster cannot be deleted unless deletion protection is first disabled. Default: `false`.
   late final pulumi.Output<bool> deletionProtection;
-
   /// List of the desired control plane logging to enable. For more information, see [Amazon EKS Control Plane Logging](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html).
   late final pulumi.Output<List<String>?> enabledClusterLogTypes;
-
   /// Configuration block with encryption configuration for the cluster. Detailed below.
   late final pulumi.Output<ClusterEncryptionConfig?> encryptionConfig;
-
   /// Endpoint for your Kubernetes API server.
   late final pulumi.Output<String> endpoint;
-
   /// Force version update by overriding upgrade-blocking readiness checks when updating a cluster.
   late final pulumi.Output<bool?> forceUpdateVersion;
-
   /// Attribute block containing identity provider information for your cluster. Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>> identities;
-
   /// Configuration block with kubernetes network configuration for the cluster. Detailed below. If removed, the provider will only perform drift detection if a configuration value is provided.
-  late final pulumi.Output<ClusterKubernetesNetworkConfig>
-  kubernetesNetworkConfig;
-
+  late final pulumi.Output<ClusterKubernetesNetworkConfig> kubernetesNetworkConfig;
   /// Name of the cluster. Must be between 1-100 characters in length. Must begin with an alphanumeric character, and must only contain alphanumeric characters, dashes and underscores (`^[0-9A-Za-z][A-Za-z0-9\-_]*$`).
   late final pulumi.Output<String> name;
-
   /// Configuration block representing the configuration of your local Amazon EKS cluster on an AWS Outpost. This block isn't available for creating Amazon EKS clusters on the AWS cloud.
   late final pulumi.Output<ClusterOutpostConfig?> outpostConfig;
-
   /// Platform version for the cluster.
   late final pulumi.Output<String> platformVersion;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block with remote network configuration for EKS Hybrid Nodes. Detailed below.
   late final pulumi.Output<ClusterRemoteNetworkConfig?> remoteNetworkConfig;
-
   /// ARN of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf. Ensure the resource configuration includes explicit dependencies on the IAM Role permissions by adding `depends_on` if using the `aws.iam.RolePolicy` resource or `aws.iam.RolePolicyAttachment` resource, otherwise EKS cannot delete EKS managed EC2 infrastructure such as Security Groups on EKS Cluster deletion.
   late final pulumi.Output<String> roleArn;
-
   /// Status of the EKS cluster. One of `CREATING`, `ACTIVE`, `DELETING`, `FAILED`.
   late final pulumi.Output<String> status;
-
   /// Configuration block with storage configuration for EKS Auto Mode. Detailed below.
   late final pulumi.Output<ClusterStorageConfig> storageConfig;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Configuration block for the support policy to use for the cluster.  See upgrade_policy for details.
   late final pulumi.Output<ClusterUpgradePolicy> upgradePolicy;
-
   /// Desired Kubernetes master version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except those automatically triggered by EKS. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by EKS.
   late final pulumi.Output<String> version;
-
   /// Configuration block for the VPC associated with your cluster. Amazon EKS VPC resources have specific requirements to work properly with Kubernetes. For more information, see [Cluster VPC Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html) and [Cluster Security Group Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html) in the Amazon EKS User Guide. Detailed below. Also contains attributes detailed in the Attributes section.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<ClusterVpcConfig> vpcConfig;
-
   /// Configuration block with zonal shift configuration for the cluster. Detailed below.
   late final pulumi.Output<ClusterZonalShiftConfig?> zonalShiftConfig;
 
@@ -2072,156 +2042,41 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:eks/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessConfig = registerOutput<ClusterAccessConfig>(
-      'accessConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterAccessConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:eks/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessConfig = registerOutput<ClusterAccessConfig>('accessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
-    bootstrapSelfManagedAddons = registerOutput<bool?>(
-      'bootstrapSelfManagedAddons',
-    );
-    certificateAuthority = registerOutput<ClusterCertificateAuthority>(
-      'certificateAuthority',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterCertificateAuthority.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    bootstrapSelfManagedAddons = registerOutput<bool?>('bootstrapSelfManagedAddons');
+    certificateAuthority = registerOutput<ClusterCertificateAuthority>('certificateAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCertificateAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
-    computeConfig = registerOutput<ClusterComputeConfig>(
-      'computeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterComputeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    controlPlaneScalingConfig =
-        registerOutput<ClusterControlPlaneScalingConfig>(
-          'controlPlaneScalingConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ClusterControlPlaneScalingConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    computeConfig = registerOutput<ClusterComputeConfig>('computeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterComputeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    controlPlaneScalingConfig = registerOutput<ClusterControlPlaneScalingConfig>('controlPlaneScalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterControlPlaneScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
-    defaultAddonsToRemoves = registerOutput<List<String>?>(
-      'defaultAddonsToRemoves',
-    );
+    defaultAddonsToRemoves = registerOutput<List<String>?>('defaultAddonsToRemoves');
     deletionProtection = registerOutput<bool>('deletionProtection');
-    enabledClusterLogTypes = registerOutput<List<String>?>(
-      'enabledClusterLogTypes',
-    );
-    encryptionConfig = registerOutput<ClusterEncryptionConfig?>(
-      'encryptionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterEncryptionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    enabledClusterLogTypes = registerOutput<List<String>?>('enabledClusterLogTypes');
+    encryptionConfig = registerOutput<ClusterEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
     forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
     identities = registerOutput<List<Map<String, dynamic>>>('identities');
-    kubernetesNetworkConfig = registerOutput<ClusterKubernetesNetworkConfig>(
-      'kubernetesNetworkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterKubernetesNetworkConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    kubernetesNetworkConfig = registerOutput<ClusterKubernetesNetworkConfig>('kubernetesNetworkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKubernetesNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    outpostConfig = registerOutput<ClusterOutpostConfig?>(
-      'outpostConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterOutpostConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    outpostConfig = registerOutput<ClusterOutpostConfig?>('outpostConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterOutpostConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     platformVersion = registerOutput<String>('platformVersion');
     region = registerOutput<String>('region');
-    remoteNetworkConfig = registerOutput<ClusterRemoteNetworkConfig?>(
-      'remoteNetworkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterRemoteNetworkConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    remoteNetworkConfig = registerOutput<ClusterRemoteNetworkConfig?>('remoteNetworkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRemoteNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     roleArn = registerOutput<String>('roleArn');
     status = registerOutput<String>('status');
-    storageConfig = registerOutput<ClusterStorageConfig>(
-      'storageConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterStorageConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storageConfig = registerOutput<ClusterStorageConfig>('storageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterStorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    upgradePolicy = registerOutput<ClusterUpgradePolicy>(
-      'upgradePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterUpgradePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    upgradePolicy = registerOutput<ClusterUpgradePolicy>('upgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
-    vpcConfig = registerOutput<ClusterVpcConfig>(
-      'vpcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterVpcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    zonalShiftConfig = registerOutput<ClusterZonalShiftConfig?>(
-      'zonalShiftConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterZonalShiftConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcConfig = registerOutput<ClusterVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zonalShiftConfig = registerOutput<ClusterZonalShiftConfig?>('zonalShiftConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterZonalShiftConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -2242,155 +2097,40 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:eks/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessConfig = registerOutput<ClusterAccessConfig>(
-      'accessConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterAccessConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:eks/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessConfig = registerOutput<ClusterAccessConfig>('accessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
-    bootstrapSelfManagedAddons = registerOutput<bool?>(
-      'bootstrapSelfManagedAddons',
-    );
-    certificateAuthority = registerOutput<ClusterCertificateAuthority>(
-      'certificateAuthority',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterCertificateAuthority.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    bootstrapSelfManagedAddons = registerOutput<bool?>('bootstrapSelfManagedAddons');
+    certificateAuthority = registerOutput<ClusterCertificateAuthority>('certificateAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCertificateAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
-    computeConfig = registerOutput<ClusterComputeConfig>(
-      'computeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterComputeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    controlPlaneScalingConfig =
-        registerOutput<ClusterControlPlaneScalingConfig>(
-          'controlPlaneScalingConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ClusterControlPlaneScalingConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    computeConfig = registerOutput<ClusterComputeConfig>('computeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterComputeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    controlPlaneScalingConfig = registerOutput<ClusterControlPlaneScalingConfig>('controlPlaneScalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterControlPlaneScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
-    defaultAddonsToRemoves = registerOutput<List<String>?>(
-      'defaultAddonsToRemoves',
-    );
+    defaultAddonsToRemoves = registerOutput<List<String>?>('defaultAddonsToRemoves');
     deletionProtection = registerOutput<bool>('deletionProtection');
-    enabledClusterLogTypes = registerOutput<List<String>?>(
-      'enabledClusterLogTypes',
-    );
-    encryptionConfig = registerOutput<ClusterEncryptionConfig?>(
-      'encryptionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterEncryptionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    enabledClusterLogTypes = registerOutput<List<String>?>('enabledClusterLogTypes');
+    encryptionConfig = registerOutput<ClusterEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
     forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
     identities = registerOutput<List<Map<String, dynamic>>>('identities');
-    kubernetesNetworkConfig = registerOutput<ClusterKubernetesNetworkConfig>(
-      'kubernetesNetworkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterKubernetesNetworkConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    kubernetesNetworkConfig = registerOutput<ClusterKubernetesNetworkConfig>('kubernetesNetworkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKubernetesNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    outpostConfig = registerOutput<ClusterOutpostConfig?>(
-      'outpostConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterOutpostConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    outpostConfig = registerOutput<ClusterOutpostConfig?>('outpostConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterOutpostConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     platformVersion = registerOutput<String>('platformVersion');
     region = registerOutput<String>('region');
-    remoteNetworkConfig = registerOutput<ClusterRemoteNetworkConfig?>(
-      'remoteNetworkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterRemoteNetworkConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    remoteNetworkConfig = registerOutput<ClusterRemoteNetworkConfig?>('remoteNetworkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRemoteNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     roleArn = registerOutput<String>('roleArn');
     status = registerOutput<String>('status');
-    storageConfig = registerOutput<ClusterStorageConfig>(
-      'storageConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterStorageConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storageConfig = registerOutput<ClusterStorageConfig>('storageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterStorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    upgradePolicy = registerOutput<ClusterUpgradePolicy>(
-      'upgradePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterUpgradePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    upgradePolicy = registerOutput<ClusterUpgradePolicy>('upgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
-    vpcConfig = registerOutput<ClusterVpcConfig>(
-      'vpcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterVpcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    zonalShiftConfig = registerOutput<ClusterZonalShiftConfig?>(
-      'zonalShiftConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterZonalShiftConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcConfig = registerOutput<ClusterVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zonalShiftConfig = registerOutput<ClusterZonalShiftConfig?>('zonalShiftConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterZonalShiftConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

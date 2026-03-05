@@ -9,19 +9,20 @@ class ManualScalingAppengineV1beta {
 
   /// Creates a new [ManualScalingAppengineV1beta].
   /// [instances] Number of instances to assign to the service at the start. This number can later be altered by using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances() function.
-  ManualScalingAppengineV1beta({this.instances});
+  ManualScalingAppengineV1beta({
+    this.instances,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instances': ?instances};
+    return <String, dynamic>{
+      'instances': ?instances,
+    };
   }
 
   factory ManualScalingAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ManualScalingAppengineV1beta(
-      instances: (() {
-        final guardedValue = map['instances'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

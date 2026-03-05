@@ -366,33 +366,24 @@ import 'capacity_provider_vpc_config.dart';
 class CapacityProvider extends pulumi.CustomResource {
   /// ARN of the Capacity Provider.
   late final pulumi.Output<String> arn;
-
   /// Configuration block for scaling policy settings. See Capacity Provider Scaling Config below.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  capacityProviderScalingConfigs;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> capacityProviderScalingConfigs;
   /// Configuration block for instance requirements settings. See Instance Requirements below.
   late final pulumi.Output<List<Map<String, dynamic>>> instanceRequirements;
   late final pulumi.Output<String?> kmsKeyArn;
-
   /// The name of the Capacity Provider.
   late final pulumi.Output<String> name;
-
   /// Configuration block for permissions settings. See Permissions Config below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<CapacityProviderPermissionsConfig> permissionsConfig;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<CapacityProviderTimeouts?> timeouts;
-
   /// Configuration block for VPC settings. See VPC Config below.
   late final pulumi.Output<CapacityProviderVpcConfig> vpcConfig;
 
@@ -405,53 +396,22 @@ class CapacityProvider extends pulumi.CustomResource {
     CapacityProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lambda/capacityProvider:CapacityProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lambda/capacityProvider:CapacityProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    capacityProviderScalingConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'capacityProviderScalingConfigs',
-    );
-    instanceRequirements = registerOutput<List<Map<String, dynamic>>>(
-      'instanceRequirements',
-    );
+    capacityProviderScalingConfigs = registerOutput<List<Map<String, dynamic>>>('capacityProviderScalingConfigs');
+    instanceRequirements = registerOutput<List<Map<String, dynamic>>>('instanceRequirements');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
-    permissionsConfig = registerOutput<CapacityProviderPermissionsConfig>(
-      'permissionsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacityProviderPermissionsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    permissionsConfig = registerOutput<CapacityProviderPermissionsConfig>('permissionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityProviderPermissionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<CapacityProviderTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacityProviderTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpcConfig = registerOutput<CapacityProviderVpcConfig>(
-      'vpcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacityProviderVpcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<CapacityProviderTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityProviderTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcConfig = registerOutput<CapacityProviderVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityProviderVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [CapacityProvider] resource's state with the given [name] and [id].
@@ -472,52 +432,21 @@ class CapacityProvider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lambda/capacityProvider:CapacityProvider',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lambda/capacityProvider:CapacityProvider',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    capacityProviderScalingConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'capacityProviderScalingConfigs',
-    );
-    instanceRequirements = registerOutput<List<Map<String, dynamic>>>(
-      'instanceRequirements',
-    );
+    capacityProviderScalingConfigs = registerOutput<List<Map<String, dynamic>>>('capacityProviderScalingConfigs');
+    instanceRequirements = registerOutput<List<Map<String, dynamic>>>('instanceRequirements');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
-    permissionsConfig = registerOutput<CapacityProviderPermissionsConfig>(
-      'permissionsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacityProviderPermissionsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    permissionsConfig = registerOutput<CapacityProviderPermissionsConfig>('permissionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityProviderPermissionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<CapacityProviderTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacityProviderTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpcConfig = registerOutput<CapacityProviderVpcConfig>(
-      'vpcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacityProviderVpcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<CapacityProviderTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityProviderTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcConfig = registerOutput<CapacityProviderVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityProviderVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

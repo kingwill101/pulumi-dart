@@ -190,64 +190,44 @@ import 'stack_state.dart';
 class Stack extends pulumi.CustomResource {
   /// Specifies whether to delete the stack after it is created.
   late final pulumi.Output<String?> createOption;
-
   /// Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
   late final pulumi.Output<String?> deletionProtection;
-
   /// Specifies whether to disable rollback on stack creation failure. Default to: `false`.
   late final pulumi.Output<bool?> disableRollback;
-
   /// The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
   late final pulumi.Output<List<String>?> notificationUrls;
-
   /// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
   late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
-
   /// The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
   late final pulumi.Output<String?> ramRoleName;
-
   /// Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
   late final pulumi.Output<String?> replacementOption;
-
   /// The retain all resources.
   late final pulumi.Output<bool?> retainAllResources;
-
   /// Specifies whether to retain the resources in the stack.
   late final pulumi.Output<List<String>?> retainResources;
-
   /// The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
   late final pulumi.Output<String> stackName;
-
   /// The structure that contains the stack policy body. The stack policy body must be 1 to 16,384 bytes in length.
   late final pulumi.Output<String?> stackPolicyBody;
-
   /// The structure that contains the body of the temporary overriding stack policy. The stack policy body must be 1 to 16,384 bytes in length.
   late final pulumi.Output<String?> stackPolicyDuringUpdateBody;
-
   /// The URL of the file that contains the temporary overriding stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
   late final pulumi.Output<String?> stackPolicyDuringUpdateUrl;
-
   /// The URL of the file that contains the stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
   late final pulumi.Output<String?> stackPolicyUrl;
-
   /// The status of Stack.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
   late final pulumi.Output<String?> templateBody;
-
   /// The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
   late final pulumi.Output<String?> templateUrl;
-
   /// The version of the template.
   late final pulumi.Output<String?> templateVersion;
-
   /// The timeout period that is specified for the stack creation request. Default to: `60`.
   late final pulumi.Output<int?> timeoutInMinutes;
-
   /// Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
   late final pulumi.Output<bool?> usePreviousParameters;
 
@@ -255,13 +235,16 @@ class Stack extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Stack]. {@macro pulumi_ros_stack_stack_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Stack(String name, {StackArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:ros/stack:Stack',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Stack(
+    String name, {
+    StackArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:ros/stack:Stack',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createOption = registerOutput<String?>('createOption');
     deletionProtection = registerOutput<String?>('deletionProtection');
     disableRollback = registerOutput<bool?>('disableRollback');
@@ -273,12 +256,8 @@ class Stack extends pulumi.CustomResource {
     retainResources = registerOutput<List<String>?>('retainResources');
     stackName = registerOutput<String>('stackName');
     stackPolicyBody = registerOutput<String?>('stackPolicyBody');
-    stackPolicyDuringUpdateBody = registerOutput<String?>(
-      'stackPolicyDuringUpdateBody',
-    );
-    stackPolicyDuringUpdateUrl = registerOutput<String?>(
-      'stackPolicyDuringUpdateUrl',
-    );
+    stackPolicyDuringUpdateBody = registerOutput<String?>('stackPolicyDuringUpdateBody');
+    stackPolicyDuringUpdateUrl = registerOutput<String?>('stackPolicyDuringUpdateUrl');
     stackPolicyUrl = registerOutput<String?>('stackPolicyUrl');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -290,7 +269,11 @@ class Stack extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Stack] resource's state with the given [name] and [id].
-  static Stack get(String name, pulumi.Input<String> id, {StackState? state}) {
+  static Stack get(
+    String name,
+    pulumi.Input<String> id, {
+    StackState? state,
+  }) {
     return Stack._get(
       name,
       state: state?.toMap(),
@@ -303,11 +286,11 @@ class Stack extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ros/stack:Stack',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ros/stack:Stack',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createOption = registerOutput<String?>('createOption');
     deletionProtection = registerOutput<String?>('deletionProtection');
     disableRollback = registerOutput<bool?>('disableRollback');
@@ -319,12 +302,8 @@ class Stack extends pulumi.CustomResource {
     retainResources = registerOutput<List<String>?>('retainResources');
     stackName = registerOutput<String>('stackName');
     stackPolicyBody = registerOutput<String?>('stackPolicyBody');
-    stackPolicyDuringUpdateBody = registerOutput<String?>(
-      'stackPolicyDuringUpdateBody',
-    );
-    stackPolicyDuringUpdateUrl = registerOutput<String?>(
-      'stackPolicyDuringUpdateUrl',
-    );
+    stackPolicyDuringUpdateBody = registerOutput<String?>('stackPolicyDuringUpdateBody');
+    stackPolicyDuringUpdateUrl = registerOutput<String?>('stackPolicyDuringUpdateUrl');
     stackPolicyUrl = registerOutput<String?>('stackPolicyUrl');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');

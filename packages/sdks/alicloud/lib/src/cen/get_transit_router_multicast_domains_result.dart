@@ -7,22 +7,17 @@ import 'get_transit_router_multicast_domains_domain.dart';
 class GetTransitRouterMulticastDomainsResult {
   /// A list of Cen Transit Router Multicast Domains. Each element contains the following attributes:
   final List<GetTransitRouterMulticastDomainsDomain> domains;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of Transit Router Multicast Domain names.
   final List<String> names;
   final String? outputFile;
-
   /// The status of the Transit Router Multicast Domain.
   final String? status;
-
   /// The ID of the transit router.
   final String transitRouterId;
-
   /// The ID of the Transit Router Multicast Domain.
   final String? transitRouterMulticastDomainId;
 
@@ -50,11 +45,7 @@ class GetTransitRouterMulticastDomainsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'domains':
-          pulumi.Input.encodeList<
-            GetTransitRouterMulticastDomainsDomain,
-            Map<String, dynamic>
-          >(domains, (value) => value.toMap()),
+      'domains': pulumi.Input.encodeList<GetTransitRouterMulticastDomainsDomain, Map<String, dynamic>>(domains, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -66,40 +57,18 @@ class GetTransitRouterMulticastDomainsResult {
     };
   }
 
-  factory GetTransitRouterMulticastDomainsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTransitRouterMulticastDomainsResult.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterMulticastDomainsResult(
-      domains: pulumi.Input.decodeList<GetTransitRouterMulticastDomainsDomain>(
-        map['domains']!,
-        (value) => GetTransitRouterMulticastDomainsDomain.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      domains: pulumi.Input.decodeList<GetTransitRouterMulticastDomainsDomain>(map['domains']!, (value) => GetTransitRouterMulticastDomainsDomain.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       transitRouterId: map['transitRouterId'] as String,
-      transitRouterMulticastDomainId: (() {
-        final guardedValue = map['transitRouterMulticastDomainId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      transitRouterMulticastDomainId: (() { final guardedValue = map['transitRouterMulticastDomainId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

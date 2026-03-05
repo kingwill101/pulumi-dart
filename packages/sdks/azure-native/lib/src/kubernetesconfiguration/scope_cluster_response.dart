@@ -9,19 +9,20 @@ class ScopeClusterResponse {
 
   /// Creates a new [ScopeClusterResponse].
   /// [releaseNamespace] Namespace where the extension Release must be placed, for a Cluster scoped extension.  If this namespace does not exist, it will be created
-  ScopeClusterResponse({this.releaseNamespace});
+  ScopeClusterResponse({
+    this.releaseNamespace,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'releaseNamespace': ?releaseNamespace};
+    return <String, dynamic>{
+      'releaseNamespace': ?releaseNamespace,
+    };
   }
 
   factory ScopeClusterResponse.fromMap(Map<String, dynamic> map) {
     return ScopeClusterResponse(
-      releaseNamespace: (() {
-        final guardedValue = map['releaseNamespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      releaseNamespace: (() { final guardedValue = map['releaseNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

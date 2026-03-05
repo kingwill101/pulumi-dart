@@ -33,22 +33,13 @@ class GetGatewayIamPolicyNetworkservicesV1beta1Args {
     };
   }
 
-  factory GetGatewayIamPolicyNetworkservicesV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGatewayIamPolicyNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetGatewayIamPolicyNetworkservicesV1beta1Args(
       gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

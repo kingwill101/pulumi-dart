@@ -8,19 +8,20 @@ class AwsClusterBinaryAuthorization {
 
   /// Creates a new [AwsClusterBinaryAuthorization].
   /// [evaluationMode] Mode of operation for Binary Authorization policy evaluation. Possible values: DISABLED, PROJECT_SINGLETON_POLICY_ENFORCE
-  AwsClusterBinaryAuthorization({this.evaluationMode});
+  AwsClusterBinaryAuthorization({
+    this.evaluationMode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'evaluationMode': ?evaluationMode};
+    return <String, dynamic>{
+      'evaluationMode': ?evaluationMode,
+    };
   }
 
   factory AwsClusterBinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return AwsClusterBinaryAuthorization(
-      evaluationMode: (() {
-        final guardedValue = map['evaluationMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      evaluationMode: (() { final guardedValue = map['evaluationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

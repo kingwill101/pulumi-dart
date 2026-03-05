@@ -8,16 +8,13 @@ enum GoogleCloudBillingBudgetsV1FilterCalendarPeriod {
   const GoogleCloudBillingBudgetsV1FilterCalendarPeriod(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudBillingBudgetsV1FilterCalendarPeriod fromValue(
-    String value,
-  ) {
+  static GoogleCloudBillingBudgetsV1FilterCalendarPeriod fromValue(String value) {
     for (final item in GoogleCloudBillingBudgetsV1FilterCalendarPeriod.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudBillingBudgetsV1FilterCalendarPeriod value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudBillingBudgetsV1FilterCalendarPeriod value: $value');
   }
 }
+

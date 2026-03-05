@@ -10,10 +10,14 @@ class StandardAppVersionManualScaling {
 
   /// Creates a new [StandardAppVersionManualScaling].
   /// [instances] Number of instances to assign to the service at the start.
-  StandardAppVersionManualScaling({required this.instances});
+  StandardAppVersionManualScaling({
+    required this.instances,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instances': instances};
+    return <String, dynamic>{
+      'instances': instances,
+    };
   }
 
   factory StandardAppVersionManualScaling.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class StandardAppVersionManualScaling {
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyAttachmentState {
   /// The ID of the tag policy.
   final pulumi.Input<String>? policyId;
-
   /// The ID of the object.
   final pulumi.Input<String>? targetId;
-
   /// The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
   final pulumi.Input<String>? targetType;
 
@@ -17,7 +15,11 @@ class PolicyAttachmentState {
   /// [policyId] The ID of the tag policy.
   /// [targetId] The ID of the object.
   /// [targetType] The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
-  PolicyAttachmentState({this.policyId, this.targetId, this.targetType});
+  PolicyAttachmentState({
+    this.policyId,
+    this.targetId,
+    this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class PolicyAttachmentState {
 
   factory PolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentState(
-      policyId: (() {
-        final guardedValue = map['policyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetId: (() {
-        final guardedValue = map['targetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetType: (() {
-        final guardedValue = map['targetType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetId: (() { final guardedValue = map['targetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetType: (() { final guardedValue = map['targetType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

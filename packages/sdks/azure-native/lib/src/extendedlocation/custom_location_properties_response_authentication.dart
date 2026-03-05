@@ -9,21 +9,20 @@ class CustomLocationPropertiesResponseAuthentication {
 
   /// Creates a new [CustomLocationPropertiesResponseAuthentication].
   /// [type] The type of the Custom Locations authentication
-  CustomLocationPropertiesResponseAuthentication({this.type});
+  CustomLocationPropertiesResponseAuthentication({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
-  factory CustomLocationPropertiesResponseAuthentication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomLocationPropertiesResponseAuthentication.fromMap(Map<String, dynamic> map) {
     return CustomLocationPropertiesResponseAuthentication(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

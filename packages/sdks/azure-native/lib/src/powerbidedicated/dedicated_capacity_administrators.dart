@@ -9,19 +9,20 @@ class DedicatedCapacityAdministrators {
 
   /// Creates a new [DedicatedCapacityAdministrators].
   /// [members] An array of administrator user identities.
-  DedicatedCapacityAdministrators({this.members});
+  DedicatedCapacityAdministrators({
+    this.members,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'members': ?members};
+    return <String, dynamic>{
+      'members': ?members,
+    };
   }
 
   factory DedicatedCapacityAdministrators.fromMap(Map<String, dynamic> map) {
     return DedicatedCapacityAdministrators(
-      members: (() {
-        final guardedValue = map['members'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

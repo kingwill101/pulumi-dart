@@ -12,8 +12,7 @@ enum AmazonRdsForSqlAuthenticationType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AmazonRdsForSqlAuthenticationType value: $value',
-    );
+    throw ArgumentError('Unknown AmazonRdsForSqlAuthenticationType value: $value');
   }
 }
+

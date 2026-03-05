@@ -8,16 +8,13 @@ class GetClustersResult {
   /// A list of Ehpc Clusters. Each element contains the following attributes:
   final List<GetClustersCluster> clusters;
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of Cluster names.
   final List<String> names;
   final String? outputFile;
-
   /// The status of the resource.
   final String? status;
 
@@ -43,11 +40,7 @@ class GetClustersResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusters':
-          pulumi.Input.encodeList<GetClustersCluster, Map<String, dynamic>>(
-            clusters,
-            (value) => value.toMap(),
-          ),
+      'clusters': pulumi.Input.encodeList<GetClustersCluster, Map<String, dynamic>>(clusters, (value) => value.toMap()),
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
@@ -60,34 +53,15 @@ class GetClustersResult {
 
   factory GetClustersResult.fromMap(Map<String, dynamic> map) {
     return GetClustersResult(
-      clusters: pulumi.Input.decodeList<GetClustersCluster>(
-        map['clusters']!,
-        (value) =>
-            GetClustersCluster.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      clusters: pulumi.Input.decodeList<GetClustersCluster>(map['clusters']!, (value) => GetClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

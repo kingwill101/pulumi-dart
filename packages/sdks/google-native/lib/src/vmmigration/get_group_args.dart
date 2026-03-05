@@ -15,7 +15,11 @@ class GetGroupArgs {
   /// [groupId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGroupArgs({required this.groupId, required this.location, this.project});
+  GetGroupArgs({
+    required this.groupId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,11 +33,8 @@ class GetGroupArgs {
     return GetGroupArgs(
       groupId: pulumi.Input.fromValue(map['groupId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

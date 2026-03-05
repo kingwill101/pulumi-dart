@@ -7,19 +7,15 @@ import 'guardrail_version_timeouts.dart';
 class GuardrailVersionState {
   /// Description of the Guardrail version.
   final pulumi.Input<String>? description;
-
   /// Guardrail ARN.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? guardrailArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Whether to retain the old version of a previously deployed Guardrail. Default is `false`
   final pulumi.Input<bool>? skipDestroy;
   final pulumi.Input<GuardrailVersionTimeouts>? timeouts;
-
   /// Guardrail version.
   final pulumi.Input<String>? version;
 
@@ -45,51 +41,20 @@ class GuardrailVersionState {
       'guardrailArn': ?guardrailArn,
       'region': ?region,
       'skipDestroy': ?skipDestroy,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            GuardrailVersionTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<GuardrailVersionTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory GuardrailVersionState.fromMap(Map<String, dynamic> map) {
     return GuardrailVersionState(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      guardrailArn: (() {
-        final guardedValue = map['guardrailArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      skipDestroy: (() {
-        final guardedValue = map['skipDestroy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GuardrailVersionTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      guardrailArn: (() { final guardedValue = map['guardrailArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      skipDestroy: (() { final guardedValue = map['skipDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuardrailVersionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

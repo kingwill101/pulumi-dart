@@ -14,18 +14,15 @@ class DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'audience': ?audience};
+    return <String, dynamic>{
+      'audience': ?audience,
+    };
   }
 
-  factory DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse(
-      audience: (() {
-        final guardedValue = map['audience'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      audience: (() { final guardedValue = map['audience']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

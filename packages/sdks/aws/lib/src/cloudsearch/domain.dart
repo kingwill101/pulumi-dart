@@ -245,31 +245,22 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// The domain's ARN.
   late final pulumi.Output<String> arn;
-
   /// The service endpoint for updating documents in a search domain.
   late final pulumi.Output<String> documentServiceEndpoint;
-
   /// An internally generated unique identifier for the domain.
   late final pulumi.Output<String> domainId;
-
   /// Domain endpoint options. Documented below.
   late final pulumi.Output<DomainEndpointOptions> endpointOptions;
-
   /// The index fields for documents added to the domain. Documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> indexFields;
-
   /// Whether or not to maintain extra instances for the domain in a second Availability Zone to ensure high availability.
   late final pulumi.Output<bool> multiAz;
-
   /// The name of the CloudSearch domain.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Domain scaling parameters. Documented below.
   late final pulumi.Output<DomainScalingParameters> scalingParameters;
-
   /// The service endpoint for requesting search results from a search domain.
   late final pulumi.Output<String> searchServiceEndpoint;
 
@@ -277,40 +268,25 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_cloudsearch_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:cloudsearch/domain:Domain',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Domain(
+    String name, {
+    DomainArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:cloudsearch/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     documentServiceEndpoint = registerOutput<String>('documentServiceEndpoint');
     domainId = registerOutput<String>('domainId');
-    endpointOptions = registerOutput<DomainEndpointOptions>(
-      'endpointOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainEndpointOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    endpointOptions = registerOutput<DomainEndpointOptions>('endpointOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainEndpointOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     indexFields = registerOutput<List<Map<String, dynamic>>?>('indexFields');
     multiAz = registerOutput<bool>('multiAz');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    scalingParameters = registerOutput<DomainScalingParameters>(
-      'scalingParameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainScalingParameters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scalingParameters = registerOutput<DomainScalingParameters>('scalingParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainScalingParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     searchServiceEndpoint = registerOutput<String>('searchServiceEndpoint');
   }
 
@@ -332,38 +308,20 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudsearch/domain:Domain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudsearch/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     documentServiceEndpoint = registerOutput<String>('documentServiceEndpoint');
     domainId = registerOutput<String>('domainId');
-    endpointOptions = registerOutput<DomainEndpointOptions>(
-      'endpointOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainEndpointOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    endpointOptions = registerOutput<DomainEndpointOptions>('endpointOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainEndpointOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     indexFields = registerOutput<List<Map<String, dynamic>>?>('indexFields');
     multiAz = registerOutput<bool>('multiAz');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    scalingParameters = registerOutput<DomainScalingParameters>(
-      'scalingParameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainScalingParameters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scalingParameters = registerOutput<DomainScalingParameters>('scalingParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainScalingParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     searchServiceEndpoint = registerOutput<String>('searchServiceEndpoint');
   }
 }

@@ -361,19 +361,14 @@ import 'policy_vmworkload_state.dart';
 class PolicyVMWorkload extends pulumi.CustomResource {
   /// The name of the VM Workload Backup Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// One or more `protection_policy` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> protectionPolicies;
-
   /// The name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;
-
   /// The name of the resource group in which to create the VM Workload Backup Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `settings` block as defined below.
   late final pulumi.Output<PolicyVMWorkloadSettings> settings;
-
   /// The VM Workload type for the Backup Policy. Possible values are `SQLDataBase` and `SAPHanaDatabase`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> workloadType;
 
@@ -386,27 +381,16 @@ class PolicyVMWorkload extends pulumi.CustomResource {
     PolicyVMWorkloadArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:backup/policyVMWorkload:PolicyVMWorkload',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:backup/policyVMWorkload:PolicyVMWorkload',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
-    protectionPolicies = registerOutput<List<Map<String, dynamic>>>(
-      'protectionPolicies',
-    );
+    protectionPolicies = registerOutput<List<Map<String, dynamic>>>('protectionPolicies');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    settings = registerOutput<PolicyVMWorkloadSettings>(
-      'settings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyVMWorkloadSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    settings = registerOutput<PolicyVMWorkloadSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMWorkloadSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workloadType = registerOutput<String>('workloadType');
   }
 
@@ -428,27 +412,16 @@ class PolicyVMWorkload extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:backup/policyVMWorkload:PolicyVMWorkload',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:backup/policyVMWorkload:PolicyVMWorkload',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
-    protectionPolicies = registerOutput<List<Map<String, dynamic>>>(
-      'protectionPolicies',
-    );
+    protectionPolicies = registerOutput<List<Map<String, dynamic>>>('protectionPolicies');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    settings = registerOutput<PolicyVMWorkloadSettings>(
-      'settings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyVMWorkloadSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    settings = registerOutput<PolicyVMWorkloadSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMWorkloadSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workloadType = registerOutput<String>('workloadType');
   }
 }

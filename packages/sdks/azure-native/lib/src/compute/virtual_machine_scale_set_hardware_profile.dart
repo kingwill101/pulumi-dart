@@ -10,31 +10,20 @@ class VirtualMachineScaleSetHardwareProfile {
 
   /// Creates a new [VirtualMachineScaleSetHardwareProfile].
   /// [vmSizeProperties] Specifies the properties for customizing the size of the virtual machine. Minimum api-version: 2021-11-01. Please follow the instructions in [VM Customization](https://aka.ms/vmcustomization) for more details.
-  VirtualMachineScaleSetHardwareProfile({this.vmSizeProperties});
+  VirtualMachineScaleSetHardwareProfile({
+    this.vmSizeProperties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'vmSizeProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            VMSizeProperties,
-            Map<String, dynamic>
-          >(vmSizeProperties, (value) => value.toMap()),
+      'vmSizeProperties': ?pulumi.Input.mapOptionalInputValue<VMSizeProperties, Map<String, dynamic>>(vmSizeProperties, (value) => value.toMap()),
     };
   }
 
-  factory VirtualMachineScaleSetHardwareProfile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachineScaleSetHardwareProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetHardwareProfile(
-      vmSizeProperties: (() {
-        final guardedValue = map['vmSizeProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VMSizeProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      vmSizeProperties: (() { final guardedValue = map['vmSizeProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMSizeProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

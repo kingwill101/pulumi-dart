@@ -10,23 +10,18 @@ import 'di_alarm_rule_trigger_condition.dart';
 /// {@macro pulumi_dataworks_di_alarm_rule_di_alarm_rule_args_doc}
 class DiAlarmRuleArgs {
   final pulumi.Input<String>? description;
-
   /// Data Integration alarm rule name
   final pulumi.Input<String> diAlarmRuleName;
-
   /// Task ID: the ID of the task associated with the alert rule.
   final pulumi.Input<int> diJobId;
   final pulumi.Input<bool>? enabled;
-
   /// Alarm indicator type. Optional enumerated values:
   /// - Heartbeat (task status alarm)
   /// - FailoverCount(failover times alarm)
   /// - Delay (task Delay alarm)
   final pulumi.Input<String> metricType;
-
   /// Alarm notification settings See `notification_settings` below.
   final pulumi.Input<DiAlarmRuleNotificationSettings> notificationSettings;
-
   /// Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
   final pulumi.Input<List<DiAlarmRuleTriggerCondition>> triggerConditions;
 
@@ -55,54 +50,21 @@ class DiAlarmRuleArgs {
       'diJobId': diJobId,
       'enabled': ?enabled,
       'metricType': metricType,
-      'notificationSettings':
-          pulumi.Input.mapInputValue<
-            DiAlarmRuleNotificationSettings,
-            Map<String, dynamic>
-          >(notificationSettings, (value) => value.toMap()),
-      'triggerConditions':
-          pulumi.Input.mapInputValue<
-            List<DiAlarmRuleTriggerCondition>,
-            List<Map<String, dynamic>>
-          >(
-            triggerConditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DiAlarmRuleTriggerCondition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'notificationSettings': pulumi.Input.mapInputValue<DiAlarmRuleNotificationSettings, Map<String, dynamic>>(notificationSettings, (value) => value.toMap()),
+      'triggerConditions': pulumi.Input.mapInputValue<List<DiAlarmRuleTriggerCondition>, List<Map<String, dynamic>>>(triggerConditions, (value) => pulumi.Input.encodeList<DiAlarmRuleTriggerCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DiAlarmRuleArgs.fromMap(Map<String, dynamic> map) {
     return DiAlarmRuleArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diAlarmRuleName: pulumi.Input.fromValue(map['diAlarmRuleName'] as String),
       diJobId: pulumi.Input.fromValue(map['diJobId'] as int),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       metricType: pulumi.Input.fromValue(map['metricType'] as String),
-      notificationSettings: pulumi.Input.fromValue(
-        DiAlarmRuleNotificationSettings.fromMap(
-          (map['notificationSettings']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      triggerConditions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<DiAlarmRuleTriggerCondition>(
-          map['triggerConditions']!,
-          (value) => DiAlarmRuleTriggerCondition.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      notificationSettings: pulumi.Input.fromValue(DiAlarmRuleNotificationSettings.fromMap((map['notificationSettings']! as Map).cast<String, dynamic>())),
+      triggerConditions: pulumi.Input.fromValue(pulumi.Input.decodeList<DiAlarmRuleTriggerCondition>(map['triggerConditions']!, (value) => DiAlarmRuleTriggerCondition.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

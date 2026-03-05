@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectedEnvironmentsCertificateArgs {
   /// Name of the Certificate.
   final pulumi.Input<String> certificateName;
-
   /// Name of the Connected Environment.
   final pulumi.Input<String> connectedEnvironmentName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,17 +32,12 @@ class GetConnectedEnvironmentsCertificateArgs {
     };
   }
 
-  factory GetConnectedEnvironmentsCertificateArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetConnectedEnvironmentsCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectedEnvironmentsCertificateArgs(
       certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
-      connectedEnvironmentName: pulumi.Input.fromValue(
-        map['connectedEnvironmentName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      connectedEnvironmentName: pulumi.Input.fromValue(map['connectedEnvironmentName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

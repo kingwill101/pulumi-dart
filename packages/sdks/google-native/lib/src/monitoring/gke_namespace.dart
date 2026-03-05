@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GkeNamespace {
   /// The name of the parent cluster.
   final pulumi.Input<String>? clusterName;
-
   /// The location of the parent cluster. This may be a zone or region.
   final pulumi.Input<String>? location;
-
   /// The name of this namespace.
   final pulumi.Input<String>? namespaceName;
 
@@ -17,7 +15,11 @@ class GkeNamespace {
   /// [clusterName] The name of the parent cluster.
   /// [location] The location of the parent cluster. This may be a zone or region.
   /// [namespaceName] The name of this namespace.
-  GkeNamespace({this.clusterName, this.location, this.namespaceName});
+  GkeNamespace({
+    this.clusterName,
+    this.location,
+    this.namespaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class GkeNamespace {
 
   factory GkeNamespace.fromMap(Map<String, dynamic> map) {
     return GkeNamespace(
-      clusterName: (() {
-        final guardedValue = map['clusterName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespaceName: (() {
-        final guardedValue = map['namespaceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clusterName: (() { final guardedValue = map['clusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespaceName: (() { final guardedValue = map['namespaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

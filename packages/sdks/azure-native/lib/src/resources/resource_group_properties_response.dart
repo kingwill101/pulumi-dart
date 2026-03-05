@@ -9,17 +9,20 @@ class ResourceGroupPropertiesResponse {
 
   /// Creates a new [ResourceGroupPropertiesResponse].
   /// [provisioningState] The provisioning state.
-  ResourceGroupPropertiesResponse({required this.provisioningState});
+  ResourceGroupPropertiesResponse({
+    required this.provisioningState,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'provisioningState': provisioningState};
+    return <String, dynamic>{
+      'provisioningState': provisioningState,
+    };
   }
 
   factory ResourceGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ResourceGroupPropertiesResponse(
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

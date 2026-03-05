@@ -6,26 +6,18 @@ import 'get_aggregators_aggregator_aggregator_account.dart';
 class GetAggregatorsAggregator {
   /// Aggregator account uid.
   final pulumi.Input<String> accountId;
-
   /// Account information in aggregator.
-  final pulumi.Input<List<GetAggregatorsAggregatorAggregatorAccount>>
-  aggregatorAccounts;
-
+  final pulumi.Input<List<GetAggregatorsAggregatorAggregatorAccount>> aggregatorAccounts;
   /// The id of aggregator.
   final pulumi.Input<String> aggregatorId;
-
   /// The name of aggregator.
   final pulumi.Input<String> aggregatorName;
-
   /// The type of aggregator.
   final pulumi.Input<String> aggregatorType;
-
   /// The description of aggregator.
   final pulumi.Input<String> description;
-
   /// The id of the aggregator.
   final pulumi.Input<String> id;
-
   /// The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
   final pulumi.Input<String> status;
 
@@ -52,18 +44,7 @@ class GetAggregatorsAggregator {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': accountId,
-      'aggregatorAccounts':
-          pulumi.Input.mapInputValue<
-            List<GetAggregatorsAggregatorAggregatorAccount>,
-            List<Map<String, dynamic>>
-          >(
-            aggregatorAccounts,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetAggregatorsAggregatorAggregatorAccount,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'aggregatorAccounts': pulumi.Input.mapInputValue<List<GetAggregatorsAggregatorAggregatorAccount>, List<Map<String, dynamic>>>(aggregatorAccounts, (value) => pulumi.Input.encodeList<GetAggregatorsAggregatorAggregatorAccount, Map<String, dynamic>>(value, (value) => value.toMap())),
       'aggregatorId': aggregatorId,
       'aggregatorName': aggregatorName,
       'aggregatorType': aggregatorType,
@@ -76,14 +57,7 @@ class GetAggregatorsAggregator {
   factory GetAggregatorsAggregator.fromMap(Map<String, dynamic> map) {
     return GetAggregatorsAggregator(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      aggregatorAccounts: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetAggregatorsAggregatorAggregatorAccount>(
-          map['aggregatorAccounts']!,
-          (value) => GetAggregatorsAggregatorAggregatorAccount.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      aggregatorAccounts: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAggregatorsAggregatorAggregatorAccount>(map['aggregatorAccounts']!, (value) => GetAggregatorsAggregatorAggregatorAccount.fromMap((value as Map).cast<String, dynamic>()))),
       aggregatorId: pulumi.Input.fromValue(map['aggregatorId'] as String),
       aggregatorName: pulumi.Input.fromValue(map['aggregatorName'] as String),
       aggregatorType: pulumi.Input.fromValue(map['aggregatorType'] as String),
@@ -93,3 +67,4 @@ class GetAggregatorsAggregator {
     );
   }
 }
+

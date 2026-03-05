@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAutoScaleVCoreArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
   final pulumi.Input<String> vcoreName;
 
@@ -30,10 +29,9 @@ class GetAutoScaleVCoreArgs {
 
   factory GetAutoScaleVCoreArgs.fromMap(Map<String, dynamic> map) {
     return GetAutoScaleVCoreArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vcoreName: pulumi.Input.fromValue(map['vcoreName'] as String),
     );
   }
 }
+

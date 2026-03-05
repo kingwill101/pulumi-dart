@@ -7,10 +7,8 @@ import 'error_detail_response.dart';
 class PlanMemberSyncStatusResponse {
   /// Error response describing why the sync failed.
   final pulumi.Input<ErrorDetailResponse>? lastSyncError;
-
   /// When the plan member was last synced.
   final pulumi.Input<String> lastSyncTime;
-
   /// The synchronization state of the plan member.
   final pulumi.Input<String> syncState;
 
@@ -26,11 +24,7 @@ class PlanMemberSyncStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lastSyncError':
-          ?pulumi.Input.mapOptionalInputValue<
-            ErrorDetailResponse,
-            Map<String, dynamic>
-          >(lastSyncError, (value) => value.toMap()),
+      'lastSyncError': ?pulumi.Input.mapOptionalInputValue<ErrorDetailResponse, Map<String, dynamic>>(lastSyncError, (value) => value.toMap()),
       'lastSyncTime': lastSyncTime,
       'syncState': syncState,
     };
@@ -38,17 +32,10 @@ class PlanMemberSyncStatusResponse {
 
   factory PlanMemberSyncStatusResponse.fromMap(Map<String, dynamic> map) {
     return PlanMemberSyncStatusResponse(
-      lastSyncError: (() {
-        final guardedValue = map['lastSyncError'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ErrorDetailResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      lastSyncError: (() { final guardedValue = map['lastSyncError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       lastSyncTime: pulumi.Input.fromValue(map['lastSyncTime'] as String),
       syncState: pulumi.Input.fromValue(map['syncState'] as String),
     );
   }
 }
+

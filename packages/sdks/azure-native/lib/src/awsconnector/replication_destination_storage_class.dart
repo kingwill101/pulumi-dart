@@ -18,8 +18,7 @@ enum ReplicationDestinationStorageClass {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ReplicationDestinationStorageClass value: $value',
-    );
+    throw ArgumentError('Unknown ReplicationDestinationStorageClass value: $value');
   }
 }
+

@@ -15,3 +15,4 @@ enum PolicyFragmentContentFormat {
     throw ArgumentError('Unknown PolicyFragmentContentFormat value: $value');
   }
 }
+

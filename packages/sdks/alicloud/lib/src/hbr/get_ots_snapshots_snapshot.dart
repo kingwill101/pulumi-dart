@@ -5,64 +5,44 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOtsSnapshotsSnapshot {
   /// The actual amount of backup snapshots after duplicates are removed. Unit: bytes.
   final pulumi.Input<String> actualBytes;
-
   /// The backup type. Valid value: `COMPLETE`, which indicates full backup.
   final pulumi.Input<String> backupType;
-
   /// The total amount of data. Unit: bytes.
   final pulumi.Input<String> bytesTotal;
-
   /// The time when the backup snapshot was completed. This value is a UNIX timestamp. Unit: seconds.
   final pulumi.Input<String> completeTime;
-
   /// The time when the Table store instance was created. This value is a UNIX timestamp. Unit: seconds.
   final pulumi.Input<String> createTime;
-
   /// The time when the backup snapshot was created. This value is a UNIX timestamp. Unit: seconds.
   final pulumi.Input<String> createdTime;
-
   /// The ID of the backup snapshot.
   final pulumi.Input<String> id;
-
   /// The name of the Table store instance.
   final pulumi.Input<String> instanceName;
-
   /// The ID of the backup job.
   final pulumi.Input<String> jobId;
-
   /// The hash value of the parent backup snapshot.
   final pulumi.Input<String> parentSnapshotHash;
-
   /// The time when the backup job ended. This value is a UNIX timestamp. Unit: milliseconds.
   final pulumi.Input<String> rangeEnd;
-
   /// The time when the backup job started. This value is a UNIX timestamp. Unit: milliseconds.
   final pulumi.Input<String> rangeStart;
-
   /// The retention period of the backup snapshot.
   final pulumi.Input<String> retention;
-
   /// The hash value of the backup snapshot.
   final pulumi.Input<String> snapshotHash;
-
   /// The ID of the backup snapshot.
   final pulumi.Input<String> snapshotId;
-
   /// The type of the data source. Valid values: `ECS_FILE`,`PARTIAL_COMPLETE`,`FAILED`
   final pulumi.Input<String> sourceType;
-
   /// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
   final pulumi.Input<String> startTime;
-
   /// The status of the backup job. Valid values: `COMPLETE`,`PARTIAL_COMPLETE`,`FAILED`.
   final pulumi.Input<String> status;
-
   /// The name of the table in the Table store instance.
   final pulumi.Input<String> tableName;
-
   /// The time when the backup snapshot was updated. This value is a UNIX timestamp. Unit: seconds.
   final pulumi.Input<String> updatedTime;
-
   /// The ID of the backup vault that stores the backup snapshot.
   final pulumi.Input<String> vaultId;
 
@@ -149,9 +129,7 @@ class GetOtsSnapshotsSnapshot {
       id: pulumi.Input.fromValue(map['id'] as String),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
       jobId: pulumi.Input.fromValue(map['jobId'] as String),
-      parentSnapshotHash: pulumi.Input.fromValue(
-        map['parentSnapshotHash'] as String,
-      ),
+      parentSnapshotHash: pulumi.Input.fromValue(map['parentSnapshotHash'] as String),
       rangeEnd: pulumi.Input.fromValue(map['rangeEnd'] as String),
       rangeStart: pulumi.Input.fromValue(map['rangeStart'] as String),
       retention: pulumi.Input.fromValue(map['retention'] as String),
@@ -166,3 +144,4 @@ class GetOtsSnapshotsSnapshot {
     );
   }
 }
+

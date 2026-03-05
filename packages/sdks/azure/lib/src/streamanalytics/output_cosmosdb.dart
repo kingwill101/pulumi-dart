@@ -417,25 +417,18 @@ import 'output_cosmosdb_state.dart';
 class OutputCosmosdb extends pulumi.CustomResource {
   /// The authentication mode for the CosmosDB database. Possible values are `ConnectionString` and `Msi`. Defaults to `ConnectionString`.
   late final pulumi.Output<String?> authenticationMode;
-
   /// The name of the CosmosDB container.
   late final pulumi.Output<String> containerName;
-
   /// The account key for the CosmosDB database.
   late final pulumi.Output<String> cosmosdbAccountKey;
-
   /// The ID of the CosmosDB database.
   late final pulumi.Output<String> cosmosdbSqlDatabaseId;
-
   /// The name of the field in output events used to specify the primary key which insert or update operations are based on.
   late final pulumi.Output<String?> documentId;
-
   /// The name of the Stream Analytics Output. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the field in output events used to specify the key for partitioning output across collections. If `container_name` contains `{partition}` token, this property is required to be specified.
   late final pulumi.Output<String?> partitionKey;
-
   /// The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobId;
 
@@ -448,11 +441,11 @@ class OutputCosmosdb extends pulumi.CustomResource {
     OutputCosmosdbArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/outputCosmosdb:OutputCosmosdb',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/outputCosmosdb:OutputCosmosdb',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     containerName = registerOutput<String>('containerName');
     cosmosdbAccountKey = registerOutput<String>('cosmosdbAccountKey');
@@ -481,11 +474,11 @@ class OutputCosmosdb extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/outputCosmosdb:OutputCosmosdb',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/outputCosmosdb:OutputCosmosdb',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     containerName = registerOutput<String>('containerName');
     cosmosdbAccountKey = registerOutput<String>('cosmosdbAccountKey');

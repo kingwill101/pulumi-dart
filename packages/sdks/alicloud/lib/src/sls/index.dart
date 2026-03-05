@@ -497,25 +497,18 @@ import 'index_state.dart';
 class Index extends pulumi.CustomResource {
   /// Field index
   late final pulumi.Output<String?> keys;
-
   /// Full-text index See `line` below.
   late final pulumi.Output<IndexLine?> line;
-
   /// Whether log clustering is enabled
   late final pulumi.Output<bool?> logReduce;
-
   /// The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
   late final pulumi.Output<List<String>?> logReduceBlackLists;
-
   /// The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
   late final pulumi.Output<List<String>?> logReduceWhiteLists;
-
   /// Logstore name
   late final pulumi.Output<String> logstoreName;
-
   /// Maximum length of statistical field
   late final pulumi.Output<int?> maxTextLen;
-
   /// Project name
   late final pulumi.Output<String> projectName;
 
@@ -523,22 +516,18 @@ class Index extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Index]. {@macro pulumi_sls_index_index_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Index(String name, {IndexArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:sls/index:Index',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Index(
+    String name, {
+    IndexArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:sls/index:Index',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keys = registerOutput<String?>('keys');
-    line = registerOutput<IndexLine?>(
-      'line',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IndexLine.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    line = registerOutput<IndexLine?>('line', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexLine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logReduce = registerOutput<bool?>('logReduce');
     logReduceBlackLists = registerOutput<List<String>?>('logReduceBlackLists');
     logReduceWhiteLists = registerOutput<List<String>?>('logReduceWhiteLists');
@@ -548,7 +537,11 @@ class Index extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Index] resource's state with the given [name] and [id].
-  static Index get(String name, pulumi.Input<String> id, {IndexState? state}) {
+  static Index get(
+    String name,
+    pulumi.Input<String> id, {
+    IndexState? state,
+  }) {
     return Index._get(
       name,
       state: state?.toMap(),
@@ -561,20 +554,13 @@ class Index extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sls/index:Index',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sls/index:Index',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keys = registerOutput<String?>('keys');
-    line = registerOutput<IndexLine?>(
-      'line',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IndexLine.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    line = registerOutput<IndexLine?>('line', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexLine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logReduce = registerOutput<bool?>('logReduce');
     logReduceBlackLists = registerOutput<List<String>?>('logReduceBlackLists');
     logReduceWhiteLists = registerOutput<List<String>?>('logReduceWhiteLists');

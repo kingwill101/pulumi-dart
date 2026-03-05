@@ -10,25 +10,20 @@ class SourceHierarchyDatasetsResponse {
 
   /// Creates a new [SourceHierarchyDatasetsResponse].
   /// [datasetTemplate] The dataset template to use for dynamic dataset creation.
-  SourceHierarchyDatasetsResponse({required this.datasetTemplate});
+  SourceHierarchyDatasetsResponse({
+    required this.datasetTemplate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datasetTemplate':
-          pulumi.Input.mapInputValue<
-            DatasetTemplateResponse,
-            Map<String, dynamic>
-          >(datasetTemplate, (value) => value.toMap()),
+      'datasetTemplate': pulumi.Input.mapInputValue<DatasetTemplateResponse, Map<String, dynamic>>(datasetTemplate, (value) => value.toMap()),
     };
   }
 
   factory SourceHierarchyDatasetsResponse.fromMap(Map<String, dynamic> map) {
     return SourceHierarchyDatasetsResponse(
-      datasetTemplate: pulumi.Input.fromValue(
-        DatasetTemplateResponse.fromMap(
-          (map['datasetTemplate']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      datasetTemplate: pulumi.Input.fromValue(DatasetTemplateResponse.fromMap((map['datasetTemplate']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

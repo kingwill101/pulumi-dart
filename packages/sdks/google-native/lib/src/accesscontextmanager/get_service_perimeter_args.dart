@@ -28,9 +28,8 @@ class GetServicePerimeterArgs {
   factory GetServicePerimeterArgs.fromMap(Map<String, dynamic> map) {
     return GetServicePerimeterArgs(
       accessPolicyId: pulumi.Input.fromValue(map['accessPolicyId'] as String),
-      servicePerimeterId: pulumi.Input.fromValue(
-        map['servicePerimeterId'] as String,
-      ),
+      servicePerimeterId: pulumi.Input.fromValue(map['servicePerimeterId'] as String),
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareCbtSecurityProfilePropertiesResponse {
   /// A value indicating whether confidential compute encryption to be enabled.
   final pulumi.Input<String>? isTargetVmConfidentialEncryptionEnabled;
-
   /// A value indicating whether integrity monitoring to be enabled.
   final pulumi.Input<String>? isTargetVmIntegrityMonitoringEnabled;
-
   /// A value indicating whether secure boot to be enabled.
   final pulumi.Input<String>? isTargetVmSecureBootEnabled;
-
   /// A value indicating whether trusted platform module to be enabled.
   final pulumi.Input<String>? isTargetVmTpmEnabled;
-
   /// The target VM security type.
   final pulumi.Input<String>? targetVmSecurityType;
 
@@ -35,45 +31,22 @@ class VMwareCbtSecurityProfilePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'isTargetVmConfidentialEncryptionEnabled':
-          ?isTargetVmConfidentialEncryptionEnabled,
-      'isTargetVmIntegrityMonitoringEnabled':
-          ?isTargetVmIntegrityMonitoringEnabled,
+      'isTargetVmConfidentialEncryptionEnabled': ?isTargetVmConfidentialEncryptionEnabled,
+      'isTargetVmIntegrityMonitoringEnabled': ?isTargetVmIntegrityMonitoringEnabled,
       'isTargetVmSecureBootEnabled': ?isTargetVmSecureBootEnabled,
       'isTargetVmTpmEnabled': ?isTargetVmTpmEnabled,
       'targetVmSecurityType': ?targetVmSecurityType,
     };
   }
 
-  factory VMwareCbtSecurityProfilePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VMwareCbtSecurityProfilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VMwareCbtSecurityProfilePropertiesResponse(
-      isTargetVmConfidentialEncryptionEnabled: (() {
-        final guardedValue = map['isTargetVmConfidentialEncryptionEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isTargetVmIntegrityMonitoringEnabled: (() {
-        final guardedValue = map['isTargetVmIntegrityMonitoringEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isTargetVmSecureBootEnabled: (() {
-        final guardedValue = map['isTargetVmSecureBootEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isTargetVmTpmEnabled: (() {
-        final guardedValue = map['isTargetVmTpmEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetVmSecurityType: (() {
-        final guardedValue = map['targetVmSecurityType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      isTargetVmConfidentialEncryptionEnabled: (() { final guardedValue = map['isTargetVmConfidentialEncryptionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isTargetVmIntegrityMonitoringEnabled: (() { final guardedValue = map['isTargetVmIntegrityMonitoringEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isTargetVmSecureBootEnabled: (() { final guardedValue = map['isTargetVmSecureBootEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isTargetVmTpmEnabled: (() { final guardedValue = map['isTargetVmTpmEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetVmSecurityType: (() { final guardedValue = map['targetVmSecurityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

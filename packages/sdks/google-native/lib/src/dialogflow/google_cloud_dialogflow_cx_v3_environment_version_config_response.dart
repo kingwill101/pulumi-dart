@@ -14,14 +14,15 @@ class GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'version': version};
+    return <String, dynamic>{
+      'version': version,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse(
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

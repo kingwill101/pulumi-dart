@@ -10,39 +10,20 @@ class RateLimitRuleListResponse {
 
   /// Creates a new [RateLimitRuleListResponse].
   /// [rules] List of rules
-  RateLimitRuleListResponse({this.rules});
+  RateLimitRuleListResponse({
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<RateLimitRuleResponse>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RateLimitRuleResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<RateLimitRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<RateLimitRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RateLimitRuleListResponse.fromMap(Map<String, dynamic> map) {
     return RateLimitRuleListResponse(
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<RateLimitRuleResponse>(
-            guardedValue,
-            (value) => RateLimitRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RateLimitRuleResponse>(guardedValue, (value) => RateLimitRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

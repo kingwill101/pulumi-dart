@@ -334,45 +334,32 @@ import 'gremlin_graph_state.dart';
 class GremlinGraph extends pulumi.CustomResource {
   /// The name of the CosmosDB Account to create the Gremlin Graph within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-
   /// The time to live of Analytical Storage for this Cosmos DB Gremlin Graph. Possible values are between `-1` to `2147483647` not including `0`. If present and the value is set to `-1`, it means never expire.
   ///
   /// &gt; **Note:** Disabling `analytical_storage_ttl` will force a new resource to be created since it can't be disabled once it's enabled.
   late final pulumi.Output<int?> analyticalStorageTtl;
-
   /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply. Requires `partition_key_path` to be set.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   late final pulumi.Output<GremlinGraphAutoscaleSettings?> autoscaleSettings;
-
   /// A `conflict_resolution_policy` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<GremlinGraphConflictResolutionPolicy>
-  conflictResolutionPolicy;
-
+  late final pulumi.Output<GremlinGraphConflictResolutionPolicy> conflictResolutionPolicy;
   /// The name of the Cosmos DB Graph Database in which the Cosmos DB Gremlin Graph is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseName;
-
   /// The default time to live (TTL) of the Gremlin graph. If the value is missing or set to "-1", items don’t expire.
   late final pulumi.Output<int?> defaultTtl;
-
   /// The configuration of the indexing policy. One or more `index_policy` blocks as defined below.
   late final pulumi.Output<GremlinGraphIndexPolicy> indexPolicy;
-
   /// Specifies the name of the Cosmos DB Gremlin Graph. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Define a partition key. Changing this forces a new resource to be created.
   late final pulumi.Output<String> partitionKeyPath;
-
   /// Define a partition key version. Changing this forces a new resource to be created. Possible values are `1`and `2`. This should be set to `2` in order to use large partition keys.
   late final pulumi.Output<int?> partitionKeyVersion;
-
   /// The name of the resource group in which the Cosmos DB Gremlin Graph is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The throughput of the Gremlin graph (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   late final pulumi.Output<int> throughput;
-
   /// One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> uniqueKeys;
 
@@ -385,46 +372,18 @@ class GremlinGraph extends pulumi.CustomResource {
     GremlinGraphArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/gremlinGraph:GremlinGraph',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/gremlinGraph:GremlinGraph',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
-    autoscaleSettings = registerOutput<GremlinGraphAutoscaleSettings?>(
-      'autoscaleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GremlinGraphAutoscaleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    conflictResolutionPolicy =
-        registerOutput<GremlinGraphConflictResolutionPolicy>(
-          'conflictResolutionPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GremlinGraphConflictResolutionPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    autoscaleSettings = registerOutput<GremlinGraphAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GremlinGraphAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    conflictResolutionPolicy = registerOutput<GremlinGraphConflictResolutionPolicy>('conflictResolutionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GremlinGraphConflictResolutionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     databaseName = registerOutput<String>('databaseName');
     defaultTtl = registerOutput<int?>('defaultTtl');
-    indexPolicy = registerOutput<GremlinGraphIndexPolicy>(
-      'indexPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GremlinGraphIndexPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    indexPolicy = registerOutput<GremlinGraphIndexPolicy>('indexPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GremlinGraphIndexPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     partitionKeyPath = registerOutput<String>('partitionKeyPath');
     partitionKeyVersion = registerOutput<int?>('partitionKeyVersion');
@@ -451,46 +410,18 @@ class GremlinGraph extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/gremlinGraph:GremlinGraph',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/gremlinGraph:GremlinGraph',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
-    autoscaleSettings = registerOutput<GremlinGraphAutoscaleSettings?>(
-      'autoscaleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GremlinGraphAutoscaleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    conflictResolutionPolicy =
-        registerOutput<GremlinGraphConflictResolutionPolicy>(
-          'conflictResolutionPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GremlinGraphConflictResolutionPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    autoscaleSettings = registerOutput<GremlinGraphAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GremlinGraphAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    conflictResolutionPolicy = registerOutput<GremlinGraphConflictResolutionPolicy>('conflictResolutionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GremlinGraphConflictResolutionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     databaseName = registerOutput<String>('databaseName');
     defaultTtl = registerOutput<int?>('defaultTtl');
-    indexPolicy = registerOutput<GremlinGraphIndexPolicy>(
-      'indexPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GremlinGraphIndexPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    indexPolicy = registerOutput<GremlinGraphIndexPolicy>('indexPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GremlinGraphIndexPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     partitionKeyPath = registerOutput<String>('partitionKeyPath');
     partitionKeyVersion = registerOutput<int?>('partitionKeyVersion');

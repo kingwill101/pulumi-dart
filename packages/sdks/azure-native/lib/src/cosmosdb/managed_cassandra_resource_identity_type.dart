@@ -12,8 +12,7 @@ enum ManagedCassandraResourceIdentityType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ManagedCassandraResourceIdentityType value: $value',
-    );
+    throw ArgumentError('Unknown ManagedCassandraResourceIdentityType value: $value');
   }
 }
+

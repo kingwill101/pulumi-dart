@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLabelByWorkspaceArgs {
   /// The name of the Label.
   final pulumi.Input<String> labelName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -37,10 +35,9 @@ class GetLabelByWorkspaceArgs {
   factory GetLabelByWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetLabelByWorkspaceArgs(
       labelName: pulumi.Input.fromValue(map['labelName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

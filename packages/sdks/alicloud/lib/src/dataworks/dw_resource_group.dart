@@ -376,40 +376,28 @@ import 'dw_resource_group_state.dart';
 class DwResourceGroup extends pulumi.CustomResource {
   /// Whether to automatically renew. The default value is false.
   late final pulumi.Output<bool?> autoRenew;
-
   /// Resource group creation time
   late final pulumi.Output<int> createTime;
-
   /// The VPC ID of the default network resource.
   late final pulumi.Output<String> defaultVpcId;
-
   /// The ID of the vswitch bound to the network resource by default.
   late final pulumi.Output<String> defaultVswitchId;
-
   /// When the payment method is Prepaid, the unit is PaymentDurationUnit.
   late final pulumi.Output<int?> paymentDuration;
-
   /// When the payment method is Prepaid, the payment duration unit, Month is Month, Year is Year, and there is no other optional value.
   late final pulumi.Output<String?> paymentDurationUnit;
-
   /// The billing type of the resource group. PrePaid is Subscription, and PostPaid is Pay-As-You-Go.
   late final pulumi.Output<String> paymentType;
-
   /// Resource Group Comments
   late final pulumi.Output<String> remark;
-
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
-
   /// Resource group name
   late final pulumi.Output<String?> resourceGroupName;
-
   /// Package year and package month resource group specifications, unit CU
   late final pulumi.Output<int?> specification;
-
   /// Resource group status:
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -422,11 +410,11 @@ class DwResourceGroup extends pulumi.CustomResource {
     DwResourceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dataworks/dwResourceGroup:DwResourceGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dataworks/dwResourceGroup:DwResourceGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenew = registerOutput<bool?>('autoRenew');
     createTime = registerOutput<int>('createTime');
     defaultVpcId = registerOutput<String>('defaultVpcId');
@@ -460,11 +448,11 @@ class DwResourceGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dataworks/dwResourceGroup:DwResourceGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dataworks/dwResourceGroup:DwResourceGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenew = registerOutput<bool?>('autoRenew');
     createTime = registerOutput<int>('createTime');
     defaultVpcId = registerOutput<String>('defaultVpcId');

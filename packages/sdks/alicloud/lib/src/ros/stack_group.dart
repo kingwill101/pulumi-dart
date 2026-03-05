@@ -138,52 +138,37 @@ import 'stack_group_state.dart';
 class StackGroup extends pulumi.CustomResource {
   /// The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
   late final pulumi.Output<String> administrationRoleName;
-
   /// Automatic deployment setting information. Description
   /// This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
   late final pulumi.Output<StackGroupAutoDeployment?> autoDeployment;
-
   /// The list of resource stack group options. The maximum length is 1.
   late final pulumi.Output<List<String>?> capabilities;
-
   /// The description of the stack group.
   late final pulumi.Output<String?> description;
-
   /// The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
   late final pulumi.Output<String> executionRoleName;
-
   /// Parameters See `parameters` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
-
   /// The permission model.
   late final pulumi.Output<String> permissionModel;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The ID of stack group.
   late final pulumi.Output<String> stackGroupId;
-
   /// StackGroupName
   late final pulumi.Output<String> stackGroupName;
-
   /// The status of the stack group.
   late final pulumi.Output<String> status;
-
   /// The label of the resource stack group.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The template body.
   late final pulumi.Output<String> templateBody;
-
   /// The ID of the template.
   late final pulumi.Output<String?> templateId;
-
   /// The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
   ///
   /// &gt; **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
   late final pulumi.Output<String?> templateUrl;
-
   /// The version of the template.
   late final pulumi.Output<String?> templateVersion;
 
@@ -196,22 +181,13 @@ class StackGroup extends pulumi.CustomResource {
     StackGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ros/stackGroup:StackGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ros/stackGroup:StackGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administrationRoleName = registerOutput<String>('administrationRoleName');
-    autoDeployment = registerOutput<StackGroupAutoDeployment?>(
-      'autoDeployment',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StackGroupAutoDeployment.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    autoDeployment = registerOutput<StackGroupAutoDeployment?>('autoDeployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackGroupAutoDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     capabilities = registerOutput<List<String>?>('capabilities');
     description = registerOutput<String?>('description');
     executionRoleName = registerOutput<String>('executionRoleName');
@@ -246,22 +222,13 @@ class StackGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ros/stackGroup:StackGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ros/stackGroup:StackGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administrationRoleName = registerOutput<String>('administrationRoleName');
-    autoDeployment = registerOutput<StackGroupAutoDeployment?>(
-      'autoDeployment',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StackGroupAutoDeployment.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    autoDeployment = registerOutput<StackGroupAutoDeployment?>('autoDeployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackGroupAutoDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     capabilities = registerOutput<List<String>?>('capabilities');
     description = registerOutput<String?>('description');
     executionRoleName = registerOutput<String>('executionRoleName');

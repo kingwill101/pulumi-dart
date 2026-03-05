@@ -14,8 +14,7 @@ enum DataflowEndpointKafkaPartitionStrategy {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DataflowEndpointKafkaPartitionStrategy value: $value',
-    );
+    throw ArgumentError('Unknown DataflowEndpointKafkaPartitionStrategy value: $value');
   }
 }
+

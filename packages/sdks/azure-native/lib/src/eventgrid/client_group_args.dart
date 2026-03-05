@@ -9,17 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientGroupArgs {
   /// The client group name.
   final pulumi.Input<String>? clientGroupName;
-
   /// Description for the Client Group resource.
   final pulumi.Input<String>? description;
-
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
-
   /// The grouping query for the clients.
   /// Example : attributes.keyName IN ['a', 'b', 'c'].
   final pulumi.Input<String>? query;
-
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -49,25 +45,12 @@ class ClientGroupArgs {
 
   factory ClientGroupArgs.fromMap(Map<String, dynamic> map) {
     return ClientGroupArgs(
-      clientGroupName: (() {
-        final guardedValue = map['clientGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientGroupName: (() { final guardedValue = map['clientGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      query: (() {
-        final guardedValue = map['query'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      query: (() { final guardedValue = map['query']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

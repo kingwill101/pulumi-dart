@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PacketCaptureMachineScopeResponse {
   /// List of AzureVMSS instances which has to be excluded from the AzureVMSS from running packet capture.
   final pulumi.Input<List<String>>? exclude;
-
   /// List of AzureVMSS instances to run packet capture on.
   final pulumi.Input<List<String>>? include;
 
   /// Creates a new [PacketCaptureMachineScopeResponse].
   /// [exclude] List of AzureVMSS instances which has to be excluded from the AzureVMSS from running packet capture.
   /// [include] List of AzureVMSS instances to run packet capture on.
-  PacketCaptureMachineScopeResponse({this.exclude, this.include});
+  PacketCaptureMachineScopeResponse({
+    this.exclude,
+    this.include,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exclude': ?exclude, 'include': ?include};
+    return <String, dynamic>{
+      'exclude': ?exclude,
+      'include': ?include,
+    };
   }
 
   factory PacketCaptureMachineScopeResponse.fromMap(Map<String, dynamic> map) {
     return PacketCaptureMachineScopeResponse(
-      exclude: (() {
-        final guardedValue = map['exclude'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      include: (() {
-        final guardedValue = map['include'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      exclude: (() { final guardedValue = map['exclude']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      include: (() { final guardedValue = map['include']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

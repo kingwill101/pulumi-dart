@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter {
   /// Specifies whether to enable authentication.
   final pulumi.Input<String>? isValueSecret;
-
   /// The key of the request path.
   final pulumi.Input<String>? key;
-
   /// The key of the request path.
   final pulumi.Input<String>? value;
 
@@ -30,25 +28,12 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter {
     };
   }
 
-  factory ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter(
-      isValueSecret: (() {
-        final guardedValue = map['isValueSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      isValueSecret: (() { final guardedValue = map['isValueSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

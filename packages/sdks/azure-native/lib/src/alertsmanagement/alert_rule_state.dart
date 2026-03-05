@@ -15,3 +15,4 @@ enum AlertRuleState {
     throw ArgumentError('Unknown AlertRuleState value: $value');
   }
 }
+

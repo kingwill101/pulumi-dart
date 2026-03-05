@@ -15,67 +15,47 @@ import 'volume_response.dart';
 class GetContainerGroupProfileResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The properties for confidential container group
   final ConfidentialComputePropertiesResponse? confidentialComputeProperties;
-
   /// The containers within the container group.
   final List<ContainerResponse> containers;
-
   /// The diagnostic information for a container group.
   final ContainerGroupDiagnosticsResponse? diagnostics;
-
   /// The encryption properties for a container group.
   final EncryptionPropertiesResponse? encryptionProperties;
-
   /// extensions used by virtual kubelet
   final List<DeploymentExtensionSpecResponse>? extensions;
-
   /// The resource id.
   final String id;
-
   /// The image registry credentials by which the container group is created from.
   final List<ImageRegistryCredentialResponse>? imageRegistryCredentials;
-
   /// The init containers for a container group.
   final List<InitContainerDefinitionResponse>? initContainers;
-
   /// The IP address type of the container group.
   final IpAddressResponse? ipAddress;
-
   /// The resource location.
   final String? location;
-
   /// The resource name.
   final String name;
-
   /// The operating system type required by the containers in the container group.
   final String osType;
-
   /// The priority of the container group.
   final String? priority;
-
   /// Restart policy for all containers within the container group.
   /// - `Always` Always restart
   /// - `OnFailure` Restart on failure
   /// - `Never` Never restart
   final String? restartPolicy;
-
   /// The container group profile current revision number. This only appears in the response.
   final int revision;
-
   /// The SKU for a container group.
   final String? sku;
-
   /// The resource tags.
   final Map<String, String>? tags;
-
   /// The resource type.
   final String type;
-
   /// The list of volumes that can be mounted by containers in this container group.
   final List<VolumeResponse>? volumes;
-
   /// The zones for the container group.
   final List<String>? zones;
 
@@ -129,38 +109,13 @@ class GetContainerGroupProfileResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'confidentialComputeProperties': ?confidentialComputeProperties?.toMap(),
-      'containers':
-          pulumi.Input.encodeList<ContainerResponse, Map<String, dynamic>>(
-            containers,
-            (value) => value.toMap(),
-          ),
+      'containers': pulumi.Input.encodeList<ContainerResponse, Map<String, dynamic>>(containers, (value) => value.toMap()),
       'diagnostics': ?diagnostics?.toMap(),
       'encryptionProperties': ?encryptionProperties?.toMap(),
-      'extensions': ?(() {
-        final guardedValue = extensions;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          DeploymentExtensionSpecResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'extensions': ?(() { final guardedValue = extensions; if (guardedValue == null) return null; return pulumi.Input.encodeList<DeploymentExtensionSpecResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
-      'imageRegistryCredentials': ?(() {
-        final guardedValue = imageRegistryCredentials;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          ImageRegistryCredentialResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
-      'initContainers': ?(() {
-        final guardedValue = initContainers;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          InitContainerDefinitionResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'imageRegistryCredentials': ?(() { final guardedValue = imageRegistryCredentials; if (guardedValue == null) return null; return pulumi.Input.encodeList<ImageRegistryCredentialResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'initContainers': ?(() { final guardedValue = initContainers; if (guardedValue == null) return null; return pulumi.Input.encodeList<InitContainerDefinitionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'ipAddress': ?ipAddress?.toMap(),
       'location': ?location,
       'name': name,
@@ -171,14 +126,7 @@ class GetContainerGroupProfileResult {
       'sku': ?sku,
       'tags': ?tags,
       'type': type,
-      'volumes': ?(() {
-        final guardedValue = volumes;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<VolumeResponse, Map<String, dynamic>>(
-          guardedValue,
-          (value) => value.toMap(),
-        );
-      })(),
+      'volumes': ?(() { final guardedValue = volumes; if (guardedValue == null) return null; return pulumi.Input.encodeList<VolumeResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'zones': ?zones,
     };
   }
@@ -186,113 +134,27 @@ class GetContainerGroupProfileResult {
   factory GetContainerGroupProfileResult.fromMap(Map<String, dynamic> map) {
     return GetContainerGroupProfileResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      confidentialComputeProperties: (() {
-        final guardedValue = map['confidentialComputeProperties'];
-        if (guardedValue == null) return null;
-        return ConfidentialComputePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      containers: pulumi.Input.decodeList<ContainerResponse>(
-        map['containers']!,
-        (value) =>
-            ContainerResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      diagnostics: (() {
-        final guardedValue = map['diagnostics'];
-        if (guardedValue == null) return null;
-        return ContainerGroupDiagnosticsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      encryptionProperties: (() {
-        final guardedValue = map['encryptionProperties'];
-        if (guardedValue == null) return null;
-        return EncryptionPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      extensions: (() {
-        final guardedValue = map['extensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<DeploymentExtensionSpecResponse>(
-          guardedValue,
-          (value) => DeploymentExtensionSpecResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      confidentialComputeProperties: (() { final guardedValue = map['confidentialComputeProperties']; if (guardedValue == null) return null; return ConfidentialComputePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      containers: pulumi.Input.decodeList<ContainerResponse>(map['containers']!, (value) => ContainerResponse.fromMap((value as Map).cast<String, dynamic>())),
+      diagnostics: (() { final guardedValue = map['diagnostics']; if (guardedValue == null) return null; return ContainerGroupDiagnosticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      encryptionProperties: (() { final guardedValue = map['encryptionProperties']; if (guardedValue == null) return null; return EncryptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      extensions: (() { final guardedValue = map['extensions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentExtensionSpecResponse>(guardedValue, (value) => DeploymentExtensionSpecResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      imageRegistryCredentials: (() {
-        final guardedValue = map['imageRegistryCredentials'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<ImageRegistryCredentialResponse>(
-          guardedValue,
-          (value) => ImageRegistryCredentialResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      initContainers: (() {
-        final guardedValue = map['initContainers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<InitContainerDefinitionResponse>(
-          guardedValue,
-          (value) => InitContainerDefinitionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      ipAddress: (() {
-        final guardedValue = map['ipAddress'];
-        if (guardedValue == null) return null;
-        return IpAddressResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      imageRegistryCredentials: (() { final guardedValue = map['imageRegistryCredentials']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageRegistryCredentialResponse>(guardedValue, (value) => ImageRegistryCredentialResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      initContainers: (() { final guardedValue = map['initContainers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<InitContainerDefinitionResponse>(guardedValue, (value) => InitContainerDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return IpAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       osType: map['osType'] as String,
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      restartPolicy: (() {
-        final guardedValue = map['restartPolicy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      restartPolicy: (() { final guardedValue = map['restartPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       revision: map['revision'] as int,
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      volumes: (() {
-        final guardedValue = map['volumes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<VolumeResponse>(
-          guardedValue,
-          (value) =>
-              VolumeResponse.fromMap((value as Map).cast<String, dynamic>()),
-        );
-      })(),
-      zones: (() {
-        final guardedValue = map['zones'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeResponse>(guardedValue, (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }
+

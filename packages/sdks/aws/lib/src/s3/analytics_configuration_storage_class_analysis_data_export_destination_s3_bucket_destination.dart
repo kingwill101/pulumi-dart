@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination {
   /// Account ID that owns the destination bucket.
   final pulumi.Input<String>? bucketAccountId;
-
   /// ARN of the destination bucket.
   final pulumi.Input<String> bucketArn;
-
   /// Output format of exported analytics data. Allowed values: `CSV`. Default value: `CSV`.
   final pulumi.Input<String>? format;
-
   /// Prefix to append to exported analytics data.
   final pulumi.Input<String>? prefix;
 
@@ -36,26 +33,13 @@ class AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDes
     };
   }
 
-  factory AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination.fromMap(Map<String, dynamic> map) {
     return AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination(
-      bucketAccountId: (() {
-        final guardedValue = map['bucketAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucketAccountId: (() { final guardedValue = map['bucketAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bucketArn: pulumi.Input.fromValue(map['bucketArn'] as String),
-      format: (() {
-        final guardedValue = map['format'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

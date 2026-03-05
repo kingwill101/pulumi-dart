@@ -10,19 +10,14 @@ import 'job_collection_properties.dart';
 class JobCollectionArgs {
   /// The job collection name.
   final pulumi.Input<String>? jobCollectionName;
-
   /// Gets or sets the storage account location.
   final pulumi.Input<String>? location;
-
   /// Gets or sets the job collection resource name.
   final pulumi.Input<String>? name;
-
   /// Gets or sets the job collection properties.
   final pulumi.Input<JobCollectionProperties>? properties;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// Gets or sets the tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -47,11 +42,7 @@ class JobCollectionArgs {
       'jobCollectionName': ?jobCollectionName,
       'location': ?location,
       'name': ?name,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobCollectionProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<JobCollectionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -59,40 +50,13 @@ class JobCollectionArgs {
 
   factory JobCollectionArgs.fromMap(Map<String, dynamic> map) {
     return JobCollectionArgs(
-      jobCollectionName: (() {
-        final guardedValue = map['jobCollectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobCollectionProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      jobCollectionName: (() { final guardedValue = map['jobCollectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobCollectionProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

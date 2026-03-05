@@ -9,19 +9,20 @@ class ScopeNamespace {
 
   /// Creates a new [ScopeNamespace].
   /// [targetNamespace] Namespace where the extension will be created for an Namespace scoped extension.  If this namespace does not exist, it will be created
-  ScopeNamespace({this.targetNamespace});
+  ScopeNamespace({
+    this.targetNamespace,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'targetNamespace': ?targetNamespace};
+    return <String, dynamic>{
+      'targetNamespace': ?targetNamespace,
+    };
   }
 
   factory ScopeNamespace.fromMap(Map<String, dynamic> map) {
     return ScopeNamespace(
-      targetNamespace: (() {
-        final guardedValue = map['targetNamespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      targetNamespace: (() { final guardedValue = map['targetNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

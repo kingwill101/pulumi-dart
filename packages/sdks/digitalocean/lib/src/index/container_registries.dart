@@ -20,11 +20,11 @@ class ContainerRegistries extends pulumi.CustomResource {
     ContainerRegistriesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/containerRegistries:ContainerRegistries',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/containerRegistries:ContainerRegistries',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     endpoint = registerOutput<String>('endpoint');
     this.name = registerOutput<String>('name');
@@ -52,11 +52,11 @@ class ContainerRegistries extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/containerRegistries:ContainerRegistries',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/containerRegistries:ContainerRegistries',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     endpoint = registerOutput<String>('endpoint');
     this.name = registerOutput<String>('name');

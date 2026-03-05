@@ -284,11 +284,11 @@ class RegistryTaskScheduleRunNow extends pulumi.CustomResource {
     RegistryTaskScheduleRunNowArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/registryTaskScheduleRunNow:RegistryTaskScheduleRunNow',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:containerservice/registryTaskScheduleRunNow:RegistryTaskScheduleRunNow',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     containerRegistryTaskId = registerOutput<String>('containerRegistryTaskId');
   }
 
@@ -310,11 +310,11 @@ class RegistryTaskScheduleRunNow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/registryTaskScheduleRunNow:RegistryTaskScheduleRunNow',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:containerservice/registryTaskScheduleRunNow:RegistryTaskScheduleRunNow',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     containerRegistryTaskId = registerOutput<String>('containerRegistryTaskId');
   }
 }

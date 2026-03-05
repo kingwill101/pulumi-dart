@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProductGroupLinkArgs {
   /// Full resource Id of a group.
   final pulumi.Input<String> groupId;
-
   /// Product-Group link identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? groupLinkId;
-
   /// Product identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> productId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -49,16 +45,11 @@ class ProductGroupLinkArgs {
   factory ProductGroupLinkArgs.fromMap(Map<String, dynamic> map) {
     return ProductGroupLinkArgs(
       groupId: pulumi.Input.fromValue(map['groupId'] as String),
-      groupLinkId: (() {
-        final guardedValue = map['groupLinkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      groupLinkId: (() { final guardedValue = map['groupLinkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       productId: pulumi.Input.fromValue(map['productId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

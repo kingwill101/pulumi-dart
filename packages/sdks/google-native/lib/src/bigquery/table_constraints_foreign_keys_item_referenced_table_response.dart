@@ -25,9 +25,7 @@ class TableConstraintsForeignKeysItemReferencedTableResponse {
     };
   }
 
-  factory TableConstraintsForeignKeysItemReferencedTableResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TableConstraintsForeignKeysItemReferencedTableResponse.fromMap(Map<String, dynamic> map) {
     return TableConstraintsForeignKeysItemReferencedTableResponse(
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),
@@ -35,3 +33,4 @@ class TableConstraintsForeignKeysItemReferencedTableResponse {
     );
   }
 }
+

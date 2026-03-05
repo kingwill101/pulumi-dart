@@ -7,19 +7,20 @@ class ProviderFeaturesManagedDisk {
 
   /// Creates a new [ProviderFeaturesManagedDisk].
   /// [expandWithoutDowntime] Optional.
-  ProviderFeaturesManagedDisk({this.expandWithoutDowntime});
+  ProviderFeaturesManagedDisk({
+    this.expandWithoutDowntime,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'expandWithoutDowntime': ?expandWithoutDowntime};
+    return <String, dynamic>{
+      'expandWithoutDowntime': ?expandWithoutDowntime,
+    };
   }
 
   factory ProviderFeaturesManagedDisk.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesManagedDisk(
-      expandWithoutDowntime: (() {
-        final guardedValue = map['expandWithoutDowntime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      expandWithoutDowntime: (() { final guardedValue = map['expandWithoutDowntime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

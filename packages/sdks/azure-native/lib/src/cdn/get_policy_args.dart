@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyArgs {
   /// The name of the CdnWebApplicationFirewallPolicy.
   final pulumi.Input<String> policyName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetPolicyArgs].
   /// [policyName] The name of the CdnWebApplicationFirewallPolicy.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPolicyArgs({required this.policyName, required this.resourceGroupName});
+  GetPolicyArgs({
+    required this.policyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetPolicyArgs {
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyArgs(
       policyName: pulumi.Input.fromValue(map['policyName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

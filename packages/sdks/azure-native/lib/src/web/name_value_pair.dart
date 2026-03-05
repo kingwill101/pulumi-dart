@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NameValuePair {
   /// Pair name.
   final pulumi.Input<String>? name;
-
   /// Pair value.
   final pulumi.Input<String>? value;
 
   /// Creates a new [NameValuePair].
   /// [name] Pair name.
   /// [value] Pair value.
-  NameValuePair({this.name, this.value});
+  NameValuePair({
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'value': ?value};
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory NameValuePair.fromMap(Map<String, dynamic> map) {
     return NameValuePair(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

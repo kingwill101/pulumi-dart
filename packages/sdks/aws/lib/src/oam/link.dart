@@ -512,33 +512,24 @@ import 'link_state.dart';
 class Link extends pulumi.CustomResource {
   /// ARN of the link.
   late final pulumi.Output<String> arn;
-
   /// Label that is assigned to this link.
   late final pulumi.Output<String> label;
-
   /// Human-readable name to use to identify this source account when you are viewing data from it in the monitoring account.
   late final pulumi.Output<String> labelTemplate;
-
   /// Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `link_configuration` Block for details.
   late final pulumi.Output<LinkLinkConfiguration?> linkConfiguration;
-
   /// ID string that AWS generated as part of the link ARN.
   late final pulumi.Output<String> linkId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Types of data that the source account shares with the monitoring account.
   late final pulumi.Output<List<String>> resourceTypes;
-
   /// ARN of the sink that is used for this link.
   late final pulumi.Output<String> sinkArn;
-
   /// Identifier of the sink to use to create this link.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> sinkIdentifier;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -547,26 +538,20 @@ class Link extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Link]. {@macro pulumi_oam_link_link_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Link(String name, {LinkArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:oam/link:Link',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Link(
+    String name, {
+    LinkArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:oam/link:Link',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     label = registerOutput<String>('label');
     labelTemplate = registerOutput<String>('labelTemplate');
-    linkConfiguration = registerOutput<LinkLinkConfiguration?>(
-      'linkConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinkLinkConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    linkConfiguration = registerOutput<LinkLinkConfiguration?>('linkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkLinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkId = registerOutput<String>('linkId');
     region = registerOutput<String>('region');
     resourceTypes = registerOutput<List<String>>('resourceTypes');
@@ -577,7 +562,11 @@ class Link extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Link] resource's state with the given [name] and [id].
-  static Link get(String name, pulumi.Input<String> id, {LinkState? state}) {
+  static Link get(
+    String name,
+    pulumi.Input<String> id, {
+    LinkState? state,
+  }) {
     return Link._get(
       name,
       state: state?.toMap(),
@@ -590,24 +579,15 @@ class Link extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:oam/link:Link',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:oam/link:Link',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     label = registerOutput<String>('label');
     labelTemplate = registerOutput<String>('labelTemplate');
-    linkConfiguration = registerOutput<LinkLinkConfiguration?>(
-      'linkConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinkLinkConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    linkConfiguration = registerOutput<LinkLinkConfiguration?>('linkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkLinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkId = registerOutput<String>('linkId');
     region = registerOutput<String>('region');
     resourceTypes = registerOutput<List<String>>('resourceTypes');

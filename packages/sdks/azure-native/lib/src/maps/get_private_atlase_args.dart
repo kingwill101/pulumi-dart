@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateAtlaseArgs {
   /// The name of the Maps Account.
   final pulumi.Input<String> accountName;
-
   /// The name of the Private Atlas instance.
   final pulumi.Input<String> privateAtlasName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetPrivateAtlaseArgs {
   factory GetPrivateAtlaseArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateAtlaseArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      privateAtlasName: pulumi.Input.fromValue(
-        map['privateAtlasName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      privateAtlasName: pulumi.Input.fromValue(map['privateAtlasName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

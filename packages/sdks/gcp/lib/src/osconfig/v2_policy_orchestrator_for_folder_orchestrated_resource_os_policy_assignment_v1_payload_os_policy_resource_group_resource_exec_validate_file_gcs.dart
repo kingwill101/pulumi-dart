@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs {
   /// Bucket of the Cloud Storage object.
   final pulumi.Input<String> bucket;
-
   /// Generation number of the Cloud Storage object.
   final pulumi.Input<String>? generation;
-
   /// Name of the Cloud Storage object.
   final pulumi.Input<String> object_;
 
@@ -30,17 +28,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     };
   }
 
-  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      generation: (() {
-        final guardedValue = map['generation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
+

@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOpenApiProductsProduct {
   /// The ID of the product. The value is formulated as `&lt;product_code&gt;:&lt;product_type&gt;:&lt;subscription_type&gt;`.
   final pulumi.Input<String> id;
-
   /// Product code.
   final pulumi.Input<String> productCode;
-
   /// Product name.
   final pulumi.Input<String> productName;
-
   /// Type of product.
   final pulumi.Input<String> productType;
-
   /// Subscription type. Value:
   /// * Subscription: Prepaid.
   /// * PayAsYouGo: postpaid.
@@ -50,9 +46,8 @@ class GetOpenApiProductsProduct {
       productCode: pulumi.Input.fromValue(map['productCode'] as String),
       productName: pulumi.Input.fromValue(map['productName'] as String),
       productType: pulumi.Input.fromValue(map['productType'] as String),
-      subscriptionType: pulumi.Input.fromValue(
-        map['subscriptionType'] as String,
-      ),
+      subscriptionType: pulumi.Input.fromValue(map['subscriptionType'] as String),
     );
   }
 }
+

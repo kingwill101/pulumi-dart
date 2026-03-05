@@ -9,19 +9,20 @@ class UserAssignedIdentity {
 
   /// Creates a new [UserAssignedIdentity].
   /// [tenantId] The tenant id of user assigned identity.
-  UserAssignedIdentity({this.tenantId});
+  UserAssignedIdentity({
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tenantId': ?tenantId};
+    return <String, dynamic>{
+      'tenantId': ?tenantId,
+    };
   }
 
   factory UserAssignedIdentity.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentity(
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

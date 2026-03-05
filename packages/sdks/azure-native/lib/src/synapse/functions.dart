@@ -167,8 +167,7 @@ Future<GetIntegrationRuntimeResult> getIntegrationRuntime(
 /// Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_synapse_get_integration_runtime_connection_info_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetIntegrationRuntimeConnectionInfoResult>
-getIntegrationRuntimeConnectionInfo(
+Future<GetIntegrationRuntimeConnectionInfoResult> getIntegrationRuntimeConnectionInfo(
   GetIntegrationRuntimeConnectionInfoArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -188,8 +187,7 @@ getIntegrationRuntimeConnectionInfo(
 /// Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_synapse_get_integration_runtime_object_metadatum_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetIntegrationRuntimeObjectMetadatumResult>
-getIntegrationRuntimeObjectMetadatum(
+Future<GetIntegrationRuntimeObjectMetadatumResult> getIntegrationRuntimeObjectMetadatum(
   GetIntegrationRuntimeObjectMetadatumArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -305,8 +303,7 @@ Future<GetKustoPoolResult> getKustoPool(
 /// Uses Azure REST API version 2021-06-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_synapse_get_kusto_pool_attached_database_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetKustoPoolAttachedDatabaseConfigurationResult>
-getKustoPoolAttachedDatabaseConfiguration(
+Future<GetKustoPoolAttachedDatabaseConfigurationResult> getKustoPoolAttachedDatabaseConfiguration(
   GetKustoPoolAttachedDatabaseConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -324,8 +321,7 @@ getKustoPoolAttachedDatabaseConfiguration(
 /// Uses Azure REST API version 2021-06-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_synapse_get_kusto_pool_database_principal_assignment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetKustoPoolDatabasePrincipalAssignmentResult>
-getKustoPoolDatabasePrincipalAssignment(
+Future<GetKustoPoolDatabasePrincipalAssignmentResult> getKustoPoolDatabasePrincipalAssignment(
   GetKustoPoolDatabasePrincipalAssignmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -481,8 +477,7 @@ Future<GetSqlPoolSensitivityLabelResult> getSqlPoolSensitivityLabel(
 /// Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_synapse_get_sql_pool_transparent_data_encryption_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSqlPoolTransparentDataEncryptionResult>
-getSqlPoolTransparentDataEncryption(
+Future<GetSqlPoolTransparentDataEncryptionResult> getSqlPoolTransparentDataEncryption(
   GetSqlPoolTransparentDataEncryptionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -502,8 +497,7 @@ getSqlPoolTransparentDataEncryption(
 /// Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_synapse_get_sql_pool_vulnerability_assessment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSqlPoolVulnerabilityAssessmentResult>
-getSqlPoolVulnerabilityAssessment(
+Future<GetSqlPoolVulnerabilityAssessmentResult> getSqlPoolVulnerabilityAssessment(
   GetSqlPoolVulnerabilityAssessmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -523,8 +517,7 @@ getSqlPoolVulnerabilityAssessment(
 /// Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_synapse_get_sql_pool_vulnerability_assessment_rule_baseline_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSqlPoolVulnerabilityAssessmentRuleBaselineResult>
-getSqlPoolVulnerabilityAssessmentRuleBaseline(
+Future<GetSqlPoolVulnerabilityAssessmentRuleBaselineResult> getSqlPoolVulnerabilityAssessmentRuleBaseline(
   GetSqlPoolVulnerabilityAssessmentRuleBaselineArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -624,8 +617,7 @@ Future<GetWorkspaceAadAdminResult> getWorkspaceAadAdmin(
 /// Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_synapse_get_workspace_managed_sql_server_vulnerability_assessment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWorkspaceManagedSqlServerVulnerabilityAssessmentResult>
-getWorkspaceManagedSqlServerVulnerabilityAssessment(
+Future<GetWorkspaceManagedSqlServerVulnerabilityAssessmentResult> getWorkspaceManagedSqlServerVulnerabilityAssessment(
   GetWorkspaceManagedSqlServerVulnerabilityAssessmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -635,9 +627,7 @@ getWorkspaceManagedSqlServerVulnerabilityAssessment(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetWorkspaceManagedSqlServerVulnerabilityAssessmentResult.fromMap(
-    result,
-  );
+  return GetWorkspaceManagedSqlServerVulnerabilityAssessmentResult.fromMap(result);
 }
 
 /// Gets a workspace SQL active directory admin

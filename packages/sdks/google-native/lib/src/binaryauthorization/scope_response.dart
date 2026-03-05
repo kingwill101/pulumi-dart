@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScopeResponse {
   /// Optional. Matches all Kubernetes service accounts in the provided namespace, unless a more specific `kubernetes_service_account` scope already matched.
   final pulumi.Input<String> kubernetesNamespace;
-
   /// Optional. Matches a single Kubernetes service account, e.g. `my-namespace:my-service-account`. `kubernetes_service_account` scope is always more specific than `kubernetes_namespace` scope for the same namespace.
   final pulumi.Input<String> kubernetesServiceAccount;
 
@@ -27,12 +26,9 @@ class ScopeResponse {
 
   factory ScopeResponse.fromMap(Map<String, dynamic> map) {
     return ScopeResponse(
-      kubernetesNamespace: pulumi.Input.fromValue(
-        map['kubernetesNamespace'] as String,
-      ),
-      kubernetesServiceAccount: pulumi.Input.fromValue(
-        map['kubernetesServiceAccount'] as String,
-      ),
+      kubernetesNamespace: pulumi.Input.fromValue(map['kubernetesNamespace'] as String),
+      kubernetesServiceAccount: pulumi.Input.fromValue(map['kubernetesServiceAccount'] as String),
     );
   }
 }
+

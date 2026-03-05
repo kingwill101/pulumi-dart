@@ -1853,16 +1853,12 @@ import 'instance_desired_user_created_endpoints_state.dart';
 class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
   /// A list of desired user endpoints
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  desiredUserCreatedEndpoints;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> desiredUserCreatedEndpoints;
   /// The name of the Memorystore instance these endpoints should be added to.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The name of the region of the Memorystore instance these endpoints should be added to.
   late final pulumi.Output<String> region;
 
@@ -1875,14 +1871,12 @@ class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
     InstanceDesiredUserCreatedEndpointsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    desiredUserCreatedEndpoints = registerOutput<List<Map<String, dynamic>>?>(
-      'desiredUserCreatedEndpoints',
-    );
+          'gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    desiredUserCreatedEndpoints = registerOutput<List<Map<String, dynamic>>?>('desiredUserCreatedEndpoints');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
@@ -1906,14 +1900,12 @@ class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    desiredUserCreatedEndpoints = registerOutput<List<Map<String, dynamic>>?>(
-      'desiredUserCreatedEndpoints',
-    );
+          'gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    desiredUserCreatedEndpoints = registerOutput<List<Map<String, dynamic>>?>('desiredUserCreatedEndpoints');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');

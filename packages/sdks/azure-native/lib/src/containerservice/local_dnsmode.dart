@@ -16,3 +16,4 @@ enum LocalDNSMode {
     throw ArgumentError('Unknown LocalDNSMode value: $value');
   }
 }
+

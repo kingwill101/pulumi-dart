@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevSecLabel {
   /// Configures the label for the security attributes of the UNIX domain socket.
   final pulumi.Input<String>? label;
-
   /// Determines whether to skip the label check for the security label in the UNIX socket.
   final pulumi.Input<String>? labelSkip;
-
   /// Sets the model type for the security label in the UNIX domain socket configuration.
   final pulumi.Input<String>? model;
-
   /// Enables or disables relabeling for the security label in the UNIX domain socket.
   final pulumi.Input<String>? relabel;
 
@@ -36,30 +33,13 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevSecLabel {
     };
   }
 
-  factory DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevSecLabel.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevSecLabel.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevSecLabel(
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labelSkip: (() {
-        final guardedValue = map['labelSkip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      model: (() {
-        final guardedValue = map['model'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      relabel: (() {
-        final guardedValue = map['relabel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labelSkip: (() { final guardedValue = map['labelSkip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      relabel: (() { final guardedValue = map['relabel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

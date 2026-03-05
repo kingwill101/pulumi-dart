@@ -647,17 +647,13 @@ import 'alb_server_group_attachment_state.dart';
 class AlbServerGroupAttachment extends pulumi.CustomResource {
   /// ID of Alb Server Group.
   late final pulumi.Output<String> albServerGroupId;
-
   /// If instances of scaling group are attached/removed from slb backend server when attach/detach alb
   /// server group from scaling group. Default to false.
   late final pulumi.Output<bool?> forceAttach;
-
   /// The port will be used for Alb Server Group backend server.
   late final pulumi.Output<int> port;
-
   /// ID of the scaling group.
   late final pulumi.Output<String> scalingGroupId;
-
   /// The weight of an ECS instance attached to the Alb Server Group.
   late final pulumi.Output<int> weight;
 
@@ -670,11 +666,11 @@ class AlbServerGroupAttachment extends pulumi.CustomResource {
     AlbServerGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     albServerGroupId = registerOutput<String>('albServerGroupId');
     forceAttach = registerOutput<bool?>('forceAttach');
     port = registerOutput<int>('port');
@@ -700,11 +696,11 @@ class AlbServerGroupAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     albServerGroupId = registerOutput<String>('albServerGroupId');
     forceAttach = registerOutput<bool?>('forceAttach');
     port = registerOutput<int>('port');

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getChannelFullUrl.
 class GetChannelFullUrlResult {
   /// The URL that represents the endpoint of the destination of an event subscription.
@@ -7,19 +8,20 @@ class GetChannelFullUrlResult {
 
   /// Creates a new [GetChannelFullUrlResult].
   /// [endpointUrl] The URL that represents the endpoint of the destination of an event subscription.
-  GetChannelFullUrlResult({this.endpointUrl});
+  GetChannelFullUrlResult({
+    this.endpointUrl,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'endpointUrl': ?endpointUrl};
+    return <String, dynamic>{
+      'endpointUrl': ?endpointUrl,
+    };
   }
 
   factory GetChannelFullUrlResult.fromMap(Map<String, dynamic> map) {
     return GetChannelFullUrlResult(
-      endpointUrl: (() {
-        final guardedValue = map['endpointUrl'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      endpointUrl: (() { final guardedValue = map['endpointUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

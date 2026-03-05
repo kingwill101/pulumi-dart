@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayVcoRoutesRoute {
   /// List of autonomous system numbers through which BGP routing entries pass.
   final pulumi.Input<String> asPath;
-
   /// The creation time of the VPN destination route.
   final pulumi.Input<String> createTime;
-
   /// The ID of the Vpn Gateway Vco Routes.
   final pulumi.Input<String> id;
-
   /// The next hop of the destination route.
   final pulumi.Input<String> nextHop;
-
   /// The destination network segment of the destination route.
   final pulumi.Input<String> routeDest;
-
   /// The source CIDR block of the destination route.
   final pulumi.Input<String> source;
-
   /// The status of the vpn route entry. Valid values: `normal`, `published`.
   final pulumi.Input<String> status;
-
   /// The id of the vpn connection.
   final pulumi.Input<String> vpnConnectionId;
-
   /// The weight value of the destination route.
   final pulumi.Input<int> weight;
 
@@ -80,3 +72,4 @@ class GetGatewayVcoRoutesRoute {
     );
   }
 }
+

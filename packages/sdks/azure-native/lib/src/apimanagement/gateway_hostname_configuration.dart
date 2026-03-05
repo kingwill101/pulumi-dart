@@ -176,28 +176,20 @@ import 'gateway_hostname_configuration_args.dart';
 class GatewayHostnameConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Identifier of Certificate entity that will be used for TLS connection establishment
   late final pulumi.Output<String?> certificateId;
-
   /// Hostname value. Supports valid domain name, partial or full wildcard
   late final pulumi.Output<String?> hostname;
-
   /// Specifies if HTTP/2.0 is supported
   late final pulumi.Output<bool?> http2Enabled;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Determines whether gateway requests client certificate
   late final pulumi.Output<bool?> negotiateClientCertificate;
-
   /// Specifies if TLS 1.0 is supported
   late final pulumi.Output<bool?> tls10Enabled;
-
   /// Specifies if TLS 1.1 is supported
   late final pulumi.Output<bool?> tls11Enabled;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -210,19 +202,17 @@ class GatewayHostnameConfiguration extends pulumi.CustomResource {
     GatewayHostnameConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:GatewayHostnameConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:GatewayHostnameConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     certificateId = registerOutput<String?>('certificateId');
     hostname = registerOutput<String?>('hostname');
     http2Enabled = registerOutput<bool?>('http2Enabled');
     this.name = registerOutput<String>('name');
-    negotiateClientCertificate = registerOutput<bool?>(
-      'negotiateClientCertificate',
-    );
+    negotiateClientCertificate = registerOutput<bool?>('negotiateClientCertificate');
     tls10Enabled = registerOutput<bool?>('tls10Enabled');
     tls11Enabled = registerOutput<bool?>('tls11Enabled');
     type = registerOutput<String>('type');

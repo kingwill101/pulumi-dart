@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInfrastructureConfigurationLoggingS3Log {
   /// Name of the S3 Bucket for logging.
   final pulumi.Input<String> s3BucketName;
-
   /// Key prefix for S3 Bucket logging.
   final pulumi.Input<String> s3KeyPrefix;
 
@@ -24,12 +23,11 @@ class GetInfrastructureConfigurationLoggingS3Log {
     };
   }
 
-  factory GetInfrastructureConfigurationLoggingS3Log.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInfrastructureConfigurationLoggingS3Log.fromMap(Map<String, dynamic> map) {
     return GetInfrastructureConfigurationLoggingS3Log(
       s3BucketName: pulumi.Input.fromValue(map['s3BucketName'] as String),
       s3KeyPrefix: pulumi.Input.fromValue(map['s3KeyPrefix'] as String),
     );
   }
 }
+

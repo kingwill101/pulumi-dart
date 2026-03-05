@@ -199,45 +199,30 @@ import 'virtual_network_response.dart';
 class ServiceGateway extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the service gateway resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The resource GUID property of the service gateway resource.
   late final pulumi.Output<String> resourceGuid;
-
   /// Route Target address of Service gateway
-  late final pulumi.Output<RouteTargetAddressPropertiesFormatResponse?>
-  routeTargetAddress;
-
+  late final pulumi.Output<RouteTargetAddressPropertiesFormatResponse?> routeTargetAddress;
   /// Route Target address V6 of Service gateway
-  late final pulumi.Output<RouteTargetAddressPropertiesFormatResponse?>
-  routeTargetAddressV6;
-
+  late final pulumi.Output<RouteTargetAddressPropertiesFormatResponse?> routeTargetAddressV6;
   /// The service gateway SKU.
   late final pulumi.Output<ServiceGatewaySkuResponse?> sku;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Reference to an existing virtual network.
   late final pulumi.Output<VirtualNetworkResponse?> virtualNetwork;
-
   /// A list of availability zones denoting the zone in which service gateway should be deployed.
   ///
   /// - The zone values must be provided as strings representing numeric identifiers like "1", "2", "3" etc.
@@ -252,71 +237,24 @@ class ServiceGateway extends pulumi.CustomResource {
     ServiceGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:ServiceGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:ServiceGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    routeTargetAddress =
-        registerOutput<RouteTargetAddressPropertiesFormatResponse?>(
-          'routeTargetAddress',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RouteTargetAddressPropertiesFormatResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    routeTargetAddressV6 =
-        registerOutput<RouteTargetAddressPropertiesFormatResponse?>(
-          'routeTargetAddressV6',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RouteTargetAddressPropertiesFormatResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    sku = registerOutput<ServiceGatewaySkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceGatewaySkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routeTargetAddress = registerOutput<RouteTargetAddressPropertiesFormatResponse?>('routeTargetAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteTargetAddressPropertiesFormatResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    routeTargetAddressV6 = registerOutput<RouteTargetAddressPropertiesFormatResponse?>('routeTargetAddressV6', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteTargetAddressPropertiesFormatResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<ServiceGatewaySkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceGatewaySkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualNetwork = registerOutput<VirtualNetworkResponse?>(
-      'virtualNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualNetworkResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualNetwork = registerOutput<VirtualNetworkResponse?>('virtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zones = registerOutput<List<String>?>('zones');
   }
 }

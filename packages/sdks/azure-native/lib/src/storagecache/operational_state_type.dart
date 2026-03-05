@@ -17,3 +17,4 @@ enum OperationalStateType {
     throw ArgumentError('Unknown OperationalStateType value: $value');
   }
 }
+

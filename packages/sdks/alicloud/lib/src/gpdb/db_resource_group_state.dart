@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DbResourceGroupState {
   /// The instance ID.&gt; You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
   final pulumi.Input<String>? dbInstanceId;
-
   /// Resource group configuration.
   final pulumi.Input<String>? resourceGroupConfig;
-
   /// Resource group name.
   final pulumi.Input<String>? resourceGroupName;
-
   /// Role List
   final pulumi.Input<List<String>>? roleLists;
 
@@ -39,26 +36,11 @@ class DbResourceGroupState {
 
   factory DbResourceGroupState.fromMap(Map<String, dynamic> map) {
     return DbResourceGroupState(
-      dbInstanceId: (() {
-        final guardedValue = map['dbInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupConfig: (() {
-        final guardedValue = map['resourceGroupConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleLists: (() {
-        final guardedValue = map['roleLists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      dbInstanceId: (() { final guardedValue = map['dbInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupConfig: (() { final guardedValue = map['resourceGroupConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleLists: (() { final guardedValue = map['roleLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

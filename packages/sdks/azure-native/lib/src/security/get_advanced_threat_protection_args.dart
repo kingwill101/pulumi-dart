@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAdvancedThreatProtectionArgs {
   /// The identifier of the resource.
   final pulumi.Input<String> resourceId;
-
   /// Advanced Threat Protection setting name.
   final pulumi.Input<String> settingName;
 
@@ -35,3 +34,4 @@ class GetAdvancedThreatProtectionArgs {
     );
   }
 }
+

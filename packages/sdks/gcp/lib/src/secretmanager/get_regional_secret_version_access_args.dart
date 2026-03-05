@@ -10,19 +10,15 @@ class GetRegionalSecretVersionAccessArgs {
   /// If set to 'true', the secret data is
   /// expected to be base64-encoded string.
   final pulumi.Input<bool>? isSecretDataBase64;
-
   /// Location of Secret Manager regional secret resource.
   /// It must be provided when the `secret` field provided consists of only the name of the regional secret.
   final pulumi.Input<String>? location;
-
   /// The project to get the secret version for. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The regional secret to get the secret version for.
   /// This can be either the reference of the regional secret as in `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}` or only the name of the regional secret as in `{{secret_id}}`. If only the name of the regional secret is provided, the location must also be provided.
   final pulumi.Input<String> secret;
-
   /// The version of the regional secret to get. If it
   /// is not provided, the latest version is retrieved.
   final pulumi.Input<String>? version;
@@ -53,27 +49,12 @@ class GetRegionalSecretVersionAccessArgs {
 
   factory GetRegionalSecretVersionAccessArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionalSecretVersionAccessArgs(
-      isSecretDataBase64: (() {
-        final guardedValue = map['isSecretDataBase64'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      isSecretDataBase64: (() { final guardedValue = map['isSecretDataBase64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secret: pulumi.Input.fromValue(map['secret'] as String),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

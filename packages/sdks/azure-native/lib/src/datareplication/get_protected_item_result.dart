@@ -7,17 +7,13 @@ import 'protected_item_model_response_system_data.dart';
 class GetProtectedItemResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets or sets the Id of the resource.
   final String id;
-
   /// Gets or sets the name of the resource.
   final String name;
-
   /// Protected item model properties.
   final ProtectedItemModelPropertiesResponse properties;
   final ProtectedItemModelResponseSystemData systemData;
-
   /// Gets or sets the type of the resource.
   final String type;
 
@@ -53,13 +49,10 @@ class GetProtectedItemResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: ProtectedItemModelPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: ProtectedItemModelResponseSystemData.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      properties: ProtectedItemModelPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: ProtectedItemModelResponseSystemData.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

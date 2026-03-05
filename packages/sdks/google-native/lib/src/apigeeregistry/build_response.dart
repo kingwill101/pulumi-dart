@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BuildResponse {
   /// Commit ID of the latest commit in the build.
   final pulumi.Input<String> commitId;
-
   /// Commit time of the latest commit in the build.
   final pulumi.Input<String> commitTime;
-
   /// Path of the open source repository: github.com/apigee/registry.
   final pulumi.Input<String> repo;
 
@@ -39,3 +37,4 @@ class BuildResponse {
     );
   }
 }
+

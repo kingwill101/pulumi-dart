@@ -586,7 +586,6 @@ class RegionPerInstanceConfig extends pulumi.CustomResource {
   /// * REFRESH
   /// * NONE
   late final pulumi.Output<String?> minimalAction;
-
   /// The most disruptive action to perform on the instance during an update.
   /// Default is `REPLACE`. Possible values are:
   /// * REPLACE
@@ -594,29 +593,21 @@ class RegionPerInstanceConfig extends pulumi.CustomResource {
   /// * REFRESH
   /// * NONE
   late final pulumi.Output<String?> mostDisruptiveAllowedAction;
-
   /// The name for this per-instance config and its corresponding instance.
   late final pulumi.Output<String> name;
-
   /// The preserved state for this instance.
   /// Structure is documented below.
-  late final pulumi.Output<RegionPerInstanceConfigPreservedState?>
-  preservedState;
-
+  late final pulumi.Output<RegionPerInstanceConfigPreservedState?> preservedState;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Region where the containing instance group manager is located
   late final pulumi.Output<String> region;
-
   /// The region instance group manager this instance config is part of.
   late final pulumi.Output<String> regionInstanceGroupManager;
-
   /// When true, deleting this config will immediately remove the underlying instance.
   /// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
   late final pulumi.Output<bool?> removeInstanceOnDestroy;
-
   /// When true, deleting this config will immediately remove any specified state from the underlying instance.
   /// When false, deleting this config will *not* immediately remove any state from the underlying instance.
   /// State will be removed on the next instance recreation or update.
@@ -631,35 +622,20 @@ class RegionPerInstanceConfig extends pulumi.CustomResource {
     RegionPerInstanceConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     minimalAction = registerOutput<String?>('minimalAction');
-    mostDisruptiveAllowedAction = registerOutput<String?>(
-      'mostDisruptiveAllowedAction',
-    );
+    mostDisruptiveAllowedAction = registerOutput<String?>('mostDisruptiveAllowedAction');
     this.name = registerOutput<String>('name');
-    preservedState = registerOutput<RegionPerInstanceConfigPreservedState?>(
-      'preservedState',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RegionPerInstanceConfigPreservedState.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    preservedState = registerOutput<RegionPerInstanceConfigPreservedState?>('preservedState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionPerInstanceConfigPreservedState.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
-    regionInstanceGroupManager = registerOutput<String>(
-      'regionInstanceGroupManager',
-    );
+    regionInstanceGroupManager = registerOutput<String>('regionInstanceGroupManager');
     removeInstanceOnDestroy = registerOutput<bool?>('removeInstanceOnDestroy');
-    removeInstanceStateOnDestroy = registerOutput<bool?>(
-      'removeInstanceStateOnDestroy',
-    );
+    removeInstanceStateOnDestroy = registerOutput<bool?>('removeInstanceStateOnDestroy');
   }
 
   /// Gets an existing [RegionPerInstanceConfig] resource's state with the given [name] and [id].
@@ -680,34 +656,19 @@ class RegionPerInstanceConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     minimalAction = registerOutput<String?>('minimalAction');
-    mostDisruptiveAllowedAction = registerOutput<String?>(
-      'mostDisruptiveAllowedAction',
-    );
+    mostDisruptiveAllowedAction = registerOutput<String?>('mostDisruptiveAllowedAction');
     this.name = registerOutput<String>('name');
-    preservedState = registerOutput<RegionPerInstanceConfigPreservedState?>(
-      'preservedState',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RegionPerInstanceConfigPreservedState.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    preservedState = registerOutput<RegionPerInstanceConfigPreservedState?>('preservedState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionPerInstanceConfigPreservedState.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
-    regionInstanceGroupManager = registerOutput<String>(
-      'regionInstanceGroupManager',
-    );
+    regionInstanceGroupManager = registerOutput<String>('regionInstanceGroupManager');
     removeInstanceOnDestroy = registerOutput<bool?>('removeInstanceOnDestroy');
-    removeInstanceStateOnDestroy = registerOutput<bool?>(
-      'removeInstanceStateOnDestroy',
-    );
+    removeInstanceStateOnDestroy = registerOutput<bool?>('removeInstanceStateOnDestroy');
   }
 }

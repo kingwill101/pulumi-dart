@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeviceGroupsGroup {
   /// The Group CreateTime.
   final pulumi.Input<String> createTime;
-
   /// The Group Number of activated devices.
   final pulumi.Input<String> deviceActive;
-
   /// The Group Total number of devices.
   final pulumi.Input<String> deviceCount;
-
   /// The Group Number of online devices.
   final pulumi.Input<String> deviceOnline;
-
   /// The Error_Message of the device group.
   final pulumi.Input<String> errorMessage;
-
   /// The GroupDesc of the device group.
   final pulumi.Input<String> groupDesc;
-
   /// The GroupId of the device group.
   final pulumi.Input<String> groupId;
-
   /// The GroupName of the device group.
   final pulumi.Input<String> groupName;
-
   /// The ID of the device group.
   final pulumi.Input<String> id;
-
   /// Whether the call is successful.
   final pulumi.Input<bool> success;
 
@@ -87,3 +78,4 @@ class GetDeviceGroupsGroup {
     );
   }
 }
+

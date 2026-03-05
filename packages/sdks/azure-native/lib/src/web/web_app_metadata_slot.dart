@@ -16,16 +16,12 @@ import 'web_app_metadata_slot_args.dart';
 class WebAppMetadataSlot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Settings.
   late final pulumi.Output<Map<String, String>> properties;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -38,11 +34,11 @@ class WebAppMetadataSlot extends pulumi.CustomResource {
     WebAppMetadataSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppMetadataSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppMetadataSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');

@@ -17,3 +17,4 @@ enum JsonWebKeyType {
     throw ArgumentError('Unknown JsonWebKeyType value: $value');
   }
 }
+

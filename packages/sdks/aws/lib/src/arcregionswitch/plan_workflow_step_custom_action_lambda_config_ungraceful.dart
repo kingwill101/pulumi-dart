@@ -8,17 +8,20 @@ class PlanWorkflowStepCustomActionLambdaConfigUngraceful {
 
   /// Creates a new [PlanWorkflowStepCustomActionLambdaConfigUngraceful].
   /// [behavior] Behavior when ungraceful. Valid values: `skip`.
-  PlanWorkflowStepCustomActionLambdaConfigUngraceful({required this.behavior});
+  PlanWorkflowStepCustomActionLambdaConfigUngraceful({
+    required this.behavior,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'behavior': behavior};
+    return <String, dynamic>{
+      'behavior': behavior,
+    };
   }
 
-  factory PlanWorkflowStepCustomActionLambdaConfigUngraceful.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PlanWorkflowStepCustomActionLambdaConfigUngraceful.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepCustomActionLambdaConfigUngraceful(
       behavior: pulumi.Input.fromValue(map['behavior'] as String),
     );
   }
 }
+

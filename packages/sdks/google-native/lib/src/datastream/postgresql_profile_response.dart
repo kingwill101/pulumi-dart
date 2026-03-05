@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PostgresqlProfileResponse {
   /// Database for the PostgreSQL connection.
   final pulumi.Input<String> database;
-
   /// Hostname for the PostgreSQL connection.
   final pulumi.Input<String> hostname;
-
   /// Password for the PostgreSQL connection.
   final pulumi.Input<String> password;
-
   /// Port for the PostgreSQL connection, default value is 5432.
   final pulumi.Input<int> port;
-
   /// Username for the PostgreSQL connection.
   final pulumi.Input<String> username;
 
@@ -53,3 +49,4 @@ class PostgresqlProfileResponse {
     );
   }
 }
+

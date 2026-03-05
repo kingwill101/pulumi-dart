@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlacementPolicyResponseContainerV1beta1 {
   /// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
   final pulumi.Input<String> policyName;
-
   /// TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
   final pulumi.Input<String> tpuTopology;
-
   /// The type of placement.
   final pulumi.Input<String> type;
 
@@ -31,9 +29,7 @@ class PlacementPolicyResponseContainerV1beta1 {
     };
   }
 
-  factory PlacementPolicyResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PlacementPolicyResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return PlacementPolicyResponseContainerV1beta1(
       policyName: pulumi.Input.fromValue(map['policyName'] as String),
       tpuTopology: pulumi.Input.fromValue(map['tpuTopology'] as String),
@@ -41,3 +37,4 @@ class PlacementPolicyResponseContainerV1beta1 {
     );
   }
 }
+

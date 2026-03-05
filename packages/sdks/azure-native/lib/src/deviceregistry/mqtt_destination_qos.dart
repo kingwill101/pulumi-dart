@@ -15,3 +15,4 @@ enum MqttDestinationQos {
     throw ArgumentError('Unknown MqttDestinationQos value: $value');
   }
 }
+

@@ -7,10 +7,14 @@ class GetLoadbalancerV2Listener {
 
   /// Creates a new [GetLoadbalancerV2Listener].
   /// [id] Required.
-  GetLoadbalancerV2Listener({required this.id});
+  GetLoadbalancerV2Listener({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetLoadbalancerV2Listener.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class GetLoadbalancerV2Listener {
     );
   }
 }
+

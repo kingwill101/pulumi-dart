@@ -15,3 +15,4 @@ enum RegionalDataBoundary {
     throw ArgumentError('Unknown RegionalDataBoundary value: $value');
   }
 }
+

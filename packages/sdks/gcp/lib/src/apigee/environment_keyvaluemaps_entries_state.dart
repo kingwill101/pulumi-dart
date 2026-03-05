@@ -7,10 +7,8 @@ class EnvironmentKeyvaluemapsEntriesState {
   /// The Apigee environment keyvalumaps Id associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
   final pulumi.Input<String>? envKeyvaluemapId;
-
   /// Required. Resource URI that can be used to identify the scope of the key value map entries.
   final pulumi.Input<String>? name;
-
   /// Required. Data or payload that is being retrieved and associated with the unique key.
   final pulumi.Input<String>? value;
 
@@ -32,25 +30,12 @@ class EnvironmentKeyvaluemapsEntriesState {
     };
   }
 
-  factory EnvironmentKeyvaluemapsEntriesState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnvironmentKeyvaluemapsEntriesState.fromMap(Map<String, dynamic> map) {
     return EnvironmentKeyvaluemapsEntriesState(
-      envKeyvaluemapId: (() {
-        final guardedValue = map['envKeyvaluemapId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      envKeyvaluemapId: (() { final guardedValue = map['envKeyvaluemapId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

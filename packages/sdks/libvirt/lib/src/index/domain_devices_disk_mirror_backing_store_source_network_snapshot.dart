@@ -13,14 +13,15 @@ class DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshot {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshot.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshot.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshot(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

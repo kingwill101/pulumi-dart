@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScalingGroupLaunchTemplateOverride {
   /// The instance type in launchTemplateOverride.
   final pulumi.Input<String>? instanceType;
-
   /// The maximum bid price of instance type in launchTemplateOverride.
   ///
   ///
@@ -15,7 +14,6 @@ class ScalingGroupLaunchTemplateOverride {
   ///
   /// &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
   final pulumi.Input<double>? spotPriceLimit;
-
   /// The weight of the instance type in launchTemplateOverride.
   final pulumi.Input<int>? weightedCapacity;
 
@@ -39,21 +37,10 @@ class ScalingGroupLaunchTemplateOverride {
 
   factory ScalingGroupLaunchTemplateOverride.fromMap(Map<String, dynamic> map) {
     return ScalingGroupLaunchTemplateOverride(
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      spotPriceLimit: (() {
-        final guardedValue = map['spotPriceLimit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      weightedCapacity: (() {
-        final guardedValue = map['weightedCapacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      spotPriceLimit: (() { final guardedValue = map['spotPriceLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      weightedCapacity: (() { final guardedValue = map['weightedCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

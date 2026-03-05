@@ -650,46 +650,32 @@ import 'api_diagnostic_state.dart';
 class ApiDiagnostic extends pulumi.CustomResource {
   /// Always log errors. Send telemetry if there is an erroneous condition, regardless of sampling settings.
   late final pulumi.Output<bool> alwaysLogErrors;
-
   /// The ID (name) of the Diagnostics Logger.
   late final pulumi.Output<String> apiManagementLoggerId;
-
   /// The name of the API Management Service instance. Changing this forces a new API Management Service API Diagnostics Logs to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// The name of the API on which to configure the Diagnostics Logs. Changing this forces a new API Management Service API Diagnostics Logs to be created.
   late final pulumi.Output<String> apiName;
-
   /// A `backend_request` block as defined below.
   late final pulumi.Output<ApiDiagnosticBackendRequest> backendRequest;
-
   /// A `backend_response` block as defined below.
   late final pulumi.Output<ApiDiagnosticBackendResponse> backendResponse;
-
   /// A `frontend_request` block as defined below.
   late final pulumi.Output<ApiDiagnosticFrontendRequest> frontendRequest;
-
   /// A `frontend_response` block as defined below.
   late final pulumi.Output<ApiDiagnosticFrontendResponse> frontendResponse;
-
   /// The HTTP Correlation Protocol to use. Possible values are `None`, `Legacy` or `W3C`.
   late final pulumi.Output<String> httpCorrelationProtocol;
-
   /// Identifier of the Diagnostics Logs. Possible values are `applicationinsights` and `azuremonitor`. Changing this forces a new API Management Service API Diagnostics Logs to be created.
   late final pulumi.Output<String> identifier;
-
   /// Log client IP address.
   late final pulumi.Output<bool> logClientIp;
-
   /// The format of the Operation Name for Application Insights telemetries. Possible values are `Name`, and `Url`. Defaults to `Name`.
   late final pulumi.Output<String?> operationNameFormat;
-
   /// The name of the Resource Group where the API Management Service API Diagnostics Logs should exist. Changing this forces a new API Management Service API Diagnostics Logs to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Sampling (%). For high traffic APIs, please read this [documentation](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights#performance-implications-and-log-sampling) to understand performance implications and log sampling. Valid values are between `0.0` and `100.0`.
   late final pulumi.Output<double> samplingPercentage;
-
   /// Logging verbosity. Possible values are `verbose`, `information` or `error`.
   late final pulumi.Output<String> verbosity;
 
@@ -702,55 +688,19 @@ class ApiDiagnostic extends pulumi.CustomResource {
     ApiDiagnosticArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiDiagnostic:ApiDiagnostic',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiDiagnostic:ApiDiagnostic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alwaysLogErrors = registerOutput<bool>('alwaysLogErrors');
     apiManagementLoggerId = registerOutput<String>('apiManagementLoggerId');
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
-    backendRequest = registerOutput<ApiDiagnosticBackendRequest>(
-      'backendRequest',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiDiagnosticBackendRequest.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    backendResponse = registerOutput<ApiDiagnosticBackendResponse>(
-      'backendResponse',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiDiagnosticBackendResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    frontendRequest = registerOutput<ApiDiagnosticFrontendRequest>(
-      'frontendRequest',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiDiagnosticFrontendRequest.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    frontendResponse = registerOutput<ApiDiagnosticFrontendResponse>(
-      'frontendResponse',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiDiagnosticFrontendResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    backendRequest = registerOutput<ApiDiagnosticBackendRequest>('backendRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiDiagnosticBackendRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backendResponse = registerOutput<ApiDiagnosticBackendResponse>('backendResponse', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiDiagnosticBackendResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frontendRequest = registerOutput<ApiDiagnosticFrontendRequest>('frontendRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiDiagnosticFrontendRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frontendResponse = registerOutput<ApiDiagnosticFrontendResponse>('frontendResponse', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiDiagnosticFrontendResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpCorrelationProtocol = registerOutput<String>('httpCorrelationProtocol');
     identifier = registerOutput<String>('identifier');
     logClientIp = registerOutput<bool>('logClientIp');
@@ -778,55 +728,19 @@ class ApiDiagnostic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiDiagnostic:ApiDiagnostic',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiDiagnostic:ApiDiagnostic',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alwaysLogErrors = registerOutput<bool>('alwaysLogErrors');
     apiManagementLoggerId = registerOutput<String>('apiManagementLoggerId');
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
-    backendRequest = registerOutput<ApiDiagnosticBackendRequest>(
-      'backendRequest',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiDiagnosticBackendRequest.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    backendResponse = registerOutput<ApiDiagnosticBackendResponse>(
-      'backendResponse',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiDiagnosticBackendResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    frontendRequest = registerOutput<ApiDiagnosticFrontendRequest>(
-      'frontendRequest',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiDiagnosticFrontendRequest.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    frontendResponse = registerOutput<ApiDiagnosticFrontendResponse>(
-      'frontendResponse',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiDiagnosticFrontendResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    backendRequest = registerOutput<ApiDiagnosticBackendRequest>('backendRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiDiagnosticBackendRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backendResponse = registerOutput<ApiDiagnosticBackendResponse>('backendResponse', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiDiagnosticBackendResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frontendRequest = registerOutput<ApiDiagnosticFrontendRequest>('frontendRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiDiagnosticFrontendRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frontendResponse = registerOutput<ApiDiagnosticFrontendResponse>('frontendResponse', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiDiagnosticFrontendResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpCorrelationProtocol = registerOutput<String>('httpCorrelationProtocol');
     identifier = registerOutput<String>('identifier');
     logClientIp = registerOutput<bool>('logClientIp');

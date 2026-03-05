@@ -8,19 +8,20 @@ class DomainDevicesFilesystemAcpi {
 
   /// Creates a new [DomainDevicesFilesystemAcpi].
   /// [index] Sets the index for the ACPI device associated with pstore, which is used for handling multiple ACPI elements.
-  DomainDevicesFilesystemAcpi({this.index});
+  DomainDevicesFilesystemAcpi({
+    this.index,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'index': ?index};
+    return <String, dynamic>{
+      'index': ?index,
+    };
   }
 
   factory DomainDevicesFilesystemAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemAcpi(
-      index: (() {
-        final guardedValue = map['index'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      index: (() { final guardedValue = map['index']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

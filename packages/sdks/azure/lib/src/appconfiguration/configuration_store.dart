@@ -922,68 +922,50 @@ import 'configuration_store_state.dart';
 class ConfigurationStore extends pulumi.CustomResource {
   /// The data plane proxy authentication mode. Possible values are `Local` and `Pass-through`. Defaults to `Local`.
   late final pulumi.Output<String?> dataPlaneProxyAuthenticationMode;
-
   /// Whether data plane proxy private link delegation is enabled. Defaults to `false`.
   ///
   /// &gt; **Note:** `data_plane_proxy_private_link_delegation_enabled` cannot be set to `true` when `data_plane_proxy_authentication_mode` is set to `Local`.
   late final pulumi.Output<bool?> dataPlaneProxyPrivateLinkDelegationEnabled;
-
   /// An `encryption` block as defined below.
   late final pulumi.Output<ConfigurationStoreEncryption?> encryption;
-
   /// The URL of the App Configuration Replica.
   late final pulumi.Output<String> endpoint;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<ConfigurationStoreIdentity?> identity;
-
   /// Whether local authentication methods is enabled. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthEnabled;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the App Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A `primary_read_key` block as defined below containing the primary read access key.
   late final pulumi.Output<List<Map<String, dynamic>>> primaryReadKeys;
-
   /// A `primary_write_key` block as defined below containing the primary write access key.
   late final pulumi.Output<List<Map<String, dynamic>>> primaryWriteKeys;
-
   /// The Public Network Access setting of the App Configuration. Possible values are `Enabled` and `Disabled`.
   ///
   /// &gt; **Note:** If `public_network_access` is not specified, the App Configuration will be created as  `Automatic`. However, once a different value is defined, can not be set again as automatic.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// Whether Purge Protection is enabled. This field only works for `standard` sku. Defaults to `false`.
   ///
   /// !&gt; **Note:** Once Purge Protection has been enabled it's not possible to disable it. Deleting the App Configuration with Purge Protection enabled will schedule the App Configuration to be deleted (which will happen by Azure in the configured number of days).
   late final pulumi.Output<bool?> purgeProtectionEnabled;
-
   /// One or more `replica` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> replicas;
-
   /// The name of the resource group in which to create the App Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `secondary_read_key` block as defined below containing the secondary read access key.
   late final pulumi.Output<List<Map<String, dynamic>>> secondaryReadKeys;
-
   /// A `secondary_write_key` block as defined below containing the secondary write access key.
   late final pulumi.Output<List<Map<String, dynamic>>> secondaryWriteKeys;
-
   /// The SKU name of the App Configuration. Possible values are `free`, `developer`, `standard` and `premium`. Defaults to `free`.
   ///
   /// &gt; **Note:** Azure does not support downgrading `sku` to a lower tier, except from `premium` to `standard`. Downgrading will force a new resource to be created.
   late final pulumi.Output<String?> sku;
-
   /// The number of days that items should be retained for once soft-deleted. This field only works for `standard` sku. This value can be between `1` and `7` days. Defaults to `7`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If Purge Protection is enabled, this field can only be configured one time and cannot be updated.
   late final pulumi.Output<int?> softDeleteRetentionDays;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -996,57 +978,27 @@ class ConfigurationStore extends pulumi.CustomResource {
     ConfigurationStoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appconfiguration/configurationStore:ConfigurationStore',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    dataPlaneProxyAuthenticationMode = registerOutput<String?>(
-      'dataPlaneProxyAuthenticationMode',
-    );
-    dataPlaneProxyPrivateLinkDelegationEnabled = registerOutput<bool?>(
-      'dataPlaneProxyPrivateLinkDelegationEnabled',
-    );
-    encryption = registerOutput<ConfigurationStoreEncryption?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConfigurationStoreEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:appconfiguration/configurationStore:ConfigurationStore',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    dataPlaneProxyAuthenticationMode = registerOutput<String?>('dataPlaneProxyAuthenticationMode');
+    dataPlaneProxyPrivateLinkDelegationEnabled = registerOutput<bool?>('dataPlaneProxyPrivateLinkDelegationEnabled');
+    encryption = registerOutput<ConfigurationStoreEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationStoreEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
-    identity = registerOutput<ConfigurationStoreIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConfigurationStoreIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ConfigurationStoreIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationStoreIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryReadKeys = registerOutput<List<Map<String, dynamic>>>(
-      'primaryReadKeys',
-    );
-    primaryWriteKeys = registerOutput<List<Map<String, dynamic>>>(
-      'primaryWriteKeys',
-    );
+    primaryReadKeys = registerOutput<List<Map<String, dynamic>>>('primaryReadKeys');
+    primaryWriteKeys = registerOutput<List<Map<String, dynamic>>>('primaryWriteKeys');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     purgeProtectionEnabled = registerOutput<bool?>('purgeProtectionEnabled');
     replicas = registerOutput<List<Map<String, dynamic>>?>('replicas');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryReadKeys = registerOutput<List<Map<String, dynamic>>>(
-      'secondaryReadKeys',
-    );
-    secondaryWriteKeys = registerOutput<List<Map<String, dynamic>>>(
-      'secondaryWriteKeys',
-    );
+    secondaryReadKeys = registerOutput<List<Map<String, dynamic>>>('secondaryReadKeys');
+    secondaryWriteKeys = registerOutput<List<Map<String, dynamic>>>('secondaryWriteKeys');
     sku = registerOutput<String?>('sku');
     softDeleteRetentionDays = registerOutput<int?>('softDeleteRetentionDays');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1070,57 +1022,27 @@ class ConfigurationStore extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appconfiguration/configurationStore:ConfigurationStore',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    dataPlaneProxyAuthenticationMode = registerOutput<String?>(
-      'dataPlaneProxyAuthenticationMode',
-    );
-    dataPlaneProxyPrivateLinkDelegationEnabled = registerOutput<bool?>(
-      'dataPlaneProxyPrivateLinkDelegationEnabled',
-    );
-    encryption = registerOutput<ConfigurationStoreEncryption?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConfigurationStoreEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:appconfiguration/configurationStore:ConfigurationStore',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    dataPlaneProxyAuthenticationMode = registerOutput<String?>('dataPlaneProxyAuthenticationMode');
+    dataPlaneProxyPrivateLinkDelegationEnabled = registerOutput<bool?>('dataPlaneProxyPrivateLinkDelegationEnabled');
+    encryption = registerOutput<ConfigurationStoreEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationStoreEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
-    identity = registerOutput<ConfigurationStoreIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConfigurationStoreIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ConfigurationStoreIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationStoreIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryReadKeys = registerOutput<List<Map<String, dynamic>>>(
-      'primaryReadKeys',
-    );
-    primaryWriteKeys = registerOutput<List<Map<String, dynamic>>>(
-      'primaryWriteKeys',
-    );
+    primaryReadKeys = registerOutput<List<Map<String, dynamic>>>('primaryReadKeys');
+    primaryWriteKeys = registerOutput<List<Map<String, dynamic>>>('primaryWriteKeys');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     purgeProtectionEnabled = registerOutput<bool?>('purgeProtectionEnabled');
     replicas = registerOutput<List<Map<String, dynamic>>?>('replicas');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryReadKeys = registerOutput<List<Map<String, dynamic>>>(
-      'secondaryReadKeys',
-    );
-    secondaryWriteKeys = registerOutput<List<Map<String, dynamic>>>(
-      'secondaryWriteKeys',
-    );
+    secondaryReadKeys = registerOutput<List<Map<String, dynamic>>>('secondaryReadKeys');
+    secondaryWriteKeys = registerOutput<List<Map<String, dynamic>>>('secondaryWriteKeys');
     sku = registerOutput<String?>('sku');
     softDeleteRetentionDays = registerOutput<int?>('softDeleteRetentionDays');
     tags = registerOutput<Map<String, String>?>('tags');

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduledPreloadExecutionArgs {
   /// The end time of the prefetch plan.
   final pulumi.Input<String>? endTime;
-
   /// The time interval between each batch execution. Unit: seconds.
   final pulumi.Input<int> interval;
-
   /// The ID of the prefetch task.
   final pulumi.Input<String> scheduledPreloadJobId;
-
   /// The number of URLs prefetched in each batch.
   final pulumi.Input<int> sliceLen;
-
   /// The start time of the prefetch plan.
   final pulumi.Input<String>? startTime;
 
@@ -48,21 +44,12 @@ class ScheduledPreloadExecutionArgs {
 
   factory ScheduledPreloadExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledPreloadExecutionArgs(
-      endTime: (() {
-        final guardedValue = map['endTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       interval: pulumi.Input.fromValue(map['interval'] as int),
-      scheduledPreloadJobId: pulumi.Input.fromValue(
-        map['scheduledPreloadJobId'] as String,
-      ),
+      scheduledPreloadJobId: pulumi.Input.fromValue(map['scheduledPreloadJobId'] as String),
       sliceLen: pulumi.Input.fromValue(map['sliceLen'] as int),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

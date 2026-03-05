@@ -15,3 +15,4 @@ enum LicenseEdition {
     throw ArgumentError('Unknown LicenseEdition value: $value');
   }
 }
+

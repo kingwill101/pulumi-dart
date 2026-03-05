@@ -255,7 +255,6 @@ import 'nat_gateway_public_ip_prefix_association_state.dart';
 class NatGatewayPublicIpPrefixAssociation extends pulumi.CustomResource {
   /// The ID of the NAT Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> natGatewayId;
-
   /// The ID of the Public IP Prefix which this NAT Gateway which should be connected to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> publicIpPrefixId;
 
@@ -268,11 +267,11 @@ class NatGatewayPublicIpPrefixAssociation extends pulumi.CustomResource {
     NatGatewayPublicIpPrefixAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/natGatewayPublicIpPrefixAssociation:NatGatewayPublicIpPrefixAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/natGatewayPublicIpPrefixAssociation:NatGatewayPublicIpPrefixAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     natGatewayId = registerOutput<String>('natGatewayId');
     publicIpPrefixId = registerOutput<String>('publicIpPrefixId');
   }
@@ -295,11 +294,11 @@ class NatGatewayPublicIpPrefixAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/natGatewayPublicIpPrefixAssociation:NatGatewayPublicIpPrefixAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/natGatewayPublicIpPrefixAssociation:NatGatewayPublicIpPrefixAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     natGatewayId = registerOutput<String>('natGatewayId');
     publicIpPrefixId = registerOutput<String>('publicIpPrefixId');
   }

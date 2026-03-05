@@ -199,40 +199,28 @@ import 'profile_http2_state.dart';
 class ProfileHttp2 extends pulumi.CustomResource {
   /// This setting specifies the condition that will cause the BIG-IP system to handle an incoming connection as an HTTP/2 connection, Allowed values : `[“alpn”]` (or) `[“always”]`.
   late final pulumi.Output<List<String>> activationModes;
-
   /// Specifies how many concurrent requests are allowed to be outstanding on a single HTTP/2 connection.
   late final pulumi.Output<int> concurrentStreamsPerConnection;
-
   /// Specifies the number of seconds that a connection is idle before the connection is eligible for deletion.
   late final pulumi.Output<int> connectionIdleTimeout;
-
   /// Specifies the profile that you want to use as the parent profile. Your new profile inherits all settings and values from the parent profile specified.
   late final pulumi.Output<String> defaultsFrom;
-
   /// Enable or disable enforcement of TLS requirements,Allowed Values : `"enabled"/"disabled"` [Default:`"enabled"`].
   late final pulumi.Output<String> enforceTlsRequirements;
-
   /// The size of the data frames, in bytes, that the HTTP/2 protocol sends to the client. `Default: 2048`.
   late final pulumi.Output<int> frameSize;
-
   /// The size of the header table, in KB, for the HTTP headers that the HTTP/2 protocol compresses to save bandwidth.
   late final pulumi.Output<int> headerTableSize;
-
   /// Enable to include content-length in HTTP/2 headers,Default : disabled
   late final pulumi.Output<String> includeContentLength;
-
   /// This setting specifies whether the BIG-IP system should add an HTTP header to the HTTP request to show that the request was received over HTTP/2, Allowed Values : `"enabled"/"disabled"` [ Default: `"disabled"`].
   late final pulumi.Output<String> insertHeader;
-
   /// This setting specifies the name of the header that the BIG-IP system will add to the HTTP request when the Insert Header is enabled.
   late final pulumi.Output<String> insertHeaderName;
-
   /// Name of Profile should be full path.The full path is the combination of the `partition + profile name`,For example `/Common/test-http2-profile`.
   late final pulumi.Output<String> name;
-
   /// The flow-control size for upload streams, in KB. `Default: 32`.
   late final pulumi.Output<int> receiveWindow;
-
   /// The total size of combined data frames, in bytes, that the HTTP/2 protocol sends in a single write function. `Default: 16384`".
   late final pulumi.Output<int> writeSize;
 
@@ -245,15 +233,13 @@ class ProfileHttp2 extends pulumi.CustomResource {
     ProfileHttp2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileHttp2:ProfileHttp2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileHttp2:ProfileHttp2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activationModes = registerOutput<List<String>>('activationModes');
-    concurrentStreamsPerConnection = registerOutput<int>(
-      'concurrentStreamsPerConnection',
-    );
+    concurrentStreamsPerConnection = registerOutput<int>('concurrentStreamsPerConnection');
     connectionIdleTimeout = registerOutput<int>('connectionIdleTimeout');
     defaultsFrom = registerOutput<String>('defaultsFrom');
     enforceTlsRequirements = registerOutput<String>('enforceTlsRequirements');
@@ -285,15 +271,13 @@ class ProfileHttp2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileHttp2:ProfileHttp2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileHttp2:ProfileHttp2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activationModes = registerOutput<List<String>>('activationModes');
-    concurrentStreamsPerConnection = registerOutput<int>(
-      'concurrentStreamsPerConnection',
-    );
+    concurrentStreamsPerConnection = registerOutput<int>('concurrentStreamsPerConnection');
     connectionIdleTimeout = registerOutput<int>('connectionIdleTimeout');
     defaultsFrom = registerOutput<String>('defaultsFrom');
     enforceTlsRequirements = registerOutput<String>('enforceTlsRequirements');

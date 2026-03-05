@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRetailV2alphaInterval {
   /// Exclusive upper bound.
   final pulumi.Input<double>? exclusiveMaximum;
-
   /// Exclusive lower bound.
   final pulumi.Input<double>? exclusiveMinimum;
-
   /// Inclusive upper bound.
   final pulumi.Input<double>? maximum;
-
   /// Inclusive lower bound.
   final pulumi.Input<double>? minimum;
 
@@ -39,26 +36,11 @@ class GoogleCloudRetailV2alphaInterval {
 
   factory GoogleCloudRetailV2alphaInterval.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaInterval(
-      exclusiveMaximum: (() {
-        final guardedValue = map['exclusiveMaximum'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      exclusiveMinimum: (() {
-        final guardedValue = map['exclusiveMinimum'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      maximum: (() {
-        final guardedValue = map['maximum'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      minimum: (() {
-        final guardedValue = map['minimum'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      exclusiveMaximum: (() { final guardedValue = map['exclusiveMaximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      exclusiveMinimum: (() { final guardedValue = map['exclusiveMinimum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maximum: (() { final guardedValue = map['maximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      minimum: (() { final guardedValue = map['minimum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

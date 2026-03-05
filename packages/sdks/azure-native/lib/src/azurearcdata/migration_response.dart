@@ -10,29 +10,20 @@ class MigrationResponse {
 
   /// Creates a new [MigrationResponse].
   /// [assessment] Migration assessments related configuration.
-  MigrationResponse({this.assessment});
+  MigrationResponse({
+    this.assessment,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assessment':
-          ?pulumi.Input.mapOptionalInputValue<
-            MigrationAssessmentResponse,
-            Map<String, dynamic>
-          >(assessment, (value) => value.toMap()),
+      'assessment': ?pulumi.Input.mapOptionalInputValue<MigrationAssessmentResponse, Map<String, dynamic>>(assessment, (value) => value.toMap()),
     };
   }
 
   factory MigrationResponse.fromMap(Map<String, dynamic> map) {
     return MigrationResponse(
-      assessment: (() {
-        final guardedValue = map['assessment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MigrationAssessmentResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      assessment: (() { final guardedValue = map['assessment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MigrationAssessmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

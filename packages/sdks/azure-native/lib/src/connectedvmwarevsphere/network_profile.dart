@@ -10,39 +10,20 @@ class NetworkProfile {
 
   /// Creates a new [NetworkProfile].
   /// [networkInterfaces] Gets or sets the list of network interfaces associated with the virtual machine.
-  NetworkProfile({this.networkInterfaces});
+  NetworkProfile({
+    this.networkInterfaces,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkInterfaces':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NetworkInterface>,
-            List<Map<String, dynamic>>
-          >(
-            networkInterfaces,
-            (value) =>
-                pulumi.Input.encodeList<NetworkInterface, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<NetworkInterface>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<NetworkInterface, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkProfile.fromMap(Map<String, dynamic> map) {
     return NetworkProfile(
-      networkInterfaces: (() {
-        final guardedValue = map['networkInterfaces'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NetworkInterface>(
-            guardedValue,
-            (value) => NetworkInterface.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      networkInterfaces: (() { final guardedValue = map['networkInterfaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInterface>(guardedValue, (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

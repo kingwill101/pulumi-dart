@@ -13,14 +13,15 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'namespace': namespace};
+    return <String, dynamic>{
+      'namespace': namespace,
+    };
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace(
       namespace: pulumi.Input.fromValue(map['namespace'] as String),
     );
   }
 }
+

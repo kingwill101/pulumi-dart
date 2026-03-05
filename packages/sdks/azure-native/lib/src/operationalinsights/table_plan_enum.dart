@@ -15,3 +15,4 @@ enum TablePlanEnum {
     throw ArgumentError('Unknown TablePlanEnum value: $value');
   }
 }
+

@@ -51,7 +51,8 @@ Future<GetProfileResult> getProfile(
 ///
 /// Other available API versions: 2017-09-01-preview, 2018-04-01, 2018-08-01, 2022-04-01-preview, 2024-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native trafficmanager [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
-Future<GetTrafficManagerUserMetricsKeyResult> getTrafficManagerUserMetricsKey({
+Future<GetTrafficManagerUserMetricsKeyResult> getTrafficManagerUserMetricsKey(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;

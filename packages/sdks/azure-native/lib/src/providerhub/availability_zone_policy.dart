@@ -15,3 +15,4 @@ enum AvailabilityZonePolicy {
     throw ArgumentError('Unknown AvailabilityZonePolicy value: $value');
   }
 }
+

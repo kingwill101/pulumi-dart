@@ -10,13 +10,10 @@ class GetDatabaseMigrationsSqlMiArgs {
   /// Complete migration details be included in the response.
   final pulumi.Input<String>? expand;
   final pulumi.Input<String> managedInstanceName;
-
   /// Optional migration operation ID. If this is provided, then details of migration operation for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved.
   final pulumi.Input<String>? migrationOperationId;
-
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the target database.
   final pulumi.Input<String> targetDbName;
 
@@ -46,23 +43,12 @@ class GetDatabaseMigrationsSqlMiArgs {
 
   factory GetDatabaseMigrationsSqlMiArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMigrationsSqlMiArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedInstanceName: pulumi.Input.fromValue(
-        map['managedInstanceName'] as String,
-      ),
-      migrationOperationId: (() {
-        final guardedValue = map['migrationOperationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedInstanceName: pulumi.Input.fromValue(map['managedInstanceName'] as String),
+      migrationOperationId: (() { final guardedValue = map['migrationOperationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       targetDbName: pulumi.Input.fromValue(map['targetDbName'] as String),
     );
   }
 }
+

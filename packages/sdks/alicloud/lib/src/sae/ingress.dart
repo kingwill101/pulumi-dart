@@ -600,31 +600,22 @@ import 'ingress_state.dart';
 class Ingress extends pulumi.CustomResource {
   /// The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
   late final pulumi.Output<String?> certId;
-
   /// The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
   late final pulumi.Output<String?> certIds;
-
   /// Default Rule. See `default_rule` below.
   late final pulumi.Output<IngressDefaultRule?> defaultRule;
-
   /// Description.
   late final pulumi.Output<String?> description;
-
   /// SLB listening port.
   late final pulumi.Output<int> listenerPort;
-
   /// The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
   late final pulumi.Output<String> listenerProtocol;
-
   /// The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
   late final pulumi.Output<String> loadBalanceType;
-
   /// The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
   late final pulumi.Output<String> namespaceId;
-
   /// Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
-
   /// SLB ID.
   late final pulumi.Output<String> slbId;
 
@@ -637,23 +628,14 @@ class Ingress extends pulumi.CustomResource {
     IngressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/ingress:Ingress',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/ingress:Ingress',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certId = registerOutput<String?>('certId');
     certIds = registerOutput<String?>('certIds');
-    defaultRule = registerOutput<IngressDefaultRule?>(
-      'defaultRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IngressDefaultRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    defaultRule = registerOutput<IngressDefaultRule?>('defaultRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngressDefaultRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     listenerPort = registerOutput<int>('listenerPort');
     listenerProtocol = registerOutput<String>('listenerProtocol');
@@ -681,23 +663,14 @@ class Ingress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/ingress:Ingress',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/ingress:Ingress',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certId = registerOutput<String?>('certId');
     certIds = registerOutput<String?>('certIds');
-    defaultRule = registerOutput<IngressDefaultRule?>(
-      'defaultRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IngressDefaultRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    defaultRule = registerOutput<IngressDefaultRule?>('defaultRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngressDefaultRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     listenerPort = registerOutput<int>('listenerPort');
     listenerProtocol = registerOutput<String>('listenerProtocol');

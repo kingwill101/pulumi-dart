@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlexibleAppVersionDeploymentCloudBuildOptions {
   /// Path to the yaml file used in deployment, used to determine runtime configuration details.
   final pulumi.Input<String> appYamlPath;
-
   /// The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   final pulumi.Input<String>? cloudBuildTimeout;
@@ -25,16 +24,11 @@ class FlexibleAppVersionDeploymentCloudBuildOptions {
     };
   }
 
-  factory FlexibleAppVersionDeploymentCloudBuildOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlexibleAppVersionDeploymentCloudBuildOptions.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionDeploymentCloudBuildOptions(
       appYamlPath: pulumi.Input.fromValue(map['appYamlPath'] as String),
-      cloudBuildTimeout: (() {
-        final guardedValue = map['cloudBuildTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cloudBuildTimeout: (() { final guardedValue = map['cloudBuildTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

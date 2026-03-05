@@ -6,26 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Info {
   final pulumi.Input<String> buildDate;
   final pulumi.Input<String> compiler;
-
   /// EmulationMajor is the major version of the emulation version
   final pulumi.Input<String>? emulationMajor;
-
   /// EmulationMinor is the minor version of the emulation version
   final pulumi.Input<String>? emulationMinor;
   final pulumi.Input<String> gitCommit;
   final pulumi.Input<String> gitTreeState;
   final pulumi.Input<String> gitVersion;
   final pulumi.Input<String> goVersion;
-
   /// Major is the major version of the binary version
   final pulumi.Input<String> major;
-
   /// MinCompatibilityMajor is the major version of the minimum compatibility version
   final pulumi.Input<String>? minCompatibilityMajor;
-
   /// MinCompatibilityMinor is the minor version of the minimum compatibility version
   final pulumi.Input<String>? minCompatibilityMinor;
-
   /// Minor is the minor version of the binary version
   final pulumi.Input<String> minor;
   final pulumi.Input<String> platform;
@@ -82,33 +76,18 @@ class Info {
     return Info(
       buildDate: pulumi.Input.fromValue(map['buildDate'] as String),
       compiler: pulumi.Input.fromValue(map['compiler'] as String),
-      emulationMajor: (() {
-        final guardedValue = map['emulationMajor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      emulationMinor: (() {
-        final guardedValue = map['emulationMinor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      emulationMajor: (() { final guardedValue = map['emulationMajor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      emulationMinor: (() { final guardedValue = map['emulationMinor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gitCommit: pulumi.Input.fromValue(map['gitCommit'] as String),
       gitTreeState: pulumi.Input.fromValue(map['gitTreeState'] as String),
       gitVersion: pulumi.Input.fromValue(map['gitVersion'] as String),
       goVersion: pulumi.Input.fromValue(map['goVersion'] as String),
       major: pulumi.Input.fromValue(map['major'] as String),
-      minCompatibilityMajor: (() {
-        final guardedValue = map['minCompatibilityMajor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      minCompatibilityMinor: (() {
-        final guardedValue = map['minCompatibilityMinor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      minCompatibilityMajor: (() { final guardedValue = map['minCompatibilityMajor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minCompatibilityMinor: (() { final guardedValue = map['minCompatibilityMinor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minor: pulumi.Input.fromValue(map['minor'] as String),
       platform: pulumi.Input.fromValue(map['platform'] as String),
     );
   }
 }
+

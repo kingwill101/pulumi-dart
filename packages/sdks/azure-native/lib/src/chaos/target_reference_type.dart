@@ -14,3 +14,4 @@ enum TargetReferenceType {
     throw ArgumentError('Unknown TargetReferenceType value: $value');
   }
 }
+

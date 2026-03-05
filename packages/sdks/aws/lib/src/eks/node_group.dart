@@ -727,78 +727,54 @@ import 'node_group_update_config.dart';
 class NodeGroup extends pulumi.CustomResource {
   /// Type of Amazon Machine Image (AMI) associated with the EKS Node Group. See the [AWS documentation](https://docs.aws.amazon.com/eks/latest/APIReference/API_Nodegroup.html#AmazonEKS-Type-Nodegroup-amiType) for valid values. This provider will only perform drift detection if a configuration value is provided.
   late final pulumi.Output<String> amiType;
-
   /// Amazon Resource Name (ARN) of the EKS Node Group.
   late final pulumi.Output<String> arn;
-
   /// Type of capacity associated with the EKS Node Group. Valid values: `ON_DEMAND`, `SPOT`. This provider will only perform drift detection if a configuration value is provided.
   late final pulumi.Output<String> capacityType;
-
   /// Name of the EKS Cluster.
   late final pulumi.Output<String> clusterName;
-
   /// Disk size in GiB for worker nodes. Defaults to `50` for Windows, `20` all other node groups. The provider will only perform drift detection if a configuration value is provided.
   late final pulumi.Output<int> diskSize;
-
   /// Force version update if existing pods are unable to be drained due to a pod disruption budget issue.
   late final pulumi.Output<bool?> forceUpdateVersion;
-
   /// List of instance types associated with the EKS Node Group. Defaults to `["t3.medium"]`. The provider will only perform drift detection if a configuration value is provided.
   late final pulumi.Output<List<String>> instanceTypes;
-
   /// Key-value map of Kubernetes labels. Only labels that are applied with the EKS API are managed by this argument. Other Kubernetes labels applied to the EKS Node Group will not be managed.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Configuration block with Launch Template settings. See `launch_template` below for details. Conflicts with `remote_access`.
   late final pulumi.Output<NodeGroupLaunchTemplate?> launchTemplate;
-
   /// Name of the EKS Node Group. If omitted, the provider will assign a random, unique name. Conflicts with `node_group_name_prefix`. The node group name can't be longer than 63 characters. It must start with a letter or digit, but can also include hyphens and underscores for the remaining characters.
   late final pulumi.Output<String> nodeGroupName;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `node_group_name`.
   late final pulumi.Output<String> nodeGroupNamePrefix;
-
   /// The node auto repair configuration for the node group. See `node_repair_config` below for details.
   late final pulumi.Output<NodeGroupNodeRepairConfig> nodeRepairConfig;
-
   /// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Node Group.
   late final pulumi.Output<String> nodeRoleArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// AMI version of the EKS Node Group. Defaults to latest version for Kubernetes version.
   late final pulumi.Output<String> releaseVersion;
-
   /// Configuration block with remote access settings. See `remote_access` below for details. Conflicts with `launch_template`.
   late final pulumi.Output<NodeGroupRemoteAccess?> remoteAccess;
-
   /// List of objects containing information about underlying resources.
   late final pulumi.Output<List<Map<String, dynamic>>> resources;
-
   /// Configuration block with scaling settings. See `scaling_config` below for details.
   late final pulumi.Output<NodeGroupScalingConfig> scalingConfig;
-
   /// Status of the EKS Node Group.
   late final pulumi.Output<String> status;
-
   /// Identifiers of EC2 Subnets to associate with the EKS Node Group.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<String>> subnetIds;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The Kubernetes taints to be applied to the nodes in the node group. Maximum of 50 taints per node group. See taint below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> taints;
-
   /// Configuration block with update settings. See `update_config` below for details.
   late final pulumi.Output<NodeGroupUpdateConfig> updateConfig;
-
   /// Kubernetes version. Defaults to EKS Cluster Kubernetes version. The provider will only perform drift detection if a configuration value is provided.
   late final pulumi.Output<String> version;
 
@@ -811,11 +787,11 @@ class NodeGroup extends pulumi.CustomResource {
     NodeGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:eks/nodeGroup:NodeGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:eks/nodeGroup:NodeGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amiType = registerOutput<String>('amiType');
     arn = registerOutput<String>('arn');
     capacityType = registerOutput<String>('capacityType');
@@ -824,67 +800,22 @@ class NodeGroup extends pulumi.CustomResource {
     forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
     instanceTypes = registerOutput<List<String>>('instanceTypes');
     labels = registerOutput<Map<String, String>?>('labels');
-    launchTemplate = registerOutput<NodeGroupLaunchTemplate?>(
-      'launchTemplate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeGroupLaunchTemplate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    launchTemplate = registerOutput<NodeGroupLaunchTemplate?>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeGroupName = registerOutput<String>('nodeGroupName');
     nodeGroupNamePrefix = registerOutput<String>('nodeGroupNamePrefix');
-    nodeRepairConfig = registerOutput<NodeGroupNodeRepairConfig>(
-      'nodeRepairConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeGroupNodeRepairConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nodeRepairConfig = registerOutput<NodeGroupNodeRepairConfig>('nodeRepairConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupNodeRepairConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeRoleArn = registerOutput<String>('nodeRoleArn');
     region = registerOutput<String>('region');
     releaseVersion = registerOutput<String>('releaseVersion');
-    remoteAccess = registerOutput<NodeGroupRemoteAccess?>(
-      'remoteAccess',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeGroupRemoteAccess.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    remoteAccess = registerOutput<NodeGroupRemoteAccess?>('remoteAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupRemoteAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resources = registerOutput<List<Map<String, dynamic>>>('resources');
-    scalingConfig = registerOutput<NodeGroupScalingConfig>(
-      'scalingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeGroupScalingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scalingConfig = registerOutput<NodeGroupScalingConfig>('scalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     taints = registerOutput<List<Map<String, dynamic>>?>('taints');
-    updateConfig = registerOutput<NodeGroupUpdateConfig>(
-      'updateConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeGroupUpdateConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updateConfig = registerOutput<NodeGroupUpdateConfig>('updateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupUpdateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }
 
@@ -906,11 +837,11 @@ class NodeGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:eks/nodeGroup:NodeGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:eks/nodeGroup:NodeGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amiType = registerOutput<String>('amiType');
     arn = registerOutput<String>('arn');
     capacityType = registerOutput<String>('capacityType');
@@ -919,67 +850,22 @@ class NodeGroup extends pulumi.CustomResource {
     forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
     instanceTypes = registerOutput<List<String>>('instanceTypes');
     labels = registerOutput<Map<String, String>?>('labels');
-    launchTemplate = registerOutput<NodeGroupLaunchTemplate?>(
-      'launchTemplate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeGroupLaunchTemplate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    launchTemplate = registerOutput<NodeGroupLaunchTemplate?>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeGroupName = registerOutput<String>('nodeGroupName');
     nodeGroupNamePrefix = registerOutput<String>('nodeGroupNamePrefix');
-    nodeRepairConfig = registerOutput<NodeGroupNodeRepairConfig>(
-      'nodeRepairConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeGroupNodeRepairConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nodeRepairConfig = registerOutput<NodeGroupNodeRepairConfig>('nodeRepairConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupNodeRepairConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeRoleArn = registerOutput<String>('nodeRoleArn');
     region = registerOutput<String>('region');
     releaseVersion = registerOutput<String>('releaseVersion');
-    remoteAccess = registerOutput<NodeGroupRemoteAccess?>(
-      'remoteAccess',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeGroupRemoteAccess.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    remoteAccess = registerOutput<NodeGroupRemoteAccess?>('remoteAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupRemoteAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resources = registerOutput<List<Map<String, dynamic>>>('resources');
-    scalingConfig = registerOutput<NodeGroupScalingConfig>(
-      'scalingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeGroupScalingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scalingConfig = registerOutput<NodeGroupScalingConfig>('scalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     taints = registerOutput<List<Map<String, dynamic>>?>('taints');
-    updateConfig = registerOutput<NodeGroupUpdateConfig>(
-      'updateConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeGroupUpdateConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updateConfig = registerOutput<NodeGroupUpdateConfig>('updateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupUpdateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }
 }

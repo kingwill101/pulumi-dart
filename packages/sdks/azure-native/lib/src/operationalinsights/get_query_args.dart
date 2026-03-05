@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQueryArgs {
   /// The id of a specific query defined in the Log Analytics QueryPack
   final pulumi.Input<String> id;
-
   /// The name of the Log Analytics QueryPack resource.
   final pulumi.Input<String> queryPackName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetQueryArgs {
     return GetQueryArgs(
       id: pulumi.Input.fromValue(map['id'] as String),
       queryPackName: pulumi.Input.fromValue(map['queryPackName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

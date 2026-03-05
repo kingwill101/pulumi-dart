@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRuleArgs {
   /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   final pulumi.Input<String> profileName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the delivery rule which is unique within the endpoint.
   final pulumi.Input<String> ruleName;
-
   /// Name of the rule set under the profile which is unique globally.
   final pulumi.Input<String> ruleSetName;
 
@@ -43,11 +40,10 @@ class GetRuleArgs {
   factory GetRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetRuleArgs(
       profileName: pulumi.Input.fromValue(map['profileName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
       ruleSetName: pulumi.Input.fromValue(map['ruleSetName'] as String),
     );
   }
 }
+

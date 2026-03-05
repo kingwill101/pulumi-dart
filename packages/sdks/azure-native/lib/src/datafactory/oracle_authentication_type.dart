@@ -14,3 +14,4 @@ enum OracleAuthenticationType {
     throw ArgumentError('Unknown OracleAuthenticationType value: $value');
   }
 }
+

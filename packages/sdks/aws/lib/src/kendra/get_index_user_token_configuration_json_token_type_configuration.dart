@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIndexUserTokenConfigurationJsonTokenTypeConfiguration {
   /// The group attribute field.
   final pulumi.Input<String> groupAttributeField;
-
   /// The user name attribute field.
   final pulumi.Input<String> userNameAttributeField;
 
@@ -24,16 +23,11 @@ class GetIndexUserTokenConfigurationJsonTokenTypeConfiguration {
     };
   }
 
-  factory GetIndexUserTokenConfigurationJsonTokenTypeConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetIndexUserTokenConfigurationJsonTokenTypeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetIndexUserTokenConfigurationJsonTokenTypeConfiguration(
-      groupAttributeField: pulumi.Input.fromValue(
-        map['groupAttributeField'] as String,
-      ),
-      userNameAttributeField: pulumi.Input.fromValue(
-        map['userNameAttributeField'] as String,
-      ),
+      groupAttributeField: pulumi.Input.fromValue(map['groupAttributeField'] as String),
+      userNameAttributeField: pulumi.Input.fromValue(map['userNameAttributeField'] as String),
     );
   }
 }
+

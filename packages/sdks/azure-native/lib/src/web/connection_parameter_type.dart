@@ -22,3 +22,4 @@ enum ConnectionParameterType {
     throw ArgumentError('Unknown ConnectionParameterType value: $value');
   }
 }
+

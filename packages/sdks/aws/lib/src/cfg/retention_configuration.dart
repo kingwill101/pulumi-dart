@@ -102,10 +102,8 @@ import 'retention_configuration_state.dart';
 class RetentionConfiguration extends pulumi.CustomResource {
   /// The name of the retention configuration object. The object is always named **default**.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The number of days AWS Config stores historical information.
   late final pulumi.Output<int> retentionPeriodInDays;
 
@@ -118,11 +116,11 @@ class RetentionConfiguration extends pulumi.CustomResource {
     RetentionConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cfg/retentionConfiguration:RetentionConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cfg/retentionConfiguration:RetentionConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
@@ -146,11 +144,11 @@ class RetentionConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cfg/retentionConfiguration:RetentionConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cfg/retentionConfiguration:RetentionConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');

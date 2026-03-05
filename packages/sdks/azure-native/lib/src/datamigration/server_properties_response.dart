@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerPropertiesResponse {
   /// Number of databases in the server
   final pulumi.Input<int> serverDatabaseCount;
-
   /// Edition of the database server
   final pulumi.Input<String> serverEdition;
-
   /// Name of the server
   final pulumi.Input<String> serverName;
-
   /// Version of the operating system
   final pulumi.Input<String> serverOperatingSystemVersion;
-
   /// Name of the server platform
   final pulumi.Input<String> serverPlatform;
-
   /// Version of the database server
   final pulumi.Input<String> serverVersion;
 
@@ -51,16 +46,13 @@ class ServerPropertiesResponse {
 
   factory ServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ServerPropertiesResponse(
-      serverDatabaseCount: pulumi.Input.fromValue(
-        map['serverDatabaseCount'] as int,
-      ),
+      serverDatabaseCount: pulumi.Input.fromValue(map['serverDatabaseCount'] as int),
       serverEdition: pulumi.Input.fromValue(map['serverEdition'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
-      serverOperatingSystemVersion: pulumi.Input.fromValue(
-        map['serverOperatingSystemVersion'] as String,
-      ),
+      serverOperatingSystemVersion: pulumi.Input.fromValue(map['serverOperatingSystemVersion'] as String),
       serverPlatform: pulumi.Input.fromValue(map['serverPlatform'] as String),
       serverVersion: pulumi.Input.fromValue(map['serverVersion'] as String),
     );
   }
 }
+

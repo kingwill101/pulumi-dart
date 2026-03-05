@@ -6,27 +6,20 @@ class ExtensionsInstanceConfig {
   /// List of extension events selected by consumer that extension is allowed to
   /// emit, identified by their types.
   final pulumi.Input<List<String>>? allowedEventTypes;
-
   /// (Output)
   /// The time at which the Extension Instance Config was created.
   final pulumi.Input<String>? createTime;
-
   /// Fully qualified Eventarc resource name that consumers should use for event triggers.
   final pulumi.Input<String>? eventarcChannel;
-
   /// The ref of the Extension from the Registry (e.g. publisher-id/awesome-extension)
   final pulumi.Input<String> extensionRef;
-
   /// The version of the Extension from the Registry (e.g. 1.0.3). If left blank, latest is assumed.
   final pulumi.Input<String>? extensionVersion;
-
   /// (Output)
   /// The unique identifier for this configuration.
   final pulumi.Input<String>? name;
-
   /// Environment variables that may be configured for the Extension
   final pulumi.Input<Map<String, String>> params;
-
   /// (Output)
   /// Postinstall instructions to be shown for this Extension, with
   /// template strings representing function and parameter values substituted
@@ -34,7 +27,6 @@ class ExtensionsInstanceConfig {
   /// ${function:myFunc.url},
   /// ${function:myFunc.name}, and ${function:myFunc.location}
   final pulumi.Input<String>? populatedPostinstallContent;
-
   /// Params whose values are only available at deployment time.
   /// Unlike other params, these will not be set as environment variables on
   /// functions. See a full list of system parameters at
@@ -79,47 +71,16 @@ class ExtensionsInstanceConfig {
 
   factory ExtensionsInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ExtensionsInstanceConfig(
-      allowedEventTypes: (() {
-        final guardedValue = map['allowedEventTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventarcChannel: (() {
-        final guardedValue = map['eventarcChannel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowedEventTypes: (() { final guardedValue = map['allowedEventTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventarcChannel: (() { final guardedValue = map['eventarcChannel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       extensionRef: pulumi.Input.fromValue(map['extensionRef'] as String),
-      extensionVersion: (() {
-        final guardedValue = map['extensionVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      params: pulumi.Input.fromValue(
-        (map['params'] as Map).cast<String, String>(),
-      ),
-      populatedPostinstallContent: (() {
-        final guardedValue = map['populatedPostinstallContent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      systemParams: (() {
-        final guardedValue = map['systemParams'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      extensionVersion: (() { final guardedValue = map['extensionVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      params: pulumi.Input.fromValue((map['params'] as Map).cast<String, String>()),
+      populatedPostinstallContent: (() { final guardedValue = map['populatedPostinstallContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      systemParams: (() { final guardedValue = map['systemParams']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

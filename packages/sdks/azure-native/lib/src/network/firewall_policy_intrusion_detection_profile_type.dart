@@ -14,8 +14,7 @@ enum FirewallPolicyIntrusionDetectionProfileType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FirewallPolicyIntrusionDetectionProfileType value: $value',
-    );
+    throw ArgumentError('Unknown FirewallPolicyIntrusionDetectionProfileType value: $value');
   }
 }
+

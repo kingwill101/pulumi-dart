@@ -10,37 +10,20 @@ class NetworkPolicyStatus {
 
   /// Creates a new [NetworkPolicyStatus].
   /// [conditions] Conditions holds an array of metav1.Condition that describe the state of the NetworkPolicy. Current service state
-  NetworkPolicyStatus({this.conditions});
+  NetworkPolicyStatus({
+    this.conditions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Condition>,
-            List<Map<String, dynamic>>
-          >(
-            conditions,
-            (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<Condition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkPolicyStatus.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyStatus(
-      conditions: (() {
-        final guardedValue = map['conditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Condition>(
-            guardedValue,
-            (value) =>
-                Condition.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Condition>(guardedValue, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

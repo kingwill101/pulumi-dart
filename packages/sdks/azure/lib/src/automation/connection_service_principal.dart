@@ -267,25 +267,18 @@ import 'connection_service_principal_state.dart';
 class ConnectionServicePrincipal extends pulumi.CustomResource {
   /// The (Client) ID of the Service Principal.
   late final pulumi.Output<String> applicationId;
-
   /// The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
-
   /// The thumbprint of the Service Principal Certificate.
   late final pulumi.Output<String> certificateThumbprint;
-
   /// A description for this Connection.
   late final pulumi.Output<String?> description;
-
   /// Specifies the name of the Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The subscription GUID.
   late final pulumi.Output<String> subscriptionId;
-
   /// The ID of the Tenant the Service Principal is assigned in.
   late final pulumi.Output<String> tenantId;
 
@@ -298,11 +291,11 @@ class ConnectionServicePrincipal extends pulumi.CustomResource {
     ConnectionServicePrincipalArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/connectionServicePrincipal:ConnectionServicePrincipal',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/connectionServicePrincipal:ConnectionServicePrincipal',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     automationAccountName = registerOutput<String>('automationAccountName');
     certificateThumbprint = registerOutput<String>('certificateThumbprint');
@@ -331,11 +324,11 @@ class ConnectionServicePrincipal extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/connectionServicePrincipal:ConnectionServicePrincipal',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/connectionServicePrincipal:ConnectionServicePrincipal',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     automationAccountName = registerOutput<String>('automationAccountName');
     certificateThumbprint = registerOutput<String>('certificateThumbprint');

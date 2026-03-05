@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DynamicConfigurationPropertiesResponse {
   /// Current Version of dynamic configuration
   final pulumi.Input<String> currentVersion;
-
   /// Type of dynamic configuration model
   final pulumi.Input<String> dynamicConfigurationModel;
-
   /// Type of dynamic configuration
   final pulumi.Input<String> dynamicConfigurationType;
-
   /// Provisioning state of resource
   final pulumi.Input<String> provisioningState;
 
@@ -37,20 +34,13 @@ class DynamicConfigurationPropertiesResponse {
     };
   }
 
-  factory DynamicConfigurationPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DynamicConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DynamicConfigurationPropertiesResponse(
       currentVersion: pulumi.Input.fromValue(map['currentVersion'] as String),
-      dynamicConfigurationModel: pulumi.Input.fromValue(
-        map['dynamicConfigurationModel'] as String,
-      ),
-      dynamicConfigurationType: pulumi.Input.fromValue(
-        map['dynamicConfigurationType'] as String,
-      ),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      dynamicConfigurationModel: pulumi.Input.fromValue(map['dynamicConfigurationModel'] as String),
+      dynamicConfigurationType: pulumi.Input.fromValue(map['dynamicConfigurationType'] as String),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

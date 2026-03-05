@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getIamCustomRole.
 class GetIamCustomRoleResult {
   final bool deleted;
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -57,14 +57,11 @@ class GetIamCustomRoleResult {
       id: map['id'] as String,
       name: map['name'] as String,
       permissions: (map['permissions'] as List).cast<String>(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       roleId: map['roleId'] as String,
       stage: map['stage'] as String,
       title: map['title'] as String,
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum FirewallPolicySkuTier {
     throw ArgumentError('Unknown FirewallPolicySkuTier value: $value');
   }
 }
+

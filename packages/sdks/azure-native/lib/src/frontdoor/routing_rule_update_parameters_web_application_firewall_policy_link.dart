@@ -9,21 +9,20 @@ class RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink {
 
   /// Creates a new [RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink].
   /// [id] Resource ID.
-  RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink({this.id});
+  RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
-  factory RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink.fromMap(Map<String, dynamic> map) {
     return RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

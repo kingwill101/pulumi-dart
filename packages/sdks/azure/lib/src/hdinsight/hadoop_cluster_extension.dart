@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HadoopClusterExtension {
   /// The workspace ID of the log analytics extension.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
-
   /// The workspace key of the log analytics extension.
   final pulumi.Input<String> primaryKey;
 
@@ -26,10 +25,9 @@ class HadoopClusterExtension {
 
   factory HadoopClusterExtension.fromMap(Map<String, dynamic> map) {
     return HadoopClusterExtension(
-      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
-        map['logAnalyticsWorkspaceId'] as String,
-      ),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(map['logAnalyticsWorkspaceId'] as String),
       primaryKey: pulumi.Input.fromValue(map['primaryKey'] as String),
     );
   }
 }
+

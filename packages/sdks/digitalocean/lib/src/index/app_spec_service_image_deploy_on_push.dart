@@ -8,19 +8,20 @@ class AppSpecServiceImageDeployOnPush {
 
   /// Creates a new [AppSpecServiceImageDeployOnPush].
   /// [enabled] Whether to automatically deploy images pushed to DOCR.
-  AppSpecServiceImageDeployOnPush({this.enabled});
+  AppSpecServiceImageDeployOnPush({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory AppSpecServiceImageDeployOnPush.fromMap(Map<String, dynamic> map) {
     return AppSpecServiceImageDeployOnPush(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

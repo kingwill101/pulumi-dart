@@ -8,19 +8,20 @@ class NetworkPortOptions {
 
   /// Creates a new [NetworkPortOptions].
   /// [isolated] Specifies whether the network port is isolated, preventing traffic flow from other ports.
-  NetworkPortOptions({this.isolated});
+  NetworkPortOptions({
+    this.isolated,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'isolated': ?isolated};
+    return <String, dynamic>{
+      'isolated': ?isolated,
+    };
   }
 
   factory NetworkPortOptions.fromMap(Map<String, dynamic> map) {
     return NetworkPortOptions(
-      isolated: (() {
-        final guardedValue = map['isolated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      isolated: (() { final guardedValue = map['isolated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,25 +8,20 @@ class GetContainerAcl {
 
   /// Creates a new [GetContainerAcl].
   /// [read] Required.
-  GetContainerAcl({required this.read});
+  GetContainerAcl({
+    required this.read,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'read':
-          pulumi.Input.mapInputValue<GetContainerAclRead, Map<String, dynamic>>(
-            read,
-            (value) => value.toMap(),
-          ),
+      'read': pulumi.Input.mapInputValue<GetContainerAclRead, Map<String, dynamic>>(read, (value) => value.toMap()),
     };
   }
 
   factory GetContainerAcl.fromMap(Map<String, dynamic> map) {
     return GetContainerAcl(
-      read: pulumi.Input.fromValue(
-        GetContainerAclRead.fromMap(
-          (map['read']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      read: pulumi.Input.fromValue(GetContainerAclRead.fromMap((map['read']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

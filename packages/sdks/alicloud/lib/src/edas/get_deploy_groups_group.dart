@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeployGroupsGroup {
   /// ID of the EDAS application.
   final pulumi.Input<String> appId;
-
   /// The version of the deployment package for the application.
   final pulumi.Input<String> appVersionId;
-
   /// The ID of the cluster that you want to create the application.
   final pulumi.Input<String> clusterId;
-
   /// The time when the instance group was created.
   final pulumi.Input<int> createTime;
-
   /// The ID of the instance group.
   final pulumi.Input<String> groupId;
-
   /// The name of the instance group. The length cannot exceed 64 characters.
   final pulumi.Input<String> groupName;
-
   /// The type of the instance group. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
   final pulumi.Input<int> groupType;
-
   /// The version of the deployment package for the instance group that was created.
   final pulumi.Input<String> packageVersionId;
-
   /// The time when the instance group was updated.
   final pulumi.Input<int> updateTime;
 
@@ -75,10 +67,9 @@ class GetDeployGroupsGroup {
       groupId: pulumi.Input.fromValue(map['groupId'] as String),
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
       groupType: pulumi.Input.fromValue(map['groupType'] as int),
-      packageVersionId: pulumi.Input.fromValue(
-        map['packageVersionId'] as String,
-      ),
+      packageVersionId: pulumi.Input.fromValue(map['packageVersionId'] as String),
       updateTime: pulumi.Input.fromValue(map['updateTime'] as int),
     );
   }
 }
+

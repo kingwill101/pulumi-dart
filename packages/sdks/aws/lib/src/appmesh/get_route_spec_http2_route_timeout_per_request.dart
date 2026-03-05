@@ -15,15 +15,17 @@ class GetRouteSpecHttp2RouteTimeoutPerRequest {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'unit': unit, 'value': value};
+    return <String, dynamic>{
+      'unit': unit,
+      'value': value,
+    };
   }
 
-  factory GetRouteSpecHttp2RouteTimeoutPerRequest.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRouteSpecHttp2RouteTimeoutPerRequest.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttp2RouteTimeoutPerRequest(
       unit: pulumi.Input.fromValue(map['unit'] as String),
       value: pulumi.Input.fromValue(map['value'] as int),
     );
   }
 }
+

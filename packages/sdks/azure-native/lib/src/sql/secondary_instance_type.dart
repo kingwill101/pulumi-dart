@@ -15,3 +15,4 @@ enum SecondaryInstanceType {
     throw ArgumentError('Unknown SecondaryInstanceType value: $value');
   }
 }
+

@@ -12,22 +12,16 @@ import 'storage_profile_response.dart';
 class EdgeMachineReportedPropertiesResponse {
   /// Extension details for edge machine.
   final pulumi.Input<ExtensionProfileResponseV1> extensionProfile;
-
   /// Hardware related information for edge machine.
   final pulumi.Input<HardwareProfileResponse> hardwareProfile;
-
   /// Last time data reported.
   final pulumi.Input<String> lastUpdated;
-
   /// Network details for edge machine.
   final pulumi.Input<EdgeMachineNetworkProfileResponse> networkProfile;
-
   /// OS Properties for edge machine.
   final pulumi.Input<OsProfileResponse> osProfile;
-
   /// Solution builder extension (SBE) deployment package information.
   final pulumi.Input<SbeDeploymentPackageInfoResponse> sbeDeploymentPackageInfo;
-
   /// Storage related information for edge machine.
   final pulumi.Input<StorageProfileResponse> storageProfile;
 
@@ -51,75 +45,26 @@ class EdgeMachineReportedPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extensionProfile':
-          pulumi.Input.mapInputValue<
-            ExtensionProfileResponseV1,
-            Map<String, dynamic>
-          >(extensionProfile, (value) => value.toMap()),
-      'hardwareProfile':
-          pulumi.Input.mapInputValue<
-            HardwareProfileResponse,
-            Map<String, dynamic>
-          >(hardwareProfile, (value) => value.toMap()),
+      'extensionProfile': pulumi.Input.mapInputValue<ExtensionProfileResponseV1, Map<String, dynamic>>(extensionProfile, (value) => value.toMap()),
+      'hardwareProfile': pulumi.Input.mapInputValue<HardwareProfileResponse, Map<String, dynamic>>(hardwareProfile, (value) => value.toMap()),
       'lastUpdated': lastUpdated,
-      'networkProfile':
-          pulumi.Input.mapInputValue<
-            EdgeMachineNetworkProfileResponse,
-            Map<String, dynamic>
-          >(networkProfile, (value) => value.toMap()),
-      'osProfile':
-          pulumi.Input.mapInputValue<OsProfileResponse, Map<String, dynamic>>(
-            osProfile,
-            (value) => value.toMap(),
-          ),
-      'sbeDeploymentPackageInfo':
-          pulumi.Input.mapInputValue<
-            SbeDeploymentPackageInfoResponse,
-            Map<String, dynamic>
-          >(sbeDeploymentPackageInfo, (value) => value.toMap()),
-      'storageProfile':
-          pulumi.Input.mapInputValue<
-            StorageProfileResponse,
-            Map<String, dynamic>
-          >(storageProfile, (value) => value.toMap()),
+      'networkProfile': pulumi.Input.mapInputValue<EdgeMachineNetworkProfileResponse, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
+      'osProfile': pulumi.Input.mapInputValue<OsProfileResponse, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
+      'sbeDeploymentPackageInfo': pulumi.Input.mapInputValue<SbeDeploymentPackageInfoResponse, Map<String, dynamic>>(sbeDeploymentPackageInfo, (value) => value.toMap()),
+      'storageProfile': pulumi.Input.mapInputValue<StorageProfileResponse, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
     };
   }
 
-  factory EdgeMachineReportedPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EdgeMachineReportedPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EdgeMachineReportedPropertiesResponse(
-      extensionProfile: pulumi.Input.fromValue(
-        ExtensionProfileResponseV1.fromMap(
-          (map['extensionProfile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      hardwareProfile: pulumi.Input.fromValue(
-        HardwareProfileResponse.fromMap(
-          (map['hardwareProfile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      extensionProfile: pulumi.Input.fromValue(ExtensionProfileResponseV1.fromMap((map['extensionProfile']! as Map).cast<String, dynamic>())),
+      hardwareProfile: pulumi.Input.fromValue(HardwareProfileResponse.fromMap((map['hardwareProfile']! as Map).cast<String, dynamic>())),
       lastUpdated: pulumi.Input.fromValue(map['lastUpdated'] as String),
-      networkProfile: pulumi.Input.fromValue(
-        EdgeMachineNetworkProfileResponse.fromMap(
-          (map['networkProfile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      osProfile: pulumi.Input.fromValue(
-        OsProfileResponse.fromMap(
-          (map['osProfile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sbeDeploymentPackageInfo: pulumi.Input.fromValue(
-        SbeDeploymentPackageInfoResponse.fromMap(
-          (map['sbeDeploymentPackageInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      storageProfile: pulumi.Input.fromValue(
-        StorageProfileResponse.fromMap(
-          (map['storageProfile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      networkProfile: pulumi.Input.fromValue(EdgeMachineNetworkProfileResponse.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())),
+      osProfile: pulumi.Input.fromValue(OsProfileResponse.fromMap((map['osProfile']! as Map).cast<String, dynamic>())),
+      sbeDeploymentPackageInfo: pulumi.Input.fromValue(SbeDeploymentPackageInfoResponse.fromMap((map['sbeDeploymentPackageInfo']! as Map).cast<String, dynamic>())),
+      storageProfile: pulumi.Input.fromValue(StorageProfileResponse.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

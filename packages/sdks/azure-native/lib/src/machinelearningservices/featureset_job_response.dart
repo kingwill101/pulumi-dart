@@ -7,28 +7,20 @@ import 'feature_window_response.dart';
 class FeaturesetJobResponse {
   /// Specifies the created date
   final pulumi.Input<String>? createdDate;
-
   /// Specifies the display name
   final pulumi.Input<String>? displayName;
-
   /// Specifies the duration
   final pulumi.Input<String>? duration;
-
   /// Specifies the experiment id
   final pulumi.Input<String>? experimentId;
-
   /// Specifies the backfill feature window to be materialized
   final pulumi.Input<FeatureWindowResponse>? featureWindow;
-
   /// Specifies the job id
   final pulumi.Input<String>? jobId;
-
   /// Specifies the job status
   final pulumi.Input<String>? status;
-
   /// Specifies the tags if any
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Specifies the feature store job type
   final pulumi.Input<String>? type;
 
@@ -60,11 +52,7 @@ class FeaturesetJobResponse {
       'displayName': ?displayName,
       'duration': ?duration,
       'experimentId': ?experimentId,
-      'featureWindow':
-          ?pulumi.Input.mapOptionalInputValue<
-            FeatureWindowResponse,
-            Map<String, dynamic>
-          >(featureWindow, (value) => value.toMap()),
+      'featureWindow': ?pulumi.Input.mapOptionalInputValue<FeatureWindowResponse, Map<String, dynamic>>(featureWindow, (value) => value.toMap()),
       'jobId': ?jobId,
       'status': ?status,
       'tags': ?tags,
@@ -74,57 +62,16 @@ class FeaturesetJobResponse {
 
   factory FeaturesetJobResponse.fromMap(Map<String, dynamic> map) {
     return FeaturesetJobResponse(
-      createdDate: (() {
-        final guardedValue = map['createdDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      duration: (() {
-        final guardedValue = map['duration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      experimentId: (() {
-        final guardedValue = map['experimentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      featureWindow: (() {
-        final guardedValue = map['featureWindow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FeatureWindowResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      jobId: (() {
-        final guardedValue = map['jobId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createdDate: (() { final guardedValue = map['createdDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      experimentId: (() { final guardedValue = map['experimentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      featureWindow: (() { final guardedValue = map['featureWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeatureWindowResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      jobId: (() { final guardedValue = map['jobId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -16,16 +16,15 @@ class V2modelsSlotValueElicitationSettingSlotResolutionSetting {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'slotResolutionStrategy': slotResolutionStrategy};
+    return <String, dynamic>{
+      'slotResolutionStrategy': slotResolutionStrategy,
+    };
   }
 
-  factory V2modelsSlotValueElicitationSettingSlotResolutionSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsSlotValueElicitationSettingSlotResolutionSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingSlotResolutionSetting(
-      slotResolutionStrategy: pulumi.Input.fromValue(
-        map['slotResolutionStrategy'] as String,
-      ),
+      slotResolutionStrategy: pulumi.Input.fromValue(map['slotResolutionStrategy'] as String),
     );
   }
 }
+

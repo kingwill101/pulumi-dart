@@ -255,13 +255,10 @@ import 'spring_cloud_builder_state.dart';
 class SpringCloudBuilder extends pulumi.CustomResource {
   /// One or more `build_pack_group` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> buildPackGroups;
-
   /// The name which should be used for this Spring Cloud Builder. Changing this forces a new Spring Cloud Builder to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Builder to be created.
   late final pulumi.Output<String> springCloudServiceId;
-
   /// A `stack` block as defined below.
   late final pulumi.Output<SpringCloudBuilderStack> stack;
 
@@ -274,26 +271,15 @@ class SpringCloudBuilder extends pulumi.CustomResource {
     SpringCloudBuilderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudBuilder:SpringCloudBuilder',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    buildPackGroups = registerOutput<List<Map<String, dynamic>>>(
-      'buildPackGroups',
-    );
+          'azure:appplatform/springCloudBuilder:SpringCloudBuilder',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    buildPackGroups = registerOutput<List<Map<String, dynamic>>>('buildPackGroups');
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    stack = registerOutput<SpringCloudBuilderStack>(
-      'stack',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudBuilderStack.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    stack = registerOutput<SpringCloudBuilderStack>('stack', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudBuilderStack.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [SpringCloudBuilder] resource's state with the given [name] and [id].
@@ -314,25 +300,14 @@ class SpringCloudBuilder extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudBuilder:SpringCloudBuilder',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    buildPackGroups = registerOutput<List<Map<String, dynamic>>>(
-      'buildPackGroups',
-    );
+          'azure:appplatform/springCloudBuilder:SpringCloudBuilder',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    buildPackGroups = registerOutput<List<Map<String, dynamic>>>('buildPackGroups');
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    stack = registerOutput<SpringCloudBuilderStack>(
-      'stack',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudBuilderStack.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    stack = registerOutput<SpringCloudBuilderStack>('stack', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudBuilderStack.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

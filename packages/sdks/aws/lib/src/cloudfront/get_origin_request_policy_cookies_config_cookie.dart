@@ -7,17 +7,20 @@ class GetOriginRequestPolicyCookiesConfigCookie {
 
   /// Creates a new [GetOriginRequestPolicyCookiesConfigCookie].
   /// [items] Required.
-  GetOriginRequestPolicyCookiesConfigCookie({required this.items});
+  GetOriginRequestPolicyCookiesConfigCookie({
+    required this.items,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'items': items};
+    return <String, dynamic>{
+      'items': items,
+    };
   }
 
-  factory GetOriginRequestPolicyCookiesConfigCookie.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOriginRequestPolicyCookiesConfigCookie.fromMap(Map<String, dynamic> map) {
     return GetOriginRequestPolicyCookiesConfigCookie(
       items: pulumi.Input.fromValue((map['items'] as List).cast<String>()),
     );
   }
 }
+

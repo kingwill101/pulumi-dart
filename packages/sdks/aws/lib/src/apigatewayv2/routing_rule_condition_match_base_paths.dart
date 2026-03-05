@@ -8,10 +8,14 @@ class RoutingRuleConditionMatchBasePaths {
 
   /// Creates a new [RoutingRuleConditionMatchBasePaths].
   /// [anyOfs] List of strings of the case sensitive base path to be matched.
-  RoutingRuleConditionMatchBasePaths({required this.anyOfs});
+  RoutingRuleConditionMatchBasePaths({
+    required this.anyOfs,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'anyOfs': anyOfs};
+    return <String, dynamic>{
+      'anyOfs': anyOfs,
+    };
   }
 
   factory RoutingRuleConditionMatchBasePaths.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class RoutingRuleConditionMatchBasePaths {
     );
   }
 }
+

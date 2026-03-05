@@ -5,17 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataQualityRulesRuleStatisticRangeExpectation {
   /// The maximum column value allowed for a row to pass this validation.
   final pulumi.Input<String> maxValue;
-
   /// The minimum column value allowed for a row to pass this validation.
   final pulumi.Input<String> minValue;
-
   /// The list of aggregate metrics a rule can be evaluated against.
   /// Possible values: ["STATISTIC_UNDEFINED", "MEAN", "MIN", "MAX"]
   final pulumi.Input<String> statistic;
-
   /// Whether each value needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.
   final pulumi.Input<bool> strictMaxEnabled;
-
   /// Whether each value needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.
   final pulumi.Input<bool> strictMinEnabled;
 
@@ -43,9 +39,7 @@ class GetDataQualityRulesRuleStatisticRangeExpectation {
     };
   }
 
-  factory GetDataQualityRulesRuleStatisticRangeExpectation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataQualityRulesRuleStatisticRangeExpectation.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesRuleStatisticRangeExpectation(
       maxValue: pulumi.Input.fromValue(map['maxValue'] as String),
       minValue: pulumi.Input.fromValue(map['minValue'] as String),
@@ -55,3 +49,4 @@ class GetDataQualityRulesRuleStatisticRangeExpectation {
     );
   }
 }
+

@@ -18,3 +18,4 @@ enum InvoiceSectionStateReasonCode {
     throw ArgumentError('Unknown InvoiceSectionStateReasonCode value: $value');
   }
 }
+

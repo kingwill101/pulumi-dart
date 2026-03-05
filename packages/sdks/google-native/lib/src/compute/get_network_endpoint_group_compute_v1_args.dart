@@ -29,19 +29,12 @@ class GetNetworkEndpointGroupComputeV1Args {
     };
   }
 
-  factory GetNetworkEndpointGroupComputeV1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkEndpointGroupComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetNetworkEndpointGroupComputeV1Args(
-      networkEndpointGroup: pulumi.Input.fromValue(
-        map['networkEndpointGroup'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      networkEndpointGroup: pulumi.Input.fromValue(map['networkEndpointGroup'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
+

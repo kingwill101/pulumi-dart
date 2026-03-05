@@ -8,37 +8,26 @@ import 'system_data_response.dart';
 class GetExtensionResult {
   /// Additional Api Properties.
   final Map<String, ApiPropertiesResponse> additionalApiProperties;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The ETag value to implement optimistic concurrency.
   final String eTag;
-
   /// Extension api docs link.
   final String extensionApiDocsLink;
-
   /// Extension auth link.
   final String extensionAuthLink;
-
   /// Extension category. e.g. weather/sensor/satellite.
   final String extensionCategory;
-
   /// Extension Id.
   final String extensionId;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Installed extension version.
   final String installedExtensionVersion;
-
   /// The name of the resource
   final String name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -72,11 +61,7 @@ class GetExtensionResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalApiProperties':
-          pulumi.Input.encodeMapValues<
-            ApiPropertiesResponse,
-            Map<String, dynamic>
-          >(additionalApiProperties, (value) => value.toMap()),
+      'additionalApiProperties': pulumi.Input.encodeMapValues<ApiPropertiesResponse, Map<String, dynamic>>(additionalApiProperties, (value) => value.toMap()),
       'azureApiVersion': azureApiVersion,
       'eTag': eTag,
       'extensionApiDocsLink': extensionApiDocsLink,
@@ -93,13 +78,7 @@ class GetExtensionResult {
 
   factory GetExtensionResult.fromMap(Map<String, dynamic> map) {
     return GetExtensionResult(
-      additionalApiProperties:
-          pulumi.Input.decodeMapValues<ApiPropertiesResponse>(
-            map['additionalApiProperties']!,
-            (value) => ApiPropertiesResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      additionalApiProperties: pulumi.Input.decodeMapValues<ApiPropertiesResponse>(map['additionalApiProperties']!, (value) => ApiPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
       eTag: map['eTag'] as String,
       extensionApiDocsLink: map['extensionApiDocsLink'] as String,
@@ -109,10 +88,9 @@ class GetExtensionResult {
       id: map['id'] as String,
       installedExtensionVersion: map['installedExtensionVersion'] as String,
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

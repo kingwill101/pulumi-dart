@@ -9,19 +9,20 @@ class DataFlowResponseFolder {
 
   /// Creates a new [DataFlowResponseFolder].
   /// [name] The name of the folder that this data flow is in.
-  DataFlowResponseFolder({this.name});
+  DataFlowResponseFolder({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory DataFlowResponseFolder.fromMap(Map<String, dynamic> map) {
     return DataFlowResponseFolder(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

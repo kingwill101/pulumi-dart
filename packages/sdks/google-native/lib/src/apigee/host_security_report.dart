@@ -10,45 +10,29 @@ import 'host_security_report_args.dart';
 class HostSecurityReport extends pulumi.CustomResource {
   /// Creation time of the query.
   late final pulumi.Output<String> created;
-
   /// Display Name specified by the user.
   late final pulumi.Output<String> displayName;
-
   /// Hostname is available only when query is executed at host level.
   late final pulumi.Output<String> envgroupHostname;
-
   /// Error is set when query fails.
   late final pulumi.Output<String> error;
-
   /// ExecutionTime is available only after the query is completed.
   late final pulumi.Output<String> executionTime;
   late final pulumi.Output<String> organizationId;
-
   /// Contains information like metrics, dimenstions etc of the Security Report.
-  late final pulumi.Output<GoogleCloudApigeeV1SecurityReportMetadataResponse>
-  queryParams;
-
+  late final pulumi.Output<GoogleCloudApigeeV1SecurityReportMetadataResponse> queryParams;
   /// Report Definition ID.
   late final pulumi.Output<String> reportDefinitionId;
-
   /// Result is available only after the query is completed.
-  late final pulumi.Output<
-    GoogleCloudApigeeV1SecurityReportResultMetadataResponse
-  >
-  result;
-
+  late final pulumi.Output<GoogleCloudApigeeV1SecurityReportResultMetadataResponse> result;
   /// ResultFileSize is available only after the query is completed.
   late final pulumi.Output<String> resultFileSize;
-
   /// ResultRows is available only after the query is completed.
   late final pulumi.Output<String> resultRows;
-
   /// Self link of the query. Example: `/organizations/myorg/environments/myenv/securityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostSecurityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
   late final pulumi.Output<String> self;
-
   /// Query state could be "enqueued", "running", "completed", "expired" and "failed".
   late final pulumi.Output<String> state;
-
   /// Last updated timestamp for the query.
   late final pulumi.Output<String> updated;
 
@@ -61,40 +45,20 @@ class HostSecurityReport extends pulumi.CustomResource {
     HostSecurityReportArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:apigee/v1:HostSecurityReport',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:apigee/v1:HostSecurityReport',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     created = registerOutput<String>('created');
     displayName = registerOutput<String>('displayName');
     envgroupHostname = registerOutput<String>('envgroupHostname');
     error = registerOutput<String>('error');
     executionTime = registerOutput<String>('executionTime');
     organizationId = registerOutput<String>('organizationId');
-    queryParams =
-        registerOutput<GoogleCloudApigeeV1SecurityReportMetadataResponse>(
-          'queryParams',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GoogleCloudApigeeV1SecurityReportMetadataResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    queryParams = registerOutput<GoogleCloudApigeeV1SecurityReportMetadataResponse>('queryParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1SecurityReportMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reportDefinitionId = registerOutput<String>('reportDefinitionId');
-    result =
-        registerOutput<GoogleCloudApigeeV1SecurityReportResultMetadataResponse>(
-          'result',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GoogleCloudApigeeV1SecurityReportResultMetadataResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    result = registerOutput<GoogleCloudApigeeV1SecurityReportResultMetadataResponse>('result', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1SecurityReportResultMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resultFileSize = registerOutput<String>('resultFileSize');
     resultRows = registerOutput<String>('resultRows');
     self = registerOutput<String>('self');

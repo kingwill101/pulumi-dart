@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationArgs {
   /// The name of the bucket.
   final pulumi.Input<String> bucket;
-
   /// A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
   final pulumi.Input<Map<String, String>>? customAttributes;
-
   /// List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
   final pulumi.Input<List<String>>? eventTypes;
-
   /// Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
   final pulumi.Input<String>? objectNamePrefix;
-
   /// The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
   final pulumi.Input<String> payloadFormat;
-
   /// The Cloud PubSub topic to which this subscription publishes. Expects either the
   /// topic name, assumed to belong to the default GCP provider project, or the project-level name,
   /// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
@@ -60,25 +55,12 @@ class NotificationArgs {
   factory NotificationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      customAttributes: (() {
-        final guardedValue = map['customAttributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      eventTypes: (() {
-        final guardedValue = map['eventTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      objectNamePrefix: (() {
-        final guardedValue = map['objectNamePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customAttributes: (() { final guardedValue = map['customAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      eventTypes: (() { final guardedValue = map['eventTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      objectNamePrefix: (() { final guardedValue = map['objectNamePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       payloadFormat: pulumi.Input.fromValue(map['payloadFormat'] as String),
       topic: pulumi.Input.fromValue(map['topic'] as String),
     );
   }
 }
+

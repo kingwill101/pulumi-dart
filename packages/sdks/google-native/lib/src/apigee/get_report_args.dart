@@ -13,7 +13,10 @@ class GetReportArgs {
   /// Creates a new [GetReportArgs].
   /// [organizationId] Required.
   /// [reportId] Required.
-  GetReportArgs({required this.organizationId, required this.reportId});
+  GetReportArgs({
+    required this.organizationId,
+    required this.reportId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetReportArgs {
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHostPoolArgs {
   /// The name of the host pool within the specified resource group
   final pulumi.Input<String> hostPoolName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetHostPoolArgs {
   factory GetHostPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetHostPoolArgs(
       hostPoolName: pulumi.Input.fromValue(map['hostPoolName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

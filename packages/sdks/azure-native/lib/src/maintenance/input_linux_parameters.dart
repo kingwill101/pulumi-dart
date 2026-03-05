@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InputLinuxParameters {
   /// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'.
   final pulumi.Input<List<String>>? classificationsToInclude;
-
   /// Package names to be excluded for patching.
   final pulumi.Input<List<String>>? packageNameMasksToExclude;
-
   /// Package names to be included for patching.
   final pulumi.Input<List<String>>? packageNameMasksToInclude;
 
@@ -33,21 +31,10 @@ class InputLinuxParameters {
 
   factory InputLinuxParameters.fromMap(Map<String, dynamic> map) {
     return InputLinuxParameters(
-      classificationsToInclude: (() {
-        final guardedValue = map['classificationsToInclude'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      packageNameMasksToExclude: (() {
-        final guardedValue = map['packageNameMasksToExclude'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      packageNameMasksToInclude: (() {
-        final guardedValue = map['packageNameMasksToInclude'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      classificationsToInclude: (() { final guardedValue = map['classificationsToInclude']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      packageNameMasksToExclude: (() { final guardedValue = map['packageNameMasksToExclude']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      packageNameMasksToInclude: (() { final guardedValue = map['packageNameMasksToInclude']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

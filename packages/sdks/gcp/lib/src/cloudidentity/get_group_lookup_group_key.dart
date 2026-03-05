@@ -8,7 +8,6 @@ class GetGroupLookupGroupKey {
   /// For external-identity-mapped entities, the id is a string conforming
   /// to the Identity Source's requirements.
   final pulumi.Input<String> id;
-
   /// (Optional) The namespace in which the entity exists.
   /// If not populated, the EntityKey represents a Google-managed entity
   /// such as a Google user or a Google Group.
@@ -20,20 +19,23 @@ class GetGroupLookupGroupKey {
   /// Creates a new [GetGroupLookupGroupKey].
   /// [id] (Required) The ID of the entity.
   /// [namespace] (Optional) The namespace in which the entity exists.
-  GetGroupLookupGroupKey({required this.id, this.namespace});
+  GetGroupLookupGroupKey({
+    required this.id,
+    this.namespace,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'namespace': ?namespace};
+    return <String, dynamic>{
+      'id': id,
+      'namespace': ?namespace,
+    };
   }
 
   factory GetGroupLookupGroupKey.fromMap(Map<String, dynamic> map) {
     return GetGroupLookupGroupKey(
       id: pulumi.Input.fromValue(map['id'] as String),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

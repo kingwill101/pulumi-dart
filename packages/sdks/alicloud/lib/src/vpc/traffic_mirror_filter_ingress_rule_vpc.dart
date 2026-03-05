@@ -179,41 +179,30 @@ import 'traffic_mirror_filter_ingress_rule_state.dart';
 class TrafficMirrorFilterIngressRuleVpc extends pulumi.CustomResource {
   /// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
   late final pulumi.Output<String> action;
-
   /// The destination CIDR block of the inbound traffic.
   late final pulumi.Output<String> destinationCidrBlock;
-
   /// The destination CIDR block of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
   late final pulumi.Output<String> destinationPortRange;
-
   /// Whether to PreCheck this request only. Value:
   /// - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
   /// - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
   late final pulumi.Output<bool?> dryRun;
-
   /// The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
   late final pulumi.Output<int> priority;
-
   /// The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
   late final pulumi.Output<String> protocol;
-
   /// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
   late final pulumi.Output<String> ruleAction;
-
   /// The source CIDR block of the inbound traffic.
   late final pulumi.Output<String> sourceCidrBlock;
-
   /// The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
   late final pulumi.Output<String> sourcePortRange;
-
   /// The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
   late final pulumi.Output<String> status;
-
   /// The ID of the filter.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
   late final pulumi.Output<String> trafficMirrorFilterId;
-
   /// The ID of the outbound rule.
   late final pulumi.Output<String> trafficMirrorFilterIngressRuleId;
 
@@ -226,11 +215,11 @@ class TrafficMirrorFilterIngressRuleVpc extends pulumi.CustomResource {
     TrafficMirrorFilterIngressRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     destinationPortRange = registerOutput<String>('destinationPortRange');
@@ -242,9 +231,7 @@ class TrafficMirrorFilterIngressRuleVpc extends pulumi.CustomResource {
     sourcePortRange = registerOutput<String>('sourcePortRange');
     status = registerOutput<String>('status');
     trafficMirrorFilterId = registerOutput<String>('trafficMirrorFilterId');
-    trafficMirrorFilterIngressRuleId = registerOutput<String>(
-      'trafficMirrorFilterIngressRuleId',
-    );
+    trafficMirrorFilterIngressRuleId = registerOutput<String>('trafficMirrorFilterIngressRuleId');
   }
 
   /// Gets an existing [TrafficMirrorFilterIngressRuleVpc] resource's state with the given [name] and [id].
@@ -265,11 +252,11 @@ class TrafficMirrorFilterIngressRuleVpc extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     destinationPortRange = registerOutput<String>('destinationPortRange');
@@ -281,8 +268,6 @@ class TrafficMirrorFilterIngressRuleVpc extends pulumi.CustomResource {
     sourcePortRange = registerOutput<String>('sourcePortRange');
     status = registerOutput<String>('status');
     trafficMirrorFilterId = registerOutput<String>('trafficMirrorFilterId');
-    trafficMirrorFilterIngressRuleId = registerOutput<String>(
-      'trafficMirrorFilterIngressRuleId',
-    );
+    trafficMirrorFilterIngressRuleId = registerOutput<String>('trafficMirrorFilterIngressRuleId');
   }
 }

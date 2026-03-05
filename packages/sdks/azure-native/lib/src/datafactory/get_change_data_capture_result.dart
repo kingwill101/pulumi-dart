@@ -10,37 +10,26 @@ import 'mapper_target_connections_info_response.dart';
 class GetChangeDataCaptureResult {
   /// A boolean to determine if the vnet configuration needs to be overwritten.
   final bool? allowVNetOverride;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The description of the change data capture.
   final String? description;
-
   /// Etag identifies change in the resource.
   final String etag;
-
   /// The folder that this CDC is in. If not specified, CDC will appear at the root level.
   final ChangeDataCaptureResponseFolder? folder;
-
   /// The resource identifier.
   final String id;
-
   /// The resource name.
   final String name;
-
   /// CDC policy
   final MapperPolicyResponse policy;
-
   /// List of sources connections that can be used as sources in the CDC.
   final List<MapperSourceConnectionsInfoResponse> sourceConnectionsInfo;
-
   /// Status of the CDC as to if it is running or stopped.
   final String? status;
-
   /// List of target connections that can be used as sources in the CDC.
   final List<MapperTargetConnectionsInfoResponse> targetConnectionsInfo;
-
   /// The resource type.
   final String type;
 
@@ -82,67 +71,28 @@ class GetChangeDataCaptureResult {
       'id': id,
       'name': name,
       'policy': policy.toMap(),
-      'sourceConnectionsInfo':
-          pulumi.Input.encodeList<
-            MapperSourceConnectionsInfoResponse,
-            Map<String, dynamic>
-          >(sourceConnectionsInfo, (value) => value.toMap()),
+      'sourceConnectionsInfo': pulumi.Input.encodeList<MapperSourceConnectionsInfoResponse, Map<String, dynamic>>(sourceConnectionsInfo, (value) => value.toMap()),
       'status': ?status,
-      'targetConnectionsInfo':
-          pulumi.Input.encodeList<
-            MapperTargetConnectionsInfoResponse,
-            Map<String, dynamic>
-          >(targetConnectionsInfo, (value) => value.toMap()),
+      'targetConnectionsInfo': pulumi.Input.encodeList<MapperTargetConnectionsInfoResponse, Map<String, dynamic>>(targetConnectionsInfo, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory GetChangeDataCaptureResult.fromMap(Map<String, dynamic> map) {
     return GetChangeDataCaptureResult(
-      allowVNetOverride: (() {
-        final guardedValue = map['allowVNetOverride'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      allowVNetOverride: (() { final guardedValue = map['allowVNetOverride']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: map['etag'] as String,
-      folder: (() {
-        final guardedValue = map['folder'];
-        if (guardedValue == null) return null;
-        return ChangeDataCaptureResponseFolder.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return ChangeDataCaptureResponseFolder.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      policy: MapperPolicyResponse.fromMap(
-        (map['policy']! as Map).cast<String, dynamic>(),
-      ),
-      sourceConnectionsInfo:
-          pulumi.Input.decodeList<MapperSourceConnectionsInfoResponse>(
-            map['sourceConnectionsInfo']!,
-            (value) => MapperSourceConnectionsInfoResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      targetConnectionsInfo:
-          pulumi.Input.decodeList<MapperTargetConnectionsInfoResponse>(
-            map['targetConnectionsInfo']!,
-            (value) => MapperTargetConnectionsInfoResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      policy: MapperPolicyResponse.fromMap((map['policy']! as Map).cast<String, dynamic>()),
+      sourceConnectionsInfo: pulumi.Input.decodeList<MapperSourceConnectionsInfoResponse>(map['sourceConnectionsInfo']!, (value) => MapperSourceConnectionsInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      targetConnectionsInfo: pulumi.Input.decodeList<MapperTargetConnectionsInfoResponse>(map['targetConnectionsInfo']!, (value) => MapperTargetConnectionsInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }
 }
+

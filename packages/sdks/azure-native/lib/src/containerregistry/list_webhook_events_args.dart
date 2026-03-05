@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWebhookEventsArgs {
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the webhook.
   final pulumi.Input<String> webhookName;
 
@@ -37,10 +35,9 @@ class ListWebhookEventsArgs {
   factory ListWebhookEventsArgs.fromMap(Map<String, dynamic> map) {
     return ListWebhookEventsArgs(
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       webhookName: pulumi.Input.fromValue(map['webhookName'] as String),
     );
   }
 }
+

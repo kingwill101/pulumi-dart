@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMetadataArgs {
   /// The Metadata name.
   final pulumi.Input<String> metadataName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -37,10 +35,9 @@ class GetMetadataArgs {
   factory GetMetadataArgs.fromMap(Map<String, dynamic> map) {
     return GetMetadataArgs(
       metadataName: pulumi.Input.fromValue(map['metadataName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

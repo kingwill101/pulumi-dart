@@ -15,3 +15,4 @@ enum ArchitectureType {
     throw ArgumentError('Unknown ArchitectureType value: $value');
   }
 }
+

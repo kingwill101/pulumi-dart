@@ -7,7 +7,6 @@ class ApplicationScalingRuleScalingRuleTimerSchedule {
   final pulumi.Input<String>? atTime;
   final pulumi.Input<int>? maxReplicas;
   final pulumi.Input<int>? minReplicas;
-
   /// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
   final pulumi.Input<int>? targetReplicas;
 
@@ -32,30 +31,13 @@ class ApplicationScalingRuleScalingRuleTimerSchedule {
     };
   }
 
-  factory ApplicationScalingRuleScalingRuleTimerSchedule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationScalingRuleScalingRuleTimerSchedule.fromMap(Map<String, dynamic> map) {
     return ApplicationScalingRuleScalingRuleTimerSchedule(
-      atTime: (() {
-        final guardedValue = map['atTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxReplicas: (() {
-        final guardedValue = map['maxReplicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minReplicas: (() {
-        final guardedValue = map['minReplicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      targetReplicas: (() {
-        final guardedValue = map['targetReplicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      atTime: (() { final guardedValue = map['atTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetReplicas: (() { final guardedValue = map['targetReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

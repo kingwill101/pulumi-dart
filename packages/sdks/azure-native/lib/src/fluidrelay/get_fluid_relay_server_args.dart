@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFluidRelayServerArgs {
   /// The Fluid Relay server resource name.
   final pulumi.Input<String> fluidRelayServerName;
-
   /// The resource group containing the resource.
   final pulumi.Input<String> resourceGroup;
 
@@ -30,10 +29,9 @@ class GetFluidRelayServerArgs {
 
   factory GetFluidRelayServerArgs.fromMap(Map<String, dynamic> map) {
     return GetFluidRelayServerArgs(
-      fluidRelayServerName: pulumi.Input.fromValue(
-        map['fluidRelayServerName'] as String,
-      ),
+      fluidRelayServerName: pulumi.Input.fromValue(map['fluidRelayServerName'] as String),
       resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
     );
   }
 }
+

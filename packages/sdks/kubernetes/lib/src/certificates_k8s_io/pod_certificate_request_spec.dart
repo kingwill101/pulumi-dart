@@ -10,26 +10,20 @@ class PodCertificateRequestSpec {
   ///
   /// The signer implementation is then free to issue a certificate with any lifetime *shorter* than MaxExpirationSeconds, but no shorter than 3600 seconds (1 hour).  This constraint is enforced by kube-apiserver. `kubernetes.io` signers will never issue certificates with a lifetime longer than 24 hours.
   final pulumi.Input<int>? maxExpirationSeconds;
-
   /// nodeName is the name of the node the pod is assigned to.
   final pulumi.Input<String> nodeName;
-
   /// nodeUID is the UID of the node the pod is assigned to.
   final pulumi.Input<String> nodeUID;
-
   /// pkixPublicKey is the PKIX-serialized public key the signer will issue the certificate to.
   ///
   /// The key must be one of RSA3072, RSA4096, ECDSAP256, ECDSAP384, ECDSAP521, or ED25519. Note that this list may be expanded in the future.
   ///
   /// Signer implementations do not need to support all key types supported by kube-apiserver and kubelet.  If a signer does not support the key type used for a given PodCertificateRequest, it must deny the request by setting a status.conditions entry with a type of "Denied" and a reason of "UnsupportedKeyType". It may also suggest a key type that it does support in the message field.
   final pulumi.Input<String> pkixPublicKey;
-
   /// podName is the name of the pod into which the certificate will be mounted.
   final pulumi.Input<String> podName;
-
   /// podUID is the UID of the pod into which the certificate will be mounted.
   final pulumi.Input<String> podUID;
-
   /// proofOfPossession proves that the requesting kubelet holds the private key corresponding to pkixPublicKey.
   ///
   /// It is contructed by signing the ASCII bytes of the pod's UID using `pkixPublicKey`.
@@ -42,18 +36,14 @@ class PodCertificateRequestSpec {
   ///
   /// If the key is an ED25519 key, the the signature is as described by the [ED25519 Specification](https://ed25519.cr.yp.to/) (as implemented by the golang library crypto/ed25519.Sign).
   final pulumi.Input<String> proofOfPossession;
-
   /// serviceAccountName is the name of the service account the pod is running as.
   final pulumi.Input<String> serviceAccountName;
-
   /// serviceAccountUID is the UID of the service account the pod is running as.
   final pulumi.Input<String> serviceAccountUID;
-
   /// signerName indicates the requested signer.
   ///
   /// All signer names beginning with `kubernetes.io` are reserved for use by the Kubernetes project.  There is currently one well-known signer documented by the Kubernetes project, `kubernetes.io/kube-apiserver-client-pod`, which will issue client certificates understood by kube-apiserver.  It is currently unimplemented.
   final pulumi.Input<String> signerName;
-
   /// unverifiedUserAnnotations allow pod authors to pass additional information to the signer implementation.  Kubernetes does not restrict or validate this metadata in any way.
   ///
   /// Entries are subject to the same validation as object metadata annotations, with the addition that all keys must be domain-prefixed. No restrictions are placed on values, except an overall size limitation on the entire field.
@@ -105,33 +95,18 @@ class PodCertificateRequestSpec {
 
   factory PodCertificateRequestSpec.fromMap(Map<String, dynamic> map) {
     return PodCertificateRequestSpec(
-      maxExpirationSeconds: (() {
-        final guardedValue = map['maxExpirationSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxExpirationSeconds: (() { final guardedValue = map['maxExpirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       nodeName: pulumi.Input.fromValue(map['nodeName'] as String),
       nodeUID: pulumi.Input.fromValue(map['nodeUID'] as String),
       pkixPublicKey: pulumi.Input.fromValue(map['pkixPublicKey'] as String),
       podName: pulumi.Input.fromValue(map['podName'] as String),
       podUID: pulumi.Input.fromValue(map['podUID'] as String),
-      proofOfPossession: pulumi.Input.fromValue(
-        map['proofOfPossession'] as String,
-      ),
-      serviceAccountName: pulumi.Input.fromValue(
-        map['serviceAccountName'] as String,
-      ),
-      serviceAccountUID: pulumi.Input.fromValue(
-        map['serviceAccountUID'] as String,
-      ),
+      proofOfPossession: pulumi.Input.fromValue(map['proofOfPossession'] as String),
+      serviceAccountName: pulumi.Input.fromValue(map['serviceAccountName'] as String),
+      serviceAccountUID: pulumi.Input.fromValue(map['serviceAccountUID'] as String),
       signerName: pulumi.Input.fromValue(map['signerName'] as String),
-      unverifiedUserAnnotations: (() {
-        final guardedValue = map['unverifiedUserAnnotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      unverifiedUserAnnotations: (() { final guardedValue = map['unverifiedUserAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

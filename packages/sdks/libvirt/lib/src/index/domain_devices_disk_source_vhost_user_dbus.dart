@@ -8,21 +8,20 @@ class DomainDevicesDiskSourceVhostUserDbus {
 
   /// Creates a new [DomainDevicesDiskSourceVhostUserDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainDevicesDiskSourceVhostUserDbus({this.channel});
+  DomainDevicesDiskSourceVhostUserDbus({
+    this.channel,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'channel': ?channel};
+    return <String, dynamic>{
+      'channel': ?channel,
+    };
   }
 
-  factory DomainDevicesDiskSourceVhostUserDbus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskSourceVhostUserDbus.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceVhostUserDbus(
-      channel: (() {
-        final guardedValue = map['channel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      channel: (() { final guardedValue = map['channel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

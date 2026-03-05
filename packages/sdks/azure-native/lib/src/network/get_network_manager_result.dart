@@ -7,41 +7,28 @@ import 'system_data_response.dart';
 class GetNetworkManagerResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// A description of the network manager.
   final String? description;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
-
   /// Resource ID.
   final String? id;
-
   /// Resource location.
   final String? location;
-
   /// Resource name.
   final String name;
-
   /// Scope Access.
   final List<String>? networkManagerScopeAccesses;
-
   /// Scope of Network Manager.
-  final NetworkManagerPropertiesResponseNetworkManagerScopes
-  networkManagerScopes;
-
+  final NetworkManagerPropertiesResponseNetworkManagerScopes networkManagerScopes;
   /// The provisioning state of the network manager resource.
   final String provisioningState;
-
   /// Unique identifier for this resource.
   final String resourceGuid;
-
   /// The system metadata related to this resource.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Resource type.
   final String type;
 
@@ -96,43 +83,19 @@ class GetNetworkManagerResult {
   factory GetNetworkManagerResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagerResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: map['etag'] as String,
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      networkManagerScopeAccesses: (() {
-        final guardedValue = map['networkManagerScopeAccesses'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      networkManagerScopes:
-          NetworkManagerPropertiesResponseNetworkManagerScopes.fromMap(
-            (map['networkManagerScopes']! as Map).cast<String, dynamic>(),
-          ),
+      networkManagerScopeAccesses: (() { final guardedValue = map['networkManagerScopeAccesses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      networkManagerScopes: NetworkManagerPropertiesResponseNetworkManagerScopes.fromMap((map['networkManagerScopes']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum FullBackupFrequencyType {
     throw ArgumentError('Unknown FullBackupFrequencyType value: $value');
   }
 }
+

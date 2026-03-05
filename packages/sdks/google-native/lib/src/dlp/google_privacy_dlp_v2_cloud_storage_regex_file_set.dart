@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2CloudStorageRegexFileSet {
   /// The name of a Cloud Storage bucket. Required.
   final pulumi.Input<String>? bucketName;
-
   /// A list of regular expressions matching file paths to exclude. All files in the bucket that match at least one of these regular expressions will be excluded from the scan. Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
   final pulumi.Input<List<String>>? excludeRegex;
-
   /// A list of regular expressions matching file paths to include. All files in the bucket that match at least one of these regular expressions will be included in the set of files, except for those that also match an item in `exclude_regex`. Leaving this field empty will match all files by default (this is equivalent to including `.*` in the list). Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
   final pulumi.Input<List<String>>? includeRegex;
 
@@ -31,25 +29,12 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSet {
     };
   }
 
-  factory GooglePrivacyDlpV2CloudStorageRegexFileSet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2CloudStorageRegexFileSet.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CloudStorageRegexFileSet(
-      bucketName: (() {
-        final guardedValue = map['bucketName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      excludeRegex: (() {
-        final guardedValue = map['excludeRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      includeRegex: (() {
-        final guardedValue = map['includeRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      bucketName: (() { final guardedValue = map['bucketName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      excludeRegex: (() { final guardedValue = map['excludeRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      includeRegex: (() { final guardedValue = map['includeRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum StationConfigurationState {
     throw ArgumentError('Unknown StationConfigurationState value: $value');
   }
 }
+

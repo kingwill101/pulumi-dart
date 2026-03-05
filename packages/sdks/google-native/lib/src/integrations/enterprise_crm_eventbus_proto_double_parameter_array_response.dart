@@ -12,16 +12,15 @@ class EnterpriseCrmEventbusProtoDoubleParameterArrayResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'doubleValues': doubleValues};
+    return <String, dynamic>{
+      'doubleValues': doubleValues,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoDoubleParameterArrayResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoDoubleParameterArrayResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoDoubleParameterArrayResponse(
-      doubleValues: pulumi.Input.fromValue(
-        (map['doubleValues'] as List).cast<double>(),
-      ),
+      doubleValues: pulumi.Input.fromValue((map['doubleValues'] as List).cast<double>()),
     );
   }
 }
+

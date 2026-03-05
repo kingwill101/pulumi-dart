@@ -416,16 +416,12 @@ import 'network_manager_routing_rule_state.dart';
 class NetworkManagerRoutingRule extends pulumi.CustomResource {
   /// A description for the routing rule.
   late final pulumi.Output<String?> description;
-
   /// A `destination` block as defined below.
   late final pulumi.Output<NetworkManagerRoutingRuleDestination> destination;
-
   /// The name of the Network Manager Routing Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A `next_hop` block as defined below.
   late final pulumi.Output<NetworkManagerRoutingRuleNextHop> nextHop;
-
   /// The ID of the Network Manager Routing Rule Collection to which this rule belongs. Changing this forces a new resource to be created.
   late final pulumi.Output<String> ruleCollectionId;
 
@@ -438,33 +434,15 @@ class NetworkManagerRoutingRule extends pulumi.CustomResource {
     NetworkManagerRoutingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerRoutingRule:NetworkManagerRoutingRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerRoutingRule:NetworkManagerRoutingRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
-    destination = registerOutput<NetworkManagerRoutingRuleDestination>(
-      'destination',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkManagerRoutingRuleDestination.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    destination = registerOutput<NetworkManagerRoutingRuleDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerRoutingRuleDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    nextHop = registerOutput<NetworkManagerRoutingRuleNextHop>(
-      'nextHop',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkManagerRoutingRuleNextHop.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nextHop = registerOutput<NetworkManagerRoutingRuleNextHop>('nextHop', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerRoutingRuleNextHop.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ruleCollectionId = registerOutput<String>('ruleCollectionId');
   }
 
@@ -486,33 +464,15 @@ class NetworkManagerRoutingRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerRoutingRule:NetworkManagerRoutingRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerRoutingRule:NetworkManagerRoutingRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
-    destination = registerOutput<NetworkManagerRoutingRuleDestination>(
-      'destination',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkManagerRoutingRuleDestination.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    destination = registerOutput<NetworkManagerRoutingRuleDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerRoutingRuleDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    nextHop = registerOutput<NetworkManagerRoutingRuleNextHop>(
-      'nextHop',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkManagerRoutingRuleNextHop.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nextHop = registerOutput<NetworkManagerRoutingRuleNextHop>('nextHop', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerRoutingRuleNextHop.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ruleCollectionId = registerOutput<String>('ruleCollectionId');
   }
 }

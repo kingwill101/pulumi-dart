@@ -13,14 +13,15 @@ class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
-  factory AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig(
       value: pulumi.Input.fromValue(map['value'] as double),
     );
   }
 }
+

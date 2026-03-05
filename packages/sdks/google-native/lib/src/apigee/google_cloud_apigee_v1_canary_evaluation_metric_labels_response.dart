@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse {
   /// The environment ID associated with the metrics.
   final pulumi.Input<String> env;
-
   /// The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
   final pulumi.Input<String> instanceId;
-
   /// The location associated with the metrics.
   final pulumi.Input<String> location;
 
@@ -31,9 +29,7 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse {
     };
   }
 
-  factory GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse(
       env: pulumi.Input.fromValue(map['env'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse {
     );
   }
 }
+

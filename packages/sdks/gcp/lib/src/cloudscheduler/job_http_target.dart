@@ -10,24 +10,19 @@ class JobHttpTarget {
   /// It is an error to set body on a job with an incompatible HttpMethod.
   /// A base64-encoded string.
   final pulumi.Input<String>? body;
-
   /// This map contains the header field names and values.
   /// Repeated headers are not supported, but a header value can contain commas.
   final pulumi.Input<Map<String, String>>? headers;
-
   /// Which HTTP method to use for the request.
   final pulumi.Input<String>? httpMethod;
-
   /// Contains information needed for generating an OAuth token.
   /// This type of authorization should be used when sending requests to a GCP endpoint.
   /// Structure is documented below.
   final pulumi.Input<JobHttpTargetOauthToken>? oauthToken;
-
   /// Contains information needed for generating an OpenID Connect token.
   /// This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
   /// Structure is documented below.
   final pulumi.Input<JobHttpTargetOidcToken>? oidcToken;
-
   /// The full URI path that the request will be sent to.
   final pulumi.Input<String> uri;
 
@@ -52,58 +47,21 @@ class JobHttpTarget {
       'body': ?body,
       'headers': ?headers,
       'httpMethod': ?httpMethod,
-      'oauthToken':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobHttpTargetOauthToken,
-            Map<String, dynamic>
-          >(oauthToken, (value) => value.toMap()),
-      'oidcToken':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobHttpTargetOidcToken,
-            Map<String, dynamic>
-          >(oidcToken, (value) => value.toMap()),
+      'oauthToken': ?pulumi.Input.mapOptionalInputValue<JobHttpTargetOauthToken, Map<String, dynamic>>(oauthToken, (value) => value.toMap()),
+      'oidcToken': ?pulumi.Input.mapOptionalInputValue<JobHttpTargetOidcToken, Map<String, dynamic>>(oidcToken, (value) => value.toMap()),
       'uri': uri,
     };
   }
 
   factory JobHttpTarget.fromMap(Map<String, dynamic> map) {
     return JobHttpTarget(
-      body: (() {
-        final guardedValue = map['body'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      headers: (() {
-        final guardedValue = map['headers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      httpMethod: (() {
-        final guardedValue = map['httpMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oauthToken: (() {
-        final guardedValue = map['oauthToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobHttpTargetOauthToken.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      oidcToken: (() {
-        final guardedValue = map['oidcToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobHttpTargetOidcToken.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      body: (() { final guardedValue = map['body']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      httpMethod: (() { final guardedValue = map['httpMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oauthToken: (() { final guardedValue = map['oauthToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobHttpTargetOauthToken.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      oidcToken: (() { final guardedValue = map['oidcToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobHttpTargetOidcToken.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

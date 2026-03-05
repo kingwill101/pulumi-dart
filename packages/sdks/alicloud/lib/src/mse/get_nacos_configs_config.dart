@@ -5,34 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNacosConfigsConfig {
   /// The name of the application.
   final pulumi.Input<String> appName;
-
   /// The list of IP addresses where the beta release of the configuration is performed.
   final pulumi.Input<String> betaIps;
-
   /// The content of the configuration.
   final pulumi.Input<String> content;
-
   /// The ID of the data.
   final pulumi.Input<String> dataId;
-
   /// The description of the configuration.
   final pulumi.Input<String> desc;
-
   /// The encryption key.
   final pulumi.Input<String> encryptedDataKey;
-
   /// The ID of the group.
   final pulumi.Input<String> group;
-
   /// The ID of the Nacos Config. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;:&lt;data_id&gt;:&lt;group&gt;`.
   final pulumi.Input<String> id;
-
   /// The message digest of the configuration.
   final pulumi.Input<String> md5;
-
   /// The tags of the configuration.
   final pulumi.Input<String> tags;
-
   /// The format of the configuration. Supported formats include TEXT, JSON, and XML.
   final pulumi.Input<String> type;
 
@@ -85,9 +75,7 @@ class GetNacosConfigsConfig {
       content: pulumi.Input.fromValue(map['content'] as String),
       dataId: pulumi.Input.fromValue(map['dataId'] as String),
       desc: pulumi.Input.fromValue(map['desc'] as String),
-      encryptedDataKey: pulumi.Input.fromValue(
-        map['encryptedDataKey'] as String,
-      ),
+      encryptedDataKey: pulumi.Input.fromValue(map['encryptedDataKey'] as String),
       group: pulumi.Input.fromValue(map['group'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       md5: pulumi.Input.fromValue(map['md5'] as String),
@@ -96,3 +84,4 @@ class GetNacosConfigsConfig {
     );
   }
 }
+

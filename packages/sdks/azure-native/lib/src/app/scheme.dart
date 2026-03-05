@@ -15,3 +15,4 @@ enum Scheme {
     throw ArgumentError('Unknown Scheme value: $value');
   }
 }
+

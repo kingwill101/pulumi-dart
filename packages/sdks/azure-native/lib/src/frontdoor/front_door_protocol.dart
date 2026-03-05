@@ -15,3 +15,4 @@ enum FrontDoorProtocol {
     throw ArgumentError('Unknown FrontDoorProtocol value: $value');
   }
 }
+

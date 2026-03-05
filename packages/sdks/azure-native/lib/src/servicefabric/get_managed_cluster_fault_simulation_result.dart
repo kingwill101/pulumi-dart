@@ -6,16 +6,12 @@ import 'fault_simulation_details_response.dart';
 class GetManagedClusterFaultSimulationResult {
   /// Fault simulation details
   final FaultSimulationDetailsResponse? details;
-
   /// The end time of the fault simulation.
   final String? endTime;
-
   /// unique identifier for the fault simulation.
   final String? simulationId;
-
   /// The start time of the fault simulation.
   final String? startTime;
-
   /// Fault simulation status
   final String? status;
 
@@ -43,37 +39,14 @@ class GetManagedClusterFaultSimulationResult {
     };
   }
 
-  factory GetManagedClusterFaultSimulationResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedClusterFaultSimulationResult.fromMap(Map<String, dynamic> map) {
     return GetManagedClusterFaultSimulationResult(
-      details: (() {
-        final guardedValue = map['details'];
-        if (guardedValue == null) return null;
-        return FaultSimulationDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      endTime: (() {
-        final guardedValue = map['endTime'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      simulationId: (() {
-        final guardedValue = map['simulationId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return FaultSimulationDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      simulationId: (() { final guardedValue = map['simulationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

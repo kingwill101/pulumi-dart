@@ -15,3 +15,4 @@ enum UpdateTriggerPayloadType {
     throw ArgumentError('Unknown UpdateTriggerPayloadType value: $value');
   }
 }
+

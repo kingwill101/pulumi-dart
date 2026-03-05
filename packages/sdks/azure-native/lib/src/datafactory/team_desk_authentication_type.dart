@@ -15,3 +15,4 @@ enum TeamDeskAuthenticationType {
     throw ArgumentError('Unknown TeamDeskAuthenticationType value: $value');
   }
 }
+

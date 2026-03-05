@@ -189,75 +189,52 @@ import 'zonal_db_cluster_state.dart';
 class ZonalDbCluster extends pulumi.CustomResource {
   /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
   late final pulumi.Output<int?> autoRenewPeriod;
-
   /// PolarDB zonal cluster latest version.
   late final pulumi.Output<String> clusterLatestVersion;
-
   /// current DB Cluster revision Version.
   late final pulumi.Output<String> clusterVersion;
-
   /// PolarDB zonal cluster creation time.
   late final pulumi.Output<String> createTime;
-
   /// The edition of the PolarDB service. Valid values are `SENormal`.
   late final pulumi.Output<String> creationCategory;
-
   /// Cache of the relationship between node key and node ID for PolarDB zonal Cluster
   late final pulumi.Output<Map<String, String>> dbClusterNodesAttributes;
-
   /// Map of node needs to be created after DB cluster was launched.
   late final pulumi.Output<Map<String, String>> dbClusterNodesConfigs;
-
   /// Cache of node ID for PolarDB zonal Cluster
   late final pulumi.Output<Map<String, String>> dbClusterNodesIds;
-
   /// Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
   late final pulumi.Output<String?> dbMinorVersion;
-
   /// The db_node_class of cluster node.Only effective when the cluster is created for the first time. After the cluster is started, the cluster specification is maintained through the node class.
   late final pulumi.Output<String> dbNodeClass;
-
   /// Database type. Value options: MySQL, Oracle, PostgreSQL.
   late final pulumi.Output<String?> dbType;
-
   /// Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
   late final pulumi.Output<String?> dbVersion;
-
   /// The description of cluster.
   late final pulumi.Output<String> description;
-
   /// The Zone to launch the DB cluster.
   late final pulumi.Output<String> ensRegionId;
-
   /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
   late final pulumi.Output<String?> payType;
-
   /// PolarDB zonal cluster region
   late final pulumi.Output<String> regionId;
-
   /// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
   late final pulumi.Output<String?> renewalStatus;
-
   /// The billing method of the storage. Valid values `Prepaid`.
   late final pulumi.Output<String> storagePayType;
-
   /// Storage space charged by space (monthly package). Unit: GB.
   /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
   late final pulumi.Output<int?> storageSpace;
-
   /// The storage type of the cluster. Valid values are `ESSDPL1`, `ESSDPL0`.
   late final pulumi.Output<String?> storageType;
-
   /// The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersionZonal](https://www.alibabacloud.com/help/en/polardb/api-polardb-2017-08-01-describedbclusterversionzonal) interface.
   late final pulumi.Output<String?> targetMinorVersion;
-
   /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
   /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
   late final pulumi.Output<int?> usedTime;
-
   /// The id of the ENS VPC.
   late final pulumi.Output<String> vpcId;
-
   /// The ENS virtual switch ID to launch DB instances in one VPC.
   late final pulumi.Output<String> vswitchId;
 
@@ -270,25 +247,19 @@ class ZonalDbCluster extends pulumi.CustomResource {
     ZonalDbClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/zonalDbCluster:ZonalDbCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/zonalDbCluster:ZonalDbCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     clusterLatestVersion = registerOutput<String>('clusterLatestVersion');
     clusterVersion = registerOutput<String>('clusterVersion');
     createTime = registerOutput<String>('createTime');
     creationCategory = registerOutput<String>('creationCategory');
-    dbClusterNodesAttributes = registerOutput<Map<String, String>>(
-      'dbClusterNodesAttributes',
-    );
-    dbClusterNodesConfigs = registerOutput<Map<String, String>>(
-      'dbClusterNodesConfigs',
-    );
-    dbClusterNodesIds = registerOutput<Map<String, String>>(
-      'dbClusterNodesIds',
-    );
+    dbClusterNodesAttributes = registerOutput<Map<String, String>>('dbClusterNodesAttributes');
+    dbClusterNodesConfigs = registerOutput<Map<String, String>>('dbClusterNodesConfigs');
+    dbClusterNodesIds = registerOutput<Map<String, String>>('dbClusterNodesIds');
     dbMinorVersion = registerOutput<String?>('dbMinorVersion');
     dbNodeClass = registerOutput<String>('dbNodeClass');
     dbType = registerOutput<String?>('dbType');
@@ -325,25 +296,19 @@ class ZonalDbCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/zonalDbCluster:ZonalDbCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/zonalDbCluster:ZonalDbCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     clusterLatestVersion = registerOutput<String>('clusterLatestVersion');
     clusterVersion = registerOutput<String>('clusterVersion');
     createTime = registerOutput<String>('createTime');
     creationCategory = registerOutput<String>('creationCategory');
-    dbClusterNodesAttributes = registerOutput<Map<String, String>>(
-      'dbClusterNodesAttributes',
-    );
-    dbClusterNodesConfigs = registerOutput<Map<String, String>>(
-      'dbClusterNodesConfigs',
-    );
-    dbClusterNodesIds = registerOutput<Map<String, String>>(
-      'dbClusterNodesIds',
-    );
+    dbClusterNodesAttributes = registerOutput<Map<String, String>>('dbClusterNodesAttributes');
+    dbClusterNodesConfigs = registerOutput<Map<String, String>>('dbClusterNodesConfigs');
+    dbClusterNodesIds = registerOutput<Map<String, String>>('dbClusterNodesIds');
     dbMinorVersion = registerOutput<String?>('dbMinorVersion');
     dbNodeClass = registerOutput<String>('dbNodeClass');
     dbType = registerOutput<String?>('dbType');

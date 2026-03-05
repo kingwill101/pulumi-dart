@@ -299,16 +299,12 @@ import 'multi_region_access_point_policy_state.dart';
 class MultiRegionAccessPointPolicy extends pulumi.CustomResource {
   /// The AWS account ID for the owner of the Multi-Region Access Point. Defaults to automatically determined account ID of the AWS provider.
   late final pulumi.Output<String> accountId;
-
   /// A configuration block containing details about the policy for the Multi-Region Access Point. See Details Configuration Block below for more details
   late final pulumi.Output<MultiRegionAccessPointPolicyDetails> details;
-
   /// The last established policy for the Multi-Region Access Point.
   late final pulumi.Output<String> established;
-
   /// The proposed policy for the Multi-Region Access Point.
   late final pulumi.Output<String> proposed;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -321,22 +317,13 @@ class MultiRegionAccessPointPolicy extends pulumi.CustomResource {
     MultiRegionAccessPointPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3control/multiRegionAccessPointPolicy:MultiRegionAccessPointPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3control/multiRegionAccessPointPolicy:MultiRegionAccessPointPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
-    details = registerOutput<MultiRegionAccessPointPolicyDetails>(
-      'details',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultiRegionAccessPointPolicyDetails.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    details = registerOutput<MultiRegionAccessPointPolicyDetails>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiRegionAccessPointPolicyDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     established = registerOutput<String>('established');
     proposed = registerOutput<String>('proposed');
     region = registerOutput<String>('region');
@@ -360,22 +347,13 @@ class MultiRegionAccessPointPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3control/multiRegionAccessPointPolicy:MultiRegionAccessPointPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3control/multiRegionAccessPointPolicy:MultiRegionAccessPointPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
-    details = registerOutput<MultiRegionAccessPointPolicyDetails>(
-      'details',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultiRegionAccessPointPolicyDetails.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    details = registerOutput<MultiRegionAccessPointPolicyDetails>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiRegionAccessPointPolicyDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     established = registerOutput<String>('established');
     proposed = registerOutput<String>('proposed');
     region = registerOutput<String>('region');

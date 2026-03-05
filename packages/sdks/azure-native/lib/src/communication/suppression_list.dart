@@ -147,25 +147,18 @@ import 'system_data_response.dart';
 class SuppressionList extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The date the resource was created.
   late final pulumi.Output<String> createdTimeStamp;
-
   /// The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource.
   late final pulumi.Output<String> dataLocation;
-
   /// The date the resource was last updated.
   late final pulumi.Output<String> lastUpdatedTimeStamp;
-
   /// The the name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
   late final pulumi.Output<String?> listName;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -178,27 +171,18 @@ class SuppressionList extends pulumi.CustomResource {
     SuppressionListArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:communication:SuppressionList',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:communication:SuppressionList',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTimeStamp = registerOutput<String>('createdTimeStamp');
     dataLocation = registerOutput<String>('dataLocation');
     lastUpdatedTimeStamp = registerOutput<String>('lastUpdatedTimeStamp');
     listName = registerOutput<String?>('listName');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

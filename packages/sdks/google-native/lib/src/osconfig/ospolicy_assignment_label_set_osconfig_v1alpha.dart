@@ -9,23 +9,20 @@ class OSPolicyAssignmentLabelSetOsconfigV1alpha {
 
   /// Creates a new [OSPolicyAssignmentLabelSetOsconfigV1alpha].
   /// [labels] Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
-  OSPolicyAssignmentLabelSetOsconfigV1alpha({this.labels});
+  OSPolicyAssignmentLabelSetOsconfigV1alpha({
+    this.labels,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labels': ?labels};
+    return <String, dynamic>{
+      'labels': ?labels,
+    };
   }
 
-  factory OSPolicyAssignmentLabelSetOsconfigV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OSPolicyAssignmentLabelSetOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyAssignmentLabelSetOsconfigV1alpha(
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

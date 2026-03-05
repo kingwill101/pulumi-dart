@@ -7,13 +7,10 @@ import 'label_descriptor.dart';
 class LogDescriptor {
   /// A human-readable description of this log. This information appears in the documentation and can contain details.
   final pulumi.Input<String>? description;
-
   /// The human-readable name for this log. This information appears on the user interface and should be concise.
   final pulumi.Input<String>? displayName;
-
   /// The set of labels that are available to describe a specific log entry. Runtime requests that contain labels not specified here are considered invalid.
   final pulumi.Input<List<LabelDescriptor>>? labels;
-
   /// The name of the log. It must be less than 512 characters long and can include the following characters: upper- and lower-case alphanumeric characters [A-Za-z0-9], and punctuation characters including slash, underscore, hyphen, period [/_-.].
   final pulumi.Input<String>? name;
 
@@ -22,56 +19,29 @@ class LogDescriptor {
   /// [displayName] The human-readable name for this log. This information appears on the user interface and should be concise.
   /// [labels] The set of labels that are available to describe a specific log entry. Runtime requests that contain labels not specified here are considered invalid.
   /// [name] The name of the log. It must be less than 512 characters long and can include the following characters: upper- and lower-case alphanumeric characters [A-Za-z0-9], and punctuation characters including slash, underscore, hyphen, period [/_-.].
-  LogDescriptor({this.description, this.displayName, this.labels, this.name});
+  LogDescriptor({
+    this.description,
+    this.displayName,
+    this.labels,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
       'displayName': ?displayName,
-      'labels':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LabelDescriptor>,
-            List<Map<String, dynamic>>
-          >(
-            labels,
-            (value) =>
-                pulumi.Input.encodeList<LabelDescriptor, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'labels': ?pulumi.Input.mapOptionalInputValue<List<LabelDescriptor>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<LabelDescriptor, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
     };
   }
 
   factory LogDescriptor.fromMap(Map<String, dynamic> map) {
     return LogDescriptor(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LabelDescriptor>(
-            guardedValue,
-            (value) =>
-                LabelDescriptor.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LabelDescriptor>(guardedValue, (value) => LabelDescriptor.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

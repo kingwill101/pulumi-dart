@@ -8,21 +8,20 @@ class PipelineDestinationOutputPayloadFormatAvro {
 
   /// Creates a new [PipelineDestinationOutputPayloadFormatAvro].
   /// [schemaDefinition] The entire schema definition is stored in this field.
-  PipelineDestinationOutputPayloadFormatAvro({this.schemaDefinition});
+  PipelineDestinationOutputPayloadFormatAvro({
+    this.schemaDefinition,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'schemaDefinition': ?schemaDefinition};
+    return <String, dynamic>{
+      'schemaDefinition': ?schemaDefinition,
+    };
   }
 
-  factory PipelineDestinationOutputPayloadFormatAvro.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipelineDestinationOutputPayloadFormatAvro.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationOutputPayloadFormatAvro(
-      schemaDefinition: (() {
-        final guardedValue = map['schemaDefinition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      schemaDefinition: (() { final guardedValue = map['schemaDefinition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

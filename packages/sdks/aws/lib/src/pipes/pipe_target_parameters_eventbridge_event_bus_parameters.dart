@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipeTargetParametersEventbridgeEventBusParameters {
   /// A free-form string, with a maximum of 128 characters, used to decide what fields to expect in the event detail.
   final pulumi.Input<String>? detailType;
-
   /// The URL subdomain of the endpoint. For example, if the URL for Endpoint is https://abcde.veo.endpoints.event.amazonaws.com, then the EndpointId is abcde.veo.
   final pulumi.Input<String>? endpointId;
-
   /// List of AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number, including zero, may be present.
   final pulumi.Input<List<String>>? resources;
-
   /// Source resource of the pipe. This field typically requires an ARN (Amazon Resource Name). However, when using a self-managed Kafka cluster, you should use a different format. Instead of an ARN, use 'smk://' followed by the bootstrap server's address.
   final pulumi.Input<String>? source;
-
   /// The time stamp of the event, per RFC3339. If no time stamp is provided, the time stamp of the PutEvents call is used. This is the JSON path to the field in the event e.g. $.detail.timestamp
   final pulumi.Input<String>? time;
 
@@ -42,35 +38,14 @@ class PipeTargetParametersEventbridgeEventBusParameters {
     };
   }
 
-  factory PipeTargetParametersEventbridgeEventBusParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeTargetParametersEventbridgeEventBusParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersEventbridgeEventBusParameters(
-      detailType: (() {
-        final guardedValue = map['detailType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpointId: (() {
-        final guardedValue = map['endpointId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resources: (() {
-        final guardedValue = map['resources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      time: (() {
-        final guardedValue = map['time'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      detailType: (() { final guardedValue = map['detailType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointId: (() { final guardedValue = map['endpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      time: (() { final guardedValue = map['time']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

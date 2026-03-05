@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdgeMachineRemoteSupportNodeSettingsResponse {
   /// The error message, if any, from the last connection attempt.
   final pulumi.Input<String> connectionErrorMessage;
-
   /// The current connection status of the remote support session.
   final pulumi.Input<String> connectionStatus;
-
   /// The timestamp when the node settings were created, in UTC.
   final pulumi.Input<String> createdAt;
-
   /// The state of the remote support node.
   final pulumi.Input<String> state;
-
   /// The timestamp when the node settings were last updated, in UTC.
   final pulumi.Input<String> updatedAt;
 
@@ -43,19 +39,14 @@ class EdgeMachineRemoteSupportNodeSettingsResponse {
     };
   }
 
-  factory EdgeMachineRemoteSupportNodeSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EdgeMachineRemoteSupportNodeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return EdgeMachineRemoteSupportNodeSettingsResponse(
-      connectionErrorMessage: pulumi.Input.fromValue(
-        map['connectionErrorMessage'] as String,
-      ),
-      connectionStatus: pulumi.Input.fromValue(
-        map['connectionStatus'] as String,
-      ),
+      connectionErrorMessage: pulumi.Input.fromValue(map['connectionErrorMessage'] as String),
+      connectionStatus: pulumi.Input.fromValue(map['connectionStatus'] as String),
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
       updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
     );
   }
 }
+

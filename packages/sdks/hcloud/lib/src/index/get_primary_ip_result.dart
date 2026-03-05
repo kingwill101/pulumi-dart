@@ -1,40 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPrimaryIp.
 class GetPrimaryIpResult {
   /// (int) ID of the assigned resource.
   final int assigneeId;
-
   /// (string) The type of the assigned resource.
   final String assigneeType;
-
   /// (bool) Whether auto delete is enabled.
   final bool autoDelete;
-
   /// (string, deprecated) The datacenter name of the Primary IP. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
   final String datacenter;
-
   /// (bool) Whether delete protection is enabled.
   final bool deleteProtection;
-
   /// (int) Unique ID of the Primary IP.
   final int id;
-
   /// (string) IP Address of the Primary IP.
   final String ipAddress;
-
   /// (string) IPv6 subnet of the Primary IP for IPv6 addresses. (Only set if `type` is `ipv6`)
   final String ipNetwork;
-
   /// (map) User-defined labels (key-value pairs).
   final Map<String, String> labels;
-
   /// (string) The location of the Primary IP. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   final String location;
-
   /// (string) Name of the Primary IP.
   final String? name;
-
   /// (string) Type of the Primary IP.
   final String type;
   final String? withSelector;
@@ -99,17 +89,10 @@ class GetPrimaryIpResult {
       ipNetwork: map['ipNetwork'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
-      withSelector: (() {
-        final guardedValue = map['withSelector'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -14,8 +14,7 @@ enum OrganizationSecurityPolicyTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown OrganizationSecurityPolicyTypeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown OrganizationSecurityPolicyTypeComputeBeta value: $value');
   }
 }
+

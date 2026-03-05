@@ -127,10 +127,8 @@ import 'regex_pattern_set_state.dart';
 class RegexPatternSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN)
   late final pulumi.Output<String> arn;
-
   /// The name or description of the Regex Pattern Set.
   late final pulumi.Output<String> name;
-
   /// A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
   late final pulumi.Output<List<String>?> regexPatternStrings;
 
@@ -143,11 +141,11 @@ class RegexPatternSet extends pulumi.CustomResource {
     RegexPatternSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:waf/regexPatternSet:RegexPatternSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:waf/regexPatternSet:RegexPatternSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     regexPatternStrings = registerOutput<List<String>?>('regexPatternStrings');
@@ -171,11 +169,11 @@ class RegexPatternSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:waf/regexPatternSet:RegexPatternSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:waf/regexPatternSet:RegexPatternSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     regexPatternStrings = registerOutput<List<String>?>('regexPatternStrings');

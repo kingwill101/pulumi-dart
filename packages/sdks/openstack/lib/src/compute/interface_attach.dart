@@ -1079,18 +1079,14 @@ class InterfaceAttach extends pulumi.CustomResource {
   /// An IP address to assosciate with the port.
   /// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
   late final pulumi.Output<String> fixedIp;
-
   /// The ID of the Instance to attach the Port or Network to.
   late final pulumi.Output<String> instanceId;
-
   /// The ID of the Network to attach to an Instance. A port will be created automatically.
   /// _NOTE_: This option and `port_id` are mutually exclusive.
   late final pulumi.Output<String> networkId;
-
   /// The ID of the Port to attach to an Instance.
   /// _NOTE_: This option and `network_id` are mutually exclusive.
   late final pulumi.Output<String> portId;
-
   /// The region in which to create the interface attachment.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new attachment.
@@ -1105,11 +1101,11 @@ class InterfaceAttach extends pulumi.CustomResource {
     InterfaceAttachArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:compute/interfaceAttach:InterfaceAttach',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:compute/interfaceAttach:InterfaceAttach',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fixedIp = registerOutput<String>('fixedIp');
     instanceId = registerOutput<String>('instanceId');
     networkId = registerOutput<String>('networkId');
@@ -1135,11 +1131,11 @@ class InterfaceAttach extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:compute/interfaceAttach:InterfaceAttach',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:compute/interfaceAttach:InterfaceAttach',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fixedIp = registerOutput<String>('fixedIp');
     instanceId = registerOutput<String>('instanceId');
     networkId = registerOutput<String>('networkId');

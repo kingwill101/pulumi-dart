@@ -14,16 +14,15 @@ class GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableSpeechAdaptation': enableSpeechAdaptation};
+    return <String, dynamic>{
+      'enableSpeechAdaptation': enableSpeechAdaptation,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse(
-      enableSpeechAdaptation: pulumi.Input.fromValue(
-        map['enableSpeechAdaptation'] as bool,
-      ),
+      enableSpeechAdaptation: pulumi.Input.fromValue(map['enableSpeechAdaptation'] as bool),
     );
   }
 }
+

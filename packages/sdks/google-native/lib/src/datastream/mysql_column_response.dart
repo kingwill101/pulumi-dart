@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MysqlColumnResponse {
   /// Column collation.
   final pulumi.Input<String> collation;
-
   /// Column name.
   final pulumi.Input<String> column;
-
   /// The MySQL data type. Full data types list can be found here: https://dev.mysql.com/doc/refman/8.0/en/data-types.html
   final pulumi.Input<String> dataType;
-
   /// Column length.
   final pulumi.Input<int> length;
-
   /// Whether or not the column can accept a null value.
   final pulumi.Input<bool> nullable;
-
   /// The ordinal position of the column in the table.
   final pulumi.Input<int> ordinalPosition;
-
   /// Column precision.
   final pulumi.Input<int> precision;
-
   /// Whether or not the column represents a primary key.
   final pulumi.Input<bool> primaryKey;
-
   /// Column scale.
   final pulumi.Input<int> scale;
 
@@ -81,3 +73,4 @@ class MysqlColumnResponse {
     );
   }
 }
+

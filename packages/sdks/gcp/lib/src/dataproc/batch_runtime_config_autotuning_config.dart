@@ -9,19 +9,20 @@ class BatchRuntimeConfigAutotuningConfig {
 
   /// Creates a new [BatchRuntimeConfigAutotuningConfig].
   /// [scenarios] Optional. Scenarios for which tunings are applied.
-  BatchRuntimeConfigAutotuningConfig({this.scenarios});
+  BatchRuntimeConfigAutotuningConfig({
+    this.scenarios,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scenarios': ?scenarios};
+    return <String, dynamic>{
+      'scenarios': ?scenarios,
+    };
   }
 
   factory BatchRuntimeConfigAutotuningConfig.fromMap(Map<String, dynamic> map) {
     return BatchRuntimeConfigAutotuningConfig(
-      scenarios: (() {
-        final guardedValue = map['scenarios'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      scenarios: (() { final guardedValue = map['scenarios']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

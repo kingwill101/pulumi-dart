@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserIdentityInfo {
   /// The email address.
   final pulumi.Input<String> email;
-
   /// The first name.
   final pulumi.Input<String> firstName;
-
   /// The last name.
   final pulumi.Input<String> lastName;
-
   /// The secondary email address. If present, email notifications will be sent to this email address instead of the primary one.
   final pulumi.Input<String> secondaryEmail;
 
@@ -45,3 +42,4 @@ class GetUserIdentityInfo {
     );
   }
 }
+

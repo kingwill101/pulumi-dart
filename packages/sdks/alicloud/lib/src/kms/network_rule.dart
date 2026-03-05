@@ -168,10 +168,8 @@ import 'network_rule_state.dart';
 class NetworkRule extends pulumi.CustomResource {
   /// Description.
   late final pulumi.Output<String?> description;
-
   /// Network Rule Name.
   late final pulumi.Output<String> networkRuleName;
-
   /// Allowed private network addresses.
   late final pulumi.Output<List<String>> sourcePrivateIps;
 
@@ -184,11 +182,11 @@ class NetworkRule extends pulumi.CustomResource {
     NetworkRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kms/networkRule:NetworkRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kms/networkRule:NetworkRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     networkRuleName = registerOutput<String>('networkRuleName');
     sourcePrivateIps = registerOutput<List<String>>('sourcePrivateIps');
@@ -212,11 +210,11 @@ class NetworkRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kms/networkRule:NetworkRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kms/networkRule:NetworkRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     networkRuleName = registerOutput<String>('networkRuleName');
     sourcePrivateIps = registerOutput<List<String>>('sourcePrivateIps');

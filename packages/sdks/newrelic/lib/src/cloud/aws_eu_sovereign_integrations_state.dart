@@ -9,16 +9,12 @@ import 'aws_eu_sovereign_integrations_xray.dart';
 class AwsEuSovereignIntegrationsState {
   /// The New Relic account ID to operate on. This allows the user to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   final pulumi.Input<String>? accountId;
-
   /// Billing integration
   final pulumi.Input<AwsEuSovereignIntegrationsBilling>? billing;
-
   /// CloudTrail integration
   final pulumi.Input<AwsEuSovereignIntegrationsCloudtrail>? cloudtrail;
-
   /// The ID of the linked AWS EU Sovereign account in New Relic.
   final pulumi.Input<String>? linkedAccountId;
-
   /// X-Ray integration
   final pulumi.Input<AwsEuSovereignIntegrationsXRay>? xRay;
 
@@ -39,64 +35,21 @@ class AwsEuSovereignIntegrationsState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': ?accountId,
-      'billing':
-          ?pulumi.Input.mapOptionalInputValue<
-            AwsEuSovereignIntegrationsBilling,
-            Map<String, dynamic>
-          >(billing, (value) => value.toMap()),
-      'cloudtrail':
-          ?pulumi.Input.mapOptionalInputValue<
-            AwsEuSovereignIntegrationsCloudtrail,
-            Map<String, dynamic>
-          >(cloudtrail, (value) => value.toMap()),
+      'billing': ?pulumi.Input.mapOptionalInputValue<AwsEuSovereignIntegrationsBilling, Map<String, dynamic>>(billing, (value) => value.toMap()),
+      'cloudtrail': ?pulumi.Input.mapOptionalInputValue<AwsEuSovereignIntegrationsCloudtrail, Map<String, dynamic>>(cloudtrail, (value) => value.toMap()),
       'linkedAccountId': ?linkedAccountId,
-      'xRay':
-          ?pulumi.Input.mapOptionalInputValue<
-            AwsEuSovereignIntegrationsXRay,
-            Map<String, dynamic>
-          >(xRay, (value) => value.toMap()),
+      'xRay': ?pulumi.Input.mapOptionalInputValue<AwsEuSovereignIntegrationsXRay, Map<String, dynamic>>(xRay, (value) => value.toMap()),
     };
   }
 
   factory AwsEuSovereignIntegrationsState.fromMap(Map<String, dynamic> map) {
     return AwsEuSovereignIntegrationsState(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      billing: (() {
-        final guardedValue = map['billing'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AwsEuSovereignIntegrationsBilling.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      cloudtrail: (() {
-        final guardedValue = map['cloudtrail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AwsEuSovereignIntegrationsCloudtrail.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      linkedAccountId: (() {
-        final guardedValue = map['linkedAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      xRay: (() {
-        final guardedValue = map['xRay'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AwsEuSovereignIntegrationsXRay.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      billing: (() { final guardedValue = map['billing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsEuSovereignIntegrationsBilling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      cloudtrail: (() { final guardedValue = map['cloudtrail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsEuSovereignIntegrationsCloudtrail.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      linkedAccountId: (() { final guardedValue = map['linkedAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      xRay: (() { final guardedValue = map['xRay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsEuSovereignIntegrationsXRay.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

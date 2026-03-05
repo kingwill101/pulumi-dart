@@ -14,3 +14,4 @@ enum CredentialReferenceType {
     throw ArgumentError('Unknown CredentialReferenceType value: $value');
   }
 }
+

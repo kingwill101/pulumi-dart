@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NextGenerationFirewallVirtualHubLocalRulestackDestinationNatFrontendConfig {
   /// The port on which traffic will be receiveed.
   final pulumi.Input<int> port;
-
   /// The ID of the Public IP Address resource the traffic will be received on.
   final pulumi.Input<String> publicIpAddressId;
 
@@ -24,14 +23,11 @@ class NextGenerationFirewallVirtualHubLocalRulestackDestinationNatFrontendConfig
     };
   }
 
-  factory NextGenerationFirewallVirtualHubLocalRulestackDestinationNatFrontendConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NextGenerationFirewallVirtualHubLocalRulestackDestinationNatFrontendConfig.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubLocalRulestackDestinationNatFrontendConfig(
       port: pulumi.Input.fromValue(map['port'] as int),
-      publicIpAddressId: pulumi.Input.fromValue(
-        map['publicIpAddressId'] as String,
-      ),
+      publicIpAddressId: pulumi.Input.fromValue(map['publicIpAddressId'] as String),
     );
   }
 }
+

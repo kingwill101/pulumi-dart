@@ -12,10 +12,14 @@ class GetObjectStorageClusterArgs {
 
   /// Creates a new [GetObjectStorageClusterArgs].
   /// [id] The unique ID of this cluster.
-  GetObjectStorageClusterArgs({required this.id});
+  GetObjectStorageClusterArgs({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetObjectStorageClusterArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetObjectStorageClusterArgs {
     );
   }
 }
+

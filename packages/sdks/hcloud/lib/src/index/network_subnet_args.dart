@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkSubnetArgs {
   /// Range to allocate IPs from. Must be a subnet of the ip_range of the Network and must not overlap with any other subnets or with any destinations in routes.
   final pulumi.Input<String> ipRange;
-
   /// ID of the Network the subnet should be added to.
   final pulumi.Input<int> networkId;
-
   /// Name of network zone.
   final pulumi.Input<String> networkZone;
-
   /// Type of subnet. `server`, `cloud` or `vswitch`
   final pulumi.Input<String> type;
-
   /// ID of the vswitch, Required if type is `vswitch`
   final pulumi.Input<int>? vswitchId;
 
@@ -52,11 +48,8 @@ class NetworkSubnetArgs {
       networkId: pulumi.Input.fromValue(map['networkId'] as int),
       networkZone: pulumi.Input.fromValue(map['networkZone'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
-      vswitchId: (() {
-        final guardedValue = map['vswitchId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      vswitchId: (() { final guardedValue = map['vswitchId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

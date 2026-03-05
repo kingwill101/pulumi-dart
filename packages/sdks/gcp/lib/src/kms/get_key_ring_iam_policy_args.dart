@@ -15,10 +15,14 @@ class GetKeyRingIamPolicyArgs {
 
   /// Creates a new [GetKeyRingIamPolicyArgs].
   /// [keyRingId] The key ring ID, in the form
-  GetKeyRingIamPolicyArgs({required this.keyRingId});
+  GetKeyRingIamPolicyArgs({
+    required this.keyRingId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyRingId': keyRingId};
+    return <String, dynamic>{
+      'keyRingId': keyRingId,
+    };
   }
 
   factory GetKeyRingIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -27,3 +31,4 @@ class GetKeyRingIamPolicyArgs {
     );
   }
 }
+

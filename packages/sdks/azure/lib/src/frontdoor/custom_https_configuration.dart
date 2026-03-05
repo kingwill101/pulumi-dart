@@ -568,12 +568,9 @@ import 'custom_https_configuration_state.dart';
 /// ```
 class CustomHttpsConfiguration extends pulumi.CustomResource {
   /// A `custom_https_configuration` block as defined above.
-  late final pulumi.Output<CustomHttpsConfigurationCustomHttpsConfiguration?>
-  customHttpsConfiguration;
-
+  late final pulumi.Output<CustomHttpsConfigurationCustomHttpsConfiguration?> customHttpsConfiguration;
   /// Should the HTTPS protocol be enabled for this custom domain associated with the Front Door?
   late final pulumi.Output<bool> customHttpsProvisioningEnabled;
-
   /// The ID of the Front Door Frontend Endpoint which this configuration refers to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> frontendEndpointId;
 
@@ -586,25 +583,13 @@ class CustomHttpsConfiguration extends pulumi.CustomResource {
     CustomHttpsConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:frontdoor/customHttpsConfiguration:CustomHttpsConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customHttpsConfiguration =
-        registerOutput<CustomHttpsConfigurationCustomHttpsConfiguration?>(
-          'customHttpsConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CustomHttpsConfigurationCustomHttpsConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    customHttpsProvisioningEnabled = registerOutput<bool>(
-      'customHttpsProvisioningEnabled',
-    );
+          'azure:frontdoor/customHttpsConfiguration:CustomHttpsConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customHttpsConfiguration = registerOutput<CustomHttpsConfigurationCustomHttpsConfiguration?>('customHttpsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomHttpsConfigurationCustomHttpsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customHttpsProvisioningEnabled = registerOutput<bool>('customHttpsProvisioningEnabled');
     frontendEndpointId = registerOutput<String>('frontendEndpointId');
   }
 
@@ -626,25 +611,13 @@ class CustomHttpsConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:frontdoor/customHttpsConfiguration:CustomHttpsConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customHttpsConfiguration =
-        registerOutput<CustomHttpsConfigurationCustomHttpsConfiguration?>(
-          'customHttpsConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CustomHttpsConfigurationCustomHttpsConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    customHttpsProvisioningEnabled = registerOutput<bool>(
-      'customHttpsProvisioningEnabled',
-    );
+          'azure:frontdoor/customHttpsConfiguration:CustomHttpsConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customHttpsConfiguration = registerOutput<CustomHttpsConfigurationCustomHttpsConfiguration?>('customHttpsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomHttpsConfigurationCustomHttpsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customHttpsProvisioningEnabled = registerOutput<bool>('customHttpsProvisioningEnabled');
     frontendEndpointId = registerOutput<String>('frontendEndpointId');
   }
 }

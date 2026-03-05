@@ -7,7 +7,6 @@ import 'pkix_public_key_set_response.dart';
 class AttestationAuthenticatorResponse {
   /// Optional. A user-provided name for this `AttestationAuthenticator`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
   final pulumi.Input<String> displayName;
-
   /// Optional. A set of raw PKIX SubjectPublicKeyInfo format public keys. If any public key in the set validates the attestation signature, then the signature is considered authenticated (i.e. any one key is sufficient to authenticate).
   final pulumi.Input<PkixPublicKeySetResponse> pkixPublicKeySet;
 
@@ -22,22 +21,15 @@ class AttestationAuthenticatorResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': displayName,
-      'pkixPublicKeySet':
-          pulumi.Input.mapInputValue<
-            PkixPublicKeySetResponse,
-            Map<String, dynamic>
-          >(pkixPublicKeySet, (value) => value.toMap()),
+      'pkixPublicKeySet': pulumi.Input.mapInputValue<PkixPublicKeySetResponse, Map<String, dynamic>>(pkixPublicKeySet, (value) => value.toMap()),
     };
   }
 
   factory AttestationAuthenticatorResponse.fromMap(Map<String, dynamic> map) {
     return AttestationAuthenticatorResponse(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      pkixPublicKeySet: pulumi.Input.fromValue(
-        PkixPublicKeySetResponse.fromMap(
-          (map['pkixPublicKeySet']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      pkixPublicKeySet: pulumi.Input.fromValue(PkixPublicKeySetResponse.fromMap((map['pkixPublicKeySet']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

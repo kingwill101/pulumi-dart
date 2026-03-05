@@ -9,19 +9,20 @@ class WorkloadWorkloadPropertyIdentity {
 
   /// Creates a new [WorkloadWorkloadPropertyIdentity].
   /// [principal] (Output)
-  WorkloadWorkloadPropertyIdentity({this.principal});
+  WorkloadWorkloadPropertyIdentity({
+    this.principal,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'principal': ?principal};
+    return <String, dynamic>{
+      'principal': ?principal,
+    };
   }
 
   factory WorkloadWorkloadPropertyIdentity.fromMap(Map<String, dynamic> map) {
     return WorkloadWorkloadPropertyIdentity(
-      principal: (() {
-        final guardedValue = map['principal'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      principal: (() { final guardedValue = map['principal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

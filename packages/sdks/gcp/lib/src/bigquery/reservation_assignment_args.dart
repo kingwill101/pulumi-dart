@@ -9,17 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReservationAssignmentArgs {
   /// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
   final pulumi.Input<String> assignee;
-
   /// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
   final pulumi.Input<String> jobType;
-
   /// The location for the resource
   final pulumi.Input<String>? location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The reservation for the resource
   final pulumi.Input<String> reservation;
 
@@ -51,17 +47,10 @@ class ReservationAssignmentArgs {
     return ReservationAssignmentArgs(
       assignee: pulumi.Input.fromValue(map['assignee'] as String),
       jobType: pulumi.Input.fromValue(map['jobType'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reservation: pulumi.Input.fromValue(map['reservation'] as String),
     );
   }
 }
+

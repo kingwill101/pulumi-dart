@@ -15,3 +15,4 @@ enum GraphQLApiType {
     throw ArgumentError('Unknown GraphQLApiType value: $value');
   }
 }
+

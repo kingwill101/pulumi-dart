@@ -141,25 +141,18 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// The name of the CEN instance.
   late final pulumi.Output<String> cenInstanceName;
-
   /// The time when the CEN instance was created.
   late final pulumi.Output<String> createTime;
-
   /// The description of the CEN instance.
   late final pulumi.Output<String?> description;
-
   /// . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
   late final pulumi.Output<String> name;
-
   /// The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
   late final pulumi.Output<String> protectionLevel;
-
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
-
   /// The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
   late final pulumi.Output<String> status;
-
   /// The tags of the CEN instance.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -174,11 +167,11 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenInstanceName = registerOutput<String>('cenInstanceName');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -207,11 +200,11 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenInstanceName = registerOutput<String>('cenInstanceName');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

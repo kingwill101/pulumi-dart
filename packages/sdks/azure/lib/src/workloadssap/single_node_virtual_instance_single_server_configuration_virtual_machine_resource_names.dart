@@ -5,22 +5,13 @@ import 'single_node_virtual_instance_single_server_configuration_virtual_machine
 
 class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNames {
   /// (Optional) One or more `data_disk` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<
-    List<
-      SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDisk
-    >
-  >?
-  dataDisks;
-
+  final pulumi.Input<List<SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDisk>>? dataDisks;
   /// The full name of the host of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String>? hostName;
-
   /// A list of full names for the Network Interface of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>>? networkInterfaceNames;
-
   /// The full name of the OS Disk attached to the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String>? osDiskName;
-
   /// The full name of the Virtual Machine in a single server SAP system. Changing this forces a new resource to be created.
   final pulumi.Input<String>? virtualMachineName;
 
@@ -40,20 +31,7 @@ class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNa
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataDisks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDisk
-            >,
-            List<Map<String, dynamic>>
-          >(
-            dataDisks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDisk,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'dataDisks': ?pulumi.Input.mapOptionalInputValue<List<SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDisk>, List<Map<String, dynamic>>>(dataDisks, (value) => pulumi.Input.encodeList<SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'hostName': ?hostName,
       'networkInterfaceNames': ?networkInterfaceNames,
       'osDiskName': ?osDiskName,
@@ -61,45 +39,14 @@ class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNa
     };
   }
 
-  factory SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNames.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNames.fromMap(Map<String, dynamic> map) {
     return SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNames(
-      dataDisks: (() {
-        final guardedValue = map['dataDisks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDisk
-          >(
-            guardedValue,
-            (value) =>
-                SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDisk.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      hostName: (() {
-        final guardedValue = map['hostName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkInterfaceNames: (() {
-        final guardedValue = map['networkInterfaceNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      osDiskName: (() {
-        final guardedValue = map['osDiskName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualMachineName: (() {
-        final guardedValue = map['virtualMachineName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataDisks: (() { final guardedValue = map['dataDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDisk>(guardedValue, (value) => SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDisk.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkInterfaceNames: (() { final guardedValue = map['networkInterfaceNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      osDiskName: (() { final guardedValue = map['osDiskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualMachineName: (() { final guardedValue = map['virtualMachineName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

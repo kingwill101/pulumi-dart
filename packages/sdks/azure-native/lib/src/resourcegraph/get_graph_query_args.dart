@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGraphQueryArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Graph Query resource.
   final pulumi.Input<String> resourceName;
 
@@ -30,10 +29,9 @@ class GetGraphQueryArgs {
 
   factory GetGraphQueryArgs.fromMap(Map<String, dynamic> map) {
     return GetGraphQueryArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

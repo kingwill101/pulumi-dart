@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNamespaceVirtualNetworkRule.
 class GetNamespaceVirtualNetworkRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource Id
   final String id;
-
   /// Resource name
   final String name;
-
   /// Resource type
   final String type;
-
   /// Resource ID of Virtual Network Subnet
   final String? virtualNetworkSubnetId;
 
@@ -41,19 +38,14 @@ class GetNamespaceVirtualNetworkRuleResult {
     };
   }
 
-  factory GetNamespaceVirtualNetworkRuleResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNamespaceVirtualNetworkRuleResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceVirtualNetworkRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,
-      virtualNetworkSubnetId: (() {
-        final guardedValue = map['virtualNetworkSubnetId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      virtualNetworkSubnetId: (() { final guardedValue = map['virtualNetworkSubnetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

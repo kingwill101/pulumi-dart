@@ -27,3 +27,4 @@ enum ScmType {
     throw ArgumentError('Unknown ScmType value: $value');
   }
 }
+

@@ -37,18 +37,12 @@ class ListWorkspaceKeysResult {
 
   factory ListWorkspaceKeysResult.fromMap(Map<String, dynamic> map) {
     return ListWorkspaceKeysResult(
-      appInsightsInstrumentationKey:
-          map['appInsightsInstrumentationKey'] as String,
-      containerRegistryCredentials:
-          RegistryListCredentialsResultResponse.fromMap(
-            (map['containerRegistryCredentials']! as Map)
-                .cast<String, dynamic>(),
-          ),
-      notebookAccessKeys: ListNotebookKeysResultResponse.fromMap(
-        (map['notebookAccessKeys']! as Map).cast<String, dynamic>(),
-      ),
+      appInsightsInstrumentationKey: map['appInsightsInstrumentationKey'] as String,
+      containerRegistryCredentials: RegistryListCredentialsResultResponse.fromMap((map['containerRegistryCredentials']! as Map).cast<String, dynamic>()),
+      notebookAccessKeys: ListNotebookKeysResultResponse.fromMap((map['notebookAccessKeys']! as Map).cast<String, dynamic>()),
       userStorageKey: map['userStorageKey'] as String,
       userStorageResourceId: map['userStorageResourceId'] as String,
     );
   }
 }
+

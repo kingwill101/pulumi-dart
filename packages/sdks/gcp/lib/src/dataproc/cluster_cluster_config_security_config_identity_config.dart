@@ -21,13 +21,10 @@ class ClusterClusterConfigSecurityConfigIdentityConfig {
     };
   }
 
-  factory ClusterClusterConfigSecurityConfigIdentityConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterClusterConfigSecurityConfigIdentityConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigSecurityConfigIdentityConfig(
-      userServiceAccountMapping: pulumi.Input.fromValue(
-        (map['userServiceAccountMapping'] as Map).cast<String, String>(),
-      ),
+      userServiceAccountMapping: pulumi.Input.fromValue((map['userServiceAccountMapping'] as Map).cast<String, String>()),
     );
   }
 }
+

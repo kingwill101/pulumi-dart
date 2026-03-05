@@ -7,10 +7,8 @@ import 'resource_reference_response.dart';
 class OriginAuthenticationPropertiesResponse {
   /// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
   final pulumi.Input<String>? scope;
-
   /// The type of the authentication for the origin.
   final pulumi.Input<String>? type;
-
   /// The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
   final pulumi.Input<ResourceReferenceResponse>? userAssignedIdentity;
 
@@ -28,37 +26,16 @@ class OriginAuthenticationPropertiesResponse {
     return <String, dynamic>{
       'scope': ?scope,
       'type': ?type,
-      'userAssignedIdentity':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceReferenceResponse,
-            Map<String, dynamic>
-          >(userAssignedIdentity, (value) => value.toMap()),
+      'userAssignedIdentity': ?pulumi.Input.mapOptionalInputValue<ResourceReferenceResponse, Map<String, dynamic>>(userAssignedIdentity, (value) => value.toMap()),
     };
   }
 
-  factory OriginAuthenticationPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OriginAuthenticationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return OriginAuthenticationPropertiesResponse(
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentity: (() {
-        final guardedValue = map['userAssignedIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceReferenceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentity: (() { final guardedValue = map['userAssignedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

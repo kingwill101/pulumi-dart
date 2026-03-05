@@ -15,3 +15,4 @@ enum ElasticPoolEncryptionKeySource {
     throw ArgumentError('Unknown ElasticPoolEncryptionKeySource value: $value');
   }
 }
+

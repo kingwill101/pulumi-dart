@@ -277,34 +277,25 @@ import 'cycle_task_state.dart';
 class CycleTask extends pulumi.CustomResource {
   /// Whether to enable. Value:
   late final pulumi.Output<int> enable;
-
   /// First execution time.
   late final pulumi.Output<int> firstDateStr;
-
   /// Interval period.
   late final pulumi.Output<int> intervalPeriod;
-
   /// Extended information field.
   late final pulumi.Output<String?> param;
-
   /// Unit of scan cycle, value:
   late final pulumi.Output<String> periodUnit;
-
   /// Added the source of the task.
   late final pulumi.Output<String?> source;
-
   /// Task end time (hours).
   late final pulumi.Output<int> targetEndTime;
-
   /// Task start time (hours).
   late final pulumi.Output<int> targetStartTime;
-
   /// The task name.
   /// - **VIRUS_VUL_SCHEDULE_SCAN**: scans for viruses.
   /// - **IMAGE_SCAN**: Image scan.
   /// - **EMG_VUL_SCHEDULE_SCAN**: Emergency vulnerability scanning.
   late final pulumi.Output<String> taskName;
-
   /// The task type.
   /// - **VIRUS_VUL_SCHEDULE_SCAN**: scans for viruses.
   /// - **IMAGE_SCAN**: Image scan.
@@ -320,11 +311,11 @@ class CycleTask extends pulumi.CustomResource {
     CycleTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/cycleTask:CycleTask',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/cycleTask:CycleTask',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enable = registerOutput<int>('enable');
     firstDateStr = registerOutput<int>('firstDateStr');
     intervalPeriod = registerOutput<int>('intervalPeriod');
@@ -355,11 +346,11 @@ class CycleTask extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/cycleTask:CycleTask',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/cycleTask:CycleTask',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enable = registerOutput<int>('enable');
     firstDateStr = registerOutput<int>('firstDateStr');
     intervalPeriod = registerOutput<int>('intervalPeriod');

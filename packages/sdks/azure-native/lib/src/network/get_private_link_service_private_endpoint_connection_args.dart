@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateLinkServicePrivateEndpointConnectionArgs {
   /// Expands referenced resources.
   final pulumi.Input<String>? expand;
-
   /// The name of the private end point connection.
   final pulumi.Input<String> peConnectionName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the private link service.
   final pulumi.Input<String> serviceName;
 
@@ -40,22 +37,13 @@ class GetPrivateLinkServicePrivateEndpointConnectionArgs {
     };
   }
 
-  factory GetPrivateLinkServicePrivateEndpointConnectionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPrivateLinkServicePrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkServicePrivateEndpointConnectionArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peConnectionName: pulumi.Input.fromValue(
-        map['peConnectionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peConnectionName: pulumi.Input.fromValue(map['peConnectionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

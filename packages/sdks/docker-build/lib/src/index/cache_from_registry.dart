@@ -8,13 +8,20 @@ class CacheFromRegistry {
 
   /// Creates a new [CacheFromRegistry].
   /// [ref] Fully qualified name of the cache image to import.
-  CacheFromRegistry({required this.ref});
+  CacheFromRegistry({
+    required this.ref,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ref': ref};
+    return <String, dynamic>{
+      'ref': ref,
+    };
   }
 
   factory CacheFromRegistry.fromMap(Map<String, dynamic> map) {
-    return CacheFromRegistry(ref: pulumi.Input.fromValue(map['ref'] as String));
+    return CacheFromRegistry(
+      ref: pulumi.Input.fromValue(map['ref'] as String),
+    );
   }
 }
+

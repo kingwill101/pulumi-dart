@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketLoggingState {
   /// The name of the bucket
   final pulumi.Input<String>? bucket;
-
   /// Authorization role used for bucket logging
   final pulumi.Input<String>? loggingRole;
-
   /// The bucket that stores access logs.
   final pulumi.Input<String>? targetBucket;
-
   /// The prefix of the saved log objects. This element can be left empty.
   final pulumi.Input<String>? targetPrefix;
 
@@ -39,26 +36,11 @@ class BucketLoggingState {
 
   factory BucketLoggingState.fromMap(Map<String, dynamic> map) {
     return BucketLoggingState(
-      bucket: (() {
-        final guardedValue = map['bucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      loggingRole: (() {
-        final guardedValue = map['loggingRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetBucket: (() {
-        final guardedValue = map['targetBucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetPrefix: (() {
-        final guardedValue = map['targetPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loggingRole: (() { final guardedValue = map['loggingRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetBucket: (() { final guardedValue = map['targetBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetPrefix: (() { final guardedValue = map['targetPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

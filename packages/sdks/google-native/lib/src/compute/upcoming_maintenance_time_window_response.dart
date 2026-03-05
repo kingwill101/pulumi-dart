@@ -16,15 +16,17 @@ class UpcomingMaintenanceTimeWindowResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'earliest': earliest, 'latest': latest};
+    return <String, dynamic>{
+      'earliest': earliest,
+      'latest': latest,
+    };
   }
 
-  factory UpcomingMaintenanceTimeWindowResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UpcomingMaintenanceTimeWindowResponse.fromMap(Map<String, dynamic> map) {
     return UpcomingMaintenanceTimeWindowResponse(
       earliest: pulumi.Input.fromValue(map['earliest'] as String),
       latest: pulumi.Input.fromValue(map['latest'] as String),
     );
   }
 }
+

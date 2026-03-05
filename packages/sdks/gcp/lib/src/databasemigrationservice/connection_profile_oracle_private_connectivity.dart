@@ -8,19 +8,20 @@ class ConnectionProfileOraclePrivateConnectivity {
 
   /// Creates a new [ConnectionProfileOraclePrivateConnectivity].
   /// [privateConnection] Required. The resource name (URI) of the private connection.
-  ConnectionProfileOraclePrivateConnectivity({required this.privateConnection});
+  ConnectionProfileOraclePrivateConnectivity({
+    required this.privateConnection,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'privateConnection': privateConnection};
+    return <String, dynamic>{
+      'privateConnection': privateConnection,
+    };
   }
 
-  factory ConnectionProfileOraclePrivateConnectivity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionProfileOraclePrivateConnectivity.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileOraclePrivateConnectivity(
-      privateConnection: pulumi.Input.fromValue(
-        map['privateConnection'] as String,
-      ),
+      privateConnection: pulumi.Input.fromValue(map['privateConnection'] as String),
     );
   }
 }
+

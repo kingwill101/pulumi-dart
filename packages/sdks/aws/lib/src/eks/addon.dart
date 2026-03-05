@@ -435,43 +435,31 @@ class Addon extends pulumi.CustomResource {
   /// Name of the EKS add-on. The name must match one of
   /// the names returned by [describe-addon-versions](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-versions.html).
   late final pulumi.Output<String> addonName;
-
   /// The version of the EKS add-on. The version must
   /// match one of the versions returned by [describe-addon-versions](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-versions.html).
   late final pulumi.Output<String> addonVersion;
-
   /// Amazon Resource Name (ARN) of the EKS add-on.
   late final pulumi.Output<String> arn;
-
   /// Name of the EKS Cluster.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> clusterName;
-
   /// custom configuration values for addons with single JSON string. This JSON string value must match the JSON schema derived from [describe-addon-configuration](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-configuration.html).
   late final pulumi.Output<String> configurationValues;
-
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the EKS add-on was created.
   late final pulumi.Output<String> createdAt;
-
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the EKS add-on was updated.
   late final pulumi.Output<String> modifiedAt;
-
   /// Configuration block with EKS Pod Identity association settings. See `pod_identity_association` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> podIdentityAssociations;
-
   /// Indicates if you want to preserve the created resources when deleting the EKS add-on.
   late final pulumi.Output<bool?> preserve;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// How to resolve field value conflicts when migrating a self-managed add-on to an Amazon EKS add-on. Valid values are `NONE` and `OVERWRITE`. For more details see the [CreateAddon](https://docs.aws.amazon.com/eks/latest/APIReference/API_CreateAddon.html) API Documentation.
   late final pulumi.Output<String?> resolveConflictsOnCreate;
-
   /// How to resolve field value conflicts for an Amazon EKS add-on if you've changed a value from the Amazon EKS default value. Valid values are `NONE`, `OVERWRITE`, and `PRESERVE`. For more details see the [UpdateAddon](https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateAddon.html) API Documentation.
   late final pulumi.Output<String?> resolveConflictsOnUpdate;
-
   /// The Amazon Resource Name (ARN) of an
   /// existing IAM role to bind to the add-on's service account. The role must be
   /// assigned the IAM permissions required by the add-on. If you don't specify
@@ -484,10 +472,8 @@ class Addon extends pulumi.CustomResource {
   /// for service accounts on your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
   /// in the Amazon EKS User Guide.
   late final pulumi.Output<String?> serviceAccountRoleArn;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -495,13 +481,16 @@ class Addon extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Addon]. {@macro pulumi_eks_addon_addon_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Addon(String name, {AddonArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:eks/addon:Addon',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Addon(
+    String name, {
+    AddonArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:eks/addon:Addon',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addonName = registerOutput<String>('addonName');
     addonVersion = registerOutput<String>('addonVersion');
     arn = registerOutput<String>('arn');
@@ -509,24 +498,22 @@ class Addon extends pulumi.CustomResource {
     configurationValues = registerOutput<String>('configurationValues');
     createdAt = registerOutput<String>('createdAt');
     modifiedAt = registerOutput<String>('modifiedAt');
-    podIdentityAssociations = registerOutput<List<Map<String, dynamic>>?>(
-      'podIdentityAssociations',
-    );
+    podIdentityAssociations = registerOutput<List<Map<String, dynamic>>?>('podIdentityAssociations');
     preserve = registerOutput<bool?>('preserve');
     region = registerOutput<String>('region');
-    resolveConflictsOnCreate = registerOutput<String?>(
-      'resolveConflictsOnCreate',
-    );
-    resolveConflictsOnUpdate = registerOutput<String?>(
-      'resolveConflictsOnUpdate',
-    );
+    resolveConflictsOnCreate = registerOutput<String?>('resolveConflictsOnCreate');
+    resolveConflictsOnUpdate = registerOutput<String?>('resolveConflictsOnUpdate');
     serviceAccountRoleArn = registerOutput<String?>('serviceAccountRoleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Addon] resource's state with the given [name] and [id].
-  static Addon get(String name, pulumi.Input<String> id, {AddonState? state}) {
+  static Addon get(
+    String name,
+    pulumi.Input<String> id, {
+    AddonState? state,
+  }) {
     return Addon._get(
       name,
       state: state?.toMap(),
@@ -539,11 +526,11 @@ class Addon extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:eks/addon:Addon',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:eks/addon:Addon',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addonName = registerOutput<String>('addonName');
     addonVersion = registerOutput<String>('addonVersion');
     arn = registerOutput<String>('arn');
@@ -551,17 +538,11 @@ class Addon extends pulumi.CustomResource {
     configurationValues = registerOutput<String>('configurationValues');
     createdAt = registerOutput<String>('createdAt');
     modifiedAt = registerOutput<String>('modifiedAt');
-    podIdentityAssociations = registerOutput<List<Map<String, dynamic>>?>(
-      'podIdentityAssociations',
-    );
+    podIdentityAssociations = registerOutput<List<Map<String, dynamic>>?>('podIdentityAssociations');
     preserve = registerOutput<bool?>('preserve');
     region = registerOutput<String>('region');
-    resolveConflictsOnCreate = registerOutput<String?>(
-      'resolveConflictsOnCreate',
-    );
-    resolveConflictsOnUpdate = registerOutput<String?>(
-      'resolveConflictsOnUpdate',
-    );
+    resolveConflictsOnCreate = registerOutput<String?>('resolveConflictsOnCreate');
+    resolveConflictsOnUpdate = registerOutput<String?>('resolveConflictsOnUpdate');
     serviceAccountRoleArn = registerOutput<String?>('serviceAccountRoleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

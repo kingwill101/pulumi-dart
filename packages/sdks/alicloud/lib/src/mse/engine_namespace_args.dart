@@ -9,21 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EngineNamespaceArgs {
   /// The language type of the returned information. Valid values: `zh`, `en`.
   final pulumi.Input<String>? acceptLanguage;
-
   /// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
   final pulumi.Input<String>? clusterId;
-
   /// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
   final pulumi.Input<String>? instanceId;
-
   /// The description of the namespace.
   ///
   /// **NOTE:** You must set `cluster_id` or `instance_id` or both.
   final pulumi.Input<String>? namespaceDesc;
-
   /// The id of Namespace.
   final pulumi.Input<String>? namespaceId;
-
   /// The name of the Engine Namespace.
   final pulumi.Input<String> namespaceShowName;
 
@@ -56,34 +51,13 @@ class EngineNamespaceArgs {
 
   factory EngineNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return EngineNamespaceArgs(
-      acceptLanguage: (() {
-        final guardedValue = map['acceptLanguage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clusterId: (() {
-        final guardedValue = map['clusterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespaceDesc: (() {
-        final guardedValue = map['namespaceDesc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespaceId: (() {
-        final guardedValue = map['namespaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespaceShowName: pulumi.Input.fromValue(
-        map['namespaceShowName'] as String,
-      ),
+      acceptLanguage: (() { final guardedValue = map['acceptLanguage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterId: (() { final guardedValue = map['clusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespaceDesc: (() { final guardedValue = map['namespaceDesc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespaceId: (() { final guardedValue = map['namespaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespaceShowName: pulumi.Input.fromValue(map['namespaceShowName'] as String),
     );
   }
 }
+

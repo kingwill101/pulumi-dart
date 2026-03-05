@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionMonitorArgs {
   /// The name of the connection monitor.
   final pulumi.Input<String> connectionMonitorName;
-
   /// The name of the Network Watcher resource.
   final pulumi.Input<String> networkWatcherName;
-
   /// The name of the resource group containing Network Watcher.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,15 +34,10 @@ class GetConnectionMonitorArgs {
 
   factory GetConnectionMonitorArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionMonitorArgs(
-      connectionMonitorName: pulumi.Input.fromValue(
-        map['connectionMonitorName'] as String,
-      ),
-      networkWatcherName: pulumi.Input.fromValue(
-        map['networkWatcherName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      connectionMonitorName: pulumi.Input.fromValue(map['connectionMonitorName'] as String),
+      networkWatcherName: pulumi.Input.fromValue(map['networkWatcherName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

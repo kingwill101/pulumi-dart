@@ -5,17 +5,13 @@ import 'get_alert_channel_config.dart';
 /// Result data returned by getAlertChannel.
 class GetAlertChannelResult {
   final String accountId;
-
   /// Alert channel configuration.
   final GetAlertChannelConfig config;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// A list of policy IDs associated with the alert channel.
   final List<String> policyIds;
-
   /// Alert channel type, either: `email`, `opsgenie`, `pagerduty`, `slack`, `victorops`, or `webhook`.
   final String type;
 
@@ -49,9 +45,7 @@ class GetAlertChannelResult {
   factory GetAlertChannelResult.fromMap(Map<String, dynamic> map) {
     return GetAlertChannelResult(
       accountId: map['accountId'] as String,
-      config: GetAlertChannelConfig.fromMap(
-        (map['config']! as Map).cast<String, dynamic>(),
-      ),
+      config: GetAlertChannelConfig.fromMap((map['config']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       policyIds: (map['policyIds'] as List).cast<String>(),
@@ -59,3 +53,4 @@ class GetAlertChannelResult {
     );
   }
 }
+

@@ -8,17 +8,13 @@ enum GoogleCloudAiplatformV1StudySpecParameterSpecScaleType {
   const GoogleCloudAiplatformV1StudySpecParameterSpecScaleType(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudAiplatformV1StudySpecParameterSpecScaleType fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudAiplatformV1StudySpecParameterSpecScaleType.values) {
+  static GoogleCloudAiplatformV1StudySpecParameterSpecScaleType fromValue(String value) {
+    for (final item in GoogleCloudAiplatformV1StudySpecParameterSpecScaleType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudAiplatformV1StudySpecParameterSpecScaleType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudAiplatformV1StudySpecParameterSpecScaleType value: $value');
   }
 }
+

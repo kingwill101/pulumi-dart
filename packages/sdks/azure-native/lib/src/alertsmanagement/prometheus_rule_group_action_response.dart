@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrometheusRuleGroupActionResponse {
   /// The resource id of the action group to use.
   final pulumi.Input<String>? actionGroupId;
-
   /// The properties of an action group object.
   final pulumi.Input<Map<String, String>>? actionProperties;
 
@@ -27,18 +26,9 @@ class PrometheusRuleGroupActionResponse {
 
   factory PrometheusRuleGroupActionResponse.fromMap(Map<String, dynamic> map) {
     return PrometheusRuleGroupActionResponse(
-      actionGroupId: (() {
-        final guardedValue = map['actionGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      actionProperties: (() {
-        final guardedValue = map['actionProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      actionGroupId: (() { final guardedValue = map['actionGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      actionProperties: (() { final guardedValue = map['actionProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

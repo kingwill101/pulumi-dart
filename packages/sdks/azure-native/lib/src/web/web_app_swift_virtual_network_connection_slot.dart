@@ -16,19 +16,14 @@ import 'web_app_swift_virtual_network_connection_slot_args.dart';
 class WebAppSwiftVirtualNetworkConnectionSlot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// The Virtual Network subnet's resource ID. This is the subnet that this Web App will join. This subnet must have a delegation to Microsoft.Web/serverFarms defined first.
   late final pulumi.Output<String?> subnetResourceId;
-
   /// A flag that specifies if the scale unit this Web App is on supports Swift integration.
   late final pulumi.Output<bool?> swiftSupported;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -41,11 +36,11 @@ class WebAppSwiftVirtualNetworkConnectionSlot extends pulumi.CustomResource {
     WebAppSwiftVirtualNetworkConnectionSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppSwiftVirtualNetworkConnectionSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppSwiftVirtualNetworkConnectionSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');

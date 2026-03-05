@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MemberState {
   /// The ID of the member AWS account.
   final pulumi.Input<String>? accountId;
-
   /// The email of the member AWS account.
   final pulumi.Input<String>? email;
-
   /// Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
   final pulumi.Input<bool>? invite;
-
   /// The ID of the master Security Hub AWS account.
   final pulumi.Input<String>? masterId;
-
   /// The status of the member account relationship.
   final pulumi.Input<String>? memberStatus;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -51,36 +46,13 @@ class MemberState {
 
   factory MemberState.fromMap(Map<String, dynamic> map) {
     return MemberState(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      invite: (() {
-        final guardedValue = map['invite'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      masterId: (() {
-        final guardedValue = map['masterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      memberStatus: (() {
-        final guardedValue = map['memberStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      invite: (() { final guardedValue = map['invite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      masterId: (() { final guardedValue = map['masterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memberStatus: (() { final guardedValue = map['memberStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

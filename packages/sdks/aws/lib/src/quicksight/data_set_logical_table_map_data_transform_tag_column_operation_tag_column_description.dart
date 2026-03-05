@@ -13,18 +13,15 @@ class DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'text': ?text};
+    return <String, dynamic>{
+      'text': ?text,
+    };
   }
 
-  factory DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription(
-      text: (() {
-        final guardedValue = map['text'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

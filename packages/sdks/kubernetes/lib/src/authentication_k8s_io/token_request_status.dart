@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TokenRequestStatus {
   /// ExpirationTimestamp is the time of expiration of the returned token.
   final pulumi.Input<String> expirationTimestamp;
-
   /// Token is the opaque bearer token.
   final pulumi.Input<String> token;
 
   /// Creates a new [TokenRequestStatus].
   /// [expirationTimestamp] ExpirationTimestamp is the time of expiration of the returned token.
   /// [token] Token is the opaque bearer token.
-  TokenRequestStatus({required this.expirationTimestamp, required this.token});
+  TokenRequestStatus({
+    required this.expirationTimestamp,
+    required this.token,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,10 +26,9 @@ class TokenRequestStatus {
 
   factory TokenRequestStatus.fromMap(Map<String, dynamic> map) {
     return TokenRequestStatus(
-      expirationTimestamp: pulumi.Input.fromValue(
-        map['expirationTimestamp'] as String,
-      ),
+      expirationTimestamp: pulumi.Input.fromValue(map['expirationTimestamp'] as String),
       token: pulumi.Input.fromValue(map['token'] as String),
     );
   }
 }
+

@@ -7,31 +7,29 @@ import 'metric_target.dart';
 class ResourceMetricSource {
   /// name is the name of the resource in question.
   final pulumi.Input<String> name;
-
   /// target specifies the target value for the given metric
   final pulumi.Input<MetricTarget> target;
 
   /// Creates a new [ResourceMetricSource].
   /// [name] name is the name of the resource in question.
   /// [target] target specifies the target value for the given metric
-  ResourceMetricSource({required this.name, required this.target});
+  ResourceMetricSource({
+    required this.name,
+    required this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'target': pulumi.Input.mapInputValue<MetricTarget, Map<String, dynamic>>(
-        target,
-        (value) => value.toMap(),
-      ),
+      'target': pulumi.Input.mapInputValue<MetricTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
   factory ResourceMetricSource.fromMap(Map<String, dynamic> map) {
     return ResourceMetricSource(
       name: pulumi.Input.fromValue(map['name'] as String),
-      target: pulumi.Input.fromValue(
-        MetricTarget.fromMap((map['target']! as Map).cast<String, dynamic>()),
-      ),
+      target: pulumi.Input.fromValue(MetricTarget.fromMap((map['target']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

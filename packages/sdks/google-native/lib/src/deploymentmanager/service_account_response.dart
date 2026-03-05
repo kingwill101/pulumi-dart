@@ -9,10 +9,14 @@ class ServiceAccountResponse {
 
   /// Creates a new [ServiceAccountResponse].
   /// [email] The IAM service account email address like test@myproject.iam.gserviceaccount.com
-  ServiceAccountResponse({required this.email});
+  ServiceAccountResponse({
+    required this.email,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'email': email};
+    return <String, dynamic>{
+      'email': email,
+    };
   }
 
   factory ServiceAccountResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ServiceAccountResponse {
     );
   }
 }
+

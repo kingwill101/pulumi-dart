@@ -15,3 +15,4 @@ enum AzureFileShareAccessType {
     throw ArgumentError('Unknown AzureFileShareAccessType value: $value');
   }
 }
+

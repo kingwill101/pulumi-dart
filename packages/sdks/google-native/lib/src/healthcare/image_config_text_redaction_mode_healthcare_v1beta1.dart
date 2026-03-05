@@ -4,9 +4,7 @@ enum ImageConfigTextRedactionModeHealthcareV1beta1 {
   redactAllText("REDACT_ALL_TEXT"),
   redactSensitiveText("REDACT_SENSITIVE_TEXT"),
   redactNoText("REDACT_NO_TEXT"),
-  redactSensitiveTextCleanDescriptors(
-    "REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS",
-  );
+  redactSensitiveTextCleanDescriptors("REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS");
 
   const ImageConfigTextRedactionModeHealthcareV1beta1(this.wireValue);
   final String wireValue;
@@ -17,8 +15,7 @@ enum ImageConfigTextRedactionModeHealthcareV1beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ImageConfigTextRedactionModeHealthcareV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown ImageConfigTextRedactionModeHealthcareV1beta1 value: $value');
   }
 }
+

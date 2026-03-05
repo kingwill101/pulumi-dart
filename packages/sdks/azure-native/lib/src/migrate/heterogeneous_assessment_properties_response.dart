@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HeterogeneousAssessmentPropertiesResponse {
   /// Arm id of partner assessments.
   final pulumi.Input<List<String>>? assessmentArmIds;
-
   /// Azure location for assessment.
   final pulumi.Input<String> azureLocation;
-
   /// Confidence rating in percentage.
   final pulumi.Input<double> confidenceRatingInPercentage;
-
   /// Timestamp for the last successfully calculated summary for the assessment.
   final pulumi.Input<String> lastCalculatedOn;
-
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
-
   /// Schema version.
   final pulumi.Input<String> schemaVersion;
-
   /// Sizing criterion for assessment.
   final pulumi.Input<String> sizingCriterion;
-
   /// Whether assessment is in valid state and all machines have been assessed.
   final pulumi.Input<String> status;
 
@@ -61,28 +54,17 @@ class HeterogeneousAssessmentPropertiesResponse {
     };
   }
 
-  factory HeterogeneousAssessmentPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HeterogeneousAssessmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HeterogeneousAssessmentPropertiesResponse(
-      assessmentArmIds: (() {
-        final guardedValue = map['assessmentArmIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      assessmentArmIds: (() { final guardedValue = map['assessmentArmIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       azureLocation: pulumi.Input.fromValue(map['azureLocation'] as String),
-      confidenceRatingInPercentage: pulumi.Input.fromValue(
-        map['confidenceRatingInPercentage'] as double,
-      ),
-      lastCalculatedOn: pulumi.Input.fromValue(
-        map['lastCalculatedOn'] as String,
-      ),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      confidenceRatingInPercentage: pulumi.Input.fromValue(map['confidenceRatingInPercentage'] as double),
+      lastCalculatedOn: pulumi.Input.fromValue(map['lastCalculatedOn'] as String),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       schemaVersion: pulumi.Input.fromValue(map['schemaVersion'] as String),
       sizingCriterion: pulumi.Input.fromValue(map['sizingCriterion'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

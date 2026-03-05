@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrateSqlServerSqlDbDatabaseInputResponse {
   /// id of the database
   final pulumi.Input<String>? id;
-
   /// Whether to set database read only before migration
   final pulumi.Input<bool>? makeSourceDbReadOnly;
-
   /// Name of the database
   final pulumi.Input<String>? name;
-
   /// Settings selected for DB schema migration.
   final pulumi.Input<dynamic>? schemaSetting;
-
   /// Mapping of source to target tables
   final pulumi.Input<Map<String, String>>? tableMap;
-
   /// Name of target database. Note: Target database will be truncated before starting migration.
   final pulumi.Input<String>? targetDatabaseName;
 
@@ -49,42 +44,15 @@ class MigrateSqlServerSqlDbDatabaseInputResponse {
     };
   }
 
-  factory MigrateSqlServerSqlDbDatabaseInputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MigrateSqlServerSqlDbDatabaseInputResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlDbDatabaseInputResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      makeSourceDbReadOnly: (() {
-        final guardedValue = map['makeSourceDbReadOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schemaSetting: (() {
-        final guardedValue = map['schemaSetting'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      tableMap: (() {
-        final guardedValue = map['tableMap'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      targetDatabaseName: (() {
-        final guardedValue = map['targetDatabaseName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      makeSourceDbReadOnly: (() { final guardedValue = map['makeSourceDbReadOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemaSetting: (() { final guardedValue = map['schemaSetting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      tableMap: (() { final guardedValue = map['tableMap']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      targetDatabaseName: (() { final guardedValue = map['targetDatabaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

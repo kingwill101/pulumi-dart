@@ -33,11 +33,8 @@ class GetJobTriggerArgs {
     return GetJobTriggerArgs(
       jobTriggerId: pulumi.Input.fromValue(map['jobTriggerId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

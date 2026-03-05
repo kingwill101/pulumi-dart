@@ -6,17 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SystemAssignedIdentityAuthInfoResponse {
   /// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
   final pulumi.Input<String>? authMode;
-
   /// The authentication type.
   /// Expected value is 'systemAssignedIdentity'.
   final pulumi.Input<String> authType;
-
   /// Indicates whether to clean up previous operation when Linker is updating or deleting
   final pulumi.Input<String>? deleteOrUpdateBehavior;
-
   /// Optional, this value specifies the Azure role to be assigned
   final pulumi.Input<List<String>>? roles;
-
   /// Username created in the database which is mapped to a user in AAD.
   final pulumi.Input<String>? userName;
 
@@ -44,31 +40,14 @@ class SystemAssignedIdentityAuthInfoResponse {
     };
   }
 
-  factory SystemAssignedIdentityAuthInfoResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SystemAssignedIdentityAuthInfoResponse.fromMap(Map<String, dynamic> map) {
     return SystemAssignedIdentityAuthInfoResponse(
-      authMode: (() {
-        final guardedValue = map['authMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authMode: (() { final guardedValue = map['authMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authType: pulumi.Input.fromValue(map['authType'] as String),
-      deleteOrUpdateBehavior: (() {
-        final guardedValue = map['deleteOrUpdateBehavior'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roles: (() {
-        final guardedValue = map['roles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deleteOrUpdateBehavior: (() { final guardedValue = map['deleteOrUpdateBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

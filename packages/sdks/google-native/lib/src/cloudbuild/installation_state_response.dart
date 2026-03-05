@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstallationStateResponse {
   /// Link to follow for next action. Empty string if the installation is already complete.
   final pulumi.Input<String> actionUri;
-
   /// Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
   final pulumi.Input<String> message;
-
   /// Current step of the installation process.
   final pulumi.Input<String> stage;
 
@@ -39,3 +37,4 @@ class InstallationStateResponse {
     );
   }
 }
+

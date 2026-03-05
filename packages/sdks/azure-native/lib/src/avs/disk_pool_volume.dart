@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskPoolVolume {
   /// Name of the LUN to be used for datastore
   final pulumi.Input<String> lunName;
-
   /// Mode that describes whether the LUN has to be mounted as a datastore or
   /// attached as a LUN
   final pulumi.Input<String>? mountOption;
-
   /// Azure resource ID of the iSCSI target
   final pulumi.Input<String> targetId;
 
@@ -35,12 +33,9 @@ class DiskPoolVolume {
   factory DiskPoolVolume.fromMap(Map<String, dynamic> map) {
     return DiskPoolVolume(
       lunName: pulumi.Input.fromValue(map['lunName'] as String),
-      mountOption: (() {
-        final guardedValue = map['mountOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mountOption: (() { final guardedValue = map['mountOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetId: pulumi.Input.fromValue(map['targetId'] as String),
     );
   }
 }
+

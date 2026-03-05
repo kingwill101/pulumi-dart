@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteSpecGrpcRouteMatchMetadataMatchRange {
   /// End of the range.
   final pulumi.Input<int> end;
-
   /// Start of the range.
   final pulumi.Input<int> start;
 
@@ -18,15 +17,17 @@ class RouteSpecGrpcRouteMatchMetadataMatchRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'end': end, 'start': start};
+    return <String, dynamic>{
+      'end': end,
+      'start': start,
+    };
   }
 
-  factory RouteSpecGrpcRouteMatchMetadataMatchRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RouteSpecGrpcRouteMatchMetadataMatchRange.fromMap(Map<String, dynamic> map) {
     return RouteSpecGrpcRouteMatchMetadataMatchRange(
       end: pulumi.Input.fromValue(map['end'] as int),
       start: pulumi.Input.fromValue(map['start'] as int),
     );
   }
 }
+

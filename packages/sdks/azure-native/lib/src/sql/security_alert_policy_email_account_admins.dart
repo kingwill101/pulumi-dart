@@ -12,8 +12,7 @@ enum SecurityAlertPolicyEmailAccountAdmins {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SecurityAlertPolicyEmailAccountAdmins value: $value',
-    );
+    throw ArgumentError('Unknown SecurityAlertPolicyEmailAccountAdmins value: $value');
   }
 }
+

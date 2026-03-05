@@ -296,24 +296,18 @@ import 'kx_user_state.dart';
 class KxUser extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) identifier of the KX user.
   late final pulumi.Output<String> arn;
-
   /// Unique identifier for the KX environment.
   late final pulumi.Output<String> environmentId;
-
   /// IAM role ARN to be associated with the user.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> iamRole;
-
   /// A unique identifier for the user.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -321,13 +315,16 @@ class KxUser extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [KxUser]. {@macro pulumi_finspace_kx_user_kx_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  KxUser(String name, {KxUserArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:finspace/kxUser:KxUser',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  KxUser(
+    String name, {
+    KxUserArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:finspace/kxUser:KxUser',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     environmentId = registerOutput<String>('environmentId');
     iamRole = registerOutput<String>('iamRole');
@@ -355,11 +352,11 @@ class KxUser extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:finspace/kxUser:KxUser',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:finspace/kxUser:KxUser',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     environmentId = registerOutput<String>('environmentId');
     iamRole = registerOutput<String>('iamRole');

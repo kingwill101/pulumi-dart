@@ -12,10 +12,14 @@ class GetServiceIamPolicyArgs {
 
   /// Creates a new [GetServiceIamPolicyArgs].
   /// [name] Used to find the parent resource to bind the IAM policy to
-  GetServiceIamPolicyArgs({required this.name});
+  GetServiceIamPolicyArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetServiceIamPolicyArgs {
     );
   }
 }
+

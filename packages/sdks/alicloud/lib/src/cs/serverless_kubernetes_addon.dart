@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerlessKubernetesAddon {
   /// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
   final pulumi.Input<String>? config;
-
   /// Disables the automatic installation of a component. Default is `false`.
   ///
   /// The following example is the definition of addons block, The type of this field is list:
@@ -37,10 +36,8 @@ class ServerlessKubernetesAddon {
   /// }
   /// ```
   final pulumi.Input<bool>? disabled;
-
   /// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
   final pulumi.Input<String>? name;
-
   /// It specifies the version of the component.
   final pulumi.Input<String>? version;
 
@@ -67,26 +64,11 @@ class ServerlessKubernetesAddon {
 
   factory ServerlessKubernetesAddon.fromMap(Map<String, dynamic> map) {
     return ServerlessKubernetesAddon(
-      config: (() {
-        final guardedValue = map['config'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

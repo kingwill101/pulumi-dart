@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThreatOverrideResponse {
   /// Threat action override. For some threat types, only a subset of actions applies.
   final pulumi.Input<String> action;
-
   /// Vendor-specific ID of a threat to override.
   final pulumi.Input<String> threatId;
-
   /// Type of the threat (read only).
   final pulumi.Input<String> type;
 
@@ -39,3 +37,4 @@ class ThreatOverrideResponse {
     );
   }
 }
+

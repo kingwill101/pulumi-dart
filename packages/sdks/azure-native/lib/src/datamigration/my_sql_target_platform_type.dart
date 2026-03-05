@@ -15,3 +15,4 @@ enum MySqlTargetPlatformType {
     throw ArgumentError('Unknown MySqlTargetPlatformType value: $value');
   }
 }
+

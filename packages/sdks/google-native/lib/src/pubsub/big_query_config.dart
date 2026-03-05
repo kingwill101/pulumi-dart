@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BigQueryConfig {
   /// Optional. When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
   final pulumi.Input<bool>? dropUnknownFields;
-
   /// Optional. The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
   final pulumi.Input<String>? table;
-
   /// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
   final pulumi.Input<bool>? useTopicSchema;
-
   /// Optional. When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional columns in the table. The subscription name, message_id, and publish_time fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
   final pulumi.Input<bool>? writeMetadata;
 
@@ -39,26 +36,11 @@ class BigQueryConfig {
 
   factory BigQueryConfig.fromMap(Map<String, dynamic> map) {
     return BigQueryConfig(
-      dropUnknownFields: (() {
-        final guardedValue = map['dropUnknownFields'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      table: (() {
-        final guardedValue = map['table'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      useTopicSchema: (() {
-        final guardedValue = map['useTopicSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      writeMetadata: (() {
-        final guardedValue = map['writeMetadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dropUnknownFields: (() { final guardedValue = map['dropUnknownFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      table: (() { final guardedValue = map['table']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      useTopicSchema: (() { final guardedValue = map['useTopicSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      writeMetadata: (() { final guardedValue = map['writeMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

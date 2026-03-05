@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NextGenerationFirewallVirtualHubPanoramaPanorama {
   final pulumi.Input<String>? deviceGroupName;
   final pulumi.Input<String>? hostName;
-
   /// The name which should be used for this Palo Alto Next Generation Firewall VHub Panorama. Changing this forces a new Palo Alto Next Generation Firewall VHub Panorama to be created.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? panoramaServer1;
@@ -43,45 +42,16 @@ class NextGenerationFirewallVirtualHubPanoramaPanorama {
     };
   }
 
-  factory NextGenerationFirewallVirtualHubPanoramaPanorama.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NextGenerationFirewallVirtualHubPanoramaPanorama.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubPanoramaPanorama(
-      deviceGroupName: (() {
-        final guardedValue = map['deviceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostName: (() {
-        final guardedValue = map['hostName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      panoramaServer1: (() {
-        final guardedValue = map['panoramaServer1'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      panoramaServer2: (() {
-        final guardedValue = map['panoramaServer2'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      templateName: (() {
-        final guardedValue = map['templateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualMachineSshKey: (() {
-        final guardedValue = map['virtualMachineSshKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deviceGroupName: (() { final guardedValue = map['deviceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      panoramaServer1: (() { final guardedValue = map['panoramaServer1']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      panoramaServer2: (() { final guardedValue = map['panoramaServer2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      templateName: (() { final guardedValue = map['templateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualMachineSshKey: (() { final guardedValue = map['virtualMachineSshKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

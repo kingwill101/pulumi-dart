@@ -10,17 +10,20 @@ class GetRegionBackendServiceParam {
 
   /// Creates a new [GetRegionBackendServiceParam].
   /// [resourceManagerTags] Resource manager tags to be bound to the region backend service. Tag keys and values have the
-  GetRegionBackendServiceParam({required this.resourceManagerTags});
+  GetRegionBackendServiceParam({
+    required this.resourceManagerTags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceManagerTags': resourceManagerTags};
+    return <String, dynamic>{
+      'resourceManagerTags': resourceManagerTags,
+    };
   }
 
   factory GetRegionBackendServiceParam.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceParam(
-      resourceManagerTags: pulumi.Input.fromValue(
-        (map['resourceManagerTags'] as Map).cast<String, String>(),
-      ),
+      resourceManagerTags: pulumi.Input.fromValue((map['resourceManagerTags'] as Map).cast<String, String>()),
     );
   }
 }
+

@@ -8,19 +8,20 @@ class ResolverPipelineConfig {
 
   /// Creates a new [ResolverPipelineConfig].
   /// [functions] A list of Function objects.
-  ResolverPipelineConfig({this.functions});
+  ResolverPipelineConfig({
+    this.functions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'functions': ?functions};
+    return <String, dynamic>{
+      'functions': ?functions,
+    };
   }
 
   factory ResolverPipelineConfig.fromMap(Map<String, dynamic> map) {
     return ResolverPipelineConfig(
-      functions: (() {
-        final guardedValue = map['functions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      functions: (() { final guardedValue = map['functions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -1,40 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDisasterRecoveryConfiguration.
 class GetDisasterRecoveryConfigurationResult {
   /// Whether or not failover can be done automatically.
   final String autoFailover;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// How aggressive the automatic failover should be.
   final String failoverPolicy;
-
   /// Resource ID.
   final String id;
-
   /// Location of the server that contains this disaster recovery configuration.
   final String location;
-
   /// Logical name of the server.
   final String logicalServerName;
-
   /// Resource name.
   final String name;
-
   /// Logical name of the partner server.
   final String partnerLogicalServerName;
-
   /// Id of the partner server.
   final String partnerServerId;
-
   /// The role of the current server in the disaster recovery configuration.
   final String role;
-
   /// The status of the disaster recovery configuration.
   final String status;
-
   /// Resource type.
   final String type;
 
@@ -83,9 +73,7 @@ class GetDisasterRecoveryConfigurationResult {
     };
   }
 
-  factory GetDisasterRecoveryConfigurationResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDisasterRecoveryConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetDisasterRecoveryConfigurationResult(
       autoFailover: map['autoFailover'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
@@ -102,3 +90,4 @@ class GetDisasterRecoveryConfigurationResult {
     );
   }
 }
+

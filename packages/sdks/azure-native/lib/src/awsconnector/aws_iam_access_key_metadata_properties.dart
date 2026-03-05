@@ -7,13 +7,10 @@ import 'status_type_enum_value.dart';
 class AwsIamAccessKeyMetadataProperties {
   /// &lt;p&gt;The ID for this access key.&lt;/p&gt;
   final pulumi.Input<String>? accessKeyId;
-
   /// &lt;p&gt;The date when the access key was created.&lt;/p&gt;
   final pulumi.Input<String>? createDate;
-
   /// &lt;p&gt;The status of the access key. &lt;code&gt;Active&lt;/code&gt; means that the key is valid for API calls; &lt;code&gt;Inactive&lt;/code&gt; means it is not.&lt;/p&gt;
   final pulumi.Input<StatusTypeEnumValue>? status;
-
   /// &lt;p&gt;The name of the IAM user that the key is associated with.&lt;/p&gt;
   final pulumi.Input<String>? userName;
 
@@ -33,41 +30,18 @@ class AwsIamAccessKeyMetadataProperties {
     return <String, dynamic>{
       'accessKeyId': ?accessKeyId,
       'createDate': ?createDate,
-      'status':
-          ?pulumi.Input.mapOptionalInputValue<
-            StatusTypeEnumValue,
-            Map<String, dynamic>
-          >(status, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<StatusTypeEnumValue, Map<String, dynamic>>(status, (value) => value.toMap()),
       'userName': ?userName,
     };
   }
 
   factory AwsIamAccessKeyMetadataProperties.fromMap(Map<String, dynamic> map) {
     return AwsIamAccessKeyMetadataProperties(
-      accessKeyId: (() {
-        final guardedValue = map['accessKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createDate: (() {
-        final guardedValue = map['createDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StatusTypeEnumValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessKeyId: (() { final guardedValue = map['accessKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createDate: (() { final guardedValue = map['createDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StatusTypeEnumValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum VpnClientProtocol {
     throw ArgumentError('Unknown VpnClientProtocol value: $value');
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientSecretCredentialsResponse {
   /// Azure client ID.
   final pulumi.Input<String> clientId;
-
   /// Input only. Azure client secret.
   final pulumi.Input<String> clientSecret;
-
   /// Azure tenant ID.
   final pulumi.Input<String> tenantId;
 
@@ -39,3 +37,4 @@ class ClientSecretCredentialsResponse {
     );
   }
 }
+

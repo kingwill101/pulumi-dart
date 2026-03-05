@@ -13,16 +13,15 @@ class GetClusterIpAllocationPolicyAdditionalPodRangesConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'podRangeNames': podRangeNames};
+    return <String, dynamic>{
+      'podRangeNames': podRangeNames,
+    };
   }
 
-  factory GetClusterIpAllocationPolicyAdditionalPodRangesConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterIpAllocationPolicyAdditionalPodRangesConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterIpAllocationPolicyAdditionalPodRangesConfig(
-      podRangeNames: pulumi.Input.fromValue(
-        (map['podRangeNames'] as List).cast<String>(),
-      ),
+      podRangeNames: pulumi.Input.fromValue((map['podRangeNames'] as List).cast<String>()),
     );
   }
 }
+

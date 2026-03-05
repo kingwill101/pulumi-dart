@@ -143,22 +143,16 @@ import 'group_state.dart';
 class Group extends pulumi.CustomResource {
   /// The ARN of the Group.
   late final pulumi.Output<String> arn;
-
   /// The filter expression defining criteria by which to group traces. more info can be found in official [docs](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html).
   late final pulumi.Output<String> filterExpression;
-
   /// The name of the group.
   late final pulumi.Output<String> groupName;
-
   /// Configuration options for enabling insights.
   late final pulumi.Output<GroupInsightsConfiguration> insightsConfiguration;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -166,33 +160,31 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_xray_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:xray/group:Group',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Group(
+    String name, {
+    GroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:xray/group:Group',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     filterExpression = registerOutput<String>('filterExpression');
     groupName = registerOutput<String>('groupName');
-    insightsConfiguration = registerOutput<GroupInsightsConfiguration>(
-      'insightsConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupInsightsConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    insightsConfiguration = registerOutput<GroupInsightsConfiguration>('insightsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInsightsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
+  static Group get(
+    String name,
+    pulumi.Input<String> id, {
+    GroupState? state,
+  }) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -205,24 +197,15 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:xray/group:Group',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:xray/group:Group',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     filterExpression = registerOutput<String>('filterExpression');
     groupName = registerOutput<String>('groupName');
-    insightsConfiguration = registerOutput<GroupInsightsConfiguration>(
-      'insightsConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupInsightsConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    insightsConfiguration = registerOutput<GroupInsightsConfiguration>('insightsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInsightsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

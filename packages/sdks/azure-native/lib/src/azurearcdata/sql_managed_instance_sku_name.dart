@@ -14,3 +14,4 @@ enum SqlManagedInstanceSkuName {
     throw ArgumentError('Unknown SqlManagedInstanceSkuName value: $value');
   }
 }
+

@@ -6,16 +6,12 @@ import 'subscription_list_response.dart';
 class GetMonitoredSubscriptionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The id of the monitored subscription resource.
   final String id;
-
   /// Name of the monitored subscription resource.
   final String name;
-
   /// The request to update subscriptions needed to be monitored by the Elastic monitor resource.
   final SubscriptionListResponse properties;
-
   /// The type of the monitored subscription resource.
   final String type;
 
@@ -48,10 +44,9 @@ class GetMonitoredSubscriptionResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: SubscriptionListResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: SubscriptionListResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

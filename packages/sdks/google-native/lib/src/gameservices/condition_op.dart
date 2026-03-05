@@ -19,3 +19,4 @@ enum ConditionOp {
     throw ArgumentError('Unknown ConditionOp value: $value');
   }
 }
+

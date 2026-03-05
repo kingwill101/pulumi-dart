@@ -11,39 +11,20 @@ class VMwareClusterAuthorization {
 
   /// Creates a new [VMwareClusterAuthorization].
   /// [adminUsers] Users that will be granted the cluster-admin role on the cluster, providing
-  VMwareClusterAuthorization({this.adminUsers});
+  VMwareClusterAuthorization({
+    this.adminUsers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminUsers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VMwareClusterAuthorizationAdminUser>,
-            List<Map<String, dynamic>>
-          >(
-            adminUsers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VMwareClusterAuthorizationAdminUser,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'adminUsers': ?pulumi.Input.mapOptionalInputValue<List<VMwareClusterAuthorizationAdminUser>, List<Map<String, dynamic>>>(adminUsers, (value) => pulumi.Input.encodeList<VMwareClusterAuthorizationAdminUser, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VMwareClusterAuthorization.fromMap(Map<String, dynamic> map) {
     return VMwareClusterAuthorization(
-      adminUsers: (() {
-        final guardedValue = map['adminUsers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VMwareClusterAuthorizationAdminUser>(
-            guardedValue,
-            (value) => VMwareClusterAuthorizationAdminUser.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      adminUsers: (() { final guardedValue = map['adminUsers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VMwareClusterAuthorizationAdminUser>(guardedValue, (value) => VMwareClusterAuthorizationAdminUser.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

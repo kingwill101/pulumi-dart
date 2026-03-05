@@ -7,23 +7,16 @@ import 'cache_active_directory_settings_response_credentials.dart';
 class CacheActiveDirectorySettingsResponse {
   /// The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].
   final pulumi.Input<String> cacheNetBiosName;
-
   /// Active Directory admin credentials used to join the HPC Cache to a domain.
-  final pulumi.Input<CacheActiveDirectorySettingsResponseCredentials>?
-  credentials;
-
+  final pulumi.Input<CacheActiveDirectorySettingsResponseCredentials>? credentials;
   /// True if the HPC Cache is joined to the Active Directory domain.
   final pulumi.Input<String> domainJoined;
-
   /// The fully qualified domain name of the Active Directory domain controller.
   final pulumi.Input<String> domainName;
-
   /// The Active Directory domain's NetBIOS name.
   final pulumi.Input<String> domainNetBiosName;
-
   /// Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
   final pulumi.Input<String> primaryDnsIpAddress;
-
   /// Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
   final pulumi.Input<String>? secondaryDnsIpAddress;
 
@@ -48,11 +41,7 @@ class CacheActiveDirectorySettingsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cacheNetBiosName': cacheNetBiosName,
-      'credentials':
-          ?pulumi.Input.mapOptionalInputValue<
-            CacheActiveDirectorySettingsResponseCredentials,
-            Map<String, dynamic>
-          >(credentials, (value) => value.toMap()),
+      'credentials': ?pulumi.Input.mapOptionalInputValue<CacheActiveDirectorySettingsResponseCredentials, Map<String, dynamic>>(credentials, (value) => value.toMap()),
       'domainJoined': domainJoined,
       'domainName': domainName,
       'domainNetBiosName': domainNetBiosName,
@@ -61,35 +50,16 @@ class CacheActiveDirectorySettingsResponse {
     };
   }
 
-  factory CacheActiveDirectorySettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CacheActiveDirectorySettingsResponse.fromMap(Map<String, dynamic> map) {
     return CacheActiveDirectorySettingsResponse(
-      cacheNetBiosName: pulumi.Input.fromValue(
-        map['cacheNetBiosName'] as String,
-      ),
-      credentials: (() {
-        final guardedValue = map['credentials'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CacheActiveDirectorySettingsResponseCredentials.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      cacheNetBiosName: pulumi.Input.fromValue(map['cacheNetBiosName'] as String),
+      credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheActiveDirectorySettingsResponseCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       domainJoined: pulumi.Input.fromValue(map['domainJoined'] as String),
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      domainNetBiosName: pulumi.Input.fromValue(
-        map['domainNetBiosName'] as String,
-      ),
-      primaryDnsIpAddress: pulumi.Input.fromValue(
-        map['primaryDnsIpAddress'] as String,
-      ),
-      secondaryDnsIpAddress: (() {
-        final guardedValue = map['secondaryDnsIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domainNetBiosName: pulumi.Input.fromValue(map['domainNetBiosName'] as String),
+      primaryDnsIpAddress: pulumi.Input.fromValue(map['primaryDnsIpAddress'] as String),
+      secondaryDnsIpAddress: (() { final guardedValue = map['secondaryDnsIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

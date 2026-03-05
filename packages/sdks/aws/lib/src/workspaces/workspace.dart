@@ -250,40 +250,28 @@ import 'workspace_workspace_properties.dart';
 class Workspace extends pulumi.CustomResource {
   /// The ID of the bundle for the WorkSpace.
   late final pulumi.Output<String> bundleId;
-
   /// The name of the WorkSpace, as seen by the operating system.
   late final pulumi.Output<String> computerName;
-
   /// The ID of the directory for the WorkSpace.
   late final pulumi.Output<String> directoryId;
-
   /// The IP address of the WorkSpace.
   late final pulumi.Output<String> ipAddress;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Indicates whether the data stored on the root volume is encrypted.
   late final pulumi.Output<bool?> rootVolumeEncryptionEnabled;
-
   /// The operational state of the WorkSpace.
   late final pulumi.Output<String> state;
-
   /// The tags for the WorkSpace. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The user name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace.
   late final pulumi.Output<String> userName;
-
   /// Indicates whether the data stored on the user volume is encrypted.
   late final pulumi.Output<bool?> userVolumeEncryptionEnabled;
-
   /// The ARN of a symmetric AWS KMS customer master key (CMK) used to encrypt data stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric CMKs.
   late final pulumi.Output<String?> volumeEncryptionKey;
-
   /// The WorkSpace properties.
   late final pulumi.Output<WorkspaceWorkspaceProperties> workspaceProperties;
 
@@ -296,37 +284,24 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspaces/workspace:Workspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspaces/workspace:Workspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bundleId = registerOutput<String>('bundleId');
     computerName = registerOutput<String>('computerName');
     directoryId = registerOutput<String>('directoryId');
     ipAddress = registerOutput<String>('ipAddress');
     region = registerOutput<String>('region');
-    rootVolumeEncryptionEnabled = registerOutput<bool?>(
-      'rootVolumeEncryptionEnabled',
-    );
+    rootVolumeEncryptionEnabled = registerOutput<bool?>('rootVolumeEncryptionEnabled');
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     userName = registerOutput<String>('userName');
-    userVolumeEncryptionEnabled = registerOutput<bool?>(
-      'userVolumeEncryptionEnabled',
-    );
+    userVolumeEncryptionEnabled = registerOutput<bool?>('userVolumeEncryptionEnabled');
     volumeEncryptionKey = registerOutput<String?>('volumeEncryptionKey');
-    workspaceProperties = registerOutput<WorkspaceWorkspaceProperties>(
-      'workspaceProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceWorkspaceProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    workspaceProperties = registerOutput<WorkspaceWorkspaceProperties>('workspaceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceWorkspaceProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Workspace] resource's state with the given [name] and [id].
@@ -347,36 +322,23 @@ class Workspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspaces/workspace:Workspace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspaces/workspace:Workspace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bundleId = registerOutput<String>('bundleId');
     computerName = registerOutput<String>('computerName');
     directoryId = registerOutput<String>('directoryId');
     ipAddress = registerOutput<String>('ipAddress');
     region = registerOutput<String>('region');
-    rootVolumeEncryptionEnabled = registerOutput<bool?>(
-      'rootVolumeEncryptionEnabled',
-    );
+    rootVolumeEncryptionEnabled = registerOutput<bool?>('rootVolumeEncryptionEnabled');
     this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     userName = registerOutput<String>('userName');
-    userVolumeEncryptionEnabled = registerOutput<bool?>(
-      'userVolumeEncryptionEnabled',
-    );
+    userVolumeEncryptionEnabled = registerOutput<bool?>('userVolumeEncryptionEnabled');
     volumeEncryptionKey = registerOutput<String?>('volumeEncryptionKey');
-    workspaceProperties = registerOutput<WorkspaceWorkspaceProperties>(
-      'workspaceProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceWorkspaceProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    workspaceProperties = registerOutput<WorkspaceWorkspaceProperties>('workspaceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceWorkspaceProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

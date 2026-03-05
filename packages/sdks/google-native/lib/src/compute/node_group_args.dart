@@ -14,33 +14,24 @@ import 'share_settings.dart';
 class NodeGroupArgs {
   /// Specifies how autoscaling should behave.
   final pulumi.Input<NodeGroupAutoscalingPolicy>? autoscalingPolicy;
-
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
-
   /// Initial count of nodes in the node group.
   final pulumi.Input<int> initialNodeCount;
-
   /// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
   final pulumi.Input<String>? locationHint;
-
   /// Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
   final pulumi.Input<NodeGroupMaintenanceInterval>? maintenanceInterval;
-
   /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
   final pulumi.Input<NodeGroupMaintenancePolicy>? maintenancePolicy;
   final pulumi.Input<NodeGroupMaintenanceWindow>? maintenanceWindow;
-
   /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   final pulumi.Input<String>? name;
-
   /// URL of the node template to create the node group from.
   final pulumi.Input<String>? nodeTemplate;
   final pulumi.Input<String>? project;
-
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
-
   /// Share-settings for the node group
   final pulumi.Input<ShareSettings>? shareSettings;
   final pulumi.Input<String>? zone;
@@ -77,119 +68,38 @@ class NodeGroupArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            NodeGroupAutoscalingPolicy,
-            Map<String, dynamic>
-          >(autoscalingPolicy, (value) => value.toMap()),
+      'autoscalingPolicy': ?pulumi.Input.mapOptionalInputValue<NodeGroupAutoscalingPolicy, Map<String, dynamic>>(autoscalingPolicy, (value) => value.toMap()),
       'description': ?description,
       'initialNodeCount': initialNodeCount,
       'locationHint': ?locationHint,
-      'maintenanceInterval':
-          ?pulumi.Input.mapOptionalInputValue<
-            NodeGroupMaintenanceInterval,
-            String
-          >(maintenanceInterval, (value) => value.wireValue),
-      'maintenancePolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            NodeGroupMaintenancePolicy,
-            String
-          >(maintenancePolicy, (value) => value.wireValue),
-      'maintenanceWindow':
-          ?pulumi.Input.mapOptionalInputValue<
-            NodeGroupMaintenanceWindow,
-            Map<String, dynamic>
-          >(maintenanceWindow, (value) => value.toMap()),
+      'maintenanceInterval': ?pulumi.Input.mapOptionalInputValue<NodeGroupMaintenanceInterval, String>(maintenanceInterval, (value) => value.wireValue),
+      'maintenancePolicy': ?pulumi.Input.mapOptionalInputValue<NodeGroupMaintenancePolicy, String>(maintenancePolicy, (value) => value.wireValue),
+      'maintenanceWindow': ?pulumi.Input.mapOptionalInputValue<NodeGroupMaintenanceWindow, Map<String, dynamic>>(maintenanceWindow, (value) => value.toMap()),
       'name': ?name,
       'nodeTemplate': ?nodeTemplate,
       'project': ?project,
       'requestId': ?requestId,
-      'shareSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            ShareSettings,
-            Map<String, dynamic>
-          >(shareSettings, (value) => value.toMap()),
+      'shareSettings': ?pulumi.Input.mapOptionalInputValue<ShareSettings, Map<String, dynamic>>(shareSettings, (value) => value.toMap()),
       'zone': ?zone,
     };
   }
 
   factory NodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupArgs(
-      autoscalingPolicy: (() {
-        final guardedValue = map['autoscalingPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodeGroupAutoscalingPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autoscalingPolicy: (() { final guardedValue = map['autoscalingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeGroupAutoscalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       initialNodeCount: pulumi.Input.fromValue(map['initialNodeCount'] as int),
-      locationHint: (() {
-        final guardedValue = map['locationHint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maintenanceInterval: (() {
-        final guardedValue = map['maintenanceInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodeGroupMaintenanceInterval.fromValue(guardedValue as String),
-        );
-      })(),
-      maintenancePolicy: (() {
-        final guardedValue = map['maintenancePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodeGroupMaintenancePolicy.fromValue(guardedValue as String),
-        );
-      })(),
-      maintenanceWindow: (() {
-        final guardedValue = map['maintenanceWindow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodeGroupMaintenanceWindow.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeTemplate: (() {
-        final guardedValue = map['nodeTemplate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestId: (() {
-        final guardedValue = map['requestId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      shareSettings: (() {
-        final guardedValue = map['shareSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ShareSettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      locationHint: (() { final guardedValue = map['locationHint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maintenanceInterval: (() { final guardedValue = map['maintenanceInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeGroupMaintenanceInterval.fromValue(guardedValue as String)); })(),
+      maintenancePolicy: (() { final guardedValue = map['maintenancePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeGroupMaintenancePolicy.fromValue(guardedValue as String)); })(),
+      maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeGroupMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeTemplate: (() { final guardedValue = map['nodeTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestId: (() { final guardedValue = map['requestId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shareSettings: (() { final guardedValue = map['shareSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ShareSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

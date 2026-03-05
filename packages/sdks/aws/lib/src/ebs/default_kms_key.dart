@@ -108,7 +108,6 @@ import 'default_kms_key_state.dart';
 class DefaultKmsKey extends pulumi.CustomResource {
   /// The ARN of the AWS Key Management Service (AWS KMS) customer master key (CMK) to use to encrypt the EBS volume.
   late final pulumi.Output<String> keyArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -121,11 +120,11 @@ class DefaultKmsKey extends pulumi.CustomResource {
     DefaultKmsKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ebs/defaultKmsKey:DefaultKmsKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ebs/defaultKmsKey:DefaultKmsKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keyArn = registerOutput<String>('keyArn');
     region = registerOutput<String>('region');
   }
@@ -148,11 +147,11 @@ class DefaultKmsKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ebs/defaultKmsKey:DefaultKmsKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ebs/defaultKmsKey:DefaultKmsKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keyArn = registerOutput<String>('keyArn');
     region = registerOutput<String>('region');
   }

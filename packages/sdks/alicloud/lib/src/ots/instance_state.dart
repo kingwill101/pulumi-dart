@@ -11,22 +11,17 @@ class InstanceState {
   ///
   /// Default to "Any".
   final pulumi.Input<String>? accessedBy;
-
   /// The description of the instance. Currently, it does not support modifying.
   final pulumi.Input<String>? description;
-
   /// The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
   final pulumi.Input<String>? instanceType;
-
   /// The name of the instance.
   final pulumi.Input<String>? name;
-
   /// The set of request sources that are allowed access. Valid optional values:
   /// * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
   ///
   /// Default to ["TRUST_PROXY"].
   final pulumi.Input<List<String>>? networkSourceAcls;
-
   /// The set of network types that are allowed access. Valid optional values:
   /// * `CLASSIC` - Classic network.
   /// * `VPC` - VPC network.
@@ -34,11 +29,9 @@ class InstanceState {
   ///
   /// Default to ["VPC", "CLASSIC", "INTERNET"].
   final pulumi.Input<List<String>>? networkTypeAcls;
-
   /// The resource group the instance belongs to.
   /// Default to Alibaba Cloud default resource group.
   final pulumi.Input<String>? resourceGroupId;
-
   /// A mapping of tags to assign to the instance.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -77,48 +70,15 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      accessedBy: (() {
-        final guardedValue = map['accessedBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkSourceAcls: (() {
-        final guardedValue = map['networkSourceAcls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      networkTypeAcls: (() {
-        final guardedValue = map['networkTypeAcls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      accessedBy: (() { final guardedValue = map['accessedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkSourceAcls: (() { final guardedValue = map['networkSourceAcls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      networkTypeAcls: (() { final guardedValue = map['networkTypeAcls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

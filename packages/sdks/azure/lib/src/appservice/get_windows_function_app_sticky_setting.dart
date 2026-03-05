@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsFunctionAppStickySetting {
   /// A list of `app_setting` names that the Windows Function App will not swap between Slots when a swap operation is triggered.
   final pulumi.Input<List<String>> appSettingNames;
-
   /// A list of `connection_string` names that the Windows Function App will not swap between Slots when a swap operation is triggered.
   final pulumi.Input<List<String>> connectionStringNames;
 
@@ -26,12 +25,9 @@ class GetWindowsFunctionAppStickySetting {
 
   factory GetWindowsFunctionAppStickySetting.fromMap(Map<String, dynamic> map) {
     return GetWindowsFunctionAppStickySetting(
-      appSettingNames: pulumi.Input.fromValue(
-        (map['appSettingNames'] as List).cast<String>(),
-      ),
-      connectionStringNames: pulumi.Input.fromValue(
-        (map['connectionStringNames'] as List).cast<String>(),
-      ),
+      appSettingNames: pulumi.Input.fromValue((map['appSettingNames'] as List).cast<String>()),
+      connectionStringNames: pulumi.Input.fromValue((map['connectionStringNames'] as List).cast<String>()),
     );
   }
 }
+

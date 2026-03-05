@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareNodePoolNodePoolAutoscaling {
   /// Maximum number of replicas in the NodePool.
   final pulumi.Input<int> maxReplicas;
-
   /// Minimum number of replicas in the NodePool.
   final pulumi.Input<int> minReplicas;
 
@@ -31,3 +30,4 @@ class VMwareNodePoolNodePoolAutoscaling {
     );
   }
 }
+

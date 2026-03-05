@@ -167,51 +167,37 @@ import 'reserved_cache_node_timeouts.dart';
 class ReservedCacheNode extends pulumi.CustomResource {
   /// ARN for the reserved cache node.
   late final pulumi.Output<String> arn;
-
   /// Number of cache node instances to reserve.
   /// Default value is `1`.
   late final pulumi.Output<int> cacheNodeCount;
-
   /// Node type for the reserved cache nodes.
   late final pulumi.Output<String> cacheNodeType;
-
   /// Duration of the reservation as an RFC3339 duration.
   late final pulumi.Output<String> duration;
-
   /// Fixed price charged for this reserved cache node.
   late final pulumi.Output<double> fixedPrice;
-
   /// Offering type of this reserved cache node.
   late final pulumi.Output<String> offeringType;
-
   /// Engine type for the reserved cache node.
   late final pulumi.Output<String> productDescription;
-
   /// Recurring price charged to run this reserved cache node.
   late final pulumi.Output<List<Map<String, dynamic>>> recurringCharges;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the reserved cache node offering to purchase.
   /// To determine an `reserved_cache_nodes_offering_id`, see the `aws.elasticache.getReservedCacheNodeOffering` data source.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> reservedCacheNodesOfferingId;
-
   /// Time the reservation started.
   late final pulumi.Output<String> startTime;
-
   /// State of the reserved cache node.
   late final pulumi.Output<String> state;
-
   /// Map of tags to assign to the reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ReservedCacheNodeTimeouts?> timeouts;
-
   /// Hourly price charged for this reserved cache node.
   late final pulumi.Output<double> usagePrice;
 
@@ -224,11 +210,11 @@ class ReservedCacheNode extends pulumi.CustomResource {
     ReservedCacheNodeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elasticache/reservedCacheNode:ReservedCacheNode',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:elasticache/reservedCacheNode:ReservedCacheNode',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     cacheNodeCount = registerOutput<int>('cacheNodeCount');
     cacheNodeType = registerOutput<String>('cacheNodeType');
@@ -236,27 +222,14 @@ class ReservedCacheNode extends pulumi.CustomResource {
     fixedPrice = registerOutput<double>('fixedPrice');
     offeringType = registerOutput<String>('offeringType');
     productDescription = registerOutput<String>('productDescription');
-    recurringCharges = registerOutput<List<Map<String, dynamic>>>(
-      'recurringCharges',
-    );
+    recurringCharges = registerOutput<List<Map<String, dynamic>>>('recurringCharges');
     region = registerOutput<String>('region');
-    reservedCacheNodesOfferingId = registerOutput<String>(
-      'reservedCacheNodesOfferingId',
-    );
+    reservedCacheNodesOfferingId = registerOutput<String>('reservedCacheNodesOfferingId');
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ReservedCacheNodeTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReservedCacheNodeTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ReservedCacheNodeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservedCacheNodeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     usagePrice = registerOutput<double>('usagePrice');
   }
 
@@ -278,11 +251,11 @@ class ReservedCacheNode extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elasticache/reservedCacheNode:ReservedCacheNode',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:elasticache/reservedCacheNode:ReservedCacheNode',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     cacheNodeCount = registerOutput<int>('cacheNodeCount');
     cacheNodeType = registerOutput<String>('cacheNodeType');
@@ -290,27 +263,14 @@ class ReservedCacheNode extends pulumi.CustomResource {
     fixedPrice = registerOutput<double>('fixedPrice');
     offeringType = registerOutput<String>('offeringType');
     productDescription = registerOutput<String>('productDescription');
-    recurringCharges = registerOutput<List<Map<String, dynamic>>>(
-      'recurringCharges',
-    );
+    recurringCharges = registerOutput<List<Map<String, dynamic>>>('recurringCharges');
     region = registerOutput<String>('region');
-    reservedCacheNodesOfferingId = registerOutput<String>(
-      'reservedCacheNodesOfferingId',
-    );
+    reservedCacheNodesOfferingId = registerOutput<String>('reservedCacheNodesOfferingId');
     startTime = registerOutput<String>('startTime');
     this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ReservedCacheNodeTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReservedCacheNodeTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ReservedCacheNodeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservedCacheNodeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     usagePrice = registerOutput<double>('usagePrice');
   }
 }

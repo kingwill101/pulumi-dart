@@ -141,22 +141,16 @@ import 'system_data_response.dart';
 class Replica extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The URI of the replica where the replica API will be available.
   late final pulumi.Output<String> endpoint;
-
   /// The location of the replica.
   late final pulumi.Output<String?> location;
-
   /// The name of the replica.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the replica.
   late final pulumi.Output<String> provisioningState;
-
   /// Resource system metadata.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -169,26 +163,17 @@ class Replica extends pulumi.CustomResource {
     ReplicaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:appconfiguration:Replica',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:appconfiguration:Replica',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     endpoint = registerOutput<String>('endpoint');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAuditPoliciesPolicy {
   /// The status of the log audit feature.
   final pulumi.Input<String> auditStatus;
-
   /// The ID of the instance.
   final pulumi.Input<String> dbInstanceId;
-
   /// The ID of the Audit Policy.
   final pulumi.Input<String> id;
 
@@ -38,3 +36,4 @@ class GetAuditPoliciesPolicy {
     );
   }
 }
+

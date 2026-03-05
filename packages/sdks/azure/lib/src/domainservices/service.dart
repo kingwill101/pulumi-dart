@@ -933,44 +933,31 @@ import 'service_state.dart';
 class Service extends pulumi.CustomResource {
   /// A unique ID for the managed domain deployment.
   late final pulumi.Output<String> deploymentId;
-
   /// The configuration type of this Active Directory Domain. Possible values are `FullySynced` and `ResourceTrusting`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> domainConfigurationType;
-
   /// The Active Directory domain to use. See [official documentation](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#create-a-managed-domain) for constraints and recommendations. Changing this forces a new resource to be created.
   late final pulumi.Output<String> domainName;
-
   /// Whether to enable group-based filtered sync (also called scoped synchronisation). Defaults to `false`.
   late final pulumi.Output<bool?> filteredSyncEnabled;
-
   /// An `initial_replica_set` block as defined below. The initial replica set inherits the same location as the Domain Service resource.
   late final pulumi.Output<ServiceInitialReplicaSet> initialReplicaSet;
-
   /// The Azure location where the Domain Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The display name for your managed Active Directory Domain Service resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A `notifications` block as defined below.
   late final pulumi.Output<ServiceNotifications> notifications;
-
   /// The name of the Resource Group in which the Domain Service should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The Azure resource ID for the domain service.
   late final pulumi.Output<String> resourceId;
-
   /// A `secure_ldap` block as defined below.
   late final pulumi.Output<ServiceSecureLdap> secureLdap;
-
   /// A `security` block as defined below.
   late final pulumi.Output<ServiceSecurity> security;
-
   /// The SKU to use when provisioning the Domain Service resource. One of `Standard`, `Enterprise` or `Premium`.
   late final pulumi.Output<String> sku;
   late final pulumi.Output<String> syncOwner;
-
   /// A mapping of tags assigned to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<String> tenantId;
@@ -985,61 +972,23 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:domainservices/service:Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:domainservices/service:Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deploymentId = registerOutput<String>('deploymentId');
-    domainConfigurationType = registerOutput<String?>(
-      'domainConfigurationType',
-    );
+    domainConfigurationType = registerOutput<String?>('domainConfigurationType');
     domainName = registerOutput<String>('domainName');
     filteredSyncEnabled = registerOutput<bool?>('filteredSyncEnabled');
-    initialReplicaSet = registerOutput<ServiceInitialReplicaSet>(
-      'initialReplicaSet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceInitialReplicaSet.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    initialReplicaSet = registerOutput<ServiceInitialReplicaSet>('initialReplicaSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceInitialReplicaSet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<ServiceNotifications>(
-      'notifications',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceNotifications.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notifications = registerOutput<ServiceNotifications>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNotifications.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceId = registerOutput<String>('resourceId');
-    secureLdap = registerOutput<ServiceSecureLdap>(
-      'secureLdap',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceSecureLdap.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    security = registerOutput<ServiceSecurity>(
-      'security',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceSecurity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    secureLdap = registerOutput<ServiceSecureLdap>('secureLdap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSecureLdap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    security = registerOutput<ServiceSecurity>('security', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sku = registerOutput<String>('sku');
     syncOwner = registerOutput<String>('syncOwner');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1065,61 +1014,23 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:domainservices/service:Service',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:domainservices/service:Service',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deploymentId = registerOutput<String>('deploymentId');
-    domainConfigurationType = registerOutput<String?>(
-      'domainConfigurationType',
-    );
+    domainConfigurationType = registerOutput<String?>('domainConfigurationType');
     domainName = registerOutput<String>('domainName');
     filteredSyncEnabled = registerOutput<bool?>('filteredSyncEnabled');
-    initialReplicaSet = registerOutput<ServiceInitialReplicaSet>(
-      'initialReplicaSet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceInitialReplicaSet.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    initialReplicaSet = registerOutput<ServiceInitialReplicaSet>('initialReplicaSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceInitialReplicaSet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<ServiceNotifications>(
-      'notifications',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceNotifications.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notifications = registerOutput<ServiceNotifications>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNotifications.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceId = registerOutput<String>('resourceId');
-    secureLdap = registerOutput<ServiceSecureLdap>(
-      'secureLdap',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceSecureLdap.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    security = registerOutput<ServiceSecurity>(
-      'security',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceSecurity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    secureLdap = registerOutput<ServiceSecureLdap>('secureLdap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSecureLdap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    security = registerOutput<ServiceSecurity>('security', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sku = registerOutput<String>('sku');
     syncOwner = registerOutput<String>('syncOwner');
     tags = registerOutput<Map<String, String>?>('tags');

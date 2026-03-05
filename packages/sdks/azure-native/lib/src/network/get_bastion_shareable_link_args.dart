@@ -10,10 +10,8 @@ import 'bastion_shareable_link.dart';
 class GetBastionShareableLinkArgs {
   /// The name of the Bastion Host.
   final pulumi.Input<String> bastionHostName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// List of VM references.
   final pulumi.Input<List<BastionShareableLink>>? vms;
 
@@ -31,39 +29,16 @@ class GetBastionShareableLinkArgs {
     return <String, dynamic>{
       'bastionHostName': bastionHostName,
       'resourceGroupName': resourceGroupName,
-      'vms':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BastionShareableLink>,
-            List<Map<String, dynamic>>
-          >(
-            vms,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BastionShareableLink,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'vms': ?pulumi.Input.mapOptionalInputValue<List<BastionShareableLink>, List<Map<String, dynamic>>>(vms, (value) => pulumi.Input.encodeList<BastionShareableLink, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetBastionShareableLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetBastionShareableLinkArgs(
       bastionHostName: pulumi.Input.fromValue(map['bastionHostName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      vms: (() {
-        final guardedValue = map['vms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BastionShareableLink>(
-            guardedValue,
-            (value) => BastionShareableLink.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      vms: (() { final guardedValue = map['vms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BastionShareableLink>(guardedValue, (value) => BastionShareableLink.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -684,66 +684,45 @@ import 'sub_resource_response.dart';
 class BastionHost extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Enable/Disable Copy/Paste feature of the Bastion Host resource.
   late final pulumi.Output<bool?> disableCopyPaste;
-
   /// FQDN for the endpoint on which bastion host is accessible.
   late final pulumi.Output<String?> dnsName;
-
   /// Enable/Disable File Copy feature of the Bastion Host resource.
   late final pulumi.Output<bool?> enableFileCopy;
-
   /// Enable/Disable IP Connect feature of the Bastion Host resource.
   late final pulumi.Output<bool?> enableIpConnect;
-
   /// Enable/Disable Kerberos feature of the Bastion Host resource.
   late final pulumi.Output<bool?> enableKerberos;
-
   /// Enable/Disable Private Only feature of the Bastion Host resource.
   late final pulumi.Output<bool?> enablePrivateOnlyBastion;
-
   /// Enable/Disable Session Recording feature of the Bastion Host resource.
   late final pulumi.Output<bool?> enableSessionRecording;
-
   /// Enable/Disable Shareable Link of the Bastion Host resource.
   late final pulumi.Output<bool?> enableShareableLink;
-
   /// Enable/Disable Tunneling feature of the Bastion Host resource.
   late final pulumi.Output<bool?> enableTunneling;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// IP configuration of the Bastion Host resource.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<BastionHostPropertiesFormatResponseNetworkAcls?>
-  networkAcls;
-
+  late final pulumi.Output<BastionHostPropertiesFormatResponseNetworkAcls?> networkAcls;
   /// The provisioning state of the bastion host resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The scale units for the Bastion Host resource.
   late final pulumi.Output<int?> scaleUnits;
-
   /// The sku of this Bastion Host.
   late final pulumi.Output<SkuResponse?> sku;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// Reference to an existing virtual network required for Developer Bastion Host only.
   late final pulumi.Output<SubResourceResponse?> virtualNetwork;
-
   /// A list of availability zones denoting where the resource needs to come from.
   late final pulumi.Output<List<String>?> zones;
 
@@ -756,64 +735,32 @@ class BastionHost extends pulumi.CustomResource {
     BastionHostArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:BastionHost',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:BastionHost',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     disableCopyPaste = registerOutput<bool?>('disableCopyPaste');
     dnsName = registerOutput<String?>('dnsName');
     enableFileCopy = registerOutput<bool?>('enableFileCopy');
     enableIpConnect = registerOutput<bool?>('enableIpConnect');
     enableKerberos = registerOutput<bool?>('enableKerberos');
-    enablePrivateOnlyBastion = registerOutput<bool?>(
-      'enablePrivateOnlyBastion',
-    );
+    enablePrivateOnlyBastion = registerOutput<bool?>('enablePrivateOnlyBastion');
     enableSessionRecording = registerOutput<bool?>('enableSessionRecording');
     enableShareableLink = registerOutput<bool?>('enableShareableLink');
     enableTunneling = registerOutput<bool?>('enableTunneling');
     etag = registerOutput<String>('etag');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'ipConfigurations',
-    );
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>('ipConfigurations');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    networkAcls =
-        registerOutput<BastionHostPropertiesFormatResponseNetworkAcls?>(
-          'networkAcls',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return BastionHostPropertiesFormatResponseNetworkAcls.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    networkAcls = registerOutput<BastionHostPropertiesFormatResponseNetworkAcls?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BastionHostPropertiesFormatResponseNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     scaleUnits = registerOutput<int?>('scaleUnits');
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualNetwork = registerOutput<SubResourceResponse?>(
-      'virtualNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualNetwork = registerOutput<SubResourceResponse?>('virtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zones = registerOutput<List<String>?>('zones');
   }
 }

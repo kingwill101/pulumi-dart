@@ -356,16 +356,12 @@ import 'assessment_properties_response.dart';
 class Assessment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// For optimistic concurrency control.
   late final pulumi.Output<String?> eTag;
-
   /// Unique name of an assessment.
   late final pulumi.Output<String> name;
-
   /// Properties of the assessment.
   late final pulumi.Output<AssessmentPropertiesResponse> properties;
-
   /// Type of the object = [Microsoft.Migrate/assessmentProjects/groups/assessments].
   late final pulumi.Output<String> type;
 
@@ -378,24 +374,15 @@ class Assessment extends pulumi.CustomResource {
     AssessmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:migrate:Assessment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:migrate:Assessment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eTag = registerOutput<String?>('eTag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AssessmentPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AssessmentPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<AssessmentPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

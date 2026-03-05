@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus {
   /// The Access Key portion of the credentials.
   final pulumi.Input<String> accessKeyId;
-
   /// Encryption keys used to encrypt data.
   final pulumi.Input<String> datakey;
-
   /// The secret key used to sign requests.
   final pulumi.Input<String> secretAccessKey;
-
   /// Identifier for the user.
   final pulumi.Input<String> userId;
 
@@ -36,9 +33,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexu
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus(
       accessKeyId: pulumi.Input.fromValue(map['accessKeyId'] as String),
       datakey: pulumi.Input.fromValue(map['datakey'] as String),
@@ -47,3 +42,4 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexu
     );
   }
 }
+

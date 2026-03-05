@@ -40,22 +40,11 @@ class GetIntentDialogflowV2beta1Args {
   factory GetIntentDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return GetIntentDialogflowV2beta1Args(
       intentId: pulumi.Input.fromValue(map['intentId'] as String),
-      intentView: (() {
-        final guardedValue = map['intentView'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      languageCode: (() {
-        final guardedValue = map['languageCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      intentView: (() { final guardedValue = map['intentView']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      languageCode: (() { final guardedValue = map['languageCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

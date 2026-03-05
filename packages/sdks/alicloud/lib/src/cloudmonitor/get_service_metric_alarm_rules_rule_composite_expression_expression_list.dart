@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList {
   /// The comparison operator that is used to compare the metric value with the threshold.
   final pulumi.Input<String> comparisonOperator;
-
   /// The name of the metric.
   final pulumi.Input<String> metricName;
-
   /// The aggregation period of the metric.
   final pulumi.Input<int> period;
-
   /// The statistical methods for Warn-level alerts.
   final pulumi.Input<String> statistics;
-
   /// The threshold for Warn-level alerts.
   final pulumi.Input<String> threshold;
 
@@ -42,13 +38,9 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList {
     };
   }
 
-  factory GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList.fromMap(Map<String, dynamic> map) {
     return GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList(
-      comparisonOperator: pulumi.Input.fromValue(
-        map['comparisonOperator'] as String,
-      ),
+      comparisonOperator: pulumi.Input.fromValue(map['comparisonOperator'] as String),
       metricName: pulumi.Input.fromValue(map['metricName'] as String),
       period: pulumi.Input.fromValue(map['period'] as int),
       statistics: pulumi.Input.fromValue(map['statistics'] as String),
@@ -56,3 +48,4 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList {
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum ShellType {
     throw ArgumentError('Unknown ShellType value: $value');
   }
 }
+

@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1FeatureStatsAnomalyResponse {
   /// This is the threshold used when detecting anomalies. The threshold can be changed by user, so this one might be different from ThresholdConfig.value.
   final pulumi.Input<double> anomalyDetectionThreshold;
-
   /// Path of the anomaly file for current feature values in Cloud Storage bucket. Format: gs:////anomalies. Example: gs://monitoring_bucket/feature_name/anomalies. Stats are stored as binary format with Protobuf message Anoamlies are stored as binary format with Protobuf message [tensorflow.metadata.v0.AnomalyInfo] (https://github.com/tensorflow/metadata/blob/master/tensorflow_metadata/proto/v0/anomalies.proto).
   final pulumi.Input<String> anomalyUri;
-
   /// Deviation from the current stats to baseline stats. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence.
   final pulumi.Input<double> distributionDeviation;
-
   /// The end timestamp of window where stats were generated. For objectives where time window doesn't make sense (e.g. Featurestore Snapshot Monitoring), end_time indicates the timestamp of the data used to generate stats (e.g. timestamp we take snapshots for feature values).
   final pulumi.Input<String> endTime;
-
   /// Feature importance score, only populated when cross-feature monitoring is enabled. For now only used to represent feature attribution score within range [0, 1] for ModelDeploymentMonitoringObjectiveType.FEATURE_ATTRIBUTION_SKEW and ModelDeploymentMonitoringObjectiveType.FEATURE_ATTRIBUTION_DRIFT.
   final pulumi.Input<double> score;
-
   /// The start timestamp of window where stats were generated. For objectives where time window doesn't make sense (e.g. Featurestore Snapshot Monitoring), start_time is only used to indicate the monitoring intervals, so it always equals to (end_time - monitoring_interval).
   final pulumi.Input<String> startTime;
-
   /// Path of the stats file for current feature values in Cloud Storage bucket. Format: gs:////stats. Example: gs://monitoring_bucket/feature_name/stats. Stats are stored as binary format with Protobuf message [tensorflow.metadata.v0.FeatureNameStatistics](https://github.com/tensorflow/metadata/blob/master/tensorflow_metadata/proto/v0/statistics.proto).
   final pulumi.Input<String> statsUri;
 
@@ -55,17 +49,11 @@ class GoogleCloudAiplatformV1FeatureStatsAnomalyResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1FeatureStatsAnomalyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1FeatureStatsAnomalyResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeatureStatsAnomalyResponse(
-      anomalyDetectionThreshold: pulumi.Input.fromValue(
-        map['anomalyDetectionThreshold'] as double,
-      ),
+      anomalyDetectionThreshold: pulumi.Input.fromValue(map['anomalyDetectionThreshold'] as double),
       anomalyUri: pulumi.Input.fromValue(map['anomalyUri'] as String),
-      distributionDeviation: pulumi.Input.fromValue(
-        map['distributionDeviation'] as double,
-      ),
+      distributionDeviation: pulumi.Input.fromValue(map['distributionDeviation'] as double),
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
       score: pulumi.Input.fromValue(map['score'] as double),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
@@ -73,3 +61,4 @@ class GoogleCloudAiplatformV1FeatureStatsAnomalyResponse {
     );
   }
 }
+

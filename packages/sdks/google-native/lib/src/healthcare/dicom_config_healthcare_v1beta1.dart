@@ -8,13 +8,10 @@ import 'tag_filter_list_healthcare_v1beta1.dart';
 class DicomConfigHealthcareV1beta1 {
   /// Tag filtering profile that determines which tags to keep/remove.
   final pulumi.Input<DicomConfigFilterProfileHealthcareV1beta1>? filterProfile;
-
   /// List of tags to keep. Remove all other tags.
   final pulumi.Input<TagFilterListHealthcareV1beta1>? keepList;
-
   /// List of tags to remove. Keep all other tags.
   final pulumi.Input<TagFilterListHealthcareV1beta1>? removeList;
-
   /// If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given access to the original images, or to a database of the original images containing the UIDs, it would be possible to recover the individual's identity." http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
   final pulumi.Input<bool>? skipIdRedaction;
 
@@ -32,59 +29,20 @@ class DicomConfigHealthcareV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filterProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            DicomConfigFilterProfileHealthcareV1beta1,
-            String
-          >(filterProfile, (value) => value.wireValue),
-      'keepList':
-          ?pulumi.Input.mapOptionalInputValue<
-            TagFilterListHealthcareV1beta1,
-            Map<String, dynamic>
-          >(keepList, (value) => value.toMap()),
-      'removeList':
-          ?pulumi.Input.mapOptionalInputValue<
-            TagFilterListHealthcareV1beta1,
-            Map<String, dynamic>
-          >(removeList, (value) => value.toMap()),
+      'filterProfile': ?pulumi.Input.mapOptionalInputValue<DicomConfigFilterProfileHealthcareV1beta1, String>(filterProfile, (value) => value.wireValue),
+      'keepList': ?pulumi.Input.mapOptionalInputValue<TagFilterListHealthcareV1beta1, Map<String, dynamic>>(keepList, (value) => value.toMap()),
+      'removeList': ?pulumi.Input.mapOptionalInputValue<TagFilterListHealthcareV1beta1, Map<String, dynamic>>(removeList, (value) => value.toMap()),
       'skipIdRedaction': ?skipIdRedaction,
     };
   }
 
   factory DicomConfigHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return DicomConfigHealthcareV1beta1(
-      filterProfile: (() {
-        final guardedValue = map['filterProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DicomConfigFilterProfileHealthcareV1beta1.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      keepList: (() {
-        final guardedValue = map['keepList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TagFilterListHealthcareV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      removeList: (() {
-        final guardedValue = map['removeList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TagFilterListHealthcareV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      skipIdRedaction: (() {
-        final guardedValue = map['skipIdRedaction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      filterProfile: (() { final guardedValue = map['filterProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DicomConfigFilterProfileHealthcareV1beta1.fromValue(guardedValue as String)); })(),
+      keepList: (() { final guardedValue = map['keepList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TagFilterListHealthcareV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      removeList: (() { final guardedValue = map['removeList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TagFilterListHealthcareV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      skipIdRedaction: (() { final guardedValue = map['skipIdRedaction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

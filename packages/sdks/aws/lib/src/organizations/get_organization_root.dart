@@ -6,13 +6,10 @@ import 'get_organization_root_policy_type.dart';
 class GetOrganizationRoot {
   /// ARN of the root.
   final pulumi.Input<String> arn;
-
   /// Identifier of the root.
   final pulumi.Input<String> id;
-
   /// Name of the policy type.
   final pulumi.Input<String> name;
-
   /// List of policy types enabled for this root. All elements have these attributes:
   final pulumi.Input<List<GetOrganizationRootPolicyType>> policyTypes;
 
@@ -33,18 +30,7 @@ class GetOrganizationRoot {
       'arn': arn,
       'id': id,
       'name': name,
-      'policyTypes':
-          pulumi.Input.mapInputValue<
-            List<GetOrganizationRootPolicyType>,
-            List<Map<String, dynamic>>
-          >(
-            policyTypes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetOrganizationRootPolicyType,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'policyTypes': pulumi.Input.mapInputValue<List<GetOrganizationRootPolicyType>, List<Map<String, dynamic>>>(policyTypes, (value) => pulumi.Input.encodeList<GetOrganizationRootPolicyType, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -53,14 +39,8 @@ class GetOrganizationRoot {
       arn: pulumi.Input.fromValue(map['arn'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      policyTypes: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetOrganizationRootPolicyType>(
-          map['policyTypes']!,
-          (value) => GetOrganizationRootPolicyType.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      policyTypes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetOrganizationRootPolicyType>(map['policyTypes']!, (value) => GetOrganizationRootPolicyType.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

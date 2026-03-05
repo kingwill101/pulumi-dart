@@ -7,7 +7,9 @@ class FeaturesResourceGroup {
 
   /// Creates a new [FeaturesResourceGroup].
   /// [preventDeletionIfContainsResources] Optional.
-  FeaturesResourceGroup({this.preventDeletionIfContainsResources});
+  FeaturesResourceGroup({
+    this.preventDeletionIfContainsResources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,11 +19,8 @@ class FeaturesResourceGroup {
 
   factory FeaturesResourceGroup.fromMap(Map<String, dynamic> map) {
     return FeaturesResourceGroup(
-      preventDeletionIfContainsResources: (() {
-        final guardedValue = map['preventDeletionIfContainsResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      preventDeletionIfContainsResources: (() { final guardedValue = map['preventDeletionIfContainsResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

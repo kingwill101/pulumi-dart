@@ -111,13 +111,10 @@ import 'graph_state.dart';
 class Graph extends pulumi.CustomResource {
   /// Date and time, in UTC and extended RFC 3339 format, when the Amazon Detective Graph was created.
   late final pulumi.Output<String> createdTime;
-
   /// ARN of the Detective Graph.
   late final pulumi.Output<String> graphArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -126,13 +123,16 @@ class Graph extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Graph]. {@macro pulumi_detective_graph_graph_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Graph(String name, {GraphArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:detective/graph:Graph',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Graph(
+    String name, {
+    GraphArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:detective/graph:Graph',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdTime = registerOutput<String>('createdTime');
     graphArn = registerOutput<String>('graphArn');
     region = registerOutput<String>('region');
@@ -141,7 +141,11 @@ class Graph extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Graph] resource's state with the given [name] and [id].
-  static Graph get(String name, pulumi.Input<String> id, {GraphState? state}) {
+  static Graph get(
+    String name,
+    pulumi.Input<String> id, {
+    GraphState? state,
+  }) {
     return Graph._get(
       name,
       state: state?.toMap(),
@@ -154,11 +158,11 @@ class Graph extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:detective/graph:Graph',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:detective/graph:Graph',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdTime = registerOutput<String>('createdTime');
     graphArn = registerOutput<String>('graphArn');
     region = registerOutput<String>('region');

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkManagerConnectivityConfigurationHub {
   /// The resource ID used as hub in Hub and Spoke topology.
   final pulumi.Input<String> resourceId;
-
   /// The resource type used as hub in Hub and Spoke topology.
   final pulumi.Input<String> resourceType;
 
@@ -24,12 +23,11 @@ class GetNetworkManagerConnectivityConfigurationHub {
     };
   }
 
-  factory GetNetworkManagerConnectivityConfigurationHub.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkManagerConnectivityConfigurationHub.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagerConnectivityConfigurationHub(
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
+

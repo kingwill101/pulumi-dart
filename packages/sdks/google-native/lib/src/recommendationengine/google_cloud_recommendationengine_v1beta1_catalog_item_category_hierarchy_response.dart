@@ -14,16 +14,15 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'categories': categories};
+    return <String, dynamic>{
+      'categories': categories,
+    };
   }
 
-  factory GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse(
-      categories: pulumi.Input.fromValue(
-        (map['categories'] as List).cast<String>(),
-      ),
+      categories: pulumi.Input.fromValue((map['categories'] as List).cast<String>()),
     );
   }
 }
+

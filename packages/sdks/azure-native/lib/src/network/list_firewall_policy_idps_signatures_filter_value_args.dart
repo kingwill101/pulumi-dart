@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListFirewallPolicyIdpsSignaturesFilterValueArgs {
   /// Describes the name of the column which values will be returned
   final pulumi.Input<String>? filterName;
-
   /// The name of the Firewall Policy.
   final pulumi.Input<String> firewallPolicyName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,21 +32,12 @@ class ListFirewallPolicyIdpsSignaturesFilterValueArgs {
     };
   }
 
-  factory ListFirewallPolicyIdpsSignaturesFilterValueArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListFirewallPolicyIdpsSignaturesFilterValueArgs.fromMap(Map<String, dynamic> map) {
     return ListFirewallPolicyIdpsSignaturesFilterValueArgs(
-      filterName: (() {
-        final guardedValue = map['filterName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      firewallPolicyName: pulumi.Input.fromValue(
-        map['firewallPolicyName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      filterName: (() { final guardedValue = map['filterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      firewallPolicyName: pulumi.Input.fromValue(map['firewallPolicyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

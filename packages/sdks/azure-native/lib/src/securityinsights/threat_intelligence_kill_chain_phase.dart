@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThreatIntelligenceKillChainPhase {
   /// Kill chainName name
   final pulumi.Input<String>? killChainName;
-
   /// Phase name
   final pulumi.Input<String>? phaseName;
 
   /// Creates a new [ThreatIntelligenceKillChainPhase].
   /// [killChainName] Kill chainName name
   /// [phaseName] Phase name
-  ThreatIntelligenceKillChainPhase({this.killChainName, this.phaseName});
+  ThreatIntelligenceKillChainPhase({
+    this.killChainName,
+    this.phaseName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class ThreatIntelligenceKillChainPhase {
 
   factory ThreatIntelligenceKillChainPhase.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceKillChainPhase(
-      killChainName: (() {
-        final guardedValue = map['killChainName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      phaseName: (() {
-        final guardedValue = map['phaseName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      killChainName: (() { final guardedValue = map['killChainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      phaseName: (() { final guardedValue = map['phaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

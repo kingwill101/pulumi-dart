@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetElasticityAssurancesAssuranceAllocatedResource {
   /// Instance type.
   final pulumi.Input<String> instanceType;
-
   /// The total number of instances that need to be reserved within an instance type.
   final pulumi.Input<int> totalAmount;
-
   /// The number of instances that have been used.
   final pulumi.Input<int> usedAmount;
-
   /// The zone ID.
   final pulumi.Input<String> zoneId;
 
@@ -36,9 +33,7 @@ class GetElasticityAssurancesAssuranceAllocatedResource {
     };
   }
 
-  factory GetElasticityAssurancesAssuranceAllocatedResource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetElasticityAssurancesAssuranceAllocatedResource.fromMap(Map<String, dynamic> map) {
     return GetElasticityAssurancesAssuranceAllocatedResource(
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       totalAmount: pulumi.Input.fromValue(map['totalAmount'] as int),
@@ -47,3 +42,4 @@ class GetElasticityAssurancesAssuranceAllocatedResource {
     );
   }
 }
+

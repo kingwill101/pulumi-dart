@@ -17,3 +17,4 @@ enum AlertPolicySeverity {
     throw ArgumentError('Unknown AlertPolicySeverity value: $value');
   }
 }
+

@@ -9,9 +9,7 @@ class BareMetalClusterStorage {
   /// by mounted node disks. These disks need to be formatted and mounted by the
   /// user, which can be done before or after cluster creation.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterStorageLvpNodeMountsConfig>
-  lvpNodeMountsConfig;
-
+  final pulumi.Input<BareMetalClusterStorageLvpNodeMountsConfig> lvpNodeMountsConfig;
   /// Specifies the config for local PersistentVolumes backed by
   /// subdirectories in a shared filesystem. These subdirectores are
   /// automatically created during cluster creation.
@@ -28,31 +26,16 @@ class BareMetalClusterStorage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lvpNodeMountsConfig':
-          pulumi.Input.mapInputValue<
-            BareMetalClusterStorageLvpNodeMountsConfig,
-            Map<String, dynamic>
-          >(lvpNodeMountsConfig, (value) => value.toMap()),
-      'lvpShareConfig':
-          pulumi.Input.mapInputValue<
-            BareMetalClusterStorageLvpShareConfig,
-            Map<String, dynamic>
-          >(lvpShareConfig, (value) => value.toMap()),
+      'lvpNodeMountsConfig': pulumi.Input.mapInputValue<BareMetalClusterStorageLvpNodeMountsConfig, Map<String, dynamic>>(lvpNodeMountsConfig, (value) => value.toMap()),
+      'lvpShareConfig': pulumi.Input.mapInputValue<BareMetalClusterStorageLvpShareConfig, Map<String, dynamic>>(lvpShareConfig, (value) => value.toMap()),
     };
   }
 
   factory BareMetalClusterStorage.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterStorage(
-      lvpNodeMountsConfig: pulumi.Input.fromValue(
-        BareMetalClusterStorageLvpNodeMountsConfig.fromMap(
-          (map['lvpNodeMountsConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      lvpShareConfig: pulumi.Input.fromValue(
-        BareMetalClusterStorageLvpShareConfig.fromMap(
-          (map['lvpShareConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      lvpNodeMountsConfig: pulumi.Input.fromValue(BareMetalClusterStorageLvpNodeMountsConfig.fromMap((map['lvpNodeMountsConfig']! as Map).cast<String, dynamic>())),
+      lvpShareConfig: pulumi.Input.fromValue(BareMetalClusterStorageLvpShareConfig.fromMap((map['lvpShareConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

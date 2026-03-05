@@ -10,29 +10,20 @@ class ListAgriServiceAvailableSolutionsResult {
 
   /// Creates a new [ListAgriServiceAvailableSolutionsResult].
   /// [solutions] Agri solutions list.
-  ListAgriServiceAvailableSolutionsResult({required this.solutions});
+  ListAgriServiceAvailableSolutionsResult({
+    required this.solutions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'solutions':
-          pulumi.Input.encodeList<
-            DataManagerForAgricultureSolutionResponse,
-            Map<String, dynamic>
-          >(solutions, (value) => value.toMap()),
+      'solutions': pulumi.Input.encodeList<DataManagerForAgricultureSolutionResponse, Map<String, dynamic>>(solutions, (value) => value.toMap()),
     };
   }
 
-  factory ListAgriServiceAvailableSolutionsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListAgriServiceAvailableSolutionsResult.fromMap(Map<String, dynamic> map) {
     return ListAgriServiceAvailableSolutionsResult(
-      solutions:
-          pulumi.Input.decodeList<DataManagerForAgricultureSolutionResponse>(
-            map['solutions']!,
-            (value) => DataManagerForAgricultureSolutionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      solutions: pulumi.Input.decodeList<DataManagerForAgricultureSolutionResponse>(map['solutions']!, (value) => DataManagerForAgricultureSolutionResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

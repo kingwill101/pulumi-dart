@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse {
   /// Name of a singular table this view reflects one to one.
   final pulumi.Input<String> baseTable;
-
   /// SQL query used to generate this view.
   final pulumi.Input<String> sqlQuery;
-
   /// Type of this view.
   final pulumi.Input<String> viewType;
 
@@ -31,9 +29,7 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse(
       baseTable: pulumi.Input.fromValue(map['baseTable'] as String),
       sqlQuery: pulumi.Input.fromValue(map['sqlQuery'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse {
     );
   }
 }
+

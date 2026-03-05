@@ -368,16 +368,12 @@ import 'connection_state.dart';
 class Connection extends pulumi.CustomResource {
   /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + '-tf'.
   late final pulumi.Output<String> connectionPrefix;
-
   /// Connection instance string.
   late final pulumi.Output<String> connectionString;
-
   /// The Id of instance that can run database.
   late final pulumi.Output<String> instanceId;
-
   /// The ip address of connection string.
   late final pulumi.Output<String> ipAddress;
-
   /// Internet connection port. Valid value: [3200-3999]. Default to 3306.
   late final pulumi.Output<String?> port;
 
@@ -390,11 +386,11 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionPrefix = registerOutput<String>('connectionPrefix');
     connectionString = registerOutput<String>('connectionString');
     instanceId = registerOutput<String>('instanceId');
@@ -420,11 +416,11 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionPrefix = registerOutput<String>('connectionPrefix');
     connectionString = registerOutput<String>('connectionString');
     instanceId = registerOutput<String>('instanceId');

@@ -7,20 +7,14 @@ import 'subnet_shared_public_ip_address_configuration.dart';
 class SubnetOverride {
   /// The name given to the subnet within the lab.
   final pulumi.Input<String>? labSubnetName;
-
   /// The resource ID of the subnet.
   final pulumi.Input<String>? resourceId;
-
   /// Properties that virtual machines on this subnet will share.
-  final pulumi.Input<SubnetSharedPublicIpAddressConfiguration>?
-  sharedPublicIpAddressConfiguration;
-
+  final pulumi.Input<SubnetSharedPublicIpAddressConfiguration>? sharedPublicIpAddressConfiguration;
   /// Indicates whether this subnet can be used during virtual machine creation (i.e. Allow, Deny).
   final pulumi.Input<String>? useInVmCreationPermission;
-
   /// Indicates whether public IP addresses can be assigned to virtual machines on this subnet (i.e. Allow, Deny).
   final pulumi.Input<String>? usePublicIpAddressPermission;
-
   /// The virtual network pool associated with this subnet.
   final pulumi.Input<String>? virtualNetworkPoolName;
 
@@ -44,11 +38,7 @@ class SubnetOverride {
     return <String, dynamic>{
       'labSubnetName': ?labSubnetName,
       'resourceId': ?resourceId,
-      'sharedPublicIpAddressConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            SubnetSharedPublicIpAddressConfiguration,
-            Map<String, dynamic>
-          >(sharedPublicIpAddressConfiguration, (value) => value.toMap()),
+      'sharedPublicIpAddressConfiguration': ?pulumi.Input.mapOptionalInputValue<SubnetSharedPublicIpAddressConfiguration, Map<String, dynamic>>(sharedPublicIpAddressConfiguration, (value) => value.toMap()),
       'useInVmCreationPermission': ?useInVmCreationPermission,
       'usePublicIpAddressPermission': ?usePublicIpAddressPermission,
       'virtualNetworkPoolName': ?virtualNetworkPoolName,
@@ -57,40 +47,13 @@ class SubnetOverride {
 
   factory SubnetOverride.fromMap(Map<String, dynamic> map) {
     return SubnetOverride(
-      labSubnetName: (() {
-        final guardedValue = map['labSubnetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sharedPublicIpAddressConfiguration: (() {
-        final guardedValue = map['sharedPublicIpAddressConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SubnetSharedPublicIpAddressConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      useInVmCreationPermission: (() {
-        final guardedValue = map['useInVmCreationPermission'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      usePublicIpAddressPermission: (() {
-        final guardedValue = map['usePublicIpAddressPermission'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualNetworkPoolName: (() {
-        final guardedValue = map['virtualNetworkPoolName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      labSubnetName: (() { final guardedValue = map['labSubnetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sharedPublicIpAddressConfiguration: (() { final guardedValue = map['sharedPublicIpAddressConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubnetSharedPublicIpAddressConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      useInVmCreationPermission: (() { final guardedValue = map['useInVmCreationPermission']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      usePublicIpAddressPermission: (() { final guardedValue = map['usePublicIpAddressPermission']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualNetworkPoolName: (() { final guardedValue = map['virtualNetworkPoolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

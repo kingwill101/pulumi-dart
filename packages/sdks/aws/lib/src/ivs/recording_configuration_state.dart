@@ -8,32 +8,22 @@ import 'recording_configuration_thumbnail_configuration.dart';
 class RecordingConfigurationState {
   /// ARN of the Recording Configuration.
   final pulumi.Input<String>? arn;
-
   /// Object containing destination configuration for where recorded video will be stored.
-  final pulumi.Input<RecordingConfigurationDestinationConfiguration>?
-  destinationConfiguration;
-
+  final pulumi.Input<RecordingConfigurationDestinationConfiguration>? destinationConfiguration;
   /// Recording Configuration name.
   final pulumi.Input<String>? name;
-
   /// If a broadcast disconnects and then reconnects within the specified interval, the multiple streams will be considered a single broadcast and merged together.
   final pulumi.Input<int>? recordingReconnectWindowSeconds;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The current state of the Recording Configuration.
   final pulumi.Input<String>? state;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-
   /// Object containing information to enable/disable the recording of thumbnails for a live session and modify the interval at which thumbnails are generated for the live session.
-  final pulumi.Input<RecordingConfigurationThumbnailConfiguration>?
-  thumbnailConfiguration;
+  final pulumi.Input<RecordingConfigurationThumbnailConfiguration>? thumbnailConfiguration;
 
   /// Creates a new [RecordingConfigurationState].
   /// [arn] ARN of the Recording Configuration.
@@ -60,84 +50,29 @@ class RecordingConfigurationState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'destinationConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            RecordingConfigurationDestinationConfiguration,
-            Map<String, dynamic>
-          >(destinationConfiguration, (value) => value.toMap()),
+      'destinationConfiguration': ?pulumi.Input.mapOptionalInputValue<RecordingConfigurationDestinationConfiguration, Map<String, dynamic>>(destinationConfiguration, (value) => value.toMap()),
       'name': ?name,
       'recordingReconnectWindowSeconds': ?recordingReconnectWindowSeconds,
       'region': ?region,
       'state': ?state,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'thumbnailConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            RecordingConfigurationThumbnailConfiguration,
-            Map<String, dynamic>
-          >(thumbnailConfiguration, (value) => value.toMap()),
+      'thumbnailConfiguration': ?pulumi.Input.mapOptionalInputValue<RecordingConfigurationThumbnailConfiguration, Map<String, dynamic>>(thumbnailConfiguration, (value) => value.toMap()),
     };
   }
 
   factory RecordingConfigurationState.fromMap(Map<String, dynamic> map) {
     return RecordingConfigurationState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destinationConfiguration: (() {
-        final guardedValue = map['destinationConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RecordingConfigurationDestinationConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recordingReconnectWindowSeconds: (() {
-        final guardedValue = map['recordingReconnectWindowSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      thumbnailConfiguration: (() {
-        final guardedValue = map['thumbnailConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RecordingConfigurationThumbnailConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destinationConfiguration: (() { final guardedValue = map['destinationConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecordingConfigurationDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recordingReconnectWindowSeconds: (() { final guardedValue = map['recordingReconnectWindowSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      thumbnailConfiguration: (() { final guardedValue = map['thumbnailConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecordingConfigurationThumbnailConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

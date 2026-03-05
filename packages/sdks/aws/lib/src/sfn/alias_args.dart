@@ -10,13 +10,10 @@ import 'alias_routing_configuration.dart';
 class AliasArgs {
   /// Description of the alias.
   final pulumi.Input<String>? description;
-
   /// Name for the alias you are creating.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The StateMachine alias' route configuration settings. Fields documented below
   final pulumi.Input<List<AliasRoutingConfiguration>> routingConfigurations;
 
@@ -37,46 +34,17 @@ class AliasArgs {
       'description': ?description,
       'name': ?name,
       'region': ?region,
-      'routingConfigurations':
-          pulumi.Input.mapInputValue<
-            List<AliasRoutingConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            routingConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AliasRoutingConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'routingConfigurations': pulumi.Input.mapInputValue<List<AliasRoutingConfiguration>, List<Map<String, dynamic>>>(routingConfigurations, (value) => pulumi.Input.encodeList<AliasRoutingConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routingConfigurations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<AliasRoutingConfiguration>(
-          map['routingConfigurations']!,
-          (value) => AliasRoutingConfiguration.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routingConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<AliasRoutingConfiguration>(map['routingConfigurations']!, (value) => AliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

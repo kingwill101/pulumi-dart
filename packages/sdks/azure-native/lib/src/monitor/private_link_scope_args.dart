@@ -10,16 +10,12 @@ import 'access_mode_settings.dart';
 class PrivateLinkScopeArgs {
   /// Access mode settings
   final pulumi.Input<AccessModeSettings> accessModeSettings;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Azure Monitor PrivateLinkScope resource.
   final pulumi.Input<String>? scopeName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -39,11 +35,7 @@ class PrivateLinkScopeArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessModeSettings':
-          pulumi.Input.mapInputValue<AccessModeSettings, Map<String, dynamic>>(
-            accessModeSettings,
-            (value) => value.toMap(),
-          ),
+      'accessModeSettings': pulumi.Input.mapInputValue<AccessModeSettings, Map<String, dynamic>>(accessModeSettings, (value) => value.toMap()),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'scopeName': ?scopeName,
@@ -53,31 +45,12 @@ class PrivateLinkScopeArgs {
 
   factory PrivateLinkScopeArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkScopeArgs(
-      accessModeSettings: pulumi.Input.fromValue(
-        AccessModeSettings.fromMap(
-          (map['accessModeSettings']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      scopeName: (() {
-        final guardedValue = map['scopeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      accessModeSettings: pulumi.Input.fromValue(AccessModeSettings.fromMap((map['accessModeSettings']! as Map).cast<String, dynamic>())),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      scopeName: (() { final guardedValue = map['scopeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

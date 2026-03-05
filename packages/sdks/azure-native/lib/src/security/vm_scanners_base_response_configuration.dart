@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmScannersBaseResponseConfiguration {
   /// Tags that indicates that a resource should not be scanned
   final pulumi.Input<Map<String, String>>? exclusionTags;
-
   /// The scanning mode for the VM scan.
   final pulumi.Input<String>? scanningMode;
 
   /// Creates a new [VmScannersBaseResponseConfiguration].
   /// [exclusionTags] Tags that indicates that a resource should not be scanned
   /// [scanningMode] The scanning mode for the VM scan.
-  VmScannersBaseResponseConfiguration({this.exclusionTags, this.scanningMode});
+  VmScannersBaseResponseConfiguration({
+    this.exclusionTags,
+    this.scanningMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,22 +24,11 @@ class VmScannersBaseResponseConfiguration {
     };
   }
 
-  factory VmScannersBaseResponseConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VmScannersBaseResponseConfiguration.fromMap(Map<String, dynamic> map) {
     return VmScannersBaseResponseConfiguration(
-      exclusionTags: (() {
-        final guardedValue = map['exclusionTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      scanningMode: (() {
-        final guardedValue = map['scanningMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      exclusionTags: (() { final guardedValue = map['exclusionTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      scanningMode: (() { final guardedValue = map['scanningMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,13 +7,10 @@ class M365ExtensionsResponse {
   /// The channel name
   /// Expected value is 'M365Extensions'.
   final pulumi.Input<String> channelName;
-
   /// Entity Tag of the resource
   final pulumi.Input<String>? etag;
-
   /// Specifies the location of the resource.
   final pulumi.Input<String>? location;
-
   /// Provisioning state of the resource
   final pulumi.Input<String> provisioningState;
 
@@ -41,19 +38,10 @@ class M365ExtensionsResponse {
   factory M365ExtensionsResponse.fromMap(Map<String, dynamic> map) {
     return M365ExtensionsResponse(
       channelName: pulumi.Input.fromValue(map['channelName'] as String),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

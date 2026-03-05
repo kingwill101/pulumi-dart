@@ -200,25 +200,19 @@ class Aggregator extends pulumi.CustomResource {
   /// The member accounts of the account group. See `aggregator_accounts` below.
   /// &gt; **NOTE:** If `aggregator_type` is set to `CUSTOM`, `aggregator_accounts` is required.
   late final pulumi.Output<List<Map<String, dynamic>>> aggregatorAccounts;
-
   /// The name of the account group.
   late final pulumi.Output<String> aggregatorName;
-
   /// The type of the account group. Default value: `CUSTOM`. Valid values:
   /// - `RD`: Global account group.
   /// - `FOLDER`: Folder account group.
   /// - `CUSTOM`: Custom account group.
   late final pulumi.Output<String> aggregatorType;
-
   /// (Available since v1.262.0) The timestamp when the account group was created.
   late final pulumi.Output<int> createTime;
-
   /// The description of the account group.
   late final pulumi.Output<String> description;
-
   /// The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregator_type` is set to `FOLDER`, `folder_id` is required.
   late final pulumi.Output<String?> folderId;
-
   /// The status of the account group.
   late final pulumi.Output<String> status;
 
@@ -231,14 +225,12 @@ class Aggregator extends pulumi.CustomResource {
     AggregatorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/aggregator:Aggregator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    aggregatorAccounts = registerOutput<List<Map<String, dynamic>>>(
-      'aggregatorAccounts',
-    );
+          'alicloud:cfg/aggregator:Aggregator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    aggregatorAccounts = registerOutput<List<Map<String, dynamic>>>('aggregatorAccounts');
     aggregatorName = registerOutput<String>('aggregatorName');
     aggregatorType = registerOutput<String>('aggregatorType');
     createTime = registerOutput<int>('createTime');
@@ -265,14 +257,12 @@ class Aggregator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/aggregator:Aggregator',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    aggregatorAccounts = registerOutput<List<Map<String, dynamic>>>(
-      'aggregatorAccounts',
-    );
+          'alicloud:cfg/aggregator:Aggregator',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    aggregatorAccounts = registerOutput<List<Map<String, dynamic>>>('aggregatorAccounts');
     aggregatorName = registerOutput<String>('aggregatorName');
     aggregatorType = registerOutput<String>('aggregatorType');
     createTime = registerOutput<int>('createTime');

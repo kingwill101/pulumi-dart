@@ -9,19 +9,20 @@ class ShieldedInstanceConfig {
 
   /// Creates a new [ShieldedInstanceConfig].
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.
-  ShieldedInstanceConfig({this.enableSecureBoot});
+  ShieldedInstanceConfig({
+    this.enableSecureBoot,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableSecureBoot': ?enableSecureBoot};
+    return <String, dynamic>{
+      'enableSecureBoot': ?enableSecureBoot,
+    };
   }
 
   factory ShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ShieldedInstanceConfig(
-      enableSecureBoot: (() {
-        final guardedValue = map['enableSecureBoot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableSecureBoot: (() { final guardedValue = map['enableSecureBoot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

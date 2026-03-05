@@ -6,28 +6,20 @@ import 'connection_type_association_property_response.dart';
 class GetConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets or sets the connectionType of the connection.
   final ConnectionTypeAssociationPropertyResponse? connectionType;
-
   /// Gets the creation time.
   final String creationTime;
-
   /// Gets or sets the description.
   final String? description;
-
   /// Gets the field definition values of the connection.
   final Map<String, String> fieldDefinitionValues;
-
   /// Fully qualified resource Id for the resource
   final String id;
-
   /// Gets the last modified time.
   final String lastModifiedTime;
-
   /// The name of the resource
   final String name;
-
   /// The type of the resource.
   final String type;
 
@@ -70,21 +62,10 @@ class GetConnectionResult {
   factory GetConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      connectionType: (() {
-        final guardedValue = map['connectionType'];
-        if (guardedValue == null) return null;
-        return ConnectionTypeAssociationPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      connectionType: (() { final guardedValue = map['connectionType']; if (guardedValue == null) return null; return ConnectionTypeAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       creationTime: map['creationTime'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      fieldDefinitionValues: (map['fieldDefinitionValues'] as Map)
-          .cast<String, String>(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fieldDefinitionValues: (map['fieldDefinitionValues'] as Map).cast<String, String>(),
       id: map['id'] as String,
       lastModifiedTime: map['lastModifiedTime'] as String,
       name: map['name'] as String,
@@ -92,3 +73,4 @@ class GetConnectionResult {
     );
   }
 }
+

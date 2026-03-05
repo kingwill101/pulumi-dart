@@ -124,66 +124,46 @@ import 'account_subscription_state.dart';
 class AccountSubscription extends pulumi.CustomResource {
   /// Name of your Amazon QuickSight account. This name is unique over all of AWS, and it appears only when users sign in.
   late final pulumi.Output<String> accountName;
-
   /// Status of the Amazon QuickSight account's subscription.
   late final pulumi.Output<String> accountSubscriptionStatus;
-
   /// Name of your Active Directory. This field is required if `ACTIVE_DIRECTORY` is the selected authentication method of the new Amazon QuickSight account.
   late final pulumi.Output<String?> activeDirectoryName;
-
   /// Admin group associated with your Active Directory or IAM Identity Center account. This field is required if `ACTIVE_DIRECTORY` or `IAM_IDENTITY_CENTER` is the selected authentication method of the new Amazon QuickSight account.
   late final pulumi.Output<List<String>?> adminGroups;
-
   /// Admin PRO group associated with your Active Directory or IAM Identity Center account.
   late final pulumi.Output<List<String>?> adminProGroups;
-
   /// Method that you want to use to authenticate your Amazon QuickSight account. Currently, the valid values for this parameter are `IAM_AND_QUICKSIGHT`, `IAM_ONLY`, `IAM_IDENTITY_CENTER`, and `ACTIVE_DIRECTORY`.
   late final pulumi.Output<String> authenticationMethod;
-
   /// Author group associated with your Active Directory or IAM Identity Center account.
   late final pulumi.Output<List<String>?> authorGroups;
-
   /// Author PRO group associated with your Active Directory or IAM Identity Center account.
   late final pulumi.Output<List<String>?> authorProGroups;
-
   /// AWS account ID. Defaults to automatically determined account ID of the Pulumi AWS provider.
   late final pulumi.Output<String> awsAccountId;
-
   /// A 10-digit phone number for the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   late final pulumi.Output<String?> contactNumber;
-
   /// Active Directory ID that is associated with your Amazon QuickSight account.
   late final pulumi.Output<String?> directoryId;
-
   /// Edition of Amazon QuickSight that you want your account to have. Currently, you can choose from `STANDARD`, `ENTERPRISE` or `ENTERPRISE_AND_Q`.
   late final pulumi.Output<String> edition;
-
   /// Email address of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   late final pulumi.Output<String?> emailAddress;
-
   /// First name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   late final pulumi.Output<String?> firstName;
-
   /// The Amazon Resource Name (ARN) for the IAM Identity Center instance.
   late final pulumi.Output<String?> iamIdentityCenterInstanceArn;
-
   /// Last name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   late final pulumi.Output<String?> lastName;
-
   /// Email address that you want Amazon QuickSight to send notifications to regarding your Amazon QuickSight account or Amazon QuickSight subscription.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> notificationEmail;
-
   /// Reader group associated with your Active Directory or IAM Identity Center account.
   late final pulumi.Output<List<String>?> readerGroups;
-
   /// Reader PRO group associated with your Active Directory or IAM Identity Center account.
   late final pulumi.Output<List<String>?> readerProGroups;
-
   /// Realm of the Active Directory that is associated with your Amazon QuickSight account.
   late final pulumi.Output<String?> realm;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -196,15 +176,13 @@ class AccountSubscription extends pulumi.CustomResource {
     AccountSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:quicksight/accountSubscription:AccountSubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:quicksight/accountSubscription:AccountSubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
-    accountSubscriptionStatus = registerOutput<String>(
-      'accountSubscriptionStatus',
-    );
+    accountSubscriptionStatus = registerOutput<String>('accountSubscriptionStatus');
     activeDirectoryName = registerOutput<String?>('activeDirectoryName');
     adminGroups = registerOutput<List<String>?>('adminGroups');
     adminProGroups = registerOutput<List<String>?>('adminProGroups');
@@ -217,9 +195,7 @@ class AccountSubscription extends pulumi.CustomResource {
     edition = registerOutput<String>('edition');
     emailAddress = registerOutput<String?>('emailAddress');
     firstName = registerOutput<String?>('firstName');
-    iamIdentityCenterInstanceArn = registerOutput<String?>(
-      'iamIdentityCenterInstanceArn',
-    );
+    iamIdentityCenterInstanceArn = registerOutput<String?>('iamIdentityCenterInstanceArn');
     lastName = registerOutput<String?>('lastName');
     notificationEmail = registerOutput<String>('notificationEmail');
     readerGroups = registerOutput<List<String>?>('readerGroups');
@@ -246,15 +222,13 @@ class AccountSubscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:quicksight/accountSubscription:AccountSubscription',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:quicksight/accountSubscription:AccountSubscription',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
-    accountSubscriptionStatus = registerOutput<String>(
-      'accountSubscriptionStatus',
-    );
+    accountSubscriptionStatus = registerOutput<String>('accountSubscriptionStatus');
     activeDirectoryName = registerOutput<String?>('activeDirectoryName');
     adminGroups = registerOutput<List<String>?>('adminGroups');
     adminProGroups = registerOutput<List<String>?>('adminProGroups');
@@ -267,9 +241,7 @@ class AccountSubscription extends pulumi.CustomResource {
     edition = registerOutput<String>('edition');
     emailAddress = registerOutput<String?>('emailAddress');
     firstName = registerOutput<String?>('firstName');
-    iamIdentityCenterInstanceArn = registerOutput<String?>(
-      'iamIdentityCenterInstanceArn',
-    );
+    iamIdentityCenterInstanceArn = registerOutput<String?>('iamIdentityCenterInstanceArn');
     lastName = registerOutput<String?>('lastName');
     notificationEmail = registerOutput<String>('notificationEmail');
     readerGroups = registerOutput<List<String>?>('readerGroups');

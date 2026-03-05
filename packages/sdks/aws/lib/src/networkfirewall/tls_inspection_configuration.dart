@@ -1686,40 +1686,29 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 class TlsInspectionConfiguration extends pulumi.CustomResource {
   /// ARN of the TLS Inspection Configuration.
   late final pulumi.Output<String> arn;
-
   /// Certificate Manager certificate block. See Certificate Authority below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> certificateAuthorities;
-
   /// List of certificate blocks describing certificates associated with the TLS inspection configuration. See Certificates below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> certificates;
-
   /// Description of the TLS inspection configuration.
   late final pulumi.Output<String?> description;
-
   /// Encryption configuration block. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>> encryptionConfigurations;
-
   /// Descriptive name of the TLS inspection configuration.
   late final pulumi.Output<String> name;
-
   /// Number of firewall policies that use this TLS inspection configuration.
   late final pulumi.Output<int> numberOfAssociations;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<TlsInspectionConfigurationTimeouts?> timeouts;
-
   /// TLS inspection configuration block. Detailed below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<TlsInspectionConfigurationTlsInspectionConfiguration>
-  tlsInspectionConfiguration;
-
+  late final pulumi.Output<TlsInspectionConfigurationTlsInspectionConfiguration> tlsInspectionConfiguration;
   /// A unique identifier for the TLS inspection configuration.
   late final pulumi.Output<String> tlsInspectionConfigurationId;
-
   /// String token used when updating the rule group.
   late final pulumi.Output<String> updateToken;
 
@@ -1732,49 +1721,24 @@ class TlsInspectionConfiguration extends pulumi.CustomResource {
     TlsInspectionConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkfirewall/tlsInspectionConfiguration:TlsInspectionConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkfirewall/tlsInspectionConfiguration:TlsInspectionConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    certificateAuthorities = registerOutput<List<Map<String, dynamic>>>(
-      'certificateAuthorities',
-    );
+    certificateAuthorities = registerOutput<List<Map<String, dynamic>>>('certificateAuthorities');
     certificates = registerOutput<List<Map<String, dynamic>>>('certificates');
     description = registerOutput<String?>('description');
-    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'encryptionConfigurations',
-    );
+    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>>('encryptionConfigurations');
     this.name = registerOutput<String>('name');
     numberOfAssociations = registerOutput<int>('numberOfAssociations');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<TlsInspectionConfigurationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TlsInspectionConfigurationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    tlsInspectionConfiguration =
-        registerOutput<TlsInspectionConfigurationTlsInspectionConfiguration>(
-          'tlsInspectionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return TlsInspectionConfigurationTlsInspectionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    tlsInspectionConfigurationId = registerOutput<String>(
-      'tlsInspectionConfigurationId',
-    );
+    timeouts = registerOutput<TlsInspectionConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TlsInspectionConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tlsInspectionConfiguration = registerOutput<TlsInspectionConfigurationTlsInspectionConfiguration>('tlsInspectionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TlsInspectionConfigurationTlsInspectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tlsInspectionConfigurationId = registerOutput<String>('tlsInspectionConfigurationId');
     updateToken = registerOutput<String>('updateToken');
   }
 
@@ -1796,49 +1760,24 @@ class TlsInspectionConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkfirewall/tlsInspectionConfiguration:TlsInspectionConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkfirewall/tlsInspectionConfiguration:TlsInspectionConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    certificateAuthorities = registerOutput<List<Map<String, dynamic>>>(
-      'certificateAuthorities',
-    );
+    certificateAuthorities = registerOutput<List<Map<String, dynamic>>>('certificateAuthorities');
     certificates = registerOutput<List<Map<String, dynamic>>>('certificates');
     description = registerOutput<String?>('description');
-    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'encryptionConfigurations',
-    );
+    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>>('encryptionConfigurations');
     this.name = registerOutput<String>('name');
     numberOfAssociations = registerOutput<int>('numberOfAssociations');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<TlsInspectionConfigurationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TlsInspectionConfigurationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    tlsInspectionConfiguration =
-        registerOutput<TlsInspectionConfigurationTlsInspectionConfiguration>(
-          'tlsInspectionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return TlsInspectionConfigurationTlsInspectionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    tlsInspectionConfigurationId = registerOutput<String>(
-      'tlsInspectionConfigurationId',
-    );
+    timeouts = registerOutput<TlsInspectionConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TlsInspectionConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tlsInspectionConfiguration = registerOutput<TlsInspectionConfigurationTlsInspectionConfiguration>('tlsInspectionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TlsInspectionConfigurationTlsInspectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tlsInspectionConfigurationId = registerOutput<String>('tlsInspectionConfigurationId');
     updateToken = registerOutput<String>('updateToken');
   }
 }

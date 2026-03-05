@@ -174,27 +174,22 @@ class PortAssociateV2 extends pulumi.CustomResource {
   /// A boolean flag indicating whether fixed
   /// IPs should be advertised. Defaults to true.
   late final pulumi.Output<bool> advertiseFixedIps;
-
   /// The ID of the BGP VPN to which the port will be
   /// associated. Changing this creates a new BGP VPN port association.
   late final pulumi.Output<String> bgpvpnId;
-
   /// The ID of the port to be associated with the BGP VPN.
   /// Changing this creates a new BGP VPN port association.
   late final pulumi.Output<String> portId;
-
   /// The ID of the project that owns the port
   /// association. Only administrative and users with `advsvc` role can specify a
   /// project ID other than their own. Changing this creates a new BGP VPN port
   /// association.
   late final pulumi.Output<String> projectId;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a BGP VPN port association. If
   /// omitted, the `region` argument of the provider is used. Changing this creates
   /// a new BGP VPN port association.
   late final pulumi.Output<String> region;
-
   /// A list of dictionaries containing the following keys:
   late final pulumi.Output<List<Map<String, dynamic>>?> routes;
 
@@ -207,11 +202,11 @@ class PortAssociateV2 extends pulumi.CustomResource {
     PortAssociateV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:bgpvpn/portAssociateV2:PortAssociateV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:bgpvpn/portAssociateV2:PortAssociateV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     advertiseFixedIps = registerOutput<bool>('advertiseFixedIps');
     bgpvpnId = registerOutput<String>('bgpvpnId');
     portId = registerOutput<String>('portId');
@@ -238,11 +233,11 @@ class PortAssociateV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:bgpvpn/portAssociateV2:PortAssociateV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:bgpvpn/portAssociateV2:PortAssociateV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     advertiseFixedIps = registerOutput<bool>('advertiseFixedIps');
     bgpvpnId = registerOutput<String>('bgpvpnId');
     portId = registerOutput<String>('portId');

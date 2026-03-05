@@ -7,17 +7,20 @@ class PlanWorkflowStepGlobalAuroraConfigUngraceful {
 
   /// Creates a new [PlanWorkflowStepGlobalAuroraConfigUngraceful].
   /// [ungraceful] Required.
-  PlanWorkflowStepGlobalAuroraConfigUngraceful({required this.ungraceful});
+  PlanWorkflowStepGlobalAuroraConfigUngraceful({
+    required this.ungraceful,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ungraceful': ungraceful};
+    return <String, dynamic>{
+      'ungraceful': ungraceful,
+    };
   }
 
-  factory PlanWorkflowStepGlobalAuroraConfigUngraceful.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PlanWorkflowStepGlobalAuroraConfigUngraceful.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepGlobalAuroraConfigUngraceful(
       ungraceful: pulumi.Input.fromValue(map['ungraceful'] as String),
     );
   }
 }
+

@@ -125,72 +125,56 @@ class Volume extends pulumi.CustomResource {
   /// display the Attachment ID, Instance ID, and the Device as the Instance
   /// sees it.
   late final pulumi.Output<List<Map<String, dynamic>>> attachments;
-
   /// The availability zone for the volume.
   /// Changing this creates a new volume.
   late final pulumi.Output<String> availabilityZone;
-
   /// The backup ID from which to create the volume.
   /// Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
   /// creates a new volume. Requires microversion &gt;= 3.47.
   late final pulumi.Output<String?> backupId;
-
   /// The consistency group to place the volume
   /// in.
   late final pulumi.Output<String?> consistencyGroupId;
-
   /// A description of the volume. Changing this updates
   /// the volume's description.
   late final pulumi.Output<String?> description;
-
   /// When this option is set it allows extending
   /// attached volumes. Note: updating size of an attached volume requires Cinder
   /// support for version 3.42 and a compatible storage driver.
   late final pulumi.Output<bool?> enableOnlineResize;
-
   /// The image ID from which to create the volume.
   /// Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
   /// creates a new volume.
   late final pulumi.Output<String?> imageId;
-
   /// Metadata key/value pairs to associate with the volume.
   /// Changing this updates the existing volume metadata.
   late final pulumi.Output<Map<String, String>> metadata;
-
   /// A unique name for the volume. Changing this updates the
   /// volume's name.
   late final pulumi.Output<String> name;
-
   /// The region in which to create the volume. If
   /// omitted, the `region` argument of the provider is used. Changing this
   /// creates a new volume.
   late final pulumi.Output<String> region;
-
   /// Provide the Cinder scheduler with hints on where
   /// to instantiate a volume in the OpenStack cloud. The available hints are described below.
   late final pulumi.Output<List<Map<String, dynamic>>?> schedulerHints;
-
   /// The size of the volume to create (in gigabytes).
   late final pulumi.Output<int> size;
-
   /// The snapshot ID from which to create the volume.
   /// Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
   /// creates a new volume.
   late final pulumi.Output<String?> snapshotId;
-
   /// The volume ID to replicate with.
   late final pulumi.Output<String?> sourceReplica;
-
   /// The volume ID from which to create the volume.
   /// Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
   /// creates a new volume.
   late final pulumi.Output<String?> sourceVolId;
-
   /// Migration policy when changing `volume_type`.
   /// `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
   /// allows migration if needed. Applicable only when updating `volume_type`.
   late final pulumi.Output<String?> volumeRetypePolicy;
-
   /// The type of volume to create or update.
   /// Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
   late final pulumi.Output<String> volumeType;
@@ -199,13 +183,16 @@ class Volume extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_blockstorage_volume_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'openstack:blockstorage/volume:Volume',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Volume(
+    String name, {
+    VolumeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'openstack:blockstorage/volume:Volume',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachments = registerOutput<List<Map<String, dynamic>>>('attachments');
     availabilityZone = registerOutput<String>('availabilityZone');
     backupId = registerOutput<String?>('backupId');
@@ -216,9 +203,7 @@ class Volume extends pulumi.CustomResource {
     metadata = registerOutput<Map<String, String>>('metadata');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    schedulerHints = registerOutput<List<Map<String, dynamic>>?>(
-      'schedulerHints',
-    );
+    schedulerHints = registerOutput<List<Map<String, dynamic>>?>('schedulerHints');
     size = registerOutput<int>('size');
     snapshotId = registerOutput<String?>('snapshotId');
     sourceReplica = registerOutput<String?>('sourceReplica');
@@ -245,11 +230,11 @@ class Volume extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:blockstorage/volume:Volume',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:blockstorage/volume:Volume',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachments = registerOutput<List<Map<String, dynamic>>>('attachments');
     availabilityZone = registerOutput<String>('availabilityZone');
     backupId = registerOutput<String?>('backupId');
@@ -260,9 +245,7 @@ class Volume extends pulumi.CustomResource {
     metadata = registerOutput<Map<String, String>>('metadata');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    schedulerHints = registerOutput<List<Map<String, dynamic>>?>(
-      'schedulerHints',
-    );
+    schedulerHints = registerOutput<List<Map<String, dynamic>>?>('schedulerHints');
     size = registerOutput<int>('size');
     snapshotId = registerOutput<String?>('snapshotId');
     sourceReplica = registerOutput<String?>('sourceReplica');

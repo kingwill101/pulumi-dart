@@ -8,10 +8,14 @@ class DomainDevicesFilesystemAlias {
 
   /// Creates a new [DomainDevicesFilesystemAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesFilesystemAlias({required this.name});
+  DomainDevicesFilesystemAlias({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory DomainDevicesFilesystemAlias.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesFilesystemAlias {
     );
   }
 }
+

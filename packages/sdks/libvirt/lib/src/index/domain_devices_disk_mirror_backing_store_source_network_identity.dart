@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesDiskMirrorBackingStoreSourceNetworkIdentity {
   /// Configures the agent socket for network identity in the backing store source.
   final pulumi.Input<String>? agentSock;
-
   /// Sets the group identifier for network identity in the backing store source.
   final pulumi.Input<String>? group;
-
   /// Defines the key file used for network identity in the backing store source configuration.
   final pulumi.Input<String>? keyfile;
-
   /// Configures the user associated with the network identity in the backing store source.
   final pulumi.Input<String>? user;
-
   /// Sets the user name for network identity in the backing store source configuration.
   final pulumi.Input<String>? userName;
 
@@ -42,35 +38,14 @@ class DomainDevicesDiskMirrorBackingStoreSourceNetworkIdentity {
     };
   }
 
-  factory DomainDevicesDiskMirrorBackingStoreSourceNetworkIdentity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskMirrorBackingStoreSourceNetworkIdentity.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceNetworkIdentity(
-      agentSock: (() {
-        final guardedValue = map['agentSock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      group: (() {
-        final guardedValue = map['group'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyfile: (() {
-        final guardedValue = map['keyfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      user: (() {
-        final guardedValue = map['user'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      agentSock: (() { final guardedValue = map['agentSock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyfile: (() { final guardedValue = map['keyfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

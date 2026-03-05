@@ -9,7 +9,9 @@ class ConfidentialInstanceConfigResponse {
 
   /// Creates a new [ConfidentialInstanceConfigResponse].
   /// [enableConfidentialCompute] Optional. Defines whether the instance should have confidential compute enabled.
-  ConfidentialInstanceConfigResponse({required this.enableConfidentialCompute});
+  ConfidentialInstanceConfigResponse({
+    required this.enableConfidentialCompute,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,9 +21,8 @@ class ConfidentialInstanceConfigResponse {
 
   factory ConfidentialInstanceConfigResponse.fromMap(Map<String, dynamic> map) {
     return ConfidentialInstanceConfigResponse(
-      enableConfidentialCompute: pulumi.Input.fromValue(
-        map['enableConfidentialCompute'] as bool,
-      ),
+      enableConfidentialCompute: pulumi.Input.fromValue(map['enableConfidentialCompute'] as bool),
     );
   }
 }
+

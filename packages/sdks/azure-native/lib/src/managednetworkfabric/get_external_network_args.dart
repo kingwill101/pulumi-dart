@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExternalNetworkArgs {
   /// Name of the External Network.
   final pulumi.Input<String> externalNetworkName;
-
   /// Name of the L3 Isolation Domain.
   final pulumi.Input<String> l3IsolationDomainName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,15 +34,10 @@ class GetExternalNetworkArgs {
 
   factory GetExternalNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetExternalNetworkArgs(
-      externalNetworkName: pulumi.Input.fromValue(
-        map['externalNetworkName'] as String,
-      ),
-      l3IsolationDomainName: pulumi.Input.fromValue(
-        map['l3IsolationDomainName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      externalNetworkName: pulumi.Input.fromValue(map['externalNetworkName'] as String),
+      l3IsolationDomainName: pulumi.Input.fromValue(map['l3IsolationDomainName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

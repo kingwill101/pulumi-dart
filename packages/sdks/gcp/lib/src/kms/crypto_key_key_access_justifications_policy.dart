@@ -10,21 +10,20 @@ class CryptoKeyKeyAccessJustificationsPolicy {
 
   /// Creates a new [CryptoKeyKeyAccessJustificationsPolicy].
   /// [allowedAccessReasons] The list of allowed reasons for access to this CryptoKey. Zero allowed
-  CryptoKeyKeyAccessJustificationsPolicy({this.allowedAccessReasons});
+  CryptoKeyKeyAccessJustificationsPolicy({
+    this.allowedAccessReasons,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowedAccessReasons': ?allowedAccessReasons};
+    return <String, dynamic>{
+      'allowedAccessReasons': ?allowedAccessReasons,
+    };
   }
 
-  factory CryptoKeyKeyAccessJustificationsPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CryptoKeyKeyAccessJustificationsPolicy.fromMap(Map<String, dynamic> map) {
     return CryptoKeyKeyAccessJustificationsPolicy(
-      allowedAccessReasons: (() {
-        final guardedValue = map['allowedAccessReasons'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowedAccessReasons: (() { final guardedValue = map['allowedAccessReasons']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

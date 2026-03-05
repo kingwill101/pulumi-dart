@@ -25,9 +25,7 @@ class GetClustersClusterAvailableKernelVersion {
     };
   }
 
-  factory GetClustersClusterAvailableKernelVersion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClustersClusterAvailableKernelVersion.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterAvailableKernelVersion(
       expireDate: pulumi.Input.fromValue(map['expireDate'] as String),
       kernelVersion: pulumi.Input.fromValue(map['kernelVersion'] as String),
@@ -35,3 +33,4 @@ class GetClustersClusterAvailableKernelVersion {
     );
   }
 }
+

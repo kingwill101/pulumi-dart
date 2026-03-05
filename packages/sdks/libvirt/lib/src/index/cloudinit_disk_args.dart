@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudinitDiskArgs {
   /// Cloud-init meta-data content (usually YAML)
   final pulumi.Input<String> metaData;
-
   /// Name for this cloud-init disk resource
   final pulumi.Input<String>? name;
-
   /// Cloud-init network configuration (optional, usually YAML)
   final pulumi.Input<String>? networkConfig;
-
   /// Cloud-init user-data content (usually YAML)
   final pulumi.Input<String> userData;
 
@@ -43,17 +40,10 @@ class CloudinitDiskArgs {
   factory CloudinitDiskArgs.fromMap(Map<String, dynamic> map) {
     return CloudinitDiskArgs(
       metaData: pulumi.Input.fromValue(map['metaData'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkConfig: (() {
-        final guardedValue = map['networkConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userData: pulumi.Input.fromValue(map['userData'] as String),
     );
   }
 }
+

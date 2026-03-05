@@ -9,10 +9,14 @@ class X509ManualCertificateResponse {
 
   /// Creates a new [X509ManualCertificateResponse].
   /// [secretRef] Kubernetes secret containing an X.509 client certificate. This is a reference to the secret through an identifying name, not the secret itself.
-  X509ManualCertificateResponse({required this.secretRef});
+  X509ManualCertificateResponse({
+    required this.secretRef,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretRef': secretRef};
+    return <String, dynamic>{
+      'secretRef': secretRef,
+    };
   }
 
   factory X509ManualCertificateResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class X509ManualCertificateResponse {
     );
   }
 }
+

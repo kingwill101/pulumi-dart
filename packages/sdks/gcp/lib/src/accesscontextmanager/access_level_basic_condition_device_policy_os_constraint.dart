@@ -7,11 +7,9 @@ class AccessLevelBasicConditionDevicePolicyOsConstraint {
   /// of this OS satisfies the constraint.
   /// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
   final pulumi.Input<String>? minimumVersion;
-
   /// The operating system type of the device.
   /// Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
   final pulumi.Input<String> osType;
-
   /// If you specify DESKTOP_CHROME_OS for osType, you can optionally include requireVerifiedChromeOs to require Chrome Verified Access.
   final pulumi.Input<bool>? requireVerifiedChromeOs;
 
@@ -33,21 +31,12 @@ class AccessLevelBasicConditionDevicePolicyOsConstraint {
     };
   }
 
-  factory AccessLevelBasicConditionDevicePolicyOsConstraint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessLevelBasicConditionDevicePolicyOsConstraint.fromMap(Map<String, dynamic> map) {
     return AccessLevelBasicConditionDevicePolicyOsConstraint(
-      minimumVersion: (() {
-        final guardedValue = map['minimumVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      minimumVersion: (() { final guardedValue = map['minimumVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       osType: pulumi.Input.fromValue(map['osType'] as String),
-      requireVerifiedChromeOs: (() {
-        final guardedValue = map['requireVerifiedChromeOs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      requireVerifiedChromeOs: (() { final guardedValue = map['requireVerifiedChromeOs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

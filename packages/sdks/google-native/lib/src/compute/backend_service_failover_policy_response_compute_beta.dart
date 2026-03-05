@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendServiceFailoverPolicyResponseComputeBeta {
   /// This can be set to true only if the protocol is TCP. The default is false.
   final pulumi.Input<bool> disableConnectionDrainOnFailover;
-
   /// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
   final pulumi.Input<bool> dropTrafficIfUnhealthy;
-
   /// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
   final pulumi.Input<double> failoverRatio;
 
@@ -31,17 +29,12 @@ class BackendServiceFailoverPolicyResponseComputeBeta {
     };
   }
 
-  factory BackendServiceFailoverPolicyResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackendServiceFailoverPolicyResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return BackendServiceFailoverPolicyResponseComputeBeta(
-      disableConnectionDrainOnFailover: pulumi.Input.fromValue(
-        map['disableConnectionDrainOnFailover'] as bool,
-      ),
-      dropTrafficIfUnhealthy: pulumi.Input.fromValue(
-        map['dropTrafficIfUnhealthy'] as bool,
-      ),
+      disableConnectionDrainOnFailover: pulumi.Input.fromValue(map['disableConnectionDrainOnFailover'] as bool),
+      dropTrafficIfUnhealthy: pulumi.Input.fromValue(map['dropTrafficIfUnhealthy'] as bool),
       failoverRatio: pulumi.Input.fromValue(map['failoverRatio'] as double),
     );
   }
 }
+

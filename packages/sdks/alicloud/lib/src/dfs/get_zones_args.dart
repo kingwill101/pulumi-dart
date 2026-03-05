@@ -12,19 +12,20 @@ class GetZonesArgs {
 
   /// Creates a new [GetZonesArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetZonesArgs({this.outputFile});
+  GetZonesArgs({
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'outputFile': ?outputFile};
+    return <String, dynamic>{
+      'outputFile': ?outputFile,
+    };
   }
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

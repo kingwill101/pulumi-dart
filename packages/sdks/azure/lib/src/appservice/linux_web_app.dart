@@ -229,125 +229,88 @@ import 'linux_web_app_sticky_settings.dart';
 class LinuxWebApp extends pulumi.CustomResource {
   /// A map of key-value pairs of App Settings.
   late final pulumi.Output<Map<String, String>?> appSettings;
-
   /// A `auth_settings` block as defined below.
   late final pulumi.Output<LinuxWebAppAuthSettings?> authSettings;
-
   /// An `auth_settings_v2` block as defined below.
   late final pulumi.Output<LinuxWebAppAuthSettingsV2?> authSettingsV2;
-
   /// A `backup` block as defined below.
   late final pulumi.Output<LinuxWebAppBackup?> backup;
-
   /// Should Client Affinity be enabled?
   late final pulumi.Output<bool?> clientAffinityEnabled;
-
   /// Should Client Certificates be enabled?
   late final pulumi.Output<bool?> clientCertificateEnabled;
-
   /// Paths to exclude when using client certificates, separated by ;
   late final pulumi.Output<String?> clientCertificateExclusionPaths;
-
   /// The Client Certificate mode. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. This property has no effect when `client_certificate_enabled` is `false`. Defaults to `Required`.
   late final pulumi.Output<String?> clientCertificateMode;
-
   /// One or more `connection_string` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> connectionStrings;
-
   /// The identifier used by App Service to perform domain ownership verification via DNS TXT record.
   late final pulumi.Output<String> customDomainVerificationId;
-
   /// The default hostname of the Linux Web App.
   late final pulumi.Output<String> defaultHostname;
-
   /// Should the Linux Web App be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// Should the default FTP Basic Authentication publishing profile be enabled. Defaults to `true`.
   late final pulumi.Output<bool?> ftpPublishBasicAuthenticationEnabled;
-
   /// The ID of the App Service Environment used by App Service.
   late final pulumi.Output<String> hostingEnvironmentId;
-
   /// Should the Linux Web App require HTTPS connections. Defaults to `false`.
   late final pulumi.Output<bool?> httpsOnly;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<LinuxWebAppIdentity?> identity;
-
   /// The User Assigned Identity ID used for accessing KeyVault secrets. The identity must be assigned to the application in the `identity` block. [For more information see - Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity).
   late final pulumi.Output<String> keyVaultReferenceIdentityId;
-
   /// The Kind value for this Linux Web App.
   late final pulumi.Output<String> kind;
-
   /// The Azure Region where the Linux Web App should exist. Changing this forces a new Linux Web App to be created.
   late final pulumi.Output<String> location;
-
   /// A `logs` block as defined below.
   late final pulumi.Output<LinuxWebAppLogs?> logs;
-
   /// The name which should be used for this Linux Web App. Changing this forces a new Linux Web App to be created.
   ///
   /// &gt; **Note:** Terraform will perform a name availability check as part of the creation progress, if this Web App is part of an App Service Environment terraform will require Read permission on the ASE for this to complete reliably.
   late final pulumi.Output<String> name;
-
   /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12"]`
   late final pulumi.Output<List<String>> outboundIpAddressLists;
-
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`.
   late final pulumi.Output<String> outboundIpAddresses;
-
   /// A list of possible outbound ip address.
   late final pulumi.Output<List<String>> possibleOutboundIpAddressLists;
-
   /// A comma-separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
   late final pulumi.Output<String> possibleOutboundIpAddresses;
-
   /// Should public network access be enabled for the Web App. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// The name of the Resource Group where the Linux Web App should exist. Changing this forces a new Linux Web App to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The ID of the Service Plan that this Linux App Service will be created in.
   late final pulumi.Output<String> servicePlanId;
-
   /// A `site_config` block as defined below.
   late final pulumi.Output<LinuxWebAppSiteConfig> siteConfig;
-
   /// A `site_credential` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
-
   /// A `sticky_settings` block as defined below.
   late final pulumi.Output<LinuxWebAppStickySettings?> stickySettings;
-
   /// One or more `storage_account` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
-
   /// A mapping of tags which should be assigned to the Linux Web App.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Whether backup and restore operations over the linked virtual network are enabled. Defaults to `false`.
   late final pulumi.Output<bool?> virtualNetworkBackupRestoreEnabled;
-
   /// The subnet id which will be used by this Web App for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   ///
   /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource app_service_virtual_network_swift_connection and in-line within this resource using the `virtual_network_subnet_id` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `app_service_virtual_network_swift_connection` then `ignore_changes` should be used in the web app configuration.
   ///
   /// &gt; **Note:** Assigning the `virtual_network_subnet_id` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
   late final pulumi.Output<String?> virtualNetworkSubnetId;
-
   /// Should the traffic for the image pull be routed over virtual network enabled. Defaults to `false`.
   ///
   /// &gt; **Note:** The feature can also be enabled via the app setting `WEBSITE_PULL_IMAGE_OVER_VNET`. Must be set to `true` when running in an App Service Environment.
   late final pulumi.Output<bool?> vnetImagePullEnabled;
-
   /// Should the default WebDeploy Basic Authentication publishing credentials enabled. Defaults to `true`.
   ///
   /// &gt; **Note:** Setting this value to true will disable the ability to use `zip_deploy_file` which currently relies on the default publishing profile.
   late final pulumi.Output<bool?> webdeployPublishBasicAuthenticationEnabled;
-
   /// The local path and filename of the Zip packaged application to deploy to this Linux Web App.
   ///
   /// &gt; **Note:** Using this value requires either `WEBSITE_RUN_FROM_PACKAGE=1` or `SCM_DO_BUILD_DURING_DEPLOYMENT=true` to be set on the App in `app_settings`. Refer to the Azure docs on [running the Web App directly from the Zip package](https://learn.microsoft.com/en-us/azure/app-service/deploy-run-package), or [automating the build for Zip deploy](https://learn.microsoft.com/en-us/azure/app-service/deploy-zip#enable-build-automation-for-zip-deploy) for further details.
@@ -362,139 +325,48 @@ class LinuxWebApp extends pulumi.CustomResource {
     LinuxWebAppArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/linuxWebApp:LinuxWebApp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/linuxWebApp:LinuxWebApp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appSettings = registerOutput<Map<String, String>?>('appSettings');
-    authSettings = registerOutput<LinuxWebAppAuthSettings?>(
-      'authSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxWebAppAuthSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    authSettingsV2 = registerOutput<LinuxWebAppAuthSettingsV2?>(
-      'authSettingsV2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxWebAppAuthSettingsV2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    backup = registerOutput<LinuxWebAppBackup?>(
-      'backup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxWebAppBackup.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authSettings = registerOutput<LinuxWebAppAuthSettings?>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authSettingsV2 = registerOutput<LinuxWebAppAuthSettingsV2?>('authSettingsV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppAuthSettingsV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backup = registerOutput<LinuxWebAppBackup?>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
-    clientCertificateEnabled = registerOutput<bool?>(
-      'clientCertificateEnabled',
-    );
-    clientCertificateExclusionPaths = registerOutput<String?>(
-      'clientCertificateExclusionPaths',
-    );
+    clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
+    clientCertificateExclusionPaths = registerOutput<String?>('clientCertificateExclusionPaths');
     clientCertificateMode = registerOutput<String?>('clientCertificateMode');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>?>(
-      'connectionStrings',
-    );
-    customDomainVerificationId = registerOutput<String>(
-      'customDomainVerificationId',
-    );
+    connectionStrings = registerOutput<List<Map<String, dynamic>>?>('connectionStrings');
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
     defaultHostname = registerOutput<String>('defaultHostname');
     enabled = registerOutput<bool?>('enabled');
-    ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>(
-      'ftpPublishBasicAuthenticationEnabled',
-    );
+    ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>('ftpPublishBasicAuthenticationEnabled');
     hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<LinuxWebAppIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxWebAppIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    keyVaultReferenceIdentityId = registerOutput<String>(
-      'keyVaultReferenceIdentityId',
-    );
+    identity = registerOutput<LinuxWebAppIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
-    logs = registerOutput<LinuxWebAppLogs?>(
-      'logs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxWebAppLogs.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logs = registerOutput<LinuxWebAppLogs?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    outboundIpAddressLists = registerOutput<List<String>>(
-      'outboundIpAddressLists',
-    );
+    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists');
     outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    possibleOutboundIpAddressLists = registerOutput<List<String>>(
-      'possibleOutboundIpAddressLists',
-    );
-    possibleOutboundIpAddresses = registerOutput<String>(
-      'possibleOutboundIpAddresses',
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists');
+    possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     servicePlanId = registerOutput<String>('servicePlanId');
-    siteConfig = registerOutput<LinuxWebAppSiteConfig>(
-      'siteConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxWebAppSiteConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>(
-      'siteCredentials',
-    );
-    stickySettings = registerOutput<LinuxWebAppStickySettings?>(
-      'stickySettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxWebAppStickySettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
-      'storageAccounts',
-    );
+    siteConfig = registerOutput<LinuxWebAppSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
+    stickySettings = registerOutput<LinuxWebAppStickySettings?>('stickySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppStickySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>('storageAccounts');
     tags = registerOutput<Map<String, String>?>('tags');
-    virtualNetworkBackupRestoreEnabled = registerOutput<bool?>(
-      'virtualNetworkBackupRestoreEnabled',
-    );
+    virtualNetworkBackupRestoreEnabled = registerOutput<bool?>('virtualNetworkBackupRestoreEnabled');
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
     vnetImagePullEnabled = registerOutput<bool?>('vnetImagePullEnabled');
-    webdeployPublishBasicAuthenticationEnabled = registerOutput<bool?>(
-      'webdeployPublishBasicAuthenticationEnabled',
-    );
+    webdeployPublishBasicAuthenticationEnabled = registerOutput<bool?>('webdeployPublishBasicAuthenticationEnabled');
     zipDeployFile = registerOutput<String>('zipDeployFile');
   }
 
@@ -516,139 +388,48 @@ class LinuxWebApp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/linuxWebApp:LinuxWebApp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/linuxWebApp:LinuxWebApp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appSettings = registerOutput<Map<String, String>?>('appSettings');
-    authSettings = registerOutput<LinuxWebAppAuthSettings?>(
-      'authSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxWebAppAuthSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    authSettingsV2 = registerOutput<LinuxWebAppAuthSettingsV2?>(
-      'authSettingsV2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxWebAppAuthSettingsV2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    backup = registerOutput<LinuxWebAppBackup?>(
-      'backup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxWebAppBackup.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authSettings = registerOutput<LinuxWebAppAuthSettings?>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authSettingsV2 = registerOutput<LinuxWebAppAuthSettingsV2?>('authSettingsV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppAuthSettingsV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backup = registerOutput<LinuxWebAppBackup?>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
-    clientCertificateEnabled = registerOutput<bool?>(
-      'clientCertificateEnabled',
-    );
-    clientCertificateExclusionPaths = registerOutput<String?>(
-      'clientCertificateExclusionPaths',
-    );
+    clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
+    clientCertificateExclusionPaths = registerOutput<String?>('clientCertificateExclusionPaths');
     clientCertificateMode = registerOutput<String?>('clientCertificateMode');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>?>(
-      'connectionStrings',
-    );
-    customDomainVerificationId = registerOutput<String>(
-      'customDomainVerificationId',
-    );
+    connectionStrings = registerOutput<List<Map<String, dynamic>>?>('connectionStrings');
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
     defaultHostname = registerOutput<String>('defaultHostname');
     enabled = registerOutput<bool?>('enabled');
-    ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>(
-      'ftpPublishBasicAuthenticationEnabled',
-    );
+    ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>('ftpPublishBasicAuthenticationEnabled');
     hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<LinuxWebAppIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxWebAppIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    keyVaultReferenceIdentityId = registerOutput<String>(
-      'keyVaultReferenceIdentityId',
-    );
+    identity = registerOutput<LinuxWebAppIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
-    logs = registerOutput<LinuxWebAppLogs?>(
-      'logs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxWebAppLogs.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logs = registerOutput<LinuxWebAppLogs?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    outboundIpAddressLists = registerOutput<List<String>>(
-      'outboundIpAddressLists',
-    );
+    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists');
     outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    possibleOutboundIpAddressLists = registerOutput<List<String>>(
-      'possibleOutboundIpAddressLists',
-    );
-    possibleOutboundIpAddresses = registerOutput<String>(
-      'possibleOutboundIpAddresses',
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists');
+    possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     servicePlanId = registerOutput<String>('servicePlanId');
-    siteConfig = registerOutput<LinuxWebAppSiteConfig>(
-      'siteConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxWebAppSiteConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>(
-      'siteCredentials',
-    );
-    stickySettings = registerOutput<LinuxWebAppStickySettings?>(
-      'stickySettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxWebAppStickySettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
-      'storageAccounts',
-    );
+    siteConfig = registerOutput<LinuxWebAppSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
+    stickySettings = registerOutput<LinuxWebAppStickySettings?>('stickySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppStickySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>('storageAccounts');
     tags = registerOutput<Map<String, String>?>('tags');
-    virtualNetworkBackupRestoreEnabled = registerOutput<bool?>(
-      'virtualNetworkBackupRestoreEnabled',
-    );
+    virtualNetworkBackupRestoreEnabled = registerOutput<bool?>('virtualNetworkBackupRestoreEnabled');
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
     vnetImagePullEnabled = registerOutput<bool?>('vnetImagePullEnabled');
-    webdeployPublishBasicAuthenticationEnabled = registerOutput<bool?>(
-      'webdeployPublishBasicAuthenticationEnabled',
-    );
+    webdeployPublishBasicAuthenticationEnabled = registerOutput<bool?>('webdeployPublishBasicAuthenticationEnabled');
     zipDeployFile = registerOutput<String>('zipDeployFile');
   }
 }

@@ -274,28 +274,20 @@ import 'cache_policy_state.dart';
 class CachePolicy extends pulumi.CustomResource {
   /// The cache policy ARN.
   late final pulumi.Output<String> arn;
-
   /// Description for the cache policy.
   late final pulumi.Output<String?> comment;
-
   /// Amount of time, in seconds, that objects are allowed to remain in the CloudFront cache before CloudFront sends a new request to the origin server to check if the object has been updated.
   late final pulumi.Output<int?> defaultTtl;
-
   /// Current version of the cache policy.
   late final pulumi.Output<String> etag;
-
   /// Maximum amount of time, in seconds, that objects stay in the CloudFront cache before CloudFront sends another request to the origin to see if the object has been updated.
   late final pulumi.Output<int?> maxTtl;
-
   /// Minimum amount of time, in seconds, that objects should remain in the CloudFront cache before a new request is sent to the origin to check for updates.
   late final pulumi.Output<int?> minTtl;
-
   /// Unique name used to identify the cache policy.
   late final pulumi.Output<String> name;
-
   /// Configuration for including HTTP headers, cookies, and URL query strings in the cache key. For more information, refer to the Parameters In Cache Key And Forwarded To Origin section.
-  late final pulumi.Output<CachePolicyParametersInCacheKeyAndForwardedToOrigin>
-  parametersInCacheKeyAndForwardedToOrigin;
+  late final pulumi.Output<CachePolicyParametersInCacheKeyAndForwardedToOrigin> parametersInCacheKeyAndForwardedToOrigin;
 
   /// Creates a new [CachePolicy].
   /// [name] The Pulumi resource name.
@@ -306,11 +298,11 @@ class CachePolicy extends pulumi.CustomResource {
     CachePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/cachePolicy:CachePolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/cachePolicy:CachePolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
     defaultTtl = registerOutput<int?>('defaultTtl');
@@ -318,17 +310,7 @@ class CachePolicy extends pulumi.CustomResource {
     maxTtl = registerOutput<int?>('maxTtl');
     minTtl = registerOutput<int?>('minTtl');
     this.name = registerOutput<String>('name');
-    parametersInCacheKeyAndForwardedToOrigin =
-        registerOutput<CachePolicyParametersInCacheKeyAndForwardedToOrigin>(
-          'parametersInCacheKeyAndForwardedToOrigin',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    parametersInCacheKeyAndForwardedToOrigin = registerOutput<CachePolicyParametersInCacheKeyAndForwardedToOrigin>('parametersInCacheKeyAndForwardedToOrigin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [CachePolicy] resource's state with the given [name] and [id].
@@ -349,11 +331,11 @@ class CachePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/cachePolicy:CachePolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/cachePolicy:CachePolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
     defaultTtl = registerOutput<int?>('defaultTtl');
@@ -361,16 +343,6 @@ class CachePolicy extends pulumi.CustomResource {
     maxTtl = registerOutput<int?>('maxTtl');
     minTtl = registerOutput<int?>('minTtl');
     this.name = registerOutput<String>('name');
-    parametersInCacheKeyAndForwardedToOrigin =
-        registerOutput<CachePolicyParametersInCacheKeyAndForwardedToOrigin>(
-          'parametersInCacheKeyAndForwardedToOrigin',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    parametersInCacheKeyAndForwardedToOrigin = registerOutput<CachePolicyParametersInCacheKeyAndForwardedToOrigin>('parametersInCacheKeyAndForwardedToOrigin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

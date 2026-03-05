@@ -7,17 +7,12 @@ import 'multiplex_program_multiplex_program_settings_video_settings.dart';
 class MultiplexProgramMultiplexProgramSettings {
   /// Enum for preferred channel pipeline. Options are `CURRENTLY_ACTIVE`, `PIPELINE_0`, or `PIPELINE_1`.
   final pulumi.Input<String> preferredChannelPipeline;
-
   /// Unique program number.
   final pulumi.Input<int> programNumber;
-
   /// Service Descriptor. See Service Descriptor for more details.
-  final pulumi.Input<MultiplexProgramMultiplexProgramSettingsServiceDescriptor>?
-  serviceDescriptor;
-
+  final pulumi.Input<MultiplexProgramMultiplexProgramSettingsServiceDescriptor>? serviceDescriptor;
   /// Video settings. See Video Settings for more details.
-  final pulumi.Input<MultiplexProgramMultiplexProgramSettingsVideoSettings>?
-  videoSettings;
+  final pulumi.Input<MultiplexProgramMultiplexProgramSettingsVideoSettings>? videoSettings;
 
   /// Creates a new [MultiplexProgramMultiplexProgramSettings].
   /// [preferredChannelPipeline] Enum for preferred channel pipeline. Options are `CURRENTLY_ACTIVE`, `PIPELINE_0`, or `PIPELINE_1`.
@@ -35,45 +30,18 @@ class MultiplexProgramMultiplexProgramSettings {
     return <String, dynamic>{
       'preferredChannelPipeline': preferredChannelPipeline,
       'programNumber': programNumber,
-      'serviceDescriptor':
-          ?pulumi.Input.mapOptionalInputValue<
-            MultiplexProgramMultiplexProgramSettingsServiceDescriptor,
-            Map<String, dynamic>
-          >(serviceDescriptor, (value) => value.toMap()),
-      'videoSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            MultiplexProgramMultiplexProgramSettingsVideoSettings,
-            Map<String, dynamic>
-          >(videoSettings, (value) => value.toMap()),
+      'serviceDescriptor': ?pulumi.Input.mapOptionalInputValue<MultiplexProgramMultiplexProgramSettingsServiceDescriptor, Map<String, dynamic>>(serviceDescriptor, (value) => value.toMap()),
+      'videoSettings': ?pulumi.Input.mapOptionalInputValue<MultiplexProgramMultiplexProgramSettingsVideoSettings, Map<String, dynamic>>(videoSettings, (value) => value.toMap()),
     };
   }
 
-  factory MultiplexProgramMultiplexProgramSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MultiplexProgramMultiplexProgramSettings.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramMultiplexProgramSettings(
-      preferredChannelPipeline: pulumi.Input.fromValue(
-        map['preferredChannelPipeline'] as String,
-      ),
+      preferredChannelPipeline: pulumi.Input.fromValue(map['preferredChannelPipeline'] as String),
       programNumber: pulumi.Input.fromValue(map['programNumber'] as int),
-      serviceDescriptor: (() {
-        final guardedValue = map['serviceDescriptor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MultiplexProgramMultiplexProgramSettingsServiceDescriptor.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      videoSettings: (() {
-        final guardedValue = map['videoSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MultiplexProgramMultiplexProgramSettingsVideoSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      serviceDescriptor: (() { final guardedValue = map['serviceDescriptor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MultiplexProgramMultiplexProgramSettingsServiceDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      videoSettings: (() { final guardedValue = map['videoSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MultiplexProgramMultiplexProgramSettingsVideoSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

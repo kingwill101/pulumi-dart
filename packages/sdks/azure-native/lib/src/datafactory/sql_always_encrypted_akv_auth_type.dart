@@ -16,3 +16,4 @@ enum SqlAlwaysEncryptedAkvAuthType {
     throw ArgumentError('Unknown SqlAlwaysEncryptedAkvAuthType value: $value');
   }
 }
+

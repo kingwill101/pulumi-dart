@@ -6,19 +6,12 @@ import 'v2models_intent_qna_intent_configuration_data_source_configuration_opens
 class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration {
   /// Endpoint of the OpenSearch domain.
   final pulumi.Input<String> domainEndpoint;
-
   /// Whether to return exact responses from OpenSearch. Defaults to `false`.
   final pulumi.Input<bool>? exactResponse;
-
   /// Configuration block for exact response fields. See `exact_response_fields`.
-  final pulumi.Input<
-    V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields
-  >?
-  exactResponseFields;
-
+  final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields>? exactResponseFields;
   /// List of fields to include in the response.
   final pulumi.Input<List<String>>? includeFields;
-
   /// Name of the OpenSearch index.
   final pulumi.Input<String> indexName;
 
@@ -40,41 +33,20 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfi
     return <String, dynamic>{
       'domainEndpoint': domainEndpoint,
       'exactResponse': ?exactResponse,
-      'exactResponseFields':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields,
-            Map<String, dynamic>
-          >(exactResponseFields, (value) => value.toMap()),
+      'exactResponseFields': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields, Map<String, dynamic>>(exactResponseFields, (value) => value.toMap()),
       'includeFields': ?includeFields,
       'indexName': indexName,
     };
   }
 
-  factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration(
       domainEndpoint: pulumi.Input.fromValue(map['domainEndpoint'] as String),
-      exactResponse: (() {
-        final guardedValue = map['exactResponse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      exactResponseFields: (() {
-        final guardedValue = map['exactResponseFields'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      includeFields: (() {
-        final guardedValue = map['includeFields'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      exactResponse: (() { final guardedValue = map['exactResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      exactResponseFields: (() { final guardedValue = map['exactResponseFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      includeFields: (() { final guardedValue = map['includeFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       indexName: pulumi.Input.fromValue(map['indexName'] as String),
     );
   }
 }
+

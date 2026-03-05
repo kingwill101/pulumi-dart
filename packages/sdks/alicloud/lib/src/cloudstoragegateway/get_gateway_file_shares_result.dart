@@ -6,7 +6,6 @@ import 'get_gateway_file_shares_share.dart';
 /// Result data returned by getGatewayFileShares.
 class GetGatewayFileSharesResult {
   final String gatewayId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -41,11 +40,7 @@ class GetGatewayFileSharesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'shares':
-          pulumi.Input.encodeList<
-            GetGatewayFileSharesShare,
-            Map<String, dynamic>
-          >(shares, (value) => value.toMap()),
+      'shares': pulumi.Input.encodeList<GetGatewayFileSharesShare, Map<String, dynamic>>(shares, (value) => value.toMap()),
     };
   }
 
@@ -54,23 +49,11 @@ class GetGatewayFileSharesResult {
       gatewayId: map['gatewayId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      shares: pulumi.Input.decodeList<GetGatewayFileSharesShare>(
-        map['shares']!,
-        (value) => GetGatewayFileSharesShare.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      shares: pulumi.Input.decodeList<GetGatewayFileSharesShare>(map['shares']!, (value) => GetGatewayFileSharesShare.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

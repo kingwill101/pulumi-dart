@@ -9,10 +9,14 @@ class StorageInformationResponse {
 
   /// Creates a new [StorageInformationResponse].
   /// [id] Fully qualified resource ID for the storage account.
-  StorageInformationResponse({required this.id});
+  StorageInformationResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory StorageInformationResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class StorageInformationResponse {
     );
   }
 }
+

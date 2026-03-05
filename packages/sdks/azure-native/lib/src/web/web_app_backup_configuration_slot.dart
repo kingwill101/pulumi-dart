@@ -17,28 +17,20 @@ import 'web_app_backup_configuration_slot_args.dart';
 class WebAppBackupConfigurationSlot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Name of the backup.
   late final pulumi.Output<String?> backupName;
-
   /// Schedule for the backup if it is executed periodically.
   late final pulumi.Output<BackupScheduleResponse?> backupSchedule;
-
   /// Databases included in the backup.
   late final pulumi.Output<List<Map<String, dynamic>>?> databases;
-
   /// True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
   late final pulumi.Output<bool?> enabled;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// SAS URL to the container.
   late final pulumi.Output<String> storageAccountUrl;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -51,23 +43,14 @@ class WebAppBackupConfigurationSlot extends pulumi.CustomResource {
     WebAppBackupConfigurationSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppBackupConfigurationSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppBackupConfigurationSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     backupName = registerOutput<String?>('backupName');
-    backupSchedule = registerOutput<BackupScheduleResponse?>(
-      'backupSchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupScheduleResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    backupSchedule = registerOutput<BackupScheduleResponse?>('backupSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     databases = registerOutput<List<Map<String, dynamic>>?>('databases');
     enabled = registerOutput<bool?>('enabled');
     kind = registerOutput<String?>('kind');

@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getFlavor.
 class GetFlavorResult {
   final String? description;
   final int? disk;
-
   /// Key/Value pairs of metadata for the flavor.
   final Map<String, String> extraSpecs;
   final String? flavorId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? isPublic;
@@ -74,64 +73,21 @@ class GetFlavorResult {
 
   factory GetFlavorResult.fromMap(Map<String, dynamic> map) {
     return GetFlavorResult(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      disk: (() {
-        final guardedValue = map['disk'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      disk: (() { final guardedValue = map['disk']; if (guardedValue == null) return null; return guardedValue as int; })(),
       extraSpecs: (map['extraSpecs'] as Map).cast<String, String>(),
-      flavorId: (() {
-        final guardedValue = map['flavorId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      flavorId: (() { final guardedValue = map['flavorId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      isPublic: (() {
-        final guardedValue = map['isPublic'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      minDisk: (() {
-        final guardedValue = map['minDisk'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      minRam: (() {
-        final guardedValue = map['minRam'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      ram: (() {
-        final guardedValue = map['ram'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      isPublic: (() { final guardedValue = map['isPublic']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      minDisk: (() { final guardedValue = map['minDisk']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      minRam: (() { final guardedValue = map['minRam']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ram: (() { final guardedValue = map['ram']; if (guardedValue == null) return null; return guardedValue as int; })(),
       region: map['region'] as String,
-      rxTxFactor: (() {
-        final guardedValue = map['rxTxFactor'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
-      swap: (() {
-        final guardedValue = map['swap'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      vcpus: (() {
-        final guardedValue = map['vcpus'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      rxTxFactor: (() { final guardedValue = map['rxTxFactor']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      swap: (() { final guardedValue = map['swap']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      vcpus: (() { final guardedValue = map['vcpus']; if (guardedValue == null) return null; return guardedValue as int; })(),
     );
   }
 }
+

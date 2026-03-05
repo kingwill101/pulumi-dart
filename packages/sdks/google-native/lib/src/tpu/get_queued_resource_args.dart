@@ -32,14 +32,9 @@ class GetQueuedResourceArgs {
   factory GetQueuedResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetQueuedResourceArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      queuedResourceId: pulumi.Input.fromValue(
-        map['queuedResourceId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      queuedResourceId: pulumi.Input.fromValue(map['queuedResourceId'] as String),
     );
   }
 }
+

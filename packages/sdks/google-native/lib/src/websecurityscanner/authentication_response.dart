@@ -9,10 +9,8 @@ import 'iap_credential_response.dart';
 class AuthenticationResponse {
   /// Authentication using a custom account.
   final pulumi.Input<CustomAccountResponse> customAccount;
-
   /// Authentication using a Google account.
   final pulumi.Input<GoogleAccountResponse> googleAccount;
-
   /// Authentication using Identity-Aware-Proxy (IAP).
   final pulumi.Input<IapCredentialResponse> iapCredential;
 
@@ -28,41 +26,18 @@ class AuthenticationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customAccount':
-          pulumi.Input.mapInputValue<
-            CustomAccountResponse,
-            Map<String, dynamic>
-          >(customAccount, (value) => value.toMap()),
-      'googleAccount':
-          pulumi.Input.mapInputValue<
-            GoogleAccountResponse,
-            Map<String, dynamic>
-          >(googleAccount, (value) => value.toMap()),
-      'iapCredential':
-          pulumi.Input.mapInputValue<
-            IapCredentialResponse,
-            Map<String, dynamic>
-          >(iapCredential, (value) => value.toMap()),
+      'customAccount': pulumi.Input.mapInputValue<CustomAccountResponse, Map<String, dynamic>>(customAccount, (value) => value.toMap()),
+      'googleAccount': pulumi.Input.mapInputValue<GoogleAccountResponse, Map<String, dynamic>>(googleAccount, (value) => value.toMap()),
+      'iapCredential': pulumi.Input.mapInputValue<IapCredentialResponse, Map<String, dynamic>>(iapCredential, (value) => value.toMap()),
     };
   }
 
   factory AuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationResponse(
-      customAccount: pulumi.Input.fromValue(
-        CustomAccountResponse.fromMap(
-          (map['customAccount']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      googleAccount: pulumi.Input.fromValue(
-        GoogleAccountResponse.fromMap(
-          (map['googleAccount']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      iapCredential: pulumi.Input.fromValue(
-        IapCredentialResponse.fromMap(
-          (map['iapCredential']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      customAccount: pulumi.Input.fromValue(CustomAccountResponse.fromMap((map['customAccount']! as Map).cast<String, dynamic>())),
+      googleAccount: pulumi.Input.fromValue(GoogleAccountResponse.fromMap((map['googleAccount']! as Map).cast<String, dynamic>())),
+      iapCredential: pulumi.Input.fromValue(IapCredentialResponse.fromMap((map['iapCredential']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

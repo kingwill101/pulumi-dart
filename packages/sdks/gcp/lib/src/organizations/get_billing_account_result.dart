@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getBillingAccount.
 class GetBillingAccountResult {
   final String? billingAccount;
-
   /// The currency code of the billing account, e.g. `USD`.
   final String currencyCode;
   final String displayName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? lookupProjects;
-
   /// The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
   final String name;
   final bool open;
-
   /// The IDs of any projects associated with the billing account. `lookup_projects` must not be false
   /// for this to be populated.
   final List<String> projectIds;
@@ -55,22 +52,15 @@ class GetBillingAccountResult {
 
   factory GetBillingAccountResult.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountResult(
-      billingAccount: (() {
-        final guardedValue = map['billingAccount'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      billingAccount: (() { final guardedValue = map['billingAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
       currencyCode: map['currencyCode'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
-      lookupProjects: (() {
-        final guardedValue = map['lookupProjects'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      lookupProjects: (() { final guardedValue = map['lookupProjects']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: map['name'] as String,
       open: map['open'] as bool,
       projectIds: (map['projectIds'] as List).cast<String>(),
     );
   }
 }
+

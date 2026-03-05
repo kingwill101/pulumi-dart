@@ -9,19 +9,20 @@ class SecretResponse {
 
   /// Creates a new [SecretResponse].
   /// [name] Secret Name.
-  SecretResponse({this.name});
+  SecretResponse({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory SecretResponse.fromMap(Map<String, dynamic> map) {
     return SecretResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

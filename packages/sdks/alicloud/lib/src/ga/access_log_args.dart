@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessLogArgs {
   /// The ID of the global acceleration instance.
   final pulumi.Input<String> acceleratorId;
-
   /// The ID of the endpoint group instance.
   final pulumi.Input<String> endpointGroupId;
-
   /// The ID of the listener.
   final pulumi.Input<String> listenerId;
-
   /// The name of the Log Store.
   final pulumi.Input<String> slsLogStoreName;
-
   /// The name of the Log Service project.
   final pulumi.Input<String> slsProjectName;
-
   /// The region ID of the Log Service project.
   final pulumi.Input<String> slsRegionId;
 
@@ -63,3 +58,4 @@ class AccessLogArgs {
     );
   }
 }
+

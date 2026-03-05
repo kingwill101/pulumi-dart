@@ -33,24 +33,13 @@ class GetServerTlsPolicyIamPolicyNetworksecurityV1beta1Args {
     };
   }
 
-  factory GetServerTlsPolicyIamPolicyNetworksecurityV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServerTlsPolicyIamPolicyNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetServerTlsPolicyIamPolicyNetworksecurityV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverTlsPolicyId: pulumi.Input.fromValue(
-        map['serverTlsPolicyId'] as String,
-      ),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverTlsPolicyId: pulumi.Input.fromValue(map['serverTlsPolicyId'] as String),
     );
   }
 }
+

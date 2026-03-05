@@ -10,42 +10,29 @@ import 'get_release_labels_filters.dart';
 class GetReleaseLabelsArgs {
   /// Filters the results of the request. Prefix specifies the prefix of release labels to return. Application specifies the application (with/without version) of release labels to return. See Filters.
   final pulumi.Input<GetReleaseLabelsFilters>? filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetReleaseLabelsArgs].
   /// [filters] Filters the results of the request. Prefix specifies the prefix of release labels to return. Application specifies the application (with/without version) of release labels to return. See Filters.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetReleaseLabelsArgs({this.filters, this.region});
+  GetReleaseLabelsArgs({
+    this.filters,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            GetReleaseLabelsFilters,
-            Map<String, dynamic>
-          >(filters, (value) => value.toMap()),
+      'filters': ?pulumi.Input.mapOptionalInputValue<GetReleaseLabelsFilters, Map<String, dynamic>>(filters, (value) => value.toMap()),
       'region': ?region,
     };
   }
 
   factory GetReleaseLabelsArgs.fromMap(Map<String, dynamic> map) {
     return GetReleaseLabelsArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GetReleaseLabelsFilters.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetReleaseLabelsFilters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

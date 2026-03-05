@@ -273,16 +273,12 @@ import 'connection_state.dart';
 class Connection extends pulumi.CustomResource {
   /// Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `&lt;db_cluster_id&gt; + tf`.
   late final pulumi.Output<String> connectionPrefix;
-
   /// Connection cluster string.
   late final pulumi.Output<String> connectionString;
-
   /// The Id of cluster that can run database.
   late final pulumi.Output<String> dbClusterId;
-
   /// The ip address of connection string.
   late final pulumi.Output<String> ipAddress;
-
   /// Connection cluster port.
   late final pulumi.Output<String> port;
 
@@ -295,11 +291,11 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:adb/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:adb/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionPrefix = registerOutput<String>('connectionPrefix');
     connectionString = registerOutput<String>('connectionString');
     dbClusterId = registerOutput<String>('dbClusterId');
@@ -325,11 +321,11 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:adb/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:adb/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionPrefix = registerOutput<String>('connectionPrefix');
     connectionString = registerOutput<String>('connectionString');
     dbClusterId = registerOutput<String>('dbClusterId');

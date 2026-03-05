@@ -9,31 +9,22 @@ import 'system_data_response.dart';
 class GetManagedHsmResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The Azure Resource Manager resource ID for the managed HSM Pool.
   final String id;
-
   /// Managed service identity (system assigned and/or user assigned identities)
   final ManagedServiceIdentityResponse? identity;
-
   /// The supported Azure location where the managed HSM Pool should be created.
   final String? location;
-
   /// The name of the managed HSM Pool.
   final String name;
-
   /// Properties of the managed HSM
   final ManagedHsmPropertiesResponse properties;
-
   /// SKU details
   final ManagedHsmSkuResponse? sku;
-
   /// Metadata pertaining to creation and last modification of the key vault resource.
   final SystemDataResponse systemData;
-
   /// Resource tags
   final Map<String, String>? tags;
-
   /// The resource type of the managed HSM Pool.
   final String type;
 
@@ -80,38 +71,15 @@ class GetManagedHsmResult {
     return GetManagedHsmResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: ManagedHsmPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return ManagedHsmSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: ManagedHsmPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return ManagedHsmSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

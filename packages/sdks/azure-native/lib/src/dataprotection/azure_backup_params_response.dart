@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureBackupParamsResponse {
   /// BackupType ; Full/Incremental etc
   final pulumi.Input<String> backupType;
-
   /// Type of the specific object - used for deserializing
   /// Expected value is 'AzureBackupParams'.
   final pulumi.Input<String> objectType;
@@ -33,3 +32,4 @@ class AzureBackupParamsResponse {
     );
   }
 }
+

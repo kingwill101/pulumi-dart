@@ -32,12 +32,9 @@ class GetRegionDiskComputeV1Args {
   factory GetRegionDiskComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionDiskComputeV1Args(
       disk: pulumi.Input.fromValue(map['disk'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

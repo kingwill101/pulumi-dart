@@ -12,7 +12,9 @@ class GetAlertsSuppressionRuleArgs {
 
   /// Creates a new [GetAlertsSuppressionRuleArgs].
   /// [alertsSuppressionRuleName] The unique name of the suppression alert rule
-  GetAlertsSuppressionRuleArgs({required this.alertsSuppressionRuleName});
+  GetAlertsSuppressionRuleArgs({
+    required this.alertsSuppressionRuleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,9 +24,8 @@ class GetAlertsSuppressionRuleArgs {
 
   factory GetAlertsSuppressionRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertsSuppressionRuleArgs(
-      alertsSuppressionRuleName: pulumi.Input.fromValue(
-        map['alertsSuppressionRuleName'] as String,
-      ),
+      alertsSuppressionRuleName: pulumi.Input.fromValue(map['alertsSuppressionRuleName'] as String),
     );
   }
 }
+

@@ -8,13 +8,10 @@ import 'persistent_disk_response_vmmigration_v1alpha1.dart';
 class ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1 {
   /// The details of each created Persistent Disk.
   final pulumi.Input<List<PersistentDiskResponseVmmigrationV1alpha1>> disks;
-
   /// Details of the disks-only migration target.
   final pulumi.Input<Map<String, dynamic>> disksTargetDetails;
-
   /// Details for the VM the migrated data disks are attached to.
-  final pulumi.Input<DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1>
-  vmTargetDetails;
+  final pulumi.Input<DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1> vmTargetDetails;
 
   /// Creates a new [ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1].
   /// [disks] The details of each created Persistent Disk.
@@ -28,47 +25,18 @@ class ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disks':
-          pulumi.Input.mapInputValue<
-            List<PersistentDiskResponseVmmigrationV1alpha1>,
-            List<Map<String, dynamic>>
-          >(
-            disks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PersistentDiskResponseVmmigrationV1alpha1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'disks': pulumi.Input.mapInputValue<List<PersistentDiskResponseVmmigrationV1alpha1>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<PersistentDiskResponseVmmigrationV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'disksTargetDetails': disksTargetDetails,
-      'vmTargetDetails':
-          pulumi.Input.mapInputValue<
-            DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1,
-            Map<String, dynamic>
-          >(vmTargetDetails, (value) => value.toMap()),
+      'vmTargetDetails': pulumi.Input.mapInputValue<DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1, Map<String, dynamic>>(vmTargetDetails, (value) => value.toMap()),
     };
   }
 
-  factory ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1(
-      disks: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<PersistentDiskResponseVmmigrationV1alpha1>(
-          map['disks']!,
-          (value) => PersistentDiskResponseVmmigrationV1alpha1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      disksTargetDetails: pulumi.Input.fromValue(
-        (map['disksTargetDetails']! as Map).cast<String, dynamic>(),
-      ),
-      vmTargetDetails: pulumi.Input.fromValue(
-        DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1.fromMap(
-          (map['vmTargetDetails']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      disks: pulumi.Input.fromValue(pulumi.Input.decodeList<PersistentDiskResponseVmmigrationV1alpha1>(map['disks']!, (value) => PersistentDiskResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>()))),
+      disksTargetDetails: pulumi.Input.fromValue((map['disksTargetDetails']! as Map).cast<String, dynamic>()),
+      vmTargetDetails: pulumi.Input.fromValue(DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1.fromMap((map['vmTargetDetails']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

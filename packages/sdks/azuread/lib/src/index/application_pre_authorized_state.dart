@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationPreAuthorizedState {
   /// The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
   final pulumi.Input<String>? applicationId;
-
   /// The client ID of the application being authorized. Changing this field forces a new resource to be created.
   final pulumi.Input<String>? authorizedClientId;
-
   /// A set of permission scope IDs required by the authorized application.
   final pulumi.Input<List<String>>? permissionIds;
 
@@ -33,21 +31,10 @@ class ApplicationPreAuthorizedState {
 
   factory ApplicationPreAuthorizedState.fromMap(Map<String, dynamic> map) {
     return ApplicationPreAuthorizedState(
-      applicationId: (() {
-        final guardedValue = map['applicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      authorizedClientId: (() {
-        final guardedValue = map['authorizedClientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      permissionIds: (() {
-        final guardedValue = map['permissionIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authorizedClientId: (() { final guardedValue = map['authorizedClientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      permissionIds: (() { final guardedValue = map['permissionIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

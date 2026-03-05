@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBundlesBundleDesktopTypeAttribute {
   /// The cpu count attribute of the bundle.
   final pulumi.Input<int> cpuCount;
-
   /// The gpu count attribute of the bundle.
   final pulumi.Input<String> gpuCount;
-
   /// The gpu spec attribute of the bundle.
   final pulumi.Input<String> gpuSpec;
-
   /// The memory size attribute of the bundle.
   final pulumi.Input<String> memorySize;
 
@@ -36,9 +33,7 @@ class GetBundlesBundleDesktopTypeAttribute {
     };
   }
 
-  factory GetBundlesBundleDesktopTypeAttribute.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBundlesBundleDesktopTypeAttribute.fromMap(Map<String, dynamic> map) {
     return GetBundlesBundleDesktopTypeAttribute(
       cpuCount: pulumi.Input.fromValue(map['cpuCount'] as int),
       gpuCount: pulumi.Input.fromValue(map['gpuCount'] as String),
@@ -47,3 +42,4 @@ class GetBundlesBundleDesktopTypeAttribute {
     );
   }
 }
+

@@ -7,70 +7,29 @@ import 'monitoring_destination.dart';
 class Monitoring {
   /// Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
   final pulumi.Input<List<MonitoringDestination>>? consumerDestinations;
-
   /// Monitoring configurations for sending metrics to the producer project. There can be multiple producer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
   final pulumi.Input<List<MonitoringDestination>>? producerDestinations;
 
   /// Creates a new [Monitoring].
   /// [consumerDestinations] Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
   /// [producerDestinations] Monitoring configurations for sending metrics to the producer project. There can be multiple producer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
-  Monitoring({this.consumerDestinations, this.producerDestinations});
+  Monitoring({
+    this.consumerDestinations,
+    this.producerDestinations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'consumerDestinations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<MonitoringDestination>,
-            List<Map<String, dynamic>>
-          >(
-            consumerDestinations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MonitoringDestination,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'producerDestinations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<MonitoringDestination>,
-            List<Map<String, dynamic>>
-          >(
-            producerDestinations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MonitoringDestination,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'consumerDestinations': ?pulumi.Input.mapOptionalInputValue<List<MonitoringDestination>, List<Map<String, dynamic>>>(consumerDestinations, (value) => pulumi.Input.encodeList<MonitoringDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'producerDestinations': ?pulumi.Input.mapOptionalInputValue<List<MonitoringDestination>, List<Map<String, dynamic>>>(producerDestinations, (value) => pulumi.Input.encodeList<MonitoringDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory Monitoring.fromMap(Map<String, dynamic> map) {
     return Monitoring(
-      consumerDestinations: (() {
-        final guardedValue = map['consumerDestinations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<MonitoringDestination>(
-            guardedValue,
-            (value) => MonitoringDestination.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      producerDestinations: (() {
-        final guardedValue = map['producerDestinations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<MonitoringDestination>(
-            guardedValue,
-            (value) => MonitoringDestination.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      consumerDestinations: (() { final guardedValue = map['consumerDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MonitoringDestination>(guardedValue, (value) => MonitoringDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      producerDestinations: (() { final guardedValue = map['producerDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MonitoringDestination>(guardedValue, (value) => MonitoringDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

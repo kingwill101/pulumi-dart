@@ -369,7 +369,6 @@ import 'network_interface_security_group_association_state.dart';
 class NetworkInterfaceSecurityGroupAssociation extends pulumi.CustomResource {
   /// The ID of the Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkInterfaceId;
-
   /// The ID of the Network Security Group which should be attached to the Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkSecurityGroupId;
 
@@ -382,11 +381,11 @@ class NetworkInterfaceSecurityGroupAssociation extends pulumi.CustomResource {
     NetworkInterfaceSecurityGroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkInterfaceSecurityGroupAssociation:NetworkInterfaceSecurityGroupAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkInterfaceSecurityGroupAssociation:NetworkInterfaceSecurityGroupAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
   }
@@ -409,11 +408,11 @@ class NetworkInterfaceSecurityGroupAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkInterfaceSecurityGroupAssociation:NetworkInterfaceSecurityGroupAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkInterfaceSecurityGroupAssociation:NetworkInterfaceSecurityGroupAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
   }

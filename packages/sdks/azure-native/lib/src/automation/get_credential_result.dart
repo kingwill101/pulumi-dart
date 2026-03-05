@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCredential.
 class GetCredentialResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets the creation time.
   final String creationTime;
-
   /// Gets or sets the description.
   final String? description;
-
   /// Fully qualified resource Id for the resource
   final String id;
-
   /// Gets the last modified time.
   final String lastModifiedTime;
-
   /// The name of the resource
   final String name;
-
   /// The type of the resource.
   final String type;
-
   /// Gets the user name of the credential.
   final String userName;
 
@@ -63,11 +57,7 @@ class GetCredentialResult {
     return GetCredentialResult(
       azureApiVersion: map['azureApiVersion'] as String,
       creationTime: map['creationTime'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       lastModifiedTime: map['lastModifiedTime'] as String,
       name: map['name'] as String,
@@ -76,3 +66,4 @@ class GetCredentialResult {
     );
   }
 }
+

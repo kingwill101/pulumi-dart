@@ -32,16 +32,9 @@ class GetMonitorGroupInstancesArgs {
   factory GetMonitorGroupInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetMonitorGroupInstancesArgs(
       ids: pulumi.Input.fromValue(map['ids'] as String),
-      keyword: (() {
-        final guardedValue = map['keyword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyword: (() { final guardedValue = map['keyword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

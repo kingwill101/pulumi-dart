@@ -10,25 +10,20 @@ class PrincipalInfoResponse {
 
   /// Creates a new [PrincipalInfoResponse].
   /// [serviceAccount] A GCP service account.
-  PrincipalInfoResponse({required this.serviceAccount});
+  PrincipalInfoResponse({
+    required this.serviceAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serviceAccount':
-          pulumi.Input.mapInputValue<
-            ServiceAccountResponse,
-            Map<String, dynamic>
-          >(serviceAccount, (value) => value.toMap()),
+      'serviceAccount': pulumi.Input.mapInputValue<ServiceAccountResponse, Map<String, dynamic>>(serviceAccount, (value) => value.toMap()),
     };
   }
 
   factory PrincipalInfoResponse.fromMap(Map<String, dynamic> map) {
     return PrincipalInfoResponse(
-      serviceAccount: pulumi.Input.fromValue(
-        ServiceAccountResponse.fromMap(
-          (map['serviceAccount']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      serviceAccount: pulumi.Input.fromValue(ServiceAccountResponse.fromMap((map['serviceAccount']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

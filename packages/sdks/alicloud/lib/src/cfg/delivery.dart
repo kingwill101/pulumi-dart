@@ -288,12 +288,10 @@ class Delivery extends pulumi.CustomResource {
   /// - true: The specified destination receives resource change logs.
   /// - false: The specified destination does not receive resource change logs.
   late final pulumi.Output<bool?> configurationItemChangeNotification;
-
   /// Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
   /// - true: The specified destination receives scheduled resource snapshots.
   /// - false: The specified destination does not receive scheduled resource snapshots.
   late final pulumi.Output<bool?> configurationSnapshot;
-
   /// The rule that is attached to the delivery channel.
   ///
   /// This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
@@ -306,33 +304,26 @@ class Delivery extends pulumi.CustomResource {
   ///
   /// Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
   late final pulumi.Output<String?> deliveryChannelCondition;
-
   /// The name of the delivery channel.
   late final pulumi.Output<String?> deliveryChannelName;
-
   /// The ARN of the delivery destination.
   /// - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
   /// - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
   /// - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
   late final pulumi.Output<String> deliveryChannelTargetArn;
-
   /// The type of the delivery channel. Valid values:
   /// - OSS: Object Storage Service (OSS)
   /// - MNS: Message Service (MNS)
   /// - SLS: Log Service
   late final pulumi.Output<String> deliveryChannelType;
-
   /// The description of the delivery channel.
   late final pulumi.Output<String?> description;
-
   /// Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
   /// - true: The specified destination receives resource non-compliance events.
   /// - false: The specified destination does not receive resource non-compliance events.
   late final pulumi.Output<bool?> nonCompliantNotification;
-
   /// The oss ARN of the delivery channel when the value data oversized limit.  The value must be in one of the following formats:  acs:oss:{RegionId}:{Aliuid}:{bucketName} if your delivery destination is an Object Storage Service (OSS) bucket.
   late final pulumi.Output<String?> oversizedDataOssTargetArn;
-
   /// The status of the delivery channel. Valid values:
   /// - 0: The delivery channel is disabled.
   /// - 1: The delivery channel is enabled.
@@ -347,30 +338,20 @@ class Delivery extends pulumi.CustomResource {
     DeliveryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/delivery:Delivery',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configurationItemChangeNotification = registerOutput<bool?>(
-      'configurationItemChangeNotification',
-    );
+          'alicloud:cfg/delivery:Delivery',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configurationItemChangeNotification = registerOutput<bool?>('configurationItemChangeNotification');
     configurationSnapshot = registerOutput<bool?>('configurationSnapshot');
-    deliveryChannelCondition = registerOutput<String?>(
-      'deliveryChannelCondition',
-    );
+    deliveryChannelCondition = registerOutput<String?>('deliveryChannelCondition');
     deliveryChannelName = registerOutput<String?>('deliveryChannelName');
-    deliveryChannelTargetArn = registerOutput<String>(
-      'deliveryChannelTargetArn',
-    );
+    deliveryChannelTargetArn = registerOutput<String>('deliveryChannelTargetArn');
     deliveryChannelType = registerOutput<String>('deliveryChannelType');
     description = registerOutput<String?>('description');
-    nonCompliantNotification = registerOutput<bool?>(
-      'nonCompliantNotification',
-    );
-    oversizedDataOssTargetArn = registerOutput<String?>(
-      'oversizedDataOssTargetArn',
-    );
+    nonCompliantNotification = registerOutput<bool?>('nonCompliantNotification');
+    oversizedDataOssTargetArn = registerOutput<String?>('oversizedDataOssTargetArn');
     status = registerOutput<int>('status');
   }
 
@@ -392,30 +373,20 @@ class Delivery extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/delivery:Delivery',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configurationItemChangeNotification = registerOutput<bool?>(
-      'configurationItemChangeNotification',
-    );
+          'alicloud:cfg/delivery:Delivery',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configurationItemChangeNotification = registerOutput<bool?>('configurationItemChangeNotification');
     configurationSnapshot = registerOutput<bool?>('configurationSnapshot');
-    deliveryChannelCondition = registerOutput<String?>(
-      'deliveryChannelCondition',
-    );
+    deliveryChannelCondition = registerOutput<String?>('deliveryChannelCondition');
     deliveryChannelName = registerOutput<String?>('deliveryChannelName');
-    deliveryChannelTargetArn = registerOutput<String>(
-      'deliveryChannelTargetArn',
-    );
+    deliveryChannelTargetArn = registerOutput<String>('deliveryChannelTargetArn');
     deliveryChannelType = registerOutput<String>('deliveryChannelType');
     description = registerOutput<String?>('description');
-    nonCompliantNotification = registerOutput<bool?>(
-      'nonCompliantNotification',
-    );
-    oversizedDataOssTargetArn = registerOutput<String?>(
-      'oversizedDataOssTargetArn',
-    );
+    nonCompliantNotification = registerOutput<bool?>('nonCompliantNotification');
+    oversizedDataOssTargetArn = registerOutput<String?>('oversizedDataOssTargetArn');
     status = registerOutput<int>('status');
   }
 }

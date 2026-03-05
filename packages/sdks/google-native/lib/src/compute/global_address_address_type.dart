@@ -17,3 +17,4 @@ enum GlobalAddressAddressType {
     throw ArgumentError('Unknown GlobalAddressAddressType value: $value');
   }
 }
+

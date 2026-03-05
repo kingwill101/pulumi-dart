@@ -15,3 +15,4 @@ enum SchedulingStrategy {
     throw ArgumentError('Unknown SchedulingStrategy value: $value');
   }
 }
+

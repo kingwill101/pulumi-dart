@@ -20,19 +20,20 @@ class ManagedKubernetesUpgradePolicy {
 
   /// Creates a new [ManagedKubernetesUpgradePolicy].
   /// [controlPlaneOnly] Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
-  ManagedKubernetesUpgradePolicy({this.controlPlaneOnly});
+  ManagedKubernetesUpgradePolicy({
+    this.controlPlaneOnly,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'controlPlaneOnly': ?controlPlaneOnly};
+    return <String, dynamic>{
+      'controlPlaneOnly': ?controlPlaneOnly,
+    };
   }
 
   factory ManagedKubernetesUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return ManagedKubernetesUpgradePolicy(
-      controlPlaneOnly: (() {
-        final guardedValue = map['controlPlaneOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      controlPlaneOnly: (() { final guardedValue = map['controlPlaneOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

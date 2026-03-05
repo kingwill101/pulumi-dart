@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DispatchRuleNotifyRuleNotifyObject {
   /// The name of the contact or contact group.
   final pulumi.Input<String> name;
-
   /// The ID of the contact or contact group.
   final pulumi.Input<String> notifyObjectId;
-
   /// The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
   final pulumi.Input<String> notifyType;
 
@@ -38,3 +36,4 @@ class DispatchRuleNotifyRuleNotifyObject {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPoolArgs {
   /// The Batch Account name associated with the Batch pool.
   final pulumi.Input<String> accountName;
-
   /// The name of the Batch pool.
   final pulumi.Input<String> name;
-
   /// The name of the resource group in which the Batch pool exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetPoolArgs {
     return GetPoolArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

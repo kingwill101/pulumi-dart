@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse {
   /// A unique key that will be sent back to the agent if this response is given.
   final pulumi.Input<String> key;
-
   /// Optional. A list of synonyms that can also be used to trigger this item in dialog.
   final pulumi.Input<List<String>> synonyms;
 
@@ -19,17 +18,17 @@ class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'synonyms': synonyms};
+    return <String, dynamic>{
+      'key': key,
+      'synonyms': synonyms,
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse(
       key: pulumi.Input.fromValue(map['key'] as String),
-      synonyms: pulumi.Input.fromValue(
-        (map['synonyms'] as List).cast<String>(),
-      ),
+      synonyms: pulumi.Input.fromValue((map['synonyms'] as List).cast<String>()),
     );
   }
 }
+

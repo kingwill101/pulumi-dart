@@ -13,18 +13,15 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingC
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maxRuntimeInSeconds': ?maxRuntimeInSeconds};
+    return <String, dynamic>{
+      'maxRuntimeInSeconds': ?maxRuntimeInSeconds,
+    };
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition(
-      maxRuntimeInSeconds: (() {
-        final guardedValue = map['maxRuntimeInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxRuntimeInSeconds: (() { final guardedValue = map['maxRuntimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

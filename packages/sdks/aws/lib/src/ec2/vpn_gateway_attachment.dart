@@ -172,10 +172,8 @@ import 'vpn_gateway_attachment_state.dart';
 class VpnGatewayAttachment extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the VPC.
   late final pulumi.Output<String> vpcId;
-
   /// The ID of the Virtual Private Gateway.
   late final pulumi.Output<String> vpnGatewayId;
 
@@ -188,11 +186,11 @@ class VpnGatewayAttachment extends pulumi.CustomResource {
     VpnGatewayAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
     vpcId = registerOutput<String>('vpcId');
     vpnGatewayId = registerOutput<String>('vpnGatewayId');
@@ -216,11 +214,11 @@ class VpnGatewayAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
     vpcId = registerOutput<String>('vpcId');
     vpnGatewayId = registerOutput<String>('vpnGatewayId');

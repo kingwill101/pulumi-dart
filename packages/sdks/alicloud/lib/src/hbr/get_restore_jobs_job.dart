@@ -5,89 +5,62 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRestoreJobsJob {
   /// The actual size of Snapshot.
   final pulumi.Input<String> actualBytes;
-
   /// The actual number of files.
   final pulumi.Input<String> actualItems;
-
   /// The size of restore job recovered.
   final pulumi.Input<String> bytesDone;
-
   /// The total size of restore job recovered.
   final pulumi.Input<String> bytesTotal;
-
   /// The completion time of restore Job.
   final pulumi.Input<String> completeTime;
-
   /// The creation time of restore job.
   final pulumi.Input<String> createTime;
   final pulumi.Input<String> errorFile;
-
   /// The error message of recovery task execution.
   final pulumi.Input<String> errorMessage;
-
   /// The expiration time of restore job. Unix Time in seconds.
   final pulumi.Input<String> expireTime;
-
   /// The ID of the restore job.
   final pulumi.Input<String> id;
-
   /// The number of items restore job recovered.
   final pulumi.Input<String> itemsDone;
-
   /// The total number of items restore job recovered.
   final pulumi.Input<String> itemsTotal;
-
   /// Recovery Options.
   final pulumi.Input<String> options;
   final pulumi.Input<String> parentId;
-
   /// The recovery progress.
   final pulumi.Input<int> progress;
-
   /// The ID of restore job.
   final pulumi.Input<String> restoreJobId;
-
   /// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
   final pulumi.Input<String> restoreType;
-
   /// The hashcode of Snapshot.
   final pulumi.Input<String> snapshotHash;
-
   /// The ID of Snapshot.
   final pulumi.Input<String> snapshotId;
-
   /// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
   final pulumi.Input<String> sourceType;
-
   /// The start time of restore job. Unix Time in Seconds.
   final pulumi.Input<String> startTime;
-
   /// The status of restore job.
   final pulumi.Input<String> status;
-
   /// The name of target ofo OSS bucket.
   final pulumi.Input<String> targetBucket;
   final pulumi.Input<String> targetClientId;
-
   /// The creation time of destination file system.
   final pulumi.Input<String> targetCreateTime;
   final pulumi.Input<String> targetDataSourceId;
-
   /// The ID of destination file system.
   final pulumi.Input<String> targetFileSystemId;
-
   /// The ID of target ECS instance.
   final pulumi.Input<String> targetInstanceId;
-
   /// The target file path of ECS instance.
   final pulumi.Input<String> targetPath;
-
   /// The file prefix of target OSS object.
   final pulumi.Input<String> targetPrefix;
-
   /// The update Time of restore job. Unix Time in Seconds.
   final pulumi.Input<String> updatedTime;
-
   /// The ID of backup vault.
   final pulumi.Input<String> vaultId;
 
@@ -222,18 +195,10 @@ class GetRestoreJobsJob {
       status: pulumi.Input.fromValue(map['status'] as String),
       targetBucket: pulumi.Input.fromValue(map['targetBucket'] as String),
       targetClientId: pulumi.Input.fromValue(map['targetClientId'] as String),
-      targetCreateTime: pulumi.Input.fromValue(
-        map['targetCreateTime'] as String,
-      ),
-      targetDataSourceId: pulumi.Input.fromValue(
-        map['targetDataSourceId'] as String,
-      ),
-      targetFileSystemId: pulumi.Input.fromValue(
-        map['targetFileSystemId'] as String,
-      ),
-      targetInstanceId: pulumi.Input.fromValue(
-        map['targetInstanceId'] as String,
-      ),
+      targetCreateTime: pulumi.Input.fromValue(map['targetCreateTime'] as String),
+      targetDataSourceId: pulumi.Input.fromValue(map['targetDataSourceId'] as String),
+      targetFileSystemId: pulumi.Input.fromValue(map['targetFileSystemId'] as String),
+      targetInstanceId: pulumi.Input.fromValue(map['targetInstanceId'] as String),
       targetPath: pulumi.Input.fromValue(map['targetPath'] as String),
       targetPrefix: pulumi.Input.fromValue(map['targetPrefix'] as String),
       updatedTime: pulumi.Input.fromValue(map['updatedTime'] as String),
@@ -241,3 +206,4 @@ class GetRestoreJobsJob {
     );
   }
 }
+

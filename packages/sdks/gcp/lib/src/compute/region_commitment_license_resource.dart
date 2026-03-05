@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionCommitmentLicenseResource {
   /// The number of licenses purchased.
   final pulumi.Input<String>? amount;
-
   /// Specifies the core range of the instance for which this license applies.
   final pulumi.Input<String>? coresPerLicense;
-
   /// Any applicable license URI.
   final pulumi.Input<String> license;
 
@@ -32,17 +30,10 @@ class RegionCommitmentLicenseResource {
 
   factory RegionCommitmentLicenseResource.fromMap(Map<String, dynamic> map) {
     return RegionCommitmentLicenseResource(
-      amount: (() {
-        final guardedValue = map['amount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      coresPerLicense: (() {
-        final guardedValue = map['coresPerLicense'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      coresPerLicense: (() { final guardedValue = map['coresPerLicense']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       license: pulumi.Input.fromValue(map['license'] as String),
     );
   }
 }
+

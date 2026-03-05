@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListTenantAccessSecretsArgs {
   /// The identifier of the Access configuration.
   final pulumi.Input<String> accessName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -37,10 +35,9 @@ class ListTenantAccessSecretsArgs {
   factory ListTenantAccessSecretsArgs.fromMap(Map<String, dynamic> map) {
     return ListTenantAccessSecretsArgs(
       accessName: pulumi.Input.fromValue(map['accessName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

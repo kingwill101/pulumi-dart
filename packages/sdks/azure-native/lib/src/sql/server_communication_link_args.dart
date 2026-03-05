@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerCommunicationLinkArgs {
   /// The name of the server communication link.
   final pulumi.Input<String>? communicationLinkName;
-
   /// The name of the partner server.
   final pulumi.Input<String> partnerServer;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -42,16 +39,11 @@ class ServerCommunicationLinkArgs {
 
   factory ServerCommunicationLinkArgs.fromMap(Map<String, dynamic> map) {
     return ServerCommunicationLinkArgs(
-      communicationLinkName: (() {
-        final guardedValue = map['communicationLinkName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      communicationLinkName: (() { final guardedValue = map['communicationLinkName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       partnerServer: pulumi.Input.fromValue(map['partnerServer'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
+

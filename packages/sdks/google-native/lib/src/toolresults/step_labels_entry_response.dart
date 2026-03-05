@@ -9,10 +9,16 @@ class StepLabelsEntryResponse {
   /// Creates a new [StepLabelsEntryResponse].
   /// [key] Required.
   /// [value] Required.
-  StepLabelsEntryResponse({required this.key, required this.value});
+  StepLabelsEntryResponse({
+    required this.key,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory StepLabelsEntryResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class StepLabelsEntryResponse {
     );
   }
 }
+

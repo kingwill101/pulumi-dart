@@ -13,16 +13,15 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoun
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'parsingPromptString': parsingPromptString};
+    return <String, dynamic>{
+      'parsingPromptString': parsingPromptString,
+    };
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt(
-      parsingPromptString: pulumi.Input.fromValue(
-        map['parsingPromptString'] as String,
-      ),
+      parsingPromptString: pulumi.Input.fromValue(map['parsingPromptString'] as String),
     );
   }
 }
+

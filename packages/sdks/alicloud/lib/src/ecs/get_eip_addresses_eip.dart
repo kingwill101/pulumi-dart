@@ -6,25 +6,18 @@ class GetEipAddressesEip {
   /// The maximum bandwidth of the EIP. Unit: Mbit/s.
   final pulumi.Input<String> bandwidth;
   final pulumi.Input<String> creationTime;
-
   /// Indicates whether deletion protection is enabled.
   final pulumi.Input<bool> deletionProtection;
-
   /// The ID of the Address.
   final pulumi.Input<String> id;
-
   /// The ID of the instance with which the EIP is associated.
   final pulumi.Input<String> instanceId;
-
   /// The type of the instance with which the EIP is associated.
   final pulumi.Input<String> instanceType;
-
   /// The metering method of the EIP.
   final pulumi.Input<String> internetChargeType;
-
   /// The eip address.
   final pulumi.Input<String> ipAddress;
-
   /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
   final pulumi.Input<String> status;
 
@@ -68,17 +61,14 @@ class GetEipAddressesEip {
     return GetEipAddressesEip(
       bandwidth: pulumi.Input.fromValue(map['bandwidth'] as String),
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
-      deletionProtection: pulumi.Input.fromValue(
-        map['deletionProtection'] as bool,
-      ),
+      deletionProtection: pulumi.Input.fromValue(map['deletionProtection'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      internetChargeType: pulumi.Input.fromValue(
-        map['internetChargeType'] as String,
-      ),
+      internetChargeType: pulumi.Input.fromValue(map['internetChargeType'] as String),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

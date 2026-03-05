@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListDatabaseAccountConnectionStringsArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -28,14 +27,11 @@ class ListDatabaseAccountConnectionStringsArgs {
     };
   }
 
-  factory ListDatabaseAccountConnectionStringsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListDatabaseAccountConnectionStringsArgs.fromMap(Map<String, dynamic> map) {
     return ListDatabaseAccountConnectionStringsArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

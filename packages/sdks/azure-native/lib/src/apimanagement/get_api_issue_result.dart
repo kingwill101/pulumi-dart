@@ -1,34 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getApiIssue.
 class GetApiIssueResult {
   /// A resource identifier for the API the issue was created for.
   final String? apiId;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Date and time when the issue was created.
   final String? createdDate;
-
   /// Text describing the issue.
   final String description;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Status of the issue.
   final String? state;
-
   /// The issue title.
   final String title;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// A resource identifier for the user created the issue.
   final String userId;
 
@@ -73,28 +65,17 @@ class GetApiIssueResult {
 
   factory GetApiIssueResult.fromMap(Map<String, dynamic> map) {
     return GetApiIssueResult(
-      apiId: (() {
-        final guardedValue = map['apiId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      apiId: (() { final guardedValue = map['apiId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      createdDate: (() {
-        final guardedValue = map['createdDate'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      createdDate: (() { final guardedValue = map['createdDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: map['description'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
       title: map['title'] as String,
       type: map['type'] as String,
       userId: map['userId'] as String,
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum PolicyRequestBodyCheck {
     throw ArgumentError('Unknown PolicyRequestBodyCheck value: $value');
   }
 }
+

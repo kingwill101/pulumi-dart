@@ -13,7 +13,10 @@ class GetWorkforcePoolArgs {
   /// Creates a new [GetWorkforcePoolArgs].
   /// [location] Required.
   /// [workforcePoolId] Required.
-  GetWorkforcePoolArgs({required this.location, required this.workforcePoolId});
+  GetWorkforcePoolArgs({
+    required this.location,
+    required this.workforcePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetWorkforcePoolArgs {
     );
   }
 }
+

@@ -678,37 +678,26 @@ import 'system_data_response.dart';
 class PrometheusRuleGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Apply rule to data from a specific cluster.
   late final pulumi.Output<String?> clusterName;
-
   /// Rule group description.
   late final pulumi.Output<String?> description;
-
   /// Enable/disable rule group.
   late final pulumi.Output<bool?> enabled;
-
   /// The interval in which to run the Prometheus rule group represented in ISO 8601 duration format. Should be between 1 and 15 minutes
   late final pulumi.Output<String?> interval;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Defines the rules in the Prometheus rule group.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
-
   /// Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future.
   late final pulumi.Output<List<String>> scopes;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -721,11 +710,11 @@ class PrometheusRuleGroup extends pulumi.CustomResource {
     PrometheusRuleGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:alertsmanagement:PrometheusRuleGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:alertsmanagement:PrometheusRuleGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clusterName = registerOutput<String?>('clusterName');
     description = registerOutput<String?>('description');
@@ -735,16 +724,7 @@ class PrometheusRuleGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
     scopes = registerOutput<List<String>>('scopes');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

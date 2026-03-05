@@ -10,34 +10,26 @@ class DatabaseState {
   /// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
   final pulumi.Input<String>? databaseDialect;
   final pulumi.Input<List<String>>? ddls;
-
   /// The default time zone for the database. The default time zone must be a valid name
   /// from the tz database. Default value is "America/Los_angeles".
   final pulumi.Input<String>? defaultTimeZone;
-
   /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
   /// in state, a `destroy` or `update` that would delete the instance will fail.
   final pulumi.Input<bool>? deletionProtection;
   final pulumi.Input<bool>? enableDropProtection;
-
   /// Encryption configuration for the database
   /// Structure is documented below.
   final pulumi.Input<DatabaseEncryptionConfig>? encryptionConfig;
-
   /// The instance to create the database on.
   final pulumi.Input<String>? instance;
-
   /// A unique identifier for the database, which cannot be changed after the
   /// instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// An explanation of the status of the database.
   final pulumi.Input<String>? state;
-
   /// The retention period for the database. The retention period must be between 1 hour
   /// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
   /// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
@@ -78,11 +70,7 @@ class DatabaseState {
       'defaultTimeZone': ?defaultTimeZone,
       'deletionProtection': ?deletionProtection,
       'enableDropProtection': ?enableDropProtection,
-      'encryptionConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            DatabaseEncryptionConfig,
-            Map<String, dynamic>
-          >(encryptionConfig, (value) => value.toMap()),
+      'encryptionConfig': ?pulumi.Input.mapOptionalInputValue<DatabaseEncryptionConfig, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
       'instance': ?instance,
       'name': ?name,
       'project': ?project,
@@ -93,65 +81,18 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      databaseDialect: (() {
-        final guardedValue = map['databaseDialect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ddls: (() {
-        final guardedValue = map['ddls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      defaultTimeZone: (() {
-        final guardedValue = map['defaultTimeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deletionProtection: (() {
-        final guardedValue = map['deletionProtection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableDropProtection: (() {
-        final guardedValue = map['enableDropProtection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      encryptionConfig: (() {
-        final guardedValue = map['encryptionConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DatabaseEncryptionConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      instance: (() {
-        final guardedValue = map['instance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      versionRetentionPeriod: (() {
-        final guardedValue = map['versionRetentionPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      databaseDialect: (() { final guardedValue = map['databaseDialect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ddls: (() { final guardedValue = map['ddls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      defaultTimeZone: (() { final guardedValue = map['defaultTimeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableDropProtection: (() { final guardedValue = map['enableDropProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      encryptionConfig: (() { final guardedValue = map['encryptionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      versionRetentionPeriod: (() { final guardedValue = map['versionRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

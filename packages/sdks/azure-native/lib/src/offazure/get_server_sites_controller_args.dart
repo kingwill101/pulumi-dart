@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerSitesControllerArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Site name
   final pulumi.Input<String> siteName;
 
@@ -30,10 +29,9 @@ class GetServerSitesControllerArgs {
 
   factory GetServerSitesControllerArgs.fromMap(Map<String, dynamic> map) {
     return GetServerSitesControllerArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       siteName: pulumi.Input.fromValue(map['siteName'] as String),
     );
   }
 }
+

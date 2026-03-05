@@ -10,37 +10,20 @@ class GooglePrivacyDlpV2ConditionsResponse {
 
   /// Creates a new [GooglePrivacyDlpV2ConditionsResponse].
   /// [conditions] A collection of conditions.
-  GooglePrivacyDlpV2ConditionsResponse({required this.conditions});
+  GooglePrivacyDlpV2ConditionsResponse({
+    required this.conditions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions':
-          pulumi.Input.mapInputValue<
-            List<GooglePrivacyDlpV2ConditionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            conditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GooglePrivacyDlpV2ConditionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'conditions': pulumi.Input.mapInputValue<List<GooglePrivacyDlpV2ConditionResponse>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<GooglePrivacyDlpV2ConditionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GooglePrivacyDlpV2ConditionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2ConditionsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ConditionsResponse(
-      conditions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GooglePrivacyDlpV2ConditionResponse>(
-          map['conditions']!,
-          (value) => GooglePrivacyDlpV2ConditionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<GooglePrivacyDlpV2ConditionResponse>(map['conditions']!, (value) => GooglePrivacyDlpV2ConditionResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

@@ -183,35 +183,24 @@ import 'volume_provider_parameters_azure_file_response.dart';
 class Volume extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// This type describes a volume provided by an Azure Files file share.
-  late final pulumi.Output<VolumeProviderParametersAzureFileResponse?>
-  azureFileParameters;
-
+  late final pulumi.Output<VolumeProviderParametersAzureFileResponse?> azureFileParameters;
   /// User readable description of the volume.
   late final pulumi.Output<String?> description;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Provider of the volume.
   late final pulumi.Output<String> provider;
-
   /// State of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Status of the volume.
   late final pulumi.Output<String> status;
-
   /// Gives additional information about the current status of the volume.
   late final pulumi.Output<String> statusDetails;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
 
@@ -219,25 +208,18 @@ class Volume extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_servicefabricmesh_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:servicefabricmesh:Volume',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Volume(
+    String name, {
+    VolumeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:servicefabricmesh:Volume',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    azureFileParameters =
-        registerOutput<VolumeProviderParametersAzureFileResponse?>(
-          'azureFileParameters',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VolumeProviderParametersAzureFileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    azureFileParameters = registerOutput<VolumeProviderParametersAzureFileResponse?>('azureFileParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeProviderParametersAzureFileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

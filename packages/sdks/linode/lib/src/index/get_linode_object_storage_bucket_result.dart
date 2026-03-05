@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getLinodeObjectStorageBucket.
 class GetLinodeObjectStorageBucketResult {
   final String cluster;
@@ -67,3 +68,4 @@ class GetLinodeObjectStorageBucketResult {
     );
   }
 }
+

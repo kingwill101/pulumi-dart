@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketRequestPaymentConfigurationState {
   /// Name of the bucket.
   final pulumi.Input<String>? bucket;
-
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
-
   /// Specifies who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
   final pulumi.Input<String>? payer;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -37,30 +34,13 @@ class BucketRequestPaymentConfigurationState {
     };
   }
 
-  factory BucketRequestPaymentConfigurationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketRequestPaymentConfigurationState.fromMap(Map<String, dynamic> map) {
     return BucketRequestPaymentConfigurationState(
-      bucket: (() {
-        final guardedValue = map['bucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expectedBucketOwner: (() {
-        final guardedValue = map['expectedBucketOwner'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      payer: (() {
-        final guardedValue = map['payer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expectedBucketOwner: (() { final guardedValue = map['expectedBucketOwner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      payer: (() { final guardedValue = map['payer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

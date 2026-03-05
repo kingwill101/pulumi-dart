@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectArgs {
   /// the ID of the project to retrieve
   final pulumi.Input<String>? id;
-
   /// the name of the project to retrieve. The data source will raise an error if more than
   /// one project has the provided name or if no project has that name.
   final pulumi.Input<String>? name;
@@ -17,24 +16,23 @@ class GetProjectArgs {
   /// Creates a new [GetProjectArgs].
   /// [id] the ID of the project to retrieve
   /// [name] the name of the project to retrieve. The data source will raise an error if more than
-  GetProjectArgs({this.id, this.name});
+  GetProjectArgs({
+    this.id,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id, 'name': ?name};
+    return <String, dynamic>{
+      'id': ?id,
+      'name': ?name,
+    };
   }
 
   factory GetProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectArgs(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

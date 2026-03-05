@@ -419,10 +419,8 @@ import 'workspace_network_outbound_rule_fqdn_state.dart';
 class WorkspaceNetworkOutboundRuleFqdn extends pulumi.CustomResource {
   /// Specifies the fully qualified domain name to allow for outbound traffic.
   late final pulumi.Output<String> destinationFqdn;
-
   /// Specifies the name of the Machine Learning Workspace FQDN Network Outbound Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the ID of the Machine Learning Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> workspaceId;
 
@@ -435,11 +433,11 @@ class WorkspaceNetworkOutboundRuleFqdn extends pulumi.CustomResource {
     WorkspaceNetworkOutboundRuleFqdnArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:machinelearning/workspaceNetworkOutboundRuleFqdn:WorkspaceNetworkOutboundRuleFqdn',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:machinelearning/workspaceNetworkOutboundRuleFqdn:WorkspaceNetworkOutboundRuleFqdn',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     destinationFqdn = registerOutput<String>('destinationFqdn');
     this.name = registerOutput<String>('name');
     workspaceId = registerOutput<String>('workspaceId');
@@ -463,11 +461,11 @@ class WorkspaceNetworkOutboundRuleFqdn extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:machinelearning/workspaceNetworkOutboundRuleFqdn:WorkspaceNetworkOutboundRuleFqdn',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:machinelearning/workspaceNetworkOutboundRuleFqdn:WorkspaceNetworkOutboundRuleFqdn',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     destinationFqdn = registerOutput<String>('destinationFqdn');
     this.name = registerOutput<String>('name');
     workspaceId = registerOutput<String>('workspaceId');

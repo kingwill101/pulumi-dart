@@ -165,8 +165,7 @@ class GetEndpointS3Setting {
       'serviceAccessRoleArn': serviceAccessRoleArn,
       'timestampColumnName': timestampColumnName,
       'useCsvNoSupValue': useCsvNoSupValue,
-      'useTaskStartTimeForFullLoadTimestamp':
-          useTaskStartTimeForFullLoadTimestamp,
+      'useTaskStartTimeForFullLoadTimestamp': useTaskStartTimeForFullLoadTimestamp,
     };
   }
 
@@ -175,16 +174,10 @@ class GetEndpointS3Setting {
       addColumnName: pulumi.Input.fromValue(map['addColumnName'] as bool),
       bucketFolder: pulumi.Input.fromValue(map['bucketFolder'] as String),
       bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
-      cannedAclForObjects: pulumi.Input.fromValue(
-        map['cannedAclForObjects'] as String,
-      ),
-      cdcInsertsAndUpdates: pulumi.Input.fromValue(
-        map['cdcInsertsAndUpdates'] as bool,
-      ),
+      cannedAclForObjects: pulumi.Input.fromValue(map['cannedAclForObjects'] as String),
+      cdcInsertsAndUpdates: pulumi.Input.fromValue(map['cdcInsertsAndUpdates'] as bool),
       cdcInsertsOnly: pulumi.Input.fromValue(map['cdcInsertsOnly'] as bool),
-      cdcMaxBatchInterval: pulumi.Input.fromValue(
-        map['cdcMaxBatchInterval'] as int,
-      ),
+      cdcMaxBatchInterval: pulumi.Input.fromValue(map['cdcMaxBatchInterval'] as int),
       cdcMinFileSize: pulumi.Input.fromValue(map['cdcMinFileSize'] as int),
       cdcPath: pulumi.Input.fromValue(map['cdcPath'] as String),
       compressionType: pulumi.Input.fromValue(map['compressionType'] as String),
@@ -194,55 +187,30 @@ class GetEndpointS3Setting {
       csvRowDelimiter: pulumi.Input.fromValue(map['csvRowDelimiter'] as String),
       dataFormat: pulumi.Input.fromValue(map['dataFormat'] as String),
       dataPageSize: pulumi.Input.fromValue(map['dataPageSize'] as int),
-      datePartitionDelimiter: pulumi.Input.fromValue(
-        map['datePartitionDelimiter'] as String,
-      ),
-      datePartitionEnabled: pulumi.Input.fromValue(
-        map['datePartitionEnabled'] as bool,
-      ),
-      datePartitionSequence: pulumi.Input.fromValue(
-        map['datePartitionSequence'] as String,
-      ),
-      dictPageSizeLimit: pulumi.Input.fromValue(
-        map['dictPageSizeLimit'] as int,
-      ),
+      datePartitionDelimiter: pulumi.Input.fromValue(map['datePartitionDelimiter'] as String),
+      datePartitionEnabled: pulumi.Input.fromValue(map['datePartitionEnabled'] as bool),
+      datePartitionSequence: pulumi.Input.fromValue(map['datePartitionSequence'] as String),
+      dictPageSizeLimit: pulumi.Input.fromValue(map['dictPageSizeLimit'] as int),
       enableStatistics: pulumi.Input.fromValue(map['enableStatistics'] as bool),
       encodingType: pulumi.Input.fromValue(map['encodingType'] as String),
       encryptionMode: pulumi.Input.fromValue(map['encryptionMode'] as String),
-      externalTableDefinition: pulumi.Input.fromValue(
-        map['externalTableDefinition'] as String,
-      ),
-      glueCatalogGeneration: pulumi.Input.fromValue(
-        map['glueCatalogGeneration'] as bool,
-      ),
+      externalTableDefinition: pulumi.Input.fromValue(map['externalTableDefinition'] as String),
+      glueCatalogGeneration: pulumi.Input.fromValue(map['glueCatalogGeneration'] as bool),
       ignoreHeaderRows: pulumi.Input.fromValue(map['ignoreHeaderRows'] as int),
       ignoreHeadersRow: pulumi.Input.fromValue(map['ignoreHeadersRow'] as int),
-      includeOpForFullLoad: pulumi.Input.fromValue(
-        map['includeOpForFullLoad'] as bool,
-      ),
+      includeOpForFullLoad: pulumi.Input.fromValue(map['includeOpForFullLoad'] as bool),
       maxFileSize: pulumi.Input.fromValue(map['maxFileSize'] as int),
-      parquetTimestampInMillisecond: pulumi.Input.fromValue(
-        map['parquetTimestampInMillisecond'] as bool,
-      ),
+      parquetTimestampInMillisecond: pulumi.Input.fromValue(map['parquetTimestampInMillisecond'] as bool),
       parquetVersion: pulumi.Input.fromValue(map['parquetVersion'] as String),
-      preserveTransactions: pulumi.Input.fromValue(
-        map['preserveTransactions'] as bool,
-      ),
+      preserveTransactions: pulumi.Input.fromValue(map['preserveTransactions'] as bool),
       rfc4180: pulumi.Input.fromValue(map['rfc4180'] as bool),
       rowGroupLength: pulumi.Input.fromValue(map['rowGroupLength'] as int),
-      serverSideEncryptionKmsKeyId: pulumi.Input.fromValue(
-        map['serverSideEncryptionKmsKeyId'] as String,
-      ),
-      serviceAccessRoleArn: pulumi.Input.fromValue(
-        map['serviceAccessRoleArn'] as String,
-      ),
-      timestampColumnName: pulumi.Input.fromValue(
-        map['timestampColumnName'] as String,
-      ),
+      serverSideEncryptionKmsKeyId: pulumi.Input.fromValue(map['serverSideEncryptionKmsKeyId'] as String),
+      serviceAccessRoleArn: pulumi.Input.fromValue(map['serviceAccessRoleArn'] as String),
+      timestampColumnName: pulumi.Input.fromValue(map['timestampColumnName'] as String),
       useCsvNoSupValue: pulumi.Input.fromValue(map['useCsvNoSupValue'] as bool),
-      useTaskStartTimeForFullLoadTimestamp: pulumi.Input.fromValue(
-        map['useTaskStartTimeForFullLoadTimestamp'] as bool,
-      ),
+      useTaskStartTimeForFullLoadTimestamp: pulumi.Input.fromValue(map['useTaskStartTimeForFullLoadTimestamp'] as bool),
     );
   }
 }
+

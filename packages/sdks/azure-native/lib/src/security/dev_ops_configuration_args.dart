@@ -10,10 +10,8 @@ import 'dev_ops_configuration_properties.dart';
 class DevOpsConfigurationArgs {
   /// DevOps Configuration properties.
   final pulumi.Input<DevOpsConfigurationProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The security connector name.
   final pulumi.Input<String> securityConnectorName;
 
@@ -29,11 +27,7 @@ class DevOpsConfigurationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            DevOpsConfigurationProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<DevOpsConfigurationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'securityConnectorName': securityConnectorName,
     };
@@ -41,21 +35,10 @@ class DevOpsConfigurationArgs {
 
   factory DevOpsConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DevOpsConfigurationArgs(
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DevOpsConfigurationProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      securityConnectorName: pulumi.Input.fromValue(
-        map['securityConnectorName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DevOpsConfigurationProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      securityConnectorName: pulumi.Input.fromValue(map['securityConnectorName'] as String),
     );
   }
 }
+

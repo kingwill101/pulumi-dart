@@ -14,8 +14,7 @@ enum RosettaNetPipConfidentialityScope {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RosettaNetPipConfidentialityScope value: $value',
-    );
+    throw ArgumentError('Unknown RosettaNetPipConfidentialityScope value: $value');
   }
 }
+

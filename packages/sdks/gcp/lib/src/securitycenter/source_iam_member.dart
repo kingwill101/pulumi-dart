@@ -142,7 +142,6 @@ class SourceIamMember extends pulumi.CustomResource {
   late final pulumi.Output<SourceIamMemberCondition?> condition;
   late final pulumi.Output<String> etag;
   late final pulumi.Output<String> member;
-
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
   late final pulumi.Output<String> organization;
@@ -158,21 +157,12 @@ class SourceIamMember extends pulumi.CustomResource {
     SourceIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/sourceIamMember:SourceIamMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    condition = registerOutput<SourceIamMemberCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SourceIamMemberCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:securitycenter/sourceIamMember:SourceIamMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    condition = registerOutput<SourceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
     organization = registerOutput<String>('organization');
@@ -198,21 +188,12 @@ class SourceIamMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/sourceIamMember:SourceIamMember',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    condition = registerOutput<SourceIamMemberCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SourceIamMemberCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:securitycenter/sourceIamMember:SourceIamMember',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    condition = registerOutput<SourceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
     organization = registerOutput<String>('organization');

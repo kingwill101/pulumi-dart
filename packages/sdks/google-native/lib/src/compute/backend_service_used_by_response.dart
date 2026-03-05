@@ -7,10 +7,14 @@ class BackendServiceUsedByResponse {
 
   /// Creates a new [BackendServiceUsedByResponse].
   /// [reference] Required.
-  BackendServiceUsedByResponse({required this.reference});
+  BackendServiceUsedByResponse({
+    required this.reference,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'reference': reference};
+    return <String, dynamic>{
+      'reference': reference,
+    };
   }
 
   factory BackendServiceUsedByResponse.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class BackendServiceUsedByResponse {
     );
   }
 }
+

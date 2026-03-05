@@ -9,19 +9,20 @@ class NatGatewaySkuResponse {
 
   /// Creates a new [NatGatewaySkuResponse].
   /// [name] Name of Nat Gateway SKU.
-  NatGatewaySkuResponse({this.name});
+  NatGatewaySkuResponse({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory NatGatewaySkuResponse.fromMap(Map<String, dynamic> map) {
     return NatGatewaySkuResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

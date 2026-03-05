@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StandardAssignmentMetadataResponse {
   /// Standard assignment Created by object id (GUID)
   final pulumi.Input<String> createdBy;
-
   /// Standard assignment creation date
   final pulumi.Input<String> createdOn;
-
   /// Standard assignment last updated by object id (GUID)
   final pulumi.Input<String> lastUpdatedBy;
-
   /// Standard assignment last update date
   final pulumi.Input<String> lastUpdatedOn;
 
@@ -46,3 +43,4 @@ class StandardAssignmentMetadataResponse {
     );
   }
 }
+

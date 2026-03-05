@@ -6,36 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SslCertState {
   /// The actual certificate data for this client certificate.
   final pulumi.Input<String>? cert;
-
   /// The serial number extracted from the certificate data.
   final pulumi.Input<String>? certSerialNumber;
-
   /// The common name to be used in the certificate to identify the
   /// client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
   final pulumi.Input<String>? commonName;
-
   /// The time when the certificate was created in RFC 3339 format,
   /// for example 2012-11-15T16:19:00.094Z.
   final pulumi.Input<String>? createTime;
-
   /// The time when the certificate expires in RFC 3339 format,
   /// for example 2012-11-15T16:19:00.094Z.
   final pulumi.Input<String>? expirationTime;
-
   /// The name of the Cloud SQL instance. Changing this
   /// forces a new resource to be created.
   final pulumi.Input<String>? instance;
-
   /// The private key associated with the client certificate.
   final pulumi.Input<String>? privateKey;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The CA cert of the server this client cert was generated from.
   final pulumi.Input<String>? serverCaCert;
-
   /// The SHA1 Fingerprint of the certificate.
   final pulumi.Input<String>? sha1Fingerprint;
 
@@ -80,56 +71,17 @@ class SslCertState {
 
   factory SslCertState.fromMap(Map<String, dynamic> map) {
     return SslCertState(
-      cert: (() {
-        final guardedValue = map['cert'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certSerialNumber: (() {
-        final guardedValue = map['certSerialNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      commonName: (() {
-        final guardedValue = map['commonName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expirationTime: (() {
-        final guardedValue = map['expirationTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instance: (() {
-        final guardedValue = map['instance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateKey: (() {
-        final guardedValue = map['privateKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverCaCert: (() {
-        final guardedValue = map['serverCaCert'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sha1Fingerprint: (() {
-        final guardedValue = map['sha1Fingerprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cert: (() { final guardedValue = map['cert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certSerialNumber: (() { final guardedValue = map['certSerialNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      commonName: (() { final guardedValue = map['commonName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverCaCert: (() { final guardedValue = map['serverCaCert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sha1Fingerprint: (() { final guardedValue = map['sha1Fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

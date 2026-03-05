@@ -800,27 +800,20 @@ import 'di_alarm_rule_state.dart';
 /// ```
 class DiAlarmRule extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
-
   /// Resource attribute field representing resource level ID
   late final pulumi.Output<int> diAlarmRuleId;
-
   /// Data Integration alarm rule name
   late final pulumi.Output<String> diAlarmRuleName;
-
   /// Task ID: the ID of the task associated with the alert rule.
   late final pulumi.Output<int> diJobId;
   late final pulumi.Output<bool?> enabled;
-
   /// Alarm indicator type. Optional enumerated values:
   /// - Heartbeat (task status alarm)
   /// - FailoverCount(failover times alarm)
   /// - Delay (task Delay alarm)
   late final pulumi.Output<String> metricType;
-
   /// Alarm notification settings See `notification_settings` below.
-  late final pulumi.Output<DiAlarmRuleNotificationSettings>
-  notificationSettings;
-
+  late final pulumi.Output<DiAlarmRuleNotificationSettings> notificationSettings;
   /// Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
   late final pulumi.Output<List<Map<String, dynamic>>> triggerConditions;
 
@@ -833,30 +826,19 @@ class DiAlarmRule extends pulumi.CustomResource {
     DiAlarmRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dataworks/diAlarmRule:DiAlarmRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dataworks/diAlarmRule:DiAlarmRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     diAlarmRuleId = registerOutput<int>('diAlarmRuleId');
     diAlarmRuleName = registerOutput<String>('diAlarmRuleName');
     diJobId = registerOutput<int>('diJobId');
     enabled = registerOutput<bool?>('enabled');
     metricType = registerOutput<String>('metricType');
-    notificationSettings = registerOutput<DiAlarmRuleNotificationSettings>(
-      'notificationSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiAlarmRuleNotificationSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    triggerConditions = registerOutput<List<Map<String, dynamic>>>(
-      'triggerConditions',
-    );
+    notificationSettings = registerOutput<DiAlarmRuleNotificationSettings>('notificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiAlarmRuleNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    triggerConditions = registerOutput<List<Map<String, dynamic>>>('triggerConditions');
   }
 
   /// Gets an existing [DiAlarmRule] resource's state with the given [name] and [id].
@@ -877,29 +859,18 @@ class DiAlarmRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dataworks/diAlarmRule:DiAlarmRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dataworks/diAlarmRule:DiAlarmRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     diAlarmRuleId = registerOutput<int>('diAlarmRuleId');
     diAlarmRuleName = registerOutput<String>('diAlarmRuleName');
     diJobId = registerOutput<int>('diJobId');
     enabled = registerOutput<bool?>('enabled');
     metricType = registerOutput<String>('metricType');
-    notificationSettings = registerOutput<DiAlarmRuleNotificationSettings>(
-      'notificationSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiAlarmRuleNotificationSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    triggerConditions = registerOutput<List<Map<String, dynamic>>>(
-      'triggerConditions',
-    );
+    notificationSettings = registerOutput<DiAlarmRuleNotificationSettings>('notificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiAlarmRuleNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    triggerConditions = registerOutput<List<Map<String, dynamic>>>('triggerConditions');
   }
 }

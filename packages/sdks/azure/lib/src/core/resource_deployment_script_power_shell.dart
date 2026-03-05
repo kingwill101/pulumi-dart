@@ -319,58 +319,38 @@ import 'resource_deployment_script_power_shell_storage_account.dart';
 class ResourceDeploymentScriptPowerShell extends pulumi.CustomResource {
   /// Specifies the cleanup preference when the script execution gets in a terminal state. Possible values are `Always`, `OnExpiration`, `OnSuccess`. Defaults to `Always`. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> cleanupPreference;
-
   /// Command line arguments to pass to the script. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> commandLine;
-
   /// A `container` block as defined below. Changing this forces a new Resource Deployment Script to be created.
-  late final pulumi.Output<ResourceDeploymentScriptPowerShellContainer?>
-  container;
-
+  late final pulumi.Output<ResourceDeploymentScriptPowerShellContainer?> container;
   /// An `environment_variable` block as defined below. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> environmentVariables;
-
   /// Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> forceUpdateTag;
-
   /// An `identity` block as defined below. Changing this forces a new Resource Deployment Script to be created.
-  late final pulumi.Output<ResourceDeploymentScriptPowerShellIdentity?>
-  identity;
-
+  late final pulumi.Output<ResourceDeploymentScriptPowerShellIdentity?> identity;
   /// Specifies the Azure Region where the Resource Deployment Script should exist. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name which should be used for this Resource Deployment Script. The name length must be from 1 to 260 characters. The name can only contain alphanumeric, underscore, parentheses, hyphen and period, and it cannot end with a period. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String> name;
-
   /// List of script outputs.
   late final pulumi.Output<String> outputs;
-
   /// Uri for the script. This is the entry point for the external script. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> primaryScriptUri;
-
   /// Specifies the name of the Resource Group where the Resource Deployment Script should exist. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. The time duration should be between `1` hour and `26` hours (inclusive) and should be specified in ISO 8601 format. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String> retentionInterval;
-
   /// Script body. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> scriptContent;
-
   /// A `storage_account` block as defined below. Changing this forces a new Resource Deployment Script to be created.
-  late final pulumi.Output<ResourceDeploymentScriptPowerShellStorageAccount?>
-  storageAccount;
-
+  late final pulumi.Output<ResourceDeploymentScriptPowerShellStorageAccount?> storageAccount;
   /// Supporting files for the external script. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<List<String>?> supportingScriptUris;
-
   /// A mapping of tags which should be assigned to the Resource Deployment Script.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Maximum allowed script execution time specified in ISO 8601 format. Needs to be greater than 0 and smaller than 1 day. Defaults to `P1D`. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> timeout;
-
   /// Specifies the version of the Azure PowerShell that should be used in the format `X.Y` (e.g. `9.7`). A canonical list of versions [is available from the Microsoft Container Registry API](https://mcr.microsoft.com/v2/azure-powershell/tags/list). Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String> version;
 
@@ -383,37 +363,17 @@ class ResourceDeploymentScriptPowerShell extends pulumi.CustomResource {
     ResourceDeploymentScriptPowerShellArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/resourceDeploymentScriptPowerShell:ResourceDeploymentScriptPowerShell',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/resourceDeploymentScriptPowerShell:ResourceDeploymentScriptPowerShell',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cleanupPreference = registerOutput<String?>('cleanupPreference');
     commandLine = registerOutput<String?>('commandLine');
-    container = registerOutput<ResourceDeploymentScriptPowerShellContainer?>(
-      'container',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceDeploymentScriptPowerShellContainer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    environmentVariables = registerOutput<List<Map<String, dynamic>>?>(
-      'environmentVariables',
-    );
+    container = registerOutput<ResourceDeploymentScriptPowerShellContainer?>('container', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceDeploymentScriptPowerShellContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentVariables = registerOutput<List<Map<String, dynamic>>?>('environmentVariables');
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
-    identity = registerOutput<ResourceDeploymentScriptPowerShellIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceDeploymentScriptPowerShellIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ResourceDeploymentScriptPowerShellIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceDeploymentScriptPowerShellIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     outputs = registerOutput<String>('outputs');
@@ -421,20 +381,8 @@ class ResourceDeploymentScriptPowerShell extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionInterval = registerOutput<String>('retentionInterval');
     scriptContent = registerOutput<String?>('scriptContent');
-    storageAccount =
-        registerOutput<ResourceDeploymentScriptPowerShellStorageAccount?>(
-          'storageAccount',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ResourceDeploymentScriptPowerShellStorageAccount.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    supportingScriptUris = registerOutput<List<String>?>(
-      'supportingScriptUris',
-    );
+    storageAccount = registerOutput<ResourceDeploymentScriptPowerShellStorageAccount?>('storageAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceDeploymentScriptPowerShellStorageAccount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportingScriptUris = registerOutput<List<String>?>('supportingScriptUris');
     tags = registerOutput<Map<String, String>?>('tags');
     timeout = registerOutput<String?>('timeout');
     version = registerOutput<String>('version');
@@ -458,37 +406,17 @@ class ResourceDeploymentScriptPowerShell extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/resourceDeploymentScriptPowerShell:ResourceDeploymentScriptPowerShell',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/resourceDeploymentScriptPowerShell:ResourceDeploymentScriptPowerShell',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cleanupPreference = registerOutput<String?>('cleanupPreference');
     commandLine = registerOutput<String?>('commandLine');
-    container = registerOutput<ResourceDeploymentScriptPowerShellContainer?>(
-      'container',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceDeploymentScriptPowerShellContainer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    environmentVariables = registerOutput<List<Map<String, dynamic>>?>(
-      'environmentVariables',
-    );
+    container = registerOutput<ResourceDeploymentScriptPowerShellContainer?>('container', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceDeploymentScriptPowerShellContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentVariables = registerOutput<List<Map<String, dynamic>>?>('environmentVariables');
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
-    identity = registerOutput<ResourceDeploymentScriptPowerShellIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceDeploymentScriptPowerShellIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ResourceDeploymentScriptPowerShellIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceDeploymentScriptPowerShellIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     outputs = registerOutput<String>('outputs');
@@ -496,20 +424,8 @@ class ResourceDeploymentScriptPowerShell extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionInterval = registerOutput<String>('retentionInterval');
     scriptContent = registerOutput<String?>('scriptContent');
-    storageAccount =
-        registerOutput<ResourceDeploymentScriptPowerShellStorageAccount?>(
-          'storageAccount',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ResourceDeploymentScriptPowerShellStorageAccount.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    supportingScriptUris = registerOutput<List<String>?>(
-      'supportingScriptUris',
-    );
+    storageAccount = registerOutput<ResourceDeploymentScriptPowerShellStorageAccount?>('storageAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceDeploymentScriptPowerShellStorageAccount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportingScriptUris = registerOutput<List<String>?>('supportingScriptUris');
     tags = registerOutput<Map<String, String>?>('tags');
     timeout = registerOutput<String?>('timeout');
     version = registerOutput<String>('version');

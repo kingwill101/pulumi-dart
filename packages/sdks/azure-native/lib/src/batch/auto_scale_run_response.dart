@@ -7,10 +7,8 @@ import 'auto_scale_run_error_response.dart';
 class AutoScaleRunResponse {
   /// An error that occurred when autoscaling a pool.
   final pulumi.Input<AutoScaleRunErrorResponse>? error;
-
   /// The time at which the autoscale formula was last evaluated.
   final pulumi.Input<String> evaluationTime;
-
   /// Each variable value is returned in the form $variable=value, and variables are separated by semicolons.
   final pulumi.Input<String>? results;
 
@@ -26,11 +24,7 @@ class AutoScaleRunResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error':
-          ?pulumi.Input.mapOptionalInputValue<
-            AutoScaleRunErrorResponse,
-            Map<String, dynamic>
-          >(error, (value) => value.toMap()),
+      'error': ?pulumi.Input.mapOptionalInputValue<AutoScaleRunErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'evaluationTime': evaluationTime,
       'results': ?results,
     };
@@ -38,21 +32,10 @@ class AutoScaleRunResponse {
 
   factory AutoScaleRunResponse.fromMap(Map<String, dynamic> map) {
     return AutoScaleRunResponse(
-      error: (() {
-        final guardedValue = map['error'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AutoScaleRunErrorResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoScaleRunErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       evaluationTime: pulumi.Input.fromValue(map['evaluationTime'] as String),
-      results: (() {
-        final guardedValue = map['results'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -17,3 +17,4 @@ enum ParserConfigVersion {
     throw ArgumentError('Unknown ParserConfigVersion value: $value');
   }
 }
+

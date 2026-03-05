@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Plan {
   /// Azure Marketplace plan name.
   final pulumi.Input<String> name;
-
   /// Azure Marketplace product code.
   final pulumi.Input<String> product;
-
   /// Azure Marketplace publisher ID.
   final pulumi.Input<String> publisher;
-
   /// Azure Marketplace plan's version.
   final pulumi.Input<String> version;
 
@@ -46,3 +43,4 @@ class Plan {
     );
   }
 }
+

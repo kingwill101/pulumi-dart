@@ -6,31 +6,17 @@ import 'policy_target_tracking_configuration_customized_metric_specification_met
 
 class PolicyTargetTrackingConfigurationCustomizedMetricSpecification {
   /// Dimensions of the metric.
-  final pulumi.Input<
-    List<
-      PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension
-    >
-  >?
-  metricDimensions;
-
+  final pulumi.Input<List<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension>>? metricDimensions;
   /// Name of the metric.
   final pulumi.Input<String>? metricName;
-
   /// Metrics to include, as a metric data query.
-  final pulumi.Input<
-    List<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric>
-  >?
-  metrics;
-
+  final pulumi.Input<List<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric>>? metrics;
   /// Namespace of the metric.
   final pulumi.Input<String>? namespace;
-
   /// The period of the metric in seconds.
   final pulumi.Input<int>? period;
-
   /// Statistic of the metric.
   final pulumi.Input<String>? statistic;
-
   /// Unit of the metric.
   final pulumi.Input<String>? unit;
 
@@ -54,35 +40,9 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecification {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metricDimensions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension
-            >,
-            List<Map<String, dynamic>>
-          >(
-            metricDimensions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'metricDimensions': ?pulumi.Input.mapOptionalInputValue<List<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension>, List<Map<String, dynamic>>>(metricDimensions, (value) => pulumi.Input.encodeList<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metricName': ?metricName,
-      'metrics':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric
-            >,
-            List<Map<String, dynamic>>
-          >(
-            metrics,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'metrics': ?pulumi.Input.mapOptionalInputValue<List<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric>, List<Map<String, dynamic>>>(metrics, (value) => pulumi.Input.encodeList<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric, Map<String, dynamic>>(value, (value) => value.toMap())),
       'namespace': ?namespace,
       'period': ?period,
       'statistic': ?statistic,
@@ -90,65 +50,16 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecification {
     };
   }
 
-  factory PolicyTargetTrackingConfigurationCustomizedMetricSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PolicyTargetTrackingConfigurationCustomizedMetricSpecification.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingConfigurationCustomizedMetricSpecification(
-      metricDimensions: (() {
-        final guardedValue = map['metricDimensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension
-          >(
-            guardedValue,
-            (value) =>
-                PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      metricName: (() {
-        final guardedValue = map['metricName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metrics: (() {
-        final guardedValue = map['metrics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric
-          >(
-            guardedValue,
-            (value) =>
-                PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      period: (() {
-        final guardedValue = map['period'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      statistic: (() {
-        final guardedValue = map['statistic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      unit: (() {
-        final guardedValue = map['unit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      metricDimensions: (() { final guardedValue = map['metricDimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension>(guardedValue, (value) => PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      metricName: (() { final guardedValue = map['metricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric>(guardedValue, (value) => PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      statistic: (() { final guardedValue = map['statistic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

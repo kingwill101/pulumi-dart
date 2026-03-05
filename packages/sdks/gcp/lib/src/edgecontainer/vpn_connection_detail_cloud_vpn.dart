@@ -9,19 +9,20 @@ class VpnConnectionDetailCloudVpn {
 
   /// Creates a new [VpnConnectionDetailCloudVpn].
   /// [gateway] (Output)
-  VpnConnectionDetailCloudVpn({this.gateway});
+  VpnConnectionDetailCloudVpn({
+    this.gateway,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'gateway': ?gateway};
+    return <String, dynamic>{
+      'gateway': ?gateway,
+    };
   }
 
   factory VpnConnectionDetailCloudVpn.fromMap(Map<String, dynamic> map) {
     return VpnConnectionDetailCloudVpn(
-      gateway: (() {
-        final guardedValue = map['gateway'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gateway: (() { final guardedValue = map['gateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

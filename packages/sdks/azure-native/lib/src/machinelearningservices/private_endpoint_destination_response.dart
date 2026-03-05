@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateEndpointDestinationResponse {
   final pulumi.Input<String>? serviceResourceId;
   final pulumi.Input<bool>? sparkEnabled;
-
   /// Type of a managed network Outbound Rule of a machine learning workspace.
   final pulumi.Input<String>? sparkStatus;
   final pulumi.Input<String>? subresourceTarget;
@@ -34,26 +33,11 @@ class PrivateEndpointDestinationResponse {
 
   factory PrivateEndpointDestinationResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointDestinationResponse(
-      serviceResourceId: (() {
-        final guardedValue = map['serviceResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sparkEnabled: (() {
-        final guardedValue = map['sparkEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sparkStatus: (() {
-        final guardedValue = map['sparkStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subresourceTarget: (() {
-        final guardedValue = map['subresourceTarget'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serviceResourceId: (() { final guardedValue = map['serviceResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sparkEnabled: (() { final guardedValue = map['sparkEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sparkStatus: (() { final guardedValue = map['sparkStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subresourceTarget: (() { final guardedValue = map['subresourceTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

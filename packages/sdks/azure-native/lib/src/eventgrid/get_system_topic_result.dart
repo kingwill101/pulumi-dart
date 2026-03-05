@@ -7,37 +7,26 @@ import 'system_data_response.dart';
 class GetSystemTopicResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified identifier of the resource.
   final String id;
-
   /// Identity information for the resource.
   final IdentityInfoResponse? identity;
-
   /// Location of the resource.
   final String location;
-
   /// Metric resource id for the system topic.
   final String metricResourceId;
-
   /// Name of the resource.
   final String name;
-
   /// Provisioning state of the system topic.
   final String provisioningState;
-
   /// Source for the system topic.
   final String? source;
-
   /// The system metadata relating to the Event Grid resource.
   final SystemDataResponse systemData;
-
   /// Tags of the resource.
   final Map<String, String>? tags;
-
   /// TopicType for the system topic.
   final String? topicType;
-
   /// Type of the resource.
   final String type;
 
@@ -90,36 +79,17 @@ class GetSystemTopicResult {
     return GetSystemTopicResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return IdentityInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
       metricResourceId: map['metricResourceId'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      topicType: (() {
-        final guardedValue = map['topicType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      topicType: (() { final guardedValue = map['topicType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

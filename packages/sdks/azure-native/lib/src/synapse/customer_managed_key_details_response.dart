@@ -8,10 +8,8 @@ import 'workspace_key_details_response.dart';
 class CustomerManagedKeyDetailsResponse {
   /// Key encryption key
   final pulumi.Input<KekIdentityPropertiesResponse>? kekIdentity;
-
   /// The key object of the workspace
   final pulumi.Input<WorkspaceKeyDetailsResponse>? key;
-
   /// The customer managed key status on the workspace
   final pulumi.Input<String> status;
 
@@ -27,41 +25,18 @@ class CustomerManagedKeyDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kekIdentity':
-          ?pulumi.Input.mapOptionalInputValue<
-            KekIdentityPropertiesResponse,
-            Map<String, dynamic>
-          >(kekIdentity, (value) => value.toMap()),
-      'key':
-          ?pulumi.Input.mapOptionalInputValue<
-            WorkspaceKeyDetailsResponse,
-            Map<String, dynamic>
-          >(key, (value) => value.toMap()),
+      'kekIdentity': ?pulumi.Input.mapOptionalInputValue<KekIdentityPropertiesResponse, Map<String, dynamic>>(kekIdentity, (value) => value.toMap()),
+      'key': ?pulumi.Input.mapOptionalInputValue<WorkspaceKeyDetailsResponse, Map<String, dynamic>>(key, (value) => value.toMap()),
       'status': status,
     };
   }
 
   factory CustomerManagedKeyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return CustomerManagedKeyDetailsResponse(
-      kekIdentity: (() {
-        final guardedValue = map['kekIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KekIdentityPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WorkspaceKeyDetailsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      kekIdentity: (() { final guardedValue = map['kekIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KekIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkspaceKeyDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

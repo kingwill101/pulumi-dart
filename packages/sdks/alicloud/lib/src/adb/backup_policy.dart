@@ -12,13 +12,10 @@ import 'backup_policy_state.dart';
 class BackupPolicy extends pulumi.CustomResource {
   /// Cluster backup retention days, Fixed for 7 days, not modified.
   late final pulumi.Output<String> backupRetentionPeriod;
-
   /// The Id of cluster that can run database.
   late final pulumi.Output<String> dbClusterId;
-
   /// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
   late final pulumi.Output<List<String>> preferredBackupPeriods;
-
   /// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
   late final pulumi.Output<String> preferredBackupTime;
 
@@ -31,16 +28,14 @@ class BackupPolicy extends pulumi.CustomResource {
     BackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:adb/backupPolicy:BackupPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:adb/backupPolicy:BackupPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupRetentionPeriod = registerOutput<String>('backupRetentionPeriod');
     dbClusterId = registerOutput<String>('dbClusterId');
-    preferredBackupPeriods = registerOutput<List<String>>(
-      'preferredBackupPeriods',
-    );
+    preferredBackupPeriods = registerOutput<List<String>>('preferredBackupPeriods');
     preferredBackupTime = registerOutput<String>('preferredBackupTime');
   }
 
@@ -62,16 +57,14 @@ class BackupPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:adb/backupPolicy:BackupPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:adb/backupPolicy:BackupPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupRetentionPeriod = registerOutput<String>('backupRetentionPeriod');
     dbClusterId = registerOutput<String>('dbClusterId');
-    preferredBackupPeriods = registerOutput<List<String>>(
-      'preferredBackupPeriods',
-    );
+    preferredBackupPeriods = registerOutput<List<String>>('preferredBackupPeriods');
     preferredBackupTime = registerOutput<String>('preferredBackupTime');
   }
 }

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiDiagnosticBackendRequestDataMaskingQueryParam {
   /// The data masking mode. Possible values are `Mask` and `Hide` for `query_params`. The only possible value is `Mask` for `headers`.
   final pulumi.Input<String> mode;
-
   /// The name of the header or the query parameter to mask.
   final pulumi.Input<String> value;
 
@@ -18,15 +17,17 @@ class ApiDiagnosticBackendRequestDataMaskingQueryParam {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode, 'value': value};
+    return <String, dynamic>{
+      'mode': mode,
+      'value': value,
+    };
   }
 
-  factory ApiDiagnosticBackendRequestDataMaskingQueryParam.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApiDiagnosticBackendRequestDataMaskingQueryParam.fromMap(Map<String, dynamic> map) {
     return ApiDiagnosticBackendRequestDataMaskingQueryParam(
       mode: pulumi.Input.fromValue(map['mode'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

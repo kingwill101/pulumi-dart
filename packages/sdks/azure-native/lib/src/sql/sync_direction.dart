@@ -16,3 +16,4 @@ enum SyncDirection {
     throw ArgumentError('Unknown SyncDirection value: $value');
   }
 }
+

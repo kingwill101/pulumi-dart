@@ -10,29 +10,20 @@ class ManagedClusterMetricsProfile {
 
   /// Creates a new [ManagedClusterMetricsProfile].
   /// [costAnalysis] The configuration for detailed per-Kubernetes resource cost analysis.
-  ManagedClusterMetricsProfile({this.costAnalysis});
+  ManagedClusterMetricsProfile({
+    this.costAnalysis,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'costAnalysis':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedClusterCostAnalysis,
-            Map<String, dynamic>
-          >(costAnalysis, (value) => value.toMap()),
+      'costAnalysis': ?pulumi.Input.mapOptionalInputValue<ManagedClusterCostAnalysis, Map<String, dynamic>>(costAnalysis, (value) => value.toMap()),
     };
   }
 
   factory ManagedClusterMetricsProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterMetricsProfile(
-      costAnalysis: (() {
-        final guardedValue = map['costAnalysis'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedClusterCostAnalysis.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      costAnalysis: (() { final guardedValue = map['costAnalysis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterCostAnalysis.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

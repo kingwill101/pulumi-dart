@@ -15,3 +15,4 @@ enum AzureArcKubernetesArtifactType {
     throw ArgumentError('Unknown AzureArcKubernetesArtifactType value: $value');
   }
 }
+

@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsIntegrationsSes {
   /// Specify each AWS region that includes the resources that you want to monitor.
   final pulumi.Input<List<String>>? awsRegions;
-
   /// The data polling interval in seconds.
   final pulumi.Input<int>? metricsPollingInterval;
 
   /// Creates a new [AwsIntegrationsSes].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor.
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsSes({this.awsRegions, this.metricsPollingInterval});
+  AwsIntegrationsSes({
+    this.awsRegions,
+    this.metricsPollingInterval,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,16 +25,9 @@ class AwsIntegrationsSes {
 
   factory AwsIntegrationsSes.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsSes(
-      awsRegions: (() {
-        final guardedValue = map['awsRegions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      metricsPollingInterval: (() {
-        final guardedValue = map['metricsPollingInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      awsRegions: (() { final guardedValue = map['awsRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      metricsPollingInterval: (() { final guardedValue = map['metricsPollingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

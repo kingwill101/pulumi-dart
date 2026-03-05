@@ -12,20 +12,15 @@ class DataAccessLabelArgs {
   /// maximum number of characters should be 63. Regex pattern is as per AIP:
   /// https://google.aip.dev/122#resource-id-segments
   final pulumi.Input<String> dataAccessLabelId;
-
   /// Optional. A description of the data access label for a human reader.
   final pulumi.Input<String>? description;
-
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   final pulumi.Input<String> instance;
-
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A UDM query over event data.
   final pulumi.Input<String> udmQuery;
 
@@ -58,22 +53,13 @@ class DataAccessLabelArgs {
 
   factory DataAccessLabelArgs.fromMap(Map<String, dynamic> map) {
     return DataAccessLabelArgs(
-      dataAccessLabelId: pulumi.Input.fromValue(
-        map['dataAccessLabelId'] as String,
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataAccessLabelId: pulumi.Input.fromValue(map['dataAccessLabelId'] as String),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance: pulumi.Input.fromValue(map['instance'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       udmQuery: pulumi.Input.fromValue(map['udmQuery'] as String),
     );
   }
 }
+

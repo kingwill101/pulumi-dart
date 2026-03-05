@@ -7,16 +7,12 @@ import 'sub_resource.dart';
 class VirtualNetworkGatewayIPConfiguration {
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final pulumi.Input<String>? name;
-
   /// The private IP address allocation method.
   final pulumi.Input<String>? privateIPAllocationMethod;
-
   /// The reference to the public IP resource.
   final pulumi.Input<SubResource>? publicIPAddress;
-
   /// The reference to the subnet resource.
   final pulumi.Input<SubResource>? subnet;
 
@@ -39,52 +35,19 @@ class VirtualNetworkGatewayIPConfiguration {
       'id': ?id,
       'name': ?name,
       'privateIPAllocationMethod': ?privateIPAllocationMethod,
-      'publicIPAddress':
-          ?pulumi.Input.mapOptionalInputValue<
-            SubResource,
-            Map<String, dynamic>
-          >(publicIPAddress, (value) => value.toMap()),
-      'subnet':
-          ?pulumi.Input.mapOptionalInputValue<
-            SubResource,
-            Map<String, dynamic>
-          >(subnet, (value) => value.toMap()),
+      'publicIPAddress': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(publicIPAddress, (value) => value.toMap()),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
-  factory VirtualNetworkGatewayIPConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNetworkGatewayIPConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayIPConfiguration(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateIPAllocationMethod: (() {
-        final guardedValue = map['privateIPAllocationMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicIPAddress: (() {
-        final guardedValue = map['publicIPAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      subnet: (() {
-        final guardedValue = map['subnet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIPAllocationMethod: (() { final guardedValue = map['privateIPAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicIPAddress: (() { final guardedValue = map['publicIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

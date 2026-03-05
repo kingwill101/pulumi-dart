@@ -6,7 +6,6 @@ class GetClusterAddonsConfigLustreCsiDriverConfig {
   /// If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
   /// This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
   final pulumi.Input<bool> enableLegacyLustrePort;
-
   /// Whether the Lustre CSI driver is enabled for this cluster.
   final pulumi.Input<bool> enabled;
 
@@ -25,14 +24,11 @@ class GetClusterAddonsConfigLustreCsiDriverConfig {
     };
   }
 
-  factory GetClusterAddonsConfigLustreCsiDriverConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterAddonsConfigLustreCsiDriverConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigLustreCsiDriverConfig(
-      enableLegacyLustrePort: pulumi.Input.fromValue(
-        map['enableLegacyLustrePort'] as bool,
-      ),
+      enableLegacyLustrePort: pulumi.Input.fromValue(map['enableLegacyLustrePort'] as bool),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum AutoRebuildSetting {
     throw ArgumentError('Unknown AutoRebuildSetting value: $value');
   }
 }
+

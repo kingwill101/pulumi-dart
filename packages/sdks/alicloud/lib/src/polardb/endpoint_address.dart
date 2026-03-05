@@ -334,22 +334,16 @@ import 'endpoint_address_state.dart';
 class EndpointAddress extends pulumi.CustomResource {
   /// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
   late final pulumi.Output<String> connectionPrefix;
-
   /// Connection cluster or endpoint string.
   late final pulumi.Output<String> connectionString;
-
   /// The Id of cluster that can run database.
   late final pulumi.Output<String> dbClusterId;
-
   /// The Id of endpoint that can run database.
   late final pulumi.Output<String> dbEndpointId;
-
   /// The ip address of connection string.
   late final pulumi.Output<String> ipAddress;
-
   /// Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
   late final pulumi.Output<String?> netType;
-
   /// Port of the specified endpoint. Valid values: 3000 to 5999.
   late final pulumi.Output<String> port;
 
@@ -362,11 +356,11 @@ class EndpointAddress extends pulumi.CustomResource {
     EndpointAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/endpointAddress:EndpointAddress',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/endpointAddress:EndpointAddress',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionPrefix = registerOutput<String>('connectionPrefix');
     connectionString = registerOutput<String>('connectionString');
     dbClusterId = registerOutput<String>('dbClusterId');
@@ -394,11 +388,11 @@ class EndpointAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/endpointAddress:EndpointAddress',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/endpointAddress:EndpointAddress',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionPrefix = registerOutput<String>('connectionPrefix');
     connectionString = registerOutput<String>('connectionString');
     dbClusterId = registerOutput<String>('dbClusterId');

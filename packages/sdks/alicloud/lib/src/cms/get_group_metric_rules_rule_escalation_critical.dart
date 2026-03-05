@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupMetricRulesRuleEscalationCritical {
   /// The comparison operator of the threshold for critical-level alerts.
   final pulumi.Input<String> comparisonOperator;
-
   /// The statistical aggregation method for critical-level alerts.
   final pulumi.Input<String> statistics;
-
   /// The threshold for critical-level alerts.
   final pulumi.Input<String> threshold;
-
   /// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
   final pulumi.Input<int> times;
 
@@ -36,16 +33,13 @@ class GetGroupMetricRulesRuleEscalationCritical {
     };
   }
 
-  factory GetGroupMetricRulesRuleEscalationCritical.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGroupMetricRulesRuleEscalationCritical.fromMap(Map<String, dynamic> map) {
     return GetGroupMetricRulesRuleEscalationCritical(
-      comparisonOperator: pulumi.Input.fromValue(
-        map['comparisonOperator'] as String,
-      ),
+      comparisonOperator: pulumi.Input.fromValue(map['comparisonOperator'] as String),
       statistics: pulumi.Input.fromValue(map['statistics'] as String),
       threshold: pulumi.Input.fromValue(map['threshold'] as String),
       times: pulumi.Input.fromValue(map['times'] as int),
     );
   }
 }
+

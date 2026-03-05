@@ -5,10 +5,7 @@ import 'get_log_data_protection_policy_document_statement_operation_audit_findin
 
 class GetLogDataProtectionPolicyDocumentStatementOperationAudit {
   /// Configures destinations to send audit findings to.
-  final pulumi.Input<
-    GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestination
-  >
-  findingsDestination;
+  final pulumi.Input<GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestination> findingsDestination;
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentStatementOperationAudit].
   /// [findingsDestination] Configures destinations to send audit findings to.
@@ -18,23 +15,14 @@ class GetLogDataProtectionPolicyDocumentStatementOperationAudit {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'findingsDestination':
-          pulumi.Input.mapInputValue<
-            GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestination,
-            Map<String, dynamic>
-          >(findingsDestination, (value) => value.toMap()),
+      'findingsDestination': pulumi.Input.mapInputValue<GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestination, Map<String, dynamic>>(findingsDestination, (value) => value.toMap()),
     };
   }
 
-  factory GetLogDataProtectionPolicyDocumentStatementOperationAudit.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLogDataProtectionPolicyDocumentStatementOperationAudit.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentStatementOperationAudit(
-      findingsDestination: pulumi.Input.fromValue(
-        GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestination.fromMap(
-          (map['findingsDestination']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      findingsDestination: pulumi.Input.fromValue(GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestination.fromMap((map['findingsDestination']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

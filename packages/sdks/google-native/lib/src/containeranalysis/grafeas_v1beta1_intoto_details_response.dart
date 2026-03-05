@@ -19,40 +19,16 @@ class GrafeasV1beta1IntotoDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'signatures':
-          pulumi.Input.mapInputValue<
-            List<GrafeasV1beta1IntotoSignatureResponse>,
-            List<Map<String, dynamic>>
-          >(
-            signatures,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GrafeasV1beta1IntotoSignatureResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'signed': pulumi.Input.mapInputValue<LinkResponse, Map<String, dynamic>>(
-        signed,
-        (value) => value.toMap(),
-      ),
+      'signatures': pulumi.Input.mapInputValue<List<GrafeasV1beta1IntotoSignatureResponse>, List<Map<String, dynamic>>>(signatures, (value) => pulumi.Input.encodeList<GrafeasV1beta1IntotoSignatureResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'signed': pulumi.Input.mapInputValue<LinkResponse, Map<String, dynamic>>(signed, (value) => value.toMap()),
     };
   }
 
-  factory GrafeasV1beta1IntotoDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GrafeasV1beta1IntotoDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1IntotoDetailsResponse(
-      signatures: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GrafeasV1beta1IntotoSignatureResponse>(
-          map['signatures']!,
-          (value) => GrafeasV1beta1IntotoSignatureResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      signed: pulumi.Input.fromValue(
-        LinkResponse.fromMap((map['signed']! as Map).cast<String, dynamic>()),
-      ),
+      signatures: pulumi.Input.fromValue(pulumi.Input.decodeList<GrafeasV1beta1IntotoSignatureResponse>(map['signatures']!, (value) => GrafeasV1beta1IntotoSignatureResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      signed: pulumi.Input.fromValue(LinkResponse.fromMap((map['signed']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

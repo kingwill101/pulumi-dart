@@ -35,17 +35,12 @@ class GetVpnConnectionVgwTelemetry {
 
   factory GetVpnConnectionVgwTelemetry.fromMap(Map<String, dynamic> map) {
     return GetVpnConnectionVgwTelemetry(
-      acceptedRouteCount: pulumi.Input.fromValue(
-        map['acceptedRouteCount'] as int,
-      ),
-      lastStatusChange: pulumi.Input.fromValue(
-        map['lastStatusChange'] as String,
-      ),
-      outsideIpAddress: pulumi.Input.fromValue(
-        map['outsideIpAddress'] as String,
-      ),
+      acceptedRouteCount: pulumi.Input.fromValue(map['acceptedRouteCount'] as int),
+      lastStatusChange: pulumi.Input.fromValue(map['lastStatusChange'] as String),
+      outsideIpAddress: pulumi.Input.fromValue(map['outsideIpAddress'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       statusMessage: pulumi.Input.fromValue(map['statusMessage'] as String),
     );
   }
 }
+

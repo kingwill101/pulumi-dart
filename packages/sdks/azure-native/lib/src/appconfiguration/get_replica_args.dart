@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicaArgs {
   /// The name of the configuration store.
   final pulumi.Input<String> configStoreName;
-
   /// The name of the replica.
   final pulumi.Input<String> replicaName;
-
   /// The name of the resource group to which the container registry belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetReplicaArgs {
     return GetReplicaArgs(
       configStoreName: pulumi.Input.fromValue(map['configStoreName'] as String),
       replicaName: pulumi.Input.fromValue(map['replicaName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

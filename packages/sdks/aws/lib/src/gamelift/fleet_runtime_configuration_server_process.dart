@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetRuntimeConfigurationServerProcess {
   /// Number of server processes using this configuration to run concurrently on an instance.
   final pulumi.Input<int> concurrentExecutions;
-
   /// Location of the server executable in a game build. All game builds are installed on instances at the root : for Windows instances `C:\game`, and for Linux instances `/local/game`.
   final pulumi.Input<String> launchPath;
-
   /// Optional list of parameters to pass to the server executable on launch.
   final pulumi.Input<String>? parameters;
 
@@ -30,19 +28,12 @@ class FleetRuntimeConfigurationServerProcess {
     };
   }
 
-  factory FleetRuntimeConfigurationServerProcess.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FleetRuntimeConfigurationServerProcess.fromMap(Map<String, dynamic> map) {
     return FleetRuntimeConfigurationServerProcess(
-      concurrentExecutions: pulumi.Input.fromValue(
-        map['concurrentExecutions'] as int,
-      ),
+      concurrentExecutions: pulumi.Input.fromValue(map['concurrentExecutions'] as int),
       launchPath: pulumi.Input.fromValue(map['launchPath'] as String),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

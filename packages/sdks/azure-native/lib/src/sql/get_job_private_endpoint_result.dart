@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getJobPrivateEndpoint.
 class GetJobPrivateEndpointResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String id;
-
   /// Resource name.
   final String name;
-
   /// Private endpoint id of the private endpoint.
   final String privateEndpointId;
-
   /// ARM resource id of the server the private endpoint will target.
   final String targetServerAzureResourceId;
-
   /// Resource type.
   final String type;
 
@@ -58,3 +54,4 @@ class GetJobPrivateEndpointResult {
     );
   }
 }
+

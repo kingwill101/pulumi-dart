@@ -7,7 +7,6 @@ import 'range_info_response_container_v1beta1.dart';
 class AdditionalPodRangesConfigResponseContainerV1beta1 {
   /// [Output only] Information for additional pod range.
   final pulumi.Input<List<RangeInfoResponseContainerV1beta1>> podRangeInfo;
-
   /// Name for pod secondary ipv4 range which has the actual range defined ahead.
   final pulumi.Input<List<String>> podRangeNames;
 
@@ -21,37 +20,16 @@ class AdditionalPodRangesConfigResponseContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'podRangeInfo':
-          pulumi.Input.mapInputValue<
-            List<RangeInfoResponseContainerV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            podRangeInfo,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RangeInfoResponseContainerV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'podRangeInfo': pulumi.Input.mapInputValue<List<RangeInfoResponseContainerV1beta1>, List<Map<String, dynamic>>>(podRangeInfo, (value) => pulumi.Input.encodeList<RangeInfoResponseContainerV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'podRangeNames': podRangeNames,
     };
   }
 
-  factory AdditionalPodRangesConfigResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AdditionalPodRangesConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AdditionalPodRangesConfigResponseContainerV1beta1(
-      podRangeInfo: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<RangeInfoResponseContainerV1beta1>(
-          map['podRangeInfo']!,
-          (value) => RangeInfoResponseContainerV1beta1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      podRangeNames: pulumi.Input.fromValue(
-        (map['podRangeNames'] as List).cast<String>(),
-      ),
+      podRangeInfo: pulumi.Input.fromValue(pulumi.Input.decodeList<RangeInfoResponseContainerV1beta1>(map['podRangeInfo']!, (value) => RangeInfoResponseContainerV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
+      podRangeNames: pulumi.Input.fromValue((map['podRangeNames'] as List).cast<String>()),
     );
   }
 }
+

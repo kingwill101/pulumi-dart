@@ -5,37 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DirectoryPasswordPolicy {
   /// Whether to restrict login after Password Expiration
   final pulumi.Input<bool>? hardExpire;
-
   /// Number of password retries.
   final pulumi.Input<int>? maxLoginAttempts;
-
   /// Password validity period.
   final pulumi.Input<int>? maxPasswordAge;
-
   /// Maximum password length.
   final pulumi.Input<int>? maxPasswordLength;
-
   /// The minimum number of different characters in a password.
   final pulumi.Input<int>? minPasswordDifferentChars;
-
   /// Minimum password length.
   final pulumi.Input<int>? minPasswordLength;
-
   /// Whether the user name is not allowed in the password.
   final pulumi.Input<bool>? passwordNotContainUsername;
-
   /// Historical password check policy.
   final pulumi.Input<int>? passwordReusePrevention;
-
   /// Whether lowercase letters are required in the password.
   final pulumi.Input<bool>? requireLowerCaseChars;
-
   /// Whether numbers are required in the password.
   final pulumi.Input<bool>? requireNumbers;
-
   /// Whether symbols are required in the password.
   final pulumi.Input<bool>? requireSymbols;
-
   /// Whether uppercase letters are required in the password.
   final pulumi.Input<bool>? requireUpperCaseChars;
 
@@ -86,66 +75,19 @@ class DirectoryPasswordPolicy {
 
   factory DirectoryPasswordPolicy.fromMap(Map<String, dynamic> map) {
     return DirectoryPasswordPolicy(
-      hardExpire: (() {
-        final guardedValue = map['hardExpire'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      maxLoginAttempts: (() {
-        final guardedValue = map['maxLoginAttempts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxPasswordAge: (() {
-        final guardedValue = map['maxPasswordAge'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxPasswordLength: (() {
-        final guardedValue = map['maxPasswordLength'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minPasswordDifferentChars: (() {
-        final guardedValue = map['minPasswordDifferentChars'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minPasswordLength: (() {
-        final guardedValue = map['minPasswordLength'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      passwordNotContainUsername: (() {
-        final guardedValue = map['passwordNotContainUsername'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      passwordReusePrevention: (() {
-        final guardedValue = map['passwordReusePrevention'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      requireLowerCaseChars: (() {
-        final guardedValue = map['requireLowerCaseChars'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      requireNumbers: (() {
-        final guardedValue = map['requireNumbers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      requireSymbols: (() {
-        final guardedValue = map['requireSymbols'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      requireUpperCaseChars: (() {
-        final guardedValue = map['requireUpperCaseChars'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      hardExpire: (() { final guardedValue = map['hardExpire']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      maxLoginAttempts: (() { final guardedValue = map['maxLoginAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxPasswordAge: (() { final guardedValue = map['maxPasswordAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxPasswordLength: (() { final guardedValue = map['maxPasswordLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minPasswordDifferentChars: (() { final guardedValue = map['minPasswordDifferentChars']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minPasswordLength: (() { final guardedValue = map['minPasswordLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      passwordNotContainUsername: (() { final guardedValue = map['passwordNotContainUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      passwordReusePrevention: (() { final guardedValue = map['passwordReusePrevention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      requireLowerCaseChars: (() { final guardedValue = map['requireLowerCaseChars']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      requireNumbers: (() { final guardedValue = map['requireNumbers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      requireSymbols: (() { final guardedValue = map['requireSymbols']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      requireUpperCaseChars: (() { final guardedValue = map['requireUpperCaseChars']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

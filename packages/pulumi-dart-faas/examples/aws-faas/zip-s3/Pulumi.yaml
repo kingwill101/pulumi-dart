@@ -1,0 +1,15 @@
+name: aws-faas-zip-s3
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Lambda zip deployment from S3 using pulumi_dart_faas.
+config:
+  aws-faas-zip-s3:artifactBucket:
+    description: S3 bucket containing function zip (with bootstrap binary at root).
+  aws-faas-zip-s3:artifactKey:
+    description: S3 key for the function zip.
+  aws-faas-zip-s3:artifactObjectVersion:
+    description: Optional S3 object version for immutable deploys.
+  aws-faas-zip-s3:sourceCodeHash:
+    description: Optional base64-encoded zip SHA-256 for update detection.

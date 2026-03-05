@@ -15,3 +15,4 @@ enum InstanceBootModeValues {
     throw ArgumentError('Unknown InstanceBootModeValues value: $value');
   }
 }
+

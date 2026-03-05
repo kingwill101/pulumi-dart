@@ -5,40 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHanaInstancesInstance {
   /// The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
   final pulumi.Input<String> alertSetting;
-
   /// The ID of the SAP HANA instance.
   final pulumi.Input<String> hanaInstanceId;
-
   /// The name of the SAP HANA instance.
   final pulumi.Input<String> hanaName;
-
   /// The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
   final pulumi.Input<String> host;
-
   /// The ID of the Hana Instance. The value formats as `&lt;vault_id&gt;:&lt;hana_instance_id&gt;`.
   final pulumi.Input<String> id;
-
   /// The instance number of the SAP HANA system.
   final pulumi.Input<int> instanceNumber;
-
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
-
   /// The status of the SAP HANA instance.
   final pulumi.Input<String> status;
-
   /// The status information.
   final pulumi.Input<String> statusMessage;
-
   /// Indicates whether the SAP HANA instance is connected over Secure Sockets Layer (SSL).
   final pulumi.Input<bool> useSsl;
-
   /// The username of the SYSTEMDB database.
   final pulumi.Input<String> userName;
-
   /// Indicates whether the SSL certificate of the SAP HANA instance is verified.
   final pulumi.Input<bool> validateCertificate;
-
   /// The ID of the backup vault.
   final pulumi.Input<String> vaultId;
 
@@ -103,10 +91,9 @@ class GetHanaInstancesInstance {
       statusMessage: pulumi.Input.fromValue(map['statusMessage'] as String),
       useSsl: pulumi.Input.fromValue(map['useSsl'] as bool),
       userName: pulumi.Input.fromValue(map['userName'] as String),
-      validateCertificate: pulumi.Input.fromValue(
-        map['validateCertificate'] as bool,
-      ),
+      validateCertificate: pulumi.Input.fromValue(map['validateCertificate'] as bool),
       vaultId: pulumi.Input.fromValue(map['vaultId'] as String),
     );
   }
 }
+

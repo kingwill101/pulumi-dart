@@ -759,22 +759,16 @@ import 'addon_release_state.dart';
 class AddonRelease extends pulumi.CustomResource {
   /// Addon Name.
   late final pulumi.Output<String> addonName;
-
   /// The name of the resource.
   late final pulumi.Output<String> addonReleaseName;
-
   /// Version number of Addon. Addon information can be obtained through ListAddons.
   late final pulumi.Output<String> addonVersion;
-
   /// The installed locale.
   late final pulumi.Output<String> aliyunLang;
-
   /// Creation time.
   late final pulumi.Output<String> createTime;
-
   /// Environment id.
   late final pulumi.Output<String> environmentId;
-
   /// Configuration information for installing Addon. Obtain the configuration template from ListAddonSchema, for example, {"host":"mysql-service.default","port":3306,"username":"root","password":"roots"}.
   late final pulumi.Output<String?> values;
 
@@ -787,11 +781,11 @@ class AddonRelease extends pulumi.CustomResource {
     AddonReleaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/addonRelease:AddonRelease',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/addonRelease:AddonRelease',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addonName = registerOutput<String>('addonName');
     addonReleaseName = registerOutput<String>('addonReleaseName');
     addonVersion = registerOutput<String>('addonVersion');
@@ -819,11 +813,11 @@ class AddonRelease extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/addonRelease:AddonRelease',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/addonRelease:AddonRelease',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addonName = registerOutput<String>('addonName');
     addonReleaseName = registerOutput<String>('addonReleaseName');
     addonVersion = registerOutput<String>('addonVersion');

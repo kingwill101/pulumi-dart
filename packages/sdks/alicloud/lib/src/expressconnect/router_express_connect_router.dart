@@ -12,26 +12,19 @@ import 'router_express_connect_router_state.dart';
 class RouterExpressConnectRouter extends pulumi.CustomResource {
   /// ASN representing resources.
   late final pulumi.Output<int> alibabaSideAsn;
-
   /// Represents the creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// Represents the description of the leased line gateway.
   late final pulumi.Output<String?> description;
-
   /// Name of the Gateway representing the leased line.
   late final pulumi.Output<String?> ecrName;
-
   /// List of regions representing leased line gateways. See `regions` below.
   late final pulumi.Output<List<Map<String, dynamic>>> regions;
-
   /// The ID of the resource group to which the ECR instance belongs.
   /// - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -44,11 +37,11 @@ class RouterExpressConnectRouter extends pulumi.CustomResource {
     RouterExpressConnectRouterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alibabaSideAsn = registerOutput<int>('alibabaSideAsn');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -77,11 +70,11 @@ class RouterExpressConnectRouter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alibabaSideAsn = registerOutput<int>('alibabaSideAsn');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

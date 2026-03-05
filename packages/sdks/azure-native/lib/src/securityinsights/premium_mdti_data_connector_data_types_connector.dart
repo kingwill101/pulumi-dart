@@ -9,17 +9,20 @@ class PremiumMdtiDataConnectorDataTypesConnector {
 
   /// Creates a new [PremiumMdtiDataConnectorDataTypesConnector].
   /// [state] Describe whether this data type connection is enabled or not.
-  PremiumMdtiDataConnectorDataTypesConnector({required this.state});
+  PremiumMdtiDataConnectorDataTypesConnector({
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': state};
+    return <String, dynamic>{
+      'state': state,
+    };
   }
 
-  factory PremiumMdtiDataConnectorDataTypesConnector.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PremiumMdtiDataConnectorDataTypesConnector.fromMap(Map<String, dynamic> map) {
     return PremiumMdtiDataConnectorDataTypesConnector(
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

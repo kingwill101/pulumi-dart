@@ -6,9 +6,7 @@ import 'google_cloud_aiplatform_v1_big_query_source_response.dart';
 /// Input source type for BigQuery Tables and Views.
 class GoogleCloudAiplatformV1FeatureGroupBigQueryResponse {
   /// Immutable. The BigQuery source URI that points to either a BigQuery Table or View.
-  final pulumi.Input<GoogleCloudAiplatformV1BigQuerySourceResponse>
-  bigQuerySource;
-
+  final pulumi.Input<GoogleCloudAiplatformV1BigQuerySourceResponse> bigQuerySource;
   /// Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
   final pulumi.Input<List<String>> entityIdColumns;
 
@@ -22,27 +20,16 @@ class GoogleCloudAiplatformV1FeatureGroupBigQueryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigQuerySource':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAiplatformV1BigQuerySourceResponse,
-            Map<String, dynamic>
-          >(bigQuerySource, (value) => value.toMap()),
+      'bigQuerySource': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1BigQuerySourceResponse, Map<String, dynamic>>(bigQuerySource, (value) => value.toMap()),
       'entityIdColumns': entityIdColumns,
     };
   }
 
-  factory GoogleCloudAiplatformV1FeatureGroupBigQueryResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1FeatureGroupBigQueryResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeatureGroupBigQueryResponse(
-      bigQuerySource: pulumi.Input.fromValue(
-        GoogleCloudAiplatformV1BigQuerySourceResponse.fromMap(
-          (map['bigQuerySource']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      entityIdColumns: pulumi.Input.fromValue(
-        (map['entityIdColumns'] as List).cast<String>(),
-      ),
+      bigQuerySource: pulumi.Input.fromValue(GoogleCloudAiplatformV1BigQuerySourceResponse.fromMap((map['bigQuerySource']! as Map).cast<String, dynamic>())),
+      entityIdColumns: pulumi.Input.fromValue((map['entityIdColumns'] as List).cast<String>()),
     );
   }
 }
+

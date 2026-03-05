@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProvisionedClusterArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Parameter for the name of the provisioned cluster
   final pulumi.Input<String> resourceName;
 
@@ -30,10 +29,9 @@ class GetProvisionedClusterArgs {
 
   factory GetProvisionedClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetProvisionedClusterArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

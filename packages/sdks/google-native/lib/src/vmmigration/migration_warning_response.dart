@@ -8,16 +8,12 @@ import 'localized_message_response.dart';
 class MigrationWarningResponse {
   /// Suggested action for solving the warning.
   final pulumi.Input<LocalizedMessageResponse> actionItem;
-
   /// The warning code.
   final pulumi.Input<String> code;
-
   /// URL(s) pointing to additional information on handling the current warning.
   final pulumi.Input<List<LinkResponse>> helpLinks;
-
   /// The localized warning message.
   final pulumi.Input<LocalizedMessageResponse> warningMessage;
-
   /// The time the warning occurred.
   final pulumi.Input<String> warningTime;
 
@@ -37,54 +33,22 @@ class MigrationWarningResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionItem':
-          pulumi.Input.mapInputValue<
-            LocalizedMessageResponse,
-            Map<String, dynamic>
-          >(actionItem, (value) => value.toMap()),
+      'actionItem': pulumi.Input.mapInputValue<LocalizedMessageResponse, Map<String, dynamic>>(actionItem, (value) => value.toMap()),
       'code': code,
-      'helpLinks':
-          pulumi.Input.mapInputValue<
-            List<LinkResponse>,
-            List<Map<String, dynamic>>
-          >(
-            helpLinks,
-            (value) =>
-                pulumi.Input.encodeList<LinkResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'warningMessage':
-          pulumi.Input.mapInputValue<
-            LocalizedMessageResponse,
-            Map<String, dynamic>
-          >(warningMessage, (value) => value.toMap()),
+      'helpLinks': pulumi.Input.mapInputValue<List<LinkResponse>, List<Map<String, dynamic>>>(helpLinks, (value) => pulumi.Input.encodeList<LinkResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'warningMessage': pulumi.Input.mapInputValue<LocalizedMessageResponse, Map<String, dynamic>>(warningMessage, (value) => value.toMap()),
       'warningTime': warningTime,
     };
   }
 
   factory MigrationWarningResponse.fromMap(Map<String, dynamic> map) {
     return MigrationWarningResponse(
-      actionItem: pulumi.Input.fromValue(
-        LocalizedMessageResponse.fromMap(
-          (map['actionItem']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      actionItem: pulumi.Input.fromValue(LocalizedMessageResponse.fromMap((map['actionItem']! as Map).cast<String, dynamic>())),
       code: pulumi.Input.fromValue(map['code'] as String),
-      helpLinks: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<LinkResponse>(
-          map['helpLinks']!,
-          (value) =>
-              LinkResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      warningMessage: pulumi.Input.fromValue(
-        LocalizedMessageResponse.fromMap(
-          (map['warningMessage']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      helpLinks: pulumi.Input.fromValue(pulumi.Input.decodeList<LinkResponse>(map['helpLinks']!, (value) => LinkResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      warningMessage: pulumi.Input.fromValue(LocalizedMessageResponse.fromMap((map['warningMessage']! as Map).cast<String, dynamic>())),
       warningTime: pulumi.Input.fromValue(map['warningTime'] as String),
     );
   }
 }
+

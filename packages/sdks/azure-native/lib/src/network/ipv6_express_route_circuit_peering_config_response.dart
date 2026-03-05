@@ -7,18 +7,13 @@ import 'sub_resource_response.dart';
 /// Contains IPv6 peering config.
 class Ipv6ExpressRouteCircuitPeeringConfigResponse {
   /// The Microsoft peering configuration.
-  final pulumi.Input<ExpressRouteCircuitPeeringConfigResponse>?
-  microsoftPeeringConfig;
-
+  final pulumi.Input<ExpressRouteCircuitPeeringConfigResponse>? microsoftPeeringConfig;
   /// The primary address prefix.
   final pulumi.Input<String>? primaryPeerAddressPrefix;
-
   /// The reference to the RouteFilter resource.
   final pulumi.Input<SubResourceResponse>? routeFilter;
-
   /// The secondary address prefix.
   final pulumi.Input<String>? secondaryPeerAddressPrefix;
-
   /// The state of peering.
   final pulumi.Input<String>? state;
 
@@ -38,59 +33,22 @@ class Ipv6ExpressRouteCircuitPeeringConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'microsoftPeeringConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExpressRouteCircuitPeeringConfigResponse,
-            Map<String, dynamic>
-          >(microsoftPeeringConfig, (value) => value.toMap()),
+      'microsoftPeeringConfig': ?pulumi.Input.mapOptionalInputValue<ExpressRouteCircuitPeeringConfigResponse, Map<String, dynamic>>(microsoftPeeringConfig, (value) => value.toMap()),
       'primaryPeerAddressPrefix': ?primaryPeerAddressPrefix,
-      'routeFilter':
-          ?pulumi.Input.mapOptionalInputValue<
-            SubResourceResponse,
-            Map<String, dynamic>
-          >(routeFilter, (value) => value.toMap()),
+      'routeFilter': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(routeFilter, (value) => value.toMap()),
       'secondaryPeerAddressPrefix': ?secondaryPeerAddressPrefix,
       'state': ?state,
     };
   }
 
-  factory Ipv6ExpressRouteCircuitPeeringConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory Ipv6ExpressRouteCircuitPeeringConfigResponse.fromMap(Map<String, dynamic> map) {
     return Ipv6ExpressRouteCircuitPeeringConfigResponse(
-      microsoftPeeringConfig: (() {
-        final guardedValue = map['microsoftPeeringConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExpressRouteCircuitPeeringConfigResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      primaryPeerAddressPrefix: (() {
-        final guardedValue = map['primaryPeerAddressPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routeFilter: (() {
-        final guardedValue = map['routeFilter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SubResourceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      secondaryPeerAddressPrefix: (() {
-        final guardedValue = map['secondaryPeerAddressPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      microsoftPeeringConfig: (() { final guardedValue = map['microsoftPeeringConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExpressRouteCircuitPeeringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      primaryPeerAddressPrefix: (() { final guardedValue = map['primaryPeerAddressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routeFilter: (() { final guardedValue = map['routeFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      secondaryPeerAddressPrefix: (() { final guardedValue = map['secondaryPeerAddressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

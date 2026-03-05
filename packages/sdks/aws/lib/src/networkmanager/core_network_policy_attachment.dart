@@ -1831,10 +1831,8 @@ import 'core_network_policy_attachment_state.dart';
 class CoreNetworkPolicyAttachment extends pulumi.CustomResource {
   /// ID of the core network that a policy will be attached to and made `LIVE`.
   late final pulumi.Output<String> coreNetworkId;
-
   /// Policy document for creating a core network. Note that updating this argument will result in the new policy document version being set as the `LATEST` and `LIVE` policy document. Refer to the [Core network policies documentation](https://docs.aws.amazon.com/network-manager/latest/cloudwan/cloudwan-policy-change-sets.html) for more information.
   late final pulumi.Output<String> policyDocument;
-
   /// Current state of a core network.
   late final pulumi.Output<String> state;
 
@@ -1847,11 +1845,11 @@ class CoreNetworkPolicyAttachment extends pulumi.CustomResource {
     CoreNetworkPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkmanager/coreNetworkPolicyAttachment:CoreNetworkPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkmanager/coreNetworkPolicyAttachment:CoreNetworkPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     coreNetworkId = registerOutput<String>('coreNetworkId');
     policyDocument = registerOutput<String>('policyDocument');
     state = registerOutput<String>('state');
@@ -1875,11 +1873,11 @@ class CoreNetworkPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkmanager/coreNetworkPolicyAttachment:CoreNetworkPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkmanager/coreNetworkPolicyAttachment:CoreNetworkPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     coreNetworkId = registerOutput<String>('coreNetworkId');
     policyDocument = registerOutput<String>('policyDocument');
     this.state = registerOutput<String>('state');

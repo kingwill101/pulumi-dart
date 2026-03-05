@@ -187,10 +187,8 @@ import 'nfs_attachment_state.dart';
 /// ```
 class NfsAttachment extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
-
   /// The ID of the NFS share to attach.
   late final pulumi.Output<String> shareId;
-
   /// The ID of the vpc to attach the NFS share to.
   late final pulumi.Output<String> vpcId;
 
@@ -203,11 +201,11 @@ class NfsAttachment extends pulumi.CustomResource {
     NfsAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/nfsAttachment:NfsAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/nfsAttachment:NfsAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
     shareId = registerOutput<String>('shareId');
     vpcId = registerOutput<String>('vpcId');
@@ -231,11 +229,11 @@ class NfsAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/nfsAttachment:NfsAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/nfsAttachment:NfsAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
     shareId = registerOutput<String>('shareId');
     vpcId = registerOutput<String>('vpcId');

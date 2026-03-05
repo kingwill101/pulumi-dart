@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentFlowDefinitionNodeConfigurationInlineCode {
   /// The code that's executed in your inline code node.
   final pulumi.Input<String> code;
-
   /// The programming language used by your inline code node.
   final pulumi.Input<String> language;
 
@@ -18,15 +17,17 @@ class AgentFlowDefinitionNodeConfigurationInlineCode {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code, 'language': language};
+    return <String, dynamic>{
+      'code': code,
+      'language': language,
+    };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationInlineCode.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentFlowDefinitionNodeConfigurationInlineCode.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationInlineCode(
       code: pulumi.Input.fromValue(map['code'] as String),
       language: pulumi.Input.fromValue(map['language'] as String),
     );
   }
 }
+

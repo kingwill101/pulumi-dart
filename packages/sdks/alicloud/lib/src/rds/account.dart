@@ -320,27 +320,20 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String> accountType;
   late final pulumi.Output<bool?> checkPolicy;
   late final pulumi.Output<String> dbInstanceId;
-
   /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
   late final pulumi.Output<String> description;
-
   /// The Id of instance in which account belongs.
   late final pulumi.Output<String> instanceId;
-
   /// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
   late final pulumi.Output<String?> kmsEncryptedPassword;
-
   /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   late final pulumi.Output<Map<String, String>?> kmsEncryptionContext;
-
   /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
   late final pulumi.Output<String> name;
-
   /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
   late final pulumi.Output<String> password;
   late final pulumi.Output<bool?> resetPermissionFlag;
   late final pulumi.Output<String> status;
-
   /// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
   /// - Normal: Common privilege.
   /// - Super: High privilege.
@@ -357,11 +350,11 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/account:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/account:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountDescription = registerOutput<String>('accountDescription');
     accountName = registerOutput<String>('accountName');
     accountPassword = registerOutput<String>('accountPassword');
@@ -371,9 +364,7 @@ class Account extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     instanceId = registerOutput<String>('instanceId');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
     this.name = registerOutput<String>('name');
     password = registerOutput<String>('password');
     resetPermissionFlag = registerOutput<bool?>('resetPermissionFlag');
@@ -399,11 +390,11 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/account:Account',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/account:Account',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountDescription = registerOutput<String>('accountDescription');
     accountName = registerOutput<String>('accountName');
     accountPassword = registerOutput<String>('accountPassword');
@@ -413,9 +404,7 @@ class Account extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     instanceId = registerOutput<String>('instanceId');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
     this.name = registerOutput<String>('name');
     password = registerOutput<String>('password');
     resetPermissionFlag = registerOutput<bool?>('resetPermissionFlag');

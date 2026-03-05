@@ -10,38 +10,20 @@ class StorageProfile {
 
   /// Creates a new [StorageProfile].
   /// [storageaccounts] The list of storage accounts in the cluster.
-  StorageProfile({this.storageaccounts});
+  StorageProfile({
+    this.storageaccounts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'storageaccounts':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<StorageAccount>,
-            List<Map<String, dynamic>>
-          >(
-            storageaccounts,
-            (value) =>
-                pulumi.Input.encodeList<StorageAccount, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'storageaccounts': ?pulumi.Input.mapOptionalInputValue<List<StorageAccount>, List<Map<String, dynamic>>>(storageaccounts, (value) => pulumi.Input.encodeList<StorageAccount, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageProfile(
-      storageaccounts: (() {
-        final guardedValue = map['storageaccounts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<StorageAccount>(
-            guardedValue,
-            (value) =>
-                StorageAccount.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      storageaccounts: (() { final guardedValue = map['storageaccounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StorageAccount>(guardedValue, (value) => StorageAccount.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

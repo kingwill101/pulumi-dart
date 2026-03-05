@@ -6,7 +6,6 @@ import 'get_history_delivery_jobs_job.dart';
 /// Result data returned by getHistoryDeliveryJobs.
 class GetHistoryDeliveryJobsResult {
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -35,11 +34,7 @@ class GetHistoryDeliveryJobsResult {
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
-      'jobs':
-          pulumi.Input.encodeList<
-            GetHistoryDeliveryJobsJob,
-            Map<String, dynamic>
-          >(jobs, (value) => value.toMap()),
+      'jobs': pulumi.Input.encodeList<GetHistoryDeliveryJobsJob, Map<String, dynamic>>(jobs, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'status': ?status,
     };
@@ -47,29 +42,13 @@ class GetHistoryDeliveryJobsResult {
 
   factory GetHistoryDeliveryJobsResult.fromMap(Map<String, dynamic> map) {
     return GetHistoryDeliveryJobsResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      jobs: pulumi.Input.decodeList<GetHistoryDeliveryJobsJob>(
-        map['jobs']!,
-        (value) => GetHistoryDeliveryJobsJob.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      jobs: pulumi.Input.decodeList<GetHistoryDeliveryJobsJob>(map['jobs']!, (value) => GetHistoryDeliveryJobsJob.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as int; })(),
     );
   }
 }
+

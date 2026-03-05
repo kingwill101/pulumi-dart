@@ -257,34 +257,24 @@ import 'profile_state.dart';
 class Profile extends pulumi.CustomResource {
   /// Whether or not a custom role session name is accepted.
   late final pulumi.Output<bool?> acceptRoleSessionName;
-
   /// Amazon Resource Name (ARN) of the Profile
   late final pulumi.Output<String> arn;
-
   /// The number of seconds the vended session credentials are valid for. Defaults to 3600.
   late final pulumi.Output<int> durationSeconds;
-
   /// Whether or not the Profile is enabled.
   late final pulumi.Output<bool?> enabled;
-
   /// A list of managed policy ARNs that apply to the vended session credentials.
   late final pulumi.Output<List<String>?> managedPolicyArns;
-
   /// The name of the Profile.
   late final pulumi.Output<String> name;
-
   /// Specifies whether instance properties are required in [CreateSession](https://docs.aws.amazon.com/rolesanywhere/latest/APIReference/API_CreateSession.html) requests with this profile.
   late final pulumi.Output<bool?> requireInstanceProperties;
-
   /// A list of IAM roles that this profile can assume
   late final pulumi.Output<List<String>?> roleArns;
-
   /// A session policy that applies to the trust boundary of the vended session credentials.
   late final pulumi.Output<String?> sessionPolicy;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -297,20 +287,18 @@ class Profile extends pulumi.CustomResource {
     ProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rolesanywhere/profile:Profile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rolesanywhere/profile:Profile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceptRoleSessionName = registerOutput<bool?>('acceptRoleSessionName');
     arn = registerOutput<String>('arn');
     durationSeconds = registerOutput<int>('durationSeconds');
     enabled = registerOutput<bool?>('enabled');
     managedPolicyArns = registerOutput<List<String>?>('managedPolicyArns');
     this.name = registerOutput<String>('name');
-    requireInstanceProperties = registerOutput<bool?>(
-      'requireInstanceProperties',
-    );
+    requireInstanceProperties = registerOutput<bool?>('requireInstanceProperties');
     roleArns = registerOutput<List<String>?>('roleArns');
     sessionPolicy = registerOutput<String?>('sessionPolicy');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -335,20 +323,18 @@ class Profile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rolesanywhere/profile:Profile',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rolesanywhere/profile:Profile',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceptRoleSessionName = registerOutput<bool?>('acceptRoleSessionName');
     arn = registerOutput<String>('arn');
     durationSeconds = registerOutput<int>('durationSeconds');
     enabled = registerOutput<bool?>('enabled');
     managedPolicyArns = registerOutput<List<String>?>('managedPolicyArns');
     this.name = registerOutput<String>('name');
-    requireInstanceProperties = registerOutput<bool?>(
-      'requireInstanceProperties',
-    );
+    requireInstanceProperties = registerOutput<bool?>('requireInstanceProperties');
     roleArns = registerOutput<List<String>?>('roleArns');
     sessionPolicy = registerOutput<String?>('sessionPolicy');
     tags = registerOutput<Map<String, String>?>('tags');

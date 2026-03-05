@@ -5,13 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotToolGoogleSearchTool {
   /// The description of the app version.
   final pulumi.Input<String>? description;
-
   /// (Output)
   /// List of domains to be excluded from the search results.
   /// Example: "example.com".
   /// A maximum of 2000 domains can be excluded.
   final pulumi.Input<List<String>>? excludeDomains;
-
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
@@ -36,25 +34,12 @@ class AppVersionSnapshotToolGoogleSearchTool {
     };
   }
 
-  factory AppVersionSnapshotToolGoogleSearchTool.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolGoogleSearchTool.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolGoogleSearchTool(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      excludeDomains: (() {
-        final guardedValue = map['excludeDomains'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      excludeDomains: (() { final guardedValue = map['excludeDomains']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

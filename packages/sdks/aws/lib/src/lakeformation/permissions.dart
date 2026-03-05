@@ -1056,44 +1056,32 @@ import 'permissions_table_with_columns.dart';
 class Permissions extends pulumi.CustomResource {
   /// Identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
   late final pulumi.Output<String?> catalogId;
-
   /// Whether the permissions are to be granted for the Data Catalog. Defaults to `false`.
   late final pulumi.Output<bool?> catalogResource;
-
   /// Configuration block for a data cells filter resource. Detailed below.
   late final pulumi.Output<PermissionsDataCellsFilter?> dataCellsFilter;
-
   /// Configuration block for a data location resource. Detailed below.
   late final pulumi.Output<PermissionsDataLocation> dataLocation;
-
   /// Configuration block for a database resource. Detailed below.
   late final pulumi.Output<PermissionsDatabase> database;
-
   /// Configuration block for an LF-tag resource. Detailed below.
   late final pulumi.Output<PermissionsLfTag> lfTag;
-
   /// Configuration block for an LF-tag policy resource. Detailed below.
   late final pulumi.Output<PermissionsLfTagPolicy> lfTagPolicy;
-
   /// List of permissions granted to the principal. Valid values may include `ALL`, `ALTER`, `ASSOCIATE`, `CREATE_DATABASE`, `CREATE_TABLE`, `DATA_LOCATION_ACCESS`, `DELETE`, `DESCRIBE`, `DROP`, `INSERT`, and `SELECT`. For details on each permission, see [Lake Formation Permissions Reference](https://docs.aws.amazon.com/lake-formation/latest/dg/lf-permissions-reference.html).
   late final pulumi.Output<List<String>> permissions;
-
   /// Subset of `permissions` which the principal can pass.
   late final pulumi.Output<List<String>> permissionsWithGrantOptions;
-
   /// Principal to be granted the permissions on the resource. Supported principals include `IAM_ALLOWED_PRINCIPALS` (see Default Behavior and `IAMAllowedPrincipals` above), IAM roles, users, groups, Federated Users, SAML groups and users, QuickSight groups, OUs, and organizations as well as AWS account IDs for cross-account permissions. For more information, see [Lake Formation Permissions Reference](https://docs.aws.amazon.com/lake-formation/latest/dg/lf-permissions-reference.html).
   ///
   /// &gt; **NOTE:** We highly recommend that the `principal` _NOT_ be a Lake Formation administrator (granted using `aws.lakeformation.DataLakeSettings`). The entity (e.g., IAM role) running the deployment will most likely need to be a Lake Formation administrator. As such, the entity will have implicit permissions and does not need permissions granted through this resource.
   ///
   /// One of the following is required:
   late final pulumi.Output<String> principal;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block for a table resource. Detailed below.
   late final pulumi.Output<PermissionsTable> table;
-
   /// Configuration block for a table with columns resource. Detailed below.
   ///
   /// The following arguments are optional:
@@ -1108,89 +1096,24 @@ class Permissions extends pulumi.CustomResource {
     PermissionsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lakeformation/permissions:Permissions',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lakeformation/permissions:Permissions',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     catalogId = registerOutput<String?>('catalogId');
     catalogResource = registerOutput<bool?>('catalogResource');
-    dataCellsFilter = registerOutput<PermissionsDataCellsFilter?>(
-      'dataCellsFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionsDataCellsFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dataLocation = registerOutput<PermissionsDataLocation>(
-      'dataLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionsDataLocation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    database = registerOutput<PermissionsDatabase>(
-      'database',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionsDatabase.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    lfTag = registerOutput<PermissionsLfTag>(
-      'lfTag',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionsLfTag.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    lfTagPolicy = registerOutput<PermissionsLfTagPolicy>(
-      'lfTagPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionsLfTagPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataCellsFilter = registerOutput<PermissionsDataCellsFilter?>('dataCellsFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsDataCellsFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataLocation = registerOutput<PermissionsDataLocation>('dataLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsDataLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    database = registerOutput<PermissionsDatabase>('database', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lfTag = registerOutput<PermissionsLfTag>('lfTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsLfTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lfTagPolicy = registerOutput<PermissionsLfTagPolicy>('lfTagPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsLfTagPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     permissions = registerOutput<List<String>>('permissions');
-    permissionsWithGrantOptions = registerOutput<List<String>>(
-      'permissionsWithGrantOptions',
-    );
+    permissionsWithGrantOptions = registerOutput<List<String>>('permissionsWithGrantOptions');
     principal = registerOutput<String>('principal');
     region = registerOutput<String>('region');
-    table = registerOutput<PermissionsTable>(
-      'table',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionsTable.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    tableWithColumns = registerOutput<PermissionsTableWithColumns>(
-      'tableWithColumns',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionsTableWithColumns.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    table = registerOutput<PermissionsTable>('table', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableWithColumns = registerOutput<PermissionsTableWithColumns>('tableWithColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsTableWithColumns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Permissions] resource's state with the given [name] and [id].
@@ -1211,88 +1134,23 @@ class Permissions extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lakeformation/permissions:Permissions',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lakeformation/permissions:Permissions',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     catalogId = registerOutput<String?>('catalogId');
     catalogResource = registerOutput<bool?>('catalogResource');
-    dataCellsFilter = registerOutput<PermissionsDataCellsFilter?>(
-      'dataCellsFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionsDataCellsFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dataLocation = registerOutput<PermissionsDataLocation>(
-      'dataLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionsDataLocation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    database = registerOutput<PermissionsDatabase>(
-      'database',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionsDatabase.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    lfTag = registerOutput<PermissionsLfTag>(
-      'lfTag',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionsLfTag.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    lfTagPolicy = registerOutput<PermissionsLfTagPolicy>(
-      'lfTagPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionsLfTagPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataCellsFilter = registerOutput<PermissionsDataCellsFilter?>('dataCellsFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsDataCellsFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataLocation = registerOutput<PermissionsDataLocation>('dataLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsDataLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    database = registerOutput<PermissionsDatabase>('database', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lfTag = registerOutput<PermissionsLfTag>('lfTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsLfTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lfTagPolicy = registerOutput<PermissionsLfTagPolicy>('lfTagPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsLfTagPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     permissions = registerOutput<List<String>>('permissions');
-    permissionsWithGrantOptions = registerOutput<List<String>>(
-      'permissionsWithGrantOptions',
-    );
+    permissionsWithGrantOptions = registerOutput<List<String>>('permissionsWithGrantOptions');
     principal = registerOutput<String>('principal');
     region = registerOutput<String>('region');
-    table = registerOutput<PermissionsTable>(
-      'table',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionsTable.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    tableWithColumns = registerOutput<PermissionsTableWithColumns>(
-      'tableWithColumns',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionsTableWithColumns.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    table = registerOutput<PermissionsTable>('table', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableWithColumns = registerOutput<PermissionsTableWithColumns>('tableWithColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsTableWithColumns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

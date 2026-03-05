@@ -7,27 +7,20 @@ import 'get_registry_enterprise_sync_rules_rule.dart';
 class GetRegistryEnterpriseSyncRulesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of matched Container Registry Enterprise Edition sync rules. Its element is a sync rule uuid.
   final List<String> ids;
-
   /// ID of Container Registry Enterprise Edition local instance.
   final String instanceId;
   final String? nameRegex;
-
   /// A list of sync rule names.
   final List<String> names;
-
   /// Name of Container Registry Enterprise Edition local namespace.
   final String? namespaceName;
   final String? outputFile;
-
   /// Name of Container Registry Enterprise Edition local repo.
   final String? repoName;
-
   /// A list of matched Container Registry Enterprise Edition sync rules. Each element contains the following attributes:
   final List<GetRegistryEnterpriseSyncRulesRule> rules;
-
   /// ID of Container Registry Enterprise Edition target instance.
   final String? targetInstanceId;
 
@@ -65,54 +58,24 @@ class GetRegistryEnterpriseSyncRulesResult {
       'namespaceName': ?namespaceName,
       'outputFile': ?outputFile,
       'repoName': ?repoName,
-      'rules':
-          pulumi.Input.encodeList<
-            GetRegistryEnterpriseSyncRulesRule,
-            Map<String, dynamic>
-          >(rules, (value) => value.toMap()),
+      'rules': pulumi.Input.encodeList<GetRegistryEnterpriseSyncRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
       'targetInstanceId': ?targetInstanceId,
     };
   }
 
-  factory GetRegistryEnterpriseSyncRulesResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegistryEnterpriseSyncRulesResult.fromMap(Map<String, dynamic> map) {
     return GetRegistryEnterpriseSyncRulesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      namespaceName: (() {
-        final guardedValue = map['namespaceName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      repoName: (() {
-        final guardedValue = map['repoName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      rules: pulumi.Input.decodeList<GetRegistryEnterpriseSyncRulesRule>(
-        map['rules']!,
-        (value) => GetRegistryEnterpriseSyncRulesRule.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      targetInstanceId: (() {
-        final guardedValue = map['targetInstanceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      namespaceName: (() { final guardedValue = map['namespaceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      repoName: (() { final guardedValue = map['repoName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rules: pulumi.Input.decodeList<GetRegistryEnterpriseSyncRulesRule>(map['rules']!, (value) => GetRegistryEnterpriseSyncRulesRule.fromMap((value as Map).cast<String, dynamic>())),
+      targetInstanceId: (() { final guardedValue = map['targetInstanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

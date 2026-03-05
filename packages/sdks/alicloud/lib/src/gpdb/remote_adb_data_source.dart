@@ -590,34 +590,24 @@ import 'remote_adb_data_source_state.dart';
 class RemoteAdbDataSource extends pulumi.CustomResource {
   /// Data Source Name
   late final pulumi.Output<String?> dataSourceName;
-
   /// The database of the local instance which connection data.
   late final pulumi.Output<String> localDatabase;
-
   /// The instanceId of the local instance which connection data.
   late final pulumi.Output<String> localDbInstanceId;
-
   /// The Management user name of the local instance.
   late final pulumi.Output<String> managerUserName;
-
   /// Password of the Manager user of the local instance
   late final pulumi.Output<String> managerUserPassword;
-
   /// The first ID of the resource
   late final pulumi.Output<int> remoteAdbDataSourceId;
-
   /// The database of the remote instance which provide data.
   late final pulumi.Output<String> remoteDatabase;
-
   /// The instanceId of the remote instance which provide data.
   late final pulumi.Output<String> remoteDbInstanceId;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The user name used to connect to the remote instance
   late final pulumi.Output<String> userName;
-
   /// The user password used to connect to the remote instance
   late final pulumi.Output<String> userPassword;
 
@@ -630,11 +620,11 @@ class RemoteAdbDataSource extends pulumi.CustomResource {
     RemoteAdbDataSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataSourceName = registerOutput<String?>('dataSourceName');
     localDatabase = registerOutput<String>('localDatabase');
     localDbInstanceId = registerOutput<String>('localDbInstanceId');
@@ -666,11 +656,11 @@ class RemoteAdbDataSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataSourceName = registerOutput<String?>('dataSourceName');
     localDatabase = registerOutput<String>('localDatabase');
     localDbInstanceId = registerOutput<String>('localDbInstanceId');

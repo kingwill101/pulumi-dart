@@ -7,28 +7,20 @@ import 'system_data_response.dart';
 class GetPrivateEndpointConnectionProxyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// ETag from NRP.
   final String eTag;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The provisioning state of the private endpoint connection proxy resource.
   final String provisioningState;
-
   /// Remote private endpoint details.
   final RemotePrivateEndpointResponse? remotePrivateEndpoint;
-
   /// Operation status.
   final String? status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -68,31 +60,18 @@ class GetPrivateEndpointConnectionProxyResult {
     };
   }
 
-  factory GetPrivateEndpointConnectionProxyResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPrivateEndpointConnectionProxyResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionProxyResult(
       azureApiVersion: map['azureApiVersion'] as String,
       eTag: map['eTag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      remotePrivateEndpoint: (() {
-        final guardedValue = map['remotePrivateEndpoint'];
-        if (guardedValue == null) return null;
-        return RemotePrivateEndpointResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      remotePrivateEndpoint: (() { final guardedValue = map['remotePrivateEndpoint']; if (guardedValue == null) return null; return RemotePrivateEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

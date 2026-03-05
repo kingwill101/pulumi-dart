@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAutoExportJobArgs {
   /// Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   final pulumi.Input<String> amlFilesystemName;
-
   /// Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   final pulumi.Input<String> autoExportJobName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,15 +34,10 @@ class GetAutoExportJobArgs {
 
   factory GetAutoExportJobArgs.fromMap(Map<String, dynamic> map) {
     return GetAutoExportJobArgs(
-      amlFilesystemName: pulumi.Input.fromValue(
-        map['amlFilesystemName'] as String,
-      ),
-      autoExportJobName: pulumi.Input.fromValue(
-        map['autoExportJobName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      amlFilesystemName: pulumi.Input.fromValue(map['amlFilesystemName'] as String),
+      autoExportJobName: pulumi.Input.fromValue(map['autoExportJobName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

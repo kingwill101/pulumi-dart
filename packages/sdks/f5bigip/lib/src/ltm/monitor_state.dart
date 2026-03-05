@@ -6,91 +6,62 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitorState {
   /// Specifies whether adaptive response time monitoring is enabled for this monitor. The default is `disabled`.
   final pulumi.Input<String>? adaptive;
-
   /// Specifies the absolute number of milliseconds that may not be exceeded by a monitor probe, regardless of Allowed Divergence.
   final pulumi.Input<int>? adaptiveLimit;
-
   /// Specifies the location in the LDAP tree from which the monitor starts the health check
   final pulumi.Input<String>? base;
-
   /// Specifies whether the system will query the LDAP servers pointed to by any referrals in the query results.
   final pulumi.Input<String>? chaseReferrals;
-
   /// Specifies, when enabled, that the SSL options setting (in OpenSSL) is set to ALL. Accepts 'enabled' or 'disabled' values, the default value is 'enabled'.
   final pulumi.Input<String>? compatibility;
-
   /// Custom parent monitor for the system to use for setting initial values for the new monitor.
   final pulumi.Input<String>? customParent;
-
   /// Specifies the database in which the user is created
   final pulumi.Input<String>? database;
-
   /// Specify an alias address for monitoring
   final pulumi.Input<String>? destination;
-
   /// Specifies the domain name to check, for example, Domain is allowed only in case of Parent as /Common/smtp.
   final pulumi.Input<String>? domain;
-
   /// Specifies the full path and file name of the file that the system attempts to download. The health check is successful if the system can download the file.
   final pulumi.Input<String>? filename;
-
   /// Specifies an LDAP key for which the monitor searches
   final pulumi.Input<String>? filter;
-
   /// Specifies, in seconds, the frequency at which the system issues the monitor check when either the resource is down or the status of the resource is unknown,value of `interval` should be always less than `timeout`. Default is `5`.
   final pulumi.Input<int>? interval;
-
   /// Displays the differentiated services code point (DSCP).The default is `0 (zero)`.
   final pulumi.Input<int>? ipDscp;
-
   /// Specifies whether the target must include attributes in its response to be considered up. The options are no (Specifies that the system performs only a one-level search (based on the Filter setting), and does not require that the target returns any attributes.) and yes (Specifies that the system performs a sub-tree search, and if the target returns no attributes, the target is considered down.)
   final pulumi.Input<String>? mandatoryAttributes;
-
   /// Specifies whether the system automatically changes the status of a resource to Enabled at the next successful monitor check.
   final pulumi.Input<String>? manualResume;
-
   /// Specifies the data transfer process (DTP) mode. The default value is passive. The options are passive (Specifies that the monitor sends a data transfer request to the FTP server. When the FTP server receives the request, the FTP server then initiates and establishes the data connection.) and active (Specifies that the monitor initiates and establishes the data connection with the FTP server.).
   final pulumi.Input<String>? mode;
-
   /// Specifies the Name of the LTM Monitor.Name of Monitor should be full path,full path is the combination of the `partition + monitor name`,For ex:`/Common/test-ltm-monitor`.
   final pulumi.Input<String>? name;
-
   /// Parent monitor for the system to use for setting initial values for the new monitor.
   final pulumi.Input<String>? parent;
-
   /// Specifies the password if the monitored target requires authentication
   final pulumi.Input<String>? password;
-
   /// Specifies the regular expression representing the text string that the monitor looks for in the returned resource.
   final pulumi.Input<String>? receive;
-
   /// The system marks the node or pool member disabled when its response matches Receive Disable String but not Receive String.
   final pulumi.Input<String>? receiveDisable;
-
   /// Instructs the system to mark the target resource down when the test is successful.
   final pulumi.Input<String>? reverse;
-
   /// Specifies the secure communications protocol that the monitor uses to communicate with the target. The options are none (Specifies that the system does not use a security protocol for communications with the target.), ssl (Specifies that the system uses the SSL protocol for communications with the target.), and tls (Specifies that the system uses the TLS protocol for communications with the target.)
   final pulumi.Input<String>? security;
-
   /// Specifies the text string that the monitor sends to the target object.
   final pulumi.Input<String>? send;
-
   /// Specifies the ssl profile for the monitor. It only makes sense when the parent is `/Common/https`
   final pulumi.Input<String>? sslProfile;
-
   /// Specifies the number of seconds to wait after a resource first responds correctly to the monitor before setting the resource to up.
   final pulumi.Input<int>? timeUntilUp;
-
   /// Specifies the number of seconds the target has in which to respond to the monitor request. The default is `16` seconds
   final pulumi.Input<int>? timeout;
-
   /// Specifies whether the monitor operates in transparent mode.
   final pulumi.Input<String>? transparent;
-
   /// Specifies the interval for the system to use to perform the health check when a resource is up. The default is `0(Disabled)`
   final pulumi.Input<int>? upInterval;
-
   /// Specifies the user name if the monitored target requires authentication
   final pulumi.Input<String>? username;
 
@@ -195,156 +166,37 @@ class MonitorState {
 
   factory MonitorState.fromMap(Map<String, dynamic> map) {
     return MonitorState(
-      adaptive: (() {
-        final guardedValue = map['adaptive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      adaptiveLimit: (() {
-        final guardedValue = map['adaptiveLimit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      base: (() {
-        final guardedValue = map['base'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      chaseReferrals: (() {
-        final guardedValue = map['chaseReferrals'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      compatibility: (() {
-        final guardedValue = map['compatibility'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customParent: (() {
-        final guardedValue = map['customParent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      database: (() {
-        final guardedValue = map['database'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destination: (() {
-        final guardedValue = map['destination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      domain: (() {
-        final guardedValue = map['domain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filename: (() {
-        final guardedValue = map['filename'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      interval: (() {
-        final guardedValue = map['interval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ipDscp: (() {
-        final guardedValue = map['ipDscp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      mandatoryAttributes: (() {
-        final guardedValue = map['mandatoryAttributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      manualResume: (() {
-        final guardedValue = map['manualResume'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mode: (() {
-        final guardedValue = map['mode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parent: (() {
-        final guardedValue = map['parent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      receive: (() {
-        final guardedValue = map['receive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      receiveDisable: (() {
-        final guardedValue = map['receiveDisable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reverse: (() {
-        final guardedValue = map['reverse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      security: (() {
-        final guardedValue = map['security'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      send: (() {
-        final guardedValue = map['send'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sslProfile: (() {
-        final guardedValue = map['sslProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeUntilUp: (() {
-        final guardedValue = map['timeUntilUp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timeout: (() {
-        final guardedValue = map['timeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      transparent: (() {
-        final guardedValue = map['transparent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      upInterval: (() {
-        final guardedValue = map['upInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      adaptive: (() { final guardedValue = map['adaptive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      adaptiveLimit: (() { final guardedValue = map['adaptiveLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      base: (() { final guardedValue = map['base']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      chaseReferrals: (() { final guardedValue = map['chaseReferrals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      compatibility: (() { final guardedValue = map['compatibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customParent: (() { final guardedValue = map['customParent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      database: (() { final guardedValue = map['database']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filename: (() { final guardedValue = map['filename']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ipDscp: (() { final guardedValue = map['ipDscp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mandatoryAttributes: (() { final guardedValue = map['mandatoryAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      manualResume: (() { final guardedValue = map['manualResume']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      receive: (() { final guardedValue = map['receive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      receiveDisable: (() { final guardedValue = map['receiveDisable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reverse: (() { final guardedValue = map['reverse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      security: (() { final guardedValue = map['security']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      send: (() { final guardedValue = map['send']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslProfile: (() { final guardedValue = map['sslProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeUntilUp: (() { final guardedValue = map['timeUntilUp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      transparent: (() { final guardedValue = map['transparent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      upInterval: (() { final guardedValue = map['upInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

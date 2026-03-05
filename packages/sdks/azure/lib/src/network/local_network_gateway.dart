@@ -175,27 +175,20 @@ import 'local_network_gateway_state.dart';
 class LocalNetworkGateway extends pulumi.CustomResource {
   /// The list of string CIDRs representing the address spaces the gateway exposes.
   late final pulumi.Output<List<String>?> addressSpaces;
-
   /// A `bgp_settings` block as defined below containing the Local Network Gateway's BGP speaker settings.
   late final pulumi.Output<LocalNetworkGatewayBgpSettings?> bgpSettings;
-
   /// The gateway IP address to connect with.
   late final pulumi.Output<String?> gatewayAddress;
-
   /// The gateway FQDN to connect with.
   ///
   /// &gt; **Note:** Either `gateway_address` or `gateway_fqdn` should be specified.
   late final pulumi.Output<String?> gatewayFqdn;
-
   /// The location/region where the local network gateway is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the local network gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the local network gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -208,22 +201,13 @@ class LocalNetworkGateway extends pulumi.CustomResource {
     LocalNetworkGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/localNetworkGateway:LocalNetworkGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/localNetworkGateway:LocalNetworkGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressSpaces = registerOutput<List<String>?>('addressSpaces');
-    bgpSettings = registerOutput<LocalNetworkGatewayBgpSettings?>(
-      'bgpSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LocalNetworkGatewayBgpSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    bgpSettings = registerOutput<LocalNetworkGatewayBgpSettings?>('bgpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalNetworkGatewayBgpSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gatewayAddress = registerOutput<String?>('gatewayAddress');
     gatewayFqdn = registerOutput<String?>('gatewayFqdn');
     location = registerOutput<String>('location');
@@ -250,22 +234,13 @@ class LocalNetworkGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/localNetworkGateway:LocalNetworkGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/localNetworkGateway:LocalNetworkGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressSpaces = registerOutput<List<String>?>('addressSpaces');
-    bgpSettings = registerOutput<LocalNetworkGatewayBgpSettings?>(
-      'bgpSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LocalNetworkGatewayBgpSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    bgpSettings = registerOutput<LocalNetworkGatewayBgpSettings?>('bgpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalNetworkGatewayBgpSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gatewayAddress = registerOutput<String?>('gatewayAddress');
     gatewayFqdn = registerOutput<String?>('gatewayFqdn');
     location = registerOutput<String>('location');

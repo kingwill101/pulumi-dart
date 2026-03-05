@@ -13,14 +13,15 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchSingleHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchSingleHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchSingleHeader.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSqliMatchStatementFieldToMatchSingleHeader(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

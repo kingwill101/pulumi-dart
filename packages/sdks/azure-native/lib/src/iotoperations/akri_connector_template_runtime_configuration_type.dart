@@ -12,8 +12,7 @@ enum AkriConnectorTemplateRuntimeConfigurationType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AkriConnectorTemplateRuntimeConfigurationType value: $value',
-    );
+    throw ArgumentError('Unknown AkriConnectorTemplateRuntimeConfigurationType value: $value');
   }
 }
+

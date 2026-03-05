@@ -125,24 +125,18 @@ import 'storage_capacity_unit_state.dart';
 class StorageCapacityUnit extends pulumi.CustomResource {
   /// The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
   late final pulumi.Output<int> capacity;
-
   /// The description of the Storage Capacity Unit. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> description;
-
   /// The validity period of the Storage Capacity Unit. Default value: `1`.
   /// * When PeriodUnit is set to Month, Valid values: `1`, `2`, `3`, `6`.
   /// * When PeriodUnit is set to Year, Valid values: `1`, `3`, `5`.
   late final pulumi.Output<int> period;
-
   /// The unit of the validity period of the Storage Capacity Unit. Default value: `Month`. Valid values: `Month`, `Year`.
   late final pulumi.Output<String> periodUnit;
-
   /// The time when the Storage Capacity Unit takes effect. It cannot be earlier than or more than six months later than the time when the Storage Capacity Unit is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. **NOTE:** This parameter is empty by default. The Storage Capacity Unit immediately takes effect after it is created.
   late final pulumi.Output<String> startTime;
-
   /// The status of Storage Capacity Unit.
   late final pulumi.Output<String> status;
-
   /// The name of the Storage Capacity Unit.
   late final pulumi.Output<String> storageCapacityUnitName;
 
@@ -155,11 +149,11 @@ class StorageCapacityUnit extends pulumi.CustomResource {
     StorageCapacityUnitArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/storageCapacityUnit:StorageCapacityUnit',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/storageCapacityUnit:StorageCapacityUnit',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     capacity = registerOutput<int>('capacity');
     description = registerOutput<String?>('description');
     period = registerOutput<int>('period');
@@ -187,11 +181,11 @@ class StorageCapacityUnit extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/storageCapacityUnit:StorageCapacityUnit',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/storageCapacityUnit:StorageCapacityUnit',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     capacity = registerOutput<int>('capacity');
     description = registerOutput<String?>('description');
     period = registerOutput<int>('period');

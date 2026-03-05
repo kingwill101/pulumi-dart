@@ -9,13 +9,10 @@ import 'video_stream_response.dart';
 class ElementaryStreamResponse {
   /// Encoding of an audio stream.
   final pulumi.Input<AudioStreamResponse> audioStream;
-
   /// A unique key for this elementary stream.
   final pulumi.Input<String> key;
-
   /// Encoding of a text stream. For example, closed captions or subtitles.
   final pulumi.Input<TextStreamResponse> textStream;
-
   /// Encoding of a video stream.
   final pulumi.Input<VideoStreamResponse> videoStream;
 
@@ -33,43 +30,20 @@ class ElementaryStreamResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioStream':
-          pulumi.Input.mapInputValue<AudioStreamResponse, Map<String, dynamic>>(
-            audioStream,
-            (value) => value.toMap(),
-          ),
+      'audioStream': pulumi.Input.mapInputValue<AudioStreamResponse, Map<String, dynamic>>(audioStream, (value) => value.toMap()),
       'key': key,
-      'textStream':
-          pulumi.Input.mapInputValue<TextStreamResponse, Map<String, dynamic>>(
-            textStream,
-            (value) => value.toMap(),
-          ),
-      'videoStream':
-          pulumi.Input.mapInputValue<VideoStreamResponse, Map<String, dynamic>>(
-            videoStream,
-            (value) => value.toMap(),
-          ),
+      'textStream': pulumi.Input.mapInputValue<TextStreamResponse, Map<String, dynamic>>(textStream, (value) => value.toMap()),
+      'videoStream': pulumi.Input.mapInputValue<VideoStreamResponse, Map<String, dynamic>>(videoStream, (value) => value.toMap()),
     };
   }
 
   factory ElementaryStreamResponse.fromMap(Map<String, dynamic> map) {
     return ElementaryStreamResponse(
-      audioStream: pulumi.Input.fromValue(
-        AudioStreamResponse.fromMap(
-          (map['audioStream']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      audioStream: pulumi.Input.fromValue(AudioStreamResponse.fromMap((map['audioStream']! as Map).cast<String, dynamic>())),
       key: pulumi.Input.fromValue(map['key'] as String),
-      textStream: pulumi.Input.fromValue(
-        TextStreamResponse.fromMap(
-          (map['textStream']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      videoStream: pulumi.Input.fromValue(
-        VideoStreamResponse.fromMap(
-          (map['videoStream']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      textStream: pulumi.Input.fromValue(TextStreamResponse.fromMap((map['textStream']! as Map).cast<String, dynamic>())),
+      videoStream: pulumi.Input.fromValue(VideoStreamResponse.fromMap((map['videoStream']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

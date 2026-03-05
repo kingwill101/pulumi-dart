@@ -665,7 +665,6 @@ import 'server_key_state.dart';
 class ServerKey extends pulumi.CustomResource {
   /// The URL to a Key Vault Key.
   late final pulumi.Output<String> keyVaultKeyId;
-
   /// The ID of the PostgreSQL Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
 
@@ -678,11 +677,11 @@ class ServerKey extends pulumi.CustomResource {
     ServerKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:postgresql/serverKey:ServerKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:postgresql/serverKey:ServerKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     serverId = registerOutput<String>('serverId');
   }
@@ -705,11 +704,11 @@ class ServerKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:postgresql/serverKey:ServerKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:postgresql/serverKey:ServerKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     serverId = registerOutput<String>('serverId');
   }

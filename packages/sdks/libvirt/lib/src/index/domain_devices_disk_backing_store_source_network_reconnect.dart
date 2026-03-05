@@ -8,17 +8,20 @@ class DomainDevicesDiskBackingStoreSourceNetworkReconnect {
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceNetworkReconnect].
   /// [delay] Sets the delay duration before attempting to reconnect to a network storage source after a failure.
-  DomainDevicesDiskBackingStoreSourceNetworkReconnect({required this.delay});
+  DomainDevicesDiskBackingStoreSourceNetworkReconnect({
+    required this.delay,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'delay': delay};
+    return <String, dynamic>{
+      'delay': delay,
+    };
   }
 
-  factory DomainDevicesDiskBackingStoreSourceNetworkReconnect.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskBackingStoreSourceNetworkReconnect.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceNetworkReconnect(
       delay: pulumi.Input.fromValue(map['delay'] as String),
     );
   }
 }
+

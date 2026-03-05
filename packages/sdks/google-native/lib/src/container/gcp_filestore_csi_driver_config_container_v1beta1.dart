@@ -9,21 +9,20 @@ class GcpFilestoreCsiDriverConfigContainerV1beta1 {
 
   /// Creates a new [GcpFilestoreCsiDriverConfigContainerV1beta1].
   /// [enabled] Whether the GCP Filestore CSI driver is enabled for this cluster.
-  GcpFilestoreCsiDriverConfigContainerV1beta1({this.enabled});
+  GcpFilestoreCsiDriverConfigContainerV1beta1({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory GcpFilestoreCsiDriverConfigContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GcpFilestoreCsiDriverConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return GcpFilestoreCsiDriverConfigContainerV1beta1(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

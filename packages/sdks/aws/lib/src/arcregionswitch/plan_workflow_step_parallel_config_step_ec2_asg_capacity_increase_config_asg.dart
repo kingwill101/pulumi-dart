@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsg {
   /// ARN of the Auto Scaling group.
   final pulumi.Input<String> arn;
-
   /// ARN of the cross-account role to assume.
   final pulumi.Input<String>? crossAccountRole;
-
   /// External ID for cross-account role assumption.
   final pulumi.Input<String>? externalId;
 
@@ -30,21 +28,12 @@ class PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsg {
     };
   }
 
-  factory PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsg.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsg.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsg(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      crossAccountRole: (() {
-        final guardedValue = map['crossAccountRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      externalId: (() {
-        final guardedValue = map['externalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      crossAccountRole: (() { final guardedValue = map['crossAccountRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      externalId: (() { final guardedValue = map['externalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

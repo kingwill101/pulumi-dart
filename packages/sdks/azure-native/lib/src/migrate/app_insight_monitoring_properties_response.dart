@@ -7,17 +7,13 @@ import 'secret_store_details_response.dart';
 class AppInsightMonitoringPropertiesResponse {
   /// Gets or sets the app insights name.
   final pulumi.Input<String>? appInsightsName;
-
   /// Gets or sets a value indicating whether monitoring is enabled.
   final pulumi.Input<bool>? isEnabled;
-
   /// Gets or sets the region.
   final pulumi.Input<String>? region;
-
   /// Gets or sets the resource group of the resource.
   final pulumi.Input<String>? resourceGroup;
   final pulumi.Input<SecretStoreDetailsResponse>? secretStoreDetails;
-
   /// Gets or sets the subscription id of the resource.
   final pulumi.Input<String>? subscriptionId;
 
@@ -43,53 +39,20 @@ class AppInsightMonitoringPropertiesResponse {
       'isEnabled': ?isEnabled,
       'region': ?region,
       'resourceGroup': ?resourceGroup,
-      'secretStoreDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecretStoreDetailsResponse,
-            Map<String, dynamic>
-          >(secretStoreDetails, (value) => value.toMap()),
+      'secretStoreDetails': ?pulumi.Input.mapOptionalInputValue<SecretStoreDetailsResponse, Map<String, dynamic>>(secretStoreDetails, (value) => value.toMap()),
       'subscriptionId': ?subscriptionId,
     };
   }
 
-  factory AppInsightMonitoringPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppInsightMonitoringPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AppInsightMonitoringPropertiesResponse(
-      appInsightsName: (() {
-        final guardedValue = map['appInsightsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isEnabled: (() {
-        final guardedValue = map['isEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroup: (() {
-        final guardedValue = map['resourceGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretStoreDetails: (() {
-        final guardedValue = map['secretStoreDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecretStoreDetailsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appInsightsName: (() { final guardedValue = map['appInsightsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isEnabled: (() { final guardedValue = map['isEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroup: (() { final guardedValue = map['resourceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretStoreDetails: (() { final guardedValue = map['secretStoreDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecretStoreDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

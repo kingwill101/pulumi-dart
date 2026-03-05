@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectProperties {
   /// The description of the Cognitive Services Project.
   final pulumi.Input<String>? description;
-
   /// The display name of the Cognitive Services Project.
   final pulumi.Input<String>? displayName;
 
   /// Creates a new [ProjectProperties].
   /// [description] The description of the Cognitive Services Project.
   /// [displayName] The display name of the Cognitive Services Project.
-  ProjectProperties({this.description, this.displayName});
+  ProjectProperties({
+    this.description,
+    this.displayName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class ProjectProperties {
 
   factory ProjectProperties.fromMap(Map<String, dynamic> map) {
     return ProjectProperties(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

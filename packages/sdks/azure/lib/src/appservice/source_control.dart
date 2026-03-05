@@ -264,34 +264,24 @@ class SourceControl extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Function apps are not supported at this time.
   late final pulumi.Output<String> appId;
-
   /// The branch name to use for deployments. Changing this forces a new resource to be created.
   late final pulumi.Output<String> branch;
-
   /// A `github_action_configuration` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<SourceControlGithubActionConfiguration?>
-  githubActionConfiguration;
-
+  late final pulumi.Output<SourceControlGithubActionConfiguration?> githubActionConfiguration;
   /// The URL for the repository. Changing this forces a new resource to be created.
   late final pulumi.Output<String> repoUrl;
-
   /// Should the Deployment Rollback be enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Azure can typically set this value automatically based on the `repo_url` value.
   late final pulumi.Output<bool?> rollbackEnabled;
-
   /// The SCM Type in use. This value is decoded by the service from the repository information supplied.
   late final pulumi.Output<String> scmType;
-
   /// Should the App use local Git configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> useLocalGit;
-
   /// Should code be deployed manually. Set to `false` to enable continuous integration, such as webhooks into online repos such as GitHub. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> useManualIntegration;
-
   /// The repository specified is Mercurial. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> useMercurial;
-
   /// Indicates if the Slot uses a GitHub action for deployment. This value is decoded by the service from the repository information supplied.
   late final pulumi.Output<bool> usesGithubAction;
 
@@ -304,24 +294,14 @@ class SourceControl extends pulumi.CustomResource {
     SourceControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/sourceControl:SourceControl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/sourceControl:SourceControl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     branch = registerOutput<String>('branch');
-    githubActionConfiguration =
-        registerOutput<SourceControlGithubActionConfiguration?>(
-          'githubActionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SourceControlGithubActionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    githubActionConfiguration = registerOutput<SourceControlGithubActionConfiguration?>('githubActionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceControlGithubActionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repoUrl = registerOutput<String>('repoUrl');
     rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
     scmType = registerOutput<String>('scmType');
@@ -349,24 +329,14 @@ class SourceControl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/sourceControl:SourceControl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/sourceControl:SourceControl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     branch = registerOutput<String>('branch');
-    githubActionConfiguration =
-        registerOutput<SourceControlGithubActionConfiguration?>(
-          'githubActionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SourceControlGithubActionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    githubActionConfiguration = registerOutput<SourceControlGithubActionConfiguration?>('githubActionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceControlGithubActionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repoUrl = registerOutput<String>('repoUrl');
     rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
     scmType = registerOutput<String>('scmType');

@@ -184,74 +184,56 @@ class SiteConnection extends pulumi.CustomResource {
   /// The administrative state of the resource. Can either be up(true) or down(false).
   /// Changing this updates the administrative state of the existing connection.
   late final pulumi.Output<bool?> adminStateUp;
-
   /// The human-readable description for the connection.
   /// Changing this updates the description of the existing connection.
   late final pulumi.Output<String?> description;
-
   /// A dictionary with dead peer detection (DPD) protocol controls.
   late final pulumi.Output<List<Map<String, dynamic>>> dpds;
-
   /// The ID of the IKE policy. Changing this creates a new connection.
   late final pulumi.Output<String> ikepolicyId;
-
   /// A valid value is response-only or bi-directional. Default is bi-directional.
   late final pulumi.Output<String> initiator;
-
   /// The ID of the IPsec policy. Changing this creates a new connection.
   late final pulumi.Output<String> ipsecpolicyId;
-
   /// The ID for the endpoint group that contains private subnets for the local side of the connection.
   /// You must specify this parameter with the peer_ep_group_id parameter unless
   /// in backward- compatible mode where peer_cidrs is provided with a subnet_id for the VPN service.
   /// Changing this updates the existing connection.
   late final pulumi.Output<String?> localEpGroupId;
-
   /// An ID to be used instead of the external IP address for a virtual router used in traffic between instances on different networks in east-west traffic.
   /// Most often, local ID would be domain name, email address, etc.
   /// If this is not configured then the external IP address will be used as the ID.
   late final pulumi.Output<String?> localId;
-
   /// The maximum transmission unit (MTU) value to address fragmentation.
   /// Minimum value is 68 for IPv4, and 1280 for IPv6.
   late final pulumi.Output<int> mtu;
-
   /// The name of the connection. Changing this updates the name of
   /// the existing connection.
   late final pulumi.Output<String> name;
-
   /// The peer gateway public IPv4 or IPv6 address or FQDN.
   late final pulumi.Output<String> peerAddress;
-
   /// Unique list of valid peer private CIDRs in the form &lt; net_address &gt; / &lt; prefix &gt; .
   late final pulumi.Output<List<String>?> peerCidrs;
-
   /// The ID for the endpoint group that contains private CIDRs in the form &lt; net_address &gt; / &lt; prefix &gt; for the peer side of the connection.
   /// You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
   /// where peer_cidrs is provided with a subnet_id for the VPN service.
   late final pulumi.Output<String?> peerEpGroupId;
-
   /// The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
   /// Typically, this value matches the peer_address value.
   /// Changing this updates the existing policy.
   late final pulumi.Output<String> peerId;
-
   /// The pre-shared key. A valid value is any string.
   late final pulumi.Output<String> psk;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create an IPSec site connection. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// site connection.
   late final pulumi.Output<String> region;
-
   /// The owner of the connection. Required if admin wants to
   /// create a connection for another project. Changing this creates a new connection.
   late final pulumi.Output<String> tenantId;
-
   /// Map of additional options.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
-
   /// The ID of the VPN service. Changing this creates a new connection.
   late final pulumi.Output<String> vpnserviceId;
 
@@ -264,11 +246,11 @@ class SiteConnection extends pulumi.CustomResource {
     SiteConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:vpnaas/siteConnection:SiteConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:vpnaas/siteConnection:SiteConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminStateUp = registerOutput<bool?>('adminStateUp');
     description = registerOutput<String?>('description');
     dpds = registerOutput<List<Map<String, dynamic>>>('dpds');
@@ -308,11 +290,11 @@ class SiteConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:vpnaas/siteConnection:SiteConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:vpnaas/siteConnection:SiteConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminStateUp = registerOutput<bool?>('adminStateUp');
     description = registerOutput<String?>('description');
     dpds = registerOutput<List<Map<String, dynamic>>>('dpds');

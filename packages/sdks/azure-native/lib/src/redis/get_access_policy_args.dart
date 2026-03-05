@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessPolicyArgs {
   /// The name of the access policy that is being added to the Redis cache.
   final pulumi.Input<String> accessPolicyName;
-
   /// The name of the Redis cache.
   final pulumi.Input<String> cacheName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetAccessPolicyArgs {
 
   factory GetAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyArgs(
-      accessPolicyName: pulumi.Input.fromValue(
-        map['accessPolicyName'] as String,
-      ),
+      accessPolicyName: pulumi.Input.fromValue(map['accessPolicyName'] as String),
       cacheName: pulumi.Input.fromValue(map['cacheName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

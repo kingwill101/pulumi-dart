@@ -197,32 +197,23 @@ import 'proxy_resource_response_system_data.dart';
 class KafkaConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Consumer group for hook event hub.
   late final pulumi.Output<String?> consumerGroup;
-
   /// Credentials to access the event streaming service attached to the purview account.
   late final pulumi.Output<CredentialsResponse?> credentials;
-
   /// Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
   late final pulumi.Output<String?> eventHubPartitionId;
   late final pulumi.Output<String?> eventHubResourceId;
-
   /// The event hub type.
   late final pulumi.Output<String?> eventHubType;
-
   /// The state of the event streaming service
   late final pulumi.Output<String?> eventStreamingState;
-
   /// The event streaming service type
   late final pulumi.Output<String?> eventStreamingType;
-
   /// Gets or sets the name.
   late final pulumi.Output<String> name;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<ProxyResourceResponseSystemData> systemData;
-
   /// Gets or sets the type.
   late final pulumi.Output<String> type;
 
@@ -235,39 +226,21 @@ class KafkaConfiguration extends pulumi.CustomResource {
     KafkaConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:purview:KafkaConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:purview:KafkaConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     consumerGroup = registerOutput<String?>('consumerGroup');
-    credentials = registerOutput<CredentialsResponse?>(
-      'credentials',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CredentialsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    credentials = registerOutput<CredentialsResponse?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventHubPartitionId = registerOutput<String?>('eventHubPartitionId');
     eventHubResourceId = registerOutput<String?>('eventHubResourceId');
     eventHubType = registerOutput<String?>('eventHubType');
     eventStreamingState = registerOutput<String?>('eventStreamingState');
     eventStreamingType = registerOutput<String?>('eventStreamingType');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<ProxyResourceResponseSystemData>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProxyResourceResponseSystemData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<ProxyResourceResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProxyResourceResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

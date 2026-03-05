@@ -615,13 +615,10 @@ class ServiceCustomDomain extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Please ensure the custom domain name is included in the Subject Alternative Names of the selected SignalR Custom Certificate.
   late final pulumi.Output<String> domainName;
-
   /// Specifies the name of the SignalR Custom Domain. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the SignalR Custom Certificate ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
   late final pulumi.Output<String> signalrCustomCertificateId;
-
   /// Specifies the SignalR ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
   late final pulumi.Output<String> signalrServiceId;
 
@@ -634,16 +631,14 @@ class ServiceCustomDomain extends pulumi.CustomResource {
     ServiceCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:signalr/serviceCustomDomain:ServiceCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:signalr/serviceCustomDomain:ServiceCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
-    signalrCustomCertificateId = registerOutput<String>(
-      'signalrCustomCertificateId',
-    );
+    signalrCustomCertificateId = registerOutput<String>('signalrCustomCertificateId');
     signalrServiceId = registerOutput<String>('signalrServiceId');
   }
 
@@ -665,16 +660,14 @@ class ServiceCustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:signalr/serviceCustomDomain:ServiceCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:signalr/serviceCustomDomain:ServiceCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
-    signalrCustomCertificateId = registerOutput<String>(
-      'signalrCustomCertificateId',
-    );
+    signalrCustomCertificateId = registerOutput<String>('signalrCustomCertificateId');
     signalrServiceId = registerOutput<String>('signalrServiceId');
   }
 }

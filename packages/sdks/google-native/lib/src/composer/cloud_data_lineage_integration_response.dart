@@ -9,17 +9,20 @@ class CloudDataLineageIntegrationResponse {
 
   /// Creates a new [CloudDataLineageIntegrationResponse].
   /// [enabled] Optional. Whether or not Cloud Data Lineage integration is enabled.
-  CloudDataLineageIntegrationResponse({required this.enabled});
+  CloudDataLineageIntegrationResponse({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory CloudDataLineageIntegrationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudDataLineageIntegrationResponse.fromMap(Map<String, dynamic> map) {
     return CloudDataLineageIntegrationResponse(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

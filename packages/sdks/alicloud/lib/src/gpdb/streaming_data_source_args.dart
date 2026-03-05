@@ -9,21 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StreamingDataSourceArgs {
   /// The configurations of the data source.
   final pulumi.Input<String> dataSourceConfig;
-
   /// The description of the data source.
   final pulumi.Input<String>? dataSourceDescription;
-
   /// Data Source Name
   final pulumi.Input<String> dataSourceName;
-
   /// Data Source Type
   final pulumi.Input<String> dataSourceType;
-
   /// The instance ID.
   ///
   /// &gt; **NOTE:**   You can call the [DescribeDBInstances](https://www.alibabacloud.com/help/en/doc-detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
   final pulumi.Input<String> dbInstanceId;
-
   /// The real-time data service ID.
   final pulumi.Input<int> serviceId;
 
@@ -56,14 +51,8 @@ class StreamingDataSourceArgs {
 
   factory StreamingDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return StreamingDataSourceArgs(
-      dataSourceConfig: pulumi.Input.fromValue(
-        map['dataSourceConfig'] as String,
-      ),
-      dataSourceDescription: (() {
-        final guardedValue = map['dataSourceDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataSourceConfig: pulumi.Input.fromValue(map['dataSourceConfig'] as String),
+      dataSourceDescription: (() { final guardedValue = map['dataSourceDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataSourceName: pulumi.Input.fromValue(map['dataSourceName'] as String),
       dataSourceType: pulumi.Input.fromValue(map['dataSourceType'] as String),
       dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
@@ -71,3 +60,4 @@ class StreamingDataSourceArgs {
     );
   }
 }
+

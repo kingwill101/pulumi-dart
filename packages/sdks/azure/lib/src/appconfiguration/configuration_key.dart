@@ -724,33 +724,24 @@ import 'configuration_key_state.dart';
 class ConfigurationKey extends pulumi.CustomResource {
   /// Specifies the id of the App Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> configurationStoreId;
-
   /// The content type of the App Configuration Key. This should only be set when type is set to `kv`.
   late final pulumi.Output<String> contentType;
-
   /// (Optional) The ETag of the key.
   late final pulumi.Output<String> etag;
-
   /// The name of the App Configuration Key to create. Changing this forces a new resource to be created.
   late final pulumi.Output<String> key;
-
   /// The label of the App Configuration Key. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> label;
-
   /// Should this App Configuration Key be Locked to prevent changes?
   late final pulumi.Output<bool?> locked;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the App Configuration Key. It can either be `kv` (simple [key/value](https://docs.microsoft.com/azure/azure-app-configuration/concept-key-value)) or `vault` (where the value is a reference to a [Key Vault Secret](https://azure.microsoft.com/en-gb/services/key-vault/). Defaults to `kv`.
   late final pulumi.Output<String?> type;
-
   /// The value of the App Configuration Key. This should only be set when type is set to `kv`.
   ///
   /// &gt; **Note:** `value` and `vault_key_reference` are mutually exclusive.
   late final pulumi.Output<String?> value;
-
   /// The ID of the vault secret this App Configuration Key refers to. This should only be set when `type` is set to `vault`.
   ///
   /// &gt; **Note:** `vault_key_reference` and `value` are mutually exclusive.
@@ -767,11 +758,11 @@ class ConfigurationKey extends pulumi.CustomResource {
     ConfigurationKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appconfiguration/configurationKey:ConfigurationKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appconfiguration/configurationKey:ConfigurationKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configurationStoreId = registerOutput<String>('configurationStoreId');
     contentType = registerOutput<String>('contentType');
     etag = registerOutput<String>('etag');
@@ -802,11 +793,11 @@ class ConfigurationKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appconfiguration/configurationKey:ConfigurationKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appconfiguration/configurationKey:ConfigurationKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configurationStoreId = registerOutput<String>('configurationStoreId');
     contentType = registerOutput<String>('contentType');
     etag = registerOutput<String>('etag');

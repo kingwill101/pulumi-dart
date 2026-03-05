@@ -1,17 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRule.
 class GetRuleResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// specifies the list of one or more permissions to include in the custom role, such as - `iam.roles.get`
   final List<String> includedPermissions;
   final String name;
-
   /// indicates the stage of a role in the launch lifecycle, such as `GA`, `BETA` or `ALPHA`.
   final String stage;
-
   /// is a friendly title for the role, such as "Role Viewer"
   final String title;
 
@@ -49,3 +47,4 @@ class GetRuleResult {
     );
   }
 }
+

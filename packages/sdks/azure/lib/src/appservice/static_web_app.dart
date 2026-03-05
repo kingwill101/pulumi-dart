@@ -159,54 +159,38 @@ import 'static_web_app_state.dart';
 class StaticWebApp extends pulumi.CustomResource {
   /// The API key of this Static Web App, which is used for later interacting with this Static Web App from other clients, e.g. GitHub Action.
   late final pulumi.Output<String> apiKey;
-
   /// A key-value pair of App Settings.
   ///
   /// &gt; **Note:** If using the `api_key` to deploy a Static Web App from a CI/CD pipeline or other source, `repository_branch` and `repository_url` will get updated in Azure, but it is not possible to set `repository_token` in that case. Use a `lifecycle` block to `ignore_changes` for `repository_branch` and`repository_url` if that is your deployment scenario.
   late final pulumi.Output<Map<String, String>?> appSettings;
-
   /// A `basic_auth` block as defined below.
   late final pulumi.Output<StaticWebAppBasicAuth?> basicAuth;
-
   /// Should changes to the configuration file be permitted. Defaults to `true`.
   late final pulumi.Output<bool?> configurationFileChangesEnabled;
-
   /// The default host name of the Static Web App.
   late final pulumi.Output<String> defaultHostName;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<StaticWebAppIdentity?> identity;
-
   /// The Azure Region where the Static Web App should exist. Changing this forces a new Static Web App to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Static Web App. Changing this forces a new Static Web App to be created.
   late final pulumi.Output<String> name;
-
   /// Are Preview (Staging) environments enabled. Defaults to `true`.
   late final pulumi.Output<bool?> previewEnvironmentsEnabled;
-
   /// Should public network access be enabled for the Static Web App. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// Repository branch to use for the Static Web App. `repository_url` and `repository_token` must also be set.
   late final pulumi.Output<String?> repositoryBranch;
-
   /// Repository Token with `admin` privileges to use for the Static Web App. `repository_branch` and `repository_url` must also be set.
   late final pulumi.Output<String?> repositoryToken;
-
   /// Repository URL to use for the Static Web App. `repository_branch` and `repository_token` must also be set.
   late final pulumi.Output<String?> repositoryUrl;
-
   /// The name of the Resource Group where the Static Web App should exist. Changing this forces a new Static Web App to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Specifies the SKU size of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
   late final pulumi.Output<String?> skuSize;
-
   /// Specifies the SKU tier of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
   late final pulumi.Output<String?> skuTier;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -219,45 +203,21 @@ class StaticWebApp extends pulumi.CustomResource {
     StaticWebAppArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/staticWebApp:StaticWebApp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/staticWebApp:StaticWebApp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiKey = registerOutput<String>('apiKey');
     appSettings = registerOutput<Map<String, String>?>('appSettings');
-    basicAuth = registerOutput<StaticWebAppBasicAuth?>(
-      'basicAuth',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StaticWebAppBasicAuth.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    configurationFileChangesEnabled = registerOutput<bool?>(
-      'configurationFileChangesEnabled',
-    );
+    basicAuth = registerOutput<StaticWebAppBasicAuth?>('basicAuth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticWebAppBasicAuth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configurationFileChangesEnabled = registerOutput<bool?>('configurationFileChangesEnabled');
     defaultHostName = registerOutput<String>('defaultHostName');
-    identity = registerOutput<StaticWebAppIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StaticWebAppIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<StaticWebAppIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticWebAppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    previewEnvironmentsEnabled = registerOutput<bool?>(
-      'previewEnvironmentsEnabled',
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    previewEnvironmentsEnabled = registerOutput<bool?>('previewEnvironmentsEnabled');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     repositoryBranch = registerOutput<String?>('repositoryBranch');
     repositoryToken = registerOutput<String?>('repositoryToken');
     repositoryUrl = registerOutput<String?>('repositoryUrl');
@@ -285,45 +245,21 @@ class StaticWebApp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/staticWebApp:StaticWebApp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/staticWebApp:StaticWebApp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiKey = registerOutput<String>('apiKey');
     appSettings = registerOutput<Map<String, String>?>('appSettings');
-    basicAuth = registerOutput<StaticWebAppBasicAuth?>(
-      'basicAuth',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StaticWebAppBasicAuth.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    configurationFileChangesEnabled = registerOutput<bool?>(
-      'configurationFileChangesEnabled',
-    );
+    basicAuth = registerOutput<StaticWebAppBasicAuth?>('basicAuth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticWebAppBasicAuth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configurationFileChangesEnabled = registerOutput<bool?>('configurationFileChangesEnabled');
     defaultHostName = registerOutput<String>('defaultHostName');
-    identity = registerOutput<StaticWebAppIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StaticWebAppIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<StaticWebAppIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticWebAppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    previewEnvironmentsEnabled = registerOutput<bool?>(
-      'previewEnvironmentsEnabled',
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    previewEnvironmentsEnabled = registerOutput<bool?>('previewEnvironmentsEnabled');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     repositoryBranch = registerOutput<String?>('repositoryBranch');
     repositoryToken = registerOutput<String?>('repositoryToken');
     repositoryUrl = registerOutput<String?>('repositoryUrl');

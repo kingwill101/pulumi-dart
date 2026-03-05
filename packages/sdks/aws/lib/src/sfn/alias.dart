@@ -219,19 +219,14 @@ import 'alias_state.dart';
 class Alias extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) identifying your state machine alias.
   late final pulumi.Output<String> arn;
-
   /// The date the state machine alias was created.
   late final pulumi.Output<String> creationDate;
-
   /// Description of the alias.
   late final pulumi.Output<String?> description;
-
   /// Name for the alias you are creating.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The StateMachine alias' route configuration settings. Fields documented below
   late final pulumi.Output<List<Map<String, dynamic>>> routingConfigurations;
 
@@ -239,25 +234,30 @@ class Alias extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Alias]. {@macro pulumi_sfn_alias_alias_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Alias(String name, {AliasArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:sfn/alias:Alias',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Alias(
+    String name, {
+    AliasArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:sfn/alias:Alias',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     creationDate = registerOutput<String>('creationDate');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routingConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'routingConfigurations',
-    );
+    routingConfigurations = registerOutput<List<Map<String, dynamic>>>('routingConfigurations');
   }
 
   /// Gets an existing [Alias] resource's state with the given [name] and [id].
-  static Alias get(String name, pulumi.Input<String> id, {AliasState? state}) {
+  static Alias get(
+    String name,
+    pulumi.Input<String> id, {
+    AliasState? state,
+  }) {
     return Alias._get(
       name,
       state: state?.toMap(),
@@ -270,18 +270,16 @@ class Alias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sfn/alias:Alias',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sfn/alias:Alias',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     creationDate = registerOutput<String>('creationDate');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routingConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'routingConfigurations',
-    );
+    routingConfigurations = registerOutput<List<Map<String, dynamic>>>('routingConfigurations');
   }
 }

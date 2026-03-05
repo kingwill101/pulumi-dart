@@ -134,13 +134,10 @@ import 'advanced_threat_protection_args.dart';
 class AdvancedThreatProtection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Indicates whether Advanced Threat Protection is enabled.
   late final pulumi.Output<bool?> isEnabled;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -153,11 +150,11 @@ class AdvancedThreatProtection extends pulumi.CustomResource {
     AdvancedThreatProtectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:AdvancedThreatProtection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:security:AdvancedThreatProtection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     isEnabled = registerOutput<bool?>('isEnabled');
     this.name = registerOutput<String>('name');

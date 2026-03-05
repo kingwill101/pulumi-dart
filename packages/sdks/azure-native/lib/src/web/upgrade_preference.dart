@@ -17,3 +17,4 @@ enum UpgradePreference {
     throw ArgumentError('Unknown UpgradePreference value: $value');
   }
 }
+

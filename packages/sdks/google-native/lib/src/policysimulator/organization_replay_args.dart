@@ -25,11 +25,7 @@ class OrganizationReplayArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config':
-          pulumi.Input.mapInputValue<
-            GoogleCloudPolicysimulatorV1ReplayConfig,
-            Map<String, dynamic>
-          >(config, (value) => value.toMap()),
+      'config': pulumi.Input.mapInputValue<GoogleCloudPolicysimulatorV1ReplayConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'location': ?location,
       'organizationId': organizationId,
     };
@@ -37,17 +33,10 @@ class OrganizationReplayArgs {
 
   factory OrganizationReplayArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationReplayArgs(
-      config: pulumi.Input.fromValue(
-        GoogleCloudPolicysimulatorV1ReplayConfig.fromMap(
-          (map['config']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      config: pulumi.Input.fromValue(GoogleCloudPolicysimulatorV1ReplayConfig.fromMap((map['config']! as Map).cast<String, dynamic>())),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
+

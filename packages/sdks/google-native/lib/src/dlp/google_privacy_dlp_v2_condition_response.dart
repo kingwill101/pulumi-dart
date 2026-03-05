@@ -8,10 +8,8 @@ import 'google_privacy_dlp_v2_value_response.dart';
 class GooglePrivacyDlpV2ConditionResponse {
   /// Field within the record this condition is evaluated against.
   final pulumi.Input<GooglePrivacyDlpV2FieldIdResponse> field;
-
   /// Operator used to compare the field or infoType to the value.
   final pulumi.Input<String> operator;
-
   /// Value to compare against. [Mandatory, except for `EXISTS` tests.]
   final pulumi.Input<GooglePrivacyDlpV2ValueResponse> value;
 
@@ -27,35 +25,18 @@ class GooglePrivacyDlpV2ConditionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'field':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2FieldIdResponse,
-            Map<String, dynamic>
-          >(field, (value) => value.toMap()),
+      'field': pulumi.Input.mapInputValue<GooglePrivacyDlpV2FieldIdResponse, Map<String, dynamic>>(field, (value) => value.toMap()),
       'operator': operator,
-      'value':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2ValueResponse,
-            Map<String, dynamic>
-          >(value, (value) => value.toMap()),
+      'value': pulumi.Input.mapInputValue<GooglePrivacyDlpV2ValueResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2ConditionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2ConditionResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ConditionResponse(
-      field: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2FieldIdResponse.fromMap(
-          (map['field']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      field: pulumi.Input.fromValue(GooglePrivacyDlpV2FieldIdResponse.fromMap((map['field']! as Map).cast<String, dynamic>())),
       operator: pulumi.Input.fromValue(map['operator'] as String),
-      value: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2ValueResponse.fromMap(
-          (map['value']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      value: pulumi.Input.fromValue(GooglePrivacyDlpV2ValueResponse.fromMap((map['value']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

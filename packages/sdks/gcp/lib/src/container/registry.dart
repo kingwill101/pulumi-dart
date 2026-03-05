@@ -246,10 +246,8 @@ import 'registry_state.dart';
 class Registry extends pulumi.CustomResource {
   /// The URI of the created resource.
   late final pulumi.Output<String> bucketSelfLink;
-
   /// The location of the registry. One of `ASIA`, `EU`, `US` or not specified. See [the official documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry) for more information on registry locations.
   late final pulumi.Output<String?> location;
-
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
 
@@ -262,11 +260,11 @@ class Registry extends pulumi.CustomResource {
     RegistryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:container/registry:Registry',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:container/registry:Registry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucketSelfLink = registerOutput<String>('bucketSelfLink');
     location = registerOutput<String?>('location');
     project = registerOutput<String>('project');
@@ -290,11 +288,11 @@ class Registry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:container/registry:Registry',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:container/registry:Registry',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucketSelfLink = registerOutput<String>('bucketSelfLink');
     location = registerOutput<String?>('location');
     project = registerOutput<String>('project');

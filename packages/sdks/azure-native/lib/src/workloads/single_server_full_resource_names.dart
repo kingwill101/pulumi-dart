@@ -8,7 +8,6 @@ class SingleServerFullResourceNames {
   /// The pattern type to be used for resource naming.
   /// Expected value is 'FullResourceName'.
   final pulumi.Input<String> namingPatternType;
-
   /// The resource names object for virtual machine and related resources.
   final pulumi.Input<VirtualMachineResourceNames>? virtualMachine;
 
@@ -23,28 +22,15 @@ class SingleServerFullResourceNames {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'namingPatternType': namingPatternType,
-      'virtualMachine':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualMachineResourceNames,
-            Map<String, dynamic>
-          >(virtualMachine, (value) => value.toMap()),
+      'virtualMachine': ?pulumi.Input.mapOptionalInputValue<VirtualMachineResourceNames, Map<String, dynamic>>(virtualMachine, (value) => value.toMap()),
     };
   }
 
   factory SingleServerFullResourceNames.fromMap(Map<String, dynamic> map) {
     return SingleServerFullResourceNames(
-      namingPatternType: pulumi.Input.fromValue(
-        map['namingPatternType'] as String,
-      ),
-      virtualMachine: (() {
-        final guardedValue = map['virtualMachine'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualMachineResourceNames.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      namingPatternType: pulumi.Input.fromValue(map['namingPatternType'] as String),
+      virtualMachine: (() { final guardedValue = map['virtualMachine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineResourceNames.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

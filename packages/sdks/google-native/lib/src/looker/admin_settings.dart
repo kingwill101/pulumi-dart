@@ -9,19 +9,20 @@ class AdminSettings {
 
   /// Creates a new [AdminSettings].
   /// [allowedEmailDomains] Email domain allowlist for the instance.
-  AdminSettings({this.allowedEmailDomains});
+  AdminSettings({
+    this.allowedEmailDomains,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowedEmailDomains': ?allowedEmailDomains};
+    return <String, dynamic>{
+      'allowedEmailDomains': ?allowedEmailDomains,
+    };
   }
 
   factory AdminSettings.fromMap(Map<String, dynamic> map) {
     return AdminSettings(
-      allowedEmailDomains: (() {
-        final guardedValue = map['allowedEmailDomains'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowedEmailDomains: (() { final guardedValue = map['allowedEmailDomains']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

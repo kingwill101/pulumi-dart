@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPublicIpAddressPoolCidrBlocksArgs {
   /// The CIDR block.
   final pulumi.Input<String>? cidrBlock;
-
   /// A list of Vpc Public Ip Address Pool Cidr Block IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The ID of the Vpc Public IP address pool.
   final pulumi.Input<String> publicIpAddressPoolId;
-
   /// The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
   final pulumi.Input<String>? status;
 
@@ -46,33 +42,14 @@ class GetPublicIpAddressPoolCidrBlocksArgs {
     };
   }
 
-  factory GetPublicIpAddressPoolCidrBlocksArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPublicIpAddressPoolCidrBlocksArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicIpAddressPoolCidrBlocksArgs(
-      cidrBlock: (() {
-        final guardedValue = map['cidrBlock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicIpAddressPoolId: pulumi.Input.fromValue(
-        map['publicIpAddressPoolId'] as String,
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cidrBlock: (() { final guardedValue = map['cidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicIpAddressPoolId: pulumi.Input.fromValue(map['publicIpAddressPoolId'] as String),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

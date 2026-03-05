@@ -9,19 +9,20 @@ class ContinuousModeProperties {
 
   /// Creates a new [ContinuousModeProperties].
   /// [tier] Enum to indicate type of Continuous backup mode
-  ContinuousModeProperties({this.tier});
+  ContinuousModeProperties({
+    this.tier,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tier': ?tier};
+    return <String, dynamic>{
+      'tier': ?tier,
+    };
   }
 
   factory ContinuousModeProperties.fromMap(Map<String, dynamic> map) {
     return ContinuousModeProperties(
-      tier: (() {
-        final guardedValue = map['tier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

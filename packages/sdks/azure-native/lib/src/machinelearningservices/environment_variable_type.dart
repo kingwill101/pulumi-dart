@@ -14,3 +14,4 @@ enum EnvironmentVariableType {
     throw ArgumentError('Unknown EnvironmentVariableType value: $value');
   }
 }
+

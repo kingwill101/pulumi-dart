@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CardinalityResponse {
   /// The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified.
   final pulumi.Input<int> number;
-
   /// The root of the variable subtree to monitor. For example, `/foo`.
   final pulumi.Input<String> path;
 
   /// Creates a new [CardinalityResponse].
   /// [number] The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified.
   /// [path] The root of the variable subtree to monitor. For example, `/foo`.
-  CardinalityResponse({required this.number, required this.path});
+  CardinalityResponse({
+    required this.number,
+    required this.path,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'number': number, 'path': path};
+    return <String, dynamic>{
+      'number': number,
+      'path': path,
+    };
   }
 
   factory CardinalityResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class CardinalityResponse {
     );
   }
 }
+

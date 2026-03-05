@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowStepDecryptStepDetailsDestinationFileLocationEfsFileLocation {
   /// The ID of the file system, assigned by Amazon EFS.
   final pulumi.Input<String>? fileSystemId;
-
   /// The pathname for the folder being used by a workflow.
   final pulumi.Input<String>? path;
 
@@ -18,23 +17,17 @@ class WorkflowStepDecryptStepDetailsDestinationFileLocationEfsFileLocation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fileSystemId': ?fileSystemId, 'path': ?path};
+    return <String, dynamic>{
+      'fileSystemId': ?fileSystemId,
+      'path': ?path,
+    };
   }
 
-  factory WorkflowStepDecryptStepDetailsDestinationFileLocationEfsFileLocation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowStepDecryptStepDetailsDestinationFileLocationEfsFileLocation.fromMap(Map<String, dynamic> map) {
     return WorkflowStepDecryptStepDetailsDestinationFileLocationEfsFileLocation(
-      fileSystemId: (() {
-        final guardedValue = map['fileSystemId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fileSystemId: (() { final guardedValue = map['fileSystemId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

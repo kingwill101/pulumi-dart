@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HardwareValidationStatusResponse {
   /// The timestamp of the hardware validation execution.
   final pulumi.Input<String> lastValidationTime;
-
   /// The outcome of the hardware validation.
   final pulumi.Input<String> result;
 
@@ -26,10 +25,9 @@ class HardwareValidationStatusResponse {
 
   factory HardwareValidationStatusResponse.fromMap(Map<String, dynamic> map) {
     return HardwareValidationStatusResponse(
-      lastValidationTime: pulumi.Input.fromValue(
-        map['lastValidationTime'] as String,
-      ),
+      lastValidationTime: pulumi.Input.fromValue(map['lastValidationTime'] as String),
       result: pulumi.Input.fromValue(map['result'] as String),
     );
   }
 }
+

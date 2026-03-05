@@ -9,15 +9,10 @@ import 'network_routing_config_routing_mode.dart';
 class NetworkRoutingConfig {
   /// Enable comparison of Multi-Exit Discriminators (MED) across routes with different neighbor ASNs when using the STANDARD BGP best path selection algorithm.
   final pulumi.Input<bool>? bgpAlwaysCompareMed;
-
   /// The BGP best path selection algorithm to be employed within this network for dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
-  final pulumi.Input<NetworkRoutingConfigBgpBestPathSelectionMode>?
-  bgpBestPathSelectionMode;
-
+  final pulumi.Input<NetworkRoutingConfigBgpBestPathSelectionMode>? bgpBestPathSelectionMode;
   /// Allows to define a preferred approach for handling inter-region cost in the selection process when using the STANDARD BGP best path selection algorithm. Can be DEFAULT or ADD_COST_TO_MED.
-  final pulumi.Input<NetworkRoutingConfigBgpInterRegionCost>?
-  bgpInterRegionCost;
-
+  final pulumi.Input<NetworkRoutingConfigBgpInterRegionCost>? bgpInterRegionCost;
   /// The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions.
   final pulumi.Input<NetworkRoutingConfigRoutingMode>? routingMode;
 
@@ -36,56 +31,19 @@ class NetworkRoutingConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bgpAlwaysCompareMed': ?bgpAlwaysCompareMed,
-      'bgpBestPathSelectionMode':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkRoutingConfigBgpBestPathSelectionMode,
-            String
-          >(bgpBestPathSelectionMode, (value) => value.wireValue),
-      'bgpInterRegionCost':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkRoutingConfigBgpInterRegionCost,
-            String
-          >(bgpInterRegionCost, (value) => value.wireValue),
-      'routingMode':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkRoutingConfigRoutingMode,
-            String
-          >(routingMode, (value) => value.wireValue),
+      'bgpBestPathSelectionMode': ?pulumi.Input.mapOptionalInputValue<NetworkRoutingConfigBgpBestPathSelectionMode, String>(bgpBestPathSelectionMode, (value) => value.wireValue),
+      'bgpInterRegionCost': ?pulumi.Input.mapOptionalInputValue<NetworkRoutingConfigBgpInterRegionCost, String>(bgpInterRegionCost, (value) => value.wireValue),
+      'routingMode': ?pulumi.Input.mapOptionalInputValue<NetworkRoutingConfigRoutingMode, String>(routingMode, (value) => value.wireValue),
     };
   }
 
   factory NetworkRoutingConfig.fromMap(Map<String, dynamic> map) {
     return NetworkRoutingConfig(
-      bgpAlwaysCompareMed: (() {
-        final guardedValue = map['bgpAlwaysCompareMed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      bgpBestPathSelectionMode: (() {
-        final guardedValue = map['bgpBestPathSelectionMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkRoutingConfigBgpBestPathSelectionMode.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      bgpInterRegionCost: (() {
-        final guardedValue = map['bgpInterRegionCost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkRoutingConfigBgpInterRegionCost.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      routingMode: (() {
-        final guardedValue = map['routingMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkRoutingConfigRoutingMode.fromValue(guardedValue as String),
-        );
-      })(),
+      bgpAlwaysCompareMed: (() { final guardedValue = map['bgpAlwaysCompareMed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      bgpBestPathSelectionMode: (() { final guardedValue = map['bgpBestPathSelectionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkRoutingConfigBgpBestPathSelectionMode.fromValue(guardedValue as String)); })(),
+      bgpInterRegionCost: (() { final guardedValue = map['bgpInterRegionCost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkRoutingConfigBgpInterRegionCost.fromValue(guardedValue as String)); })(),
+      routingMode: (() { final guardedValue = map['routingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkRoutingConfigRoutingMode.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

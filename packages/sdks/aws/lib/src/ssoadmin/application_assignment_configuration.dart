@@ -124,10 +124,8 @@ import 'application_assignment_configuration_state.dart';
 class ApplicationAssignmentConfiguration extends pulumi.CustomResource {
   /// ARN of the application.
   late final pulumi.Output<String> applicationArn;
-
   /// Indicates whether users must have an explicit assignment to access the application. If `false`, all users have access to the application.
   late final pulumi.Output<bool> assignmentRequired;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -140,11 +138,11 @@ class ApplicationAssignmentConfiguration extends pulumi.CustomResource {
     ApplicationAssignmentConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssoadmin/applicationAssignmentConfiguration:ApplicationAssignmentConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssoadmin/applicationAssignmentConfiguration:ApplicationAssignmentConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationArn = registerOutput<String>('applicationArn');
     assignmentRequired = registerOutput<bool>('assignmentRequired');
     region = registerOutput<String>('region');
@@ -168,11 +166,11 @@ class ApplicationAssignmentConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssoadmin/applicationAssignmentConfiguration:ApplicationAssignmentConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssoadmin/applicationAssignmentConfiguration:ApplicationAssignmentConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationArn = registerOutput<String>('applicationArn');
     assignmentRequired = registerOutput<bool>('assignmentRequired');
     region = registerOutput<String>('region');

@@ -17,3 +17,4 @@ enum MinimumTlsVersion {
     throw ArgumentError('Unknown MinimumTlsVersion value: $value');
   }
 }
+

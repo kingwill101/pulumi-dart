@@ -9,35 +9,24 @@ class GetClientResult {
   /// Example:
   /// "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] }
   final dynamic attributes;
-
   /// The name presented by the client for authentication. The default value is the name of the resource.
   final String? authenticationName;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The client certificate authentication information.
-  final ClientCertificateAuthenticationResponse?
-  clientCertificateAuthentication;
-
+  final ClientCertificateAuthenticationResponse? clientCertificateAuthentication;
   /// Description for the Client resource.
   final String? description;
-
   /// Fully qualified identifier of the resource.
   final String id;
-
   /// Name of the resource.
   final String name;
-
   /// Provisioning state of the Client resource.
   final String provisioningState;
-
   /// Indicates if the client is enabled or not. Default value is Enabled.
   final String? state;
-
   /// The system metadata relating to the Event Grid resource.
   final SystemDataResponse systemData;
-
   /// Type of the resource.
   final String type;
 
@@ -72,8 +61,7 @@ class GetClientResult {
       'attributes': ?attributes,
       'authenticationName': ?authenticationName,
       'azureApiVersion': azureApiVersion,
-      'clientCertificateAuthentication': ?clientCertificateAuthentication
-          ?.toMap(),
+      'clientCertificateAuthentication': ?clientCertificateAuthentication?.toMap(),
       'description': ?description,
       'id': id,
       'name': name,
@@ -86,41 +74,18 @@ class GetClientResult {
 
   factory GetClientResult.fromMap(Map<String, dynamic> map) {
     return GetClientResult(
-      attributes: (() {
-        final guardedValue = map['attributes'];
-        if (guardedValue == null) return null;
-        return guardedValue;
-      })(),
-      authenticationName: (() {
-        final guardedValue = map['authenticationName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return guardedValue; })(),
+      authenticationName: (() { final guardedValue = map['authenticationName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      clientCertificateAuthentication: (() {
-        final guardedValue = map['clientCertificateAuthentication'];
-        if (guardedValue == null) return null;
-        return ClientCertificateAuthenticationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      clientCertificateAuthentication: (() { final guardedValue = map['clientCertificateAuthentication']; if (guardedValue == null) return null; return ClientCertificateAuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

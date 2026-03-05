@@ -15,3 +15,4 @@ enum NCrossValidationsMode {
     throw ArgumentError('Unknown NCrossValidationsMode value: $value');
   }
 }
+

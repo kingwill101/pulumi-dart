@@ -19,13 +19,10 @@ class ConfidentialInstanceConfigResponseComputeV1 {
     };
   }
 
-  factory ConfidentialInstanceConfigResponseComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfidentialInstanceConfigResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ConfidentialInstanceConfigResponseComputeV1(
-      enableConfidentialCompute: pulumi.Input.fromValue(
-        map['enableConfidentialCompute'] as bool,
-      ),
+      enableConfidentialCompute: pulumi.Input.fromValue(map['enableConfidentialCompute'] as bool),
     );
   }
 }
+

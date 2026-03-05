@@ -168,20 +168,14 @@ import 'private_endpoint_args.dart';
 class PrivateEndpoint extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The date when this private endpoint was created.
   late final pulumi.Output<String> createdDate;
-
   /// Unique opaque string (generally a GUID) that represents the metadata state of the resource (private endpoint) and changes whenever the resource is updated. Required on PUT (CreateOrUpdate) requests.
   late final pulumi.Output<String> etag;
-
   /// A list of connections to the remote resource. Immutable after it is set.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  manualPrivateLinkServiceConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> manualPrivateLinkServiceConnections;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
 
@@ -194,18 +188,15 @@ class PrivateEndpoint extends pulumi.CustomResource {
     PrivateEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:streamanalytics:PrivateEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:streamanalytics:PrivateEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdDate = registerOutput<String>('createdDate');
     etag = registerOutput<String>('etag');
-    manualPrivateLinkServiceConnections =
-        registerOutput<List<Map<String, dynamic>>?>(
-          'manualPrivateLinkServiceConnections',
-        );
+    manualPrivateLinkServiceConnections = registerOutput<List<Map<String, dynamic>>?>('manualPrivateLinkServiceConnections');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }

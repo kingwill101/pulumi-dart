@@ -164,22 +164,16 @@ import 'trusted_access_role_binding_args.dart';
 class TrustedAccessRoleBinding extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The current provisioning state of trusted access role binding.
   late final pulumi.Output<String> provisioningState;
-
   /// A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'.
   late final pulumi.Output<List<String>> roles;
-
   /// The ARM resource ID of source resource that trusted access is configured for.
   late final pulumi.Output<String> sourceResourceId;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -192,26 +186,17 @@ class TrustedAccessRoleBinding extends pulumi.CustomResource {
     TrustedAccessRoleBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerservice:TrustedAccessRoleBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:containerservice:TrustedAccessRoleBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     roles = registerOutput<List<String>>('roles');
     sourceResourceId = registerOutput<String>('sourceResourceId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

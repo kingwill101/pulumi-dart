@@ -8,10 +8,14 @@ class DomainDevicesConsoleAlias {
 
   /// Creates a new [DomainDevicesConsoleAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesConsoleAlias({required this.name});
+  DomainDevicesConsoleAlias({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory DomainDevicesConsoleAlias.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesConsoleAlias {
     );
   }
 }
+

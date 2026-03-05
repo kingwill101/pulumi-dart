@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CidrBlockResponseContainerV1beta1 {
   /// cidr_block must be specified in CIDR notation.
   final pulumi.Input<String> cidrBlock;
-
   /// display_name is an optional field for users to identify CIDR blocks.
   final pulumi.Input<String> displayName;
 
@@ -32,3 +31,4 @@ class CidrBlockResponseContainerV1beta1 {
     );
   }
 }
+

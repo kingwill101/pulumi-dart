@@ -7,10 +7,8 @@ import 'assignment_dynamic_scope_filter.dart';
 class AssignmentDynamicScopeState {
   /// A `filter` block as defined below.
   final pulumi.Input<AssignmentDynamicScopeFilter>? filter;
-
   /// The ID of the Maintenance Configuration Resource. Changing this forces a new Dynamic Maintenance Assignment to be created.
   final pulumi.Input<String>? maintenanceConfigurationId;
-
   /// The name which should be used for this Dynamic Maintenance Assignment. Changing this forces a new Dynamic Maintenance Assignment to be created.
   ///
   /// &gt; **Note:** The `name` must be unique per subscription.
@@ -28,11 +26,7 @@ class AssignmentDynamicScopeState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filter':
-          ?pulumi.Input.mapOptionalInputValue<
-            AssignmentDynamicScopeFilter,
-            Map<String, dynamic>
-          >(filter, (value) => value.toMap()),
+      'filter': ?pulumi.Input.mapOptionalInputValue<AssignmentDynamicScopeFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'maintenanceConfigurationId': ?maintenanceConfigurationId,
       'name': ?name,
     };
@@ -40,25 +34,10 @@ class AssignmentDynamicScopeState {
 
   factory AssignmentDynamicScopeState.fromMap(Map<String, dynamic> map) {
     return AssignmentDynamicScopeState(
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AssignmentDynamicScopeFilter.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      maintenanceConfigurationId: (() {
-        final guardedValue = map['maintenanceConfigurationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssignmentDynamicScopeFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      maintenanceConfigurationId: (() { final guardedValue = map['maintenanceConfigurationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

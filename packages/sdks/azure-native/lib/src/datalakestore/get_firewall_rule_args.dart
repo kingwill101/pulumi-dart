@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFirewallRuleArgs {
   /// The name of the Data Lake Store account.
   final pulumi.Input<String> accountName;
-
   /// The name of the firewall rule to retrieve.
   final pulumi.Input<String> firewallRuleName;
-
   /// The name of the Azure resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetFirewallRuleArgs {
   factory GetFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallRuleArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      firewallRuleName: pulumi.Input.fromValue(
-        map['firewallRuleName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      firewallRuleName: pulumi.Input.fromValue(map['firewallRuleName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

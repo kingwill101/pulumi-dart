@@ -620,44 +620,32 @@ import 'ai_feature_store_entity_type_state.dart';
 class AiFeatureStoreEntityType extends pulumi.CustomResource {
   /// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
-
   /// Optional. Description of the EntityType.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Used to perform consistent read-modify-write updates.
   late final pulumi.Output<String> etag;
-
   /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
   late final pulumi.Output<String> featurestore;
-
   /// A set of key/value label pairs to assign to this EntityType.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The default monitoring configuration for all Features under this EntityType.
   /// If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
   /// Structure is documented below.
-  late final pulumi.Output<AiFeatureStoreEntityTypeMonitoringConfig?>
-  monitoringConfig;
-
+  late final pulumi.Output<AiFeatureStoreEntityTypeMonitoringConfig?> monitoringConfig;
   /// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   late final pulumi.Output<String> name;
-
   /// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
   late final pulumi.Output<int?> offlineStorageTtlDays;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The region of the EntityType.
   late final pulumi.Output<String> region;
-
   /// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> updateTime;
 
@@ -670,28 +658,18 @@ class AiFeatureStoreEntityType extends pulumi.CustomResource {
     AiFeatureStoreEntityTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
     featurestore = registerOutput<String>('featurestore');
     labels = registerOutput<Map<String, String>?>('labels');
-    monitoringConfig =
-        registerOutput<AiFeatureStoreEntityTypeMonitoringConfig?>(
-          'monitoringConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiFeatureStoreEntityTypeMonitoringConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    monitoringConfig = registerOutput<AiFeatureStoreEntityTypeMonitoringConfig?>('monitoringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureStoreEntityTypeMonitoringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     offlineStorageTtlDays = registerOutput<int?>('offlineStorageTtlDays');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
@@ -717,28 +695,18 @@ class AiFeatureStoreEntityType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
     featurestore = registerOutput<String>('featurestore');
     labels = registerOutput<Map<String, String>?>('labels');
-    monitoringConfig =
-        registerOutput<AiFeatureStoreEntityTypeMonitoringConfig?>(
-          'monitoringConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiFeatureStoreEntityTypeMonitoringConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    monitoringConfig = registerOutput<AiFeatureStoreEntityTypeMonitoringConfig?>('monitoringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureStoreEntityTypeMonitoringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     offlineStorageTtlDays = registerOutput<int?>('offlineStorageTtlDays');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');

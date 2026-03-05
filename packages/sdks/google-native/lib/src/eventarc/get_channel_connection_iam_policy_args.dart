@@ -35,20 +35,11 @@ class GetChannelConnectionIamPolicyArgs {
 
   factory GetChannelConnectionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetChannelConnectionIamPolicyArgs(
-      channelConnectionId: pulumi.Input.fromValue(
-        map['channelConnectionId'] as String,
-      ),
+      channelConnectionId: pulumi.Input.fromValue(map['channelConnectionId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -13,20 +13,23 @@ class GetNetworkComputeBetaArgs {
   /// Creates a new [GetNetworkComputeBetaArgs].
   /// [network] Required.
   /// [project] Optional.
-  GetNetworkComputeBetaArgs({required this.network, this.project});
+  GetNetworkComputeBetaArgs({
+    required this.network,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'network': network, 'project': ?project};
+    return <String, dynamic>{
+      'network': network,
+      'project': ?project,
+    };
   }
 
   factory GetNetworkComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkComputeBetaArgs(
       network: pulumi.Input.fromValue(map['network'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

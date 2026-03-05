@@ -13,16 +13,15 @@ class AnalysisCompletedResponseContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'analysisType': analysisType};
+    return <String, dynamic>{
+      'analysisType': analysisType,
+    };
   }
 
-  factory AnalysisCompletedResponseContaineranalysisV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalysisCompletedResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return AnalysisCompletedResponseContaineranalysisV1beta1(
-      analysisType: pulumi.Input.fromValue(
-        (map['analysisType'] as List).cast<String>(),
-      ),
+      analysisType: pulumi.Input.fromValue((map['analysisType'] as List).cast<String>()),
     );
   }
 }
+

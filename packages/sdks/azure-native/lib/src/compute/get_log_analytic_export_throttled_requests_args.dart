@@ -9,28 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLogAnalyticExportThrottledRequestsArgs {
   /// SAS Uri of the logging blob container to which LogAnalytics Api writes output logs to.
   final pulumi.Input<String> blobContainerSasUri;
-
   /// From time of the query
   final pulumi.Input<String> fromTime;
-
   /// Group query result by Client Application ID.
   final pulumi.Input<bool>? groupByClientApplicationId;
-
   /// Group query result by Operation Name.
   final pulumi.Input<bool>? groupByOperationName;
-
   /// Group query result by Resource Name.
   final pulumi.Input<bool>? groupByResourceName;
-
   /// Group query result by Throttle Policy applied.
   final pulumi.Input<bool>? groupByThrottlePolicy;
-
   /// Group query result by User Agent.
   final pulumi.Input<bool>? groupByUserAgent;
-
   /// The name of Azure region.
   final pulumi.Input<String> location;
-
   /// To time of the query
   final pulumi.Input<String> toTime;
 
@@ -70,41 +62,18 @@ class GetLogAnalyticExportThrottledRequestsArgs {
     };
   }
 
-  factory GetLogAnalyticExportThrottledRequestsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLogAnalyticExportThrottledRequestsArgs.fromMap(Map<String, dynamic> map) {
     return GetLogAnalyticExportThrottledRequestsArgs(
-      blobContainerSasUri: pulumi.Input.fromValue(
-        map['blobContainerSasUri'] as String,
-      ),
+      blobContainerSasUri: pulumi.Input.fromValue(map['blobContainerSasUri'] as String),
       fromTime: pulumi.Input.fromValue(map['fromTime'] as String),
-      groupByClientApplicationId: (() {
-        final guardedValue = map['groupByClientApplicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      groupByOperationName: (() {
-        final guardedValue = map['groupByOperationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      groupByResourceName: (() {
-        final guardedValue = map['groupByResourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      groupByThrottlePolicy: (() {
-        final guardedValue = map['groupByThrottlePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      groupByUserAgent: (() {
-        final guardedValue = map['groupByUserAgent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      groupByClientApplicationId: (() { final guardedValue = map['groupByClientApplicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      groupByOperationName: (() { final guardedValue = map['groupByOperationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      groupByResourceName: (() { final guardedValue = map['groupByResourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      groupByThrottlePolicy: (() { final guardedValue = map['groupByThrottlePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      groupByUserAgent: (() { final guardedValue = map['groupByUserAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       toTime: pulumi.Input.fromValue(map['toTime'] as String),
     );
   }
 }
+

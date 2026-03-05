@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AliasState {
   /// The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
   final pulumi.Input<String>? aliasName;
-
   /// The id of the key.
   ///
   /// &gt; **NOTE:** Each alias represents only one master key(CMK).
@@ -19,24 +18,23 @@ class AliasState {
   /// Creates a new [AliasState].
   /// [aliasName] The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
   /// [keyId] The id of the key.
-  AliasState({this.aliasName, this.keyId});
+  AliasState({
+    this.aliasName,
+    this.keyId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'aliasName': ?aliasName, 'keyId': ?keyId};
+    return <String, dynamic>{
+      'aliasName': ?aliasName,
+      'keyId': ?keyId,
+    };
   }
 
   factory AliasState.fromMap(Map<String, dynamic> map) {
     return AliasState(
-      aliasName: (() {
-        final guardedValue = map['aliasName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyId: (() {
-        final guardedValue = map['keyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      aliasName: (() { final guardedValue = map['aliasName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyId: (() { final guardedValue = map['keyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

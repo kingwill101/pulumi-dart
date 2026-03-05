@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SessionLoggerAssociationState {
   /// ARN of the web portal.
   final pulumi.Input<String>? portalArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ARN of the session logger.
   ///
   /// The following arguments are optional:
@@ -35,21 +33,10 @@ class SessionLoggerAssociationState {
 
   factory SessionLoggerAssociationState.fromMap(Map<String, dynamic> map) {
     return SessionLoggerAssociationState(
-      portalArn: (() {
-        final guardedValue = map['portalArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sessionLoggerArn: (() {
-        final guardedValue = map['sessionLoggerArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      portalArn: (() { final guardedValue = map['portalArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sessionLoggerArn: (() { final guardedValue = map['sessionLoggerArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

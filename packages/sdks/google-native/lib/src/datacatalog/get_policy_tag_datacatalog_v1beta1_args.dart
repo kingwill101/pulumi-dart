@@ -37,12 +37,9 @@ class GetPolicyTagDatacatalogV1beta1Args {
     return GetPolicyTagDatacatalogV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
       policyTagId: pulumi.Input.fromValue(map['policyTagId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       taxonomyId: pulumi.Input.fromValue(map['taxonomyId'] as String),
     );
   }
 }
+

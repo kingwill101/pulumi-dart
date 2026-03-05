@@ -817,14 +817,11 @@ import 'network_interface_application_gateway_backend_address_pool_association_s
 /// ```
 ///
 /// &gt; **Note:** This ID is specific to this provider - and is of the format `{networkInterfaceId}/ipConfigurations/{ipConfigurationName}|{backendAddressPoolId}`.
-class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation
-    extends pulumi.CustomResource {
+class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation extends pulumi.CustomResource {
   /// The ID of the Application Gateway's Backend Address Pool which this Network Interface which should be connected to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> backendAddressPoolId;
-
   /// The Name of the IP Configuration within the Network Interface which should be connected to the Backend Address Pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> ipConfigurationName;
-
   /// The ID of the Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkInterfaceId;
 
@@ -837,11 +834,11 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation
     NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkInterfaceApplicationGatewayBackendAddressPoolAssociation:NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkInterfaceApplicationGatewayBackendAddressPoolAssociation:NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
     ipConfigurationName = registerOutput<String>('ipConfigurationName');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
@@ -865,11 +862,11 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkInterfaceApplicationGatewayBackendAddressPoolAssociation:NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkInterfaceApplicationGatewayBackendAddressPoolAssociation:NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
     ipConfigurationName = registerOutput<String>('ipConfigurationName');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');

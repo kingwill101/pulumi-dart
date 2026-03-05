@@ -17,3 +17,4 @@ enum RuleCategory {
     throw ArgumentError('Unknown RuleCategory value: $value');
   }
 }
+

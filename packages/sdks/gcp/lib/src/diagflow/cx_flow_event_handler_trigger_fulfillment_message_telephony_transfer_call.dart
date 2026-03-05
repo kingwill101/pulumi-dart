@@ -13,14 +13,15 @@ class CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'phoneNumber': phoneNumber};
+    return <String, dynamic>{
+      'phoneNumber': phoneNumber,
+    };
   }
 
-  factory CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall.fromMap(Map<String, dynamic> map) {
     return CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall(
       phoneNumber: pulumi.Input.fromValue(map['phoneNumber'] as String),
     );
   }
 }
+

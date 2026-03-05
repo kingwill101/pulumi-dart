@@ -9,19 +9,20 @@ class PingStatusEnumValueResponse {
 
   /// Creates a new [PingStatusEnumValueResponse].
   /// [value] Property value
-  PingStatusEnumValueResponse({this.value});
+  PingStatusEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory PingStatusEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return PingStatusEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

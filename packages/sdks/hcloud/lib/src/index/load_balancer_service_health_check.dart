@@ -6,19 +6,14 @@ import 'load_balancer_service_health_check_http.dart';
 class LoadBalancerServiceHealthCheck {
   /// HTTP configuration. Required if `protocol` is `http`.
   final pulumi.Input<LoadBalancerServiceHealthCheckHttp>? http;
-
   /// Interval how often the health check will be performed, in seconds.
   final pulumi.Input<int> interval;
-
   /// Port the health check tries to connect to, required if protocol is `tcp`. Can be everything between `1` and `65535`. Must be unique per Load Balancer.
   final pulumi.Input<int> port;
-
   /// Protocol the health check uses. `http` or `tcp`
   final pulumi.Input<String> protocol;
-
   /// Number of tries a health check will be performed until a target will be listed as `unhealthy`.
   final pulumi.Input<int> retries;
-
   /// Timeout when a health check try will be canceled if there is no response, in seconds.
   final pulumi.Input<int> timeout;
 
@@ -40,11 +35,7 @@ class LoadBalancerServiceHealthCheck {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'http':
-          ?pulumi.Input.mapOptionalInputValue<
-            LoadBalancerServiceHealthCheckHttp,
-            Map<String, dynamic>
-          >(http, (value) => value.toMap()),
+      'http': ?pulumi.Input.mapOptionalInputValue<LoadBalancerServiceHealthCheckHttp, Map<String, dynamic>>(http, (value) => value.toMap()),
       'interval': interval,
       'port': port,
       'protocol': protocol,
@@ -55,15 +46,7 @@ class LoadBalancerServiceHealthCheck {
 
   factory LoadBalancerServiceHealthCheck.fromMap(Map<String, dynamic> map) {
     return LoadBalancerServiceHealthCheck(
-      http: (() {
-        final guardedValue = map['http'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LoadBalancerServiceHealthCheckHttp.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      http: (() { final guardedValue = map['http']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerServiceHealthCheckHttp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       interval: pulumi.Input.fromValue(map['interval'] as int),
       port: pulumi.Input.fromValue(map['port'] as int),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
@@ -72,3 +55,4 @@ class LoadBalancerServiceHealthCheck {
     );
   }
 }
+

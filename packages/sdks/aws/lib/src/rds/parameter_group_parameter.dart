@@ -7,10 +7,8 @@ class ParameterGroupParameter {
   /// engines can't apply some parameters without a reboot, and you will need to
   /// specify "pending-reboot" here.
   final pulumi.Input<String>? applyMethod;
-
   /// The name of the DB parameter.
   final pulumi.Input<String> name;
-
   /// The value of the DB parameter.
   final pulumi.Input<String> value;
 
@@ -34,13 +32,10 @@ class ParameterGroupParameter {
 
   factory ParameterGroupParameter.fromMap(Map<String, dynamic> map) {
     return ParameterGroupParameter(
-      applyMethod: (() {
-        final guardedValue = map['applyMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applyMethod: (() { final guardedValue = map['applyMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

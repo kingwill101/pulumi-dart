@@ -8,21 +8,20 @@ class DomainFeaturesCapabilitiesDacOverride {
 
   /// Creates a new [DomainFeaturesCapabilitiesDacOverride].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesDacOverride({this.state});
+  DomainFeaturesCapabilitiesDacOverride({
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': ?state};
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
-  factory DomainFeaturesCapabilitiesDacOverride.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainFeaturesCapabilitiesDacOverride.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesDacOverride(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

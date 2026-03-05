@@ -11,10 +11,14 @@ class GetContainerRegistriesArgs {
 
   /// Creates a new [GetContainerRegistriesArgs].
   /// [name] Required.
-  GetContainerRegistriesArgs({required this.name});
+  GetContainerRegistriesArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetContainerRegistriesArgs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetContainerRegistriesArgs {
     );
   }
 }
+

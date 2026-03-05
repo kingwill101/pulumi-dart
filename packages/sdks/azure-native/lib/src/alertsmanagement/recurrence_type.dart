@@ -16,3 +16,4 @@ enum RecurrenceType {
     throw ArgumentError('Unknown RecurrenceType value: $value');
   }
 }
+

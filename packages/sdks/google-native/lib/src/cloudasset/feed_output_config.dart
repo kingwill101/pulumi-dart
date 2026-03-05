@@ -10,29 +10,20 @@ class FeedOutputConfig {
 
   /// Creates a new [FeedOutputConfig].
   /// [pubsubDestination] Destination on Pub/Sub.
-  FeedOutputConfig({this.pubsubDestination});
+  FeedOutputConfig({
+    this.pubsubDestination,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pubsubDestination':
-          ?pulumi.Input.mapOptionalInputValue<
-            PubsubDestination,
-            Map<String, dynamic>
-          >(pubsubDestination, (value) => value.toMap()),
+      'pubsubDestination': ?pulumi.Input.mapOptionalInputValue<PubsubDestination, Map<String, dynamic>>(pubsubDestination, (value) => value.toMap()),
     };
   }
 
   factory FeedOutputConfig.fromMap(Map<String, dynamic> map) {
     return FeedOutputConfig(
-      pubsubDestination: (() {
-        final guardedValue = map['pubsubDestination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PubsubDestination.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      pubsubDestination: (() { final guardedValue = map['pubsubDestination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PubsubDestination.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

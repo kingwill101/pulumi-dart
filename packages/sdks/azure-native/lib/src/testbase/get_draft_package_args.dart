@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDraftPackageArgs {
   /// The resource name of the Test Base Draft Package.
   final pulumi.Input<String> draftPackageName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
 
@@ -36,15 +34,10 @@ class GetDraftPackageArgs {
 
   factory GetDraftPackageArgs.fromMap(Map<String, dynamic> map) {
     return GetDraftPackageArgs(
-      draftPackageName: pulumi.Input.fromValue(
-        map['draftPackageName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      testBaseAccountName: pulumi.Input.fromValue(
-        map['testBaseAccountName'] as String,
-      ),
+      draftPackageName: pulumi.Input.fromValue(map['draftPackageName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      testBaseAccountName: pulumi.Input.fromValue(map['testBaseAccountName'] as String),
     );
   }
 }
+

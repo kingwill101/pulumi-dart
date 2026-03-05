@@ -7,10 +7,8 @@ import 'vmware_vsphere_tag.dart';
 class VmwareVsphereConfig {
   /// The name of the vCenter datastore. Inherited from the user cluster.
   final pulumi.Input<String>? datastore;
-
   /// Vsphere host groups to apply to all VMs in the node pool
   final pulumi.Input<List<String>>? hostGroups;
-
   /// Tags to apply to VMs.
   final pulumi.Input<List<VmwareVsphereTag>>? tags;
 
@@ -18,51 +16,26 @@ class VmwareVsphereConfig {
   /// [datastore] The name of the vCenter datastore. Inherited from the user cluster.
   /// [hostGroups] Vsphere host groups to apply to all VMs in the node pool
   /// [tags] Tags to apply to VMs.
-  VmwareVsphereConfig({this.datastore, this.hostGroups, this.tags});
+  VmwareVsphereConfig({
+    this.datastore,
+    this.hostGroups,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'datastore': ?datastore,
       'hostGroups': ?hostGroups,
-      'tags':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VmwareVsphereTag>,
-            List<Map<String, dynamic>>
-          >(
-            tags,
-            (value) =>
-                pulumi.Input.encodeList<VmwareVsphereTag, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<VmwareVsphereTag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<VmwareVsphereTag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VmwareVsphereConfig.fromMap(Map<String, dynamic> map) {
     return VmwareVsphereConfig(
-      datastore: (() {
-        final guardedValue = map['datastore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostGroups: (() {
-        final guardedValue = map['hostGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VmwareVsphereTag>(
-            guardedValue,
-            (value) => VmwareVsphereTag.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      datastore: (() { final guardedValue = map['datastore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostGroups: (() { final guardedValue = map['hostGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VmwareVsphereTag>(guardedValue, (value) => VmwareVsphereTag.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

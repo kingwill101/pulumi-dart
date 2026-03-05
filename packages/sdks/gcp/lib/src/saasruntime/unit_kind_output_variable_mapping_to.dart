@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UnitKindOutputVariableMappingTo {
   /// Alias of the dependency that the inputVariable will pass its value to
   final pulumi.Input<String> dependency;
-
   /// Tells SaaS Runtime if this mapping should be used during lookup or not
   final pulumi.Input<bool>? ignoreForLookup;
-
   /// Name of the inputVariable on the dependency
   final pulumi.Input<String> inputVariable;
 
@@ -33,12 +31,9 @@ class UnitKindOutputVariableMappingTo {
   factory UnitKindOutputVariableMappingTo.fromMap(Map<String, dynamic> map) {
     return UnitKindOutputVariableMappingTo(
       dependency: pulumi.Input.fromValue(map['dependency'] as String),
-      ignoreForLookup: (() {
-        final guardedValue = map['ignoreForLookup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      ignoreForLookup: (() { final guardedValue = map['ignoreForLookup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       inputVariable: pulumi.Input.fromValue(map['inputVariable'] as String),
     );
   }
 }
+

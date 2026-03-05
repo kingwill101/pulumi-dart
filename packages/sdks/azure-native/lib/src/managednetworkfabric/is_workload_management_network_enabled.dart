@@ -12,8 +12,7 @@ enum IsWorkloadManagementNetworkEnabled {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown IsWorkloadManagementNetworkEnabled value: $value',
-    );
+    throw ArgumentError('Unknown IsWorkloadManagementNetworkEnabled value: $value');
   }
 }
+

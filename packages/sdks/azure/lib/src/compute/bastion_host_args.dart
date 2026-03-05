@@ -10,65 +10,50 @@ import 'bastion_host_ip_configuration.dart';
 class BastionHostArgs {
   /// Is Copy/Paste feature enabled for the Bastion Host. Defaults to `true`.
   final pulumi.Input<bool>? copyPasteEnabled;
-
   /// Is File Copy feature enabled for the Bastion Host. Defaults to `false`.
   ///
   /// &gt; **Note:** `file_copy_enabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? fileCopyEnabled;
-
   /// A `ip_configuration` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<BastionHostIpConfiguration>? ipConfiguration;
-
   /// Is IP Connect feature enabled for the Bastion Host. Defaults to `false`.
   ///
   /// &gt; **Note:** `ip_connect_enabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? ipConnectEnabled;
-
   /// Is Kerberos authentication feature enabled for the Bastion Host. Defaults to `false`.
   ///
   /// &gt; **Note:** `kerberos_enabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? kerberosEnabled;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. Review [Azure Bastion Host FAQ](https://docs.microsoft.com/azure/bastion/bastion-faq) for supported locations.
   final pulumi.Input<String>? location;
-
   /// Specifies the name of the Bastion Host. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the resource group in which to create the Bastion Host. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The number of scale units with which to provision the Bastion Host. Possible values are between `2` and `50`. Defaults to `2`.
   ///
   /// &gt; **Note:** `scale_units` only can be changed when `sku` is `Standard` or `Premium`. `scale_units` is always `2` when `sku` is `Basic`.
   final pulumi.Input<int>? scaleUnits;
-
   /// Is Session Recording feature enabled for the Bastion Host. Defaults to `false`.
   ///
   /// &gt; **Note:** `session_recording_enabled` is only supported when `sku` is `Premium`.
   final pulumi.Input<bool>? sessionRecordingEnabled;
-
   /// Is Shareable Link feature enabled for the Bastion Host. Defaults to `false`.
   ///
   /// &gt; **Note:** `shareable_link_enabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? shareableLinkEnabled;
-
   /// The SKU of the Bastion Host. Accepted values are `Developer`, `Basic`, `Standard` and `Premium`. Defaults to `Basic`.
   ///
   /// &gt; **Note:** Downgrading the SKU will force a new resource to be created.
   final pulumi.Input<String>? sku;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Is Tunneling feature enabled for the Bastion Host. Defaults to `false`.
   ///
   /// &gt; **Note:** `tunneling_enabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? tunnelingEnabled;
-
   /// The ID of the Virtual Network for the Developer Bastion Host. Changing this forces a new resource to be created.
   final pulumi.Input<String>? virtualNetworkId;
-
   /// Specifies a list of Availability Zones in which this Public Bastion Host should be located. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>>? zones;
 
@@ -112,11 +97,7 @@ class BastionHostArgs {
     return <String, dynamic>{
       'copyPasteEnabled': ?copyPasteEnabled,
       'fileCopyEnabled': ?fileCopyEnabled,
-      'ipConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            BastionHostIpConfiguration,
-            Map<String, dynamic>
-          >(ipConfiguration, (value) => value.toMap()),
+      'ipConfiguration': ?pulumi.Input.mapOptionalInputValue<BastionHostIpConfiguration, Map<String, dynamic>>(ipConfiguration, (value) => value.toMap()),
       'ipConnectEnabled': ?ipConnectEnabled,
       'kerberosEnabled': ?kerberosEnabled,
       'location': ?location,
@@ -135,90 +116,23 @@ class BastionHostArgs {
 
   factory BastionHostArgs.fromMap(Map<String, dynamic> map) {
     return BastionHostArgs(
-      copyPasteEnabled: (() {
-        final guardedValue = map['copyPasteEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      fileCopyEnabled: (() {
-        final guardedValue = map['fileCopyEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ipConfiguration: (() {
-        final guardedValue = map['ipConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BastionHostIpConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      ipConnectEnabled: (() {
-        final guardedValue = map['ipConnectEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      kerberosEnabled: (() {
-        final guardedValue = map['kerberosEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      scaleUnits: (() {
-        final guardedValue = map['scaleUnits'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      sessionRecordingEnabled: (() {
-        final guardedValue = map['sessionRecordingEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      shareableLinkEnabled: (() {
-        final guardedValue = map['shareableLinkEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tunnelingEnabled: (() {
-        final guardedValue = map['tunnelingEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      virtualNetworkId: (() {
-        final guardedValue = map['virtualNetworkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zones: (() {
-        final guardedValue = map['zones'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      copyPasteEnabled: (() { final guardedValue = map['copyPasteEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      fileCopyEnabled: (() { final guardedValue = map['fileCopyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ipConfiguration: (() { final guardedValue = map['ipConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BastionHostIpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ipConnectEnabled: (() { final guardedValue = map['ipConnectEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      kerberosEnabled: (() { final guardedValue = map['kerberosEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      scaleUnits: (() { final guardedValue = map['scaleUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sessionRecordingEnabled: (() { final guardedValue = map['sessionRecordingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      shareableLinkEnabled: (() { final guardedValue = map['shareableLinkEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tunnelingEnabled: (() { final guardedValue = map['tunnelingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      virtualNetworkId: (() { final guardedValue = map['virtualNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -382,54 +382,37 @@ import 'system_data_response.dart';
 /// ```
 class Assignment extends pulumi.CustomResource {
   /// Additional data about the assignment
-  late final pulumi.Output<AssignmentPropertiesResponseAdditionalData?>
-  additionalData;
-
+  late final pulumi.Output<AssignmentPropertiesResponseAdditionalData?> additionalData;
   /// Component item with key as applied to this standard assignment over the given scope
   late final pulumi.Output<AssignedComponentItemResponse?> assignedComponent;
-
   /// Standard item with key as applied to this standard assignment over the given scope
   late final pulumi.Output<AssignedStandardItemResponse?> assignedStandard;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// description of the standardAssignment
   late final pulumi.Output<String?> description;
-
   /// display name of the standardAssignment
   late final pulumi.Output<String?> displayName;
-
   /// expected effect of this assignment (Disable/Exempt/etc)
   late final pulumi.Output<String?> effect;
-
   /// Entity tag is used for comparing two or more entities from the same requested resource.
   late final pulumi.Output<String?> etag;
-
   /// Expiration date of this assignment as a full ISO date
   late final pulumi.Output<String?> expiresOn;
-
   /// Kind of the resource
   late final pulumi.Output<String?> kind;
-
   /// Location where the resource is stored
   late final pulumi.Output<String?> location;
-
   /// The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
   late final pulumi.Output<dynamic> metadata;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
   late final pulumi.Output<String?> scope;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// A list of key value pairs that describe the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -442,42 +425,14 @@ class Assignment extends pulumi.CustomResource {
     AssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:Assignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalData =
-        registerOutput<AssignmentPropertiesResponseAdditionalData?>(
-          'additionalData',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AssignmentPropertiesResponseAdditionalData.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    assignedComponent = registerOutput<AssignedComponentItemResponse?>(
-      'assignedComponent',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AssignedComponentItemResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    assignedStandard = registerOutput<AssignedStandardItemResponse?>(
-      'assignedStandard',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AssignedStandardItemResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:security:Assignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalData = registerOutput<AssignmentPropertiesResponseAdditionalData?>('additionalData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentPropertiesResponseAdditionalData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    assignedComponent = registerOutput<AssignedComponentItemResponse?>('assignedComponent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignedComponentItemResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    assignedStandard = registerOutput<AssignedStandardItemResponse?>('assignedStandard', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignedStandardItemResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -489,16 +444,7 @@ class Assignment extends pulumi.CustomResource {
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
     scope = registerOutput<String?>('scope');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

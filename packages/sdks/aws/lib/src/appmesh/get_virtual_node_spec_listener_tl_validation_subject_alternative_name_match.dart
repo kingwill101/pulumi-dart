@@ -12,14 +12,15 @@ class GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exacts': exacts};
+    return <String, dynamic>{
+      'exacts': exacts,
+    };
   }
 
-  factory GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch(
       exacts: pulumi.Input.fromValue((map['exacts'] as List).cast<String>()),
     );
   }
 }
+

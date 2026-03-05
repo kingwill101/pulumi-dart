@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBrokerUser {
   /// Whether to enable access to the ActiveMQ Web Console for the user.
   final pulumi.Input<bool> consoleAccess;
-
   /// List of groups to which the ActiveMQ user belongs.
   final pulumi.Input<List<String>> groups;
-
   /// Whether to set replication user.
   final pulumi.Input<bool> replicationUser;
-
   /// Username of the user.
   final pulumi.Input<String> username;
 
@@ -45,3 +42,4 @@ class GetBrokerUser {
     );
   }
 }
+

@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting {
   final pulumi.Input<String> checkDigitString;
-
   /// The Nielsen Source ID to include in the watermark.
   final pulumi.Input<double> sid;
 
@@ -17,17 +16,17 @@ class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWaterma
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'checkDigitString': checkDigitString, 'sid': sid};
+    return <String, dynamic>{
+      'checkDigitString': checkDigitString,
+      'sid': sid,
+    };
   }
 
-  factory ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting(
-      checkDigitString: pulumi.Input.fromValue(
-        map['checkDigitString'] as String,
-      ),
+      checkDigitString: pulumi.Input.fromValue(map['checkDigitString'] as String),
       sid: pulumi.Input.fromValue(map['sid'] as double),
     );
   }
 }
+

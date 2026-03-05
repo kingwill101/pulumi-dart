@@ -6,7 +6,6 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoo
   /// Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
   /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
   final pulumi.Input<String>? fixedLikelihood;
-
   /// Increase or decrease the likelihood by the specified number of levels. For example,
   /// if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
   /// then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
@@ -30,20 +29,11 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoo
     };
   }
 
-  factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment(
-      fixedLikelihood: (() {
-        final guardedValue = map['fixedLikelihood'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      relativeLikelihood: (() {
-        final guardedValue = map['relativeLikelihood'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      fixedLikelihood: (() { final guardedValue = map['fixedLikelihood']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      relativeLikelihood: (() { final guardedValue = map['relativeLikelihood']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

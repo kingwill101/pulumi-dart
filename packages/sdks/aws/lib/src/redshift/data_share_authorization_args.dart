@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataShareAuthorizationArgs {
   /// Whether to allow write operations for a datashare.
   final pulumi.Input<bool>? allowWrites;
-
   /// Identifier of the data consumer that is authorized to access the datashare. This identifier is an AWS account ID or a keyword, such as `ADX`.
   final pulumi.Input<String> consumerIdentifier;
-
   /// Amazon Resource Name (ARN) of the datashare that producers are to authorize sharing for.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> dataShareArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -44,20 +41,11 @@ class DataShareAuthorizationArgs {
 
   factory DataShareAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return DataShareAuthorizationArgs(
-      allowWrites: (() {
-        final guardedValue = map['allowWrites'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      consumerIdentifier: pulumi.Input.fromValue(
-        map['consumerIdentifier'] as String,
-      ),
+      allowWrites: (() { final guardedValue = map['allowWrites']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      consumerIdentifier: pulumi.Input.fromValue(map['consumerIdentifier'] as String),
       dataShareArn: pulumi.Input.fromValue(map['dataShareArn'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

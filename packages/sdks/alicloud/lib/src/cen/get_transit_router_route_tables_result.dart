@@ -9,21 +9,17 @@ class GetTransitRouterRouteTablesResult {
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of Transit Router Route Table names.
   final List<String> names;
   final String? outputFile;
-
   /// The status of the route table.
   final String? status;
-
   /// A list of Transit Router Route Tables. Each element contains the following attributes:
   final List<GetTransitRouterRouteTablesTable> tables;
   final String transitRouterId;
   final List<String>? transitRouterRouteTableIds;
   final List<String>? transitRouterRouteTableNames;
   final String? transitRouterRouteTableStatus;
-
   /// The type of the route table.
   final String? transitRouterRouteTableType;
 
@@ -63,11 +59,7 @@ class GetTransitRouterRouteTablesResult {
       'names': names,
       'outputFile': ?outputFile,
       'status': ?status,
-      'tables':
-          pulumi.Input.encodeList<
-            GetTransitRouterRouteTablesTable,
-            Map<String, dynamic>
-          >(tables, (value) => value.toMap()),
+      'tables': pulumi.Input.encodeList<GetTransitRouterRouteTablesTable, Map<String, dynamic>>(tables, (value) => value.toMap()),
       'transitRouterId': transitRouterId,
       'transitRouterRouteTableIds': ?transitRouterRouteTableIds,
       'transitRouterRouteTableNames': ?transitRouterRouteTableNames,
@@ -80,49 +72,17 @@ class GetTransitRouterRouteTablesResult {
     return GetTransitRouterRouteTablesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tables: pulumi.Input.decodeList<GetTransitRouterRouteTablesTable>(
-        map['tables']!,
-        (value) => GetTransitRouterRouteTablesTable.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tables: pulumi.Input.decodeList<GetTransitRouterRouteTablesTable>(map['tables']!, (value) => GetTransitRouterRouteTablesTable.fromMap((value as Map).cast<String, dynamic>())),
       transitRouterId: map['transitRouterId'] as String,
-      transitRouterRouteTableIds: (() {
-        final guardedValue = map['transitRouterRouteTableIds'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      transitRouterRouteTableNames: (() {
-        final guardedValue = map['transitRouterRouteTableNames'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      transitRouterRouteTableStatus: (() {
-        final guardedValue = map['transitRouterRouteTableStatus'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      transitRouterRouteTableType: (() {
-        final guardedValue = map['transitRouterRouteTableType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      transitRouterRouteTableIds: (() { final guardedValue = map['transitRouterRouteTableIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      transitRouterRouteTableNames: (() { final guardedValue = map['transitRouterRouteTableNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      transitRouterRouteTableStatus: (() { final guardedValue = map['transitRouterRouteTableStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      transitRouterRouteTableType: (() { final guardedValue = map['transitRouterRouteTableType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

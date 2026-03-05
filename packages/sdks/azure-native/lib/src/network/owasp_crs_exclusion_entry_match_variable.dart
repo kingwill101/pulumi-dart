@@ -19,8 +19,7 @@ enum OwaspCrsExclusionEntryMatchVariable {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown OwaspCrsExclusionEntryMatchVariable value: $value',
-    );
+    throw ArgumentError('Unknown OwaspCrsExclusionEntryMatchVariable value: $value');
   }
 }
+

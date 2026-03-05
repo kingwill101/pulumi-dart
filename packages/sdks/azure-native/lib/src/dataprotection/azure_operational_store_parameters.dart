@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureOperationalStoreParameters {
   /// type of datastore; Operational/Vault/Archive
   final pulumi.Input<String> dataStoreType;
-
   /// Type of the specific object - used for deserializing
   /// Expected value is 'AzureOperationalStoreParameters'.
   final pulumi.Input<String> objectType;
-
   /// Gets or sets the Snapshot Resource Group Uri.
   final pulumi.Input<String>? resourceGroupId;
 
@@ -36,11 +34,8 @@ class AzureOperationalStoreParameters {
     return AzureOperationalStoreParameters(
       dataStoreType: pulumi.Input.fromValue(map['dataStoreType'] as String),
       objectType: pulumi.Input.fromValue(map['objectType'] as String),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,13 +9,20 @@ class SubnetResponse {
 
   /// Creates a new [SubnetResponse].
   /// [id] Specifies ARM resource id of the subnet.
-  SubnetResponse({required this.id});
+  SubnetResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory SubnetResponse.fromMap(Map<String, dynamic> map) {
-    return SubnetResponse(id: pulumi.Input.fromValue(map['id'] as String));
+    return SubnetResponse(
+      id: pulumi.Input.fromValue(map['id'] as String),
+    );
   }
 }
+

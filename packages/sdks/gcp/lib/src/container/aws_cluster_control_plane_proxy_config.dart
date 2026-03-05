@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsClusterControlPlaneProxyConfig {
   /// The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
   final pulumi.Input<String> secretArn;
-
   /// The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
   final pulumi.Input<String> secretVersion;
 
@@ -31,3 +30,4 @@ class AwsClusterControlPlaneProxyConfig {
     );
   }
 }
+

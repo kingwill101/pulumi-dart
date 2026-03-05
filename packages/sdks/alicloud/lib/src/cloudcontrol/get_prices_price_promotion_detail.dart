@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPricesPricePromotionDetail {
   /// Offer Description.
   final pulumi.Input<String> promotionDesc;
-
   /// Offer logo.
   final pulumi.Input<int> promotionId;
-
   /// Offer Name.
   final pulumi.Input<String> promotionName;
 
@@ -38,3 +36,4 @@ class GetPricesPricePromotionDetail {
     );
   }
 }
+

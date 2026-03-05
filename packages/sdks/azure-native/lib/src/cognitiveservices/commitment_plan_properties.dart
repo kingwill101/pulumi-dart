@@ -7,19 +7,14 @@ import 'commitment_period.dart';
 class CommitmentPlanProperties {
   /// AutoRenew commitment plan.
   final pulumi.Input<bool>? autoRenew;
-
   /// Commitment plan guid.
   final pulumi.Input<String>? commitmentPlanGuid;
-
   /// Cognitive Services account commitment period.
   final pulumi.Input<CommitmentPeriod>? current;
-
   /// Account hosting model.
   final pulumi.Input<String>? hostingModel;
-
   /// Cognitive Services account commitment period.
   final pulumi.Input<CommitmentPeriod>? next;
-
   /// Commitment plan type.
   final pulumi.Input<String>? planType;
 
@@ -43,61 +38,22 @@ class CommitmentPlanProperties {
     return <String, dynamic>{
       'autoRenew': ?autoRenew,
       'commitmentPlanGuid': ?commitmentPlanGuid,
-      'current':
-          ?pulumi.Input.mapOptionalInputValue<
-            CommitmentPeriod,
-            Map<String, dynamic>
-          >(current, (value) => value.toMap()),
+      'current': ?pulumi.Input.mapOptionalInputValue<CommitmentPeriod, Map<String, dynamic>>(current, (value) => value.toMap()),
       'hostingModel': ?hostingModel,
-      'next':
-          ?pulumi.Input.mapOptionalInputValue<
-            CommitmentPeriod,
-            Map<String, dynamic>
-          >(next, (value) => value.toMap()),
+      'next': ?pulumi.Input.mapOptionalInputValue<CommitmentPeriod, Map<String, dynamic>>(next, (value) => value.toMap()),
       'planType': ?planType,
     };
   }
 
   factory CommitmentPlanProperties.fromMap(Map<String, dynamic> map) {
     return CommitmentPlanProperties(
-      autoRenew: (() {
-        final guardedValue = map['autoRenew'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      commitmentPlanGuid: (() {
-        final guardedValue = map['commitmentPlanGuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      current: (() {
-        final guardedValue = map['current'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CommitmentPeriod.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      hostingModel: (() {
-        final guardedValue = map['hostingModel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      next: (() {
-        final guardedValue = map['next'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CommitmentPeriod.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      planType: (() {
-        final guardedValue = map['planType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autoRenew: (() { final guardedValue = map['autoRenew']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      commitmentPlanGuid: (() { final guardedValue = map['commitmentPlanGuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      current: (() { final guardedValue = map['current']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CommitmentPeriod.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      hostingModel: (() { final guardedValue = map['hostingModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      next: (() { final guardedValue = map['next']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CommitmentPeriod.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      planType: (() { final guardedValue = map['planType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

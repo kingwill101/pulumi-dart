@@ -9,10 +9,16 @@ class Uint128ResponseComputeV1 {
   /// Creates a new [Uint128ResponseComputeV1].
   /// [high] Required.
   /// [low] Required.
-  Uint128ResponseComputeV1({required this.high, required this.low});
+  Uint128ResponseComputeV1({
+    required this.high,
+    required this.low,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'high': high, 'low': low};
+    return <String, dynamic>{
+      'high': high,
+      'low': low,
+    };
   }
 
   factory Uint128ResponseComputeV1.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class Uint128ResponseComputeV1 {
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum ShareRootSquash {
     throw ArgumentError('Unknown ShareRootSquash value: $value');
   }
 }
+

@@ -8,19 +8,20 @@ class Certificate {
 
   /// Creates a new [Certificate].
   /// [pem] PEM formatted public key.
-  Certificate({this.pem});
+  Certificate({
+    this.pem,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pem': ?pem};
+    return <String, dynamic>{
+      'pem': ?pem,
+    };
   }
 
   factory Certificate.fromMap(Map<String, dynamic> map) {
     return Certificate(
-      pem: (() {
-        final guardedValue = map['pem'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pem: (() { final guardedValue = map['pem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

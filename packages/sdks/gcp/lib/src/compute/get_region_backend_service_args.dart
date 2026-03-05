@@ -9,11 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionBackendServiceArgs {
   /// The name of the regional backend service.
   final pulumi.Input<String> name;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region where the backend service resides.
   final pulumi.Input<String>? region;
 
@@ -21,7 +19,11 @@ class GetRegionBackendServiceArgs {
   /// [name] The name of the regional backend service.
   /// [project] The ID of the project in which the resource belongs. If it
   /// [region] The region where the backend service resides.
-  GetRegionBackendServiceArgs({required this.name, this.project, this.region});
+  GetRegionBackendServiceArgs({
+    required this.name,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,16 +36,9 @@ class GetRegionBackendServiceArgs {
   factory GetRegionBackendServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -10,17 +10,20 @@ class GetServiceTemplateContainerLivenessProbeTcpSocket {
 
   /// Creates a new [GetServiceTemplateContainerLivenessProbeTcpSocket].
   /// [port] Port number to access on the container. Must be in the range 1 to 65535.
-  GetServiceTemplateContainerLivenessProbeTcpSocket({required this.port});
+  GetServiceTemplateContainerLivenessProbeTcpSocket({
+    required this.port,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': port};
+    return <String, dynamic>{
+      'port': port,
+    };
   }
 
-  factory GetServiceTemplateContainerLivenessProbeTcpSocket.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceTemplateContainerLivenessProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateContainerLivenessProbeTcpSocket(
       port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
+

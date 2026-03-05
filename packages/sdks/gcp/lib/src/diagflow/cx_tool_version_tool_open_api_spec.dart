@@ -8,18 +8,13 @@ import 'cx_tool_version_tool_open_api_spec_tls_config.dart';
 class CxToolVersionToolOpenApiSpec {
   /// Optional. Authentication information required by the API.
   /// Structure is documented below.
-  final pulumi.Input<CxToolVersionToolOpenApiSpecAuthentication>?
-  authentication;
-
+  final pulumi.Input<CxToolVersionToolOpenApiSpecAuthentication>? authentication;
   /// Optional. Service Directory configuration.
   /// Structure is documented below.
-  final pulumi.Input<CxToolVersionToolOpenApiSpecServiceDirectoryConfig>?
-  serviceDirectoryConfig;
-
+  final pulumi.Input<CxToolVersionToolOpenApiSpecServiceDirectoryConfig>? serviceDirectoryConfig;
   /// The OpenAPI schema specified as a text.
   /// This field is part of a union field `schema`: only one of `textSchema` may be set.
   final pulumi.Input<String> textSchema;
-
   /// Optional. TLS configuration for the HTTPS verification.
   /// Structure is documented below.
   final pulumi.Input<CxToolVersionToolOpenApiSpecTlsConfig>? tlsConfig;
@@ -38,55 +33,20 @@ class CxToolVersionToolOpenApiSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxToolVersionToolOpenApiSpecAuthentication,
-            Map<String, dynamic>
-          >(authentication, (value) => value.toMap()),
-      'serviceDirectoryConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxToolVersionToolOpenApiSpecServiceDirectoryConfig,
-            Map<String, dynamic>
-          >(serviceDirectoryConfig, (value) => value.toMap()),
+      'authentication': ?pulumi.Input.mapOptionalInputValue<CxToolVersionToolOpenApiSpecAuthentication, Map<String, dynamic>>(authentication, (value) => value.toMap()),
+      'serviceDirectoryConfig': ?pulumi.Input.mapOptionalInputValue<CxToolVersionToolOpenApiSpecServiceDirectoryConfig, Map<String, dynamic>>(serviceDirectoryConfig, (value) => value.toMap()),
       'textSchema': textSchema,
-      'tlsConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxToolVersionToolOpenApiSpecTlsConfig,
-            Map<String, dynamic>
-          >(tlsConfig, (value) => value.toMap()),
+      'tlsConfig': ?pulumi.Input.mapOptionalInputValue<CxToolVersionToolOpenApiSpecTlsConfig, Map<String, dynamic>>(tlsConfig, (value) => value.toMap()),
     };
   }
 
   factory CxToolVersionToolOpenApiSpec.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolOpenApiSpec(
-      authentication: (() {
-        final guardedValue = map['authentication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxToolVersionToolOpenApiSpecAuthentication.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      serviceDirectoryConfig: (() {
-        final guardedValue = map['serviceDirectoryConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxToolVersionToolOpenApiSpecServiceDirectoryConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxToolVersionToolOpenApiSpecAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serviceDirectoryConfig: (() { final guardedValue = map['serviceDirectoryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxToolVersionToolOpenApiSpecServiceDirectoryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       textSchema: pulumi.Input.fromValue(map['textSchema'] as String),
-      tlsConfig: (() {
-        final guardedValue = map['tlsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxToolVersionToolOpenApiSpecTlsConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      tlsConfig: (() { final guardedValue = map['tlsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxToolVersionToolOpenApiSpecTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

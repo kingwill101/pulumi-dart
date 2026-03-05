@@ -7,17 +7,20 @@ class GetCloudAutonomousVmClusterMaintenanceWindowMonth {
 
   /// Creates a new [GetCloudAutonomousVmClusterMaintenanceWindowMonth].
   /// [name] Required.
-  GetCloudAutonomousVmClusterMaintenanceWindowMonth({required this.name});
+  GetCloudAutonomousVmClusterMaintenanceWindowMonth({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory GetCloudAutonomousVmClusterMaintenanceWindowMonth.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCloudAutonomousVmClusterMaintenanceWindowMonth.fromMap(Map<String, dynamic> map) {
     return GetCloudAutonomousVmClusterMaintenanceWindowMonth(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

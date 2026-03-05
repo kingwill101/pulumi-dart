@@ -891,37 +891,26 @@ import 'route_state.dart';
 class Route extends pulumi.CustomResource {
   /// ARN of the route.
   late final pulumi.Output<String> arn;
-
   /// Creation date of the route.
   late final pulumi.Output<String> createdDate;
-
   /// Last update date of the route.
   late final pulumi.Output<String> lastUpdatedDate;
-
   /// Name of the service mesh in which to create the route. Must be between 1 and 255 characters in length.
   late final pulumi.Output<String> meshName;
-
   /// AWS account ID of the service mesh's owner. Defaults to the account ID the AWS provider is currently connected to.
   late final pulumi.Output<String> meshOwner;
-
   /// Name to use for the route. Must be between 1 and 255 characters in length.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Resource owner's AWS account ID.
   late final pulumi.Output<String> resourceOwner;
-
   /// Route specification to apply.
   late final pulumi.Output<RouteSpec> spec;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Name of the virtual router in which to create the route. Must be between 1 and 255 characters in length.
   late final pulumi.Output<String> virtualRouterName;
 
@@ -929,13 +918,16 @@ class Route extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Route]. {@macro pulumi_appmesh_route_route_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Route(String name, {RouteArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:appmesh/route:Route',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Route(
+    String name, {
+    RouteArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:appmesh/route:Route',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');
     lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
@@ -944,21 +936,18 @@ class Route extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
-    spec = registerOutput<RouteSpec>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RouteSpec.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    spec = registerOutput<RouteSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     virtualRouterName = registerOutput<String>('virtualRouterName');
   }
 
   /// Gets an existing [Route] resource's state with the given [name] and [id].
-  static Route get(String name, pulumi.Input<String> id, {RouteState? state}) {
+  static Route get(
+    String name,
+    pulumi.Input<String> id, {
+    RouteState? state,
+  }) {
     return Route._get(
       name,
       state: state?.toMap(),
@@ -971,11 +960,11 @@ class Route extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appmesh/route:Route',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appmesh/route:Route',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');
     lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
@@ -984,14 +973,7 @@ class Route extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
-    spec = registerOutput<RouteSpec>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RouteSpec.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    spec = registerOutput<RouteSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     virtualRouterName = registerOutput<String>('virtualRouterName');

@@ -9,17 +9,20 @@ class CloudFunctionEndpointResponseNetworkmanagementV1beta1 {
 
   /// Creates a new [CloudFunctionEndpointResponseNetworkmanagementV1beta1].
   /// [uri] A [Cloud Function](https://cloud.google.com/functions) name.
-  CloudFunctionEndpointResponseNetworkmanagementV1beta1({required this.uri});
+  CloudFunctionEndpointResponseNetworkmanagementV1beta1({
+    required this.uri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': uri};
+    return <String, dynamic>{
+      'uri': uri,
+    };
   }
 
-  factory CloudFunctionEndpointResponseNetworkmanagementV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudFunctionEndpointResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudFunctionEndpointResponseNetworkmanagementV1beta1(
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

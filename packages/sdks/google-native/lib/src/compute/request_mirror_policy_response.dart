@@ -9,10 +9,14 @@ class RequestMirrorPolicyResponse {
 
   /// Creates a new [RequestMirrorPolicyResponse].
   /// [backendService] The full or partial URL to the BackendService resource being mirrored to. The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map. Serverless NEG backends are not currently supported as a mirrored backend service.
-  RequestMirrorPolicyResponse({required this.backendService});
+  RequestMirrorPolicyResponse({
+    required this.backendService,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'backendService': backendService};
+    return <String, dynamic>{
+      'backendService': backendService,
+    };
   }
 
   factory RequestMirrorPolicyResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class RequestMirrorPolicyResponse {
     );
   }
 }
+

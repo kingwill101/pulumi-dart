@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventHubProfileResponse {
   /// Resource Id of Adx Instance
   final pulumi.Input<String> adxInstanceId;
-
   /// Host Name
   final pulumi.Input<String> hostName;
 
@@ -32,3 +31,4 @@ class EventHubProfileResponse {
     );
   }
 }
+

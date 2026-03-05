@@ -16,35 +16,20 @@ class UpdateRunStrategyResponse {
 
   /// Creates a new [UpdateRunStrategyResponse].
   /// [stages] The list of stages that compose this update run. Min size: 1.
-  UpdateRunStrategyResponse({required this.stages});
+  UpdateRunStrategyResponse({
+    required this.stages,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'stages':
-          pulumi.Input.mapInputValue<
-            List<UpdateStageResponse>,
-            List<Map<String, dynamic>>
-          >(
-            stages,
-            (value) =>
-                pulumi.Input.encodeList<
-                  UpdateStageResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'stages': pulumi.Input.mapInputValue<List<UpdateStageResponse>, List<Map<String, dynamic>>>(stages, (value) => pulumi.Input.encodeList<UpdateStageResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory UpdateRunStrategyResponse.fromMap(Map<String, dynamic> map) {
     return UpdateRunStrategyResponse(
-      stages: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<UpdateStageResponse>(
-          map['stages']!,
-          (value) => UpdateStageResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      stages: pulumi.Input.fromValue(pulumi.Input.decodeList<UpdateStageResponse>(map['stages']!, (value) => UpdateStageResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

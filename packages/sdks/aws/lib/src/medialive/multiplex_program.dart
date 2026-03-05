@@ -295,16 +295,12 @@ import 'multiplex_program_timeouts.dart';
 class MultiplexProgram extends pulumi.CustomResource {
   /// Multiplex ID.
   late final pulumi.Output<String> multiplexId;
-
   /// MultiplexProgram settings. See Multiplex Program Settings for more details.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<MultiplexProgramMultiplexProgramSettings?>
-  multiplexProgramSettings;
-
+  late final pulumi.Output<MultiplexProgramMultiplexProgramSettings?> multiplexProgramSettings;
   /// Unique program name.
   late final pulumi.Output<String> programName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<MultiplexProgramTimeouts?> timeouts;
@@ -318,35 +314,16 @@ class MultiplexProgram extends pulumi.CustomResource {
     MultiplexProgramArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:medialive/multiplexProgram:MultiplexProgram',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:medialive/multiplexProgram:MultiplexProgram',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     multiplexId = registerOutput<String>('multiplexId');
-    multiplexProgramSettings =
-        registerOutput<MultiplexProgramMultiplexProgramSettings?>(
-          'multiplexProgramSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MultiplexProgramMultiplexProgramSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    multiplexProgramSettings = registerOutput<MultiplexProgramMultiplexProgramSettings?>('multiplexProgramSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiplexProgramMultiplexProgramSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     programName = registerOutput<String>('programName');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<MultiplexProgramTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultiplexProgramTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<MultiplexProgramTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiplexProgramTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [MultiplexProgram] resource's state with the given [name] and [id].
@@ -367,34 +344,15 @@ class MultiplexProgram extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:medialive/multiplexProgram:MultiplexProgram',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:medialive/multiplexProgram:MultiplexProgram',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     multiplexId = registerOutput<String>('multiplexId');
-    multiplexProgramSettings =
-        registerOutput<MultiplexProgramMultiplexProgramSettings?>(
-          'multiplexProgramSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MultiplexProgramMultiplexProgramSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    multiplexProgramSettings = registerOutput<MultiplexProgramMultiplexProgramSettings?>('multiplexProgramSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiplexProgramMultiplexProgramSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     programName = registerOutput<String>('programName');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<MultiplexProgramTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultiplexProgramTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<MultiplexProgramTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiplexProgramTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

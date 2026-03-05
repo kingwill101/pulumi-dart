@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpdsVpd {
   /// CIDR network segment
   final pulumi.Input<String> cidr;
-
   /// The creation time of the resource
   final pulumi.Input<String> createTime;
-
   /// Modification time
   final pulumi.Input<String> gmtModified;
-
   /// The id of the vpd.
   final pulumi.Input<String> id;
-
   /// The Resource group id
   final pulumi.Input<String> resourceGroupId;
-
   /// The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
   final pulumi.Input<String> status;
-
   /// The id of the vpd.
   final pulumi.Input<String> vpdId;
-
   /// The Name of the VPD.
   final pulumi.Input<String> vpdName;
 
@@ -73,3 +66,4 @@ class GetVpdsVpd {
     );
   }
 }
+

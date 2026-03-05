@@ -15,3 +15,4 @@ enum ApplicationGatewaySkuFamily {
     throw ArgumentError('Unknown ApplicationGatewaySkuFamily value: $value');
   }
 }
+

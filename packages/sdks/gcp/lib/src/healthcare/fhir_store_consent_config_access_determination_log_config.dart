@@ -10,21 +10,20 @@ class FhirStoreConsentConfigAccessDeterminationLogConfig {
 
   /// Creates a new [FhirStoreConsentConfigAccessDeterminationLogConfig].
   /// [logLevel] Controls the amount of detail to include as part of the audit logs.
-  FhirStoreConsentConfigAccessDeterminationLogConfig({this.logLevel});
+  FhirStoreConsentConfigAccessDeterminationLogConfig({
+    this.logLevel,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'logLevel': ?logLevel};
+    return <String, dynamic>{
+      'logLevel': ?logLevel,
+    };
   }
 
-  factory FhirStoreConsentConfigAccessDeterminationLogConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FhirStoreConsentConfigAccessDeterminationLogConfig.fromMap(Map<String, dynamic> map) {
     return FhirStoreConsentConfigAccessDeterminationLogConfig(
-      logLevel: (() {
-        final guardedValue = map['logLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      logLevel: (() { final guardedValue = map['logLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

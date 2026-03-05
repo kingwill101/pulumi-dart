@@ -524,40 +524,28 @@ import 'system_data_response.dart';
 class DiagnosticSetting extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The resource Id for the event hub authorization rule.
   late final pulumi.Output<String?> eventHubAuthorizationRuleId;
-
   /// The name of the event hub. If none is specified, the default event hub will be selected.
   late final pulumi.Output<String?> eventHubName;
-
   /// A string indicating whether the export to Log Analytics should use the default destination type, i.e. AzureDiagnostics, or use a destination type constructed as follows: &lt;normalized service identity&gt;_&lt;normalized category name&gt;. Possible values are: Dedicated and null (null is default.)
   late final pulumi.Output<String?> logAnalyticsDestinationType;
-
   /// The list of logs settings.
   late final pulumi.Output<List<Map<String, dynamic>>?> logs;
-
   /// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
   late final pulumi.Output<String?> marketplacePartnerId;
-
   /// The list of metric settings.
   late final pulumi.Output<List<Map<String, dynamic>>?> metrics;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
   late final pulumi.Output<String?> serviceBusRuleId;
-
   /// The resource ID of the storage account to which you would like to send Diagnostic Logs.
   late final pulumi.Output<String?> storageAccountId;
-
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
   late final pulumi.Output<String?> workspaceId;
 
@@ -570,35 +558,22 @@ class DiagnosticSetting extends pulumi.CustomResource {
     DiagnosticSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:monitor:DiagnosticSetting',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:monitor:DiagnosticSetting',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    eventHubAuthorizationRuleId = registerOutput<String?>(
-      'eventHubAuthorizationRuleId',
-    );
+    eventHubAuthorizationRuleId = registerOutput<String?>('eventHubAuthorizationRuleId');
     eventHubName = registerOutput<String?>('eventHubName');
-    logAnalyticsDestinationType = registerOutput<String?>(
-      'logAnalyticsDestinationType',
-    );
+    logAnalyticsDestinationType = registerOutput<String?>('logAnalyticsDestinationType');
     logs = registerOutput<List<Map<String, dynamic>>?>('logs');
     marketplacePartnerId = registerOutput<String?>('marketplacePartnerId');
     metrics = registerOutput<List<Map<String, dynamic>>?>('metrics');
     this.name = registerOutput<String>('name');
     serviceBusRuleId = registerOutput<String?>('serviceBusRuleId');
     storageAccountId = registerOutput<String?>('storageAccountId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     workspaceId = registerOutput<String?>('workspaceId');
   }

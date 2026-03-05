@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LabelingJobOutputConfig {
   /// ID of the key used to encrypt the output data.
   final pulumi.Input<String>? kmsKeyId;
-
   /// S3 location to write output data.
   final pulumi.Input<String> s3OutputPath;
-
   /// SNS output topic ARN.
   final pulumi.Input<String>? snsTopicArn;
 
@@ -32,17 +30,10 @@ class LabelingJobOutputConfig {
 
   factory LabelingJobOutputConfig.fromMap(Map<String, dynamic> map) {
     return LabelingJobOutputConfig(
-      kmsKeyId: (() {
-        final guardedValue = map['kmsKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3OutputPath: pulumi.Input.fromValue(map['s3OutputPath'] as String),
-      snsTopicArn: (() {
-        final guardedValue = map['snsTopicArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      snsTopicArn: (() { final guardedValue = map['snsTopicArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

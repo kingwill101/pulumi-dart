@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserAssignedManagedIdentityResponse {
   /// Client Id of user-assigned managed identity.
   final pulumi.Input<String> clientId;
-
   /// Principal Id of user-assigned managed identity.
   final pulumi.Input<String> principalId;
 
@@ -19,15 +18,17 @@ class UserAssignedManagedIdentityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'clientId': clientId, 'principalId': principalId};
+    return <String, dynamic>{
+      'clientId': clientId,
+      'principalId': principalId,
+    };
   }
 
-  factory UserAssignedManagedIdentityResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserAssignedManagedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return UserAssignedManagedIdentityResponse(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
     );
   }
 }
+

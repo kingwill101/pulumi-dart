@@ -8,17 +8,20 @@ class SecretReplicationAutoCustomerManagedEncryption {
 
   /// Creates a new [SecretReplicationAutoCustomerManagedEncryption].
   /// [kmsKeyName] Describes the Cloud KMS encryption key that will be used to protect destination secret.
-  SecretReplicationAutoCustomerManagedEncryption({required this.kmsKeyName});
+  SecretReplicationAutoCustomerManagedEncryption({
+    required this.kmsKeyName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyName': kmsKeyName};
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+    };
   }
 
-  factory SecretReplicationAutoCustomerManagedEncryption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecretReplicationAutoCustomerManagedEncryption.fromMap(Map<String, dynamic> map) {
     return SecretReplicationAutoCustomerManagedEncryption(
       kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
     );
   }
 }
+

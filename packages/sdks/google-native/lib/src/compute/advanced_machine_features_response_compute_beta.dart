@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdvancedMachineFeaturesResponseComputeBeta {
   /// Whether to enable nested virtualization or not (default is false).
   final pulumi.Input<bool> enableNestedVirtualization;
-
   /// Whether to enable UEFI networking for instance creation.
   final pulumi.Input<bool> enableUefiNetworking;
-
   /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
   final pulumi.Input<int> threadsPerCore;
-
   /// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance's nominal CPU count and the underlying platform's SMT width.
   final pulumi.Input<int> visibleCoreCount;
 
@@ -37,18 +34,13 @@ class AdvancedMachineFeaturesResponseComputeBeta {
     };
   }
 
-  factory AdvancedMachineFeaturesResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AdvancedMachineFeaturesResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return AdvancedMachineFeaturesResponseComputeBeta(
-      enableNestedVirtualization: pulumi.Input.fromValue(
-        map['enableNestedVirtualization'] as bool,
-      ),
-      enableUefiNetworking: pulumi.Input.fromValue(
-        map['enableUefiNetworking'] as bool,
-      ),
+      enableNestedVirtualization: pulumi.Input.fromValue(map['enableNestedVirtualization'] as bool),
+      enableUefiNetworking: pulumi.Input.fromValue(map['enableUefiNetworking'] as bool),
       threadsPerCore: pulumi.Input.fromValue(map['threadsPerCore'] as int),
       visibleCoreCount: pulumi.Input.fromValue(map['visibleCoreCount'] as int),
     );
   }
 }
+

@@ -10,39 +10,20 @@ class UniqueKeyPolicyResponse {
 
   /// Creates a new [UniqueKeyPolicyResponse].
   /// [uniqueKeys] List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
-  UniqueKeyPolicyResponse({this.uniqueKeys});
+  UniqueKeyPolicyResponse({
+    this.uniqueKeys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'uniqueKeys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<UniqueKeyResponse>,
-            List<Map<String, dynamic>>
-          >(
-            uniqueKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  UniqueKeyResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'uniqueKeys': ?pulumi.Input.mapOptionalInputValue<List<UniqueKeyResponse>, List<Map<String, dynamic>>>(uniqueKeys, (value) => pulumi.Input.encodeList<UniqueKeyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory UniqueKeyPolicyResponse.fromMap(Map<String, dynamic> map) {
     return UniqueKeyPolicyResponse(
-      uniqueKeys: (() {
-        final guardedValue = map['uniqueKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<UniqueKeyResponse>(
-            guardedValue,
-            (value) => UniqueKeyResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      uniqueKeys: (() { final guardedValue = map['uniqueKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UniqueKeyResponse>(guardedValue, (value) => UniqueKeyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

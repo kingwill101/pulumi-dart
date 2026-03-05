@@ -16,3 +16,4 @@ enum EndpointComputeType {
     throw ArgumentError('Unknown EndpointComputeType value: $value');
   }
 }
+

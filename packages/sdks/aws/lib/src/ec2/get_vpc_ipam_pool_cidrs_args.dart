@@ -10,10 +10,8 @@ import 'get_vpc_ipam_pool_cidrs_filter.dart';
 class GetVpcIpamPoolCidrsArgs {
   /// Custom filter block as described below.
   final pulumi.Input<List<GetVpcIpamPoolCidrsFilter>>? filters;
-
   /// ID of the IPAM pool you would like the list of provisioned CIDRs.
   final pulumi.Input<String> ipamPoolId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,18 +27,7 @@ class GetVpcIpamPoolCidrsArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetVpcIpamPoolCidrsFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetVpcIpamPoolCidrsFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetVpcIpamPoolCidrsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetVpcIpamPoolCidrsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipamPoolId': ipamPoolId,
       'region': ?region,
     };
@@ -48,24 +35,10 @@ class GetVpcIpamPoolCidrsArgs {
 
   factory GetVpcIpamPoolCidrsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamPoolCidrsArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetVpcIpamPoolCidrsFilter>(
-            guardedValue,
-            (value) => GetVpcIpamPoolCidrsFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetVpcIpamPoolCidrsFilter>(guardedValue, (value) => GetVpcIpamPoolCidrsFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipamPoolId: pulumi.Input.fromValue(map['ipamPoolId'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

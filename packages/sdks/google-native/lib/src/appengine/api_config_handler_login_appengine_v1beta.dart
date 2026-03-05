@@ -14,8 +14,7 @@ enum ApiConfigHandlerLoginAppengineV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ApiConfigHandlerLoginAppengineV1beta value: $value',
-    );
+    throw ArgumentError('Unknown ApiConfigHandlerLoginAppengineV1beta value: $value');
   }
 }
+

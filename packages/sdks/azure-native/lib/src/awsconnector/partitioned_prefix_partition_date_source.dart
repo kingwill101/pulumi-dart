@@ -12,8 +12,7 @@ enum PartitionedPrefixPartitionDateSource {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PartitionedPrefixPartitionDateSource value: $value',
-    );
+    throw ArgumentError('Unknown PartitionedPrefixPartitionDateSource value: $value');
   }
 }
+

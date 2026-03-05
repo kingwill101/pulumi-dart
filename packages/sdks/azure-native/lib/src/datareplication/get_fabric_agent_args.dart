@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFabricAgentArgs {
   /// The fabric agent name.
   final pulumi.Input<String> fabricAgentName;
-
   /// The fabric name.
   final pulumi.Input<String> fabricName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetFabricAgentArgs {
     return GetFabricAgentArgs(
       fabricAgentName: pulumi.Input.fromValue(map['fabricAgentName'] as String),
       fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

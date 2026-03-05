@@ -6,46 +6,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdifactEnvelopeOverride {
   /// The application password.
   final pulumi.Input<String>? applicationPassword;
-
   /// The association assigned code.
   final pulumi.Input<String>? associationAssignedCode;
-
   /// The controlling agency code.
   final pulumi.Input<String>? controllingAgencyCode;
-
   /// The functional group id.
   final pulumi.Input<String>? functionalGroupId;
-
   /// The group header message release.
   final pulumi.Input<String>? groupHeaderMessageRelease;
-
   /// The group header message version.
   final pulumi.Input<String>? groupHeaderMessageVersion;
-
   /// The message association assigned code.
   final pulumi.Input<String>? messageAssociationAssignedCode;
-
   /// The message id on which this envelope settings has to be applied.
   final pulumi.Input<String>? messageId;
-
   /// The message release version on which this envelope settings has to be applied.
   final pulumi.Input<String>? messageRelease;
-
   /// The message version on which this envelope settings has to be applied.
   final pulumi.Input<String>? messageVersion;
-
   /// The receiver application id.
   final pulumi.Input<String>? receiverApplicationId;
-
   /// The receiver application qualifier.
   final pulumi.Input<String>? receiverApplicationQualifier;
-
   /// The sender application id.
   final pulumi.Input<String>? senderApplicationId;
-
   /// The sender application qualifier.
   final pulumi.Input<String>? senderApplicationQualifier;
-
   /// The target namespace on which this envelope settings has to be applied.
   final pulumi.Input<String>? targetNamespace;
 
@@ -105,81 +91,22 @@ class EdifactEnvelopeOverride {
 
   factory EdifactEnvelopeOverride.fromMap(Map<String, dynamic> map) {
     return EdifactEnvelopeOverride(
-      applicationPassword: (() {
-        final guardedValue = map['applicationPassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      associationAssignedCode: (() {
-        final guardedValue = map['associationAssignedCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      controllingAgencyCode: (() {
-        final guardedValue = map['controllingAgencyCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      functionalGroupId: (() {
-        final guardedValue = map['functionalGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      groupHeaderMessageRelease: (() {
-        final guardedValue = map['groupHeaderMessageRelease'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      groupHeaderMessageVersion: (() {
-        final guardedValue = map['groupHeaderMessageVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      messageAssociationAssignedCode: (() {
-        final guardedValue = map['messageAssociationAssignedCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      messageId: (() {
-        final guardedValue = map['messageId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      messageRelease: (() {
-        final guardedValue = map['messageRelease'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      messageVersion: (() {
-        final guardedValue = map['messageVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      receiverApplicationId: (() {
-        final guardedValue = map['receiverApplicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      receiverApplicationQualifier: (() {
-        final guardedValue = map['receiverApplicationQualifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      senderApplicationId: (() {
-        final guardedValue = map['senderApplicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      senderApplicationQualifier: (() {
-        final guardedValue = map['senderApplicationQualifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetNamespace: (() {
-        final guardedValue = map['targetNamespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationPassword: (() { final guardedValue = map['applicationPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      associationAssignedCode: (() { final guardedValue = map['associationAssignedCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      controllingAgencyCode: (() { final guardedValue = map['controllingAgencyCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      functionalGroupId: (() { final guardedValue = map['functionalGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      groupHeaderMessageRelease: (() { final guardedValue = map['groupHeaderMessageRelease']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      groupHeaderMessageVersion: (() { final guardedValue = map['groupHeaderMessageVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      messageAssociationAssignedCode: (() { final guardedValue = map['messageAssociationAssignedCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      messageId: (() { final guardedValue = map['messageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      messageRelease: (() { final guardedValue = map['messageRelease']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      messageVersion: (() { final guardedValue = map['messageVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      receiverApplicationId: (() { final guardedValue = map['receiverApplicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      receiverApplicationQualifier: (() { final guardedValue = map['receiverApplicationQualifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      senderApplicationId: (() { final guardedValue = map['senderApplicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      senderApplicationQualifier: (() { final guardedValue = map['senderApplicationQualifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetNamespace: (() { final guardedValue = map['targetNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

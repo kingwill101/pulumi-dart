@@ -8,17 +8,20 @@ class S3LocationS3Config {
 
   /// Creates a new [S3LocationS3Config].
   /// [bucketAccessRoleArn] ARN of the IAM Role used to connect to the S3 Bucket.
-  S3LocationS3Config({required this.bucketAccessRoleArn});
+  S3LocationS3Config({
+    required this.bucketAccessRoleArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucketAccessRoleArn': bucketAccessRoleArn};
+    return <String, dynamic>{
+      'bucketAccessRoleArn': bucketAccessRoleArn,
+    };
   }
 
   factory S3LocationS3Config.fromMap(Map<String, dynamic> map) {
     return S3LocationS3Config(
-      bucketAccessRoleArn: pulumi.Input.fromValue(
-        map['bucketAccessRoleArn'] as String,
-      ),
+      bucketAccessRoleArn: pulumi.Input.fromValue(map['bucketAccessRoleArn'] as String),
     );
   }
 }
+

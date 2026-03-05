@@ -12,8 +12,7 @@ enum GlobalAddressIpv6EndpointTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GlobalAddressIpv6EndpointTypeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown GlobalAddressIpv6EndpointTypeComputeBeta value: $value');
   }
 }
+

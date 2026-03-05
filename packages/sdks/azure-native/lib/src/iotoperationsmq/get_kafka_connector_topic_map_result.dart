@@ -10,49 +10,34 @@ import 'system_data_response.dart';
 class GetKafkaConnectorTopicMapResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The batching settings for kafka messages.
   final KafkaTopicMapBatchingResponse? batching;
-
   /// The compression to use for kafka messages.
   final String? compression;
-
   /// The flag to copy Mqtt properties.
   final String? copyMqttProperties;
-
   /// Extended Location
   final ExtendedLocationPropertyResponse extendedLocation;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The kafkaConnector CRD it refers to.
   final String kafkaConnectorRef;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The partition to use for Kafka.
   final String? partitionKeyProperty;
-
   /// The partition strategy to use for Kafka.
   final String? partitionStrategy;
-
   /// The status of the last operation.
   final String provisioningState;
-
   /// The route details for Kafka connector.
   final List<KafkaRoutesResponse> routes;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -106,11 +91,7 @@ class GetKafkaConnectorTopicMapResult {
       'partitionKeyProperty': ?partitionKeyProperty,
       'partitionStrategy': ?partitionStrategy,
       'provisioningState': provisioningState,
-      'routes':
-          pulumi.Input.encodeList<KafkaRoutesResponse, Map<String, dynamic>>(
-            routes,
-            (value) => value.toMap(),
-          ),
+      'routes': pulumi.Input.encodeList<KafkaRoutesResponse, Map<String, dynamic>>(routes, (value) => value.toMap()),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -120,55 +101,22 @@ class GetKafkaConnectorTopicMapResult {
   factory GetKafkaConnectorTopicMapResult.fromMap(Map<String, dynamic> map) {
     return GetKafkaConnectorTopicMapResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      batching: (() {
-        final guardedValue = map['batching'];
-        if (guardedValue == null) return null;
-        return KafkaTopicMapBatchingResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      compression: (() {
-        final guardedValue = map['compression'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      copyMqttProperties: (() {
-        final guardedValue = map['copyMqttProperties'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      extendedLocation: ExtendedLocationPropertyResponse.fromMap(
-        (map['extendedLocation']! as Map).cast<String, dynamic>(),
-      ),
+      batching: (() { final guardedValue = map['batching']; if (guardedValue == null) return null; return KafkaTopicMapBatchingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      copyMqttProperties: (() { final guardedValue = map['copyMqttProperties']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      extendedLocation: ExtendedLocationPropertyResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       kafkaConnectorRef: map['kafkaConnectorRef'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      partitionKeyProperty: (() {
-        final guardedValue = map['partitionKeyProperty'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      partitionStrategy: (() {
-        final guardedValue = map['partitionStrategy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      partitionKeyProperty: (() { final guardedValue = map['partitionKeyProperty']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      partitionStrategy: (() { final guardedValue = map['partitionStrategy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
-      routes: pulumi.Input.decodeList<KafkaRoutesResponse>(
-        map['routes']!,
-        (value) =>
-            KafkaRoutesResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      routes: pulumi.Input.decodeList<KafkaRoutesResponse>(map['routes']!, (value) => KafkaRoutesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

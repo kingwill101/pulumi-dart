@@ -10,11 +10,9 @@ class GetSaslUsersResult {
   final List<String> ids;
   final String instanceId;
   final String? nameRegex;
-
   /// A list of Sasl User names.
   final List<String> names;
   final String? outputFile;
-
   /// A list of Sasl Users. Each element contains the following attributes:
   final List<GetSaslUsersUser> users;
 
@@ -44,10 +42,7 @@ class GetSaslUsersResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'users': pulumi.Input.encodeList<GetSaslUsersUser, Map<String, dynamic>>(
-        users,
-        (value) => value.toMap(),
-      ),
+      'users': pulumi.Input.encodeList<GetSaslUsersUser, Map<String, dynamic>>(users, (value) => value.toMap()),
     };
   }
 
@@ -56,22 +51,11 @@ class GetSaslUsersResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      users: pulumi.Input.decodeList<GetSaslUsersUser>(
-        map['users']!,
-        (value) =>
-            GetSaslUsersUser.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      users: pulumi.Input.decodeList<GetSaslUsersUser>(map['users']!, (value) => GetSaslUsersUser.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

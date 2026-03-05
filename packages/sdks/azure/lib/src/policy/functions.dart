@@ -606,8 +606,7 @@ Future<GetPolicySetDefinitionResult> getPolicySetDefinition(
 /// * `Microsoft.Compute` - 2024-04-05
 /// [args] Arguments passed to this invoke. {@macro pulumi_policy_get_virtual_machine_configuration_assignment_get_virtual_machine_configuration_assignment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualMachineConfigurationAssignmentResult>
-getVirtualMachineConfigurationAssignment(
+Future<GetVirtualMachineConfigurationAssignmentResult> getVirtualMachineConfigurationAssignment(
   GetVirtualMachineConfigurationAssignmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

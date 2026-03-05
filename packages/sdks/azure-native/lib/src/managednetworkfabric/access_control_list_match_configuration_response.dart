@@ -8,17 +8,12 @@ import 'access_control_list_match_condition_response.dart';
 class AccessControlListMatchConfigurationResponse {
   /// List of actions that need to be performed for the matched conditions.
   final pulumi.Input<List<AccessControlListActionResponse>>? actions;
-
   /// Type of IP Address. IPv4 or IPv6
   final pulumi.Input<String>? ipAddressType;
-
   /// List of the match conditions.
-  final pulumi.Input<List<AccessControlListMatchConditionResponse>>?
-  matchConditions;
-
+  final pulumi.Input<List<AccessControlListMatchConditionResponse>>? matchConditions;
   /// The name of the match configuration.
   final pulumi.Input<String>? matchConfigurationName;
-
   /// Sequence Number of the match configuration.
   final pulumi.Input<double>? sequenceNumber;
 
@@ -38,79 +33,22 @@ class AccessControlListMatchConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AccessControlListActionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            actions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AccessControlListActionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'actions': ?pulumi.Input.mapOptionalInputValue<List<AccessControlListActionResponse>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<AccessControlListActionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipAddressType': ?ipAddressType,
-      'matchConditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AccessControlListMatchConditionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            matchConditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AccessControlListMatchConditionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'matchConditions': ?pulumi.Input.mapOptionalInputValue<List<AccessControlListMatchConditionResponse>, List<Map<String, dynamic>>>(matchConditions, (value) => pulumi.Input.encodeList<AccessControlListMatchConditionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'matchConfigurationName': ?matchConfigurationName,
       'sequenceNumber': ?sequenceNumber,
     };
   }
 
-  factory AccessControlListMatchConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessControlListMatchConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AccessControlListMatchConfigurationResponse(
-      actions: (() {
-        final guardedValue = map['actions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AccessControlListActionResponse>(
-            guardedValue,
-            (value) => AccessControlListActionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      ipAddressType: (() {
-        final guardedValue = map['ipAddressType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      matchConditions: (() {
-        final guardedValue = map['matchConditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AccessControlListMatchConditionResponse>(
-            guardedValue,
-            (value) => AccessControlListMatchConditionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      matchConfigurationName: (() {
-        final guardedValue = map['matchConfigurationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sequenceNumber: (() {
-        final guardedValue = map['sequenceNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessControlListActionResponse>(guardedValue, (value) => AccessControlListActionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ipAddressType: (() { final guardedValue = map['ipAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      matchConditions: (() { final guardedValue = map['matchConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessControlListMatchConditionResponse>(guardedValue, (value) => AccessControlListMatchConditionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      matchConfigurationName: (() { final guardedValue = map['matchConfigurationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sequenceNumber: (() { final guardedValue = map['sequenceNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

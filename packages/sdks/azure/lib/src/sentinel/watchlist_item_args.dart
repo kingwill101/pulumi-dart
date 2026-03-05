@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WatchlistItemArgs {
   /// The name in UUID format which should be used for this Sentinel Watchlist Item. Changing this forces a new Sentinel Watchlist Item to be created.
   final pulumi.Input<String>? name;
-
   /// The key value pairs of the Sentinel Watchlist Item.
   final pulumi.Input<Map<String, String>> properties;
-
   /// The ID of the Sentinel Watchlist that this Item resides in. Changing this forces a new Sentinel Watchlist Item to be created.
   final pulumi.Input<String> watchlistId;
 
@@ -36,15 +34,10 @@ class WatchlistItemArgs {
 
   factory WatchlistItemArgs.fromMap(Map<String, dynamic> map) {
     return WatchlistItemArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: pulumi.Input.fromValue(
-        (map['properties'] as Map).cast<String, String>(),
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: pulumi.Input.fromValue((map['properties'] as Map).cast<String, String>()),
       watchlistId: pulumi.Input.fromValue(map['watchlistId'] as String),
     );
   }
 }
+

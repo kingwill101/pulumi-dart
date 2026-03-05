@@ -8,21 +8,20 @@ class AgentDataSourceServerSideEncryptionConfiguration {
 
   /// Creates a new [AgentDataSourceServerSideEncryptionConfiguration].
   /// [kmsKeyArn] ARN of the AWS KMS key used to encrypt the resource.
-  AgentDataSourceServerSideEncryptionConfiguration({this.kmsKeyArn});
+  AgentDataSourceServerSideEncryptionConfiguration({
+    this.kmsKeyArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyArn': ?kmsKeyArn};
+    return <String, dynamic>{
+      'kmsKeyArn': ?kmsKeyArn,
+    };
   }
 
-  factory AgentDataSourceServerSideEncryptionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentDataSourceServerSideEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceServerSideEncryptionConfiguration(
-      kmsKeyArn: (() {
-        final guardedValue = map['kmsKeyArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyArn: (() { final guardedValue = map['kmsKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

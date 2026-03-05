@@ -4,10 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_video_description_codec_settings_h265_settings_filter_settings_temporal_filter_settings.dart';
 
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettings {
-  final pulumi.Input<
-    ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings
-  >?
-  temporalFilterSettings;
+  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings>? temporalFilterSettings;
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettings].
   /// [temporalFilterSettings] Optional.
@@ -17,27 +14,14 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSetti
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'temporalFilterSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings,
-            Map<String, dynamic>
-          >(temporalFilterSettings, (value) => value.toMap()),
+      'temporalFilterSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings, Map<String, dynamic>>(temporalFilterSettings, (value) => value.toMap()),
     };
   }
 
-  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettings(
-      temporalFilterSettings: (() {
-        final guardedValue = map['temporalFilterSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      temporalFilterSettings: (() { final guardedValue = map['temporalFilterSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

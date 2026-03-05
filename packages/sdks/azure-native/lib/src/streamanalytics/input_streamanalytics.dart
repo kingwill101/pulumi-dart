@@ -1202,13 +1202,10 @@ import 'reference_input_properties_response.dart';
 class InputStreamanalytics extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource name
   late final pulumi.Output<String?> name;
-
   /// The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
   late final pulumi.Output<ReferenceInputPropertiesResponse> properties;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -1221,23 +1218,14 @@ class InputStreamanalytics extends pulumi.CustomResource {
     InputArgsType? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:streamanalytics:Input',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:streamanalytics:Input',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String?>('name');
-    properties = registerOutput<ReferenceInputPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReferenceInputPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ReferenceInputPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReferenceInputPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

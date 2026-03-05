@@ -231,10 +231,8 @@ import 'grant_role_state.dart';
 class GrantRole extends pulumi.CustomResource {
   /// The name of the role that is added to `role`.
   late final pulumi.Output<String> grantRole;
-
   /// The name of the role that is granted a new membership.
   late final pulumi.Output<String> role;
-
   /// Giving ability to grant membership to others or not for `role`. (Default: false)
   late final pulumi.Output<bool?> withAdminOption;
 
@@ -247,11 +245,11 @@ class GrantRole extends pulumi.CustomResource {
     GrantRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/grantRole:GrantRole',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/grantRole:GrantRole',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     grantRole = registerOutput<String>('grantRole');
     role = registerOutput<String>('role');
     withAdminOption = registerOutput<bool?>('withAdminOption');
@@ -275,11 +273,11 @@ class GrantRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/grantRole:GrantRole',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/grantRole:GrantRole',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     grantRole = registerOutput<String>('grantRole');
     role = registerOutput<String>('role');
     withAdminOption = registerOutput<bool?>('withAdminOption');

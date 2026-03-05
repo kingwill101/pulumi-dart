@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AsyncOperationPollingRules {
   /// The additional options.
   final pulumi.Input<String>? additionalOptions;
-
   /// The authorization actions.
   final pulumi.Input<List<String>>? authorizationActions;
 
@@ -26,16 +25,9 @@ class AsyncOperationPollingRules {
 
   factory AsyncOperationPollingRules.fromMap(Map<String, dynamic> map) {
     return AsyncOperationPollingRules(
-      additionalOptions: (() {
-        final guardedValue = map['additionalOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      authorizationActions: (() {
-        final guardedValue = map['authorizationActions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      additionalOptions: (() { final guardedValue = map['additionalOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authorizationActions: (() { final guardedValue = map['authorizationActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

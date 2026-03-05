@@ -15,3 +15,4 @@ enum PolybaseSettingsRejectType {
     throw ArgumentError('Unknown PolybaseSettingsRejectType value: $value');
   }
 }
+

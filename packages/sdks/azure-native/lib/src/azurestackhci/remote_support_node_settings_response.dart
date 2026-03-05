@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemoteSupportNodeSettingsResponse {
   /// Arc ResourceId of the Node
   final pulumi.Input<String> arcResourceId;
-
   /// Remote Support Access Connection Error Message on the Node
   final pulumi.Input<String> connectionErrorMessage;
-
   /// Remote Support Access Connection Status on the Node
   final pulumi.Input<String> connectionStatus;
-
   /// Remote Support Enablement Request Created TimeStamp on the Node
   final pulumi.Input<String> createdAt;
-
   /// Remote Support Access Connection State on the Node
   final pulumi.Input<String> state;
-
   /// Remote Support Transcript location on the node
   final pulumi.Input<String> transcriptLocation;
-
   /// Remote Support Enablement Request Updated TimeStamp on the Node
   final pulumi.Input<String> updatedAt;
 
@@ -58,18 +52,13 @@ class RemoteSupportNodeSettingsResponse {
   factory RemoteSupportNodeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return RemoteSupportNodeSettingsResponse(
       arcResourceId: pulumi.Input.fromValue(map['arcResourceId'] as String),
-      connectionErrorMessage: pulumi.Input.fromValue(
-        map['connectionErrorMessage'] as String,
-      ),
-      connectionStatus: pulumi.Input.fromValue(
-        map['connectionStatus'] as String,
-      ),
+      connectionErrorMessage: pulumi.Input.fromValue(map['connectionErrorMessage'] as String),
+      connectionStatus: pulumi.Input.fromValue(map['connectionStatus'] as String),
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
-      transcriptLocation: pulumi.Input.fromValue(
-        map['transcriptLocation'] as String,
-      ),
+      transcriptLocation: pulumi.Input.fromValue(map['transcriptLocation'] as String),
       updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
     );
   }
 }
+

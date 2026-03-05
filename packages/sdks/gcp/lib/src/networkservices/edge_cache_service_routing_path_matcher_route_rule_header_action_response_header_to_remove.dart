@@ -14,14 +14,15 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRem
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'headerName': headerName};
+    return <String, dynamic>{
+      'headerName': headerName,
+    };
   }
 
-  factory EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove(
       headerName: pulumi.Input.fromValue(map['headerName'] as String),
     );
   }
 }
+

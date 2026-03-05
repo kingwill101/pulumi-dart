@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeInstanceDataMountResponse {
   /// who this data mount created by.
   final pulumi.Input<String>? createdBy;
-
   /// Error of this data mount.
   final pulumi.Input<String>? error;
-
   /// Mount Action.
   final pulumi.Input<String>? mountAction;
-
   /// name of the ComputeInstance data mount.
   final pulumi.Input<String>? mountName;
-
   /// Path of this data mount.
   final pulumi.Input<String>? mountPath;
-
   /// Mount state.
   final pulumi.Input<String>? mountState;
-
   /// The time when the disk mounted.
   final pulumi.Input<String>? mountedOn;
-
   /// Source of the ComputeInstance data mount.
   final pulumi.Input<String>? source;
-
   /// Data source type.
   final pulumi.Input<String>? sourceType;
 
@@ -69,51 +61,16 @@ class ComputeInstanceDataMountResponse {
 
   factory ComputeInstanceDataMountResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceDataMountResponse(
-      createdBy: (() {
-        final guardedValue = map['createdBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      error: (() {
-        final guardedValue = map['error'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mountAction: (() {
-        final guardedValue = map['mountAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mountName: (() {
-        final guardedValue = map['mountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mountPath: (() {
-        final guardedValue = map['mountPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mountState: (() {
-        final guardedValue = map['mountState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mountedOn: (() {
-        final guardedValue = map['mountedOn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceType: (() {
-        final guardedValue = map['sourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mountAction: (() { final guardedValue = map['mountAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mountName: (() { final guardedValue = map['mountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mountPath: (() { final guardedValue = map['mountPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mountState: (() { final guardedValue = map['mountState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mountedOn: (() { final guardedValue = map['mountedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

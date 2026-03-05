@@ -7,10 +7,14 @@ class ListenerRuleConditionSourceIp {
 
   /// Creates a new [ListenerRuleConditionSourceIp].
   /// [values] Required.
-  ListenerRuleConditionSourceIp({required this.values});
+  ListenerRuleConditionSourceIp({
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': values};
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
   factory ListenerRuleConditionSourceIp.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class ListenerRuleConditionSourceIp {
     );
   }
 }
+

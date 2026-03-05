@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GmsaDetails {
   /// Frontend DNS name for Load Balancer which will be used by Agents to initiate communication
   final pulumi.Input<String>? dnsName;
-
   /// gMSA account under which context all Management Server services will run
   final pulumi.Input<String>? gmsaAccount;
-
   /// Frontend IP configuration for Load Balancer, which should be an available IP in customer VNet
   final pulumi.Input<String>? loadBalancerIP;
-
   /// OnPrem AD Computer Group where we will join VMs for ease of management
   final pulumi.Input<String>? managementServerGroupName;
 
@@ -39,26 +36,11 @@ class GmsaDetails {
 
   factory GmsaDetails.fromMap(Map<String, dynamic> map) {
     return GmsaDetails(
-      dnsName: (() {
-        final guardedValue = map['dnsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      gmsaAccount: (() {
-        final guardedValue = map['gmsaAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      loadBalancerIP: (() {
-        final guardedValue = map['loadBalancerIP'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managementServerGroupName: (() {
-        final guardedValue = map['managementServerGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gmsaAccount: (() { final guardedValue = map['gmsaAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loadBalancerIP: (() { final guardedValue = map['loadBalancerIP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managementServerGroupName: (() { final guardedValue = map['managementServerGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

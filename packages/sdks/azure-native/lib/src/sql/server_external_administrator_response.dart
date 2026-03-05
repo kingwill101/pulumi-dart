@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerExternalAdministratorResponse {
   /// Type of the sever administrator.
   final pulumi.Input<String>? administratorType;
-
   /// Azure Active Directory only Authentication enabled.
   final pulumi.Input<bool>? azureADOnlyAuthentication;
-
   /// Login name of the server administrator.
   final pulumi.Input<String>? login;
-
   /// Principal Type of the sever administrator.
   final pulumi.Input<String>? principalType;
-
   /// SID (object ID) of the server administrator.
   final pulumi.Input<String>? sid;
-
   /// Tenant ID of the administrator.
   final pulumi.Input<String>? tenantId;
 
@@ -49,40 +44,15 @@ class ServerExternalAdministratorResponse {
     };
   }
 
-  factory ServerExternalAdministratorResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServerExternalAdministratorResponse.fromMap(Map<String, dynamic> map) {
     return ServerExternalAdministratorResponse(
-      administratorType: (() {
-        final guardedValue = map['administratorType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      azureADOnlyAuthentication: (() {
-        final guardedValue = map['azureADOnlyAuthentication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      login: (() {
-        final guardedValue = map['login'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      principalType: (() {
-        final guardedValue = map['principalType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sid: (() {
-        final guardedValue = map['sid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      administratorType: (() { final guardedValue = map['administratorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureADOnlyAuthentication: (() { final guardedValue = map['azureADOnlyAuthentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      login: (() { final guardedValue = map['login']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principalType: (() { final guardedValue = map['principalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sid: (() { final guardedValue = map['sid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

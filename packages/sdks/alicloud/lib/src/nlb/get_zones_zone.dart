@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZonesZone {
   /// The ID of zone.
   final pulumi.Input<String> id;
-
   /// The local name.
   final pulumi.Input<String> localName;
-
   /// The zone ID.
   final pulumi.Input<String> zoneId;
 
@@ -38,3 +36,4 @@ class GetZonesZone {
     );
   }
 }
+

@@ -31,12 +31,11 @@ class GetConfigurationStoreIdentity {
 
   factory GetConfigurationStoreIdentity.fromMap(Map<String, dynamic> map) {
     return GetConfigurationStoreIdentity(
-      identityIds: pulumi.Input.fromValue(
-        (map['identityIds'] as List).cast<String>(),
-      ),
+      identityIds: pulumi.Input.fromValue((map['identityIds'] as List).cast<String>()),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkbookTemplateGalleryResponse {
   /// Category for the gallery.
   final pulumi.Input<String>? category;
-
   /// Name of the workbook template in the gallery.
   final pulumi.Input<String>? name;
-
   /// Order of the template within the gallery.
   final pulumi.Input<int>? order;
-
   /// Azure resource type supported by the gallery.
   final pulumi.Input<String>? resourceType;
-
   /// Type of workbook supported by the workbook template.
   final pulumi.Input<String>? type;
 
@@ -45,31 +41,12 @@ class WorkbookTemplateGalleryResponse {
 
   factory WorkbookTemplateGalleryResponse.fromMap(Map<String, dynamic> map) {
     return WorkbookTemplateGalleryResponse(
-      category: (() {
-        final guardedValue = map['category'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      order: (() {
-        final guardedValue = map['order'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      resourceType: (() {
-        final guardedValue = map['resourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

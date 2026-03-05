@@ -8,7 +8,6 @@ class GetAccessConfigurationsResult {
   final List<GetAccessConfigurationsConfiguration> configurations;
   final String directoryId;
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -38,11 +37,7 @@ class GetAccessConfigurationsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configurations':
-          pulumi.Input.encodeList<
-            GetAccessConfigurationsConfiguration,
-            Map<String, dynamic>
-          >(configurations, (value) => value.toMap()),
+      'configurations': pulumi.Input.encodeList<GetAccessConfigurationsConfiguration, Map<String, dynamic>>(configurations, (value) => value.toMap()),
       'directoryId': directoryId,
       'enableDetails': ?enableDetails,
       'id': id,
@@ -55,32 +50,15 @@ class GetAccessConfigurationsResult {
 
   factory GetAccessConfigurationsResult.fromMap(Map<String, dynamic> map) {
     return GetAccessConfigurationsResult(
-      configurations:
-          pulumi.Input.decodeList<GetAccessConfigurationsConfiguration>(
-            map['configurations']!,
-            (value) => GetAccessConfigurationsConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      configurations: pulumi.Input.decodeList<GetAccessConfigurationsConfiguration>(map['configurations']!, (value) => GetAccessConfigurationsConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       directoryId: map['directoryId'] as String,
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

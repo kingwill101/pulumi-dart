@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHciEdgeDeviceArgs {
   /// Name of Device
   final pulumi.Input<String> edgeDeviceName;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -35,3 +34,4 @@ class GetHciEdgeDeviceArgs {
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstanceShard {
   /// The instance type of the shard node.
   final pulumi.Input<String> class_;
-
   /// The description of the shard node.
   final pulumi.Input<String> description;
-
   /// The ID of the shard node.
   final pulumi.Input<String> nodeId;
-
   /// The storage space of the shard node.
   final pulumi.Input<int> storage;
 
@@ -45,3 +42,4 @@ class GetInstancesInstanceShard {
     );
   }
 }
+

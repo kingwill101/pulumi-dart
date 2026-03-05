@@ -6,7 +6,6 @@ class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas {
   /// Specifies a fixed number of VM instances. This must be a positive
   /// integer.
   final pulumi.Input<int>? fixed;
-
   /// Specifies a percentage of instances between 0 to 100%, inclusive.
   /// For example, specify 80 for 80%.
   final pulumi.Input<int>? percent;
@@ -20,23 +19,17 @@ class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fixed': ?fixed, 'percent': ?percent};
+    return <String, dynamic>{
+      'fixed': ?fixed,
+      'percent': ?percent,
+    };
   }
 
-  factory AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas.fromMap(Map<String, dynamic> map) {
     return AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(
-      fixed: (() {
-        final guardedValue = map['fixed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      percent: (() {
-        final guardedValue = map['percent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      fixed: (() { final guardedValue = map['fixed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

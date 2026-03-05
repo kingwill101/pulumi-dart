@@ -8,19 +8,14 @@ import 'rollout_policy.dart';
 class DeprecationStatus {
   /// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED. This is only informational and the status will not change unless the client explicitly changes it.
   final pulumi.Input<String>? deleted;
-
   /// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED. This is only informational and the status will not change unless the client explicitly changes it.
   final pulumi.Input<String>? deprecated;
-
   /// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE. This is only informational and the status will not change unless the client explicitly changes it.
   final pulumi.Input<String>? obsolete;
-
   /// The URL of the suggested replacement for a deprecated resource. The suggested replacement resource must be the same kind of resource as the deprecated resource.
   final pulumi.Input<String>? replacement;
-
   /// The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
   final pulumi.Input<DeprecationStatusState>? state;
-
   /// The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
   final pulumi.Input<RolloutPolicy>? stateOverride;
 
@@ -46,55 +41,20 @@ class DeprecationStatus {
       'deprecated': ?deprecated,
       'obsolete': ?obsolete,
       'replacement': ?replacement,
-      'state':
-          ?pulumi.Input.mapOptionalInputValue<DeprecationStatusState, String>(
-            state,
-            (value) => value.wireValue,
-          ),
-      'stateOverride':
-          ?pulumi.Input.mapOptionalInputValue<
-            RolloutPolicy,
-            Map<String, dynamic>
-          >(stateOverride, (value) => value.toMap()),
+      'state': ?pulumi.Input.mapOptionalInputValue<DeprecationStatusState, String>(state, (value) => value.wireValue),
+      'stateOverride': ?pulumi.Input.mapOptionalInputValue<RolloutPolicy, Map<String, dynamic>>(stateOverride, (value) => value.toMap()),
     };
   }
 
   factory DeprecationStatus.fromMap(Map<String, dynamic> map) {
     return DeprecationStatus(
-      deleted: (() {
-        final guardedValue = map['deleted'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deprecated: (() {
-        final guardedValue = map['deprecated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      obsolete: (() {
-        final guardedValue = map['obsolete'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      replacement: (() {
-        final guardedValue = map['replacement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeprecationStatusState.fromValue(guardedValue as String),
-        );
-      })(),
-      stateOverride: (() {
-        final guardedValue = map['stateOverride'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RolloutPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      deleted: (() { final guardedValue = map['deleted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deprecated: (() { final guardedValue = map['deprecated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      obsolete: (() { final guardedValue = map['obsolete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replacement: (() { final guardedValue = map['replacement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeprecationStatusState.fromValue(guardedValue as String)); })(),
+      stateOverride: (() { final guardedValue = map['stateOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RolloutPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

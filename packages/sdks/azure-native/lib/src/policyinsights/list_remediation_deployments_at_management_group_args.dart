@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListRemediationDeploymentsAtManagementGroupArgs {
   /// Management group ID.
   final pulumi.Input<String> managementGroupId;
-
   /// The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
   final pulumi.Input<String> managementGroupsNamespace;
-
   /// The name of the remediation.
   final pulumi.Input<String> remediationName;
-
   /// Maximum number of records to return.
   final pulumi.Input<int>? top;
 
@@ -40,22 +37,13 @@ class ListRemediationDeploymentsAtManagementGroupArgs {
     };
   }
 
-  factory ListRemediationDeploymentsAtManagementGroupArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListRemediationDeploymentsAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return ListRemediationDeploymentsAtManagementGroupArgs(
-      managementGroupId: pulumi.Input.fromValue(
-        map['managementGroupId'] as String,
-      ),
-      managementGroupsNamespace: pulumi.Input.fromValue(
-        map['managementGroupsNamespace'] as String,
-      ),
+      managementGroupId: pulumi.Input.fromValue(map['managementGroupId'] as String),
+      managementGroupsNamespace: pulumi.Input.fromValue(map['managementGroupsNamespace'] as String),
       remediationName: pulumi.Input.fromValue(map['remediationName'] as String),
-      top: (() {
-        final guardedValue = map['top'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

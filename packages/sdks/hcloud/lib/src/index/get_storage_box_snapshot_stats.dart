@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStorageBoxSnapshotStats {
   /// Current storage requirements of the Snapshot in bytes.
   final pulumi.Input<int> size;
-
   /// Size of the compressed file system contained in the Snapshot in bytes.
   final pulumi.Input<int> sizeFilesystem;
 
@@ -18,7 +17,10 @@ class GetStorageBoxSnapshotStats {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'size': size, 'sizeFilesystem': sizeFilesystem};
+    return <String, dynamic>{
+      'size': size,
+      'sizeFilesystem': sizeFilesystem,
+    };
   }
 
   factory GetStorageBoxSnapshotStats.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class GetStorageBoxSnapshotStats {
     );
   }
 }
+

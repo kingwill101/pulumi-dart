@@ -15,3 +15,4 @@ enum SAPDatabaseType {
     throw ArgumentError('Unknown SAPDatabaseType value: $value');
   }
 }
+

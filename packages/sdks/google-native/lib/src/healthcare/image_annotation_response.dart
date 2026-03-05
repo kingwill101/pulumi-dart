@@ -7,7 +7,6 @@ import 'bounding_poly_response.dart';
 class ImageAnnotationResponse {
   /// The list of polygons outlining the sensitive regions in the image.
   final pulumi.Input<List<BoundingPolyResponse>> boundingPolys;
-
   /// 0-based index of the image frame. For example, an image frame in a DICOM instance.
   final pulumi.Input<int> frameIndex;
 
@@ -21,33 +20,16 @@ class ImageAnnotationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'boundingPolys':
-          pulumi.Input.mapInputValue<
-            List<BoundingPolyResponse>,
-            List<Map<String, dynamic>>
-          >(
-            boundingPolys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BoundingPolyResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'boundingPolys': pulumi.Input.mapInputValue<List<BoundingPolyResponse>, List<Map<String, dynamic>>>(boundingPolys, (value) => pulumi.Input.encodeList<BoundingPolyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'frameIndex': frameIndex,
     };
   }
 
   factory ImageAnnotationResponse.fromMap(Map<String, dynamic> map) {
     return ImageAnnotationResponse(
-      boundingPolys: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<BoundingPolyResponse>(
-          map['boundingPolys']!,
-          (value) => BoundingPolyResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      boundingPolys: pulumi.Input.fromValue(pulumi.Input.decodeList<BoundingPolyResponse>(map['boundingPolys']!, (value) => BoundingPolyResponse.fromMap((value as Map).cast<String, dynamic>()))),
       frameIndex: pulumi.Input.fromValue(map['frameIndex'] as int),
     );
   }
 }
+

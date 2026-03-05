@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnConnectionRouteArgs {
   /// The CIDR block associated with the local subnet of the customer network.
   final pulumi.Input<String> destinationCidrBlock;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the VPN connection.
   final pulumi.Input<String> vpnConnectionId;
 
@@ -36,15 +34,10 @@ class VpnConnectionRouteArgs {
 
   factory VpnConnectionRouteArgs.fromMap(Map<String, dynamic> map) {
     return VpnConnectionRouteArgs(
-      destinationCidrBlock: pulumi.Input.fromValue(
-        map['destinationCidrBlock'] as String,
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      destinationCidrBlock: pulumi.Input.fromValue(map['destinationCidrBlock'] as String),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpnConnectionId: pulumi.Input.fromValue(map['vpnConnectionId'] as String),
     );
   }
 }
+

@@ -203,19 +203,14 @@ import 'obfuscation_rule_state.dart';
 class ObfuscationRule extends pulumi.CustomResource {
   /// The account id associated with the obfuscation rule.
   late final pulumi.Output<String> accountId;
-
   /// Actions for the rule. The actions will be applied in the order specified by this list.
   late final pulumi.Output<List<Map<String, dynamic>>> actions;
-
   /// Description of rule.
   late final pulumi.Output<String?> description;
-
   /// Whether the rule should be applied or not to incoming data.
   late final pulumi.Output<bool> enabled;
-
   /// NRQL for determining whether a given log record should have obfuscation actions applied.
   late final pulumi.Output<String> filter;
-
   /// Name of rule.
   late final pulumi.Output<String> name;
 
@@ -228,11 +223,11 @@ class ObfuscationRule extends pulumi.CustomResource {
     ObfuscationRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/obfuscationRule:ObfuscationRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/obfuscationRule:ObfuscationRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
     description = registerOutput<String?>('description');
@@ -259,11 +254,11 @@ class ObfuscationRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/obfuscationRule:ObfuscationRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/obfuscationRule:ObfuscationRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
     description = registerOutput<String?>('description');

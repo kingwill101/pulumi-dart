@@ -342,17 +342,13 @@ import 'workload_instance_model_response_system_data.dart';
 class WorkloadInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the name of the resource.
   late final pulumi.Output<String> name;
-
   /// Workload instance model properties.
   late final pulumi.Output<WorkloadInstanceModelPropertiesResponse> properties;
   late final pulumi.Output<WorkloadInstanceModelResponseSystemData> systemData;
-
   /// Gets or sets the resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -365,33 +361,15 @@ class WorkloadInstance extends pulumi.CustomResource {
     WorkloadInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:migrate:WorkloadInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:migrate:WorkloadInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<WorkloadInstanceModelPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadInstanceModelPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<WorkloadInstanceModelResponseSystemData>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadInstanceModelResponseSystemData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<WorkloadInstanceModelPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadInstanceModelPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<WorkloadInstanceModelResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadInstanceModelResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

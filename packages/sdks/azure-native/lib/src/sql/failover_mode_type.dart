@@ -15,3 +15,4 @@ enum FailoverModeType {
     throw ArgumentError('Unknown FailoverModeType value: $value');
   }
 }
+

@@ -8,34 +8,24 @@ import 'route_filter_rule_response.dart';
 class GetRouteFilterResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
-
   /// Resource ID.
   final String? id;
-
   /// A collection of references to express route circuit ipv6 peerings.
   final List<ExpressRouteCircuitPeeringResponse> ipv6Peerings;
-
   /// Resource location.
   final String location;
-
   /// Resource name.
   final String name;
-
   /// A collection of references to express route circuit peerings.
   final List<ExpressRouteCircuitPeeringResponse> peerings;
-
   /// The provisioning state of the route filter resource.
   final String provisioningState;
-
   /// Collection of RouteFilterRules contained within a route filter.
   final List<RouteFilterRuleResponse>? rules;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Resource type.
   final String type;
 
@@ -70,27 +60,12 @@ class GetRouteFilterResult {
       'azureApiVersion': azureApiVersion,
       'etag': etag,
       'id': ?id,
-      'ipv6Peerings':
-          pulumi.Input.encodeList<
-            ExpressRouteCircuitPeeringResponse,
-            Map<String, dynamic>
-          >(ipv6Peerings, (value) => value.toMap()),
+      'ipv6Peerings': pulumi.Input.encodeList<ExpressRouteCircuitPeeringResponse, Map<String, dynamic>>(ipv6Peerings, (value) => value.toMap()),
       'location': location,
       'name': name,
-      'peerings':
-          pulumi.Input.encodeList<
-            ExpressRouteCircuitPeeringResponse,
-            Map<String, dynamic>
-          >(peerings, (value) => value.toMap()),
+      'peerings': pulumi.Input.encodeList<ExpressRouteCircuitPeeringResponse, Map<String, dynamic>>(peerings, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'rules': ?(() {
-        final guardedValue = rules;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          RouteFilterRuleResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<RouteFilterRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'tags': ?tags,
       'type': type,
     };
@@ -100,42 +75,16 @@ class GetRouteFilterResult {
     return GetRouteFilterResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      ipv6Peerings: pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(
-        map['ipv6Peerings']!,
-        (value) => ExpressRouteCircuitPeeringResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipv6Peerings: pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(map['ipv6Peerings']!, (value) => ExpressRouteCircuitPeeringResponse.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
-      peerings: pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(
-        map['peerings']!,
-        (value) => ExpressRouteCircuitPeeringResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      peerings: pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(map['peerings']!, (value) => ExpressRouteCircuitPeeringResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<RouteFilterRuleResponse>(
-          guardedValue,
-          (value) => RouteFilterRuleResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteFilterRuleResponse>(guardedValue, (value) => RouteFilterRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

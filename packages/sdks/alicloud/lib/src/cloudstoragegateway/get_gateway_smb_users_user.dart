@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewaySmbUsersUser {
   /// The Gateway ID.
   final pulumi.Input<String> gatewayId;
-
   /// The ID of the Gateway SMB User.
   final pulumi.Input<String> id;
-
   /// The username of the Gateway SMB User.
   final pulumi.Input<String> username;
 
@@ -38,3 +36,4 @@ class GetGatewaySmbUsersUser {
     );
   }
 }
+

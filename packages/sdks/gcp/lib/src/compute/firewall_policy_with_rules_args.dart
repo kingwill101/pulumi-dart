@@ -10,15 +10,12 @@ import 'firewall_policy_with_rules_rule.dart';
 class FirewallPolicyWithRulesArgs {
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
-
   /// The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
   /// Format: organizations/{organization_id} or folders/{folder_id}
   final pulumi.Input<String> parent;
-
   /// A list of firewall policy rules.
   /// Structure is documented below.
   final pulumi.Input<List<FirewallPolicyWithRulesRule>> rules;
-
   /// A textual name of the security policy.
   final pulumi.Input<String> shortName;
 
@@ -38,39 +35,18 @@ class FirewallPolicyWithRulesArgs {
     return <String, dynamic>{
       'description': ?description,
       'parent': parent,
-      'rules':
-          pulumi.Input.mapInputValue<
-            List<FirewallPolicyWithRulesRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  FirewallPolicyWithRulesRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': pulumi.Input.mapInputValue<List<FirewallPolicyWithRulesRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<FirewallPolicyWithRulesRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'shortName': shortName,
     };
   }
 
   factory FirewallPolicyWithRulesArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyWithRulesArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parent: pulumi.Input.fromValue(map['parent'] as String),
-      rules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<FirewallPolicyWithRulesRule>(
-          map['rules']!,
-          (value) => FirewallPolicyWithRulesRule.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      rules: pulumi.Input.fromValue(pulumi.Input.decodeList<FirewallPolicyWithRulesRule>(map['rules']!, (value) => FirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>()))),
       shortName: pulumi.Input.fromValue(map['shortName'] as String),
     );
   }
 }
+

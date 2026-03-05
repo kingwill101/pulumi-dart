@@ -31,17 +31,10 @@ class GetCustomConnectorVersionArgs {
 
   factory GetCustomConnectorVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomConnectorVersionArgs(
-      customConnectorId: pulumi.Input.fromValue(
-        map['customConnectorId'] as String,
-      ),
-      customConnectorVersionId: pulumi.Input.fromValue(
-        map['customConnectorVersionId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customConnectorId: pulumi.Input.fromValue(map['customConnectorId'] as String),
+      customConnectorVersionId: pulumi.Input.fromValue(map['customConnectorVersionId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

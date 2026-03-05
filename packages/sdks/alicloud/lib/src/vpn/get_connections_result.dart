@@ -7,21 +7,16 @@ import 'get_connections_connection.dart';
 class GetConnectionsResult {
   /// A list of VPN connections. Each element contains the following attributes:
   final List<GetConnectionsConnection> connections;
-
   /// The ID of the customer gateway in Tunnel.
   final String? customerGatewayId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// (Optional) IDs of the VPN connections.
   final List<String> ids;
   final String? nameRegex;
-
   /// (Optional) names of the VPN connections.
   final List<String> names;
   final String? outputFile;
-
   /// ID of the VPN gateway.
   final String? vpnGatewayId;
 
@@ -47,11 +42,7 @@ class GetConnectionsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connections':
-          pulumi.Input.encodeList<
-            GetConnectionsConnection,
-            Map<String, dynamic>
-          >(connections, (value) => value.toMap()),
+      'connections': pulumi.Input.encodeList<GetConnectionsConnection, Map<String, dynamic>>(connections, (value) => value.toMap()),
       'customerGatewayId': ?customerGatewayId,
       'id': id,
       'ids': ids,
@@ -64,35 +55,15 @@ class GetConnectionsResult {
 
   factory GetConnectionsResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionsResult(
-      connections: pulumi.Input.decodeList<GetConnectionsConnection>(
-        map['connections']!,
-        (value) => GetConnectionsConnection.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      customerGatewayId: (() {
-        final guardedValue = map['customerGatewayId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      connections: pulumi.Input.decodeList<GetConnectionsConnection>(map['connections']!, (value) => GetConnectionsConnection.fromMap((value as Map).cast<String, dynamic>())),
+      customerGatewayId: (() { final guardedValue = map['customerGatewayId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vpnGatewayId: (() {
-        final guardedValue = map['vpnGatewayId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpnGatewayId: (() { final guardedValue = map['vpnGatewayId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

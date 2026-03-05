@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspaceArgs {
   /// The name of the Healthcare Workspace.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group in which the Healthcare Workspace exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetWorkspaceArgs].
   /// [name] The name of the Healthcare Workspace.
   /// [resourceGroupName] The name of the Resource Group in which the Healthcare Workspace exists.
-  GetWorkspaceArgs({required this.name, required this.resourceGroupName});
+  GetWorkspaceArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetWorkspaceArgs {
   factory GetWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

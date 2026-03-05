@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionGithubConfigAuthorizerCredential {
   /// A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
   final pulumi.Input<String>? oauthTokenSecretVersion;
-
   /// (Output)
   /// Output only. The username associated to this token.
   final pulumi.Input<String>? username;
@@ -25,20 +24,11 @@ class ConnectionGithubConfigAuthorizerCredential {
     };
   }
 
-  factory ConnectionGithubConfigAuthorizerCredential.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionGithubConfigAuthorizerCredential.fromMap(Map<String, dynamic> map) {
     return ConnectionGithubConfigAuthorizerCredential(
-      oauthTokenSecretVersion: (() {
-        final guardedValue = map['oauthTokenSecretVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      oauthTokenSecretVersion: (() { final guardedValue = map['oauthTokenSecretVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

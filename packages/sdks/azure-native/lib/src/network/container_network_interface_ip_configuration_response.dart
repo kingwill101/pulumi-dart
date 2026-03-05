@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerNetworkInterfaceIpConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
-
   /// The name of the resource. This name can be used to access the resource.
   final pulumi.Input<String>? name;
-
   /// The provisioning state of the container network interface IP configuration resource.
   final pulumi.Input<String> provisioningState;
-
   /// Sub Resource type.
   final pulumi.Input<String> type;
 
@@ -37,20 +34,13 @@ class ContainerNetworkInterfaceIpConfigurationResponse {
     };
   }
 
-  factory ContainerNetworkInterfaceIpConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContainerNetworkInterfaceIpConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ContainerNetworkInterfaceIpConfigurationResponse(
       etag: pulumi.Input.fromValue(map['etag'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

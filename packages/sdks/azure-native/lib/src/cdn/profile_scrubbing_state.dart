@@ -15,3 +15,4 @@ enum ProfileScrubbingState {
     throw ArgumentError('Unknown ProfileScrubbingState value: $value');
   }
 }
+

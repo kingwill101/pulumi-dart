@@ -11,38 +11,28 @@ import 'security_assessment_metadata_properties_response_publish_dates.dart';
 class AssessmentMetadataInSubscriptionArgs {
   /// The Assessment Key - Unique key for the assessment type
   final pulumi.Input<String>? assessmentMetadataName;
-
   /// BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
   final pulumi.Input<String> assessmentType;
   final pulumi.Input<List<String>>? categories;
-
   /// Human readable description of the assessment
   final pulumi.Input<String>? description;
-
   /// User friendly display name of the assessment
   final pulumi.Input<String> displayName;
-
   /// The implementation effort required to remediate this assessment
   final pulumi.Input<String>? implementationEffort;
-
   /// Describes the partner that created the assessment
   final pulumi.Input<SecurityAssessmentMetadataPartnerData>? partnerData;
   final pulumi.Input<String>? plannedDeprecationDate;
-
   /// True if this assessment is in preview release status
   final pulumi.Input<bool>? preview;
-  final pulumi.Input<SecurityAssessmentMetadataPropertiesResponsePublishDates>?
-  publishDates;
-
+  final pulumi.Input<SecurityAssessmentMetadataPropertiesResponsePublishDates>? publishDates;
   /// Human readable description of what you should do to mitigate this security issue
   final pulumi.Input<String>? remediationDescription;
-
   /// The severity level of the assessment
   final pulumi.Input<String> severity;
   final pulumi.Input<List<String>>? tactics;
   final pulumi.Input<List<String>>? techniques;
   final pulumi.Input<List<String>>? threats;
-
   /// The user impact of the assessment
   final pulumi.Input<String>? userImpact;
 
@@ -90,18 +80,10 @@ class AssessmentMetadataInSubscriptionArgs {
       'description': ?description,
       'displayName': displayName,
       'implementationEffort': ?implementationEffort,
-      'partnerData':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecurityAssessmentMetadataPartnerData,
-            Map<String, dynamic>
-          >(partnerData, (value) => value.toMap()),
+      'partnerData': ?pulumi.Input.mapOptionalInputValue<SecurityAssessmentMetadataPartnerData, Map<String, dynamic>>(partnerData, (value) => value.toMap()),
       'plannedDeprecationDate': ?plannedDeprecationDate,
       'preview': ?preview,
-      'publishDates':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecurityAssessmentMetadataPropertiesResponsePublishDates,
-            Map<String, dynamic>
-          >(publishDates, (value) => value.toMap()),
+      'publishDates': ?pulumi.Input.mapOptionalInputValue<SecurityAssessmentMetadataPropertiesResponsePublishDates, Map<String, dynamic>>(publishDates, (value) => value.toMap()),
       'remediationDescription': ?remediationDescription,
       'severity': severity,
       'tactics': ?tactics,
@@ -111,86 +93,25 @@ class AssessmentMetadataInSubscriptionArgs {
     };
   }
 
-  factory AssessmentMetadataInSubscriptionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AssessmentMetadataInSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentMetadataInSubscriptionArgs(
-      assessmentMetadataName: (() {
-        final guardedValue = map['assessmentMetadataName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      assessmentMetadataName: (() { final guardedValue = map['assessmentMetadataName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       assessmentType: pulumi.Input.fromValue(map['assessmentType'] as String),
-      categories: (() {
-        final guardedValue = map['categories'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      categories: (() { final guardedValue = map['categories']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      implementationEffort: (() {
-        final guardedValue = map['implementationEffort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partnerData: (() {
-        final guardedValue = map['partnerData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecurityAssessmentMetadataPartnerData.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      plannedDeprecationDate: (() {
-        final guardedValue = map['plannedDeprecationDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      preview: (() {
-        final guardedValue = map['preview'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      publishDates: (() {
-        final guardedValue = map['publishDates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecurityAssessmentMetadataPropertiesResponsePublishDates.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      remediationDescription: (() {
-        final guardedValue = map['remediationDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      implementationEffort: (() { final guardedValue = map['implementationEffort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partnerData: (() { final guardedValue = map['partnerData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityAssessmentMetadataPartnerData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      plannedDeprecationDate: (() { final guardedValue = map['plannedDeprecationDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      preview: (() { final guardedValue = map['preview']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      publishDates: (() { final guardedValue = map['publishDates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityAssessmentMetadataPropertiesResponsePublishDates.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      remediationDescription: (() { final guardedValue = map['remediationDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       severity: pulumi.Input.fromValue(map['severity'] as String),
-      tactics: (() {
-        final guardedValue = map['tactics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      techniques: (() {
-        final guardedValue = map['techniques'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      threats: (() {
-        final guardedValue = map['threats'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      userImpact: (() {
-        final guardedValue = map['userImpact'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tactics: (() { final guardedValue = map['tactics']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      techniques: (() { final guardedValue = map['techniques']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      threats: (() { final guardedValue = map['threats']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      userImpact: (() { final guardedValue = map['userImpact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

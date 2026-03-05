@@ -12,10 +12,14 @@ class OrganizationsAccessArgs {
 
   /// Creates a new [OrganizationsAccessArgs].
   /// [enabled] Whether to enable AWS Organizations access.
-  OrganizationsAccessArgs({required this.enabled});
+  OrganizationsAccessArgs({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory OrganizationsAccessArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class OrganizationsAccessArgs {
     );
   }
 }
+

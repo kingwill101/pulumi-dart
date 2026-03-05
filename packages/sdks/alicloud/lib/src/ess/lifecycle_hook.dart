@@ -486,22 +486,16 @@ import 'lifecycle_hook_state.dart';
 class LifecycleHook extends pulumi.CustomResource {
   /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
   late final pulumi.Output<String?> defaultResult;
-
   /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
   late final pulumi.Output<int?> heartbeatTimeout;
-
   /// Type of Scaling activity attached to lifecycle hook. Supported value: SCALE_OUT, SCALE_IN.
   late final pulumi.Output<String> lifecycleTransition;
-
   /// The name of the lifecycle hook, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is lifecycle hook id.
   late final pulumi.Output<String> name;
-
   /// The Arn of notification target.
   late final pulumi.Output<String> notificationArn;
-
   /// Additional information that you want to include when Auto Scaling sends a message to the notification target.
   late final pulumi.Output<String> notificationMetadata;
-
   /// The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
   late final pulumi.Output<String> scalingGroupId;
 
@@ -514,11 +508,11 @@ class LifecycleHook extends pulumi.CustomResource {
     LifecycleHookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/lifecycleHook:LifecycleHook',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/lifecycleHook:LifecycleHook',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defaultResult = registerOutput<String?>('defaultResult');
     heartbeatTimeout = registerOutput<int?>('heartbeatTimeout');
     lifecycleTransition = registerOutput<String>('lifecycleTransition');
@@ -546,11 +540,11 @@ class LifecycleHook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/lifecycleHook:LifecycleHook',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/lifecycleHook:LifecycleHook',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defaultResult = registerOutput<String?>('defaultResult');
     heartbeatTimeout = registerOutput<int?>('heartbeatTimeout');
     lifecycleTransition = registerOutput<String>('lifecycleTransition');

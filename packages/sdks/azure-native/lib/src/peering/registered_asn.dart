@@ -140,19 +140,14 @@ import 'registered_asn_args.dart';
 class RegisteredAsn extends pulumi.CustomResource {
   /// The customer's ASN from which traffic originates.
   late final pulumi.Output<int?> asn;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The peering service prefix key that is to be shared with the customer.
   late final pulumi.Output<String> peeringServicePrefixKey;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -165,11 +160,11 @@ class RegisteredAsn extends pulumi.CustomResource {
     RegisteredAsnArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:peering:RegisteredAsn',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:peering:RegisteredAsn',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     asn = registerOutput<int?>('asn');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');

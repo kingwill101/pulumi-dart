@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceVpcConfig {
   /// A security group ID associated with the Function Compute Service.
   final pulumi.Input<String> securityGroupId;
-
   /// A vpc ID associated with the Function Compute Service.
   final pulumi.Input<String>? vpcId;
-
   /// A list of vswitch IDs associated with the Function Compute Service.
   final pulumi.Input<List<String>> vswitchIds;
 
@@ -33,14 +31,9 @@ class ServiceVpcConfig {
   factory ServiceVpcConfig.fromMap(Map<String, dynamic> map) {
     return ServiceVpcConfig(
       securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vswitchIds: pulumi.Input.fromValue(
-        (map['vswitchIds'] as List).cast<String>(),
-      ),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vswitchIds: pulumi.Input.fromValue((map['vswitchIds'] as List).cast<String>()),
     );
   }
 }
+

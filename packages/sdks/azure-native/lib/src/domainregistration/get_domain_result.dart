@@ -6,68 +6,47 @@ import 'host_name_response.dart';
 /// Result data returned by getDomain.
 class GetDomainResult {
   final String? authCode;
-
   /// &lt;code&gt;true&lt;/code&gt; if the domain should be automatically renewed; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final bool? autoRenew;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Domain creation timestamp.
   final String createdTime;
-
   /// Current DNS type
   final String? dnsType;
-
   /// Azure DNS Zone to use
   final String? dnsZoneId;
-
   /// Reasons why domain is not renewable.
   final List<String> domainNotRenewableReasons;
-
   /// Domain expiration timestamp.
   final String expirationTime;
-
   /// Resource Id.
   final String id;
-
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final String? kind;
-
   /// Timestamp when the domain was renewed last time.
   final String lastRenewedTime;
-
   /// Resource Location.
   final String location;
-
   /// All hostnames derived from the domain and assigned to Azure resources.
   final List<HostNameResponse> managedHostNames;
-
   /// Resource Name.
   final String name;
-
   /// Name servers.
   final List<String> nameServers;
-
   /// &lt;code&gt;true&lt;/code&gt; if domain privacy is enabled for this domain; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final bool? privacy;
-
   /// Domain provisioning state.
   final String provisioningState;
-
   /// &lt;code&gt;true&lt;/code&gt; if Azure can assign this domain to App Service apps; otherwise, &lt;code&gt;false&lt;/code&gt;. This value will be &lt;code&gt;true&lt;/code&gt; if domain registration status is active and
   /// it is hosted on name servers Azure has programmatic access to.
   final bool readyForDnsRecordManagement;
-
   /// Domain registration status.
   final String registrationStatus;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Target DNS type (would be used for migration)
   final String? targetDnsType;
-
   /// Resource type.
   final String type;
 
@@ -133,11 +112,7 @@ class GetDomainResult {
       'kind': ?kind,
       'lastRenewedTime': lastRenewedTime,
       'location': location,
-      'managedHostNames':
-          pulumi.Input.encodeList<HostNameResponse, Map<String, dynamic>>(
-            managedHostNames,
-            (value) => value.toMap(),
-          ),
+      'managedHostNames': pulumi.Input.encodeList<HostNameResponse, Map<String, dynamic>>(managedHostNames, (value) => value.toMap()),
       'name': name,
       'nameServers': nameServers,
       'privacy': ?privacy,
@@ -152,65 +127,29 @@ class GetDomainResult {
 
   factory GetDomainResult.fromMap(Map<String, dynamic> map) {
     return GetDomainResult(
-      authCode: (() {
-        final guardedValue = map['authCode'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      autoRenew: (() {
-        final guardedValue = map['autoRenew'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      authCode: (() { final guardedValue = map['authCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      autoRenew: (() { final guardedValue = map['autoRenew']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       azureApiVersion: map['azureApiVersion'] as String,
       createdTime: map['createdTime'] as String,
-      dnsType: (() {
-        final guardedValue = map['dnsType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      dnsZoneId: (() {
-        final guardedValue = map['dnsZoneId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      domainNotRenewableReasons: (map['domainNotRenewableReasons'] as List)
-          .cast<String>(),
+      dnsType: (() { final guardedValue = map['dnsType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dnsZoneId: (() { final guardedValue = map['dnsZoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      domainNotRenewableReasons: (map['domainNotRenewableReasons'] as List).cast<String>(),
       expirationTime: map['expirationTime'] as String,
       id: map['id'] as String,
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastRenewedTime: map['lastRenewedTime'] as String,
       location: map['location'] as String,
-      managedHostNames: pulumi.Input.decodeList<HostNameResponse>(
-        map['managedHostNames']!,
-        (value) =>
-            HostNameResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      managedHostNames: pulumi.Input.decodeList<HostNameResponse>(map['managedHostNames']!, (value) => HostNameResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       nameServers: (map['nameServers'] as List).cast<String>(),
-      privacy: (() {
-        final guardedValue = map['privacy'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      privacy: (() { final guardedValue = map['privacy']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       provisioningState: map['provisioningState'] as String,
       readyForDnsRecordManagement: map['readyForDnsRecordManagement'] as bool,
       registrationStatus: map['registrationStatus'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      targetDnsType: (() {
-        final guardedValue = map['targetDnsType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      targetDnsType: (() { final guardedValue = map['targetDnsType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

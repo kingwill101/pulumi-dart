@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponse {
   /// A default value for a `DOUBLE` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
   final pulumi.Input<double> defaultValue;
-
   /// Inclusive maximum value of the parameter.
   final pulumi.Input<double> maxValue;
-
   /// Inclusive minimum value of the parameter.
   final pulumi.Input<double> minValue;
 
@@ -31,9 +29,7 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponse 
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponse(
       defaultValue: pulumi.Input.fromValue(map['defaultValue'] as double),
       maxValue: pulumi.Input.fromValue(map['maxValue'] as double),
@@ -41,3 +37,4 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponse 
     );
   }
 }
+

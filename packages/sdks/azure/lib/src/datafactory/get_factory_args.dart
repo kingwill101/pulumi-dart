@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFactoryArgs {
   /// The name of this Azure Data Factory.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group where the Azure Data Factory exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetFactoryArgs].
   /// [name] The name of this Azure Data Factory.
   /// [resourceGroupName] The name of the Resource Group where the Azure Data Factory exists.
-  GetFactoryArgs({required this.name, required this.resourceGroupName});
+  GetFactoryArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetFactoryArgs {
   factory GetFactoryArgs.fromMap(Map<String, dynamic> map) {
     return GetFactoryArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

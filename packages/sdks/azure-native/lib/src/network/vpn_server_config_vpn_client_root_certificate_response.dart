@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnServerConfigVpnClientRootCertificateResponse {
   /// The certificate name.
   final pulumi.Input<String>? name;
-
   /// The certificate public data.
   final pulumi.Input<String>? publicCertData;
 
@@ -19,23 +18,17 @@ class VpnServerConfigVpnClientRootCertificateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'publicCertData': ?publicCertData};
+    return <String, dynamic>{
+      'name': ?name,
+      'publicCertData': ?publicCertData,
+    };
   }
 
-  factory VpnServerConfigVpnClientRootCertificateResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VpnServerConfigVpnClientRootCertificateResponse.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigVpnClientRootCertificateResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicCertData: (() {
-        final guardedValue = map['publicCertData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicCertData: (() { final guardedValue = map['publicCertData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

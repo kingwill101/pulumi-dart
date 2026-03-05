@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchedulingNodeAffinityResponse {
   /// Corresponds to the label key of Node resource.
   final pulumi.Input<String> key;
-
   /// Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
   final pulumi.Input<String> operator;
-
   /// Corresponds to the label values of Node resource.
   final pulumi.Input<List<String>> values;
 
@@ -39,3 +37,4 @@ class SchedulingNodeAffinityResponse {
     );
   }
 }
+

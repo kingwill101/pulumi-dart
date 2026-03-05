@@ -10,19 +10,20 @@ class CustomServiceTelemetry {
 
   /// Creates a new [CustomServiceTelemetry].
   /// [resourceName] The full name of the resource that defines this service.
-  CustomServiceTelemetry({this.resourceName});
+  CustomServiceTelemetry({
+    this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceName': ?resourceName};
+    return <String, dynamic>{
+      'resourceName': ?resourceName,
+    };
   }
 
   factory CustomServiceTelemetry.fromMap(Map<String, dynamic> map) {
     return CustomServiceTelemetry(
-      resourceName: (() {
-        final guardedValue = map['resourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

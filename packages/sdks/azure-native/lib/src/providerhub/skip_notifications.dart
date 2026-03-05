@@ -16,3 +16,4 @@ enum SkipNotifications {
     throw ArgumentError('Unknown SkipNotifications value: $value');
   }
 }
+

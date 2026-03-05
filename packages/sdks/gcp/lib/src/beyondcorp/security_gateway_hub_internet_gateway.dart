@@ -9,19 +9,20 @@ class SecurityGatewayHubInternetGateway {
 
   /// Creates a new [SecurityGatewayHubInternetGateway].
   /// [assignedIps] (Output)
-  SecurityGatewayHubInternetGateway({this.assignedIps});
+  SecurityGatewayHubInternetGateway({
+    this.assignedIps,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'assignedIps': ?assignedIps};
+    return <String, dynamic>{
+      'assignedIps': ?assignedIps,
+    };
   }
 
   factory SecurityGatewayHubInternetGateway.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayHubInternetGateway(
-      assignedIps: (() {
-        final guardedValue = map['assignedIps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      assignedIps: (() { final guardedValue = map['assignedIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

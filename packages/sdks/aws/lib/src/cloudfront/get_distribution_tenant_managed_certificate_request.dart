@@ -19,26 +19,18 @@ class GetDistributionTenantManagedCertificateRequest {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateTransparencyLoggingPreference':
-          certificateTransparencyLoggingPreference,
+      'certificateTransparencyLoggingPreference': certificateTransparencyLoggingPreference,
       'primaryDomainName': primaryDomainName,
       'validationTokenHost': validationTokenHost,
     };
   }
 
-  factory GetDistributionTenantManagedCertificateRequest.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDistributionTenantManagedCertificateRequest.fromMap(Map<String, dynamic> map) {
     return GetDistributionTenantManagedCertificateRequest(
-      certificateTransparencyLoggingPreference: pulumi.Input.fromValue(
-        map['certificateTransparencyLoggingPreference'] as String,
-      ),
-      primaryDomainName: pulumi.Input.fromValue(
-        map['primaryDomainName'] as String,
-      ),
-      validationTokenHost: pulumi.Input.fromValue(
-        map['validationTokenHost'] as String,
-      ),
+      certificateTransparencyLoggingPreference: pulumi.Input.fromValue(map['certificateTransparencyLoggingPreference'] as String),
+      primaryDomainName: pulumi.Input.fromValue(map['primaryDomainName'] as String),
+      validationTokenHost: pulumi.Input.fromValue(map['validationTokenHost'] as String),
     );
   }
 }
+

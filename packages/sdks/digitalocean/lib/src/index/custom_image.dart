@@ -179,43 +179,30 @@ import 'custom_image_state.dart';
 class CustomImage extends pulumi.CustomResource {
   /// A time value given in ISO8601 combined date and time format that represents when the image was created.
   late final pulumi.Output<String> createdAt;
-
   /// An optional description for the image.
   late final pulumi.Output<String?> description;
-
   /// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
   late final pulumi.Output<String?> distribution;
-
   /// A unique number that can be used to identify and reference a specific image.
   late final pulumi.Output<int> imageId;
-
   /// The minimum disk size in GB required for a Droplet to use this image.
   late final pulumi.Output<int> minDiskSize;
-
   /// A name for the Custom Image.
   late final pulumi.Output<String> name;
-
   /// Indicates whether the image in question is public or not.
   late final pulumi.Output<bool> public;
-
   /// A list of regions. (Currently only one is supported).
   late final pulumi.Output<List<String>> regions;
-
   /// The size of the image in gigabytes.
   late final pulumi.Output<double> sizeGigabytes;
-
   /// A uniquely identifying string for each image.
   late final pulumi.Output<String> slug;
-
   /// A status string indicating the state of a custom image.
   late final pulumi.Output<String> status;
-
   /// A list of optional tags for the image.
   late final pulumi.Output<List<String>?> tags;
-
   /// Describes the kind of image.
   late final pulumi.Output<String> type;
-
   /// A URL from which the custom Linux virtual machine image may be retrieved.
   late final pulumi.Output<String> url;
 
@@ -228,11 +215,11 @@ class CustomImage extends pulumi.CustomResource {
     CustomImageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/customImage:CustomImage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/customImage:CustomImage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
     distribution = registerOutput<String?>('distribution');
@@ -267,11 +254,11 @@ class CustomImage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/customImage:CustomImage',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/customImage:CustomImage',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
     distribution = registerOutput<String?>('distribution');

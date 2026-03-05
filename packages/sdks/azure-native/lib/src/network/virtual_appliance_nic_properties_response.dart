@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualApplianceNicPropertiesResponse {
   /// Instance on which nic is attached.
   final pulumi.Input<String> instanceName;
-
   /// NIC name.
   final pulumi.Input<String> name;
-
   /// NIC type - PublicNic, PrivateNic, or AdditionalNic.
   final pulumi.Input<String> nicType;
-
   /// Private IP address.
   final pulumi.Input<String> privateIpAddress;
-
   /// Public IP address.
   final pulumi.Input<String> publicIpAddress;
 
@@ -43,17 +39,14 @@ class VirtualApplianceNicPropertiesResponse {
     };
   }
 
-  factory VirtualApplianceNicPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualApplianceNicPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceNicPropertiesResponse(
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       nicType: pulumi.Input.fromValue(map['nicType'] as String),
-      privateIpAddress: pulumi.Input.fromValue(
-        map['privateIpAddress'] as String,
-      ),
+      privateIpAddress: pulumi.Input.fromValue(map['privateIpAddress'] as String),
       publicIpAddress: pulumi.Input.fromValue(map['publicIpAddress'] as String),
     );
   }
 }
+

@@ -197,32 +197,23 @@ import 'permission_timeouts.dart';
 class Permission extends pulumi.CustomResource {
   /// ARN of the permission.
   late final pulumi.Output<String> arn;
-
   /// Specifies whether the version of the managed permission used by this resource share is the default version for this managed permission.
   late final pulumi.Output<bool> defaultVersion;
-
   /// Specifies the name of the customer managed permission. The name must be unique within the AWS Region.
   late final pulumi.Output<String> name;
-
   /// A string in JSON format string that contains the following elements of a resource-based policy: Effect, Action and Condition.
   late final pulumi.Output<String> policyTemplate;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Specifies the name of the resource type that this customer managed permission applies to. The format is `&lt;service-code&gt;:&lt;resource-type&gt;` and is not case sensitive.
   late final pulumi.Output<String> resourceType;
-
   /// The current status of the permission.
   late final pulumi.Output<String> status;
-
   /// A map of tags to assign to the resource share. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<PermissionTimeouts?> timeouts;
-
   /// The version of the permission associated with this resource share.
   late final pulumi.Output<String> version;
 
@@ -235,11 +226,11 @@ class Permission extends pulumi.CustomResource {
     PermissionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ram/permission:Permission',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ram/permission:Permission',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     defaultVersion = registerOutput<bool>('defaultVersion');
     this.name = registerOutput<String>('name');
@@ -249,16 +240,7 @@ class Permission extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<PermissionTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<PermissionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }
 
@@ -280,11 +262,11 @@ class Permission extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ram/permission:Permission',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ram/permission:Permission',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     defaultVersion = registerOutput<bool>('defaultVersion');
     this.name = registerOutput<String>('name');
@@ -294,16 +276,7 @@ class Permission extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<PermissionTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PermissionTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<PermissionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }
 }

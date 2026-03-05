@@ -15,3 +15,4 @@ enum ServiceNowV2AuthenticationType {
     throw ArgumentError('Unknown ServiceNowV2AuthenticationType value: $value');
   }
 }
+

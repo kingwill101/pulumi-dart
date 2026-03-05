@@ -213,34 +213,24 @@ import 'managed_network_group_args.dart';
 class ManagedNetworkGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Responsibility role under which this Managed Network Group will be created
   late final pulumi.Output<String?> kind;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-
   /// The collection of management groups covered by the Managed Network
   late final pulumi.Output<List<Map<String, dynamic>>?> managementGroups;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the ManagedNetwork resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The collection of  subnets covered by the Managed Network
   late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
-
   /// The collection of subscriptions covered by the Managed Network
   late final pulumi.Output<List<Map<String, dynamic>>?> subscriptions;
-
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
-
   /// The collection of virtual nets covered by the Managed Network
   late final pulumi.Output<List<Map<String, dynamic>>?> virtualNetworks;
 
@@ -253,27 +243,21 @@ class ManagedNetworkGroup extends pulumi.CustomResource {
     ManagedNetworkGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:managednetwork:ManagedNetworkGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:managednetwork:ManagedNetworkGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String?>('location');
-    managementGroups = registerOutput<List<Map<String, dynamic>>?>(
-      'managementGroups',
-    );
+    managementGroups = registerOutput<List<Map<String, dynamic>>?>('managementGroups');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
-    subscriptions = registerOutput<List<Map<String, dynamic>>?>(
-      'subscriptions',
-    );
+    subscriptions = registerOutput<List<Map<String, dynamic>>?>('subscriptions');
     type = registerOutput<String>('type');
-    virtualNetworks = registerOutput<List<Map<String, dynamic>>?>(
-      'virtualNetworks',
-    );
+    virtualNetworks = registerOutput<List<Map<String, dynamic>>?>('virtualNetworks');
   }
 }

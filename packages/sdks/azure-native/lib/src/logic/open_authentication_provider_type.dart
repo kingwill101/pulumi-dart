@@ -14,3 +14,4 @@ enum OpenAuthenticationProviderType {
     throw ArgumentError('Unknown OpenAuthenticationProviderType value: $value');
   }
 }
+

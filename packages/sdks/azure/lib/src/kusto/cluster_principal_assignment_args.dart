@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterPrincipalAssignmentArgs {
   /// The name of the cluster in which to create the resource. Changing this forces a new resource to be created.
   final pulumi.Input<String> clusterName;
-
   /// The name of the Kusto cluster principal assignment. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The object id of the principal. Changing this forces a new resource to be created.
   final pulumi.Input<String> principalId;
-
   /// The type of the principal. Valid values include `App`, `Group`, `User`. Changing this forces a new resource to be created.
   final pulumi.Input<String> principalType;
-
   /// The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The cluster role assigned to the principal. Valid values include `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor`. Changing this forces a new resource to be created.
   final pulumi.Input<String> role;
-
   /// The tenant id in which the principal resides. Changing this forces a new resource to be created.
   final pulumi.Input<String> tenantId;
 
@@ -61,18 +55,13 @@ class ClusterPrincipalAssignmentArgs {
   factory ClusterPrincipalAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ClusterPrincipalAssignmentArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       principalType: pulumi.Input.fromValue(map['principalType'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       role: pulumi.Input.fromValue(map['role'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
+

@@ -15,16 +15,15 @@ class GetKMSCryptoKeyKeyAccessJustificationsPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowedAccessReasons': allowedAccessReasons};
+    return <String, dynamic>{
+      'allowedAccessReasons': allowedAccessReasons,
+    };
   }
 
-  factory GetKMSCryptoKeyKeyAccessJustificationsPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetKMSCryptoKeyKeyAccessJustificationsPolicy.fromMap(Map<String, dynamic> map) {
     return GetKMSCryptoKeyKeyAccessJustificationsPolicy(
-      allowedAccessReasons: pulumi.Input.fromValue(
-        (map['allowedAccessReasons'] as List).cast<String>(),
-      ),
+      allowedAccessReasons: pulumi.Input.fromValue((map['allowedAccessReasons'] as List).cast<String>()),
     );
   }
 }
+

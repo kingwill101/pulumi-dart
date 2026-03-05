@@ -13,16 +13,15 @@ class VirtualGatewaySpecListenerTlsValidationTrustFile {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'certificateChain': certificateChain};
+    return <String, dynamic>{
+      'certificateChain': certificateChain,
+    };
   }
 
-  factory VirtualGatewaySpecListenerTlsValidationTrustFile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualGatewaySpecListenerTlsValidationTrustFile.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerTlsValidationTrustFile(
-      certificateChain: pulumi.Input.fromValue(
-        map['certificateChain'] as String,
-      ),
+      certificateChain: pulumi.Input.fromValue(map['certificateChain'] as String),
     );
   }
 }
+

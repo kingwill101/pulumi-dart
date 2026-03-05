@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnergyServiceArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The resource name.
   final pulumi.Input<String> resourceName;
 
@@ -30,10 +29,9 @@ class GetEnergyServiceArgs {
 
   factory GetEnergyServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetEnergyServiceArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

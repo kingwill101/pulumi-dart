@@ -7,13 +7,10 @@ import 'stage_status_response.dart';
 class ExecutionStatusResponse {
   /// target resource statuses
   final pulumi.Input<List<StageStatusResponse>>? stageHistory;
-
   /// Deployment status
   final pulumi.Input<int>? status;
-
   /// status details
   final pulumi.Input<String>? statusMessage;
-
   /// The lastModified timestamp of the Status
   final pulumi.Input<String>? updateTime;
 
@@ -31,18 +28,7 @@ class ExecutionStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'stageHistory':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<StageStatusResponse>,
-            List<Map<String, dynamic>>
-          >(
-            stageHistory,
-            (value) =>
-                pulumi.Input.encodeList<
-                  StageStatusResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'stageHistory': ?pulumi.Input.mapOptionalInputValue<List<StageStatusResponse>, List<Map<String, dynamic>>>(stageHistory, (value) => pulumi.Input.encodeList<StageStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': ?status,
       'statusMessage': ?statusMessage,
       'updateTime': ?updateTime,
@@ -51,33 +37,11 @@ class ExecutionStatusResponse {
 
   factory ExecutionStatusResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionStatusResponse(
-      stageHistory: (() {
-        final guardedValue = map['stageHistory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<StageStatusResponse>(
-            guardedValue,
-            (value) => StageStatusResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      statusMessage: (() {
-        final guardedValue = map['statusMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      stageHistory: (() { final guardedValue = map['stageHistory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StageStatusResponse>(guardedValue, (value) => StageStatusResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      statusMessage: (() { final guardedValue = map['statusMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

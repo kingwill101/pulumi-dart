@@ -19,15 +19,10 @@ class AppVersionSnapshotAppLoggingSettingConversationLoggingSetting {
     };
   }
 
-  factory AppVersionSnapshotAppLoggingSettingConversationLoggingSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotAppLoggingSettingConversationLoggingSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppLoggingSettingConversationLoggingSetting(
-      disableConversationLogging: (() {
-        final guardedValue = map['disableConversationLogging'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disableConversationLogging: (() { final guardedValue = map['disableConversationLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

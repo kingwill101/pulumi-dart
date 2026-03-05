@@ -7,15 +7,10 @@ import 'client_tls_policy_client_certificate_grpc_endpoint.dart';
 class ClientTlsPolicyClientCertificate {
   /// The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
   /// Structure is documented below.
-  final pulumi.Input<
-    ClientTlsPolicyClientCertificateCertificateProviderInstance
-  >?
-  certificateProviderInstance;
-
+  final pulumi.Input<ClientTlsPolicyClientCertificateCertificateProviderInstance>? certificateProviderInstance;
   /// gRPC specific configuration to access the gRPC server to obtain the cert and private key.
   /// Structure is documented below.
-  final pulumi.Input<ClientTlsPolicyClientCertificateGrpcEndpoint>?
-  grpcEndpoint;
+  final pulumi.Input<ClientTlsPolicyClientCertificateGrpcEndpoint>? grpcEndpoint;
 
   /// Creates a new [ClientTlsPolicyClientCertificate].
   /// [certificateProviderInstance] The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
@@ -27,39 +22,16 @@ class ClientTlsPolicyClientCertificate {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateProviderInstance':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClientTlsPolicyClientCertificateCertificateProviderInstance,
-            Map<String, dynamic>
-          >(certificateProviderInstance, (value) => value.toMap()),
-      'grpcEndpoint':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClientTlsPolicyClientCertificateGrpcEndpoint,
-            Map<String, dynamic>
-          >(grpcEndpoint, (value) => value.toMap()),
+      'certificateProviderInstance': ?pulumi.Input.mapOptionalInputValue<ClientTlsPolicyClientCertificateCertificateProviderInstance, Map<String, dynamic>>(certificateProviderInstance, (value) => value.toMap()),
+      'grpcEndpoint': ?pulumi.Input.mapOptionalInputValue<ClientTlsPolicyClientCertificateGrpcEndpoint, Map<String, dynamic>>(grpcEndpoint, (value) => value.toMap()),
     };
   }
 
   factory ClientTlsPolicyClientCertificate.fromMap(Map<String, dynamic> map) {
     return ClientTlsPolicyClientCertificate(
-      certificateProviderInstance: (() {
-        final guardedValue = map['certificateProviderInstance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClientTlsPolicyClientCertificateCertificateProviderInstance.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      grpcEndpoint: (() {
-        final guardedValue = map['grpcEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClientTlsPolicyClientCertificateGrpcEndpoint.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      certificateProviderInstance: (() { final guardedValue = map['certificateProviderInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClientTlsPolicyClientCertificateCertificateProviderInstance.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      grpcEndpoint: (() { final guardedValue = map['grpcEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClientTlsPolicyClientCertificateGrpcEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

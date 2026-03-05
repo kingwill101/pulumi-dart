@@ -15,3 +15,4 @@ enum EventObservabilityMode {
     throw ArgumentError('Unknown EventObservabilityMode value: $value');
   }
 }
+

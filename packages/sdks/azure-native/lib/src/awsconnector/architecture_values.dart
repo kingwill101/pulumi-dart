@@ -18,3 +18,4 @@ enum ArchitectureValues {
     throw ArgumentError('Unknown ArchitectureValues value: $value');
   }
 }
+

@@ -9,7 +9,9 @@ class SnapshotOptionsResponse {
 
   /// Creates a new [SnapshotOptionsResponse].
   /// [automatedSnapshotStartHour] &lt;p&gt;The time, in UTC format, when OpenSearch Service takes a daily automated snapshot of the specified domain. Default is &lt;code&gt;0&lt;/code&gt; hours.&lt;/p&gt;
-  SnapshotOptionsResponse({this.automatedSnapshotStartHour});
+  SnapshotOptionsResponse({
+    this.automatedSnapshotStartHour,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class SnapshotOptionsResponse {
 
   factory SnapshotOptionsResponse.fromMap(Map<String, dynamic> map) {
     return SnapshotOptionsResponse(
-      automatedSnapshotStartHour: (() {
-        final guardedValue = map['automatedSnapshotStartHour'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      automatedSnapshotStartHour: (() { final guardedValue = map['automatedSnapshotStartHour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

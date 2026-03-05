@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentArgs {
   /// The name of the Container Apps Managed Environment.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group where this Container App Environment exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetEnvironmentArgs].
   /// [name] The name of the Container Apps Managed Environment.
   /// [resourceGroupName] The name of the Resource Group where this Container App Environment exists.
-  GetEnvironmentArgs({required this.name, required this.resourceGroupName});
+  GetEnvironmentArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetEnvironmentArgs {
   factory GetEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

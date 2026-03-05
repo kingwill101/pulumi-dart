@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertProcessingRuleByNameArgs {
   /// The name of the alert processing rule that needs to be fetched.
   final pulumi.Input<String> alertProcessingRuleName;
-
   /// Resource group name where the resource is created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetAlertProcessingRuleByNameArgs {
 
   factory GetAlertProcessingRuleByNameArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertProcessingRuleByNameArgs(
-      alertProcessingRuleName: pulumi.Input.fromValue(
-        map['alertProcessingRuleName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      alertProcessingRuleName: pulumi.Input.fromValue(map['alertProcessingRuleName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

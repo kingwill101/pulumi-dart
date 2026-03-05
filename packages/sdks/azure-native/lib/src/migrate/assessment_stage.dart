@@ -16,3 +16,4 @@ enum AssessmentStage {
     throw ArgumentError('Unknown AssessmentStage value: $value');
   }
 }
+

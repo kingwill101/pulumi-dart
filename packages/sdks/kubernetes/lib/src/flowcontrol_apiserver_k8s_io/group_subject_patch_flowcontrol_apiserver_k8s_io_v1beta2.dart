@@ -9,21 +9,20 @@ class GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta2 {
 
   /// Creates a new [GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta2].
   /// [name] name is the user group that matches, or "*" to match all user groups. See https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group names. Required.
-  GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta2({this.name});
+  GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta2({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return GroupSubjectPatchFlowcontrolApiserverK8sIoV1beta2(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

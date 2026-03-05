@@ -174,41 +174,30 @@ import 'function_state.dart';
 class FunctionType extends pulumi.CustomResource {
   /// List of arguments for the function.
   late final pulumi.Output<List<Map<String, dynamic>>?> args;
-
   /// Function body.
   /// This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
   late final pulumi.Output<String> body;
-
   /// The database where the function is located.
   /// If not specified, the function is created in the current database.
   late final pulumi.Output<String> database;
-
   /// True to automatically drop objects that depend on the function (such as
   /// operators or triggers), and in turn all objects that depend on those objects. Default is false.
   late final pulumi.Output<bool?> dropCascade;
-
   /// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
   late final pulumi.Output<String?> language;
-
   /// The name of the function.
   late final pulumi.Output<String> name;
-
   /// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
   late final pulumi.Output<String?> parallel;
-
   /// Type that the function returns. It can be computed from the OUT arguments. Default is void.
   late final pulumi.Output<String> returns;
-
   /// The schema where the function is located.
   /// If not specified, the function is created in the current schema.
   late final pulumi.Output<String> schema;
-
   /// If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
   late final pulumi.Output<bool?> securityDefiner;
-
   /// If the function should always return NULL when any of the inputs is NULL. Default is false.
   late final pulumi.Output<bool?> strict;
-
   /// Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
   late final pulumi.Output<String?> volatility;
 
@@ -221,11 +210,11 @@ class FunctionType extends pulumi.CustomResource {
     FunctionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/function:Function',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/function:Function',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.args = registerOutput<List<Map<String, dynamic>>?>('args');
     body = registerOutput<String>('body');
     database = registerOutput<String>('database');
@@ -258,11 +247,11 @@ class FunctionType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/function:Function',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/function:Function',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     args = registerOutput<List<Map<String, dynamic>>?>('args');
     body = registerOutput<String>('body');
     database = registerOutput<String>('database');

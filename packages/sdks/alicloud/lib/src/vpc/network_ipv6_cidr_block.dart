@@ -7,7 +7,6 @@ class NetworkIpv6CidrBlock {
   ///
   /// &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
   final pulumi.Input<String>? ipv6CidrBlock;
-
   /// The IPv6 address segment type of the VPC. Value:
   /// - `BGP` (default): Alibaba Cloud BGP IPv6.
   /// - `ChinaMobile`: China Mobile (single line).
@@ -20,7 +19,10 @@ class NetworkIpv6CidrBlock {
   /// Creates a new [NetworkIpv6CidrBlock].
   /// [ipv6CidrBlock] The IPv6 CIDR block of the default VPC.
   /// [ipv6Isp] The IPv6 address segment type of the VPC. Value:
-  NetworkIpv6CidrBlock({this.ipv6CidrBlock, this.ipv6Isp});
+  NetworkIpv6CidrBlock({
+    this.ipv6CidrBlock,
+    this.ipv6Isp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,16 +33,9 @@ class NetworkIpv6CidrBlock {
 
   factory NetworkIpv6CidrBlock.fromMap(Map<String, dynamic> map) {
     return NetworkIpv6CidrBlock(
-      ipv6CidrBlock: (() {
-        final guardedValue = map['ipv6CidrBlock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipv6Isp: (() {
-        final guardedValue = map['ipv6Isp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipv6CidrBlock: (() { final guardedValue = map['ipv6CidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipv6Isp: (() { final guardedValue = map['ipv6Isp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

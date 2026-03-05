@@ -17,19 +17,20 @@ class MulticastDomainActivationState {
 
   /// Creates a new [MulticastDomainActivationState].
   /// [state] (Output)
-  MulticastDomainActivationState({this.state});
+  MulticastDomainActivationState({
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': ?state};
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
   factory MulticastDomainActivationState.fromMap(Map<String, dynamic> map) {
     return MulticastDomainActivationState(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

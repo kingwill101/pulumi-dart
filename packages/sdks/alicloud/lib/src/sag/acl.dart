@@ -117,18 +117,25 @@ class Acl extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Acl]. {@macro pulumi_sag_acl_acl_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Acl(String name, {AclArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:sag/acl:Acl',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Acl(
+    String name, {
+    AclArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:sag/acl:Acl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
   }
 
   /// Gets an existing [Acl] resource's state with the given [name] and [id].
-  static Acl get(String name, pulumi.Input<String> id, {AclState? state}) {
+  static Acl get(
+    String name,
+    pulumi.Input<String> id, {
+    AclState? state,
+  }) {
     return Acl._get(
       name,
       state: state?.toMap(),
@@ -141,11 +148,11 @@ class Acl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sag/acl:Acl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sag/acl:Acl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
   }
 }

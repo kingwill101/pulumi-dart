@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagTag {
   /// Tag name.
   final pulumi.Input<String> key;
-
   /// Whether to propagate the tags to instances launched by the ASG.
   final pulumi.Input<bool> propagateAtLaunch;
-
   /// Tag value.
   final pulumi.Input<String> value;
 
@@ -33,10 +31,9 @@ class TagTag {
   factory TagTag.fromMap(Map<String, dynamic> map) {
     return TagTag(
       key: pulumi.Input.fromValue(map['key'] as String),
-      propagateAtLaunch: pulumi.Input.fromValue(
-        map['propagateAtLaunch'] as bool,
-      ),
+      propagateAtLaunch: pulumi.Input.fromValue(map['propagateAtLaunch'] as bool),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

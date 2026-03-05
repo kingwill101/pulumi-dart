@@ -12,8 +12,7 @@ enum ManagedZoneVisibilityDnsV1beta2 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ManagedZoneVisibilityDnsV1beta2 value: $value',
-    );
+    throw ArgumentError('Unknown ManagedZoneVisibilityDnsV1beta2 value: $value');
   }
 }
+

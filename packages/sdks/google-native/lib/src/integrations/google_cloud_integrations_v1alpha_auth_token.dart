@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIntegrationsV1alphaAuthToken {
   /// The token for the auth type.
   final pulumi.Input<String>? token;
-
   /// Authentication type, e.g. "Basic", "Bearer", etc.
   final pulumi.Input<String>? type;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaAuthToken].
   /// [token] The token for the auth type.
   /// [type] Authentication type, e.g. "Basic", "Bearer", etc.
-  GoogleCloudIntegrationsV1alphaAuthToken({this.token, this.type});
+  GoogleCloudIntegrationsV1alphaAuthToken({
+    this.token,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'token': ?token, 'type': ?type};
+    return <String, dynamic>{
+      'token': ?token,
+      'type': ?type,
+    };
   }
 
-  factory GoogleCloudIntegrationsV1alphaAuthToken.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIntegrationsV1alphaAuthToken.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaAuthToken(
-      token: (() {
-        final guardedValue = map['token'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      token: (() { final guardedValue = map['token']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

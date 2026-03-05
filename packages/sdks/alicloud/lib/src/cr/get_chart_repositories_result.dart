@@ -40,11 +40,7 @@ class GetChartRepositoriesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'repositories':
-          pulumi.Input.encodeList<
-            GetChartRepositoriesRepository,
-            Map<String, dynamic>
-          >(repositories, (value) => value.toMap()),
+      'repositories': pulumi.Input.encodeList<GetChartRepositoriesRepository, Map<String, dynamic>>(repositories, (value) => value.toMap()),
     };
   }
 
@@ -53,23 +49,11 @@ class GetChartRepositoriesResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      repositories: pulumi.Input.decodeList<GetChartRepositoriesRepository>(
-        map['repositories']!,
-        (value) => GetChartRepositoriesRepository.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      repositories: pulumi.Input.decodeList<GetChartRepositoriesRepository>(map['repositories']!, (value) => GetChartRepositoriesRepository.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

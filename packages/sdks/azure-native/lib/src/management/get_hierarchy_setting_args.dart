@@ -12,10 +12,14 @@ class GetHierarchySettingArgs {
 
   /// Creates a new [GetHierarchySettingArgs].
   /// [groupId] Management Group ID.
-  GetHierarchySettingArgs({required this.groupId});
+  GetHierarchySettingArgs({
+    required this.groupId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupId': groupId};
+    return <String, dynamic>{
+      'groupId': groupId,
+    };
   }
 
   factory GetHierarchySettingArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetHierarchySettingArgs {
     );
   }
 }
+

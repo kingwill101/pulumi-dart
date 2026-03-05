@@ -8,21 +8,20 @@ class DomainDevicesHostdevSubsysMDevSourceAddress {
 
   /// Creates a new [DomainDevicesHostdevSubsysMDevSourceAddress].
   /// [uuid] Configures the UUID for the address of the multimedia subsystem device source.
-  DomainDevicesHostdevSubsysMDevSourceAddress({this.uuid});
+  DomainDevicesHostdevSubsysMDevSourceAddress({
+    this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uuid': ?uuid};
+    return <String, dynamic>{
+      'uuid': ?uuid,
+    };
   }
 
-  factory DomainDevicesHostdevSubsysMDevSourceAddress.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesHostdevSubsysMDevSourceAddress.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysMDevSourceAddress(
-      uuid: (() {
-        final guardedValue = map['uuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

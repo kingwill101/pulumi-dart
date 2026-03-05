@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecommendationPreferencesUtilizationPreferenceMetricParameters {
   /// The headroom value in percentage used for the specified metric parameter. Valid values: `PERCENT_30`, `PERCENT_20`, `PERCENT_10`, `PERCENT_0`.
   final pulumi.Input<String> headroom;
-
   /// The threshold value used for the specified metric parameter. You can only specify the threshold value for CPU utilization. Valid values: `P90`, `P95`, `P99_5`.
   final pulumi.Input<String>? threshold;
 
@@ -18,19 +17,17 @@ class RecommendationPreferencesUtilizationPreferenceMetricParameters {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'headroom': headroom, 'threshold': ?threshold};
+    return <String, dynamic>{
+      'headroom': headroom,
+      'threshold': ?threshold,
+    };
   }
 
-  factory RecommendationPreferencesUtilizationPreferenceMetricParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RecommendationPreferencesUtilizationPreferenceMetricParameters.fromMap(Map<String, dynamic> map) {
     return RecommendationPreferencesUtilizationPreferenceMetricParameters(
       headroom: pulumi.Input.fromValue(map['headroom'] as String),
-      threshold: (() {
-        final guardedValue = map['threshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

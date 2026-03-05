@@ -9,15 +9,12 @@ class GetDiskSourceImageEncryptionKey {
   /// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
   /// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
   final pulumi.Input<String> kmsKeySelfLink;
-
   /// The service account used for the encryption request for the given KMS key.
   /// If absent, the Compute Engine Service Agent service account is used.
   final pulumi.Input<String> kmsKeyServiceAccount;
-
   /// Specifies a 256-bit customer-supplied encryption key, encoded in
   /// RFC 4648 base64 to either encrypt or decrypt this resource.
   final pulumi.Input<String> rawKey;
-
   /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
   /// encryption key that protects this resource.
   final pulumi.Input<String> sha256;
@@ -46,11 +43,10 @@ class GetDiskSourceImageEncryptionKey {
   factory GetDiskSourceImageEncryptionKey.fromMap(Map<String, dynamic> map) {
     return GetDiskSourceImageEncryptionKey(
       kmsKeySelfLink: pulumi.Input.fromValue(map['kmsKeySelfLink'] as String),
-      kmsKeyServiceAccount: pulumi.Input.fromValue(
-        map['kmsKeyServiceAccount'] as String,
-      ),
+      kmsKeyServiceAccount: pulumi.Input.fromValue(map['kmsKeyServiceAccount'] as String),
       rawKey: pulumi.Input.fromValue(map['rawKey'] as String),
       sha256: pulumi.Input.fromValue(map['sha256'] as String),
     );
   }
 }
+

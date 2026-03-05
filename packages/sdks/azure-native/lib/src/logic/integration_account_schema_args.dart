@@ -9,37 +9,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationAccountSchemaArgs {
   /// The content.
   final pulumi.Input<String>? content;
-
   /// The content type.
   final pulumi.Input<String>? contentType;
-
   /// The document name.
   final pulumi.Input<String>? documentName;
-
   /// The file name.
   final pulumi.Input<String>? fileName;
-
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
-
   /// The resource location.
   final pulumi.Input<String>? location;
-
   /// The metadata.
   final pulumi.Input<dynamic>? metadata;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The integration account schema name.
   final pulumi.Input<String>? schemaName;
-
   /// The schema type.
   final pulumi.Input<String> schemaType;
-
   /// The resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The target namespace of the schema.
   final pulumi.Input<String>? targetNamespace;
 
@@ -90,60 +79,19 @@ class IntegrationAccountSchemaArgs {
 
   factory IntegrationAccountSchemaArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountSchemaArgs(
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contentType: (() {
-        final guardedValue = map['contentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      documentName: (() {
-        final guardedValue = map['documentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fileName: (() {
-        final guardedValue = map['fileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      integrationAccountName: pulumi.Input.fromValue(
-        map['integrationAccountName'] as String,
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      schemaName: (() {
-        final guardedValue = map['schemaName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      documentName: (() { final guardedValue = map['documentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fileName: (() { final guardedValue = map['fileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      integrationAccountName: pulumi.Input.fromValue(map['integrationAccountName'] as String),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      schemaName: (() { final guardedValue = map['schemaName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schemaType: pulumi.Input.fromValue(map['schemaType'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      targetNamespace: (() {
-        final guardedValue = map['targetNamespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      targetNamespace: (() { final guardedValue = map['targetNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

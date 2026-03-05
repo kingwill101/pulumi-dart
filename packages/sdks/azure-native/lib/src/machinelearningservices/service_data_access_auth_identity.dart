@@ -16,3 +16,4 @@ enum ServiceDataAccessAuthIdentity {
     throw ArgumentError('Unknown ServiceDataAccessAuthIdentity value: $value');
   }
 }
+

@@ -12,10 +12,14 @@ class GetRemoteImageArgs {
 
   /// Creates a new [GetRemoteImageArgs].
   /// [name] The name of the Docker image, including any tags or SHA256 repo digests.
-  GetRemoteImageArgs({required this.name});
+  GetRemoteImageArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetRemoteImageArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetRemoteImageArgs {
     );
   }
 }
+

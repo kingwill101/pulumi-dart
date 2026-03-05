@@ -7,10 +7,8 @@ import 'managed_identity_properties.dart';
 class LandingZoneRegistrationResourceProperties {
   /// The resource id of the associated landing zone configuration.
   final pulumi.Input<String> existingLandingZoneConfigurationId;
-
   /// The resource id of the top level management group
   final pulumi.Input<String> existingTopLevelMgId;
-
   /// The managed identity to be assigned to this landing zone registration.
   final pulumi.Input<ManagedIdentityProperties>? managedIdentity;
 
@@ -28,33 +26,16 @@ class LandingZoneRegistrationResourceProperties {
     return <String, dynamic>{
       'existingLandingZoneConfigurationId': existingLandingZoneConfigurationId,
       'existingTopLevelMgId': existingTopLevelMgId,
-      'managedIdentity':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedIdentityProperties,
-            Map<String, dynamic>
-          >(managedIdentity, (value) => value.toMap()),
+      'managedIdentity': ?pulumi.Input.mapOptionalInputValue<ManagedIdentityProperties, Map<String, dynamic>>(managedIdentity, (value) => value.toMap()),
     };
   }
 
-  factory LandingZoneRegistrationResourceProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LandingZoneRegistrationResourceProperties.fromMap(Map<String, dynamic> map) {
     return LandingZoneRegistrationResourceProperties(
-      existingLandingZoneConfigurationId: pulumi.Input.fromValue(
-        map['existingLandingZoneConfigurationId'] as String,
-      ),
-      existingTopLevelMgId: pulumi.Input.fromValue(
-        map['existingTopLevelMgId'] as String,
-      ),
-      managedIdentity: (() {
-        final guardedValue = map['managedIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedIdentityProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      existingLandingZoneConfigurationId: pulumi.Input.fromValue(map['existingLandingZoneConfigurationId'] as String),
+      existingTopLevelMgId: pulumi.Input.fromValue(map['existingTopLevelMgId'] as String),
+      managedIdentity: (() { final guardedValue = map['managedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedIdentityProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

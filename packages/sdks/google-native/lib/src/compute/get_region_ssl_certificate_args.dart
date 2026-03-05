@@ -31,13 +31,10 @@ class GetRegionSslCertificateArgs {
 
   factory GetRegionSslCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionSslCertificateArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
       sslCertificate: pulumi.Input.fromValue(map['sslCertificate'] as String),
     );
   }
 }
+

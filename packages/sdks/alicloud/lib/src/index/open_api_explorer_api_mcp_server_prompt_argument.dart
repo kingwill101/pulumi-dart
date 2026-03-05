@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OpenApiExplorerApiMcpServerPromptArgument {
   /// Description of the API MCP service.
   final pulumi.Input<String>? description;
-
   /// Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
   final pulumi.Input<String>? name;
-
   /// Indicates whether the prompt parameter is required.
   final pulumi.Input<bool>? required;
 
@@ -30,25 +28,12 @@ class OpenApiExplorerApiMcpServerPromptArgument {
     };
   }
 
-  factory OpenApiExplorerApiMcpServerPromptArgument.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OpenApiExplorerApiMcpServerPromptArgument.fromMap(Map<String, dynamic> map) {
     return OpenApiExplorerApiMcpServerPromptArgument(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      required: (() {
-        final guardedValue = map['required'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      required: (() { final guardedValue = map['required']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -12,13 +12,20 @@ class GetNetworkArgs {
 
   /// Creates a new [GetNetworkArgs].
   /// [name] The name of the Docker network.
-  GetNetworkArgs({required this.name});
+  GetNetworkArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetNetworkArgs.fromMap(Map<String, dynamic> map) {
-    return GetNetworkArgs(name: pulumi.Input.fromValue(map['name'] as String));
+    return GetNetworkArgs(
+      name: pulumi.Input.fromValue(map['name'] as String),
+    );
   }
 }
+

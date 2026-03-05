@@ -7,18 +7,10 @@ import 'sql_availability_group_static_iplistener_properties_response_ip_v4_addre
 class SqlAvailabilityGroupStaticIPListenerPropertiesResponse {
   /// the DNS name for the listener.
   final pulumi.Input<String>? dnsName;
-
   /// IP V4 Addresses and masks for the listener.
-  final pulumi.Input<
-    List<
-      SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks
-    >
-  >?
-  ipV4AddressesAndMasks;
-
+  final pulumi.Input<List<SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks>>? ipV4AddressesAndMasks;
   /// IP V6 Addresses for the listener
   final pulumi.Input<List<String>>? ipV6Addresses;
-
   /// Network port for the listener. Default is 1433.
   final pulumi.Input<int>? port;
 
@@ -37,59 +29,19 @@ class SqlAvailabilityGroupStaticIPListenerPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dnsName': ?dnsName,
-      'ipV4AddressesAndMasks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks
-            >,
-            List<Map<String, dynamic>>
-          >(
-            ipV4AddressesAndMasks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ipV4AddressesAndMasks': ?pulumi.Input.mapOptionalInputValue<List<SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks>, List<Map<String, dynamic>>>(ipV4AddressesAndMasks, (value) => pulumi.Input.encodeList<SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipV6Addresses': ?ipV6Addresses,
       'port': ?port,
     };
   }
 
-  factory SqlAvailabilityGroupStaticIPListenerPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SqlAvailabilityGroupStaticIPListenerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlAvailabilityGroupStaticIPListenerPropertiesResponse(
-      dnsName: (() {
-        final guardedValue = map['dnsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipV4AddressesAndMasks: (() {
-        final guardedValue = map['ipV4AddressesAndMasks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks
-          >(
-            guardedValue,
-            (value) =>
-                SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      ipV6Addresses: (() {
-        final guardedValue = map['ipV6Addresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipV4AddressesAndMasks: (() { final guardedValue = map['ipV4AddressesAndMasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks>(guardedValue, (value) => SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ipV6Addresses: (() { final guardedValue = map['ipV6Addresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

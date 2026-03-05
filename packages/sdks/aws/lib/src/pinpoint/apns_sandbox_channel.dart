@@ -173,13 +173,10 @@ import 'apns_sandbox_channel_state.dart';
 class ApnsSandboxChannel extends pulumi.CustomResource {
   /// The application ID.
   late final pulumi.Output<String> applicationId;
-
   /// The ID assigned to your iOS app. To find this value, choose Certificates, IDs & Profiles, choose App IDs in the Identifiers section, and choose your app.
   late final pulumi.Output<String?> bundleId;
-
   /// The pem encoded TLS Certificate from Apple.
   late final pulumi.Output<String?> certificate;
-
   /// The default authentication method used for APNs Sandbox.
   /// __NOTE__: Amazon Pinpoint uses this default for every APNs push notification that you send using the console.
   /// You can override the default when you send a message programmatically using the Amazon Pinpoint API, the AWS CLI, or an AWS SDK.
@@ -189,24 +186,18 @@ class ApnsSandboxChannel extends pulumi.CustomResource {
   ///
   /// If you choose to use __Certificate credentials__ you will have to provide:
   late final pulumi.Output<String?> defaultAuthenticationMethod;
-
   /// Whether the channel is enabled or disabled. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// The Certificate Private Key file (ie. `.key` file).
   ///
   /// If you choose to use __Key credentials__ you will have to provide:
   late final pulumi.Output<String?> privateKey;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID assigned to your Apple developer account team. This value is provided on the Membership page.
   late final pulumi.Output<String?> teamId;
-
   /// The `.p8` file that you download from your Apple developer account when you create an authentication key.
   late final pulumi.Output<String?> tokenKey;
-
   /// The ID assigned to your signing key. To find this value, choose Certificates, IDs & Profiles, and choose your key in the Keys section.
   late final pulumi.Output<String?> tokenKeyId;
 
@@ -219,17 +210,15 @@ class ApnsSandboxChannel extends pulumi.CustomResource {
     ApnsSandboxChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:pinpoint/apnsSandboxChannel:ApnsSandboxChannel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:pinpoint/apnsSandboxChannel:ApnsSandboxChannel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     bundleId = registerOutput<String?>('bundleId');
     certificate = registerOutput<String?>('certificate');
-    defaultAuthenticationMethod = registerOutput<String?>(
-      'defaultAuthenticationMethod',
-    );
+    defaultAuthenticationMethod = registerOutput<String?>('defaultAuthenticationMethod');
     enabled = registerOutput<bool?>('enabled');
     privateKey = registerOutput<String?>('privateKey');
     region = registerOutput<String>('region');
@@ -256,17 +245,15 @@ class ApnsSandboxChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:pinpoint/apnsSandboxChannel:ApnsSandboxChannel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:pinpoint/apnsSandboxChannel:ApnsSandboxChannel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     bundleId = registerOutput<String?>('bundleId');
     certificate = registerOutput<String?>('certificate');
-    defaultAuthenticationMethod = registerOutput<String?>(
-      'defaultAuthenticationMethod',
-    );
+    defaultAuthenticationMethod = registerOutput<String?>('defaultAuthenticationMethod');
     enabled = registerOutput<bool?>('enabled');
     privateKey = registerOutput<String?>('privateKey');
     region = registerOutput<String>('region');

@@ -5,7 +5,6 @@ import 'instance_group_manager_standby_policy_mode_compute_beta.dart';
 
 class InstanceGroupManagerStandbyPolicyComputeBeta {
   final pulumi.Input<int>? initialDelaySec;
-
   /// Defines behaviour of using instances from standby pool to resize MIG.
   final pulumi.Input<InstanceGroupManagerStandbyPolicyModeComputeBeta>? mode;
 
@@ -20,32 +19,15 @@ class InstanceGroupManagerStandbyPolicyComputeBeta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'initialDelaySec': ?initialDelaySec,
-      'mode':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstanceGroupManagerStandbyPolicyModeComputeBeta,
-            String
-          >(mode, (value) => value.wireValue),
+      'mode': ?pulumi.Input.mapOptionalInputValue<InstanceGroupManagerStandbyPolicyModeComputeBeta, String>(mode, (value) => value.wireValue),
     };
   }
 
-  factory InstanceGroupManagerStandbyPolicyComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceGroupManagerStandbyPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStandbyPolicyComputeBeta(
-      initialDelaySec: (() {
-        final guardedValue = map['initialDelaySec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      mode: (() {
-        final guardedValue = map['mode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstanceGroupManagerStandbyPolicyModeComputeBeta.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      initialDelaySec: (() { final guardedValue = map['initialDelaySec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGroupManagerStandbyPolicyModeComputeBeta.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

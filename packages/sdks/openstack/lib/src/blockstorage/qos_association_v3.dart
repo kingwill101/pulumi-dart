@@ -187,12 +187,10 @@ class QosAssociationV3 extends pulumi.CustomResource {
   /// ID of the qos to associate. Changing this creates
   /// a new qos association.
   late final pulumi.Output<String> qosId;
-
   /// The region in which to create the qos association.
   /// If omitted, the `region` argument of the provider is used. Changing
   /// this creates a new qos association.
   late final pulumi.Output<String> region;
-
   /// ID of the volume_type to associate.
   /// Changing this creates a new qos association.
   late final pulumi.Output<String> volumeTypeId;
@@ -206,11 +204,11 @@ class QosAssociationV3 extends pulumi.CustomResource {
     QosAssociationV3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:blockstorage/qosAssociationV3:QosAssociationV3',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:blockstorage/qosAssociationV3:QosAssociationV3',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     qosId = registerOutput<String>('qosId');
     region = registerOutput<String>('region');
     volumeTypeId = registerOutput<String>('volumeTypeId');
@@ -234,11 +232,11 @@ class QosAssociationV3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:blockstorage/qosAssociationV3:QosAssociationV3',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:blockstorage/qosAssociationV3:QosAssociationV3',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     qosId = registerOutput<String>('qosId');
     region = registerOutput<String>('region');
     volumeTypeId = registerOutput<String>('volumeTypeId');

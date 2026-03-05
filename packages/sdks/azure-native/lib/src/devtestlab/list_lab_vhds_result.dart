@@ -7,37 +7,29 @@ import 'lab_vhd_response.dart';
 class ListLabVhdsResult {
   /// The link to the next page of items
   final String? nextLink;
-
   /// The LabVhd items on this page
   final List<LabVhdResponse> value;
 
   /// Creates a new [ListLabVhdsResult].
   /// [nextLink] The link to the next page of items
   /// [value] The LabVhd items on this page
-  ListLabVhdsResult({this.nextLink, required this.value});
+  ListLabVhdsResult({
+    this.nextLink,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<LabVhdResponse, Map<String, dynamic>>(
-        value,
-        (value) => value.toMap(),
-      ),
+      'value': pulumi.Input.encodeList<LabVhdResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory ListLabVhdsResult.fromMap(Map<String, dynamic> map) {
     return ListLabVhdsResult(
-      nextLink: (() {
-        final guardedValue = map['nextLink'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      value: pulumi.Input.decodeList<LabVhdResponse>(
-        map['value']!,
-        (value) =>
-            LabVhdResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      value: pulumi.Input.decodeList<LabVhdResponse>(map['value']!, (value) => LabVhdResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

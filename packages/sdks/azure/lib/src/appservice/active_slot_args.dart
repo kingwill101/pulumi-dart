@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActiveSlotArgs {
   /// The name of the App Service within which the Slot exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> appServiceName;
-
   /// The name of the App Service Slot which should be promoted to the Production Slot within the App Service.
   final pulumi.Input<String> appServiceSlotName;
-
   /// The name of the resource group in which the App Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class ActiveSlotArgs {
   factory ActiveSlotArgs.fromMap(Map<String, dynamic> map) {
     return ActiveSlotArgs(
       appServiceName: pulumi.Input.fromValue(map['appServiceName'] as String),
-      appServiceSlotName: pulumi.Input.fromValue(
-        map['appServiceSlotName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      appServiceSlotName: pulumi.Input.fromValue(map['appServiceSlotName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -7,7 +7,6 @@ class KubernetesClusterUpgradeOverride {
   ///
   /// &gt; **Note:** This only matches the start time of an upgrade, and the effectiveness won't change once an upgrade starts even if the `effective_until` value expires as the upgrade proceeds.
   final pulumi.Input<String>? effectiveUntil;
-
   /// Whether to force upgrade the cluster. Possible values are `true` or `false`.
   ///
   /// !&gt; **Note:** The `force_upgrade_enabled` field instructs the upgrade operation to bypass upgrade protections (e.g. checking for deprecated API usage) which may render the cluster inoperative after the upgrade process has completed. Use the `force_upgrade_enabled` option with extreme caution only.
@@ -30,14 +29,9 @@ class KubernetesClusterUpgradeOverride {
 
   factory KubernetesClusterUpgradeOverride.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterUpgradeOverride(
-      effectiveUntil: (() {
-        final guardedValue = map['effectiveUntil'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      forceUpgradeEnabled: pulumi.Input.fromValue(
-        map['forceUpgradeEnabled'] as bool,
-      ),
+      effectiveUntil: (() { final guardedValue = map['effectiveUntil']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      forceUpgradeEnabled: pulumi.Input.fromValue(map['forceUpgradeEnabled'] as bool),
     );
   }
 }
+

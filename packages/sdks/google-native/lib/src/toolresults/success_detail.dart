@@ -9,19 +9,20 @@ class SuccessDetail {
 
   /// Creates a new [SuccessDetail].
   /// [otherNativeCrash] If a native process other than the app crashed.
-  SuccessDetail({this.otherNativeCrash});
+  SuccessDetail({
+    this.otherNativeCrash,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'otherNativeCrash': ?otherNativeCrash};
+    return <String, dynamic>{
+      'otherNativeCrash': ?otherNativeCrash,
+    };
   }
 
   factory SuccessDetail.fromMap(Map<String, dynamic> map) {
     return SuccessDetail(
-      otherNativeCrash: (() {
-        final guardedValue = map['otherNativeCrash'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      otherNativeCrash: (() { final guardedValue = map['otherNativeCrash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

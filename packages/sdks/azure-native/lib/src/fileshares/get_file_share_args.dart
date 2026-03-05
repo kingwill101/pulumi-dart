@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFileShareArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The resource name of the file share, as seen by the administrator through Azure Resource Manager.
   final pulumi.Input<String> resourceName;
 
@@ -30,10 +29,9 @@ class GetFileShareArgs {
 
   factory GetFileShareArgs.fromMap(Map<String, dynamic> map) {
     return GetFileShareArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

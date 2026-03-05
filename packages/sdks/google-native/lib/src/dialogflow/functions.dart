@@ -361,8 +361,7 @@ Future<GetConversationDialogflowV2beta1Result> getConversationDialogflowV2beta1(
 /// Retrieves the specified conversation profile.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dialogflow_v2beta1_get_conversation_profile_dialogflow_v2beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConversationProfileDialogflowV2beta1Result>
-getConversationProfileDialogflowV2beta1(
+Future<GetConversationProfileDialogflowV2beta1Result> getConversationProfileDialogflowV2beta1(
   GetConversationProfileDialogflowV2beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -442,8 +441,7 @@ Future<GetIntentDialogflowV2beta1Result> getIntentDialogflowV2beta1(
 /// Retrieves the specified knowledge base. Note: The `projects.agent.knowledgeBases` resource is deprecated; only use `projects.knowledgeBases`.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dialogflow_v2beta1_get_knowledge_base_dialogflow_v2beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetKnowledgeBaseDialogflowV2beta1Result>
-getKnowledgeBaseDialogflowV2beta1(
+Future<GetKnowledgeBaseDialogflowV2beta1Result> getKnowledgeBaseDialogflowV2beta1(
   GetKnowledgeBaseDialogflowV2beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -475,8 +473,7 @@ Future<GetParticipantDialogflowV2beta1Result> getParticipantDialogflowV2beta1(
 /// Retrieves the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dialogflow_v2beta1_get_session_entity_type_dialogflow_v2beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSessionEntityTypeDialogflowV2beta1Result>
-getSessionEntityTypeDialogflowV2beta1(
+Future<GetSessionEntityTypeDialogflowV2beta1Result> getSessionEntityTypeDialogflowV2beta1(
   GetSessionEntityTypeDialogflowV2beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -828,8 +825,7 @@ Future<GetPageDialogflowV3beta1Result> getPageDialogflowV3beta1(
 /// Retrieves the specified SecuritySettings. The returned settings may be stale by up to 1 minute.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dialogflow_v3beta1_get_security_setting_dialogflow_v3beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSecuritySettingDialogflowV3beta1Result>
-getSecuritySettingDialogflowV3beta1(
+Future<GetSecuritySettingDialogflowV3beta1Result> getSecuritySettingDialogflowV3beta1(
   GetSecuritySettingDialogflowV3beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -845,8 +841,7 @@ getSecuritySettingDialogflowV3beta1(
 /// Retrieves the specified session entity type.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dialogflow_v3beta1_get_session_entity_type_dialogflow_v3beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSessionEntityTypeDialogflowV3beta1Result>
-getSessionEntityTypeDialogflowV3beta1(
+Future<GetSessionEntityTypeDialogflowV3beta1Result> getSessionEntityTypeDialogflowV3beta1(
   GetSessionEntityTypeDialogflowV3beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -878,8 +873,7 @@ Future<GetTestCaseDialogflowV3beta1Result> getTestCaseDialogflowV3beta1(
 /// Retrieves the specified TransitionRouteGroup.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dialogflow_v3beta1_get_transition_route_group_dialogflow_v3beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitionRouteGroupDialogflowV3beta1Result>
-getTransitionRouteGroupDialogflowV3beta1(
+Future<GetTransitionRouteGroupDialogflowV3beta1Result> getTransitionRouteGroupDialogflowV3beta1(
   GetTransitionRouteGroupDialogflowV3beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

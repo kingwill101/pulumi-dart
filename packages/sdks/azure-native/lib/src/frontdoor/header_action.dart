@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HeaderAction {
   /// Which type of manipulation to apply to the header.
   final pulumi.Input<String> headerActionType;
-
   /// The name of the header this action will apply to.
   final pulumi.Input<String> headerName;
-
   /// The value to update the given header name with. This value is not used if the actionType is Delete.
   final pulumi.Input<String>? value;
 
@@ -33,15 +31,10 @@ class HeaderAction {
 
   factory HeaderAction.fromMap(Map<String, dynamic> map) {
     return HeaderAction(
-      headerActionType: pulumi.Input.fromValue(
-        map['headerActionType'] as String,
-      ),
+      headerActionType: pulumi.Input.fromValue(map['headerActionType'] as String),
       headerName: pulumi.Input.fromValue(map['headerName'] as String),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

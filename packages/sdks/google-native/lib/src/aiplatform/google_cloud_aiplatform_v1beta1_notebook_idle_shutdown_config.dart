@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig {
   /// Whether Idle Shutdown is disabled in this NotebookRuntimeTemplate.
   final pulumi.Input<bool>? idleShutdownDisabled;
-
   /// Duration is accurate to the second. In Notebook, Idle Timeout is accurate to minute so the range of idle_timeout (second) is: 10 * 60 ~ 1440 * 60.
   final pulumi.Input<String> idleTimeout;
 
@@ -25,16 +24,11 @@ class GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig(
-      idleShutdownDisabled: (() {
-        final guardedValue = map['idleShutdownDisabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      idleShutdownDisabled: (() { final guardedValue = map['idleShutdownDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       idleTimeout: pulumi.Input.fromValue(map['idleTimeout'] as String),
     );
   }
 }
+

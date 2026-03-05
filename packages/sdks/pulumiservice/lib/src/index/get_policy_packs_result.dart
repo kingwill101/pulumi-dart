@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPolicyPacks.
 class GetPolicyPacksResult {
   /// List of policy packs in the organization.
@@ -7,10 +8,14 @@ class GetPolicyPacksResult {
 
   /// Creates a new [GetPolicyPacksResult].
   /// [policyPacks] List of policy packs in the organization.
-  GetPolicyPacksResult({required this.policyPacks});
+  GetPolicyPacksResult({
+    required this.policyPacks,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policyPacks': policyPacks};
+    return <String, dynamic>{
+      'policyPacks': policyPacks,
+    };
   }
 
   factory GetPolicyPacksResult.fromMap(Map<String, dynamic> map) {
@@ -19,3 +24,4 @@ class GetPolicyPacksResult {
     );
   }
 }
+

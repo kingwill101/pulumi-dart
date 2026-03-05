@@ -214,10 +214,8 @@ import 'data_connector_azure_security_center_state.dart';
 class DataConnectorAzureSecurityCenter extends pulumi.CustomResource {
   /// The ID of the Log Analytics Workspace that this Azure Security Center Data Connector resides in. Changing this forces a new Azure Security Center Data Connector to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
-
   /// The name which should be used for this Azure Security Center Data Connector. Changing this forces a new Azure Security Center Data Connector to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the subscription that this Azure Security Center Data Connector connects to. Changing this forces a new Azure Security Center Data Connector to be created.
   late final pulumi.Output<String> subscriptionId;
 
@@ -230,11 +228,11 @@ class DataConnectorAzureSecurityCenter extends pulumi.CustomResource {
     DataConnectorAzureSecurityCenterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/dataConnectorAzureSecurityCenter:DataConnectorAzureSecurityCenter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/dataConnectorAzureSecurityCenter:DataConnectorAzureSecurityCenter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     subscriptionId = registerOutput<String>('subscriptionId');
@@ -258,11 +256,11 @@ class DataConnectorAzureSecurityCenter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/dataConnectorAzureSecurityCenter:DataConnectorAzureSecurityCenter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/dataConnectorAzureSecurityCenter:DataConnectorAzureSecurityCenter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     subscriptionId = registerOutput<String>('subscriptionId');

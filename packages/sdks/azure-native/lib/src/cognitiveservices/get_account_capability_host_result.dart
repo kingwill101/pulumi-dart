@@ -6,16 +6,12 @@ import 'capability_host_response.dart';
 class GetAccountCapabilityHostResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// [Required] Additional attributes of the entity.
   final CapabilityHostResponse capabilityHostProperties;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -46,12 +42,11 @@ class GetAccountCapabilityHostResult {
   factory GetAccountCapabilityHostResult.fromMap(Map<String, dynamic> map) {
     return GetAccountCapabilityHostResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      capabilityHostProperties: CapabilityHostResponse.fromMap(
-        (map['capabilityHostProperties']! as Map).cast<String, dynamic>(),
-      ),
+      capabilityHostProperties: CapabilityHostResponse.fromMap((map['capabilityHostProperties']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
+

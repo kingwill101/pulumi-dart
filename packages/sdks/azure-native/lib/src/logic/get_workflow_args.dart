@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkflowArgs {
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The workflow name.
   final pulumi.Input<String> workflowName;
 
@@ -30,10 +29,9 @@ class GetWorkflowArgs {
 
   factory GetWorkflowArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workflowName: pulumi.Input.fromValue(map['workflowName'] as String),
     );
   }
 }
+

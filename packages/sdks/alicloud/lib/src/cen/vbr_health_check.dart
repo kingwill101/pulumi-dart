@@ -415,25 +415,18 @@ import 'vbr_health_check_state.dart';
 class VbrHealthCheck extends pulumi.CustomResource {
   /// The ID of the CEN instance.
   late final pulumi.Output<String> cenId;
-
   /// Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
   late final pulumi.Output<int?> healthCheckInterval;
-
   /// The source IP address of health checks.
   late final pulumi.Output<String> healthCheckSourceIp;
-
   /// The destination IP address of health checks.
   late final pulumi.Output<String> healthCheckTargetIp;
-
   /// Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
   late final pulumi.Output<int?> healthyThreshold;
-
   /// The ID of the VBR.
   late final pulumi.Output<String> vbrInstanceId;
-
   /// The ID of the account to which the VBR belongs.
   late final pulumi.Output<int?> vbrInstanceOwnerId;
-
   /// The ID of the region to which the VBR belongs.
   ///
   /// -&gt;**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
@@ -448,11 +441,11 @@ class VbrHealthCheck extends pulumi.CustomResource {
     VbrHealthCheckArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/vbrHealthCheck:VbrHealthCheck',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/vbrHealthCheck:VbrHealthCheck',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenId = registerOutput<String>('cenId');
     healthCheckInterval = registerOutput<int?>('healthCheckInterval');
     healthCheckSourceIp = registerOutput<String>('healthCheckSourceIp');
@@ -481,11 +474,11 @@ class VbrHealthCheck extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/vbrHealthCheck:VbrHealthCheck',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/vbrHealthCheck:VbrHealthCheck',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenId = registerOutput<String>('cenId');
     healthCheckInterval = registerOutput<int?>('healthCheckInterval');
     healthCheckSourceIp = registerOutput<String>('healthCheckSourceIp');

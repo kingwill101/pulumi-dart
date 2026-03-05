@@ -14,18 +14,15 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'daysOfWeeks': ?daysOfWeeks};
+    return <String, dynamic>{
+      'daysOfWeeks': ?daysOfWeeks,
+    };
   }
 
-  factory BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek(
-      daysOfWeeks: (() {
-        final guardedValue = map['daysOfWeeks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      daysOfWeeks: (() { final guardedValue = map['daysOfWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -228,28 +228,20 @@ import 'hub_route_table_args.dart';
 class HubRouteTable extends pulumi.CustomResource {
   /// List of all connections associated with this route table.
   late final pulumi.Output<List<String>> associatedConnections;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// List of labels associated with this route table.
   late final pulumi.Output<List<String>?> labels;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
-
   /// List of all connections that advertise to this route table.
   late final pulumi.Output<List<String>> propagatingConnections;
-
   /// The provisioning state of the RouteTable resource.
   late final pulumi.Output<String> provisioningState;
-
   /// List of all routes.
   late final pulumi.Output<List<Map<String, dynamic>>?> routes;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -262,21 +254,17 @@ class HubRouteTable extends pulumi.CustomResource {
     HubRouteTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:HubRouteTable',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    associatedConnections = registerOutput<List<String>>(
-      'associatedConnections',
-    );
+          'azure-native:network:HubRouteTable',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    associatedConnections = registerOutput<List<String>>('associatedConnections');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String?>('name');
-    propagatingConnections = registerOutput<List<String>>(
-      'propagatingConnections',
-    );
+    propagatingConnections = registerOutput<List<String>>('propagatingConnections');
     provisioningState = registerOutput<String>('provisioningState');
     routes = registerOutput<List<Map<String, dynamic>>?>('routes');
     type = registerOutput<String>('type');

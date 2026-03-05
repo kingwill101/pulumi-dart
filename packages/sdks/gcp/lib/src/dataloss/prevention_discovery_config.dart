@@ -36,51 +36,37 @@ class PreventionDiscoveryConfig extends pulumi.CustomResource {
   /// Actions to execute at the completion of scanning
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> actions;
-
   /// Output only. The creation timestamp of a DiscoveryConfig.
   late final pulumi.Output<String> createTime;
-
   /// Display Name (max 1000 Chars)
   late final pulumi.Output<String?> displayName;
-
   /// Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> errors;
-
   /// Detection logic for profile generation
   late final pulumi.Output<List<String>?> inspectTemplates;
-
   /// Output only. The timestamp of the last time this config was executed
   late final pulumi.Output<String> lastRunTime;
-
   /// Location to create the discovery config in.
   late final pulumi.Output<String> location;
-
   /// Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
   late final pulumi.Output<String> name;
-
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<PreventionDiscoveryConfigOrgConfig?> orgConfig;
-
   /// A nested object resource.
   /// Structure is documented below.
-  late final pulumi.Output<PreventionDiscoveryConfigOtherCloudStartingLocation?>
-  otherCloudStartingLocation;
-
+  late final pulumi.Output<PreventionDiscoveryConfigOtherCloudStartingLocation?> otherCloudStartingLocation;
   /// The parent of the discovery config in any of the following formats:
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
   late final pulumi.Output<String> parent;
-
   /// Required. A status for this configuration
   /// Possible values are: `RUNNING`, `PAUSED`.
   late final pulumi.Output<String?> status;
-
   /// Target to match against for determining what to scan and how frequently
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> targets;
-
   /// Output only. The last update timestamp of a DiscoveryConfig.
   late final pulumi.Output<String> updateTime;
 
@@ -93,11 +79,11 @@ class PreventionDiscoveryConfig extends pulumi.CustomResource {
     PreventionDiscoveryConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>?>('actions');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
@@ -106,27 +92,8 @@ class PreventionDiscoveryConfig extends pulumi.CustomResource {
     lastRunTime = registerOutput<String>('lastRunTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    orgConfig = registerOutput<PreventionDiscoveryConfigOrgConfig?>(
-      'orgConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PreventionDiscoveryConfigOrgConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    otherCloudStartingLocation =
-        registerOutput<PreventionDiscoveryConfigOtherCloudStartingLocation?>(
-          'otherCloudStartingLocation',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return PreventionDiscoveryConfigOtherCloudStartingLocation.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    orgConfig = registerOutput<PreventionDiscoveryConfigOrgConfig?>('orgConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionDiscoveryConfigOrgConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    otherCloudStartingLocation = registerOutput<PreventionDiscoveryConfigOtherCloudStartingLocation?>('otherCloudStartingLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionDiscoveryConfigOtherCloudStartingLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     parent = registerOutput<String>('parent');
     status = registerOutput<String?>('status');
     targets = registerOutput<List<Map<String, dynamic>>?>('targets');
@@ -151,11 +118,11 @@ class PreventionDiscoveryConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>?>('actions');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
@@ -164,27 +131,8 @@ class PreventionDiscoveryConfig extends pulumi.CustomResource {
     lastRunTime = registerOutput<String>('lastRunTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    orgConfig = registerOutput<PreventionDiscoveryConfigOrgConfig?>(
-      'orgConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PreventionDiscoveryConfigOrgConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    otherCloudStartingLocation =
-        registerOutput<PreventionDiscoveryConfigOtherCloudStartingLocation?>(
-          'otherCloudStartingLocation',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return PreventionDiscoveryConfigOtherCloudStartingLocation.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    orgConfig = registerOutput<PreventionDiscoveryConfigOrgConfig?>('orgConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionDiscoveryConfigOrgConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    otherCloudStartingLocation = registerOutput<PreventionDiscoveryConfigOtherCloudStartingLocation?>('otherCloudStartingLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionDiscoveryConfigOtherCloudStartingLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     parent = registerOutput<String>('parent');
     status = registerOutput<String?>('status');
     targets = registerOutput<List<Map<String, dynamic>>?>('targets');

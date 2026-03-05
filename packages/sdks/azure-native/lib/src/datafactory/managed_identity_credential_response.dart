@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedIdentityCredentialResponse {
   /// List of tags that can be used for describing the Credential.
   final pulumi.Input<List<dynamic>>? annotations;
-
   /// Credential description.
   final pulumi.Input<String>? description;
-
   /// The resource id of user assigned managed identity
   final pulumi.Input<String>? resourceId;
-
   /// Type of credential.
   /// Expected value is 'ManagedIdentity'.
   final pulumi.Input<String> type;
@@ -40,22 +37,11 @@ class ManagedIdentityCredentialResponse {
 
   factory ManagedIdentityCredentialResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityCredentialResponse(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

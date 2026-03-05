@@ -13,7 +13,12 @@ class ServerPublicNet {
   /// [ipv4Enabled] Optional.
   /// [ipv6] Optional.
   /// [ipv6Enabled] Optional.
-  ServerPublicNet({this.ipv4, this.ipv4Enabled, this.ipv6, this.ipv6Enabled});
+  ServerPublicNet({
+    this.ipv4,
+    this.ipv4Enabled,
+    this.ipv6,
+    this.ipv6Enabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,26 +31,11 @@ class ServerPublicNet {
 
   factory ServerPublicNet.fromMap(Map<String, dynamic> map) {
     return ServerPublicNet(
-      ipv4: (() {
-        final guardedValue = map['ipv4'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ipv4Enabled: (() {
-        final guardedValue = map['ipv4Enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ipv6: (() {
-        final guardedValue = map['ipv6'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ipv6Enabled: (() {
-        final guardedValue = map['ipv6Enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      ipv4: (() { final guardedValue = map['ipv4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ipv4Enabled: (() { final guardedValue = map['ipv4Enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ipv6: (() { final guardedValue = map['ipv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ipv6Enabled: (() { final guardedValue = map['ipv6Enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

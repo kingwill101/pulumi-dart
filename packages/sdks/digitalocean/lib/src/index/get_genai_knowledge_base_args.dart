@@ -12,8 +12,7 @@ class GetGenaiKnowledgeBaseArgs {
   final pulumi.Input<String>? databaseId;
   final pulumi.Input<String>? embeddingModelUuid;
   final pulumi.Input<bool>? isPublic;
-  final pulumi.Input<List<GetGenaiKnowledgeBaseLastIndexingJob>>?
-  lastIndexingJobs;
+  final pulumi.Input<List<GetGenaiKnowledgeBaseLastIndexingJob>>? lastIndexingJobs;
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? projectId;
   final pulumi.Input<String>? region;
@@ -53,18 +52,7 @@ class GetGenaiKnowledgeBaseArgs {
       'databaseId': ?databaseId,
       'embeddingModelUuid': ?embeddingModelUuid,
       'isPublic': ?isPublic,
-      'lastIndexingJobs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetGenaiKnowledgeBaseLastIndexingJob>,
-            List<Map<String, dynamic>>
-          >(
-            lastIndexingJobs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetGenaiKnowledgeBaseLastIndexingJob,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'lastIndexingJobs': ?pulumi.Input.mapOptionalInputValue<List<GetGenaiKnowledgeBaseLastIndexingJob>, List<Map<String, dynamic>>>(lastIndexingJobs, (value) => pulumi.Input.encodeList<GetGenaiKnowledgeBaseLastIndexingJob, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'projectId': ?projectId,
       'region': ?region,
@@ -76,68 +64,18 @@ class GetGenaiKnowledgeBaseArgs {
 
   factory GetGenaiKnowledgeBaseArgs.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBaseArgs(
-      addedToAgentAt: (() {
-        final guardedValue = map['addedToAgentAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      databaseId: (() {
-        final guardedValue = map['databaseId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      embeddingModelUuid: (() {
-        final guardedValue = map['embeddingModelUuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isPublic: (() {
-        final guardedValue = map['isPublic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      lastIndexingJobs: (() {
-        final guardedValue = map['lastIndexingJobs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetGenaiKnowledgeBaseLastIndexingJob>(
-            guardedValue,
-            (value) => GetGenaiKnowledgeBaseLastIndexingJob.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      projectId: (() {
-        final guardedValue = map['projectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      userId: (() {
-        final guardedValue = map['userId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uuid: (() {
-        final guardedValue = map['uuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addedToAgentAt: (() { final guardedValue = map['addedToAgentAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      databaseId: (() { final guardedValue = map['databaseId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      embeddingModelUuid: (() { final guardedValue = map['embeddingModelUuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isPublic: (() { final guardedValue = map['isPublic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      lastIndexingJobs: (() { final guardedValue = map['lastIndexingJobs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetGenaiKnowledgeBaseLastIndexingJob>(guardedValue, (value) => GetGenaiKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

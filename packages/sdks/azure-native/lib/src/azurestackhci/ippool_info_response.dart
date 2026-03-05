@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IPPoolInfoResponse {
   /// Number of IP addresses available in the IP Pool
   final pulumi.Input<String> available;
-
   /// Number of IP addresses allocated from the IP Pool
   final pulumi.Input<String> used;
 
   /// Creates a new [IPPoolInfoResponse].
   /// [available] Number of IP addresses available in the IP Pool
   /// [used] Number of IP addresses allocated from the IP Pool
-  IPPoolInfoResponse({required this.available, required this.used});
+  IPPoolInfoResponse({
+    required this.available,
+    required this.used,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'available': available, 'used': used};
+    return <String, dynamic>{
+      'available': available,
+      'used': used,
+    };
   }
 
   factory IPPoolInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class IPPoolInfoResponse {
     );
   }
 }
+

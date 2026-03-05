@@ -315,22 +315,16 @@ class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResource {
   ///
   /// &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
   late final pulumi.Output<String> displayName;
-
   /// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
   late final pulumi.Output<String> endDate;
-
   /// A UUID used to uniquely identify the verify certificate.
   late final pulumi.Output<String> keyId;
-
   /// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> servicePrincipalId;
-
   /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
   late final pulumi.Output<String> startDate;
-
   /// A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
   late final pulumi.Output<String> thumbprint;
-
   /// The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
   late final pulumi.Output<String> value;
 
@@ -343,11 +337,11 @@ class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResource {
     ServicePrincipalTokenSigningCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     endDate = registerOutput<String>('endDate');
     keyId = registerOutput<String>('keyId');
@@ -375,11 +369,11 @@ class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     endDate = registerOutput<String>('endDate');
     keyId = registerOutput<String>('keyId');

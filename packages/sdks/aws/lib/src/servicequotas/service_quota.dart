@@ -120,33 +120,24 @@ import 'service_quota_state.dart';
 class ServiceQuota extends pulumi.CustomResource {
   /// Whether the service quota can be increased.
   late final pulumi.Output<bool> adjustable;
-
   /// Amazon Resource Name (ARN) of the service quota.
   late final pulumi.Output<String> arn;
-
   /// Default value of the service quota.
   late final pulumi.Output<double> defaultValue;
-
   /// Code of the service quota to track. For example: `L-F678F1CE`. Available values can be found with the [AWS CLI service-quotas list-service-quotas command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html).
   late final pulumi.Output<String> quotaCode;
-
   /// Name of the quota.
   late final pulumi.Output<String> quotaName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<String> requestId;
   late final pulumi.Output<String> requestStatus;
-
   /// Code of the service to track. For example: `vpc`. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
   late final pulumi.Output<String> serviceCode;
-
   /// Name of the service.
   late final pulumi.Output<String> serviceName;
-
   /// Information about the measurement.
   late final pulumi.Output<List<Map<String, dynamic>>> usageMetrics;
-
   /// Float specifying the desired value for the service quota. If the desired value is higher than the current value, a quota increase request is submitted. When a known request is submitted and pending, the value reflects the desired value of the pending request.
   late final pulumi.Output<double> value;
 
@@ -159,11 +150,11 @@ class ServiceQuota extends pulumi.CustomResource {
     ServiceQuotaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicequotas/serviceQuota:ServiceQuota',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicequotas/serviceQuota:ServiceQuota',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adjustable = registerOutput<bool>('adjustable');
     arn = registerOutput<String>('arn');
     defaultValue = registerOutput<double>('defaultValue');
@@ -196,11 +187,11 @@ class ServiceQuota extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicequotas/serviceQuota:ServiceQuota',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicequotas/serviceQuota:ServiceQuota',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adjustable = registerOutput<bool>('adjustable');
     arn = registerOutput<String>('arn');
     defaultValue = registerOutput<double>('defaultValue');

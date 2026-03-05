@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiFeatureOnlineStoreBigtableAutoScaling {
   /// A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
   final pulumi.Input<int>? cpuUtilizationTarget;
-
   /// The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
   final pulumi.Input<int> maxNodeCount;
-
   /// The minimum number of nodes to scale down to. Must be greater than or equal to 1.
   final pulumi.Input<int> minNodeCount;
 
@@ -30,17 +28,12 @@ class AiFeatureOnlineStoreBigtableAutoScaling {
     };
   }
 
-  factory AiFeatureOnlineStoreBigtableAutoScaling.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiFeatureOnlineStoreBigtableAutoScaling.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreBigtableAutoScaling(
-      cpuUtilizationTarget: (() {
-        final guardedValue = map['cpuUtilizationTarget'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      cpuUtilizationTarget: (() { final guardedValue = map['cpuUtilizationTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
       minNodeCount: pulumi.Input.fromValue(map['minNodeCount'] as int),
     );
   }
 }
+

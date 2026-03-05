@@ -31,13 +31,10 @@ class GetRegionUrlMapArgs {
 
   factory GetRegionUrlMapArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionUrlMapArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
       urlMap: pulumi.Input.fromValue(map['urlMap'] as String),
     );
   }
 }
+

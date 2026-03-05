@@ -7,7 +7,6 @@ class AccountCustomerManagedKey {
   ///
   /// &gt; **Note:** When `project_management_enabled` is set to `true`, removing this block forces a new resource to be created.
   final pulumi.Input<String>? identityClientId;
-
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Cognitive Account.
   final pulumi.Input<String> keyVaultKeyId;
 
@@ -28,12 +27,9 @@ class AccountCustomerManagedKey {
 
   factory AccountCustomerManagedKey.fromMap(Map<String, dynamic> map) {
     return AccountCustomerManagedKey(
-      identityClientId: (() {
-        final guardedValue = map['identityClientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identityClientId: (() { final guardedValue = map['identityClientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyVaultKeyId: pulumi.Input.fromValue(map['keyVaultKeyId'] as String),
     );
   }
 }
+

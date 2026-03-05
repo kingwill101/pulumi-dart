@@ -13,14 +13,15 @@ class WindowsFunctionAppSlotAuthSettingsV2AzureStaticWebAppV2 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'clientId': clientId};
+    return <String, dynamic>{
+      'clientId': clientId,
+    };
   }
 
-  factory WindowsFunctionAppSlotAuthSettingsV2AzureStaticWebAppV2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WindowsFunctionAppSlotAuthSettingsV2AzureStaticWebAppV2.fromMap(Map<String, dynamic> map) {
     return WindowsFunctionAppSlotAuthSettingsV2AzureStaticWebAppV2(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
     );
   }
 }
+

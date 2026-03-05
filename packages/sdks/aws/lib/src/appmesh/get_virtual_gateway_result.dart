@@ -7,26 +7,20 @@ import 'get_virtual_gateway_spec.dart';
 class GetVirtualGatewayResult {
   /// ARN of the virtual gateway.
   final String arn;
-
   /// Creation date of the virtual gateway.
   final String createdDate;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Last update date of the virtual gateway.
   final String lastUpdatedDate;
   final String meshName;
   final String meshOwner;
   final String name;
   final String region;
-
   /// Resource owner's AWS account ID.
   final String resourceOwner;
-
   /// Virtual gateway specification. See the `aws.appmesh.VirtualGateway` resource for details.
   final List<GetVirtualGatewaySpec> specs;
-
   /// Map of tags.
   final Map<String, String> tags;
 
@@ -67,11 +61,7 @@ class GetVirtualGatewayResult {
       'name': name,
       'region': region,
       'resourceOwner': resourceOwner,
-      'specs':
-          pulumi.Input.encodeList<GetVirtualGatewaySpec, Map<String, dynamic>>(
-            specs,
-            (value) => value.toMap(),
-          ),
+      'specs': pulumi.Input.encodeList<GetVirtualGatewaySpec, Map<String, dynamic>>(specs, (value) => value.toMap()),
       'tags': tags,
     };
   }
@@ -87,13 +77,9 @@ class GetVirtualGatewayResult {
       name: map['name'] as String,
       region: map['region'] as String,
       resourceOwner: map['resourceOwner'] as String,
-      specs: pulumi.Input.decodeList<GetVirtualGatewaySpec>(
-        map['specs']!,
-        (value) => GetVirtualGatewaySpec.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      specs: pulumi.Input.decodeList<GetVirtualGatewaySpec>(map['specs']!, (value) => GetVirtualGatewaySpec.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

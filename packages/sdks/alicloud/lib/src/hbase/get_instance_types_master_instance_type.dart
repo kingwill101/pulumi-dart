@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTypesMasterInstanceType {
   /// Cpu size of the instance type.
   final pulumi.Input<int> cpuSize;
-
   /// The hbase instance type of create hbase cluster instance.
   final pulumi.Input<String> instanceType;
-
   /// Mem size of the instance type.
   final pulumi.Input<int> memSize;
 
@@ -38,3 +36,4 @@ class GetInstanceTypesMasterInstanceType {
     );
   }
 }
+

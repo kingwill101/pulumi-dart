@@ -7,28 +7,20 @@ import 'permission_constraint.dart';
 class Permission {
   /// Extra custom constraints. The constraints are ANDed together.
   final pulumi.Input<List<PermissionConstraint>>? constraints;
-
   /// Used in Ingress or Egress Gateway cases to specify hosts that the policy applies to. Exact match, prefix match, and suffix match are supported.
   final pulumi.Input<List<String>>? hosts;
-
   /// HTTP method.
   final pulumi.Input<List<String>>? methods;
-
   /// Negate of hosts. Specifies exclusions.
   final pulumi.Input<List<String>>? notHosts;
-
   /// Negate of methods. Specifies exclusions.
   final pulumi.Input<List<String>>? notMethods;
-
   /// Negate of paths. Specifies exclusions.
   final pulumi.Input<List<String>>? notPaths;
-
   /// Negate of ports. Specifies exclusions.
   final pulumi.Input<List<String>>? notPorts;
-
   /// HTTP request paths or gRPC methods. Exact match, prefix match, and suffix match are supported.
   final pulumi.Input<List<String>>? paths;
-
   /// Port names or numbers.
   final pulumi.Input<List<String>>? ports;
 
@@ -56,18 +48,7 @@ class Permission {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'constraints':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<PermissionConstraint>,
-            List<Map<String, dynamic>>
-          >(
-            constraints,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PermissionConstraint,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'constraints': ?pulumi.Input.mapOptionalInputValue<List<PermissionConstraint>, List<Map<String, dynamic>>>(constraints, (value) => pulumi.Input.encodeList<PermissionConstraint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'hosts': ?hosts,
       'methods': ?methods,
       'notHosts': ?notHosts,
@@ -81,58 +62,16 @@ class Permission {
 
   factory Permission.fromMap(Map<String, dynamic> map) {
     return Permission(
-      constraints: (() {
-        final guardedValue = map['constraints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<PermissionConstraint>(
-            guardedValue,
-            (value) => PermissionConstraint.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      hosts: (() {
-        final guardedValue = map['hosts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      methods: (() {
-        final guardedValue = map['methods'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      notHosts: (() {
-        final guardedValue = map['notHosts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      notMethods: (() {
-        final guardedValue = map['notMethods'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      notPaths: (() {
-        final guardedValue = map['notPaths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      notPorts: (() {
-        final guardedValue = map['notPorts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      paths: (() {
-        final guardedValue = map['paths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      ports: (() {
-        final guardedValue = map['ports'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      constraints: (() { final guardedValue = map['constraints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PermissionConstraint>(guardedValue, (value) => PermissionConstraint.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      hosts: (() { final guardedValue = map['hosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      methods: (() { final guardedValue = map['methods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      notHosts: (() { final guardedValue = map['notHosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      notMethods: (() { final guardedValue = map['notMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      notPaths: (() { final guardedValue = map['notPaths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      notPorts: (() { final guardedValue = map['notPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      paths: (() { final guardedValue = map['paths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      ports: (() { final guardedValue = map['ports']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

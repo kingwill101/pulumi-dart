@@ -453,40 +453,28 @@ import 'oss_scan_config_state.dart';
 class OssScanConfig extends pulumi.CustomResource {
   /// Specifies whether to match the prefixes of all objects.
   late final pulumi.Output<bool> allKeyPrefix;
-
   /// The names of the buckets.
   late final pulumi.Output<List<String>> bucketNameLists;
-
   /// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
   late final pulumi.Output<int?> decompressMaxFileCount;
-
   /// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
   late final pulumi.Output<int?> decompressMaxLayer;
-
   /// The decryption methods.
   late final pulumi.Output<List<String>?> decryptionLists;
-
   /// Indicates whether the check policy is enabled. Valid values:
   late final pulumi.Output<int> enable;
-
   /// The end time of the check. The time is in the HH:mm:ss format.
   late final pulumi.Output<String> endTime;
-
   /// The prefixes of the objects.
   late final pulumi.Output<List<String>?> keyPrefixLists;
-
   /// The suffixes of the objects that are checked.
   late final pulumi.Output<List<String>> keySuffixLists;
-
   /// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
   late final pulumi.Output<int?> lastModifiedStartTime;
-
   /// The policy name.
   late final pulumi.Output<String?> ossScanConfigName;
-
   /// The days when the check is performed. The value indicates the days of the week.
   late final pulumi.Output<List<int>> scanDayLists;
-
   /// The start time of the check. The time is in the HH:mm:ss format.
   late final pulumi.Output<String> startTime;
 
@@ -499,11 +487,11 @@ class OssScanConfig extends pulumi.CustomResource {
     OssScanConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/ossScanConfig:OssScanConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/ossScanConfig:OssScanConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allKeyPrefix = registerOutput<bool>('allKeyPrefix');
     bucketNameLists = registerOutput<List<String>>('bucketNameLists');
     decompressMaxFileCount = registerOutput<int?>('decompressMaxFileCount');
@@ -537,11 +525,11 @@ class OssScanConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/ossScanConfig:OssScanConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/ossScanConfig:OssScanConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allKeyPrefix = registerOutput<bool>('allKeyPrefix');
     bucketNameLists = registerOutput<List<String>>('bucketNameLists');
     decompressMaxFileCount = registerOutput<int?>('decompressMaxFileCount');

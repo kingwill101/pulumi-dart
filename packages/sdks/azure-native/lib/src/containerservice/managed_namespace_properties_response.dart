@@ -8,13 +8,10 @@ import 'resource_quota_response.dart';
 class ManagedNamespacePropertiesResponse {
   /// The annotations for the fleet managed namespace.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// The default network policy for the fleet managed namespace.
   final pulumi.Input<NetworkPolicyResponse>? defaultNetworkPolicy;
-
   /// The default resource quota for the fleet managed namespace.
   final pulumi.Input<ResourceQuotaResponse>? defaultResourceQuota;
-
   /// The labels for the fleet managed namespace.
   final pulumi.Input<Map<String, String>>? labels;
 
@@ -33,54 +30,19 @@ class ManagedNamespacePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'defaultNetworkPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkPolicyResponse,
-            Map<String, dynamic>
-          >(defaultNetworkPolicy, (value) => value.toMap()),
-      'defaultResourceQuota':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceQuotaResponse,
-            Map<String, dynamic>
-          >(defaultResourceQuota, (value) => value.toMap()),
+      'defaultNetworkPolicy': ?pulumi.Input.mapOptionalInputValue<NetworkPolicyResponse, Map<String, dynamic>>(defaultNetworkPolicy, (value) => value.toMap()),
+      'defaultResourceQuota': ?pulumi.Input.mapOptionalInputValue<ResourceQuotaResponse, Map<String, dynamic>>(defaultResourceQuota, (value) => value.toMap()),
       'labels': ?labels,
     };
   }
 
   factory ManagedNamespacePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedNamespacePropertiesResponse(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      defaultNetworkPolicy: (() {
-        final guardedValue = map['defaultNetworkPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkPolicyResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      defaultResourceQuota: (() {
-        final guardedValue = map['defaultResourceQuota'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceQuotaResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      defaultNetworkPolicy: (() { final guardedValue = map['defaultNetworkPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      defaultResourceQuota: (() { final guardedValue = map['defaultResourceQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceQuotaResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

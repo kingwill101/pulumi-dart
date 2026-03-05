@@ -17,3 +17,4 @@ enum SpatialType {
     throw ArgumentError('Unknown SpatialType value: $value');
   }
 }
+

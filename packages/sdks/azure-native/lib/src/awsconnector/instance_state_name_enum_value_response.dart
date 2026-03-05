@@ -9,19 +9,20 @@ class InstanceStateNameEnumValueResponse {
 
   /// Creates a new [InstanceStateNameEnumValueResponse].
   /// [value] Property value
-  InstanceStateNameEnumValueResponse({this.value});
+  InstanceStateNameEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory InstanceStateNameEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return InstanceStateNameEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

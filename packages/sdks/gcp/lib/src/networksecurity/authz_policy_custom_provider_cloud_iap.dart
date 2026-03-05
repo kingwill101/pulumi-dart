@@ -8,10 +8,14 @@ class AuthzPolicyCustomProviderCloudIap {
 
   /// Creates a new [AuthzPolicyCustomProviderCloudIap].
   /// [enabled] Enable Cloud IAP at the AuthzPolicy level.
-  AuthzPolicyCustomProviderCloudIap({required this.enabled});
+  AuthzPolicyCustomProviderCloudIap({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory AuthzPolicyCustomProviderCloudIap.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class AuthzPolicyCustomProviderCloudIap {
     );
   }
 }
+

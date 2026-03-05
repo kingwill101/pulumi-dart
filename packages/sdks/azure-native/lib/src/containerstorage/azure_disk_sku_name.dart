@@ -20,3 +20,4 @@ enum AzureDiskSkuName {
     throw ArgumentError('Unknown AzureDiskSkuName value: $value');
   }
 }
+

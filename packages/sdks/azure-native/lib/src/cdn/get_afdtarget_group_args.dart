@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAFDTargetGroupArgs {
   /// Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   final pulumi.Input<String> profileName;
-
   /// Name of the Resource group within the Azure subscription.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the Target Group under the profile.
   final pulumi.Input<String> targetGroupName;
 
@@ -37,10 +35,9 @@ class GetAFDTargetGroupArgs {
   factory GetAFDTargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetAFDTargetGroupArgs(
       profileName: pulumi.Input.fromValue(map['profileName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       targetGroupName: pulumi.Input.fromValue(map['targetGroupName'] as String),
     );
   }
 }
+

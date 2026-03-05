@@ -17,3 +17,4 @@ enum EdgeMachineJobType {
     throw ArgumentError('Unknown EdgeMachineJobType value: $value');
   }
 }
+

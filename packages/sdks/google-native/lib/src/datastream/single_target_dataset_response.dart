@@ -9,10 +9,14 @@ class SingleTargetDatasetResponse {
 
   /// Creates a new [SingleTargetDatasetResponse].
   /// [datasetId] The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
-  SingleTargetDatasetResponse({required this.datasetId});
+  SingleTargetDatasetResponse({
+    required this.datasetId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'datasetId': datasetId};
+    return <String, dynamic>{
+      'datasetId': datasetId,
+    };
   }
 
   factory SingleTargetDatasetResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class SingleTargetDatasetResponse {
     );
   }
 }
+

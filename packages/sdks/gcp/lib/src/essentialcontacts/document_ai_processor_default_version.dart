@@ -162,7 +162,6 @@ import 'document_ai_processor_default_version_state.dart';
 class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
   /// The processor to set the version on.
   late final pulumi.Output<String> processor;
-
   /// The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
   /// Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
   late final pulumi.Output<String> version;
@@ -176,11 +175,11 @@ class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
     DocumentAiProcessorDefaultVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     processor = registerOutput<String>('processor');
     version = registerOutput<String>('version');
   }
@@ -203,11 +202,11 @@ class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     processor = registerOutput<String>('processor');
     version = registerOutput<String>('version');
   }

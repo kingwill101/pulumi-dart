@@ -1694,72 +1694,40 @@ import 'virtual_machine_instance_view_response.dart';
 class VirtualMachineInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Boolean indicating whether this is an existing local virtual machine or if one should be created.
   late final pulumi.Output<bool?> createFromLocal;
-
   /// The extendedLocation of the resource.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// Guest agent install status.
-  late final pulumi.Output<GuestAgentInstallStatusResponse?>
-  guestAgentInstallStatus;
-
+  late final pulumi.Output<GuestAgentInstallStatusResponse?> guestAgentInstallStatus;
   /// HardwareProfile - Specifies the hardware settings for the virtual machine instance.
-  late final pulumi.Output<
-    VirtualMachineInstancePropertiesHardwareProfileResponse?
-  >
-  hardwareProfile;
-
+  late final pulumi.Output<VirtualMachineInstancePropertiesHardwareProfileResponse?> hardwareProfile;
   /// HTTP Proxy configuration for the VM.
   late final pulumi.Output<HttpProxyConfigurationResponse?> httpProxyConfig;
-
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// The virtual machine instance view.
   late final pulumi.Output<VirtualMachineInstanceViewResponse> instanceView;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// NetworkProfile - describes the network configuration the virtual machine instance
-  late final pulumi.Output<
-    VirtualMachineInstancePropertiesNetworkProfileResponse?
-  >
-  networkProfile;
-
+  late final pulumi.Output<VirtualMachineInstancePropertiesNetworkProfileResponse?> networkProfile;
   /// OsProfile - describes the configuration of the operating system and sets login data
-  late final pulumi.Output<VirtualMachineInstancePropertiesOsProfileResponse?>
-  osProfile;
-
+  late final pulumi.Output<VirtualMachineInstancePropertiesOsProfileResponse?> osProfile;
   /// Provisioning state of the virtual machine instance.
   late final pulumi.Output<String> provisioningState;
-
   /// Unique identifier defined by ARC to identify the guest of the VM.
   late final pulumi.Output<String?> resourceUid;
-
   /// SecurityProfile - Specifies the security settings for the virtual machine instance.
-  late final pulumi.Output<
-    VirtualMachineInstancePropertiesSecurityProfileResponse?
-  >
-  securityProfile;
-
+  late final pulumi.Output<VirtualMachineInstancePropertiesSecurityProfileResponse?> securityProfile;
   /// The observed state of virtual machine instances
   late final pulumi.Output<VirtualMachineInstanceStatusResponse> status;
-
   /// StorageProfile - contains information about the disks and storage information for the virtual machine instance
-  late final pulumi.Output<
-    VirtualMachineInstancePropertiesStorageProfileResponse?
-  >
-  storageProfile;
-
+  late final pulumi.Output<VirtualMachineInstancePropertiesStorageProfileResponse?> storageProfile;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Unique identifier for the vm resource.
   late final pulumi.Output<String> vmId;
 
@@ -1772,145 +1740,28 @@ class VirtualMachineInstance extends pulumi.CustomResource {
     VirtualMachineInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azurestackhci:VirtualMachineInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azurestackhci:VirtualMachineInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createFromLocal = registerOutput<bool?>('createFromLocal');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    guestAgentInstallStatus = registerOutput<GuestAgentInstallStatusResponse?>(
-      'guestAgentInstallStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuestAgentInstallStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    hardwareProfile =
-        registerOutput<
-          VirtualMachineInstancePropertiesHardwareProfileResponse?
-        >(
-          'hardwareProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineInstancePropertiesHardwareProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    httpProxyConfig = registerOutput<HttpProxyConfigurationResponse?>(
-      'httpProxyConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HttpProxyConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    instanceView = registerOutput<VirtualMachineInstanceViewResponse>(
-      'instanceView',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualMachineInstanceViewResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    guestAgentInstallStatus = registerOutput<GuestAgentInstallStatusResponse?>('guestAgentInstallStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuestAgentInstallStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hardwareProfile = registerOutput<VirtualMachineInstancePropertiesHardwareProfileResponse?>('hardwareProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineInstancePropertiesHardwareProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpProxyConfig = registerOutput<HttpProxyConfigurationResponse?>('httpProxyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpProxyConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceView = registerOutput<VirtualMachineInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkProfile =
-        registerOutput<VirtualMachineInstancePropertiesNetworkProfileResponse?>(
-          'networkProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineInstancePropertiesNetworkProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    osProfile =
-        registerOutput<VirtualMachineInstancePropertiesOsProfileResponse?>(
-          'osProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineInstancePropertiesOsProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    networkProfile = registerOutput<VirtualMachineInstancePropertiesNetworkProfileResponse?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineInstancePropertiesNetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osProfile = registerOutput<VirtualMachineInstancePropertiesOsProfileResponse?>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineInstancePropertiesOsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     resourceUid = registerOutput<String?>('resourceUid');
-    securityProfile =
-        registerOutput<
-          VirtualMachineInstancePropertiesSecurityProfileResponse?
-        >(
-          'securityProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineInstancePropertiesSecurityProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    status = registerOutput<VirtualMachineInstanceStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualMachineInstanceStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storageProfile =
-        registerOutput<VirtualMachineInstancePropertiesStorageProfileResponse?>(
-          'storageProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineInstancePropertiesStorageProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    securityProfile = registerOutput<VirtualMachineInstancePropertiesSecurityProfileResponse?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineInstancePropertiesSecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<VirtualMachineInstanceStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineInstanceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageProfile = registerOutput<VirtualMachineInstancePropertiesStorageProfileResponse?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineInstancePropertiesStorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     vmId = registerOutput<String>('vmId');
   }

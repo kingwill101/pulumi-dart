@@ -181,52 +181,36 @@ import 'webhook_args.dart';
 class Webhook extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// content type
   late final pulumi.Output<String?> contentType;
-
   /// webhook deliveryStatus
   late final pulumi.Output<String> deliveryStatus;
-
   /// whether to enable ssl verification
   late final pulumi.Output<String?> enableSslVerification;
-
   /// under which event notification should be sent.
   late final pulumi.Output<List<String>?> events;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// webhook payload url
   late final pulumi.Output<String?> payloadUrl;
-
   /// Azure Resource Provisioning State
   late final pulumi.Output<String> provisioningState;
-
   /// whether to send notification under any event.
   late final pulumi.Output<String?> sendAllEvents;
-
   /// Webhook status.
   late final pulumi.Output<String?> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Tenant id.
   late final pulumi.Output<String> tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// whether to update webhookKey.
   late final pulumi.Output<String?> updateWebhookKey;
-
   /// Webhook id in database.
   late final pulumi.Output<String> webhookId;
-
   /// webhook secret token. If not set, this field value is null; otherwise, please set a string value.
   late final pulumi.Output<String?> webhookKey;
-
   /// whether webhookKey is enabled.
   late final pulumi.Output<String> webhookKeyEnabled;
 
@@ -239,11 +223,11 @@ class Webhook extends pulumi.CustomResource {
     WebhookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:appcomplianceautomation:Webhook',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:appcomplianceautomation:Webhook',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     contentType = registerOutput<String?>('contentType');
     deliveryStatus = registerOutput<String>('deliveryStatus');
@@ -254,16 +238,7 @@ class Webhook extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     sendAllEvents = registerOutput<String?>('sendAllEvents');
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
     updateWebhookKey = registerOutput<String?>('updateWebhookKey');

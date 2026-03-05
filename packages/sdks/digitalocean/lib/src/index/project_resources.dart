@@ -198,7 +198,6 @@ import 'project_resources_state.dart';
 class ProjectResources extends pulumi.CustomResource {
   /// the ID of the project
   late final pulumi.Output<String> project;
-
   /// a list of uniform resource names (URNs) for the resources associated with the project
   late final pulumi.Output<List<String>> resources;
 
@@ -211,11 +210,11 @@ class ProjectResources extends pulumi.CustomResource {
     ProjectResourcesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/projectResources:ProjectResources',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/projectResources:ProjectResources',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     project = registerOutput<String>('project');
     resources = registerOutput<List<String>>('resources');
   }
@@ -238,11 +237,11 @@ class ProjectResources extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/projectResources:ProjectResources',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/projectResources:ProjectResources',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     project = registerOutput<String>('project');
     resources = registerOutput<List<String>>('resources');
   }

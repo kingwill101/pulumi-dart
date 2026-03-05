@@ -14,7 +14,6 @@ class ServiceTemplate {
   /// annotation key.
   /// Structure is documented below.
   final pulumi.Input<ServiceTemplateMetadata>? metadata;
-
   /// RevisionSpec holds the desired state of the Revision (from the client).
   /// Structure is documented below.
   final pulumi.Input<ServiceTemplateSpec>? spec;
@@ -22,43 +21,23 @@ class ServiceTemplate {
   /// Creates a new [ServiceTemplate].
   /// [metadata] Optional metadata for this Revision, including labels and annotations.
   /// [spec] RevisionSpec holds the desired state of the Revision (from the client).
-  ServiceTemplate({this.metadata, this.spec});
+  ServiceTemplate({
+    this.metadata,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServiceTemplateMetadata,
-            Map<String, dynamic>
-          >(metadata, (value) => value.toMap()),
-      'spec':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServiceTemplateSpec,
-            Map<String, dynamic>
-          >(spec, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
   factory ServiceTemplate.fromMap(Map<String, dynamic> map) {
     return ServiceTemplate(
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceTemplateMetadata.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      spec: (() {
-        final guardedValue = map['spec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceTemplateSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

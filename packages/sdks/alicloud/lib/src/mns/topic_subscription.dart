@@ -177,19 +177,14 @@ class TopicSubscription extends pulumi.CustomResource {
   /// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
   /// - `Email Format`: mail:directmail:{MailAddress}
   late final pulumi.Output<String> endpoint;
-
   /// The length should be shorter than 16.
   late final pulumi.Output<String?> filterTag;
-
   /// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
   late final pulumi.Output<String> name;
-
   /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
   late final pulumi.Output<String?> notifyContentFormat;
-
   /// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
   late final pulumi.Output<String?> notifyStrategy;
-
   /// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
   late final pulumi.Output<String> topicName;
 
@@ -202,11 +197,11 @@ class TopicSubscription extends pulumi.CustomResource {
     TopicSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mns/topicSubscription:TopicSubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mns/topicSubscription:TopicSubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpoint = registerOutput<String>('endpoint');
     filterTag = registerOutput<String?>('filterTag');
     this.name = registerOutput<String>('name');
@@ -233,11 +228,11 @@ class TopicSubscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mns/topicSubscription:TopicSubscription',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mns/topicSubscription:TopicSubscription',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpoint = registerOutput<String>('endpoint');
     filterTag = registerOutput<String?>('filterTag');
     this.name = registerOutput<String>('name');

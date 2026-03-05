@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DryrunOperationPreviewResponse {
   /// The action defined by RBAC, refer https://docs.microsoft.com/azure/role-based-access-control/role-definitions#actions-format
   final pulumi.Input<String>? action;
-
   /// The description of the operation
   final pulumi.Input<String>? description;
-
   /// The operation name
   final pulumi.Input<String>? name;
-
   /// The operation type
   final pulumi.Input<String>? operationType;
-
   /// The scope of the operation, refer https://docs.microsoft.com/azure/role-based-access-control/scope-overview
   final pulumi.Input<String>? scope;
 
@@ -45,31 +41,12 @@ class DryrunOperationPreviewResponse {
 
   factory DryrunOperationPreviewResponse.fromMap(Map<String, dynamic> map) {
     return DryrunOperationPreviewResponse(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operationType: (() {
-        final guardedValue = map['operationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operationType: (() { final guardedValue = map['operationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

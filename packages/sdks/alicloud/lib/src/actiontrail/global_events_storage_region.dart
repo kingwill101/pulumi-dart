@@ -114,11 +114,11 @@ class GlobalEventsStorageRegion extends pulumi.CustomResource {
     GlobalEventsStorageRegionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     storageRegion = registerOutput<String>('storageRegion');
   }
 
@@ -140,11 +140,11 @@ class GlobalEventsStorageRegion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     storageRegion = registerOutput<String>('storageRegion');
   }
 }

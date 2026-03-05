@@ -8,10 +8,14 @@ class GetMetastoreServiceTelemetryConfig {
 
   /// Creates a new [GetMetastoreServiceTelemetryConfig].
   /// [logFormat] The output format of the Dataproc Metastore service's logs. Default value: "JSON" Possible values: ["LEGACY", "JSON"]
-  GetMetastoreServiceTelemetryConfig({required this.logFormat});
+  GetMetastoreServiceTelemetryConfig({
+    required this.logFormat,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'logFormat': logFormat};
+    return <String, dynamic>{
+      'logFormat': logFormat,
+    };
   }
 
   factory GetMetastoreServiceTelemetryConfig.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetMetastoreServiceTelemetryConfig {
     );
   }
 }
+

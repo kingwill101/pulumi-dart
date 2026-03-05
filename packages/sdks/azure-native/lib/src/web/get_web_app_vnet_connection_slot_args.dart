@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppVnetConnectionSlotArgs {
   /// Name of the app.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the deployment slot. If a slot is not specified, the API will get the named virtual network for the production slot.
   final pulumi.Input<String> slot;
-
   /// Name of the virtual network.
   final pulumi.Input<String> vnetName;
 
@@ -43,11 +40,10 @@ class GetWebAppVnetConnectionSlotArgs {
   factory GetWebAppVnetConnectionSlotArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppVnetConnectionSlotArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       slot: pulumi.Input.fromValue(map['slot'] as String),
       vnetName: pulumi.Input.fromValue(map['vnetName'] as String),
     );
   }
 }
+

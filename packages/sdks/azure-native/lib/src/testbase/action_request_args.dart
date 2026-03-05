@@ -11,10 +11,8 @@ class ActionRequestArgs {
   final pulumi.Input<String>? actionRequestName;
   final pulumi.Input<PreReleaseAccessRequestSpec>? preReleaseAccessRequestSpec;
   final pulumi.Input<String> requestType;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
 
@@ -35,11 +33,7 @@ class ActionRequestArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actionRequestName': ?actionRequestName,
-      'preReleaseAccessRequestSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            PreReleaseAccessRequestSpec,
-            Map<String, dynamic>
-          >(preReleaseAccessRequestSpec, (value) => value.toMap()),
+      'preReleaseAccessRequestSpec': ?pulumi.Input.mapOptionalInputValue<PreReleaseAccessRequestSpec, Map<String, dynamic>>(preReleaseAccessRequestSpec, (value) => value.toMap()),
       'requestType': requestType,
       'resourceGroupName': resourceGroupName,
       'testBaseAccountName': testBaseAccountName,
@@ -48,27 +42,12 @@ class ActionRequestArgs {
 
   factory ActionRequestArgs.fromMap(Map<String, dynamic> map) {
     return ActionRequestArgs(
-      actionRequestName: (() {
-        final guardedValue = map['actionRequestName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      preReleaseAccessRequestSpec: (() {
-        final guardedValue = map['preReleaseAccessRequestSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PreReleaseAccessRequestSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      actionRequestName: (() { final guardedValue = map['actionRequestName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      preReleaseAccessRequestSpec: (() { final guardedValue = map['preReleaseAccessRequestSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreReleaseAccessRequestSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       requestType: pulumi.Input.fromValue(map['requestType'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      testBaseAccountName: pulumi.Input.fromValue(
-        map['testBaseAccountName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      testBaseAccountName: pulumi.Input.fromValue(map['testBaseAccountName'] as String),
     );
   }
 }
+

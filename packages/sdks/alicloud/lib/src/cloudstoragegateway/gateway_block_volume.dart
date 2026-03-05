@@ -647,52 +647,36 @@ import 'gateway_block_volume_state.dart';
 class GatewayBlockVolume extends pulumi.CustomResource {
   /// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
   late final pulumi.Output<String> cacheMode;
-
   /// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
   late final pulumi.Output<bool> chapEnabled;
-
   /// The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
   late final pulumi.Output<String?> chapInPassword;
-
   /// The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
   late final pulumi.Output<String?> chapInUser;
-
   /// The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
   late final pulumi.Output<int> chunkSize;
-
   /// The Block volume name. The name must be 1 to 32 characters in length, and can contain lower case letters and digits.
   late final pulumi.Output<String> gatewayBlockVolumeName;
-
   /// The Gateway ID.
   late final pulumi.Output<String> gatewayId;
-
   /// The ID of the index.
   late final pulumi.Output<String> indexId;
-
   /// Whether to delete the source data. Default value `true`. **NOTE:** When `is_source_deletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
   late final pulumi.Output<bool?> isSourceDeletion;
-
   /// The Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
   late final pulumi.Output<String?> localPath;
-
   /// The name of the OSS Bucket.
   late final pulumi.Output<String> ossBucketName;
-
   /// Whether to enable SSL access your OSS Buckets. Default value: `true`.
   late final pulumi.Output<bool> ossBucketSsl;
-
   /// The endpoint of the OSS Bucket.
   late final pulumi.Output<String> ossEndpoint;
-
   /// The Protocol. Valid values: `iSCSI`.
   late final pulumi.Output<String> protocol;
-
   /// The recovery.
   late final pulumi.Output<bool?> recovery;
-
   /// The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
   late final pulumi.Output<int> size;
-
   /// The status of volume. Valid values:
   late final pulumi.Output<String> status;
 
@@ -705,11 +689,11 @@ class GatewayBlockVolume extends pulumi.CustomResource {
     GatewayBlockVolumeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cacheMode = registerOutput<String>('cacheMode');
     chapEnabled = registerOutput<bool>('chapEnabled');
     chapInPassword = registerOutput<String?>('chapInPassword');
@@ -747,11 +731,11 @@ class GatewayBlockVolume extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cacheMode = registerOutput<String>('cacheMode');
     chapEnabled = registerOutput<bool>('chapEnabled');
     chapInPassword = registerOutput<String?>('chapInPassword');

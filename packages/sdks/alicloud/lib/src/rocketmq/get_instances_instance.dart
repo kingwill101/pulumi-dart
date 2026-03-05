@@ -5,43 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// The internal HTTP endpoint for the Message Queue for Apache RocketMQ instance.
   final pulumi.Input<String> httpInternalEndpoint;
-
   /// The public HTTP endpoint for the Message Queue for Apache RocketMQ instance.
   final pulumi.Input<String> httpInternetEndpoint;
-
   /// The public HTTPS endpoint for the Message Queue for Apache RocketMQ instance.
   final pulumi.Input<String> httpInternetSecureEndpoint;
-
   /// ID of the instance.
   final pulumi.Input<String> id;
-
   /// Indicates whether any namespace is configured for the Message Queue for Apache RocketMQ instance.
   final pulumi.Input<bool> independentNaming;
-
   /// ID of the instance.
   final pulumi.Input<String> instanceId;
-
   /// Name of the instance.
   final pulumi.Input<String> instanceName;
-
   /// The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
   final pulumi.Input<int> instanceStatus;
-
   /// The type of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
   final pulumi.Input<int> instanceType;
-
   /// The automatic release time of an Enterprise Platinum Edition instance.
   final pulumi.Input<String> releaseTime;
-
   /// This attribute is a concise description of instance.
   final pulumi.Input<String> remark;
-
   /// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
   final pulumi.Input<int> status;
-
   /// A map of tags assigned to the Ons instance.
   final pulumi.Input<Map<String, String>> tags;
-
   /// The TCP endpoint for the Message Queue for Apache RocketMQ instance.
   final pulumi.Input<String> tcpEndpoint;
 
@@ -98,19 +85,11 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      httpInternalEndpoint: pulumi.Input.fromValue(
-        map['httpInternalEndpoint'] as String,
-      ),
-      httpInternetEndpoint: pulumi.Input.fromValue(
-        map['httpInternetEndpoint'] as String,
-      ),
-      httpInternetSecureEndpoint: pulumi.Input.fromValue(
-        map['httpInternetSecureEndpoint'] as String,
-      ),
+      httpInternalEndpoint: pulumi.Input.fromValue(map['httpInternalEndpoint'] as String),
+      httpInternetEndpoint: pulumi.Input.fromValue(map['httpInternetEndpoint'] as String),
+      httpInternetSecureEndpoint: pulumi.Input.fromValue(map['httpInternetSecureEndpoint'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      independentNaming: pulumi.Input.fromValue(
-        map['independentNaming'] as bool,
-      ),
+      independentNaming: pulumi.Input.fromValue(map['independentNaming'] as bool),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
       instanceStatus: pulumi.Input.fromValue(map['instanceStatus'] as int),
@@ -123,3 +102,4 @@ class GetInstancesInstance {
     );
   }
 }
+

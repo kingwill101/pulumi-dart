@@ -14,3 +14,4 @@ enum DotNetComponentType {
     throw ArgumentError('Unknown DotNetComponentType value: $value');
   }
 }
+

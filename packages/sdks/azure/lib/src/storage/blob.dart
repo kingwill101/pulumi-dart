@@ -254,53 +254,38 @@ import 'blob_state.dart';
 class Blob extends pulumi.CustomResource {
   /// The access tier of the storage blob. Possible values are `Archive`, `Cool` and `Hot`.
   late final pulumi.Output<String> accessTier;
-
   /// Controls the [cache control header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) content of the response when blob is requested .
   late final pulumi.Output<String?> cacheControl;
-
   /// The MD5 sum of the blob contents. Cannot be defined if `source_uri` is defined, or if blob type is Append or Page. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> contentMd5;
-
   /// The content type of the storage blob. Cannot be defined if `source_uri` is defined. Defaults to `application/octet-stream`.
   late final pulumi.Output<String?> contentType;
-
   /// The encryption scope to use for this blob.
   late final pulumi.Output<String?> encryptionScope;
-
   /// A map of custom blob metadata.
   late final pulumi.Output<Map<String, String>> metadata;
-
   /// The name of the storage blob. Must be unique within the storage container the blob is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The number of workers per CPU core to run for concurrent uploads. Defaults to `8`. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** `parallelism` is only applicable for Page blobs - support for [Block Blobs is blocked on the upstream issue](https://github.com/jackofallops/giovanni/issues/15).
   late final pulumi.Output<int?> parallelism;
-
   /// Used only for `page` blobs to specify the size in bytes of the blob to be created. Must be a multiple of 512. Defaults to `0`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `size` is required if `source_uri` is not set.
   late final pulumi.Output<int?> size;
-
   /// An absolute path to a file on the local system. This field cannot be specified for Append blobs and cannot be specified if `source_content` or `source_uri` is specified. Changing this forces a new resource to be created.
   late final pulumi.Output<dynamic> source;
-
   /// The content for this blob which should be defined inline. This field can only be specified for Block blobs and cannot be specified if `source` or `source_uri` is specified. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sourceContent;
-
   /// The URI of an existing blob, or a file in the Azure File service, to use as the source contents for the blob to be created. Changing this forces a new resource to be created. This field cannot be specified for Append blobs and cannot be specified if `source` or `source_content` is specified.
   late final pulumi.Output<String?> sourceUri;
-
   /// Specifies the storage account in which to create the storage container. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountName;
-
   /// The name of the storage container in which this blob should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageContainerName;
-
   /// The type of the storage blob to be created. Possible values are `Append`, `Block` or `Page`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
-
   /// The URL of the blob
   late final pulumi.Output<String> url;
 
@@ -308,13 +293,16 @@ class Blob extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Blob]. {@macro pulumi_storage_blob_blob_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Blob(String name, {BlobArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:storage/blob:Blob',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Blob(
+    String name, {
+    BlobArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:storage/blob:Blob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessTier = registerOutput<String>('accessTier');
     cacheControl = registerOutput<String?>('cacheControl');
     contentMd5 = registerOutput<String?>('contentMd5');
@@ -334,7 +322,11 @@ class Blob extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Blob] resource's state with the given [name] and [id].
-  static Blob get(String name, pulumi.Input<String> id, {BlobState? state}) {
+  static Blob get(
+    String name,
+    pulumi.Input<String> id, {
+    BlobState? state,
+  }) {
     return Blob._get(
       name,
       state: state?.toMap(),
@@ -347,11 +339,11 @@ class Blob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/blob:Blob',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/blob:Blob',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessTier = registerOutput<String>('accessTier');
     cacheControl = registerOutput<String?>('cacheControl');
     contentMd5 = registerOutput<String?>('contentMd5');

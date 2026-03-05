@@ -7,13 +7,10 @@ class PerformanceDataResponse {
   /// Percentile of the utilization data values to be considered while assessing
   /// machines.
   final pulumi.Input<String>? percentile;
-
   /// Gets or sets the end time to consider performance data for assessment.
   final pulumi.Input<String>? perfDataEndTime;
-
   /// Gets or sets the start time to consider performance data for assessment.
   final pulumi.Input<String>? perfDataStartTime;
-
   /// Time Range for which the historic utilization data should be considered for
   /// assessment.
   final pulumi.Input<String>? timeRange;
@@ -41,26 +38,11 @@ class PerformanceDataResponse {
 
   factory PerformanceDataResponse.fromMap(Map<String, dynamic> map) {
     return PerformanceDataResponse(
-      percentile: (() {
-        final guardedValue = map['percentile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      perfDataEndTime: (() {
-        final guardedValue = map['perfDataEndTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      perfDataStartTime: (() {
-        final guardedValue = map['perfDataStartTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeRange: (() {
-        final guardedValue = map['timeRange'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      percentile: (() { final guardedValue = map['percentile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      perfDataEndTime: (() { final guardedValue = map['perfDataEndTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      perfDataStartTime: (() { final guardedValue = map['perfDataStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeRange: (() { final guardedValue = map['timeRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessKeyCredentialsVmmigrationV1alpha1 {
   /// AWS access key ID.
   final pulumi.Input<String>? accessKeyId;
-
   /// Input only. AWS secret access key.
   final pulumi.Input<String>? secretAccessKey;
-
   /// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
   final pulumi.Input<String>? sessionToken;
 
@@ -31,25 +29,12 @@ class AccessKeyCredentialsVmmigrationV1alpha1 {
     };
   }
 
-  factory AccessKeyCredentialsVmmigrationV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessKeyCredentialsVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return AccessKeyCredentialsVmmigrationV1alpha1(
-      accessKeyId: (() {
-        final guardedValue = map['accessKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretAccessKey: (() {
-        final guardedValue = map['secretAccessKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sessionToken: (() {
-        final guardedValue = map['sessionToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessKeyId: (() { final guardedValue = map['accessKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretAccessKey: (() { final guardedValue = map['secretAccessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sessionToken: (() { final guardedValue = map['sessionToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

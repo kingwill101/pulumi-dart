@@ -6,14 +6,10 @@ import 'get_check_structures_structure_standard_requirement.dart';
 class GetCheckStructuresStructureStandard {
   /// The ID of the section for the check item.
   final pulumi.Input<int> id;
-
   /// The standards of the check items.
-  final pulumi.Input<List<GetCheckStructuresStructureStandardRequirement>>
-  requirements;
-
+  final pulumi.Input<List<GetCheckStructuresStructureStandardRequirement>> requirements;
   /// The display name of the standard for the check item.
   final pulumi.Input<String> showName;
-
   /// The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
   final pulumi.Input<String> type;
 
@@ -32,38 +28,19 @@ class GetCheckStructuresStructureStandard {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'requirements':
-          pulumi.Input.mapInputValue<
-            List<GetCheckStructuresStructureStandardRequirement>,
-            List<Map<String, dynamic>>
-          >(
-            requirements,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetCheckStructuresStructureStandardRequirement,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'requirements': pulumi.Input.mapInputValue<List<GetCheckStructuresStructureStandardRequirement>, List<Map<String, dynamic>>>(requirements, (value) => pulumi.Input.encodeList<GetCheckStructuresStructureStandardRequirement, Map<String, dynamic>>(value, (value) => value.toMap())),
       'showName': showName,
       'type': type,
     };
   }
 
-  factory GetCheckStructuresStructureStandard.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCheckStructuresStructureStandard.fromMap(Map<String, dynamic> map) {
     return GetCheckStructuresStructureStandard(
       id: pulumi.Input.fromValue(map['id'] as int),
-      requirements: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetCheckStructuresStructureStandardRequirement>(
-          map['requirements']!,
-          (value) => GetCheckStructuresStructureStandardRequirement.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      requirements: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCheckStructuresStructureStandardRequirement>(map['requirements']!, (value) => GetCheckStructuresStructureStandardRequirement.fromMap((value as Map).cast<String, dynamic>()))),
       showName: pulumi.Input.fromValue(map['showName'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

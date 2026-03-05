@@ -17,3 +17,4 @@ enum CloudProvider {
     throw ArgumentError('Unknown CloudProvider value: $value');
   }
 }
+

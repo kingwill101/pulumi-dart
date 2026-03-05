@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMongoClusterArgs {
   /// The name of the mongo cluster.
   final pulumi.Input<String> mongoClusterName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetMongoClusterArgs {
 
   factory GetMongoClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetMongoClusterArgs(
-      mongoClusterName: pulumi.Input.fromValue(
-        map['mongoClusterName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      mongoClusterName: pulumi.Input.fromValue(map['mongoClusterName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

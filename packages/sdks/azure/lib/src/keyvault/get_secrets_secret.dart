@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretsSecret {
   /// Whether this secret is enabled.
   final pulumi.Input<bool> enabled;
-
   /// The ID of this secret.
   final pulumi.Input<String> id;
-
   /// The name of secret.
   final pulumi.Input<String> name;
-
   /// The tags of this secret.
   final pulumi.Input<Map<String, String>> tags;
 
@@ -45,3 +42,4 @@ class GetSecretsSecret {
     );
   }
 }
+

@@ -1,32 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWafSignatures.
 class GetWafSignaturesResult {
   /// The relative detection accuracy of the signature.
   final String accuracy;
-
   /// Description of the signature.
   final String? description;
   final bool? enabled;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String json;
-
   /// Name of the signature as configured on the system.
   final String name;
   final bool? performStaging;
-
   /// The relative risk level of the attack that matches this signature.
   final String risk;
-
   /// ID of the signature in the database.
   final int signatureId;
-
   /// System generated ID of the signature.
   final String systemSignatureId;
   final String tag;
-
   /// Type of the signature.
   final String type;
 
@@ -78,24 +72,12 @@ class GetWafSignaturesResult {
   factory GetWafSignaturesResult.fromMap(Map<String, dynamic> map) {
     return GetWafSignaturesResult(
       accuracy: map['accuracy'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       json: map['json'] as String,
       name: map['name'] as String,
-      performStaging: (() {
-        final guardedValue = map['performStaging'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      performStaging: (() { final guardedValue = map['performStaging']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       risk: map['risk'] as String,
       signatureId: map['signatureId'] as int,
       systemSignatureId: map['systemSignatureId'] as String,
@@ -104,3 +86,4 @@ class GetWafSignaturesResult {
     );
   }
 }
+

@@ -163,41 +163,29 @@ import 'system_data_response.dart';
 class ArcAddon extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Host OS supported by the Arc addon.
   late final pulumi.Output<String> hostPlatform;
-
   /// Platform where the runtime is hosted.
   late final pulumi.Output<String> hostPlatformType;
-
   /// Addon type.
   /// Expected value is 'ArcForKubernetes'.
   late final pulumi.Output<String> kind;
-
   /// The object name.
   late final pulumi.Output<String> name;
-
   /// Addon Provisioning State
   late final pulumi.Output<String> provisioningState;
-
   /// Arc resource group name
   late final pulumi.Output<String> resourceGroupName;
-
   /// Arc resource location
   late final pulumi.Output<String> resourceLocation;
-
   /// Arc resource Name
   late final pulumi.Output<String> resourceName;
-
   /// Arc resource subscription Id
   late final pulumi.Output<String> subscriptionId;
-
   /// Metadata pertaining to creation and last modification of Addon
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
-
   /// Arc resource version
   late final pulumi.Output<String> version;
 
@@ -210,11 +198,11 @@ class ArcAddon extends pulumi.CustomResource {
     ArcAddonArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:databoxedge:ArcAddon',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:databoxedge:ArcAddon',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     hostPlatform = registerOutput<String>('hostPlatform');
     hostPlatformType = registerOutput<String>('hostPlatformType');
@@ -225,16 +213,7 @@ class ArcAddon extends pulumi.CustomResource {
     resourceLocation = registerOutput<String>('resourceLocation');
     resourceName = registerOutput<String>('resourceName');
     subscriptionId = registerOutput<String>('subscriptionId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
   }

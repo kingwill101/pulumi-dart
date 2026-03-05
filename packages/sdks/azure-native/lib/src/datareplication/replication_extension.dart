@@ -165,16 +165,11 @@ import 'replication_extension_model_response_system_data.dart';
 class ReplicationExtension extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the name of the resource.
   late final pulumi.Output<String> name;
-
   /// Replication extension model properties.
-  late final pulumi.Output<ReplicationExtensionModelPropertiesResponse>
-  properties;
-  late final pulumi.Output<ReplicationExtensionModelResponseSystemData>
-  systemData;
-
+  late final pulumi.Output<ReplicationExtensionModelPropertiesResponse> properties;
+  late final pulumi.Output<ReplicationExtensionModelResponseSystemData> systemData;
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -187,33 +182,15 @@ class ReplicationExtension extends pulumi.CustomResource {
     ReplicationExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datareplication:ReplicationExtension',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datareplication:ReplicationExtension',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ReplicationExtensionModelPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReplicationExtensionModelPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<ReplicationExtensionModelResponseSystemData>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReplicationExtensionModelResponseSystemData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ReplicationExtensionModelPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationExtensionModelPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<ReplicationExtensionModelResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationExtensionModelResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

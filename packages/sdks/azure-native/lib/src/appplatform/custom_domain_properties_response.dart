@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDomainPropertiesResponse {
   /// The app name of domain.
   final pulumi.Input<String> appName;
-
   /// The bound certificate name of domain.
   final pulumi.Input<String>? certName;
-
   /// Provisioning state of the Domain
   final pulumi.Input<String> provisioningState;
-
   /// The thumbprint of bound certificate.
   final pulumi.Input<String>? thumbprint;
 
@@ -40,19 +37,10 @@ class CustomDomainPropertiesResponse {
   factory CustomDomainPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CustomDomainPropertiesResponse(
       appName: pulumi.Input.fromValue(map['appName'] as String),
-      certName: (() {
-        final guardedValue = map['certName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      thumbprint: (() {
-        final guardedValue = map['thumbprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certName: (() { final guardedValue = map['certName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

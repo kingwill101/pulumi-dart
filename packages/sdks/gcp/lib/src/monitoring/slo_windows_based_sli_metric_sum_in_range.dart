@@ -12,7 +12,6 @@ class SloWindowsBasedSliMetricSumInRange {
   /// `range.min &lt;= X &lt;= range.max` for a good window.
   /// Structure is documented below.
   final pulumi.Input<SloWindowsBasedSliMetricSumInRangeRange> range;
-
   /// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// specifying the TimeSeries to use for evaluating window
   /// quality. The provided TimeSeries must have
@@ -32,23 +31,16 @@ class SloWindowsBasedSliMetricSumInRange {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'range':
-          pulumi.Input.mapInputValue<
-            SloWindowsBasedSliMetricSumInRangeRange,
-            Map<String, dynamic>
-          >(range, (value) => value.toMap()),
+      'range': pulumi.Input.mapInputValue<SloWindowsBasedSliMetricSumInRangeRange, Map<String, dynamic>>(range, (value) => value.toMap()),
       'timeSeries': timeSeries,
     };
   }
 
   factory SloWindowsBasedSliMetricSumInRange.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSliMetricSumInRange(
-      range: pulumi.Input.fromValue(
-        SloWindowsBasedSliMetricSumInRangeRange.fromMap(
-          (map['range']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      range: pulumi.Input.fromValue(SloWindowsBasedSliMetricSumInRangeRange.fromMap((map['range']! as Map).cast<String, dynamic>())),
       timeSeries: pulumi.Input.fromValue(map['timeSeries'] as String),
     );
   }
 }
+

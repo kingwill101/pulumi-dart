@@ -6,7 +6,6 @@ class GetDisksDiskMountInstance {
   /// Disk attachment time.
   final pulumi.Input<String> attachedTime;
   final pulumi.Input<String> device;
-
   /// Filter the results by the specified ECS instance ID.
   final pulumi.Input<String> instanceId;
 
@@ -36,3 +35,4 @@ class GetDisksDiskMountInstance {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContentwarehouseV1TimestampValue {
   /// The string must represent a valid instant in UTC and is parsed using java.time.format.DateTimeFormatter.ISO_INSTANT. e.g. "2013-09-29T18:46:19Z"
   final pulumi.Input<String>? textValue;
-
   /// Timestamp value
   final pulumi.Input<String>? timestampValue;
 
@@ -25,20 +24,11 @@ class GoogleCloudContentwarehouseV1TimestampValue {
     };
   }
 
-  factory GoogleCloudContentwarehouseV1TimestampValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1TimestampValue.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1TimestampValue(
-      textValue: (() {
-        final guardedValue = map['textValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timestampValue: (() {
-        final guardedValue = map['timestampValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      textValue: (() { final guardedValue = map['textValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timestampValue: (() { final guardedValue = map['timestampValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -705,13 +705,10 @@ import 'enterprise_proxy_state.dart';
 class EnterpriseProxy extends pulumi.CustomResource {
   /// The ID of the database instance.
   late final pulumi.Output<String> instanceId;
-
   /// The password of the database account.
   late final pulumi.Output<String> password;
-
   /// The ID of the tenant.
   late final pulumi.Output<String?> tid;
-
   /// The username of the database account.
   late final pulumi.Output<String> username;
 
@@ -724,11 +721,11 @@ class EnterpriseProxy extends pulumi.CustomResource {
     EnterpriseProxyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dms/enterpriseProxy:EnterpriseProxy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dms/enterpriseProxy:EnterpriseProxy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     password = registerOutput<String>('password');
     tid = registerOutput<String?>('tid');
@@ -753,11 +750,11 @@ class EnterpriseProxy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dms/enterpriseProxy:EnterpriseProxy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dms/enterpriseProxy:EnterpriseProxy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     password = registerOutput<String>('password');
     tid = registerOutput<String?>('tid');

@@ -10,39 +10,20 @@ class ExperimentsResponse {
 
   /// Creates a new [ExperimentsResponse].
   /// [rampUpRules] List of ramp-up rules.
-  ExperimentsResponse({this.rampUpRules});
+  ExperimentsResponse({
+    this.rampUpRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rampUpRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<RampUpRuleResponse>,
-            List<Map<String, dynamic>>
-          >(
-            rampUpRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RampUpRuleResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rampUpRules': ?pulumi.Input.mapOptionalInputValue<List<RampUpRuleResponse>, List<Map<String, dynamic>>>(rampUpRules, (value) => pulumi.Input.encodeList<RampUpRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ExperimentsResponse.fromMap(Map<String, dynamic> map) {
     return ExperimentsResponse(
-      rampUpRules: (() {
-        final guardedValue = map['rampUpRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<RampUpRuleResponse>(
-            guardedValue,
-            (value) => RampUpRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      rampUpRules: (() { final guardedValue = map['rampUpRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RampUpRuleResponse>(guardedValue, (value) => RampUpRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

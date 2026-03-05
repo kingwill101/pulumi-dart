@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentVariableResponse {
   /// The name of the environment variable.
   final pulumi.Input<String>? name;
-
   /// The value of the environment variable.
   final pulumi.Input<String>? value;
 
   /// Creates a new [EnvironmentVariableResponse].
   /// [name] The name of the environment variable.
   /// [value] The value of the environment variable.
-  EnvironmentVariableResponse({this.name, this.value});
+  EnvironmentVariableResponse({
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'value': ?value};
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory EnvironmentVariableResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentVariableResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListIpamPoolAssociatedResourcesArgs {
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
-
   /// Pool resource name.
   final pulumi.Input<String> poolName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,17 +32,12 @@ class ListIpamPoolAssociatedResourcesArgs {
     };
   }
 
-  factory ListIpamPoolAssociatedResourcesArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListIpamPoolAssociatedResourcesArgs.fromMap(Map<String, dynamic> map) {
     return ListIpamPoolAssociatedResourcesArgs(
-      networkManagerName: pulumi.Input.fromValue(
-        map['networkManagerName'] as String,
-      ),
+      networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
       poolName: pulumi.Input.fromValue(map['poolName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

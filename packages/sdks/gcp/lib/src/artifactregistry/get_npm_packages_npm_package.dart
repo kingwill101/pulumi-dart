@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNpmPackagesNpmPackage {
   /// The time, as a RFC 3339 string, this package was created.
   final pulumi.Input<String> createTime;
-
   /// The fully qualified name of the fetched package.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/npmPackages/{{npmPackage}}`. For example, `projects/example-project/locations/us-central1/repository/example-repo/npmPackages/my-test-package:0.0.1`
   final pulumi.Input<String> name;
-
   /// Extracted short name of the package (last part of `name`, without version). For example, from `.../my-test-package:0.0.1` → `my-test-package`.
   final pulumi.Input<String> packageName;
-
   /// The tags associated with the Npm package.
   final pulumi.Input<List<String>> tags;
-
   /// The time, as a RFC 3339 string, this package was updated.
   final pulumi.Input<String> updateTime;
-
   /// Version of this package.
   final pulumi.Input<String> version;
 
@@ -59,3 +54,4 @@ class GetNpmPackagesNpmPackage {
     );
   }
 }
+

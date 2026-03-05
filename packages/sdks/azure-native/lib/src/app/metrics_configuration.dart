@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricsConfiguration {
   /// Open telemetry metrics destinations
   final pulumi.Input<List<String>>? destinations;
-
   /// Boolean indicating if including keda metrics
   final pulumi.Input<bool>? includeKeda;
 
   /// Creates a new [MetricsConfiguration].
   /// [destinations] Open telemetry metrics destinations
   /// [includeKeda] Boolean indicating if including keda metrics
-  MetricsConfiguration({this.destinations, this.includeKeda});
+  MetricsConfiguration({
+    this.destinations,
+    this.includeKeda,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class MetricsConfiguration {
 
   factory MetricsConfiguration.fromMap(Map<String, dynamic> map) {
     return MetricsConfiguration(
-      destinations: (() {
-        final guardedValue = map['destinations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      includeKeda: (() {
-        final guardedValue = map['includeKeda'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      destinations: (() { final guardedValue = map['destinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      includeKeda: (() { final guardedValue = map['includeKeda']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

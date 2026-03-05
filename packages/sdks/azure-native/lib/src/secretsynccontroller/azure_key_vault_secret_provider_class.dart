@@ -221,40 +221,26 @@ import 'system_data_response.dart';
 class AzureKeyVaultSecretProviderClass extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The user assigned managed identity client ID that should be used to access the Azure Key Vault.
   late final pulumi.Output<String> clientId;
-
   /// The complex type of the extended location.
-  late final pulumi.Output<
-    AzureResourceManagerCommonTypesExtendedLocationResponse?
-  >
-  extendedLocation;
-
+  late final pulumi.Output<AzureResourceManagerCommonTypesExtendedLocationResponse?> extendedLocation;
   /// The name of the Azure Key Vault to sync secrets from.
   late final pulumi.Output<String> keyvaultName;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Objects defines the desired state of synced K8s secret objects
   late final pulumi.Output<String?> objects;
-
   /// Provisioning state of the AzureKeyVaultSecretProviderClass instance.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Azure Active Directory tenant ID that should be used for authenticating requests to the Azure Key Vault.
   late final pulumi.Output<String> tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -267,41 +253,20 @@ class AzureKeyVaultSecretProviderClass extends pulumi.CustomResource {
     AzureKeyVaultSecretProviderClassArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:secretsynccontroller:AzureKeyVaultSecretProviderClass',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:secretsynccontroller:AzureKeyVaultSecretProviderClass',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientId = registerOutput<String>('clientId');
-    extendedLocation =
-        registerOutput<
-          AzureResourceManagerCommonTypesExtendedLocationResponse?
-        >(
-          'extendedLocation',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    extendedLocation = registerOutput<AzureResourceManagerCommonTypesExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyvaultName = registerOutput<String>('keyvaultName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     objects = registerOutput<String?>('objects');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');

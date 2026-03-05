@@ -115,13 +115,10 @@ import 'device_state.dart';
 class Device extends pulumi.CustomResource {
   /// IP address used for config sync
   late final pulumi.Output<String> configsyncIp;
-
   /// IP address used for state mirroring
   late final pulumi.Output<String?> mirrorIp;
-
   /// Secondary IP address used for state mirroring
   late final pulumi.Output<String?> mirrorSecondaryIp;
-
   /// Address of the Device which needs to be Deviceensed
   late final pulumi.Output<String> name;
 
@@ -129,13 +126,16 @@ class Device extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Device]. {@macro pulumi_cm_device_device_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Device(String name, {DeviceArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'f5bigip:cm/device:Device',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Device(
+    String name, {
+    DeviceArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'f5bigip:cm/device:Device',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configsyncIp = registerOutput<String>('configsyncIp');
     mirrorIp = registerOutput<String?>('mirrorIp');
     mirrorSecondaryIp = registerOutput<String?>('mirrorSecondaryIp');
@@ -160,11 +160,11 @@ class Device extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:cm/device:Device',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:cm/device:Device',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configsyncIp = registerOutput<String>('configsyncIp');
     mirrorIp = registerOutput<String?>('mirrorIp');
     mirrorSecondaryIp = registerOutput<String?>('mirrorSecondaryIp');

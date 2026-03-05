@@ -9,10 +9,8 @@ import 'sbe_partner_properties_response.dart';
 class SbePartnerInfoResponse {
   /// SBE credentials list for AzureStackHCI cluster deployment.
   final pulumi.Input<List<SbeCredentialsResponse>>? credentialList;
-
   /// List of SBE partner properties for AzureStackHCI cluster deployment.
   final pulumi.Input<List<SbePartnerPropertiesResponse>>? partnerProperties;
-
   /// SBE package and manifest information for the solution Builder Extension staged for AzureStackHCI cluster deployment.
   final pulumi.Input<SbeDeploymentInfoResponse>? sbeDeploymentInfo;
 
@@ -28,73 +26,18 @@ class SbePartnerInfoResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credentialList':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SbeCredentialsResponse>,
-            List<Map<String, dynamic>>
-          >(
-            credentialList,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SbeCredentialsResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'partnerProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SbePartnerPropertiesResponse>,
-            List<Map<String, dynamic>>
-          >(
-            partnerProperties,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SbePartnerPropertiesResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'sbeDeploymentInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            SbeDeploymentInfoResponse,
-            Map<String, dynamic>
-          >(sbeDeploymentInfo, (value) => value.toMap()),
+      'credentialList': ?pulumi.Input.mapOptionalInputValue<List<SbeCredentialsResponse>, List<Map<String, dynamic>>>(credentialList, (value) => pulumi.Input.encodeList<SbeCredentialsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'partnerProperties': ?pulumi.Input.mapOptionalInputValue<List<SbePartnerPropertiesResponse>, List<Map<String, dynamic>>>(partnerProperties, (value) => pulumi.Input.encodeList<SbePartnerPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sbeDeploymentInfo': ?pulumi.Input.mapOptionalInputValue<SbeDeploymentInfoResponse, Map<String, dynamic>>(sbeDeploymentInfo, (value) => value.toMap()),
     };
   }
 
   factory SbePartnerInfoResponse.fromMap(Map<String, dynamic> map) {
     return SbePartnerInfoResponse(
-      credentialList: (() {
-        final guardedValue = map['credentialList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SbeCredentialsResponse>(
-            guardedValue,
-            (value) => SbeCredentialsResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      partnerProperties: (() {
-        final guardedValue = map['partnerProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SbePartnerPropertiesResponse>(
-            guardedValue,
-            (value) => SbePartnerPropertiesResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      sbeDeploymentInfo: (() {
-        final guardedValue = map['sbeDeploymentInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SbeDeploymentInfoResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      credentialList: (() { final guardedValue = map['credentialList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SbeCredentialsResponse>(guardedValue, (value) => SbeCredentialsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      partnerProperties: (() { final guardedValue = map['partnerProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SbePartnerPropertiesResponse>(guardedValue, (value) => SbePartnerPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      sbeDeploymentInfo: (() { final guardedValue = map['sbeDeploymentInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SbeDeploymentInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

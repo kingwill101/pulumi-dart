@@ -273,13 +273,10 @@ import 'email_identity_policy_state.dart';
 class EmailIdentityPolicy extends pulumi.CustomResource {
   /// The email identity.
   late final pulumi.Output<String> emailIdentity;
-
   /// The text of the policy in JSON format.
   late final pulumi.Output<String> policy;
-
   /// The name of the policy.
   late final pulumi.Output<String> policyName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -292,11 +289,11 @@ class EmailIdentityPolicy extends pulumi.CustomResource {
     EmailIdentityPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sesv2/emailIdentityPolicy:EmailIdentityPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sesv2/emailIdentityPolicy:EmailIdentityPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     emailIdentity = registerOutput<String>('emailIdentity');
     policy = registerOutput<String>('policy');
     policyName = registerOutput<String>('policyName');
@@ -321,11 +318,11 @@ class EmailIdentityPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sesv2/emailIdentityPolicy:EmailIdentityPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sesv2/emailIdentityPolicy:EmailIdentityPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     emailIdentity = registerOutput<String>('emailIdentity');
     policy = registerOutput<String>('policy');
     policyName = registerOutput<String>('policyName');

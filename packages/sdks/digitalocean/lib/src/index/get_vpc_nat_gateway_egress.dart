@@ -9,35 +9,20 @@ class GetVpcNatGatewayEgress {
 
   /// Creates a new [GetVpcNatGatewayEgress].
   /// [publicGateways] List of public gateway IPs
-  GetVpcNatGatewayEgress({required this.publicGateways});
+  GetVpcNatGatewayEgress({
+    required this.publicGateways,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicGateways':
-          pulumi.Input.mapInputValue<
-            List<GetVpcNatGatewayEgressPublicGateway>,
-            List<Map<String, dynamic>>
-          >(
-            publicGateways,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetVpcNatGatewayEgressPublicGateway,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'publicGateways': pulumi.Input.mapInputValue<List<GetVpcNatGatewayEgressPublicGateway>, List<Map<String, dynamic>>>(publicGateways, (value) => pulumi.Input.encodeList<GetVpcNatGatewayEgressPublicGateway, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetVpcNatGatewayEgress.fromMap(Map<String, dynamic> map) {
     return GetVpcNatGatewayEgress(
-      publicGateways: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetVpcNatGatewayEgressPublicGateway>(
-          map['publicGateways']!,
-          (value) => GetVpcNatGatewayEgressPublicGateway.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      publicGateways: pulumi.Input.fromValue(pulumi.Input.decodeList<GetVpcNatGatewayEgressPublicGateway>(map['publicGateways']!, (value) => GetVpcNatGatewayEgressPublicGateway.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

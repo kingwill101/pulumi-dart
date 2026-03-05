@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendState {
   /// The name of the Backend.
   final pulumi.Input<String>? backendName;
-
   /// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
   final pulumi.Input<String>? backendType;
-
   /// Whether to create an Event bus service association role.
   final pulumi.Input<bool>? createEventBridgeServiceLinkedRole;
-
   /// The description of the Backend.
   final pulumi.Input<String>? description;
 
@@ -39,26 +36,11 @@ class BackendState {
 
   factory BackendState.fromMap(Map<String, dynamic> map) {
     return BackendState(
-      backendName: (() {
-        final guardedValue = map['backendName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      backendType: (() {
-        final guardedValue = map['backendType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createEventBridgeServiceLinkedRole: (() {
-        final guardedValue = map['createEventBridgeServiceLinkedRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backendName: (() { final guardedValue = map['backendName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backendType: (() { final guardedValue = map['backendType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createEventBridgeServiceLinkedRole: (() { final guardedValue = map['createEventBridgeServiceLinkedRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

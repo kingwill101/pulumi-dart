@@ -9,10 +9,14 @@ class ValueValidationDataprocV1beta2 {
 
   /// Creates a new [ValueValidationDataprocV1beta2].
   /// [values] List of allowed values for the parameter.
-  ValueValidationDataprocV1beta2({required this.values});
+  ValueValidationDataprocV1beta2({
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': values};
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
   factory ValueValidationDataprocV1beta2.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ValueValidationDataprocV1beta2 {
     );
   }
 }
+

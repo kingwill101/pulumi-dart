@@ -9,19 +9,20 @@ class ClusterControlPlaneRemote {
 
   /// Creates a new [ClusterControlPlaneRemote].
   /// [nodeLocation] Name of the Google Distributed Cloud Edge zones where this node pool
-  ClusterControlPlaneRemote({this.nodeLocation});
+  ClusterControlPlaneRemote({
+    this.nodeLocation,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nodeLocation': ?nodeLocation};
+    return <String, dynamic>{
+      'nodeLocation': ?nodeLocation,
+    };
   }
 
   factory ClusterControlPlaneRemote.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneRemote(
-      nodeLocation: (() {
-        final guardedValue = map['nodeLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      nodeLocation: (() { final guardedValue = map['nodeLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TlsCertificateResponseRedisV1beta1 {
   /// PEM representation.
   final pulumi.Input<String> cert;
-
   /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
   final pulumi.Input<String> createTime;
-
   /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
   final pulumi.Input<String> expireTime;
-
   /// Serial number, as extracted from the certificate.
   final pulumi.Input<String> serialNumber;
-
   /// Sha1 Fingerprint of the certificate.
   final pulumi.Input<String> sha1Fingerprint;
 
@@ -53,3 +49,4 @@ class TlsCertificateResponseRedisV1beta1 {
     );
   }
 }
+

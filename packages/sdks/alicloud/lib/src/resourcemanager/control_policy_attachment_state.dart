@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ControlPolicyAttachmentState {
   /// The ID of the access control policy.
   final pulumi.Input<String>? policyId;
-
   /// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
   ///
   /// - Root folder
@@ -17,24 +16,23 @@ class ControlPolicyAttachmentState {
   /// Creates a new [ControlPolicyAttachmentState].
   /// [policyId] The ID of the access control policy.
   /// [targetId] The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
-  ControlPolicyAttachmentState({this.policyId, this.targetId});
+  ControlPolicyAttachmentState({
+    this.policyId,
+    this.targetId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policyId': ?policyId, 'targetId': ?targetId};
+    return <String, dynamic>{
+      'policyId': ?policyId,
+      'targetId': ?targetId,
+    };
   }
 
   factory ControlPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return ControlPolicyAttachmentState(
-      policyId: (() {
-        final guardedValue = map['policyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetId: (() {
-        final guardedValue = map['targetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetId: (() { final guardedValue = map['targetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

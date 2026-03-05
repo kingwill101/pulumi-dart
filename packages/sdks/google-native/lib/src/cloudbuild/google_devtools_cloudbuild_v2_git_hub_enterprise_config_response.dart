@@ -7,32 +7,22 @@ import 'google_devtools_cloudbuild_v2_service_directory_config_response.dart';
 class GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse {
   /// API Key used for authentication of webhook events.
   final pulumi.Input<String> apiKey;
-
   /// Id of the GitHub App created from the manifest.
   final pulumi.Input<String> appId;
-
   /// ID of the installation of the GitHub App.
   final pulumi.Input<String> appInstallationId;
-
   /// The URL-friendly name of the GitHub App.
   final pulumi.Input<String> appSlug;
-
   /// The URI of the GitHub Enterprise host this connection is for.
   final pulumi.Input<String> hostUri;
-
   /// SecretManager resource containing the private key of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
   final pulumi.Input<String> privateKeySecretVersion;
-
   /// GitHub Enterprise version installed at the host_uri.
   final pulumi.Input<String> serverVersion;
-
   /// Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
-  final pulumi.Input<GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse>
-  serviceDirectoryConfig;
-
+  final pulumi.Input<GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse> serviceDirectoryConfig;
   /// SSL certificate to use for requests to GitHub Enterprise.
   final pulumi.Input<String> sslCa;
-
   /// SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
   final pulumi.Input<String> webhookSecretSecretVersion;
 
@@ -69,40 +59,25 @@ class GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse {
       'hostUri': hostUri,
       'privateKeySecretVersion': privateKeySecretVersion,
       'serverVersion': serverVersion,
-      'serviceDirectoryConfig':
-          pulumi.Input.mapInputValue<
-            GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse,
-            Map<String, dynamic>
-          >(serviceDirectoryConfig, (value) => value.toMap()),
+      'serviceDirectoryConfig': pulumi.Input.mapInputValue<GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse, Map<String, dynamic>>(serviceDirectoryConfig, (value) => value.toMap()),
       'sslCa': sslCa,
       'webhookSecretSecretVersion': webhookSecretSecretVersion,
     };
   }
 
-  factory GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse(
       apiKey: pulumi.Input.fromValue(map['apiKey'] as String),
       appId: pulumi.Input.fromValue(map['appId'] as String),
-      appInstallationId: pulumi.Input.fromValue(
-        map['appInstallationId'] as String,
-      ),
+      appInstallationId: pulumi.Input.fromValue(map['appInstallationId'] as String),
       appSlug: pulumi.Input.fromValue(map['appSlug'] as String),
       hostUri: pulumi.Input.fromValue(map['hostUri'] as String),
-      privateKeySecretVersion: pulumi.Input.fromValue(
-        map['privateKeySecretVersion'] as String,
-      ),
+      privateKeySecretVersion: pulumi.Input.fromValue(map['privateKeySecretVersion'] as String),
       serverVersion: pulumi.Input.fromValue(map['serverVersion'] as String),
-      serviceDirectoryConfig: pulumi.Input.fromValue(
-        GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse.fromMap(
-          (map['serviceDirectoryConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      serviceDirectoryConfig: pulumi.Input.fromValue(GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse.fromMap((map['serviceDirectoryConfig']! as Map).cast<String, dynamic>())),
       sslCa: pulumi.Input.fromValue(map['sslCa'] as String),
-      webhookSecretSecretVersion: pulumi.Input.fromValue(
-        map['webhookSecretSecretVersion'] as String,
-      ),
+      webhookSecretSecretVersion: pulumi.Input.fromValue(map['webhookSecretSecretVersion'] as String),
     );
   }
 }
+

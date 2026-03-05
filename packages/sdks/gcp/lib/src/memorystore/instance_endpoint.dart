@@ -10,39 +10,20 @@ class InstanceEndpoint {
 
   /// Creates a new [InstanceEndpoint].
   /// [connections] A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
-  InstanceEndpoint({this.connections});
+  InstanceEndpoint({
+    this.connections,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connections':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InstanceEndpointConnection>,
-            List<Map<String, dynamic>>
-          >(
-            connections,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InstanceEndpointConnection,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'connections': ?pulumi.Input.mapOptionalInputValue<List<InstanceEndpointConnection>, List<Map<String, dynamic>>>(connections, (value) => pulumi.Input.encodeList<InstanceEndpointConnection, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory InstanceEndpoint.fromMap(Map<String, dynamic> map) {
     return InstanceEndpoint(
-      connections: (() {
-        final guardedValue = map['connections'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<InstanceEndpointConnection>(
-            guardedValue,
-            (value) => InstanceEndpointConnection.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      connections: (() { final guardedValue = map['connections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceEndpointConnection>(guardedValue, (value) => InstanceEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExecutedValidationResponse {
   /// This property specifies the starting timestamp.
   final pulumi.Input<String>? executionTime;
-
   /// This property specifies the status of the validationProfile of the image version.
   final pulumi.Input<String> status;
-
   /// This property specifies the type of image version validation.
   final pulumi.Input<String>? type;
-
   /// This property specifies the valid version of the validation.
   final pulumi.Input<String>? version;
 
@@ -39,22 +36,11 @@ class ExecutedValidationResponse {
 
   factory ExecutedValidationResponse.fromMap(Map<String, dynamic> map) {
     return ExecutedValidationResponse(
-      executionTime: (() {
-        final guardedValue = map['executionTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      executionTime: (() { final guardedValue = map['executionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

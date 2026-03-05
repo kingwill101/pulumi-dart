@@ -7,16 +7,12 @@ import 'slsa_completeness_containeranalysis_v1alpha1.dart';
 class SlsaMetadataContaineranalysisV1alpha1 {
   /// The timestamp of when the build completed.
   final pulumi.Input<String>? buildFinishedOn;
-
   /// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
   final pulumi.Input<String>? buildInvocationId;
-
   /// The timestamp of when the build started.
   final pulumi.Input<String>? buildStartedOn;
-
   /// Indicates that the builder claims certain fields in this message to be complete.
   final pulumi.Input<SlsaCompletenessContaineranalysisV1alpha1>? completeness;
-
   /// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
   final pulumi.Input<bool>? reproducible;
 
@@ -39,48 +35,19 @@ class SlsaMetadataContaineranalysisV1alpha1 {
       'buildFinishedOn': ?buildFinishedOn,
       'buildInvocationId': ?buildInvocationId,
       'buildStartedOn': ?buildStartedOn,
-      'completeness':
-          ?pulumi.Input.mapOptionalInputValue<
-            SlsaCompletenessContaineranalysisV1alpha1,
-            Map<String, dynamic>
-          >(completeness, (value) => value.toMap()),
+      'completeness': ?pulumi.Input.mapOptionalInputValue<SlsaCompletenessContaineranalysisV1alpha1, Map<String, dynamic>>(completeness, (value) => value.toMap()),
       'reproducible': ?reproducible,
     };
   }
 
-  factory SlsaMetadataContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SlsaMetadataContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return SlsaMetadataContaineranalysisV1alpha1(
-      buildFinishedOn: (() {
-        final guardedValue = map['buildFinishedOn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      buildInvocationId: (() {
-        final guardedValue = map['buildInvocationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      buildStartedOn: (() {
-        final guardedValue = map['buildStartedOn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      completeness: (() {
-        final guardedValue = map['completeness'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SlsaCompletenessContaineranalysisV1alpha1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      reproducible: (() {
-        final guardedValue = map['reproducible'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      buildFinishedOn: (() { final guardedValue = map['buildFinishedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      buildInvocationId: (() { final guardedValue = map['buildInvocationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      buildStartedOn: (() { final guardedValue = map['buildStartedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      completeness: (() { final guardedValue = map['completeness']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SlsaCompletenessContaineranalysisV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      reproducible: (() { final guardedValue = map['reproducible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

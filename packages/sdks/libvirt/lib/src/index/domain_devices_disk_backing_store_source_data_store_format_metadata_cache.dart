@@ -5,10 +5,7 @@ import 'domain_devices_disk_backing_store_source_data_store_format_metadata_cach
 
 class DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache {
   /// Sets the maximum size for the metadata cache in the data store format configuration.
-  final pulumi.Input<
-    DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSize
-  >?
-  maxSize;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSize>? maxSize;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache].
   /// [maxSize] Sets the maximum size for the metadata cache in the data store format configuration.
@@ -18,27 +15,14 @@ class DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxSize':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSize,
-            Map<String, dynamic>
-          >(maxSize, (value) => value.toMap()),
+      'maxSize': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSize, Map<String, dynamic>>(maxSize, (value) => value.toMap()),
     };
   }
 
-  factory DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache(
-      maxSize: (() {
-        final guardedValue = map['maxSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSize.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSize.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

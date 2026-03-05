@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterZoneResponse {
   /// List of hosts belonging to the availability zone in a cluster
   final pulumi.Input<List<String>> hosts;
-
   /// Availability zone identifier
   final pulumi.Input<String> zone;
 
   /// Creates a new [ClusterZoneResponse].
   /// [hosts] List of hosts belonging to the availability zone in a cluster
   /// [zone] Availability zone identifier
-  ClusterZoneResponse({required this.hosts, required this.zone});
+  ClusterZoneResponse({
+    required this.hosts,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hosts': hosts, 'zone': zone};
+    return <String, dynamic>{
+      'hosts': hosts,
+      'zone': zone,
+    };
   }
 
   factory ClusterZoneResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ClusterZoneResponse {
     );
   }
 }
+

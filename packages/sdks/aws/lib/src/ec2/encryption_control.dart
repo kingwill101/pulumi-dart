@@ -141,74 +141,58 @@ class EncryptionControl extends pulumi.CustomResource {
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
   late final pulumi.Output<String> egressOnlyInternetGatewayExclusion;
-
   /// Whether to exclude Elastic File System (EFS) from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
   late final pulumi.Output<String> elasticFileSystemExclusion;
-
   /// Whether to exclude Internet Gateways from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
   late final pulumi.Output<String> internetGatewayExclusion;
-
   /// Whether to exclude Lambda Functions from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
   late final pulumi.Output<String> lambdaExclusion;
-
   /// Mode to enable for VPC Encryption Control.
   /// Valid values are `monitor` or `enforce`.
   late final pulumi.Output<String> mode;
-
   /// Whether to exclude NAT Gateways from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
   late final pulumi.Output<String> natGatewayExclusion;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// State of exclusions from encryption enforcement.
   /// Will be `nil` if `mode` is `monitor`.
   /// See `resource_exclusions` below
-  late final pulumi.Output<EncryptionControlResourceExclusions>
-  resourceExclusions;
-
+  late final pulumi.Output<EncryptionControlResourceExclusions> resourceExclusions;
   /// The current state of the VPC Encryption Control.
   late final pulumi.Output<String> state;
-
   /// A message providing additional information about the state of the VPC Encryption Control.
   late final pulumi.Output<String> stateMessage;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<EncryptionControlTimeouts?> timeouts;
-
   /// Whether to exclude Virtual Private Gateways from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
   late final pulumi.Output<String> virtualPrivateGatewayExclusion;
-
   /// The ID of the VPC the VPC Encryption Control is linked to.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> vpcId;
-
   /// Whether to exclude VPC Lattice from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
   late final pulumi.Output<String> vpcLatticeExclusion;
-
   /// Whether to exclude peered VPCs from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
@@ -224,51 +208,25 @@ class EncryptionControl extends pulumi.CustomResource {
     EncryptionControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/encryptionControl:EncryptionControl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    egressOnlyInternetGatewayExclusion = registerOutput<String>(
-      'egressOnlyInternetGatewayExclusion',
-    );
-    elasticFileSystemExclusion = registerOutput<String>(
-      'elasticFileSystemExclusion',
-    );
-    internetGatewayExclusion = registerOutput<String>(
-      'internetGatewayExclusion',
-    );
+          'aws:ec2/encryptionControl:EncryptionControl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    egressOnlyInternetGatewayExclusion = registerOutput<String>('egressOnlyInternetGatewayExclusion');
+    elasticFileSystemExclusion = registerOutput<String>('elasticFileSystemExclusion');
+    internetGatewayExclusion = registerOutput<String>('internetGatewayExclusion');
     lambdaExclusion = registerOutput<String>('lambdaExclusion');
     mode = registerOutput<String>('mode');
     natGatewayExclusion = registerOutput<String>('natGatewayExclusion');
     region = registerOutput<String>('region');
-    resourceExclusions = registerOutput<EncryptionControlResourceExclusions>(
-      'resourceExclusions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionControlResourceExclusions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceExclusions = registerOutput<EncryptionControlResourceExclusions>('resourceExclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionControlResourceExclusions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<EncryptionControlTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionControlTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    virtualPrivateGatewayExclusion = registerOutput<String>(
-      'virtualPrivateGatewayExclusion',
-    );
+    timeouts = registerOutput<EncryptionControlTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionControlTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualPrivateGatewayExclusion = registerOutput<String>('virtualPrivateGatewayExclusion');
     vpcId = registerOutput<String>('vpcId');
     vpcLatticeExclusion = registerOutput<String>('vpcLatticeExclusion');
     vpcPeeringExclusion = registerOutput<String>('vpcPeeringExclusion');
@@ -292,51 +250,25 @@ class EncryptionControl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/encryptionControl:EncryptionControl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    egressOnlyInternetGatewayExclusion = registerOutput<String>(
-      'egressOnlyInternetGatewayExclusion',
-    );
-    elasticFileSystemExclusion = registerOutput<String>(
-      'elasticFileSystemExclusion',
-    );
-    internetGatewayExclusion = registerOutput<String>(
-      'internetGatewayExclusion',
-    );
+          'aws:ec2/encryptionControl:EncryptionControl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    egressOnlyInternetGatewayExclusion = registerOutput<String>('egressOnlyInternetGatewayExclusion');
+    elasticFileSystemExclusion = registerOutput<String>('elasticFileSystemExclusion');
+    internetGatewayExclusion = registerOutput<String>('internetGatewayExclusion');
     lambdaExclusion = registerOutput<String>('lambdaExclusion');
     mode = registerOutput<String>('mode');
     natGatewayExclusion = registerOutput<String>('natGatewayExclusion');
     region = registerOutput<String>('region');
-    resourceExclusions = registerOutput<EncryptionControlResourceExclusions>(
-      'resourceExclusions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionControlResourceExclusions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceExclusions = registerOutput<EncryptionControlResourceExclusions>('resourceExclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionControlResourceExclusions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<EncryptionControlTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionControlTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    virtualPrivateGatewayExclusion = registerOutput<String>(
-      'virtualPrivateGatewayExclusion',
-    );
+    timeouts = registerOutput<EncryptionControlTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionControlTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualPrivateGatewayExclusion = registerOutput<String>('virtualPrivateGatewayExclusion');
     vpcId = registerOutput<String>('vpcId');
     vpcLatticeExclusion = registerOutput<String>('vpcLatticeExclusion');
     vpcPeeringExclusion = registerOutput<String>('vpcPeeringExclusion');

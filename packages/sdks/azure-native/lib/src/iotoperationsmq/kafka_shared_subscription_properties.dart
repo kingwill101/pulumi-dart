@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KafkaSharedSubscriptionProperties {
   /// The minimum number to use in a group for subscription.
   final pulumi.Input<int> groupMinimumShareNumber;
-
   /// The name of the shared subscription.
   final pulumi.Input<String> groupName;
 
@@ -27,10 +26,9 @@ class KafkaSharedSubscriptionProperties {
 
   factory KafkaSharedSubscriptionProperties.fromMap(Map<String, dynamic> map) {
     return KafkaSharedSubscriptionProperties(
-      groupMinimumShareNumber: pulumi.Input.fromValue(
-        map['groupMinimumShareNumber'] as int,
-      ),
+      groupMinimumShareNumber: pulumi.Input.fromValue(map['groupMinimumShareNumber'] as int),
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
     );
   }
 }
+

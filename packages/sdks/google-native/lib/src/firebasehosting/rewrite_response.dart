@@ -7,22 +7,16 @@ import 'cloud_run_rewrite_response.dart';
 class RewriteResponse {
   /// The request will be forwarded to Firebase Dynamic Links.
   final pulumi.Input<bool> dynamicLinks;
-
   /// The function to proxy requests to. Must match the exported function name exactly.
   final pulumi.Input<String> function;
-
   /// Optional. Specify a Cloud region for rewritten Functions invocations. If not provided, defaults to us-central1.
   final pulumi.Input<String> functionRegion;
-
   /// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
   final pulumi.Input<String> glob;
-
   /// The URL path to rewrite the request to.
   final pulumi.Input<String> path;
-
   /// The user-supplied RE2 regular expression to match against the request URL path.
   final pulumi.Input<String> regex;
-
   /// The request will be forwarded to Cloud Run.
   final pulumi.Input<CloudRunRewriteResponse> run;
 
@@ -52,11 +46,7 @@ class RewriteResponse {
       'glob': glob,
       'path': path,
       'regex': regex,
-      'run':
-          pulumi.Input.mapInputValue<
-            CloudRunRewriteResponse,
-            Map<String, dynamic>
-          >(run, (value) => value.toMap()),
+      'run': pulumi.Input.mapInputValue<CloudRunRewriteResponse, Map<String, dynamic>>(run, (value) => value.toMap()),
     };
   }
 
@@ -68,11 +58,8 @@ class RewriteResponse {
       glob: pulumi.Input.fromValue(map['glob'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
       regex: pulumi.Input.fromValue(map['regex'] as String),
-      run: pulumi.Input.fromValue(
-        CloudRunRewriteResponse.fromMap(
-          (map['run']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      run: pulumi.Input.fromValue(CloudRunRewriteResponse.fromMap((map['run']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesDiskMirrorSourceSlicesSlice {
   /// Sets the offset for the specific slice in the mirror source configuration.
   final pulumi.Input<double> offset;
-
   /// Configures the size of the slice in the mirror source.
   final pulumi.Input<double> size;
-
   /// Specifies the type of the slice in the mirror source configuration.
   final pulumi.Input<String> type;
 
@@ -23,12 +21,14 @@ class DomainDevicesDiskMirrorSourceSlicesSlice {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'offset': offset, 'size': size, 'type': type};
+    return <String, dynamic>{
+      'offset': offset,
+      'size': size,
+      'type': type,
+    };
   }
 
-  factory DomainDevicesDiskMirrorSourceSlicesSlice.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskMirrorSourceSlicesSlice.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceSlicesSlice(
       offset: pulumi.Input.fromValue(map['offset'] as double),
       size: pulumi.Input.fromValue(map['size'] as double),
@@ -36,3 +36,4 @@ class DomainDevicesDiskMirrorSourceSlicesSlice {
     );
   }
 }
+

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualServiceArgs {
   /// Name of the service mesh in which the virtual service exists.
   final pulumi.Input<String> meshName;
-
   /// AWS account ID of the service mesh's owner.
   final pulumi.Input<String>? meshOwner;
-
   /// Name of the virtual service.
   final pulumi.Input<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -49,24 +45,11 @@ class GetVirtualServiceArgs {
   factory GetVirtualServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualServiceArgs(
       meshName: pulumi.Input.fromValue(map['meshName'] as String),
-      meshOwner: (() {
-        final guardedValue = map['meshOwner'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      meshOwner: (() { final guardedValue = map['meshOwner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

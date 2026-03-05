@@ -8,18 +8,11 @@ class ConnectionProfilePostgresqlProfileSslConfig {
   /// If this field is set, the communication will be encrypted with TLS encryption
   /// and both the server identity and the client identity will be authenticated.
   /// Structure is documented below.
-  final pulumi.Input<
-    ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification
-  >?
-  serverAndClientVerification;
-
+  final pulumi.Input<ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification>? serverAndClientVerification;
   /// If this field is set, the communication will be encrypted with TLS encryption
   /// and the server identity will be authenticated.
   /// Structure is documented below.
-  final pulumi.Input<
-    ConnectionProfilePostgresqlProfileSslConfigServerVerification
-  >?
-  serverVerification;
+  final pulumi.Input<ConnectionProfilePostgresqlProfileSslConfigServerVerification>? serverVerification;
 
   /// Creates a new [ConnectionProfilePostgresqlProfileSslConfig].
   /// [serverAndClientVerification] If this field is set, the communication will be encrypted with TLS encryption
@@ -31,41 +24,16 @@ class ConnectionProfilePostgresqlProfileSslConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serverAndClientVerification':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification,
-            Map<String, dynamic>
-          >(serverAndClientVerification, (value) => value.toMap()),
-      'serverVerification':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionProfilePostgresqlProfileSslConfigServerVerification,
-            Map<String, dynamic>
-          >(serverVerification, (value) => value.toMap()),
+      'serverAndClientVerification': ?pulumi.Input.mapOptionalInputValue<ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification, Map<String, dynamic>>(serverAndClientVerification, (value) => value.toMap()),
+      'serverVerification': ?pulumi.Input.mapOptionalInputValue<ConnectionProfilePostgresqlProfileSslConfigServerVerification, Map<String, dynamic>>(serverVerification, (value) => value.toMap()),
     };
   }
 
-  factory ConnectionProfilePostgresqlProfileSslConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionProfilePostgresqlProfileSslConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionProfilePostgresqlProfileSslConfig(
-      serverAndClientVerification: (() {
-        final guardedValue = map['serverAndClientVerification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      serverVerification: (() {
-        final guardedValue = map['serverVerification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConnectionProfilePostgresqlProfileSslConfigServerVerification.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      serverAndClientVerification: (() { final guardedValue = map['serverAndClientVerification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serverVerification: (() { final guardedValue = map['serverVerification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionProfilePostgresqlProfileSslConfigServerVerification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

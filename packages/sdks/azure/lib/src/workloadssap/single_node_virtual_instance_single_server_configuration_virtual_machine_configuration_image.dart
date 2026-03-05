@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage {
   /// Specifies the offer of the platform image or marketplace image used to create the virtual machine. Changing this forces a new resource to be created.
   final pulumi.Input<String> offer;
-
   /// The publisher of the Image. Possible values are `RedHat` and `SUSE`. Changing this forces a new resource to be created.
   final pulumi.Input<String> publisher;
-
   /// The SKU of the Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> sku;
-
   /// Specifies the version of the platform image or marketplace image used to create the virtual machine. Changing this forces a new resource to be created.
   final pulumi.Input<String> version;
 
@@ -36,9 +33,7 @@ class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurat
     };
   }
 
-  factory SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage.fromMap(Map<String, dynamic> map) {
     return SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage(
       offer: pulumi.Input.fromValue(map['offer'] as String),
       publisher: pulumi.Input.fromValue(map['publisher'] as String),
@@ -47,3 +42,4 @@ class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurat
     );
   }
 }
+

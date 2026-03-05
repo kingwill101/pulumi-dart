@@ -176,13 +176,10 @@ import 'list_state.dart';
 class ListType extends pulumi.CustomResource {
   /// The description of the custom list.
   late final pulumi.Output<String?> description;
-
   /// The items in the custom list, which are displayed as an array.
   late final pulumi.Output<List<String>?> items;
-
   /// The type of the custom list.
   late final pulumi.Output<String?> kind;
-
   /// The name of the custom list.
   late final pulumi.Output<String> name;
 
@@ -190,13 +187,16 @@ class ListType extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [ListType]. {@macro pulumi_esa_list_list_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  ListType(String name, {ListArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:esa/list:List',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  ListType(
+    String name, {
+    ListArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:esa/list:List',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     items = registerOutput<List<String>?>('items');
     kind = registerOutput<String?>('kind');
@@ -221,11 +221,11 @@ class ListType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/list:List',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/list:List',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     items = registerOutput<List<String>?>('items');
     kind = registerOutput<String?>('kind');

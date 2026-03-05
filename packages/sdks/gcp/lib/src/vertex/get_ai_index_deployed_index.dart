@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAiIndexDeployedIndex {
   /// The ID of the DeployedIndex in the above IndexEndpoint.
   final pulumi.Input<String> deployedIndexId;
-
   /// A resource name of the IndexEndpoint.
   final pulumi.Input<String> indexEndpoint;
 
@@ -31,3 +30,4 @@ class GetAiIndexDeployedIndex {
     );
   }
 }
+

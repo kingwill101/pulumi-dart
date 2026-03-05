@@ -158,10 +158,8 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// The ID of the global acceleration instance.
   late final pulumi.Output<String> acceleratorId;
-
   /// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
   late final pulumi.Output<String> domain;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -169,13 +167,16 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_ga_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:ga/domain:Domain',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Domain(
+    String name, {
+    DomainArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:ga/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorId = registerOutput<String>('acceleratorId');
     domain = registerOutput<String>('domain');
     status = registerOutput<String>('status');
@@ -199,11 +200,11 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/domain:Domain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorId = registerOutput<String>('acceleratorId');
     domain = registerOutput<String>('domain');
     status = registerOutput<String>('status');

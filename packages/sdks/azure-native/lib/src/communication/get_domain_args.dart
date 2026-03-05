@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainArgs {
   /// The name of the Domains resource.
   final pulumi.Input<String> domainName;
-
   /// The name of the EmailService resource.
   final pulumi.Input<String> emailServiceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetDomainArgs {
   factory GetDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainArgs(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      emailServiceName: pulumi.Input.fromValue(
-        map['emailServiceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      emailServiceName: pulumi.Input.fromValue(map['emailServiceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

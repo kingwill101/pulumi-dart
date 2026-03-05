@@ -12,8 +12,7 @@ enum RouterInterfaceIpVersionComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RouterInterfaceIpVersionComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown RouterInterfaceIpVersionComputeBeta value: $value');
   }
 }
+

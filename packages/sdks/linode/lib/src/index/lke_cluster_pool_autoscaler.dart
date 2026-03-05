@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LkeClusterPoolAutoscaler {
   /// The maximum number of nodes to autoscale to.
   final pulumi.Input<int> max;
-
   /// The minimum number of nodes to autoscale to.
   final pulumi.Input<int> min;
 
   /// Creates a new [LkeClusterPoolAutoscaler].
   /// [max] The maximum number of nodes to autoscale to.
   /// [min] The minimum number of nodes to autoscale to.
-  LkeClusterPoolAutoscaler({required this.max, required this.min});
+  LkeClusterPoolAutoscaler({
+    required this.max,
+    required this.min,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': max, 'min': min};
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
   factory LkeClusterPoolAutoscaler.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class LkeClusterPoolAutoscaler {
     );
   }
 }
+

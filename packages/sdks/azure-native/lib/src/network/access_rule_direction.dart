@@ -15,3 +15,4 @@ enum AccessRuleDirection {
     throw ArgumentError('Unknown AccessRuleDirection value: $value');
   }
 }
+

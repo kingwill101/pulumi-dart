@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableAclAccessPolicy {
   /// The ISO8061 UTC time at which this Access Policy should be valid until.
   final pulumi.Input<String> expiry;
-
   /// The permissions which should associated with this Shared Identifier.
   final pulumi.Input<String> permissions;
-
   /// The ISO8061 UTC time at which this Access Policy should be valid from.
   final pulumi.Input<String> start;
 
@@ -38,3 +36,4 @@ class TableAclAccessPolicy {
     );
   }
 }
+

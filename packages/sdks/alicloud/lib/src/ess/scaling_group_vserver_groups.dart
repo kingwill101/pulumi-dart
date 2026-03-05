@@ -32,10 +32,8 @@ import 'scaling_group_vserver_groups_state.dart';
 class ScalingGroupVServerGroups extends pulumi.CustomResource {
   /// If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
   late final pulumi.Output<bool?> force;
-
   /// ID of the scaling group.
   late final pulumi.Output<String> scalingGroupId;
-
   /// A list of vserver groups attached on scaling group. See `vserver_groups` below.
   late final pulumi.Output<List<Map<String, dynamic>>> vserverGroups;
 
@@ -48,11 +46,11 @@ class ScalingGroupVServerGroups extends pulumi.CustomResource {
     ScalingGroupVServerGroupsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     force = registerOutput<bool?>('force');
     scalingGroupId = registerOutput<String>('scalingGroupId');
     vserverGroups = registerOutput<List<Map<String, dynamic>>>('vserverGroups');
@@ -76,11 +74,11 @@ class ScalingGroupVServerGroups extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     force = registerOutput<bool?>('force');
     scalingGroupId = registerOutput<String>('scalingGroupId');
     vserverGroups = registerOutput<List<Map<String, dynamic>>>('vserverGroups');

@@ -915,55 +915,41 @@ class DataTransferConfig extends pulumi.CustomResource {
   /// just [today-1]. Only valid if the data source supports the feature.
   /// Set the value to 0 to use the default value.
   late final pulumi.Output<int?> dataRefreshWindowDays;
-
   /// The data source id. Cannot be changed once the transfer config is created.
   late final pulumi.Output<String> dataSourceId;
-
   /// The BigQuery target dataset id.
   late final pulumi.Output<String?> destinationDatasetId;
-
   /// When set to true, no runs are scheduled for a given transfer.
   late final pulumi.Output<bool?> disabled;
-
   /// The user specified display name for the transfer config.
   late final pulumi.Output<String> displayName;
-
   /// Email notifications will be sent according to these preferences to the
   /// email address of the user who owns this transfer config.
   /// Structure is documented below.
-  late final pulumi.Output<DataTransferConfigEmailPreferences?>
-  emailPreferences;
-
+  late final pulumi.Output<DataTransferConfigEmailPreferences?> emailPreferences;
   /// Represents the encryption configuration for a transfer.
   /// Structure is documented below.
-  late final pulumi.Output<DataTransferConfigEncryptionConfiguration?>
-  encryptionConfiguration;
-
+  late final pulumi.Output<DataTransferConfigEncryptionConfiguration?> encryptionConfiguration;
   /// The geographic location where the transfer config should reside.
   /// Examples: US, EU, asia-northeast1. The default value is US.
   late final pulumi.Output<String?> location;
-
   /// The resource name of the transfer config. Transfer config names have the
   /// form projects/{projectId}/locations/{location}/transferConfigs/{configId}
   /// or projects/{projectId}/transferConfigs/{configId},
   /// where configId is usually a uuid, but this is not required.
   /// The name is ignored when creating a transfer config.
   late final pulumi.Output<String> name;
-
   /// Pub/Sub topic where notifications will be sent after transfer runs
   /// associated with this transfer config finish.
   late final pulumi.Output<String?> notificationPubsubTopic;
-
   /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
   /// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
   /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
   /// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
   late final pulumi.Output<Map<String, String>> params;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Data transfer schedule. If the data source does not support a custom
   /// schedule, this should be empty. If it is empty, the default value for
   /// the data source will be used. The specified times are in UTC. Examples
@@ -974,11 +960,9 @@ class DataTransferConfig extends pulumi.CustomResource {
   /// NOTE: The minimum interval time between recurring transfers depends
   /// on the data source; refer to the documentation for your data source.
   late final pulumi.Output<String?> schedule;
-
   /// Options customizing the data transfer schedule.
   /// Structure is documented below.
   late final pulumi.Output<DataTransferConfigScheduleOptions?> scheduleOptions;
-
   /// Different parameters are configured primarily using the the `params` field on this
   /// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
   /// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -987,7 +971,6 @@ class DataTransferConfig extends pulumi.CustomResource {
   /// to a different credential configuration in the config will require an apply to update state.
   /// Structure is documented below.
   late final pulumi.Output<DataTransferConfigSensitiveParams?> sensitiveParams;
-
   /// Service account email. If this field is set, transfer config will
   /// be created with this service account credentials. It requires that
   /// requesting user calling this API has permissions to act as this service account.
@@ -1002,65 +985,26 @@ class DataTransferConfig extends pulumi.CustomResource {
     DataTransferConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:bigquery/dataTransferConfig:DataTransferConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:bigquery/dataTransferConfig:DataTransferConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataRefreshWindowDays = registerOutput<int?>('dataRefreshWindowDays');
     dataSourceId = registerOutput<String>('dataSourceId');
     destinationDatasetId = registerOutput<String?>('destinationDatasetId');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String>('displayName');
-    emailPreferences = registerOutput<DataTransferConfigEmailPreferences?>(
-      'emailPreferences',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataTransferConfigEmailPreferences.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptionConfiguration =
-        registerOutput<DataTransferConfigEncryptionConfiguration?>(
-          'encryptionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataTransferConfigEncryptionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    emailPreferences = registerOutput<DataTransferConfigEmailPreferences?>('emailPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferConfigEmailPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionConfiguration = registerOutput<DataTransferConfigEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferConfigEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    notificationPubsubTopic = registerOutput<String?>(
-      'notificationPubsubTopic',
-    );
+    notificationPubsubTopic = registerOutput<String?>('notificationPubsubTopic');
     params = registerOutput<Map<String, String>>('params');
     project = registerOutput<String>('project');
     schedule = registerOutput<String?>('schedule');
-    scheduleOptions = registerOutput<DataTransferConfigScheduleOptions?>(
-      'scheduleOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataTransferConfigScheduleOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sensitiveParams = registerOutput<DataTransferConfigSensitiveParams?>(
-      'sensitiveParams',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataTransferConfigSensitiveParams.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scheduleOptions = registerOutput<DataTransferConfigScheduleOptions?>('scheduleOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferConfigScheduleOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sensitiveParams = registerOutput<DataTransferConfigSensitiveParams?>('sensitiveParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferConfigSensitiveParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccountName = registerOutput<String?>('serviceAccountName');
   }
 
@@ -1082,65 +1026,26 @@ class DataTransferConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:bigquery/dataTransferConfig:DataTransferConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:bigquery/dataTransferConfig:DataTransferConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataRefreshWindowDays = registerOutput<int?>('dataRefreshWindowDays');
     dataSourceId = registerOutput<String>('dataSourceId');
     destinationDatasetId = registerOutput<String?>('destinationDatasetId');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String>('displayName');
-    emailPreferences = registerOutput<DataTransferConfigEmailPreferences?>(
-      'emailPreferences',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataTransferConfigEmailPreferences.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptionConfiguration =
-        registerOutput<DataTransferConfigEncryptionConfiguration?>(
-          'encryptionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataTransferConfigEncryptionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    emailPreferences = registerOutput<DataTransferConfigEmailPreferences?>('emailPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferConfigEmailPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionConfiguration = registerOutput<DataTransferConfigEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferConfigEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    notificationPubsubTopic = registerOutput<String?>(
-      'notificationPubsubTopic',
-    );
+    notificationPubsubTopic = registerOutput<String?>('notificationPubsubTopic');
     params = registerOutput<Map<String, String>>('params');
     project = registerOutput<String>('project');
     schedule = registerOutput<String?>('schedule');
-    scheduleOptions = registerOutput<DataTransferConfigScheduleOptions?>(
-      'scheduleOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataTransferConfigScheduleOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sensitiveParams = registerOutput<DataTransferConfigSensitiveParams?>(
-      'sensitiveParams',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataTransferConfigSensitiveParams.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scheduleOptions = registerOutput<DataTransferConfigScheduleOptions?>('scheduleOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferConfigScheduleOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sensitiveParams = registerOutput<DataTransferConfigSensitiveParams?>('sensitiveParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferConfigSensitiveParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccountName = registerOutput<String?>('serviceAccountName');
   }
 }

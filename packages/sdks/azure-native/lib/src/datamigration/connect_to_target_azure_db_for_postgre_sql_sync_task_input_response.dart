@@ -7,7 +7,6 @@ import 'postgre_sql_connection_info_response.dart';
 class ConnectToTargetAzureDbForPostgreSqlSyncTaskInputResponse {
   /// Connection information for source PostgreSQL server
   final pulumi.Input<PostgreSqlConnectionInfoResponse> sourceConnectionInfo;
-
   /// Connection information for target Azure Database for PostgreSQL server
   final pulumi.Input<PostgreSqlConnectionInfoResponse> targetConnectionInfo;
 
@@ -21,33 +20,16 @@ class ConnectToTargetAzureDbForPostgreSqlSyncTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceConnectionInfo':
-          pulumi.Input.mapInputValue<
-            PostgreSqlConnectionInfoResponse,
-            Map<String, dynamic>
-          >(sourceConnectionInfo, (value) => value.toMap()),
-      'targetConnectionInfo':
-          pulumi.Input.mapInputValue<
-            PostgreSqlConnectionInfoResponse,
-            Map<String, dynamic>
-          >(targetConnectionInfo, (value) => value.toMap()),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<PostgreSqlConnectionInfoResponse, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<PostgreSqlConnectionInfoResponse, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
-  factory ConnectToTargetAzureDbForPostgreSqlSyncTaskInputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectToTargetAzureDbForPostgreSqlSyncTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetAzureDbForPostgreSqlSyncTaskInputResponse(
-      sourceConnectionInfo: pulumi.Input.fromValue(
-        PostgreSqlConnectionInfoResponse.fromMap(
-          (map['sourceConnectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      targetConnectionInfo: pulumi.Input.fromValue(
-        PostgreSqlConnectionInfoResponse.fromMap(
-          (map['targetConnectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      sourceConnectionInfo: pulumi.Input.fromValue(PostgreSqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo']! as Map).cast<String, dynamic>())),
+      targetConnectionInfo: pulumi.Input.fromValue(PostgreSqlConnectionInfoResponse.fromMap((map['targetConnectionInfo']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -11,9 +11,7 @@ class PolicyState {
   /// image's name matches a whitelist pattern, the image's admission
   /// requests will always be permitted regardless of your admission rules.
   /// Structure is documented below.
-  final pulumi.Input<List<PolicyAdmissionWhitelistPattern>>?
-  admissionWhitelistPatterns;
-
+  final pulumi.Input<List<PolicyAdmissionWhitelistPattern>>? admissionWhitelistPatterns;
   /// Per-cluster admission rules. An admission rule specifies either that
   /// all container images used in a pod creation request must be attested
   /// to by one or more attestors, that all pod creations will be allowed,
@@ -25,21 +23,17 @@ class PolicyState {
   /// (e.g. `us-central1`).
   /// Structure is documented below.
   final pulumi.Input<List<PolicyClusterAdmissionRule>>? clusterAdmissionRules;
-
   /// Default admission rule for a cluster without a per-cluster admission
   /// rule.
   /// Structure is documented below.
   final pulumi.Input<PolicyDefaultAdmissionRule>? defaultAdmissionRule;
-
   /// A descriptive comment.
   final pulumi.Input<String>? description;
-
   /// Controls the evaluation of a Google-maintained global admission policy
   /// for common system-level images. Images not covered by the global
   /// policy will be subject to the project admission policy.
   /// Possible values are: `ENABLE`, `DISABLE`.
   final pulumi.Input<String>? globalPolicyEvaluationMode;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -62,35 +56,9 @@ class PolicyState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'admissionWhitelistPatterns':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<PolicyAdmissionWhitelistPattern>,
-            List<Map<String, dynamic>>
-          >(
-            admissionWhitelistPatterns,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PolicyAdmissionWhitelistPattern,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'clusterAdmissionRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<PolicyClusterAdmissionRule>,
-            List<Map<String, dynamic>>
-          >(
-            clusterAdmissionRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PolicyClusterAdmissionRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'defaultAdmissionRule':
-          ?pulumi.Input.mapOptionalInputValue<
-            PolicyDefaultAdmissionRule,
-            Map<String, dynamic>
-          >(defaultAdmissionRule, (value) => value.toMap()),
+      'admissionWhitelistPatterns': ?pulumi.Input.mapOptionalInputValue<List<PolicyAdmissionWhitelistPattern>, List<Map<String, dynamic>>>(admissionWhitelistPatterns, (value) => pulumi.Input.encodeList<PolicyAdmissionWhitelistPattern, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'clusterAdmissionRules': ?pulumi.Input.mapOptionalInputValue<List<PolicyClusterAdmissionRule>, List<Map<String, dynamic>>>(clusterAdmissionRules, (value) => pulumi.Input.encodeList<PolicyClusterAdmissionRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultAdmissionRule': ?pulumi.Input.mapOptionalInputValue<PolicyDefaultAdmissionRule, Map<String, dynamic>>(defaultAdmissionRule, (value) => value.toMap()),
       'description': ?description,
       'globalPolicyEvaluationMode': ?globalPolicyEvaluationMode,
       'project': ?project,
@@ -99,54 +67,13 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      admissionWhitelistPatterns: (() {
-        final guardedValue = map['admissionWhitelistPatterns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<PolicyAdmissionWhitelistPattern>(
-            guardedValue,
-            (value) => PolicyAdmissionWhitelistPattern.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      clusterAdmissionRules: (() {
-        final guardedValue = map['clusterAdmissionRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<PolicyClusterAdmissionRule>(
-            guardedValue,
-            (value) => PolicyClusterAdmissionRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      defaultAdmissionRule: (() {
-        final guardedValue = map['defaultAdmissionRule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PolicyDefaultAdmissionRule.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      globalPolicyEvaluationMode: (() {
-        final guardedValue = map['globalPolicyEvaluationMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      admissionWhitelistPatterns: (() { final guardedValue = map['admissionWhitelistPatterns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyAdmissionWhitelistPattern>(guardedValue, (value) => PolicyAdmissionWhitelistPattern.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      clusterAdmissionRules: (() { final guardedValue = map['clusterAdmissionRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyClusterAdmissionRule>(guardedValue, (value) => PolicyClusterAdmissionRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      defaultAdmissionRule: (() { final guardedValue = map['defaultAdmissionRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyDefaultAdmissionRule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      globalPolicyEvaluationMode: (() { final guardedValue = map['globalPolicyEvaluationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

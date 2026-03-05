@@ -41,24 +41,15 @@ class GetBackupPlanBackupVolumeBackupIamPolicyArgs {
     };
   }
 
-  factory GetBackupPlanBackupVolumeBackupIamPolicyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBackupPlanBackupVolumeBackupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanBackupVolumeBackupIamPolicyArgs(
       backupId: pulumi.Input.fromValue(map['backupId'] as String),
       backupPlanId: pulumi.Input.fromValue(map['backupPlanId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumeBackupId: pulumi.Input.fromValue(map['volumeBackupId'] as String),
     );
   }
 }
+

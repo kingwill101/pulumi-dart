@@ -15,3 +15,4 @@ enum BlueprintTargetScope {
     throw ArgumentError('Unknown BlueprintTargetScope value: $value');
   }
 }
+

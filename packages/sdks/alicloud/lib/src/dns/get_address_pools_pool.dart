@@ -6,40 +6,28 @@ import 'get_address_pools_pool_address.dart';
 class GetAddressPoolsPool {
   /// The first ID of the resource.
   final pulumi.Input<String> addressPoolId;
-
   /// The name of the address pool.
   final pulumi.Input<String> addressPoolName;
-
   /// The address lists of the Address Pool.
   final pulumi.Input<List<GetAddressPoolsPoolAddress>> addresses;
-
   /// The time when the address pool was created.
   final pulumi.Input<String> createTime;
-
   /// The timestamp that indicates when the address pool was created.
   final pulumi.Input<String> createTimestamp;
-
   /// The ID of the Address Pool.
   final pulumi.Input<String> id;
-
   /// The id of the instance.
   final pulumi.Input<String> instanceId;
-
   /// The load balancing policy of the address pool.
   final pulumi.Input<String> lbaStrategy;
-
   /// The ID of the health check task.
   final pulumi.Input<String> monitorConfigId;
-
   /// Indicates whether health checks are configured.
   final pulumi.Input<String> monitorStatus;
-
   /// The type of the address pool.
   final pulumi.Input<String> type;
-
   /// The time when the address pool was updated.
   final pulumi.Input<String> updateTime;
-
   /// The timestamp that indicates when the address pool was updated.
   final pulumi.Input<String> updateTimestamp;
 
@@ -77,18 +65,7 @@ class GetAddressPoolsPool {
     return <String, dynamic>{
       'addressPoolId': addressPoolId,
       'addressPoolName': addressPoolName,
-      'addresses':
-          pulumi.Input.mapInputValue<
-            List<GetAddressPoolsPoolAddress>,
-            List<Map<String, dynamic>>
-          >(
-            addresses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetAddressPoolsPoolAddress,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'addresses': pulumi.Input.mapInputValue<List<GetAddressPoolsPoolAddress>, List<Map<String, dynamic>>>(addresses, (value) => pulumi.Input.encodeList<GetAddressPoolsPoolAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': createTime,
       'createTimestamp': createTimestamp,
       'id': id,
@@ -106,14 +83,7 @@ class GetAddressPoolsPool {
     return GetAddressPoolsPool(
       addressPoolId: pulumi.Input.fromValue(map['addressPoolId'] as String),
       addressPoolName: pulumi.Input.fromValue(map['addressPoolName'] as String),
-      addresses: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetAddressPoolsPoolAddress>(
-          map['addresses']!,
-          (value) => GetAddressPoolsPoolAddress.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      addresses: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAddressPoolsPoolAddress>(map['addresses']!, (value) => GetAddressPoolsPoolAddress.fromMap((value as Map).cast<String, dynamic>()))),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       createTimestamp: pulumi.Input.fromValue(map['createTimestamp'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -127,3 +97,4 @@ class GetAddressPoolsPool {
     );
   }
 }
+

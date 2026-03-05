@@ -186,16 +186,12 @@ import 'service_trust_state.dart';
 class ServiceTrust extends pulumi.CustomResource {
   /// The ID of the Active Directory Domain Service. Changing this forces a new Active Directory Domain Service Trust to be created.
   late final pulumi.Output<String> domainServiceId;
-
   /// The name which should be used for this Active Directory Domain Service Trust. Changing this forces a new Active Directory Domain Service Trust to be created.
   late final pulumi.Output<String> name;
-
   /// The password of the inbound trust set in the on-premise Active Directory Domain Service.
   late final pulumi.Output<String> password;
-
   /// Specifies a list of DNS IPs that are used to resolve the on-premise Active Directory Domain Service.
   late final pulumi.Output<List<String>> trustedDomainDnsIps;
-
   /// The FQDN of the on-premise Active Directory Domain Service.
   late final pulumi.Output<String> trustedDomainFqdn;
 
@@ -208,11 +204,11 @@ class ServiceTrust extends pulumi.CustomResource {
     ServiceTrustArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:domainservices/serviceTrust:ServiceTrust',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:domainservices/serviceTrust:ServiceTrust',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainServiceId = registerOutput<String>('domainServiceId');
     this.name = registerOutput<String>('name');
     password = registerOutput<String>('password');
@@ -238,11 +234,11 @@ class ServiceTrust extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:domainservices/serviceTrust:ServiceTrust',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:domainservices/serviceTrust:ServiceTrust',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainServiceId = registerOutput<String>('domainServiceId');
     this.name = registerOutput<String>('name');
     password = registerOutput<String>('password');

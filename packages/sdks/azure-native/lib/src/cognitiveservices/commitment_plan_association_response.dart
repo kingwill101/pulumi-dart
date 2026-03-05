@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CommitmentPlanAssociationResponse {
   /// The Azure resource id of the commitment plan.
   final pulumi.Input<String>? commitmentPlanId;
-
   /// The location of of the commitment plan.
   final pulumi.Input<String>? commitmentPlanLocation;
 
@@ -27,16 +26,9 @@ class CommitmentPlanAssociationResponse {
 
   factory CommitmentPlanAssociationResponse.fromMap(Map<String, dynamic> map) {
     return CommitmentPlanAssociationResponse(
-      commitmentPlanId: (() {
-        final guardedValue = map['commitmentPlanId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      commitmentPlanLocation: (() {
-        final guardedValue = map['commitmentPlanLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      commitmentPlanId: (() { final guardedValue = map['commitmentPlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      commitmentPlanLocation: (() { final guardedValue = map['commitmentPlanLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

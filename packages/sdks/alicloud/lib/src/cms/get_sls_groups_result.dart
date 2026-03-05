@@ -6,7 +6,6 @@ import 'get_sls_groups_group.dart';
 /// Result data returned by getSlsGroups.
 class GetSlsGroupsResult {
   final List<GetSlsGroupsGroup> groups;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -41,11 +40,7 @@ class GetSlsGroupsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groups':
-          pulumi.Input.encodeList<GetSlsGroupsGroup, Map<String, dynamic>>(
-            groups,
-            (value) => value.toMap(),
-          ),
+      'groups': pulumi.Input.encodeList<GetSlsGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'keyword': ?keyword,
@@ -59,39 +54,16 @@ class GetSlsGroupsResult {
 
   factory GetSlsGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetSlsGroupsResult(
-      groups: pulumi.Input.decodeList<GetSlsGroupsGroup>(
-        map['groups']!,
-        (value) =>
-            GetSlsGroupsGroup.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      groups: pulumi.Input.decodeList<GetSlsGroupsGroup>(map['groups']!, (value) => GetSlsGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyword: (() {
-        final guardedValue = map['keyword'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      keyword: (() { final guardedValue = map['keyword']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
     );
   }
 }
+

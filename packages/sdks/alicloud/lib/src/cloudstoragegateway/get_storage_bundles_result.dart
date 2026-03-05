@@ -7,7 +7,6 @@ import 'get_storage_bundles_bundle.dart';
 class GetStorageBundlesResult {
   final String backendBucketRegionId;
   final List<GetStorageBundlesBundle> bundles;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -45,11 +44,7 @@ class GetStorageBundlesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backendBucketRegionId': backendBucketRegionId,
-      'bundles':
-          pulumi.Input.encodeList<
-            GetStorageBundlesBundle,
-            Map<String, dynamic>
-          >(bundles, (value) => value.toMap()),
+      'bundles': pulumi.Input.encodeList<GetStorageBundlesBundle, Map<String, dynamic>>(bundles, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -64,36 +59,16 @@ class GetStorageBundlesResult {
   factory GetStorageBundlesResult.fromMap(Map<String, dynamic> map) {
     return GetStorageBundlesResult(
       backendBucketRegionId: map['backendBucketRegionId'] as String,
-      bundles: pulumi.Input.decodeList<GetStorageBundlesBundle>(
-        map['bundles']!,
-        (value) => GetStorageBundlesBundle.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      bundles: pulumi.Input.decodeList<GetStorageBundlesBundle>(map['bundles']!, (value) => GetStorageBundlesBundle.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
       totalCount: map['totalCount'] as int,
     );
   }
 }
+

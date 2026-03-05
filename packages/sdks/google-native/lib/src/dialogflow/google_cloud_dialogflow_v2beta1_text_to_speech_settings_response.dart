@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse {
   /// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
   final pulumi.Input<bool> enableTextToSpeech;
-
   /// Audio encoding of the synthesized audio content.
   final pulumi.Input<String> outputAudioEncoding;
-
   /// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
   final pulumi.Input<int> sampleRateHertz;
-
   /// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
   final pulumi.Input<Map<String, String>> synthesizeSpeechConfigs;
 
@@ -37,20 +34,13 @@ class GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse(
-      enableTextToSpeech: pulumi.Input.fromValue(
-        map['enableTextToSpeech'] as bool,
-      ),
-      outputAudioEncoding: pulumi.Input.fromValue(
-        map['outputAudioEncoding'] as String,
-      ),
+      enableTextToSpeech: pulumi.Input.fromValue(map['enableTextToSpeech'] as bool),
+      outputAudioEncoding: pulumi.Input.fromValue(map['outputAudioEncoding'] as String),
       sampleRateHertz: pulumi.Input.fromValue(map['sampleRateHertz'] as int),
-      synthesizeSpeechConfigs: pulumi.Input.fromValue(
-        (map['synthesizeSpeechConfigs'] as Map).cast<String, String>(),
-      ),
+      synthesizeSpeechConfigs: pulumi.Input.fromValue((map['synthesizeSpeechConfigs'] as Map).cast<String, String>()),
     );
   }
 }
+

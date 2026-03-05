@@ -212,30 +212,24 @@ class VolumeAttachment extends pulumi.CustomResource {
   /// The device name to expose to the instance (for
   /// example, `/dev/sdh` or `xvdh`).  See [Device Naming on Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html#available-ec2-device-names) and [Device Naming on Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/device_naming.html#available-ec2-device-names) for more information.
   late final pulumi.Output<String> deviceName;
-
   /// Set to `true` if you want to force the
   /// volume to detach. Useful if previous attempts failed, but use this option only
   /// as a last resort, as this can result in **data loss**. See
   /// [Detaching an Amazon EBS Volume from an Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html) for more information.
   late final pulumi.Output<bool?> forceDetach;
-
   /// ID of the Instance to attach to
   late final pulumi.Output<String> instanceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Set this to true if you do not wish
   /// to detach the volume from the instance to which it is attached at destroy
   /// time, and instead just remove the attachment from this provider state. This is
   /// useful when destroying an instance which has volumes created by some other
   /// means attached.
   late final pulumi.Output<bool?> skipDestroy;
-
   /// Set this to true to ensure that the target instance is stopped
   /// before trying to detach the volume. Stops the instance, if it is not already stopped.
   late final pulumi.Output<bool?> stopInstanceBeforeDetaching;
-
   /// ID of the Volume to be attached
   late final pulumi.Output<String> volumeId;
 
@@ -248,19 +242,17 @@ class VolumeAttachment extends pulumi.CustomResource {
     VolumeAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/volumeAttachment:VolumeAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/volumeAttachment:VolumeAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deviceName = registerOutput<String>('deviceName');
     forceDetach = registerOutput<bool?>('forceDetach');
     instanceId = registerOutput<String>('instanceId');
     region = registerOutput<String>('region');
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    stopInstanceBeforeDetaching = registerOutput<bool?>(
-      'stopInstanceBeforeDetaching',
-    );
+    stopInstanceBeforeDetaching = registerOutput<bool?>('stopInstanceBeforeDetaching');
     volumeId = registerOutput<String>('volumeId');
   }
 
@@ -282,19 +274,17 @@ class VolumeAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/volumeAttachment:VolumeAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/volumeAttachment:VolumeAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deviceName = registerOutput<String>('deviceName');
     forceDetach = registerOutput<bool?>('forceDetach');
     instanceId = registerOutput<String>('instanceId');
     region = registerOutput<String>('region');
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    stopInstanceBeforeDetaching = registerOutput<bool?>(
-      'stopInstanceBeforeDetaching',
-    );
+    stopInstanceBeforeDetaching = registerOutput<bool?>('stopInstanceBeforeDetaching');
     volumeId = registerOutput<String>('volumeId');
   }
 }

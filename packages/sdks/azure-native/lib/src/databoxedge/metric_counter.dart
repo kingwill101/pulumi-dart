@@ -7,13 +7,10 @@ import 'metric_dimension.dart';
 class MetricCounter {
   /// The additional dimensions to be added to metric.
   final pulumi.Input<List<MetricDimension>>? additionalDimensions;
-
   /// The dimension filter.
   final pulumi.Input<List<MetricDimension>>? dimensionFilter;
-
   /// The instance from which counter should be collected.
   final pulumi.Input<String>? instance;
-
   /// The counter name.
   final pulumi.Input<String> name;
 
@@ -31,30 +28,8 @@ class MetricCounter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalDimensions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<MetricDimension>,
-            List<Map<String, dynamic>>
-          >(
-            additionalDimensions,
-            (value) =>
-                pulumi.Input.encodeList<MetricDimension, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'dimensionFilter':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<MetricDimension>,
-            List<Map<String, dynamic>>
-          >(
-            dimensionFilter,
-            (value) =>
-                pulumi.Input.encodeList<MetricDimension, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'additionalDimensions': ?pulumi.Input.mapOptionalInputValue<List<MetricDimension>, List<Map<String, dynamic>>>(additionalDimensions, (value) => pulumi.Input.encodeList<MetricDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dimensionFilter': ?pulumi.Input.mapOptionalInputValue<List<MetricDimension>, List<Map<String, dynamic>>>(dimensionFilter, (value) => pulumi.Input.encodeList<MetricDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'instance': ?instance,
       'name': name,
     };
@@ -62,34 +37,11 @@ class MetricCounter {
 
   factory MetricCounter.fromMap(Map<String, dynamic> map) {
     return MetricCounter(
-      additionalDimensions: (() {
-        final guardedValue = map['additionalDimensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<MetricDimension>(
-            guardedValue,
-            (value) =>
-                MetricDimension.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      dimensionFilter: (() {
-        final guardedValue = map['dimensionFilter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<MetricDimension>(
-            guardedValue,
-            (value) =>
-                MetricDimension.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      instance: (() {
-        final guardedValue = map['instance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalDimensions: (() { final guardedValue = map['additionalDimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetricDimension>(guardedValue, (value) => MetricDimension.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      dimensionFilter: (() { final guardedValue = map['dimensionFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetricDimension>(guardedValue, (value) => MetricDimension.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

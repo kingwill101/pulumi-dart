@@ -209,16 +209,12 @@ import 'rds_parameter_group_state.dart';
 class RdsParameterGroup extends pulumi.CustomResource {
   /// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
   late final pulumi.Output<String> engine;
-
   /// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
   late final pulumi.Output<String> engineVersion;
-
   /// Parameter list. See `param_detail` below.
   late final pulumi.Output<List<Map<String, dynamic>>> paramDetails;
-
   /// The description of the parameter template.
   late final pulumi.Output<String?> parameterGroupDesc;
-
   /// The name of the parameter template.
   late final pulumi.Output<String> parameterGroupName;
 
@@ -231,11 +227,11 @@ class RdsParameterGroup extends pulumi.CustomResource {
     RdsParameterGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/rdsParameterGroup:RdsParameterGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/rdsParameterGroup:RdsParameterGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     engine = registerOutput<String>('engine');
     engineVersion = registerOutput<String>('engineVersion');
     paramDetails = registerOutput<List<Map<String, dynamic>>>('paramDetails');
@@ -261,11 +257,11 @@ class RdsParameterGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/rdsParameterGroup:RdsParameterGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/rdsParameterGroup:RdsParameterGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     engine = registerOutput<String>('engine');
     engineVersion = registerOutput<String>('engineVersion');
     paramDetails = registerOutput<List<Map<String, dynamic>>>('paramDetails');

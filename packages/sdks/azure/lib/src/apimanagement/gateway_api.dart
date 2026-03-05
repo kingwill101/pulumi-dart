@@ -225,7 +225,6 @@ import 'gateway_api_state.dart';
 class GatewayApi extends pulumi.CustomResource {
   /// The Identifier of the API Management API within the API Management Service. Changing this forces a new API Management Gateway API to be created.
   late final pulumi.Output<String> apiId;
-
   /// The Identifier for the API Management Gateway. Changing this forces a new API Management Gateway API to be created.
   late final pulumi.Output<String> gatewayId;
 
@@ -238,11 +237,11 @@ class GatewayApi extends pulumi.CustomResource {
     GatewayApiArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/gatewayApi:GatewayApi',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/gatewayApi:GatewayApi',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     gatewayId = registerOutput<String>('gatewayId');
   }
@@ -265,11 +264,11 @@ class GatewayApi extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/gatewayApi:GatewayApi',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/gatewayApi:GatewayApi',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     gatewayId = registerOutput<String>('gatewayId');
   }

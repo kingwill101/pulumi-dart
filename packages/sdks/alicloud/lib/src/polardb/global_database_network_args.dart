@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlobalDatabaseNetworkArgs {
   /// The ID of the primary cluster.
   final pulumi.Input<String> dbClusterId;
-
   /// The description of the Global Database Network.
   final pulumi.Input<String>? description;
 
   /// Creates a new [GlobalDatabaseNetworkArgs].
   /// [dbClusterId] The ID of the primary cluster.
   /// [description] The description of the Global Database Network.
-  GlobalDatabaseNetworkArgs({required this.dbClusterId, this.description});
+  GlobalDatabaseNetworkArgs({
+    required this.dbClusterId,
+    this.description,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,11 +30,8 @@ class GlobalDatabaseNetworkArgs {
   factory GlobalDatabaseNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GlobalDatabaseNetworkArgs(
       dbClusterId: pulumi.Input.fromValue(map['dbClusterId'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHoneypotProbesProbeHoneypotBindListBindPortList {
   /// Whether to bind the port.
   final pulumi.Input<bool> bindPort;
-
   /// End port.
   final pulumi.Input<int> endPort;
-
   /// Whether the port is fixed.
   final pulumi.Input<bool> fixed;
-
   /// Start port.
   final pulumi.Input<int> startPort;
-
   /// Destination port.
   final pulumi.Input<int> targetPort;
 
@@ -42,9 +38,7 @@ class GetHoneypotProbesProbeHoneypotBindListBindPortList {
     };
   }
 
-  factory GetHoneypotProbesProbeHoneypotBindListBindPortList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetHoneypotProbesProbeHoneypotBindListBindPortList.fromMap(Map<String, dynamic> map) {
     return GetHoneypotProbesProbeHoneypotBindListBindPortList(
       bindPort: pulumi.Input.fromValue(map['bindPort'] as bool),
       endPort: pulumi.Input.fromValue(map['endPort'] as int),
@@ -54,3 +48,4 @@ class GetHoneypotProbesProbeHoneypotBindListBindPortList {
     );
   }
 }
+

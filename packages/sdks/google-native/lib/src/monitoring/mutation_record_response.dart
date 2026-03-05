@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MutationRecordResponse {
   /// When the change occurred.
   final pulumi.Input<String> mutateTime;
-
   /// The email address of the user making the change.
   final pulumi.Input<String> mutatedBy;
 
   /// Creates a new [MutationRecordResponse].
   /// [mutateTime] When the change occurred.
   /// [mutatedBy] The email address of the user making the change.
-  MutationRecordResponse({required this.mutateTime, required this.mutatedBy});
+  MutationRecordResponse({
+    required this.mutateTime,
+    required this.mutatedBy,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mutateTime': mutateTime, 'mutatedBy': mutatedBy};
+    return <String, dynamic>{
+      'mutateTime': mutateTime,
+      'mutatedBy': mutatedBy,
+    };
   }
 
   factory MutationRecordResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class MutationRecordResponse {
     );
   }
 }
+

@@ -9,17 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AggregateDeliveryArgs {
   /// Aggregator ID.
   final pulumi.Input<String> aggregatorId;
-
   /// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
   /// - true: The specified destination receives resource change logs.
   /// - false: The specified destination does not receive resource change logs.
   final pulumi.Input<bool>? configurationItemChangeNotification;
-
   /// Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
   /// - true: The specified destination receives scheduled resource snapshots.
   /// - false: The specified destination does not receive scheduled resource snapshots.
   final pulumi.Input<bool>? configurationSnapshot;
-
   /// The rule that is attached to the delivery channel.
   ///
   /// This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
@@ -32,33 +29,26 @@ class AggregateDeliveryArgs {
   ///
   /// Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
   final pulumi.Input<String>? deliveryChannelCondition;
-
   /// The name of the delivery channel.
   final pulumi.Input<String>? deliveryChannelName;
-
   /// The ARN of the delivery destination.
   /// - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
   /// - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
   /// - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
   final pulumi.Input<String> deliveryChannelTargetArn;
-
   /// The type of the delivery channel. Valid values:
   /// - OSS: Object Storage Service (OSS)
   /// - MNS: Message Service (MNS)
   /// - SLS: Log Service
   final pulumi.Input<String> deliveryChannelType;
-
   /// The description of the delivery method.
   final pulumi.Input<String>? description;
-
   /// Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
   /// - true: The specified destination receives resource non-compliance events.
   /// - false: The specified destination does not receive resource non-compliance events.
   final pulumi.Input<bool>? nonCompliantNotification;
-
   /// The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
   final pulumi.Input<String>? oversizedDataOssTargetArn;
-
   /// The status of the delivery method. Valid values:
   /// - 0: The delivery method is disabled.
   /// - 1: The delivery destination is enabled. This is the default value.
@@ -93,8 +83,7 @@ class AggregateDeliveryArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aggregatorId': aggregatorId,
-      'configurationItemChangeNotification':
-          ?configurationItemChangeNotification,
+      'configurationItemChangeNotification': ?configurationItemChangeNotification,
       'configurationSnapshot': ?configurationSnapshot,
       'deliveryChannelCondition': ?deliveryChannelCondition,
       'deliveryChannelName': ?deliveryChannelName,
@@ -110,52 +99,17 @@ class AggregateDeliveryArgs {
   factory AggregateDeliveryArgs.fromMap(Map<String, dynamic> map) {
     return AggregateDeliveryArgs(
       aggregatorId: pulumi.Input.fromValue(map['aggregatorId'] as String),
-      configurationItemChangeNotification: (() {
-        final guardedValue = map['configurationItemChangeNotification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      configurationSnapshot: (() {
-        final guardedValue = map['configurationSnapshot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      deliveryChannelCondition: (() {
-        final guardedValue = map['deliveryChannelCondition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deliveryChannelName: (() {
-        final guardedValue = map['deliveryChannelName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deliveryChannelTargetArn: pulumi.Input.fromValue(
-        map['deliveryChannelTargetArn'] as String,
-      ),
-      deliveryChannelType: pulumi.Input.fromValue(
-        map['deliveryChannelType'] as String,
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nonCompliantNotification: (() {
-        final guardedValue = map['nonCompliantNotification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      oversizedDataOssTargetArn: (() {
-        final guardedValue = map['oversizedDataOssTargetArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      configurationItemChangeNotification: (() { final guardedValue = map['configurationItemChangeNotification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      configurationSnapshot: (() { final guardedValue = map['configurationSnapshot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deliveryChannelCondition: (() { final guardedValue = map['deliveryChannelCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deliveryChannelName: (() { final guardedValue = map['deliveryChannelName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deliveryChannelTargetArn: pulumi.Input.fromValue(map['deliveryChannelTargetArn'] as String),
+      deliveryChannelType: pulumi.Input.fromValue(map['deliveryChannelType'] as String),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nonCompliantNotification: (() { final guardedValue = map['nonCompliantNotification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      oversizedDataOssTargetArn: (() { final guardedValue = map['oversizedDataOssTargetArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

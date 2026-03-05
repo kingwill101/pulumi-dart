@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageDomainRoutingRuleRoute {
   /// Endpoint Type.
   final pulumi.Input<String> endpointType;
-
   /// Instance domain name.
   final pulumi.Input<String> instanceDomain;
-
   /// Storage domain name.
   final pulumi.Input<String> storageDomain;
 
@@ -38,3 +36,4 @@ class StorageDomainRoutingRuleRoute {
     );
   }
 }
+

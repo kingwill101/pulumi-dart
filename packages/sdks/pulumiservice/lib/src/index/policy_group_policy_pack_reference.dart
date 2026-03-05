@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyGroupPolicyPackReference {
   /// Optional configuration for the policy pack.
   final pulumi.Input<Map<String, dynamic>>? config;
-
   /// The display name of the policy pack.
   final pulumi.Input<String>? displayName;
-
   /// The name of the policy pack.
   final pulumi.Input<String> name;
-
   /// The version of the policy pack.
   final pulumi.Input<double>? version;
-
   /// The version tag of the policy pack.
   final pulumi.Input<String>? versionTag;
 
@@ -45,29 +41,12 @@ class PolicyGroupPolicyPackReference {
 
   factory PolicyGroupPolicyPackReference.fromMap(Map<String, dynamic> map) {
     return PolicyGroupPolicyPackReference(
-      config: (() {
-        final guardedValue = map['config'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      versionTag: (() {
-        final guardedValue = map['versionTag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      versionTag: (() { final guardedValue = map['versionTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

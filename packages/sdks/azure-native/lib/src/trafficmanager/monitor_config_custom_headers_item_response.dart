@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitorConfigCustomHeadersItemResponse {
   /// Header name.
   final pulumi.Input<String>? name;
-
   /// Header value.
   final pulumi.Input<String>? value;
 
   /// Creates a new [MonitorConfigCustomHeadersItemResponse].
   /// [name] Header name.
   /// [value] Header value.
-  MonitorConfigCustomHeadersItemResponse({this.name, this.value});
+  MonitorConfigCustomHeadersItemResponse({
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'value': ?value};
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
-  factory MonitorConfigCustomHeadersItemResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitorConfigCustomHeadersItemResponse.fromMap(Map<String, dynamic> map) {
     return MonitorConfigCustomHeadersItemResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

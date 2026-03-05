@@ -8,17 +8,20 @@ class NodePoolNodeConfigEphemeralStorageConfig {
 
   /// Creates a new [NodePoolNodeConfigEphemeralStorageConfig].
   /// [localSsdCount] Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
-  NodePoolNodeConfigEphemeralStorageConfig({required this.localSsdCount});
+  NodePoolNodeConfigEphemeralStorageConfig({
+    required this.localSsdCount,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'localSsdCount': localSsdCount};
+    return <String, dynamic>{
+      'localSsdCount': localSsdCount,
+    };
   }
 
-  factory NodePoolNodeConfigEphemeralStorageConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NodePoolNodeConfigEphemeralStorageConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigEphemeralStorageConfig(
       localSsdCount: pulumi.Input.fromValue(map['localSsdCount'] as int),
     );
   }
 }
+

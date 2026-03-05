@@ -7,17 +7,12 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_image.dart';
 class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject {
   /// Url where the media is stored.
   final pulumi.Input<String> contentUrl;
-
   /// Optional. Description of media card.
   final pulumi.Input<String>? description;
-
   /// Optional. Icon to display above media content.
   final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageImage>? icon;
-
   /// Optional. Image to display above media content.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageImage>?
-  largeImage;
-
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageImage>? largeImage;
   /// Name of media card.
   final pulumi.Input<String> name;
 
@@ -39,49 +34,20 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject {
     return <String, dynamic>{
       'contentUrl': contentUrl,
       'description': ?description,
-      'icon':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowV2beta1IntentMessageImage,
-            Map<String, dynamic>
-          >(icon, (value) => value.toMap()),
-      'largeImage':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowV2beta1IntentMessageImage,
-            Map<String, dynamic>
-          >(largeImage, (value) => value.toMap()),
+      'icon': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2beta1IntentMessageImage, Map<String, dynamic>>(icon, (value) => value.toMap()),
+      'largeImage': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2beta1IntentMessageImage, Map<String, dynamic>>(largeImage, (value) => value.toMap()),
       'name': name,
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject(
       contentUrl: pulumi.Input.fromValue(map['contentUrl'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      icon: (() {
-        final guardedValue = map['icon'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      largeImage: (() {
-        final guardedValue = map['largeImage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      icon: (() { final guardedValue = map['icon']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      largeImage: (() { final guardedValue = map['largeImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

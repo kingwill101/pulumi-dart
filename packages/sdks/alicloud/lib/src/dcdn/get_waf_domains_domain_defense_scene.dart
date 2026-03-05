@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWafDomainsDomainDefenseScene {
   /// The type of protection policy.
   final pulumi.Input<String> defenseScene;
-
   /// The protection policy ID.
   final pulumi.Input<String> policyId;
 
@@ -31,3 +30,4 @@ class GetWafDomainsDomainDefenseScene {
     );
   }
 }
+

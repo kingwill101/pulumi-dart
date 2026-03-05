@@ -11,10 +11,14 @@ class GetLienCloudresourcemanagerV3Args {
 
   /// Creates a new [GetLienCloudresourcemanagerV3Args].
   /// [lienId] Required.
-  GetLienCloudresourcemanagerV3Args({required this.lienId});
+  GetLienCloudresourcemanagerV3Args({
+    required this.lienId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'lienId': lienId};
+    return <String, dynamic>{
+      'lienId': lienId,
+    };
   }
 
   factory GetLienCloudresourcemanagerV3Args.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetLienCloudresourcemanagerV3Args {
     );
   }
 }
+

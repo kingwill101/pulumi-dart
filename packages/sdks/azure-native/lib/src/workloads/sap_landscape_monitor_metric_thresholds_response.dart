@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SapLandscapeMonitorMetricThresholdsResponse {
   /// Gets or sets the threshold value for Green.
   final pulumi.Input<double>? green;
-
   /// Gets or sets the name of the threshold.
   final pulumi.Input<String>? name;
-
   /// Gets or sets the threshold value for Red.
   final pulumi.Input<double>? red;
-
   /// Gets or sets the threshold value for Yellow.
   final pulumi.Input<double>? yellow;
 
@@ -37,30 +34,13 @@ class SapLandscapeMonitorMetricThresholdsResponse {
     };
   }
 
-  factory SapLandscapeMonitorMetricThresholdsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SapLandscapeMonitorMetricThresholdsResponse.fromMap(Map<String, dynamic> map) {
     return SapLandscapeMonitorMetricThresholdsResponse(
-      green: (() {
-        final guardedValue = map['green'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      red: (() {
-        final guardedValue = map['red'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      yellow: (() {
-        final guardedValue = map['yellow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      green: (() { final guardedValue = map['green']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      red: (() { final guardedValue = map['red']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      yellow: (() { final guardedValue = map['yellow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

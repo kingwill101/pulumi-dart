@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ControlTowerControlParameter {
   /// The name of the parameter.
   final pulumi.Input<String> key;
-
   /// The value of the parameter.
   final pulumi.Input<String> value;
 
   /// Creates a new [ControlTowerControlParameter].
   /// [key] The name of the parameter.
   /// [value] The value of the parameter.
-  ControlTowerControlParameter({required this.key, required this.value});
+  ControlTowerControlParameter({
+    required this.key,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory ControlTowerControlParameter.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class ControlTowerControlParameter {
     );
   }
 }
+

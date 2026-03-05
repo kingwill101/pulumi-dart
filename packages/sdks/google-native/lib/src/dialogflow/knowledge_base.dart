@@ -5,11 +5,9 @@ import 'knowledge_base_args.dart';
 class KnowledgeBase extends pulumi.CustomResource {
   /// The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
   late final pulumi.Output<String> displayName;
-
   /// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
   late final pulumi.Output<String> languageCode;
   late final pulumi.Output<String> location;
-
   /// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
@@ -23,11 +21,11 @@ class KnowledgeBase extends pulumi.CustomResource {
     KnowledgeBaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:dialogflow/v2:KnowledgeBase',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:dialogflow/v2:KnowledgeBase',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     languageCode = registerOutput<String>('languageCode');
     location = registerOutput<String>('location');

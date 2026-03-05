@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FixedResponseConfigResponse {
   /// The content type. Valid Values: text/plain | text/css | text/html | application/javascript | application/json
   final pulumi.Input<String>? contentType;
-
   /// The message.
   final pulumi.Input<String>? messageBody;
-
   /// The HTTP response code (2XX, 4XX, or 5XX).
   final pulumi.Input<String>? statusCode;
 
@@ -33,21 +31,10 @@ class FixedResponseConfigResponse {
 
   factory FixedResponseConfigResponse.fromMap(Map<String, dynamic> map) {
     return FixedResponseConfigResponse(
-      contentType: (() {
-        final guardedValue = map['contentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      messageBody: (() {
-        final guardedValue = map['messageBody'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      statusCode: (() {
-        final guardedValue = map['statusCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      messageBody: (() { final guardedValue = map['messageBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

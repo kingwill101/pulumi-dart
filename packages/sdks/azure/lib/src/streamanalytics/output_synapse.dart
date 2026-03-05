@@ -398,25 +398,18 @@ import 'output_synapse_state.dart';
 class OutputSynapse extends pulumi.CustomResource {
   /// The name of the Azure SQL database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> database;
-
   /// The name of the Stream Output. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The password that will be used to connect to the Azure SQL database.
   late final pulumi.Output<String> password;
-
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The name of the SQL server containing the Azure SQL database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> server;
-
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;
-
   /// The name of the table in the Azure SQL database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> table;
-
   /// The user name that will be used to connect to the Azure SQL database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> user;
 
@@ -429,11 +422,11 @@ class OutputSynapse extends pulumi.CustomResource {
     OutputSynapseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/outputSynapse:OutputSynapse',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/outputSynapse:OutputSynapse',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
     password = registerOutput<String>('password');
@@ -462,11 +455,11 @@ class OutputSynapse extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/outputSynapse:OutputSynapse',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/outputSynapse:OutputSynapse',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
     password = registerOutput<String>('password');

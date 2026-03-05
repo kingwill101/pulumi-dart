@@ -15,3 +15,4 @@ enum DimensionOperator {
     throw ArgumentError('Unknown DimensionOperator value: $value');
   }
 }
+

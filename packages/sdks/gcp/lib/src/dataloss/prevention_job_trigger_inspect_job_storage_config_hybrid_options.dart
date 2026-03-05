@@ -6,7 +6,6 @@ import 'prevention_job_trigger_inspect_job_storage_config_hybrid_options_table_o
 class PreventionJobTriggerInspectJobStorageConfigHybridOptions {
   /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
   final pulumi.Input<String>? description;
-
   /// To organize findings, these labels will be added to each finding.
   /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
   /// Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
@@ -15,19 +14,14 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptions {
   /// * `"environment" : "production"`
   /// * `"pipeline" : "etl"`
   final pulumi.Input<Map<String, String>>? labels;
-
   /// These are labels that each inspection request must include within their 'finding_labels' map. Request
   /// may contain others, but any missing one of these will be rejected.
   /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
   /// No more than 10 keys can be required.
   final pulumi.Input<List<String>>? requiredFindingLabelKeys;
-
   /// If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
   /// Structure is documented below.
-  final pulumi.Input<
-    PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions
-  >?
-  tableOptions;
+  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions>? tableOptions;
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigHybridOptions].
   /// [description] A short description of where the data is coming from. Will be stored once in the job. 256 max length.
@@ -46,44 +40,17 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptions {
       'description': ?description,
       'labels': ?labels,
       'requiredFindingLabelKeys': ?requiredFindingLabelKeys,
-      'tableOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions,
-            Map<String, dynamic>
-          >(tableOptions, (value) => value.toMap()),
+      'tableOptions': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions, Map<String, dynamic>>(tableOptions, (value) => value.toMap()),
     };
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfigHybridOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobStorageConfigHybridOptions.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigHybridOptions(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      requiredFindingLabelKeys: (() {
-        final guardedValue = map['requiredFindingLabelKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      tableOptions: (() {
-        final guardedValue = map['tableOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      requiredFindingLabelKeys: (() { final guardedValue = map['requiredFindingLabelKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tableOptions: (() { final guardedValue = map['tableOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

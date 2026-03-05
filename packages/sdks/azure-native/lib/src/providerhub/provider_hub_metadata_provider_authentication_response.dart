@@ -14,16 +14,15 @@ class ProviderHubMetadataProviderAuthenticationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowedAudiences': allowedAudiences};
+    return <String, dynamic>{
+      'allowedAudiences': allowedAudiences,
+    };
   }
 
-  factory ProviderHubMetadataProviderAuthenticationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProviderHubMetadataProviderAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return ProviderHubMetadataProviderAuthenticationResponse(
-      allowedAudiences: pulumi.Input.fromValue(
-        (map['allowedAudiences'] as List).cast<String>(),
-      ),
+      allowedAudiences: pulumi.Input.fromValue((map['allowedAudiences'] as List).cast<String>()),
     );
   }
 }
+

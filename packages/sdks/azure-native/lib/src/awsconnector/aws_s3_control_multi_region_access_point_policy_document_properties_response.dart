@@ -7,9 +7,7 @@ import 'proposed_multi_region_access_point_policy_response.dart';
 /// Definition of awsS3ControlMultiRegionAccessPointPolicyDocument
 class AwsS3ControlMultiRegionAccessPointPolicyDocumentPropertiesResponse {
   /// &lt;p&gt;The last established policy for the Multi-Region Access Point.&lt;/p&gt;
-  final pulumi.Input<EstablishedMultiRegionAccessPointPolicyResponse>?
-  established;
-
+  final pulumi.Input<EstablishedMultiRegionAccessPointPolicyResponse>? established;
   /// &lt;p&gt;The proposed policy for the Multi-Region Access Point.&lt;/p&gt;
   final pulumi.Input<ProposedMultiRegionAccessPointPolicyResponse>? proposed;
 
@@ -23,41 +21,16 @@ class AwsS3ControlMultiRegionAccessPointPolicyDocumentPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'established':
-          ?pulumi.Input.mapOptionalInputValue<
-            EstablishedMultiRegionAccessPointPolicyResponse,
-            Map<String, dynamic>
-          >(established, (value) => value.toMap()),
-      'proposed':
-          ?pulumi.Input.mapOptionalInputValue<
-            ProposedMultiRegionAccessPointPolicyResponse,
-            Map<String, dynamic>
-          >(proposed, (value) => value.toMap()),
+      'established': ?pulumi.Input.mapOptionalInputValue<EstablishedMultiRegionAccessPointPolicyResponse, Map<String, dynamic>>(established, (value) => value.toMap()),
+      'proposed': ?pulumi.Input.mapOptionalInputValue<ProposedMultiRegionAccessPointPolicyResponse, Map<String, dynamic>>(proposed, (value) => value.toMap()),
     };
   }
 
-  factory AwsS3ControlMultiRegionAccessPointPolicyDocumentPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AwsS3ControlMultiRegionAccessPointPolicyDocumentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsS3ControlMultiRegionAccessPointPolicyDocumentPropertiesResponse(
-      established: (() {
-        final guardedValue = map['established'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EstablishedMultiRegionAccessPointPolicyResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      proposed: (() {
-        final guardedValue = map['proposed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ProposedMultiRegionAccessPointPolicyResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      established: (() { final guardedValue = map['established']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EstablishedMultiRegionAccessPointPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      proposed: (() { final guardedValue = map['proposed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProposedMultiRegionAccessPointPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

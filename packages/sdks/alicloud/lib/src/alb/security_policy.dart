@@ -148,22 +148,16 @@ import 'security_policy_state.dart';
 class SecurityPolicy extends pulumi.CustomResource {
   /// The supported cipher suites, which are determined by the TLS protocol version.The specified cipher suites must be supported by at least one TLS protocol version that you select.
   late final pulumi.Output<List<String>> ciphers;
-
   /// The dry run.
   late final pulumi.Output<bool?> dryRun;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
   late final pulumi.Output<String> securityPolicyName;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
   late final pulumi.Output<List<String>> tlsVersions;
 
@@ -176,11 +170,11 @@ class SecurityPolicy extends pulumi.CustomResource {
     SecurityPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/securityPolicy:SecurityPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/securityPolicy:SecurityPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ciphers = registerOutput<List<String>>('ciphers');
     dryRun = registerOutput<bool?>('dryRun');
     resourceGroupId = registerOutput<String>('resourceGroupId');
@@ -208,11 +202,11 @@ class SecurityPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/securityPolicy:SecurityPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/securityPolicy:SecurityPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ciphers = registerOutput<List<String>>('ciphers');
     dryRun = registerOutput<bool?>('dryRun');
     resourceGroupId = registerOutput<String>('resourceGroupId');

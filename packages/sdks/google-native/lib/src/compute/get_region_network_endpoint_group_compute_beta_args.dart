@@ -29,19 +29,12 @@ class GetRegionNetworkEndpointGroupComputeBetaArgs {
     };
   }
 
-  factory GetRegionNetworkEndpointGroupComputeBetaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionNetworkEndpointGroupComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionNetworkEndpointGroupComputeBetaArgs(
-      networkEndpointGroup: pulumi.Input.fromValue(
-        map['networkEndpointGroup'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      networkEndpointGroup: pulumi.Input.fromValue(map['networkEndpointGroup'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

@@ -8,10 +8,8 @@ class GetBackendServiceStrongSessionAffinityCooky {
   ///
   /// - - -
   final pulumi.Input<String> name;
-
   /// Path to set for the cookie.
   final pulumi.Input<String> path;
-
   /// Lifetime of the cookie.
   final pulumi.Input<List<GetBackendServiceStrongSessionAffinityCookyTtl>> ttls;
 
@@ -29,35 +27,16 @@ class GetBackendServiceStrongSessionAffinityCooky {
     return <String, dynamic>{
       'name': name,
       'path': path,
-      'ttls':
-          pulumi.Input.mapInputValue<
-            List<GetBackendServiceStrongSessionAffinityCookyTtl>,
-            List<Map<String, dynamic>>
-          >(
-            ttls,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetBackendServiceStrongSessionAffinityCookyTtl,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ttls': pulumi.Input.mapInputValue<List<GetBackendServiceStrongSessionAffinityCookyTtl>, List<Map<String, dynamic>>>(ttls, (value) => pulumi.Input.encodeList<GetBackendServiceStrongSessionAffinityCookyTtl, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetBackendServiceStrongSessionAffinityCooky.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBackendServiceStrongSessionAffinityCooky.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceStrongSessionAffinityCooky(
       name: pulumi.Input.fromValue(map['name'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
-      ttls: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetBackendServiceStrongSessionAffinityCookyTtl>(
-          map['ttls']!,
-          (value) => GetBackendServiceStrongSessionAffinityCookyTtl.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      ttls: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBackendServiceStrongSessionAffinityCookyTtl>(map['ttls']!, (value) => GetBackendServiceStrongSessionAffinityCookyTtl.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

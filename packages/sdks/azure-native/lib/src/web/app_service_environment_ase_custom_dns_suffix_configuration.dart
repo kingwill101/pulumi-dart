@@ -143,28 +143,21 @@ import 'app_service_environment_ase_custom_dns_suffix_configuration_args.dart';
 /// ```sh
 /// $ pulumi import azure-native:web:AppServiceEnvironmentAseCustomDnsSuffixConfiguration customDnsSuffix /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/configurations/customdnssuffix
 /// ```
-class AppServiceEnvironmentAseCustomDnsSuffixConfiguration
-    extends pulumi.CustomResource {
+class AppServiceEnvironmentAseCustomDnsSuffixConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.
   late final pulumi.Output<String?> certificateUrl;
-
   /// The default custom domain suffix to use for all sites deployed on the ASE.
   late final pulumi.Output<String?> dnsSuffix;
-
   /// The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
   late final pulumi.Output<String?> keyVaultReferenceIdentity;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> provisioningDetails;
   late final pulumi.Output<String> provisioningState;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -177,17 +170,15 @@ class AppServiceEnvironmentAseCustomDnsSuffixConfiguration
     AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:AppServiceEnvironmentAseCustomDnsSuffixConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:AppServiceEnvironmentAseCustomDnsSuffixConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     certificateUrl = registerOutput<String?>('certificateUrl');
     dnsSuffix = registerOutput<String?>('dnsSuffix');
-    keyVaultReferenceIdentity = registerOutput<String?>(
-      'keyVaultReferenceIdentity',
-    );
+    keyVaultReferenceIdentity = registerOutput<String?>('keyVaultReferenceIdentity');
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
     provisioningDetails = registerOutput<String>('provisioningDetails');

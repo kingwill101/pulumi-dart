@@ -349,19 +349,14 @@ import 'custom_routing_endpoint_group_state.dart';
 class CustomRoutingEndpointGroup extends pulumi.CustomResource {
   /// The ID of the GA instance.
   late final pulumi.Output<String> acceleratorId;
-
   /// The name of the endpoint group.
   late final pulumi.Output<String?> customRoutingEndpointGroupName;
-
   /// The description of the endpoint group.
   late final pulumi.Output<String?> description;
-
   /// The ID of the region in which to create the endpoint group.
   late final pulumi.Output<String> endpointGroupRegion;
-
   /// The ID of the custom routing listener.
   late final pulumi.Output<String> listenerId;
-
   /// The status of the Custom Routing Endpoint Group.
   late final pulumi.Output<String> status;
 
@@ -374,15 +369,13 @@ class CustomRoutingEndpointGroup extends pulumi.CustomResource {
     CustomRoutingEndpointGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorId = registerOutput<String>('acceleratorId');
-    customRoutingEndpointGroupName = registerOutput<String?>(
-      'customRoutingEndpointGroupName',
-    );
+    customRoutingEndpointGroupName = registerOutput<String?>('customRoutingEndpointGroupName');
     description = registerOutput<String?>('description');
     endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
     listenerId = registerOutput<String>('listenerId');
@@ -407,15 +400,13 @@ class CustomRoutingEndpointGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorId = registerOutput<String>('acceleratorId');
-    customRoutingEndpointGroupName = registerOutput<String?>(
-      'customRoutingEndpointGroupName',
-    );
+    customRoutingEndpointGroupName = registerOutput<String?>('customRoutingEndpointGroupName');
     description = registerOutput<String?>('description');
     endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
     listenerId = registerOutput<String>('listenerId');

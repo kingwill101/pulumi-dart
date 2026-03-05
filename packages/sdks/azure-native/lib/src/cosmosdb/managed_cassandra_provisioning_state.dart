@@ -16,8 +16,7 @@ enum ManagedCassandraProvisioningState {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ManagedCassandraProvisioningState value: $value',
-    );
+    throw ArgumentError('Unknown ManagedCassandraProvisioningState value: $value');
   }
 }
+

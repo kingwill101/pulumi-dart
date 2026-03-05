@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse {
   /// The maximum product price.
   final pulumi.Input<double> max;
-
   /// The minimum product price.
   final pulumi.Input<double> min;
 
@@ -19,15 +18,17 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': max, 'min': min};
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse(
       max: pulumi.Input.fromValue(map['max'] as double),
       min: pulumi.Input.fromValue(map['min'] as double),
     );
   }
 }
+

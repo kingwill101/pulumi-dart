@@ -8,16 +8,11 @@ import 'resolver_level_metrics_behavior_enum_value.dart';
 /// Definition of EnhancedMetricsConfig
 class EnhancedMetricsConfig {
   /// &lt;p&gt;Controls how data source metrics will be emitted to CloudWatch. Data source metrics include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Requests: The number of invocations that occured during a request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Latency: The time to complete a data source invocation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Errors: The number of errors that occurred during a data source invocation.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;These metrics can be emitted to CloudWatch per data source or for all data sources in the request. Metrics will be recorded by API ID and data source name. &lt;code&gt;dataSourceLevelMetricsBehavior&lt;/code&gt; accepts one of these values at a time:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FULL_REQUEST_DATA_SOURCE_METRICS&lt;/code&gt;: Records and emits metric data for all data sources in the request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PER_DATA_SOURCE_METRICS&lt;/code&gt;: Records and emits metric data for data sources that have the &lt;code&gt;metricsConfig&lt;/code&gt; value set to &lt;code&gt;ENABLED&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-  final pulumi.Input<DataSourceLevelMetricsBehaviorEnumValue>?
-  dataSourceLevelMetricsBehavior;
-
+  final pulumi.Input<DataSourceLevelMetricsBehaviorEnumValue>? dataSourceLevelMetricsBehavior;
   /// &lt;p&gt; Controls how operation metrics will be emitted to CloudWatch. Operation metrics include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Requests: The number of times a specified GraphQL operation was called.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;GraphQL errors: The number of GraphQL errors that occurred during a specified GraphQL operation.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Metrics will be recorded by API ID and operation name. You can set the value to &lt;code&gt;ENABLED&lt;/code&gt; or &lt;code&gt;DISABLED&lt;/code&gt;.&lt;/p&gt;
-  final pulumi.Input<OperationLevelMetricsConfigEnumValue>?
-  operationLevelMetricsConfig;
-
+  final pulumi.Input<OperationLevelMetricsConfigEnumValue>? operationLevelMetricsConfig;
   /// &lt;p&gt;Controls how resolver metrics will be emitted to CloudWatch. Resolver metrics include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;GraphQL errors: The number of GraphQL errors that occurred.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Requests: The number of invocations that occurred during a request. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Latency: The time to complete a resolver invocation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cache hits: The number of cache hits during a request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cache misses: The number of cache misses during a request.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;These metrics can be emitted to CloudWatch per resolver or for all resolvers in the request. Metrics will be recorded by API ID and resolver name. &lt;code&gt;resolverLevelMetricsBehavior&lt;/code&gt; accepts one of these values at a time:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FULL_REQUEST_RESOLVER_METRICS&lt;/code&gt;: Records and emits metric data for all resolvers in the request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PER_RESOLVER_METRICS&lt;/code&gt;: Records and emits metric data for resolvers that have the &lt;code&gt;metricsConfig&lt;/code&gt; value set to &lt;code&gt;ENABLED&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-  final pulumi.Input<ResolverLevelMetricsBehaviorEnumValue>?
-  resolverLevelMetricsBehavior;
+  final pulumi.Input<ResolverLevelMetricsBehaviorEnumValue>? resolverLevelMetricsBehavior;
 
   /// Creates a new [EnhancedMetricsConfig].
   /// [dataSourceLevelMetricsBehavior] &lt;p&gt;Controls how data source metrics will be emitted to CloudWatch. Data source metrics include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Requests: The number of invocations that occured during a request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Latency: The time to complete a data source invocation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Errors: The number of errors that occurred during a data source invocation.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;These metrics can be emitted to CloudWatch per data source or for all data sources in the request. Metrics will be recorded by API ID and data source name. &lt;code&gt;dataSourceLevelMetricsBehavior&lt;/code&gt; accepts one of these values at a time:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FULL_REQUEST_DATA_SOURCE_METRICS&lt;/code&gt;: Records and emits metric data for all data sources in the request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PER_DATA_SOURCE_METRICS&lt;/code&gt;: Records and emits metric data for data sources that have the &lt;code&gt;metricsConfig&lt;/code&gt; value set to &lt;code&gt;ENABLED&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
@@ -31,53 +26,18 @@ class EnhancedMetricsConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataSourceLevelMetricsBehavior':
-          ?pulumi.Input.mapOptionalInputValue<
-            DataSourceLevelMetricsBehaviorEnumValue,
-            Map<String, dynamic>
-          >(dataSourceLevelMetricsBehavior, (value) => value.toMap()),
-      'operationLevelMetricsConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            OperationLevelMetricsConfigEnumValue,
-            Map<String, dynamic>
-          >(operationLevelMetricsConfig, (value) => value.toMap()),
-      'resolverLevelMetricsBehavior':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResolverLevelMetricsBehaviorEnumValue,
-            Map<String, dynamic>
-          >(resolverLevelMetricsBehavior, (value) => value.toMap()),
+      'dataSourceLevelMetricsBehavior': ?pulumi.Input.mapOptionalInputValue<DataSourceLevelMetricsBehaviorEnumValue, Map<String, dynamic>>(dataSourceLevelMetricsBehavior, (value) => value.toMap()),
+      'operationLevelMetricsConfig': ?pulumi.Input.mapOptionalInputValue<OperationLevelMetricsConfigEnumValue, Map<String, dynamic>>(operationLevelMetricsConfig, (value) => value.toMap()),
+      'resolverLevelMetricsBehavior': ?pulumi.Input.mapOptionalInputValue<ResolverLevelMetricsBehaviorEnumValue, Map<String, dynamic>>(resolverLevelMetricsBehavior, (value) => value.toMap()),
     };
   }
 
   factory EnhancedMetricsConfig.fromMap(Map<String, dynamic> map) {
     return EnhancedMetricsConfig(
-      dataSourceLevelMetricsBehavior: (() {
-        final guardedValue = map['dataSourceLevelMetricsBehavior'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DataSourceLevelMetricsBehaviorEnumValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      operationLevelMetricsConfig: (() {
-        final guardedValue = map['operationLevelMetricsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OperationLevelMetricsConfigEnumValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resolverLevelMetricsBehavior: (() {
-        final guardedValue = map['resolverLevelMetricsBehavior'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResolverLevelMetricsBehaviorEnumValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      dataSourceLevelMetricsBehavior: (() { final guardedValue = map['dataSourceLevelMetricsBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataSourceLevelMetricsBehaviorEnumValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      operationLevelMetricsConfig: (() { final guardedValue = map['operationLevelMetricsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OperationLevelMetricsConfigEnumValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resolverLevelMetricsBehavior: (() { final guardedValue = map['resolverLevelMetricsBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResolverLevelMetricsBehaviorEnumValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -14,20 +14,14 @@ class EndpointConfigurationAsyncInferenceConfigClientConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxConcurrentInvocationsPerInstance':
-          ?maxConcurrentInvocationsPerInstance,
+      'maxConcurrentInvocationsPerInstance': ?maxConcurrentInvocationsPerInstance,
     };
   }
 
-  factory EndpointConfigurationAsyncInferenceConfigClientConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointConfigurationAsyncInferenceConfigClientConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationAsyncInferenceConfigClientConfig(
-      maxConcurrentInvocationsPerInstance: (() {
-        final guardedValue = map['maxConcurrentInvocationsPerInstance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxConcurrentInvocationsPerInstance: (() { final guardedValue = map['maxConcurrentInvocationsPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -542,30 +542,22 @@ import 'eligible_role_assignment_ticket.dart';
 class EligibleRoleAssignment extends pulumi.CustomResource {
   /// The condition that limits the resources that the role can be assigned to. See the [official conditions documentation](https://learn.microsoft.com/en-us/azure/role-based-access-control/conditions-overview#what-are-role-assignment-conditions) for details. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> condition;
-
   /// The version of the condition. Supported values include `2.0`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `condition_version` is required when specifying `condition` and vice versa.
   late final pulumi.Output<String?> conditionVersion;
-
   /// The justification of the role assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> justification;
-
   /// Object ID of the principal for this eligible role assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalId;
-
   /// Type of principal to which the role will be assigned.
   late final pulumi.Output<String> principalType;
-
   /// The role definition ID for this eligible role assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleDefinitionId;
-
   /// A `schedule` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<EligibleRoleAssignmentSchedule> schedule;
-
   /// The scope for this eligible role assignment, should be a valid resource ID. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scope;
-
   /// A `ticket` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<EligibleRoleAssignmentTicket> ticket;
 
@@ -578,38 +570,20 @@ class EligibleRoleAssignment extends pulumi.CustomResource {
     EligibleRoleAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:pim/eligibleRoleAssignment:EligibleRoleAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:pim/eligibleRoleAssignment:EligibleRoleAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     condition = registerOutput<String?>('condition');
     conditionVersion = registerOutput<String?>('conditionVersion');
     justification = registerOutput<String>('justification');
     principalId = registerOutput<String>('principalId');
     principalType = registerOutput<String>('principalType');
     roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    schedule = registerOutput<EligibleRoleAssignmentSchedule>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EligibleRoleAssignmentSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<EligibleRoleAssignmentSchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EligibleRoleAssignmentSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scope = registerOutput<String>('scope');
-    ticket = registerOutput<EligibleRoleAssignmentTicket>(
-      'ticket',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EligibleRoleAssignmentTicket.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ticket = registerOutput<EligibleRoleAssignmentTicket>('ticket', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EligibleRoleAssignmentTicket.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [EligibleRoleAssignment] resource's state with the given [name] and [id].
@@ -630,37 +604,19 @@ class EligibleRoleAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:pim/eligibleRoleAssignment:EligibleRoleAssignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:pim/eligibleRoleAssignment:EligibleRoleAssignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     condition = registerOutput<String?>('condition');
     conditionVersion = registerOutput<String?>('conditionVersion');
     justification = registerOutput<String>('justification');
     principalId = registerOutput<String>('principalId');
     principalType = registerOutput<String>('principalType');
     roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    schedule = registerOutput<EligibleRoleAssignmentSchedule>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EligibleRoleAssignmentSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<EligibleRoleAssignmentSchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EligibleRoleAssignmentSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scope = registerOutput<String>('scope');
-    ticket = registerOutput<EligibleRoleAssignmentTicket>(
-      'ticket',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EligibleRoleAssignmentTicket.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ticket = registerOutput<EligibleRoleAssignmentTicket>('ticket', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EligibleRoleAssignmentTicket.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

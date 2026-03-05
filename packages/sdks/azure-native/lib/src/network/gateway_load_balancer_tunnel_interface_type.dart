@@ -13,8 +13,7 @@ enum GatewayLoadBalancerTunnelInterfaceType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GatewayLoadBalancerTunnelInterfaceType value: $value',
-    );
+    throw ArgumentError('Unknown GatewayLoadBalancerTunnelInterfaceType value: $value');
   }
 }
+

@@ -208,86 +208,59 @@ import 'cluster_instance_state.dart';
 class ClusterInstance extends pulumi.CustomResource {
   /// Whether any database modifications are applied immediately, or during the next maintenance window. Default is`false`.
   late final pulumi.Output<bool?> applyImmediately;
-
   /// ARN of cluster instance
   late final pulumi.Output<String> arn;
-
   /// Parameter does not apply to Amazon DocumentDB. Amazon DocumentDB does not perform minor version upgrades regardless of the value set (see [docs](https://docs.aws.amazon.com/documentdb/latest/developerguide/API_DBInstance.html)). Default `true`.
   late final pulumi.Output<bool?> autoMinorVersionUpgrade;
-
   /// EC2 Availability Zone that the DB instance is created in. See [docs](https://docs.aws.amazon.com/documentdb/latest/developerguide/API_CreateDBInstance.html) about the details.
   late final pulumi.Output<String> availabilityZone;
-
   /// Identifier of the certificate authority (CA) certificate for the DB instance.
   late final pulumi.Output<String> caCertIdentifier;
-
   /// Whether to restart the DB instance when rotating its SSL/TLS certificate. By default, AWS restarts the DB instance when you rotate your SSL/TLS certificate. The certificate is not updated until the DB instance is restarted. Set to `false` only if you are not using SSL/TLS to connect to the DB instance.
   late final pulumi.Output<String?> certificateRotationRestart;
-
   /// Identifier of the `aws.docdb.Cluster` in which to launch this instance.
   late final pulumi.Output<String> clusterIdentifier;
-
   /// Copy all DB instance `tags` to snapshots. Default is `false`.
   late final pulumi.Output<bool?> copyTagsToSnapshot;
-
   /// DB subnet group to associate with this DB instance.
   late final pulumi.Output<String> dbSubnetGroupName;
-
   /// Region-unique, immutable identifier for the DB instance.
   late final pulumi.Output<String> dbiResourceId;
-
   /// Value that indicates whether to enable Performance Insights for the DB Instance. Default `false`. See [docs] (https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html) about the details.
   late final pulumi.Output<bool?> enablePerformanceInsights;
-
   /// DNS address for this instance. May not be writable
   late final pulumi.Output<String> endpoint;
-
   /// Name of the database engine to be used for the DocumentDB instance. Defaults to `docdb`. Valid Values: `docdb`.
   late final pulumi.Output<String?> engine;
-
   /// Database engine version
   late final pulumi.Output<String> engineVersion;
-
   /// The identifier for the DocumentDB instance, if omitted, the provider will assign a random, unique identifier.
   late final pulumi.Output<String> identifier;
-
   /// Creates a unique identifier beginning with the specified prefix. Conflicts with `identifier`.
   late final pulumi.Output<String> identifierPrefix;
-
   /// Instance class to use. For details on CPU and memory, see [Scaling for DocumentDB Instances](https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-manage-performance.html#db-cluster-manage-scaling-instance). See the `aws.docdb.getOrderableDbInstance` data source. See [AWS Documentation](https://docs.aws.amazon.com/documentdb/latest/developerguide/db-instance-classes.html#db-instance-class-specs) for complete details.
   late final pulumi.Output<String> instanceClass;
-
   /// ARN for the KMS encryption key if one is set to the cluster.
   late final pulumi.Output<String> kmsKeyId;
-
   /// KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key. If you do not specify a value for PerformanceInsightsKMSKeyId, then Amazon DocumentDB uses your default KMS key.
   late final pulumi.Output<String> performanceInsightsKmsKeyId;
-
   /// Database port
   late final pulumi.Output<int> port;
-
   /// Daily time range during which automated backups are created if automated backups are enabled.
   late final pulumi.Output<String> preferredBackupWindow;
-
   /// Window to perform maintenance in. Syntax: "ddd:hh24:mi-ddd:hh24:mi". Eg: "Mon:00:00-Mon:03:00".
   late final pulumi.Output<String> preferredMaintenanceWindow;
-
   /// Failover Priority setting on instance level. Default `0`. The reader who has lower tier has higher priority to get promoter to writer.
   late final pulumi.Output<int?> promotionTier;
   late final pulumi.Output<bool> publiclyAccessible;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Whether the DB cluster is encrypted.
   late final pulumi.Output<bool> storageEncrypted;
-
   /// Map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Whether this instance is writable. `False` indicates this instance is a read replica.
   late final pulumi.Output<bool> writer;
 
@@ -300,26 +273,22 @@ class ClusterInstance extends pulumi.CustomResource {
     ClusterInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:docdb/clusterInstance:ClusterInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:docdb/clusterInstance:ClusterInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applyImmediately = registerOutput<bool?>('applyImmediately');
     arn = registerOutput<String>('arn');
     autoMinorVersionUpgrade = registerOutput<bool?>('autoMinorVersionUpgrade');
     availabilityZone = registerOutput<String>('availabilityZone');
     caCertIdentifier = registerOutput<String>('caCertIdentifier');
-    certificateRotationRestart = registerOutput<String?>(
-      'certificateRotationRestart',
-    );
+    certificateRotationRestart = registerOutput<String?>('certificateRotationRestart');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
     dbSubnetGroupName = registerOutput<String>('dbSubnetGroupName');
     dbiResourceId = registerOutput<String>('dbiResourceId');
-    enablePerformanceInsights = registerOutput<bool?>(
-      'enablePerformanceInsights',
-    );
+    enablePerformanceInsights = registerOutput<bool?>('enablePerformanceInsights');
     endpoint = registerOutput<String>('endpoint');
     engine = registerOutput<String?>('engine');
     engineVersion = registerOutput<String>('engineVersion');
@@ -327,14 +296,10 @@ class ClusterInstance extends pulumi.CustomResource {
     identifierPrefix = registerOutput<String>('identifierPrefix');
     instanceClass = registerOutput<String>('instanceClass');
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    performanceInsightsKmsKeyId = registerOutput<String>(
-      'performanceInsightsKmsKeyId',
-    );
+    performanceInsightsKmsKeyId = registerOutput<String>('performanceInsightsKmsKeyId');
     port = registerOutput<int>('port');
     preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
-    preferredMaintenanceWindow = registerOutput<String>(
-      'preferredMaintenanceWindow',
-    );
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
     promotionTier = registerOutput<int?>('promotionTier');
     publiclyAccessible = registerOutput<bool>('publiclyAccessible');
     region = registerOutput<String>('region');
@@ -362,26 +327,22 @@ class ClusterInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:docdb/clusterInstance:ClusterInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:docdb/clusterInstance:ClusterInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applyImmediately = registerOutput<bool?>('applyImmediately');
     arn = registerOutput<String>('arn');
     autoMinorVersionUpgrade = registerOutput<bool?>('autoMinorVersionUpgrade');
     availabilityZone = registerOutput<String>('availabilityZone');
     caCertIdentifier = registerOutput<String>('caCertIdentifier');
-    certificateRotationRestart = registerOutput<String?>(
-      'certificateRotationRestart',
-    );
+    certificateRotationRestart = registerOutput<String?>('certificateRotationRestart');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
     dbSubnetGroupName = registerOutput<String>('dbSubnetGroupName');
     dbiResourceId = registerOutput<String>('dbiResourceId');
-    enablePerformanceInsights = registerOutput<bool?>(
-      'enablePerformanceInsights',
-    );
+    enablePerformanceInsights = registerOutput<bool?>('enablePerformanceInsights');
     endpoint = registerOutput<String>('endpoint');
     engine = registerOutput<String?>('engine');
     engineVersion = registerOutput<String>('engineVersion');
@@ -389,14 +350,10 @@ class ClusterInstance extends pulumi.CustomResource {
     identifierPrefix = registerOutput<String>('identifierPrefix');
     instanceClass = registerOutput<String>('instanceClass');
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    performanceInsightsKmsKeyId = registerOutput<String>(
-      'performanceInsightsKmsKeyId',
-    );
+    performanceInsightsKmsKeyId = registerOutput<String>('performanceInsightsKmsKeyId');
     port = registerOutput<int>('port');
     preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
-    preferredMaintenanceWindow = registerOutput<String>(
-      'preferredMaintenanceWindow',
-    );
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
     promotionTier = registerOutput<int?>('promotionTier');
     publiclyAccessible = registerOutput<bool>('publiclyAccessible');
     region = registerOutput<String>('region');

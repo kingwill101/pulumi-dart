@@ -29,19 +29,12 @@ class GetNetworkEdgeSecurityServiceComputeBetaArgs {
     };
   }
 
-  factory GetNetworkEdgeSecurityServiceComputeBetaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkEdgeSecurityServiceComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkEdgeSecurityServiceComputeBetaArgs(
-      networkEdgeSecurityService: pulumi.Input.fromValue(
-        map['networkEdgeSecurityService'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      networkEdgeSecurityService: pulumi.Input.fromValue(map['networkEdgeSecurityService'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

@@ -4,19 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateNetworkInterfaces {
   final pulumi.Input<bool>? deleteOnRelease;
-
   /// The ENI description.
   final pulumi.Input<String>? description;
-
   /// ENI name.
   final pulumi.Input<String>? name;
-
   /// The primary private IP address of the ENI.
   final pulumi.Input<String>? primaryIp;
-
   /// The security group ID must be one in the same VPC.
   final pulumi.Input<String>? securityGroupId;
-
   /// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
   final pulumi.Input<String>? vswitchId;
 
@@ -49,36 +44,13 @@ class LaunchTemplateNetworkInterfaces {
 
   factory LaunchTemplateNetworkInterfaces.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateNetworkInterfaces(
-      deleteOnRelease: (() {
-        final guardedValue = map['deleteOnRelease'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      primaryIp: (() {
-        final guardedValue = map['primaryIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securityGroupId: (() {
-        final guardedValue = map['securityGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vswitchId: (() {
-        final guardedValue = map['vswitchId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deleteOnRelease: (() { final guardedValue = map['deleteOnRelease']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      primaryIp: (() { final guardedValue = map['primaryIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityGroupId: (() { final guardedValue = map['securityGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vswitchId: (() { final guardedValue = map['vswitchId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

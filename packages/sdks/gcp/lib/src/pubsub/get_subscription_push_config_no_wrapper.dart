@@ -10,10 +10,14 @@ class GetSubscriptionPushConfigNoWrapper {
 
   /// Creates a new [GetSubscriptionPushConfigNoWrapper].
   /// [writeMetadata] When true, writes the Pub/Sub message metadata to
-  GetSubscriptionPushConfigNoWrapper({required this.writeMetadata});
+  GetSubscriptionPushConfigNoWrapper({
+    required this.writeMetadata,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'writeMetadata': writeMetadata};
+    return <String, dynamic>{
+      'writeMetadata': writeMetadata,
+    };
   }
 
   factory GetSubscriptionPushConfigNoWrapper.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class GetSubscriptionPushConfigNoWrapper {
     );
   }
 }
+

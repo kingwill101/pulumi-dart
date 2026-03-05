@@ -7,7 +7,6 @@ import 'reportable_exception_response.dart';
 class MigrateSyncCompleteCommandOutputResponse {
   /// List of errors that happened during the command execution
   final pulumi.Input<List<ReportableExceptionResponse>> errors;
-
   /// Result identifier
   final pulumi.Input<String> id;
 
@@ -21,35 +20,16 @@ class MigrateSyncCompleteCommandOutputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors':
-          pulumi.Input.mapInputValue<
-            List<ReportableExceptionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            errors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReportableExceptionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'errors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
     };
   }
 
-  factory MigrateSyncCompleteCommandOutputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MigrateSyncCompleteCommandOutputResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSyncCompleteCommandOutputResponse(
-      errors: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ReportableExceptionResponse>(
-          map['errors']!,
-          (value) => ReportableExceptionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      errors: pulumi.Input.fromValue(pulumi.Input.decodeList<ReportableExceptionResponse>(map['errors']!, (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
+

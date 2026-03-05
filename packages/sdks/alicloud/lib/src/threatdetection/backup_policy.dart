@@ -165,19 +165,14 @@ import 'backup_policy_state.dart';
 class BackupPolicy extends pulumi.CustomResource {
   /// Protection of the Name of the Policy.
   late final pulumi.Output<String> backupPolicyName;
-
   /// The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
   late final pulumi.Output<String> policy;
-
   /// The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
   late final pulumi.Output<String?> policyRegionId;
-
   /// Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
   late final pulumi.Output<String> policyVersion;
-
   /// The status of the Backup Policy instance.
   late final pulumi.Output<String> status;
-
   /// Specify the Protection of Server UUID List.
   late final pulumi.Output<List<String>> uuidLists;
 
@@ -190,11 +185,11 @@ class BackupPolicy extends pulumi.CustomResource {
     BackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/backupPolicy:BackupPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/backupPolicy:BackupPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupPolicyName = registerOutput<String>('backupPolicyName');
     policy = registerOutput<String>('policy');
     policyRegionId = registerOutput<String?>('policyRegionId');
@@ -221,11 +216,11 @@ class BackupPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/backupPolicy:BackupPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/backupPolicy:BackupPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupPolicyName = registerOutput<String>('backupPolicyName');
     policy = registerOutput<String>('policy');
     policyRegionId = registerOutput<String?>('policyRegionId');

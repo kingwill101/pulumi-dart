@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppEngineVersionInfoResponseNetworkmanagementV1beta1 {
   /// Name of an App Engine version.
   final pulumi.Input<String> displayName;
-
   /// App Engine execution environment for a version.
   final pulumi.Input<String> environment;
-
   /// Runtime of the App Engine version.
   final pulumi.Input<String> runtime;
-
   /// URI of an App Engine version.
   final pulumi.Input<String> uri;
 
@@ -37,9 +34,7 @@ class AppEngineVersionInfoResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory AppEngineVersionInfoResponseNetworkmanagementV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppEngineVersionInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return AppEngineVersionInfoResponseNetworkmanagementV1beta1(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       environment: pulumi.Input.fromValue(map['environment'] as String),
@@ -48,3 +43,4 @@ class AppEngineVersionInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
+

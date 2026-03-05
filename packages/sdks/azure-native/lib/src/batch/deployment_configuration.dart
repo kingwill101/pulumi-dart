@@ -10,29 +10,20 @@ class DeploymentConfiguration {
 
   /// Creates a new [DeploymentConfiguration].
   /// [virtualMachineConfiguration] The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
-  DeploymentConfiguration({this.virtualMachineConfiguration});
+  DeploymentConfiguration({
+    this.virtualMachineConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'virtualMachineConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualMachineConfiguration,
-            Map<String, dynamic>
-          >(virtualMachineConfiguration, (value) => value.toMap()),
+      'virtualMachineConfiguration': ?pulumi.Input.mapOptionalInputValue<VirtualMachineConfiguration, Map<String, dynamic>>(virtualMachineConfiguration, (value) => value.toMap()),
     };
   }
 
   factory DeploymentConfiguration.fromMap(Map<String, dynamic> map) {
     return DeploymentConfiguration(
-      virtualMachineConfiguration: (() {
-        final guardedValue = map['virtualMachineConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualMachineConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      virtualMachineConfiguration: (() { final guardedValue = map['virtualMachineConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

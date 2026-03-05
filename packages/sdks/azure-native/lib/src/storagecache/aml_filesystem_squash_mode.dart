@@ -16,3 +16,4 @@ enum AmlFilesystemSquashMode {
     throw ArgumentError('Unknown AmlFilesystemSquashMode value: $value');
   }
 }
+

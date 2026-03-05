@@ -6,20 +6,15 @@ class GetInstancesInstance {
   /// DNS security level.
   final pulumi.Input<String> dnsSecurity;
   final pulumi.Input<String> domain;
-
   /// Number of domain names bound.
   final pulumi.Input<String> domainNumbers;
-
   /// Id of the instance.
   final pulumi.Input<String> id;
-
   /// Id of the instance resource.
   final pulumi.Input<String> instanceId;
   final pulumi.Input<String> paymentType;
-
   /// Paid package version.
   final pulumi.Input<String> versionCode;
-
   /// Paid package version name.
   final pulumi.Input<String> versionName;
 
@@ -69,3 +64,4 @@ class GetInstancesInstance {
     );
   }
 }
+

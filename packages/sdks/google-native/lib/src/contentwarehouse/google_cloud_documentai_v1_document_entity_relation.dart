@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1DocumentEntityRelation {
   /// Object entity id.
   final pulumi.Input<String>? objectId;
-
   /// Relationship description.
   final pulumi.Input<String>? relation;
-
   /// Subject entity id.
   final pulumi.Input<String>? subjectId;
 
@@ -31,25 +29,12 @@ class GoogleCloudDocumentaiV1DocumentEntityRelation {
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentEntityRelation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1DocumentEntityRelation.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentEntityRelation(
-      objectId: (() {
-        final guardedValue = map['objectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      relation: (() {
-        final guardedValue = map['relation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subjectId: (() {
-        final guardedValue = map['subjectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      relation: (() { final guardedValue = map['relation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subjectId: (() { final guardedValue = map['subjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

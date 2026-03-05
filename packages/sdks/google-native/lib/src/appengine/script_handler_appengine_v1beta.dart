@@ -9,19 +9,20 @@ class ScriptHandlerAppengineV1beta {
 
   /// Creates a new [ScriptHandlerAppengineV1beta].
   /// [scriptPath] Path to the script from the application root directory.
-  ScriptHandlerAppengineV1beta({this.scriptPath});
+  ScriptHandlerAppengineV1beta({
+    this.scriptPath,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scriptPath': ?scriptPath};
+    return <String, dynamic>{
+      'scriptPath': ?scriptPath,
+    };
   }
 
   factory ScriptHandlerAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ScriptHandlerAppengineV1beta(
-      scriptPath: (() {
-        final guardedValue = map['scriptPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      scriptPath: (() { final guardedValue = map['scriptPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

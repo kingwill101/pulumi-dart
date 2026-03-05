@@ -8,34 +8,24 @@ import 'nfs_export_response.dart';
 class VolumeConfigResponse {
   /// The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
   final pulumi.Input<String> gcpService;
-
   /// LUN ranges to be configured. Set only when protocol is PROTOCOL_FC.
   final pulumi.Input<List<LunRangeResponse>> lunRanges;
-
   /// Machine ids connected to this volume. Set only when protocol is PROTOCOL_FC.
   final pulumi.Input<List<String>> machineIds;
-
   /// The name of the volume config.
   final pulumi.Input<String> name;
-
   /// NFS exports. Set only when protocol is PROTOCOL_NFS.
   final pulumi.Input<List<NfsExportResponse>> nfsExports;
-
   /// Performance tier of the Volume. Default is SHARED.
   final pulumi.Input<String> performanceTier;
-
   /// Volume protocol.
   final pulumi.Input<String> protocol;
-
   /// The requested size of this volume, in GB.
   final pulumi.Input<int> sizeGb;
-
   /// Whether snapshots should be enabled.
   final pulumi.Input<bool> snapshotsEnabled;
-
   /// The type of this Volume.
   final pulumi.Input<String> type;
-
   /// User note field, it can be used by customers to add additional information for the BMS Ops team .
   final pulumi.Input<String> userNote;
 
@@ -68,32 +58,10 @@ class VolumeConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'gcpService': gcpService,
-      'lunRanges':
-          pulumi.Input.mapInputValue<
-            List<LunRangeResponse>,
-            List<Map<String, dynamic>>
-          >(
-            lunRanges,
-            (value) =>
-                pulumi.Input.encodeList<LunRangeResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'lunRanges': pulumi.Input.mapInputValue<List<LunRangeResponse>, List<Map<String, dynamic>>>(lunRanges, (value) => pulumi.Input.encodeList<LunRangeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'machineIds': machineIds,
       'name': name,
-      'nfsExports':
-          pulumi.Input.mapInputValue<
-            List<NfsExportResponse>,
-            List<Map<String, dynamic>>
-          >(
-            nfsExports,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NfsExportResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'nfsExports': pulumi.Input.mapInputValue<List<NfsExportResponse>, List<Map<String, dynamic>>>(nfsExports, (value) => pulumi.Input.encodeList<NfsExportResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'performanceTier': performanceTier,
       'protocol': protocol,
       'sizeGb': sizeGb,
@@ -106,24 +74,10 @@ class VolumeConfigResponse {
   factory VolumeConfigResponse.fromMap(Map<String, dynamic> map) {
     return VolumeConfigResponse(
       gcpService: pulumi.Input.fromValue(map['gcpService'] as String),
-      lunRanges: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<LunRangeResponse>(
-          map['lunRanges']!,
-          (value) =>
-              LunRangeResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      machineIds: pulumi.Input.fromValue(
-        (map['machineIds'] as List).cast<String>(),
-      ),
+      lunRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<LunRangeResponse>(map['lunRanges']!, (value) => LunRangeResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      machineIds: pulumi.Input.fromValue((map['machineIds'] as List).cast<String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
-      nfsExports: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<NfsExportResponse>(
-          map['nfsExports']!,
-          (value) =>
-              NfsExportResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      nfsExports: pulumi.Input.fromValue(pulumi.Input.decodeList<NfsExportResponse>(map['nfsExports']!, (value) => NfsExportResponse.fromMap((value as Map).cast<String, dynamic>()))),
       performanceTier: pulumi.Input.fromValue(map['performanceTier'] as String),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       sizeGb: pulumi.Input.fromValue(map['sizeGb'] as int),
@@ -133,3 +87,4 @@ class VolumeConfigResponse {
     );
   }
 }
+

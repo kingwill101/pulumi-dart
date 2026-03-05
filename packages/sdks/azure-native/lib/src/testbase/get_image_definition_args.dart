@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageDefinitionArgs {
   /// The resource name of the test base image definition.
   final pulumi.Input<String> imageDefinitionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
 
@@ -36,15 +34,10 @@ class GetImageDefinitionArgs {
 
   factory GetImageDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetImageDefinitionArgs(
-      imageDefinitionName: pulumi.Input.fromValue(
-        map['imageDefinitionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      testBaseAccountName: pulumi.Input.fromValue(
-        map['testBaseAccountName'] as String,
-      ),
+      imageDefinitionName: pulumi.Input.fromValue(map['imageDefinitionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      testBaseAccountName: pulumi.Input.fromValue(map['testBaseAccountName'] as String),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IssuanceModesResponse {
   /// Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
   final pulumi.Input<bool> allowConfigBasedIssuance;
-
   /// Optional. When true, allows callers to create Certificates by specifying a CSR.
   final pulumi.Input<bool> allowCsrBasedIssuance;
 
@@ -27,12 +26,9 @@ class IssuanceModesResponse {
 
   factory IssuanceModesResponse.fromMap(Map<String, dynamic> map) {
     return IssuanceModesResponse(
-      allowConfigBasedIssuance: pulumi.Input.fromValue(
-        map['allowConfigBasedIssuance'] as bool,
-      ),
-      allowCsrBasedIssuance: pulumi.Input.fromValue(
-        map['allowCsrBasedIssuance'] as bool,
-      ),
+      allowConfigBasedIssuance: pulumi.Input.fromValue(map['allowConfigBasedIssuance'] as bool),
+      allowCsrBasedIssuance: pulumi.Input.fromValue(map['allowCsrBasedIssuance'] as bool),
     );
   }
 }
+

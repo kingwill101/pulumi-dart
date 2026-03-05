@@ -130,13 +130,10 @@ import 'device_group_state.dart';
 class DeviceGroup extends pulumi.CustomResource {
   /// The GroupDesc of the device group.
   late final pulumi.Output<String?> groupDesc;
-
   /// The GroupName of the device group.
   late final pulumi.Output<String> groupName;
-
   /// The id of the Iot Instance.
   late final pulumi.Output<String?> iotInstanceId;
-
   /// The id of the SuperGroup.
   late final pulumi.Output<String?> superGroupId;
 
@@ -149,11 +146,11 @@ class DeviceGroup extends pulumi.CustomResource {
     DeviceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:iot/deviceGroup:DeviceGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:iot/deviceGroup:DeviceGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupDesc = registerOutput<String?>('groupDesc');
     groupName = registerOutput<String>('groupName');
     iotInstanceId = registerOutput<String?>('iotInstanceId');
@@ -178,11 +175,11 @@ class DeviceGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:iot/deviceGroup:DeviceGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:iot/deviceGroup:DeviceGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupDesc = registerOutput<String?>('groupDesc');
     groupName = registerOutput<String>('groupName');
     iotInstanceId = registerOutput<String?>('iotInstanceId');

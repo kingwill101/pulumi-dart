@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getClusterIamPolicy.
 class GetClusterIamPolicyResult {
   final String cluster;
-
   /// (Computed) The etag of the IAM policy.
   final String etag;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// (Computed) The policy data
   final String policyData;
   final String project;
@@ -53,3 +51,4 @@ class GetClusterIamPolicyResult {
     );
   }
 }
+

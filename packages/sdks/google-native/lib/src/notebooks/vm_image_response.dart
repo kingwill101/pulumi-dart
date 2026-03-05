@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmImageResponse {
   /// Use this VM image family to find the image; the newest image in this family will be used.
   final pulumi.Input<String> imageFamily;
-
   /// Use VM image name to find the image.
   final pulumi.Input<String> imageName;
-
   /// The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
   final pulumi.Input<String> project;
 
@@ -39,3 +37,4 @@ class VmImageResponse {
     );
   }
 }
+

@@ -9,19 +9,20 @@ class ReportConfigDatasetConfiguration {
 
   /// Creates a new [ReportConfigDatasetConfiguration].
   /// [columns] Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-  ReportConfigDatasetConfiguration({this.columns});
+  ReportConfigDatasetConfiguration({
+    this.columns,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'columns': ?columns};
+    return <String, dynamic>{
+      'columns': ?columns,
+    };
   }
 
   factory ReportConfigDatasetConfiguration.fromMap(Map<String, dynamic> map) {
     return ReportConfigDatasetConfiguration(
-      columns: (() {
-        final guardedValue = map['columns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      columns: (() { final guardedValue = map['columns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

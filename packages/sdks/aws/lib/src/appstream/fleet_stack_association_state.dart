@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetStackAssociationState {
   /// Name of the fleet.
   final pulumi.Input<String>? fleetName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Name of the stack.
   final pulumi.Input<String>? stackName;
 
@@ -17,7 +15,11 @@ class FleetStackAssociationState {
   /// [fleetName] Name of the fleet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stackName] Name of the stack.
-  FleetStackAssociationState({this.fleetName, this.region, this.stackName});
+  FleetStackAssociationState({
+    this.fleetName,
+    this.region,
+    this.stackName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class FleetStackAssociationState {
 
   factory FleetStackAssociationState.fromMap(Map<String, dynamic> map) {
     return FleetStackAssociationState(
-      fleetName: (() {
-        final guardedValue = map['fleetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stackName: (() {
-        final guardedValue = map['stackName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fleetName: (() { final guardedValue = map['fleetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stackName: (() { final guardedValue = map['stackName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -14,8 +14,7 @@ enum ExceptionEntrySelectorMatchOperator {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ExceptionEntrySelectorMatchOperator value: $value',
-    );
+    throw ArgumentError('Unknown ExceptionEntrySelectorMatchOperator value: $value');
   }
 }
+

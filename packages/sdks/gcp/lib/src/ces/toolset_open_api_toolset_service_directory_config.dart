@@ -13,17 +13,20 @@ class ToolsetOpenApiToolsetServiceDirectoryConfig {
 
   /// Creates a new [ToolsetOpenApiToolsetServiceDirectoryConfig].
   /// [service] The name of [Service
-  ToolsetOpenApiToolsetServiceDirectoryConfig({required this.service});
+  ToolsetOpenApiToolsetServiceDirectoryConfig({
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'service': service};
+    return <String, dynamic>{
+      'service': service,
+    };
   }
 
-  factory ToolsetOpenApiToolsetServiceDirectoryConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ToolsetOpenApiToolsetServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetServiceDirectoryConfig(
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
+

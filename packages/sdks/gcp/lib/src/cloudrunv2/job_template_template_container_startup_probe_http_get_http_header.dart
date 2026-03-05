@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader {
   /// The header field name.
   final pulumi.Input<String> name;
-
   /// The header field value.
   final pulumi.Input<String>? value;
 
@@ -18,19 +17,17 @@ class JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': ?value};
+    return <String, dynamic>{
+      'name': name,
+      'value': ?value,
+    };
   }
 
-  factory JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader(
       name: pulumi.Input.fromValue(map['name'] as String),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

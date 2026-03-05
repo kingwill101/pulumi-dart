@@ -9,31 +9,20 @@ class DomainDevicesHostdevSubsysMDevSource {
 
   /// Creates a new [DomainDevicesHostdevSubsysMDevSource].
   /// [address] Sets the address for the source of the multimedia subsystem device.
-  DomainDevicesHostdevSubsysMDevSource({this.address});
+  DomainDevicesHostdevSubsysMDevSource({
+    this.address,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'address':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesHostdevSubsysMDevSourceAddress,
-            Map<String, dynamic>
-          >(address, (value) => value.toMap()),
+      'address': ?pulumi.Input.mapOptionalInputValue<DomainDevicesHostdevSubsysMDevSourceAddress, Map<String, dynamic>>(address, (value) => value.toMap()),
     };
   }
 
-  factory DomainDevicesHostdevSubsysMDevSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesHostdevSubsysMDevSource.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysMDevSource(
-      address: (() {
-        final guardedValue = map['address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesHostdevSubsysMDevSourceAddress.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesHostdevSubsysMDevSourceAddress.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

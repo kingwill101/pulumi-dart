@@ -575,28 +575,20 @@ import 'organization_conformance_pack_state.dart';
 class OrganizationConformancePack extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the organization conformance pack.
   late final pulumi.Output<String> arn;
-
   /// Amazon S3 bucket where AWS Config stores conformance pack templates. Delivery bucket must begin with `awsconfigconforms` prefix. Maximum length of 63.
   late final pulumi.Output<String?> deliveryS3Bucket;
-
   /// The prefix for the Amazon S3 bucket. Maximum length of 1024.
   late final pulumi.Output<String?> deliveryS3KeyPrefix;
-
   /// Set of AWS accounts to be excluded from an organization conformance pack while deploying a conformance pack. Maximum of 1000 accounts.
   late final pulumi.Output<List<String>?> excludedAccounts;
-
   /// Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the `template_body` or in the template stored in Amazon S3 if using `template_s3_uri`.
   late final pulumi.Output<List<Map<String, dynamic>>?> inputParameters;
-
   /// The name of the organization conformance pack. Must begin with a letter and contain from 1 to 128 alphanumeric characters and hyphens.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A string containing full conformance pack template body. Maximum length of 51200. Drift detection is not possible with this argument.
   late final pulumi.Output<String?> templateBody;
-
   /// Location of file, e.g., `s3://bucketname/prefix`, containing the template body. The uri must point to the conformance pack template that is located in an Amazon S3 bucket in the same region as the conformance pack. Maximum length of 1024. Drift detection is not possible with this argument.
   late final pulumi.Output<String?> templateS3Uri;
 
@@ -609,18 +601,16 @@ class OrganizationConformancePack extends pulumi.CustomResource {
     OrganizationConformancePackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cfg/organizationConformancePack:OrganizationConformancePack',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cfg/organizationConformancePack:OrganizationConformancePack',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     deliveryS3Bucket = registerOutput<String?>('deliveryS3Bucket');
     deliveryS3KeyPrefix = registerOutput<String?>('deliveryS3KeyPrefix');
     excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
-    inputParameters = registerOutput<List<Map<String, dynamic>>?>(
-      'inputParameters',
-    );
+    inputParameters = registerOutput<List<Map<String, dynamic>>?>('inputParameters');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     templateBody = registerOutput<String?>('templateBody');
@@ -645,18 +635,16 @@ class OrganizationConformancePack extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cfg/organizationConformancePack:OrganizationConformancePack',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cfg/organizationConformancePack:OrganizationConformancePack',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     deliveryS3Bucket = registerOutput<String?>('deliveryS3Bucket');
     deliveryS3KeyPrefix = registerOutput<String?>('deliveryS3KeyPrefix');
     excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
-    inputParameters = registerOutput<List<Map<String, dynamic>>?>(
-      'inputParameters',
-    );
+    inputParameters = registerOutput<List<Map<String, dynamic>>?>('inputParameters');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     templateBody = registerOutput<String?>('templateBody');

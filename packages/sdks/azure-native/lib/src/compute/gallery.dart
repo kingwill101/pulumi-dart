@@ -597,40 +597,28 @@ import 'system_data_response.dart';
 class Gallery extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The description of this Shared Image Gallery resource. This property is updatable.
   late final pulumi.Output<String?> description;
-
   /// Describes the gallery unique name.
   late final pulumi.Output<GalleryIdentifierResponse?> identifier;
-
   /// The identity of the gallery, if configured.
   late final pulumi.Output<GalleryIdentityResponse?> identity;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
-
   /// Profile for gallery sharing to subscription or tenant
   late final pulumi.Output<SharingProfileResponse?> sharingProfile;
-
   /// Sharing status of current gallery.
   late final pulumi.Output<SharingStatusResponse> sharingStatus;
-
   /// Contains information about the soft deletion policy of the gallery.
   late final pulumi.Output<SoftDeletePolicyResponse?> softDeletePolicy;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -643,76 +631,22 @@ class Gallery extends pulumi.CustomResource {
     GalleryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:compute:Gallery',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:compute:Gallery',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
-    identifier = registerOutput<GalleryIdentifierResponse?>(
-      'identifier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GalleryIdentifierResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<GalleryIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GalleryIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identifier = registerOutput<GalleryIdentifierResponse?>('identifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryIdentifierResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<GalleryIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    sharingProfile = registerOutput<SharingProfileResponse?>(
-      'sharingProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SharingProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sharingStatus = registerOutput<SharingStatusResponse>(
-      'sharingStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SharingStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    softDeletePolicy = registerOutput<SoftDeletePolicyResponse?>(
-      'softDeletePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SoftDeletePolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sharingProfile = registerOutput<SharingProfileResponse?>('sharingProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharingProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sharingStatus = registerOutput<SharingStatusResponse>('sharingStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharingStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    softDeletePolicy = registerOutput<SoftDeletePolicyResponse?>('softDeletePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftDeletePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

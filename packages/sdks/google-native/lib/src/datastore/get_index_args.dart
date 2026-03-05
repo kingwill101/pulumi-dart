@@ -13,20 +13,23 @@ class GetIndexArgs {
   /// Creates a new [GetIndexArgs].
   /// [indexId] Required.
   /// [project] Optional.
-  GetIndexArgs({required this.indexId, this.project});
+  GetIndexArgs({
+    required this.indexId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'indexId': indexId, 'project': ?project};
+    return <String, dynamic>{
+      'indexId': indexId,
+      'project': ?project,
+    };
   }
 
   factory GetIndexArgs.fromMap(Map<String, dynamic> map) {
     return GetIndexArgs(
       indexId: pulumi.Input.fromValue(map['indexId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

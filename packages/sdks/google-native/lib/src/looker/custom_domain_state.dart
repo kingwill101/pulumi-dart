@@ -20,3 +20,4 @@ enum CustomDomainState {
     throw ArgumentError('Unknown CustomDomainState value: $value');
   }
 }
+

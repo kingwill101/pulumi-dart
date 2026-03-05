@@ -6,9 +6,7 @@ import 'confidential_instance_config_confidential_instance_type.dart';
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfig {
   /// Defines the type of technology used by the confidential instance.
-  final pulumi.Input<ConfidentialInstanceConfigConfidentialInstanceType>?
-  confidentialInstanceType;
-
+  final pulumi.Input<ConfidentialInstanceConfigConfidentialInstanceType>? confidentialInstanceType;
   /// Defines whether the instance should have confidential compute enabled.
   final pulumi.Input<bool>? enableConfidentialCompute;
 
@@ -22,31 +20,16 @@ class ConfidentialInstanceConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'confidentialInstanceType':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfidentialInstanceConfigConfidentialInstanceType,
-            String
-          >(confidentialInstanceType, (value) => value.wireValue),
+      'confidentialInstanceType': ?pulumi.Input.mapOptionalInputValue<ConfidentialInstanceConfigConfidentialInstanceType, String>(confidentialInstanceType, (value) => value.wireValue),
       'enableConfidentialCompute': ?enableConfidentialCompute,
     };
   }
 
   factory ConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ConfidentialInstanceConfig(
-      confidentialInstanceType: (() {
-        final guardedValue = map['confidentialInstanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfidentialInstanceConfigConfidentialInstanceType.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      enableConfidentialCompute: (() {
-        final guardedValue = map['enableConfidentialCompute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      confidentialInstanceType: (() { final guardedValue = map['confidentialInstanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfidentialInstanceConfigConfidentialInstanceType.fromValue(guardedValue as String)); })(),
+      enableConfidentialCompute: (() { final guardedValue = map['enableConfidentialCompute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

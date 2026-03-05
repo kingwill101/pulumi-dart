@@ -618,16 +618,13 @@ import 'dicom_store_iam_binding_state.dart';
 /// ```
 class DicomStoreIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<DicomStoreIamBindingCondition?> condition;
-
   /// The DICOM store ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
   /// `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
   late final pulumi.Output<String> dicomStoreId;
-
   /// (Computed) The etag of the DICOM store's IAM policy.
   late final pulumi.Output<String> etag;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -637,7 +634,6 @@ class DicomStoreIamBinding extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<List<String>> members;
-
   /// The role that should be applied. Only one
   /// `gcp.healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -652,21 +648,12 @@ class DicomStoreIamBinding extends pulumi.CustomResource {
     DicomStoreIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    condition = registerOutput<DicomStoreIamBindingCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DicomStoreIamBindingCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    condition = registerOutput<DicomStoreIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DicomStoreIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dicomStoreId = registerOutput<String>('dicomStoreId');
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
@@ -691,21 +678,12 @@ class DicomStoreIamBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    condition = registerOutput<DicomStoreIamBindingCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DicomStoreIamBindingCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    condition = registerOutput<DicomStoreIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DicomStoreIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dicomStoreId = registerOutput<String>('dicomStoreId');
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');

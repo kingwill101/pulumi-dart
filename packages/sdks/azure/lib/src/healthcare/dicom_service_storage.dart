@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DicomServiceStorage {
   /// The filesystem name of connected storage account. Changing this forces a new Healthcare DICOM Service to be created.
   final pulumi.Input<String> fileSystemName;
-
   /// The resource ID of connected storage account. Changing this forces a new Healthcare DICOM Service to be created.
   ///
   /// &gt; **Note:** The `is_hns_enabled` needs to be set to `true` for the storage account to be used with the Healthcare DICOM Service.
@@ -29,9 +28,8 @@ class DicomServiceStorage {
   factory DicomServiceStorage.fromMap(Map<String, dynamic> map) {
     return DicomServiceStorage(
       fileSystemName: pulumi.Input.fromValue(map['fileSystemName'] as String),
-      storageAccountId: pulumi.Input.fromValue(
-        map['storageAccountId'] as String,
-      ),
+      storageAccountId: pulumi.Input.fromValue(map['storageAccountId'] as String),
     );
   }
 }
+

@@ -191,42 +191,30 @@ class ElasticSan extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** When updating `base_size_in_tib`, the new value should be greater than the existing one.
   late final pulumi.Output<int> baseSizeInTib;
-
   /// Specifies the extended size of the Elastic SAN resource in TiB. Possible values are between `1` and `100`.
   ///
   /// &gt; **Note:** `extended_size_in_tib` cannot be removed and when updating, the new value should be greater than the existing one.
   late final pulumi.Output<int?> extendedSizeInTib;
-
   /// The Azure Region where the Elastic SAN resource should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of this Elastic SAN resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the Resource Group within which this Elastic SAN resource should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `sku` block as defined below.
   late final pulumi.Output<ElasticSanSku> sku;
-
   /// A mapping of tags which should be assigned to the Elastic SAN resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Total Provisioned IOps of the Elastic SAN resource.
   late final pulumi.Output<int> totalIops;
-
   /// Total Provisioned MBps Elastic SAN resource.
   late final pulumi.Output<int> totalMbps;
-
   /// Total size of the Elastic SAN resource in TB.
   late final pulumi.Output<int> totalSizeInTib;
-
   /// Total size of the provisioned Volumes in GiB.
   late final pulumi.Output<int> totalVolumeSizeInGib;
-
   /// Total number of volume groups in this Elastic SAN resource.
   late final pulumi.Output<int> volumeGroupCount;
-
   /// Logical zone for the Elastic SAN resource. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `zones` cannot be specified if `sku.name` is set to `Premium_ZRS`.
@@ -241,26 +229,17 @@ class ElasticSan extends pulumi.CustomResource {
     ElasticSanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:elasticsan/elasticSan:ElasticSan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:elasticsan/elasticSan:ElasticSan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     baseSizeInTib = registerOutput<int>('baseSizeInTib');
     extendedSizeInTib = registerOutput<int?>('extendedSizeInTib');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sku = registerOutput<ElasticSanSku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ElasticSanSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<ElasticSanSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticSanSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     totalIops = registerOutput<int>('totalIops');
     totalMbps = registerOutput<int>('totalMbps');
@@ -288,26 +267,17 @@ class ElasticSan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:elasticsan/elasticSan:ElasticSan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:elasticsan/elasticSan:ElasticSan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     baseSizeInTib = registerOutput<int>('baseSizeInTib');
     extendedSizeInTib = registerOutput<int?>('extendedSizeInTib');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sku = registerOutput<ElasticSanSku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ElasticSanSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<ElasticSanSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticSanSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     totalIops = registerOutput<int>('totalIops');
     totalMbps = registerOutput<int>('totalMbps');

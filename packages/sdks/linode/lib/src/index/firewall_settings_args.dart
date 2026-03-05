@@ -13,29 +13,20 @@ class FirewallSettingsArgs {
 
   /// Creates a new [FirewallSettingsArgs].
   /// [defaultFirewallIds] A map of default firewall IDs for various interfaces.
-  FirewallSettingsArgs({this.defaultFirewallIds});
+  FirewallSettingsArgs({
+    this.defaultFirewallIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultFirewallIds':
-          ?pulumi.Input.mapOptionalInputValue<
-            FirewallSettingsDefaultFirewallIds,
-            Map<String, dynamic>
-          >(defaultFirewallIds, (value) => value.toMap()),
+      'defaultFirewallIds': ?pulumi.Input.mapOptionalInputValue<FirewallSettingsDefaultFirewallIds, Map<String, dynamic>>(defaultFirewallIds, (value) => value.toMap()),
     };
   }
 
   factory FirewallSettingsArgs.fromMap(Map<String, dynamic> map) {
     return FirewallSettingsArgs(
-      defaultFirewallIds: (() {
-        final guardedValue = map['defaultFirewallIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FirewallSettingsDefaultFirewallIds.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      defaultFirewallIds: (() { final guardedValue = map['defaultFirewallIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallSettingsDefaultFirewallIds.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -40,11 +40,7 @@ class GetEcsStorageCapacityUnitsResult {
       'names': names,
       'outputFile': ?outputFile,
       'status': ?status,
-      'units':
-          pulumi.Input.encodeList<
-            GetEcsStorageCapacityUnitsUnit,
-            Map<String, dynamic>
-          >(units, (value) => value.toMap()),
+      'units': pulumi.Input.encodeList<GetEcsStorageCapacityUnitsUnit, Map<String, dynamic>>(units, (value) => value.toMap()),
     };
   }
 
@@ -52,28 +48,12 @@ class GetEcsStorageCapacityUnitsResult {
     return GetEcsStorageCapacityUnitsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      units: pulumi.Input.decodeList<GetEcsStorageCapacityUnitsUnit>(
-        map['units']!,
-        (value) => GetEcsStorageCapacityUnitsUnit.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      units: pulumi.Input.decodeList<GetEcsStorageCapacityUnitsUnit>(map['units']!, (value) => GetEcsStorageCapacityUnitsUnit.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

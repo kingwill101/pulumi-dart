@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomLocationPropertiesAuthentication {
   /// The type of the Custom Locations authentication
   final pulumi.Input<String>? type;
-
   /// The kubeconfig value.
   final pulumi.Input<String>? value;
 
   /// Creates a new [CustomLocationPropertiesAuthentication].
   /// [type] The type of the Custom Locations authentication
   /// [value] The kubeconfig value.
-  CustomLocationPropertiesAuthentication({this.type, this.value});
+  CustomLocationPropertiesAuthentication({
+    this.type,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type, 'value': ?value};
+    return <String, dynamic>{
+      'type': ?type,
+      'value': ?value,
+    };
   }
 
-  factory CustomLocationPropertiesAuthentication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomLocationPropertiesAuthentication.fromMap(Map<String, dynamic> map) {
     return CustomLocationPropertiesAuthentication(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

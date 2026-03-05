@@ -12,23 +12,17 @@ class ResourceRecordSetDnsV1beta2Args {
   final pulumi.Input<String>? clientOperationId;
   final pulumi.Input<String>? kind;
   final pulumi.Input<String> managedZone;
-
   /// For example, www.example.com.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
-
   /// Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
   final pulumi.Input<RRSetRoutingPolicyDnsV1beta2>? routingPolicy;
-
   /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
   final pulumi.Input<List<String>>? rrdatas;
-
   /// As defined in RFC 4034 (section 3.2).
   final pulumi.Input<List<String>>? signatureRrdatas;
-
   /// Number of seconds that this ResourceRecordSet can be cached by resolvers.
   final pulumi.Input<int>? ttl;
-
   /// The identifier of a supported record type. See the list of Supported DNS record types.
   final pulumi.Input<String>? type;
 
@@ -63,11 +57,7 @@ class ResourceRecordSetDnsV1beta2Args {
       'managedZone': managedZone,
       'name': ?name,
       'project': ?project,
-      'routingPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            RRSetRoutingPolicyDnsV1beta2,
-            Map<String, dynamic>
-          >(routingPolicy, (value) => value.toMap()),
+      'routingPolicy': ?pulumi.Input.mapOptionalInputValue<RRSetRoutingPolicyDnsV1beta2, Map<String, dynamic>>(routingPolicy, (value) => value.toMap()),
       'rrdatas': ?rrdatas,
       'signatureRrdatas': ?signatureRrdatas,
       'ttl': ?ttl,
@@ -77,56 +67,17 @@ class ResourceRecordSetDnsV1beta2Args {
 
   factory ResourceRecordSetDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return ResourceRecordSetDnsV1beta2Args(
-      clientOperationId: (() {
-        final guardedValue = map['clientOperationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientOperationId: (() { final guardedValue = map['clientOperationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedZone: pulumi.Input.fromValue(map['managedZone'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routingPolicy: (() {
-        final guardedValue = map['routingPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RRSetRoutingPolicyDnsV1beta2.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      rrdatas: (() {
-        final guardedValue = map['rrdatas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      signatureRrdatas: (() {
-        final guardedValue = map['signatureRrdatas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      ttl: (() {
-        final guardedValue = map['ttl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routingPolicy: (() { final guardedValue = map['routingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RRSetRoutingPolicyDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      rrdatas: (() { final guardedValue = map['rrdatas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      signatureRrdatas: (() { final guardedValue = map['signatureRrdatas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

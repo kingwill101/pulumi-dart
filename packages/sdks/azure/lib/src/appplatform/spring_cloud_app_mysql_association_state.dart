@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudAppMysqlAssociationState {
   /// Specifies the name of the MySQL Database which the Spring Cloud App should be associated with.
   final pulumi.Input<String>? databaseName;
-
   /// Specifies the ID of the MySQL Server. Changing this forces a new resource to be created.
   final pulumi.Input<String>? mysqlServerId;
-
   /// Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the password which should be used when connecting to the MySQL Database from the Spring Cloud App.
   final pulumi.Input<String>? password;
-
   /// Specifies the ID of the Spring Cloud Application where this Association is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? springCloudAppId;
-
   /// Specifies the username which should be used when connecting to the MySQL Database from the Spring Cloud App.
   final pulumi.Input<String>? username;
 
@@ -49,40 +44,15 @@ class SpringCloudAppMysqlAssociationState {
     };
   }
 
-  factory SpringCloudAppMysqlAssociationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpringCloudAppMysqlAssociationState.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppMysqlAssociationState(
-      databaseName: (() {
-        final guardedValue = map['databaseName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mysqlServerId: (() {
-        final guardedValue = map['mysqlServerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      springCloudAppId: (() {
-        final guardedValue = map['springCloudAppId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mysqlServerId: (() { final guardedValue = map['mysqlServerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      springCloudAppId: (() { final guardedValue = map['springCloudAppId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

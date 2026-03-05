@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PriorityMixPolicy {
   /// The base number of regular priority VMs that will be created in this scale set as it scales out.
   final pulumi.Input<int>? baseRegularPriorityCount;
-
   /// The percentage of VM instances, after the base regular priority count has been reached, that are expected to use regular priority.
   final pulumi.Input<int>? regularPriorityPercentageAboveBase;
 
@@ -27,16 +26,9 @@ class PriorityMixPolicy {
 
   factory PriorityMixPolicy.fromMap(Map<String, dynamic> map) {
     return PriorityMixPolicy(
-      baseRegularPriorityCount: (() {
-        final guardedValue = map['baseRegularPriorityCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      regularPriorityPercentageAboveBase: (() {
-        final guardedValue = map['regularPriorityPercentageAboveBase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      baseRegularPriorityCount: (() { final guardedValue = map['baseRegularPriorityCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      regularPriorityPercentageAboveBase: (() { final guardedValue = map['regularPriorityPercentageAboveBase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum ModelingFrequency {
     throw ArgumentError('Unknown ModelingFrequency value: $value');
   }
 }
+

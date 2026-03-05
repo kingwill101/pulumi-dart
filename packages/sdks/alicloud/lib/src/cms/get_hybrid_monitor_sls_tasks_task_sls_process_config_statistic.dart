@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
   final pulumi.Input<String> alias;
   final pulumi.Input<String> function;
-
   /// The value of the function that is used to aggregate logs imported from Log Service.
   final pulumi.Input<String> parameterOne;
-
   /// The value of the function that is used to aggregate logs imported from Log Service.
   final pulumi.Input<String> parameterTwo;
   final pulumi.Input<String> slsKeyName;
@@ -37,9 +35,7 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
     };
   }
 
-  factory GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic.fromMap(Map<String, dynamic> map) {
     return GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic(
       alias: pulumi.Input.fromValue(map['alias'] as String),
       function: pulumi.Input.fromValue(map['function'] as String),
@@ -49,3 +45,4 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
     );
   }
 }
+

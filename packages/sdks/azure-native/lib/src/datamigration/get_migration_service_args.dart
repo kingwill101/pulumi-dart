@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMigrationServiceArgs {
   /// Name of the Migration Service.
   final pulumi.Input<String> migrationServiceName;
-
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetMigrationServiceArgs {
 
   factory GetMigrationServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetMigrationServiceArgs(
-      migrationServiceName: pulumi.Input.fromValue(
-        map['migrationServiceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      migrationServiceName: pulumi.Input.fromValue(map['migrationServiceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

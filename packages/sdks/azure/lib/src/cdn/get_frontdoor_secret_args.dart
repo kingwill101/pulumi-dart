@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFrontdoorSecretArgs {
   /// Specifies the name of the Front Door Secret.
   final pulumi.Input<String> name;
-
   /// The name of the Front Door Profile within which the Front Door Secret exists.
   final pulumi.Input<String> profileName;
-
   /// The name of the Resource Group where the Front Door Profile exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetFrontdoorSecretArgs {
     return GetFrontdoorSecretArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
       profileName: pulumi.Input.fromValue(map['profileName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

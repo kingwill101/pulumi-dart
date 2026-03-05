@@ -5,37 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretsSecret {
   /// (Available since v1.124.0) A mapping of tags to assign to the resource.
   final pulumi.Input<String> arn;
-
   /// (Available since v1.124.0)  The description of the secret.
   final pulumi.Input<String> description;
-
   /// (Available since v1.124.0)  The ID of the KMS CMK that is used to encrypt the secret value.
   final pulumi.Input<String> encryptionKeyId;
-
   /// ID of the Kms Secret. The value is same as KMS secret_name.
   final pulumi.Input<String> id;
-
   /// Schedule deletion time.
   final pulumi.Input<String> plannedDeleteTime;
-
   /// (Available since v1.124.0)  The value of the secret that you want to create.
   final pulumi.Input<String> secretData;
-
   /// (Available since v1.124.0)  The type of the secret data value.
   final pulumi.Input<String> secretDataType;
-
   /// Name of the KMS Secret.
   final pulumi.Input<String> secretName;
-
   /// (Available since v1.124.0)  The type of the secret.
   final pulumi.Input<String> secretType;
-
   /// A mapping of tags to assign to the resource, and can be used to filter secrets.
   final pulumi.Input<Map<String, String>> tags;
-
   /// (Available since v1.124.0)  The version number of the initial version.
   final pulumi.Input<String> versionId;
-
   /// (Available since v1.124.0)  The stage labels that mark the new secret version.
   final pulumi.Input<List<String>> versionStages;
 
@@ -90,18 +79,15 @@ class GetSecretsSecret {
       description: pulumi.Input.fromValue(map['description'] as String),
       encryptionKeyId: pulumi.Input.fromValue(map['encryptionKeyId'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      plannedDeleteTime: pulumi.Input.fromValue(
-        map['plannedDeleteTime'] as String,
-      ),
+      plannedDeleteTime: pulumi.Input.fromValue(map['plannedDeleteTime'] as String),
       secretData: pulumi.Input.fromValue(map['secretData'] as String),
       secretDataType: pulumi.Input.fromValue(map['secretDataType'] as String),
       secretName: pulumi.Input.fromValue(map['secretName'] as String),
       secretType: pulumi.Input.fromValue(map['secretType'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       versionId: pulumi.Input.fromValue(map['versionId'] as String),
-      versionStages: pulumi.Input.fromValue(
-        (map['versionStages'] as List).cast<String>(),
-      ),
+      versionStages: pulumi.Input.fromValue((map['versionStages'] as List).cast<String>()),
     );
   }
 }
+

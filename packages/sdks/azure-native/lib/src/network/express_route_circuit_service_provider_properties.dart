@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressRouteCircuitServiceProviderProperties {
   /// The BandwidthInMbps.
   final pulumi.Input<int>? bandwidthInMbps;
-
   /// The peering location.
   final pulumi.Input<String>? peeringLocation;
-
   /// The serviceProviderName.
   final pulumi.Input<String>? serviceProviderName;
 
@@ -31,25 +29,12 @@ class ExpressRouteCircuitServiceProviderProperties {
     };
   }
 
-  factory ExpressRouteCircuitServiceProviderProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExpressRouteCircuitServiceProviderProperties.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitServiceProviderProperties(
-      bandwidthInMbps: (() {
-        final guardedValue = map['bandwidthInMbps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      peeringLocation: (() {
-        final guardedValue = map['peeringLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceProviderName: (() {
-        final guardedValue = map['serviceProviderName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bandwidthInMbps: (() { final guardedValue = map['bandwidthInMbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      peeringLocation: (() { final guardedValue = map['peeringLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceProviderName: (() { final guardedValue = map['serviceProviderName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

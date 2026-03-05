@@ -21,14 +21,11 @@ class GetVpcFirewallCensCenLocalVpcEniList {
     };
   }
 
-  factory GetVpcFirewallCensCenLocalVpcEniList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVpcFirewallCensCenLocalVpcEniList.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallCensCenLocalVpcEniList(
       eniId: pulumi.Input.fromValue(map['eniId'] as String),
-      eniPrivateIpAddress: pulumi.Input.fromValue(
-        map['eniPrivateIpAddress'] as String,
-      ),
+      eniPrivateIpAddress: pulumi.Input.fromValue(map['eniPrivateIpAddress'] as String),
     );
   }
 }
+

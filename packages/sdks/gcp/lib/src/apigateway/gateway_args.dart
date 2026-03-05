@@ -11,23 +11,18 @@ class GatewayArgs {
   /// When changing api configs please ensure the new config is a new resource and the
   /// lifecycle rule `create_before_destroy` is set.
   final pulumi.Input<String> apiConfig;
-
   /// A user-visible name for the API.
   final pulumi.Input<String>? displayName;
-
   /// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
   final pulumi.Input<String> gatewayId;
-
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region of the gateway for the API.
   final pulumi.Input<String>? region;
 
@@ -61,29 +56,12 @@ class GatewayArgs {
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
       apiConfig: pulumi.Input.fromValue(map['apiConfig'] as String),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

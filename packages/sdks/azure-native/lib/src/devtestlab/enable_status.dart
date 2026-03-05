@@ -15,3 +15,4 @@ enum EnableStatus {
     throw ArgumentError('Unknown EnableStatus value: $value');
   }
 }
+

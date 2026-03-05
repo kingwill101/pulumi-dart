@@ -13,8 +13,7 @@ enum ApiConfigHandlerAuthFailActionAppengineV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ApiConfigHandlerAuthFailActionAppengineV1beta value: $value',
-    );
+    throw ArgumentError('Unknown ApiConfigHandlerAuthFailActionAppengineV1beta value: $value');
   }
 }
+

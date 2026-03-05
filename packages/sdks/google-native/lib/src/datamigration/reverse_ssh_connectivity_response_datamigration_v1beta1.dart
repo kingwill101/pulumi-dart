@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReverseSshConnectivityResponseDatamigrationV1beta1 {
   /// The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
   final pulumi.Input<String> vm;
-
   /// The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
   final pulumi.Input<String> vmIp;
-
   /// The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
   final pulumi.Input<int> vmPort;
-
   /// The name of the VPC to peer with the Cloud SQL private network.
   final pulumi.Input<String> vpc;
 
@@ -37,9 +34,7 @@ class ReverseSshConnectivityResponseDatamigrationV1beta1 {
     };
   }
 
-  factory ReverseSshConnectivityResponseDatamigrationV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReverseSshConnectivityResponseDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
     return ReverseSshConnectivityResponseDatamigrationV1beta1(
       vm: pulumi.Input.fromValue(map['vm'] as String),
       vmIp: pulumi.Input.fromValue(map['vmIp'] as String),
@@ -48,3 +43,4 @@ class ReverseSshConnectivityResponseDatamigrationV1beta1 {
     );
   }
 }
+

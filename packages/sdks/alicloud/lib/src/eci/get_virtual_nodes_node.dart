@@ -6,53 +6,37 @@ import 'get_virtual_nodes_node_event.dart';
 class GetVirtualNodesNode {
   /// The Number of CPU.
   final pulumi.Input<int> cpu;
-
   /// The creation time of the virtual node.
   final pulumi.Input<String> createTime;
-
   /// The ENI instance ID.
   final pulumi.Input<String> eniInstanceId;
-
   /// The event list.
   final pulumi.Input<List<GetVirtualNodesNodeEvent>> events;
-
   /// The ID of the Virtual Node.
   final pulumi.Input<String> id;
-
   /// The IP address of a public network.
   final pulumi.Input<String> internetIp;
-
   /// The private IP address of the RDS instance.
   final pulumi.Input<String> intranetIp;
-
   /// The memory size.
   final pulumi.Input<int> memory;
-
   /// The ram role.
   final pulumi.Input<String> ramRoleName;
-
   /// The resource group ID.
   final pulumi.Input<String> resourceGroupId;
-
   /// The security group ID.
   final pulumi.Input<String> securityGroupId;
-
   /// The Status of the virtual node.
   final pulumi.Input<String> status;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// Of the virtual node number.
   final pulumi.Input<String> virtualNodeId;
-
   /// The name of the virtual node.
   final pulumi.Input<String> virtualNodeName;
   final pulumi.Input<String> vpcId;
-
   /// The vswitch id.
   final pulumi.Input<String> vswitchId;
-
   /// The Zone.
   final pulumi.Input<String> zoneId;
 
@@ -101,18 +85,7 @@ class GetVirtualNodesNode {
       'cpu': cpu,
       'createTime': createTime,
       'eniInstanceId': eniInstanceId,
-      'events':
-          pulumi.Input.mapInputValue<
-            List<GetVirtualNodesNodeEvent>,
-            List<Map<String, dynamic>>
-          >(
-            events,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetVirtualNodesNodeEvent,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'events': pulumi.Input.mapInputValue<List<GetVirtualNodesNodeEvent>, List<Map<String, dynamic>>>(events, (value) => pulumi.Input.encodeList<GetVirtualNodesNodeEvent, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'internetIp': internetIp,
       'intranetIp': intranetIp,
@@ -135,14 +108,7 @@ class GetVirtualNodesNode {
       cpu: pulumi.Input.fromValue(map['cpu'] as int),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       eniInstanceId: pulumi.Input.fromValue(map['eniInstanceId'] as String),
-      events: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetVirtualNodesNodeEvent>(
-          map['events']!,
-          (value) => GetVirtualNodesNodeEvent.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      events: pulumi.Input.fromValue(pulumi.Input.decodeList<GetVirtualNodesNodeEvent>(map['events']!, (value) => GetVirtualNodesNodeEvent.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),
       internetIp: pulumi.Input.fromValue(map['internetIp'] as String),
       intranetIp: pulumi.Input.fromValue(map['intranetIp'] as String),
@@ -160,3 +126,4 @@ class GetVirtualNodesNode {
     );
   }
 }
+

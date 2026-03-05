@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Hierarchy {
   /// Description of Hierarchy
   final pulumi.Input<String> description;
-
   /// Name of Hierarchy
   final pulumi.Input<String> name;
 
   /// Creates a new [Hierarchy].
   /// [description] Description of Hierarchy
   /// [name] Name of Hierarchy
-  Hierarchy({required this.description, required this.name});
+  Hierarchy({
+    required this.description,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'description': description, 'name': name};
+    return <String, dynamic>{
+      'description': description,
+      'name': name,
+    };
   }
 
   factory Hierarchy.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class Hierarchy {
     );
   }
 }
+

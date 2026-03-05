@@ -781,91 +781,67 @@ class Backup extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// The ID of the alloydb backup.
   late final pulumi.Output<String> backupId;
-
   /// The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
   late final pulumi.Output<String> clusterName;
-
   /// Output only. The system-generated UID of the cluster which was used to create this resource.
   late final pulumi.Output<String> clusterUid;
-
   /// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
-
   /// Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> deleteTime;
-
   /// User-provided description of the backup.
   late final pulumi.Output<String?> description;
-
   /// User-settable and human-readable display name for the Backup.
   late final pulumi.Output<String?> displayName;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
   /// Structure is documented below.
   late final pulumi.Output<BackupEncryptionConfig?> encryptionConfig;
-
   /// EncryptionInfo describes the encryption information of a cluster or a backup.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> encryptionInfos;
-
   /// For Resource freshness validation (https://google.aip.dev/154)
   late final pulumi.Output<String> etag;
-
   /// Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
   /// Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> expiryQuantities;
-
   /// Output only. The time at which after the backup is eligible to be garbage collected.
   /// It is the duration specified by the backup's retention policy, added to the backup's createTime.
   late final pulumi.Output<String> expiryTime;
-
   /// User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location where the alloydb backup should reside.
   late final pulumi.Output<String> location;
-
   /// Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
   /// This can happen due to user-triggered updates or system actions like failover or maintenance.
   late final pulumi.Output<bool> reconciling;
-
   /// Output only. The size of the backup in bytes.
   late final pulumi.Output<String> sizeBytes;
-
   /// Output only. The current state of the backup.
   late final pulumi.Output<String> state;
-
   /// The backup type, which suggests the trigger for the backup.
   /// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
   late final pulumi.Output<String> type;
-
   /// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
   late final pulumi.Output<String> uid;
-
   /// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> updateTime;
@@ -874,13 +850,16 @@ class Backup extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Backup]. {@macro pulumi_alloydb_backup_backup_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Backup(String name, {BackupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:alloydb/backup:Backup',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Backup(
+    String name, {
+    BackupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:alloydb/backup:Backup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     backupId = registerOutput<String>('backupId');
     clusterName = registerOutput<String>('clusterName');
@@ -889,27 +868,12 @@ class Backup extends pulumi.CustomResource {
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    encryptionConfig = registerOutput<BackupEncryptionConfig?>(
-      'encryptionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupEncryptionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptionInfos = registerOutput<List<Map<String, dynamic>>>(
-      'encryptionInfos',
-    );
+    encryptionConfig = registerOutput<BackupEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionInfos = registerOutput<List<Map<String, dynamic>>>('encryptionInfos');
     etag = registerOutput<String>('etag');
-    expiryQuantities = registerOutput<List<Map<String, dynamic>>>(
-      'expiryQuantities',
-    );
+    expiryQuantities = registerOutput<List<Map<String, dynamic>>>('expiryQuantities');
     expiryTime = registerOutput<String>('expiryTime');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
@@ -942,11 +906,11 @@ class Backup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:alloydb/backup:Backup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:alloydb/backup:Backup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     backupId = registerOutput<String>('backupId');
     clusterName = registerOutput<String>('clusterName');
@@ -955,27 +919,12 @@ class Backup extends pulumi.CustomResource {
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    encryptionConfig = registerOutput<BackupEncryptionConfig?>(
-      'encryptionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupEncryptionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptionInfos = registerOutput<List<Map<String, dynamic>>>(
-      'encryptionInfos',
-    );
+    encryptionConfig = registerOutput<BackupEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionInfos = registerOutput<List<Map<String, dynamic>>>('encryptionInfos');
     etag = registerOutput<String>('etag');
-    expiryQuantities = registerOutput<List<Map<String, dynamic>>>(
-      'expiryQuantities',
-    );
+    expiryQuantities = registerOutput<List<Map<String, dynamic>>>('expiryQuantities');
     expiryTime = registerOutput<String>('expiryTime');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');

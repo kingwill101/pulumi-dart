@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDiscoveryengineV1betaConversationContext {
   /// The current active document the user opened. It contains the document resource reference.
   final pulumi.Input<String>? activeDocument;
-
   /// The current list of documents the user is seeing. It contains the document resource references.
   final pulumi.Input<List<String>>? contextDocuments;
 
@@ -25,20 +24,11 @@ class GoogleCloudDiscoveryengineV1betaConversationContext {
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1betaConversationContext.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDiscoveryengineV1betaConversationContext.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1betaConversationContext(
-      activeDocument: (() {
-        final guardedValue = map['activeDocument'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contextDocuments: (() {
-        final guardedValue = map['contextDocuments'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      activeDocument: (() { final guardedValue = map['activeDocument']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contextDocuments: (() { final guardedValue = map['contextDocuments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

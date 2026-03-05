@@ -312,13 +312,10 @@ import 'alert_rule_threat_intelligence_state.dart';
 class AlertRuleThreatIntelligence extends pulumi.CustomResource {
   /// The GUID of the alert rule template which is used for this Sentinel Threat Intelligence Alert Rule. Changing this forces a new Sentinel Threat Intelligence Alert Rule to be created.
   late final pulumi.Output<String> alertRuleTemplateGuid;
-
   /// Whether the Threat Intelligence Alert rule enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// The ID of the Log Analytics Workspace this Sentinel Threat Intelligence Alert Rule belongs to. Changing this forces a new Sentinel Threat Intelligence Alert Rule to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
-
   /// The name which should be used for this Sentinel Threat Intelligence Alert Rule. Changing this forces a new Sentinel Threat Intelligence Alert Rule to be created.
   late final pulumi.Output<String> name;
 
@@ -331,11 +328,11 @@ class AlertRuleThreatIntelligence extends pulumi.CustomResource {
     AlertRuleThreatIntelligenceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/alertRuleThreatIntelligence:AlertRuleThreatIntelligence',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/alertRuleThreatIntelligence:AlertRuleThreatIntelligence',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
     enabled = registerOutput<bool?>('enabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
@@ -360,11 +357,11 @@ class AlertRuleThreatIntelligence extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/alertRuleThreatIntelligence:AlertRuleThreatIntelligence',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/alertRuleThreatIntelligence:AlertRuleThreatIntelligence',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
     enabled = registerOutput<bool?>('enabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');

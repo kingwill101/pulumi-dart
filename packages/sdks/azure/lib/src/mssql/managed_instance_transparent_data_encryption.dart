@@ -1158,7 +1158,6 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 class ManagedInstanceTransparentDataEncryption extends pulumi.CustomResource {
   /// When enabled, the SQL Managed Instance will continuously check the key vault for any new versions of the key being used as the TDE protector. If a new version of the key is detected, the TDE protector on the SQL Managed Instance will be automatically rotated to the latest key version within 60 minutes.
   late final pulumi.Output<bool?> autoRotationEnabled;
-
   /// To use customer managed keys from Azure Key Vault, provide the AKV Key ID. To use service managed keys, omit this field.
   ///
   /// &gt; **Note:** In order to use customer managed keys, the identity of the MSSQL Managed Instance must have the following permissions on the key vault: 'get', 'wrapKey' and 'unwrapKey'
@@ -1166,7 +1165,6 @@ class ManagedInstanceTransparentDataEncryption extends pulumi.CustomResource {
   /// &gt; **Note:** If `managed_instance_id` denotes a secondary instance deployed for disaster recovery purposes, then the `key_vault_key_id` should be the same key used for the primary instance's transparent data encryption. Both primary and secondary instances should be encrypted with same key material.
   late final pulumi.Output<String?> keyVaultKeyId;
   late final pulumi.Output<String?> managedHsmKeyId;
-
   /// Specifies the name of the MS SQL Managed Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedInstanceId;
 
@@ -1179,11 +1177,11 @@ class ManagedInstanceTransparentDataEncryption extends pulumi.CustomResource {
     ManagedInstanceTransparentDataEncryptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/managedInstanceTransparentDataEncryption:ManagedInstanceTransparentDataEncryption',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/managedInstanceTransparentDataEncryption:ManagedInstanceTransparentDataEncryption',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRotationEnabled = registerOutput<bool?>('autoRotationEnabled');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
@@ -1208,11 +1206,11 @@ class ManagedInstanceTransparentDataEncryption extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/managedInstanceTransparentDataEncryption:ManagedInstanceTransparentDataEncryption',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/managedInstanceTransparentDataEncryption:ManagedInstanceTransparentDataEncryption',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRotationEnabled = registerOutput<bool?>('autoRotationEnabled');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');

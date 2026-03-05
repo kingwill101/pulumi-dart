@@ -12,10 +12,14 @@ class GetAccessKeysArgs {
 
   /// Creates a new [GetAccessKeysArgs].
   /// [user] Name of the IAM user associated with the access keys.
-  GetAccessKeysArgs({required this.user});
+  GetAccessKeysArgs({
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'user': user};
+    return <String, dynamic>{
+      'user': user,
+    };
   }
 
   factory GetAccessKeysArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetAccessKeysArgs {
     );
   }
 }
+

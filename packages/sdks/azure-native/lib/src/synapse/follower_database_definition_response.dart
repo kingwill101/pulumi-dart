@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FollowerDatabaseDefinitionResponse {
   /// Resource name of the attached database configuration in the follower cluster.
   final pulumi.Input<String> attachedDatabaseConfigurationName;
-
   /// The database name owned by this cluster that was followed. * in case following all databases.
   final pulumi.Input<String> databaseName;
-
   /// Resource id of the cluster that follows a database owned by this cluster.
   final pulumi.Input<String> kustoPoolResourceId;
 
@@ -33,13 +31,10 @@ class FollowerDatabaseDefinitionResponse {
 
   factory FollowerDatabaseDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return FollowerDatabaseDefinitionResponse(
-      attachedDatabaseConfigurationName: pulumi.Input.fromValue(
-        map['attachedDatabaseConfigurationName'] as String,
-      ),
+      attachedDatabaseConfigurationName: pulumi.Input.fromValue(map['attachedDatabaseConfigurationName'] as String),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      kustoPoolResourceId: pulumi.Input.fromValue(
-        map['kustoPoolResourceId'] as String,
-      ),
+      kustoPoolResourceId: pulumi.Input.fromValue(map['kustoPoolResourceId'] as String),
     );
   }
 }
+

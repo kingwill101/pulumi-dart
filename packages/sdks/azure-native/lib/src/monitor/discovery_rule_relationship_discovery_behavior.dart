@@ -12,8 +12,7 @@ enum DiscoveryRuleRelationshipDiscoveryBehavior {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DiscoveryRuleRelationshipDiscoveryBehavior value: $value',
-    );
+    throw ArgumentError('Unknown DiscoveryRuleRelationshipDiscoveryBehavior value: $value');
   }
 }
+

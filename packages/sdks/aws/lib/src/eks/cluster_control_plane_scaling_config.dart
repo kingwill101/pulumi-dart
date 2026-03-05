@@ -8,19 +8,20 @@ class ClusterControlPlaneScalingConfig {
 
   /// Creates a new [ClusterControlPlaneScalingConfig].
   /// [tier] The control plane scaling tier. Valid values are `standard`, `tier-xl`, `tier-2xl`, or `tier-4xl`. Defaults to `standard`. For more information about each tier, see [EKS Provisioned Control Plane](https://docs.aws.amazon.com/eks/latest/userguide/eks-provisioned-control-plane-getting-started.html).
-  ClusterControlPlaneScalingConfig({this.tier});
+  ClusterControlPlaneScalingConfig({
+    this.tier,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tier': ?tier};
+    return <String, dynamic>{
+      'tier': ?tier,
+    };
   }
 
   factory ClusterControlPlaneScalingConfig.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneScalingConfig(
-      tier: (() {
-        final guardedValue = map['tier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,16 +9,13 @@ class GetUserResult {
   final String? accessString;
   final List<GetUserAuthenticationMode>? authenticationModes;
   final String? engine;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? noPasswordRequired;
   final List<String>? passwords;
   final String region;
-
   /// Identifier for the user.
   final String userId;
-
   /// User name of the user.
   final String? userName;
 
@@ -47,14 +44,7 @@ class GetUserResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessString': ?accessString,
-      'authenticationModes': ?(() {
-        final guardedValue = authenticationModes;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetUserAuthenticationMode,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'authenticationModes': ?(() { final guardedValue = authenticationModes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetUserAuthenticationMode, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'engine': ?engine,
       'id': id,
       'noPasswordRequired': ?noPasswordRequired,
@@ -67,44 +57,16 @@ class GetUserResult {
 
   factory GetUserResult.fromMap(Map<String, dynamic> map) {
     return GetUserResult(
-      accessString: (() {
-        final guardedValue = map['accessString'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      authenticationModes: (() {
-        final guardedValue = map['authenticationModes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetUserAuthenticationMode>(
-          guardedValue,
-          (value) => GetUserAuthenticationMode.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      engine: (() {
-        final guardedValue = map['engine'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      accessString: (() { final guardedValue = map['accessString']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      authenticationModes: (() { final guardedValue = map['authenticationModes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetUserAuthenticationMode>(guardedValue, (value) => GetUserAuthenticationMode.fromMap((value as Map).cast<String, dynamic>())); })(),
+      engine: (() { final guardedValue = map['engine']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      noPasswordRequired: (() {
-        final guardedValue = map['noPasswordRequired'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      passwords: (() {
-        final guardedValue = map['passwords'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      noPasswordRequired: (() { final guardedValue = map['noPasswordRequired']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      passwords: (() { final guardedValue = map['passwords']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       region: map['region'] as String,
       userId: map['userId'] as String,
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

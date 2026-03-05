@@ -12,8 +12,7 @@ enum TpmAttestationAuthenticationType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown TpmAttestationAuthenticationType value: $value',
-    );
+    throw ArgumentError('Unknown TpmAttestationAuthenticationType value: $value');
   }
 }
+

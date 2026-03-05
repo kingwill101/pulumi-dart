@@ -9,10 +9,14 @@ class ScopeLifecycleStateResponse {
 
   /// Creates a new [ScopeLifecycleStateResponse].
   /// [code] The current state of the scope resource.
-  ScopeLifecycleStateResponse({required this.code});
+  ScopeLifecycleStateResponse({
+    required this.code,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code};
+    return <String, dynamic>{
+      'code': code,
+    };
   }
 
   factory ScopeLifecycleStateResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ScopeLifecycleStateResponse {
     );
   }
 }
+

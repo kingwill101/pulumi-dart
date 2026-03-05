@@ -7,41 +7,30 @@ import 'get_security_group_rule_filter.dart';
 class GetSecurityGroupRuleResult {
   /// The Amazon Resource Name (ARN) of the security group rule.
   final String arn;
-
   /// The destination IPv4 CIDR range.
   final String cidrIpv4;
-
   /// The destination IPv6 CIDR range.
   final String cidrIpv6;
-
   /// The security group rule description.
   final String description;
   final List<GetSecurityGroupRuleFilter>? filters;
-
   /// The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type.
   final int fromPort;
   final String id;
-
   /// The IP protocol name or number. Use `-1` to specify all protocols.
   final String ipProtocol;
-
   /// Indicates whether the security group rule is an outbound rule.
   final bool isEgress;
-
   /// The ID of the destination prefix list.
   final String prefixListId;
-
   /// The destination security group that is referenced in the rule.
   final String referencedSecurityGroupId;
   final String region;
-
   /// The ID of the security group.
   final String securityGroupId;
   final String securityGroupRuleId;
-
   /// A map of tags assigned to the resource.
   final Map<String, String> tags;
-
   /// (Optional) The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
   final int toPort;
 
@@ -87,14 +76,7 @@ class GetSecurityGroupRuleResult {
       'cidrIpv4': cidrIpv4,
       'cidrIpv6': cidrIpv6,
       'description': description,
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetSecurityGroupRuleFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSecurityGroupRuleFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'fromPort': fromPort,
       'id': id,
       'ipProtocol': ipProtocol,
@@ -115,16 +97,7 @@ class GetSecurityGroupRuleResult {
       cidrIpv4: map['cidrIpv4'] as String,
       cidrIpv6: map['cidrIpv6'] as String,
       description: map['description'] as String,
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetSecurityGroupRuleFilter>(
-          guardedValue,
-          (value) => GetSecurityGroupRuleFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSecurityGroupRuleFilter>(guardedValue, (value) => GetSecurityGroupRuleFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       fromPort: map['fromPort'] as int,
       id: map['id'] as String,
       ipProtocol: map['ipProtocol'] as String,
@@ -139,3 +112,4 @@ class GetSecurityGroupRuleResult {
     );
   }
 }
+

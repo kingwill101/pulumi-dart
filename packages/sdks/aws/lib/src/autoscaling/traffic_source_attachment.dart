@@ -125,10 +125,8 @@ import 'traffic_source_attachment_traffic_source.dart';
 class TrafficSourceAttachment extends pulumi.CustomResource {
   /// The name of the Auto Scaling group.
   late final pulumi.Output<String> autoscalingGroupName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The unique identifiers of a traffic sources.
   late final pulumi.Output<TrafficSourceAttachmentTrafficSource?> trafficSource;
 
@@ -141,23 +139,14 @@ class TrafficSourceAttachment extends pulumi.CustomResource {
     TrafficSourceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:autoscaling/trafficSourceAttachment:TrafficSourceAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:autoscaling/trafficSourceAttachment:TrafficSourceAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     region = registerOutput<String>('region');
-    trafficSource = registerOutput<TrafficSourceAttachmentTrafficSource?>(
-      'trafficSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TrafficSourceAttachmentTrafficSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    trafficSource = registerOutput<TrafficSourceAttachmentTrafficSource?>('trafficSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficSourceAttachmentTrafficSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [TrafficSourceAttachment] resource's state with the given [name] and [id].
@@ -178,22 +167,13 @@ class TrafficSourceAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:autoscaling/trafficSourceAttachment:TrafficSourceAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:autoscaling/trafficSourceAttachment:TrafficSourceAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     region = registerOutput<String>('region');
-    trafficSource = registerOutput<TrafficSourceAttachmentTrafficSource?>(
-      'trafficSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TrafficSourceAttachmentTrafficSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    trafficSource = registerOutput<TrafficSourceAttachmentTrafficSource?>('trafficSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficSourceAttachmentTrafficSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

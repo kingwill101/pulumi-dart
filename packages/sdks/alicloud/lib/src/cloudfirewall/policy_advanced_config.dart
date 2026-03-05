@@ -22,11 +22,11 @@ class PolicyAdvancedConfig extends pulumi.CustomResource {
     PolicyAdvancedConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     internetSwitch = registerOutput<String>('internetSwitch');
   }
 
@@ -48,11 +48,11 @@ class PolicyAdvancedConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     internetSwitch = registerOutput<String>('internetSwitch');
   }
 }

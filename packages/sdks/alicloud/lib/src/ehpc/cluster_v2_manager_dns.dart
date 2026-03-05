@@ -16,24 +16,23 @@ class ClusterV2ManagerDns {
   /// Creates a new [ClusterV2ManagerDns].
   /// [type] The scheduler type. Valid values:
   /// [version] Optional.
-  ClusterV2ManagerDns({this.type, this.version});
+  ClusterV2ManagerDns({
+    this.type,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type, 'version': ?version};
+    return <String, dynamic>{
+      'type': ?type,
+      'version': ?version,
+    };
   }
 
   factory ClusterV2ManagerDns.fromMap(Map<String, dynamic> map) {
     return ClusterV2ManagerDns(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

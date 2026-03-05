@@ -8,13 +8,10 @@ import 'error_response.dart';
 class ConfigServerPropertiesResponse {
   /// Settings of config server.
   final pulumi.Input<ConfigServerSettingsResponse>? configServer;
-
   /// Enabled state of the config server. This is only used in Consumption tier.
   final pulumi.Input<String>? enabledState;
-
   /// Error when apply config server settings.
   final pulumi.Input<ErrorResponse>? error;
-
   /// State of the config server.
   final pulumi.Input<String> provisioningState;
 
@@ -32,47 +29,20 @@ class ConfigServerPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configServer':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigServerSettingsResponse,
-            Map<String, dynamic>
-          >(configServer, (value) => value.toMap()),
+      'configServer': ?pulumi.Input.mapOptionalInputValue<ConfigServerSettingsResponse, Map<String, dynamic>>(configServer, (value) => value.toMap()),
       'enabledState': ?enabledState,
-      'error':
-          ?pulumi.Input.mapOptionalInputValue<
-            ErrorResponse,
-            Map<String, dynamic>
-          >(error, (value) => value.toMap()),
+      'error': ?pulumi.Input.mapOptionalInputValue<ErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
   factory ConfigServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConfigServerPropertiesResponse(
-      configServer: (() {
-        final guardedValue = map['configServer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigServerSettingsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      enabledState: (() {
-        final guardedValue = map['enabledState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      error: (() {
-        final guardedValue = map['error'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      configServer: (() { final guardedValue = map['configServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigServerSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

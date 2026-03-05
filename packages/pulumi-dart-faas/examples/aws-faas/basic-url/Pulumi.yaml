@@ -1,0 +1,6 @@
+name: aws-faas-basic-url
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Basic AWS Lambda Dart function using image source and Function URL.

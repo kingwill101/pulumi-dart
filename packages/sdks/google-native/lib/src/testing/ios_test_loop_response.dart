@@ -7,10 +7,8 @@ import 'file_reference_response.dart';
 class IosTestLoopResponse {
   /// The bundle id for the application under test.
   final pulumi.Input<String> appBundleId;
-
   /// The .ipa of the application to test.
   final pulumi.Input<FileReferenceResponse> appIpa;
-
   /// The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
   final pulumi.Input<List<int>> scenarios;
 
@@ -27,11 +25,7 @@ class IosTestLoopResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appBundleId': appBundleId,
-      'appIpa':
-          pulumi.Input.mapInputValue<
-            FileReferenceResponse,
-            Map<String, dynamic>
-          >(appIpa, (value) => value.toMap()),
+      'appIpa': pulumi.Input.mapInputValue<FileReferenceResponse, Map<String, dynamic>>(appIpa, (value) => value.toMap()),
       'scenarios': scenarios,
     };
   }
@@ -39,12 +33,9 @@ class IosTestLoopResponse {
   factory IosTestLoopResponse.fromMap(Map<String, dynamic> map) {
     return IosTestLoopResponse(
       appBundleId: pulumi.Input.fromValue(map['appBundleId'] as String),
-      appIpa: pulumi.Input.fromValue(
-        FileReferenceResponse.fromMap(
-          (map['appIpa']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      appIpa: pulumi.Input.fromValue(FileReferenceResponse.fromMap((map['appIpa']! as Map).cast<String, dynamic>())),
       scenarios: pulumi.Input.fromValue((map['scenarios'] as List).cast<int>()),
     );
   }
 }
+

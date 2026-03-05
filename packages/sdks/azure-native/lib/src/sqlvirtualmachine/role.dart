@@ -15,3 +15,4 @@ enum Role {
     throw ArgumentError('Unknown Role value: $value');
   }
 }
+

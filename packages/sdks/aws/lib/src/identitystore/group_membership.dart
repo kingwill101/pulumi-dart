@@ -239,16 +239,12 @@ import 'group_membership_state.dart';
 class GroupMembership extends pulumi.CustomResource {
   /// The identifier for a group in the Identity Store.
   late final pulumi.Output<String> groupId;
-
   /// Identity Store ID associated with the Single Sign-On Instance.
   late final pulumi.Output<String> identityStoreId;
-
   /// The identifier for a user in the Identity Store.
   late final pulumi.Output<String> memberId;
-
   /// The identifier of the newly created group membership in the Identity Store.
   late final pulumi.Output<String> membershipId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -261,11 +257,11 @@ class GroupMembership extends pulumi.CustomResource {
     GroupMembershipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:identitystore/groupMembership:GroupMembership',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:identitystore/groupMembership:GroupMembership',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupId = registerOutput<String>('groupId');
     identityStoreId = registerOutput<String>('identityStoreId');
     memberId = registerOutput<String>('memberId');
@@ -291,11 +287,11 @@ class GroupMembership extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:identitystore/groupMembership:GroupMembership',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:identitystore/groupMembership:GroupMembership',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupId = registerOutput<String>('groupId');
     identityStoreId = registerOutput<String>('identityStoreId');
     memberId = registerOutput<String>('memberId');

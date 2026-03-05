@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigsConfig {
   /// Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
   final pulumi.Input<String> code;
-
   /// Configure the Number.
   final pulumi.Input<String> configId;
-
   /// Default Value.
   final pulumi.Input<String> defaultValue;
-
   /// Abnormal Alarm General Description of the Configuration Item.
   final pulumi.Input<String> description;
-
   /// The ID of the Config.
   final pulumi.Input<String> id;
-
   /// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
   final pulumi.Input<String> value;
 
@@ -59,3 +54,4 @@ class GetConfigsConfig {
     );
   }
 }
+

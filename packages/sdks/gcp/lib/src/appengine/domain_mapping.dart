@@ -151,25 +151,20 @@ import 'domain_mapping_state.dart';
 class DomainMapping extends pulumi.CustomResource {
   /// Relative name of the domain serving the application. Example: example.com.
   late final pulumi.Output<String> domainName;
-
   /// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
   late final pulumi.Output<String> name;
-
   /// Whether the domain creation should override any existing mappings for this domain.
   /// By default, overrides are rejected.
   /// Default value is `STRICT`.
   /// Possible values are: `STRICT`, `OVERRIDE`.
   late final pulumi.Output<String?> overrideStrategy;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
   /// configuration in order to serve the application via this domain mapping.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> resourceRecords;
-
   /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
   /// Structure is documented below.
   late final pulumi.Output<DomainMappingSslSettings> sslSettings;
@@ -183,28 +178,17 @@ class DomainMapping extends pulumi.CustomResource {
     DomainMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:appengine/domainMapping:DomainMapping',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:appengine/domainMapping:DomainMapping',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
     overrideStrategy = registerOutput<String?>('overrideStrategy');
     project = registerOutput<String>('project');
-    resourceRecords = registerOutput<List<Map<String, dynamic>>>(
-      'resourceRecords',
-    );
-    sslSettings = registerOutput<DomainMappingSslSettings>(
-      'sslSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainMappingSslSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceRecords = registerOutput<List<Map<String, dynamic>>>('resourceRecords');
+    sslSettings = registerOutput<DomainMappingSslSettings>('sslSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingSslSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [DomainMapping] resource's state with the given [name] and [id].
@@ -225,27 +209,16 @@ class DomainMapping extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:appengine/domainMapping:DomainMapping',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:appengine/domainMapping:DomainMapping',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
     overrideStrategy = registerOutput<String?>('overrideStrategy');
     project = registerOutput<String>('project');
-    resourceRecords = registerOutput<List<Map<String, dynamic>>>(
-      'resourceRecords',
-    );
-    sslSettings = registerOutput<DomainMappingSslSettings>(
-      'sslSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainMappingSslSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceRecords = registerOutput<List<Map<String, dynamic>>>('resourceRecords');
+    sslSettings = registerOutput<DomainMappingSslSettings>('sslSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingSslSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

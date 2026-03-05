@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory {
   /// The compute tier of the target SKU.
   final pulumi.Input<String>? computeTier;
-
   /// The hardware type of the target SKU.
   final pulumi.Input<String>? hardwareType;
-
   /// The SQL purchasing model of the target SKU.
   final pulumi.Input<String>? sqlPurchasingModel;
-
   /// The SQL service tier of the target SKU.
   final pulumi.Input<String>? sqlServiceTier;
-
   /// Indicates if zone redundancy is available for the target SKU.
   final pulumi.Input<bool>? zoneRedundancyAvailable;
 
@@ -42,35 +38,14 @@ class SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory {
     };
   }
 
-  factory SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory(
-      computeTier: (() {
-        final guardedValue = map['computeTier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hardwareType: (() {
-        final guardedValue = map['hardwareType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sqlPurchasingModel: (() {
-        final guardedValue = map['sqlPurchasingModel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sqlServiceTier: (() {
-        final guardedValue = map['sqlServiceTier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zoneRedundancyAvailable: (() {
-        final guardedValue = map['zoneRedundancyAvailable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      computeTier: (() { final guardedValue = map['computeTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hardwareType: (() { final guardedValue = map['hardwareType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sqlPurchasingModel: (() { final guardedValue = map['sqlPurchasingModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sqlServiceTier: (() { final guardedValue = map['sqlServiceTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneRedundancyAvailable: (() { final guardedValue = map['zoneRedundancyAvailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

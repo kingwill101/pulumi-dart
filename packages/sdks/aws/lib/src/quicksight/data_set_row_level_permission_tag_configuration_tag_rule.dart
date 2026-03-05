@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSetRowLevelPermissionTagConfigurationTagRule {
   /// Column name that a tag key is assigned to.
   final pulumi.Input<String> columnName;
-
   /// A string that you want to use to filter by all the values in a column in the dataset and don’t want to list the values one by one.
   final pulumi.Input<String>? matchAllValue;
-
   /// Unique key for a tag.
   final pulumi.Input<String> tagKey;
-
   /// A string that you want to use to delimit the values when you pass the values at run time.
   final pulumi.Input<String>? tagMultiValueDelimiter;
 
@@ -36,22 +33,13 @@ class DataSetRowLevelPermissionTagConfigurationTagRule {
     };
   }
 
-  factory DataSetRowLevelPermissionTagConfigurationTagRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataSetRowLevelPermissionTagConfigurationTagRule.fromMap(Map<String, dynamic> map) {
     return DataSetRowLevelPermissionTagConfigurationTagRule(
       columnName: pulumi.Input.fromValue(map['columnName'] as String),
-      matchAllValue: (() {
-        final guardedValue = map['matchAllValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      matchAllValue: (() { final guardedValue = map['matchAllValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tagKey: pulumi.Input.fromValue(map['tagKey'] as String),
-      tagMultiValueDelimiter: (() {
-        final guardedValue = map['tagMultiValueDelimiter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tagMultiValueDelimiter: (() { final guardedValue = map['tagMultiValueDelimiter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

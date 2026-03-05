@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleTargetParamList {
   /// The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
   final pulumi.Input<String> form;
-
   /// The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
   final pulumi.Input<String> resourceKey;
-
   /// The template of the event target parameter.
   final pulumi.Input<String>? template;
-
   /// The value of the event target parameter.
   ///
   /// &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
@@ -54,16 +51,9 @@ class RuleTargetParamList {
     return RuleTargetParamList(
       form: pulumi.Input.fromValue(map['form'] as String),
       resourceKey: pulumi.Input.fromValue(map['resourceKey'] as String),
-      template: (() {
-        final guardedValue = map['template'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      template: (() { final guardedValue = map['template']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

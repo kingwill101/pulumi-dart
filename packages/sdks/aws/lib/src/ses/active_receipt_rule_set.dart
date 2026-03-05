@@ -101,10 +101,8 @@ import 'active_receipt_rule_set_state.dart';
 class ActiveReceiptRuleSet extends pulumi.CustomResource {
   /// The SES receipt rule set ARN.
   late final pulumi.Output<String> arn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The name of the rule set
   late final pulumi.Output<String> ruleSetName;
 
@@ -117,11 +115,11 @@ class ActiveReceiptRuleSet extends pulumi.CustomResource {
     ActiveReceiptRuleSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ses/activeReceiptRuleSet:ActiveReceiptRuleSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ses/activeReceiptRuleSet:ActiveReceiptRuleSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     ruleSetName = registerOutput<String>('ruleSetName');
@@ -145,11 +143,11 @@ class ActiveReceiptRuleSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ses/activeReceiptRuleSet:ActiveReceiptRuleSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ses/activeReceiptRuleSet:ActiveReceiptRuleSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     ruleSetName = registerOutput<String>('ruleSetName');

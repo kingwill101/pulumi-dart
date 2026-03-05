@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsWebAppAuthSettingGoogle {
   /// The OAuth 2.0 client ID used by the app for authentication.
   final pulumi.Input<String> clientId;
-
   /// The OAuth 2.0 client secret used by the app for authentication.
   final pulumi.Input<String> clientSecret;
-
   /// The app setting name containing the OAuth 2.0 client secret used by the app for authentication.
   final pulumi.Input<String> clientSecretSettingName;
-
   /// A list of OAuth 2.0 scopes requested as part of Microsoft Account authentication.
   final pulumi.Input<List<String>> oauthScopes;
 
@@ -40,12 +37,9 @@ class GetWindowsWebAppAuthSettingGoogle {
     return GetWindowsWebAppAuthSettingGoogle(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
-      clientSecretSettingName: pulumi.Input.fromValue(
-        map['clientSecretSettingName'] as String,
-      ),
-      oauthScopes: pulumi.Input.fromValue(
-        (map['oauthScopes'] as List).cast<String>(),
-      ),
+      clientSecretSettingName: pulumi.Input.fromValue(map['clientSecretSettingName'] as String),
+      oauthScopes: pulumi.Input.fromValue((map['oauthScopes'] as List).cast<String>()),
     );
   }
 }
+

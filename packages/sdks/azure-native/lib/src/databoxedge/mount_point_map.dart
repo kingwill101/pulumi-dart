@@ -9,10 +9,14 @@ class MountPointMap {
 
   /// Creates a new [MountPointMap].
   /// [shareId] ID of the share mounted to the role VM.
-  MountPointMap({required this.shareId});
+  MountPointMap({
+    required this.shareId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'shareId': shareId};
+    return <String, dynamic>{
+      'shareId': shareId,
+    };
   }
 
   factory MountPointMap.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class MountPointMap {
     );
   }
 }
+

@@ -8,22 +8,12 @@ import 'google_cloud_dialogflow_v2beta1_fulfillment_generic_web_service_response
 class GoogleCloudDialogflowV2beta1FulfillmentResponse {
   /// The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
   final pulumi.Input<String> displayName;
-
   /// Whether fulfillment is enabled.
   final pulumi.Input<bool> enabled;
-
   /// The field defines whether the fulfillment is enabled for certain features.
-  final pulumi.Input<
-    List<GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse>
-  >
-  features;
-
+  final pulumi.Input<List<GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse>> features;
   /// Configuration for a generic web service.
-  final pulumi.Input<
-    GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse
-  >
-  genericWebService;
-
+  final pulumi.Input<GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse> genericWebService;
   /// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
   final pulumi.Input<String> name;
 
@@ -45,50 +35,20 @@ class GoogleCloudDialogflowV2beta1FulfillmentResponse {
     return <String, dynamic>{
       'displayName': displayName,
       'enabled': enabled,
-      'features':
-          pulumi.Input.mapInputValue<
-            List<GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse>,
-            List<Map<String, dynamic>>
-          >(
-            features,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'genericWebService':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse,
-            Map<String, dynamic>
-          >(genericWebService, (value) => value.toMap()),
+      'features': pulumi.Input.mapInputValue<List<GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse>, List<Map<String, dynamic>>>(features, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'genericWebService': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse, Map<String, dynamic>>(genericWebService, (value) => value.toMap()),
       'name': name,
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1FulfillmentResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2beta1FulfillmentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1FulfillmentResponse(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      features: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse
-        >(
-          map['features']!,
-          (value) =>
-              GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      genericWebService: pulumi.Input.fromValue(
-        GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse.fromMap(
-          (map['genericWebService']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      features: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse>(map['features']!, (value) => GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      genericWebService: pulumi.Input.fromValue(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse.fromMap((map['genericWebService']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

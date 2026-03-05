@@ -7,15 +7,12 @@ class AutomationAction {
   ///
   /// &gt; **Note:** `connection_string` is required when `type` is `EventHub`.
   final pulumi.Input<String>? connectionString;
-
   /// The resource id of the target Logic App, Event Hub namespace or Log Analytics workspace.
   final pulumi.Input<String> resourceId;
-
   /// The callback URL to trigger the Logic App that will receive and process data sent by this automation. This can be found in the Azure Portal under "See trigger history"
   ///
   /// &gt; **Note:** `trigger_url` is required when `type` is `LogicApp`.
   final pulumi.Input<String>? triggerUrl;
-
   /// Type of Azure resource to send data to. Possible values are `EventHub`, `LogicApp` and `Workspace`.
   final pulumi.Input<String>? type;
 
@@ -42,22 +39,11 @@ class AutomationAction {
 
   factory AutomationAction.fromMap(Map<String, dynamic> map) {
     return AutomationAction(
-      connectionString: (() {
-        final guardedValue = map['connectionString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectionString: (() { final guardedValue = map['connectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
-      triggerUrl: (() {
-        final guardedValue = map['triggerUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      triggerUrl: (() { final guardedValue = map['triggerUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

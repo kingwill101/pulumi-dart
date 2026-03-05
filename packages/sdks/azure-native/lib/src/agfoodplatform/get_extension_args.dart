@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExtensionArgs {
   /// DataManagerForAgriculture resource name.
   final pulumi.Input<String> dataManagerForAgricultureResourceName;
-
   /// Id of extension resource.
   final pulumi.Input<String> extensionId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -28,8 +26,7 @@ class GetExtensionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataManagerForAgricultureResourceName':
-          dataManagerForAgricultureResourceName,
+      'dataManagerForAgricultureResourceName': dataManagerForAgricultureResourceName,
       'extensionId': extensionId,
       'resourceGroupName': resourceGroupName,
     };
@@ -37,13 +34,10 @@ class GetExtensionArgs {
 
   factory GetExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetExtensionArgs(
-      dataManagerForAgricultureResourceName: pulumi.Input.fromValue(
-        map['dataManagerForAgricultureResourceName'] as String,
-      ),
+      dataManagerForAgricultureResourceName: pulumi.Input.fromValue(map['dataManagerForAgricultureResourceName'] as String),
       extensionId: pulumi.Input.fromValue(map['extensionId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

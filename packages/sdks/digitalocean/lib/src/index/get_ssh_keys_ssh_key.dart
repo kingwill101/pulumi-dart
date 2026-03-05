@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSshKeysSshKey {
   /// The fingerprint of the public key of the ssh key.
   final pulumi.Input<String> fingerprint;
-
   /// The ID of the ssh key.
   final pulumi.Input<int> id;
-
   /// The name of the ssh key.
   final pulumi.Input<String> name;
-
   /// The public key of the ssh key.
   final pulumi.Input<String> publicKey;
 
@@ -45,3 +42,4 @@ class GetSshKeysSshKey {
     );
   }
 }
+

@@ -296,17 +296,11 @@ import 'customer_managed_policy_attachment_state.dart';
 /// ```
 class CustomerManagedPolicyAttachment extends pulumi.CustomResource {
   /// Specifies the name and path of a customer managed policy. See below.
-  late final pulumi.Output<
-    CustomerManagedPolicyAttachmentCustomerManagedPolicyReference
-  >
-  customerManagedPolicyReference;
-
+  late final pulumi.Output<CustomerManagedPolicyAttachmentCustomerManagedPolicyReference> customerManagedPolicyReference;
   /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
   late final pulumi.Output<String> instanceArn;
-
   /// The Amazon Resource Name (ARN) of the Permission Set.
   late final pulumi.Output<String> permissionSetArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -319,24 +313,12 @@ class CustomerManagedPolicyAttachment extends pulumi.CustomResource {
     CustomerManagedPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssoadmin/customerManagedPolicyAttachment:CustomerManagedPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customerManagedPolicyReference =
-        registerOutput<
-          CustomerManagedPolicyAttachmentCustomerManagedPolicyReference
-        >(
-          'customerManagedPolicyReference',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CustomerManagedPolicyAttachmentCustomerManagedPolicyReference.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:ssoadmin/customerManagedPolicyAttachment:CustomerManagedPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customerManagedPolicyReference = registerOutput<CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>('customerManagedPolicyReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerManagedPolicyAttachmentCustomerManagedPolicyReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceArn = registerOutput<String>('instanceArn');
     permissionSetArn = registerOutput<String>('permissionSetArn');
     region = registerOutput<String>('region');
@@ -360,24 +342,12 @@ class CustomerManagedPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssoadmin/customerManagedPolicyAttachment:CustomerManagedPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customerManagedPolicyReference =
-        registerOutput<
-          CustomerManagedPolicyAttachmentCustomerManagedPolicyReference
-        >(
-          'customerManagedPolicyReference',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CustomerManagedPolicyAttachmentCustomerManagedPolicyReference.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:ssoadmin/customerManagedPolicyAttachment:CustomerManagedPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customerManagedPolicyReference = registerOutput<CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>('customerManagedPolicyReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerManagedPolicyAttachmentCustomerManagedPolicyReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceArn = registerOutput<String>('instanceArn');
     permissionSetArn = registerOutput<String>('permissionSetArn');
     region = registerOutput<String>('region');

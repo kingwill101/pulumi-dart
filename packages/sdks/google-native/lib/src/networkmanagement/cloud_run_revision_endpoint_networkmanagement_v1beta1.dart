@@ -9,21 +9,20 @@ class CloudRunRevisionEndpointNetworkmanagementV1beta1 {
 
   /// Creates a new [CloudRunRevisionEndpointNetworkmanagementV1beta1].
   /// [uri] A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
-  CloudRunRevisionEndpointNetworkmanagementV1beta1({this.uri});
+  CloudRunRevisionEndpointNetworkmanagementV1beta1({
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': ?uri};
+    return <String, dynamic>{
+      'uri': ?uri,
+    };
   }
 
-  factory CloudRunRevisionEndpointNetworkmanagementV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudRunRevisionEndpointNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudRunRevisionEndpointNetworkmanagementV1beta1(
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

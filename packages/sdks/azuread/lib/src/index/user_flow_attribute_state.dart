@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserFlowAttributeState {
   /// The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
   final pulumi.Input<String>? attributeType;
-
   /// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? dataType;
-
   /// The description of the user flow attribute that is shown to the user at the time of sign-up.
   final pulumi.Input<String>? description;
-
   /// The display name of the user flow attribute. Changing this forces a new resource to be created.
   final pulumi.Input<String>? displayName;
 
@@ -39,26 +36,11 @@ class UserFlowAttributeState {
 
   factory UserFlowAttributeState.fromMap(Map<String, dynamic> map) {
     return UserFlowAttributeState(
-      attributeType: (() {
-        final guardedValue = map['attributeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataType: (() {
-        final guardedValue = map['dataType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attributeType: (() { final guardedValue = map['attributeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataType: (() { final guardedValue = map['dataType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

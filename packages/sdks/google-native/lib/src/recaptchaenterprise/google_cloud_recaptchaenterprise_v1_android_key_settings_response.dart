@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse {
   /// Optional. If set to true, allowed_package_names are not enforced.
   final pulumi.Input<bool> allowAllPackageNames;
-
   /// Optional. Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
   final pulumi.Input<List<String>> allowedPackageNames;
-
   /// Optional. Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
   final pulumi.Input<bool> supportNonGoogleAppStoreDistribution;
 
@@ -27,24 +25,16 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse {
     return <String, dynamic>{
       'allowAllPackageNames': allowAllPackageNames,
       'allowedPackageNames': allowedPackageNames,
-      'supportNonGoogleAppStoreDistribution':
-          supportNonGoogleAppStoreDistribution,
+      'supportNonGoogleAppStoreDistribution': supportNonGoogleAppStoreDistribution,
     };
   }
 
-  factory GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(
-      allowAllPackageNames: pulumi.Input.fromValue(
-        map['allowAllPackageNames'] as bool,
-      ),
-      allowedPackageNames: pulumi.Input.fromValue(
-        (map['allowedPackageNames'] as List).cast<String>(),
-      ),
-      supportNonGoogleAppStoreDistribution: pulumi.Input.fromValue(
-        map['supportNonGoogleAppStoreDistribution'] as bool,
-      ),
+      allowAllPackageNames: pulumi.Input.fromValue(map['allowAllPackageNames'] as bool),
+      allowedPackageNames: pulumi.Input.fromValue((map['allowedPackageNames'] as List).cast<String>()),
+      supportNonGoogleAppStoreDistribution: pulumi.Input.fromValue(map['supportNonGoogleAppStoreDistribution'] as bool),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum NetworkMode {
     throw ArgumentError('Unknown NetworkMode value: $value');
   }
 }
+

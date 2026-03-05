@@ -6,7 +6,6 @@ class BareMetalClusterNodeConfig {
   /// The available runtimes that can be used to run containers in a Bare Metal User Cluster.
   /// Possible values are: `CONTAINER_RUNTIME_UNSPECIFIED`, `DOCKER`, `CONTAINERD`.
   final pulumi.Input<String>? containerRuntime;
-
   /// The maximum number of pods a node can run. The size of the CIDR range
   /// assigned to the node will be derived from this parameter.
   final pulumi.Input<int>? maxPodsPerNode;
@@ -14,7 +13,10 @@ class BareMetalClusterNodeConfig {
   /// Creates a new [BareMetalClusterNodeConfig].
   /// [containerRuntime] The available runtimes that can be used to run containers in a Bare Metal User Cluster.
   /// [maxPodsPerNode] The maximum number of pods a node can run. The size of the CIDR range
-  BareMetalClusterNodeConfig({this.containerRuntime, this.maxPodsPerNode});
+  BareMetalClusterNodeConfig({
+    this.containerRuntime,
+    this.maxPodsPerNode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,16 +27,9 @@ class BareMetalClusterNodeConfig {
 
   factory BareMetalClusterNodeConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterNodeConfig(
-      containerRuntime: (() {
-        final guardedValue = map['containerRuntime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxPodsPerNode: (() {
-        final guardedValue = map['maxPodsPerNode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      containerRuntime: (() { final guardedValue = map['containerRuntime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxPodsPerNode: (() { final guardedValue = map['maxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

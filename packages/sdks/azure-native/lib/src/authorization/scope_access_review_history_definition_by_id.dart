@@ -127,52 +127,36 @@ import 'scope_access_review_history_definition_by_id_args.dart';
 class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Date time when history definition was created
   late final pulumi.Output<String> createdDateTime;
-
   /// Collection of review decisions which the history data should be filtered on. For example if Approve and Deny are supplied the data will only contain review results in which the decision maker approved or denied a review request.
   late final pulumi.Output<List<String>?> decisions;
-
   /// The display name for the history definition.
   late final pulumi.Output<String?> displayName;
-
   /// Set of access review history instances for this history definition.
   late final pulumi.Output<List<Map<String, dynamic>>?> instances;
-
   /// The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
   late final pulumi.Output<int?> interval;
-
   /// The access review history definition unique id.
   late final pulumi.Output<String> name;
-
   /// The identity id
   late final pulumi.Output<String> principalId;
-
   /// The identity display name
   late final pulumi.Output<String> principalName;
-
   /// The identity type : user/servicePrincipal
   late final pulumi.Output<String> principalType;
-
   /// Access Review History Definition recurrence settings.
   late final pulumi.Output<AccessReviewRecurrenceRangeResponse?> range;
-
   /// Date time used when selecting review data, all reviews included in data end on or before this date. For use only with one-time/non-recurring reports.
   late final pulumi.Output<String> reviewHistoryPeriodEndDateTime;
-
   /// Date time used when selecting review data, all reviews included in data start on or after this date. For use only with one-time/non-recurring reports.
   late final pulumi.Output<String> reviewHistoryPeriodStartDateTime;
-
   /// A collection of scopes used when selecting review history data
   late final pulumi.Output<List<Map<String, dynamic>>?> scopes;
-
   /// This read-only field specifies the of the requested review history data. This is either requested, in-progress, done or error.
   late final pulumi.Output<String> status;
-
   /// The resource type.
   late final pulumi.Output<String> type;
-
   /// The user principal name(if valid)
   late final pulumi.Output<String> userPrincipalName;
 
@@ -185,11 +169,11 @@ class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResource {
     ScopeAccessReviewHistoryDefinitionByIdArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:authorization:ScopeAccessReviewHistoryDefinitionById',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:authorization:ScopeAccessReviewHistoryDefinitionById',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdDateTime = registerOutput<String>('createdDateTime');
     decisions = registerOutput<List<String>?>('decisions');
@@ -200,22 +184,9 @@ class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResource {
     principalId = registerOutput<String>('principalId');
     principalName = registerOutput<String>('principalName');
     principalType = registerOutput<String>('principalType');
-    range = registerOutput<AccessReviewRecurrenceRangeResponse?>(
-      'range',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessReviewRecurrenceRangeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    reviewHistoryPeriodEndDateTime = registerOutput<String>(
-      'reviewHistoryPeriodEndDateTime',
-    );
-    reviewHistoryPeriodStartDateTime = registerOutput<String>(
-      'reviewHistoryPeriodStartDateTime',
-    );
+    range = registerOutput<AccessReviewRecurrenceRangeResponse?>('range', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessReviewRecurrenceRangeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reviewHistoryPeriodEndDateTime = registerOutput<String>('reviewHistoryPeriodEndDateTime');
+    reviewHistoryPeriodStartDateTime = registerOutput<String>('reviewHistoryPeriodStartDateTime');
     scopes = registerOutput<List<Map<String, dynamic>>?>('scopes');
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');

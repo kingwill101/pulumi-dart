@@ -9,7 +9,6 @@ class GetDomainInterfaceAddressesResult {
   final String domain;
   final String id;
   final List<GetDomainInterfaceAddressesInterface> interfaces;
-
   /// Source to query for IP addresses:
   final String? source;
 
@@ -29,11 +28,7 @@ class GetDomainInterfaceAddressesResult {
     return <String, dynamic>{
       'domain': domain,
       'id': id,
-      'interfaces':
-          pulumi.Input.encodeList<
-            GetDomainInterfaceAddressesInterface,
-            Map<String, dynamic>
-          >(interfaces, (value) => value.toMap()),
+      'interfaces': pulumi.Input.encodeList<GetDomainInterfaceAddressesInterface, Map<String, dynamic>>(interfaces, (value) => value.toMap()),
       'source': ?source,
     };
   }
@@ -42,17 +37,9 @@ class GetDomainInterfaceAddressesResult {
     return GetDomainInterfaceAddressesResult(
       domain: map['domain'] as String,
       id: map['id'] as String,
-      interfaces: pulumi.Input.decodeList<GetDomainInterfaceAddressesInterface>(
-        map['interfaces']!,
-        (value) => GetDomainInterfaceAddressesInterface.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      interfaces: pulumi.Input.decodeList<GetDomainInterfaceAddressesInterface>(map['interfaces']!, (value) => GetDomainInterfaceAddressesInterface.fromMap((value as Map).cast<String, dynamic>())),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

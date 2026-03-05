@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterPscConnection {
   /// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
   final pulumi.Input<String> address;
-
   /// Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
   final pulumi.Input<String> forwardingRule;
-
   /// The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
   final pulumi.Input<String> network;
-
   /// Output only. The consumer projectId where the forwarding rule is created from.
   final pulumi.Input<String> projectId;
-
   /// Output only. The PSC connection id of the forwarding rule connected to the service attachment.
   final pulumi.Input<String> pscConnectionId;
 
@@ -52,3 +48,4 @@ class GetClusterPscConnection {
     );
   }
 }
+

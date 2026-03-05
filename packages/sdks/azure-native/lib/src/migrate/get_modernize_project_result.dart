@@ -8,24 +8,18 @@ import 'resource_identity_response.dart';
 class GetModernizeProjectResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets or sets the Id of the resource.
   final String id;
   final ResourceIdentityResponse? identity;
-
   /// Gets or sets the location of the modernizeProject.
   final String? location;
-
   /// Gets or sets the name of the resource.
   final String name;
-
   /// ModernizeProject properties.
   final ModernizeProjectModelPropertiesResponse properties;
   final ModernizeProjectModelResponseSystemData systemData;
-
   /// Gets or sets the resource tags.
   final Map<String, String>? tags;
-
   /// Gets or sets the type of the resource.
   final String type;
 
@@ -69,31 +63,14 @@ class GetModernizeProjectResult {
     return GetModernizeProjectResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return ResourceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: ModernizeProjectModelPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: ModernizeProjectModelResponseSystemData.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: ModernizeProjectModelPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: ModernizeProjectModelResponseSystemData.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

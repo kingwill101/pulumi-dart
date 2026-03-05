@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerCustomImagesImage {
   /// The first ID of the resource.
   final pulumi.Input<String> customImageId;
-
   /// The name of the resource.
   final pulumi.Input<String> customImageName;
-
   /// Image description information.
   final pulumi.Input<String> description;
-
   /// The ID of the Custom Image.
   final pulumi.Input<String> id;
-
   /// The type of operating system used by the Mirror. Valid values: `Linux`, `Windows`.
   final pulumi.Input<String> platform;
 
@@ -52,3 +48,4 @@ class GetServerCustomImagesImage {
     );
   }
 }
+

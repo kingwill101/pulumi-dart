@@ -6,25 +6,18 @@ import 'azure_file_share_protection_policy_response.dart';
 class GetProtectionPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Optional ETag.
   final String? eTag;
-
   /// Resource Id represents the complete path to the resource.
   final String id;
-
   /// Resource location.
   final String? location;
-
   /// Resource name associated with the resource.
   final String name;
-
   /// ProtectionPolicyResource properties
   final AzureFileShareProtectionPolicyResponse properties;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   final String type;
 
@@ -64,27 +57,14 @@ class GetProtectionPolicyResult {
   factory GetProtectionPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetProtectionPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eTag: (() {
-        final guardedValue = map['eTag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: AzureFileShareProtectionPolicyResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: AzureFileShareProtectionPolicyResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

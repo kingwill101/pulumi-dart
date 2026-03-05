@@ -5,10 +5,7 @@ import 'channel_encoder_settings_output_group_output_group_settings_media_packag
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings {
   /// A director and base filename where archive files should be written. See Destination for more details.
-  final pulumi.Input<
-    ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettingsDestination
-  >
-  destination;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettingsDestination> destination;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings].
   /// [destination] A director and base filename where archive files should be written. See Destination for more details.
@@ -18,23 +15,14 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSetti
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination':
-          pulumi.Input.mapInputValue<
-            ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettingsDestination,
-            Map<String, dynamic>
-          >(destination, (value) => value.toMap()),
+      'destination': pulumi.Input.mapInputValue<ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettingsDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings(
-      destination: pulumi.Input.fromValue(
-        ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettingsDestination.fromMap(
-          (map['destination']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      destination: pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettingsDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

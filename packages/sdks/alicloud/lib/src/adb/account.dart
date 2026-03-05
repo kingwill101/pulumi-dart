@@ -295,19 +295,14 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
   late final pulumi.Output<String?> accountDescription;
-
   /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
   late final pulumi.Output<String> accountName;
-
   /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
   late final pulumi.Output<String?> accountPassword;
-
   /// The Id of cluster in which account belongs.
   late final pulumi.Output<String> dbClusterId;
-
   /// An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
   late final pulumi.Output<String?> kmsEncryptedPassword;
-
   /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   late final pulumi.Output<Map<String, String>?> kmsEncryptionContext;
 
@@ -320,19 +315,17 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:adb/account:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:adb/account:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountDescription = registerOutput<String?>('accountDescription');
     accountName = registerOutput<String>('accountName');
     accountPassword = registerOutput<String?>('accountPassword');
     dbClusterId = registerOutput<String>('dbClusterId');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -353,18 +346,16 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:adb/account:Account',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:adb/account:Account',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountDescription = registerOutput<String?>('accountDescription');
     accountName = registerOutput<String>('accountName');
     accountPassword = registerOutput<String?>('accountPassword');
     dbClusterId = registerOutput<String>('dbClusterId');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
   }
 }

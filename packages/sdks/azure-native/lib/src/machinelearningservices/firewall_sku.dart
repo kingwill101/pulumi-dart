@@ -15,3 +15,4 @@ enum FirewallSku {
     throw ArgumentError('Unknown FirewallSku value: $value');
   }
 }
+

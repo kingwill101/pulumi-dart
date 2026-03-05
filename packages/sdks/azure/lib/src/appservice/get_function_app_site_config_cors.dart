@@ -23,14 +23,9 @@ class GetFunctionAppSiteConfigCors {
 
   factory GetFunctionAppSiteConfigCors.fromMap(Map<String, dynamic> map) {
     return GetFunctionAppSiteConfigCors(
-      allowedOrigins: pulumi.Input.fromValue(
-        (map['allowedOrigins'] as List).cast<String>(),
-      ),
-      supportCredentials: (() {
-        final guardedValue = map['supportCredentials'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      allowedOrigins: pulumi.Input.fromValue((map['allowedOrigins'] as List).cast<String>()),
+      supportCredentials: (() { final guardedValue = map['supportCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

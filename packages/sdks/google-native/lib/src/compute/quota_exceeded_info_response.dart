@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QuotaExceededInfoResponse {
   /// The map holding related quota dimensions.
   final pulumi.Input<Map<String, String>> dimensions;
-
   /// Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
   final pulumi.Input<double> futureLimit;
-
   /// Current effective quota limit. The limit's unit depends on the quota type or metric.
   final pulumi.Input<double> limit;
-
   /// The name of the quota limit.
   final pulumi.Input<String> limitName;
-
   /// The Compute Engine quota metric name.
   final pulumi.Input<String> metricName;
-
   /// Rollout status of the future quota limit.
   final pulumi.Input<String> rolloutStatus;
 
@@ -51,9 +46,7 @@ class QuotaExceededInfoResponse {
 
   factory QuotaExceededInfoResponse.fromMap(Map<String, dynamic> map) {
     return QuotaExceededInfoResponse(
-      dimensions: pulumi.Input.fromValue(
-        (map['dimensions'] as Map).cast<String, String>(),
-      ),
+      dimensions: pulumi.Input.fromValue((map['dimensions'] as Map).cast<String, String>()),
       futureLimit: pulumi.Input.fromValue(map['futureLimit'] as double),
       limit: pulumi.Input.fromValue(map['limit'] as double),
       limitName: pulumi.Input.fromValue(map['limitName'] as String),
@@ -62,3 +55,4 @@ class QuotaExceededInfoResponse {
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum AzureSecurityOfferingType {
     throw ArgumentError('Unknown AzureSecurityOfferingType value: $value');
   }
 }
+

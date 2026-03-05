@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomImageArgs {
   /// The resource name of the test base custom image.
   final pulumi.Input<String>? customImageName;
-
   /// Image definition name.
   final pulumi.Input<String> definitionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Custom image source type.
   final pulumi.Input<String> source;
-
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
-
   /// Image version name.
   final pulumi.Input<String> versionName;
-
   /// The Id of the associated VHD resource.
   final pulumi.Input<String>? vhdId;
 
@@ -60,25 +54,14 @@ class CustomImageArgs {
 
   factory CustomImageArgs.fromMap(Map<String, dynamic> map) {
     return CustomImageArgs(
-      customImageName: (() {
-        final guardedValue = map['customImageName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customImageName: (() { final guardedValue = map['customImageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       definitionName: pulumi.Input.fromValue(map['definitionName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       source: pulumi.Input.fromValue(map['source'] as String),
-      testBaseAccountName: pulumi.Input.fromValue(
-        map['testBaseAccountName'] as String,
-      ),
+      testBaseAccountName: pulumi.Input.fromValue(map['testBaseAccountName'] as String),
       versionName: pulumi.Input.fromValue(map['versionName'] as String),
-      vhdId: (() {
-        final guardedValue = map['vhdId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      vhdId: (() { final guardedValue = map['vhdId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

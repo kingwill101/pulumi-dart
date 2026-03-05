@@ -9,19 +9,20 @@ class PartnerRegionInfo {
 
   /// Creates a new [PartnerRegionInfo].
   /// [location] Geo location of the partner managed instances.
-  PartnerRegionInfo({this.location});
+  PartnerRegionInfo({
+    this.location,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': ?location};
+    return <String, dynamic>{
+      'location': ?location,
+    };
   }
 
   factory PartnerRegionInfo.fromMap(Map<String, dynamic> map) {
     return PartnerRegionInfo(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

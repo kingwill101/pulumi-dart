@@ -7,13 +7,10 @@ import 'get_directory_roles_role.dart';
 class GetDirectoryRolesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The object IDs of the roles.
   final List<String> objectIds;
-
   /// A list of users. Each `role` object provides the attributes documented below.
   final List<GetDirectoryRolesRole> roles;
-
   /// The template IDs of the roles.
   final List<String> templateIds;
 
@@ -33,11 +30,7 @@ class GetDirectoryRolesResult {
     return <String, dynamic>{
       'id': id,
       'objectIds': objectIds,
-      'roles':
-          pulumi.Input.encodeList<GetDirectoryRolesRole, Map<String, dynamic>>(
-            roles,
-            (value) => value.toMap(),
-          ),
+      'roles': pulumi.Input.encodeList<GetDirectoryRolesRole, Map<String, dynamic>>(roles, (value) => value.toMap()),
       'templateIds': templateIds,
     };
   }
@@ -46,13 +39,9 @@ class GetDirectoryRolesResult {
     return GetDirectoryRolesResult(
       id: map['id'] as String,
       objectIds: (map['objectIds'] as List).cast<String>(),
-      roles: pulumi.Input.decodeList<GetDirectoryRolesRole>(
-        map['roles']!,
-        (value) => GetDirectoryRolesRole.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      roles: pulumi.Input.decodeList<GetDirectoryRolesRole>(map['roles']!, (value) => GetDirectoryRolesRole.fromMap((value as Map).cast<String, dynamic>())),
       templateIds: (map['templateIds'] as List).cast<String>(),
     );
   }
 }
+

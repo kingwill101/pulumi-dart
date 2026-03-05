@@ -7,7 +7,6 @@ import 'windows_web_app_site_config_auto_heal_setting_trigger.dart';
 class WindowsWebAppSiteConfigAutoHealSetting {
   /// An `action` block as defined above.
   final pulumi.Input<WindowsWebAppSiteConfigAutoHealSettingAction> action;
-
   /// A `trigger` block as defined below.
   final pulumi.Input<WindowsWebAppSiteConfigAutoHealSettingTrigger> trigger;
 
@@ -21,33 +20,16 @@ class WindowsWebAppSiteConfigAutoHealSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action':
-          pulumi.Input.mapInputValue<
-            WindowsWebAppSiteConfigAutoHealSettingAction,
-            Map<String, dynamic>
-          >(action, (value) => value.toMap()),
-      'trigger':
-          pulumi.Input.mapInputValue<
-            WindowsWebAppSiteConfigAutoHealSettingTrigger,
-            Map<String, dynamic>
-          >(trigger, (value) => value.toMap()),
+      'action': pulumi.Input.mapInputValue<WindowsWebAppSiteConfigAutoHealSettingAction, Map<String, dynamic>>(action, (value) => value.toMap()),
+      'trigger': pulumi.Input.mapInputValue<WindowsWebAppSiteConfigAutoHealSettingTrigger, Map<String, dynamic>>(trigger, (value) => value.toMap()),
     };
   }
 
-  factory WindowsWebAppSiteConfigAutoHealSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WindowsWebAppSiteConfigAutoHealSetting.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSiteConfigAutoHealSetting(
-      action: pulumi.Input.fromValue(
-        WindowsWebAppSiteConfigAutoHealSettingAction.fromMap(
-          (map['action']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      trigger: pulumi.Input.fromValue(
-        WindowsWebAppSiteConfigAutoHealSettingTrigger.fromMap(
-          (map['trigger']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      action: pulumi.Input.fromValue(WindowsWebAppSiteConfigAutoHealSettingAction.fromMap((map['action']! as Map).cast<String, dynamic>())),
+      trigger: pulumi.Input.fromValue(WindowsWebAppSiteConfigAutoHealSettingTrigger.fromMap((map['trigger']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

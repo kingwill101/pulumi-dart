@@ -106,11 +106,11 @@ class OrganizationsAccess extends pulumi.CustomResource {
     OrganizationsAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicecatalog/organizationsAccess:OrganizationsAccess',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicecatalog/organizationsAccess:OrganizationsAccess',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool>('enabled');
   }
 
@@ -132,11 +132,11 @@ class OrganizationsAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicecatalog/organizationsAccess:OrganizationsAccess',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicecatalog/organizationsAccess:OrganizationsAccess',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool>('enabled');
   }
 }

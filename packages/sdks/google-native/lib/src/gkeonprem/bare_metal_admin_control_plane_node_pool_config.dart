@@ -10,27 +10,20 @@ class BareMetalAdminControlPlaneNodePoolConfig {
 
   /// Creates a new [BareMetalAdminControlPlaneNodePoolConfig].
   /// [nodePoolConfig] The generic configuration for a node pool running the control plane.
-  BareMetalAdminControlPlaneNodePoolConfig({required this.nodePoolConfig});
+  BareMetalAdminControlPlaneNodePoolConfig({
+    required this.nodePoolConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodePoolConfig':
-          pulumi.Input.mapInputValue<
-            BareMetalNodePoolConfig,
-            Map<String, dynamic>
-          >(nodePoolConfig, (value) => value.toMap()),
+      'nodePoolConfig': pulumi.Input.mapInputValue<BareMetalNodePoolConfig, Map<String, dynamic>>(nodePoolConfig, (value) => value.toMap()),
     };
   }
 
-  factory BareMetalAdminControlPlaneNodePoolConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalAdminControlPlaneNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminControlPlaneNodePoolConfig(
-      nodePoolConfig: pulumi.Input.fromValue(
-        BareMetalNodePoolConfig.fromMap(
-          (map['nodePoolConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      nodePoolConfig: pulumi.Input.fromValue(BareMetalNodePoolConfig.fromMap((map['nodePoolConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

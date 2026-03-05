@@ -7,10 +7,14 @@ class GetInstanceCreditSpecification {
 
   /// Creates a new [GetInstanceCreditSpecification].
   /// [cpuCredits] Required.
-  GetInstanceCreditSpecification({required this.cpuCredits});
+  GetInstanceCreditSpecification({
+    required this.cpuCredits,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpuCredits': cpuCredits};
+    return <String, dynamic>{
+      'cpuCredits': cpuCredits,
+    };
   }
 
   factory GetInstanceCreditSpecification.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class GetInstanceCreditSpecification {
     );
   }
 }
+

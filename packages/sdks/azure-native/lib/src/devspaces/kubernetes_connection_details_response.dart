@@ -7,7 +7,6 @@ class KubernetesConnectionDetailsResponse {
   /// Gets the Instance type.
   /// Expected value is 'Kubernetes'.
   final pulumi.Input<String> instanceType;
-
   /// Gets the kubeconfig for the cluster.
   final pulumi.Input<String>? kubeConfig;
 
@@ -26,16 +25,11 @@ class KubernetesConnectionDetailsResponse {
     };
   }
 
-  factory KubernetesConnectionDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KubernetesConnectionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesConnectionDetailsResponse(
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      kubeConfig: (() {
-        final guardedValue = map['kubeConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kubeConfig: (() { final guardedValue = map['kubeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

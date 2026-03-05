@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSQuotaInfoQuotaIncreaseEligibility {
   /// The enumeration of reasons when it is ineligible to request increase adjustment.
   final pulumi.Input<String> ineligibilityReason;
-
   /// Whether a higher quota value can be requested for the quota.
   final pulumi.Input<bool> isEligible;
 
@@ -24,14 +23,11 @@ class GetSQuotaInfoQuotaIncreaseEligibility {
     };
   }
 
-  factory GetSQuotaInfoQuotaIncreaseEligibility.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSQuotaInfoQuotaIncreaseEligibility.fromMap(Map<String, dynamic> map) {
     return GetSQuotaInfoQuotaIncreaseEligibility(
-      ineligibilityReason: pulumi.Input.fromValue(
-        map['ineligibilityReason'] as String,
-      ),
+      ineligibilityReason: pulumi.Input.fromValue(map['ineligibilityReason'] as String),
       isEligible: pulumi.Input.fromValue(map['isEligible'] as bool),
     );
   }
 }
+

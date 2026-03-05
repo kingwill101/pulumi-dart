@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LabelByWorkspaceArgs {
   /// Label color.
   final pulumi.Input<String>? color;
-
   /// Label display name.
   final pulumi.Input<String>? displayName;
-
   /// The name of the Label.
   final pulumi.Input<String>? labelName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -48,25 +44,12 @@ class LabelByWorkspaceArgs {
 
   factory LabelByWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return LabelByWorkspaceArgs(
-      color: (() {
-        final guardedValue = map['color'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labelName: (() {
-        final guardedValue = map['labelName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      color: (() { final guardedValue = map['color']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labelName: (() { final guardedValue = map['labelName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

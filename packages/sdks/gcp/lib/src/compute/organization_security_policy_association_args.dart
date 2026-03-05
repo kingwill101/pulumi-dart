@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationSecurityPolicyAssociationArgs {
   /// The resource that the security policy is attached to.
   final pulumi.Input<String> attachmentId;
-
   /// The name for an association.
   final pulumi.Input<String>? name;
-
   /// The security policy ID of the association.
   final pulumi.Input<String> policyId;
 
@@ -34,17 +32,12 @@ class OrganizationSecurityPolicyAssociationArgs {
     };
   }
 
-  factory OrganizationSecurityPolicyAssociationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OrganizationSecurityPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyAssociationArgs(
       attachmentId: pulumi.Input.fromValue(map['attachmentId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyId: pulumi.Input.fromValue(map['policyId'] as String),
     );
   }
 }
+

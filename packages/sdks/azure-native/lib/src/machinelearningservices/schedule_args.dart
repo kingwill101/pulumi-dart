@@ -10,13 +10,10 @@ import 'schedule_machinelearningservices.dart';
 class ScheduleArgs {
   /// Schedule name.
   final pulumi.Input<String>? name;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<ScheduleMachinelearningservices> scheduleProperties;
-
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -43,18 +40,11 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      scheduleProperties: pulumi.Input.fromValue(
-        map['scheduleProperties'] as ScheduleMachinelearningservices,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      scheduleProperties: pulumi.Input.fromValue(map['scheduleProperties'] as ScheduleMachinelearningservices),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountNetworkRulesPrivateLinkAccess {
   /// The ID of the Azure resource that should be allowed access to the target storage account.
   final pulumi.Input<String> endpointResourceId;
-
   /// The tenant id of the resource of the resource access rule to be granted access. Defaults to the current tenant id.
   final pulumi.Input<String>? endpointTenantId;
 
@@ -24,18 +23,11 @@ class AccountNetworkRulesPrivateLinkAccess {
     };
   }
 
-  factory AccountNetworkRulesPrivateLinkAccess.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccountNetworkRulesPrivateLinkAccess.fromMap(Map<String, dynamic> map) {
     return AccountNetworkRulesPrivateLinkAccess(
-      endpointResourceId: pulumi.Input.fromValue(
-        map['endpointResourceId'] as String,
-      ),
-      endpointTenantId: (() {
-        final guardedValue = map['endpointTenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpointResourceId: pulumi.Input.fromValue(map['endpointResourceId'] as String),
+      endpointTenantId: (() { final guardedValue = map['endpointTenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

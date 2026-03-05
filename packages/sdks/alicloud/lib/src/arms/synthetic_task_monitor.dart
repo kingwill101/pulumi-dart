@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyntheticTaskMonitor {
   /// The city code of monitor.
   final pulumi.Input<String> cityCode;
-
   /// The type of monitor.
   final pulumi.Input<int> clientType;
-
   /// The operator code of monitor.
   final pulumi.Input<String> operatorCode;
 
@@ -38,3 +36,4 @@ class SyntheticTaskMonitor {
     );
   }
 }
+

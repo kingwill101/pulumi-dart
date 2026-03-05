@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceMetricAlarmRulesRuleEscalationsCritical {
   /// The comparison operator that is used to compare the metric value with the threshold.
   final pulumi.Input<String> comparisonOperator;
-
   /// The additional conditions for triggering Warn-level alerts.
   final pulumi.Input<String> preCondition;
-
   /// The statistical methods for Warn-level alerts.
   final pulumi.Input<String> statistics;
-
   /// The threshold for Warn-level alerts.
   final pulumi.Input<String> threshold;
-
   /// The number of consecutive triggers.
   final pulumi.Input<int> times;
 
@@ -42,13 +38,9 @@ class GetServiceMetricAlarmRulesRuleEscalationsCritical {
     };
   }
 
-  factory GetServiceMetricAlarmRulesRuleEscalationsCritical.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceMetricAlarmRulesRuleEscalationsCritical.fromMap(Map<String, dynamic> map) {
     return GetServiceMetricAlarmRulesRuleEscalationsCritical(
-      comparisonOperator: pulumi.Input.fromValue(
-        map['comparisonOperator'] as String,
-      ),
+      comparisonOperator: pulumi.Input.fromValue(map['comparisonOperator'] as String),
       preCondition: pulumi.Input.fromValue(map['preCondition'] as String),
       statistics: pulumi.Input.fromValue(map['statistics'] as String),
       threshold: pulumi.Input.fromValue(map['threshold'] as String),
@@ -56,3 +48,4 @@ class GetServiceMetricAlarmRulesRuleEscalationsCritical {
     );
   }
 }
+

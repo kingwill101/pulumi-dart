@@ -4057,22 +4057,16 @@ import 'protection_policy_args.dart';
 class ProtectionPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Optional ETag.
   late final pulumi.Output<String?> eTag;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name associated with the resource.
   late final pulumi.Output<String> name;
-
   /// ProtectionPolicyResource properties
   late final pulumi.Output<AzureFileShareProtectionPolicyResponse> properties;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   late final pulumi.Output<String> type;
 
@@ -4085,25 +4079,16 @@ class ProtectionPolicy extends pulumi.CustomResource {
     ProtectionPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:recoveryservices:ProtectionPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:recoveryservices:ProtectionPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eTag = registerOutput<String?>('eTag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AzureFileShareProtectionPolicyResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureFileShareProtectionPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<AzureFileShareProtectionPolicyResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureFileShareProtectionPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConflictResolutionPolicyResponse {
   /// The conflict resolution path in the case of LastWriterWins mode.
   final pulumi.Input<String>? conflictResolutionPath;
-
   /// The procedure to resolve conflicts in the case of custom mode.
   final pulumi.Input<String>? conflictResolutionProcedure;
-
   /// Indicates the conflict resolution mode.
   final pulumi.Input<String>? mode;
 
@@ -33,21 +31,10 @@ class ConflictResolutionPolicyResponse {
 
   factory ConflictResolutionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ConflictResolutionPolicyResponse(
-      conflictResolutionPath: (() {
-        final guardedValue = map['conflictResolutionPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      conflictResolutionProcedure: (() {
-        final guardedValue = map['conflictResolutionProcedure'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mode: (() {
-        final guardedValue = map['mode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      conflictResolutionPath: (() { final guardedValue = map['conflictResolutionPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      conflictResolutionProcedure: (() { final guardedValue = map['conflictResolutionProcedure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

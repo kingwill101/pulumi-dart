@@ -7,7 +7,6 @@ import 'subordinate_config_chain_response.dart';
 class SubordinateConfigResponse {
   /// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
   final pulumi.Input<String> certificateAuthority;
-
   /// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
   final pulumi.Input<SubordinateConfigChainResponse> pemIssuerChain;
 
@@ -22,24 +21,15 @@ class SubordinateConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certificateAuthority': certificateAuthority,
-      'pemIssuerChain':
-          pulumi.Input.mapInputValue<
-            SubordinateConfigChainResponse,
-            Map<String, dynamic>
-          >(pemIssuerChain, (value) => value.toMap()),
+      'pemIssuerChain': pulumi.Input.mapInputValue<SubordinateConfigChainResponse, Map<String, dynamic>>(pemIssuerChain, (value) => value.toMap()),
     };
   }
 
   factory SubordinateConfigResponse.fromMap(Map<String, dynamic> map) {
     return SubordinateConfigResponse(
-      certificateAuthority: pulumi.Input.fromValue(
-        map['certificateAuthority'] as String,
-      ),
-      pemIssuerChain: pulumi.Input.fromValue(
-        SubordinateConfigChainResponse.fromMap(
-          (map['pemIssuerChain']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      certificateAuthority: pulumi.Input.fromValue(map['certificateAuthority'] as String),
+      pemIssuerChain: pulumi.Input.fromValue(SubordinateConfigChainResponse.fromMap((map['pemIssuerChain']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -18,3 +18,4 @@ enum GalleryScriptParameterType {
     throw ArgumentError('Unknown GalleryScriptParameterType value: $value');
   }
 }
+

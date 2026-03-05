@@ -442,91 +442,62 @@ import 'monitor_state.dart';
 class Monitor extends pulumi.CustomResource {
   /// Specifies whether adaptive response time monitoring is enabled for this monitor. The default is `disabled`.
   late final pulumi.Output<String> adaptive;
-
   /// Specifies the absolute number of milliseconds that may not be exceeded by a monitor probe, regardless of Allowed Divergence.
   late final pulumi.Output<int> adaptiveLimit;
-
   /// Specifies the location in the LDAP tree from which the monitor starts the health check
   late final pulumi.Output<String?> base;
-
   /// Specifies whether the system will query the LDAP servers pointed to by any referrals in the query results.
   late final pulumi.Output<String> chaseReferrals;
-
   /// Specifies, when enabled, that the SSL options setting (in OpenSSL) is set to ALL. Accepts 'enabled' or 'disabled' values, the default value is 'enabled'.
   late final pulumi.Output<String?> compatibility;
-
   /// Custom parent monitor for the system to use for setting initial values for the new monitor.
   late final pulumi.Output<String?> customParent;
-
   /// Specifies the database in which the user is created
   late final pulumi.Output<String?> database;
-
   /// Specify an alias address for monitoring
   late final pulumi.Output<String> destination;
-
   /// Specifies the domain name to check, for example, Domain is allowed only in case of Parent as /Common/smtp.
   late final pulumi.Output<String?> domain;
-
   /// Specifies the full path and file name of the file that the system attempts to download. The health check is successful if the system can download the file.
   late final pulumi.Output<String?> filename;
-
   /// Specifies an LDAP key for which the monitor searches
   late final pulumi.Output<String?> filter;
-
   /// Specifies, in seconds, the frequency at which the system issues the monitor check when either the resource is down or the status of the resource is unknown,value of `interval` should be always less than `timeout`. Default is `5`.
   late final pulumi.Output<int> interval;
-
   /// Displays the differentiated services code point (DSCP).The default is `0 (zero)`.
   late final pulumi.Output<int> ipDscp;
-
   /// Specifies whether the target must include attributes in its response to be considered up. The options are no (Specifies that the system performs only a one-level search (based on the Filter setting), and does not require that the target returns any attributes.) and yes (Specifies that the system performs a sub-tree search, and if the target returns no attributes, the target is considered down.)
   late final pulumi.Output<String?> mandatoryAttributes;
-
   /// Specifies whether the system automatically changes the status of a resource to Enabled at the next successful monitor check.
   late final pulumi.Output<String> manualResume;
-
   /// Specifies the data transfer process (DTP) mode. The default value is passive. The options are passive (Specifies that the monitor sends a data transfer request to the FTP server. When the FTP server receives the request, the FTP server then initiates and establishes the data connection.) and active (Specifies that the monitor initiates and establishes the data connection with the FTP server.).
   late final pulumi.Output<String> mode;
-
   /// Specifies the Name of the LTM Monitor.Name of Monitor should be full path,full path is the combination of the `partition + monitor name`,For ex:`/Common/test-ltm-monitor`.
   late final pulumi.Output<String> name;
-
   /// Parent monitor for the system to use for setting initial values for the new monitor.
   late final pulumi.Output<String> parent;
-
   /// Specifies the password if the monitored target requires authentication
   late final pulumi.Output<String?> password;
-
   /// Specifies the regular expression representing the text string that the monitor looks for in the returned resource.
   late final pulumi.Output<String?> receive;
-
   /// The system marks the node or pool member disabled when its response matches Receive Disable String but not Receive String.
   late final pulumi.Output<String?> receiveDisable;
-
   /// Instructs the system to mark the target resource down when the test is successful.
   late final pulumi.Output<String> reverse;
-
   /// Specifies the secure communications protocol that the monitor uses to communicate with the target. The options are none (Specifies that the system does not use a security protocol for communications with the target.), ssl (Specifies that the system uses the SSL protocol for communications with the target.), and tls (Specifies that the system uses the TLS protocol for communications with the target.)
   late final pulumi.Output<String?> security;
-
   /// Specifies the text string that the monitor sends to the target object.
   late final pulumi.Output<String> send;
-
   /// Specifies the ssl profile for the monitor. It only makes sense when the parent is `/Common/https`
   late final pulumi.Output<String?> sslProfile;
-
   /// Specifies the number of seconds to wait after a resource first responds correctly to the monitor before setting the resource to up.
   late final pulumi.Output<int> timeUntilUp;
-
   /// Specifies the number of seconds the target has in which to respond to the monitor request. The default is `16` seconds
   late final pulumi.Output<int> timeout;
-
   /// Specifies whether the monitor operates in transparent mode.
   late final pulumi.Output<String> transparent;
-
   /// Specifies the interval for the system to use to perform the health check when a resource is up. The default is `0(Disabled)`
   late final pulumi.Output<int> upInterval;
-
   /// Specifies the user name if the monitored target requires authentication
   late final pulumi.Output<String?> username;
 
@@ -539,11 +510,11 @@ class Monitor extends pulumi.CustomResource {
     MonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/monitor:Monitor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/monitor:Monitor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adaptive = registerOutput<String>('adaptive');
     adaptiveLimit = registerOutput<int>('adaptiveLimit');
     base = registerOutput<String?>('base');
@@ -594,11 +565,11 @@ class Monitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/monitor:Monitor',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/monitor:Monitor',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adaptive = registerOutput<String>('adaptive');
     adaptiveLimit = registerOutput<int>('adaptiveLimit');
     base = registerOutput<String?>('base');

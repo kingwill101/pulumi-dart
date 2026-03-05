@@ -15,23 +15,17 @@ class NetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRa
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'from': ?from, 'to': ?to};
+    return <String, dynamic>{
+      'from': ?from,
+      'to': ?to,
+    };
   }
 
-  factory NetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange(
-      from: (() {
-        final guardedValue = map['from'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      to: (() {
-        final guardedValue = map['to'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      from: (() { final guardedValue = map['from']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      to: (() { final guardedValue = map['to']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

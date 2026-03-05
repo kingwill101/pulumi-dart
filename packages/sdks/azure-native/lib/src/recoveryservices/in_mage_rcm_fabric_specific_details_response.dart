@@ -15,54 +15,37 @@ import 'reprotect_agent_details_response.dart';
 class InMageRcmFabricSpecificDetailsResponse {
   /// The list of agent details.
   final pulumi.Input<List<AgentDetailsResponse>> agentDetails;
-
   /// The control plane Uri.
   final pulumi.Input<String> controlPlaneUri;
-
   /// The data plane Uri.
   final pulumi.Input<String> dataPlaneUri;
-
   /// The list of DRAs.
   final pulumi.Input<List<DraDetailsResponse>> dras;
-
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'InMageRcm'.
   final pulumi.Input<String> instanceType;
-
   /// The list of Mars agents.
   final pulumi.Input<List<MarsAgentDetailsResponse>> marsAgents;
-
   /// The ARM Id of the physical site.
   final pulumi.Input<String> physicalSiteId;
-
   /// The list of process servers.
   final pulumi.Input<List<ProcessServerDetailsResponse>> processServers;
-
   /// The list of push installers.
   final pulumi.Input<List<PushInstallerDetailsResponse>> pushInstallers;
-
   /// The list of RCM proxies.
   final pulumi.Input<List<RcmProxyDetailsResponse>> rcmProxies;
-
   /// The list of replication agents.
   final pulumi.Input<List<ReplicationAgentDetailsResponse>> replicationAgents;
-
   /// The list of reprotect agents.
   final pulumi.Input<List<ReprotectAgentDetailsResponse>> reprotectAgents;
-
   /// The service container Id.
   final pulumi.Input<String> serviceContainerId;
-
   /// The service endpoint.
   final pulumi.Input<String> serviceEndpoint;
-
   /// The service resource Id.
   final pulumi.Input<String> serviceResourceId;
-
   /// The source agent identity details.
-  final pulumi.Input<IdentityProviderDetailsResponse>?
-  sourceAgentIdentityDetails;
-
+  final pulumi.Input<IdentityProviderDetailsResponse>? sourceAgentIdentityDetails;
   /// The ARM Id of the VMware site.
   final pulumi.Input<String> vmwareSiteId;
 
@@ -106,207 +89,46 @@ class InMageRcmFabricSpecificDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentDetails':
-          pulumi.Input.mapInputValue<
-            List<AgentDetailsResponse>,
-            List<Map<String, dynamic>>
-          >(
-            agentDetails,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AgentDetailsResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'agentDetails': pulumi.Input.mapInputValue<List<AgentDetailsResponse>, List<Map<String, dynamic>>>(agentDetails, (value) => pulumi.Input.encodeList<AgentDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'controlPlaneUri': controlPlaneUri,
       'dataPlaneUri': dataPlaneUri,
-      'dras':
-          pulumi.Input.mapInputValue<
-            List<DraDetailsResponse>,
-            List<Map<String, dynamic>>
-          >(
-            dras,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DraDetailsResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'dras': pulumi.Input.mapInputValue<List<DraDetailsResponse>, List<Map<String, dynamic>>>(dras, (value) => pulumi.Input.encodeList<DraDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'instanceType': instanceType,
-      'marsAgents':
-          pulumi.Input.mapInputValue<
-            List<MarsAgentDetailsResponse>,
-            List<Map<String, dynamic>>
-          >(
-            marsAgents,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MarsAgentDetailsResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'marsAgents': pulumi.Input.mapInputValue<List<MarsAgentDetailsResponse>, List<Map<String, dynamic>>>(marsAgents, (value) => pulumi.Input.encodeList<MarsAgentDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'physicalSiteId': physicalSiteId,
-      'processServers':
-          pulumi.Input.mapInputValue<
-            List<ProcessServerDetailsResponse>,
-            List<Map<String, dynamic>>
-          >(
-            processServers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ProcessServerDetailsResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'pushInstallers':
-          pulumi.Input.mapInputValue<
-            List<PushInstallerDetailsResponse>,
-            List<Map<String, dynamic>>
-          >(
-            pushInstallers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PushInstallerDetailsResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'rcmProxies':
-          pulumi.Input.mapInputValue<
-            List<RcmProxyDetailsResponse>,
-            List<Map<String, dynamic>>
-          >(
-            rcmProxies,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RcmProxyDetailsResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'replicationAgents':
-          pulumi.Input.mapInputValue<
-            List<ReplicationAgentDetailsResponse>,
-            List<Map<String, dynamic>>
-          >(
-            replicationAgents,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReplicationAgentDetailsResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'reprotectAgents':
-          pulumi.Input.mapInputValue<
-            List<ReprotectAgentDetailsResponse>,
-            List<Map<String, dynamic>>
-          >(
-            reprotectAgents,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReprotectAgentDetailsResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'processServers': pulumi.Input.mapInputValue<List<ProcessServerDetailsResponse>, List<Map<String, dynamic>>>(processServers, (value) => pulumi.Input.encodeList<ProcessServerDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pushInstallers': pulumi.Input.mapInputValue<List<PushInstallerDetailsResponse>, List<Map<String, dynamic>>>(pushInstallers, (value) => pulumi.Input.encodeList<PushInstallerDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rcmProxies': pulumi.Input.mapInputValue<List<RcmProxyDetailsResponse>, List<Map<String, dynamic>>>(rcmProxies, (value) => pulumi.Input.encodeList<RcmProxyDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'replicationAgents': pulumi.Input.mapInputValue<List<ReplicationAgentDetailsResponse>, List<Map<String, dynamic>>>(replicationAgents, (value) => pulumi.Input.encodeList<ReplicationAgentDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'reprotectAgents': pulumi.Input.mapInputValue<List<ReprotectAgentDetailsResponse>, List<Map<String, dynamic>>>(reprotectAgents, (value) => pulumi.Input.encodeList<ReprotectAgentDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceContainerId': serviceContainerId,
       'serviceEndpoint': serviceEndpoint,
       'serviceResourceId': serviceResourceId,
-      'sourceAgentIdentityDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            IdentityProviderDetailsResponse,
-            Map<String, dynamic>
-          >(sourceAgentIdentityDetails, (value) => value.toMap()),
+      'sourceAgentIdentityDetails': ?pulumi.Input.mapOptionalInputValue<IdentityProviderDetailsResponse, Map<String, dynamic>>(sourceAgentIdentityDetails, (value) => value.toMap()),
       'vmwareSiteId': vmwareSiteId,
     };
   }
 
-  factory InMageRcmFabricSpecificDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InMageRcmFabricSpecificDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmFabricSpecificDetailsResponse(
-      agentDetails: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<AgentDetailsResponse>(
-          map['agentDetails']!,
-          (value) => AgentDetailsResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      agentDetails: pulumi.Input.fromValue(pulumi.Input.decodeList<AgentDetailsResponse>(map['agentDetails']!, (value) => AgentDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))),
       controlPlaneUri: pulumi.Input.fromValue(map['controlPlaneUri'] as String),
       dataPlaneUri: pulumi.Input.fromValue(map['dataPlaneUri'] as String),
-      dras: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<DraDetailsResponse>(
-          map['dras']!,
-          (value) => DraDetailsResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      dras: pulumi.Input.fromValue(pulumi.Input.decodeList<DraDetailsResponse>(map['dras']!, (value) => DraDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      marsAgents: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<MarsAgentDetailsResponse>(
-          map['marsAgents']!,
-          (value) => MarsAgentDetailsResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      marsAgents: pulumi.Input.fromValue(pulumi.Input.decodeList<MarsAgentDetailsResponse>(map['marsAgents']!, (value) => MarsAgentDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))),
       physicalSiteId: pulumi.Input.fromValue(map['physicalSiteId'] as String),
-      processServers: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ProcessServerDetailsResponse>(
-          map['processServers']!,
-          (value) => ProcessServerDetailsResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      pushInstallers: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<PushInstallerDetailsResponse>(
-          map['pushInstallers']!,
-          (value) => PushInstallerDetailsResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      rcmProxies: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<RcmProxyDetailsResponse>(
-          map['rcmProxies']!,
-          (value) => RcmProxyDetailsResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      replicationAgents: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ReplicationAgentDetailsResponse>(
-          map['replicationAgents']!,
-          (value) => ReplicationAgentDetailsResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      reprotectAgents: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ReprotectAgentDetailsResponse>(
-          map['reprotectAgents']!,
-          (value) => ReprotectAgentDetailsResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      serviceContainerId: pulumi.Input.fromValue(
-        map['serviceContainerId'] as String,
-      ),
+      processServers: pulumi.Input.fromValue(pulumi.Input.decodeList<ProcessServerDetailsResponse>(map['processServers']!, (value) => ProcessServerDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      pushInstallers: pulumi.Input.fromValue(pulumi.Input.decodeList<PushInstallerDetailsResponse>(map['pushInstallers']!, (value) => PushInstallerDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      rcmProxies: pulumi.Input.fromValue(pulumi.Input.decodeList<RcmProxyDetailsResponse>(map['rcmProxies']!, (value) => RcmProxyDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      replicationAgents: pulumi.Input.fromValue(pulumi.Input.decodeList<ReplicationAgentDetailsResponse>(map['replicationAgents']!, (value) => ReplicationAgentDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      reprotectAgents: pulumi.Input.fromValue(pulumi.Input.decodeList<ReprotectAgentDetailsResponse>(map['reprotectAgents']!, (value) => ReprotectAgentDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      serviceContainerId: pulumi.Input.fromValue(map['serviceContainerId'] as String),
       serviceEndpoint: pulumi.Input.fromValue(map['serviceEndpoint'] as String),
-      serviceResourceId: pulumi.Input.fromValue(
-        map['serviceResourceId'] as String,
-      ),
-      sourceAgentIdentityDetails: (() {
-        final guardedValue = map['sourceAgentIdentityDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IdentityProviderDetailsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      serviceResourceId: pulumi.Input.fromValue(map['serviceResourceId'] as String),
+      sourceAgentIdentityDetails: (() { final guardedValue = map['sourceAgentIdentityDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IdentityProviderDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       vmwareSiteId: pulumi.Input.fromValue(map['vmwareSiteId'] as String),
     );
   }
 }
+

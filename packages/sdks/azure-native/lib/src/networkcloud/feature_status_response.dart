@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureStatusResponse {
   /// The status representing the state of this feature.
   final pulumi.Input<String> detailedStatus;
-
   /// The descriptive message about the current detailed status.
   final pulumi.Input<String> detailedStatusMessage;
-
   /// The name of the feature.
   final pulumi.Input<String> name;
-
   /// The version of the feature.
   final pulumi.Input<String> version;
 
@@ -39,11 +36,10 @@ class FeatureStatusResponse {
   factory FeatureStatusResponse.fromMap(Map<String, dynamic> map) {
     return FeatureStatusResponse(
       detailedStatus: pulumi.Input.fromValue(map['detailedStatus'] as String),
-      detailedStatusMessage: pulumi.Input.fromValue(
-        map['detailedStatusMessage'] as String,
-      ),
+      detailedStatusMessage: pulumi.Input.fromValue(map['detailedStatusMessage'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

@@ -11,32 +11,23 @@ import 'user_property.dart';
 class SwitchActivity {
   /// List of cases that correspond to expected values of the 'on' property. This is an optional property and if not provided, the activity will execute activities provided in defaultActivities.
   final pulumi.Input<List<SwitchCase>>? cases;
-
   /// List of activities to execute if no case condition is satisfied. This is an optional property and if not provided, the activity will exit without any action.
   final pulumi.Input<List<AppendVariableActivity>>? defaultActivities;
-
   /// Activity depends on condition.
   final pulumi.Input<List<ActivityDependency>>? dependsOn;
-
   /// Activity description.
   final pulumi.Input<String>? description;
-
   /// Activity name.
   final pulumi.Input<String> name;
-
   /// An expression that would evaluate to a string or integer. This is used to determine the block of activities in cases that will be executed.
   final pulumi.Input<Expression> on;
-
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
   final pulumi.Input<String>? onInactiveMarkAs;
-
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
   final pulumi.Input<String>? state;
-
   /// Type of activity.
   /// Expected value is 'Switch'.
   final pulumi.Input<String> type;
-
   /// Activity user properties.
   final pulumi.Input<List<UserProperty>>? userProperties;
 
@@ -66,134 +57,32 @@ class SwitchActivity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cases':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SwitchCase>,
-            List<Map<String, dynamic>>
-          >(
-            cases,
-            (value) =>
-                pulumi.Input.encodeList<SwitchCase, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'defaultActivities':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AppendVariableActivity>,
-            List<Map<String, dynamic>>
-          >(
-            defaultActivities,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AppendVariableActivity,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'dependsOn':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ActivityDependency>,
-            List<Map<String, dynamic>>
-          >(
-            dependsOn,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ActivityDependency,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'cases': ?pulumi.Input.mapOptionalInputValue<List<SwitchCase>, List<Map<String, dynamic>>>(cases, (value) => pulumi.Input.encodeList<SwitchCase, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultActivities': ?pulumi.Input.mapOptionalInputValue<List<AppendVariableActivity>, List<Map<String, dynamic>>>(defaultActivities, (value) => pulumi.Input.encodeList<AppendVariableActivity, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependency>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'name': name,
-      'on': pulumi.Input.mapInputValue<Expression, Map<String, dynamic>>(
-        on,
-        (value) => value.toMap(),
-      ),
+      'on': pulumi.Input.mapInputValue<Expression, Map<String, dynamic>>(on, (value) => value.toMap()),
       'onInactiveMarkAs': ?onInactiveMarkAs,
       'state': ?state,
       'type': type,
-      'userProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<UserProperty>,
-            List<Map<String, dynamic>>
-          >(
-            userProperties,
-            (value) =>
-                pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserProperty>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SwitchActivity.fromMap(Map<String, dynamic> map) {
     return SwitchActivity(
-      cases: (() {
-        final guardedValue = map['cases'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SwitchCase>(
-            guardedValue,
-            (value) =>
-                SwitchCase.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      defaultActivities: (() {
-        final guardedValue = map['defaultActivities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AppendVariableActivity>(
-            guardedValue,
-            (value) => AppendVariableActivity.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      dependsOn: (() {
-        final guardedValue = map['dependsOn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ActivityDependency>(
-            guardedValue,
-            (value) => ActivityDependency.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cases: (() { final guardedValue = map['cases']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SwitchCase>(guardedValue, (value) => SwitchCase.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      defaultActivities: (() { final guardedValue = map['defaultActivities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppendVariableActivity>(guardedValue, (value) => AppendVariableActivity.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependency>(guardedValue, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      on: pulumi.Input.fromValue(
-        Expression.fromMap((map['on']! as Map).cast<String, dynamic>()),
-      ),
-      onInactiveMarkAs: (() {
-        final guardedValue = map['onInactiveMarkAs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      on: pulumi.Input.fromValue(Expression.fromMap((map['on']! as Map).cast<String, dynamic>())),
+      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      userProperties: (() {
-        final guardedValue = map['userProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<UserProperty>(
-            guardedValue,
-            (value) =>
-                UserProperty.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      userProperties: (() { final guardedValue = map['userProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserProperty>(guardedValue, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

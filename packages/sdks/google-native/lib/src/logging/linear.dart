@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Linear {
   /// Must be greater than 0.
   final pulumi.Input<int>? numFiniteBuckets;
-
   /// Lower bound of the first bucket.
   final pulumi.Input<double>? offset;
-
   /// Must be greater than 0.
   final pulumi.Input<double>? width;
 
@@ -17,7 +15,11 @@ class Linear {
   /// [numFiniteBuckets] Must be greater than 0.
   /// [offset] Lower bound of the first bucket.
   /// [width] Must be greater than 0.
-  Linear({this.numFiniteBuckets, this.offset, this.width});
+  Linear({
+    this.numFiniteBuckets,
+    this.offset,
+    this.width,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class Linear {
 
   factory Linear.fromMap(Map<String, dynamic> map) {
     return Linear(
-      numFiniteBuckets: (() {
-        final guardedValue = map['numFiniteBuckets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      offset: (() {
-        final guardedValue = map['offset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      width: (() {
-        final guardedValue = map['width'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      numFiniteBuckets: (() { final guardedValue = map['numFiniteBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      offset: (() { final guardedValue = map['offset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      width: (() { final guardedValue = map['width']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

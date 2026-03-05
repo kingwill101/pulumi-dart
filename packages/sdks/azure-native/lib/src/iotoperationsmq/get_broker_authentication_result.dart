@@ -9,34 +9,24 @@ import 'system_data_response.dart';
 class GetBrokerAuthenticationResult {
   /// The list of authentication methods supported by the Authentication Resource. For each array element, NOTE - Enum only authenticator type supported.
   final List<BrokerAuthenticatorMethodsResponse> authenticationMethods;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Extended Location
   final ExtendedLocationPropertyResponse extendedLocation;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The array of listener Resources it supports.
   final List<String> listenerRef;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The status of the last operation.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -68,11 +58,7 @@ class GetBrokerAuthenticationResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authenticationMethods':
-          pulumi.Input.encodeList<
-            BrokerAuthenticatorMethodsResponse,
-            Map<String, dynamic>
-          >(authenticationMethods, (value) => value.toMap()),
+      'authenticationMethods': pulumi.Input.encodeList<BrokerAuthenticatorMethodsResponse, Map<String, dynamic>>(authenticationMethods, (value) => value.toMap()),
       'azureApiVersion': azureApiVersion,
       'extendedLocation': extendedLocation.toMap(),
       'id': id,
@@ -88,31 +74,18 @@ class GetBrokerAuthenticationResult {
 
   factory GetBrokerAuthenticationResult.fromMap(Map<String, dynamic> map) {
     return GetBrokerAuthenticationResult(
-      authenticationMethods:
-          pulumi.Input.decodeList<BrokerAuthenticatorMethodsResponse>(
-            map['authenticationMethods']!,
-            (value) => BrokerAuthenticatorMethodsResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      authenticationMethods: pulumi.Input.decodeList<BrokerAuthenticatorMethodsResponse>(map['authenticationMethods']!, (value) => BrokerAuthenticatorMethodsResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: ExtendedLocationPropertyResponse.fromMap(
-        (map['extendedLocation']! as Map).cast<String, dynamic>(),
-      ),
+      extendedLocation: ExtendedLocationPropertyResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       listenerRef: (map['listenerRef'] as List).cast<String>(),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

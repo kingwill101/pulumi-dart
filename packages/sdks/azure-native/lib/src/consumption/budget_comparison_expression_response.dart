@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BudgetComparisonExpressionResponse {
   /// The name of the column to use in comparison.
   final pulumi.Input<String> name;
-
   /// The operator to use for comparison.
   final pulumi.Input<String> operator;
-
   /// Array of values to use for comparison
   final pulumi.Input<List<String>> values;
 
@@ -39,3 +37,4 @@ class BudgetComparisonExpressionResponse {
     );
   }
 }
+

@@ -20,3 +20,4 @@ enum HashingAlgorithm {
     throw ArgumentError('Unknown HashingAlgorithm value: $value');
   }
 }
+

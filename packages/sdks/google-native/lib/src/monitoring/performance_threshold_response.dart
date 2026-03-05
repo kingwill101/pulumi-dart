@@ -8,10 +8,8 @@ import 'request_based_sli_response.dart';
 class PerformanceThresholdResponse {
   /// BasicSli to evaluate to judge window quality.
   final pulumi.Input<BasicSliResponse> basicSliPerformance;
-
   /// RequestBasedSli to evaluate to judge window quality.
   final pulumi.Input<RequestBasedSliResponse> performance;
-
   /// If window performance &gt;= threshold, the window is counted as good.
   final pulumi.Input<double> threshold;
 
@@ -27,33 +25,18 @@ class PerformanceThresholdResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicSliPerformance':
-          pulumi.Input.mapInputValue<BasicSliResponse, Map<String, dynamic>>(
-            basicSliPerformance,
-            (value) => value.toMap(),
-          ),
-      'performance':
-          pulumi.Input.mapInputValue<
-            RequestBasedSliResponse,
-            Map<String, dynamic>
-          >(performance, (value) => value.toMap()),
+      'basicSliPerformance': pulumi.Input.mapInputValue<BasicSliResponse, Map<String, dynamic>>(basicSliPerformance, (value) => value.toMap()),
+      'performance': pulumi.Input.mapInputValue<RequestBasedSliResponse, Map<String, dynamic>>(performance, (value) => value.toMap()),
       'threshold': threshold,
     };
   }
 
   factory PerformanceThresholdResponse.fromMap(Map<String, dynamic> map) {
     return PerformanceThresholdResponse(
-      basicSliPerformance: pulumi.Input.fromValue(
-        BasicSliResponse.fromMap(
-          (map['basicSliPerformance']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      performance: pulumi.Input.fromValue(
-        RequestBasedSliResponse.fromMap(
-          (map['performance']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      basicSliPerformance: pulumi.Input.fromValue(BasicSliResponse.fromMap((map['basicSliPerformance']! as Map).cast<String, dynamic>())),
+      performance: pulumi.Input.fromValue(RequestBasedSliResponse.fromMap((map['performance']! as Map).cast<String, dynamic>())),
       threshold: pulumi.Input.fromValue(map['threshold'] as double),
     );
   }
 }
+

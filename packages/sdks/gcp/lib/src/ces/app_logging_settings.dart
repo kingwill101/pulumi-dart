@@ -10,24 +10,16 @@ import 'app_logging_settings_redaction_config.dart';
 class AppLoggingSettings {
   /// Configuration for how the audio interactions should be recorded.
   /// Structure is documented below.
-  final pulumi.Input<AppLoggingSettingsAudioRecordingConfig>?
-  audioRecordingConfig;
-
+  final pulumi.Input<AppLoggingSettingsAudioRecordingConfig>? audioRecordingConfig;
   /// Settings to describe the BigQuery export behaviors for the app.
   /// Structure is documented below.
-  final pulumi.Input<AppLoggingSettingsBigqueryExportSettings>?
-  bigqueryExportSettings;
-
+  final pulumi.Input<AppLoggingSettingsBigqueryExportSettings>? bigqueryExportSettings;
   /// Settings to describe the Cloud Logging behaviors for the app.
   /// Structure is documented below.
-  final pulumi.Input<AppLoggingSettingsCloudLoggingSettings>?
-  cloudLoggingSettings;
-
+  final pulumi.Input<AppLoggingSettingsCloudLoggingSettings>? cloudLoggingSettings;
   /// Settings to describe the conversation logging behaviors for the app.
   /// Structure is documented below.
-  final pulumi.Input<AppLoggingSettingsConversationLoggingSettings>?
-  conversationLoggingSettings;
-
+  final pulumi.Input<AppLoggingSettingsConversationLoggingSettings>? conversationLoggingSettings;
   /// Configuration to instruct how sensitive data should be handled.
   /// Structure is documented below.
   final pulumi.Input<AppLoggingSettingsRedactionConfig>? redactionConfig;
@@ -48,81 +40,22 @@ class AppLoggingSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioRecordingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AppLoggingSettingsAudioRecordingConfig,
-            Map<String, dynamic>
-          >(audioRecordingConfig, (value) => value.toMap()),
-      'bigqueryExportSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            AppLoggingSettingsBigqueryExportSettings,
-            Map<String, dynamic>
-          >(bigqueryExportSettings, (value) => value.toMap()),
-      'cloudLoggingSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            AppLoggingSettingsCloudLoggingSettings,
-            Map<String, dynamic>
-          >(cloudLoggingSettings, (value) => value.toMap()),
-      'conversationLoggingSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            AppLoggingSettingsConversationLoggingSettings,
-            Map<String, dynamic>
-          >(conversationLoggingSettings, (value) => value.toMap()),
-      'redactionConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AppLoggingSettingsRedactionConfig,
-            Map<String, dynamic>
-          >(redactionConfig, (value) => value.toMap()),
+      'audioRecordingConfig': ?pulumi.Input.mapOptionalInputValue<AppLoggingSettingsAudioRecordingConfig, Map<String, dynamic>>(audioRecordingConfig, (value) => value.toMap()),
+      'bigqueryExportSettings': ?pulumi.Input.mapOptionalInputValue<AppLoggingSettingsBigqueryExportSettings, Map<String, dynamic>>(bigqueryExportSettings, (value) => value.toMap()),
+      'cloudLoggingSettings': ?pulumi.Input.mapOptionalInputValue<AppLoggingSettingsCloudLoggingSettings, Map<String, dynamic>>(cloudLoggingSettings, (value) => value.toMap()),
+      'conversationLoggingSettings': ?pulumi.Input.mapOptionalInputValue<AppLoggingSettingsConversationLoggingSettings, Map<String, dynamic>>(conversationLoggingSettings, (value) => value.toMap()),
+      'redactionConfig': ?pulumi.Input.mapOptionalInputValue<AppLoggingSettingsRedactionConfig, Map<String, dynamic>>(redactionConfig, (value) => value.toMap()),
     };
   }
 
   factory AppLoggingSettings.fromMap(Map<String, dynamic> map) {
     return AppLoggingSettings(
-      audioRecordingConfig: (() {
-        final guardedValue = map['audioRecordingConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AppLoggingSettingsAudioRecordingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      bigqueryExportSettings: (() {
-        final guardedValue = map['bigqueryExportSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AppLoggingSettingsBigqueryExportSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      cloudLoggingSettings: (() {
-        final guardedValue = map['cloudLoggingSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AppLoggingSettingsCloudLoggingSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      conversationLoggingSettings: (() {
-        final guardedValue = map['conversationLoggingSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AppLoggingSettingsConversationLoggingSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      redactionConfig: (() {
-        final guardedValue = map['redactionConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AppLoggingSettingsRedactionConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      audioRecordingConfig: (() { final guardedValue = map['audioRecordingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppLoggingSettingsAudioRecordingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      bigqueryExportSettings: (() { final guardedValue = map['bigqueryExportSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppLoggingSettingsBigqueryExportSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      cloudLoggingSettings: (() { final guardedValue = map['cloudLoggingSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppLoggingSettingsCloudLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      conversationLoggingSettings: (() { final guardedValue = map['conversationLoggingSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppLoggingSettingsConversationLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      redactionConfig: (() { final guardedValue = map['redactionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppLoggingSettingsRedactionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

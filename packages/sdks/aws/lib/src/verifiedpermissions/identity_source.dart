@@ -498,13 +498,10 @@ import 'identity_source_state.dart';
 class IdentitySource extends pulumi.CustomResource {
   /// Specifies the details required to communicate with the identity provider (IdP) associated with this identity source. See Configuration below.
   late final pulumi.Output<IdentitySourceConfiguration> configuration;
-
   /// Specifies the ID of the policy store in which you want to store this identity source.
   late final pulumi.Output<String> policyStoreId;
-
   /// Specifies the namespace and data type of the principals generated for identities authenticated by the new identity source.
   late final pulumi.Output<String> principalEntityType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -517,21 +514,12 @@ class IdentitySource extends pulumi.CustomResource {
     IdentitySourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:verifiedpermissions/identitySource:IdentitySource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configuration = registerOutput<IdentitySourceConfiguration>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentitySourceConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:verifiedpermissions/identitySource:IdentitySource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configuration = registerOutput<IdentitySourceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentitySourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyStoreId = registerOutput<String>('policyStoreId');
     principalEntityType = registerOutput<String>('principalEntityType');
     region = registerOutput<String>('region');
@@ -555,21 +543,12 @@ class IdentitySource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:verifiedpermissions/identitySource:IdentitySource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configuration = registerOutput<IdentitySourceConfiguration>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentitySourceConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:verifiedpermissions/identitySource:IdentitySource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configuration = registerOutput<IdentitySourceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentitySourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyStoreId = registerOutput<String>('policyStoreId');
     principalEntityType = registerOutput<String>('principalEntityType');
     region = registerOutput<String>('region');

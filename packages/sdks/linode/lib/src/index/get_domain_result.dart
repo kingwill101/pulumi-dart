@@ -1,46 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDomain.
 class GetDomainResult {
   /// The list of IPs that may perform a zone transfer for this Domain.
   final List<String> axfrIps;
-
   /// A description for this Domain.
   final String description;
-
   /// The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
   final String? domain;
-
   /// The amount of time in seconds that may pass before this Domain is no longer authoritative.
   final int expireSec;
-
   /// The group this Domain belongs to.
   final String group;
-
   /// The unique ID of this Domain.
   final int? id;
-
   /// The IP addresses representing the master DNS for this Domain.
   final List<String> masterIps;
-
   /// The amount of time in seconds before this Domain should be refreshed.
   final int refreshSec;
-
   /// The interval, in seconds, at which a failed refresh should be retried.
   final int retrySec;
-
   /// Start of Authority email address.
   final String soaEmail;
-
   /// Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
   final String status;
-
   /// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   final List<String> tags;
-
   /// 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
   final int ttlSec;
-
   /// If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
   final String type;
 
@@ -99,18 +87,10 @@ class GetDomainResult {
     return GetDomainResult(
       axfrIps: (map['axfrIps'] as List).cast<String>(),
       description: map['description'] as String,
-      domain: (() {
-        final guardedValue = map['domain'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return guardedValue as String; })(),
       expireSec: map['expireSec'] as int,
       group: map['group'] as String,
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as int; })(),
       masterIps: (map['masterIps'] as List).cast<String>(),
       refreshSec: map['refreshSec'] as int,
       retrySec: map['retrySec'] as int,
@@ -122,3 +102,4 @@ class GetDomainResult {
     );
   }
 }
+

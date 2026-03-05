@@ -8,17 +8,20 @@ class RecommendationPreferencesExternalMetricsPreference {
 
   /// Creates a new [RecommendationPreferencesExternalMetricsPreference].
   /// [source] The source options for external metrics preferences. Valid values: `Datadog`, `Dynatrace`, `NewRelic`, `Instana`.
-  RecommendationPreferencesExternalMetricsPreference({required this.source});
+  RecommendationPreferencesExternalMetricsPreference({
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'source': source};
+    return <String, dynamic>{
+      'source': source,
+    };
   }
 
-  factory RecommendationPreferencesExternalMetricsPreference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RecommendationPreferencesExternalMetricsPreference.fromMap(Map<String, dynamic> map) {
     return RecommendationPreferencesExternalMetricsPreference(
       source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
+

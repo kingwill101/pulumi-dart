@@ -7,7 +7,6 @@ import 'emission_policy_destination.dart';
 class EmissionPoliciesPropertiesFormat {
   /// Emission policy destinations.
   final pulumi.Input<List<EmissionPolicyDestination>>? emissionDestinations;
-
   /// Emission format type.
   final pulumi.Input<String>? emissionType;
 
@@ -21,41 +20,16 @@ class EmissionPoliciesPropertiesFormat {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'emissionDestinations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EmissionPolicyDestination>,
-            List<Map<String, dynamic>>
-          >(
-            emissionDestinations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EmissionPolicyDestination,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'emissionDestinations': ?pulumi.Input.mapOptionalInputValue<List<EmissionPolicyDestination>, List<Map<String, dynamic>>>(emissionDestinations, (value) => pulumi.Input.encodeList<EmissionPolicyDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
       'emissionType': ?emissionType,
     };
   }
 
   factory EmissionPoliciesPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return EmissionPoliciesPropertiesFormat(
-      emissionDestinations: (() {
-        final guardedValue = map['emissionDestinations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EmissionPolicyDestination>(
-            guardedValue,
-            (value) => EmissionPolicyDestination.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      emissionType: (() {
-        final guardedValue = map['emissionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      emissionDestinations: (() { final guardedValue = map['emissionDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EmissionPolicyDestination>(guardedValue, (value) => EmissionPolicyDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      emissionType: (() { final guardedValue = map['emissionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

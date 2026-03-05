@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SwaggerSpecificationResponse {
   /// The api versions.
   final pulumi.Input<List<String>>? apiVersions;
-
   /// The swagger spec folder uri.
   final pulumi.Input<String>? swaggerSpecFolderUri;
 
   /// Creates a new [SwaggerSpecificationResponse].
   /// [apiVersions] The api versions.
   /// [swaggerSpecFolderUri] The swagger spec folder uri.
-  SwaggerSpecificationResponse({this.apiVersions, this.swaggerSpecFolderUri});
+  SwaggerSpecificationResponse({
+    this.apiVersions,
+    this.swaggerSpecFolderUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,16 +25,9 @@ class SwaggerSpecificationResponse {
 
   factory SwaggerSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return SwaggerSpecificationResponse(
-      apiVersions: (() {
-        final guardedValue = map['apiVersions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      swaggerSpecFolderUri: (() {
-        final guardedValue = map['swaggerSpecFolderUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiVersions: (() { final guardedValue = map['apiVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      swaggerSpecFolderUri: (() { final guardedValue = map['swaggerSpecFolderUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

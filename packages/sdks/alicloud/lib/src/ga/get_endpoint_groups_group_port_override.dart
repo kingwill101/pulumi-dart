@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointGroupsGroupPortOverride {
   /// Forwarding port.
   final pulumi.Input<int> endpointPort;
-
   /// Listener port.
   final pulumi.Input<int> listenerPort;
 
@@ -31,3 +30,4 @@ class GetEndpointGroupsGroupPortOverride {
     );
   }
 }
+

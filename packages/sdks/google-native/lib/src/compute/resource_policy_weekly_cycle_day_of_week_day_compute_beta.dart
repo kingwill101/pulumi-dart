@@ -12,17 +12,13 @@ enum ResourcePolicyWeeklyCycleDayOfWeekDayComputeBeta {
   const ResourcePolicyWeeklyCycleDayOfWeekDayComputeBeta(this.wireValue);
   final String wireValue;
 
-  static ResourcePolicyWeeklyCycleDayOfWeekDayComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in ResourcePolicyWeeklyCycleDayOfWeekDayComputeBeta.values) {
+  static ResourcePolicyWeeklyCycleDayOfWeekDayComputeBeta fromValue(String value) {
+    for (final item in ResourcePolicyWeeklyCycleDayOfWeekDayComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ResourcePolicyWeeklyCycleDayOfWeekDayComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown ResourcePolicyWeeklyCycleDayOfWeekDayComputeBeta value: $value');
   }
 }
+

@@ -15,3 +15,4 @@ enum PortType {
     throw ArgumentError('Unknown PortType value: $value');
   }
 }
+

@@ -333,19 +333,14 @@ import 'trust_store_state.dart';
 class TrustStore extends pulumi.CustomResource {
   /// List of ARNs of the web portals associated with the trust store.
   late final pulumi.Output<List<String>> associatedPortalArns;
-
   /// Set of certificates to include in the trust store. See Certificate below.
   late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// ARN of the trust store.
   late final pulumi.Output<String> trustStoreArn;
 
@@ -358,11 +353,11 @@ class TrustStore extends pulumi.CustomResource {
     TrustStoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspacesweb/trustStore:TrustStore',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspacesweb/trustStore:TrustStore',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
     certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
     region = registerOutput<String>('region');
@@ -389,11 +384,11 @@ class TrustStore extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspacesweb/trustStore:TrustStore',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspacesweb/trustStore:TrustStore',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
     certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
     region = registerOutput<String>('region');

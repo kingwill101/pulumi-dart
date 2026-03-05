@@ -394,19 +394,14 @@ import 'bucket_intelligent_tiering_configuration_state.dart';
 class BucketIntelligentTieringConfiguration extends pulumi.CustomResource {
   /// Name of the bucket this intelligent tiering configuration is associated with.
   late final pulumi.Output<String> bucket;
-
   /// Bucket filter. The configuration only includes objects that meet the filter's criteria (documented below).
   late final pulumi.Output<BucketIntelligentTieringConfigurationFilter?> filter;
-
   /// Unique name used to identify the S3 Intelligent-Tiering configuration for the bucket.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Specifies the status of the configuration. Valid values: `Enabled`, `Disabled`.
   late final pulumi.Output<String?> status;
-
   /// S3 Intelligent-Tiering storage class tiers of the configuration (documented below).
   late final pulumi.Output<List<Map<String, dynamic>>> tierings;
 
@@ -419,22 +414,13 @@ class BucketIntelligentTieringConfiguration extends pulumi.CustomResource {
     BucketIntelligentTieringConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketIntelligentTieringConfiguration:BucketIntelligentTieringConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketIntelligentTieringConfiguration:BucketIntelligentTieringConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
-    filter = registerOutput<BucketIntelligentTieringConfigurationFilter?>(
-      'filter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketIntelligentTieringConfigurationFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    filter = registerOutput<BucketIntelligentTieringConfigurationFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketIntelligentTieringConfigurationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String?>('status');
@@ -459,22 +445,13 @@ class BucketIntelligentTieringConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketIntelligentTieringConfiguration:BucketIntelligentTieringConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketIntelligentTieringConfiguration:BucketIntelligentTieringConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
-    filter = registerOutput<BucketIntelligentTieringConfigurationFilter?>(
-      'filter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketIntelligentTieringConfigurationFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    filter = registerOutput<BucketIntelligentTieringConfigurationFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketIntelligentTieringConfigurationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String?>('status');

@@ -53,11 +53,7 @@ class GetVirtualNodesResult {
       'ids': ids,
       'nameRegex': ?nameRegex,
       'names': names,
-      'nodes':
-          pulumi.Input.encodeList<GetVirtualNodesNode, Map<String, dynamic>>(
-            nodes,
-            (value) => value.toMap(),
-          ),
+      'nodes': pulumi.Input.encodeList<GetVirtualNodesNode, Map<String, dynamic>>(nodes, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'resourceGroupId': ?resourceGroupId,
       'securityGroupId': ?securityGroupId,
@@ -72,52 +68,17 @@ class GetVirtualNodesResult {
     return GetVirtualNodesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      nodes: pulumi.Input.decodeList<GetVirtualNodesNode>(
-        map['nodes']!,
-        (value) =>
-            GetVirtualNodesNode.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      securityGroupId: (() {
-        final guardedValue = map['securityGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      virtualNodeName: (() {
-        final guardedValue = map['virtualNodeName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vswitchId: (() {
-        final guardedValue = map['vswitchId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nodes: pulumi.Input.decodeList<GetVirtualNodesNode>(map['nodes']!, (value) => GetVirtualNodesNode.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      securityGroupId: (() { final guardedValue = map['securityGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      virtualNodeName: (() { final guardedValue = map['virtualNodeName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vswitchId: (() { final guardedValue = map['vswitchId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

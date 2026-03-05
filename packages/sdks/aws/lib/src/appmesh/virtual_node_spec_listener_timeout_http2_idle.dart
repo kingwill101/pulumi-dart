@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNodeSpecListenerTimeoutHttp2Idle {
   /// Unit of time. Valid values: `ms`, `s`.
   final pulumi.Input<String> unit;
-
   /// Number of time units. Minimum value of `0`.
   final pulumi.Input<int> value;
 
@@ -18,15 +17,17 @@ class VirtualNodeSpecListenerTimeoutHttp2Idle {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'unit': unit, 'value': value};
+    return <String, dynamic>{
+      'unit': unit,
+      'value': value,
+    };
   }
 
-  factory VirtualNodeSpecListenerTimeoutHttp2Idle.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNodeSpecListenerTimeoutHttp2Idle.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTimeoutHttp2Idle(
       unit: pulumi.Input.fromValue(map['unit'] as String),
       value: pulumi.Input.fromValue(map['value'] as int),
     );
   }
 }
+

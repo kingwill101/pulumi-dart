@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationAccessPointArgs {
   /// Application Access Point Name.
   final pulumi.Input<String> applicationAccessPointName;
-
   /// Description .
   final pulumi.Input<String>? description;
-
   /// The policies that have bound to the Application Access Point (AAP).
   final pulumi.Input<List<String>> policies;
 
@@ -36,17 +34,10 @@ class ApplicationAccessPointArgs {
 
   factory ApplicationAccessPointArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationAccessPointArgs(
-      applicationAccessPointName: pulumi.Input.fromValue(
-        map['applicationAccessPointName'] as String,
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policies: pulumi.Input.fromValue(
-        (map['policies'] as List).cast<String>(),
-      ),
+      applicationAccessPointName: pulumi.Input.fromValue(map['applicationAccessPointName'] as String),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policies: pulumi.Input.fromValue((map['policies'] as List).cast<String>()),
     );
   }
 }
+

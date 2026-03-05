@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectsProject {
   /// The billing type. **Note:** This parameter is deprecated from 2021-04-01.
   final pulumi.Input<String> billingType;
-
   /// The maximum number of requests that can be processed per second. **Note:** This parameter is deprecated from 2021-04-01.
   final pulumi.Input<int> computeUnit;
-
   /// The creation time of project.
   final pulumi.Input<String> createTime;
-
   /// The service address of project.
   final pulumi.Input<String> endpoint;
-
   /// The ID of project.
   final pulumi.Input<String> id;
-
   /// The modification time of project.
   final pulumi.Input<String> modifyTime;
-
   /// The name of project.
   final pulumi.Input<String> project;
-
   /// The service role authorized to the Intelligent Media Management service to access other cloud resources.
   final pulumi.Input<String> serviceRole;
-
   /// The type of project.
   final pulumi.Input<String> type;
 
@@ -80,3 +72,4 @@ class GetProjectsProject {
     );
   }
 }
+

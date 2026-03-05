@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThirdPartyManagementSettings {
   /// License Cost.
   final pulumi.Input<double> licenseCost;
-
   /// Support Cost.
   final pulumi.Input<double> supportCost;
 
@@ -32,3 +31,4 @@ class ThirdPartyManagementSettings {
     );
   }
 }
+

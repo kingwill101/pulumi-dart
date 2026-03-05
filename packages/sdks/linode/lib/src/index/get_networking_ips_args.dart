@@ -9,10 +9,8 @@ import 'get_networking_ips_filter.dart';
 /// {@macro pulumi_index_get_networking_ips_get_networking_ips_args_doc}
 class GetNetworkingIpsArgs {
   final pulumi.Input<List<GetNetworkingIpsFilter>>? filters;
-
   /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
   final pulumi.Input<String>? order;
-
   /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
   final pulumi.Input<String>? orderBy;
 
@@ -20,22 +18,15 @@ class GetNetworkingIpsArgs {
   /// [filters] Optional.
   /// [order] The order in which results should be returned. (`asc`, `desc`; default `asc`)
   /// [orderBy] The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-  GetNetworkingIpsArgs({this.filters, this.order, this.orderBy});
+  GetNetworkingIpsArgs({
+    this.filters,
+    this.order,
+    this.orderBy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetNetworkingIpsFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetNetworkingIpsFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetNetworkingIpsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetNetworkingIpsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'order': ?order,
       'orderBy': ?orderBy,
     };
@@ -43,28 +34,10 @@ class GetNetworkingIpsArgs {
 
   factory GetNetworkingIpsArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkingIpsArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetNetworkingIpsFilter>(
-            guardedValue,
-            (value) => GetNetworkingIpsFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      order: (() {
-        final guardedValue = map['order'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      orderBy: (() {
-        final guardedValue = map['orderBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetNetworkingIpsFilter>(guardedValue, (value) => GetNetworkingIpsFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

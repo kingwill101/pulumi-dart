@@ -11,17 +11,12 @@ class AiEndpointWithModelGardenDeploymentEndpointConfig {
   /// you won't be able to send request to the shared DNS
   /// {region}-aiplatform.googleapis.com. The limitations will be removed soon.
   final pulumi.Input<bool>? dedicatedEndpointEnabled;
-
   /// The user-specified display name of the endpoint. If not set, a
   /// default name will be used.
   final pulumi.Input<String>? endpointDisplayName;
-
   /// The configuration for Private Service Connect (PSC).
   /// Structure is documented below.
-  final pulumi.Input<
-    AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig
-  >?
-  privateServiceConnectConfig;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig>? privateServiceConnectConfig;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentEndpointConfig].
   /// [dedicatedEndpointEnabled] If true, the endpoint will be exposed through a dedicated
@@ -37,37 +32,16 @@ class AiEndpointWithModelGardenDeploymentEndpointConfig {
     return <String, dynamic>{
       'dedicatedEndpointEnabled': ?dedicatedEndpointEnabled,
       'endpointDisplayName': ?endpointDisplayName,
-      'privateServiceConnectConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig,
-            Map<String, dynamic>
-          >(privateServiceConnectConfig, (value) => value.toMap()),
+      'privateServiceConnectConfig': ?pulumi.Input.mapOptionalInputValue<AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig, Map<String, dynamic>>(privateServiceConnectConfig, (value) => value.toMap()),
     };
   }
 
-  factory AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentEndpointConfig(
-      dedicatedEndpointEnabled: (() {
-        final guardedValue = map['dedicatedEndpointEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      endpointDisplayName: (() {
-        final guardedValue = map['endpointDisplayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateServiceConnectConfig: (() {
-        final guardedValue = map['privateServiceConnectConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      dedicatedEndpointEnabled: (() { final guardedValue = map['dedicatedEndpointEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      endpointDisplayName: (() { final guardedValue = map['endpointDisplayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateServiceConnectConfig: (() { final guardedValue = map['privateServiceConnectConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

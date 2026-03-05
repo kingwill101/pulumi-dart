@@ -33,24 +33,13 @@ class GetServiceConnectionPolicyIamPolicyArgs {
     };
   }
 
-  factory GetServiceConnectionPolicyIamPolicyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceConnectionPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceConnectionPolicyIamPolicyArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceConnectionPolicyId: pulumi.Input.fromValue(
-        map['serviceConnectionPolicyId'] as String,
-      ),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceConnectionPolicyId: pulumi.Input.fromValue(map['serviceConnectionPolicyId'] as String),
     );
   }
 }
+

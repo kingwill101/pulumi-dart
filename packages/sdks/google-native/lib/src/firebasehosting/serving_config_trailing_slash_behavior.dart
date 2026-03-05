@@ -13,8 +13,7 @@ enum ServingConfigTrailingSlashBehavior {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ServingConfigTrailingSlashBehavior value: $value',
-    );
+    throw ArgumentError('Unknown ServingConfigTrailingSlashBehavior value: $value');
   }
 }
+

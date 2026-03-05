@@ -18,3 +18,4 @@ enum TimeRange {
     throw ArgumentError('Unknown TimeRange value: $value');
   }
 }
+

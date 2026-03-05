@@ -5,57 +5,39 @@ import 'get_managed_disks_disk_encryption_setting.dart';
 
 class GetManagedDisksDisk {
   final pulumi.Input<String> createOption;
-
   /// The ID of the disk access resource for using private endpoints on disks.
   final pulumi.Input<String> diskAccessId;
-
   /// The ID of the Disk Encryption Set used to encrypt this Managed Disk.
   final pulumi.Input<String> diskEncryptionSetId;
-
   /// The number of IOPS allowed for this disk, where one operation can transfer between 4k and 256k bytes.
   final pulumi.Input<int> diskIopsReadWrite;
-
   /// The bandwidth allowed for this disk.
   final pulumi.Input<int> diskMbpsReadWrite;
-
   /// The size of the Managed Disk in gigabytes.
   final pulumi.Input<int> diskSizeInGb;
-
   /// An `encryption_settings` block as defined below.
-  final pulumi.Input<List<GetManagedDisksDiskEncryptionSetting>>
-  encryptionSettings;
+  final pulumi.Input<List<GetManagedDisksDiskEncryptionSetting>> encryptionSettings;
   final pulumi.Input<String> id;
-
   /// The ID of the source image used for creating this Managed Disk.
   final pulumi.Input<String> imageReferenceId;
-
   /// The Azure location of the Managed Disk.
   final pulumi.Input<String> location;
-
   /// The name of the Managed Disk.
   final pulumi.Input<String> name;
-
   /// Policy for accessing the disk via network.
   final pulumi.Input<String> networkAccessPolicy;
-
   /// The operating system used for this Managed Disk.
   final pulumi.Input<String> osType;
-
   /// The ID of an existing Managed Disk which this Disk was created from.
   final pulumi.Input<String> sourceResourceId;
-
   /// The Source URI for this Managed Disk.
   final pulumi.Input<String> sourceUri;
-
   /// The ID of the Storage Account where the `source_uri` is located.
   final pulumi.Input<String> storageAccountId;
-
   /// The storage account type for the Managed Disk.
   final pulumi.Input<String> storageAccountType;
-
   /// A mapping of tags assigned to the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// A list of Availability Zones where the Managed Disk exists.
   final pulumi.Input<List<String>> zones;
 
@@ -109,18 +91,7 @@ class GetManagedDisksDisk {
       'diskIopsReadWrite': diskIopsReadWrite,
       'diskMbpsReadWrite': diskMbpsReadWrite,
       'diskSizeInGb': diskSizeInGb,
-      'encryptionSettings':
-          pulumi.Input.mapInputValue<
-            List<GetManagedDisksDiskEncryptionSetting>,
-            List<Map<String, dynamic>>
-          >(
-            encryptionSettings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetManagedDisksDiskEncryptionSetting,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'encryptionSettings': pulumi.Input.mapInputValue<List<GetManagedDisksDiskEncryptionSetting>, List<Map<String, dynamic>>>(encryptionSettings, (value) => pulumi.Input.encodeList<GetManagedDisksDiskEncryptionSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'imageReferenceId': imageReferenceId,
       'location': location,
@@ -140,46 +111,24 @@ class GetManagedDisksDisk {
     return GetManagedDisksDisk(
       createOption: pulumi.Input.fromValue(map['createOption'] as String),
       diskAccessId: pulumi.Input.fromValue(map['diskAccessId'] as String),
-      diskEncryptionSetId: pulumi.Input.fromValue(
-        map['diskEncryptionSetId'] as String,
-      ),
-      diskIopsReadWrite: pulumi.Input.fromValue(
-        map['diskIopsReadWrite'] as int,
-      ),
-      diskMbpsReadWrite: pulumi.Input.fromValue(
-        map['diskMbpsReadWrite'] as int,
-      ),
+      diskEncryptionSetId: pulumi.Input.fromValue(map['diskEncryptionSetId'] as String),
+      diskIopsReadWrite: pulumi.Input.fromValue(map['diskIopsReadWrite'] as int),
+      diskMbpsReadWrite: pulumi.Input.fromValue(map['diskMbpsReadWrite'] as int),
       diskSizeInGb: pulumi.Input.fromValue(map['diskSizeInGb'] as int),
-      encryptionSettings: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetManagedDisksDiskEncryptionSetting>(
-          map['encryptionSettings']!,
-          (value) => GetManagedDisksDiskEncryptionSetting.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      encryptionSettings: pulumi.Input.fromValue(pulumi.Input.decodeList<GetManagedDisksDiskEncryptionSetting>(map['encryptionSettings']!, (value) => GetManagedDisksDiskEncryptionSetting.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),
-      imageReferenceId: pulumi.Input.fromValue(
-        map['imageReferenceId'] as String,
-      ),
+      imageReferenceId: pulumi.Input.fromValue(map['imageReferenceId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      networkAccessPolicy: pulumi.Input.fromValue(
-        map['networkAccessPolicy'] as String,
-      ),
+      networkAccessPolicy: pulumi.Input.fromValue(map['networkAccessPolicy'] as String),
       osType: pulumi.Input.fromValue(map['osType'] as String),
-      sourceResourceId: pulumi.Input.fromValue(
-        map['sourceResourceId'] as String,
-      ),
+      sourceResourceId: pulumi.Input.fromValue(map['sourceResourceId'] as String),
       sourceUri: pulumi.Input.fromValue(map['sourceUri'] as String),
-      storageAccountId: pulumi.Input.fromValue(
-        map['storageAccountId'] as String,
-      ),
-      storageAccountType: pulumi.Input.fromValue(
-        map['storageAccountType'] as String,
-      ),
+      storageAccountId: pulumi.Input.fromValue(map['storageAccountId'] as String),
+      storageAccountType: pulumi.Input.fromValue(map['storageAccountType'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       zones: pulumi.Input.fromValue((map['zones'] as List).cast<String>()),
     );
   }
 }
+

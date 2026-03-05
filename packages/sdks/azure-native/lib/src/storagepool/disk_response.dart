@@ -9,13 +9,20 @@ class DiskResponse {
 
   /// Creates a new [DiskResponse].
   /// [id] Unique Azure Resource ID of the Managed Disk.
-  DiskResponse({required this.id});
+  DiskResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory DiskResponse.fromMap(Map<String, dynamic> map) {
-    return DiskResponse(id: pulumi.Input.fromValue(map['id'] as String));
+    return DiskResponse(
+      id: pulumi.Input.fromValue(map['id'] as String),
+    );
   }
 }
+

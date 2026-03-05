@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudAppMysqlAssociationArgs {
   /// Specifies the name of the MySQL Database which the Spring Cloud App should be associated with.
   final pulumi.Input<String> databaseName;
-
   /// Specifies the ID of the MySQL Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> mysqlServerId;
-
   /// Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the password which should be used when connecting to the MySQL Database from the Spring Cloud App.
   final pulumi.Input<String> password;
-
   /// Specifies the ID of the Spring Cloud Application where this Association is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> springCloudAppId;
-
   /// Specifies the username which should be used when connecting to the MySQL Database from the Spring Cloud App.
   final pulumi.Input<String> username;
 
@@ -56,16 +51,11 @@ class SpringCloudAppMysqlAssociationArgs {
     return SpringCloudAppMysqlAssociationArgs(
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
       mysqlServerId: pulumi.Input.fromValue(map['mysqlServerId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: pulumi.Input.fromValue(map['password'] as String),
-      springCloudAppId: pulumi.Input.fromValue(
-        map['springCloudAppId'] as String,
-      ),
+      springCloudAppId: pulumi.Input.fromValue(map['springCloudAppId'] as String),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

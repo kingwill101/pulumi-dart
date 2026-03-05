@@ -15,19 +15,17 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'apiKey': apiKey, 'apiSecretKey': ?apiSecretKey};
+    return <String, dynamic>{
+      'apiKey': apiKey,
+      'apiSecretKey': ?apiSecretKey,
+    };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorApiKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorApiKey.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorApiKey(
       apiKey: pulumi.Input.fromValue(map['apiKey'] as String),
-      apiSecretKey: (() {
-        final guardedValue = map['apiSecretKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiSecretKey: (() { final guardedValue = map['apiSecretKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

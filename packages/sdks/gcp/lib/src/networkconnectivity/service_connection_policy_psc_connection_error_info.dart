@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceConnectionPolicyPscConnectionErrorInfo {
   /// The logical grouping to which the "reason" belongs.
   final pulumi.Input<String>? domain;
-
   /// Additional structured details about this error.
   final pulumi.Input<Map<String, String>>? metadata;
-
   /// The reason of the error.
   final pulumi.Input<String>? reason;
 
@@ -30,27 +28,12 @@ class ServiceConnectionPolicyPscConnectionErrorInfo {
     };
   }
 
-  factory ServiceConnectionPolicyPscConnectionErrorInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceConnectionPolicyPscConnectionErrorInfo.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyPscConnectionErrorInfo(
-      domain: (() {
-        final guardedValue = map['domain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      reason: (() {
-        final guardedValue = map['reason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

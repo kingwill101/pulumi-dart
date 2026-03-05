@@ -11,17 +11,13 @@ enum NetworkEndpointGroupNetworkEndpointTypeComputeV1 {
   const NetworkEndpointGroupNetworkEndpointTypeComputeV1(this.wireValue);
   final String wireValue;
 
-  static NetworkEndpointGroupNetworkEndpointTypeComputeV1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in NetworkEndpointGroupNetworkEndpointTypeComputeV1.values) {
+  static NetworkEndpointGroupNetworkEndpointTypeComputeV1 fromValue(String value) {
+    for (final item in NetworkEndpointGroupNetworkEndpointTypeComputeV1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown NetworkEndpointGroupNetworkEndpointTypeComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown NetworkEndpointGroupNetworkEndpointTypeComputeV1 value: $value');
   }
 }
+

@@ -395,16 +395,12 @@ import 'route_entry_state.dart';
 class RouteEntry extends pulumi.CustomResource {
   /// The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> description;
-
   /// The destination CIDR block of the custom route entry.
   late final pulumi.Output<String?> destinationCidrblock;
-
   /// The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
   late final pulumi.Output<String> name;
-
   /// The ID of Next Hop.
   late final pulumi.Output<String?> nexthopId;
-
   /// The type of Next Hop. Valid values:
   /// - `Instance`: An Elastic Compute Service (ECS) instance.
   /// - `HaVip`: A high-availability virtual IP address (HAVIP).
@@ -419,10 +415,8 @@ class RouteEntry extends pulumi.CustomResource {
   /// - `GatewayEndpoint`: A gateway endpoint.
   /// - `Ecr`: A Express Connect Router (ECR).
   late final pulumi.Output<String?> nexthopType;
-
   /// The ID of the Route Table.
   late final pulumi.Output<String> routeTableId;
-
   /// This argument has been deprecated. Please use other arguments to launch a custom route entry.
   late final pulumi.Output<String> routerId;
 
@@ -435,11 +429,11 @@ class RouteEntry extends pulumi.CustomResource {
     RouteEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/routeEntry:RouteEntry',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/routeEntry:RouteEntry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     destinationCidrblock = registerOutput<String?>('destinationCidrblock');
     this.name = registerOutput<String>('name');
@@ -467,11 +461,11 @@ class RouteEntry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/routeEntry:RouteEntry',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/routeEntry:RouteEntry',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     destinationCidrblock = registerOutput<String?>('destinationCidrblock');
     this.name = registerOutput<String>('name');

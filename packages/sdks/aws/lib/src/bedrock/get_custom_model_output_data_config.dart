@@ -8,10 +8,14 @@ class GetCustomModelOutputDataConfig {
 
   /// Creates a new [GetCustomModelOutputDataConfig].
   /// [s3Uri] The S3 URI where the validation data is stored..
-  GetCustomModelOutputDataConfig({required this.s3Uri});
+  GetCustomModelOutputDataConfig({
+    required this.s3Uri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'s3Uri': s3Uri};
+    return <String, dynamic>{
+      's3Uri': s3Uri,
+    };
   }
 
   factory GetCustomModelOutputDataConfig.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetCustomModelOutputDataConfig {
     );
   }
 }
+

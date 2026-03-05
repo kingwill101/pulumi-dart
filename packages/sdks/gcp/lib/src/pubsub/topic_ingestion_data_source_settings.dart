@@ -12,31 +12,22 @@ class TopicIngestionDataSourceSettings {
   /// Settings for ingestion from Amazon Kinesis Data Streams.
   /// Structure is documented below.
   final pulumi.Input<TopicIngestionDataSourceSettingsAwsKinesis>? awsKinesis;
-
   /// Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
   /// Structure is documented below.
   final pulumi.Input<TopicIngestionDataSourceSettingsAwsMsk>? awsMsk;
-
   /// Settings for ingestion from Azure Event Hubs.
   /// Structure is documented below.
-  final pulumi.Input<TopicIngestionDataSourceSettingsAzureEventHubs>?
-  azureEventHubs;
-
+  final pulumi.Input<TopicIngestionDataSourceSettingsAzureEventHubs>? azureEventHubs;
   /// Settings for ingestion from Cloud Storage.
   /// Structure is documented below.
-  final pulumi.Input<TopicIngestionDataSourceSettingsCloudStorage>?
-  cloudStorage;
-
+  final pulumi.Input<TopicIngestionDataSourceSettingsCloudStorage>? cloudStorage;
   /// Settings for ingestion from Confluent Cloud.
   /// Structure is documented below.
-  final pulumi.Input<TopicIngestionDataSourceSettingsConfluentCloud>?
-  confluentCloud;
-
+  final pulumi.Input<TopicIngestionDataSourceSettingsConfluentCloud>? confluentCloud;
   /// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
   /// no Platform Logs will be generated.'
   /// Structure is documented below.
-  final pulumi.Input<TopicIngestionDataSourceSettingsPlatformLogsSettings>?
-  platformLogsSettings;
+  final pulumi.Input<TopicIngestionDataSourceSettingsPlatformLogsSettings>? platformLogsSettings;
 
   /// Creates a new [TopicIngestionDataSourceSettings].
   /// [awsKinesis] Settings for ingestion from Amazon Kinesis Data Streams.
@@ -56,95 +47,24 @@ class TopicIngestionDataSourceSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'awsKinesis':
-          ?pulumi.Input.mapOptionalInputValue<
-            TopicIngestionDataSourceSettingsAwsKinesis,
-            Map<String, dynamic>
-          >(awsKinesis, (value) => value.toMap()),
-      'awsMsk':
-          ?pulumi.Input.mapOptionalInputValue<
-            TopicIngestionDataSourceSettingsAwsMsk,
-            Map<String, dynamic>
-          >(awsMsk, (value) => value.toMap()),
-      'azureEventHubs':
-          ?pulumi.Input.mapOptionalInputValue<
-            TopicIngestionDataSourceSettingsAzureEventHubs,
-            Map<String, dynamic>
-          >(azureEventHubs, (value) => value.toMap()),
-      'cloudStorage':
-          ?pulumi.Input.mapOptionalInputValue<
-            TopicIngestionDataSourceSettingsCloudStorage,
-            Map<String, dynamic>
-          >(cloudStorage, (value) => value.toMap()),
-      'confluentCloud':
-          ?pulumi.Input.mapOptionalInputValue<
-            TopicIngestionDataSourceSettingsConfluentCloud,
-            Map<String, dynamic>
-          >(confluentCloud, (value) => value.toMap()),
-      'platformLogsSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            TopicIngestionDataSourceSettingsPlatformLogsSettings,
-            Map<String, dynamic>
-          >(platformLogsSettings, (value) => value.toMap()),
+      'awsKinesis': ?pulumi.Input.mapOptionalInputValue<TopicIngestionDataSourceSettingsAwsKinesis, Map<String, dynamic>>(awsKinesis, (value) => value.toMap()),
+      'awsMsk': ?pulumi.Input.mapOptionalInputValue<TopicIngestionDataSourceSettingsAwsMsk, Map<String, dynamic>>(awsMsk, (value) => value.toMap()),
+      'azureEventHubs': ?pulumi.Input.mapOptionalInputValue<TopicIngestionDataSourceSettingsAzureEventHubs, Map<String, dynamic>>(azureEventHubs, (value) => value.toMap()),
+      'cloudStorage': ?pulumi.Input.mapOptionalInputValue<TopicIngestionDataSourceSettingsCloudStorage, Map<String, dynamic>>(cloudStorage, (value) => value.toMap()),
+      'confluentCloud': ?pulumi.Input.mapOptionalInputValue<TopicIngestionDataSourceSettingsConfluentCloud, Map<String, dynamic>>(confluentCloud, (value) => value.toMap()),
+      'platformLogsSettings': ?pulumi.Input.mapOptionalInputValue<TopicIngestionDataSourceSettingsPlatformLogsSettings, Map<String, dynamic>>(platformLogsSettings, (value) => value.toMap()),
     };
   }
 
   factory TopicIngestionDataSourceSettings.fromMap(Map<String, dynamic> map) {
     return TopicIngestionDataSourceSettings(
-      awsKinesis: (() {
-        final guardedValue = map['awsKinesis'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TopicIngestionDataSourceSettingsAwsKinesis.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      awsMsk: (() {
-        final guardedValue = map['awsMsk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TopicIngestionDataSourceSettingsAwsMsk.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      azureEventHubs: (() {
-        final guardedValue = map['azureEventHubs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TopicIngestionDataSourceSettingsAzureEventHubs.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      cloudStorage: (() {
-        final guardedValue = map['cloudStorage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TopicIngestionDataSourceSettingsCloudStorage.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      confluentCloud: (() {
-        final guardedValue = map['confluentCloud'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TopicIngestionDataSourceSettingsConfluentCloud.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      platformLogsSettings: (() {
-        final guardedValue = map['platformLogsSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TopicIngestionDataSourceSettingsPlatformLogsSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      awsKinesis: (() { final guardedValue = map['awsKinesis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TopicIngestionDataSourceSettingsAwsKinesis.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      awsMsk: (() { final guardedValue = map['awsMsk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TopicIngestionDataSourceSettingsAwsMsk.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      azureEventHubs: (() { final guardedValue = map['azureEventHubs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TopicIngestionDataSourceSettingsAzureEventHubs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      cloudStorage: (() { final guardedValue = map['cloudStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TopicIngestionDataSourceSettingsCloudStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      confluentCloud: (() { final guardedValue = map['confluentCloud']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TopicIngestionDataSourceSettingsConfluentCloud.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      platformLogsSettings: (() { final guardedValue = map['platformLogsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TopicIngestionDataSourceSettingsPlatformLogsSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

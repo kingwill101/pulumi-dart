@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStandardConnectionString {
   /// The name of the Logic App.
   final pulumi.Input<String> name;
-
   /// The Type of Managed Identity assigned to this Logic App Workflow.
   final pulumi.Input<String> type;
   final pulumi.Input<String> value;
@@ -21,7 +20,11 @@ class GetStandardConnectionString {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+      'value': value,
+    };
   }
 
   factory GetStandardConnectionString.fromMap(Map<String, dynamic> map) {
@@ -32,3 +35,4 @@ class GetStandardConnectionString {
     );
   }
 }
+

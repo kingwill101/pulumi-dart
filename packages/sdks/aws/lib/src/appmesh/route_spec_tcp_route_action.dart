@@ -6,40 +6,24 @@ import 'route_spec_tcp_route_action_weighted_target.dart';
 class RouteSpecTcpRouteAction {
   /// Targets that traffic is routed to when a request matches the route.
   /// You can specify one or more targets and their relative weights with which to distribute traffic.
-  final pulumi.Input<List<RouteSpecTcpRouteActionWeightedTarget>>
-  weightedTargets;
+  final pulumi.Input<List<RouteSpecTcpRouteActionWeightedTarget>> weightedTargets;
 
   /// Creates a new [RouteSpecTcpRouteAction].
   /// [weightedTargets] Targets that traffic is routed to when a request matches the route.
-  RouteSpecTcpRouteAction({required this.weightedTargets});
+  RouteSpecTcpRouteAction({
+    required this.weightedTargets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'weightedTargets':
-          pulumi.Input.mapInputValue<
-            List<RouteSpecTcpRouteActionWeightedTarget>,
-            List<Map<String, dynamic>>
-          >(
-            weightedTargets,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RouteSpecTcpRouteActionWeightedTarget,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'weightedTargets': pulumi.Input.mapInputValue<List<RouteSpecTcpRouteActionWeightedTarget>, List<Map<String, dynamic>>>(weightedTargets, (value) => pulumi.Input.encodeList<RouteSpecTcpRouteActionWeightedTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RouteSpecTcpRouteAction.fromMap(Map<String, dynamic> map) {
     return RouteSpecTcpRouteAction(
-      weightedTargets: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<RouteSpecTcpRouteActionWeightedTarget>(
-          map['weightedTargets']!,
-          (value) => RouteSpecTcpRouteActionWeightedTarget.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      weightedTargets: pulumi.Input.fromValue(pulumi.Input.decodeList<RouteSpecTcpRouteActionWeightedTarget>(map['weightedTargets']!, (value) => RouteSpecTcpRouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

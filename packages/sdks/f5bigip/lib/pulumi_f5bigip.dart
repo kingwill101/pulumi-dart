@@ -37,27 +37,17 @@ class _CmModuleNamespace {
 class _FastModuleNamespace {
   _FastModuleNamespace();
   final GetAwsServiceDiscoveryArgs = module_fast.GetAwsServiceDiscoveryArgs.new;
-  final GetAwsServiceDiscoveryResult =
-      module_fast.GetAwsServiceDiscoveryResult.new;
-  final GetAwsServiceDiscoveryResultArgs =
-      module_fast.GetAwsServiceDiscoveryResult.new;
-  final GetAzureServiceDiscoveryArgs =
-      module_fast.GetAzureServiceDiscoveryArgs.new;
-  final GetAzureServiceDiscoveryResult =
-      module_fast.GetAzureServiceDiscoveryResult.new;
-  final GetAzureServiceDiscoveryResultArgs =
-      module_fast.GetAzureServiceDiscoveryResult.new;
-  final GetConsulServiceDiscoveryArgs =
-      module_fast.GetConsulServiceDiscoveryArgs.new;
-  final GetConsulServiceDiscoveryResult =
-      module_fast.GetConsulServiceDiscoveryResult.new;
-  final GetConsulServiceDiscoveryResultArgs =
-      module_fast.GetConsulServiceDiscoveryResult.new;
+  final GetAwsServiceDiscoveryResult = module_fast.GetAwsServiceDiscoveryResult.new;
+  final GetAwsServiceDiscoveryResultArgs = module_fast.GetAwsServiceDiscoveryResult.new;
+  final GetAzureServiceDiscoveryArgs = module_fast.GetAzureServiceDiscoveryArgs.new;
+  final GetAzureServiceDiscoveryResult = module_fast.GetAzureServiceDiscoveryResult.new;
+  final GetAzureServiceDiscoveryResultArgs = module_fast.GetAzureServiceDiscoveryResult.new;
+  final GetConsulServiceDiscoveryArgs = module_fast.GetConsulServiceDiscoveryArgs.new;
+  final GetConsulServiceDiscoveryResult = module_fast.GetConsulServiceDiscoveryResult.new;
+  final GetConsulServiceDiscoveryResultArgs = module_fast.GetConsulServiceDiscoveryResult.new;
   final GetGceServiceDiscoveryArgs = module_fast.GetGceServiceDiscoveryArgs.new;
-  final GetGceServiceDiscoveryResult =
-      module_fast.GetGceServiceDiscoveryResult.new;
-  final GetGceServiceDiscoveryResultArgs =
-      module_fast.GetGceServiceDiscoveryResult.new;
+  final GetGceServiceDiscoveryResult = module_fast.GetGceServiceDiscoveryResult.new;
+  final GetGceServiceDiscoveryResultArgs = module_fast.GetGceServiceDiscoveryResult.new;
   final getAwsServiceDiscovery = module_fast.getAwsServiceDiscovery;
   final getAzureServiceDiscovery = module_fast.getAzureServiceDiscovery;
   final getConsulServiceDiscovery = module_fast.getConsulServiceDiscovery;
@@ -81,12 +71,9 @@ class _IndexModuleNamespace {
   final CommandState = module_index.CommandState.new;
   final CommandStateArgs = module_index.CommandState.new;
   final CommonLicenseManageBigIq = module_index.CommonLicenseManageBigIq.new;
-  final CommonLicenseManageBigIqArgs =
-      module_index.CommonLicenseManageBigIqArgs.new;
-  final CommonLicenseManageBigIqState =
-      module_index.CommonLicenseManageBigIqState.new;
-  final CommonLicenseManageBigIqStateArgs =
-      module_index.CommonLicenseManageBigIqState.new;
+  final CommonLicenseManageBigIqArgs = module_index.CommonLicenseManageBigIqArgs.new;
+  final CommonLicenseManageBigIqState = module_index.CommonLicenseManageBigIqState.new;
+  final CommonLicenseManageBigIqStateArgs = module_index.CommonLicenseManageBigIqState.new;
   final Do = module_index.Do.new;
   final DoArgs = module_index.DoArgs.new;
   final DoState = module_index.DoState.new;
@@ -94,12 +81,9 @@ class _IndexModuleNamespace {
   final EventServiceDiscovery = module_index.EventServiceDiscovery.new;
   final EventServiceDiscoveryArgs = module_index.EventServiceDiscoveryArgs.new;
   final EventServiceDiscoveryNode = module_index.EventServiceDiscoveryNode.new;
-  final EventServiceDiscoveryNodeArgs =
-      module_index.EventServiceDiscoveryNode.new;
-  final EventServiceDiscoveryState =
-      module_index.EventServiceDiscoveryState.new;
-  final EventServiceDiscoveryStateArgs =
-      module_index.EventServiceDiscoveryState.new;
+  final EventServiceDiscoveryNodeArgs = module_index.EventServiceDiscoveryNode.new;
+  final EventServiceDiscoveryState = module_index.EventServiceDiscoveryState.new;
+  final EventServiceDiscoveryStateArgs = module_index.EventServiceDiscoveryState.new;
   final FastApplication = module_index.FastApplication.new;
   final FastApplicationArgs = module_index.FastApplicationArgs.new;
   final FastApplicationState = module_index.FastApplicationState.new;
@@ -113,12 +97,9 @@ class _IndexModuleNamespace {
   final FastHttpAppState = module_index.FastHttpAppState.new;
   final FastHttpAppStateArgs = module_index.FastHttpAppState.new;
   final FastHttpAppVirtualServer = module_index.FastHttpAppVirtualServer.new;
-  final FastHttpAppVirtualServerArgs =
-      module_index.FastHttpAppVirtualServer.new;
-  final FastHttpAppWafSecurityPolicy =
-      module_index.FastHttpAppWafSecurityPolicy.new;
-  final FastHttpAppWafSecurityPolicyArgs =
-      module_index.FastHttpAppWafSecurityPolicy.new;
+  final FastHttpAppVirtualServerArgs = module_index.FastHttpAppVirtualServer.new;
+  final FastHttpAppWafSecurityPolicy = module_index.FastHttpAppWafSecurityPolicy.new;
+  final FastHttpAppWafSecurityPolicyArgs = module_index.FastHttpAppWafSecurityPolicy.new;
   final FastHttpsApp = module_index.FastHttpsApp.new;
   final FastHttpsAppArgs = module_index.FastHttpsAppArgs.new;
   final FastHttpsAppMonitor = module_index.FastHttpsAppMonitor.new;
@@ -127,21 +108,14 @@ class _IndexModuleNamespace {
   final FastHttpsAppPoolMemberArgs = module_index.FastHttpsAppPoolMember.new;
   final FastHttpsAppState = module_index.FastHttpsAppState.new;
   final FastHttpsAppStateArgs = module_index.FastHttpsAppState.new;
-  final FastHttpsAppTlsClientProfile =
-      module_index.FastHttpsAppTlsClientProfile.new;
-  final FastHttpsAppTlsClientProfileArgs =
-      module_index.FastHttpsAppTlsClientProfile.new;
-  final FastHttpsAppTlsServerProfile =
-      module_index.FastHttpsAppTlsServerProfile.new;
-  final FastHttpsAppTlsServerProfileArgs =
-      module_index.FastHttpsAppTlsServerProfile.new;
+  final FastHttpsAppTlsClientProfile = module_index.FastHttpsAppTlsClientProfile.new;
+  final FastHttpsAppTlsClientProfileArgs = module_index.FastHttpsAppTlsClientProfile.new;
+  final FastHttpsAppTlsServerProfile = module_index.FastHttpsAppTlsServerProfile.new;
+  final FastHttpsAppTlsServerProfileArgs = module_index.FastHttpsAppTlsServerProfile.new;
   final FastHttpsAppVirtualServer = module_index.FastHttpsAppVirtualServer.new;
-  final FastHttpsAppVirtualServerArgs =
-      module_index.FastHttpsAppVirtualServer.new;
-  final FastHttpsAppWafSecurityPolicy =
-      module_index.FastHttpsAppWafSecurityPolicy.new;
-  final FastHttpsAppWafSecurityPolicyArgs =
-      module_index.FastHttpsAppWafSecurityPolicy.new;
+  final FastHttpsAppVirtualServerArgs = module_index.FastHttpsAppVirtualServer.new;
+  final FastHttpsAppWafSecurityPolicy = module_index.FastHttpsAppWafSecurityPolicy.new;
+  final FastHttpsAppWafSecurityPolicyArgs = module_index.FastHttpsAppWafSecurityPolicy.new;
   final FastTcpApp = module_index.FastTcpApp.new;
   final FastTcpAppArgs = module_index.FastTcpAppArgs.new;
   final FastTcpAppMonitor = module_index.FastTcpAppMonitor.new;
@@ -166,12 +140,9 @@ class _IndexModuleNamespace {
   final FastUdpAppStateArgs = module_index.FastUdpAppState.new;
   final FastUdpAppVirtualServer = module_index.FastUdpAppVirtualServer.new;
   final FastUdpAppVirtualServerArgs = module_index.FastUdpAppVirtualServer.new;
-  final GetAs3DeviceInformationArgs =
-      module_index.GetAs3DeviceInformationArgs.new;
-  final GetAs3DeviceInformationResult =
-      module_index.GetAs3DeviceInformationResult.new;
-  final GetAs3DeviceInformationResultArgs =
-      module_index.GetAs3DeviceInformationResult.new;
+  final GetAs3DeviceInformationArgs = module_index.GetAs3DeviceInformationArgs.new;
+  final GetAs3DeviceInformationResult = module_index.GetAs3DeviceInformationResult.new;
+  final GetAs3DeviceInformationResultArgs = module_index.GetAs3DeviceInformationResult.new;
   final IpsecPolicy = module_index.IpsecPolicy.new;
   final IpsecPolicyArgs = module_index.IpsecPolicyArgs.new;
   final IpsecPolicyState = module_index.IpsecPolicyState.new;
@@ -194,14 +165,10 @@ class _IndexModuleNamespace {
   final PartitionStateArgs = module_index.PartitionState.new;
   final SaasBotDefenseProfile = module_index.SaasBotDefenseProfile.new;
   final SaasBotDefenseProfileArgs = module_index.SaasBotDefenseProfileArgs.new;
-  final SaasBotDefenseProfileProtectedEndpoint =
-      module_index.SaasBotDefenseProfileProtectedEndpoint.new;
-  final SaasBotDefenseProfileProtectedEndpointArgs =
-      module_index.SaasBotDefenseProfileProtectedEndpoint.new;
-  final SaasBotDefenseProfileState =
-      module_index.SaasBotDefenseProfileState.new;
-  final SaasBotDefenseProfileStateArgs =
-      module_index.SaasBotDefenseProfileState.new;
+  final SaasBotDefenseProfileProtectedEndpoint = module_index.SaasBotDefenseProfileProtectedEndpoint.new;
+  final SaasBotDefenseProfileProtectedEndpointArgs = module_index.SaasBotDefenseProfileProtectedEndpoint.new;
+  final SaasBotDefenseProfileState = module_index.SaasBotDefenseProfileState.new;
+  final SaasBotDefenseProfileStateArgs = module_index.SaasBotDefenseProfileState.new;
   final SslKeyCert = module_index.SslKeyCert.new;
   final SslKeyCertArgs = module_index.SslKeyCertArgs.new;
   final SslKeyCertState = module_index.SslKeyCertState.new;
@@ -216,20 +183,16 @@ class _IndexModuleNamespace {
   final WafPolicyFileTypeArgs = module_index.WafPolicyFileType.new;
   final WafPolicyGraphqlProfile = module_index.WafPolicyGraphqlProfile.new;
   final WafPolicyGraphqlProfileArgs = module_index.WafPolicyGraphqlProfile.new;
-  final WafPolicyGraphqlProfileDefenseAttribute =
-      module_index.WafPolicyGraphqlProfileDefenseAttribute.new;
-  final WafPolicyGraphqlProfileDefenseAttributeArgs =
-      module_index.WafPolicyGraphqlProfileDefenseAttribute.new;
+  final WafPolicyGraphqlProfileDefenseAttribute = module_index.WafPolicyGraphqlProfileDefenseAttribute.new;
+  final WafPolicyGraphqlProfileDefenseAttributeArgs = module_index.WafPolicyGraphqlProfileDefenseAttribute.new;
   final WafPolicyHostName = module_index.WafPolicyHostName.new;
   final WafPolicyHostNameArgs = module_index.WafPolicyHostName.new;
   final WafPolicyIpException = module_index.WafPolicyIpException.new;
   final WafPolicyIpExceptionArgs = module_index.WafPolicyIpException.new;
   final WafPolicyPolicyBuilder = module_index.WafPolicyPolicyBuilder.new;
   final WafPolicyPolicyBuilderArgs = module_index.WafPolicyPolicyBuilder.new;
-  final WafPolicySignaturesSetting =
-      module_index.WafPolicySignaturesSetting.new;
-  final WafPolicySignaturesSettingArgs =
-      module_index.WafPolicySignaturesSetting.new;
+  final WafPolicySignaturesSetting = module_index.WafPolicySignaturesSetting.new;
+  final WafPolicySignaturesSettingArgs = module_index.WafPolicySignaturesSetting.new;
   final WafPolicyState = module_index.WafPolicyState.new;
   final WafPolicyStateArgs = module_index.WafPolicyState.new;
   final getAs3DeviceInformation = module_index.getAs3DeviceInformation;
@@ -298,31 +261,21 @@ class _LtmModuleNamespace {
   final NodeState = module_ltm.NodeState.new;
   final NodeStateArgs = module_ltm.NodeState.new;
   final PersistenceProfileCookie = module_ltm.PersistenceProfileCookie.new;
-  final PersistenceProfileCookieArgs =
-      module_ltm.PersistenceProfileCookieArgs.new;
-  final PersistenceProfileCookieState =
-      module_ltm.PersistenceProfileCookieState.new;
-  final PersistenceProfileCookieStateArgs =
-      module_ltm.PersistenceProfileCookieState.new;
+  final PersistenceProfileCookieArgs = module_ltm.PersistenceProfileCookieArgs.new;
+  final PersistenceProfileCookieState = module_ltm.PersistenceProfileCookieState.new;
+  final PersistenceProfileCookieStateArgs = module_ltm.PersistenceProfileCookieState.new;
   final PersistenceProfileDstAddr = module_ltm.PersistenceProfileDstAddr.new;
-  final PersistenceProfileDstAddrArgs =
-      module_ltm.PersistenceProfileDstAddrArgs.new;
-  final PersistenceProfileDstAddrState =
-      module_ltm.PersistenceProfileDstAddrState.new;
-  final PersistenceProfileDstAddrStateArgs =
-      module_ltm.PersistenceProfileDstAddrState.new;
+  final PersistenceProfileDstAddrArgs = module_ltm.PersistenceProfileDstAddrArgs.new;
+  final PersistenceProfileDstAddrState = module_ltm.PersistenceProfileDstAddrState.new;
+  final PersistenceProfileDstAddrStateArgs = module_ltm.PersistenceProfileDstAddrState.new;
   final PersistenceProfileSrcAddr = module_ltm.PersistenceProfileSrcAddr.new;
-  final PersistenceProfileSrcAddrArgs =
-      module_ltm.PersistenceProfileSrcAddrArgs.new;
-  final PersistenceProfileSrcAddrState =
-      module_ltm.PersistenceProfileSrcAddrState.new;
-  final PersistenceProfileSrcAddrStateArgs =
-      module_ltm.PersistenceProfileSrcAddrState.new;
+  final PersistenceProfileSrcAddrArgs = module_ltm.PersistenceProfileSrcAddrArgs.new;
+  final PersistenceProfileSrcAddrState = module_ltm.PersistenceProfileSrcAddrState.new;
+  final PersistenceProfileSrcAddrStateArgs = module_ltm.PersistenceProfileSrcAddrState.new;
   final PersistenceProfileSsl = module_ltm.PersistenceProfileSsl.new;
   final PersistenceProfileSslArgs = module_ltm.PersistenceProfileSslArgs.new;
   final PersistenceProfileSslState = module_ltm.PersistenceProfileSslState.new;
-  final PersistenceProfileSslStateArgs =
-      module_ltm.PersistenceProfileSslState.new;
+  final PersistenceProfileSslStateArgs = module_ltm.PersistenceProfileSslState.new;
   final Policy = module_ltm.Policy.new;
   final PolicyArgs = module_ltm.PolicyArgs.new;
   final PolicyRule = module_ltm.PolicyRule.new;
@@ -347,10 +300,8 @@ class _LtmModuleNamespace {
   final ProfileBotDefenseStateArgs = module_ltm.ProfileBotDefenseState.new;
   final ProfileClientSsl = module_ltm.ProfileClientSsl.new;
   final ProfileClientSslArgs = module_ltm.ProfileClientSslArgs.new;
-  final ProfileClientSslCertKeyChain =
-      module_ltm.ProfileClientSslCertKeyChain.new;
-  final ProfileClientSslCertKeyChainArgs =
-      module_ltm.ProfileClientSslCertKeyChain.new;
+  final ProfileClientSslCertKeyChain = module_ltm.ProfileClientSslCertKeyChain.new;
+  final ProfileClientSslCertKeyChainArgs = module_ltm.ProfileClientSslCertKeyChain.new;
   final ProfileClientSslState = module_ltm.ProfileClientSslState.new;
   final ProfileClientSslStateArgs = module_ltm.ProfileClientSslState.new;
   final ProfileFastHttp = module_ltm.ProfileFastHttp.new;
@@ -377,10 +328,8 @@ class _LtmModuleNamespace {
   final ProfileHttpCompressStateArgs = module_ltm.ProfileHttpCompressState.new;
   final ProfileHttpEnforcement = module_ltm.ProfileHttpEnforcement.new;
   final ProfileHttpEnforcementArgs = module_ltm.ProfileHttpEnforcement.new;
-  final ProfileHttpHttpStrictTransportSecurity =
-      module_ltm.ProfileHttpHttpStrictTransportSecurity.new;
-  final ProfileHttpHttpStrictTransportSecurityArgs =
-      module_ltm.ProfileHttpHttpStrictTransportSecurity.new;
+  final ProfileHttpHttpStrictTransportSecurity = module_ltm.ProfileHttpHttpStrictTransportSecurity.new;
+  final ProfileHttpHttpStrictTransportSecurityArgs = module_ltm.ProfileHttpHttpStrictTransportSecurity.new;
   final ProfileHttpState = module_ltm.ProfileHttpState.new;
   final ProfileHttpStateArgs = module_ltm.ProfileHttpState.new;
   final ProfileOneConnect = module_ltm.ProfileOneConnect.new;
@@ -399,18 +348,12 @@ class _LtmModuleNamespace {
   final ProfileRewriteStateArgs = module_ltm.ProfileRewriteState.new;
   final ProfileRewriteUriRules = module_ltm.ProfileRewriteUriRules.new;
   final ProfileRewriteUriRulesArgs = module_ltm.ProfileRewriteUriRulesArgs.new;
-  final ProfileRewriteUriRulesClient =
-      module_ltm.ProfileRewriteUriRulesClient.new;
-  final ProfileRewriteUriRulesClientArgs =
-      module_ltm.ProfileRewriteUriRulesClient.new;
-  final ProfileRewriteUriRulesServer =
-      module_ltm.ProfileRewriteUriRulesServer.new;
-  final ProfileRewriteUriRulesServerArgs =
-      module_ltm.ProfileRewriteUriRulesServer.new;
-  final ProfileRewriteUriRulesState =
-      module_ltm.ProfileRewriteUriRulesState.new;
-  final ProfileRewriteUriRulesStateArgs =
-      module_ltm.ProfileRewriteUriRulesState.new;
+  final ProfileRewriteUriRulesClient = module_ltm.ProfileRewriteUriRulesClient.new;
+  final ProfileRewriteUriRulesClientArgs = module_ltm.ProfileRewriteUriRulesClient.new;
+  final ProfileRewriteUriRulesServer = module_ltm.ProfileRewriteUriRulesServer.new;
+  final ProfileRewriteUriRulesServerArgs = module_ltm.ProfileRewriteUriRulesServer.new;
+  final ProfileRewriteUriRulesState = module_ltm.ProfileRewriteUriRulesState.new;
+  final ProfileRewriteUriRulesStateArgs = module_ltm.ProfileRewriteUriRulesState.new;
   final ProfileServerSsl = module_ltm.ProfileServerSsl.new;
   final ProfileServerSslArgs = module_ltm.ProfileServerSslArgs.new;
   final ProfileServerSslState = module_ltm.ProfileServerSslState.new;
@@ -421,10 +364,8 @@ class _LtmModuleNamespace {
   final ProfileTcpStateArgs = module_ltm.ProfileTcpState.new;
   final ProfileWebAcceleration = module_ltm.ProfileWebAcceleration.new;
   final ProfileWebAccelerationArgs = module_ltm.ProfileWebAccelerationArgs.new;
-  final ProfileWebAccelerationState =
-      module_ltm.ProfileWebAccelerationState.new;
-  final ProfileWebAccelerationStateArgs =
-      module_ltm.ProfileWebAccelerationState.new;
+  final ProfileWebAccelerationState = module_ltm.ProfileWebAccelerationState.new;
+  final ProfileWebAccelerationStateArgs = module_ltm.ProfileWebAccelerationState.new;
   final RequestLogProfile = module_ltm.RequestLogProfile.new;
   final RequestLogProfileArgs = module_ltm.RequestLogProfileArgs.new;
   final RequestLogProfileState = module_ltm.RequestLogProfileState.new;
@@ -478,10 +419,8 @@ class _ProvidersModuleNamespace {
   final F5bigip = module_providers.ProviderProvider.new;
   final F5bigipArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
-  final ProviderTerraformConfigResult =
-      module_providers.ProviderTerraformConfigResult.new;
-  final ProviderTerraformConfigResultArgs =
-      module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResult = module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResultArgs = module_providers.ProviderTerraformConfigResult.new;
   final TerraformConfigArgs = module_providers.TerraformConfigArgs.new;
   final TerraformConfigResult = module_providers.TerraformConfigResult.new;
   final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;
@@ -501,27 +440,20 @@ class _SslModuleNamespace {
   final GetVWanConfigResult = module_ssl.GetVWanConfigResult.new;
   final GetVWanConfigResultArgs = module_ssl.GetVWanConfigResult.new;
   final GetWafEntityParameterArgs = module_ssl.GetWafEntityParameterArgs.new;
-  final GetWafEntityParameterResult =
-      module_ssl.GetWafEntityParameterResult.new;
-  final GetWafEntityParameterResultArgs =
-      module_ssl.GetWafEntityParameterResult.new;
+  final GetWafEntityParameterResult = module_ssl.GetWafEntityParameterResult.new;
+  final GetWafEntityParameterResultArgs = module_ssl.GetWafEntityParameterResult.new;
   final GetWafEntityParameterUrl = module_ssl.GetWafEntityParameterUrl.new;
   final GetWafEntityParameterUrlArgs = module_ssl.GetWafEntityParameterUrl.new;
   final GetWafEntityUrlArgs = module_ssl.GetWafEntityUrlArgs.new;
-  final GetWafEntityUrlCrossOriginRequestsEnforcement =
-      module_ssl.GetWafEntityUrlCrossOriginRequestsEnforcement.new;
-  final GetWafEntityUrlCrossOriginRequestsEnforcementArgs =
-      module_ssl.GetWafEntityUrlCrossOriginRequestsEnforcement.new;
-  final GetWafEntityUrlMethodOverride =
-      module_ssl.GetWafEntityUrlMethodOverride.new;
-  final GetWafEntityUrlMethodOverrideArgs =
-      module_ssl.GetWafEntityUrlMethodOverride.new;
+  final GetWafEntityUrlCrossOriginRequestsEnforcement = module_ssl.GetWafEntityUrlCrossOriginRequestsEnforcement.new;
+  final GetWafEntityUrlCrossOriginRequestsEnforcementArgs = module_ssl.GetWafEntityUrlCrossOriginRequestsEnforcement.new;
+  final GetWafEntityUrlMethodOverride = module_ssl.GetWafEntityUrlMethodOverride.new;
+  final GetWafEntityUrlMethodOverrideArgs = module_ssl.GetWafEntityUrlMethodOverride.new;
   final GetWafEntityUrlResult = module_ssl.GetWafEntityUrlResult.new;
   final GetWafEntityUrlResultArgs = module_ssl.GetWafEntityUrlResult.new;
   final GetWafPbSuggestionsArgs = module_ssl.GetWafPbSuggestionsArgs.new;
   final GetWafPbSuggestionsResult = module_ssl.GetWafPbSuggestionsResult.new;
-  final GetWafPbSuggestionsResultArgs =
-      module_ssl.GetWafPbSuggestionsResult.new;
+  final GetWafPbSuggestionsResultArgs = module_ssl.GetWafPbSuggestionsResult.new;
   final GetWafPolicyArgs = module_ssl.GetWafPolicyArgs.new;
   final GetWafPolicyResult = module_ssl.GetWafPolicyResult.new;
   final GetWafPolicyResultArgs = module_ssl.GetWafPolicyResult.new;

@@ -11,8 +11,7 @@ enum KnownWindowsEventLogDataSourceStreams {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown KnownWindowsEventLogDataSourceStreams value: $value',
-    );
+    throw ArgumentError('Unknown KnownWindowsEventLogDataSourceStreams value: $value');
   }
 }
+

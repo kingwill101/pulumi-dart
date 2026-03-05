@@ -16,35 +16,25 @@ import 'web_app_vnet_connection_args.dart';
 class WebAppVnetConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A certificate file (.cer) blob containing the public key of the private key used to authenticate a
   /// Point-To-Site VPN connection.
   late final pulumi.Output<String?> certBlob;
-
   /// The client certificate thumbprint.
   late final pulumi.Output<String> certThumbprint;
-
   /// DNS servers to be used by this Virtual Network. This should be a comma-separated list of IP addresses.
   late final pulumi.Output<String?> dnsServers;
-
   /// Flag that is used to denote if this is VNET injection
   late final pulumi.Output<bool?> isSwift;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// &lt;code&gt;true&lt;/code&gt; if a resync is required; otherwise, &lt;code&gt;false&lt;/code&gt;.
   late final pulumi.Output<bool> resyncRequired;
-
   /// The routes that this Virtual Network connection uses.
   late final pulumi.Output<List<Map<String, dynamic>>> routes;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// The Virtual Network's resource ID.
   late final pulumi.Output<String?> vnetResourceId;
 
@@ -57,11 +47,11 @@ class WebAppVnetConnection extends pulumi.CustomResource {
     WebAppVnetConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppVnetConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppVnetConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     certBlob = registerOutput<String?>('certBlob');
     certThumbprint = registerOutput<String>('certThumbprint');

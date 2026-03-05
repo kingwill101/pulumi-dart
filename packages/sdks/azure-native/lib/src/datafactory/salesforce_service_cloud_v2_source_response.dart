@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SalesforceServiceCloudV2SourceResponse {
   /// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
   final pulumi.Input<dynamic>? additionalColumns;
-
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
-
   /// This property control whether query result contains Deleted objects. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? includeDeletedObjects;
-
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
-
   /// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? query;
-
   /// Deprecating, please use 'query' property instead. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? sOQLQuery;
-
   /// Source retry count. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? sourceRetryCount;
-
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? sourceRetryWait;
-
   /// Copy source type.
   /// Expected value is 'SalesforceServiceCloudV2Source'.
   final pulumi.Input<String> type;
@@ -68,51 +60,18 @@ class SalesforceServiceCloudV2SourceResponse {
     };
   }
 
-  factory SalesforceServiceCloudV2SourceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SalesforceServiceCloudV2SourceResponse.fromMap(Map<String, dynamic> map) {
     return SalesforceServiceCloudV2SourceResponse(
-      additionalColumns: (() {
-        final guardedValue = map['additionalColumns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      disableMetricsCollection: (() {
-        final guardedValue = map['disableMetricsCollection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      includeDeletedObjects: (() {
-        final guardedValue = map['includeDeletedObjects'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      maxConcurrentConnections: (() {
-        final guardedValue = map['maxConcurrentConnections'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      query: (() {
-        final guardedValue = map['query'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      sOQLQuery: (() {
-        final guardedValue = map['sOQLQuery'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      sourceRetryCount: (() {
-        final guardedValue = map['sourceRetryCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      sourceRetryWait: (() {
-        final guardedValue = map['sourceRetryWait'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      additionalColumns: (() { final guardedValue = map['additionalColumns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      disableMetricsCollection: (() { final guardedValue = map['disableMetricsCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      includeDeletedObjects: (() { final guardedValue = map['includeDeletedObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      maxConcurrentConnections: (() { final guardedValue = map['maxConcurrentConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      query: (() { final guardedValue = map['query']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sOQLQuery: (() { final guardedValue = map['sOQLQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sourceRetryCount: (() { final guardedValue = map['sourceRetryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sourceRetryWait: (() { final guardedValue = map['sourceRetryWait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

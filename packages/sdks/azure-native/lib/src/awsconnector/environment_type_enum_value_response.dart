@@ -9,19 +9,20 @@ class EnvironmentTypeEnumValueResponse {
 
   /// Creates a new [EnvironmentTypeEnumValueResponse].
   /// [value] Property value
-  EnvironmentTypeEnumValueResponse({this.value});
+  EnvironmentTypeEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory EnvironmentTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentTypeEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

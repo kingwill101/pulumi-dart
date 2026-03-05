@@ -19,3 +19,4 @@ enum EndpointSeverity {
     throw ArgumentError('Unknown EndpointSeverity value: $value');
   }
 }
+

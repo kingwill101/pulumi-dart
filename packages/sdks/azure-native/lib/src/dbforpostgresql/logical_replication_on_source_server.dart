@@ -12,8 +12,7 @@ enum LogicalReplicationOnSourceServer {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown LogicalReplicationOnSourceServer value: $value',
-    );
+    throw ArgumentError('Unknown LogicalReplicationOnSourceServer value: $value');
   }
 }
+

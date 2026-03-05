@@ -251,7 +251,6 @@ import 'synchronization_secret_state.dart';
 class SynchronizationSecret extends pulumi.CustomResource {
   /// One or more `credential` blocks as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> credentials;
-
   /// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> servicePrincipalId;
 
@@ -264,11 +263,11 @@ class SynchronizationSecret extends pulumi.CustomResource {
     SynchronizationSecretArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/synchronizationSecret:SynchronizationSecret',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/synchronizationSecret:SynchronizationSecret',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     credentials = registerOutput<List<Map<String, dynamic>>?>('credentials');
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
   }
@@ -291,11 +290,11 @@ class SynchronizationSecret extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/synchronizationSecret:SynchronizationSecret',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/synchronizationSecret:SynchronizationSecret',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     credentials = registerOutput<List<Map<String, dynamic>>?>('credentials');
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
   }

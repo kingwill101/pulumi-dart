@@ -14,14 +14,15 @@ class MembershipRoleRestrictionEvaluationResponseCloudidentityV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': state};
+    return <String, dynamic>{
+      'state': state,
+    };
   }
 
-  factory MembershipRoleRestrictionEvaluationResponseCloudidentityV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MembershipRoleRestrictionEvaluationResponseCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return MembershipRoleRestrictionEvaluationResponseCloudidentityV1beta1(
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

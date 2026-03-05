@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListenerAdditionalCertificateAttachmentState {
   /// The ID of additional certificates.
   final pulumi.Input<String>? certificateId;
-
   /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
   final pulumi.Input<bool>? dryRun;
-
   /// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
   final pulumi.Input<String>? listenerId;
-
   /// The status of the resource
   final pulumi.Input<String>? status;
 
@@ -37,30 +34,13 @@ class ListenerAdditionalCertificateAttachmentState {
     };
   }
 
-  factory ListenerAdditionalCertificateAttachmentState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListenerAdditionalCertificateAttachmentState.fromMap(Map<String, dynamic> map) {
     return ListenerAdditionalCertificateAttachmentState(
-      certificateId: (() {
-        final guardedValue = map['certificateId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      listenerId: (() {
-        final guardedValue = map['listenerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certificateId: (() { final guardedValue = map['certificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      listenerId: (() { final guardedValue = map['listenerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

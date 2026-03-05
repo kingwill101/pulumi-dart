@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyGroupsGroupAuthorizeSecurityPolicyRule {
   /// The cidrip of security rules.
   final pulumi.Input<String> cidrIp;
-
   /// The description of security rules.
   final pulumi.Input<String> description;
-
   /// The ip protocol of security rules.
   final pulumi.Input<String> ipProtocol;
-
   /// The policy of security rules.
   final pulumi.Input<String> policy;
-
   /// The port range of security rules.
   final pulumi.Input<String> portRange;
-
   /// The priority of security rules.
   final pulumi.Input<String> priority;
-
   /// The type of security rules.
   final pulumi.Input<String> type;
 
@@ -54,9 +48,7 @@ class GetPolicyGroupsGroupAuthorizeSecurityPolicyRule {
     };
   }
 
-  factory GetPolicyGroupsGroupAuthorizeSecurityPolicyRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPolicyGroupsGroupAuthorizeSecurityPolicyRule.fromMap(Map<String, dynamic> map) {
     return GetPolicyGroupsGroupAuthorizeSecurityPolicyRule(
       cidrIp: pulumi.Input.fromValue(map['cidrIp'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
@@ -68,3 +60,4 @@ class GetPolicyGroupsGroupAuthorizeSecurityPolicyRule {
     );
   }
 }
+

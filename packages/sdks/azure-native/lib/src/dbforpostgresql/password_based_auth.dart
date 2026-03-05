@@ -15,3 +15,4 @@ enum PasswordBasedAuth {
     throw ArgumentError('Unknown PasswordBasedAuth value: $value');
   }
 }
+

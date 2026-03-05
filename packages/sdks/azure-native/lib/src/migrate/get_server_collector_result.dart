@@ -42,17 +42,12 @@ class GetServerCollectorResult {
   factory GetServerCollectorResult.fromMap(Map<String, dynamic> map) {
     return GetServerCollectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eTag: (() {
-        final guardedValue = map['eTag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: CollectorPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: CollectorPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

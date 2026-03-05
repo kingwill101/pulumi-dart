@@ -13,16 +13,15 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tableNames': tableNames};
+    return <String, dynamic>{
+      'tableNames': tableNames,
+    };
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration(
-      tableNames: pulumi.Input.fromValue(
-        (map['tableNames'] as List).cast<String>(),
-      ),
+      tableNames: pulumi.Input.fromValue((map['tableNames'] as List).cast<String>()),
     );
   }
 }
+

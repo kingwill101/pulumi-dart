@@ -6,10 +6,8 @@ class AttachedClusterWorkloadIdentityConfig {
   /// The ID of the OIDC Identity Provider (IdP) associated to
   /// the Workload Identity Pool.
   final pulumi.Input<String>? identityProvider;
-
   /// The OIDC issuer URL for this cluster.
   final pulumi.Input<String>? issuerUri;
-
   /// The Workload Identity Pool associated to the cluster.
   final pulumi.Input<String>? workloadPool;
 
@@ -31,25 +29,12 @@ class AttachedClusterWorkloadIdentityConfig {
     };
   }
 
-  factory AttachedClusterWorkloadIdentityConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AttachedClusterWorkloadIdentityConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterWorkloadIdentityConfig(
-      identityProvider: (() {
-        final guardedValue = map['identityProvider'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      issuerUri: (() {
-        final guardedValue = map['issuerUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workloadPool: (() {
-        final guardedValue = map['workloadPool'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identityProvider: (() { final guardedValue = map['identityProvider']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      issuerUri: (() { final guardedValue = map['issuerUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadPool: (() { final guardedValue = map['workloadPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

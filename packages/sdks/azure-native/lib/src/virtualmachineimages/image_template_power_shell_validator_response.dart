@@ -6,26 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageTemplatePowerShellValidatorResponse {
   /// Array of PowerShell commands to execute
   final pulumi.Input<List<String>>? inline;
-
   /// Friendly Name to provide context on what this validation step does
   final pulumi.Input<String>? name;
-
   /// If specified, the PowerShell script will be run with elevated privileges using the Local System user. Can only be true when the runElevated field above is set to true.
   final pulumi.Input<bool>? runAsSystem;
-
   /// If specified, the PowerShell script will be run with elevated privileges
   final pulumi.Input<bool>? runElevated;
-
   /// URI of the PowerShell script to be run for validation. It can be a github link, Azure Storage URI, etc
   final pulumi.Input<String>? scriptUri;
-
   /// SHA256 checksum of the power shell script provided in the scriptUri field above
   final pulumi.Input<String>? sha256Checksum;
-
   /// The type of validation you want to use on the Image. For example, "Shell" can be shell validation
   /// Expected value is 'PowerShell'.
   final pulumi.Input<String> type;
-
   /// Valid exit codes for the PowerShell script. [Default: 0]
   final pulumi.Input<List<int>>? validExitCodes;
 
@@ -62,46 +55,17 @@ class ImageTemplatePowerShellValidatorResponse {
     };
   }
 
-  factory ImageTemplatePowerShellValidatorResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ImageTemplatePowerShellValidatorResponse.fromMap(Map<String, dynamic> map) {
     return ImageTemplatePowerShellValidatorResponse(
-      inline: (() {
-        final guardedValue = map['inline'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      runAsSystem: (() {
-        final guardedValue = map['runAsSystem'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      runElevated: (() {
-        final guardedValue = map['runElevated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      scriptUri: (() {
-        final guardedValue = map['scriptUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sha256Checksum: (() {
-        final guardedValue = map['sha256Checksum'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      inline: (() { final guardedValue = map['inline']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      runAsSystem: (() { final guardedValue = map['runAsSystem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      runElevated: (() { final guardedValue = map['runElevated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      scriptUri: (() { final guardedValue = map['scriptUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sha256Checksum: (() { final guardedValue = map['sha256Checksum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      validExitCodes: (() {
-        final guardedValue = map['validExitCodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
+      validExitCodes: (() { final guardedValue = map['validExitCodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
     );
   }
 }
+

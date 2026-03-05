@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlarmContactGroupArgs {
   /// The name of the alarm group.
   final pulumi.Input<String> alarmContactGroupName;
-
   /// The name of the alert contact.
   final pulumi.Input<List<String>>? contacts;
-
   /// The description of the alert group.
   final pulumi.Input<String>? describe;
-
   /// Whether to open weekly subscription.
   final pulumi.Input<bool>? enableSubscribed;
 
@@ -42,24 +39,11 @@ class AlarmContactGroupArgs {
 
   factory AlarmContactGroupArgs.fromMap(Map<String, dynamic> map) {
     return AlarmContactGroupArgs(
-      alarmContactGroupName: pulumi.Input.fromValue(
-        map['alarmContactGroupName'] as String,
-      ),
-      contacts: (() {
-        final guardedValue = map['contacts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      describe: (() {
-        final guardedValue = map['describe'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enableSubscribed: (() {
-        final guardedValue = map['enableSubscribed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      alarmContactGroupName: pulumi.Input.fromValue(map['alarmContactGroupName'] as String),
+      contacts: (() { final guardedValue = map['contacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      describe: (() { final guardedValue = map['describe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enableSubscribed: (() { final guardedValue = map['enableSubscribed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

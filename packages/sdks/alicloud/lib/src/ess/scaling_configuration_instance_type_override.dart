@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScalingConfigurationInstanceTypeOverride {
   /// The is specified for an instance type in instanceTypeOverride.
   final pulumi.Input<String>? instanceType;
-
   /// The weight of instance type in instanceTypeOverride.
   final pulumi.Input<int>? weightedCapacity;
 
@@ -24,20 +23,11 @@ class ScalingConfigurationInstanceTypeOverride {
     };
   }
 
-  factory ScalingConfigurationInstanceTypeOverride.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScalingConfigurationInstanceTypeOverride.fromMap(Map<String, dynamic> map) {
     return ScalingConfigurationInstanceTypeOverride(
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      weightedCapacity: (() {
-        final guardedValue = map['weightedCapacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      weightedCapacity: (() { final guardedValue = map['weightedCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

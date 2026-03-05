@@ -211,28 +211,20 @@ import 'virtual_network_gateway_nat_rule_args.dart';
 class VirtualNetworkGatewayNatRuleNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The private IP address external mapping for NAT.
   late final pulumi.Output<List<Map<String, dynamic>>?> externalMappings;
-
   /// The private IP address internal mapping for NAT.
   late final pulumi.Output<List<Map<String, dynamic>>?> internalMappings;
-
   /// The IP Configuration ID this NAT rule applies to.
   late final pulumi.Output<String?> ipConfigurationId;
-
   /// The Source NAT direction of a VPN NAT.
   late final pulumi.Output<String?> mode;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
-
   /// The provisioning state of the NAT Rule resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -245,19 +237,15 @@ class VirtualNetworkGatewayNatRuleNetwork extends pulumi.CustomResource {
     VirtualNetworkGatewayNatRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:VirtualNetworkGatewayNatRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:VirtualNetworkGatewayNatRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
-    externalMappings = registerOutput<List<Map<String, dynamic>>?>(
-      'externalMappings',
-    );
-    internalMappings = registerOutput<List<Map<String, dynamic>>?>(
-      'internalMappings',
-    );
+    externalMappings = registerOutput<List<Map<String, dynamic>>?>('externalMappings');
+    internalMappings = registerOutput<List<Map<String, dynamic>>?>('internalMappings');
     ipConfigurationId = registerOutput<String?>('ipConfigurationId');
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String?>('name');

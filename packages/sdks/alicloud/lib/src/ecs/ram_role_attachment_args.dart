@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RamRoleAttachmentArgs {
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
-
   /// The additional policy. When you attach an instance RAM role to instances, you can specify an additional policy to further limit the permissions of the role.
   final pulumi.Input<String>? policy;
-
   /// The name of the instance RAM role.
   final pulumi.Input<String> ramRoleName;
 
@@ -37,12 +35,9 @@ class RamRoleAttachmentArgs {
   factory RamRoleAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return RamRoleAttachmentArgs(
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ramRoleName: pulumi.Input.fromValue(map['ramRoleName'] as String),
     );
   }
 }
+

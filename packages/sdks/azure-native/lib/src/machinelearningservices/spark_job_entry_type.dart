@@ -15,3 +15,4 @@ enum SparkJobEntryType {
     throw ArgumentError('Unknown SparkJobEntryType value: $value');
   }
 }
+

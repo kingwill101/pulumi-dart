@@ -49,23 +49,18 @@ class GetLaunchTemplateBlockDeviceMappingEb {
     };
   }
 
-  factory GetLaunchTemplateBlockDeviceMappingEb.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLaunchTemplateBlockDeviceMappingEb.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateBlockDeviceMappingEb(
-      deleteOnTermination: pulumi.Input.fromValue(
-        map['deleteOnTermination'] as String,
-      ),
+      deleteOnTermination: pulumi.Input.fromValue(map['deleteOnTermination'] as String),
       encrypted: pulumi.Input.fromValue(map['encrypted'] as String),
       iops: pulumi.Input.fromValue(map['iops'] as int),
       kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
       snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
       throughput: pulumi.Input.fromValue(map['throughput'] as int),
-      volumeInitializationRate: pulumi.Input.fromValue(
-        map['volumeInitializationRate'] as int,
-      ),
+      volumeInitializationRate: pulumi.Input.fromValue(map['volumeInitializationRate'] as int),
       volumeSize: pulumi.Input.fromValue(map['volumeSize'] as int),
       volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }
 }
+

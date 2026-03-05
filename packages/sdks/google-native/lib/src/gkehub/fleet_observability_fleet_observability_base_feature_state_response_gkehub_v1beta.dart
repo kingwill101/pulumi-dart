@@ -7,10 +7,8 @@ import 'fleet_observability_feature_error_response_gkehub_v1beta.dart';
 class FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta {
   /// The high-level, machine-readable status of this Feature.
   final pulumi.Input<String> code;
-
   /// Errors after reconciling the monitoring and logging feature if the code is not OK.
-  final pulumi.Input<List<FleetObservabilityFeatureErrorResponseGkehubV1beta>>
-  errors;
+  final pulumi.Input<List<FleetObservabilityFeatureErrorResponseGkehubV1beta>> errors;
 
   /// Creates a new [FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta].
   /// [code] The high-level, machine-readable status of this Feature.
@@ -23,36 +21,15 @@ class FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'errors':
-          pulumi.Input.mapInputValue<
-            List<FleetObservabilityFeatureErrorResponseGkehubV1beta>,
-            List<Map<String, dynamic>>
-          >(
-            errors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  FleetObservabilityFeatureErrorResponseGkehubV1beta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'errors': pulumi.Input.mapInputValue<List<FleetObservabilityFeatureErrorResponseGkehubV1beta>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<FleetObservabilityFeatureErrorResponseGkehubV1beta, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta(
       code: pulumi.Input.fromValue(map['code'] as String),
-      errors: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          FleetObservabilityFeatureErrorResponseGkehubV1beta
-        >(
-          map['errors']!,
-          (value) => FleetObservabilityFeatureErrorResponseGkehubV1beta.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      errors: pulumi.Input.fromValue(pulumi.Input.decodeList<FleetObservabilityFeatureErrorResponseGkehubV1beta>(map['errors']!, (value) => FleetObservabilityFeatureErrorResponseGkehubV1beta.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

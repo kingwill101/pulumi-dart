@@ -118,10 +118,8 @@ import 'topic_state.dart';
 class Topic extends pulumi.CustomResource {
   /// Is logging enabled? true or false. Default value to false.
   late final pulumi.Output<bool?> loggingEnabled;
-
   /// This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
   late final pulumi.Output<int?> maximumMessageSize;
-
   /// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
   late final pulumi.Output<String> name;
 
@@ -129,20 +127,27 @@ class Topic extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Topic]. {@macro pulumi_mns_topic_topic_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Topic(String name, {TopicArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:mns/topic:Topic',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Topic(
+    String name, {
+    TopicArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:mns/topic:Topic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     loggingEnabled = registerOutput<bool?>('loggingEnabled');
     maximumMessageSize = registerOutput<int?>('maximumMessageSize');
     this.name = registerOutput<String>('name');
   }
 
   /// Gets an existing [Topic] resource's state with the given [name] and [id].
-  static Topic get(String name, pulumi.Input<String> id, {TopicState? state}) {
+  static Topic get(
+    String name,
+    pulumi.Input<String> id, {
+    TopicState? state,
+  }) {
     return Topic._get(
       name,
       state: state?.toMap(),
@@ -155,11 +160,11 @@ class Topic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mns/topic:Topic',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mns/topic:Topic',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     loggingEnabled = registerOutput<bool?>('loggingEnabled');
     maximumMessageSize = registerOutput<int?>('maximumMessageSize');
     this.name = registerOutput<String>('name');

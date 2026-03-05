@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1FractionSplit {
   /// The fraction of the input data that is to be used to evaluate the Model.
   final pulumi.Input<double>? testFraction;
-
   /// The fraction of the input data that is to be used to train the Model.
   final pulumi.Input<double>? trainingFraction;
-
   /// The fraction of the input data that is to be used to validate the Model.
   final pulumi.Input<double>? validationFraction;
 
@@ -31,25 +29,12 @@ class GoogleCloudAiplatformV1FractionSplit {
     };
   }
 
-  factory GoogleCloudAiplatformV1FractionSplit.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1FractionSplit.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FractionSplit(
-      testFraction: (() {
-        final guardedValue = map['testFraction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      trainingFraction: (() {
-        final guardedValue = map['trainingFraction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      validationFraction: (() {
-        final guardedValue = map['validationFraction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      testFraction: (() { final guardedValue = map['testFraction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      trainingFraction: (() { final guardedValue = map['trainingFraction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      validationFraction: (() { final guardedValue = map['validationFraction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

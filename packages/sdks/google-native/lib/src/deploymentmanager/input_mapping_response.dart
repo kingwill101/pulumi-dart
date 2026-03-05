@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InputMappingResponse {
   /// The name of the field that is going to be injected.
   final pulumi.Input<String> fieldName;
-
   /// The location where this mapping applies.
   final pulumi.Input<String> location;
-
   /// Regex to evaluate on method to decide if input applies.
   final pulumi.Input<String> methodMatch;
-
   /// A jsonPath expression to select an element.
   final pulumi.Input<String> value;
 
@@ -46,3 +43,4 @@ class InputMappingResponse {
     );
   }
 }
+

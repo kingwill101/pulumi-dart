@@ -6,42 +6,24 @@ import 'load_balancer_frontend_ip_configuration.dart';
 /// Describes the properties of the load balancer configuration.
 class LoadBalancerConfigurationProperties {
   /// Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
-  final pulumi.Input<List<LoadBalancerFrontendIpConfiguration>>
-  frontendIpConfigurations;
+  final pulumi.Input<List<LoadBalancerFrontendIpConfiguration>> frontendIpConfigurations;
 
   /// Creates a new [LoadBalancerConfigurationProperties].
   /// [frontendIpConfigurations] Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
-  LoadBalancerConfigurationProperties({required this.frontendIpConfigurations});
+  LoadBalancerConfigurationProperties({
+    required this.frontendIpConfigurations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'frontendIpConfigurations':
-          pulumi.Input.mapInputValue<
-            List<LoadBalancerFrontendIpConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            frontendIpConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LoadBalancerFrontendIpConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'frontendIpConfigurations': pulumi.Input.mapInputValue<List<LoadBalancerFrontendIpConfiguration>, List<Map<String, dynamic>>>(frontendIpConfigurations, (value) => pulumi.Input.encodeList<LoadBalancerFrontendIpConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory LoadBalancerConfigurationProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoadBalancerConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return LoadBalancerConfigurationProperties(
-      frontendIpConfigurations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<LoadBalancerFrontendIpConfiguration>(
-          map['frontendIpConfigurations']!,
-          (value) => LoadBalancerFrontendIpConfiguration.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      frontendIpConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<LoadBalancerFrontendIpConfiguration>(map['frontendIpConfigurations']!, (value) => LoadBalancerFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

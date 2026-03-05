@@ -8,19 +8,14 @@ import 'system_data_response.dart';
 class GetVariableAtManagementGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Variable column definitions.
   final List<PolicyVariableColumnResponse> columns;
-
   /// The ID of the variable.
   final String id;
-
   /// The name of the variable.
   final String name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource (Microsoft.Authorization/variables).
   final String type;
 
@@ -43,11 +38,7 @@ class GetVariableAtManagementGroupResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'columns':
-          pulumi.Input.encodeList<
-            PolicyVariableColumnResponse,
-            Map<String, dynamic>
-          >(columns, (value) => value.toMap()),
+      'columns': pulumi.Input.encodeList<PolicyVariableColumnResponse, Map<String, dynamic>>(columns, (value) => value.toMap()),
       'id': id,
       'name': name,
       'systemData': systemData.toMap(),
@@ -58,18 +49,12 @@ class GetVariableAtManagementGroupResult {
   factory GetVariableAtManagementGroupResult.fromMap(Map<String, dynamic> map) {
     return GetVariableAtManagementGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      columns: pulumi.Input.decodeList<PolicyVariableColumnResponse>(
-        map['columns']!,
-        (value) => PolicyVariableColumnResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      columns: pulumi.Input.decodeList<PolicyVariableColumnResponse>(map['columns']!, (value) => PolicyVariableColumnResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

@@ -32,14 +32,9 @@ class GetServiceLbPolicyArgs {
   factory GetServiceLbPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceLbPolicyArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceLbPolicyId: pulumi.Input.fromValue(
-        map['serviceLbPolicyId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceLbPolicyId: pulumi.Input.fromValue(map['serviceLbPolicyId'] as String),
     );
   }
 }
+

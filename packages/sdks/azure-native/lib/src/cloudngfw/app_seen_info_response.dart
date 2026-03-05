@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppSeenInfoResponse {
   /// category
   final pulumi.Input<String> category;
-
   /// risk
   final pulumi.Input<String> risk;
-
   /// standardPorts
   final pulumi.Input<String> standardPorts;
-
   /// subCategory
   final pulumi.Input<String> subCategory;
-
   /// tag
   final pulumi.Input<String> tag;
-
   /// technology
   final pulumi.Input<String> technology;
-
   /// title
   final pulumi.Input<String> title;
 
@@ -67,3 +61,4 @@ class AppSeenInfoResponse {
     );
   }
 }
+

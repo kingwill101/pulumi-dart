@@ -9,21 +9,20 @@ class GoogleCloudDatalabelingV1beta1TextMetadata {
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1TextMetadata].
   /// [languageCode] The language of this text, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US.
-  GoogleCloudDatalabelingV1beta1TextMetadata({this.languageCode});
+  GoogleCloudDatalabelingV1beta1TextMetadata({
+    this.languageCode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'languageCode': ?languageCode};
+    return <String, dynamic>{
+      'languageCode': ?languageCode,
+    };
   }
 
-  factory GoogleCloudDatalabelingV1beta1TextMetadata.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatalabelingV1beta1TextMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1TextMetadata(
-      languageCode: (() {
-        final guardedValue = map['languageCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      languageCode: (() { final guardedValue = map['languageCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

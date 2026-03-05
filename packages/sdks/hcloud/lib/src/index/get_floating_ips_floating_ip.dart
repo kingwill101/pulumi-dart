@@ -61,16 +61,11 @@ class GetFloatingIpsFloatingIp {
       id: pulumi.Input.fromValue(map['id'] as int),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       ipNetwork: pulumi.Input.fromValue(map['ipNetwork'] as String),
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverId: pulumi.Input.fromValue(map['serverId'] as int),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

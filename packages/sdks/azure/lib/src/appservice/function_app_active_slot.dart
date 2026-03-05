@@ -683,10 +683,8 @@ import 'function_app_active_slot_state.dart';
 class FunctionAppActiveSlot extends pulumi.CustomResource {
   /// The timestamp of the last successful swap with `Production`
   late final pulumi.Output<String> lastSuccessfulSwap;
-
   /// The swap action should overwrite the Production slot's network configuration with the configuration from this slot. Defaults to `true`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> overwriteNetworkConfig;
-
   /// The ID of the Slot to swap with `Production`.
   late final pulumi.Output<String> slotId;
 
@@ -699,11 +697,11 @@ class FunctionAppActiveSlot extends pulumi.CustomResource {
     FunctionAppActiveSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/functionAppActiveSlot:FunctionAppActiveSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/functionAppActiveSlot:FunctionAppActiveSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     lastSuccessfulSwap = registerOutput<String>('lastSuccessfulSwap');
     overwriteNetworkConfig = registerOutput<bool?>('overwriteNetworkConfig');
     slotId = registerOutput<String>('slotId');
@@ -727,11 +725,11 @@ class FunctionAppActiveSlot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/functionAppActiveSlot:FunctionAppActiveSlot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/functionAppActiveSlot:FunctionAppActiveSlot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     lastSuccessfulSwap = registerOutput<String>('lastSuccessfulSwap');
     overwriteNetworkConfig = registerOutput<bool?>('overwriteNetworkConfig');
     slotId = registerOutput<String>('slotId');

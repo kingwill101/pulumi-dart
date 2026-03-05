@@ -9,19 +9,20 @@ class EndpointRef {
 
   /// Creates a new [EndpointRef].
   /// [name] Name of the endpoint.
-  EndpointRef({this.name});
+  EndpointRef({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory EndpointRef.fromMap(Map<String, dynamic> map) {
     return EndpointRef(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

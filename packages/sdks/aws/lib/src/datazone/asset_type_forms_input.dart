@@ -32,13 +32,10 @@ class AssetTypeFormsInput {
   factory AssetTypeFormsInput.fromMap(Map<String, dynamic> map) {
     return AssetTypeFormsInput(
       mapBlockKey: pulumi.Input.fromValue(map['mapBlockKey'] as String),
-      required: (() {
-        final guardedValue = map['required'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      required: (() { final guardedValue = map['required']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       typeIdentifier: pulumi.Input.fromValue(map['typeIdentifier'] as String),
       typeRevision: pulumi.Input.fromValue(map['typeRevision'] as String),
     );
   }
 }
+

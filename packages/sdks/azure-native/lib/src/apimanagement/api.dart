@@ -2811,75 +2811,50 @@ import 'subscription_key_parameter_names_contract_response.dart';
 class Api extends pulumi.CustomResource {
   /// Describes the revision of the API. If no value is provided, default revision 1 is created
   late final pulumi.Output<String?> apiRevision;
-
   /// Description of the API Revision.
   late final pulumi.Output<String?> apiRevisionDescription;
-
   /// Type of API.
   late final pulumi.Output<String?> apiType;
-
   /// Indicates the version identifier of the API if the API is versioned
   late final pulumi.Output<String?> apiVersion;
-
   /// Description of the API Version.
   late final pulumi.Output<String?> apiVersionDescription;
-
   /// Version set details
   late final pulumi.Output<ApiVersionSetContractDetailsResponse?> apiVersionSet;
-
   /// A resource identifier for the related ApiVersionSet.
   late final pulumi.Output<String?> apiVersionSetId;
-
   /// Collection of authentication settings included into this API.
-  late final pulumi.Output<AuthenticationSettingsContractResponse?>
-  authenticationSettings;
-
+  late final pulumi.Output<AuthenticationSettingsContractResponse?> authenticationSettings;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Contact information for the API.
   late final pulumi.Output<ApiContactInformationResponse?> contact;
-
   /// Description of the API. May include HTML formatting tags.
   late final pulumi.Output<String?> description;
-
   /// API name. Must be 1 to 300 characters long.
   late final pulumi.Output<String?> displayName;
-
   /// Indicates if API revision is current api revision.
   late final pulumi.Output<bool?> isCurrent;
-
   /// Indicates if API revision is accessible via the gateway.
   late final pulumi.Output<bool> isOnline;
-
   /// License information for the API.
   late final pulumi.Output<ApiLicenseInformationResponse?> license;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Relative URL uniquely identifying this API and all of its resource paths within the API Management service instance. It is appended to the API endpoint base URL specified during the service instance creation to form a public URL for this API.
   late final pulumi.Output<String> path;
-
   /// Describes on which protocols the operations in this API can be invoked.
   late final pulumi.Output<List<String>?> protocols;
-
   /// Absolute URL of the backend service implementing this API. Cannot be more than 2000 characters long.
   late final pulumi.Output<String?> serviceUrl;
-
   /// API identifier of the source API.
   late final pulumi.Output<String?> sourceApiId;
-
   /// Protocols over which API is made available.
-  late final pulumi.Output<SubscriptionKeyParameterNamesContractResponse?>
-  subscriptionKeyParameterNames;
-
+  late final pulumi.Output<SubscriptionKeyParameterNamesContractResponse?> subscriptionKeyParameterNames;
   /// Specifies whether an API or Product subscription is required for accessing the API.
   late final pulumi.Output<bool?> subscriptionRequired;
-
   /// A URL to the Terms of Service for the API. MUST be in the format of a URL.
   late final pulumi.Output<String?> termsOfServiceUrl;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -2887,81 +2862,37 @@ class Api extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Api]. {@macro pulumi_apimanagement_api_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Api(String name, {ApiArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:apimanagement:Api',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Api(
+    String name, {
+    ApiArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:apimanagement:Api',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiRevision = registerOutput<String?>('apiRevision');
     apiRevisionDescription = registerOutput<String?>('apiRevisionDescription');
     apiType = registerOutput<String?>('apiType');
     apiVersion = registerOutput<String?>('apiVersion');
     apiVersionDescription = registerOutput<String?>('apiVersionDescription');
-    apiVersionSet = registerOutput<ApiVersionSetContractDetailsResponse?>(
-      'apiVersionSet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiVersionSetContractDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    apiVersionSet = registerOutput<ApiVersionSetContractDetailsResponse?>('apiVersionSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiVersionSetContractDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     apiVersionSetId = registerOutput<String?>('apiVersionSetId');
-    authenticationSettings =
-        registerOutput<AuthenticationSettingsContractResponse?>(
-          'authenticationSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AuthenticationSettingsContractResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    authenticationSettings = registerOutput<AuthenticationSettingsContractResponse?>('authenticationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthenticationSettingsContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    contact = registerOutput<ApiContactInformationResponse?>(
-      'contact',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiContactInformationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    contact = registerOutput<ApiContactInformationResponse?>('contact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiContactInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     isCurrent = registerOutput<bool?>('isCurrent');
     isOnline = registerOutput<bool>('isOnline');
-    license = registerOutput<ApiLicenseInformationResponse?>(
-      'license',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiLicenseInformationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    license = registerOutput<ApiLicenseInformationResponse?>('license', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiLicenseInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');
     protocols = registerOutput<List<String>?>('protocols');
     serviceUrl = registerOutput<String?>('serviceUrl');
     sourceApiId = registerOutput<String?>('sourceApiId');
-    subscriptionKeyParameterNames =
-        registerOutput<SubscriptionKeyParameterNamesContractResponse?>(
-          'subscriptionKeyParameterNames',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SubscriptionKeyParameterNamesContractResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    subscriptionKeyParameterNames = registerOutput<SubscriptionKeyParameterNamesContractResponse?>('subscriptionKeyParameterNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionKeyParameterNamesContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
     termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
     type = registerOutput<String>('type');

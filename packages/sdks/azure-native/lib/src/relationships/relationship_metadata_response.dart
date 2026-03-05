@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RelationshipMetadataResponse {
   /// The type of the relationship source resource.
   final pulumi.Input<String> sourceType;
-
   /// The type of the relationship target resource.
   final pulumi.Input<String> targetType;
 
@@ -32,3 +31,4 @@ class RelationshipMetadataResponse {
     );
   }
 }
+

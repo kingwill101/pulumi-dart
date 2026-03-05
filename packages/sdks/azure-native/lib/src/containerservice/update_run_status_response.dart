@@ -9,10 +9,8 @@ import 'update_status_response.dart';
 class UpdateRunStatusResponse {
   /// The node image upgrade specs for the update run. It is only set in update run when `NodeImageSelection.type` is `Consistent`.
   final pulumi.Input<NodeImageSelectionStatusResponse> nodeImageSelection;
-
   /// The stages composing an update run. Stages are run sequentially withing an UpdateRun.
   final pulumi.Input<List<UpdateStageStatusResponse>> stages;
-
   /// The status of the UpdateRun.
   final pulumi.Input<UpdateStatusResponse> status;
 
@@ -28,51 +26,18 @@ class UpdateRunStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeImageSelection':
-          pulumi.Input.mapInputValue<
-            NodeImageSelectionStatusResponse,
-            Map<String, dynamic>
-          >(nodeImageSelection, (value) => value.toMap()),
-      'stages':
-          pulumi.Input.mapInputValue<
-            List<UpdateStageStatusResponse>,
-            List<Map<String, dynamic>>
-          >(
-            stages,
-            (value) =>
-                pulumi.Input.encodeList<
-                  UpdateStageStatusResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'status':
-          pulumi.Input.mapInputValue<
-            UpdateStatusResponse,
-            Map<String, dynamic>
-          >(status, (value) => value.toMap()),
+      'nodeImageSelection': pulumi.Input.mapInputValue<NodeImageSelectionStatusResponse, Map<String, dynamic>>(nodeImageSelection, (value) => value.toMap()),
+      'stages': pulumi.Input.mapInputValue<List<UpdateStageStatusResponse>, List<Map<String, dynamic>>>(stages, (value) => pulumi.Input.encodeList<UpdateStageStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'status': pulumi.Input.mapInputValue<UpdateStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory UpdateRunStatusResponse.fromMap(Map<String, dynamic> map) {
     return UpdateRunStatusResponse(
-      nodeImageSelection: pulumi.Input.fromValue(
-        NodeImageSelectionStatusResponse.fromMap(
-          (map['nodeImageSelection']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      stages: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<UpdateStageStatusResponse>(
-          map['stages']!,
-          (value) => UpdateStageStatusResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      status: pulumi.Input.fromValue(
-        UpdateStatusResponse.fromMap(
-          (map['status']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      nodeImageSelection: pulumi.Input.fromValue(NodeImageSelectionStatusResponse.fromMap((map['nodeImageSelection']! as Map).cast<String, dynamic>())),
+      stages: pulumi.Input.fromValue(pulumi.Input.decodeList<UpdateStageStatusResponse>(map['stages']!, (value) => UpdateStageStatusResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      status: pulumi.Input.fromValue(UpdateStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

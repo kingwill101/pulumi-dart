@@ -8,10 +8,14 @@ class PacketMirroringNetwork {
 
   /// Creates a new [PacketMirroringNetwork].
   /// [url] The full self_link URL of the network where this rule is active.
-  PacketMirroringNetwork({required this.url});
+  PacketMirroringNetwork({
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'url': url};
+    return <String, dynamic>{
+      'url': url,
+    };
   }
 
   factory PacketMirroringNetwork.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class PacketMirroringNetwork {
     );
   }
 }
+

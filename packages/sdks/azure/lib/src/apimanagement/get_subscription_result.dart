@@ -1,33 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSubscription.
 class GetSubscriptionResult {
   /// Indicates whether tracing is enabled.
   final bool allowTracing;
-
   /// The ID of the API assigned to this Subscription.
   final String apiId;
   final String apiManagementId;
-
   /// The display name of this Subscription.
   final String displayName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The primary key for this subscription.
   final String primaryKey;
-
   /// The ID of the Product assigned to this Subscription.
   final String productId;
-
   /// The secondary key for this subscription.
   final String secondaryKey;
-
   /// The state of this Subscription.
   final String state;
   final String subscriptionId;
-
   /// The ID of the User assigned to this Subscription.
   final String userId;
 
@@ -89,3 +82,4 @@ class GetSubscriptionResult {
     );
   }
 }
+

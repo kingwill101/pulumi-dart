@@ -9,26 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ArcAddonArgs {
   /// The addon name.
   final pulumi.Input<String>? addonName;
-
   /// The device name.
   final pulumi.Input<String> deviceName;
-
   /// Addon type.
   /// Expected value is 'ArcForKubernetes'.
   final pulumi.Input<String> kind;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// Arc resource location
   final pulumi.Input<String> resourceLocation;
-
   /// Arc resource Name
   final pulumi.Input<String> resourceName;
-
   /// The role name.
   final pulumi.Input<String> roleName;
-
   /// Arc resource subscription Id
   final pulumi.Input<String> subscriptionId;
 
@@ -67,22 +60,15 @@ class ArcAddonArgs {
 
   factory ArcAddonArgs.fromMap(Map<String, dynamic> map) {
     return ArcAddonArgs(
-      addonName: (() {
-        final guardedValue = map['addonName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addonName: (() { final guardedValue = map['addonName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      resourceLocation: pulumi.Input.fromValue(
-        map['resourceLocation'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      resourceLocation: pulumi.Input.fromValue(map['resourceLocation'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
       roleName: pulumi.Input.fromValue(map['roleName'] as String),
       subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
+

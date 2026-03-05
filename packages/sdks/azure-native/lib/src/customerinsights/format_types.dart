@@ -14,3 +14,4 @@ enum FormatTypes {
     throw ArgumentError('Unknown FormatTypes value: $value');
   }
 }
+

@@ -6,12 +6,10 @@ import 'instance_template_scheduling_graceful_shutdown_max_duration.dart';
 class InstanceTemplateSchedulingGracefulShutdown {
   /// Opts-in for graceful shutdown.
   final pulumi.Input<bool> enabled;
-
   /// The time allotted for the instance to gracefully shut down.
   /// If the graceful shutdown isn't complete after this time, then the instance
   /// transitions to the STOPPING state. Structure is documented below:
-  final pulumi.Input<InstanceTemplateSchedulingGracefulShutdownMaxDuration>?
-  maxDuration;
+  final pulumi.Input<InstanceTemplateSchedulingGracefulShutdownMaxDuration>? maxDuration;
 
   /// Creates a new [InstanceTemplateSchedulingGracefulShutdown].
   /// [enabled] Opts-in for graceful shutdown.
@@ -24,28 +22,15 @@ class InstanceTemplateSchedulingGracefulShutdown {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'maxDuration':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstanceTemplateSchedulingGracefulShutdownMaxDuration,
-            Map<String, dynamic>
-          >(maxDuration, (value) => value.toMap()),
+      'maxDuration': ?pulumi.Input.mapOptionalInputValue<InstanceTemplateSchedulingGracefulShutdownMaxDuration, Map<String, dynamic>>(maxDuration, (value) => value.toMap()),
     };
   }
 
-  factory InstanceTemplateSchedulingGracefulShutdown.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceTemplateSchedulingGracefulShutdown.fromMap(Map<String, dynamic> map) {
     return InstanceTemplateSchedulingGracefulShutdown(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      maxDuration: (() {
-        final guardedValue = map['maxDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstanceTemplateSchedulingGracefulShutdownMaxDuration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      maxDuration: (() { final guardedValue = map['maxDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceTemplateSchedulingGracefulShutdownMaxDuration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

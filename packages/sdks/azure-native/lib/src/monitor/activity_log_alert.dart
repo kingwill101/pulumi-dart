@@ -881,31 +881,22 @@ import 'alert_rule_all_of_condition_response.dart';
 class ActivityLogAlert extends pulumi.CustomResource {
   /// The actions that will activate when the condition is met.
   late final pulumi.Output<ActionListResponse> actions;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The condition that will cause this alert to activate.
   late final pulumi.Output<AlertRuleAllOfConditionResponse> condition;
-
   /// A description of this Activity Log Alert rule.
   late final pulumi.Output<String?> description;
-
   /// Indicates whether this Activity Log Alert rule is enabled. If an Activity Log Alert rule is not enabled, then none of its actions will be activated.
   late final pulumi.Output<bool?> enabled;
-
   /// The location of the resource. Azure Activity Log Alert rules are supported on Global, West Europe and North Europe regions.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// A list of resource IDs that will be used as prefixes. The alert will only apply to Activity Log events with resource IDs that fall under one of these prefixes. This list must include at least one item.
   late final pulumi.Output<List<String>> scopes;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -918,32 +909,14 @@ class ActivityLogAlert extends pulumi.CustomResource {
     ActivityLogAlertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:monitor:ActivityLogAlert',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    actions = registerOutput<ActionListResponse>(
-      'actions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ActionListResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:monitor:ActivityLogAlert',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    actions = registerOutput<ActionListResponse>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActionListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    condition = registerOutput<AlertRuleAllOfConditionResponse>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertRuleAllOfConditionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    condition = registerOutput<AlertRuleAllOfConditionResponse>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertRuleAllOfConditionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String?>('location');

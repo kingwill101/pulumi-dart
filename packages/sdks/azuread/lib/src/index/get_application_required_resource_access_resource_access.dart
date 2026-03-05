@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationRequiredResourceAccessResourceAccess {
   /// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
   final pulumi.Input<String> id;
-
   /// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
   final pulumi.Input<String> type;
 
@@ -18,15 +17,17 @@ class GetApplicationRequiredResourceAccessResourceAccess {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'type': type};
+    return <String, dynamic>{
+      'id': id,
+      'type': type,
+    };
   }
 
-  factory GetApplicationRequiredResourceAccessResourceAccess.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationRequiredResourceAccessResourceAccess.fromMap(Map<String, dynamic> map) {
     return GetApplicationRequiredResourceAccessResourceAccess(
       id: pulumi.Input.fromValue(map['id'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

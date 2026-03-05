@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesInterfaceIp {
   /// Specifies the IP address assigned to the interface.
   final pulumi.Input<String> address;
-
   /// Defines the address family (IPv4 or IPv6) for the interface's IP configuration.
   final pulumi.Input<String>? family;
-
   /// Sets the peer IP address for communication over the interface.
   final pulumi.Input<String>? peer;
-
   /// Configures the prefix length for the IP address subnet.
   final pulumi.Input<double>? prefix;
 
@@ -39,21 +36,10 @@ class DomainDevicesInterfaceIp {
   factory DomainDevicesInterfaceIp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceIp(
       address: pulumi.Input.fromValue(map['address'] as String),
-      family: (() {
-        final guardedValue = map['family'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peer: (() {
-        final guardedValue = map['peer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peer: (() { final guardedValue = map['peer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

@@ -9,31 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectArgs {
   /// Comment of the datahub project. It cannot be longer than 255 characters.
   final pulumi.Input<String>? comment;
-
   /// The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
   final pulumi.Input<String>? name;
 
   /// Creates a new [ProjectArgs].
   /// [comment] Comment of the datahub project. It cannot be longer than 255 characters.
   /// [name] The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
-  ProjectArgs({this.comment, this.name});
+  ProjectArgs({
+    this.comment,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comment': ?comment, 'name': ?name};
+    return <String, dynamic>{
+      'comment': ?comment,
+      'name': ?name,
+    };
   }
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      comment: (() {
-        final guardedValue = map['comment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

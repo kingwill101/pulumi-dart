@@ -9,19 +9,20 @@ class ConnectionMonitorEndpointScopeItem {
 
   /// Creates a new [ConnectionMonitorEndpointScopeItem].
   /// [address] The address of the endpoint item. Supported types are IPv4/IPv6 subnet mask or IPv4/IPv6 IP address.
-  ConnectionMonitorEndpointScopeItem({this.address});
+  ConnectionMonitorEndpointScopeItem({
+    this.address,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'address': ?address};
+    return <String, dynamic>{
+      'address': ?address,
+    };
   }
 
   factory ConnectionMonitorEndpointScopeItem.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorEndpointScopeItem(
-      address: (() {
-        final guardedValue = map['address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

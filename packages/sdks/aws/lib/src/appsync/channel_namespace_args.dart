@@ -12,28 +12,20 @@ import 'channel_namespace_subscribe_auth_mode.dart';
 class ChannelNamespaceArgs {
   /// Event API ID.
   final pulumi.Input<String> apiId;
-
   /// Event handler functions that run custom business logic to process published events and subscribe requests.
   final pulumi.Input<String>? codeHandlers;
-
   /// Configuration for the `on_publish` and `on_subscribe` handlers. See Handler Configs below.
   final pulumi.Input<ChannelNamespaceHandlerConfigs>? handlerConfigs;
-
   /// Name of the channel namespace.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
-
   /// Authorization modes to use for publishing messages on the channel namespace. This configuration overrides the default API authorization configuration. See Auth Modes below.
   final pulumi.Input<List<ChannelNamespacePublishAuthMode>>? publishAuthModes;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Authorization modes to use for subscribing to messages on the channel namespace. This configuration overrides the default API authorization configuration. See Auth Modes below.
-  final pulumi.Input<List<ChannelNamespaceSubscribeAuthMode>>?
-  subscribeAuthModes;
-
+  final pulumi.Input<List<ChannelNamespaceSubscribeAuthMode>>? subscribeAuthModes;
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -61,37 +53,11 @@ class ChannelNamespaceArgs {
     return <String, dynamic>{
       'apiId': apiId,
       'codeHandlers': ?codeHandlers,
-      'handlerConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChannelNamespaceHandlerConfigs,
-            Map<String, dynamic>
-          >(handlerConfigs, (value) => value.toMap()),
+      'handlerConfigs': ?pulumi.Input.mapOptionalInputValue<ChannelNamespaceHandlerConfigs, Map<String, dynamic>>(handlerConfigs, (value) => value.toMap()),
       'name': ?name,
-      'publishAuthModes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ChannelNamespacePublishAuthMode>,
-            List<Map<String, dynamic>>
-          >(
-            publishAuthModes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ChannelNamespacePublishAuthMode,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'publishAuthModes': ?pulumi.Input.mapOptionalInputValue<List<ChannelNamespacePublishAuthMode>, List<Map<String, dynamic>>>(publishAuthModes, (value) => pulumi.Input.encodeList<ChannelNamespacePublishAuthMode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
-      'subscribeAuthModes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ChannelNamespaceSubscribeAuthMode>,
-            List<Map<String, dynamic>>
-          >(
-            subscribeAuthModes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ChannelNamespaceSubscribeAuthMode,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'subscribeAuthModes': ?pulumi.Input.mapOptionalInputValue<List<ChannelNamespaceSubscribeAuthMode>, List<Map<String, dynamic>>>(subscribeAuthModes, (value) => pulumi.Input.encodeList<ChannelNamespaceSubscribeAuthMode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
     };
   }
@@ -99,61 +65,14 @@ class ChannelNamespaceArgs {
   factory ChannelNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceArgs(
       apiId: pulumi.Input.fromValue(map['apiId'] as String),
-      codeHandlers: (() {
-        final guardedValue = map['codeHandlers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      handlerConfigs: (() {
-        final guardedValue = map['handlerConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChannelNamespaceHandlerConfigs.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publishAuthModes: (() {
-        final guardedValue = map['publishAuthModes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ChannelNamespacePublishAuthMode>(
-            guardedValue,
-            (value) => ChannelNamespacePublishAuthMode.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subscribeAuthModes: (() {
-        final guardedValue = map['subscribeAuthModes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ChannelNamespaceSubscribeAuthMode>(
-            guardedValue,
-            (value) => ChannelNamespaceSubscribeAuthMode.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      codeHandlers: (() { final guardedValue = map['codeHandlers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      handlerConfigs: (() { final guardedValue = map['handlerConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelNamespaceHandlerConfigs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publishAuthModes: (() { final guardedValue = map['publishAuthModes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelNamespacePublishAuthMode>(guardedValue, (value) => ChannelNamespacePublishAuthMode.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscribeAuthModes: (() { final guardedValue = map['subscribeAuthModes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelNamespaceSubscribeAuthMode>(guardedValue, (value) => ChannelNamespaceSubscribeAuthMode.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

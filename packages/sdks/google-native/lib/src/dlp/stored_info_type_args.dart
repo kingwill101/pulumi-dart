@@ -10,11 +10,9 @@ import 'google_privacy_dlp_v2_stored_info_type_config.dart';
 class StoredInfoTypeArgs {
   /// Configuration of the storedInfoType to create.
   final pulumi.Input<GooglePrivacyDlpV2StoredInfoTypeConfig> config;
-
   /// Deprecated. This field has no effect.
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
-
   /// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
   final pulumi.Input<String>? storedInfoTypeId;
 
@@ -32,11 +30,7 @@ class StoredInfoTypeArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2StoredInfoTypeConfig,
-            Map<String, dynamic>
-          >(config, (value) => value.toMap()),
+      'config': pulumi.Input.mapInputValue<GooglePrivacyDlpV2StoredInfoTypeConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'location': ?location,
       'project': ?project,
       'storedInfoTypeId': ?storedInfoTypeId,
@@ -45,26 +39,11 @@ class StoredInfoTypeArgs {
 
   factory StoredInfoTypeArgs.fromMap(Map<String, dynamic> map) {
     return StoredInfoTypeArgs(
-      config: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2StoredInfoTypeConfig.fromMap(
-          (map['config']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storedInfoTypeId: (() {
-        final guardedValue = map['storedInfoTypeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      config: pulumi.Input.fromValue(GooglePrivacyDlpV2StoredInfoTypeConfig.fromMap((map['config']! as Map).cast<String, dynamic>())),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storedInfoTypeId: (() { final guardedValue = map['storedInfoTypeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum FeatureImportanceMode {
     throw ArgumentError('Unknown FeatureImportanceMode value: $value');
   }
 }
+

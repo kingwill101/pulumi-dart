@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListNamespaceKeysArgs {
   /// The authorization rule name.
   final pulumi.Input<String> authorizationRuleName;
-
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
-
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class ListNamespaceKeysArgs {
 
   factory ListNamespaceKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListNamespaceKeysArgs(
-      authorizationRuleName: pulumi.Input.fromValue(
-        map['authorizationRuleName'] as String,
-      ),
+      authorizationRuleName: pulumi.Input.fromValue(map['authorizationRuleName'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

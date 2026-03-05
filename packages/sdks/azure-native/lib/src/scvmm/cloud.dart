@@ -174,43 +174,30 @@ import 'system_data_response.dart';
 class Cloud extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Capacity of the cloud.
   late final pulumi.Output<CloudCapacityResponse> cloudCapacity;
-
   /// Name of the cloud in VMMServer.
   late final pulumi.Output<String> cloudName;
-
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
-
   /// Gets or sets the inventory Item ID for the resource.
   late final pulumi.Output<String?> inventoryItemId;
-
   /// Gets or sets the location.
   late final pulumi.Output<String> location;
-
   /// Resource Name
   late final pulumi.Output<String> name;
-
   /// Gets or sets the provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// List of QoS policies available for the cloud.
   late final pulumi.Output<List<Map<String, dynamic>>> storageQoSPolicies;
-
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource Type
   late final pulumi.Output<String> type;
-
   /// Unique ID of the cloud.
   late final pulumi.Output<String?> uuid;
-
   /// ARM Id of the vmmServer resource in which this resource resides.
   late final pulumi.Output<String?> vmmServerId;
 
@@ -218,52 +205,26 @@ class Cloud extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Cloud]. {@macro pulumi_scvmm_cloud_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Cloud(String name, {CloudArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:scvmm:Cloud',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Cloud(
+    String name, {
+    CloudArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:scvmm:Cloud',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cloudCapacity = registerOutput<CloudCapacityResponse>(
-      'cloudCapacity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CloudCapacityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cloudCapacity = registerOutput<CloudCapacityResponse>('cloudCapacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudCapacityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudName = registerOutput<String>('cloudName');
-    extendedLocation = registerOutput<ExtendedLocationResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inventoryItemId = registerOutput<String?>('inventoryItemId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    storageQoSPolicies = registerOutput<List<Map<String, dynamic>>>(
-      'storageQoSPolicies',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storageQoSPolicies = registerOutput<List<Map<String, dynamic>>>('storageQoSPolicies');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uuid = registerOutput<String?>('uuid');

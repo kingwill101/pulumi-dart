@@ -227,25 +227,18 @@ import 'system_data_response.dart';
 class ConnectorDryrun extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// the preview of the operations for creation
   late final pulumi.Output<List<Map<String, dynamic>>> operationPreviews;
-
   /// The parameters of the dryrun
   late final pulumi.Output<CreateOrUpdateDryrunParametersResponse?> parameters;
-
   /// the result of the dryrun
   late final pulumi.Output<List<Map<String, dynamic>>> prerequisiteResults;
-
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -258,40 +251,18 @@ class ConnectorDryrun extends pulumi.CustomResource {
     ConnectorDryrunArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:servicelinker:ConnectorDryrun',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:servicelinker:ConnectorDryrun',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    operationPreviews = registerOutput<List<Map<String, dynamic>>>(
-      'operationPreviews',
-    );
-    parameters = registerOutput<CreateOrUpdateDryrunParametersResponse?>(
-      'parameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CreateOrUpdateDryrunParametersResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    prerequisiteResults = registerOutput<List<Map<String, dynamic>>>(
-      'prerequisiteResults',
-    );
+    operationPreviews = registerOutput<List<Map<String, dynamic>>>('operationPreviews');
+    parameters = registerOutput<CreateOrUpdateDryrunParametersResponse?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CreateOrUpdateDryrunParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    prerequisiteResults = registerOutput<List<Map<String, dynamic>>>('prerequisiteResults');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

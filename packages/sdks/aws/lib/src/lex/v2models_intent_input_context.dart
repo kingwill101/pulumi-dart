@@ -8,10 +8,14 @@ class V2modelsIntentInputContext {
 
   /// Creates a new [V2modelsIntentInputContext].
   /// [name] Name of the context.
-  V2modelsIntentInputContext({required this.name});
+  V2modelsIntentInputContext({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory V2modelsIntentInputContext.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class V2modelsIntentInputContext {
     );
   }
 }
+

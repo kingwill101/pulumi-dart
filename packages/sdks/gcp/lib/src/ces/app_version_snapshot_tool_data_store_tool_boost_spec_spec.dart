@@ -7,53 +7,24 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpec {
   /// (Output)
   /// A list of boosting specifications.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec>
-  >?
-  conditionBoostSpecs;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec>>? conditionBoostSpecs;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolBoostSpecSpec].
   /// [conditionBoostSpecs] (Output)
-  AppVersionSnapshotToolDataStoreToolBoostSpecSpec({this.conditionBoostSpecs});
+  AppVersionSnapshotToolDataStoreToolBoostSpecSpec({
+    this.conditionBoostSpecs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditionBoostSpecs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec
-            >,
-            List<Map<String, dynamic>>
-          >(
-            conditionBoostSpecs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'conditionBoostSpecs': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec>, List<Map<String, dynamic>>>(conditionBoostSpecs, (value) => pulumi.Input.encodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory AppVersionSnapshotToolDataStoreToolBoostSpecSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolDataStoreToolBoostSpecSpec.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolBoostSpecSpec(
-      conditionBoostSpecs: (() {
-        final guardedValue = map['conditionBoostSpecs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec
-          >(
-            guardedValue,
-            (value) =>
-                AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      conditionBoostSpecs: (() { final guardedValue = map['conditionBoostSpecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec>(guardedValue, (value) => AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

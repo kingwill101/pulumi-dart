@@ -198,31 +198,22 @@ import 'system_data_response.dart';
 class FabricCapacity extends pulumi.CustomResource {
   /// The capacity administration
   late final pulumi.Output<CapacityAdministrationResponse> administration;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The current deployment state of Microsoft Fabric resource. The provisioningState is to indicate states for resource provisioning.
   late final pulumi.Output<String> provisioningState;
-
   /// The SKU details
   late final pulumi.Output<RpSkuResponse> sku;
-
   /// The current state of Microsoft Fabric resource. The state is to indicate more states outside of resource provisioning.
   late final pulumi.Output<String> state;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -235,46 +226,19 @@ class FabricCapacity extends pulumi.CustomResource {
     FabricCapacityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:fabric:FabricCapacity',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    administration = registerOutput<CapacityAdministrationResponse>(
-      'administration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacityAdministrationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:fabric:FabricCapacity',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    administration = registerOutput<CapacityAdministrationResponse>('administration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityAdministrationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<RpSkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RpSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<RpSkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RpSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

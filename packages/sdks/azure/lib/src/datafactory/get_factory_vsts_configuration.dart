@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFactoryVstsConfiguration {
   /// The VSTS account name.
   final pulumi.Input<String> accountName;
-
   /// The branch of the repository to get code from.
   final pulumi.Input<String> branchName;
-
   /// The name of the VSTS project.
   final pulumi.Input<String> projectName;
-
   /// The name of the git repository.
   final pulumi.Input<String> repositoryName;
-
   /// The root folder within the repository.
   final pulumi.Input<String> rootFolder;
-
   /// The Tenant ID associated with the VSTS account.
   final pulumi.Input<String> tenantId;
 
@@ -59,3 +54,4 @@ class GetFactoryVstsConfiguration {
     );
   }
 }
+

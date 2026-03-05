@@ -15,15 +15,17 @@ class GetClusterMaintenancePolicyDailyMaintenanceWindow {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'duration': duration, 'startTime': startTime};
+    return <String, dynamic>{
+      'duration': duration,
+      'startTime': startTime,
+    };
   }
 
-  factory GetClusterMaintenancePolicyDailyMaintenanceWindow.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterMaintenancePolicyDailyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetClusterMaintenancePolicyDailyMaintenanceWindow(
       duration: pulumi.Input.fromValue(map['duration'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
+

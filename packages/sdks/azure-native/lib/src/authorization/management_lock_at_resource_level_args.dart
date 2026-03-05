@@ -10,31 +10,22 @@ import 'management_lock_owner.dart';
 class ManagementLockAtResourceLevelArgs {
   /// The API version to use for this operation.
   final pulumi.Input<String> apiVersion;
-
   /// The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
   final pulumi.Input<String> level;
-
   /// The name of lock. The lock name can be a maximum of 260 characters. It cannot contain &lt;, &gt; %, &, :, \, ?, /, or any control characters.
   final pulumi.Input<String>? lockName;
-
   /// Notes about the lock. Maximum of 512 characters.
   final pulumi.Input<String>? notes;
-
   /// The owners of the lock.
   final pulumi.Input<List<ManagementLockOwner>>? owners;
-
   /// The parent resource identity.
   final pulumi.Input<String> parentResourcePath;
-
   /// The name of the resource group containing the resource to lock.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the resource to lock.
   final pulumi.Input<String> resourceName;
-
   /// The resource provider namespace of the resource to lock.
   final pulumi.Input<String> resourceProviderNamespace;
-
   /// The resource type of the resource to lock.
   final pulumi.Input<String> resourceType;
 
@@ -68,18 +59,7 @@ class ManagementLockAtResourceLevelArgs {
       'level': level,
       'lockName': ?lockName,
       'notes': ?notes,
-      'owners':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ManagementLockOwner>,
-            List<Map<String, dynamic>>
-          >(
-            owners,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ManagementLockOwner,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'owners': ?pulumi.Input.mapOptionalInputValue<List<ManagementLockOwner>, List<Map<String, dynamic>>>(owners, (value) => pulumi.Input.encodeList<ManagementLockOwner, Map<String, dynamic>>(value, (value) => value.toMap())),
       'parentResourcePath': parentResourcePath,
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
@@ -92,39 +72,15 @@ class ManagementLockAtResourceLevelArgs {
     return ManagementLockAtResourceLevelArgs(
       apiVersion: pulumi.Input.fromValue(map['apiVersion'] as String),
       level: pulumi.Input.fromValue(map['level'] as String),
-      lockName: (() {
-        final guardedValue = map['lockName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      notes: (() {
-        final guardedValue = map['notes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      owners: (() {
-        final guardedValue = map['owners'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ManagementLockOwner>(
-            guardedValue,
-            (value) => ManagementLockOwner.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      parentResourcePath: pulumi.Input.fromValue(
-        map['parentResourcePath'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      lockName: (() { final guardedValue = map['lockName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      owners: (() { final guardedValue = map['owners']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagementLockOwner>(guardedValue, (value) => ManagementLockOwner.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      parentResourcePath: pulumi.Input.fromValue(map['parentResourcePath'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
-      resourceProviderNamespace: pulumi.Input.fromValue(
-        map['resourceProviderNamespace'] as String,
-      ),
+      resourceProviderNamespace: pulumi.Input.fromValue(map['resourceProviderNamespace'] as String),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
+

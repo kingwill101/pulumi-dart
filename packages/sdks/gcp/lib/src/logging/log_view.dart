@@ -182,25 +182,18 @@ import 'log_view_state.dart';
 class LogView extends pulumi.CustomResource {
   /// The bucket of the resource
   late final pulumi.Output<String> bucket;
-
   /// Output only. The creation timestamp of the view.
   late final pulumi.Output<String> createTime;
-
   /// Describes this view.
   late final pulumi.Output<String?> description;
-
   /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
   late final pulumi.Output<String?> filter;
-
   /// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
   late final pulumi.Output<String> location;
-
   /// The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
   late final pulumi.Output<String> name;
-
   /// The parent of the resource.
   late final pulumi.Output<String> parent;
-
   /// Output only. The last update timestamp of the view.
   late final pulumi.Output<String> updateTime;
 
@@ -213,11 +206,11 @@ class LogView extends pulumi.CustomResource {
     LogViewArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:logging/logView:LogView',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:logging/logView:LogView',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -246,11 +239,11 @@ class LogView extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:logging/logView:LogView',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:logging/logView:LogView',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

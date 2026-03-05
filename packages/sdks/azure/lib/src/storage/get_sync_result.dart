@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSync.
 class GetSyncResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Incoming traffic policy.
   final String incomingTrafficPolicy;
-
   /// The Azure Region where the Storage Sync exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the Storage Sync.
   final Map<String, String> tags;
 
@@ -54,3 +52,4 @@ class GetSyncResult {
     );
   }
 }
+

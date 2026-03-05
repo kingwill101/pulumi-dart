@@ -256,34 +256,24 @@ import 'layer_version_state.dart';
 class LayerVersion extends pulumi.CustomResource {
   /// The access mode of Layer Version.
   late final pulumi.Output<String> acl;
-
   /// The arn of Layer Version.
   late final pulumi.Output<String> arn;
-
   /// The checksum of the layer code package.
   late final pulumi.Output<String> codeCheckSum;
-
   /// The list of runtime environments that are supported by the layer. Valid values: `nodejs14`, `nodejs12`, `nodejs10`, `nodejs8`, `nodejs6`, `python3.9`, `python3`, `python2.7`, `java11`, `java8`, `php7.2`, `go1`,`dotnetcore2.1`, `custom`.
   late final pulumi.Output<List<String>> compatibleRuntimes;
-
   /// The description of the layer version.
   late final pulumi.Output<String?> description;
-
   /// The name of the layer.
   late final pulumi.Output<String> layerName;
-
   /// The name of the OSS bucket that stores the ZIP package of the function code.
   late final pulumi.Output<String?> ossBucketName;
-
   /// The name of the OSS object (ZIP package) that contains the function code.
   late final pulumi.Output<String?> ossObjectName;
-
   /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
   late final pulumi.Output<bool?> skipDestroy;
-
   /// The version of Layer Version.
   late final pulumi.Output<String> version;
-
   /// The ZIP package of the function code that is encoded in the Base64 format.
   ///
   /// &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
@@ -298,11 +288,11 @@ class LayerVersion extends pulumi.CustomResource {
     LayerVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/layerVersion:LayerVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/layerVersion:LayerVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acl = registerOutput<String>('acl');
     arn = registerOutput<String>('arn');
     codeCheckSum = registerOutput<String>('codeCheckSum');
@@ -334,11 +324,11 @@ class LayerVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/layerVersion:LayerVersion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/layerVersion:LayerVersion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acl = registerOutput<String>('acl');
     arn = registerOutput<String>('arn');
     codeCheckSum = registerOutput<String>('codeCheckSum');

@@ -144,16 +144,12 @@ import 'redis_firewall_rule_args.dart';
 class RedisFirewallRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// highest IP address included in the range
   late final pulumi.Output<String> endIP;
-
   /// name of the firewall rule
   late final pulumi.Output<String> name;
-
   /// lowest IP address included in the range
   late final pulumi.Output<String> startIP;
-
   /// type (of the firewall rule resource = 'Microsoft.Cache/redis/firewallRule')
   late final pulumi.Output<String> type;
 
@@ -166,11 +162,11 @@ class RedisFirewallRule extends pulumi.CustomResource {
     RedisFirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:redis:RedisFirewallRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:redis:RedisFirewallRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     endIP = registerOutput<String>('endIP');
     this.name = registerOutput<String>('name');

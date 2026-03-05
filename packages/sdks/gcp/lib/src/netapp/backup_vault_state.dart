@@ -7,53 +7,39 @@ import 'backup_vault_backup_retention_policy.dart';
 class BackupVaultState {
   /// Region in which backup is stored.
   final pulumi.Input<String>? backupRegion;
-
   /// Backup retention policy defining the retention of the backups.
   /// Structure is documented below.
   final pulumi.Input<BackupVaultBackupRetentionPolicy>? backupRetentionPolicy;
-
   /// Type of the backup vault to be created. Default is IN_REGION.
   /// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
   final pulumi.Input<String>? backupVaultType;
-
   /// Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
   final pulumi.Input<String>? createTime;
-
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
-
   /// Name of the Backup vault created in backup region.
   final pulumi.Input<String>? destinationBackupVault;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
-
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Location (region) of the backup vault.
   final pulumi.Input<String>? location;
-
   /// The resource name of the backup vault. Needs to be unique per location.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
-
   /// Name of the Backup vault created in source region.
   final pulumi.Input<String>? sourceBackupVault;
-
   /// Region in which the backup vault is created.
   final pulumi.Input<String>? sourceRegion;
-
   /// The state of the Backup Vault.
   final pulumi.Input<String>? state;
 
@@ -94,11 +80,7 @@ class BackupVaultState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backupRegion': ?backupRegion,
-      'backupRetentionPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            BackupVaultBackupRetentionPolicy,
-            Map<String, dynamic>
-          >(backupRetentionPolicy, (value) => value.toMap()),
+      'backupRetentionPolicy': ?pulumi.Input.mapOptionalInputValue<BackupVaultBackupRetentionPolicy, Map<String, dynamic>>(backupRetentionPolicy, (value) => value.toMap()),
       'backupVaultType': ?backupVaultType,
       'createTime': ?createTime,
       'description': ?description,
@@ -117,91 +99,22 @@ class BackupVaultState {
 
   factory BackupVaultState.fromMap(Map<String, dynamic> map) {
     return BackupVaultState(
-      backupRegion: (() {
-        final guardedValue = map['backupRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      backupRetentionPolicy: (() {
-        final guardedValue = map['backupRetentionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BackupVaultBackupRetentionPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      backupVaultType: (() {
-        final guardedValue = map['backupVaultType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destinationBackupVault: (() {
-        final guardedValue = map['destinationBackupVault'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      effectiveLabels: (() {
-        final guardedValue = map['effectiveLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pulumiLabels: (() {
-        final guardedValue = map['pulumiLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      sourceBackupVault: (() {
-        final guardedValue = map['sourceBackupVault'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceRegion: (() {
-        final guardedValue = map['sourceRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backupRegion: (() { final guardedValue = map['backupRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backupRetentionPolicy: (() { final guardedValue = map['backupRetentionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackupVaultBackupRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      backupVaultType: (() { final guardedValue = map['backupVaultType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destinationBackupVault: (() { final guardedValue = map['destinationBackupVault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      sourceBackupVault: (() { final guardedValue = map['sourceBackupVault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceRegion: (() { final guardedValue = map['sourceRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

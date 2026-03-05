@@ -13,23 +13,17 @@ import 'resource_claim_status_patch_resource_k8s_io_v1alpha3.dart';
 /// ResourceClaim describes a request for access to resources in the cluster, for use by workloads. For example, if a workload needs an accelerator device with specific properties, this is how that request is expressed. The status stanza tracks whether this claim has been satisfied and what specific resources have been allocated.
 ///
 /// This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.
-class ResourceClaimPatchResourceK8sIoV1alpha3Resource
-    extends pulumi.CustomResource {
+class ResourceClaimPatchResourceK8sIoV1alpha3Resource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
-
   /// Standard object metadata
   late final pulumi.Output<ObjectMetaPatch?> metadata;
-
   /// Spec describes what is being requested and how to configure it. The spec is immutable.
   late final pulumi.Output<ResourceClaimSpecPatchResourceK8sIoV1alpha3?> spec;
-
   /// Status describes whether the claim is ready to use and what has been allocated.
-  late final pulumi.Output<ResourceClaimStatusPatchResourceK8sIoV1alpha3?>
-  status;
+  late final pulumi.Output<ResourceClaimStatusPatchResourceK8sIoV1alpha3?> status;
 
   /// Creates a new [ResourceClaimPatchResourceK8sIoV1alpha3Resource].
   /// [name] The Pulumi resource name.
@@ -40,42 +34,15 @@ class ResourceClaimPatchResourceK8sIoV1alpha3Resource
     ResourceClaimPatchResourceK8sIoV1alpha3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'kubernetes:resource.k8s.io/v1alpha3:ResourceClaimPatch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'kubernetes:resource.k8s.io/v1alpha3:ResourceClaimPatch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMetaPatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    spec = registerOutput<ResourceClaimSpecPatchResourceK8sIoV1alpha3?>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceClaimSpecPatchResourceK8sIoV1alpha3.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<ResourceClaimStatusPatchResourceK8sIoV1alpha3?>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceClaimStatusPatchResourceK8sIoV1alpha3.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ResourceClaimSpecPatchResourceK8sIoV1alpha3?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceClaimSpecPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ResourceClaimStatusPatchResourceK8sIoV1alpha3?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceClaimStatusPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

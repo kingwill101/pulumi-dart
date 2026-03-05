@@ -11,21 +11,15 @@ import 'google_cloud_aiplatform_v1_featurestore_online_serving_config.dart';
 class FeaturestoreArgs {
   /// Optional. Customer-managed encryption key spec for data storage. If set, both of the online and offline data storage will be secured by this key.
   final pulumi.Input<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec;
-
   /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   final pulumi.Input<String>? etag;
-
   /// Required. The ID to use for this Featurestore, which will become the final component of the Featurestore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
   final pulumi.Input<String> featurestoreId;
-
   /// Optional. The labels with user-defined metadata to organize your Featurestore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one Featurestore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
-
   /// Optional. Config for online storage resources. The field should not co-exist with the field of `OnlineStoreReplicationConfig`. If both of it and OnlineStoreReplicationConfig are unset, the feature store will not have an online store and cannot be used for online serving.
-  final pulumi.Input<GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig>?
-  onlineServingConfig;
-
+  final pulumi.Input<GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig>? onlineServingConfig;
   /// Optional. TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than `online_storage_ttl_days` since the feature generation time. Note that `online_storage_ttl_days` should be less than or equal to `offline_storage_ttl_days` for each EntityType under a featurestore. If not set, default to 4000 days
   final pulumi.Input<int>? onlineStorageTtlDays;
   final pulumi.Input<String>? project;
@@ -52,20 +46,12 @@ class FeaturestoreArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryptionSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudAiplatformV1EncryptionSpec,
-            Map<String, dynamic>
-          >(encryptionSpec, (value) => value.toMap()),
+      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1EncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
       'etag': ?etag,
       'featurestoreId': featurestoreId,
       'labels': ?labels,
       'location': ?location,
-      'onlineServingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig,
-            Map<String, dynamic>
-          >(onlineServingConfig, (value) => value.toMap()),
+      'onlineServingConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig, Map<String, dynamic>>(onlineServingConfig, (value) => value.toMap()),
       'onlineStorageTtlDays': ?onlineStorageTtlDays,
       'project': ?project,
     };
@@ -73,52 +59,15 @@ class FeaturestoreArgs {
 
   factory FeaturestoreArgs.fromMap(Map<String, dynamic> map) {
     return FeaturestoreArgs(
-      encryptionSpec: (() {
-        final guardedValue = map['encryptionSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudAiplatformV1EncryptionSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      encryptionSpec: (() { final guardedValue = map['encryptionSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1EncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       featurestoreId: pulumi.Input.fromValue(map['featurestoreId'] as String),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      onlineServingConfig: (() {
-        final guardedValue = map['onlineServingConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      onlineStorageTtlDays: (() {
-        final guardedValue = map['onlineStorageTtlDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      onlineServingConfig: (() { final guardedValue = map['onlineServingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      onlineStorageTtlDays: (() { final guardedValue = map['onlineStorageTtlDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

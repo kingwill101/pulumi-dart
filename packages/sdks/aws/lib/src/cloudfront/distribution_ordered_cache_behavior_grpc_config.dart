@@ -8,21 +8,20 @@ class DistributionOrderedCacheBehaviorGrpcConfig {
 
   /// Creates a new [DistributionOrderedCacheBehaviorGrpcConfig].
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.
-  DistributionOrderedCacheBehaviorGrpcConfig({this.enabled});
+  DistributionOrderedCacheBehaviorGrpcConfig({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory DistributionOrderedCacheBehaviorGrpcConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DistributionOrderedCacheBehaviorGrpcConfig.fromMap(Map<String, dynamic> map) {
     return DistributionOrderedCacheBehaviorGrpcConfig(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

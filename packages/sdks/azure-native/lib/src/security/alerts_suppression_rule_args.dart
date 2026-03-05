@@ -10,22 +10,16 @@ import 'suppression_alerts_scope.dart';
 class AlertsSuppressionRuleArgs {
   /// Type of the alert to automatically suppress. For all alert types, use '*'
   final pulumi.Input<String> alertType;
-
   /// The unique name of the suppression alert rule
   final pulumi.Input<String>? alertsSuppressionRuleName;
-
   /// Any comment regarding the rule
   final pulumi.Input<String>? comment;
-
   /// Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
   final pulumi.Input<String>? expirationDateUtc;
-
   /// The reason for dismissing the alert
   final pulumi.Input<String> reason;
-
   /// Possible states of the rule
   final pulumi.Input<String> state;
-
   /// The suppression conditions
   final pulumi.Input<SuppressionAlertsScope>? suppressionAlertsScope;
 
@@ -55,43 +49,20 @@ class AlertsSuppressionRuleArgs {
       'expirationDateUtc': ?expirationDateUtc,
       'reason': reason,
       'state': state,
-      'suppressionAlertsScope':
-          ?pulumi.Input.mapOptionalInputValue<
-            SuppressionAlertsScope,
-            Map<String, dynamic>
-          >(suppressionAlertsScope, (value) => value.toMap()),
+      'suppressionAlertsScope': ?pulumi.Input.mapOptionalInputValue<SuppressionAlertsScope, Map<String, dynamic>>(suppressionAlertsScope, (value) => value.toMap()),
     };
   }
 
   factory AlertsSuppressionRuleArgs.fromMap(Map<String, dynamic> map) {
     return AlertsSuppressionRuleArgs(
       alertType: pulumi.Input.fromValue(map['alertType'] as String),
-      alertsSuppressionRuleName: (() {
-        final guardedValue = map['alertsSuppressionRuleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      comment: (() {
-        final guardedValue = map['comment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expirationDateUtc: (() {
-        final guardedValue = map['expirationDateUtc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      alertsSuppressionRuleName: (() { final guardedValue = map['alertsSuppressionRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expirationDateUtc: (() { final guardedValue = map['expirationDateUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reason: pulumi.Input.fromValue(map['reason'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
-      suppressionAlertsScope: (() {
-        final guardedValue = map['suppressionAlertsScope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SuppressionAlertsScope.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      suppressionAlertsScope: (() { final guardedValue = map['suppressionAlertsScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SuppressionAlertsScope.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

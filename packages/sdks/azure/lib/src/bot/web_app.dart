@@ -178,40 +178,28 @@ import 'web_app_state.dart';
 class WebApp extends pulumi.CustomResource {
   /// The Application Insights API Key to associate with the Web App Bot.
   late final pulumi.Output<String?> developerAppInsightsApiKey;
-
   /// The Application Insights Application ID to associate with the Web App Bot.
   late final pulumi.Output<String?> developerAppInsightsApplicationId;
-
   /// The Application Insights Key to associate with the Web App Bot.
   late final pulumi.Output<String?> developerAppInsightsKey;
-
   /// The name of the Web App Bot will be displayed as. This defaults to `name` if not specified.
   late final pulumi.Output<String> displayName;
-
   /// The Web App Bot endpoint.
   late final pulumi.Output<String?> endpoint;
-
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// A list of LUIS App IDs to associate with the Web App Bot.
   late final pulumi.Output<List<String>?> luisAppIds;
-
   /// The LUIS key to associate with the Web App Bot.
   late final pulumi.Output<String?> luisKey;
-
   /// The Microsoft Application ID for the Web App Bot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> microsoftAppId;
-
   /// Specifies the name of the Web App Bot. Changing this forces a new resource to be created. Must be globally unique.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the Web App Bot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The SKU of the Web App Bot. Valid values include `F0` or `S1`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sku;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -219,22 +207,19 @@ class WebApp extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [WebApp]. {@macro pulumi_bot_web_app_web_app_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  WebApp(String name, {WebAppArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:bot/webApp:WebApp',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    developerAppInsightsApiKey = registerOutput<String?>(
-      'developerAppInsightsApiKey',
-    );
-    developerAppInsightsApplicationId = registerOutput<String?>(
-      'developerAppInsightsApplicationId',
-    );
-    developerAppInsightsKey = registerOutput<String?>(
-      'developerAppInsightsKey',
-    );
+  WebApp(
+    String name, {
+    WebAppArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:bot/webApp:WebApp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey');
+    developerAppInsightsApplicationId = registerOutput<String?>('developerAppInsightsApplicationId');
+    developerAppInsightsKey = registerOutput<String?>('developerAppInsightsKey');
     displayName = registerOutput<String>('displayName');
     endpoint = registerOutput<String?>('endpoint');
     location = registerOutput<String>('location');
@@ -265,20 +250,14 @@ class WebApp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/webApp:WebApp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    developerAppInsightsApiKey = registerOutput<String?>(
-      'developerAppInsightsApiKey',
-    );
-    developerAppInsightsApplicationId = registerOutput<String?>(
-      'developerAppInsightsApplicationId',
-    );
-    developerAppInsightsKey = registerOutput<String?>(
-      'developerAppInsightsKey',
-    );
+          'azure:bot/webApp:WebApp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey');
+    developerAppInsightsApplicationId = registerOutput<String?>('developerAppInsightsApplicationId');
+    developerAppInsightsKey = registerOutput<String?>('developerAppInsightsKey');
     displayName = registerOutput<String>('displayName');
     endpoint = registerOutput<String?>('endpoint');
     location = registerOutput<String>('location');

@@ -5,31 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeviceGroupDevice {
   /// Is the name of the device Group
   final pulumi.Input<String>? name;
-
   /// Name of origin
   final pulumi.Input<bool>? setSyncLeader;
 
   /// Creates a new [DeviceGroupDevice].
   /// [name] Is the name of the device Group
   /// [setSyncLeader] Name of origin
-  DeviceGroupDevice({this.name, this.setSyncLeader});
+  DeviceGroupDevice({
+    this.name,
+    this.setSyncLeader,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'setSyncLeader': ?setSyncLeader};
+    return <String, dynamic>{
+      'name': ?name,
+      'setSyncLeader': ?setSyncLeader,
+    };
   }
 
   factory DeviceGroupDevice.fromMap(Map<String, dynamic> map) {
     return DeviceGroupDevice(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      setSyncLeader: (() {
-        final guardedValue = map['setSyncLeader'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      setSyncLeader: (() { final guardedValue = map['setSyncLeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

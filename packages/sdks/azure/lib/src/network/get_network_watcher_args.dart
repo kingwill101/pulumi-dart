@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkWatcherArgs {
   /// Specifies the Name of the Network Watcher.
   final pulumi.Input<String> name;
-
   /// Specifies the Name of the Resource Group within which the Network Watcher exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetNetworkWatcherArgs].
   /// [name] Specifies the Name of the Network Watcher.
   /// [resourceGroupName] Specifies the Name of the Resource Group within which the Network Watcher exists.
-  GetNetworkWatcherArgs({required this.name, required this.resourceGroupName});
+  GetNetworkWatcherArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetNetworkWatcherArgs {
   factory GetNetworkWatcherArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkWatcherArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

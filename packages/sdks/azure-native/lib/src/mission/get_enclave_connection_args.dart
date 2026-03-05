@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnclaveConnectionArgs {
   /// The name of the Enclave Connection Resource
   final pulumi.Input<String> enclaveConnectionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetEnclaveConnectionArgs {
 
   factory GetEnclaveConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetEnclaveConnectionArgs(
-      enclaveConnectionName: pulumi.Input.fromValue(
-        map['enclaveConnectionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      enclaveConnectionName: pulumi.Input.fromValue(map['enclaveConnectionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudSQLInstanceInfoResponse {
   /// Name of a Cloud SQL instance.
   final pulumi.Input<String> displayName;
-
   /// External IP address of a Cloud SQL instance.
   final pulumi.Input<String> externalIp;
-
   /// Internal IP address of a Cloud SQL instance.
   final pulumi.Input<String> internalIp;
-
   /// URI of a Cloud SQL instance network or empty string if the instance does not have one.
   final pulumi.Input<String> networkUri;
-
   /// Region in which the Cloud SQL instance is running.
   final pulumi.Input<String> region;
-
   /// URI of a Cloud SQL instance.
   final pulumi.Input<String> uri;
 
@@ -60,3 +55,4 @@ class CloudSQLInstanceInfoResponse {
     );
   }
 }
+

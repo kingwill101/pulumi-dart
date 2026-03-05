@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HeaderResponse {
   /// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
   final pulumi.Input<String> glob;
-
   /// The additional headers to add to the response.
   final pulumi.Input<Map<String, String>> headers;
-
   /// The user-supplied RE2 regular expression to match against the request URL path.
   final pulumi.Input<String> regex;
 
@@ -24,16 +22,19 @@ class HeaderResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'glob': glob, 'headers': headers, 'regex': regex};
+    return <String, dynamic>{
+      'glob': glob,
+      'headers': headers,
+      'regex': regex,
+    };
   }
 
   factory HeaderResponse.fromMap(Map<String, dynamic> map) {
     return HeaderResponse(
       glob: pulumi.Input.fromValue(map['glob'] as String),
-      headers: pulumi.Input.fromValue(
-        (map['headers'] as Map).cast<String, String>(),
-      ),
+      headers: pulumi.Input.fromValue((map['headers'] as Map).cast<String, String>()),
       regex: pulumi.Input.fromValue(map['regex'] as String),
     );
   }
 }
+

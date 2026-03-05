@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceUserConfigArgs {
   /// The category. Valid values: `DataPrivacyConfig`.
   final pulumi.Input<String> categoryName;
-
   /// The key of the configuration.
   final pulumi.Input<String> configKey;
-
   /// The value of the configuration.
   final pulumi.Input<String> configValue;
-
   /// The scope. Default value: `owner`. Valid values: `owner`, `subUser`.
   final pulumi.Input<String>? scope;
 
@@ -45,11 +42,8 @@ class WorkspaceUserConfigArgs {
       categoryName: pulumi.Input.fromValue(map['categoryName'] as String),
       configKey: pulumi.Input.fromValue(map['configKey'] as String),
       configValue: pulumi.Input.fromValue(map['configValue'] as String),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -252,28 +252,20 @@ import 'policy_state.dart';
 class Policy extends pulumi.CustomResource {
   /// A description for the Policy.
   late final pulumi.Output<String?> description;
-
   /// The Evaluation Type used for this Policy. Possible values include: 'AllowedValuesPolicy', 'MaxValuePolicy'. Changing this forces a new resource to be created.
   late final pulumi.Output<String> evaluatorType;
-
   /// The Fact Data for this Policy.
   late final pulumi.Output<String?> factData;
-
   /// Specifies the name of the Dev Test Lab in which the Policy should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> labName;
-
   /// Specifies the name of the Dev Test Policy. Possible values are `GalleryImage`, `LabPremiumVmCount`, `LabTargetCost`, `LabVmCount`, `LabVmSize`, `UserOwnedLabPremiumVmCount`, `UserOwnedLabVmCount` and `UserOwnedLabVmCountInSubnet`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the Policy Set within the Dev Test Lab where this policy should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> policySetName;
-
   /// The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Threshold for this Policy.
   late final pulumi.Output<String> threshold;
 
@@ -281,13 +273,16 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_devtest_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:devtest/policy:Policy',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Policy(
+    String name, {
+    PolicyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:devtest/policy:Policy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     evaluatorType = registerOutput<String>('evaluatorType');
     factData = registerOutput<String?>('factData');
@@ -317,11 +312,11 @@ class Policy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devtest/policy:Policy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:devtest/policy:Policy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     evaluatorType = registerOutput<String>('evaluatorType');
     factData = registerOutput<String?>('factData');

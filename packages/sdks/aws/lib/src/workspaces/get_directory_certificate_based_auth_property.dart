@@ -21,14 +21,11 @@ class GetDirectoryCertificateBasedAuthProperty {
     };
   }
 
-  factory GetDirectoryCertificateBasedAuthProperty.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDirectoryCertificateBasedAuthProperty.fromMap(Map<String, dynamic> map) {
     return GetDirectoryCertificateBasedAuthProperty(
-      certificateAuthorityArn: pulumi.Input.fromValue(
-        map['certificateAuthorityArn'] as String,
-      ),
+      certificateAuthorityArn: pulumi.Input.fromValue(map['certificateAuthorityArn'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayClientAuthConfiguration {
   /// Verify client certificate issuer name on the application gateway.
   final pulumi.Input<bool>? verifyClientCertIssuerDN;
-
   /// Verify client certificate revocation status.
   final pulumi.Input<String>? verifyClientRevocation;
 
@@ -25,20 +24,11 @@ class ApplicationGatewayClientAuthConfiguration {
     };
   }
 
-  factory ApplicationGatewayClientAuthConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationGatewayClientAuthConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayClientAuthConfiguration(
-      verifyClientCertIssuerDN: (() {
-        final guardedValue = map['verifyClientCertIssuerDN'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      verifyClientRevocation: (() {
-        final guardedValue = map['verifyClientRevocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      verifyClientCertIssuerDN: (() { final guardedValue = map['verifyClientCertIssuerDN']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      verifyClientRevocation: (() { final guardedValue = map['verifyClientRevocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

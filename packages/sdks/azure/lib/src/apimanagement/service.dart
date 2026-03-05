@@ -192,114 +192,80 @@ import 'service_virtual_network_configuration.dart';
 class Service extends pulumi.CustomResource {
   /// One or more `additional_location` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> additionalLocations;
-
   /// One or more `certificate` blocks (up to 10) as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
-
   /// Enforce a client certificate to be presented on each request to the gateway? This is only supported when SKU type is `Consumption`.
   late final pulumi.Output<bool?> clientCertificateEnabled;
-
   /// A `delegation` block as defined below.
   late final pulumi.Output<ServiceDelegation> delegation;
-
   /// The URL for the Developer Portal associated with this API Management service.
   late final pulumi.Output<String> developerPortalUrl;
-
   /// Disable the gateway in main region? This is only supported when `additional_location` is set.
   late final pulumi.Output<bool?> gatewayDisabled;
-
   /// The URL of the Regional Gateway for the API Management Service in the specified region.
   late final pulumi.Output<String> gatewayRegionalUrl;
-
   /// The URL of the Gateway for the API Management Service.
   late final pulumi.Output<String> gatewayUrl;
-
   /// A `hostname_configuration` block as defined below.
   late final pulumi.Output<ServiceHostnameConfiguration> hostnameConfiguration;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<ServiceIdentity?> identity;
-
   /// The Azure location where the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The URL for the Management API associated with this API Management service.
   late final pulumi.Output<String> managementApiUrl;
-
   /// The version which the control plane API calls to API Management service are limited with version equal to or newer than.
   late final pulumi.Output<String?> minApiVersion;
-
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Email address from which the notification will be sent.
   late final pulumi.Output<String> notificationSenderEmail;
-
   /// The URL for the Publisher Portal associated with this API Management service.
   late final pulumi.Output<String> portalUrl;
-
   /// The Private IP addresses of the API Management Service. Available only when the API Manager instance is using Virtual Network mode.
   late final pulumi.Output<List<String>> privateIpAddresses;
-
   /// A `protocols` block as defined below.
   late final pulumi.Output<ServiceProtocols> protocols;
-
   /// ID of a standard SKU IPv4 Public IP.
   ///
   /// &gt; **Note:** Custom public IPs are only supported on the `Premium` and `Developer` tiers when deployed in a virtual network.
   late final pulumi.Output<String?> publicIpAddressId;
-
   /// Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard and Premium SKU.
   late final pulumi.Output<List<String>> publicIpAddresses;
-
   /// Is public access to the service allowed? Defaults to `true`.
   ///
   /// &gt; **Note:** This option is applicable only to the Management plane, not the API gateway or Developer portal. It is required to be `true` on the creation.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// The email of publisher/company.
   late final pulumi.Output<String> publisherEmail;
-
   /// The name of publisher/company.
   late final pulumi.Output<String> publisherName;
-
   /// The name of the Resource Group in which the API Management Service should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The URL for the SCM (Source Code Management) Endpoint associated with this API Management service.
   late final pulumi.Output<String> scmUrl;
-
   /// A `security` block as defined below.
   late final pulumi.Output<ServiceSecurity> security;
-
   /// A `sign_in` block as defined below.
   late final pulumi.Output<ServiceSignIn> signIn;
-
   /// A `sign_up` block as defined below.
   late final pulumi.Output<ServiceSignUp> signUp;
-
   /// `sku_name` is a string consisting of two parts separated by an underscore(\_). The first part is the `name`, valid values include: `Consumption`, `Developer`, `Basic`, `BasicV2`, `Standard`, `StandardV2`, `Premium` and `PremiumV2`. The second part is the `capacity` (e.g. the number of deployed units of the `sku`), which must be a positive `integer` (e.g. `Developer_1`).
   ///
   /// &gt; **Note:** Premium SKUs are limited to a default maximum of 12 (i.e. `Premium_12`), this can, however, be increased via support request.
   ///
   /// &gt; **Note:** Consumption SKU capacity should be 0 (e.g. `Consumption_0`) as this tier includes automatic scaling.
   late final pulumi.Output<String> skuName;
-
   /// A mapping of tags assigned to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A `tenant_access` block as defined below.
   late final pulumi.Output<ServiceTenantAccess> tenantAccess;
-
   /// A `virtual_network_configuration` block as defined below. Required when `virtual_network_type` is `External` or `Internal`.
-  late final pulumi.Output<ServiceVirtualNetworkConfiguration?>
-  virtualNetworkConfiguration;
-
+  late final pulumi.Output<ServiceVirtualNetworkConfiguration?> virtualNetworkConfiguration;
   /// The type of virtual network you want to use, valid values include: `None`, `External`, `Internal`. Defaults to `None`.
   ///
   /// &gt; **Note:** Please ensure that in the subnet, inbound port 3443 is open when `virtual_network_type` is `Internal` or `External`. Additionally, please ensure other necessary ports are open according to [api management network configuration](https://learn.microsoft.com/azure/api-management/virtual-network-reference).
   late final pulumi.Output<String?> virtualNetworkType;
-
   /// Specifies a list of Availability Zones in which this API Management service should be located.
   ///
   /// &gt; **Note:** Availability zones are only supported in the Premium tier.
@@ -314,52 +280,21 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/service:Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalLocations = registerOutput<List<Map<String, dynamic>>?>(
-      'additionalLocations',
-    );
+          'azure:apimanagement/service:Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalLocations = registerOutput<List<Map<String, dynamic>>?>('additionalLocations');
     certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
-    clientCertificateEnabled = registerOutput<bool?>(
-      'clientCertificateEnabled',
-    );
-    delegation = registerOutput<ServiceDelegation>(
-      'delegation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceDelegation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
+    delegation = registerOutput<ServiceDelegation>('delegation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceDelegation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     developerPortalUrl = registerOutput<String>('developerPortalUrl');
     gatewayDisabled = registerOutput<bool?>('gatewayDisabled');
     gatewayRegionalUrl = registerOutput<String>('gatewayRegionalUrl');
     gatewayUrl = registerOutput<String>('gatewayUrl');
-    hostnameConfiguration = registerOutput<ServiceHostnameConfiguration>(
-      'hostnameConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceHostnameConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<ServiceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hostnameConfiguration = registerOutput<ServiceHostnameConfiguration>('hostnameConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceHostnameConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     managementApiUrl = registerOutput<String>('managementApiUrl');
     minApiVersion = registerOutput<String?>('minApiVersion');
@@ -367,78 +302,21 @@ class Service extends pulumi.CustomResource {
     notificationSenderEmail = registerOutput<String>('notificationSenderEmail');
     portalUrl = registerOutput<String>('portalUrl');
     privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
-    protocols = registerOutput<ServiceProtocols>(
-      'protocols',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceProtocols.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    protocols = registerOutput<ServiceProtocols>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceProtocols.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     publicIpAddressId = registerOutput<String?>('publicIpAddressId');
     publicIpAddresses = registerOutput<List<String>>('publicIpAddresses');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     publisherEmail = registerOutput<String>('publisherEmail');
     publisherName = registerOutput<String>('publisherName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scmUrl = registerOutput<String>('scmUrl');
-    security = registerOutput<ServiceSecurity>(
-      'security',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceSecurity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    signIn = registerOutput<ServiceSignIn>(
-      'signIn',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceSignIn.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    signUp = registerOutput<ServiceSignUp>(
-      'signUp',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceSignUp.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    security = registerOutput<ServiceSecurity>('security', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    signIn = registerOutput<ServiceSignIn>('signIn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSignIn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    signUp = registerOutput<ServiceSignUp>('signUp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSignUp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skuName = registerOutput<String>('skuName');
     tags = registerOutput<Map<String, String>?>('tags');
-    tenantAccess = registerOutput<ServiceTenantAccess>(
-      'tenantAccess',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceTenantAccess.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    virtualNetworkConfiguration =
-        registerOutput<ServiceVirtualNetworkConfiguration?>(
-          'virtualNetworkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ServiceVirtualNetworkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    tenantAccess = registerOutput<ServiceTenantAccess>('tenantAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceTenantAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualNetworkConfiguration = registerOutput<ServiceVirtualNetworkConfiguration?>('virtualNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceVirtualNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     virtualNetworkType = registerOutput<String?>('virtualNetworkType');
     zones = registerOutput<List<String>?>('zones');
   }
@@ -461,52 +339,21 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/service:Service',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalLocations = registerOutput<List<Map<String, dynamic>>?>(
-      'additionalLocations',
-    );
+          'azure:apimanagement/service:Service',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalLocations = registerOutput<List<Map<String, dynamic>>?>('additionalLocations');
     certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
-    clientCertificateEnabled = registerOutput<bool?>(
-      'clientCertificateEnabled',
-    );
-    delegation = registerOutput<ServiceDelegation>(
-      'delegation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceDelegation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
+    delegation = registerOutput<ServiceDelegation>('delegation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceDelegation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     developerPortalUrl = registerOutput<String>('developerPortalUrl');
     gatewayDisabled = registerOutput<bool?>('gatewayDisabled');
     gatewayRegionalUrl = registerOutput<String>('gatewayRegionalUrl');
     gatewayUrl = registerOutput<String>('gatewayUrl');
-    hostnameConfiguration = registerOutput<ServiceHostnameConfiguration>(
-      'hostnameConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceHostnameConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<ServiceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hostnameConfiguration = registerOutput<ServiceHostnameConfiguration>('hostnameConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceHostnameConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     managementApiUrl = registerOutput<String>('managementApiUrl');
     minApiVersion = registerOutput<String?>('minApiVersion');
@@ -514,78 +361,21 @@ class Service extends pulumi.CustomResource {
     notificationSenderEmail = registerOutput<String>('notificationSenderEmail');
     portalUrl = registerOutput<String>('portalUrl');
     privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
-    protocols = registerOutput<ServiceProtocols>(
-      'protocols',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceProtocols.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    protocols = registerOutput<ServiceProtocols>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceProtocols.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     publicIpAddressId = registerOutput<String?>('publicIpAddressId');
     publicIpAddresses = registerOutput<List<String>>('publicIpAddresses');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     publisherEmail = registerOutput<String>('publisherEmail');
     publisherName = registerOutput<String>('publisherName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scmUrl = registerOutput<String>('scmUrl');
-    security = registerOutput<ServiceSecurity>(
-      'security',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceSecurity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    signIn = registerOutput<ServiceSignIn>(
-      'signIn',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceSignIn.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    signUp = registerOutput<ServiceSignUp>(
-      'signUp',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceSignUp.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    security = registerOutput<ServiceSecurity>('security', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    signIn = registerOutput<ServiceSignIn>('signIn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSignIn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    signUp = registerOutput<ServiceSignUp>('signUp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSignUp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skuName = registerOutput<String>('skuName');
     tags = registerOutput<Map<String, String>?>('tags');
-    tenantAccess = registerOutput<ServiceTenantAccess>(
-      'tenantAccess',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceTenantAccess.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    virtualNetworkConfiguration =
-        registerOutput<ServiceVirtualNetworkConfiguration?>(
-          'virtualNetworkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ServiceVirtualNetworkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    tenantAccess = registerOutput<ServiceTenantAccess>('tenantAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceTenantAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualNetworkConfiguration = registerOutput<ServiceVirtualNetworkConfiguration?>('virtualNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceVirtualNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     virtualNetworkType = registerOutput<String?>('virtualNetworkType');
     zones = registerOutput<List<String>?>('zones');
   }

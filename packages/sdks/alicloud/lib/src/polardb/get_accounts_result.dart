@@ -8,11 +8,9 @@ class GetAccountsResult {
   /// A list of PolarDB cluster accounts. Each element contains the following attributes:
   final List<GetAccountsAccount> accounts;
   final String dbClusterId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? nameRegex;
-
   /// Account name of the cluster.
   final List<String> names;
 
@@ -32,11 +30,7 @@ class GetAccountsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accounts':
-          pulumi.Input.encodeList<GetAccountsAccount, Map<String, dynamic>>(
-            accounts,
-            (value) => value.toMap(),
-          ),
+      'accounts': pulumi.Input.encodeList<GetAccountsAccount, Map<String, dynamic>>(accounts, (value) => value.toMap()),
       'dbClusterId': dbClusterId,
       'id': id,
       'nameRegex': ?nameRegex,
@@ -46,19 +40,12 @@ class GetAccountsResult {
 
   factory GetAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetAccountsResult(
-      accounts: pulumi.Input.decodeList<GetAccountsAccount>(
-        map['accounts']!,
-        (value) =>
-            GetAccountsAccount.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      accounts: pulumi.Input.decodeList<GetAccountsAccount>(map['accounts']!, (value) => GetAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
       dbClusterId: map['dbClusterId'] as String,
       id: map['id'] as String,
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
     );
   }
 }
+

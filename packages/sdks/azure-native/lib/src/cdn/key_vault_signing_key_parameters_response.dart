@@ -6,17 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultSigningKeyParametersResponse {
   /// Resource group of the user's Key Vault containing the secret
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of secret in Key Vault.
   final pulumi.Input<String> secretName;
-
   /// The version(GUID) of secret in Key Vault.
   final pulumi.Input<String> secretVersion;
-
   /// Subscription Id of the user's Key Vault containing the secret
   final pulumi.Input<String> subscriptionId;
   final pulumi.Input<String> typeName;
-
   /// The name of the user's Key Vault containing the secret
   final pulumi.Input<String> vaultName;
 
@@ -47,13 +43,9 @@ class KeyVaultSigningKeyParametersResponse {
     };
   }
 
-  factory KeyVaultSigningKeyParametersResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KeyVaultSigningKeyParametersResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultSigningKeyParametersResponse(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       secretName: pulumi.Input.fromValue(map['secretName'] as String),
       secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
       subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
@@ -62,3 +54,4 @@ class KeyVaultSigningKeyParametersResponse {
     );
   }
 }
+

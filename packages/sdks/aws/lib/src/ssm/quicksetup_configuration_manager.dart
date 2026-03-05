@@ -177,31 +177,21 @@ import 'quicksetup_configuration_manager_timeouts.dart';
 /// ```
 class QuicksetupConfigurationManager extends pulumi.CustomResource {
   /// Definition of the Quick Setup configuration that the configuration manager deploys. See `configuration_definition` below.
-  late final pulumi.Output<
-    QuicksetupConfigurationManagerConfigurationDefinition
-  >
-  configurationDefinition;
-
+  late final pulumi.Output<QuicksetupConfigurationManagerConfigurationDefinition> configurationDefinition;
   /// Description of the configuration manager.
   late final pulumi.Output<String> description;
-
   /// ARN of the Configuration Manager.
   late final pulumi.Output<String> managerArn;
-
   /// Configuration manager name.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A summary of the state of the configuration manager. This includes deployment statuses, association statuses, drift statuses, health checks, and more. See `status_summaries` below.
   late final pulumi.Output<List<Map<String, dynamic>>> statusSummaries;
-
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<QuicksetupConfigurationManagerTimeouts?> timeouts;
@@ -215,41 +205,20 @@ class QuicksetupConfigurationManager extends pulumi.CustomResource {
     QuicksetupConfigurationManagerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssm/quicksetupConfigurationManager:QuicksetupConfigurationManager',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configurationDefinition =
-        registerOutput<QuicksetupConfigurationManagerConfigurationDefinition>(
-          'configurationDefinition',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return QuicksetupConfigurationManagerConfigurationDefinition.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:ssm/quicksetupConfigurationManager:QuicksetupConfigurationManager',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configurationDefinition = registerOutput<QuicksetupConfigurationManagerConfigurationDefinition>('configurationDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuicksetupConfigurationManagerConfigurationDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     managerArn = registerOutput<String>('managerArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    statusSummaries = registerOutput<List<Map<String, dynamic>>>(
-      'statusSummaries',
-    );
+    statusSummaries = registerOutput<List<Map<String, dynamic>>>('statusSummaries');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<QuicksetupConfigurationManagerTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return QuicksetupConfigurationManagerTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<QuicksetupConfigurationManagerTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuicksetupConfigurationManagerTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [QuicksetupConfigurationManager] resource's state with the given [name] and [id].
@@ -270,40 +239,19 @@ class QuicksetupConfigurationManager extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssm/quicksetupConfigurationManager:QuicksetupConfigurationManager',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configurationDefinition =
-        registerOutput<QuicksetupConfigurationManagerConfigurationDefinition>(
-          'configurationDefinition',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return QuicksetupConfigurationManagerConfigurationDefinition.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:ssm/quicksetupConfigurationManager:QuicksetupConfigurationManager',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configurationDefinition = registerOutput<QuicksetupConfigurationManagerConfigurationDefinition>('configurationDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuicksetupConfigurationManagerConfigurationDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     managerArn = registerOutput<String>('managerArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    statusSummaries = registerOutput<List<Map<String, dynamic>>>(
-      'statusSummaries',
-    );
+    statusSummaries = registerOutput<List<Map<String, dynamic>>>('statusSummaries');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<QuicksetupConfigurationManagerTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return QuicksetupConfigurationManagerTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<QuicksetupConfigurationManagerTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuicksetupConfigurationManagerTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -110,7 +110,6 @@ import 'service_linked_role_state.dart';
 class ServiceLinkedRole extends pulumi.CustomResource {
   /// The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
   late final pulumi.Output<String> productName;
-
   /// The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
   late final pulumi.Output<bool> status;
 
@@ -123,11 +122,11 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     ServiceLinkedRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     productName = registerOutput<String>('productName');
     status = registerOutput<bool>('status');
   }
@@ -150,11 +149,11 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     productName = registerOutput<String>('productName');
     status = registerOutput<bool>('status');
   }

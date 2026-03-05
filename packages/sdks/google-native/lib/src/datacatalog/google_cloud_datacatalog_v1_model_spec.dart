@@ -10,29 +10,20 @@ class GoogleCloudDatacatalogV1ModelSpec {
 
   /// Creates a new [GoogleCloudDatacatalogV1ModelSpec].
   /// [vertexModelSpec] Specification for vertex model resources.
-  GoogleCloudDatacatalogV1ModelSpec({this.vertexModelSpec});
+  GoogleCloudDatacatalogV1ModelSpec({
+    this.vertexModelSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'vertexModelSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDatacatalogV1VertexModelSpec,
-            Map<String, dynamic>
-          >(vertexModelSpec, (value) => value.toMap()),
+      'vertexModelSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDatacatalogV1VertexModelSpec, Map<String, dynamic>>(vertexModelSpec, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudDatacatalogV1ModelSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1ModelSpec(
-      vertexModelSpec: (() {
-        final guardedValue = map['vertexModelSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDatacatalogV1VertexModelSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      vertexModelSpec: (() { final guardedValue = map['vertexModelSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDatacatalogV1VertexModelSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

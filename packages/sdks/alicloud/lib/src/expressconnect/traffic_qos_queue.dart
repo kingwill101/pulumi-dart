@@ -259,21 +259,16 @@ class TrafficQosQueue extends pulumi.CustomResource {
   /// - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
   /// - When the QoS queue type is `Default`, this field is "-".
   late final pulumi.Output<String> bandwidthPercent;
-
   /// The ID of the QoS policy.
   late final pulumi.Output<String> qosId;
-
   /// The description of the QoS queue.
   /// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
   late final pulumi.Output<String?> queueDescription;
-
   /// The ID of the QoS queue.
   late final pulumi.Output<String> queueId;
-
   /// The name of the QoS queue.
   /// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
   late final pulumi.Output<String?> queueName;
-
   /// QoS queue type, value:
   /// - `High`: High priority queue.
   /// - `Medium`: Normal priority queue.
@@ -281,7 +276,6 @@ class TrafficQosQueue extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:**  Default priority queue cannot be created.
   late final pulumi.Output<String> queueType;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -294,11 +288,11 @@ class TrafficQosQueue extends pulumi.CustomResource {
     TrafficQosQueueArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/trafficQosQueue:TrafficQosQueue',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/trafficQosQueue:TrafficQosQueue',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidthPercent = registerOutput<String>('bandwidthPercent');
     qosId = registerOutput<String>('qosId');
     queueDescription = registerOutput<String?>('queueDescription');
@@ -326,11 +320,11 @@ class TrafficQosQueue extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/trafficQosQueue:TrafficQosQueue',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/trafficQosQueue:TrafficQosQueue',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidthPercent = registerOutput<String>('bandwidthPercent');
     qosId = registerOutput<String>('qosId');
     queueDescription = registerOutput<String?>('queueDescription');

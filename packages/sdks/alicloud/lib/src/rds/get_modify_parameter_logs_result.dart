@@ -7,7 +7,6 @@ import 'get_modify_parameter_logs_log.dart';
 class GetModifyParameterLogsResult {
   final String dbInstanceId;
   final String endTime;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetModifyParameterLogsLog> logs;
@@ -35,11 +34,7 @@ class GetModifyParameterLogsResult {
       'dbInstanceId': dbInstanceId,
       'endTime': endTime,
       'id': id,
-      'logs':
-          pulumi.Input.encodeList<
-            GetModifyParameterLogsLog,
-            Map<String, dynamic>
-          >(logs, (value) => value.toMap()),
+      'logs': pulumi.Input.encodeList<GetModifyParameterLogsLog, Map<String, dynamic>>(logs, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'startTime': startTime,
     };
@@ -50,18 +45,10 @@ class GetModifyParameterLogsResult {
       dbInstanceId: map['dbInstanceId'] as String,
       endTime: map['endTime'] as String,
       id: map['id'] as String,
-      logs: pulumi.Input.decodeList<GetModifyParameterLogsLog>(
-        map['logs']!,
-        (value) => GetModifyParameterLogsLog.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      logs: pulumi.Input.decodeList<GetModifyParameterLogsLog>(map['logs']!, (value) => GetModifyParameterLogsLog.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       startTime: map['startTime'] as String,
     );
   }
 }
+

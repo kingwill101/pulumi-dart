@@ -9,32 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZoneRecordsArgs {
   /// A list of Private Zone Record IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// The keyword for record rr and value.
   final pulumi.Input<String>? keyword;
-
   /// The language of the response. Default value: `en`. Valid values: `en`, `zh`.
   final pulumi.Input<String>? lang;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The search mode. Default value: `EXACT`. Valid values:
   /// - `LIKE`: Fuzzy search.
   /// - `EXACT`: Exact search.
   final pulumi.Input<String>? searchMode;
-
   /// The status of the Resolve record. Valid values:
   /// - `ENABLE`: Enable resolution.
   /// - `DISABLE`: Pause parsing.
   final pulumi.Input<String>? status;
-
   /// The tag used to search for DNS records.
   final pulumi.Input<String>? tag;
-
   /// The IP address of the client.
   final pulumi.Input<String>? userClientIp;
-
   /// The ID of the private zone.
   final pulumi.Input<String> zoneId;
 
@@ -76,47 +68,16 @@ class GetZoneRecordsArgs {
 
   factory GetZoneRecordsArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneRecordsArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      keyword: (() {
-        final guardedValue = map['keyword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lang: (() {
-        final guardedValue = map['lang'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      searchMode: (() {
-        final guardedValue = map['searchMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tag: (() {
-        final guardedValue = map['tag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userClientIp: (() {
-        final guardedValue = map['userClientIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      keyword: (() { final guardedValue = map['keyword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lang: (() { final guardedValue = map['lang']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      searchMode: (() { final guardedValue = map['searchMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userClientIp: (() { final guardedValue = map['userClientIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
+

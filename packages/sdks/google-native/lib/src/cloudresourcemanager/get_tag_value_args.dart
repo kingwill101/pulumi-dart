@@ -11,10 +11,14 @@ class GetTagValueArgs {
 
   /// Creates a new [GetTagValueArgs].
   /// [tagValueId] Required.
-  GetTagValueArgs({required this.tagValueId});
+  GetTagValueArgs({
+    required this.tagValueId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tagValueId': tagValueId};
+    return <String, dynamic>{
+      'tagValueId': tagValueId,
+    };
   }
 
   factory GetTagValueArgs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetTagValueArgs {
     );
   }
 }
+

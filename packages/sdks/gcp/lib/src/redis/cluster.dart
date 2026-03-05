@@ -3522,152 +3522,114 @@ class Cluster extends pulumi.CustomResource {
   /// Default value is `AUTH_MODE_DISABLED`.
   /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
   late final pulumi.Output<String?> authorizationMode;
-
   /// The automated backup config for a instance.
   /// Structure is documented below.
   late final pulumi.Output<ClusterAutomatedBackupConfig?> automatedBackupConfig;
-
   /// This field is used to determine the available maintenance versions for the self service update.
   late final pulumi.Output<List<String>> availableMaintenanceVersions;
-
   /// The backup collection full resource name.
   /// Example: projects/{project}/locations/{location}/backupCollections/{collection}
   late final pulumi.Output<String> backupCollection;
-
   /// The timestamp associated with the cluster creation request. A timestamp in
   /// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
   /// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
-
   /// Cross cluster replication config
   /// Structure is documented below.
-  late final pulumi.Output<ClusterCrossClusterReplicationConfig>
-  crossClusterReplicationConfig;
-
+  late final pulumi.Output<ClusterCrossClusterReplicationConfig> crossClusterReplicationConfig;
   /// Optional. Indicates if the cluster is deletion protected or not.
   /// If the value if set to true, any delete cluster operation will fail.
   /// Default value is true.
   late final pulumi.Output<bool?> deletionProtectionEnabled;
-
   /// Output only. Endpoints created on each given network,
   /// for Redis clients to connect to the cluster.
   /// Currently only one endpoint is supported.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> discoveryEndpoints;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// This field represents the actual maintenance version of the cluster.
   late final pulumi.Output<String> effectiveMaintenanceVersion;
-
   /// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
   /// Structure is documented below.
   late final pulumi.Output<ClusterGcsSource?> gcsSource;
-
   /// The KMS key used to encrypt the at-rest data of the cluster.
   late final pulumi.Output<String?> kmsKey;
-
   /// Resource labels to represent user provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Maintenance policy for a cluster
   /// Structure is documented below.
   late final pulumi.Output<ClusterMaintenancePolicy?> maintenancePolicy;
-
   /// Upcoming maintenance schedule.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> maintenanceSchedules;
-
   /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
   /// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
   late final pulumi.Output<String?> maintenanceVersion;
-
   /// Backups that generated and managed by memorystore.
   /// Structure is documented below.
   late final pulumi.Output<ClusterManagedBackupSource?> managedBackupSource;
-
   /// Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> managedServerCas;
-
   /// Unique name of the resource in this scope including project and location using the form:
   /// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
   late final pulumi.Output<String> name;
-
   /// The nodeType for the Redis cluster.
   /// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
   /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
   late final pulumi.Output<String> nodeType;
-
   /// Persistence config (RDB, AOF) for the cluster.
   /// Structure is documented below.
   late final pulumi.Output<ClusterPersistenceConfig> persistenceConfig;
-
   /// Output only. Redis memory precise size in GB for the entire cluster.
   late final pulumi.Output<double> preciseSizeGb;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Required. Each PscConfig configures the consumer network where two
   /// network addresses will be designated to the cluster for client access.
   /// Currently, only one PscConfig is supported.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> pscConfigs;
-
   /// Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> pscConnections;
-
   /// Service attachment details to configure Psc connections.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> pscServiceAttachments;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
   /// Please check Memorystore documentation for the list of supported parameters:
   /// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
   late final pulumi.Output<Map<String, String>?> redisConfigs;
-
   /// The name of the region of the Redis cluster.
   late final pulumi.Output<String> region;
-
   /// Optional. The number of replica nodes per shard.
   late final pulumi.Output<int?> replicaCount;
-
   /// Required. Number of shards for the Redis cluster.
   late final pulumi.Output<int> shardCount;
-
   /// Output only. Redis memory size in GB for the entire cluster.
   late final pulumi.Output<int> sizeGb;
-
   /// The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
   late final pulumi.Output<String> state;
-
   /// Output only. Additional information about the current state of the cluster.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> stateInfos;
-
   /// Optional. The in-transit encryption for the Redis cluster.
   /// If not provided, encryption is disabled for the cluster.
   /// Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
   /// Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
   late final pulumi.Output<String?> transitEncryptionMode;
-
   /// System assigned, unique identifier for the cluster.
   late final pulumi.Output<String> uid;
-
   /// Immutable. Zone distribution config for Memorystore Redis cluster.
   /// Structure is documented below.
-  late final pulumi.Output<ClusterZoneDistributionConfig>
-  zoneDistributionConfig;
+  late final pulumi.Output<ClusterZoneDistributionConfig> zoneDistributionConfig;
 
   /// Creates a new [Cluster].
   /// [name] The Pulumi resource name.
@@ -3678,108 +3640,37 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:redis/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:redis/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizationMode = registerOutput<String?>('authorizationMode');
-    automatedBackupConfig = registerOutput<ClusterAutomatedBackupConfig?>(
-      'automatedBackupConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterAutomatedBackupConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    availableMaintenanceVersions = registerOutput<List<String>>(
-      'availableMaintenanceVersions',
-    );
+    automatedBackupConfig = registerOutput<ClusterAutomatedBackupConfig?>('automatedBackupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutomatedBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions');
     backupCollection = registerOutput<String>('backupCollection');
     createTime = registerOutput<String>('createTime');
-    crossClusterReplicationConfig =
-        registerOutput<ClusterCrossClusterReplicationConfig>(
-          'crossClusterReplicationConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ClusterCrossClusterReplicationConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deletionProtectionEnabled = registerOutput<bool?>(
-      'deletionProtectionEnabled',
-    );
-    discoveryEndpoints = registerOutput<List<Map<String, dynamic>>>(
-      'discoveryEndpoints',
-    );
+    crossClusterReplicationConfig = registerOutput<ClusterCrossClusterReplicationConfig>('crossClusterReplicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCrossClusterReplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
+    discoveryEndpoints = registerOutput<List<Map<String, dynamic>>>('discoveryEndpoints');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    effectiveMaintenanceVersion = registerOutput<String>(
-      'effectiveMaintenanceVersion',
-    );
-    gcsSource = registerOutput<ClusterGcsSource?>(
-      'gcsSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterGcsSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    effectiveMaintenanceVersion = registerOutput<String>('effectiveMaintenanceVersion');
+    gcsSource = registerOutput<ClusterGcsSource?>('gcsSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGcsSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKey = registerOutput<String?>('kmsKey');
     labels = registerOutput<Map<String, String>?>('labels');
-    maintenancePolicy = registerOutput<ClusterMaintenancePolicy?>(
-      'maintenancePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterMaintenancePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    maintenanceSchedules = registerOutput<List<Map<String, dynamic>>>(
-      'maintenanceSchedules',
-    );
+    maintenancePolicy = registerOutput<ClusterMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceSchedules = registerOutput<List<Map<String, dynamic>>>('maintenanceSchedules');
     maintenanceVersion = registerOutput<String?>('maintenanceVersion');
-    managedBackupSource = registerOutput<ClusterManagedBackupSource?>(
-      'managedBackupSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterManagedBackupSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    managedServerCas = registerOutput<List<Map<String, dynamic>>>(
-      'managedServerCas',
-    );
+    managedBackupSource = registerOutput<ClusterManagedBackupSource?>('managedBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterManagedBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedServerCas = registerOutput<List<Map<String, dynamic>>>('managedServerCas');
     this.name = registerOutput<String>('name');
     nodeType = registerOutput<String>('nodeType');
-    persistenceConfig = registerOutput<ClusterPersistenceConfig>(
-      'persistenceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterPersistenceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    persistenceConfig = registerOutput<ClusterPersistenceConfig>('persistenceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPersistenceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preciseSizeGb = registerOutput<double>('preciseSizeGb');
     project = registerOutput<String>('project');
     pscConfigs = registerOutput<List<Map<String, dynamic>>?>('pscConfigs');
-    pscConnections = registerOutput<List<Map<String, dynamic>>>(
-      'pscConnections',
-    );
-    pscServiceAttachments = registerOutput<List<Map<String, dynamic>>>(
-      'pscServiceAttachments',
-    );
+    pscConnections = registerOutput<List<Map<String, dynamic>>>('pscConnections');
+    pscServiceAttachments = registerOutput<List<Map<String, dynamic>>>('pscServiceAttachments');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     redisConfigs = registerOutput<Map<String, String>?>('redisConfigs');
     region = registerOutput<String>('region');
@@ -3790,16 +3681,7 @@ class Cluster extends pulumi.CustomResource {
     stateInfos = registerOutput<List<Map<String, dynamic>>>('stateInfos');
     transitEncryptionMode = registerOutput<String?>('transitEncryptionMode');
     uid = registerOutput<String>('uid');
-    zoneDistributionConfig = registerOutput<ClusterZoneDistributionConfig>(
-      'zoneDistributionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterZoneDistributionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    zoneDistributionConfig = registerOutput<ClusterZoneDistributionConfig>('zoneDistributionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterZoneDistributionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -3820,108 +3702,37 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:redis/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:redis/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizationMode = registerOutput<String?>('authorizationMode');
-    automatedBackupConfig = registerOutput<ClusterAutomatedBackupConfig?>(
-      'automatedBackupConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterAutomatedBackupConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    availableMaintenanceVersions = registerOutput<List<String>>(
-      'availableMaintenanceVersions',
-    );
+    automatedBackupConfig = registerOutput<ClusterAutomatedBackupConfig?>('automatedBackupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutomatedBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions');
     backupCollection = registerOutput<String>('backupCollection');
     createTime = registerOutput<String>('createTime');
-    crossClusterReplicationConfig =
-        registerOutput<ClusterCrossClusterReplicationConfig>(
-          'crossClusterReplicationConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ClusterCrossClusterReplicationConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deletionProtectionEnabled = registerOutput<bool?>(
-      'deletionProtectionEnabled',
-    );
-    discoveryEndpoints = registerOutput<List<Map<String, dynamic>>>(
-      'discoveryEndpoints',
-    );
+    crossClusterReplicationConfig = registerOutput<ClusterCrossClusterReplicationConfig>('crossClusterReplicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCrossClusterReplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
+    discoveryEndpoints = registerOutput<List<Map<String, dynamic>>>('discoveryEndpoints');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    effectiveMaintenanceVersion = registerOutput<String>(
-      'effectiveMaintenanceVersion',
-    );
-    gcsSource = registerOutput<ClusterGcsSource?>(
-      'gcsSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterGcsSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    effectiveMaintenanceVersion = registerOutput<String>('effectiveMaintenanceVersion');
+    gcsSource = registerOutput<ClusterGcsSource?>('gcsSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGcsSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKey = registerOutput<String?>('kmsKey');
     labels = registerOutput<Map<String, String>?>('labels');
-    maintenancePolicy = registerOutput<ClusterMaintenancePolicy?>(
-      'maintenancePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterMaintenancePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    maintenanceSchedules = registerOutput<List<Map<String, dynamic>>>(
-      'maintenanceSchedules',
-    );
+    maintenancePolicy = registerOutput<ClusterMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceSchedules = registerOutput<List<Map<String, dynamic>>>('maintenanceSchedules');
     maintenanceVersion = registerOutput<String?>('maintenanceVersion');
-    managedBackupSource = registerOutput<ClusterManagedBackupSource?>(
-      'managedBackupSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterManagedBackupSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    managedServerCas = registerOutput<List<Map<String, dynamic>>>(
-      'managedServerCas',
-    );
+    managedBackupSource = registerOutput<ClusterManagedBackupSource?>('managedBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterManagedBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedServerCas = registerOutput<List<Map<String, dynamic>>>('managedServerCas');
     this.name = registerOutput<String>('name');
     nodeType = registerOutput<String>('nodeType');
-    persistenceConfig = registerOutput<ClusterPersistenceConfig>(
-      'persistenceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterPersistenceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    persistenceConfig = registerOutput<ClusterPersistenceConfig>('persistenceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPersistenceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preciseSizeGb = registerOutput<double>('preciseSizeGb');
     project = registerOutput<String>('project');
     pscConfigs = registerOutput<List<Map<String, dynamic>>?>('pscConfigs');
-    pscConnections = registerOutput<List<Map<String, dynamic>>>(
-      'pscConnections',
-    );
-    pscServiceAttachments = registerOutput<List<Map<String, dynamic>>>(
-      'pscServiceAttachments',
-    );
+    pscConnections = registerOutput<List<Map<String, dynamic>>>('pscConnections');
+    pscServiceAttachments = registerOutput<List<Map<String, dynamic>>>('pscServiceAttachments');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     redisConfigs = registerOutput<Map<String, String>?>('redisConfigs');
     region = registerOutput<String>('region');
@@ -3932,15 +3743,6 @@ class Cluster extends pulumi.CustomResource {
     stateInfos = registerOutput<List<Map<String, dynamic>>>('stateInfos');
     transitEncryptionMode = registerOutput<String?>('transitEncryptionMode');
     uid = registerOutput<String>('uid');
-    zoneDistributionConfig = registerOutput<ClusterZoneDistributionConfig>(
-      'zoneDistributionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterZoneDistributionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    zoneDistributionConfig = registerOutput<ClusterZoneDistributionConfig>('zoneDistributionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterZoneDistributionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

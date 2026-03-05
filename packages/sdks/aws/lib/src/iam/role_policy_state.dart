@@ -7,16 +7,13 @@ class RolePolicyState {
   /// The name of the role policy.
   /// If omitted, the provider will assign a random, unique name.
   final pulumi.Input<String>? name;
-
   /// Creates a unique name beginning with the specified prefix.
   /// Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
-
   /// The inline policy document.
   /// This is a JSON formatted string.
   /// For more information about building IAM policy documents with Pulumi, see the AWS IAM Policy Document Guide
   final pulumi.Input<String>? policy;
-
   /// The name of the IAM role to attach to the policy.
   final pulumi.Input<String>? role;
 
@@ -25,7 +22,12 @@ class RolePolicyState {
   /// [namePrefix] Creates a unique name beginning with the specified prefix.
   /// [policy] The inline policy document.
   /// [role] The name of the IAM role to attach to the policy.
-  RolePolicyState({this.name, this.namePrefix, this.policy, this.role});
+  RolePolicyState({
+    this.name,
+    this.namePrefix,
+    this.policy,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,26 +40,11 @@ class RolePolicyState {
 
   factory RolePolicyState.fromMap(Map<String, dynamic> map) {
     return RolePolicyState(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namePrefix: (() {
-        final guardedValue = map['namePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      role: (() {
-        final guardedValue = map['role'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,10 +7,8 @@ class GetVersionsVersion {
   /// - Default: Standard Edition
   /// - Pro: Professional Edition
   final pulumi.Input<String> edition;
-
   /// The ASM version id. It formats as `&lt;edition&gt;:&lt;version&gt;`.
   final pulumi.Input<String> id;
-
   /// A list of Service Mesh Service Meshes. Each element contains the following attributes:
   final pulumi.Input<String> version;
 
@@ -25,7 +23,11 @@ class GetVersionsVersion {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'edition': edition, 'id': id, 'version': version};
+    return <String, dynamic>{
+      'edition': edition,
+      'id': id,
+      'version': version,
+    };
   }
 
   factory GetVersionsVersion.fromMap(Map<String, dynamic> map) {
@@ -36,3 +38,4 @@ class GetVersionsVersion {
     );
   }
 }
+

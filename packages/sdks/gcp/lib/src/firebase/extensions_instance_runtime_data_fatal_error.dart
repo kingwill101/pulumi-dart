@@ -10,21 +10,20 @@ class ExtensionsInstanceRuntimeDataFatalError {
 
   /// Creates a new [ExtensionsInstanceRuntimeDataFatalError].
   /// [errorMessage] The error message. This is set by the extension developer to give
-  ExtensionsInstanceRuntimeDataFatalError({this.errorMessage});
+  ExtensionsInstanceRuntimeDataFatalError({
+    this.errorMessage,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'errorMessage': ?errorMessage};
+    return <String, dynamic>{
+      'errorMessage': ?errorMessage,
+    };
   }
 
-  factory ExtensionsInstanceRuntimeDataFatalError.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExtensionsInstanceRuntimeDataFatalError.fromMap(Map<String, dynamic> map) {
     return ExtensionsInstanceRuntimeDataFatalError(
-      errorMessage: (() {
-        final guardedValue = map['errorMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

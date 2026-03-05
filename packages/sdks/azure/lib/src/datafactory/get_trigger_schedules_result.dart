@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTriggerSchedules.
 class GetTriggerSchedulesResult {
   final String dataFactoryId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of trigger schedule names available in this Azure Data Factory.
   final List<String> items;
 
@@ -36,3 +35,4 @@ class GetTriggerSchedulesResult {
     );
   }
 }
+

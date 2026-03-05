@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCommunicationsGatewayArgs {
   /// Unique identifier for this deployment
   final pulumi.Input<String> communicationsGatewayName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetCommunicationsGatewayArgs {
 
   factory GetCommunicationsGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetCommunicationsGatewayArgs(
-      communicationsGatewayName: pulumi.Input.fromValue(
-        map['communicationsGatewayName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      communicationsGatewayName: pulumi.Input.fromValue(map['communicationsGatewayName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

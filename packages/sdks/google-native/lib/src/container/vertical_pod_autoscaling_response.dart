@@ -9,10 +9,14 @@ class VerticalPodAutoscalingResponse {
 
   /// Creates a new [VerticalPodAutoscalingResponse].
   /// [enabled] Enables vertical pod autoscaling.
-  VerticalPodAutoscalingResponse({required this.enabled});
+  VerticalPodAutoscalingResponse({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory VerticalPodAutoscalingResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class VerticalPodAutoscalingResponse {
     );
   }
 }
+

@@ -6,25 +6,18 @@ import 'system_data_response.dart';
 class GetPureStoragePolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The state of the Pure Storage Policy Based Management policy provisioning
   final String provisioningState;
-
   /// Definition of a Pure Storage Policy Based Management policy
   final String storagePolicyDefinition;
-
   /// Azure resource ID of the Pure Storage Pool associated with the storage policy
   final String storagePoolId;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -69,10 +62,9 @@ class GetPureStoragePolicyResult {
       provisioningState: map['provisioningState'] as String,
       storagePolicyDefinition: map['storagePolicyDefinition'] as String,
       storagePoolId: map['storagePoolId'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

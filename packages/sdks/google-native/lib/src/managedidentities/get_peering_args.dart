@@ -13,20 +13,23 @@ class GetPeeringArgs {
   /// Creates a new [GetPeeringArgs].
   /// [peeringId] Required.
   /// [project] Optional.
-  GetPeeringArgs({required this.peeringId, this.project});
+  GetPeeringArgs({
+    required this.peeringId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'peeringId': peeringId, 'project': ?project};
+    return <String, dynamic>{
+      'peeringId': peeringId,
+      'project': ?project,
+    };
   }
 
   factory GetPeeringArgs.fromMap(Map<String, dynamic> map) {
     return GetPeeringArgs(
       peeringId: pulumi.Input.fromValue(map['peeringId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

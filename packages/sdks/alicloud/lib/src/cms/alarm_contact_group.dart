@@ -110,13 +110,10 @@ import 'alarm_contact_group_state.dart';
 class AlarmContactGroup extends pulumi.CustomResource {
   /// The name of the alarm group.
   late final pulumi.Output<String> alarmContactGroupName;
-
   /// The name of the alert contact.
   late final pulumi.Output<List<String>?> contacts;
-
   /// The description of the alert group.
   late final pulumi.Output<String?> describe;
-
   /// Whether to open weekly subscription.
   late final pulumi.Output<bool> enableSubscribed;
 
@@ -129,11 +126,11 @@ class AlarmContactGroup extends pulumi.CustomResource {
     AlarmContactGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/alarmContactGroup:AlarmContactGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/alarmContactGroup:AlarmContactGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alarmContactGroupName = registerOutput<String>('alarmContactGroupName');
     contacts = registerOutput<List<String>?>('contacts');
     describe = registerOutput<String?>('describe');
@@ -158,11 +155,11 @@ class AlarmContactGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/alarmContactGroup:AlarmContactGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/alarmContactGroup:AlarmContactGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alarmContactGroupName = registerOutput<String>('alarmContactGroupName');
     contacts = registerOutput<List<String>?>('contacts');
     describe = registerOutput<String?>('describe');

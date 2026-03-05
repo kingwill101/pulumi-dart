@@ -588,43 +588,30 @@ import 'unknown_target_response.dart';
 class StorageTarget extends pulumi.CustomResource {
   /// The percentage of cache space allocated for this storage target
   late final pulumi.Output<int> allocationPercentage;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Properties when targetType is blobNfs.
   late final pulumi.Output<BlobNfsTargetResponse?> blobNfs;
-
   /// Properties when targetType is clfs.
   late final pulumi.Output<ClfsTargetResponse?> clfs;
-
   /// List of cache namespace junctions to target for namespace associations.
   late final pulumi.Output<List<Map<String, dynamic>>?> junctions;
-
   /// Region name string.
   late final pulumi.Output<String> location;
-
   /// Name of the Storage Target.
   late final pulumi.Output<String> name;
-
   /// Properties when targetType is nfs3.
   late final pulumi.Output<Nfs3TargetResponse?> nfs3;
-
   /// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
   late final pulumi.Output<String> provisioningState;
-
   /// Storage target operational state.
   late final pulumi.Output<String?> state;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Type of the Storage Target.
   late final pulumi.Output<String> targetType;
-
   /// Type of the Storage Target; Microsoft.StorageCache/Cache/StorageTarget
   late final pulumi.Output<String> type;
-
   /// Properties when targetType is unknown.
   late final pulumi.Output<UnknownTargetResponse?> unknown;
 
@@ -637,69 +624,24 @@ class StorageTarget extends pulumi.CustomResource {
     StorageTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:storagecache:StorageTarget',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:storagecache:StorageTarget',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allocationPercentage = registerOutput<int>('allocationPercentage');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    blobNfs = registerOutput<BlobNfsTargetResponse?>(
-      'blobNfs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BlobNfsTargetResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    clfs = registerOutput<ClfsTargetResponse?>(
-      'clfs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClfsTargetResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    blobNfs = registerOutput<BlobNfsTargetResponse?>('blobNfs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlobNfsTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clfs = registerOutput<ClfsTargetResponse?>('clfs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClfsTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     junctions = registerOutput<List<Map<String, dynamic>>?>('junctions');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    nfs3 = registerOutput<Nfs3TargetResponse?>(
-      'nfs3',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return Nfs3TargetResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nfs3 = registerOutput<Nfs3TargetResponse?>('nfs3', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Nfs3TargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     state = registerOutput<String?>('state');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetType = registerOutput<String>('targetType');
     type = registerOutput<String>('type');
-    unknown = registerOutput<UnknownTargetResponse?>(
-      'unknown',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UnknownTargetResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    unknown = registerOutput<UnknownTargetResponse?>('unknown', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UnknownTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

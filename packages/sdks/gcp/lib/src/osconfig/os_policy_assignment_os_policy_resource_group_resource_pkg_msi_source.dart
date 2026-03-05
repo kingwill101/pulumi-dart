@@ -9,23 +9,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
   /// subject to validations based on the file type: Remote: A checksum must be
   /// specified. Cloud Storage: An object generation number must be specified.
   final pulumi.Input<bool>? allowInsecure;
-
   /// A Cloud Storage object. Structure is
   /// documented below.
-  final pulumi.Input<
-    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs
-  >?
-  gcs;
-
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs>? gcs;
   /// A local path within the VM to use.
   final pulumi.Input<String>? localPath;
-
   /// A generic remote file. Structure is
   /// documented below.
-  final pulumi.Input<
-    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote
-  >?
-  remote;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote>? remote;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource].
   /// [allowInsecure] Defaults to false. When false, files are
@@ -42,52 +33,19 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowInsecure': ?allowInsecure,
-      'gcs':
-          ?pulumi.Input.mapOptionalInputValue<
-            OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs,
-            Map<String, dynamic>
-          >(gcs, (value) => value.toMap()),
+      'gcs': ?pulumi.Input.mapOptionalInputValue<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs, Map<String, dynamic>>(gcs, (value) => value.toMap()),
       'localPath': ?localPath,
-      'remote':
-          ?pulumi.Input.mapOptionalInputValue<
-            OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote,
-            Map<String, dynamic>
-          >(remote, (value) => value.toMap()),
+      'remote': ?pulumi.Input.mapOptionalInputValue<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote, Map<String, dynamic>>(remote, (value) => value.toMap()),
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource(
-      allowInsecure: (() {
-        final guardedValue = map['allowInsecure'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      gcs: (() {
-        final guardedValue = map['gcs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      localPath: (() {
-        final guardedValue = map['localPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remote: (() {
-        final guardedValue = map['remote'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      allowInsecure: (() { final guardedValue = map['allowInsecure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      gcs: (() { final guardedValue = map['gcs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      localPath: (() { final guardedValue = map['localPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remote: (() { final guardedValue = map['remote']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

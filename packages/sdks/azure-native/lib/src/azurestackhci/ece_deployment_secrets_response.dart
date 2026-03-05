@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EceDeploymentSecretsResponse {
   /// Secret name expected for Enterprise Cloud Engine (ECE) deployment.
   final pulumi.Input<String>? eceSecretName;
-
   /// Secret URI stored in keyvault.
   final pulumi.Input<String>? secretLocation;
-
   /// Secret name stored in keyvault.
   final pulumi.Input<String>? secretName;
 
@@ -33,21 +31,10 @@ class EceDeploymentSecretsResponse {
 
   factory EceDeploymentSecretsResponse.fromMap(Map<String, dynamic> map) {
     return EceDeploymentSecretsResponse(
-      eceSecretName: (() {
-        final guardedValue = map['eceSecretName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretLocation: (() {
-        final guardedValue = map['secretLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretName: (() {
-        final guardedValue = map['secretName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eceSecretName: (() { final guardedValue = map['eceSecretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretLocation: (() { final guardedValue = map['secretLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretName: (() { final guardedValue = map['secretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

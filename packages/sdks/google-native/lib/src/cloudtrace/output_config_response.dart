@@ -9,10 +9,14 @@ class OutputConfigResponse {
 
   /// Creates a new [OutputConfigResponse].
   /// [destination] The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-  OutputConfigResponse({required this.destination});
+  OutputConfigResponse({
+    required this.destination,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'destination': destination};
+    return <String, dynamic>{
+      'destination': destination,
+    };
   }
 
   factory OutputConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class OutputConfigResponse {
     );
   }
 }
+

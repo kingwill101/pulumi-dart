@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomDomainsDomainRouteConfig {
   /// The name of the Function Compute function that requests are routed to.
   final pulumi.Input<String> functionName;
-
   /// The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
   final pulumi.Input<List<String>> methods;
-
   /// The path that requests are routed from.
   final pulumi.Input<String> path;
-
   /// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service.
   final pulumi.Input<String> qualifier;
-
   /// The name of the Function Compute service that requests are routed to.
   final pulumi.Input<String> serviceName;
 
@@ -52,3 +48,4 @@ class GetCustomDomainsDomainRouteConfig {
     );
   }
 }
+

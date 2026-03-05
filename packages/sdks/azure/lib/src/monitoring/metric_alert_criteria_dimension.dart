@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricAlertCriteriaDimension {
   /// One of the dimension names.
   final pulumi.Input<String> name;
-
   /// The dimension operator. Possible values are `Include`, `Exclude` and `StartsWith`.
   final pulumi.Input<String> operator;
-
   /// The list of dimension values.
   final pulumi.Input<List<String>> values;
 
@@ -38,3 +36,4 @@ class MetricAlertCriteriaDimension {
     );
   }
 }
+

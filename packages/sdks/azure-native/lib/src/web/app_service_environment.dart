@@ -162,82 +162,55 @@ import 'virtual_network_profile_response.dart';
 class AppServiceEnvironment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Custom settings for changing the behavior of the App Service Environment.
   late final pulumi.Output<List<Map<String, dynamic>>?> clusterSettings;
-
   /// Full view of the custom domain suffix configuration for ASEv3.
-  late final pulumi.Output<CustomDnsSuffixConfigurationResponse?>
-  customDnsSuffixConfiguration;
-
+  late final pulumi.Output<CustomDnsSuffixConfigurationResponse?> customDnsSuffixConfiguration;
   /// Dedicated Host Count
   late final pulumi.Output<int?> dedicatedHostCount;
-
   /// DNS suffix of the App Service Environment.
   late final pulumi.Output<String?> dnsSuffix;
-
   /// Scale factor for front-ends.
   late final pulumi.Output<int?> frontEndScaleFactor;
-
   /// Flag that displays whether an ASE has linux workers or not
   late final pulumi.Output<bool> hasLinuxWorkers;
-
   /// Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
   late final pulumi.Output<String?> internalLoadBalancingMode;
-
   /// Number of IP SSL addresses reserved for the App Service Environment.
   late final pulumi.Output<int?> ipsslAddressCount;
-
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   late final pulumi.Output<String?> kind;
-
   /// Resource Location.
   late final pulumi.Output<String> location;
-
   /// Maximum number of VMs in the App Service Environment.
   late final pulumi.Output<int> maximumNumberOfMachines;
-
   /// Number of front-end instances.
   late final pulumi.Output<int> multiRoleCount;
-
   /// Front-end VM size, e.g. "Medium", "Large".
   late final pulumi.Output<String?> multiSize;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Full view of networking configuration for an ASE.
-  late final pulumi.Output<AseV3NetworkingConfigurationResponse?>
-  networkingConfiguration;
-
+  late final pulumi.Output<AseV3NetworkingConfigurationResponse?> networkingConfiguration;
   /// Provisioning state of the App Service Environment.
   late final pulumi.Output<String> provisioningState;
-
   /// Current status of the App Service Environment.
   late final pulumi.Output<String> status;
-
   /// &lt;code&gt;true&lt;/code&gt; if the App Service Environment is suspended; otherwise, &lt;code&gt;false&lt;/code&gt;. The environment can be suspended, e.g. when the management endpoint is no longer available
   /// (most likely because NSG blocked the incoming traffic).
   late final pulumi.Output<bool> suspended;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// Whether an upgrade is available for this App Service Environment.
   late final pulumi.Output<String> upgradeAvailability;
-
   /// Upgrade Preference
   late final pulumi.Output<String?> upgradePreference;
-
   /// User added ip ranges to whitelist on ASE db
   late final pulumi.Output<List<String>?> userWhitelistedIpRanges;
-
   /// Description of the Virtual Network.
   late final pulumi.Output<VirtualNetworkProfileResponse> virtualNetwork;
-
   /// Whether or not this App Service Environment is zone-redundant.
   late final pulumi.Output<bool?> zoneRedundant;
 
@@ -250,33 +223,19 @@ class AppServiceEnvironment extends pulumi.CustomResource {
     AppServiceEnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:AppServiceEnvironment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:AppServiceEnvironment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    clusterSettings = registerOutput<List<Map<String, dynamic>>?>(
-      'clusterSettings',
-    );
-    customDnsSuffixConfiguration =
-        registerOutput<CustomDnsSuffixConfigurationResponse?>(
-          'customDnsSuffixConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CustomDnsSuffixConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    clusterSettings = registerOutput<List<Map<String, dynamic>>?>('clusterSettings');
+    customDnsSuffixConfiguration = registerOutput<CustomDnsSuffixConfigurationResponse?>('customDnsSuffixConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomDnsSuffixConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dedicatedHostCount = registerOutput<int?>('dedicatedHostCount');
     dnsSuffix = registerOutput<String?>('dnsSuffix');
     frontEndScaleFactor = registerOutput<int?>('frontEndScaleFactor');
     hasLinuxWorkers = registerOutput<bool>('hasLinuxWorkers');
-    internalLoadBalancingMode = registerOutput<String?>(
-      'internalLoadBalancingMode',
-    );
+    internalLoadBalancingMode = registerOutput<String?>('internalLoadBalancingMode');
     ipsslAddressCount = registerOutput<int?>('ipsslAddressCount');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
@@ -284,17 +243,7 @@ class AppServiceEnvironment extends pulumi.CustomResource {
     multiRoleCount = registerOutput<int>('multiRoleCount');
     multiSize = registerOutput<String?>('multiSize');
     this.name = registerOutput<String>('name');
-    networkingConfiguration =
-        registerOutput<AseV3NetworkingConfigurationResponse?>(
-          'networkingConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AseV3NetworkingConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    networkingConfiguration = registerOutput<AseV3NetworkingConfigurationResponse?>('networkingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AseV3NetworkingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
     suspended = registerOutput<bool>('suspended');
@@ -302,19 +251,8 @@ class AppServiceEnvironment extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     upgradeAvailability = registerOutput<String>('upgradeAvailability');
     upgradePreference = registerOutput<String?>('upgradePreference');
-    userWhitelistedIpRanges = registerOutput<List<String>?>(
-      'userWhitelistedIpRanges',
-    );
-    virtualNetwork = registerOutput<VirtualNetworkProfileResponse>(
-      'virtualNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualNetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    userWhitelistedIpRanges = registerOutput<List<String>?>('userWhitelistedIpRanges');
+    virtualNetwork = registerOutput<VirtualNetworkProfileResponse>('virtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 }

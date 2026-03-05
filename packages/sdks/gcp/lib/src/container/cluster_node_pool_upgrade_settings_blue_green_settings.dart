@@ -6,19 +6,11 @@ import 'cluster_node_pool_upgrade_settings_blue_green_settings_standard_rollout_
 
 class ClusterNodePoolUpgradeSettingsBlueGreenSettings {
   /// Autoscaled rollout policy for blue-green upgrade.
-  final pulumi.Input<
-    ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy
-  >?
-  autoscaledRolloutPolicy;
-
+  final pulumi.Input<ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy>? autoscaledRolloutPolicy;
   /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
   final pulumi.Input<String>? nodePoolSoakDuration;
-
   /// Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
-  final pulumi.Input<
-    ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy
-  >?
-  standardRolloutPolicy;
+  final pulumi.Input<ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy>? standardRolloutPolicy;
 
   /// Creates a new [ClusterNodePoolUpgradeSettingsBlueGreenSettings].
   /// [autoscaledRolloutPolicy] Autoscaled rollout policy for blue-green upgrade.
@@ -32,47 +24,18 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscaledRolloutPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy,
-            Map<String, dynamic>
-          >(autoscaledRolloutPolicy, (value) => value.toMap()),
+      'autoscaledRolloutPolicy': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy, Map<String, dynamic>>(autoscaledRolloutPolicy, (value) => value.toMap()),
       'nodePoolSoakDuration': ?nodePoolSoakDuration,
-      'standardRolloutPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy,
-            Map<String, dynamic>
-          >(standardRolloutPolicy, (value) => value.toMap()),
+      'standardRolloutPolicy': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy, Map<String, dynamic>>(standardRolloutPolicy, (value) => value.toMap()),
     };
   }
 
-  factory ClusterNodePoolUpgradeSettingsBlueGreenSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterNodePoolUpgradeSettingsBlueGreenSettings.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolUpgradeSettingsBlueGreenSettings(
-      autoscaledRolloutPolicy: (() {
-        final guardedValue = map['autoscaledRolloutPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      nodePoolSoakDuration: (() {
-        final guardedValue = map['nodePoolSoakDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      standardRolloutPolicy: (() {
-        final guardedValue = map['standardRolloutPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      autoscaledRolloutPolicy: (() { final guardedValue = map['autoscaledRolloutPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      nodePoolSoakDuration: (() { final guardedValue = map['nodePoolSoakDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      standardRolloutPolicy: (() { final guardedValue = map['standardRolloutPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

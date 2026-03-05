@@ -7,17 +7,13 @@ enum EnterpriseCrmEventbusProtoSuccessPolicyFinalState {
   const EnterpriseCrmEventbusProtoSuccessPolicyFinalState(this.wireValue);
   final String wireValue;
 
-  static EnterpriseCrmEventbusProtoSuccessPolicyFinalState fromValue(
-    String value,
-  ) {
-    for (final item
-        in EnterpriseCrmEventbusProtoSuccessPolicyFinalState.values) {
+  static EnterpriseCrmEventbusProtoSuccessPolicyFinalState fromValue(String value) {
+    for (final item in EnterpriseCrmEventbusProtoSuccessPolicyFinalState.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EnterpriseCrmEventbusProtoSuccessPolicyFinalState value: $value',
-    );
+    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoSuccessPolicyFinalState value: $value');
   }
 }
+

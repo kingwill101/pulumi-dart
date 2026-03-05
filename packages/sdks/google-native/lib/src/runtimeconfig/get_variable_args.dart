@@ -32,12 +32,9 @@ class GetVariableArgs {
   factory GetVariableArgs.fromMap(Map<String, dynamic> map) {
     return GetVariableArgs(
       configId: pulumi.Input.fromValue(map['configId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       variableId: pulumi.Input.fromValue(map['variableId'] as String),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdditionalWorkspacesPropertiesResponse {
   /// List of data types sent to workspace
   final pulumi.Input<List<String>>? dataTypes;
-
   /// Workspace type.
   final pulumi.Input<String>? type;
-
   /// Workspace resource id
   final pulumi.Input<String>? workspace;
 
@@ -31,25 +29,12 @@ class AdditionalWorkspacesPropertiesResponse {
     };
   }
 
-  factory AdditionalWorkspacesPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AdditionalWorkspacesPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalWorkspacesPropertiesResponse(
-      dataTypes: (() {
-        final guardedValue = map['dataTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workspace: (() {
-        final guardedValue = map['workspace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataTypes: (() { final guardedValue = map['dataTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workspace: (() { final guardedValue = map['workspace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

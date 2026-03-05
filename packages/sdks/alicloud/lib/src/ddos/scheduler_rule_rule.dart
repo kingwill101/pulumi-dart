@@ -5,21 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchedulerRuleRule {
   /// The priority of the rule.
   final pulumi.Input<int>? priority;
-
   /// The region where the interaction resource that is used in the scheduling rule is deployed. **NOTE:** This parameter is returned only if the RuleType parameter is set to 2.
   final pulumi.Input<String>? regionId;
-
   /// The status of the scheduling rule.
   final pulumi.Input<int>? status;
-
   /// The address type of the interaction resource. Valid values:
   /// `A`: IPv4 address.
   /// `CNAME`: CNAME record.
   final pulumi.Input<String>? type;
-
   /// The address of the interaction resource.
   final pulumi.Input<String>? value;
-
   /// Required. The type of the linked resource. It is an Integer. Valid values:
   /// `1`: The IP address of Anti-DDoS Pro or Anti-DDoS Premium
   /// `2`: the IP address of the interaction resource (in the tiered protection scenario)
@@ -56,36 +51,13 @@ class SchedulerRuleRule {
 
   factory SchedulerRuleRule.fromMap(Map<String, dynamic> map) {
     return SchedulerRuleRule(
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      regionId: (() {
-        final guardedValue = map['regionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      valueType: (() {
-        final guardedValue = map['valueType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      regionId: (() { final guardedValue = map['regionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      valueType: (() { final guardedValue = map['valueType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

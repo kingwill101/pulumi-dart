@@ -10,40 +10,30 @@ import 'frontdoor_origin_private_link.dart';
 class FrontdoorOriginArgs {
   /// The ID of the Front Door Origin Group within which this Front Door Origin should exist. Changing this forces a new Front Door Origin to be created.
   final pulumi.Input<String> cdnFrontdoorOriginGroupId;
-
   /// Specifies whether certificate name checks are enabled for this origin.
   final pulumi.Input<bool> certificateNameCheckEnabled;
-
   /// Should the origin be enabled? Possible values are `true` or `false`. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-
   /// The IPv4 address, IPv6 address or Domain name of the Origin.
   ///
   /// !&gt; **Note:** This must be unique across all Front Door Origins within a Front Door Endpoint.
   final pulumi.Input<String> hostName;
-
   /// The value of the HTTP port. Must be between `1` and `65535`. Defaults to `80`.
   final pulumi.Input<int>? httpPort;
-
   /// The value of the HTTPS port. Must be between `1` and `65535`. Defaults to `443`.
   final pulumi.Input<int>? httpsPort;
-
   /// The name which should be used for this Front Door Origin. Changing this forces a new Front Door Origin to be created.
   final pulumi.Input<String>? name;
-
   /// The host header value (an IPv4 address, IPv6 address or Domain name) which is sent to the origin with each request. If unspecified the hostname from the request will be used.
   ///
   /// &gt; **Note:** Azure Front Door Origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin's hostname. This field's value overrides the host header defined in the Front Door Endpoint. For more information on how to properly set the origin host header value please see the [product documentation](https://docs.microsoft.com/azure/frontdoor/origin?pivots=front-door-standard-premium#origin-host-header).
   final pulumi.Input<String>? originHostHeader;
-
   /// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy. Must be between `1` and `5` (inclusive). Defaults to `1`.
   final pulumi.Input<int>? priority;
-
   /// A `private_link` block as defined below.
   ///
   /// &gt; **Note:** Private Link requires that the Front Door Profile this Origin is hosted within is using the SKU `Premium_AzureFrontDoor` and that the `certificate_name_check_enabled` field is set to `true`.
   final pulumi.Input<FrontdoorOriginPrivateLink>? privateLink;
-
   /// The weight of the origin in a given origin group for load balancing. Must be between `1` and `1000`. Defaults to `500`.
   final pulumi.Input<int>? weight;
 
@@ -84,68 +74,25 @@ class FrontdoorOriginArgs {
       'name': ?name,
       'originHostHeader': ?originHostHeader,
       'priority': ?priority,
-      'privateLink':
-          ?pulumi.Input.mapOptionalInputValue<
-            FrontdoorOriginPrivateLink,
-            Map<String, dynamic>
-          >(privateLink, (value) => value.toMap()),
+      'privateLink': ?pulumi.Input.mapOptionalInputValue<FrontdoorOriginPrivateLink, Map<String, dynamic>>(privateLink, (value) => value.toMap()),
       'weight': ?weight,
     };
   }
 
   factory FrontdoorOriginArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorOriginArgs(
-      cdnFrontdoorOriginGroupId: pulumi.Input.fromValue(
-        map['cdnFrontdoorOriginGroupId'] as String,
-      ),
-      certificateNameCheckEnabled: pulumi.Input.fromValue(
-        map['certificateNameCheckEnabled'] as bool,
-      ),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      cdnFrontdoorOriginGroupId: pulumi.Input.fromValue(map['cdnFrontdoorOriginGroupId'] as String),
+      certificateNameCheckEnabled: pulumi.Input.fromValue(map['certificateNameCheckEnabled'] as bool),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
-      httpPort: (() {
-        final guardedValue = map['httpPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      httpsPort: (() {
-        final guardedValue = map['httpsPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      originHostHeader: (() {
-        final guardedValue = map['originHostHeader'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      privateLink: (() {
-        final guardedValue = map['privateLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FrontdoorOriginPrivateLink.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      weight: (() {
-        final guardedValue = map['weight'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      httpPort: (() { final guardedValue = map['httpPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      httpsPort: (() { final guardedValue = map['httpsPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      originHostHeader: (() { final guardedValue = map['originHostHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      privateLink: (() { final guardedValue = map['privateLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrontdoorOriginPrivateLink.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

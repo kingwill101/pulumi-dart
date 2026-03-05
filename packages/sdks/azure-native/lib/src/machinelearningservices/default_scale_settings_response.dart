@@ -8,10 +8,14 @@ class DefaultScaleSettingsResponse {
 
   /// Creates a new [DefaultScaleSettingsResponse].
   /// [scaleType] Expected value is 'Default'.
-  DefaultScaleSettingsResponse({required this.scaleType});
+  DefaultScaleSettingsResponse({
+    required this.scaleType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scaleType': scaleType};
+    return <String, dynamic>{
+      'scaleType': scaleType,
+    };
   }
 
   factory DefaultScaleSettingsResponse.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DefaultScaleSettingsResponse {
     );
   }
 }
+

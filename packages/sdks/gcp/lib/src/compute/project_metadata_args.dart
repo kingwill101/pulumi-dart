@@ -11,7 +11,6 @@ class ProjectMetadataArgs {
   ///
   /// - - -
   final pulumi.Input<Map<String, String>> metadata;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -19,22 +18,23 @@ class ProjectMetadataArgs {
   /// Creates a new [ProjectMetadataArgs].
   /// [metadata] A series of key value pairs.
   /// [project] The ID of the project in which the resource belongs. If it
-  ProjectMetadataArgs({required this.metadata, this.project});
+  ProjectMetadataArgs({
+    required this.metadata,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metadata': metadata, 'project': ?project};
+    return <String, dynamic>{
+      'metadata': metadata,
+      'project': ?project,
+    };
   }
 
   factory ProjectMetadataArgs.fromMap(Map<String, dynamic> map) {
     return ProjectMetadataArgs(
-      metadata: pulumi.Input.fromValue(
-        (map['metadata'] as Map).cast<String, String>(),
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      metadata: pulumi.Input.fromValue((map['metadata'] as Map).cast<String, String>()),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

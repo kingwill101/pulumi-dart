@@ -10,29 +10,20 @@ class PlacementV1AffinityResponse {
 
   /// Creates a new [PlacementV1AffinityResponse].
   /// [clusterAffinity] ClusterAffinity contains cluster affinity scheduling rules for the selected resources.
-  PlacementV1AffinityResponse({this.clusterAffinity});
+  PlacementV1AffinityResponse({
+    this.clusterAffinity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterAffinity':
-          ?pulumi.Input.mapOptionalInputValue<
-            PlacementV1ClusterAffinityResponse,
-            Map<String, dynamic>
-          >(clusterAffinity, (value) => value.toMap()),
+      'clusterAffinity': ?pulumi.Input.mapOptionalInputValue<PlacementV1ClusterAffinityResponse, Map<String, dynamic>>(clusterAffinity, (value) => value.toMap()),
     };
   }
 
   factory PlacementV1AffinityResponse.fromMap(Map<String, dynamic> map) {
     return PlacementV1AffinityResponse(
-      clusterAffinity: (() {
-        final guardedValue = map['clusterAffinity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PlacementV1ClusterAffinityResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      clusterAffinity: (() { final guardedValue = map['clusterAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PlacementV1ClusterAffinityResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

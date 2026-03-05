@@ -20,3 +20,4 @@ enum ModelSize {
     throw ArgumentError('Unknown ModelSize value: $value');
   }
 }
+

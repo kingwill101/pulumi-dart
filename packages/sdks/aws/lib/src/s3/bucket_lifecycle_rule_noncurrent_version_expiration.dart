@@ -8,21 +8,20 @@ class BucketLifecycleRuleNoncurrentVersionExpiration {
 
   /// Creates a new [BucketLifecycleRuleNoncurrentVersionExpiration].
   /// [days] Specifies the number of days noncurrent object versions expire.
-  BucketLifecycleRuleNoncurrentVersionExpiration({this.days});
+  BucketLifecycleRuleNoncurrentVersionExpiration({
+    this.days,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'days': ?days};
+    return <String, dynamic>{
+      'days': ?days,
+    };
   }
 
-  factory BucketLifecycleRuleNoncurrentVersionExpiration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketLifecycleRuleNoncurrentVersionExpiration.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleNoncurrentVersionExpiration(
-      days: (() {
-        final guardedValue = map['days'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

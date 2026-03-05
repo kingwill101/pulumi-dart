@@ -8,10 +8,8 @@ class Partner {
   /// context will fail. If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration.
   /// If not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified.
   final pulumi.Input<String>? authorizationExpirationTimeInUtc;
-
   /// The partner name.
   final pulumi.Input<String>? partnerName;
-
   /// The immutableId of the corresponding partner registration.
   final pulumi.Input<String>? partnerRegistrationImmutableId;
 
@@ -35,21 +33,10 @@ class Partner {
 
   factory Partner.fromMap(Map<String, dynamic> map) {
     return Partner(
-      authorizationExpirationTimeInUtc: (() {
-        final guardedValue = map['authorizationExpirationTimeInUtc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partnerName: (() {
-        final guardedValue = map['partnerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partnerRegistrationImmutableId: (() {
-        final guardedValue = map['partnerRegistrationImmutableId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authorizationExpirationTimeInUtc: (() { final guardedValue = map['authorizationExpirationTimeInUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partnerName: (() { final guardedValue = map['partnerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partnerRegistrationImmutableId: (() { final guardedValue = map['partnerRegistrationImmutableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

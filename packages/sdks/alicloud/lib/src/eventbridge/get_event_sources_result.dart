@@ -36,11 +36,7 @@ class GetEventSourcesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'sources':
-          pulumi.Input.encodeList<GetEventSourcesSource, Map<String, dynamic>>(
-            sources,
-            (value) => value.toMap(),
-          ),
+      'sources': pulumi.Input.encodeList<GetEventSourcesSource, Map<String, dynamic>>(sources, (value) => value.toMap()),
     };
   }
 
@@ -48,23 +44,11 @@ class GetEventSourcesResult {
     return GetEventSourcesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sources: pulumi.Input.decodeList<GetEventSourcesSource>(
-        map['sources']!,
-        (value) => GetEventSourcesSource.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sources: pulumi.Input.decodeList<GetEventSourcesSource>(map['sources']!, (value) => GetEventSourcesSource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

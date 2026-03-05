@@ -273,55 +273,40 @@ class KeyVault extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> accessPolicies;
   late final pulumi.Output<List<Map<String, dynamic>>> contacts;
   late final pulumi.Output<bool> enableRbacAuthorization;
-
   /// Boolean flag to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault.
   late final pulumi.Output<bool?> enabledForDeployment;
-
   /// Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys.
   late final pulumi.Output<bool?> enabledForDiskEncryption;
-
   /// Boolean flag to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault.
   late final pulumi.Output<bool?> enabledForTemplateDeployment;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Key Vault. Changing this forces a new resource to be created. The name must be globally unique. If the vault is in a recoverable state then the vault will need to be purged before reusing the name.
   late final pulumi.Output<String> name;
-
   /// A `network_acls` block as defined below.
   late final pulumi.Output<KeyVaultNetworkAcls> networkAcls;
-
   /// Whether public network access is allowed for this Key Vault. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// Is Purge Protection enabled for this Key Vault?
   ///
   /// !&gt; **Note:** Once Purge Protection has been Enabled it's not possible to Disable it. Support for [disabling purge protection is being tracked in this Azure API issue](https://github.com/Azure/azure-rest-api-specs/issues/8075). Deleting the Key Vault with Purge Protection Enabled will schedule the Key Vault to be deleted (which will happen by Azure in the configured number of days, currently 90 days).
   late final pulumi.Output<bool?> purgeProtectionEnabled;
-
   /// Boolean flag to specify whether Azure Key Vault uses Role Based Access Control (RBAC) for authorization of data actions.
   ///
   /// &gt; **Note:** Changing the permission model requires unrestricted (no conditions on the role assignment) `Microsoft.Authorization/roleAssignments/write` permission, which is part of the `Owner` and `User Access Administrator` roles. Classic subscription administrator roles like `Service Administrator` and `Co-Administrator`, or restricted `Key Vault Data Access Administrator` cannot be used to change the permission model. For more information, please see the [product documentation](https://learn.microsoft.com/azure/key-vault/general/rbac-guide?tabs=azure-cli#using-azure-rbac-secret-key-and-certificate-permissions-with-key-vault:~:text=Enable%20Azure%20RBAC,change%20permission%20model).
   late final pulumi.Output<bool> rbacAuthorizationEnabled;
-
   /// The name of the resource group in which to create the Key Vault. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The Name of the SKU used for this Key Vault. Possible values are `standard` and `premium`.
   late final pulumi.Output<String> skuName;
-
   /// The number of days that items should be retained for once soft-deleted. This value can be between `7` and `90` (the default) days.
   ///
   /// &gt; **Note:** This field can only be configured one time and cannot be updated.
   late final pulumi.Output<int?> softDeleteRetentionDays;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
   late final pulumi.Output<String> tenantId;
-
   /// The URI of the Key Vault, used for performing operations on keys and secrets.
   late final pulumi.Output<String> vaultUri;
 
@@ -334,38 +319,21 @@ class KeyVault extends pulumi.CustomResource {
     KeyVaultArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:keyvault/keyVault:KeyVault',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessPolicies = registerOutput<List<Map<String, dynamic>>>(
-      'accessPolicies',
-    );
+          'azure:keyvault/keyVault:KeyVault',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessPolicies = registerOutput<List<Map<String, dynamic>>>('accessPolicies');
     contacts = registerOutput<List<Map<String, dynamic>>>('contacts');
     enableRbacAuthorization = registerOutput<bool>('enableRbacAuthorization');
     enabledForDeployment = registerOutput<bool?>('enabledForDeployment');
-    enabledForDiskEncryption = registerOutput<bool?>(
-      'enabledForDiskEncryption',
-    );
-    enabledForTemplateDeployment = registerOutput<bool?>(
-      'enabledForTemplateDeployment',
-    );
+    enabledForDiskEncryption = registerOutput<bool?>('enabledForDiskEncryption');
+    enabledForTemplateDeployment = registerOutput<bool?>('enabledForTemplateDeployment');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkAcls = registerOutput<KeyVaultNetworkAcls>(
-      'networkAcls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KeyVaultNetworkAcls.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    networkAcls = registerOutput<KeyVaultNetworkAcls>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyVaultNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     purgeProtectionEnabled = registerOutput<bool?>('purgeProtectionEnabled');
     rbacAuthorizationEnabled = registerOutput<bool>('rbacAuthorizationEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -394,38 +362,21 @@ class KeyVault extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:keyvault/keyVault:KeyVault',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessPolicies = registerOutput<List<Map<String, dynamic>>>(
-      'accessPolicies',
-    );
+          'azure:keyvault/keyVault:KeyVault',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessPolicies = registerOutput<List<Map<String, dynamic>>>('accessPolicies');
     contacts = registerOutput<List<Map<String, dynamic>>>('contacts');
     enableRbacAuthorization = registerOutput<bool>('enableRbacAuthorization');
     enabledForDeployment = registerOutput<bool?>('enabledForDeployment');
-    enabledForDiskEncryption = registerOutput<bool?>(
-      'enabledForDiskEncryption',
-    );
-    enabledForTemplateDeployment = registerOutput<bool?>(
-      'enabledForTemplateDeployment',
-    );
+    enabledForDiskEncryption = registerOutput<bool?>('enabledForDiskEncryption');
+    enabledForTemplateDeployment = registerOutput<bool?>('enabledForTemplateDeployment');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkAcls = registerOutput<KeyVaultNetworkAcls>(
-      'networkAcls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KeyVaultNetworkAcls.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    networkAcls = registerOutput<KeyVaultNetworkAcls>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyVaultNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     purgeProtectionEnabled = registerOutput<bool?>('purgeProtectionEnabled');
     rbacAuthorizationEnabled = registerOutput<bool>('rbacAuthorizationEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');

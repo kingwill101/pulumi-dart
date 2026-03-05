@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InterconnectCircuitInfoResponse {
   /// Customer-side demarc ID for this circuit.
   final pulumi.Input<String> customerDemarcId;
-
   /// Google-assigned unique ID for this circuit. Assigned at circuit turn-up.
   final pulumi.Input<String> googleCircuitId;
-
   /// Google-side demarc ID for this circuit. Assigned at circuit turn-up and provided by Google to the customer in the LOA.
   final pulumi.Input<String> googleDemarcId;
 
@@ -33,11 +31,10 @@ class InterconnectCircuitInfoResponse {
 
   factory InterconnectCircuitInfoResponse.fromMap(Map<String, dynamic> map) {
     return InterconnectCircuitInfoResponse(
-      customerDemarcId: pulumi.Input.fromValue(
-        map['customerDemarcId'] as String,
-      ),
+      customerDemarcId: pulumi.Input.fromValue(map['customerDemarcId'] as String),
       googleCircuitId: pulumi.Input.fromValue(map['googleCircuitId'] as String),
       googleDemarcId: pulumi.Input.fromValue(map['googleDemarcId'] as String),
     );
   }
 }
+

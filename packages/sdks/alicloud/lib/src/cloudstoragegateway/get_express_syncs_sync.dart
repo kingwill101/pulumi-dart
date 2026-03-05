@@ -5,23 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExpressSyncsSync {
   /// The name of the OSS Bucket.
   final pulumi.Input<String> bucketName;
-
   /// The prefix of the OSS Bucket.
   final pulumi.Input<String> bucketPrefix;
-
   /// The region of the OSS Bucket.
   final pulumi.Input<String> bucketRegion;
-
   /// The description of the Express Sync.
   final pulumi.Input<String> description;
-
   /// The ID of the Express Sync.
   final pulumi.Input<String> expressSyncId;
-
   /// The name of the Express Sync.
   final pulumi.Input<String> expressSyncName;
   final pulumi.Input<String> id;
-
   /// The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
   final pulumi.Input<String> mnsTopic;
 
@@ -71,3 +65,4 @@ class GetExpressSyncsSync {
     );
   }
 }
+

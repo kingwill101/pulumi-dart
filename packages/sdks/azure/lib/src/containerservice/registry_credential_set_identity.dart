@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryCredentialSetIdentity {
   /// The principal ID of the Identity.
   final pulumi.Input<String>? principalId;
-
   /// The tenant ID of the Identity.
   final pulumi.Input<String>? tenantId;
-
   /// The type of Managed Service Identity that is configured on for the Container Registry Credential Set. Currently the only possible value is `SystemAssigned`.
   final pulumi.Input<String> type;
 
@@ -32,17 +30,10 @@ class RegistryCredentialSetIdentity {
 
   factory RegistryCredentialSetIdentity.fromMap(Map<String, dynamic> map) {
     return RegistryCredentialSetIdentity(
-      principalId: (() {
-        final guardedValue = map['principalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

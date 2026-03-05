@@ -5,32 +5,23 @@ import 'appgroup_args.dart';
 class Appgroup extends pulumi.CustomResource {
   /// Internal identifier that cannot be edited
   late final pulumi.Output<String> appGroupId;
-
   /// A list of attributes
   late final pulumi.Output<List<Map<String, dynamic>>> attributes;
-
   /// channel identifier identifies the owner maintaing this grouping.
   late final pulumi.Output<String> channelId;
-
   /// A reference to the associated storefront/marketplace.
   late final pulumi.Output<String> channelUri;
-
   /// Created time as milliseconds since epoch.
   late final pulumi.Output<String> createdAt;
-
   /// app group name displayed in the UI
   late final pulumi.Output<String> displayName;
-
   /// Modified time as milliseconds since epoch.
   late final pulumi.Output<String> lastModifiedAt;
-
   /// Immutable. Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._\-$ %.
   late final pulumi.Output<String> name;
-
   /// Immutable. the org the app group is created
   late final pulumi.Output<String> organization;
   late final pulumi.Output<String> organizationId;
-
   /// Valid values are `active` or `inactive`. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as `active` or `inactive`.
   late final pulumi.Output<String> status;
 
@@ -43,11 +34,11 @@ class Appgroup extends pulumi.CustomResource {
     AppgroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:apigee/v1:Appgroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:apigee/v1:Appgroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appGroupId = registerOutput<String>('appGroupId');
     attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
     channelId = registerOutput<String>('channelId');

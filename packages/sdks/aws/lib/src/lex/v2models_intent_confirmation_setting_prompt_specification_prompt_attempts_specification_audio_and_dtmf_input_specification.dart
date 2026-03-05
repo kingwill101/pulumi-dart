@@ -6,17 +6,9 @@ import 'v2models_intent_confirmation_setting_prompt_specification_prompt_attempt
 
 class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification {
   /// Configuration block for the settings on audio input. See `audio_specification`.
-  final pulumi.Input<
-    V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification
-  >?
-  audioSpecification;
-
+  final pulumi.Input<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification>? audioSpecification;
   /// Configuration block for the settings on DTMF input. See `dtmf_specification`.
-  final pulumi.Input<
-    V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification
-  >?
-  dtmfSpecification;
-
+  final pulumi.Input<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification>? dtmfSpecification;
   /// Time for which a bot waits before assuming that the customer isn't going to speak or press a key. This timeout is shared between Audio and DTMF inputs.
   final pulumi.Input<int> startTimeoutMs;
 
@@ -32,43 +24,18 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioSpecification':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification,
-            Map<String, dynamic>
-          >(audioSpecification, (value) => value.toMap()),
-      'dtmfSpecification':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification,
-            Map<String, dynamic>
-          >(dtmfSpecification, (value) => value.toMap()),
+      'audioSpecification': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification, Map<String, dynamic>>(audioSpecification, (value) => value.toMap()),
+      'dtmfSpecification': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification, Map<String, dynamic>>(dtmfSpecification, (value) => value.toMap()),
       'startTimeoutMs': startTimeoutMs,
     };
   }
 
-  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification(
-      audioSpecification: (() {
-        final guardedValue = map['audioSpecification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      dtmfSpecification: (() {
-        final guardedValue = map['dtmfSpecification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      audioSpecification: (() { final guardedValue = map['audioSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dtmfSpecification: (() { final guardedValue = map['dtmfSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       startTimeoutMs: pulumi.Input.fromValue(map['startTimeoutMs'] as int),
     );
   }
 }
+

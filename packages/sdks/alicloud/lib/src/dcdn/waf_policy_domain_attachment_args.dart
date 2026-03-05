@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WafPolicyDomainAttachmentArgs {
   /// Access the accelerated domain name of the specified protection policy.
   final pulumi.Input<String> domainName;
-
   /// The protection policy ID. Only one input is supported.
   final pulumi.Input<String> policyId;
 
@@ -22,7 +21,10 @@ class WafPolicyDomainAttachmentArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domainName': domainName, 'policyId': policyId};
+    return <String, dynamic>{
+      'domainName': domainName,
+      'policyId': policyId,
+    };
   }
 
   factory WafPolicyDomainAttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -32,3 +34,4 @@ class WafPolicyDomainAttachmentArgs {
     );
   }
 }
+

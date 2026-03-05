@@ -256,16 +256,12 @@ import 'replication_migration_item_args.dart';
 class ReplicationMigrationItem extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource Location
   late final pulumi.Output<String?> location;
-
   /// Resource Name
   late final pulumi.Output<String> name;
-
   /// The migration item properties.
   late final pulumi.Output<MigrationItemPropertiesResponse> properties;
-
   /// Resource Type
   late final pulumi.Output<String> type;
 
@@ -278,24 +274,15 @@ class ReplicationMigrationItem extends pulumi.CustomResource {
     ReplicationMigrationItemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:recoveryservices:ReplicationMigrationItem',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:recoveryservices:ReplicationMigrationItem',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<MigrationItemPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MigrationItemPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<MigrationItemPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationItemPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

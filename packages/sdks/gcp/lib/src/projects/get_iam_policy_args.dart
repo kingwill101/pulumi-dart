@@ -13,10 +13,14 @@ class GetIamPolicyArgs {
 
   /// Creates a new [GetIamPolicyArgs].
   /// [project] The project id of the target project. This is not
-  GetIamPolicyArgs({required this.project});
+  GetIamPolicyArgs({
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': project};
+    return <String, dynamic>{
+      'project': project,
+    };
   }
 
   factory GetIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -25,3 +29,4 @@ class GetIamPolicyArgs {
     );
   }
 }
+

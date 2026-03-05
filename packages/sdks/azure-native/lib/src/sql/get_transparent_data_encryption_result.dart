@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTransparentDataEncryption.
 class GetTransparentDataEncryptionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String id;
-
   /// Resource name.
   final String name;
-
   /// Specifies the state of the transparent data encryption.
   final String state;
-
   /// Resource type.
   final String type;
 
@@ -51,3 +48,4 @@ class GetTransparentDataEncryptionResult {
     );
   }
 }
+

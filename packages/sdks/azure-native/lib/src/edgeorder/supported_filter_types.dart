@@ -15,3 +15,4 @@ enum SupportedFilterTypes {
     throw ArgumentError('Unknown SupportedFilterTypes value: $value');
   }
 }
+

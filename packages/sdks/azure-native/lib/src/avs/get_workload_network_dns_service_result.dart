@@ -6,40 +6,28 @@ import 'system_data_response.dart';
 class GetWorkloadNetworkDnsServiceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Default DNS zone of the DNS Service.
   final String? defaultDnsZone;
-
   /// Display name of the DNS Service.
   final String? displayName;
-
   /// DNS service IP of the DNS Service.
   final String? dnsServiceIp;
-
   /// FQDN zones of the DNS Service.
   final List<String>? fqdnZones;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// DNS Service log level.
   final String? logLevel;
-
   /// The name of the resource
   final String name;
-
   /// The provisioning state
   final String provisioningState;
-
   /// NSX revision number.
   final double? revision;
-
   /// DNS Service status.
   final String status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -94,44 +82,19 @@ class GetWorkloadNetworkDnsServiceResult {
   factory GetWorkloadNetworkDnsServiceResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadNetworkDnsServiceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      defaultDnsZone: (() {
-        final guardedValue = map['defaultDnsZone'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      dnsServiceIp: (() {
-        final guardedValue = map['dnsServiceIp'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      fqdnZones: (() {
-        final guardedValue = map['fqdnZones'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      defaultDnsZone: (() { final guardedValue = map['defaultDnsZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dnsServiceIp: (() { final guardedValue = map['dnsServiceIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fqdnZones: (() { final guardedValue = map['fqdnZones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       id: map['id'] as String,
-      logLevel: (() {
-        final guardedValue = map['logLevel'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      logLevel: (() { final guardedValue = map['logLevel']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      revision: (() {
-        final guardedValue = map['revision'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return guardedValue as double; })(),
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

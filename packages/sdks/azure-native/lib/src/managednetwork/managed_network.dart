@@ -334,28 +334,20 @@ import 'scope_response.dart';
 class ManagedNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The collection of groups and policies concerned with connectivity
   late final pulumi.Output<ConnectivityCollectionResponse> connectivity;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the ManagedNetwork resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network
   late final pulumi.Output<ScopeResponse?> scope;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
 
@@ -368,36 +360,18 @@ class ManagedNetwork extends pulumi.CustomResource {
     ManagedNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:managednetwork:ManagedNetwork',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:managednetwork:ManagedNetwork',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    connectivity = registerOutput<ConnectivityCollectionResponse>(
-      'connectivity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectivityCollectionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connectivity = registerOutput<ConnectivityCollectionResponse>('connectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectivityCollectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    scope = registerOutput<ScopeResponse?>(
-      'scope',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScopeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scope = registerOutput<ScopeResponse?>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

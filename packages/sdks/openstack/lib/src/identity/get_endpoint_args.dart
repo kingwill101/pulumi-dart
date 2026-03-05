@@ -10,24 +10,18 @@ class GetEndpointArgs {
   /// The region the endpoint is assigned to. The
   /// `region` and `endpoint_region` can be different.
   final pulumi.Input<String>? endpointRegion;
-
   /// The endpoint interface. Valid values are `public`,
   /// `internal`, and `admin`. Default value is `public`
   final pulumi.Input<String>? interface;
-
   /// The name of the endpoint.
   final pulumi.Input<String>? name;
-
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used.
   final pulumi.Input<String>? region;
-
   /// The service id this endpoint belongs to.
   final pulumi.Input<String>? serviceId;
-
   /// The service name of the endpoint.
   final pulumi.Input<String>? serviceName;
-
   /// The service type of the endpoint.
   final pulumi.Input<String>? serviceType;
 
@@ -63,41 +57,14 @@ class GetEndpointArgs {
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointArgs(
-      endpointRegion: (() {
-        final guardedValue = map['endpointRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      interface: (() {
-        final guardedValue = map['interface'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceId: (() {
-        final guardedValue = map['serviceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceName: (() {
-        final guardedValue = map['serviceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceType: (() {
-        final guardedValue = map['serviceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpointRegion: (() { final guardedValue = map['endpointRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interface: (() { final guardedValue = map['interface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceType: (() { final guardedValue = map['serviceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

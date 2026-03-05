@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3beta1VersionVariantsVariant {
   /// Whether the variant is for the control group.
   final pulumi.Input<bool>? isControlGroup;
-
   /// Percentage of the traffic which should be routed to this version of flow. Traffic allocation for a single flow must sum up to 1.0.
   final pulumi.Input<double>? trafficAllocation;
-
   /// The name of the flow version. Format: `projects//locations//agents//flows//versions/`.
   final pulumi.Input<String>? version;
 
@@ -31,25 +29,12 @@ class GoogleCloudDialogflowCxV3beta1VersionVariantsVariant {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1VersionVariantsVariant.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3beta1VersionVariantsVariant.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1VersionVariantsVariant(
-      isControlGroup: (() {
-        final guardedValue = map['isControlGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      trafficAllocation: (() {
-        final guardedValue = map['trafficAllocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      isControlGroup: (() { final guardedValue = map['isControlGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      trafficAllocation: (() { final guardedValue = map['trafficAllocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

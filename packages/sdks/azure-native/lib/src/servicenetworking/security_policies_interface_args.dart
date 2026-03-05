@@ -10,19 +10,14 @@ import 'waf_policy.dart';
 class SecurityPoliciesInterfaceArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// SecurityPolicy
   final pulumi.Input<String>? securityPolicyName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// traffic controller name for path
   final pulumi.Input<String> trafficControllerName;
-
   /// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
   final pulumi.Input<WafPolicy>? wafPolicy;
 
@@ -49,46 +44,19 @@ class SecurityPoliciesInterfaceArgs {
       'securityPolicyName': ?securityPolicyName,
       'tags': ?tags,
       'trafficControllerName': trafficControllerName,
-      'wafPolicy':
-          ?pulumi.Input.mapOptionalInputValue<WafPolicy, Map<String, dynamic>>(
-            wafPolicy,
-            (value) => value.toMap(),
-          ),
+      'wafPolicy': ?pulumi.Input.mapOptionalInputValue<WafPolicy, Map<String, dynamic>>(wafPolicy, (value) => value.toMap()),
     };
   }
 
   factory SecurityPoliciesInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPoliciesInterfaceArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      securityPolicyName: (() {
-        final guardedValue = map['securityPolicyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      trafficControllerName: pulumi.Input.fromValue(
-        map['trafficControllerName'] as String,
-      ),
-      wafPolicy: (() {
-        final guardedValue = map['wafPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WafPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      securityPolicyName: (() { final guardedValue = map['securityPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      trafficControllerName: pulumi.Input.fromValue(map['trafficControllerName'] as String),
+      wafPolicy: (() { final guardedValue = map['wafPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WafPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

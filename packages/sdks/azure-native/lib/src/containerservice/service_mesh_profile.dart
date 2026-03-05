@@ -7,38 +7,29 @@ import 'istio_service_mesh.dart';
 class ServiceMeshProfile {
   /// Istio service mesh configuration.
   final pulumi.Input<IstioServiceMesh>? istio;
-
   /// Mode of the service mesh.
   final pulumi.Input<String> mode;
 
   /// Creates a new [ServiceMeshProfile].
   /// [istio] Istio service mesh configuration.
   /// [mode] Mode of the service mesh.
-  ServiceMeshProfile({this.istio, required this.mode});
+  ServiceMeshProfile({
+    this.istio,
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'istio':
-          ?pulumi.Input.mapOptionalInputValue<
-            IstioServiceMesh,
-            Map<String, dynamic>
-          >(istio, (value) => value.toMap()),
+      'istio': ?pulumi.Input.mapOptionalInputValue<IstioServiceMesh, Map<String, dynamic>>(istio, (value) => value.toMap()),
       'mode': mode,
     };
   }
 
   factory ServiceMeshProfile.fromMap(Map<String, dynamic> map) {
     return ServiceMeshProfile(
-      istio: (() {
-        final guardedValue = map['istio'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IstioServiceMesh.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      istio: (() { final guardedValue = map['istio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IstioServiceMesh.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
+

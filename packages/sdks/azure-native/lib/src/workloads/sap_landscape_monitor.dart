@@ -277,23 +277,16 @@ import 'system_data_response.dart';
 class SapLandscapeMonitor extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the SID groupings by landscape and Environment.
-  late final pulumi.Output<SapLandscapeMonitorPropertiesGroupingResponse?>
-  grouping;
-
+  late final pulumi.Output<SapLandscapeMonitorPropertiesGroupingResponse?> grouping;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// State of provisioning of the SAP monitor.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
   late final pulumi.Output<List<Map<String, dynamic>>?> topMetricsThresholds;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -306,37 +299,17 @@ class SapLandscapeMonitor extends pulumi.CustomResource {
     SapLandscapeMonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:workloads:SapLandscapeMonitor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:workloads:SapLandscapeMonitor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    grouping = registerOutput<SapLandscapeMonitorPropertiesGroupingResponse?>(
-      'grouping',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SapLandscapeMonitorPropertiesGroupingResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    grouping = registerOutput<SapLandscapeMonitorPropertiesGroupingResponse?>('grouping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SapLandscapeMonitorPropertiesGroupingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    topMetricsThresholds = registerOutput<List<Map<String, dynamic>>?>(
-      'topMetricsThresholds',
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    topMetricsThresholds = registerOutput<List<Map<String, dynamic>>?>('topMetricsThresholds');
     type = registerOutput<String>('type');
   }
 }

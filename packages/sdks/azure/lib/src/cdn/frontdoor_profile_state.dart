@@ -8,27 +8,20 @@ import 'frontdoor_profile_log_scrubbing_rule.dart';
 class FrontdoorProfileState {
   /// An `identity` block as defined below.
   final pulumi.Input<FrontdoorProfileIdentity>? identity;
-
   /// One or more `log_scrubbing_rule` blocks as defined below.
   ///
   /// &gt; **Note:** When no `log_scrubbing_rule` blocks are defined, log scrubbing will be automatically `disabled`. When one or more `log_scrubbing_rule` blocks are present, log scrubbing will be `enabled`.
   final pulumi.Input<List<FrontdoorProfileLogScrubbingRule>>? logScrubbingRules;
-
   /// Specifies the name of the Front Door Profile. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the Resource Group where this Front Door Profile should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// The UUID of this Front Door Profile which will be sent in the HTTP Header as the `X-Azure-FDID` attribute.
   final pulumi.Input<String>? resourceGuid;
-
   /// Specifies the maximum response timeout in seconds. Possible values are between `16` and `240` seconds (inclusive). Defaults to `120` seconds.
   final pulumi.Input<int>? responseTimeoutSeconds;
-
   /// Specifies the SKU for this Front Door Profile. Possible values include `Standard_AzureFrontDoor` and `Premium_AzureFrontDoor`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? skuName;
-
   /// Specifies a mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -54,23 +47,8 @@ class FrontdoorProfileState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            FrontdoorProfileIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
-      'logScrubbingRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<FrontdoorProfileLogScrubbingRule>,
-            List<Map<String, dynamic>>
-          >(
-            logScrubbingRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  FrontdoorProfileLogScrubbingRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'identity': ?pulumi.Input.mapOptionalInputValue<FrontdoorProfileIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'logScrubbingRules': ?pulumi.Input.mapOptionalInputValue<List<FrontdoorProfileLogScrubbingRule>, List<Map<String, dynamic>>>(logScrubbingRules, (value) => pulumi.Input.encodeList<FrontdoorProfileLogScrubbingRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
       'resourceGuid': ?resourceGuid,
@@ -82,59 +60,15 @@ class FrontdoorProfileState {
 
   factory FrontdoorProfileState.fromMap(Map<String, dynamic> map) {
     return FrontdoorProfileState(
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FrontdoorProfileIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      logScrubbingRules: (() {
-        final guardedValue = map['logScrubbingRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<FrontdoorProfileLogScrubbingRule>(
-            guardedValue,
-            (value) => FrontdoorProfileLogScrubbingRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGuid: (() {
-        final guardedValue = map['resourceGuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      responseTimeoutSeconds: (() {
-        final guardedValue = map['responseTimeoutSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      skuName: (() {
-        final guardedValue = map['skuName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrontdoorProfileIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      logScrubbingRules: (() { final guardedValue = map['logScrubbingRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FrontdoorProfileLogScrubbingRule>(guardedValue, (value) => FrontdoorProfileLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGuid: (() { final guardedValue = map['resourceGuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      responseTimeoutSeconds: (() { final guardedValue = map['responseTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      skuName: (() { final guardedValue = map['skuName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

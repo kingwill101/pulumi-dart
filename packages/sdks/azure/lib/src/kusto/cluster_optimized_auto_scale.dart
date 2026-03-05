@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterOptimizedAutoScale {
   /// The maximum number of allowed instances. Possible values range between `0` and `1000`.
   final pulumi.Input<int> maximumInstances;
-
   /// The minimum number of allowed instances. Possible values range between `0` and `1000`.
   final pulumi.Input<int> minimumInstances;
 
@@ -31,3 +30,4 @@ class ClusterOptimizedAutoScale {
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'certifiate_certificate_policy_lifetime_action_trigger.dart';
 class CertifiateCertificatePolicyLifetimeAction {
   /// A `action` block as defined below.
   final pulumi.Input<CertifiateCertificatePolicyLifetimeActionAction> action;
-
   /// A `trigger` block as defined below.
   final pulumi.Input<CertifiateCertificatePolicyLifetimeActionTrigger> trigger;
 
@@ -21,33 +20,16 @@ class CertifiateCertificatePolicyLifetimeAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action':
-          pulumi.Input.mapInputValue<
-            CertifiateCertificatePolicyLifetimeActionAction,
-            Map<String, dynamic>
-          >(action, (value) => value.toMap()),
-      'trigger':
-          pulumi.Input.mapInputValue<
-            CertifiateCertificatePolicyLifetimeActionTrigger,
-            Map<String, dynamic>
-          >(trigger, (value) => value.toMap()),
+      'action': pulumi.Input.mapInputValue<CertifiateCertificatePolicyLifetimeActionAction, Map<String, dynamic>>(action, (value) => value.toMap()),
+      'trigger': pulumi.Input.mapInputValue<CertifiateCertificatePolicyLifetimeActionTrigger, Map<String, dynamic>>(trigger, (value) => value.toMap()),
     };
   }
 
-  factory CertifiateCertificatePolicyLifetimeAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CertifiateCertificatePolicyLifetimeAction.fromMap(Map<String, dynamic> map) {
     return CertifiateCertificatePolicyLifetimeAction(
-      action: pulumi.Input.fromValue(
-        CertifiateCertificatePolicyLifetimeActionAction.fromMap(
-          (map['action']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      trigger: pulumi.Input.fromValue(
-        CertifiateCertificatePolicyLifetimeActionTrigger.fromMap(
-          (map['trigger']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      action: pulumi.Input.fromValue(CertifiateCertificatePolicyLifetimeActionAction.fromMap((map['action']! as Map).cast<String, dynamic>())),
+      trigger: pulumi.Input.fromValue(CertifiateCertificatePolicyLifetimeActionTrigger.fromMap((map['trigger']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

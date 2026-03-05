@@ -6,8 +6,7 @@ import 'referenced_resource_response.dart';
 /// List of network fabric controller ids.
 class ArtifactStoreNetworkFabricControllerEndPointsResponse {
   /// list of network fabric controllers.
-  final pulumi.Input<List<ReferencedResourceResponse>>?
-  networkFabricControllerIds;
+  final pulumi.Input<List<ReferencedResourceResponse>>? networkFabricControllerIds;
 
   /// Creates a new [ArtifactStoreNetworkFabricControllerEndPointsResponse].
   /// [networkFabricControllerIds] list of network fabric controllers.
@@ -17,37 +16,14 @@ class ArtifactStoreNetworkFabricControllerEndPointsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkFabricControllerIds':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ReferencedResourceResponse>,
-            List<Map<String, dynamic>>
-          >(
-            networkFabricControllerIds,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReferencedResourceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'networkFabricControllerIds': ?pulumi.Input.mapOptionalInputValue<List<ReferencedResourceResponse>, List<Map<String, dynamic>>>(networkFabricControllerIds, (value) => pulumi.Input.encodeList<ReferencedResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ArtifactStoreNetworkFabricControllerEndPointsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ArtifactStoreNetworkFabricControllerEndPointsResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactStoreNetworkFabricControllerEndPointsResponse(
-      networkFabricControllerIds: (() {
-        final guardedValue = map['networkFabricControllerIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ReferencedResourceResponse>(
-            guardedValue,
-            (value) => ReferencedResourceResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      networkFabricControllerIds: (() { final guardedValue = map['networkFabricControllerIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReferencedResourceResponse>(guardedValue, (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

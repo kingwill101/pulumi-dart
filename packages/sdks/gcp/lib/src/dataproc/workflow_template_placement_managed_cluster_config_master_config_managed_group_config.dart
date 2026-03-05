@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig {
   /// Output only. The name of the Instance Group Manager for this group.
   final pulumi.Input<String>? instanceGroupManagerName;
-
   /// Output only. The name of the Instance Template used for the Managed Instance Group.
   final pulumi.Input<String>? instanceTemplateName;
 
@@ -24,20 +23,11 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfi
     };
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig(
-      instanceGroupManagerName: (() {
-        final guardedValue = map['instanceGroupManagerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceTemplateName: (() {
-        final guardedValue = map['instanceTemplateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceGroupManagerName: (() { final guardedValue = map['instanceGroupManagerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceTemplateName: (() { final guardedValue = map['instanceTemplateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

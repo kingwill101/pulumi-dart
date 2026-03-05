@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NestServiceInstanceOperationMetadata {
   /// The ID of the imported service instance.
   final pulumi.Input<String>? operatedServiceInstanceId;
-
   /// The end time of O&M.
   final pulumi.Input<String>? operationEndTime;
-
   /// The start time of O&M.
   final pulumi.Input<String>? operationStartTime;
-
   /// The list of imported resources.
   final pulumi.Input<String>? resources;
 
@@ -36,30 +33,13 @@ class NestServiceInstanceOperationMetadata {
     };
   }
 
-  factory NestServiceInstanceOperationMetadata.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NestServiceInstanceOperationMetadata.fromMap(Map<String, dynamic> map) {
     return NestServiceInstanceOperationMetadata(
-      operatedServiceInstanceId: (() {
-        final guardedValue = map['operatedServiceInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operationEndTime: (() {
-        final guardedValue = map['operationEndTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operationStartTime: (() {
-        final guardedValue = map['operationStartTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resources: (() {
-        final guardedValue = map['resources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      operatedServiceInstanceId: (() { final guardedValue = map['operatedServiceInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operationEndTime: (() { final guardedValue = map['operationEndTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operationStartTime: (() { final guardedValue = map['operationStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

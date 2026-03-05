@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerBackendServerPolicyState {
   /// The instance port to apply the policy to.
   final pulumi.Input<int>? instancePort;
-
   /// The load balancer to attach the policy to.
   final pulumi.Input<String>? loadBalancerName;
-
   /// List of Policy Names to apply to the backend server.
   final pulumi.Input<List<String>>? policyNames;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -37,30 +34,13 @@ class LoadBalancerBackendServerPolicyState {
     };
   }
 
-  factory LoadBalancerBackendServerPolicyState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoadBalancerBackendServerPolicyState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendServerPolicyState(
-      instancePort: (() {
-        final guardedValue = map['instancePort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      loadBalancerName: (() {
-        final guardedValue = map['loadBalancerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policyNames: (() {
-        final guardedValue = map['policyNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instancePort: (() { final guardedValue = map['instancePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      loadBalancerName: (() { final guardedValue = map['loadBalancerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyNames: (() { final guardedValue = map['policyNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

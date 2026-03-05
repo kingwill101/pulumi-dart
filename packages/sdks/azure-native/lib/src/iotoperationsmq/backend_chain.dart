@@ -7,25 +7,18 @@ import 'temporary_resource_limits_config.dart';
 class BackendChain {
   /// Partitions is desired number of physical backend chains of the given distributed MQTT broker.
   final pulumi.Input<int> partitions;
-
   /// Redundancy Factor is desired numbers of broker instances in one chain.
   final pulumi.Input<int> redundancyFactor;
-
   /// Defines whether disk transfer is enabled or not.
   final pulumi.Input<bool>? temporaryDiskTransferEnabled;
-
   /// Defines the percentage usage of buffer pool above which disk transfer will start.
   final pulumi.Input<int>? temporaryDiskTransferHighWatermarkPercent;
-
   /// Defines the percentage usage of buffer pool below which disk transfer will stop.
   final pulumi.Input<int>? temporaryDiskTransferLowWatermarkPercent;
-
   /// Defines the limits for memory usage percent of the backend instances of the MQTT broker.
   final pulumi.Input<int>? temporaryMaxBackendMemUsagePercent;
-
   /// Defines the limits for resources of the backend instances of the MQTT broker.
   final pulumi.Input<TemporaryResourceLimitsConfig>? temporaryResourceLimits;
-
   /// Number of logical backend workers per pod.
   final pulumi.Input<int>? workers;
 
@@ -54,16 +47,10 @@ class BackendChain {
       'partitions': partitions,
       'redundancyFactor': redundancyFactor,
       'temporaryDiskTransferEnabled': ?temporaryDiskTransferEnabled,
-      'temporaryDiskTransferHighWatermarkPercent':
-          ?temporaryDiskTransferHighWatermarkPercent,
-      'temporaryDiskTransferLowWatermarkPercent':
-          ?temporaryDiskTransferLowWatermarkPercent,
+      'temporaryDiskTransferHighWatermarkPercent': ?temporaryDiskTransferHighWatermarkPercent,
+      'temporaryDiskTransferLowWatermarkPercent': ?temporaryDiskTransferLowWatermarkPercent,
       'temporaryMaxBackendMemUsagePercent': ?temporaryMaxBackendMemUsagePercent,
-      'temporaryResourceLimits':
-          ?pulumi.Input.mapOptionalInputValue<
-            TemporaryResourceLimitsConfig,
-            Map<String, dynamic>
-          >(temporaryResourceLimits, (value) => value.toMap()),
+      'temporaryResourceLimits': ?pulumi.Input.mapOptionalInputValue<TemporaryResourceLimitsConfig, Map<String, dynamic>>(temporaryResourceLimits, (value) => value.toMap()),
       'workers': ?workers,
     };
   }
@@ -72,40 +59,13 @@ class BackendChain {
     return BackendChain(
       partitions: pulumi.Input.fromValue(map['partitions'] as int),
       redundancyFactor: pulumi.Input.fromValue(map['redundancyFactor'] as int),
-      temporaryDiskTransferEnabled: (() {
-        final guardedValue = map['temporaryDiskTransferEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      temporaryDiskTransferHighWatermarkPercent: (() {
-        final guardedValue = map['temporaryDiskTransferHighWatermarkPercent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      temporaryDiskTransferLowWatermarkPercent: (() {
-        final guardedValue = map['temporaryDiskTransferLowWatermarkPercent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      temporaryMaxBackendMemUsagePercent: (() {
-        final guardedValue = map['temporaryMaxBackendMemUsagePercent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      temporaryResourceLimits: (() {
-        final guardedValue = map['temporaryResourceLimits'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TemporaryResourceLimitsConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      workers: (() {
-        final guardedValue = map['workers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      temporaryDiskTransferEnabled: (() { final guardedValue = map['temporaryDiskTransferEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      temporaryDiskTransferHighWatermarkPercent: (() { final guardedValue = map['temporaryDiskTransferHighWatermarkPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      temporaryDiskTransferLowWatermarkPercent: (() { final guardedValue = map['temporaryDiskTransferLowWatermarkPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      temporaryMaxBackendMemUsagePercent: (() { final guardedValue = map['temporaryMaxBackendMemUsagePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      temporaryResourceLimits: (() { final guardedValue = map['temporaryResourceLimits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TemporaryResourceLimitsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      workers: (() { final guardedValue = map['workers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

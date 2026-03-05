@@ -176,28 +176,20 @@ import 'quick_connect_state.dart';
 class QuickConnect extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the Quick Connect.
   late final pulumi.Output<String> arn;
-
   /// Specifies the description of the Quick Connect.
   late final pulumi.Output<String?> description;
-
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   late final pulumi.Output<String> instanceId;
-
   /// Specifies the name of the Quick Connect.
   late final pulumi.Output<String> name;
-
   /// A block that defines the configuration information for the Quick Connect: `quick_connect_type` and one of `phone_config`, `queue_config`, `user_config` . The Quick Connect Config block is documented below.
   late final pulumi.Output<QuickConnectQuickConnectConfig> quickConnectConfig;
-
   /// The identifier for the Quick Connect.
   late final pulumi.Output<String> quickConnectId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Tags to apply to the Quick Connect. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -210,25 +202,16 @@ class QuickConnect extends pulumi.CustomResource {
     QuickConnectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:connect/quickConnect:QuickConnect',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:connect/quickConnect:QuickConnect',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
-    quickConnectConfig = registerOutput<QuickConnectQuickConnectConfig>(
-      'quickConnectConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return QuickConnectQuickConnectConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    quickConnectConfig = registerOutput<QuickConnectQuickConnectConfig>('quickConnectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuickConnectQuickConnectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     quickConnectId = registerOutput<String>('quickConnectId');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -253,25 +236,16 @@ class QuickConnect extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:connect/quickConnect:QuickConnect',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:connect/quickConnect:QuickConnect',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
-    quickConnectConfig = registerOutput<QuickConnectQuickConnectConfig>(
-      'quickConnectConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return QuickConnectQuickConnectConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    quickConnectConfig = registerOutput<QuickConnectQuickConnectConfig>('quickConnectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuickConnectQuickConnectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     quickConnectId = registerOutput<String>('quickConnectId');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

@@ -6,19 +6,15 @@ class InstanceMemcacheNode {
   /// (Output)
   /// Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
   final pulumi.Input<String>? host;
-
   /// (Output)
   /// Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
   final pulumi.Input<String>? nodeId;
-
   /// (Output)
   /// The port number of the Memcached server on this node.
   final pulumi.Input<int>? port;
-
   /// (Output)
   /// Current state of the Memcached node.
   final pulumi.Input<String>? state;
-
   /// (Output)
   /// Location (GCP Zone) for the Memcached node.
   final pulumi.Input<String>? zone;
@@ -49,31 +45,12 @@ class InstanceMemcacheNode {
 
   factory InstanceMemcacheNode.fromMap(Map<String, dynamic> map) {
     return InstanceMemcacheNode(
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeId: (() {
-        final guardedValue = map['nodeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeId: (() { final guardedValue = map['nodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -11,8 +11,7 @@ enum AkriConnectorTemplateAllocationPolicy {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AkriConnectorTemplateAllocationPolicy value: $value',
-    );
+    throw ArgumentError('Unknown AkriConnectorTemplateAllocationPolicy value: $value');
   }
 }
+

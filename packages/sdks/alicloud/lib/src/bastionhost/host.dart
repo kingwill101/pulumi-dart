@@ -362,37 +362,27 @@ import 'host_state.dart';
 class Host extends pulumi.CustomResource {
   /// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
   late final pulumi.Output<String> activeAddressType;
-
   /// Specify a host of notes, supports up to 500 characters.
   late final pulumi.Output<String?> comment;
-
   /// The host ID.
   late final pulumi.Output<String> hostId;
-
   /// Specify the new create a host name of the supports up to 128 characters.
   late final pulumi.Output<String> hostName;
-
   /// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
   late final pulumi.Output<String?> hostPrivateAddress;
-
   /// Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
   late final pulumi.Output<String?> hostPublicAddress;
-
   /// Specify the new create a host where the Bastion host ID of.
   late final pulumi.Output<String> instanceId;
-
   /// The instance region id.
   late final pulumi.Output<String?> instanceRegionId;
-
   /// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
   late final pulumi.Output<String> osType;
-
   /// Specify the new create a host of source. Valid values:
   /// * `Local`: localhost
   /// * `Ecs`:ECS instance
   /// * `Rds`:RDS exclusive cluster host.
   late final pulumi.Output<String> source;
-
   /// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
   late final pulumi.Output<String?> sourceInstanceId;
 
@@ -400,13 +390,16 @@ class Host extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Host]. {@macro pulumi_bastionhost_host_host_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Host(String name, {HostArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:bastionhost/host:Host',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Host(
+    String name, {
+    HostArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:bastionhost/host:Host',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activeAddressType = registerOutput<String>('activeAddressType');
     comment = registerOutput<String?>('comment');
     hostId = registerOutput<String>('hostId');
@@ -421,7 +414,11 @@ class Host extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Host] resource's state with the given [name] and [id].
-  static Host get(String name, pulumi.Input<String> id, {HostState? state}) {
+  static Host get(
+    String name,
+    pulumi.Input<String> id, {
+    HostState? state,
+  }) {
     return Host._get(
       name,
       state: state?.toMap(),
@@ -434,11 +431,11 @@ class Host extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:bastionhost/host:Host',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:bastionhost/host:Host',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activeAddressType = registerOutput<String>('activeAddressType');
     comment = registerOutput<String?>('comment');
     hostId = registerOutput<String>('hostId');

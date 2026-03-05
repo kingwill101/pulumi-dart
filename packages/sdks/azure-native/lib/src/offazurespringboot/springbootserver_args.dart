@@ -10,13 +10,10 @@ import 'springbootservers_properties.dart';
 class SpringbootserverArgs {
   /// The springbootservers resource definition.
   final pulumi.Input<SpringbootserversProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The springbootsites name.
   final pulumi.Input<String> siteName;
-
   /// The springbootservers name.
   final pulumi.Input<String>? springbootserversName;
 
@@ -34,11 +31,7 @@ class SpringbootserverArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            SpringbootserversProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<SpringbootserversProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'siteName': siteName,
       'springbootserversName': ?springbootserversName,
@@ -47,24 +40,11 @@ class SpringbootserverArgs {
 
   factory SpringbootserverArgs.fromMap(Map<String, dynamic> map) {
     return SpringbootserverArgs(
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SpringbootserversProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpringbootserversProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       siteName: pulumi.Input.fromValue(map['siteName'] as String),
-      springbootserversName: (() {
-        final guardedValue = map['springbootserversName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      springbootserversName: (() { final guardedValue = map['springbootserversName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,19 +8,14 @@ import 'schedule.dart';
 class MaintenanceWindow {
   /// Length of maintenance window range from 4 to 24 hours.
   final pulumi.Input<int> durationHours;
-
   /// Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.
   final pulumi.Input<List<DateSpan>>? notAllowedDates;
-
   /// Recurrence schedule for the maintenance window.
   final pulumi.Input<Schedule> schedule;
-
   /// The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.
   final pulumi.Input<String>? startDate;
-
   /// The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
   final pulumi.Input<String> startTime;
-
   /// The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.
   final pulumi.Input<String>? utcOffset;
 
@@ -43,21 +38,8 @@ class MaintenanceWindow {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'durationHours': durationHours,
-      'notAllowedDates':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DateSpan>,
-            List<Map<String, dynamic>>
-          >(
-            notAllowedDates,
-            (value) => pulumi.Input.encodeList<DateSpan, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
-      'schedule': pulumi.Input.mapInputValue<Schedule, Map<String, dynamic>>(
-        schedule,
-        (value) => value.toMap(),
-      ),
+      'notAllowedDates': ?pulumi.Input.mapOptionalInputValue<List<DateSpan>, List<Map<String, dynamic>>>(notAllowedDates, (value) => pulumi.Input.encodeList<DateSpan, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'schedule': pulumi.Input.mapInputValue<Schedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
       'startDate': ?startDate,
       'startTime': startTime,
       'utcOffset': ?utcOffset,
@@ -67,30 +49,12 @@ class MaintenanceWindow {
   factory MaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindow(
       durationHours: pulumi.Input.fromValue(map['durationHours'] as int),
-      notAllowedDates: (() {
-        final guardedValue = map['notAllowedDates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DateSpan>(
-            guardedValue,
-            (value) => DateSpan.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      schedule: pulumi.Input.fromValue(
-        Schedule.fromMap((map['schedule']! as Map).cast<String, dynamic>()),
-      ),
-      startDate: (() {
-        final guardedValue = map['startDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      notAllowedDates: (() { final guardedValue = map['notAllowedDates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DateSpan>(guardedValue, (value) => DateSpan.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      schedule: pulumi.Input.fromValue(Schedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())),
+      startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
-      utcOffset: (() {
-        final guardedValue = map['utcOffset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      utcOffset: (() { final guardedValue = map['utcOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

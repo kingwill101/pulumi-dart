@@ -8,28 +8,20 @@ import 'source_text_filter_response.dart';
 class MultiColumnDatatypeChangeResponse {
   /// Optional. Custom engine specific features.
   final pulumi.Input<Map<String, String>> customFeatures;
-
   /// New data type.
   final pulumi.Input<String> newDataType;
-
   /// Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
   final pulumi.Input<int> overrideFractionalSecondsPrecision;
-
   /// Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
   final pulumi.Input<String> overrideLength;
-
   /// Optional. Column precision - when relevant - if not specified and relevant uses the source column precision.
   final pulumi.Input<int> overridePrecision;
-
   /// Optional. Column scale - when relevant - if not specified and relevant uses the source column scale.
   final pulumi.Input<int> overrideScale;
-
   /// Filter on source data type.
   final pulumi.Input<String> sourceDataTypeFilter;
-
   /// Optional. Filter for fixed point number data types such as NUMERIC/NUMBER.
   final pulumi.Input<SourceNumericFilterResponse> sourceNumericFilter;
-
   /// Optional. Filter for text-based data types like varchar.
   final pulumi.Input<SourceTextFilterResponse> sourceTextFilter;
 
@@ -64,46 +56,23 @@ class MultiColumnDatatypeChangeResponse {
       'overridePrecision': overridePrecision,
       'overrideScale': overrideScale,
       'sourceDataTypeFilter': sourceDataTypeFilter,
-      'sourceNumericFilter':
-          pulumi.Input.mapInputValue<
-            SourceNumericFilterResponse,
-            Map<String, dynamic>
-          >(sourceNumericFilter, (value) => value.toMap()),
-      'sourceTextFilter':
-          pulumi.Input.mapInputValue<
-            SourceTextFilterResponse,
-            Map<String, dynamic>
-          >(sourceTextFilter, (value) => value.toMap()),
+      'sourceNumericFilter': pulumi.Input.mapInputValue<SourceNumericFilterResponse, Map<String, dynamic>>(sourceNumericFilter, (value) => value.toMap()),
+      'sourceTextFilter': pulumi.Input.mapInputValue<SourceTextFilterResponse, Map<String, dynamic>>(sourceTextFilter, (value) => value.toMap()),
     };
   }
 
   factory MultiColumnDatatypeChangeResponse.fromMap(Map<String, dynamic> map) {
     return MultiColumnDatatypeChangeResponse(
-      customFeatures: pulumi.Input.fromValue(
-        (map['customFeatures'] as Map).cast<String, String>(),
-      ),
+      customFeatures: pulumi.Input.fromValue((map['customFeatures'] as Map).cast<String, String>()),
       newDataType: pulumi.Input.fromValue(map['newDataType'] as String),
-      overrideFractionalSecondsPrecision: pulumi.Input.fromValue(
-        map['overrideFractionalSecondsPrecision'] as int,
-      ),
+      overrideFractionalSecondsPrecision: pulumi.Input.fromValue(map['overrideFractionalSecondsPrecision'] as int),
       overrideLength: pulumi.Input.fromValue(map['overrideLength'] as String),
-      overridePrecision: pulumi.Input.fromValue(
-        map['overridePrecision'] as int,
-      ),
+      overridePrecision: pulumi.Input.fromValue(map['overridePrecision'] as int),
       overrideScale: pulumi.Input.fromValue(map['overrideScale'] as int),
-      sourceDataTypeFilter: pulumi.Input.fromValue(
-        map['sourceDataTypeFilter'] as String,
-      ),
-      sourceNumericFilter: pulumi.Input.fromValue(
-        SourceNumericFilterResponse.fromMap(
-          (map['sourceNumericFilter']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sourceTextFilter: pulumi.Input.fromValue(
-        SourceTextFilterResponse.fromMap(
-          (map['sourceTextFilter']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      sourceDataTypeFilter: pulumi.Input.fromValue(map['sourceDataTypeFilter'] as String),
+      sourceNumericFilter: pulumi.Input.fromValue(SourceNumericFilterResponse.fromMap((map['sourceNumericFilter']! as Map).cast<String, dynamic>())),
+      sourceTextFilter: pulumi.Input.fromValue(SourceTextFilterResponse.fromMap((map['sourceTextFilter']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

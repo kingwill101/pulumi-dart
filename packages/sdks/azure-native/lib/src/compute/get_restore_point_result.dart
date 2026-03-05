@@ -10,37 +10,26 @@ import 'system_data_response.dart';
 class GetRestorePointResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
   final String? consistencyMode;
-
   /// List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
   final List<ApiEntityReferenceResponse>? excludeDisks;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The restore point instance view.
   final RestorePointInstanceViewResponse instanceView;
-
   /// The name of the resource
   final String name;
-
   /// Gets the provisioning state of the restore point.
   final String provisioningState;
-
   /// Gets the details of the VM captured at the time of the restore point creation.
   final RestorePointSourceMetadataResponse? sourceMetadata;
-
   /// Resource Id of the source restore point from which a copy needs to be created.
   final ApiEntityReferenceResponse? sourceRestorePoint;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Gets the creation time of the restore point.
   final String? timeCreated;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -76,14 +65,7 @@ class GetRestorePointResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'consistencyMode': ?consistencyMode,
-      'excludeDisks': ?(() {
-        final guardedValue = excludeDisks;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          ApiEntityReferenceResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'excludeDisks': ?(() { final guardedValue = excludeDisks; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApiEntityReferenceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'instanceView': instanceView.toMap(),
       'name': name,
@@ -99,50 +81,18 @@ class GetRestorePointResult {
   factory GetRestorePointResult.fromMap(Map<String, dynamic> map) {
     return GetRestorePointResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      consistencyMode: (() {
-        final guardedValue = map['consistencyMode'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      excludeDisks: (() {
-        final guardedValue = map['excludeDisks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<ApiEntityReferenceResponse>(
-          guardedValue,
-          (value) => ApiEntityReferenceResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      consistencyMode: (() { final guardedValue = map['consistencyMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      excludeDisks: (() { final guardedValue = map['excludeDisks']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiEntityReferenceResponse>(guardedValue, (value) => ApiEntityReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      instanceView: RestorePointInstanceViewResponse.fromMap(
-        (map['instanceView']! as Map).cast<String, dynamic>(),
-      ),
+      instanceView: RestorePointInstanceViewResponse.fromMap((map['instanceView']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sourceMetadata: (() {
-        final guardedValue = map['sourceMetadata'];
-        if (guardedValue == null) return null;
-        return RestorePointSourceMetadataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      sourceRestorePoint: (() {
-        final guardedValue = map['sourceRestorePoint'];
-        if (guardedValue == null) return null;
-        return ApiEntityReferenceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      timeCreated: (() {
-        final guardedValue = map['timeCreated'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      sourceMetadata: (() { final guardedValue = map['sourceMetadata']; if (guardedValue == null) return null; return RestorePointSourceMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      sourceRestorePoint: (() { final guardedValue = map['sourceRestorePoint']; if (guardedValue == null) return null; return ApiEntityReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      timeCreated: (() { final guardedValue = map['timeCreated']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

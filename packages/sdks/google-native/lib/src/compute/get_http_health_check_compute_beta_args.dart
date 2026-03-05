@@ -28,11 +28,8 @@ class GetHttpHealthCheckComputeBetaArgs {
   factory GetHttpHealthCheckComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetHttpHealthCheckComputeBetaArgs(
       httpHealthCheck: pulumi.Input.fromValue(map['httpHealthCheck'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

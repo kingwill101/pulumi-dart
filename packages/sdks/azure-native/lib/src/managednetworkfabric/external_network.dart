@@ -409,50 +409,34 @@ import 'system_data_response.dart';
 class ExternalNetwork extends pulumi.CustomResource {
   /// Administrative state of the resource.
   late final pulumi.Output<String> administrativeState;
-
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Configuration state of the resource.
   late final pulumi.Output<String> configurationState;
-
   /// Export Route Policy either IPv4 or IPv6.
   late final pulumi.Output<ExportRoutePolicyResponse?> exportRoutePolicy;
-
   /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
   late final pulumi.Output<String?> exportRoutePolicyId;
-
   /// Import Route Policy either IPv4 or IPv6.
   late final pulumi.Output<ImportRoutePolicyResponse?> importRoutePolicy;
-
   /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
   late final pulumi.Output<String?> importRoutePolicyId;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
   late final pulumi.Output<String?> networkToNetworkInterconnectId;
-
   /// option A properties object
-  late final pulumi.Output<ExternalNetworkPropertiesResponseOptionAProperties?>
-  optionAProperties;
-
+  late final pulumi.Output<ExternalNetworkPropertiesResponseOptionAProperties?> optionAProperties;
   /// option B properties object
   late final pulumi.Output<L3OptionBPropertiesResponse?> optionBProperties;
-
   /// Peering option list.
   late final pulumi.Output<String> peeringOption;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -465,74 +449,26 @@ class ExternalNetwork extends pulumi.CustomResource {
     ExternalNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:managednetworkfabric:ExternalNetwork',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:managednetworkfabric:ExternalNetwork',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administrativeState = registerOutput<String>('administrativeState');
     annotation = registerOutput<String?>('annotation');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     configurationState = registerOutput<String>('configurationState');
-    exportRoutePolicy = registerOutput<ExportRoutePolicyResponse?>(
-      'exportRoutePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExportRoutePolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    exportRoutePolicy = registerOutput<ExportRoutePolicyResponse?>('exportRoutePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportRoutePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     exportRoutePolicyId = registerOutput<String?>('exportRoutePolicyId');
-    importRoutePolicy = registerOutput<ImportRoutePolicyResponse?>(
-      'importRoutePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ImportRoutePolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    importRoutePolicy = registerOutput<ImportRoutePolicyResponse?>('importRoutePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImportRoutePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     importRoutePolicyId = registerOutput<String?>('importRoutePolicyId');
     this.name = registerOutput<String>('name');
-    networkToNetworkInterconnectId = registerOutput<String?>(
-      'networkToNetworkInterconnectId',
-    );
-    optionAProperties =
-        registerOutput<ExternalNetworkPropertiesResponseOptionAProperties?>(
-          'optionAProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ExternalNetworkPropertiesResponseOptionAProperties.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    optionBProperties = registerOutput<L3OptionBPropertiesResponse?>(
-      'optionBProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return L3OptionBPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkToNetworkInterconnectId = registerOutput<String?>('networkToNetworkInterconnectId');
+    optionAProperties = registerOutput<ExternalNetworkPropertiesResponseOptionAProperties?>('optionAProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExternalNetworkPropertiesResponseOptionAProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    optionBProperties = registerOutput<L3OptionBPropertiesResponse?>('optionBProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return L3OptionBPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     peeringOption = registerOutput<String>('peeringOption');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

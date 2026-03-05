@@ -7,12 +7,9 @@ import 'google_cloud_aiplatform_v1_gcs_destination_response.dart';
 /// Output from BatchPredictionJob for Model Monitoring baseline dataset, which can be used to generate baseline attribution scores.
 class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineResponse {
   /// BigQuery location for BatchExplain output.
-  final pulumi.Input<GoogleCloudAiplatformV1BigQueryDestinationResponse>
-  bigquery;
-
+  final pulumi.Input<GoogleCloudAiplatformV1BigQueryDestinationResponse> bigquery;
   /// Cloud Storage location for BatchExplain output.
   final pulumi.Input<GoogleCloudAiplatformV1GcsDestinationResponse> gcs;
-
   /// The storage format of the predictions generated BatchPrediction job.
   final pulumi.Input<String> predictionFormat;
 
@@ -28,37 +25,18 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExpl
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigquery':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAiplatformV1BigQueryDestinationResponse,
-            Map<String, dynamic>
-          >(bigquery, (value) => value.toMap()),
-      'gcs':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAiplatformV1GcsDestinationResponse,
-            Map<String, dynamic>
-          >(gcs, (value) => value.toMap()),
+      'bigquery': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1BigQueryDestinationResponse, Map<String, dynamic>>(bigquery, (value) => value.toMap()),
+      'gcs': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1GcsDestinationResponse, Map<String, dynamic>>(gcs, (value) => value.toMap()),
       'predictionFormat': predictionFormat,
     };
   }
 
-  factory GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineResponse(
-      bigquery: pulumi.Input.fromValue(
-        GoogleCloudAiplatformV1BigQueryDestinationResponse.fromMap(
-          (map['bigquery']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      gcs: pulumi.Input.fromValue(
-        GoogleCloudAiplatformV1GcsDestinationResponse.fromMap(
-          (map['gcs']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      predictionFormat: pulumi.Input.fromValue(
-        map['predictionFormat'] as String,
-      ),
+      bigquery: pulumi.Input.fromValue(GoogleCloudAiplatformV1BigQueryDestinationResponse.fromMap((map['bigquery']! as Map).cast<String, dynamic>())),
+      gcs: pulumi.Input.fromValue(GoogleCloudAiplatformV1GcsDestinationResponse.fromMap((map['gcs']! as Map).cast<String, dynamic>())),
+      predictionFormat: pulumi.Input.fromValue(map['predictionFormat'] as String),
     );
   }
 }
+

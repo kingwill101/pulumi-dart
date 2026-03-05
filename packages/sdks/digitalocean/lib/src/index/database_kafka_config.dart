@@ -266,55 +266,38 @@ import 'database_kafka_config_state.dart';
 class DatabaseKafkaConfig extends pulumi.CustomResource {
   /// Enable auto creation of topics.
   late final pulumi.Output<bool> autoCreateTopicsEnable;
-
   /// The ID of the target Kafka cluster.
   late final pulumi.Output<String> clusterId;
-
   /// The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
   late final pulumi.Output<int> groupInitialRebalanceDelayMs;
-
   /// The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
   late final pulumi.Output<int> groupMaxSessionTimeoutMs;
-
   /// The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
   late final pulumi.Output<int> groupMinSessionTimeoutMs;
-
   /// How long are delete records retained?
   late final pulumi.Output<int> logCleanerDeleteRetentionMs;
-
   /// The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
   late final pulumi.Output<String> logCleanerMinCompactionLagMs;
-
   /// The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
   late final pulumi.Output<String> logFlushIntervalMs;
-
   /// The interval with which Kafka adds an entry to the offset index.
   late final pulumi.Output<int> logIndexIntervalBytes;
-
   /// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
   late final pulumi.Output<bool> logMessageDownconversionEnable;
-
   /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
   late final pulumi.Output<String> logMessageTimestampDifferenceMaxMs;
-
   /// Controls whether to preallocate a file when creating a new segment.
   late final pulumi.Output<bool> logPreallocate;
-
   /// The maximum size of the log before deleting messages.
   late final pulumi.Output<String> logRetentionBytes;
-
   /// The number of hours to keep a log file before deleting it.
   late final pulumi.Output<int> logRetentionHours;
-
   /// The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
   late final pulumi.Output<String> logRetentionMs;
-
   /// The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
   late final pulumi.Output<String> logRollJitterMs;
-
   /// The amount of time to wait before deleting a file from the filesystem.
   late final pulumi.Output<int> logSegmentDeleteDelayMs;
-
   /// The maximum size of message that the server can receive.
   late final pulumi.Output<int> messageMaxBytes;
 
@@ -327,32 +310,22 @@ class DatabaseKafkaConfig extends pulumi.CustomResource {
     DatabaseKafkaConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoCreateTopicsEnable = registerOutput<bool>('autoCreateTopicsEnable');
     clusterId = registerOutput<String>('clusterId');
-    groupInitialRebalanceDelayMs = registerOutput<int>(
-      'groupInitialRebalanceDelayMs',
-    );
+    groupInitialRebalanceDelayMs = registerOutput<int>('groupInitialRebalanceDelayMs');
     groupMaxSessionTimeoutMs = registerOutput<int>('groupMaxSessionTimeoutMs');
     groupMinSessionTimeoutMs = registerOutput<int>('groupMinSessionTimeoutMs');
-    logCleanerDeleteRetentionMs = registerOutput<int>(
-      'logCleanerDeleteRetentionMs',
-    );
-    logCleanerMinCompactionLagMs = registerOutput<String>(
-      'logCleanerMinCompactionLagMs',
-    );
+    logCleanerDeleteRetentionMs = registerOutput<int>('logCleanerDeleteRetentionMs');
+    logCleanerMinCompactionLagMs = registerOutput<String>('logCleanerMinCompactionLagMs');
     logFlushIntervalMs = registerOutput<String>('logFlushIntervalMs');
     logIndexIntervalBytes = registerOutput<int>('logIndexIntervalBytes');
-    logMessageDownconversionEnable = registerOutput<bool>(
-      'logMessageDownconversionEnable',
-    );
-    logMessageTimestampDifferenceMaxMs = registerOutput<String>(
-      'logMessageTimestampDifferenceMaxMs',
-    );
+    logMessageDownconversionEnable = registerOutput<bool>('logMessageDownconversionEnable');
+    logMessageTimestampDifferenceMaxMs = registerOutput<String>('logMessageTimestampDifferenceMaxMs');
     logPreallocate = registerOutput<bool>('logPreallocate');
     logRetentionBytes = registerOutput<String>('logRetentionBytes');
     logRetentionHours = registerOutput<int>('logRetentionHours');
@@ -380,32 +353,22 @@ class DatabaseKafkaConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoCreateTopicsEnable = registerOutput<bool>('autoCreateTopicsEnable');
     clusterId = registerOutput<String>('clusterId');
-    groupInitialRebalanceDelayMs = registerOutput<int>(
-      'groupInitialRebalanceDelayMs',
-    );
+    groupInitialRebalanceDelayMs = registerOutput<int>('groupInitialRebalanceDelayMs');
     groupMaxSessionTimeoutMs = registerOutput<int>('groupMaxSessionTimeoutMs');
     groupMinSessionTimeoutMs = registerOutput<int>('groupMinSessionTimeoutMs');
-    logCleanerDeleteRetentionMs = registerOutput<int>(
-      'logCleanerDeleteRetentionMs',
-    );
-    logCleanerMinCompactionLagMs = registerOutput<String>(
-      'logCleanerMinCompactionLagMs',
-    );
+    logCleanerDeleteRetentionMs = registerOutput<int>('logCleanerDeleteRetentionMs');
+    logCleanerMinCompactionLagMs = registerOutput<String>('logCleanerMinCompactionLagMs');
     logFlushIntervalMs = registerOutput<String>('logFlushIntervalMs');
     logIndexIntervalBytes = registerOutput<int>('logIndexIntervalBytes');
-    logMessageDownconversionEnable = registerOutput<bool>(
-      'logMessageDownconversionEnable',
-    );
-    logMessageTimestampDifferenceMaxMs = registerOutput<String>(
-      'logMessageTimestampDifferenceMaxMs',
-    );
+    logMessageDownconversionEnable = registerOutput<bool>('logMessageDownconversionEnable');
+    logMessageTimestampDifferenceMaxMs = registerOutput<String>('logMessageTimestampDifferenceMaxMs');
     logPreallocate = registerOutput<bool>('logPreallocate');
     logRetentionBytes = registerOutput<String>('logRetentionBytes');
     logRetentionHours = registerOutput<int>('logRetentionHours');

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogIndexPolicyArgs {
   /// Log group name to set the policy for.
   final pulumi.Input<String> logGroupName;
-
   /// JSON policy document. This is a JSON formatted string.
   final pulumi.Input<String> policyDocument;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -38,11 +36,8 @@ class LogIndexPolicyArgs {
     return LogIndexPolicyArgs(
       logGroupName: pulumi.Input.fromValue(map['logGroupName'] as String),
       policyDocument: pulumi.Input.fromValue(map['policyDocument'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

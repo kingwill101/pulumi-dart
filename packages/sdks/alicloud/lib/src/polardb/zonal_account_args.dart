@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ZonalAccountArgs {
   /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
   final pulumi.Input<String>? accountDescription;
-
   /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
   final pulumi.Input<String> accountName;
-
   /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
   final pulumi.Input<String>? accountPassword;
-
   /// Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
   final pulumi.Input<String>? accountType;
-
   /// The Id of cluster in which account belongs.
   final pulumi.Input<String> dbClusterId;
 
@@ -48,23 +44,12 @@ class ZonalAccountArgs {
 
   factory ZonalAccountArgs.fromMap(Map<String, dynamic> map) {
     return ZonalAccountArgs(
-      accountDescription: (() {
-        final guardedValue = map['accountDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountDescription: (() { final guardedValue = map['accountDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      accountPassword: (() {
-        final guardedValue = map['accountPassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      accountType: (() {
-        final guardedValue = map['accountType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountPassword: (() { final guardedValue = map['accountPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accountType: (() { final guardedValue = map['accountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbClusterId: pulumi.Input.fromValue(map['dbClusterId'] as String),
     );
   }
 }
+

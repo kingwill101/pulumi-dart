@@ -9,10 +9,14 @@ class GroupByVariableResponse {
 
   /// Creates a new [GroupByVariableResponse].
   /// [variableName] User Session clause variable.
-  GroupByVariableResponse({required this.variableName});
+  GroupByVariableResponse({
+    required this.variableName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'variableName': variableName};
+    return <String, dynamic>{
+      'variableName': variableName,
+    };
   }
 
   factory GroupByVariableResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class GroupByVariableResponse {
     );
   }
 }
+

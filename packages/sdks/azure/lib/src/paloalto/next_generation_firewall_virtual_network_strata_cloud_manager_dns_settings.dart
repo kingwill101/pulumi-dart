@@ -4,10 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings {
   final pulumi.Input<List<String>>? azureDnsServers;
-
   /// A list of DNS servers to use. Conflicts with `dns_settings[0].use_azure_dns`.
   final pulumi.Input<List<String>>? dnsServers;
-
   /// Should the Firewall use Azure Supplied DNS servers. Conflicts with `dns_settings[0].dns_servers`. Defaults to `false`.
   final pulumi.Input<bool>? useAzureDns;
 
@@ -29,25 +27,12 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings {
     };
   }
 
-  factory NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings(
-      azureDnsServers: (() {
-        final guardedValue = map['azureDnsServers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      dnsServers: (() {
-        final guardedValue = map['dnsServers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      useAzureDns: (() {
-        final guardedValue = map['useAzureDns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      azureDnsServers: (() { final guardedValue = map['azureDnsServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      dnsServers: (() { final guardedValue = map['dnsServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      useAzureDns: (() { final guardedValue = map['useAzureDns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

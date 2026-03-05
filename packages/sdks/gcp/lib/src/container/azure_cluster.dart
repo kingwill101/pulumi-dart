@@ -812,69 +812,47 @@ class AzureCluster extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// Configuration related to the cluster RBAC settings.
   late final pulumi.Output<AzureClusterAuthorization> authorization;
-
   /// The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
   late final pulumi.Output<String> azureRegion;
-
   /// Azure authentication configuration for management of Azure resources
-  late final pulumi.Output<AzureClusterAzureServicesAuthentication?>
-  azureServicesAuthentication;
-
+  late final pulumi.Output<AzureClusterAzureServicesAuthentication?> azureServicesAuthentication;
   /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
   late final pulumi.Output<String?> client;
-
   /// Configuration related to the cluster control plane.
   late final pulumi.Output<AzureClusterControlPlane> controlPlane;
-
   /// Output only. The time at which this cluster was created.
   late final pulumi.Output<String> createTime;
-
   /// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
   late final pulumi.Output<String?> description;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// Output only. The endpoint of the cluster's API server.
   late final pulumi.Output<String> endpoint;
-
   /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
-
   /// Fleet configuration.
   late final pulumi.Output<AzureClusterFleet> fleet;
-
   /// The location for the resource
   late final pulumi.Output<String> location;
-
   /// Logging configuration.
   late final pulumi.Output<AzureClusterLoggingConfig> loggingConfig;
-
   /// The name of this resource.
   late final pulumi.Output<String> name;
-
   /// Cluster-wide networking configuration.
   late final pulumi.Output<AzureClusterNetworking> networking;
-
   /// The project for the resource
   late final pulumi.Output<String> project;
-
   /// Output only. If set, there are currently changes in flight to the cluster.
   late final pulumi.Output<bool> reconciling;
-
   /// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
   late final pulumi.Output<String> resourceGroupId;
-
   /// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
   late final pulumi.Output<String> state;
-
   /// Output only. A globally unique identifier for the cluster.
   late final pulumi.Output<String> uid;
-
   /// Output only. The time at which this cluster was last updated.
   late final pulumi.Output<String> updateTime;
-
   /// Output only. Workload Identity settings.
   late final pulumi.Output<List<Map<String, dynamic>>> workloadIdentityConfigs;
 
@@ -887,93 +865,34 @@ class AzureCluster extends pulumi.CustomResource {
     AzureClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:container/azureCluster:AzureCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:container/azureCluster:AzureCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    authorization = registerOutput<AzureClusterAuthorization>(
-      'authorization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureClusterAuthorization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authorization = registerOutput<AzureClusterAuthorization>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureRegion = registerOutput<String>('azureRegion');
-    azureServicesAuthentication =
-        registerOutput<AzureClusterAzureServicesAuthentication?>(
-          'azureServicesAuthentication',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AzureClusterAzureServicesAuthentication.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    azureServicesAuthentication = registerOutput<AzureClusterAzureServicesAuthentication?>('azureServicesAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterAzureServicesAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     client = registerOutput<String?>('client');
-    controlPlane = registerOutput<AzureClusterControlPlane>(
-      'controlPlane',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureClusterControlPlane.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    controlPlane = registerOutput<AzureClusterControlPlane>('controlPlane', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
-    fleet = registerOutput<AzureClusterFleet>(
-      'fleet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureClusterFleet.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    fleet = registerOutput<AzureClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    loggingConfig = registerOutput<AzureClusterLoggingConfig>(
-      'loggingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureClusterLoggingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loggingConfig = registerOutput<AzureClusterLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networking = registerOutput<AzureClusterNetworking>(
-      'networking',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureClusterNetworking.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networking = registerOutput<AzureClusterNetworking>('networking', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterNetworking.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'workloadIdentityConfigs',
-    );
+    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>('workloadIdentityConfigs');
   }
 
   /// Gets an existing [AzureCluster] resource's state with the given [name] and [id].
@@ -994,92 +913,33 @@ class AzureCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:container/azureCluster:AzureCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:container/azureCluster:AzureCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    authorization = registerOutput<AzureClusterAuthorization>(
-      'authorization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureClusterAuthorization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authorization = registerOutput<AzureClusterAuthorization>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureRegion = registerOutput<String>('azureRegion');
-    azureServicesAuthentication =
-        registerOutput<AzureClusterAzureServicesAuthentication?>(
-          'azureServicesAuthentication',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AzureClusterAzureServicesAuthentication.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    azureServicesAuthentication = registerOutput<AzureClusterAzureServicesAuthentication?>('azureServicesAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterAzureServicesAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     client = registerOutput<String?>('client');
-    controlPlane = registerOutput<AzureClusterControlPlane>(
-      'controlPlane',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureClusterControlPlane.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    controlPlane = registerOutput<AzureClusterControlPlane>('controlPlane', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
-    fleet = registerOutput<AzureClusterFleet>(
-      'fleet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureClusterFleet.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    fleet = registerOutput<AzureClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    loggingConfig = registerOutput<AzureClusterLoggingConfig>(
-      'loggingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureClusterLoggingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loggingConfig = registerOutput<AzureClusterLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networking = registerOutput<AzureClusterNetworking>(
-      'networking',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureClusterNetworking.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networking = registerOutput<AzureClusterNetworking>('networking', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterNetworking.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     this.state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'workloadIdentityConfigs',
-    );
+    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>('workloadIdentityConfigs');
   }
 }

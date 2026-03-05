@@ -9,19 +9,20 @@ class MachineSeries {
 
   /// Creates a new [MachineSeries].
   /// [code] Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
-  MachineSeries({this.code});
+  MachineSeries({
+    this.code,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': ?code};
+    return <String, dynamic>{
+      'code': ?code,
+    };
   }
 
   factory MachineSeries.fromMap(Map<String, dynamic> map) {
     return MachineSeries(
-      code: (() {
-        final guardedValue = map['code'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

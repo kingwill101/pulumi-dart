@@ -287,13 +287,10 @@ import 'bucket_server_side_encryption_state.dart';
 class BucketServerSideEncryption extends pulumi.CustomResource {
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// The algorithm used to encrypt objects. If this element is not specified, objects are encrypted by using AES256. This element is valid only when the value of SSEAlgorithm is set to KMS.
   late final pulumi.Output<String?> kmsDataEncryption;
-
   /// The CMK ID that must be specified when SSEAlgorithm is set to KMS and a specified CMK is used for encryption. In other cases, this element must be set to null.
   late final pulumi.Output<String?> kmsMasterKeyId;
-
   /// The server-side encryption method. Valid Values: KMS, AES256.
   late final pulumi.Output<String> sseAlgorithm;
 
@@ -306,11 +303,11 @@ class BucketServerSideEncryption extends pulumi.CustomResource {
     BucketServerSideEncryptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     kmsDataEncryption = registerOutput<String?>('kmsDataEncryption');
     kmsMasterKeyId = registerOutput<String?>('kmsMasterKeyId');
@@ -335,11 +332,11 @@ class BucketServerSideEncryption extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     kmsDataEncryption = registerOutput<String?>('kmsDataEncryption');
     kmsMasterKeyId = registerOutput<String?>('kmsMasterKeyId');

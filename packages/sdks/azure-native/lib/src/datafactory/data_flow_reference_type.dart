@@ -14,3 +14,4 @@ enum DataFlowReferenceType {
     throw ArgumentError('Unknown DataFlowReferenceType value: $value');
   }
 }
+

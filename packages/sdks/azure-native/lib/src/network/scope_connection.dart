@@ -153,25 +153,18 @@ import 'system_data_response.dart';
 class ScopeConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A description of the scope connection.
   late final pulumi.Output<String?> description;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Resource ID.
   late final pulumi.Output<String?> resourceId;
-
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Tenant ID.
   late final pulumi.Output<String?> tenantId;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -184,26 +177,17 @@ class ScopeConnection extends pulumi.CustomResource {
     ScopeConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:ScopeConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:ScopeConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     resourceId = registerOutput<String?>('resourceId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');
   }

@@ -8,7 +8,6 @@ import 'managed_cluster_response_dataproc_v1beta2.dart';
 class WorkflowTemplatePlacementResponseDataprocV1beta2 {
   /// Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
   final pulumi.Input<ClusterSelectorResponseDataprocV1beta2> clusterSelector;
-
   /// Optional. A cluster that is managed by the workflow.
   final pulumi.Input<ManagedClusterResponseDataprocV1beta2> managedCluster;
 
@@ -22,33 +21,16 @@ class WorkflowTemplatePlacementResponseDataprocV1beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterSelector':
-          pulumi.Input.mapInputValue<
-            ClusterSelectorResponseDataprocV1beta2,
-            Map<String, dynamic>
-          >(clusterSelector, (value) => value.toMap()),
-      'managedCluster':
-          pulumi.Input.mapInputValue<
-            ManagedClusterResponseDataprocV1beta2,
-            Map<String, dynamic>
-          >(managedCluster, (value) => value.toMap()),
+      'clusterSelector': pulumi.Input.mapInputValue<ClusterSelectorResponseDataprocV1beta2, Map<String, dynamic>>(clusterSelector, (value) => value.toMap()),
+      'managedCluster': pulumi.Input.mapInputValue<ManagedClusterResponseDataprocV1beta2, Map<String, dynamic>>(managedCluster, (value) => value.toMap()),
     };
   }
 
-  factory WorkflowTemplatePlacementResponseDataprocV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowTemplatePlacementResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementResponseDataprocV1beta2(
-      clusterSelector: pulumi.Input.fromValue(
-        ClusterSelectorResponseDataprocV1beta2.fromMap(
-          (map['clusterSelector']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      managedCluster: pulumi.Input.fromValue(
-        ManagedClusterResponseDataprocV1beta2.fromMap(
-          (map['managedCluster']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      clusterSelector: pulumi.Input.fromValue(ClusterSelectorResponseDataprocV1beta2.fromMap((map['clusterSelector']! as Map).cast<String, dynamic>())),
+      managedCluster: pulumi.Input.fromValue(ManagedClusterResponseDataprocV1beta2.fromMap((map['managedCluster']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -789,19 +789,14 @@ import 'serverless_access_policy_state.dart';
 class ServerlessAccessPolicy extends pulumi.CustomResource {
   /// Description of the policy. Typically used to store information about the permissions defined in the policy.
   late final pulumi.Output<String?> description;
-
   /// Name of the policy.
   late final pulumi.Output<String> name;
-
   /// JSON policy document to use as the content for the new policy
   late final pulumi.Output<String> policy;
-
   /// Version of the policy.
   late final pulumi.Output<String> policyVersion;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Type of access policy. Must be `data`.
   ///
   /// The following arguments are optional:
@@ -816,11 +811,11 @@ class ServerlessAccessPolicy extends pulumi.CustomResource {
     ServerlessAccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:opensearch/serverlessAccessPolicy:ServerlessAccessPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:opensearch/serverlessAccessPolicy:ServerlessAccessPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     policy = registerOutput<String>('policy');
@@ -847,11 +842,11 @@ class ServerlessAccessPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:opensearch/serverlessAccessPolicy:ServerlessAccessPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:opensearch/serverlessAccessPolicy:ServerlessAccessPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     policy = registerOutput<String>('policy');

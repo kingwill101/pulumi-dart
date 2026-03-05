@@ -8,11 +8,9 @@ class DockerImage {
   /// [Required] Image name of a custom base image.
   /// &lt;seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" /&gt;
   final pulumi.Input<String> dockerImageUri;
-
   /// Enum to determine docker specification type. Must be either Build or Image.
   /// Expected value is 'Image'.
   final pulumi.Input<String> dockerSpecificationType;
-
   /// The platform information of the docker image.
   final pulumi.Input<DockerImagePlatform>? platform;
 
@@ -30,29 +28,16 @@ class DockerImage {
     return <String, dynamic>{
       'dockerImageUri': dockerImageUri,
       'dockerSpecificationType': dockerSpecificationType,
-      'platform':
-          ?pulumi.Input.mapOptionalInputValue<
-            DockerImagePlatform,
-            Map<String, dynamic>
-          >(platform, (value) => value.toMap()),
+      'platform': ?pulumi.Input.mapOptionalInputValue<DockerImagePlatform, Map<String, dynamic>>(platform, (value) => value.toMap()),
     };
   }
 
   factory DockerImage.fromMap(Map<String, dynamic> map) {
     return DockerImage(
       dockerImageUri: pulumi.Input.fromValue(map['dockerImageUri'] as String),
-      dockerSpecificationType: pulumi.Input.fromValue(
-        map['dockerSpecificationType'] as String,
-      ),
-      platform: (() {
-        final guardedValue = map['platform'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DockerImagePlatform.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      dockerSpecificationType: pulumi.Input.fromValue(map['dockerSpecificationType'] as String),
+      platform: (() { final guardedValue = map['platform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DockerImagePlatform.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

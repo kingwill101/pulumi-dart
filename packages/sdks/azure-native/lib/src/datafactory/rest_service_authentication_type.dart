@@ -18,3 +18,4 @@ enum RestServiceAuthenticationType {
     throw ArgumentError('Unknown RestServiceAuthenticationType value: $value');
   }
 }
+

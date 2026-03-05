@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkerConfigResponseCloudbuildV1alpha2 {
   /// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size.
   final pulumi.Input<String> diskSizeGb;
-
   /// Machine Type of the worker, such as n1-standard-1. See https://cloud.google.com/compute/docs/machine-types. If left blank, Cloud Build will use a standard unspecified machine to create the worker pool.
   final pulumi.Input<String> machineType;
 
@@ -25,12 +24,11 @@ class WorkerConfigResponseCloudbuildV1alpha2 {
     };
   }
 
-  factory WorkerConfigResponseCloudbuildV1alpha2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkerConfigResponseCloudbuildV1alpha2.fromMap(Map<String, dynamic> map) {
     return WorkerConfigResponseCloudbuildV1alpha2(
       diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as String),
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
     );
   }
 }
+

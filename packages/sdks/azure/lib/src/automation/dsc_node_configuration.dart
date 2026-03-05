@@ -404,13 +404,10 @@ class DscNodeConfiguration extends pulumi.CustomResource {
   /// The name of the automation account in which the DSC Node Configuration is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
   late final pulumi.Output<String> configurationName;
-
   /// The PowerShell DSC Node Configuration (mof content).
   late final pulumi.Output<String> contentEmbedded;
-
   /// Specifies the name of the DSC Node Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which the DSC Node Configuration is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -423,11 +420,11 @@ class DscNodeConfiguration extends pulumi.CustomResource {
     DscNodeConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/dscNodeConfiguration:DscNodeConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/dscNodeConfiguration:DscNodeConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     configurationName = registerOutput<String>('configurationName');
     contentEmbedded = registerOutput<String>('contentEmbedded');
@@ -453,11 +450,11 @@ class DscNodeConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/dscNodeConfiguration:DscNodeConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/dscNodeConfiguration:DscNodeConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     configurationName = registerOutput<String>('configurationName');
     contentEmbedded = registerOutput<String>('contentEmbedded');

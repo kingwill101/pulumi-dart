@@ -1,50 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getLayerVersion.
 class GetLayerVersionResult {
   /// ARN of the Lambda Layer with version.
   final String arn;
-
   /// Base64-encoded representation of raw SHA-256 sum of the zip file.
   final String codeSha256;
   final String? compatibleArchitecture;
-
   /// List of [Architectures](https://docs.aws.amazon.com/lambda/latest/dg/API_GetLayerVersion.html#SSS-GetLayerVersion-response-CompatibleArchitectures) the specific Lambda Layer version is compatible with.
   final List<String> compatibleArchitectures;
   final String? compatibleRuntime;
-
   /// List of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_GetLayerVersion.html#SSS-GetLayerVersion-response-CompatibleRuntimes) the specific Lambda Layer version is compatible with.
   final List<String> compatibleRuntimes;
-
   /// Date this resource was created.
   final String createdDate;
-
   /// Description of the specific Lambda Layer version.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// ARN of the Lambda Layer without version.
   final String layerArn;
   final String layerName;
-
   /// License info associated with the specific Lambda Layer version.
   final String licenseInfo;
   final String region;
-
   /// ARN of a signing job.
   final String signingJobArn;
-
   /// ARN for a signing profile version.
   final String signingProfileVersionArn;
-
   /// (**Deprecated** use `code_sha256` instead) Base64-encoded representation of raw SHA-256 sum of the zip file.
   final String sourceCodeHash;
-
   /// Size in bytes of the function .zip file.
   final int sourceCodeSize;
-
   /// Lambda Layer version.
   final int version;
 
@@ -115,18 +103,9 @@ class GetLayerVersionResult {
     return GetLayerVersionResult(
       arn: map['arn'] as String,
       codeSha256: map['codeSha256'] as String,
-      compatibleArchitecture: (() {
-        final guardedValue = map['compatibleArchitecture'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      compatibleArchitectures: (map['compatibleArchitectures'] as List)
-          .cast<String>(),
-      compatibleRuntime: (() {
-        final guardedValue = map['compatibleRuntime'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      compatibleArchitecture: (() { final guardedValue = map['compatibleArchitecture']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      compatibleArchitectures: (map['compatibleArchitectures'] as List).cast<String>(),
+      compatibleRuntime: (() { final guardedValue = map['compatibleRuntime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       compatibleRuntimes: (map['compatibleRuntimes'] as List).cast<String>(),
       createdDate: map['createdDate'] as String,
       description: map['description'] as String,
@@ -143,3 +122,4 @@ class GetLayerVersionResult {
     );
   }
 }
+

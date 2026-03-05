@@ -360,47 +360,32 @@ import 'firewall_virtual_hub.dart';
 class Firewall extends pulumi.CustomResource {
   /// Whether DNS proxy is enabled. It will forward DNS requests to the DNS servers when set to `true`. It will be set to `true` if `dns_servers` provided with a not empty list.
   late final pulumi.Output<bool> dnsProxyEnabled;
-
   /// A list of DNS servers that the Azure Firewall will direct DNS traffic to the for name resolution.
   late final pulumi.Output<List<String>?> dnsServers;
-
   /// The ID of the Firewall Policy applied to this Firewall.
   late final pulumi.Output<String?> firewallPolicyId;
-
   /// An `ip_configuration` block as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// A `management_ip_configuration` block as documented below, which allows force-tunnelling of traffic to be performed by the firewall. Adding or removing this block or changing the `subnet_id` in an existing block forces a new resource to be created. Changing this forces a new resource to be created.
-  late final pulumi.Output<FirewallManagementIpConfiguration?>
-  managementIpConfiguration;
-
+  late final pulumi.Output<FirewallManagementIpConfiguration?> managementIpConfiguration;
   /// Specifies the name of the Firewall. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A list of SNAT private CIDR IP ranges, or the special string `IANAPrivateRanges`, which indicates Azure Firewall does not SNAT when the destination IP address is a private range per IANA RFC 1918.
   late final pulumi.Output<List<String>?> privateIpRanges;
-
   /// The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// SKU name of the Firewall. Possible values are `AZFW_Hub` and `AZFW_VNet`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> skuName;
-
   /// SKU tier of the Firewall. Possible values are `Premium`, `Standard` and `Basic`.
   late final pulumi.Output<String> skuTier;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The operation mode for threat intelligence-based filtering. Possible values are: `Off`, `Alert` and `Deny`. Defaults to `Alert`.
   late final pulumi.Output<String> threatIntelMode;
-
   /// A `virtual_hub` block as documented below.
   late final pulumi.Output<FirewallVirtualHub?> virtualHub;
-
   /// Specifies a list of Availability Zones in which this Azure Firewall should be located. Changing this forces a new Azure Firewall to be created.
   ///
   /// &gt; **Note:** Availability Zones are [only supported in several regions at this time](https://docs.microsoft.com/azure/availability-zones/az-overview).
@@ -415,29 +400,17 @@ class Firewall extends pulumi.CustomResource {
     FirewallArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/firewall:Firewall',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/firewall:Firewall',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dnsProxyEnabled = registerOutput<bool>('dnsProxyEnabled');
     dnsServers = registerOutput<List<String>?>('dnsServers');
     firewallPolicyId = registerOutput<String?>('firewallPolicyId');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'ipConfigurations',
-    );
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>('ipConfigurations');
     location = registerOutput<String>('location');
-    managementIpConfiguration =
-        registerOutput<FirewallManagementIpConfiguration?>(
-          'managementIpConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirewallManagementIpConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    managementIpConfiguration = registerOutput<FirewallManagementIpConfiguration?>('managementIpConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallManagementIpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     privateIpRanges = registerOutput<List<String>?>('privateIpRanges');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -445,16 +418,7 @@ class Firewall extends pulumi.CustomResource {
     skuTier = registerOutput<String>('skuTier');
     tags = registerOutput<Map<String, String>?>('tags');
     threatIntelMode = registerOutput<String>('threatIntelMode');
-    virtualHub = registerOutput<FirewallVirtualHub?>(
-      'virtualHub',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FirewallVirtualHub.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualHub = registerOutput<FirewallVirtualHub?>('virtualHub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallVirtualHub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zones = registerOutput<List<String>?>('zones');
   }
 
@@ -476,29 +440,17 @@ class Firewall extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/firewall:Firewall',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/firewall:Firewall',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dnsProxyEnabled = registerOutput<bool>('dnsProxyEnabled');
     dnsServers = registerOutput<List<String>?>('dnsServers');
     firewallPolicyId = registerOutput<String?>('firewallPolicyId');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'ipConfigurations',
-    );
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>('ipConfigurations');
     location = registerOutput<String>('location');
-    managementIpConfiguration =
-        registerOutput<FirewallManagementIpConfiguration?>(
-          'managementIpConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FirewallManagementIpConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    managementIpConfiguration = registerOutput<FirewallManagementIpConfiguration?>('managementIpConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallManagementIpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     privateIpRanges = registerOutput<List<String>?>('privateIpRanges');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -506,16 +458,7 @@ class Firewall extends pulumi.CustomResource {
     skuTier = registerOutput<String>('skuTier');
     tags = registerOutput<Map<String, String>?>('tags');
     threatIntelMode = registerOutput<String>('threatIntelMode');
-    virtualHub = registerOutput<FirewallVirtualHub?>(
-      'virtualHub',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FirewallVirtualHub.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualHub = registerOutput<FirewallVirtualHub?>('virtualHub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallVirtualHub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zones = registerOutput<List<String>?>('zones');
   }
 }

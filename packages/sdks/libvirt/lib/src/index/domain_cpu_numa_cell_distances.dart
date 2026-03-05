@@ -9,39 +9,20 @@ class DomainCpuNumaCellDistances {
 
   /// Creates a new [DomainCpuNumaCellDistances].
   /// [siblings] Describes the sibling CPUs within the NUMA cell, defining distance metrics for optimized access.
-  DomainCpuNumaCellDistances({this.siblings});
+  DomainCpuNumaCellDistances({
+    this.siblings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'siblings':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DomainCpuNumaCellDistancesSibling>,
-            List<Map<String, dynamic>>
-          >(
-            siblings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DomainCpuNumaCellDistancesSibling,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'siblings': ?pulumi.Input.mapOptionalInputValue<List<DomainCpuNumaCellDistancesSibling>, List<Map<String, dynamic>>>(siblings, (value) => pulumi.Input.encodeList<DomainCpuNumaCellDistancesSibling, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainCpuNumaCellDistances.fromMap(Map<String, dynamic> map) {
     return DomainCpuNumaCellDistances(
-      siblings: (() {
-        final guardedValue = map['siblings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DomainCpuNumaCellDistancesSibling>(
-            guardedValue,
-            (value) => DomainCpuNumaCellDistancesSibling.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      siblings: (() { final guardedValue = map['siblings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainCpuNumaCellDistancesSibling>(guardedValue, (value) => DomainCpuNumaCellDistancesSibling.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

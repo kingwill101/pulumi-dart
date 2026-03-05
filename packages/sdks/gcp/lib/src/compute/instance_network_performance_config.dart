@@ -9,7 +9,9 @@ class InstanceNetworkPerformanceConfig {
 
   /// Creates a new [InstanceNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] The egress bandwidth tier to enable.
-  InstanceNetworkPerformanceConfig({required this.totalEgressBandwidthTier});
+  InstanceNetworkPerformanceConfig({
+    required this.totalEgressBandwidthTier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,9 +21,8 @@ class InstanceNetworkPerformanceConfig {
 
   factory InstanceNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkPerformanceConfig(
-      totalEgressBandwidthTier: pulumi.Input.fromValue(
-        map['totalEgressBandwidthTier'] as String,
-      ),
+      totalEgressBandwidthTier: pulumi.Input.fromValue(map['totalEgressBandwidthTier'] as String),
     );
   }
 }
+

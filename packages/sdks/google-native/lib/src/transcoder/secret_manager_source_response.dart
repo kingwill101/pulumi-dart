@@ -9,10 +9,14 @@ class SecretManagerSourceResponse {
 
   /// Creates a new [SecretManagerSourceResponse].
   /// [secretVersion] The name of the Secret Version containing the encryption key in the following format: `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are supported. Aliases like "latest" are not supported.
-  SecretManagerSourceResponse({required this.secretVersion});
+  SecretManagerSourceResponse({
+    required this.secretVersion,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretVersion': secretVersion};
+    return <String, dynamic>{
+      'secretVersion': secretVersion,
+    };
   }
 
   factory SecretManagerSourceResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class SecretManagerSourceResponse {
     );
   }
 }
+

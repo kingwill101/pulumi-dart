@@ -12,8 +12,7 @@ enum RouterNatNatIpAllocateOptionComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RouterNatNatIpAllocateOptionComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown RouterNatNatIpAllocateOptionComputeBeta value: $value');
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayPrivateEndpointConnection {
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String> id;
-
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
 
@@ -18,15 +17,17 @@ class GetApplicationGatewayPrivateEndpointConnection {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'name': name};
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+    };
   }
 
-  factory GetApplicationGatewayPrivateEndpointConnection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationGatewayPrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayPrivateEndpointConnection(
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

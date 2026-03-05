@@ -13,20 +13,23 @@ class GetHubArgs {
   /// Creates a new [GetHubArgs].
   /// [hubId] Required.
   /// [project] Optional.
-  GetHubArgs({required this.hubId, this.project});
+  GetHubArgs({
+    required this.hubId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hubId': hubId, 'project': ?project};
+    return <String, dynamic>{
+      'hubId': hubId,
+      'project': ?project,
+    };
   }
 
   factory GetHubArgs.fromMap(Map<String, dynamic> map) {
     return GetHubArgs(
       hubId: pulumi.Input.fromValue(map['hubId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

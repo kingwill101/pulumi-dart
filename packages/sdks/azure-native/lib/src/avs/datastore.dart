@@ -163,28 +163,20 @@ import 'system_data_response.dart';
 class Datastore extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// An iSCSI volume
   late final pulumi.Output<DiskPoolVolumeResponse?> diskPoolVolume;
-
   /// An Elastic SAN volume
   late final pulumi.Output<ElasticSanVolumeResponse?> elasticSanVolume;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// An Azure NetApp Files volume
   late final pulumi.Output<NetAppVolumeResponse?> netAppVolume;
-
   /// The state of the datastore provisioning
   late final pulumi.Output<String> provisioningState;
-
   /// The operational status of the datastore
   late final pulumi.Output<String> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -197,55 +189,19 @@ class Datastore extends pulumi.CustomResource {
     DatastoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:avs:Datastore',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:avs:Datastore',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    diskPoolVolume = registerOutput<DiskPoolVolumeResponse?>(
-      'diskPoolVolume',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiskPoolVolumeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    elasticSanVolume = registerOutput<ElasticSanVolumeResponse?>(
-      'elasticSanVolume',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ElasticSanVolumeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    diskPoolVolume = registerOutput<DiskPoolVolumeResponse?>('diskPoolVolume', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskPoolVolumeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    elasticSanVolume = registerOutput<ElasticSanVolumeResponse?>('elasticSanVolume', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticSanVolumeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    netAppVolume = registerOutput<NetAppVolumeResponse?>(
-      'netAppVolume',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetAppVolumeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    netAppVolume = registerOutput<NetAppVolumeResponse?>('netAppVolume', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetAppVolumeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3RolloutStateResponse {
   /// Start time of the current step.
   final pulumi.Input<String> startTime;
-
   /// Display name of the current auto rollout step.
   final pulumi.Input<String> step;
-
   /// Index of the current step in the auto rollout steps list.
   final pulumi.Input<int> stepIndex;
 
@@ -31,9 +29,7 @@ class GoogleCloudDialogflowCxV3RolloutStateResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3RolloutStateResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3RolloutStateResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3RolloutStateResponse(
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       step: pulumi.Input.fromValue(map['step'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudDialogflowCxV3RolloutStateResponse {
     );
   }
 }
+

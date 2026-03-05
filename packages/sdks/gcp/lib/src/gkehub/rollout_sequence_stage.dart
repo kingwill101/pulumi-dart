@@ -8,11 +8,9 @@ class RolloutSequenceStage {
   /// If not specified, all clusters in the fleet projects are selected.
   /// Structure is documented below.
   final pulumi.Input<RolloutSequenceStageClusterSelector>? clusterSelector;
-
   /// List of Fleet projects to select the clusters from.
   /// Expected format: projects/{project}
   final pulumi.Input<List<String>> fleetProjects;
-
   /// Soak time after upgrading all the clusters in the stage, specified in seconds.
   final pulumi.Input<String>? soakDuration;
 
@@ -28,11 +26,7 @@ class RolloutSequenceStage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterSelector':
-          ?pulumi.Input.mapOptionalInputValue<
-            RolloutSequenceStageClusterSelector,
-            Map<String, dynamic>
-          >(clusterSelector, (value) => value.toMap()),
+      'clusterSelector': ?pulumi.Input.mapOptionalInputValue<RolloutSequenceStageClusterSelector, Map<String, dynamic>>(clusterSelector, (value) => value.toMap()),
       'fleetProjects': fleetProjects,
       'soakDuration': ?soakDuration,
     };
@@ -40,23 +34,10 @@ class RolloutSequenceStage {
 
   factory RolloutSequenceStage.fromMap(Map<String, dynamic> map) {
     return RolloutSequenceStage(
-      clusterSelector: (() {
-        final guardedValue = map['clusterSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RolloutSequenceStageClusterSelector.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      fleetProjects: pulumi.Input.fromValue(
-        (map['fleetProjects'] as List).cast<String>(),
-      ),
-      soakDuration: (() {
-        final guardedValue = map['soakDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clusterSelector: (() { final guardedValue = map['clusterSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RolloutSequenceStageClusterSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      fleetProjects: pulumi.Input.fromValue((map['fleetProjects'] as List).cast<String>()),
+      soakDuration: (() { final guardedValue = map['soakDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

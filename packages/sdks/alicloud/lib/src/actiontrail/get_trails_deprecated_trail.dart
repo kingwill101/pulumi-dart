@@ -7,17 +7,13 @@ class GetTrailsDeprecatedTrail {
   final pulumi.Input<String> eventRw;
   final pulumi.Input<String> id;
   final pulumi.Input<bool> isOrganizationTrail;
-
   /// The name of the specified OSS bucket.
   final pulumi.Input<String> ossBucketName;
-
   /// The prefix of the specified OSS bucket name.
   final pulumi.Input<String> ossKeyPrefix;
   final pulumi.Input<String> ossWriteRoleArn;
-
   /// The unique ARN of the Log Service project.
   final pulumi.Input<String> slsProjectArn;
-
   /// The unique ARN of the Log Service role.
   final pulumi.Input<String> slsWriteRoleArn;
   final pulumi.Input<String> status;
@@ -70,9 +66,7 @@ class GetTrailsDeprecatedTrail {
     return GetTrailsDeprecatedTrail(
       eventRw: pulumi.Input.fromValue(map['eventRw'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      isOrganizationTrail: pulumi.Input.fromValue(
-        map['isOrganizationTrail'] as bool,
-      ),
+      isOrganizationTrail: pulumi.Input.fromValue(map['isOrganizationTrail'] as bool),
       ossBucketName: pulumi.Input.fromValue(map['ossBucketName'] as String),
       ossKeyPrefix: pulumi.Input.fromValue(map['ossKeyPrefix'] as String),
       ossWriteRoleArn: pulumi.Input.fromValue(map['ossWriteRoleArn'] as String),
@@ -84,3 +78,4 @@ class GetTrailsDeprecatedTrail {
     );
   }
 }
+

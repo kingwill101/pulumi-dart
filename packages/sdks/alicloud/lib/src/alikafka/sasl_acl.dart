@@ -508,7 +508,6 @@ class SaslAcl extends pulumi.CustomResource {
   /// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
   /// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
   late final pulumi.Output<String> aclOperationType;
-
   /// Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
   /// - `Write`: write
   /// - `Read`: read
@@ -518,37 +517,30 @@ class SaslAcl extends pulumi.CustomResource {
   /// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
   /// &gt; **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
   late final pulumi.Output<String?> aclOperationTypes;
-
   /// Authorization method. Value:
   /// - `DENY`: deny.
   /// - `ALLOW`: allow.
   /// &gt; **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
   late final pulumi.Output<String> aclPermissionType;
-
   /// The resource name.
   /// - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
   /// - You can use an asterisk (*) to represent all resources of this type.
   late final pulumi.Output<String> aclResourceName;
-
   /// Match the pattern. Valid values:
   /// - `LITERAL`: exact match
   /// - `PREFIXED`: prefix matching
   late final pulumi.Output<String> aclResourcePatternType;
-
   /// The resource type. Valid values:
   /// - `Topic`: the message Topic.
   /// - `Group`: consumer Group.
   /// - `Cluster`: the instance.
   /// - `TransactionalId`: transaction ID.
   late final pulumi.Output<String> aclResourceType;
-
   /// The host of the acl.
   /// &gt; **NOTE:** From version 1.270.0, `host` can be set.
   late final pulumi.Output<String> host;
-
   /// The instance ID.
   late final pulumi.Output<String> instanceId;
-
   /// The user name.
   late final pulumi.Output<String> username;
 
@@ -561,11 +553,11 @@ class SaslAcl extends pulumi.CustomResource {
     SaslAclArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alikafka/saslAcl:SaslAcl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alikafka/saslAcl:SaslAcl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclOperationType = registerOutput<String>('aclOperationType');
     aclOperationTypes = registerOutput<String?>('aclOperationTypes');
     aclPermissionType = registerOutput<String>('aclPermissionType');
@@ -595,11 +587,11 @@ class SaslAcl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alikafka/saslAcl:SaslAcl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alikafka/saslAcl:SaslAcl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclOperationType = registerOutput<String>('aclOperationType');
     aclOperationTypes = registerOutput<String?>('aclOperationTypes');
     aclPermissionType = registerOutput<String>('aclPermissionType');

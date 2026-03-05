@@ -18,15 +18,10 @@ class AgentcoreAgentRuntimeRequestHeaderConfiguration {
     };
   }
 
-  factory AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeRequestHeaderConfiguration(
-      requestHeaderAllowlists: (() {
-        final guardedValue = map['requestHeaderAllowlists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      requestHeaderAllowlists: (() { final guardedValue = map['requestHeaderAllowlists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

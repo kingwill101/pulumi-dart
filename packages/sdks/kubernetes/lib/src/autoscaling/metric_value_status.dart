@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricValueStatus {
   /// currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.
   final pulumi.Input<int>? averageUtilization;
-
   /// averageValue is the current value of the average of the metric across all relevant pods (as a quantity)
   final pulumi.Input<String>? averageValue;
-
   /// value is the current value of the metric (as a quantity).
   final pulumi.Input<String>? value;
 
@@ -17,7 +15,11 @@ class MetricValueStatus {
   /// [averageUtilization] currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.
   /// [averageValue] averageValue is the current value of the average of the metric across all relevant pods (as a quantity)
   /// [value] value is the current value of the metric (as a quantity).
-  MetricValueStatus({this.averageUtilization, this.averageValue, this.value});
+  MetricValueStatus({
+    this.averageUtilization,
+    this.averageValue,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class MetricValueStatus {
 
   factory MetricValueStatus.fromMap(Map<String, dynamic> map) {
     return MetricValueStatus(
-      averageUtilization: (() {
-        final guardedValue = map['averageUtilization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      averageValue: (() {
-        final guardedValue = map['averageValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      averageUtilization: (() { final guardedValue = map['averageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      averageValue: (() { final guardedValue = map['averageValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -344,30 +344,20 @@ import 'domain_name_state.dart';
 class DomainName extends pulumi.CustomResource {
   /// [API mapping selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-mapping-selection-expressions) for the domain name.
   late final pulumi.Output<String> apiMappingSelectionExpression;
-
   /// ARN of the domain name.
   late final pulumi.Output<String> arn;
-
   /// Domain name. Must be between 1 and 512 characters in length.
   late final pulumi.Output<String> domainName;
-
   /// Domain name configuration. See below.
-  late final pulumi.Output<DomainNameDomainNameConfiguration>
-  domainNameConfiguration;
-
+  late final pulumi.Output<DomainNameDomainNameConfiguration> domainNameConfiguration;
   /// Mutual TLS authentication configuration for the domain name.
-  late final pulumi.Output<DomainNameMutualTlsAuthentication?>
-  mutualTlsAuthentication;
-
+  late final pulumi.Output<DomainNameMutualTlsAuthentication?> mutualTlsAuthentication;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Mode to route traffic for the domain name. Valid values: `API_MAPPING_ONLY`, `ROUTING_RULE_ONLY`, `ROUTING_RULE_THEN_API_MAPPING`.
   late final pulumi.Output<String> routingMode;
-
   /// Map of tags to assign to the domain name. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -380,37 +370,16 @@ class DomainName extends pulumi.CustomResource {
     DomainNameArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigatewayv2/domainName:DomainName',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    apiMappingSelectionExpression = registerOutput<String>(
-      'apiMappingSelectionExpression',
-    );
+          'aws:apigatewayv2/domainName:DomainName',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    apiMappingSelectionExpression = registerOutput<String>('apiMappingSelectionExpression');
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String>('domainName');
-    domainNameConfiguration = registerOutput<DomainNameDomainNameConfiguration>(
-      'domainNameConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainNameDomainNameConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    mutualTlsAuthentication =
-        registerOutput<DomainNameMutualTlsAuthentication?>(
-          'mutualTlsAuthentication',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DomainNameMutualTlsAuthentication.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    domainNameConfiguration = registerOutput<DomainNameDomainNameConfiguration>('domainNameConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNameDomainNameConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mutualTlsAuthentication = registerOutput<DomainNameMutualTlsAuthentication?>('mutualTlsAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNameMutualTlsAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     routingMode = registerOutput<String>('routingMode');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -435,37 +404,16 @@ class DomainName extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigatewayv2/domainName:DomainName',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    apiMappingSelectionExpression = registerOutput<String>(
-      'apiMappingSelectionExpression',
-    );
+          'aws:apigatewayv2/domainName:DomainName',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    apiMappingSelectionExpression = registerOutput<String>('apiMappingSelectionExpression');
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String>('domainName');
-    domainNameConfiguration = registerOutput<DomainNameDomainNameConfiguration>(
-      'domainNameConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainNameDomainNameConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    mutualTlsAuthentication =
-        registerOutput<DomainNameMutualTlsAuthentication?>(
-          'mutualTlsAuthentication',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DomainNameMutualTlsAuthentication.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    domainNameConfiguration = registerOutput<DomainNameDomainNameConfiguration>('domainNameConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNameDomainNameConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mutualTlsAuthentication = registerOutput<DomainNameMutualTlsAuthentication?>('mutualTlsAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNameMutualTlsAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     routingMode = registerOutput<String>('routingMode');
     tags = registerOutput<Map<String, String>?>('tags');

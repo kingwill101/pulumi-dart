@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBotConnectionArgs {
   /// The name of the Bot Service Connection Setting resource.
   final pulumi.Input<String> connectionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Bot resource.
   final pulumi.Input<String> resourceName;
 
@@ -37,10 +35,9 @@ class GetBotConnectionArgs {
   factory GetBotConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetBotConnectionArgs(
       connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

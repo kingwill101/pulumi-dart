@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApiVersionSetArgs {
   /// The name of the API Management Service where the API Version Set exists.
   final pulumi.Input<String> apiManagementName;
-
   /// The name of the API Version Set.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group in which the parent API Management Service exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetApiVersionSetArgs {
 
   factory GetApiVersionSetArgs.fromMap(Map<String, dynamic> map) {
     return GetApiVersionSetArgs(
-      apiManagementName: pulumi.Input.fromValue(
-        map['apiManagementName'] as String,
-      ),
+      apiManagementName: pulumi.Input.fromValue(map['apiManagementName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HyperVHostDetailsResponse {
   /// The Hyper-V host Id.
   final pulumi.Input<String> id;
-
   /// The Mars agent version.
   final pulumi.Input<String> marsAgentVersion;
-
   /// The Hyper-V host name.
   final pulumi.Input<String> name;
 
@@ -34,10 +32,9 @@ class HyperVHostDetailsResponse {
   factory HyperVHostDetailsResponse.fromMap(Map<String, dynamic> map) {
     return HyperVHostDetailsResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
-      marsAgentVersion: pulumi.Input.fromValue(
-        map['marsAgentVersion'] as String,
-      ),
+      marsAgentVersion: pulumi.Input.fromValue(map['marsAgentVersion'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

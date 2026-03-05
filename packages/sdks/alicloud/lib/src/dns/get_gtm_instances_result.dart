@@ -33,11 +33,7 @@ class GetGtmInstancesResult {
     return <String, dynamic>{
       'id': id,
       'ids': ids,
-      'instances':
-          pulumi.Input.encodeList<
-            GetGtmInstancesInstance,
-            Map<String, dynamic>
-          >(instances, (value) => value.toMap()),
+      'instances': pulumi.Input.encodeList<GetGtmInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
       'lang': ?lang,
       'outputFile': outputFile,
       'resourceGroupId': ?resourceGroupId,
@@ -48,23 +44,11 @@ class GetGtmInstancesResult {
     return GetGtmInstancesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instances: pulumi.Input.decodeList<GetGtmInstancesInstance>(
-        map['instances']!,
-        (value) => GetGtmInstancesInstance.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      lang: (() {
-        final guardedValue = map['lang'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      instances: pulumi.Input.decodeList<GetGtmInstancesInstance>(map['instances']!, (value) => GetGtmInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
+      lang: (() { final guardedValue = map['lang']; if (guardedValue == null) return null; return guardedValue as String; })(),
       outputFile: map['outputFile'] as String,
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

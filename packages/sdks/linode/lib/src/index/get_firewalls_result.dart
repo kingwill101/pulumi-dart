@@ -8,7 +8,6 @@ import 'get_firewalls_firewall.dart';
 class GetFirewallsResult {
   final List<GetFirewallsFilter>? filters;
   final List<GetFirewallsFirewall> firewalls;
-
   /// The unique ID assigned to this Firewall.
   final String id;
   final String? order;
@@ -30,19 +29,8 @@ class GetFirewallsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetFirewallsFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
-      'firewalls':
-          pulumi.Input.encodeList<GetFirewallsFirewall, Map<String, dynamic>>(
-            firewalls,
-            (value) => value.toMap(),
-          ),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetFirewallsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'firewalls': pulumi.Input.encodeList<GetFirewallsFirewall, Map<String, dynamic>>(firewalls, (value) => value.toMap()),
       'id': id,
       'order': ?order,
       'orderBy': ?orderBy,
@@ -51,33 +39,12 @@ class GetFirewallsResult {
 
   factory GetFirewallsResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallsResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetFirewallsFilter>(
-          guardedValue,
-          (value) => GetFirewallsFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      firewalls: pulumi.Input.decodeList<GetFirewallsFirewall>(
-        map['firewalls']!,
-        (value) => GetFirewallsFirewall.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFirewallsFilter>(guardedValue, (value) => GetFirewallsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
+      firewalls: pulumi.Input.decodeList<GetFirewallsFirewall>(map['firewalls']!, (value) => GetFirewallsFirewall.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      order: (() {
-        final guardedValue = map['order'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      orderBy: (() {
-        final guardedValue = map['orderBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

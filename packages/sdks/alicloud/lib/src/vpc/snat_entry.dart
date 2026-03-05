@@ -367,25 +367,18 @@ import 'snat_entry_state.dart';
 class SnatEntry extends pulumi.CustomResource {
   /// Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
   late final pulumi.Output<int?> eipAffinity;
-
   /// The id of the snat entry on the server.
   late final pulumi.Output<String> snatEntryId;
-
   /// The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> snatEntryName;
-
   /// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
   late final pulumi.Output<String> snatIp;
-
   /// The ID of the SNAT table.
   late final pulumi.Output<String> snatTableId;
-
   /// The source CIDR block specified in the SNAT entry.
   late final pulumi.Output<String> sourceCidr;
-
   /// The ID of the vSwitch.
   late final pulumi.Output<String> sourceVswitchId;
-
   /// (Available since v1.119.1) The ID of the SNAT entry.
   late final pulumi.Output<String> status;
 
@@ -398,11 +391,11 @@ class SnatEntry extends pulumi.CustomResource {
     SnatEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/snatEntry:SnatEntry',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/snatEntry:SnatEntry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     eipAffinity = registerOutput<int?>('eipAffinity');
     snatEntryId = registerOutput<String>('snatEntryId');
     snatEntryName = registerOutput<String?>('snatEntryName');
@@ -431,11 +424,11 @@ class SnatEntry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/snatEntry:SnatEntry',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/snatEntry:SnatEntry',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     eipAffinity = registerOutput<int?>('eipAffinity');
     snatEntryId = registerOutput<String>('snatEntryId');
     snatEntryName = registerOutput<String?>('snatEntryName');

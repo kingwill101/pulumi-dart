@@ -9,25 +9,20 @@ class PipelineStageBeforeEntry {
 
   /// Creates a new [PipelineStageBeforeEntry].
   /// [condition] The conditions that are configured as entry condition. Defined as a `condition` block below.
-  PipelineStageBeforeEntry({required this.condition});
+  PipelineStageBeforeEntry({
+    required this.condition,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          pulumi.Input.mapInputValue<
-            PipelineStageBeforeEntryCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': pulumi.Input.mapInputValue<PipelineStageBeforeEntryCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
     };
   }
 
   factory PipelineStageBeforeEntry.fromMap(Map<String, dynamic> map) {
     return PipelineStageBeforeEntry(
-      condition: pulumi.Input.fromValue(
-        PipelineStageBeforeEntryCondition.fromMap(
-          (map['condition']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      condition: pulumi.Input.fromValue(PipelineStageBeforeEntryCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

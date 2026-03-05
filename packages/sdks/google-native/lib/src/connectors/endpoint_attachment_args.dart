@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointAttachmentArgs {
   /// Optional. Description of the resource.
   final pulumi.Input<String>? description;
-
   /// Required. Identifier to assign to the EndpointAttachment. Must be unique within scope of the parent resource.
   final pulumi.Input<String> endpointAttachmentId;
-
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
-
   /// The path of the service attachment
   final pulumi.Input<String> serviceAttachment;
 
@@ -50,34 +47,13 @@ class EndpointAttachmentArgs {
 
   factory EndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAttachmentArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpointAttachmentId: pulumi.Input.fromValue(
-        map['endpointAttachmentId'] as String,
-      ),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceAttachment: pulumi.Input.fromValue(
-        map['serviceAttachment'] as String,
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointAttachmentId: pulumi.Input.fromValue(map['endpointAttachmentId'] as String),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceAttachment: pulumi.Input.fromValue(map['serviceAttachment'] as String),
     );
   }
 }
+

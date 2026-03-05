@@ -16,8 +16,7 @@ enum AzureLargeInstancePowerStateEnum {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AzureLargeInstancePowerStateEnum value: $value',
-    );
+    throw ArgumentError('Unknown AzureLargeInstancePowerStateEnum value: $value');
   }
 }
+

@@ -119,13 +119,10 @@ import 'security_group_association_state.dart';
 class SecurityGroupAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Whether this association should replace the association with the VPC's default security group that is created when no security groups are specified during VPC endpoint creation. At most 1 association per-VPC endpoint should be configured with `replace_default_association = true`. `false` should be used when importing resources.
   late final pulumi.Output<bool?> replaceDefaultAssociation;
-
   /// The ID of the security group to be associated with the VPC endpoint.
   late final pulumi.Output<String> securityGroupId;
-
   /// The ID of the VPC endpoint with which the security group will be associated.
   late final pulumi.Output<String> vpcEndpointId;
 
@@ -138,15 +135,13 @@ class SecurityGroupAssociation extends pulumi.CustomResource {
     SecurityGroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/securityGroupAssociation:SecurityGroupAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/securityGroupAssociation:SecurityGroupAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
-    replaceDefaultAssociation = registerOutput<bool?>(
-      'replaceDefaultAssociation',
-    );
+    replaceDefaultAssociation = registerOutput<bool?>('replaceDefaultAssociation');
     securityGroupId = registerOutput<String>('securityGroupId');
     vpcEndpointId = registerOutput<String>('vpcEndpointId');
   }
@@ -169,15 +164,13 @@ class SecurityGroupAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/securityGroupAssociation:SecurityGroupAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/securityGroupAssociation:SecurityGroupAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
-    replaceDefaultAssociation = registerOutput<bool?>(
-      'replaceDefaultAssociation',
-    );
+    replaceDefaultAssociation = registerOutput<bool?>('replaceDefaultAssociation');
     securityGroupId = registerOutput<String>('securityGroupId');
     vpcEndpointId = registerOutput<String>('vpcEndpointId');
   }

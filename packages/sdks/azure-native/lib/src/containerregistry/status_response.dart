@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatusResponse {
   /// The short label for the status.
   final pulumi.Input<String> displayStatus;
-
   /// The detailed message for the status, including alerts and error messages.
   final pulumi.Input<String> message;
-
   /// The timestamp when the status was changed to the current value.
   final pulumi.Input<String> timestamp;
 
@@ -39,3 +37,4 @@ class StatusResponse {
     );
   }
 }
+

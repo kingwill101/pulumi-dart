@@ -7,7 +7,6 @@ import 'get_policy_document_statement.dart';
 class GetPolicyDocumentResult {
   /// Standard policy document rendered based on the arguments above.
   final String document;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? outputFile;
@@ -33,14 +32,7 @@ class GetPolicyDocumentResult {
       'document': document,
       'id': id,
       'outputFile': ?outputFile,
-      'statements': ?(() {
-        final guardedValue = statements;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetPolicyDocumentStatement,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'statements': ?(() { final guardedValue = statements; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPolicyDocumentStatement, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'version': ?version,
     };
   }
@@ -49,26 +41,10 @@ class GetPolicyDocumentResult {
     return GetPolicyDocumentResult(
       document: map['document'] as String,
       id: map['id'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      statements: (() {
-        final guardedValue = map['statements'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetPolicyDocumentStatement>(
-          guardedValue,
-          (value) => GetPolicyDocumentStatement.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statements: (() { final guardedValue = map['statements']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPolicyDocumentStatement>(guardedValue, (value) => GetPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>())); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

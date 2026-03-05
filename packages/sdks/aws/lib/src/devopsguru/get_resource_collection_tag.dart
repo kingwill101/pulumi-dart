@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceCollectionTag {
   /// An AWS tag key that is used to identify the AWS resources that DevOps Guru analyzes.
   final pulumi.Input<String> appBoundaryKey;
-
   /// Array of tag values.
   final pulumi.Input<List<String>> tagValues;
 
@@ -27,9 +26,8 @@ class GetResourceCollectionTag {
   factory GetResourceCollectionTag.fromMap(Map<String, dynamic> map) {
     return GetResourceCollectionTag(
       appBoundaryKey: pulumi.Input.fromValue(map['appBoundaryKey'] as String),
-      tagValues: pulumi.Input.fromValue(
-        (map['tagValues'] as List).cast<String>(),
-      ),
+      tagValues: pulumi.Input.fromValue((map['tagValues'] as List).cast<String>()),
     );
   }
 }
+

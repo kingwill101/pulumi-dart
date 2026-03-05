@@ -8,10 +8,14 @@ class GetClustersClusterAutoMode {
 
   /// Creates a new [GetClustersClusterAutoMode].
   /// [enabled] Whether to enable cluster automatic upgrade.
-  GetClustersClusterAutoMode({required this.enabled});
+  GetClustersClusterAutoMode({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory GetClustersClusterAutoMode.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetClustersClusterAutoMode {
     );
   }
 }
+

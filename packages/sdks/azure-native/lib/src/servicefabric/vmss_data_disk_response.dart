@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmssDataDiskResponse {
   /// Managed data disk letter. It can not use the reserved letter C or D and it can not change after created.
   final pulumi.Input<String> diskLetter;
-
   /// Disk size for each vm in the node type in GBs.
   final pulumi.Input<int> diskSizeGB;
-
   /// Managed data disk type. Specifies the storage account type for the managed disk
   final pulumi.Input<String> diskType;
-
   /// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM. Lun 0 is reserved for the service fabric data disk.
   final pulumi.Input<int> lun;
 
@@ -46,3 +43,4 @@ class VmssDataDiskResponse {
     );
   }
 }
+

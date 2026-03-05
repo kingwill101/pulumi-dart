@@ -6,13 +6,10 @@ import 'domain_devices_disk_mirror_source_encryption_secret.dart';
 class DomainDevicesDiskMirrorSourceEncryption {
   /// Specifies the encryption engine utilized for encrypting the disk.
   final pulumi.Input<String>? engine;
-
   /// Configures the format of the encrypted disk storage, determining how the data is stored and accessed.
   final pulumi.Input<String>? format;
-
   /// Specifies the secrets used for encryption, which can include various elements needed for accessing encrypted data.
-  final pulumi.Input<List<DomainDevicesDiskMirrorSourceEncryptionSecret>>?
-  secrets;
+  final pulumi.Input<List<DomainDevicesDiskMirrorSourceEncryptionSecret>>? secrets;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceEncryption].
   /// [engine] Specifies the encryption engine utilized for encrypting the disk.
@@ -28,48 +25,16 @@ class DomainDevicesDiskMirrorSourceEncryption {
     return <String, dynamic>{
       'engine': ?engine,
       'format': ?format,
-      'secrets':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DomainDevicesDiskMirrorSourceEncryptionSecret>,
-            List<Map<String, dynamic>>
-          >(
-            secrets,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DomainDevicesDiskMirrorSourceEncryptionSecret,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'secrets': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskMirrorSourceEncryptionSecret>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<DomainDevicesDiskMirrorSourceEncryptionSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory DomainDevicesDiskMirrorSourceEncryption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskMirrorSourceEncryption.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceEncryption(
-      engine: (() {
-        final guardedValue = map['engine'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      format: (() {
-        final guardedValue = map['format'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secrets: (() {
-        final guardedValue = map['secrets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi
-              .Input.decodeList<DomainDevicesDiskMirrorSourceEncryptionSecret>(
-            guardedValue,
-            (value) => DomainDevicesDiskMirrorSourceEncryptionSecret.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      engine: (() { final guardedValue = map['engine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainDevicesDiskMirrorSourceEncryptionSecret>(guardedValue, (value) => DomainDevicesDiskMirrorSourceEncryptionSecret.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

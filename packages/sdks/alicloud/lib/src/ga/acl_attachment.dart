@@ -383,16 +383,12 @@ import 'acl_attachment_state.dart';
 class AclAttachment extends pulumi.CustomResource {
   /// The ID of an ACL.
   late final pulumi.Output<String> aclId;
-
   /// The type of the ACL. Valid values:
   late final pulumi.Output<String> aclType;
-
   /// The dry run.
   late final pulumi.Output<bool?> dryRun;
-
   /// The ID of the listener.
   late final pulumi.Output<String> listenerId;
-
   /// The status of the Acl Attachment.
   late final pulumi.Output<String> status;
 
@@ -405,11 +401,11 @@ class AclAttachment extends pulumi.CustomResource {
     AclAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/aclAttachment:AclAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/aclAttachment:AclAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclId = registerOutput<String>('aclId');
     aclType = registerOutput<String>('aclType');
     dryRun = registerOutput<bool?>('dryRun');
@@ -435,11 +431,11 @@ class AclAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/aclAttachment:AclAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/aclAttachment:AclAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclId = registerOutput<String>('aclId');
     aclType = registerOutput<String>('aclType');
     dryRun = registerOutput<bool?>('dryRun');

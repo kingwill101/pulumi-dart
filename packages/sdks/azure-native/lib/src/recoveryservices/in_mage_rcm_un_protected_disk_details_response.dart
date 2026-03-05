@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InMageRcmUnProtectedDiskDetailsResponse {
   /// The disk capacity in bytes.
   final pulumi.Input<double> capacityInBytes;
-
   /// The disk Id.
   final pulumi.Input<String> diskId;
-
   /// The disk name.
   final pulumi.Input<String> diskName;
 
@@ -31,9 +29,7 @@ class InMageRcmUnProtectedDiskDetailsResponse {
     };
   }
 
-  factory InMageRcmUnProtectedDiskDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InMageRcmUnProtectedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmUnProtectedDiskDetailsResponse(
       capacityInBytes: pulumi.Input.fromValue(map['capacityInBytes'] as double),
       diskId: pulumi.Input.fromValue(map['diskId'] as String),
@@ -41,3 +37,4 @@ class InMageRcmUnProtectedDiskDetailsResponse {
     );
   }
 }
+

@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IngressRule {
   /// Target application ID.
   final pulumi.Input<String> appId;
-
   /// Target application name.
   final pulumi.Input<String> appName;
-
   /// The backend protocol.
   final pulumi.Input<String>? backendProtocol;
-
   /// Application backend port.
   final pulumi.Input<int> containerPort;
-
   /// Application domain name.
   final pulumi.Input<String> domain;
-
   /// URL path.
   final pulumi.Input<String> path;
-
   /// The rewrite path.
   final pulumi.Input<String>? rewritePath;
 
@@ -58,19 +52,12 @@ class IngressRule {
     return IngressRule(
       appId: pulumi.Input.fromValue(map['appId'] as String),
       appName: pulumi.Input.fromValue(map['appName'] as String),
-      backendProtocol: (() {
-        final guardedValue = map['backendProtocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backendProtocol: (() { final guardedValue = map['backendProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       containerPort: pulumi.Input.fromValue(map['containerPort'] as int),
       domain: pulumi.Input.fromValue(map['domain'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
-      rewritePath: (() {
-        final guardedValue = map['rewritePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      rewritePath: (() { final guardedValue = map['rewritePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

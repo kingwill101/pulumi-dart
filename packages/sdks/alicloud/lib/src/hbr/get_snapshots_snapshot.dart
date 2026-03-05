@@ -5,80 +5,55 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnapshotsSnapshot {
   /// The actual data volume of the snapshot. Unit byte.
   final pulumi.Input<String> actualBytes;
-
   /// The actual number of items in the snapshot. (Currently only file backup is available).
   final pulumi.Input<String> actualItems;
-
   /// Backup type. Possible values: `COMPLETE` (full backup).
   final pulumi.Input<String> backupType;
-
   /// The name of OSS bucket.
   final pulumi.Input<String> bucket;
-
   /// The incremental amount of backup data. Unit byte.
   final pulumi.Input<String> bytesDone;
-
   /// The total amount of data sources. Unit byte.
   final pulumi.Input<String> bytesTotal;
-
   /// The ID of ECS backup client.
   final pulumi.Input<String> clientId;
-
   /// The time when the snapshot completed. UNIX time in seconds.
   final pulumi.Input<String> completeTime;
-
   /// File System Creation Time of Nas. Unix Time Seconds.
   final pulumi.Input<String> createTime;
-
   /// Snapshot creation time. UNIX time in seconds.
   final pulumi.Input<String> createdTime;
   final pulumi.Input<String> errorFile;
-
   /// The ID of NAS File system.
   final pulumi.Input<String> fileSystemId;
-
   /// The ID of the Snapshot.
   final pulumi.Input<String> id;
-
   /// The ID of ECS instance.
   final pulumi.Input<String> instanceId;
-
   /// The number of backup items. (Currently only file backup is available).
   final pulumi.Input<String> itemsDone;
-
   /// The total number of data source items. (Currently only file backup is available).
   final pulumi.Input<String> itemsTotal;
-
   /// The job ID of backup task.
   final pulumi.Input<String> jobId;
-
   /// The hashcode of parent backup snapshot.
   final pulumi.Input<String> parentSnapshotHash;
-
   /// Backup Path.
   final pulumi.Input<String> path;
-
   /// Backup file prefix.
   final pulumi.Input<String> prefix;
-
   /// The number of days to keep.
   final pulumi.Input<String> retention;
-
   /// The hashcode of Snapshot.
   final pulumi.Input<String> snapshotHash;
-
   /// The ID of the Snapshot.
   final pulumi.Input<String> snapshotId;
-
   /// Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
   final pulumi.Input<String> sourceType;
-
   /// The start time of the snapshot. UNIX time in seconds.
   final pulumi.Input<String> startTime;
-
   /// The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
   final pulumi.Input<String> status;
-
   /// The update time of snapshot. UNIX time in seconds.
   final pulumi.Input<String> updatedTime;
 
@@ -191,9 +166,7 @@ class GetSnapshotsSnapshot {
       itemsDone: pulumi.Input.fromValue(map['itemsDone'] as String),
       itemsTotal: pulumi.Input.fromValue(map['itemsTotal'] as String),
       jobId: pulumi.Input.fromValue(map['jobId'] as String),
-      parentSnapshotHash: pulumi.Input.fromValue(
-        map['parentSnapshotHash'] as String,
-      ),
+      parentSnapshotHash: pulumi.Input.fromValue(map['parentSnapshotHash'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
       retention: pulumi.Input.fromValue(map['retention'] as String),
@@ -206,3 +179,4 @@ class GetSnapshotsSnapshot {
     );
   }
 }
+

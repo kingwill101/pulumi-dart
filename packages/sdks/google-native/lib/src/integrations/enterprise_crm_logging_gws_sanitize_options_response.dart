@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseCrmLoggingGwsSanitizeOptionsResponse {
   /// If true, the value has already been sanitized and needs no further sanitization. For instance, a D3 customer id is already an obfuscated entity and *might not* need further sanitization.
   final pulumi.Input<bool> isAlreadySanitized;
-
   /// To which type(s) of logs the sanitize options apply.
   final pulumi.Input<List<String>> logType;
   final pulumi.Input<String> privacy;
@@ -33,16 +32,13 @@ class EnterpriseCrmLoggingGwsSanitizeOptionsResponse {
     };
   }
 
-  factory EnterpriseCrmLoggingGwsSanitizeOptionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmLoggingGwsSanitizeOptionsResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmLoggingGwsSanitizeOptionsResponse(
-      isAlreadySanitized: pulumi.Input.fromValue(
-        map['isAlreadySanitized'] as bool,
-      ),
+      isAlreadySanitized: pulumi.Input.fromValue(map['isAlreadySanitized'] as bool),
       logType: pulumi.Input.fromValue((map['logType'] as List).cast<String>()),
       privacy: pulumi.Input.fromValue(map['privacy'] as String),
       sanitizeType: pulumi.Input.fromValue(map['sanitizeType'] as String),
     );
   }
 }
+

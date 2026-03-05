@@ -9,29 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseSnapshotPolicyAttachmentArgs {
   /// Cloud Disk ID.
   final pulumi.Input<String>? diskId;
-
   /// the enterprise snapshot policy id.
   final pulumi.Input<String> policyId;
 
   /// Creates a new [EnterpriseSnapshotPolicyAttachmentArgs].
   /// [diskId] Cloud Disk ID.
   /// [policyId] the enterprise snapshot policy id.
-  EnterpriseSnapshotPolicyAttachmentArgs({this.diskId, required this.policyId});
+  EnterpriseSnapshotPolicyAttachmentArgs({
+    this.diskId,
+    required this.policyId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'diskId': ?diskId, 'policyId': policyId};
+    return <String, dynamic>{
+      'diskId': ?diskId,
+      'policyId': policyId,
+    };
   }
 
-  factory EnterpriseSnapshotPolicyAttachmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseSnapshotPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyAttachmentArgs(
-      diskId: (() {
-        final guardedValue = map['diskId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      diskId: (() { final guardedValue = map['diskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyId: pulumi.Input.fromValue(map['policyId'] as String),
     );
   }
 }
+

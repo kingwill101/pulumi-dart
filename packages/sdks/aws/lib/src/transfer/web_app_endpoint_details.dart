@@ -9,29 +9,20 @@ class WebAppEndpointDetails {
 
   /// Creates a new [WebAppEndpointDetails].
   /// [vpc] Block defining VPC configuration for hosting the web app endpoint within a VPC. See Vpc below.
-  WebAppEndpointDetails({this.vpc});
+  WebAppEndpointDetails({
+    this.vpc,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'vpc':
-          ?pulumi.Input.mapOptionalInputValue<
-            WebAppEndpointDetailsVpc,
-            Map<String, dynamic>
-          >(vpc, (value) => value.toMap()),
+      'vpc': ?pulumi.Input.mapOptionalInputValue<WebAppEndpointDetailsVpc, Map<String, dynamic>>(vpc, (value) => value.toMap()),
     };
   }
 
   factory WebAppEndpointDetails.fromMap(Map<String, dynamic> map) {
     return WebAppEndpointDetails(
-      vpc: (() {
-        final guardedValue = map['vpc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WebAppEndpointDetailsVpc.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      vpc: (() { final guardedValue = map['vpc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAppEndpointDetailsVpc.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

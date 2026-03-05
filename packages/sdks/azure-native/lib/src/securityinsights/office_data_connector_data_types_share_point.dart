@@ -9,17 +9,20 @@ class OfficeDataConnectorDataTypesSharePoint {
 
   /// Creates a new [OfficeDataConnectorDataTypesSharePoint].
   /// [state] Describe whether this data type connection is enabled or not.
-  OfficeDataConnectorDataTypesSharePoint({required this.state});
+  OfficeDataConnectorDataTypesSharePoint({
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': state};
+    return <String, dynamic>{
+      'state': state,
+    };
   }
 
-  factory OfficeDataConnectorDataTypesSharePoint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OfficeDataConnectorDataTypesSharePoint.fromMap(Map<String, dynamic> map) {
     return OfficeDataConnectorDataTypesSharePoint(
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

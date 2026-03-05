@@ -29,8 +29,7 @@ enum AggregationPerSeriesAlignerMonitoringV3 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AggregationPerSeriesAlignerMonitoringV3 value: $value',
-    );
+    throw ArgumentError('Unknown AggregationPerSeriesAlignerMonitoringV3 value: $value');
   }
 }
+

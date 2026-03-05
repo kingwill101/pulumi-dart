@@ -40,11 +40,7 @@ class GetAppTemplatesResult {
       'names': names,
       'outputFile': ?outputFile,
       'status': ?status,
-      'templates':
-          pulumi.Input.encodeList<
-            GetAppTemplatesTemplate,
-            Map<String, dynamic>
-          >(templates, (value) => value.toMap()),
+      'templates': pulumi.Input.encodeList<GetAppTemplatesTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
     };
   }
 
@@ -52,28 +48,12 @@ class GetAppTemplatesResult {
     return GetAppTemplatesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      templates: pulumi.Input.decodeList<GetAppTemplatesTemplate>(
-        map['templates']!,
-        (value) => GetAppTemplatesTemplate.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      templates: pulumi.Input.decodeList<GetAppTemplatesTemplate>(map['templates']!, (value) => GetAppTemplatesTemplate.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

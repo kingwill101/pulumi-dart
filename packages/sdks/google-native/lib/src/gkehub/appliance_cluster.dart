@@ -9,19 +9,20 @@ class ApplianceCluster {
 
   /// Creates a new [ApplianceCluster].
   /// [resourceLink] Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
-  ApplianceCluster({this.resourceLink});
+  ApplianceCluster({
+    this.resourceLink,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceLink': ?resourceLink};
+    return <String, dynamic>{
+      'resourceLink': ?resourceLink,
+    };
   }
 
   factory ApplianceCluster.fromMap(Map<String, dynamic> map) {
     return ApplianceCluster(
-      resourceLink: (() {
-        final guardedValue = map['resourceLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceLink: (() { final guardedValue = map['resourceLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

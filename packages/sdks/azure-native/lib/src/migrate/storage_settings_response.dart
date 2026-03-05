@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageSettingsResponse {
   /// Cost per gigabyte per month.
   final pulumi.Input<double> costPerGbPerMonth;
-
   /// Maintenance cost percentage.
   final pulumi.Input<double> maintainanceCostPercentageToAcquisitionCost;
 
@@ -21,19 +20,15 @@ class StorageSettingsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'costPerGbPerMonth': costPerGbPerMonth,
-      'maintainanceCostPercentageToAcquisitionCost':
-          maintainanceCostPercentageToAcquisitionCost,
+      'maintainanceCostPercentageToAcquisitionCost': maintainanceCostPercentageToAcquisitionCost,
     };
   }
 
   factory StorageSettingsResponse.fromMap(Map<String, dynamic> map) {
     return StorageSettingsResponse(
-      costPerGbPerMonth: pulumi.Input.fromValue(
-        map['costPerGbPerMonth'] as double,
-      ),
-      maintainanceCostPercentageToAcquisitionCost: pulumi.Input.fromValue(
-        map['maintainanceCostPercentageToAcquisitionCost'] as double,
-      ),
+      costPerGbPerMonth: pulumi.Input.fromValue(map['costPerGbPerMonth'] as double),
+      maintainanceCostPercentageToAcquisitionCost: pulumi.Input.fromValue(map['maintainanceCostPercentageToAcquisitionCost'] as double),
     );
   }
 }
+

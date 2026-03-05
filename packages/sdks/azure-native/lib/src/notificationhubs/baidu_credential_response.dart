@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BaiduCredentialResponse {
   /// Gets or sets baidu Api Key.
   final pulumi.Input<String> baiduApiKey;
-
   /// Gets or sets baidu Endpoint.
   final pulumi.Input<String> baiduEndPoint;
-
   /// Gets or sets baidu Secret Key
   final pulumi.Input<String> baiduSecretKey;
 
@@ -39,3 +37,4 @@ class BaiduCredentialResponse {
     );
   }
 }
+

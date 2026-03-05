@@ -16,28 +16,21 @@ import 'web_app_site_push_settings_args.dart';
 class WebAppSitePushSettings extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
   late final pulumi.Output<String?> dynamicTagsJson;
-
   /// Gets or sets a flag indicating whether the Push endpoint is enabled.
   late final pulumi.Output<bool> isPushEnabled;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
   late final pulumi.Output<String?> tagWhitelistJson;
-
   /// Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
   /// Tags can consist of alphanumeric characters and the following:
   /// '_', '@', '#', '.', ':', '-'.
   /// Validation should be performed at the PushRequestHandler.
   late final pulumi.Output<String?> tagsRequiringAuth;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -50,11 +43,11 @@ class WebAppSitePushSettings extends pulumi.CustomResource {
     WebAppSitePushSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppSitePushSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppSitePushSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dynamicTagsJson = registerOutput<String?>('dynamicTagsJson');
     isPushEnabled = registerOutput<bool>('isPushEnabled');

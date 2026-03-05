@@ -397,46 +397,32 @@ import 'trigger_tumbling_window_state.dart';
 class TriggerTumblingWindow extends pulumi.CustomResource {
   /// Specifies if the Data Factory Tumbling Window Trigger is activated. Defaults to `true`.
   late final pulumi.Output<bool?> activated;
-
   /// A map of additional properties to associate with the Data Factory Tumbling Window Trigger.
   late final pulumi.Output<Map<String, String>?> additionalProperties;
-
   /// List of tags that can be used for describing the Data Factory Tumbling Window Trigger.
   late final pulumi.Output<List<String>?> annotations;
-
   /// The ID of Data Factory in which to associate the Trigger with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
-
   /// Specifies how long the trigger waits before triggering new run. formatted as an `D.HH:MM:SS`.
   late final pulumi.Output<String?> delay;
-
   /// The description for the Data Factory Tumbling Window Trigger.
   late final pulumi.Output<String?> description;
-
   /// Specifies the end time of Tumbling Window, formatted as an RFC3339 string.
   late final pulumi.Output<String?> endTime;
-
   /// Specifies the frequency of Tumbling Window. Possible values are `Hour`, `Minute` and `Month`. Changing this forces a new resource.
   late final pulumi.Output<String> frequency;
-
   /// Specifies the interval of Tumbling Window. Changing this forces a new resource.
   late final pulumi.Output<int> interval;
-
   /// The max number for simultaneous trigger run fired by Tumbling Window. Possible values are between `1` and `50`. Defaults to `50`.
   late final pulumi.Output<int?> maxConcurrency;
-
   /// Specifies the name of the Data Factory Tumbling Window Trigger. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A `pipeline` block as defined below.
   late final pulumi.Output<TriggerTumblingWindowPipeline> pipeline;
-
   /// A `retry` block as defined below.
   late final pulumi.Output<TriggerTumblingWindowRetry?> retry;
-
   /// Specifies the start time of Tumbling Window, formatted as an RFC3339 string. Changing this forces a new resource.
   late final pulumi.Output<String> startTime;
-
   /// One or more `trigger_dependency` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> triggerDependencies;
 
@@ -449,15 +435,13 @@ class TriggerTumblingWindow extends pulumi.CustomResource {
     TriggerTumblingWindowArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/triggerTumblingWindow:TriggerTumblingWindow',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datafactory/triggerTumblingWindow:TriggerTumblingWindow',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activated = registerOutput<bool?>('activated');
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     delay = registerOutput<String?>('delay');
@@ -467,30 +451,10 @@ class TriggerTumblingWindow extends pulumi.CustomResource {
     interval = registerOutput<int>('interval');
     maxConcurrency = registerOutput<int?>('maxConcurrency');
     this.name = registerOutput<String>('name');
-    pipeline = registerOutput<TriggerTumblingWindowPipeline>(
-      'pipeline',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TriggerTumblingWindowPipeline.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    retry = registerOutput<TriggerTumblingWindowRetry?>(
-      'retry',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TriggerTumblingWindowRetry.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    pipeline = registerOutput<TriggerTumblingWindowPipeline>('pipeline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerTumblingWindowPipeline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retry = registerOutput<TriggerTumblingWindowRetry?>('retry', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerTumblingWindowRetry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startTime = registerOutput<String>('startTime');
-    triggerDependencies = registerOutput<List<Map<String, dynamic>>?>(
-      'triggerDependencies',
-    );
+    triggerDependencies = registerOutput<List<Map<String, dynamic>>?>('triggerDependencies');
   }
 
   /// Gets an existing [TriggerTumblingWindow] resource's state with the given [name] and [id].
@@ -511,15 +475,13 @@ class TriggerTumblingWindow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/triggerTumblingWindow:TriggerTumblingWindow',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datafactory/triggerTumblingWindow:TriggerTumblingWindow',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activated = registerOutput<bool?>('activated');
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     delay = registerOutput<String?>('delay');
@@ -529,29 +491,9 @@ class TriggerTumblingWindow extends pulumi.CustomResource {
     interval = registerOutput<int>('interval');
     maxConcurrency = registerOutput<int?>('maxConcurrency');
     this.name = registerOutput<String>('name');
-    pipeline = registerOutput<TriggerTumblingWindowPipeline>(
-      'pipeline',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TriggerTumblingWindowPipeline.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    retry = registerOutput<TriggerTumblingWindowRetry?>(
-      'retry',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TriggerTumblingWindowRetry.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    pipeline = registerOutput<TriggerTumblingWindowPipeline>('pipeline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerTumblingWindowPipeline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retry = registerOutput<TriggerTumblingWindowRetry?>('retry', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerTumblingWindowRetry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startTime = registerOutput<String>('startTime');
-    triggerDependencies = registerOutput<List<Map<String, dynamic>>?>(
-      'triggerDependencies',
-    );
+    triggerDependencies = registerOutput<List<Map<String, dynamic>>?>('triggerDependencies');
   }
 }

@@ -176,8 +176,7 @@ Future<GetConnectedEnvironmentResult> getConnectedEnvironment(
 /// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_connected_environments_certificate_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConnectedEnvironmentsCertificateResult>
-getConnectedEnvironmentsCertificate(
+Future<GetConnectedEnvironmentsCertificateResult> getConnectedEnvironmentsCertificate(
   GetConnectedEnvironmentsCertificateArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -197,8 +196,7 @@ getConnectedEnvironmentsCertificate(
 /// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_connected_environments_dapr_component_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConnectedEnvironmentsDaprComponentResult>
-getConnectedEnvironmentsDaprComponent(
+Future<GetConnectedEnvironmentsDaprComponentResult> getConnectedEnvironmentsDaprComponent(
   GetConnectedEnvironmentsDaprComponentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -337,7 +335,8 @@ Future<GetContainerAppsSourceControlResult> getContainerAppsSourceControl(
 ///
 /// Other available API versions: 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
-Future<GetCustomDomainVerificationIdResult> getCustomDomainVerificationId({
+Future<GetCustomDomainVerificationIdResult> getCustomDomainVerificationId(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -596,8 +595,7 @@ Future<GetManagedEnvironmentAuthTokenResult> getManagedEnvironmentAuthToken(
 /// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_managed_environment_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagedEnvironmentPrivateEndpointConnectionResult>
-getManagedEnvironmentPrivateEndpointConnection(
+Future<GetManagedEnvironmentPrivateEndpointConnectionResult> getManagedEnvironmentPrivateEndpointConnection(
   GetManagedEnvironmentPrivateEndpointConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -657,8 +655,7 @@ Future<ListBuildAuthTokenResult> listBuildAuthToken(
 /// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_list_connected_environments_dapr_component_secrets_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListConnectedEnvironmentsDaprComponentSecretsResult>
-listConnectedEnvironmentsDaprComponentSecrets(
+Future<ListConnectedEnvironmentsDaprComponentSecretsResult> listConnectedEnvironmentsDaprComponentSecrets(
   ListConnectedEnvironmentsDaprComponentSecretsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -678,8 +675,7 @@ listConnectedEnvironmentsDaprComponentSecrets(
 /// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_list_container_app_custom_host_name_analysis_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListContainerAppCustomHostNameAnalysisResult>
-listContainerAppCustomHostNameAnalysis(
+Future<ListContainerAppCustomHostNameAnalysisResult> listContainerAppCustomHostNameAnalysis(
   ListContainerAppCustomHostNameAnalysisArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

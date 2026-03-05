@@ -15,3 +15,4 @@ enum FrontDoorEnabledState {
     throw ArgumentError('Unknown FrontDoorEnabledState value: $value');
   }
 }
+

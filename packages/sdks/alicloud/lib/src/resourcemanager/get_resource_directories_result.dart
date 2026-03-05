@@ -7,7 +7,6 @@ import 'get_resource_directories_directory.dart';
 class GetResourceDirectoriesResult {
   /// A list of resource directories. Each element contains the following attributes:
   final List<GetResourceDirectoriesDirectory> directories;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? outputFile;
@@ -24,11 +23,7 @@ class GetResourceDirectoriesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'directories':
-          pulumi.Input.encodeList<
-            GetResourceDirectoriesDirectory,
-            Map<String, dynamic>
-          >(directories, (value) => value.toMap()),
+      'directories': pulumi.Input.encodeList<GetResourceDirectoriesDirectory, Map<String, dynamic>>(directories, (value) => value.toMap()),
       'id': id,
       'outputFile': ?outputFile,
     };
@@ -36,18 +31,10 @@ class GetResourceDirectoriesResult {
 
   factory GetResourceDirectoriesResult.fromMap(Map<String, dynamic> map) {
     return GetResourceDirectoriesResult(
-      directories: pulumi.Input.decodeList<GetResourceDirectoriesDirectory>(
-        map['directories']!,
-        (value) => GetResourceDirectoriesDirectory.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      directories: pulumi.Input.decodeList<GetResourceDirectoriesDirectory>(map['directories']!, (value) => GetResourceDirectoriesDirectory.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

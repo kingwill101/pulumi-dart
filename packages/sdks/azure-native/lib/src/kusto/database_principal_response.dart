@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabasePrincipalResponse {
   /// Application id - relevant only for application principal type.
   final pulumi.Input<String>? appId;
-
   /// Database principal email if exists.
   final pulumi.Input<String>? email;
-
   /// Database principal fully qualified name.
   final pulumi.Input<String>? fqn;
-
   /// Database principal name.
   final pulumi.Input<String> name;
-
   /// Database principal role.
   final pulumi.Input<String> role;
-
   /// The tenant name of the principal
   final pulumi.Input<String> tenantName;
-
   /// Database principal type.
   final pulumi.Input<String> type;
 
@@ -57,21 +51,9 @@ class DatabasePrincipalResponse {
 
   factory DatabasePrincipalResponse.fromMap(Map<String, dynamic> map) {
     return DatabasePrincipalResponse(
-      appId: (() {
-        final guardedValue = map['appId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fqn: (() {
-        final guardedValue = map['fqn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appId: (() { final guardedValue = map['appId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fqn: (() { final guardedValue = map['fqn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       role: pulumi.Input.fromValue(map['role'] as String),
       tenantName: pulumi.Input.fromValue(map['tenantName'] as String),
@@ -79,3 +61,4 @@ class DatabasePrincipalResponse {
     );
   }
 }
+

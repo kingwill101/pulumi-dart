@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MultiNodeParamsResponse {
   /// Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be &gt; 1.
   final pulumi.Input<int> nodeCount;
-
   /// Prefix of node_ids in case of multi-node request Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
   final pulumi.Input<String> nodeIdPrefix;
 
@@ -32,3 +31,4 @@ class MultiNodeParamsResponse {
     );
   }
 }
+

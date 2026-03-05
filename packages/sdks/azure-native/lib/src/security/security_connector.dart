@@ -220,40 +220,28 @@ import 'system_data_response.dart';
 class SecurityConnector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The security connector environment data.
   late final pulumi.Output<AwsEnvironmentDataResponse?> environmentData;
-
   /// The multi cloud resource's cloud name.
   late final pulumi.Output<String?> environmentName;
-
   /// Entity tag is used for comparing two or more entities from the same requested resource.
   late final pulumi.Output<String?> etag;
-
   /// The multi cloud resource identifier (account id in case of AWS connector, project number in case of GCP connector).
   late final pulumi.Output<String?> hierarchyIdentifier;
-
   /// The date on which the trial period will end, if applicable. Trial period exists for 30 days after upgrading to payed offerings.
   late final pulumi.Output<String> hierarchyIdentifierTrialEndDate;
-
   /// Kind of the resource
   late final pulumi.Output<String?> kind;
-
   /// Location where the resource is stored
   late final pulumi.Output<String?> location;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// A collection of offerings for the security connector.
   late final pulumi.Output<List<Map<String, dynamic>>?> offerings;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// A list of key value pairs that describe the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -266,42 +254,22 @@ class SecurityConnector extends pulumi.CustomResource {
     SecurityConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:SecurityConnector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:security:SecurityConnector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    environmentData = registerOutput<AwsEnvironmentDataResponse?>(
-      'environmentData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AwsEnvironmentDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    environmentData = registerOutput<AwsEnvironmentDataResponse?>('environmentData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsEnvironmentDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     environmentName = registerOutput<String?>('environmentName');
     etag = registerOutput<String?>('etag');
     hierarchyIdentifier = registerOutput<String?>('hierarchyIdentifier');
-    hierarchyIdentifierTrialEndDate = registerOutput<String>(
-      'hierarchyIdentifierTrialEndDate',
-    );
+    hierarchyIdentifierTrialEndDate = registerOutput<String>('hierarchyIdentifierTrialEndDate');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     offerings = registerOutput<List<Map<String, dynamic>>?>('offerings');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

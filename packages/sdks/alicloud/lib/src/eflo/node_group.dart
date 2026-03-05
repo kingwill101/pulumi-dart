@@ -1119,52 +1119,36 @@ import 'node_group_state.dart';
 class NodeGroup extends pulumi.CustomResource {
   /// Az
   late final pulumi.Output<String> az;
-
   /// Cluster ID
   late final pulumi.Output<String> clusterId;
-
   /// Create time
   late final pulumi.Output<String> createTime;
-
   /// Whether to allow skipping failed nodes. Default value: False
   late final pulumi.Output<bool?> ignoreFailedNodeTasks;
-
   /// Image ID. You can modify the image ID since v1.252.0.
   late final pulumi.Output<String> imageId;
-
   /// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipAllocationPolicies;
-
   /// key pair name
   late final pulumi.Output<String?> keyPairName;
-
   /// Login Password
   late final pulumi.Output<String?> loginPassword;
-
   /// Machine type
   late final pulumi.Output<String> machineType;
-
   /// NodeGroupDescription
   late final pulumi.Output<String?> nodeGroupDescription;
-
   /// The first ID of the resource
   late final pulumi.Output<String> nodeGroupId;
-
   /// The name of the resource
   late final pulumi.Output<String> nodeGroupName;
-
   /// Node List See `nodes` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> nodes;
-
   /// Custom Data
   late final pulumi.Output<String?> userData;
-
   /// Cluster subnet list
   late final pulumi.Output<List<String>?> vpdSubnets;
-
   /// Zone ID of the switch
   late final pulumi.Output<String?> vswitchZoneId;
-
   /// Zone ID
   late final pulumi.Output<String?> zoneId;
 
@@ -1177,19 +1161,17 @@ class NodeGroup extends pulumi.CustomResource {
     NodeGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/nodeGroup:NodeGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/nodeGroup:NodeGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     az = registerOutput<String>('az');
     clusterId = registerOutput<String>('clusterId');
     createTime = registerOutput<String>('createTime');
     ignoreFailedNodeTasks = registerOutput<bool?>('ignoreFailedNodeTasks');
     imageId = registerOutput<String>('imageId');
-    ipAllocationPolicies = registerOutput<List<Map<String, dynamic>>?>(
-      'ipAllocationPolicies',
-    );
+    ipAllocationPolicies = registerOutput<List<Map<String, dynamic>>?>('ipAllocationPolicies');
     keyPairName = registerOutput<String?>('keyPairName');
     loginPassword = registerOutput<String?>('loginPassword');
     machineType = registerOutput<String>('machineType');
@@ -1221,19 +1203,17 @@ class NodeGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/nodeGroup:NodeGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/nodeGroup:NodeGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     az = registerOutput<String>('az');
     clusterId = registerOutput<String>('clusterId');
     createTime = registerOutput<String>('createTime');
     ignoreFailedNodeTasks = registerOutput<bool?>('ignoreFailedNodeTasks');
     imageId = registerOutput<String>('imageId');
-    ipAllocationPolicies = registerOutput<List<Map<String, dynamic>>?>(
-      'ipAllocationPolicies',
-    );
+    ipAllocationPolicies = registerOutput<List<Map<String, dynamic>>?>('ipAllocationPolicies');
     keyPairName = registerOutput<String?>('keyPairName');
     loginPassword = registerOutput<String?>('loginPassword');
     machineType = registerOutput<String>('machineType');

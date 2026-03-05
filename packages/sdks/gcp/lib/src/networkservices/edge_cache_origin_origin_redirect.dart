@@ -11,19 +11,20 @@ class EdgeCacheOriginOriginRedirect {
 
   /// Creates a new [EdgeCacheOriginOriginRedirect].
   /// [redirectConditions] The set of redirect response codes that the CDN
-  EdgeCacheOriginOriginRedirect({this.redirectConditions});
+  EdgeCacheOriginOriginRedirect({
+    this.redirectConditions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'redirectConditions': ?redirectConditions};
+    return <String, dynamic>{
+      'redirectConditions': ?redirectConditions,
+    };
   }
 
   factory EdgeCacheOriginOriginRedirect.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginOriginRedirect(
-      redirectConditions: (() {
-        final guardedValue = map['redirectConditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      redirectConditions: (() { final guardedValue = map['redirectConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

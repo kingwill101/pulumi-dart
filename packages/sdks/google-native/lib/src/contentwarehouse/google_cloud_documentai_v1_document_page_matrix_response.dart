@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1DocumentPageMatrixResponse {
   /// Number of columns in the matrix.
   final pulumi.Input<int> cols;
-
   /// The matrix data.
   final pulumi.Input<String> data;
-
   /// Number of rows in the matrix.
   final pulumi.Input<int> rows;
-
   /// This encodes information about what data type the matrix uses. For example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of OpenCV primitive data types, please refer to https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html
   final pulumi.Input<int> type;
 
@@ -37,9 +34,7 @@ class GoogleCloudDocumentaiV1DocumentPageMatrixResponse {
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageMatrixResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1DocumentPageMatrixResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageMatrixResponse(
       cols: pulumi.Input.fromValue(map['cols'] as int),
       data: pulumi.Input.fromValue(map['data'] as String),
@@ -48,3 +43,4 @@ class GoogleCloudDocumentaiV1DocumentPageMatrixResponse {
     );
   }
 }
+

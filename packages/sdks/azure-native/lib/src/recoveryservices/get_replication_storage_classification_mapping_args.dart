@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationStorageClassificationMappingArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
-
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
-
   /// Storage classification mapping name.
   final pulumi.Input<String> storageClassificationMappingName;
-
   /// Storage classification name.
   final pulumi.Input<String> storageClassificationName;
 
@@ -46,21 +42,14 @@ class GetReplicationStorageClassificationMappingArgs {
     };
   }
 
-  factory GetReplicationStorageClassificationMappingArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetReplicationStorageClassificationMappingArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationStorageClassificationMappingArgs(
       fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
-      storageClassificationMappingName: pulumi.Input.fromValue(
-        map['storageClassificationMappingName'] as String,
-      ),
-      storageClassificationName: pulumi.Input.fromValue(
-        map['storageClassificationName'] as String,
-      ),
+      storageClassificationMappingName: pulumi.Input.fromValue(map['storageClassificationMappingName'] as String),
+      storageClassificationName: pulumi.Input.fromValue(map['storageClassificationName'] as String),
     );
   }
 }
+

@@ -694,49 +694,34 @@ import 'system_data_response.dart';
 class Policy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Describes custom rules inside the policy.
   late final pulumi.Output<CustomRuleListResponse?> customRules;
-
   /// Describes Azure CDN endpoints associated with this Web Application Firewall policy.
   late final pulumi.Output<List<Map<String, dynamic>>> endpointLinks;
-
   /// Gets a unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String?> etag;
-
   /// Key-Value pair representing additional properties for Web Application Firewall policy.
   late final pulumi.Output<Map<String, String>?> extendedProperties;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Describes managed rules inside the policy.
   late final pulumi.Output<ManagedRuleSetListResponse?> managedRules;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Describes  policySettings for policy
   late final pulumi.Output<PolicySettingsResponse?> policySettings;
-
   /// Provisioning state of the WebApplicationFirewallPolicy.
   late final pulumi.Output<String> provisioningState;
-
   /// Describes rate limit rules inside the policy.
   late final pulumi.Output<RateLimitRuleListResponse?> rateLimitRules;
-
   /// Resource status of the policy.
   late final pulumi.Output<String> resourceState;
-
   /// The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy.
   late final pulumi.Output<SkuResponse> sku;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -744,83 +729,30 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_cdn_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:cdn:Policy',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Policy(
+    String name, {
+    PolicyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:cdn:Policy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    customRules = registerOutput<CustomRuleListResponse?>(
-      'customRules',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomRuleListResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customRules = registerOutput<CustomRuleListResponse?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomRuleListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointLinks = registerOutput<List<Map<String, dynamic>>>('endpointLinks');
     etag = registerOutput<String?>('etag');
-    extendedProperties = registerOutput<Map<String, String>?>(
-      'extendedProperties',
-    );
+    extendedProperties = registerOutput<Map<String, String>?>('extendedProperties');
     location = registerOutput<String>('location');
-    managedRules = registerOutput<ManagedRuleSetListResponse?>(
-      'managedRules',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedRuleSetListResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managedRules = registerOutput<ManagedRuleSetListResponse?>('managedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedRuleSetListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    policySettings = registerOutput<PolicySettingsResponse?>(
-      'policySettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicySettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    policySettings = registerOutput<PolicySettingsResponse?>('policySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    rateLimitRules = registerOutput<RateLimitRuleListResponse?>(
-      'rateLimitRules',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RateLimitRuleListResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rateLimitRules = registerOutput<RateLimitRuleListResponse?>('rateLimitRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RateLimitRuleListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceState = registerOutput<String>('resourceState');
-    sku = registerOutput<SkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

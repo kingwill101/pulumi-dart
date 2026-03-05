@@ -10,24 +10,18 @@ import 'configuration_template_setting.dart';
 class ConfigurationTemplateArgs {
   /// name of the application to associate with this configuration template
   final pulumi.Input<String> application;
-
   /// Short description of the Template
   final pulumi.Input<String>? description;
-
   /// The ID of the environment used with this configuration template
   final pulumi.Input<String>? environmentId;
-
   /// A unique name for this Template.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Option settings to configure the new Environment. These
   /// override specific values that are set as defaults. The format is detailed
   /// below in Option Settings
   final pulumi.Input<List<ConfigurationTemplateSetting>>? settings;
-
   /// A solution stack to base your Template
   /// off of. Example stacks can be found in the [Amazon API documentation][1]
   final pulumi.Input<String>? solutionStackName;
@@ -57,18 +51,7 @@ class ConfigurationTemplateArgs {
       'environmentId': ?environmentId,
       'name': ?name,
       'region': ?region,
-      'settings':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConfigurationTemplateSetting>,
-            List<Map<String, dynamic>>
-          >(
-            settings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConfigurationTemplateSetting,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'settings': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationTemplateSetting>, List<Map<String, dynamic>>>(settings, (value) => pulumi.Input.encodeList<ConfigurationTemplateSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'solutionStackName': ?solutionStackName,
     };
   }
@@ -76,43 +59,13 @@ class ConfigurationTemplateArgs {
   factory ConfigurationTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationTemplateArgs(
       application: pulumi.Input.fromValue(map['application'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      environmentId: (() {
-        final guardedValue = map['environmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      settings: (() {
-        final guardedValue = map['settings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ConfigurationTemplateSetting>(
-            guardedValue,
-            (value) => ConfigurationTemplateSetting.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      solutionStackName: (() {
-        final guardedValue = map['solutionStackName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationTemplateSetting>(guardedValue, (value) => ConfigurationTemplateSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      solutionStackName: (() { final guardedValue = map['solutionStackName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

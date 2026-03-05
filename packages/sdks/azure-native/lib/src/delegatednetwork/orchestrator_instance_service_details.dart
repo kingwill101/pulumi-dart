@@ -210,46 +210,32 @@ import 'orchestrator_instance_service_details_args.dart';
 class OrchestratorInstanceServiceDetails extends pulumi.CustomResource {
   /// K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified
   late final pulumi.Output<String?> apiServerEndpoint;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// RootCA certificate of kubernetes cluster base64 encoded
   late final pulumi.Output<String?> clusterRootCA;
-
   /// Properties of the controller.
   late final pulumi.Output<ControllerDetailsResponse> controllerDetails;
-
   /// The identity of the orchestrator
   late final pulumi.Output<OrchestratorIdentityResponse?> identity;
-
   /// The kind of workbook. Choices are user and shared.
   late final pulumi.Output<String> kind;
-
   /// Location of the resource.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// AAD ID used with apiserver
   late final pulumi.Output<String?> orchestratorAppId;
-
   /// TenantID of server App ID
   late final pulumi.Output<String?> orchestratorTenantId;
-
   /// private link arm resource id. Either one of apiServerEndpoint or privateLinkResourceId can be specified
   late final pulumi.Output<String?> privateLinkResourceId;
-
   /// The current state of orchestratorInstance resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Resource guid.
   late final pulumi.Output<String> resourceGuid;
-
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of resource.
   late final pulumi.Output<String> type;
 
@@ -262,34 +248,16 @@ class OrchestratorInstanceServiceDetails extends pulumi.CustomResource {
     OrchestratorInstanceServiceDetailsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:delegatednetwork:OrchestratorInstanceServiceDetails',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:delegatednetwork:OrchestratorInstanceServiceDetails',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiServerEndpoint = registerOutput<String?>('apiServerEndpoint');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clusterRootCA = registerOutput<String?>('clusterRootCA');
-    controllerDetails = registerOutput<ControllerDetailsResponse>(
-      'controllerDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ControllerDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<OrchestratorIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OrchestratorIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    controllerDetails = registerOutput<ControllerDetailsResponse>('controllerDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControllerDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<OrchestratorIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrchestratorIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');

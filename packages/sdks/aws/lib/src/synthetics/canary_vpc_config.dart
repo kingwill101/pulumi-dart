@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CanaryVpcConfig {
   /// If `true`, allow outbound IPv6 traffic on VPC canaries that are connected to dual-stack subnets. The default is `false`.
   final pulumi.Input<bool>? ipv6AllowedForDualStack;
-
   /// IDs of the security groups for this canary.
   final pulumi.Input<List<String>>? securityGroupIds;
-
   /// IDs of the subnets where this canary is to run.
   final pulumi.Input<List<String>>? subnetIds;
-
   /// ID of the VPC where this canary is to run.
   final pulumi.Input<String>? vpcId;
 
@@ -38,26 +35,11 @@ class CanaryVpcConfig {
 
   factory CanaryVpcConfig.fromMap(Map<String, dynamic> map) {
     return CanaryVpcConfig(
-      ipv6AllowedForDualStack: (() {
-        final guardedValue = map['ipv6AllowedForDualStack'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      securityGroupIds: (() {
-        final guardedValue = map['securityGroupIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      subnetIds: (() {
-        final guardedValue = map['subnetIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipv6AllowedForDualStack: (() { final guardedValue = map['ipv6AllowedForDualStack']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      securityGroupIds: (() { final guardedValue = map['securityGroupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      subnetIds: (() { final guardedValue = map['subnetIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

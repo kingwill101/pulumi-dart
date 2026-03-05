@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getApplication.
 class GetApplicationResult {
   final String accountName;
-
   /// May packages within the application be overwritten using the same version string.
   final bool allowUpdates;
-
   /// The package to use if a client requests the application but does not specify a version.
   final String defaultVersion;
-
   /// The display name for the application.
   final String displayName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Batch application name.
   final String name;
   final String resourceGroupName;
@@ -62,3 +58,4 @@ class GetApplicationResult {
     );
   }
 }
+

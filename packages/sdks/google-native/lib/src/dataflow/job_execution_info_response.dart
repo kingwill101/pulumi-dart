@@ -9,17 +9,20 @@ class JobExecutionInfoResponse {
 
   /// Creates a new [JobExecutionInfoResponse].
   /// [stages] A mapping from each stage to the information about that stage.
-  JobExecutionInfoResponse({required this.stages});
+  JobExecutionInfoResponse({
+    required this.stages,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'stages': stages};
+    return <String, dynamic>{
+      'stages': stages,
+    };
   }
 
   factory JobExecutionInfoResponse.fromMap(Map<String, dynamic> map) {
     return JobExecutionInfoResponse(
-      stages: pulumi.Input.fromValue(
-        (map['stages'] as Map).cast<String, String>(),
-      ),
+      stages: pulumi.Input.fromValue((map['stages'] as Map).cast<String, String>()),
     );
   }
 }
+

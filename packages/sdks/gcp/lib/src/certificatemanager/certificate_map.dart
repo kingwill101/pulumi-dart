@@ -158,35 +158,27 @@ class CertificateMap extends pulumi.CustomResource {
   /// accurate to nanoseconds with up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
-
   /// A human-readable description of the resource.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// A list of target proxies that use this Certificate Map
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> gclbTargets;
-
   /// Set of labels associated with a Certificate Map resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// A user-defined name of the Certificate Map. Certificate Map names must be unique
   /// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
   /// accurate to nanoseconds with up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -201,11 +193,11 @@ class CertificateMap extends pulumi.CustomResource {
     CertificateMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:certificatemanager/certificateMap:CertificateMap',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:certificatemanager/certificateMap:CertificateMap',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -235,11 +227,11 @@ class CertificateMap extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:certificatemanager/certificateMap:CertificateMap',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:certificatemanager/certificateMap:CertificateMap',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

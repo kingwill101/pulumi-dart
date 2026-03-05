@@ -37,9 +37,7 @@ class GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry(
       description: pulumi.Input.fromValue(map['description'] as String),
       example: pulumi.Input.fromValue(map['example'] as int),
@@ -50,3 +48,4 @@ class GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry {
     );
   }
 }
+

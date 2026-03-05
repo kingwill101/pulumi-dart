@@ -318,24 +318,18 @@ import 'sql_role_definition_state.dart';
 class SqlRoleDefinition extends pulumi.CustomResource {
   /// The name of the Cosmos DB Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-
   /// A list of fully qualified scopes at or below which Role Assignments may be created using this Cosmos DB SQL Role Definition. It will allow application of this Cosmos DB SQL Role Definition on the entire Database Account or any underlying Database/Collection. Scopes higher than Database Account are not enforceable as assignable scopes.
   ///
   /// &gt; **Note:** The resources referenced in assignable scopes need not exist.
   late final pulumi.Output<List<String>> assignableScopes;
-
   /// An user-friendly name for the Cosmos DB SQL Role Definition which must be unique for the Database Account.
   late final pulumi.Output<String> name;
-
   /// A `permissions` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> permissions;
-
   /// The name of the Resource Group in which the Cosmos DB SQL Role Definition is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The GUID as the name of the Cosmos DB SQL Role Definition - one will be generated if not specified. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleDefinitionId;
-
   /// The type of the Cosmos DB SQL Role Definition. Possible values are `BuiltInRole` and `CustomRole`. Defaults to `CustomRole`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> type;
 
@@ -348,11 +342,11 @@ class SqlRoleDefinition extends pulumi.CustomResource {
     SqlRoleDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/sqlRoleDefinition:SqlRoleDefinition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/sqlRoleDefinition:SqlRoleDefinition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     assignableScopes = registerOutput<List<String>>('assignableScopes');
     this.name = registerOutput<String>('name');
@@ -380,11 +374,11 @@ class SqlRoleDefinition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/sqlRoleDefinition:SqlRoleDefinition',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/sqlRoleDefinition:SqlRoleDefinition',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     assignableScopes = registerOutput<List<String>>('assignableScopes');
     this.name = registerOutput<String>('name');

@@ -33,9 +33,7 @@ class GetDataSetPhysicalTableMapS3SourceUploadSetting {
     };
   }
 
-  factory GetDataSetPhysicalTableMapS3SourceUploadSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataSetPhysicalTableMapS3SourceUploadSetting.fromMap(Map<String, dynamic> map) {
     return GetDataSetPhysicalTableMapS3SourceUploadSetting(
       containsHeader: pulumi.Input.fromValue(map['containsHeader'] as bool),
       delimiter: pulumi.Input.fromValue(map['delimiter'] as String),
@@ -45,3 +43,4 @@ class GetDataSetPhysicalTableMapS3SourceUploadSetting {
     );
   }
 }
+

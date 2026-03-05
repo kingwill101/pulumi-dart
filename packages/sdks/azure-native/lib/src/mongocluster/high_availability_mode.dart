@@ -16,3 +16,4 @@ enum HighAvailabilityMode {
     throw ArgumentError('Unknown HighAvailabilityMode value: $value');
   }
 }
+

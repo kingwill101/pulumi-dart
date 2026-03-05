@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigManagementOciConfigResponseGkehubV1beta {
   /// The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
   final pulumi.Input<String> gcpServiceAccountEmail;
-
   /// The absolute path of the directory that contains the local resources. Default: the root directory of the image.
   final pulumi.Input<String> policyDir;
-
   /// Type of secret configured for access to the Git repo.
   final pulumi.Input<String> secretType;
-
   /// The OCI image repository URL for the package to sync from. e.g. `LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
   final pulumi.Input<String> syncRepo;
-
   /// Period in seconds between consecutive syncs. Default: 15.
   final pulumi.Input<String> syncWaitSecs;
 
@@ -43,13 +39,9 @@ class ConfigManagementOciConfigResponseGkehubV1beta {
     };
   }
 
-  factory ConfigManagementOciConfigResponseGkehubV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigManagementOciConfigResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ConfigManagementOciConfigResponseGkehubV1beta(
-      gcpServiceAccountEmail: pulumi.Input.fromValue(
-        map['gcpServiceAccountEmail'] as String,
-      ),
+      gcpServiceAccountEmail: pulumi.Input.fromValue(map['gcpServiceAccountEmail'] as String),
       policyDir: pulumi.Input.fromValue(map['policyDir'] as String),
       secretType: pulumi.Input.fromValue(map['secretType'] as String),
       syncRepo: pulumi.Input.fromValue(map['syncRepo'] as String),
@@ -57,3 +49,4 @@ class ConfigManagementOciConfigResponseGkehubV1beta {
     );
   }
 }
+

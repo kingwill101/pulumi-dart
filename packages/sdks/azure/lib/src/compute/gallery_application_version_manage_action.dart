@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GalleryApplicationVersionManageAction {
   /// The command to install the Gallery Application. Changing this forces a new resource to be created.
   final pulumi.Input<String> install;
-
   /// The command to remove the Gallery Application. Changing this forces a new resource to be created.
   final pulumi.Input<String> remove;
-
   /// The command to update the Gallery Application. Changing this forces a new resource to be created.
   final pulumi.Input<String>? update;
 
@@ -30,17 +28,12 @@ class GalleryApplicationVersionManageAction {
     };
   }
 
-  factory GalleryApplicationVersionManageAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GalleryApplicationVersionManageAction.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationVersionManageAction(
       install: pulumi.Input.fromValue(map['install'] as String),
       remove: pulumi.Input.fromValue(map['remove'] as String),
-      update: (() {
-        final guardedValue = map['update'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      update: (() { final guardedValue = map['update']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

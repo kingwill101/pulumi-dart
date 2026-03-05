@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getService.
 class GetServiceResult {
   final String? enable;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String password;
-
   /// The current service enable status.
   final String status;
 
@@ -34,14 +33,11 @@ class GetServiceResult {
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       password: map['password'] as String,
       status: map['status'] as String,
     );
   }
 }
+

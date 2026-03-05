@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentAgentGuardrailConfiguration {
   /// Unique identifier of the guardrail.
   final pulumi.Input<String> guardrailIdentifier;
-
   /// Version of the guardrail.
   final pulumi.Input<String> guardrailVersion;
 
@@ -26,12 +25,9 @@ class AgentAgentGuardrailConfiguration {
 
   factory AgentAgentGuardrailConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentAgentGuardrailConfiguration(
-      guardrailIdentifier: pulumi.Input.fromValue(
-        map['guardrailIdentifier'] as String,
-      ),
-      guardrailVersion: pulumi.Input.fromValue(
-        map['guardrailVersion'] as String,
-      ),
+      guardrailIdentifier: pulumi.Input.fromValue(map['guardrailIdentifier'] as String),
+      guardrailVersion: pulumi.Input.fromValue(map['guardrailVersion'] as String),
     );
   }
 }
+

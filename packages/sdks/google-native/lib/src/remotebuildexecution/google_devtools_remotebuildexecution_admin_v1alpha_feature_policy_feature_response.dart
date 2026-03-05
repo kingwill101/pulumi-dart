@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
   /// A list of acceptable values. Only effective when the policy is `RESTRICTED`.
   final pulumi.Input<List<String>> allowedValues;
-
   /// The policy of the feature.
   final pulumi.Input<String> policy;
 
@@ -19,17 +18,17 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowedValues': allowedValues, 'policy': policy};
+    return <String, dynamic>{
+      'allowedValues': allowedValues,
+      'policy': policy,
+    };
   }
 
-  factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse(
-      allowedValues: pulumi.Input.fromValue(
-        (map['allowedValues'] as List).cast<String>(),
-      ),
+      allowedValues: pulumi.Input.fromValue((map['allowedValues'] as List).cast<String>()),
       policy: pulumi.Input.fromValue(map['policy'] as String),
     );
   }
 }
+

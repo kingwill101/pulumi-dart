@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClustersClusterMaintenanceWindow {
   /// The duration of the maintenance window.
   final pulumi.Input<String> duration;
-
   /// Indicates whether to enable the maintenance window.
   final pulumi.Input<bool> enable;
-
   /// Maintenance start time.
   final pulumi.Input<String> maintenanceTime;
-
   /// The recurrence rule for the maintenance window, defined using RFC5545 Recurrence Rule syntax.
   final pulumi.Input<String> recurrence;
-
   /// The maintenance cycle.
   final pulumi.Input<String> weeklyPeriod;
 
@@ -42,9 +38,7 @@ class GetClustersClusterMaintenanceWindow {
     };
   }
 
-  factory GetClustersClusterMaintenanceWindow.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClustersClusterMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterMaintenanceWindow(
       duration: pulumi.Input.fromValue(map['duration'] as String),
       enable: pulumi.Input.fromValue(map['enable'] as bool),
@@ -54,3 +48,4 @@ class GetClustersClusterMaintenanceWindow {
     );
   }
 }
+

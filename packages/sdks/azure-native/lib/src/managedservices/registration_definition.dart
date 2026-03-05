@@ -366,19 +366,14 @@ import 'system_data_response.dart';
 class RegistrationDefinition extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the registration definition.
   late final pulumi.Output<String> name;
-
   /// The details for the Managed Services offer’s plan in Azure Marketplace.
   late final pulumi.Output<PlanResponse?> plan;
-
   /// The properties of a registration definition.
   late final pulumi.Output<RegistrationDefinitionPropertiesResponse> properties;
-
   /// The metadata for the registration assignment resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
   late final pulumi.Output<String> type;
 
@@ -391,43 +386,16 @@ class RegistrationDefinition extends pulumi.CustomResource {
     RegistrationDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:managedservices:RegistrationDefinition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:managedservices:RegistrationDefinition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    plan = registerOutput<PlanResponse?>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    properties = registerOutput<RegistrationDefinitionPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RegistrationDefinitionPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<RegistrationDefinitionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistrationDefinitionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

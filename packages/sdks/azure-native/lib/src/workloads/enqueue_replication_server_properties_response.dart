@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnqueueReplicationServerPropertiesResponse {
   /// Defines the type of Enqueue Replication Server.
   final pulumi.Input<String> ersVersion;
-
   /// Defines the health of SAP Instances.
   final pulumi.Input<String> health;
-
   /// ERS SAP Hostname.
   final pulumi.Input<String> hostname;
-
   /// ERS Instance Number.
   final pulumi.Input<String> instanceNo;
-
   /// ERS SAP IP Address.
   final pulumi.Input<String> ipAddress;
-
   /// ERS SAP Kernel Patch level.
   final pulumi.Input<String> kernelPatch;
-
   /// ERS SAP Kernel Version.
   final pulumi.Input<String> kernelVersion;
 
@@ -55,9 +49,7 @@ class EnqueueReplicationServerPropertiesResponse {
     };
   }
 
-  factory EnqueueReplicationServerPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnqueueReplicationServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EnqueueReplicationServerPropertiesResponse(
       ersVersion: pulumi.Input.fromValue(map['ersVersion'] as String),
       health: pulumi.Input.fromValue(map['health'] as String),
@@ -69,3 +61,4 @@ class EnqueueReplicationServerPropertiesResponse {
     );
   }
 }
+

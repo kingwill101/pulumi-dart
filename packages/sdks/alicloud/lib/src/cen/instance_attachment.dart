@@ -226,22 +226,16 @@ class InstanceAttachment extends pulumi.CustomResource {
   ///
   /// -&gt;**NOTE:** Ensure that the child instance is not used in Express Connect.
   late final pulumi.Output<int?> cenOwnerId;
-
   /// The ID of the child instance to attach.
   late final pulumi.Output<String> childInstanceId;
-
   /// The uid of the child instance. Only used when attach a child instance of other account.
   late final pulumi.Output<int> childInstanceOwnerId;
-
   /// The region ID of the child instance to attach.
   late final pulumi.Output<String> childInstanceRegionId;
-
   /// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
   late final pulumi.Output<String> childInstanceType;
-
   /// The ID of the CEN.
   late final pulumi.Output<String> instanceId;
-
   /// The associating status of the network.
   late final pulumi.Output<String> status;
 
@@ -254,11 +248,11 @@ class InstanceAttachment extends pulumi.CustomResource {
     InstanceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/instanceAttachment:InstanceAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/instanceAttachment:InstanceAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenOwnerId = registerOutput<int?>('cenOwnerId');
     childInstanceId = registerOutput<String>('childInstanceId');
     childInstanceOwnerId = registerOutput<int>('childInstanceOwnerId');
@@ -286,11 +280,11 @@ class InstanceAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/instanceAttachment:InstanceAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/instanceAttachment:InstanceAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenOwnerId = registerOutput<int?>('cenOwnerId');
     childInstanceId = registerOutput<String>('childInstanceId');
     childInstanceOwnerId = registerOutput<int>('childInstanceOwnerId');

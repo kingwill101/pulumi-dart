@@ -10,10 +10,8 @@ import 'defender_for_storage_setting_properties.dart';
 class DefenderForStorageArgs {
   /// Defender for Storage resource properties.
   final pulumi.Input<DefenderForStorageSettingProperties>? properties;
-
   /// The identifier of the resource.
   final pulumi.Input<String> resourceId;
-
   /// Defender for Storage setting name.
   final pulumi.Input<String>? settingName;
 
@@ -29,11 +27,7 @@ class DefenderForStorageArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            DefenderForStorageSettingProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<DefenderForStorageSettingProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceId': resourceId,
       'settingName': ?settingName,
     };
@@ -41,21 +35,10 @@ class DefenderForStorageArgs {
 
   factory DefenderForStorageArgs.fromMap(Map<String, dynamic> map) {
     return DefenderForStorageArgs(
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DefenderForStorageSettingProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForStorageSettingProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
-      settingName: (() {
-        final guardedValue = map['settingName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      settingName: (() { final guardedValue = map['settingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

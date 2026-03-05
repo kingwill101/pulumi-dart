@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticKeyVaultPropertiesResponse {
   /// The name of KeyVault key.
   final pulumi.Input<String>? keyName;
-
   /// The resource ID of KeyVault.
   final pulumi.Input<String>? keyVaultResourceId;
-
   /// The Uri of KeyVault.
   final pulumi.Input<String>? keyVaultUri;
-
   /// Status of the KeyVault connection.
   final pulumi.Input<String> status;
 
@@ -39,22 +36,11 @@ class ElasticKeyVaultPropertiesResponse {
 
   factory ElasticKeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticKeyVaultPropertiesResponse(
-      keyName: (() {
-        final guardedValue = map['keyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultResourceId: (() {
-        final guardedValue = map['keyVaultResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultUri: (() {
-        final guardedValue = map['keyVaultUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultResourceId: (() { final guardedValue = map['keyVaultResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultUri: (() { final guardedValue = map['keyVaultUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

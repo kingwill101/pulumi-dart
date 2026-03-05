@@ -13,18 +13,15 @@ class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'gcePdKmsKeyName': ?gcePdKmsKeyName};
+    return <String, dynamic>{
+      'gcePdKmsKeyName': ?gcePdKmsKeyName,
+    };
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig(
-      gcePdKmsKeyName: (() {
-        final guardedValue = map['gcePdKmsKeyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gcePdKmsKeyName: (() { final guardedValue = map['gcePdKmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

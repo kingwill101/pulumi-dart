@@ -10,31 +10,20 @@ class HttpRouteRequestMirrorPolicyNetworkservicesV1beta1 {
 
   /// Creates a new [HttpRouteRequestMirrorPolicyNetworkservicesV1beta1].
   /// [destination] The destination the requests will be mirrored to. The weight of the destination will be ignored.
-  HttpRouteRequestMirrorPolicyNetworkservicesV1beta1({this.destination});
+  HttpRouteRequestMirrorPolicyNetworkservicesV1beta1({
+    this.destination,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination':
-          ?pulumi.Input.mapOptionalInputValue<
-            HttpRouteDestinationNetworkservicesV1beta1,
-            Map<String, dynamic>
-          >(destination, (value) => value.toMap()),
+      'destination': ?pulumi.Input.mapOptionalInputValue<HttpRouteDestinationNetworkservicesV1beta1, Map<String, dynamic>>(destination, (value) => value.toMap()),
     };
   }
 
-  factory HttpRouteRequestMirrorPolicyNetworkservicesV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HttpRouteRequestMirrorPolicyNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteRequestMirrorPolicyNetworkservicesV1beta1(
-      destination: (() {
-        final guardedValue = map['destination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HttpRouteDestinationNetworkservicesV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpRouteDestinationNetworkservicesV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

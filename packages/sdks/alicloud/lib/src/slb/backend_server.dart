@@ -16,10 +16,8 @@ import 'backend_server_state.dart';
 class BackendServer extends pulumi.CustomResource {
   /// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
   late final pulumi.Output<List<Map<String, dynamic>>?> backendServers;
-
   /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
   late final pulumi.Output<bool?> deleteProtectionValidation;
-
   /// ID of the load balancer.
   late final pulumi.Output<String> loadBalancerId;
 
@@ -32,17 +30,13 @@ class BackendServer extends pulumi.CustomResource {
     BackendServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:slb/backendServer:BackendServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backendServers = registerOutput<List<Map<String, dynamic>>?>(
-      'backendServers',
-    );
-    deleteProtectionValidation = registerOutput<bool?>(
-      'deleteProtectionValidation',
-    );
+          'alicloud:slb/backendServer:BackendServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backendServers = registerOutput<List<Map<String, dynamic>>?>('backendServers');
+    deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
     loadBalancerId = registerOutput<String>('loadBalancerId');
   }
 
@@ -64,17 +58,13 @@ class BackendServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:slb/backendServer:BackendServer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backendServers = registerOutput<List<Map<String, dynamic>>?>(
-      'backendServers',
-    );
-    deleteProtectionValidation = registerOutput<bool?>(
-      'deleteProtectionValidation',
-    );
+          'alicloud:slb/backendServer:BackendServer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backendServers = registerOutput<List<Map<String, dynamic>>?>('backendServers');
+    deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
     loadBalancerId = registerOutput<String>('loadBalancerId');
   }
 }

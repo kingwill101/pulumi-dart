@@ -14,3 +14,4 @@ enum PlatformValues {
     throw ArgumentError('Unknown PlatformValues value: $value');
   }
 }
+

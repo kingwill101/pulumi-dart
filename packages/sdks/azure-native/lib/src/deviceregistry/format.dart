@@ -15,3 +15,4 @@ enum Format {
     throw ArgumentError('Unknown Format value: $value');
   }
 }
+

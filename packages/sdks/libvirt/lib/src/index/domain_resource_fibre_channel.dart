@@ -8,10 +8,14 @@ class DomainResourceFibreChannel {
 
   /// Creates a new [DomainResourceFibreChannel].
   /// [appId] Sets the application ID for the Fibre Channel resource.
-  DomainResourceFibreChannel({required this.appId});
+  DomainResourceFibreChannel({
+    required this.appId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'appId': appId};
+    return <String, dynamic>{
+      'appId': appId,
+    };
   }
 
   factory DomainResourceFibreChannel.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainResourceFibreChannel {
     );
   }
 }
+

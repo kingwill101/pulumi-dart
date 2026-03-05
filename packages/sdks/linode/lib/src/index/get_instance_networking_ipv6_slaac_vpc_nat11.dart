@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceNetworkingIpv6SlaacVpcNat11 {
   /// The address.
   final pulumi.Input<String> address;
-
   /// The unique globally general API entity identifier for the VPC subnet.
   final pulumi.Input<int> subnetId;
-
   /// The unique globally general API entity identifier for the VPC.
   final pulumi.Input<int> vpcId;
 
@@ -30,9 +28,7 @@ class GetInstanceNetworkingIpv6SlaacVpcNat11 {
     };
   }
 
-  factory GetInstanceNetworkingIpv6SlaacVpcNat11.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceNetworkingIpv6SlaacVpcNat11.fromMap(Map<String, dynamic> map) {
     return GetInstanceNetworkingIpv6SlaacVpcNat11(
       address: pulumi.Input.fromValue(map['address'] as String),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as int),
@@ -40,3 +36,4 @@ class GetInstanceNetworkingIpv6SlaacVpcNat11 {
     );
   }
 }
+

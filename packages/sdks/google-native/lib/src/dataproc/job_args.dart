@@ -23,51 +23,36 @@ import 'trino_job.dart';
 class JobArgs {
   /// Optional. Driver scheduling configuration.
   final pulumi.Input<DriverSchedulingConfig>? driverSchedulingConfig;
-
   /// Optional. Job is a Flink job.
   final pulumi.Input<FlinkJob>? flinkJob;
-
   /// Optional. Job is a Hadoop job.
   final pulumi.Input<HadoopJob>? hadoopJob;
-
   /// Optional. Job is a Hive job.
   final pulumi.Input<HiveJob>? hiveJob;
-
   /// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Optional. Job is a Pig job.
   final pulumi.Input<PigJob>? pigJob;
-
   /// Job information, including how, when, and where to run the job.
   final pulumi.Input<JobPlacement> placement;
-
   /// Optional. Job is a Presto job.
   final pulumi.Input<PrestoJob>? prestoJob;
   final pulumi.Input<String>? project;
-
   /// Optional. Job is a PySpark job.
   final pulumi.Input<PySparkJob>? pysparkJob;
-
   /// Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
   final pulumi.Input<JobReference>? reference;
   final pulumi.Input<String> region;
-
   /// Optional. A unique id used to identify the request. If the server receives two SubmitJobRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.SubmitJobRequest)s with the same id, then the second request will be ignored and the first Job created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
   final pulumi.Input<String>? requestId;
-
   /// Optional. Job scheduling configuration.
   final pulumi.Input<JobScheduling>? scheduling;
-
   /// Optional. Job is a Spark job.
   final pulumi.Input<SparkJob>? sparkJob;
-
   /// Optional. Job is a SparkR job.
   final pulumi.Input<SparkRJob>? sparkRJob;
-
   /// Optional. Job is a SparkSql job.
   final pulumi.Input<SparkSqlJob>? sparkSqlJob;
-
   /// Optional. Job is a Trino job.
   final pulumi.Input<TrinoJob>? trinoJob;
 
@@ -113,201 +98,48 @@ class JobArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'driverSchedulingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            DriverSchedulingConfig,
-            Map<String, dynamic>
-          >(driverSchedulingConfig, (value) => value.toMap()),
-      'flinkJob':
-          ?pulumi.Input.mapOptionalInputValue<FlinkJob, Map<String, dynamic>>(
-            flinkJob,
-            (value) => value.toMap(),
-          ),
-      'hadoopJob':
-          ?pulumi.Input.mapOptionalInputValue<HadoopJob, Map<String, dynamic>>(
-            hadoopJob,
-            (value) => value.toMap(),
-          ),
-      'hiveJob':
-          ?pulumi.Input.mapOptionalInputValue<HiveJob, Map<String, dynamic>>(
-            hiveJob,
-            (value) => value.toMap(),
-          ),
+      'driverSchedulingConfig': ?pulumi.Input.mapOptionalInputValue<DriverSchedulingConfig, Map<String, dynamic>>(driverSchedulingConfig, (value) => value.toMap()),
+      'flinkJob': ?pulumi.Input.mapOptionalInputValue<FlinkJob, Map<String, dynamic>>(flinkJob, (value) => value.toMap()),
+      'hadoopJob': ?pulumi.Input.mapOptionalInputValue<HadoopJob, Map<String, dynamic>>(hadoopJob, (value) => value.toMap()),
+      'hiveJob': ?pulumi.Input.mapOptionalInputValue<HiveJob, Map<String, dynamic>>(hiveJob, (value) => value.toMap()),
       'labels': ?labels,
-      'pigJob':
-          ?pulumi.Input.mapOptionalInputValue<PigJob, Map<String, dynamic>>(
-            pigJob,
-            (value) => value.toMap(),
-          ),
-      'placement':
-          pulumi.Input.mapInputValue<JobPlacement, Map<String, dynamic>>(
-            placement,
-            (value) => value.toMap(),
-          ),
-      'prestoJob':
-          ?pulumi.Input.mapOptionalInputValue<PrestoJob, Map<String, dynamic>>(
-            prestoJob,
-            (value) => value.toMap(),
-          ),
+      'pigJob': ?pulumi.Input.mapOptionalInputValue<PigJob, Map<String, dynamic>>(pigJob, (value) => value.toMap()),
+      'placement': pulumi.Input.mapInputValue<JobPlacement, Map<String, dynamic>>(placement, (value) => value.toMap()),
+      'prestoJob': ?pulumi.Input.mapOptionalInputValue<PrestoJob, Map<String, dynamic>>(prestoJob, (value) => value.toMap()),
       'project': ?project,
-      'pysparkJob':
-          ?pulumi.Input.mapOptionalInputValue<PySparkJob, Map<String, dynamic>>(
-            pysparkJob,
-            (value) => value.toMap(),
-          ),
-      'reference':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobReference,
-            Map<String, dynamic>
-          >(reference, (value) => value.toMap()),
+      'pysparkJob': ?pulumi.Input.mapOptionalInputValue<PySparkJob, Map<String, dynamic>>(pysparkJob, (value) => value.toMap()),
+      'reference': ?pulumi.Input.mapOptionalInputValue<JobReference, Map<String, dynamic>>(reference, (value) => value.toMap()),
       'region': region,
       'requestId': ?requestId,
-      'scheduling':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobScheduling,
-            Map<String, dynamic>
-          >(scheduling, (value) => value.toMap()),
-      'sparkJob':
-          ?pulumi.Input.mapOptionalInputValue<SparkJob, Map<String, dynamic>>(
-            sparkJob,
-            (value) => value.toMap(),
-          ),
-      'sparkRJob':
-          ?pulumi.Input.mapOptionalInputValue<SparkRJob, Map<String, dynamic>>(
-            sparkRJob,
-            (value) => value.toMap(),
-          ),
-      'sparkSqlJob':
-          ?pulumi.Input.mapOptionalInputValue<
-            SparkSqlJob,
-            Map<String, dynamic>
-          >(sparkSqlJob, (value) => value.toMap()),
-      'trinoJob':
-          ?pulumi.Input.mapOptionalInputValue<TrinoJob, Map<String, dynamic>>(
-            trinoJob,
-            (value) => value.toMap(),
-          ),
+      'scheduling': ?pulumi.Input.mapOptionalInputValue<JobScheduling, Map<String, dynamic>>(scheduling, (value) => value.toMap()),
+      'sparkJob': ?pulumi.Input.mapOptionalInputValue<SparkJob, Map<String, dynamic>>(sparkJob, (value) => value.toMap()),
+      'sparkRJob': ?pulumi.Input.mapOptionalInputValue<SparkRJob, Map<String, dynamic>>(sparkRJob, (value) => value.toMap()),
+      'sparkSqlJob': ?pulumi.Input.mapOptionalInputValue<SparkSqlJob, Map<String, dynamic>>(sparkSqlJob, (value) => value.toMap()),
+      'trinoJob': ?pulumi.Input.mapOptionalInputValue<TrinoJob, Map<String, dynamic>>(trinoJob, (value) => value.toMap()),
     };
   }
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      driverSchedulingConfig: (() {
-        final guardedValue = map['driverSchedulingConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DriverSchedulingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      flinkJob: (() {
-        final guardedValue = map['flinkJob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FlinkJob.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      hadoopJob: (() {
-        final guardedValue = map['hadoopJob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HadoopJob.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      hiveJob: (() {
-        final guardedValue = map['hiveJob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HiveJob.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      pigJob: (() {
-        final guardedValue = map['pigJob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PigJob.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      placement: pulumi.Input.fromValue(
-        JobPlacement.fromMap(
-          (map['placement']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      prestoJob: (() {
-        final guardedValue = map['prestoJob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PrestoJob.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pysparkJob: (() {
-        final guardedValue = map['pysparkJob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PySparkJob.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      reference: (() {
-        final guardedValue = map['reference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobReference.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      driverSchedulingConfig: (() { final guardedValue = map['driverSchedulingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DriverSchedulingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      flinkJob: (() { final guardedValue = map['flinkJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlinkJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      hadoopJob: (() { final guardedValue = map['hadoopJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HadoopJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      hiveJob: (() { final guardedValue = map['hiveJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HiveJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      pigJob: (() { final guardedValue = map['pigJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PigJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      placement: pulumi.Input.fromValue(JobPlacement.fromMap((map['placement']! as Map).cast<String, dynamic>())),
+      prestoJob: (() { final guardedValue = map['prestoJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrestoJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pysparkJob: (() { final guardedValue = map['pysparkJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PySparkJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      reference: (() { final guardedValue = map['reference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
-      requestId: (() {
-        final guardedValue = map['requestId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scheduling: (() {
-        final guardedValue = map['scheduling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobScheduling.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      sparkJob: (() {
-        final guardedValue = map['sparkJob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SparkJob.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      sparkRJob: (() {
-        final guardedValue = map['sparkRJob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SparkRJob.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      sparkSqlJob: (() {
-        final guardedValue = map['sparkSqlJob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SparkSqlJob.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      trinoJob: (() {
-        final guardedValue = map['trinoJob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TrinoJob.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      requestId: (() { final guardedValue = map['requestId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scheduling: (() { final guardedValue = map['scheduling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobScheduling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sparkJob: (() { final guardedValue = map['sparkJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SparkJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sparkRJob: (() { final guardedValue = map['sparkRJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SparkRJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sparkSqlJob: (() { final guardedValue = map['sparkSqlJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SparkSqlJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      trinoJob: (() { final guardedValue = map['trinoJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TrinoJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

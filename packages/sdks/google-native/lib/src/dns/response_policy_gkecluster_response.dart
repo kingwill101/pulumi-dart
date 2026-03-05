@@ -16,7 +16,10 @@ class ResponsePolicyGKEClusterResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'gkeClusterName': gkeClusterName, 'kind': kind};
+    return <String, dynamic>{
+      'gkeClusterName': gkeClusterName,
+      'kind': kind,
+    };
   }
 
   factory ResponsePolicyGKEClusterResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +29,4 @@ class ResponsePolicyGKEClusterResponse {
     );
   }
 }
+

@@ -8,17 +8,20 @@ class CloudControlParameterSpecValidationRegexpPattern {
 
   /// Creates a new [CloudControlParameterSpecValidationRegexpPattern].
   /// [pattern] Regex Pattern to match the value(s) of parameter.
-  CloudControlParameterSpecValidationRegexpPattern({required this.pattern});
+  CloudControlParameterSpecValidationRegexpPattern({
+    required this.pattern,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pattern': pattern};
+    return <String, dynamic>{
+      'pattern': pattern,
+    };
   }
 
-  factory CloudControlParameterSpecValidationRegexpPattern.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudControlParameterSpecValidationRegexpPattern.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecValidationRegexpPattern(
       pattern: pulumi.Input.fromValue(map['pattern'] as String),
     );
   }
 }
+

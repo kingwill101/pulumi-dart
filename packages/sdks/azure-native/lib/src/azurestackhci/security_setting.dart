@@ -154,30 +154,20 @@ import 'system_data_response.dart';
 class SecuritySetting extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
-
   /// Secured Core Compliance Assignment
   late final pulumi.Output<String?> securedCoreComplianceAssignment;
-
   /// Security Compliance Status
-  late final pulumi.Output<SecurityComplianceStatusResponse>
-  securityComplianceStatus;
-
+  late final pulumi.Output<SecurityComplianceStatusResponse> securityComplianceStatus;
   /// SMB encryption for intra-cluster traffic Compliance Assignment
-  late final pulumi.Output<String?>
-  smbEncryptionForIntraClusterTrafficComplianceAssignment;
-
+  late final pulumi.Output<String?> smbEncryptionForIntraClusterTrafficComplianceAssignment;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// WDAC Compliance Assignment
   late final pulumi.Output<String?> wdacComplianceAssignment;
 
@@ -190,44 +180,19 @@ class SecuritySetting extends pulumi.CustomResource {
     SecuritySettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azurestackhci:SecuritySetting',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azurestackhci:SecuritySetting',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    securedCoreComplianceAssignment = registerOutput<String?>(
-      'securedCoreComplianceAssignment',
-    );
-    securityComplianceStatus = registerOutput<SecurityComplianceStatusResponse>(
-      'securityComplianceStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityComplianceStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    smbEncryptionForIntraClusterTrafficComplianceAssignment =
-        registerOutput<String?>(
-          'smbEncryptionForIntraClusterTrafficComplianceAssignment',
-        );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    securedCoreComplianceAssignment = registerOutput<String?>('securedCoreComplianceAssignment');
+    securityComplianceStatus = registerOutput<SecurityComplianceStatusResponse>('securityComplianceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityComplianceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    smbEncryptionForIntraClusterTrafficComplianceAssignment = registerOutput<String?>('smbEncryptionForIntraClusterTrafficComplianceAssignment');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    wdacComplianceAssignment = registerOutput<String?>(
-      'wdacComplianceAssignment',
-    );
+    wdacComplianceAssignment = registerOutput<String?>('wdacComplianceAssignment');
   }
 }

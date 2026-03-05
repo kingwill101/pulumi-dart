@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGenaiModelsModelVersion {
   /// Major version of the model
   final pulumi.Input<int> major;
-
   /// Minor version of the model
   final pulumi.Input<int> minor;
-
   /// Patch version of the model
   final pulumi.Input<int> patch;
 
@@ -23,7 +21,11 @@ class GetGenaiModelsModelVersion {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'major': major, 'minor': minor, 'patch': patch};
+    return <String, dynamic>{
+      'major': major,
+      'minor': minor,
+      'patch': patch,
+    };
   }
 
   factory GetGenaiModelsModelVersion.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class GetGenaiModelsModelVersion {
     );
   }
 }
+

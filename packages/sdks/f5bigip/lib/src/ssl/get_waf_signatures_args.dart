@@ -9,25 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWafSignaturesArgs {
   /// The relative detection accuracy of the signature.
   final pulumi.Input<String>? accuracy;
-
   /// Description of the signature.
   final pulumi.Input<String>? description;
   final pulumi.Input<bool>? enabled;
-
   /// Name of the signature as configured on the system.
   final pulumi.Input<String>? name;
   final pulumi.Input<bool>? performStaging;
-
   /// The relative risk level of the attack that matches this signature.
   final pulumi.Input<String>? risk;
-
   /// ID of the signature in the BIG-IP WAF database.
   final pulumi.Input<int> signatureId;
-
   /// System generated ID of the signature.
   final pulumi.Input<String>? systemSignatureId;
   final pulumi.Input<String>? tag;
-
   /// Type of the signature.
   final pulumi.Input<String>? type;
 
@@ -72,52 +66,17 @@ class GetWafSignaturesArgs {
 
   factory GetWafSignaturesArgs.fromMap(Map<String, dynamic> map) {
     return GetWafSignaturesArgs(
-      accuracy: (() {
-        final guardedValue = map['accuracy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      performStaging: (() {
-        final guardedValue = map['performStaging'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      risk: (() {
-        final guardedValue = map['risk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accuracy: (() { final guardedValue = map['accuracy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      performStaging: (() { final guardedValue = map['performStaging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      risk: (() { final guardedValue = map['risk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       signatureId: pulumi.Input.fromValue(map['signatureId'] as int),
-      systemSignatureId: (() {
-        final guardedValue = map['systemSignatureId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tag: (() {
-        final guardedValue = map['tag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      systemSignatureId: (() { final guardedValue = map['systemSignatureId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

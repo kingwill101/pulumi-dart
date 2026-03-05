@@ -10,10 +10,14 @@ class SingletonPartitionSchemeResponse {
 
   /// Creates a new [SingletonPartitionSchemeResponse].
   /// [partitionScheme] Enumerates the ways that a service can be partitioned.
-  SingletonPartitionSchemeResponse({required this.partitionScheme});
+  SingletonPartitionSchemeResponse({
+    required this.partitionScheme,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'partitionScheme': partitionScheme};
+    return <String, dynamic>{
+      'partitionScheme': partitionScheme,
+    };
   }
 
   factory SingletonPartitionSchemeResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class SingletonPartitionSchemeResponse {
     );
   }
 }
+

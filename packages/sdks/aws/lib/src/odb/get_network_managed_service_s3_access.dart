@@ -6,7 +6,6 @@ class GetNetworkManagedServiceS3Access {
   final pulumi.Input<String> domainName;
   final pulumi.Input<List<String>> ipv4Addresses;
   final pulumi.Input<String> s3PolicyDocument;
-
   /// The status of the network resource.
   final pulumi.Input<String> status;
 
@@ -34,13 +33,10 @@ class GetNetworkManagedServiceS3Access {
   factory GetNetworkManagedServiceS3Access.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagedServiceS3Access(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      ipv4Addresses: pulumi.Input.fromValue(
-        (map['ipv4Addresses'] as List).cast<String>(),
-      ),
-      s3PolicyDocument: pulumi.Input.fromValue(
-        map['s3PolicyDocument'] as String,
-      ),
+      ipv4Addresses: pulumi.Input.fromValue((map['ipv4Addresses'] as List).cast<String>()),
+      s3PolicyDocument: pulumi.Input.fromValue(map['s3PolicyDocument'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

@@ -7,52 +7,36 @@ class PersistenceProfileCookieState {
   /// To enable _ disable always sending cookies
   final pulumi.Input<String>? alwaysSend;
   final pulumi.Input<String>? appService;
-
   /// To required, preferred, or disabled policy for cookie encryption
   final pulumi.Input<String>? cookieEncryption;
-
   /// Passphrase for encrypted cookies
   final pulumi.Input<String>? cookieEncryptionPassphrase;
-
   /// Name of the cookie to track persistence
   final pulumi.Input<String>? cookieName;
-
   /// Inherit defaults from parent profile
   final pulumi.Input<String>? defaultsFrom;
-
   /// Expiration TTL for cookie specified in D:H:M:S or in seconds
   final pulumi.Input<String>? expiration;
-
   /// Length of hash to apply to cookie
   final pulumi.Input<int>? hashLength;
-
   /// Number of characters to skip in the cookie for the hash
   final pulumi.Input<int>? hashOffset;
-
   /// To enable _ disable sending only over http
   final pulumi.Input<String>? httponly;
-
   /// To enable _ disable match across pools with given persistence record
   final pulumi.Input<String>? matchAcrossPools;
-
   /// To enable _ disable match across services with given persistence record
   final pulumi.Input<String>? matchAcrossServices;
-
   /// To enable _ disable match across virtual servers with given persistence record
   final pulumi.Input<String>? matchAcrossVirtuals;
-
   /// Specifies the type of cookie processing that the system uses
   final pulumi.Input<String>? method;
-
   /// To enable _ disable
   final pulumi.Input<String>? mirror;
-
   /// Name of the persistence profile
   final pulumi.Input<String>? name;
-
   /// To enable _ disable that pool member connection limits are overridden for persisted clients. Per-virtual connection limits remain hard limits and are not overridden.
   final pulumi.Input<String>? overrideConnLimit;
-
   /// Timeout for persistence of the session
   final pulumi.Input<int>? timeout;
 
@@ -121,96 +105,25 @@ class PersistenceProfileCookieState {
 
   factory PersistenceProfileCookieState.fromMap(Map<String, dynamic> map) {
     return PersistenceProfileCookieState(
-      alwaysSend: (() {
-        final guardedValue = map['alwaysSend'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      appService: (() {
-        final guardedValue = map['appService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cookieEncryption: (() {
-        final guardedValue = map['cookieEncryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cookieEncryptionPassphrase: (() {
-        final guardedValue = map['cookieEncryptionPassphrase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cookieName: (() {
-        final guardedValue = map['cookieName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      defaultsFrom: (() {
-        final guardedValue = map['defaultsFrom'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expiration: (() {
-        final guardedValue = map['expiration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hashLength: (() {
-        final guardedValue = map['hashLength'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      hashOffset: (() {
-        final guardedValue = map['hashOffset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      httponly: (() {
-        final guardedValue = map['httponly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      matchAcrossPools: (() {
-        final guardedValue = map['matchAcrossPools'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      matchAcrossServices: (() {
-        final guardedValue = map['matchAcrossServices'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      matchAcrossVirtuals: (() {
-        final guardedValue = map['matchAcrossVirtuals'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      method: (() {
-        final guardedValue = map['method'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mirror: (() {
-        final guardedValue = map['mirror'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      overrideConnLimit: (() {
-        final guardedValue = map['overrideConnLimit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeout: (() {
-        final guardedValue = map['timeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      alwaysSend: (() { final guardedValue = map['alwaysSend']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      appService: (() { final guardedValue = map['appService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cookieEncryption: (() { final guardedValue = map['cookieEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cookieEncryptionPassphrase: (() { final guardedValue = map['cookieEncryptionPassphrase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cookieName: (() { final guardedValue = map['cookieName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultsFrom: (() { final guardedValue = map['defaultsFrom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hashLength: (() { final guardedValue = map['hashLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hashOffset: (() { final guardedValue = map['hashOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      httponly: (() { final guardedValue = map['httponly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      matchAcrossPools: (() { final guardedValue = map['matchAcrossPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      matchAcrossServices: (() { final guardedValue = map['matchAcrossServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      matchAcrossVirtuals: (() { final guardedValue = map['matchAcrossVirtuals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      method: (() { final guardedValue = map['method']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mirror: (() { final guardedValue = map['mirror']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      overrideConnLimit: (() { final guardedValue = map['overrideConnLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

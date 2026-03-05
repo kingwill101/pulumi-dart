@@ -14,3 +14,4 @@ enum IntervalUnit {
     throw ArgumentError('Unknown IntervalUnit value: $value');
   }
 }
+

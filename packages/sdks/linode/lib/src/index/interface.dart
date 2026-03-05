@@ -1202,19 +1202,14 @@ import 'interface_vpc.dart';
 class Interface extends pulumi.CustomResource {
   /// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
   late final pulumi.Output<InterfaceDefaultRoute> defaultRoute;
-
   /// The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
   late final pulumi.Output<int?> firewallId;
-
   /// The ID of the Linode to assign this interface to.
   late final pulumi.Output<int> linodeId;
-
   /// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
   late final pulumi.Output<InterfacePublic?> public;
-
   /// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
   late final pulumi.Output<InterfaceVlan?> vlan;
-
   /// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
   late final pulumi.Output<InterfaceVpc?> vpc;
 
@@ -1227,53 +1222,17 @@ class Interface extends pulumi.CustomResource {
     InterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/interface:Interface',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    defaultRoute = registerOutput<InterfaceDefaultRoute>(
-      'defaultRoute',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InterfaceDefaultRoute.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'linode:index/interface:Interface',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    defaultRoute = registerOutput<InterfaceDefaultRoute>('defaultRoute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterfaceDefaultRoute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     firewallId = registerOutput<int?>('firewallId');
     linodeId = registerOutput<int>('linodeId');
-    public = registerOutput<InterfacePublic?>(
-      'public',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InterfacePublic.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vlan = registerOutput<InterfaceVlan?>(
-      'vlan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InterfaceVlan.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpc = registerOutput<InterfaceVpc?>(
-      'vpc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InterfaceVpc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    public = registerOutput<InterfacePublic?>('public', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterfacePublic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vlan = registerOutput<InterfaceVlan?>('vlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterfaceVlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpc = registerOutput<InterfaceVpc?>('vpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterfaceVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Interface] resource's state with the given [name] and [id].
@@ -1294,52 +1253,16 @@ class Interface extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/interface:Interface',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    defaultRoute = registerOutput<InterfaceDefaultRoute>(
-      'defaultRoute',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InterfaceDefaultRoute.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'linode:index/interface:Interface',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    defaultRoute = registerOutput<InterfaceDefaultRoute>('defaultRoute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterfaceDefaultRoute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     firewallId = registerOutput<int?>('firewallId');
     linodeId = registerOutput<int>('linodeId');
-    public = registerOutput<InterfacePublic?>(
-      'public',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InterfacePublic.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vlan = registerOutput<InterfaceVlan?>(
-      'vlan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InterfaceVlan.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpc = registerOutput<InterfaceVpc?>(
-      'vpc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InterfaceVpc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    public = registerOutput<InterfacePublic?>('public', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterfacePublic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vlan = registerOutput<InterfaceVlan?>('vlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterfaceVlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpc = registerOutput<InterfaceVpc?>('vpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterfaceVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

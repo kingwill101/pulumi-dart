@@ -13,14 +13,15 @@ class ListenerDefaultActionForwardGroupConfigServerGroupTuple {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serverGroupId': serverGroupId};
+    return <String, dynamic>{
+      'serverGroupId': serverGroupId,
+    };
   }
 
-  factory ListenerDefaultActionForwardGroupConfigServerGroupTuple.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListenerDefaultActionForwardGroupConfigServerGroupTuple.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionForwardGroupConfigServerGroupTuple(
       serverGroupId: pulumi.Input.fromValue(map['serverGroupId'] as String),
     );
   }
 }
+

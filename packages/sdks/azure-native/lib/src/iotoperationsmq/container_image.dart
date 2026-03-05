@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerImage {
   /// Image pull policy.
   final pulumi.Input<String>? pullPolicy;
-
   /// Image pull secrets.
   final pulumi.Input<String>? pullSecrets;
-
   /// The Docker image name.
   final pulumi.Input<String> repository;
-
   /// The Docker  image tag.
   final pulumi.Input<String> tag;
 
@@ -39,18 +36,11 @@ class ContainerImage {
 
   factory ContainerImage.fromMap(Map<String, dynamic> map) {
     return ContainerImage(
-      pullPolicy: (() {
-        final guardedValue = map['pullPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pullSecrets: (() {
-        final guardedValue = map['pullSecrets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pullPolicy: (() { final guardedValue = map['pullPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pullSecrets: (() { final guardedValue = map['pullSecrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repository: pulumi.Input.fromValue(map['repository'] as String),
       tag: pulumi.Input.fromValue(map['tag'] as String),
     );
   }
 }
+

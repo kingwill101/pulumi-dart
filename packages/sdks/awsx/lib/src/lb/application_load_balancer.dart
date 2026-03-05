@@ -7,16 +7,12 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 class ApplicationLoadBalancer extends pulumi.ComponentResource {
   /// Default security group, if auto-created
   late final pulumi.Output<pulumi_aws_ec2.SecurityGroup?> defaultSecurityGroup;
-
   /// Default target group, if auto-created
   late final pulumi.Output<pulumi_aws_lb.TargetGroup?> defaultTargetGroup;
-
   /// Listeners created as part of this load balancer
   late final pulumi.Output<List<Map<String, dynamic>>?> listeners;
-
   /// Underlying Load Balancer resource
   late final pulumi.Output<pulumi_aws_lb.LoadBalancer?> loadBalancer;
-
   /// Id of the VPC in which this load balancer is operating
   late final pulumi.Output<String?> vpcId;
 
@@ -29,18 +25,14 @@ class ApplicationLoadBalancer extends pulumi.ComponentResource {
     ApplicationLoadBalancerArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'awsx:lb:ApplicationLoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       ) {
-    defaultSecurityGroup = registerOutput<pulumi_aws_ec2.SecurityGroup?>(
-      'defaultSecurityGroup',
-    );
-    defaultTargetGroup = registerOutput<pulumi_aws_lb.TargetGroup?>(
-      'defaultTargetGroup',
-    );
+          'awsx:lb:ApplicationLoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        ) {
+    defaultSecurityGroup = registerOutput<pulumi_aws_ec2.SecurityGroup?>('defaultSecurityGroup');
+    defaultTargetGroup = registerOutput<pulumi_aws_lb.TargetGroup?>('defaultTargetGroup');
     listeners = registerOutput<List<Map<String, dynamic>>?>('listeners');
     loadBalancer = registerOutput<pulumi_aws_lb.LoadBalancer?>('loadBalancer');
     vpcId = registerOutput<String?>('vpcId');

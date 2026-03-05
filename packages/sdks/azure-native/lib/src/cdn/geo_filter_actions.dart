@@ -15,3 +15,4 @@ enum GeoFilterActions {
     throw ArgumentError('Unknown GeoFilterActions value: $value');
   }
 }
+

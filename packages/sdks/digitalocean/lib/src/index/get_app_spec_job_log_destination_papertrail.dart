@@ -8,17 +8,20 @@ class GetAppSpecJobLogDestinationPapertrail {
 
   /// Creates a new [GetAppSpecJobLogDestinationPapertrail].
   /// [endpoint] OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
-  GetAppSpecJobLogDestinationPapertrail({required this.endpoint});
+  GetAppSpecJobLogDestinationPapertrail({
+    required this.endpoint,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'endpoint': endpoint};
+    return <String, dynamic>{
+      'endpoint': endpoint,
+    };
   }
 
-  factory GetAppSpecJobLogDestinationPapertrail.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAppSpecJobLogDestinationPapertrail.fromMap(Map<String, dynamic> map) {
     return GetAppSpecJobLogDestinationPapertrail(
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
     );
   }
 }
+

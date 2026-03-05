@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDomainZonefile.
 class GetDomainZonefileResult {
   /// The associated domain's unique ID.
   final int domainId;
   final String id;
-
   /// Array of strings representing the Domain Zonefile.
   final List<String> zoneFiles;
 
@@ -35,3 +35,4 @@ class GetDomainZonefileResult {
     );
   }
 }
+

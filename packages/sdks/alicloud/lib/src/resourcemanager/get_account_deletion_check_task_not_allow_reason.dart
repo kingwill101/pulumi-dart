@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountDeletionCheckTaskNotAllowReason {
   /// The ID of the check item.
   final pulumi.Input<String> checkId;
-
   /// The name of the cloud service to which the check item belongs.
   final pulumi.Input<String> checkName;
-
   /// The description of the check item.
   final pulumi.Input<String> description;
 
@@ -30,9 +28,7 @@ class GetAccountDeletionCheckTaskNotAllowReason {
     };
   }
 
-  factory GetAccountDeletionCheckTaskNotAllowReason.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAccountDeletionCheckTaskNotAllowReason.fromMap(Map<String, dynamic> map) {
     return GetAccountDeletionCheckTaskNotAllowReason(
       checkId: pulumi.Input.fromValue(map['checkId'] as String),
       checkName: pulumi.Input.fromValue(map['checkName'] as String),
@@ -40,3 +36,4 @@ class GetAccountDeletionCheckTaskNotAllowReason {
     );
   }
 }
+

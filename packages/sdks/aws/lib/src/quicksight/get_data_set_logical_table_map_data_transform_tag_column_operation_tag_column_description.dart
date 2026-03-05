@@ -12,14 +12,15 @@ class GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescripti
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'text': text};
+    return <String, dynamic>{
+      'text': text,
+    };
   }
 
-  factory GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription(
       text: pulumi.Input.fromValue(map['text'] as String),
     );
   }
 }
+

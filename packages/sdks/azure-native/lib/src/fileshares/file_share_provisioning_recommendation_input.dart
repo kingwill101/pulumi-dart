@@ -14,16 +14,15 @@ class FileShareProvisioningRecommendationInput {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'provisionedStorageGiB': provisionedStorageGiB};
+    return <String, dynamic>{
+      'provisionedStorageGiB': provisionedStorageGiB,
+    };
   }
 
-  factory FileShareProvisioningRecommendationInput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FileShareProvisioningRecommendationInput.fromMap(Map<String, dynamic> map) {
     return FileShareProvisioningRecommendationInput(
-      provisionedStorageGiB: pulumi.Input.fromValue(
-        map['provisionedStorageGiB'] as int,
-      ),
+      provisionedStorageGiB: pulumi.Input.fromValue(map['provisionedStorageGiB'] as int),
     );
   }
 }
+

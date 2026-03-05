@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepositoryEncryptionConfiguration {
   /// The encryption type to use for the repository. Valid values are `AES256` or `KMS`. Defaults to `AES256`.
   final pulumi.Input<String>? encryptionType;
-
   /// The ARN of the KMS key to use when `encryption_type` is `KMS`. If not specified, uses the default AWS managed key for ECR.
   final pulumi.Input<String>? kmsKey;
 
   /// Creates a new [RepositoryEncryptionConfiguration].
   /// [encryptionType] The encryption type to use for the repository. Valid values are `AES256` or `KMS`. Defaults to `AES256`.
   /// [kmsKey] The ARN of the KMS key to use when `encryption_type` is `KMS`. If not specified, uses the default AWS managed key for ECR.
-  RepositoryEncryptionConfiguration({this.encryptionType, this.kmsKey});
+  RepositoryEncryptionConfiguration({
+    this.encryptionType,
+    this.kmsKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,16 +25,9 @@ class RepositoryEncryptionConfiguration {
 
   factory RepositoryEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return RepositoryEncryptionConfiguration(
-      encryptionType: (() {
-        final guardedValue = map['encryptionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsKey: (() {
-        final guardedValue = map['kmsKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      encryptionType: (() { final guardedValue = map['encryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

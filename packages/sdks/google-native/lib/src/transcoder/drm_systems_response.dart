@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DrmSystemsResponse {
   /// Clearkey configuration.
   final pulumi.Input<Map<String, dynamic>> clearkey;
-
   /// Fairplay configuration.
   final pulumi.Input<Map<String, dynamic>> fairplay;
-
   /// Playready configuration.
   final pulumi.Input<Map<String, dynamic>> playready;
-
   /// Widevine configuration.
   final pulumi.Input<Map<String, dynamic>> widevine;
 
@@ -39,18 +36,11 @@ class DrmSystemsResponse {
 
   factory DrmSystemsResponse.fromMap(Map<String, dynamic> map) {
     return DrmSystemsResponse(
-      clearkey: pulumi.Input.fromValue(
-        (map['clearkey']! as Map).cast<String, dynamic>(),
-      ),
-      fairplay: pulumi.Input.fromValue(
-        (map['fairplay']! as Map).cast<String, dynamic>(),
-      ),
-      playready: pulumi.Input.fromValue(
-        (map['playready']! as Map).cast<String, dynamic>(),
-      ),
-      widevine: pulumi.Input.fromValue(
-        (map['widevine']! as Map).cast<String, dynamic>(),
-      ),
+      clearkey: pulumi.Input.fromValue((map['clearkey']! as Map).cast<String, dynamic>()),
+      fairplay: pulumi.Input.fromValue((map['fairplay']! as Map).cast<String, dynamic>()),
+      playready: pulumi.Input.fromValue((map['playready']! as Map).cast<String, dynamic>()),
+      widevine: pulumi.Input.fromValue((map['widevine']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

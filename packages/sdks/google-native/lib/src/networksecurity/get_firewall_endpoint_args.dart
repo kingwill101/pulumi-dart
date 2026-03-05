@@ -31,11 +31,10 @@ class GetFirewallEndpointArgs {
 
   factory GetFirewallEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallEndpointArgs(
-      firewallEndpointId: pulumi.Input.fromValue(
-        map['firewallEndpointId'] as String,
-      ),
+      firewallEndpointId: pulumi.Input.fromValue(map['firewallEndpointId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
+

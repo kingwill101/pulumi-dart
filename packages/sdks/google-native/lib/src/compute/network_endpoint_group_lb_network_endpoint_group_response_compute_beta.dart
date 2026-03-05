@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta {
   /// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
   final pulumi.Input<int> defaultPort;
-
   /// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
   final pulumi.Input<String> network;
-
   /// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
   final pulumi.Input<String> subnetwork;
-
   /// The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
   final pulumi.Input<String> zone;
 
@@ -37,9 +34,7 @@ class NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta {
     };
   }
 
-  factory NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta(
       defaultPort: pulumi.Input.fromValue(map['defaultPort'] as int),
       network: pulumi.Input.fromValue(map['network'] as String),
@@ -48,3 +43,4 @@ class NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta {
     );
   }
 }
+

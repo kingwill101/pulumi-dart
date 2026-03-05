@@ -18,3 +18,4 @@ enum ActionType {
     throw ArgumentError('Unknown ActionType value: $value');
   }
 }
+

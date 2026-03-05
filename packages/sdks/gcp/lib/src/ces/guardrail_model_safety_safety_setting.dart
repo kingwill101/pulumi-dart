@@ -11,7 +11,6 @@ class GuardrailModelSafetySafetySetting {
   /// HARM_CATEGORY_SEXUALLY_EXPLICIT
   /// Possible values are: `HARM_CATEGORY_HATE_SPEECH`, `HARM_CATEGORY_DANGEROUS_CONTENT`, `HARM_CATEGORY_HARASSMENT`, `HARM_CATEGORY_SEXUALLY_EXPLICIT`.
   final pulumi.Input<String> category;
-
   /// The harm block threshold.
   /// Possible values:
   /// BLOCK_LOW_AND_ABOVE
@@ -31,7 +30,10 @@ class GuardrailModelSafetySafetySetting {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'category': category, 'threshold': threshold};
+    return <String, dynamic>{
+      'category': category,
+      'threshold': threshold,
+    };
   }
 
   factory GuardrailModelSafetySafetySetting.fromMap(Map<String, dynamic> map) {
@@ -41,3 +43,4 @@ class GuardrailModelSafetySafetySetting {
     );
   }
 }
+

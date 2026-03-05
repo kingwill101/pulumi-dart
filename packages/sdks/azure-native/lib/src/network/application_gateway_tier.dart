@@ -18,3 +18,4 @@ enum ApplicationGatewayTier {
     throw ArgumentError('Unknown ApplicationGatewayTier value: $value');
   }
 }
+

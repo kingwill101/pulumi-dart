@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesPermissionPermission {
   /// Indicates whether the permissions are granted to the cluster owner. Valid values `false`, `true`.
   final pulumi.Input<bool> isOwner;
-
   /// Indicates whether the permissions are granted to the RAM role. Valid values `false`, `true`.
   final pulumi.Input<bool> isRamRole;
-
   /// The permission settings to manage ACK clusters.
   final pulumi.Input<String> resourceId;
-
   /// The authorization type. Valid values `cluster`, `namespace` and `console`.
   final pulumi.Input<String> resourceType;
-
   /// The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
   final pulumi.Input<String> roleName;
-
   /// The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
   final pulumi.Input<String> roleType;
 
@@ -59,3 +54,4 @@ class GetKubernetesPermissionPermission {
     );
   }
 }
+

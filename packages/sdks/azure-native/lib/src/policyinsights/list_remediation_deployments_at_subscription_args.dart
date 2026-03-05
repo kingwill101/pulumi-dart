@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListRemediationDeploymentsAtSubscriptionArgs {
   /// The name of the remediation.
   final pulumi.Input<String> remediationName;
-
   /// Maximum number of records to return.
   final pulumi.Input<int>? top;
 
@@ -22,19 +21,17 @@ class ListRemediationDeploymentsAtSubscriptionArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'remediationName': remediationName, 'top': ?top};
+    return <String, dynamic>{
+      'remediationName': remediationName,
+      'top': ?top,
+    };
   }
 
-  factory ListRemediationDeploymentsAtSubscriptionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListRemediationDeploymentsAtSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return ListRemediationDeploymentsAtSubscriptionArgs(
       remediationName: pulumi.Input.fromValue(map['remediationName'] as String),
-      top: (() {
-        final guardedValue = map['top'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -236,19 +236,14 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// The app key.
   late final pulumi.Output<String?> appKey;
-
   /// The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
   late final pulumi.Output<String?> diskCategory;
-
   /// The duration.
   late final pulumi.Output<String?> duration;
-
   /// The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
   late final pulumi.Output<String?> engineType;
-
   /// The alias of the instance.
   late final pulumi.Output<String?> instanceAlias;
-
   /// The specification of the instance.
   /// - Following enumerative value for TSDB for InfluxDB️ standart edition:
   /// - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
@@ -273,19 +268,14 @@ class Instance extends pulumi.CustomResource {
   /// - `tsdb.48x.large` refers to ultimate edition I;
   /// - `tsdb.96x.large` refers to ultimate edition II.
   late final pulumi.Output<String> instanceClass;
-
   /// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
   late final pulumi.Output<String> instanceStorage;
-
   /// The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
   late final pulumi.Output<String> paymentType;
-
   /// Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
   late final pulumi.Output<String> status;
-
   /// The vswitch id.
   late final pulumi.Output<String> vswitchId;
-
   /// The zone ID of the instance.
   late final pulumi.Output<String> zoneId;
 
@@ -298,11 +288,11 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:tsdb/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:tsdb/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appKey = registerOutput<String?>('appKey');
     diskCategory = registerOutput<String?>('diskCategory');
     duration = registerOutput<String?>('duration');
@@ -334,11 +324,11 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:tsdb/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:tsdb/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appKey = registerOutput<String?>('appKey');
     diskCategory = registerOutput<String?>('diskCategory');
     duration = registerOutput<String?>('duration');

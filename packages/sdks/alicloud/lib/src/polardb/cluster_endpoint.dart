@@ -290,51 +290,36 @@ import 'cluster_endpoint_state.dart';
 class ClusterEndpoint extends pulumi.CustomResource {
   /// Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
   late final pulumi.Output<String> autoAddNewNodes;
-
   /// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
   late final pulumi.Output<String> connectionPrefix;
-
   /// The Id of cluster that can run database.
   late final pulumi.Output<String> dbClusterId;
-
   /// The name of the endpoint.
   late final pulumi.Output<String?> dbEndpointDescription;
-
   /// The ID of the cluster endpoint.
   late final pulumi.Output<String> dbEndpointId;
-
   /// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
   late final pulumi.Output<Map<String, String>> endpointConfig;
-
   /// Type of endpoint.
   late final pulumi.Output<String> endpointType;
-
   /// The network type of the endpoint address.
   late final pulumi.Output<String?> netType;
-
   /// Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
   late final pulumi.Output<List<String>> nodes;
-
   /// Port of the specified endpoint. Valid values: 3000 to 5999.
   late final pulumi.Output<String> port;
-
   /// Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
   late final pulumi.Output<String> readWriteMode;
-
   /// Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
   /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
   /// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
   late final pulumi.Output<String?> sslAutoRotate;
-
   /// The specifies SSL certificate download link.
   late final pulumi.Output<String> sslCertificateUrl;
-
   /// The SSL connection string.
   late final pulumi.Output<String> sslConnectionString;
-
   /// Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
   late final pulumi.Output<String?> sslEnabled;
-
   /// The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> sslExpireTime;
 
@@ -347,11 +332,11 @@ class ClusterEndpoint extends pulumi.CustomResource {
     ClusterEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/clusterEndpoint:ClusterEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/clusterEndpoint:ClusterEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoAddNewNodes = registerOutput<String>('autoAddNewNodes');
     connectionPrefix = registerOutput<String>('connectionPrefix');
     dbClusterId = registerOutput<String>('dbClusterId');
@@ -388,11 +373,11 @@ class ClusterEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/clusterEndpoint:ClusterEndpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/clusterEndpoint:ClusterEndpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoAddNewNodes = registerOutput<String>('autoAddNewNodes');
     connectionPrefix = registerOutput<String>('connectionPrefix');
     dbClusterId = registerOutput<String>('dbClusterId');

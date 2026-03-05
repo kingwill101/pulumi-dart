@@ -9,17 +9,20 @@ class GooglePrivacyDlpV2UnwrappedCryptoKeyResponse {
 
   /// Creates a new [GooglePrivacyDlpV2UnwrappedCryptoKeyResponse].
   /// [key] A 128/192/256 bit key.
-  GooglePrivacyDlpV2UnwrappedCryptoKeyResponse({required this.key});
+  GooglePrivacyDlpV2UnwrappedCryptoKeyResponse({
+    required this.key,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key};
+    return <String, dynamic>{
+      'key': key,
+    };
   }
 
-  factory GooglePrivacyDlpV2UnwrappedCryptoKeyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2UnwrappedCryptoKeyResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2UnwrappedCryptoKeyResponse(
       key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
+

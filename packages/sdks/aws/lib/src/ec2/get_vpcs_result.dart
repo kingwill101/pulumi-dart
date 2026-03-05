@@ -6,10 +6,8 @@ import 'get_vpcs_filter.dart';
 /// Result data returned by getVpcs.
 class GetVpcsResult {
   final List<GetVpcsFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// List of all the VPC Ids found.
   final List<String> ids;
   final String region;
@@ -31,14 +29,7 @@ class GetVpcsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<GetVpcsFilter, Map<String, dynamic>>(
-          guardedValue,
-          (value) => value.toMap(),
-        );
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVpcsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'ids': ids,
       'region': region,
@@ -48,15 +39,7 @@ class GetVpcsResult {
 
   factory GetVpcsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcsResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetVpcsFilter>(
-          guardedValue,
-          (value) =>
-              GetVpcsFilter.fromMap((value as Map).cast<String, dynamic>()),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVpcsFilter>(guardedValue, (value) => GetVpcsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       region: map['region'] as String,
@@ -64,3 +47,4 @@ class GetVpcsResult {
     );
   }
 }
+

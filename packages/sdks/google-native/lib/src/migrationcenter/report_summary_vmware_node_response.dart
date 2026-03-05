@@ -9,10 +9,14 @@ class ReportSummaryVMWareNodeResponse {
 
   /// Creates a new [ReportSummaryVMWareNodeResponse].
   /// [code] Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based on the displayName of cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
-  ReportSummaryVMWareNodeResponse({required this.code});
+  ReportSummaryVMWareNodeResponse({
+    required this.code,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code};
+    return <String, dynamic>{
+      'code': code,
+    };
   }
 
   factory ReportSummaryVMWareNodeResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ReportSummaryVMWareNodeResponse {
     );
   }
 }
+

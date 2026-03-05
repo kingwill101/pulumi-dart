@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIntegrationRuntimeObjectMetadatumArgs {
   /// Integration runtime name
   final pulumi.Input<String> integrationRuntimeName;
-
   /// Metadata path.
   final pulumi.Input<String>? metadataPath;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -40,22 +37,13 @@ class GetIntegrationRuntimeObjectMetadatumArgs {
     };
   }
 
-  factory GetIntegrationRuntimeObjectMetadatumArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetIntegrationRuntimeObjectMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationRuntimeObjectMetadatumArgs(
-      integrationRuntimeName: pulumi.Input.fromValue(
-        map['integrationRuntimeName'] as String,
-      ),
-      metadataPath: (() {
-        final guardedValue = map['metadataPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      integrationRuntimeName: pulumi.Input.fromValue(map['integrationRuntimeName'] as String),
+      metadataPath: (() { final guardedValue = map['metadataPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

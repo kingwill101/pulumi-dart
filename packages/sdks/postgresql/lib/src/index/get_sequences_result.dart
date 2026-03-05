@@ -6,7 +6,6 @@ import 'get_sequences_sequence.dart';
 /// Result data returned by getSequences.
 class GetSequencesResult {
   final String database;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String>? likeAllPatterns;
@@ -14,7 +13,6 @@ class GetSequencesResult {
   final List<String>? notLikeAllPatterns;
   final String? regexPattern;
   final List<String>? schemas;
-
   /// A list of PostgreSQL sequences retrieved by this data source. Each sequence consists of the fields documented below.
   /// ___
   final List<GetSequencesSequence> sequences;
@@ -48,11 +46,7 @@ class GetSequencesResult {
       'notLikeAllPatterns': ?notLikeAllPatterns,
       'regexPattern': ?regexPattern,
       'schemas': ?schemas,
-      'sequences':
-          pulumi.Input.encodeList<GetSequencesSequence, Map<String, dynamic>>(
-            sequences,
-            (value) => value.toMap(),
-          ),
+      'sequences': pulumi.Input.encodeList<GetSequencesSequence, Map<String, dynamic>>(sequences, (value) => value.toMap()),
     };
   }
 
@@ -60,37 +54,13 @@ class GetSequencesResult {
     return GetSequencesResult(
       database: map['database'] as String,
       id: map['id'] as String,
-      likeAllPatterns: (() {
-        final guardedValue = map['likeAllPatterns'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      likeAnyPatterns: (() {
-        final guardedValue = map['likeAnyPatterns'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      notLikeAllPatterns: (() {
-        final guardedValue = map['notLikeAllPatterns'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      regexPattern: (() {
-        final guardedValue = map['regexPattern'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      schemas: (() {
-        final guardedValue = map['schemas'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      sequences: pulumi.Input.decodeList<GetSequencesSequence>(
-        map['sequences']!,
-        (value) => GetSequencesSequence.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      likeAllPatterns: (() { final guardedValue = map['likeAllPatterns']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      likeAnyPatterns: (() { final guardedValue = map['likeAnyPatterns']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      notLikeAllPatterns: (() { final guardedValue = map['notLikeAllPatterns']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      regexPattern: (() { final guardedValue = map['regexPattern']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      schemas: (() { final guardedValue = map['schemas']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      sequences: pulumi.Input.decodeList<GetSequencesSequence>(map['sequences']!, (value) => GetSequencesSequence.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

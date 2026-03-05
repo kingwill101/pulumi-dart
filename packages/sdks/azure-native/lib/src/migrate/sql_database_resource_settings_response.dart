@@ -7,16 +7,12 @@ class SqlDatabaseResourceSettingsResponse {
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Sql/servers/databases'.
   final pulumi.Input<String> resourceType;
-
   /// Gets or sets the Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Gets or sets the target resource group name.
   final pulumi.Input<String>? targetResourceGroupName;
-
   /// Gets or sets the target Resource name.
   final pulumi.Input<String>? targetResourceName;
-
   /// Defines the zone redundant resource setting.
   final pulumi.Input<String>? zoneRedundant;
 
@@ -44,33 +40,14 @@ class SqlDatabaseResourceSettingsResponse {
     };
   }
 
-  factory SqlDatabaseResourceSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SqlDatabaseResourceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlDatabaseResourceSettingsResponse(
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      targetResourceGroupName: (() {
-        final guardedValue = map['targetResourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetResourceName: (() {
-        final guardedValue = map['targetResourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zoneRedundant: (() {
-        final guardedValue = map['zoneRedundant'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      targetResourceGroupName: (() { final guardedValue = map['targetResourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetResourceName: (() { final guardedValue = map['targetResourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneRedundant: (() { final guardedValue = map['zoneRedundant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

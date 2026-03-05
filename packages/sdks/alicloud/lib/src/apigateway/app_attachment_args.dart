@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppAttachmentArgs {
   /// The api_id that app apply to access.
   final pulumi.Input<String> apiId;
-
   /// The app that apply to the authorization.
   final pulumi.Input<String> appId;
-
   /// The group that the api belongs to.
   final pulumi.Input<String> groupId;
-
   /// Stage that the app apply to access.
   final pulumi.Input<String> stageName;
 
@@ -49,3 +46,4 @@ class AppAttachmentArgs {
     );
   }
 }
+

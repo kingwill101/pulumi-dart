@@ -13,16 +13,13 @@ enum SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
   const SecurityPolicyRuleRateLimitOptionsEnforceOnKey(this.wireValue);
   final String wireValue;
 
-  static SecurityPolicyRuleRateLimitOptionsEnforceOnKey fromValue(
-    String value,
-  ) {
+  static SecurityPolicyRuleRateLimitOptionsEnforceOnKey fromValue(String value) {
     for (final item in SecurityPolicyRuleRateLimitOptionsEnforceOnKey.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SecurityPolicyRuleRateLimitOptionsEnforceOnKey value: $value',
-    );
+    throw ArgumentError('Unknown SecurityPolicyRuleRateLimitOptionsEnforceOnKey value: $value');
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReferenceDataSetArgs {
   /// The name of the Time Series Insights environment associated with the specified resource group.
   final pulumi.Input<String> environmentName;
-
   /// The name of the Time Series Insights reference data set associated with the specified environment.
   final pulumi.Input<String> referenceDataSetName;
-
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetReferenceDataSetArgs {
   factory GetReferenceDataSetArgs.fromMap(Map<String, dynamic> map) {
     return GetReferenceDataSetArgs(
       environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
-      referenceDataSetName: pulumi.Input.fromValue(
-        map['referenceDataSetName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      referenceDataSetName: pulumi.Input.fromValue(map['referenceDataSetName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

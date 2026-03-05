@@ -13,16 +13,15 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'documents': documents};
+    return <String, dynamic>{
+      'documents': documents,
+    };
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource(
-      documents: pulumi.Input.fromValue(
-        (map['documents'] as List).cast<String>(),
-      ),
+      documents: pulumi.Input.fromValue((map['documents'] as List).cast<String>()),
     );
   }
 }
+

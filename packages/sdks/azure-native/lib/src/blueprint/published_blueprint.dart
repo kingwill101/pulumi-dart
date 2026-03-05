@@ -248,36 +248,24 @@ import 'resource_group_definition_response.dart';
 class PublishedBlueprint extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Name of the published blueprint definition.
   late final pulumi.Output<String?> blueprintName;
-
   /// Version-specific change notes.
   late final pulumi.Output<String?> changeNotes;
-
   /// Multi-line explain this resource.
   late final pulumi.Output<String?> description;
-
   /// One-liner string explain this resource.
   late final pulumi.Output<String?> displayName;
-
   /// Name of this resource.
   late final pulumi.Output<String> name;
-
   /// Parameters required by this blueprint definition.
-  late final pulumi.Output<Map<String, ParameterDefinitionResponse>?>
-  parameters;
-
+  late final pulumi.Output<Map<String, ParameterDefinitionResponse>?> parameters;
   /// Resource group placeholders defined by this blueprint definition.
-  late final pulumi.Output<Map<String, ResourceGroupDefinitionResponse>?>
-  resourceGroups;
-
+  late final pulumi.Output<Map<String, ResourceGroupDefinitionResponse>?> resourceGroups;
   /// Status of the blueprint. This field is readonly.
   late final pulumi.Output<BlueprintStatusResponse> status;
-
   /// The scope where this blueprint definition can be assigned.
   late final pulumi.Output<String?> targetScope;
-
   /// Type of this resource.
   late final pulumi.Output<String> type;
 
@@ -290,55 +278,20 @@ class PublishedBlueprint extends pulumi.CustomResource {
     PublishedBlueprintArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:blueprint:PublishedBlueprint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:blueprint:PublishedBlueprint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     blueprintName = registerOutput<String?>('blueprintName');
     changeNotes = registerOutput<String?>('changeNotes');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, ParameterDefinitionResponse>?>(
-      'parameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeMapValues<ParameterDefinitionResponse>(
-          guardedValue,
-          (value) => ParameterDefinitionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      },
-    );
-    resourceGroups =
-        registerOutput<Map<String, ResourceGroupDefinitionResponse>?>(
-          'resourceGroups',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return pulumi
-                .Input.decodeMapValues<ResourceGroupDefinitionResponse>(
-              guardedValue,
-              (value) => ResourceGroupDefinitionResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            );
-          },
-        );
-    status = registerOutput<BlueprintStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BlueprintStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    parameters = registerOutput<Map<String, ParameterDefinitionResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ParameterDefinitionResponse>(guardedValue, (value) => ParameterDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGroups = registerOutput<Map<String, ResourceGroupDefinitionResponse>?>('resourceGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ResourceGroupDefinitionResponse>(guardedValue, (value) => ResourceGroupDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    status = registerOutput<BlueprintStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlueprintStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetScope = registerOutput<String?>('targetScope');
     type = registerOutput<String>('type');
   }

@@ -9,19 +9,20 @@ class CertificateStatusEnumValueResponse {
 
   /// Creates a new [CertificateStatusEnumValueResponse].
   /// [value] Property value
-  CertificateStatusEnumValueResponse({this.value});
+  CertificateStatusEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory CertificateStatusEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return CertificateStatusEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

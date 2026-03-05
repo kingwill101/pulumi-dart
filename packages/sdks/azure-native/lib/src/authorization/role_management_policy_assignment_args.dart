@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleManagementPolicyAssignmentArgs {
   /// The policy id role management policy assignment.
   final pulumi.Input<String>? policyId;
-
   /// The role definition of management policy assignment.
   final pulumi.Input<String>? roleDefinitionId;
-
   /// The name of format {guid_guid} the role management policy assignment to upsert.
   final pulumi.Input<String>? roleManagementPolicyAssignmentName;
-
   /// The role management policy scope.
   final pulumi.Input<String> scope;
 
@@ -42,22 +39,11 @@ class RoleManagementPolicyAssignmentArgs {
 
   factory RoleManagementPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyAssignmentArgs(
-      policyId: (() {
-        final guardedValue = map['policyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleDefinitionId: (() {
-        final guardedValue = map['roleDefinitionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleManagementPolicyAssignmentName: (() {
-        final guardedValue = map['roleManagementPolicyAssignmentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleDefinitionId: (() { final guardedValue = map['roleDefinitionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleManagementPolicyAssignmentName: (() { final guardedValue = map['roleManagementPolicyAssignmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

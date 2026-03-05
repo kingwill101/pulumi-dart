@@ -764,16 +764,12 @@ import 'express_sync_state.dart';
 class ExpressSync extends pulumi.CustomResource {
   /// The name of the OSS Bucket.
   late final pulumi.Output<String> bucketName;
-
   /// The prefix of the OSS Bucket.
   late final pulumi.Output<String?> bucketPrefix;
-
   /// The region of the OSS Bucket.
   late final pulumi.Output<String> bucketRegion;
-
   /// The description of the Express Sync. The length of the name is limited to `1` to `255` characters.
   late final pulumi.Output<String?> description;
-
   /// The name of the ExpressSync. The length of the name is limited to `1` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, English periods (.), underscores (_), or hyphens (-), and must start with  letters.
   late final pulumi.Output<String> expressSyncName;
 
@@ -786,11 +782,11 @@ class ExpressSync extends pulumi.CustomResource {
     ExpressSyncArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudstoragegateway/expressSync:ExpressSync',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudstoragegateway/expressSync:ExpressSync',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucketName = registerOutput<String>('bucketName');
     bucketPrefix = registerOutput<String?>('bucketPrefix');
     bucketRegion = registerOutput<String>('bucketRegion');
@@ -816,11 +812,11 @@ class ExpressSync extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudstoragegateway/expressSync:ExpressSync',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudstoragegateway/expressSync:ExpressSync',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucketName = registerOutput<String>('bucketName');
     bucketPrefix = registerOutput<String?>('bucketPrefix');
     bucketRegion = registerOutput<String>('bucketRegion');

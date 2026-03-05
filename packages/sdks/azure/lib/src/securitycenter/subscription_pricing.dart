@@ -313,13 +313,10 @@ import 'subscription_pricing_state.dart';
 class SubscriptionPricing extends pulumi.CustomResource {
   /// One or more `extension` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
-
   /// The resource type this setting affects. Possible values are `AI`, `Api`, `AppServices`, `ContainerRegistry`, `KeyVaults`, `KubernetesService`, `SqlServers`, `SqlServerVirtualMachines`, `StorageAccounts`, `VirtualMachines`, `Arm`, `Dns`, `OpenSourceRelationalDatabases`, `Containers`, `CosmosDbs` and `CloudPosture`. Defaults to `VirtualMachines`
   late final pulumi.Output<String?> resourceType;
-
   /// Resource type pricing subplan. Contact your MSFT representative for possible values. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> subplan;
-
   /// The pricing tier to use. Possible values are `Free` and `Standard`.
   late final pulumi.Output<String> tier;
 
@@ -332,11 +329,11 @@ class SubscriptionPricing extends pulumi.CustomResource {
     SubscriptionPricingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:securitycenter/subscriptionPricing:SubscriptionPricing',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:securitycenter/subscriptionPricing:SubscriptionPricing',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
     resourceType = registerOutput<String?>('resourceType');
     subplan = registerOutput<String?>('subplan');
@@ -361,11 +358,11 @@ class SubscriptionPricing extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:securitycenter/subscriptionPricing:SubscriptionPricing',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:securitycenter/subscriptionPricing:SubscriptionPricing',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
     resourceType = registerOutput<String?>('resourceType');
     subplan = registerOutput<String?>('subplan');

@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRuleCriteriaResourceTag {
   final pulumi.Input<String> comparison;
-
   /// The key of the map filter.
   final pulumi.Input<String> key;
   final pulumi.Input<String> value;
@@ -35,3 +34,4 @@ class AutomationRuleCriteriaResourceTag {
     );
   }
 }
+

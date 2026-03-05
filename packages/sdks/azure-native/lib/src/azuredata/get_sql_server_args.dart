@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlServerArgs {
   /// The child resources to include in the response.
   final pulumi.Input<String>? expand;
-
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the SQL Server.
   final pulumi.Input<String> sqlServerName;
-
   /// Name of the SQL Server registration.
   final pulumi.Input<String> sqlServerRegistrationName;
 
@@ -42,18 +39,11 @@ class GetSqlServerArgs {
 
   factory GetSqlServerArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sqlServerName: pulumi.Input.fromValue(map['sqlServerName'] as String),
-      sqlServerRegistrationName: pulumi.Input.fromValue(
-        map['sqlServerRegistrationName'] as String,
-      ),
+      sqlServerRegistrationName: pulumi.Input.fromValue(map['sqlServerRegistrationName'] as String),
     );
   }
 }
+

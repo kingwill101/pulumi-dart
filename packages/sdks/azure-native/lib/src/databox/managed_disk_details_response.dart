@@ -7,10 +7,8 @@ class ManagedDiskDetailsResponse {
   /// Account Type of the data to be transferred.
   /// Expected value is 'ManagedDisk'.
   final pulumi.Input<String> dataAccountType;
-
   /// Resource Group Id of the compute disks.
   final pulumi.Input<String> resourceGroupId;
-
   /// Resource Id of the storage account that can be used to copy the vhd for staging.
   final pulumi.Input<String> stagingStorageAccountId;
 
@@ -36,9 +34,8 @@ class ManagedDiskDetailsResponse {
     return ManagedDiskDetailsResponse(
       dataAccountType: pulumi.Input.fromValue(map['dataAccountType'] as String),
       resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
-      stagingStorageAccountId: pulumi.Input.fromValue(
-        map['stagingStorageAccountId'] as String,
-      ),
+      stagingStorageAccountId: pulumi.Input.fromValue(map['stagingStorageAccountId'] as String),
     );
   }
 }
+

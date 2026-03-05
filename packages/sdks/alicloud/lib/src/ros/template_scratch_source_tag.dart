@@ -24,14 +24,9 @@ class TemplateScratchSourceTag {
 
   factory TemplateScratchSourceTag.fromMap(Map<String, dynamic> map) {
     return TemplateScratchSourceTag(
-      resourceTags: pulumi.Input.fromValue(
-        (map['resourceTags'] as Map).cast<String, String>(),
-      ),
-      resourceTypeFilters: (() {
-        final guardedValue = map['resourceTypeFilters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      resourceTags: pulumi.Input.fromValue((map['resourceTags'] as Map).cast<String, String>()),
+      resourceTypeFilters: (() { final guardedValue = map['resourceTypeFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

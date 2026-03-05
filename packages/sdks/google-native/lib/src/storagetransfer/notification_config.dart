@@ -8,10 +8,8 @@ import 'notification_config_payload_format.dart';
 class NotificationConfig {
   /// Event types for which a notification is desired. If empty, send notifications for all event types.
   final pulumi.Input<List<NotificationConfigEventTypesItem>>? eventTypes;
-
   /// The desired format of the notification message payloads.
   final pulumi.Input<NotificationConfigPayloadFormat> payloadFormat;
-
   /// The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
   final pulumi.Input<String> pubsubTopic;
 
@@ -27,46 +25,18 @@ class NotificationConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'eventTypes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NotificationConfigEventTypesItem>,
-            List<String>
-          >(
-            eventTypes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NotificationConfigEventTypesItem,
-                  String
-                >(value, (value) => value.wireValue),
-          ),
-      'payloadFormat':
-          pulumi.Input.mapInputValue<NotificationConfigPayloadFormat, String>(
-            payloadFormat,
-            (value) => value.wireValue,
-          ),
+      'eventTypes': ?pulumi.Input.mapOptionalInputValue<List<NotificationConfigEventTypesItem>, List<String>>(eventTypes, (value) => pulumi.Input.encodeList<NotificationConfigEventTypesItem, String>(value, (value) => value.wireValue)),
+      'payloadFormat': pulumi.Input.mapInputValue<NotificationConfigPayloadFormat, String>(payloadFormat, (value) => value.wireValue),
       'pubsubTopic': pubsubTopic,
     };
   }
 
   factory NotificationConfig.fromMap(Map<String, dynamic> map) {
     return NotificationConfig(
-      eventTypes: (() {
-        final guardedValue = map['eventTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NotificationConfigEventTypesItem>(
-            guardedValue,
-            (value) =>
-                NotificationConfigEventTypesItem.fromValue(value as String),
-          ),
-        );
-      })(),
-      payloadFormat: pulumi.Input.fromValue(
-        NotificationConfigPayloadFormat.fromValue(
-          map['payloadFormat']! as String,
-        ),
-      ),
+      eventTypes: (() { final guardedValue = map['eventTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NotificationConfigEventTypesItem>(guardedValue, (value) => NotificationConfigEventTypesItem.fromValue(value as String))); })(),
+      payloadFormat: pulumi.Input.fromValue(NotificationConfigPayloadFormat.fromValue(map['payloadFormat']! as String)),
       pubsubTopic: pulumi.Input.fromValue(map['pubsubTopic'] as String),
     );
   }
 }
+

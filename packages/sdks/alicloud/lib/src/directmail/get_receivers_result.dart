@@ -43,11 +43,7 @@ class GetReceiversResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'receiverses':
-          pulumi.Input.encodeList<GetReceiversReceiverse, Map<String, dynamic>>(
-            receiverses,
-            (value) => value.toMap(),
-          ),
+      'receiverses': pulumi.Input.encodeList<GetReceiversReceiverse, Map<String, dynamic>>(receiverses, (value) => value.toMap()),
       'status': ?status,
     };
   }
@@ -56,33 +52,13 @@ class GetReceiversResult {
     return GetReceiversResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyWord: (() {
-        final guardedValue = map['keyWord'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      keyWord: (() { final guardedValue = map['keyWord']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      receiverses: pulumi.Input.decodeList<GetReceiversReceiverse>(
-        map['receiverses']!,
-        (value) => GetReceiversReceiverse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      receiverses: pulumi.Input.decodeList<GetReceiversReceiverse>(map['receiverses']!, (value) => GetReceiversReceiverse.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as int; })(),
     );
   }
 }
+

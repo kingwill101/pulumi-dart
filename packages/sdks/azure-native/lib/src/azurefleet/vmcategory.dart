@@ -21,3 +21,4 @@ enum VMCategory {
     throw ArgumentError('Unknown VMCategory value: $value');
   }
 }
+

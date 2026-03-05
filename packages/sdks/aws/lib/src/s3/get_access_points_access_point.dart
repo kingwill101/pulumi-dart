@@ -6,31 +6,22 @@ import 'get_access_points_access_point_vpc_configuration.dart';
 class GetAccessPointsAccessPoint {
   /// Access point ARN.
   final pulumi.Input<String> accessPointArn;
-
   /// Access point alias.
   final pulumi.Input<String> alias;
-
   /// Name of the bucket associated with the access points.
   final pulumi.Input<String> bucket;
-
   /// AWS account ID associated with the S3 bucket associated with the access point.
   final pulumi.Input<String> bucketAccountId;
-
   /// Unique identifier for the access points data source.
   final pulumi.Input<String> dataSourceId;
-
   /// Type of the data source that the access points are attached to. To return all access points set this argument to `ALL`.
   final pulumi.Input<String> dataSourceType;
-
   /// Name of the access point.
   final pulumi.Input<String> name;
-
   /// Indicates whether the access point allows access from the public Internet.
   final pulumi.Input<String> networkOrigin;
-
   /// VPC configuration for the access point. See `vpc_configuration` below.
-  final pulumi.Input<List<GetAccessPointsAccessPointVpcConfiguration>>
-  vpcConfigurations;
+  final pulumi.Input<List<GetAccessPointsAccessPointVpcConfiguration>> vpcConfigurations;
 
   /// Creates a new [GetAccessPointsAccessPoint].
   /// [accessPointArn] Access point ARN.
@@ -64,18 +55,7 @@ class GetAccessPointsAccessPoint {
       'dataSourceType': dataSourceType,
       'name': name,
       'networkOrigin': networkOrigin,
-      'vpcConfigurations':
-          pulumi.Input.mapInputValue<
-            List<GetAccessPointsAccessPointVpcConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            vpcConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetAccessPointsAccessPointVpcConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'vpcConfigurations': pulumi.Input.mapInputValue<List<GetAccessPointsAccessPointVpcConfiguration>, List<Map<String, dynamic>>>(vpcConfigurations, (value) => pulumi.Input.encodeList<GetAccessPointsAccessPointVpcConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -89,14 +69,8 @@ class GetAccessPointsAccessPoint {
       dataSourceType: pulumi.Input.fromValue(map['dataSourceType'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       networkOrigin: pulumi.Input.fromValue(map['networkOrigin'] as String),
-      vpcConfigurations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetAccessPointsAccessPointVpcConfiguration>(
-          map['vpcConfigurations']!,
-          (value) => GetAccessPointsAccessPointVpcConfiguration.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      vpcConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAccessPointsAccessPointVpcConfiguration>(map['vpcConfigurations']!, (value) => GetAccessPointsAccessPointVpcConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

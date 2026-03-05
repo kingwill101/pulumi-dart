@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction {
   /// The command run when this `auto_heal` action is triggered.
   final pulumi.Input<String> executable;
-
   /// The parameters passed to the `executable`.
   final pulumi.Input<String> parameters;
 
@@ -24,12 +23,11 @@ class GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction {
     };
   }
 
-  factory GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction(
       executable: pulumi.Input.fromValue(map['executable'] as String),
       parameters: pulumi.Input.fromValue(map['parameters'] as String),
     );
   }
 }
+

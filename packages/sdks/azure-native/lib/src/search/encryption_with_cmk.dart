@@ -10,27 +10,20 @@ class EncryptionWithCmk {
 
   /// Creates a new [EncryptionWithCmk].
   /// [enforcement] Describes how a search service should enforce compliance if it finds objects that aren't encrypted with the customer-managed key.
-  EncryptionWithCmk({this.enforcement});
+  EncryptionWithCmk({
+    this.enforcement,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enforcement':
-          ?pulumi.Input.mapOptionalInputValue<SearchEncryptionWithCmk, String>(
-            enforcement,
-            (value) => value.wireValue,
-          ),
+      'enforcement': ?pulumi.Input.mapOptionalInputValue<SearchEncryptionWithCmk, String>(enforcement, (value) => value.wireValue),
     };
   }
 
   factory EncryptionWithCmk.fromMap(Map<String, dynamic> map) {
     return EncryptionWithCmk(
-      enforcement: (() {
-        final guardedValue = map['enforcement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SearchEncryptionWithCmk.fromValue(guardedValue as String),
-        );
-      })(),
+      enforcement: (() { final guardedValue = map['enforcement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SearchEncryptionWithCmk.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

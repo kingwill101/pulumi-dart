@@ -417,7 +417,6 @@ import 'target_site_state.dart';
 class TargetSite extends pulumi.CustomResource {
   /// The unique id of the data store.
   late final pulumi.Output<String> dataStoreId;
-
   /// If set to false, a uri_pattern is generated to include all pages whose
   /// address contains the provided_uri_pattern. If set to true, an uri_pattern
   /// is generated to try to be an exact match of the provided_uri_pattern or
@@ -425,49 +424,37 @@ class TargetSite extends pulumi.CustomResource {
   /// provided_uri_pattern is always normalized to generate the URI pattern to
   /// be used by the search engine.
   late final pulumi.Output<bool?> exactMatch;
-
   /// Site search indexing failure reasons.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> failureReasons;
-
   /// This is system-generated based on the `provided_uri_pattern`.
   late final pulumi.Output<String> generatedUriPattern;
-
   /// The indexing status.
   late final pulumi.Output<String> indexingStatus;
-
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   late final pulumi.Output<String> location;
-
   /// The unique full resource name of the target site. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/siteSearchEngine/targetSites/{target_site_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The user provided URI pattern from which the `generated_uri_pattern` is
   /// generated.
   late final pulumi.Output<String> providedUriPattern;
-
   /// Root domain of the `provided_uri_pattern`.
   late final pulumi.Output<String> rootDomainUri;
-
   /// Site ownership and validity verification status.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> siteVerificationInfos;
-
   /// The unique id of the target site.
   late final pulumi.Output<String> targetSiteId;
-
   /// The possible target site types.
   /// Possible values are: `INCLUDE`, `EXCLUDE`.
   late final pulumi.Output<String?> type;
-
   /// The target site's last updated time.
   late final pulumi.Output<String> updateTime;
 
@@ -480,16 +467,14 @@ class TargetSite extends pulumi.CustomResource {
     TargetSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:discoveryengine/targetSite:TargetSite',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:discoveryengine/targetSite:TargetSite',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataStoreId = registerOutput<String>('dataStoreId');
     exactMatch = registerOutput<bool?>('exactMatch');
-    failureReasons = registerOutput<List<Map<String, dynamic>>>(
-      'failureReasons',
-    );
+    failureReasons = registerOutput<List<Map<String, dynamic>>>('failureReasons');
     generatedUriPattern = registerOutput<String>('generatedUriPattern');
     indexingStatus = registerOutput<String>('indexingStatus');
     location = registerOutput<String>('location');
@@ -497,9 +482,7 @@ class TargetSite extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     providedUriPattern = registerOutput<String>('providedUriPattern');
     rootDomainUri = registerOutput<String>('rootDomainUri');
-    siteVerificationInfos = registerOutput<List<Map<String, dynamic>>>(
-      'siteVerificationInfos',
-    );
+    siteVerificationInfos = registerOutput<List<Map<String, dynamic>>>('siteVerificationInfos');
     targetSiteId = registerOutput<String>('targetSiteId');
     type = registerOutput<String?>('type');
     updateTime = registerOutput<String>('updateTime');
@@ -523,16 +506,14 @@ class TargetSite extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:discoveryengine/targetSite:TargetSite',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:discoveryengine/targetSite:TargetSite',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataStoreId = registerOutput<String>('dataStoreId');
     exactMatch = registerOutput<bool?>('exactMatch');
-    failureReasons = registerOutput<List<Map<String, dynamic>>>(
-      'failureReasons',
-    );
+    failureReasons = registerOutput<List<Map<String, dynamic>>>('failureReasons');
     generatedUriPattern = registerOutput<String>('generatedUriPattern');
     indexingStatus = registerOutput<String>('indexingStatus');
     location = registerOutput<String>('location');
@@ -540,9 +521,7 @@ class TargetSite extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     providedUriPattern = registerOutput<String>('providedUriPattern');
     rootDomainUri = registerOutput<String>('rootDomainUri');
-    siteVerificationInfos = registerOutput<List<Map<String, dynamic>>>(
-      'siteVerificationInfos',
-    );
+    siteVerificationInfos = registerOutput<List<Map<String, dynamic>>>('siteVerificationInfos');
     targetSiteId = registerOutput<String>('targetSiteId');
     type = registerOutput<String?>('type');
     updateTime = registerOutput<String>('updateTime');

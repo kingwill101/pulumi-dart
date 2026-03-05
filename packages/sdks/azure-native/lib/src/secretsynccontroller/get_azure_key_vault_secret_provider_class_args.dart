@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAzureKeyVaultSecretProviderClassArgs {
   /// The name of the AzureKeyVaultSecretProviderClass
   final pulumi.Input<String> azureKeyVaultSecretProviderClassName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -23,22 +22,16 @@ class GetAzureKeyVaultSecretProviderClassArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureKeyVaultSecretProviderClassName':
-          azureKeyVaultSecretProviderClassName,
+      'azureKeyVaultSecretProviderClassName': azureKeyVaultSecretProviderClassName,
       'resourceGroupName': resourceGroupName,
     };
   }
 
-  factory GetAzureKeyVaultSecretProviderClassArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAzureKeyVaultSecretProviderClassArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureKeyVaultSecretProviderClassArgs(
-      azureKeyVaultSecretProviderClassName: pulumi.Input.fromValue(
-        map['azureKeyVaultSecretProviderClassName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      azureKeyVaultSecretProviderClassName: pulumi.Input.fromValue(map['azureKeyVaultSecretProviderClassName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

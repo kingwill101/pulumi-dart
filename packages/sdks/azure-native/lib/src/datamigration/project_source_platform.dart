@@ -18,3 +18,4 @@ enum ProjectSourcePlatform {
     throw ArgumentError('Unknown ProjectSourcePlatform value: $value');
   }
 }
+

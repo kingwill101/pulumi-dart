@@ -145,22 +145,16 @@ import 'customer_gateway_state.dart';
 class CustomerGateway extends pulumi.CustomResource {
   /// Asn.
   late final pulumi.Output<String?> asn;
-
   /// The time when the customer gateway was created.
   late final pulumi.Output<int> createTime;
-
   /// The name of the customer gateway.
   late final pulumi.Output<String> customerGatewayName;
-
   /// The description of the customer gateway.
   late final pulumi.Output<String?> description;
-
   /// The IP address of the customer gateway.
   late final pulumi.Output<String> ipAddress;
-
   /// . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
   late final pulumi.Output<String> name;
-
   /// tag.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -175,11 +169,11 @@ class CustomerGateway extends pulumi.CustomResource {
     CustomerGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpn/customerGateway:CustomerGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpn/customerGateway:CustomerGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     asn = registerOutput<String?>('asn');
     createTime = registerOutput<int>('createTime');
     customerGatewayName = registerOutput<String>('customerGatewayName');
@@ -207,11 +201,11 @@ class CustomerGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpn/customerGateway:CustomerGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpn/customerGateway:CustomerGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     asn = registerOutput<String?>('asn');
     createTime = registerOutput<int>('createTime');
     customerGatewayName = registerOutput<String>('customerGatewayName');

@@ -9,10 +9,14 @@ class WorkspaceCustomStringParameter {
 
   /// Creates a new [WorkspaceCustomStringParameter].
   /// [value] The value which should be used for this field.
-  WorkspaceCustomStringParameter({required this.value});
+  WorkspaceCustomStringParameter({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory WorkspaceCustomStringParameter.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class WorkspaceCustomStringParameter {
     );
   }
 }
+

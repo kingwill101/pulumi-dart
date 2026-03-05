@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LdapSearchScopeOptResponse {
   /// This specifies the group DN, which overrides the base DN for group lookups.
   final pulumi.Input<String>? groupDN;
-
   /// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
   final pulumi.Input<String>? groupMembershipFilter;
-
   /// This specifies the user DN, which overrides the base DN for user lookups.
   final pulumi.Input<String>? userDN;
 
@@ -33,21 +31,10 @@ class LdapSearchScopeOptResponse {
 
   factory LdapSearchScopeOptResponse.fromMap(Map<String, dynamic> map) {
     return LdapSearchScopeOptResponse(
-      groupDN: (() {
-        final guardedValue = map['groupDN'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      groupMembershipFilter: (() {
-        final guardedValue = map['groupMembershipFilter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userDN: (() {
-        final guardedValue = map['userDN'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      groupDN: (() { final guardedValue = map['groupDN']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      groupMembershipFilter: (() { final guardedValue = map['groupMembershipFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userDN: (() { final guardedValue = map['userDN']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

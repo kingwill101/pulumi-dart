@@ -16,3 +16,4 @@ enum DestinationFormat {
     throw ArgumentError('Unknown DestinationFormat value: $value');
   }
 }
+

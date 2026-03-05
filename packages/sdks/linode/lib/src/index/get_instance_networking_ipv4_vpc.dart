@@ -5,40 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceNetworkingIpv4Vpc {
   /// Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `config_id` to which the interface belongs. Otherwise returns `false`.
   final pulumi.Input<bool> active;
-
   /// The address.
   final pulumi.Input<String> address;
-
   /// A range of IPv4 addresses configured for this VPC interface. it will be `null` if it's a single `address`.
   final pulumi.Input<String> addressRange;
-
   /// The globally general entity identifier for the Linode configuration profile where the VPC is included.
   final pulumi.Input<int> configId;
-
   /// The default gateway for this address.
   final pulumi.Input<String> gateway;
-
   /// The globally general API entity identifier for the Linode interface.
   final pulumi.Input<int> interfaceId;
-
   /// The Linode instance's ID.
   final pulumi.Input<int> linodeId;
-
   /// The public IP address used for NAT 1:1 with the VPC. This is `null` if the VPC interface uses an `address_range` or NAT 1:1 isn't used.
   final pulumi.Input<String> nat11;
-
   /// The network prefix.
   final pulumi.Input<int> prefix;
-
   /// (Filterable) The Region this address resides in.
   final pulumi.Input<String> region;
-
   /// The unique globally general API entity identifier for the VPC subnet.
   final pulumi.Input<int> subnetId;
-
   /// The subnet mask.
   final pulumi.Input<String> subnetMask;
-
   /// The unique globally general API entity identifier for the VPC.
   final pulumi.Input<int> vpcId;
 
@@ -108,3 +96,4 @@ class GetInstanceNetworkingIpv4Vpc {
     );
   }
 }
+

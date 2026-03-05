@@ -6,22 +6,16 @@ import 'system_data_response.dart';
 class GetArchiveVersionResult {
   /// The detailed error message for the archive version in the case of failure.
   final String? archiveVersionErrorMessage;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The resource ID.
   final String id;
-
   /// The name of the resource.
   final String name;
-
   /// The provisioning state of the archive at the time the operation was called.
   final String provisioningState;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// The type of the resource.
   final String type;
 
@@ -57,19 +51,14 @@ class GetArchiveVersionResult {
 
   factory GetArchiveVersionResult.fromMap(Map<String, dynamic> map) {
     return GetArchiveVersionResult(
-      archiveVersionErrorMessage: (() {
-        final guardedValue = map['archiveVersionErrorMessage'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      archiveVersionErrorMessage: (() { final guardedValue = map['archiveVersionErrorMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

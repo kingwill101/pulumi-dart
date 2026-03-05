@@ -801,16 +801,12 @@ class ResourceShareAssociationsExclusive extends pulumi.CustomResource {
   /// * IAM user ARN (e.g., `arn:aws:iam::123456789012:user/example-user`)
   /// * Service principal (e.g., `ec2.amazonaws.com`)
   late final pulumi.Output<List<String>?> principals;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A set of Amazon Resource Names (ARNs) of resources to associate with the resource share. Resources not configured in this argument will be removed.
   late final pulumi.Output<List<String>?> resourceArns;
-
   /// The Amazon Resource Name (ARN) of the resource share. Changing this value forces creation of a new resource.
   late final pulumi.Output<String> resourceShareArn;
-
   /// A set of AWS account IDs that restrict which accounts a service principal can access resources from. This argument can only be specified when `principals` contains only service principals. When specified, it limits the source accounts from which the service can access the shared resources.
   late final pulumi.Output<List<String>?> sources;
 
@@ -823,11 +819,11 @@ class ResourceShareAssociationsExclusive extends pulumi.CustomResource {
     ResourceShareAssociationsExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ram/resourceShareAssociationsExclusive:ResourceShareAssociationsExclusive',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ram/resourceShareAssociationsExclusive:ResourceShareAssociationsExclusive',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     principals = registerOutput<List<String>?>('principals');
     region = registerOutput<String>('region');
     resourceArns = registerOutput<List<String>?>('resourceArns');
@@ -853,11 +849,11 @@ class ResourceShareAssociationsExclusive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ram/resourceShareAssociationsExclusive:ResourceShareAssociationsExclusive',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ram/resourceShareAssociationsExclusive:ResourceShareAssociationsExclusive',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     principals = registerOutput<List<String>?>('principals');
     region = registerOutput<String>('region');
     resourceArns = registerOutput<List<String>?>('resourceArns');

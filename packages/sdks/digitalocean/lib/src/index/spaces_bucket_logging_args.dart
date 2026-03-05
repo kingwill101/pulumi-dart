@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpacesBucketLoggingArgs {
   /// The name of the bucket which will be logged.
   final pulumi.Input<String> bucket;
-
   /// The region where the bucket resides.
   final pulumi.Input<String> region;
-
   /// The name of the bucket which will store the logs.
   final pulumi.Input<String> targetBucket;
-
   /// The prefix for the log files.
   final pulumi.Input<String> targetPrefix;
 
@@ -49,3 +46,4 @@ class SpacesBucketLoggingArgs {
     );
   }
 }
+

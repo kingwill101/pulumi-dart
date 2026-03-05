@@ -8,13 +8,11 @@ class InterceptEndpointGroupAssociation {
   /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
   /// See https://google.aip.dev/124.
   final pulumi.Input<String>? name;
-
   /// (Output)
   /// The associated network, for example:
   /// projects/123456789/global/networks/my-network.
   /// See https://google.aip.dev/124.
   final pulumi.Input<String>? network;
-
   /// (Output)
   /// The current state of the association in this location.
   /// Possible values:
@@ -27,7 +25,11 @@ class InterceptEndpointGroupAssociation {
   /// [name] (Output)
   /// [network] (Output)
   /// [state] (Output)
-  InterceptEndpointGroupAssociation({this.name, this.network, this.state});
+  InterceptEndpointGroupAssociation({
+    this.name,
+    this.network,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,21 +41,10 @@ class InterceptEndpointGroupAssociation {
 
   factory InterceptEndpointGroupAssociation.fromMap(Map<String, dynamic> map) {
     return InterceptEndpointGroupAssociation(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

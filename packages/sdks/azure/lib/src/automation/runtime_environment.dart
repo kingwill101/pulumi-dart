@@ -259,25 +259,18 @@ import 'runtime_environment_state.dart';
 class RuntimeEnvironment extends pulumi.CustomResource {
   /// The ID of the automation account in which the Automation Runtime Environment is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountId;
-
   /// A description of the Automation Runtime Environment.
   late final pulumi.Output<String?> description;
-
   /// The location where the Automation Runtime Environment is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name for the Automation Runtime Environment. Changing this forces a new Automation Runtime Environment to be created.
   late final pulumi.Output<String> name;
-
   /// A mapping of default packages to be installed in the Automation Runtime Environment. The default packages can only be used with PowerShell runtime environments. Removing packages will force a new Automation Runtime Environment, adding new packages will update the existing Automation Runtime Environment.
   late final pulumi.Output<Map<String, String>?> runtimeDefaultPackages;
-
   /// The programming language used by the Automation Runtime Environment. Possible values are `Python` and `PowerShell`. Changing this forces a new Automation Runtime Environment to be created.
   late final pulumi.Output<String> runtimeLanguage;
-
   /// The version of the runtime environment. Changing this forces a new Automation Runtime Environment to be created.
   late final pulumi.Output<String> runtimeVersion;
-
   /// A mapping of tags which should be assigned to the Automation Runtime Environment.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -290,18 +283,16 @@ class RuntimeEnvironment extends pulumi.CustomResource {
     RuntimeEnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/runtimeEnvironment:RuntimeEnvironment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/runtimeEnvironment:RuntimeEnvironment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountId = registerOutput<String>('automationAccountId');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    runtimeDefaultPackages = registerOutput<Map<String, String>?>(
-      'runtimeDefaultPackages',
-    );
+    runtimeDefaultPackages = registerOutput<Map<String, String>?>('runtimeDefaultPackages');
     runtimeLanguage = registerOutput<String>('runtimeLanguage');
     runtimeVersion = registerOutput<String>('runtimeVersion');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -325,18 +316,16 @@ class RuntimeEnvironment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/runtimeEnvironment:RuntimeEnvironment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/runtimeEnvironment:RuntimeEnvironment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountId = registerOutput<String>('automationAccountId');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    runtimeDefaultPackages = registerOutput<Map<String, String>?>(
-      'runtimeDefaultPackages',
-    );
+    runtimeDefaultPackages = registerOutput<Map<String, String>?>('runtimeDefaultPackages');
     runtimeLanguage = registerOutput<String>('runtimeLanguage');
     runtimeVersion = registerOutput<String>('runtimeVersion');
     tags = registerOutput<Map<String, String>?>('tags');

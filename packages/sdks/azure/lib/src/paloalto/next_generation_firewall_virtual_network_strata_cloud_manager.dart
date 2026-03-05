@@ -647,47 +647,27 @@ import 'next_generation_firewall_virtual_network_strata_cloud_manager_state.dart
 /// ```sh
 /// $ pulumi import azure:paloalto/nextGenerationFirewallVirtualNetworkStrataCloudManager:NextGenerationFirewallVirtualNetworkStrataCloudManager example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/PaloAltoNetworks.Cloudngfw/firewalls/myVNetStrataCloudManagerFW
 /// ```
-class NextGenerationFirewallVirtualNetworkStrataCloudManager
-    extends pulumi.CustomResource {
+class NextGenerationFirewallVirtualNetworkStrataCloudManager extends pulumi.CustomResource {
   /// One or more `destination_nat` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> destinationNats;
-
   /// A `dns_settings` block as defined below.
-  late final pulumi.Output<
-    NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings?
-  >
-  dnsSettings;
-
+  late final pulumi.Output<NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings?> dnsSettings;
   /// An `identity` block as defined below.
-  late final pulumi.Output<
-    NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity?
-  >
-  identity;
-
+  late final pulumi.Output<NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity?> identity;
   /// The Azure Region where the Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager to be created.
   late final pulumi.Output<String> location;
-
   /// The marketplace offer ID. Defaults to `pan_swfw_cloud_ngfw`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> marketplaceOfferId;
-
   /// The name which should be used for this Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager to be created.
   late final pulumi.Output<String> name;
-
   /// A `network_profile` block as defined below.
-  late final pulumi.Output<
-    NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile
-  >
-  networkProfile;
-
+  late final pulumi.Output<NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile> networkProfile;
   /// The billing plan ID as published by Liftr.PAN. Defaults to `panw-cngfw-payg`.
   late final pulumi.Output<String?> planId;
-
   /// The name of the Resource Group where the Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Strata Cloud Manager name which is intended to manage the policy for this firewall.
   late final pulumi.Output<String> strataCloudManagerTenantName;
-
   /// A mapping of tags which should be assigned to the Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -700,61 +680,21 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManager
     NextGenerationFirewallVirtualNetworkStrataCloudManagerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:paloalto/nextGenerationFirewallVirtualNetworkStrataCloudManager:NextGenerationFirewallVirtualNetworkStrataCloudManager',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    destinationNats = registerOutput<List<Map<String, dynamic>>?>(
-      'destinationNats',
-    );
-    dnsSettings =
-        registerOutput<
-          NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings?
-        >(
-          'dnsSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    identity =
-        registerOutput<
-          NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity?
-        >(
-          'identity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure:paloalto/nextGenerationFirewallVirtualNetworkStrataCloudManager:NextGenerationFirewallVirtualNetworkStrataCloudManager',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    destinationNats = registerOutput<List<Map<String, dynamic>>?>('destinationNats');
+    dnsSettings = registerOutput<NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
-    networkProfile =
-        registerOutput<
-          NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile
-        >(
-          'networkProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    networkProfile = registerOutput<NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     planId = registerOutput<String?>('planId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    strataCloudManagerTenantName = registerOutput<String>(
-      'strataCloudManagerTenantName',
-    );
+    strataCloudManagerTenantName = registerOutput<String>('strataCloudManagerTenantName');
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
@@ -776,61 +716,21 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManager
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:paloalto/nextGenerationFirewallVirtualNetworkStrataCloudManager:NextGenerationFirewallVirtualNetworkStrataCloudManager',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    destinationNats = registerOutput<List<Map<String, dynamic>>?>(
-      'destinationNats',
-    );
-    dnsSettings =
-        registerOutput<
-          NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings?
-        >(
-          'dnsSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    identity =
-        registerOutput<
-          NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity?
-        >(
-          'identity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure:paloalto/nextGenerationFirewallVirtualNetworkStrataCloudManager:NextGenerationFirewallVirtualNetworkStrataCloudManager',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    destinationNats = registerOutput<List<Map<String, dynamic>>?>('destinationNats');
+    dnsSettings = registerOutput<NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
-    networkProfile =
-        registerOutput<
-          NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile
-        >(
-          'networkProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    networkProfile = registerOutput<NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     planId = registerOutput<String?>('planId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    strataCloudManagerTenantName = registerOutput<String>(
-      'strataCloudManagerTenantName',
-    );
+    strataCloudManagerTenantName = registerOutput<String>('strataCloudManagerTenantName');
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

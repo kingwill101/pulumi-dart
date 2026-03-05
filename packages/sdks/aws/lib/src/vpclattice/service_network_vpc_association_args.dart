@@ -10,23 +10,17 @@ import 'service_network_vpc_association_dns_options.dart';
 class ServiceNetworkVpcAssociationArgs {
   /// Configuration block for DNS option. See `dns_options` block below for details.
   final pulumi.Input<ServiceNetworkVpcAssociationDnsOptions>? dnsOptions;
-
   /// Boolean to indicate whether to enable private DNS for the VPC association. Defaults to `false`.
   final pulumi.Input<bool>? privateDnsEnabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The IDs of the security groups.
   final pulumi.Input<List<String>>? securityGroupIds;
-
   /// The ID or Amazon Resource Identifier (ARN) of the service network. You must use the ARN if the resources specified in the operation are in different accounts.
   /// The following arguments are optional:
   final pulumi.Input<String> serviceNetworkIdentifier;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The ID of the VPC.
   final pulumi.Input<String> vpcIdentifier;
 
@@ -50,11 +44,7 @@ class ServiceNetworkVpcAssociationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dnsOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServiceNetworkVpcAssociationDnsOptions,
-            Map<String, dynamic>
-          >(dnsOptions, (value) => value.toMap()),
+      'dnsOptions': ?pulumi.Input.mapOptionalInputValue<ServiceNetworkVpcAssociationDnsOptions, Map<String, dynamic>>(dnsOptions, (value) => value.toMap()),
       'privateDnsEnabled': ?privateDnsEnabled,
       'region': ?region,
       'securityGroupIds': ?securityGroupIds,
@@ -66,41 +56,14 @@ class ServiceNetworkVpcAssociationArgs {
 
   factory ServiceNetworkVpcAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkVpcAssociationArgs(
-      dnsOptions: (() {
-        final guardedValue = map['dnsOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceNetworkVpcAssociationDnsOptions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      privateDnsEnabled: (() {
-        final guardedValue = map['privateDnsEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securityGroupIds: (() {
-        final guardedValue = map['securityGroupIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      serviceNetworkIdentifier: pulumi.Input.fromValue(
-        map['serviceNetworkIdentifier'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      dnsOptions: (() { final guardedValue = map['dnsOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceNetworkVpcAssociationDnsOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      privateDnsEnabled: (() { final guardedValue = map['privateDnsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityGroupIds: (() { final guardedValue = map['securityGroupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      serviceNetworkIdentifier: pulumi.Input.fromValue(map['serviceNetworkIdentifier'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       vpcIdentifier: pulumi.Input.fromValue(map['vpcIdentifier'] as String),
     );
   }
 }
+

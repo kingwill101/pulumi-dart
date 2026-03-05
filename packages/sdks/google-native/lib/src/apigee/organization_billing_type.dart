@@ -17,3 +17,4 @@ enum OrganizationBillingType {
     throw ArgumentError('Unknown OrganizationBillingType value: $value');
   }
 }
+

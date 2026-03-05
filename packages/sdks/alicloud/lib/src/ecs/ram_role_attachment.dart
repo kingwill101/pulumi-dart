@@ -501,10 +501,8 @@ import 'ram_role_attachment_state.dart';
 class RamRoleAttachment extends pulumi.CustomResource {
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
-
   /// The additional policy. When you attach an instance RAM role to instances, you can specify an additional policy to further limit the permissions of the role.
   late final pulumi.Output<String?> policy;
-
   /// The name of the instance RAM role.
   late final pulumi.Output<String> ramRoleName;
 
@@ -517,11 +515,11 @@ class RamRoleAttachment extends pulumi.CustomResource {
     RamRoleAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ramRoleAttachment:RamRoleAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ramRoleAttachment:RamRoleAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     policy = registerOutput<String?>('policy');
     ramRoleName = registerOutput<String>('ramRoleName');
@@ -545,11 +543,11 @@ class RamRoleAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ramRoleAttachment:RamRoleAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ramRoleAttachment:RamRoleAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     policy = registerOutput<String?>('policy');
     ramRoleName = registerOutput<String>('ramRoleName');

@@ -309,16 +309,12 @@ import 'firewall_rule_state.dart';
 class FirewallRule extends pulumi.CustomResource {
   /// The highest IP address included in the range.
   late final pulumi.Output<String> endIp;
-
   /// The name of the Firewall Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Redis Cache. Changing this forces a new resource to be created.
   late final pulumi.Output<String> redisCacheName;
-
   /// The name of the resource group in which this Redis Cache exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The lowest IP address included in the range
   late final pulumi.Output<String> startIp;
 
@@ -331,11 +327,11 @@ class FirewallRule extends pulumi.CustomResource {
     FirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:redis/firewallRule:FirewallRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:redis/firewallRule:FirewallRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endIp = registerOutput<String>('endIp');
     this.name = registerOutput<String>('name');
     redisCacheName = registerOutput<String>('redisCacheName');
@@ -361,11 +357,11 @@ class FirewallRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:redis/firewallRule:FirewallRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:redis/firewallRule:FirewallRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endIp = registerOutput<String>('endIp');
     this.name = registerOutput<String>('name');
     redisCacheName = registerOutput<String>('redisCacheName');

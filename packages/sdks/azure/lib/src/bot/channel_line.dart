@@ -249,13 +249,10 @@ import 'channel_line_state.dart';
 class ChannelLine extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
-
   /// One or more `line_channel` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> lineChannels;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the resource group where the Line Channel should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -268,11 +265,11 @@ class ChannelLine extends pulumi.CustomResource {
     ChannelLineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/channelLine:ChannelLine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:bot/channelLine:ChannelLine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botName = registerOutput<String>('botName');
     lineChannels = registerOutput<List<Map<String, dynamic>>>('lineChannels');
     location = registerOutput<String>('location');
@@ -297,11 +294,11 @@ class ChannelLine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/channelLine:ChannelLine',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:bot/channelLine:ChannelLine',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botName = registerOutput<String>('botName');
     lineChannels = registerOutput<List<Map<String, dynamic>>>('lineChannels');
     location = registerOutput<String>('location');

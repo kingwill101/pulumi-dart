@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggerReferenceResponse {
   /// Reference trigger name.
   final pulumi.Input<String> referenceName;
-
   /// Trigger reference type.
   final pulumi.Input<String> type;
 
   /// Creates a new [TriggerReferenceResponse].
   /// [referenceName] Reference trigger name.
   /// [type] Trigger reference type.
-  TriggerReferenceResponse({required this.referenceName, required this.type});
+  TriggerReferenceResponse({
+    required this.referenceName,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'referenceName': referenceName, 'type': type};
+    return <String, dynamic>{
+      'referenceName': referenceName,
+      'type': type,
+    };
   }
 
   factory TriggerReferenceResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class TriggerReferenceResponse {
     );
   }
 }
+

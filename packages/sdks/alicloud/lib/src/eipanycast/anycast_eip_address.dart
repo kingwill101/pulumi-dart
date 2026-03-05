@@ -165,31 +165,22 @@ import 'anycast_eip_address_state.dart';
 class AnycastEipAddress extends pulumi.CustomResource {
   /// Anycast EIP instance name.
   late final pulumi.Output<String?> anycastEipAddressName;
-
   /// The peak bandwidth of the Anycast EIP instance, in Mbps.
   late final pulumi.Output<int> bandwidth;
-
   /// Anycast EIP instance creation time.
   late final pulumi.Output<String> createTime;
-
   /// Anycast EIP instance description
   late final pulumi.Output<String?> description;
-
   /// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
   late final pulumi.Output<String?> internetChargeType;
-
   /// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
   late final pulumi.Output<String?> paymentType;
-
   /// The ID of the resource group to which the instance belongs.
   late final pulumi.Output<String> resourceGroupId;
-
   /// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
   late final pulumi.Output<String> serviceLocation;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// List of resource-bound tags.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -202,11 +193,11 @@ class AnycastEipAddress extends pulumi.CustomResource {
     AnycastEipAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eipanycast/anycastEipAddress:AnycastEipAddress',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eipanycast/anycastEipAddress:AnycastEipAddress',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     anycastEipAddressName = registerOutput<String?>('anycastEipAddressName');
     bandwidth = registerOutput<int>('bandwidth');
     createTime = registerOutput<String>('createTime');
@@ -237,11 +228,11 @@ class AnycastEipAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eipanycast/anycastEipAddress:AnycastEipAddress',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eipanycast/anycastEipAddress:AnycastEipAddress',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     anycastEipAddressName = registerOutput<String?>('anycastEipAddressName');
     bandwidth = registerOutput<int>('bandwidth');
     createTime = registerOutput<String>('createTime');

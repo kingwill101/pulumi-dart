@@ -4,10 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolStartTaskContainerRegistry {
   final pulumi.Input<String>? password;
-
   /// The container registry URL. Changing this forces a new resource to be created.
   final pulumi.Input<String> registryServer;
-
   /// The User Assigned Identity to use for Container Registry access.
   final pulumi.Input<String>? userAssignedIdentityId;
   final pulumi.Input<String>? userName;
@@ -35,22 +33,11 @@ class PoolStartTaskContainerRegistry {
 
   factory PoolStartTaskContainerRegistry.fromMap(Map<String, dynamic> map) {
     return PoolStartTaskContainerRegistry(
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registryServer: pulumi.Input.fromValue(map['registryServer'] as String),
-      userAssignedIdentityId: (() {
-        final guardedValue = map['userAssignedIdentityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userAssignedIdentityId: (() { final guardedValue = map['userAssignedIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

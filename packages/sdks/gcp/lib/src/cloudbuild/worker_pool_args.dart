@@ -15,28 +15,21 @@ class WorkerPoolArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
   final pulumi.Input<String>? displayName;
-
   /// The location for the resource
   final pulumi.Input<String> location;
-
   /// User-defined name of the `WorkerPool`.
   ///
   ///
   /// - - -
   final pulumi.Input<String>? name;
-
   /// Network configuration for the `WorkerPool`. Structure is documented below.
   final pulumi.Input<WorkerPoolNetworkConfig>? networkConfig;
-
   /// Private Service Connect configuration for the pool.
   final pulumi.Input<WorkerPoolPrivateServiceConnect>? privateServiceConnect;
-
   /// The project for the resource
   final pulumi.Input<String>? project;
-
   /// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
   final pulumi.Input<WorkerPoolWorkerConfig>? workerConfig;
 
@@ -66,77 +59,24 @@ class WorkerPoolArgs {
       'displayName': ?displayName,
       'location': location,
       'name': ?name,
-      'networkConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            WorkerPoolNetworkConfig,
-            Map<String, dynamic>
-          >(networkConfig, (value) => value.toMap()),
-      'privateServiceConnect':
-          ?pulumi.Input.mapOptionalInputValue<
-            WorkerPoolPrivateServiceConnect,
-            Map<String, dynamic>
-          >(privateServiceConnect, (value) => value.toMap()),
+      'networkConfig': ?pulumi.Input.mapOptionalInputValue<WorkerPoolNetworkConfig, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
+      'privateServiceConnect': ?pulumi.Input.mapOptionalInputValue<WorkerPoolPrivateServiceConnect, Map<String, dynamic>>(privateServiceConnect, (value) => value.toMap()),
       'project': ?project,
-      'workerConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            WorkerPoolWorkerConfig,
-            Map<String, dynamic>
-          >(workerConfig, (value) => value.toMap()),
+      'workerConfig': ?pulumi.Input.mapOptionalInputValue<WorkerPoolWorkerConfig, Map<String, dynamic>>(workerConfig, (value) => value.toMap()),
     };
   }
 
   factory WorkerPoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkerPoolArgs(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkConfig: (() {
-        final guardedValue = map['networkConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WorkerPoolNetworkConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      privateServiceConnect: (() {
-        final guardedValue = map['privateServiceConnect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WorkerPoolPrivateServiceConnect.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workerConfig: (() {
-        final guardedValue = map['workerConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WorkerPoolWorkerConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      privateServiceConnect: (() { final guardedValue = map['privateServiceConnect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolPrivateServiceConnect.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workerConfig: (() { final guardedValue = map['workerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolWorkerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

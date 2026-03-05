@@ -8,42 +8,29 @@ import 'rsa_key_type_response.dart';
 class AllowedKeyTypeResponse {
   /// Represents an allowed Elliptic Curve key type.
   final pulumi.Input<EcKeyTypeResponse> ellipticCurve;
-
   /// Represents an allowed RSA key type.
   final pulumi.Input<RsaKeyTypeResponse> rsa;
 
   /// Creates a new [AllowedKeyTypeResponse].
   /// [ellipticCurve] Represents an allowed Elliptic Curve key type.
   /// [rsa] Represents an allowed RSA key type.
-  AllowedKeyTypeResponse({required this.ellipticCurve, required this.rsa});
+  AllowedKeyTypeResponse({
+    required this.ellipticCurve,
+    required this.rsa,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ellipticCurve':
-          pulumi.Input.mapInputValue<EcKeyTypeResponse, Map<String, dynamic>>(
-            ellipticCurve,
-            (value) => value.toMap(),
-          ),
-      'rsa':
-          pulumi.Input.mapInputValue<RsaKeyTypeResponse, Map<String, dynamic>>(
-            rsa,
-            (value) => value.toMap(),
-          ),
+      'ellipticCurve': pulumi.Input.mapInputValue<EcKeyTypeResponse, Map<String, dynamic>>(ellipticCurve, (value) => value.toMap()),
+      'rsa': pulumi.Input.mapInputValue<RsaKeyTypeResponse, Map<String, dynamic>>(rsa, (value) => value.toMap()),
     };
   }
 
   factory AllowedKeyTypeResponse.fromMap(Map<String, dynamic> map) {
     return AllowedKeyTypeResponse(
-      ellipticCurve: pulumi.Input.fromValue(
-        EcKeyTypeResponse.fromMap(
-          (map['ellipticCurve']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      rsa: pulumi.Input.fromValue(
-        RsaKeyTypeResponse.fromMap(
-          (map['rsa']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      ellipticCurve: pulumi.Input.fromValue(EcKeyTypeResponse.fromMap((map['ellipticCurve']! as Map).cast<String, dynamic>())),
+      rsa: pulumi.Input.fromValue(RsaKeyTypeResponse.fromMap((map['rsa']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -259,28 +259,20 @@ import 'sync_agent_args.dart';
 class SyncAgent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Expiration time of the sync agent version.
   late final pulumi.Output<String> expiryTime;
-
   /// If the sync agent version is up to date.
   late final pulumi.Output<bool> isUpToDate;
-
   /// Last alive time of the sync agent.
   late final pulumi.Output<String> lastAliveTime;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// State of the sync agent.
   late final pulumi.Output<String> state;
-
   /// ARM resource id of the sync database in the sync agent.
   late final pulumi.Output<String?> syncDatabaseId;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// Version of the sync agent.
   late final pulumi.Output<String> version;
 
@@ -293,11 +285,11 @@ class SyncAgent extends pulumi.CustomResource {
     SyncAgentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:SyncAgent',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:SyncAgent',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     expiryTime = registerOutput<String>('expiryTime');
     isUpToDate = registerOutput<bool>('isUpToDate');

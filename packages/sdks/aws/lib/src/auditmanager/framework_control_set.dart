@@ -6,10 +6,8 @@ import 'framework_control_set_control.dart';
 class FrameworkControlSet {
   /// Configuration block(s) for the controls within the control set. See `controls` Block below for details.
   final pulumi.Input<List<FrameworkControlSetControl>>? controls;
-
   /// Unique identifier for the framework.
   final pulumi.Input<String>? id;
-
   /// Name of the control set.
   final pulumi.Input<String> name;
 
@@ -17,22 +15,15 @@ class FrameworkControlSet {
   /// [controls] Configuration block(s) for the controls within the control set. See `controls` Block below for details.
   /// [id] Unique identifier for the framework.
   /// [name] Name of the control set.
-  FrameworkControlSet({this.controls, this.id, required this.name});
+  FrameworkControlSet({
+    this.controls,
+    this.id,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'controls':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<FrameworkControlSetControl>,
-            List<Map<String, dynamic>>
-          >(
-            controls,
-            (value) =>
-                pulumi.Input.encodeList<
-                  FrameworkControlSetControl,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'controls': ?pulumi.Input.mapOptionalInputValue<List<FrameworkControlSetControl>, List<Map<String, dynamic>>>(controls, (value) => pulumi.Input.encodeList<FrameworkControlSetControl, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
       'name': name,
     };
@@ -40,24 +31,10 @@ class FrameworkControlSet {
 
   factory FrameworkControlSet.fromMap(Map<String, dynamic> map) {
     return FrameworkControlSet(
-      controls: (() {
-        final guardedValue = map['controls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<FrameworkControlSetControl>(
-            guardedValue,
-            (value) => FrameworkControlSetControl.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      controls: (() { final guardedValue = map['controls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FrameworkControlSetControl>(guardedValue, (value) => FrameworkControlSetControl.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

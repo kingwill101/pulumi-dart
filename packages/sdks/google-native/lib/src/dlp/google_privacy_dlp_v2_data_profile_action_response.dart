@@ -8,10 +8,8 @@ import 'google_privacy_dlp_v2_pub_sub_notification_response.dart';
 class GooglePrivacyDlpV2DataProfileActionResponse {
   /// Export data profiles into a provided location.
   final pulumi.Input<GooglePrivacyDlpV2ExportResponse> exportData;
-
   /// Publish a message into the Pub/Sub topic.
-  final pulumi.Input<GooglePrivacyDlpV2PubSubNotificationResponse>
-  pubSubNotification;
+  final pulumi.Input<GooglePrivacyDlpV2PubSubNotificationResponse> pubSubNotification;
 
   /// Creates a new [GooglePrivacyDlpV2DataProfileActionResponse].
   /// [exportData] Export data profiles into a provided location.
@@ -23,33 +21,16 @@ class GooglePrivacyDlpV2DataProfileActionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exportData':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2ExportResponse,
-            Map<String, dynamic>
-          >(exportData, (value) => value.toMap()),
-      'pubSubNotification':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2PubSubNotificationResponse,
-            Map<String, dynamic>
-          >(pubSubNotification, (value) => value.toMap()),
+      'exportData': pulumi.Input.mapInputValue<GooglePrivacyDlpV2ExportResponse, Map<String, dynamic>>(exportData, (value) => value.toMap()),
+      'pubSubNotification': pulumi.Input.mapInputValue<GooglePrivacyDlpV2PubSubNotificationResponse, Map<String, dynamic>>(pubSubNotification, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2DataProfileActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2DataProfileActionResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DataProfileActionResponse(
-      exportData: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2ExportResponse.fromMap(
-          (map['exportData']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      pubSubNotification: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2PubSubNotificationResponse.fromMap(
-          (map['pubSubNotification']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      exportData: pulumi.Input.fromValue(GooglePrivacyDlpV2ExportResponse.fromMap((map['exportData']! as Map).cast<String, dynamic>())),
+      pubSubNotification: pulumi.Input.fromValue(GooglePrivacyDlpV2PubSubNotificationResponse.fromMap((map['pubSubNotification']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DistributionDefaultCacheBehaviorForwardedValuesCookies {
   /// Whether you want CloudFront to forward cookies to the origin that is associated with this cache behavior. You can specify `all`, `none` or `whitelist`. If `whitelist`, you must include the subsequent `whitelisted_names`.
   final pulumi.Input<String> forward;
-
   /// If you have specified `whitelist` to `forward`, the whitelisted cookies that you want CloudFront to forward to your origin.
   final pulumi.Input<List<String>>? whitelistedNames;
 
@@ -24,16 +23,11 @@ class DistributionDefaultCacheBehaviorForwardedValuesCookies {
     };
   }
 
-  factory DistributionDefaultCacheBehaviorForwardedValuesCookies.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DistributionDefaultCacheBehaviorForwardedValuesCookies.fromMap(Map<String, dynamic> map) {
     return DistributionDefaultCacheBehaviorForwardedValuesCookies(
       forward: pulumi.Input.fromValue(map['forward'] as String),
-      whitelistedNames: (() {
-        final guardedValue = map['whitelistedNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      whitelistedNames: (() { final guardedValue = map['whitelistedNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

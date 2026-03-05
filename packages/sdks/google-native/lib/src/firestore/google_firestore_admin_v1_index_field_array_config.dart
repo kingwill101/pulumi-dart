@@ -12,8 +12,7 @@ enum GoogleFirestoreAdminV1IndexFieldArrayConfig {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleFirestoreAdminV1IndexFieldArrayConfig value: $value',
-    );
+    throw ArgumentError('Unknown GoogleFirestoreAdminV1IndexFieldArrayConfig value: $value');
   }
 }
+

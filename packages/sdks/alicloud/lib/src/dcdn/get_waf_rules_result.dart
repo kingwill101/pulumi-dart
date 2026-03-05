@@ -12,7 +12,6 @@ class GetWafRulesResult {
   final int? pageNumber;
   final int? pageSize;
   final String? queryArgs;
-
   /// A list of Waf Rule Entries. Each element contains the following attributes:
   final List<GetWafRulesWafRule> wafRules;
 
@@ -42,11 +41,7 @@ class GetWafRulesResult {
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
       'queryArgs': ?queryArgs,
-      'wafRules':
-          pulumi.Input.encodeList<GetWafRulesWafRule, Map<String, dynamic>>(
-            wafRules,
-            (value) => value.toMap(),
-          ),
+      'wafRules': pulumi.Input.encodeList<GetWafRulesWafRule, Map<String, dynamic>>(wafRules, (value) => value.toMap()),
     };
   }
 
@@ -54,31 +49,12 @@ class GetWafRulesResult {
     return GetWafRulesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      queryArgs: (() {
-        final guardedValue = map['queryArgs'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      wafRules: pulumi.Input.decodeList<GetWafRulesWafRule>(
-        map['wafRules']!,
-        (value) =>
-            GetWafRulesWafRule.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      queryArgs: (() { final guardedValue = map['queryArgs']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      wafRules: pulumi.Input.decodeList<GetWafRulesWafRule>(map['wafRules']!, (value) => GetWafRulesWafRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

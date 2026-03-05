@@ -15,3 +15,4 @@ enum ApplicationSharingPolicy {
     throw ArgumentError('Unknown ApplicationSharingPolicy value: $value');
   }
 }
+

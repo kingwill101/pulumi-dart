@@ -3,9 +3,7 @@ enum DefaultSharePermission {
   valueNone("None"),
   valueStorageFileDataSmbShareReader("StorageFileDataSmbShareReader"),
   valueStorageFileDataSmbShareContributor("StorageFileDataSmbShareContributor"),
-  valueStorageFileDataSmbShareElevatedContributor(
-    "StorageFileDataSmbShareElevatedContributor",
-  );
+  valueStorageFileDataSmbShareElevatedContributor("StorageFileDataSmbShareElevatedContributor");
 
   const DefaultSharePermission(this.wireValue);
   final String wireValue;
@@ -19,3 +17,4 @@ enum DefaultSharePermission {
     throw ArgumentError('Unknown DefaultSharePermission value: $value');
   }
 }
+

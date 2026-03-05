@@ -13,7 +13,10 @@ class GetInstanceArgs {
   /// Creates a new [GetInstanceArgs].
   /// [instanceId] Required.
   /// [organizationId] Required.
-  GetInstanceArgs({required this.instanceId, required this.organizationId});
+  GetInstanceArgs({
+    required this.instanceId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetInstanceArgs {
     );
   }
 }
+

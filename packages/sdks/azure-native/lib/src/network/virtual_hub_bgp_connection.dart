@@ -166,28 +166,20 @@ import 'virtual_hub_bgp_connection_args.dart';
 class VirtualHubBgpConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The current state of the VirtualHub to Peer.
   late final pulumi.Output<String> connectionState;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The reference to the HubVirtualNetworkConnection resource.
   late final pulumi.Output<SubResourceResponse?> hubVirtualNetworkConnection;
-
   /// Name of the connection.
   late final pulumi.Output<String?> name;
-
   /// Peer ASN.
   late final pulumi.Output<double?> peerAsn;
-
   /// Peer IP.
   late final pulumi.Output<String?> peerIp;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Connection type.
   late final pulumi.Output<String> type;
 
@@ -200,24 +192,15 @@ class VirtualHubBgpConnection extends pulumi.CustomResource {
     VirtualHubBgpConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:VirtualHubBgpConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:VirtualHubBgpConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectionState = registerOutput<String>('connectionState');
     etag = registerOutput<String>('etag');
-    hubVirtualNetworkConnection = registerOutput<SubResourceResponse?>(
-      'hubVirtualNetworkConnection',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hubVirtualNetworkConnection = registerOutput<SubResourceResponse?>('hubVirtualNetworkConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String?>('name');
     peerAsn = registerOutput<double?>('peerAsn');
     peerIp = registerOutput<String?>('peerIp');

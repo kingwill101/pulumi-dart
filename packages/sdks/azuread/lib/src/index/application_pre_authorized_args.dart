@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationPreAuthorizedArgs {
   /// The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
   final pulumi.Input<String> applicationId;
-
   /// The client ID of the application being authorized. Changing this field forces a new resource to be created.
   final pulumi.Input<String> authorizedClientId;
-
   /// A set of permission scope IDs required by the authorized application.
   final pulumi.Input<List<String>> permissionIds;
 
@@ -37,12 +35,9 @@ class ApplicationPreAuthorizedArgs {
   factory ApplicationPreAuthorizedArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationPreAuthorizedArgs(
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
-      authorizedClientId: pulumi.Input.fromValue(
-        map['authorizedClientId'] as String,
-      ),
-      permissionIds: pulumi.Input.fromValue(
-        (map['permissionIds'] as List).cast<String>(),
-      ),
+      authorizedClientId: pulumi.Input.fromValue(map['authorizedClientId'] as String),
+      permissionIds: pulumi.Input.fromValue((map['permissionIds'] as List).cast<String>()),
     );
   }
 }
+

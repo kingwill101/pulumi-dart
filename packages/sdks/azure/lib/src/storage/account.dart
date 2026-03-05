@@ -531,371 +531,260 @@ import 'account_static_website.dart';
 class Account extends pulumi.CustomResource {
   /// Defines the access tier for `BlobStorage`, `FileStorage` and `StorageV2` accounts. Valid options are `Hot`, `Cool`, `Cold` and `Premium`. Defaults to `Hot`.
   late final pulumi.Output<String> accessTier;
-
   /// Defines the Kind of account. Valid options are `BlobStorage`, `BlockBlobStorage`, `FileStorage`, `Storage` and `StorageV2`. Defaults to `StorageV2`.
   ///
   /// &gt; **Note:** Changing the `account_kind` value from `Storage` to `StorageV2` will not trigger a force new on the storage account, it will only upgrade the existing storage account from `Storage` to `StorageV2` keeping the existing storage account in place.
   late final pulumi.Output<String?> accountKind;
-
   /// Defines the type of replication to use for this storage account. Valid options are `LRS`, `GRS`, `RAGRS`, `ZRS`, `GZRS` and `RAGZRS`. Changing this forces a new resource to be created when types `LRS`, `GRS` and `RAGRS` are changed to `ZRS`, `GZRS` or `RAGZRS` and vice versa.
   late final pulumi.Output<String> accountReplicationType;
-
   /// Defines the Tier to use for this storage account. Valid options are `Standard` and `Premium`. For `BlockBlobStorage` and `FileStorage` accounts only `Premium` is valid. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Blobs with a tier of `Premium` are of account kind `StorageV2`.
   late final pulumi.Output<String> accountTier;
-
   /// Allow or disallow nested items within this Account to opt into being public. Defaults to `true`.
   ///
   /// &gt; **Note:** At this time `allow_nested_items_to_be_public` is only supported in the Public Cloud, China Cloud, and US Government Cloud.
   late final pulumi.Output<bool?> allowNestedItemsToBePublic;
-
   /// Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values are `AAD` and `PrivateLink`.
   late final pulumi.Output<String?> allowedCopyScope;
-
   /// A `azure_files_authentication` block as defined below.
-  late final pulumi.Output<AccountAzureFilesAuthentication?>
-  azureFilesAuthentication;
-
+  late final pulumi.Output<AccountAzureFilesAuthentication?> azureFilesAuthentication;
   /// A `blob_properties` block as defined below.
   late final pulumi.Output<AccountBlobProperties> blobProperties;
-
   /// Should cross Tenant replication be enabled? Defaults to `false`.
   late final pulumi.Output<bool?> crossTenantReplicationEnabled;
-
   /// A `custom_domain` block as documented below.
   late final pulumi.Output<AccountCustomDomain?> customDomain;
-
   /// A `customer_managed_key` block as documented below.
   ///
   /// &gt; **Note:** It's possible to define a Customer Managed Key both within either the `customer_managed_key` block or by using the `azure.storage.CustomerManagedKey` resource. However, it's not possible to use both methods to manage a Customer Managed Key for a Storage Account, since these will conflict. When using the `azure.storage.CustomerManagedKey` resource, you will need to use `ignore_changes` on the `customer_managed_key` block.
   late final pulumi.Output<AccountCustomerManagedKey?> customerManagedKey;
-
   /// Default to Azure Active Directory authorization in the Azure portal when accessing the Storage Account. The default value is `false`
   late final pulumi.Output<bool?> defaultToOauthAuthentication;
-
   /// Specifies which DNS endpoint type to use. Possible values are `Standard` and `AzureDnsZone`. Defaults to `Standard`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Azure DNS zone support requires `PartitionedDns` feature to be enabled. To enable this feature for your subscription, use the following command: `az feature register --namespace "Microsoft.Storage" --name "PartitionedDns"`.
   late final pulumi.Output<String?> dnsEndpointType;
-
   /// Specifies the Edge Zone within the Azure Region where this Storage Account should exist. Changing this forces a new Storage Account to be created.
   late final pulumi.Output<String?> edgeZone;
-
   /// Boolean flag which forces HTTPS if enabled, see [here](https://docs.microsoft.com/azure/storage/storage-require-secure-transfer/) for more information. Defaults to `true`.
   late final pulumi.Output<bool?> httpsTrafficOnlyEnabled;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<AccountIdentity?> identity;
-
   /// An `immutability_policy` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<AccountImmutabilityPolicy?> immutabilityPolicy;
-
   /// Is infrastructure encryption enabled? Changing this forces a new resource to be created. Defaults to `false`.
   ///
   /// &gt; **Note:** This can only be `true` when `account_kind` is `StorageV2` or when `account_tier` is `Premium` *and* `account_kind` is one of `BlockBlobStorage` or `FileStorage`.
   late final pulumi.Output<bool?> infrastructureEncryptionEnabled;
-
   /// Is Hierarchical Namespace enabled? This can be used with Azure Data Lake Storage Gen 2 ([see here for more information](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account/)). Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This can only be `true` when `account_tier` is `Standard` or when `account_tier` is `Premium` *and* `account_kind` is `BlockBlobStorage`
   late final pulumi.Output<bool?> isHnsEnabled;
-
   /// Are Large File Shares Enabled? Defaults to `false`.
   ///
   /// &gt; **Note:** Large File Shares are enabled by default when using an `account_kind` of `FileStorage`.
   late final pulumi.Output<bool> largeFileShareEnabled;
-
   /// Is Local User Enabled? Defaults to `true`.
   late final pulumi.Output<bool?> localUserEnabled;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The minimum supported TLS version for the storage account. Possible values are `TLS1_0`, `TLS1_1`, `TLS1_2` and `TLS1_3`. Defaults to `TLS1_2` for new storage accounts.
   ///
   /// &gt; **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
   ///
   /// &gt; **Note:** At this time `min_tls_version` is only supported in the Public Cloud, China Cloud, and US Government Cloud.
   late final pulumi.Output<String?> minTlsVersion;
-
   /// Specifies the name of the storage account. Only lowercase Alphanumeric characters allowed. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
   late final pulumi.Output<String> name;
-
   /// A `network_rules` block as documented below.
   late final pulumi.Output<AccountNetworkRules> networkRules;
-
   /// Is NFSv3 protocol enabled? Changing this forces a new resource to be created. Defaults to `false`.
   ///
   /// &gt; **Note:** This can only be `true` when `account_tier` is `Standard` and `account_kind` is `StorageV2`, or `account_tier` is `Premium` and `account_kind` is `BlockBlobStorage`. Additionally, the `is_hns_enabled` is `true` and `account_replication_type` must be `LRS` or `RAGRS`.
   late final pulumi.Output<bool?> nfsv3Enabled;
-
   /// The primary access key for the storage account.
   late final pulumi.Output<String> primaryAccessKey;
-
   /// The connection string associated with the primary blob location.
   late final pulumi.Output<String> primaryBlobConnectionString;
-
   /// The endpoint URL for blob storage in the primary location.
   late final pulumi.Output<String> primaryBlobEndpoint;
-
   /// The hostname with port if applicable for blob storage in the primary location.
   late final pulumi.Output<String> primaryBlobHost;
-
   /// The internet routing endpoint URL for blob storage in the primary location.
   late final pulumi.Output<String> primaryBlobInternetEndpoint;
-
   /// The internet routing hostname with port if applicable for blob storage in the primary location.
   late final pulumi.Output<String> primaryBlobInternetHost;
-
   /// The microsoft routing endpoint URL for blob storage in the primary location.
   late final pulumi.Output<String> primaryBlobMicrosoftEndpoint;
-
   /// The microsoft routing hostname with port if applicable for blob storage in the primary location.
   late final pulumi.Output<String> primaryBlobMicrosoftHost;
-
   /// The connection string associated with the primary location.
   late final pulumi.Output<String> primaryConnectionString;
-
   /// The endpoint URL for DFS storage in the primary location.
   late final pulumi.Output<String> primaryDfsEndpoint;
-
   /// The hostname with port if applicable for DFS storage in the primary location.
   late final pulumi.Output<String> primaryDfsHost;
-
   /// The internet routing endpoint URL for DFS storage in the primary location.
   late final pulumi.Output<String> primaryDfsInternetEndpoint;
-
   /// The internet routing hostname with port if applicable for DFS storage in the primary location.
   late final pulumi.Output<String> primaryDfsInternetHost;
-
   /// The microsoft routing endpoint URL for DFS storage in the primary location.
   late final pulumi.Output<String> primaryDfsMicrosoftEndpoint;
-
   /// The microsoft routing hostname with port if applicable for DFS storage in the primary location.
   late final pulumi.Output<String> primaryDfsMicrosoftHost;
-
   /// The endpoint URL for file storage in the primary location.
   late final pulumi.Output<String> primaryFileEndpoint;
-
   /// The hostname with port if applicable for file storage in the primary location.
   late final pulumi.Output<String> primaryFileHost;
-
   /// The internet routing endpoint URL for file storage in the primary location.
   late final pulumi.Output<String> primaryFileInternetEndpoint;
-
   /// The internet routing hostname with port if applicable for file storage in the primary location.
   late final pulumi.Output<String> primaryFileInternetHost;
-
   /// The microsoft routing endpoint URL for file storage in the primary location.
   late final pulumi.Output<String> primaryFileMicrosoftEndpoint;
-
   /// The microsoft routing hostname with port if applicable for file storage in the primary location.
   late final pulumi.Output<String> primaryFileMicrosoftHost;
-
   /// The primary location of the storage account.
   late final pulumi.Output<String> primaryLocation;
-
   /// The endpoint URL for queue storage in the primary location.
   late final pulumi.Output<String> primaryQueueEndpoint;
-
   /// The hostname with port if applicable for queue storage in the primary location.
   late final pulumi.Output<String> primaryQueueHost;
-
   /// The microsoft routing endpoint URL for queue storage in the primary location.
   late final pulumi.Output<String> primaryQueueMicrosoftEndpoint;
-
   /// The microsoft routing hostname with port if applicable for queue storage in the primary location.
   late final pulumi.Output<String> primaryQueueMicrosoftHost;
-
   /// The endpoint URL for table storage in the primary location.
   late final pulumi.Output<String> primaryTableEndpoint;
-
   /// The hostname with port if applicable for table storage in the primary location.
   late final pulumi.Output<String> primaryTableHost;
-
   /// The microsoft routing endpoint URL for table storage in the primary location.
   late final pulumi.Output<String> primaryTableMicrosoftEndpoint;
-
   /// The microsoft routing hostname with port if applicable for table storage in the primary location.
   late final pulumi.Output<String> primaryTableMicrosoftHost;
-
   /// The endpoint URL for web storage in the primary location.
   late final pulumi.Output<String> primaryWebEndpoint;
-
   /// The hostname with port if applicable for web storage in the primary location.
   late final pulumi.Output<String> primaryWebHost;
-
   /// The internet routing endpoint URL for web storage in the primary location.
   late final pulumi.Output<String> primaryWebInternetEndpoint;
-
   /// The internet routing hostname with port if applicable for web storage in the primary location.
   late final pulumi.Output<String> primaryWebInternetHost;
-
   /// The microsoft routing endpoint URL for web storage in the primary location.
   late final pulumi.Output<String> primaryWebMicrosoftEndpoint;
-
   /// The microsoft routing hostname with port if applicable for web storage in the primary location.
   late final pulumi.Output<String> primaryWebMicrosoftHost;
-
   /// Specifies the version of the **provisioned** billing model (e.g. when `account_kind = "FileStorage"` for Storage File). Possible value is `V2`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> provisionedBillingModelVersion;
-
   /// Whether the public network access is enabled? Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// The encryption type of the queue service. Possible values are `Service` and `Account`. Changing this forces a new resource to be created. Default value is `Service`.
   late final pulumi.Output<String?> queueEncryptionKeyType;
-
   /// A `queue_properties` block as defined below.
   ///
   /// &gt; **Note:** `queue_properties` can only be configured when `account_tier` is set to `Standard` and `account_kind` is set to either `Storage` or `StorageV2`.
   late final pulumi.Output<AccountQueueProperties> queueProperties;
-
   /// The name of the resource group in which to create the storage account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `routing` block as defined below.
   late final pulumi.Output<AccountRouting> routing;
-
   /// A `sas_policy` block as defined below.
   late final pulumi.Output<AccountSasPolicy?> sasPolicy;
-
   /// The secondary access key for the storage account.
   late final pulumi.Output<String> secondaryAccessKey;
-
   /// The connection string associated with the secondary blob location.
   late final pulumi.Output<String> secondaryBlobConnectionString;
-
   /// The endpoint URL for blob storage in the secondary location.
   late final pulumi.Output<String> secondaryBlobEndpoint;
-
   /// The hostname with port if applicable for blob storage in the secondary location.
   late final pulumi.Output<String> secondaryBlobHost;
-
   /// The internet routing endpoint URL for blob storage in the secondary location.
   late final pulumi.Output<String> secondaryBlobInternetEndpoint;
-
   /// The internet routing hostname with port if applicable for blob storage in the secondary location.
   late final pulumi.Output<String> secondaryBlobInternetHost;
-
   /// The microsoft routing endpoint URL for blob storage in the secondary location.
   late final pulumi.Output<String> secondaryBlobMicrosoftEndpoint;
-
   /// The microsoft routing hostname with port if applicable for blob storage in the secondary location.
   late final pulumi.Output<String> secondaryBlobMicrosoftHost;
-
   /// The connection string associated with the secondary location.
   late final pulumi.Output<String> secondaryConnectionString;
-
   /// The endpoint URL for DFS storage in the secondary location.
   late final pulumi.Output<String> secondaryDfsEndpoint;
-
   /// The hostname with port if applicable for DFS storage in the secondary location.
   late final pulumi.Output<String> secondaryDfsHost;
-
   /// The internet routing endpoint URL for DFS storage in the secondary location.
   late final pulumi.Output<String> secondaryDfsInternetEndpoint;
-
   /// The internet routing hostname with port if applicable for DFS storage in the secondary location.
   late final pulumi.Output<String> secondaryDfsInternetHost;
-
   /// The microsoft routing endpoint URL for DFS storage in the secondary location.
   late final pulumi.Output<String> secondaryDfsMicrosoftEndpoint;
-
   /// The microsoft routing hostname with port if applicable for DFS storage in the secondary location.
   late final pulumi.Output<String> secondaryDfsMicrosoftHost;
-
   /// The endpoint URL for file storage in the secondary location.
   late final pulumi.Output<String> secondaryFileEndpoint;
-
   /// The hostname with port if applicable for file storage in the secondary location.
   late final pulumi.Output<String> secondaryFileHost;
-
   /// The internet routing endpoint URL for file storage in the secondary location.
   late final pulumi.Output<String> secondaryFileInternetEndpoint;
-
   /// The internet routing hostname with port if applicable for file storage in the secondary location.
   late final pulumi.Output<String> secondaryFileInternetHost;
-
   /// The microsoft routing endpoint URL for file storage in the secondary location.
   late final pulumi.Output<String> secondaryFileMicrosoftEndpoint;
-
   /// The microsoft routing hostname with port if applicable for file storage in the secondary location.
   late final pulumi.Output<String> secondaryFileMicrosoftHost;
-
   /// The secondary location of the storage account.
   late final pulumi.Output<String> secondaryLocation;
-
   /// The endpoint URL for queue storage in the secondary location.
   late final pulumi.Output<String> secondaryQueueEndpoint;
-
   /// The hostname with port if applicable for queue storage in the secondary location.
   late final pulumi.Output<String> secondaryQueueHost;
-
   /// The microsoft routing endpoint URL for queue storage in the secondary location.
   late final pulumi.Output<String> secondaryQueueMicrosoftEndpoint;
-
   /// The microsoft routing hostname with port if applicable for queue storage in the secondary location.
   late final pulumi.Output<String> secondaryQueueMicrosoftHost;
-
   /// The endpoint URL for table storage in the secondary location.
   late final pulumi.Output<String> secondaryTableEndpoint;
-
   /// The hostname with port if applicable for table storage in the secondary location.
   late final pulumi.Output<String> secondaryTableHost;
-
   /// The microsoft routing endpoint URL for table storage in the secondary location.
   late final pulumi.Output<String> secondaryTableMicrosoftEndpoint;
-
   /// The microsoft routing hostname with port if applicable for table storage in the secondary location.
   late final pulumi.Output<String> secondaryTableMicrosoftHost;
-
   /// The endpoint URL for web storage in the secondary location.
   late final pulumi.Output<String> secondaryWebEndpoint;
-
   /// The hostname with port if applicable for web storage in the secondary location.
   late final pulumi.Output<String> secondaryWebHost;
-
   /// The internet routing endpoint URL for web storage in the secondary location.
   late final pulumi.Output<String> secondaryWebInternetEndpoint;
-
   /// The internet routing hostname with port if applicable for web storage in the secondary location.
   late final pulumi.Output<String> secondaryWebInternetHost;
-
   /// The microsoft routing endpoint URL for web storage in the secondary location.
   late final pulumi.Output<String> secondaryWebMicrosoftEndpoint;
-
   /// The microsoft routing hostname with port if applicable for web storage in the secondary location.
   late final pulumi.Output<String> secondaryWebMicrosoftHost;
-
   /// Boolean, enable SFTP for the storage account
   ///
   /// &gt; **Note:** SFTP support requires `is_hns_enabled` set to `true`. [More information on SFTP support can be found here](https://learn.microsoft.com/azure/storage/blobs/secure-file-transfer-protocol-support). Defaults to `false`
   late final pulumi.Output<bool?> sftpEnabled;
-
   /// A `share_properties` block as defined below.
   ///
   /// &gt; **Note:** `share_properties` can only be configured when either `account_tier` is `Standard` and `account_kind` is either `Storage` or `StorageV2` - or when `account_tier` is `Premium` and `account_kind` is `FileStorage`.
   late final pulumi.Output<AccountShareProperties> shareProperties;
-
   /// Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). Defaults to `true`.
   ///
   /// &gt; **Note:** Terraform uses Shared Key Authorisation to provision Storage Containers, Blobs and other items - when Shared Key Access is disabled, you will need to enable the `storage_use_azuread` flag in the Provider block to use Azure AD for authentication, however not all Azure Storage services support Active Directory authentication.
   late final pulumi.Output<bool?> sharedAccessKeyEnabled;
-
   /// A `static_website` block as defined below.
   ///
   /// &gt; **Note:** `static_website` can only be set when the `account_kind` is set to `StorageV2` or `BlockBlobStorage`.
   ///
   /// &gt; **Note:** If `static_website` is specified, the service will automatically create a `azure.storage.Container` named `$web`.
   late final pulumi.Output<AccountStaticWebsite> staticWebsite;
-
   /// The encryption type of the table service. Possible values are `Service` and `Account`. Changing this forces a new resource to be created. Default value is `Service`.
   ///
   /// &gt; **Note:** `queue_encryption_key_type` and `table_encryption_key_type` cannot be set to `Account` when `account_kind` is set `Storage`
   late final pulumi.Output<String?> tableEncryptionKeyType;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -908,314 +797,120 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/account:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/account:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessTier = registerOutput<String>('accessTier');
     accountKind = registerOutput<String?>('accountKind');
     accountReplicationType = registerOutput<String>('accountReplicationType');
     accountTier = registerOutput<String>('accountTier');
-    allowNestedItemsToBePublic = registerOutput<bool?>(
-      'allowNestedItemsToBePublic',
-    );
+    allowNestedItemsToBePublic = registerOutput<bool?>('allowNestedItemsToBePublic');
     allowedCopyScope = registerOutput<String?>('allowedCopyScope');
-    azureFilesAuthentication = registerOutput<AccountAzureFilesAuthentication?>(
-      'azureFilesAuthentication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountAzureFilesAuthentication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    blobProperties = registerOutput<AccountBlobProperties>(
-      'blobProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountBlobProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    crossTenantReplicationEnabled = registerOutput<bool?>(
-      'crossTenantReplicationEnabled',
-    );
-    customDomain = registerOutput<AccountCustomDomain?>(
-      'customDomain',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountCustomDomain.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    customerManagedKey = registerOutput<AccountCustomerManagedKey?>(
-      'customerManagedKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountCustomerManagedKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    defaultToOauthAuthentication = registerOutput<bool?>(
-      'defaultToOauthAuthentication',
-    );
+    azureFilesAuthentication = registerOutput<AccountAzureFilesAuthentication?>('azureFilesAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountAzureFilesAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    blobProperties = registerOutput<AccountBlobProperties>('blobProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountBlobProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    crossTenantReplicationEnabled = registerOutput<bool?>('crossTenantReplicationEnabled');
+    customDomain = registerOutput<AccountCustomDomain?>('customDomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCustomDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customerManagedKey = registerOutput<AccountCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultToOauthAuthentication = registerOutput<bool?>('defaultToOauthAuthentication');
     dnsEndpointType = registerOutput<String?>('dnsEndpointType');
     edgeZone = registerOutput<String?>('edgeZone');
     httpsTrafficOnlyEnabled = registerOutput<bool?>('httpsTrafficOnlyEnabled');
-    identity = registerOutput<AccountIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    immutabilityPolicy = registerOutput<AccountImmutabilityPolicy?>(
-      'immutabilityPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountImmutabilityPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    infrastructureEncryptionEnabled = registerOutput<bool?>(
-      'infrastructureEncryptionEnabled',
-    );
+    identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    immutabilityPolicy = registerOutput<AccountImmutabilityPolicy?>('immutabilityPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountImmutabilityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
     isHnsEnabled = registerOutput<bool?>('isHnsEnabled');
     largeFileShareEnabled = registerOutput<bool>('largeFileShareEnabled');
     localUserEnabled = registerOutput<bool?>('localUserEnabled');
     location = registerOutput<String>('location');
     minTlsVersion = registerOutput<String?>('minTlsVersion');
     this.name = registerOutput<String>('name');
-    networkRules = registerOutput<AccountNetworkRules>(
-      'networkRules',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountNetworkRules.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkRules = registerOutput<AccountNetworkRules>('networkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountNetworkRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nfsv3Enabled = registerOutput<bool?>('nfsv3Enabled');
     primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    primaryBlobConnectionString = registerOutput<String>(
-      'primaryBlobConnectionString',
-    );
+    primaryBlobConnectionString = registerOutput<String>('primaryBlobConnectionString');
     primaryBlobEndpoint = registerOutput<String>('primaryBlobEndpoint');
     primaryBlobHost = registerOutput<String>('primaryBlobHost');
-    primaryBlobInternetEndpoint = registerOutput<String>(
-      'primaryBlobInternetEndpoint',
-    );
+    primaryBlobInternetEndpoint = registerOutput<String>('primaryBlobInternetEndpoint');
     primaryBlobInternetHost = registerOutput<String>('primaryBlobInternetHost');
-    primaryBlobMicrosoftEndpoint = registerOutput<String>(
-      'primaryBlobMicrosoftEndpoint',
-    );
-    primaryBlobMicrosoftHost = registerOutput<String>(
-      'primaryBlobMicrosoftHost',
-    );
+    primaryBlobMicrosoftEndpoint = registerOutput<String>('primaryBlobMicrosoftEndpoint');
+    primaryBlobMicrosoftHost = registerOutput<String>('primaryBlobMicrosoftHost');
     primaryConnectionString = registerOutput<String>('primaryConnectionString');
     primaryDfsEndpoint = registerOutput<String>('primaryDfsEndpoint');
     primaryDfsHost = registerOutput<String>('primaryDfsHost');
-    primaryDfsInternetEndpoint = registerOutput<String>(
-      'primaryDfsInternetEndpoint',
-    );
+    primaryDfsInternetEndpoint = registerOutput<String>('primaryDfsInternetEndpoint');
     primaryDfsInternetHost = registerOutput<String>('primaryDfsInternetHost');
-    primaryDfsMicrosoftEndpoint = registerOutput<String>(
-      'primaryDfsMicrosoftEndpoint',
-    );
+    primaryDfsMicrosoftEndpoint = registerOutput<String>('primaryDfsMicrosoftEndpoint');
     primaryDfsMicrosoftHost = registerOutput<String>('primaryDfsMicrosoftHost');
     primaryFileEndpoint = registerOutput<String>('primaryFileEndpoint');
     primaryFileHost = registerOutput<String>('primaryFileHost');
-    primaryFileInternetEndpoint = registerOutput<String>(
-      'primaryFileInternetEndpoint',
-    );
+    primaryFileInternetEndpoint = registerOutput<String>('primaryFileInternetEndpoint');
     primaryFileInternetHost = registerOutput<String>('primaryFileInternetHost');
-    primaryFileMicrosoftEndpoint = registerOutput<String>(
-      'primaryFileMicrosoftEndpoint',
-    );
-    primaryFileMicrosoftHost = registerOutput<String>(
-      'primaryFileMicrosoftHost',
-    );
+    primaryFileMicrosoftEndpoint = registerOutput<String>('primaryFileMicrosoftEndpoint');
+    primaryFileMicrosoftHost = registerOutput<String>('primaryFileMicrosoftHost');
     primaryLocation = registerOutput<String>('primaryLocation');
     primaryQueueEndpoint = registerOutput<String>('primaryQueueEndpoint');
     primaryQueueHost = registerOutput<String>('primaryQueueHost');
-    primaryQueueMicrosoftEndpoint = registerOutput<String>(
-      'primaryQueueMicrosoftEndpoint',
-    );
-    primaryQueueMicrosoftHost = registerOutput<String>(
-      'primaryQueueMicrosoftHost',
-    );
+    primaryQueueMicrosoftEndpoint = registerOutput<String>('primaryQueueMicrosoftEndpoint');
+    primaryQueueMicrosoftHost = registerOutput<String>('primaryQueueMicrosoftHost');
     primaryTableEndpoint = registerOutput<String>('primaryTableEndpoint');
     primaryTableHost = registerOutput<String>('primaryTableHost');
-    primaryTableMicrosoftEndpoint = registerOutput<String>(
-      'primaryTableMicrosoftEndpoint',
-    );
-    primaryTableMicrosoftHost = registerOutput<String>(
-      'primaryTableMicrosoftHost',
-    );
+    primaryTableMicrosoftEndpoint = registerOutput<String>('primaryTableMicrosoftEndpoint');
+    primaryTableMicrosoftHost = registerOutput<String>('primaryTableMicrosoftHost');
     primaryWebEndpoint = registerOutput<String>('primaryWebEndpoint');
     primaryWebHost = registerOutput<String>('primaryWebHost');
-    primaryWebInternetEndpoint = registerOutput<String>(
-      'primaryWebInternetEndpoint',
-    );
+    primaryWebInternetEndpoint = registerOutput<String>('primaryWebInternetEndpoint');
     primaryWebInternetHost = registerOutput<String>('primaryWebInternetHost');
-    primaryWebMicrosoftEndpoint = registerOutput<String>(
-      'primaryWebMicrosoftEndpoint',
-    );
+    primaryWebMicrosoftEndpoint = registerOutput<String>('primaryWebMicrosoftEndpoint');
     primaryWebMicrosoftHost = registerOutput<String>('primaryWebMicrosoftHost');
-    provisionedBillingModelVersion = registerOutput<String?>(
-      'provisionedBillingModelVersion',
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    provisionedBillingModelVersion = registerOutput<String?>('provisionedBillingModelVersion');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     queueEncryptionKeyType = registerOutput<String?>('queueEncryptionKeyType');
-    queueProperties = registerOutput<AccountQueueProperties>(
-      'queueProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountQueueProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    queueProperties = registerOutput<AccountQueueProperties>('queueProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueueProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    routing = registerOutput<AccountRouting>(
-      'routing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountRouting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sasPolicy = registerOutput<AccountSasPolicy?>(
-      'sasPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountSasPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routing = registerOutput<AccountRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sasPolicy = registerOutput<AccountSasPolicy?>('sasPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountSasPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    secondaryBlobConnectionString = registerOutput<String>(
-      'secondaryBlobConnectionString',
-    );
+    secondaryBlobConnectionString = registerOutput<String>('secondaryBlobConnectionString');
     secondaryBlobEndpoint = registerOutput<String>('secondaryBlobEndpoint');
     secondaryBlobHost = registerOutput<String>('secondaryBlobHost');
-    secondaryBlobInternetEndpoint = registerOutput<String>(
-      'secondaryBlobInternetEndpoint',
-    );
-    secondaryBlobInternetHost = registerOutput<String>(
-      'secondaryBlobInternetHost',
-    );
-    secondaryBlobMicrosoftEndpoint = registerOutput<String>(
-      'secondaryBlobMicrosoftEndpoint',
-    );
-    secondaryBlobMicrosoftHost = registerOutput<String>(
-      'secondaryBlobMicrosoftHost',
-    );
-    secondaryConnectionString = registerOutput<String>(
-      'secondaryConnectionString',
-    );
+    secondaryBlobInternetEndpoint = registerOutput<String>('secondaryBlobInternetEndpoint');
+    secondaryBlobInternetHost = registerOutput<String>('secondaryBlobInternetHost');
+    secondaryBlobMicrosoftEndpoint = registerOutput<String>('secondaryBlobMicrosoftEndpoint');
+    secondaryBlobMicrosoftHost = registerOutput<String>('secondaryBlobMicrosoftHost');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
     secondaryDfsEndpoint = registerOutput<String>('secondaryDfsEndpoint');
     secondaryDfsHost = registerOutput<String>('secondaryDfsHost');
-    secondaryDfsInternetEndpoint = registerOutput<String>(
-      'secondaryDfsInternetEndpoint',
-    );
-    secondaryDfsInternetHost = registerOutput<String>(
-      'secondaryDfsInternetHost',
-    );
-    secondaryDfsMicrosoftEndpoint = registerOutput<String>(
-      'secondaryDfsMicrosoftEndpoint',
-    );
-    secondaryDfsMicrosoftHost = registerOutput<String>(
-      'secondaryDfsMicrosoftHost',
-    );
+    secondaryDfsInternetEndpoint = registerOutput<String>('secondaryDfsInternetEndpoint');
+    secondaryDfsInternetHost = registerOutput<String>('secondaryDfsInternetHost');
+    secondaryDfsMicrosoftEndpoint = registerOutput<String>('secondaryDfsMicrosoftEndpoint');
+    secondaryDfsMicrosoftHost = registerOutput<String>('secondaryDfsMicrosoftHost');
     secondaryFileEndpoint = registerOutput<String>('secondaryFileEndpoint');
     secondaryFileHost = registerOutput<String>('secondaryFileHost');
-    secondaryFileInternetEndpoint = registerOutput<String>(
-      'secondaryFileInternetEndpoint',
-    );
-    secondaryFileInternetHost = registerOutput<String>(
-      'secondaryFileInternetHost',
-    );
-    secondaryFileMicrosoftEndpoint = registerOutput<String>(
-      'secondaryFileMicrosoftEndpoint',
-    );
-    secondaryFileMicrosoftHost = registerOutput<String>(
-      'secondaryFileMicrosoftHost',
-    );
+    secondaryFileInternetEndpoint = registerOutput<String>('secondaryFileInternetEndpoint');
+    secondaryFileInternetHost = registerOutput<String>('secondaryFileInternetHost');
+    secondaryFileMicrosoftEndpoint = registerOutput<String>('secondaryFileMicrosoftEndpoint');
+    secondaryFileMicrosoftHost = registerOutput<String>('secondaryFileMicrosoftHost');
     secondaryLocation = registerOutput<String>('secondaryLocation');
     secondaryQueueEndpoint = registerOutput<String>('secondaryQueueEndpoint');
     secondaryQueueHost = registerOutput<String>('secondaryQueueHost');
-    secondaryQueueMicrosoftEndpoint = registerOutput<String>(
-      'secondaryQueueMicrosoftEndpoint',
-    );
-    secondaryQueueMicrosoftHost = registerOutput<String>(
-      'secondaryQueueMicrosoftHost',
-    );
+    secondaryQueueMicrosoftEndpoint = registerOutput<String>('secondaryQueueMicrosoftEndpoint');
+    secondaryQueueMicrosoftHost = registerOutput<String>('secondaryQueueMicrosoftHost');
     secondaryTableEndpoint = registerOutput<String>('secondaryTableEndpoint');
     secondaryTableHost = registerOutput<String>('secondaryTableHost');
-    secondaryTableMicrosoftEndpoint = registerOutput<String>(
-      'secondaryTableMicrosoftEndpoint',
-    );
-    secondaryTableMicrosoftHost = registerOutput<String>(
-      'secondaryTableMicrosoftHost',
-    );
+    secondaryTableMicrosoftEndpoint = registerOutput<String>('secondaryTableMicrosoftEndpoint');
+    secondaryTableMicrosoftHost = registerOutput<String>('secondaryTableMicrosoftHost');
     secondaryWebEndpoint = registerOutput<String>('secondaryWebEndpoint');
     secondaryWebHost = registerOutput<String>('secondaryWebHost');
-    secondaryWebInternetEndpoint = registerOutput<String>(
-      'secondaryWebInternetEndpoint',
-    );
-    secondaryWebInternetHost = registerOutput<String>(
-      'secondaryWebInternetHost',
-    );
-    secondaryWebMicrosoftEndpoint = registerOutput<String>(
-      'secondaryWebMicrosoftEndpoint',
-    );
-    secondaryWebMicrosoftHost = registerOutput<String>(
-      'secondaryWebMicrosoftHost',
-    );
+    secondaryWebInternetEndpoint = registerOutput<String>('secondaryWebInternetEndpoint');
+    secondaryWebInternetHost = registerOutput<String>('secondaryWebInternetHost');
+    secondaryWebMicrosoftEndpoint = registerOutput<String>('secondaryWebMicrosoftEndpoint');
+    secondaryWebMicrosoftHost = registerOutput<String>('secondaryWebMicrosoftHost');
     sftpEnabled = registerOutput<bool?>('sftpEnabled');
-    shareProperties = registerOutput<AccountShareProperties>(
-      'shareProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountShareProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    shareProperties = registerOutput<AccountShareProperties>('shareProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountShareProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sharedAccessKeyEnabled = registerOutput<bool?>('sharedAccessKeyEnabled');
-    staticWebsite = registerOutput<AccountStaticWebsite>(
-      'staticWebsite',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountStaticWebsite.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    staticWebsite = registerOutput<AccountStaticWebsite>('staticWebsite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountStaticWebsite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableEncryptionKeyType = registerOutput<String?>('tableEncryptionKeyType');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -1238,314 +933,120 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/account:Account',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/account:Account',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessTier = registerOutput<String>('accessTier');
     accountKind = registerOutput<String?>('accountKind');
     accountReplicationType = registerOutput<String>('accountReplicationType');
     accountTier = registerOutput<String>('accountTier');
-    allowNestedItemsToBePublic = registerOutput<bool?>(
-      'allowNestedItemsToBePublic',
-    );
+    allowNestedItemsToBePublic = registerOutput<bool?>('allowNestedItemsToBePublic');
     allowedCopyScope = registerOutput<String?>('allowedCopyScope');
-    azureFilesAuthentication = registerOutput<AccountAzureFilesAuthentication?>(
-      'azureFilesAuthentication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountAzureFilesAuthentication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    blobProperties = registerOutput<AccountBlobProperties>(
-      'blobProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountBlobProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    crossTenantReplicationEnabled = registerOutput<bool?>(
-      'crossTenantReplicationEnabled',
-    );
-    customDomain = registerOutput<AccountCustomDomain?>(
-      'customDomain',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountCustomDomain.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    customerManagedKey = registerOutput<AccountCustomerManagedKey?>(
-      'customerManagedKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountCustomerManagedKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    defaultToOauthAuthentication = registerOutput<bool?>(
-      'defaultToOauthAuthentication',
-    );
+    azureFilesAuthentication = registerOutput<AccountAzureFilesAuthentication?>('azureFilesAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountAzureFilesAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    blobProperties = registerOutput<AccountBlobProperties>('blobProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountBlobProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    crossTenantReplicationEnabled = registerOutput<bool?>('crossTenantReplicationEnabled');
+    customDomain = registerOutput<AccountCustomDomain?>('customDomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCustomDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customerManagedKey = registerOutput<AccountCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultToOauthAuthentication = registerOutput<bool?>('defaultToOauthAuthentication');
     dnsEndpointType = registerOutput<String?>('dnsEndpointType');
     edgeZone = registerOutput<String?>('edgeZone');
     httpsTrafficOnlyEnabled = registerOutput<bool?>('httpsTrafficOnlyEnabled');
-    identity = registerOutput<AccountIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    immutabilityPolicy = registerOutput<AccountImmutabilityPolicy?>(
-      'immutabilityPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountImmutabilityPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    infrastructureEncryptionEnabled = registerOutput<bool?>(
-      'infrastructureEncryptionEnabled',
-    );
+    identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    immutabilityPolicy = registerOutput<AccountImmutabilityPolicy?>('immutabilityPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountImmutabilityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
     isHnsEnabled = registerOutput<bool?>('isHnsEnabled');
     largeFileShareEnabled = registerOutput<bool>('largeFileShareEnabled');
     localUserEnabled = registerOutput<bool?>('localUserEnabled');
     location = registerOutput<String>('location');
     minTlsVersion = registerOutput<String?>('minTlsVersion');
     this.name = registerOutput<String>('name');
-    networkRules = registerOutput<AccountNetworkRules>(
-      'networkRules',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountNetworkRules.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkRules = registerOutput<AccountNetworkRules>('networkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountNetworkRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nfsv3Enabled = registerOutput<bool?>('nfsv3Enabled');
     primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    primaryBlobConnectionString = registerOutput<String>(
-      'primaryBlobConnectionString',
-    );
+    primaryBlobConnectionString = registerOutput<String>('primaryBlobConnectionString');
     primaryBlobEndpoint = registerOutput<String>('primaryBlobEndpoint');
     primaryBlobHost = registerOutput<String>('primaryBlobHost');
-    primaryBlobInternetEndpoint = registerOutput<String>(
-      'primaryBlobInternetEndpoint',
-    );
+    primaryBlobInternetEndpoint = registerOutput<String>('primaryBlobInternetEndpoint');
     primaryBlobInternetHost = registerOutput<String>('primaryBlobInternetHost');
-    primaryBlobMicrosoftEndpoint = registerOutput<String>(
-      'primaryBlobMicrosoftEndpoint',
-    );
-    primaryBlobMicrosoftHost = registerOutput<String>(
-      'primaryBlobMicrosoftHost',
-    );
+    primaryBlobMicrosoftEndpoint = registerOutput<String>('primaryBlobMicrosoftEndpoint');
+    primaryBlobMicrosoftHost = registerOutput<String>('primaryBlobMicrosoftHost');
     primaryConnectionString = registerOutput<String>('primaryConnectionString');
     primaryDfsEndpoint = registerOutput<String>('primaryDfsEndpoint');
     primaryDfsHost = registerOutput<String>('primaryDfsHost');
-    primaryDfsInternetEndpoint = registerOutput<String>(
-      'primaryDfsInternetEndpoint',
-    );
+    primaryDfsInternetEndpoint = registerOutput<String>('primaryDfsInternetEndpoint');
     primaryDfsInternetHost = registerOutput<String>('primaryDfsInternetHost');
-    primaryDfsMicrosoftEndpoint = registerOutput<String>(
-      'primaryDfsMicrosoftEndpoint',
-    );
+    primaryDfsMicrosoftEndpoint = registerOutput<String>('primaryDfsMicrosoftEndpoint');
     primaryDfsMicrosoftHost = registerOutput<String>('primaryDfsMicrosoftHost');
     primaryFileEndpoint = registerOutput<String>('primaryFileEndpoint');
     primaryFileHost = registerOutput<String>('primaryFileHost');
-    primaryFileInternetEndpoint = registerOutput<String>(
-      'primaryFileInternetEndpoint',
-    );
+    primaryFileInternetEndpoint = registerOutput<String>('primaryFileInternetEndpoint');
     primaryFileInternetHost = registerOutput<String>('primaryFileInternetHost');
-    primaryFileMicrosoftEndpoint = registerOutput<String>(
-      'primaryFileMicrosoftEndpoint',
-    );
-    primaryFileMicrosoftHost = registerOutput<String>(
-      'primaryFileMicrosoftHost',
-    );
+    primaryFileMicrosoftEndpoint = registerOutput<String>('primaryFileMicrosoftEndpoint');
+    primaryFileMicrosoftHost = registerOutput<String>('primaryFileMicrosoftHost');
     primaryLocation = registerOutput<String>('primaryLocation');
     primaryQueueEndpoint = registerOutput<String>('primaryQueueEndpoint');
     primaryQueueHost = registerOutput<String>('primaryQueueHost');
-    primaryQueueMicrosoftEndpoint = registerOutput<String>(
-      'primaryQueueMicrosoftEndpoint',
-    );
-    primaryQueueMicrosoftHost = registerOutput<String>(
-      'primaryQueueMicrosoftHost',
-    );
+    primaryQueueMicrosoftEndpoint = registerOutput<String>('primaryQueueMicrosoftEndpoint');
+    primaryQueueMicrosoftHost = registerOutput<String>('primaryQueueMicrosoftHost');
     primaryTableEndpoint = registerOutput<String>('primaryTableEndpoint');
     primaryTableHost = registerOutput<String>('primaryTableHost');
-    primaryTableMicrosoftEndpoint = registerOutput<String>(
-      'primaryTableMicrosoftEndpoint',
-    );
-    primaryTableMicrosoftHost = registerOutput<String>(
-      'primaryTableMicrosoftHost',
-    );
+    primaryTableMicrosoftEndpoint = registerOutput<String>('primaryTableMicrosoftEndpoint');
+    primaryTableMicrosoftHost = registerOutput<String>('primaryTableMicrosoftHost');
     primaryWebEndpoint = registerOutput<String>('primaryWebEndpoint');
     primaryWebHost = registerOutput<String>('primaryWebHost');
-    primaryWebInternetEndpoint = registerOutput<String>(
-      'primaryWebInternetEndpoint',
-    );
+    primaryWebInternetEndpoint = registerOutput<String>('primaryWebInternetEndpoint');
     primaryWebInternetHost = registerOutput<String>('primaryWebInternetHost');
-    primaryWebMicrosoftEndpoint = registerOutput<String>(
-      'primaryWebMicrosoftEndpoint',
-    );
+    primaryWebMicrosoftEndpoint = registerOutput<String>('primaryWebMicrosoftEndpoint');
     primaryWebMicrosoftHost = registerOutput<String>('primaryWebMicrosoftHost');
-    provisionedBillingModelVersion = registerOutput<String?>(
-      'provisionedBillingModelVersion',
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    provisionedBillingModelVersion = registerOutput<String?>('provisionedBillingModelVersion');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     queueEncryptionKeyType = registerOutput<String?>('queueEncryptionKeyType');
-    queueProperties = registerOutput<AccountQueueProperties>(
-      'queueProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountQueueProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    queueProperties = registerOutput<AccountQueueProperties>('queueProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueueProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    routing = registerOutput<AccountRouting>(
-      'routing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountRouting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sasPolicy = registerOutput<AccountSasPolicy?>(
-      'sasPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountSasPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routing = registerOutput<AccountRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sasPolicy = registerOutput<AccountSasPolicy?>('sasPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountSasPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    secondaryBlobConnectionString = registerOutput<String>(
-      'secondaryBlobConnectionString',
-    );
+    secondaryBlobConnectionString = registerOutput<String>('secondaryBlobConnectionString');
     secondaryBlobEndpoint = registerOutput<String>('secondaryBlobEndpoint');
     secondaryBlobHost = registerOutput<String>('secondaryBlobHost');
-    secondaryBlobInternetEndpoint = registerOutput<String>(
-      'secondaryBlobInternetEndpoint',
-    );
-    secondaryBlobInternetHost = registerOutput<String>(
-      'secondaryBlobInternetHost',
-    );
-    secondaryBlobMicrosoftEndpoint = registerOutput<String>(
-      'secondaryBlobMicrosoftEndpoint',
-    );
-    secondaryBlobMicrosoftHost = registerOutput<String>(
-      'secondaryBlobMicrosoftHost',
-    );
-    secondaryConnectionString = registerOutput<String>(
-      'secondaryConnectionString',
-    );
+    secondaryBlobInternetEndpoint = registerOutput<String>('secondaryBlobInternetEndpoint');
+    secondaryBlobInternetHost = registerOutput<String>('secondaryBlobInternetHost');
+    secondaryBlobMicrosoftEndpoint = registerOutput<String>('secondaryBlobMicrosoftEndpoint');
+    secondaryBlobMicrosoftHost = registerOutput<String>('secondaryBlobMicrosoftHost');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
     secondaryDfsEndpoint = registerOutput<String>('secondaryDfsEndpoint');
     secondaryDfsHost = registerOutput<String>('secondaryDfsHost');
-    secondaryDfsInternetEndpoint = registerOutput<String>(
-      'secondaryDfsInternetEndpoint',
-    );
-    secondaryDfsInternetHost = registerOutput<String>(
-      'secondaryDfsInternetHost',
-    );
-    secondaryDfsMicrosoftEndpoint = registerOutput<String>(
-      'secondaryDfsMicrosoftEndpoint',
-    );
-    secondaryDfsMicrosoftHost = registerOutput<String>(
-      'secondaryDfsMicrosoftHost',
-    );
+    secondaryDfsInternetEndpoint = registerOutput<String>('secondaryDfsInternetEndpoint');
+    secondaryDfsInternetHost = registerOutput<String>('secondaryDfsInternetHost');
+    secondaryDfsMicrosoftEndpoint = registerOutput<String>('secondaryDfsMicrosoftEndpoint');
+    secondaryDfsMicrosoftHost = registerOutput<String>('secondaryDfsMicrosoftHost');
     secondaryFileEndpoint = registerOutput<String>('secondaryFileEndpoint');
     secondaryFileHost = registerOutput<String>('secondaryFileHost');
-    secondaryFileInternetEndpoint = registerOutput<String>(
-      'secondaryFileInternetEndpoint',
-    );
-    secondaryFileInternetHost = registerOutput<String>(
-      'secondaryFileInternetHost',
-    );
-    secondaryFileMicrosoftEndpoint = registerOutput<String>(
-      'secondaryFileMicrosoftEndpoint',
-    );
-    secondaryFileMicrosoftHost = registerOutput<String>(
-      'secondaryFileMicrosoftHost',
-    );
+    secondaryFileInternetEndpoint = registerOutput<String>('secondaryFileInternetEndpoint');
+    secondaryFileInternetHost = registerOutput<String>('secondaryFileInternetHost');
+    secondaryFileMicrosoftEndpoint = registerOutput<String>('secondaryFileMicrosoftEndpoint');
+    secondaryFileMicrosoftHost = registerOutput<String>('secondaryFileMicrosoftHost');
     secondaryLocation = registerOutput<String>('secondaryLocation');
     secondaryQueueEndpoint = registerOutput<String>('secondaryQueueEndpoint');
     secondaryQueueHost = registerOutput<String>('secondaryQueueHost');
-    secondaryQueueMicrosoftEndpoint = registerOutput<String>(
-      'secondaryQueueMicrosoftEndpoint',
-    );
-    secondaryQueueMicrosoftHost = registerOutput<String>(
-      'secondaryQueueMicrosoftHost',
-    );
+    secondaryQueueMicrosoftEndpoint = registerOutput<String>('secondaryQueueMicrosoftEndpoint');
+    secondaryQueueMicrosoftHost = registerOutput<String>('secondaryQueueMicrosoftHost');
     secondaryTableEndpoint = registerOutput<String>('secondaryTableEndpoint');
     secondaryTableHost = registerOutput<String>('secondaryTableHost');
-    secondaryTableMicrosoftEndpoint = registerOutput<String>(
-      'secondaryTableMicrosoftEndpoint',
-    );
-    secondaryTableMicrosoftHost = registerOutput<String>(
-      'secondaryTableMicrosoftHost',
-    );
+    secondaryTableMicrosoftEndpoint = registerOutput<String>('secondaryTableMicrosoftEndpoint');
+    secondaryTableMicrosoftHost = registerOutput<String>('secondaryTableMicrosoftHost');
     secondaryWebEndpoint = registerOutput<String>('secondaryWebEndpoint');
     secondaryWebHost = registerOutput<String>('secondaryWebHost');
-    secondaryWebInternetEndpoint = registerOutput<String>(
-      'secondaryWebInternetEndpoint',
-    );
-    secondaryWebInternetHost = registerOutput<String>(
-      'secondaryWebInternetHost',
-    );
-    secondaryWebMicrosoftEndpoint = registerOutput<String>(
-      'secondaryWebMicrosoftEndpoint',
-    );
-    secondaryWebMicrosoftHost = registerOutput<String>(
-      'secondaryWebMicrosoftHost',
-    );
+    secondaryWebInternetEndpoint = registerOutput<String>('secondaryWebInternetEndpoint');
+    secondaryWebInternetHost = registerOutput<String>('secondaryWebInternetHost');
+    secondaryWebMicrosoftEndpoint = registerOutput<String>('secondaryWebMicrosoftEndpoint');
+    secondaryWebMicrosoftHost = registerOutput<String>('secondaryWebMicrosoftHost');
     sftpEnabled = registerOutput<bool?>('sftpEnabled');
-    shareProperties = registerOutput<AccountShareProperties>(
-      'shareProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountShareProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    shareProperties = registerOutput<AccountShareProperties>('shareProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountShareProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sharedAccessKeyEnabled = registerOutput<bool?>('sharedAccessKeyEnabled');
-    staticWebsite = registerOutput<AccountStaticWebsite>(
-      'staticWebsite',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountStaticWebsite.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    staticWebsite = registerOutput<AccountStaticWebsite>('staticWebsite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountStaticWebsite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableEncryptionKeyType = registerOutput<String?>('tableEncryptionKeyType');
     tags = registerOutput<Map<String, String>?>('tags');
   }

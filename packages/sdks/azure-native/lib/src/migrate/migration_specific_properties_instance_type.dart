@@ -11,8 +11,7 @@ enum MigrationSpecificPropertiesInstanceType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown MigrationSpecificPropertiesInstanceType value: $value',
-    );
+    throw ArgumentError('Unknown MigrationSpecificPropertiesInstanceType value: $value');
   }
 }
+

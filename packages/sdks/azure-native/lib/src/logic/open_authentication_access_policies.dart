@@ -10,39 +10,20 @@ class OpenAuthenticationAccessPolicies {
 
   /// Creates a new [OpenAuthenticationAccessPolicies].
   /// [policies] Open authentication policies.
-  OpenAuthenticationAccessPolicies({this.policies});
+  OpenAuthenticationAccessPolicies({
+    this.policies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policies':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, OpenAuthenticationAccessPolicy>,
-            Map<String, Map<String, dynamic>>
-          >(
-            policies,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  OpenAuthenticationAccessPolicy,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'policies': ?pulumi.Input.mapOptionalInputValue<Map<String, OpenAuthenticationAccessPolicy>, Map<String, Map<String, dynamic>>>(policies, (value) => pulumi.Input.encodeMapValues<OpenAuthenticationAccessPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OpenAuthenticationAccessPolicies.fromMap(Map<String, dynamic> map) {
     return OpenAuthenticationAccessPolicies(
-      policies: (() {
-        final guardedValue = map['policies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<OpenAuthenticationAccessPolicy>(
-            guardedValue,
-            (value) => OpenAuthenticationAccessPolicy.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      policies: (() { final guardedValue = map['policies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<OpenAuthenticationAccessPolicy>(guardedValue, (value) => OpenAuthenticationAccessPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

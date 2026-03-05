@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkspace.
 class GetWorkspaceResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region where the Healthcare Workspace is located.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// A map of tags assigned to the Healthcare Workspace.
   final Map<String, String> tags;
 
@@ -47,3 +46,4 @@ class GetWorkspaceResult {
     );
   }
 }
+

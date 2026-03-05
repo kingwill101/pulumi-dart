@@ -9,39 +9,20 @@ class EventSourceMappingFilterCriteria {
 
   /// Creates a new [EventSourceMappingFilterCriteria].
   /// [filters] Set of up to 5 filter. If an event satisfies at least one, Lambda sends the event to the function or adds it to the next batch. See below.
-  EventSourceMappingFilterCriteria({this.filters});
+  EventSourceMappingFilterCriteria({
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSourceMappingFilterCriteriaFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSourceMappingFilterCriteriaFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<EventSourceMappingFilterCriteriaFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<EventSourceMappingFilterCriteriaFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EventSourceMappingFilterCriteria.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingFilterCriteria(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EventSourceMappingFilterCriteriaFilter>(
-            guardedValue,
-            (value) => EventSourceMappingFilterCriteriaFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSourceMappingFilterCriteriaFilter>(guardedValue, (value) => EventSourceMappingFilterCriteriaFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

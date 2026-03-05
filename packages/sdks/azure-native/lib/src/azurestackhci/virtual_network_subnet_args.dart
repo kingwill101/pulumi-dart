@@ -11,16 +11,12 @@ import 'virtual_network_subnet_properties.dart';
 class VirtualNetworkSubnetArgs {
   /// The extendedLocation of the resource.
   final pulumi.Input<ExtendedLocation>? extendedLocation;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<VirtualNetworkSubnetProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the virtual network subnet
   final pulumi.Input<String>? subnetName;
-
   /// Name of the virtual network
   final pulumi.Input<String> virtualNetworkName;
 
@@ -40,16 +36,8 @@ class VirtualNetworkSubnetArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extendedLocation':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExtendedLocation,
-            Map<String, dynamic>
-          >(extendedLocation, (value) => value.toMap()),
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualNetworkSubnetProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkSubnetProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'subnetName': ?subnetName,
       'virtualNetworkName': virtualNetworkName,
@@ -58,35 +46,12 @@ class VirtualNetworkSubnetArgs {
 
   factory VirtualNetworkSubnetArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnetArgs(
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExtendedLocation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualNetworkSubnetProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      subnetName: (() {
-        final guardedValue = map['subnetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualNetworkName: pulumi.Input.fromValue(
-        map['virtualNetworkName'] as String,
-      ),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworkSubnetProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      subnetName: (() { final guardedValue = map['subnetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualNetworkName: pulumi.Input.fromValue(map['virtualNetworkName'] as String),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StackGroupParameter {
   /// The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
   final pulumi.Input<String> parameterKey;
-
   /// The value of parameter N.
   final pulumi.Input<String> parameterValue;
 
@@ -31,3 +30,4 @@ class StackGroupParameter {
     );
   }
 }
+

@@ -9,7 +9,6 @@ class ServiceTemplateSpecVolumeSecret {
   /// this setting. This might be in conflict with other options that affect the
   /// file mode, like fsGroup, and the result can be other mode bits set.
   final pulumi.Input<int>? defaultMode;
-
   /// If unspecified, the volume will expose a file whose name is the
   /// secret_name.
   /// If specified, the key will be used as the version to fetch from Cloud
@@ -17,7 +16,6 @@ class ServiceTemplateSpecVolumeSecret {
   /// volume. When items are defined, they must specify a key and a path.
   /// Structure is documented below.
   final pulumi.Input<List<ServiceTemplateSpecVolumeSecretItem>>? items;
-
   /// The name of the secret in Cloud Secret Manager. By default, the secret
   /// is assumed to be in the same project.
   /// If the secret is in another project, you must define an alias.
@@ -42,42 +40,17 @@ class ServiceTemplateSpecVolumeSecret {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultMode': ?defaultMode,
-      'items':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ServiceTemplateSpecVolumeSecretItem>,
-            List<Map<String, dynamic>>
-          >(
-            items,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ServiceTemplateSpecVolumeSecretItem,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'items': ?pulumi.Input.mapOptionalInputValue<List<ServiceTemplateSpecVolumeSecretItem>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<ServiceTemplateSpecVolumeSecretItem, Map<String, dynamic>>(value, (value) => value.toMap())),
       'secretName': secretName,
     };
   }
 
   factory ServiceTemplateSpecVolumeSecret.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecVolumeSecret(
-      defaultMode: (() {
-        final guardedValue = map['defaultMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      items: (() {
-        final guardedValue = map['items'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ServiceTemplateSpecVolumeSecretItem>(
-            guardedValue,
-            (value) => ServiceTemplateSpecVolumeSecretItem.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      defaultMode: (() { final guardedValue = map['defaultMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTemplateSpecVolumeSecretItem>(guardedValue, (value) => ServiceTemplateSpecVolumeSecretItem.fromMap((value as Map).cast<String, dynamic>()))); })(),
       secretName: pulumi.Input.fromValue(map['secretName'] as String),
     );
   }
 }
+

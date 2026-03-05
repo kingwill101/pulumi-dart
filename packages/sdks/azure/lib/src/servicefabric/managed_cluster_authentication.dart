@@ -6,63 +6,30 @@ import 'managed_cluster_authentication_certificate.dart';
 
 class ManagedClusterAuthentication {
   /// A `active_directory` block as defined above.
-  final pulumi.Input<ManagedClusterAuthenticationActiveDirectory>?
-  activeDirectory;
-
+  final pulumi.Input<ManagedClusterAuthenticationActiveDirectory>? activeDirectory;
   /// One or more `certificate` blocks as defined below.
-  final pulumi.Input<List<ManagedClusterAuthenticationCertificate>>?
-  certificates;
+  final pulumi.Input<List<ManagedClusterAuthenticationCertificate>>? certificates;
 
   /// Creates a new [ManagedClusterAuthentication].
   /// [activeDirectory] A `active_directory` block as defined above.
   /// [certificates] One or more `certificate` blocks as defined below.
-  ManagedClusterAuthentication({this.activeDirectory, this.certificates});
+  ManagedClusterAuthentication({
+    this.activeDirectory,
+    this.certificates,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeDirectory':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedClusterAuthenticationActiveDirectory,
-            Map<String, dynamic>
-          >(activeDirectory, (value) => value.toMap()),
-      'certificates':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ManagedClusterAuthenticationCertificate>,
-            List<Map<String, dynamic>>
-          >(
-            certificates,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ManagedClusterAuthenticationCertificate,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'activeDirectory': ?pulumi.Input.mapOptionalInputValue<ManagedClusterAuthenticationActiveDirectory, Map<String, dynamic>>(activeDirectory, (value) => value.toMap()),
+      'certificates': ?pulumi.Input.mapOptionalInputValue<List<ManagedClusterAuthenticationCertificate>, List<Map<String, dynamic>>>(certificates, (value) => pulumi.Input.encodeList<ManagedClusterAuthenticationCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ManagedClusterAuthentication.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAuthentication(
-      activeDirectory: (() {
-        final guardedValue = map['activeDirectory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedClusterAuthenticationActiveDirectory.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      certificates: (() {
-        final guardedValue = map['certificates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ManagedClusterAuthenticationCertificate>(
-            guardedValue,
-            (value) => ManagedClusterAuthenticationCertificate.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      activeDirectory: (() { final guardedValue = map['activeDirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterAuthenticationActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      certificates: (() { final guardedValue = map['certificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedClusterAuthenticationCertificate>(guardedValue, (value) => ManagedClusterAuthenticationCertificate.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

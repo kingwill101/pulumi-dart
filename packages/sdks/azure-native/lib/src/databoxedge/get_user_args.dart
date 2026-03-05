@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserArgs {
   /// The device name.
   final pulumi.Input<String> deviceName;
-
   /// The user name.
   final pulumi.Input<String> name;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetUserArgs {
     return GetUserArgs(
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

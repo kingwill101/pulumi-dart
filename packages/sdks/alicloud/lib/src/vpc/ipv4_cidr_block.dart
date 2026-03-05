@@ -164,18 +164,14 @@ import 'ipv4_cidr_block_state.dart';
 class Ipv4CidrBlock extends pulumi.CustomResource {
   /// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
   late final pulumi.Output<String?> ipv4IpamPoolId;
-
   /// The ID of the region where the VPC resides.
   late final pulumi.Output<String> regionId;
-
   /// Additional network segment information.
   late final pulumi.Output<String> secondaryCidrBlock;
-
   /// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
   ///
   /// &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
   late final pulumi.Output<int?> secondaryCidrMask;
-
   /// The ID of the VPC.
   late final pulumi.Output<String> vpcId;
 
@@ -188,11 +184,11 @@ class Ipv4CidrBlock extends pulumi.CustomResource {
     Ipv4CidrBlockArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
     regionId = registerOutput<String>('regionId');
     secondaryCidrBlock = registerOutput<String>('secondaryCidrBlock');
@@ -218,11 +214,11 @@ class Ipv4CidrBlock extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
     regionId = registerOutput<String>('regionId');
     secondaryCidrBlock = registerOutput<String>('secondaryCidrBlock');

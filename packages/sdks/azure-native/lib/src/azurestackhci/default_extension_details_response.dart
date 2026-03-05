@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultExtensionDetailsResponse {
   /// Default extension category
   final pulumi.Input<String> category;
-
   /// Consent time for extension category
   final pulumi.Input<String> consentTime;
 
@@ -19,7 +18,10 @@ class DefaultExtensionDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'category': category, 'consentTime': consentTime};
+    return <String, dynamic>{
+      'category': category,
+      'consentTime': consentTime,
+    };
   }
 
   factory DefaultExtensionDetailsResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class DefaultExtensionDetailsResponse {
     );
   }
 }
+

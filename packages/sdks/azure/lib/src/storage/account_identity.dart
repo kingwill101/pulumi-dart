@@ -9,13 +9,10 @@ class AccountIdentity {
   ///
   /// &gt; **Note:** The assigned `principal_id` and `tenant_id` can be retrieved after the identity `type` has been set to `SystemAssigned`  and Storage Account has been created. More details are available below.
   final pulumi.Input<List<String>>? identityIds;
-
   /// The Principal ID for the Service Principal associated with the Identity of this Storage Account.
   final pulumi.Input<String>? principalId;
-
   /// The Tenant ID for the Service Principal associated with the Identity of this Storage Account.
   final pulumi.Input<String>? tenantId;
-
   /// Specifies the type of Managed Service Identity that should be configured on this Storage Account. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both).
   final pulumi.Input<String> type;
 
@@ -42,22 +39,11 @@ class AccountIdentity {
 
   factory AccountIdentity.fromMap(Map<String, dynamic> map) {
     return AccountIdentity(
-      identityIds: (() {
-        final guardedValue = map['identityIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      principalId: (() {
-        final guardedValue = map['principalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identityIds: (() { final guardedValue = map['identityIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

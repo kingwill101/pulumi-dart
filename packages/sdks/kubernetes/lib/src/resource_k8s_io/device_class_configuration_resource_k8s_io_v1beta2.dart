@@ -10,31 +10,20 @@ class DeviceClassConfigurationResourceK8sIoV1beta2 {
 
   /// Creates a new [DeviceClassConfigurationResourceK8sIoV1beta2].
   /// [opaque] Opaque provides driver-specific configuration parameters.
-  DeviceClassConfigurationResourceK8sIoV1beta2({this.opaque});
+  DeviceClassConfigurationResourceK8sIoV1beta2({
+    this.opaque,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'opaque':
-          ?pulumi.Input.mapOptionalInputValue<
-            OpaqueDeviceConfigurationResourceK8sIoV1beta2,
-            Map<String, dynamic>
-          >(opaque, (value) => value.toMap()),
+      'opaque': ?pulumi.Input.mapOptionalInputValue<OpaqueDeviceConfigurationResourceK8sIoV1beta2, Map<String, dynamic>>(opaque, (value) => value.toMap()),
     };
   }
 
-  factory DeviceClassConfigurationResourceK8sIoV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DeviceClassConfigurationResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceClassConfigurationResourceK8sIoV1beta2(
-      opaque: (() {
-        final guardedValue = map['opaque'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OpaqueDeviceConfigurationResourceK8sIoV1beta2.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      opaque: (() { final guardedValue = map['opaque']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OpaqueDeviceConfigurationResourceK8sIoV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

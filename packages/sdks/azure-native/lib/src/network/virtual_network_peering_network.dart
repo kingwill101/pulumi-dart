@@ -1253,77 +1253,50 @@ import 'virtual_network_peering_args.dart';
 class VirtualNetworkPeeringNetwork extends pulumi.CustomResource {
   /// Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
   late final pulumi.Output<bool?> allowForwardedTraffic;
-
   /// If gateway links can be used in remote virtual networking to link to this virtual network.
   late final pulumi.Output<bool?> allowGatewayTransit;
-
   /// Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
   late final pulumi.Output<bool?> allowVirtualNetworkAccess;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// If we need to verify the provisioning state of the remote gateway.
   late final pulumi.Output<bool?> doNotVerifyRemoteGateways;
-
   /// Whether only Ipv6 address space is peered for subnet peering.
   late final pulumi.Output<bool?> enableOnlyIPv6Peering;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The local address space of the local virtual network that is peered.
   late final pulumi.Output<AddressSpaceResponse?> localAddressSpace;
-
   /// List of local subnet names that are subnet peered with remote virtual network.
   late final pulumi.Output<List<String>?> localSubnetNames;
-
   /// The current local address space of the local virtual network that is peered.
-  late final pulumi.Output<AddressSpaceResponse?>
-  localVirtualNetworkAddressSpace;
-
+  late final pulumi.Output<AddressSpaceResponse?> localVirtualNetworkAddressSpace;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
-
   /// Whether complete virtual network address space is peered.
   late final pulumi.Output<bool?> peerCompleteVnets;
-
   /// The status of the virtual network peering.
   late final pulumi.Output<String?> peeringState;
-
   /// The peering sync status of the virtual network peering.
   late final pulumi.Output<String?> peeringSyncLevel;
-
   /// The provisioning state of the virtual network peering resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The reference to the address space peered with the remote virtual network.
   late final pulumi.Output<AddressSpaceResponse?> remoteAddressSpace;
-
   /// The reference to the remote virtual network's Bgp Communities.
-  late final pulumi.Output<VirtualNetworkBgpCommunitiesResponse?>
-  remoteBgpCommunities;
-
+  late final pulumi.Output<VirtualNetworkBgpCommunitiesResponse?> remoteBgpCommunities;
   /// List of remote subnet names from remote virtual network that are subnet peered.
   late final pulumi.Output<List<String>?> remoteSubnetNames;
-
   /// The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
   late final pulumi.Output<SubResourceResponse?> remoteVirtualNetwork;
-
   /// The reference to the current address space of the remote virtual network.
-  late final pulumi.Output<AddressSpaceResponse?>
-  remoteVirtualNetworkAddressSpace;
-
+  late final pulumi.Output<AddressSpaceResponse?> remoteVirtualNetworkAddressSpace;
   /// The reference to the remote virtual network's encryption
-  late final pulumi.Output<VirtualNetworkEncryptionResponse>
-  remoteVirtualNetworkEncryption;
-
+  late final pulumi.Output<VirtualNetworkEncryptionResponse> remoteVirtualNetworkEncryption;
   /// The resourceGuid property of the Virtual Network peering resource.
   late final pulumi.Output<String> resourceGuid;
-
   /// Resource type.
   late final pulumi.Output<String?> type;
-
   /// If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
   late final pulumi.Output<bool?> useRemoteGateways;
 
@@ -1336,101 +1309,32 @@ class VirtualNetworkPeeringNetwork extends pulumi.CustomResource {
     VirtualNetworkPeeringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:VirtualNetworkPeering',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:VirtualNetworkPeering',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
     allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
-    allowVirtualNetworkAccess = registerOutput<bool?>(
-      'allowVirtualNetworkAccess',
-    );
+    allowVirtualNetworkAccess = registerOutput<bool?>('allowVirtualNetworkAccess');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    doNotVerifyRemoteGateways = registerOutput<bool?>(
-      'doNotVerifyRemoteGateways',
-    );
+    doNotVerifyRemoteGateways = registerOutput<bool?>('doNotVerifyRemoteGateways');
     enableOnlyIPv6Peering = registerOutput<bool?>('enableOnlyIPv6Peering');
     etag = registerOutput<String>('etag');
-    localAddressSpace = registerOutput<AddressSpaceResponse?>(
-      'localAddressSpace',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AddressSpaceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    localAddressSpace = registerOutput<AddressSpaceResponse?>('localAddressSpace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localSubnetNames = registerOutput<List<String>?>('localSubnetNames');
-    localVirtualNetworkAddressSpace = registerOutput<AddressSpaceResponse?>(
-      'localVirtualNetworkAddressSpace',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AddressSpaceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    localVirtualNetworkAddressSpace = registerOutput<AddressSpaceResponse?>('localVirtualNetworkAddressSpace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String?>('name');
     peerCompleteVnets = registerOutput<bool?>('peerCompleteVnets');
     peeringState = registerOutput<String?>('peeringState');
     peeringSyncLevel = registerOutput<String?>('peeringSyncLevel');
     provisioningState = registerOutput<String>('provisioningState');
-    remoteAddressSpace = registerOutput<AddressSpaceResponse?>(
-      'remoteAddressSpace',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AddressSpaceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    remoteBgpCommunities =
-        registerOutput<VirtualNetworkBgpCommunitiesResponse?>(
-          'remoteBgpCommunities',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualNetworkBgpCommunitiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    remoteAddressSpace = registerOutput<AddressSpaceResponse?>('remoteAddressSpace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    remoteBgpCommunities = registerOutput<VirtualNetworkBgpCommunitiesResponse?>('remoteBgpCommunities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkBgpCommunitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     remoteSubnetNames = registerOutput<List<String>?>('remoteSubnetNames');
-    remoteVirtualNetwork = registerOutput<SubResourceResponse?>(
-      'remoteVirtualNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    remoteVirtualNetworkAddressSpace = registerOutput<AddressSpaceResponse?>(
-      'remoteVirtualNetworkAddressSpace',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AddressSpaceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    remoteVirtualNetworkEncryption =
-        registerOutput<VirtualNetworkEncryptionResponse>(
-          'remoteVirtualNetworkEncryption',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualNetworkEncryptionResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    remoteVirtualNetwork = registerOutput<SubResourceResponse?>('remoteVirtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    remoteVirtualNetworkAddressSpace = registerOutput<AddressSpaceResponse?>('remoteVirtualNetworkAddressSpace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    remoteVirtualNetworkEncryption = registerOutput<VirtualNetworkEncryptionResponse>('remoteVirtualNetworkEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGuid = registerOutput<String>('resourceGuid');
     type = registerOutput<String?>('type');
     useRemoteGateways = registerOutput<bool?>('useRemoteGateways');

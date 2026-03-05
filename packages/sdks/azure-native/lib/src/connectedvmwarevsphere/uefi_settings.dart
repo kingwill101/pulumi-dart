@@ -9,19 +9,20 @@ class UefiSettings {
 
   /// Creates a new [UefiSettings].
   /// [secureBootEnabled] Specifies whether secure boot should be enabled on the virtual machine.
-  UefiSettings({this.secureBootEnabled});
+  UefiSettings({
+    this.secureBootEnabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secureBootEnabled': ?secureBootEnabled};
+    return <String, dynamic>{
+      'secureBootEnabled': ?secureBootEnabled,
+    };
   }
 
   factory UefiSettings.fromMap(Map<String, dynamic> map) {
     return UefiSettings(
-      secureBootEnabled: (() {
-        final guardedValue = map['secureBootEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      secureBootEnabled: (() { final guardedValue = map['secureBootEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

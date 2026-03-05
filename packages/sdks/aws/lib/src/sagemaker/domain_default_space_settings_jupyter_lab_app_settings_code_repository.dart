@@ -13,14 +13,15 @@ class DomainDefaultSpaceSettingsJupyterLabAppSettingsCodeRepository {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'repositoryUrl': repositoryUrl};
+    return <String, dynamic>{
+      'repositoryUrl': repositoryUrl,
+    };
   }
 
-  factory DomainDefaultSpaceSettingsJupyterLabAppSettingsCodeRepository.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDefaultSpaceSettingsJupyterLabAppSettingsCodeRepository.fromMap(Map<String, dynamic> map) {
     return DomainDefaultSpaceSettingsJupyterLabAppSettingsCodeRepository(
       repositoryUrl: pulumi.Input.fromValue(map['repositoryUrl'] as String),
     );
   }
 }
+

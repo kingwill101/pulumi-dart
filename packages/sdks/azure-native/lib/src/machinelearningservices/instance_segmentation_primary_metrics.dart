@@ -11,8 +11,7 @@ enum InstanceSegmentationPrimaryMetrics {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InstanceSegmentationPrimaryMetrics value: $value',
-    );
+    throw ArgumentError('Unknown InstanceSegmentationPrimaryMetrics value: $value');
   }
 }
+

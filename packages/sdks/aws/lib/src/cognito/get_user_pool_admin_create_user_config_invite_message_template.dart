@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserPoolAdminCreateUserConfigInviteMessageTemplate {
   /// - Email message content.
   final pulumi.Input<String> emailMessage;
-
   /// - Email message subject.
   final pulumi.Input<String> emailSubject;
-
   /// - SMS message content.
   final pulumi.Input<String> smsMessage;
 
@@ -30,9 +28,7 @@ class GetUserPoolAdminCreateUserConfigInviteMessageTemplate {
     };
   }
 
-  factory GetUserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetUserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap(Map<String, dynamic> map) {
     return GetUserPoolAdminCreateUserConfigInviteMessageTemplate(
       emailMessage: pulumi.Input.fromValue(map['emailMessage'] as String),
       emailSubject: pulumi.Input.fromValue(map['emailSubject'] as String),
@@ -40,3 +36,4 @@ class GetUserPoolAdminCreateUserConfigInviteMessageTemplate {
     );
   }
 }
+

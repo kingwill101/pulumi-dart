@@ -6,55 +6,38 @@ import 'get_databases_database_private_network.dart';
 class GetDatabasesDatabase {
   /// A list of IP addresses that can access the Managed Database.
   final pulumi.Input<List<String>> allowLists;
-
   /// The number of Linode Instance nodes deployed to the Managed Database.
   final pulumi.Input<int> clusterSize;
-
   /// When this Managed Database was created.
   final pulumi.Input<String> created;
-
   /// Whether the Managed Databases is encrypted.
   final pulumi.Input<bool> encrypted;
-
   /// The Managed Database engine.
   final pulumi.Input<String> engine;
-
   /// The primary host for the Managed Database.
   final pulumi.Input<String> hostPrimary;
-
   /// The secondary/private network host for the Managed Database.
   final pulumi.Input<String> hostSecondary;
-
   /// The ID of the Managed Database.
   final pulumi.Input<int> id;
-
   /// he API route for the database instance.
   final pulumi.Input<String> instanceUri;
-
   /// A unique, user-defined string referring to the Managed Database.
   final pulumi.Input<String> label;
-
   /// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
   final pulumi.Input<GetDatabasesDatabasePrivateNetwork> privateNetwork;
-
   /// The region to use for the Managed Database.
   final pulumi.Input<String> region;
-
   /// The replication method used for the Managed Database.
   final pulumi.Input<String> replicationType;
-
   /// Whether to require SSL credentials to establish a connection to the Managed Database.
   final pulumi.Input<bool> sslConnection;
-
   /// The operating status of the Managed Database.
   final pulumi.Input<String> status;
-
   /// The Linode Instance type used for the nodes of the  Managed Database instance.
   final pulumi.Input<String> type;
-
   /// When this Managed Database was last updated.
   final pulumi.Input<String> updated;
-
   /// The Managed Database engine version.
   final pulumi.Input<String> version;
 
@@ -110,11 +93,7 @@ class GetDatabasesDatabase {
       'id': id,
       'instanceUri': instanceUri,
       'label': label,
-      'privateNetwork':
-          pulumi.Input.mapInputValue<
-            GetDatabasesDatabasePrivateNetwork,
-            Map<String, dynamic>
-          >(privateNetwork, (value) => value.toMap()),
+      'privateNetwork': pulumi.Input.mapInputValue<GetDatabasesDatabasePrivateNetwork, Map<String, dynamic>>(privateNetwork, (value) => value.toMap()),
       'region': region,
       'replicationType': replicationType,
       'sslConnection': sslConnection,
@@ -127,9 +106,7 @@ class GetDatabasesDatabase {
 
   factory GetDatabasesDatabase.fromMap(Map<String, dynamic> map) {
     return GetDatabasesDatabase(
-      allowLists: pulumi.Input.fromValue(
-        (map['allowLists'] as List).cast<String>(),
-      ),
+      allowLists: pulumi.Input.fromValue((map['allowLists'] as List).cast<String>()),
       clusterSize: pulumi.Input.fromValue(map['clusterSize'] as int),
       created: pulumi.Input.fromValue(map['created'] as String),
       encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
@@ -139,11 +116,7 @@ class GetDatabasesDatabase {
       id: pulumi.Input.fromValue(map['id'] as int),
       instanceUri: pulumi.Input.fromValue(map['instanceUri'] as String),
       label: pulumi.Input.fromValue(map['label'] as String),
-      privateNetwork: pulumi.Input.fromValue(
-        GetDatabasesDatabasePrivateNetwork.fromMap(
-          (map['privateNetwork']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      privateNetwork: pulumi.Input.fromValue(GetDatabasesDatabasePrivateNetwork.fromMap((map['privateNetwork']! as Map).cast<String, dynamic>())),
       region: pulumi.Input.fromValue(map['region'] as String),
       replicationType: pulumi.Input.fromValue(map['replicationType'] as String),
       sslConnection: pulumi.Input.fromValue(map['sslConnection'] as bool),
@@ -154,3 +127,4 @@ class GetDatabasesDatabase {
     );
   }
 }
+

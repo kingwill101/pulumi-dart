@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualDiskControllerResponse {
   /// Controller's id
   final pulumi.Input<String> id;
-
   /// The display name of Controller
   final pulumi.Input<String> name;
-
   /// dik controller subtype (VMWARE_PARAVIRTUAL, BUS_PARALLEL, LSI_PARALLEL, LSI_SAS)
   final pulumi.Input<String> subType;
-
   /// disk controller type (SCSI)
   final pulumi.Input<String> type;
 
@@ -46,3 +43,4 @@ class VirtualDiskControllerResponse {
     );
   }
 }
+

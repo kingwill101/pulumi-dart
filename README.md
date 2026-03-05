@@ -7,6 +7,7 @@ Community Pulumi support for Dart.
 - [Quickstart](#quickstart)
 - [Templates](#templates)
 - [App Platform Foundation](#app-platform-foundation)
+- [FaaS Foundation](#faas-foundation)
 - [Generate Provider SDKs](#generate-provider-sdks)
 - [Contributing](#contributing)
 
@@ -22,7 +23,7 @@ pulumi version
 ### 2) Install `pulumi-language-dart`
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/pulumi/pulumi-dart/main/scripts/install-pulumi-language-dart.sh | bash
+curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/master/scripts/install-pulumi-language-dart.sh | bash
 which pulumi-language-dart
 pulumi-language-dart -help
 ```
@@ -32,7 +33,7 @@ pulumi-language-dart -help
 Recommended: use the maintained template:
 
 ```bash
-pulumi new https://github.com/pulumi/pulumi-dart/tree/main/templates/dart-minimal -y --name pulumi-dart-quickstart --stack dev --secrets-provider passphrase
+pulumi new https://github.com/kingwill101/pulumi-dart/tree/master/templates/dart-minimal -y --name pulumi-dart-quickstart --stack dev --secrets-provider passphrase
 ```
 
 or locally from a clone:
@@ -70,12 +71,12 @@ environment:
 dependencies:
   pulumi:
     git:
-      url: https://github.com/pulumi/pulumi-dart.git
-      path: pulumi-dart
+      url: https://github.com/kingwill101/pulumi-dart.git
+      path: packages/pulumi-dart
   pulumi_random:
     git:
-      url: https://github.com/pulumi/pulumi-dart.git
-      path: packages/random
+      url: https://github.com/kingwill101/pulumi-dart.git
+      path: packages/sdks/random
 ```
 
 Create `bin/pulumi_dart_quickstart.dart`:
@@ -176,12 +177,32 @@ Starter template:
 pulumi new ./templates/dart-aws-app-platform -y --name my-dart-app --stack dev --secrets-provider passphrase
 ```
 
+## FaaS Foundation
+
+This repo also includes a unified Dart FaaS package:
+
+- [`pulumi_dart_faas`](packages/pulumi-dart-faas/README.md)
+
+Use it to deploy Dart serverless functions with:
+
+- AWS Lambda container images
+- AWS Lambda zip artifacts from S3 or local archive upload
+- GCP Cloud Run image deployments
+- GCP Cloud Run source-archive deployments
+- shared local build/archive helper (`DartBuildArchive`)
+
+Starter template:
+
+```bash
+pulumi new ./templates/dart-aws-faas -y --name my-dart-fn --stack dev --secrets-provider passphrase
+```
+
 ## Generate Provider SDKs
 
 In this repo, generated providers live under `packages/<provider>`.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/pulumi/pulumi-dart/main/scripts/install-pulumi-language-dart.sh | bash
+curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/master/scripts/install-pulumi-language-dart.sh | bash
 
 mkdir -p sdk-gen && cd sdk-gen
 ```
@@ -207,7 +228,7 @@ dependencies:
 
 dependency_overrides:
   pulumi:
-    path: /abs/path/to/pulumi-dart/pulumi-dart
+    path: /abs/path/to/pulumi-dart/packages/pulumi-dart
 ```
 
 Install dependencies:
@@ -224,7 +245,7 @@ pulumi package add aws@7.11.0
 pulumi package add ./path/to/provider.schema.json
 ```
 
-Generated output appears in `sdks/<provider>`. Copy or move that directory into `packages/<provider>` as needed.
+Generated output appears in `packages/sdks/<provider>`.
 
 If your workspace already contains the provider package, add it to your workspace `pubspec.yaml`
 and consume it directly without `path` overrides:

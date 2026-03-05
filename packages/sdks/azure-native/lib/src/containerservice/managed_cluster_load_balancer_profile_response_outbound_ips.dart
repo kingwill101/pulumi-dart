@@ -10,41 +10,20 @@ class ManagedClusterLoadBalancerProfileResponseOutboundIPs {
 
   /// Creates a new [ManagedClusterLoadBalancerProfileResponseOutboundIPs].
   /// [publicIPs] A list of public IP resources.
-  ManagedClusterLoadBalancerProfileResponseOutboundIPs({this.publicIPs});
+  ManagedClusterLoadBalancerProfileResponseOutboundIPs({
+    this.publicIPs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicIPs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ResourceReferenceResponse>,
-            List<Map<String, dynamic>>
-          >(
-            publicIPs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ResourceReferenceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'publicIPs': ?pulumi.Input.mapOptionalInputValue<List<ResourceReferenceResponse>, List<Map<String, dynamic>>>(publicIPs, (value) => pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ManagedClusterLoadBalancerProfileResponseOutboundIPs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedClusterLoadBalancerProfileResponseOutboundIPs.fromMap(Map<String, dynamic> map) {
     return ManagedClusterLoadBalancerProfileResponseOutboundIPs(
-      publicIPs: (() {
-        final guardedValue = map['publicIPs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ResourceReferenceResponse>(
-            guardedValue,
-            (value) => ResourceReferenceResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      publicIPs: (() { final guardedValue = map['publicIPs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

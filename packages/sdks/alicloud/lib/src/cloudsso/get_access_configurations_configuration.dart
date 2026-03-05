@@ -6,32 +6,22 @@ import 'get_access_configurations_configuration_permission_policy.dart';
 class GetAccessConfigurationsConfiguration {
   /// The AccessConfigurationId of the Access Configuration.
   final pulumi.Input<String> accessConfigurationId;
-
   /// The AccessConfigurationName of the Access Configuration.
   final pulumi.Input<String> accessConfigurationName;
-
   /// The Created Time of the Directory.
   final pulumi.Input<String> createTime;
-
   /// The Description of the Directory.
   final pulumi.Input<String> description;
-
   /// The ID of the Directory.
   final pulumi.Input<String> directoryId;
-
   /// The ID of the Access Configuration.
   final pulumi.Input<String> id;
-
   /// The Policy List.
-  final pulumi.Input<List<GetAccessConfigurationsConfigurationPermissionPolicy>>
-  permissionPolicies;
-
+  final pulumi.Input<List<GetAccessConfigurationsConfigurationPermissionPolicy>> permissionPolicies;
   /// The RelayState of the Access Configuration.
   final pulumi.Input<String> relayState;
-
   /// The SessionDuration of the Access Configuration.
   final pulumi.Input<int> sessionDuration;
-
   /// The StatusNotifications of the Access Configuration.
   final pulumi.Input<List<String>> statusNotifications;
 
@@ -67,54 +57,26 @@ class GetAccessConfigurationsConfiguration {
       'description': description,
       'directoryId': directoryId,
       'id': id,
-      'permissionPolicies':
-          pulumi.Input.mapInputValue<
-            List<GetAccessConfigurationsConfigurationPermissionPolicy>,
-            List<Map<String, dynamic>>
-          >(
-            permissionPolicies,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetAccessConfigurationsConfigurationPermissionPolicy,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'permissionPolicies': pulumi.Input.mapInputValue<List<GetAccessConfigurationsConfigurationPermissionPolicy>, List<Map<String, dynamic>>>(permissionPolicies, (value) => pulumi.Input.encodeList<GetAccessConfigurationsConfigurationPermissionPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'relayState': relayState,
       'sessionDuration': sessionDuration,
       'statusNotifications': statusNotifications,
     };
   }
 
-  factory GetAccessConfigurationsConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAccessConfigurationsConfiguration.fromMap(Map<String, dynamic> map) {
     return GetAccessConfigurationsConfiguration(
-      accessConfigurationId: pulumi.Input.fromValue(
-        map['accessConfigurationId'] as String,
-      ),
-      accessConfigurationName: pulumi.Input.fromValue(
-        map['accessConfigurationName'] as String,
-      ),
+      accessConfigurationId: pulumi.Input.fromValue(map['accessConfigurationId'] as String),
+      accessConfigurationName: pulumi.Input.fromValue(map['accessConfigurationName'] as String),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      permissionPolicies: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetAccessConfigurationsConfigurationPermissionPolicy
-        >(
-          map['permissionPolicies']!,
-          (value) =>
-              GetAccessConfigurationsConfigurationPermissionPolicy.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      permissionPolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAccessConfigurationsConfigurationPermissionPolicy>(map['permissionPolicies']!, (value) => GetAccessConfigurationsConfigurationPermissionPolicy.fromMap((value as Map).cast<String, dynamic>()))),
       relayState: pulumi.Input.fromValue(map['relayState'] as String),
       sessionDuration: pulumi.Input.fromValue(map['sessionDuration'] as int),
-      statusNotifications: pulumi.Input.fromValue(
-        (map['statusNotifications'] as List).cast<String>(),
-      ),
+      statusNotifications: pulumi.Input.fromValue((map['statusNotifications'] as List).cast<String>()),
     );
   }
 }
+

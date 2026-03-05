@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CategoryResponse {
   /// The identifier of the category.
   final pulumi.Input<String> categoryId;
-
   /// The localized name of the category.
   final pulumi.Input<String> name;
 
   /// Creates a new [CategoryResponse].
   /// [categoryId] The identifier of the category.
   /// [name] The localized name of the category.
-  CategoryResponse({required this.categoryId, required this.name});
+  CategoryResponse({
+    required this.categoryId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'categoryId': categoryId, 'name': name};
+    return <String, dynamic>{
+      'categoryId': categoryId,
+      'name': name,
+    };
   }
 
   factory CategoryResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class CategoryResponse {
     );
   }
 }
+

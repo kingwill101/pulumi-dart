@@ -13,14 +13,15 @@ class ScheduledQueryNotificationConfigurationSnsConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'topicArn': topicArn};
+    return <String, dynamic>{
+      'topicArn': topicArn,
+    };
   }
 
-  factory ScheduledQueryNotificationConfigurationSnsConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScheduledQueryNotificationConfigurationSnsConfiguration.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryNotificationConfigurationSnsConfiguration(
       topicArn: pulumi.Input.fromValue(map['topicArn'] as String),
     );
   }
 }
+

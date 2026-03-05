@@ -7,7 +7,6 @@ import 'project_network_settings_response.dart';
 class GetProjectInheritedSettingsResult {
   /// Network settings that will be enforced on this project.
   final ProjectNetworkSettingsResponse networkSettings;
-
   /// Dev Center settings to be used when associating a project with a catalog.
   final DevCenterProjectCatalogSettingsResponse projectCatalogSettings;
 
@@ -28,12 +27,9 @@ class GetProjectInheritedSettingsResult {
 
   factory GetProjectInheritedSettingsResult.fromMap(Map<String, dynamic> map) {
     return GetProjectInheritedSettingsResult(
-      networkSettings: ProjectNetworkSettingsResponse.fromMap(
-        (map['networkSettings']! as Map).cast<String, dynamic>(),
-      ),
-      projectCatalogSettings: DevCenterProjectCatalogSettingsResponse.fromMap(
-        (map['projectCatalogSettings']! as Map).cast<String, dynamic>(),
-      ),
+      networkSettings: ProjectNetworkSettingsResponse.fromMap((map['networkSettings']! as Map).cast<String, dynamic>()),
+      projectCatalogSettings: DevCenterProjectCatalogSettingsResponse.fromMap((map['projectCatalogSettings']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -8,19 +8,15 @@ import 'get_hub_gcm_credential.dart';
 class GetHubResult {
   /// A `apns_credential` block as defined below.
   final List<GetHubApnsCredential> apnsCredentials;
-
   /// A `gcm_credential` block as defined below.
   final List<GetHubGcmCredential> gcmCredentials;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region in which this Notification Hub exists.
   final String location;
   final String name;
   final String namespaceName;
   final String resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   final Map<String, String> tags;
 
@@ -46,16 +42,8 @@ class GetHubResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apnsCredentials':
-          pulumi.Input.encodeList<GetHubApnsCredential, Map<String, dynamic>>(
-            apnsCredentials,
-            (value) => value.toMap(),
-          ),
-      'gcmCredentials':
-          pulumi.Input.encodeList<GetHubGcmCredential, Map<String, dynamic>>(
-            gcmCredentials,
-            (value) => value.toMap(),
-          ),
+      'apnsCredentials': pulumi.Input.encodeList<GetHubApnsCredential, Map<String, dynamic>>(apnsCredentials, (value) => value.toMap()),
+      'gcmCredentials': pulumi.Input.encodeList<GetHubGcmCredential, Map<String, dynamic>>(gcmCredentials, (value) => value.toMap()),
       'id': id,
       'location': location,
       'name': name,
@@ -67,17 +55,8 @@ class GetHubResult {
 
   factory GetHubResult.fromMap(Map<String, dynamic> map) {
     return GetHubResult(
-      apnsCredentials: pulumi.Input.decodeList<GetHubApnsCredential>(
-        map['apnsCredentials']!,
-        (value) => GetHubApnsCredential.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      gcmCredentials: pulumi.Input.decodeList<GetHubGcmCredential>(
-        map['gcmCredentials']!,
-        (value) =>
-            GetHubGcmCredential.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      apnsCredentials: pulumi.Input.decodeList<GetHubApnsCredential>(map['apnsCredentials']!, (value) => GetHubApnsCredential.fromMap((value as Map).cast<String, dynamic>())),
+      gcmCredentials: pulumi.Input.decodeList<GetHubGcmCredential>(map['gcmCredentials']!, (value) => GetHubGcmCredential.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
@@ -87,3 +66,4 @@ class GetHubResult {
     );
   }
 }
+

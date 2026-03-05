@@ -153,22 +153,16 @@ import 'system_data_response.dart';
 class SmtpUsername extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The application Id for the linked Entra Application.
   late final pulumi.Output<String> entraApplicationId;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The tenant of the linked Entra Application.
   late final pulumi.Output<String> tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The SMTP username. Could be free form or in the email address format.
   late final pulumi.Output<String> username;
 
@@ -181,24 +175,15 @@ class SmtpUsername extends pulumi.CustomResource {
     SmtpUsernameArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:communication:SmtpUsername',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:communication:SmtpUsername',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     entraApplicationId = registerOutput<String>('entraApplicationId');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
     username = registerOutput<String>('username');

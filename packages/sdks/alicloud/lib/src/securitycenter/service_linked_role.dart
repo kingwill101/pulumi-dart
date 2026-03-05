@@ -113,11 +113,11 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     Map<String, dynamic>? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole',
-         name,
-         pulumi.Input.mapToInputs(args ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole',
+          name,
+          pulumi.Input.mapToInputs(args ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     status = registerOutput<bool>('status');
   }
 
@@ -139,11 +139,11 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     status = registerOutput<bool>('status');
   }
 }

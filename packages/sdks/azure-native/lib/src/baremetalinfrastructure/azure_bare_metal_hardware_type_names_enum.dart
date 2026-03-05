@@ -13,8 +13,7 @@ enum AzureBareMetalHardwareTypeNamesEnum {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AzureBareMetalHardwareTypeNamesEnum value: $value',
-    );
+    throw ArgumentError('Unknown AzureBareMetalHardwareTypeNamesEnum value: $value');
   }
 }
+

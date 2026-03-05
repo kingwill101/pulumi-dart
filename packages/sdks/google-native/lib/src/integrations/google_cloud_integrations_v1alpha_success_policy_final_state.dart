@@ -7,17 +7,13 @@ enum GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState {
   const GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState.values) {
+  static GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState fromValue(String value) {
+    for (final item in GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState value: $value');
   }
 }
+

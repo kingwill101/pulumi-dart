@@ -15,3 +15,4 @@ enum TargetAuthenticationType {
     throw ArgumentError('Unknown TargetAuthenticationType value: $value');
   }
 }
+

@@ -6,10 +6,8 @@ class LogTransformerTransformerConfigCopyValueEntry {
   /// Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
   /// * `renameTo` - (Required) Specifies the new name of the key.
   final pulumi.Input<bool>? overwriteIfExists;
-
   /// Specifies the key to modify.
   final pulumi.Input<String> source;
-
   /// Specifies the key to move to.
   final pulumi.Input<String> target;
 
@@ -31,17 +29,12 @@ class LogTransformerTransformerConfigCopyValueEntry {
     };
   }
 
-  factory LogTransformerTransformerConfigCopyValueEntry.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogTransformerTransformerConfigCopyValueEntry.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigCopyValueEntry(
-      overwriteIfExists: (() {
-        final guardedValue = map['overwriteIfExists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      overwriteIfExists: (() { final guardedValue = map['overwriteIfExists']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       source: pulumi.Input.fromValue(map['source'] as String),
       target: pulumi.Input.fromValue(map['target'] as String),
     );
   }
 }
+

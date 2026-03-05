@@ -7,20 +7,15 @@ import 'get_virtual_hub_connection_routing.dart';
 class GetVirtualHubConnectionResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Whether Internet Security is enabled to secure internet traffic on this connection
   final bool internetSecurityEnabled;
-
   /// The name which is used for this Static Route.
   final String name;
-
   /// The ID of the Virtual Network which the Virtual Hub is connected
   final String remoteVirtualNetworkId;
   final String resourceGroupName;
-
   /// A `routing` block as defined below.
   final List<GetVirtualHubConnectionRouting> routings;
-
   /// The ID of the Virtual Hub within which this connection is created
   final String virtualHubId;
   final String virtualHubName;
@@ -52,11 +47,7 @@ class GetVirtualHubConnectionResult {
       'name': name,
       'remoteVirtualNetworkId': remoteVirtualNetworkId,
       'resourceGroupName': resourceGroupName,
-      'routings':
-          pulumi.Input.encodeList<
-            GetVirtualHubConnectionRouting,
-            Map<String, dynamic>
-          >(routings, (value) => value.toMap()),
+      'routings': pulumi.Input.encodeList<GetVirtualHubConnectionRouting, Map<String, dynamic>>(routings, (value) => value.toMap()),
       'virtualHubId': virtualHubId,
       'virtualHubName': virtualHubName,
     };
@@ -69,14 +60,10 @@ class GetVirtualHubConnectionResult {
       name: map['name'] as String,
       remoteVirtualNetworkId: map['remoteVirtualNetworkId'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      routings: pulumi.Input.decodeList<GetVirtualHubConnectionRouting>(
-        map['routings']!,
-        (value) => GetVirtualHubConnectionRouting.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      routings: pulumi.Input.decodeList<GetVirtualHubConnectionRouting>(map['routings']!, (value) => GetVirtualHubConnectionRouting.fromMap((value as Map).cast<String, dynamic>())),
       virtualHubId: map['virtualHubId'] as String,
       virtualHubName: map['virtualHubName'] as String,
     );
   }
 }
+

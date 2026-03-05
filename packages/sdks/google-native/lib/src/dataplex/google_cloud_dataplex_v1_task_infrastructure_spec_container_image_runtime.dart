@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime {
   /// Optional. Container image to use.
   final pulumi.Input<String>? image;
-
   /// Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
   final pulumi.Input<List<String>>? javaJars;
-
   /// Optional. Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
   final pulumi.Input<Map<String, String>>? properties;
-
   /// Optional. A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
   final pulumi.Input<List<String>>? pythonPackages;
 
@@ -37,32 +34,13 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime {
     };
   }
 
-  factory GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime(
-      image: (() {
-        final guardedValue = map['image'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      javaJars: (() {
-        final guardedValue = map['javaJars'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      pythonPackages: (() {
-        final guardedValue = map['pythonPackages'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      javaJars: (() { final guardedValue = map['javaJars']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      pythonPackages: (() { final guardedValue = map['pythonPackages']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

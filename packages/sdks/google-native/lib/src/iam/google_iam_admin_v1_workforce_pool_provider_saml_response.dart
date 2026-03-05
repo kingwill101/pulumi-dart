@@ -14,14 +14,15 @@ class GoogleIamAdminV1WorkforcePoolProviderSamlResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'idpMetadataXml': idpMetadataXml};
+    return <String, dynamic>{
+      'idpMetadataXml': idpMetadataXml,
+    };
   }
 
-  factory GoogleIamAdminV1WorkforcePoolProviderSamlResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleIamAdminV1WorkforcePoolProviderSamlResponse.fromMap(Map<String, dynamic> map) {
     return GoogleIamAdminV1WorkforcePoolProviderSamlResponse(
       idpMetadataXml: pulumi.Input.fromValue(map['idpMetadataXml'] as String),
     );
   }
 }
+

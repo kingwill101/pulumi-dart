@@ -15,3 +15,4 @@ enum ProductState {
     throw ArgumentError('Unknown ProductState value: $value');
   }
 }
+

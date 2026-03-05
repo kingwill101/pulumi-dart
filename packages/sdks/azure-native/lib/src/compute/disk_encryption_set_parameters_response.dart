@@ -9,21 +9,20 @@ class DiskEncryptionSetParametersResponse {
 
   /// Creates a new [DiskEncryptionSetParametersResponse].
   /// [id] Resource Id
-  DiskEncryptionSetParametersResponse({this.id});
+  DiskEncryptionSetParametersResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
-  factory DiskEncryptionSetParametersResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiskEncryptionSetParametersResponse.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionSetParametersResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

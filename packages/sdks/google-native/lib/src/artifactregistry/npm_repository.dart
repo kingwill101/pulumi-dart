@@ -10,27 +10,20 @@ class NpmRepository {
 
   /// Creates a new [NpmRepository].
   /// [publicRepository] One of the publicly available Npm repositories supported by Artifact Registry.
-  NpmRepository({this.publicRepository});
+  NpmRepository({
+    this.publicRepository,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicRepository':
-          ?pulumi.Input.mapOptionalInputValue<
-            NpmRepositoryPublicRepository,
-            String
-          >(publicRepository, (value) => value.wireValue),
+      'publicRepository': ?pulumi.Input.mapOptionalInputValue<NpmRepositoryPublicRepository, String>(publicRepository, (value) => value.wireValue),
     };
   }
 
   factory NpmRepository.fromMap(Map<String, dynamic> map) {
     return NpmRepository(
-      publicRepository: (() {
-        final guardedValue = map['publicRepository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NpmRepositoryPublicRepository.fromValue(guardedValue as String),
-        );
-      })(),
+      publicRepository: (() { final guardedValue = map['publicRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NpmRepositoryPublicRepository.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

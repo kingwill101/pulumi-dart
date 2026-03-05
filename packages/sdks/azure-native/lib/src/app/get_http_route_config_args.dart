@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHttpRouteConfigArgs {
   /// Name of the Managed Environment.
   final pulumi.Input<String> environmentName;
-
   /// Name of the Http Route Config Resource.
   final pulumi.Input<String> httpRouteName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetHttpRouteConfigArgs {
     return GetHttpRouteConfigArgs(
       environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
       httpRouteName: pulumi.Input.fromValue(map['httpRouteName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -9,19 +9,20 @@ class SecondaryConfig {
 
   /// Creates a new [SecondaryConfig].
   /// [primaryClusterName] The name of the primary cluster name with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}
-  SecondaryConfig({this.primaryClusterName});
+  SecondaryConfig({
+    this.primaryClusterName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'primaryClusterName': ?primaryClusterName};
+    return <String, dynamic>{
+      'primaryClusterName': ?primaryClusterName,
+    };
   }
 
   factory SecondaryConfig.fromMap(Map<String, dynamic> map) {
     return SecondaryConfig(
-      primaryClusterName: (() {
-        final guardedValue = map['primaryClusterName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      primaryClusterName: (() { final guardedValue = map['primaryClusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,14 +7,11 @@ import 'auth_info.dart';
 class SourceProperties {
   /// The branch name of the source code.
   final pulumi.Input<String>? branch;
-
   /// The full URL to the source code repository
   final pulumi.Input<String> repositoryUrl;
-
   /// The authorization properties for accessing the source code repository and to set up
   /// webhooks for notifications.
   final pulumi.Input<AuthInfo>? sourceControlAuthProperties;
-
   /// The type of source control service.
   final pulumi.Input<String> sourceControlType;
 
@@ -34,33 +31,18 @@ class SourceProperties {
     return <String, dynamic>{
       'branch': ?branch,
       'repositoryUrl': repositoryUrl,
-      'sourceControlAuthProperties':
-          ?pulumi.Input.mapOptionalInputValue<AuthInfo, Map<String, dynamic>>(
-            sourceControlAuthProperties,
-            (value) => value.toMap(),
-          ),
+      'sourceControlAuthProperties': ?pulumi.Input.mapOptionalInputValue<AuthInfo, Map<String, dynamic>>(sourceControlAuthProperties, (value) => value.toMap()),
       'sourceControlType': sourceControlType,
     };
   }
 
   factory SourceProperties.fromMap(Map<String, dynamic> map) {
     return SourceProperties(
-      branch: (() {
-        final guardedValue = map['branch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      branch: (() { final guardedValue = map['branch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryUrl: pulumi.Input.fromValue(map['repositoryUrl'] as String),
-      sourceControlAuthProperties: (() {
-        final guardedValue = map['sourceControlAuthProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AuthInfo.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      sourceControlType: pulumi.Input.fromValue(
-        map['sourceControlType'] as String,
-      ),
+      sourceControlAuthProperties: (() { final guardedValue = map['sourceControlAuthProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AuthInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sourceControlType: pulumi.Input.fromValue(map['sourceControlType'] as String),
     );
   }
 }
+

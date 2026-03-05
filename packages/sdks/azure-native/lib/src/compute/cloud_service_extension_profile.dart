@@ -10,37 +10,20 @@ class CloudServiceExtensionProfile {
 
   /// Creates a new [CloudServiceExtensionProfile].
   /// [extensions] List of extensions for the cloud service.
-  CloudServiceExtensionProfile({this.extensions});
+  CloudServiceExtensionProfile({
+    this.extensions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extensions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Extension>,
-            List<Map<String, dynamic>>
-          >(
-            extensions,
-            (value) => pulumi.Input.encodeList<Extension, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'extensions': ?pulumi.Input.mapOptionalInputValue<List<Extension>, List<Map<String, dynamic>>>(extensions, (value) => pulumi.Input.encodeList<Extension, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CloudServiceExtensionProfile.fromMap(Map<String, dynamic> map) {
     return CloudServiceExtensionProfile(
-      extensions: (() {
-        final guardedValue = map['extensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Extension>(
-            guardedValue,
-            (value) =>
-                Extension.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      extensions: (() { final guardedValue = map['extensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Extension>(guardedValue, (value) => Extension.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

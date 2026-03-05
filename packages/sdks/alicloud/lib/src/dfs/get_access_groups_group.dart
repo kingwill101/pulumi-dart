@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessGroupsGroup {
   /// The length of `description` does not exceed 100 bytes.
   final pulumi.Input<String> accessGroupId;
-
   /// The Name of Access Group. The length Of `access_group_name` does not exceed 100 bytes.
   final pulumi.Input<String> accessGroupName;
-
   /// The CreateTime of Access Group.
   final pulumi.Input<String> createTime;
-
   /// The Description of Access Group. The length Of `description` does not exceed 100 bytes.
   final pulumi.Input<String> description;
-
   /// The ID of the Access Group.
   final pulumi.Input<String> id;
-
   /// The Number of attached mountpoint.
   final pulumi.Input<int> mountPointCount;
-
   /// The NetworkType of Access Group. Valid values: `VPC`.
   final pulumi.Input<String> networkType;
-
   /// The Number of access rule.
   final pulumi.Input<int> ruleCount;
 
@@ -73,3 +66,4 @@ class GetAccessGroupsGroup {
     );
   }
 }
+

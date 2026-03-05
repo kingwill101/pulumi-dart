@@ -117,22 +117,16 @@ import 'container_registry_state.dart';
 class ContainerRegistry extends pulumi.CustomResource {
   /// The date and time when the registry was created
   late final pulumi.Output<String> createdAt;
-
   /// The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
   late final pulumi.Output<String> endpoint;
-
   /// The name of the container_registry
   late final pulumi.Output<String> name;
-
   /// The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
   late final pulumi.Output<String> region;
-
   /// The domain of the container registry. Ex: `registry.digitalocean.com`
   late final pulumi.Output<String> serverUrl;
-
   /// The amount of storage used in the registry in bytes.
   late final pulumi.Output<int> storageUsageBytes;
-
   /// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
   late final pulumi.Output<String> subscriptionTierSlug;
 
@@ -145,11 +139,11 @@ class ContainerRegistry extends pulumi.CustomResource {
     ContainerRegistryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/containerRegistry:ContainerRegistry',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/containerRegistry:ContainerRegistry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     endpoint = registerOutput<String>('endpoint');
     this.name = registerOutput<String>('name');
@@ -177,11 +171,11 @@ class ContainerRegistry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/containerRegistry:ContainerRegistry',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/containerRegistry:ContainerRegistry',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     endpoint = registerOutput<String>('endpoint');
     this.name = registerOutput<String>('name');

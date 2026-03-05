@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvVarResponse {
   /// Environment variable name.
   final pulumi.Input<String>? name;
-
   /// secret environment variable value.
   final pulumi.Input<String>? secretValue;
-
   /// Non-secret environment variable value.
   final pulumi.Input<String>? value;
 
@@ -17,7 +15,11 @@ class EnvVarResponse {
   /// [name] Environment variable name.
   /// [secretValue] secret environment variable value.
   /// [value] Non-secret environment variable value.
-  EnvVarResponse({this.name, this.secretValue, this.value});
+  EnvVarResponse({
+    this.name,
+    this.secretValue,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class EnvVarResponse {
 
   factory EnvVarResponse.fromMap(Map<String, dynamic> map) {
     return EnvVarResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretValue: (() {
-        final guardedValue = map['secretValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretValue: (() { final guardedValue = map['secretValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -15,15 +15,17 @@ class GetApplicationInfosApplicationDimension {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory GetApplicationInfosApplicationDimension.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationInfosApplicationDimension.fromMap(Map<String, dynamic> map) {
     return GetApplicationInfosApplicationDimension(
       key: pulumi.Input.fromValue(map['key'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

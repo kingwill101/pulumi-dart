@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceBackupsInProgressDisk {
   /// The filesystem of this disk.
   final pulumi.Input<String> filesystem;
-
   /// The label of this disk.
   final pulumi.Input<String> label;
-
   /// The size of this disk.
   final pulumi.Input<int> size;
 
@@ -38,3 +36,4 @@ class GetInstanceBackupsInProgressDisk {
     );
   }
 }
+

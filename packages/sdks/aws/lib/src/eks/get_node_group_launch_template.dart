@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNodeGroupLaunchTemplate {
   /// The ID of the launch template.
   final pulumi.Input<String> id;
-
   /// Name of the AutoScaling Group.
   final pulumi.Input<String> name;
-
   /// Kubernetes version.
   final pulumi.Input<String> version;
 
@@ -23,7 +21,11 @@ class GetNodeGroupLaunchTemplate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'name': name, 'version': version};
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+      'version': version,
+    };
   }
 
   factory GetNodeGroupLaunchTemplate.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class GetNodeGroupLaunchTemplate {
     );
   }
 }
+

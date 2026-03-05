@@ -504,19 +504,14 @@ import 'firewall_nat_rule_collection_state.dart';
 class FirewallNatRuleCollection extends pulumi.CustomResource {
   /// Specifies the action the rule will apply to matching traffic. Possible values are `Dnat` and `Snat`.
   late final pulumi.Output<String> action;
-
   /// Specifies the name of the Firewall in which the NAT Rule Collection should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> azureFirewallName;
-
   /// Specifies the name of the NAT Rule Collection which must be unique within the Firewall. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the priority of the rule collection. Possible values are between `100` - `65000`.
   late final pulumi.Output<int> priority;
-
   /// Specifies the name of the Resource Group in which the Firewall exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// One or more `rule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
 
@@ -529,11 +524,11 @@ class FirewallNatRuleCollection extends pulumi.CustomResource {
     FirewallNatRuleCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/firewallNatRuleCollection:FirewallNatRuleCollection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/firewallNatRuleCollection:FirewallNatRuleCollection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     azureFirewallName = registerOutput<String>('azureFirewallName');
     this.name = registerOutput<String>('name');
@@ -560,11 +555,11 @@ class FirewallNatRuleCollection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/firewallNatRuleCollection:FirewallNatRuleCollection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/firewallNatRuleCollection:FirewallNatRuleCollection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     azureFirewallName = registerOutput<String>('azureFirewallName');
     this.name = registerOutput<String>('name');

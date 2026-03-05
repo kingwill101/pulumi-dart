@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttachedNetworkArgs {
   /// The ID of the associated Dev Center. Changing this forces a new resource to be created.
   final pulumi.Input<String> devCenterId;
-
   /// Specifies the name of this Dev Center Attached Network. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The ID of the Dev Center Network Connection you want to attach. Changing this forces a new resource to be created.
   final pulumi.Input<String> networkConnectionId;
 
@@ -37,14 +35,9 @@ class AttachedNetworkArgs {
   factory AttachedNetworkArgs.fromMap(Map<String, dynamic> map) {
     return AttachedNetworkArgs(
       devCenterId: pulumi.Input.fromValue(map['devCenterId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkConnectionId: pulumi.Input.fromValue(
-        map['networkConnectionId'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkConnectionId: pulumi.Input.fromValue(map['networkConnectionId'] as String),
     );
   }
 }
+

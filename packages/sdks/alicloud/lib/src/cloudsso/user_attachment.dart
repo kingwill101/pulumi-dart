@@ -346,10 +346,8 @@ import 'user_attachment_state.dart';
 class UserAttachment extends pulumi.CustomResource {
   /// The ID of the directory.
   late final pulumi.Output<String> directoryId;
-
   /// The ID of the group.
   late final pulumi.Output<String> groupId;
-
   /// The ID of the user.
   late final pulumi.Output<String> userId;
 
@@ -362,11 +360,11 @@ class UserAttachment extends pulumi.CustomResource {
     UserAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/userAttachment:UserAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/userAttachment:UserAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     directoryId = registerOutput<String>('directoryId');
     groupId = registerOutput<String>('groupId');
     userId = registerOutput<String>('userId');
@@ -390,11 +388,11 @@ class UserAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/userAttachment:UserAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/userAttachment:UserAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     directoryId = registerOutput<String>('directoryId');
     groupId = registerOutput<String>('groupId');
     userId = registerOutput<String>('userId');

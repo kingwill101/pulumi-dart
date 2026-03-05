@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCollectionRuleDataSourceSyslog {
   /// Specifies a list of facility names. Use a wildcard `*` to collect logs for all facility names. Possible values are `auth`, `authpriv`, `cron`, `daemon`, `kern`, `lpr`, `mail`, `mark`, `news`, `syslog`, `user`, `uucp`, `local0`, `local1`, `local2`, `local3`, `local4`, `local5`, `local6`, `local7`,and `*`.
   final pulumi.Input<List<String>> facilityNames;
-
   /// Specifies a list of log levels. Use a wildcard `*` to collect logs for all log levels. Possible values are `Debug`,  `Info`, `Notice`, `Warning`, `Error`, `Critical`, `Alert`, `Emergency`,and `*`.
   final pulumi.Input<List<String>> logLevels;
-
   /// Specifies the name of the Data Collection Rule.
   final pulumi.Input<String> name;
-
   /// Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
   final pulumi.Input<List<String>> streams;
 
@@ -36,18 +33,13 @@ class GetDataCollectionRuleDataSourceSyslog {
     };
   }
 
-  factory GetDataCollectionRuleDataSourceSyslog.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataCollectionRuleDataSourceSyslog.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleDataSourceSyslog(
-      facilityNames: pulumi.Input.fromValue(
-        (map['facilityNames'] as List).cast<String>(),
-      ),
-      logLevels: pulumi.Input.fromValue(
-        (map['logLevels'] as List).cast<String>(),
-      ),
+      facilityNames: pulumi.Input.fromValue((map['facilityNames'] as List).cast<String>()),
+      logLevels: pulumi.Input.fromValue((map['logLevels'] as List).cast<String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       streams: pulumi.Input.fromValue((map['streams'] as List).cast<String>()),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'user_assigned_identity_properties.dart';
 /// Properties to configure keyVault Properties
 class KeyVaultProperties {
   final pulumi.Input<UserAssignedIdentityProperties>? identity;
-
   /// Name of the Key from KeyVault
   final pulumi.Input<String>? keyName;
-
   /// Uri of KeyVault
   final pulumi.Input<String>? keyVaultUri;
-
   /// Key Version
   final pulumi.Input<String>? keyVersion;
 
@@ -30,11 +27,7 @@ class KeyVaultProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            UserAssignedIdentityProperties,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<UserAssignedIdentityProperties, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'keyName': ?keyName,
       'keyVaultUri': ?keyVaultUri,
       'keyVersion': ?keyVersion,
@@ -43,30 +36,11 @@ class KeyVaultProperties {
 
   factory KeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultProperties(
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UserAssignedIdentityProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      keyName: (() {
-        final guardedValue = map['keyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultUri: (() {
-        final guardedValue = map['keyVaultUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVersion: (() {
-        final guardedValue = map['keyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserAssignedIdentityProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultUri: (() { final guardedValue = map['keyVaultUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVersion: (() { final guardedValue = map['keyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

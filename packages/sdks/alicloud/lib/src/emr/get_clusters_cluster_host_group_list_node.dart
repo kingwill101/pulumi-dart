@@ -6,32 +6,22 @@ import 'get_clusters_cluster_host_group_list_node_disk_info.dart';
 class GetClustersClusterHostGroupListNode {
   /// Creation time.
   final pulumi.Input<String> createTime;
-
   /// Disk information.
-  final pulumi.Input<List<GetClustersClusterHostGroupListNodeDiskInfo>>
-  diskInfos;
-
+  final pulumi.Input<List<GetClustersClusterHostGroupListNodeDiskInfo>> diskInfos;
   /// The timeout of the EMR.
   final pulumi.Input<String> emrExpiredTime;
-
   /// Timeout time.
   final pulumi.Input<String> expiredTime;
-
   /// The Intranet IP of the EMR.
   final pulumi.Input<String> innerIp;
-
   /// The ID of the ECS instance.
   final pulumi.Input<String> instanceId;
-
   /// Public IP address.
   final pulumi.Input<String> pubIp;
-
   /// Status.
   final pulumi.Input<String> status;
-
   /// Whether IPV6 is supported.
   final pulumi.Input<bool> supportIpv6;
-
   /// The zone ID.
   final pulumi.Input<String> zoneId;
 
@@ -62,18 +52,7 @@ class GetClustersClusterHostGroupListNode {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
-      'diskInfos':
-          pulumi.Input.mapInputValue<
-            List<GetClustersClusterHostGroupListNodeDiskInfo>,
-            List<Map<String, dynamic>>
-          >(
-            diskInfos,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetClustersClusterHostGroupListNodeDiskInfo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'diskInfos': pulumi.Input.mapInputValue<List<GetClustersClusterHostGroupListNodeDiskInfo>, List<Map<String, dynamic>>>(diskInfos, (value) => pulumi.Input.encodeList<GetClustersClusterHostGroupListNodeDiskInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'emrExpiredTime': emrExpiredTime,
       'expiredTime': expiredTime,
       'innerIp': innerIp,
@@ -85,19 +64,10 @@ class GetClustersClusterHostGroupListNode {
     };
   }
 
-  factory GetClustersClusterHostGroupListNode.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClustersClusterHostGroupListNode.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterHostGroupListNode(
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
-      diskInfos: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetClustersClusterHostGroupListNodeDiskInfo>(
-          map['diskInfos']!,
-          (value) => GetClustersClusterHostGroupListNodeDiskInfo.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      diskInfos: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClustersClusterHostGroupListNodeDiskInfo>(map['diskInfos']!, (value) => GetClustersClusterHostGroupListNodeDiskInfo.fromMap((value as Map).cast<String, dynamic>()))),
       emrExpiredTime: pulumi.Input.fromValue(map['emrExpiredTime'] as String),
       expiredTime: pulumi.Input.fromValue(map['expiredTime'] as String),
       innerIp: pulumi.Input.fromValue(map['innerIp'] as String),
@@ -109,3 +79,4 @@ class GetClustersClusterHostGroupListNode {
     );
   }
 }
+

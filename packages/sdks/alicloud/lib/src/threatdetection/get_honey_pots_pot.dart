@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHoneyPotsPot {
   /// Honeypot ID.
   final pulumi.Input<String> honeypotId;
-
   /// The image ID of the honeypot.
   final pulumi.Input<String> honeypotImageId;
-
   /// Honeypot mirror name.
   final pulumi.Input<String> honeypotImageName;
-
   /// Honeypot custom name.
   final pulumi.Input<String> honeypotName;
-
   /// Honeypot ID. The value is the same as `honeypot_id`.
   final pulumi.Input<String> id;
-
   /// The ID of the honeypot management node.
   final pulumi.Input<String> nodeId;
-
   /// The custom parameter ID of honeypot.
   final pulumi.Input<String> presetId;
-
   /// Honeypot status.
   final pulumi.Input<List<String>> states;
-
   /// The status of the resource
   final pulumi.Input<String> status;
 
@@ -70,9 +62,7 @@ class GetHoneyPotsPot {
     return GetHoneyPotsPot(
       honeypotId: pulumi.Input.fromValue(map['honeypotId'] as String),
       honeypotImageId: pulumi.Input.fromValue(map['honeypotImageId'] as String),
-      honeypotImageName: pulumi.Input.fromValue(
-        map['honeypotImageName'] as String,
-      ),
+      honeypotImageName: pulumi.Input.fromValue(map['honeypotImageName'] as String),
       honeypotName: pulumi.Input.fromValue(map['honeypotName'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
@@ -82,3 +72,4 @@ class GetHoneyPotsPot {
     );
   }
 }
+

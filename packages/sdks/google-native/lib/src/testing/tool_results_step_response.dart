@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ToolResultsStepResponse {
   /// A tool results execution ID.
   final pulumi.Input<String> executionId;
-
   /// A tool results history ID.
   final pulumi.Input<String> historyId;
-
   /// The cloud project that owns the tool results step.
   final pulumi.Input<String> project;
-
   /// A tool results step ID.
   final pulumi.Input<String> stepId;
 
@@ -46,3 +43,4 @@ class ToolResultsStepResponse {
     );
   }
 }
+

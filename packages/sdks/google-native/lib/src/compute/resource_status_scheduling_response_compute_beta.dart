@@ -13,16 +13,15 @@ class ResourceStatusSchedulingResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'terminationTimestamp': terminationTimestamp};
+    return <String, dynamic>{
+      'terminationTimestamp': terminationTimestamp,
+    };
   }
 
-  factory ResourceStatusSchedulingResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceStatusSchedulingResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return ResourceStatusSchedulingResponseComputeBeta(
-      terminationTimestamp: pulumi.Input.fromValue(
-        map['terminationTimestamp'] as String,
-      ),
+      terminationTimestamp: pulumi.Input.fromValue(map['terminationTimestamp'] as String),
     );
   }
 }
+

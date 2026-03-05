@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnapshotPolicyDailySchedule {
   /// Hour of the day that the snapshots will be created.
   final pulumi.Input<int> hour;
-
   /// Minute of the hour that the snapshots will be created.
   final pulumi.Input<int> minute;
-
   /// How many hourly snapshots to keep.
   final pulumi.Input<int> snapshotsToKeep;
 
@@ -38,3 +36,4 @@ class GetSnapshotPolicyDailySchedule {
     );
   }
 }
+

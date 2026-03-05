@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlServerEsuLicensePropertiesResponse {
   /// The timestamp of the activation of the SqlServerEsuLicense in ISO 8601 date-time format.
   final pulumi.Input<String> activatedAt;
-
   /// The activation state of the license.
   final pulumi.Input<String> activationState;
-
   /// SQL Server ESU license type.
   final pulumi.Input<String> billingPlan;
-
   /// The number of total cores of the license covers.
   final pulumi.Input<int> physicalCores;
-
   /// The Azure scope to which the license will apply.
   final pulumi.Input<String> scopeType;
-
   /// The tenantId the SQL Server ESU license resource subscription resides in.
   final pulumi.Input<String> tenantId;
-
   /// The timestamp of the termination of the SqlServerEsuLicense in ISO 8601 date-time format.
   final pulumi.Input<String> terminatedAt;
-
   /// The unique ID of this license. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String> uniqueId;
-
   /// The SQL Server version the license covers.
   final pulumi.Input<String> version;
 
@@ -67,9 +59,7 @@ class SqlServerEsuLicensePropertiesResponse {
     };
   }
 
-  factory SqlServerEsuLicensePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SqlServerEsuLicensePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlServerEsuLicensePropertiesResponse(
       activatedAt: pulumi.Input.fromValue(map['activatedAt'] as String),
       activationState: pulumi.Input.fromValue(map['activationState'] as String),
@@ -83,3 +73,4 @@ class SqlServerEsuLicensePropertiesResponse {
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum ImplementationEffort {
     throw ArgumentError('Unknown ImplementationEffort value: $value');
   }
 }
+

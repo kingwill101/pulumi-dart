@@ -37,9 +37,7 @@ class GetDatabaseMysqlConfigMysqlNetBufferLength {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlNetBufferLength.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseMysqlConfigMysqlNetBufferLength.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlNetBufferLength(
       description: pulumi.Input.fromValue(map['description'] as String),
       example: pulumi.Input.fromValue(map['example'] as int),
@@ -50,3 +48,4 @@ class GetDatabaseMysqlConfigMysqlNetBufferLength {
     );
   }
 }
+

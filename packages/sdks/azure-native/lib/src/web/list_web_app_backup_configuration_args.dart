@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWebAppBackupConfigurationArgs {
   /// Name of the app.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class ListWebAppBackupConfigurationArgs {
   factory ListWebAppBackupConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ListWebAppBackupConfigurationArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

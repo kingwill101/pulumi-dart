@@ -10,29 +10,20 @@ class NodeDaemonEndpointsPatch {
 
   /// Creates a new [NodeDaemonEndpointsPatch].
   /// [kubeletEndpoint] Endpoint on which Kubelet is listening.
-  NodeDaemonEndpointsPatch({this.kubeletEndpoint});
+  NodeDaemonEndpointsPatch({
+    this.kubeletEndpoint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kubeletEndpoint':
-          ?pulumi.Input.mapOptionalInputValue<
-            DaemonEndpointPatch,
-            Map<String, dynamic>
-          >(kubeletEndpoint, (value) => value.toMap()),
+      'kubeletEndpoint': ?pulumi.Input.mapOptionalInputValue<DaemonEndpointPatch, Map<String, dynamic>>(kubeletEndpoint, (value) => value.toMap()),
     };
   }
 
   factory NodeDaemonEndpointsPatch.fromMap(Map<String, dynamic> map) {
     return NodeDaemonEndpointsPatch(
-      kubeletEndpoint: (() {
-        final guardedValue = map['kubeletEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DaemonEndpointPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      kubeletEndpoint: (() { final guardedValue = map['kubeletEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DaemonEndpointPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

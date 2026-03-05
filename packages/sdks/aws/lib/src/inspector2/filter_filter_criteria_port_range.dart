@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilterFilterCriteriaPortRange {
   /// (Required) The beginning of the port range, inclusive.
   final pulumi.Input<int> beginInclusive;
-
   /// (Required) The end of the port range, inclusive.
   final pulumi.Input<int> endInclusive;
 
@@ -31,3 +30,4 @@ class FilterFilterCriteriaPortRange {
     );
   }
 }
+

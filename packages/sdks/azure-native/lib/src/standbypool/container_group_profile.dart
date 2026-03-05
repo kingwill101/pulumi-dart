@@ -6,27 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerGroupProfile {
   /// Specifies container group profile id of standby container groups.
   final pulumi.Input<String> id;
-
   /// Specifies revision of container group profile.
   final pulumi.Input<double>? revision;
 
   /// Creates a new [ContainerGroupProfile].
   /// [id] Specifies container group profile id of standby container groups.
   /// [revision] Specifies revision of container group profile.
-  ContainerGroupProfile({required this.id, this.revision});
+  ContainerGroupProfile({
+    required this.id,
+    this.revision,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'revision': ?revision};
+    return <String, dynamic>{
+      'id': id,
+      'revision': ?revision,
+    };
   }
 
   factory ContainerGroupProfile.fromMap(Map<String, dynamic> map) {
     return ContainerGroupProfile(
       id: pulumi.Input.fromValue(map['id'] as String),
-      revision: (() {
-        final guardedValue = map['revision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

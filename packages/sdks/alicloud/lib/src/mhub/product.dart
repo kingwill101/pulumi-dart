@@ -122,11 +122,11 @@ class Product extends pulumi.CustomResource {
     ProductArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mhub/product:Product',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mhub/product:Product',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     productName = registerOutput<String>('productName');
   }
 
@@ -148,11 +148,11 @@ class Product extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mhub/product:Product',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mhub/product:Product',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     productName = registerOutput<String>('productName');
   }
 }

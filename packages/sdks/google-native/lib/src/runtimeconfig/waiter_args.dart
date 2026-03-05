@@ -9,20 +9,15 @@ import 'end_condition.dart';
 /// {@macro pulumi_runtimeconfig_v1beta1_waiter_args_doc}
 class WaiterArgs {
   final pulumi.Input<String> configId;
-
   /// [Optional] The failure condition of this waiter. If this condition is met, `done` will be set to `true` and the `error` code will be set to `ABORTED`. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. This value is optional; if no failure condition is set, the only failure scenario will be a timeout.
   final pulumi.Input<EndCondition>? failure;
-
   /// The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
-
   /// An optional but recommended unique `request_id`. If the server receives two `create()` requests with the same `request_id`, then the second request will be ignored and the first resource created and stored in the backend is returned. Empty `request_id` fields are ignored. It is responsibility of the client to ensure uniqueness of the `request_id` strings. `request_id` strings are limited to 64 characters.
   final pulumi.Input<String>? requestId;
-
   /// [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
   final pulumi.Input<EndCondition>? success;
-
   /// [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.
   final pulumi.Input<String>? timeout;
 
@@ -47,19 +42,11 @@ class WaiterArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configId': configId,
-      'failure':
-          ?pulumi.Input.mapOptionalInputValue<
-            EndCondition,
-            Map<String, dynamic>
-          >(failure, (value) => value.toMap()),
+      'failure': ?pulumi.Input.mapOptionalInputValue<EndCondition, Map<String, dynamic>>(failure, (value) => value.toMap()),
       'name': ?name,
       'project': ?project,
       'requestId': ?requestId,
-      'success':
-          ?pulumi.Input.mapOptionalInputValue<
-            EndCondition,
-            Map<String, dynamic>
-          >(success, (value) => value.toMap()),
+      'success': ?pulumi.Input.mapOptionalInputValue<EndCondition, Map<String, dynamic>>(success, (value) => value.toMap()),
       'timeout': ?timeout,
     };
   }
@@ -67,40 +54,13 @@ class WaiterArgs {
   factory WaiterArgs.fromMap(Map<String, dynamic> map) {
     return WaiterArgs(
       configId: pulumi.Input.fromValue(map['configId'] as String),
-      failure: (() {
-        final guardedValue = map['failure'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EndCondition.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestId: (() {
-        final guardedValue = map['requestId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      success: (() {
-        final guardedValue = map['success'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EndCondition.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      timeout: (() {
-        final guardedValue = map['timeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      failure: (() { final guardedValue = map['failure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestId: (() { final guardedValue = map['requestId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      success: (() { final guardedValue = map['success']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

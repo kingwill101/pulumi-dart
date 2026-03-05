@@ -7,16 +7,12 @@ import 'import_file_response.dart';
 class TemplateContentsResponse {
   /// Import files referenced by the main template.
   final pulumi.Input<List<ImportFileResponse>> imports;
-
   /// Which interpreter (python or jinja) should be used during expansion.
   final pulumi.Input<String> interpreter;
-
   /// The filename of the mainTemplate
   final pulumi.Input<String> mainTemplate;
-
   /// The contents of the template schema.
   final pulumi.Input<String> schema;
-
   /// The contents of the main template file.
   final pulumi.Input<String> template;
 
@@ -36,18 +32,7 @@ class TemplateContentsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imports':
-          pulumi.Input.mapInputValue<
-            List<ImportFileResponse>,
-            List<Map<String, dynamic>>
-          >(
-            imports,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ImportFileResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'imports': pulumi.Input.mapInputValue<List<ImportFileResponse>, List<Map<String, dynamic>>>(imports, (value) => pulumi.Input.encodeList<ImportFileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'interpreter': interpreter,
       'mainTemplate': mainTemplate,
       'schema': schema,
@@ -57,14 +42,7 @@ class TemplateContentsResponse {
 
   factory TemplateContentsResponse.fromMap(Map<String, dynamic> map) {
     return TemplateContentsResponse(
-      imports: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ImportFileResponse>(
-          map['imports']!,
-          (value) => ImportFileResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      imports: pulumi.Input.fromValue(pulumi.Input.decodeList<ImportFileResponse>(map['imports']!, (value) => ImportFileResponse.fromMap((value as Map).cast<String, dynamic>()))),
       interpreter: pulumi.Input.fromValue(map['interpreter'] as String),
       mainTemplate: pulumi.Input.fromValue(map['mainTemplate'] as String),
       schema: pulumi.Input.fromValue(map['schema'] as String),
@@ -72,3 +50,4 @@ class TemplateContentsResponse {
     );
   }
 }
+

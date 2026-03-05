@@ -8,21 +8,20 @@ class NodePoolNodeConfig {
 
   /// Creates a new [NodePoolNodeConfig].
   /// [labels] "The Kubernetes node labels"
-  NodePoolNodeConfig({this.labels});
+  NodePoolNodeConfig({
+    this.labels,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labels': ?labels};
+    return <String, dynamic>{
+      'labels': ?labels,
+    };
   }
 
   factory NodePoolNodeConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfig(
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

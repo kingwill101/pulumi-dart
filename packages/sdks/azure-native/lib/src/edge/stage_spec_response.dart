@@ -8,13 +8,10 @@ import 'task_spec_response.dart';
 class StageSpecResponse {
   /// Name of Stage
   final pulumi.Input<String> name;
-
   /// Stage specification
   final pulumi.Input<dynamic>? specification;
-
   /// Task option for the stage
   final pulumi.Input<TaskOptionResponse>? taskOption;
-
   /// List of tasks in the stage
   final pulumi.Input<List<TaskSpecResponse>>? tasks;
 
@@ -34,55 +31,18 @@ class StageSpecResponse {
     return <String, dynamic>{
       'name': name,
       'specification': ?specification,
-      'taskOption':
-          ?pulumi.Input.mapOptionalInputValue<
-            TaskOptionResponse,
-            Map<String, dynamic>
-          >(taskOption, (value) => value.toMap()),
-      'tasks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TaskSpecResponse>,
-            List<Map<String, dynamic>>
-          >(
-            tasks,
-            (value) =>
-                pulumi.Input.encodeList<TaskSpecResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'taskOption': ?pulumi.Input.mapOptionalInputValue<TaskOptionResponse, Map<String, dynamic>>(taskOption, (value) => value.toMap()),
+      'tasks': ?pulumi.Input.mapOptionalInputValue<List<TaskSpecResponse>, List<Map<String, dynamic>>>(tasks, (value) => pulumi.Input.encodeList<TaskSpecResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StageSpecResponse.fromMap(Map<String, dynamic> map) {
     return StageSpecResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      specification: (() {
-        final guardedValue = map['specification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      taskOption: (() {
-        final guardedValue = map['taskOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TaskOptionResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tasks: (() {
-        final guardedValue = map['tasks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TaskSpecResponse>(
-            guardedValue,
-            (value) => TaskSpecResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      specification: (() { final guardedValue = map['specification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      taskOption: (() { final guardedValue = map['taskOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskOptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tasks: (() { final guardedValue = map['tasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TaskSpecResponse>(guardedValue, (value) => TaskSpecResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

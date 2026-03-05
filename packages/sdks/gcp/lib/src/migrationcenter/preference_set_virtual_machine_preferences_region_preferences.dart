@@ -13,18 +13,15 @@ class PreferenceSetVirtualMachinePreferencesRegionPreferences {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'preferredRegions': ?preferredRegions};
+    return <String, dynamic>{
+      'preferredRegions': ?preferredRegions,
+    };
   }
 
-  factory PreferenceSetVirtualMachinePreferencesRegionPreferences.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreferenceSetVirtualMachinePreferencesRegionPreferences.fromMap(Map<String, dynamic> map) {
     return PreferenceSetVirtualMachinePreferencesRegionPreferences(
-      preferredRegions: (() {
-        final guardedValue = map['preferredRegions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      preferredRegions: (() { final guardedValue = map['preferredRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

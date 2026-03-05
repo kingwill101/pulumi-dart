@@ -462,11 +462,9 @@ class Certificate extends pulumi.CustomResource {
   late final pulumi.Output<String> certificateName;
   late final pulumi.Output<String?> encryptCert;
   late final pulumi.Output<String?> encryptPrivateKey;
-
   /// Key of the Certificate in which the Certificate will add.
   late final pulumi.Output<String?> key;
   late final pulumi.Output<String?> lang;
-
   /// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> resourceGroupId;
@@ -483,11 +481,11 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cas/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cas/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cert = registerOutput<String?>('cert');
     certificateName = registerOutput<String>('certificateName');
     encryptCert = registerOutput<String?>('encryptCert');
@@ -519,11 +517,11 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cas/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cas/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cert = registerOutput<String?>('cert');
     certificateName = registerOutput<String>('certificateName');
     encryptCert = registerOutput<String?>('encryptCert');

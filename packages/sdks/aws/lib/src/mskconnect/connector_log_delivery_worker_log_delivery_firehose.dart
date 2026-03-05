@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorLogDeliveryWorkerLogDeliveryFirehose {
   /// The name of the Kinesis Data Firehose delivery stream that is the destination for log delivery.
   final pulumi.Input<String>? deliveryStream;
-
   /// Specifies whether connector logs get delivered to Amazon Kinesis Data Firehose.
   final pulumi.Input<bool> enabled;
 
@@ -24,16 +23,11 @@ class ConnectorLogDeliveryWorkerLogDeliveryFirehose {
     };
   }
 
-  factory ConnectorLogDeliveryWorkerLogDeliveryFirehose.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorLogDeliveryWorkerLogDeliveryFirehose.fromMap(Map<String, dynamic> map) {
     return ConnectorLogDeliveryWorkerLogDeliveryFirehose(
-      deliveryStream: (() {
-        final guardedValue = map['deliveryStream'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deliveryStream: (() { final guardedValue = map['deliveryStream']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KpiAlias {
   /// KPI alias name.
   final pulumi.Input<String> aliasName;
-
   /// The expression.
   final pulumi.Input<String> expression;
 
   /// Creates a new [KpiAlias].
   /// [aliasName] KPI alias name.
   /// [expression] The expression.
-  KpiAlias({required this.aliasName, required this.expression});
+  KpiAlias({
+    required this.aliasName,
+    required this.expression,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'aliasName': aliasName, 'expression': expression};
+    return <String, dynamic>{
+      'aliasName': aliasName,
+      'expression': expression,
+    };
   }
 
   factory KpiAlias.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class KpiAlias {
     );
   }
 }
+

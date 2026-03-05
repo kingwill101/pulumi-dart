@@ -9,11 +9,9 @@ class HealthCheckGrpcTlsHealthCheck {
   /// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
   /// The grpcServiceName can only be ASCII.
   final pulumi.Input<String>? grpcServiceName;
-
   /// The port number for the health check request.
   /// Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
   final pulumi.Input<int>? port;
-
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
   /// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
@@ -46,21 +44,10 @@ class HealthCheckGrpcTlsHealthCheck {
 
   factory HealthCheckGrpcTlsHealthCheck.fromMap(Map<String, dynamic> map) {
     return HealthCheckGrpcTlsHealthCheck(
-      grpcServiceName: (() {
-        final guardedValue = map['grpcServiceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      portSpecification: (() {
-        final guardedValue = map['portSpecification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      grpcServiceName: (() { final guardedValue = map['grpcServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      portSpecification: (() { final guardedValue = map['portSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

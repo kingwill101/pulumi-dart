@@ -9,29 +9,20 @@ class VirtualGatewaySpecLoggingAccessLog {
 
   /// Creates a new [VirtualGatewaySpecLoggingAccessLog].
   /// [file] File object to send virtual gateway access logs to.
-  VirtualGatewaySpecLoggingAccessLog({this.file});
+  VirtualGatewaySpecLoggingAccessLog({
+    this.file,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'file':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualGatewaySpecLoggingAccessLogFile,
-            Map<String, dynamic>
-          >(file, (value) => value.toMap()),
+      'file': ?pulumi.Input.mapOptionalInputValue<VirtualGatewaySpecLoggingAccessLogFile, Map<String, dynamic>>(file, (value) => value.toMap()),
     };
   }
 
   factory VirtualGatewaySpecLoggingAccessLog.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecLoggingAccessLog(
-      file: (() {
-        final guardedValue = map['file'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualGatewaySpecLoggingAccessLogFile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      file: (() { final guardedValue = map['file']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualGatewaySpecLoggingAccessLogFile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

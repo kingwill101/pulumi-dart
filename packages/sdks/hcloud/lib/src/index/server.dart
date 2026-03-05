@@ -836,87 +836,61 @@ import 'server_state.dart';
 class Server extends pulumi.CustomResource {
   /// Enable the use of deprecated images (default: false). **Note** Deprecated images will be removed after three months. Using them is then no longer possible.
   late final pulumi.Output<bool?> allowDeprecatedImages;
-
   /// (string) The backup window of the server, if enabled.
   late final pulumi.Output<String> backupWindow;
-
   /// Enable or disable backups.
   late final pulumi.Output<bool?> backups;
-
   /// The datacenter name to create the server in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
   late final pulumi.Output<String> datacenter;
-
   /// Enable or disable delete protection (Needs to be the same as `rebuild_protection`). See "Delete Protection" in the Provider Docs for details.
   late final pulumi.Output<bool?> deleteProtection;
-
   /// Firewall IDs the server should be attached to on creation.
   late final pulumi.Output<List<int>> firewallIds;
-
   /// Ignores any updates
   /// to the `firewall_ids` argument which were received from the server.
   /// This should not be used in normal cases. See the documentation of the
   /// `hcloud.FirewallAttachment` resource for a reason to use this
   /// argument.
   late final pulumi.Output<bool?> ignoreRemoteFirewallIds;
-
   /// Name or ID of the image the server is created from. **Note** the `image` property is only required when using the resource to create servers. As the Hetzner Cloud API may return servers without an image ID set it is not marked as required in the Terraform Provider itself. Thus, users will get an error from the underlying client library if they forget to set the property and try to create a server.
   late final pulumi.Output<String?> image;
-
   /// (string) The IPv4 address.
   late final pulumi.Output<String> ipv4Address;
-
   /// (string) The first IPv6 address of the assigned network.
   late final pulumi.Output<String> ipv6Address;
-
   /// (string) The IPv6 network.
   late final pulumi.Output<String> ipv6Network;
-
   /// ID or Name of an ISO image to mount.
   late final pulumi.Output<String?> iso;
-
   /// If true, do not upgrade the disk. This allows downgrading the server type later.
   late final pulumi.Output<bool?> keepDisk;
-
   /// User-defined labels (key-value pairs) should be created with.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location name to create the server in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   late final pulumi.Output<String> location;
-
   /// Name of the server to create (must be unique per project and a valid hostname as per RFC 1123).
   late final pulumi.Output<String> name;
-
   /// Network the server should be attached to on creation. (Can be specified multiple times)
   late final pulumi.Output<List<Map<String, dynamic>>?> networks;
-
   /// Placement Group ID the server added to on creation.
   late final pulumi.Output<int?> placementGroupId;
-
   /// (int) The size of the primary disk in GB.
   late final pulumi.Output<int> primaryDiskSize;
-
   /// In this block you can either enable / disable ipv4 and ipv6 or link existing primary IPs (checkout the examples).
   /// If this block is not defined, two primary (ipv4 & ipv6) ips getting auto generated.
   late final pulumi.Output<List<Map<String, dynamic>>?> publicNets;
-
   /// Enable or disable rebuild protection (Needs to be the same as `delete_protection`).
   late final pulumi.Output<bool?> rebuildProtection;
-
   /// Enable and boot in to the specified rescue system. This enables simple installation of custom operating systems. `linux64` or `linux32`
   late final pulumi.Output<String?> rescue;
-
   /// Name of the server type this server should be created with.
   late final pulumi.Output<String> serverType;
-
   /// Whether to try shutting the server down gracefully before deleting it.
   late final pulumi.Output<bool?> shutdownBeforeDeletion;
-
   /// SSH key IDs or names which should be injected into the server at creation time. Once the server is created, you can not update the list of SSH Keys. If you do change this, you will be prompted to destroy and recreate the server. You can avoid this by setting lifecycle.ignore_changes to `[ ssh_keys ]`.
   late final pulumi.Output<List<String>?> sshKeys;
-
   /// (string) The status of the server.
   late final pulumi.Output<String> status;
-
   /// Cloud-Init user data to use during server creation
   late final pulumi.Output<String?> userData;
 
@@ -924,13 +898,16 @@ class Server extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Server]. {@macro pulumi_index_server_server_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Server(String name, {ServerArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'hcloud:index/server:Server',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Server(
+    String name, {
+    ServerArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'hcloud:index/server:Server',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowDeprecatedImages = registerOutput<bool?>('allowDeprecatedImages');
     backupWindow = registerOutput<String>('backupWindow');
     backups = registerOutput<bool?>('backups');
@@ -978,11 +955,11 @@ class Server extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/server:Server',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/server:Server',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowDeprecatedImages = registerOutput<bool?>('allowDeprecatedImages');
     backupWindow = registerOutput<String>('backupWindow');
     backups = registerOutput<bool?>('backups');

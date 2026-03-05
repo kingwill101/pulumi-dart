@@ -15,3 +15,4 @@ enum PrivateIPAllocationMethod {
     throw ArgumentError('Unknown PrivateIPAllocationMethod value: $value');
   }
 }
+

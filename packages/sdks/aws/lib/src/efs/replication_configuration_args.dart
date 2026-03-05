@@ -10,10 +10,8 @@ import 'replication_configuration_destination.dart';
 class ReplicationConfigurationArgs {
   /// A destination configuration block (documented below).
   final pulumi.Input<ReplicationConfigurationDestination> destination;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the file system that is to be replicated.
   final pulumi.Input<String> sourceFileSystemId;
 
@@ -29,11 +27,7 @@ class ReplicationConfigurationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination':
-          pulumi.Input.mapInputValue<
-            ReplicationConfigurationDestination,
-            Map<String, dynamic>
-          >(destination, (value) => value.toMap()),
+      'destination': pulumi.Input.mapInputValue<ReplicationConfigurationDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'region': ?region,
       'sourceFileSystemId': sourceFileSystemId,
     };
@@ -41,19 +35,10 @@ class ReplicationConfigurationArgs {
 
   factory ReplicationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationArgs(
-      destination: pulumi.Input.fromValue(
-        ReplicationConfigurationDestination.fromMap(
-          (map['destination']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceFileSystemId: pulumi.Input.fromValue(
-        map['sourceFileSystemId'] as String,
-      ),
+      destination: pulumi.Input.fromValue(ReplicationConfigurationDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceFileSystemId: pulumi.Input.fromValue(map['sourceFileSystemId'] as String),
     );
   }
 }
+

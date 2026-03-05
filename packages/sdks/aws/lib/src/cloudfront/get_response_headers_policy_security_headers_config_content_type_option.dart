@@ -13,14 +13,15 @@ class GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'override': override};
+    return <String, dynamic>{
+      'override': override,
+    };
   }
 
-  factory GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption.fromMap(Map<String, dynamic> map) {
     return GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption(
       override: pulumi.Input.fromValue(map['override'] as bool),
     );
   }
 }
+

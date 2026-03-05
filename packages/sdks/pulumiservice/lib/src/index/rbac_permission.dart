@@ -19,3 +19,4 @@ enum RbacPermission {
     throw ArgumentError('Unknown RbacPermission value: $value');
   }
 }
+

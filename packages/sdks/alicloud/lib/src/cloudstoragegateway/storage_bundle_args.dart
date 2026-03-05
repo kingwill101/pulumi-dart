@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageBundleArgs {
   /// The description of storage bundle.
   final pulumi.Input<String>? description;
-
   /// The name of storage bundle.
   final pulumi.Input<String> storageBundleName;
 
   /// Creates a new [StorageBundleArgs].
   /// [description] The description of storage bundle.
   /// [storageBundleName] The name of storage bundle.
-  StorageBundleArgs({this.description, required this.storageBundleName});
+  StorageBundleArgs({
+    this.description,
+    required this.storageBundleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,14 +29,9 @@ class StorageBundleArgs {
 
   factory StorageBundleArgs.fromMap(Map<String, dynamic> map) {
     return StorageBundleArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageBundleName: pulumi.Input.fromValue(
-        map['storageBundleName'] as String,
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageBundleName: pulumi.Input.fromValue(map['storageBundleName'] as String),
     );
   }
 }
+

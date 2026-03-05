@@ -6,58 +6,40 @@ import 'system_data_response.dart';
 class GetNetworkDeviceResult {
   /// Administrative state of the resource.
   final String administrativeState;
-
   /// Switch configuration description.
   final String? annotation;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Configuration state of the resource.
   final String configurationState;
-
   /// The host name of the device.
   final String? hostName;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// Management IPv4 Address.
   final String managementIpv4Address;
-
   /// Management IPv6 Address.
   final String managementIpv6Address;
-
   /// The name of the resource
   final String name;
-
   /// NetworkDeviceRole is the device role: Example: CE | ToR.
   final String networkDeviceRole;
-
   /// Network Device SKU name.
   final String? networkDeviceSku;
-
   /// Reference to network rack resource id.
   final String networkRackId;
-
   /// Provisioning state of the resource.
   final String provisioningState;
-
   /// Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
   final String serialNumber;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Current version of the device as defined in SKU.
   final String version;
 
@@ -130,42 +112,25 @@ class GetNetworkDeviceResult {
   factory GetNetworkDeviceResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkDeviceResult(
       administrativeState: map['administrativeState'] as String,
-      annotation: (() {
-        final guardedValue = map['annotation'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
       configurationState: map['configurationState'] as String,
-      hostName: (() {
-        final guardedValue = map['hostName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       location: map['location'] as String,
       managementIpv4Address: map['managementIpv4Address'] as String,
       managementIpv6Address: map['managementIpv6Address'] as String,
       name: map['name'] as String,
       networkDeviceRole: map['networkDeviceRole'] as String,
-      networkDeviceSku: (() {
-        final guardedValue = map['networkDeviceSku'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      networkDeviceSku: (() { final guardedValue = map['networkDeviceSku']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkRackId: map['networkRackId'] as String,
       provisioningState: map['provisioningState'] as String,
       serialNumber: map['serialNumber'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       version: map['version'] as String,
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MembershipStateResponseGkehubV1beta1 {
   /// The current state of the Membership resource.
   final pulumi.Input<String> code;
-
   /// This field is never set by the Hub Service.
   final pulumi.Input<String> description;
-
   /// This field is never set by the Hub Service.
   final pulumi.Input<String> updateTime;
 
@@ -31,9 +29,7 @@ class MembershipStateResponseGkehubV1beta1 {
     };
   }
 
-  factory MembershipStateResponseGkehubV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MembershipStateResponseGkehubV1beta1.fromMap(Map<String, dynamic> map) {
     return MembershipStateResponseGkehubV1beta1(
       code: pulumi.Input.fromValue(map['code'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
@@ -41,3 +37,4 @@ class MembershipStateResponseGkehubV1beta1 {
     );
   }
 }
+

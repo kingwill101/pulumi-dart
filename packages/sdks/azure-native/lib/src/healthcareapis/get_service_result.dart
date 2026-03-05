@@ -8,34 +8,24 @@ import 'system_data_response.dart';
 class GetServiceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// An etag associated with the resource, used for optimistic concurrency when editing it.
   final String? etag;
-
   /// The resource identifier.
   final String id;
-
   /// Setting indicating whether the service has a managed identity associated with it.
   final ServicesResourceResponseIdentity? identity;
-
   /// The kind of the service.
   final String kind;
-
   /// The resource location.
   final String location;
-
   /// The resource name.
   final String name;
-
   /// The common properties of a service.
   final ServicesPropertiesResponse properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// The resource tags.
   final Map<String, String>? tags;
-
   /// The resource type.
   final String type;
 
@@ -84,34 +74,17 @@ class GetServiceResult {
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return ServicesResourceResponseIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ServicesResourceResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       kind: map['kind'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: ServicesPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: ServicesPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

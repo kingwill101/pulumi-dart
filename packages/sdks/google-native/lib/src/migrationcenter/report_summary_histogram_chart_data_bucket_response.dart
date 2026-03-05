@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReportSummaryHistogramChartDataBucketResponse {
   /// Count of items in the bucket.
   final pulumi.Input<String> count;
-
   /// Lower bound - inclusive.
   final pulumi.Input<String> lowerBound;
-
   /// Upper bound - exclusive.
   final pulumi.Input<String> upperBound;
 
@@ -31,9 +29,7 @@ class ReportSummaryHistogramChartDataBucketResponse {
     };
   }
 
-  factory ReportSummaryHistogramChartDataBucketResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReportSummaryHistogramChartDataBucketResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryHistogramChartDataBucketResponse(
       count: pulumi.Input.fromValue(map['count'] as String),
       lowerBound: pulumi.Input.fromValue(map['lowerBound'] as String),
@@ -41,3 +37,4 @@ class ReportSummaryHistogramChartDataBucketResponse {
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Dimension {
   /// Name of the dimension
   final pulumi.Input<String> name;
-
   /// Operator for dimension values
   final pulumi.Input<String> operator;
-
   /// List of dimension values
   final pulumi.Input<List<String>> values;
 
@@ -17,7 +15,11 @@ class Dimension {
   /// [name] Name of the dimension
   /// [operator] Operator for dimension values
   /// [values] List of dimension values
-  Dimension({required this.name, required this.operator, required this.values});
+  Dimension({
+    required this.name,
+    required this.operator,
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,3 +37,4 @@ class Dimension {
     );
   }
 }
+

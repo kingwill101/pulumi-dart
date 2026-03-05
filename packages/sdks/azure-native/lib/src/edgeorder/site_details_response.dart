@@ -9,10 +9,14 @@ class SiteDetailsResponse {
 
   /// Creates a new [SiteDetailsResponse].
   /// [siteId] Unique Id, Identifying A Site.
-  SiteDetailsResponse({required this.siteId});
+  SiteDetailsResponse({
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'siteId': siteId};
+    return <String, dynamic>{
+      'siteId': siteId,
+    };
   }
 
   factory SiteDetailsResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class SiteDetailsResponse {
     );
   }
 }
+

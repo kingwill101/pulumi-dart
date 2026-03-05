@@ -17,3 +17,4 @@ enum SparkAuthenticationType {
     throw ArgumentError('Unknown SparkAuthenticationType value: $value');
   }
 }
+

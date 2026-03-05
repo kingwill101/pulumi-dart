@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkerSettings {
   /// The base URL for accessing Google Cloud APIs. When workers access Google Cloud APIs, they logically do so via relative URLs. If this field is specified, it supplies the base URL to use for resolving these relative URLs. The normative algorithm used is defined by RFC 1808, "Relative Uniform Resource Locators". If not specified, the default value is "http://www.googleapis.com/"
   final pulumi.Input<String>? baseUrl;
-
   /// Whether to send work progress updates to the service.
   final pulumi.Input<bool>? reportingEnabled;
-
   /// The Cloud Dataflow service path relative to the root URL, for example, "dataflow/v1b3/projects".
   final pulumi.Input<String>? servicePath;
-
   /// The Shuffle service path relative to the root URL, for example, "shuffle/v1beta1".
   final pulumi.Input<String>? shuffleServicePath;
-
   /// The prefix of the resources the system should use for temporary storage. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
   final pulumi.Input<String>? tempStoragePrefix;
-
   /// The ID of the worker running this pipeline.
   final pulumi.Input<String>? workerId;
 
@@ -51,36 +46,13 @@ class WorkerSettings {
 
   factory WorkerSettings.fromMap(Map<String, dynamic> map) {
     return WorkerSettings(
-      baseUrl: (() {
-        final guardedValue = map['baseUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reportingEnabled: (() {
-        final guardedValue = map['reportingEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      servicePath: (() {
-        final guardedValue = map['servicePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      shuffleServicePath: (() {
-        final guardedValue = map['shuffleServicePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tempStoragePrefix: (() {
-        final guardedValue = map['tempStoragePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workerId: (() {
-        final guardedValue = map['workerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      baseUrl: (() { final guardedValue = map['baseUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reportingEnabled: (() { final guardedValue = map['reportingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      servicePath: (() { final guardedValue = map['servicePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shuffleServicePath: (() { final guardedValue = map['shuffleServicePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tempStoragePrefix: (() { final guardedValue = map['tempStoragePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workerId: (() { final guardedValue = map['workerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

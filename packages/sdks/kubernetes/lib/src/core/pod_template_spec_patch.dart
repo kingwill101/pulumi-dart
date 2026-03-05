@@ -8,48 +8,29 @@ import 'pod_spec_patch.dart';
 class PodTemplateSpecPatch {
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMetaPatch>? metadata;
-
   /// Specification of the desired behavior of the pod. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   final pulumi.Input<PodSpecPatch>? spec;
 
   /// Creates a new [PodTemplateSpecPatch].
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Specification of the desired behavior of the pod. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  PodTemplateSpecPatch({this.metadata, this.spec});
+  PodTemplateSpecPatch({
+    this.metadata,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata':
-          ?pulumi.Input.mapOptionalInputValue<
-            ObjectMetaPatch,
-            Map<String, dynamic>
-          >(metadata, (value) => value.toMap()),
-      'spec':
-          ?pulumi.Input.mapOptionalInputValue<
-            PodSpecPatch,
-            Map<String, dynamic>
-          >(spec, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<PodSpecPatch, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
   factory PodTemplateSpecPatch.fromMap(Map<String, dynamic> map) {
     return PodTemplateSpecPatch(
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ObjectMetaPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      spec: (() {
-        final guardedValue = map['spec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PodSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PodSpecPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

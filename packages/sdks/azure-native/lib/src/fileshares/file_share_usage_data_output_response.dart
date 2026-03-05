@@ -10,25 +10,20 @@ class FileShareUsageDataOutputResponse {
 
   /// Creates a new [FileShareUsageDataOutputResponse].
   /// [liveShares] File share usage data for active file shares.
-  FileShareUsageDataOutputResponse({required this.liveShares});
+  FileShareUsageDataOutputResponse({
+    required this.liveShares,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'liveShares':
-          pulumi.Input.mapInputValue<
-            LiveSharesUsageDataResponse,
-            Map<String, dynamic>
-          >(liveShares, (value) => value.toMap()),
+      'liveShares': pulumi.Input.mapInputValue<LiveSharesUsageDataResponse, Map<String, dynamic>>(liveShares, (value) => value.toMap()),
     };
   }
 
   factory FileShareUsageDataOutputResponse.fromMap(Map<String, dynamic> map) {
     return FileShareUsageDataOutputResponse(
-      liveShares: pulumi.Input.fromValue(
-        LiveSharesUsageDataResponse.fromMap(
-          (map['liveShares']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      liveShares: pulumi.Input.fromValue(LiveSharesUsageDataResponse.fromMap((map['liveShares']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

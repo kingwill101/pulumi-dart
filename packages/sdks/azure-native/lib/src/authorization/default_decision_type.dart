@@ -16,3 +16,4 @@ enum DefaultDecisionType {
     throw ArgumentError('Unknown DefaultDecisionType value: $value');
   }
 }
+

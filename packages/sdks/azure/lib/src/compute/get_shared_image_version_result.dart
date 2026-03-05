@@ -8,31 +8,23 @@ class GetSharedImageVersionResult {
   /// Is this Image Version excluded from the `latest` filter?
   final bool excludeFromLatest;
   final String galleryName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String imageName;
-
   /// The supported Azure location where the Shared Image Gallery exists.
   final String location;
-
   /// The ID of the Managed Image which was the source of this Shared Image Version.
   final String managedImageId;
-
   /// The Azure Region in which this Image Version exists.
   final String name;
-
   /// The size of the OS disk snapshot (in Gigabytes) which was the source of this Shared Image Version.
   final int osDiskImageSizeGb;
-
   /// The ID of the OS disk snapshot which was the source of this Shared Image Version.
   final String osDiskSnapshotId;
   final String resourceGroupName;
   final bool? sortVersionsBySemver;
-
   /// A mapping of tags assigned to the Shared Image.
   final Map<String, String>? tags;
-
   /// One or more `target_region` blocks as documented below.
   final List<GetSharedImageVersionTargetRegion> targetRegions;
 
@@ -80,11 +72,7 @@ class GetSharedImageVersionResult {
       'resourceGroupName': resourceGroupName,
       'sortVersionsBySemver': ?sortVersionsBySemver,
       'tags': ?tags,
-      'targetRegions':
-          pulumi.Input.encodeList<
-            GetSharedImageVersionTargetRegion,
-            Map<String, dynamic>
-          >(targetRegions, (value) => value.toMap()),
+      'targetRegions': pulumi.Input.encodeList<GetSharedImageVersionTargetRegion, Map<String, dynamic>>(targetRegions, (value) => value.toMap()),
     };
   }
 
@@ -100,22 +88,10 @@ class GetSharedImageVersionResult {
       osDiskImageSizeGb: map['osDiskImageSizeGb'] as int,
       osDiskSnapshotId: map['osDiskSnapshotId'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      sortVersionsBySemver: (() {
-        final guardedValue = map['sortVersionsBySemver'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      targetRegions: pulumi.Input.decodeList<GetSharedImageVersionTargetRegion>(
-        map['targetRegions']!,
-        (value) => GetSharedImageVersionTargetRegion.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      sortVersionsBySemver: (() { final guardedValue = map['sortVersionsBySemver']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      targetRegions: pulumi.Input.decodeList<GetSharedImageVersionTargetRegion>(map['targetRegions']!, (value) => GetSharedImageVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

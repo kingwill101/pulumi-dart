@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiTagDescriptionState {
   /// The The ID of the API Management API Tag. Changing this forces a new API Management API Tag Description to be created.
   final pulumi.Input<String>? apiTagId;
-
   /// The description of the Tag.
   final pulumi.Input<String>? description;
-
   /// The description of the external documentation resources describing the tag.
   final pulumi.Input<String>? externalDocumentationDescription;
-
   /// The URL of external documentation resources describing the tag.
   final pulumi.Input<String>? externalDocumentationUrl;
 
@@ -39,26 +36,11 @@ class ApiTagDescriptionState {
 
   factory ApiTagDescriptionState.fromMap(Map<String, dynamic> map) {
     return ApiTagDescriptionState(
-      apiTagId: (() {
-        final guardedValue = map['apiTagId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      externalDocumentationDescription: (() {
-        final guardedValue = map['externalDocumentationDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      externalDocumentationUrl: (() {
-        final guardedValue = map['externalDocumentationUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiTagId: (() { final guardedValue = map['apiTagId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      externalDocumentationDescription: (() { final guardedValue = map['externalDocumentationDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      externalDocumentationUrl: (() { final guardedValue = map['externalDocumentationUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

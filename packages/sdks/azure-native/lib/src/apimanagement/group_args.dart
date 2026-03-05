@@ -10,22 +10,16 @@ import 'group_type.dart';
 class GroupArgs {
   /// Group description.
   final pulumi.Input<String>? description;
-
   /// Group name.
   final pulumi.Input<String> displayName;
-
   /// Identifier of the external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://&lt;tenant&gt;.onmicrosoft.com/groups/&lt;group object id&gt;`; otherwise the value is null.
   final pulumi.Input<String>? externalId;
-
   /// Group identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? groupId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
-
   /// Group type.
   final pulumi.Input<GroupType>? type;
 
@@ -55,42 +49,20 @@ class GroupArgs {
       'groupId': ?groupId,
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
-      'type': ?pulumi.Input.mapOptionalInputValue<GroupType, String>(
-        type,
-        (value) => value.wireValue,
-      ),
+      'type': ?pulumi.Input.mapOptionalInputValue<GroupType, String>(type, (value) => value.wireValue),
     };
   }
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      externalId: (() {
-        final guardedValue = map['externalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      groupId: (() {
-        final guardedValue = map['groupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      externalId: (() { final guardedValue = map['externalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      groupId: (() { final guardedValue = map['groupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GroupType.fromValue(guardedValue as String),
-        );
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GroupType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

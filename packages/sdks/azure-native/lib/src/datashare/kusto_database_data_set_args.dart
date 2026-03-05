@@ -9,20 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KustoDatabaseDataSetArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
-
   /// The name of the dataSet.
   final pulumi.Input<String>? dataSetName;
-
   /// Kind of data set.
   /// Expected value is 'KustoDatabase'.
   final pulumi.Input<String> kind;
-
   /// Resource id of the kusto database.
   final pulumi.Input<String> kustoDatabaseResourceId;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the share to add the data set to.
   final pulumi.Input<String> shareName;
 
@@ -56,19 +51,12 @@ class KustoDatabaseDataSetArgs {
   factory KustoDatabaseDataSetArgs.fromMap(Map<String, dynamic> map) {
     return KustoDatabaseDataSetArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      dataSetName: (() {
-        final guardedValue = map['dataSetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataSetName: (() { final guardedValue = map['dataSetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      kustoDatabaseResourceId: pulumi.Input.fromValue(
-        map['kustoDatabaseResourceId'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      kustoDatabaseResourceId: pulumi.Input.fromValue(map['kustoDatabaseResourceId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       shareName: pulumi.Input.fromValue(map['shareName'] as String),
     );
   }
 }
+

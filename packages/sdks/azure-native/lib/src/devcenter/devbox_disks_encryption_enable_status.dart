@@ -12,8 +12,7 @@ enum DevboxDisksEncryptionEnableStatus {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DevboxDisksEncryptionEnableStatus value: $value',
-    );
+    throw ArgumentError('Unknown DevboxDisksEncryptionEnableStatus value: $value');
   }
 }
+

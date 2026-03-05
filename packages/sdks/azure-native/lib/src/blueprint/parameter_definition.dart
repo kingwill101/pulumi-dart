@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParameterDefinition {
   /// Array of allowed values for this parameter.
   final pulumi.Input<List<dynamic>>? allowedValues;
-
   /// Default Value for this parameter.
   final pulumi.Input<dynamic>? defaultValue;
-
   /// Description of this parameter/resourceGroup.
   final pulumi.Input<String>? description;
-
   /// DisplayName of this parameter/resourceGroup.
   final pulumi.Input<String>? displayName;
-
   /// StrongType for UI to render rich experience during blueprint assignment. Supported strong types are resourceType, principalId and location.
   final pulumi.Input<String>? strongType;
-
   /// Allowed data types for Resource Manager template parameters.
   final pulumi.Input<String> type;
 
@@ -51,32 +46,13 @@ class ParameterDefinition {
 
   factory ParameterDefinition.fromMap(Map<String, dynamic> map) {
     return ParameterDefinition(
-      allowedValues: (() {
-        final guardedValue = map['allowedValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
-      defaultValue: (() {
-        final guardedValue = map['defaultValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      strongType: (() {
-        final guardedValue = map['strongType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowedValues: (() { final guardedValue = map['allowedValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      defaultValue: (() { final guardedValue = map['defaultValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      strongType: (() { final guardedValue = map['strongType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

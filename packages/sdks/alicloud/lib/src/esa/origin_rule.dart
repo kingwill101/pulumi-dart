@@ -209,72 +209,50 @@ import 'origin_rule_state.dart';
 class OriginRule extends pulumi.CustomResource {
   /// Back-to-source rule configuration ID
   late final pulumi.Output<int> configId;
-
   /// Overwrite the DNS resolution record of the origin request.
   late final pulumi.Output<String?> dnsRecord;
-
   /// Return Source 302 follow switch. Value range:
   late final pulumi.Output<String?> follow302Enable;
-
   /// 302 follows the upper limit of the number of times, with a value range of [1-5].
   late final pulumi.Output<String?> follow302MaxTries;
-
   /// Retain the original request parameter switch. Value range:
   late final pulumi.Output<String?> follow302RetainArgs;
-
   /// Retain the original request header switch. Value range:
   late final pulumi.Output<String?> follow302RetainHeader;
-
   /// Modify the source host after 302.
   late final pulumi.Output<String?> follow302TargetHost;
-
   /// The HOST carried in the back-to-origin request.
   late final pulumi.Output<String?> originHost;
-
   /// The port of the origin station accessed when the HTTP protocol is used to return to the origin.
   late final pulumi.Output<String?> originHttpPort;
-
   /// The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
   late final pulumi.Output<String?> originHttpsPort;
-
   /// The mtls switch. Value range:
   late final pulumi.Output<String?> originMtls;
-
   /// Read timeout interval of the source station (s).
   late final pulumi.Output<String?> originReadTimeout;
-
   /// The protocol used by the back-to-origin request. Value range:
   late final pulumi.Output<String?> originScheme;
-
   /// SNI carried in the back-to-origin request.
   late final pulumi.Output<String?> originSni;
-
   /// Source station certificate verification switch. Value range:
   late final pulumi.Output<String?> originVerify;
-
   /// Use the range sharding method to download the file from the source. Value range:
   late final pulumi.Output<String?> range;
-
   /// range shard size.
   late final pulumi.Output<String?> rangeChunkSize;
-
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// - Match all incoming requests: value set to true
   /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
   late final pulumi.Output<String?> rule;
-
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   late final pulumi.Output<String?> ruleEnable;
-
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   late final pulumi.Output<String?> ruleName;
-
   /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   late final pulumi.Output<int> sequence;
-
   /// The site ID.
   late final pulumi.Output<String> siteId;
-
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   late final pulumi.Output<int?> siteVersion;
 
@@ -287,11 +265,11 @@ class OriginRule extends pulumi.CustomResource {
     OriginRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/originRule:OriginRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/originRule:OriginRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configId = registerOutput<int>('configId');
     dnsRecord = registerOutput<String?>('dnsRecord');
     follow302Enable = registerOutput<String?>('follow302Enable');
@@ -335,11 +313,11 @@ class OriginRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/originRule:OriginRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/originRule:OriginRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configId = registerOutput<int>('configId');
     dnsRecord = registerOutput<String?>('dnsRecord');
     follow302Enable = registerOutput<String?>('follow302Enable');

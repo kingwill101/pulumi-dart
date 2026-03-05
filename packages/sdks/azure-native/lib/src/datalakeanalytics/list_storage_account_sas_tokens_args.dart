@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListStorageAccountSasTokensArgs {
   /// The name of the Data Lake Analytics account.
   final pulumi.Input<String> accountName;
-
   /// The name of the Azure storage container for which the SAS token is being requested.
   final pulumi.Input<String> containerName;
-
   /// The name of the Azure resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Azure storage account for which the SAS token is being requested.
   final pulumi.Input<String> storageAccountName;
 
@@ -44,12 +41,9 @@ class ListStorageAccountSasTokensArgs {
     return ListStorageAccountSasTokensArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       containerName: pulumi.Input.fromValue(map['containerName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      storageAccountName: pulumi.Input.fromValue(
-        map['storageAccountName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      storageAccountName: pulumi.Input.fromValue(map['storageAccountName'] as String),
     );
   }
 }
+

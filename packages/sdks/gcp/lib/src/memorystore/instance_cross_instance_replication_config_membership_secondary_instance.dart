@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance {
   /// The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
   final pulumi.Input<String>? instance;
-
   /// Output only. System assigned, unique identifier for the instance.
   final pulumi.Input<String>? uid;
 
@@ -18,23 +17,17 @@ class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instance': ?instance, 'uid': ?uid};
+    return <String, dynamic>{
+      'instance': ?instance,
+      'uid': ?uid,
+    };
   }
 
-  factory InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance.fromMap(Map<String, dynamic> map) {
     return InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance(
-      instance: (() {
-        final guardedValue = map['instance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uid: (() {
-        final guardedValue = map['uid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

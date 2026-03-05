@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalAdminClusterStorageLvpShareConfigLvpConfig {
   /// The host machine path.
   final pulumi.Input<String> path;
-
   /// The StorageClass name that PVs will be created with.
   final pulumi.Input<String> storageClass;
 
@@ -18,15 +17,17 @@ class BareMetalAdminClusterStorageLvpShareConfigLvpConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path, 'storageClass': storageClass};
+    return <String, dynamic>{
+      'path': path,
+      'storageClass': storageClass,
+    };
   }
 
-  factory BareMetalAdminClusterStorageLvpShareConfigLvpConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalAdminClusterStorageLvpShareConfigLvpConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterStorageLvpShareConfigLvpConfig(
       path: pulumi.Input.fromValue(map['path'] as String),
       storageClass: pulumi.Input.fromValue(map['storageClass'] as String),
     );
   }
 }
+

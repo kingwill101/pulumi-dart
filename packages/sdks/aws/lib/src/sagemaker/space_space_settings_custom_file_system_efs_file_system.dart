@@ -8,17 +8,20 @@ class SpaceSpaceSettingsCustomFileSystemEfsFileSystem {
 
   /// Creates a new [SpaceSpaceSettingsCustomFileSystemEfsFileSystem].
   /// [fileSystemId] The ID of your Amazon EFS file system.
-  SpaceSpaceSettingsCustomFileSystemEfsFileSystem({required this.fileSystemId});
+  SpaceSpaceSettingsCustomFileSystemEfsFileSystem({
+    required this.fileSystemId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fileSystemId': fileSystemId};
+    return <String, dynamic>{
+      'fileSystemId': fileSystemId,
+    };
   }
 
-  factory SpaceSpaceSettingsCustomFileSystemEfsFileSystem.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpaceSpaceSettingsCustomFileSystemEfsFileSystem.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsCustomFileSystemEfsFileSystem(
       fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
     );
   }
 }
+

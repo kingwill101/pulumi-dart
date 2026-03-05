@@ -366,165 +366,114 @@ import 'kubernetes_state.dart';
 class Kubernetes extends pulumi.CustomResource {
   /// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
   late final pulumi.Output<List<Map<String, dynamic>>?> addons;
-
   /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
   late final pulumi.Output<List<String>?> apiAudiences;
-
   /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
   late final pulumi.Output<KubernetesCertificateAuthority> certificateAuthority;
-
   /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
   late final pulumi.Output<String?> clientCert;
-
   /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
   late final pulumi.Output<String?> clientKey;
-
   /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
   ///
   /// *Removed params*
   late final pulumi.Output<String?> clusterCaCert;
-
   /// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
   late final pulumi.Output<String?> clusterDomain;
-
   /// (Map) Map of kubernetes cluster connection information.
   late final pulumi.Output<KubernetesConnections> connections;
-
   /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
   late final pulumi.Output<String?> customSan;
-
   /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> deleteOptions;
-
   /// Whether to enable cluster deletion protection.
   late final pulumi.Output<bool?> deletionProtection;
-
   /// Enable login to the node through SSH. Default to `false`.
   late final pulumi.Output<bool?> enableSsh;
-
   /// Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
   late final pulumi.Output<String> imageId;
-
   /// Install cloud monitor agent on ECS. Default to `true`.
   late final pulumi.Output<bool?> installCloudMonitor;
-
   /// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm). Only works for **Create** Operation.
   late final pulumi.Output<bool> isEnterpriseSecurityGroup;
-
   /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
   late final pulumi.Output<String?> keyName;
-
   /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
   late final pulumi.Output<String?> kmsEncryptedPassword;
-
   /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   late final pulumi.Output<Map<String, String>?> kmsEncryptionContext;
-
   /// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
   late final pulumi.Output<String> loadBalancerSpec;
-
   /// Enable master payment auto-renew, defaults to false.
   late final pulumi.Output<bool?> masterAutoRenew;
-
   /// Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
   late final pulumi.Output<int?> masterAutoRenewPeriod;
-
   /// The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
   late final pulumi.Output<String?> masterDiskCategory;
-
   /// Master node system disk performance level. When `master_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
   late final pulumi.Output<String?> masterDiskPerformanceLevel;
-
   /// The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
   late final pulumi.Output<int?> masterDiskSize;
-
   /// Master node system disk auto snapshot policy.
   ///
   /// *Computed params*
   late final pulumi.Output<String?> masterDiskSnapshotPolicyId;
-
   /// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
   late final pulumi.Output<String?> masterInstanceChargeType;
-
   /// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
   late final pulumi.Output<List<String>> masterInstanceTypes;
-
   /// (Optional) The master nodes. See `master_nodes` below.
   late final pulumi.Output<List<Map<String, dynamic>>> masterNodes;
-
   /// Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
   late final pulumi.Output<int?> masterPeriod;
-
   /// Master payment period unit, the valid value is `Month`.
   late final pulumi.Output<String?> masterPeriodUnit;
-
   /// The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
   late final pulumi.Output<List<String>> masterVswitchIds;
-
   /// The kubernetes cluster's name. It is unique in one Alicloud account.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String?> namePrefix;
-
   /// The ID of nat gateway used to launch kubernetes cluster.
   late final pulumi.Output<String> natGatewayId;
-
   /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules. Only works for **Create** Operation.
   late final pulumi.Output<bool?> newNatGateway;
-
   /// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
   late final pulumi.Output<int?> nodeCidrMask;
-
   /// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
   late final pulumi.Output<String> nodeNameMode;
-
   /// The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
   late final pulumi.Output<String?> osType;
-
   /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
   late final pulumi.Output<String?> password;
-
   /// The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
   late final pulumi.Output<String> platform;
-
   /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
   late final pulumi.Output<String?> podCidr;
-
   /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
   late final pulumi.Output<List<String>?> podVswitchIds;
-
   /// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
   late final pulumi.Output<String?> proxyMode;
-
   /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
   late final pulumi.Output<List<String>?> rdsInstances;
-
   /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
   late final pulumi.Output<String> resourceGroupId;
   late final pulumi.Output<List<String>?> retainResources;
-
   /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
   late final pulumi.Output<KubernetesRuntime?> runtime;
-
   /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
   late final pulumi.Output<String> securityGroupId;
-
   /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
   late final pulumi.Output<String?> serviceAccountIssuer;
-
   /// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
   late final pulumi.Output<String?> serviceCidr;
-
   /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
   ///
   /// *Network params*
   late final pulumi.Output<bool?> skipSetCertificateAuthority;
-
   /// The ID of APIServer load balancer.
   late final pulumi.Output<String> slbId;
-
   /// The public ip of load balancer.
   late final pulumi.Output<String> slbInternet;
-
   /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
   ///
   /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
@@ -532,25 +481,18 @@ class Kubernetes extends pulumi.CustomResource {
   ///
   /// *Master params*
   late final pulumi.Output<bool?> slbInternetEnabled;
-
   /// The ID of private load balancer where the current cluster master node is located.
   late final pulumi.Output<String> slbIntranet;
-
   /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
   late final pulumi.Output<String?> timezone;
-
   /// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
   late final pulumi.Output<String?> userCa;
-
   /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
   late final pulumi.Output<String> version;
-
   /// The ID of VPC where the current cluster is located.
   late final pulumi.Output<String> vpcId;
-
   /// The RamRole Name attached to worker node.
   late final pulumi.Output<String> workerRamRoleName;
 
@@ -563,67 +505,37 @@ class Kubernetes extends pulumi.CustomResource {
     KubernetesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/kubernetes:Kubernetes',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/kubernetes:Kubernetes',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addons = registerOutput<List<Map<String, dynamic>>?>('addons');
     apiAudiences = registerOutput<List<String>?>('apiAudiences');
-    certificateAuthority = registerOutput<KubernetesCertificateAuthority>(
-      'certificateAuthority',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KubernetesCertificateAuthority.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    certificateAuthority = registerOutput<KubernetesCertificateAuthority>('certificateAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesCertificateAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientCert = registerOutput<String?>('clientCert');
     clientKey = registerOutput<String?>('clientKey');
     clusterCaCert = registerOutput<String?>('clusterCaCert');
     clusterDomain = registerOutput<String?>('clusterDomain');
-    connections = registerOutput<KubernetesConnections>(
-      'connections',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KubernetesConnections.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connections = registerOutput<KubernetesConnections>('connections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesConnections.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customSan = registerOutput<String?>('customSan');
-    deleteOptions = registerOutput<List<Map<String, dynamic>>?>(
-      'deleteOptions',
-    );
+    deleteOptions = registerOutput<List<Map<String, dynamic>>?>('deleteOptions');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     enableSsh = registerOutput<bool?>('enableSsh');
     imageId = registerOutput<String>('imageId');
     installCloudMonitor = registerOutput<bool?>('installCloudMonitor');
-    isEnterpriseSecurityGroup = registerOutput<bool>(
-      'isEnterpriseSecurityGroup',
-    );
+    isEnterpriseSecurityGroup = registerOutput<bool>('isEnterpriseSecurityGroup');
     keyName = registerOutput<String?>('keyName');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
     loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
     masterAutoRenew = registerOutput<bool?>('masterAutoRenew');
     masterAutoRenewPeriod = registerOutput<int?>('masterAutoRenewPeriod');
     masterDiskCategory = registerOutput<String?>('masterDiskCategory');
-    masterDiskPerformanceLevel = registerOutput<String?>(
-      'masterDiskPerformanceLevel',
-    );
+    masterDiskPerformanceLevel = registerOutput<String?>('masterDiskPerformanceLevel');
     masterDiskSize = registerOutput<int?>('masterDiskSize');
-    masterDiskSnapshotPolicyId = registerOutput<String?>(
-      'masterDiskSnapshotPolicyId',
-    );
-    masterInstanceChargeType = registerOutput<String?>(
-      'masterInstanceChargeType',
-    );
+    masterDiskSnapshotPolicyId = registerOutput<String?>('masterDiskSnapshotPolicyId');
+    masterInstanceChargeType = registerOutput<String?>('masterInstanceChargeType');
     masterInstanceTypes = registerOutput<List<String>>('masterInstanceTypes');
     masterNodes = registerOutput<List<Map<String, dynamic>>>('masterNodes');
     masterPeriod = registerOutput<int?>('masterPeriod');
@@ -644,22 +556,11 @@ class Kubernetes extends pulumi.CustomResource {
     rdsInstances = registerOutput<List<String>?>('rdsInstances');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     retainResources = registerOutput<List<String>?>('retainResources');
-    runtime = registerOutput<KubernetesRuntime?>(
-      'runtime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KubernetesRuntime.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    runtime = registerOutput<KubernetesRuntime?>('runtime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityGroupId = registerOutput<String>('securityGroupId');
     serviceAccountIssuer = registerOutput<String?>('serviceAccountIssuer');
     serviceCidr = registerOutput<String?>('serviceCidr');
-    skipSetCertificateAuthority = registerOutput<bool?>(
-      'skipSetCertificateAuthority',
-    );
+    skipSetCertificateAuthority = registerOutput<bool?>('skipSetCertificateAuthority');
     slbId = registerOutput<String>('slbId');
     slbInternet = registerOutput<String>('slbInternet');
     slbInternetEnabled = registerOutput<bool?>('slbInternetEnabled');
@@ -690,67 +591,37 @@ class Kubernetes extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/kubernetes:Kubernetes',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/kubernetes:Kubernetes',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addons = registerOutput<List<Map<String, dynamic>>?>('addons');
     apiAudiences = registerOutput<List<String>?>('apiAudiences');
-    certificateAuthority = registerOutput<KubernetesCertificateAuthority>(
-      'certificateAuthority',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KubernetesCertificateAuthority.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    certificateAuthority = registerOutput<KubernetesCertificateAuthority>('certificateAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesCertificateAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientCert = registerOutput<String?>('clientCert');
     clientKey = registerOutput<String?>('clientKey');
     clusterCaCert = registerOutput<String?>('clusterCaCert');
     clusterDomain = registerOutput<String?>('clusterDomain');
-    connections = registerOutput<KubernetesConnections>(
-      'connections',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KubernetesConnections.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connections = registerOutput<KubernetesConnections>('connections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesConnections.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customSan = registerOutput<String?>('customSan');
-    deleteOptions = registerOutput<List<Map<String, dynamic>>?>(
-      'deleteOptions',
-    );
+    deleteOptions = registerOutput<List<Map<String, dynamic>>?>('deleteOptions');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     enableSsh = registerOutput<bool?>('enableSsh');
     imageId = registerOutput<String>('imageId');
     installCloudMonitor = registerOutput<bool?>('installCloudMonitor');
-    isEnterpriseSecurityGroup = registerOutput<bool>(
-      'isEnterpriseSecurityGroup',
-    );
+    isEnterpriseSecurityGroup = registerOutput<bool>('isEnterpriseSecurityGroup');
     keyName = registerOutput<String?>('keyName');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
     loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
     masterAutoRenew = registerOutput<bool?>('masterAutoRenew');
     masterAutoRenewPeriod = registerOutput<int?>('masterAutoRenewPeriod');
     masterDiskCategory = registerOutput<String?>('masterDiskCategory');
-    masterDiskPerformanceLevel = registerOutput<String?>(
-      'masterDiskPerformanceLevel',
-    );
+    masterDiskPerformanceLevel = registerOutput<String?>('masterDiskPerformanceLevel');
     masterDiskSize = registerOutput<int?>('masterDiskSize');
-    masterDiskSnapshotPolicyId = registerOutput<String?>(
-      'masterDiskSnapshotPolicyId',
-    );
-    masterInstanceChargeType = registerOutput<String?>(
-      'masterInstanceChargeType',
-    );
+    masterDiskSnapshotPolicyId = registerOutput<String?>('masterDiskSnapshotPolicyId');
+    masterInstanceChargeType = registerOutput<String?>('masterInstanceChargeType');
     masterInstanceTypes = registerOutput<List<String>>('masterInstanceTypes');
     masterNodes = registerOutput<List<Map<String, dynamic>>>('masterNodes');
     masterPeriod = registerOutput<int?>('masterPeriod');
@@ -771,22 +642,11 @@ class Kubernetes extends pulumi.CustomResource {
     rdsInstances = registerOutput<List<String>?>('rdsInstances');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     retainResources = registerOutput<List<String>?>('retainResources');
-    runtime = registerOutput<KubernetesRuntime?>(
-      'runtime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KubernetesRuntime.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    runtime = registerOutput<KubernetesRuntime?>('runtime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityGroupId = registerOutput<String>('securityGroupId');
     serviceAccountIssuer = registerOutput<String?>('serviceAccountIssuer');
     serviceCidr = registerOutput<String?>('serviceCidr');
-    skipSetCertificateAuthority = registerOutput<bool?>(
-      'skipSetCertificateAuthority',
-    );
+    skipSetCertificateAuthority = registerOutput<bool?>('skipSetCertificateAuthority');
     slbId = registerOutput<String>('slbId');
     slbInternet = registerOutput<String>('slbInternet');
     slbInternetEnabled = registerOutput<bool?>('slbInternetEnabled');

@@ -9,10 +9,14 @@ class ResourceReferenceResponse {
 
   /// Creates a new [ResourceReferenceResponse].
   /// [id] Resource ID.
-  ResourceReferenceResponse({required this.id});
+  ResourceReferenceResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory ResourceReferenceResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ResourceReferenceResponse {
     );
   }
 }
+

@@ -142,25 +142,15 @@ import 'risk_configuration_state.dart';
 /// ```
 class RiskConfiguration extends pulumi.CustomResource {
   /// The account takeover risk configuration. See details below.
-  late final pulumi.Output<RiskConfigurationAccountTakeoverRiskConfiguration?>
-  accountTakeoverRiskConfiguration;
-
+  late final pulumi.Output<RiskConfigurationAccountTakeoverRiskConfiguration?> accountTakeoverRiskConfiguration;
   /// The app client ID. When the client ID is not provided, the same risk configuration is applied to all the clients in the User Pool.
   late final pulumi.Output<String?> clientId;
-
   /// The compromised credentials risk configuration. See details below.
-  late final pulumi.Output<
-    RiskConfigurationCompromisedCredentialsRiskConfiguration?
-  >
-  compromisedCredentialsRiskConfiguration;
-
+  late final pulumi.Output<RiskConfigurationCompromisedCredentialsRiskConfiguration?> compromisedCredentialsRiskConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The configuration to override the risk decision. See details below.
-  late final pulumi.Output<RiskConfigurationRiskExceptionConfiguration?>
-  riskExceptionConfiguration;
-
+  late final pulumi.Output<RiskConfigurationRiskExceptionConfiguration?> riskExceptionConfiguration;
   /// The user pool ID.
   late final pulumi.Output<String> userPoolId;
 
@@ -173,48 +163,16 @@ class RiskConfiguration extends pulumi.CustomResource {
     RiskConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/riskConfiguration:RiskConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accountTakeoverRiskConfiguration =
-        registerOutput<RiskConfigurationAccountTakeoverRiskConfiguration?>(
-          'accountTakeoverRiskConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RiskConfigurationAccountTakeoverRiskConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:cognito/riskConfiguration:RiskConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accountTakeoverRiskConfiguration = registerOutput<RiskConfigurationAccountTakeoverRiskConfiguration?>('accountTakeoverRiskConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RiskConfigurationAccountTakeoverRiskConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientId = registerOutput<String?>('clientId');
-    compromisedCredentialsRiskConfiguration =
-        registerOutput<
-          RiskConfigurationCompromisedCredentialsRiskConfiguration?
-        >(
-          'compromisedCredentialsRiskConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    compromisedCredentialsRiskConfiguration = registerOutput<RiskConfigurationCompromisedCredentialsRiskConfiguration?>('compromisedCredentialsRiskConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    riskExceptionConfiguration =
-        registerOutput<RiskConfigurationRiskExceptionConfiguration?>(
-          'riskExceptionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RiskConfigurationRiskExceptionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    riskExceptionConfiguration = registerOutput<RiskConfigurationRiskExceptionConfiguration?>('riskExceptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RiskConfigurationRiskExceptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userPoolId = registerOutput<String>('userPoolId');
   }
 
@@ -236,48 +194,16 @@ class RiskConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/riskConfiguration:RiskConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accountTakeoverRiskConfiguration =
-        registerOutput<RiskConfigurationAccountTakeoverRiskConfiguration?>(
-          'accountTakeoverRiskConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RiskConfigurationAccountTakeoverRiskConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:cognito/riskConfiguration:RiskConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accountTakeoverRiskConfiguration = registerOutput<RiskConfigurationAccountTakeoverRiskConfiguration?>('accountTakeoverRiskConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RiskConfigurationAccountTakeoverRiskConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientId = registerOutput<String?>('clientId');
-    compromisedCredentialsRiskConfiguration =
-        registerOutput<
-          RiskConfigurationCompromisedCredentialsRiskConfiguration?
-        >(
-          'compromisedCredentialsRiskConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    compromisedCredentialsRiskConfiguration = registerOutput<RiskConfigurationCompromisedCredentialsRiskConfiguration?>('compromisedCredentialsRiskConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    riskExceptionConfiguration =
-        registerOutput<RiskConfigurationRiskExceptionConfiguration?>(
-          'riskExceptionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RiskConfigurationRiskExceptionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    riskExceptionConfiguration = registerOutput<RiskConfigurationRiskExceptionConfiguration?>('riskExceptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RiskConfigurationRiskExceptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userPoolId = registerOutput<String>('userPoolId');
   }
 }

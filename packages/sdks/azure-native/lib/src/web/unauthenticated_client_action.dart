@@ -15,3 +15,4 @@ enum UnauthenticatedClientAction {
     throw ArgumentError('Unknown UnauthenticatedClientAction value: $value');
   }
 }
+

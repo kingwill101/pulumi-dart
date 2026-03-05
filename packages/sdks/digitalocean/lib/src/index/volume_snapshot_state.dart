@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeSnapshotState {
   /// The date and time the volume snapshot was created.
   final pulumi.Input<String>? createdAt;
-
   /// The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
   final pulumi.Input<int>? minDiskSize;
-
   /// A name for the volume snapshot.
   final pulumi.Input<String>? name;
-
   /// A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
   final pulumi.Input<List<String>>? regions;
-
   /// The billable size of the volume snapshot in gigabytes.
   final pulumi.Input<double>? size;
-
   /// A list of the tags to be applied to this volume snapshot.
   final pulumi.Input<List<String>>? tags;
-
   /// The ID of the volume from which the volume snapshot originated.
   final pulumi.Input<String>? volumeId;
 
@@ -57,41 +51,14 @@ class VolumeSnapshotState {
 
   factory VolumeSnapshotState.fromMap(Map<String, dynamic> map) {
     return VolumeSnapshotState(
-      createdAt: (() {
-        final guardedValue = map['createdAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      minDiskSize: (() {
-        final guardedValue = map['minDiskSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regions: (() {
-        final guardedValue = map['regions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      size: (() {
-        final guardedValue = map['size'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      volumeId: (() {
-        final guardedValue = map['volumeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minDiskSize: (() { final guardedValue = map['minDiskSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      volumeId: (() { final guardedValue = map['volumeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

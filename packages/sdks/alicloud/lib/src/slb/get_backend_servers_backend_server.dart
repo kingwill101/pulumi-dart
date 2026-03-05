@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackendServersBackendServer {
   /// backend server ID.
   final pulumi.Input<String> id;
-
   /// Type of the backend server.
   final pulumi.Input<String> serverType;
-
   /// Weight associated to the ECS instance.
   final pulumi.Input<int> weight;
 
@@ -38,3 +36,4 @@ class GetBackendServersBackendServer {
     );
   }
 }
+

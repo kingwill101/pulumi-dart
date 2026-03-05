@@ -10,22 +10,16 @@ import 'connection_type_association_property.dart';
 class ConnectionArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-
   /// The parameters supplied to the create or update connection operation.
   final pulumi.Input<String>? connectionName;
-
   /// Gets or sets the connectionType of the connection.
   final pulumi.Input<ConnectionTypeAssociationProperty> connectionType;
-
   /// Gets or sets the description of the connection.
   final pulumi.Input<String>? description;
-
   /// Gets or sets the field definition properties of the connection.
   final pulumi.Input<Map<String, String>>? fieldDefinitionValues;
-
   /// Gets or sets the name of the connection.
   final pulumi.Input<String> name;
-
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -51,11 +45,7 @@ class ConnectionArgs {
     return <String, dynamic>{
       'automationAccountName': automationAccountName,
       'connectionName': ?connectionName,
-      'connectionType':
-          pulumi.Input.mapInputValue<
-            ConnectionTypeAssociationProperty,
-            Map<String, dynamic>
-          >(connectionType, (value) => value.toMap()),
+      'connectionType': pulumi.Input.mapInputValue<ConnectionTypeAssociationProperty, Map<String, dynamic>>(connectionType, (value) => value.toMap()),
       'description': ?description,
       'fieldDefinitionValues': ?fieldDefinitionValues,
       'name': name,
@@ -65,35 +55,14 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
-      connectionName: (() {
-        final guardedValue = map['connectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectionType: pulumi.Input.fromValue(
-        ConnectionTypeAssociationProperty.fromMap(
-          (map['connectionType']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fieldDefinitionValues: (() {
-        final guardedValue = map['fieldDefinitionValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
+      connectionName: (() { final guardedValue = map['connectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectionType: pulumi.Input.fromValue(ConnectionTypeAssociationProperty.fromMap((map['connectionType']! as Map).cast<String, dynamic>())),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fieldDefinitionValues: (() { final guardedValue = map['fieldDefinitionValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -266,20 +266,15 @@ import 'system_data_response.dart';
 /// ```sh
 /// $ pulumi import azure-native:machinelearningservices:EnvironmentSpecificationVersion 1 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}
 /// ```
-class EnvironmentSpecificationVersionMachinelearningservices
-    extends pulumi.CustomResource {
+class EnvironmentSpecificationVersionMachinelearningservices extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// [Required] Additional attributes of the entity.
   late final pulumi.Output<EnvironmentSpecificationVersionResponse> properties;
-
   /// System data associated with resource provider
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -292,33 +287,15 @@ class EnvironmentSpecificationVersionMachinelearningservices
     EnvironmentSpecificationVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:machinelearningservices:EnvironmentSpecificationVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:machinelearningservices:EnvironmentSpecificationVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<EnvironmentSpecificationVersionResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnvironmentSpecificationVersionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<EnvironmentSpecificationVersionResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentSpecificationVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

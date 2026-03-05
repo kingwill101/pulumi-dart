@@ -654,33 +654,23 @@ import 'repository_workflow_config_state.dart';
 class RepositoryWorkflowConfig extends pulumi.CustomResource {
   /// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
   late final pulumi.Output<String?> cronSchedule;
-
   /// Optional. If left unset, a default InvocationConfig will be used.
   /// Structure is documented below.
-  late final pulumi.Output<RepositoryWorkflowConfigInvocationConfig?>
-  invocationConfig;
-
+  late final pulumi.Output<RepositoryWorkflowConfigInvocationConfig?> invocationConfig;
   /// The workflow's name.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  recentScheduledExecutionRecords;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> recentScheduledExecutionRecords;
   /// A reference to the region
   late final pulumi.Output<String?> region;
-
   /// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
   late final pulumi.Output<String> releaseConfig;
-
   /// A reference to the Dataform repository
   late final pulumi.Output<String?> repository;
-
   /// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
   late final pulumi.Output<String?> timeZone;
 
@@ -693,29 +683,16 @@ class RepositoryWorkflowConfig extends pulumi.CustomResource {
     RepositoryWorkflowConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cronSchedule = registerOutput<String?>('cronSchedule');
-    invocationConfig =
-        registerOutput<RepositoryWorkflowConfigInvocationConfig?>(
-          'invocationConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RepositoryWorkflowConfigInvocationConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    invocationConfig = registerOutput<RepositoryWorkflowConfigInvocationConfig?>('invocationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryWorkflowConfigInvocationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    recentScheduledExecutionRecords =
-        registerOutput<List<Map<String, dynamic>>>(
-          'recentScheduledExecutionRecords',
-        );
+    recentScheduledExecutionRecords = registerOutput<List<Map<String, dynamic>>>('recentScheduledExecutionRecords');
     region = registerOutput<String?>('region');
     releaseConfig = registerOutput<String>('releaseConfig');
     repository = registerOutput<String?>('repository');
@@ -740,29 +717,16 @@ class RepositoryWorkflowConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cronSchedule = registerOutput<String?>('cronSchedule');
-    invocationConfig =
-        registerOutput<RepositoryWorkflowConfigInvocationConfig?>(
-          'invocationConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RepositoryWorkflowConfigInvocationConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    invocationConfig = registerOutput<RepositoryWorkflowConfigInvocationConfig?>('invocationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryWorkflowConfigInvocationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    recentScheduledExecutionRecords =
-        registerOutput<List<Map<String, dynamic>>>(
-          'recentScheduledExecutionRecords',
-        );
+    recentScheduledExecutionRecords = registerOutput<List<Map<String, dynamic>>>('recentScheduledExecutionRecords');
     region = registerOutput<String?>('region');
     releaseConfig = registerOutput<String>('releaseConfig');
     repository = registerOutput<String?>('repository');

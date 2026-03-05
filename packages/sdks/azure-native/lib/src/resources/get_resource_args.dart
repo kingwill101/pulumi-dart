@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceArgs {
   /// The API version to use for the operation.
   final pulumi.Input<String> apiVersion;
-
   /// The parent resource identity.
   final pulumi.Input<String> parentResourcePath;
-
   /// The name of the resource group containing the resource to get. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the resource to get.
   final pulumi.Input<String> resourceName;
-
   /// The namespace of the resource provider.
   final pulumi.Input<String> resourceProviderNamespace;
-
   /// The resource type of the resource.
   final pulumi.Input<String> resourceType;
 
@@ -55,17 +50,12 @@ class GetResourceArgs {
   factory GetResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceArgs(
       apiVersion: pulumi.Input.fromValue(map['apiVersion'] as String),
-      parentResourcePath: pulumi.Input.fromValue(
-        map['parentResourcePath'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      parentResourcePath: pulumi.Input.fromValue(map['parentResourcePath'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
-      resourceProviderNamespace: pulumi.Input.fromValue(
-        map['resourceProviderNamespace'] as String,
-      ),
+      resourceProviderNamespace: pulumi.Input.fromValue(map['resourceProviderNamespace'] as String),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
+

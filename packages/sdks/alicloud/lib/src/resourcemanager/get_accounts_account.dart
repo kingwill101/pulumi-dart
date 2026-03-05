@@ -5,43 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountsAccount {
   /// The Alibaba Cloud account ID of the member.
   final pulumi.Input<String> accountId;
-
   /// (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `account_name` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> accountName;
-
   /// (Available since v1.264.0) The deletion status of the member.
   final pulumi.Input<String> deletionStatus;
-
   /// The display name of the member.
   final pulumi.Input<String> displayName;
-
   /// The ID of the folder.
   final pulumi.Input<String> folderId;
-
   /// The ID of the Account.
   final pulumi.Input<String> id;
-
   /// The way in which the member joins the resource directory.
   final pulumi.Input<String> joinMethod;
-
   /// The time when the member joined the resource directory.
   final pulumi.Input<String> joinTime;
-
   /// The time when the member was modified.
   final pulumi.Input<String> modifyTime;
-
   /// (Available since v1.124.3) The ID of the settlement account. **Note:** `payer_account_id` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> payerAccountId;
-
   /// The ID of the resource directory.
   final pulumi.Input<String> resourceDirectoryId;
-
   /// The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
   final pulumi.Input<String> status;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// The type of the member.
   final pulumi.Input<String> type;
 
@@ -108,12 +95,11 @@ class GetAccountsAccount {
       joinTime: pulumi.Input.fromValue(map['joinTime'] as String),
       modifyTime: pulumi.Input.fromValue(map['modifyTime'] as String),
       payerAccountId: pulumi.Input.fromValue(map['payerAccountId'] as String),
-      resourceDirectoryId: pulumi.Input.fromValue(
-        map['resourceDirectoryId'] as String,
-      ),
+      resourceDirectoryId: pulumi.Input.fromValue(map['resourceDirectoryId'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

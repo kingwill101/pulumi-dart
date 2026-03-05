@@ -8,28 +8,21 @@ import 'get_spring_cloud_app_persistent_disk.dart';
 class GetSpringCloudAppResult {
   /// The Fully Qualified DNS Name.
   final String fqdn;
-
   /// Is only HTTPS allowed?
   final bool httpsOnly;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// An `identity` block as defined below.
   final List<GetSpringCloudAppIdentity> identities;
-
   /// Does the Spring Cloud Application have public endpoint?
   final bool isPublic;
   final String name;
-
   /// A `persistent_disk` block as defined below.
   final List<GetSpringCloudAppPersistentDisk> persistentDisks;
   final String resourceGroupName;
   final String serviceName;
-
   /// Is End to End TLS Enabled?
   final bool tlsEnabled;
-
   /// The public endpoint of the Spring Cloud Application.
   final String url;
 
@@ -64,18 +57,10 @@ class GetSpringCloudAppResult {
       'fqdn': fqdn,
       'httpsOnly': httpsOnly,
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<
-            GetSpringCloudAppIdentity,
-            Map<String, dynamic>
-          >(identities, (value) => value.toMap()),
+      'identities': pulumi.Input.encodeList<GetSpringCloudAppIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'isPublic': isPublic,
       'name': name,
-      'persistentDisks':
-          pulumi.Input.encodeList<
-            GetSpringCloudAppPersistentDisk,
-            Map<String, dynamic>
-          >(persistentDisks, (value) => value.toMap()),
+      'persistentDisks': pulumi.Input.encodeList<GetSpringCloudAppPersistentDisk, Map<String, dynamic>>(persistentDisks, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
       'tlsEnabled': tlsEnabled,
@@ -88,20 +73,10 @@ class GetSpringCloudAppResult {
       fqdn: map['fqdn'] as String,
       httpsOnly: map['httpsOnly'] as bool,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetSpringCloudAppIdentity>(
-        map['identities']!,
-        (value) => GetSpringCloudAppIdentity.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      identities: pulumi.Input.decodeList<GetSpringCloudAppIdentity>(map['identities']!, (value) => GetSpringCloudAppIdentity.fromMap((value as Map).cast<String, dynamic>())),
       isPublic: map['isPublic'] as bool,
       name: map['name'] as String,
-      persistentDisks: pulumi.Input.decodeList<GetSpringCloudAppPersistentDisk>(
-        map['persistentDisks']!,
-        (value) => GetSpringCloudAppPersistentDisk.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      persistentDisks: pulumi.Input.decodeList<GetSpringCloudAppPersistentDisk>(map['persistentDisks']!, (value) => GetSpringCloudAppPersistentDisk.fromMap((value as Map).cast<String, dynamic>())),
       resourceGroupName: map['resourceGroupName'] as String,
       serviceName: map['serviceName'] as String,
       tlsEnabled: map['tlsEnabled'] as bool,
@@ -109,3 +84,4 @@ class GetSpringCloudAppResult {
     );
   }
 }
+

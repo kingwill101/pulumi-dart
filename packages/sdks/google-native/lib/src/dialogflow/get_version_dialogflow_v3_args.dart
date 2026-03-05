@@ -42,12 +42,9 @@ class GetVersionDialogflowV3Args {
       agentId: pulumi.Input.fromValue(map['agentId'] as String),
       flowId: pulumi.Input.fromValue(map['flowId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );
   }
 }
+

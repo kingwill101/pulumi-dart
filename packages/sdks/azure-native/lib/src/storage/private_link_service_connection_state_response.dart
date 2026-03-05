@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateLinkServiceConnectionStateResponse {
   /// A message indicating if changes on the service provider require any updates on the consumer.
   final pulumi.Input<String>? actionRequired;
-
   /// The reason for approval/rejection of the connection.
   final pulumi.Input<String>? description;
-
   /// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
   final pulumi.Input<String>? status;
 
@@ -31,25 +29,12 @@ class PrivateLinkServiceConnectionStateResponse {
     };
   }
 
-  factory PrivateLinkServiceConnectionStateResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrivateLinkServiceConnectionStateResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnectionStateResponse(
-      actionRequired: (() {
-        final guardedValue = map['actionRequired'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      actionRequired: (() { final guardedValue = map['actionRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

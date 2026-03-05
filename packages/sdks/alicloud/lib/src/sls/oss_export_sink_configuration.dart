@@ -6,16 +6,12 @@ import 'oss_export_sink_configuration_sink.dart';
 class OssExportSinkConfiguration {
   /// The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
   final pulumi.Input<int> fromTime;
-
   /// The name of the Logstore.
   final pulumi.Input<String> logstore;
-
   /// The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
   final pulumi.Input<String> roleArn;
-
   /// The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
   final pulumi.Input<OssExportSinkConfigurationSink> sink;
-
   /// The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped. Example value: 1718380800
   final pulumi.Input<int> toTime;
 
@@ -38,11 +34,7 @@ class OssExportSinkConfiguration {
       'fromTime': fromTime,
       'logstore': logstore,
       'roleArn': roleArn,
-      'sink':
-          pulumi.Input.mapInputValue<
-            OssExportSinkConfigurationSink,
-            Map<String, dynamic>
-          >(sink, (value) => value.toMap()),
+      'sink': pulumi.Input.mapInputValue<OssExportSinkConfigurationSink, Map<String, dynamic>>(sink, (value) => value.toMap()),
       'toTime': toTime,
     };
   }
@@ -52,12 +44,9 @@ class OssExportSinkConfiguration {
       fromTime: pulumi.Input.fromValue(map['fromTime'] as int),
       logstore: pulumi.Input.fromValue(map['logstore'] as String),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
-      sink: pulumi.Input.fromValue(
-        OssExportSinkConfigurationSink.fromMap(
-          (map['sink']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      sink: pulumi.Input.fromValue(OssExportSinkConfigurationSink.fromMap((map['sink']! as Map).cast<String, dynamic>())),
       toTime: pulumi.Input.fromValue(map['toTime'] as int),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParameterExampleContract {
   /// Long description for the example
   final pulumi.Input<String>? description;
-
   /// A URL that points to the literal example
   final pulumi.Input<String>? externalValue;
-
   /// Short description for the example
   final pulumi.Input<String>? summary;
-
   /// Example value. May be a primitive value, or an object.
   final pulumi.Input<dynamic>? value;
 
@@ -39,26 +36,11 @@ class ParameterExampleContract {
 
   factory ParameterExampleContract.fromMap(Map<String, dynamic> map) {
     return ParameterExampleContract(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      externalValue: (() {
-        final guardedValue = map['externalValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      summary: (() {
-        final guardedValue = map['summary'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      externalValue: (() { final guardedValue = map['externalValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      summary: (() { final guardedValue = map['summary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

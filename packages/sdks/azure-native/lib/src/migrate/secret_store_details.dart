@@ -10,35 +10,23 @@ class SecretStoreDetails {
   /// Creates a new [SecretStoreDetails].
   /// [secretStore] Optional.
   /// [secretStoreProperties] Optional.
-  SecretStoreDetails({this.secretStore, this.secretStoreProperties});
+  SecretStoreDetails({
+    this.secretStore,
+    this.secretStoreProperties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'secretStore': ?secretStore,
-      'secretStoreProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecretStoreProperties,
-            Map<String, dynamic>
-          >(secretStoreProperties, (value) => value.toMap()),
+      'secretStoreProperties': ?pulumi.Input.mapOptionalInputValue<SecretStoreProperties, Map<String, dynamic>>(secretStoreProperties, (value) => value.toMap()),
     };
   }
 
   factory SecretStoreDetails.fromMap(Map<String, dynamic> map) {
     return SecretStoreDetails(
-      secretStore: (() {
-        final guardedValue = map['secretStore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretStoreProperties: (() {
-        final guardedValue = map['secretStoreProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecretStoreProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      secretStore: (() { final guardedValue = map['secretStore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretStoreProperties: (() { final guardedValue = map['secretStoreProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecretStoreProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

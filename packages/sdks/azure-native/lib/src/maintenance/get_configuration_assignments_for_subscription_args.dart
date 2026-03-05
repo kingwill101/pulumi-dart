@@ -22,13 +22,10 @@ class GetConfigurationAssignmentsForSubscriptionArgs {
     };
   }
 
-  factory GetConfigurationAssignmentsForSubscriptionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetConfigurationAssignmentsForSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationAssignmentsForSubscriptionArgs(
-      configurationAssignmentName: pulumi.Input.fromValue(
-        map['configurationAssignmentName'] as String,
-      ),
+      configurationAssignmentName: pulumi.Input.fromValue(map['configurationAssignmentName'] as String),
     );
   }
 }
+

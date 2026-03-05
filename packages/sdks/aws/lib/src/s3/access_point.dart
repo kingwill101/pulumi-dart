@@ -490,53 +490,37 @@ import 'access_point_vpc_configuration.dart';
 class AccessPoint extends pulumi.CustomResource {
   /// AWS account ID for the owner of the bucket for which you want to create an access point. Defaults to automatically determined account ID of the AWS provider.
   late final pulumi.Output<String> accountId;
-
   /// Alias of the S3 Access Point.
   late final pulumi.Output<String> alias;
-
   /// ARN of the S3 Access Point.
   late final pulumi.Output<String> arn;
-
   /// Name of an AWS Partition S3 General Purpose Bucket or the ARN of S3 on Outposts Bucket that you want to associate this access point with.
   late final pulumi.Output<String> bucket;
-
   /// AWS account ID associated with the S3 bucket associated with this access point.
   late final pulumi.Output<String> bucketAccountId;
-
   /// DNS domain name of the S3 Access Point in the format _`name`_-_`account_id`_.s3-accesspoint._region_.amazonaws.com.
   /// Note: S3 access points only support secure access by HTTPS. HTTP isn't supported.
   late final pulumi.Output<String> domainName;
-
   /// VPC endpoints for the S3 Access Point.
   late final pulumi.Output<Map<String, String>> endpoints;
-
   /// Indicates whether this access point currently has a policy that allows public access.
   late final pulumi.Output<bool> hasPublicAccessPolicy;
-
   /// Name you want to assign to this access point. See the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-access-points.html?icmpid=docs_amazons3_console#access-points-names) for naming conditions.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Indicates whether this access point allows access from the public Internet. Values are `VPC` (the access point doesn't allow access from the public Internet) and `Internet` (the access point allows access from the public Internet, subject to the access point and bucket access policies).
   late final pulumi.Output<String> networkOrigin;
-
   /// Valid JSON document that specifies the policy that you want to apply to this access point. Removing `policy` from your configuration or setting `policy` to null or an empty string (i.e., `policy = ""`) _will not_ delete the policy since it could have been set by `aws.s3control.AccessPointPolicy`. To remove the `policy`, set it to `"{}"` (an empty JSON document).
   late final pulumi.Output<String> policy;
-
   /// Configuration block to manage the `PublicAccessBlock` configuration that you want to apply to this Amazon S3 bucket. You can enable the configuration options in any combination. Detailed below.
-  late final pulumi.Output<AccessPointPublicAccessBlockConfiguration?>
-  publicAccessBlockConfiguration;
-
+  late final pulumi.Output<AccessPointPublicAccessBlockConfiguration?> publicAccessBlockConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of tags to assign to the bucket. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Configuration block to restrict access to this access point to requests from the specified Virtual Private Cloud (VPC). Required for S3 on Outposts. Detailed below.
   late final pulumi.Output<AccessPointVpcConfiguration?> vpcConfiguration;
 
@@ -549,11 +533,11 @@ class AccessPoint extends pulumi.CustomResource {
     AccessPointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/accessPoint:AccessPoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/accessPoint:AccessPoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');
@@ -565,30 +549,11 @@ class AccessPoint extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkOrigin = registerOutput<String>('networkOrigin');
     policy = registerOutput<String>('policy');
-    publicAccessBlockConfiguration =
-        registerOutput<AccessPointPublicAccessBlockConfiguration?>(
-          'publicAccessBlockConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AccessPointPublicAccessBlockConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    publicAccessBlockConfiguration = registerOutput<AccessPointPublicAccessBlockConfiguration?>('publicAccessBlockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointPublicAccessBlockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>(
-      'vpcConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessPointVpcConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AccessPoint] resource's state with the given [name] and [id].
@@ -609,11 +574,11 @@ class AccessPoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/accessPoint:AccessPoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/accessPoint:AccessPoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');
@@ -625,29 +590,10 @@ class AccessPoint extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkOrigin = registerOutput<String>('networkOrigin');
     policy = registerOutput<String>('policy');
-    publicAccessBlockConfiguration =
-        registerOutput<AccessPointPublicAccessBlockConfiguration?>(
-          'publicAccessBlockConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AccessPointPublicAccessBlockConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    publicAccessBlockConfiguration = registerOutput<AccessPointPublicAccessBlockConfiguration?>('publicAccessBlockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointPublicAccessBlockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>(
-      'vpcConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessPointVpcConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

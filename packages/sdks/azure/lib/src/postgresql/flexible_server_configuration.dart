@@ -435,10 +435,8 @@ class FlexibleServerConfiguration extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** PostgreSQL provides the ability to extend the functionality using azure extensions, with PostgreSQL azure extensions you should specify the `name` value as `azure.extensions` and the `value` you wish to allow in the [extensions list](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/concepts-extensions?WT.mc_id=Portal-Microsoft_Azure_OSSDatabases#extension-versions).
   late final pulumi.Output<String> name;
-
   /// The ID of the PostgreSQL Flexible Server where we want to change configuration. Changing this forces a new PostgreSQL Flexible Server Configuration resource.
   late final pulumi.Output<String> serverId;
-
   /// Specifies the value of the PostgreSQL Configuration. See the PostgreSQL documentation for valid values.
   late final pulumi.Output<String> value;
 
@@ -451,11 +449,11 @@ class FlexibleServerConfiguration extends pulumi.CustomResource {
     FlexibleServerConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:postgresql/flexibleServerConfiguration:FlexibleServerConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:postgresql/flexibleServerConfiguration:FlexibleServerConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');
     value = registerOutput<String>('value');
@@ -479,11 +477,11 @@ class FlexibleServerConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:postgresql/flexibleServerConfiguration:FlexibleServerConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:postgresql/flexibleServerConfiguration:FlexibleServerConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');
     value = registerOutput<String>('value');

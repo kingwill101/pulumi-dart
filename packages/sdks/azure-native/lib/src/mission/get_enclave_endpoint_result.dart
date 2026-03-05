@@ -8,31 +8,22 @@ import 'system_data_response.dart';
 class GetEnclaveEndpointResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// Provisioning State.
   final String provisioningState;
-
   /// List of resource ids created by community endpoint.
   final List<String> resourceCollection;
-
   /// Enclave Endpoint Rule Collection.
   final List<EnclaveEndpointDestinationRuleResponse> ruleCollection;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -68,11 +59,7 @@ class GetEnclaveEndpointResult {
       'name': name,
       'provisioningState': provisioningState,
       'resourceCollection': resourceCollection,
-      'ruleCollection':
-          pulumi.Input.encodeList<
-            EnclaveEndpointDestinationRuleResponse,
-            Map<String, dynamic>
-          >(ruleCollection, (value) => value.toMap()),
+      'ruleCollection': pulumi.Input.encodeList<EnclaveEndpointDestinationRuleResponse, Map<String, dynamic>>(ruleCollection, (value) => value.toMap()),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -87,22 +74,11 @@ class GetEnclaveEndpointResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceCollection: (map['resourceCollection'] as List).cast<String>(),
-      ruleCollection:
-          pulumi.Input.decodeList<EnclaveEndpointDestinationRuleResponse>(
-            map['ruleCollection']!,
-            (value) => EnclaveEndpointDestinationRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      ruleCollection: pulumi.Input.decodeList<EnclaveEndpointDestinationRuleResponse>(map['ruleCollection']!, (value) => EnclaveEndpointDestinationRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

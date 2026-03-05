@@ -15,8 +15,7 @@ enum LoggingComponentConfigEnableComponentsItem {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown LoggingComponentConfigEnableComponentsItem value: $value',
-    );
+    throw ArgumentError('Unknown LoggingComponentConfigEnableComponentsItem value: $value');
   }
 }
+

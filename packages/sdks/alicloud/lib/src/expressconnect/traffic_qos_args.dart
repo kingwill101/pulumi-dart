@@ -10,14 +10,11 @@ class TrafficQosArgs {
   /// The description of the QoS policy.
   /// The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
   final pulumi.Input<String>? qosDescription;
-
   /// The name of the QoS policy.
   /// The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
   final pulumi.Input<String>? qosName;
-
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
-
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,28 +41,11 @@ class TrafficQosArgs {
 
   factory TrafficQosArgs.fromMap(Map<String, dynamic> map) {
     return TrafficQosArgs(
-      qosDescription: (() {
-        final guardedValue = map['qosDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      qosName: (() {
-        final guardedValue = map['qosName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      qosDescription: (() { final guardedValue = map['qosDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      qosName: (() { final guardedValue = map['qosName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

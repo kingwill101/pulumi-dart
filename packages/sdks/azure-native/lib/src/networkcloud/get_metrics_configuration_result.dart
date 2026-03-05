@@ -7,46 +7,32 @@ import 'system_data_response.dart';
 class GetMetricsConfigurationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The interval in minutes by which metrics will be collected.
   final double collectionInterval;
-
   /// The more detailed status of the metrics configuration.
   final String detailedStatus;
-
   /// The descriptive message about the current detailed status.
   final String detailedStatusMessage;
-
   /// The list of metrics that are available for the cluster but disabled at the moment.
   final List<String> disabledMetrics;
-
   /// The list of metric names that have been chosen to be enabled in addition to the core set of enabled metrics.
   final List<String>? enabledMetrics;
-
   /// Resource ETag.
   final String etag;
-
   /// The extended location of the cluster associated with the resource.
   final ExtendedLocationResponse extendedLocation;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The provisioning state of the metrics configuration.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -111,28 +97,17 @@ class GetMetricsConfigurationResult {
       detailedStatus: map['detailedStatus'] as String,
       detailedStatusMessage: map['detailedStatusMessage'] as String,
       disabledMetrics: (map['disabledMetrics'] as List).cast<String>(),
-      enabledMetrics: (() {
-        final guardedValue = map['enabledMetrics'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      enabledMetrics: (() { final guardedValue = map['enabledMetrics']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       etag: map['etag'] as String,
-      extendedLocation: ExtendedLocationResponse.fromMap(
-        (map['extendedLocation']! as Map).cast<String, dynamic>(),
-      ),
+      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

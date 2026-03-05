@@ -322,43 +322,30 @@ class FileSystem extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Removing `encryption_key` forces a new resource to be created.
   late final pulumi.Output<FileSystemEncryptionKey?> encryptionKey;
-
   /// A `hsm_setting` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<FileSystemHsmSetting?> hsmSetting;
-
   /// An `identity` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<FileSystemIdentity?> identity;
-
   /// The Azure Region where the Azure Managed Lustre File System should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// A `maintenance_window` block as defined below.
   late final pulumi.Output<FileSystemMaintenanceWindow> maintenanceWindow;
-
   /// IP Address of Managed Lustre File System Services.
   late final pulumi.Output<String> mgsAddress;
-
   /// The name which should be used for this Azure Managed Lustre File System. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Azure Managed Lustre File System should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `root_squash` block as defined below.
   late final pulumi.Output<FileSystemRootSquash?> rootSquash;
-
   /// The SKU name for the Azure Managed Lustre File System. Possible values are `AMLFS-Durable-Premium-40`, `AMLFS-Durable-Premium-125`, `AMLFS-Durable-Premium-250` and `AMLFS-Durable-Premium-500`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> skuName;
-
   /// The size of the Azure Managed Lustre File System in TiB. The valid values for this field are dependant on which `sku_name` has been defined in the configuration file. For more information on the valid values for this field please see the [product documentation](https://learn.microsoft.com/azure/azure-managed-lustre/create-file-system-resource-manager#file-system-type-and-size-options). Changing this forces a new resource to be created.
   late final pulumi.Output<int> storageCapacityInTb;
-
   /// The resource ID of the Subnet that is used for managing the Azure Managed Lustre file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the Virtual Network's address space. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subnetId;
-
   /// A mapping of tags which should be assigned to the Azure Managed Lustre File System.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A list of availability zones for the Azure Managed Lustre File System. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>> zones;
 
@@ -371,65 +358,20 @@ class FileSystem extends pulumi.CustomResource {
     FileSystemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:managedlustre/fileSystem:FileSystem',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    encryptionKey = registerOutput<FileSystemEncryptionKey?>(
-      'encryptionKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FileSystemEncryptionKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    hsmSetting = registerOutput<FileSystemHsmSetting?>(
-      'hsmSetting',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FileSystemHsmSetting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<FileSystemIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FileSystemIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:managedlustre/fileSystem:FileSystem',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    encryptionKey = registerOutput<FileSystemEncryptionKey?>('encryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hsmSetting = registerOutput<FileSystemHsmSetting?>('hsmSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemHsmSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<FileSystemIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    maintenanceWindow = registerOutput<FileSystemMaintenanceWindow>(
-      'maintenanceWindow',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FileSystemMaintenanceWindow.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    maintenanceWindow = registerOutput<FileSystemMaintenanceWindow>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mgsAddress = registerOutput<String>('mgsAddress');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    rootSquash = registerOutput<FileSystemRootSquash?>(
-      'rootSquash',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FileSystemRootSquash.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rootSquash = registerOutput<FileSystemRootSquash?>('rootSquash', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemRootSquash.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skuName = registerOutput<String>('skuName');
     storageCapacityInTb = registerOutput<int>('storageCapacityInTb');
     subnetId = registerOutput<String>('subnetId');
@@ -455,65 +397,20 @@ class FileSystem extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:managedlustre/fileSystem:FileSystem',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    encryptionKey = registerOutput<FileSystemEncryptionKey?>(
-      'encryptionKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FileSystemEncryptionKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    hsmSetting = registerOutput<FileSystemHsmSetting?>(
-      'hsmSetting',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FileSystemHsmSetting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<FileSystemIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FileSystemIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:managedlustre/fileSystem:FileSystem',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    encryptionKey = registerOutput<FileSystemEncryptionKey?>('encryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hsmSetting = registerOutput<FileSystemHsmSetting?>('hsmSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemHsmSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<FileSystemIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    maintenanceWindow = registerOutput<FileSystemMaintenanceWindow>(
-      'maintenanceWindow',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FileSystemMaintenanceWindow.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    maintenanceWindow = registerOutput<FileSystemMaintenanceWindow>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mgsAddress = registerOutput<String>('mgsAddress');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    rootSquash = registerOutput<FileSystemRootSquash?>(
-      'rootSquash',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FileSystemRootSquash.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rootSquash = registerOutput<FileSystemRootSquash?>('rootSquash', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemRootSquash.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skuName = registerOutput<String>('skuName');
     storageCapacityInTb = registerOutput<int>('storageCapacityInTb');
     subnetId = registerOutput<String>('subnetId');

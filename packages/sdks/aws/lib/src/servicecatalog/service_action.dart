@@ -132,18 +132,14 @@ import 'service_action_state.dart';
 class ServiceAction extends pulumi.CustomResource {
   /// Language code. Valid values are `en` (English), `jp` (Japanese), and `zh` (Chinese). Default is `en`.
   late final pulumi.Output<String?> acceptLanguage;
-
   /// Self-service action definition configuration block. Detailed below.
   late final pulumi.Output<ServiceActionDefinition> definition;
-
   /// Self-service action description.
   late final pulumi.Output<String> description;
-
   /// Self-service action name.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -156,22 +152,13 @@ class ServiceAction extends pulumi.CustomResource {
     ServiceActionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicecatalog/serviceAction:ServiceAction',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicecatalog/serviceAction:ServiceAction',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
-    definition = registerOutput<ServiceActionDefinition>(
-      'definition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceActionDefinition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    definition = registerOutput<ServiceActionDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceActionDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -195,22 +182,13 @@ class ServiceAction extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicecatalog/serviceAction:ServiceAction',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicecatalog/serviceAction:ServiceAction',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
-    definition = registerOutput<ServiceActionDefinition>(
-      'definition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceActionDefinition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    definition = registerOutput<ServiceActionDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceActionDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

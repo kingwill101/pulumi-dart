@@ -8,17 +8,20 @@ class PipelineSourceTriggerPropertiesResponse {
 
   /// Creates a new [PipelineSourceTriggerPropertiesResponse].
   /// [status] The current status of the source trigger.
-  PipelineSourceTriggerPropertiesResponse({required this.status});
+  PipelineSourceTriggerPropertiesResponse({
+    required this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': status};
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
-  factory PipelineSourceTriggerPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipelineSourceTriggerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PipelineSourceTriggerPropertiesResponse(
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

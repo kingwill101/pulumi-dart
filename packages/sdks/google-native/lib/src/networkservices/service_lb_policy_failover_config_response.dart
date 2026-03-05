@@ -19,13 +19,10 @@ class ServiceLbPolicyFailoverConfigResponse {
     };
   }
 
-  factory ServiceLbPolicyFailoverConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceLbPolicyFailoverConfigResponse.fromMap(Map<String, dynamic> map) {
     return ServiceLbPolicyFailoverConfigResponse(
-      failoverHealthThreshold: pulumi.Input.fromValue(
-        map['failoverHealthThreshold'] as int,
-      ),
+      failoverHealthThreshold: pulumi.Input.fromValue(map['failoverHealthThreshold'] as int),
     );
   }
 }
+

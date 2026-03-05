@@ -20,77 +20,52 @@ import 'system_data_response.dart';
 class Namespace extends pulumi.CustomResource {
   /// Alternate name specified when alias and namespace names are same.
   late final pulumi.Output<String?> alternateName;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Cluster ARM ID of the Namespace.
   late final pulumi.Output<String?> clusterArmId;
-
   /// The time the Namespace was created.
   late final pulumi.Output<String> createdAt;
-
   /// This property disables SAS authentication for the Event Hubs namespace.
   late final pulumi.Output<bool?> disableLocalAuth;
-
   /// Properties of BYOK Encryption description
   late final pulumi.Output<EncryptionResponse?> encryption;
-
   /// Properties of BYOK Identity description
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// Value that indicates whether AutoInflate is enabled for eventhub namespace.
   late final pulumi.Output<bool?> isAutoInflateEnabled;
-
   /// Value that indicates whether Kafka is enabled for eventhub namespace.
   late final pulumi.Output<bool?> kafkaEnabled;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)
   late final pulumi.Output<int?> maximumThroughputUnits;
-
   /// Identifier for Azure Insights metrics.
   late final pulumi.Output<String> metricId;
-
   /// The minimum TLS version for the cluster to support, e.g. '1.2'
   late final pulumi.Output<String?> minimumTlsVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// List of private endpoint connections.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> privateEndpointConnections;
   /// Provisioning state of the Namespace.
   late final pulumi.Output<String> provisioningState;
-
   /// This determines if traffic is allowed over public network. By default it is enabled.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// Endpoint you can use to perform Service Bus operations.
   late final pulumi.Output<String> serviceBusEndpoint;
-
   /// Properties of sku resource
   late final pulumi.Output<SkuResponse?> sku;
-
   /// Status of the Namespace.
   late final pulumi.Output<String> status;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The time the Namespace was updated.
   late final pulumi.Output<String> updatedAt;
-
   /// Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
   late final pulumi.Output<bool?> zoneRedundant;
 
@@ -103,36 +78,18 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventhub:Namespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventhub:Namespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alternateName = registerOutput<String?>('alternateName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clusterArmId = registerOutput<String?>('clusterArmId');
     createdAt = registerOutput<String>('createdAt');
     disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
-    encryption = registerOutput<EncryptionResponse?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<EncryptionResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isAutoInflateEnabled = registerOutput<bool?>('isAutoInflateEnabled');
     kafkaEnabled = registerOutput<bool?>('kafkaEnabled');
     location = registerOutput<String?>('location');
@@ -140,33 +97,13 @@ class Namespace extends pulumi.CustomResource {
     metricId = registerOutput<String>('metricId');
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     serviceBusEndpoint = registerOutput<String>('serviceBusEndpoint');
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');

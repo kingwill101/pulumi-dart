@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnGatewayInfoResponse {
   /// Name of a VPN gateway.
   final pulumi.Input<String> displayName;
-
   /// IP address of the VPN gateway.
   final pulumi.Input<String> ipAddress;
-
   /// URI of a Compute Engine network where the VPN gateway is configured.
   final pulumi.Input<String> networkUri;
-
   /// Name of a Google Cloud region where this VPN gateway is configured.
   final pulumi.Input<String> region;
-
   /// URI of a VPN gateway.
   final pulumi.Input<String> uri;
-
   /// A VPN tunnel that is associated with this VPN gateway. There may be multiple VPN tunnels configured on a VPN gateway, and only the one relevant to the test is displayed.
   final pulumi.Input<String> vpnTunnelUri;
 
@@ -60,3 +55,4 @@ class VpnGatewayInfoResponse {
     );
   }
 }
+

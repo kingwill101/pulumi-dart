@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationScaleArgs {
   /// The ID of the application that you want to deploy.
   final pulumi.Input<String> appId;
-
   /// The ID of the instance group to which you want to add ECS instances to scale out the application.
   final pulumi.Input<String> deployGroup;
-
   /// The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
   final pulumi.Input<List<String>> ecuInfos;
-
   /// This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
   final pulumi.Input<bool>? forceStatus;
 
@@ -44,14 +41,9 @@ class ApplicationScaleArgs {
     return ApplicationScaleArgs(
       appId: pulumi.Input.fromValue(map['appId'] as String),
       deployGroup: pulumi.Input.fromValue(map['deployGroup'] as String),
-      ecuInfos: pulumi.Input.fromValue(
-        (map['ecuInfos'] as List).cast<String>(),
-      ),
-      forceStatus: (() {
-        final guardedValue = map['forceStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      ecuInfos: pulumi.Input.fromValue((map['ecuInfos'] as List).cast<String>()),
+      forceStatus: (() { final guardedValue = map['forceStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

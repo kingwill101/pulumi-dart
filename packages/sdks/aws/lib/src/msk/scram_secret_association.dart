@@ -469,10 +469,8 @@ import 'scram_secret_association_state.dart';
 class ScramSecretAssociation extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the MSK cluster.
   late final pulumi.Output<String> clusterArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// List of AWS Secrets Manager secret ARNs.
   late final pulumi.Output<List<String>> secretArnLists;
 
@@ -485,11 +483,11 @@ class ScramSecretAssociation extends pulumi.CustomResource {
     ScramSecretAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:msk/scramSecretAssociation:ScramSecretAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:msk/scramSecretAssociation:ScramSecretAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterArn = registerOutput<String>('clusterArn');
     region = registerOutput<String>('region');
     secretArnLists = registerOutput<List<String>>('secretArnLists');
@@ -513,11 +511,11 @@ class ScramSecretAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:msk/scramSecretAssociation:ScramSecretAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:msk/scramSecretAssociation:ScramSecretAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterArn = registerOutput<String>('clusterArn');
     region = registerOutput<String>('region');
     secretArnLists = registerOutput<List<String>>('secretArnLists');

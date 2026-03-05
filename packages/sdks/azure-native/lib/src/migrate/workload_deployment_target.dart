@@ -16,3 +16,4 @@ enum WorkloadDeploymentTarget {
     throw ArgumentError('Unknown WorkloadDeploymentTarget value: $value');
   }
 }
+

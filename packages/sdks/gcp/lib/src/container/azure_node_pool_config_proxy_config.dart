@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureNodePoolConfigProxyConfig {
   /// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group-name&gt;`
   final pulumi.Input<String> resourceGroupId;
-
   /// The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:&lt;key-vault-name&gt;.vault.azure.net/secrets/&lt;secret-name&gt;/&lt;secret-version&gt;`.
   final pulumi.Input<String> secretId;
 
@@ -31,3 +30,4 @@ class AzureNodePoolConfigProxyConfig {
     );
   }
 }
+

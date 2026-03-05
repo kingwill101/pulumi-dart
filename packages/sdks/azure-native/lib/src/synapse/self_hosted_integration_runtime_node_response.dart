@@ -6,55 +6,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SelfHostedIntegrationRuntimeNodeResponse {
   /// The integration runtime capabilities dictionary
   final pulumi.Input<Map<String, String>> capabilities;
-
   /// Maximum concurrent jobs on the integration runtime node.
   final pulumi.Input<int> concurrentJobsLimit;
-
   /// The time at which the integration runtime will expire in ISO8601 format.
   final pulumi.Input<String> expiryTime;
-
   /// URI for the host machine of the integration runtime.
   final pulumi.Input<String> hostServiceUri;
-
   /// Indicates whether this node is the active dispatcher for integration runtime requests.
   final pulumi.Input<bool> isActiveDispatcher;
-
   /// The most recent time at which the integration runtime was connected in ISO8601 format.
   final pulumi.Input<String> lastConnectTime;
-
   /// The last time for the integration runtime node update end.
   final pulumi.Input<String> lastEndUpdateTime;
-
   /// The time the node last started up.
   final pulumi.Input<String> lastStartTime;
-
   /// The last time for the integration runtime node update start.
   final pulumi.Input<String> lastStartUpdateTime;
-
   /// The integration runtime node last stop time.
   final pulumi.Input<String> lastStopTime;
-
   /// The result of the last integration runtime node update.
   final pulumi.Input<String> lastUpdateResult;
-
   /// Machine name of the integration runtime node.
   final pulumi.Input<String> machineName;
-
   /// The maximum concurrent jobs in this integration runtime.
   final pulumi.Input<int> maxConcurrentJobs;
-
   /// Name of the integration runtime node.
   final pulumi.Input<String> nodeName;
-
   /// The time at which the integration runtime node was registered in ISO8601 format.
   final pulumi.Input<String> registerTime;
-
   /// Status of the integration runtime node.
   final pulumi.Input<String> status;
-
   /// Version of the integration runtime node.
   final pulumi.Input<String> version;
-
   /// Status of the integration runtime node version.
   final pulumi.Input<String> versionStatus;
 
@@ -121,37 +104,21 @@ class SelfHostedIntegrationRuntimeNodeResponse {
     };
   }
 
-  factory SelfHostedIntegrationRuntimeNodeResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SelfHostedIntegrationRuntimeNodeResponse.fromMap(Map<String, dynamic> map) {
     return SelfHostedIntegrationRuntimeNodeResponse(
-      capabilities: pulumi.Input.fromValue(
-        (map['capabilities'] as Map).cast<String, String>(),
-      ),
-      concurrentJobsLimit: pulumi.Input.fromValue(
-        map['concurrentJobsLimit'] as int,
-      ),
+      capabilities: pulumi.Input.fromValue((map['capabilities'] as Map).cast<String, String>()),
+      concurrentJobsLimit: pulumi.Input.fromValue(map['concurrentJobsLimit'] as int),
       expiryTime: pulumi.Input.fromValue(map['expiryTime'] as String),
       hostServiceUri: pulumi.Input.fromValue(map['hostServiceUri'] as String),
-      isActiveDispatcher: pulumi.Input.fromValue(
-        map['isActiveDispatcher'] as bool,
-      ),
+      isActiveDispatcher: pulumi.Input.fromValue(map['isActiveDispatcher'] as bool),
       lastConnectTime: pulumi.Input.fromValue(map['lastConnectTime'] as String),
-      lastEndUpdateTime: pulumi.Input.fromValue(
-        map['lastEndUpdateTime'] as String,
-      ),
+      lastEndUpdateTime: pulumi.Input.fromValue(map['lastEndUpdateTime'] as String),
       lastStartTime: pulumi.Input.fromValue(map['lastStartTime'] as String),
-      lastStartUpdateTime: pulumi.Input.fromValue(
-        map['lastStartUpdateTime'] as String,
-      ),
+      lastStartUpdateTime: pulumi.Input.fromValue(map['lastStartUpdateTime'] as String),
       lastStopTime: pulumi.Input.fromValue(map['lastStopTime'] as String),
-      lastUpdateResult: pulumi.Input.fromValue(
-        map['lastUpdateResult'] as String,
-      ),
+      lastUpdateResult: pulumi.Input.fromValue(map['lastUpdateResult'] as String),
       machineName: pulumi.Input.fromValue(map['machineName'] as String),
-      maxConcurrentJobs: pulumi.Input.fromValue(
-        map['maxConcurrentJobs'] as int,
-      ),
+      maxConcurrentJobs: pulumi.Input.fromValue(map['maxConcurrentJobs'] as int),
       nodeName: pulumi.Input.fromValue(map['nodeName'] as String),
       registerTime: pulumi.Input.fromValue(map['registerTime'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
@@ -160,3 +127,4 @@ class SelfHostedIntegrationRuntimeNodeResponse {
     );
   }
 }
+

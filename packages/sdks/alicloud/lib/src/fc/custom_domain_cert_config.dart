@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDomainCertConfig {
   /// The name of the certificate, used to distinguish different certificates.
   final pulumi.Input<String> certName;
-
   /// Certificate data of the HTTPS certificates, follow the 'pem' format.
   final pulumi.Input<String> certificate;
-
   /// Private key of the HTTPS certificates, follow the 'pem' format.
   final pulumi.Input<String> privateKey;
 
@@ -38,3 +36,4 @@ class CustomDomainCertConfig {
     );
   }
 }
+

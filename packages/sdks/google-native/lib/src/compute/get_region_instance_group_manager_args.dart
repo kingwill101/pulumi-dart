@@ -31,15 +31,10 @@ class GetRegionInstanceGroupManagerArgs {
 
   factory GetRegionInstanceGroupManagerArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupManagerArgs(
-      instanceGroupManager: pulumi.Input.fromValue(
-        map['instanceGroupManager'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceGroupManager: pulumi.Input.fromValue(map['instanceGroupManager'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

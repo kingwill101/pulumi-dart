@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyPropertiesResponseScope {
   /// Display name of the resource
   final pulumi.Input<String>? displayName;
-
   /// Scope id of the resource
   final pulumi.Input<String>? id;
-
   /// Type of the resource
   final pulumi.Input<String>? type;
 
@@ -17,7 +15,11 @@ class PolicyPropertiesResponseScope {
   /// [displayName] Display name of the resource
   /// [id] Scope id of the resource
   /// [type] Type of the resource
-  PolicyPropertiesResponseScope({this.displayName, this.id, this.type});
+  PolicyPropertiesResponseScope({
+    this.displayName,
+    this.id,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class PolicyPropertiesResponseScope {
 
   factory PolicyPropertiesResponseScope.fromMap(Map<String, dynamic> map) {
     return PolicyPropertiesResponseScope(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

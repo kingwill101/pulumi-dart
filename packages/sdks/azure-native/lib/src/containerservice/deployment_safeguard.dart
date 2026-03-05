@@ -129,28 +129,20 @@ import 'system_data_response.dart';
 class DeploymentSafeguard extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> eTag;
-
   /// User defined list of namespaces to exclude from Deployment Safeguards. Deployments in these namespaces will not be checked against any safeguards
   late final pulumi.Output<List<String>?> excludedNamespaces;
-
   /// The deployment safeguards level. Possible values are Warn and Enforce
   late final pulumi.Output<String> level;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Provisioning State
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// System defined list of namespaces excluded from Deployment Safeguards. These are determined by the underlying provider (such as AKS), and cannot be changed. Deployments in these namespaces will not be checked
   late final pulumi.Output<List<String>> systemExcludedNamespaces;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -163,30 +155,19 @@ class DeploymentSafeguard extends pulumi.CustomResource {
     DeploymentSafeguardArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerservice:DeploymentSafeguard',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:containerservice:DeploymentSafeguard',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eTag = registerOutput<String>('eTag');
     excludedNamespaces = registerOutput<List<String>?>('excludedNamespaces');
     level = registerOutput<String>('level');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemExcludedNamespaces = registerOutput<List<String>>(
-      'systemExcludedNamespaces',
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemExcludedNamespaces = registerOutput<List<String>>('systemExcludedNamespaces');
     type = registerOutput<String>('type');
   }
 }

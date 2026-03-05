@@ -9,19 +9,20 @@ class ReservationConfig {
 
   /// Creates a new [ReservationConfig].
   /// [throughputReservation] The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
-  ReservationConfig({this.throughputReservation});
+  ReservationConfig({
+    this.throughputReservation,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'throughputReservation': ?throughputReservation};
+    return <String, dynamic>{
+      'throughputReservation': ?throughputReservation,
+    };
   }
 
   factory ReservationConfig.fromMap(Map<String, dynamic> map) {
     return ReservationConfig(
-      throughputReservation: (() {
-        final guardedValue = map['throughputReservation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      throughputReservation: (() { final guardedValue = map['throughputReservation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

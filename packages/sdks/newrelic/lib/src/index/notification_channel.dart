@@ -2378,25 +2378,18 @@ import 'notification_channel_state.dart';
 class NotificationChannel extends pulumi.CustomResource {
   /// Determines the New Relic account where the notification channel will be created. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
-
   /// Indicates whether the channel is active.
   late final pulumi.Output<bool?> active;
-
   /// The id of the destination.
   late final pulumi.Output<String> destinationId;
-
   /// The name of the channel.
   late final pulumi.Output<String> name;
-
   /// The type of product.  One of: `DISCUSSIONS`, `ERROR_TRACKING` or `IINT` (workflows).
   late final pulumi.Output<String> product;
-
   /// A nested block that describes a notification channel property. See Nested property blocks below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> properties;
-
   /// The status of the channel.
   late final pulumi.Output<String> status;
-
   /// The type of channel.  One of: `EMAIL`, `SERVICENOW_INCIDENTS`, `SERVICE_NOW_APP`, `WEBHOOK`, `JIRA_CLASSIC`, `MOBILE_PUSH`, `EVENT_BRIDGE`, `SLACK` and `SLACK_COLLABORATION`, `PAGERDUTY_ACCOUNT_INTEGRATION`, `PAGERDUTY_SERVICE_INTEGRATION`, `MICROSOFT_TEAMS` or `WORKFLOW_AUTOMATION`.
   late final pulumi.Output<String> type;
 
@@ -2409,11 +2402,11 @@ class NotificationChannel extends pulumi.CustomResource {
     NotificationChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/notificationChannel:NotificationChannel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/notificationChannel:NotificationChannel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     active = registerOutput<bool?>('active');
     destinationId = registerOutput<String>('destinationId');
@@ -2442,11 +2435,11 @@ class NotificationChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/notificationChannel:NotificationChannel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/notificationChannel:NotificationChannel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     active = registerOutput<bool?>('active');
     destinationId = registerOutput<String>('destinationId');

@@ -6,39 +6,28 @@ import 'app_group_app_args.dart';
 class AppGroupApp extends pulumi.CustomResource {
   /// List of API products associated with the AppGroup app.
   late final pulumi.Output<List<String>> apiProducts;
-
   /// Immutable. Name of the parent AppGroup whose resource name format is of syntax (organizations/*/appgroups/*).
   late final pulumi.Output<String> appGroup;
-
   /// Immutable. ID of the AppGroup app.
   late final pulumi.Output<String> appId;
   late final pulumi.Output<String> appgroupId;
-
   /// List of attributes for the AppGroup app.
   late final pulumi.Output<List<Map<String, dynamic>>> attributes;
-
   /// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to AppGroup apps.
   late final pulumi.Output<String> callbackUrl;
-
   /// Time the AppGroup app was created in milliseconds since epoch.
   late final pulumi.Output<String> createdAt;
-
   /// Set of credentials for the AppGroup app consisting of the consumer key/secret pairs associated with the API products.
   late final pulumi.Output<List<Map<String, dynamic>>> credentials;
-
   /// Immutable. Expiration time, in seconds, for the consumer key that is generated for the AppGroup app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
   late final pulumi.Output<String> keyExpiresIn;
-
   /// Time the AppGroup app was modified in milliseconds since epoch.
   late final pulumi.Output<String> lastModifiedAt;
-
   /// Immutable. Name of the AppGroup app whose resource name format is of syntax (organizations/*/appgroups/*/apps/*).
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
-
   /// Scopes to apply to the AppGroup app. The specified scopes must already exist for the API product that you associate with the AppGroup app.
   late final pulumi.Output<List<String>> scopes;
-
   /// Status of the App. Valid values include `approved` or `revoked`.
   late final pulumi.Output<String> status;
 
@@ -51,11 +40,11 @@ class AppGroupApp extends pulumi.CustomResource {
     AppGroupAppArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:apigee/v1:AppGroupApp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:apigee/v1:AppGroupApp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiProducts = registerOutput<List<String>>('apiProducts');
     appGroup = registerOutput<String>('appGroup');
     appId = registerOutput<String>('appId');

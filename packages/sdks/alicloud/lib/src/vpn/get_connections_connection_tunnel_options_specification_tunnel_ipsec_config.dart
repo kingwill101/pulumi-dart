@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
   /// IPsec Auth algorithm.
   final pulumi.Input<String> ipsecAuthAlg;
-
   /// IPsec Encript algorithm.
   final pulumi.Input<String> ipsecEncAlg;
-
   /// IPsec lifetime.
   final pulumi.Input<int> ipsecLifetime;
-
   /// DH Group.
   final pulumi.Input<String> ipsecPfs;
 
@@ -36,9 +33,7 @@ class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
     };
   }
 
-  factory GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig.fromMap(Map<String, dynamic> map) {
     return GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig(
       ipsecAuthAlg: pulumi.Input.fromValue(map['ipsecAuthAlg'] as String),
       ipsecEncAlg: pulumi.Input.fromValue(map['ipsecEncAlg'] as String),
@@ -47,3 +42,4 @@ class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
     );
   }
 }
+

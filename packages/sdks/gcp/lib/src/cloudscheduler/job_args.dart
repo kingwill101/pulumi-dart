@@ -16,7 +16,6 @@ class JobArgs {
   /// send a request to the service instance
   /// Structure is documented below.
   final pulumi.Input<JobAppEngineHttpTarget>? appEngineHttpTarget;
-
   /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
   /// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
   /// execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
@@ -26,45 +25,35 @@ class JobArgs {
   /// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
   final pulumi.Input<String>? attemptDeadline;
-
   /// A human-readable description for the job.
   /// This string must not contain more than 500 characters.
   final pulumi.Input<String>? description;
-
   /// HTTP target.
   /// If the job providers a http_target the cron will
   /// send a request to the targeted url
   /// Structure is documented below.
   final pulumi.Input<JobHttpTarget>? httpTarget;
-
   /// The name of the job.
   final pulumi.Input<String>? name;
-
   /// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
   final pulumi.Input<bool>? paused;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Pub/Sub target
   /// If the job providers a Pub/Sub target the cron will publish
   /// a message to the provided topic
   /// Structure is documented below.
   final pulumi.Input<JobPubsubTarget>? pubsubTarget;
-
   /// Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
   final pulumi.Input<String>? region;
-
   /// By default, if a job does not complete successfully,
   /// meaning that an acknowledgement is not received from the handler,
   /// then it will be retried with exponential backoff according to the settings
   /// Structure is documented below.
   final pulumi.Input<JobRetryConfig>? retryConfig;
-
   /// Describes the schedule on which the job will be executed.
   final pulumi.Input<String>? schedule;
-
   /// Specifies the time zone to be used in interpreting schedule.
   /// The value of this field must be a time zone name from the tz database.
   final pulumi.Input<String>? timeZone;
@@ -99,32 +88,16 @@ class JobArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appEngineHttpTarget':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobAppEngineHttpTarget,
-            Map<String, dynamic>
-          >(appEngineHttpTarget, (value) => value.toMap()),
+      'appEngineHttpTarget': ?pulumi.Input.mapOptionalInputValue<JobAppEngineHttpTarget, Map<String, dynamic>>(appEngineHttpTarget, (value) => value.toMap()),
       'attemptDeadline': ?attemptDeadline,
       'description': ?description,
-      'httpTarget':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobHttpTarget,
-            Map<String, dynamic>
-          >(httpTarget, (value) => value.toMap()),
+      'httpTarget': ?pulumi.Input.mapOptionalInputValue<JobHttpTarget, Map<String, dynamic>>(httpTarget, (value) => value.toMap()),
       'name': ?name,
       'paused': ?paused,
       'project': ?project,
-      'pubsubTarget':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobPubsubTarget,
-            Map<String, dynamic>
-          >(pubsubTarget, (value) => value.toMap()),
+      'pubsubTarget': ?pulumi.Input.mapOptionalInputValue<JobPubsubTarget, Map<String, dynamic>>(pubsubTarget, (value) => value.toMap()),
       'region': ?region,
-      'retryConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobRetryConfig,
-            Map<String, dynamic>
-          >(retryConfig, (value) => value.toMap()),
+      'retryConfig': ?pulumi.Input.mapOptionalInputValue<JobRetryConfig, Map<String, dynamic>>(retryConfig, (value) => value.toMap()),
       'schedule': ?schedule,
       'timeZone': ?timeZone,
     };
@@ -132,78 +105,19 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      appEngineHttpTarget: (() {
-        final guardedValue = map['appEngineHttpTarget'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobAppEngineHttpTarget.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      attemptDeadline: (() {
-        final guardedValue = map['attemptDeadline'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      httpTarget: (() {
-        final guardedValue = map['httpTarget'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      paused: (() {
-        final guardedValue = map['paused'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pubsubTarget: (() {
-        final guardedValue = map['pubsubTarget'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobPubsubTarget.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retryConfig: (() {
-        final guardedValue = map['retryConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobRetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      schedule: (() {
-        final guardedValue = map['schedule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appEngineHttpTarget: (() { final guardedValue = map['appEngineHttpTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobAppEngineHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      attemptDeadline: (() { final guardedValue = map['attemptDeadline']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      httpTarget: (() { final guardedValue = map['httpTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      paused: (() { final guardedValue = map['paused']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pubsubTarget: (() { final guardedValue = map['pubsubTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobPubsubTarget.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retryConfig: (() { final guardedValue = map['retryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobRetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

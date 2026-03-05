@@ -31,13 +31,10 @@ class GetZoneQueuedResourceArgs {
 
   factory GetZoneQueuedResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneQueuedResourceArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       queuedResource: pulumi.Input.fromValue(map['queuedResource'] as String),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
+

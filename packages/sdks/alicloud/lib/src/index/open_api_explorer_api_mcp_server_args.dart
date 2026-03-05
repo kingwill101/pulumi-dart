@@ -17,54 +17,38 @@ class OpenApiExplorerApiMcpServerArgs {
   /// - Whether to exclude the API from the output API response structure definition
   /// - Whether to return a CLI execution command instead of directly executing the API
   /// - Configuration of constant values for API parameters; parameters set as constants will not have their definitions returned in the tool list   See `additional_api_descriptions` below.
-  final pulumi.Input<List<OpenApiExplorerApiMcpServerAdditionalApiDescription>>?
-  additionalApiDescriptions;
-
+  final pulumi.Input<List<OpenApiExplorerApiMcpServerAdditionalApiDescription>>? additionalApiDescriptions;
   /// The list of APIs to be included in the API MCP Server. See `apis` below.
   final pulumi.Input<List<OpenApiExplorerApiMcpServerApi>> apis;
-
   /// When multi-account access is enabled, this field defines an additional policy for role assumption. If specified, this policy overrides the original permissions defined for the role, and the assumed role’s permissions are determined solely by this policy.
   final pulumi.Input<String>? assumeRoleExtraPolicy;
-
   /// The name of the RAM role in the target account to assume when enabling multi-account access for cross-account operations.
   final pulumi.Input<String>? assumeRoleName;
-
   /// Description of the API MCP service.
   final pulumi.Input<String>? description;
-
   /// Specifies whether to enable multi-account access. When enabled, the MCP Server exposes the x_assume_account_id parameter by default. When this parameter is provided, the MCP Server switches to the specified account to perform operations.
   final pulumi.Input<bool>? enableAssumeRole;
-
   /// Whether to enable a custom VPC whitelist. If disabled, the configuration follows the account-level setting.
   final pulumi.Input<bool>? enableCustomVpcWhitelist;
-
   /// MCP instructions that guide the large language model on how to use this MCP. The client must support the Instructions field defined in the MCP standard protocol.
   final pulumi.Input<String>? instructions;
-
   /// Documentation language for the API MCP service. You can select either Chinese or English API documentation. The choice of language may affect the AI's response quality due to differences in prompt wording. Supported values are EN_US and ZH_CN.
   final pulumi.Input<String>? language;
-
   /// Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
   final pulumi.Input<String>? name;
-
   /// The custom OAuth Client ID when selecting a custom OAuth configuration.
   /// `Supported only for Web/Native applications, and the OAuth scope must include /acs/mcp-server.`
   final pulumi.Input<String>? oauthClientId;
-
   /// List of prompts supported by the MCP Server. For the MCP protocol, clients retrieve this list through the prompts/list RPC call. See `prompts` below.
   final pulumi.Input<List<OpenApiExplorerApiMcpServerPrompt>>? prompts;
-
   /// Whether to enable public network access. This setting takes precedence over the account-level configuration and supports the following options:
   /// - on: enables public network access;
   /// - off: disables public network access;
   /// - follow: inherits the account-level configuration.
   final pulumi.Input<String>? publicAccess;
-
   /// Enabled system services.
   final pulumi.Input<List<String>>? systemTools;
-  final pulumi.Input<List<OpenApiExplorerApiMcpServerTerraformTool>>?
-  terraformTools;
-
+  final pulumi.Input<List<OpenApiExplorerApiMcpServerTerraformTool>>? terraformTools;
   /// When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
   final pulumi.Input<List<String>>? vpcWhitelists;
 
@@ -106,30 +90,8 @@ class OpenApiExplorerApiMcpServerArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalApiDescriptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<OpenApiExplorerApiMcpServerAdditionalApiDescription>,
-            List<Map<String, dynamic>>
-          >(
-            additionalApiDescriptions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  OpenApiExplorerApiMcpServerAdditionalApiDescription,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'apis':
-          pulumi.Input.mapInputValue<
-            List<OpenApiExplorerApiMcpServerApi>,
-            List<Map<String, dynamic>>
-          >(
-            apis,
-            (value) =>
-                pulumi.Input.encodeList<
-                  OpenApiExplorerApiMcpServerApi,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'additionalApiDescriptions': ?pulumi.Input.mapOptionalInputValue<List<OpenApiExplorerApiMcpServerAdditionalApiDescription>, List<Map<String, dynamic>>>(additionalApiDescriptions, (value) => pulumi.Input.encodeList<OpenApiExplorerApiMcpServerAdditionalApiDescription, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'apis': pulumi.Input.mapInputValue<List<OpenApiExplorerApiMcpServerApi>, List<Map<String, dynamic>>>(apis, (value) => pulumi.Input.encodeList<OpenApiExplorerApiMcpServerApi, Map<String, dynamic>>(value, (value) => value.toMap())),
       'assumeRoleExtraPolicy': ?assumeRoleExtraPolicy,
       'assumeRoleName': ?assumeRoleName,
       'description': ?description,
@@ -139,145 +101,33 @@ class OpenApiExplorerApiMcpServerArgs {
       'language': ?language,
       'name': ?name,
       'oauthClientId': ?oauthClientId,
-      'prompts':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<OpenApiExplorerApiMcpServerPrompt>,
-            List<Map<String, dynamic>>
-          >(
-            prompts,
-            (value) =>
-                pulumi.Input.encodeList<
-                  OpenApiExplorerApiMcpServerPrompt,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'prompts': ?pulumi.Input.mapOptionalInputValue<List<OpenApiExplorerApiMcpServerPrompt>, List<Map<String, dynamic>>>(prompts, (value) => pulumi.Input.encodeList<OpenApiExplorerApiMcpServerPrompt, Map<String, dynamic>>(value, (value) => value.toMap())),
       'publicAccess': ?publicAccess,
       'systemTools': ?systemTools,
-      'terraformTools':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<OpenApiExplorerApiMcpServerTerraformTool>,
-            List<Map<String, dynamic>>
-          >(
-            terraformTools,
-            (value) =>
-                pulumi.Input.encodeList<
-                  OpenApiExplorerApiMcpServerTerraformTool,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'terraformTools': ?pulumi.Input.mapOptionalInputValue<List<OpenApiExplorerApiMcpServerTerraformTool>, List<Map<String, dynamic>>>(terraformTools, (value) => pulumi.Input.encodeList<OpenApiExplorerApiMcpServerTerraformTool, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcWhitelists': ?vpcWhitelists,
     };
   }
 
   factory OpenApiExplorerApiMcpServerArgs.fromMap(Map<String, dynamic> map) {
     return OpenApiExplorerApiMcpServerArgs(
-      additionalApiDescriptions: (() {
-        final guardedValue = map['additionalApiDescriptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            OpenApiExplorerApiMcpServerAdditionalApiDescription
-          >(
-            guardedValue,
-            (value) =>
-                OpenApiExplorerApiMcpServerAdditionalApiDescription.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      apis: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<OpenApiExplorerApiMcpServerApi>(
-          map['apis']!,
-          (value) => OpenApiExplorerApiMcpServerApi.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      assumeRoleExtraPolicy: (() {
-        final guardedValue = map['assumeRoleExtraPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      assumeRoleName: (() {
-        final guardedValue = map['assumeRoleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enableAssumeRole: (() {
-        final guardedValue = map['enableAssumeRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableCustomVpcWhitelist: (() {
-        final guardedValue = map['enableCustomVpcWhitelist'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      instructions: (() {
-        final guardedValue = map['instructions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      language: (() {
-        final guardedValue = map['language'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oauthClientId: (() {
-        final guardedValue = map['oauthClientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prompts: (() {
-        final guardedValue = map['prompts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<OpenApiExplorerApiMcpServerPrompt>(
-            guardedValue,
-            (value) => OpenApiExplorerApiMcpServerPrompt.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      publicAccess: (() {
-        final guardedValue = map['publicAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      systemTools: (() {
-        final guardedValue = map['systemTools'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      terraformTools: (() {
-        final guardedValue = map['terraformTools'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<OpenApiExplorerApiMcpServerTerraformTool>(
-            guardedValue,
-            (value) => OpenApiExplorerApiMcpServerTerraformTool.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      vpcWhitelists: (() {
-        final guardedValue = map['vpcWhitelists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      additionalApiDescriptions: (() { final guardedValue = map['additionalApiDescriptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<OpenApiExplorerApiMcpServerAdditionalApiDescription>(guardedValue, (value) => OpenApiExplorerApiMcpServerAdditionalApiDescription.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      apis: pulumi.Input.fromValue(pulumi.Input.decodeList<OpenApiExplorerApiMcpServerApi>(map['apis']!, (value) => OpenApiExplorerApiMcpServerApi.fromMap((value as Map).cast<String, dynamic>()))),
+      assumeRoleExtraPolicy: (() { final guardedValue = map['assumeRoleExtraPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      assumeRoleName: (() { final guardedValue = map['assumeRoleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enableAssumeRole: (() { final guardedValue = map['enableAssumeRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableCustomVpcWhitelist: (() { final guardedValue = map['enableCustomVpcWhitelist']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      instructions: (() { final guardedValue = map['instructions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      language: (() { final guardedValue = map['language']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oauthClientId: (() { final guardedValue = map['oauthClientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prompts: (() { final guardedValue = map['prompts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<OpenApiExplorerApiMcpServerPrompt>(guardedValue, (value) => OpenApiExplorerApiMcpServerPrompt.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      publicAccess: (() { final guardedValue = map['publicAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      systemTools: (() { final guardedValue = map['systemTools']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      terraformTools: (() { final guardedValue = map['terraformTools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<OpenApiExplorerApiMcpServerTerraformTool>(guardedValue, (value) => OpenApiExplorerApiMcpServerTerraformTool.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      vpcWhitelists: (() { final guardedValue = map['vpcWhitelists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -18,3 +18,4 @@ enum StorageType {
     throw ArgumentError('Unknown StorageType value: $value');
   }
 }
+

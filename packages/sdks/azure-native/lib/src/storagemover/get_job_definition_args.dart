@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobDefinitionArgs {
   /// The name of the Job Definition resource.
   final pulumi.Input<String> jobDefinitionName;
-
   /// The name of the Project resource.
   final pulumi.Input<String> projectName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Storage Mover resource.
   final pulumi.Input<String> storageMoverName;
 
@@ -42,16 +39,11 @@ class GetJobDefinitionArgs {
 
   factory GetJobDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionArgs(
-      jobDefinitionName: pulumi.Input.fromValue(
-        map['jobDefinitionName'] as String,
-      ),
+      jobDefinitionName: pulumi.Input.fromValue(map['jobDefinitionName'] as String),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      storageMoverName: pulumi.Input.fromValue(
-        map['storageMoverName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      storageMoverName: pulumi.Input.fromValue(map['storageMoverName'] as String),
     );
   }
 }
+

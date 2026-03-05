@@ -7,42 +7,29 @@ import 'pod_affinity_term_patch.dart';
 class WeightedPodAffinityTermPatch {
   /// Required. A pod affinity term, associated with the corresponding weight.
   final pulumi.Input<PodAffinityTermPatch>? podAffinityTerm;
-
   /// weight associated with matching the corresponding podAffinityTerm, in the range 1-100.
   final pulumi.Input<int>? weight;
 
   /// Creates a new [WeightedPodAffinityTermPatch].
   /// [podAffinityTerm] Required. A pod affinity term, associated with the corresponding weight.
   /// [weight] weight associated with matching the corresponding podAffinityTerm, in the range 1-100.
-  WeightedPodAffinityTermPatch({this.podAffinityTerm, this.weight});
+  WeightedPodAffinityTermPatch({
+    this.podAffinityTerm,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'podAffinityTerm':
-          ?pulumi.Input.mapOptionalInputValue<
-            PodAffinityTermPatch,
-            Map<String, dynamic>
-          >(podAffinityTerm, (value) => value.toMap()),
+      'podAffinityTerm': ?pulumi.Input.mapOptionalInputValue<PodAffinityTermPatch, Map<String, dynamic>>(podAffinityTerm, (value) => value.toMap()),
       'weight': ?weight,
     };
   }
 
   factory WeightedPodAffinityTermPatch.fromMap(Map<String, dynamic> map) {
     return WeightedPodAffinityTermPatch(
-      podAffinityTerm: (() {
-        final guardedValue = map['podAffinityTerm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PodAffinityTermPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      weight: (() {
-        final guardedValue = map['weight'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      podAffinityTerm: (() { final guardedValue = map['podAffinityTerm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PodAffinityTermPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

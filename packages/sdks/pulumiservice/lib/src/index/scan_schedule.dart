@@ -14,3 +14,4 @@ enum ScanSchedule {
     throw ArgumentError('Unknown ScanSchedule value: $value');
   }
 }
+

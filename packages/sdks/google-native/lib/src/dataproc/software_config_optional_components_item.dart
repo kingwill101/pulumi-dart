@@ -24,8 +24,7 @@ enum SoftwareConfigOptionalComponentsItem {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SoftwareConfigOptionalComponentsItem value: $value',
-    );
+    throw ArgumentError('Unknown SoftwareConfigOptionalComponentsItem value: $value');
   }
 }
+

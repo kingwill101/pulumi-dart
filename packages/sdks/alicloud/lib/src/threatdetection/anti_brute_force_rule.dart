@@ -146,22 +146,16 @@ import 'anti_brute_force_rule_state.dart';
 class AntiBruteForceRule extends pulumi.CustomResource {
   /// The name of the defense rule.
   late final pulumi.Output<String> antiBruteForceRuleName;
-
   /// Specifies whether to set the defense rule as the default rule. Valid values:
   late final pulumi.Output<bool?> defaultRule;
-
   /// FailCount
   late final pulumi.Output<int> failCount;
-
   /// The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
   late final pulumi.Output<int> forbiddenTime;
-
   /// The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
   late final pulumi.Output<AntiBruteForceRuleProtocolType> protocolType;
-
   /// The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
   late final pulumi.Output<int> span;
-
   /// The UUIDs of the servers to which you want to apply the defense rule.
   late final pulumi.Output<List<String>> uuidLists;
 
@@ -174,25 +168,16 @@ class AntiBruteForceRule extends pulumi.CustomResource {
     AntiBruteForceRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     antiBruteForceRuleName = registerOutput<String>('antiBruteForceRuleName');
     defaultRule = registerOutput<bool?>('defaultRule');
     failCount = registerOutput<int>('failCount');
     forbiddenTime = registerOutput<int>('forbiddenTime');
-    protocolType = registerOutput<AntiBruteForceRuleProtocolType>(
-      'protocolType',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AntiBruteForceRuleProtocolType.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    protocolType = registerOutput<AntiBruteForceRuleProtocolType>('protocolType', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AntiBruteForceRuleProtocolType.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     span = registerOutput<int>('span');
     uuidLists = registerOutput<List<String>>('uuidLists');
   }
@@ -215,25 +200,16 @@ class AntiBruteForceRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     antiBruteForceRuleName = registerOutput<String>('antiBruteForceRuleName');
     defaultRule = registerOutput<bool?>('defaultRule');
     failCount = registerOutput<int>('failCount');
     forbiddenTime = registerOutput<int>('forbiddenTime');
-    protocolType = registerOutput<AntiBruteForceRuleProtocolType>(
-      'protocolType',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AntiBruteForceRuleProtocolType.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    protocolType = registerOutput<AntiBruteForceRuleProtocolType>('protocolType', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AntiBruteForceRuleProtocolType.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     span = registerOutput<int>('span');
     uuidLists = registerOutput<List<String>>('uuidLists');
   }

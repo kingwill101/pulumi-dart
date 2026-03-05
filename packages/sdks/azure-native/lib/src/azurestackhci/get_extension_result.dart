@@ -8,49 +8,34 @@ import 'system_data_response.dart';
 class GetExtensionResult {
   /// Aggregate state of Arc Extensions across the nodes in this HCI cluster.
   final String aggregateState;
-
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   final bool? autoUpgradeMinorVersion;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
   final bool? enableAutomaticUpgrade;
-
   /// How the extension handler should be forced to update even if the extension configuration has not changed.
   final String? forceUpdateTag;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// Indicates if the extension is managed by azure or the user.
   final String managedBy;
-
   /// The name of the resource
   final String name;
-
   /// State of Arc Extension in each of the nodes.
   final List<PerNodeExtensionStateResponse> perNodeExtensionDetails;
-
   /// Protected settings (may contain secrets).
   final dynamic protectedSettings;
-
   /// Provisioning state of the Extension proxy resource.
   final String provisioningState;
-
   /// The name of the extension handler publisher.
   final String? publisher;
-
   /// Json formatted public settings for the extension.
   final dynamic settings;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Specifies the version of the script handler. Latest version would be used if not specified.
   final String? typeHandlerVersion;
 
@@ -100,11 +85,7 @@ class GetExtensionResult {
       'id': id,
       'managedBy': managedBy,
       'name': name,
-      'perNodeExtensionDetails':
-          pulumi.Input.encodeList<
-            PerNodeExtensionStateResponse,
-            Map<String, dynamic>
-          >(perNodeExtensionDetails, (value) => value.toMap()),
+      'perNodeExtensionDetails': pulumi.Input.encodeList<PerNodeExtensionStateResponse, Map<String, dynamic>>(perNodeExtensionDetails, (value) => value.toMap()),
       'protectedSettings': ?protectedSettings,
       'provisioningState': provisioningState,
       'publisher': ?publisher,
@@ -118,57 +99,22 @@ class GetExtensionResult {
   factory GetExtensionResult.fromMap(Map<String, dynamic> map) {
     return GetExtensionResult(
       aggregateState: map['aggregateState'] as String,
-      autoUpgradeMinorVersion: (() {
-        final guardedValue = map['autoUpgradeMinorVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      autoUpgradeMinorVersion: (() { final guardedValue = map['autoUpgradeMinorVersion']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      enableAutomaticUpgrade: (() {
-        final guardedValue = map['enableAutomaticUpgrade'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      forceUpdateTag: (() {
-        final guardedValue = map['forceUpdateTag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      enableAutomaticUpgrade: (() { final guardedValue = map['enableAutomaticUpgrade']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      forceUpdateTag: (() { final guardedValue = map['forceUpdateTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       managedBy: map['managedBy'] as String,
       name: map['name'] as String,
-      perNodeExtensionDetails:
-          pulumi.Input.decodeList<PerNodeExtensionStateResponse>(
-            map['perNodeExtensionDetails']!,
-            (value) => PerNodeExtensionStateResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      protectedSettings: (() {
-        final guardedValue = map['protectedSettings'];
-        if (guardedValue == null) return null;
-        return guardedValue;
-      })(),
+      perNodeExtensionDetails: pulumi.Input.decodeList<PerNodeExtensionStateResponse>(map['perNodeExtensionDetails']!, (value) => PerNodeExtensionStateResponse.fromMap((value as Map).cast<String, dynamic>())),
+      protectedSettings: (() { final guardedValue = map['protectedSettings']; if (guardedValue == null) return null; return guardedValue; })(),
       provisioningState: map['provisioningState'] as String,
-      publisher: (() {
-        final guardedValue = map['publisher'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      settings: (() {
-        final guardedValue = map['settings'];
-        if (guardedValue == null) return null;
-        return guardedValue;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      publisher: (() { final guardedValue = map['publisher']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return guardedValue; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      typeHandlerVersion: (() {
-        final guardedValue = map['typeHandlerVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      typeHandlerVersion: (() { final guardedValue = map['typeHandlerVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

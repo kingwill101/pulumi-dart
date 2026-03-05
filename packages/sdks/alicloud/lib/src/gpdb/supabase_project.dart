@@ -233,40 +233,29 @@ class SupabaseProject extends pulumi.CustomResource {
   /// - Support for special characters:! @#$%^& *()_+-=
   /// - Length is 8~32 characters.
   late final pulumi.Output<String> accountPassword;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// cloud disk performance level
   late final pulumi.Output<String> diskPerformanceLevel;
-
   /// The project name. The naming rules are as follows:
   /// - 1~128 characters in length.
   /// - Can only contain English letters, numbers, dashes (-) and underscores (_).
   /// - Must begin with an English letter or an underscore (_).
   late final pulumi.Output<String> projectName;
-
   /// The performance level of the Supabase instance.
   late final pulumi.Output<String> projectSpec;
-
   /// The region ID.
   late final pulumi.Output<String> regionId;
-
   /// The IP address whitelist.
   late final pulumi.Output<List<String>> securityIpLists;
-
   /// The status of the Supabase instance.
   late final pulumi.Output<String> status;
-
   /// The storage capacity of the instance. Unit: GB.
   late final pulumi.Output<int> storageSize;
-
   /// The VPC ID.
   late final pulumi.Output<String> vpcId;
-
   /// The vSwitch ID.
   late final pulumi.Output<String> vswitchId;
-
   /// The Zone ID.
   late final pulumi.Output<String> zoneId;
 
@@ -279,11 +268,11 @@ class SupabaseProject extends pulumi.CustomResource {
     SupabaseProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/supabaseProject:SupabaseProject',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/supabaseProject:SupabaseProject',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountPassword = registerOutput<String>('accountPassword');
     createTime = registerOutput<String>('createTime');
     diskPerformanceLevel = registerOutput<String>('diskPerformanceLevel');
@@ -316,11 +305,11 @@ class SupabaseProject extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/supabaseProject:SupabaseProject',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/supabaseProject:SupabaseProject',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountPassword = registerOutput<String>('accountPassword');
     createTime = registerOutput<String>('createTime');
     diskPerformanceLevel = registerOutput<String>('diskPerformanceLevel');

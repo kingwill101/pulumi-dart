@@ -13,14 +13,15 @@ class BucketReplicationConfigRuleDestinationReplicationTimeTime {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'minutes': minutes};
+    return <String, dynamic>{
+      'minutes': minutes,
+    };
   }
 
-  factory BucketReplicationConfigRuleDestinationReplicationTimeTime.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketReplicationConfigRuleDestinationReplicationTimeTime.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleDestinationReplicationTimeTime(
       minutes: pulumi.Input.fromValue(map['minutes'] as int),
     );
   }
 }
+

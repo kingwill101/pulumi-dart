@@ -8,10 +8,14 @@ class ClusterServiceConnectDefaults {
 
   /// Creates a new [ClusterServiceConnectDefaults].
   /// [namespace] ARN of the `aws.servicediscovery.HttpNamespace` that's used when you create a service and don't specify a Service Connect configuration.
-  ClusterServiceConnectDefaults({required this.namespace});
+  ClusterServiceConnectDefaults({
+    required this.namespace,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'namespace': namespace};
+    return <String, dynamic>{
+      'namespace': namespace,
+    };
   }
 
   factory ClusterServiceConnectDefaults.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class ClusterServiceConnectDefaults {
     );
   }
 }
+

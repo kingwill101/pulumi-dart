@@ -6,7 +6,6 @@ class GetJobQueueJobStateTimeLimitAction {
   final pulumi.Input<String> action;
   final pulumi.Input<int> maxTimeSeconds;
   final pulumi.Input<String> reason;
-
   /// Describes the ability of the queue to accept new jobs (for example, `ENABLED` or `DISABLED`).
   final pulumi.Input<String> state;
 
@@ -40,3 +39,4 @@ class GetJobQueueJobStateTimeLimitAction {
     );
   }
 }
+

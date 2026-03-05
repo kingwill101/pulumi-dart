@@ -6,7 +6,6 @@ import 'get_template_scratches_scratch.dart';
 /// Result data returned by getTemplateScratches.
 class GetTemplateScratchesResult {
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -39,11 +38,7 @@ class GetTemplateScratchesResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'scratches':
-          pulumi.Input.encodeList<
-            GetTemplateScratchesScratch,
-            Map<String, dynamic>
-          >(scratches, (value) => value.toMap()),
+      'scratches': pulumi.Input.encodeList<GetTemplateScratchesScratch, Map<String, dynamic>>(scratches, (value) => value.toMap()),
       'status': ?status,
       'templateScratchType': ?templateScratchType,
     };
@@ -51,34 +46,14 @@ class GetTemplateScratchesResult {
 
   factory GetTemplateScratchesResult.fromMap(Map<String, dynamic> map) {
     return GetTemplateScratchesResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      scratches: pulumi.Input.decodeList<GetTemplateScratchesScratch>(
-        map['scratches']!,
-        (value) => GetTemplateScratchesScratch.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      templateScratchType: (() {
-        final guardedValue = map['templateScratchType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      scratches: pulumi.Input.decodeList<GetTemplateScratchesScratch>(map['scratches']!, (value) => GetTemplateScratchesScratch.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      templateScratchType: (() { final guardedValue = map['templateScratchType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

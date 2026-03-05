@@ -6,13 +6,10 @@ import 'consumers_iam_member_condition.dart';
 /// Input properties used for looking up and filtering ConsumersIamMember resources.
 class ConsumersIamMemberState {
   final pulumi.Input<ConsumersIamMemberCondition>? condition;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String>? consumerProject;
-
   /// (Computed) The etag of the IAM policy.
   final pulumi.Input<String>? etag;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -26,12 +23,10 @@ class ConsumersIamMemberState {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   final pulumi.Input<String>? member;
-
   /// The role that should be applied. Only one
   /// `gcp.endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final pulumi.Input<String>? role;
-
   /// The name of the service. Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String>? serviceName;
 
@@ -53,11 +48,7 @@ class ConsumersIamMemberState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConsumersIamMemberCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<ConsumersIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'consumerProject': ?consumerProject,
       'etag': ?etag,
       'member': ?member,
@@ -68,40 +59,13 @@ class ConsumersIamMemberState {
 
   factory ConsumersIamMemberState.fromMap(Map<String, dynamic> map) {
     return ConsumersIamMemberState(
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConsumersIamMemberCondition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      consumerProject: (() {
-        final guardedValue = map['consumerProject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      member: (() {
-        final guardedValue = map['member'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      role: (() {
-        final guardedValue = map['role'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceName: (() {
-        final guardedValue = map['serviceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConsumersIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      consumerProject: (() { final guardedValue = map['consumerProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      member: (() { final guardedValue = map['member']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

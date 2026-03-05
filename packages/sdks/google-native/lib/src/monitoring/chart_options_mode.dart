@@ -17,3 +17,4 @@ enum ChartOptionsMode {
     throw ArgumentError('Unknown ChartOptionsMode value: $value');
   }
 }
+

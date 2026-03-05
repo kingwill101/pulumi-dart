@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SigningKeyResponse {
   /// key_id is an identifier for the signing key.
   final pulumi.Input<String> keyId;
-
   /// This field contains the corresponding signature scheme. Eg: "rsassa-pss-sha256".
   final pulumi.Input<String> keyScheme;
-
   /// This field identifies the specific signing method. Eg: "rsa", "ed25519", and "ecdsa".
   final pulumi.Input<String> keyType;
-
   /// This field contains the actual public key.
   final pulumi.Input<String> publicKeyValue;
 
@@ -46,3 +43,4 @@ class SigningKeyResponse {
     );
   }
 }
+

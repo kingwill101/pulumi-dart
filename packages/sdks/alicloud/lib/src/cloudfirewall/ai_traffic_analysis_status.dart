@@ -22,11 +22,11 @@ class AiTrafficAnalysisStatus extends pulumi.CustomResource {
     AiTrafficAnalysisStatusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/aiTrafficAnalysisStatus:AiTrafficAnalysisStatus',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/aiTrafficAnalysisStatus:AiTrafficAnalysisStatus',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     status = registerOutput<String>('status');
   }
 
@@ -48,11 +48,11 @@ class AiTrafficAnalysisStatus extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/aiTrafficAnalysisStatus:AiTrafficAnalysisStatus',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/aiTrafficAnalysisStatus:AiTrafficAnalysisStatus',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     status = registerOutput<String>('status');
   }
 }

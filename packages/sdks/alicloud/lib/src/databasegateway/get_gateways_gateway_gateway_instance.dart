@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewaysGatewayGatewayInstance {
   /// The connection type of Gateway instance.
   final pulumi.Input<String> connectEndpointType;
-
   /// The process of version number of Gateway instance.
   final pulumi.Input<String> currentDaemonVersion;
-
   /// The version of Gateway instance.
   final pulumi.Input<String> currentVersion;
-
   /// The endpoint address of Gateway instance.
   final pulumi.Input<String> endPoint;
-
   /// The id of Gateway instance.
   final pulumi.Input<String> gatewayInstanceId;
-
   /// The status of Gateway instance. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
   final pulumi.Input<String> gatewayInstanceStatus;
-
   /// The last Updated time stamp of Gateway instance.
   final pulumi.Input<String> lastUpdateTime;
-
   /// The Local IP ADDRESS of Gateway instance.
   final pulumi.Input<String> localIp;
-
   /// The prompt information of Gateway instance.
   final pulumi.Input<String> message;
-
   /// The host of Gateway instance.
   final pulumi.Input<String> outputIp;
 
@@ -74,20 +65,12 @@ class GetGatewaysGatewayGatewayInstance {
 
   factory GetGatewaysGatewayGatewayInstance.fromMap(Map<String, dynamic> map) {
     return GetGatewaysGatewayGatewayInstance(
-      connectEndpointType: pulumi.Input.fromValue(
-        map['connectEndpointType'] as String,
-      ),
-      currentDaemonVersion: pulumi.Input.fromValue(
-        map['currentDaemonVersion'] as String,
-      ),
+      connectEndpointType: pulumi.Input.fromValue(map['connectEndpointType'] as String),
+      currentDaemonVersion: pulumi.Input.fromValue(map['currentDaemonVersion'] as String),
       currentVersion: pulumi.Input.fromValue(map['currentVersion'] as String),
       endPoint: pulumi.Input.fromValue(map['endPoint'] as String),
-      gatewayInstanceId: pulumi.Input.fromValue(
-        map['gatewayInstanceId'] as String,
-      ),
-      gatewayInstanceStatus: pulumi.Input.fromValue(
-        map['gatewayInstanceStatus'] as String,
-      ),
+      gatewayInstanceId: pulumi.Input.fromValue(map['gatewayInstanceId'] as String),
+      gatewayInstanceStatus: pulumi.Input.fromValue(map['gatewayInstanceStatus'] as String),
       lastUpdateTime: pulumi.Input.fromValue(map['lastUpdateTime'] as String),
       localIp: pulumi.Input.fromValue(map['localIp'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
@@ -95,3 +78,4 @@ class GetGatewaysGatewayGatewayInstance {
     );
   }
 }
+

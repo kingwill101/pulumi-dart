@@ -6,20 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HyperVMigrateFabricModelCustomPropertiesResponse {
   /// Gets or sets the fabric container Id.
   final pulumi.Input<String> fabricContainerId;
-
   /// Gets or sets the fabric resource Id.
   final pulumi.Input<String> fabricResourceId;
-
   /// Gets or sets the ARM Id of the HyperV site.
   final pulumi.Input<String> hyperVSiteId;
-
   /// Gets or sets the instance type.
   /// Expected value is 'HyperVMigrate'.
   final pulumi.Input<String> instanceType;
-
   /// Gets or sets the migration hub Uri.
   final pulumi.Input<String> migrationHubUri;
-
   /// Gets or sets the migration solution ARM Id.
   final pulumi.Input<String> migrationSolutionId;
 
@@ -50,22 +45,15 @@ class HyperVMigrateFabricModelCustomPropertiesResponse {
     };
   }
 
-  factory HyperVMigrateFabricModelCustomPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HyperVMigrateFabricModelCustomPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HyperVMigrateFabricModelCustomPropertiesResponse(
-      fabricContainerId: pulumi.Input.fromValue(
-        map['fabricContainerId'] as String,
-      ),
-      fabricResourceId: pulumi.Input.fromValue(
-        map['fabricResourceId'] as String,
-      ),
+      fabricContainerId: pulumi.Input.fromValue(map['fabricContainerId'] as String),
+      fabricResourceId: pulumi.Input.fromValue(map['fabricResourceId'] as String),
       hyperVSiteId: pulumi.Input.fromValue(map['hyperVSiteId'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       migrationHubUri: pulumi.Input.fromValue(map['migrationHubUri'] as String),
-      migrationSolutionId: pulumi.Input.fromValue(
-        map['migrationSolutionId'] as String,
-      ),
+      migrationSolutionId: pulumi.Input.fromValue(map['migrationSolutionId'] as String),
     );
   }
 }
+

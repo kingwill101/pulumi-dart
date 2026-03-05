@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallRulePropertiesResponse {
   /// End IP address.
   final pulumi.Input<String>? endIpAddress;
-
   /// Provisioning state.
   final pulumi.Input<String> provisioningState;
-
   /// Start IP address.
   final pulumi.Input<String>? startIpAddress;
 
@@ -33,19 +31,10 @@ class FirewallRulePropertiesResponse {
 
   factory FirewallRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FirewallRulePropertiesResponse(
-      endIpAddress: (() {
-        final guardedValue = map['endIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      startIpAddress: (() {
-        final guardedValue = map['startIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endIpAddress: (() { final guardedValue = map['endIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      startIpAddress: (() { final guardedValue = map['startIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

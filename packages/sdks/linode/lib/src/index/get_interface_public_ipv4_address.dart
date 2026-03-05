@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInterfacePublicIpv4Address {
   /// The IPv4 address.
   final pulumi.Input<String> address;
-
   /// Whether this is the primary IPv4 address.
   final pulumi.Input<bool> primary;
 
   /// Creates a new [GetInterfacePublicIpv4Address].
   /// [address] The IPv4 address.
   /// [primary] Whether this is the primary IPv4 address.
-  GetInterfacePublicIpv4Address({required this.address, required this.primary});
+  GetInterfacePublicIpv4Address({
+    required this.address,
+    required this.primary,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'address': address, 'primary': primary};
+    return <String, dynamic>{
+      'address': address,
+      'primary': primary,
+    };
   }
 
   factory GetInterfacePublicIpv4Address.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class GetInterfacePublicIpv4Address {
     );
   }
 }
+

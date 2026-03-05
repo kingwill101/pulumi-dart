@@ -242,22 +242,16 @@ import 'mongo_dbresource_mongo_role_definition_args.dart';
 class MongoDBResourceMongoRoleDefinition extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The database name for which access is being granted for this Role Definition.
   late final pulumi.Output<String?> databaseName;
-
   /// The name of the database account.
   late final pulumi.Output<String> name;
-
   /// A set of privileges contained by the Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Scopes higher than Database are not enforceable as privilege.
   late final pulumi.Output<List<Map<String, dynamic>>?> privileges;
-
   /// A user-friendly name for the Role Definition. Must be unique for the database account.
   late final pulumi.Output<String?> roleName;
-
   /// The set of roles inherited by this Role Definition.
   late final pulumi.Output<List<Map<String, dynamic>>?> roles;
-
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -270,11 +264,11 @@ class MongoDBResourceMongoRoleDefinition extends pulumi.CustomResource {
     MongoDBResourceMongoRoleDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cosmosdb:MongoDBResourceMongoRoleDefinition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cosmosdb:MongoDBResourceMongoRoleDefinition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     databaseName = registerOutput<String?>('databaseName');
     this.name = registerOutput<String>('name');

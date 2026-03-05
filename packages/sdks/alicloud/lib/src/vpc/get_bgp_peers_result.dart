@@ -6,7 +6,6 @@ import 'get_bgp_peers_peer.dart';
 /// Result data returned by getBgpPeers.
 class GetBgpPeersResult {
   final String? bgpGroupId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -39,10 +38,7 @@ class GetBgpPeersResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'peers': pulumi.Input.encodeList<GetBgpPeersPeer, Map<String, dynamic>>(
-        peers,
-        (value) => value.toMap(),
-      ),
+      'peers': pulumi.Input.encodeList<GetBgpPeersPeer, Map<String, dynamic>>(peers, (value) => value.toMap()),
       'routerId': ?routerId,
       'status': ?status,
     };
@@ -50,33 +46,14 @@ class GetBgpPeersResult {
 
   factory GetBgpPeersResult.fromMap(Map<String, dynamic> map) {
     return GetBgpPeersResult(
-      bgpGroupId: (() {
-        final guardedValue = map['bgpGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      bgpGroupId: (() { final guardedValue = map['bgpGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      peers: pulumi.Input.decodeList<GetBgpPeersPeer>(
-        map['peers']!,
-        (value) =>
-            GetBgpPeersPeer.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      routerId: (() {
-        final guardedValue = map['routerId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      peers: pulumi.Input.decodeList<GetBgpPeersPeer>(map['peers']!, (value) => GetBgpPeersPeer.fromMap((value as Map).cast<String, dynamic>())),
+      routerId: (() { final guardedValue = map['routerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

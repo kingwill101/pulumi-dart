@@ -5,19 +5,11 @@ import 'v2models_intent_confirmation_setting_declination_conditional_default_bra
 
 class V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCard {
   /// Configuration blocks for buttons that should be displayed on the response card. The arrangement of the buttons is determined by the platform that displays the button. See `button`.
-  final pulumi.Input<
-    List<
-      V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCardButton
-    >
-  >?
-  buttons;
-
+  final pulumi.Input<List<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCardButton>>? buttons;
   /// URL of an image to display on the response card. The image URL must be publicly available so that the platform displaying the response card has access to the image.
   final pulumi.Input<String>? imageUrl;
-
   /// Subtitle to display on the response card. The format of the subtitle is determined by the platform displaying the response card.
   final pulumi.Input<String>? subtitle;
-
   /// Title to display on the response card. The format of the title is determined by the platform displaying the response card.
   final pulumi.Input<String> title;
 
@@ -35,56 +27,20 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchRespon
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buttons':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCardButton
-            >,
-            List<Map<String, dynamic>>
-          >(
-            buttons,
-            (value) =>
-                pulumi.Input.encodeList<
-                  V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCardButton,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'buttons': ?pulumi.Input.mapOptionalInputValue<List<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCardButton>, List<Map<String, dynamic>>>(buttons, (value) => pulumi.Input.encodeList<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCardButton, Map<String, dynamic>>(value, (value) => value.toMap())),
       'imageUrl': ?imageUrl,
       'subtitle': ?subtitle,
       'title': title,
     };
   }
 
-  factory V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCard.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCard.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCard(
-      buttons: (() {
-        final guardedValue = map['buttons'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCardButton
-          >(
-            guardedValue,
-            (value) =>
-                V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCardButton.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      imageUrl: (() {
-        final guardedValue = map['imageUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subtitle: (() {
-        final guardedValue = map['subtitle'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      buttons: (() { final guardedValue = map['buttons']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCardButton>(guardedValue, (value) => V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCardButton.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      imageUrl: (() { final guardedValue = map['imageUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subtitle: (() { final guardedValue = map['subtitle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
+

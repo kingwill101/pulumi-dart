@@ -14,43 +14,30 @@ import 'node_tolerations.dart';
 class DataLakeConnectorArgs {
   /// Name of MQ dataLakeConnector resource
   final pulumi.Input<String>? dataLakeConnectorName;
-
   /// DataLake database format to use.
   final pulumi.Input<String> databaseFormat;
-
   /// Extended Location
   final pulumi.Input<ExtendedLocationProperty> extendedLocation;
-
   /// The details of DataLakeConnector Docker Image.
   final pulumi.Input<ContainerImage> image;
-
   /// The number of DataLakeConnector pods to spin up.
   final pulumi.Input<int>? instances;
-
   /// The details for connecting with Local Broker.
   final pulumi.Input<LocalBrokerConnectionSpec>? localBrokerConnection;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The log level of the DataLake Connector instances.
   final pulumi.Input<String>? logLevel;
-
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
-
   /// The Node Tolerations for the DataLake Connector pods.
   final pulumi.Input<NodeTolerations>? nodeTolerations;
-
   /// The protocol to use for connecting with Brokers.
   final pulumi.Input<String> protocol;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The protocol to use for connecting with Brokers. NOTE - Enum only storage is supported at at time.
   final pulumi.Input<DataLakeTargetStorage> target;
 
@@ -90,106 +77,38 @@ class DataLakeConnectorArgs {
     return <String, dynamic>{
       'dataLakeConnectorName': ?dataLakeConnectorName,
       'databaseFormat': databaseFormat,
-      'extendedLocation':
-          pulumi.Input.mapInputValue<
-            ExtendedLocationProperty,
-            Map<String, dynamic>
-          >(extendedLocation, (value) => value.toMap()),
-      'image': pulumi.Input.mapInputValue<ContainerImage, Map<String, dynamic>>(
-        image,
-        (value) => value.toMap(),
-      ),
+      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocationProperty, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'image': pulumi.Input.mapInputValue<ContainerImage, Map<String, dynamic>>(image, (value) => value.toMap()),
       'instances': ?instances,
-      'localBrokerConnection':
-          ?pulumi.Input.mapOptionalInputValue<
-            LocalBrokerConnectionSpec,
-            Map<String, dynamic>
-          >(localBrokerConnection, (value) => value.toMap()),
+      'localBrokerConnection': ?pulumi.Input.mapOptionalInputValue<LocalBrokerConnectionSpec, Map<String, dynamic>>(localBrokerConnection, (value) => value.toMap()),
       'location': ?location,
       'logLevel': ?logLevel,
       'mqName': mqName,
-      'nodeTolerations':
-          ?pulumi.Input.mapOptionalInputValue<
-            NodeTolerations,
-            Map<String, dynamic>
-          >(nodeTolerations, (value) => value.toMap()),
+      'nodeTolerations': ?pulumi.Input.mapOptionalInputValue<NodeTolerations, Map<String, dynamic>>(nodeTolerations, (value) => value.toMap()),
       'protocol': protocol,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
-      'target':
-          pulumi.Input.mapInputValue<
-            DataLakeTargetStorage,
-            Map<String, dynamic>
-          >(target, (value) => value.toMap()),
+      'target': pulumi.Input.mapInputValue<DataLakeTargetStorage, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
   factory DataLakeConnectorArgs.fromMap(Map<String, dynamic> map) {
     return DataLakeConnectorArgs(
-      dataLakeConnectorName: (() {
-        final guardedValue = map['dataLakeConnectorName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataLakeConnectorName: (() { final guardedValue = map['dataLakeConnectorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       databaseFormat: pulumi.Input.fromValue(map['databaseFormat'] as String),
-      extendedLocation: pulumi.Input.fromValue(
-        ExtendedLocationProperty.fromMap(
-          (map['extendedLocation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      image: pulumi.Input.fromValue(
-        ContainerImage.fromMap((map['image']! as Map).cast<String, dynamic>()),
-      ),
-      instances: (() {
-        final guardedValue = map['instances'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      localBrokerConnection: (() {
-        final guardedValue = map['localBrokerConnection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LocalBrokerConnectionSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logLevel: (() {
-        final guardedValue = map['logLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      extendedLocation: pulumi.Input.fromValue(ExtendedLocationProperty.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
+      image: pulumi.Input.fromValue(ContainerImage.fromMap((map['image']! as Map).cast<String, dynamic>())),
+      instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      localBrokerConnection: (() { final guardedValue = map['localBrokerConnection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LocalBrokerConnectionSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logLevel: (() { final guardedValue = map['logLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mqName: pulumi.Input.fromValue(map['mqName'] as String),
-      nodeTolerations: (() {
-        final guardedValue = map['nodeTolerations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodeTolerations.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      nodeTolerations: (() { final guardedValue = map['nodeTolerations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeTolerations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      target: pulumi.Input.fromValue(
-        DataLakeTargetStorage.fromMap(
-          (map['target']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      target: pulumi.Input.fromValue(DataLakeTargetStorage.fromMap((map['target']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

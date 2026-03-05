@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyncGroupArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of Storage Sync Service resource.
   final pulumi.Input<String> storageSyncServiceName;
-
   /// Name of Sync Group resource.
   final pulumi.Input<String>? syncGroupName;
 
@@ -36,17 +34,10 @@ class SyncGroupArgs {
 
   factory SyncGroupArgs.fromMap(Map<String, dynamic> map) {
     return SyncGroupArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      storageSyncServiceName: pulumi.Input.fromValue(
-        map['storageSyncServiceName'] as String,
-      ),
-      syncGroupName: (() {
-        final guardedValue = map['syncGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      storageSyncServiceName: pulumi.Input.fromValue(map['storageSyncServiceName'] as String),
+      syncGroupName: (() { final guardedValue = map['syncGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

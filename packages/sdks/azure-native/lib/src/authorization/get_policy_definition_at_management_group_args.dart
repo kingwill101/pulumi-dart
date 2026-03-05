@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyDefinitionAtManagementGroupArgs {
   /// The ID of the management group.
   final pulumi.Input<String> managementGroupId;
-
   /// The name of the policy definition to get.
   final pulumi.Input<String> policyDefinitionName;
 
@@ -28,16 +27,11 @@ class GetPolicyDefinitionAtManagementGroupArgs {
     };
   }
 
-  factory GetPolicyDefinitionAtManagementGroupArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPolicyDefinitionAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyDefinitionAtManagementGroupArgs(
-      managementGroupId: pulumi.Input.fromValue(
-        map['managementGroupId'] as String,
-      ),
-      policyDefinitionName: pulumi.Input.fromValue(
-        map['policyDefinitionName'] as String,
-      ),
+      managementGroupId: pulumi.Input.fromValue(map['managementGroupId'] as String),
+      policyDefinitionName: pulumi.Input.fromValue(map['policyDefinitionName'] as String),
     );
   }
 }
+

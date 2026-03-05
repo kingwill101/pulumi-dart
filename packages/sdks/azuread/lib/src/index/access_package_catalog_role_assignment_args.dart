@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPackageCatalogRoleAssignmentArgs {
   /// The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
   final pulumi.Input<String> catalogId;
-
   /// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   final pulumi.Input<String> principalObjectId;
-
   /// The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
   final pulumi.Input<String> roleId;
 
@@ -34,15 +32,12 @@ class AccessPackageCatalogRoleAssignmentArgs {
     };
   }
 
-  factory AccessPackageCatalogRoleAssignmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessPackageCatalogRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AccessPackageCatalogRoleAssignmentArgs(
       catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
-      principalObjectId: pulumi.Input.fromValue(
-        map['principalObjectId'] as String,
-      ),
+      principalObjectId: pulumi.Input.fromValue(map['principalObjectId'] as String),
       roleId: pulumi.Input.fromValue(map['roleId'] as String),
     );
   }
 }
+

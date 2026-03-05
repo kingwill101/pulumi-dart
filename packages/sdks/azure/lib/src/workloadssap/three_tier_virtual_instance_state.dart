@@ -8,40 +8,28 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 class ThreeTierVirtualInstanceState {
   /// The Geo-Location where the SAP system is to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? appLocation;
-
   /// The environment type for the SAP Three Tier Virtual Instance. Possible values are `NonProd` and `Prod`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? environment;
-
   /// An `identity` block as defined below.
   final pulumi.Input<ThreeTierVirtualInstanceIdentity>? identity;
-
   /// The Azure Region where the SAP Three Tier Virtual Instance should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// The name of the managed Resource Group for the SAP Three Tier Virtual Instance. Changing this forces a new resource to be created.
   final pulumi.Input<String>? managedResourceGroupName;
-
   /// The network access type for managed resources. Possible values are `Private` and `Public`. Defaults to `Public`.
   final pulumi.Input<String>? managedResourcesNetworkAccessType;
-
   /// Specifies the name of this SAP Three Tier Virtual Instance. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the Resource Group where the SAP Three Tier Virtual Instance should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// The FQDN of the SAP system. Changing this forces a new resource to be created.
   final pulumi.Input<String>? sapFqdn;
-
   /// The SAP Product type for the SAP Three Tier Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? sapProduct;
-
   /// A mapping of tags which should be assigned to the SAP Three Tier Virtual Instance.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// A `three_tier_configuration` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfiguration>?
-  threeTierConfiguration;
+  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfiguration>? threeTierConfiguration;
 
   /// Creates a new [ThreeTierVirtualInstanceState].
   /// [appLocation] The Geo-Location where the SAP system is to be created. Changing this forces a new resource to be created.
@@ -75,11 +63,7 @@ class ThreeTierVirtualInstanceState {
     return <String, dynamic>{
       'appLocation': ?appLocation,
       'environment': ?environment,
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            ThreeTierVirtualInstanceIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ThreeTierVirtualInstanceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
       'managedResourceGroupName': ?managedResourceGroupName,
       'managedResourcesNetworkAccessType': ?managedResourcesNetworkAccessType,
@@ -88,86 +72,25 @@ class ThreeTierVirtualInstanceState {
       'sapFqdn': ?sapFqdn,
       'sapProduct': ?sapProduct,
       'tags': ?tags,
-      'threeTierConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            ThreeTierVirtualInstanceThreeTierConfiguration,
-            Map<String, dynamic>
-          >(threeTierConfiguration, (value) => value.toMap()),
+      'threeTierConfiguration': ?pulumi.Input.mapOptionalInputValue<ThreeTierVirtualInstanceThreeTierConfiguration, Map<String, dynamic>>(threeTierConfiguration, (value) => value.toMap()),
     };
   }
 
   factory ThreeTierVirtualInstanceState.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceState(
-      appLocation: (() {
-        final guardedValue = map['appLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      environment: (() {
-        final guardedValue = map['environment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ThreeTierVirtualInstanceIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedResourceGroupName: (() {
-        final guardedValue = map['managedResourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedResourcesNetworkAccessType: (() {
-        final guardedValue = map['managedResourcesNetworkAccessType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sapFqdn: (() {
-        final guardedValue = map['sapFqdn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sapProduct: (() {
-        final guardedValue = map['sapProduct'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      threeTierConfiguration: (() {
-        final guardedValue = map['threeTierConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ThreeTierVirtualInstanceThreeTierConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      appLocation: (() { final guardedValue = map['appLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ThreeTierVirtualInstanceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedResourceGroupName: (() { final guardedValue = map['managedResourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedResourcesNetworkAccessType: (() { final guardedValue = map['managedResourcesNetworkAccessType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sapFqdn: (() { final guardedValue = map['sapFqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sapProduct: (() { final guardedValue = map['sapProduct']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      threeTierConfiguration: (() { final guardedValue = map['threeTierConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ThreeTierVirtualInstanceThreeTierConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

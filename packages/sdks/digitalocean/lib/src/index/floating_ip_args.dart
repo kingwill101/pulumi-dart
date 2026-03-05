@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FloatingIpArgs {
   /// The ID of Droplet that the Floating IP will be assigned to.
   final pulumi.Input<int>? dropletId;
-
   /// The IP Address of the resource
   final pulumi.Input<String>? ipAddress;
-
   /// The region that the Floating IP is reserved to.
   final pulumi.Input<String> region;
 
@@ -20,7 +18,11 @@ class FloatingIpArgs {
   /// [dropletId] The ID of Droplet that the Floating IP will be assigned to.
   /// [ipAddress] The IP Address of the resource
   /// [region] The region that the Floating IP is reserved to.
-  FloatingIpArgs({this.dropletId, this.ipAddress, required this.region});
+  FloatingIpArgs({
+    this.dropletId,
+    this.ipAddress,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,17 +34,10 @@ class FloatingIpArgs {
 
   factory FloatingIpArgs.fromMap(Map<String, dynamic> map) {
     return FloatingIpArgs(
-      dropletId: (() {
-        final guardedValue = map['dropletId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ipAddress: (() {
-        final guardedValue = map['ipAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dropletId: (() { final guardedValue = map['dropletId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

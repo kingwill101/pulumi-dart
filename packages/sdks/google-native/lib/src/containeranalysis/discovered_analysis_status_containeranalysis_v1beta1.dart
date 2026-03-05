@@ -11,17 +11,13 @@ enum DiscoveredAnalysisStatusContaineranalysisV1beta1 {
   const DiscoveredAnalysisStatusContaineranalysisV1beta1(this.wireValue);
   final String wireValue;
 
-  static DiscoveredAnalysisStatusContaineranalysisV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in DiscoveredAnalysisStatusContaineranalysisV1beta1.values) {
+  static DiscoveredAnalysisStatusContaineranalysisV1beta1 fromValue(String value) {
+    for (final item in DiscoveredAnalysisStatusContaineranalysisV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DiscoveredAnalysisStatusContaineranalysisV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown DiscoveredAnalysisStatusContaineranalysisV1beta1 value: $value');
   }
 }
+

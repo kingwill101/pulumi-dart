@@ -7,7 +7,6 @@ import 'fixed_or_percent.dart';
 class AutoscalingPolicyScaleInControl {
   /// Maximum allowed number (or %) of VMs that can be deducted from the peak recommendation during the window autoscaler looks at when computing recommendations. Possibly all these VMs can be deleted at once so user service needs to be prepared to lose that many VMs in one step.
   final pulumi.Input<FixedOrPercent>? maxScaledInReplicas;
-
   /// How far back autoscaling looks when computing recommendations to include directives regarding slower scale in, as described above.
   final pulumi.Input<int>? timeWindowSec;
 
@@ -21,29 +20,16 @@ class AutoscalingPolicyScaleInControl {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxScaledInReplicas':
-          ?pulumi.Input.mapOptionalInputValue<
-            FixedOrPercent,
-            Map<String, dynamic>
-          >(maxScaledInReplicas, (value) => value.toMap()),
+      'maxScaledInReplicas': ?pulumi.Input.mapOptionalInputValue<FixedOrPercent, Map<String, dynamic>>(maxScaledInReplicas, (value) => value.toMap()),
       'timeWindowSec': ?timeWindowSec,
     };
   }
 
   factory AutoscalingPolicyScaleInControl.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyScaleInControl(
-      maxScaledInReplicas: (() {
-        final guardedValue = map['maxScaledInReplicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FixedOrPercent.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      timeWindowSec: (() {
-        final guardedValue = map['timeWindowSec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxScaledInReplicas: (() { final guardedValue = map['maxScaledInReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FixedOrPercent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      timeWindowSec: (() { final guardedValue = map['timeWindowSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

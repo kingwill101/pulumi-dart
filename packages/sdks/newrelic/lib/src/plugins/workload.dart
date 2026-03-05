@@ -945,38 +945,26 @@ import 'workload_status_config_static.dart';
 class Workload extends pulumi.CustomResource {
   /// The New Relic account ID where you want to create the workload.
   late final pulumi.Output<String> accountId;
-
   /// The composite query used to compose a dynamic workload.
   late final pulumi.Output<String> compositeEntitySearchQuery;
-
   /// Relevant information about the workload.
   late final pulumi.Output<String?> description;
-
   /// A list of entity GUIDs manually assigned to this workload. At least one of either `entity_guids` or `entity_search_query` is required.
   late final pulumi.Output<List<String>> entityGuids;
-
   /// A list of search queries that define a dynamic workload. At least one of either `entity_guids` or `entity_search_query` is required. See Nested entity_search_query blocks below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> entitySearchQueries;
-
   /// The unique entity identifier of the workload in New Relic.
   late final pulumi.Output<String> guid;
-
   /// The workload's name.
   late final pulumi.Output<String> name;
-
   /// The URL of the workload.
   late final pulumi.Output<String> permalink;
-
   /// A list of account IDs that will be used to get entities from.
   late final pulumi.Output<List<String>> scopeAccountIds;
-
   /// An input object used to represent an automatic status configuration.See Nested status_config_automatic blocks below for details.
-  late final pulumi.Output<WorkloadStatusConfigAutomatic?>
-  statusConfigAutomatic;
-
+  late final pulumi.Output<WorkloadStatusConfigAutomatic?> statusConfigAutomatic;
   /// A list of static status configurations. You can only configure one static status for a workload.See Nested status_config_static blocks below for details.
   late final pulumi.Output<WorkloadStatusConfigStatic?> statusConfigStatic;
-
   /// The unique entity identifier of the workload.
   late final pulumi.Output<String> workloadId;
 
@@ -989,44 +977,22 @@ class Workload extends pulumi.CustomResource {
     WorkloadArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:plugins/workload:Workload',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:plugins/workload:Workload',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
-    compositeEntitySearchQuery = registerOutput<String>(
-      'compositeEntitySearchQuery',
-    );
+    compositeEntitySearchQuery = registerOutput<String>('compositeEntitySearchQuery');
     description = registerOutput<String?>('description');
     entityGuids = registerOutput<List<String>>('entityGuids');
-    entitySearchQueries = registerOutput<List<Map<String, dynamic>>?>(
-      'entitySearchQueries',
-    );
+    entitySearchQueries = registerOutput<List<Map<String, dynamic>>?>('entitySearchQueries');
     guid = registerOutput<String>('guid');
     this.name = registerOutput<String>('name');
     permalink = registerOutput<String>('permalink');
     scopeAccountIds = registerOutput<List<String>>('scopeAccountIds');
-    statusConfigAutomatic = registerOutput<WorkloadStatusConfigAutomatic?>(
-      'statusConfigAutomatic',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadStatusConfigAutomatic.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    statusConfigStatic = registerOutput<WorkloadStatusConfigStatic?>(
-      'statusConfigStatic',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadStatusConfigStatic.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    statusConfigAutomatic = registerOutput<WorkloadStatusConfigAutomatic?>('statusConfigAutomatic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadStatusConfigAutomatic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    statusConfigStatic = registerOutput<WorkloadStatusConfigStatic?>('statusConfigStatic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadStatusConfigStatic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workloadId = registerOutput<String>('workloadId');
   }
 
@@ -1048,44 +1014,22 @@ class Workload extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:plugins/workload:Workload',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:plugins/workload:Workload',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
-    compositeEntitySearchQuery = registerOutput<String>(
-      'compositeEntitySearchQuery',
-    );
+    compositeEntitySearchQuery = registerOutput<String>('compositeEntitySearchQuery');
     description = registerOutput<String?>('description');
     entityGuids = registerOutput<List<String>>('entityGuids');
-    entitySearchQueries = registerOutput<List<Map<String, dynamic>>?>(
-      'entitySearchQueries',
-    );
+    entitySearchQueries = registerOutput<List<Map<String, dynamic>>?>('entitySearchQueries');
     guid = registerOutput<String>('guid');
     this.name = registerOutput<String>('name');
     permalink = registerOutput<String>('permalink');
     scopeAccountIds = registerOutput<List<String>>('scopeAccountIds');
-    statusConfigAutomatic = registerOutput<WorkloadStatusConfigAutomatic?>(
-      'statusConfigAutomatic',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadStatusConfigAutomatic.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    statusConfigStatic = registerOutput<WorkloadStatusConfigStatic?>(
-      'statusConfigStatic',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkloadStatusConfigStatic.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    statusConfigAutomatic = registerOutput<WorkloadStatusConfigAutomatic?>('statusConfigAutomatic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadStatusConfigAutomatic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    statusConfigStatic = registerOutput<WorkloadStatusConfigStatic?>('statusConfigStatic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadStatusConfigStatic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workloadId = registerOutput<String>('workloadId');
   }
 }

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceLoggingConfigurationAccessLogsKinesisDataFirehose {
   /// The name of the delivery stream.
   final pulumi.Input<String>? deliveryStream;
-
   /// Indicates whether logging is enabled.
   final pulumi.Input<bool> enabled;
 
@@ -24,16 +23,11 @@ class InstanceLoggingConfigurationAccessLogsKinesisDataFirehose {
     };
   }
 
-  factory InstanceLoggingConfigurationAccessLogsKinesisDataFirehose.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceLoggingConfigurationAccessLogsKinesisDataFirehose.fromMap(Map<String, dynamic> map) {
     return InstanceLoggingConfigurationAccessLogsKinesisDataFirehose(
-      deliveryStream: (() {
-        final guardedValue = map['deliveryStream'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deliveryStream: (() { final guardedValue = map['deliveryStream']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

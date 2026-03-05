@@ -11,10 +11,14 @@ class GetGradientaiIndexingJobArgs {
 
   /// Creates a new [GetGradientaiIndexingJobArgs].
   /// [uuid] Required.
-  GetGradientaiIndexingJobArgs({required this.uuid});
+  GetGradientaiIndexingJobArgs({
+    required this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uuid': uuid};
+    return <String, dynamic>{
+      'uuid': uuid,
+    };
   }
 
   factory GetGradientaiIndexingJobArgs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetGradientaiIndexingJobArgs {
     );
   }
 }
+

@@ -146,46 +146,32 @@ import 'replication_link_args.dart';
 class ReplicationLink extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Whether the user is currently allowed to terminate the link.
   late final pulumi.Output<bool> isTerminationAllowed;
-
   /// Link type (GEO, NAMED, STANDBY). Update operation does not support NAMED.
   late final pulumi.Output<String?> linkType;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Resource partner database.
   late final pulumi.Output<String> partnerDatabase;
-
   /// Resource partner database Id.
   late final pulumi.Output<String> partnerDatabaseId;
-
   /// Resource partner location.
   late final pulumi.Output<String> partnerLocation;
-
   /// Partner replication role.
   late final pulumi.Output<String> partnerRole;
-
   /// Resource partner server.
   late final pulumi.Output<String> partnerServer;
-
   /// Seeding completion percentage for the link.
   late final pulumi.Output<int> percentComplete;
-
   /// Replication mode.
   late final pulumi.Output<String> replicationMode;
-
   /// Replication state (PENDING, SEEDING, CATCHUP, SUSPENDED).
   late final pulumi.Output<String> replicationState;
-
   /// Local replication role.
   late final pulumi.Output<String> role;
-
   /// Time at which the link was created.
   late final pulumi.Output<String> startTime;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -198,11 +184,11 @@ class ReplicationLink extends pulumi.CustomResource {
     ReplicationLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:ReplicationLink',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:ReplicationLink',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     isTerminationAllowed = registerOutput<bool>('isTerminationAllowed');
     linkType = registerOutput<String?>('linkType');

@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAttachedNetworkArgs {
   /// The ID of the associated Dev Center.
   final pulumi.Input<String> devCenterId;
-
   /// The name of this Dev Center Attached Network.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetAttachedNetworkArgs].
   /// [devCenterId] The ID of the associated Dev Center.
   /// [name] The name of this Dev Center Attached Network.
-  GetAttachedNetworkArgs({required this.devCenterId, required this.name});
+  GetAttachedNetworkArgs({
+    required this.devCenterId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'devCenterId': devCenterId, 'name': name};
+    return <String, dynamic>{
+      'devCenterId': devCenterId,
+      'name': name,
+    };
   }
 
   factory GetAttachedNetworkArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetAttachedNetworkArgs {
     );
   }
 }
+

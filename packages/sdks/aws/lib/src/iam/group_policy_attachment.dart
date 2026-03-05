@@ -173,7 +173,6 @@ import 'group_policy_attachment_state.dart';
 class GroupPolicyAttachment extends pulumi.CustomResource {
   /// The group the policy should be applied to
   late final pulumi.Output<String> group;
-
   /// The ARN of the policy you want to apply
   late final pulumi.Output<String> policyArn;
 
@@ -186,11 +185,11 @@ class GroupPolicyAttachment extends pulumi.CustomResource {
     GroupPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/groupPolicyAttachment:GroupPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/groupPolicyAttachment:GroupPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     group = registerOutput<String>('group');
     policyArn = registerOutput<String>('policyArn');
   }
@@ -213,11 +212,11 @@ class GroupPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/groupPolicyAttachment:GroupPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/groupPolicyAttachment:GroupPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     group = registerOutput<String>('group');
     policyArn = registerOutput<String>('policyArn');
   }

@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayArgs {
   /// The ID of the API Management Service in which the Gateway exists.
   final pulumi.Input<String> apiManagementId;
-
   /// The name of the API Management Gateway.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetGatewayArgs].
   /// [apiManagementId] The ID of the API Management Service in which the Gateway exists.
   /// [name] The name of the API Management Gateway.
-  GetGatewayArgs({required this.apiManagementId, required this.name});
+  GetGatewayArgs({
+    required this.apiManagementId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'apiManagementId': apiManagementId, 'name': name};
+    return <String, dynamic>{
+      'apiManagementId': apiManagementId,
+      'name': name,
+    };
   }
 
   factory GetGatewayArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetGatewayArgs {
     );
   }
 }
+

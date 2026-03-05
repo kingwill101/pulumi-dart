@@ -6,11 +6,9 @@ class ListingSubscriptionLinkedDatasetMap {
   /// (Output)
   /// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
   final pulumi.Input<String>? linkedDataset;
-
   /// (Output)
   /// Output only. Listing for which linked resource is created.
   final pulumi.Input<String>? listing;
-
   /// (Required) The identifier for this object. Format specified above.
   final pulumi.Input<String> resourceName;
 
@@ -32,21 +30,12 @@ class ListingSubscriptionLinkedDatasetMap {
     };
   }
 
-  factory ListingSubscriptionLinkedDatasetMap.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListingSubscriptionLinkedDatasetMap.fromMap(Map<String, dynamic> map) {
     return ListingSubscriptionLinkedDatasetMap(
-      linkedDataset: (() {
-        final guardedValue = map['linkedDataset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      listing: (() {
-        final guardedValue = map['listing'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      linkedDataset: (() { final guardedValue = map['linkedDataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      listing: (() { final guardedValue = map['listing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

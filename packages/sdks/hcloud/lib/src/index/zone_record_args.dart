@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ZoneRecordArgs {
   /// Comment of the Zone Record.
   final pulumi.Input<String>? comment;
-
   /// Name of the Zone Record.
   final pulumi.Input<String>? name;
-
   /// Type of the Zone Record.
   final pulumi.Input<String> type;
-
   /// Value of the Zone Record.
   final pulumi.Input<String> value;
-
   /// ID or Name of the parent Zone.
   final pulumi.Input<String> zone;
 
@@ -48,19 +44,12 @@ class ZoneRecordArgs {
 
   factory ZoneRecordArgs.fromMap(Map<String, dynamic> map) {
     return ZoneRecordArgs(
-      comment: (() {
-        final guardedValue = map['comment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
+

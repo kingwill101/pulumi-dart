@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMachineLearningDatastoreArgs {
   /// The Datastore name.
   final pulumi.Input<String> datastoreName;
-
   /// Name of the resource group in which workspace is located.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -37,10 +35,9 @@ class GetMachineLearningDatastoreArgs {
   factory GetMachineLearningDatastoreArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineLearningDatastoreArgs(
       datastoreName: pulumi.Input.fromValue(map['datastoreName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

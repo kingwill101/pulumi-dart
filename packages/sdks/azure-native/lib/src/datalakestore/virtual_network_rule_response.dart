@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkRuleResponse {
   /// The resource identifier.
   final pulumi.Input<String> id;
-
   /// The resource name.
   final pulumi.Input<String> name;
-
   /// The resource identifier for the subnet.
   final pulumi.Input<String> subnetId;
-
   /// The resource type.
   final pulumi.Input<String> type;
 
@@ -46,3 +43,4 @@ class VirtualNetworkRuleResponse {
     );
   }
 }
+

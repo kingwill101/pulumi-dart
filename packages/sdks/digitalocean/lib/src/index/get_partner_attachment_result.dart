@@ -64,13 +64,7 @@ class GetPartnerAttachmentResult {
 
   factory GetPartnerAttachmentResult.fromMap(Map<String, dynamic> map) {
     return GetPartnerAttachmentResult(
-      bgp: (() {
-        final guardedValue = map['bgp'];
-        if (guardedValue == null) return null;
-        return GetPartnerAttachmentBgp.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      bgp: (() { final guardedValue = map['bgp']; if (guardedValue == null) return null; return GetPartnerAttachmentBgp.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       childrens: (map['childrens'] as List).cast<String>(),
       connectionBandwidthInMbps: map['connectionBandwidthInMbps'] as int,
       createdAt: map['createdAt'] as String,
@@ -78,14 +72,11 @@ class GetPartnerAttachmentResult {
       naasProvider: map['naasProvider'] as String,
       name: map['name'] as String,
       parentUuid: map['parentUuid'] as String,
-      redundancyZone: (() {
-        final guardedValue = map['redundancyZone'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      redundancyZone: (() { final guardedValue = map['redundancyZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: map['region'] as String,
       state: map['state'] as String,
       vpcIds: (map['vpcIds'] as List).cast<String>(),
     );
   }
 }
+

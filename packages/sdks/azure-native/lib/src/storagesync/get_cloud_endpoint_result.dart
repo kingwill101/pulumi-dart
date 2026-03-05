@@ -7,46 +7,32 @@ import 'system_data_response.dart';
 class GetCloudEndpointResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Azure file share name
   final String? azureFileShareName;
-
   /// Backup Enabled
   final String backupEnabled;
-
   /// Cloud endpoint change enumeration status
   final CloudEndpointChangeEnumerationStatusResponse changeEnumerationStatus;
-
   /// Friendly Name
   final String? friendlyName;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Resource Last Operation Name
   final String? lastOperationName;
-
   /// CloudEndpoint lastWorkflowId
   final String? lastWorkflowId;
-
   /// The name of the resource
   final String name;
-
   /// Partnership Id
   final String? partnershipId;
-
   /// CloudEndpoint Provisioning State
   final String? provisioningState;
-
   /// Storage Account Resource Id
   final String? storageAccountResourceId;
-
   /// Storage Account Tenant Id
   final String? storageAccountTenantId;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -107,57 +93,21 @@ class GetCloudEndpointResult {
   factory GetCloudEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetCloudEndpointResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      azureFileShareName: (() {
-        final guardedValue = map['azureFileShareName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      azureFileShareName: (() { final guardedValue = map['azureFileShareName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       backupEnabled: map['backupEnabled'] as String,
-      changeEnumerationStatus:
-          CloudEndpointChangeEnumerationStatusResponse.fromMap(
-            (map['changeEnumerationStatus']! as Map).cast<String, dynamic>(),
-          ),
-      friendlyName: (() {
-        final guardedValue = map['friendlyName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      changeEnumerationStatus: CloudEndpointChangeEnumerationStatusResponse.fromMap((map['changeEnumerationStatus']! as Map).cast<String, dynamic>()),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      lastOperationName: (() {
-        final guardedValue = map['lastOperationName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      lastWorkflowId: (() {
-        final guardedValue = map['lastWorkflowId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      lastOperationName: (() { final guardedValue = map['lastOperationName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastWorkflowId: (() { final guardedValue = map['lastWorkflowId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      partnershipId: (() {
-        final guardedValue = map['partnershipId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      provisioningState: (() {
-        final guardedValue = map['provisioningState'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      storageAccountResourceId: (() {
-        final guardedValue = map['storageAccountResourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      storageAccountTenantId: (() {
-        final guardedValue = map['storageAccountTenantId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      partnershipId: (() { final guardedValue = map['partnershipId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageAccountResourceId: (() { final guardedValue = map['storageAccountResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageAccountTenantId: (() { final guardedValue = map['storageAccountTenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

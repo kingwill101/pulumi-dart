@@ -15,3 +15,4 @@ enum ReportGranularityType {
     throw ArgumentError('Unknown ReportGranularityType value: $value');
   }
 }
+

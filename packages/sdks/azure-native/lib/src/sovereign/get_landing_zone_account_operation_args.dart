@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLandingZoneAccountOperationArgs {
   /// The landing zone account.
   final pulumi.Input<String> landingZoneAccountName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetLandingZoneAccountOperationArgs {
 
   factory GetLandingZoneAccountOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetLandingZoneAccountOperationArgs(
-      landingZoneAccountName: pulumi.Input.fromValue(
-        map['landingZoneAccountName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      landingZoneAccountName: pulumi.Input.fromValue(map['landingZoneAccountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

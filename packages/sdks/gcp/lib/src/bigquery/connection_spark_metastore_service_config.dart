@@ -8,21 +8,20 @@ class ConnectionSparkMetastoreServiceConfig {
 
   /// Creates a new [ConnectionSparkMetastoreServiceConfig].
   /// [metastoreService] Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].
-  ConnectionSparkMetastoreServiceConfig({this.metastoreService});
+  ConnectionSparkMetastoreServiceConfig({
+    this.metastoreService,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metastoreService': ?metastoreService};
+    return <String, dynamic>{
+      'metastoreService': ?metastoreService,
+    };
   }
 
-  factory ConnectionSparkMetastoreServiceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionSparkMetastoreServiceConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionSparkMetastoreServiceConfig(
-      metastoreService: (() {
-        final guardedValue = map['metastoreService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      metastoreService: (() { final guardedValue = map['metastoreService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

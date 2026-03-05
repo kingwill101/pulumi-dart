@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTagInheritanceSettingArgs {
   /// The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
   final pulumi.Input<String> scope;
-
   /// Setting type.
   final pulumi.Input<String> type;
 
   /// Creates a new [GetTagInheritanceSettingArgs].
   /// [scope] The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
   /// [type] Setting type.
-  GetTagInheritanceSettingArgs({required this.scope, required this.type});
+  GetTagInheritanceSettingArgs({
+    required this.scope,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scope': scope, 'type': type};
+    return <String, dynamic>{
+      'scope': scope,
+      'type': type,
+    };
   }
 
   factory GetTagInheritanceSettingArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetTagInheritanceSettingArgs {
     );
   }
 }
+

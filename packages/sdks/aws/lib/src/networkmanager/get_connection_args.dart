@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionArgs {
   /// ID of the specific connection to retrieve.
   final pulumi.Input<String> connectionId;
-
   /// ID of the Global Network of the connection to retrieve.
   final pulumi.Input<String> globalNetworkId;
-
   /// Key-value tags for the connection.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -38,13 +36,8 @@ class GetConnectionArgs {
     return GetConnectionArgs(
       connectionId: pulumi.Input.fromValue(map['connectionId'] as String),
       globalNetworkId: pulumi.Input.fromValue(map['globalNetworkId'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

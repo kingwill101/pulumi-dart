@@ -6,7 +6,6 @@ import 'get_state_configurations_configuration.dart';
 /// Result data returned by getStateConfigurations.
 class GetStateConfigurationsResult {
   final List<GetStateConfigurationsConfiguration> configurations;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -32,11 +31,7 @@ class GetStateConfigurationsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configurations':
-          pulumi.Input.encodeList<
-            GetStateConfigurationsConfiguration,
-            Map<String, dynamic>
-          >(configurations, (value) => value.toMap()),
+      'configurations': pulumi.Input.encodeList<GetStateConfigurationsConfiguration, Map<String, dynamic>>(configurations, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
@@ -47,30 +42,13 @@ class GetStateConfigurationsResult {
 
   factory GetStateConfigurationsResult.fromMap(Map<String, dynamic> map) {
     return GetStateConfigurationsResult(
-      configurations:
-          pulumi.Input.decodeList<GetStateConfigurationsConfiguration>(
-            map['configurations']!,
-            (value) => GetStateConfigurationsConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      configurations: pulumi.Input.decodeList<GetStateConfigurationsConfiguration>(map['configurations']!, (value) => GetStateConfigurationsConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

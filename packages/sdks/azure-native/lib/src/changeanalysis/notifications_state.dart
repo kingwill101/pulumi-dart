@@ -16,3 +16,4 @@ enum NotificationsState {
     throw ArgumentError('Unknown NotificationsState value: $value');
   }
 }
+

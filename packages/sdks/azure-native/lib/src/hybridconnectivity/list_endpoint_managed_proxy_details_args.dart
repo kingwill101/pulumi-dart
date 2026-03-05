@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListEndpointManagedProxyDetailsArgs {
   /// The endpoint name.
   final pulumi.Input<String> endpointName;
-
   /// The target host name.
   final pulumi.Input<String>? hostname;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
-
   /// The name of the service.
   final pulumi.Input<String> service;
-
   /// The name of the service. It is an optional property, if not provided, service configuration tokens issue code would be by passed.
   final pulumi.Input<String>? serviceName;
 
@@ -46,23 +42,14 @@ class ListEndpointManagedProxyDetailsArgs {
     };
   }
 
-  factory ListEndpointManagedProxyDetailsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListEndpointManagedProxyDetailsArgs.fromMap(Map<String, dynamic> map) {
     return ListEndpointManagedProxyDetailsArgs(
       endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
-      hostname: (() {
-        final guardedValue = map['hostname'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
       service: pulumi.Input.fromValue(map['service'] as String),
-      serviceName: (() {
-        final guardedValue = map['serviceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

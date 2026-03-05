@@ -126,31 +126,22 @@ import 'user_profile_user_settings.dart';
 class UserProfile extends pulumi.CustomResource {
   /// The user profile Amazon Resource Name (ARN).
   late final pulumi.Output<String> arn;
-
   /// The ID of the associated Domain.
   late final pulumi.Output<String> domainId;
-
   /// The ID of the user's profile in the Amazon Elastic File System (EFS) volume.
   late final pulumi.Output<String> homeEfsFileSystemUid;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A specifier for the type of value specified in `single_sign_on_user_value`. Currently, the only supported value is `UserName`. If the Domain's AuthMode is SSO, this field is required. If the Domain's AuthMode is not SSO, this field cannot be specified.
   late final pulumi.Output<String?> singleSignOnUserIdentifier;
-
   /// The username of the associated AWS Single Sign-On User for this User Profile. If the Domain's AuthMode is SSO, this field is required, and must match a valid username of a user in your directory. If the Domain's AuthMode is not SSO, this field cannot be specified.
   late final pulumi.Output<String?> singleSignOnUserValue;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The name for the User Profile.
   late final pulumi.Output<String> userProfileName;
-
   /// The user settings. See User Settings below.
   late final pulumi.Output<UserProfileUserSettings?> userSettings;
 
@@ -163,32 +154,21 @@ class UserProfile extends pulumi.CustomResource {
     UserProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/userProfile:UserProfile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/userProfile:UserProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     domainId = registerOutput<String>('domainId');
     homeEfsFileSystemUid = registerOutput<String>('homeEfsFileSystemUid');
     region = registerOutput<String>('region');
-    singleSignOnUserIdentifier = registerOutput<String?>(
-      'singleSignOnUserIdentifier',
-    );
+    singleSignOnUserIdentifier = registerOutput<String?>('singleSignOnUserIdentifier');
     singleSignOnUserValue = registerOutput<String?>('singleSignOnUserValue');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     userProfileName = registerOutput<String>('userProfileName');
-    userSettings = registerOutput<UserProfileUserSettings?>(
-      'userSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserProfileUserSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    userSettings = registerOutput<UserProfileUserSettings?>('userSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserProfileUserSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [UserProfile] resource's state with the given [name] and [id].
@@ -209,31 +189,20 @@ class UserProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/userProfile:UserProfile',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/userProfile:UserProfile',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     domainId = registerOutput<String>('domainId');
     homeEfsFileSystemUid = registerOutput<String>('homeEfsFileSystemUid');
     region = registerOutput<String>('region');
-    singleSignOnUserIdentifier = registerOutput<String?>(
-      'singleSignOnUserIdentifier',
-    );
+    singleSignOnUserIdentifier = registerOutput<String?>('singleSignOnUserIdentifier');
     singleSignOnUserValue = registerOutput<String?>('singleSignOnUserValue');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     userProfileName = registerOutput<String>('userProfileName');
-    userSettings = registerOutput<UserProfileUserSettings?>(
-      'userSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserProfileUserSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    userSettings = registerOutput<UserProfileUserSettings?>('userSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserProfileUserSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

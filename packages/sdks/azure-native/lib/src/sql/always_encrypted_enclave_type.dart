@@ -15,3 +15,4 @@ enum AlwaysEncryptedEnclaveType {
     throw ArgumentError('Unknown AlwaysEncryptedEnclaveType value: $value');
   }
 }
+

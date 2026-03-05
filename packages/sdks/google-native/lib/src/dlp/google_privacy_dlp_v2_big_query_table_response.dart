@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2BigQueryTableResponse {
   /// Dataset ID of the table.
   final pulumi.Input<String> datasetId;
-
   /// The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
   final pulumi.Input<String> project;
-
   /// Name of the table.
   final pulumi.Input<String> tableId;
 
@@ -31,9 +29,7 @@ class GooglePrivacyDlpV2BigQueryTableResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2BigQueryTableResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2BigQueryTableResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryTableResponse(
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),
@@ -41,3 +37,4 @@ class GooglePrivacyDlpV2BigQueryTableResponse {
     );
   }
 }
+

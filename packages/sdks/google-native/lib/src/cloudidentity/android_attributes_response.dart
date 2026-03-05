@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AndroidAttributesResponse {
   /// Whether the device passes Android CTS compliance.
   final pulumi.Input<bool> ctsProfileMatch;
-
   /// Whether applications from unknown sources can be installed on device.
   final pulumi.Input<bool> enabledUnknownSources;
-
   /// Whether any potentially harmful apps were detected on the device.
   final pulumi.Input<bool> hasPotentiallyHarmfulApps;
-
   /// Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
   final pulumi.Input<bool> ownerProfileAccount;
-
   /// Ownership privileges on device.
   final pulumi.Input<String> ownershipPrivilege;
-
   /// Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
   final pulumi.Input<bool> supportsWorkProfile;
-
   /// Whether Android verified boot status is GREEN.
   final pulumi.Input<bool> verifiedBoot;
-
   /// Whether Google Play Protect Verify Apps is enabled.
   final pulumi.Input<bool> verifyAppsEnabled;
 
@@ -64,25 +57,14 @@ class AndroidAttributesResponse {
   factory AndroidAttributesResponse.fromMap(Map<String, dynamic> map) {
     return AndroidAttributesResponse(
       ctsProfileMatch: pulumi.Input.fromValue(map['ctsProfileMatch'] as bool),
-      enabledUnknownSources: pulumi.Input.fromValue(
-        map['enabledUnknownSources'] as bool,
-      ),
-      hasPotentiallyHarmfulApps: pulumi.Input.fromValue(
-        map['hasPotentiallyHarmfulApps'] as bool,
-      ),
-      ownerProfileAccount: pulumi.Input.fromValue(
-        map['ownerProfileAccount'] as bool,
-      ),
-      ownershipPrivilege: pulumi.Input.fromValue(
-        map['ownershipPrivilege'] as String,
-      ),
-      supportsWorkProfile: pulumi.Input.fromValue(
-        map['supportsWorkProfile'] as bool,
-      ),
+      enabledUnknownSources: pulumi.Input.fromValue(map['enabledUnknownSources'] as bool),
+      hasPotentiallyHarmfulApps: pulumi.Input.fromValue(map['hasPotentiallyHarmfulApps'] as bool),
+      ownerProfileAccount: pulumi.Input.fromValue(map['ownerProfileAccount'] as bool),
+      ownershipPrivilege: pulumi.Input.fromValue(map['ownershipPrivilege'] as String),
+      supportsWorkProfile: pulumi.Input.fromValue(map['supportsWorkProfile'] as bool),
       verifiedBoot: pulumi.Input.fromValue(map['verifiedBoot'] as bool),
-      verifyAppsEnabled: pulumi.Input.fromValue(
-        map['verifyAppsEnabled'] as bool,
-      ),
+      verifyAppsEnabled: pulumi.Input.fromValue(map['verifyAppsEnabled'] as bool),
     );
   }
 }
+

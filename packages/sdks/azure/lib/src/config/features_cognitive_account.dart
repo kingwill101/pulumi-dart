@@ -7,7 +7,9 @@ class FeaturesCognitiveAccount {
 
   /// Creates a new [FeaturesCognitiveAccount].
   /// [purgeSoftDeleteOnDestroy] Optional.
-  FeaturesCognitiveAccount({this.purgeSoftDeleteOnDestroy});
+  FeaturesCognitiveAccount({
+    this.purgeSoftDeleteOnDestroy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,11 +19,8 @@ class FeaturesCognitiveAccount {
 
   factory FeaturesCognitiveAccount.fromMap(Map<String, dynamic> map) {
     return FeaturesCognitiveAccount(
-      purgeSoftDeleteOnDestroy: (() {
-        final guardedValue = map['purgeSoftDeleteOnDestroy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      purgeSoftDeleteOnDestroy: (() { final guardedValue = map['purgeSoftDeleteOnDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

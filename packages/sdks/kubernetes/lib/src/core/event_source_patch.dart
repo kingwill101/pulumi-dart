@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSourcePatch {
   /// Component from which the event is generated.
   final pulumi.Input<String>? component;
-
   /// Node name on which the event is generated.
   final pulumi.Input<String>? host;
 
   /// Creates a new [EventSourcePatch].
   /// [component] Component from which the event is generated.
   /// [host] Node name on which the event is generated.
-  EventSourcePatch({this.component, this.host});
+  EventSourcePatch({
+    this.component,
+    this.host,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'component': ?component, 'host': ?host};
+    return <String, dynamic>{
+      'component': ?component,
+      'host': ?host,
+    };
   }
 
   factory EventSourcePatch.fromMap(Map<String, dynamic> map) {
     return EventSourcePatch(
-      component: (() {
-        final guardedValue = map['component'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      component: (() { final guardedValue = map['component']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

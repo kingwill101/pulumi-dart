@@ -39,36 +39,13 @@ class DomainCreate {
 
   factory DomainCreate.fromMap(Map<String, dynamic> map) {
     return DomainCreate(
-      autodestroy: (() {
-        final guardedValue = map['autodestroy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      bypassCache: (() {
-        final guardedValue = map['bypassCache'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      forceBoot: (() {
-        final guardedValue = map['forceBoot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      paused: (() {
-        final guardedValue = map['paused'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resetNvram: (() {
-        final guardedValue = map['resetNvram'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      validate: (() {
-        final guardedValue = map['validate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      autodestroy: (() { final guardedValue = map['autodestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      bypassCache: (() { final guardedValue = map['bypassCache']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      forceBoot: (() { final guardedValue = map['forceBoot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      paused: (() { final guardedValue = map['paused']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resetNvram: (() { final guardedValue = map['resetNvram']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      validate: (() { final guardedValue = map['validate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

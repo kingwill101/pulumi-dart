@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource {
   /// The original name of the uploaded file
   final pulumi.Input<String>? originalFileName;
-
   /// The size of the file in bytes
   final pulumi.Input<String>? sizeInBytes;
-
   /// The stored object key for the file
   final pulumi.Input<String>? storedObjectKey;
 
@@ -30,25 +28,12 @@ class GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource {
     };
   }
 
-  factory GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource(
-      originalFileName: (() {
-        final guardedValue = map['originalFileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sizeInBytes: (() {
-        final guardedValue = map['sizeInBytes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storedObjectKey: (() {
-        final guardedValue = map['storedObjectKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      originalFileName: (() { final guardedValue = map['originalFileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sizeInBytes: (() { final guardedValue = map['sizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storedObjectKey: (() { final guardedValue = map['storedObjectKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

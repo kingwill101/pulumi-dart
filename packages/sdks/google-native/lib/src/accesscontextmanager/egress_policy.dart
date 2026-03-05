@@ -8,46 +8,29 @@ import 'egress_to.dart';
 class EgressPolicy {
   /// Defines conditions on the source of a request causing this EgressPolicy to apply.
   final pulumi.Input<EgressFrom>? egressFrom;
-
   /// Defines the conditions on the ApiOperation and destination resources that cause this EgressPolicy to apply.
   final pulumi.Input<EgressTo>? egressTo;
 
   /// Creates a new [EgressPolicy].
   /// [egressFrom] Defines conditions on the source of a request causing this EgressPolicy to apply.
   /// [egressTo] Defines the conditions on the ApiOperation and destination resources that cause this EgressPolicy to apply.
-  EgressPolicy({this.egressFrom, this.egressTo});
+  EgressPolicy({
+    this.egressFrom,
+    this.egressTo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'egressFrom':
-          ?pulumi.Input.mapOptionalInputValue<EgressFrom, Map<String, dynamic>>(
-            egressFrom,
-            (value) => value.toMap(),
-          ),
-      'egressTo':
-          ?pulumi.Input.mapOptionalInputValue<EgressTo, Map<String, dynamic>>(
-            egressTo,
-            (value) => value.toMap(),
-          ),
+      'egressFrom': ?pulumi.Input.mapOptionalInputValue<EgressFrom, Map<String, dynamic>>(egressFrom, (value) => value.toMap()),
+      'egressTo': ?pulumi.Input.mapOptionalInputValue<EgressTo, Map<String, dynamic>>(egressTo, (value) => value.toMap()),
     };
   }
 
   factory EgressPolicy.fromMap(Map<String, dynamic> map) {
     return EgressPolicy(
-      egressFrom: (() {
-        final guardedValue = map['egressFrom'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EgressFrom.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      egressTo: (() {
-        final guardedValue = map['egressTo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EgressTo.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      egressFrom: (() { final guardedValue = map['egressFrom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EgressFrom.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      egressTo: (() { final guardedValue = map['egressTo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EgressTo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'maintenance_window_response_container_v1beta1.dart';
 class MaintenancePolicyResponseContainerV1beta1 {
   /// A hash identifying the version of this policy, so that updates to fields of the policy won't accidentally undo intermediate changes (and so that users of the API unaware of some fields won't accidentally remove other fields). Make a `get()` request to the cluster to get the current resource version and include it with requests to set the policy.
   final pulumi.Input<String> resourceVersion;
-
   /// Specifies the maintenance window in which maintenance may be performed.
   final pulumi.Input<MaintenanceWindowResponseContainerV1beta1> window;
 
@@ -22,24 +21,15 @@ class MaintenancePolicyResponseContainerV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'resourceVersion': resourceVersion,
-      'window':
-          pulumi.Input.mapInputValue<
-            MaintenanceWindowResponseContainerV1beta1,
-            Map<String, dynamic>
-          >(window, (value) => value.toMap()),
+      'window': pulumi.Input.mapInputValue<MaintenanceWindowResponseContainerV1beta1, Map<String, dynamic>>(window, (value) => value.toMap()),
     };
   }
 
-  factory MaintenancePolicyResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MaintenancePolicyResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MaintenancePolicyResponseContainerV1beta1(
       resourceVersion: pulumi.Input.fromValue(map['resourceVersion'] as String),
-      window: pulumi.Input.fromValue(
-        MaintenanceWindowResponseContainerV1beta1.fromMap(
-          (map['window']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      window: pulumi.Input.fromValue(MaintenanceWindowResponseContainerV1beta1.fromMap((map['window']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

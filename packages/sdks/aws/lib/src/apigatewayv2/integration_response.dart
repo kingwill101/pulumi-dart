@@ -119,22 +119,16 @@ import 'integration_response_state.dart';
 class IntegrationResponse extends pulumi.CustomResource {
   /// API identifier.
   late final pulumi.Output<String> apiId;
-
   /// How to handle response payload content type conversions. Valid values: `CONVERT_TO_BINARY`, `CONVERT_TO_TEXT`.
   late final pulumi.Output<String?> contentHandlingStrategy;
-
   /// Identifier of the `aws.apigatewayv2.Integration`.
   late final pulumi.Output<String> integrationId;
-
   /// Integration response key.
   late final pulumi.Output<String> integrationResponseKey;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client.
   late final pulumi.Output<Map<String, String>?> responseTemplates;
-
   /// The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
   late final pulumi.Output<String?> templateSelectionExpression;
 
@@ -147,24 +141,18 @@ class IntegrationResponse extends pulumi.CustomResource {
     IntegrationResponseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigatewayv2/integrationResponse:IntegrationResponse',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigatewayv2/integrationResponse:IntegrationResponse',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
-    contentHandlingStrategy = registerOutput<String?>(
-      'contentHandlingStrategy',
-    );
+    contentHandlingStrategy = registerOutput<String?>('contentHandlingStrategy');
     integrationId = registerOutput<String>('integrationId');
     integrationResponseKey = registerOutput<String>('integrationResponseKey');
     region = registerOutput<String>('region');
-    responseTemplates = registerOutput<Map<String, String>?>(
-      'responseTemplates',
-    );
-    templateSelectionExpression = registerOutput<String?>(
-      'templateSelectionExpression',
-    );
+    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates');
+    templateSelectionExpression = registerOutput<String?>('templateSelectionExpression');
   }
 
   /// Gets an existing [IntegrationResponse] resource's state with the given [name] and [id].
@@ -185,23 +173,17 @@ class IntegrationResponse extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:apigatewayv2/integrationResponse:IntegrationResponse',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:apigatewayv2/integrationResponse:IntegrationResponse',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
-    contentHandlingStrategy = registerOutput<String?>(
-      'contentHandlingStrategy',
-    );
+    contentHandlingStrategy = registerOutput<String?>('contentHandlingStrategy');
     integrationId = registerOutput<String>('integrationId');
     integrationResponseKey = registerOutput<String>('integrationResponseKey');
     region = registerOutput<String>('region');
-    responseTemplates = registerOutput<Map<String, String>?>(
-      'responseTemplates',
-    );
-    templateSelectionExpression = registerOutput<String?>(
-      'templateSelectionExpression',
-    );
+    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates');
+    templateSelectionExpression = registerOutput<String?>('templateSelectionExpression');
   }
 }

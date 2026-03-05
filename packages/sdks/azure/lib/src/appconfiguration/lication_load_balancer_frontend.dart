@@ -156,13 +156,10 @@ import 'lication_load_balancer_frontend_state.dart';
 class LicationLoadBalancerFrontend extends pulumi.CustomResource {
   /// The ID of the Application Gateway for Containers. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationLoadBalancerId;
-
   /// The Fully Qualified Domain Name of the DNS record associated to an Application Gateway for Containers Frontend.
   late final pulumi.Output<String> fullyQualifiedDomainName;
-
   /// The name which should be used for this Application Gateway for Containers Frontend. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A mapping of tags which should be assigned to the Application Gateway for Containers Frontend.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -175,17 +172,13 @@ class LicationLoadBalancerFrontend extends pulumi.CustomResource {
     LicationLoadBalancerFrontendArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appconfiguration/licationLoadBalancerFrontend:LicationLoadBalancerFrontend',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationLoadBalancerId = registerOutput<String>(
-      'applicationLoadBalancerId',
-    );
-    fullyQualifiedDomainName = registerOutput<String>(
-      'fullyQualifiedDomainName',
-    );
+          'azure:appconfiguration/licationLoadBalancerFrontend:LicationLoadBalancerFrontend',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
+    fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -208,17 +201,13 @@ class LicationLoadBalancerFrontend extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appconfiguration/licationLoadBalancerFrontend:LicationLoadBalancerFrontend',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationLoadBalancerId = registerOutput<String>(
-      'applicationLoadBalancerId',
-    );
-    fullyQualifiedDomainName = registerOutput<String>(
-      'fullyQualifiedDomainName',
-    );
+          'azure:appconfiguration/licationLoadBalancerFrontend:LicationLoadBalancerFrontend',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
+    fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
   }

@@ -6,51 +6,24 @@ import 'google_cloud_dialogflow_cx_v3_fulfillment_conditional_cases_case.dart';
 /// A list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
 class GoogleCloudDialogflowCxV3FulfillmentConditionalCases {
   /// A list of cascading if-else conditions.
-  final pulumi.Input<
-    List<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase>
-  >?
-  cases;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase>>? cases;
 
   /// Creates a new [GoogleCloudDialogflowCxV3FulfillmentConditionalCases].
   /// [cases] A list of cascading if-else conditions.
-  GoogleCloudDialogflowCxV3FulfillmentConditionalCases({this.cases});
+  GoogleCloudDialogflowCxV3FulfillmentConditionalCases({
+    this.cases,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cases':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase>,
-            List<Map<String, dynamic>>
-          >(
-            cases,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'cases': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase>, List<Map<String, dynamic>>>(cases, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3FulfillmentConditionalCases.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3FulfillmentConditionalCases.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3FulfillmentConditionalCases(
-      cases: (() {
-        final guardedValue = map['cases'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase
-          >(
-            guardedValue,
-            (value) =>
-                GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      cases: (() { final guardedValue = map['cases']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase>(guardedValue, (value) => GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

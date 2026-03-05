@@ -12,17 +12,20 @@ class VolumeDataProtectionSnapshotPolicy {
 
   /// Creates a new [VolumeDataProtectionSnapshotPolicy].
   /// [snapshotPolicyId] Resource ID of the snapshot policy to apply to the volume.
-  VolumeDataProtectionSnapshotPolicy({required this.snapshotPolicyId});
+  VolumeDataProtectionSnapshotPolicy({
+    required this.snapshotPolicyId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'snapshotPolicyId': snapshotPolicyId};
+    return <String, dynamic>{
+      'snapshotPolicyId': snapshotPolicyId,
+    };
   }
 
   factory VolumeDataProtectionSnapshotPolicy.fromMap(Map<String, dynamic> map) {
     return VolumeDataProtectionSnapshotPolicy(
-      snapshotPolicyId: pulumi.Input.fromValue(
-        map['snapshotPolicyId'] as String,
-      ),
+      snapshotPolicyId: pulumi.Input.fromValue(map['snapshotPolicyId'] as String),
     );
   }
 }
+

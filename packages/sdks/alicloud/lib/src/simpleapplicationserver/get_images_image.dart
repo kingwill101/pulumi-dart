@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImagesImage {
   /// The description of the image.
   final pulumi.Input<String> description;
-
   /// The ID of the Instance Image.
   final pulumi.Input<String> id;
-
   /// The ID of the image.
   final pulumi.Input<String> imageId;
-
   /// The name of the resource.
   final pulumi.Input<String> imageName;
-
   /// The type of the image. Valid values: `app`, `custom`, `system`.
   final pulumi.Input<String> imageType;
-
   /// The platform of Plan supported.
   final pulumi.Input<String> platform;
 
@@ -59,3 +54,4 @@ class GetImagesImage {
     );
   }
 }
+

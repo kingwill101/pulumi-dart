@@ -8,46 +8,29 @@ import 'user_managed.dart';
 class Replication {
   /// The Secret will automatically be replicated without any restrictions.
   final pulumi.Input<Automatic>? automatic;
-
   /// The Secret will only be replicated into the locations specified.
   final pulumi.Input<UserManaged>? userManaged;
 
   /// Creates a new [Replication].
   /// [automatic] The Secret will automatically be replicated without any restrictions.
   /// [userManaged] The Secret will only be replicated into the locations specified.
-  Replication({this.automatic, this.userManaged});
+  Replication({
+    this.automatic,
+    this.userManaged,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'automatic':
-          ?pulumi.Input.mapOptionalInputValue<Automatic, Map<String, dynamic>>(
-            automatic,
-            (value) => value.toMap(),
-          ),
-      'userManaged':
-          ?pulumi.Input.mapOptionalInputValue<
-            UserManaged,
-            Map<String, dynamic>
-          >(userManaged, (value) => value.toMap()),
+      'automatic': ?pulumi.Input.mapOptionalInputValue<Automatic, Map<String, dynamic>>(automatic, (value) => value.toMap()),
+      'userManaged': ?pulumi.Input.mapOptionalInputValue<UserManaged, Map<String, dynamic>>(userManaged, (value) => value.toMap()),
     };
   }
 
   factory Replication.fromMap(Map<String, dynamic> map) {
     return Replication(
-      automatic: (() {
-        final guardedValue = map['automatic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Automatic.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      userManaged: (() {
-        final guardedValue = map['userManaged'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UserManaged.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      automatic: (() { final guardedValue = map['automatic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Automatic.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      userManaged: (() { final guardedValue = map['userManaged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserManaged.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupsGroup {
   /// Id of the group.
   final pulumi.Input<String> groupId;
-
   /// Name of the group.
   final pulumi.Input<String> groupName;
 
   /// Creates a new [GetGroupsGroup].
   /// [groupId] Id of the group.
   /// [groupName] Name of the group.
-  GetGroupsGroup({required this.groupId, required this.groupName});
+  GetGroupsGroup({
+    required this.groupId,
+    required this.groupName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupId': groupId, 'groupName': groupName};
+    return <String, dynamic>{
+      'groupId': groupId,
+      'groupName': groupName,
+    };
   }
 
   factory GetGroupsGroup.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class GetGroupsGroup {
     );
   }
 }
+

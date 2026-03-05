@@ -6,19 +6,14 @@ import 'resource_location_data_contract_response.dart';
 class GetGatewayResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gateway description
   final String? description;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// Gateway location.
   final ResourceLocationDataContractResponse? locationData;
-
   /// The name of the resource
   final String name;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -52,21 +47,12 @@ class GetGatewayResult {
   factory GetGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetGatewayResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      locationData: (() {
-        final guardedValue = map['locationData'];
-        if (guardedValue == null) return null;
-        return ResourceLocationDataContractResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      locationData: (() { final guardedValue = map['locationData']; if (guardedValue == null) return null; return ResourceLocationDataContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
+

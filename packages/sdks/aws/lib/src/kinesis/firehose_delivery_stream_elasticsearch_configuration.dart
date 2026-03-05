@@ -9,55 +9,32 @@ import 'firehose_delivery_stream_elasticsearch_configuration_vpc_config.dart';
 class FirehoseDeliveryStreamElasticsearchConfiguration {
   /// Buffer incoming data for the specified period of time, in seconds between 0 to 900, before delivering it to the destination.  The default value is 300s.
   final pulumi.Input<int>? bufferingInterval;
-
   /// Buffer incoming data to the specified size, in MBs between 1 to 100, before delivering it to the destination.  The default value is 5MB.
   final pulumi.Input<int>? bufferingSize;
-
   /// The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
-  final pulumi.Input<
-    FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions
-  >?
-  cloudwatchLoggingOptions;
-
+  final pulumi.Input<FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions>? cloudwatchLoggingOptions;
   /// The endpoint to use when communicating with the cluster. Conflicts with `domain_arn`.
   final pulumi.Input<String>? clusterEndpoint;
-
   /// The ARN of the Amazon ES domain.  The pattern needs to be `arn:.*`.  Conflicts with `cluster_endpoint`.
   final pulumi.Input<String>? domainArn;
-
   /// The Elasticsearch index name.
   final pulumi.Input<String> indexName;
-
   /// The Elasticsearch index rotation period.  Index rotation appends a timestamp to the IndexName to facilitate expiration of old data.  Valid values are `NoRotation`, `OneHour`, `OneDay`, `OneWeek`, and `OneMonth`.  The default value is `OneDay`.
   final pulumi.Input<String>? indexRotationPeriod;
-
   /// The data processing configuration.  See `processing_configuration` block below for details.
-  final pulumi.Input<
-    FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration
-  >?
-  processingConfiguration;
-
+  final pulumi.Input<FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration>? processingConfiguration;
   /// After an initial failure to deliver to Amazon Elasticsearch, the total amount of time, in seconds between 0 to 7200, during which Firehose re-attempts delivery (including the first attempt).  After this time has elapsed, the failed documents are written to Amazon S3.  The default value is 300s.  There will be no retry if the value is 0.
   final pulumi.Input<int>? retryDuration;
-
   /// The ARN of the IAM role to be assumed by Firehose for calling the Amazon ES Configuration API and for indexing documents.  The IAM role must have permission for `DescribeElasticsearchDomain`, `DescribeElasticsearchDomains`, and `DescribeElasticsearchDomainConfig`.  The pattern needs to be `arn:.*`.
   final pulumi.Input<String> roleArn;
-
   /// Defines how documents should be delivered to Amazon S3.  Valid values are `FailedDocumentsOnly` and `AllDocuments`.  Default value is `FailedDocumentsOnly`.
   final pulumi.Input<String>? s3BackupMode;
-
   /// The S3 Configuration. See `s3_configuration` block below for details.
-  final pulumi.Input<
-    FirehoseDeliveryStreamElasticsearchConfigurationS3Configuration
-  >
-  s3Configuration;
-
+  final pulumi.Input<FirehoseDeliveryStreamElasticsearchConfigurationS3Configuration> s3Configuration;
   /// The Elasticsearch type name with maximum length of 100 characters.
   final pulumi.Input<String>? typeName;
-
   /// The VPC configuration for the delivery stream to connect to Elastic Search associated with the VPC. See `vpc_config` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamElasticsearchConfigurationVpcConfig>?
-  vpcConfig;
+  final pulumi.Input<FirehoseDeliveryStreamElasticsearchConfigurationVpcConfig>? vpcConfig;
 
   /// Creates a new [FirehoseDeliveryStreamElasticsearchConfiguration].
   /// [bufferingInterval] Buffer incoming data for the specified period of time, in seconds between 0 to 900, before delivering it to the destination.  The default value is 300s.
@@ -95,115 +72,38 @@ class FirehoseDeliveryStreamElasticsearchConfiguration {
     return <String, dynamic>{
       'bufferingInterval': ?bufferingInterval,
       'bufferingSize': ?bufferingSize,
-      'cloudwatchLoggingOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions,
-            Map<String, dynamic>
-          >(cloudwatchLoggingOptions, (value) => value.toMap()),
+      'cloudwatchLoggingOptions': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions, Map<String, dynamic>>(cloudwatchLoggingOptions, (value) => value.toMap()),
       'clusterEndpoint': ?clusterEndpoint,
       'domainArn': ?domainArn,
       'indexName': indexName,
       'indexRotationPeriod': ?indexRotationPeriod,
-      'processingConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration,
-            Map<String, dynamic>
-          >(processingConfiguration, (value) => value.toMap()),
+      'processingConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration, Map<String, dynamic>>(processingConfiguration, (value) => value.toMap()),
       'retryDuration': ?retryDuration,
       'roleArn': roleArn,
       's3BackupMode': ?s3BackupMode,
-      's3Configuration':
-          pulumi.Input.mapInputValue<
-            FirehoseDeliveryStreamElasticsearchConfigurationS3Configuration,
-            Map<String, dynamic>
-          >(s3Configuration, (value) => value.toMap()),
+      's3Configuration': pulumi.Input.mapInputValue<FirehoseDeliveryStreamElasticsearchConfigurationS3Configuration, Map<String, dynamic>>(s3Configuration, (value) => value.toMap()),
       'typeName': ?typeName,
-      'vpcConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            FirehoseDeliveryStreamElasticsearchConfigurationVpcConfig,
-            Map<String, dynamic>
-          >(vpcConfig, (value) => value.toMap()),
+      'vpcConfig': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamElasticsearchConfigurationVpcConfig, Map<String, dynamic>>(vpcConfig, (value) => value.toMap()),
     };
   }
 
-  factory FirehoseDeliveryStreamElasticsearchConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirehoseDeliveryStreamElasticsearchConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamElasticsearchConfiguration(
-      bufferingInterval: (() {
-        final guardedValue = map['bufferingInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      bufferingSize: (() {
-        final guardedValue = map['bufferingSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      cloudwatchLoggingOptions: (() {
-        final guardedValue = map['cloudwatchLoggingOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      clusterEndpoint: (() {
-        final guardedValue = map['clusterEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      domainArn: (() {
-        final guardedValue = map['domainArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bufferingInterval: (() { final guardedValue = map['bufferingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bufferingSize: (() { final guardedValue = map['bufferingSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cloudwatchLoggingOptions: (() { final guardedValue = map['cloudwatchLoggingOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      clusterEndpoint: (() { final guardedValue = map['clusterEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      domainArn: (() { final guardedValue = map['domainArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       indexName: pulumi.Input.fromValue(map['indexName'] as String),
-      indexRotationPeriod: (() {
-        final guardedValue = map['indexRotationPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      processingConfiguration: (() {
-        final guardedValue = map['processingConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      retryDuration: (() {
-        final guardedValue = map['retryDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      indexRotationPeriod: (() { final guardedValue = map['indexRotationPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      processingConfiguration: (() { final guardedValue = map['processingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      retryDuration: (() { final guardedValue = map['retryDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
-      s3BackupMode: (() {
-        final guardedValue = map['s3BackupMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      s3Configuration: pulumi.Input.fromValue(
-        FirehoseDeliveryStreamElasticsearchConfigurationS3Configuration.fromMap(
-          (map['s3Configuration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      typeName: (() {
-        final guardedValue = map['typeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vpcConfig: (() {
-        final guardedValue = map['vpcConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FirehoseDeliveryStreamElasticsearchConfigurationVpcConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      s3BackupMode: (() { final guardedValue = map['s3BackupMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s3Configuration: pulumi.Input.fromValue(FirehoseDeliveryStreamElasticsearchConfigurationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())),
+      typeName: (() { final guardedValue = map['typeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vpcConfig: (() { final guardedValue = map['vpcConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirehoseDeliveryStreamElasticsearchConfigurationVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

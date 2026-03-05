@@ -8,19 +8,20 @@ class EntryTypeRequiredAspect {
 
   /// Creates a new [EntryTypeRequiredAspect].
   /// [type] Required aspect type for the entry type.
-  EntryTypeRequiredAspect({this.type});
+  EntryTypeRequiredAspect({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
   factory EntryTypeRequiredAspect.fromMap(Map<String, dynamic> map) {
     return EntryTypeRequiredAspect(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

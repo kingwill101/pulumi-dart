@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricDimension {
   /// The dimension value.
   final pulumi.Input<String> sourceName;
-
   /// The dimension type.
   final pulumi.Input<String> sourceType;
 
   /// Creates a new [MetricDimension].
   /// [sourceName] The dimension value.
   /// [sourceType] The dimension type.
-  MetricDimension({required this.sourceName, required this.sourceType});
+  MetricDimension({
+    required this.sourceName,
+    required this.sourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +31,4 @@ class MetricDimension {
     );
   }
 }
+

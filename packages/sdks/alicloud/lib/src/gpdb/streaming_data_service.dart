@@ -361,22 +361,16 @@ import 'streaming_data_service_state.dart';
 class StreamingDataService extends pulumi.CustomResource {
   /// Create time
   late final pulumi.Output<String> createTime;
-
   /// The ID of the associated instance.
   late final pulumi.Output<String> dbInstanceId;
-
   /// The description of the service.
   late final pulumi.Output<String?> serviceDescription;
-
   /// Service ID
   late final pulumi.Output<String> serviceId;
-
   /// Service Name
   late final pulumi.Output<String> serviceName;
-
   /// Resource Specifications
   late final pulumi.Output<String> serviceSpec;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -389,11 +383,11 @@ class StreamingDataService extends pulumi.CustomResource {
     StreamingDataServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/streamingDataService:StreamingDataService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/streamingDataService:StreamingDataService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dbInstanceId = registerOutput<String>('dbInstanceId');
     serviceDescription = registerOutput<String?>('serviceDescription');
@@ -421,11 +415,11 @@ class StreamingDataService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/streamingDataService:StreamingDataService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/streamingDataService:StreamingDataService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dbInstanceId = registerOutput<String>('dbInstanceId');
     serviceDescription = registerOutput<String?>('serviceDescription');

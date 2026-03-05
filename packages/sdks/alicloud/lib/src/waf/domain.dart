@@ -226,58 +226,41 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
   late final pulumi.Output<String?> clusterType;
-
   /// The CNAME record assigned by the WAF instance to the specified domain.
   late final pulumi.Output<String> cname;
-
   /// The connection timeout for WAF exclusive clusters. Unit: seconds.
   late final pulumi.Output<int?> connectionTime;
-
   /// Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
   late final pulumi.Output<String> domain;
-
   /// The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
   late final pulumi.Output<String> domainName;
-
   /// List of the HTTP 2.0 ports.
   late final pulumi.Output<List<String>?> http2Ports;
-
   /// List of the HTTP ports.
   late final pulumi.Output<List<String>?> httpPorts;
-
   /// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
   /// By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
   late final pulumi.Output<String?> httpToUserIp;
-
   /// List of the HTTPS ports.
   late final pulumi.Output<List<String>?> httpsPorts;
-
   /// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
   late final pulumi.Output<String?> httpsRedirect;
-
   /// The ID of the WAF instance.
   late final pulumi.Output<String> instanceId;
-
   /// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
   late final pulumi.Output<String> isAccessProduct;
-
   /// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
   late final pulumi.Output<String?> loadBalancing;
-
   /// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
   /// * key: The key of label
   /// * value: The value of label
   late final pulumi.Output<List<Map<String, dynamic>>?> logHeaders;
-
   /// The read timeout of a WAF exclusive cluster. Unit: seconds.
   late final pulumi.Output<int?> readTime;
-
   /// The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// List of the IP address or domain of the origin server to which the specified domain points.
   late final pulumi.Output<List<String>?> sourceIps;
-
   /// The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
   late final pulumi.Output<int?> writeTime;
 
@@ -285,13 +268,16 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_waf_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:waf/domain:Domain',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Domain(
+    String name, {
+    DomainArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:waf/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterType = registerOutput<String?>('clusterType');
     cname = registerOutput<String>('cname');
     connectionTime = registerOutput<int?>('connectionTime');
@@ -330,11 +316,11 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:waf/domain:Domain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:waf/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterType = registerOutput<String?>('clusterType');
     cname = registerOutput<String>('cname');
     connectionTime = registerOutput<int?>('connectionTime');

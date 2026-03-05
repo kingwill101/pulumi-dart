@@ -9,13 +9,20 @@ class DevOpsAzureSku {
 
   /// Creates a new [DevOpsAzureSku].
   /// [name] The Azure SKU name of the machines in the pool.
-  DevOpsAzureSku({required this.name});
+  DevOpsAzureSku({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory DevOpsAzureSku.fromMap(Map<String, dynamic> map) {
-    return DevOpsAzureSku(name: pulumi.Input.fromValue(map['name'] as String));
+    return DevOpsAzureSku(
+      name: pulumi.Input.fromValue(map['name'] as String),
+    );
   }
 }
+

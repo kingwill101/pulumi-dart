@@ -195,46 +195,32 @@ import 'system_data_response.dart';
 class Student extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Student Budget
   late final pulumi.Output<AmountResponse> budget;
-
   /// Date student was added to the lab
   late final pulumi.Output<String> effectiveDate;
-
   /// Student Email
   late final pulumi.Output<String> email;
-
   /// Date this student is set to expire from the lab.
   late final pulumi.Output<String> expirationDate;
-
   /// First Name
   late final pulumi.Output<String> firstName;
-
   /// Last Name
   late final pulumi.Output<String> lastName;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Student Role
   late final pulumi.Output<String> role;
-
   /// Student Lab Status
   late final pulumi.Output<String> status;
-
   /// Subscription alias
   late final pulumi.Output<String?> subscriptionAlias;
-
   /// Subscription Id
   late final pulumi.Output<String> subscriptionId;
-
   /// subscription invite last sent date
   late final pulumi.Output<String?> subscriptionInviteLastSentDate;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -247,22 +233,13 @@ class Student extends pulumi.CustomResource {
     StudentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:education:Student',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:education:Student',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    budget = registerOutput<AmountResponse>(
-      'budget',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AmountResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    budget = registerOutput<AmountResponse>('budget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveDate = registerOutput<String>('effectiveDate');
     email = registerOutput<String>('email');
     expirationDate = registerOutput<String>('expirationDate');
@@ -273,19 +250,8 @@ class Student extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     subscriptionAlias = registerOutput<String?>('subscriptionAlias');
     subscriptionId = registerOutput<String>('subscriptionId');
-    subscriptionInviteLastSentDate = registerOutput<String?>(
-      'subscriptionInviteLastSentDate',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    subscriptionInviteLastSentDate = registerOutput<String?>('subscriptionInviteLastSentDate');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

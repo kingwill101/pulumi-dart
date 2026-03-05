@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IotHubDeviceUpdateInstanceDiagnosticStorageAccount {
   /// Connection String of the Diagnostic Storage Account.
   final pulumi.Input<String> connectionString;
-
   /// Resource ID of the Diagnostic Storage Account.
   final pulumi.Input<String> id;
 
@@ -18,17 +17,17 @@ class IotHubDeviceUpdateInstanceDiagnosticStorageAccount {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'connectionString': connectionString, 'id': id};
+    return <String, dynamic>{
+      'connectionString': connectionString,
+      'id': id,
+    };
   }
 
-  factory IotHubDeviceUpdateInstanceDiagnosticStorageAccount.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IotHubDeviceUpdateInstanceDiagnosticStorageAccount.fromMap(Map<String, dynamic> map) {
     return IotHubDeviceUpdateInstanceDiagnosticStorageAccount(
-      connectionString: pulumi.Input.fromValue(
-        map['connectionString'] as String,
-      ),
+      connectionString: pulumi.Input.fromValue(map['connectionString'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
+

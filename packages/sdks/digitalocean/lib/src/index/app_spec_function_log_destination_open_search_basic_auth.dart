@@ -5,33 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppSpecFunctionLogDestinationOpenSearchBasicAuth {
   /// Password for basic authentication.
   final pulumi.Input<String>? password;
-
   /// user for basic authentication.
   final pulumi.Input<String>? user;
 
   /// Creates a new [AppSpecFunctionLogDestinationOpenSearchBasicAuth].
   /// [password] Password for basic authentication.
   /// [user] user for basic authentication.
-  AppSpecFunctionLogDestinationOpenSearchBasicAuth({this.password, this.user});
+  AppSpecFunctionLogDestinationOpenSearchBasicAuth({
+    this.password,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': ?password, 'user': ?user};
+    return <String, dynamic>{
+      'password': ?password,
+      'user': ?user,
+    };
   }
 
-  factory AppSpecFunctionLogDestinationOpenSearchBasicAuth.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppSpecFunctionLogDestinationOpenSearchBasicAuth.fromMap(Map<String, dynamic> map) {
     return AppSpecFunctionLogDestinationOpenSearchBasicAuth(
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      user: (() {
-        final guardedValue = map['user'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

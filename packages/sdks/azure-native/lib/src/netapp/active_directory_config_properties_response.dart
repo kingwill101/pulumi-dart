@@ -7,37 +7,26 @@ import 'secret_password_response.dart';
 class ActiveDirectoryConfigPropertiesResponse {
   /// Status of the Active Directory
   final pulumi.Input<String> activeDirectoryStatus;
-
   /// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
   final pulumi.Input<List<String>>? administrators;
-
   /// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
   final pulumi.Input<List<String>>? backupOperators;
-
   /// An array of DNS server IP addresses(IPv4 only) for the Active Directory
   final pulumi.Input<List<String>>? dns;
-
   /// Name of the Active Directory domain
   final pulumi.Input<String> domain;
-
   /// The Organizational Unit (OU) within the Windows Active Directory
   final pulumi.Input<String>? organizationalUnit;
-
   /// Azure lifecycle management.
   final pulumi.Input<String> provisioningState;
-
   /// Access password from Azure KeyVault Secrets to connect Active Directory
   final pulumi.Input<SecretPasswordResponse> secretPassword;
-
   /// Domain Users in the Active directory to be given SecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
   final pulumi.Input<List<String>>? securityOperators;
-
   /// The Active Directory site the service will limit Domain Controller discovery to
   final pulumi.Input<String>? site;
-
   /// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
   final pulumi.Input<String>? smbServerName;
-
   /// A domain user account with permission to create machine accounts
   final pulumi.Input<String>? userName;
 
@@ -78,11 +67,7 @@ class ActiveDirectoryConfigPropertiesResponse {
       'domain': domain,
       'organizationalUnit': ?organizationalUnit,
       'provisioningState': provisioningState,
-      'secretPassword':
-          pulumi.Input.mapInputValue<
-            SecretPasswordResponse,
-            Map<String, dynamic>
-          >(secretPassword, (value) => value.toMap()),
+      'secretPassword': pulumi.Input.mapInputValue<SecretPasswordResponse, Map<String, dynamic>>(secretPassword, (value) => value.toMap()),
       'securityOperators': ?securityOperators,
       'site': ?site,
       'smbServerName': ?smbServerName,
@@ -90,62 +75,21 @@ class ActiveDirectoryConfigPropertiesResponse {
     };
   }
 
-  factory ActiveDirectoryConfigPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ActiveDirectoryConfigPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConfigPropertiesResponse(
-      activeDirectoryStatus: pulumi.Input.fromValue(
-        map['activeDirectoryStatus'] as String,
-      ),
-      administrators: (() {
-        final guardedValue = map['administrators'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      backupOperators: (() {
-        final guardedValue = map['backupOperators'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      dns: (() {
-        final guardedValue = map['dns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      activeDirectoryStatus: pulumi.Input.fromValue(map['activeDirectoryStatus'] as String),
+      administrators: (() { final guardedValue = map['administrators']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      backupOperators: (() { final guardedValue = map['backupOperators']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      dns: (() { final guardedValue = map['dns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       domain: pulumi.Input.fromValue(map['domain'] as String),
-      organizationalUnit: (() {
-        final guardedValue = map['organizationalUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      secretPassword: pulumi.Input.fromValue(
-        SecretPasswordResponse.fromMap(
-          (map['secretPassword']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      securityOperators: (() {
-        final guardedValue = map['securityOperators'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      site: (() {
-        final guardedValue = map['site'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      smbServerName: (() {
-        final guardedValue = map['smbServerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      organizationalUnit: (() { final guardedValue = map['organizationalUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      secretPassword: pulumi.Input.fromValue(SecretPasswordResponse.fromMap((map['secretPassword']! as Map).cast<String, dynamic>())),
+      securityOperators: (() { final guardedValue = map['securityOperators']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      site: (() { final guardedValue = map['site']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      smbServerName: (() { final guardedValue = map['smbServerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

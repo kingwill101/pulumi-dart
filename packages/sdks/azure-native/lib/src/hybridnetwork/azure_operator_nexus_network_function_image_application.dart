@@ -9,18 +9,13 @@ import 'depends_on_profile.dart';
 class AzureOperatorNexusNetworkFunctionImageApplication {
   /// Azure Operator Distributed Services image artifact profile.
   final pulumi.Input<AzureOperatorNexusImageArtifactProfile>? artifactProfile;
-
   /// The artifact type.
   /// Expected value is 'ImageFile'.
   final pulumi.Input<String> artifactType;
-
   /// Depends on profile definition.
   final pulumi.Input<DependsOnProfile>? dependsOnProfile;
-
   /// Deploy mapping rule profile.
-  final pulumi.Input<AzureOperatorNexusImageDeployMappingRuleProfile>?
-  deployParametersMappingRuleProfile;
-
+  final pulumi.Input<AzureOperatorNexusImageDeployMappingRuleProfile>? deployParametersMappingRuleProfile;
   /// The name of the network function application.
   final pulumi.Input<String>? name;
 
@@ -40,63 +35,22 @@ class AzureOperatorNexusNetworkFunctionImageApplication {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifactProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureOperatorNexusImageArtifactProfile,
-            Map<String, dynamic>
-          >(artifactProfile, (value) => value.toMap()),
+      'artifactProfile': ?pulumi.Input.mapOptionalInputValue<AzureOperatorNexusImageArtifactProfile, Map<String, dynamic>>(artifactProfile, (value) => value.toMap()),
       'artifactType': artifactType,
-      'dependsOnProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            DependsOnProfile,
-            Map<String, dynamic>
-          >(dependsOnProfile, (value) => value.toMap()),
-      'deployParametersMappingRuleProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureOperatorNexusImageDeployMappingRuleProfile,
-            Map<String, dynamic>
-          >(deployParametersMappingRuleProfile, (value) => value.toMap()),
+      'dependsOnProfile': ?pulumi.Input.mapOptionalInputValue<DependsOnProfile, Map<String, dynamic>>(dependsOnProfile, (value) => value.toMap()),
+      'deployParametersMappingRuleProfile': ?pulumi.Input.mapOptionalInputValue<AzureOperatorNexusImageDeployMappingRuleProfile, Map<String, dynamic>>(deployParametersMappingRuleProfile, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
-  factory AzureOperatorNexusNetworkFunctionImageApplication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureOperatorNexusNetworkFunctionImageApplication.fromMap(Map<String, dynamic> map) {
     return AzureOperatorNexusNetworkFunctionImageApplication(
-      artifactProfile: (() {
-        final guardedValue = map['artifactProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureOperatorNexusImageArtifactProfile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      artifactProfile: (() { final guardedValue = map['artifactProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureOperatorNexusImageArtifactProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       artifactType: pulumi.Input.fromValue(map['artifactType'] as String),
-      dependsOnProfile: (() {
-        final guardedValue = map['dependsOnProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DependsOnProfile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      deployParametersMappingRuleProfile: (() {
-        final guardedValue = map['deployParametersMappingRuleProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureOperatorNexusImageDeployMappingRuleProfile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dependsOnProfile: (() { final guardedValue = map['dependsOnProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DependsOnProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deployParametersMappingRuleProfile: (() { final guardedValue = map['deployParametersMappingRuleProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureOperatorNexusImageDeployMappingRuleProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

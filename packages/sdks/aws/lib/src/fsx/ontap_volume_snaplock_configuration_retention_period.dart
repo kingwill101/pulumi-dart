@@ -7,22 +7,11 @@ import 'ontap_volume_snaplock_configuration_retention_period_minimum_retention.d
 
 class OntapVolumeSnaplockConfigurationRetentionPeriod {
   /// The retention period assigned to a write once, read many (WORM) file by default if an explicit retention period is not set for an FSx for ONTAP SnapLock volume. The default retention period must be greater than or equal to the minimum retention period and less than or equal to the maximum retention period. See `default_retention` Block for details.
-  final pulumi.Input<
-    OntapVolumeSnaplockConfigurationRetentionPeriodDefaultRetention
-  >?
-  defaultRetention;
-
+  final pulumi.Input<OntapVolumeSnaplockConfigurationRetentionPeriodDefaultRetention>? defaultRetention;
   /// The longest retention period that can be assigned to a WORM file on an FSx for ONTAP SnapLock volume. See `maximum_retention` Block for details.
-  final pulumi.Input<
-    OntapVolumeSnaplockConfigurationRetentionPeriodMaximumRetention
-  >?
-  maximumRetention;
-
+  final pulumi.Input<OntapVolumeSnaplockConfigurationRetentionPeriodMaximumRetention>? maximumRetention;
   /// The shortest retention period that can be assigned to a WORM file on an FSx for ONTAP SnapLock volume. See `minimum_retention` Block for details.
-  final pulumi.Input<
-    OntapVolumeSnaplockConfigurationRetentionPeriodMinimumRetention
-  >?
-  minimumRetention;
+  final pulumi.Input<OntapVolumeSnaplockConfigurationRetentionPeriodMinimumRetention>? minimumRetention;
 
   /// Creates a new [OntapVolumeSnaplockConfigurationRetentionPeriod].
   /// [defaultRetention] The retention period assigned to a write once, read many (WORM) file by default if an explicit retention period is not set for an FSx for ONTAP SnapLock volume. The default retention period must be greater than or equal to the minimum retention period and less than or equal to the maximum retention period. See `default_retention` Block for details.
@@ -36,55 +25,18 @@ class OntapVolumeSnaplockConfigurationRetentionPeriod {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultRetention':
-          ?pulumi.Input.mapOptionalInputValue<
-            OntapVolumeSnaplockConfigurationRetentionPeriodDefaultRetention,
-            Map<String, dynamic>
-          >(defaultRetention, (value) => value.toMap()),
-      'maximumRetention':
-          ?pulumi.Input.mapOptionalInputValue<
-            OntapVolumeSnaplockConfigurationRetentionPeriodMaximumRetention,
-            Map<String, dynamic>
-          >(maximumRetention, (value) => value.toMap()),
-      'minimumRetention':
-          ?pulumi.Input.mapOptionalInputValue<
-            OntapVolumeSnaplockConfigurationRetentionPeriodMinimumRetention,
-            Map<String, dynamic>
-          >(minimumRetention, (value) => value.toMap()),
+      'defaultRetention': ?pulumi.Input.mapOptionalInputValue<OntapVolumeSnaplockConfigurationRetentionPeriodDefaultRetention, Map<String, dynamic>>(defaultRetention, (value) => value.toMap()),
+      'maximumRetention': ?pulumi.Input.mapOptionalInputValue<OntapVolumeSnaplockConfigurationRetentionPeriodMaximumRetention, Map<String, dynamic>>(maximumRetention, (value) => value.toMap()),
+      'minimumRetention': ?pulumi.Input.mapOptionalInputValue<OntapVolumeSnaplockConfigurationRetentionPeriodMinimumRetention, Map<String, dynamic>>(minimumRetention, (value) => value.toMap()),
     };
   }
 
-  factory OntapVolumeSnaplockConfigurationRetentionPeriod.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OntapVolumeSnaplockConfigurationRetentionPeriod.fromMap(Map<String, dynamic> map) {
     return OntapVolumeSnaplockConfigurationRetentionPeriod(
-      defaultRetention: (() {
-        final guardedValue = map['defaultRetention'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OntapVolumeSnaplockConfigurationRetentionPeriodDefaultRetention.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      maximumRetention: (() {
-        final guardedValue = map['maximumRetention'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OntapVolumeSnaplockConfigurationRetentionPeriodMaximumRetention.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      minimumRetention: (() {
-        final guardedValue = map['minimumRetention'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OntapVolumeSnaplockConfigurationRetentionPeriodMinimumRetention.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      defaultRetention: (() { final guardedValue = map['defaultRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OntapVolumeSnaplockConfigurationRetentionPeriodDefaultRetention.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      maximumRetention: (() { final guardedValue = map['maximumRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OntapVolumeSnaplockConfigurationRetentionPeriodMaximumRetention.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      minimumRetention: (() { final guardedValue = map['minimumRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OntapVolumeSnaplockConfigurationRetentionPeriodMinimumRetention.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

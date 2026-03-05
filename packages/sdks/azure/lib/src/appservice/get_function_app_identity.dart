@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFunctionAppIdentity {
   /// A list of User Assigned Identity IDs assigned to the Function App.
   final pulumi.Input<List<String>> identityIds;
-
   /// The ID of the Managed Identity assigned to the Function App.
   final pulumi.Input<String> principalId;
-
   /// The ID of the Tenant where the Managed Identity assigned to the Function App is located.
   final pulumi.Input<String> tenantId;
-
   /// The identity type of the Managed Identity assigned to the Function App.
   final pulumi.Input<String> type;
 
@@ -38,12 +35,11 @@ class GetFunctionAppIdentity {
 
   factory GetFunctionAppIdentity.fromMap(Map<String, dynamic> map) {
     return GetFunctionAppIdentity(
-      identityIds: pulumi.Input.fromValue(
-        (map['identityIds'] as List).cast<String>(),
-      ),
+      identityIds: pulumi.Input.fromValue((map['identityIds'] as List).cast<String>()),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

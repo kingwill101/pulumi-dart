@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcNatGatewayVpc {
   /// Indicates if this is the default VPC NAT Gateway in the VPC
   final pulumi.Input<bool> defaultGateway;
-
   /// Gateway IP of the VPC NAT Gateway
   final pulumi.Input<String> gatewayIp;
-
   /// ID of the ingress VPC
   final pulumi.Input<String> vpcUuid;
 
@@ -38,3 +36,4 @@ class GetVpcNatGatewayVpc {
     );
   }
 }
+

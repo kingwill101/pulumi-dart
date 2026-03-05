@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnterprisePolicyArgs {
   /// The EnterprisePolicy name.
   final pulumi.Input<String> enterprisePolicyName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetEnterprisePolicyArgs {
 
   factory GetEnterprisePolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetEnterprisePolicyArgs(
-      enterprisePolicyName: pulumi.Input.fromValue(
-        map['enterprisePolicyName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      enterprisePolicyName: pulumi.Input.fromValue(map['enterprisePolicyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

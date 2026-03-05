@@ -10,29 +10,20 @@ class ClusterConfig {
 
   /// Creates a new [ClusterConfig].
   /// [clusterAutoscalingConfig] Autoscaling configuration for this cluster.
-  ClusterConfig({this.clusterAutoscalingConfig});
+  ClusterConfig({
+    this.clusterAutoscalingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterAutoscalingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterAutoscalingConfig,
-            Map<String, dynamic>
-          >(clusterAutoscalingConfig, (value) => value.toMap()),
+      'clusterAutoscalingConfig': ?pulumi.Input.mapOptionalInputValue<ClusterAutoscalingConfig, Map<String, dynamic>>(clusterAutoscalingConfig, (value) => value.toMap()),
     };
   }
 
   factory ClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterConfig(
-      clusterAutoscalingConfig: (() {
-        final guardedValue = map['clusterAutoscalingConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterAutoscalingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      clusterAutoscalingConfig: (() { final guardedValue = map['clusterAutoscalingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterAutoscalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

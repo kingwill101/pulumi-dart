@@ -6,7 +6,6 @@ class IntentFollowupIntentInfo {
   /// The unique identifier of the followup intent.
   /// Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
   final pulumi.Input<String>? followupIntentName;
-
   /// The unique identifier of the parent intent in the chain of followup intents.
   /// Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
   final pulumi.Input<String>? parentFollowupIntentName;
@@ -28,16 +27,9 @@ class IntentFollowupIntentInfo {
 
   factory IntentFollowupIntentInfo.fromMap(Map<String, dynamic> map) {
     return IntentFollowupIntentInfo(
-      followupIntentName: (() {
-        final guardedValue = map['followupIntentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parentFollowupIntentName: (() {
-        final guardedValue = map['parentFollowupIntentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      followupIntentName: (() { final guardedValue = map['followupIntentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parentFollowupIntentName: (() { final guardedValue = map['parentFollowupIntentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

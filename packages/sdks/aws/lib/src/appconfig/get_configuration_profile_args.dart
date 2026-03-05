@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationProfileArgs {
   /// ID of the AppConfig application to which this configuration profile belongs.
   final pulumi.Input<String> applicationId;
-
   /// ID of the Configuration Profile.
   final pulumi.Input<String> configurationProfileId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags for the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -43,21 +40,10 @@ class GetConfigurationProfileArgs {
   factory GetConfigurationProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationProfileArgs(
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
-      configurationProfileId: pulumi.Input.fromValue(
-        map['configurationProfileId'] as String,
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      configurationProfileId: pulumi.Input.fromValue(map['configurationProfileId'] as String),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

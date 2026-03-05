@@ -20,3 +20,4 @@ enum ComputeWeekDay {
     throw ArgumentError('Unknown ComputeWeekDay value: $value');
   }
 }
+

@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteResponseArgs {
   /// API identifier.
   final pulumi.Input<String> apiId;
-
   /// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
   final pulumi.Input<String>? modelSelectionExpression;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Response models for the route response.
   final pulumi.Input<Map<String, String>>? responseModels;
-
   /// Identifier of the `aws.apigatewayv2.Route`.
   final pulumi.Input<String> routeId;
-
   /// Route response key.
   final pulumi.Input<String> routeResponseKey;
 
@@ -55,27 +50,12 @@ class RouteResponseArgs {
   factory RouteResponseArgs.fromMap(Map<String, dynamic> map) {
     return RouteResponseArgs(
       apiId: pulumi.Input.fromValue(map['apiId'] as String),
-      modelSelectionExpression: (() {
-        final guardedValue = map['modelSelectionExpression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      responseModels: (() {
-        final guardedValue = map['responseModels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      modelSelectionExpression: (() { final guardedValue = map['modelSelectionExpression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      responseModels: (() { final guardedValue = map['responseModels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       routeId: pulumi.Input.fromValue(map['routeId'] as String),
-      routeResponseKey: pulumi.Input.fromValue(
-        map['routeResponseKey'] as String,
-      ),
+      routeResponseKey: pulumi.Input.fromValue(map['routeResponseKey'] as String),
     );
   }
 }
+

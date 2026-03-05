@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelTypeDescriptionResponse {
   /// Text description for the channel
   final pulumi.Input<String>? channelDescription;
-
   /// All the available functions for the channel
   final pulumi.Input<List<String>>? channelFunctions;
-
   /// Channel type
   final pulumi.Input<String>? channelType;
 
@@ -33,21 +31,10 @@ class ChannelTypeDescriptionResponse {
 
   factory ChannelTypeDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return ChannelTypeDescriptionResponse(
-      channelDescription: (() {
-        final guardedValue = map['channelDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      channelFunctions: (() {
-        final guardedValue = map['channelFunctions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      channelType: (() {
-        final guardedValue = map['channelType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      channelDescription: (() { final guardedValue = map['channelDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      channelFunctions: (() { final guardedValue = map['channelFunctions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      channelType: (() { final guardedValue = map['channelType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

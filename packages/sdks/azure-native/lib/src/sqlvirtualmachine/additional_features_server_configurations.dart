@@ -9,21 +9,20 @@ class AdditionalFeaturesServerConfigurations {
 
   /// Creates a new [AdditionalFeaturesServerConfigurations].
   /// [isRServicesEnabled] Enable or disable R services (SQL 2016 onwards).
-  AdditionalFeaturesServerConfigurations({this.isRServicesEnabled});
+  AdditionalFeaturesServerConfigurations({
+    this.isRServicesEnabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'isRServicesEnabled': ?isRServicesEnabled};
+    return <String, dynamic>{
+      'isRServicesEnabled': ?isRServicesEnabled,
+    };
   }
 
-  factory AdditionalFeaturesServerConfigurations.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AdditionalFeaturesServerConfigurations.fromMap(Map<String, dynamic> map) {
     return AdditionalFeaturesServerConfigurations(
-      isRServicesEnabled: (() {
-        final guardedValue = map['isRServicesEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      isRServicesEnabled: (() { final guardedValue = map['isRServicesEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

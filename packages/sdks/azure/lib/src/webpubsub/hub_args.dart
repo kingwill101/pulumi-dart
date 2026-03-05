@@ -12,20 +12,16 @@ class HubArgs {
   /// Is anonymous connections are allowed for this hub? Defaults to `false`.
   /// Possible values are `true`, `false`.
   final pulumi.Input<bool>? anonymousConnectionsEnabled;
-
   /// An `event_handler` block as defined below.
   ///
   /// &gt; **Note:** User can change the order of `event_handler` to change the priority accordingly.
   final pulumi.Input<List<HubEventHandler>>? eventHandlers;
-
   /// An `event_listener` block as defined below.
   ///
   /// &gt; **Note:** The managed identity of Web PubSub service must be enabled and the identity must have the "Azure Event Hubs Data sender" role to access the Event Hub.
   final pulumi.Input<List<HubEventListener>>? eventListeners;
-
   /// The name of the Web Pubsub hub service. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the id of the Web Pubsub. Changing this forces a new resource to be created.
   final pulumi.Input<String> webPubsubId;
 
@@ -46,30 +42,8 @@ class HubArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'anonymousConnectionsEnabled': ?anonymousConnectionsEnabled,
-      'eventHandlers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<HubEventHandler>,
-            List<Map<String, dynamic>>
-          >(
-            eventHandlers,
-            (value) =>
-                pulumi.Input.encodeList<HubEventHandler, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'eventListeners':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<HubEventListener>,
-            List<Map<String, dynamic>>
-          >(
-            eventListeners,
-            (value) =>
-                pulumi.Input.encodeList<HubEventListener, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'eventHandlers': ?pulumi.Input.mapOptionalInputValue<List<HubEventHandler>, List<Map<String, dynamic>>>(eventHandlers, (value) => pulumi.Input.encodeList<HubEventHandler, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'eventListeners': ?pulumi.Input.mapOptionalInputValue<List<HubEventListener>, List<Map<String, dynamic>>>(eventListeners, (value) => pulumi.Input.encodeList<HubEventListener, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'webPubsubId': webPubsubId,
     };
@@ -77,40 +51,12 @@ class HubArgs {
 
   factory HubArgs.fromMap(Map<String, dynamic> map) {
     return HubArgs(
-      anonymousConnectionsEnabled: (() {
-        final guardedValue = map['anonymousConnectionsEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      eventHandlers: (() {
-        final guardedValue = map['eventHandlers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<HubEventHandler>(
-            guardedValue,
-            (value) =>
-                HubEventHandler.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      eventListeners: (() {
-        final guardedValue = map['eventListeners'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<HubEventListener>(
-            guardedValue,
-            (value) => HubEventListener.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      anonymousConnectionsEnabled: (() { final guardedValue = map['anonymousConnectionsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      eventHandlers: (() { final guardedValue = map['eventHandlers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HubEventHandler>(guardedValue, (value) => HubEventHandler.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      eventListeners: (() { final guardedValue = map['eventListeners']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HubEventListener>(guardedValue, (value) => HubEventListener.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       webPubsubId: pulumi.Input.fromValue(map['webPubsubId'] as String),
     );
   }
 }
+

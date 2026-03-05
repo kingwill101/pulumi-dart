@@ -9,10 +9,16 @@ class GetNbTypesTypePrice {
   /// Creates a new [GetNbTypesTypePrice].
   /// [hourly] Required.
   /// [monthly] Required.
-  GetNbTypesTypePrice({required this.hourly, required this.monthly});
+  GetNbTypesTypePrice({
+    required this.hourly,
+    required this.monthly,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hourly': hourly, 'monthly': monthly};
+    return <String, dynamic>{
+      'hourly': hourly,
+      'monthly': monthly,
+    };
   }
 
   factory GetNbTypesTypePrice.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class GetNbTypesTypePrice {
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipeLogConfigurationS3LogDestination {
   /// Name of the Amazon S3 bucket to which EventBridge delivers the log records for the pipe.
   final pulumi.Input<String> bucketName;
-
   /// Amazon Web Services account that owns the Amazon S3 bucket to which EventBridge delivers the log records for the pipe.
   final pulumi.Input<String> bucketOwner;
-
   /// EventBridge format for the log records. Valid values `json`, `plain` and `w3c`.
   final pulumi.Input<String>? outputFormat;
-
   /// Prefix text with which to begin Amazon S3 log object names.
   final pulumi.Input<String>? prefix;
 
@@ -36,22 +33,13 @@ class PipeLogConfigurationS3LogDestination {
     };
   }
 
-  factory PipeLogConfigurationS3LogDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeLogConfigurationS3LogDestination.fromMap(Map<String, dynamic> map) {
     return PipeLogConfigurationS3LogDestination(
       bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
       bucketOwner: pulumi.Input.fromValue(map['bucketOwner'] as String),
-      outputFormat: (() {
-        final guardedValue = map['outputFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFormat: (() { final guardedValue = map['outputFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

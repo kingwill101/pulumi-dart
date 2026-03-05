@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateArgs {
   /// When enabled, returns the default certificate for new RDS instances.
   final pulumi.Input<bool>? defaultForNewLaunches;
-
   /// Certificate identifier. For example, `rds-ca-2019`.
   final pulumi.Input<String>? id;
-
   /// When enabled, returns the certificate with the latest `ValidTill`.
   final pulumi.Input<bool>? latestValidTill;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -42,26 +39,11 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      defaultForNewLaunches: (() {
-        final guardedValue = map['defaultForNewLaunches'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      latestValidTill: (() {
-        final guardedValue = map['latestValidTill'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      defaultForNewLaunches: (() { final guardedValue = map['defaultForNewLaunches']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      latestValidTill: (() { final guardedValue = map['latestValidTill']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

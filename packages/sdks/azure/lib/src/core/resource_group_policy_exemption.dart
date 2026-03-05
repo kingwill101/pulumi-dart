@@ -274,28 +274,20 @@ import 'resource_group_policy_exemption_state.dart';
 class ResourceGroupPolicyExemption extends pulumi.CustomResource {
   /// A description to use for this Policy Exemption.
   late final pulumi.Output<String?> description;
-
   /// A friendly display name to use for this Policy Exemption.
   late final pulumi.Output<String?> displayName;
-
   /// The category of this policy exemption. Possible values are `Waiver` and `Mitigated`.
   late final pulumi.Output<String> exemptionCategory;
-
   /// The expiration date and time in UTC ISO 8601 format of this policy exemption.
   late final pulumi.Output<String?> expiresOn;
-
   /// The metadata for this policy exemption. This is a JSON string representing additional metadata that should be stored with the policy exemption.
   late final pulumi.Output<String> metadata;
-
   /// The name of the Policy Exemption. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Policy Assignment to be exempted at the specified Scope. Changing this forces a new resource to be created.
   late final pulumi.Output<String> policyAssignmentId;
-
   /// The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
   late final pulumi.Output<List<String>?> policyDefinitionReferenceIds;
-
   /// The Resource Group ID where the Policy Exemption should be applied. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupId;
 
@@ -308,11 +300,11 @@ class ResourceGroupPolicyExemption extends pulumi.CustomResource {
     ResourceGroupPolicyExemptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/resourceGroupPolicyExemption:ResourceGroupPolicyExemption',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/resourceGroupPolicyExemption:ResourceGroupPolicyExemption',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     exemptionCategory = registerOutput<String>('exemptionCategory');
@@ -320,9 +312,7 @@ class ResourceGroupPolicyExemption extends pulumi.CustomResource {
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    policyDefinitionReferenceIds = registerOutput<List<String>?>(
-      'policyDefinitionReferenceIds',
-    );
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds');
     resourceGroupId = registerOutput<String>('resourceGroupId');
   }
 
@@ -344,11 +334,11 @@ class ResourceGroupPolicyExemption extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/resourceGroupPolicyExemption:ResourceGroupPolicyExemption',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/resourceGroupPolicyExemption:ResourceGroupPolicyExemption',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     exemptionCategory = registerOutput<String>('exemptionCategory');
@@ -356,9 +346,7 @@ class ResourceGroupPolicyExemption extends pulumi.CustomResource {
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    policyDefinitionReferenceIds = registerOutput<List<String>?>(
-      'policyDefinitionReferenceIds',
-    );
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds');
     resourceGroupId = registerOutput<String>('resourceGroupId');
   }
 }

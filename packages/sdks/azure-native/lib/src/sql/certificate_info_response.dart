@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateInfoResponse {
   /// The certificate name
   final pulumi.Input<String> certificateName;
-
   /// The certificate expiry date
   final pulumi.Input<String> expiryDate;
 
@@ -32,3 +31,4 @@ class CertificateInfoResponse {
     );
   }
 }
+

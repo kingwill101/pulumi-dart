@@ -758,46 +758,32 @@ import 'resolver_sync_config.dart';
 class Resolver extends pulumi.CustomResource {
   /// API ID for the GraphQL API.
   late final pulumi.Output<String> apiId;
-
   /// ARN
   late final pulumi.Output<String> arn;
-
   /// The Caching Config. See Caching Config.
   late final pulumi.Output<ResolverCachingConfig?> cachingConfig;
-
   /// The function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.
   late final pulumi.Output<String?> code;
-
   /// Data source name.
   late final pulumi.Output<String?> dataSource;
-
   /// Field name from the schema defined in the GraphQL API.
   late final pulumi.Output<String> field;
-
   /// Resolver type. Valid values are `UNIT` and `PIPELINE`.
   late final pulumi.Output<String?> kind;
-
   /// Maximum batching size for a resolver. Valid values are between `0` and `2000`.
   late final pulumi.Output<int?> maxBatchSize;
-
   /// The caching configuration for the resolver. See Pipeline Config.
   late final pulumi.Output<ResolverPipelineConfig?> pipelineConfig;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver. Required for non-Lambda resolvers.
   late final pulumi.Output<String?> requestTemplate;
-
   /// Response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver. Required for non-Lambda resolvers.
   late final pulumi.Output<String?> responseTemplate;
-
   /// Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See Runtime.
   late final pulumi.Output<ResolverRuntime?> runtime;
-
   /// Describes a Sync configuration for a resolver. See Sync Config.
   late final pulumi.Output<ResolverSyncConfig?> syncConfig;
-
   /// Type name from the schema defined in the GraphQL API.
   late final pulumi.Output<String> type;
 
@@ -810,61 +796,25 @@ class Resolver extends pulumi.CustomResource {
     ResolverArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appsync/resolver:Resolver',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appsync/resolver:Resolver',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');
-    cachingConfig = registerOutput<ResolverCachingConfig?>(
-      'cachingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResolverCachingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cachingConfig = registerOutput<ResolverCachingConfig?>('cachingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverCachingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     code = registerOutput<String?>('code');
     dataSource = registerOutput<String?>('dataSource');
     field = registerOutput<String>('field');
     kind = registerOutput<String?>('kind');
     maxBatchSize = registerOutput<int?>('maxBatchSize');
-    pipelineConfig = registerOutput<ResolverPipelineConfig?>(
-      'pipelineConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResolverPipelineConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    pipelineConfig = registerOutput<ResolverPipelineConfig?>('pipelineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverPipelineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     requestTemplate = registerOutput<String?>('requestTemplate');
     responseTemplate = registerOutput<String?>('responseTemplate');
-    runtime = registerOutput<ResolverRuntime?>(
-      'runtime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResolverRuntime.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    syncConfig = registerOutput<ResolverSyncConfig?>(
-      'syncConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResolverSyncConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    runtime = registerOutput<ResolverRuntime?>('runtime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    syncConfig = registerOutput<ResolverSyncConfig?>('syncConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverSyncConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 
@@ -886,61 +836,25 @@ class Resolver extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appsync/resolver:Resolver',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appsync/resolver:Resolver',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');
-    cachingConfig = registerOutput<ResolverCachingConfig?>(
-      'cachingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResolverCachingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cachingConfig = registerOutput<ResolverCachingConfig?>('cachingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverCachingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     code = registerOutput<String?>('code');
     dataSource = registerOutput<String?>('dataSource');
     field = registerOutput<String>('field');
     kind = registerOutput<String?>('kind');
     maxBatchSize = registerOutput<int?>('maxBatchSize');
-    pipelineConfig = registerOutput<ResolverPipelineConfig?>(
-      'pipelineConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResolverPipelineConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    pipelineConfig = registerOutput<ResolverPipelineConfig?>('pipelineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverPipelineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     requestTemplate = registerOutput<String?>('requestTemplate');
     responseTemplate = registerOutput<String?>('responseTemplate');
-    runtime = registerOutput<ResolverRuntime?>(
-      'runtime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResolverRuntime.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    syncConfig = registerOutput<ResolverSyncConfig?>(
-      'syncConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResolverSyncConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    runtime = registerOutput<ResolverRuntime?>('runtime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    syncConfig = registerOutput<ResolverSyncConfig?>('syncConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverSyncConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -8,10 +8,14 @@ class DomainOsNvRamSourceReadahead {
 
   /// Creates a new [DomainOsNvRamSourceReadahead].
   /// [size] Configures the size of data that should be prefetched when reading from the network block device.
-  DomainOsNvRamSourceReadahead({required this.size});
+  DomainOsNvRamSourceReadahead({
+    required this.size,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'size': size};
+    return <String, dynamic>{
+      'size': size,
+    };
   }
 
   factory DomainOsNvRamSourceReadahead.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainOsNvRamSourceReadahead {
     );
   }
 }
+

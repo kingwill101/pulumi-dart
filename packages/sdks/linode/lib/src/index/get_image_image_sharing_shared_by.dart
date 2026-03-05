@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageImageSharingSharedBy {
   /// The sharegroup_id from the im_ImageShare row.
   final pulumi.Input<int> sharegroupId;
-
   /// The label from the associated im_ImageShareGroup row.
   final pulumi.Input<String> sharegroupLabel;
-
   /// The sharegroup_uuid from the im_ImageShare row.
   final pulumi.Input<String> sharegroupUuid;
-
   /// The image id of the base image (will only be shown to producers, will be null for consumers).
   final pulumi.Input<String> sourceImageId;
 
@@ -45,3 +42,4 @@ class GetImageImageSharingSharedBy {
     );
   }
 }
+

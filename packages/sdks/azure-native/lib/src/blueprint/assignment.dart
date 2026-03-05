@@ -1116,44 +1116,30 @@ import 'resource_group_value_response.dart';
 class Assignment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// ID of the published version of a blueprint definition.
   late final pulumi.Output<String?> blueprintId;
-
   /// Multi-line explain this resource.
   late final pulumi.Output<String?> description;
-
   /// One-liner string explain this resource.
   late final pulumi.Output<String?> displayName;
-
   /// Managed identity for this blueprint assignment.
   late final pulumi.Output<ManagedServiceIdentityResponse> identity;
-
   /// The location of this blueprint assignment.
   late final pulumi.Output<String> location;
-
   /// Defines how resources deployed by a blueprint assignment are locked.
   late final pulumi.Output<AssignmentLockSettingsResponse?> locks;
-
   /// Name of this resource.
   late final pulumi.Output<String> name;
-
   /// Blueprint assignment parameter values.
   late final pulumi.Output<Map<String, ParameterValueResponse>> parameters;
-
   /// State of the blueprint assignment.
   late final pulumi.Output<String> provisioningState;
-
   /// Names and locations of resource group placeholders.
-  late final pulumi.Output<Map<String, ResourceGroupValueResponse>>
-  resourceGroups;
-
+  late final pulumi.Output<Map<String, ResourceGroupValueResponse>> resourceGroups;
   /// The target subscription scope of the blueprint assignment (format: '/subscriptions/{subscriptionId}'). For management group level assignments, the property is required.
   late final pulumi.Output<String?> scope;
-
   /// Status of blueprint assignment. This field is readonly.
   late final pulumi.Output<AssignmentStatusResponse> status;
-
   /// Type of this resource.
   late final pulumi.Output<String> type;
 
@@ -1166,75 +1152,24 @@ class Assignment extends pulumi.CustomResource {
     AssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:blueprint:Assignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:blueprint:Assignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     blueprintId = registerOutput<String?>('blueprintId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    identity = registerOutput<ManagedServiceIdentityResponse>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ManagedServiceIdentityResponse>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    locks = registerOutput<AssignmentLockSettingsResponse?>(
-      'locks',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AssignmentLockSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    locks = registerOutput<AssignmentLockSettingsResponse?>('locks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentLockSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, ParameterValueResponse>>(
-      'parameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeMapValues<ParameterValueResponse>(
-          guardedValue,
-          (value) => ParameterValueResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      },
-    );
+    parameters = registerOutput<Map<String, ParameterValueResponse>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ParameterValueResponse>(guardedValue, (value) => ParameterValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
-    resourceGroups = registerOutput<Map<String, ResourceGroupValueResponse>>(
-      'resourceGroups',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeMapValues<ResourceGroupValueResponse>(
-          guardedValue,
-          (value) => ResourceGroupValueResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      },
-    );
+    resourceGroups = registerOutput<Map<String, ResourceGroupValueResponse>>('resourceGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ResourceGroupValueResponse>(guardedValue, (value) => ResourceGroupValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
     scope = registerOutput<String?>('scope');
-    status = registerOutput<AssignmentStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AssignmentStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    status = registerOutput<AssignmentStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

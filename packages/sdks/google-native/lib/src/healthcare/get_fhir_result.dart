@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getFhir.
 class GetFhirResult {
   /// The HTTP Content-Type header value specifying the content type of the body.
   final String contentType;
-
   /// The HTTP request/response body as raw binary.
   final String data;
-
   /// Application specific response metadata. Must be set in the first response for streaming APIs.
   final List<Map<String, String>> extensions;
 
@@ -37,3 +36,4 @@ class GetFhirResult {
     );
   }
 }
+

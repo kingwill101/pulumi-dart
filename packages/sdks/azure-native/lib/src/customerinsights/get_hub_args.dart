@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHubArgs {
   /// The name of the hub.
   final pulumi.Input<String> hubName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetHubArgs].
   /// [hubName] The name of the hub.
   /// [resourceGroupName] The name of the resource group.
-  GetHubArgs({required this.hubName, required this.resourceGroupName});
+  GetHubArgs({
+    required this.hubName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetHubArgs {
   factory GetHubArgs.fromMap(Map<String, dynamic> map) {
     return GetHubArgs(
       hubName: pulumi.Input.fromValue(map['hubName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

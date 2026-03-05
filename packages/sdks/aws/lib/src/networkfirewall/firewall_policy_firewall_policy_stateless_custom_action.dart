@@ -5,11 +5,7 @@ import 'firewall_policy_firewall_policy_stateless_custom_action_action_definitio
 
 class FirewallPolicyFirewallPolicyStatelessCustomAction {
   /// A configuration block describing the custom action associated with the `action_name`. See Action Definition below for details.
-  final pulumi.Input<
-    FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition
-  >
-  actionDefinition;
-
+  final pulumi.Input<FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition> actionDefinition;
   /// A friendly name of the custom action.
   final pulumi.Input<String> actionName;
 
@@ -23,25 +19,16 @@ class FirewallPolicyFirewallPolicyStatelessCustomAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionDefinition':
-          pulumi.Input.mapInputValue<
-            FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition,
-            Map<String, dynamic>
-          >(actionDefinition, (value) => value.toMap()),
+      'actionDefinition': pulumi.Input.mapInputValue<FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition, Map<String, dynamic>>(actionDefinition, (value) => value.toMap()),
       'actionName': actionName,
     };
   }
 
-  factory FirewallPolicyFirewallPolicyStatelessCustomAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirewallPolicyFirewallPolicyStatelessCustomAction.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicyStatelessCustomAction(
-      actionDefinition: pulumi.Input.fromValue(
-        FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition.fromMap(
-          (map['actionDefinition']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      actionDefinition: pulumi.Input.fromValue(FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition.fromMap((map['actionDefinition']! as Map).cast<String, dynamic>())),
       actionName: pulumi.Input.fromValue(map['actionName'] as String),
     );
   }
 }
+

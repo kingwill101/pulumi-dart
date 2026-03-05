@@ -22,14 +22,11 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse(
-      enumStrings: pulumi.Input.fromValue(
-        (map['enumStrings'] as List).cast<String>(),
-      ),
+      enumStrings: pulumi.Input.fromValue((map['enumStrings'] as List).cast<String>()),
       filterType: pulumi.Input.fromValue(map['filterType'] as String),
     );
   }
 }
+

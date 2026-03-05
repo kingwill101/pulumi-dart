@@ -9,7 +9,6 @@ class PrincipalAccessBoundaryPolicyDetails {
   /// PAB policy version will be set to the current latest version, and this version
   /// won't get updated when new versions are released.
   final pulumi.Input<String>? enforcementVersion;
-
   /// A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
   /// Structure is documented below.
   final pulumi.Input<List<PrincipalAccessBoundaryPolicyDetailsRule>> rules;
@@ -25,38 +24,15 @@ class PrincipalAccessBoundaryPolicyDetails {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enforcementVersion': ?enforcementVersion,
-      'rules':
-          pulumi.Input.mapInputValue<
-            List<PrincipalAccessBoundaryPolicyDetailsRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PrincipalAccessBoundaryPolicyDetailsRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': pulumi.Input.mapInputValue<List<PrincipalAccessBoundaryPolicyDetailsRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<PrincipalAccessBoundaryPolicyDetailsRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory PrincipalAccessBoundaryPolicyDetails.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrincipalAccessBoundaryPolicyDetails.fromMap(Map<String, dynamic> map) {
     return PrincipalAccessBoundaryPolicyDetails(
-      enforcementVersion: (() {
-        final guardedValue = map['enforcementVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<PrincipalAccessBoundaryPolicyDetailsRule>(
-          map['rules']!,
-          (value) => PrincipalAccessBoundaryPolicyDetailsRule.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      enforcementVersion: (() { final guardedValue = map['enforcementVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rules: pulumi.Input.fromValue(pulumi.Input.decodeList<PrincipalAccessBoundaryPolicyDetailsRule>(map['rules']!, (value) => PrincipalAccessBoundaryPolicyDetailsRule.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

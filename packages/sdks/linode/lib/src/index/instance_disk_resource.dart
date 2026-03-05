@@ -349,46 +349,33 @@ import 'instance_disk_timeouts.dart';
 class InstanceDiskResource extends pulumi.CustomResource {
   /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
   late final pulumi.Output<List<String>?> authorizedKeys;
-
   /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
   late final pulumi.Output<List<String>?> authorizedUsers;
-
   /// When this disk was created.
   late final pulumi.Output<String> created;
-
   /// The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
   late final pulumi.Output<String> diskEncryption;
-
   /// The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
   late final pulumi.Output<String> filesystem;
-
   /// An Image ID to deploy the Linode Disk from.
   late final pulumi.Output<String?> image;
-
   /// The Disk's label for display purposes only.
   late final pulumi.Output<String> label;
-
   /// The ID of the Linode to create this Disk under.
   late final pulumi.Output<int> linodeId;
-
   /// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
   late final pulumi.Output<String?> rootPass;
-
   /// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
   ///
   /// - - -
   late final pulumi.Output<int> size;
-
   /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
   late final pulumi.Output<Map<String, String>?> stackscriptData;
-
   /// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
   late final pulumi.Output<int?> stackscriptId;
-
   /// A brief description of this Disk's current state.
   late final pulumi.Output<String> status;
   late final pulumi.Output<InstanceDiskTimeouts?> timeouts;
-
   /// When this disk was last updated.
   late final pulumi.Output<String> updated;
 
@@ -401,11 +388,11 @@ class InstanceDiskResource extends pulumi.CustomResource {
     InstanceDiskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/instanceDisk:InstanceDisk',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/instanceDisk:InstanceDisk',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizedKeys = registerOutput<List<String>?>('authorizedKeys');
     authorizedUsers = registerOutput<List<String>?>('authorizedUsers');
     created = registerOutput<String>('created');
@@ -419,16 +406,7 @@ class InstanceDiskResource extends pulumi.CustomResource {
     stackscriptData = registerOutput<Map<String, String>?>('stackscriptData');
     stackscriptId = registerOutput<int?>('stackscriptId');
     status = registerOutput<String>('status');
-    timeouts = registerOutput<InstanceDiskTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceDiskTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<InstanceDiskTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDiskTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updated = registerOutput<String>('updated');
   }
 
@@ -450,11 +428,11 @@ class InstanceDiskResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/instanceDisk:InstanceDisk',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/instanceDisk:InstanceDisk',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizedKeys = registerOutput<List<String>?>('authorizedKeys');
     authorizedUsers = registerOutput<List<String>?>('authorizedUsers');
     created = registerOutput<String>('created');
@@ -468,16 +446,7 @@ class InstanceDiskResource extends pulumi.CustomResource {
     stackscriptData = registerOutput<Map<String, String>?>('stackscriptData');
     stackscriptId = registerOutput<int?>('stackscriptId');
     status = registerOutput<String>('status');
-    timeouts = registerOutput<InstanceDiskTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceDiskTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<InstanceDiskTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDiskTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updated = registerOutput<String>('updated');
   }
 }

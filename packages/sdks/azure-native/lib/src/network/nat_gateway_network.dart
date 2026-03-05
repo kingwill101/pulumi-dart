@@ -201,43 +201,30 @@ import 'nat_gateway_sku_response.dart';
 class NatGatewayNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The idle timeout of the nat gateway.
   late final pulumi.Output<int?> idleTimeoutInMinutes;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the NAT gateway resource.
   late final pulumi.Output<String> provisioningState;
-
   /// An array of public ip addresses associated with the nat gateway resource.
   late final pulumi.Output<List<Map<String, dynamic>>?> publicIpAddresses;
-
   /// An array of public ip prefixes associated with the nat gateway resource.
   late final pulumi.Output<List<Map<String, dynamic>>?> publicIpPrefixes;
-
   /// The resource GUID property of the NAT gateway resource.
   late final pulumi.Output<String> resourceGuid;
-
   /// The nat gateway SKU.
   late final pulumi.Output<NatGatewaySkuResponse?> sku;
-
   /// An array of references to the subnets using this nat gateway resource.
   late final pulumi.Output<List<Map<String, dynamic>>> subnets;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// A list of availability zones denoting the zone in which Nat Gateway should be deployed.
   late final pulumi.Output<List<String>?> zones;
 
@@ -250,34 +237,21 @@ class NatGatewayNetwork extends pulumi.CustomResource {
     NatGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:NatGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:NatGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    publicIpAddresses = registerOutput<List<Map<String, dynamic>>?>(
-      'publicIpAddresses',
-    );
-    publicIpPrefixes = registerOutput<List<Map<String, dynamic>>?>(
-      'publicIpPrefixes',
-    );
+    publicIpAddresses = registerOutput<List<Map<String, dynamic>>?>('publicIpAddresses');
+    publicIpPrefixes = registerOutput<List<Map<String, dynamic>>?>('publicIpPrefixes');
     resourceGuid = registerOutput<String>('resourceGuid');
-    sku = registerOutput<NatGatewaySkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NatGatewaySkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<NatGatewaySkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NatGatewaySkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subnets = registerOutput<List<Map<String, dynamic>>>('subnets');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

@@ -9,35 +9,20 @@ class LaunchScheduledSplitsConfig {
 
   /// Creates a new [LaunchScheduledSplitsConfig].
   /// [steps] One or up to six blocks that define the traffic allocation percentages among the feature variations during each step of the launch. This also defines the start time of each step. Detailed below.
-  LaunchScheduledSplitsConfig({required this.steps});
+  LaunchScheduledSplitsConfig({
+    required this.steps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'steps':
-          pulumi.Input.mapInputValue<
-            List<LaunchScheduledSplitsConfigStep>,
-            List<Map<String, dynamic>>
-          >(
-            steps,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LaunchScheduledSplitsConfigStep,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'steps': pulumi.Input.mapInputValue<List<LaunchScheduledSplitsConfigStep>, List<Map<String, dynamic>>>(steps, (value) => pulumi.Input.encodeList<LaunchScheduledSplitsConfigStep, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LaunchScheduledSplitsConfig.fromMap(Map<String, dynamic> map) {
     return LaunchScheduledSplitsConfig(
-      steps: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<LaunchScheduledSplitsConfigStep>(
-          map['steps']!,
-          (value) => LaunchScheduledSplitsConfigStep.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      steps: pulumi.Input.fromValue(pulumi.Input.decodeList<LaunchScheduledSplitsConfigStep>(map['steps']!, (value) => LaunchScheduledSplitsConfigStep.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

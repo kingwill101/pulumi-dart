@@ -13,7 +13,10 @@ class GetOrganizationSinkArgs {
   /// Creates a new [GetOrganizationSinkArgs].
   /// [organizationId] Required.
   /// [sinkId] Required.
-  GetOrganizationSinkArgs({required this.organizationId, required this.sinkId});
+  GetOrganizationSinkArgs({
+    required this.organizationId,
+    required this.sinkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetOrganizationSinkArgs {
     );
   }
 }
+

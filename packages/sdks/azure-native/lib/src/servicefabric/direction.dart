@@ -15,3 +15,4 @@ enum Direction {
     throw ArgumentError('Unknown Direction value: $value');
   }
 }
+

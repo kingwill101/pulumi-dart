@@ -7,10 +7,8 @@ import 'dns_record_set_response.dart';
 class DnsUpdatesResponse {
   /// The last time Hosting checked your custom domain's DNS records.
   final pulumi.Input<String> checkTime;
-
   /// The set of DNS records Hosting needs to serve secure content on the domain.
   final pulumi.Input<List<DnsRecordSetResponse>> desired;
-
   /// The set of DNS records Hosting discovered when inspecting a domain.
   final pulumi.Input<List<DnsRecordSetResponse>> discovered;
 
@@ -27,52 +25,17 @@ class DnsUpdatesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'checkTime': checkTime,
-      'desired':
-          pulumi.Input.mapInputValue<
-            List<DnsRecordSetResponse>,
-            List<Map<String, dynamic>>
-          >(
-            desired,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DnsRecordSetResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'discovered':
-          pulumi.Input.mapInputValue<
-            List<DnsRecordSetResponse>,
-            List<Map<String, dynamic>>
-          >(
-            discovered,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DnsRecordSetResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'desired': pulumi.Input.mapInputValue<List<DnsRecordSetResponse>, List<Map<String, dynamic>>>(desired, (value) => pulumi.Input.encodeList<DnsRecordSetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'discovered': pulumi.Input.mapInputValue<List<DnsRecordSetResponse>, List<Map<String, dynamic>>>(discovered, (value) => pulumi.Input.encodeList<DnsRecordSetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DnsUpdatesResponse.fromMap(Map<String, dynamic> map) {
     return DnsUpdatesResponse(
       checkTime: pulumi.Input.fromValue(map['checkTime'] as String),
-      desired: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<DnsRecordSetResponse>(
-          map['desired']!,
-          (value) => DnsRecordSetResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      discovered: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<DnsRecordSetResponse>(
-          map['discovered']!,
-          (value) => DnsRecordSetResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      desired: pulumi.Input.fromValue(pulumi.Input.decodeList<DnsRecordSetResponse>(map['desired']!, (value) => DnsRecordSetResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      discovered: pulumi.Input.fromValue(pulumi.Input.decodeList<DnsRecordSetResponse>(map['discovered']!, (value) => DnsRecordSetResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

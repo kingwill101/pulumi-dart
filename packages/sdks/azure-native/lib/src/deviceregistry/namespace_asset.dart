@@ -1317,121 +1317,80 @@ import 'system_data_response.dart';
 class NamespaceAsset extends pulumi.CustomResource {
   /// URIs or type definition IDs.
   late final pulumi.Output<List<String>?> assetTypeRefs;
-
   /// A set of key-value pairs that contain custom attributes set by the customer.
   late final pulumi.Output<dynamic> attributes;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Array of datasets that are part of the asset. Each dataset describes the data points that make up the set.
   late final pulumi.Output<List<Map<String, dynamic>>?> datasets;
-
   /// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
   late final pulumi.Output<String?> defaultDatasetsConfiguration;
-
   /// Default destinations for a dataset.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  defaultDatasetsDestinations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> defaultDatasetsDestinations;
   /// Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
   late final pulumi.Output<String?> defaultEventsConfiguration;
-
   /// Default destinations for an event.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  defaultEventsDestinations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> defaultEventsDestinations;
   /// Stringified JSON that contains connector-specific default configuration for all management groups. Each management group can have its own configuration that overrides the default settings here.
   late final pulumi.Output<String?> defaultManagementGroupsConfiguration;
-
   /// Stringified JSON that contains connector-specific default configuration for all streams. Each stream can have its own configuration that overrides the default settings here.
   late final pulumi.Output<String?> defaultStreamsConfiguration;
-
   /// Default destinations for a stream.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  defaultStreamsDestinations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> defaultStreamsDestinations;
   /// Human-readable description of the asset.
   late final pulumi.Output<String?> description;
-
   /// Reference to the device that provides data for this asset. Must provide device name & endpoint on the device to use.
   late final pulumi.Output<DeviceRefResponse> deviceRef;
-
   /// Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided.
   late final pulumi.Output<List<String>?> discoveredAssetRefs;
-
   /// Human-readable display name.
   late final pulumi.Output<String?> displayName;
-
   /// Asset documentation reference.
   late final pulumi.Output<String?> documentationUri;
-
   /// Enabled/disabled status of the asset.
   late final pulumi.Output<bool?> enabled;
-
   /// Array of events that are part of the asset. Each event can have per-event configuration.
   late final pulumi.Output<List<Map<String, dynamic>>?> events;
-
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
-
   /// Asset ID provided by the customer.
   late final pulumi.Output<String?> externalAssetId;
-
   /// Asset hardware revision number.
   late final pulumi.Output<String?> hardwareRevision;
-
   /// A timestamp (in UTC) that is updated each time the resource is modified.
   late final pulumi.Output<String> lastTransitionTime;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Array of management groups that are part of the asset. Each management group can have a per-group configuration.
   late final pulumi.Output<List<Map<String, dynamic>>?> managementGroups;
-
   /// Asset manufacturer.
   late final pulumi.Output<String?> manufacturer;
-
   /// Asset manufacturer URI.
   late final pulumi.Output<String?> manufacturerUri;
-
   /// Asset model.
   late final pulumi.Output<String?> model;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Asset product code.
   late final pulumi.Output<String?> productCode;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Asset serial number.
   late final pulumi.Output<String?> serialNumber;
-
   /// Asset software revision number.
   late final pulumi.Output<String?> softwareRevision;
-
   /// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
   late final pulumi.Output<NamespaceAssetStatusResponse> status;
-
   /// Array of streams that are part of the asset. Each stream can have a per-stream configuration.
   late final pulumi.Output<List<Map<String, dynamic>>?> streams;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Globally unique, immutable, non-reusable ID.
   late final pulumi.Output<String> uuid;
-
   /// An integer that is incremented each time the resource is modified.
   late final pulumi.Output<double> version;
 
@@ -1444,69 +1403,35 @@ class NamespaceAsset extends pulumi.CustomResource {
     NamespaceAssetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:deviceregistry:NamespaceAsset',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:deviceregistry:NamespaceAsset',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assetTypeRefs = registerOutput<List<String>?>('assetTypeRefs');
     attributes = registerOutput<dynamic>('attributes');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     datasets = registerOutput<List<Map<String, dynamic>>?>('datasets');
-    defaultDatasetsConfiguration = registerOutput<String?>(
-      'defaultDatasetsConfiguration',
-    );
-    defaultDatasetsDestinations = registerOutput<List<Map<String, dynamic>>?>(
-      'defaultDatasetsDestinations',
-    );
-    defaultEventsConfiguration = registerOutput<String?>(
-      'defaultEventsConfiguration',
-    );
-    defaultEventsDestinations = registerOutput<List<Map<String, dynamic>>?>(
-      'defaultEventsDestinations',
-    );
-    defaultManagementGroupsConfiguration = registerOutput<String?>(
-      'defaultManagementGroupsConfiguration',
-    );
-    defaultStreamsConfiguration = registerOutput<String?>(
-      'defaultStreamsConfiguration',
-    );
-    defaultStreamsDestinations = registerOutput<List<Map<String, dynamic>>?>(
-      'defaultStreamsDestinations',
-    );
+    defaultDatasetsConfiguration = registerOutput<String?>('defaultDatasetsConfiguration');
+    defaultDatasetsDestinations = registerOutput<List<Map<String, dynamic>>?>('defaultDatasetsDestinations');
+    defaultEventsConfiguration = registerOutput<String?>('defaultEventsConfiguration');
+    defaultEventsDestinations = registerOutput<List<Map<String, dynamic>>?>('defaultEventsDestinations');
+    defaultManagementGroupsConfiguration = registerOutput<String?>('defaultManagementGroupsConfiguration');
+    defaultStreamsConfiguration = registerOutput<String?>('defaultStreamsConfiguration');
+    defaultStreamsDestinations = registerOutput<List<Map<String, dynamic>>?>('defaultStreamsDestinations');
     description = registerOutput<String?>('description');
-    deviceRef = registerOutput<DeviceRefResponse>(
-      'deviceRef',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeviceRefResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deviceRef = registerOutput<DeviceRefResponse>('deviceRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceRefResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     discoveredAssetRefs = registerOutput<List<String>?>('discoveredAssetRefs');
     displayName = registerOutput<String?>('displayName');
     documentationUri = registerOutput<String?>('documentationUri');
     enabled = registerOutput<bool?>('enabled');
     events = registerOutput<List<Map<String, dynamic>>?>('events');
-    extendedLocation = registerOutput<ExtendedLocationResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     externalAssetId = registerOutput<String?>('externalAssetId');
     hardwareRevision = registerOutput<String?>('hardwareRevision');
     lastTransitionTime = registerOutput<String>('lastTransitionTime');
     location = registerOutput<String>('location');
-    managementGroups = registerOutput<List<Map<String, dynamic>>?>(
-      'managementGroups',
-    );
+    managementGroups = registerOutput<List<Map<String, dynamic>>?>('managementGroups');
     manufacturer = registerOutput<String?>('manufacturer');
     manufacturerUri = registerOutput<String?>('manufacturerUri');
     model = registerOutput<String?>('model');
@@ -1515,27 +1440,9 @@ class NamespaceAsset extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     serialNumber = registerOutput<String?>('serialNumber');
     softwareRevision = registerOutput<String?>('softwareRevision');
-    status = registerOutput<NamespaceAssetStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NamespaceAssetStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    status = registerOutput<NamespaceAssetStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceAssetStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     streams = registerOutput<List<Map<String, dynamic>>?>('streams');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');

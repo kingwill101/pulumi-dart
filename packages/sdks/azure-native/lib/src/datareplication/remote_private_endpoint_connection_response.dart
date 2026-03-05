@@ -9,21 +9,20 @@ class RemotePrivateEndpointConnectionResponse {
 
   /// Creates a new [RemotePrivateEndpointConnectionResponse].
   /// [id] Gets or sets the remote private endpoint connection id.
-  RemotePrivateEndpointConnectionResponse({this.id});
+  RemotePrivateEndpointConnectionResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
-  factory RemotePrivateEndpointConnectionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RemotePrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return RemotePrivateEndpointConnectionResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

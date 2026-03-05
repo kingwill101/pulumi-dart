@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMachineGroupArgs {
   /// UTC date and time specifying the end time of an interval. When not specified the service uses DateTime.UtcNow
   final pulumi.Input<String>? endTime;
-
   /// Machine Group resource name.
   final pulumi.Input<String> machineGroupName;
-
   /// Resource group name within the specified subscriptionId.
   final pulumi.Input<String> resourceGroupName;
-
   /// UTC date and time specifying the start time of an interval. When not specified the service uses DateTime.UtcNow - 10m
   final pulumi.Input<String>? startTime;
-
   /// OMS workspace containing the resources of interest.
   final pulumi.Input<String> workspaceName;
 
@@ -48,23 +44,12 @@ class GetMachineGroupArgs {
 
   factory GetMachineGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineGroupArgs(
-      endTime: (() {
-        final guardedValue = map['endTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      machineGroupName: pulumi.Input.fromValue(
-        map['machineGroupName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      machineGroupName: pulumi.Input.fromValue(map['machineGroupName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

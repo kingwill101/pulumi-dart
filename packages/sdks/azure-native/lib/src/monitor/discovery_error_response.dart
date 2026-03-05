@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiscoveryErrorResponse {
   /// Additional context information, like resource IDs or query details
   final pulumi.Input<List<String>> context;
-
   /// Error message
   final pulumi.Input<String> message;
 
   /// Creates a new [DiscoveryErrorResponse].
   /// [context] Additional context information, like resource IDs or query details
   /// [message] Error message
-  DiscoveryErrorResponse({required this.context, required this.message});
+  DiscoveryErrorResponse({
+    required this.context,
+    required this.message,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'context': context, 'message': message};
+    return <String, dynamic>{
+      'context': context,
+      'message': message,
+    };
   }
 
   factory DiscoveryErrorResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class DiscoveryErrorResponse {
     );
   }
 }
+

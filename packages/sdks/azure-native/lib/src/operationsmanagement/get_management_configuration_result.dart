@@ -6,19 +6,14 @@ import 'management_configuration_properties_response.dart';
 class GetManagementConfigurationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String id;
-
   /// Resource location
   final String? location;
-
   /// Resource name.
   final String name;
-
   /// Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
   final ManagementConfigurationPropertiesResponse properties;
-
   /// Resource type.
   final String type;
 
@@ -53,16 +48,11 @@ class GetManagementConfigurationResult {
     return GetManagementConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: ManagementConfigurationPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: ManagementConfigurationPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

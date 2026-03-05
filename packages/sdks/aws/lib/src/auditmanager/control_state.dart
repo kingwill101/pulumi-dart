@@ -7,35 +7,26 @@ import 'control_control_mapping_source.dart';
 class ControlState {
   /// Recommended actions to carry out if the control isn't fulfilled.
   final pulumi.Input<String>? actionPlanInstructions;
-
   /// Title of the action plan for remediating the control.
   final pulumi.Input<String>? actionPlanTitle;
-
   /// Amazon Resource Name (ARN) of the control.
   /// * `control_mapping_sources.*.source_id` - Unique identifier for the source.
   final pulumi.Input<String>? arn;
-
   /// Data mapping sources. See `control_mapping_sources` below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<ControlControlMappingSource>>? controlMappingSources;
-
   /// Description of the control.
   final pulumi.Input<String>? description;
-
   /// Name of the control.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the control. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
-
   /// Steps to follow to determine if the control is satisfied.
   final pulumi.Input<String>? testingInformation;
-
   /// Type of control, such as a custom control or a standard control.
   final pulumi.Input<String>? type;
 
@@ -70,18 +61,7 @@ class ControlState {
       'actionPlanInstructions': ?actionPlanInstructions,
       'actionPlanTitle': ?actionPlanTitle,
       'arn': ?arn,
-      'controlMappingSources':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ControlControlMappingSource>,
-            List<Map<String, dynamic>>
-          >(
-            controlMappingSources,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ControlControlMappingSource,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'controlMappingSources': ?pulumi.Input.mapOptionalInputValue<List<ControlControlMappingSource>, List<Map<String, dynamic>>>(controlMappingSources, (value) => pulumi.Input.encodeList<ControlControlMappingSource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'name': ?name,
       'region': ?region,
@@ -94,72 +74,18 @@ class ControlState {
 
   factory ControlState.fromMap(Map<String, dynamic> map) {
     return ControlState(
-      actionPlanInstructions: (() {
-        final guardedValue = map['actionPlanInstructions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      actionPlanTitle: (() {
-        final guardedValue = map['actionPlanTitle'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      controlMappingSources: (() {
-        final guardedValue = map['controlMappingSources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ControlControlMappingSource>(
-            guardedValue,
-            (value) => ControlControlMappingSource.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      testingInformation: (() {
-        final guardedValue = map['testingInformation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      actionPlanInstructions: (() { final guardedValue = map['actionPlanInstructions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      actionPlanTitle: (() { final guardedValue = map['actionPlanTitle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      controlMappingSources: (() { final guardedValue = map['controlMappingSources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ControlControlMappingSource>(guardedValue, (value) => ControlControlMappingSource.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      testingInformation: (() { final guardedValue = map['testingInformation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

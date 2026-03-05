@@ -7,13 +7,10 @@ import 'dataflow_graph_destination_schema_settings_response.dart';
 class DataflowGraphDestinationNodeSettingsResponse {
   /// Data destination at the endpoint.
   final pulumi.Input<String> dataDestination;
-
   /// The name of the DataflowEndpoint resource .
   final pulumi.Input<String> endpointRef;
-
   /// Output schema settings.
-  final pulumi.Input<DataflowGraphDestinationSchemaSettingsResponse>?
-  outputSchemaSettings;
+  final pulumi.Input<DataflowGraphDestinationSchemaSettingsResponse>? outputSchemaSettings;
 
   /// Creates a new [DataflowGraphDestinationNodeSettingsResponse].
   /// [dataDestination] Data destination at the endpoint.
@@ -29,29 +26,16 @@ class DataflowGraphDestinationNodeSettingsResponse {
     return <String, dynamic>{
       'dataDestination': dataDestination,
       'endpointRef': endpointRef,
-      'outputSchemaSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            DataflowGraphDestinationSchemaSettingsResponse,
-            Map<String, dynamic>
-          >(outputSchemaSettings, (value) => value.toMap()),
+      'outputSchemaSettings': ?pulumi.Input.mapOptionalInputValue<DataflowGraphDestinationSchemaSettingsResponse, Map<String, dynamic>>(outputSchemaSettings, (value) => value.toMap()),
     };
   }
 
-  factory DataflowGraphDestinationNodeSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataflowGraphDestinationNodeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DataflowGraphDestinationNodeSettingsResponse(
       dataDestination: pulumi.Input.fromValue(map['dataDestination'] as String),
       endpointRef: pulumi.Input.fromValue(map['endpointRef'] as String),
-      outputSchemaSettings: (() {
-        final guardedValue = map['outputSchemaSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DataflowGraphDestinationSchemaSettingsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      outputSchemaSettings: (() { final guardedValue = map['outputSchemaSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowGraphDestinationSchemaSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

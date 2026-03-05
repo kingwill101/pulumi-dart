@@ -1,24 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDatabase.
 class GetDatabaseResult {
   /// The ARN that uniquely identifies this database.
   final String arn;
-
   /// Creation time of database.
   final String createdTime;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The ARN of the KMS key used to encrypt the data stored in the database.
   final String kmsKeyId;
-
   /// Last time database was updated.
   final String lastUpdatedTime;
   final String name;
   final String region;
-
   /// Total number of tables in the Timestream database.
   final int tableCount;
 
@@ -68,3 +64,4 @@ class GetDatabaseResult {
     );
   }
 }
+

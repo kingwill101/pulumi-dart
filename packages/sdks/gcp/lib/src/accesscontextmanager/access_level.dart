@@ -278,24 +278,19 @@ class AccessLevel extends pulumi.CustomResource {
   /// A set of predefined conditions for the access level and a combining function.
   /// Structure is documented below.
   late final pulumi.Output<AccessLevelBasic?> basic;
-
   /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
   /// See CEL spec at: https://github.com/google/cel-spec.
   /// Structure is documented below.
   late final pulumi.Output<AccessLevelCustom?> custom;
-
   /// Description of the AccessLevel and its use. Does not affect behavior.
   late final pulumi.Output<String?> description;
-
   /// Resource name for the Access Level. The short_name component must begin
   /// with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
   late final pulumi.Output<String> name;
-
   /// The AccessPolicy this AccessLevel lives in.
   /// Format: accessPolicies/{policy_id}
   late final pulumi.Output<String> parent;
-
   /// Human readable title. Must be unique within the Policy.
   late final pulumi.Output<String> title;
 
@@ -308,31 +303,13 @@ class AccessLevel extends pulumi.CustomResource {
     AccessLevelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/accessLevel:AccessLevel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    basic = registerOutput<AccessLevelBasic?>(
-      'basic',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessLevelBasic.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    custom = registerOutput<AccessLevelCustom?>(
-      'custom',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessLevelCustom.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:accesscontextmanager/accessLevel:AccessLevel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    basic = registerOutput<AccessLevelBasic?>('basic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelBasic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    custom = registerOutput<AccessLevelCustom?>('custom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelCustom.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
@@ -357,31 +334,13 @@ class AccessLevel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/accessLevel:AccessLevel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    basic = registerOutput<AccessLevelBasic?>(
-      'basic',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessLevelBasic.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    custom = registerOutput<AccessLevelCustom?>(
-      'custom',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessLevelCustom.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:accesscontextmanager/accessLevel:AccessLevel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    basic = registerOutput<AccessLevelBasic?>('basic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelBasic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    custom = registerOutput<AccessLevelCustom?>('custom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelCustom.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');

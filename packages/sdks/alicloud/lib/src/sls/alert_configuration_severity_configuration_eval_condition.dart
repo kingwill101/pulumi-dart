@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertConfigurationSeverityConfigurationEvalCondition {
   /// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
   final pulumi.Input<String>? condition;
-
   /// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__&gt; 3.
   final pulumi.Input<String>? countCondition;
 
@@ -24,20 +23,11 @@ class AlertConfigurationSeverityConfigurationEvalCondition {
     };
   }
 
-  factory AlertConfigurationSeverityConfigurationEvalCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertConfigurationSeverityConfigurationEvalCondition.fromMap(Map<String, dynamic> map) {
     return AlertConfigurationSeverityConfigurationEvalCondition(
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      countCondition: (() {
-        final guardedValue = map['countCondition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      countCondition: (() { final guardedValue = map['countCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

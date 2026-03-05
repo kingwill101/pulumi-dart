@@ -10,29 +10,20 @@ class ManagedClusterAzureMonitorProfile {
 
   /// Creates a new [ManagedClusterAzureMonitorProfile].
   /// [metrics] Metrics profile for the Azure Monitor managed service for Prometheus addon. Collect out-of-the-box Kubernetes infrastructure metrics to send to an Azure Monitor Workspace and configure additional scraping for custom targets. See aka.ms/AzureManagedPrometheus for an overview.
-  ManagedClusterAzureMonitorProfile({this.metrics});
+  ManagedClusterAzureMonitorProfile({
+    this.metrics,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metrics':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedClusterAzureMonitorProfileMetrics,
-            Map<String, dynamic>
-          >(metrics, (value) => value.toMap()),
+      'metrics': ?pulumi.Input.mapOptionalInputValue<ManagedClusterAzureMonitorProfileMetrics, Map<String, dynamic>>(metrics, (value) => value.toMap()),
     };
   }
 
   factory ManagedClusterAzureMonitorProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAzureMonitorProfile(
-      metrics: (() {
-        final guardedValue = map['metrics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedClusterAzureMonitorProfileMetrics.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterAzureMonitorProfileMetrics.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

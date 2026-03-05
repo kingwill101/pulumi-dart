@@ -9,10 +9,14 @@ class AzureCredentials {
 
   /// Creates a new [AzureCredentials].
   /// [sasToken] Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
-  AzureCredentials({required this.sasToken});
+  AzureCredentials({
+    required this.sasToken,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sasToken': sasToken};
+    return <String, dynamic>{
+      'sasToken': sasToken,
+    };
   }
 
   factory AzureCredentials.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class AzureCredentials {
     );
   }
 }
+

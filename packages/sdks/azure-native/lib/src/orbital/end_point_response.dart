@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndPointResponse {
   /// Name of an end point.
   final pulumi.Input<String> endPointName;
-
   /// IP Address (IPv4).
   final pulumi.Input<String> ipAddress;
-
   /// TCP port to listen on to receive data.
   final pulumi.Input<String> port;
-
   /// Protocol either UDP or TCP.
   final pulumi.Input<String> protocol;
 
@@ -46,3 +43,4 @@ class EndPointResponse {
     );
   }
 }
+

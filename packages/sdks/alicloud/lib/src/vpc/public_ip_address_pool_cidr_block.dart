@@ -214,17 +214,13 @@ import 'public_ip_address_pool_cidr_block_state.dart';
 class PublicIpAddressPoolCidrBlock extends pulumi.CustomResource {
   /// The CIDR block.
   late final pulumi.Output<String> cidrBlock;
-
   /// IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
   /// &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
   late final pulumi.Output<int?> cidrMask;
-
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// The ID of the VPC Public IP address pool.
   late final pulumi.Output<String> publicIpAddressPoolId;
-
   /// The status of the VPC Public Ip Address Pool Cidr Block.
   late final pulumi.Output<String> status;
 
@@ -237,11 +233,11 @@ class PublicIpAddressPoolCidrBlock extends pulumi.CustomResource {
     PublicIpAddressPoolCidrBlockArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     cidrMask = registerOutput<int?>('cidrMask');
     createTime = registerOutput<String>('createTime');
@@ -267,11 +263,11 @@ class PublicIpAddressPoolCidrBlock extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     cidrMask = registerOutput<int?>('cidrMask');
     createTime = registerOutput<String>('createTime');

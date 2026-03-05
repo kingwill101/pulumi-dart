@@ -9,10 +9,14 @@ class UpdatePolicyResponseAlloydbV1beta {
 
   /// Creates a new [UpdatePolicyResponseAlloydbV1beta].
   /// [mode] Mode for updating the instance.
-  UpdatePolicyResponseAlloydbV1beta({required this.mode});
+  UpdatePolicyResponseAlloydbV1beta({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
   factory UpdatePolicyResponseAlloydbV1beta.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class UpdatePolicyResponseAlloydbV1beta {
     );
   }
 }
+

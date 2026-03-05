@@ -9,10 +9,14 @@ class GuestOsScanResponse {
 
   /// Creates a new [GuestOsScanResponse].
   /// [coreSource] reference to the corresponding Guest OS Scan in MC Source.
-  GuestOsScanResponse({required this.coreSource});
+  GuestOsScanResponse({
+    required this.coreSource,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'coreSource': coreSource};
+    return <String, dynamic>{
+      'coreSource': coreSource,
+    };
   }
 
   factory GuestOsScanResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class GuestOsScanResponse {
     );
   }
 }
+

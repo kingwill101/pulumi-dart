@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLoadTestArgs {
   /// Load Test name
   final pulumi.Input<String> loadTestName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetLoadTestArgs {
   factory GetLoadTestArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadTestArgs(
       loadTestName: pulumi.Input.fromValue(map['loadTestName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

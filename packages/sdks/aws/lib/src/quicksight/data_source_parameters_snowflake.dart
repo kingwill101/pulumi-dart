@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceParametersSnowflake {
   /// The database to which to connect.
   final pulumi.Input<String> database;
-
   /// The host to which to connect.
   final pulumi.Input<String> host;
-
   /// The warehouse to which to connect.
   final pulumi.Input<String> warehouse;
 
@@ -38,3 +36,4 @@ class DataSourceParametersSnowflake {
     );
   }
 }
+

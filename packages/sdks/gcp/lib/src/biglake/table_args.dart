@@ -10,15 +10,12 @@ import 'table_hive_options.dart';
 class TableArgs {
   /// The id of the parent database.
   final pulumi.Input<String>? database;
-
   /// Options of a Hive table.
   /// Structure is documented below.
   final pulumi.Input<TableHiveOptions>? hiveOptions;
-
   /// Output only. The name of the Table. Format:
   /// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
   final pulumi.Input<String>? name;
-
   /// The database type.
   /// Possible values are: `HIVE`.
   final pulumi.Input<String>? type;
@@ -28,16 +25,17 @@ class TableArgs {
   /// [hiveOptions] Options of a Hive table.
   /// [name] Output only. The name of the Table. Format:
   /// [type] The database type.
-  TableArgs({this.database, this.hiveOptions, this.name, this.type});
+  TableArgs({
+    this.database,
+    this.hiveOptions,
+    this.name,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'database': ?database,
-      'hiveOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            TableHiveOptions,
-            Map<String, dynamic>
-          >(hiveOptions, (value) => value.toMap()),
+      'hiveOptions': ?pulumi.Input.mapOptionalInputValue<TableHiveOptions, Map<String, dynamic>>(hiveOptions, (value) => value.toMap()),
       'name': ?name,
       'type': ?type,
     };
@@ -45,30 +43,11 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      database: (() {
-        final guardedValue = map['database'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hiveOptions: (() {
-        final guardedValue = map['hiveOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TableHiveOptions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      database: (() { final guardedValue = map['database']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hiveOptions: (() { final guardedValue = map['hiveOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableHiveOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'get_data_flows_flow.dart';
 class GetDataFlowsResult {
   final String fileSystemId;
   final List<GetDataFlowsFlow> flows;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -33,10 +32,7 @@ class GetDataFlowsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fileSystemId': fileSystemId,
-      'flows': pulumi.Input.encodeList<GetDataFlowsFlow, Map<String, dynamic>>(
-        flows,
-        (value) => value.toMap(),
-      ),
+      'flows': pulumi.Input.encodeList<GetDataFlowsFlow, Map<String, dynamic>>(flows, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
@@ -47,23 +43,12 @@ class GetDataFlowsResult {
   factory GetDataFlowsResult.fromMap(Map<String, dynamic> map) {
     return GetDataFlowsResult(
       fileSystemId: map['fileSystemId'] as String,
-      flows: pulumi.Input.decodeList<GetDataFlowsFlow>(
-        map['flows']!,
-        (value) =>
-            GetDataFlowsFlow.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      flows: pulumi.Input.decodeList<GetDataFlowsFlow>(map['flows']!, (value) => GetDataFlowsFlow.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

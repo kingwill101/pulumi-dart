@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectState {
   /// Workspace Description
   final pulumi.Input<String>? description;
-
   /// Is Development Environment Enabled
   final pulumi.Input<bool>? devEnvironmentEnabled;
-
   /// Is Development Role Disabled
   final pulumi.Input<bool>? devRoleDisabled;
-
   /// Workspace Display Name
   final pulumi.Input<String>? displayName;
-
   /// Create PAI Workspace Together
   final pulumi.Input<bool>? paiTaskEnabled;
-
   /// Workspace Name
   final pulumi.Input<String>? projectName;
-
   /// Aliyun Resource Group Id
   final pulumi.Input<String>? resourceGroupId;
-
   /// Workspace Status
   final pulumi.Input<String>? status;
-
   /// Aliyun Resource Tag
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -69,53 +61,16 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      devEnvironmentEnabled: (() {
-        final guardedValue = map['devEnvironmentEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      devRoleDisabled: (() {
-        final guardedValue = map['devRoleDisabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      paiTaskEnabled: (() {
-        final guardedValue = map['paiTaskEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      projectName: (() {
-        final guardedValue = map['projectName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      devEnvironmentEnabled: (() { final guardedValue = map['devEnvironmentEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      devRoleDisabled: (() { final guardedValue = map['devRoleDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      paiTaskEnabled: (() { final guardedValue = map['paiTaskEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      projectName: (() { final guardedValue = map['projectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

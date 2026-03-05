@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayAuthenticationCertificateResponse {
   /// Certificate public data.
   final pulumi.Input<String>? data;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// Name of the authentication certificate that is unique within an Application Gateway.
   final pulumi.Input<String>? name;
-
   /// The provisioning state of the authentication certificate resource.
   final pulumi.Input<String> provisioningState;
-
   /// Type of the resource.
   final pulumi.Input<String> type;
 
@@ -49,30 +44,15 @@ class ApplicationGatewayAuthenticationCertificateResponse {
     };
   }
 
-  factory ApplicationGatewayAuthenticationCertificateResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationGatewayAuthenticationCertificateResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayAuthenticationCertificateResponse(
-      data: (() {
-        final guardedValue = map['data'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: pulumi.Input.fromValue(map['etag'] as String),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RerunTumblingWindowTrigger {
   /// List of tags that can be used for describing the trigger.
   final pulumi.Input<List<dynamic>>? annotations;
-
   /// Trigger description.
   final pulumi.Input<String>? description;
-
   /// The parent trigger reference.
   final pulumi.Input<dynamic> parentTrigger;
-
   /// The end time for the time period for which restatement is initiated. Only UTC time is currently supported.
   final pulumi.Input<String> requestedEndTime;
-
   /// The start time for the time period for which restatement is initiated. Only UTC time is currently supported.
   final pulumi.Input<String> requestedStartTime;
-
   /// The max number of parallel time windows (ready for execution) for which a rerun is triggered.
   final pulumi.Input<int> rerunConcurrency;
-
   /// Trigger type.
   /// Expected value is 'RerunTumblingWindowTrigger'.
   final pulumi.Input<String> type;
@@ -58,25 +52,14 @@ class RerunTumblingWindowTrigger {
 
   factory RerunTumblingWindowTrigger.fromMap(Map<String, dynamic> map) {
     return RerunTumblingWindowTrigger(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parentTrigger: pulumi.Input.fromValue(map['parentTrigger']),
-      requestedEndTime: pulumi.Input.fromValue(
-        map['requestedEndTime'] as String,
-      ),
-      requestedStartTime: pulumi.Input.fromValue(
-        map['requestedStartTime'] as String,
-      ),
+      requestedEndTime: pulumi.Input.fromValue(map['requestedEndTime'] as String),
+      requestedStartTime: pulumi.Input.fromValue(map['requestedStartTime'] as String),
       rerunConcurrency: pulumi.Input.fromValue(map['rerunConcurrency'] as int),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum CacheType {
     throw ArgumentError('Unknown CacheType value: $value');
   }
 }
+

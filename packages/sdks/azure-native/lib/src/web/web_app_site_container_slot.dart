@@ -16,49 +16,34 @@ import 'web_app_site_container_slot_args.dart';
 class WebAppSiteContainerSlot extends pulumi.CustomResource {
   /// Auth Type
   late final pulumi.Output<String?> authType;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Created Time
   late final pulumi.Output<String> createdTime;
-
   /// List of environment variables
   late final pulumi.Output<List<Map<String, dynamic>>?> environmentVariables;
-
   /// Image Name
   late final pulumi.Output<String> image;
-
   /// &lt;code&gt;true&lt;/code&gt; if the container is the main site container; &lt;code&gt;false&lt;/code&gt; otherwise.
   late final pulumi.Output<bool> isMain;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Last Modified Time
   late final pulumi.Output<String> lastModifiedTime;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Password Secret
   late final pulumi.Output<String?> passwordSecret;
-
   /// StartUp Command
   late final pulumi.Output<String?> startUpCommand;
-
   /// Target Port
   late final pulumi.Output<String?> targetPort;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// UserManagedIdentity ClientId
   late final pulumi.Output<String?> userManagedIdentityClientId;
-
   /// User Name
   late final pulumi.Output<String?> userName;
-
   /// List of volume mounts
   late final pulumi.Output<List<Map<String, dynamic>>?> volumeMounts;
 
@@ -71,17 +56,15 @@ class WebAppSiteContainerSlot extends pulumi.CustomResource {
     WebAppSiteContainerSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppSiteContainerSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppSiteContainerSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authType = registerOutput<String?>('authType');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTime = registerOutput<String>('createdTime');
-    environmentVariables = registerOutput<List<Map<String, dynamic>>?>(
-      'environmentVariables',
-    );
+    environmentVariables = registerOutput<List<Map<String, dynamic>>?>('environmentVariables');
     image = registerOutput<String>('image');
     isMain = registerOutput<bool>('isMain');
     kind = registerOutput<String?>('kind');
@@ -91,9 +74,7 @@ class WebAppSiteContainerSlot extends pulumi.CustomResource {
     startUpCommand = registerOutput<String?>('startUpCommand');
     targetPort = registerOutput<String?>('targetPort');
     type = registerOutput<String>('type');
-    userManagedIdentityClientId = registerOutput<String?>(
-      'userManagedIdentityClientId',
-    );
+    userManagedIdentityClientId = registerOutput<String?>('userManagedIdentityClientId');
     userName = registerOutput<String?>('userName');
     volumeMounts = registerOutput<List<Map<String, dynamic>>?>('volumeMounts');
   }

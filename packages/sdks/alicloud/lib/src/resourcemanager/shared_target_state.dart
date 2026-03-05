@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedTargetState {
   /// (Available since v1.259.0) The time when the association of the entity was created.
   final pulumi.Input<String>? createTime;
-
   /// The ID of the resource share.
   final pulumi.Input<String>? resourceShareId;
-
   /// The status of shared target.
   final pulumi.Input<String>? status;
-
   /// The ID of the principal.
   final pulumi.Input<String>? targetId;
 
@@ -39,26 +36,11 @@ class SharedTargetState {
 
   factory SharedTargetState.fromMap(Map<String, dynamic> map) {
     return SharedTargetState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceShareId: (() {
-        final guardedValue = map['resourceShareId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetId: (() {
-        final guardedValue = map['targetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceShareId: (() { final guardedValue = map['resourceShareId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetId: (() { final guardedValue = map['targetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

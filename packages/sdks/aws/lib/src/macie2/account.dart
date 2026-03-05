@@ -110,19 +110,14 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// The date and time, in UTC and extended RFC 3339 format, when the Amazon Macie account was created.
   late final pulumi.Output<String> createdAt;
-
   /// Specifies how often to publish updates to policy findings for the account. This includes publishing updates to AWS Security Hub and Amazon EventBridge (formerly called Amazon CloudWatch Events). Valid values are `FIFTEEN_MINUTES`, `ONE_HOUR` or `SIX_HOURS`.
   late final pulumi.Output<String> findingPublishingFrequency;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) of the service-linked role that allows Macie to monitor and analyze data in AWS resources for the account.
   late final pulumi.Output<String> serviceRole;
-
   /// Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
   late final pulumi.Output<String> status;
-
   /// The date and time, in UTC and extended RFC 3339 format, of the most recent change to the status of the Macie account.
   late final pulumi.Output<String> updatedAt;
 
@@ -135,15 +130,13 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:macie2/account:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:macie2/account:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
-    findingPublishingFrequency = registerOutput<String>(
-      'findingPublishingFrequency',
-    );
+    findingPublishingFrequency = registerOutput<String>('findingPublishingFrequency');
     region = registerOutput<String>('region');
     serviceRole = registerOutput<String>('serviceRole');
     status = registerOutput<String>('status');
@@ -168,15 +161,13 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:macie2/account:Account',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:macie2/account:Account',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
-    findingPublishingFrequency = registerOutput<String>(
-      'findingPublishingFrequency',
-    );
+    findingPublishingFrequency = registerOutput<String>('findingPublishingFrequency');
     region = registerOutput<String>('region');
     serviceRole = registerOutput<String>('serviceRole');
     status = registerOutput<String>('status');

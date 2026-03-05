@@ -13,14 +13,15 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfigurati
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kendraIndexArn': kendraIndexArn};
+    return <String, dynamic>{
+      'kendraIndexArn': kendraIndexArn,
+    };
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration(
       kendraIndexArn: pulumi.Input.fromValue(map['kendraIndexArn'] as String),
     );
   }
 }
+

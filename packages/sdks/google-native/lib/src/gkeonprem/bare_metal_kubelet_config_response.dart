@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalKubeletConfigResponse {
   /// The maximum size of bursty pulls, temporarily allows pulls to burst to this number, while still not exceeding registry_pull_qps. The value must not be a negative number. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 10.
   final pulumi.Input<int> registryBurst;
-
   /// The limit of registry pulls per second. Setting this value to 0 means no limit. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 5.
   final pulumi.Input<int> registryPullQps;
-
   /// Prevents the Kubelet from pulling multiple images at a time. We recommend *not* changing the default value on nodes that run docker daemon with version &lt; 1.9 or an Another Union File System (Aufs) storage backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has more details.
   final pulumi.Input<bool> serializeImagePullsDisabled;
 
@@ -35,9 +33,8 @@ class BareMetalKubeletConfigResponse {
     return BareMetalKubeletConfigResponse(
       registryBurst: pulumi.Input.fromValue(map['registryBurst'] as int),
       registryPullQps: pulumi.Input.fromValue(map['registryPullQps'] as int),
-      serializeImagePullsDisabled: pulumi.Input.fromValue(
-        map['serializeImagePullsDisabled'] as bool,
-      ),
+      serializeImagePullsDisabled: pulumi.Input.fromValue(map['serializeImagePullsDisabled'] as bool),
     );
   }
 }
+

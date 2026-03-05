@@ -185,23 +185,16 @@ class Secret extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String> deploymentStatus;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// object which contains secret parameters
-  late final pulumi.Output<AzureFirstPartyManagedCertificateParametersResponse?>
-  parameters;
-
+  late final pulumi.Output<AzureFirstPartyManagedCertificateParametersResponse?> parameters;
   /// The name of the profile which holds the secret.
   late final pulumi.Output<String> profileName;
-
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -209,39 +202,23 @@ class Secret extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Secret]. {@macro pulumi_cdn_secret_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Secret(String name, {SecretArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:cdn:Secret',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Secret(
+    String name, {
+    SecretArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:cdn:Secret',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     deploymentStatus = registerOutput<String>('deploymentStatus');
     this.name = registerOutput<String>('name');
-    parameters =
-        registerOutput<AzureFirstPartyManagedCertificateParametersResponse?>(
-          'parameters',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AzureFirstPartyManagedCertificateParametersResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    parameters = registerOutput<AzureFirstPartyManagedCertificateParametersResponse?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureFirstPartyManagedCertificateParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     profileName = registerOutput<String>('profileName');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

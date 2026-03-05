@@ -15,3 +15,4 @@ enum RecommendationConfigStatus {
     throw ArgumentError('Unknown RecommendationConfigStatus value: $value');
   }
 }
+

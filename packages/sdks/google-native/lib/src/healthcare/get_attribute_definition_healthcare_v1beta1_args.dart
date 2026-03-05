@@ -37,21 +37,14 @@ class GetAttributeDefinitionHealthcareV1beta1Args {
     };
   }
 
-  factory GetAttributeDefinitionHealthcareV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAttributeDefinitionHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetAttributeDefinitionHealthcareV1beta1Args(
-      attributeDefinitionId: pulumi.Input.fromValue(
-        map['attributeDefinitionId'] as String,
-      ),
+      attributeDefinitionId: pulumi.Input.fromValue(map['attributeDefinitionId'] as String),
       consentStoreId: pulumi.Input.fromValue(map['consentStoreId'] as String),
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

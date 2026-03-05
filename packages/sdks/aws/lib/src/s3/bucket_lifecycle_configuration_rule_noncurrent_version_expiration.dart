@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketLifecycleConfigurationRuleNoncurrentVersionExpiration {
   /// Number of noncurrent versions Amazon S3 will retain. Must be a non-zero positive integer.
   final pulumi.Input<int>? newerNoncurrentVersions;
-
   /// Number of days an object is noncurrent before Amazon S3 can perform the associated action. Must be a positive integer.
   final pulumi.Input<int> noncurrentDays;
 
@@ -24,16 +23,11 @@ class BucketLifecycleConfigurationRuleNoncurrentVersionExpiration {
     };
   }
 
-  factory BucketLifecycleConfigurationRuleNoncurrentVersionExpiration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketLifecycleConfigurationRuleNoncurrentVersionExpiration.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationRuleNoncurrentVersionExpiration(
-      newerNoncurrentVersions: (() {
-        final guardedValue = map['newerNoncurrentVersions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      newerNoncurrentVersions: (() { final guardedValue = map['newerNoncurrentVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       noncurrentDays: pulumi.Input.fromValue(map['noncurrentDays'] as int),
     );
   }
 }
+

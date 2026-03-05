@@ -32,12 +32,9 @@ class GetWorkflowWorkflowsV1betaArgs {
   factory GetWorkflowWorkflowsV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowWorkflowsV1betaArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workflowId: pulumi.Input.fromValue(map['workflowId'] as String),
     );
   }
 }
+

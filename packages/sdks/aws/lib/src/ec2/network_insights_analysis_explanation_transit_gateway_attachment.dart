@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInsightsAnalysisExplanationTransitGatewayAttachment {
   /// ARN of the Network Insights Analysis.
   final pulumi.Input<String>? arn;
-
   /// ID of the Network Insights Analysis.
   final pulumi.Input<String>? id;
   final pulumi.Input<String>? name;
@@ -21,28 +20,19 @@ class NetworkInsightsAnalysisExplanationTransitGatewayAttachment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': ?arn, 'id': ?id, 'name': ?name};
+    return <String, dynamic>{
+      'arn': ?arn,
+      'id': ?id,
+      'name': ?name,
+    };
   }
 
-  factory NetworkInsightsAnalysisExplanationTransitGatewayAttachment.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkInsightsAnalysisExplanationTransitGatewayAttachment.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisExplanationTransitGatewayAttachment(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

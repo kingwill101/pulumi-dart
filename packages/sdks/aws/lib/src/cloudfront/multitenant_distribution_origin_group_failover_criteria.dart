@@ -13,16 +13,15 @@ class MultitenantDistributionOriginGroupFailoverCriteria {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'statusCodes': statusCodes};
+    return <String, dynamic>{
+      'statusCodes': statusCodes,
+    };
   }
 
-  factory MultitenantDistributionOriginGroupFailoverCriteria.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MultitenantDistributionOriginGroupFailoverCriteria.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOriginGroupFailoverCriteria(
-      statusCodes: pulumi.Input.fromValue(
-        (map['statusCodes'] as List).cast<int>(),
-      ),
+      statusCodes: pulumi.Input.fromValue((map['statusCodes'] as List).cast<int>()),
     );
   }
 }
+

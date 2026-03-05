@@ -8,18 +8,14 @@ class DefenseRuleConfigAccountIdentifier {
   /// - basic: indicates Basic authentication.
   /// - jwt: indicates JWT authentication. For JWT authentication, you must specify the field that stores the decoded account information (position).
   final pulumi.Input<String>? decodeType;
-
   /// Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
   ///
   /// &gt; **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
   final pulumi.Input<String>? key;
-
   /// The field that stores the decoded account information.
   final pulumi.Input<String>? position;
-
   /// The priority of the current extraction configuration. Each traffic can match at most one extraction policy. Valid values: [0,20]. A smaller value indicates a higher priority. The priority value must be unique.
   final pulumi.Input<int>? priority;
-
   /// The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
   final pulumi.Input<String>? subKey;
 
@@ -49,31 +45,12 @@ class DefenseRuleConfigAccountIdentifier {
 
   factory DefenseRuleConfigAccountIdentifier.fromMap(Map<String, dynamic> map) {
     return DefenseRuleConfigAccountIdentifier(
-      decodeType: (() {
-        final guardedValue = map['decodeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      position: (() {
-        final guardedValue = map['position'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      subKey: (() {
-        final guardedValue = map['subKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      decodeType: (() { final guardedValue = map['decodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      position: (() { final guardedValue = map['position']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      subKey: (() { final guardedValue = map['subKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -305,13 +305,10 @@ import 'vault_policy_state.dart';
 class VaultPolicy extends pulumi.CustomResource {
   /// The ARN of the vault.
   late final pulumi.Output<String> backupVaultArn;
-
   /// Name of the backup vault to add policy for.
   late final pulumi.Output<String> backupVaultName;
-
   /// The backup vault access policy document in JSON format.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -324,11 +321,11 @@ class VaultPolicy extends pulumi.CustomResource {
     VaultPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:backup/vaultPolicy:VaultPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:backup/vaultPolicy:VaultPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupVaultArn = registerOutput<String>('backupVaultArn');
     backupVaultName = registerOutput<String>('backupVaultName');
     policy = registerOutput<String>('policy');
@@ -353,11 +350,11 @@ class VaultPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:backup/vaultPolicy:VaultPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:backup/vaultPolicy:VaultPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupVaultArn = registerOutput<String>('backupVaultArn');
     backupVaultName = registerOutput<String>('backupVaultName');
     policy = registerOutput<String>('policy');

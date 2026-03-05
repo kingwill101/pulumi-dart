@@ -25,9 +25,7 @@ class GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation {
     };
   }
 
-  factory GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation(
       columnName: pulumi.Input.fromValue(map['columnName'] as String),
       format: pulumi.Input.fromValue(map['format'] as String),
@@ -35,3 +33,4 @@ class GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation {
     );
   }
 }
+

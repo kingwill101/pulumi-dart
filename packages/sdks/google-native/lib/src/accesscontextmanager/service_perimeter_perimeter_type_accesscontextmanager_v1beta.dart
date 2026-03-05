@@ -6,17 +6,13 @@ enum ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta {
   const ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta(this.wireValue);
   final String wireValue;
 
-  static ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta fromValue(
-    String value,
-  ) {
-    for (final item
-        in ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta.values) {
+  static ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta fromValue(String value) {
+    for (final item in ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta value: $value',
-    );
+    throw ArgumentError('Unknown ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta value: $value');
   }
 }
+

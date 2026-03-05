@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SlsaCompletenessResponseContaineranalysisV1alpha1 {
   /// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
   final pulumi.Input<bool> arguments;
-
   /// If true, the builder claims that recipe.environment is claimed to be complete.
   final pulumi.Input<bool> environment;
-
   /// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
   final pulumi.Input<bool> materials;
 
@@ -31,9 +29,7 @@ class SlsaCompletenessResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory SlsaCompletenessResponseContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SlsaCompletenessResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return SlsaCompletenessResponseContaineranalysisV1alpha1(
       arguments: pulumi.Input.fromValue(map['arguments'] as bool),
       environment: pulumi.Input.fromValue(map['environment'] as bool),
@@ -41,3 +37,4 @@ class SlsaCompletenessResponseContaineranalysisV1alpha1 {
     );
   }
 }
+

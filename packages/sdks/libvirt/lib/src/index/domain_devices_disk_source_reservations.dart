@@ -6,10 +6,8 @@ import 'domain_devices_disk_source_reservations_source.dart';
 class DomainDevicesDiskSourceReservations {
   /// Controls whether reservations are enabled for the network storage source.
   final pulumi.Input<String>? enabled;
-
   /// Specifies if the reservations are managed by a higher-level resource management layer.
   final pulumi.Input<bool>? managed;
-
   /// Configures the source from which reservations are allocated for network storage.
   final pulumi.Input<DomainDevicesDiskSourceReservationsSource>? source;
 
@@ -27,37 +25,16 @@ class DomainDevicesDiskSourceReservations {
     return <String, dynamic>{
       'enabled': ?enabled,
       'managed': ?managed,
-      'source':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskSourceReservationsSource,
-            Map<String, dynamic>
-          >(source, (value) => value.toMap()),
+      'source': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskSourceReservationsSource, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
-  factory DomainDevicesDiskSourceReservations.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskSourceReservations.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceReservations(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managed: (() {
-        final guardedValue = map['managed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskSourceReservationsSource.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managed: (() { final guardedValue = map['managed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskSourceReservationsSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

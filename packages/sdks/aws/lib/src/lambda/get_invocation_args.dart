@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInvocationArgs {
   /// Name of the Lambda function.
   final pulumi.Input<String> functionName;
-
   /// String in JSON format that is passed as payload to the Lambda function.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> input;
-
   /// Qualifier (a.k.a version) of the Lambda function. Defaults to `$LATEST`.
   final pulumi.Input<String>? qualifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Tenant Id to serve invocations from specified tenant.
   final pulumi.Input<String>? tenantId;
 
@@ -52,21 +48,10 @@ class GetInvocationArgs {
     return GetInvocationArgs(
       functionName: pulumi.Input.fromValue(map['functionName'] as String),
       input: pulumi.Input.fromValue(map['input'] as String),
-      qualifier: (() {
-        final guardedValue = map['qualifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      qualifier: (() { final guardedValue = map['qualifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

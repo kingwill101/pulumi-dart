@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExadataInfrastructureDefinedFileSystemConfiguration {
   /// Whether the backup partition is enabled.
   final pulumi.Input<bool> backupPartitionEnabled;
-
   /// The minimum size of the file system in GB.
   final pulumi.Input<int> minimumSizeInGb;
-
   /// Mount path for the file system.
   final pulumi.Input<String> mountPoint;
-
   /// Whether the resizable is enabled.
   final pulumi.Input<bool> resizableEnabled;
 
@@ -36,16 +33,13 @@ class GetExadataInfrastructureDefinedFileSystemConfiguration {
     };
   }
 
-  factory GetExadataInfrastructureDefinedFileSystemConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetExadataInfrastructureDefinedFileSystemConfiguration.fromMap(Map<String, dynamic> map) {
     return GetExadataInfrastructureDefinedFileSystemConfiguration(
-      backupPartitionEnabled: pulumi.Input.fromValue(
-        map['backupPartitionEnabled'] as bool,
-      ),
+      backupPartitionEnabled: pulumi.Input.fromValue(map['backupPartitionEnabled'] as bool),
       minimumSizeInGb: pulumi.Input.fromValue(map['minimumSizeInGb'] as int),
       mountPoint: pulumi.Input.fromValue(map['mountPoint'] as String),
       resizableEnabled: pulumi.Input.fromValue(map['resizableEnabled'] as bool),
     );
   }
 }
+

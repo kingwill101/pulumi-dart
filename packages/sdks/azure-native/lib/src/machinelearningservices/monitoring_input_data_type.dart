@@ -16,3 +16,4 @@ enum MonitoringInputDataType {
     throw ArgumentError('Unknown MonitoringInputDataType value: $value');
   }
 }
+

@@ -6,10 +6,8 @@ import 'domain_devices_tpm_backend_external_source_pty_sec_label.dart';
 class DomainDevicesTpmBackendExternalSourcePty {
   /// Sets the path for the PTY source in the EGD backend.
   final pulumi.Input<String> path;
-
   /// This field configures the security label for the Pseudo TTY device, enabling security controls over access.
-  final pulumi.Input<List<DomainDevicesTpmBackendExternalSourcePtySecLabel>>?
-  secLabels;
+  final pulumi.Input<List<DomainDevicesTpmBackendExternalSourcePtySecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesTpmBackendExternalSourcePty].
   /// [path] Sets the path for the PTY source in the EGD backend.
@@ -22,40 +20,15 @@ class DomainDevicesTpmBackendExternalSourcePty {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'path': path,
-      'secLabels':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DomainDevicesTpmBackendExternalSourcePtySecLabel>,
-            List<Map<String, dynamic>>
-          >(
-            secLabels,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DomainDevicesTpmBackendExternalSourcePtySecLabel,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesTpmBackendExternalSourcePtySecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesTpmBackendExternalSourcePtySecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory DomainDevicesTpmBackendExternalSourcePty.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesTpmBackendExternalSourcePty.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendExternalSourcePty(
       path: pulumi.Input.fromValue(map['path'] as String),
-      secLabels: (() {
-        final guardedValue = map['secLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            DomainDevicesTpmBackendExternalSourcePtySecLabel
-          >(
-            guardedValue,
-            (value) => DomainDevicesTpmBackendExternalSourcePtySecLabel.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      secLabels: (() { final guardedValue = map['secLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainDevicesTpmBackendExternalSourcePtySecLabel>(guardedValue, (value) => DomainDevicesTpmBackendExternalSourcePtySecLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceTrustArgs {
   /// The ID of the Active Directory Domain Service. Changing this forces a new Active Directory Domain Service Trust to be created.
   final pulumi.Input<String> domainServiceId;
-
   /// The name which should be used for this Active Directory Domain Service Trust. Changing this forces a new Active Directory Domain Service Trust to be created.
   final pulumi.Input<String>? name;
-
   /// The password of the inbound trust set in the on-premise Active Directory Domain Service.
   final pulumi.Input<String> password;
-
   /// Specifies a list of DNS IPs that are used to resolve the on-premise Active Directory Domain Service.
   final pulumi.Input<List<String>> trustedDomainDnsIps;
-
   /// The FQDN of the on-premise Active Directory Domain Service.
   final pulumi.Input<String> trustedDomainFqdn;
 
@@ -49,18 +45,11 @@ class ServiceTrustArgs {
   factory ServiceTrustArgs.fromMap(Map<String, dynamic> map) {
     return ServiceTrustArgs(
       domainServiceId: pulumi.Input.fromValue(map['domainServiceId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: pulumi.Input.fromValue(map['password'] as String),
-      trustedDomainDnsIps: pulumi.Input.fromValue(
-        (map['trustedDomainDnsIps'] as List).cast<String>(),
-      ),
-      trustedDomainFqdn: pulumi.Input.fromValue(
-        map['trustedDomainFqdn'] as String,
-      ),
+      trustedDomainDnsIps: pulumi.Input.fromValue((map['trustedDomainDnsIps'] as List).cast<String>()),
+      trustedDomainFqdn: pulumi.Input.fromValue(map['trustedDomainFqdn'] as String),
     );
   }
 }
+

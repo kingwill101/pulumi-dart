@@ -15,3 +15,4 @@ enum MonitorComputeIdentityType {
     throw ArgumentError('Unknown MonitorComputeIdentityType value: $value');
   }
 }
+

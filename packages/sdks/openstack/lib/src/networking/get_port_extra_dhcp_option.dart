@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPortExtraDhcpOption {
   /// IP protocol version
   final pulumi.Input<int> ipVersion;
-
   /// The name of the port.
   final pulumi.Input<String> name;
-
   /// Value of the DHCP option.
   final pulumi.Input<String> value;
 
@@ -38,3 +36,4 @@ class GetPortExtraDhcpOption {
     );
   }
 }
+

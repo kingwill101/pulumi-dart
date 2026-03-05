@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatefulPolicyPreservedStateResponse {
   /// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
   final pulumi.Input<Map<String, String>> disks;
-
   /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
   final pulumi.Input<Map<String, String>> externalIPs;
-
   /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
   final pulumi.Input<Map<String, String>> internalIPs;
 
@@ -31,19 +29,12 @@ class StatefulPolicyPreservedStateResponse {
     };
   }
 
-  factory StatefulPolicyPreservedStateResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StatefulPolicyPreservedStateResponse.fromMap(Map<String, dynamic> map) {
     return StatefulPolicyPreservedStateResponse(
-      disks: pulumi.Input.fromValue(
-        (map['disks'] as Map).cast<String, String>(),
-      ),
-      externalIPs: pulumi.Input.fromValue(
-        (map['externalIPs'] as Map).cast<String, String>(),
-      ),
-      internalIPs: pulumi.Input.fromValue(
-        (map['internalIPs'] as Map).cast<String, String>(),
-      ),
+      disks: pulumi.Input.fromValue((map['disks'] as Map).cast<String, String>()),
+      externalIPs: pulumi.Input.fromValue((map['externalIPs'] as Map).cast<String, String>()),
+      internalIPs: pulumi.Input.fromValue((map['internalIPs'] as Map).cast<String, String>()),
     );
   }
 }
+

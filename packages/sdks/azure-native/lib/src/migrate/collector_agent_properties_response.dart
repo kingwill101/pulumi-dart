@@ -25,11 +25,7 @@ class CollectorAgentPropertiesResponse {
     return <String, dynamic>{
       'id': id,
       'lastHeartbeatUtc': lastHeartbeatUtc,
-      'spnDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            CollectorBodyAgentSpnPropertiesResponse,
-            Map<String, dynamic>
-          >(spnDetails, (value) => value.toMap()),
+      'spnDetails': ?pulumi.Input.mapOptionalInputValue<CollectorBodyAgentSpnPropertiesResponse, Map<String, dynamic>>(spnDetails, (value) => value.toMap()),
       'version': version,
     };
   }
@@ -37,19 +33,10 @@ class CollectorAgentPropertiesResponse {
   factory CollectorAgentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CollectorAgentPropertiesResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
-      lastHeartbeatUtc: pulumi.Input.fromValue(
-        map['lastHeartbeatUtc'] as String,
-      ),
-      spnDetails: (() {
-        final guardedValue = map['spnDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CollectorBodyAgentSpnPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      lastHeartbeatUtc: pulumi.Input.fromValue(map['lastHeartbeatUtc'] as String),
+      spnDetails: (() { final guardedValue = map['spnDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CollectorBodyAgentSpnPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

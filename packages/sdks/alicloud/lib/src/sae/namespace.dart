@@ -218,16 +218,12 @@ import 'namespace_state.dart';
 class Namespace extends pulumi.CustomResource {
   /// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
   late final pulumi.Output<bool> enableMicroRegistration;
-
   /// The Description of Namespace.
   late final pulumi.Output<String?> namespaceDescription;
-
   /// The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
   late final pulumi.Output<String> namespaceId;
-
   /// The Name of Namespace.
   late final pulumi.Output<String> namespaceName;
-
   /// The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
   late final pulumi.Output<String> namespaceShortId;
 
@@ -240,11 +236,11 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enableMicroRegistration = registerOutput<bool>('enableMicroRegistration');
     namespaceDescription = registerOutput<String?>('namespaceDescription');
     namespaceId = registerOutput<String>('namespaceId');
@@ -270,11 +266,11 @@ class Namespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enableMicroRegistration = registerOutput<bool>('enableMicroRegistration');
     namespaceDescription = registerOutput<String?>('namespaceDescription');
     namespaceId = registerOutput<String>('namespaceId');

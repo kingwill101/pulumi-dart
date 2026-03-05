@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesSlbRule {
   /// Domain name in the HTTP request where the rule applies (e.g. "*.aliyun.com").
   final pulumi.Input<String> domain;
-
   /// Rule ID.
   final pulumi.Input<String> id;
-
   /// Rule name.
   final pulumi.Input<String> name;
-
   /// ID of the linked VServer group.
   final pulumi.Input<String> serverGroupId;
-
   /// Path in the HTTP request where the rule applies (e.g. "/image").
   final pulumi.Input<String> url;
 
@@ -52,3 +48,4 @@ class GetRulesSlbRule {
     );
   }
 }
+

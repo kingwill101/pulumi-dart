@@ -7,19 +7,14 @@ class GetFunctionAppSiteConfigIpRestriction {
   /// Allow or Deny access for this IP range. Defaults to Allow.
   final pulumi.Input<String> action;
   final pulumi.Input<GetFunctionAppSiteConfigIpRestrictionHeaders> headers;
-
   /// The IP Address used for this IP Restriction in CIDR notation.
   final pulumi.Input<String> ipAddress;
-
   /// The name of the Function App resource.
   final pulumi.Input<String> name;
-
   /// The priority for this IP Restriction.
   final pulumi.Input<int> priority;
-
   /// The Service Tag used for this IP Restriction.
   final pulumi.Input<String> serviceTag;
-
   /// The Virtual Network Subnet ID used for this IP Restriction.
   final pulumi.Input<String> virtualNetworkSubnetId;
 
@@ -44,11 +39,7 @@ class GetFunctionAppSiteConfigIpRestriction {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
-      'headers':
-          pulumi.Input.mapInputValue<
-            GetFunctionAppSiteConfigIpRestrictionHeaders,
-            Map<String, dynamic>
-          >(headers, (value) => value.toMap()),
+      'headers': pulumi.Input.mapInputValue<GetFunctionAppSiteConfigIpRestrictionHeaders, Map<String, dynamic>>(headers, (value) => value.toMap()),
       'ipAddress': ipAddress,
       'name': name,
       'priority': priority,
@@ -57,23 +48,16 @@ class GetFunctionAppSiteConfigIpRestriction {
     };
   }
 
-  factory GetFunctionAppSiteConfigIpRestriction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFunctionAppSiteConfigIpRestriction.fromMap(Map<String, dynamic> map) {
     return GetFunctionAppSiteConfigIpRestriction(
       action: pulumi.Input.fromValue(map['action'] as String),
-      headers: pulumi.Input.fromValue(
-        GetFunctionAppSiteConfigIpRestrictionHeaders.fromMap(
-          (map['headers']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      headers: pulumi.Input.fromValue(GetFunctionAppSiteConfigIpRestrictionHeaders.fromMap((map['headers']! as Map).cast<String, dynamic>())),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       priority: pulumi.Input.fromValue(map['priority'] as int),
       serviceTag: pulumi.Input.fromValue(map['serviceTag'] as String),
-      virtualNetworkSubnetId: pulumi.Input.fromValue(
-        map['virtualNetworkSubnetId'] as String,
-      ),
+      virtualNetworkSubnetId: pulumi.Input.fromValue(map['virtualNetworkSubnetId'] as String),
     );
   }
 }
+

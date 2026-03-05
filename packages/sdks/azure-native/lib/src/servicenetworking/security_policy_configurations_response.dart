@@ -10,31 +10,20 @@ class SecurityPolicyConfigurationsResponse {
 
   /// Creates a new [SecurityPolicyConfigurationsResponse].
   /// [wafSecurityPolicy] Contains reference to a WAF-type security policy.
-  SecurityPolicyConfigurationsResponse({this.wafSecurityPolicy});
+  SecurityPolicyConfigurationsResponse({
+    this.wafSecurityPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'wafSecurityPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            WafSecurityPolicyResponse,
-            Map<String, dynamic>
-          >(wafSecurityPolicy, (value) => value.toMap()),
+      'wafSecurityPolicy': ?pulumi.Input.mapOptionalInputValue<WafSecurityPolicyResponse, Map<String, dynamic>>(wafSecurityPolicy, (value) => value.toMap()),
     };
   }
 
-  factory SecurityPolicyConfigurationsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPolicyConfigurationsResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyConfigurationsResponse(
-      wafSecurityPolicy: (() {
-        final guardedValue = map['wafSecurityPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WafSecurityPolicyResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      wafSecurityPolicy: (() { final guardedValue = map['wafSecurityPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WafSecurityPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

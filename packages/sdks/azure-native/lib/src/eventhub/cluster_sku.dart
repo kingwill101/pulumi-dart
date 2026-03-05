@@ -6,27 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterSku {
   /// The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
   final pulumi.Input<int>? capacity;
-
   /// Name of this SKU.
   final pulumi.Input<String> name;
 
   /// Creates a new [ClusterSku].
   /// [capacity] The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
   /// [name] Name of this SKU.
-  ClusterSku({this.capacity, required this.name});
+  ClusterSku({
+    this.capacity,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'capacity': ?capacity, 'name': name};
+    return <String, dynamic>{
+      'capacity': ?capacity,
+      'name': name,
+    };
   }
 
   factory ClusterSku.fromMap(Map<String, dynamic> map) {
     return ClusterSku(
-      capacity: (() {
-        final guardedValue = map['capacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

@@ -7,9 +7,7 @@ import 'cluster_upgrade_gkeupgrade_state_response.dart';
 /// GKEUpgradeFeatureState contains feature states for GKE clusters in the scope.
 class ClusterUpgradeGKEUpgradeFeatureStateResponse {
   /// Current conditions of the feature.
-  final pulumi.Input<List<ClusterUpgradeGKEUpgradeFeatureConditionResponse>>
-  conditions;
-
+  final pulumi.Input<List<ClusterUpgradeGKEUpgradeFeatureConditionResponse>> conditions;
   /// Upgrade state. It will eventually replace `state`.
   final pulumi.Input<List<ClusterUpgradeGKEUpgradeStateResponse>> upgradeState;
 
@@ -23,54 +21,16 @@ class ClusterUpgradeGKEUpgradeFeatureStateResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions':
-          pulumi.Input.mapInputValue<
-            List<ClusterUpgradeGKEUpgradeFeatureConditionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            conditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ClusterUpgradeGKEUpgradeFeatureConditionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'upgradeState':
-          pulumi.Input.mapInputValue<
-            List<ClusterUpgradeGKEUpgradeStateResponse>,
-            List<Map<String, dynamic>>
-          >(
-            upgradeState,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ClusterUpgradeGKEUpgradeStateResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'conditions': pulumi.Input.mapInputValue<List<ClusterUpgradeGKEUpgradeFeatureConditionResponse>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ClusterUpgradeGKEUpgradeFeatureConditionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'upgradeState': pulumi.Input.mapInputValue<List<ClusterUpgradeGKEUpgradeStateResponse>, List<Map<String, dynamic>>>(upgradeState, (value) => pulumi.Input.encodeList<ClusterUpgradeGKEUpgradeStateResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ClusterUpgradeGKEUpgradeFeatureStateResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterUpgradeGKEUpgradeFeatureStateResponse.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeGKEUpgradeFeatureStateResponse(
-      conditions: pulumi.Input.fromValue(
-        pulumi
-            .Input.decodeList<ClusterUpgradeGKEUpgradeFeatureConditionResponse>(
-          map['conditions']!,
-          (value) => ClusterUpgradeGKEUpgradeFeatureConditionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      upgradeState: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ClusterUpgradeGKEUpgradeStateResponse>(
-          map['upgradeState']!,
-          (value) => ClusterUpgradeGKEUpgradeStateResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterUpgradeGKEUpgradeFeatureConditionResponse>(map['conditions']!, (value) => ClusterUpgradeGKEUpgradeFeatureConditionResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      upgradeState: pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterUpgradeGKEUpgradeStateResponse>(map['upgradeState']!, (value) => ClusterUpgradeGKEUpgradeStateResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

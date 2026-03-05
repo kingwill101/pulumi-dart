@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadProfile {
   /// Whether to use a FIPS-enabled OS. Supported only for dedicated workload profiles.
   final pulumi.Input<bool>? enableFips;
-
   /// The maximum capacity.
   final pulumi.Input<int>? maximumCount;
-
   /// The minimum capacity.
   final pulumi.Input<int>? minimumCount;
-
   /// Workload profile type for the workloads to run on.
   final pulumi.Input<String> name;
-
   /// Workload profile type for the workloads to run on.
   final pulumi.Input<String> workloadProfileType;
 
@@ -45,25 +41,12 @@ class WorkloadProfile {
 
   factory WorkloadProfile.fromMap(Map<String, dynamic> map) {
     return WorkloadProfile(
-      enableFips: (() {
-        final guardedValue = map['enableFips'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      maximumCount: (() {
-        final guardedValue = map['maximumCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minimumCount: (() {
-        final guardedValue = map['minimumCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      enableFips: (() { final guardedValue = map['enableFips']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      maximumCount: (() { final guardedValue = map['maximumCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minimumCount: (() { final guardedValue = map['minimumCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      workloadProfileType: pulumi.Input.fromValue(
-        map['workloadProfileType'] as String,
-      ),
+      workloadProfileType: pulumi.Input.fromValue(map['workloadProfileType'] as String),
     );
   }
 }
+

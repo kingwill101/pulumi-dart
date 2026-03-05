@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventPermissionCondition {
   /// Key for the condition. Valid values: `aws:PrincipalOrgID`.
   final pulumi.Input<String> key;
-
   /// Type of condition. Value values: `StringEquals`.
   final pulumi.Input<String> type;
-
   /// Value for the key.
   final pulumi.Input<String> value;
 
@@ -23,7 +21,11 @@ class EventPermissionCondition {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'type': type, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'type': type,
+      'value': value,
+    };
   }
 
   factory EventPermissionCondition.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class EventPermissionCondition {
     );
   }
 }
+

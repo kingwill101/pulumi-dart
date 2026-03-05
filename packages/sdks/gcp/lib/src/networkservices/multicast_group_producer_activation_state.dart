@@ -17,21 +17,20 @@ class MulticastGroupProducerActivationState {
 
   /// Creates a new [MulticastGroupProducerActivationState].
   /// [state] (Output)
-  MulticastGroupProducerActivationState({this.state});
+  MulticastGroupProducerActivationState({
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': ?state};
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
-  factory MulticastGroupProducerActivationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MulticastGroupProducerActivationState.fromMap(Map<String, dynamic> map) {
     return MulticastGroupProducerActivationState(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

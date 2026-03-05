@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1NodeConfigResponse {
   /// The current total number of gateway nodes that each environment currently has across all instances.
   final pulumi.Input<String> currentAggregateNodeCount;
-
   /// Optional. The maximum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended maximum number of nodes for that gateway.
   final pulumi.Input<String> maxNodeCount;
-
   /// Optional. The minimum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended minimum number of nodes for that gateway.
   final pulumi.Input<String> minNodeCount;
 
@@ -31,15 +29,12 @@ class GoogleCloudApigeeV1NodeConfigResponse {
     };
   }
 
-  factory GoogleCloudApigeeV1NodeConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudApigeeV1NodeConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1NodeConfigResponse(
-      currentAggregateNodeCount: pulumi.Input.fromValue(
-        map['currentAggregateNodeCount'] as String,
-      ),
+      currentAggregateNodeCount: pulumi.Input.fromValue(map['currentAggregateNodeCount'] as String),
       maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as String),
       minNodeCount: pulumi.Input.fromValue(map['minNodeCount'] as String),
     );
   }
 }
+

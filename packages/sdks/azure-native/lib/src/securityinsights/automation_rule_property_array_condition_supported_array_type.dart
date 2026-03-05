@@ -6,17 +6,13 @@ enum AutomationRulePropertyArrayConditionSupportedArrayType {
   const AutomationRulePropertyArrayConditionSupportedArrayType(this.wireValue);
   final String wireValue;
 
-  static AutomationRulePropertyArrayConditionSupportedArrayType fromValue(
-    String value,
-  ) {
-    for (final item
-        in AutomationRulePropertyArrayConditionSupportedArrayType.values) {
+  static AutomationRulePropertyArrayConditionSupportedArrayType fromValue(String value) {
+    for (final item in AutomationRulePropertyArrayConditionSupportedArrayType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AutomationRulePropertyArrayConditionSupportedArrayType value: $value',
-    );
+    throw ArgumentError('Unknown AutomationRulePropertyArrayConditionSupportedArrayType value: $value');
   }
 }
+

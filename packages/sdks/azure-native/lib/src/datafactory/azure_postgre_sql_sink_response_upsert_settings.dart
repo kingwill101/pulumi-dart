@@ -9,21 +9,20 @@ class AzurePostgreSqlSinkResponseUpsertSettings {
 
   /// Creates a new [AzurePostgreSqlSinkResponseUpsertSettings].
   /// [keys] Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
-  AzurePostgreSqlSinkResponseUpsertSettings({this.keys});
+  AzurePostgreSqlSinkResponseUpsertSettings({
+    this.keys,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keys': ?keys};
+    return <String, dynamic>{
+      'keys': ?keys,
+    };
   }
 
-  factory AzurePostgreSqlSinkResponseUpsertSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzurePostgreSqlSinkResponseUpsertSettings.fromMap(Map<String, dynamic> map) {
     return AzurePostgreSqlSinkResponseUpsertSettings(
-      keys: (() {
-        final guardedValue = map['keys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      keys: (() { final guardedValue = map['keys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

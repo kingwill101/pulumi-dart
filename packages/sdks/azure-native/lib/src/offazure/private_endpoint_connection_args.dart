@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateEndpointConnectionArgs {
   /// Private link resource name.
   final pulumi.Input<String>? peConnectionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Site name.
   final pulumi.Input<String> siteName;
 
@@ -36,15 +34,10 @@ class PrivateEndpointConnectionArgs {
 
   factory PrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionArgs(
-      peConnectionName: (() {
-        final guardedValue = map['peConnectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      peConnectionName: (() { final guardedValue = map['peConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       siteName: pulumi.Input.fromValue(map['siteName'] as String),
     );
   }
 }
+

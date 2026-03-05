@@ -20,22 +20,16 @@ enum PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1 {
   ecdsaP521Sha512("ECDSA_P521_SHA512"),
   ecSignP521Sha512("EC_SIGN_P521_SHA512");
 
-  const PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1(
-    this.wireValue,
-  );
+  const PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1(this.wireValue);
   final String wireValue;
 
-  static PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1.values) {
+  static PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1 fromValue(String value) {
+    for (final item in PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1 value: $value');
   }
 }
+

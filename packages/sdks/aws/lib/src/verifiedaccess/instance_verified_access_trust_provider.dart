@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceVerifiedAccessTrustProvider {
   /// A description for the AWS Verified Access Instance.
   final pulumi.Input<String>? description;
-
   /// The type of device-based trust provider.
   final pulumi.Input<String>? deviceTrustProviderType;
-
   /// The type of trust provider (user- or device-based).
   final pulumi.Input<String>? trustProviderType;
-
   /// The type of user-based trust provider.
   final pulumi.Input<String>? userTrustProviderType;
-
   /// The ID of the trust provider.
   final pulumi.Input<String>? verifiedAccessTrustProviderId;
 
@@ -42,35 +38,14 @@ class InstanceVerifiedAccessTrustProvider {
     };
   }
 
-  factory InstanceVerifiedAccessTrustProvider.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceVerifiedAccessTrustProvider.fromMap(Map<String, dynamic> map) {
     return InstanceVerifiedAccessTrustProvider(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deviceTrustProviderType: (() {
-        final guardedValue = map['deviceTrustProviderType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      trustProviderType: (() {
-        final guardedValue = map['trustProviderType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userTrustProviderType: (() {
-        final guardedValue = map['userTrustProviderType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      verifiedAccessTrustProviderId: (() {
-        final guardedValue = map['verifiedAccessTrustProviderId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deviceTrustProviderType: (() { final guardedValue = map['deviceTrustProviderType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      trustProviderType: (() { final guardedValue = map['trustProviderType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userTrustProviderType: (() { final guardedValue = map['userTrustProviderType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      verifiedAccessTrustProviderId: (() { final guardedValue = map['verifiedAccessTrustProviderId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -601,7 +601,6 @@ import 'membership_attachment_state.dart';
 class MembershipAttachment extends pulumi.CustomResource {
   /// The ID of the cluster to which the membership is being attached.
   late final pulumi.Output<String> clusterId;
-
   /// The ID of the member being attached to the cluster.
   late final pulumi.Output<String> subClusterId;
 
@@ -614,11 +613,11 @@ class MembershipAttachment extends pulumi.CustomResource {
     MembershipAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ackone/membershipAttachment:MembershipAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ackone/membershipAttachment:MembershipAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     subClusterId = registerOutput<String>('subClusterId');
   }
@@ -641,11 +640,11 @@ class MembershipAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ackone/membershipAttachment:MembershipAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ackone/membershipAttachment:MembershipAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     subClusterId = registerOutput<String>('subClusterId');
   }

@@ -252,23 +252,17 @@ import 'medical_vocabulary_state.dart';
 class MedicalVocabulary extends pulumi.CustomResource {
   /// ARN of the MedicalVocabulary.
   late final pulumi.Output<String> arn;
-
   /// Generated download URI.
   late final pulumi.Output<String> downloadUri;
-
   /// The language code you selected for your medical vocabulary. US English (en-US) is the only language supported with Amazon Transcribe Medical.
   late final pulumi.Output<String> languageCode;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the MedicalVocabulary. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The Amazon S3 location (URI) of the text file that contains your custom medical vocabulary.
   late final pulumi.Output<String> vocabularyFileUri;
-
   /// The name of the Medical Vocabulary.
   ///
   /// The following arguments are optional:
@@ -283,11 +277,11 @@ class MedicalVocabulary extends pulumi.CustomResource {
     MedicalVocabularyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:transcribe/medicalVocabulary:MedicalVocabulary',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:transcribe/medicalVocabulary:MedicalVocabulary',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     downloadUri = registerOutput<String>('downloadUri');
     languageCode = registerOutput<String>('languageCode');
@@ -316,11 +310,11 @@ class MedicalVocabulary extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:transcribe/medicalVocabulary:MedicalVocabulary',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:transcribe/medicalVocabulary:MedicalVocabulary',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     downloadUri = registerOutput<String>('downloadUri');
     languageCode = registerOutput<String>('languageCode');

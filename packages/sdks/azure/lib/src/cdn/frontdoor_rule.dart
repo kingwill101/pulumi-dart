@@ -1075,22 +1075,16 @@ import 'frontdoor_rule_state.dart';
 class FrontdoorRule extends pulumi.CustomResource {
   /// An `actions` block as defined below.
   late final pulumi.Output<FrontdoorRuleActions> actions;
-
   /// If this rule is a match should the rules engine continue processing the remaining rules or stop? Possible values are `Continue` and `Stop`. Defaults to `Continue`.
   late final pulumi.Output<String?> behaviorOnMatch;
-
   /// The resource ID of the Front Door Rule Set for this Front Door Rule. Changing this forces a new Front Door Rule to be created.
   late final pulumi.Output<String> cdnFrontdoorRuleSetId;
-
   /// The name of the Front Door Rule Set containing this Front Door Rule.
   late final pulumi.Output<String> cdnFrontdoorRuleSetName;
-
   /// A `conditions` block as defined below.
   late final pulumi.Output<FrontdoorRuleConditions?> conditions;
-
   /// The name which should be used for this Front Door Rule. Possible values must be between 1 and 260 characters in length, begin with a letter and may contain only letters and numbers. Changing this forces a new Front Door Rule to be created.
   late final pulumi.Output<String> name;
-
   /// The order in which the rules will be applied for the Front Door Endpoint. The order value should be sequential and begin at `1`(e.g. `1`, `2`, `3`...). A Front Door Rule with a lesser order value will be applied before a rule with a greater order value.
   ///
   /// &gt; **Note:** If the Front Door Rule has an order value of `0` they do not require any conditions and the actions will always be applied.
@@ -1105,34 +1099,16 @@ class FrontdoorRule extends pulumi.CustomResource {
     FrontdoorRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cdn/frontdoorRule:FrontdoorRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    actions = registerOutput<FrontdoorRuleActions>(
-      'actions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FrontdoorRuleActions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:cdn/frontdoorRule:FrontdoorRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    actions = registerOutput<FrontdoorRuleActions>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorRuleActions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     behaviorOnMatch = registerOutput<String?>('behaviorOnMatch');
     cdnFrontdoorRuleSetId = registerOutput<String>('cdnFrontdoorRuleSetId');
     cdnFrontdoorRuleSetName = registerOutput<String>('cdnFrontdoorRuleSetName');
-    conditions = registerOutput<FrontdoorRuleConditions?>(
-      'conditions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FrontdoorRuleConditions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    conditions = registerOutput<FrontdoorRuleConditions?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorRuleConditions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     order = registerOutput<int>('order');
   }
@@ -1155,34 +1131,16 @@ class FrontdoorRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cdn/frontdoorRule:FrontdoorRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    actions = registerOutput<FrontdoorRuleActions>(
-      'actions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FrontdoorRuleActions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:cdn/frontdoorRule:FrontdoorRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    actions = registerOutput<FrontdoorRuleActions>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorRuleActions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     behaviorOnMatch = registerOutput<String?>('behaviorOnMatch');
     cdnFrontdoorRuleSetId = registerOutput<String>('cdnFrontdoorRuleSetId');
     cdnFrontdoorRuleSetName = registerOutput<String>('cdnFrontdoorRuleSetName');
-    conditions = registerOutput<FrontdoorRuleConditions?>(
-      'conditions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FrontdoorRuleConditions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    conditions = registerOutput<FrontdoorRuleConditions?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorRuleConditions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     order = registerOutput<int>('order');
   }

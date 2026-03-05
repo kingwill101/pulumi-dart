@@ -594,43 +594,30 @@ import 'compute_cluster_state.dart';
 class ComputeCluster extends pulumi.CustomResource {
   /// The description of the Machine Learning compute. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<String?> description;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<ComputeClusterIdentity?> identity;
-
   /// Whether local authentication methods is enabled. Defaults to `true`. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<bool?> localAuthEnabled;
-
   /// The Azure Region where the Machine Learning Compute Cluster should exist. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<String> location;
-
   /// The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<String> machineLearningWorkspaceId;
-
   /// The name which should be used for this Machine Learning Compute Cluster. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<String> name;
-
   /// Whether the compute cluster will have a public ip. Defaults to `true`. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<bool?> nodePublicIpEnabled;
-
   /// A `scale_settings` block as defined below.
   late final pulumi.Output<ComputeClusterScaleSettings> scaleSettings;
-
   /// Credentials for an administrator user account that will be created on each compute node. A `ssh` block as defined below. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<ComputeClusterSsh?> ssh;
-
   /// A boolean value indicating whether enable the public SSH port. Defaults to `false`. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<bool?> sshPublicAccessEnabled;
-
   /// The ID of the Subnet that the Compute Cluster should reside in. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<String> subnetResourceId;
-
   /// A mapping of tags which should be assigned to the Machine Learning Compute Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The priority of the VM. Changing this forces a new Machine Learning Compute Cluster to be created. Accepted values are `Dedicated` and `LowPriority`.
   late final pulumi.Output<String> vmPriority;
-
   /// The size of the VM. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<String> vmSize;
 
@@ -643,49 +630,20 @@ class ComputeCluster extends pulumi.CustomResource {
     ComputeClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:machinelearning/computeCluster:ComputeCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:machinelearning/computeCluster:ComputeCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
-    identity = registerOutput<ComputeClusterIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeClusterIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ComputeClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
-    machineLearningWorkspaceId = registerOutput<String>(
-      'machineLearningWorkspaceId',
-    );
+    machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
     this.name = registerOutput<String>('name');
     nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
-    scaleSettings = registerOutput<ComputeClusterScaleSettings>(
-      'scaleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeClusterScaleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ssh = registerOutput<ComputeClusterSsh?>(
-      'ssh',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeClusterSsh.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scaleSettings = registerOutput<ComputeClusterScaleSettings>('scaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeClusterScaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ssh = registerOutput<ComputeClusterSsh?>('ssh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeClusterSsh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sshPublicAccessEnabled = registerOutput<bool?>('sshPublicAccessEnabled');
     subnetResourceId = registerOutput<String>('subnetResourceId');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -711,49 +669,20 @@ class ComputeCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:machinelearning/computeCluster:ComputeCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:machinelearning/computeCluster:ComputeCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
-    identity = registerOutput<ComputeClusterIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeClusterIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ComputeClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
-    machineLearningWorkspaceId = registerOutput<String>(
-      'machineLearningWorkspaceId',
-    );
+    machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
     this.name = registerOutput<String>('name');
     nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
-    scaleSettings = registerOutput<ComputeClusterScaleSettings>(
-      'scaleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeClusterScaleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ssh = registerOutput<ComputeClusterSsh?>(
-      'ssh',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeClusterSsh.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scaleSettings = registerOutput<ComputeClusterScaleSettings>('scaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeClusterScaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ssh = registerOutput<ComputeClusterSsh?>('ssh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeClusterSsh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sshPublicAccessEnabled = registerOutput<bool?>('sshPublicAccessEnabled');
     subnetResourceId = registerOutput<String>('subnetResourceId');
     tags = registerOutput<Map<String, String>?>('tags');

@@ -21,3 +21,4 @@ enum WeekDayOfMonthDayOfWeek {
     throw ArgumentError('Unknown WeekDayOfMonthDayOfWeek value: $value');
   }
 }
+

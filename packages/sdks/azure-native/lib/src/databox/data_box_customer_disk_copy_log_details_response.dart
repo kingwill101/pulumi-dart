@@ -7,13 +7,10 @@ class DataBoxCustomerDiskCopyLogDetailsResponse {
   /// Indicates the type of job details.
   /// Expected value is 'DataBoxCustomerDisk'.
   final pulumi.Input<String> copyLogDetailsType;
-
   /// Link for copy error logs.
   final pulumi.Input<String> errorLogLink;
-
   /// Disk Serial Number.
   final pulumi.Input<String> serialNumber;
-
   /// Link for copy verbose logs.
   final pulumi.Input<String> verboseLogLink;
 
@@ -38,16 +35,13 @@ class DataBoxCustomerDiskCopyLogDetailsResponse {
     };
   }
 
-  factory DataBoxCustomerDiskCopyLogDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataBoxCustomerDiskCopyLogDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DataBoxCustomerDiskCopyLogDetailsResponse(
-      copyLogDetailsType: pulumi.Input.fromValue(
-        map['copyLogDetailsType'] as String,
-      ),
+      copyLogDetailsType: pulumi.Input.fromValue(map['copyLogDetailsType'] as String),
       errorLogLink: pulumi.Input.fromValue(map['errorLogLink'] as String),
       serialNumber: pulumi.Input.fromValue(map['serialNumber'] as String),
       verboseLogLink: pulumi.Input.fromValue(map['verboseLogLink'] as String),
     );
   }
 }
+

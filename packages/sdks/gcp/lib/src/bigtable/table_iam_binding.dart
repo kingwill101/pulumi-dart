@@ -814,13 +814,10 @@ import 'table_iam_binding_state.dart';
 /// ```
 class TableIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<TableIamBindingCondition?> condition;
-
   /// (Computed) The etag of the tables's IAM policy.
   late final pulumi.Output<String> etag;
-
   /// The name or relative resource id of the instance that owns the table.
   late final pulumi.Output<String> instanceName;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -830,18 +827,15 @@ class TableIamBinding extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<List<String>> members;
-
   /// The project in which the table belongs. If it
   /// is not provided, this provider will use the provider default.
   late final pulumi.Output<String> project;
-
   /// The role that should be applied. Only one
   /// `gcp.bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
   ///
   /// `gcp.bigtable.TableIamPolicy` only:
   late final pulumi.Output<String> role;
-
   /// The name or relative resource id of the table to manage IAM policies for.
   ///
   /// For `gcp.bigtable.TableIamMember` or `gcp.bigtable.TableIamBinding`:
@@ -856,21 +850,12 @@ class TableIamBinding extends pulumi.CustomResource {
     TableIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:bigtable/tableIamBinding:TableIamBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    condition = registerOutput<TableIamBindingCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableIamBindingCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:bigtable/tableIamBinding:TableIamBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    condition = registerOutput<TableIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     instanceName = registerOutput<String>('instanceName');
     members = registerOutput<List<String>>('members');
@@ -897,21 +882,12 @@ class TableIamBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:bigtable/tableIamBinding:TableIamBinding',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    condition = registerOutput<TableIamBindingCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableIamBindingCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:bigtable/tableIamBinding:TableIamBinding',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    condition = registerOutput<TableIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     instanceName = registerOutput<String>('instanceName');
     members = registerOutput<List<String>>('members');

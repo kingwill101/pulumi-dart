@@ -18,3 +18,4 @@ enum DiscountType {
     throw ArgumentError('Unknown DiscountType value: $value');
   }
 }
+

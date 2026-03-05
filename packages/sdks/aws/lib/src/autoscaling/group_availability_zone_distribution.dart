@@ -8,7 +8,9 @@ class GroupAvailabilityZoneDistribution {
 
   /// Creates a new [GroupAvailabilityZoneDistribution].
   /// [capacityDistributionStrategy] The strategy to use for distributing capacity across the Availability Zones. Valid values are `balanced-only` and `balanced-best-effort`. Default is `balanced-best-effort`.
-  GroupAvailabilityZoneDistribution({this.capacityDistributionStrategy});
+  GroupAvailabilityZoneDistribution({
+    this.capacityDistributionStrategy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,11 +20,8 @@ class GroupAvailabilityZoneDistribution {
 
   factory GroupAvailabilityZoneDistribution.fromMap(Map<String, dynamic> map) {
     return GroupAvailabilityZoneDistribution(
-      capacityDistributionStrategy: (() {
-        final guardedValue = map['capacityDistributionStrategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      capacityDistributionStrategy: (() { final guardedValue = map['capacityDistributionStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -12,19 +12,20 @@ class GetEnhancedNatAvailableZonesArgs {
 
   /// Creates a new [GetEnhancedNatAvailableZonesArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEnhancedNatAvailableZonesArgs({this.outputFile});
+  GetEnhancedNatAvailableZonesArgs({
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'outputFile': ?outputFile};
+    return <String, dynamic>{
+      'outputFile': ?outputFile,
+    };
   }
 
   factory GetEnhancedNatAvailableZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetEnhancedNatAvailableZonesArgs(
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

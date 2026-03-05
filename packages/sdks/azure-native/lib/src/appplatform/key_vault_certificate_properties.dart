@@ -6,20 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultCertificateProperties {
   /// Indicates whether to automatically synchronize certificate from key vault or not.
   final pulumi.Input<String>? autoSync;
-
   /// The certificate version of key vault.
   final pulumi.Input<String>? certVersion;
-
   /// Optional. If set to true, it will not import private key from key vault.
   final pulumi.Input<bool>? excludePrivateKey;
-
   /// The certificate name of key vault.
   final pulumi.Input<String> keyVaultCertName;
-
   /// The type of the certificate source.
   /// Expected value is 'KeyVaultCertificate'.
   final pulumi.Input<String> type;
-
   /// The vault uri of user key vault.
   final pulumi.Input<String> vaultUri;
 
@@ -52,26 +47,13 @@ class KeyVaultCertificateProperties {
 
   factory KeyVaultCertificateProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultCertificateProperties(
-      autoSync: (() {
-        final guardedValue = map['autoSync'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certVersion: (() {
-        final guardedValue = map['certVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      excludePrivateKey: (() {
-        final guardedValue = map['excludePrivateKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      keyVaultCertName: pulumi.Input.fromValue(
-        map['keyVaultCertName'] as String,
-      ),
+      autoSync: (() { final guardedValue = map['autoSync']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certVersion: (() { final guardedValue = map['certVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      excludePrivateKey: (() { final guardedValue = map['excludePrivateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      keyVaultCertName: pulumi.Input.fromValue(map['keyVaultCertName'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
       vaultUri: pulumi.Input.fromValue(map['vaultUri'] as String),
     );
   }
 }
+

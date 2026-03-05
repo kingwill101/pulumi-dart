@@ -22,20 +22,11 @@ class EnterpriseCrmEventbusProtoTaskMetadataAdmin {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoTaskMetadataAdmin.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoTaskMetadataAdmin.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTaskMetadataAdmin(
-      googleGroupEmail: (() {
-        final guardedValue = map['googleGroupEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userEmail: (() {
-        final guardedValue = map['userEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      googleGroupEmail: (() { final guardedValue = map['googleGroupEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userEmail: (() { final guardedValue = map['userEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

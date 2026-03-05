@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FluxConfigurationKustomization {
   /// Specifies other kustomizations that this kustomization depends on. This kustomization will not reconcile until all dependencies have completed their reconciliation.
   final pulumi.Input<List<String>>? dependsOns;
-
   /// Whether garbage collections of Kubernetes objects created by this kustomization is enabled. Defaults to `false`.
   final pulumi.Input<bool>? garbageCollectionEnabled;
-
   /// Specifies the name of the kustomization.
   final pulumi.Input<String> name;
-
   /// Specifies the path in the source reference to reconcile on the cluster.
   final pulumi.Input<String>? path;
-
   /// Whether re-creating Kubernetes resources on the cluster is enabled when patching fails due to an immutable field change. Defaults to `false`.
   final pulumi.Input<bool>? recreatingEnabled;
-
   /// The interval at which to re-reconcile the kustomization on the cluster in the event of failure on reconciliation. Defaults to `600`.
   final pulumi.Input<int>? retryIntervalInSeconds;
-
   /// The interval at which to re-reconcile the kustomization on the cluster. Defaults to `600`.
   final pulumi.Input<int>? syncIntervalInSeconds;
-
   /// The maximum time to attempt to reconcile the kustomization on the cluster. Defaults to `600`.
   final pulumi.Input<int>? timeoutInSeconds;
 
@@ -62,42 +55,15 @@ class FluxConfigurationKustomization {
 
   factory FluxConfigurationKustomization.fromMap(Map<String, dynamic> map) {
     return FluxConfigurationKustomization(
-      dependsOns: (() {
-        final guardedValue = map['dependsOns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      garbageCollectionEnabled: (() {
-        final guardedValue = map['garbageCollectionEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dependsOns: (() { final guardedValue = map['dependsOns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      garbageCollectionEnabled: (() { final guardedValue = map['garbageCollectionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recreatingEnabled: (() {
-        final guardedValue = map['recreatingEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      retryIntervalInSeconds: (() {
-        final guardedValue = map['retryIntervalInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      syncIntervalInSeconds: (() {
-        final guardedValue = map['syncIntervalInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timeoutInSeconds: (() {
-        final guardedValue = map['timeoutInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recreatingEnabled: (() { final guardedValue = map['recreatingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      retryIntervalInSeconds: (() { final guardedValue = map['retryIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      syncIntervalInSeconds: (() { final guardedValue = map['syncIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

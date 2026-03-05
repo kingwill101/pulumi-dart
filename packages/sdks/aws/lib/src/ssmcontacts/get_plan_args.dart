@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPlanArgs {
   /// The Amazon Resource Name (ARN) of the contact or escalation plan.
   final pulumi.Input<String> contactId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetPlanArgs].
   /// [contactId] The Amazon Resource Name (ARN) of the contact or escalation plan.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetPlanArgs({required this.contactId, this.region});
+  GetPlanArgs({
+    required this.contactId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'contactId': contactId, 'region': ?region};
+    return <String, dynamic>{
+      'contactId': contactId,
+      'region': ?region,
+    };
   }
 
   factory GetPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetPlanArgs(
       contactId: pulumi.Input.fromValue(map['contactId'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

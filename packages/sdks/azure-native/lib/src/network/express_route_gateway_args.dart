@@ -12,31 +12,21 @@ import 'virtual_hub_id.dart';
 class ExpressRouteGatewayArgs {
   /// Configures this gateway to accept traffic from non Virtual WAN networks.
   final pulumi.Input<bool>? allowNonVirtualWanTraffic;
-
   /// Configuration for auto scaling.
-  final pulumi.Input<ExpressRouteGatewayPropertiesAutoScaleConfiguration>?
-  autoScaleConfiguration;
-
+  final pulumi.Input<ExpressRouteGatewayPropertiesAutoScaleConfiguration>? autoScaleConfiguration;
   /// List of ExpressRoute connections to the ExpressRoute gateway.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final pulumi.Input<List<ExpressRouteConnectionNetwork>>?
-  expressRouteConnections;
-
+  final pulumi.Input<List<ExpressRouteConnectionNetwork>>? expressRouteConnections;
   /// The name of the ExpressRoute gateway.
   final pulumi.Input<String>? expressRouteGatewayName;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// Resource location.
   final pulumi.Input<String>? location;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The Virtual Hub where the ExpressRoute gateway is or will be deployed.
   final pulumi.Input<VirtualHubId> virtualHub;
 
@@ -65,78 +55,29 @@ class ExpressRouteGatewayArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowNonVirtualWanTraffic': ?allowNonVirtualWanTraffic,
-      'autoScaleConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExpressRouteGatewayPropertiesAutoScaleConfiguration,
-            Map<String, dynamic>
-          >(autoScaleConfiguration, (value) => value.toMap()),
+      'autoScaleConfiguration': ?pulumi.Input.mapOptionalInputValue<ExpressRouteGatewayPropertiesAutoScaleConfiguration, Map<String, dynamic>>(autoScaleConfiguration, (value) => value.toMap()),
       'expressRouteConnections': ?expressRouteConnections,
       'expressRouteGatewayName': ?expressRouteGatewayName,
       'id': ?id,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
-      'virtualHub':
-          pulumi.Input.mapInputValue<VirtualHubId, Map<String, dynamic>>(
-            virtualHub,
-            (value) => value.toMap(),
-          ),
+      'virtualHub': pulumi.Input.mapInputValue<VirtualHubId, Map<String, dynamic>>(virtualHub, (value) => value.toMap()),
     };
   }
 
   factory ExpressRouteGatewayArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteGatewayArgs(
-      allowNonVirtualWanTraffic: (() {
-        final guardedValue = map['allowNonVirtualWanTraffic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      autoScaleConfiguration: (() {
-        final guardedValue = map['autoScaleConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExpressRouteGatewayPropertiesAutoScaleConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      expressRouteConnections: (() {
-        final guardedValue = map['expressRouteConnections'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as List).cast<ExpressRouteConnectionNetwork>(),
-        );
-      })(),
-      expressRouteGatewayName: (() {
-        final guardedValue = map['expressRouteGatewayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      virtualHub: pulumi.Input.fromValue(
-        VirtualHubId.fromMap(
-          (map['virtualHub']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      allowNonVirtualWanTraffic: (() { final guardedValue = map['allowNonVirtualWanTraffic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      autoScaleConfiguration: (() { final guardedValue = map['autoScaleConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExpressRouteGatewayPropertiesAutoScaleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      expressRouteConnections: (() { final guardedValue = map['expressRouteConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<ExpressRouteConnectionNetwork>()); })(),
+      expressRouteGatewayName: (() { final guardedValue = map['expressRouteGatewayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      virtualHub: pulumi.Input.fromValue(VirtualHubId.fromMap((map['virtualHub']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

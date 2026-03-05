@@ -366,16 +366,12 @@ import 'policy_attachment_state.dart';
 class PolicyAttachment extends pulumi.CustomResource {
   /// The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
   late final pulumi.Output<String> policyName;
-
   /// The type of the policy. Valid values: `Custom`, `System`.
   late final pulumi.Output<String> policyType;
-
   /// The name of the object to which you want to attach the policy.
   late final pulumi.Output<String> principalName;
-
   /// The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
   late final pulumi.Output<String> principalType;
-
   /// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
   late final pulumi.Output<String> resourceGroupId;
 
@@ -388,11 +384,11 @@ class PolicyAttachment extends pulumi.CustomResource {
     PolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/policyAttachment:PolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/policyAttachment:PolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyName = registerOutput<String>('policyName');
     policyType = registerOutput<String>('policyType');
     principalName = registerOutput<String>('principalName');
@@ -418,11 +414,11 @@ class PolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/policyAttachment:PolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/policyAttachment:PolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyName = registerOutput<String>('policyName');
     policyType = registerOutput<String>('policyType');
     principalName = registerOutput<String>('principalName');

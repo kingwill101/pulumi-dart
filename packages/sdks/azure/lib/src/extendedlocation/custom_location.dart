@@ -17,28 +17,20 @@ import 'custom_location_state.dart';
 class CustomLocation extends pulumi.CustomResource {
   /// An `authentication` block as defined below.
   late final pulumi.Output<CustomLocationAuthentication?> authentication;
-
   /// Specifies the list of Cluster Extension IDs.
   late final pulumi.Output<List<String>> clusterExtensionIds;
-
   /// Specifies the display name of the Custom Location.
   late final pulumi.Output<String?> displayName;
-
   /// Specifies the host resource ID. Changing this forces a new resource to be created.
   late final pulumi.Output<String> hostResourceId;
-
   /// Specifies the host type of the Custom Location. The only possible values is `KubernetesCluster`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> hostType;
-
   /// Specifies the Azure location where the Custom Location should exist. Changing this forces a new Custom Location to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name which should be used for this Custom Location. Changing this forces a new Custom Location to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the namespace of the Custom Location. Changing this forces a new Custom Location to be created.
   late final pulumi.Output<String> namespace;
-
   /// Specifies the name of the Resource Group where the Custom Location should exist. Changing this forces a new Custom Location to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -51,21 +43,12 @@ class CustomLocation extends pulumi.CustomResource {
     CustomLocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:extendedlocation/customLocation:CustomLocation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authentication = registerOutput<CustomLocationAuthentication?>(
-      'authentication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomLocationAuthentication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:extendedlocation/customLocation:CustomLocation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authentication = registerOutput<CustomLocationAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLocationAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterExtensionIds = registerOutput<List<String>>('clusterExtensionIds');
     displayName = registerOutput<String?>('displayName');
     hostResourceId = registerOutput<String>('hostResourceId');
@@ -94,21 +77,12 @@ class CustomLocation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:extendedlocation/customLocation:CustomLocation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authentication = registerOutput<CustomLocationAuthentication?>(
-      'authentication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomLocationAuthentication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:extendedlocation/customLocation:CustomLocation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authentication = registerOutput<CustomLocationAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLocationAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterExtensionIds = registerOutput<List<String>>('clusterExtensionIds');
     displayName = registerOutput<String?>('displayName');
     hostResourceId = registerOutput<String>('hostResourceId');

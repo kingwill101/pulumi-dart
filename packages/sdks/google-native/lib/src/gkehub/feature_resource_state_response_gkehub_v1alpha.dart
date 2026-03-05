@@ -9,17 +9,20 @@ class FeatureResourceStateResponseGkehubV1alpha {
 
   /// Creates a new [FeatureResourceStateResponseGkehubV1alpha].
   /// [state] The current state of the Feature resource in the Hub API.
-  FeatureResourceStateResponseGkehubV1alpha({required this.state});
+  FeatureResourceStateResponseGkehubV1alpha({
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': state};
+    return <String, dynamic>{
+      'state': state,
+    };
   }
 
-  factory FeatureResourceStateResponseGkehubV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FeatureResourceStateResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return FeatureResourceStateResponseGkehubV1alpha(
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

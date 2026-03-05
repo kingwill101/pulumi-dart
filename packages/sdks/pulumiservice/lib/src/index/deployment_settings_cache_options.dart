@@ -9,19 +9,20 @@ class DeploymentSettingsCacheOptions {
 
   /// Creates a new [DeploymentSettingsCacheOptions].
   /// [enable] Enable dependency caching
-  DeploymentSettingsCacheOptions({this.enable});
+  DeploymentSettingsCacheOptions({
+    this.enable,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enable': ?enable};
+    return <String, dynamic>{
+      'enable': ?enable,
+    };
   }
 
   factory DeploymentSettingsCacheOptions.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsCacheOptions(
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

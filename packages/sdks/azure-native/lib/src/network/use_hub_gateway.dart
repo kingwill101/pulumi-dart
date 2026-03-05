@@ -15,3 +15,4 @@ enum UseHubGateway {
     throw ArgumentError('Unknown UseHubGateway value: $value');
   }
 }
+

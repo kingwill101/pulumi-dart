@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitRouterRouteTableAssociationArgs {
   /// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
   final pulumi.Input<bool>? dryRun;
-
   /// TransitRouterAttachmentId
   final pulumi.Input<String> transitRouterAttachmentId;
-
   /// TransitRouterRouteTableId
   final pulumi.Input<String> transitRouterRouteTableId;
 
@@ -34,21 +32,12 @@ class TransitRouterRouteTableAssociationArgs {
     };
   }
 
-  factory TransitRouterRouteTableAssociationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TransitRouterRouteTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterRouteTableAssociationArgs(
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      transitRouterAttachmentId: pulumi.Input.fromValue(
-        map['transitRouterAttachmentId'] as String,
-      ),
-      transitRouterRouteTableId: pulumi.Input.fromValue(
-        map['transitRouterRouteTableId'] as String,
-      ),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      transitRouterAttachmentId: pulumi.Input.fromValue(map['transitRouterAttachmentId'] as String),
+      transitRouterRouteTableId: pulumi.Input.fromValue(map['transitRouterRouteTableId'] as String),
     );
   }
 }
+

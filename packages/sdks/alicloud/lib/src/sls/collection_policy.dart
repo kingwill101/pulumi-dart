@@ -1229,31 +1229,23 @@ import 'collection_policy_state.dart';
 class CollectionPolicy extends pulumi.CustomResource {
   /// Centralized forwarding configuration. See `centralize_config` below.
   late final pulumi.Output<CollectionPolicyCentralizeConfig> centralizeConfig;
-
   /// Specifies whether to enable centralized forwarding. Default value: false.
   late final pulumi.Output<bool?> centralizeEnabled;
-
   /// Log type code.
   late final pulumi.Output<String> dataCode;
-
   /// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
   late final pulumi.Output<CollectionPolicyDataConfig> dataConfig;
-
   /// Whether enabled.
   late final pulumi.Output<bool> enabled;
-
   /// Collection rule configuration. See `policy_config` below.
   late final pulumi.Output<CollectionPolicyPolicyConfig> policyConfig;
-
   /// The naming rules are as follows:
   /// - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
   /// - It must start with a letter.
   /// - Its length must be between 3 and 63 characters.
   late final pulumi.Output<String> policyName;
-
   /// Product code.
   late final pulumi.Output<String> productCode;
-
   /// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
   late final pulumi.Output<CollectionPolicyResourceDirectory> resourceDirectory;
 
@@ -1266,56 +1258,20 @@ class CollectionPolicy extends pulumi.CustomResource {
     CollectionPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sls/collectionPolicy:CollectionPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    centralizeConfig = registerOutput<CollectionPolicyCentralizeConfig>(
-      'centralizeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CollectionPolicyCentralizeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:sls/collectionPolicy:CollectionPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    centralizeConfig = registerOutput<CollectionPolicyCentralizeConfig>('centralizeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectionPolicyCentralizeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     centralizeEnabled = registerOutput<bool?>('centralizeEnabled');
     dataCode = registerOutput<String>('dataCode');
-    dataConfig = registerOutput<CollectionPolicyDataConfig>(
-      'dataConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CollectionPolicyDataConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataConfig = registerOutput<CollectionPolicyDataConfig>('dataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectionPolicyDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool>('enabled');
-    policyConfig = registerOutput<CollectionPolicyPolicyConfig>(
-      'policyConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CollectionPolicyPolicyConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    policyConfig = registerOutput<CollectionPolicyPolicyConfig>('policyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectionPolicyPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyName = registerOutput<String>('policyName');
     productCode = registerOutput<String>('productCode');
-    resourceDirectory = registerOutput<CollectionPolicyResourceDirectory>(
-      'resourceDirectory',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CollectionPolicyResourceDirectory.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceDirectory = registerOutput<CollectionPolicyResourceDirectory>('resourceDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectionPolicyResourceDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [CollectionPolicy] resource's state with the given [name] and [id].
@@ -1336,55 +1292,19 @@ class CollectionPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sls/collectionPolicy:CollectionPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    centralizeConfig = registerOutput<CollectionPolicyCentralizeConfig>(
-      'centralizeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CollectionPolicyCentralizeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:sls/collectionPolicy:CollectionPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    centralizeConfig = registerOutput<CollectionPolicyCentralizeConfig>('centralizeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectionPolicyCentralizeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     centralizeEnabled = registerOutput<bool?>('centralizeEnabled');
     dataCode = registerOutput<String>('dataCode');
-    dataConfig = registerOutput<CollectionPolicyDataConfig>(
-      'dataConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CollectionPolicyDataConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataConfig = registerOutput<CollectionPolicyDataConfig>('dataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectionPolicyDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool>('enabled');
-    policyConfig = registerOutput<CollectionPolicyPolicyConfig>(
-      'policyConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CollectionPolicyPolicyConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    policyConfig = registerOutput<CollectionPolicyPolicyConfig>('policyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectionPolicyPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyName = registerOutput<String>('policyName');
     productCode = registerOutput<String>('productCode');
-    resourceDirectory = registerOutput<CollectionPolicyResourceDirectory>(
-      'resourceDirectory',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CollectionPolicyResourceDirectory.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceDirectory = registerOutput<CollectionPolicyResourceDirectory>('resourceDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectionPolicyResourceDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

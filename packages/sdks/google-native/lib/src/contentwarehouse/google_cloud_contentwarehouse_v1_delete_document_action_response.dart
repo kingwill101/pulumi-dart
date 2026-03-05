@@ -14,14 +14,15 @@ class GoogleCloudContentwarehouseV1DeleteDocumentActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableHardDelete': enableHardDelete};
+    return <String, dynamic>{
+      'enableHardDelete': enableHardDelete,
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1DeleteDocumentActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1DeleteDocumentActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1DeleteDocumentActionResponse(
       enableHardDelete: pulumi.Input.fromValue(map['enableHardDelete'] as bool),
     );
   }
 }
+

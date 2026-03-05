@@ -12,8 +12,7 @@ enum CleanupPolicyRetentionDescription {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown CleanupPolicyRetentionDescription value: $value',
-    );
+    throw ArgumentError('Unknown CleanupPolicyRetentionDescription value: $value');
   }
 }
+

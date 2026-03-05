@@ -6,37 +6,26 @@ import 'system_data_response.dart';
 class GetShareResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Time at which the share was created.
   final String createdAt;
-
   /// Share description.
   final String? description;
-
   /// The resource id of the azure resource
   final String id;
-
   /// Name of the azure resource
   final String name;
-
   /// Gets or sets the provisioning state
   final String provisioningState;
-
   /// Share kind.
   final String? shareKind;
-
   /// System Data of the Azure resource.
   final SystemDataResponse systemData;
-
   /// Share terms.
   final String? terms;
-
   /// Type of the azure resource
   final String type;
-
   /// Email of the user who created the resource
   final String userEmail;
-
   /// Name of the user who created the resource
   final String userName;
 
@@ -89,30 +78,17 @@ class GetShareResult {
     return GetShareResult(
       azureApiVersion: map['azureApiVersion'] as String,
       createdAt: map['createdAt'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      shareKind: (() {
-        final guardedValue = map['shareKind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      terms: (() {
-        final guardedValue = map['terms'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      shareKind: (() { final guardedValue = map['shareKind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      terms: (() { final guardedValue = map['terms']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
       userEmail: map['userEmail'] as String,
       userName: map['userName'] as String,
     );
   }
 }
+

@@ -11,28 +11,20 @@ import 'sku.dart';
 class DedicatedHsmArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// Specifies the management network interfaces of the dedicated hsm.
   final pulumi.Input<NetworkProfile>? managementNetworkProfile;
-
   /// Name of the dedicated Hsm
   final pulumi.Input<String>? name;
-
   /// Specifies the network interfaces of the dedicated hsm.
   final pulumi.Input<NetworkProfile>? networkProfile;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// SKU details
   final pulumi.Input<Sku> sku;
-
   /// This field will be used when RP does not support Availability zones.
   final pulumi.Input<String>? stampId;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The Dedicated Hsm zones.
   final pulumi.Input<List<String>>? zones;
 
@@ -61,22 +53,11 @@ class DedicatedHsmArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': ?location,
-      'managementNetworkProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkProfile,
-            Map<String, dynamic>
-          >(managementNetworkProfile, (value) => value.toMap()),
+      'managementNetworkProfile': ?pulumi.Input.mapOptionalInputValue<NetworkProfile, Map<String, dynamic>>(managementNetworkProfile, (value) => value.toMap()),
       'name': ?name,
-      'networkProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkProfile,
-            Map<String, dynamic>
-          >(networkProfile, (value) => value.toMap()),
+      'networkProfile': ?pulumi.Input.mapOptionalInputValue<NetworkProfile, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
-      'sku': pulumi.Input.mapInputValue<Sku, Map<String, dynamic>>(
-        sku,
-        (value) => value.toMap(),
-      ),
+      'sku': pulumi.Input.mapInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'stampId': ?stampId,
       'tags': ?tags,
       'zones': ?zones,
@@ -85,53 +66,16 @@ class DedicatedHsmArgs {
 
   factory DedicatedHsmArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedHsmArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managementNetworkProfile: (() {
-        final guardedValue = map['managementNetworkProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkProfile: (() {
-        final guardedValue = map['networkProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sku: pulumi.Input.fromValue(
-        Sku.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      ),
-      stampId: (() {
-        final guardedValue = map['stampId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      zones: (() {
-        final guardedValue = map['zones'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managementNetworkProfile: (() { final guardedValue = map['managementNetworkProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sku: pulumi.Input.fromValue(Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())),
+      stampId: (() { final guardedValue = map['stampId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -1,70 +1,50 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getLimitsV2.
 class GetLimitsV2Result {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The number of allowed metadata items for each image. Starting from version 2.39 this field is dropped from ‘os-limits’ response, because ‘image-metadata’ proxy API was deprecated. Available until version 2.38.
   final int maxImageMeta;
-
   /// The number of allowed injected files for the tenant. Available until version 2.56.
   final int maxPersonality;
-
   /// The number of allowed bytes of content for each injected file. Available until version 2.56.
   final int maxPersonalitySize;
-
   /// The number of allowed rules for each security group. Available until version 2.35.
   final int maxSecurityGroupRules;
-
   /// The number of allowed security groups for the tenant. Available until version 2.35.
   final int maxSecurityGroups;
-
   /// The number of allowed members for each server group.
   final int maxServerGroupMembers;
-
   /// The number of allowed server groups for the tenant.
   final int maxServerGroups;
-
   /// The number of allowed server groups for the tenant.
   final int maxServerMeta;
-
   /// The number of allowed server cores for the tenant.
   final int maxTotalCores;
-
   /// The number of allowed floating IP addresses for each tenant. Available until version 2.35.
   final int maxTotalFloatingIps;
-
   /// The number of allowed servers for the tenant.
   final int maxTotalInstances;
-
   /// The number of allowed key pairs for the user.
   final int maxTotalKeypairs;
-
   /// The number of allowed floating IP addresses for the tenant. Available until version 2.35.
   final int maxTotalRamSize;
-
   /// See Argument Reference above.
   final String projectId;
-
   /// See Argument Reference above.
   final String region;
-
   /// The number of used server cores in the tenant.
   final int totalCoresUsed;
-
   /// The number of used floating IP addresses in the tenant.
   final int totalFloatingIpsUsed;
-
   /// The number of used server cores in the tenant.
   final int totalInstancesUsed;
-
   /// The amount of used server RAM in the tenant.
   final int totalRamUsed;
-
   /// The number of used security groups in the tenant. Available until version 2.35.
   final int totalSecurityGroupsUsed;
-
   /// The number of used server groups in each tenant.
   final int totalServerGroupsUsed;
 
@@ -170,3 +150,4 @@ class GetLimitsV2Result {
     );
   }
 }
+

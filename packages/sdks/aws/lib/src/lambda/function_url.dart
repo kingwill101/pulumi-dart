@@ -329,30 +329,22 @@ import 'function_url_state.dart';
 class FunctionUrl extends pulumi.CustomResource {
   /// Type of authentication that the function URL uses. Valid values are `AWS_IAM` and `NONE`.
   late final pulumi.Output<String> authorizationType;
-
   /// Cross-origin resource sharing (CORS) settings for the function URL. See below.
   late final pulumi.Output<FunctionUrlCors?> cors;
-
   /// ARN of the Lambda function.
   late final pulumi.Output<String> functionArn;
-
   /// Name or ARN of the Lambda function.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> functionName;
-
   /// HTTP URL endpoint for the function in the format `https://&lt;url_id&gt;.lambda-url.&lt;region&gt;.on.aws/`.
   late final pulumi.Output<String> functionUrl;
-
   /// How the Lambda function responds to an invocation. Valid values are `BUFFERED` (default) and `RESPONSE_STREAM`.
   late final pulumi.Output<String?> invokeMode;
-
   /// Alias name or `$LATEST`.
   late final pulumi.Output<String?> qualifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Generated ID for the endpoint.
   late final pulumi.Output<String> urlId;
 
@@ -365,22 +357,13 @@ class FunctionUrl extends pulumi.CustomResource {
     FunctionUrlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lambda/functionUrl:FunctionUrl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lambda/functionUrl:FunctionUrl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizationType = registerOutput<String>('authorizationType');
-    cors = registerOutput<FunctionUrlCors?>(
-      'cors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionUrlCors.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cors = registerOutput<FunctionUrlCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionUrlCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
     functionUrl = registerOutput<String>('functionUrl');
@@ -408,22 +391,13 @@ class FunctionUrl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lambda/functionUrl:FunctionUrl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lambda/functionUrl:FunctionUrl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizationType = registerOutput<String>('authorizationType');
-    cors = registerOutput<FunctionUrlCors?>(
-      'cors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionUrlCors.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cors = registerOutput<FunctionUrlCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionUrlCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
     functionUrl = registerOutput<String>('functionUrl');

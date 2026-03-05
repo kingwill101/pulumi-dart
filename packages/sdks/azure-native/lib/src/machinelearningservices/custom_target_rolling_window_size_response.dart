@@ -6,7 +6,6 @@ class CustomTargetRollingWindowSizeResponse {
   /// Target rolling windows size mode.
   /// Expected value is 'Custom'.
   final pulumi.Input<String> mode;
-
   /// [Required] TargetRollingWindowSize value.
   final pulumi.Input<int> value;
 
@@ -19,15 +18,17 @@ class CustomTargetRollingWindowSizeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode, 'value': value};
+    return <String, dynamic>{
+      'mode': mode,
+      'value': value,
+    };
   }
 
-  factory CustomTargetRollingWindowSizeResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomTargetRollingWindowSizeResponse.fromMap(Map<String, dynamic> map) {
     return CustomTargetRollingWindowSizeResponse(
       mode: pulumi.Input.fromValue(map['mode'] as String),
       value: pulumi.Input.fromValue(map['value'] as int),
     );
   }
 }
+

@@ -17,19 +17,20 @@ class MulticastProducerAssociationState {
 
   /// Creates a new [MulticastProducerAssociationState].
   /// [state] (Output)
-  MulticastProducerAssociationState({this.state});
+  MulticastProducerAssociationState({
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': ?state};
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
   factory MulticastProducerAssociationState.fromMap(Map<String, dynamic> map) {
     return MulticastProducerAssociationState(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

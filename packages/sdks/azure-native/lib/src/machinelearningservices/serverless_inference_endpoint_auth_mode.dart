@@ -11,8 +11,7 @@ enum ServerlessInferenceEndpointAuthMode {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ServerlessInferenceEndpointAuthMode value: $value',
-    );
+    throw ArgumentError('Unknown ServerlessInferenceEndpointAuthMode value: $value');
   }
 }
+

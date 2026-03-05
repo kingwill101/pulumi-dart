@@ -6,7 +6,6 @@ import 'get_db_instance_plans_plan.dart';
 /// Result data returned by getDbInstancePlans.
 class GetDbInstancePlansResult {
   final String dbInstanceId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -52,11 +51,7 @@ class GetDbInstancePlansResult {
       'outputFile': ?outputFile,
       'planScheduleType': ?planScheduleType,
       'planType': ?planType,
-      'plans':
-          pulumi.Input.encodeList<GetDbInstancePlansPlan, Map<String, dynamic>>(
-            plans,
-            (value) => value.toMap(),
-          ),
+      'plans': pulumi.Input.encodeList<GetDbInstancePlansPlan, Map<String, dynamic>>(plans, (value) => value.toMap()),
       'status': ?status,
     };
   }
@@ -66,38 +61,14 @@ class GetDbInstancePlansResult {
       dbInstanceId: map['dbInstanceId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      planScheduleType: (() {
-        final guardedValue = map['planScheduleType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      planType: (() {
-        final guardedValue = map['planType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      plans: pulumi.Input.decodeList<GetDbInstancePlansPlan>(
-        map['plans']!,
-        (value) => GetDbInstancePlansPlan.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      planScheduleType: (() { final guardedValue = map['planScheduleType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      planType: (() { final guardedValue = map['planType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      plans: pulumi.Input.decodeList<GetDbInstancePlansPlan>(map['plans']!, (value) => GetDbInstancePlansPlan.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

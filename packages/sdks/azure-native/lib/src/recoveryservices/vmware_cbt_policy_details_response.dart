@@ -6,14 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareCbtPolicyDetailsResponse {
   /// The app consistent snapshot frequency in minutes.
   final pulumi.Input<int>? appConsistentFrequencyInMinutes;
-
   /// The crash consistent snapshot frequency in minutes.
   final pulumi.Input<int>? crashConsistentFrequencyInMinutes;
-
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'VMwareCbt'.
   final pulumi.Input<String> instanceType;
-
   /// The duration in minutes until which the recovery points need to be stored.
   final pulumi.Input<int>? recoveryPointHistoryInMinutes;
 
@@ -40,22 +37,11 @@ class VmwareCbtPolicyDetailsResponse {
 
   factory VmwareCbtPolicyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VmwareCbtPolicyDetailsResponse(
-      appConsistentFrequencyInMinutes: (() {
-        final guardedValue = map['appConsistentFrequencyInMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      crashConsistentFrequencyInMinutes: (() {
-        final guardedValue = map['crashConsistentFrequencyInMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      appConsistentFrequencyInMinutes: (() { final guardedValue = map['appConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      crashConsistentFrequencyInMinutes: (() { final guardedValue = map['crashConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      recoveryPointHistoryInMinutes: (() {
-        final guardedValue = map['recoveryPointHistoryInMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      recoveryPointHistoryInMinutes: (() { final guardedValue = map['recoveryPointHistoryInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

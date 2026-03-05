@@ -170,37 +170,26 @@ import 'virtual_router_args.dart';
 class VirtualRouter extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The Gateway on which VirtualRouter is hosted.
   late final pulumi.Output<SubResourceResponse?> hostedGateway;
-
   /// The Subnet on which VirtualRouter is hosted.
   late final pulumi.Output<SubResourceResponse?> hostedSubnet;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// List of references to VirtualRouterPeerings.
   late final pulumi.Output<List<Map<String, dynamic>>> peerings;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// VirtualRouter ASN.
   late final pulumi.Output<double?> virtualRouterAsn;
-
   /// VirtualRouter IPs.
   late final pulumi.Output<List<String>?> virtualRouterIps;
 
@@ -213,33 +202,15 @@ class VirtualRouter extends pulumi.CustomResource {
     VirtualRouterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:VirtualRouter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:VirtualRouter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
-    hostedGateway = registerOutput<SubResourceResponse?>(
-      'hostedGateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    hostedSubnet = registerOutput<SubResourceResponse?>(
-      'hostedSubnet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hostedGateway = registerOutput<SubResourceResponse?>('hostedGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostedSubnet = registerOutput<SubResourceResponse?>('hostedSubnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     peerings = registerOutput<List<Map<String, dynamic>>>('peerings');

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDisasterRecoveryConfigArgs {
   /// The Disaster Recovery configuration name
   final pulumi.Input<String> alias;
-
   /// The namespace name
   final pulumi.Input<String> namespaceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetDisasterRecoveryConfigArgs {
     return GetDisasterRecoveryConfigArgs(
       alias: pulumi.Input.fromValue(map['alias'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

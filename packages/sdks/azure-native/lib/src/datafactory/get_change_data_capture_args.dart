@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetChangeDataCaptureArgs {
   /// The change data capture name.
   final pulumi.Input<String> changeDataCaptureName;
-
   /// The factory name.
   final pulumi.Input<String> factoryName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetChangeDataCaptureArgs {
 
   factory GetChangeDataCaptureArgs.fromMap(Map<String, dynamic> map) {
     return GetChangeDataCaptureArgs(
-      changeDataCaptureName: pulumi.Input.fromValue(
-        map['changeDataCaptureName'] as String,
-      ),
+      changeDataCaptureName: pulumi.Input.fromValue(map['changeDataCaptureName'] as String),
       factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

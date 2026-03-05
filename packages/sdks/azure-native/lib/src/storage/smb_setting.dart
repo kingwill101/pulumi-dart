@@ -7,16 +7,12 @@ import 'multichannel.dart';
 class SmbSetting {
   /// SMB authentication methods supported by server. Valid values are NTLMv2, Kerberos. Should be passed as a string with delimiter ';'.
   final pulumi.Input<String>? authenticationMethods;
-
   /// SMB channel encryption supported by server. Valid values are AES-128-CCM, AES-128-GCM, AES-256-GCM. Should be passed as a string with delimiter ';'.
   final pulumi.Input<String>? channelEncryption;
-
   /// Kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256. Should be passed as a string with delimiter ';'
   final pulumi.Input<String>? kerberosTicketEncryption;
-
   /// Multichannel setting. Applies to Premium FileStorage only.
   final pulumi.Input<Multichannel>? multichannel;
-
   /// SMB protocol versions supported by server. Valid values are SMB2.1, SMB3.0, SMB3.1.1. Should be passed as a string with delimiter ';'.
   final pulumi.Input<String>? versions;
 
@@ -39,44 +35,19 @@ class SmbSetting {
       'authenticationMethods': ?authenticationMethods,
       'channelEncryption': ?channelEncryption,
       'kerberosTicketEncryption': ?kerberosTicketEncryption,
-      'multichannel':
-          ?pulumi.Input.mapOptionalInputValue<
-            Multichannel,
-            Map<String, dynamic>
-          >(multichannel, (value) => value.toMap()),
+      'multichannel': ?pulumi.Input.mapOptionalInputValue<Multichannel, Map<String, dynamic>>(multichannel, (value) => value.toMap()),
       'versions': ?versions,
     };
   }
 
   factory SmbSetting.fromMap(Map<String, dynamic> map) {
     return SmbSetting(
-      authenticationMethods: (() {
-        final guardedValue = map['authenticationMethods'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      channelEncryption: (() {
-        final guardedValue = map['channelEncryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kerberosTicketEncryption: (() {
-        final guardedValue = map['kerberosTicketEncryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      multichannel: (() {
-        final guardedValue = map['multichannel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Multichannel.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      versions: (() {
-        final guardedValue = map['versions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authenticationMethods: (() { final guardedValue = map['authenticationMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      channelEncryption: (() { final guardedValue = map['channelEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kerberosTicketEncryption: (() { final guardedValue = map['kerberosTicketEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      multichannel: (() { final guardedValue = map['multichannel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Multichannel.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      versions: (() { final guardedValue = map['versions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

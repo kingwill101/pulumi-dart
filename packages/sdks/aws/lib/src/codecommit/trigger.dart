@@ -163,13 +163,10 @@ import 'trigger_state.dart';
 class Trigger extends pulumi.CustomResource {
   /// System-generated unique identifier.
   late final pulumi.Output<String> configurationId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The name for the repository. This needs to be less than 100 characters.
   late final pulumi.Output<String> repositoryName;
-
   /// The name of the trigger.
   late final pulumi.Output<List<Map<String, dynamic>>> triggers;
 
@@ -182,11 +179,11 @@ class Trigger extends pulumi.CustomResource {
     TriggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codecommit/trigger:Trigger',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:codecommit/trigger:Trigger',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configurationId = registerOutput<String>('configurationId');
     region = registerOutput<String>('region');
     repositoryName = registerOutput<String>('repositoryName');
@@ -211,11 +208,11 @@ class Trigger extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codecommit/trigger:Trigger',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:codecommit/trigger:Trigger',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configurationId = registerOutput<String>('configurationId');
     region = registerOutput<String>('region');
     repositoryName = registerOutput<String>('repositoryName');

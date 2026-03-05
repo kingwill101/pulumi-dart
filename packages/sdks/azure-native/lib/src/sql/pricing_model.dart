@@ -15,3 +15,4 @@ enum PricingModel {
     throw ArgumentError('Unknown PricingModel value: $value');
   }
 }
+

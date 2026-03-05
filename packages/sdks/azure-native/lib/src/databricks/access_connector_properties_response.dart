@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessConnectorPropertiesResponse {
   /// Provisioning status of the Access Connector.
   final pulumi.Input<String> provisioningState;
-
   /// List of workspaces referring this Access Connector.
   final pulumi.Input<List<String>> referedBy;
 
@@ -26,12 +25,9 @@ class AccessConnectorPropertiesResponse {
 
   factory AccessConnectorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AccessConnectorPropertiesResponse(
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      referedBy: pulumi.Input.fromValue(
-        (map['referedBy'] as List).cast<String>(),
-      ),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      referedBy: pulumi.Input.fromValue((map['referedBy'] as List).cast<String>()),
     );
   }
 }
+

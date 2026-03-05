@@ -13,22 +13,16 @@ class RuleArgs {
   /// - `Request`: The forwarding rule is applied to the client requests received by ALB.
   /// - `Response`: The forwarding rule is applied to the responses returned by backend servers.
   final pulumi.Input<String>? direction;
-
   /// Specifies whether to precheck this request.
   final pulumi.Input<bool>? dryRun;
-
   /// The ID of the listener to which the forwarding rule belongs.
   final pulumi.Input<String> listenerId;
-
   /// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
   final pulumi.Input<int> priority;
-
   /// The actions of the forwarding rules. See `rule_actions` below.
   final pulumi.Input<List<RuleRuleAction>> ruleActions;
-
   /// The conditions of the forwarding rule. See `rule_conditions` below.
   final pulumi.Input<List<RuleRuleCondition>> ruleConditions;
-
   /// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
   final pulumi.Input<String> ruleName;
 
@@ -56,63 +50,22 @@ class RuleArgs {
       'dryRun': ?dryRun,
       'listenerId': listenerId,
       'priority': priority,
-      'ruleActions':
-          pulumi.Input.mapInputValue<
-            List<RuleRuleAction>,
-            List<Map<String, dynamic>>
-          >(
-            ruleActions,
-            (value) =>
-                pulumi.Input.encodeList<RuleRuleAction, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'ruleConditions':
-          pulumi.Input.mapInputValue<
-            List<RuleRuleCondition>,
-            List<Map<String, dynamic>>
-          >(
-            ruleConditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RuleRuleCondition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ruleActions': pulumi.Input.mapInputValue<List<RuleRuleAction>, List<Map<String, dynamic>>>(ruleActions, (value) => pulumi.Input.encodeList<RuleRuleAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ruleConditions': pulumi.Input.mapInputValue<List<RuleRuleCondition>, List<Map<String, dynamic>>>(ruleConditions, (value) => pulumi.Input.encodeList<RuleRuleCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ruleName': ruleName,
     };
   }
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      direction: (() {
-        final guardedValue = map['direction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       listenerId: pulumi.Input.fromValue(map['listenerId'] as String),
       priority: pulumi.Input.fromValue(map['priority'] as int),
-      ruleActions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<RuleRuleAction>(
-          map['ruleActions']!,
-          (value) =>
-              RuleRuleAction.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      ruleConditions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<RuleRuleCondition>(
-          map['ruleConditions']!,
-          (value) =>
-              RuleRuleCondition.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      ruleActions: pulumi.Input.fromValue(pulumi.Input.decodeList<RuleRuleAction>(map['ruleActions']!, (value) => RuleRuleAction.fromMap((value as Map).cast<String, dynamic>()))),
+      ruleConditions: pulumi.Input.fromValue(pulumi.Input.decodeList<RuleRuleCondition>(map['ruleConditions']!, (value) => RuleRuleCondition.fromMap((value as Map).cast<String, dynamic>()))),
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
     );
   }
 }
+

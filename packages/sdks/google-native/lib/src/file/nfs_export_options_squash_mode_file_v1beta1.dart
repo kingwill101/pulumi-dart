@@ -13,8 +13,7 @@ enum NfsExportOptionsSquashModeFileV1beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown NfsExportOptionsSquashModeFileV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown NfsExportOptionsSquashModeFileV1beta1 value: $value');
   }
 }
+

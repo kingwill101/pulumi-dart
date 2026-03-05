@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupPolicyAttachmentsExclusiveArgs {
   /// IAM group name.
   final pulumi.Input<String> groupName;
-
   /// A list of managed IAM policy ARNs to be attached to the group. Policies attached to this group but not configured in this argument will be removed.
   final pulumi.Input<List<String>> policyArns;
 
@@ -22,17 +21,17 @@ class GroupPolicyAttachmentsExclusiveArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupName': groupName, 'policyArns': policyArns};
+    return <String, dynamic>{
+      'groupName': groupName,
+      'policyArns': policyArns,
+    };
   }
 
-  factory GroupPolicyAttachmentsExclusiveArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GroupPolicyAttachmentsExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAttachmentsExclusiveArgs(
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
-      policyArns: pulumi.Input.fromValue(
-        (map['policyArns'] as List).cast<String>(),
-      ),
+      policyArns: pulumi.Input.fromValue((map['policyArns'] as List).cast<String>()),
     );
   }
 }
+

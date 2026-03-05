@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceCustomerManagedKeyArgs {
   /// The ID of the EventHub Namespace. Changing this forces a new resource to be created.
   final pulumi.Input<String> eventhubNamespaceId;
-
   /// Whether to enable Infrastructure Encryption (Double Encryption). Changing this forces a new resource to be created.
   final pulumi.Input<bool>? infrastructureEncryptionEnabled;
-
   /// The list of keys of Key Vault.
   final pulumi.Input<List<String>> keyVaultKeyIds;
-
   /// The ID of a User Managed Identity that will be used to access Key Vaults that contain the encryption keys.
   ///
   /// &gt; **Note:** If using `user_assigned_identity_id`, ensure the User Assigned Identity is also assigned to the parent Event Hub.
@@ -46,22 +43,11 @@ class NamespaceCustomerManagedKeyArgs {
 
   factory NamespaceCustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceCustomerManagedKeyArgs(
-      eventhubNamespaceId: pulumi.Input.fromValue(
-        map['eventhubNamespaceId'] as String,
-      ),
-      infrastructureEncryptionEnabled: (() {
-        final guardedValue = map['infrastructureEncryptionEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      keyVaultKeyIds: pulumi.Input.fromValue(
-        (map['keyVaultKeyIds'] as List).cast<String>(),
-      ),
-      userAssignedIdentityId: (() {
-        final guardedValue = map['userAssignedIdentityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eventhubNamespaceId: pulumi.Input.fromValue(map['eventhubNamespaceId'] as String),
+      infrastructureEncryptionEnabled: (() { final guardedValue = map['infrastructureEncryptionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      keyVaultKeyIds: pulumi.Input.fromValue((map['keyVaultKeyIds'] as List).cast<String>()),
+      userAssignedIdentityId: (() { final guardedValue = map['userAssignedIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

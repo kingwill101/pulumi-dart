@@ -196,7 +196,6 @@ import 'floating_ip_assignment_state.dart';
 class FloatingIpAssignment extends pulumi.CustomResource {
   /// The ID of Droplet that the Floating IP will be assigned to.
   late final pulumi.Output<int> dropletId;
-
   /// The Floating IP to assign to the Droplet.
   late final pulumi.Output<String> ipAddress;
 
@@ -209,11 +208,11 @@ class FloatingIpAssignment extends pulumi.CustomResource {
     FloatingIpAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/floatingIpAssignment:FloatingIpAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/floatingIpAssignment:FloatingIpAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dropletId = registerOutput<int>('dropletId');
     ipAddress = registerOutput<String>('ipAddress');
   }
@@ -236,11 +235,11 @@ class FloatingIpAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/floatingIpAssignment:FloatingIpAssignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/floatingIpAssignment:FloatingIpAssignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dropletId = registerOutput<int>('dropletId');
     ipAddress = registerOutput<String>('ipAddress');
   }

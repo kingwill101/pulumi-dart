@@ -617,28 +617,20 @@ import 'ascript_state.dart';
 class AScript extends pulumi.CustomResource {
   /// AScript name.
   late final pulumi.Output<String> ascriptName;
-
   /// Whether to PreCheck only this request
   late final pulumi.Output<bool?> dryRun;
-
   /// Whether AScript is enabled.
   late final pulumi.Output<bool?> enabled;
-
   /// Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
   late final pulumi.Output<bool?> extAttributeEnabled;
-
   /// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> extAttributes;
-
   /// Listener ID of script attribution
   late final pulumi.Output<String> listenerId;
-
   /// Script execution location.
   late final pulumi.Output<String> position;
-
   /// AScript script content.
   late final pulumi.Output<String> scriptContent;
-
   /// Script status
   late final pulumi.Output<String> status;
 
@@ -651,18 +643,16 @@ class AScript extends pulumi.CustomResource {
     AScriptArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/aScript:AScript',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/aScript:AScript',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ascriptName = registerOutput<String>('ascriptName');
     dryRun = registerOutput<bool?>('dryRun');
     enabled = registerOutput<bool?>('enabled');
     extAttributeEnabled = registerOutput<bool?>('extAttributeEnabled');
-    extAttributes = registerOutput<List<Map<String, dynamic>>?>(
-      'extAttributes',
-    );
+    extAttributes = registerOutput<List<Map<String, dynamic>>?>('extAttributes');
     listenerId = registerOutput<String>('listenerId');
     position = registerOutput<String>('position');
     scriptContent = registerOutput<String>('scriptContent');
@@ -687,18 +677,16 @@ class AScript extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/aScript:AScript',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/aScript:AScript',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ascriptName = registerOutput<String>('ascriptName');
     dryRun = registerOutput<bool?>('dryRun');
     enabled = registerOutput<bool?>('enabled');
     extAttributeEnabled = registerOutput<bool?>('extAttributeEnabled');
-    extAttributes = registerOutput<List<Map<String, dynamic>>?>(
-      'extAttributes',
-    );
+    extAttributes = registerOutput<List<Map<String, dynamic>>?>('extAttributes');
     listenerId = registerOutput<String>('listenerId');
     position = registerOutput<String>('position');
     scriptContent = registerOutput<String>('scriptContent');

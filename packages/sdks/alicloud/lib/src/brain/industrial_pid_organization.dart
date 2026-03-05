@@ -109,7 +109,6 @@ import 'industrial_pid_organization_state.dart';
 class IndustrialPidOrganization extends pulumi.CustomResource {
   /// The ID of parent pid organization.
   late final pulumi.Output<String?> parentPidOrganizationId;
-
   /// The name of pid organization.
   late final pulumi.Output<String> pidOrganizationName;
 
@@ -122,14 +121,12 @@ class IndustrialPidOrganization extends pulumi.CustomResource {
     IndustrialPidOrganizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:brain/industrialPidOrganization:IndustrialPidOrganization',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    parentPidOrganizationId = registerOutput<String?>(
-      'parentPidOrganizationId',
-    );
+          'alicloud:brain/industrialPidOrganization:IndustrialPidOrganization',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    parentPidOrganizationId = registerOutput<String?>('parentPidOrganizationId');
     pidOrganizationName = registerOutput<String>('pidOrganizationName');
   }
 
@@ -151,14 +148,12 @@ class IndustrialPidOrganization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:brain/industrialPidOrganization:IndustrialPidOrganization',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    parentPidOrganizationId = registerOutput<String?>(
-      'parentPidOrganizationId',
-    );
+          'alicloud:brain/industrialPidOrganization:IndustrialPidOrganization',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    parentPidOrganizationId = registerOutput<String?>('parentPidOrganizationId');
     pidOrganizationName = registerOutput<String>('pidOrganizationName');
   }
 }

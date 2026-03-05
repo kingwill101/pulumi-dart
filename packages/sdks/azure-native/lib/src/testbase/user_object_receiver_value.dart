@@ -9,19 +9,20 @@ class UserObjectReceiverValue {
 
   /// Creates a new [UserObjectReceiverValue].
   /// [userObjectIds] user object ids.
-  UserObjectReceiverValue({this.userObjectIds});
+  UserObjectReceiverValue({
+    this.userObjectIds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'userObjectIds': ?userObjectIds};
+    return <String, dynamic>{
+      'userObjectIds': ?userObjectIds,
+    };
   }
 
   factory UserObjectReceiverValue.fromMap(Map<String, dynamic> map) {
     return UserObjectReceiverValue(
-      userObjectIds: (() {
-        final guardedValue = map['userObjectIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      userObjectIds: (() { final guardedValue = map['userObjectIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

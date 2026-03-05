@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentArgs {
   /// Environment name.
   final pulumi.Input<String> name;
-
   /// Organization name.
   final pulumi.Input<String> organization;
-
   /// Project name.
   final pulumi.Input<String>? project;
-
   /// Environment's yaml file.
   final pulumi.Input<dynamic> yaml;
 
@@ -44,12 +41,9 @@ class EnvironmentArgs {
     return EnvironmentArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
       organization: pulumi.Input.fromValue(map['organization'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       yaml: pulumi.Input.fromValue(map['yaml']),
     );
   }
 }
+

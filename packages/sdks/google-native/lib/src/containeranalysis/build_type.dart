@@ -7,40 +7,29 @@ import 'build_signature.dart';
 class BuildType {
   /// Version of the builder which produced this Note.
   final pulumi.Input<String>? builderVersion;
-
   /// Signature of the build in Occurrences pointing to the Note containing this `BuilderDetails`.
   final pulumi.Input<BuildSignature>? signature;
 
   /// Creates a new [BuildType].
   /// [builderVersion] Version of the builder which produced this Note.
   /// [signature] Signature of the build in Occurrences pointing to the Note containing this `BuilderDetails`.
-  BuildType({this.builderVersion, this.signature});
+  BuildType({
+    this.builderVersion,
+    this.signature,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'builderVersion': ?builderVersion,
-      'signature':
-          ?pulumi.Input.mapOptionalInputValue<
-            BuildSignature,
-            Map<String, dynamic>
-          >(signature, (value) => value.toMap()),
+      'signature': ?pulumi.Input.mapOptionalInputValue<BuildSignature, Map<String, dynamic>>(signature, (value) => value.toMap()),
     };
   }
 
   factory BuildType.fromMap(Map<String, dynamic> map) {
     return BuildType(
-      builderVersion: (() {
-        final guardedValue = map['builderVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      signature: (() {
-        final guardedValue = map['signature'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BuildSignature.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      builderVersion: (() { final guardedValue = map['builderVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      signature: (() { final guardedValue = map['signature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BuildSignature.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

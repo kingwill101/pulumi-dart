@@ -6,15 +6,11 @@ import 'channel_input_attachment_input_settings.dart';
 
 class ChannelInputAttachment {
   /// User-specified settings for defining what the conditions are for declaring the input unhealthy and failing over to a different input. See Automatic Input Failover Settings for more details.
-  final pulumi.Input<ChannelInputAttachmentAutomaticInputFailoverSettings>?
-  automaticInputFailoverSettings;
-
+  final pulumi.Input<ChannelInputAttachmentAutomaticInputFailoverSettings>? automaticInputFailoverSettings;
   /// User-specified name for the attachment.
   final pulumi.Input<String> inputAttachmentName;
-
   /// The ID of the input.
   final pulumi.Input<String> inputId;
-
   /// Settings of an input. See Input Settings for more details.
   final pulumi.Input<ChannelInputAttachmentInputSettings>? inputSettings;
 
@@ -32,45 +28,20 @@ class ChannelInputAttachment {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'automaticInputFailoverSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChannelInputAttachmentAutomaticInputFailoverSettings,
-            Map<String, dynamic>
-          >(automaticInputFailoverSettings, (value) => value.toMap()),
+      'automaticInputFailoverSettings': ?pulumi.Input.mapOptionalInputValue<ChannelInputAttachmentAutomaticInputFailoverSettings, Map<String, dynamic>>(automaticInputFailoverSettings, (value) => value.toMap()),
       'inputAttachmentName': inputAttachmentName,
       'inputId': inputId,
-      'inputSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChannelInputAttachmentInputSettings,
-            Map<String, dynamic>
-          >(inputSettings, (value) => value.toMap()),
+      'inputSettings': ?pulumi.Input.mapOptionalInputValue<ChannelInputAttachmentInputSettings, Map<String, dynamic>>(inputSettings, (value) => value.toMap()),
     };
   }
 
   factory ChannelInputAttachment.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachment(
-      automaticInputFailoverSettings: (() {
-        final guardedValue = map['automaticInputFailoverSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChannelInputAttachmentAutomaticInputFailoverSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      inputAttachmentName: pulumi.Input.fromValue(
-        map['inputAttachmentName'] as String,
-      ),
+      automaticInputFailoverSettings: (() { final guardedValue = map['automaticInputFailoverSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelInputAttachmentAutomaticInputFailoverSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      inputAttachmentName: pulumi.Input.fromValue(map['inputAttachmentName'] as String),
       inputId: pulumi.Input.fromValue(map['inputId'] as String),
-      inputSettings: (() {
-        final guardedValue = map['inputSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChannelInputAttachmentInputSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      inputSettings: (() { final guardedValue = map['inputSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelInputAttachmentInputSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -8,16 +8,11 @@ import 'monitoring_component_config_container_v1beta1.dart';
 /// MonitoringConfig is cluster monitoring configuration.
 class MonitoringConfigContainerV1beta1 {
   /// Configuration of Advanced Datapath Observability features.
-  final pulumi.Input<AdvancedDatapathObservabilityConfigContainerV1beta1>?
-  advancedDatapathObservabilityConfig;
-
+  final pulumi.Input<AdvancedDatapathObservabilityConfigContainerV1beta1>? advancedDatapathObservabilityConfig;
   /// Monitoring components configuration
-  final pulumi.Input<MonitoringComponentConfigContainerV1beta1>?
-  componentConfig;
-
+  final pulumi.Input<MonitoringComponentConfigContainerV1beta1>? componentConfig;
   /// Enable Google Cloud Managed Service for Prometheus in the cluster.
-  final pulumi.Input<ManagedPrometheusConfigContainerV1beta1>?
-  managedPrometheusConfig;
+  final pulumi.Input<ManagedPrometheusConfigContainerV1beta1>? managedPrometheusConfig;
 
   /// Creates a new [MonitoringConfigContainerV1beta1].
   /// [advancedDatapathObservabilityConfig] Configuration of Advanced Datapath Observability features.
@@ -31,53 +26,18 @@ class MonitoringConfigContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedDatapathObservabilityConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AdvancedDatapathObservabilityConfigContainerV1beta1,
-            Map<String, dynamic>
-          >(advancedDatapathObservabilityConfig, (value) => value.toMap()),
-      'componentConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            MonitoringComponentConfigContainerV1beta1,
-            Map<String, dynamic>
-          >(componentConfig, (value) => value.toMap()),
-      'managedPrometheusConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedPrometheusConfigContainerV1beta1,
-            Map<String, dynamic>
-          >(managedPrometheusConfig, (value) => value.toMap()),
+      'advancedDatapathObservabilityConfig': ?pulumi.Input.mapOptionalInputValue<AdvancedDatapathObservabilityConfigContainerV1beta1, Map<String, dynamic>>(advancedDatapathObservabilityConfig, (value) => value.toMap()),
+      'componentConfig': ?pulumi.Input.mapOptionalInputValue<MonitoringComponentConfigContainerV1beta1, Map<String, dynamic>>(componentConfig, (value) => value.toMap()),
+      'managedPrometheusConfig': ?pulumi.Input.mapOptionalInputValue<ManagedPrometheusConfigContainerV1beta1, Map<String, dynamic>>(managedPrometheusConfig, (value) => value.toMap()),
     };
   }
 
   factory MonitoringConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MonitoringConfigContainerV1beta1(
-      advancedDatapathObservabilityConfig: (() {
-        final guardedValue = map['advancedDatapathObservabilityConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AdvancedDatapathObservabilityConfigContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      componentConfig: (() {
-        final guardedValue = map['componentConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MonitoringComponentConfigContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      managedPrometheusConfig: (() {
-        final guardedValue = map['managedPrometheusConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedPrometheusConfigContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      advancedDatapathObservabilityConfig: (() { final guardedValue = map['advancedDatapathObservabilityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AdvancedDatapathObservabilityConfigContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      componentConfig: (() { final guardedValue = map['componentConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MonitoringComponentConfigContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      managedPrometheusConfig: (() { final guardedValue = map['managedPrometheusConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedPrometheusConfigContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

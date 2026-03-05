@@ -8,79 +8,54 @@ import 'system_data_response.dart';
 class PendingConnectionResponse {
   /// Approver of this connection request
   final pulumi.Input<String> approver;
-
   /// The timestamp that this connection request was submitted at
   final pulumi.Input<String> dateSubmitted;
-
   /// Direction of data movement
   final pulumi.Input<String>? direction;
-
   /// The flow types being requested for this connection
   final pulumi.Input<List<String>>? flowTypes;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
-
   /// Justification for the connection request
   final pulumi.Input<String>? justification;
-
   /// Link status of the current connection
   final pulumi.Input<String> linkStatus;
-
   /// Resource ID of the linked connection
   final pulumi.Input<String> linkedConnectionId;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String> location;
-
   /// The name of the resource
   final pulumi.Input<String> name;
-
   /// PIN to link requests together
   final pulumi.Input<String>? pin;
-
   /// Pipeline to use to transfer data
   final pulumi.Input<String> pipeline;
-
   /// The policies for this connection
   final pulumi.Input<List<String>>? policies;
-
   /// The primary contact for this connection request
   final pulumi.Input<String>? primaryContact;
-
   /// Provisioning state of the connection
   final pulumi.Input<String> provisioningState;
-
   /// Subscription ID to link cloud subscriptions together
   final pulumi.Input<String>? remoteSubscriptionId;
-
   /// Requirement ID of the connection
   final pulumi.Input<String>? requirementId;
-
   /// The schema URIs for this connection
   final pulumi.Input<List<String>>? schemaUris;
-
   /// The schemas for this connection
   final pulumi.Input<List<SchemaResponse>>? schemas;
-
   /// The secondary contacts for this connection request
   final pulumi.Input<List<String>>? secondaryContacts;
-
   /// Status of the connection
   final pulumi.Input<String> status;
-
   /// Reason for status
   final pulumi.Input<String> statusReason;
-
   /// Subscription ID of the pending connection.
   final pulumi.Input<String> subscriptionId;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
@@ -160,27 +135,12 @@ class PendingConnectionResponse {
       'remoteSubscriptionId': ?remoteSubscriptionId,
       'requirementId': ?requirementId,
       'schemaUris': ?schemaUris,
-      'schemas':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SchemaResponse>,
-            List<Map<String, dynamic>>
-          >(
-            schemas,
-            (value) =>
-                pulumi.Input.encodeList<SchemaResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'schemas': ?pulumi.Input.mapOptionalInputValue<List<SchemaResponse>, List<Map<String, dynamic>>>(schemas, (value) => pulumi.Input.encodeList<SchemaResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'secondaryContacts': ?secondaryContacts,
       'status': status,
       'statusReason': statusReason,
       'subscriptionId': subscriptionId,
-      'systemData':
-          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
-            systemData,
-            (value) => value.toMap(),
-          ),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'tags': ?tags,
       'type': type,
     };
@@ -190,94 +150,31 @@ class PendingConnectionResponse {
     return PendingConnectionResponse(
       approver: pulumi.Input.fromValue(map['approver'] as String),
       dateSubmitted: pulumi.Input.fromValue(map['dateSubmitted'] as String),
-      direction: (() {
-        final guardedValue = map['direction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      flowTypes: (() {
-        final guardedValue = map['flowTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      flowTypes: (() { final guardedValue = map['flowTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
-      justification: (() {
-        final guardedValue = map['justification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      justification: (() { final guardedValue = map['justification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       linkStatus: pulumi.Input.fromValue(map['linkStatus'] as String),
-      linkedConnectionId: pulumi.Input.fromValue(
-        map['linkedConnectionId'] as String,
-      ),
+      linkedConnectionId: pulumi.Input.fromValue(map['linkedConnectionId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      pin: (() {
-        final guardedValue = map['pin'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pin: (() { final guardedValue = map['pin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pipeline: pulumi.Input.fromValue(map['pipeline'] as String),
-      policies: (() {
-        final guardedValue = map['policies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      primaryContact: (() {
-        final guardedValue = map['primaryContact'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      remoteSubscriptionId: (() {
-        final guardedValue = map['remoteSubscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requirementId: (() {
-        final guardedValue = map['requirementId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schemaUris: (() {
-        final guardedValue = map['schemaUris'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      schemas: (() {
-        final guardedValue = map['schemas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SchemaResponse>(
-            guardedValue,
-            (value) =>
-                SchemaResponse.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      secondaryContacts: (() {
-        final guardedValue = map['secondaryContacts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      policies: (() { final guardedValue = map['policies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      primaryContact: (() { final guardedValue = map['primaryContact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      remoteSubscriptionId: (() { final guardedValue = map['remoteSubscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requirementId: (() { final guardedValue = map['requirementId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemaUris: (() { final guardedValue = map['schemaUris']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      schemas: (() { final guardedValue = map['schemas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SchemaResponse>(guardedValue, (value) => SchemaResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      secondaryContacts: (() { final guardedValue = map['secondaryContacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
       statusReason: pulumi.Input.fromValue(map['statusReason'] as String),
       subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
-      systemData: pulumi.Input.fromValue(
-        SystemDataResponse.fromMap(
-          (map['systemData']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      systemData: pulumi.Input.fromValue(SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

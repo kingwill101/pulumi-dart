@@ -9,19 +9,14 @@ import 'site_details.dart';
 class OrderItemDetails {
   /// Additional notification email list.
   final pulumi.Input<List<String>>? notificationEmailList;
-
   /// Defines the mode of the Order item.
   final pulumi.Input<String>? orderItemMode;
-
   /// Order item type.
   final pulumi.Input<String> orderItemType;
-
   /// Customer notification Preferences.
   final pulumi.Input<Preferences>? preferences;
-
   /// Represents product details.
   final pulumi.Input<ProductDetails> productDetails;
-
   /// Site Related Details.
   final pulumi.Input<SiteDetails>? siteDetails;
 
@@ -46,56 +41,21 @@ class OrderItemDetails {
       'notificationEmailList': ?notificationEmailList,
       'orderItemMode': ?orderItemMode,
       'orderItemType': orderItemType,
-      'preferences':
-          ?pulumi.Input.mapOptionalInputValue<
-            Preferences,
-            Map<String, dynamic>
-          >(preferences, (value) => value.toMap()),
-      'productDetails':
-          pulumi.Input.mapInputValue<ProductDetails, Map<String, dynamic>>(
-            productDetails,
-            (value) => value.toMap(),
-          ),
-      'siteDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            SiteDetails,
-            Map<String, dynamic>
-          >(siteDetails, (value) => value.toMap()),
+      'preferences': ?pulumi.Input.mapOptionalInputValue<Preferences, Map<String, dynamic>>(preferences, (value) => value.toMap()),
+      'productDetails': pulumi.Input.mapInputValue<ProductDetails, Map<String, dynamic>>(productDetails, (value) => value.toMap()),
+      'siteDetails': ?pulumi.Input.mapOptionalInputValue<SiteDetails, Map<String, dynamic>>(siteDetails, (value) => value.toMap()),
     };
   }
 
   factory OrderItemDetails.fromMap(Map<String, dynamic> map) {
     return OrderItemDetails(
-      notificationEmailList: (() {
-        final guardedValue = map['notificationEmailList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      orderItemMode: (() {
-        final guardedValue = map['orderItemMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      notificationEmailList: (() { final guardedValue = map['notificationEmailList']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      orderItemMode: (() { final guardedValue = map['orderItemMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orderItemType: pulumi.Input.fromValue(map['orderItemType'] as String),
-      preferences: (() {
-        final guardedValue = map['preferences'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Preferences.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      productDetails: pulumi.Input.fromValue(
-        ProductDetails.fromMap(
-          (map['productDetails']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      siteDetails: (() {
-        final guardedValue = map['siteDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SiteDetails.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      preferences: (() { final guardedValue = map['preferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Preferences.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      productDetails: pulumi.Input.fromValue(ProductDetails.fromMap((map['productDetails']! as Map).cast<String, dynamic>())),
+      siteDetails: (() { final guardedValue = map['siteDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SiteDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

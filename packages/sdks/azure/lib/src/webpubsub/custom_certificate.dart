@@ -578,15 +578,12 @@ import 'custom_certificate_state.dart';
 class CustomCertificate extends pulumi.CustomResource {
   /// The certificate version of the Web PubSub Custom Certificate.
   late final pulumi.Output<String> certificateVersion;
-
   /// The certificate ID of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Self assigned certificate is not supported and the provisioning status will fail.
   late final pulumi.Output<String> customCertificateId;
-
   /// The name of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The Web PubSub ID of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** custom certificate is only available for Web PubSub Premium tier. Please enable managed identity in the corresponding Web PubSub Service and give the managed identity access to the key vault, the required permission is Get Certificate and Secret.
@@ -601,11 +598,11 @@ class CustomCertificate extends pulumi.CustomResource {
     CustomCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:webpubsub/customCertificate:CustomCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:webpubsub/customCertificate:CustomCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateVersion = registerOutput<String>('certificateVersion');
     customCertificateId = registerOutput<String>('customCertificateId');
     this.name = registerOutput<String>('name');
@@ -630,11 +627,11 @@ class CustomCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:webpubsub/customCertificate:CustomCertificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:webpubsub/customCertificate:CustomCertificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateVersion = registerOutput<String>('certificateVersion');
     customCertificateId = registerOutput<String>('customCertificateId');
     this.name = registerOutput<String>('name');

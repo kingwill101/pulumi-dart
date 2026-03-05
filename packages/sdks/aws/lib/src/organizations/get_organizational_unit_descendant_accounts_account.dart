@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOrganizationalUnitDescendantAccountsAccount {
   /// The Amazon Resource Name (ARN) of the account.
   final pulumi.Input<String> arn;
-
   /// The email address associated with the AWS account.
   final pulumi.Input<String> email;
-
   /// Parent identifier of the organizational units.
   final pulumi.Input<String> id;
-
   /// Method by which the account joined the organization.
   final pulumi.Input<String> joinedMethod;
-
   /// Date the account became a part of the organization.
   final pulumi.Input<String> joinedTimestamp;
-
   /// Friendly name of the account.
   final pulumi.Input<String> name;
-
   /// State of the account in the organization.
   final pulumi.Input<String> state;
-
   /// (**Deprecated** use `state` instead) Status of the account in the organization.
   final pulumi.Input<String> status;
 
@@ -60,9 +53,7 @@ class GetOrganizationalUnitDescendantAccountsAccount {
     };
   }
 
-  factory GetOrganizationalUnitDescendantAccountsAccount.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOrganizationalUnitDescendantAccountsAccount.fromMap(Map<String, dynamic> map) {
     return GetOrganizationalUnitDescendantAccountsAccount(
       arn: pulumi.Input.fromValue(map['arn'] as String),
       email: pulumi.Input.fromValue(map['email'] as String),
@@ -75,3 +66,4 @@ class GetOrganizationalUnitDescendantAccountsAccount {
     );
   }
 }
+

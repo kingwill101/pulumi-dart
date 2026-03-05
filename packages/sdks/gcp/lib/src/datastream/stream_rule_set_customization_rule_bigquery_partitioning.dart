@@ -8,27 +8,15 @@ import 'stream_rule_set_customization_rule_bigquery_partitioning_time_unit_parti
 class StreamRuleSetCustomizationRuleBigqueryPartitioning {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<
-    StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition
-  >?
-  ingestionTimePartition;
-
+  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition>? ingestionTimePartition;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<
-    StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition
-  >?
-  integerRangePartition;
-
+  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition>? integerRangePartition;
   /// If true, queries over the table require a partition filter.
   final pulumi.Input<bool>? requirePartitionFilter;
-
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<
-    StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition
-  >?
-  timeUnitPartition;
+  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition>? timeUnitPartition;
 
   /// Creates a new [StreamRuleSetCustomizationRuleBigqueryPartitioning].
   /// [ingestionTimePartition] A nested object resource.
@@ -44,61 +32,20 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioning {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ingestionTimePartition':
-          ?pulumi.Input.mapOptionalInputValue<
-            StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition,
-            Map<String, dynamic>
-          >(ingestionTimePartition, (value) => value.toMap()),
-      'integerRangePartition':
-          ?pulumi.Input.mapOptionalInputValue<
-            StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition,
-            Map<String, dynamic>
-          >(integerRangePartition, (value) => value.toMap()),
+      'ingestionTimePartition': ?pulumi.Input.mapOptionalInputValue<StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition, Map<String, dynamic>>(ingestionTimePartition, (value) => value.toMap()),
+      'integerRangePartition': ?pulumi.Input.mapOptionalInputValue<StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition, Map<String, dynamic>>(integerRangePartition, (value) => value.toMap()),
       'requirePartitionFilter': ?requirePartitionFilter,
-      'timeUnitPartition':
-          ?pulumi.Input.mapOptionalInputValue<
-            StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition,
-            Map<String, dynamic>
-          >(timeUnitPartition, (value) => value.toMap()),
+      'timeUnitPartition': ?pulumi.Input.mapOptionalInputValue<StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition, Map<String, dynamic>>(timeUnitPartition, (value) => value.toMap()),
     };
   }
 
-  factory StreamRuleSetCustomizationRuleBigqueryPartitioning.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StreamRuleSetCustomizationRuleBigqueryPartitioning.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetCustomizationRuleBigqueryPartitioning(
-      ingestionTimePartition: (() {
-        final guardedValue = map['ingestionTimePartition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      integerRangePartition: (() {
-        final guardedValue = map['integerRangePartition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      requirePartitionFilter: (() {
-        final guardedValue = map['requirePartitionFilter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      timeUnitPartition: (() {
-        final guardedValue = map['timeUnitPartition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      ingestionTimePartition: (() { final guardedValue = map['ingestionTimePartition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      integerRangePartition: (() { final guardedValue = map['integerRangePartition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      requirePartitionFilter: (() { final guardedValue = map['requirePartitionFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      timeUnitPartition: (() { final guardedValue = map['timeUnitPartition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

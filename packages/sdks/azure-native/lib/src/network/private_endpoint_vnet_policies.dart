@@ -15,3 +15,4 @@ enum PrivateEndpointVNetPolicies {
     throw ArgumentError('Unknown PrivateEndpointVNetPolicies value: $value');
   }
 }
+

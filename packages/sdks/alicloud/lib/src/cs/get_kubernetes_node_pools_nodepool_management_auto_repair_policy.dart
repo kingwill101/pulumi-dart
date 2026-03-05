@@ -13,14 +13,15 @@ class GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'restartNode': restartNode};
+    return <String, dynamic>{
+      'restartNode': restartNode,
+    };
   }
 
-  factory GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy.fromMap(Map<String, dynamic> map) {
     return GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy(
       restartNode: pulumi.Input.fromValue(map['restartNode'] as bool),
     );
   }
 }
+

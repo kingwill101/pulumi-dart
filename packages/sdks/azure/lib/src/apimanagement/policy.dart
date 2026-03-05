@@ -285,10 +285,8 @@ import 'policy_state.dart';
 class Policy extends pulumi.CustomResource {
   /// The ID of the API Management service. Changing this forces a new API Management service Policy to be created.
   late final pulumi.Output<String> apiManagementId;
-
   /// The XML Content for this Policy as a string. To integrate frontend and backend services in Azure API Management, utilize the [`set-backend-service`](https://learn.microsoft.com/azure/api-management/set-backend-service-policy) policy, specifying the `base-url` value. Typically, this value corresponds to the `url` property defined in the `Backend` resource configuration.
   late final pulumi.Output<String> xmlContent;
-
   /// A link to a Policy XML Document, which must be publicly available.
   late final pulumi.Output<String?> xmlLink;
 
@@ -296,13 +294,16 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_apimanagement_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:apimanagement/policy:Policy',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Policy(
+    String name, {
+    PolicyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:apimanagement/policy:Policy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     xmlContent = registerOutput<String>('xmlContent');
     xmlLink = registerOutput<String?>('xmlLink');
@@ -326,11 +327,11 @@ class Policy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/policy:Policy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/policy:Policy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     xmlContent = registerOutput<String>('xmlContent');
     xmlLink = registerOutput<String?>('xmlLink');

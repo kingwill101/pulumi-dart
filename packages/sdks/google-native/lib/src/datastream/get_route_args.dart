@@ -36,15 +36,10 @@ class GetRouteArgs {
   factory GetRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      privateConnectionId: pulumi.Input.fromValue(
-        map['privateConnectionId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      privateConnectionId: pulumi.Input.fromValue(map['privateConnectionId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routeId: pulumi.Input.fromValue(map['routeId'] as String),
     );
   }
 }
+

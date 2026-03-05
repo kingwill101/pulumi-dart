@@ -165,19 +165,15 @@ import 'message_contact_state.dart';
 class MessageContact extends pulumi.CustomResource {
   /// The time when the contact was created.
   late final pulumi.Output<String> createTime;
-
   /// The email address of the contact.
   /// After you specify an email address, you need to call SendEmailVerificationForMessageContact to send verification information to the email address. After the verification is passed, the email address takes effect.
   late final pulumi.Output<String> emailAddress;
-
   /// The name of the contact.
   /// The name must be unique in your resource directory.
   /// The name must be 2 to 12 characters in length and can contain only letters.
   late final pulumi.Output<String> messageContactName;
-
   /// The types of messages received by the contact.
   late final pulumi.Output<List<String>> messageTypes;
-
   /// The mobile phone number of the contact.
   ///
   /// Specify the mobile phone number in the `-` format.
@@ -186,10 +182,8 @@ class MessageContact extends pulumi.CustomResource {
   ///
   /// After you specify a mobile phone number, you need to call SendPhoneVerificationForMessageContact to send verification information to the mobile phone number. After the verification is passed, the mobile phone number takes effect.
   late final pulumi.Output<String?> phoneNumber;
-
   /// The status of the contact.
   late final pulumi.Output<String> status;
-
   /// The job title of the contact.Valid values:
   /// - FinanceDirector
   /// - TechnicalDirector
@@ -208,11 +202,11 @@ class MessageContact extends pulumi.CustomResource {
     MessageContactArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/messageContact:MessageContact',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/messageContact:MessageContact',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     emailAddress = registerOutput<String>('emailAddress');
     messageContactName = registerOutput<String>('messageContactName');
@@ -240,11 +234,11 @@ class MessageContact extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/messageContact:MessageContact',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/messageContact:MessageContact',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     emailAddress = registerOutput<String>('emailAddress');
     messageContactName = registerOutput<String>('messageContactName');

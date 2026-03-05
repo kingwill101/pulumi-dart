@@ -128,7 +128,6 @@ import 'meta_tag_state.dart';
 class MetaTag extends pulumi.CustomResource {
   /// The key of the tag meta tag. key must be 1 to 128 characters in length.
   late final pulumi.Output<String> key;
-
   /// The values of the tag meta tag.
   late final pulumi.Output<List<String>> values;
 
@@ -141,11 +140,11 @@ class MetaTag extends pulumi.CustomResource {
     MetaTagArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:tag/metaTag:MetaTag',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:tag/metaTag:MetaTag',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     key = registerOutput<String>('key');
     values = registerOutput<List<String>>('values');
   }
@@ -168,11 +167,11 @@ class MetaTag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:tag/metaTag:MetaTag',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:tag/metaTag:MetaTag',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     key = registerOutput<String>('key');
     values = registerOutput<List<String>>('values');
   }

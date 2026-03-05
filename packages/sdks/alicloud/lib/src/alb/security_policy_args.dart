@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityPolicyArgs {
   /// The supported cipher suites, which are determined by the TLS protocol version.The specified cipher suites must be supported by at least one TLS protocol version that you select.
   final pulumi.Input<List<String>> ciphers;
-
   /// The dry run.
   final pulumi.Input<bool>? dryRun;
-
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
-
   /// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
   final pulumi.Input<String> securityPolicyName;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
   final pulumi.Input<List<String>> tlsVersions;
 
@@ -55,29 +50,12 @@ class SecurityPolicyArgs {
   factory SecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyArgs(
       ciphers: pulumi.Input.fromValue((map['ciphers'] as List).cast<String>()),
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securityPolicyName: pulumi.Input.fromValue(
-        map['securityPolicyName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tlsVersions: pulumi.Input.fromValue(
-        (map['tlsVersions'] as List).cast<String>(),
-      ),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityPolicyName: pulumi.Input.fromValue(map['securityPolicyName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tlsVersions: pulumi.Input.fromValue((map['tlsVersions'] as List).cast<String>()),
     );
   }
 }
+

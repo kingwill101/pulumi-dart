@@ -15,3 +15,4 @@ enum SubnetworkIpv6AccessType {
     throw ArgumentError('Unknown SubnetworkIpv6AccessType value: $value');
   }
 }
+

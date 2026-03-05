@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDscpConfigurationArgs {
   /// The name of the resource.
   final pulumi.Input<String> dscpConfigurationName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetDscpConfigurationArgs {
 
   factory GetDscpConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetDscpConfigurationArgs(
-      dscpConfigurationName: pulumi.Input.fromValue(
-        map['dscpConfigurationName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      dscpConfigurationName: pulumi.Input.fromValue(map['dscpConfigurationName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

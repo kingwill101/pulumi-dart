@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualNetworkGatewayBgpPeerStatusArgs {
   /// The IP address of the peer to retrieve the status of.
   final pulumi.Input<String>? peer;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the virtual network gateway.
   final pulumi.Input<String> virtualNetworkGatewayName;
 
@@ -34,21 +32,12 @@ class GetVirtualNetworkGatewayBgpPeerStatusArgs {
     };
   }
 
-  factory GetVirtualNetworkGatewayBgpPeerStatusArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualNetworkGatewayBgpPeerStatusArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayBgpPeerStatusArgs(
-      peer: (() {
-        final guardedValue = map['peer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualNetworkGatewayName: pulumi.Input.fromValue(
-        map['virtualNetworkGatewayName'] as String,
-      ),
+      peer: (() { final guardedValue = map['peer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualNetworkGatewayName: pulumi.Input.fromValue(map['virtualNetworkGatewayName'] as String),
     );
   }
 }
+

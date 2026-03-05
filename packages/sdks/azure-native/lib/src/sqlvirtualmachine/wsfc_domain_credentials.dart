@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WsfcDomainCredentials {
   /// Cluster bootstrap account password.
   final pulumi.Input<String>? clusterBootstrapAccountPassword;
-
   /// Cluster operator account password.
   final pulumi.Input<String>? clusterOperatorAccountPassword;
-
   /// SQL service account password.
   final pulumi.Input<String>? sqlServiceAccountPassword;
 
@@ -33,21 +31,10 @@ class WsfcDomainCredentials {
 
   factory WsfcDomainCredentials.fromMap(Map<String, dynamic> map) {
     return WsfcDomainCredentials(
-      clusterBootstrapAccountPassword: (() {
-        final guardedValue = map['clusterBootstrapAccountPassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clusterOperatorAccountPassword: (() {
-        final guardedValue = map['clusterOperatorAccountPassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sqlServiceAccountPassword: (() {
-        final guardedValue = map['sqlServiceAccountPassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clusterBootstrapAccountPassword: (() { final guardedValue = map['clusterBootstrapAccountPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterOperatorAccountPassword: (() { final guardedValue = map['clusterOperatorAccountPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sqlServiceAccountPassword: (() { final guardedValue = map['sqlServiceAccountPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

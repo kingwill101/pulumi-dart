@@ -14,16 +14,15 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigResp
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'userEmails': userEmails};
+    return <String, dynamic>{
+      'userEmails': userEmails,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigResponse(
-      userEmails: pulumi.Input.fromValue(
-        (map['userEmails'] as List).cast<String>(),
-      ),
+      userEmails: pulumi.Input.fromValue((map['userEmails'] as List).cast<String>()),
     );
   }
 }
+

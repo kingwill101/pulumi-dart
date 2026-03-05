@@ -716,92 +716,62 @@ import 'system_data_response.dart';
 class Macc extends pulumi.CustomResource {
   /// Setting this to true means multi-entity.
   late final pulumi.Output<bool?> allowContributors;
-
   /// Setting this to 'Enable' enables automatic shortfall charging when commitment is not met.
   late final pulumi.Output<String?> automaticShortfall;
-
   /// Optional field to record suppression reason for automatic shortfall.
-  late final pulumi.Output<AutomaticShortfallSuppressReasonResponse?>
-  automaticShortfallSuppressReason;
-
+  late final pulumi.Output<AutomaticShortfallSuppressReasonResponse?> automaticShortfallSuppressReason;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Fully-qualified identifier of the billing account where the MACC is applied. Present only for Enterprise Agreement customers. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}
   late final pulumi.Output<String?> billingAccountResourceId;
-
   /// Commitment towards the benefit.
   late final pulumi.Output<CommitmentResponse?> commitment;
-
   /// Display name
   late final pulumi.Output<String?> displayName;
-
   /// Must be end of month. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
   late final pulumi.Output<String?> endAt;
-
   /// Represents type of the object being operated on. Possible values are primary or contributor.
   late final pulumi.Output<String> entityType;
-
   /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> etag;
-
   /// Managed service identity (system assigned and/or user assigned identities)
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
   late final pulumi.Output<String?> managedBy;
-
   /// List of milestones associated with this MACC.
   late final pulumi.Output<List<Map<String, dynamic>>?> milestones;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Plan for the resource.
   late final pulumi.Output<PlanResponse?> plan;
-
   /// Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}.
   late final pulumi.Output<String?> primaryBillingAccountResourceId;
-
   /// Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}.
   late final pulumi.Output<String?> primaryResourceId;
-
   /// Represents catalog UPN.
   late final pulumi.Output<String?> productCode;
-
   /// Provisioning state of MACC as assigned by RPaaS. This indicates the last operation's status. For all practical purposes, this can be ignored. For current status of MACC resource, refer to MaccStatus.
   late final pulumi.Output<String> provisioningState;
-
   /// This is the resource identifier of either the primary MACC or the contributor. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}.
   late final pulumi.Output<String?> resourceId;
-
   /// MACC shortfall
   late final pulumi.Output<ShortfallResponse?> shortfall;
-
   /// The resource model definition representing SKU
   late final pulumi.Output<SkuResponse?> sku;
-
   /// Must be start of month. Timestamp must be in the ISO date format YYYY-MM-DDT00:00:00Z.
   late final pulumi.Output<String?> startAt;
-
   /// Represents the current status of the MACC.
   late final pulumi.Output<String?> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC.
   late final pulumi.Output<String?> systemId;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -809,108 +779,43 @@ class Macc extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Macc]. {@macro pulumi_billingbenefits_macc_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Macc(String name, {MaccArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:billingbenefits:Macc',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Macc(
+    String name, {
+    MaccArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:billingbenefits:Macc',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowContributors = registerOutput<bool?>('allowContributors');
     automaticShortfall = registerOutput<String?>('automaticShortfall');
-    automaticShortfallSuppressReason =
-        registerOutput<AutomaticShortfallSuppressReasonResponse?>(
-          'automaticShortfallSuppressReason',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AutomaticShortfallSuppressReasonResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    automaticShortfallSuppressReason = registerOutput<AutomaticShortfallSuppressReasonResponse?>('automaticShortfallSuppressReason', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomaticShortfallSuppressReasonResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    billingAccountResourceId = registerOutput<String?>(
-      'billingAccountResourceId',
-    );
-    commitment = registerOutput<CommitmentResponse?>(
-      'commitment',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CommitmentResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    billingAccountResourceId = registerOutput<String?>('billingAccountResourceId');
+    commitment = registerOutput<CommitmentResponse?>('commitment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CommitmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');
     endAt = registerOutput<String?>('endAt');
     entityType = registerOutput<String>('entityType');
     etag = registerOutput<String>('etag');
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     managedBy = registerOutput<String?>('managedBy');
     milestones = registerOutput<List<Map<String, dynamic>>?>('milestones');
     this.name = registerOutput<String>('name');
-    plan = registerOutput<PlanResponse?>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    primaryBillingAccountResourceId = registerOutput<String?>(
-      'primaryBillingAccountResourceId',
-    );
+    plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    primaryBillingAccountResourceId = registerOutput<String?>('primaryBillingAccountResourceId');
     primaryResourceId = registerOutput<String?>('primaryResourceId');
     productCode = registerOutput<String?>('productCode');
     provisioningState = registerOutput<String>('provisioningState');
     resourceId = registerOutput<String?>('resourceId');
-    shortfall = registerOutput<ShortfallResponse?>(
-      'shortfall',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ShortfallResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    shortfall = registerOutput<ShortfallResponse?>('shortfall', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ShortfallResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startAt = registerOutput<String?>('startAt');
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemId = registerOutput<String?>('systemId');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

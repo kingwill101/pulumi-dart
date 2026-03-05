@@ -7,14 +7,11 @@ import 'fault_simulation_constraints_response.dart';
 class ZoneFaultSimulationContentResponse {
   /// Constraints for Fault Simulation action.
   final pulumi.Input<FaultSimulationConstraintsResponse>? constraints;
-
   /// The kind of fault simulation.
   /// Expected value is 'Zone'.
   final pulumi.Input<String> faultKind;
-
   /// Force the action to go through without any check on the cluster.
   final pulumi.Input<bool>? force;
-
   /// Indicates the zones of the fault simulation.
   final pulumi.Input<List<String>>? zones;
 
@@ -32,11 +29,7 @@ class ZoneFaultSimulationContentResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'constraints':
-          ?pulumi.Input.mapOptionalInputValue<
-            FaultSimulationConstraintsResponse,
-            Map<String, dynamic>
-          >(constraints, (value) => value.toMap()),
+      'constraints': ?pulumi.Input.mapOptionalInputValue<FaultSimulationConstraintsResponse, Map<String, dynamic>>(constraints, (value) => value.toMap()),
       'faultKind': faultKind,
       'force': ?force,
       'zones': ?zones,
@@ -45,26 +38,11 @@ class ZoneFaultSimulationContentResponse {
 
   factory ZoneFaultSimulationContentResponse.fromMap(Map<String, dynamic> map) {
     return ZoneFaultSimulationContentResponse(
-      constraints: (() {
-        final guardedValue = map['constraints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FaultSimulationConstraintsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      constraints: (() { final guardedValue = map['constraints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FaultSimulationConstraintsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       faultKind: pulumi.Input.fromValue(map['faultKind'] as String),
-      force: (() {
-        final guardedValue = map['force'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      zones: (() {
-        final guardedValue = map['zones'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      force: (() { final guardedValue = map['force']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

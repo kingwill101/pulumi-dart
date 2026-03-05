@@ -191,33 +191,25 @@ import 'ipam_ipam_scope_state.dart';
 class IpamIpamScope extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// The id of the Ipam instance.
   late final pulumi.Output<String> ipamId;
-
   /// The description of the IPAM's scope of action.
   /// It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
   late final pulumi.Output<String?> ipamScopeDescription;
-
   /// The name of the resource.
   late final pulumi.Output<String?> ipamScopeName;
-
   /// IPAM scope of action type:
   /// `private`.
   ///
   ///
   /// &gt; **NOTE:**  Currently, only the role scope of the private network is supported.
   late final pulumi.Output<String?> ipamScopeType;
-
   /// The region ID of the resource.
   late final pulumi.Output<String> regionId;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -230,11 +222,11 @@ class IpamIpamScope extends pulumi.CustomResource {
     IpamIpamScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipamIpamScope:IpamIpamScope',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/ipamIpamScope:IpamIpamScope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     ipamId = registerOutput<String>('ipamId');
     ipamScopeDescription = registerOutput<String?>('ipamScopeDescription');
@@ -264,11 +256,11 @@ class IpamIpamScope extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipamIpamScope:IpamIpamScope',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/ipamIpamScope:IpamIpamScope',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     ipamId = registerOutput<String>('ipamId');
     ipamScopeDescription = registerOutput<String?>('ipamScopeDescription');

@@ -32,14 +32,9 @@ class GetServerTlsPolicyArgs {
   factory GetServerTlsPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServerTlsPolicyArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverTlsPolicyId: pulumi.Input.fromValue(
-        map['serverTlsPolicyId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverTlsPolicyId: pulumi.Input.fromValue(map['serverTlsPolicyId'] as String),
     );
   }
 }
+

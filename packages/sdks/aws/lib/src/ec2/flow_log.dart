@@ -1611,57 +1611,40 @@ import 'flow_log_state.dart';
 class FlowLog extends pulumi.CustomResource {
   /// ARN of the Flow Log.
   late final pulumi.Output<String> arn;
-
   /// ARN of the IAM role in the destination account used for cross-account delivery of flow logs.
   late final pulumi.Output<String?> deliverCrossAccountRole;
-
   /// Describes the destination options for a flow log. More details below.
   late final pulumi.Output<FlowLogDestinationOptions?> destinationOptions;
-
   /// Elastic Network Interface ID to attach to.
   late final pulumi.Output<String?> eniId;
-
   /// ARN of the IAM role used to post flow logs. Corresponds to `DeliverLogsPermissionArn` in the [AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFlowLogs.html).
   late final pulumi.Output<String?> iamRoleArn;
-
   /// ARN of the logging destination.
   late final pulumi.Output<String> logDestination;
-
   /// Logging destination type. Valid values: `cloud-watch-logs`, `s3`, `kinesis-data-firehose`. Default: `cloud-watch-logs`.
   late final pulumi.Output<String?> logDestinationType;
-
   /// The fields to include in the flow log record. Accepted format example: `"$${interface-id} $${srcaddr} $${dstaddr} $${srcport} $${dstport}"`.
   late final pulumi.Output<String> logFormat;
-
   /// The maximum interval of time during which a flow of packets is captured and aggregated into a flow log record.
   /// Valid Values: `60` seconds (1 minute) or `600` seconds (10 minutes). Default: `600`.
   /// When `transit_gateway_id` or `transit_gateway_attachment_id` is specified, `max_aggregation_interval` *must* be 60 seconds (1 minute).
   late final pulumi.Output<int?> maxAggregationInterval;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Regional NAT Gateway ID to attach to.
   late final pulumi.Output<String?> regionalNatGatewayId;
-
   /// Subnet ID to attach to.
   late final pulumi.Output<String?> subnetId;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The type of traffic to capture. Valid values: `ACCEPT`,`REJECT`, `ALL`. Required if `eni_id`, `regional_nat_gateway_id`, `subnet_id`, or `vpc_id` is specified.
   late final pulumi.Output<String?> trafficType;
-
   /// Transit Gateway Attachment ID to attach to.
   late final pulumi.Output<String?> transitGatewayAttachmentId;
-
   /// Transit Gateway ID to attach to.
   late final pulumi.Output<String?> transitGatewayId;
-
   /// VPC ID to attach to.
   ///
   /// &gt; **NOTE:** One of `eni_id`, `regional_nat_gateway_id`, `subnet_id`, `transit_gateway_id`, `transit_gateway_attachment_id`, or `vpc_id` must be specified.
@@ -1676,25 +1659,14 @@ class FlowLog extends pulumi.CustomResource {
     FlowLogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/flowLog:FlowLog',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/flowLog:FlowLog',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    deliverCrossAccountRole = registerOutput<String?>(
-      'deliverCrossAccountRole',
-    );
-    destinationOptions = registerOutput<FlowLogDestinationOptions?>(
-      'destinationOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlowLogDestinationOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deliverCrossAccountRole = registerOutput<String?>('deliverCrossAccountRole');
+    destinationOptions = registerOutput<FlowLogDestinationOptions?>('destinationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowLogDestinationOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eniId = registerOutput<String?>('eniId');
     iamRoleArn = registerOutput<String?>('iamRoleArn');
     logDestination = registerOutput<String>('logDestination');
@@ -1707,9 +1679,7 @@ class FlowLog extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     trafficType = registerOutput<String?>('trafficType');
-    transitGatewayAttachmentId = registerOutput<String?>(
-      'transitGatewayAttachmentId',
-    );
+    transitGatewayAttachmentId = registerOutput<String?>('transitGatewayAttachmentId');
     transitGatewayId = registerOutput<String?>('transitGatewayId');
     vpcId = registerOutput<String?>('vpcId');
   }
@@ -1732,25 +1702,14 @@ class FlowLog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/flowLog:FlowLog',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/flowLog:FlowLog',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    deliverCrossAccountRole = registerOutput<String?>(
-      'deliverCrossAccountRole',
-    );
-    destinationOptions = registerOutput<FlowLogDestinationOptions?>(
-      'destinationOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FlowLogDestinationOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deliverCrossAccountRole = registerOutput<String?>('deliverCrossAccountRole');
+    destinationOptions = registerOutput<FlowLogDestinationOptions?>('destinationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowLogDestinationOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eniId = registerOutput<String?>('eniId');
     iamRoleArn = registerOutput<String?>('iamRoleArn');
     logDestination = registerOutput<String>('logDestination');
@@ -1763,9 +1722,7 @@ class FlowLog extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     trafficType = registerOutput<String?>('trafficType');
-    transitGatewayAttachmentId = registerOutput<String?>(
-      'transitGatewayAttachmentId',
-    );
+    transitGatewayAttachmentId = registerOutput<String?>('transitGatewayAttachmentId');
     transitGatewayId = registerOutput<String?>('transitGatewayId');
     vpcId = registerOutput<String?>('vpcId');
   }

@@ -14,3 +14,4 @@ enum EncryptionIdentityType {
     throw ArgumentError('Unknown EncryptionIdentityType value: $value');
   }
 }
+

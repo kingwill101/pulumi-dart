@@ -15,8 +15,7 @@ enum IndividualOutcomeOutcomeSummary {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown IndividualOutcomeOutcomeSummary value: $value',
-    );
+    throw ArgumentError('Unknown IndividualOutcomeOutcomeSummary value: $value');
   }
 }
+

@@ -9,19 +9,20 @@ class EntityParentGroupInfoResponse {
 
   /// Creates a new [EntityParentGroupInfoResponse].
   /// [id] The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
-  EntityParentGroupInfoResponse({this.id});
+  EntityParentGroupInfoResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory EntityParentGroupInfoResponse.fromMap(Map<String, dynamic> map) {
     return EntityParentGroupInfoResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

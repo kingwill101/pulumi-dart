@@ -12,8 +12,7 @@ enum AutomationAccountAuthenticationType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AutomationAccountAuthenticationType value: $value',
-    );
+    throw ArgumentError('Unknown AutomationAccountAuthenticationType value: $value');
   }
 }
+

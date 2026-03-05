@@ -10,13 +10,10 @@ import 'entity_properties.dart';
 class EntityArgs {
   /// Name of the entity. Must be unique within a health model.
   final pulumi.Input<String>? entityName;
-
   /// Name of health model resource
   final pulumi.Input<String> healthModelName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<EntityProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,35 +33,18 @@ class EntityArgs {
     return <String, dynamic>{
       'entityName': ?entityName,
       'healthModelName': healthModelName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            EntityProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<EntityProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory EntityArgs.fromMap(Map<String, dynamic> map) {
     return EntityArgs(
-      entityName: (() {
-        final guardedValue = map['entityName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      entityName: (() { final guardedValue = map['entityName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       healthModelName: pulumi.Input.fromValue(map['healthModelName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EntityProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntityProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

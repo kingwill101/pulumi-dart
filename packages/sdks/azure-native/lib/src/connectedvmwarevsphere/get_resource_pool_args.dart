@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourcePoolArgs {
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the resourcePool.
   final pulumi.Input<String> resourcePoolName;
 
@@ -30,12 +29,9 @@ class GetResourcePoolArgs {
 
   factory GetResourcePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetResourcePoolArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      resourcePoolName: pulumi.Input.fromValue(
-        map['resourcePoolName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      resourcePoolName: pulumi.Input.fromValue(map['resourcePoolName'] as String),
     );
   }
 }
+

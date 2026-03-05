@@ -433,25 +433,18 @@ import 'backup_instance_disk_state.dart';
 class BackupInstanceDisk extends pulumi.CustomResource {
   /// The ID of the Backup Policy.
   late final pulumi.Output<String> backupPolicyId;
-
   /// The ID of the source Disk. Changing this forces a new Backup Instance Disk to be created.
   late final pulumi.Output<String> diskId;
-
   /// The Azure Region where the Backup Instance Disk should exist. Changing this forces a new Backup Instance Disk to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Backup Instance Disk. Changing this forces a new Backup Instance Disk to be created.
   late final pulumi.Output<String> name;
-
   /// The protection state of the Backup Instance Disk.
   late final pulumi.Output<String> protectionState;
-
   /// The name of the Resource Group where snapshots are stored. Changing this forces a new Backup Instance Disk to be created.
   late final pulumi.Output<String> snapshotResourceGroupName;
-
   /// The subscription ID of the Resource Group where snapshots are stored. The default value is the subscription ID of the Backup Vault. Changing this forces a new Backup Instance Disk to be created.
   late final pulumi.Output<String?> snapshotSubscriptionId;
-
   /// The ID of the Backup Vault within which the Backup Instance Disk should exist. Changing this forces a new Backup Instance Disk to be created.
   late final pulumi.Output<String> vaultId;
 
@@ -464,19 +457,17 @@ class BackupInstanceDisk extends pulumi.CustomResource {
     BackupInstanceDiskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupInstanceDisk:BackupInstanceDisk',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:dataprotection/backupInstanceDisk:BackupInstanceDisk',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     diskId = registerOutput<String>('diskId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     protectionState = registerOutput<String>('protectionState');
-    snapshotResourceGroupName = registerOutput<String>(
-      'snapshotResourceGroupName',
-    );
+    snapshotResourceGroupName = registerOutput<String>('snapshotResourceGroupName');
     snapshotSubscriptionId = registerOutput<String?>('snapshotSubscriptionId');
     vaultId = registerOutput<String>('vaultId');
   }
@@ -499,19 +490,17 @@ class BackupInstanceDisk extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupInstanceDisk:BackupInstanceDisk',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:dataprotection/backupInstanceDisk:BackupInstanceDisk',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     diskId = registerOutput<String>('diskId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     protectionState = registerOutput<String>('protectionState');
-    snapshotResourceGroupName = registerOutput<String>(
-      'snapshotResourceGroupName',
-    );
+    snapshotResourceGroupName = registerOutput<String>('snapshotResourceGroupName');
     snapshotSubscriptionId = registerOutput<String?>('snapshotSubscriptionId');
     vaultId = registerOutput<String>('vaultId');
   }

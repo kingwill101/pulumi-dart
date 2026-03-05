@@ -14,3 +14,4 @@ enum ApplicationSourceResourceType {
     throw ArgumentError('Unknown ApplicationSourceResourceType value: $value');
   }
 }
+

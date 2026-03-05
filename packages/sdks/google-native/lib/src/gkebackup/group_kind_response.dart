@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupKindResponse {
   /// Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
   final pulumi.Input<String> resourceGroup;
-
   /// Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
   final pulumi.Input<String> resourceKind;
 
   /// Creates a new [GroupKindResponse].
   /// [resourceGroup] Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
   /// [resourceKind] Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
-  GroupKindResponse({required this.resourceGroup, required this.resourceKind});
+  GroupKindResponse({
+    required this.resourceGroup,
+    required this.resourceKind,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +31,4 @@ class GroupKindResponse {
     );
   }
 }
+

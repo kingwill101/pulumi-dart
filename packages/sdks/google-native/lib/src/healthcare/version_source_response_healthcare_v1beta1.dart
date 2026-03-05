@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VersionSourceResponseHealthcareV1beta1 {
   /// The field to extract from the MSH segment. For example, "3.1" or "18[1].1".
   final pulumi.Input<String> mshField;
-
   /// The value to match with the field. For example, "My Application Name" or "2.3".
   final pulumi.Input<String> value;
 
@@ -19,15 +18,17 @@ class VersionSourceResponseHealthcareV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mshField': mshField, 'value': value};
+    return <String, dynamic>{
+      'mshField': mshField,
+      'value': value,
+    };
   }
 
-  factory VersionSourceResponseHealthcareV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VersionSourceResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return VersionSourceResponseHealthcareV1beta1(
       mshField: pulumi.Input.fromValue(map['mshField'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

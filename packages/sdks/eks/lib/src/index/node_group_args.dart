@@ -22,24 +22,20 @@ class NodeGroupArgs {
   /// See for more details:
   /// - https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html.
   final pulumi.Input<String>? amiId;
-
   /// The AMI Type to use for the worker nodes.
   ///
   /// Only applicable when setting an AMI ID that is of type `arm64`.
   ///
   /// Note: `amiType` and `gpu` are mutually exclusive.
   final pulumi.Input<String>? amiType;
-
   /// The tags to apply to the NodeGroup's AutoScalingGroup in the CloudFormation Stack.
   ///
   /// Per AWS, all stack-level tags, including automatically created tags, and the `cloudFormationTags` option are propagated to resources that AWS CloudFormation supports, including the AutoScalingGroup. See https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html
   ///
   /// Note: Given the inheritance of auto-generated CF tags and `cloudFormationTags`, you should either supply the tag in `autoScalingGroupTags` or `cloudFormationTags`, but not both.
   final pulumi.Input<Map<String, String>>? autoScalingGroupTags;
-
   /// Additional args to pass directly to `/etc/eks/bootstrap.sh`. For details on available options, see: https://github.com/awslabs/amazon-eks-ami/blob/master/files/bootstrap.sh. Note that the `--apiserver-endpoint`, `--b64-cluster-ca` and `--kubelet-extra-args` flags are included automatically based on other configuration parameters.
   final pulumi.Input<String>? bootstrapExtraArgs;
-
   /// The configuration settings for Bottlerocket OS.
   /// The settings will get merged with the base settings the provider uses to configure Bottlerocket.
   ///
@@ -51,24 +47,18 @@ class NodeGroupArgs {
   ///
   /// For an overview of the available settings, see https://bottlerocket.dev/en/os/1.20.x/api/settings/.
   final pulumi.Input<Map<String, dynamic>>? bottlerocketSettings;
-
   /// The tags to apply to the CloudFormation Stack of the Worker NodeGroup.
   ///
   /// Note: Given the inheritance of auto-generated CF tags and `cloudFormationTags`, you should either supply the tag in `autoScalingGroupTags` or `cloudFormationTags`, but not both.
   final pulumi.Input<Map<String, String>>? cloudFormationTags;
-
   /// The target EKS cluster.
   final pulumi.Input<Cluster> cluster;
-
   /// The ingress rule that gives node group access.
   final pulumi.Input<pulumi_aws_ec2.SecurityGroupRule>? clusterIngressRule;
-
   /// The ID of the ingress rule that gives node group access.
   final pulumi.Input<String>? clusterIngressRuleId;
-
   /// The number of worker nodes that should be running in the cluster. Defaults to 2.
   final pulumi.Input<int>? desiredCapacity;
-
   /// Enables/disables detailed monitoring of the EC2 instances.
   ///
   /// With detailed monitoring, all metrics, including status check metrics, are available in 1-minute intervals.
@@ -77,16 +67,12 @@ class NodeGroupArgs {
   /// Note: You are charged per metric that is sent to CloudWatch. You are not charged for data storage.
   /// For more information, see "Paid tier" and "Example 1 - EC2 Detailed Monitoring" here https://aws.amazon.com/cloudwatch/pricing/.
   final pulumi.Input<bool>? enableDetailedMonitoring;
-
   /// Encrypt the root block device of the nodes in the node group.
   final pulumi.Input<bool>? encryptRootBlockDevice;
-
   /// Extra security groups to attach on all nodes in this worker node group.
   ///
   /// This additional set of security groups captures any user application rules that will be needed for the nodes.
-  final pulumi.Input<List<pulumi_aws_ec2.SecurityGroup>>?
-  extraNodeSecurityGroups;
-
+  final pulumi.Input<List<pulumi_aws_ec2.SecurityGroup>>? extraNodeSecurityGroups;
   /// Use the latest recommended EKS Optimized Linux AMI with GPU support for the worker nodes from the AWS Systems Manager Parameter Store.
   ///
   /// Defaults to false.
@@ -97,57 +83,40 @@ class NodeGroupArgs {
   /// - https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
   /// - https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html
   final pulumi.Input<bool>? gpu;
-
   /// The IAM InstanceProfile to use on the NodeGroup. Properties instanceProfile and instanceProfileName are mutually exclusive.
   final pulumi.Input<pulumi_aws_iam.InstanceProfile>? instanceProfile;
-
   /// The name of the IAM InstanceProfile to use on the NodeGroup. Properties instanceProfile and instanceProfileName are mutually exclusive.
   final pulumi.Input<String>? instanceProfileName;
-
   /// The instance type to use for the cluster's nodes. Defaults to "t3.medium".
   final pulumi.Input<String>? instanceType;
-
   /// Name of the key pair to use for SSH access to worker nodes.
   final pulumi.Input<String>? keyName;
-
   /// Extra args to pass to the Kubelet. Corresponds to the options passed in the `--kubeletExtraArgs` flag to `/etc/eks/bootstrap.sh`. For example, '--port=10251 --address=0.0.0.0'. Note that the `labels` and `taints` properties will be applied to this list (using `--node-labels` and `--register-with-taints` respectively) after to the explicit `kubeletExtraArgs`.
   final pulumi.Input<String>? kubeletExtraArgs;
-
   /// Custom k8s node labels to be attached to each worker node. Adds the given key/value pairs to the `--node-labels` kubelet argument.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The maximum number of worker nodes running in the cluster. Defaults to 2.
   final pulumi.Input<int>? maxSize;
-
   /// The minimum number of worker nodes running in the cluster. Defaults to 1.
   final pulumi.Input<int>? minSize;
-
   /// Whether or not to auto-assign public IP addresses on the EKS worker nodes. If this toggle is set to true, the EKS workers will be auto-assigned public IPs. If false, they will not be auto-assigned public IPs.
   final pulumi.Input<bool>? nodeAssociatePublicIpAddress;
-
   /// Public key material for SSH access to worker nodes. See allowed formats at:
   /// https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
   /// If not provided, no SSH access is enabled on VMs.
   final pulumi.Input<String>? nodePublicKey;
-
   /// Whether the root block device should be deleted on termination of the instance. Defaults to true.
   final pulumi.Input<bool>? nodeRootVolumeDeleteOnTermination;
-
   /// Whether to encrypt a cluster node's root volume. Defaults to false.
   final pulumi.Input<bool>? nodeRootVolumeEncrypted;
-
   /// The amount of provisioned IOPS. This is only valid with a volumeType of 'io1'.
   final pulumi.Input<int>? nodeRootVolumeIops;
-
   /// The size in GiB of a cluster node's root volume. Defaults to 20.
   final pulumi.Input<int>? nodeRootVolumeSize;
-
   /// Provisioned throughput performance in integer MiB/s for a cluster node's root volume. This is only valid with a volumeType of 'gp3'.
   final pulumi.Input<int>? nodeRootVolumeThroughput;
-
   /// Configured EBS type for a cluster node's root volume. Default is 'gp2'. Supported values are 'standard', 'gp2', 'gp3', 'st1', 'sc1', 'io1'.
   final pulumi.Input<String>? nodeRootVolumeType;
-
   /// The security group for the worker node group to communicate with the cluster.
   ///
   /// This security group requires specific inbound and outbound rules.
@@ -157,7 +126,6 @@ class NodeGroupArgs {
   ///
   /// Note: The `nodeSecurityGroup` option and the cluster option`nodeSecurityGroupTags` are mutually exclusive.
   final pulumi.Input<pulumi_aws_ec2.SecurityGroup>? nodeSecurityGroup;
-
   /// The ID of the security group for the worker node group to communicate with the cluster.
   ///
   /// This security group requires specific inbound and outbound rules.
@@ -167,20 +135,16 @@ class NodeGroupArgs {
   ///
   /// Note: The `nodeSecurityGroupId` option and the cluster option `nodeSecurityGroupTags` are mutually exclusive.
   final pulumi.Input<String>? nodeSecurityGroupId;
-
   /// The set of subnets to override and use for the worker node group.
   ///
   /// Setting this option overrides which subnets to use for the worker node group, regardless if the cluster's `subnetIds` is set, or if `publicSubnetIds` and/or `privateSubnetIds` were set.
   final pulumi.Input<List<String>>? nodeSubnetIds;
-
   /// Extra code to run on node startup. This code will run after the AWS EKS bootstrapping code and before the node signals its readiness to the managing CloudFormation stack. This code must be a typical user data script: critically it must begin with an interpreter directive (i.e. a `#!`).
   final pulumi.Input<String>? nodeUserData;
-
   /// User specified code to run on node startup. This code is expected to handle the full AWS EKS bootstrapping code and signal node readiness to the managing CloudFormation stack. This code must be a complete and executable user data script in bash (Linux) or powershell (Windows).
   ///
   /// See for more details: https://docs.aws.amazon.com/eks/latest/userguide/worker.html
   final pulumi.Input<String>? nodeUserDataOverride;
-
   /// Extra nodeadm configuration sections to be added to the nodeadm user data. This can be shell scripts, nodeadm NodeConfig or any other user data compatible script. When configuring additional nodeadm NodeConfig sections, they'll be merged with the base settings the provider sets. You can overwrite base settings or provide additional settings this way.
   /// The base settings the provider sets are:
   /// - cluster.name
@@ -193,19 +157,15 @@ class NodeGroupArgs {
   /// - https://awslabs.github.io/amazon-eks-ami/nodeadm/
   /// - https://awslabs.github.io/amazon-eks-ami/nodeadm/doc/api/
   final pulumi.Input<List<NodeadmOptions>>? nodeadmExtraOptions;
-
   /// The type of OS to use for the node group. Will be used to determine the right EKS optimized AMI to use based on the instance types and gpu configuration.
   /// Valid values are `RECOMMENDED`, `AL2`, `AL2023` and `Bottlerocket`.
   ///
   /// Defaults to the current recommended OS.
   final pulumi.Input<OperatingSystem>? operatingSystem;
-
   /// Bidding price for spot instance. If set, only spot instances will be added as worker node.
   final pulumi.Input<String>? spotPrice;
-
   /// Custom k8s node taints to be attached to each worker node. Adds the given taints to the `--register-with-taints` kubelet argument
   final pulumi.Input<Map<String, Taint>>? taints;
-
   /// Desired Kubernetes master / control plane version. If you do not specify a value, the latest available version is used.
   final pulumi.Input<String>? version;
 
@@ -330,267 +290,57 @@ class NodeGroupArgs {
       'nodeSubnetIds': ?nodeSubnetIds,
       'nodeUserData': ?nodeUserData,
       'nodeUserDataOverride': ?nodeUserDataOverride,
-      'nodeadmExtraOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NodeadmOptions>,
-            List<Map<String, dynamic>>
-          >(
-            nodeadmExtraOptions,
-            (value) =>
-                pulumi.Input.encodeList<NodeadmOptions, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'operatingSystem':
-          ?pulumi.Input.mapOptionalInputValue<OperatingSystem, String>(
-            operatingSystem,
-            (value) => value.wireValue,
-          ),
+      'nodeadmExtraOptions': ?pulumi.Input.mapOptionalInputValue<List<NodeadmOptions>, List<Map<String, dynamic>>>(nodeadmExtraOptions, (value) => pulumi.Input.encodeList<NodeadmOptions, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'operatingSystem': ?pulumi.Input.mapOptionalInputValue<OperatingSystem, String>(operatingSystem, (value) => value.wireValue),
       'spotPrice': ?spotPrice,
-      'taints':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, Taint>,
-            Map<String, Map<String, dynamic>>
-          >(
-            taints,
-            (value) =>
-                pulumi.Input.encodeMapValues<Taint, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'taints': ?pulumi.Input.mapOptionalInputValue<Map<String, Taint>, Map<String, Map<String, dynamic>>>(taints, (value) => pulumi.Input.encodeMapValues<Taint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'version': ?version,
     };
   }
 
   factory NodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupArgs(
-      amiId: (() {
-        final guardedValue = map['amiId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      amiType: (() {
-        final guardedValue = map['amiType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      autoScalingGroupTags: (() {
-        final guardedValue = map['autoScalingGroupTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      bootstrapExtraArgs: (() {
-        final guardedValue = map['bootstrapExtraArgs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bottlerocketSettings: (() {
-        final guardedValue = map['bottlerocketSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      cloudFormationTags: (() {
-        final guardedValue = map['cloudFormationTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      amiId: (() { final guardedValue = map['amiId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      amiType: (() { final guardedValue = map['amiType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      autoScalingGroupTags: (() { final guardedValue = map['autoScalingGroupTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      bootstrapExtraArgs: (() { final guardedValue = map['bootstrapExtraArgs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bottlerocketSettings: (() { final guardedValue = map['bottlerocketSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      cloudFormationTags: (() { final guardedValue = map['cloudFormationTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       cluster: pulumi.Input.fromValue(map['cluster'] as Cluster),
-      clusterIngressRule: (() {
-        final guardedValue = map['clusterIngressRule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          guardedValue as pulumi_aws_ec2.SecurityGroupRule,
-        );
-      })(),
-      clusterIngressRuleId: (() {
-        final guardedValue = map['clusterIngressRuleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      desiredCapacity: (() {
-        final guardedValue = map['desiredCapacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      enableDetailedMonitoring: (() {
-        final guardedValue = map['enableDetailedMonitoring'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      encryptRootBlockDevice: (() {
-        final guardedValue = map['encryptRootBlockDevice'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      extraNodeSecurityGroups: (() {
-        final guardedValue = map['extraNodeSecurityGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as List).cast<pulumi_aws_ec2.SecurityGroup>(),
-        );
-      })(),
-      gpu: (() {
-        final guardedValue = map['gpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      instanceProfile: (() {
-        final guardedValue = map['instanceProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          guardedValue as pulumi_aws_iam.InstanceProfile,
-        );
-      })(),
-      instanceProfileName: (() {
-        final guardedValue = map['instanceProfileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyName: (() {
-        final guardedValue = map['keyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kubeletExtraArgs: (() {
-        final guardedValue = map['kubeletExtraArgs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      maxSize: (() {
-        final guardedValue = map['maxSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minSize: (() {
-        final guardedValue = map['minSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      nodeAssociatePublicIpAddress: (() {
-        final guardedValue = map['nodeAssociatePublicIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      nodePublicKey: (() {
-        final guardedValue = map['nodePublicKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeRootVolumeDeleteOnTermination: (() {
-        final guardedValue = map['nodeRootVolumeDeleteOnTermination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      nodeRootVolumeEncrypted: (() {
-        final guardedValue = map['nodeRootVolumeEncrypted'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      nodeRootVolumeIops: (() {
-        final guardedValue = map['nodeRootVolumeIops'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      nodeRootVolumeSize: (() {
-        final guardedValue = map['nodeRootVolumeSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      nodeRootVolumeThroughput: (() {
-        final guardedValue = map['nodeRootVolumeThroughput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      nodeRootVolumeType: (() {
-        final guardedValue = map['nodeRootVolumeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeSecurityGroup: (() {
-        final guardedValue = map['nodeSecurityGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          guardedValue as pulumi_aws_ec2.SecurityGroup,
-        );
-      })(),
-      nodeSecurityGroupId: (() {
-        final guardedValue = map['nodeSecurityGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeSubnetIds: (() {
-        final guardedValue = map['nodeSubnetIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nodeUserData: (() {
-        final guardedValue = map['nodeUserData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeUserDataOverride: (() {
-        final guardedValue = map['nodeUserDataOverride'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeadmExtraOptions: (() {
-        final guardedValue = map['nodeadmExtraOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NodeadmOptions>(
-            guardedValue,
-            (value) =>
-                NodeadmOptions.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      operatingSystem: (() {
-        final guardedValue = map['operatingSystem'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OperatingSystem.fromValue(guardedValue as String),
-        );
-      })(),
-      spotPrice: (() {
-        final guardedValue = map['spotPrice'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      taints: (() {
-        final guardedValue = map['taints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<Taint>(
-            guardedValue,
-            (value) => Taint.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clusterIngressRule: (() { final guardedValue = map['clusterIngressRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as pulumi_aws_ec2.SecurityGroupRule); })(),
+      clusterIngressRuleId: (() { final guardedValue = map['clusterIngressRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      desiredCapacity: (() { final guardedValue = map['desiredCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      enableDetailedMonitoring: (() { final guardedValue = map['enableDetailedMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      encryptRootBlockDevice: (() { final guardedValue = map['encryptRootBlockDevice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      extraNodeSecurityGroups: (() { final guardedValue = map['extraNodeSecurityGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<pulumi_aws_ec2.SecurityGroup>()); })(),
+      gpu: (() { final guardedValue = map['gpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      instanceProfile: (() { final guardedValue = map['instanceProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as pulumi_aws_iam.InstanceProfile); })(),
+      instanceProfileName: (() { final guardedValue = map['instanceProfileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kubeletExtraArgs: (() { final guardedValue = map['kubeletExtraArgs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeAssociatePublicIpAddress: (() { final guardedValue = map['nodeAssociatePublicIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      nodePublicKey: (() { final guardedValue = map['nodePublicKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeRootVolumeDeleteOnTermination: (() { final guardedValue = map['nodeRootVolumeDeleteOnTermination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      nodeRootVolumeEncrypted: (() { final guardedValue = map['nodeRootVolumeEncrypted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      nodeRootVolumeIops: (() { final guardedValue = map['nodeRootVolumeIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeRootVolumeSize: (() { final guardedValue = map['nodeRootVolumeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeRootVolumeThroughput: (() { final guardedValue = map['nodeRootVolumeThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeRootVolumeType: (() { final guardedValue = map['nodeRootVolumeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeSecurityGroup: (() { final guardedValue = map['nodeSecurityGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as pulumi_aws_ec2.SecurityGroup); })(),
+      nodeSecurityGroupId: (() { final guardedValue = map['nodeSecurityGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeSubnetIds: (() { final guardedValue = map['nodeSubnetIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nodeUserData: (() { final guardedValue = map['nodeUserData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeUserDataOverride: (() { final guardedValue = map['nodeUserDataOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeadmExtraOptions: (() { final guardedValue = map['nodeadmExtraOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NodeadmOptions>(guardedValue, (value) => NodeadmOptions.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      operatingSystem: (() { final guardedValue = map['operatingSystem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OperatingSystem.fromValue(guardedValue as String)); })(),
+      spotPrice: (() { final guardedValue = map['spotPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      taints: (() { final guardedValue = map['taints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<Taint>(guardedValue, (value) => Taint.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

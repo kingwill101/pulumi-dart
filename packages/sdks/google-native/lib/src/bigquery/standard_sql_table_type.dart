@@ -10,39 +10,20 @@ class StandardSqlTableType {
 
   /// Creates a new [StandardSqlTableType].
   /// [columns] The columns in this table type
-  StandardSqlTableType({this.columns});
+  StandardSqlTableType({
+    this.columns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<StandardSqlField>,
-            List<Map<String, dynamic>>
-          >(
-            columns,
-            (value) =>
-                pulumi.Input.encodeList<StandardSqlField, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'columns': ?pulumi.Input.mapOptionalInputValue<List<StandardSqlField>, List<Map<String, dynamic>>>(columns, (value) => pulumi.Input.encodeList<StandardSqlField, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StandardSqlTableType.fromMap(Map<String, dynamic> map) {
     return StandardSqlTableType(
-      columns: (() {
-        final guardedValue = map['columns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<StandardSqlField>(
-            guardedValue,
-            (value) => StandardSqlField.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      columns: (() { final guardedValue = map['columns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StandardSqlField>(guardedValue, (value) => StandardSqlField.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

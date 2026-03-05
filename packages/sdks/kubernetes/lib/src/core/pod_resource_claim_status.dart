@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PodResourceClaimStatus {
   /// Name uniquely identifies this resource claim inside the pod. This must match the name of an entry in pod.spec.resourceClaims, which implies that the string must be a DNS_LABEL.
   final pulumi.Input<String> name;
-
   /// ResourceClaimName is the name of the ResourceClaim that was generated for the Pod in the namespace of the Pod. If this is unset, then generating a ResourceClaim was not necessary. The pod.spec.resourceClaims entry can be ignored in this case.
   final pulumi.Input<String>? resourceClaimName;
 
   /// Creates a new [PodResourceClaimStatus].
   /// [name] Name uniquely identifies this resource claim inside the pod. This must match the name of an entry in pod.spec.resourceClaims, which implies that the string must be a DNS_LABEL.
   /// [resourceClaimName] ResourceClaimName is the name of the ResourceClaim that was generated for the Pod in the namespace of the Pod. If this is unset, then generating a ResourceClaim was not necessary. The pod.spec.resourceClaims entry can be ignored in this case.
-  PodResourceClaimStatus({required this.name, this.resourceClaimName});
+  PodResourceClaimStatus({
+    required this.name,
+    this.resourceClaimName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,11 +27,8 @@ class PodResourceClaimStatus {
   factory PodResourceClaimStatus.fromMap(Map<String, dynamic> map) {
     return PodResourceClaimStatus(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceClaimName: (() {
-        final guardedValue = map['resourceClaimName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceClaimName: (() { final guardedValue = map['resourceClaimName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

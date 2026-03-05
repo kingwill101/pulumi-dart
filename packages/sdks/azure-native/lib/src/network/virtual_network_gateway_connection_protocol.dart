@@ -12,8 +12,7 @@ enum VirtualNetworkGatewayConnectionProtocol {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown VirtualNetworkGatewayConnectionProtocol value: $value',
-    );
+    throw ArgumentError('Unknown VirtualNetworkGatewayConnectionProtocol value: $value');
   }
 }
+

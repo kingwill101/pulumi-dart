@@ -9,31 +9,20 @@ class DataAccessOptionsGameservicesV1beta {
 
   /// Creates a new [DataAccessOptionsGameservicesV1beta].
   /// [logMode] Optional.
-  DataAccessOptionsGameservicesV1beta({this.logMode});
+  DataAccessOptionsGameservicesV1beta({
+    this.logMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logMode':
-          ?pulumi.Input.mapOptionalInputValue<
-            DataAccessOptionsLogModeGameservicesV1beta,
-            String
-          >(logMode, (value) => value.wireValue),
+      'logMode': ?pulumi.Input.mapOptionalInputValue<DataAccessOptionsLogModeGameservicesV1beta, String>(logMode, (value) => value.wireValue),
     };
   }
 
-  factory DataAccessOptionsGameservicesV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataAccessOptionsGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return DataAccessOptionsGameservicesV1beta(
-      logMode: (() {
-        final guardedValue = map['logMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DataAccessOptionsLogModeGameservicesV1beta.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      logMode: (() { final guardedValue = map['logMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataAccessOptionsLogModeGameservicesV1beta.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

@@ -6,33 +6,24 @@ import 'system_data_response.dart';
 class GetSchemaRegistryResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Exact time the Schema Group was created.
   final String createdAtUtc;
-
   /// The ETag value.
   final String eTag;
-
   /// dictionary object for SchemaGroup group properties
   final Map<String, String>? groupProperties;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
   final String? schemaCompatibility;
   final String? schemaType;
-
   /// The system meta data relating to this resource.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   final String type;
-
   /// Exact time the Schema Group was updated
   final String updatedAtUtc;
 
@@ -86,29 +77,16 @@ class GetSchemaRegistryResult {
       azureApiVersion: map['azureApiVersion'] as String,
       createdAtUtc: map['createdAtUtc'] as String,
       eTag: map['eTag'] as String,
-      groupProperties: (() {
-        final guardedValue = map['groupProperties'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      groupProperties: (() { final guardedValue = map['groupProperties']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      schemaCompatibility: (() {
-        final guardedValue = map['schemaCompatibility'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      schemaType: (() {
-        final guardedValue = map['schemaType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      schemaCompatibility: (() { final guardedValue = map['schemaCompatibility']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      schemaType: (() { final guardedValue = map['schemaType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       updatedAtUtc: map['updatedAtUtc'] as String,
     );
   }
 }
+

@@ -12,10 +12,14 @@ class GetTenantTemplateDeploymentArgs {
 
   /// Creates a new [GetTenantTemplateDeploymentArgs].
   /// [name] The name of this Tenant Template Deployment.
-  GetTenantTemplateDeploymentArgs({required this.name});
+  GetTenantTemplateDeploymentArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetTenantTemplateDeploymentArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetTenantTemplateDeploymentArgs {
     );
   }
 }
+

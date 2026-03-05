@@ -18,15 +18,10 @@ class AllowedImagesSettingsImageCriterionDeprecationTimeCondition {
     };
   }
 
-  factory AllowedImagesSettingsImageCriterionDeprecationTimeCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AllowedImagesSettingsImageCriterionDeprecationTimeCondition.fromMap(Map<String, dynamic> map) {
     return AllowedImagesSettingsImageCriterionDeprecationTimeCondition(
-      maximumDaysSinceDeprecated: (() {
-        final guardedValue = map['maximumDaysSinceDeprecated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maximumDaysSinceDeprecated: (() { final guardedValue = map['maximumDaysSinceDeprecated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

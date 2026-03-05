@@ -9,17 +9,20 @@ class MembershipRoleRestrictionEvaluationResponse {
 
   /// Creates a new [MembershipRoleRestrictionEvaluationResponse].
   /// [state] The current state of the restriction
-  MembershipRoleRestrictionEvaluationResponse({required this.state});
+  MembershipRoleRestrictionEvaluationResponse({
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': state};
+    return <String, dynamic>{
+      'state': state,
+    };
   }
 
-  factory MembershipRoleRestrictionEvaluationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MembershipRoleRestrictionEvaluationResponse.fromMap(Map<String, dynamic> map) {
     return MembershipRoleRestrictionEvaluationResponse(
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

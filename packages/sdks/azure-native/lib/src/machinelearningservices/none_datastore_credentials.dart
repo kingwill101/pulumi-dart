@@ -10,10 +10,14 @@ class NoneDatastoreCredentials {
 
   /// Creates a new [NoneDatastoreCredentials].
   /// [credentialsType] Enum to determine the datastore credentials type.
-  NoneDatastoreCredentials({required this.credentialsType});
+  NoneDatastoreCredentials({
+    required this.credentialsType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'credentialsType': credentialsType};
+    return <String, dynamic>{
+      'credentialsType': credentialsType,
+    };
   }
 
   factory NoneDatastoreCredentials.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class NoneDatastoreCredentials {
     );
   }
 }
+

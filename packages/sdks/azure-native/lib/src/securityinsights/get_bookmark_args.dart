@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBookmarkArgs {
   /// Bookmark ID
   final pulumi.Input<String> bookmarkId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -37,10 +35,9 @@ class GetBookmarkArgs {
   factory GetBookmarkArgs.fromMap(Map<String, dynamic> map) {
     return GetBookmarkArgs(
       bookmarkId: pulumi.Input.fromValue(map['bookmarkId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

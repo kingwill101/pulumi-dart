@@ -442,57 +442,40 @@ import 'hub_state.dart';
 class Hub extends pulumi.CustomResource {
   /// The Application Insights ID that should be used by this AI Foundry Hub.
   late final pulumi.Output<String?> applicationInsightsId;
-
   /// The Container Registry ID that should be used by this AI Foundry Hub.
   late final pulumi.Output<String?> containerRegistryId;
-
   /// The description of this AI Foundry Hub.
   late final pulumi.Output<String?> description;
-
   /// The URL for the discovery service to identify regional endpoints for AI Foundry Hub services.
   late final pulumi.Output<String> discoveryUrl;
-
   /// An `encryption` block as defined below. Changing this forces a new AI Foundry Hub to be created.
   late final pulumi.Output<HubEncryption?> encryption;
-
   /// The display name of this AI Foundry Hub.
   late final pulumi.Output<String?> friendlyName;
-
   /// Whether High Business Impact (HBI) should be enabled or not. Enabling this setting will reduce diagnostic data collected by the service. Changing this forces a new AI Foundry Hub to be created. Defaults to `false`.
   ///
   /// &gt; **Note:** `high_business_impact_enabled` will be enabled by default when creating an AI Foundry Hub with `encryption` enabled.
   late final pulumi.Output<bool> highBusinessImpactEnabled;
-
   /// A `identity` block as defined below.
   late final pulumi.Output<HubIdentity> identity;
-
   /// The Key Vault ID that should be used by this AI Foundry Hub. Changing this forces a new AI Foundry Hub to be created.
   late final pulumi.Output<String> keyVaultId;
-
   /// The Azure Region where the AI Foundry Hub should exist. Changing this forces a new AI Foundry Hub to be created.
   late final pulumi.Output<String> location;
-
   /// A `managed_network` block as defined below.
   late final pulumi.Output<HubManagedNetwork> managedNetwork;
-
   /// The name which should be used for this AI Foundry Hub. Changing this forces a new AI Foundry Hub to be created.
   late final pulumi.Output<String> name;
-
   /// The user assigned identity ID that represents the AI Foundry Hub identity. This must be set when enabling encryption with a user assigned identity.
   late final pulumi.Output<String?> primaryUserAssignedIdentity;
-
   /// Whether public network access for this AI Service Hub should be enabled. Possible values include `Enabled` and `Disabled`. Defaults to `Enabled`.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// The name of the Resource Group where the AI Foundry Hub should exist. Changing this forces a new AI Foundry Hub to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The Storage Account ID that should be used by this AI Foundry Hub. Changing this forces a new AI Foundry Hub to be created.
   late final pulumi.Output<String> storageAccountId;
-
   /// A mapping of tags which should be assigned to the AI Foundry Hub.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The immutable ID associated with this AI Foundry Hub.
   late final pulumi.Output<String> workspaceId;
 
@@ -500,57 +483,29 @@ class Hub extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Hub]. {@macro pulumi_aifoundry_hub_hub_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Hub(String name, {HubArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:aifoundry/hub:Hub',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Hub(
+    String name, {
+    HubArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:aifoundry/hub:Hub',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationInsightsId = registerOutput<String?>('applicationInsightsId');
     containerRegistryId = registerOutput<String?>('containerRegistryId');
     description = registerOutput<String?>('description');
     discoveryUrl = registerOutput<String>('discoveryUrl');
-    encryption = registerOutput<HubEncryption?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HubEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<HubEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     friendlyName = registerOutput<String?>('friendlyName');
-    highBusinessImpactEnabled = registerOutput<bool>(
-      'highBusinessImpactEnabled',
-    );
-    identity = registerOutput<HubIdentity>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HubIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    highBusinessImpactEnabled = registerOutput<bool>('highBusinessImpactEnabled');
+    identity = registerOutput<HubIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultId = registerOutput<String>('keyVaultId');
     location = registerOutput<String>('location');
-    managedNetwork = registerOutput<HubManagedNetwork>(
-      'managedNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HubManagedNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managedNetwork = registerOutput<HubManagedNetwork>('managedNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubManagedNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    primaryUserAssignedIdentity = registerOutput<String?>(
-      'primaryUserAssignedIdentity',
-    );
+    primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storageAccountId = registerOutput<String>('storageAccountId');
@@ -559,7 +514,11 @@ class Hub extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Hub] resource's state with the given [name] and [id].
-  static Hub get(String name, pulumi.Input<String> id, {HubState? state}) {
+  static Hub get(
+    String name,
+    pulumi.Input<String> id, {
+    HubState? state,
+  }) {
     return Hub._get(
       name,
       state: state?.toMap(),
@@ -572,55 +531,24 @@ class Hub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:aifoundry/hub:Hub',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:aifoundry/hub:Hub',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationInsightsId = registerOutput<String?>('applicationInsightsId');
     containerRegistryId = registerOutput<String?>('containerRegistryId');
     description = registerOutput<String?>('description');
     discoveryUrl = registerOutput<String>('discoveryUrl');
-    encryption = registerOutput<HubEncryption?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HubEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<HubEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     friendlyName = registerOutput<String?>('friendlyName');
-    highBusinessImpactEnabled = registerOutput<bool>(
-      'highBusinessImpactEnabled',
-    );
-    identity = registerOutput<HubIdentity>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HubIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    highBusinessImpactEnabled = registerOutput<bool>('highBusinessImpactEnabled');
+    identity = registerOutput<HubIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultId = registerOutput<String>('keyVaultId');
     location = registerOutput<String>('location');
-    managedNetwork = registerOutput<HubManagedNetwork>(
-      'managedNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HubManagedNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managedNetwork = registerOutput<HubManagedNetwork>('managedNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubManagedNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    primaryUserAssignedIdentity = registerOutput<String?>(
-      'primaryUserAssignedIdentity',
-    );
+    primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storageAccountId = registerOutput<String>('storageAccountId');

@@ -492,7 +492,6 @@ import 'image_share_permission_state.dart';
 class ImageSharePermission extends pulumi.CustomResource {
   /// Alibaba Cloud Account ID. It is used to share images.
   late final pulumi.Output<String> accountId;
-
   /// The source image ID.
   late final pulumi.Output<String> imageId;
 
@@ -505,11 +504,11 @@ class ImageSharePermission extends pulumi.CustomResource {
     ImageSharePermissionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/imageSharePermission:ImageSharePermission',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/imageSharePermission:ImageSharePermission',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     imageId = registerOutput<String>('imageId');
   }
@@ -532,11 +531,11 @@ class ImageSharePermission extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/imageSharePermission:ImageSharePermission',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/imageSharePermission:ImageSharePermission',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     imageId = registerOutput<String>('imageId');
   }

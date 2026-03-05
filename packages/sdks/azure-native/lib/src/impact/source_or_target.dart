@@ -9,19 +9,20 @@ class SourceOrTarget {
 
   /// Creates a new [SourceOrTarget].
   /// [azureResourceId] Azure resource id, example /subscription/{subscription}/resourceGroup/{rg}/Microsoft.compute/virtualMachine/{vmName}
-  SourceOrTarget({this.azureResourceId});
+  SourceOrTarget({
+    this.azureResourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'azureResourceId': ?azureResourceId};
+    return <String, dynamic>{
+      'azureResourceId': ?azureResourceId,
+    };
   }
 
   factory SourceOrTarget.fromMap(Map<String, dynamic> map) {
     return SourceOrTarget(
-      azureResourceId: (() {
-        final guardedValue = map['azureResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      azureResourceId: (() { final guardedValue = map['azureResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

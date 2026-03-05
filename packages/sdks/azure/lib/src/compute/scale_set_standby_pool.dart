@@ -269,23 +269,16 @@ import 'scale_set_standby_pool_state.dart';
 class ScaleSetStandbyPool extends pulumi.CustomResource {
   /// Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.
   late final pulumi.Output<String> attachedVirtualMachineScaleSetId;
-
   /// An `elasticity_profile` block as defined below.
-  late final pulumi.Output<ScaleSetStandbyPoolElasticityProfile>
-  elasticityProfile;
-
+  late final pulumi.Output<ScaleSetStandbyPoolElasticityProfile> elasticityProfile;
   /// Specifies the Azure Region where the Standby Pool should exist. Changing this forces a new Standby Pool to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name which should be used for this Standby Pool. Changing this forces a new Standby Pool to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the Resource Group where the Standby Pool should exist. Changing this forces a new Standby Pool to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Standby Pool.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the desired state of virtual machines in the pool. Possible values are `Deallocated`, `Hibernated` and `Running`.
   late final pulumi.Output<String> virtualMachineState;
 
@@ -298,24 +291,13 @@ class ScaleSetStandbyPool extends pulumi.CustomResource {
     ScaleSetStandbyPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/scaleSetStandbyPool:ScaleSetStandbyPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    attachedVirtualMachineScaleSetId = registerOutput<String>(
-      'attachedVirtualMachineScaleSetId',
-    );
-    elasticityProfile = registerOutput<ScaleSetStandbyPoolElasticityProfile>(
-      'elasticityProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScaleSetStandbyPoolElasticityProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:compute/scaleSetStandbyPool:ScaleSetStandbyPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    attachedVirtualMachineScaleSetId = registerOutput<String>('attachedVirtualMachineScaleSetId');
+    elasticityProfile = registerOutput<ScaleSetStandbyPoolElasticityProfile>('elasticityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetStandbyPoolElasticityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -341,24 +323,13 @@ class ScaleSetStandbyPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/scaleSetStandbyPool:ScaleSetStandbyPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    attachedVirtualMachineScaleSetId = registerOutput<String>(
-      'attachedVirtualMachineScaleSetId',
-    );
-    elasticityProfile = registerOutput<ScaleSetStandbyPoolElasticityProfile>(
-      'elasticityProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScaleSetStandbyPoolElasticityProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:compute/scaleSetStandbyPool:ScaleSetStandbyPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    attachedVirtualMachineScaleSetId = registerOutput<String>('attachedVirtualMachineScaleSetId');
+    elasticityProfile = registerOutput<ScaleSetStandbyPoolElasticityProfile>('elasticityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetStandbyPoolElasticityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

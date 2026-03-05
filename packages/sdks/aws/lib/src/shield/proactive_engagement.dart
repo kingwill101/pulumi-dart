@@ -401,7 +401,6 @@ import 'proactive_engagement_state.dart';
 class ProactiveEngagement extends pulumi.CustomResource {
   /// One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergency_contacts`.
   late final pulumi.Output<List<Map<String, dynamic>>> emergencyContacts;
-
   /// Boolean value indicating if Proactive Engagement should be enabled or not.
   late final pulumi.Output<bool> enabled;
 
@@ -414,14 +413,12 @@ class ProactiveEngagement extends pulumi.CustomResource {
     ProactiveEngagementArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:shield/proactiveEngagement:ProactiveEngagement',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    emergencyContacts = registerOutput<List<Map<String, dynamic>>>(
-      'emergencyContacts',
-    );
+          'aws:shield/proactiveEngagement:ProactiveEngagement',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    emergencyContacts = registerOutput<List<Map<String, dynamic>>>('emergencyContacts');
     enabled = registerOutput<bool>('enabled');
   }
 
@@ -443,14 +440,12 @@ class ProactiveEngagement extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:shield/proactiveEngagement:ProactiveEngagement',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    emergencyContacts = registerOutput<List<Map<String, dynamic>>>(
-      'emergencyContacts',
-    );
+          'aws:shield/proactiveEngagement:ProactiveEngagement',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    emergencyContacts = registerOutput<List<Map<String, dynamic>>>('emergencyContacts');
     enabled = registerOutput<bool>('enabled');
   }
 }

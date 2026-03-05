@@ -13,7 +13,10 @@ class GetSslCertificateArgs {
   /// Creates a new [GetSslCertificateArgs].
   /// [project] Optional.
   /// [sslCertificate] Required.
-  GetSslCertificateArgs({this.project, required this.sslCertificate});
+  GetSslCertificateArgs({
+    this.project,
+    required this.sslCertificate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,12 +27,9 @@ class GetSslCertificateArgs {
 
   factory GetSslCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetSslCertificateArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslCertificate: pulumi.Input.fromValue(map['sslCertificate'] as String),
     );
   }
 }
+

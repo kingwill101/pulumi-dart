@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeploymentArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
-
   /// The name of the deployment associated with the Cognitive Services Account
   final pulumi.Input<String> deploymentName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetDeploymentArgs {
     return GetDeploymentArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       deploymentName: pulumi.Input.fromValue(map['deploymentName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

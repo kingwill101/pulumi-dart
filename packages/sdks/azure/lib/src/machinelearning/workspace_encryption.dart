@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceEncryption {
   /// The Key Vault URI to access the encryption key.
   final pulumi.Input<String> keyId;
-
   /// The ID of the keyVault where the customer owned encryption key is present.
   final pulumi.Input<String> keyVaultId;
-
   /// The Key Vault URI to access the encryption key.
   ///
   /// &gt; **Note:** `user_assigned_identity_id` must set when`identity.type` is `UserAssigned` or service won't be able to find the assigned permissions.
@@ -36,11 +34,8 @@ class WorkspaceEncryption {
     return WorkspaceEncryption(
       keyId: pulumi.Input.fromValue(map['keyId'] as String),
       keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
-      userAssignedIdentityId: (() {
-        final guardedValue = map['userAssignedIdentityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userAssignedIdentityId: (() { final guardedValue = map['userAssignedIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

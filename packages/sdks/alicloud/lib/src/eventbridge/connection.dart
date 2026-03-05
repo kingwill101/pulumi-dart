@@ -561,16 +561,12 @@ import 'connection_state.dart';
 class Connection extends pulumi.CustomResource {
   /// The parameters that are configured for authentication. See `auth_parameters` below.
   late final pulumi.Output<ConnectionAuthParameters?> authParameters;
-
   /// The name of the connection.
   late final pulumi.Output<String> connectionName;
-
   /// The creation time of the Connection.
   late final pulumi.Output<String> createTime;
-
   /// The description of the connection.
   late final pulumi.Output<String?> description;
-
   /// The parameters that are configured for the network. See `network_parameters` below.
   late final pulumi.Output<ConnectionNetworkParameters> networkParameters;
 
@@ -583,34 +579,16 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eventbridge/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authParameters = registerOutput<ConnectionAuthParameters?>(
-      'authParameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionAuthParameters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:eventbridge/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authParameters = registerOutput<ConnectionAuthParameters?>('authParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionName = registerOutput<String>('connectionName');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
-    networkParameters = registerOutput<ConnectionNetworkParameters>(
-      'networkParameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionNetworkParameters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkParameters = registerOutput<ConnectionNetworkParameters>('networkParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionNetworkParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Connection] resource's state with the given [name] and [id].
@@ -631,33 +609,15 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eventbridge/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authParameters = registerOutput<ConnectionAuthParameters?>(
-      'authParameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionAuthParameters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:eventbridge/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authParameters = registerOutput<ConnectionAuthParameters?>('authParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionName = registerOutput<String>('connectionName');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
-    networkParameters = registerOutput<ConnectionNetworkParameters>(
-      'networkParameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionNetworkParameters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkParameters = registerOutput<ConnectionNetworkParameters>('networkParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionNetworkParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

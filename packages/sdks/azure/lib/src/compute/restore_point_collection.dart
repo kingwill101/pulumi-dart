@@ -520,16 +520,12 @@ import 'restore_point_collection_state.dart';
 class RestorePointCollection extends pulumi.CustomResource {
   /// The Azure location where the Virtual Machine Restore Point Collection should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Virtual Machine Restore Point Collection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group in which the Virtual Machine Restore Point Collection should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The ID of the virtual machine that will be associated with this Virtual Machine Restore Point Collection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourceVirtualMachineId;
-
   /// A mapping of tags which should be assigned to this Virtual Machine Restore Point Collection.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -542,11 +538,11 @@ class RestorePointCollection extends pulumi.CustomResource {
     RestorePointCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/restorePointCollection:RestorePointCollection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/restorePointCollection:RestorePointCollection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -572,11 +568,11 @@ class RestorePointCollection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/restorePointCollection:RestorePointCollection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/restorePointCollection:RestorePointCollection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

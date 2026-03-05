@@ -15,3 +15,4 @@ enum FirewallAllowAzureIpsState {
     throw ArgumentError('Unknown FirewallAllowAzureIpsState value: $value');
   }
 }
+

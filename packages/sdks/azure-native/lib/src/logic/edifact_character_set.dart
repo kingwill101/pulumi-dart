@@ -28,3 +28,4 @@ enum EdifactCharacterSet {
     throw ArgumentError('Unknown EdifactCharacterSet value: $value');
   }
 }
+

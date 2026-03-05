@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGradientaiAgentVersionsAgentVersionAttachedGuardrail {
   /// Whether the guardrail is deleted
   final pulumi.Input<bool> isDeleted;
-
   /// Name of the guardrail
   final pulumi.Input<String> name;
-
   /// Guardrail priority
   final pulumi.Input<int> priority;
-
   /// Guardrail UUID
   final pulumi.Input<String> uuid;
 
@@ -36,9 +33,7 @@ class GetGradientaiAgentVersionsAgentVersionAttachedGuardrail {
     };
   }
 
-  factory GetGradientaiAgentVersionsAgentVersionAttachedGuardrail.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGradientaiAgentVersionsAgentVersionAttachedGuardrail.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentVersionsAgentVersionAttachedGuardrail(
       isDeleted: pulumi.Input.fromValue(map['isDeleted'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -47,3 +42,4 @@ class GetGradientaiAgentVersionsAgentVersionAttachedGuardrail {
     );
   }
 }
+

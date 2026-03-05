@@ -432,30 +432,22 @@ import 'sync_server_endpoint_state.dart';
 class SyncServerEndpoint extends pulumi.CustomResource {
   /// Is Cloud Tiering Enabled? Defaults to `false`.
   late final pulumi.Output<bool?> cloudTieringEnabled;
-
   /// Specifies how the server initially downloads the Azure file share data. Valid Values includes `NamespaceThenModifiedFiles`, `NamespaceOnly`, and `AvoidTieredFiles`. Defaults to `NamespaceThenModifiedFiles`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> initialDownloadPolicy;
-
   /// Specifies how to handle the local cache. Valid Values include `UpdateLocallyCachedFiles` and `DownloadNewAndModifiedFiles`. Defaults to `UpdateLocallyCachedFiles`.
   late final pulumi.Output<String?> localCacheMode;
-
   /// The name which should be used for this Storage Sync. Changing this forces a new Storage Sync Server Endpoint to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Registered Server that will be associate with the Storage Sync Server Endpoint. Changing this forces a new Storage Sync Server Endpoint to be created.
   ///
   /// &gt; **Note:** The target server must already be registered with the parent `azure.storage.Sync` prior to creating this endpoint. For more information on registering a server see the [Microsoft documentation](https://learn.microsoft.com/azure/storage/file-sync/file-sync-server-registration)
   late final pulumi.Output<String> registeredServerId;
-
   /// The path on the Windows Server to be synced to the Azure file share. Changing this forces a new Storage Sync Server Endpoint to be created.
   late final pulumi.Output<String> serverLocalPath;
-
   /// The ID of the Storage Sync Group where the Storage Sync Server Endpoint should exist. Changing this forces a new Storage Sync Server Endpoint to be created.
   late final pulumi.Output<String> storageSyncGroupId;
-
   /// Files older than the specified age will be tiered to the cloud.
   late final pulumi.Output<int?> tierFilesOlderThanDays;
-
   /// What percentage of free space on the volume should be preserved? Defaults to `20`.
   late final pulumi.Output<int?> volumeFreeSpacePercent;
 
@@ -468,11 +460,11 @@ class SyncServerEndpoint extends pulumi.CustomResource {
     SyncServerEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/syncServerEndpoint:SyncServerEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/syncServerEndpoint:SyncServerEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cloudTieringEnabled = registerOutput<bool?>('cloudTieringEnabled');
     initialDownloadPolicy = registerOutput<String?>('initialDownloadPolicy');
     localCacheMode = registerOutput<String?>('localCacheMode');
@@ -502,11 +494,11 @@ class SyncServerEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/syncServerEndpoint:SyncServerEndpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/syncServerEndpoint:SyncServerEndpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cloudTieringEnabled = registerOutput<bool?>('cloudTieringEnabled');
     initialDownloadPolicy = registerOutput<String?>('initialDownloadPolicy');
     localCacheMode = registerOutput<String?>('localCacheMode');

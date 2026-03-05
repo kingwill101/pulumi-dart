@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReposRepoDomainList {
   /// Domain of internal endpoint, only in some regions.
   final pulumi.Input<String> internal;
-
   /// Domain of public endpoint.
   final pulumi.Input<String> public;
-
   /// Domain of vpc endpoint.
   final pulumi.Input<String> vpc;
 
@@ -38,3 +36,4 @@ class GetReposRepoDomainList {
     );
   }
 }
+

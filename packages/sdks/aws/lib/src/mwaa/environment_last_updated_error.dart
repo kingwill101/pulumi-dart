@@ -9,7 +9,10 @@ class EnvironmentLastUpdatedError {
   /// Creates a new [EnvironmentLastUpdatedError].
   /// [errorCode] Optional.
   /// [errorMessage] Optional.
-  EnvironmentLastUpdatedError({this.errorCode, this.errorMessage});
+  EnvironmentLastUpdatedError({
+    this.errorCode,
+    this.errorMessage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,16 +23,9 @@ class EnvironmentLastUpdatedError {
 
   factory EnvironmentLastUpdatedError.fromMap(Map<String, dynamic> map) {
     return EnvironmentLastUpdatedError(
-      errorCode: (() {
-        final guardedValue = map['errorCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      errorMessage: (() {
-        final guardedValue = map['errorMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      errorCode: (() { final guardedValue = map['errorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum PipelineType {
     throw ArgumentError('Unknown PipelineType value: $value');
   }
 }
+

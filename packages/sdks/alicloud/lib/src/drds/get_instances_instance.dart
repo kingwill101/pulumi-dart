@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// (Available in 1.196.0+) The connection string of the DRDS instance.
   final pulumi.Input<String> connectionString;
-
   /// Creation time of the instance.
   final pulumi.Input<int> createTime;
-
   /// The DRDS instance description.
   final pulumi.Input<String> description;
-
   /// The ID of the DRDS instance.
   final pulumi.Input<String> id;
-
   /// `Classic` for public classic network or `VPC` for private network.
   final pulumi.Input<String> networkType;
-
   /// (Available in 1.196.0+) The connection port of the DRDS instance.
   final pulumi.Input<String> port;
-
   /// Status of the instance.
   final pulumi.Input<String> status;
-
   /// The DRDS Instance type.
   final pulumi.Input<String> type;
-
   /// The DRDS Instance version.
   final pulumi.Input<int> version;
-
   /// Zone ID the instance belongs to.
   final pulumi.Input<String> zoneId;
 
@@ -74,9 +65,7 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      connectionString: pulumi.Input.fromValue(
-        map['connectionString'] as String,
-      ),
+      connectionString: pulumi.Input.fromValue(map['connectionString'] as String),
       createTime: pulumi.Input.fromValue(map['createTime'] as int),
       description: pulumi.Input.fromValue(map['description'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -89,3 +78,4 @@ class GetInstancesInstance {
     );
   }
 }
+

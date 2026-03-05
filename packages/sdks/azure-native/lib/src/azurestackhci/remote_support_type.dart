@@ -15,3 +15,4 @@ enum RemoteSupportType {
     throw ArgumentError('Unknown RemoteSupportType value: $value');
   }
 }
+

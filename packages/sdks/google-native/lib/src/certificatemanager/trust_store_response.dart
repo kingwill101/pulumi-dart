@@ -8,7 +8,6 @@ import 'trust_anchor_response.dart';
 class TrustStoreResponse {
   /// Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.
   final pulumi.Input<List<IntermediateCAResponse>> intermediateCas;
-
   /// List of Trust Anchors to be used while performing validation against a given TrustStore.
   final pulumi.Input<List<TrustAnchorResponse>> trustAnchors;
 
@@ -22,51 +21,16 @@ class TrustStoreResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'intermediateCas':
-          pulumi.Input.mapInputValue<
-            List<IntermediateCAResponse>,
-            List<Map<String, dynamic>>
-          >(
-            intermediateCas,
-            (value) =>
-                pulumi.Input.encodeList<
-                  IntermediateCAResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'trustAnchors':
-          pulumi.Input.mapInputValue<
-            List<TrustAnchorResponse>,
-            List<Map<String, dynamic>>
-          >(
-            trustAnchors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TrustAnchorResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'intermediateCas': pulumi.Input.mapInputValue<List<IntermediateCAResponse>, List<Map<String, dynamic>>>(intermediateCas, (value) => pulumi.Input.encodeList<IntermediateCAResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'trustAnchors': pulumi.Input.mapInputValue<List<TrustAnchorResponse>, List<Map<String, dynamic>>>(trustAnchors, (value) => pulumi.Input.encodeList<TrustAnchorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TrustStoreResponse.fromMap(Map<String, dynamic> map) {
     return TrustStoreResponse(
-      intermediateCas: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<IntermediateCAResponse>(
-          map['intermediateCas']!,
-          (value) => IntermediateCAResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      trustAnchors: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<TrustAnchorResponse>(
-          map['trustAnchors']!,
-          (value) => TrustAnchorResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      intermediateCas: pulumi.Input.fromValue(pulumi.Input.decodeList<IntermediateCAResponse>(map['intermediateCas']!, (value) => IntermediateCAResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      trustAnchors: pulumi.Input.fromValue(pulumi.Input.decodeList<TrustAnchorResponse>(map['trustAnchors']!, (value) => TrustAnchorResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

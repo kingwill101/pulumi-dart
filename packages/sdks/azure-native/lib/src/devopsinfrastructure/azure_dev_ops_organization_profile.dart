@@ -9,10 +9,8 @@ class AzureDevOpsOrganizationProfile {
   /// Discriminator property for OrganizationProfile.
   /// Expected value is 'AzureDevOps'.
   final pulumi.Input<String> kind;
-
   /// The list of Azure DevOps organizations the pool should be present in.
   final pulumi.Input<List<Organization>> organizations;
-
   /// The type of permission which determines which accounts are admins on the Azure DevOps pool.
   final pulumi.Input<AzureDevOpsPermissionProfile>? permissionProfile;
 
@@ -29,45 +27,17 @@ class AzureDevOpsOrganizationProfile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kind': kind,
-      'organizations':
-          pulumi.Input.mapInputValue<
-            List<Organization>,
-            List<Map<String, dynamic>>
-          >(
-            organizations,
-            (value) =>
-                pulumi.Input.encodeList<Organization, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'permissionProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureDevOpsPermissionProfile,
-            Map<String, dynamic>
-          >(permissionProfile, (value) => value.toMap()),
+      'organizations': pulumi.Input.mapInputValue<List<Organization>, List<Map<String, dynamic>>>(organizations, (value) => pulumi.Input.encodeList<Organization, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'permissionProfile': ?pulumi.Input.mapOptionalInputValue<AzureDevOpsPermissionProfile, Map<String, dynamic>>(permissionProfile, (value) => value.toMap()),
     };
   }
 
   factory AzureDevOpsOrganizationProfile.fromMap(Map<String, dynamic> map) {
     return AzureDevOpsOrganizationProfile(
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      organizations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<Organization>(
-          map['organizations']!,
-          (value) =>
-              Organization.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      permissionProfile: (() {
-        final guardedValue = map['permissionProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureDevOpsPermissionProfile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      organizations: pulumi.Input.fromValue(pulumi.Input.decodeList<Organization>(map['organizations']!, (value) => Organization.fromMap((value as Map).cast<String, dynamic>()))),
+      permissionProfile: (() { final guardedValue = map['permissionProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureDevOpsPermissionProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

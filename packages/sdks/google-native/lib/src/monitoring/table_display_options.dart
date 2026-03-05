@@ -9,19 +9,20 @@ class TableDisplayOptions {
 
   /// Creates a new [TableDisplayOptions].
   /// [shownColumns] Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
-  TableDisplayOptions({this.shownColumns});
+  TableDisplayOptions({
+    this.shownColumns,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'shownColumns': ?shownColumns};
+    return <String, dynamic>{
+      'shownColumns': ?shownColumns,
+    };
   }
 
   factory TableDisplayOptions.fromMap(Map<String, dynamic> map) {
     return TableDisplayOptions(
-      shownColumns: (() {
-        final guardedValue = map['shownColumns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      shownColumns: (() { final guardedValue = map['shownColumns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+
